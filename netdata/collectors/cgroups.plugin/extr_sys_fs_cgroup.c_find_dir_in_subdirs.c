@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {scalar_t__ d_type; char* d_name; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ DT_DIR ; 
- int /*<<< orphan*/  D_CGROUP ; 
- int FILENAME_MAX ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int config_get_boolean (char*,char*,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  enabled_cgroup_paths ; 
- int /*<<< orphan*/  error (char*,char const*) ; 
- int /*<<< orphan*/  freez (char*) ; 
- char* mallocz (size_t) ; 
- int /*<<< orphan*/ * opendir (char const*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int simple_pattern_matches (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  snprintfz (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strlen (char const*) ; 
+
+ scalar_t__ DT_DIR ;
+ int D_CGROUP ;
+ int FILENAME_MAX ;
+ int closedir (int *) ;
+ int config_get_boolean (char*,char*,int) ;
+ int debug (int ,char*,char const*,char const*) ;
+ int enabled_cgroup_paths ;
+ int error (char*,char const*) ;
+ int freez (char*) ;
+ char* mallocz (size_t) ;
+ int * opendir (char const*) ;
+ struct dirent* readdir (int *) ;
+ int simple_pattern_matches (int ,char const*) ;
+ int snprintfz (char*,int,char*,char const*) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static inline int find_dir_in_subdirs(const char *base, const char *this, void (*callback)(const char *)) {
     if(!this) this = base;
@@ -53,7 +53,7 @@ __attribute__((used)) static inline int find_dir_in_subdirs(const char *base, co
 
     callback(relative_path);
 
-    struct dirent *de = NULL;
+    struct dirent *de = ((void*)0);
     while((de = readdir(dir))) {
         if(de->d_type == DT_DIR
             && (
@@ -67,12 +67,12 @@ __attribute__((used)) static inline int find_dir_in_subdirs(const char *base, co
                 const char *r = relative_path;
                 if(*r == '\0') r = "/";
 
-                // do not decent in directories we are not interested
+
                 int def = simple_pattern_matches(enabled_cgroup_paths, r);
 
-                // we check for this option here
-                // so that the config will not have settings
-                // for leaf directories
+
+
+
                 char option[FILENAME_MAX + 1];
                 snprintfz(option, FILENAME_MAX, "search for cgroups under %s", r);
                 option[FILENAME_MAX] = '\0';

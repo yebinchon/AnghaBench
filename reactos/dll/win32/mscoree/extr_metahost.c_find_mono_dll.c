@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ GetFileAttributesW (int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- char const* libmono2_arch_dll ; 
- int /*<<< orphan*/  strcatW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ GetFileAttributesW (int ) ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ char const* libmono2_arch_dll ;
+ int strcatW (int ,char const*) ;
+ int strcpyW (int ,int ) ;
 
 __attribute__((used)) static BOOL find_mono_dll(LPCWSTR path, LPWSTR dll_path, int abi_version)
 {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct retro_perf_counter {int dummy; } ;
 
-/* Variables and functions */
- unsigned int MENU_SETTINGS_PERF_COUNTERS_BEGIN ; 
- int generic_action_start_performance_counters (struct retro_perf_counter**,unsigned int,unsigned int,char const*) ; 
- struct retro_perf_counter** retro_get_perf_counter_rarch () ; 
+
+ unsigned int MENU_SETTINGS_PERF_COUNTERS_BEGIN ;
+ int generic_action_start_performance_counters (struct retro_perf_counter**,unsigned int,unsigned int,char const*) ;
+ struct retro_perf_counter** retro_get_perf_counter_rarch () ;
 
 __attribute__((used)) static int action_start_performance_counters_frontend(unsigned type,
       const char *label)

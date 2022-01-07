@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BF_LONG ;
-typedef  int /*<<< orphan*/  BF_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BF_ofb64_encrypt (unsigned char*,unsigned char*,int,int /*<<< orphan*/ *,unsigned char*,int*) ; 
- int /*<<< orphan*/  BF_set_key (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * cbc_data ; 
- int /*<<< orphan*/  cbc_iv ; 
- int /*<<< orphan*/  cbc_key ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * ofb64_ok ; 
- int strlen (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BF_LONG ;
+typedef int BF_KEY ;
+
+
+ int BF_ofb64_encrypt (unsigned char*,unsigned char*,int,int *,unsigned char*,int*) ;
+ int BF_set_key (int *,int,int ) ;
+ int TEST_mem_eq (unsigned char*,int,int *,int) ;
+ int * cbc_data ;
+ int cbc_iv ;
+ int cbc_key ;
+ int memcpy (unsigned char*,int ,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int * ofb64_ok ;
+ int strlen (int *) ;
 
 __attribute__((used)) static int test_bf_ofb64(void)
 {

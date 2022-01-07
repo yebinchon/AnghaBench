@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  fulltext_vtab ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_DELETE_ALL_STMT ; 
- int /*<<< orphan*/  SEGDIR_DELETE_ALL_STMT ; 
- int SQLITE_OK ; 
- int sql_get_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sql_single_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int fulltext_vtab ;
+
+
+ int BLOCK_DELETE_ALL_STMT ;
+ int SEGDIR_DELETE_ALL_STMT ;
+ int SQLITE_OK ;
+ int sql_get_statement (int *,int ,int **) ;
+ int sql_single_step (int *) ;
 
 __attribute__((used)) static int segdir_delete_all(fulltext_vtab *v){
   sqlite3_stmt *s;

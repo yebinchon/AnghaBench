@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct anybuss_host {int /*<<< orphan*/  dev; int /*<<< orphan*/  (* reset ) (int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct anybuss_host {int dev; int (* reset ) (int ,int) ;} ;
+
+
+ int stub1 (int ,int) ;
 
 __attribute__((used)) static void reset_deassert(struct anybuss_host *cd)
 {
-	cd->reset(cd->dev, false);
+ cd->reset(cd->dev, 0);
 }

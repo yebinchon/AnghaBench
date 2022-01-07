@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* buffer; char* drive; char* dir; char* file; char* ext; int /*<<< orphan*/  expected; } ;
-typedef  TYPE_1__ makepath_case ;
-typedef  char WCHAR ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int) ; 
- char* USE_BUFF ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _makepath (char*,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  _wmakepath (char*,char*,char*,char*,char*) ; 
- TYPE_1__* makepath_cases ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,char*,unsigned int) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* buffer; char* drive; char* dir; char* file; char* ext; int expected; } ;
+typedef TYPE_1__ makepath_case ;
+typedef char WCHAR ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_1__*) ;
+ int CP_ACP ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char*,int,char*,int) ;
+ char* USE_BUFF ;
+ int WideCharToMultiByte (int ,int ,char*,int,char*,int,int *,int *) ;
+ int _makepath (char*,char*,char*,char*,char*) ;
+ int _wmakepath (char*,char*,char*,char*,char*) ;
+ TYPE_1__* makepath_cases ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,char*,unsigned int) ;
+ int strcmp (int ,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_makepath(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_makepath(void)
         if (p->buffer)
             strcpy(buffer, p->buffer);
 
-        /* Ascii */
+
         _makepath(buffer,
                   p->drive == USE_BUFF ? buffer : p->drive,
                   p->dir == USE_BUFF ? buffer : p->dir,
@@ -59,7 +59,7 @@ __attribute__((used)) static void test_makepath(void)
         buffer[MAX_PATH - 1] = '\0';
         ok(!strcmp(p->expected, buffer), "got '%s' for case %d\n", buffer, i);
 
-        /* Unicode */
+
         if (p->drive != USE_BUFF) MultiByteToWideChar(CP_ACP, 0, p->drive, -1, driveW, MAX_PATH);
         if (p->dir != USE_BUFF) MultiByteToWideChar(CP_ACP, 0, p->dir, -1, dirW, MAX_PATH);
         if (p->file != USE_BUFF) MultiByteToWideChar(CP_ACP, 0, p->file, -1, fileW, MAX_PATH);
@@ -71,13 +71,13 @@ __attribute__((used)) static void test_makepath(void)
         if (p->buffer) MultiByteToWideChar( CP_ACP, 0, p->buffer, -1, bufferW, MAX_PATH);
 
         _wmakepath(bufferW,
-                   p->drive == USE_BUFF ? bufferW : p->drive ? driveW : NULL,
-                   p->dir == USE_BUFF ? bufferW : p->dir ? dirW : NULL,
-                   p->file == USE_BUFF? bufferW : p->file ? fileW : NULL,
-                   p->ext == USE_BUFF ? bufferW : p->ext ? extW : NULL);
+                   p->drive == USE_BUFF ? bufferW : p->drive ? driveW : ((void*)0),
+                   p->dir == USE_BUFF ? bufferW : p->dir ? dirW : ((void*)0),
+                   p->file == USE_BUFF? bufferW : p->file ? fileW : ((void*)0),
+                   p->ext == USE_BUFF ? bufferW : p->ext ? extW : ((void*)0));
 
         bufferW[MAX_PATH - 1] = '\0';
-        WideCharToMultiByte(CP_ACP, 0, bufferW, -1, buffer, MAX_PATH, NULL, NULL);
+        WideCharToMultiByte(CP_ACP, 0, bufferW, -1, buffer, MAX_PATH, ((void*)0), ((void*)0));
         ok(!strcmp(p->expected, buffer), "got '%s' for unicode case %d\n", buffer, i);
     }
 }

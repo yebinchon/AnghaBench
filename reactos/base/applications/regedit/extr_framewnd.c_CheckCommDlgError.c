@@ -1,38 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
-#define  CDERR_DIALOGFAILURE 142 
-#define  CDERR_FINDRESFAILURE 141 
-#define  CDERR_INITIALIZATION 140 
-#define  CDERR_LOADRESFAILURE 139 
-#define  CDERR_LOADSTRFAILURE 138 
-#define  CDERR_LOCKRESFAILURE 137 
-#define  CDERR_MEMALLOCFAILURE 136 
-#define  CDERR_MEMLOCKFAILURE 135 
-#define  CDERR_NOHINSTANCE 134 
-#define  CDERR_NOHOOK 133 
-#define  CDERR_NOTEMPLATE 132 
-#define  CDERR_STRUCTSIZE 131 
- int CommDlgExtendedError () ; 
-#define  FNERR_BUFFERTOOSMALL 130 
-#define  FNERR_INVALIDFILENAME 129 
-#define  FNERR_SUBCLASSFAILURE 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UNREFERENCED_PARAMETER (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HWND ;
+typedef int DWORD ;
+typedef int BOOL ;
+ int CommDlgExtendedError () ;
+
+
+
+ int TRUE ;
+ int UNREFERENCED_PARAMETER (int ) ;
 
 __attribute__((used)) static BOOL CheckCommDlgError(HWND hWnd)
 {
@@ -40,35 +26,35 @@ __attribute__((used)) static BOOL CheckCommDlgError(HWND hWnd)
     UNREFERENCED_PARAMETER(hWnd);
     switch (dwErrorCode)
     {
-        case CDERR_DIALOGFAILURE:
+        case 142:
             break;
-        case CDERR_FINDRESFAILURE:
+        case 141:
             break;
-        case CDERR_NOHINSTANCE:
+        case 134:
             break;
-        case CDERR_INITIALIZATION:
+        case 140:
             break;
-        case CDERR_NOHOOK:
+        case 133:
             break;
-        case CDERR_LOCKRESFAILURE:
+        case 137:
             break;
-        case CDERR_NOTEMPLATE:
+        case 132:
             break;
-        case CDERR_LOADRESFAILURE:
+        case 139:
             break;
-        case CDERR_STRUCTSIZE:
+        case 131:
             break;
-        case CDERR_LOADSTRFAILURE:
+        case 138:
             break;
-        case FNERR_BUFFERTOOSMALL:
+        case 130:
             break;
-        case CDERR_MEMALLOCFAILURE:
+        case 136:
             break;
-        case FNERR_INVALIDFILENAME:
+        case 129:
             break;
-        case CDERR_MEMLOCKFAILURE:
+        case 135:
             break;
-        case FNERR_SUBCLASSFAILURE:
+        case 128:
             break;
         default:
             break;

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  output_format; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int output_format; int flags; } ;
 struct rev_info {TYPE_1__ diffopt; } ;
 struct object {int dummy; } ;
-struct diff_options {int /*<<< orphan*/  flags; } ;
+struct diff_options {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIFF_FORMAT_NAME_STATUS ; 
- int /*<<< orphan*/  add_pending_object (struct rev_info*,struct object*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  diff_setup_done (TYPE_1__*) ; 
- int /*<<< orphan*/  repo_init_revisions (int /*<<< orphan*/ ,struct rev_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  run_diff_index (struct rev_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  the_repository ; 
+
+ int DIFF_FORMAT_NAME_STATUS ;
+ int add_pending_object (struct rev_info*,struct object*,int *) ;
+ int diff_setup_done (TYPE_1__*) ;
+ int repo_init_revisions (int ,struct rev_info*,int *) ;
+ int run_diff_index (struct rev_info*,int ) ;
+ int the_repository ;
 
 __attribute__((used)) static void show_local_changes(struct object *head,
-			       const struct diff_options *opts)
+          const struct diff_options *opts)
 {
-	struct rev_info rev;
-	/* I think we want full paths, even if we're in a subdirectory. */
-	repo_init_revisions(the_repository, &rev, NULL);
-	rev.diffopt.flags = opts->flags;
-	rev.diffopt.output_format |= DIFF_FORMAT_NAME_STATUS;
-	diff_setup_done(&rev.diffopt);
-	add_pending_object(&rev, head, NULL);
-	run_diff_index(&rev, 0);
+ struct rev_info rev;
+
+ repo_init_revisions(the_repository, &rev, ((void*)0));
+ rev.diffopt.flags = opts->flags;
+ rev.diffopt.output_format |= DIFF_FORMAT_NAME_STATUS;
+ diff_setup_done(&rev.diffopt);
+ add_pending_object(&rev, head, ((void*)0));
+ run_diff_index(&rev, 0);
 }

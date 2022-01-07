@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int offset; int size; } ;
-typedef  TYPE_1__ jv ;
+typedef TYPE_1__ jv ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
- int JVP_HAS_KIND (TYPE_1__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JV_KIND_ARRAY ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__ jv_array () ; 
- TYPE_1__ jv_array_append (TYPE_1__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_array_get (int /*<<< orphan*/ ,int) ; 
- TYPE_1__ jv_array_sized (int) ; 
- int /*<<< orphan*/  jv_copy (TYPE_1__) ; 
- int /*<<< orphan*/  jv_free (TYPE_1__) ; 
- int jvp_array_length (TYPE_1__) ; 
- int /*<<< orphan*/  jvp_clamp_slice_params (int,int*,int*) ; 
+
+ int CHAR_BIT ;
+ int JVP_HAS_KIND (TYPE_1__,int ) ;
+ int JV_KIND_ARRAY ;
+ int assert (int) ;
+ TYPE_1__ jv_array () ;
+ TYPE_1__ jv_array_append (TYPE_1__,int ) ;
+ int jv_array_get (int ,int) ;
+ TYPE_1__ jv_array_sized (int) ;
+ int jv_copy (TYPE_1__) ;
+ int jv_free (TYPE_1__) ;
+ int jvp_array_length (TYPE_1__) ;
+ int jvp_clamp_slice_params (int,int*,int*) ;
 
 __attribute__((used)) static jv jvp_array_slice(jv a, int start, int end) {
   assert(JVP_HAS_KIND(a, JV_KIND_ARRAY));
@@ -34,7 +34,7 @@ __attribute__((used)) static jv jvp_array_slice(jv a, int start, int end) {
   jvp_clamp_slice_params(len, &start, &end);
   assert(0 <= start && start <= end && end <= len);
 
-  // FIXME: maybe slice should reallocate if the slice is small enough
+
   if (start == end) {
     jv_free(a);
     return jv_array();

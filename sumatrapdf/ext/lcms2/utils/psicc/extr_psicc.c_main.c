@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GenerateCRD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GenerateCSA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HandleSwitches (int,char**) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  InitUtils (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  OutFile ; 
- int /*<<< orphan*/ * cInProf ; 
- int /*<<< orphan*/ * cOutProf ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fopen (char*,char*) ; 
- int /*<<< orphan*/  stdout ; 
- int xoptind ; 
+
+
+
+typedef int * cmsContext ;
+
+
+ int GenerateCRD (int *) ;
+ int GenerateCSA (int *) ;
+ int HandleSwitches (int,char**) ;
+ int Help () ;
+ int InitUtils (int *,char*) ;
+ int OutFile ;
+ int * cInProf ;
+ int * cOutProf ;
+ int fclose (int ) ;
+ int fopen (char*,char*) ;
+ int stdout ;
+ int xoptind ;
 
 int main(int argc, char *argv[])
 {
-	int nargs;
-    cmsContext ContextID = NULL;
+ int nargs;
+    cmsContext ContextID = ((void*)0);
 
-	// Initialize
-	InitUtils(NULL, "psicc");
 
-	 HandleSwitches(argc, argv);
+ InitUtils(((void*)0), "psicc");
+
+  HandleSwitches(argc, argv);
 
      nargs = (argc - xoptind);
-	 if (nargs != 0 && nargs != 1)
-				Help();
+  if (nargs != 0 && nargs != 1)
+    Help();
 
-    if (cInProf == NULL && cOutProf == NULL)
+    if (cInProf == ((void*)0) && cOutProf == ((void*)0))
         Help();
 
-	 if (nargs == 0)
-			OutFile = stdout;
-	 else
-			OutFile = fopen(argv[xoptind], "wt");
+  if (nargs == 0)
+   OutFile = stdout;
+  else
+   OutFile = fopen(argv[xoptind], "wt");
 
-	  if (cInProf != NULL)
-			GenerateCSA(ContextID);
+   if (cInProf != ((void*)0))
+   GenerateCSA(ContextID);
 
-	  if (cOutProf != NULL)
-			GenerateCRD(ContextID);
+   if (cOutProf != ((void*)0))
+   GenerateCRD(ContextID);
 
-	  if (nargs == 1) {
-		  fclose(OutFile);
-	  }
+   if (nargs == 1) {
+    fclose(OutFile);
+   }
 
       return 0;
 }

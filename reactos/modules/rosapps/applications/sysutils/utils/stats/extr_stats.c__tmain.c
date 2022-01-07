@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _TCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddExtension (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* BeSilent ; 
- int /*<<< orphan*/  Cleanup () ; 
- int /*<<< orphan*/  Execute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Initialize () ; 
- void* IsOptionSet (int /*<<< orphan*/ ) ; 
- int MAX_OPTIONS ; 
- int /*<<< orphan*/ ** Options ; 
- void* SkipEmptyLines ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int _TCHAR ;
+
+
+ int AddExtension (int ,int ) ;
+ void* BeSilent ;
+ int Cleanup () ;
+ int Execute (int *) ;
+ int Initialize () ;
+ void* IsOptionSet (int ) ;
+ int MAX_OPTIONS ;
+ int ** Options ;
+ void* SkipEmptyLines ;
+ int _T (char*) ;
+ int _tprintf (int ) ;
 
 int _tmain(int argc, _TCHAR * argv[])
 {

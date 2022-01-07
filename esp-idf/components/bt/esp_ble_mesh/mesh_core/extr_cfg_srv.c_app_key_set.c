@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  scalar_t__ u16_t ;
+
+
+
+
+typedef int u8_t ;
+typedef scalar_t__ u16_t ;
 struct bt_mesh_subnet {scalar_t__ kr_phase; } ;
-struct bt_mesh_app_keys {int /*<<< orphan*/  val; int /*<<< orphan*/  id; } ;
+struct bt_mesh_app_keys {int val; int id; } ;
 struct bt_mesh_app_key {scalar_t__ net_idx; int updated; scalar_t__ app_idx; struct bt_mesh_app_keys* keys; } ;
 
-/* Variables and functions */
- scalar_t__ BLE_MESH_KR_PHASE_1 ; 
- int /*<<< orphan*/  BT_DBG (char*,...) ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_SETTINGS ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_CANNOT_UPDATE ; 
- int /*<<< orphan*/  STATUS_IDX_ALREADY_STORED ; 
- int /*<<< orphan*/  STATUS_INSUFF_RESOURCES ; 
- int /*<<< orphan*/  STATUS_INVALID_APPKEY ; 
- int /*<<< orphan*/  STATUS_INVALID_BINDING ; 
- int /*<<< orphan*/  STATUS_INVALID_NETKEY ; 
- int /*<<< orphan*/  STATUS_STORAGE_FAIL ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  bt_hex (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ bt_mesh_app_id (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- struct bt_mesh_app_key* bt_mesh_app_key_alloc (scalar_t__) ; 
- struct bt_mesh_app_key* bt_mesh_app_key_find (scalar_t__) ; 
- int /*<<< orphan*/  bt_mesh_store_app_key (struct bt_mesh_app_key*) ; 
- struct bt_mesh_subnet* bt_mesh_subnet_get (scalar_t__) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
+
+ scalar_t__ BLE_MESH_KR_PHASE_1 ;
+ int BT_DBG (char*,...) ;
+ int CONFIG_BLE_MESH_SETTINGS ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int STATUS_CANNOT_UPDATE ;
+ int STATUS_IDX_ALREADY_STORED ;
+ int STATUS_INSUFF_RESOURCES ;
+ int STATUS_INVALID_APPKEY ;
+ int STATUS_INVALID_BINDING ;
+ int STATUS_INVALID_NETKEY ;
+ int STATUS_STORAGE_FAIL ;
+ int STATUS_SUCCESS ;
+ int bt_hex (int const*,int) ;
+ scalar_t__ bt_mesh_app_id (int const*,int *) ;
+ struct bt_mesh_app_key* bt_mesh_app_key_alloc (scalar_t__) ;
+ struct bt_mesh_app_key* bt_mesh_app_key_find (scalar_t__) ;
+ int bt_mesh_store_app_key (struct bt_mesh_app_key*) ;
+ struct bt_mesh_subnet* bt_mesh_subnet_get (scalar_t__) ;
+ scalar_t__ memcmp (int ,int const*,int) ;
+ int memcpy (int ,int const*,int) ;
 
 __attribute__((used)) static u8_t app_key_set(u16_t net_idx, u16_t app_idx, const u8_t val[16],
                         bool update)
@@ -65,11 +65,11 @@ __attribute__((used)) static u8_t app_key_set(u16_t net_idx, u16_t app_idx, cons
 
         keys = &key->keys[1];
 
-        /* The AppKey Update message shall generate an error when node
-         * is in normal operation, Phase 2, or Phase 3 or in Phase 1
-         * when the AppKey Update message on a valid AppKeyIndex when
-         * the AppKey value is different.
-         */
+
+
+
+
+
         if (sub->kr_phase != BLE_MESH_KR_PHASE_1) {
             return STATUS_CANNOT_UPDATE;
         }
@@ -82,7 +82,7 @@ __attribute__((used)) static u8_t app_key_set(u16_t net_idx, u16_t app_idx, cons
             }
         }
 
-        key->updated = true;
+        key->updated = 1;
     } else {
         if (key) {
             if (key->net_idx == net_idx &&
@@ -107,7 +107,7 @@ __attribute__((used)) static u8_t app_key_set(u16_t net_idx, u16_t app_idx, cons
 
     if (bt_mesh_app_id(val, &keys->id)) {
         if (update) {
-            key->updated = false;
+            key->updated = 0;
         }
 
         return STATUS_STORAGE_FAIL;

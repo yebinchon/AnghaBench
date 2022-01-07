@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct handle_table {unsigned int iFirstFree; int /*<<< orphan*/  mutex; TYPE_1__* paEntries; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* destructor ) (TYPE_2__*) ;int /*<<< orphan*/  refcount; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct handle_table {unsigned int iFirstFree; int mutex; TYPE_1__* paEntries; } ;
+struct TYPE_5__ {int (* destructor ) (TYPE_2__*) ;int refcount; } ;
 struct TYPE_4__ {unsigned int iNextFree; TYPE_2__* pObject; } ;
-typedef  TYPE_2__ OBJECTHDR ;
-typedef  int /*<<< orphan*/  HCRYPTKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ OBJECTHDR ;
+typedef int HCRYPTKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- unsigned int HANDLE2INDEX (int /*<<< orphan*/ ) ; 
- scalar_t__ InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,struct handle_table*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  is_valid_handle (struct handle_table*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
+
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ unsigned int HANDLE2INDEX (int ) ;
+ scalar_t__ InterlockedDecrement (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int TRACE (char*,struct handle_table*,...) ;
+ int TRUE ;
+ int is_valid_handle (struct handle_table*,int ,int ) ;
+ int stub1 (TYPE_2__*) ;
 
 BOOL release_handle(struct handle_table *lpTable, HCRYPTKEY handle, DWORD dwType)
 {
@@ -38,9 +38,9 @@ BOOL release_handle(struct handle_table *lpTable, HCRYPTKEY handle, DWORD dwType
     BOOL ret = FALSE;
 
     TRACE("(lpTable=%p, handle=%ld)\n", lpTable, handle);
-    
+
     EnterCriticalSection(&lpTable->mutex);
-    
+
     if (!is_valid_handle(lpTable, handle, dwType))
         goto exit;
 
@@ -52,7 +52,7 @@ BOOL release_handle(struct handle_table *lpTable, HCRYPTKEY handle, DWORD dwType
             pObject->destructor(pObject);
     }
 
-    lpTable->paEntries[index].pObject = NULL;
+    lpTable->paEntries[index].pObject = ((void*)0);
     lpTable->paEntries[index].iNextFree = lpTable->iFirstFree;
     lpTable->iFirstFree = index;
 

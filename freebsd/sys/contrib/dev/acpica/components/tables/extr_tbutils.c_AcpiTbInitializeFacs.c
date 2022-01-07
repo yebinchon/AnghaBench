@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ Facs; scalar_t__ XFacs; } ;
-typedef  int /*<<< orphan*/  ACPI_TABLE_FACS ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
+typedef int ACPI_TABLE_FACS ;
+typedef int ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_CAST_INDIRECT_PTR (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ACPI_TABLE_HEADER ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/ * AcpiGbl_FACS ; 
- TYPE_1__ AcpiGbl_FADT ; 
- int /*<<< orphan*/  AcpiGbl_FacsIndex ; 
- scalar_t__ AcpiGbl_ReducedHardware ; 
- int /*<<< orphan*/  AcpiGbl_Use32BitFacsAddresses ; 
- int /*<<< orphan*/  AcpiGbl_XFacsIndex ; 
- int /*<<< orphan*/  AcpiGetTableByIndex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ACPI_CAST_INDIRECT_PTR (int ,int **) ;
+ int ACPI_TABLE_HEADER ;
+ int AE_OK ;
+ int * AcpiGbl_FACS ;
+ TYPE_1__ AcpiGbl_FADT ;
+ int AcpiGbl_FacsIndex ;
+ scalar_t__ AcpiGbl_ReducedHardware ;
+ int AcpiGbl_Use32BitFacsAddresses ;
+ int AcpiGbl_XFacsIndex ;
+ int AcpiGetTableByIndex (int ,int ) ;
 
 ACPI_STATUS
 AcpiTbInitializeFacs (
     void)
 {
-    ACPI_TABLE_FACS         *Facs;
+    ACPI_TABLE_FACS *Facs;
 
 
-    /* If Hardware Reduced flag is set, there is no FACS */
+
 
     if (AcpiGbl_ReducedHardware)
     {
-        AcpiGbl_FACS = NULL;
+        AcpiGbl_FACS = ((void*)0);
         return (AE_OK);
     }
     else if (AcpiGbl_FADT.XFacs &&
@@ -55,7 +55,7 @@ AcpiTbInitializeFacs (
         AcpiGbl_FACS = Facs;
     }
 
-    /* If there is no FACS, just continue. There was already an error msg */
+
 
     return (AE_OK);
 }

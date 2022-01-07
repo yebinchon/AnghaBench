@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int ngx_int_t ;
 struct TYPE_10__ {char* data; int len; } ;
 struct TYPE_9__ {char* data; int len; } ;
-struct TYPE_11__ {TYPE_3__ appkey; TYPE_2__ file_path_s; int /*<<< orphan*/  meta; } ;
-typedef  TYPE_4__ ngx_http_tfs_restful_ctx_t ;
+struct TYPE_11__ {TYPE_3__ appkey; TYPE_2__ file_path_s; int meta; } ;
+typedef TYPE_4__ ngx_http_tfs_restful_ctx_t ;
 struct TYPE_8__ {char* data; int len; } ;
 struct TYPE_12__ {scalar_t__ method; TYPE_1__ uri; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+typedef TYPE_5__ ngx_http_request_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- scalar_t__ NGX_HTTP_DELETE ; 
- scalar_t__ NGX_HTTP_GET ; 
- scalar_t__ NGX_HTTP_HEAD ; 
- scalar_t__ NGX_HTTP_PUT ; 
- int NGX_HTTP_TFS_MAX_FILE_NAME_LEN ; 
- int /*<<< orphan*/  NGX_HTTP_TFS_YES ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_memcmp (char*,char*,int) ; 
+
+ int NGX_ERROR ;
+ scalar_t__ NGX_HTTP_DELETE ;
+ scalar_t__ NGX_HTTP_GET ;
+ scalar_t__ NGX_HTTP_HEAD ;
+ scalar_t__ NGX_HTTP_PUT ;
+ int NGX_HTTP_TFS_MAX_FILE_NAME_LEN ;
+ int NGX_HTTP_TFS_YES ;
+ int NGX_OK ;
+ int ngx_memcmp (char*,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_restful_parse_raw(ngx_http_request_t *r,
     ngx_http_tfs_restful_ctx_t *ctx, u_char *data)
 {
-    u_char  *p, ch, *start, *last, *meta_data;
+    u_char *p, ch, *start, *last, *meta_data;
 
     enum {
         sw_appkey = 0,
@@ -51,7 +51,7 @@ ngx_http_restful_parse_raw(ngx_http_request_t *r,
     state = sw_appkey;
     last = r->uri.data + r->uri.len;
     start = data;
-    meta_data = NULL;
+    meta_data = ((void*)0);
 
     for (p = data; p < last; p++) {
         ch = *p;

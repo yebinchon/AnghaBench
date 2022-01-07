@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  digest ;
-struct TYPE_3__ {void* upgrade; int /*<<< orphan*/  connection; void* ws_resp; int /*<<< orphan*/  ws_accept; int /*<<< orphan*/  ws_key; } ;
-typedef  TYPE_1__ WSHeaders ;
 
-/* Variables and functions */
- int SHA_DIGEST_LENGTH ; 
- int /*<<< orphan*/  WS_MAGIC_STR ; 
- char* WS_SWITCH_PROTO_STR ; 
- int /*<<< orphan*/  base64_encode (unsigned char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ws_sha1_digest (char*,size_t,int /*<<< orphan*/ *) ; 
- char* xmalloc (size_t) ; 
- void* xstrdup (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int digest ;
+struct TYPE_3__ {void* upgrade; int connection; void* ws_resp; int ws_accept; int ws_key; } ;
+typedef TYPE_1__ WSHeaders ;
+
+
+ int SHA_DIGEST_LENGTH ;
+ int WS_MAGIC_STR ;
+ char* WS_SWITCH_PROTO_STR ;
+ int base64_encode (unsigned char*,int) ;
+ int free (char*) ;
+ int memcpy (char*,int ,size_t) ;
+ int memset (int *,int ,int) ;
+ size_t strlen (int ) ;
+ int ws_sha1_digest (char*,size_t,int *) ;
+ char* xmalloc (size_t) ;
+ void* xstrdup (char*) ;
 
 __attribute__((used)) static void
 ws_set_handshake_headers (WSHeaders * headers)
@@ -45,7 +45,7 @@ ws_set_handshake_headers (WSHeaders * headers)
 
   ws_sha1_digest (s, len, digest);
 
-  /* set response headers */
+
   headers->ws_accept =
     base64_encode ((unsigned char *) digest, sizeof (digest));
   headers->ws_resp = xstrdup (WS_SWITCH_PROTO_STR);

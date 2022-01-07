@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mss_info {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snd_mtxlock (int /*<<< orphan*/ ) ; 
+
+
+
+struct mss_info {int lock; } ;
+
+
+ int snd_mtxlock (int ) ;
 
 __attribute__((used)) static void
 mss_lock(struct mss_info *mss)
 {
-	snd_mtxlock(mss->lock);
+ snd_mtxlock(mss->lock);
 }

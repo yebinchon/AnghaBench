@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-struct sec_TCP_con {int /*<<< orphan*/  sock; int /*<<< orphan*/  sent_nonce; int /*<<< orphan*/  shared_key; } ;
-typedef  int /*<<< orphan*/  packet ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ck_assert_msg (int,char*) ; 
- int crypto_box_MACBYTES ; 
- int encrypt_data_symmetric (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int htons (int) ; 
- int /*<<< orphan*/  increment_nonce (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int*,int) ; 
- int send (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct sec_TCP_con {int sock; int sent_nonce; int shared_key; } ;
+typedef int packet ;
+
+
+ int ck_assert_msg (int,char*) ;
+ int crypto_box_MACBYTES ;
+ int encrypt_data_symmetric (int ,int ,int *,int,int *) ;
+ int htons (int) ;
+ int increment_nonce (int ) ;
+ int memcpy (int *,int*,int) ;
+ int send (int ,int *,int,int ) ;
 
 int write_packet_TCP_secure_connection(struct sec_TCP_con *con, uint8_t *data, uint16_t length)
 {

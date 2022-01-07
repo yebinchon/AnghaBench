@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ XmlNodeType ;
-typedef  int /*<<< orphan*/  IXmlReader ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ CreateXmlReader (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_IXmlReader ; 
- scalar_t__ IXmlReader_Read (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IXmlReader_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXmlReader_SetInput (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WC_E_SYNTAX ; 
- scalar_t__ XmlNodeType_Element ; 
- scalar_t__ XmlNodeType_None ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  set_input_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_eof_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ XmlNodeType ;
+typedef int IXmlReader ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ CreateXmlReader (int *,void**,int *) ;
+ int FALSE ;
+ int IID_IXmlReader ;
+ scalar_t__ IXmlReader_Read (int *,scalar_t__*) ;
+ int IXmlReader_Release (int *) ;
+ scalar_t__ IXmlReader_SetInput (int *,int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ scalar_t__ WC_E_SYNTAX ;
+ scalar_t__ XmlNodeType_Element ;
+ scalar_t__ XmlNodeType_None ;
+ int ok (int,char*,scalar_t__) ;
+ int set_input_string (int *,char*) ;
+ int test_eof_state (int *,int ) ;
 
 __attribute__((used)) static void test_endoffile(void)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static void test_endoffile(void)
     XmlNodeType type;
     HRESULT hr;
 
-    hr = CreateXmlReader(&IID_IXmlReader, (void **)&reader, NULL);
+    hr = CreateXmlReader(&IID_IXmlReader, (void **)&reader, ((void*)0));
     ok(hr == S_OK, "S_OK, got %08x\n", hr);
 
     test_eof_state(reader, FALSE);
@@ -60,14 +60,14 @@ __attribute__((used)) static void test_endoffile(void)
 
     test_eof_state(reader, TRUE);
 
-    hr = IXmlReader_SetInput(reader, NULL);
+    hr = IXmlReader_SetInput(reader, ((void*)0));
     ok(hr == S_OK, "got %08x\n", hr);
 
     test_eof_state(reader, FALSE);
 
     IXmlReader_Release(reader);
 
-    hr = CreateXmlReader(&IID_IXmlReader, (void **)&reader, NULL);
+    hr = CreateXmlReader(&IID_IXmlReader, (void **)&reader, ((void*)0));
     ok(hr == S_OK, "S_OK, got %08x\n", hr);
 
     set_input_string(reader, "<a/>text");
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_endoffile(void)
 
     test_eof_state(reader, FALSE);
 
-    hr = IXmlReader_SetInput(reader, NULL);
+    hr = IXmlReader_SetInput(reader, ((void*)0));
     ok(hr == S_OK, "got %08x\n", hr);
 
     IXmlReader_Release(reader);

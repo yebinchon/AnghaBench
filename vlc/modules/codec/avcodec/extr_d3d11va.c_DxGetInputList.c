@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vlc_va_t ;
-struct TYPE_9__ {int /*<<< orphan*/  d3ddec; } ;
-typedef  TYPE_2__ vlc_va_sys_t ;
-struct TYPE_10__ {unsigned int count; int /*<<< orphan*/ * list; int /*<<< orphan*/  (* pf_release ) (TYPE_3__*) ;} ;
-typedef  TYPE_3__ input_list_t ;
-typedef  unsigned int UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ vlc_va_t ;
+struct TYPE_9__ {int d3ddec; } ;
+typedef TYPE_2__ vlc_va_sys_t ;
+struct TYPE_10__ {unsigned int count; int * list; int (* pf_release ) (TYPE_3__*) ;} ;
+typedef TYPE_3__ input_list_t ;
+typedef unsigned int UINT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ID3D11VideoDevice_GetVideoDecoderProfile (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *) ; 
- unsigned int ID3D11VideoDevice_GetVideoDecoderProfileCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseInputList (TYPE_3__*) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/ * calloc (unsigned int,int) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,unsigned int,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int ID3D11VideoDevice_GetVideoDecoderProfile (int ,unsigned int,int *) ;
+ unsigned int ID3D11VideoDevice_GetVideoDecoderProfileCount (int ) ;
+ int ReleaseInputList (TYPE_3__*) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int * calloc (unsigned int,int) ;
+ int msg_Err (TYPE_1__*,char*,unsigned int,int ) ;
+ scalar_t__ unlikely (int ) ;
 
 __attribute__((used)) static int DxGetInputList(vlc_va_t *va, input_list_t *p_list)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static int DxGetInputList(vlc_va_t *va, input_list_t *p_li
 
     p_list->count = input_count;
     p_list->list = calloc(input_count, sizeof(*p_list->list));
-    if (unlikely(p_list->list == NULL)) {
+    if (unlikely(p_list->list == ((void*)0))) {
         return VLC_ENOMEM;
     }
     p_list->pf_release = ReleaseInputList;

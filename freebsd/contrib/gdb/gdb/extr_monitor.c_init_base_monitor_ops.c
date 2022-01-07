@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_rcmd; int /*<<< orphan*/  to_stop; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_load; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_close; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  monitor_close ; 
- int /*<<< orphan*/  monitor_create_inferior ; 
- int /*<<< orphan*/  monitor_detach ; 
- int /*<<< orphan*/  monitor_fetch_registers ; 
- int /*<<< orphan*/  monitor_files_info ; 
- int /*<<< orphan*/  monitor_insert_breakpoint ; 
- int /*<<< orphan*/  monitor_kill ; 
- int /*<<< orphan*/  monitor_load ; 
- int /*<<< orphan*/  monitor_mourn_inferior ; 
- TYPE_1__ monitor_ops ; 
- int /*<<< orphan*/  monitor_prepare_to_store ; 
- int /*<<< orphan*/  monitor_rcmd ; 
- int /*<<< orphan*/  monitor_remove_breakpoint ; 
- int /*<<< orphan*/  monitor_resume ; 
- int /*<<< orphan*/  monitor_stop ; 
- int /*<<< orphan*/  monitor_store_registers ; 
- int /*<<< orphan*/  monitor_wait ; 
- int /*<<< orphan*/  monitor_xfer_memory ; 
- int /*<<< orphan*/  process_stratum ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_magic; int to_stratum; int to_rcmd; int to_stop; int to_mourn_inferior; int to_create_inferior; int to_load; int to_kill; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_wait; int to_resume; int to_detach; int to_close; } ;
+
+
+ int OPS_MAGIC ;
+ int monitor_close ;
+ int monitor_create_inferior ;
+ int monitor_detach ;
+ int monitor_fetch_registers ;
+ int monitor_files_info ;
+ int monitor_insert_breakpoint ;
+ int monitor_kill ;
+ int monitor_load ;
+ int monitor_mourn_inferior ;
+ TYPE_1__ monitor_ops ;
+ int monitor_prepare_to_store ;
+ int monitor_rcmd ;
+ int monitor_remove_breakpoint ;
+ int monitor_resume ;
+ int monitor_stop ;
+ int monitor_store_registers ;
+ int monitor_wait ;
+ int monitor_xfer_memory ;
+ int process_stratum ;
 
 __attribute__((used)) static void
 init_base_monitor_ops (void)

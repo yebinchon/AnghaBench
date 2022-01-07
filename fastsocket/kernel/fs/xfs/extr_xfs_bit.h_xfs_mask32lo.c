@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int __uint32_t ;
 
-/* Variables and functions */
+
+
+
+typedef int __uint32_t ;
+
+
 
 __attribute__((used)) static inline __uint32_t xfs_mask32lo(int n)
 {
-	return ((__uint32_t)1 << (n)) - 1;
+ return ((__uint32_t)1 << (n)) - 1;
 }

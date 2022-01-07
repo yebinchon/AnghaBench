@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vm_operations_struct {int /*<<< orphan*/  (* close ) (struct vm_area_struct*) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vm_operations_struct {int (* close ) (struct vm_area_struct*) ;} ;
 struct vm_area_struct {TYPE_1__* vm_mm; struct vm_operations_struct* vm_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mmap_sem; } ;
+struct TYPE_2__ {int mmap_sem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPASS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- struct vm_area_struct* linux_cdev_handle_find (void*) ; 
- int /*<<< orphan*/  linux_cdev_handle_free (struct vm_area_struct*) ; 
- int /*<<< orphan*/  linux_cdev_handle_remove (struct vm_area_struct*) ; 
- int /*<<< orphan*/  stub1 (struct vm_area_struct*) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
+
+ int MPASS (int ) ;
+ int down_write (int *) ;
+ scalar_t__ likely (int ) ;
+ struct vm_area_struct* linux_cdev_handle_find (void*) ;
+ int linux_cdev_handle_free (struct vm_area_struct*) ;
+ int linux_cdev_handle_remove (struct vm_area_struct*) ;
+ int stub1 (struct vm_area_struct*) ;
+ int up_write (int *) ;
 
 __attribute__((used)) static void
 linux_cdev_pager_dtor(void *handle)
 {
-	const struct vm_operations_struct *vm_ops;
-	struct vm_area_struct *vmap;
+ const struct vm_operations_struct *vm_ops;
+ struct vm_area_struct *vmap;
 
-	vmap = linux_cdev_handle_find(handle);
-	MPASS(vmap != NULL);
+ vmap = linux_cdev_handle_find(handle);
+ MPASS(vmap != ((void*)0));
 
-	/*
-	 * Remove handle before calling close operation to prevent
-	 * other threads from reusing the handle pointer.
-	 */
-	linux_cdev_handle_remove(vmap);
 
-	down_write(&vmap->vm_mm->mmap_sem);
-	vm_ops = vmap->vm_ops;
-	if (likely(vm_ops != NULL))
-		vm_ops->close(vmap);
-	up_write(&vmap->vm_mm->mmap_sem);
 
-	linux_cdev_handle_free(vmap);
+
+
+ linux_cdev_handle_remove(vmap);
+
+ down_write(&vmap->vm_mm->mmap_sem);
+ vm_ops = vmap->vm_ops;
+ if (likely(vm_ops != ((void*)0)))
+  vm_ops->close(vmap);
+ up_write(&vmap->vm_mm->mmap_sem);
+
+ linux_cdev_handle_free(vmap);
 }

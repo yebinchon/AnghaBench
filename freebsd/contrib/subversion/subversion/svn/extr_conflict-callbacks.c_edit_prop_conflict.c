@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_1__ svn_cmdline_prompt_baton_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  merge_prop_conflict (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_editor (scalar_t__*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_string_create_from_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_from_file2 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_stringbuf_t ;
+typedef int svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {int cancel_baton; int cancel_func; } ;
+typedef TYPE_1__ svn_cmdline_prompt_baton_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int merge_prop_conflict (int *,int const*,int const*,int const*,int *,int ,int ,int *) ;
+ int open_editor (scalar_t__*,char const*,char const*,int *,int *) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ int svn_stream_close (int *) ;
+ int svn_stream_open_unique (int **,char const**,int *,int ,int *,int *) ;
+ int * svn_string_create_from_buf (int *,int *) ;
+ int svn_stringbuf_from_file2 (int **,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 edit_prop_conflict(const svn_string_t **merged_propval,
@@ -48,11 +48,11 @@ edit_prop_conflict(const svn_string_t **merged_propval,
   svn_boolean_t performed_edit = FALSE;
   svn_stream_t *merged_prop;
 
-  SVN_ERR(svn_stream_open_unique(&merged_prop, &file_path, NULL,
+  SVN_ERR(svn_stream_open_unique(&merged_prop, &file_path, ((void*)0),
                                  svn_io_file_del_on_pool_cleanup,
                                  scratch_pool, scratch_pool));
   SVN_ERR(merge_prop_conflict(merged_prop, base_propval, my_propval,
-                              their_propval, NULL,
+                              their_propval, ((void*)0),
                               pb->cancel_func,
                               pb->cancel_baton,
                               scratch_pool));
@@ -64,7 +64,7 @@ edit_prop_conflict(const svn_string_t **merged_propval,
       svn_stringbuf_t *buf;
 
       SVN_ERR(svn_stringbuf_from_file2(&buf, file_path, scratch_pool));
-      *merged_propval = svn_string_create_from_buf(buf, result_pool); 
+      *merged_propval = svn_string_create_from_buf(buf, result_pool);
     }
 
   return SVN_NO_ERROR;

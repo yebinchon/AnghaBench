@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dax_device {int /*<<< orphan*/  list; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DAXDEV_ALIVE ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dax_host_lock ; 
- int /*<<< orphan*/  dax_srcu ; 
- int /*<<< orphan*/  hlist_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  synchronize_srcu (int /*<<< orphan*/ *) ; 
+
+
+
+struct dax_device {int list; int flags; } ;
+
+
+ int DAXDEV_ALIVE ;
+ int clear_bit (int ,int *) ;
+ int dax_host_lock ;
+ int dax_srcu ;
+ int hlist_del_init (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int synchronize_srcu (int *) ;
 
 void kill_dax(struct dax_device *dax_dev)
 {
-	if (!dax_dev)
-		return;
+ if (!dax_dev)
+  return;
 
-	clear_bit(DAXDEV_ALIVE, &dax_dev->flags);
+ clear_bit(DAXDEV_ALIVE, &dax_dev->flags);
 
-	synchronize_srcu(&dax_srcu);
+ synchronize_srcu(&dax_srcu);
 
-	spin_lock(&dax_host_lock);
-	hlist_del_init(&dax_dev->list);
-	spin_unlock(&dax_host_lock);
+ spin_lock(&dax_host_lock);
+ hlist_del_init(&dax_dev->list);
+ spin_unlock(&dax_host_lock);
 }

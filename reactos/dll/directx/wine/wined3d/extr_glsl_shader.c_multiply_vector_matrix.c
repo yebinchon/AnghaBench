@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_vec4 {int x; int y; int z; int w; } ;
 struct wined3d_matrix {int _11; int _21; int _31; int _41; int _12; int _22; int _32; int _42; int _13; int _23; int _33; int _43; int _14; int _24; int _34; int _44; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void multiply_vector_matrix(struct wined3d_vec4 *dest, const struct wined3d_vec4 *src1,
         const struct wined3d_matrix *src2)

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_11__ {int custom_stride; int stride_warning_shown; int aligned_input; int /*<<< orphan*/  (* unpack_frame ) (int const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_1__ V210DecContext ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_11__ {int custom_stride; int stride_warning_shown; int aligned_input; int (* unpack_frame ) (int const*,int *,int *,int *,int) ;} ;
+typedef TYPE_1__ V210DecContext ;
 struct TYPE_14__ {int width; int height; scalar_t__ codec_tag; scalar_t__ field_order; TYPE_1__* priv_data; } ;
-struct TYPE_13__ {int key_frame; int* linesize; int interlaced_frame; int top_field_first; int /*<<< orphan*/  pict_type; scalar_t__* data; } ;
+struct TYPE_13__ {int key_frame; int* linesize; int interlaced_frame; int top_field_first; int pict_type; scalar_t__* data; } ;
 struct TYPE_12__ {char* data; int size; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_FIELD_PROGRESSIVE ; 
- scalar_t__ AV_FIELD_TB ; 
- scalar_t__ AV_FIELD_TT ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- scalar_t__ AV_RN32 (char const*) ; 
- scalar_t__ MKTAG (char,char,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READ_PIXELS (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int av_le2ne32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_v210dec_init (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (int const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_FIELD_PROGRESSIVE ;
+ scalar_t__ AV_FIELD_TB ;
+ scalar_t__ AV_FIELD_TT ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_PICTURE_TYPE_I ;
+ scalar_t__ AV_RN32 (char const*) ;
+ scalar_t__ MKTAG (char,char,char,int ) ;
+ int READ_PIXELS (int *,int *,int *) ;
+ int av_le2ne32 (int ) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int ff_v210dec_init (TYPE_1__*) ;
+ int stub1 (int const*,int *,int *,int *,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                         AVPacket *avpkt)
@@ -71,7 +71,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
             return AVERROR_INVALIDDATA;
         }
     }
-    if (   avctx->codec_tag == MKTAG('C', '2', '1', '0')
+    if ( avctx->codec_tag == MKTAG('C', '2', '1', '0')
         && avpkt->size > 64
         && AV_RN32(psrc) == AV_RN32("INFO")
         && avpkt->size - 64 >= stride * avctx->height)
@@ -115,14 +115,14 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         if (w < avctx->width - 1) {
             READ_PIXELS(u, y, v);
 
-            val  = av_le2ne32(*src++);
-            *y++ =  val & 0x3FF;
+            val = av_le2ne32(*src++);
+            *y++ = val & 0x3FF;
             if (w < avctx->width - 3) {
                 *u++ = (val >> 10) & 0x3FF;
                 *y++ = (val >> 20) & 0x3FF;
 
-                val  = av_le2ne32(*src++);
-                *v++ =  val & 0x3FF;
+                val = av_le2ne32(*src++);
+                *v++ = val & 0x3FF;
                 *y++ = (val >> 10) & 0x3FF;
             }
         }
@@ -134,13 +134,13 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
     }
 
     if (avctx->field_order > AV_FIELD_PROGRESSIVE) {
-        /* we have interlaced material flagged in container */
+
         pic->interlaced_frame = 1;
         if (avctx->field_order == AV_FIELD_TT || avctx->field_order == AV_FIELD_TB)
             pic->top_field_first = 1;
     }
 
-    *got_frame      = 1;
+    *got_frame = 1;
 
     return avpkt->size;
 }

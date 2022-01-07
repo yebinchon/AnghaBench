@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-struct TYPE_7__ {int /*<<< orphan*/  control; } ;
-struct TYPE_5__ {int member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {int enable; char* text; int text_size; int custom_text_Y; int custom_text_U; int custom_text_V; int custom_background_Y; int custom_background_U; int custom_background_V; unsigned int justify; unsigned int x_offset; unsigned int y_offset; int /*<<< orphan*/  hdr; void* custom_background_colour; void* custom_text_colour; void* enable_text_background; void* show_frame_num; void* show_motion; void* show_caf; void* show_lens; void* show_analog_gain; void* show_shutter; TYPE_1__ member_0; } ;
-typedef  TYPE_2__ MMAL_PARAMETER_CAMERA_ANNOTATE_V4_T ;
-typedef  TYPE_3__ MMAL_COMPONENT_T ;
+struct TYPE_7__ {int control; } ;
+struct TYPE_5__ {int member_1; int member_0; } ;
+struct TYPE_6__ {int enable; char* text; int text_size; int custom_text_Y; int custom_text_U; int custom_text_V; int custom_background_Y; int custom_background_U; int custom_background_V; unsigned int justify; unsigned int x_offset; unsigned int y_offset; int hdr; void* custom_background_colour; void* custom_text_colour; void* enable_text_background; void* show_frame_num; void* show_motion; void* show_caf; void* show_lens; void* show_analog_gain; void* show_shutter; TYPE_1__ member_0; } ;
+typedef TYPE_2__ MMAL_PARAMETER_CAMERA_ANNOTATE_V4_T ;
+typedef TYPE_3__ MMAL_COMPONENT_T ;
 
-/* Variables and functions */
- int const ANNOTATE_APP_TEXT ; 
- int const ANNOTATE_BLACK_BACKGROUND ; 
- int const ANNOTATE_CAF_SETTINGS ; 
- int const ANNOTATE_DATE_TEXT ; 
- int const ANNOTATE_FRAME_NUMBER ; 
- int const ANNOTATE_GAIN_SETTINGS ; 
- int const ANNOTATE_LENS_SETTINGS ; 
- int const ANNOTATE_MOTION_SETTINGS ; 
- int const ANNOTATE_SHUTTER_SETTINGS ; 
- int const ANNOTATE_TIME_TEXT ; 
- int const ANNOTATE_USER_TEXT ; 
- int MMAL_CAMERA_ANNOTATE_MAX_TEXT_LEN_V3 ; 
- int MMAL_CAMERA_ANNOTATE_MAX_TEXT_LEN_V4 ; 
- void* MMAL_FALSE ; 
- int /*<<< orphan*/  MMAL_PARAMETER_ANNOTATE ; 
- void* MMAL_TRUE ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_port_parameter_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int mmal_status_to_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- int /*<<< orphan*/  strftime (char*,int,char const*,struct tm*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncat (char*,char*,int) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int const ANNOTATE_APP_TEXT ;
+ int const ANNOTATE_BLACK_BACKGROUND ;
+ int const ANNOTATE_CAF_SETTINGS ;
+ int const ANNOTATE_DATE_TEXT ;
+ int const ANNOTATE_FRAME_NUMBER ;
+ int const ANNOTATE_GAIN_SETTINGS ;
+ int const ANNOTATE_LENS_SETTINGS ;
+ int const ANNOTATE_MOTION_SETTINGS ;
+ int const ANNOTATE_SHUTTER_SETTINGS ;
+ int const ANNOTATE_TIME_TEXT ;
+ int const ANNOTATE_USER_TEXT ;
+ int MMAL_CAMERA_ANNOTATE_MAX_TEXT_LEN_V3 ;
+ int MMAL_CAMERA_ANNOTATE_MAX_TEXT_LEN_V4 ;
+ void* MMAL_FALSE ;
+ int MMAL_PARAMETER_ANNOTATE ;
+ void* MMAL_TRUE ;
+ struct tm* localtime (int *) ;
+ int mmal_port_parameter_set (int ,int *) ;
+ int mmal_status_to_int (int ) ;
+ int * strchr (char const*,char) ;
+ int strftime (char*,int,char const*,struct tm*) ;
+ int strlen (char*) ;
+ int strncat (char*,char*,int) ;
+ int strncpy (char*,char const*,int) ;
+ int time (int *) ;
 
 int raspicamcontrol_set_annotate(MMAL_COMPONENT_T *camera, const int settings, const char *string,
                                  const int text_size, const int text_colour, const int bg_colour,
@@ -57,7 +57,7 @@ int raspicamcontrol_set_annotate(MMAL_COMPONENT_T *camera, const int settings, c
 
    if (settings)
    {
-      time_t t = time(NULL);
+      time_t t = time(((void*)0));
       struct tm tm = *localtime(&t);
       char tmp[MMAL_CAMERA_ANNOTATE_MAX_TEXT_LEN_V4];
       int process_datetime = 1;
@@ -66,9 +66,9 @@ int raspicamcontrol_set_annotate(MMAL_COMPONENT_T *camera, const int settings, c
 
       if (settings & (ANNOTATE_APP_TEXT | ANNOTATE_USER_TEXT))
       {
-         if ((settings & (ANNOTATE_TIME_TEXT | ANNOTATE_DATE_TEXT)) && strchr(string,'%') != NULL)
+         if ((settings & (ANNOTATE_TIME_TEXT | ANNOTATE_DATE_TEXT)) && strchr(string,'%') != ((void*)0))
          {
-            //string contains strftime parameter?
+
             strftime(annotate.text, MMAL_CAMERA_ANNOTATE_MAX_TEXT_LEN_V3, string, &tm );
             process_datetime = 0;
          }

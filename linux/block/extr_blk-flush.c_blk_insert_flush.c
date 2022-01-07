@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct request_queue {unsigned long queue_flags; } ;
-struct TYPE_2__ {int /*<<< orphan*/  saved_end_io; int /*<<< orphan*/  list; } ;
-struct request {scalar_t__ bio; scalar_t__ biotail; int /*<<< orphan*/  end_io; TYPE_1__ flush; int /*<<< orphan*/  rq_flags; int /*<<< orphan*/  cmd_flags; int /*<<< orphan*/  mq_ctx; struct request_queue* q; } ;
-struct blk_flush_queue {int /*<<< orphan*/  mq_flush_lock; } ;
+struct TYPE_2__ {int saved_end_io; int list; } ;
+struct request {scalar_t__ bio; scalar_t__ biotail; int end_io; TYPE_1__ flush; int rq_flags; int cmd_flags; int mq_ctx; struct request_queue* q; } ;
+struct blk_flush_queue {int mq_flush_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- unsigned long QUEUE_FLAG_FUA ; 
- unsigned int REQ_FSEQ_ACTIONS ; 
- unsigned int REQ_FSEQ_DATA ; 
- unsigned int REQ_FSEQ_POSTFLUSH ; 
- unsigned int REQ_FSEQ_PREFLUSH ; 
- int /*<<< orphan*/  REQ_FUA ; 
- int /*<<< orphan*/  REQ_PREFLUSH ; 
- int /*<<< orphan*/  REQ_SYNC ; 
- int /*<<< orphan*/  RQF_FLUSH_SEQ ; 
- int /*<<< orphan*/  blk_flush_complete_seq (struct request*,struct blk_flush_queue*,unsigned int,int /*<<< orphan*/ ) ; 
- unsigned int blk_flush_policy (unsigned long,struct request*) ; 
- struct blk_flush_queue* blk_get_flush_queue (struct request_queue*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_mq_end_request (struct request*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_mq_request_bypass_insert (struct request*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mq_flush_data_end_io ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int BUG_ON (int) ;
+ int INIT_LIST_HEAD (int *) ;
+ unsigned long QUEUE_FLAG_FUA ;
+ unsigned int REQ_FSEQ_ACTIONS ;
+ unsigned int REQ_FSEQ_DATA ;
+ unsigned int REQ_FSEQ_POSTFLUSH ;
+ unsigned int REQ_FSEQ_PREFLUSH ;
+ int REQ_FUA ;
+ int REQ_PREFLUSH ;
+ int REQ_SYNC ;
+ int RQF_FLUSH_SEQ ;
+ int blk_flush_complete_seq (struct request*,struct blk_flush_queue*,unsigned int,int ) ;
+ unsigned int blk_flush_policy (unsigned long,struct request*) ;
+ struct blk_flush_queue* blk_get_flush_queue (struct request_queue*,int ) ;
+ int blk_mq_end_request (struct request*,int ) ;
+ int blk_mq_request_bypass_insert (struct request*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int mq_flush_data_end_io ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 void blk_insert_flush(struct request *rq)
 {
-	struct request_queue *q = rq->q;
-	unsigned long fflags = q->queue_flags;	/* may change, cache */
-	unsigned int policy = blk_flush_policy(fflags, rq);
-	struct blk_flush_queue *fq = blk_get_flush_queue(q, rq->mq_ctx);
+ struct request_queue *q = rq->q;
+ unsigned long fflags = q->queue_flags;
+ unsigned int policy = blk_flush_policy(fflags, rq);
+ struct blk_flush_queue *fq = blk_get_flush_queue(q, rq->mq_ctx);
 
-	/*
-	 * @policy now records what operations need to be done.  Adjust
-	 * REQ_PREFLUSH and FUA for the driver.
-	 */
-	rq->cmd_flags &= ~REQ_PREFLUSH;
-	if (!(fflags & (1UL << QUEUE_FLAG_FUA)))
-		rq->cmd_flags &= ~REQ_FUA;
 
-	/*
-	 * REQ_PREFLUSH|REQ_FUA implies REQ_SYNC, so if we clear any
-	 * of those flags, we have to set REQ_SYNC to avoid skewing
-	 * the request accounting.
-	 */
-	rq->cmd_flags |= REQ_SYNC;
 
-	/*
-	 * An empty flush handed down from a stacking driver may
-	 * translate into nothing if the underlying device does not
-	 * advertise a write-back cache.  In this case, simply
-	 * complete the request.
-	 */
-	if (!policy) {
-		blk_mq_end_request(rq, 0);
-		return;
-	}
 
-	BUG_ON(rq->bio != rq->biotail); /*assumes zero or single bio rq */
 
-	/*
-	 * If there's data but flush is not necessary, the request can be
-	 * processed directly without going through flush machinery.  Queue
-	 * for normal execution.
-	 */
-	if ((policy & REQ_FSEQ_DATA) &&
-	    !(policy & (REQ_FSEQ_PREFLUSH | REQ_FSEQ_POSTFLUSH))) {
-		blk_mq_request_bypass_insert(rq, false);
-		return;
-	}
+ rq->cmd_flags &= ~REQ_PREFLUSH;
+ if (!(fflags & (1UL << QUEUE_FLAG_FUA)))
+  rq->cmd_flags &= ~REQ_FUA;
 
-	/*
-	 * @rq should go through flush machinery.  Mark it part of flush
-	 * sequence and submit for further processing.
-	 */
-	memset(&rq->flush, 0, sizeof(rq->flush));
-	INIT_LIST_HEAD(&rq->flush.list);
-	rq->rq_flags |= RQF_FLUSH_SEQ;
-	rq->flush.saved_end_io = rq->end_io; /* Usually NULL */
 
-	rq->end_io = mq_flush_data_end_io;
 
-	spin_lock_irq(&fq->mq_flush_lock);
-	blk_flush_complete_seq(rq, fq, REQ_FSEQ_ACTIONS & ~policy, 0);
-	spin_unlock_irq(&fq->mq_flush_lock);
+
+
+
+ rq->cmd_flags |= REQ_SYNC;
+
+
+
+
+
+
+
+ if (!policy) {
+  blk_mq_end_request(rq, 0);
+  return;
+ }
+
+ BUG_ON(rq->bio != rq->biotail);
+
+
+
+
+
+
+ if ((policy & REQ_FSEQ_DATA) &&
+     !(policy & (REQ_FSEQ_PREFLUSH | REQ_FSEQ_POSTFLUSH))) {
+  blk_mq_request_bypass_insert(rq, 0);
+  return;
+ }
+
+
+
+
+
+ memset(&rq->flush, 0, sizeof(rq->flush));
+ INIT_LIST_HEAD(&rq->flush.list);
+ rq->rq_flags |= RQF_FLUSH_SEQ;
+ rq->flush.saved_end_io = rq->end_io;
+
+ rq->end_io = mq_flush_data_end_io;
+
+ spin_lock_irq(&fq->mq_flush_lock);
+ blk_flush_complete_seq(rq, fq, REQ_FSEQ_ACTIONS & ~policy, 0);
+ spin_unlock_irq(&fq->mq_flush_lock);
 }

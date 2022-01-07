@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  AVIOInterruptCB ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXIT ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  FFMIN (scalar_t__,int) ; 
- int POLLING_TIME ; 
- scalar_t__ av_gettime_relative () ; 
- int /*<<< orphan*/  av_usleep (int /*<<< orphan*/ ) ; 
- scalar_t__ ff_check_interrupt (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ int64_t ;
+typedef int AVIOInterruptCB ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EXIT ;
+ int ETIMEDOUT ;
+ int FFMIN (scalar_t__,int) ;
+ int POLLING_TIME ;
+ scalar_t__ av_gettime_relative () ;
+ int av_usleep (int ) ;
+ scalar_t__ ff_check_interrupt (int *) ;
 
 int ff_network_sleep_interruptible(int64_t timeout, AVIOInterruptCB *int_cb)
 {

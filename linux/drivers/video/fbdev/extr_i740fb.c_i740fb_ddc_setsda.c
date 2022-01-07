@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i740fb_par {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDC_SDA ; 
- int /*<<< orphan*/  REG_DDC_DRIVE ; 
- int /*<<< orphan*/  REG_DDC_STATE ; 
- int /*<<< orphan*/  XRX ; 
- int /*<<< orphan*/  i740outreg_mask (struct i740fb_par*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DDC_SDA ;
+ int REG_DDC_DRIVE ;
+ int REG_DDC_STATE ;
+ int XRX ;
+ int i740outreg_mask (struct i740fb_par*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void i740fb_ddc_setsda(void *data, int val)
 {
-	struct i740fb_par *par = data;
+ struct i740fb_par *par = data;
 
-	i740outreg_mask(par, XRX, REG_DDC_DRIVE, DDC_SDA, DDC_SDA);
-	i740outreg_mask(par, XRX, REG_DDC_STATE, val ? DDC_SDA : 0, DDC_SDA);
+ i740outreg_mask(par, XRX, REG_DDC_DRIVE, DDC_SDA, DDC_SDA);
+ i740outreg_mask(par, XRX, REG_DDC_STATE, val ? DDC_SDA : 0, DDC_SDA);
 }

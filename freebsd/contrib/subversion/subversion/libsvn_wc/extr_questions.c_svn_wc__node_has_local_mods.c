@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int svn_wc__db_t ;
 struct TYPE_10__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_11__ {int ignore_unversioned; int found_mod; int /*<<< orphan*/  found_not_delete; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ modcheck_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+struct TYPE_11__ {int ignore_unversioned; int found_mod; int found_not_delete; int member_2; int member_1; int member_0; } ;
+typedef TYPE_2__ modcheck_baton_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_1__*) ; 
- scalar_t__ SVN_ERR_CEASE_INVOCATION ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  modcheck_callback ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_wc__db_has_db_mods (int*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc__internal_walk_status (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (TYPE_1__*) ;
+ scalar_t__ SVN_ERR_CEASE_INVOCATION ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int modcheck_callback ;
+ int svn_depth_infinity ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_wc__db_has_db_mods (int*,int *,char const*,int *) ;
+ TYPE_1__* svn_wc__internal_walk_status (int *,char const*,int ,int ,int ,int ,int *,int ,TYPE_2__*,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc__node_has_local_mods(svn_boolean_t *modified,
@@ -56,13 +56,13 @@ svn_wc__node_has_local_mods(svn_boolean_t *modified,
 
   modcheck_baton.ignore_unversioned = ignore_unversioned;
 
-  /* Walk the WC tree for status with depth infinity, looking for any local
-   * modifications. If it's a "sparse" directory, that's OK: there can be
-   * no local mods in the pieces that aren't present in the WC. */
+
+
+
 
   err = svn_wc__internal_walk_status(db, local_abspath,
                                      svn_depth_infinity,
-                                     FALSE, FALSE, FALSE, NULL,
+                                     FALSE, FALSE, FALSE, ((void*)0),
                                      modcheck_callback, &modcheck_baton,
                                      cancel_func, cancel_baton,
                                      scratch_pool);

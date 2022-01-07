@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tui_key_mode { ____Placeholder_tui_key_mode } tui_key_mode ;
 
-/* Variables and functions */
- int TUI_SINGLE_KEY_MODE ; 
- int /*<<< orphan*/  rl_set_keymap (int /*<<< orphan*/ ) ; 
- int tui_current_key_mode ; 
- int /*<<< orphan*/  tui_keymap ; 
- int /*<<< orphan*/  tui_readline_standard_keymap ; 
- int /*<<< orphan*/  tui_show_locator_content () ; 
+
+
+
+typedef enum tui_key_mode { ____Placeholder_tui_key_mode } tui_key_mode ;
+
+
+ int TUI_SINGLE_KEY_MODE ;
+ int rl_set_keymap (int ) ;
+ int tui_current_key_mode ;
+ int tui_keymap ;
+ int tui_readline_standard_keymap ;
+ int tui_show_locator_content () ;
 
 void
 tui_set_key_mode (enum tui_key_mode mode)

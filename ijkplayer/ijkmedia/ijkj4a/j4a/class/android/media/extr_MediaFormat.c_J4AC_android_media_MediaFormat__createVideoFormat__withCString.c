@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * jstring ;
-typedef  int /*<<< orphan*/ * jobject ;
-typedef  int /*<<< orphan*/  jint ;
-struct TYPE_7__ {int /*<<< orphan*/ * (* NewStringUTF ) (TYPE_1__**,char const*) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * J4AC_android_media_MediaFormat__createVideoFormat (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  J4A_DeleteLocalRef__p (TYPE_1__**,int /*<<< orphan*/ **) ; 
- scalar_t__ J4A_ExceptionCheck__throwAny (TYPE_1__**) ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__**,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int * jstring ;
+typedef int * jobject ;
+typedef int jint ;
+struct TYPE_7__ {int * (* NewStringUTF ) (TYPE_1__**,char const*) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ int * J4AC_android_media_MediaFormat__createVideoFormat (TYPE_1__**,int *,int ,int ) ;
+ int J4A_DeleteLocalRef__p (TYPE_1__**,int **) ;
+ scalar_t__ J4A_ExceptionCheck__throwAny (TYPE_1__**) ;
+ int * stub1 (TYPE_1__**,char const*) ;
 
 jobject J4AC_android_media_MediaFormat__createVideoFormat__withCString(JNIEnv *env, const char *mime_cstr__, jint width, jint height)
 {
-    jobject ret_object = NULL;
-    jstring mime = NULL;
+    jobject ret_object = ((void*)0);
+    jstring mime = ((void*)0);
 
     mime = (*env)->NewStringUTF(env, mime_cstr__);
     if (J4A_ExceptionCheck__throwAny(env) || !mime)
@@ -34,7 +34,7 @@ jobject J4AC_android_media_MediaFormat__createVideoFormat__withCString(JNIEnv *e
 
     ret_object = J4AC_android_media_MediaFormat__createVideoFormat(env, mime, width, height);
     if (J4A_ExceptionCheck__throwAny(env) || !ret_object) {
-        ret_object = NULL;
+        ret_object = ((void*)0);
         goto fail;
     }
 

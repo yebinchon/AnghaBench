@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * listen_socks ; 
- int num_listen_socks ; 
+ int close (int ) ;
+ int * listen_socks ;
+ int num_listen_socks ;
 
 __attribute__((used)) static void
 close_listen_socks(void)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < num_listen_socks; i++)
-		close(listen_socks[i]);
-	num_listen_socks = -1;
+ for (i = 0; i < num_listen_socks; i++)
+  close(listen_socks[i]);
+ num_listen_socks = -1;
 }

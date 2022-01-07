@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  long apr_off_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_INT_EQUAL (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int APR_FOPEN_CREATE ; 
- int APR_FOPEN_DELONCLOSE ; 
- int APR_FOPEN_EXCL ; 
- int APR_FOPEN_READ ; 
- int APR_FOPEN_TRUNCATE ; 
- int APR_FOPEN_WRITE ; 
- int /*<<< orphan*/  APR_SET ; 
- scalar_t__ APR_SUCCESS ; 
- scalar_t__ apr_file_mktemp (int /*<<< orphan*/ **,char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_file_puts (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_file_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,long*) ; 
+
+
+
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef long apr_off_t ;
+typedef int apr_file_t ;
+typedef int abts_case ;
+
+
+ int ABTS_INT_EQUAL (int *,scalar_t__,scalar_t__) ;
+ int APR_FOPEN_CREATE ;
+ int APR_FOPEN_DELONCLOSE ;
+ int APR_FOPEN_EXCL ;
+ int APR_FOPEN_READ ;
+ int APR_FOPEN_TRUNCATE ;
+ int APR_FOPEN_WRITE ;
+ int APR_SET ;
+ scalar_t__ APR_SUCCESS ;
+ scalar_t__ apr_file_mktemp (int **,char*,int,int *) ;
+ scalar_t__ apr_file_puts (char*,int *) ;
+ scalar_t__ apr_file_seek (int *,int ,long*) ;
 
 __attribute__((used)) static apr_status_t create_dummy_file(abts_case *tc, apr_pool_t *p,
                                       apr_file_t **fd)

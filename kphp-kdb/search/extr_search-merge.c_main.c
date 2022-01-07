@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- scalar_t__ MAX_CONNECTIONS ; 
- void* atoi (void*) ; 
- void* backlog ; 
- char* config_filename ; 
- int daemonize ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int getopt (int,char**,char*) ; 
- void* logname ; 
- scalar_t__ maxconn ; 
- int /*<<< orphan*/  open_file (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  parse_config () ; 
- int port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- scalar_t__ sdf ; 
- scalar_t__ server_socket (int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  settings_addr ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- void* username ; 
- int /*<<< orphan*/  verbosity ; 
+ void* BACKLOG ;
+ scalar_t__ MAX_CONNECTIONS ;
+ void* atoi (void*) ;
+ void* backlog ;
+ char* config_filename ;
+ int daemonize ;
+ int exit (int) ;
+ int fprintf (int ,char*,int) ;
+ int getopt (int,char**,char*) ;
+ void* logname ;
+ scalar_t__ maxconn ;
+ int open_file (int ,char*,int ) ;
+ void* optarg ;
+ int optind ;
+ int parse_config () ;
+ int port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ scalar_t__ sdf ;
+ scalar_t__ server_socket (int,int ,void*,int ) ;
+ int settings_addr ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int time (int ) ;
+ int usage () ;
+ void* username ;
+ int verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  eth_driver ;
-typedef  TYPE_1__* esp_eth_handle_t ;
-struct TYPE_6__ {int /*<<< orphan*/  check_link_timer; } ;
-typedef  TYPE_1__ esp_eth_driver_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  ETHERNET_EVENT_START ; 
- int /*<<< orphan*/  ETH_CHECK (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ETH_EVENT ; 
- int /*<<< orphan*/  err_event ; 
- int /*<<< orphan*/  err_start_timer ; 
- int /*<<< orphan*/  esp_eth_driver_uninstall (TYPE_1__*) ; 
- scalar_t__ esp_event_post (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__**,int,int /*<<< orphan*/ ) ; 
- scalar_t__ pdPASS ; 
- int /*<<< orphan*/  xTimerDelete (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ xTimerStart (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int eth_driver ;
+typedef TYPE_1__* esp_eth_handle_t ;
+struct TYPE_6__ {int check_link_timer; } ;
+typedef TYPE_1__ esp_eth_driver_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int ESP_FAIL ;
+ scalar_t__ ESP_OK ;
+ int ETHERNET_EVENT_START ;
+ int ETH_CHECK (int,char*,int ,int ) ;
+ int ETH_EVENT ;
+ int err_event ;
+ int err_start_timer ;
+ int esp_eth_driver_uninstall (TYPE_1__*) ;
+ scalar_t__ esp_event_post (int ,int ,TYPE_1__**,int,int ) ;
+ scalar_t__ pdPASS ;
+ int xTimerDelete (int ,int ) ;
+ scalar_t__ xTimerStart (int ,int ) ;
 
 esp_err_t esp_eth_driver_start(esp_eth_handle_t eth_handle)
 {

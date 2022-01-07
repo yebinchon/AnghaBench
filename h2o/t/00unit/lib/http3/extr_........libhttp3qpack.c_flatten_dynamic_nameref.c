@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct st_h2o_qpack_flatten_context_t {scalar_t__ largest_ref; scalar_t__ base_index; TYPE_2__* headers_buf; int /*<<< orphan*/  pool; } ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_6__ {int len; int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ h2o_iovec_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct st_h2o_qpack_flatten_context_t {scalar_t__ largest_ref; scalar_t__ base_index; TYPE_2__* headers_buf; int pool; } ;
+typedef scalar_t__ int64_t ;
+struct TYPE_6__ {int len; int base; } ;
+typedef TYPE_1__ h2o_iovec_t ;
 struct TYPE_7__ {int size; int* entries; } ;
 
-/* Variables and functions */
- int H2O_HPACK_ENCODE_INT_MAX_LENGTH ; 
- int /*<<< orphan*/  flatten_int (TYPE_2__*,scalar_t__,int) ; 
- int /*<<< orphan*/  flatten_string (TYPE_2__*,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  h2o_vector_reserve (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
+
+ int H2O_HPACK_ENCODE_INT_MAX_LENGTH ;
+ int flatten_int (TYPE_2__*,scalar_t__,int) ;
+ int flatten_string (TYPE_2__*,int ,int,int,int) ;
+ int h2o_vector_reserve (int ,TYPE_2__*,int) ;
 
 __attribute__((used)) static void flatten_dynamic_nameref(struct st_h2o_qpack_flatten_context_t *ctx, int64_t index, h2o_iovec_t value, int dont_compress)
 {

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct td {int dummy; } ;
 struct admhcd {int dummy; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void admhc_dump_td(const struct admhcd *ahcd, const char *label,
-	const struct td *td) {}
+ const struct td *td) {}

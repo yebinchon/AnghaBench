@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int parse_boolean (char const*) ; 
- scalar_t__ safe_atoi (char const*,int*) ; 
+ int parse_boolean (char const*) ;
+ scalar_t__ safe_atoi (char const*,int*) ;
 
 int parse_crash_chvt(const char *value, int *data) {
         int b;
@@ -26,9 +18,9 @@ int parse_crash_chvt(const char *value, int *data) {
                 return b;
 
         if (b > 0)
-                *data = 0; /* switch to where kmsg goes */
+                *data = 0;
         else
-                *data = -1; /* turn off switching */
+                *data = -1;
 
         return 0;
 }

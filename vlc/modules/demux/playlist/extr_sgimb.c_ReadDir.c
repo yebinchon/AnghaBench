@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  s; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
-struct TYPE_7__ {char* psz_uri; scalar_t__ i_port; char* psz_name; scalar_t__ b_rtsp_kasenna; scalar_t__ psz_mcast_ip; scalar_t__ i_packet_size; int /*<<< orphan*/  i_duration; int /*<<< orphan*/  i_sid; scalar_t__ b_concert; scalar_t__ psz_location; scalar_t__ psz_server; int /*<<< orphan*/  i_mcast_port; } ;
-typedef  TYPE_2__ demux_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ParseLine (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  VLC_INPUT_OPTION_TRUSTED ; 
- int VLC_SUCCESS ; 
- int asprintf (char**,char*,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  input_item_AddOption (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * input_item_NewStream (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_node_AppendItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- char* vlc_stream_ReadLine (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int s; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ stream_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+struct TYPE_7__ {char* psz_uri; scalar_t__ i_port; char* psz_name; scalar_t__ b_rtsp_kasenna; scalar_t__ psz_mcast_ip; scalar_t__ i_packet_size; int i_duration; int i_sid; scalar_t__ b_concert; scalar_t__ psz_location; scalar_t__ psz_server; int i_mcast_port; } ;
+typedef TYPE_2__ demux_sys_t ;
+
+
+ int ParseLine (TYPE_1__*,char*) ;
+ int VLC_INPUT_OPTION_TRUSTED ;
+ int VLC_SUCCESS ;
+ int asprintf (char**,char*,char*,...) ;
+ int free (char*) ;
+ int input_item_AddOption (int *,char*,int ) ;
+ int * input_item_NewStream (char*,char*,int ) ;
+ int input_item_Release (int *) ;
+ int input_item_node_AppendItem (int *,int *) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ char* vlc_stream_ReadLine (int ) ;
 
 __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *node )
 {
-    demux_sys_t     *p_sys = p_demux->p_sys;
-    input_item_t    *p_child = NULL;
-    char            *psz_line;
+    demux_sys_t *p_sys = p_demux->p_sys;
+    input_item_t *p_child = ((void*)0);
+    char *psz_line;
 
     while( ( psz_line = vlc_stream_ReadLine( p_demux->s ) ) )
     {
@@ -46,24 +46,24 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
 
     if( p_sys->psz_mcast_ip )
     {
-        /* Definetly schedules multicast session */
-        /* We don't care if it's live or not */
+
+
         free( p_sys->psz_uri );
         if( asprintf( &p_sys->psz_uri, "udp://@" "%s:%i", p_sys->psz_mcast_ip, p_sys->i_mcast_port ) == -1 )
         {
-            p_sys->psz_uri = NULL;
+            p_sys->psz_uri = ((void*)0);
             return -1;
         }
     }
 
-    if( p_sys->psz_uri == NULL )
+    if( p_sys->psz_uri == ((void*)0) )
     {
         if( p_sys->psz_server && p_sys->psz_location )
         {
             if( asprintf( &p_sys->psz_uri, "rtsp://" "%s:%i%s",
                      p_sys->psz_server, p_sys->i_port > 0 ? p_sys->i_port : 554, p_sys->psz_location ) == -1 )
             {
-                p_sys->psz_uri = NULL;
+                p_sys->psz_uri = ((void*)0);
                 return -1;
             }
         }
@@ -71,9 +71,9 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
 
     if( p_sys->b_concert )
     {
-        /* It's definetly a simulcasted scheduled stream */
-        /* We don't care if it's live or not */
-        if( p_sys->psz_uri == NULL )
+
+
+        if( p_sys->psz_uri == ((void*)0) )
         {
             msg_Err( p_demux, "no URI was found" );
             return -1;
@@ -89,7 +89,7 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
 
     p_child = input_item_NewStream( p_sys->psz_uri,
                       p_sys->psz_name ? p_sys->psz_name : p_sys->psz_uri,
-                      p_sys->i_duration  );
+                      p_sys->i_duration );
 
     if( !p_child )
     {

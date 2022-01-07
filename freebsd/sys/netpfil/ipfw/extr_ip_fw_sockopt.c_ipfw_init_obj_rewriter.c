@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * ctl3_rewriters ; 
- scalar_t__ ctl3_rsize ; 
+ int * ctl3_rewriters ;
+ scalar_t__ ctl3_rsize ;
 
 void
 ipfw_init_obj_rewriter()
 {
 
-	ctl3_rewriters = NULL;
-	ctl3_rsize = 0;
+ ctl3_rewriters = ((void*)0);
+ ctl3_rsize = 0;
 }

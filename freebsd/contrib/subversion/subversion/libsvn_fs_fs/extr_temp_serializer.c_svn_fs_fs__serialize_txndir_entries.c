@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_fs__dir_data_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * return_serialized_dir_context (int /*<<< orphan*/ ,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serialize_dir (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_fs_fs__dir_data_t ;
+typedef int svn_error_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ int TRUE ;
+ int * return_serialized_dir_context (int ,void**,int *,int ) ;
+ int serialize_dir (int *,int *) ;
 
 svn_error_t *
 svn_fs_fs__serialize_txndir_entries(void **data,
@@ -28,8 +28,8 @@ svn_fs_fs__serialize_txndir_entries(void **data,
 {
   svn_fs_fs__dir_data_t *dir = in;
 
-  /* serialize the dir content into a new serialization context
-   * and return the serialized data */
+
+
   return return_serialized_dir_context(serialize_dir(dir, pool),
                                        data,
                                        data_len,

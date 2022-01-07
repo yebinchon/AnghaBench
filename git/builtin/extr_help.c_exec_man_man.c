@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  execlp (char const*,char*,char const*,char*) ; 
- int /*<<< orphan*/  warning_errno (int /*<<< orphan*/ ,char const*) ; 
+ int _ (char*) ;
+ int execlp (char const*,char*,char const*,char*) ;
+ int warning_errno (int ,char const*) ;
 
 __attribute__((used)) static void exec_man_man(const char *path, const char *page)
 {
-	if (!path)
-		path = "man";
-	execlp(path, "man", page, (char *)NULL);
-	warning_errno(_("failed to exec '%s'"), path);
+ if (!path)
+  path = "man";
+ execlp(path, "man", page, (char *)((void*)0));
+ warning_errno(_("failed to exec '%s'"), path);
 }

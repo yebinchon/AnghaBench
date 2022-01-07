@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  void* u16 ;
-typedef  double i64 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef void* u16 ;
+typedef double i64 ;
 struct TYPE_4__ {void* mTime; void* mDate; } ;
-typedef  TYPE_1__ ZipfileCDS ;
+typedef TYPE_1__ ZipfileCDS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int zipfileMtime (TYPE_1__*) ; 
+
+ int assert (int) ;
+ int zipfileMtime (TYPE_1__*) ;
 
 __attribute__((used)) static void zipfileMtimeToDos(ZipfileCDS *pCds, u32 mUnixTime){
-  /* Convert unix timestamp to JD (2440588 is noon on 1/1/1970) */
+
   i64 JD = (i64)2440588 + mUnixTime / (24*60*60);
 
   int A, B, C, D, E;
@@ -51,9 +51,9 @@ __attribute__((used)) static void zipfileMtimeToDos(ZipfileCDS *pCds, u32 mUnixT
     pCds->mDate = pCds->mTime = 0;
   }
 
-  assert( mUnixTime<315507600 
-       || mUnixTime==zipfileMtime(pCds) 
-       || ((mUnixTime % 2) && mUnixTime-1==zipfileMtime(pCds)) 
-       /* || (mUnixTime % 2) */
+  assert( mUnixTime<315507600
+       || mUnixTime==zipfileMtime(pCds)
+       || ((mUnixTime % 2) && mUnixTime-1==zipfileMtime(pCds))
+
   );
 }

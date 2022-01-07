@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct md_rdev {TYPE_1__* bdev; } ;
-typedef  int sector_t ;
-struct TYPE_2__ {int /*<<< orphan*/  bd_inode; } ;
+typedef int sector_t ;
+struct TYPE_2__ {int bd_inode; } ;
 
-/* Variables and functions */
- int MD_NEW_SIZE_SECTORS (int) ; 
- int i_size_read (int /*<<< orphan*/ ) ; 
+
+ int MD_NEW_SIZE_SECTORS (int) ;
+ int i_size_read (int ) ;
 
 __attribute__((used)) static inline sector_t calc_dev_sboffset(struct md_rdev *rdev)
 {
-	sector_t num_sectors = i_size_read(rdev->bdev->bd_inode) / 512;
-	return MD_NEW_SIZE_SECTORS(num_sectors);
+ sector_t num_sectors = i_size_read(rdev->bdev->bd_inode) / 512;
+ return MD_NEW_SIZE_SECTORS(num_sectors);
 }

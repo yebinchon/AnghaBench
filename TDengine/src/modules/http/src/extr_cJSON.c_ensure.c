@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* deallocate ) (unsigned char*) ;scalar_t__ (* allocate ) (size_t) ;scalar_t__ (* reallocate ) (unsigned char*,size_t) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* deallocate ) (unsigned char*) ;scalar_t__ (* allocate ) (size_t) ;scalar_t__ (* reallocate ) (unsigned char*,size_t) ;} ;
 struct TYPE_5__ {unsigned char* buffer; size_t length; size_t offset; TYPE_1__ hooks; scalar_t__ noalloc; } ;
-typedef  TYPE_2__ printbuffer ;
+typedef TYPE_2__ printbuffer ;
 
-/* Variables and functions */
- size_t LLONG_MAX ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- scalar_t__ stub1 (unsigned char*,size_t) ; 
- int /*<<< orphan*/  stub2 (unsigned char*) ; 
- scalar_t__ stub3 (size_t) ; 
- int /*<<< orphan*/  stub4 (unsigned char*) ; 
- int /*<<< orphan*/  stub5 (unsigned char*) ; 
+
+ size_t LLONG_MAX ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ scalar_t__ stub1 (unsigned char*,size_t) ;
+ int stub2 (unsigned char*) ;
+ scalar_t__ stub3 (size_t) ;
+ int stub4 (unsigned char*) ;
+ int stub5 (unsigned char*) ;
 
 __attribute__((used)) static unsigned char* ensure(printbuffer * const p, size_t needed)
 {
-    unsigned char *newbuffer = NULL;
+    unsigned char *newbuffer = ((void*)0);
     size_t newsize = 0;
 
-    if ((p == NULL) || (p->buffer == NULL))
+    if ((p == ((void*)0)) || (p->buffer == ((void*)0)))
     {
-        return NULL;
+        return ((void*)0);
     }
 
     if ((p->length > 0) && (p->offset >= p->length))
     {
-        /* make sure that offset is valid */
-        return NULL;
+
+        return ((void*)0);
     }
 
     if (needed > LLONG_MAX)
     {
-        /* sizes bigger than LLONG_MAX are currently not supported */
-        return NULL;
+
+        return ((void*)0);
     }
 
     needed += p->offset + 1;
@@ -54,20 +54,20 @@ __attribute__((used)) static unsigned char* ensure(printbuffer * const p, size_t
     }
 
     if (p->noalloc) {
-        return NULL;
+        return ((void*)0);
     }
 
-    /* calculate new buffer size */
+
     if (needed > (LLONG_MAX / 2))
     {
-        /* overflow of int, use LLONG_MAX if possible */
+
         if (needed <= LLONG_MAX)
         {
             newsize = LLONG_MAX;
         }
         else
         {
-            return NULL;
+            return ((void*)0);
         }
     }
     else
@@ -75,30 +75,30 @@ __attribute__((used)) static unsigned char* ensure(printbuffer * const p, size_t
         newsize = needed * 2;
     }
 
-    if (p->hooks.reallocate != NULL)
+    if (p->hooks.reallocate != ((void*)0))
     {
-        /* reallocate with realloc if available */
+
         newbuffer = (unsigned char*)p->hooks.reallocate(p->buffer, newsize);
-        if (newbuffer == NULL)
+        if (newbuffer == ((void*)0))
         {
             p->hooks.deallocate(p->buffer);
             p->length = 0;
-            p->buffer = NULL;
+            p->buffer = ((void*)0);
 
-            return NULL;
+            return ((void*)0);
         }
     }
     else
     {
-        /* otherwise reallocate manually */
+
         newbuffer = (unsigned char*)p->hooks.allocate(newsize);
         if (!newbuffer)
         {
             p->hooks.deallocate(p->buffer);
             p->length = 0;
-            p->buffer = NULL;
+            p->buffer = ((void*)0);
 
-            return NULL;
+            return ((void*)0);
         }
         if (newbuffer)
         {

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
-typedef  scalar_t__ DeviceAction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- scalar_t__ device_get_action (int /*<<< orphan*/ *,scalar_t__*) ; 
+
+
+
+typedef int sd_device ;
+typedef scalar_t__ DeviceAction ;
+
+
+ int assert (int *) ;
+ scalar_t__ device_get_action (int *,scalar_t__*) ;
 
 bool device_for_action(sd_device *dev, DeviceAction action) {
         DeviceAction a;
@@ -23,7 +23,7 @@ bool device_for_action(sd_device *dev, DeviceAction action) {
         assert(dev);
 
         if (device_get_action(dev, &a) < 0)
-                return false;
+                return 0;
 
         return a == action;
 }

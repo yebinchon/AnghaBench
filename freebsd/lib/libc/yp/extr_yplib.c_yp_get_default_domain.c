@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  YPLOCK () ; 
- int /*<<< orphan*/  YPUNLOCK () ; 
- int yp_get_default_domain_locked (char**) ; 
+ int YPLOCK () ;
+ int YPUNLOCK () ;
+ int yp_get_default_domain_locked (char**) ;
 
 int
 yp_get_default_domain(char **domp)
 {
-	int r;
+ int r;
 
-	YPLOCK();
-	r = yp_get_default_domain_locked(domp);
-	YPUNLOCK();
-	return (r);
+ YPLOCK();
+ r = yp_get_default_domain_locked(domp);
+ YPUNLOCK();
+ return (r);
 }

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DrawSprite (scalar_t__,int) ; 
- scalar_t__ HighPreSpr ; 
- int PDRAW_DIRTY_SPRITES ; 
- int PDRAW_SPRITES_MOVED ; 
- int /*<<< orphan*/  PrepareSprites (int) ; 
- int rendstatus ; 
+ int DrawSprite (scalar_t__,int) ;
+ scalar_t__ HighPreSpr ;
+ int PDRAW_DIRTY_SPRITES ;
+ int PDRAW_SPRITES_MOVED ;
+ int PrepareSprites (int) ;
+ int rendstatus ;
 
 __attribute__((used)) static void DrawAllSprites(unsigned char *sprited, int prio, int sh)
 {
@@ -26,7 +18,7 @@ __attribute__((used)) static void DrawAllSprites(unsigned char *sprited, int pri
   int cnt;
 
   if (rs & (PDRAW_SPRITES_MOVED|PDRAW_DIRTY_SPRITES)) {
-    //elprintf(EL_STATUS, "PrepareSprites(%i)", (rs>>4)&1);
+
     PrepareSprites(rs & PDRAW_DIRTY_SPRITES);
     rendstatus = rs & ~(PDRAW_SPRITES_MOVED|PDRAW_DIRTY_SPRITES);
   }
@@ -36,7 +28,7 @@ __attribute__((used)) static void DrawAllSprites(unsigned char *sprited, int pri
 
   p = &sprited[3];
 
-  // Go through sprites backwards:
+
   for (cnt--; cnt >= 0; cnt--)
   {
     int offs;

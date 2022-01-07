@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ALCenum ;
-typedef  int /*<<< orphan*/  ALCdevice ;
 
-/* Variables and functions */
-#define  ALC_INVALID_CONTEXT 133 
-#define  ALC_INVALID_DEVICE 132 
-#define  ALC_INVALID_ENUM 131 
-#define  ALC_INVALID_VALUE 130 
-#define  ALC_NO_ERROR 129 
-#define  ALC_OUT_OF_MEMORY 128 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENODEV ; 
- int /*<<< orphan*/  ENOMEM ; 
- int alcGetError (int /*<<< orphan*/ *) ; 
- scalar_t__ alcGetString (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ALCenum ;
+typedef int ALCdevice ;
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int EIO ;
+ int ENODEV ;
+ int ENOMEM ;
+ int alcGetError (int *) ;
+ scalar_t__ alcGetString (int *,int) ;
 
 __attribute__((used)) static inline int al_get_error(ALCdevice *device, const char** error_msg_ret)
 {
@@ -34,17 +26,17 @@ __attribute__((used)) static inline int al_get_error(ALCdevice *device, const ch
     if (error_msg_ret)
         *error_msg_ret = (const char*) alcGetString(device, error);
     switch (error) {
-    case ALC_NO_ERROR:
+    case 129:
         return 0;
-    case ALC_INVALID_DEVICE:
+    case 132:
         return AVERROR(ENODEV);
         break;
-    case ALC_INVALID_CONTEXT:
-    case ALC_INVALID_ENUM:
-    case ALC_INVALID_VALUE:
+    case 133:
+    case 131:
+    case 130:
         return AVERROR(EINVAL);
         break;
-    case ALC_OUT_OF_MEMORY:
+    case 128:
         return AVERROR(ENOMEM);
         break;
     default:

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fp_prec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __fpsetprec (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fp_prec_t ;
+
+
+ int __fpsetprec (int ) ;
 
 fp_prec_t fpsetprec(fp_prec_t m)
 {
-	return (__fpsetprec(m));
+ return (__fpsetprec(m));
 }

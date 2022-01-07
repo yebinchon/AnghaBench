@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  logout; int /*<<< orphan*/  hangup; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int logout; int hangup; } ;
 struct TYPE_6__ {TYPE_2__ script; } ;
 struct TYPE_4__ {scalar_t__ run; } ;
-struct datalink {int stayonline; scalar_t__ state; TYPE_3__ cfg; int /*<<< orphan*/  chat; TYPE_1__ script; int /*<<< orphan*/  physical; } ;
+struct datalink {int stayonline; scalar_t__ state; TYPE_3__ cfg; int chat; TYPE_1__ script; int physical; } ;
 
-/* Variables and functions */
- int CLOSE_LCP ; 
- int CLOSE_STAYDOWN ; 
- scalar_t__ DATALINK_CLOSED ; 
- scalar_t__ DATALINK_HANGUP ; 
- scalar_t__ DATALINK_LOGOUT ; 
- scalar_t__ DATALINK_OPENING ; 
- scalar_t__ DATALINK_READY ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  chat_Setup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  datalink_DontHangup (struct datalink*) ; 
- int /*<<< orphan*/  datalink_HangupDone (struct datalink*) ; 
- int /*<<< orphan*/  datalink_NewState (struct datalink*,scalar_t__) ; 
- int /*<<< orphan*/  datalink_StayDown (struct datalink*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  physical_Offline (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  physical_StopDeviceTimer (int /*<<< orphan*/ ) ; 
+
+ int CLOSE_LCP ;
+ int CLOSE_STAYDOWN ;
+ scalar_t__ DATALINK_CLOSED ;
+ scalar_t__ DATALINK_HANGUP ;
+ scalar_t__ DATALINK_LOGOUT ;
+ scalar_t__ DATALINK_OPENING ;
+ scalar_t__ DATALINK_READY ;
+ int LogWARN ;
+ int chat_Setup (int *,int ,int *) ;
+ int datalink_DontHangup (struct datalink*) ;
+ int datalink_HangupDone (struct datalink*) ;
+ int datalink_NewState (struct datalink*,scalar_t__) ;
+ int datalink_StayDown (struct datalink*) ;
+ int log_Printf (int ,char*) ;
+ int physical_Offline (int ) ;
+ int physical_StopDeviceTimer (int ) ;
 
 void
 datalink_ComeDown(struct datalink *dl, int how)
@@ -57,11 +57,11 @@ datalink_ComeDown(struct datalink *dl, int how)
     if (dl->script.run && dl->state != DATALINK_OPENING) {
       if (dl->state == DATALINK_LOGOUT) {
         datalink_NewState(dl, DATALINK_HANGUP);
-        if (!chat_Setup(&dl->chat, dl->cfg.script.hangup, NULL))
+        if (!chat_Setup(&dl->chat, dl->cfg.script.hangup, ((void*)0)))
           log_Printf(LogWARN, "Invalid hangup script\n");
       } else {
         datalink_NewState(dl, DATALINK_LOGOUT);
-        if (!chat_Setup(&dl->chat, dl->cfg.script.logout, NULL))
+        if (!chat_Setup(&dl->chat, dl->cfg.script.logout, ((void*)0)))
           log_Printf(LogWARN, "Invalid logout script\n");
       }
     } else

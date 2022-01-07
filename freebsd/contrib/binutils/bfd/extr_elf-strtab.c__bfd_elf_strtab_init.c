@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct elf_strtab_hasn_entry {int dummy; } ;
 struct elf_strtab_hash_entry {int dummy; } ;
-struct elf_strtab_hash {int size; int alloced; int /*<<< orphan*/ ** array; scalar_t__ sec_size; int /*<<< orphan*/  table; } ;
-typedef  int bfd_size_type ;
+struct elf_strtab_hash {int size; int alloced; int ** array; scalar_t__ sec_size; int table; } ;
+typedef int bfd_size_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfd_hash_table_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- void* bfd_malloc (int) ; 
- int /*<<< orphan*/  elf_strtab_hash_newfunc ; 
- int /*<<< orphan*/  free (struct elf_strtab_hash*) ; 
+
+ int bfd_hash_table_init (int *,int ,int) ;
+ void* bfd_malloc (int) ;
+ int elf_strtab_hash_newfunc ;
+ int free (struct elf_strtab_hash*) ;
 
 struct elf_strtab_hash *
 _bfd_elf_strtab_init (void)
@@ -28,14 +28,14 @@ _bfd_elf_strtab_init (void)
   bfd_size_type amt = sizeof (struct elf_strtab_hash);
 
   table = bfd_malloc (amt);
-  if (table == NULL)
-    return NULL;
+  if (table == ((void*)0))
+    return ((void*)0);
 
   if (!bfd_hash_table_init (&table->table, elf_strtab_hash_newfunc,
-			    sizeof (struct elf_strtab_hash_entry)))
+       sizeof (struct elf_strtab_hash_entry)))
     {
       free (table);
-      return NULL;
+      return ((void*)0);
     }
 
   table->sec_size = 0;
@@ -43,13 +43,13 @@ _bfd_elf_strtab_init (void)
   table->alloced = 64;
   amt = sizeof (struct elf_strtab_hasn_entry *);
   table->array = bfd_malloc (table->alloced * amt);
-  if (table->array == NULL)
+  if (table->array == ((void*)0))
     {
       free (table);
-      return NULL;
+      return ((void*)0);
     }
 
-  table->array[0] = NULL;
+  table->array[0] = ((void*)0);
 
   return table;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ completion_vtab ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int sqlite3_declare_vtab (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* sqlite3_malloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+struct TYPE_4__ {int * db; } ;
+typedef TYPE_1__ completion_vtab ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3_declare_vtab (int *,char*) ;
+ TYPE_1__* sqlite3_malloc (int) ;
 
 __attribute__((used)) static int completionConnect(
   sqlite3 *db,
@@ -33,23 +33,23 @@ __attribute__((used)) static int completionConnect(
   completion_vtab *pNew;
   int rc;
 
-  (void)(pAux);    /* Unused parameter */
-  (void)(argc);    /* Unused parameter */
-  (void)(argv);    /* Unused parameter */
-  (void)(pzErr);   /* Unused parameter */
+  (void)(pAux);
+  (void)(argc);
+  (void)(argv);
+  (void)(pzErr);
 
-/* Column numbers */
-#define COMPLETION_COLUMN_CANDIDATE 0  /* Suggested completion of the input */
-#define COMPLETION_COLUMN_PREFIX    1  /* Prefix of the word to be completed */
-#define COMPLETION_COLUMN_WHOLELINE 2  /* Entire line seen so far */
-#define COMPLETION_COLUMN_PHASE     3  /* ePhase - used for debugging only */
+
+
+
+
+
 
   rc = sqlite3_declare_vtab(db,
       "CREATE TABLE x("
       "  candidate TEXT,"
       "  prefix TEXT HIDDEN,"
       "  wholeline TEXT HIDDEN,"
-      "  phase INT HIDDEN"        /* Used for debugging only */
+      "  phase INT HIDDEN"
       ")");
   if( rc==SQLITE_OK ){
     pNew = sqlite3_malloc( sizeof(*pNew) );

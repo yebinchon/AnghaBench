@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* pkey; TYPE_3__* data; } ;
-struct TYPE_10__ {scalar_t__ pad_mode; unsigned char* tbuf; int /*<<< orphan*/  mgf1md; int /*<<< orphan*/  md; int /*<<< orphan*/  oaep_labellen; int /*<<< orphan*/  oaep_label; } ;
-struct TYPE_8__ {int /*<<< orphan*/  rsa; } ;
+struct TYPE_10__ {scalar_t__ pad_mode; unsigned char* tbuf; int mgf1md; int md; int oaep_labellen; int oaep_label; } ;
+struct TYPE_8__ {int rsa; } ;
 struct TYPE_9__ {TYPE_1__ pkey; } ;
-typedef  TYPE_3__ RSA_PKEY_CTX ;
-typedef  TYPE_4__ EVP_PKEY_CTX ;
+typedef TYPE_3__ RSA_PKEY_CTX ;
+typedef TYPE_4__ EVP_PKEY_CTX ;
 
-/* Variables and functions */
- scalar_t__ RSA_NO_PADDING ; 
- scalar_t__ RSA_PKCS1_OAEP_PADDING ; 
- int RSA_padding_check_PKCS1_OAEP_mgf1 (unsigned char*,int,unsigned char*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int RSA_private_decrypt (size_t,unsigned char const*,unsigned char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  constant_time_msb (int) ; 
- int /*<<< orphan*/  constant_time_msb_s (int) ; 
- int constant_time_select_int (int /*<<< orphan*/ ,int,int) ; 
- size_t constant_time_select_s (int /*<<< orphan*/ ,size_t,int) ; 
- int /*<<< orphan*/  setup_tbuf (TYPE_3__*,TYPE_4__*) ; 
+
+ scalar_t__ RSA_NO_PADDING ;
+ scalar_t__ RSA_PKCS1_OAEP_PADDING ;
+ int RSA_padding_check_PKCS1_OAEP_mgf1 (unsigned char*,int,unsigned char*,int,int,int ,int ,int ,int ) ;
+ int RSA_private_decrypt (size_t,unsigned char const*,unsigned char*,int ,scalar_t__) ;
+ int constant_time_msb (int) ;
+ int constant_time_msb_s (int) ;
+ int constant_time_select_int (int ,int,int) ;
+ size_t constant_time_select_s (int ,size_t,int) ;
+ int setup_tbuf (TYPE_3__*,TYPE_4__*) ;
 
 __attribute__((used)) static int pkey_rsa_decrypt(EVP_PKEY_CTX *ctx,
                             unsigned char *out, size_t *outlen,

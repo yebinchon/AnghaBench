@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ WSPacket ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int size; int data; int type; } ;
+typedef TYPE_2__ WSPacket ;
 struct TYPE_7__ {TYPE_1__* headers; } ;
-typedef  TYPE_3__ WSClient ;
-struct TYPE_5__ {int /*<<< orphan*/ * ws_accept; } ;
+typedef TYPE_3__ WSClient ;
+struct TYPE_5__ {int * ws_accept; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ws_send_data (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ws_send_data (TYPE_3__*,int ,int ,int ) ;
 
 __attribute__((used)) static int
 ws_broadcast_fifo (void *value, void *user_data)
@@ -28,10 +28,10 @@ ws_broadcast_fifo (void *value, void *user_data)
   WSClient *client = value;
   WSPacket *packet = user_data;
 
-  if (client == NULL || user_data == NULL)
+  if (client == ((void*)0) || user_data == ((void*)0))
     return 1;
-  /* no handshake for this client */
-  if (client->headers == NULL || client->headers->ws_accept == NULL)
+
+  if (client->headers == ((void*)0) || client->headers->ws_accept == ((void*)0))
     return 1;
 
   ws_send_data (client, packet->type, packet->data, packet->size);

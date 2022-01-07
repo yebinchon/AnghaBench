@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  esp_vhci_host_send_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hci_cmd_buf ; 
- int /*<<< orphan*/  make_cmd_ble_set_adv_data (int /*<<< orphan*/ ,int,int*) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int esp_vhci_host_send_packet (int ,int ) ;
+ int hci_cmd_buf ;
+ int make_cmd_ble_set_adv_data (int ,int,int*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void hci_cmd_send_ble_set_adv_data(void)
 {

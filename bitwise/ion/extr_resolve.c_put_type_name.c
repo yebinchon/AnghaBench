@@ -1,41 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {size_t num_fields; TYPE_2__* fields; } ;
-struct TYPE_8__ {size_t num_params; TYPE_4__* ret; int /*<<< orphan*/  has_varargs; TYPE_4__** params; } ;
-struct TYPE_11__ {size_t kind; TYPE_3__ aggregate; TYPE_1__ func; int /*<<< orphan*/  num_elems; struct TYPE_11__* base; TYPE_7__* sym; } ;
-typedef  TYPE_4__ Type ;
-struct TYPE_12__ {int /*<<< orphan*/  name; } ;
+struct TYPE_8__ {size_t num_params; TYPE_4__* ret; int has_varargs; TYPE_4__** params; } ;
+struct TYPE_11__ {size_t kind; TYPE_3__ aggregate; TYPE_1__ func; int num_elems; struct TYPE_11__* base; TYPE_7__* sym; } ;
+typedef TYPE_4__ Type ;
+struct TYPE_12__ {int name; } ;
 struct TYPE_9__ {TYPE_4__* type; } ;
-
-/* Variables and functions */
-#define  TYPE_ARRAY 136 
-#define  TYPE_CONST 135 
-#define  TYPE_ENUM 134 
-#define  TYPE_FUNC 133 
-#define  TYPE_INCOMPLETE 132 
-#define  TYPE_PTR 131 
-#define  TYPE_STRUCT 130 
-#define  TYPE_TUPLE 129 
-#define  TYPE_UNION 128 
- int /*<<< orphan*/  assert (TYPE_7__*) ; 
- int /*<<< orphan*/  buf_printf (char*,char*,...) ; 
- char** type_names ; 
- TYPE_4__* type_void ; 
+ int assert (TYPE_7__*) ;
+ int buf_printf (char*,char*,...) ;
+ char** type_names ;
+ TYPE_4__* type_void ;
 
 void put_type_name(char **buf, Type *type) {
     const char *type_name = type_names[type->kind];
@@ -43,26 +32,26 @@ void put_type_name(char **buf, Type *type) {
         buf_printf(*buf, "%s", type_name);
     } else {
         switch (type->kind) {
-        case TYPE_STRUCT:
-        case TYPE_UNION:
-        case TYPE_ENUM:
-        case TYPE_INCOMPLETE:
+        case 130:
+        case 128:
+        case 134:
+        case 132:
             assert(type->sym);
             buf_printf(*buf, "%s", type->sym->name);
             break;
-        case TYPE_CONST:
+        case 135:
             put_type_name(buf, type->base);
             buf_printf(*buf, " const");
             break;
-        case TYPE_PTR:
+        case 131:
             put_type_name(buf, type->base);
             buf_printf(*buf, "*");
             break;
-        case TYPE_ARRAY:
+        case 136:
             put_type_name(buf, type->base);
             buf_printf(*buf, "[%zu]", type->num_elems);
             break;
-        case TYPE_FUNC:
+        case 133:
             buf_printf(*buf, "func(");
             for (size_t i = 0; i < type->func.num_params; i++) {
                 if (i != 0) {
@@ -79,7 +68,7 @@ void put_type_name(char **buf, Type *type) {
                 put_type_name(buf, type->func.ret);
             }
             break;
-        case TYPE_TUPLE:
+        case 129:
             buf_printf(*buf, "{");
             for (size_t i = 0; i < type->aggregate.num_fields; i++) {
                 if (i != 0) {

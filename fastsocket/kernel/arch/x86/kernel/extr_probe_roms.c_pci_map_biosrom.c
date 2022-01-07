@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct resource {int /*<<< orphan*/  start; } ;
+
+
+
+
+struct resource {int start; } ;
 struct pci_dev {int dummy; } ;
 
-/* Variables and functions */
- struct resource* find_oprom (struct pci_dev*) ; 
- void* ioremap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resource_size (struct resource*) ; 
+
+ struct resource* find_oprom (struct pci_dev*) ;
+ void* ioremap (int ,int ) ;
+ int resource_size (struct resource*) ;
 
 void *pci_map_biosrom(struct pci_dev *pdev)
 {
-	struct resource *oprom = find_oprom(pdev);
+ struct resource *oprom = find_oprom(pdev);
 
-	if (!oprom)
-		return NULL;
+ if (!oprom)
+  return ((void*)0);
 
-	return ioremap(oprom->start, resource_size(oprom));
+ return ioremap(oprom->start, resource_size(oprom));
 }

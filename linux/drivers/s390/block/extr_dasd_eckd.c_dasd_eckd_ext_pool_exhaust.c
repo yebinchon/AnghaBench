@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ext_pool_exhaust_work_data {int /*<<< orphan*/  worker; int /*<<< orphan*/ * base; struct dasd_device* device; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ext_pool_exhaust_work_data {int worker; int * base; struct dasd_device* device; } ;
 struct dasd_device {int dummy; } ;
-struct dasd_ccw_req {int /*<<< orphan*/ * basedev; TYPE_1__* block; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * base; } ;
+struct dasd_ccw_req {int * basedev; TYPE_1__* block; } ;
+struct TYPE_2__ {int * base; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  INIT_WORK (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dasd_eckd_ext_pool_exhaust_work ; 
- int /*<<< orphan*/  dasd_get_device (struct dasd_device*) ; 
- struct ext_pool_exhaust_work_data* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+ int INIT_WORK (int *,int ) ;
+ int dasd_eckd_ext_pool_exhaust_work ;
+ int dasd_get_device (struct dasd_device*) ;
+ struct ext_pool_exhaust_work_data* kzalloc (int,int ) ;
+ int schedule_work (int *) ;
 
 __attribute__((used)) static int dasd_eckd_ext_pool_exhaust(struct dasd_device *device,
-				      struct dasd_ccw_req *cqr)
+          struct dasd_ccw_req *cqr)
 {
-	struct ext_pool_exhaust_work_data *data;
+ struct ext_pool_exhaust_work_data *data;
 
-	data = kzalloc(sizeof(*data), GFP_ATOMIC);
-	if (!data)
-		return -ENOMEM;
-	INIT_WORK(&data->worker, dasd_eckd_ext_pool_exhaust_work);
-	dasd_get_device(device);
-	data->device = device;
+ data = kzalloc(sizeof(*data), GFP_ATOMIC);
+ if (!data)
+  return -ENOMEM;
+ INIT_WORK(&data->worker, dasd_eckd_ext_pool_exhaust_work);
+ dasd_get_device(device);
+ data->device = device;
 
-	if (cqr->block)
-		data->base = cqr->block->base;
-	else if (cqr->basedev)
-		data->base = cqr->basedev;
-	else
-		data->base = NULL;
+ if (cqr->block)
+  data->base = cqr->block->base;
+ else if (cqr->basedev)
+  data->base = cqr->basedev;
+ else
+  data->base = ((void*)0);
 
-	schedule_work(&data->worker);
+ schedule_work(&data->worker);
 
-	return 0;
+ return 0;
 }

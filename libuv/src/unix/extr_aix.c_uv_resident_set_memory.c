@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ pr_rssize; } ;
-typedef  TYPE_1__ psinfo_t ;
-typedef  int /*<<< orphan*/  psinfo ;
-typedef  int /*<<< orphan*/  pp ;
+typedef TYPE_1__ psinfo_t ;
+typedef int psinfo ;
+typedef int pp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int UV_EINVAL ; 
- int UV__ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ getpid () ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,TYPE_1__*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned long) ; 
- int /*<<< orphan*/  uv__close (int) ; 
+
+ int O_RDONLY ;
+ int UV_EINVAL ;
+ int UV__ERR (int ) ;
+ int errno ;
+ scalar_t__ getpid () ;
+ int open (char*,int ) ;
+ int read (int,TYPE_1__*,int) ;
+ int snprintf (char*,int,char*,unsigned long) ;
+ int uv__close (int) ;
 
 int uv_resident_set_memory(size_t* rss) {
   char pp[64];
@@ -39,7 +39,7 @@ int uv_resident_set_memory(size_t* rss) {
   if (fd == -1)
     return UV__ERR(errno);
 
-  /* FIXME(bnoordhuis) Handle EINTR. */
+
   err = UV_EINVAL;
   if (read(fd, &psinfo, sizeof(psinfo)) == sizeof(psinfo)) {
     *rss = (size_t)psinfo.pr_rssize * 1024;

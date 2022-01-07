@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct taskqgroup {TYPE_1__* tqg_queue; } ;
-struct TYPE_2__ {int /*<<< orphan*/  tgc_taskq; } ;
+struct TYPE_2__ {int tgc_taskq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gtaskqueue_free (int /*<<< orphan*/ ) ; 
+
+ int gtaskqueue_free (int ) ;
 
 __attribute__((used)) static void
 taskqgroup_cpu_remove(struct taskqgroup *qgroup, int idx)
 {
 
-	gtaskqueue_free(qgroup->tqg_queue[idx].tgc_taskq);
+ gtaskqueue_free(qgroup->tqg_queue[idx].tgc_taskq);
 }

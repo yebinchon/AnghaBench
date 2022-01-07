@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  btrfs_cleanup_workspace_manager (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heuristic_wsm ; 
+ int btrfs_cleanup_workspace_manager (int *) ;
+ int heuristic_wsm ;
 
 __attribute__((used)) static void heuristic_cleanup_workspace_manager(void)
 {
-	btrfs_cleanup_workspace_manager(&heuristic_wsm);
+ btrfs_cleanup_workspace_manager(&heuristic_wsm);
 }

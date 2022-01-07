@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float cosf (float) ; 
- int /*<<< orphan*/  normalize (float*,float*,float*) ; 
- float sinf (float) ; 
+ float cosf (float) ;
+ int normalize (float*,float*,float*) ;
+ float sinf (float) ;
 
 void mat_rotate(float *matrix, float x, float y, float z, float angle) {
     normalize(&x, &y, &z);

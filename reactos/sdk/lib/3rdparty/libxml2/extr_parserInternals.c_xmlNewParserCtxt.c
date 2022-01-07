@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/  xmlParserCtxt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xmlErrMemory (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  xmlFreeParserCtxt (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlInitParserCtxt (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlMalloc (int) ; 
+
+
+
+typedef int * xmlParserCtxtPtr ;
+typedef int xmlParserCtxt ;
+
+
+ int memset (int *,int ,int) ;
+ int xmlErrMemory (int *,char*) ;
+ int xmlFreeParserCtxt (int *) ;
+ scalar_t__ xmlInitParserCtxt (int *) ;
+ scalar_t__ xmlMalloc (int) ;
 
 xmlParserCtxtPtr
 xmlNewParserCtxt(void)
@@ -26,14 +26,14 @@ xmlNewParserCtxt(void)
     xmlParserCtxtPtr ctxt;
 
     ctxt = (xmlParserCtxtPtr) xmlMalloc(sizeof(xmlParserCtxt));
-    if (ctxt == NULL) {
-	xmlErrMemory(NULL, "cannot allocate parser context\n");
-	return(NULL);
+    if (ctxt == ((void*)0)) {
+ xmlErrMemory(((void*)0), "cannot allocate parser context\n");
+ return(((void*)0));
     }
     memset(ctxt, 0, sizeof(xmlParserCtxt));
     if (xmlInitParserCtxt(ctxt) < 0) {
         xmlFreeParserCtxt(ctxt);
-	return(NULL);
+ return(((void*)0));
     }
     return(ctxt);
 }

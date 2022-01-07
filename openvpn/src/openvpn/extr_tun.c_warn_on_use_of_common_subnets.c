@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int addr; int netmask; } ;
 struct route_gateway_info {int const flags; TYPE_1__ gateway; } ;
 struct gc_arena {int dummy; } ;
-typedef  int /*<<< orphan*/  openvpn_net_ctx_t ;
-typedef  int in_addr_t ;
+typedef int openvpn_net_ctx_t ;
+typedef int in_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_WARN ; 
- int RGI_ADDR_DEFINED ; 
- int RGI_NETMASK_DEFINED ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  get_default_gateway (struct route_gateway_info*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
+
+ int M_WARN ;
+ int RGI_ADDR_DEFINED ;
+ int RGI_NETMASK_DEFINED ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int get_default_gateway (struct route_gateway_info*,int *) ;
+ int msg (int ,char*) ;
 
 void
 warn_on_use_of_common_subnets(openvpn_net_ctx_t *ctx)

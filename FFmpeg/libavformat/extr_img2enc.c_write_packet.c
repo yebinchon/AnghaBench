@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_35__   TYPE_8__ ;
-typedef  struct TYPE_34__   TYPE_7__ ;
-typedef  struct TYPE_33__   TYPE_6__ ;
-typedef  struct TYPE_32__   TYPE_5__ ;
-typedef  struct TYPE_31__   TYPE_4__ ;
-typedef  struct TYPE_30__   TYPE_3__ ;
-typedef  struct TYPE_29__   TYPE_2__ ;
-typedef  struct TYPE_28__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_35__ TYPE_8__ ;
+typedef struct TYPE_34__ TYPE_7__ ;
+typedef struct TYPE_33__ TYPE_6__ ;
+typedef struct TYPE_32__ TYPE_5__ ;
+typedef struct TYPE_31__ TYPE_4__ ;
+typedef struct TYPE_30__ TYPE_3__ ;
+typedef struct TYPE_29__ TYPE_2__ ;
+typedef struct TYPE_28__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  filename ;
-struct TYPE_30__ {char* path; int img_number; char** tmp; char** target; int /*<<< orphan*/  is_pipe; scalar_t__ muxer; scalar_t__ split_planes; scalar_t__ use_rename; scalar_t__ frame_pts; scalar_t__ use_strftime; scalar_t__ update; } ;
-typedef  TYPE_3__ VideoMuxData ;
-struct TYPE_35__ {int width; int height; int /*<<< orphan*/  format; } ;
-struct TYPE_34__ {scalar_t__ (* io_open ) (TYPE_7__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;TYPE_1__** streams; int /*<<< orphan*/ * pb; int /*<<< orphan*/  url; TYPE_3__* priv_data; } ;
-struct TYPE_33__ {size_t stream_index; int pts; int size; scalar_t__ data; int /*<<< orphan*/  member_0; } ;
-struct TYPE_32__ {int nb_components; TYPE_2__* comp; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; } ;
-struct TYPE_31__ {size_t id; int /*<<< orphan*/  codecpar; } ;
+typedef int filename ;
+struct TYPE_30__ {char* path; int img_number; char** tmp; char** target; int is_pipe; scalar_t__ muxer; scalar_t__ split_planes; scalar_t__ use_rename; scalar_t__ frame_pts; scalar_t__ use_strftime; scalar_t__ update; } ;
+typedef TYPE_3__ VideoMuxData ;
+struct TYPE_35__ {int width; int height; int format; } ;
+struct TYPE_34__ {scalar_t__ (* io_open ) (TYPE_7__*,int **,char*,int ,int *) ;TYPE_1__** streams; int * pb; int url; TYPE_3__* priv_data; } ;
+struct TYPE_33__ {size_t stream_index; int pts; int size; scalar_t__ data; int member_0; } ;
+struct TYPE_32__ {int nb_components; TYPE_2__* comp; int log2_chroma_h; int log2_chroma_w; } ;
+struct TYPE_31__ {size_t id; int codecpar; } ;
 struct TYPE_29__ {int depth; } ;
 struct TYPE_28__ {TYPE_8__* codecpar; } ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVPixFmtDescriptor ;
-typedef  TYPE_6__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_7__ AVFormatContext ;
-typedef  TYPE_8__ AVCodecParameters ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVPixFmtDescriptor ;
+typedef TYPE_6__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_7__ AVFormatContext ;
+typedef TYPE_8__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVIO_FLAG_WRITE ; 
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_FRAME_FILENAME_FLAGS_MULTIPLE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- scalar_t__ av_get_frame_filename2 (char*,int,char*,int,int /*<<< orphan*/ ) ; 
- int av_interleaved_write_frame (TYPE_7__*,TYPE_6__*) ; 
- int /*<<< orphan*/  av_log (TYPE_7__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_packet_ref (TYPE_6__*,TYPE_6__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_6__*) ; 
- TYPE_5__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char*,int) ; 
- int av_write_trailer (TYPE_7__*) ; 
- int avcodec_parameters_copy (int /*<<< orphan*/ ,TYPE_8__*) ; 
- int avformat_alloc_output_context2 (TYPE_7__**,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avformat_free_context (TYPE_7__*) ; 
- TYPE_4__* avformat_new_stream (TYPE_7__*,int /*<<< orphan*/ *) ; 
- int avformat_write_header (TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_7__*,int /*<<< orphan*/ **) ; 
- int ff_rename (char*,char*,TYPE_7__*) ; 
- struct tm* localtime_r (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,struct tm*) ; 
- int strlen (char*) ; 
- scalar_t__ stub1 (TYPE_7__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_WRITE ;
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int AV_FRAME_FILENAME_FLAGS_MULTIPLE ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int EIO ;
+ int ENOMEM ;
+ int av_assert0 (int) ;
+ scalar_t__ av_get_frame_filename2 (char*,int,char*,int,int ) ;
+ int av_interleaved_write_frame (TYPE_7__*,TYPE_6__*) ;
+ int av_log (TYPE_7__*,int ,char*,...) ;
+ int av_packet_ref (TYPE_6__*,TYPE_6__*) ;
+ int av_packet_unref (TYPE_6__*) ;
+ TYPE_5__* av_pix_fmt_desc_get (int ) ;
+ int av_strlcpy (char*,char*,int) ;
+ int av_write_trailer (TYPE_7__*) ;
+ int avcodec_parameters_copy (int ,TYPE_8__*) ;
+ int avformat_alloc_output_context2 (TYPE_7__**,int *,scalar_t__,int ) ;
+ int avformat_free_context (TYPE_7__*) ;
+ TYPE_4__* avformat_new_stream (TYPE_7__*,int *) ;
+ int avformat_write_header (TYPE_7__*,int *) ;
+ int avio_flush (int *) ;
+ int avio_write (int *,scalar_t__,int) ;
+ int ff_format_io_close (TYPE_7__*,int **) ;
+ int ff_rename (char*,char*,TYPE_7__*) ;
+ struct tm* localtime_r (int *,struct tm*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int strftime (char*,int,char*,struct tm*) ;
+ int strlen (char*) ;
+ scalar_t__ stub1 (TYPE_7__*,int **,char*,int ,int *) ;
+ int time (int *) ;
 
 __attribute__((used)) static int write_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -111,7 +111,7 @@ __attribute__((used)) static int write_packet(AVFormatContext *s, AVPacket *pkt)
         for (i = 0; i < 4; i++) {
             snprintf(img->tmp[i], sizeof(img->tmp[i]), "%s.tmp", filename);
             av_strlcpy(img->target[i], filename, sizeof(img->target[i]));
-            if (s->io_open(s, &pb[i], img->use_rename ? img->tmp[i] : filename, AVIO_FLAG_WRITE, NULL) < 0) {
+            if (s->io_open(s, &pb[i], img->use_rename ? img->tmp[i] : filename, AVIO_FLAG_WRITE, ((void*)0)) < 0) {
                 av_log(s, AV_LOG_ERROR, "Could not open file : %s\n", img->use_rename ? img->tmp[i] : filename);
                 return AVERROR(EIO);
             }
@@ -133,8 +133,8 @@ __attribute__((used)) static int write_packet(AVFormatContext *s, AVPacket *pkt)
             ysize *= 2;
             usize *= 2;
         }
-        avio_write(pb[0], pkt->data                , ysize);
-        avio_write(pb[1], pkt->data + ysize        , usize);
+        avio_write(pb[0], pkt->data , ysize);
+        avio_write(pb[1], pkt->data + ysize , usize);
         avio_write(pb[2], pkt->data + ysize + usize, usize);
         ff_format_io_close(s, &pb[1]);
         ff_format_io_close(s, &pb[2]);
@@ -146,14 +146,14 @@ __attribute__((used)) static int write_packet(AVFormatContext *s, AVPacket *pkt)
         int ret;
         AVStream *st;
         AVPacket pkt2 = {0};
-        AVFormatContext *fmt = NULL;
+        AVFormatContext *fmt = ((void*)0);
 
         av_assert0(!img->split_planes);
 
-        ret = avformat_alloc_output_context2(&fmt, NULL, img->muxer, s->url);
+        ret = avformat_alloc_output_context2(&fmt, ((void*)0), img->muxer, s->url);
         if (ret < 0)
             return ret;
-        st = avformat_new_stream(fmt, NULL);
+        st = avformat_new_stream(fmt, ((void*)0));
         if (!st) {
             avformat_free_context(fmt);
             return AVERROR(ENOMEM);
@@ -161,11 +161,11 @@ __attribute__((used)) static int write_packet(AVFormatContext *s, AVPacket *pkt)
         st->id = pkt->stream_index;
 
         fmt->pb = pb[0];
-        if ((ret = av_packet_ref(&pkt2, pkt))                             < 0 ||
+        if ((ret = av_packet_ref(&pkt2, pkt)) < 0 ||
             (ret = avcodec_parameters_copy(st->codecpar, s->streams[0]->codecpar)) < 0 ||
-            (ret = avformat_write_header(fmt, NULL))                      < 0 ||
-            (ret = av_interleaved_write_frame(fmt, &pkt2))                < 0 ||
-            (ret = av_write_trailer(fmt))                                 < 0) {
+            (ret = avformat_write_header(fmt, ((void*)0))) < 0 ||
+            (ret = av_interleaved_write_frame(fmt, &pkt2)) < 0 ||
+            (ret = av_write_trailer(fmt)) < 0) {
             av_packet_unref(&pkt2);
             avformat_free_context(fmt);
             return ret;

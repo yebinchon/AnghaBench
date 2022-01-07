@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
 struct TYPE_20__ {TYPE_1__* ob_type; } ;
-struct TYPE_19__ {int /*<<< orphan*/  tp_name; } ;
-typedef  TYPE_2__ PyObject ;
+struct TYPE_19__ {int tp_name; } ;
+typedef TYPE_2__ PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- TYPE_2__** PySequence_Fast_ITEMS (TYPE_2__*) ; 
- int PyTuple_Size (TYPE_2__*) ; 
- TYPE_2__* PyUFuncOverride_GetNonDefaultArrayUfunc (TYPE_2__*) ; 
- int PyUFuncOverride_GetOutObjects (TYPE_2__*,TYPE_2__**,TYPE_2__***) ; 
- int /*<<< orphan*/  Py_DECREF (TYPE_2__*) ; 
- int /*<<< orphan*/  Py_INCREF (TYPE_2__*) ; 
- TYPE_2__* Py_None ; 
- scalar_t__ Py_TYPE (TYPE_2__*) ; 
+
+ int PyErr_Format (int ,char*,int ) ;
+ int PyExc_TypeError ;
+ TYPE_2__** PySequence_Fast_ITEMS (TYPE_2__*) ;
+ int PyTuple_Size (TYPE_2__*) ;
+ TYPE_2__* PyUFuncOverride_GetNonDefaultArrayUfunc (TYPE_2__*) ;
+ int PyUFuncOverride_GetOutObjects (TYPE_2__*,TYPE_2__**,TYPE_2__***) ;
+ int Py_DECREF (TYPE_2__*) ;
+ int Py_INCREF (TYPE_2__*) ;
+ TYPE_2__* Py_None ;
+ scalar_t__ Py_TYPE (TYPE_2__*) ;
 
 __attribute__((used)) static int
 get_array_ufunc_overrides(PyObject *args, PyObject *kwds,
@@ -60,9 +60,9 @@ get_array_ufunc_overrides(PyObject *args, PyObject *kwds,
         else {
             obj = out_objs[i - narg];
         }
-        /*
-         * Have we seen this class before?  If so, ignore.
-         */
+
+
+
         for (j = 0; j < num_override_args; j++) {
             new_class = (Py_TYPE(obj) != Py_TYPE(with_override[j]));
             if (!new_class) {
@@ -70,13 +70,13 @@ get_array_ufunc_overrides(PyObject *args, PyObject *kwds,
             }
         }
         if (new_class) {
-            /*
-             * Now see if the object provides an __array_ufunc__. However, we should
-             * ignore the base ndarray.__ufunc__, so we skip any ndarray as well as
-             * any ndarray subclass instances that did not override __array_ufunc__.
-             */
+
+
+
+
+
             PyObject *method = PyUFuncOverride_GetNonDefaultArrayUfunc(obj);
-            if (method == NULL) {
+            if (method == ((void*)0)) {
                 continue;
             }
             if (method == Py_None) {

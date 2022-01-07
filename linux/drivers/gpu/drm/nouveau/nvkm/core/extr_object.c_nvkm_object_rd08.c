@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u64 ;
 struct nvkm_object {TYPE_1__* func; } ;
-struct TYPE_2__ {int (* rd08 ) (struct nvkm_object*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+struct TYPE_2__ {int (* rd08 ) (struct nvkm_object*,int ,int *) ;} ;
 
-/* Variables and functions */
- int ENODEV ; 
- scalar_t__ likely (int (*) (struct nvkm_object*,int /*<<< orphan*/ ,int /*<<< orphan*/ *)) ; 
- int stub1 (struct nvkm_object*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ scalar_t__ likely (int (*) (struct nvkm_object*,int ,int *)) ;
+ int stub1 (struct nvkm_object*,int ,int *) ;
 
 int
 nvkm_object_rd08(struct nvkm_object *object, u64 addr, u8 *data)
 {
-	if (likely(object->func->rd08))
-		return object->func->rd08(object, addr, data);
-	return -ENODEV;
+ if (likely(object->func->rd08))
+  return object->func->rd08(object, addr, data);
+ return -ENODEV;
 }

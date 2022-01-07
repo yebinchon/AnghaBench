@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_10__ {int* write; int* n_clippings; float** ringbuffer; TYPE_4__* out; TYPE_4__* in; } ;
-typedef  TYPE_1__ ThreadData ;
+typedef TYPE_1__ ThreadData ;
 struct TYPE_14__ {TYPE_2__* priv; } ;
 struct TYPE_13__ {int channels; int nb_samples; scalar_t__* data; } ;
 struct TYPE_12__ {float re; float im; } ;
-struct TYPE_11__ {int ir_len; int buffer_length; int n_fft; int lfe_channel; float const gain_lfe; int /*<<< orphan*/ ** fft; int /*<<< orphan*/ ** ifft; TYPE_3__** temp_afft; TYPE_3__** temp_fft; TYPE_3__** data_hrtf; } ;
-typedef  TYPE_2__ HeadphoneContext ;
-typedef  int /*<<< orphan*/  FFTContext ;
-typedef  TYPE_3__ FFTComplex ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_11__ {int ir_len; int buffer_length; int n_fft; int lfe_channel; float const gain_lfe; int ** fft; int ** ifft; TYPE_3__** temp_afft; TYPE_3__** temp_fft; TYPE_3__** data_hrtf; } ;
+typedef TYPE_2__ HeadphoneContext ;
+typedef int FFTContext ;
+typedef TYPE_3__ FFTComplex ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int FFMIN (int const,int) ; 
- int /*<<< orphan*/  av_fft_calc (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  av_fft_permute (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int fabsf (float) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ int FFMIN (int const,int) ;
+ int av_fft_calc (int *,TYPE_3__*) ;
+ int av_fft_permute (int *,TYPE_3__*) ;
+ int fabsf (float) ;
+ int memset (TYPE_3__*,int ,int) ;
 
 __attribute__((used)) static int headphone_fast_convolute(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {
@@ -66,9 +66,9 @@ __attribute__((used)) static int headphone_fast_convolute(AVFilterContext *ctx, 
 
     n_read = FFMIN(ir_len, in->nb_samples);
     for (j = 0; j < n_read; j++) {
-        dst[2 * j]     = ringbuffer[wr];
+        dst[2 * j] = ringbuffer[wr];
         ringbuffer[wr] = 0.0;
-        wr  = (wr + 1) & modulo;
+        wr = (wr + 1) & modulo;
     }
 
     for (j = n_read; j < in->nb_samples; j++) {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  avctx; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+struct TYPE_4__ {int avctx; } ;
 struct TYPE_5__ {int intra_types_stride; TYPE_1__ s; } ;
-typedef  TYPE_2__ RV34DecContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_2__ RV34DecContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int get_interleaved_ue_golomb (int /*<<< orphan*/ *) ; 
- int* rv30_itype_code ; 
- int /*<<< orphan*/ * rv30_itype_from_context ; 
+
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*) ;
+ int get_interleaved_ue_golomb (int *) ;
+ int* rv30_itype_code ;
+ int * rv30_itype_from_context ;
 
 __attribute__((used)) static int rv30_decode_intra_types(RV34DecContext *r, GetBitContext *gb, int8_t *dst)
 {

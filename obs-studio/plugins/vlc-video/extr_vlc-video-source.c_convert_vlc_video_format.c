@@ -1,122 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  enum video_format { ____Placeholder_video_format } video_format ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHROMA_CONV (char*,char*,int) ; 
- int /*<<< orphan*/  CHROMA_CONV_FULL (char*,char*,int) ; 
- int /*<<< orphan*/  CHROMA_TEST (char*,int) ; 
- int VIDEO_FORMAT_BGRA ; 
- int VIDEO_FORMAT_I420 ; 
- int VIDEO_FORMAT_I444 ; 
- int VIDEO_FORMAT_NV12 ; 
- int VIDEO_FORMAT_RGBA ; 
- int VIDEO_FORMAT_UYVY ; 
- int VIDEO_FORMAT_Y800 ; 
- int VIDEO_FORMAT_YUY2 ; 
- int VIDEO_FORMAT_YVYU ; 
+
+
+
+typedef int uint32_t ;
+typedef enum video_format { ____Placeholder_video_format } video_format ;
+
+
+ int CHROMA_CONV (char*,char*,int) ;
+ int CHROMA_CONV_FULL (char*,char*,int) ;
+ int CHROMA_TEST (char*,int) ;
+ int VIDEO_FORMAT_BGRA ;
+ int VIDEO_FORMAT_I420 ;
+ int VIDEO_FORMAT_I444 ;
+ int VIDEO_FORMAT_NV12 ;
+ int VIDEO_FORMAT_RGBA ;
+ int VIDEO_FORMAT_UYVY ;
+ int VIDEO_FORMAT_Y800 ;
+ int VIDEO_FORMAT_YUY2 ;
+ int VIDEO_FORMAT_YVYU ;
 
 __attribute__((used)) static enum video_format convert_vlc_video_format(char *chroma, bool *full)
 {
-	*full = false;
+ *full = 0;
+ if (chroma_is(chroma, "RGBA")) return VIDEO_FORMAT_RGBA;
+ if (chroma_is(chroma, "BGRA")) return VIDEO_FORMAT_BGRA;
 
-#define CHROMA_TEST(val, ret)       \
-	if (chroma_is(chroma, val)) \
-	return ret
-#define CHROMA_CONV(val, new_val, ret)                              \
-	do {                                                        \
-		if (chroma_is(chroma, val)) {                       \
-			*(uint32_t *)chroma = *(uint32_t *)new_val; \
-			return ret;                                 \
-		}                                                   \
-	} while (false)
-#define CHROMA_CONV_FULL(val, new_val, ret)     \
-	do {                                    \
-		*full = true;                   \
-		CHROMA_CONV(val, new_val, ret); \
-	} while (false)
 
-	CHROMA_TEST("RGBA", VIDEO_FORMAT_RGBA);
-	CHROMA_TEST("BGRA", VIDEO_FORMAT_BGRA);
+ if (chroma_is(chroma, "NV12")) return VIDEO_FORMAT_NV12;
+ if (chroma_is(chroma, "I420")) return VIDEO_FORMAT_I420;
+ if (chroma_is(chroma, "IYUV")) return VIDEO_FORMAT_I420;
+ do { if (chroma_is(chroma, "NV21")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_NV12; } } while (0);
+ do { if (chroma_is(chroma, "I422")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_NV12; } } while (0);
+ do { if (chroma_is(chroma, "Y42B")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_NV12; } } while (0);
+ do { if (chroma_is(chroma, "YV12")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_NV12; } } while (0);
+ do { if (chroma_is(chroma, "yv12")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_NV12; } } while (0);
 
-	/* 4:2:0 formats */
-	CHROMA_TEST("NV12", VIDEO_FORMAT_NV12);
-	CHROMA_TEST("I420", VIDEO_FORMAT_I420);
-	CHROMA_TEST("IYUV", VIDEO_FORMAT_I420);
-	CHROMA_CONV("NV21", "NV12", VIDEO_FORMAT_NV12);
-	CHROMA_CONV("I422", "NV12", VIDEO_FORMAT_NV12);
-	CHROMA_CONV("Y42B", "NV12", VIDEO_FORMAT_NV12);
-	CHROMA_CONV("YV12", "NV12", VIDEO_FORMAT_NV12);
-	CHROMA_CONV("yv12", "NV12", VIDEO_FORMAT_NV12);
+ do { *full = 1; do { if (chroma_is(chroma, "J420")) { *(uint32_t *)chroma = *(uint32_t *)"J420"; return VIDEO_FORMAT_I420; } } while (0); } while (0);
 
-	CHROMA_CONV_FULL("J420", "J420", VIDEO_FORMAT_I420);
 
-	/* 4:2:2 formats */
-	CHROMA_TEST("UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("UYNV", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("UYNY", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("Y422", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("HDYC", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("AVUI", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("uyv1", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("2vuy", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("2Vuy", VIDEO_FORMAT_UYVY);
-	CHROMA_TEST("2Vu1", VIDEO_FORMAT_UYVY);
+ if (chroma_is(chroma, "UYVY")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "UYNV")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "UYNY")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "Y422")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "HDYC")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "AVUI")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "uyv1")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "2vuy")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "2Vuy")) return VIDEO_FORMAT_UYVY;
+ if (chroma_is(chroma, "2Vu1")) return VIDEO_FORMAT_UYVY;
 
-	CHROMA_TEST("YUY2", VIDEO_FORMAT_YUY2);
-	CHROMA_TEST("YUYV", VIDEO_FORMAT_YUY2);
-	CHROMA_TEST("YUNV", VIDEO_FORMAT_YUY2);
-	CHROMA_TEST("V422", VIDEO_FORMAT_YUY2);
+ if (chroma_is(chroma, "YUY2")) return VIDEO_FORMAT_YUY2;
+ if (chroma_is(chroma, "YUYV")) return VIDEO_FORMAT_YUY2;
+ if (chroma_is(chroma, "YUNV")) return VIDEO_FORMAT_YUY2;
+ if (chroma_is(chroma, "V422")) return VIDEO_FORMAT_YUY2;
 
-	CHROMA_TEST("YVYU", VIDEO_FORMAT_YVYU);
+ if (chroma_is(chroma, "YVYU")) return VIDEO_FORMAT_YVYU;
 
-	CHROMA_CONV("v210", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("cyuv", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("CYUV", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("VYUY", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("NV16", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("NV61", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("I410", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("I422", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("Y42B", "UYVY", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("J422", "UYVY", VIDEO_FORMAT_UYVY);
+ do { if (chroma_is(chroma, "v210")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "cyuv")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "CYUV")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "VYUY")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "NV16")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "NV61")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "I410")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "I422")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "Y42B")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "J422")) { *(uint32_t *)chroma = *(uint32_t *)"UYVY"; return VIDEO_FORMAT_UYVY; } } while (0);
 
-	/* 4:4:4 formats */
-	CHROMA_TEST("I444", VIDEO_FORMAT_I444);
-	CHROMA_CONV_FULL("J444", "RGBA", VIDEO_FORMAT_RGBA);
-	CHROMA_CONV("YUVA", "RGBA", VIDEO_FORMAT_RGBA);
 
-	/* 4:4:0 formats */
-	CHROMA_CONV("I440", "I444", VIDEO_FORMAT_I444);
-	CHROMA_CONV("J440", "I444", VIDEO_FORMAT_I444);
+ if (chroma_is(chroma, "I444")) return VIDEO_FORMAT_I444;
+ do { *full = 1; do { if (chroma_is(chroma, "J444")) { *(uint32_t *)chroma = *(uint32_t *)"RGBA"; return VIDEO_FORMAT_RGBA; } } while (0); } while (0);
+ do { if (chroma_is(chroma, "YUVA")) { *(uint32_t *)chroma = *(uint32_t *)"RGBA"; return VIDEO_FORMAT_RGBA; } } while (0);
 
-	/* 4:1:0 formats */
-	CHROMA_CONV("YVU9", "NV12", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("I410", "NV12", VIDEO_FORMAT_UYVY);
 
-	/* 4:1:1 formats */
-	CHROMA_CONV("I411", "NV12", VIDEO_FORMAT_UYVY);
-	CHROMA_CONV("Y41B", "NV12", VIDEO_FORMAT_UYVY);
+ do { if (chroma_is(chroma, "I440")) { *(uint32_t *)chroma = *(uint32_t *)"I444"; return VIDEO_FORMAT_I444; } } while (0);
+ do { if (chroma_is(chroma, "J440")) { *(uint32_t *)chroma = *(uint32_t *)"I444"; return VIDEO_FORMAT_I444; } } while (0);
 
-	/* greyscale formats */
-	CHROMA_TEST("GREY", VIDEO_FORMAT_Y800);
-	CHROMA_TEST("Y800", VIDEO_FORMAT_Y800);
-	CHROMA_TEST("Y8  ", VIDEO_FORMAT_Y800);
-#undef CHROMA_CONV_FULL
-#undef CHROMA_CONV
-#undef CHROMA_TEST
 
-	*(uint32_t *)chroma = *(uint32_t *)"BGRA";
-	return VIDEO_FORMAT_BGRA;
+ do { if (chroma_is(chroma, "YVU9")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "I410")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_UYVY; } } while (0);
+
+
+ do { if (chroma_is(chroma, "I411")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_UYVY; } } while (0);
+ do { if (chroma_is(chroma, "Y41B")) { *(uint32_t *)chroma = *(uint32_t *)"NV12"; return VIDEO_FORMAT_UYVY; } } while (0);
+
+
+ if (chroma_is(chroma, "GREY")) return VIDEO_FORMAT_Y800;
+ if (chroma_is(chroma, "Y800")) return VIDEO_FORMAT_Y800;
+ if (chroma_is(chroma, "Y8  ")) return VIDEO_FORMAT_Y800;
+
+
+
+
+ *(uint32_t *)chroma = *(uint32_t *)"BGRA";
+ return VIDEO_FORMAT_BGRA;
 }

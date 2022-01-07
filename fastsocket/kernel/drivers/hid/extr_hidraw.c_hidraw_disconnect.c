@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct hidraw {size_t minor; int /*<<< orphan*/  wait; scalar_t__ open; scalar_t__ exist; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct hidraw {size_t minor; int wait; scalar_t__ open; scalar_t__ exist; } ;
 struct hid_device {TYPE_1__* ll_driver; struct hidraw* hidraw; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* close ) (struct hid_device*) ;} ;
+struct TYPE_2__ {int (* close ) (struct hid_device*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MKDEV (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  device_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hidraw_class ; 
- int /*<<< orphan*/  hidraw_major ; 
- int /*<<< orphan*/ ** hidraw_table ; 
- int /*<<< orphan*/  kfree (struct hidraw*) ; 
- int /*<<< orphan*/  minors_lock ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct hid_device*) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+ int MKDEV (int ,size_t) ;
+ int device_destroy (int ,int ) ;
+ int hidraw_class ;
+ int hidraw_major ;
+ int ** hidraw_table ;
+ int kfree (struct hidraw*) ;
+ int minors_lock ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int stub1 (struct hid_device*) ;
+ int wake_up_interruptible (int *) ;
 
 void hidraw_disconnect(struct hid_device *hid)
 {
-	struct hidraw *hidraw = hid->hidraw;
+ struct hidraw *hidraw = hid->hidraw;
 
-	mutex_lock(&minors_lock);
-	hidraw->exist = 0;
+ mutex_lock(&minors_lock);
+ hidraw->exist = 0;
 
-	device_destroy(hidraw_class, MKDEV(hidraw_major, hidraw->minor));
+ device_destroy(hidraw_class, MKDEV(hidraw_major, hidraw->minor));
 
-	hidraw_table[hidraw->minor] = NULL;
+ hidraw_table[hidraw->minor] = ((void*)0);
 
-	if (hidraw->open) {
-		hid->ll_driver->close(hid);
-		wake_up_interruptible(&hidraw->wait);
-	} else {
-		kfree(hidraw);
-	}
-	mutex_unlock(&minors_lock);
+ if (hidraw->open) {
+  hid->ll_driver->close(hid);
+  wake_up_interruptible(&hidraw->wait);
+ } else {
+  kfree(hidraw);
+ }
+ mutex_unlock(&minors_lock);
 }

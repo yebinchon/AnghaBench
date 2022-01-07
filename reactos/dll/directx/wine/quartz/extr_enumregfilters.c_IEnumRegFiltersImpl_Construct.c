@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-struct TYPE_13__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_12__ {int refCount; int size; TYPE_3__ IEnumRegFilters_iface; struct TYPE_12__* RegFilters; scalar_t__ uIndex; struct TYPE_12__* Name; int /*<<< orphan*/  Clsid; } ;
-typedef  TYPE_1__ REGFILTER ;
-typedef  TYPE_1__ IEnumRegFiltersImpl ;
-typedef  TYPE_3__ IEnumRegFilters ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- void* CoTaskMemAlloc (int) ; 
- int /*<<< orphan*/  CoTaskMemFree (TYPE_1__*) ; 
- int /*<<< orphan*/  CopyMemory (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IEnumRegFiltersImpl_Vtbl ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int const,TYPE_3__**) ; 
- int strlenW (TYPE_1__*) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
+struct TYPE_13__ {int * lpVtbl; } ;
+struct TYPE_12__ {int refCount; int size; TYPE_3__ IEnumRegFilters_iface; struct TYPE_12__* RegFilters; scalar_t__ uIndex; struct TYPE_12__* Name; int Clsid; } ;
+typedef TYPE_1__ REGFILTER ;
+typedef TYPE_1__ IEnumRegFiltersImpl ;
+typedef TYPE_3__ IEnumRegFilters ;
+typedef int HRESULT ;
+
+
+ void* CoTaskMemAlloc (int) ;
+ int CoTaskMemFree (TYPE_1__*) ;
+ int CopyMemory (TYPE_1__*,TYPE_1__*,int) ;
+ int E_OUTOFMEMORY ;
+ int IEnumRegFiltersImpl_Vtbl ;
+ int S_OK ;
+ int TRACE (char*,TYPE_1__*,int const,TYPE_3__**) ;
+ int strlenW (TYPE_1__*) ;
 
 HRESULT IEnumRegFiltersImpl_Construct(REGFILTER* pInRegFilters, const ULONG size, IEnumRegFilters ** ppEnum)
 {
     IEnumRegFiltersImpl* pEnumRegFilters;
-    REGFILTER* pRegFilters = NULL;
+    REGFILTER* pRegFilters = ((void*)0);
     unsigned int i;
 
     TRACE("(%p, %d, %p)\n", pInRegFilters, size, ppEnum);
@@ -42,18 +42,18 @@ HRESULT IEnumRegFiltersImpl_Construct(REGFILTER* pInRegFilters, const ULONG size
     pEnumRegFilters = CoTaskMemAlloc(sizeof(IEnumRegFiltersImpl));
     if (!pEnumRegFilters)
     {
-        *ppEnum = NULL;
+        *ppEnum = ((void*)0);
         return E_OUTOFMEMORY;
     }
 
-    /* Accept size of 0 */
+
     if (size)
     {
         pRegFilters = CoTaskMemAlloc(sizeof(REGFILTER)*size);
         if (!pRegFilters)
-	{
+ {
             CoTaskMemFree(pEnumRegFilters);
-            *ppEnum = NULL;
+            *ppEnum = ((void*)0);
            return E_OUTOFMEMORY;
         }
     }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {TYPE_1__* seat; int /*<<< orphan*/ * session_devices; } ;
-struct TYPE_9__ {int /*<<< orphan*/  devices; } ;
-typedef  int /*<<< orphan*/  SessionDevice ;
-typedef  TYPE_1__ Seat ;
-typedef  TYPE_2__ Device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  devices ; 
- int /*<<< orphan*/  seat_add_to_gc_queue (TYPE_1__*) ; 
- int /*<<< orphan*/  seat_has_master_device (TYPE_1__*) ; 
- int /*<<< orphan*/  seat_send_changed (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  session_device_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {TYPE_1__* seat; int * session_devices; } ;
+struct TYPE_9__ {int devices; } ;
+typedef int SessionDevice ;
+typedef TYPE_1__ Seat ;
+typedef TYPE_2__ Device ;
+
+
+ int LIST_REMOVE (int ,int ,TYPE_2__*) ;
+ int assert (TYPE_2__*) ;
+ int devices ;
+ int seat_add_to_gc_queue (TYPE_1__*) ;
+ int seat_has_master_device (TYPE_1__*) ;
+ int seat_send_changed (TYPE_1__*,char*,int *) ;
+ int session_device_free (int *) ;
 
 __attribute__((used)) static void device_detach(Device *d) {
         Seat *s;
@@ -41,10 +41,10 @@ __attribute__((used)) static void device_detach(Device *d) {
 
         s = d->seat;
         LIST_REMOVE(devices, d->seat->devices, d);
-        d->seat = NULL;
+        d->seat = ((void*)0);
 
         if (!seat_has_master_device(s)) {
                 seat_add_to_gc_queue(s);
-                seat_send_changed(s, "CanGraphical", NULL);
+                seat_send_changed(s, "CanGraphical", ((void*)0));
         }
 }

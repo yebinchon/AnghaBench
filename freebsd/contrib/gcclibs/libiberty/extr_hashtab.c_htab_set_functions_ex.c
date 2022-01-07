@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* htab_t ;
-typedef  int /*<<< orphan*/  htab_hash ;
-typedef  int /*<<< orphan*/  htab_free_with_arg ;
-typedef  int /*<<< orphan*/  htab_eq ;
-typedef  int /*<<< orphan*/  htab_del ;
-typedef  int /*<<< orphan*/  htab_alloc_with_arg ;
-struct TYPE_3__ {int /*<<< orphan*/  free_with_arg_f; int /*<<< orphan*/  alloc_with_arg_f; int /*<<< orphan*/  alloc_arg; int /*<<< orphan*/  del_f; int /*<<< orphan*/  eq_f; int /*<<< orphan*/  hash_f; } ;
-typedef  int /*<<< orphan*/  PTR ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* htab_t ;
+typedef int htab_hash ;
+typedef int htab_free_with_arg ;
+typedef int htab_eq ;
+typedef int htab_del ;
+typedef int htab_alloc_with_arg ;
+struct TYPE_3__ {int free_with_arg_f; int alloc_with_arg_f; int alloc_arg; int del_f; int eq_f; int hash_f; } ;
+typedef int PTR ;
+
+
 
 void
 htab_set_functions_ex (htab_t htab, htab_hash hash_f, htab_eq eq_f,

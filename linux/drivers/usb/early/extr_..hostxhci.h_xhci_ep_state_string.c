@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
-#define  EP_STATE_DISABLED 132 
-#define  EP_STATE_ERROR 131 
-#define  EP_STATE_HALTED 130 
-#define  EP_STATE_RUNNING 129 
-#define  EP_STATE_STOPPED 128 
 
+
+
+typedef int u8 ;
 __attribute__((used)) static inline const char *xhci_ep_state_string(u8 state)
 {
-	switch (state) {
-	case EP_STATE_DISABLED:
-		return "disabled";
-	case EP_STATE_RUNNING:
-		return "running";
-	case EP_STATE_HALTED:
-		return "halted";
-	case EP_STATE_STOPPED:
-		return "stopped";
-	case EP_STATE_ERROR:
-		return "error";
-	default:
-		return "INVALID";
-	}
+ switch (state) {
+ case 132:
+  return "disabled";
+ case 129:
+  return "running";
+ case 130:
+  return "halted";
+ case 128:
+  return "stopped";
+ case 131:
+  return "error";
+ default:
+  return "INVALID";
+ }
 }

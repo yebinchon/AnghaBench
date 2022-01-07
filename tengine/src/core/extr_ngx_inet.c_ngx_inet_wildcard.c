@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; } ;
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sockaddr_in6 {int sin6_addr; } ;
+struct TYPE_2__ {int s_addr; } ;
 struct sockaddr_in {TYPE_1__ sin_addr; } ;
 struct sockaddr {int sa_family; } ;
-typedef  int ngx_uint_t ;
+typedef int ngx_uint_t ;
 
-/* Variables and functions */
-#define  AF_INET 129 
-#define  AF_INET6 128 
- int /*<<< orphan*/  IN6_IS_ADDR_UNSPECIFIED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INADDR_ANY ; 
+
+
+
+ int IN6_IS_ADDR_UNSPECIFIED (int *) ;
+ int INADDR_ANY ;
 
 ngx_uint_t
 ngx_inet_wildcard(struct sockaddr *sa)
 {
-    struct sockaddr_in   *sin;
-#if (NGX_HAVE_INET6)
-    struct sockaddr_in6  *sin6;
-#endif
+    struct sockaddr_in *sin;
+
+
+
 
     switch (sa->sa_family) {
 
-    case AF_INET:
+    case 129:
         sin = (struct sockaddr_in *) sa;
 
         if (sin->sin_addr.s_addr == INADDR_ANY) {
@@ -41,19 +41,6 @@ ngx_inet_wildcard(struct sockaddr *sa)
         }
 
         break;
-
-#if (NGX_HAVE_INET6)
-
-    case AF_INET6:
-        sin6 = (struct sockaddr_in6 *) sa;
-
-        if (IN6_IS_ADDR_UNSPECIFIED(&sin6->sin6_addr)) {
-            return 1;
-        }
-
-        break;
-
-#endif
     }
 
     return 0;

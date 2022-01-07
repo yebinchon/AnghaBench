@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtc_cpu_freq_config_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int rtc_cpu_freq_config_t ;
 struct TYPE_2__ {int min_freq_mhz; int max_freq_mhz; scalar_t__ light_sleep_enable; } ;
-typedef  TYPE_1__ esp_pm_config_esp32_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+typedef TYPE_1__ esp_pm_config_esp32_t ;
+typedef int esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_ERR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int,int,int,char*) ; 
- int /*<<< orphan*/  ESP_LOGW (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int MAX (int,int) ; 
- int MHZ ; 
- size_t PM_MODE_APB_MAX ; 
- size_t PM_MODE_APB_MIN ; 
- size_t PM_MODE_CPU_MAX ; 
- size_t PM_MODE_LIGHT_SLEEP ; 
- int REF_CLK_DIV_MIN ; 
- int REF_CLK_FREQ ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  portENTER_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  portEXIT_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtc_clk_cpu_freq_mhz_to_config (int,int /*<<< orphan*/ *) ; 
- scalar_t__ rtc_clk_xtal_freq_get () ; 
- int s_config_changed ; 
- int /*<<< orphan*/ * s_cpu_freq_by_mode ; 
- scalar_t__ s_light_sleep_en ; 
- int /*<<< orphan*/  s_switch_lock ; 
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_ERR_NOT_SUPPORTED ;
+ int ESP_LOGI (int ,char*,int,int,int,char*) ;
+ int ESP_LOGW (int ,char*,int) ;
+ int ESP_OK ;
+ int MAX (int,int) ;
+ int MHZ ;
+ size_t PM_MODE_APB_MAX ;
+ size_t PM_MODE_APB_MIN ;
+ size_t PM_MODE_CPU_MAX ;
+ size_t PM_MODE_LIGHT_SLEEP ;
+ int REF_CLK_DIV_MIN ;
+ int REF_CLK_FREQ ;
+ int TAG ;
+ int portENTER_CRITICAL (int *) ;
+ int portEXIT_CRITICAL (int *) ;
+ int rtc_clk_cpu_freq_mhz_to_config (int,int *) ;
+ scalar_t__ rtc_clk_xtal_freq_get () ;
+ int s_config_changed ;
+ int * s_cpu_freq_by_mode ;
+ scalar_t__ s_light_sleep_en ;
+ int s_switch_lock ;
 
 esp_err_t esp_pm_configure(const void* vconfig)
 {
-#ifndef CONFIG_PM_ENABLE
+
     return ESP_ERR_NOT_SUPPORTED;
-#endif
+
 
     const esp_pm_config_esp32_t* config = (const esp_pm_config_esp32_t*) vconfig;
-#ifndef CONFIG_FREERTOS_USE_TICKLESS_IDLE
+
     if (config->light_sleep_enable) {
         return ESP_ERR_NOT_SUPPORTED;
     }
-#endif
+
 
     int min_freq_mhz = config->min_freq_mhz;
     int max_freq_mhz = config->max_freq_mhz;
@@ -77,16 +77,16 @@ esp_err_t esp_pm_configure(const void* vconfig)
         return ESP_ERR_INVALID_ARG;
     }
 
-    int apb_max_freq = max_freq_mhz; /* CPU frequency in APB_MAX mode */
+    int apb_max_freq = max_freq_mhz;
     if (max_freq_mhz == 240) {
-        /* We can't switch between 240 and 80/160 without disabling PLL,
-         * so use 240MHz CPU frequency when 80MHz APB frequency is requested.
-         */
+
+
+
         apb_max_freq = 240;
     } else if (max_freq_mhz == 160 || max_freq_mhz == 80) {
-        /* Otherwise, can use 80MHz
-         * CPU frequency when 80MHz APB frequency is requested.
-         */
+
+
+
         apb_max_freq = 80;
     }
 
@@ -105,7 +105,7 @@ esp_err_t esp_pm_configure(const void* vconfig)
     rtc_clk_cpu_freq_mhz_to_config(min_freq_mhz, &s_cpu_freq_by_mode[PM_MODE_APB_MIN]);
     s_cpu_freq_by_mode[PM_MODE_LIGHT_SLEEP] = s_cpu_freq_by_mode[PM_MODE_APB_MIN];
     s_light_sleep_en = config->light_sleep_enable;
-    s_config_changed = true;
+    s_config_changed = 1;
     portEXIT_CRITICAL(&s_switch_lock);
 
     return ESP_OK;

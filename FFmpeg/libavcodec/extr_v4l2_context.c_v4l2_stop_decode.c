@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct v4l2_decoder_cmd {int /*<<< orphan*/  flags; int /*<<< orphan*/  cmd; } ;
-typedef  int /*<<< orphan*/  V4L2Context ;
-struct TYPE_2__ {int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int AVERROR (scalar_t__) ; 
- scalar_t__ ENOTTY ; 
- int /*<<< orphan*/  V4L2_DEC_CMD_STOP ; 
- int /*<<< orphan*/  VIDIOC_DECODER_CMD ; 
- int /*<<< orphan*/  VIDIOC_STREAMOFF ; 
- TYPE_1__* ctx_to_m2mctx (int /*<<< orphan*/ *) ; 
- scalar_t__ errno ; 
- int ff_v4l2_context_set_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_decoder_cmd*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct v4l2_decoder_cmd {int flags; int cmd; } ;
+typedef int V4L2Context ;
+struct TYPE_2__ {int fd; } ;
+
+
+ int AVERROR (scalar_t__) ;
+ scalar_t__ ENOTTY ;
+ int V4L2_DEC_CMD_STOP ;
+ int VIDIOC_DECODER_CMD ;
+ int VIDIOC_STREAMOFF ;
+ TYPE_1__* ctx_to_m2mctx (int *) ;
+ scalar_t__ errno ;
+ int ff_v4l2_context_set_status (int *,int ) ;
+ int ioctl (int ,int ,struct v4l2_decoder_cmd*) ;
 
 __attribute__((used)) static int v4l2_stop_decode(V4L2Context *ctx)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int v4l2_stop_decode(V4L2Context *ctx)
 
     ret = ioctl(ctx_to_m2mctx(ctx)->fd, VIDIOC_DECODER_CMD, &cmd);
     if (ret) {
-        /* DECODER_CMD is optional */
+
         if (errno == ENOTTY)
             return ff_v4l2_context_set_status(ctx, VIDIOC_STREAMOFF);
         else

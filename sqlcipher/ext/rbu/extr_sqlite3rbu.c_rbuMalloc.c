@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ rc; } ;
-typedef  TYPE_1__ sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
+typedef TYPE_1__ sqlite3rbu ;
+typedef int sqlite3_int64 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NOMEM ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* sqlite3_malloc64 (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SQLITE_NOMEM ;
+ scalar_t__ SQLITE_OK ;
+ int assert (int) ;
+ int memset (void*,int ,int ) ;
+ void* sqlite3_malloc64 (int ) ;
 
 __attribute__((used)) static void *rbuMalloc(sqlite3rbu *p, sqlite3_int64 nByte){
   void *pRet = 0;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tgl_dc {int flags; int auth_key_id; int* auth_key; TYPE_1__** options; } ;
 struct TYPE_2__ {int port; int* ip; } ;
 
-/* Variables and functions */
- int TGLDCF_LOGGED_IN ; 
- int /*<<< orphan*/  assert (int) ; 
- int strlen (int*) ; 
- int write (int,int*,int) ; 
+
+ int TGLDCF_LOGGED_IN ;
+ int assert (int) ;
+ int strlen (int*) ;
+ int write (int,int*,int) ;
 
 void write_dc (struct tgl_dc *DC, void *extra) {
   int auth_file_fd = *(int *)extra;
-  if (!DC) { 
+  if (!DC) {
     int x = 0;
     assert (write (auth_file_fd, &x, 4) == 4);
     return;

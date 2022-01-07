@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_event_source ;
-typedef  int /*<<< orphan*/  Session ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  session_stop (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int sd_event_source ;
+typedef int Session ;
+
+
+ int assert (int *) ;
+ int session_stop (int *,int) ;
 
 __attribute__((used)) static int release_timeout_callback(sd_event_source *es, uint64_t usec, void *userdata) {
         Session *s = userdata;
@@ -24,6 +24,6 @@ __attribute__((used)) static int release_timeout_callback(sd_event_source *es, u
         assert(es);
         assert(s);
 
-        session_stop(s, false);
+        session_stop(s, 0);
         return 0;
 }

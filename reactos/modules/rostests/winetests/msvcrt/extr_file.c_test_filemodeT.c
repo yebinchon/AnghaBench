@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WIN32_FIND_DATAA ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  DATA2 ;
-typedef  int /*<<< orphan*/  DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFileA (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetTempFileNameA (char*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- size_t fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WIN32_FIND_DATAA ;
+typedef scalar_t__ HANDLE ;
+typedef int FILE ;
+typedef int DATA2 ;
+typedef int DATA ;
+
+
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFileA (char*,int *) ;
+ int GetTempFileNameA (char*,char*,int ,char*) ;
+ int GetTempPathA (int,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ size_t fread (char*,int,int,int *) ;
+ size_t fwrite (char*,int,int,int *) ;
+ int ok (int,char*) ;
+ int rewind (int *) ;
 
 __attribute__((used)) static void test_filemodeT(void)
 {
-    char DATA  [] = {26, 't', 'e', 's' ,'t'};
+    char DATA [] = {26, 't', 'e', 's' ,'t'};
     char DATA2 [100];
     char temppath[MAX_PATH];
     char tempfile[MAX_PATH];

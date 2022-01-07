@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  systemDirx86 ;
-typedef  int /*<<< orphan*/  systemDir ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CSIDL_SYSTEM ; 
- int /*<<< orphan*/  CSIDL_SYSTEMX86 ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetSystemDirectoryA (char*,int) ; 
- int MAX_PATH ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  lstrcmpiA (char*,char*) ; 
- int /*<<< orphan*/  myPathRemoveBackslashA (char*) ; 
- int /*<<< orphan*/  ok (int,char*,char*,char*) ; 
- int /*<<< orphan*/  pGetSystemWow64DirectoryA (char*,int) ; 
- scalar_t__ pSHGetSpecialFolderPathA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int systemDirx86 ;
+typedef int systemDir ;
+
+
+ int CSIDL_SYSTEM ;
+ int CSIDL_SYSTEMX86 ;
+ int FALSE ;
+ int GetSystemDirectoryA (char*,int) ;
+ int MAX_PATH ;
+ scalar_t__ broken (int) ;
+ int lstrcmpiA (char*,char*) ;
+ int myPathRemoveBackslashA (char*) ;
+ int ok (int,char*,char*,char*) ;
+ int pGetSystemWow64DirectoryA (char*,int) ;
+ scalar_t__ pSHGetSpecialFolderPathA (int *,char*,int ,int ) ;
 
 __attribute__((used)) static void testSystemDir(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void testSystemDir(void)
 
     GetSystemDirectoryA(systemDir, sizeof(systemDir));
     myPathRemoveBackslashA(systemDir);
-    if (pSHGetSpecialFolderPathA(NULL, systemShellPath, CSIDL_SYSTEM, FALSE))
+    if (pSHGetSpecialFolderPathA(((void*)0), systemShellPath, CSIDL_SYSTEM, FALSE))
     {
         myPathRemoveBackslashA(systemShellPath);
         ok(!lstrcmpiA(systemDir, systemShellPath),
@@ -45,7 +45,7 @@ __attribute__((used)) static void testSystemDir(void)
     if (!pGetSystemWow64DirectoryA || !pGetSystemWow64DirectoryA(systemDirx86, sizeof(systemDirx86)))
         GetSystemDirectoryA(systemDirx86, sizeof(systemDirx86));
     myPathRemoveBackslashA(systemDirx86);
-    if (pSHGetSpecialFolderPathA(NULL, systemShellPath, CSIDL_SYSTEMX86, FALSE))
+    if (pSHGetSpecialFolderPathA(((void*)0), systemShellPath, CSIDL_SYSTEMX86, FALSE))
     {
         myPathRemoveBackslashA(systemShellPath);
         ok(!lstrcmpiA(systemDirx86, systemShellPath) || broken(!lstrcmpiA(systemDir, systemShellPath)),

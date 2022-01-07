@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mcb_bus {int /*<<< orphan*/  bus_nr; int /*<<< orphan*/  carrier; } ;
+
+
+
+
+struct mcb_bus {int bus_nr; int carrier; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ida_simple_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct mcb_bus*) ; 
- int /*<<< orphan*/  mcb_ida ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ ) ; 
- struct mcb_bus* to_mcb_bus (struct device*) ; 
+
+ int ida_simple_remove (int *,int ) ;
+ int kfree (struct mcb_bus*) ;
+ int mcb_ida ;
+ int put_device (int ) ;
+ struct mcb_bus* to_mcb_bus (struct device*) ;
 
 __attribute__((used)) static void mcb_free_bus(struct device *dev)
 {
-	struct mcb_bus *bus = to_mcb_bus(dev);
+ struct mcb_bus *bus = to_mcb_bus(dev);
 
-	put_device(bus->carrier);
-	ida_simple_remove(&mcb_ida, bus->bus_nr);
-	kfree(bus);
+ put_device(bus->carrier);
+ ida_simple_remove(&mcb_ida, bus->bus_nr);
+ kfree(bus);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {scalar_t__* streams; int /*<<< orphan*/  slave; int /*<<< orphan*/  num_streams; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct priv {scalar_t__* streams; int slave; int num_streams; } ;
 struct TYPE_3__ {struct priv* priv; } ;
-typedef  TYPE_1__ demuxer_t ;
+typedef TYPE_1__ demuxer_t ;
 
-/* Variables and functions */
- int MPMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_NOPTS_VALUE ; 
- int demux_get_num_stream (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  demux_get_stream (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  demux_stream_is_selected (scalar_t__) ; 
- int /*<<< orphan*/  demuxer_select_track (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MPMIN (int,int ) ;
+ int MP_NOPTS_VALUE ;
+ int demux_get_num_stream (int ) ;
+ int demux_get_stream (int ,int) ;
+ int demux_stream_is_selected (scalar_t__) ;
+ int demuxer_select_track (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void reselect_streams(demuxer_t *demuxer)
 {

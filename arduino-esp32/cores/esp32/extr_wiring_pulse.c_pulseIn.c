@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned long uint32_t ;
 
-/* Variables and functions */
- unsigned long const UINT_MAX ; 
- int /*<<< orphan*/  WAIT_FOR_PIN_STATE (int) ; 
- unsigned long clockCyclesToMicroseconds (unsigned long const) ; 
- unsigned long microsecondsToClockCycles (unsigned long) ; 
- unsigned long const xthal_get_ccount () ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned long uint32_t ;
+
+
+ unsigned long const UINT_MAX ;
+ int WAIT_FOR_PIN_STATE (int) ;
+ unsigned long clockCyclesToMicroseconds (unsigned long const) ;
+ unsigned long microsecondsToClockCycles (unsigned long) ;
+ unsigned long const xthal_get_ccount () ;
 
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout)
 {

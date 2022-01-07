@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct regcache {int dummy; } ;
 
-/* Variables and functions */
- int I387_FISEG_REGNUM ; 
- int I387_FOSEG_REGNUM ; 
- int /*<<< orphan*/  i387_collect_fxsave (struct regcache const*,int,void*) ; 
- int /*<<< orphan*/  regcache_raw_collect (struct regcache const*,int,char*) ; 
+
+ int I387_FISEG_REGNUM ;
+ int I387_FOSEG_REGNUM ;
+ int i387_collect_fxsave (struct regcache const*,int,void*) ;
+ int regcache_raw_collect (struct regcache const*,int,char*) ;
 
 void
 amd64_collect_fxsave (const struct regcache *regcache, int regnum,
-		      void *fxsave)
+        void *fxsave)
 {
   char *regs = fxsave;
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DNS_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
-#define  adns_s_nomemory 130 
-#define  adns_s_ok 129 
-#define  adns_s_systemfail 128 
+
+
+
+typedef int DNS_STATUS ;
+
+
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+
+
+
 
 DNS_STATUS
 DnsIntTranslateAdnsToDNS_STATUS(int Status)
 {
     switch(Status)
     {
-        case adns_s_ok:
+        case 129:
             return ERROR_SUCCESS;
 
-        case adns_s_nomemory:
-        case adns_s_systemfail:
-        default: /* There really aren't any general errors in the dns part. */
+        case 130:
+        case 128:
+        default:
             return ERROR_OUTOFMEMORY;
     }
 }

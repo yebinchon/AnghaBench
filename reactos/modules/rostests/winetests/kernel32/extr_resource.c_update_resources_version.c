@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BeginUpdateResourceA (int /*<<< orphan*/ ,int) ; 
- int EndUpdateResourceA (int /*<<< orphan*/ *,int) ; 
- int FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  MAKEINTRESOURCEA (int) ; 
- int TRUE ; 
- int UpdateResourceA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int) ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int * HANDLE ;
+typedef int BOOL ;
+
+
+ int * BeginUpdateResourceA (int ,int) ;
+ int EndUpdateResourceA (int *,int) ;
+ int FALSE ;
+ int GetLastError () ;
+ int MAKEINTRESOURCEA (int) ;
+ int TRUE ;
+ int UpdateResourceA (int *,int ,int ,int,char*,int) ;
+ int filename ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void update_resources_version( void )
 {
-    HANDLE res = NULL;
+    HANDLE res = ((void*)0);
     BOOL r;
     char foo[] = "red and white";
 
     res = BeginUpdateResourceA( filename, TRUE );
-    ok( res != NULL, "BeginUpdateResource failed\n");
+    ok( res != ((void*)0), "BeginUpdateResource failed\n");
 
-    if (0)  /* this causes subsequent tests to fail on Vista */
+    if (0)
     {
         r = UpdateResourceA( res,
                             MAKEINTRESOURCEA(0x1230),
                             MAKEINTRESOURCEA(0x4567),
                             0xabcd,
-                            NULL, 0 );
+                            ((void*)0), 0 );
         ok( r == FALSE, "UpdateResource failed\n");
     }
 

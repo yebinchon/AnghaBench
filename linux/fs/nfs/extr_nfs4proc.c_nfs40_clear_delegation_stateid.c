@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct nfs4_state {int /*<<< orphan*/  inode; } ;
-struct TYPE_2__ {int /*<<< orphan*/  delegation; } ;
 
-/* Variables and functions */
- TYPE_1__* NFS_I (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs_finish_clear_delegation_stateid (struct nfs4_state*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rcu_access_pointer (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct nfs4_state {int inode; } ;
+struct TYPE_2__ {int delegation; } ;
+
+
+ TYPE_1__* NFS_I (int ) ;
+ int nfs_finish_clear_delegation_stateid (struct nfs4_state*,int *) ;
+ int * rcu_access_pointer (int ) ;
 
 __attribute__((used)) static void nfs40_clear_delegation_stateid(struct nfs4_state *state)
 {
-	if (rcu_access_pointer(NFS_I(state->inode)->delegation) != NULL)
-		nfs_finish_clear_delegation_stateid(state, NULL);
+ if (rcu_access_pointer(NFS_I(state->inode)->delegation) != ((void*)0))
+  nfs_finish_clear_delegation_stateid(state, ((void*)0));
 }

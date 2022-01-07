@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {size_t coeff_per_sb_select; int nb_channels; int*** quantized_coeffs; int /*<<< orphan*/  sub_sampling; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {size_t coeff_per_sb_select; int nb_channels; int*** quantized_coeffs; int sub_sampling; } ;
 struct TYPE_7__ {TYPE_1__* packet; } ;
-struct TYPE_6__ {int size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ QDM2SubPNode ;
-typedef  TYPE_3__ QDM2Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+struct TYPE_6__ {int size; int data; } ;
+typedef TYPE_2__ QDM2SubPNode ;
+typedef TYPE_3__ QDM2Context ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int QDM2_SB_USED (int /*<<< orphan*/ ) ; 
- int** coeff_per_sb_for_avg ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int qdm2_get_se_vlc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int qdm2_get_vlc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vlc_tab_diff ; 
- int /*<<< orphan*/  vlc_tab_level ; 
- int /*<<< orphan*/  vlc_tab_run ; 
+
+ int QDM2_SB_USED (int ) ;
+ int** coeff_per_sb_for_avg ;
+ int init_get_bits (int *,int ,int) ;
+ int qdm2_get_se_vlc (int *,int *,int) ;
+ int qdm2_get_vlc (int *,int *,int ,int) ;
+ int vlc_tab_diff ;
+ int vlc_tab_level ;
+ int vlc_tab_run ;
 
 __attribute__((used)) static int process_subpacket_9(QDM2Context *q, QDM2SubPNode *node)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int process_subpacket_9(QDM2Context *q, QDM2SubPNod
             q->quantized_coeffs[ch][i][0] = level;
 
             for (j = 0; j < (8 - 1); ) {
-                run  = qdm2_get_vlc(&gb, &vlc_tab_run, 0, 1) + 1;
+                run = qdm2_get_vlc(&gb, &vlc_tab_run, 0, 1) + 1;
                 diff = qdm2_get_se_vlc(&vlc_tab_diff, &gb, 2);
 
                 if (j + run >= 8)
@@ -55,7 +55,7 @@ __attribute__((used)) static int process_subpacket_9(QDM2Context *q, QDM2SubPNod
                     q->quantized_coeffs[ch][i][j + k] = (level + ((k * diff) / run));
 
                 level += diff;
-                j     += run;
+                j += run;
             }
         }
 

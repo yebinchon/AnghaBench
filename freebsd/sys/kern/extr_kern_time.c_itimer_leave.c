@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct itimer {scalar_t__ it_usecount; int it_flags; int /*<<< orphan*/  it_mtx; } ;
 
-/* Variables and functions */
- int ITF_WANTED ; 
- int /*<<< orphan*/  KASSERT (int,char*) ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wakeup (struct itimer*) ; 
+
+
+
+struct itimer {scalar_t__ it_usecount; int it_flags; int it_mtx; } ;
+
+
+ int ITF_WANTED ;
+ int KASSERT (int,char*) ;
+ int MA_OWNED ;
+ int mtx_assert (int *,int ) ;
+ int wakeup (struct itimer*) ;
 
 __attribute__((used)) static void
 itimer_leave(struct itimer *it)
 {
 
-	mtx_assert(&it->it_mtx, MA_OWNED);
-	KASSERT(it->it_usecount > 0, ("invalid it_usecount"));
+ mtx_assert(&it->it_mtx, MA_OWNED);
+ KASSERT(it->it_usecount > 0, ("invalid it_usecount"));
 
-	if (--it->it_usecount == 0 && (it->it_flags & ITF_WANTED) != 0)
-		wakeup(it);
+ if (--it->it_usecount == 0 && (it->it_flags & ITF_WANTED) != 0)
+  wakeup(it);
 }

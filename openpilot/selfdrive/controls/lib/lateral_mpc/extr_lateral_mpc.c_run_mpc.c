@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  delta; int /*<<< orphan*/  psi; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ state_t ;
-struct TYPE_7__ {int /*<<< orphan*/  cost; int /*<<< orphan*/ * rate; int /*<<< orphan*/ * delta; int /*<<< orphan*/ * psi; int /*<<< orphan*/ * y; int /*<<< orphan*/ * x; } ;
-typedef  TYPE_2__ log_t ;
-struct TYPE_8__ {double* od; int /*<<< orphan*/ * u; int /*<<< orphan*/ * x; int /*<<< orphan*/ * x0; } ;
 
-/* Variables and functions */
- int N ; 
- int NOD ; 
- int NX ; 
- TYPE_5__ acadoVariables ; 
- int /*<<< orphan*/  acado_feedbackStep () ; 
- int acado_getNWSR () ; 
- int /*<<< orphan*/  acado_getObjective () ; 
- int /*<<< orphan*/  acado_preparationStep () ; 
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int delta; int psi; int y; int x; } ;
+typedef TYPE_1__ state_t ;
+struct TYPE_7__ {int cost; int * rate; int * delta; int * psi; int * y; int * x; } ;
+typedef TYPE_2__ log_t ;
+struct TYPE_8__ {double* od; int * u; int * x; int * x0; } ;
+
+
+ int N ;
+ int NOD ;
+ int NX ;
+ TYPE_5__ acadoVariables ;
+ int acado_feedbackStep () ;
+ int acado_getNWSR () ;
+ int acado_getObjective () ;
+ int acado_preparationStep () ;
 
 int run_mpc(state_t * x0, log_t * solution,
              double l_poly[4], double r_poly[4], double d_poly[4],
              double l_prob, double r_prob, double curvature_factor, double v_ref, double lane_width){
 
-  int    i;
+  int i;
 
   for (i = 0; i <= NOD * N; i+= NOD){
     acadoVariables.od[i] = curvature_factor;
@@ -70,8 +70,8 @@ int run_mpc(state_t * x0, log_t * solution,
   acado_preparationStep();
   acado_feedbackStep();
 
-  /* printf("lat its: %d\n", acado_getNWSR());  // n iterations
-  printf("Objective: %.6f\n", acado_getObjective());  // solution cost */
+
+
 
   for (i = 0; i <= N; i++){
     solution->x[i] = acadoVariables.x[i*NX];
@@ -84,10 +84,10 @@ int run_mpc(state_t * x0, log_t * solution,
   }
   solution->cost = acado_getObjective();
 
-  // Dont shift states here. Current solution is closer to next timestep than if
-  // we use the old solution as a starting point
-  //acado_shiftStates(2, 0, 0);
-  //acado_shiftControls( 0 );
+
+
+
+
 
   return acado_getNWSR();
 }

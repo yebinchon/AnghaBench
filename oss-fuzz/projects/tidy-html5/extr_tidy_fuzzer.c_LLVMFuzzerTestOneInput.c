@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  byte ;
-typedef  int /*<<< orphan*/  TidyBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  run_tidy_parser (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tidyBufAttach (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  tidyBufDetach (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tidyBufFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tidyBufInit (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int byte ;
+typedef int TidyBuffer ;
+
+
+ int run_tidy_parser (int *,int *,int *) ;
+ int tidyBufAttach (int *,int *,size_t) ;
+ int tidyBufDetach (int *) ;
+ int tidyBufFree (int *) ;
+ int tidyBufInit (int *) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     TidyBuffer data_buffer;

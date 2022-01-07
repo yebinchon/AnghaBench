@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* text; scalar_t__ count; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pStack; scalar_t__ ip; } ;
-typedef  scalar_t__ IPTYPE ;
-typedef  TYPE_1__ FICL_VM ;
-typedef  TYPE_2__ FICL_STRING ;
+struct TYPE_5__ {int pStack; scalar_t__ ip; } ;
+typedef scalar_t__ IPTYPE ;
+typedef TYPE_1__ FICL_VM ;
+typedef TYPE_2__ FICL_STRING ;
 
-/* Variables and functions */
- char* alignPtr (char*) ; 
- int /*<<< orphan*/  stackPushPtr (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ char* alignPtr (char*) ;
+ int stackPushPtr (int ,TYPE_2__*) ;
 
 __attribute__((used)) static void cstringLit(FICL_VM *pVM)
 {

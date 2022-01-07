@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int PtrToUlong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShellExecuteW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  display_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int LPCWSTR ;
+typedef int HWND ;
+typedef int HINSTANCE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetLastError () ;
+ int PtrToUlong (int ) ;
+ int ShellExecuteW (int ,int *,int ,int *,int *,int ) ;
+ int TRUE ;
+ int display_error (int ,int ) ;
 
 __attribute__((used)) static BOOL launch_file(HWND hwnd, LPCWSTR cmd, UINT nCmdShow)
 {
-	HINSTANCE hinst = ShellExecuteW(hwnd, NULL/*operation*/, cmd, NULL/*parameters*/, NULL/*dir*/, nCmdShow);
+ HINSTANCE hinst = ShellExecuteW(hwnd, ((void*)0) , cmd, ((void*)0) , ((void*)0) , nCmdShow);
 
-	if (PtrToUlong(hinst) <= 32) {
-		display_error(hwnd, GetLastError());
-		return FALSE;
-	}
+ if (PtrToUlong(hinst) <= 32) {
+  display_error(hwnd, GetLastError());
+  return FALSE;
+ }
 
-	return TRUE;
+ return TRUE;
 }

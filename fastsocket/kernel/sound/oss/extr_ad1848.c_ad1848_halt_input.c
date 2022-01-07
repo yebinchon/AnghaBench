@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  audio_mode; } ;
-typedef  TYPE_2__ ad1848_info ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int lock; int audio_mode; } ;
+typedef TYPE_2__ ad1848_info ;
 struct TYPE_10__ {TYPE_1__* dmap_in; scalar_t__ devc; } ;
-struct TYPE_8__ {int /*<<< orphan*/  dma; } ;
+struct TYPE_8__ {int dma; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCM_ENABLE_INPUT ; 
- int /*<<< orphan*/  ad_mute (TYPE_2__*) ; 
- int ad_read (TYPE_2__*,int) ; 
- int /*<<< orphan*/  ad_write (TYPE_2__*,int,int) ; 
- TYPE_4__** audio_devs ; 
- int /*<<< orphan*/  disable_dma (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enable_dma (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  io_Status (TYPE_2__*) ; 
- int /*<<< orphan*/  isa_dma_bridge_buggy ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int PCM_ENABLE_INPUT ;
+ int ad_mute (TYPE_2__*) ;
+ int ad_read (TYPE_2__*,int) ;
+ int ad_write (TYPE_2__*,int,int) ;
+ TYPE_4__** audio_devs ;
+ int disable_dma (int ) ;
+ int enable_dma (int ) ;
+ int io_Status (TYPE_2__*) ;
+ int isa_dma_bridge_buggy ;
+ int outb (int ,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void ad1848_halt_input(int dev)
 {
-	ad1848_info    *devc = (ad1848_info *) audio_devs[dev]->devc;
-	unsigned long   flags;
+ ad1848_info *devc = (ad1848_info *) audio_devs[dev]->devc;
+ unsigned long flags;
 
-	if (!(ad_read(devc, 9) & 0x02))
-		return;		/* Capture not enabled */
+ if (!(ad_read(devc, 9) & 0x02))
+  return;
 
-	spin_lock_irqsave(&devc->lock,flags);
+ spin_lock_irqsave(&devc->lock,flags);
 
-	ad_mute(devc);
+ ad_mute(devc);
 
-	{
-		int             tmout;
-		
-		if(!isa_dma_bridge_buggy)
-		        disable_dma(audio_devs[dev]->dmap_in->dma);
+ {
+  int tmout;
 
-		for (tmout = 0; tmout < 100000; tmout++)
-			if (ad_read(devc, 11) & 0x10)
-				break;
-		ad_write(devc, 9, ad_read(devc, 9) & ~0x02);	/* Stop capture */
+  if(!isa_dma_bridge_buggy)
+          disable_dma(audio_devs[dev]->dmap_in->dma);
 
-		if(!isa_dma_bridge_buggy)
-		        enable_dma(audio_devs[dev]->dmap_in->dma);
-		devc->audio_mode &= ~PCM_ENABLE_INPUT;
-	}
+  for (tmout = 0; tmout < 100000; tmout++)
+   if (ad_read(devc, 11) & 0x10)
+    break;
+  ad_write(devc, 9, ad_read(devc, 9) & ~0x02);
 
-	outb(0, io_Status(devc));	/* Clear interrupt status */
-	outb(0, io_Status(devc));	/* Clear interrupt status */
+  if(!isa_dma_bridge_buggy)
+          enable_dma(audio_devs[dev]->dmap_in->dma);
+  devc->audio_mode &= ~PCM_ENABLE_INPUT;
+ }
 
-	devc->audio_mode &= ~PCM_ENABLE_INPUT;
+ outb(0, io_Status(devc));
+ outb(0, io_Status(devc));
 
-	spin_unlock_irqrestore(&devc->lock,flags);
+ devc->audio_mode &= ~PCM_ENABLE_INPUT;
+
+ spin_unlock_irqrestore(&devc->lock,flags);
 }

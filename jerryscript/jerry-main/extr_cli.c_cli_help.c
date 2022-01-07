@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ id; char* opt; char* longopt; char* meta; int /*<<< orphan*/ * help; } ;
-typedef  TYPE_1__ cli_opt_t ;
 
-/* Variables and functions */
- int CLI_LINE_INDENT ; 
- int CLI_LINE_TAB ; 
- scalar_t__ CLI_OPT_DEFAULT ; 
- int /*<<< orphan*/  cli_opt_usage (char const*,char const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  cli_print_help (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cli_print_pad (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strlen (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ id; char* opt; char* longopt; char* meta; int * help; } ;
+typedef TYPE_1__ cli_opt_t ;
+
+
+ int CLI_LINE_INDENT ;
+ int CLI_LINE_TAB ;
+ scalar_t__ CLI_OPT_DEFAULT ;
+ int cli_opt_usage (char const*,char const*,TYPE_1__ const*) ;
+ int cli_print_help (int *) ;
+ int cli_print_pad (int) ;
+ int printf (char*,...) ;
+ scalar_t__ strlen (char*) ;
 
 void
-cli_help (const char *prog_name_p, /**< program name, typically argv[0] */
-          const char *command_name_p, /**< command name if available */
-          const cli_opt_t *options_p) /**< array of command line option definitions, terminated by CLI_OPT_DEFAULT */
+cli_help (const char *prog_name_p,
+          const char *command_name_p,
+          const cli_opt_t *options_p)
 {
   cli_opt_usage (prog_name_p, command_name_p, options_p);
 
@@ -38,31 +38,31 @@ cli_help (const char *prog_name_p, /**< program name, typically argv[0] */
     int length = CLI_LINE_INDENT;
     cli_print_pad (CLI_LINE_INDENT);
 
-    if (opt_p->opt != NULL)
+    if (opt_p->opt != ((void*)0))
     {
       printf ("-%s", opt_p->opt);
       length += (int) (strlen (opt_p->opt) + 1);
     }
 
-    if (opt_p->opt != NULL && opt_p->longopt != NULL)
+    if (opt_p->opt != ((void*)0) && opt_p->longopt != ((void*)0))
     {
       printf (", ");
       length += 2;
     }
 
-    if (opt_p->longopt != NULL)
+    if (opt_p->longopt != ((void*)0))
     {
       printf ("--%s", opt_p->longopt);
       length += (int) (strlen (opt_p->longopt) + 2);
     }
 
-    if (opt_p->meta != NULL)
+    if (opt_p->meta != ((void*)0))
     {
       printf (" %s", opt_p->meta);
       length += 1 + (int) strlen (opt_p->meta);
     }
 
-    if (opt_p->help != NULL)
+    if (opt_p->help != ((void*)0))
     {
       if (length >= CLI_LINE_TAB)
       {
@@ -79,11 +79,11 @@ cli_help (const char *prog_name_p, /**< program name, typically argv[0] */
     opt_p++;
   }
 
-  if (opt_p->help != NULL)
+  if (opt_p->help != ((void*)0))
   {
     int length = 0;
 
-    if (opt_p->meta != NULL)
+    if (opt_p->meta != ((void*)0))
     {
       length = (int) (CLI_LINE_INDENT + strlen (opt_p->meta));
 

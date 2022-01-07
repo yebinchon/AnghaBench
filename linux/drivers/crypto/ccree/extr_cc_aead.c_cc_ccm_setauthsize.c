@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_aead {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int cc_aead_setauthsize (struct crypto_aead*,unsigned int) ; 
+
+ int EINVAL ;
+ int cc_aead_setauthsize (struct crypto_aead*,unsigned int) ;
 
 __attribute__((used)) static int cc_ccm_setauthsize(struct crypto_aead *authenc,
-			      unsigned int authsize)
+         unsigned int authsize)
 {
-	switch (authsize) {
-	case 4:
-	case 6:
-	case 8:
-	case 10:
-	case 12:
-	case 14:
-	case 16:
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (authsize) {
+ case 4:
+ case 6:
+ case 8:
+ case 10:
+ case 12:
+ case 14:
+ case 16:
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	return cc_aead_setauthsize(authenc, authsize);
+ return cc_aead_setauthsize(authenc, authsize);
 }

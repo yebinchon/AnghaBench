@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intlist {int /*<<< orphan*/  rblist; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rblist__delete (int /*<<< orphan*/ *) ; 
+
+
+
+struct intlist {int rblist; } ;
+
+
+ int rblist__delete (int *) ;
 
 void intlist__delete(struct intlist *ilist)
 {
-	if (ilist != NULL)
-		rblist__delete(&ilist->rblist);
+ if (ilist != ((void*)0))
+  rblist__delete(&ilist->rblist);
 }

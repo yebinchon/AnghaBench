@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EM_GETFIRSTVISIBLELINE ; 
- int /*<<< orphan*/  EM_SCROLL ; 
-#define  SB_LINEDOWN 131 
-#define  SB_LINEUP 130 
-#define  SB_PAGEDOWN 129 
-#define  SB_PAGEUP 128 
- int SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  new_richedit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+
+
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int DestroyWindow (int ) ;
+ int EM_GETFIRSTVISIBLELINE ;
+ int EM_SCROLL ;
+
+
+
+
+ int SendMessageA (int ,int ,int const,int ) ;
+ int WM_SETTEXT ;
+ int new_richedit (int *) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void test_EM_SCROLL(void)
 {
   int i, j;
-  int r; /* return value */
-  int expr; /* expected return value */
-  HWND hwndRichEdit = new_richedit(NULL);
-  int y_before, y_after; /* units of lines of text */
+  int r;
+  int expr;
+  HWND hwndRichEdit = new_richedit(((void*)0));
+  int y_before, y_after;
 
-  /* test a richedit box containing a single line of text */
-  SendMessageA(hwndRichEdit, WM_SETTEXT, 0, (LPARAM)"a");/* one line of text */
+
+  SendMessageA(hwndRichEdit, WM_SETTEXT, 0, (LPARAM)"a");
   expr = 0x00010000;
   for (i = 0; i < 4; i++) {
-    static const int cmd[4] = { SB_PAGEDOWN, SB_PAGEUP, SB_LINEDOWN, SB_LINEUP };
+    static const int cmd[4] = { 129, 128, 131, 130 };
 
     r = SendMessageA(hwndRichEdit, EM_SCROLL, cmd[i], 0);
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
@@ -48,12 +48,12 @@ __attribute__((used)) static void test_EM_SCROLL(void)
        "(i == %d)\n", y_after, i);
   }
 
-  /*
-   * test a richedit box that will scroll. There are two general
-   * cases: the case without any long lines and the case with a long
-   * line.
-   */
-  for (i = 0; i < 2; i++) { /* iterate through different bodies of text */
+
+
+
+
+
+  for (i = 0; i < 2; i++) {
     if (i == 0)
       SendMessageA(hwndRichEdit, WM_SETTEXT, 0, (LPARAM)"a\nb\nc\nd\ne");
     else
@@ -61,14 +61,14 @@ __attribute__((used)) static void test_EM_SCROLL(void)
                   "a LONG LINE LONG LINE LONG LINE LONG LINE LONG LINE "
                   "LONG LINE LONG LINE LONG LINE LONG LINE LONG LINE "
                   "LONG LINE \nb\nc\nd\ne");
-    for (j = 0; j < 12; j++) /* reset scroll position to top */
-      SendMessageA(hwndRichEdit, EM_SCROLL, SB_PAGEUP, 0);
+    for (j = 0; j < 12; j++)
+      SendMessageA(hwndRichEdit, EM_SCROLL, 128, 0);
 
-    /* get first visible line */
+
     y_before = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
-    r = SendMessageA(hwndRichEdit, EM_SCROLL, SB_PAGEDOWN, 0); /* page down */
+    r = SendMessageA(hwndRichEdit, EM_SCROLL, 129, 0);
 
-    /* get new current first visible line */
+
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
     ok(((r & 0xffffff00) == 0x00010000) &&
@@ -79,18 +79,18 @@ __attribute__((used)) static void test_EM_SCROLL(void)
        "(line %d scrolled to line %d\n", y_before, y_after);
 
     y_before = y_after;
-    
-    r = SendMessageA(hwndRichEdit, EM_SCROLL, SB_PAGEUP, 0); /* page up */
+
+    r = SendMessageA(hwndRichEdit, EM_SCROLL, 128, 0);
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
     ok(((r & 0xffffff00) == 0x0001ff00),
        "EM_SCROLL page up didn't scroll by a small negative number of lines "
        "(r == 0x%08x)\n", r);
     ok(y_after < y_before, "EM_SCROLL page up not functioning (line "
        "%d scrolled to line %d\n", y_before, y_after);
-    
+
     y_before = y_after;
 
-    r = SendMessageA(hwndRichEdit, EM_SCROLL, SB_LINEDOWN, 0); /* line down */
+    r = SendMessageA(hwndRichEdit, EM_SCROLL, 131, 0);
 
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
@@ -101,7 +101,7 @@ __attribute__((used)) static void test_EM_SCROLL(void)
 
     y_before = y_after;
 
-    r = SendMessageA(hwndRichEdit, EM_SCROLL, SB_LINEUP, 0); /* line up */
+    r = SendMessageA(hwndRichEdit, EM_SCROLL, 130, 0);
 
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
@@ -113,7 +113,7 @@ __attribute__((used)) static void test_EM_SCROLL(void)
     y_before = y_after;
 
     r = SendMessageA(hwndRichEdit, EM_SCROLL,
-                    SB_LINEUP, 0); /* lineup beyond top */
+                    130, 0);
 
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
@@ -125,7 +125,7 @@ __attribute__((used)) static void test_EM_SCROLL(void)
     y_before = y_after;
 
     r = SendMessageA(hwndRichEdit, EM_SCROLL,
-                    SB_PAGEUP, 0);/*page up beyond top */
+                    128, 0);
 
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
@@ -134,11 +134,11 @@ __attribute__((used)) static void test_EM_SCROLL(void)
     ok(y_before == y_after,
        "EM_SCROLL page up beyond top worked (%d)\n", y_after);
 
-    for (j = 0; j < 12; j++) /* page down all the way to the bottom */
-      SendMessageA(hwndRichEdit, EM_SCROLL, SB_PAGEDOWN, 0);
+    for (j = 0; j < 12; j++)
+      SendMessageA(hwndRichEdit, EM_SCROLL, 129, 0);
     y_before = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
     r = SendMessageA(hwndRichEdit, EM_SCROLL,
-                    SB_PAGEDOWN, 0); /* page down beyond bot */
+                    129, 0);
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
     ok(r == 0x00010000,
@@ -148,7 +148,7 @@ __attribute__((used)) static void test_EM_SCROLL(void)
        y_before, y_after);
 
     y_before = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
-    r = SendMessageA(hwndRichEdit, EM_SCROLL, SB_LINEDOWN, 0); /* line down beyond bot */
+    r = SendMessageA(hwndRichEdit, EM_SCROLL, 131, 0);
     y_after = SendMessageA(hwndRichEdit, EM_GETFIRSTVISIBLELINE, 0, 0);
 
     ok(r == 0x00010000,

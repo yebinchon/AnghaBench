@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct script_ctx {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct script_ctx*,char*) ; 
- struct script_ctx* get_ctx (int /*<<< orphan*/ *) ; 
+
+ int MP_ERR (struct script_ctx*,char*) ;
+ struct script_ctx* get_ctx (int *) ;
 
 __attribute__((used)) static int script_suspend(lua_State *L)
 {

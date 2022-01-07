@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int ai_addrlen; int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; void* sin_family; struct sockaddr* ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; struct sockaddr_in* ai_next; int /*<<< orphan*/  ai_flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int ai_addrlen; int sin_port; TYPE_1__ sin_addr; void* sin_family; struct sockaddr* ai_addr; int ai_protocol; int ai_socktype; int ai_family; struct sockaddr_in* ai_next; int ai_flags; } ;
 struct sockaddr {int dummy; } ;
-struct addrinfo {int ai_addrlen; int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; void* sin_family; struct sockaddr* ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; struct addrinfo* ai_next; int /*<<< orphan*/  ai_flags; } ;
-typedef  int /*<<< orphan*/  sock ;
-typedef  int /*<<< orphan*/  optval ;
-typedef  int /*<<< orphan*/  on ;
-typedef  int evutil_socket_t ;
-typedef  int /*<<< orphan*/  buf ;
+struct addrinfo {int ai_addrlen; int sin_port; TYPE_1__ sin_addr; void* sin_family; struct sockaddr* ai_addr; int ai_protocol; int ai_socktype; int ai_family; struct addrinfo* ai_next; int ai_flags; } ;
+typedef int sock ;
+typedef int optval ;
+typedef int on ;
+typedef int evutil_socket_t ;
+typedef int buf ;
 
-/* Variables and functions */
- void* AF_INET ; 
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  AI_PASSIVE ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  ccnet_warning (char*,...) ; 
- int /*<<< orphan*/  close (int) ; 
- int createSocket (int const,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  evutil_closesocket (int) ; 
- int /*<<< orphan*/  freeaddrinfo (struct sockaddr_in*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (int /*<<< orphan*/ *,char*,struct sockaddr_in*,struct sockaddr_in**) ; 
- int /*<<< orphan*/  htons (int) ; 
- int makeSocketNonBlocking (int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ void* AF_INET ;
+ int AF_UNSPEC ;
+ int AI_PASSIVE ;
+ int INADDR_ANY ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SO_REUSEADDR ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int ccnet_warning (char*,...) ;
+ int close (int) ;
+ int createSocket (int const,int) ;
+ int errno ;
+ int evutil_closesocket (int) ;
+ int freeaddrinfo (struct sockaddr_in*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (int *,char*,struct sockaddr_in*,struct sockaddr_in**) ;
+ int htons (int) ;
+ int makeSocketNonBlocking (int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ scalar_t__ setsockopt (int,int ,int ,...) ;
+ int snprintf (char*,int,char*,int) ;
+ int socket (int ,int ,int ) ;
+ int strerror (int ) ;
 
 evutil_socket_t
 ccnet_net_bind_tcp (int port, int nonblock)
 {
-#ifndef WIN32
+
     int sockfd, n;
     struct addrinfo hints, *res, *ressave;
     char buf[10];
-        
+
     memset (&hints, 0,sizeof (struct addrinfo));
     hints.ai_flags = AI_PASSIVE;
     hints.ai_family = AF_UNSPEC;
@@ -61,73 +61,42 @@ ccnet_net_bind_tcp (int port, int nonblock)
 
     snprintf (buf, sizeof(buf), "%d", port);
 
-    if ( (n = getaddrinfo(NULL, buf, &hints, &res) ) != 0) {
+    if ( (n = getaddrinfo(((void*)0), buf, &hints, &res) ) != 0) {
         ccnet_warning ("getaddrinfo fails: %s\n", gai_strerror(n));
         return -1;
     }
 
     ressave = res;
-    
+
     do {
         int on = 1;
 
         sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
         if (sockfd < 0)
-            continue;       /* error - try next one */
+            continue;
 
-		if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) < 0) {
-			ccnet_warning ("setsockopt of SO_REUSEADDR error\n");
+  if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on)) < 0) {
+   ccnet_warning ("setsockopt of SO_REUSEADDR error\n");
             continue;
         }
 
         if (nonblock)
             sockfd = makeSocketNonBlocking (sockfd);
         if (sockfd < 0)
-            continue;       /* error - try next one */
+            continue;
 
         if (bind(sockfd, res->ai_addr, res->ai_addrlen) == 0)
-            break;          /* success */
+            break;
 
-        close(sockfd);      /* bind error - close and try next one */
-    } while ( (res = res->ai_next) != NULL);
+        close(sockfd);
+    } while ( (res = res->ai_next) != ((void*)0));
 
     freeaddrinfo (ressave);
 
-    if (res == NULL) {
+    if (res == ((void*)0)) {
         ccnet_warning ("bind fails: %s\n", strerror(errno));
         return -1;
     }
 
     return sockfd;
-#else
-
-    evutil_socket_t s;
-    struct sockaddr_in sock;
-    const int type = AF_INET;
-#if defined( SO_REUSEADDR ) || defined( SO_REUSEPORT )
-    int optval;
-#endif
-
-    if ((s = createSocket(type, nonblock)) < 0)
-        return -1;
-
-    optval = 1;
-    setsockopt (s, SOL_SOCKET, SO_REUSEADDR, (char*)&optval, sizeof(optval));
-
-    memset(&sock, 0, sizeof(sock));
-    sock.sin_family      = AF_INET;
-    sock.sin_addr.s_addr = INADDR_ANY;
-    sock.sin_port        = htons(port);
-
-    if ( bind(s, (struct sockaddr *)&sock, sizeof(struct sockaddr_in)) < 0)
-    {
-        ccnet_warning ("bind fails: %s\n", strerror(errno));
-        evutil_closesocket (s);
-        return -1;
-    }
-    if (nonblock)
-        s = makeSocketNonBlocking (s);
-     
-    return s;
-#endif
 }

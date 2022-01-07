@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Output* time_t ;
+
+
+
+
+typedef struct Output* time_t ;
 struct Output {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (unsigned int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- char* name_from_ip_proto (unsigned int) ; 
- char* status_string (int) ; 
- char* tcp_service_name (unsigned int) ; 
+
+ int UNUSEDPARM (unsigned int) ;
+ int fprintf (int *,char*,...) ;
+ char* name_from_ip_proto (unsigned int) ;
+ char* status_string (int) ;
+ char* tcp_service_name (unsigned int) ;
 
 __attribute__((used)) static void
 unicornscan_out_status(struct Output *out, FILE *fp, time_t timestamp,
@@ -40,7 +40,7 @@ unicornscan_out_status(struct Output *out, FILE *fp, time_t timestamp,
               (ip>> 0)&0xFF,
               ttl);
     } else {
-        /* unicornscan is TCP only, so just use grepable format for other protocols */
+
         fprintf(fp, "Host: %u.%u.%u.%u ()",
                 (unsigned char)(ip>>24),
                 (unsigned char)(ip>>16),
@@ -49,12 +49,12 @@ unicornscan_out_status(struct Output *out, FILE *fp, time_t timestamp,
                 );
         fprintf(fp, "\tPorts: %u/%s/%s/%s/%s/%s/%s\n",
                 port,
-                status_string(status),      //"open", "closed"
-                name_from_ip_proto(ip_proto),  //"tcp", "udp", "sctp"
-                "", //owner
-                "", //service
-                "", //SunRPC info
-                "" //Version info
+                status_string(status),
+                name_from_ip_proto(ip_proto),
+                "",
+                "",
+                "",
+                ""
                 );
     }
 }

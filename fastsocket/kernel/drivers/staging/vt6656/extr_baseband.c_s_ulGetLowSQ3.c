@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_3__ {int* aulPktNum; int* aulSQ3Val; } ;
-typedef  TYPE_1__* PSDevice ;
+typedef TYPE_1__* PSDevice ;
 
-/* Variables and functions */
- int RATE_48M ; 
- size_t RATE_54M ; 
- int RATE_6M ; 
+
+ int RATE_48M ;
+ size_t RATE_54M ;
+ int RATE_6M ;
 
 __attribute__((used)) static
 ULONG
 s_ulGetLowSQ3(PSDevice pDevice)
 {
-int   ii;
+int ii;
 ULONG ulSQ3 = 0;
 ULONG ulMaxPacket;
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* g; } ;
 struct TYPE_3__ {long long clicks; long long views; } ;
 
-/* Variables and functions */
- TYPE_2__ AdStats ; 
- long MAX_AD_VIEWS ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,TYPE_1__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*,long long,long long) ; 
+
+ TYPE_2__ AdStats ;
+ long MAX_AD_VIEWS ;
+ int O_RDONLY ;
+ int assert (int) ;
+ int close (int) ;
+ int fprintf (int ,char*,char*) ;
+ int open (char*,int ) ;
+ int read (int,TYPE_1__*,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ int vkprintf (int,char*,char*,long long,long long) ;
 
 int load_stats_file (char *stats_filename) {
   if (verbosity > 0) {

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int mdpth; int pdpth; int /*<<< orphan*/ * mtlsa; int /*<<< orphan*/ * mcert; } ;
-struct TYPE_15__ {int /*<<< orphan*/  rlayer; TYPE_3__* method; TYPE_2__* ctx; scalar_t__ shared_sigalgslen; int /*<<< orphan*/ * shared_sigalgs; int /*<<< orphan*/  param; TYPE_1__ dane; int /*<<< orphan*/ * pha_dgst; int /*<<< orphan*/  key_update; scalar_t__ first_packet; int /*<<< orphan*/ * init_buf; int /*<<< orphan*/  rwstate; int /*<<< orphan*/  version; int /*<<< orphan*/  client_version; scalar_t__ renegotiate; scalar_t__ shutdown; scalar_t__ hit; scalar_t__ error; scalar_t__ sent_tickets; scalar_t__ hello_retry_request; scalar_t__ psksession_id_len; int /*<<< orphan*/ * psksession_id; int /*<<< orphan*/ * psksession; int /*<<< orphan*/ * session; } ;
-struct TYPE_14__ {int /*<<< orphan*/  (* ssl_clear ) (TYPE_4__*) ;int /*<<< orphan*/  (* ssl_new ) (TYPE_4__*) ;int /*<<< orphan*/  (* ssl_free ) (TYPE_4__*) ;int /*<<< orphan*/  version; } ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int mdpth; int pdpth; int * mtlsa; int * mcert; } ;
+struct TYPE_15__ {int rlayer; TYPE_3__* method; TYPE_2__* ctx; scalar_t__ shared_sigalgslen; int * shared_sigalgs; int param; TYPE_1__ dane; int * pha_dgst; int key_update; scalar_t__ first_packet; int * init_buf; int rwstate; int version; int client_version; scalar_t__ renegotiate; scalar_t__ shutdown; scalar_t__ hit; scalar_t__ error; scalar_t__ sent_tickets; scalar_t__ hello_retry_request; scalar_t__ psksession_id_len; int * psksession_id; int * psksession; int * session; } ;
+struct TYPE_14__ {int (* ssl_clear ) (TYPE_4__*) ;int (* ssl_new ) (TYPE_4__*) ;int (* ssl_free ) (TYPE_4__*) ;int version; } ;
 struct TYPE_13__ {TYPE_3__* method; } ;
-typedef  TYPE_4__ SSL ;
+typedef TYPE_4__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_MEM_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RECORD_LAYER_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_F_SSL_CLEAR ; 
- int /*<<< orphan*/  SSL_KEY_UPDATE_NONE ; 
- int /*<<< orphan*/  SSL_NOTHING ; 
- int /*<<< orphan*/  SSL_R_NO_METHOD_SPECIFIED ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_VERIFY_PARAM_move_peername (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_ciphers (TYPE_4__*) ; 
- int /*<<< orphan*/  ossl_statem_clear (TYPE_4__*) ; 
- scalar_t__ ssl_clear_bad_session (TYPE_4__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_4__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_4__*) ; 
+
+ int BUF_MEM_free (int *) ;
+ int ERR_R_INTERNAL_ERROR ;
+ int EVP_MD_CTX_free (int *) ;
+ int OPENSSL_free (int *) ;
+ int RECORD_LAYER_clear (int *) ;
+ int SSL_F_SSL_CLEAR ;
+ int SSL_KEY_UPDATE_NONE ;
+ int SSL_NOTHING ;
+ int SSL_R_NO_METHOD_SPECIFIED ;
+ int SSL_SESSION_free (int *) ;
+ int SSLerr (int ,int ) ;
+ int X509_VERIFY_PARAM_move_peername (int ,int *) ;
+ int X509_free (int *) ;
+ int clear_ciphers (TYPE_4__*) ;
+ int ossl_statem_clear (TYPE_4__*) ;
+ scalar_t__ ssl_clear_bad_session (TYPE_4__*) ;
+ int stub1 (TYPE_4__*) ;
+ int stub2 (TYPE_4__*) ;
+ int stub3 (TYPE_4__*) ;
 
 int SSL_clear(SSL *s)
 {
-    if (s->method == NULL) {
+    if (s->method == ((void*)0)) {
         SSLerr(SSL_F_SSL_CLEAR, SSL_R_NO_METHOD_SPECIFIED);
         return 0;
     }
 
     if (ssl_clear_bad_session(s)) {
         SSL_SESSION_free(s->session);
-        s->session = NULL;
+        s->session = ((void*)0);
     }
     SSL_SESSION_free(s->psksession);
-    s->psksession = NULL;
+    s->psksession = ((void*)0);
     OPENSSL_free(s->psksession_id);
-    s->psksession_id = NULL;
+    s->psksession_id = ((void*)0);
     s->psksession_id_len = 0;
     s->hello_retry_request = 0;
     s->sent_tickets = 0;
@@ -76,34 +76,34 @@ int SSL_clear(SSL *s)
     s->rwstate = SSL_NOTHING;
 
     BUF_MEM_free(s->init_buf);
-    s->init_buf = NULL;
+    s->init_buf = ((void*)0);
     clear_ciphers(s);
     s->first_packet = 0;
 
     s->key_update = SSL_KEY_UPDATE_NONE;
 
     EVP_MD_CTX_free(s->pha_dgst);
-    s->pha_dgst = NULL;
+    s->pha_dgst = ((void*)0);
 
-    /* Reset DANE verification result state */
+
     s->dane.mdpth = -1;
     s->dane.pdpth = -1;
     X509_free(s->dane.mcert);
-    s->dane.mcert = NULL;
-    s->dane.mtlsa = NULL;
+    s->dane.mcert = ((void*)0);
+    s->dane.mtlsa = ((void*)0);
 
-    /* Clear the verification result peername */
-    X509_VERIFY_PARAM_move_peername(s->param, NULL);
 
-    /* Clear any shared connection state */
+    X509_VERIFY_PARAM_move_peername(s->param, ((void*)0));
+
+
     OPENSSL_free(s->shared_sigalgs);
-    s->shared_sigalgs = NULL;
+    s->shared_sigalgs = ((void*)0);
     s->shared_sigalgslen = 0;
 
-    /*
-     * Check to see if we were changed into a different method, if so, revert
-     * back.
-     */
+
+
+
+
     if (s->method != s->ctx->method) {
         s->method->ssl_free(s);
         s->method = s->ctx->method;

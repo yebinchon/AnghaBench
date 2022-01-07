@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int force; int no_interact; int /*<<< orphan*/ * logger; TYPE_2__* priv; } ;
-typedef  TYPE_1__ vlc_object_t ;
-struct TYPE_7__ {char const* typename; int /*<<< orphan*/ * resources; int /*<<< orphan*/  var_wait; int /*<<< orphan*/  var_lock; int /*<<< orphan*/ * var_root; TYPE_1__* parent; } ;
-typedef  TYPE_2__ vlc_object_internals_t ;
 
-/* Variables and functions */
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- TYPE_2__* malloc (int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int force; int no_interact; int * logger; TYPE_2__* priv; } ;
+typedef TYPE_1__ vlc_object_t ;
+struct TYPE_7__ {char const* typename; int * resources; int var_wait; int var_lock; int * var_root; TYPE_1__* parent; } ;
+typedef TYPE_2__ vlc_object_internals_t ;
+
+
+ scalar_t__ likely (int ) ;
+ TYPE_2__* malloc (int) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_cond_init (int *) ;
+ int vlc_mutex_init (int *) ;
 
 int vlc_object_init(vlc_object_t *restrict obj, vlc_object_t *parent,
                     const char *typename)
 {
     vlc_object_internals_t *priv = malloc(sizeof (*priv));
-    if (unlikely(priv == NULL))
+    if (unlikely(priv == ((void*)0)))
         return -1;
 
     priv->parent = parent;
     priv->typename = typename;
-    priv->var_root = NULL;
+    priv->var_root = ((void*)0);
     vlc_mutex_init (&priv->var_lock);
     vlc_cond_init (&priv->var_wait);
-    priv->resources = NULL;
+    priv->resources = ((void*)0);
 
     obj->priv = priv;
-    obj->force = false;
+    obj->force = 0;
 
-    if (likely(parent != NULL))
+    if (likely(parent != ((void*)0)))
     {
         obj->logger = parent->logger;
         obj->no_interact = parent->no_interact;
     }
     else
     {
-        obj->logger = NULL;
-        obj->no_interact = false;
+        obj->logger = ((void*)0);
+        obj->no_interact = 0;
     }
 
     return 0;

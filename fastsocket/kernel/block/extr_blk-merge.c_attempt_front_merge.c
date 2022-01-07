@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct request_queue {int dummy; } ;
 struct request {int dummy; } ;
 
-/* Variables and functions */
- int attempt_merge (struct request_queue*,struct request*,struct request*) ; 
- struct request* elv_former_request (struct request_queue*,struct request*) ; 
+
+ int attempt_merge (struct request_queue*,struct request*,struct request*) ;
+ struct request* elv_former_request (struct request_queue*,struct request*) ;
 
 int attempt_front_merge(struct request_queue *q, struct request *rq)
 {
-	struct request *prev = elv_former_request(q, rq);
+ struct request *prev = elv_former_request(q, rq);
 
-	if (prev)
-		return attempt_merge(q, prev, rq);
+ if (prev)
+  return attempt_merge(q, prev, rq);
 
-	return 0;
+ return 0;
 }

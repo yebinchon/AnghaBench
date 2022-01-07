@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tmp ;
 struct cpu_stack_walk {int dummy; } ;
-typedef  scalar_t__ ULONG_PTR ;
-struct TYPE_2__ {unsigned int (* map_dwarf_register ) (scalar_t__,int /*<<< orphan*/ ) ;scalar_t__* (* fetch_context_reg ) (int /*<<< orphan*/ *,unsigned int,unsigned int*) ;} ;
-typedef  int /*<<< orphan*/  CONTEXT ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ ULONG_PTR ;
+struct TYPE_2__ {unsigned int (* map_dwarf_register ) (scalar_t__,int ) ;scalar_t__* (* fetch_context_reg ) (int *,unsigned int,unsigned int*) ;} ;
+typedef int CONTEXT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,scalar_t__,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,void*) ; 
- TYPE_1__* dbghelp_current_cpu ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char*,unsigned int) ; 
- unsigned int stub1 (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__* stub2 (int /*<<< orphan*/ *,unsigned int,unsigned int*) ; 
- int /*<<< orphan*/  sw_read_mem (struct cpu_stack_walk*,scalar_t__,char*,unsigned int) ; 
+
+ int FIXME (char*,scalar_t__,unsigned int,unsigned int) ;
+ int TRUE ;
+ int WARN (char*,void*) ;
+ TYPE_1__* dbghelp_current_cpu ;
+ int memcpy (scalar_t__*,char*,unsigned int) ;
+ unsigned int stub1 (scalar_t__,int ) ;
+ scalar_t__* stub2 (int *,unsigned int,unsigned int*) ;
+ int sw_read_mem (struct cpu_stack_walk*,scalar_t__,char*,unsigned int) ;
 
 __attribute__((used)) static void set_context_reg(struct cpu_stack_walk* csw, CONTEXT *context, ULONG_PTR dw_reg,
                             ULONG_PTR val, BOOL isdebuggee)
@@ -36,7 +36,7 @@ __attribute__((used)) static void set_context_reg(struct cpu_stack_walk* csw, CO
 
     if (isdebuggee)
     {
-        char    tmp[16];
+        char tmp[16];
 
         if (sz > sizeof(tmp))
         {

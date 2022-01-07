@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint32_t ;
-struct msg {int mlen; int /*<<< orphan*/  mhdr; } ;
+
+
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
+struct msg {int mlen; int mhdr; } ;
 struct mbuf {char* pos; char* last; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int CRLF_LEN ; 
- int /*<<< orphan*/  LOG_VVERB ; 
- int /*<<< orphan*/  NC_ENOMEM ; 
- int /*<<< orphan*/  NC_OK ; 
- struct mbuf* STAILQ_FIRST (int /*<<< orphan*/ *) ; 
- struct mbuf* STAILQ_NEXT (struct mbuf*,int /*<<< orphan*/ ) ; 
- scalar_t__ isdigit (char) ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  mbuf_copy (struct mbuf*,char*,int) ; 
- scalar_t__ mbuf_empty (struct mbuf*) ; 
- struct mbuf* mbuf_get () ; 
- int /*<<< orphan*/  mbuf_insert (int /*<<< orphan*/ *,struct mbuf*) ; 
- int mbuf_length (struct mbuf*) ; 
- int /*<<< orphan*/  mbuf_put (struct mbuf*) ; 
- int /*<<< orphan*/  mbuf_remove (int /*<<< orphan*/ *,struct mbuf*) ; 
- int /*<<< orphan*/  next ; 
+
+ int ASSERT (int) ;
+ int CRLF_LEN ;
+ int LOG_VVERB ;
+ int NC_ENOMEM ;
+ int NC_OK ;
+ struct mbuf* STAILQ_FIRST (int *) ;
+ struct mbuf* STAILQ_NEXT (struct mbuf*,int ) ;
+ scalar_t__ isdigit (char) ;
+ int log_debug (int ,char*,int) ;
+ int mbuf_copy (struct mbuf*,char*,int) ;
+ scalar_t__ mbuf_empty (struct mbuf*) ;
+ struct mbuf* mbuf_get () ;
+ int mbuf_insert (int *,struct mbuf*) ;
+ int mbuf_length (struct mbuf*) ;
+ int mbuf_put (struct mbuf*) ;
+ int mbuf_remove (int *,struct mbuf*) ;
+ int next ;
 
 __attribute__((used)) static rstatus_t
 memcache_copy_bulk(struct msg *dst, struct msg *src)
@@ -53,17 +53,17 @@ memcache_copy_bulk(struct msg *dst, struct msg *src)
     }
 
     mbuf = STAILQ_FIRST(&src->mhdr);
-    if (mbuf == NULL) {
-        return NC_OK;           /* key not exists */
+    if (mbuf == ((void*)0)) {
+        return NC_OK;
     }
     p = mbuf->pos;
 
-    /*
-     * get : VALUE key 0 len\r\nval\r\n
-     * gets: VALUE key 0 len cas\r\nval\r\n
-     */
+
+
+
+
     ASSERT(*p == 'V');
-    for (i = 0; i < 3; i++) {                 /*  eat 'VALUE key 0 '  */
+    for (i = 0; i < 3; i++) {
         for (; *p != ' ';) {
             p++;
         }
@@ -75,7 +75,7 @@ memcache_copy_bulk(struct msg *dst, struct msg *src)
         len = len * 10 + (uint32_t)(*p - '0');
     }
 
-    for (; p < mbuf->last && ('\r' != *p); p++) { /* eat cas for gets */
+    for (; p < mbuf->last && ('\r' != *p); p++) {
         ;
     }
 
@@ -84,17 +84,17 @@ memcache_copy_bulk(struct msg *dst, struct msg *src)
 
     bytes = len;
 
-    /* copy len bytes to dst */
+
     for (; mbuf;) {
-        if (mbuf_length(mbuf) <= len) {   /* steal this mbuf from src to dst */
+        if (mbuf_length(mbuf) <= len) {
             nbuf = STAILQ_NEXT(mbuf, next);
             mbuf_remove(&src->mhdr, mbuf);
             mbuf_insert(&dst->mhdr, mbuf);
             len -= mbuf_length(mbuf);
             mbuf = nbuf;
-        } else {                        /* split it */
+        } else {
             nbuf = mbuf_get();
-            if (nbuf == NULL) {
+            if (nbuf == ((void*)0)) {
                 return NC_ENOMEM;
             }
             mbuf_copy(nbuf, mbuf->pos, len);

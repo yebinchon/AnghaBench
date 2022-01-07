@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct mptcp_option {int /*<<< orphan*/  sub_etc; } ;
-typedef  int /*<<< orphan*/  netdissect_options ;
-struct TYPE_2__ {int (* print ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ;int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPTCP_OPT_SUBTYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ MPTCP_SUB_FCLOSE ; 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int min (int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_1__* mptcp_options ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int u_char ;
+struct mptcp_option {int sub_etc; } ;
+typedef int netdissect_options ;
+struct TYPE_2__ {int (* print ) (int *,int const*,int,int ) ;int name; } ;
+
+
+ int MPTCP_OPT_SUBTYPE (int ) ;
+ scalar_t__ MPTCP_SUB_FCLOSE ;
+ int ND_PRINT (int *) ;
+ int min (int ,scalar_t__) ;
+ TYPE_1__* mptcp_options ;
+ int stub1 (int *,int const*,int,int ) ;
 
 int
 mptcp_print(netdissect_options *ndo,

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ll ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ engine_id ; 
- int engine_n ; 
- scalar_t__ get_utime (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ll ;
+
+
+ int CLOCK_REALTIME ;
+ int assert (int) ;
+ scalar_t__ engine_id ;
+ int engine_n ;
+ scalar_t__ get_utime (int ) ;
 
 ll get_next_alias (void) {
   static ll st = -1;

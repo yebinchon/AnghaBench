@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RProc {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_method_t ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+typedef int mrb_method_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_METHOD_FROM_PROC (int /*<<< orphan*/ ,struct RProc*) ; 
- int /*<<< orphan*/  mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_method_raw (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- struct RProc* mrb_proc_new_cfunc_with_env (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_symbol_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  return_func_name ; 
+
+ int MRB_METHOD_FROM_PROC (int ,struct RProc*) ;
+ int mrb_class_ptr (int ) ;
+ int mrb_define_method_raw (int *,int ,int ,int ) ;
+ int mrb_get_args (int *,char*,int *) ;
+ struct RProc* mrb_proc_new_cfunc_with_env (int *,int ,int,int *) ;
+ int mrb_symbol_value (int ) ;
+ int return_func_name ;
 
 __attribute__((used)) static mrb_value
 proc_new_cfunc_with_env(mrb_state *mrb, mrb_value self)

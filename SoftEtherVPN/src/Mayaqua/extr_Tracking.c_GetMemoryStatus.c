@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_8__ {size_t MemoryBlocksNum; size_t MemorySize; } ;
 struct TYPE_7__ {struct TYPE_7__* Next; TYPE_1__* Object; } ;
-struct TYPE_6__ {size_t Size; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_1__ TRACKING_OBJECT ;
-typedef  TYPE_2__ TRACKING_LIST ;
-typedef  TYPE_3__ MEMORY_STATUS ;
+struct TYPE_6__ {size_t Size; int Name; } ;
+typedef TYPE_1__ TRACKING_OBJECT ;
+typedef TYPE_2__ TRACKING_LIST ;
+typedef TYPE_3__ MEMORY_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LockTrackingList () ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,char*) ; 
- size_t TRACKING_NUM_ARRAY ; 
- int /*<<< orphan*/  UnlockTrackingList () ; 
- TYPE_2__** hashlist ; 
+
+ int LockTrackingList () ;
+ scalar_t__ StrCmpi (int ,char*) ;
+ size_t TRACKING_NUM_ARRAY ;
+ int UnlockTrackingList () ;
+ TYPE_2__** hashlist ;
 
 void GetMemoryStatus(MEMORY_STATUS *status)
 {
-	UINT i, num, size;
-	// Validate arguments
-	if (status == NULL)
-	{
-		return;
-	}
+ UINT i, num, size;
 
-	LockTrackingList();
-	{
-		size = num = 0;
+ if (status == ((void*)0))
+ {
+  return;
+ }
 
-		for (i = 0;i < TRACKING_NUM_ARRAY;i++)
-		{
-			if (hashlist[i] != NULL)
-			{
-				TRACKING_LIST *t = hashlist[i];
+ LockTrackingList();
+ {
+  size = num = 0;
 
-				while (true)
-				{
-					TRACKING_OBJECT *o = t->Object;
+  for (i = 0;i < TRACKING_NUM_ARRAY;i++)
+  {
+   if (hashlist[i] != ((void*)0))
+   {
+    TRACKING_LIST *t = hashlist[i];
 
-					if (StrCmpi(o->Name, "MEM") == 0)
-					{
-						num++;
-						size += o->Size;
-					}
+    while (1)
+    {
+     TRACKING_OBJECT *o = t->Object;
 
-					if (t->Next == NULL)
-					{
-						break;
-					}
+     if (StrCmpi(o->Name, "MEM") == 0)
+     {
+      num++;
+      size += o->Size;
+     }
 
-					t = t->Next;
-				}
-			}
-		}
-	}
-	UnlockTrackingList();
+     if (t->Next == ((void*)0))
+     {
+      break;
+     }
 
-	status->MemoryBlocksNum = num;
-	status->MemorySize = size;
+     t = t->Next;
+    }
+   }
+  }
+ }
+ UnlockTrackingList();
+
+ status->MemoryBlocksNum = num;
+ status->MemorySize = size;
 }

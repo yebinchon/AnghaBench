@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ EQ_ATTR ; 
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- char* GET_RTX_FORMAT (scalar_t__) ; 
- int GET_RTX_LENGTH (scalar_t__) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- scalar_t__ XSTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int,int) ; 
- int XVECLEN (int /*<<< orphan*/ ,int) ; 
- scalar_t__ alternative_name ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ EQ_ATTR ;
+ scalar_t__ GET_CODE (int ) ;
+ char* GET_RTX_FORMAT (scalar_t__) ;
+ int GET_RTX_LENGTH (scalar_t__) ;
+ int XEXP (int ,int) ;
+ scalar_t__ XSTR (int ,int ) ;
+ int XVECEXP (int ,int,int) ;
+ int XVECLEN (int ,int) ;
+ scalar_t__ alternative_name ;
 
 __attribute__((used)) static int
 compares_alternatives_p (rtx exp)
@@ -38,15 +38,15 @@ compares_alternatives_p (rtx exp)
       {
       case 'e':
       case 'u':
-	if (compares_alternatives_p (XEXP (exp, i)))
-	  return 1;
-	break;
+ if (compares_alternatives_p (XEXP (exp, i)))
+   return 1;
+ break;
 
       case 'E':
-	for (j = 0; j < XVECLEN (exp, i); j++)
-	  if (compares_alternatives_p (XVECEXP (exp, i, j)))
-	    return 1;
-	break;
+ for (j = 0; j < XVECLEN (exp, i); j++)
+   if (compares_alternatives_p (XVECEXP (exp, i, j)))
+     return 1;
+ break;
       }
 
   return 0;

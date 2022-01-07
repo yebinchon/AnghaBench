@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * yyscan_t ;
-struct yyguts_t {int /*<<< orphan*/ * yy_start_stack; int /*<<< orphan*/ * yy_buffer_stack; } ;
 
-/* Variables and functions */
- scalar_t__ YY_CURRENT_BUFFER ; 
- int /*<<< orphan*/ * YY_CURRENT_BUFFER_LVALUE ; 
- int /*<<< orphan*/  yy_delete_buffer (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yy_init_globals (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yyfree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yypop_buffer_state (int /*<<< orphan*/ *) ; 
 
-int yylex_destroy  (yyscan_t yyscanner)
+
+
+typedef int * yyscan_t ;
+struct yyguts_t {int * yy_start_stack; int * yy_buffer_stack; } ;
+
+
+ scalar_t__ YY_CURRENT_BUFFER ;
+ int * YY_CURRENT_BUFFER_LVALUE ;
+ int yy_delete_buffer (scalar_t__,int *) ;
+ int yy_init_globals (int *) ;
+ int yyfree (int *,int *) ;
+ int yypop_buffer_state (int *) ;
+
+int yylex_destroy (yyscan_t yyscanner)
 {
     struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;
 
-    /* Pop the buffer stack, destroying each element. */
-	while(YY_CURRENT_BUFFER){
-		yy_delete_buffer( YY_CURRENT_BUFFER , yyscanner );
-		YY_CURRENT_BUFFER_LVALUE = NULL;
-		yypop_buffer_state(yyscanner);
-	}
 
-	/* Destroy the stack itself. */
-	yyfree(yyg->yy_buffer_stack , yyscanner);
-	yyg->yy_buffer_stack = NULL;
+ while(YY_CURRENT_BUFFER){
+  yy_delete_buffer( YY_CURRENT_BUFFER , yyscanner );
+  YY_CURRENT_BUFFER_LVALUE = ((void*)0);
+  yypop_buffer_state(yyscanner);
+ }
 
-    /* Destroy the start condition stack. */
+
+ yyfree(yyg->yy_buffer_stack , yyscanner);
+ yyg->yy_buffer_stack = ((void*)0);
+
+
         yyfree( yyg->yy_start_stack , yyscanner );
-        yyg->yy_start_stack = NULL;
+        yyg->yy_start_stack = ((void*)0);
 
-    /* Reset the globals. This is important in a non-reentrant scanner so the next time
-     * yylex() is called, initialization will occur. */
+
+
     yy_init_globals( yyscanner);
 
-    /* Destroy the main struct (reentrant only). */
+
     yyfree ( yyscanner , yyscanner );
-    yyscanner = NULL;
+    yyscanner = ((void*)0);
     return 0;
 }

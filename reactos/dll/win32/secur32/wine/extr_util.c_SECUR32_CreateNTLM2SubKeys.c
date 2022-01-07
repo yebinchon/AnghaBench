@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* recv_seal_key; void* recv_sign_key; void* send_seal_key; void* send_sign_key; } ;
 struct TYPE_6__ {TYPE_1__ ntlm2; } ;
-struct TYPE_7__ {scalar_t__ mode; TYPE_2__ crypt; int /*<<< orphan*/  session_key; } ;
-typedef  int /*<<< orphan*/  SECURITY_STATUS ;
-typedef  TYPE_3__* PNegoHelper ;
+struct TYPE_7__ {scalar_t__ mode; TYPE_2__ crypt; int session_key; } ;
+typedef int SECURITY_STATUS ;
+typedef TYPE_3__* PNegoHelper ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ NTLM_CLIENT ; 
- int /*<<< orphan*/  SECUR32_CalcNTLM2Subkey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  SEC_E_OK ; 
- int /*<<< orphan*/  client_to_server_seal_constant ; 
- int /*<<< orphan*/  client_to_server_sign_constant ; 
- int /*<<< orphan*/  server_to_client_seal_constant ; 
- int /*<<< orphan*/  server_to_client_sign_constant ; 
+
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ scalar_t__ NTLM_CLIENT ;
+ int SECUR32_CalcNTLM2Subkey (int ,int ,void*) ;
+ int SEC_E_OK ;
+ int client_to_server_seal_constant ;
+ int client_to_server_sign_constant ;
+ int server_to_client_seal_constant ;
+ int server_to_client_sign_constant ;
 
 SECURITY_STATUS SECUR32_CreateNTLM2SubKeys(PNegoHelper helper)
 {

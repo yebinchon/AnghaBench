@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvdimm_drvdata {int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvdimm_drvdata_release ; 
+
+
+
+struct nvdimm_drvdata {int kref; } ;
+
+
+ int kref_put (int *,int ) ;
+ int nvdimm_drvdata_release ;
 
 void put_ndd(struct nvdimm_drvdata *ndd)
 {
-	if (ndd)
-		kref_put(&ndd->kref, nvdimm_drvdata_release);
+ if (ndd)
+  kref_put(&ndd->kref, nvdimm_drvdata_release);
 }

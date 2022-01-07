@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int nSrc; char* zSourceStr; int /*<<< orphan*/  nOpen; TYPE_2__* pClosable; scalar_t__ nMaxOpen; scalar_t__ bSwarm; TYPE_2__* aSrc; } ;
-typedef  TYPE_1__ UnionTab ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int nSrc; char* zSourceStr; int nOpen; TYPE_2__* pClosable; scalar_t__ nMaxOpen; scalar_t__ bSwarm; TYPE_2__* aSrc; } ;
+typedef TYPE_1__ UnionTab ;
 struct TYPE_12__ {scalar_t__ db; struct TYPE_12__* pNextClosable; } ;
-typedef  TYPE_2__ UnionSrc ;
+typedef TYPE_2__ UnionSrc ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_close (scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*) ; 
- scalar_t__ sqlite3_stricmp (char*,char*) ; 
- int /*<<< orphan*/  unionCloseSources (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  unionInvokeOpenClose (TYPE_1__*,TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int unionOpenDatabaseInner (TYPE_1__*,TYPE_2__*,char**) ; 
- char* unionSourceToStr (int*,TYPE_1__*,TYPE_2__*,char**) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int sqlite3_close (scalar_t__) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*) ;
+ scalar_t__ sqlite3_stricmp (char*,char*) ;
+ int unionCloseSources (TYPE_1__*,scalar_t__) ;
+ int unionInvokeOpenClose (TYPE_1__*,TYPE_2__*,int,int ) ;
+ int unionOpenDatabaseInner (TYPE_1__*,TYPE_2__*,char**) ;
+ char* unionSourceToStr (int*,TYPE_1__*,TYPE_2__*,char**) ;
 
 __attribute__((used)) static int unionOpenDatabase(UnionTab *pTab, int iSrc, char **pzErr){
   int rc = SQLITE_OK;

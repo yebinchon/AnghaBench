@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int USART_Mode; int /*<<< orphan*/  USART_HardwareFlowControl; int /*<<< orphan*/  USART_Parity; int /*<<< orphan*/  USART_StopBits; int /*<<< orphan*/  USART_WordLength; int /*<<< orphan*/  USART_BaudRate; } ;
-typedef  TYPE_1__ USART_InitTypeDef ;
-struct TYPE_6__ {int configured; int /*<<< orphan*/  USARTx; int /*<<< orphan*/  baud; int /*<<< orphan*/  num_pins; int /*<<< orphan*/  pins; int /*<<< orphan*/  apb2; int /*<<< orphan*/  apb1; int /*<<< orphan*/  ahb1; int /*<<< orphan*/  rx_buf_size; int /*<<< orphan*/  rx_buf; int /*<<< orphan*/  rx_fifo; } ;
-typedef  TYPE_2__ CONFIG_USART_ConfigState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_pins (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/  FIFO_InitStruct (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_AHBPeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB1PeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB2PeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USART_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USART_DeInit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USART_HardwareFlowControl_None ; 
- int /*<<< orphan*/  USART_Init (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int USART_Mode_Rx ; 
- int USART_Mode_Tx ; 
- int /*<<< orphan*/  USART_Parity_No ; 
- int /*<<< orphan*/  USART_StopBits_1 ; 
- int /*<<< orphan*/  USART_WordLength_8b ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int USART_Mode; int USART_HardwareFlowControl; int USART_Parity; int USART_StopBits; int USART_WordLength; int USART_BaudRate; } ;
+typedef TYPE_1__ USART_InitTypeDef ;
+struct TYPE_6__ {int configured; int USARTx; int baud; int num_pins; int pins; int apb2; int apb1; int ahb1; int rx_buf_size; int rx_buf; int rx_fifo; } ;
+typedef TYPE_2__ CONFIG_USART_ConfigState ;
+
+
+ int CONFIG_pins (int ,int ) ;
+ int ENABLE ;
+ int FIFO_InitStruct (int ,int ,int ) ;
+ int RCC_AHBPeriphClockCmd (int ,int ) ;
+ int RCC_APB1PeriphClockCmd (int ,int ) ;
+ int RCC_APB2PeriphClockCmd (int ,int ) ;
+ int USART_Cmd (int ,int ) ;
+ int USART_DeInit (int ) ;
+ int USART_HardwareFlowControl_None ;
+ int USART_Init (int ,TYPE_1__*) ;
+ int USART_Mode_Rx ;
+ int USART_Mode_Tx ;
+ int USART_Parity_No ;
+ int USART_StopBits_1 ;
+ int USART_WordLength_8b ;
 
 void UART_Config(CONFIG_USART_ConfigState *cfg) {
-	USART_InitTypeDef USART_InitStructure;
+ USART_InitTypeDef USART_InitStructure;
 
-	FIFO_InitStruct(cfg->rx_fifo, cfg->rx_buf, cfg->rx_buf_size);
+ FIFO_InitStruct(cfg->rx_fifo, cfg->rx_buf, cfg->rx_buf_size);
 
-	// turn on peripheral clocks
-	RCC_AHBPeriphClockCmd(cfg->ahb1, ENABLE);
-	RCC_APB1PeriphClockCmd(cfg->apb1, ENABLE);
-	RCC_APB2PeriphClockCmd(cfg->apb2, ENABLE);
 
-	// configure pins
-	CONFIG_pins(cfg->pins, cfg->num_pins);
+ RCC_AHBPeriphClockCmd(cfg->ahb1, ENABLE);
+ RCC_APB1PeriphClockCmd(cfg->apb1, ENABLE);
+ RCC_APB2PeriphClockCmd(cfg->apb2, ENABLE);
 
-	// configure USART
-	USART_DeInit(cfg->USARTx);
-	USART_InitStructure.USART_BaudRate = cfg->baud;
+
+ CONFIG_pins(cfg->pins, cfg->num_pins);
+
+
+ USART_DeInit(cfg->USARTx);
+ USART_InitStructure.USART_BaudRate = cfg->baud;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
     USART_InitStructure.USART_StopBits = USART_StopBits_1;
     USART_InitStructure.USART_Parity = USART_Parity_No;
     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
     USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-	USART_Init(cfg->USARTx, &USART_InitStructure);
+ USART_Init(cfg->USARTx, &USART_InitStructure);
 
-	// enable RX interrupt
-	//USART_ITConfig(cfg->USARTx, USART_IT_RXNE, ENABLE);
 
-	// enable the USART
-	USART_Cmd(cfg->USARTx, ENABLE);
-	cfg->configured = true;
-	cfg->configured = true;
-	cfg->configured = true;
-	cfg->configured = true;
+
+
+
+ USART_Cmd(cfg->USARTx, ENABLE);
+ cfg->configured = 1;
+ cfg->configured = 1;
+ cfg->configured = 1;
+ cfg->configured = 1;
 }

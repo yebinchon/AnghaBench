@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * priv_data; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_11__ {int * priv_data; } ;
 struct TYPE_10__ {TYPE_1__* display_list; } ;
 struct TYPE_9__ {struct TYPE_9__* object_list_next; } ;
-typedef  TYPE_1__ DVBSubObjectDisplay ;
-typedef  TYPE_2__ DVBSubObject ;
-typedef  int /*<<< orphan*/  DVBSubContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ DVBSubObjectDisplay ;
+typedef TYPE_2__ DVBSubObject ;
+typedef int DVBSubContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (int const*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  dvbsub_parse_pixel_data_block (TYPE_3__*,TYPE_1__*,int const*,int,int,int) ; 
- TYPE_2__* get_object (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int const*) ;
+ int av_log (TYPE_3__*,int ,char*,int,...) ;
+ int dvbsub_parse_pixel_data_block (TYPE_3__*,TYPE_1__*,int const*,int,int,int) ;
+ TYPE_2__* get_object (int *,int) ;
 
 __attribute__((used)) static int dvbsub_parse_object_segment(AVCodecContext *avctx,
                                        const uint8_t *buf, int buf_size)
@@ -81,7 +81,7 @@ __attribute__((used)) static int dvbsub_parse_object_segment(AVCodecContext *avc
                                             non_modifying_color);
         }
 
-/*  } else if (coding_method == 1) {*/
+
 
     } else {
         av_log(avctx, AV_LOG_ERROR, "Unknown object coding %d\n", coding_method);

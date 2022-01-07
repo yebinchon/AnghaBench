@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int IIC_EBUSERR ; 
- int IIC_NOERR ; 
- int /*<<< orphan*/  OC_COMMAND_WRITE ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ iicoc_wr_ack_cmd (int /*<<< orphan*/ ,char,int /*<<< orphan*/ ) ; 
- scalar_t__ iicoc_wr_cmd (int /*<<< orphan*/ ,char,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int 
+
+
+typedef char uint8_t ;
+typedef int device_t ;
+
+
+ int IIC_EBUSERR ;
+ int IIC_NOERR ;
+ int OC_COMMAND_WRITE ;
+ int device_printf (int ,char*,...) ;
+ scalar_t__ iicoc_wr_ack_cmd (int ,char,int ) ;
+ scalar_t__ iicoc_wr_cmd (int ,char,int ) ;
+
+__attribute__((used)) static int
 iicoc_write(device_t dev, const char *buf, int len,
-    int *sent, int timeout /* us */ )
+    int *sent, int timeout )
 {
-	uint8_t value;
-	int i;
+ uint8_t value;
+ int i;
 
-	value = buf[0];
-	/* Write Slave Offset */
-	if (iicoc_wr_ack_cmd(dev, value, OC_COMMAND_WRITE)) {
-		device_printf(dev, "I2C write slave offset failed.\n");
-		goto i2c_tx_error;	
-	}
+ value = buf[0];
 
-	for (i = 1; i < len; i++) {
-		/* Write data byte */
-		value = buf[i];
-		if (iicoc_wr_cmd(dev, value, OC_COMMAND_WRITE)) {
-			device_printf(dev, "I2C write data byte %d failed.\n",
-			    i);
-			goto i2c_tx_error;	
-		}
-	}
-	*sent = len;
-	return (IIC_NOERR);
+ if (iicoc_wr_ack_cmd(dev, value, OC_COMMAND_WRITE)) {
+  device_printf(dev, "I2C write slave offset failed.\n");
+  goto i2c_tx_error;
+ }
+
+ for (i = 1; i < len; i++) {
+
+  value = buf[i];
+  if (iicoc_wr_cmd(dev, value, OC_COMMAND_WRITE)) {
+   device_printf(dev, "I2C write data byte %d failed.\n",
+       i);
+   goto i2c_tx_error;
+  }
+ }
+ *sent = len;
+ return (IIC_NOERR);
 
 i2c_tx_error:
-	return (IIC_EBUSERR);
+ return (IIC_EBUSERR);
 }

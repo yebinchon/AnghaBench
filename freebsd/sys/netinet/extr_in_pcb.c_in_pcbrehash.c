@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inpcb {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  in_pcbrehash_mbuf (struct inpcb*,int /*<<< orphan*/ *) ; 
+
+ int in_pcbrehash_mbuf (struct inpcb*,int *) ;
 
 void
 in_pcbrehash(struct inpcb *inp)
 {
 
-	in_pcbrehash_mbuf(inp, NULL);
+ in_pcbrehash_mbuf(inp, ((void*)0));
 }

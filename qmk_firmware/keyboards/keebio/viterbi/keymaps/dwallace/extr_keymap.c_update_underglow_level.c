@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_LALT ; 
- int /*<<< orphan*/  KC_LCTL ; 
- int /*<<< orphan*/  KC_LGUI ; 
- int /*<<< orphan*/  KC_LSFT ; 
- int MOD_BIT (int /*<<< orphan*/ ) ; 
- int RGBLED_NUM ; 
- int /*<<< orphan*/  SET_LED_RGB (int,int) ; 
- int get_mods () ; 
- int last_mods ; 
- int rgb_dimming ; 
- int /*<<< orphan*/  rgblight_set () ; 
- int /*<<< orphan*/  rgblight_setrgb (int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int KC_LALT ;
+ int KC_LCTL ;
+ int KC_LGUI ;
+ int KC_LSFT ;
+ int MOD_BIT (int ) ;
+ int RGBLED_NUM ;
+ int SET_LED_RGB (int,int) ;
+ int get_mods () ;
+ int last_mods ;
+ int rgb_dimming ;
+ int rgblight_set () ;
+ int rgblight_setrgb (int,int,int) ;
 
 void update_underglow_level(void) {
   if (get_mods() == last_mods)

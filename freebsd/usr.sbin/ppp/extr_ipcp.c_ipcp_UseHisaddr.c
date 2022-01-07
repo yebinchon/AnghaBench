@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct ncpaddr {int dummy; } ;
 struct in_addr {scalar_t__ s_addr; } ;
 struct TYPE_7__ {char const* src; } ;
-struct TYPE_6__ {int /*<<< orphan*/  peer_range; int /*<<< orphan*/  my_range; TYPE_2__ peer_list; } ;
-struct ipcp {struct in_addr peer_ip; TYPE_1__ cfg; int /*<<< orphan*/  my_ip; } ;
+struct TYPE_6__ {int peer_range; int my_range; TYPE_2__ peer_list; } ;
+struct ipcp {struct in_addr peer_ip; TYPE_1__ cfg; int my_ip; } ;
 struct ncp {struct ipcp ipcp; } ;
 struct bundle {struct ncp ncp; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- struct in_addr ChooseHisAddr (struct bundle*,int /*<<< orphan*/ ) ; 
- scalar_t__ INADDR_ANY ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  bundle_AdjustFilters (struct bundle*,int /*<<< orphan*/ *,struct ncpaddr*) ; 
- int /*<<< orphan*/  ipcp_SetIPaddress (struct ipcp*,struct in_addr,struct in_addr) ; 
- scalar_t__ iplist_isvalid (TYPE_2__*) ; 
- int /*<<< orphan*/  iplist_reset (TYPE_2__*) ; 
- int /*<<< orphan*/  iplist_setrandpos (TYPE_2__*) ; 
- int /*<<< orphan*/  iplist_setsrc (TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  ncpaddr_setip4 (struct ncpaddr*,struct in_addr) ; 
- scalar_t__ ncprange_aton (int /*<<< orphan*/ *,struct ncp*,char const*) ; 
- scalar_t__ ncprange_family (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ncprange_getip4addr (int /*<<< orphan*/ *,struct in_addr*) ; 
- int /*<<< orphan*/  ncprange_setip4host (int /*<<< orphan*/ *,struct in_addr) ; 
- scalar_t__ strpbrk (char const*,char*) ; 
+
+ scalar_t__ AF_INET ;
+ struct in_addr ChooseHisAddr (struct bundle*,int ) ;
+ scalar_t__ INADDR_ANY ;
+ int LogWARN ;
+ int bundle_AdjustFilters (struct bundle*,int *,struct ncpaddr*) ;
+ int ipcp_SetIPaddress (struct ipcp*,struct in_addr,struct in_addr) ;
+ scalar_t__ iplist_isvalid (TYPE_2__*) ;
+ int iplist_reset (TYPE_2__*) ;
+ int iplist_setrandpos (TYPE_2__*) ;
+ int iplist_setsrc (TYPE_2__*,char const*) ;
+ int log_Printf (int ,char*,char const*) ;
+ int memset (int *,char,int) ;
+ int ncpaddr_setip4 (struct ncpaddr*,struct in_addr) ;
+ scalar_t__ ncprange_aton (int *,struct ncp*,char const*) ;
+ scalar_t__ ncprange_family (int *) ;
+ int ncprange_getip4addr (int *,struct in_addr*) ;
+ int ncprange_setip4host (int *,struct in_addr) ;
+ scalar_t__ strpbrk (char const*,char*) ;
 
 int
 ipcp_UseHisaddr(struct bundle *bundle, const char *hisaddr, int setaddr)
@@ -48,7 +48,7 @@ ipcp_UseHisaddr(struct bundle *bundle, const char *hisaddr, int setaddr)
   struct ipcp *ipcp = &ncp->ipcp;
   struct ncpaddr ncpaddr;
 
-  /* Use `hisaddr' for the peers address (set iface if `setaddr') */
+
   memset(&ipcp->cfg.peer_range, '\0', sizeof ipcp->cfg.peer_range);
   iplist_reset(&ipcp->cfg.peer_list);
   if (strpbrk(hisaddr, ",-")) {
@@ -79,7 +79,7 @@ ipcp_UseHisaddr(struct bundle *bundle, const char *hisaddr, int setaddr)
     return 0;
 
   ncpaddr_setip4(&ncpaddr, ipcp->peer_ip);
-  bundle_AdjustFilters(bundle, NULL, &ncpaddr);
+  bundle_AdjustFilters(bundle, ((void*)0), &ncpaddr);
 
-  return 1;	/* Ok */
+  return 1;
 }

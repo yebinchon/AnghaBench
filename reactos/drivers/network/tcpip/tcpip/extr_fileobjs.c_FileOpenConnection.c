@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ ConnectionContext; } ;
 struct TYPE_5__ {TYPE_1__ Handle; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_2__* PTDI_REQUEST ;
-typedef  scalar_t__ PCONNECTION_ENDPOINT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef int PVOID ;
+typedef TYPE_2__* PTDI_REQUEST ;
+typedef scalar_t__ PCONNECTION_ENDPOINT ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  DereferenceObject (scalar_t__) ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  MAX_TRACE ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  STATUS_NO_MEMORY ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- scalar_t__ TCPAllocateConnectionEndpoint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TCPSocket (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
+
+ int AF_INET ;
+ int DereferenceObject (scalar_t__) ;
+ int IPPROTO_TCP ;
+ int MAX_TRACE ;
+ int MID_TRACE ;
+ int NT_SUCCESS (int ) ;
+ int SOCK_STREAM ;
+ int STATUS_NO_MEMORY ;
+ int STATUS_SUCCESS ;
+ scalar_t__ TCPAllocateConnectionEndpoint (int ) ;
+ int TCPSocket (scalar_t__,int ,int ,int ) ;
+ int TI_DbgPrint (int ,char*) ;
 
 NTSTATUS FileOpenConnection(
   PTDI_REQUEST Request,
@@ -53,7 +53,7 @@ NTSTATUS FileOpenConnection(
       return Status;
   }
 
-  /* Return connection endpoint file object */
+
   Request->Handle.ConnectionContext = Connection;
 
   TI_DbgPrint(MAX_TRACE, ("Leaving.\n"));

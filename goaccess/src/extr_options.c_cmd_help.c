@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- char* GO_VERSION ; 
- char* INFO_HELP_EXAMPLES ; 
- char* INFO_HELP_FOLLOWING_OPTS ; 
- char* INFO_MORE_INFO ; 
- int TC_BNUM ; 
- char* TC_DBPATH ; 
- int TC_LCNUM ; 
- int TC_LMEMB ; 
- int TC_MMAP ; 
- int TC_NCNUM ; 
- int TC_NMEMB ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
+ int EXIT_FAILURE ;
+ char* GO_VERSION ;
+ char* INFO_HELP_EXAMPLES ;
+ char* INFO_HELP_FOLLOWING_OPTS ;
+ char* INFO_MORE_INFO ;
+ int TC_BNUM ;
+ char* TC_DBPATH ;
+ int TC_LCNUM ;
+ int TC_LMEMB ;
+ int TC_MMAP ;
+ int TC_NCNUM ;
+ int TC_NMEMB ;
+ int exit (int ) ;
+ int printf (char*,char*,...) ;
 
 void
 cmd_help (void)
@@ -37,14 +29,14 @@ cmd_help (void)
   "%s:\n\n", INFO_HELP_FOLLOWING_OPTS);
 
   printf (
-  /* Log & Date Format Options */
+
   "Log & Date Format Options\n\n"
   "  --date-format=<dateformat>      - Specify log date format. e.g., %%d/%%b/%%Y\n"
   "  --log-format=<logformat>        - Specify log format. Inner quotes need to be\n"
   "                                    escaped, or use single quotes.\n"
   "  --time-format=<timeformat>      - Specify log time format. e.g., %%H:%%M:%%S\n\n"
 
-  /* User Interface Options */
+
   "User Interface Options\n\n"
   "  -c --config-dialog              - Prompt log/date/time configuration window.\n"
   "  -i --hl-header                  - Color highlight active panel.\n"
@@ -68,7 +60,7 @@ cmd_help (void)
   "  --no-tab-scroll                 - Disable scrolling through panels on TAB.\n"
   "\n"
 
-  /* Server Options */
+
   "Server Options\n\n"
   "  --addr=<addr>                   - Specify IP address to bind server to.\n"
   "  --daemonize                     - Run as daemon (if --real-time-html enabled).\n"
@@ -84,7 +76,7 @@ cmd_help (void)
   "  --ws-url=<url>                  - URL to which the WebSocket server responds.\n"
   "\n"
 
-  /* File Options */
+
   "File Options\n\n"
   "  -                               - The log file to parse is read from stdin.\n"
   "  -f --log-file=<filename>        - Path to input log file.\n"
@@ -96,7 +88,7 @@ cmd_help (void)
   "  --no-global-config              - Don't load global configuration file.\n"
   "\n"
 
-  /* Parse Options */
+
   "Parse Options\n\n"
   "  -a --agent-list                 - Enable a list of user-agents by host.\n"
   "  -b --browsers-file=<path>       - Use additional custom list of browsers.\n"
@@ -113,9 +105,9 @@ cmd_help (void)
   "  --444-as-404                    - Treat non-standard status code 444 as 404.\n"
   "  --4xx-to-unique-count           - Add 4xx client errors to the unique visitors\n"
   "                                    count.\n"
-#ifdef TCB_BTREE
-  "  --accumulated-time              - Store accumulated time from parsing day-by-day logs.\n"
-#endif
+
+
+
   "  --anonymize-ip                  - Anonymize IP addresses before outputting to report.\n"
   "  --all-static-files              - Include static files with a query string.\n"
   "  --crawlers-only                 - Parse and display only crawlers.\n"
@@ -145,45 +137,6 @@ cmd_help (void)
   "  --static-file=<extension>       - Add static file extension. e.g.: .mp3.\n"
   "                                    Extensions are case sensitive.\n"
   "\n"
-
-/* GeoIP Options */
-#ifdef HAVE_GEOLOCATION
-  "GeoIP Options\n\n"
-#ifdef HAVE_LIBGEOIP
-  "  -g --std-geoip                  - Standard GeoIP database for less memory\n"
-  "                                    consumption.\n"
-#endif
-  "  --geoip-database=<path>         - Specify path to GeoIP database file. i.e.,\n"
-  "                                    GeoLiteCity.dat, GeoIPv6.dat ...\n"
-  "\n"
-#endif
-
-/* On-Disk Database Options */
-#ifdef TCB_BTREE
-  "On-Disk Database Options\n\n"
-  "  --keep-db-files                 - Persist parsed data into disk.\n"
-  "  --load-from-disk                - Load previously stored data from disk.\n"
-  "  --db-path=<path>                - Path of the database file. Default [%s]\n"
-  "  --cache-lcnum=<number>          - Max number of leaf nodes to be cached. Default\n"
-  "                                    [%d]\n"
-  "  --cache-ncnum=<number>          - Max number of non-leaf nodes to be cached.\n"
-  "                                    Default [%d]\n"
-  "  --tune-bnum=<number>            - Number of elements of the bucket array. Default\n"
-  "                                    [%d]\n"
-  "  --tune-lmemb=<number>           - Number of members in each leaf page. Default\n"
-  "                                    [%d]\n"
-  "  --tune-nmemb=<number>           - Number of members in each non-leaf page.\n"
-  "                                    Default [%d]\n"
-  "  --xmmap=<number>                - Set the size in bytes of the extra mapped\n"
-  "                                    memory. Default [%d]\n"
-#if defined(HAVE_ZLIB) || defined(HAVE_BZ2)
-  "  --compression=<zlib|bz2>        - Specifies that each page is compressed with\n"
-  "                                    ZLIB|BZ2 encoding.\n"
-  "\n"
-#endif
-#endif
-
-/* Other Options */
   "Other Options\n\n"
   "  -h --help                       - This help.\n"
   "  -V --version                    - Display version information and exit.\n"
@@ -197,9 +150,9 @@ cmd_help (void)
   "%s: http://goaccess.io\n"
   "GoAccess Copyright (C) 2009-2017 by Gerardo Orellana"
   "\n\n"
-#ifdef TCB_BTREE
-  , TC_DBPATH, TC_MMAP, TC_LCNUM, TC_NCNUM, TC_LMEMB, TC_NMEMB, TC_BNUM
-#endif
+
+
+
   , INFO_HELP_EXAMPLES, INFO_MORE_INFO
   );
   exit (EXIT_FAILURE);

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int type; } ;
-typedef  TYPE_1__ XrmOption ;
+typedef TYPE_1__ XrmOption ;
 
-/* Variables and functions */
- int /*<<< orphan*/  print_option_boolean (TYPE_1__*,int) ; 
- int /*<<< orphan*/  print_option_char (TYPE_1__*,int) ; 
- int /*<<< orphan*/  print_option_number (TYPE_1__*,int) ; 
- int /*<<< orphan*/  print_option_snumber (TYPE_1__*,int) ; 
- int /*<<< orphan*/  print_option_string (TYPE_1__*,int) ; 
-#define  xrm_Boolean 132 
-#define  xrm_Char 131 
-#define  xrm_Number 130 
-#define  xrm_SNumber 129 
-#define  xrm_String 128 
+
+ int print_option_boolean (TYPE_1__*,int) ;
+ int print_option_char (TYPE_1__*,int) ;
+ int print_option_number (TYPE_1__*,int) ;
+ int print_option_snumber (TYPE_1__*,int) ;
+ int print_option_string (TYPE_1__*,int) ;
+
+
+
+
+
 
 __attribute__((used)) static void print_option ( XrmOption *xo, int is_term )
 {
     switch ( xo->type )
     {
-    case xrm_String:
+    case 128:
         print_option_string ( xo, is_term );
         break;
-    case xrm_Number:
+    case 130:
         print_option_number ( xo, is_term );
         break;
-    case xrm_SNumber:
+    case 129:
         print_option_snumber ( xo, is_term );
         break;
-    case xrm_Boolean:
+    case 132:
         print_option_boolean ( xo, is_term );
         break;
-    case xrm_Char:
+    case 131:
         print_option_char ( xo, is_term );
         break;
     default:

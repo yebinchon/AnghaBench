@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct msg {int done; scalar_t__ request; struct msg* peer; } ;
 struct context {int dummy; } ;
-struct conn {int /*<<< orphan*/  (* enqueue_outq ) (struct context*,struct conn*,struct msg*) ;int /*<<< orphan*/  err; int /*<<< orphan*/  redis; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+struct conn {int (* enqueue_outq ) (struct context*,struct conn*,struct msg*) ;int err; int redis; } ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_ENOMEM ; 
- int /*<<< orphan*/  NC_OK ; 
- int /*<<< orphan*/  errno ; 
- struct msg* msg_get (struct conn*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct context*,struct conn*,struct msg*) ; 
+
+ int NC_ENOMEM ;
+ int NC_OK ;
+ int errno ;
+ struct msg* msg_get (struct conn*,int,int ) ;
+ int stub1 (struct context*,struct conn*,struct msg*) ;
 
 __attribute__((used)) static rstatus_t
 req_make_reply(struct context *ctx, struct conn *conn, struct msg *req)
 {
     struct msg *rsp;
 
-    rsp = msg_get(conn, false, conn->redis); /* replay */
-    if (rsp == NULL) {
+    rsp = msg_get(conn, 0, conn->redis);
+    if (rsp == ((void*)0)) {
         conn->err = errno;
         return NC_ENOMEM;
     }

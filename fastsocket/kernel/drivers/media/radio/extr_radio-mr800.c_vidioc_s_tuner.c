@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct v4l2_tuner {scalar_t__ index; int audmode; } ;
 struct file {int dummy; } ;
 struct amradio_device {TYPE_1__* videodev; scalar_t__ removed; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int EIO ; 
-#define  V4L2_TUNER_MODE_MONO 129 
-#define  V4L2_TUNER_MODE_STEREO 128 
- int /*<<< orphan*/  WANT_MONO ; 
- int /*<<< orphan*/  WANT_STEREO ; 
- int /*<<< orphan*/  amradio_dev_warn (int /*<<< orphan*/ *,char*) ; 
- int amradio_set_stereo (struct amradio_device*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  video_devdata (struct file*) ; 
- struct amradio_device* video_get_drvdata (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int EIO ;
+
+
+ int WANT_MONO ;
+ int WANT_STEREO ;
+ int amradio_dev_warn (int *,char*) ;
+ int amradio_set_stereo (struct amradio_device*,int ) ;
+ int video_devdata (struct file*) ;
+ struct amradio_device* video_get_drvdata (int ) ;
 
 __attribute__((used)) static int vidioc_s_tuner(struct file *file, void *priv,
-				struct v4l2_tuner *v)
+    struct v4l2_tuner *v)
 {
-	struct amradio_device *radio = video_get_drvdata(video_devdata(file));
-	int retval;
+ struct amradio_device *radio = video_get_drvdata(video_devdata(file));
+ int retval;
 
-	/* safety check */
-	if (radio->removed)
-		return -EIO;
 
-	if (v->index > 0)
-		return -EINVAL;
+ if (radio->removed)
+  return -EIO;
 
-	/* mono/stereo selector */
-	switch (v->audmode) {
-	case V4L2_TUNER_MODE_MONO:
-		retval = amradio_set_stereo(radio, WANT_MONO);
-		if (retval < 0)
-			amradio_dev_warn(&radio->videodev->dev,
-				"set mono failed\n");
-		break;
-	case V4L2_TUNER_MODE_STEREO:
-		retval = amradio_set_stereo(radio, WANT_STEREO);
-		if (retval < 0)
-			amradio_dev_warn(&radio->videodev->dev,
-				"set stereo failed\n");
-		break;
-	default:
-		return -EINVAL;
-	}
+ if (v->index > 0)
+  return -EINVAL;
 
-	return 0;
+
+ switch (v->audmode) {
+ case 129:
+  retval = amradio_set_stereo(radio, WANT_MONO);
+  if (retval < 0)
+   amradio_dev_warn(&radio->videodev->dev,
+    "set mono failed\n");
+  break;
+ case 128:
+  retval = amradio_set_stereo(radio, WANT_STEREO);
+  if (retval < 0)
+   amradio_dev_warn(&radio->videodev->dev,
+    "set stereo failed\n");
+  break;
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

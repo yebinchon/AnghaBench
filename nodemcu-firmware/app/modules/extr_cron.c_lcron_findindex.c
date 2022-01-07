@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  cronent_ud_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- size_t cronent_count ; 
- int /*<<< orphan*/ * cronent_list ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lua_touserdata (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int cronent_ud_t ;
+
+
+ int LUA_REGISTRYINDEX ;
+ size_t cronent_count ;
+ int * cronent_list ;
+ int lua_pop (int *,int) ;
+ int lua_rawgeti (int *,int ,int ) ;
+ int * lua_touserdata (int *,int) ;
 
 __attribute__((used)) static size_t lcron_findindex(lua_State *L, cronent_ud_t *ud) {
   cronent_ud_t *eud;

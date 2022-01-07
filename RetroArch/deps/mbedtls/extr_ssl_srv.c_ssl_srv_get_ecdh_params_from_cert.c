@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* handshake; } ;
-typedef  TYPE_2__ mbedtls_ssl_context ;
-struct TYPE_5__ {int /*<<< orphan*/  ecdh_ctx; } ;
+typedef TYPE_2__ mbedtls_ssl_context ;
+struct TYPE_5__ {int ecdh_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBEDTLS_ECDH_OURS ; 
- int MBEDTLS_ERR_SSL_PK_TYPE_MISMATCH ; 
- int /*<<< orphan*/  MBEDTLS_PK_ECKEY ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_MSG (int,char*) ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_RET (int,char*,int) ; 
- int mbedtls_ecdh_get_params (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_pk_can_do (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_pk_ec (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mbedtls_ssl_own_key (TYPE_2__*) ; 
+
+ int MBEDTLS_ECDH_OURS ;
+ int MBEDTLS_ERR_SSL_PK_TYPE_MISMATCH ;
+ int MBEDTLS_PK_ECKEY ;
+ int MBEDTLS_SSL_DEBUG_MSG (int,char*) ;
+ int MBEDTLS_SSL_DEBUG_RET (int,char*,int) ;
+ int mbedtls_ecdh_get_params (int *,int ,int ) ;
+ int mbedtls_pk_can_do (int *,int ) ;
+ int mbedtls_pk_ec (int ) ;
+ int * mbedtls_ssl_own_key (TYPE_2__*) ;
 
 __attribute__((used)) static int ssl_srv_get_ecdh_params_from_cert( mbedtls_ssl_context *ssl )
 {

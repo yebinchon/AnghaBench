@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int num_bufs; scalar_t__* refcnt; int* ts; int counter; int /*<<< orphan*/  lock; int /*<<< orphan*/  cb_cookie; int /*<<< orphan*/  (* release_cb ) (int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_1__ Pool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int num_bufs; scalar_t__* refcnt; int* ts; int counter; int lock; int cb_cookie; int (* release_cb ) (int ,int) ;} ;
+typedef TYPE_1__ Pool ;
+
+
+ int printf (char*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (int ,int) ;
 
 int pool_select(Pool *s) {
   pthread_mutex_lock(&s->lock);
@@ -31,8 +31,8 @@ int pool_select(Pool *s) {
   }
 
   if (i >= s->num_bufs) {
-    // overwrite the oldest
-    // still being using in a queue or tbuffer :/
+
+
 
     int min_k = 0;
     int min_ts = s->ts[0];
@@ -45,7 +45,7 @@ int pool_select(Pool *s) {
     i = min_k;
     printf("pool is full! evicted %d\n", min_k);
 
-    // might be really bad if the user is doing pointery stuff
+
     if (s->release_cb) {
       s->release_cb(s->cb_cookie, min_k);
     }

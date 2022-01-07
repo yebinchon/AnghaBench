@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct mesh_data {int num_vertices; int num_poly_faces; int num_tri_faces; int* num_tri_per_face; int* indices; int nb_bones; scalar_t__ skin_info; void* vertices; int /*<<< orphan*/  fvf; } ;
+
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct mesh_data {int num_vertices; int num_poly_faces; int num_tri_faces; int* num_tri_per_face; int* indices; int nb_bones; scalar_t__ skin_info; void* vertices; int fvf; } ;
 struct TYPE_17__ {TYPE_1__* lpVtbl; } ;
-struct TYPE_16__ {int /*<<< orphan*/  (* Unlock ) (TYPE_2__*) ;int /*<<< orphan*/  (* GetType ) (TYPE_2__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* GetChild ) (TYPE_2__*,int,TYPE_2__**) ;int /*<<< orphan*/  (* GetChildren ) (TYPE_2__*,int*) ;int /*<<< orphan*/  (* Lock ) (TYPE_2__*,int*,void const**) ;} ;
-typedef  int SIZE_T ;
-typedef  TYPE_2__ ID3DXFileData ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  D3DXVECTOR3 ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_16__ {int (* Unlock ) (TYPE_2__*) ;int (* GetType ) (TYPE_2__*,int *) ;int (* GetChild ) (TYPE_2__*,int,TYPE_2__**) ;int (* GetChildren ) (TYPE_2__*,int*) ;int (* Lock ) (TYPE_2__*,int*,void const**) ;} ;
+typedef int SIZE_T ;
+typedef TYPE_2__ ID3DXFileData ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int DWORD ;
+typedef int D3DXVECTOR3 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DFVF_XYZ ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  DXFILEOBJ_SkinWeights ; 
- int /*<<< orphan*/  DXFILEOBJ_XSkinMeshHeader ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IUnknown_Release (TYPE_2__*) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int PROVIDE_MATERIALS ; 
- int PROVIDE_SKININFO ; 
- int /*<<< orphan*/  TID_D3DRMMeshMaterialList ; 
- int /*<<< orphan*/  TID_D3DRMMeshNormals ; 
- int /*<<< orphan*/  TID_D3DRMMeshTextureCoords ; 
- int /*<<< orphan*/  TID_D3DRMMeshVertexColors ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  create_dummy_skin (scalar_t__*) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  parse_material_list (TYPE_2__*,struct mesh_data*) ; 
- int /*<<< orphan*/  parse_normals (TYPE_2__*,struct mesh_data*) ; 
- int /*<<< orphan*/  parse_skin_mesh_info (TYPE_2__*,struct mesh_data*,int) ; 
- int /*<<< orphan*/  parse_texture_coords (TYPE_2__*,struct mesh_data*) ; 
- int /*<<< orphan*/  parse_vertex_colors (TYPE_2__*,struct mesh_data*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int*,void const**) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int*) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,int,TYPE_2__**) ; 
- int /*<<< orphan*/  stub4 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_2__*) ; 
+
+ int D3DFVF_XYZ ;
+ int D3D_OK ;
+ int DXFILEOBJ_SkinWeights ;
+ int DXFILEOBJ_XSkinMeshHeader ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int IUnknown_Release (TYPE_2__*) ;
+ scalar_t__ IsEqualGUID (int *,int *) ;
+ int PROVIDE_MATERIALS ;
+ int PROVIDE_SKININFO ;
+ int TID_D3DRMMeshMaterialList ;
+ int TID_D3DRMMeshNormals ;
+ int TID_D3DRMMeshTextureCoords ;
+ int TID_D3DRMMeshVertexColors ;
+ int WARN (char*,...) ;
+ int create_dummy_skin (scalar_t__*) ;
+ int memcpy (void*,int const*,int) ;
+ int parse_material_list (TYPE_2__*,struct mesh_data*) ;
+ int parse_normals (TYPE_2__*,struct mesh_data*) ;
+ int parse_skin_mesh_info (TYPE_2__*,struct mesh_data*,int) ;
+ int parse_texture_coords (TYPE_2__*,struct mesh_data*) ;
+ int parse_vertex_colors (TYPE_2__*,struct mesh_data*) ;
+ int stub1 (TYPE_2__*,int*,void const**) ;
+ int stub2 (TYPE_2__*,int*) ;
+ int stub3 (TYPE_2__*,int,TYPE_2__**) ;
+ int stub4 (TYPE_2__*,int *) ;
+ int stub5 (TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT parse_mesh(ID3DXFileData *filedata, struct mesh_data *mesh_data, DWORD provide_flags)
 {
@@ -62,21 +62,10 @@ __attribute__((used)) static HRESULT parse_mesh(ID3DXFileData *filedata, struct 
     const BYTE *data, *in_ptr;
     DWORD *index_out_ptr;
     GUID type;
-    ID3DXFileData *child = NULL;
+    ID3DXFileData *child = ((void*)0);
     DWORD i;
     SIZE_T nb_children;
     DWORD nb_skin_weights_info = 0;
-
-    /*
-     * template Mesh {
-     *     DWORD nVertices;
-     *     array Vector vertices[nVertices];
-     *     DWORD nFaces;
-     *     array MeshFace faces[nFaces];
-     *     [ ... ]
-     * }
-     */
-
     hr = filedata->lpVtbl->Lock(filedata, &data_size, (const void**)&data);
     if (FAILED(hr)) return hr;
 
@@ -209,7 +198,7 @@ __attribute__((used)) static HRESULT parse_mesh(ID3DXFileData *filedata, struct 
             goto end;
 
         IUnknown_Release(child);
-        child = NULL;
+        child = ((void*)0);
     }
 
     if (mesh_data->skin_info && (nb_skin_weights_info != mesh_data->nb_bones)) {

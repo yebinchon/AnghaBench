@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT32_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_SHADERS_GLSL ; 
- int /*<<< orphan*/  GFX_CTX_FLAGS_SHADERS_SLANG ; 
-#define  GFX_CTX_NONE 131 
-#define  GFX_CTX_OPENGL_API 130 
-#define  GFX_CTX_OPENGL_ES_API 129 
-#define  GFX_CTX_VULKAN_API 128 
- int android_api ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int BIT32_SET (int ,int ) ;
+ int GFX_CTX_FLAGS_SHADERS_GLSL ;
+ int GFX_CTX_FLAGS_SHADERS_SLANG ;
+
+
+
+
+ int android_api ;
 
 __attribute__((used)) static uint32_t android_gfx_ctx_get_flags(void *data)
 {
@@ -28,18 +28,18 @@ __attribute__((used)) static uint32_t android_gfx_ctx_get_flags(void *data)
 
    switch (android_api)
    {
-      case GFX_CTX_OPENGL_API:
-      case GFX_CTX_OPENGL_ES_API:
-#ifdef HAVE_GLSL
-         BIT32_SET(flags, GFX_CTX_FLAGS_SHADERS_GLSL);
-#endif
+      case 130:
+      case 129:
+
+
+
          break;
-      case GFX_CTX_VULKAN_API:
-#if defined(HAVE_SLANG) && defined(HAVE_SPIRV_CROSS)
-         BIT32_SET(flags, GFX_CTX_FLAGS_SHADERS_SLANG);
-#endif
+      case 128:
+
+
+
          break;
-      case GFX_CTX_NONE:
+      case 131:
       default:
          break;
    }

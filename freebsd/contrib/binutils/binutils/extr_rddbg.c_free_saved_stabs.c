@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * string; } ;
 
-/* Variables and functions */
- int SAVE_STABS_COUNT ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_1__* saved_stabs ; 
- scalar_t__ saved_stabs_index ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * string; } ;
+
+
+ int SAVE_STABS_COUNT ;
+ int free (int *) ;
+ TYPE_1__* saved_stabs ;
+ scalar_t__ saved_stabs_index ;
 
 __attribute__((used)) static void
 free_saved_stabs (void)
@@ -26,11 +26,11 @@ free_saved_stabs (void)
 
   for (i = 0; i < SAVE_STABS_COUNT; i++)
     {
-      if (saved_stabs[i].string != NULL)
-	{
-	  free (saved_stabs[i].string);
-	  saved_stabs[i].string = NULL;
-	}
+      if (saved_stabs[i].string != ((void*)0))
+ {
+   free (saved_stabs[i].string);
+   saved_stabs[i].string = ((void*)0);
+ }
     }
 
   saved_stabs_index = 0;

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  dist_cache ;
-struct TYPE_8__ {int /*<<< orphan*/  alphabet_size_limit; } ;
-struct TYPE_9__ {TYPE_1__ dist; int /*<<< orphan*/  quality; int /*<<< orphan*/  size_hint; int /*<<< orphan*/  disable_literal_context_modeling; } ;
-typedef  int /*<<< orphan*/  MetaBlockSplit ;
-typedef  int /*<<< orphan*/  MemoryManager ;
-typedef  int /*<<< orphan*/  ContextType ;
-typedef  int /*<<< orphan*/  ContextLut ;
-typedef  int /*<<< orphan*/  Command ;
-typedef  TYPE_2__ BrotliEncoderParams ;
-typedef  int /*<<< orphan*/  BROTLI_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_CONTEXT_LUT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BROTLI_DCHECK (int) ; 
- scalar_t__ BROTLI_IS_OOM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliBuildMetaBlock (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/  const,size_t const,TYPE_2__*,int const,int const,int /*<<< orphan*/ *,size_t const,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliBuildMetaBlockGreedy (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/  const,size_t const,int const,int const,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,size_t const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliOptimizeHistograms (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BrotliStoreMetaBlock (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/  const,size_t const,size_t const,int const,int const,int /*<<< orphan*/  const,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t const,int /*<<< orphan*/ *,size_t*,int*) ; 
- int /*<<< orphan*/  BrotliStoreMetaBlockFast (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/  const,size_t const,size_t const,int /*<<< orphan*/  const,TYPE_2__ const*,int /*<<< orphan*/ *,size_t const,size_t*,int*) ; 
- int /*<<< orphan*/  BrotliStoreMetaBlockTrivial (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/  const,size_t const,size_t const,int /*<<< orphan*/  const,TYPE_2__ const*,int /*<<< orphan*/ *,size_t const,size_t*,int*) ; 
- int /*<<< orphan*/  BrotliStoreUncompressedMetaBlock (int /*<<< orphan*/  const,int const*,int /*<<< orphan*/  const,size_t const,size_t const,size_t*,int*) ; 
- int /*<<< orphan*/  BrotliWriteBits (int,int,size_t*,int*) ; 
- int /*<<< orphan*/  DecideOverLiteralContextModeling (int const*,int /*<<< orphan*/  const,size_t const,size_t const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  DestroyMetaBlockSplit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InitMetaBlockSplit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_QUALITY_FOR_STATIC_ENTROPY_CODES ; 
- int /*<<< orphan*/  MIN_QUALITY_FOR_BLOCK_SPLIT ; 
- int /*<<< orphan*/  MIN_QUALITY_FOR_HQ_BLOCK_SPLITTING ; 
- int /*<<< orphan*/  MIN_QUALITY_FOR_OPTIMIZE_HISTOGRAMS ; 
- int /*<<< orphan*/  ShouldCompress (int const*,size_t const,int /*<<< orphan*/  const,size_t const,size_t const,size_t const) ; 
- int /*<<< orphan*/  WrapPosition (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int dist_cache ;
+struct TYPE_8__ {int alphabet_size_limit; } ;
+struct TYPE_9__ {TYPE_1__ dist; int quality; int size_hint; int disable_literal_context_modeling; } ;
+typedef int MetaBlockSplit ;
+typedef int MemoryManager ;
+typedef int ContextType ;
+typedef int ContextLut ;
+typedef int Command ;
+typedef TYPE_2__ BrotliEncoderParams ;
+typedef int BROTLI_BOOL ;
+
+
+ int BROTLI_CONTEXT_LUT (int ) ;
+ int BROTLI_DCHECK (int) ;
+ scalar_t__ BROTLI_IS_OOM (int *) ;
+ int BrotliBuildMetaBlock (int *,int const*,int const,size_t const,TYPE_2__*,int const,int const,int *,size_t const,int ,int *) ;
+ int BrotliBuildMetaBlockGreedy (int *,int const*,int const,size_t const,int const,int const,int ,size_t,int const*,int *,size_t const,int *) ;
+ int BrotliOptimizeHistograms (int ,int *) ;
+ int BrotliStoreMetaBlock (int *,int const*,int const,size_t const,size_t const,int const,int const,int const,TYPE_2__*,int ,int *,size_t const,int *,size_t*,int*) ;
+ int BrotliStoreMetaBlockFast (int *,int const*,int const,size_t const,size_t const,int const,TYPE_2__ const*,int *,size_t const,size_t*,int*) ;
+ int BrotliStoreMetaBlockTrivial (int *,int const*,int const,size_t const,size_t const,int const,TYPE_2__ const*,int *,size_t const,size_t*,int*) ;
+ int BrotliStoreUncompressedMetaBlock (int const,int const*,int const,size_t const,size_t const,size_t*,int*) ;
+ int BrotliWriteBits (int,int,size_t*,int*) ;
+ int DecideOverLiteralContextModeling (int const*,int const,size_t const,size_t const,int ,int ,size_t*,int const**) ;
+ int DestroyMetaBlockSplit (int *,int *) ;
+ int InitMetaBlockSplit (int *) ;
+ int MAX_QUALITY_FOR_STATIC_ENTROPY_CODES ;
+ int MIN_QUALITY_FOR_BLOCK_SPLIT ;
+ int MIN_QUALITY_FOR_HQ_BLOCK_SPLITTING ;
+ int MIN_QUALITY_FOR_OPTIMIZE_HISTOGRAMS ;
+ int ShouldCompress (int const*,size_t const,int const,size_t const,size_t const,size_t const) ;
+ int WrapPosition (int const) ;
+ int memcpy (int*,int const*,int) ;
 
 __attribute__((used)) static void WriteMetaBlockInternal(MemoryManager* m,
                                    const uint8_t* data,
@@ -74,7 +74,7 @@ __attribute__((used)) static void WriteMetaBlockInternal(MemoryManager* m,
   BrotliEncoderParams block_params = *params;
 
   if (bytes == 0) {
-    /* Write the ISLAST and ISEMPTY bits. */
+
     BrotliWriteBits(2, 3, storage_ix, storage);
     *storage_ix = (*storage_ix + 7u) & ~7u;
     return;
@@ -82,8 +82,8 @@ __attribute__((used)) static void WriteMetaBlockInternal(MemoryManager* m,
 
   if (!ShouldCompress(data, mask, last_flush_pos, bytes,
                       num_literals, num_commands)) {
-    /* Restore the distance cache, as its last update by
-       CreateBackwardReferences is now unused. */
+
+
     memcpy(dist_cache, saved_dist_cache, 4 * sizeof(dist_cache[0]));
     BrotliStoreUncompressedMetaBlock(is_last, data,
                                      wrapped_last_flush_pos, mask, bytes,
@@ -111,7 +111,7 @@ __attribute__((used)) static void WriteMetaBlockInternal(MemoryManager* m,
     InitMetaBlockSplit(&mb);
     if (params->quality < MIN_QUALITY_FOR_HQ_BLOCK_SPLITTING) {
       size_t num_literal_contexts = 1;
-      const uint32_t* literal_context_map = NULL;
+      const uint32_t* literal_context_map = ((void*)0);
       if (!params->disable_literal_context_modeling) {
         DecideOverLiteralContextModeling(
             data, wrapped_last_flush_pos, bytes, mask, params->quality,
@@ -131,9 +131,9 @@ __attribute__((used)) static void WriteMetaBlockInternal(MemoryManager* m,
       if (BROTLI_IS_OOM(m)) return;
     }
     if (params->quality >= MIN_QUALITY_FOR_OPTIMIZE_HISTOGRAMS) {
-      /* The number of distance symbols effectively used for distance
-         histograms. It might be less than distance alphabet size
-         for "Large Window Brotli" (32-bit). */
+
+
+
       BrotliOptimizeHistograms(block_params.dist.alphabet_size_limit, &mb);
     }
     BrotliStoreMetaBlock(m, data, wrapped_last_flush_pos, bytes, mask,
@@ -148,7 +148,7 @@ __attribute__((used)) static void WriteMetaBlockInternal(MemoryManager* m,
     DestroyMetaBlockSplit(m, &mb);
   }
   if (bytes + 4 < (*storage_ix >> 3)) {
-    /* Restore the distance cache and last byte. */
+
     memcpy(dist_cache, saved_dist_cache, 4 * sizeof(dist_cache[0]));
     storage[0] = (uint8_t)last_bytes;
     storage[1] = (uint8_t)(last_bytes >> 8);

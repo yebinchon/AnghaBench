@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yrmcds_error ;
-struct TYPE_3__ {int sock; int /*<<< orphan*/ * decompressed; int /*<<< orphan*/ * recvbuf; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ yrmcds ;
 
-/* Variables and functions */
- int /*<<< orphan*/  YRMCDS_BAD_ARGUMENT ; 
- int /*<<< orphan*/  YRMCDS_OK ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int yrmcds_error ;
+struct TYPE_3__ {int sock; int * decompressed; int * recvbuf; int lock; } ;
+typedef TYPE_1__ yrmcds ;
+
+
+ int YRMCDS_BAD_ARGUMENT ;
+ int YRMCDS_OK ;
+ int close (int) ;
+ int free (int *) ;
+ int pthread_mutex_destroy (int *) ;
 
 yrmcds_error yrmcds_close(yrmcds* c) {
-    if( c == NULL )
+    if( c == ((void*)0) )
         return YRMCDS_BAD_ARGUMENT;
     if( c->sock == -1 )
         return YRMCDS_OK;
 
     close(c->sock);
     c->sock = -1;
-#ifndef LIBYRMCDS_NO_INTERNAL_LOCK
+
     pthread_mutex_destroy(&(c->lock));
-#endif
+
     free(c->recvbuf);
-    c->recvbuf = NULL;
+    c->recvbuf = ((void*)0);
     free(c->decompressed);
-    c->decompressed = NULL;
+    c->decompressed = ((void*)0);
     return YRMCDS_OK;
 }

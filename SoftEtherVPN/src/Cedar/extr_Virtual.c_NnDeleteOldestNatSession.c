@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  NATIVE_NAT_ENTRY ;
-typedef  int /*<<< orphan*/  NATIVE_NAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NnDeleteSession (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NnGetOldestNatEntryOfIp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int NATIVE_NAT_ENTRY ;
+typedef int NATIVE_NAT ;
+
+
+ int NnDeleteSession (int *,int *) ;
+ int * NnGetOldestNatEntryOfIp (int *,int ,int ) ;
 
 void NnDeleteOldestNatSession(NATIVE_NAT *t, UINT ip, UINT protocol)
 {
-	NATIVE_NAT_ENTRY *e;
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
+ NATIVE_NAT_ENTRY *e;
 
-	e = NnGetOldestNatEntryOfIp(t, ip, protocol);
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-	if (e != NULL)
-	{
-		NnDeleteSession(t, e);
-	}
+ e = NnGetOldestNatEntryOfIp(t, ip, protocol);
+
+ if (e != ((void*)0))
+ {
+  NnDeleteSession(t, e);
+ }
 }

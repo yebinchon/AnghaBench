@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  accel_screen_copy (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  cache_rect (int,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ contains_mouse (int,int,int,int) ; 
- int /*<<< orphan*/  draw_cache_rects () ; 
- int /*<<< orphan*/  draw_cursor_under (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int g_server_Bpp ; 
- int /*<<< orphan*/  g_server_bpp ; 
- int /*<<< orphan*/  get_pixel (int,int) ; 
- int /*<<< orphan*/  get_pixel2 (int,int,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mousex ; 
- int /*<<< orphan*/  mousey ; 
- int /*<<< orphan*/  set_pixel (int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  set_pixel2 (int,int,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ warp_coords (int*,int*,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  xfree (int*) ; 
- scalar_t__ xmalloc (int) ; 
+
+
+
+typedef int uint8 ;
+
+
+ int False ;
+ int accel_screen_copy (int,int,int,int,int,int) ;
+ int cache_rect (int,int,int,int,int ) ;
+ scalar_t__ contains_mouse (int,int,int,int) ;
+ int draw_cache_rects () ;
+ int draw_cursor_under (int ,int ) ;
+ int g_server_Bpp ;
+ int g_server_bpp ;
+ int get_pixel (int,int) ;
+ int get_pixel2 (int,int,int*,int,int ) ;
+ int mousex ;
+ int mousey ;
+ int set_pixel (int,int,int ,int) ;
+ int set_pixel2 (int,int,int ,int*,int,int ) ;
+ scalar_t__ warp_coords (int*,int*,int*,int*,int*,int*) ;
+ int xfree (int*) ;
+ scalar_t__ xmalloc (int) ;
 
 void ui_screenblt(uint8 opcode, int x, int y, int cx, int cy,
                   int srcx, int srcy)
@@ -44,7 +44,7 @@ void ui_screenblt(uint8 opcode, int x, int y, int cx, int cy,
   {
     if (contains_mouse(x, y, cx, cy) || contains_mouse(srcx, srcy, cx, cy))
       draw_cursor_under(mousex, mousey);
-    if (opcode == 0xc) /* copy */
+    if (opcode == 0xc)
       accel_screen_copy(x, y, cx, cy, srcx, srcy);
     else
     {
@@ -58,6 +58,6 @@ void ui_screenblt(uint8 opcode, int x, int y, int cx, int cy,
       xfree(temp);
     }
     cache_rect(x, y, cx, cy, False);
-    draw_cache_rects(); // draw them all so screen is not jumpy
+    draw_cache_rects();
   }
 }

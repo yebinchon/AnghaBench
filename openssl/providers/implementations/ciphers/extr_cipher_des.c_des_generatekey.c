@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t keylen; int /*<<< orphan*/  libctx; } ;
-typedef  TYPE_1__ PROV_CIPHER_CTX ;
-typedef  int /*<<< orphan*/  DES_cblock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_set_odd_parity (int /*<<< orphan*/ *) ; 
- scalar_t__ rand_priv_bytes_ex (int /*<<< orphan*/ ,void*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t keylen; int libctx; } ;
+typedef TYPE_1__ PROV_CIPHER_CTX ;
+typedef int DES_cblock ;
+
+
+ int DES_set_odd_parity (int *) ;
+ scalar_t__ rand_priv_bytes_ex (int ,void*,size_t) ;
 
 __attribute__((used)) static int des_generatekey(PROV_CIPHER_CTX *ctx, void *ptr)
 {

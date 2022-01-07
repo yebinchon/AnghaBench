@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- unsigned char av_clip_uint8 (unsigned char) ; 
+
+
+
+typedef int ptrdiff_t ;
+
+
+ unsigned char av_clip_uint8 (unsigned char) ;
 
 __attribute__((used)) static inline void comp(unsigned char *dst, ptrdiff_t dst_stride,
                         unsigned char *src, ptrdiff_t src_stride, int add)

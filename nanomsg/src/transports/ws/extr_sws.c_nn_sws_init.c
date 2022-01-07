@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int src; int /*<<< orphan*/ * fsm; } ;
-struct nn_sws {int instate; int outstate; int /*<<< orphan*/  done; scalar_t__ pongs_received; scalar_t__ pings_received; scalar_t__ pongs_sent; scalar_t__ pings_sent; scalar_t__ utf8_code_pt_fragment_len; int /*<<< orphan*/  utf8_code_pt_fragment; scalar_t__ continuing; int /*<<< orphan*/  outmsg; int /*<<< orphan*/  inmsg_array; int /*<<< orphan*/  pipebase; TYPE_1__ usock_owner; int /*<<< orphan*/ * usock; int /*<<< orphan*/  fsm; int /*<<< orphan*/  handshaker; int /*<<< orphan*/  state; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int src; int * fsm; } ;
+struct nn_sws {int instate; int outstate; int done; scalar_t__ pongs_received; scalar_t__ pings_received; scalar_t__ pongs_sent; scalar_t__ pings_sent; scalar_t__ utf8_code_pt_fragment_len; int utf8_code_pt_fragment; scalar_t__ continuing; int outmsg; int inmsg_array; int pipebase; TYPE_1__ usock_owner; int * usock; int fsm; int handshaker; int state; } ;
 struct nn_fsm {int dummy; } ;
 struct nn_ep {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_SWS_SRC_HANDSHAKE ; 
- int /*<<< orphan*/  NN_SWS_STATE_IDLE ; 
- int /*<<< orphan*/  NN_SWS_UTF8_MAX_CODEPOINT_LEN ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_fsm_event_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct nn_sws*,struct nn_fsm*) ; 
- int /*<<< orphan*/  nn_list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_pipebase_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct nn_ep*) ; 
- int /*<<< orphan*/  nn_sws_handler ; 
- int /*<<< orphan*/  nn_sws_pipebase_vfptr ; 
- int /*<<< orphan*/  nn_sws_shutdown ; 
- int /*<<< orphan*/  nn_ws_handshake_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int NN_SWS_SRC_HANDSHAKE ;
+ int NN_SWS_STATE_IDLE ;
+ int NN_SWS_UTF8_MAX_CODEPOINT_LEN ;
+ int memset (int ,int ,int ) ;
+ int nn_fsm_event_init (int *) ;
+ int nn_fsm_init (int *,int ,int ,int,struct nn_sws*,struct nn_fsm*) ;
+ int nn_list_init (int *) ;
+ int nn_msg_init (int *,int ) ;
+ int nn_pipebase_init (int *,int *,struct nn_ep*) ;
+ int nn_sws_handler ;
+ int nn_sws_pipebase_vfptr ;
+ int nn_sws_shutdown ;
+ int nn_ws_handshake_init (int *,int ,int *) ;
 
 void nn_sws_init (struct nn_sws *self, int src,
     struct nn_ep *ep, struct nn_fsm *owner)
@@ -39,9 +39,9 @@ void nn_sws_init (struct nn_sws *self, int src,
     self->state = NN_SWS_STATE_IDLE;
     nn_ws_handshake_init (&self->handshaker,
         NN_SWS_SRC_HANDSHAKE, &self->fsm);
-    self->usock = NULL;
+    self->usock = ((void*)0);
     self->usock_owner.src = -1;
-    self->usock_owner.fsm = NULL;
+    self->usock_owner.fsm = ((void*)0);
     nn_pipebase_init (&self->pipebase, &nn_sws_pipebase_vfptr, ep);
     self->instate = -1;
     nn_list_init (&self->inmsg_array);

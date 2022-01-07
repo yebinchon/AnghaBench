@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_t ;
-typedef  scalar_t__ svn_diff_conflict_display_style_t ;
-struct TYPE_4__ {scalar_t__ conflict_style; int /*<<< orphan*/  conflict_latest; int /*<<< orphan*/  output_stream; int /*<<< orphan*/  conflict_separator; int /*<<< orphan*/  conflict_original; int /*<<< orphan*/  conflict_modified; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_1__ svn_diff3__file_output_baton_t ;
-typedef  int /*<<< orphan*/  apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * output_conflict_with_context (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_hunk (void*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_marker_eol (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_diff3__file_output_vtable ; 
- scalar_t__ svn_diff_conflict_display_latest ; 
- scalar_t__ svn_diff_conflict_display_modified ; 
- scalar_t__ svn_diff_conflict_display_modified_latest ; 
- scalar_t__ svn_diff_conflict_display_modified_original_latest ; 
- scalar_t__ svn_diff_conflict_display_only_conflicts ; 
- scalar_t__ svn_diff_conflict_display_resolved_modified_latest ; 
- int /*<<< orphan*/ * svn_diff_output2 (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_puts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_diff_t ;
+typedef scalar_t__ svn_diff_conflict_display_style_t ;
+struct TYPE_4__ {scalar_t__ conflict_style; int conflict_latest; int output_stream; int conflict_separator; int conflict_original; int conflict_modified; int cancel_baton; int cancel_func; } ;
+typedef TYPE_1__ svn_diff3__file_output_baton_t ;
+typedef int apr_off_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int * SVN_NO_ERROR ;
+ int * output_conflict_with_context (TYPE_1__*,int ,int ,int ,int ,int ,int ) ;
+ int output_hunk (void*,int,int ,int ) ;
+ int output_marker_eol (TYPE_1__*) ;
+ int svn_diff3__file_output_vtable ;
+ scalar_t__ svn_diff_conflict_display_latest ;
+ scalar_t__ svn_diff_conflict_display_modified ;
+ scalar_t__ svn_diff_conflict_display_modified_latest ;
+ scalar_t__ svn_diff_conflict_display_modified_original_latest ;
+ scalar_t__ svn_diff_conflict_display_only_conflicts ;
+ scalar_t__ svn_diff_conflict_display_resolved_modified_latest ;
+ int * svn_diff_output2 (int *,void*,int *,int ,int ) ;
+ int svn_stream_puts (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 output_conflict(void *baton,
@@ -94,7 +94,7 @@ output_conflict(void *baton,
     SVN_ERR(output_hunk(baton, 1, modified_start, modified_length));
   else if (style == svn_diff_conflict_display_latest)
     SVN_ERR(output_hunk(baton, 2, latest_start, latest_length));
-  else /* unknown style */
+  else
     SVN_ERR_MALFUNCTION();
 
   return SVN_NO_ERROR;

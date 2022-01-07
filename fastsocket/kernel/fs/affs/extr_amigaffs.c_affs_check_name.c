@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int ENAMETOOLONG ; 
+ int EINVAL ;
+ int ENAMETOOLONG ;
 
 int
 affs_check_name(const unsigned char *name, int len)
 {
-	int	 i;
+ int i;
 
-	if (len > 30)
-#ifdef AFFS_NO_TRUNCATE
-		return -ENAMETOOLONG;
-#else
-		len = 30;
-#endif
+ if (len > 30)
 
-	for (i = 0; i < len; i++) {
-		if (name[i] < ' ' || name[i] == ':'
-		    || (name[i] > 0x7e && name[i] < 0xa0))
-			return -EINVAL;
-	}
 
-	return 0;
+
+  len = 30;
+
+
+ for (i = 0; i < len; i++) {
+  if (name[i] < ' ' || name[i] == ':'
+      || (name[i] > 0x7e && name[i] < 0xa0))
+   return -EINVAL;
+ }
+
+ return 0;
 }

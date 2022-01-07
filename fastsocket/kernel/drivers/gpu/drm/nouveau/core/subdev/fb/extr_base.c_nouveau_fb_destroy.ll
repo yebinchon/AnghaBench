@@ -1,0 +1,75 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/gpu/drm/nouveau/core/subdev/fb/extr_base.c_nouveau_fb_destroy.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/gpu/drm/nouveau/core/subdev/fb/extr_base.c_nouveau_fb_destroy.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.nouveau_fb = type { i32, i32, i32, %struct.TYPE_2__ }
+%struct.TYPE_2__ = type { i32, i32*, i32 (%struct.nouveau_fb.0*, i32, i32*)* }
+%struct.nouveau_fb.0 = type opaque
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @nouveau_fb_destroy(%struct.nouveau_fb* %0) #0 {
+  %2 = alloca %struct.nouveau_fb*, align 8
+  %3 = alloca i32, align 4
+  store %struct.nouveau_fb* %0, %struct.nouveau_fb** %2, align 8
+  store i32 0, i32* %3, align 4
+  br label %4
+
+4:                                                ; preds = %27, %1
+  %5 = load i32, i32* %3, align 4
+  %6 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %7 = getelementptr inbounds %struct.nouveau_fb, %struct.nouveau_fb* %6, i32 0, i32 3
+  %8 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %7, i32 0, i32 0
+  %9 = load i32, i32* %8, align 8
+  %10 = icmp slt i32 %5, %9
+  br i1 %10, label %11, label %30
+
+11:                                               ; preds = %4
+  %12 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %13 = getelementptr inbounds %struct.nouveau_fb, %struct.nouveau_fb* %12, i32 0, i32 3
+  %14 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %13, i32 0, i32 2
+  %15 = load i32 (%struct.nouveau_fb.0*, i32, i32*)*, i32 (%struct.nouveau_fb.0*, i32, i32*)** %14, align 8
+  %16 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %17 = bitcast %struct.nouveau_fb* %16 to %struct.nouveau_fb.0*
+  %18 = load i32, i32* %3, align 4
+  %19 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %20 = getelementptr inbounds %struct.nouveau_fb, %struct.nouveau_fb* %19, i32 0, i32 3
+  %21 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %20, i32 0, i32 1
+  %22 = load i32*, i32** %21, align 8
+  %23 = load i32, i32* %3, align 4
+  %24 = sext i32 %23 to i64
+  %25 = getelementptr inbounds i32, i32* %22, i64 %24
+  %26 = call i32 %15(%struct.nouveau_fb.0* %17, i32 %18, i32* %25)
+  br label %27
+
+27:                                               ; preds = %11
+  %28 = load i32, i32* %3, align 4
+  %29 = add nsw i32 %28, 1
+  store i32 %29, i32* %3, align 4
+  br label %4
+
+30:                                               ; preds = %4
+  %31 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %32 = getelementptr inbounds %struct.nouveau_fb, %struct.nouveau_fb* %31, i32 0, i32 2
+  %33 = call i32 @nouveau_mm_fini(i32* %32)
+  %34 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %35 = getelementptr inbounds %struct.nouveau_fb, %struct.nouveau_fb* %34, i32 0, i32 1
+  %36 = call i32 @nouveau_mm_fini(i32* %35)
+  %37 = load %struct.nouveau_fb*, %struct.nouveau_fb** %2, align 8
+  %38 = getelementptr inbounds %struct.nouveau_fb, %struct.nouveau_fb* %37, i32 0, i32 0
+  %39 = call i32 @nouveau_subdev_destroy(i32* %38)
+  ret void
+}
+
+declare dso_local i32 @nouveau_mm_fini(i32*) #1
+
+declare dso_local i32 @nouveau_subdev_destroy(i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

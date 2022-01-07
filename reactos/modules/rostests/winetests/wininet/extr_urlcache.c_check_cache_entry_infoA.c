@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int dwStructSize; int lpszSourceUrlName; int lpszLocalFileName; int lpszFileExtension; } ;
-typedef  TYPE_1__ INTERNET_CACHE_ENTRY_INFOA ;
+typedef TYPE_1__ INTERNET_CACHE_ENTRY_INFOA ;
 
-/* Variables and functions */
- char* filenameA ; 
- int /*<<< orphan*/  ok (int,char*,char const*,...) ; 
- int /*<<< orphan*/  strcmp (int,char*) ; 
- char* test_url ; 
+
+ char* filenameA ;
+ int ok (int,char*,char const*,...) ;
+ int strcmp (int,char*) ;
+ char* test_url ;
 
 __attribute__((used)) static void check_cache_entry_infoA(const char *returnedfrom, INTERNET_CACHE_ENTRY_INFOA *lpCacheEntryInfo)
 {

@@ -1,95 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* dev; scalar_t__* system; } ;
-
-/* Variables and functions */
-#define  DEVICE_ACTIVATOR 137 
-#define  DEVICE_LIGHTGUN 136 
-#define  DEVICE_MOUSE 135 
-#define  DEVICE_PAD2B 134 
-#define  DEVICE_PAD3B 133 
-#define  DEVICE_PAD6B 132 
-#define  DEVICE_PADDLE 131 
-#define  DEVICE_SPORTSPAD 130 
-#define  DEVICE_TEREBI 129 
-#define  DEVICE_XE_A1P 128 
- int MAX_DEVICES ; 
- scalar_t__ SYSTEM_TEAMPLAYER ; 
- int /*<<< orphan*/  activator_reset (int) ; 
- int /*<<< orphan*/  gamepad_reset (int) ; 
- TYPE_1__ input ; 
- int /*<<< orphan*/  lightgun_reset (int) ; 
- int /*<<< orphan*/  mouse_reset (int) ; 
- int /*<<< orphan*/  paddle_reset (int) ; 
- int /*<<< orphan*/  sportspad_reset (int) ; 
- int /*<<< orphan*/  teamplayer_reset (int) ; 
- int /*<<< orphan*/  terebi_oekaki_reset () ; 
- int /*<<< orphan*/  xe_a1p_reset (int) ; 
+ int MAX_DEVICES ;
+ scalar_t__ SYSTEM_TEAMPLAYER ;
+ int activator_reset (int) ;
+ int gamepad_reset (int) ;
+ TYPE_1__ input ;
+ int lightgun_reset (int) ;
+ int mouse_reset (int) ;
+ int paddle_reset (int) ;
+ int sportspad_reset (int) ;
+ int teamplayer_reset (int) ;
+ int terebi_oekaki_reset () ;
+ int xe_a1p_reset (int) ;
 
 void input_reset(void)
 {
-  /* Reset input devices */
+
   int i;
   for (i=0; i<MAX_DEVICES; i++)
   {
     switch (input.dev[i])
     {
-      case DEVICE_PAD2B:
-      case DEVICE_PAD3B:
-      case DEVICE_PAD6B:
+      case 134:
+      case 133:
+      case 132:
       {
         gamepad_reset(i);
         break;
       }
 
-      case DEVICE_LIGHTGUN:
+      case 136:
       {
         lightgun_reset(i);
         break;
       }
 
-      case DEVICE_MOUSE:
+      case 135:
       {
         mouse_reset(i);
         break;
       }
 
-      case DEVICE_ACTIVATOR:
+      case 137:
       {
         activator_reset(i >> 2);
         break;
       }
 
-      case DEVICE_XE_A1P:
+      case 128:
       {
         xe_a1p_reset(i);
         break;
       }
 
-      case DEVICE_PADDLE:
+      case 131:
       {
         paddle_reset(i);
         break;
       }
 
-      case DEVICE_SPORTSPAD:
+      case 130:
       {
         sportspad_reset(i);
         break;
       }
 
-      case DEVICE_TEREBI:
+      case 129:
       {
         terebi_oekaki_reset();
         break;
@@ -102,7 +90,7 @@ void input_reset(void)
     }
   }
 
-  /* Team Player */
+
   for (i=0; i<2; i++)
   {
     if (input.system[i] == SYSTEM_TEAMPLAYER)

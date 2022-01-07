@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG_PTR ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMDLINE_LENGTH ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  _T (char) ; 
- scalar_t__ _fgetts (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int _tcslen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmd_alloc (int) ; 
- int /*<<< orphan*/  cmd_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmd_realloc (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int ULONG_PTR ;
+typedef int TCHAR ;
+typedef int SIZE_T ;
+typedef int * LPTSTR ;
+typedef int FILE ;
+
+
+ int CMDLINE_LENGTH ;
+ int WARN (char*) ;
+ int _T (char) ;
+ scalar_t__ _fgetts (int *,int ,int *) ;
+ int _tcscpy (int *,int *) ;
+ int _tcslen (int *) ;
+ int * cmd_alloc (int) ;
+ int cmd_free (int *) ;
+ int * cmd_realloc (int *,int) ;
 
 __attribute__((used)) static LPTSTR ReadFileContents(FILE *InputFile, TCHAR *Buffer)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static LPTSTR ReadFileContents(FILE *InputFile, TCHAR *Buf
     if (!Contents)
     {
         WARN("Cannot allocate memory for Contents!\n");
-        return NULL;
+        return ((void*)0);
     }
 
     while (_fgetts(Buffer, CMDLINE_LENGTH, InputFile))
@@ -50,7 +50,7 @@ __attribute__((used)) static LPTSTR ReadFileContents(FILE *InputFile, TCHAR *Buf
             {
                 WARN("Cannot reallocate memory for Contents!\n");
                 cmd_free(OldContents);
-                return NULL;
+                return ((void*)0);
             }
         }
         _tcscpy(&Contents[Len], Buffer);

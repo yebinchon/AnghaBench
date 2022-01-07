@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  char* LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ HKEY ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__ HKEY_LOCAL_MACHINE ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int KEY_CREATE_SUB_KEY ; 
- int KEY_ENUMERATE_SUB_KEYS ; 
- int KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- int /*<<< orphan*/  RegDeleteKeyW (scalar_t__,char*) ; 
- scalar_t__ RegEnumKeyExW (scalar_t__,int /*<<< orphan*/ ,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegFlushKey (scalar_t__) ; 
- scalar_t__ RegOpenKeyExW (scalar_t__,char*,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- scalar_t__ RegQueryInfoKeyW (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  wprintf (char*,...) ; 
+
+
+
+typedef int WCHAR ;
+typedef char* LPWSTR ;
+typedef char* LPCWSTR ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ HKEY ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ scalar_t__ HKEY_LOCAL_MACHINE ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int KEY_CREATE_SUB_KEY ;
+ int KEY_ENUMERATE_SUB_KEYS ;
+ int KEY_QUERY_VALUE ;
+ int RegCloseKey (scalar_t__) ;
+ int RegDeleteKeyW (scalar_t__,char*) ;
+ scalar_t__ RegEnumKeyExW (scalar_t__,int ,char*,int*,int *,int *,int *,int *) ;
+ int RegFlushKey (scalar_t__) ;
+ scalar_t__ RegOpenKeyExW (scalar_t__,char*,int ,int,scalar_t__*) ;
+ scalar_t__ RegQueryInfoKeyW (scalar_t__,int *,int *,int *,int *,int*,int *,int *,int *,int *,int *,int *) ;
+ scalar_t__ TRUE ;
+ int wprintf (char*,...) ;
 
 BOOL RemoveEventLog(LPCWSTR EventLogName)
 {
@@ -43,7 +43,7 @@ BOOL RemoveEventLog(LPCWSTR EventLogName)
     LONG lRet;
     HKEY hKey, hEventKey;
     DWORD MaxKeyNameLen, KeyNameLen;
-    LPWSTR Buf = NULL;
+    LPWSTR Buf = ((void*)0);
 
     wprintf(L"Deleting log %s...", EventLogName);
 
@@ -62,9 +62,9 @@ BOOL RemoveEventLog(LPCWSTR EventLogName)
         goto Quit;
 
     lRet = RegQueryInfoKeyW(hEventKey,
-                            NULL, NULL, NULL, NULL,
+                            ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                             &MaxKeyNameLen,
-                            NULL, NULL, NULL, NULL, NULL, NULL);
+                            ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0));
     if (lRet != ERROR_SUCCESS)
         goto Quit;
 
@@ -79,7 +79,7 @@ BOOL RemoveEventLog(LPCWSTR EventLogName)
                          0,
                          Buf,
                          &KeyNameLen,
-                         NULL, NULL, NULL, NULL) == ERROR_SUCCESS)
+                         ((void*)0), ((void*)0), ((void*)0), ((void*)0)) == ERROR_SUCCESS)
     {
         RegDeleteKeyW(hEventKey, Buf);
         KeyNameLen = MaxKeyNameLen;

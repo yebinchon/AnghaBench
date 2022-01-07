@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gss_auth {int /*<<< orphan*/  mech; int /*<<< orphan*/ * dentry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  gss_mech_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct gss_auth*) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_unlink (int /*<<< orphan*/ ) ; 
+
+
+
+struct gss_auth {int mech; int * dentry; } ;
+
+
+ int THIS_MODULE ;
+ int gss_mech_put (int ) ;
+ int kfree (struct gss_auth*) ;
+ int module_put (int ) ;
+ int rpc_unlink (int ) ;
 
 __attribute__((used)) static void
 gss_free(struct gss_auth *gss_auth)
 {
-	rpc_unlink(gss_auth->dentry[1]);
-	rpc_unlink(gss_auth->dentry[0]);
-	gss_mech_put(gss_auth->mech);
+ rpc_unlink(gss_auth->dentry[1]);
+ rpc_unlink(gss_auth->dentry[0]);
+ gss_mech_put(gss_auth->mech);
 
-	kfree(gss_auth);
-	module_put(THIS_MODULE);
+ kfree(gss_auth);
+ module_put(THIS_MODULE);
 }

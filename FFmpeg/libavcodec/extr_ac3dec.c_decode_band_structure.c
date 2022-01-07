@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert0 (int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int GetBitContext ;
+
+
+ int av_assert0 (int) ;
+ int get_bits1 (int *) ;
+ int memcpy (int*,int const*,int) ;
 
 __attribute__((used)) static void decode_band_structure(GetBitContext *gbc, int blk, int eac3,
                                   int ecpl, int start_subband, int end_subband,
@@ -36,16 +36,16 @@ __attribute__((used)) static void decode_band_structure(GetBitContext *gbc, int 
 
     band_struct += start_subband + 1;
 
-    /* decode band structure from bitstream or use default */
+
     if (!eac3 || get_bits1(gbc)) {
         for (subbnd = 0; subbnd < n_subbands - 1; subbnd++) {
             band_struct[subbnd] = get_bits1(gbc);
         }
     }
 
-    /* calculate number of bands and band sizes based on band structure.
-       note that the first 4 subbands in enhanced coupling span only 6 bins
-       instead of 12. */
+
+
+
     if (num_bands || band_sizes ) {
         n_bands = n_subbands;
         bnd_sz[0] = ecpl ? 6 : 12;
@@ -60,7 +60,7 @@ __attribute__((used)) static void decode_band_structure(GetBitContext *gbc, int 
         }
     }
 
-    /* set optional output params */
+
     if (num_bands)
         *num_bands = n_bands;
     if (band_sizes)

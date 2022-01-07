@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int gint64 ;
 struct TYPE_11__ {TYPE_1__* http_tx_mgr; } ;
-struct TYPE_10__ {void* release; int /*<<< orphan*/ * curl; } ;
-struct TYPE_9__ {int /*<<< orphan*/  requests; void* success; int /*<<< orphan*/  host; int /*<<< orphan*/  use_fileserver_port; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * priv; } ;
-typedef  int /*<<< orphan*/  HttpTxPriv ;
-typedef  TYPE_2__ GetLockedFilesData ;
-typedef  int /*<<< orphan*/  GDestroyNotify ;
-typedef  int /*<<< orphan*/  ConnectionPool ;
-typedef  TYPE_3__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_10__ {void* release; int * curl; } ;
+struct TYPE_9__ {int requests; void* success; int host; int use_fileserver_port; } ;
+struct TYPE_8__ {int * priv; } ;
+typedef int HttpTxPriv ;
+typedef TYPE_2__ GetLockedFilesData ;
+typedef int GDestroyNotify ;
+typedef int ConnectionPool ;
+typedef TYPE_3__ Connection ;
+typedef int CURL ;
 
-/* Variables and functions */
- int HTTP_OK ; 
- void* TRUE ; 
- char* compose_get_locked_files_request (int /*<<< orphan*/ ) ; 
- TYPE_3__* connection_pool_get_connection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  connection_pool_return_connection (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/ * find_connection_pool (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_list_free_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ http_locked_files_req_free ; 
- scalar_t__ http_post (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*,char**,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_locked_files (char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_4__* seaf ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,...) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int HTTP_OK ;
+ void* TRUE ;
+ char* compose_get_locked_files_request (int ) ;
+ TYPE_3__* connection_pool_get_connection (int *) ;
+ int connection_pool_return_connection (int *,TYPE_3__*) ;
+ int * find_connection_pool (int *,int ) ;
+ int g_free (char*) ;
+ int g_list_free_full (int ,int ) ;
+ char* g_strdup_printf (char*,int ) ;
+ scalar_t__ http_locked_files_req_free ;
+ scalar_t__ http_post (int *,char*,int *,char*,int ,int*,char**,int *,void*,int *) ;
+ scalar_t__ parse_locked_files (char*,int ,TYPE_2__*) ;
+ TYPE_4__* seaf ;
+ int seaf_warning (char*,char*,...) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void *
 get_locked_files_thread (void *vdata)
@@ -52,9 +52,9 @@ get_locked_files_thread (void *vdata)
     Connection *conn;
     CURL *curl;
     char *url;
-    char *req_content = NULL;
+    char *req_content = ((void*)0);
     int status;
-    char *rsp_content = NULL;
+    char *rsp_content = ((void*)0);
     gint64 rsp_size;
 
     pool = find_connection_pool (priv, data->host);
@@ -80,8 +80,8 @@ get_locked_files_thread (void *vdata)
     if (!req_content)
         goto out;
 
-    if (http_post (curl, url, NULL, req_content, strlen(req_content),
-                   &status, &rsp_content, &rsp_size, TRUE, NULL) < 0) {
+    if (http_post (curl, url, ((void*)0), req_content, strlen(req_content),
+                   &status, &rsp_content, &rsp_size, TRUE, ((void*)0)) < 0) {
         conn->release = TRUE;
         goto out;
     }

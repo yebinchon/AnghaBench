@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_i915_private {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VLV_IOSF_SB_FLISDSI ; 
- int /*<<< orphan*/  vlv_iosf_sb_get (struct drm_i915_private*,int /*<<< orphan*/ ) ; 
+
+ int BIT (int ) ;
+ int VLV_IOSF_SB_FLISDSI ;
+ int vlv_iosf_sb_get (struct drm_i915_private*,int ) ;
 
 __attribute__((used)) static inline void vlv_flisdsi_get(struct drm_i915_private *i915)
 {
-	vlv_iosf_sb_get(i915, BIT(VLV_IOSF_SB_FLISDSI));
+ vlv_iosf_sb_get(i915, BIT(VLV_IOSF_SB_FLISDSI));
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dce_i2c_sw {int dummy; } ;
 struct dc_context {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dce_i2c_sw_construct (struct dce_i2c_sw*,struct dc_context*) ; 
- struct dce_i2c_sw* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int dce_i2c_sw_construct (struct dce_i2c_sw*,struct dc_context*) ;
+ struct dce_i2c_sw* kzalloc (int,int ) ;
 
 struct dce_i2c_sw *dce80_i2c_sw_create(
-	struct dc_context *ctx)
+ struct dc_context *ctx)
 {
-	struct dce_i2c_sw *dce_i2c_sw =
-		kzalloc(sizeof(struct dce_i2c_sw), GFP_KERNEL);
+ struct dce_i2c_sw *dce_i2c_sw =
+  kzalloc(sizeof(struct dce_i2c_sw), GFP_KERNEL);
 
-	if (!dce_i2c_sw)
-		return NULL;
+ if (!dce_i2c_sw)
+  return ((void*)0);
 
-	dce_i2c_sw_construct(dce_i2c_sw, ctx);
+ dce_i2c_sw_construct(dce_i2c_sw, ctx);
 
-	return dce_i2c_sw;
+ return dce_i2c_sw;
 }

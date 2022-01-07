@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int scan_uptodate; scalar_t__ type; size_t n_devices; int /*<<< orphan*/ * devices; scalar_t__ match_parent; int /*<<< orphan*/  match_tag; } ;
-typedef  TYPE_1__ sd_device_enumerator ;
 
-/* Variables and functions */
- scalar_t__ DEVICE_ENUMERATION_TYPE_DEVICES ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  device_compare ; 
- int /*<<< orphan*/  device_enumerator_dedup_devices (TYPE_1__*) ; 
- int enumerator_scan_devices_all (TYPE_1__*) ; 
- int enumerator_scan_devices_children (TYPE_1__*) ; 
- int enumerator_scan_devices_tags (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_device_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_isempty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  typesafe_qsort (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int scan_uptodate; scalar_t__ type; size_t n_devices; int * devices; scalar_t__ match_parent; int match_tag; } ;
+typedef TYPE_1__ sd_device_enumerator ;
+
+
+ scalar_t__ DEVICE_ENUMERATION_TYPE_DEVICES ;
+ int assert (TYPE_1__*) ;
+ int device_compare ;
+ int device_enumerator_dedup_devices (TYPE_1__*) ;
+ int enumerator_scan_devices_all (TYPE_1__*) ;
+ int enumerator_scan_devices_children (TYPE_1__*) ;
+ int enumerator_scan_devices_tags (TYPE_1__*) ;
+ int sd_device_unref (int ) ;
+ int set_isempty (int ) ;
+ int typesafe_qsort (int *,size_t,int ) ;
 
 int device_enumerator_scan_devices(sd_device_enumerator *enumerator) {
         int r = 0, k;
@@ -58,7 +58,7 @@ int device_enumerator_scan_devices(sd_device_enumerator *enumerator) {
         typesafe_qsort(enumerator->devices, enumerator->n_devices, device_compare);
         device_enumerator_dedup_devices(enumerator);
 
-        enumerator->scan_uptodate = true;
+        enumerator->scan_uptodate = 1;
         enumerator->type = DEVICE_ENUMERATION_TYPE_DEVICES;
 
         return r;

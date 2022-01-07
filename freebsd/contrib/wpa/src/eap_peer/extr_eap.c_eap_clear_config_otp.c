@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eap_sm {int dummy; } ;
-struct eap_peer_config {scalar_t__ otp_len; int /*<<< orphan*/ * otp; } ;
+struct eap_peer_config {scalar_t__ otp_len; int * otp; } ;
 
-/* Variables and functions */
- struct eap_peer_config* eap_get_config (struct eap_sm*) ; 
- int /*<<< orphan*/  os_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  os_memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ struct eap_peer_config* eap_get_config (struct eap_sm*) ;
+ int os_free (int *) ;
+ int os_memset (int *,int ,scalar_t__) ;
 
 void eap_clear_config_otp(struct eap_sm *sm)
 {
-	struct eap_peer_config *config = eap_get_config(sm);
-	if (config == NULL)
-		return;
-	os_memset(config->otp, 0, config->otp_len);
-	os_free(config->otp);
-	config->otp = NULL;
-	config->otp_len = 0;
+ struct eap_peer_config *config = eap_get_config(sm);
+ if (config == ((void*)0))
+  return;
+ os_memset(config->otp, 0, config->otp_len);
+ os_free(config->otp);
+ config->otp = ((void*)0);
+ config->otp_len = 0;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int nb_streams; int /*<<< orphan*/ ** streams; } ;
-typedef  int /*<<< orphan*/  AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int MP4DecConfigDescrTag ; 
- int MP4ESDescrTag ; 
- int /*<<< orphan*/  avio_rb16 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mp4_parse_es_descr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_mp4_read_dec_config_descr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mp4_read_descr (TYPE_1__*,int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int nb_streams; int ** streams; } ;
+typedef int AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int MP4DecConfigDescrTag ;
+ int MP4ESDescrTag ;
+ int avio_rb16 (int *) ;
+ int avio_rb32 (int *) ;
+ int ff_mp4_parse_es_descr (int *,int *) ;
+ int ff_mp4_read_dec_config_descr (TYPE_1__*,int *,int *) ;
+ int ff_mp4_read_descr (TYPE_1__*,int *,int*) ;
 
 int ff_mov_read_esds(AVFormatContext *fc, AVIOContext *pb)
 {
@@ -34,12 +34,12 @@ int ff_mov_read_esds(AVFormatContext *fc, AVIOContext *pb)
         return 0;
     st = fc->streams[fc->nb_streams-1];
 
-    avio_rb32(pb); /* version + flags */
+    avio_rb32(pb);
     ff_mp4_read_descr(fc, pb, &tag);
     if (tag == MP4ESDescrTag) {
-        ff_mp4_parse_es_descr(pb, NULL);
+        ff_mp4_parse_es_descr(pb, ((void*)0));
     } else
-        avio_rb16(pb); /* ID */
+        avio_rb16(pb);
 
     ff_mp4_read_descr(fc, pb, &tag);
     if (tag == MP4DecConfigDescrTag)

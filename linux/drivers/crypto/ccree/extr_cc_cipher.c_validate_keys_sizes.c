@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct cc_cipher_ctx {int flow_mode; int /*<<< orphan*/  cipher_mode; } ;
 
-/* Variables and functions */
-#define  CC_AES_128_BIT_KEY_SIZE 133 
-#define  CC_AES_192_BIT_KEY_SIZE 132 
-#define  CC_AES_256_BIT_KEY_SIZE 131 
- int /*<<< orphan*/  DES3_EDE_KEY_SIZE ; 
- int /*<<< orphan*/  DES_KEY_SIZE ; 
- int /*<<< orphan*/  DRV_CIPHER_BITLOCKER ; 
- int /*<<< orphan*/  DRV_CIPHER_ESSIV ; 
- int /*<<< orphan*/  DRV_CIPHER_XTS ; 
- int EINVAL ; 
- int /*<<< orphan*/  SM4_KEY_SIZE ; 
-#define  S_DIN_to_AES 130 
-#define  S_DIN_to_DES 129 
-#define  S_DIN_to_SM4 128 
+
+
+
+typedef int u32 ;
+struct cc_cipher_ctx {int flow_mode; int cipher_mode; } ;
+
+
+
+
+
+ int DES3_EDE_KEY_SIZE ;
+ int DES_KEY_SIZE ;
+ int DRV_CIPHER_BITLOCKER ;
+ int DRV_CIPHER_ESSIV ;
+ int DRV_CIPHER_XTS ;
+ int EINVAL ;
+ int SM4_KEY_SIZE ;
+
+
+
 
 __attribute__((used)) static int validate_keys_sizes(struct cc_cipher_ctx *ctx_p, u32 size)
 {
-	switch (ctx_p->flow_mode) {
-	case S_DIN_to_AES:
-		switch (size) {
-		case CC_AES_128_BIT_KEY_SIZE:
-		case CC_AES_192_BIT_KEY_SIZE:
-			if (ctx_p->cipher_mode != DRV_CIPHER_XTS &&
-			    ctx_p->cipher_mode != DRV_CIPHER_ESSIV &&
-			    ctx_p->cipher_mode != DRV_CIPHER_BITLOCKER)
-				return 0;
-			break;
-		case CC_AES_256_BIT_KEY_SIZE:
-			return 0;
-		case (CC_AES_192_BIT_KEY_SIZE * 2):
-		case (CC_AES_256_BIT_KEY_SIZE * 2):
-			if (ctx_p->cipher_mode == DRV_CIPHER_XTS ||
-			    ctx_p->cipher_mode == DRV_CIPHER_ESSIV ||
-			    ctx_p->cipher_mode == DRV_CIPHER_BITLOCKER)
-				return 0;
-			break;
-		default:
-			break;
-		}
-		break;
-	case S_DIN_to_DES:
-		if (size == DES3_EDE_KEY_SIZE || size == DES_KEY_SIZE)
-			return 0;
-		break;
-	case S_DIN_to_SM4:
-		if (size == SM4_KEY_SIZE)
-			return 0;
-	default:
-		break;
-	}
-	return -EINVAL;
+ switch (ctx_p->flow_mode) {
+ case 130:
+  switch (size) {
+  case 133:
+  case 132:
+   if (ctx_p->cipher_mode != DRV_CIPHER_XTS &&
+       ctx_p->cipher_mode != DRV_CIPHER_ESSIV &&
+       ctx_p->cipher_mode != DRV_CIPHER_BITLOCKER)
+    return 0;
+   break;
+  case 131:
+   return 0;
+  case (132 * 2):
+  case (131 * 2):
+   if (ctx_p->cipher_mode == DRV_CIPHER_XTS ||
+       ctx_p->cipher_mode == DRV_CIPHER_ESSIV ||
+       ctx_p->cipher_mode == DRV_CIPHER_BITLOCKER)
+    return 0;
+   break;
+  default:
+   break;
+  }
+  break;
+ case 129:
+  if (size == DES3_EDE_KEY_SIZE || size == DES_KEY_SIZE)
+   return 0;
+  break;
+ case 128:
+  if (size == SM4_KEY_SIZE)
+   return 0;
+ default:
+  break;
+ }
+ return -EINVAL;
 }

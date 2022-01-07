@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct patch_offset_list {int /*<<< orphan*/  count; int /*<<< orphan*/  patches; int /*<<< orphan*/  max; int /*<<< orphan*/  min; } ;
-struct patch_offset {int /*<<< orphan*/  entry; int /*<<< orphan*/  sequence; int /*<<< orphan*/  name; } ;
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_13__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_12__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIQUERY ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- scalar_t__ MSI_DatabaseOpenViewW (int /*<<< orphan*/ *,char const*,TYPE_2__**) ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetInteger (TYPE_1__*,int,scalar_t__) ; 
- scalar_t__ MSI_ViewExecute (TYPE_2__*,TYPE_1__*) ; 
- scalar_t__ MSI_ViewFetch (TYPE_2__*,TYPE_1__**) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  max (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  min (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct patch_offset* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_dup_record_field (TYPE_1__*,int) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct patch_offset_list {int count; int patches; int max; int min; } ;
+struct patch_offset {int entry; int sequence; int name; } ;
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_13__ {int hdr; } ;
+struct TYPE_12__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIQUERY ;
+typedef int MSIDATABASE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ scalar_t__ MSI_DatabaseOpenViewW (int *,char const*,TYPE_2__**) ;
+ int MSI_RecordGetInteger (TYPE_1__*,int) ;
+ int MSI_RecordSetInteger (TYPE_1__*,int,scalar_t__) ;
+ scalar_t__ MSI_ViewExecute (TYPE_2__*,TYPE_1__*) ;
+ scalar_t__ MSI_ViewFetch (TYPE_2__*,TYPE_1__**) ;
+ int list_add_tail (int *,int *) ;
+ int max (int ,int ) ;
+ int min (int ,int ) ;
+ struct patch_offset* msi_alloc (int) ;
+ int msi_dup_record_field (TYPE_1__*,int) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static void patch_offset_get_filepatches( MSIDATABASE *db, UINT last_sequence, struct patch_offset_list *pos )
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static void patch_offset_get_filepatches( MSIDATABASE *db,
     {
         struct patch_offset *po = msi_alloc( sizeof(struct patch_offset) );
 
-        po->name     = msi_dup_record_field( rec, 1 );
+        po->name = msi_dup_record_field( rec, 1 );
         po->sequence = MSI_RecordGetInteger( rec, 2 );
         pos->min = min( pos->min, po->sequence );
         pos->max = max( pos->max, po->sequence );

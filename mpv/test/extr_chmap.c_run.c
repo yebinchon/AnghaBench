@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct test_ctx {int dummy; } ;
-struct mp_chmap_sel {int /*<<< orphan*/  member_0; } ;
+struct mp_chmap_sel {int member_0; } ;
 struct mp_chmap {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LAYOUTS (char*,...) ; 
- int /*<<< orphan*/  assert_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_int_equal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert_string_equal (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  bstr0 (char*) ; 
- int /*<<< orphan*/  mp_chmap_diffn (struct mp_chmap*,struct mp_chmap*) ; 
- int /*<<< orphan*/  mp_chmap_from_str (struct mp_chmap*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_chmap_sel_add_map (struct mp_chmap_sel*,struct mp_chmap*) ; 
- int /*<<< orphan*/  mp_chmap_sel_fallback (struct mp_chmap_sel*,struct mp_chmap*) ; 
- int /*<<< orphan*/  mp_chmap_set_unknown (struct mp_chmap*,int) ; 
- int /*<<< orphan*/  mp_chmap_to_str (struct mp_chmap*) ; 
- int /*<<< orphan*/  test_sel (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int LAYOUTS (char*,...) ;
+ int assert_false (int ) ;
+ int assert_int_equal (int ,int) ;
+ int assert_string_equal (int ,char*) ;
+ int bstr0 (char*) ;
+ int mp_chmap_diffn (struct mp_chmap*,struct mp_chmap*) ;
+ int mp_chmap_from_str (struct mp_chmap*,int ) ;
+ int mp_chmap_sel_add_map (struct mp_chmap_sel*,struct mp_chmap*) ;
+ int mp_chmap_sel_fallback (struct mp_chmap_sel*,struct mp_chmap*) ;
+ int mp_chmap_set_unknown (struct mp_chmap*,int) ;
+ int mp_chmap_to_str (struct mp_chmap*) ;
+ int test_sel (char*,char*,int ) ;
 
 __attribute__((used)) static void run(struct test_ctx *ctx)
 {

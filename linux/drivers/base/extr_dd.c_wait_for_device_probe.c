@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  async_synchronize_full () ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  deferred_probe_work ; 
- int /*<<< orphan*/  flush_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  probe_count ; 
- int /*<<< orphan*/  probe_waitqueue ; 
- int /*<<< orphan*/  wait_event (int /*<<< orphan*/ ,int) ; 
+ int async_synchronize_full () ;
+ scalar_t__ atomic_read (int *) ;
+ int deferred_probe_work ;
+ int flush_work (int *) ;
+ int probe_count ;
+ int probe_waitqueue ;
+ int wait_event (int ,int) ;
 
 void wait_for_device_probe(void)
 {
-	/* wait for the deferred probe workqueue to finish */
-	flush_work(&deferred_probe_work);
 
-	/* wait for the known devices to complete their probing */
-	wait_event(probe_waitqueue, atomic_read(&probe_count) == 0);
-	async_synchronize_full();
+ flush_work(&deferred_probe_work);
+
+
+ wait_event(probe_waitqueue, atomic_read(&probe_count) == 0);
+ async_synchronize_full();
 }

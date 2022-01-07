@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_9__ {int /*<<< orphan*/  out; } ;
-typedef  TYPE_2__ apr_proc_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_9__ {int out; } ;
+typedef TYPE_2__ apr_proc_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int /*<<< orphan*/  APR_READ ; 
- int /*<<< orphan*/  APR_WRITE ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  SVN_NULL_DEVICE_NAME ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  apr_proc_kill (TYPE_2__*,int /*<<< orphan*/ ) ; 
- char const* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,char*,char const*,char*,...) ; 
- char* stringbuf_split_key (TYPE_1__*,char) ; 
- scalar_t__ svn_cstring_casecmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_io_file_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_start_cmd3 (TYPE_2__*,int /*<<< orphan*/ *,char const* const,char const* const*,int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_wait_for_cmd (TYPE_2__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_readline (int /*<<< orphan*/ *,TYPE_1__**,char*,scalar_t__*,int /*<<< orphan*/ *) ; 
+
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ int APR_WRITE ;
+ scalar_t__ FALSE ;
+ int SIGKILL ;
+ int SVN_NULL_DEVICE_NAME ;
+ int TRUE ;
+ int apr_proc_kill (TYPE_2__*,int ) ;
+ char const* apr_psprintf (int *,char*,char const*,char*,char const*,char*,...) ;
+ char* stringbuf_split_key (TYPE_1__*,char) ;
+ scalar_t__ svn_cstring_casecmp (char const*,char*) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_io_file_open (int **,int ,int ,int ,int *) ;
+ int * svn_io_start_cmd3 (TYPE_2__*,int *,char const* const,char const* const*,int *,scalar_t__,scalar_t__,int *,int ,int *,scalar_t__,int *,int *) ;
+ int * svn_io_wait_for_cmd (TYPE_2__*,char*,int *,int *,int *) ;
+ int svn_stream_close (int *) ;
+ int * svn_stream_from_aprfile2 (int ,int ,int *) ;
+ int * svn_stream_readline (int *,TYPE_1__**,char*,scalar_t__*,int *) ;
 
 __attribute__((used)) static const char *
 lsb_release(apr_pool_t *pool)
@@ -50,19 +50,19 @@ lsb_release(apr_pool_t *pool)
     {
       "/usr/bin/lsb_release",
       "--all",
-      NULL
+      ((void*)0)
     };
 
-  const char *distributor = NULL;
-  const char *description = NULL;
-  const char *release = NULL;
-  const char *codename = NULL;
+  const char *distributor = ((void*)0);
+  const char *description = ((void*)0);
+  const char *release = ((void*)0);
+  const char *codename = ((void*)0);
 
   apr_proc_t lsbproc;
   svn_stream_t *lsbinfo;
   svn_error_t *err;
 
-  /* Run /usr/bin/lsb_release --all < /dev/null 2>/dev/null */
+
   {
     apr_file_t *stdin_handle;
     apr_file_t *stdout_handle;
@@ -73,19 +73,19 @@ lsb_release(apr_pool_t *pool)
       err = svn_io_file_open(&stdout_handle, SVN_NULL_DEVICE_NAME,
                              APR_WRITE, APR_OS_DEFAULT, pool);
     if (!err)
-      err = svn_io_start_cmd3(&lsbproc, NULL, args[0], args, NULL, FALSE,
+      err = svn_io_start_cmd3(&lsbproc, ((void*)0), args[0], args, ((void*)0), FALSE,
                               FALSE, stdin_handle,
-                              TRUE, NULL,
+                              TRUE, ((void*)0),
                               FALSE, stdout_handle,
                               pool);
     if (err)
       {
         svn_error_clear(err);
-        return NULL;
+        return ((void*)0);
       }
   }
 
-  /* Parse the output and try to populate the  */
+
   lsbinfo = svn_stream_from_aprfile2(lsbproc.out, TRUE, pool);
   if (lsbinfo)
     {
@@ -118,16 +118,16 @@ lsb_release(apr_pool_t *pool)
         {
           svn_error_clear(err);
           apr_proc_kill(&lsbproc, SIGKILL);
-          return NULL;
+          return ((void*)0);
         }
     }
 
-  /* Reap the child process */
-  err = svn_io_wait_for_cmd(&lsbproc, "", NULL, NULL, pool);
+
+  err = svn_io_wait_for_cmd(&lsbproc, "", ((void*)0), ((void*)0), pool);
   if (err)
     {
       svn_error_clear(err);
-      return NULL;
+      return ((void*)0);
     }
 
   if (description)
@@ -143,5 +143,5 @@ lsb_release(apr_pool_t *pool)
                         (codename ? codename : ""),
                         (codename ? ")" : ""));
 
-  return NULL;
+  return ((void*)0);
 }

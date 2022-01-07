@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int v4i32 ;
-struct TYPE_14__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD4 (int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  CLIP_SW4_0_255 (int,int,int,int) ; 
- int /*<<< orphan*/  ILVL_H4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_B4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_H4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ; 
- int /*<<< orphan*/  LD_SW4 (int /*<<< orphan*/ *,int,int,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_B2_SW (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_H4_SW (int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_D4 (int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ST_SW4 (int,int,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRANSPOSE4x4_SW_SW (int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  UNPCK_SH_SW (int,int,int) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int v4i32 ;
+struct TYPE_14__ {int member_0; } ;
+typedef TYPE_1__ v16i8 ;
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int int16_t ;
+
+
+ int ADD4 (int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int CLIP_SW4_0_255 (int,int,int,int) ;
+ int ILVL_H4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ;
+ int ILVR_B4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ;
+ int ILVR_H4_SW (TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,TYPE_1__,int,int,int,int,int) ;
+ int LD_SW4 (int *,int,int,int,int,int) ;
+ int PCKEV_B2_SW (int,int,int,int,int,int) ;
+ int PCKEV_H4_SW (int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int ST_D4 (int,int,int ,int,int ,int,int *,int) ;
+ int ST_SW4 (int,int,int,int,int *,int) ;
+ int TRANSPOSE4x4_SW_SW (int,int,int,int,int,int,int,int) ;
+ int UNPCK_SH_SW (int,int,int) ;
 
 void ff_vc1_inv_trans_8x4_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
 {
@@ -56,7 +56,7 @@ void ff_vc1_inv_trans_8x4_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
     UNPCK_SH_SW(t4, in3, in7);
     TRANSPOSE4x4_SW_SW(in0, in1, in2, in3, in0, in1, in2, in3);
     TRANSPOSE4x4_SW_SW(in4, in5, in6, in7, in4, in5, in6, in7);
-    // First loop
+
     t1 = cnst_12 * (in0 + in4) + cnst_4;
     t2 = cnst_12 * (in0 - in4) + cnst_4;
     t3 = cnst_16 * in2 + cnst_6 * in6;
@@ -79,7 +79,7 @@ void ff_vc1_inv_trans_8x4_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
     TRANSPOSE4x4_SW_SW(in4, in5, in6, in7, in4, in5, in6, in7);
     PCKEV_H4_SW(in4, in0, in5, in1, in6, in2, in7, in3, t1, t2, t3, t4);
     ST_SW4(t1, t2, t3, t4, block, 8);
-    // Second loop
+
     LD_SW4(dest, linesize, dst0, dst1, dst2, dst3);
     ILVR_B4_SW(zero_m, dst0, zero_m, dst1, zero_m, dst2, zero_m, dst3,
                dst0, dst1, dst2, dst3);
@@ -87,7 +87,7 @@ void ff_vc1_inv_trans_8x4_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
                dst4, dst5, dst6, dst7);
     ILVR_H4_SW(zero_m, dst0, zero_m, dst1, zero_m, dst2, zero_m, dst3,
                dst0, dst1, dst2, dst3);
-    // Right part
+
     t1 = cnst_17 * (in0 + in2) + cnst_64;
     t2 = cnst_17 * (in0 - in2) + cnst_64;
     t3 = cnst_22 * in1 + cnst_10 * in3;
@@ -98,7 +98,7 @@ void ff_vc1_inv_trans_8x4_msa(uint8_t *dest, ptrdiff_t linesize, int16_t *block)
     in3 = (t1 - t3) >> 7;
     ADD4(in0, dst0, in1, dst1, in2, dst2, in3, dst3, in0, in1, in2, in3);
     CLIP_SW4_0_255(in0, in1, in2, in3);
-    // Left part
+
     t5 = cnst_17 * (in4 + in6) + cnst_64;
     t6 = cnst_17 * (in4 - in6) + cnst_64;
     t7 = cnst_22 * in5 + cnst_10 * in7;

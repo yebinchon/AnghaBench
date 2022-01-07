@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  LED_TYPE ;
 
-/* Variables and functions */
- size_t MAX_OCT ; 
- size_t RGBLED_NUM ; 
- int /*<<< orphan*/ * led ; 
- int /*<<< orphan*/ * oct_hues ; 
- int /*<<< orphan*/  rgblight_set () ; 
- int /*<<< orphan*/  sethsv (int /*<<< orphan*/ ,size_t,size_t,int /*<<< orphan*/ *) ; 
+
+
+
+typedef size_t uint8_t ;
+typedef int uint16_t ;
+typedef int LED_TYPE ;
+
+
+ size_t MAX_OCT ;
+ size_t RGBLED_NUM ;
+ int * led ;
+ int * oct_hues ;
+ int rgblight_set () ;
+ int sethsv (int ,size_t,size_t,int *) ;
 
 void clueboard_set_midi_led(uint8_t base_oct, uint8_t val)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct smc_softc {int /*<<< orphan*/  smc_reg; } ;
-typedef  int /*<<< orphan*/  bus_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_barrier (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct smc_softc {int smc_reg; } ;
+typedef int bus_size_t ;
+
+
+ int bus_barrier (int ,int ,int ,int) ;
 
 __attribute__((used)) static __inline void
 smc_barrier(struct smc_softc *sc, bus_size_t offset, bus_size_t length,
     int flags)
 {
 
-	bus_barrier(sc->smc_reg, offset, length, flags);
+ bus_barrier(sc->smc_reg, offset, length, flags);
 }

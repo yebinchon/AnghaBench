@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  check; int /*<<< orphan*/  version; } ;
-typedef  TYPE_3__ lzma_stream_flags ;
-typedef  int /*<<< orphan*/  lzma_ret ;
-struct TYPE_14__ {TYPE_5__* coder; int /*<<< orphan*/  (* update ) (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * end; int /*<<< orphan*/ * code; } ;
-typedef  TYPE_4__ lzma_next_coder ;
-typedef  int /*<<< orphan*/  lzma_filter ;
-typedef  int /*<<< orphan*/  lzma_coder ;
-typedef  int /*<<< orphan*/  lzma_check ;
-typedef  int /*<<< orphan*/  lzma_allocator ;
-struct TYPE_12__ {int /*<<< orphan*/  check; scalar_t__ version; } ;
-struct TYPE_15__ {int /*<<< orphan*/  buffer_size; scalar_t__ buffer_pos; int /*<<< orphan*/  buffer; int /*<<< orphan*/ * index; TYPE_2__ block_options; int /*<<< orphan*/  sequence; void* index_encoder; void* block_encoder; TYPE_1__* filters; } ;
-struct TYPE_11__ {int /*<<< orphan*/  id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZMA_MEM_ERROR ; 
- void* LZMA_NEXT_CODER_INIT ; 
- int /*<<< orphan*/  LZMA_PROG_ERROR ; 
- int /*<<< orphan*/  LZMA_STREAM_HEADER_SIZE ; 
- int /*<<< orphan*/  LZMA_VLI_UNKNOWN ; 
- int /*<<< orphan*/  SEQ_STREAM_HEADER ; 
- TYPE_5__* lzma_alloc (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lzma_index_end (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lzma_index_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lzma_next_coder_init (int /*<<< orphan*/  (*) (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ),TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lzma_stream_header_encode (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  return_if_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stream_encode ; 
- int /*<<< orphan*/  stream_encoder_end ; 
- int /*<<< orphan*/  stream_encoder_update (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int check; int version; } ;
+typedef TYPE_3__ lzma_stream_flags ;
+typedef int lzma_ret ;
+struct TYPE_14__ {TYPE_5__* coder; int (* update ) (TYPE_5__*,int *,int const*,int *) ;int * end; int * code; } ;
+typedef TYPE_4__ lzma_next_coder ;
+typedef int lzma_filter ;
+typedef int lzma_coder ;
+typedef int lzma_check ;
+typedef int lzma_allocator ;
+struct TYPE_12__ {int check; scalar_t__ version; } ;
+struct TYPE_15__ {int buffer_size; scalar_t__ buffer_pos; int buffer; int * index; TYPE_2__ block_options; int sequence; void* index_encoder; void* block_encoder; TYPE_1__* filters; } ;
+struct TYPE_11__ {int id; } ;
+
+
+ int LZMA_MEM_ERROR ;
+ void* LZMA_NEXT_CODER_INIT ;
+ int LZMA_PROG_ERROR ;
+ int LZMA_STREAM_HEADER_SIZE ;
+ int LZMA_VLI_UNKNOWN ;
+ int SEQ_STREAM_HEADER ;
+ TYPE_5__* lzma_alloc (int,int *) ;
+ int lzma_index_end (int *,int *) ;
+ int * lzma_index_init (int *) ;
+ int lzma_next_coder_init (int (*) (TYPE_4__*,int *,int const*,int ),TYPE_4__*,int *) ;
+ int lzma_stream_header_encode (TYPE_3__*,int ) ;
+ int return_if_error (int ) ;
+ int stream_encode ;
+ int stream_encoder_end ;
+ int stream_encoder_update (TYPE_5__*,int *,int const*,int *) ;
 
 extern lzma_ret
 lzma_stream_encoder_init(lzma_next_coder *next, lzma_allocator *allocator,
-		const lzma_filter *filters, lzma_check check)
+  const lzma_filter *filters, lzma_check check)
 {
-	lzma_next_coder_init(&lzma_stream_encoder_init, next, allocator);
+ lzma_next_coder_init(&lzma_stream_encoder_init, next, allocator);
 
-	if (filters == NULL)
-		return LZMA_PROG_ERROR;
+ if (filters == ((void*)0))
+  return LZMA_PROG_ERROR;
 
-	if (next->coder == NULL) {
-		next->coder = lzma_alloc(sizeof(lzma_coder), allocator);
-		if (next->coder == NULL)
-			return LZMA_MEM_ERROR;
+ if (next->coder == ((void*)0)) {
+  next->coder = lzma_alloc(sizeof(lzma_coder), allocator);
+  if (next->coder == ((void*)0))
+   return LZMA_MEM_ERROR;
 
-		next->code = &stream_encode;
-		next->end = &stream_encoder_end;
-		next->update = &stream_encoder_update;
+  next->code = &stream_encode;
+  next->end = &stream_encoder_end;
+  next->update = &stream_encoder_update;
 
-		next->coder->filters[0].id = LZMA_VLI_UNKNOWN;
-		next->coder->block_encoder = LZMA_NEXT_CODER_INIT;
-		next->coder->index_encoder = LZMA_NEXT_CODER_INIT;
-		next->coder->index = NULL;
-	}
+  next->coder->filters[0].id = LZMA_VLI_UNKNOWN;
+  next->coder->block_encoder = LZMA_NEXT_CODER_INIT;
+  next->coder->index_encoder = LZMA_NEXT_CODER_INIT;
+  next->coder->index = ((void*)0);
+ }
 
-	// Basic initializations
-	next->coder->sequence = SEQ_STREAM_HEADER;
-	next->coder->block_options.version = 0;
-	next->coder->block_options.check = check;
 
-	// Initialize the Index
-	lzma_index_end(next->coder->index, allocator);
-	next->coder->index = lzma_index_init(allocator);
-	if (next->coder->index == NULL)
-		return LZMA_MEM_ERROR;
+ next->coder->sequence = SEQ_STREAM_HEADER;
+ next->coder->block_options.version = 0;
+ next->coder->block_options.check = check;
 
-	// Encode the Stream Header
-	lzma_stream_flags stream_flags = {
-		.version = 0,
-		.check = check,
-	};
-	return_if_error(lzma_stream_header_encode(
-			&stream_flags, next->coder->buffer));
 
-	next->coder->buffer_pos = 0;
-	next->coder->buffer_size = LZMA_STREAM_HEADER_SIZE;
+ lzma_index_end(next->coder->index, allocator);
+ next->coder->index = lzma_index_init(allocator);
+ if (next->coder->index == ((void*)0))
+  return LZMA_MEM_ERROR;
 
-	// Initialize the Block encoder. This way we detect unsupported
-	// filter chains when initializing the Stream encoder instead of
-	// giving an error after Stream Header has already written out.
-	return stream_encoder_update(
-			next->coder, allocator, filters, NULL);
+
+ lzma_stream_flags stream_flags = {
+  .version = 0,
+  .check = check,
+ };
+ return_if_error(lzma_stream_header_encode(
+   &stream_flags, next->coder->buffer));
+
+ next->coder->buffer_pos = 0;
+ next->coder->buffer_size = LZMA_STREAM_HEADER_SIZE;
+
+
+
+
+ return stream_encoder_update(
+   next->coder, allocator, filters, ((void*)0));
 }

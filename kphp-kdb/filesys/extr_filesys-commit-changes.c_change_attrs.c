@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_filesys_xfs_change_attrs {int filename_size; int /*<<< orphan*/  filename; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  modtime; int /*<<< orphan*/  actime; int /*<<< orphan*/  mode; } ;
-struct TYPE_7__ {int /*<<< orphan*/  st_gid; int /*<<< orphan*/  st_uid; int /*<<< orphan*/  st_mtime; int /*<<< orphan*/  st_atime; int /*<<< orphan*/  st_mode; } ;
-struct TYPE_6__ {TYPE_2__ st; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_FILESYS_XFS_CHANGE_ATTRS ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  append_path (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- struct lev_filesys_xfs_change_attrs* filesys_xfs_alloc_log_event (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  incr_file_mode_stat (TYPE_1__*) ; 
- int lcopy_attrs (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char*,int const) ; 
- char* new_dir ; 
- int new_dir_length ; 
- int /*<<< orphan*/  pending_operation_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,TYPE_2__*) ; 
- int /*<<< orphan*/  pending_operation_push (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pot_copy_attrs ; 
- int /*<<< orphan*/  print_attrs (int) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int snprintf (char*,int,char*,char*,char*) ; 
- scalar_t__ status ; 
- int strlen (char*) ; 
- char* tmp_dir ; 
- scalar_t__ use_clone ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct lev_filesys_xfs_change_attrs {int filename_size; int filename; int gid; int uid; int modtime; int actime; int mode; } ;
+struct TYPE_7__ {int st_gid; int st_uid; int st_mtime; int st_atime; int st_mode; } ;
+struct TYPE_6__ {TYPE_2__ st; int filename; } ;
+typedef TYPE_1__ file_t ;
+
+
+ int LEV_FILESYS_XFS_CHANGE_ATTRS ;
+ int PATH_MAX ;
+ int append_path (char*,int,int ) ;
+ int assert (int) ;
+ struct lev_filesys_xfs_change_attrs* filesys_xfs_alloc_log_event (int ,int) ;
+ int incr_file_mode_stat (TYPE_1__*) ;
+ int lcopy_attrs (char*,TYPE_2__*) ;
+ int memcpy (int ,char*,int const) ;
+ char* new_dir ;
+ int new_dir_length ;
+ int pending_operation_create (int ,int *,char*,TYPE_2__*) ;
+ int pending_operation_push (int ) ;
+ int pot_copy_attrs ;
+ int print_attrs (int) ;
+ int printf (char*,char*) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ scalar_t__ status ;
+ int strlen (char*) ;
+ char* tmp_dir ;
+ scalar_t__ use_clone ;
+ int vkprintf (int,char*,int) ;
 
 __attribute__((used)) static int change_attrs (int new_l, file_t *x, int attrib_mask) {
   append_path (new_dir, new_l, x->filename);
@@ -57,7 +57,7 @@ __attribute__((used)) static int change_attrs (int new_l, file_t *x, int attrib_
         return -2;
       }
     } else {
-      pending_operation_push (pending_operation_create (pot_copy_attrs, NULL, name, &x->st));
+      pending_operation_push (pending_operation_create (pot_copy_attrs, ((void*)0), name, &x->st));
     }
 
     if (attrib_mask >= 0) {

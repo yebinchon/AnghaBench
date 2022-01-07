@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strchr (char*,char) ; 
+ char* strchr (char*,char) ;
 
 void
 evutil_rtrim_lws_(char *str)
 {
-	char *cp;
+ char *cp;
 
-	if (str == NULL)
-		return;
+ if (str == ((void*)0))
+  return;
 
-	if ((cp = strchr(str, '\0')) == NULL || (cp == str))
-		return;
+ if ((cp = strchr(str, '\0')) == ((void*)0) || (cp == str))
+  return;
 
-	--cp;
+ --cp;
 
-	while (*cp == ' ' || *cp == '\t') {
-		*cp = '\0';
-		if (cp == str)
-			break;
-		--cp;
-	}
+ while (*cp == ' ' || *cp == '\t') {
+  *cp = '\0';
+  if (cp == str)
+   break;
+  --cp;
+ }
 }

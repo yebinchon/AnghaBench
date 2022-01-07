@@ -1,62 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  COLEMAK 133 
-#define  DVORAK 132 
-#define  FUNC 131 
-#define  FUNC2 130 
-#define  QWERTY 129 
-#define  RGB 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _DVORAK ; 
- int /*<<< orphan*/  _FUNC ; 
- int /*<<< orphan*/  _FUNC2 ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RGB ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+typedef TYPE_2__ keyrecord_t ;
+ int _ADJUST ;
+ int _COLEMAK ;
+ int _DVORAK ;
+ int _FUNC ;
+ int _FUNC2 ;
+ int _QWERTY ;
+ int _RGB ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
+    case 129:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 133:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 132:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_DVORAK);
       }
-      return false;
+      return 0;
       break;
-    case FUNC:
+    case 131:
       if (record->event.pressed) {
         layer_on(_FUNC);
         update_tri_layer(_FUNC, _FUNC2, _ADJUST);
@@ -64,9 +56,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_FUNC);
         update_tri_layer(_FUNC, _FUNC2, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case FUNC2:
+    case 130:
       if (record->event.pressed) {
         layer_on(_FUNC2);
         update_tri_layer(_FUNC, _FUNC2, _ADJUST);
@@ -74,16 +66,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_FUNC2);
         update_tri_layer(_FUNC, _FUNC2, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RGB:
+    case 128:
       if (record->event.pressed) {
         layer_on(_RGB);
       } else {
         layer_off(_RGB);
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct detail_data {int dummy; } ;
-typedef  int /*<<< orphan*/  create_detailed_value_func ;
+typedef int create_detailed_value_func ;
 struct TYPE_2__ {int mask; int iItem; int iSubItem; void* pszText; scalar_t__ lParam; } ;
-typedef  TYPE_1__ LVITEMW ;
-typedef  void* LPWSTR ;
-typedef  scalar_t__ LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef TYPE_1__ LVITEMW ;
+typedef void* LPWSTR ;
+typedef scalar_t__ LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int LVIF_PARAM ; 
- int LVIF_TEXT ; 
- int /*<<< orphan*/  LVM_GETITEMCOUNT ; 
- int /*<<< orphan*/  LVM_INSERTITEMW ; 
- int /*<<< orphan*/  LVM_SETITEMTEXTW ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int /*<<< orphan*/  add_field_value_data (struct detail_data*,int /*<<< orphan*/ ,void*) ; 
+
+ int LVIF_PARAM ;
+ int LVIF_TEXT ;
+ int LVM_GETITEMCOUNT ;
+ int LVM_INSERTITEMW ;
+ int LVM_SETITEMTEXTW ;
+ int SendMessageW (int ,int ,int,scalar_t__) ;
+ int add_field_value_data (struct detail_data*,int ,void*) ;
 
 __attribute__((used)) static void add_field_and_value_to_list(HWND hwnd, struct detail_data *data,
  LPWSTR field, LPWSTR value, create_detailed_value_func create, void *param)

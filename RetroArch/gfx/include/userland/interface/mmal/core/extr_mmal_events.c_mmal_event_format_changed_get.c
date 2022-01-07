@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_8__ {scalar_t__ cmd; int length; scalar_t__ data; } ;
-struct TYPE_7__ {int extradata_size; int /*<<< orphan*/ * es; int /*<<< orphan*/ * extradata; } ;
+struct TYPE_7__ {int extradata_size; int * es; int * extradata; } ;
 struct TYPE_6__ {TYPE_2__* format; } ;
-typedef  TYPE_1__ MMAL_EVENT_FORMAT_CHANGED_T ;
-typedef  int /*<<< orphan*/  MMAL_ES_SPECIFIC_FORMAT_T ;
-typedef  TYPE_2__ MMAL_ES_FORMAT_T ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
+typedef TYPE_1__ MMAL_EVENT_FORMAT_CHANGED_T ;
+typedef int MMAL_ES_SPECIFIC_FORMAT_T ;
+typedef TYPE_2__ MMAL_ES_FORMAT_T ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- scalar_t__ MMAL_EVENT_FORMAT_CHANGED ; 
+
+ scalar_t__ MMAL_EVENT_FORMAT_CHANGED ;
 
 MMAL_EVENT_FORMAT_CHANGED_T *mmal_event_format_changed_get(MMAL_BUFFER_HEADER_T *buffer)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsStage ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckOne3D (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Sampler3D ; 
- int /*<<< orphan*/  cmsAT_BEGIN ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsStageAllocCLut16bitGranular (int /*<<< orphan*/ ,int*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsStageSampleCLut16bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsStage ;
+typedef int cmsPipeline ;
+typedef int cmsInt32Number ;
+
+
+ int CheckOne3D (int *,int,int,int) ;
+ int DbgThread () ;
+ int Sampler3D ;
+ int cmsAT_BEGIN ;
+ int * cmsPipelineAlloc (int ,int,int) ;
+ int cmsPipelineFree (int ,int *) ;
+ int cmsPipelineInsertStage (int ,int *,int ,int *) ;
+ int * cmsStageAllocCLut16bitGranular (int ,int*,int,int,int *) ;
+ int cmsStageSampleCLut16bit (int ,int *,int ,int *,int ) ;
 
 __attribute__((used)) static
 cmsInt32Number Check3DinterpGranular(void)
@@ -34,11 +34,11 @@ cmsInt32Number Check3DinterpGranular(void)
     cmsUInt32Number Dimensions[] = { 7, 8, 9 };
 
     lut = cmsPipelineAlloc(DbgThread(), 3, 3);
-    mpe = cmsStageAllocCLut16bitGranular(DbgThread(), Dimensions, 3, 3, NULL);
-    cmsStageSampleCLut16bit(DbgThread(), mpe, Sampler3D, NULL, 0);
+    mpe = cmsStageAllocCLut16bitGranular(DbgThread(), Dimensions, 3, 3, ((void*)0));
+    cmsStageSampleCLut16bit(DbgThread(), mpe, Sampler3D, ((void*)0), 0);
     cmsPipelineInsertStage(DbgThread(), lut, cmsAT_BEGIN, mpe);
 
-    // Check accuracy
+
 
     if (!CheckOne3D(lut, 0, 0, 0)) return 0;
     if (!CheckOne3D(lut, 0xffff, 0xffff, 0xffff)) return 0;

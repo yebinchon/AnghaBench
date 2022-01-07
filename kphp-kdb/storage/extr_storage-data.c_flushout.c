@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/ * filename_newidx ; 
- scalar_t__ io_buff ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,int,int) ; 
- int* newidx_fd ; 
- int newidx_fds ; 
- scalar_t__ rptr ; 
- scalar_t__ wptr ; 
- int write (int,scalar_t__,int) ; 
+ int close (int) ;
+ int * filename_newidx ;
+ scalar_t__ io_buff ;
+ int kprintf (char*,int ,int,int) ;
+ int* newidx_fd ;
+ int newidx_fds ;
+ scalar_t__ rptr ;
+ scalar_t__ wptr ;
+ int write (int,scalar_t__,int) ;
 
 __attribute__((used)) static void flushout (void) {
   int w, s;

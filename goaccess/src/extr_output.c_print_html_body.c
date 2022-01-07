@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* html_report_title; scalar_t__ no_html_last_updated; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- char* INFO_LAST_UPDATED ; 
- char* T_DASH ; 
- TYPE_1__ conf ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*,...) ; 
- char* tpls ; 
+
+ char* INFO_LAST_UPDATED ;
+ char* T_DASH ;
+ TYPE_1__ conf ;
+ int fprintf (int *,char*,char*,...) ;
+ char* tpls ;
 
 __attribute__((used)) static void
 print_html_body (FILE * fp, const char *now)

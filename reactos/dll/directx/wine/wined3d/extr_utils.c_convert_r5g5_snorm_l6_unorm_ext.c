@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int UINT ;
-typedef  unsigned char BYTE ;
 
-/* Variables and functions */
+
+
+
+typedef unsigned int UINT ;
+typedef unsigned char BYTE ;
+
+
 
 __attribute__((used)) static void convert_r5g5_snorm_l6_unorm_ext(const BYTE *src, BYTE *dst, UINT src_row_pitch, UINT src_slice_pitch,
         UINT dst_row_pitch, UINT dst_slice_pitch, UINT width, UINT height, UINT depth)
@@ -35,11 +35,11 @@ __attribute__((used)) static void convert_r5g5_snorm_l6_unorm_ext(const BYTE *sr
                 r_in = *texel_in & 0x001fu;
 
                 r_out = r_in << 3;
-                if (!(r_in & 0x10)) /* r > 0 */
+                if (!(r_in & 0x10))
                     r_out |= r_in >> 1;
 
                 g_out = g_in << 3;
-                if (!(g_in & 0x10)) /* g > 0 */
+                if (!(g_in & 0x10))
                     g_out |= g_in >> 1;
 
                 texel_out[0] = r_out;

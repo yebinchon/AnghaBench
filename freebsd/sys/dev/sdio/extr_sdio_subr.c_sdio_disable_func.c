@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdio_func {int /*<<< orphan*/  fn; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_IO_CCCR_FN_ENABLE ; 
- int sdio_set_bool_for_func (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct sdio_func {int fn; int dev; } ;
+
+
+ int SD_IO_CCCR_FN_ENABLE ;
+ int sdio_set_bool_for_func (int ,int ,int ,int) ;
 
 int
 sdio_disable_func(struct sdio_func *f)
 {
 
-	return (sdio_set_bool_for_func(f->dev, SD_IO_CCCR_FN_ENABLE,
-	    f->fn, false));
+ return (sdio_set_bool_for_func(f->dev, SD_IO_CCCR_FN_ENABLE,
+     f->fn, 0));
 }

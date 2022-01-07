@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct aom_codec_enc_cfg {int tile_width_count; int tile_height_count; int* tile_widths; int* tile_heights; } ;
 struct TYPE_6__ {int tile_cols_log2; int tile_cols; int tile_rows_log2; int tile_rows; int uniform_tiles; void* superblock_size; } ;
 struct TYPE_5__ {int width; int height; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ AVCodecContext ;
-typedef  TYPE_2__ AOMContext ;
+typedef TYPE_1__ AVCodecContext ;
+typedef TYPE_2__ AOMContext ;
 
-/* Variables and functions */
- void* AOM_SUPERBLOCK_SIZE_128X128 ; 
- void* AOM_SUPERBLOCK_SIZE_64X64 ; 
- void* AOM_SUPERBLOCK_SIZE_DYNAMIC ; 
- int AV1_MAX_TILE_AREA ; 
- int AV1_MAX_TILE_COLS ; 
- int AV1_MAX_TILE_ROWS ; 
- int AV1_MAX_TILE_WIDTH ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int FFALIGN (int,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- void* av_log2 (int) ; 
- int count_uniform_tiling (int,int,int) ; 
+
+ void* AOM_SUPERBLOCK_SIZE_128X128 ;
+ void* AOM_SUPERBLOCK_SIZE_64X64 ;
+ void* AOM_SUPERBLOCK_SIZE_DYNAMIC ;
+ int AV1_MAX_TILE_AREA ;
+ int AV1_MAX_TILE_COLS ;
+ int AV1_MAX_TILE_ROWS ;
+ int AV1_MAX_TILE_WIDTH ;
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int FFALIGN (int,int) ;
+ int av_assert0 (int) ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ void* av_log2 (int) ;
+ int count_uniform_tiling (int,int,int) ;
 
 __attribute__((used)) static int choose_tiling(AVCodecContext *avctx,
                          struct aom_codec_enc_cfg *enccfg)
@@ -73,7 +73,7 @@ __attribute__((used)) static int choose_tiling(AVCodecContext *avctx,
     }
     av_assert0(ctx->tile_rows > 0);
 
-    if ((avctx->width  + 63) / 64 < ctx->tile_cols ||
+    if ((avctx->width + 63) / 64 < ctx->tile_cols ||
         (avctx->height + 63) / 64 < ctx->tile_rows) {
         av_log(avctx, AV_LOG_ERROR, "Invalid tile sizing: frame not "
                "large enough to fit specified tile arrangement.\n");
@@ -101,7 +101,7 @@ __attribute__((used)) static int choose_tiling(AVCodecContext *avctx,
     }
 
     sb_128x128_possible =
-        (avctx->width  + 127) / 128 >= ctx->tile_cols &&
+        (avctx->width + 127) / 128 >= ctx->tile_cols &&
         (avctx->height + 127) / 128 >= ctx->tile_rows;
 
     ctx->tile_cols_log2 = ctx->tile_cols == 1 ? 0 :
@@ -166,14 +166,14 @@ __attribute__((used)) static int choose_tiling(AVCodecContext *avctx,
            "superblocks (tile_cols = %d, tile_rows = %d).\n",
            sb_size, sb_size, ctx->tile_cols, ctx->tile_rows);
 
-    enccfg->tile_width_count  = ctx->tile_cols;
+    enccfg->tile_width_count = ctx->tile_cols;
     enccfg->tile_height_count = ctx->tile_rows;
 
-    sb_width  = (avctx->width  + sb_size - 1) / sb_size;
+    sb_width = (avctx->width + sb_size - 1) / sb_size;
     sb_height = (avctx->height + sb_size - 1) / sb_size;
 
     tile_size = sb_width / ctx->tile_cols;
-    rounding  = sb_width % ctx->tile_cols;
+    rounding = sb_width % ctx->tile_cols;
     for (i = 0; i < ctx->tile_cols; i++) {
         enccfg->tile_widths[i] = tile_size +
             (i < rounding / 2 ||
@@ -181,7 +181,7 @@ __attribute__((used)) static int choose_tiling(AVCodecContext *avctx,
     }
 
     tile_size = sb_height / ctx->tile_rows;
-    rounding  = sb_height % ctx->tile_rows;
+    rounding = sb_height % ctx->tile_rows;
     for (i = 0; i < ctx->tile_rows; i++) {
         enccfg->tile_heights[i] = tile_size +
             (i < rounding / 2 ||

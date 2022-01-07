@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t maxlen; char* src_string; char* buffer_base; size_t real_len; int pseudo_len; char* dest_string; scalar_t__ buffer_len; } ;
-typedef  TYPE_1__ xprintf_struct ;
+typedef TYPE_1__ xprintf_struct ;
 
-/* Variables and functions */
- int EOF ; 
- int dispatch (TYPE_1__*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ realloc (void*,size_t) ; 
- int realloc_buff (TYPE_1__*,size_t) ; 
+
+ int EOF ;
+ int dispatch (TYPE_1__*) ;
+ int free (char*) ;
+ scalar_t__ realloc (void*,size_t) ;
+ int realloc_buff (TYPE_1__*,size_t) ;
 
 __attribute__((used)) static int core(xprintf_struct *s)
 {
   size_t save_len;
   char *dummy_base;
 
-  /* basic checks */
-  if ((int)(s->maxlen) <= 0) /* 'int' to check against some conversion */
-    return EOF;           /* error for example if value is (int)-10 */
-  s->maxlen--;      /* because initial maxlen counts final 0 */
-  /* note: now 'maxlen' _can_ be zero */
 
-  if (s->src_string == NULL)
+  if ((int)(s->maxlen) <= 0)
+    return EOF;
+  s->maxlen--;
+
+
+  if (s->src_string == ((void*)0))
     s->src_string = "(null)";
 
-  /* struct init and memory allocation */
-  s->buffer_base = NULL;
+
+  s->buffer_base = ((void*)0);
   s->buffer_len = 0;
   s->real_len = 0;
   s->pseudo_len = 0;
@@ -44,34 +44,34 @@ __attribute__((used)) static int core(xprintf_struct *s)
     return EOF;
   s->dest_string = s->buffer_base;
 
-  /* process source string */
+
   for (;;) {
-    /* up to end of source string */
+
     if (*(s->src_string) == 0) {
-      *(s->dest_string) = '\0';    /* final NUL */
+      *(s->dest_string) = '\0';
       break;
     }
 
     if (dispatch(s) == EOF)
       goto free_EOF;
 
-    /* up to end of dest string */
+
     if (s->real_len >= s->maxlen) {
-      (s->buffer_base)[s->maxlen] = '\0'; /* final NUL */
+      (s->buffer_base)[s->maxlen] = '\0';
       break;
     }
   }
 
-  /* for (v)asnprintf */
+
   dummy_base = s->buffer_base;
 
   dummy_base = s->buffer_base + s->real_len;
   save_len = s->real_len;
 
-  /* process the remaining of source string to compute 'pseudo_len'. We
-   * overwrite again and again, starting at 'dummy_base' because we don't
-   * need the text, only char count. */
-  while(*(s->src_string) != 0) { /* up to end of source string */
+
+
+
+  while(*(s->src_string) != 0) {
     s->real_len = 0;
     s->dest_string = dummy_base;
     if (dispatch(s) == EOF)
@@ -79,8 +79,8 @@ __attribute__((used)) static int core(xprintf_struct *s)
   }
 
   s->buffer_base = (char *)realloc((void *)(s->buffer_base), save_len + 1);
-  if (s->buffer_base == NULL)
-    return EOF; /* should rarely happen because we shrink the buffer */
+  if (s->buffer_base == ((void*)0))
+    return EOF;
   return s->pseudo_len;
 
  free_EOF:

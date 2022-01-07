@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* client; } ;
-typedef  TYPE_2__ gentity_t ;
+typedef TYPE_2__ gentity_t ;
 struct TYPE_6__ {int noclip; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheatsOk (TYPE_2__*) ; 
- int g_entities ; 
- int /*<<< orphan*/  trap_SendServerCommand (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  va (char*,char*) ; 
+
+ int CheatsOk (TYPE_2__*) ;
+ int g_entities ;
+ int trap_SendServerCommand (TYPE_2__*,int ) ;
+ int va (char*,char*) ;
 
 void Cmd_Noclip_f( gentity_t *ent ) {
-	char	*msg;
+ char *msg;
 
-	if ( !CheatsOk( ent ) ) {
-		return;
-	}
+ if ( !CheatsOk( ent ) ) {
+  return;
+ }
 
-	if ( ent->client->noclip ) {
-		msg = "noclip OFF\n";
-	} else {
-		msg = "noclip ON\n";
-	}
-	ent->client->noclip = !ent->client->noclip;
+ if ( ent->client->noclip ) {
+  msg = "noclip OFF\n";
+ } else {
+  msg = "noclip ON\n";
+ }
+ ent->client->noclip = !ent->client->noclip;
 
-	trap_SendServerCommand( ent-g_entities, va("print \"%s\"", msg));
+ trap_SendServerCommand( ent-g_entities, va("print \"%s\"", msg));
 }

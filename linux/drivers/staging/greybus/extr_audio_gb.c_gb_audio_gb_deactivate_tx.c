@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct gb_connection {int dummy; } ;
-struct gb_audio_deactivate_tx_request {int /*<<< orphan*/  data_cport; } ;
-typedef  int /*<<< orphan*/  req ;
+struct gb_audio_deactivate_tx_request {int data_cport; } ;
+typedef int req ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GB_AUDIO_TYPE_DEACTIVATE_TX ; 
- int /*<<< orphan*/  cpu_to_le16 (int /*<<< orphan*/ ) ; 
- int gb_operation_sync (struct gb_connection*,int /*<<< orphan*/ ,struct gb_audio_deactivate_tx_request*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int GB_AUDIO_TYPE_DEACTIVATE_TX ;
+ int cpu_to_le16 (int ) ;
+ int gb_operation_sync (struct gb_connection*,int ,struct gb_audio_deactivate_tx_request*,int,int *,int ) ;
 
 int gb_audio_gb_deactivate_tx(struct gb_connection *connection,
-			      u16 data_cport)
+         u16 data_cport)
 {
-	struct gb_audio_deactivate_tx_request req;
+ struct gb_audio_deactivate_tx_request req;
 
-	req.data_cport = cpu_to_le16(data_cport);
+ req.data_cport = cpu_to_le16(data_cport);
 
-	return gb_operation_sync(connection, GB_AUDIO_TYPE_DEACTIVATE_TX,
-				 &req, sizeof(req), NULL, 0);
+ return gb_operation_sync(connection, GB_AUDIO_TYPE_DEACTIVATE_TX,
+     &req, sizeof(req), ((void*)0), 0);
 }

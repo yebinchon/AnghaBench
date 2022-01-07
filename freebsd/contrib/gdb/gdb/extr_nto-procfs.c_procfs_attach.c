@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  do_attach (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  error_no_arg (char*) ; 
- int /*<<< orphan*/  gdb_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gdb_stdout ; 
- scalar_t__ get_exec_file (int /*<<< orphan*/ ) ; 
- int getpid () ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  pid_to_ptid (int) ; 
- int /*<<< orphan*/  printf_unfiltered (char*,char*,...) ; 
- int /*<<< orphan*/  procfs_ops ; 
- int /*<<< orphan*/  push_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  target_pid_to_str (int /*<<< orphan*/ ) ; 
+ int atoi (char*) ;
+ int do_attach (int ) ;
+ int error (char*) ;
+ int error_no_arg (char*) ;
+ int gdb_flush (int ) ;
+ int gdb_stdout ;
+ scalar_t__ get_exec_file (int ) ;
+ int getpid () ;
+ int inferior_ptid ;
+ int pid_to_ptid (int) ;
+ int printf_unfiltered (char*,char*,...) ;
+ int procfs_ops ;
+ int push_target (int *) ;
+ int target_pid_to_str (int ) ;
 
 __attribute__((used)) static void
 procfs_attach (char *args, int from_tty)
@@ -46,11 +38,11 @@ procfs_attach (char *args, int from_tty)
       exec_file = (char *) get_exec_file (0);
 
       if (exec_file)
-	printf_unfiltered ("Attaching to program `%s', %s\n", exec_file,
-			   target_pid_to_str (pid_to_ptid (pid)));
+ printf_unfiltered ("Attaching to program `%s', %s\n", exec_file,
+      target_pid_to_str (pid_to_ptid (pid)));
       else
-	printf_unfiltered ("Attaching to %s\n",
-			   target_pid_to_str (pid_to_ptid (pid)));
+ printf_unfiltered ("Attaching to %s\n",
+      target_pid_to_str (pid_to_ptid (pid)));
 
       gdb_flush (gdb_stdout);
     }

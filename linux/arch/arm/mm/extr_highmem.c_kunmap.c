@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageHighMem (struct page*) ; 
- int /*<<< orphan*/  in_interrupt () ; 
- int /*<<< orphan*/  kunmap_high (struct page*) ; 
+
+ int BUG_ON (int ) ;
+ int PageHighMem (struct page*) ;
+ int in_interrupt () ;
+ int kunmap_high (struct page*) ;
 
 void kunmap(struct page *page)
 {
-	BUG_ON(in_interrupt());
-	if (!PageHighMem(page))
-		return;
-	kunmap_high(page);
+ BUG_ON(in_interrupt());
+ if (!PageHighMem(page))
+  return;
+ kunmap_high(page);
 }

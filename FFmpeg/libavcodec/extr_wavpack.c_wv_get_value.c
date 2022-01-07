@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned int* median; int error_limit; int /*<<< orphan*/  slow_level; } ;
-typedef  TYPE_1__ WvChannel ;
-struct TYPE_6__ {int zero; int one; int zeroes; int /*<<< orphan*/  avctx; scalar_t__ hybrid_bitrate; scalar_t__ hybrid; TYPE_1__* ch; } ;
-typedef  TYPE_2__ WavpackFrameContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  DEC_MED (int) ; 
- int GET_MED (int) ; 
- int /*<<< orphan*/  INC_MED (int) ; 
- scalar_t__ LEVEL_DECAY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_bits_long (int /*<<< orphan*/ *,int) ; 
- int get_tail (int /*<<< orphan*/ *,int) ; 
- int get_unary_0_33 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (unsigned int*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ update_error_limit (TYPE_2__*) ; 
- scalar_t__ wp_log2 (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned int* median; int error_limit; int slow_level; } ;
+typedef TYPE_1__ WvChannel ;
+struct TYPE_6__ {int zero; int one; int zeroes; int avctx; scalar_t__ hybrid_bitrate; scalar_t__ hybrid; TYPE_1__* ch; } ;
+typedef TYPE_2__ WavpackFrameContext ;
+typedef int GetBitContext ;
+
+
+ int AV_LOG_ERROR ;
+ int DEC_MED (int) ;
+ int GET_MED (int) ;
+ int INC_MED (int) ;
+ scalar_t__ LEVEL_DECAY (int ) ;
+ int av_log (int ,int ,char*,int) ;
+ int get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int get_bits_long (int *,int) ;
+ int get_tail (int *,int) ;
+ int get_unary_0_33 (int *) ;
+ int memset (unsigned int*,int ,int) ;
+ scalar_t__ update_error_limit (TYPE_2__*) ;
+ scalar_t__ wp_log2 (int) ;
 
 __attribute__((used)) static int wv_get_value(WavpackFrameContext *ctx, GetBitContext *gb,
                         int channel, int *last)
@@ -72,7 +72,7 @@ __attribute__((used)) static int wv_get_value(WavpackFrameContext *ctx, GetBitCo
     }
 
     if (ctx->zero) {
-        t         = 0;
+        t = 0;
         ctx->zero = 0;
     } else {
         t = get_unary_0_33(gb);
@@ -93,10 +93,10 @@ __attribute__((used)) static int wv_get_value(WavpackFrameContext *ctx, GetBitCo
 
         if (ctx->one) {
             ctx->one = t & 1;
-            t        = (t >> 1) + 1;
+            t = (t >> 1) + 1;
         } else {
             ctx->one = t & 1;
-            t      >>= 1;
+            t >>= 1;
         }
         ctx->zero = !ctx->one;
     }
@@ -108,22 +108,22 @@ __attribute__((used)) static int wv_get_value(WavpackFrameContext *ctx, GetBitCo
 
     if (!t) {
         base = 0;
-        add  = GET_MED(0) - 1;
+        add = GET_MED(0) - 1;
         DEC_MED(0);
     } else if (t == 1) {
         base = GET_MED(0);
-        add  = GET_MED(1) - 1;
+        add = GET_MED(1) - 1;
         INC_MED(0);
         DEC_MED(1);
     } else if (t == 2) {
         base = GET_MED(0) + GET_MED(1);
-        add  = GET_MED(2) - 1;
+        add = GET_MED(2) - 1;
         INC_MED(0);
         INC_MED(1);
         DEC_MED(2);
     } else {
         base = GET_MED(0) + GET_MED(1) + GET_MED(2) * (t - 2U);
-        add  = GET_MED(2) - 1;
+        add = GET_MED(2) - 1;
         INC_MED(0);
         INC_MED(1);
         INC_MED(2);

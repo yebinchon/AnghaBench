@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GFile ;
 
-/* Variables and functions */
- char* g_build_filename (char*,char*,int /*<<< orphan*/ *) ; 
- char* g_file_get_path (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_file_new_for_path (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_object_unref (int /*<<< orphan*/ *) ; 
- char* g_path_get_dirname (char const*) ; 
- int /*<<< orphan*/  g_path_is_absolute (char*) ; 
- char* rofi_expand_path (char const*) ; 
+
+
+
+typedef int GFile ;
+
+
+ char* g_build_filename (char*,char*,int *) ;
+ char* g_file_get_path (int *) ;
+ int * g_file_new_for_path (char*) ;
+ int g_free (char*) ;
+ int g_object_unref (int *) ;
+ char* g_path_get_dirname (char const*) ;
+ int g_path_is_absolute (char*) ;
+ char* rofi_expand_path (char const*) ;
 
 char * rofi_theme_parse_prepare_file ( const char *file, const char *parent_file )
 {
     char *filename = rofi_expand_path ( file );
-    // If no absolute path specified, expand it.
-    if ( parent_file != NULL && !g_path_is_absolute ( filename )   ) {
+
+    if ( parent_file != ((void*)0) && !g_path_is_absolute ( filename ) ) {
         char *basedir = g_path_get_dirname ( parent_file );
-        char *path    = g_build_filename ( basedir, filename, NULL );
+        char *path = g_build_filename ( basedir, filename, ((void*)0) );
         g_free ( filename );
         filename = path;
         g_free ( basedir );

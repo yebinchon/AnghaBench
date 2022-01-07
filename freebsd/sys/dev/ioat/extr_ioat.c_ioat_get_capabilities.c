@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct ioat_softc {int /*<<< orphan*/  capabilities; } ;
-typedef  int /*<<< orphan*/  bus_dmaengine_t ;
 
-/* Variables and functions */
- struct ioat_softc* to_ioat_softc (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+struct ioat_softc {int capabilities; } ;
+typedef int bus_dmaengine_t ;
+
+
+ struct ioat_softc* to_ioat_softc (int ) ;
 
 uint32_t
 ioat_get_capabilities(bus_dmaengine_t dmaengine)
 {
-	struct ioat_softc *ioat;
+ struct ioat_softc *ioat;
 
-	ioat = to_ioat_softc(dmaengine);
-	return (ioat->capabilities);
+ ioat = to_ioat_softc(dmaengine);
+ return (ioat->capabilities);
 }

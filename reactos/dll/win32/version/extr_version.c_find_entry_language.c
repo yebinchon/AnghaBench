@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_2__ {int /*<<< orphan*/  CurrentLocale; } ;
-typedef  int /*<<< orphan*/  IMAGE_RESOURCE_DIRECTORY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int FILE_VER_GET_LOCALISED ; 
- int /*<<< orphan*/  GetSystemDefaultLangID () ; 
- int /*<<< orphan*/  GetUserDefaultLangID () ; 
- int /*<<< orphan*/  LANGIDFROMLCID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* NtCurrentTeb () ; 
- int /*<<< orphan*/  PRIMARYLANGID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int /*<<< orphan*/  SUBLANG_NEUTRAL ; 
- int /*<<< orphan*/ * find_entry_by_id (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void const*) ; 
- int /*<<< orphan*/  const* find_entry_default (int /*<<< orphan*/  const*,void const*) ; 
- int push_language (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_2__ {int CurrentLocale; } ;
+typedef int IMAGE_RESOURCE_DIRECTORY ;
+typedef int DWORD ;
+
+
+ int FILE_VER_GET_LOCALISED ;
+ int GetSystemDefaultLangID () ;
+ int GetUserDefaultLangID () ;
+ int LANGIDFROMLCID (int ) ;
+ int LANG_ENGLISH ;
+ int LANG_NEUTRAL ;
+ int MAKELANGID (int ,int ) ;
+ TYPE_1__* NtCurrentTeb () ;
+ int PRIMARYLANGID (int ) ;
+ int SUBLANG_DEFAULT ;
+ int SUBLANG_NEUTRAL ;
+ int * find_entry_by_id (int const*,int ,void const*) ;
+ int const* find_entry_default (int const*,void const*) ;
+ int push_language (int *,int,int ) ;
 
 __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_language( const IMAGE_RESOURCE_DIRECTORY *dir,
                                                             const void *root, DWORD flags )
@@ -41,7 +41,7 @@ __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_language
 
     if (flags & FILE_VER_GET_LOCALISED)
     {
-        /* cf. LdrFindResource_U */
+
         pos = push_language( list, pos, MAKELANGID( LANG_NEUTRAL, SUBLANG_NEUTRAL ) );
         pos = push_language( list, pos, LANGIDFROMLCID( NtCurrentTeb()->CurrentLocale ) );
         pos = push_language( list, pos, GetUserDefaultLangID() );
@@ -54,7 +54,7 @@ __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_language
     }
     else
     {
-        /* FIXME: resolve LN file here */
+
         pos = push_language( list, pos, MAKELANGID( LANG_ENGLISH, SUBLANG_DEFAULT ) );
     }
 

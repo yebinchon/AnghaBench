@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_8__ {int css_cnt; TYPE_3__* css_buf; } ;
-typedef  TYPE_1__ mask_ctx_t ;
+typedef TYPE_1__ mask_ctx_t ;
 struct TYPE_9__ {TYPE_1__* mask_ctx; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 struct TYPE_10__ {int cs_len; scalar_t__* cs_buf; } ;
-typedef  TYPE_3__ cs_t ;
+typedef TYPE_3__ cs_t ;
 
-/* Variables and functions */
- scalar_t__ hccalloc (int,int) ; 
- int /*<<< orphan*/  hcfree (TYPE_3__*) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,TYPE_3__*,int) ; 
+
+ scalar_t__ hccalloc (int,int) ;
+ int hcfree (TYPE_3__*) ;
+ int memcpy (TYPE_3__*,TYPE_3__*,int) ;
 
 __attribute__((used)) static int mp_css_utf16be_expand (hashcat_ctx_t *hashcat_ctx)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static int mp_css_utf16be_expand (hashcat_ctx_t *hashcat_c
   for (u32 i = 0, j = 0; i < mask_ctx->css_cnt; i += 1, j += 2)
   {
     css_buf_utf16be[j + 0].cs_buf[0] = 0;
-    css_buf_utf16be[j + 0].cs_len    = 1;
+    css_buf_utf16be[j + 0].cs_len = 1;
 
     memcpy (&css_buf_utf16be[j + 1], &mask_ctx->css_buf[i], sizeof (cs_t));
   }

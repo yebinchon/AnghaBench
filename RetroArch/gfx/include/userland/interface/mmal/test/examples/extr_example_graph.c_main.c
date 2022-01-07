@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * input; int /*<<< orphan*/ * output; int /*<<< orphan*/  control; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_GRAPH_T ;
-typedef  TYPE_1__ MMAL_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_STATUS (scalar_t__,char*) ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_CONTAINER_READER ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_VIDEO_DECODER ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  bcm_host_init () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mmal_component_release (TYPE_1__*) ; 
- scalar_t__ mmal_graph_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_graph_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_graph_disable (int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_graph_enable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_graph_new_component (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__**) ; 
- scalar_t__ mmal_graph_new_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ mmal_util_port_set_uri (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * input; int * output; int control; } ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_GRAPH_T ;
+typedef TYPE_1__ MMAL_COMPONENT_T ;
+
+
+ int CHECK_STATUS (scalar_t__,char*) ;
+ int MMAL_COMPONENT_DEFAULT_CONTAINER_READER ;
+ int MMAL_COMPONENT_DEFAULT_VIDEO_DECODER ;
+ int MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER ;
+ scalar_t__ MMAL_SUCCESS ;
+ int bcm_host_init () ;
+ int fprintf (int ,char*) ;
+ int mmal_component_release (TYPE_1__*) ;
+ scalar_t__ mmal_graph_create (int **,int ) ;
+ int mmal_graph_destroy (int *) ;
+ int mmal_graph_disable (int *) ;
+ scalar_t__ mmal_graph_enable (int *,int *,int *) ;
+ scalar_t__ mmal_graph_new_component (int *,int ,TYPE_1__**) ;
+ scalar_t__ mmal_graph_new_connection (int *,int ,int ,int ,int *) ;
+ scalar_t__ mmal_util_port_set_uri (int ,char*) ;
+ int sleep (int) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
@@ -49,11 +49,11 @@ int main(int argc, char **argv)
 
    bcm_host_init();
 
-   /* Create the graph */
+
    status = mmal_graph_create(&graph, 0);
    CHECK_STATUS(status, "failed to create graph");
 
-   /* Add the components */
+
    status = mmal_graph_new_component(graph, MMAL_COMPONENT_DEFAULT_CONTAINER_READER, &reader);
    CHECK_STATUS(status, "failed to create reader");
 
@@ -63,29 +63,29 @@ int main(int argc, char **argv)
    status = mmal_graph_new_component(graph, MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER, &renderer);
    CHECK_STATUS(status, "failed to create renderer");
 
-   /* Configure the reader using the given URI */
+
    status = mmal_util_port_set_uri(reader->control, argv[1]);
    CHECK_STATUS(status, "failed to set uri");
 
-   /* connect them up - this propagates port settings from outputs to inputs */
-   status = mmal_graph_new_connection(graph, reader->output[0], decoder->input[0], 0, NULL);
+
+   status = mmal_graph_new_connection(graph, reader->output[0], decoder->input[0], 0, ((void*)0));
    CHECK_STATUS(status, "failed to connect reader to decoder");
-   status = mmal_graph_new_connection(graph, decoder->output[0], renderer->input[0], 0, NULL);
+   status = mmal_graph_new_connection(graph, decoder->output[0], renderer->input[0], 0, ((void*)0));
    CHECK_STATUS(status, "failed to connect decoder to renderer");
 
-   /* Start playback */
+
    fprintf(stderr, "start playback\n");
-   status = mmal_graph_enable(graph, NULL, NULL);
+   status = mmal_graph_enable(graph, ((void*)0), ((void*)0));
    CHECK_STATUS(status, "failed to enable graph");
 
    sleep(5);
 
-   /* Stop everything */
+
    fprintf(stderr, "stop playback\n");
    mmal_graph_disable(graph);
 
  error:
-   /* Cleanup everything */
+
    if (reader)
       mmal_component_release(reader);
    if (decoder)

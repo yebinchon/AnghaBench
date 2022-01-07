@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_3__ {int dwCodePage; } ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  TYPE_1__ NLS_FORMAT_NODE ;
-typedef  char* LPSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int INT ;
-typedef  int DWORD ;
+typedef int SYSTEMTIME ;
+typedef TYPE_1__ NLS_FORMAT_NODE ;
+typedef char* LPSTR ;
+typedef int LPCSTR ;
+typedef int LCID ;
+typedef int INT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
- int CP_ACP ; 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int LOCALE_USE_CP_ACP ; 
- int /*<<< orphan*/  MultiByteToWideChar (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int) ; 
- int NLS_GetDateTimeFormatW (int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,char*,char*,int) ; 
- TYPE_1__* NLS_GetFormats (int /*<<< orphan*/ ,int) ; 
- scalar_t__ NLS_IsUnicodeOnlyLcid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int,int /*<<< orphan*/ ,char*,int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (char*) ;
+ int CP_ACP ;
+ int ERROR_INVALID_PARAMETER ;
+ int LOCALE_USE_CP_ACP ;
+ int MultiByteToWideChar (int,int ,int ,int,char*,int) ;
+ int NLS_GetDateTimeFormatW (int ,int,int const*,char*,char*,int) ;
+ TYPE_1__* NLS_GetFormats (int ,int) ;
+ scalar_t__ NLS_IsUnicodeOnlyLcid (int ) ;
+ int SetLastError (int ) ;
+ int TRACE (char*,int ,int,int const*,int ,char*,int) ;
+ int WideCharToMultiByte (int,int ,char*,int,char*,int,int ,int ) ;
+ int debugstr_a (int ) ;
 
 __attribute__((used)) static INT NLS_GetDateTimeFormatA(LCID lcid, DWORD dwFlags,
                                   const SYSTEMTIME* lpTime,
@@ -72,8 +72,8 @@ __attribute__((used)) static INT NLS_GetDateTimeFormatA(LCID lcid, DWORD dwFlags
 
   szOut[0] = '\0';
 
-  iRet = NLS_GetDateTimeFormatW(lcid, dwFlags, lpTime, lpFormat ? szFormat : NULL,
-                                lpStr ? szOut : NULL, cchOut);
+  iRet = NLS_GetDateTimeFormatW(lcid, dwFlags, lpTime, lpFormat ? szFormat : ((void*)0),
+                                lpStr ? szOut : ((void*)0), cchOut);
 
   if (lpStr)
   {

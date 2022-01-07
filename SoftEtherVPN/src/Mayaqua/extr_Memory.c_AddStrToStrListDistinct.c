@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CopyStr (char*) ; 
- int IsInListStr (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int LIST ;
+
+
+ int Add (int *,int ) ;
+ int CopyStr (char*) ;
+ int IsInListStr (int *,char*) ;
 
 bool AddStrToStrListDistinct(LIST *o, char *str)
 {
-	if (o == NULL || str == NULL)
-	{
-		return false;
-	}
+ if (o == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (IsInListStr(o, str) == false)
-	{
-		Add(o, CopyStr(str));
+ if (IsInListStr(o, str) == 0)
+ {
+  Add(o, CopyStr(str));
 
-		return true;
-	}
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

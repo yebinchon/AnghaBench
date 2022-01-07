@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int /*<<< orphan*/  FIFO ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FifoSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * MemToBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  ReadFifo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int UCHAR ;
+typedef int FIFO ;
+typedef int BUF ;
+
+
+ int FifoSize (int *) ;
+ int Free (int *) ;
+ int * Malloc (int ) ;
+ int * MemToBuf (int *,int ) ;
+ int * NewBuf () ;
+ int ReadFifo (int *,int *,int ) ;
 
 BUF *ReadFifoAll(FIFO *f)
 {
-	BUF *buf;
-	UCHAR *tmp;
-	UINT size;
-	if (f == NULL)
-	{
-		return NewBuf();
-	}
+ BUF *buf;
+ UCHAR *tmp;
+ UINT size;
+ if (f == ((void*)0))
+ {
+  return NewBuf();
+ }
 
-	size = FifoSize(f);
-	tmp = Malloc(size);
-	ReadFifo(f, tmp, size);
+ size = FifoSize(f);
+ tmp = Malloc(size);
+ ReadFifo(f, tmp, size);
 
-	buf = MemToBuf(tmp, size);
+ buf = MemToBuf(tmp, size);
 
-	Free(tmp);
+ Free(tmp);
 
-	return buf;
+ return buf;
 }

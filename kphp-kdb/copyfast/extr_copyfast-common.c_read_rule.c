@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct netrule {int type; unsigned int ip; int mask1; int mask2; int level1; int level2; } ;
 
-/* Variables and functions */
- int sscanf (char*,char*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,...) ; 
+
+ int sscanf (char*,char*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,...) ;
 
 int read_rule (char *s, struct netrule *A) {
   unsigned x,y,z,t;
@@ -21,7 +21,7 @@ int read_rule (char *s, struct netrule *A) {
   int type = 0;
   if (sscanf (s, "%u.%u.%u.%u/%u /%u", &x, &y, &z, &t, &mask1, &mask2) == 6) {
     type = 2;
-  } else if (sscanf (s, "%u.%u.%u.%u/%u", &x, &y, &z, &t, &mask1) == 5)  {
+  } else if (sscanf (s, "%u.%u.%u.%u/%u", &x, &y, &z, &t, &mask1) == 5) {
     type = 1;
   }
   if (type) {

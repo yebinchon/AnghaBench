@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wcx ;
-struct TYPE_3__ {int cbSize; int /*<<< orphan*/ * lpfnWndProc; } ;
-typedef  TYPE_1__ WNDCLASSEXA ;
-typedef  int /*<<< orphan*/  WNDCLASSA ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ERROR_CALL_NOT_IMPLEMENTED ; 
- int ERROR_NOACCESS ; 
- int /*<<< orphan*/  GetClassInfoA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetClassInfoExA (int /*<<< orphan*/ ,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  GetClassInfoExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetClassInfoW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wcx ;
+struct TYPE_3__ {int cbSize; int * lpfnWndProc; } ;
+typedef TYPE_1__ WNDCLASSEXA ;
+typedef int WNDCLASSA ;
+typedef char WCHAR ;
+typedef int BOOL ;
+
+
+ int ERROR_CALL_NOT_IMPLEMENTED ;
+ int ERROR_NOACCESS ;
+ int GetClassInfoA (int ,char*,int *) ;
+ int GetClassInfoExA (int ,char*,TYPE_1__*) ;
+ int GetClassInfoExW (int ,char const*,int *) ;
+ int GetClassInfoW (int ,char const*,int *) ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_GetClassInfo(void)
 {
@@ -41,13 +41,13 @@ __attribute__((used)) static void test_GetClassInfo(void)
     ret = GetClassInfoA(0, "static", &wc);
     ok(ret, "GetClassInfoA() error %d\n", GetLastError());
 
-if (0) { /* crashes under XP */
+if (0) {
     SetLastError(0xdeadbeef);
-    ret = GetClassInfoA(0, "static", NULL);
+    ret = GetClassInfoA(0, "static", ((void*)0));
     ok(ret, "GetClassInfoA() error %d\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    ret = GetClassInfoW(0, staticW, NULL);
+    ret = GetClassInfoW(0, staticW, ((void*)0));
     ok(ret, "GetClassInfoW() error %d\n", GetLastError());
 }
 
@@ -57,41 +57,41 @@ if (0) { /* crashes under XP */
     ok(ret, "GetClassInfoExA() error %d\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    ret = GetClassInfoExA(0, "static", NULL);
+    ret = GetClassInfoExA(0, "static", ((void*)0));
     ok(!ret, "GetClassInfoExA() should fail\n");
     ok(GetLastError() == ERROR_NOACCESS ||
-       broken(GetLastError() == 0xdeadbeef), /* win9x */
+       broken(GetLastError() == 0xdeadbeef),
        "expected ERROR_NOACCESS, got %d\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    ret = GetClassInfoExW(0, staticW, NULL);
+    ret = GetClassInfoExW(0, staticW, ((void*)0));
     ok(!ret, "GetClassInfoExW() should fail\n");
     ok(GetLastError() == ERROR_NOACCESS ||
-       broken(GetLastError() == 0xdeadbeef) /* NT4 */ ||
-       broken(GetLastError() == ERROR_CALL_NOT_IMPLEMENTED), /* win9x */
+       broken(GetLastError() == 0xdeadbeef) ||
+       broken(GetLastError() == ERROR_CALL_NOT_IMPLEMENTED),
        "expected ERROR_NOACCESS, got %d\n", GetLastError());
 
     wcx.cbSize = 0;
-    wcx.lpfnWndProc = NULL;
+    wcx.lpfnWndProc = ((void*)0);
     SetLastError(0xdeadbeef);
     ret = GetClassInfoExA(0, "static", &wcx);
     ok(ret, "GetClassInfoExA() error %d\n", GetLastError());
     ok(wcx.cbSize == 0, "expected 0, got %u\n", wcx.cbSize);
-    ok(wcx.lpfnWndProc != NULL, "got null proc\n");
+    ok(wcx.lpfnWndProc != ((void*)0), "got null proc\n");
 
     wcx.cbSize = sizeof(wcx) - 1;
-    wcx.lpfnWndProc = NULL;
+    wcx.lpfnWndProc = ((void*)0);
     SetLastError(0xdeadbeef);
     ret = GetClassInfoExA(0, "static", &wcx);
     ok(ret, "GetClassInfoExA() error %d\n", GetLastError());
     ok(wcx.cbSize == sizeof(wcx) - 1, "expected sizeof(wcx)-1, got %u\n", wcx.cbSize);
-    ok(wcx.lpfnWndProc != NULL, "got null proc\n");
+    ok(wcx.lpfnWndProc != ((void*)0), "got null proc\n");
 
     wcx.cbSize = sizeof(wcx) + 1;
-    wcx.lpfnWndProc = NULL;
+    wcx.lpfnWndProc = ((void*)0);
     SetLastError(0xdeadbeef);
     ret = GetClassInfoExA(0, "static", &wcx);
     ok(ret, "GetClassInfoExA() error %d\n", GetLastError());
     ok(wcx.cbSize == sizeof(wcx) + 1, "expected sizeof(wcx)+1, got %u\n", wcx.cbSize);
-    ok(wcx.lpfnWndProc != NULL, "got null proc\n");
+    ok(wcx.lpfnWndProc != ((void*)0), "got null proc\n");
 }

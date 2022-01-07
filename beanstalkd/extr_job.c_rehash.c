@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct TYPE_7__* ht_next; } ;
-typedef  TYPE_1__ Job ;
+typedef TYPE_1__ Job ;
 
-/* Variables and functions */
- int NUM_PRIMES ; 
- TYPE_1__** all_jobs ; 
- size_t all_jobs_cap ; 
- TYPE_1__** all_jobs_init ; 
- size_t all_jobs_used ; 
- TYPE_1__** calloc (size_t,int) ; 
- int cur_prime ; 
- int /*<<< orphan*/  free (TYPE_1__**) ; 
- int hash_table_was_oom ; 
- size_t* primes ; 
- int /*<<< orphan*/  store_job (TYPE_1__*) ; 
- int /*<<< orphan*/  twarnx (char*,size_t) ; 
+
+ int NUM_PRIMES ;
+ TYPE_1__** all_jobs ;
+ size_t all_jobs_cap ;
+ TYPE_1__** all_jobs_init ;
+ size_t all_jobs_used ;
+ TYPE_1__** calloc (size_t,int) ;
+ int cur_prime ;
+ int free (TYPE_1__**) ;
+ int hash_table_was_oom ;
+ size_t* primes ;
+ int store_job (TYPE_1__*) ;
+ int twarnx (char*,size_t) ;
 
 __attribute__((used)) static void
 rehash(int is_upscaling)
@@ -60,7 +60,7 @@ rehash(int is_upscaling)
         while (old[i]) {
             Job *j = old[i];
             old[i] = j->ht_next;
-            j->ht_next = NULL;
+            j->ht_next = ((void*)0);
             store_job(j);
         }
     }

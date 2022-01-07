@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpufreq_policy {unsigned int* governor_data; int /*<<< orphan*/  cpu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPUFREQ_RELATION_L ; 
- int EINVAL ; 
- int __cpufreq_driver_target (struct cpufreq_policy*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_is_managed ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  per_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  userspace_mutex ; 
+
+
+
+struct cpufreq_policy {unsigned int* governor_data; int cpu; } ;
+
+
+ int CPUFREQ_RELATION_L ;
+ int EINVAL ;
+ int __cpufreq_driver_target (struct cpufreq_policy*,unsigned int,int ) ;
+ int cpu_is_managed ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int per_cpu (int ,int ) ;
+ int pr_debug (char*,int ,unsigned int) ;
+ int userspace_mutex ;
 
 __attribute__((used)) static int cpufreq_set(struct cpufreq_policy *policy, unsigned int freq)
 {
-	int ret = -EINVAL;
-	unsigned int *setspeed = policy->governor_data;
+ int ret = -EINVAL;
+ unsigned int *setspeed = policy->governor_data;
 
-	pr_debug("cpufreq_set for cpu %u, freq %u kHz\n", policy->cpu, freq);
+ pr_debug("cpufreq_set for cpu %u, freq %u kHz\n", policy->cpu, freq);
 
-	mutex_lock(&userspace_mutex);
-	if (!per_cpu(cpu_is_managed, policy->cpu))
-		goto err;
+ mutex_lock(&userspace_mutex);
+ if (!per_cpu(cpu_is_managed, policy->cpu))
+  goto err;
 
-	*setspeed = freq;
+ *setspeed = freq;
 
-	ret = __cpufreq_driver_target(policy, freq, CPUFREQ_RELATION_L);
+ ret = __cpufreq_driver_target(policy, freq, CPUFREQ_RELATION_L);
  err:
-	mutex_unlock(&userspace_mutex);
-	return ret;
+ mutex_unlock(&userspace_mutex);
+ return ret;
 }

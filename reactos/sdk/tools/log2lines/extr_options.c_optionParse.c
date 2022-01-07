@@ -1,51 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DEF_OPT_DIR ; 
- int /*<<< orphan*/  LINESIZE ; 
- int /*<<< orphan*/  PATH_STR ; 
- int getopt (int,char** const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,...) ; 
- scalar_t__* malloc (int /*<<< orphan*/ ) ; 
- scalar_t__* opt_7z ; 
- int /*<<< orphan*/  opt_Mark ; 
- scalar_t__* opt_Revision ; 
- int /*<<< orphan*/  opt_Revision_check ; 
- int /*<<< orphan*/  opt_Source ; 
- scalar_t__* opt_SourcesPath ; 
- int /*<<< orphan*/  opt_SrcPlus ; 
- int /*<<< orphan*/  opt_Twice ; 
- int /*<<< orphan*/  opt_buffered ; 
- scalar_t__ opt_console ; 
- scalar_t__* opt_dir ; 
- int /*<<< orphan*/  opt_exit ; 
- int /*<<< orphan*/  opt_force ; 
- int /*<<< orphan*/  opt_help ; 
- int /*<<< orphan*/  opt_mark ; 
- int /*<<< orphan*/  opt_raw ; 
- int /*<<< orphan*/  opt_redo ; 
- scalar_t__ opt_stats ; 
- int /*<<< orphan*/  opt_twice ; 
- int /*<<< orphan*/  opt_undo ; 
- int /*<<< orphan*/  opt_verbose ; 
- scalar_t__* optarg ; 
- int /*<<< orphan*/  optchars ; 
- int sscanf (scalar_t__*,char*,scalar_t__*,...) ; 
- int /*<<< orphan*/  strcat (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (scalar_t__*,char*) ; 
- int /*<<< orphan*/  strcpy (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  usage (int) ; 
+ int DEF_OPT_DIR ;
+ int LINESIZE ;
+ int PATH_STR ;
+ int getopt (int,char** const,int ) ;
+ int l2l_dbg (int,char*,...) ;
+ scalar_t__* malloc (int ) ;
+ scalar_t__* opt_7z ;
+ int opt_Mark ;
+ scalar_t__* opt_Revision ;
+ int opt_Revision_check ;
+ int opt_Source ;
+ scalar_t__* opt_SourcesPath ;
+ int opt_SrcPlus ;
+ int opt_Twice ;
+ int opt_buffered ;
+ scalar_t__ opt_console ;
+ scalar_t__* opt_dir ;
+ int opt_exit ;
+ int opt_force ;
+ int opt_help ;
+ int opt_mark ;
+ int opt_raw ;
+ int opt_redo ;
+ scalar_t__ opt_stats ;
+ int opt_twice ;
+ int opt_undo ;
+ int opt_verbose ;
+ scalar_t__* optarg ;
+ int optchars ;
+ int sscanf (scalar_t__*,char*,scalar_t__*,...) ;
+ int strcat (scalar_t__*,int ) ;
+ int strcmp (scalar_t__*,char*) ;
+ int strcpy (scalar_t__*,scalar_t__*) ;
+ int usage (int) ;
 
 int optionParse(int argc, const char **argv)
 {
@@ -65,7 +57,7 @@ int optionParse(int argc, const char **argv)
             break;
         case 'd':
             optCount++;
-            //just count, see optionInit()
+
             break;
         case 'f':
             opt_force++;
@@ -81,7 +73,7 @@ int optionParse(int argc, const char **argv)
             break;
         case 'l':
             optCount++;
-            //just count, see optionInit()
+
             break;
         case 'm':
             opt_mark++;
@@ -94,7 +86,7 @@ int optionParse(int argc, const char **argv)
             break;
         case 'P':
             optCount++;
-            //just count, see optionInit()
+
             break;
         case 'R':
             optCount++;
@@ -115,7 +107,7 @@ int optionParse(int argc, const char **argv)
             l2l_dbg(3, "Sources option parse result: %d+%d,\"%s\"\n", opt_Source, opt_SrcPlus, opt_SourcesPath);
             if (opt_Source)
             {
-                /* need to retranslate for source info: */
+
                 opt_undo++;
                 opt_redo++;
                 opt_Revision_check ++;

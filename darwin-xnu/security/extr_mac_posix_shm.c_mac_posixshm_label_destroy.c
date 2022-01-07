@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pshminfo {int /*<<< orphan*/ * pshm_label; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mac_posixshm_label_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct pshminfo {int * pshm_label; } ;
+
+
+ int mac_posixshm_label_free (int *) ;
 
 void
 mac_posixshm_label_destroy(struct pshminfo *pshm)
 {
 
-	mac_posixshm_label_free(pshm->pshm_label);
-	pshm->pshm_label = NULL;
+ mac_posixshm_label_free(pshm->pshm_label);
+ pshm->pshm_label = ((void*)0);
 }

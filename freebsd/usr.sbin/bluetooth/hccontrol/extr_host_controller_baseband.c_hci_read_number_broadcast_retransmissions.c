@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rp ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int rp ;
 struct TYPE_2__ {int status; int counter; } ;
-typedef  TYPE_1__ ng_hci_read_num_broadcast_retrans_rp ;
+typedef TYPE_1__ ng_hci_read_num_broadcast_retrans_rp ;
 
-/* Variables and functions */
- scalar_t__ ERROR ; 
- int FAILED ; 
- int /*<<< orphan*/  NG_HCI_OCF_READ_NUM_BROADCAST_RETRANS ; 
- int /*<<< orphan*/  NG_HCI_OGF_HC_BASEBAND ; 
- int /*<<< orphan*/  NG_HCI_OPCODE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int OK ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ hci_simple_request (int,int /*<<< orphan*/ ,char*,int*) ; 
- char* hci_status2str (int) ; 
- int /*<<< orphan*/  stdout ; 
+
+ scalar_t__ ERROR ;
+ int FAILED ;
+ int NG_HCI_OCF_READ_NUM_BROADCAST_RETRANS ;
+ int NG_HCI_OGF_HC_BASEBAND ;
+ int NG_HCI_OPCODE (int ,int ) ;
+ int OK ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ hci_simple_request (int,int ,char*,int*) ;
+ char* hci_status2str (int) ;
+ int stdout ;
 
 __attribute__((used)) static int
 hci_read_number_broadcast_retransmissions(int s, int argc, char **argv)
 {
-	ng_hci_read_num_broadcast_retrans_rp	rp;
-	int					n;
+ ng_hci_read_num_broadcast_retrans_rp rp;
+ int n;
 
-	n = sizeof(rp);
-	if (hci_simple_request(s, NG_HCI_OPCODE(NG_HCI_OGF_HC_BASEBAND,
-			NG_HCI_OCF_READ_NUM_BROADCAST_RETRANS),
-			(char *) &rp, &n) == ERROR)
-		return (ERROR);
+ n = sizeof(rp);
+ if (hci_simple_request(s, NG_HCI_OPCODE(NG_HCI_OGF_HC_BASEBAND,
+   NG_HCI_OCF_READ_NUM_BROADCAST_RETRANS),
+   (char *) &rp, &n) == ERROR)
+  return (ERROR);
 
-	if (rp.status != 0x00) {
-		fprintf(stdout, "Status: %s [%#02x]\n", 
-			hci_status2str(rp.status), rp.status);
-		return (FAILED);
-	}
+ if (rp.status != 0x00) {
+  fprintf(stdout, "Status: %s [%#02x]\n",
+   hci_status2str(rp.status), rp.status);
+  return (FAILED);
+ }
 
-	fprintf(stdout, "Number of broadcast retransmissions: %d\n",
-		rp.counter);
+ fprintf(stdout, "Number of broadcast retransmissions: %d\n",
+  rp.counter);
 
-	return (OK);
+ return (OK);
 }

@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddXToCertList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BufToPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BufToX (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Debug (char*,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PackGetBufEx (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- scalar_t__ PackGetIndexCount (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ROOT_CERTS_FILENAME ; 
- int /*<<< orphan*/ * ReadDump (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int X ;
+typedef scalar_t__ UINT ;
+typedef int PACK ;
+typedef int LIST ;
+typedef int BUF ;
+
+
+ int AddXToCertList (int *,int *) ;
+ int * BufToPack (int *) ;
+ int * BufToX (int *,int) ;
+ int Debug (char*,scalar_t__,scalar_t__,int ) ;
+ int FreeBuf (int *) ;
+ int FreePack (int *) ;
+ int FreeX (int *) ;
+ int LIST_NUM (int *) ;
+ int * PackGetBufEx (int *,char*,scalar_t__) ;
+ scalar_t__ PackGetIndexCount (int *,char*) ;
+ int ROOT_CERTS_FILENAME ;
+ int * ReadDump (int ) ;
 
 void AddAllRootCertsToCertList(LIST *o)
 {
-	BUF *buf;
-	PACK *p;
-	UINT num_ok = 0, num_error = 0;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
+ BUF *buf;
+ PACK *p;
+ UINT num_ok = 0, num_error = 0;
 
-	buf = ReadDump(ROOT_CERTS_FILENAME);
-	if (buf == NULL)
-	{
-		return;
-	}
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-	p = BufToPack(buf);
+ buf = ReadDump(ROOT_CERTS_FILENAME);
+ if (buf == ((void*)0))
+ {
+  return;
+ }
 
-	if (p != NULL)
-	{
-		UINT num = PackGetIndexCount(p, "cert");
-		UINT i;
+ p = BufToPack(buf);
 
-		for (i = 0;i < num;i++)
-		{
-			bool ok = false;
-			BUF *b = PackGetBufEx(p, "cert", i);
+ if (p != ((void*)0))
+ {
+  UINT num = PackGetIndexCount(p, "cert");
+  UINT i;
 
-			if (b != NULL)
-			{
-				X *x = BufToX(b, false);
+  for (i = 0;i < num;i++)
+  {
+   bool ok = 0;
+   BUF *b = PackGetBufEx(p, "cert", i);
 
-				if (x != NULL)
-				{
-					AddXToCertList(o, x);
+   if (b != ((void*)0))
+   {
+    X *x = BufToX(b, 0);
 
-					ok = true;
+    if (x != ((void*)0))
+    {
+     AddXToCertList(o, x);
 
-					FreeX(x);
-				}
+     ok = 1;
 
-				FreeBuf(b);
-			}
+     FreeX(x);
+    }
 
-			if (ok)
-			{
-				num_ok++;
-			}
-			else
-			{
-				num_error++;
-			}
-		}
+    FreeBuf(b);
+   }
 
-		FreePack(p);
-	}
+   if (ok)
+   {
+    num_ok++;
+   }
+   else
+   {
+    num_error++;
+   }
+  }
 
-	FreeBuf(buf);
+  FreePack(p);
+ }
 
-	Debug("AddAllRootCertsToCertList: ok=%u error=%u total_list_len=%u\n", num_ok, num_error, LIST_NUM(o));
+ FreeBuf(buf);
+
+ Debug("AddAllRootCertsToCertList: ok=%u error=%u total_list_len=%u\n", num_ok, num_error, LIST_NUM(o));
 }

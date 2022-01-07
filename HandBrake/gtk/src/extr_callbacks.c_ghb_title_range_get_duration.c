@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int den; int num; } ;
 struct TYPE_6__ {TYPE_1__ vrate; } ;
-typedef  TYPE_2__ hb_title_t ;
-typedef  int gint64 ;
-typedef  int /*<<< orphan*/  GhbValue ;
+typedef TYPE_2__ hb_title_t ;
+typedef int gint64 ;
+typedef int GhbValue ;
 
-/* Variables and functions */
- int ghb_chapter_range_get_duration (TYPE_2__ const*,int,int) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int ghb_settings_combo_int (int /*<<< orphan*/ *,char*) ; 
+
+ int ghb_chapter_range_get_duration (TYPE_2__ const*,int,int) ;
+ int ghb_dict_get_int (int *,char*) ;
+ int ghb_settings_combo_int (int *,char*) ;
 
 gint64
 ghb_title_range_get_duration(GhbValue * settings, const hb_title_t * title)
@@ -42,7 +42,7 @@ ghb_title_range_get_duration(GhbValue * settings, const hb_title_t * title)
     }
     else if (ghb_settings_combo_int(settings, "PtoPType") == 2)
     {
-        if (title != NULL)
+        if (title != ((void*)0))
         {
             gint64 frames;
 

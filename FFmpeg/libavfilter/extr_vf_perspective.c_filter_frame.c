@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_22__ {int hsub; int vsub; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  src_linesize; int /*<<< orphan*/  src; int /*<<< orphan*/  dst_linesize; int /*<<< orphan*/  dst; } ;
-typedef  TYPE_2__ ThreadData ;
+
+
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+struct TYPE_22__ {int hsub; int vsub; int h; int w; int src_linesize; int src; int dst_linesize; int dst; } ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_26__ {TYPE_1__* internal; TYPE_3__* priv; TYPE_5__** outputs; } ;
-struct TYPE_25__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_6__* dst; } ;
-struct TYPE_24__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-struct TYPE_23__ {scalar_t__ eval_mode; int nb_planes; int hsub; int vsub; int /*<<< orphan*/  perspective; int /*<<< orphan*/ * height; int /*<<< orphan*/ * linesize; } ;
-struct TYPE_21__ {int /*<<< orphan*/  (* execute ) (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ PerspectiveContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
-typedef  TYPE_6__ AVFilterContext ;
+struct TYPE_25__ {int h; int w; TYPE_6__* dst; } ;
+struct TYPE_24__ {int * linesize; int * data; } ;
+struct TYPE_23__ {scalar_t__ eval_mode; int nb_planes; int hsub; int vsub; int perspective; int * height; int * linesize; } ;
+struct TYPE_21__ {int (* execute ) (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;} ;
+typedef TYPE_3__ PerspectiveContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ EVAL_MODE_FRAME ; 
- int /*<<< orphan*/  FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_4__**) ; 
- int calc_persp_luts (TYPE_6__*,TYPE_5__*) ; 
- int ff_filter_frame (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ff_filter_get_nb_threads (TYPE_6__*) ; 
- TYPE_4__* ff_get_video_buffer (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_6__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ scalar_t__ EVAL_MODE_FRAME ;
+ int FFMIN (int ,int ) ;
+ int av_frame_copy_props (TYPE_4__*,TYPE_4__*) ;
+ int av_frame_free (TYPE_4__**) ;
+ int calc_persp_luts (TYPE_6__*,TYPE_5__*) ;
+ int ff_filter_frame (TYPE_5__*,TYPE_4__*) ;
+ int ff_filter_get_nb_threads (TYPE_6__*) ;
+ TYPE_4__* ff_get_video_buffer (TYPE_5__*,int ,int ) ;
+ int stub1 (TYPE_6__*,int ,TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
 {
@@ -75,7 +75,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *fra
                          .h = s->height[plane],
                          .hsub = hsub,
                          .vsub = vsub };
-        ctx->internal->execute(ctx, s->perspective, &td, NULL, FFMIN(td.h, ff_filter_get_nb_threads(ctx)));
+        ctx->internal->execute(ctx, s->perspective, &td, ((void*)0), FFMIN(td.h, ff_filter_get_nb_threads(ctx)));
     }
 
     av_frame_free(&frame);

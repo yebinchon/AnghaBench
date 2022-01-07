@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RProc {int dummy; } ;
 struct RClass {scalar_t__ tt; struct RClass* c; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_bool ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NAME_ERROR ; 
- scalar_t__ MRB_TT_ICLASS ; 
- struct RProc* method_search_vm (int /*<<< orphan*/ *,struct RClass**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,struct RClass*) ; 
- int /*<<< orphan*/  mrb_respond_to (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_symbol_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_test (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
+
+ int E_NAME_ERROR ;
+ scalar_t__ MRB_TT_ICLASS ;
+ struct RProc* method_search_vm (int *,struct RClass**,int ) ;
+ int mrb_funcall (int *,int ,char*,int,int ,int ) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_raisef (int *,int ,char*,int ,struct RClass*) ;
+ int mrb_respond_to (int *,int ,int ) ;
+ int mrb_symbol_value (int ) ;
+ int mrb_test (int ) ;
+ int mrb_true_value () ;
 
 __attribute__((used)) static void
 mrb_search_method_owner(mrb_state *mrb, struct RClass *c, mrb_value obj, mrb_sym name, struct RClass **owner, struct RProc **proc, mrb_bool unbound)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int NI_MAXHOST ; 
- int NI_MAXSERV ; 
- int NI_NUMERICHOST ; 
- int NI_NUMERICSERV ; 
- struct addrinfo* checkaddr (int /*<<< orphan*/ *) ; 
- char* gai_strerror (int) ; 
- int getnameinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  lua_pushfstring (int /*<<< orphan*/ *,char*,char*,char*) ; 
+
+
+
+struct addrinfo {int ai_addrlen; int ai_addr; } ;
+typedef int lua_State ;
+
+
+ int NI_MAXHOST ;
+ int NI_MAXSERV ;
+ int NI_NUMERICHOST ;
+ int NI_NUMERICSERV ;
+ struct addrinfo* checkaddr (int *) ;
+ char* gai_strerror (int) ;
+ int getnameinfo (int ,int ,char*,int,char*,int,int) ;
+ int luaL_error (int *,char*,char const*) ;
+ int lua_pushfstring (int *,char*,char*,char*) ;
 
 __attribute__((used)) static int script_addr_tostring(lua_State *L) {
     struct addrinfo *addr = checkaddr(L);

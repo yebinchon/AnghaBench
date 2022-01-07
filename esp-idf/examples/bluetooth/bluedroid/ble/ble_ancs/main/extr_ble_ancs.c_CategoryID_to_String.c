@@ -1,69 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  CategoryIDBusinessAndFinance 139 
-#define  CategoryIDEmail 138 
-#define  CategoryIDEntertainment 137 
-#define  CategoryIDHealthAndFitness 136 
-#define  CategoryIDIncomingCall 135 
-#define  CategoryIDLocation 134 
-#define  CategoryIDMissedCall 133 
-#define  CategoryIDNews 132 
-#define  CategoryIDOther 131 
-#define  CategoryIDSchedule 130 
-#define  CategoryIDSocial 129 
-#define  CategoryIDVoicemail 128 
 
+
+
+typedef int uint8_t ;
 char *CategoryID_to_String(uint8_t CategoryID)
 {
-    char *Cidstr = NULL;
+    char *Cidstr = ((void*)0);
     switch(CategoryID) {
-        case CategoryIDOther:
+        case 131:
             Cidstr = "Other";
             break;
-        case CategoryIDIncomingCall:
+        case 135:
             Cidstr = "IncomingCall";
             break;
-        case CategoryIDMissedCall:
+        case 133:
             Cidstr = "MissedCall";
             break;
-        case CategoryIDVoicemail:
+        case 128:
             Cidstr = "Voicemail";
             break;
-        case CategoryIDSocial:
+        case 129:
             Cidstr = "Social";
             break;
-        case CategoryIDSchedule:
+        case 130:
             Cidstr = "Schedule";
             break;
-        case CategoryIDEmail:
+        case 138:
             Cidstr = "Email";
             break;
-        case CategoryIDNews:
+        case 132:
             Cidstr = "News";
             break;
-        case CategoryIDHealthAndFitness:
+        case 136:
             Cidstr = "HealthAndFitness";
             break;
-        case CategoryIDBusinessAndFinance:
+        case 139:
             Cidstr = "BusinessAndFinance";
             break;
-        case CategoryIDLocation:
+        case 134:
             Cidstr = "Location";
             break;
-        case CategoryIDEntertainment:
+        case 137:
             Cidstr = "Entertainment";
             break;
         default:

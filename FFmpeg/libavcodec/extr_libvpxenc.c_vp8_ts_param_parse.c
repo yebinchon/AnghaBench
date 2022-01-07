@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vpx_codec_enc_cfg {int /*<<< orphan*/  ts_layer_id; void* ts_periodicity; int /*<<< orphan*/  ts_rate_decimator; int /*<<< orphan*/  ts_target_bitrate; void* ts_number_layers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VPX_TS_MAX_LAYERS ; 
- int /*<<< orphan*/  VPX_TS_MAX_PERIODICITY ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- size_t strlen (char*) ; 
- void* strtoul (char*,char**,int) ; 
- int /*<<< orphan*/  vp8_ts_parse_int_array (int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+struct vpx_codec_enc_cfg {int ts_layer_id; void* ts_periodicity; int ts_rate_decimator; int ts_target_bitrate; void* ts_number_layers; } ;
+
+
+ int VPX_TS_MAX_LAYERS ;
+ int VPX_TS_MAX_PERIODICITY ;
+ int strcmp (char*,char*) ;
+ size_t strlen (char*) ;
+ void* strtoul (char*,char**,int) ;
+ int vp8_ts_parse_int_array (int ,char*,size_t,int ) ;
 
 __attribute__((used)) static int vp8_ts_param_parse(struct vpx_codec_enc_cfg *enccfg, char *key, char *value)
 {

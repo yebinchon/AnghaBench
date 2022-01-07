@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct test_sglist {int /*<<< orphan*/  bufs; } ;
 
-/* Variables and functions */
- void __testmgr_free_buf (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct test_sglist {int bufs; } ;
+
+
+ void __testmgr_free_buf (int ,int) ;
 
 __attribute__((used)) static void destroy_test_sglist(struct test_sglist *tsgl)
 {
-	return __testmgr_free_buf(tsgl->bufs, 1 /* two pages per buffer */);
+ return __testmgr_free_buf(tsgl->bufs, 1 );
 }

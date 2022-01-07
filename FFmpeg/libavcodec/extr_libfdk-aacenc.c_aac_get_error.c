@@ -1,57 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int AACENC_ERROR ;
 
-/* Variables and functions */
-#define  AACENC_ENCODE_EOF 139 
-#define  AACENC_ENCODE_ERROR 138 
-#define  AACENC_INIT_AAC_ERROR 137 
-#define  AACENC_INIT_ERROR 136 
-#define  AACENC_INIT_META_ERROR 135 
-#define  AACENC_INIT_SBR_ERROR 134 
-#define  AACENC_INIT_TP_ERROR 133 
-#define  AACENC_INVALID_CONFIG 132 
-#define  AACENC_INVALID_HANDLE 131 
-#define  AACENC_MEMORY_ERROR 130 
-#define  AACENC_OK 129 
-#define  AACENC_UNSUPPORTED_PARAMETER 128 
 
+
+
+typedef int AACENC_ERROR ;
 __attribute__((used)) static const char *aac_get_error(AACENC_ERROR err)
 {
     switch (err) {
-    case AACENC_OK:
+    case 129:
         return "No error";
-    case AACENC_INVALID_HANDLE:
+    case 131:
         return "Invalid handle";
-    case AACENC_MEMORY_ERROR:
+    case 130:
         return "Memory allocation error";
-    case AACENC_UNSUPPORTED_PARAMETER:
+    case 128:
         return "Unsupported parameter";
-    case AACENC_INVALID_CONFIG:
+    case 132:
         return "Invalid config";
-    case AACENC_INIT_ERROR:
+    case 136:
         return "Initialization error";
-    case AACENC_INIT_AAC_ERROR:
+    case 137:
         return "AAC library initialization error";
-    case AACENC_INIT_SBR_ERROR:
+    case 134:
         return "SBR library initialization error";
-    case AACENC_INIT_TP_ERROR:
+    case 133:
         return "Transport library initialization error";
-    case AACENC_INIT_META_ERROR:
+    case 135:
         return "Metadata library initialization error";
-    case AACENC_ENCODE_ERROR:
+    case 138:
         return "Encoding error";
-    case AACENC_ENCODE_EOF:
+    case 139:
         return "End of file";
     default:
         return "Unknown error";

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ u_int ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ u_int ;
+typedef int u_char ;
 struct rpl_dio_genoption {int rpl_dio_len; scalar_t__ rpl_dio_type; } ;
-struct TYPE_5__ {int ndo_vflag; int /*<<< orphan*/  const* ndo_snapend; } ;
-typedef  TYPE_1__ netdissect_options ;
+struct TYPE_5__ {int ndo_vflag; int const* ndo_snapend; } ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK (int) ; 
- scalar_t__ ND_TTEST2 (struct rpl_dio_genoption const,int) ; 
- scalar_t__ RPL_DIO_GENOPTION_LEN ; 
- scalar_t__ RPL_OPT_PAD0 ; 
- int /*<<< orphan*/  hex_print (TYPE_1__*,char*,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  rpl_subopt_values ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,scalar_t__) ; 
+
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK (int) ;
+ scalar_t__ ND_TTEST2 (struct rpl_dio_genoption const,int) ;
+ scalar_t__ RPL_DIO_GENOPTION_LEN ;
+ scalar_t__ RPL_OPT_PAD0 ;
+ int hex_print (TYPE_1__*,char*,int const*,unsigned int) ;
+ int rpl_subopt_values ;
+ int tok2str (int ,char*,scalar_t__) ;
 
 __attribute__((used)) static void
 rpl_dio_printopt(netdissect_options *ndo,
@@ -55,7 +55,7 @@ rpl_dio_printopt(netdissect_options *ndo,
                                 if(paylen > length) paylen = length;
                                 hex_print(ndo,
                                           " ",
-                                          ((const uint8_t *)opt) + RPL_DIO_GENOPTION_LEN,  /* content of DIO option */
+                                          ((const uint8_t *)opt) + RPL_DIO_GENOPTION_LEN,
                                           paylen);
                         }
                 }
@@ -64,6 +64,6 @@ rpl_dio_printopt(netdissect_options *ndo,
         }
         return;
 trunc:
-	ND_PRINT((ndo," [|truncated]"));
-	return;
+ ND_PRINT((ndo," [|truncated]"));
+ return;
 }

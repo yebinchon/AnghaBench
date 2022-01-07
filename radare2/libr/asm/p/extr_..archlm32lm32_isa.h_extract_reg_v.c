@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ut8 ;
-typedef  int ut32 ;
 
-/* Variables and functions */
- int RAsmLm32RegVMask ; 
- int RAsmLm32RegVShift ; 
+
+
+
+typedef int ut8 ;
+typedef int ut32 ;
+
+
+ int RAsmLm32RegVMask ;
+ int RAsmLm32RegVShift ;
 
 __attribute__((used)) static ut8 extract_reg_v(ut32 instr_dword) {
-	return (instr_dword & RAsmLm32RegVMask) >> RAsmLm32RegVShift;
+ return (instr_dword & RAsmLm32RegVMask) >> RAsmLm32RegVShift;
 }

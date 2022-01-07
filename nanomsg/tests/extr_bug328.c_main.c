@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- int /*<<< orphan*/  NN_PAIR ; 
- int /*<<< orphan*/  NN_STAT_CURRENT_CONNECTIONS ; 
- int /*<<< orphan*/  get_test_port (int,char const**) ; 
- int /*<<< orphan*/  nn_assert (int) ; 
- int nn_get_statistic (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_sleep (int) ; 
- int /*<<< orphan*/  test_addr_from (char*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_bind (int,char*) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int /*<<< orphan*/  test_connect (int,char*) ; 
- int /*<<< orphan*/  test_recv (int,char*) ; 
- int /*<<< orphan*/  test_send (int,char*) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int AF_SP ;
+ int NN_PAIR ;
+ int NN_STAT_CURRENT_CONNECTIONS ;
+ int get_test_port (int,char const**) ;
+ int nn_assert (int) ;
+ int nn_get_statistic (int,int ) ;
+ int nn_sleep (int) ;
+ int test_addr_from (char*,char*,char*,int ) ;
+ int test_bind (int,char*) ;
+ int test_close (int) ;
+ int test_connect (int,char*) ;
+ int test_recv (int,char*) ;
+ int test_send (int,char*) ;
+ int test_socket (int ,int ) ;
 
 int main (int argc, const char *argv[])
 {

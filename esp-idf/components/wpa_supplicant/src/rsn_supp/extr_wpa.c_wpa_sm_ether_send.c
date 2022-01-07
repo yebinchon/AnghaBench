@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct wpa_sm {int /*<<< orphan*/  (* sendto ) (void*,int) ;int /*<<< orphan*/  const* own_addr; } ;
-struct l2_ethhdr {int /*<<< orphan*/  h_proto; int /*<<< orphan*/  h_source; int /*<<< orphan*/  h_dest; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETH_ALEN ; 
- int /*<<< orphan*/  host_to_be16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (void*,int) ; 
 
-__attribute__((used)) static inline int   wpa_sm_ether_send( struct wpa_sm *sm, const u8 *dest, u16 proto,
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct wpa_sm {int (* sendto ) (void*,int) ;int const* own_addr; } ;
+struct l2_ethhdr {int h_proto; int h_source; int h_dest; } ;
+
+
+ int ETH_ALEN ;
+ int host_to_be16 (int ) ;
+ int memcpy (int ,int const*,int ) ;
+ int stub1 (void*,int) ;
+
+__attribute__((used)) static inline int wpa_sm_ether_send( struct wpa_sm *sm, const u8 *dest, u16 proto,
         const u8 *data, size_t data_len)
 {
     void *buffer = (void *)(data - sizeof(struct l2_ethhdr));

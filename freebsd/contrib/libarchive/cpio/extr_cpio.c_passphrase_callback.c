@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpio {int /*<<< orphan*/ * ppbuff; } ;
+
+
+
+
+struct cpio {int * ppbuff; } ;
 struct archive {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PPBUFF_SIZE ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  lafe_errc (int,int /*<<< orphan*/ ,char*) ; 
- char const* lafe_readpassphrase (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ) ; 
+
+ int PPBUFF_SIZE ;
+ int errno ;
+ int lafe_errc (int,int ,char*) ;
+ char const* lafe_readpassphrase (char*,int *,int ) ;
+ int * malloc (int ) ;
 
 __attribute__((used)) static const char *
 passphrase_callback(struct archive *a, void *_client_data)
 {
-	struct cpio *cpio = (struct cpio *)_client_data;
-	(void)a; /* UNUSED */
+ struct cpio *cpio = (struct cpio *)_client_data;
+ (void)a;
 
-	if (cpio->ppbuff == NULL) {
-		cpio->ppbuff = malloc(PPBUFF_SIZE);
-		if (cpio->ppbuff == NULL)
-			lafe_errc(1, errno, "Out of memory");
-	}
-	return lafe_readpassphrase("Enter passphrase:",
-		cpio->ppbuff, PPBUFF_SIZE);
+ if (cpio->ppbuff == ((void*)0)) {
+  cpio->ppbuff = malloc(PPBUFF_SIZE);
+  if (cpio->ppbuff == ((void*)0))
+   lafe_errc(1, errno, "Out of memory");
+ }
+ return lafe_readpassphrase("Enter passphrase:",
+  cpio->ppbuff, PPBUFF_SIZE);
 }

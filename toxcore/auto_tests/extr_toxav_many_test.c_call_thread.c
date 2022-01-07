@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_y ;
-typedef  int /*<<< orphan*/  video_v ;
-typedef  int /*<<< orphan*/  video_u ;
-struct TYPE_10__ {int /*<<< orphan*/  incoming; } ;
-typedef  TYPE_1__ uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int time_t ;
-struct TYPE_11__ {int /*<<< orphan*/  friend_number; TYPE_1__* BobCC; TYPE_1__* AliceCC; int /*<<< orphan*/ * BobAV; int /*<<< orphan*/ * AliceAV; } ;
-typedef  TYPE_2__ thread_data ;
-typedef  TYPE_1__ int16_t ;
-typedef  int /*<<< orphan*/  ToxAV ;
-typedef  scalar_t__ TOXAV_ERR_CALL_CONTROL ;
-typedef  scalar_t__ TOXAV_ERR_CALL ;
-typedef  scalar_t__ TOXAV_ERR_ANSWER ;
-typedef  int /*<<< orphan*/  PCM ;
-typedef  TYPE_1__ CallControl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOXAV_CALL_CONTROL_CANCEL ; 
- scalar_t__ TOXAV_ERR_ANSWER_OK ; 
- scalar_t__ TOXAV_ERR_CALL_CONTROL_OK ; 
- scalar_t__ TOXAV_ERR_CALL_OK ; 
- int /*<<< orphan*/  c_sleep (int) ; 
- int /*<<< orphan*/  ck_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  pthread_exit (int /*<<< orphan*/ *) ; 
- int time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  toxav_answer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,scalar_t__*) ; 
- int /*<<< orphan*/  toxav_audio_send_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  toxav_call (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,scalar_t__*) ; 
- int /*<<< orphan*/  toxav_call_control (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  toxav_iterate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  toxav_video_send_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,TYPE_1__*,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int video_y ;
+typedef int video_v ;
+typedef int video_u ;
+struct TYPE_10__ {int incoming; } ;
+typedef TYPE_1__ uint8_t ;
+typedef int uint32_t ;
+typedef int time_t ;
+struct TYPE_11__ {int friend_number; TYPE_1__* BobCC; TYPE_1__* AliceCC; int * BobAV; int * AliceAV; } ;
+typedef TYPE_2__ thread_data ;
+typedef TYPE_1__ int16_t ;
+typedef int ToxAV ;
+typedef scalar_t__ TOXAV_ERR_CALL_CONTROL ;
+typedef scalar_t__ TOXAV_ERR_CALL ;
+typedef scalar_t__ TOXAV_ERR_ANSWER ;
+typedef int PCM ;
+typedef TYPE_1__ CallControl ;
+
+
+ int TOXAV_CALL_CONTROL_CANCEL ;
+ scalar_t__ TOXAV_ERR_ANSWER_OK ;
+ scalar_t__ TOXAV_ERR_CALL_CONTROL_OK ;
+ scalar_t__ TOXAV_ERR_CALL_OK ;
+ int c_sleep (int) ;
+ int ck_assert (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int printf (char*,...) ;
+ int pthread_exit (int *) ;
+ int time (int *) ;
+ int toxav_answer (int *,int ,int,int,scalar_t__*) ;
+ int toxav_audio_send_frame (int *,int ,TYPE_1__*,int,int,int,int *) ;
+ int toxav_call (int *,int ,int,int,scalar_t__*) ;
+ int toxav_call_control (int *,int ,int ,scalar_t__*) ;
+ int toxav_iterate (int *) ;
+ int toxav_video_send_frame (int *,int ,int,int,TYPE_1__*,TYPE_1__*,TYPE_1__*,int *) ;
 
 void *call_thread(void *pd)
 {
@@ -59,7 +59,7 @@ void *call_thread(void *pd)
     memset(AliceCC, 0, sizeof(CallControl));
     memset(BobCC, 0, sizeof(CallControl));
 
-    { /* Call */
+    {
         TOXAV_ERR_CALL rc;
         toxav_call(AliceAV, friend_number, 48, 3000, &rc);
 
@@ -72,7 +72,7 @@ void *call_thread(void *pd)
     while (!BobCC->incoming)
         c_sleep(10);
 
-    { /* Answer */
+    {
         TOXAV_ERR_ANSWER rc;
         toxav_answer(BobAV, 0, 8, 500, &rc);
 
@@ -94,22 +94,22 @@ void *call_thread(void *pd)
     memset(video_u, 0, sizeof(video_u));
     memset(video_v, 0, sizeof(video_v));
 
-    time_t start_time = time(NULL);
+    time_t start_time = time(((void*)0));
 
-    while (time(NULL) - start_time < 4) {
+    while (time(((void*)0)) - start_time < 4) {
         toxav_iterate(AliceAV);
         toxav_iterate(BobAV);
 
-        toxav_audio_send_frame(AliceAV, friend_number, PCM, 960, 1, 48000, NULL);
-        toxav_audio_send_frame(BobAV, 0, PCM, 960, 1, 48000, NULL);
+        toxav_audio_send_frame(AliceAV, friend_number, PCM, 960, 1, 48000, ((void*)0));
+        toxav_audio_send_frame(BobAV, 0, PCM, 960, 1, 48000, ((void*)0));
 
-        toxav_video_send_frame(AliceAV, friend_number, 800, 600, video_y, video_u, video_v, NULL);
-        toxav_video_send_frame(BobAV, 0, 800, 600, video_y, video_u, video_v, NULL);
+        toxav_video_send_frame(AliceAV, friend_number, 800, 600, video_y, video_u, video_v, ((void*)0));
+        toxav_video_send_frame(BobAV, 0, 800, 600, video_y, video_u, video_v, ((void*)0));
 
         c_sleep(10);
     }
 
-    { /* Hangup */
+    {
         TOXAV_ERR_CALL_CONTROL rc;
         toxav_call_control(AliceAV, friend_number, TOXAV_CALL_CONTROL_CANCEL, &rc);
 
@@ -121,5 +121,5 @@ void *call_thread(void *pd)
     c_sleep(30);
 
     printf ("Closing thread\n");
-    pthread_exit(NULL);
+    pthread_exit(((void*)0));
 }

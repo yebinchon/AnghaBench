@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  i_bitrate; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_bitrate; } ;
 struct TYPE_6__ {TYPE_1__ fmt; } ;
-typedef  TYPE_2__ mp4_track_t ;
-struct TYPE_7__ {int /*<<< orphan*/  i_avg_bitrate; } ;
-typedef  int /*<<< orphan*/  MP4_Box_t ;
+typedef TYPE_2__ mp4_track_t ;
+struct TYPE_7__ {int i_avg_bitrate; } ;
+typedef int MP4_Box_t ;
 
-/* Variables and functions */
- TYPE_4__* BOXDATA (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * MP4_BoxGet (int /*<<< orphan*/ *,char*) ; 
+
+ TYPE_4__* BOXDATA (int const*) ;
+ int * MP4_BoxGet (int *,char*) ;
 
 __attribute__((used)) static void SetupGlobalExtensions( mp4_track_t *p_track, MP4_Box_t *p_sample )
 {

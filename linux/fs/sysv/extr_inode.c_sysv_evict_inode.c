@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_nlink; scalar_t__ i_size; int /*<<< orphan*/  i_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_inode (struct inode*) ; 
- int /*<<< orphan*/  invalidate_inode_buffers (struct inode*) ; 
- int /*<<< orphan*/  sysv_free_inode (struct inode*) ; 
- int /*<<< orphan*/  sysv_truncate (struct inode*) ; 
- int /*<<< orphan*/  truncate_inode_pages_final (int /*<<< orphan*/ *) ; 
+
+
+
+struct inode {int i_nlink; scalar_t__ i_size; int i_data; } ;
+
+
+ int clear_inode (struct inode*) ;
+ int invalidate_inode_buffers (struct inode*) ;
+ int sysv_free_inode (struct inode*) ;
+ int sysv_truncate (struct inode*) ;
+ int truncate_inode_pages_final (int *) ;
 
 __attribute__((used)) static void sysv_evict_inode(struct inode *inode)
 {
-	truncate_inode_pages_final(&inode->i_data);
-	if (!inode->i_nlink) {
-		inode->i_size = 0;
-		sysv_truncate(inode);
-	}
-	invalidate_inode_buffers(inode);
-	clear_inode(inode);
-	if (!inode->i_nlink)
-		sysv_free_inode(inode);
+ truncate_inode_pages_final(&inode->i_data);
+ if (!inode->i_nlink) {
+  inode->i_size = 0;
+  sysv_truncate(inode);
+ }
+ invalidate_inode_buffers(inode);
+ clear_inode(inode);
+ if (!inode->i_nlink)
+  sysv_free_inode(inode);
 }

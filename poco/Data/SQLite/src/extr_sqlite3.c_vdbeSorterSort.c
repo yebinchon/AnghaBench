@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_18__ {TYPE_2__* pUnpacked; int /*<<< orphan*/  pSorter; int /*<<< orphan*/  xCompare; } ;
-struct TYPE_17__ {TYPE_3__* pList; int /*<<< orphan*/ * aMemory; } ;
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_18__ {TYPE_2__* pUnpacked; int pSorter; int xCompare; } ;
+struct TYPE_17__ {TYPE_3__* pList; int * aMemory; } ;
 struct TYPE_14__ {size_t iNext; TYPE_3__* pNext; } ;
 struct TYPE_16__ {TYPE_1__ u; } ;
 struct TYPE_15__ {int errCode; } ;
-typedef  TYPE_3__ SorterRecord ;
-typedef  TYPE_4__ SorterList ;
-typedef  TYPE_5__ SortSubtask ;
+typedef TYPE_3__ SorterRecord ;
+typedef TYPE_4__ SorterList ;
+typedef TYPE_5__ SortSubtask ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t sqlite3MallocSize (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3MallocZero (int) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_3__**) ; 
- int vdbeSortAllocUnpacked (TYPE_5__*) ; 
- int /*<<< orphan*/  vdbeSorterGetCompare (int /*<<< orphan*/ ) ; 
- TYPE_3__* vdbeSorterMerge (TYPE_5__*,TYPE_3__*,TYPE_3__*) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ size_t sqlite3MallocSize (int *) ;
+ scalar_t__ sqlite3MallocZero (int) ;
+ int sqlite3_free (TYPE_3__**) ;
+ int vdbeSortAllocUnpacked (TYPE_5__*) ;
+ int vdbeSorterGetCompare (int ) ;
+ TYPE_3__* vdbeSorterMerge (TYPE_5__*,TYPE_3__*,TYPE_3__*) ;
 
 __attribute__((used)) static int vdbeSorterSort(SortSubtask *pTask, SorterList *pList){
   int i;
@@ -84,8 +84,8 @@ __attribute__((used)) static int vdbeSorterSort(SortSubtask *pTask, SorterList *
   pList->pList = p;
 
   sqlite3_free(aSlot);
-  assert( pTask->pUnpacked->errCode==SQLITE_OK 
-       || pTask->pUnpacked->errCode==SQLITE_NOMEM 
+  assert( pTask->pUnpacked->errCode==SQLITE_OK
+       || pTask->pUnpacked->errCode==SQLITE_NOMEM
   );
   return pTask->pUnpacked->errCode;
 }

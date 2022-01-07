@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  hardware_disable ; 
- int /*<<< orphan*/  kvm_usage_count ; 
- int /*<<< orphan*/  on_each_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+ int BUG_ON (int) ;
+ int hardware_disable ;
+ int kvm_usage_count ;
+ int on_each_cpu (int ,int *,int) ;
 
 __attribute__((used)) static void hardware_disable_all_nolock(void)
 {
-	BUG_ON(!kvm_usage_count);
+ BUG_ON(!kvm_usage_count);
 
-	kvm_usage_count--;
-	if (!kvm_usage_count)
-		on_each_cpu(hardware_disable, NULL, 1);
+ kvm_usage_count--;
+ if (!kvm_usage_count)
+  on_each_cpu(hardware_disable, ((void*)0), 1);
 }

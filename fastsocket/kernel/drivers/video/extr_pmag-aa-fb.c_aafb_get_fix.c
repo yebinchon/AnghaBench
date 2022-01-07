@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fb_info {int dummy; } ;
-struct fb_fix_screeninfo {int ypanstep; int ywrapstep; int line_length; int /*<<< orphan*/  accel; int /*<<< orphan*/  visual; int /*<<< orphan*/  type; int /*<<< orphan*/  smem_len; int /*<<< orphan*/  smem_start; int /*<<< orphan*/  id; } ;
-struct aafb_info {int /*<<< orphan*/  fb_size; int /*<<< orphan*/  fb_start; } ;
+struct fb_fix_screeninfo {int ypanstep; int ywrapstep; int line_length; int accel; int visual; int type; int smem_len; int smem_start; int id; } ;
+struct aafb_info {int fb_size; int fb_start; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FB_ACCEL_NONE ; 
- int /*<<< orphan*/  FB_TYPE_PACKED_PIXELS ; 
- int /*<<< orphan*/  FB_VISUAL_MONO10 ; 
- int /*<<< orphan*/  memset (struct fb_fix_screeninfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ int FB_ACCEL_NONE ;
+ int FB_TYPE_PACKED_PIXELS ;
+ int FB_VISUAL_MONO10 ;
+ int memset (struct fb_fix_screeninfo*,int ,int) ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static int aafb_get_fix(struct fb_fix_screeninfo *fix, int con,
-			struct fb_info *info)
+   struct fb_info *info)
 {
-	struct aafb_info *ip = (struct aafb_info *)info;
+ struct aafb_info *ip = (struct aafb_info *)info;
 
-	memset(fix, 0, sizeof(struct fb_fix_screeninfo));
-	strcpy(fix->id, "PMAG-AA");
-	fix->smem_start = ip->fb_start;
-	fix->smem_len = ip->fb_size;
-	fix->type = FB_TYPE_PACKED_PIXELS;
-	fix->ypanstep = 1;
-	fix->ywrapstep = 1;
-	fix->visual = FB_VISUAL_MONO10;
-	fix->line_length = 1280;
-	fix->accel = FB_ACCEL_NONE;
+ memset(fix, 0, sizeof(struct fb_fix_screeninfo));
+ strcpy(fix->id, "PMAG-AA");
+ fix->smem_start = ip->fb_start;
+ fix->smem_len = ip->fb_size;
+ fix->type = FB_TYPE_PACKED_PIXELS;
+ fix->ypanstep = 1;
+ fix->ywrapstep = 1;
+ fix->visual = FB_VISUAL_MONO10;
+ fix->line_length = 1280;
+ fix->accel = FB_ACCEL_NONE;
 
-	return 0;
+ return 0;
 }

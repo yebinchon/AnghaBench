@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  char ngx_uint_t ;
-typedef  char ngx_int_t ;
 
-/* Variables and functions */
+
+
+
+typedef int u_char ;
+typedef char ngx_uint_t ;
+typedef char ngx_int_t ;
+
+
 
 ngx_int_t
 ngx_dns_strcmp(u_char *s1, u_char *s2)
 {
-    ngx_uint_t  c1, c2;
+    ngx_uint_t c1, c2;
 
     for ( ;; ) {
         c1 = (ngx_uint_t) *s1++;
@@ -37,7 +37,7 @@ ngx_dns_strcmp(u_char *s1, u_char *s2)
             return 0;
         }
 
-        /* in ASCII '.' > '-', but we need '.' to be the lowest character */
+
 
         c1 = (c1 == '.') ? ' ' : c1;
         c2 = (c2 == '.') ? ' ' : c2;

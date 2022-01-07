@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvme_fc_ctrl {int /*<<< orphan*/  ref; } ;
 
-/* Variables and functions */
- int kref_get_unless_zero (int /*<<< orphan*/ *) ; 
+
+
+
+struct nvme_fc_ctrl {int ref; } ;
+
+
+ int kref_get_unless_zero (int *) ;
 
 __attribute__((used)) static int
 nvme_fc_ctrl_get(struct nvme_fc_ctrl *ctrl)
 {
-	return kref_get_unless_zero(&ctrl->ref);
+ return kref_get_unless_zero(&ctrl->ref);
 }

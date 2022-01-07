@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_1__* data; struct TYPE_12__* next; } ;
 struct TYPE_11__ {TYPE_3__* entries; } ;
 struct TYPE_10__ {char* name; } ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
-typedef  TYPE_1__ SeafDirent ;
-typedef  TYPE_2__ SeafDir ;
-typedef  TYPE_3__ GList ;
-typedef  int /*<<< orphan*/  GError ;
+typedef int SeafFSManager ;
+typedef TYPE_1__ SeafDirent ;
+typedef TYPE_2__ SeafDir ;
+typedef TYPE_3__ GList ;
+typedef int GError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_DIR_MISSING ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_path_get_basename (char const*) ; 
- char* g_path_get_dirname (char const*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  seaf_dir_free (TYPE_2__*) ; 
- TYPE_1__* seaf_dirent_dup (TYPE_1__*) ; 
- TYPE_2__* seaf_fs_manager_get_seafdir (int /*<<< orphan*/ *,char const*,int,char const*) ; 
- TYPE_2__* seaf_fs_manager_get_seafdir_by_path (int /*<<< orphan*/ *,char const*,int,char const*,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  seaf_warning (char*,char*,char const*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_DIR_MISSING ;
+ int g_free (char*) ;
+ char* g_path_get_basename (char const*) ;
+ char* g_path_get_dirname (char const*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ int seaf_dir_free (TYPE_2__*) ;
+ TYPE_1__* seaf_dirent_dup (TYPE_1__*) ;
+ TYPE_2__* seaf_fs_manager_get_seafdir (int *,char const*,int,char const*) ;
+ TYPE_2__* seaf_fs_manager_get_seafdir_by_path (int *,char const*,int,char const*,char*,int **) ;
+ int seaf_warning (char*,char*,char const*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 SeafDirent *
 seaf_fs_manager_get_dirent_by_path (SeafFSManager *mgr,
@@ -44,12 +44,12 @@ seaf_fs_manager_get_dirent_by_path (SeafFSManager *mgr,
                                     const char *path,
                                     GError **error)
 {
-    SeafDirent *dent = NULL;
-    SeafDir *dir = NULL;
-    char *parent_dir = NULL;
-    char *file_name = NULL;
+    SeafDirent *dent = ((void*)0);
+    SeafDir *dir = ((void*)0);
+    char *parent_dir = ((void*)0);
+    char *file_name = ((void*)0);
 
-    parent_dir  = g_path_get_dirname(path);
+    parent_dir = g_path_get_dirname(path);
     file_name = g_path_get_basename(path);
 
     if (strcmp (parent_dir, ".") == 0) {

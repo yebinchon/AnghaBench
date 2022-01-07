@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * pdsfd; scalar_t__ ref; int /*<<< orphan*/ * lpVtbl; } ;
-typedef  int /*<<< orphan*/ * LPUNKNOWN ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUNDFULLDUPLEX ;
-typedef  TYPE_1__ IDirectSoundFullDuplex_IUnknown ;
-typedef  int /*<<< orphan*/  IDirectSoundFullDuplexImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSERR_INVALIDPARAM ; 
- int /*<<< orphan*/  DSERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  DS_OK ; 
- int /*<<< orphan*/  DirectSoundFullDuplex_Unknown_Vtbl ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WARN (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * pdsfd; scalar_t__ ref; int * lpVtbl; } ;
+typedef int * LPUNKNOWN ;
+typedef int * LPDIRECTSOUNDFULLDUPLEX ;
+typedef TYPE_1__ IDirectSoundFullDuplex_IUnknown ;
+typedef int IDirectSoundFullDuplexImpl ;
+typedef int HRESULT ;
+
+
+ int DSERR_INVALIDPARAM ;
+ int DSERR_OUTOFMEMORY ;
+ int DS_OK ;
+ int DirectSoundFullDuplex_Unknown_Vtbl ;
+ int ERR (char*) ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int TRACE (char*,int *,int **) ;
+ int WARN (char*) ;
 
 __attribute__((used)) static HRESULT IDirectSoundFullDuplex_IUnknown_Create(
     LPDIRECTSOUNDFULLDUPLEX pdsfd,
@@ -36,20 +36,20 @@ __attribute__((used)) static HRESULT IDirectSoundFullDuplex_IUnknown_Create(
     IDirectSoundFullDuplex_IUnknown * pdsfdunk;
     TRACE("(%p,%p)\n",pdsfd,ppunk);
 
-    if (pdsfd == NULL) {
+    if (pdsfd == ((void*)0)) {
         ERR("invalid parameter: pdsfd == NULL\n");
         return DSERR_INVALIDPARAM;
     }
 
-    if (ppunk == NULL) {
+    if (ppunk == ((void*)0)) {
         ERR("invalid parameter: ppunk == NULL\n");
         return DSERR_INVALIDPARAM;
     }
 
     pdsfdunk = HeapAlloc(GetProcessHeap(),0,sizeof(*pdsfdunk));
-    if (pdsfdunk == NULL) {
+    if (pdsfdunk == ((void*)0)) {
         WARN("out of memory\n");
-        *ppunk = NULL;
+        *ppunk = ((void*)0);
         return DSERR_OUTOFMEMORY;
     }
 

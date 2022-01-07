@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
-struct TYPE_6__ {int /*<<< orphan*/  pTokenizer; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-typedef  int /*<<< orphan*/  HashElem ;
-typedef  int /*<<< orphan*/  Hash ;
-typedef  int /*<<< orphan*/  DocList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HashClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HashData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HashFirst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HashKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HashKeysize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * HashNext (int /*<<< orphan*/ *) ; 
- int SQLITE_OK ; 
- int build_terms (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int content_delete (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int content_select (TYPE_1__*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  docListDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int index_delete_term (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
+struct TYPE_6__ {int pTokenizer; } ;
+typedef TYPE_1__ fulltext_vtab ;
+typedef int HashElem ;
+typedef int Hash ;
+typedef int DocList ;
+
+
+ int HashClear (int *) ;
+ int * HashData (int *) ;
+ int * HashFirst (int *) ;
+ int HashKey (int *) ;
+ int HashKeysize (int *) ;
+ int * HashNext (int *) ;
+ int SQLITE_OK ;
+ int build_terms (int *,int ,char*,int ) ;
+ int content_delete (TYPE_1__*,int ) ;
+ int content_select (TYPE_1__*,int ,char**) ;
+ int docListDelete (int *) ;
+ int free (char*) ;
+ int index_delete_term (TYPE_1__*,int ,int ,int ) ;
 
 __attribute__((used)) static int index_delete(fulltext_vtab *v, sqlite_int64 iRow){
   char *zText;

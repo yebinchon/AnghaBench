@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct wined3d_gl_info {int dummy; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  program_lookup; } ;
-struct TYPE_12__ {int /*<<< orphan*/  shader_entry; scalar_t__ id; } ;
-struct TYPE_11__ {int /*<<< orphan*/  shader_entry; scalar_t__ id; } ;
-struct TYPE_10__ {int /*<<< orphan*/  shader_entry; scalar_t__ id; } ;
-struct TYPE_9__ {int /*<<< orphan*/  shader_entry; scalar_t__ id; } ;
-struct TYPE_8__ {int /*<<< orphan*/  shader_entry; scalar_t__ id; } ;
-struct TYPE_7__ {int /*<<< orphan*/  shader_entry; scalar_t__ id; } ;
-struct glsl_shader_prog_link {TYPE_6__ cs; TYPE_5__ ps; TYPE_4__ gs; TYPE_3__ ds; TYPE_2__ hs; TYPE_1__ vs; int /*<<< orphan*/  id; int /*<<< orphan*/  program_lookup_entry; } ;
+struct shader_glsl_priv {int program_lookup; } ;
+struct TYPE_12__ {int shader_entry; scalar_t__ id; } ;
+struct TYPE_11__ {int shader_entry; scalar_t__ id; } ;
+struct TYPE_10__ {int shader_entry; scalar_t__ id; } ;
+struct TYPE_9__ {int shader_entry; scalar_t__ id; } ;
+struct TYPE_8__ {int shader_entry; scalar_t__ id; } ;
+struct TYPE_7__ {int shader_entry; scalar_t__ id; } ;
+struct glsl_shader_prog_link {TYPE_6__ cs; TYPE_5__ ps; TYPE_4__ gs; TYPE_3__ ds; TYPE_2__ hs; TYPE_1__ vs; int id; int program_lookup_entry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_free (struct glsl_shader_prog_link*) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wine_rb_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int GL_EXTCALL (int ) ;
+ int glDeleteProgram (int ) ;
+ int heap_free (struct glsl_shader_prog_link*) ;
+ int list_remove (int *) ;
+ int wine_rb_remove (int *,int *) ;
 
 __attribute__((used)) static void delete_glsl_program_entry(struct shader_glsl_priv *priv, const struct wined3d_gl_info *gl_info,
         struct glsl_shader_prog_link *entry)

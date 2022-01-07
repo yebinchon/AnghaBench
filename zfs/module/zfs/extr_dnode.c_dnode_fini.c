@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * dnode_cache ; 
- int /*<<< orphan*/ * dnode_ksp ; 
- int /*<<< orphan*/  kmem_cache_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kstat_delete (int /*<<< orphan*/ *) ; 
+ int * dnode_cache ;
+ int * dnode_ksp ;
+ int kmem_cache_destroy (int *) ;
+ int kstat_delete (int *) ;
 
 void
 dnode_fini(void)
 {
-	if (dnode_ksp != NULL) {
-		kstat_delete(dnode_ksp);
-		dnode_ksp = NULL;
-	}
+ if (dnode_ksp != ((void*)0)) {
+  kstat_delete(dnode_ksp);
+  dnode_ksp = ((void*)0);
+ }
 
-	kmem_cache_destroy(dnode_cache);
-	dnode_cache = NULL;
+ kmem_cache_destroy(dnode_cache);
+ dnode_cache = ((void*)0);
 }

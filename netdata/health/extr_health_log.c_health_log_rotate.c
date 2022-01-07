@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t health_log_entries_written; char* health_log_filename; int /*<<< orphan*/ * health_log_fp; int /*<<< orphan*/  hostname; } ;
-typedef  TYPE_1__ RRDHOST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_SECTION_HEALTH ; 
- scalar_t__ ENOENT ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- scalar_t__ config_get_number (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  health_alarm_log_close (TYPE_1__*) ; 
- int /*<<< orphan*/  health_alarm_log_open (TYPE_1__*) ; 
- int link (char*,char*) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ unlikely (int) ; 
- int unlink (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t health_log_entries_written; char* health_log_filename; int * health_log_fp; int hostname; } ;
+typedef TYPE_1__ RRDHOST ;
+
+
+ int CONFIG_SECTION_HEALTH ;
+ scalar_t__ ENOENT ;
+ int FILENAME_MAX ;
+ scalar_t__ config_get_number (int ,char*,int) ;
+ scalar_t__ errno ;
+ int error (char*,int ,char*,...) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int health_alarm_log_close (TYPE_1__*) ;
+ int health_alarm_log_open (TYPE_1__*) ;
+ int link (char*,char*) ;
+ int snprintfz (char*,int ,char*,char*) ;
+ scalar_t__ unlikely (int) ;
+ int unlink (char*) ;
 
 inline void health_log_rotate(RRDHOST *host) {
     static size_t rotate_every = 0;
@@ -53,7 +53,7 @@ inline void health_log_rotate(RRDHOST *host) {
         if(unlink(host->health_log_filename) == -1 && errno != ENOENT)
             error("HEALTH [%s]: cannot remove old alarms log file '%s'", host->hostname, host->health_log_filename);
 
-        // open it with truncate
+
         host->health_log_fp = fopen(host->health_log_filename, "w");
 
         if(host->health_log_fp)
@@ -61,7 +61,7 @@ inline void health_log_rotate(RRDHOST *host) {
         else
             error("HEALTH [%s]: cannot truncate health log '%s'", host->hostname, host->health_log_filename);
 
-        host->health_log_fp = NULL;
+        host->health_log_fp = ((void*)0);
 
         host->health_log_entries_written = 0;
         health_alarm_log_open(host);

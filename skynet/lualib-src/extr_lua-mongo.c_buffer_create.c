@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct buffer {int /*<<< orphan*/  buffer; int /*<<< orphan*/  ptr; int /*<<< orphan*/  cap; scalar_t__ size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_CAP ; 
+
+
+
+struct buffer {int buffer; int ptr; int cap; scalar_t__ size; } ;
+
+
+ int DEFAULT_CAP ;
 
 __attribute__((used)) static inline void
 buffer_create(struct buffer *b) {
-	b->size = 0;
-	b->cap = DEFAULT_CAP;
-	b->ptr = b->buffer;
+ b->size = 0;
+ b->cap = DEFAULT_CAP;
+ b->ptr = b->buffer;
 }

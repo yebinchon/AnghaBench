@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_5__ {size_t num_streams; TYPE_1__* streams; int /*<<< orphan*/  storage; int /*<<< orphan*/  strings; } ;
-struct TYPE_4__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  str_index; } ;
-typedef  TYPE_2__ MSIDATABASE ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- size_t ERROR_FUNCTION_FAILED ; 
- size_t ERROR_OUTOFMEMORY ; 
- size_t ERROR_SUCCESS ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IStorage_CreateStream (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IStream_Commit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int STGM_WRITE ; 
- scalar_t__ STG_E_FILEALREADYEXISTS ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,size_t) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * encode_streamname (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_string_lookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ write_stream (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_5__ {size_t num_streams; TYPE_1__* streams; int storage; int strings; } ;
+struct TYPE_4__ {int stream; int str_index; } ;
+typedef TYPE_2__ MSIDATABASE ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ERR (char*,int ,scalar_t__) ;
+ size_t ERROR_FUNCTION_FAILED ;
+ size_t ERROR_OUTOFMEMORY ;
+ size_t ERROR_SUCCESS ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ IStorage_CreateStream (int ,int *,int,int ,int ,int **) ;
+ scalar_t__ IStream_Commit (int *,int ) ;
+ int IStream_Release (int *) ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int STGM_WRITE ;
+ scalar_t__ STG_E_FILEALREADYEXISTS ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ int TRACE (char*,size_t) ;
+ int debugstr_w (int *) ;
+ int * encode_streamname (int ,int const*) ;
+ int msi_free (int *) ;
+ int * msi_string_lookup (int ,int ,int *) ;
+ scalar_t__ write_stream (int *,int ) ;
 
 UINT msi_commit_streams( MSIDATABASE *db )
 {
@@ -53,7 +53,7 @@ UINT msi_commit_streams( MSIDATABASE *db )
 
     for (i = 0; i < db->num_streams; i++)
     {
-        name = msi_string_lookup( db->strings, db->streams[i].str_index, NULL );
+        name = msi_string_lookup( db->strings, db->streams[i].str_index, ((void*)0) );
         if (!(encname = encode_streamname( FALSE, name ))) return ERROR_OUTOFMEMORY;
 
         hr = IStorage_CreateStream( db->storage, encname, STGM_WRITE|STGM_SHARE_EXCLUSIVE, 0, 0, &stream );

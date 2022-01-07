@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct vmcb {int dummy; } ;
-struct vcpu_svm {int /*<<< orphan*/  vcpu; TYPE_2__* vmcb; } ;
+struct vcpu_svm {int vcpu; TYPE_2__* vmcb; } ;
 struct kvm_host_map {struct vmcb* hva; } ;
-struct TYPE_3__ {int /*<<< orphan*/  rax; } ;
+struct TYPE_3__ {int rax; } ;
 struct TYPE_4__ {TYPE_1__ save; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  gpa_to_gfn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kvm_inject_gp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int kvm_skip_emulated_instruction (int /*<<< orphan*/ *) ; 
- int kvm_vcpu_map (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct kvm_host_map*) ; 
- int /*<<< orphan*/  kvm_vcpu_unmap (int /*<<< orphan*/ *,struct kvm_host_map*,int) ; 
- scalar_t__ nested_svm_check_permissions (struct vcpu_svm*) ; 
- int /*<<< orphan*/  nested_svm_vmloadsave (struct vmcb*,TYPE_2__*) ; 
+
+ int EINVAL ;
+ int gpa_to_gfn (int ) ;
+ int kvm_inject_gp (int *,int ) ;
+ int kvm_skip_emulated_instruction (int *) ;
+ int kvm_vcpu_map (int *,int ,struct kvm_host_map*) ;
+ int kvm_vcpu_unmap (int *,struct kvm_host_map*,int) ;
+ scalar_t__ nested_svm_check_permissions (struct vcpu_svm*) ;
+ int nested_svm_vmloadsave (struct vmcb*,TYPE_2__*) ;
 
 __attribute__((used)) static int vmload_interception(struct vcpu_svm *svm)
 {
-	struct vmcb *nested_vmcb;
-	struct kvm_host_map map;
-	int ret;
+ struct vmcb *nested_vmcb;
+ struct kvm_host_map map;
+ int ret;
 
-	if (nested_svm_check_permissions(svm))
-		return 1;
+ if (nested_svm_check_permissions(svm))
+  return 1;
 
-	ret = kvm_vcpu_map(&svm->vcpu, gpa_to_gfn(svm->vmcb->save.rax), &map);
-	if (ret) {
-		if (ret == -EINVAL)
-			kvm_inject_gp(&svm->vcpu, 0);
-		return 1;
-	}
+ ret = kvm_vcpu_map(&svm->vcpu, gpa_to_gfn(svm->vmcb->save.rax), &map);
+ if (ret) {
+  if (ret == -EINVAL)
+   kvm_inject_gp(&svm->vcpu, 0);
+  return 1;
+ }
 
-	nested_vmcb = map.hva;
+ nested_vmcb = map.hva;
 
-	ret = kvm_skip_emulated_instruction(&svm->vcpu);
+ ret = kvm_skip_emulated_instruction(&svm->vcpu);
 
-	nested_svm_vmloadsave(nested_vmcb, svm->vmcb);
-	kvm_vcpu_unmap(&svm->vcpu, &map, true);
+ nested_svm_vmloadsave(nested_vmcb, svm->vmcb);
+ kvm_vcpu_unmap(&svm->vcpu, &map, 1);
 
-	return ret;
+ return ret;
 }

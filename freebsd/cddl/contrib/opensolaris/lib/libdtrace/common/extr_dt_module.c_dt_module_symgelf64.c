@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GElf_Sym ;
-typedef  int /*<<< orphan*/  Elf64_Sym ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int GElf_Sym ;
+typedef int Elf64_Sym ;
+
+
+ int bcopy (int const*,int *,int) ;
 
 __attribute__((used)) static GElf_Sym *
 dt_module_symgelf64(const Elf64_Sym *src, GElf_Sym *dst)
 {
-	if (dst != NULL)
-		bcopy(src, dst, sizeof (GElf_Sym));
+ if (dst != ((void*)0))
+  bcopy(src, dst, sizeof (GElf_Sym));
 
-	return (dst);
+ return (dst);
 }

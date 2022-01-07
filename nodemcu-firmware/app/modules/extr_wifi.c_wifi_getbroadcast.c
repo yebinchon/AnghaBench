@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32 ;
 struct TYPE_3__ {int addr; } ;
 struct TYPE_4__ {int addr; } ;
 struct ip_info {TYPE_1__ netmask; TYPE_2__ ip; } ;
 struct ip_addr {int addr; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int IP2STR (struct ip_addr*) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  wifi_get_ip_info (int /*<<< orphan*/ ,struct ip_info*) ; 
+
+ int IP2STR (struct ip_addr*) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char*) ;
+ int sprintf (char*,char*,int) ;
+ int wifi_get_ip_info (int ,struct ip_info*) ;
 
 __attribute__((used)) static int wifi_getbroadcast( lua_State* L, uint8_t mode )
 {

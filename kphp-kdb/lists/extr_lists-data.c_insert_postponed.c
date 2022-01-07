@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct postponed_operation {int size; struct postponed_operation* next; struct postponed_operation* prev; int /*<<< orphan*/  E; int /*<<< orphan*/  time; } ;
-struct lev_generic {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct postponed_operation {int size; struct postponed_operation* next; struct postponed_operation* prev; int E; int time; } ;
+struct lev_generic {int type; } ;
 struct TYPE_2__ {int tot_lists; } ;
 
-/* Variables and functions */
- TYPE_1__ Header ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,struct lev_generic*,int) ; 
- int /*<<< orphan*/  now ; 
- struct postponed_operation** postponed ; 
- int postponed_operations_size ; 
- int /*<<< orphan*/  postponed_operations_total ; 
- scalar_t__ postponed_replay ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int /*<<< orphan*/ ,int) ; 
- struct postponed_operation* zmalloc (int) ; 
+
+ TYPE_1__ Header ;
+ int assert (int) ;
+ int memcpy (int ,struct lev_generic*,int) ;
+ int now ;
+ struct postponed_operation** postponed ;
+ int postponed_operations_size ;
+ int postponed_operations_total ;
+ scalar_t__ postponed_replay ;
+ int vkprintf (int,char*,int,int ,int) ;
+ struct postponed_operation* zmalloc (int) ;
 
 void insert_postponed (int x, struct lev_generic *E, int size) {
   assert (0 <= x && x < Header.tot_lists);

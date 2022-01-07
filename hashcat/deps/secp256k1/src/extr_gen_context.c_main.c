@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ *** prec; } ;
-typedef  TYPE_1__ secp256k1_ecmult_gen_context ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int ECMULT_GEN_PREC_G ; 
- int ECMULT_GEN_PREC_N ; 
- int /*<<< orphan*/  SECP256K1_ECMULT_GEN_CONTEXT_PREALLOCATED_SIZE ; 
- int SECP256K1_GE_STORAGE_CONST_GET (int /*<<< orphan*/ ) ; 
- void* checked_malloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  default_error_callback ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen_context_build (TYPE_1__*,void**) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen_context_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen_context_init (TYPE_1__*) ; 
- int /*<<< orphan*/ * stderr ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int *** prec; } ;
+typedef TYPE_1__ secp256k1_ecmult_gen_context ;
+typedef int FILE ;
+
+
+ int ECMULT_GEN_PREC_G ;
+ int ECMULT_GEN_PREC_N ;
+ int SECP256K1_ECMULT_GEN_CONTEXT_PREALLOCATED_SIZE ;
+ int SECP256K1_GE_STORAGE_CONST_GET (int ) ;
+ void* checked_malloc (int *,int ) ;
+ int default_error_callback ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int free (void*) ;
+ int secp256k1_ecmult_gen_context_build (TYPE_1__*,void**) ;
+ int secp256k1_ecmult_gen_context_clear (TYPE_1__*) ;
+ int secp256k1_ecmult_gen_context_init (TYPE_1__*) ;
+ int * stderr ;
 
 int main(int argc, char **argv) {
     secp256k1_ecmult_gen_context ctx;
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
     (void)argv;
 
     fp = fopen("src/ecmult_static_context.h","w");
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         fprintf(stderr, "Could not open src/ecmult_static_context.h for writing!\n");
         return -1;
     }

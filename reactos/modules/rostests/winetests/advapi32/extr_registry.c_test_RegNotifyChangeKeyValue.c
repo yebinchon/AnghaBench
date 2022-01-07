@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  REG_NOTIFY_CHANGE_NAME ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegDeleteKeyA (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ RegNotifyChangeKeyValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WAIT_TIMEOUT ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hkey_main ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int * HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int CloseHandle (int *) ;
+ int * CreateEventW (int *,int ,int ,int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int REG_NOTIFY_CHANGE_NAME ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyA (int ,char*,int *) ;
+ int RegDeleteKeyA (int ,char*) ;
+ scalar_t__ RegNotifyChangeKeyValue (int ,int ,int ,int *,int ) ;
+ int TRUE ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WAIT_TIMEOUT ;
+ scalar_t__ WaitForSingleObject (int *,int ) ;
+ int hkey_main ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_RegNotifyChangeKeyValue(void)
 {
@@ -40,8 +40,8 @@ __attribute__((used)) static void test_RegNotifyChangeKeyValue(void)
     DWORD dwret;
     LONG ret;
 
-    event = CreateEventW(NULL, FALSE, TRUE, NULL);
-    ok(event != NULL, "CreateEvent failed, error %u\n", GetLastError());
+    event = CreateEventW(((void*)0), FALSE, TRUE, ((void*)0));
+    ok(event != ((void*)0), "CreateEvent failed, error %u\n", GetLastError());
     ret = RegCreateKeyA(hkey_main, "TestKey", &key);
     ok(ret == ERROR_SUCCESS, "expected ERROR_SUCCESS, got %d\n", ret);
 

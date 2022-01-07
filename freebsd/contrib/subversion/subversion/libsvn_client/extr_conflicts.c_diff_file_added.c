@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_source_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_source_t ;
 struct svn_diff_tree_processor_t {struct merge_newly_added_dir_baton* baton; } ;
-struct merge_newly_added_dir_baton {TYPE_1__* ctx; int /*<<< orphan*/  merge_right_rev; int /*<<< orphan*/  merge_left_rev; int /*<<< orphan*/  added_repos_relpath; int /*<<< orphan*/  repos_uuid; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  target_abspath; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
-struct TYPE_2__ {int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  notify_func2; int /*<<< orphan*/  wc_ctx; } ;
+struct merge_newly_added_dir_baton {TYPE_1__* ctx; int merge_right_rev; int merge_left_rev; int added_repos_relpath; int repos_uuid; int repos_root_url; int target_abspath; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+struct TYPE_2__ {int notify_baton2; int notify_func2; int wc_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  merge_added_files (char const*,char const*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raise_tree_conflict (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_categorize_props (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_copy_file (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- scalar_t__ svn_node_unknown ; 
- int /*<<< orphan*/  svn_prop_array_to_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_prop_hash_to_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_add_from_disk3 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_conflict_action_add ; 
- int /*<<< orphan*/  svn_wc_conflict_reason_obstructed ; 
- int /*<<< orphan*/  svn_wc_read_kind2 (scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int merge_added_files (char const*,char const*,int ,TYPE_1__*,int *) ;
+ int raise_tree_conflict (char const*,int ,int ,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ int svn_categorize_props (int *,int *,int *,int **,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int svn_io_check_path (char const*,scalar_t__*,int *) ;
+ int svn_io_copy_file (char const*,char const*,int ,int *) ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ scalar_t__ svn_node_unknown ;
+ int svn_prop_array_to_hash (int *,int *) ;
+ int * svn_prop_hash_to_array (int *,int *) ;
+ int svn_relpath_join (int ,char const*,int *) ;
+ int svn_wc_add_from_disk3 (int ,char const*,int ,int ,int ,int ,int *) ;
+ int svn_wc_conflict_action_add ;
+ int svn_wc_conflict_reason_obstructed ;
+ int svn_wc_read_kind2 (scalar_t__*,int ,char const*,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 diff_file_added(const char *relpath,
@@ -70,7 +70,7 @@ diff_file_added(const char *relpath,
   if (db_kind == svn_node_file && on_disk_kind == svn_node_file)
     {
       propsarray = svn_prop_hash_to_array(right_props, scratch_pool);
-      SVN_ERR(svn_categorize_props(propsarray, NULL, NULL, &regular_props,
+      SVN_ERR(svn_categorize_props(propsarray, ((void*)0), ((void*)0), &regular_props,
                                    scratch_pool));
       SVN_ERR(merge_added_files(local_abspath, right_file,
                                 svn_prop_array_to_hash(regular_props,
@@ -107,7 +107,7 @@ diff_file_added(const char *relpath,
     }
 
   propsarray = svn_prop_hash_to_array(right_props, scratch_pool);
-  SVN_ERR(svn_categorize_props(propsarray, NULL, NULL, &regular_props,
+  SVN_ERR(svn_categorize_props(propsarray, ((void*)0), ((void*)0), &regular_props,
                                scratch_pool));
   SVN_ERR(svn_io_copy_file(right_file, local_abspath, FALSE, scratch_pool));
   SVN_ERR(svn_wc_add_from_disk3(b->ctx->wc_ctx, local_abspath,

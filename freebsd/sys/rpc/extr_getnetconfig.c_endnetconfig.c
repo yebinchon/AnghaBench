@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct netconfig {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_RPC ; 
- int /*<<< orphan*/  free (struct netconfig**,int /*<<< orphan*/ ) ; 
+
+ int M_RPC ;
+ int free (struct netconfig**,int ) ;
 
 int
 endnetconfig(void * handle)
 {
-	struct netconfig **nconfp = (struct netconfig **) handle;
+ struct netconfig **nconfp = (struct netconfig **) handle;
 
-	free(nconfp, M_RPC);
-	return (0);
+ free(nconfp, M_RPC);
+ return (0);
 }

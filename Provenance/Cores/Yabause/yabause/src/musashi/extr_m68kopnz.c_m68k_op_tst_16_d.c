@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFLAG_CLEAR ; 
- int /*<<< orphan*/  DY ; 
- int /*<<< orphan*/  FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- int /*<<< orphan*/  FLAG_Z ; 
- int /*<<< orphan*/  MASK_OUT_ABOVE_16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NFLAG_16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VFLAG_CLEAR ; 
+
+
+
+typedef int uint ;
+
+
+ int CFLAG_CLEAR ;
+ int DY ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_Z ;
+ int MASK_OUT_ABOVE_16 (int ) ;
+ int NFLAG_16 (int ) ;
+ int VFLAG_CLEAR ;
 
 void m68k_op_tst_16_d(void)
 {
-	uint res = MASK_OUT_ABOVE_16(DY);
+ uint res = MASK_OUT_ABOVE_16(DY);
 
-	FLAG_N = NFLAG_16(res);
-	FLAG_Z = res;
-	FLAG_V = VFLAG_CLEAR;
-	FLAG_C = CFLAG_CLEAR;
+ FLAG_N = NFLAG_16(res);
+ FLAG_Z = res;
+ FLAG_V = VFLAG_CLEAR;
+ FLAG_C = CFLAG_CLEAR;
 }

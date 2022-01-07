@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_STRING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int jv_string_length_bytes (int /*<<< orphan*/ ) ; 
- char* jv_string_value (int /*<<< orphan*/ ) ; 
- char* jvp_utf8_next (char const*,char const*,int*) ; 
- int /*<<< orphan*/  put_buf (char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_char (char,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_str (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,...) ; 
+
+
+
+typedef int jv ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ scalar_t__ JV_KIND_STRING ;
+ int assert (int) ;
+ int jv_copy (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_string_length_bytes (int ) ;
+ char* jv_string_value (int ) ;
+ char* jvp_utf8_next (char const*,char const*,int*) ;
+ int put_buf (char const*,int,int *,int *,int) ;
+ int put_char (char,int *,int *,int) ;
+ int put_str (char*,int *,int *,int) ;
+ int snprintf (char*,int,char*,int,...) ;
 
 __attribute__((used)) static void jvp_dump_string(jv str, int ascii_only, FILE* F, jv* S, int T) {
   assert(jv_get_kind(str) == JV_KIND_STRING);
@@ -39,13 +39,13 @@ __attribute__((used)) static void jvp_dump_string(jv str, int ascii_only, FILE* 
     assert(c != -1);
     int unicode_escape = 0;
     if (0x20 <= c && c <= 0x7E) {
-      // printable ASCII
+
       if (c == '"' || c == '\\') {
         put_char('\\', F, S, T);
       }
       put_char(c, F, S, T);
     } else if (c < 0x20 || c == 0x7F) {
-      // ASCII control character
+
       switch (c) {
       case '\b':
         put_char('\\', F, S, T);

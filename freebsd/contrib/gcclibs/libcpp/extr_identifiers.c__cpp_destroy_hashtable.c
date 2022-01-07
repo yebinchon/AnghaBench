@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hash_ob; int /*<<< orphan*/  hash_table; scalar_t__ our_hashtable; } ;
-typedef  TYPE_1__ cpp_reader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ht_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obstack_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hash_ob; int hash_table; scalar_t__ our_hashtable; } ;
+typedef TYPE_1__ cpp_reader ;
+
+
+ int ht_destroy (int ) ;
+ int obstack_free (int *,int ) ;
 
 void
 _cpp_destroy_hashtable (cpp_reader *pfile)

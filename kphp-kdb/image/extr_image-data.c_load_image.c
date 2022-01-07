@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct forth_stack {int top; } ;
-typedef  int /*<<< orphan*/  Image ;
+typedef int Image ;
 
-/* Variables and functions */
- void* FORTH_FAIL ; 
- int /*<<< orphan*/  NEXT ; 
- int /*<<< orphan*/  free_stack (struct forth_stack*,int,int) ; 
- int /*<<< orphan*/ * gm_read_image (struct forth_stack*,char*) ; 
- int /*<<< orphan*/  pop_str (struct forth_stack*,char**,char*) ; 
- int /*<<< orphan*/  push_image (struct forth_stack*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+ void* FORTH_FAIL ;
+ int NEXT ;
+ int free_stack (struct forth_stack*,int,int) ;
+ int * gm_read_image (struct forth_stack*,char*) ;
+ int pop_str (struct forth_stack*,char**,char*) ;
+ int push_image (struct forth_stack*,int *) ;
+ int vkprintf (int,char*) ;
 
 __attribute__((used)) static void *load_image (void **IP, struct forth_stack *st) {
   vkprintf (3, "load_image\n");
@@ -32,7 +32,7 @@ __attribute__((used)) static void *load_image (void **IP, struct forth_stack *st
   }
   Image *r = gm_read_image (st, filename);
 
-  if (r == NULL) {
+  if (r == ((void*)0)) {
     st->top = old_stack_top;
     return FORTH_FAIL;
   }

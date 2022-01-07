@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  texture_state; int /*<<< orphan*/  sampler_state; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int texture_state; int sampler_state; } ;
 struct tss_lookup {TYPE_1__ u; scalar_t__ sampler_state; } ;
-struct d3d_device {int /*<<< orphan*/  wined3d_device; } ;
-typedef  int /*<<< orphan*/  IDirect3DDevice7 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  size_t D3DTEXTURESTAGESTATETYPE ;
+struct d3d_device {int wined3d_device; } ;
+typedef int IDirect3DDevice7 ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef size_t D3DTEXTURESTAGESTATETYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DTFG_ANISOTROPIC ; 
- int /*<<< orphan*/  D3DTFG_FLATCUBIC ; 
- int /*<<< orphan*/  D3DTFG_GAUSSIANCUBIC ; 
- int /*<<< orphan*/  D3DTFG_LINEAR ; 
- int /*<<< orphan*/  D3DTFG_POINT ; 
- int /*<<< orphan*/  D3DTFP_LINEAR ; 
- int /*<<< orphan*/  D3DTFP_NONE ; 
- int /*<<< orphan*/  D3DTFP_POINT ; 
-#define  D3DTSS_MAGFILTER 135 
-#define  D3DTSS_MIPFILTER 134 
- size_t D3DTSS_TEXTURETRANSFORMFLAGS ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  DDERR_INVALIDPARAMS ; 
- int /*<<< orphan*/  DD_OK ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,size_t) ; 
-#define  WINED3D_TEXF_ANISOTROPIC 133 
-#define  WINED3D_TEXF_FLAT_CUBIC 132 
-#define  WINED3D_TEXF_GAUSSIAN_CUBIC 131 
-#define  WINED3D_TEXF_LINEAR 130 
-#define  WINED3D_TEXF_NONE 129 
-#define  WINED3D_TEXF_POINT 128 
- struct d3d_device* impl_from_IDirect3DDevice7 (int /*<<< orphan*/ *) ; 
- struct tss_lookup* tss_lookup ; 
- int /*<<< orphan*/  wined3d_device_get_sampler_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_device_get_texture_stage_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_mutex_lock () ; 
- int /*<<< orphan*/  wined3d_mutex_unlock () ; 
+
+ int D3DTFG_ANISOTROPIC ;
+ int D3DTFG_FLATCUBIC ;
+ int D3DTFG_GAUSSIANCUBIC ;
+ int D3DTFG_LINEAR ;
+ int D3DTFG_POINT ;
+ int D3DTFP_LINEAR ;
+ int D3DTFP_NONE ;
+ int D3DTFP_POINT ;
+
+
+ size_t D3DTSS_TEXTURETRANSFORMFLAGS ;
+ int D3D_OK ;
+ int DDERR_INVALIDPARAMS ;
+ int DD_OK ;
+ int ERR (char*,int ) ;
+ int TRACE (char*,int *,int ,size_t,int *) ;
+ int WARN (char*,size_t) ;
+
+
+
+
+
+
+ struct d3d_device* impl_from_IDirect3DDevice7 (int *) ;
+ struct tss_lookup* tss_lookup ;
+ int wined3d_device_get_sampler_state (int ,int ,int ) ;
+ int wined3d_device_get_texture_stage_state (int ,int ,int ) ;
+ int wined3d_mutex_lock () ;
+ int wined3d_mutex_unlock () ;
 
 __attribute__((used)) static HRESULT d3d_device7_GetTextureStageState(IDirect3DDevice7 *iface,
         DWORD stage, D3DTEXTURESTAGESTATETYPE state, DWORD *value)
@@ -78,18 +78,18 @@ __attribute__((used)) static HRESULT d3d_device7_GetTextureStageState(IDirect3DD
 
         switch (state)
         {
-            /* Mipfilter is a sampler state with different values */
-            case D3DTSS_MIPFILTER:
+
+            case 134:
             {
                 switch (*value)
                 {
-                    case WINED3D_TEXF_NONE:
+                    case 129:
                         *value = D3DTFP_NONE;
                         break;
-                    case WINED3D_TEXF_POINT:
+                    case 128:
                         *value = D3DTFP_POINT;
                         break;
-                    case WINED3D_TEXF_LINEAR:
+                    case 130:
                         *value = D3DTFP_LINEAR;
                         break;
                     default:
@@ -100,24 +100,24 @@ __attribute__((used)) static HRESULT d3d_device7_GetTextureStageState(IDirect3DD
                 break;
             }
 
-            /* Magfilter has slightly different values */
-            case D3DTSS_MAGFILTER:
+
+            case 135:
             {
                 switch (*value)
                 {
-                    case WINED3D_TEXF_POINT:
+                    case 128:
                             *value = D3DTFG_POINT;
                             break;
-                    case WINED3D_TEXF_LINEAR:
+                    case 130:
                             *value = D3DTFG_LINEAR;
                             break;
-                    case WINED3D_TEXF_ANISOTROPIC:
+                    case 133:
                             *value = D3DTFG_ANISOTROPIC;
                             break;
-                    case WINED3D_TEXF_FLAT_CUBIC:
+                    case 132:
                             *value = D3DTFG_FLATCUBIC;
                             break;
-                    case WINED3D_TEXF_GAUSSIAN_CUBIC:
+                    case 131:
                             *value = D3DTFG_GAUSSIANCUBIC;
                             break;
                     default:

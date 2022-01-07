@@ -1,113 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  SSL3_AD_BAD_CERTIFICATE 158 
-#define  SSL3_AD_BAD_RECORD_MAC 157 
-#define  SSL3_AD_CERTIFICATE_EXPIRED 156 
-#define  SSL3_AD_CERTIFICATE_REVOKED 155 
-#define  SSL3_AD_CERTIFICATE_UNKNOWN 154 
-#define  SSL3_AD_CLOSE_NOTIFY 153 
-#define  SSL3_AD_DECOMPRESSION_FAILURE 152 
-#define  SSL3_AD_HANDSHAKE_FAILURE 151 
-#define  SSL3_AD_ILLEGAL_PARAMETER 150 
-#define  SSL3_AD_NO_CERTIFICATE 149 
-#define  SSL3_AD_UNEXPECTED_MESSAGE 148 
-#define  SSL3_AD_UNSUPPORTED_CERTIFICATE 147 
-#define  TLS1_AD_ACCESS_DENIED 146 
-#define  TLS1_AD_BAD_CERTIFICATE_HASH_VALUE 145 
-#define  TLS1_AD_BAD_CERTIFICATE_STATUS_RESPONSE 144 
-#define  TLS1_AD_CERTIFICATE_UNOBTAINABLE 143 
-#define  TLS1_AD_DECODE_ERROR 142 
-#define  TLS1_AD_DECRYPTION_FAILED 141 
-#define  TLS1_AD_DECRYPT_ERROR 140 
-#define  TLS1_AD_EXPORT_RESTRICTION 139 
-#define  TLS1_AD_INSUFFICIENT_SECURITY 138 
-#define  TLS1_AD_INTERNAL_ERROR 137 
-#define  TLS1_AD_NO_APPLICATION_PROTOCOL 136 
-#define  TLS1_AD_NO_RENEGOTIATION 135 
-#define  TLS1_AD_PROTOCOL_VERSION 134 
-#define  TLS1_AD_RECORD_OVERFLOW 133 
-#define  TLS1_AD_UNKNOWN_CA 132 
-#define  TLS1_AD_UNKNOWN_PSK_IDENTITY 131 
-#define  TLS1_AD_UNRECOGNIZED_NAME 130 
-#define  TLS1_AD_UNSUPPORTED_EXTENSION 129 
-#define  TLS1_AD_USER_CANCELLED 128 
-
 const char *SSL_alert_desc_string_long(int value)
 {
     switch (value & 0xff) {
-    case SSL3_AD_CLOSE_NOTIFY:
+    case 153:
         return "close notify";
-    case SSL3_AD_UNEXPECTED_MESSAGE:
+    case 148:
         return "unexpected_message";
-    case SSL3_AD_BAD_RECORD_MAC:
+    case 157:
         return "bad record mac";
-    case SSL3_AD_DECOMPRESSION_FAILURE:
+    case 152:
         return "decompression failure";
-    case SSL3_AD_HANDSHAKE_FAILURE:
+    case 151:
         return "handshake failure";
-    case SSL3_AD_NO_CERTIFICATE:
+    case 149:
         return "no certificate";
-    case SSL3_AD_BAD_CERTIFICATE:
+    case 158:
         return "bad certificate";
-    case SSL3_AD_UNSUPPORTED_CERTIFICATE:
+    case 147:
         return "unsupported certificate";
-    case SSL3_AD_CERTIFICATE_REVOKED:
+    case 155:
         return "certificate revoked";
-    case SSL3_AD_CERTIFICATE_EXPIRED:
+    case 156:
         return "certificate expired";
-    case SSL3_AD_CERTIFICATE_UNKNOWN:
+    case 154:
         return "certificate unknown";
-    case SSL3_AD_ILLEGAL_PARAMETER:
+    case 150:
         return "illegal parameter";
-    case TLS1_AD_DECRYPTION_FAILED:
+    case 141:
         return "decryption failed";
-    case TLS1_AD_RECORD_OVERFLOW:
+    case 133:
         return "record overflow";
-    case TLS1_AD_UNKNOWN_CA:
+    case 132:
         return "unknown CA";
-    case TLS1_AD_ACCESS_DENIED:
+    case 146:
         return "access denied";
-    case TLS1_AD_DECODE_ERROR:
+    case 142:
         return "decode error";
-    case TLS1_AD_DECRYPT_ERROR:
+    case 140:
         return "decrypt error";
-    case TLS1_AD_EXPORT_RESTRICTION:
+    case 139:
         return "export restriction";
-    case TLS1_AD_PROTOCOL_VERSION:
+    case 134:
         return "protocol version";
-    case TLS1_AD_INSUFFICIENT_SECURITY:
+    case 138:
         return "insufficient security";
-    case TLS1_AD_INTERNAL_ERROR:
+    case 137:
         return "internal error";
-    case TLS1_AD_USER_CANCELLED:
+    case 128:
         return "user canceled";
-    case TLS1_AD_NO_RENEGOTIATION:
+    case 135:
         return "no renegotiation";
-    case TLS1_AD_UNSUPPORTED_EXTENSION:
+    case 129:
         return "unsupported extension";
-    case TLS1_AD_CERTIFICATE_UNOBTAINABLE:
+    case 143:
         return "certificate unobtainable";
-    case TLS1_AD_UNRECOGNIZED_NAME:
+    case 130:
         return "unrecognized name";
-    case TLS1_AD_BAD_CERTIFICATE_STATUS_RESPONSE:
+    case 144:
         return "bad certificate status response";
-    case TLS1_AD_BAD_CERTIFICATE_HASH_VALUE:
+    case 145:
         return "bad certificate hash value";
-    case TLS1_AD_UNKNOWN_PSK_IDENTITY:
+    case 131:
         return "unknown PSK identity";
-    case TLS1_AD_NO_APPLICATION_PROTOCOL:
+    case 136:
         return "no application protocol";
     default:
         return "unknown";

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_20__ {TYPE_6__* out; } ;
-typedef  TYPE_4__ ThreadData ;
+typedef TYPE_4__ ThreadData ;
 struct TYPE_24__ {TYPE_1__* internal; TYPE_5__* priv; TYPE_7__** outputs; } ;
 struct TYPE_23__ {int channels; TYPE_8__* dst; } ;
 struct TYPE_22__ {int nb_samples; int pts; } ;
-struct TYPE_21__ {int hop_size; scalar_t__ samples_left; int pts; int detected_errors; int nb_samples; int /*<<< orphan*/  fifo; TYPE_3__* is; TYPE_2__* in; int /*<<< orphan*/  window_size; } ;
+struct TYPE_21__ {int hop_size; scalar_t__ samples_left; int pts; int detected_errors; int nb_samples; int fifo; TYPE_3__* is; TYPE_2__* in; int window_size; } ;
 struct TYPE_19__ {scalar_t__* extended_data; } ;
 struct TYPE_18__ {int channels; scalar_t__ extended_data; } ;
-struct TYPE_17__ {int (* execute ) (TYPE_8__*,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_5__ AudioDeclickContext ;
-typedef  TYPE_6__ AVFrame ;
-typedef  TYPE_7__ AVFilterLink ;
-typedef  TYPE_8__ AVFilterContext ;
+struct TYPE_17__ {int (* execute ) (TYPE_8__*,int ,TYPE_4__*,int *,int) ;} ;
+typedef TYPE_5__ AudioDeclickContext ;
+typedef TYPE_6__ AVFrame ;
+typedef TYPE_7__ AVFilterLink ;
+typedef TYPE_8__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int,scalar_t__) ; 
- int /*<<< orphan*/  av_audio_fifo_drain (int /*<<< orphan*/ ,int) ; 
- int av_audio_fifo_peek (int /*<<< orphan*/ ,void**,int /*<<< orphan*/ ) ; 
- int av_audio_fifo_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_6__**) ; 
- int ff_filter_frame (TYPE_7__*,TYPE_6__*) ; 
- TYPE_6__* ff_get_audio_buffer (TYPE_7__*,int) ; 
- int /*<<< orphan*/  filter_channel ; 
- int stub1 (TYPE_8__*,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMIN (int,scalar_t__) ;
+ int av_audio_fifo_drain (int ,int) ;
+ int av_audio_fifo_peek (int ,void**,int ) ;
+ int av_audio_fifo_size (int ) ;
+ int av_frame_free (TYPE_6__**) ;
+ int ff_filter_frame (TYPE_7__*,TYPE_6__*) ;
+ TYPE_6__* ff_get_audio_buffer (TYPE_7__*,int) ;
+ int filter_channel ;
+ int stub1 (TYPE_8__*,int ,TYPE_4__*,int *,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink)
 {
     AVFilterContext *ctx = inlink->dst;
     AVFilterLink *outlink = ctx->outputs[0];
     AudioDeclickContext *s = ctx->priv;
-    AVFrame *out = NULL;
+    AVFrame *out = ((void*)0);
     int ret = 0, j, ch, detected_errors = 0;
     ThreadData td;
 
@@ -64,7 +64,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink)
         goto fail;
 
     td.out = out;
-    ret = ctx->internal->execute(ctx, filter_channel, &td, NULL, inlink->channels);
+    ret = ctx->internal->execute(ctx, filter_channel, &td, ((void*)0), inlink->channels);
     if (ret < 0)
         goto fail;
 

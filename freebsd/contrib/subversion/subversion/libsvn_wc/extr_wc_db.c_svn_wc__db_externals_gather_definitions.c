@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  abspath; int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_EXTERNAL_PROPERTIES ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_PROP_EXTERNALS ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  depth_map ; 
- int /*<<< orphan*/  svn_depth_unknown ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- char* svn_prop_get_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_sqlite__column_properties (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_token_null (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_token__to_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int abspath; int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int STMT_SELECT_EXTERNAL_PROPERTIES ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_PROP_EXTERNALS ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int * apr_hash_make (int *) ;
+ int apr_pstrdup (int *,char const*) ;
+ int depth_map ;
+ int svn_depth_unknown ;
+ int svn_dirent_is_absolute (char const*) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int svn_error_compose_create (int *,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_hash_sets (int *,char const*,int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ char* svn_prop_get_value (int *,int ) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ int * svn_sqlite__column_properties (int **,int *,int ,int *,int *) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ int svn_sqlite__column_token_null (int *,int,int ,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_token__to_word (int ,int ) ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_externals_gather_definitions(apr_hash_t **externals,
@@ -62,7 +62,7 @@ svn_wc__db_externals_gather_definitions(apr_hash_t **externals,
   svn_sqlite__stmt_t *stmt;
   const char *local_relpath;
   svn_boolean_t have_row;
-  svn_error_t *err = NULL;
+  svn_error_t *err = ((void*)0);
   apr_pool_t *iterpool = svn_pool_create(scratch_pool);
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
@@ -72,7 +72,7 @@ svn_wc__db_externals_gather_definitions(apr_hash_t **externals,
   VERIFY_USABLE_WCROOT(wcroot);
 
   *externals = apr_hash_make(result_pool);
-  if (depths != NULL)
+  if (depths != ((void*)0))
     *depths = apr_hash_make(result_pool);
 
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
@@ -99,7 +99,7 @@ svn_wc__db_externals_gather_definitions(apr_hash_t **externals,
       if (external_value)
         {
           const char *node_abspath;
-          const char *node_relpath = svn_sqlite__column_text(stmt, 1, NULL);
+          const char *node_relpath = svn_sqlite__column_text(stmt, 1, ((void*)0));
 
           node_abspath = svn_dirent_join(wcroot->abspath, node_relpath,
                                          result_pool);
@@ -114,7 +114,7 @@ svn_wc__db_externals_gather_definitions(apr_hash_t **externals,
                                                 svn_depth_unknown);
 
               svn_hash_sets(*depths, node_abspath,
-                            /* Use static string */
+
                             svn_token__to_word(depth_map, depth));
             }
         }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int LZ4_decompress_generic (char const*,char*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  endOnInputSize ; 
- int min (int,int) ; 
- int /*<<< orphan*/  noDict ; 
- int /*<<< orphan*/  partial_decode ; 
+
+
+
+typedef int BYTE ;
+
+
+ int LZ4_decompress_generic (char const*,char*,int,int,int ,int ,int ,int *,int *,int ) ;
+ int endOnInputSize ;
+ int min (int,int) ;
+ int noDict ;
+ int partial_decode ;
 
 int LZ4_decompress_safe_partial(const char *src, char *dst,
-	int compressedSize, int targetOutputSize, int dstCapacity)
+ int compressedSize, int targetOutputSize, int dstCapacity)
 {
-	dstCapacity = min(targetOutputSize, dstCapacity);
-	return LZ4_decompress_generic(src, dst, compressedSize, dstCapacity,
-				      endOnInputSize, partial_decode,
-				      noDict, (BYTE *)dst, NULL, 0);
+ dstCapacity = min(targetOutputSize, dstCapacity);
+ return LZ4_decompress_generic(src, dst, compressedSize, dstCapacity,
+          endOnInputSize, partial_decode,
+          noDict, (BYTE *)dst, ((void*)0), 0);
 }

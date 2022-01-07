@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * HINSTANCE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LoadLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int /*<<< orphan*/  _snwprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * HINSTANCE ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int * LoadLibrary (int *) ;
+ int TEXT (char*) ;
+ int _snwprintf (int *,int ,int ,int) ;
 
 __attribute__((used)) static HINSTANCE Direct3D9LoadShaderLibrary(void)
 {
-    HINSTANCE instance = NULL;
+    HINSTANCE instance = ((void*)0);
     for (int i = 43; i > 23; --i) {
         WCHAR filename[16];
         _snwprintf(filename, ARRAY_SIZE(filename), TEXT("D3dx9_%d.dll"), i);

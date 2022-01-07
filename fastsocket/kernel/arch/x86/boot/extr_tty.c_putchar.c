@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct biosregs {int bx; int cx; int ah; int al; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  initregs (struct biosregs*) ; 
- int /*<<< orphan*/  intcall (int,struct biosregs*,int /*<<< orphan*/ *) ; 
+
+ int initregs (struct biosregs*) ;
+ int intcall (int,struct biosregs*,int *) ;
 
 void __attribute__((section(".inittext"))) putchar(int ch)
 {
-	struct biosregs ireg;
+ struct biosregs ireg;
 
-	if (ch == '\n')
-		putchar('\r');	/* \n -> \r\n */
+ if (ch == '\n')
+  putchar('\r');
 
-	initregs(&ireg);
-	ireg.bx = 0x0007;
-	ireg.cx = 0x0001;
-	ireg.ah = 0x0e;
-	ireg.al = ch;
-	intcall(0x10, &ireg, NULL);
+ initregs(&ireg);
+ ireg.bx = 0x0007;
+ ireg.cx = 0x0001;
+ ireg.ah = 0x0e;
+ ireg.al = ch;
+ intcall(0x10, &ireg, ((void*)0));
 }

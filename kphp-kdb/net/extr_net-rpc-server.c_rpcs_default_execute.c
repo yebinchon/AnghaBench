@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; int /*<<< orphan*/  fd; int /*<<< orphan*/  In; int /*<<< orphan*/  last_response_time; } ;
-struct TYPE_4__ {int /*<<< orphan*/  out_packet_num; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* flush_packet ) (struct connection*) ;} ;
 
-/* Variables and functions */
- TYPE_2__* RPCS_DATA (struct connection*) ; 
- TYPE_1__* RPCS_FUNC (struct connection*) ; 
- int RPC_PING ; 
- int RPC_PONG ; 
- int SKIP_ALL_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int compute_crc32 (int*,int) ; 
- int /*<<< orphan*/  precise_now ; 
- int read_in (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,long long,...) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,int*,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int Out; int fd; int In; int last_response_time; } ;
+struct TYPE_4__ {int out_packet_num; } ;
+struct TYPE_3__ {int (* flush_packet ) (struct connection*) ;} ;
+
+
+ TYPE_2__* RPCS_DATA (struct connection*) ;
+ TYPE_1__* RPCS_FUNC (struct connection*) ;
+ int RPC_PING ;
+ int RPC_PONG ;
+ int SKIP_ALL_BYTES ;
+ int assert (int) ;
+ int compute_crc32 (int*,int) ;
+ int precise_now ;
+ int read_in (int *,int*,int) ;
+ int stub1 (struct connection*) ;
+ int vkprintf (int,char*,int ,long long,...) ;
+ int write_out (int *,int*,int) ;
 
 int rpcs_default_execute (struct connection *c, int op, int len) {
   vkprintf (1, "rpcs_execute: fd=%d, op=%d, len=%d\n", c->fd, op, len);
@@ -39,7 +39,7 @@ int rpcs_default_execute (struct connection *c, int op, int len) {
     static int P[12];
     P[0] = 24;
     P[1] = RPCS_DATA(c)->out_packet_num++;
-    P[2] = RPC_PONG;    
+    P[2] = RPC_PONG;
     P[3] = Q[3];
     P[4] = Q[4];
     P[5] = compute_crc32 (P, 20);

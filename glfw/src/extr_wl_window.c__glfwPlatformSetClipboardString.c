@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  serial; int /*<<< orphan*/ * dataSource; int /*<<< orphan*/  dataDevice; int /*<<< orphan*/ * clipboardSendString; int /*<<< orphan*/  dataDeviceManager; int /*<<< orphan*/  clipboardSendSize; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int serial; int * dataSource; int dataDevice; int * clipboardSendString; int dataDeviceManager; int clipboardSendSize; } ;
 struct TYPE_4__ {TYPE_1__ wl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- TYPE_2__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dataSourceListener ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strdup (char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/ * wl_data_device_manager_create_data_source (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_data_device_set_selection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_data_source_add_listener (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_data_source_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_data_source_offer (int /*<<< orphan*/ *,char*) ; 
+
+ int GLFW_PLATFORM_ERROR ;
+ TYPE_2__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ int dataSourceListener ;
+ int free (int *) ;
+ int * strdup (char const*) ;
+ int strlen (char const*) ;
+ int * wl_data_device_manager_create_data_source (int ) ;
+ int wl_data_device_set_selection (int ,int *,int ) ;
+ int wl_data_source_add_listener (int *,int *,int *) ;
+ int wl_data_source_destroy (int *) ;
+ int wl_data_source_offer (int *,char*) ;
 
 void _glfwPlatformSetClipboardString(const char* string)
 {
     if (_glfw.wl.dataSource)
     {
         wl_data_source_destroy(_glfw.wl.dataSource);
-        _glfw.wl.dataSource = NULL;
+        _glfw.wl.dataSource = ((void*)0);
     }
 
     if (_glfw.wl.clipboardSendString)
     {
         free(_glfw.wl.clipboardSendString);
-        _glfw.wl.clipboardSendString = NULL;
+        _glfw.wl.clipboardSendString = ((void*)0);
     }
 
     _glfw.wl.clipboardSendString = strdup(string);
@@ -62,7 +62,7 @@ void _glfwPlatformSetClipboardString(const char* string)
     }
     wl_data_source_add_listener(_glfw.wl.dataSource,
                                 &dataSourceListener,
-                                NULL);
+                                ((void*)0));
     wl_data_source_offer(_glfw.wl.dataSource, "text/plain;charset=utf-8");
     wl_data_device_set_selection(_glfw.wl.dataDevice,
                                  _glfw.wl.dataSource,

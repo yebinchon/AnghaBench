@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct src_regs {int count; int /*<<< orphan*/ * reg; } ;
-struct shader_reg {int /*<<< orphan*/  regnum; } ;
-struct instruction {TYPE_3__* src; scalar_t__ comptype; void* shift; void* dstmod; int /*<<< orphan*/  opcode; } ;
-struct asm_parser {int /*<<< orphan*/  status; int /*<<< orphan*/  shader; TYPE_1__* funcs; int /*<<< orphan*/  line_no; } ;
-struct TYPE_5__ {int /*<<< orphan*/  swizzle; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * rel_reg; int /*<<< orphan*/  srcmod; TYPE_2__ u; int /*<<< orphan*/  regnum; int /*<<< orphan*/  type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* srcreg ) (struct asm_parser*,struct instruction*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* dstreg ) (struct asm_parser*,struct instruction*,struct shader_reg const*) ;} ;
-typedef  void* DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BWRITERSIO_TEX ; 
- int /*<<< orphan*/  BWRITERSPR_SAMPLER ; 
- int /*<<< orphan*/  BWRITERSPSM_NONE ; 
- int /*<<< orphan*/  BWRITERVS_NOSWIZZLE ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  PARSE_ERR ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_3__*,int) ; 
- int /*<<< orphan*/  add_instruction (int /*<<< orphan*/ ,struct instruction*) ; 
- struct instruction* alloc_instr (int) ; 
- int /*<<< orphan*/  asmparser_message (struct asm_parser*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_parse_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct asm_parser*,struct instruction*,struct shader_reg const*) ; 
- int /*<<< orphan*/  stub2 (struct asm_parser*,struct instruction*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct src_regs {int count; int * reg; } ;
+struct shader_reg {int regnum; } ;
+struct instruction {TYPE_3__* src; scalar_t__ comptype; void* shift; void* dstmod; int opcode; } ;
+struct asm_parser {int status; int shader; TYPE_1__* funcs; int line_no; } ;
+struct TYPE_5__ {int swizzle; } ;
+struct TYPE_6__ {int * rel_reg; int srcmod; TYPE_2__ u; int regnum; int type; } ;
+struct TYPE_4__ {int (* srcreg ) (struct asm_parser*,struct instruction*,int ,int *) ;int (* dstreg ) (struct asm_parser*,struct instruction*,struct shader_reg const*) ;} ;
+typedef void* DWORD ;
+
+
+ int BWRITERSIO_TEX ;
+ int BWRITERSPR_SAMPLER ;
+ int BWRITERSPSM_NONE ;
+ int BWRITERVS_NOSWIZZLE ;
+ int ERR (char*) ;
+ int PARSE_ERR ;
+ int ZeroMemory (TYPE_3__*,int) ;
+ int add_instruction (int ,struct instruction*) ;
+ struct instruction* alloc_instr (int) ;
+ int asmparser_message (struct asm_parser*,char*,int ) ;
+ int set_parse_status (int *,int ) ;
+ int stub1 (struct asm_parser*,struct instruction*,struct shader_reg const*) ;
+ int stub2 (struct asm_parser*,struct instruction*,int ,int *) ;
 
 __attribute__((used)) static void asmparser_texld14(struct asm_parser *This, DWORD mod, DWORD shift,
                               const struct shader_reg *dst,
@@ -55,9 +55,9 @@ __attribute__((used)) static void asmparser_texld14(struct asm_parser *This, DWO
         return;
     }
 
-    /* This code is recording a texld instruction, not tex. However,
-     * texld borrows the opcode of tex
-     */
+
+
+
     instr->opcode = BWRITERSIO_TEX;
     instr->dstmod = mod;
     instr->shift = shift;
@@ -66,15 +66,15 @@ __attribute__((used)) static void asmparser_texld14(struct asm_parser *This, DWO
     This->funcs->dstreg(This, instr, dst);
     This->funcs->srcreg(This, instr, 0, &srcs->reg[0]);
 
-    /* The 2nd source register is the sampler register with the
-     * destination's regnum
-     */
+
+
+
     ZeroMemory(&instr->src[1], sizeof(instr->src[1]));
     instr->src[1].type = BWRITERSPR_SAMPLER;
     instr->src[1].regnum = dst->regnum;
     instr->src[1].u.swizzle = BWRITERVS_NOSWIZZLE;
     instr->src[1].srcmod = BWRITERSPSM_NONE;
-    instr->src[1].rel_reg = NULL;
+    instr->src[1].rel_reg = ((void*)0);
 
     if(!add_instruction(This->shader, instr)) {
         ERR("Out of memory\n");

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char* alloca (size_t const) ; 
- int /*<<< orphan*/  sodium_memzero (unsigned char*,size_t const) ; 
+ unsigned char* alloca (size_t const) ;
+ int sodium_memzero (unsigned char*,size_t const) ;
 
 void
 sodium_stackzero(const size_t len)
 {
-#ifdef HAVE_C_VARARRAYS
-    unsigned char fodder[len];
-    sodium_memzero(fodder, len);
-#elif HAVE_ALLOCA
-    sodium_memzero(alloca(len), len);
-#endif
+
+
+
+
+
+
 }

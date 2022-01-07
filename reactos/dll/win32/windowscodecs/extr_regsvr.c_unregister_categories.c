@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct regsvr_category {int /*<<< orphan*/ * clsid; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_WICImagingCategories ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- int KEY_READ ; 
- int KEY_WRITE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegDeleteTreeW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * clsid_keyname ; 
- int /*<<< orphan*/ * instance_keyname ; 
+
+
+
+struct regsvr_category {int * clsid; } ;
+typedef int WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+
+
+ int CLSID_WICImagingCategories ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CLASSES_ROOT ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ int KEY_READ ;
+ int KEY_WRITE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegDeleteTreeW (int ,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int,int *) ;
+ int S_OK ;
+ int StringFromGUID2 (int *,int *,int) ;
+ int * clsid_keyname ;
+ int * instance_keyname ;
 
 __attribute__((used)) static HRESULT unregister_categories(const struct regsvr_category *list)
 {

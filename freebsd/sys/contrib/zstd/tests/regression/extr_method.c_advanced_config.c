@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  value; int /*<<< orphan*/  param; } ;
-typedef  TYPE_3__ param_value_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int value; int param; } ;
+typedef TYPE_3__ param_value_t ;
 struct TYPE_9__ {size_t size; TYPE_3__* data; } ;
 struct TYPE_11__ {scalar_t__ use_dictionary; TYPE_2__ param_values; } ;
-typedef  TYPE_4__ config_t ;
-struct TYPE_8__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
+typedef TYPE_4__ config_t ;
+struct TYPE_8__ {int size; int data; } ;
 struct TYPE_12__ {TYPE_1__ dictionary; } ;
-typedef  TYPE_5__ buffer_state_t ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
+typedef TYPE_5__ buffer_state_t ;
+typedef int ZSTD_CCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_CCtx_loadDictionary (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_CCtx_reset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_CCtx_setParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ZSTD_isError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_reset_session_and_parameters ; 
+
+ int ZSTD_CCtx_loadDictionary (int *,int ,int ) ;
+ int ZSTD_CCtx_reset (int *,int ) ;
+ int ZSTD_CCtx_setParameter (int *,int ,int ) ;
+ scalar_t__ ZSTD_isError (int ) ;
+ int ZSTD_reset_session_and_parameters ;
 
 __attribute__((used)) static int advanced_config(
     ZSTD_CCtx* cctx,

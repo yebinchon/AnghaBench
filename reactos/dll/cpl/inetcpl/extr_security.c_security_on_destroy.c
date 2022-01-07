@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  hsec; scalar_t__ himages; int /*<<< orphan*/  hlv; struct TYPE_6__* zones; struct TYPE_6__* zone_attr; } ;
-typedef  TYPE_1__ secdlg_data ;
-typedef  int /*<<< orphan*/  INT_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWLP_USER ; 
- int /*<<< orphan*/  ImageList_Destroy (scalar_t__) ; 
- int /*<<< orphan*/  LVM_SETIMAGELIST ; 
- int /*<<< orphan*/  LVSIL_NORMAL ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
- int /*<<< orphan*/  security_cleanup_zones (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int hsec; scalar_t__ himages; int hlv; struct TYPE_6__* zones; struct TYPE_6__* zone_attr; } ;
+typedef TYPE_1__ secdlg_data ;
+typedef int INT_PTR ;
+
+
+ int DWLP_USER ;
+ int ImageList_Destroy (scalar_t__) ;
+ int LVM_SETIMAGELIST ;
+ int LVSIL_NORMAL ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int TRACE (char*,TYPE_1__*) ;
+ int TRUE ;
+ int heap_free (TYPE_1__*) ;
+ int security_cleanup_zones (TYPE_1__*) ;
 
 __attribute__((used)) static INT_PTR security_on_destroy(secdlg_data * sd)
 {

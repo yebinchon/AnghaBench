@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct st_nci_info {int /*<<< orphan*/  ndlc; } ;
+
+
+
+
+struct st_nci_info {int ndlc; } ;
 struct nci_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nci_free_device (struct nci_dev*) ; 
- struct st_nci_info* nci_get_drvdata (struct nci_dev*) ; 
- int /*<<< orphan*/  nci_unregister_device (struct nci_dev*) ; 
- int /*<<< orphan*/  ndlc_close (int /*<<< orphan*/ ) ; 
+
+ int nci_free_device (struct nci_dev*) ;
+ struct st_nci_info* nci_get_drvdata (struct nci_dev*) ;
+ int nci_unregister_device (struct nci_dev*) ;
+ int ndlc_close (int ) ;
 
 void st_nci_remove(struct nci_dev *ndev)
 {
-	struct st_nci_info *info = nci_get_drvdata(ndev);
+ struct st_nci_info *info = nci_get_drvdata(ndev);
 
-	ndlc_close(info->ndlc);
+ ndlc_close(info->ndlc);
 
-	nci_unregister_device(ndev);
-	nci_free_device(ndev);
+ nci_unregister_device(ndev);
+ nci_free_device(ndev);
 }

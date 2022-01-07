@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ASN1_TYPE ;
-typedef  void ASN1_STRING ;
-typedef  void ASN1_OBJECT ;
 
-/* Variables and functions */
- void* ASN1_STRING_dup (void const*) ; 
- int /*<<< orphan*/  ASN1_TYPE_set (int /*<<< orphan*/ *,int,void*) ; 
- void* OBJ_dup (void const*) ; 
- int V_ASN1_BOOLEAN ; 
- int V_ASN1_OBJECT ; 
+
+
+
+typedef int ASN1_TYPE ;
+typedef void ASN1_STRING ;
+typedef void ASN1_OBJECT ;
+
+
+ void* ASN1_STRING_dup (void const*) ;
+ int ASN1_TYPE_set (int *,int,void*) ;
+ void* OBJ_dup (void const*) ;
+ int V_ASN1_BOOLEAN ;
+ int V_ASN1_OBJECT ;
 
 int ASN1_TYPE_set1(ASN1_TYPE *a, int type, const void *value)
 {

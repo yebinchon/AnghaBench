@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  PCERT_NAME_BLOB ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int CERT_NAME_STR_CRLF_FLAG ; 
- int CERT_X500_NAME_STR ; 
- int CertNameToStrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  X509_ASN_ENCODING ; 
+
+
+
+typedef int WCHAR ;
+typedef int PCERT_NAME_BLOB ;
+typedef int DWORD ;
+
+
+ int CERT_NAME_STR_CRLF_FLAG ;
+ int CERT_X500_NAME_STR ;
+ int CertNameToStrW (int ,int ,int,int *,int) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int X509_ASN_ENCODING ;
 
 __attribute__((used)) static WCHAR *field_format_detailed_cert_name(PCERT_NAME_BLOB name)
 {
-    WCHAR *str = NULL;
+    WCHAR *str = ((void*)0);
     DWORD len = CertNameToStrW(X509_ASN_ENCODING, name,
-     CERT_X500_NAME_STR | CERT_NAME_STR_CRLF_FLAG, NULL, 0);
+     CERT_X500_NAME_STR | CERT_NAME_STR_CRLF_FLAG, ((void*)0), 0);
 
     if (len)
     {

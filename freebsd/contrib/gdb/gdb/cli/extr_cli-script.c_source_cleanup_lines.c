@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct source_cleanup_lines_args {int /*<<< orphan*/  old_error_pre_print; int /*<<< orphan*/  old_pre_error; int /*<<< orphan*/  old_file; int /*<<< orphan*/  old_line; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error_pre_print ; 
- int /*<<< orphan*/  source_file_name ; 
- int /*<<< orphan*/  source_line_number ; 
- int /*<<< orphan*/  source_pre_error ; 
+
+
+
+struct source_cleanup_lines_args {int old_error_pre_print; int old_pre_error; int old_file; int old_line; } ;
+
+
+ int error_pre_print ;
+ int source_file_name ;
+ int source_line_number ;
+ int source_pre_error ;
 
 __attribute__((used)) static void
 source_cleanup_lines (void *args)

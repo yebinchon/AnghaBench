@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct xdaliclock {TYPE_1__* gif_enc; } ;
-typedef  enum paint_color { ____Placeholder_paint_color } paint_color ;
+typedef enum paint_color { ____Placeholder_paint_color } paint_color ;
 struct TYPE_2__ {scalar_t__ frame; } ;
 
-/* Variables and functions */
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,size_t) ; 
+
+ scalar_t__ UNLIKELY (int) ;
+ int memset (scalar_t__,int ,size_t) ;
 
 __attribute__((used)) static void draw_horizontal_line(struct xdaliclock *xdc,
                                  int x1,
@@ -27,7 +27,7 @@ __attribute__((used)) static void draw_horizontal_line(struct xdaliclock *xdc,
                                  int screen_width,
                                  enum paint_color color)
 {
-    /* These unlikely checks won't happen with the default font. */
+
 
     if (UNLIKELY(x1 > screen_width))
         x1 = screen_width;

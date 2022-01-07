@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uintmax_t ;
+
+
+
+
+typedef scalar_t__ uintmax_t ;
 struct name_table {char const* str; scalar_t__ val; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static const char *
 lookup_value(struct name_table *table, uintmax_t val)
 {
 
-	for (; table->str != NULL; table++)
-		if (table->val == val)
-			return (table->str);
-	return (NULL);
+ for (; table->str != ((void*)0); table++)
+  if (table->val == val)
+   return (table->str);
+ return (((void*)0));
 }

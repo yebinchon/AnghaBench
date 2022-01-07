@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tree {int dummy; } ;
 struct parse {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atoi (char*) ; 
- int dynamic_data_buffer_size ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_expressions ; 
- int /*<<< orphan*/  schema_version ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  stderr ; 
- struct parse* tl_init_parse_file (char*) ; 
- int /*<<< orphan*/  tl_parse (struct tree*) ; 
- struct tree* tl_parse_lex (struct parse*) ; 
- int /*<<< orphan*/  tl_print_parse_error () ; 
- int /*<<< orphan*/  usage () ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vkext_write (char*) ; 
+
+ int atoi (char*) ;
+ int dynamic_data_buffer_size ;
+ int fprintf (int ,char*) ;
+ int getopt (int,char**,char*) ;
+ int init_dyn_data () ;
+ char* optarg ;
+ int optind ;
+ int output_expressions ;
+ int schema_version ;
+ int set_debug_handlers () ;
+ int stderr ;
+ struct parse* tl_init_parse_file (char*) ;
+ int tl_parse (struct tree*) ;
+ struct tree* tl_parse_lex (struct parse*) ;
+ int tl_print_parse_error () ;
+ int usage () ;
+ scalar_t__ verbosity ;
+ int vkext_write (char*) ;
 
 int main (int argc, char **argv) {
   int i;
-  char *expr_filename = NULL;
+  char *expr_filename = ((void*)0);
   char *vkext_file = 0;
   set_debug_handlers ();
   while ((i = getopt (argc, argv, "Eho:ve:w:")) != -1) {
@@ -67,7 +67,7 @@ int main (int argc, char **argv) {
     usage ();
   }
   init_dyn_data ();
- 
+
   struct parse *P = tl_init_parse_file (argv[optind]);
   if (!P) {
     return 0;

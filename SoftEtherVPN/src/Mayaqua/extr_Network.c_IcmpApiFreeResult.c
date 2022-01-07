@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* Data; } ;
-typedef  TYPE_1__ ICMP_RESULT ;
+typedef TYPE_1__ ICMP_RESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
+
+ int Free (TYPE_1__*) ;
 
 void IcmpApiFreeResult(ICMP_RESULT *ret)
 {
-	// Validate arguments
-	if (ret == NULL)
-	{
-		return;
-	}
 
-	if (ret->Data != NULL)
-	{
-		Free(ret->Data);
-	}
+ if (ret == ((void*)0))
+ {
+  return;
+ }
 
-	Free(ret);
+ if (ret->Data != ((void*)0))
+ {
+  Free(ret->Data);
+ }
+
+ Free(ret);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ixgbe_adapter {int flags2; int /*<<< orphan*/  tx_timeout_count; int /*<<< orphan*/  netdev; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int IXGBE_FLAG2_RESET_REQUESTED ; 
- int /*<<< orphan*/  __IXGBE_DOWN ; 
- int /*<<< orphan*/  __IXGBE_RESETTING ; 
- int /*<<< orphan*/  ixgbe_dump (struct ixgbe_adapter*) ; 
- int /*<<< orphan*/  ixgbe_reinit_locked (struct ixgbe_adapter*) ; 
- int /*<<< orphan*/  netdev_err (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct ixgbe_adapter {int flags2; int tx_timeout_count; int netdev; int state; } ;
+
+
+ int IXGBE_FLAG2_RESET_REQUESTED ;
+ int __IXGBE_DOWN ;
+ int __IXGBE_RESETTING ;
+ int ixgbe_dump (struct ixgbe_adapter*) ;
+ int ixgbe_reinit_locked (struct ixgbe_adapter*) ;
+ int netdev_err (int ,char*) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static void ixgbe_reset_subtask(struct ixgbe_adapter *adapter)
 {
-	if (!(adapter->flags2 & IXGBE_FLAG2_RESET_REQUESTED))
-		return;
+ if (!(adapter->flags2 & IXGBE_FLAG2_RESET_REQUESTED))
+  return;
 
-	adapter->flags2 &= ~IXGBE_FLAG2_RESET_REQUESTED;
+ adapter->flags2 &= ~IXGBE_FLAG2_RESET_REQUESTED;
 
-	/* If we're already down or resetting, just bail */
-	if (test_bit(__IXGBE_DOWN, &adapter->state) ||
-	    test_bit(__IXGBE_RESETTING, &adapter->state))
-		return;
 
-	ixgbe_dump(adapter);
-	netdev_err(adapter->netdev, "Reset adapter\n");
-	adapter->tx_timeout_count++;
+ if (test_bit(__IXGBE_DOWN, &adapter->state) ||
+     test_bit(__IXGBE_RESETTING, &adapter->state))
+  return;
 
-	ixgbe_reinit_locked(adapter);
+ ixgbe_dump(adapter);
+ netdev_err(adapter->netdev, "Reset adapter\n");
+ adapter->tx_timeout_count++;
+
+ ixgbe_reinit_locked(adapter);
 }

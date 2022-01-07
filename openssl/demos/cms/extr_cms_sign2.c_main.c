@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  CMS_ContentInfo ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (char*,char*) ; 
- int /*<<< orphan*/  BIO_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMS_ContentInfo_free (int /*<<< orphan*/ *) ; 
- int CMS_PARTIAL ; 
- int CMS_STREAM ; 
- int /*<<< orphan*/  CMS_add1_signer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CMS_sign (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ERR_load_crypto_strings () ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenSSL_add_all_algorithms () ; 
- int /*<<< orphan*/ * PEM_read_bio_PrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SMIME_write_CMS (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int X509 ;
+typedef int EVP_PKEY ;
+typedef int CMS_ContentInfo ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new_file (char*,char*) ;
+ int BIO_reset (int *) ;
+ int CMS_ContentInfo_free (int *) ;
+ int CMS_PARTIAL ;
+ int CMS_STREAM ;
+ int CMS_add1_signer (int *,int *,int *,int *,int ) ;
+ int * CMS_sign (int *,int *,int *,int *,int) ;
+ int ERR_load_crypto_strings () ;
+ int ERR_print_errors_fp (int ) ;
+ int EVP_PKEY_free (int *) ;
+ int OpenSSL_add_all_algorithms () ;
+ int * PEM_read_bio_PrivateKey (int *,int *,int ,int *) ;
+ int * PEM_read_bio_X509 (int *,int *,int ,int *) ;
+ int SMIME_write_CMS (int *,int *,int *,int) ;
+ int X509_free (int *) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
-    BIO *in = NULL, *out = NULL, *tbio = NULL;
-    X509 *scert = NULL, *scert2 = NULL;
-    EVP_PKEY *skey = NULL, *skey2 = NULL;
-    CMS_ContentInfo *cms = NULL;
+    BIO *in = ((void*)0), *out = ((void*)0), *tbio = ((void*)0);
+    X509 *scert = ((void*)0), *scert2 = ((void*)0);
+    EVP_PKEY *skey = ((void*)0), *skey2 = ((void*)0);
+    CMS_ContentInfo *cms = ((void*)0);
     int ret = 1;
 
     OpenSSL_add_all_algorithms();
@@ -51,11 +51,11 @@ int main(int argc, char **argv)
     if (!tbio)
         goto err;
 
-    scert = PEM_read_bio_X509(tbio, NULL, 0, NULL);
+    scert = PEM_read_bio_X509(tbio, ((void*)0), 0, ((void*)0));
 
     BIO_reset(tbio);
 
-    skey = PEM_read_bio_PrivateKey(tbio, NULL, 0, NULL);
+    skey = PEM_read_bio_PrivateKey(tbio, ((void*)0), 0, ((void*)0));
 
     BIO_free(tbio);
 
@@ -64,11 +64,11 @@ int main(int argc, char **argv)
     if (!tbio)
         goto err;
 
-    scert2 = PEM_read_bio_X509(tbio, NULL, 0, NULL);
+    scert2 = PEM_read_bio_X509(tbio, ((void*)0), 0, ((void*)0));
 
     BIO_reset(tbio);
 
-    skey2 = PEM_read_bio_PrivateKey(tbio, NULL, 0, NULL);
+    skey2 = PEM_read_bio_PrivateKey(tbio, ((void*)0), 0, ((void*)0));
 
     if (!scert2 || !skey2)
         goto err;
@@ -78,24 +78,24 @@ int main(int argc, char **argv)
     if (!in)
         goto err;
 
-    cms = CMS_sign(NULL, NULL, NULL, in, CMS_STREAM | CMS_PARTIAL);
+    cms = CMS_sign(((void*)0), ((void*)0), ((void*)0), in, CMS_STREAM | CMS_PARTIAL);
 
     if (!cms)
         goto err;
 
-    /* Add each signer in turn */
 
-    if (!CMS_add1_signer(cms, scert, skey, NULL, 0))
+
+    if (!CMS_add1_signer(cms, scert, skey, ((void*)0), 0))
         goto err;
 
-    if (!CMS_add1_signer(cms, scert2, skey2, NULL, 0))
+    if (!CMS_add1_signer(cms, scert2, skey2, ((void*)0), 0))
         goto err;
 
     out = BIO_new_file("smout.txt", "w");
     if (!out)
         goto err;
 
-    /* NB: content included and finalized by SMIME_write_CMS */
+
 
     if (!SMIME_write_CMS(out, cms, in, CMS_STREAM))
         goto err;

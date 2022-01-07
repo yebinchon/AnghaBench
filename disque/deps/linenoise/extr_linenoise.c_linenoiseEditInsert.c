@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct linenoiseState {size_t len; size_t buflen; size_t pos; char* buf; scalar_t__ plen; scalar_t__ cols; int /*<<< orphan*/  ofd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- int /*<<< orphan*/  mlmode ; 
- int /*<<< orphan*/  refreshLine (struct linenoiseState*) ; 
- int write (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+struct linenoiseState {size_t len; size_t buflen; size_t pos; char* buf; scalar_t__ plen; scalar_t__ cols; int ofd; } ;
+
+
+ int memmove (char*,char*,size_t) ;
+ int mlmode ;
+ int refreshLine (struct linenoiseState*) ;
+ int write (int ,char*,int) ;
 
 int linenoiseEditInsert(struct linenoiseState *l, char c) {
     if (l->len < l->buflen) {
@@ -25,9 +25,9 @@ int linenoiseEditInsert(struct linenoiseState *l, char c) {
             l->pos++;
             l->len++;
             l->buf[l->len] = '\0';
-            if ((!mlmode && l->plen+l->len < l->cols) /* || mlmode */) {
-                /* Avoid a full update of the line in the
-                 * trivial case. */
+            if ((!mlmode && l->plen+l->len < l->cols) ) {
+
+
                 if (write(l->ofd,&c,1) == -1) return -1;
             } else {
                 refreshLine(l);

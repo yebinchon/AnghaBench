@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  archdata; } ;
 
-/* Variables and functions */
- void* dev_archdata_get_node (int /*<<< orphan*/ *) ; 
+
+
+
+struct device {int archdata; } ;
+
+
+ void* dev_archdata_get_node (int *) ;
 
 __attribute__((used)) static int of_dev_node_match(struct device *dev, void *data)
 {

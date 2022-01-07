@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_buffer {scalar_t__ size; int pos; int /*<<< orphan*/  buff; } ;
 
-/* Variables and functions */
- char* cstr_dup (char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- char* tl_zzmalloc (int) ; 
+
+
+
+struct tl_buffer {scalar_t__ size; int pos; int buff; } ;
+
+
+ char* cstr_dup (char*) ;
+ int memcpy (char*,int ,int) ;
+ char* tl_zzmalloc (int) ;
 
 char *tl_string_buffer_to_cstr (struct tl_buffer *b) {
   if (b->size == 0) {

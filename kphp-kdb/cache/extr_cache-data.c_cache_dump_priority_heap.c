@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct cache_uri {int dummy; } ;
 struct TYPE_3__ {struct cache_uri** H; } ;
-typedef  TYPE_1__ cache_heap_t ;
+typedef TYPE_1__ cache_heap_t ;
 
-/* Variables and functions */
- scalar_t__ cache_get_uri_heuristic (struct cache_uri*) ; 
- int /*<<< orphan*/  cache_get_uri_name (struct cache_uri*) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
+
+ scalar_t__ cache_get_uri_heuristic (struct cache_uri*) ;
+ int cache_get_uri_name (struct cache_uri*) ;
+ int kprintf (char*,...) ;
 
 __attribute__((used)) static void cache_dump_priority_heap (const char *const heap_name, cache_heap_t *heap, int limit) {
   int j;

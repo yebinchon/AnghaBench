@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xform ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int xform ;
 struct TYPE_11__ {float member_0; float member_1; float member_2; float member_3; float member_4; float member_5; } ;
-typedef  TYPE_1__ XFORM ;
+typedef TYPE_1__ XFORM ;
 struct TYPE_13__ {scalar_t__ x; scalar_t__ y; } ;
 struct TYPE_12__ {scalar_t__ left; scalar_t__ top; } ;
-typedef  TYPE_2__ RECT ;
-typedef  TYPE_3__ POINT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int BOOL ;
+typedef TYPE_2__ RECT ;
+typedef TYPE_3__ POINT ;
+typedef int HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ GM_COMPATIBLE ; 
- int GetClipBox (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ GetGraphicsMode (int /*<<< orphan*/ ) ; 
- int GetViewportOrgEx (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int GetWindowOrgEx (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int GetWorldTransform (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  memcmp (TYPE_1__*,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ scalar_t__ GM_COMPATIBLE ;
+ int GetClipBox (int ,TYPE_2__*) ;
+ scalar_t__ GetGraphicsMode (int ) ;
+ int GetViewportOrgEx (int ,TYPE_3__*) ;
+ int GetWindowOrgEx (int ,TYPE_3__*) ;
+ int GetWorldTransform (int ,TYPE_1__*) ;
+ int memcmp (TYPE_1__*,TYPE_1__ const*,int) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_buffer_dc_props(HDC hdc, const RECT *rect)
 {

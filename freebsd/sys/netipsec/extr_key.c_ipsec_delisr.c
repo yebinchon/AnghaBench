@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ipsecrequest {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IPSEC_SR ; 
- int /*<<< orphan*/  free (struct ipsecrequest*,int /*<<< orphan*/ ) ; 
+
+ int M_IPSEC_SR ;
+ int free (struct ipsecrequest*,int ) ;
 
 void
 ipsec_delisr(struct ipsecrequest *p)
 {
 
-	free(p, M_IPSEC_SR);
+ free(p, M_IPSEC_SR);
 }

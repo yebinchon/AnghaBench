@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* ULONG ;
-typedef  scalar_t__ PSID ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConvertSidToStringSidW (scalar_t__,char**) ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCreateKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueEx (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlLengthSid (scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  swprintf (char*,char*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char* ULONG ;
+typedef scalar_t__ PSID ;
+typedef char* LPWSTR ;
+typedef int LPVOID ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ConvertSidToStringSidW (scalar_t__,char**) ;
+ int KEY_ALL_ACCESS ;
+ int LocalFree (char*) ;
+ int REG_BINARY ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int ) ;
+ int RegCreateKeyExW (int ,char*,int ,int *,int ,int ,int *,int *,int *) ;
+ int RegSetValueEx (int ,char*,int ,int ,int ,int ) ;
+ int RtlLengthSid (scalar_t__) ;
+ int TRUE ;
+ int swprintf (char*,char*,char*) ;
 
 __attribute__((used)) static BOOL
 SampSetupAddMemberToAlias(HKEY hDomainKey,
@@ -38,7 +38,7 @@ SampSetupAddMemberToAlias(HKEY hDomainKey,
                           PSID MemberSid)
 {
     DWORD dwDisposition;
-    LPWSTR MemberSidString = NULL;
+    LPWSTR MemberSidString = ((void*)0);
     WCHAR szKeyName[256];
     HKEY hMembersKey;
 
@@ -49,10 +49,10 @@ SampSetupAddMemberToAlias(HKEY hDomainKey,
     if (!RegCreateKeyExW(hDomainKey,
                          szKeyName,
                          0,
-                         NULL,
+                         ((void*)0),
                          REG_OPTION_NON_VOLATILE,
                          KEY_ALL_ACCESS,
-                         NULL,
+                         ((void*)0),
                          &hMembersKey,
                          &dwDisposition))
     {
@@ -71,10 +71,10 @@ SampSetupAddMemberToAlias(HKEY hDomainKey,
     if (!RegCreateKeyExW(hDomainKey,
                          szKeyName,
                          0,
-                         NULL,
+                         ((void*)0),
                          REG_OPTION_NON_VOLATILE,
                          KEY_ALL_ACCESS,
-                         NULL,
+                         ((void*)0),
                          &hMembersKey,
                          &dwDisposition))
     {
@@ -90,7 +90,7 @@ SampSetupAddMemberToAlias(HKEY hDomainKey,
         RegCloseKey(hMembersKey);
     }
 
-    if (MemberSidString != NULL)
+    if (MemberSidString != ((void*)0))
         LocalFree(MemberSidString);
 
     return TRUE;

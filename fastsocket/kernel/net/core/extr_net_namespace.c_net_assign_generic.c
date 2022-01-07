@@ -1,60 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_generic {int len; void** ptr; int /*<<< orphan*/  rcu; } ;
+
+
+
+
+struct net_generic {int len; void** ptr; int rcu; } ;
 struct net {struct net_generic* gen; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void***,void***,int) ; 
- int /*<<< orphan*/  mutex_is_locked (int /*<<< orphan*/ *) ; 
- struct net_generic* net_alloc_generic () ; 
- int /*<<< orphan*/  net_generic_release ; 
- int /*<<< orphan*/  net_mutex ; 
- int /*<<< orphan*/  rcu_assign_pointer (struct net_generic*,struct net_generic*) ; 
+
+ int BUG_ON (int) ;
+ int ENOMEM ;
+ int call_rcu (int *,int ) ;
+ int memcpy (void***,void***,int) ;
+ int mutex_is_locked (int *) ;
+ struct net_generic* net_alloc_generic () ;
+ int net_generic_release ;
+ int net_mutex ;
+ int rcu_assign_pointer (struct net_generic*,struct net_generic*) ;
 
 int net_assign_generic(struct net *net, int id, void *data)
 {
-	struct net_generic *ng, *old_ng;
+ struct net_generic *ng, *old_ng;
 
-	BUG_ON(!mutex_is_locked(&net_mutex));
-	BUG_ON(id == 0);
+ BUG_ON(!mutex_is_locked(&net_mutex));
+ BUG_ON(id == 0);
 
-	ng = old_ng = net->gen;
-	if (old_ng->len >= id)
-		goto assign;
+ ng = old_ng = net->gen;
+ if (old_ng->len >= id)
+  goto assign;
 
-	ng = net_alloc_generic();
-	if (ng == NULL)
-		return -ENOMEM;
+ ng = net_alloc_generic();
+ if (ng == ((void*)0))
+  return -ENOMEM;
+ memcpy(&ng->ptr, &old_ng->ptr, old_ng->len * sizeof(void*));
 
-	/*
-	 * Some synchronisation notes:
-	 *
-	 * The net_generic explores the net->gen array inside rcu
-	 * read section. Besides once set the net->gen->ptr[x]
-	 * pointer never changes (see rules in netns/generic.h).
-	 *
-	 * That said, we simply duplicate this array and schedule
-	 * the old copy for kfree after a grace period.
-	 */
-
-	memcpy(&ng->ptr, &old_ng->ptr, old_ng->len * sizeof(void*));
-
-	rcu_assign_pointer(net->gen, ng);
-	call_rcu(&old_ng->rcu, net_generic_release);
+ rcu_assign_pointer(net->gen, ng);
+ call_rcu(&old_ng->rcu, net_generic_release);
 assign:
-	ng->ptr[id - 1] = data;
-	return 0;
+ ng->ptr[id - 1] = data;
+ return 0;
 }

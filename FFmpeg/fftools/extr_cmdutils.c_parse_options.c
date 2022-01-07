@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OptionDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit_program (int) ; 
- int parse_option (void*,char const*,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  prepare_app_arguments (int*,char***) ; 
+
+
+
+typedef int OptionDef ;
+
+
+ int exit_program (int) ;
+ int parse_option (void*,char const*,char*,int const*) ;
+ int prepare_app_arguments (int*,char***) ;
 
 void parse_options(void *optctx, int argc, char **argv, const OptionDef *options,
                    void (*parse_arg_function)(void *, const char*))
@@ -23,10 +23,10 @@ void parse_options(void *optctx, int argc, char **argv, const OptionDef *options
     const char *opt;
     int optindex, handleoptions = 1, ret;
 
-    /* perform system-dependent conversions for arguments list */
+
     prepare_app_arguments(&argc, &argv);
 
-    /* parse options */
+
     optindex = 1;
     while (optindex < argc) {
         opt = argv[optindex++];

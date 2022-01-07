@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  CREATESTRUCTW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DefWindowProcW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GWL_EXSTYLE ; 
- int /*<<< orphan*/  GetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_NCCREATE ; 
- int /*<<< orphan*/  WS_EX_CLIENTEDGE ; 
+
+
+
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int DWORD ;
+typedef int CREATESTRUCTW ;
+
+
+ int DefWindowProcW (int ,int ,int ,int ) ;
+ int GWL_EXSTYLE ;
+ int GetWindowLongW (int ,int ) ;
+ int SetWindowLongW (int ,int ,int ) ;
+ int WM_NCCREATE ;
+ int WS_EX_CLIENTEDGE ;
 
 __attribute__((used)) static LRESULT
 DATETIME_NCCreate (HWND hwnd, const CREATESTRUCTW *lpcs)
 {
     DWORD dwExStyle = GetWindowLongW(hwnd, GWL_EXSTYLE);
-    /* force control to have client edge */
+
     dwExStyle |= WS_EX_CLIENTEDGE;
     SetWindowLongW(hwnd, GWL_EXSTYLE, dwExStyle);
 

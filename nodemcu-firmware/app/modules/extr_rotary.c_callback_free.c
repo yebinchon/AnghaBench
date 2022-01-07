@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/ * callback; } ;
-typedef  TYPE_1__ DATA ;
 
-/* Variables and functions */
- int CALLBACK_COUNT ; 
- int /*<<< orphan*/  callback_free_one (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__** data ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int * callback; } ;
+typedef TYPE_1__ DATA ;
+
+
+ int CALLBACK_COUNT ;
+ int callback_free_one (int *,int *) ;
+ TYPE_1__** data ;
 
 __attribute__((used)) static void callback_free(lua_State* L, unsigned int id, int mask)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void callback_free(lua_State* L, unsigned int id, i
     int i;
     for (i = 0; i < CALLBACK_COUNT; i++) {
       if (mask & (1 << i)) {
-	callback_free_one(L, &d->callback[i]);
+ callback_free_one(L, &d->callback[i]);
       }
     }
   }

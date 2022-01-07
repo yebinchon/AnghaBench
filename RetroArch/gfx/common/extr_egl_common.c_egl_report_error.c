@@ -1,89 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int EGLint ;
 
-/* Variables and functions */
-#define  EGL_BAD_ACCESS 140 
-#define  EGL_BAD_ALLOC 139 
-#define  EGL_BAD_ATTRIBUTE 138 
-#define  EGL_BAD_CONFIG 137 
-#define  EGL_BAD_CONTEXT 136 
-#define  EGL_BAD_CURRENT_SURFACE 135 
-#define  EGL_BAD_DISPLAY 134 
-#define  EGL_BAD_MATCH 133 
-#define  EGL_BAD_NATIVE_PIXMAP 132 
-#define  EGL_BAD_NATIVE_WINDOW 131 
-#define  EGL_BAD_PARAMETER 130 
-#define  EGL_BAD_SURFACE 129 
-#define  EGL_SUCCESS 128 
- int /*<<< orphan*/  RARCH_ERR (char*,unsigned int,char const*) ; 
- int eglGetError () ; 
+
+
+
+typedef int EGLint ;
+ int RARCH_ERR (char*,unsigned int,char const*) ;
+ int eglGetError () ;
 
 void egl_report_error(void)
 {
-   EGLint    error = eglGetError();
-   const char *str = NULL;
+   EGLint error = eglGetError();
+   const char *str = ((void*)0);
    switch (error)
    {
-      case EGL_SUCCESS:
+      case 128:
          str = "EGL_SUCCESS";
          break;
 
-      case EGL_BAD_ACCESS:
+      case 140:
          str = "EGL_BAD_ACCESS";
          break;
 
-      case EGL_BAD_ALLOC:
+      case 139:
          str = "EGL_BAD_ALLOC";
          break;
 
-      case EGL_BAD_ATTRIBUTE:
+      case 138:
          str = "EGL_BAD_ATTRIBUTE";
          break;
 
-      case EGL_BAD_CONFIG:
+      case 137:
          str = "EGL_BAD_CONFIG";
          break;
 
-      case EGL_BAD_CONTEXT:
+      case 136:
          str = "EGL_BAD_CONTEXT";
          break;
 
-      case EGL_BAD_CURRENT_SURFACE:
+      case 135:
          str = "EGL_BAD_CURRENT_SURFACE";
          break;
 
-      case EGL_BAD_DISPLAY:
+      case 134:
          str = "EGL_BAD_DISPLAY";
          break;
 
-      case EGL_BAD_MATCH:
+      case 133:
          str = "EGL_BAD_MATCH";
          break;
 
-      case EGL_BAD_NATIVE_PIXMAP:
+      case 132:
          str = "EGL_BAD_NATIVE_PIXMAP";
          break;
 
-      case EGL_BAD_NATIVE_WINDOW:
+      case 131:
          str = "EGL_BAD_NATIVE_WINDOW";
          break;
 
-      case EGL_BAD_PARAMETER:
+      case 130:
          str = "EGL_BAD_PARAMETER";
          break;
 
-      case EGL_BAD_SURFACE:
+      case 129:
          str = "EGL_BAD_SURFACE";
          break;
 

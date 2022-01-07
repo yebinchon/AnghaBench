@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct puffs_kargs {int /*<<< orphan*/  pa_vers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PUFFSVERSION ; 
+
+
+
+struct puffs_kargs {int pa_vers; } ;
+
+
+ int PUFFSVERSION ;
 
 __attribute__((used)) static void
 fixversion(struct puffs_kargs *kargs)
 {
 
-	kargs->pa_vers = PUFFSVERSION;
+ kargs->pa_vers = PUFFSVERSION;
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_4__ {int biSize; int biHeight; int biWidth; int biBitCount; int biPlanes; scalar_t__ biClrUsed; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_4__ {int biSize; int biHeight; int biWidth; int biBitCount; int biPlanes; scalar_t__ biClrUsed; int biCompression; } ;
 struct TYPE_5__ {TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/ * HRGN ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpSolidFill ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  TYPE_2__ BITMAPINFO ;
-typedef  int /*<<< orphan*/  ARGB ;
+typedef int * HRGN ;
+typedef int * HDC ;
+typedef int * HBITMAP ;
+typedef int GpStatus ;
+typedef int GpSolidFill ;
+typedef int GpGraphics ;
+typedef int GpBrush ;
+typedef TYPE_2__ BITMAPINFO ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/ * CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CreateDIBSection (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CreateRectRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateSolidFill (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipFillRectangleI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  OffsetClipRgn (int /*<<< orphan*/ *,int,int) ; 
- int Ok ; 
- int /*<<< orphan*/  SelectClipRgn (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetViewportOrgEx (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+ int BI_RGB ;
+ int * CreateCompatibleDC (int ) ;
+ int * CreateDIBSection (int *,TYPE_2__*,int ,void**,int *,int ) ;
+ int * CreateRectRgn (int ,int ,int,int) ;
+ int DIB_RGB_COLORS ;
+ int DeleteDC (int *) ;
+ int DeleteObject (int *) ;
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipCreateSolidFill (int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipFillRectangleI (int *,int *,int ,int ,int,int) ;
+ int OffsetClipRgn (int *,int,int) ;
+ int Ok ;
+ int SelectClipRgn (int *,int *) ;
+ int SelectObject (int *,int *) ;
+ int SetViewportOrgEx (int *,int,int,int *) ;
+ int expect (int,int ) ;
+ int memset (int *,int ,int) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_hdc_caching(void)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static void test_hdc_caching(void)
     GpBrush *brush;
 
     hdc = CreateCompatibleDC(0);
-    ok(hdc != NULL, "CreateCompatibleDC failed\n");
+    ok(hdc != ((void*)0), "CreateCompatibleDC failed\n");
     bmi.bmiHeader.biSize = sizeof(bmi.bmiHeader);
     bmi.bmiHeader.biHeight = -5;
     bmi.bmiHeader.biWidth = 5;
@@ -68,12 +68,12 @@ __attribute__((used)) static void test_hdc_caching(void)
     bmi.bmiHeader.biCompression = BI_RGB;
     bmi.bmiHeader.biClrUsed = 0;
 
-    hbm = CreateDIBSection(hdc, &bmi, DIB_RGB_COLORS, (void**)&bits, NULL, 0);
-    ok(hbm != NULL, "CreateDIBSection failed\n");
+    hbm = CreateDIBSection(hdc, &bmi, DIB_RGB_COLORS, (void**)&bits, ((void*)0), 0);
+    ok(hbm != ((void*)0), "CreateDIBSection failed\n");
 
     SelectObject(hdc, hbm);
 
-    SetViewportOrgEx(hdc, 1, 1, NULL);
+    SetViewportOrgEx(hdc, 1, 1, ((void*)0));
 
     hrgn = CreateRectRgn(0, 0, 3, 3);
     SelectClipRgn(hdc, hrgn);
@@ -95,7 +95,7 @@ __attribute__((used)) static void test_hdc_caching(void)
     expect(0, bits[18]);
     expect(0, bits[24]);
 
-    SetViewportOrgEx(hdc, 0, 0, NULL);
+    SetViewportOrgEx(hdc, 0, 0, ((void*)0));
     OffsetClipRgn(hdc, 2, 2);
 
     memset(bits, 0, sizeof(*bits) * 25);

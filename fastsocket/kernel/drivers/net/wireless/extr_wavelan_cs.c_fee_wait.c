@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
 
-/* Variables and functions */
- int MMR_FEE_STATUS_BUSY ; 
- int mmc_in (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmr_fee_status ; 
- int /*<<< orphan*/  mmroff (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+
+
+typedef int u_long ;
+
+
+ int MMR_FEE_STATUS_BUSY ;
+ int mmc_in (int ,int ) ;
+ int mmr_fee_status ;
+ int mmroff (int ,int ) ;
+ int udelay (int) ;
 
 __attribute__((used)) static void
-fee_wait(u_long		base,	/* i/o port of the card */
-	 int		delay,	/* Base delay to wait for */
-	 int		number)	/* Number of time to wait */
+fee_wait(u_long base,
+  int delay,
+  int number)
 {
-  int		count = 0;	/* Wait only a limited time */
+  int count = 0;
 
   while((count++ < number) &&
-	(mmc_in(base, mmroff(0, mmr_fee_status)) & MMR_FEE_STATUS_BUSY))
+ (mmc_in(base, mmroff(0, mmr_fee_status)) & MMR_FEE_STATUS_BUSY))
     udelay(delay);
 }

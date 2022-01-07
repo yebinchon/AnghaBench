@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  password ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int password ;
 struct TYPE_3__ {char* prompt_info; char* password; } ;
-typedef  TYPE_1__ PW_CB_DATA ;
+typedef TYPE_1__ PW_CB_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (char*,int) ; 
- char* SRP_create_verifier (char*,char*,char**,char**,char*,char*) ; 
- int /*<<< orphan*/  bio_err ; 
- int password_callback (char*,int,int,TYPE_1__*) ; 
+
+ int BIO_printf (int ,char*,...) ;
+ int OPENSSL_cleanse (char*,int) ;
+ char* SRP_create_verifier (char*,char*,char**,char**,char*,char*) ;
+ int bio_err ;
+ int password_callback (char*,int,int,TYPE_1__*) ;
 
 __attribute__((used)) static char *srp_create_user(char *user, char **srp_verifier,
                              char **srp_usersalt, char *g, char *N,
@@ -28,8 +28,8 @@ __attribute__((used)) static char *srp_create_user(char *user, char **srp_verifi
 {
     char password[1025];
     PW_CB_DATA cb_tmp;
-    char *gNid = NULL;
-    char *salt = NULL;
+    char *gNid = ((void*)0);
+    char *salt = ((void*)0);
     int len;
     cb_tmp.prompt_info = user;
     cb_tmp.password = passout;
@@ -41,7 +41,7 @@ __attribute__((used)) static char *srp_create_user(char *user, char **srp_verifi
             BIO_printf(bio_err, "Creating\n user=\"%s\"\n g=\"%s\"\n N=\"%s\"\n",
                        user, g, N);
         if ((gNid = SRP_create_verifier(user, password, &salt,
-                                        srp_verifier, N, g)) == NULL) {
+                                        srp_verifier, N, g)) == ((void*)0)) {
             BIO_printf(bio_err, "Internal error creating SRP verifier\n");
         } else {
             *srp_usersalt = salt;

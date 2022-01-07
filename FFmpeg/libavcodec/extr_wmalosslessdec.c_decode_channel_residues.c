@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int* transient; int* transient_pos; int samples_per_frame; int bits_per_sample; unsigned int* ave_sum; int movave_scaling; int** channel_residues; int /*<<< orphan*/  gb; scalar_t__ do_inter_ch_decorr; scalar_t__ seekable_tile; TYPE_1__* channel; } ;
-typedef  TYPE_2__ WmallDecodeCtx ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int* transient; int* transient_pos; int samples_per_frame; int bits_per_sample; unsigned int* ave_sum; int movave_scaling; int** channel_residues; int gb; scalar_t__ do_inter_ch_decorr; scalar_t__ seekable_tile; TYPE_1__* channel; } ;
+typedef TYPE_2__ WmallDecodeCtx ;
 struct TYPE_4__ {scalar_t__ transient_counter; } ;
 
-/* Variables and functions */
- scalar_t__ FFMAX (scalar_t__,int) ; 
- int av_ceil_log2 (unsigned int) ; 
- int av_log2 (int) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_left (int /*<<< orphan*/ *) ; 
- int get_bits_long (int /*<<< orphan*/ *,int) ; 
- void* get_sbits_long (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ FFMAX (scalar_t__,int) ;
+ int av_ceil_log2 (unsigned int) ;
+ int av_log2 (int) ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ scalar_t__ get_bits_left (int *) ;
+ int get_bits_long (int *,int) ;
+ void* get_sbits_long (int *,int) ;
 
 __attribute__((used)) static int decode_channel_residues(WmallDecodeCtx *s, int ch, int tile_size)
 {
@@ -67,8 +67,8 @@ __attribute__((used)) static int decode_channel_residues(WmallDecodeCtx *s, int 
             residue = quo;
         else {
             rem_bits = av_ceil_log2(ave_mean);
-            rem      = get_bits_long(&s->gb, rem_bits);
-            residue  = (quo << rem_bits) + rem;
+            rem = get_bits_long(&s->gb, rem_bits);
+            residue = (quo << rem_bits) + rem;
         }
 
         s->ave_sum[ch] = residue + s->ave_sum[ch] -

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct d3dx_parameter {int type; scalar_t__ data; } ;
-struct d3dx_object {void* creation_failed; int /*<<< orphan*/  data; int /*<<< orphan*/  size; struct d3dx_parameter* param; } ;
+struct d3dx_object {void* creation_failed; int data; int size; struct d3dx_parameter* param; } ;
 struct d3dx9_base_effect {TYPE_1__* effect; } ;
 struct IDirect3DDevice9 {int dummy; } ;
 struct TYPE_2__ {struct IDirect3DDevice9* device; } ;
-typedef  int /*<<< orphan*/  IDirect3DVertexShader9 ;
-typedef  int /*<<< orphan*/  IDirect3DPixelShader9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int IDirect3DVertexShader9 ;
+typedef int IDirect3DPixelShader9 ;
+typedef int HRESULT ;
 
-/* Variables and functions */
-#define  D3DXPT_PIXELSHADER 130 
-#define  D3DXPT_STRING 129 
-#define  D3DXPT_VERTEXSHADER 128 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9_CreatePixelShader (struct IDirect3DDevice9*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirect3DDevice9_CreateVertexShader (struct IDirect3DDevice9*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- void* TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+ int D3D_OK ;
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int FAILED (int ) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int ) ;
+ int IDirect3DDevice9_CreatePixelShader (struct IDirect3DDevice9*,int ,int **) ;
+ int IDirect3DDevice9_CreateVertexShader (struct IDirect3DDevice9*,int ,int **) ;
+ void* TRUE ;
+ int WARN (char*) ;
+ int memcpy (char*,int ,int ) ;
 
 __attribute__((used)) static HRESULT d3dx9_create_object(struct d3dx9_base_effect *base, struct d3dx_object *object)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static HRESULT d3dx9_create_object(struct d3dx9_base_effec
 
     switch (param->type)
     {
-        case D3DXPT_STRING:
+        case 129:
             *(char **)param->data = HeapAlloc(GetProcessHeap(), 0, object->size);
             if (!*(char **)param->data)
             {
@@ -56,7 +56,7 @@ __attribute__((used)) static HRESULT d3dx9_create_object(struct d3dx9_base_effec
             }
             memcpy(*(char **)param->data, object->data, object->size);
             break;
-        case D3DXPT_VERTEXSHADER:
+        case 128:
             if (FAILED(hr = IDirect3DDevice9_CreateVertexShader(device, object->data,
                     (IDirect3DVertexShader9 **)param->data)))
             {
@@ -64,7 +64,7 @@ __attribute__((used)) static HRESULT d3dx9_create_object(struct d3dx9_base_effec
                 object->creation_failed = TRUE;
             }
             break;
-        case D3DXPT_PIXELSHADER:
+        case 130:
             if (FAILED(hr = IDirect3DDevice9_CreatePixelShader(device, object->data,
                     (IDirect3DPixelShader9 **)param->data)))
             {

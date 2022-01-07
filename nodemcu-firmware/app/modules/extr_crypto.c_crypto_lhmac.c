@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int lua_State ;
 struct TYPE_4__ {int digest_size; } ;
-typedef  TYPE_1__ digest_mech_info_t ;
-typedef  int /*<<< orphan*/  digest ;
+typedef TYPE_1__ digest_mech_info_t ;
+typedef int digest ;
 
-/* Variables and functions */
- int bad_mech (int /*<<< orphan*/ *) ; 
- int bad_mem (int /*<<< orphan*/ *) ; 
- TYPE_1__* crypto_digest_mech (int /*<<< orphan*/ ) ; 
- scalar_t__ crypto_hmac (TYPE_1__ const*,char const*,size_t,char const*,size_t,int /*<<< orphan*/ *) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int bad_mech (int *) ;
+ int bad_mem (int *) ;
+ TYPE_1__* crypto_digest_mech (int ) ;
+ scalar_t__ crypto_hmac (TYPE_1__ const*,char const*,size_t,char const*,size_t,int *) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_checkstring (int *,int) ;
+ int lua_pushlstring (int *,int *,int) ;
 
 __attribute__((used)) static int crypto_lhmac (lua_State *L)
 {

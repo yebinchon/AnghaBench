@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpa_ssid {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char const*,char*) ; 
- int /*<<< orphan*/  str_clear_free (char*) ; 
- char* wpa_config_get (struct wpa_ssid*,char const*) ; 
+
+ int fprintf (int *,char*,char const*,char*) ;
+ int str_clear_free (char*) ;
+ char* wpa_config_get (struct wpa_ssid*,char const*) ;
 
 __attribute__((used)) static void write_str(FILE *f, const char *field, struct wpa_ssid *ssid)
 {
-	char *value = wpa_config_get(ssid, field);
-	if (value == NULL)
-		return;
-	fprintf(f, "\t%s=%s\n", field, value);
-	str_clear_free(value);
+ char *value = wpa_config_get(ssid, field);
+ if (value == ((void*)0))
+  return;
+ fprintf(f, "\t%s=%s\n", field, value);
+ str_clear_free(value);
 }

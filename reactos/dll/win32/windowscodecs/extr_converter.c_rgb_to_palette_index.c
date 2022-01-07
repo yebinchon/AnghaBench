@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WICColor ;
-typedef  size_t UINT ;
-typedef  size_t DWORD ;
-typedef  size_t BYTE ;
 
-/* Variables and functions */
+
+
+
+typedef int WICColor ;
+typedef size_t UINT ;
+typedef size_t DWORD ;
+typedef size_t BYTE ;
+
+
 
 __attribute__((used)) static UINT rgb_to_palette_index(BYTE r, BYTE g, BYTE b, WICColor *colors, UINT count)
 {

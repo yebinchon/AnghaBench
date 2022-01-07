@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
-typedef  struct TYPE_23__   TYPE_19__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+typedef struct TYPE_23__ TYPE_19__ ;
+
+
+typedef scalar_t__ off_t ;
+typedef int ngx_uint_t ;
 struct TYPE_26__ {TYPE_6__* from_downstream; TYPE_6__* from_upstream; } ;
-typedef  TYPE_3__ ngx_stream_write_filter_ctx_t ;
+typedef TYPE_3__ ngx_stream_write_filter_ctx_t ;
 struct TYPE_27__ {TYPE_2__* upstream; TYPE_5__* connection; } ;
-typedef  TYPE_4__ ngx_stream_session_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_28__ {int error; int buffered; int /*<<< orphan*/  log; scalar_t__ shared; int /*<<< orphan*/  pool; TYPE_6__* (* send_chain ) (TYPE_5__*,TYPE_6__*,int /*<<< orphan*/ ) ;scalar_t__ need_last_buf; } ;
-typedef  TYPE_5__ ngx_connection_t ;
+typedef TYPE_4__ ngx_stream_session_t ;
+typedef int ngx_int_t ;
+struct TYPE_28__ {int error; int buffered; int log; scalar_t__ shared; int pool; TYPE_6__* (* send_chain ) (TYPE_5__*,TYPE_6__*,int ) ;scalar_t__ need_last_buf; } ;
+typedef TYPE_5__ ngx_connection_t ;
 struct TYPE_29__ {struct TYPE_29__* next; TYPE_19__* buf; } ;
-typedef  TYPE_6__ ngx_chain_t ;
+typedef TYPE_6__ ngx_chain_t ;
 struct TYPE_24__ {TYPE_5__* connection; } ;
 struct TYPE_25__ {TYPE_1__ peer; } ;
-struct TYPE_23__ {scalar_t__ last_buf; scalar_t__ sync; scalar_t__ recycled; scalar_t__ flush; scalar_t__ file_last; scalar_t__ file_pos; int /*<<< orphan*/  file; scalar_t__ last; scalar_t__ pos; int /*<<< orphan*/  start; int /*<<< orphan*/  in_file; int /*<<< orphan*/  temporary; } ;
+struct TYPE_23__ {scalar_t__ last_buf; scalar_t__ sync; scalar_t__ recycled; scalar_t__ flush; scalar_t__ file_last; scalar_t__ file_pos; int file; scalar_t__ last; scalar_t__ pos; int start; int in_file; int temporary; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- TYPE_6__* NGX_CHAIN_ERROR ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_STREAM ; 
- int NGX_LOWLEVEL_BUFFERED ; 
- int /*<<< orphan*/  NGX_OK ; 
- int NGX_STREAM_WRITE_BUFFERED ; 
- TYPE_6__* ngx_alloc_chain_link (int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_buf_size (TYPE_19__*) ; 
- int /*<<< orphan*/  ngx_buf_special (TYPE_19__*) ; 
- int /*<<< orphan*/  ngx_debug_point () ; 
- int /*<<< orphan*/  ngx_free_chain (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_3__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- TYPE_3__* ngx_stream_get_module_ctx (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_stream_set_ctx (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_stream_write_filter_module ; 
- TYPE_6__* stub1 (TYPE_5__*,TYPE_6__*,int /*<<< orphan*/ ) ; 
+
+ int NGX_AGAIN ;
+ TYPE_6__* NGX_CHAIN_ERROR ;
+ int NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_EVENT ;
+ int NGX_LOG_DEBUG_STREAM ;
+ int NGX_LOWLEVEL_BUFFERED ;
+ int NGX_OK ;
+ int NGX_STREAM_WRITE_BUFFERED ;
+ TYPE_6__* ngx_alloc_chain_link (int ) ;
+ scalar_t__ ngx_buf_size (TYPE_19__*) ;
+ int ngx_buf_special (TYPE_19__*) ;
+ int ngx_debug_point () ;
+ int ngx_free_chain (int ,TYPE_6__*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_6__*) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,int,int,scalar_t__) ;
+ int ngx_log_debug7 (int ,int ,int ,char*,int ,int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ TYPE_3__* ngx_pcalloc (int ,int) ;
+ TYPE_3__* ngx_stream_get_module_ctx (TYPE_4__*,int ) ;
+ int ngx_stream_set_ctx (TYPE_4__*,TYPE_3__*,int ) ;
+ int ngx_stream_write_filter_module ;
+ TYPE_6__* stub1 (TYPE_5__*,TYPE_6__*,int ) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
     ngx_uint_t from_upstream)
 {
-    off_t                           size;
-    ngx_uint_t                      last, flush, sync;
-    ngx_chain_t                    *cl, *ln, **ll, **out, *chain;
-    ngx_connection_t               *c;
-    ngx_stream_write_filter_ctx_t  *ctx;
+    off_t size;
+    ngx_uint_t last, flush, sync;
+    ngx_chain_t *cl, *ln, **ll, **out, *chain;
+    ngx_connection_t *c;
+    ngx_stream_write_filter_ctx_t *ctx;
 
     ctx = ngx_stream_get_module_ctx(s, ngx_stream_write_filter_module);
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = ngx_pcalloc(s->connection->pool,
                           sizeof(ngx_stream_write_filter_ctx_t));
-        if (ctx == NULL) {
+        if (ctx == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -98,7 +98,7 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
     last = 0;
     ll = out;
 
-    /* find the size, the flush point and the last link of the saved chain */
+
 
     for (cl = *out; cl; cl = cl->next) {
         ll = &cl->next;
@@ -163,11 +163,11 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
         }
     }
 
-    /* add the new chain to the existent one */
+
 
     for (ln = in; ln; ln = ln->next) {
         cl = ngx_alloc_chain_link(c->pool);
-        if (cl == NULL) {
+        if (cl == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -235,7 +235,7 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
         }
     }
 
-    *ll = NULL;
+    *ll = ((void*)0);
 
     ngx_log_debug3(NGX_LOG_DEBUG_STREAM, c->log, 0,
                    "stream write filter: l:%ui f:%ui s:%O", last, flush, size);
@@ -245,13 +245,13 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
         && !(last && c->need_last_buf))
     {
         if (last || flush || sync) {
-            for (cl = *out; cl; /* void */) {
+            for (cl = *out; cl; ) {
                 ln = cl;
                 cl = cl->next;
                 ngx_free_chain(c->pool, ln);
             }
 
-            *out = NULL;
+            *out = ((void*)0);
             c->buffered &= ~NGX_STREAM_WRITE_BUFFERED;
 
             return NGX_OK;
@@ -275,7 +275,7 @@ ngx_stream_write_filter(ngx_stream_session_t *s, ngx_chain_t *in,
         return NGX_ERROR;
     }
 
-    for (cl = *out; cl && cl != chain; /* void */) {
+    for (cl = *out; cl && cl != chain; ) {
         ln = cl;
         cl = cl->next;
         ngx_free_chain(c->pool, ln);

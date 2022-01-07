@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int handle; } ;
 struct TYPE_10__ {TYPE_1__ x11; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-struct TYPE_9__ {scalar_t__ NET_WM_STATE_ABOVE; int /*<<< orphan*/  display; int /*<<< orphan*/  NET_WM_STATE; } ;
+typedef TYPE_3__ _GLFWwindow ;
+struct TYPE_9__ {scalar_t__ NET_WM_STATE_ABOVE; int display; int NET_WM_STATE; } ;
 struct TYPE_11__ {TYPE_2__ x11; } ;
-typedef  scalar_t__ GLFWbool ;
-typedef  scalar_t__ Atom ;
+typedef scalar_t__ GLFWbool ;
+typedef scalar_t__ Atom ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PropModeAppend ; 
- int /*<<< orphan*/  PropModeReplace ; 
- int /*<<< orphan*/  XA_ATOM ; 
- int /*<<< orphan*/  XChangeProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned char*,unsigned long) ; 
- int /*<<< orphan*/  XFlush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XFree (scalar_t__*) ; 
- scalar_t__ _NET_WM_STATE_ADD ; 
- scalar_t__ _NET_WM_STATE_REMOVE ; 
- TYPE_7__ _glfw ; 
- unsigned long _glfwGetWindowPropertyX11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char**) ; 
- scalar_t__ _glfwPlatformWindowVisible (TYPE_3__*) ; 
- int /*<<< orphan*/  sendEventToWM (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__ const,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int PropModeAppend ;
+ int PropModeReplace ;
+ int XA_ATOM ;
+ int XChangeProperty (int ,int ,int ,int ,int,int ,unsigned char*,unsigned long) ;
+ int XFlush (int ) ;
+ int XFree (scalar_t__*) ;
+ scalar_t__ _NET_WM_STATE_ADD ;
+ scalar_t__ _NET_WM_STATE_REMOVE ;
+ TYPE_7__ _glfw ;
+ unsigned long _glfwGetWindowPropertyX11 (int ,int ,int ,unsigned char**) ;
+ scalar_t__ _glfwPlatformWindowVisible (TYPE_3__*) ;
+ int sendEventToWM (TYPE_3__*,int ,scalar_t__ const,scalar_t__,int ,int,int ) ;
 
 void _glfwPlatformSetWindowFloating(_GLFWwindow* window, GLFWbool enabled)
 {
@@ -64,7 +64,7 @@ void _glfwPlatformSetWindowFloating(_GLFWwindow* window, GLFWbool enabled)
 
         if (enabled)
         {
-            for (i = 0;  i < count;  i++)
+            for (i = 0; i < count; i++)
             {
                 if (states[i] == _glfw.x11.NET_WM_STATE_ABOVE)
                     break;
@@ -81,7 +81,7 @@ void _glfwPlatformSetWindowFloating(_GLFWwindow* window, GLFWbool enabled)
         }
         else
         {
-            for (i = 0;  i < count;  i++)
+            for (i = 0; i < count; i++)
             {
                 if (states[i] == _glfw.x11.NET_WM_STATE_ABOVE)
                 {

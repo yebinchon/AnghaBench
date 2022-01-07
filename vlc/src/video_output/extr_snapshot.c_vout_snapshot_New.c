@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int is_available; int /*<<< orphan*/ * picture; scalar_t__ request_count; int /*<<< orphan*/  wait; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ vout_snapshot_t ;
 
-/* Variables and functions */
- TYPE_1__* malloc (int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int is_available; int * picture; scalar_t__ request_count; int wait; int lock; } ;
+typedef TYPE_1__ vout_snapshot_t ;
+
+
+ TYPE_1__* malloc (int) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_cond_init (int *) ;
+ int vlc_mutex_init (int *) ;
 
 vout_snapshot_t *vout_snapshot_New(void)
 {
     vout_snapshot_t *snap = malloc(sizeof (*snap));
-    if (unlikely(snap == NULL))
-        return NULL;
+    if (unlikely(snap == ((void*)0)))
+        return ((void*)0);
 
     vlc_mutex_init(&snap->lock);
     vlc_cond_init(&snap->wait);
 
-    snap->is_available = true;
+    snap->is_available = 1;
     snap->request_count = 0;
-    snap->picture = NULL;
+    snap->picture = ((void*)0);
     return snap;
 }

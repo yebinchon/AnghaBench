@@ -1,35 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum state { ____Placeholder_state } state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_ALPHA (char const) ; 
- int /*<<< orphan*/  IS_URL_CHAR (char const) ; 
- int /*<<< orphan*/  IS_USERINFO_CHAR (char const) ; 
- int s_dead ; 
-#define  s_req_fragment 139 
-#define  s_req_fragment_start 138 
-#define  s_req_path 137 
-#define  s_req_query_string 136 
-#define  s_req_query_string_start 135 
-#define  s_req_schema 134 
-#define  s_req_schema_slash 133 
-#define  s_req_schema_slash_slash 132 
-#define  s_req_server 131 
-#define  s_req_server_start 130 
-#define  s_req_server_with_at 129 
-#define  s_req_spaces_before_url 128 
 
+
+
+typedef enum state { ____Placeholder_state } state ;
+
+
+ int IS_ALPHA (char const) ;
+ int IS_URL_CHAR (char const) ;
+ int IS_USERINFO_CHAR (char const) ;
+ int s_dead ;
 __attribute__((used)) static enum state
 parse_url_char(enum state s, const char ch)
 {
@@ -37,119 +24,119 @@ parse_url_char(enum state s, const char ch)
     return s_dead;
   }
 
-#if HTTP_PARSER_STRICT
-  if (ch == '\t' || ch == '\f') {
-    return s_dead;
-  }
-#endif
+
+
+
+
+
 
   switch (s) {
-    case s_req_spaces_before_url:
-      /* Proxied requests are followed by scheme of an absolute URI (alpha).
-       * All methods except CONNECT are followed by '/' or '*'.
-       */
+    case 128:
+
+
+
 
       if (ch == '/' || ch == '*') {
-        return s_req_path;
+        return 137;
       }
 
       if (IS_ALPHA(ch)) {
-        return s_req_schema;
+        return 134;
       }
 
       break;
 
-    case s_req_schema:
+    case 134:
       if (IS_ALPHA(ch)) {
         return s;
       }
 
       if (ch == ':') {
-        return s_req_schema_slash;
+        return 133;
       }
 
       break;
 
-    case s_req_schema_slash:
+    case 133:
       if (ch == '/') {
-        return s_req_schema_slash_slash;
+        return 132;
       }
 
       break;
 
-    case s_req_schema_slash_slash:
+    case 132:
       if (ch == '/') {
-        return s_req_server_start;
+        return 130;
       }
 
       break;
 
-    case s_req_server_with_at:
+    case 129:
       if (ch == '@') {
         return s_dead;
       }
 
-    /* FALLTHROUGH */
-    case s_req_server_start:
-    case s_req_server:
+
+    case 130:
+    case 131:
       if (ch == '/') {
-        return s_req_path;
+        return 137;
       }
 
       if (ch == '?') {
-        return s_req_query_string_start;
+        return 135;
       }
 
       if (ch == '@') {
-        return s_req_server_with_at;
+        return 129;
       }
 
       if (IS_USERINFO_CHAR(ch) || ch == '[' || ch == ']') {
-        return s_req_server;
+        return 131;
       }
 
       break;
 
-    case s_req_path:
+    case 137:
       if (IS_URL_CHAR(ch)) {
         return s;
       }
 
       switch (ch) {
         case '?':
-          return s_req_query_string_start;
+          return 135;
 
         case '#':
-          return s_req_fragment_start;
+          return 138;
       }
 
       break;
 
-    case s_req_query_string_start:
-    case s_req_query_string:
+    case 135:
+    case 136:
       if (IS_URL_CHAR(ch)) {
-        return s_req_query_string;
+        return 136;
       }
 
       switch (ch) {
         case '?':
-          /* allow extra '?' in query string */
-          return s_req_query_string;
+
+          return 136;
 
         case '#':
-          return s_req_fragment_start;
+          return 138;
       }
 
       break;
 
-    case s_req_fragment_start:
+    case 138:
       if (IS_URL_CHAR(ch)) {
-        return s_req_fragment;
+        return 139;
       }
 
       switch (ch) {
         case '?':
-          return s_req_fragment;
+          return 139;
 
         case '#':
           return s;
@@ -157,7 +144,7 @@ parse_url_char(enum state s, const char ch)
 
       break;
 
-    case s_req_fragment:
+    case 139:
       if (IS_URL_CHAR(ch)) {
         return s;
       }
@@ -174,6 +161,6 @@ parse_url_char(enum state s, const char ch)
       break;
   }
 
-  /* We should never fall out of the switch above unless there's an error */
+
   return s_dead;
 }

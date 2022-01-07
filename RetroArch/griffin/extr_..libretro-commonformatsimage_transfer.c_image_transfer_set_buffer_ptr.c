@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  rtga_t ;
-typedef  int /*<<< orphan*/  rpng_t ;
-typedef  int /*<<< orphan*/  rjpeg_t ;
-typedef  int /*<<< orphan*/  rbmp_t ;
-typedef  enum image_type_enum { ____Placeholder_image_type_enum } image_type_enum ;
 
-/* Variables and functions */
-#define  IMAGE_TYPE_BMP 132 
-#define  IMAGE_TYPE_JPEG 131 
-#define  IMAGE_TYPE_NONE 130 
-#define  IMAGE_TYPE_PNG 129 
-#define  IMAGE_TYPE_TGA 128 
- int /*<<< orphan*/  rbmp_set_buf_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rjpeg_set_buf_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rpng_set_buf_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  rtga_set_buf_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int rtga_t ;
+typedef int rpng_t ;
+typedef int rjpeg_t ;
+typedef int rbmp_t ;
+typedef enum image_type_enum { ____Placeholder_image_type_enum } image_type_enum ;
+
+
+
+
+
+
+
+ int rbmp_set_buf_ptr (int *,int *) ;
+ int rjpeg_set_buf_ptr (int *,int *) ;
+ int rpng_set_buf_ptr (int *,int *,size_t) ;
+ int rtga_set_buf_ptr (int *,int *) ;
 
 void image_transfer_set_buffer_ptr(
       void *data,
@@ -36,27 +36,27 @@ void image_transfer_set_buffer_ptr(
 {
    switch (type)
    {
-      case IMAGE_TYPE_PNG:
-#ifdef HAVE_RPNG
-         rpng_set_buf_ptr((rpng_t*)data, (uint8_t*)ptr, len);
-#endif
+      case 129:
+
+
+
          break;
-      case IMAGE_TYPE_JPEG:
-#ifdef HAVE_RJPEG
-         rjpeg_set_buf_ptr((rjpeg_t*)data, (uint8_t*)ptr);
-#endif
+      case 131:
+
+
+
          break;
-      case IMAGE_TYPE_TGA:
-#ifdef HAVE_RTGA
-         rtga_set_buf_ptr((rtga_t*)data, (uint8_t*)ptr);
-#endif
+      case 128:
+
+
+
          break;
-      case IMAGE_TYPE_BMP:
-#ifdef HAVE_RBMP
-         rbmp_set_buf_ptr((rbmp_t*)data, (uint8_t*)ptr);
-#endif
+      case 132:
+
+
+
          break;
-      case IMAGE_TYPE_NONE:
+      case 130:
          break;
    }
 }

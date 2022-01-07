@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptid_t ;
 
-/* Variables and functions */
- int GET_LWP (int /*<<< orphan*/ ) ; 
- int GET_THREAD (int /*<<< orphan*/ ) ; 
- int PIDGET (int /*<<< orphan*/ ) ; 
- scalar_t__ is_thread (int /*<<< orphan*/ ) ; 
- char* procfs_pid_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  procfs_suppress_run ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,...) ; 
- int /*<<< orphan*/  thread_to_lwp (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int ptid_t ;
+
+
+ int GET_LWP (int ) ;
+ int GET_THREAD (int ) ;
+ int PIDGET (int ) ;
+ scalar_t__ is_thread (int ) ;
+ char* procfs_pid_to_str (int ) ;
+ int procfs_suppress_run ;
+ int sprintf (char*,char*,int,...) ;
+ int thread_to_lwp (int ,int) ;
 
 char *
 solaris_pid_to_str (ptid_t ptid)
 {
   static char buf[100];
 
-  /* in case init failed to resolve the libthread_db library */
+
   if (!procfs_suppress_run)
     return procfs_pid_to_str (ptid);
 
@@ -38,11 +38,11 @@ solaris_pid_to_str (ptid_t ptid)
       lwp = thread_to_lwp (ptid, -2);
 
       if (PIDGET (lwp) == -1)
-	sprintf (buf, "Thread %ld (defunct)", GET_THREAD (ptid));
+ sprintf (buf, "Thread %ld (defunct)", GET_THREAD (ptid));
       else if (PIDGET (lwp) != -2)
-	sprintf (buf, "Thread %ld (LWP %ld)", GET_THREAD (ptid), GET_LWP (lwp));
+ sprintf (buf, "Thread %ld (LWP %ld)", GET_THREAD (ptid), GET_LWP (lwp));
       else
-	sprintf (buf, "Thread %ld        ", GET_THREAD (ptid));
+ sprintf (buf, "Thread %ld        ", GET_THREAD (ptid));
     }
   else if (GET_LWP (ptid) != 0)
     sprintf (buf, "LWP    %ld        ", GET_LWP (ptid));

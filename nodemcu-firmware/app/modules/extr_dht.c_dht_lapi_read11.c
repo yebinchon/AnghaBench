@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  dht ; 
- double dht_getHumidity () ; 
- double dht_getTemperature () ; 
- int /*<<< orphan*/  dht_read11 (unsigned int) ; 
- unsigned int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ int dht ;
+ double dht_getHumidity () ;
+ double dht_getTemperature () ;
+ int dht_read11 (unsigned int) ;
+ unsigned int luaL_checkinteger (int *,int) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushnumber (int *,int) ;
 
 __attribute__((used)) static int dht_lapi_read11( lua_State *L )
 {

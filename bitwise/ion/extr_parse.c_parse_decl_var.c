@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Typespec ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  int /*<<< orphan*/  Expr ;
-typedef  int /*<<< orphan*/  Decl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOKEN_ASSIGN ; 
- int /*<<< orphan*/  TOKEN_COLON ; 
- int /*<<< orphan*/  TOKEN_SEMICOLON ; 
- int /*<<< orphan*/  expect_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal_error_here (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ match_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * new_decl_var (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * parse_expr () ; 
- char* parse_name () ; 
- int /*<<< orphan*/ * parse_type () ; 
- int /*<<< orphan*/  token_info () ; 
+
+
+
+typedef int Typespec ;
+typedef int SrcPos ;
+typedef int Expr ;
+typedef int Decl ;
+
+
+ int TOKEN_ASSIGN ;
+ int TOKEN_COLON ;
+ int TOKEN_SEMICOLON ;
+ int expect_token (int ) ;
+ int fatal_error_here (char*,int ) ;
+ scalar_t__ match_token (int ) ;
+ int * new_decl_var (int ,char const*,int *,int *) ;
+ int * parse_expr () ;
+ char* parse_name () ;
+ int * parse_type () ;
+ int token_info () ;
 
 Decl *parse_decl_var(SrcPos pos) {
     const char *name = parse_name();
     if (match_token(TOKEN_ASSIGN)) {
         Expr *expr = parse_expr();
         expect_token(TOKEN_SEMICOLON);
-        return new_decl_var(pos, name, NULL, expr);
+        return new_decl_var(pos, name, ((void*)0), expr);
     } else if (match_token(TOKEN_COLON)) {
         Typespec *type = parse_type();
-        Expr *expr = NULL;
+        Expr *expr = ((void*)0);
         if (match_token(TOKEN_ASSIGN)) {
             expr = parse_expr();
         }
@@ -44,6 +44,6 @@ Decl *parse_decl_var(SrcPos pos) {
         return new_decl_var(pos, name, type, expr);
     } else {
         fatal_error_here("Expected : or = after var, got %s", token_info());
-        return NULL;
+        return ((void*)0);
     }
 }

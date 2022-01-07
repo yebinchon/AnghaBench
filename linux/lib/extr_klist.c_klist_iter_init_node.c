@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct klist_node {int /*<<< orphan*/  n_ref; } ;
+
+
+
+
+struct klist_node {int n_ref; } ;
 struct klist_iter {struct klist_node* i_cur; struct klist* i_klist; } ;
 struct klist {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ kref_get_unless_zero (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ kref_get_unless_zero (int *) ;
 
 void klist_iter_init_node(struct klist *k, struct klist_iter *i,
-			  struct klist_node *n)
+     struct klist_node *n)
 {
-	i->i_klist = k;
-	i->i_cur = NULL;
-	if (n && kref_get_unless_zero(&n->n_ref))
-		i->i_cur = n;
+ i->i_klist = k;
+ i->i_cur = ((void*)0);
+ if (n && kref_get_unless_zero(&n->n_ref))
+  i->i_cur = n;
 }

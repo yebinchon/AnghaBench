@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct keep_mc_store {int user_id; int len; } ;
 struct connection {TYPE_1__* Tmp; } ;
 struct TYPE_3__ {scalar_t__ start; } ;
 
-/* Variables and functions */
- int MAX_QUERY ; 
- int* Q ; 
- int QL ; 
- scalar_t__ R ; 
- scalar_t__ R_end ; 
- int /*<<< orphan*/  advance_read_ptr (TYPE_1__*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_result_buffer () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int np_parse_list_str (int*,int,int,char const*,int) ; 
- int prepare_raw_updates (int,int,int,int) ; 
- int read_in (TYPE_1__*,int*,int) ; 
- int return_one_key_list (struct connection*,char const*,int,int,int,scalar_t__,scalar_t__) ; 
- int sscanf (char const*,char*,int*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ int MAX_QUERY ;
+ int* Q ;
+ int QL ;
+ scalar_t__ R ;
+ scalar_t__ R_end ;
+ int advance_read_ptr (TYPE_1__*,int) ;
+ int assert (int) ;
+ int clear_result_buffer () ;
+ int fprintf (int ,char*,...) ;
+ int np_parse_list_str (int*,int,int,char const*,int) ;
+ int prepare_raw_updates (int,int,int,int) ;
+ int read_in (TYPE_1__*,int*,int) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int,scalar_t__,scalar_t__) ;
+ int sscanf (char const*,char*,int*,int*,...) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static int exec_get_raw_updates (struct connection *c, const char *key, int key_len, int dog_len) {
   int user_id;
@@ -87,7 +87,7 @@ __attribute__((used)) static int exec_get_raw_updates (struct connection *c, con
       }
     }
     if (best >= 0) {
-      return return_one_key_list (c, key-dog_len, dog_len + key_len, /*(R_end - R) / 9*/ 0x7fffffff, -raw, R, R_end - R);
+      return return_one_key_list (c, key-dog_len, dog_len + key_len, 0x7fffffff, -raw, R, R_end - R);
     }
   }
   return 0;

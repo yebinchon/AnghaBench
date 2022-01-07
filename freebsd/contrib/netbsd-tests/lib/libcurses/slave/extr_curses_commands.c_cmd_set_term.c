@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SCREEN ;
 
-/* Variables and functions */
- int check_arg_count (int,int) ; 
- int /*<<< orphan*/  report_count (int) ; 
- int /*<<< orphan*/  report_error (char*) ; 
- int /*<<< orphan*/  report_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_term (int /*<<< orphan*/ *) ; 
- scalar_t__ sscanf (char*,char*,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int SCREEN ;
+
+
+ int check_arg_count (int,int) ;
+ int report_count (int) ;
+ int report_error (char*) ;
+ int report_ptr (int ) ;
+ int set_term (int *) ;
+ scalar_t__ sscanf (char*,char*,int **) ;
 
 void
 cmd_set_term(int nargs, char **args)
 {
-	SCREEN *scrn;
+ SCREEN *scrn;
 
-	if (check_arg_count(nargs, 1) == 1)
-		return;
+ if (check_arg_count(nargs, 1) == 1)
+  return;
 
-	if (sscanf(args[0], "%p", &scrn) == 0) {
-		report_count(1);
-		report_error("BAD ARGUMENT");
-		return;
-	}
+ if (sscanf(args[0], "%p", &scrn) == 0) {
+  report_count(1);
+  report_error("BAD ARGUMENT");
+  return;
+ }
 
-	report_count(1);
-	report_ptr(set_term(scrn));
+ report_count(1);
+ report_ptr(set_term(scrn));
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int width; float height; TYPE_2__* stats; } ;
-typedef  TYPE_1__ WebPPicture ;
+typedef TYPE_1__ WebPPicture ;
 struct TYPE_6__ {int coded_size; float* PSNR; } ;
-typedef  TYPE_2__ WebPAuxStats ;
-typedef  int /*<<< orphan*/  W_CHAR ;
+typedef TYPE_2__ WebPAuxStats ;
+typedef int W_CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PrintFullLosslessInfo (TYPE_2__ const* const,char*) ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,float) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int PrintFullLosslessInfo (TYPE_2__ const* const,char*) ;
+ int WFPRINTF (int ,char*,int const*) ;
+ int fprintf (int ,char*,int,float) ;
+ int stderr ;
 
 __attribute__((used)) static void PrintExtraInfoLossless(const WebPPicture* const pic,
                                    int short_output,

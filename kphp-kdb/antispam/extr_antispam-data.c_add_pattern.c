@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ flags; int /*<<< orphan*/  uahash; int /*<<< orphan*/  ip; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ antispam_pattern_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int MAX_DISPLAYED_LEN ; 
- int TRUE ; 
- scalar_t__ antispam_add (TYPE_1__,char*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  st_printf (char*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int,char*,char*,int) ; 
- int verbosity ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ flags; int uahash; int ip; int id; } ;
+typedef TYPE_1__ antispam_pattern_t ;
+
+
+ int FALSE ;
+ int MAX_DISPLAYED_LEN ;
+ int TRUE ;
+ scalar_t__ antispam_add (TYPE_1__,char*,int) ;
+ int assert (int) ;
+ int st_printf (char*,char*,char*,int ,int ,int ,unsigned int,int,char*,char*,int) ;
+ int verbosity ;
 
 __attribute__((used)) static inline bool add_pattern (antispam_pattern_t p, int str_len, char* str, bool replace, char *version) {
   assert (str[str_len] == 0);

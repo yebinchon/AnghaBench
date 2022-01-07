@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CALLER_ADDR0 ; 
- unsigned int SOFTIRQ_MASK ; 
- int /*<<< orphan*/  _RET_IP_ ; 
- int /*<<< orphan*/  __preempt_count_sub (unsigned int) ; 
- int /*<<< orphan*/  get_lock_parent_ip () ; 
- int /*<<< orphan*/  lockdep_assert_irqs_disabled () ; 
- unsigned int preempt_count () ; 
- unsigned int softirq_count () ; 
- int /*<<< orphan*/  trace_preempt_on (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace_softirqs_on (int /*<<< orphan*/ ) ; 
+ int CALLER_ADDR0 ;
+ unsigned int SOFTIRQ_MASK ;
+ int _RET_IP_ ;
+ int __preempt_count_sub (unsigned int) ;
+ int get_lock_parent_ip () ;
+ int lockdep_assert_irqs_disabled () ;
+ unsigned int preempt_count () ;
+ unsigned int softirq_count () ;
+ int trace_preempt_on (int ,int ) ;
+ int trace_softirqs_on (int ) ;
 
 __attribute__((used)) static void __local_bh_enable(unsigned int cnt)
 {
-	lockdep_assert_irqs_disabled();
+ lockdep_assert_irqs_disabled();
 
-	if (preempt_count() == cnt)
-		trace_preempt_on(CALLER_ADDR0, get_lock_parent_ip());
+ if (preempt_count() == cnt)
+  trace_preempt_on(CALLER_ADDR0, get_lock_parent_ip());
 
-	if (softirq_count() == (cnt & SOFTIRQ_MASK))
-		trace_softirqs_on(_RET_IP_);
+ if (softirq_count() == (cnt & SOFTIRQ_MASK))
+  trace_softirqs_on(_RET_IP_);
 
-	__preempt_count_sub(cnt);
+ __preempt_count_sub(cnt);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct gl_texture_object {TYPE_1__** Image; } ;
 struct TYPE_2__ {size_t MaxLog2; } ;
-typedef  float GLubyte ;
-typedef  size_t GLint ;
-typedef  size_t GLfloat ;
+typedef float GLubyte ;
+typedef size_t GLint ;
+typedef size_t GLfloat ;
 
-/* Variables and functions */
- size_t CLAMP (size_t,int,size_t) ; 
- size_t frac (size_t) ; 
- int /*<<< orphan*/  sample_1d_linear (struct gl_texture_object const*,TYPE_1__*,size_t,float*,float*,float*,float*) ; 
+
+ size_t CLAMP (size_t,int,size_t) ;
+ size_t frac (size_t) ;
+ int sample_1d_linear (struct gl_texture_object const*,TYPE_1__*,size_t,float*,float*,float*,float*) ;
 
 __attribute__((used)) static void
 sample_1d_linear_mipmap_linear( const struct gl_texture_object *tObj,
@@ -44,9 +44,9 @@ sample_1d_linear_mipmap_linear( const struct gl_texture_object *tObj,
                         s, &red0, &green0, &blue0, &alpha0 );
       sample_1d_linear( tObj, tObj->Image[level],
                         s, &red1, &green1, &blue1, &alpha1 );
-      *red   = (1.0F-f)*red0   + f*red1;
+      *red = (1.0F-f)*red0 + f*red1;
       *green = (1.0F-f)*green0 + f*green1;
-      *blue  = (1.0F-f)*blue0  + f*blue1;
+      *blue = (1.0F-f)*blue0 + f*blue1;
       *alpha = (1.0F-f)*alpha0 + f*alpha1;
    }
 }

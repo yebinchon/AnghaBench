@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_tuner {int dummy; } ;
-struct timbradio {int /*<<< orphan*/  sd_tuner; } ;
+struct timbradio {int sd_tuner; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_tuner ; 
- int /*<<< orphan*/  tuner ; 
- int v4l2_subdev_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct v4l2_tuner*) ; 
- struct timbradio* video_drvdata (struct file*) ; 
+
+ int g_tuner ;
+ int tuner ;
+ int v4l2_subdev_call (int ,int ,int ,struct v4l2_tuner*) ;
+ struct timbradio* video_drvdata (struct file*) ;
 
 __attribute__((used)) static int timbradio_vidioc_g_tuner(struct file *file, void *priv,
-	struct v4l2_tuner *v)
+ struct v4l2_tuner *v)
 {
-	struct timbradio *tr = video_drvdata(file);
-	return v4l2_subdev_call(tr->sd_tuner, tuner, g_tuner, v);
+ struct timbradio *tr = video_drvdata(file);
+ return v4l2_subdev_call(tr->sd_tuner, tuner, g_tuner, v);
 }

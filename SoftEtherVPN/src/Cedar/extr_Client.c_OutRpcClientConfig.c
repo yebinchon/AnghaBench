@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  KeepConnectHost; int /*<<< orphan*/  NicDownOnDisconnect; int /*<<< orphan*/  AllowRemoteConfig; int /*<<< orphan*/  KeepConnectInterval; int /*<<< orphan*/  KeepConnectProtocol; int /*<<< orphan*/  KeepConnectPort; int /*<<< orphan*/  UseKeepConnect; } ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_1__ CLIENT_CONFIG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackAddBool (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int KeepConnectHost; int NicDownOnDisconnect; int AllowRemoteConfig; int KeepConnectInterval; int KeepConnectProtocol; int KeepConnectPort; int UseKeepConnect; } ;
+typedef int PACK ;
+typedef TYPE_1__ CLIENT_CONFIG ;
+
+
+ int PackAddBool (int *,char*,int ) ;
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddStr (int *,char*,int ) ;
 
 void OutRpcClientConfig(PACK *p, CLIENT_CONFIG *c)
 {
-	// Validate arguments
-	if (c == NULL || p == NULL)
-	{
-		return;
-	}
 
-	PackAddInt(p, "UseKeepConnect", c->UseKeepConnect);
-	PackAddInt(p, "KeepConnectPort", c->KeepConnectPort);
-	PackAddInt(p, "KeepConnectProtocol", c->KeepConnectProtocol);
-	PackAddInt(p, "KeepConnectInterval", c->KeepConnectInterval);
-	PackAddInt(p, "AllowRemoteConfig", c->AllowRemoteConfig);
-	PackAddBool(p, "NicDownOnDisconnect", c->NicDownOnDisconnect);
-	PackAddStr(p, "KeepConnectHost", c->KeepConnectHost);
+ if (c == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ PackAddInt(p, "UseKeepConnect", c->UseKeepConnect);
+ PackAddInt(p, "KeepConnectPort", c->KeepConnectPort);
+ PackAddInt(p, "KeepConnectProtocol", c->KeepConnectProtocol);
+ PackAddInt(p, "KeepConnectInterval", c->KeepConnectInterval);
+ PackAddInt(p, "AllowRemoteConfig", c->AllowRemoteConfig);
+ PackAddBool(p, "NicDownOnDisconnect", c->NicDownOnDisconnect);
+ PackAddStr(p, "KeepConnectHost", c->KeepConnectHost);
 }

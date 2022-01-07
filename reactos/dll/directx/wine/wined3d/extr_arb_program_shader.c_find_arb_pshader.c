@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
 struct TYPE_7__ {int major; } ;
 struct TYPE_10__ {TYPE_2__ shader_version; } ;
-struct wined3d_shader {struct arb_pshader_private* backend_data; TYPE_5__ reg_maps; int /*<<< orphan*/  input_signature; struct wined3d_device* device; } ;
+struct wined3d_shader {struct arb_pshader_private* backend_data; TYPE_5__ reg_maps; int input_signature; struct wined3d_device* device; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_device {struct shader_arb_priv* shader_priv; TYPE_1__* adapter; } ;
 struct TYPE_8__ {scalar_t__ ffp_blend_stages; } ;
-struct wined3d_d3d_info {TYPE_3__ limits; int /*<<< orphan*/  vs_clipping; } ;
+struct wined3d_d3d_info {TYPE_3__ limits; int vs_clipping; } ;
 struct shader_arb_priv {int dummy; } ;
 struct arb_pshader_private {int clamp_consts; unsigned int input_signature_idx; unsigned int clipplane_emulation; size_t num_gl_shaders; size_t shader_array_size; struct arb_ps_compiled_shader* gl_shaders; } ;
-struct TYPE_9__ {int /*<<< orphan*/  tex_types; } ;
+struct TYPE_9__ {int tex_types; } ;
 struct arb_ps_compile_args {TYPE_4__ super; } ;
-struct arb_ps_compiled_shader {int /*<<< orphan*/  prgId; struct arb_ps_compile_args args; } ;
-typedef  size_t UINT ;
+struct arb_ps_compiled_shader {int prgId; struct arb_ps_compile_args args; } ;
+typedef size_t UINT ;
 struct TYPE_6__ {struct wined3d_d3d_info d3d_info; struct wined3d_gl_info gl_info; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int DWORD ;
+typedef int GLuint ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct arb_ps_compiled_shader* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct arb_ps_compiled_shader*,int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- unsigned int find_input_signature (struct shader_arb_priv*,int /*<<< orphan*/ *) ; 
- void* heap_alloc_zero (int) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  memcmp (struct arb_ps_compile_args*,struct arb_ps_compile_args const*,int) ; 
- int /*<<< orphan*/  pixelshader_update_resource_types (struct wined3d_shader*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_arb_generate_pshader (struct wined3d_shader*,struct wined3d_gl_info const*,struct wined3d_string_buffer*,struct arb_ps_compile_args const*,struct arb_ps_compiled_shader*) ; 
- unsigned int shader_find_free_input_register (TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  string_buffer_free (struct wined3d_string_buffer*) ; 
- int /*<<< orphan*/  string_buffer_init (struct wined3d_string_buffer*) ; 
+
+ int ERR (char*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct arb_ps_compiled_shader* HeapReAlloc (int ,int ,struct arb_ps_compiled_shader*,int) ;
+ int TRACE (char*,...) ;
+ unsigned int find_input_signature (struct shader_arb_priv*,int *) ;
+ void* heap_alloc_zero (int) ;
+ int max (int,int) ;
+ int memcmp (struct arb_ps_compile_args*,struct arb_ps_compile_args const*,int) ;
+ int pixelshader_update_resource_types (struct wined3d_shader*,int ) ;
+ int shader_arb_generate_pshader (struct wined3d_shader*,struct wined3d_gl_info const*,struct wined3d_string_buffer*,struct arb_ps_compile_args const*,struct arb_ps_compiled_shader*) ;
+ unsigned int shader_find_free_input_register (TYPE_5__*,scalar_t__) ;
+ int string_buffer_free (struct wined3d_string_buffer*) ;
+ int string_buffer_init (struct wined3d_string_buffer*) ;
 
 __attribute__((used)) static struct arb_ps_compiled_shader *find_arb_pshader(struct wined3d_shader *shader,
         const struct arb_ps_compile_args *args)
@@ -85,10 +85,10 @@ __attribute__((used)) static struct arb_ps_compiled_shader *find_arb_pshader(str
     }
     shader_data = shader->backend_data;
 
-    /* Usually we have very few GL shaders for each d3d shader(just 1 or maybe 2),
-     * so a linear search is more performant than a hashmap or a binary search
-     * (cache coherency etc)
-     */
+
+
+
+
     for (i = 0; i < shader_data->num_gl_shaders; ++i)
     {
         if (!memcmp(&shader_data->gl_shaders[i].args, args, sizeof(*args)))

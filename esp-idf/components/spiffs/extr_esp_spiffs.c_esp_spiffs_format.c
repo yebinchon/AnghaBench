@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ s32_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ s32_t ;
 struct TYPE_5__ {int format_if_mount_failed; char const* partition_label; int max_files; } ;
-typedef  TYPE_1__ esp_vfs_spiffs_conf_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_6__ {int /*<<< orphan*/  fs; int /*<<< orphan*/  cache_sz; int /*<<< orphan*/  cache; int /*<<< orphan*/  fds_sz; int /*<<< orphan*/  fds; int /*<<< orphan*/  work; int /*<<< orphan*/  cfg; } ;
+typedef TYPE_1__ esp_vfs_spiffs_conf_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_6__ {int fs; int cache_sz; int cache; int fds_sz; int fds; int work; int cfg; } ;
 
-/* Variables and functions */
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ESP_OK ; 
- scalar_t__ SPIFFS_OK ; 
- int /*<<< orphan*/  SPIFFS_clearerr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_errno (int /*<<< orphan*/ ) ; 
- scalar_t__ SPIFFS_format (int /*<<< orphan*/ ) ; 
- scalar_t__ SPIFFS_mount (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SPIFFS_mounted (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPIFFS_unmount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- TYPE_3__** _efs ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ esp_spiffs_by_label (char const*,int*) ; 
- int /*<<< orphan*/  esp_spiffs_free (TYPE_3__**) ; 
- scalar_t__ esp_spiffs_init (TYPE_1__*) ; 
- int /*<<< orphan*/  spiffs_api_check ; 
+
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGE (int ,char*,int ) ;
+ scalar_t__ ESP_OK ;
+ scalar_t__ SPIFFS_OK ;
+ int SPIFFS_clearerr (int ) ;
+ int SPIFFS_errno (int ) ;
+ scalar_t__ SPIFFS_format (int ) ;
+ scalar_t__ SPIFFS_mount (int ,int *,int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ SPIFFS_mounted (int ) ;
+ int SPIFFS_unmount (int ) ;
+ int TAG ;
+ TYPE_3__** _efs ;
+ int assert (int ) ;
+ scalar_t__ esp_spiffs_by_label (char const*,int*) ;
+ int esp_spiffs_free (TYPE_3__**) ;
+ scalar_t__ esp_spiffs_init (TYPE_1__*) ;
+ int spiffs_api_check ;
 
 esp_err_t esp_spiffs_format(const char* partition_label)
 {
-    bool partition_was_mounted = false;
+    bool partition_was_mounted = 0;
     int index;
-    /* If the partition is not mounted, need to create SPIFFS structures
-     * and mount the partition, unmount, format, delete SPIFFS structures.
-     * See SPIFFS wiki for the reason why.
-     */
+
+
+
+
     esp_err_t err = esp_spiffs_by_label(partition_label, &index);
     if (err != ESP_OK) {
         esp_vfs_spiffs_conf_t conf = {
-                .format_if_mount_failed = true,
+                .format_if_mount_failed = 1,
                 .partition_label = partition_label,
                 .max_files = 1
         };
@@ -59,7 +59,7 @@ esp_err_t esp_spiffs_format(const char* partition_label)
         err = esp_spiffs_by_label(partition_label, &index);
         assert(err == ESP_OK && "failed to get index of the partition just mounted");
     } else if (SPIFFS_mounted(_efs[index]->fs)) {
-        partition_was_mounted = true;
+        partition_was_mounted = 1;
     }
 
     SPIFFS_unmount(_efs[index]->fs);
@@ -68,10 +68,10 @@ esp_err_t esp_spiffs_format(const char* partition_label)
     if (res != SPIFFS_OK) {
         ESP_LOGE(TAG, "format failed, %i", SPIFFS_errno(_efs[index]->fs));
         SPIFFS_clearerr(_efs[index]->fs);
-        /* If the partition was previously mounted, but format failed, don't
-         * try to mount the partition back (it will probably fail). On the
-         * other hand, if it was not mounted, need to clean up.
-         */
+
+
+
+
         if (!partition_was_mounted) {
             esp_spiffs_free(&_efs[index]);
         }

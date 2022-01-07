@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-struct TYPE_6__ {struct RClass* module_class; struct RClass* kernel_module; int /*<<< orphan*/  object_class; } ;
-typedef  TYPE_1__ mrb_state ;
+struct TYPE_6__ {struct RClass* module_class; struct RClass* kernel_module; int object_class; } ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int MRB_ARGS_ANY () ; 
- int MRB_ARGS_NONE () ; 
- int MRB_ARGS_REQ (int) ; 
- int /*<<< orphan*/  method_arity ; 
- int /*<<< orphan*/  method_bcall ; 
- int /*<<< orphan*/  method_call ; 
- int /*<<< orphan*/  method_eql ; 
- int /*<<< orphan*/  method_name ; 
- int /*<<< orphan*/  method_owner ; 
- int /*<<< orphan*/  method_parameters ; 
- int /*<<< orphan*/  method_receiver ; 
- int /*<<< orphan*/  method_source_location ; 
- int /*<<< orphan*/  method_super_method ; 
- int /*<<< orphan*/  method_to_s ; 
- int /*<<< orphan*/  method_unbind ; 
- struct RClass* mrb_define_class (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_method (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_kernel_method ; 
- int /*<<< orphan*/  mrb_module_instance_method ; 
- int /*<<< orphan*/  mrb_undef_class_method (TYPE_1__*,struct RClass*,char*) ; 
- int /*<<< orphan*/  unbound_method_bind ; 
+
+ int MRB_ARGS_ANY () ;
+ int MRB_ARGS_NONE () ;
+ int MRB_ARGS_REQ (int) ;
+ int method_arity ;
+ int method_bcall ;
+ int method_call ;
+ int method_eql ;
+ int method_name ;
+ int method_owner ;
+ int method_parameters ;
+ int method_receiver ;
+ int method_source_location ;
+ int method_super_method ;
+ int method_to_s ;
+ int method_unbind ;
+ struct RClass* mrb_define_class (TYPE_1__*,char*,int ) ;
+ int mrb_define_method (TYPE_1__*,struct RClass*,char*,int ,int) ;
+ int mrb_kernel_method ;
+ int mrb_module_instance_method ;
+ int mrb_undef_class_method (TYPE_1__*,struct RClass*,char*) ;
+ int unbound_method_bind ;
 
 void
 mrb_mruby_method_gem_init(mrb_state* mrb)

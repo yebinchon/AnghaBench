@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  head; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int head; } ;
 struct TYPE_8__ {scalar_t__ name; TYPE_1__ children; TYPE_3__* bfd_section; } ;
-typedef  TYPE_2__ lang_output_section_statement_type ;
-struct TYPE_9__ {scalar_t__ vma; scalar_t__ lma; int /*<<< orphan*/  size; } ;
-typedef  TYPE_3__ asection ;
+typedef TYPE_2__ lang_output_section_statement_type ;
+struct TYPE_9__ {scalar_t__ vma; scalar_t__ lma; int size; } ;
+typedef TYPE_3__ asection ;
 
-/* Variables and functions */
- int SECTION_NAME_MAP_LENGTH ; 
- char* _ (char*) ; 
- TYPE_2__* abs_output_section ; 
- int /*<<< orphan*/  minfo (char*,scalar_t__,...) ; 
- scalar_t__ print_dot ; 
- int /*<<< orphan*/  print_nl () ; 
- int /*<<< orphan*/  print_space () ; 
- int /*<<< orphan*/  print_statement_list (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int strlen (scalar_t__) ; 
+
+ int SECTION_NAME_MAP_LENGTH ;
+ char* _ (char*) ;
+ TYPE_2__* abs_output_section ;
+ int minfo (char*,scalar_t__,...) ;
+ scalar_t__ print_dot ;
+ int print_nl () ;
+ int print_space () ;
+ int print_statement_list (int ,TYPE_2__*) ;
+ int strlen (scalar_t__) ;
 
 __attribute__((used)) static void
 print_output_section_statement
@@ -41,31 +41,31 @@ print_output_section_statement
     {
       minfo ("\n%s", output_section_statement->name);
 
-      if (section != NULL)
-	{
-	  print_dot = section->vma;
+      if (section != ((void*)0))
+ {
+   print_dot = section->vma;
 
-	  len = strlen (output_section_statement->name);
-	  if (len >= SECTION_NAME_MAP_LENGTH - 1)
-	    {
-	      print_nl ();
-	      len = 0;
-	    }
-	  while (len < SECTION_NAME_MAP_LENGTH)
-	    {
-	      print_space ();
-	      ++len;
-	    }
+   len = strlen (output_section_statement->name);
+   if (len >= SECTION_NAME_MAP_LENGTH - 1)
+     {
+       print_nl ();
+       len = 0;
+     }
+   while (len < SECTION_NAME_MAP_LENGTH)
+     {
+       print_space ();
+       ++len;
+     }
 
-	  minfo ("0x%V %W", section->vma, section->size);
+   minfo ("0x%V %W", section->vma, section->size);
 
-	  if (section->vma != section->lma)
-	    minfo (_(" load address 0x%V"), section->lma);
-	}
+   if (section->vma != section->lma)
+     minfo (_(" load address 0x%V"), section->lma);
+ }
 
       print_nl ();
     }
 
   print_statement_list (output_section_statement->children.head,
-			output_section_statement);
+   output_section_statement);
 }

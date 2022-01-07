@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pwszVal; } ;
-typedef  TYPE_1__ PROPVARIANT ;
-typedef  int /*<<< orphan*/  IPropertyStore ;
-typedef  int /*<<< orphan*/  IMMDevice ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_5__ {int pwszVal; } ;
+typedef TYPE_1__ PROPVARIANT ;
+typedef int IPropertyStore ;
+typedef int IMMDevice ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_ON_ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMMDevice_OpenPropertyStore (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IPropertyStore_GetValue (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_1__*) ; 
- int /*<<< orphan*/  PropVariantInit (TYPE_1__*) ; 
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STGM_READ ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_PKEY_Device_FriendlyName ; 
- char* mp_to_utf8 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_warn (struct mp_log*,char*,int /*<<< orphan*/ ) ; 
- char* talloc_strdup (void*,char*) ; 
+
+ int EXIT_ON_ERROR (int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IMMDevice_OpenPropertyStore (int *,int ,int **) ;
+ int IPropertyStore_GetValue (int *,int *,TYPE_1__*) ;
+ int PropVariantClear (TYPE_1__*) ;
+ int PropVariantInit (TYPE_1__*) ;
+ int SAFE_RELEASE (int *) ;
+ int STGM_READ ;
+ int mp_HRESULT_to_str (int ) ;
+ int mp_PKEY_Device_FriendlyName ;
+ char* mp_to_utf8 (void*,int ) ;
+ int mp_warn (struct mp_log*,char*,int ) ;
+ char* talloc_strdup (void*,char*) ;
 
 __attribute__((used)) static char* get_device_name(struct mp_log *l, void *talloc_ctx, IMMDevice *pDevice)
 {
-    char *namestr = NULL;
-    IPropertyStore *pProps = NULL;
+    char *namestr = ((void*)0);
+    IPropertyStore *pProps = ((void*)0);
     PROPVARIANT devname;
     PropVariantInit(&devname);
 

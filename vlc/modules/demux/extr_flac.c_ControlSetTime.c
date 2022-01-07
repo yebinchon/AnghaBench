@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
-typedef  scalar_t__ uint64_t ;
-struct TYPE_9__ {int /*<<< orphan*/  out; int /*<<< orphan*/  s; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_10__ {scalar_t__ const i_data_pos; int i_seekpoint; int /*<<< orphan*/  i_next_block_flags; TYPE_1__** seekpoint; } ;
-typedef  TYPE_3__ demux_sys_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
+typedef scalar_t__ uint64_t ;
+struct TYPE_9__ {int out; int s; TYPE_3__* p_sys; } ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_10__ {scalar_t__ const i_data_pos; int i_seekpoint; int i_next_block_flags; TYPE_1__** seekpoint; } ;
+typedef TYPE_3__ demux_sys_t ;
 struct TYPE_8__ {scalar_t__ i_time_offset; scalar_t__ i_byte_offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_FLAG_DISCONTINUITY ; 
- scalar_t__ ControlGetLength (TYPE_2__*) ; 
- int /*<<< orphan*/  ES_OUT_SET_NEXT_DISPLAY_TIME ; 
- int RefineSeek (TYPE_2__*,scalar_t__,double const,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  Reset (TYPE_3__*) ; 
- int /*<<< orphan*/  STREAM_CAN_SEEK ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  es_out_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ stream_Size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_stream_Control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int vlc_stream_Seek (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int BLOCK_FLAG_DISCONTINUITY ;
+ scalar_t__ ControlGetLength (TYPE_2__*) ;
+ int ES_OUT_SET_NEXT_DISPLAY_TIME ;
+ int RefineSeek (TYPE_2__*,scalar_t__,double const,scalar_t__,scalar_t__) ;
+ int Reset (TYPE_3__*) ;
+ int STREAM_CAN_SEEK ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int es_out_Control (int ,int ,scalar_t__) ;
+ scalar_t__ stream_Size (int ) ;
+ int vlc_stream_Control (int ,int ,int*) ;
+ int vlc_stream_Seek (int ,scalar_t__) ;
 
 __attribute__((used)) static int ControlSetTime( demux_t *p_demux, vlc_tick_t i_time )
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int ControlSetTime( demux_t *p_demux, vlc_tick_t i_
     bool b_seekable;
     int i;
 
-    /* */
+
     vlc_stream_Control( p_demux->s, STREAM_CAN_SEEK, &b_seekable );
     if( !b_seekable )
         return VLC_EGENERIC;
@@ -63,10 +63,10 @@ __attribute__((used)) static int ControlSetTime( demux_t *p_demux, vlc_tick_t i_
     uint64_t i_upper = i_stream_size;
     uint64_t i_start_pos;
 
-    assert( p_sys->i_seekpoint > 0 );   /* ReadMeta ensure at least (0,0) */
+    assert( p_sys->i_seekpoint > 0 );
     if( p_sys->i_seekpoint > 1 )
     {
-        /* lookup base offset */
+
         for( i = p_sys->i_seekpoint-1; i >= 0; i-- )
         {
             if( p_sys->seekpoint[i]->i_time_offset <= i_time )

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  max_width ;
-typedef  int /*<<< orphan*/  max_height ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  scalar_t__ cl_uint ;
-typedef  int /*<<< orphan*/  cl_int ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int max_width ;
+typedef int max_height ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef scalar_t__ cl_uint ;
+typedef int cl_int ;
 struct TYPE_11__ {scalar_t__ image_channel_order; scalar_t__ image_channel_data_type; } ;
-typedef  TYPE_1__ cl_image_format ;
-typedef  int /*<<< orphan*/  cl_image_desc ;
+typedef TYPE_1__ cl_image_format ;
+typedef int cl_image_desc ;
 struct TYPE_14__ {TYPE_2__* hwctx; } ;
 struct TYPE_13__ {size_t max_width; size_t max_height; int* valid_sw_formats; void** valid_hw_formats; } ;
-struct TYPE_12__ {int /*<<< orphan*/  context; int /*<<< orphan*/  device_id; } ;
-typedef  TYPE_2__ AVOpenCLDeviceContext ;
-typedef  TYPE_3__ AVHWFramesConstraints ;
-typedef  TYPE_4__ AVHWDeviceContext ;
+struct TYPE_12__ {int context; int device_id; } ;
+typedef TYPE_2__ AVOpenCLDeviceContext ;
+typedef TYPE_3__ AVHWFramesConstraints ;
+typedef TYPE_4__ AVHWDeviceContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_NB ; 
- void* AV_PIX_FMT_NONE ; 
- void* AV_PIX_FMT_OPENCL ; 
- int /*<<< orphan*/  CL_DEVICE_IMAGE2D_MAX_HEIGHT ; 
- int /*<<< orphan*/  CL_DEVICE_IMAGE2D_MAX_WIDTH ; 
- int /*<<< orphan*/  CL_MEM_OBJECT_IMAGE2D ; 
- int /*<<< orphan*/  CL_MEM_READ_WRITE ; 
- int /*<<< orphan*/  CL_SUCCESS ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- void* av_malloc_array (int,int) ; 
- int av_reallocp_array (int**,int,int) ; 
- int /*<<< orphan*/  clGetDeviceInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clGetSupportedImageFormats (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,TYPE_1__*,scalar_t__*) ; 
- int opencl_get_plane_format (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_NB ;
+ void* AV_PIX_FMT_NONE ;
+ void* AV_PIX_FMT_OPENCL ;
+ int CL_DEVICE_IMAGE2D_MAX_HEIGHT ;
+ int CL_DEVICE_IMAGE2D_MAX_WIDTH ;
+ int CL_MEM_OBJECT_IMAGE2D ;
+ int CL_MEM_READ_WRITE ;
+ int CL_SUCCESS ;
+ int EINVAL ;
+ int ENOENT ;
+ int ENOMEM ;
+ int ENOSYS ;
+ int av_freep (TYPE_1__**) ;
+ int av_get_pix_fmt_name (int) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ void* av_malloc_array (int,int) ;
+ int av_reallocp_array (int**,int,int) ;
+ int clGetDeviceInfo (int ,int ,int,size_t*,int *) ;
+ int clGetSupportedImageFormats (int ,int ,int ,scalar_t__,TYPE_1__*,scalar_t__*) ;
+ int opencl_get_plane_format (int,int,int ,int ,TYPE_1__*,int *) ;
 
 __attribute__((used)) static int opencl_frames_get_constraints(AVHWDeviceContext *hwdev,
                                          const void *hwconfig,
@@ -60,14 +60,14 @@ __attribute__((used)) static int opencl_frames_get_constraints(AVHWDeviceContext
 {
     AVOpenCLDeviceContext *hwctx = hwdev->hwctx;
     cl_uint nb_image_formats;
-    cl_image_format *image_formats = NULL;
+    cl_image_format *image_formats = ((void*)0);
     cl_int cle;
     enum AVPixelFormat pix_fmt;
     int err, pix_fmts_found;
     size_t max_width, max_height;
 
     cle = clGetDeviceInfo(hwctx->device_id, CL_DEVICE_IMAGE2D_MAX_WIDTH,
-                          sizeof(max_width), &max_width, NULL);
+                          sizeof(max_width), &max_width, ((void*)0));
     if (cle != CL_SUCCESS) {
         av_log(hwdev, AV_LOG_ERROR, "Failed to query maximum "
                "supported image width: %d.\n", cle);
@@ -75,7 +75,7 @@ __attribute__((used)) static int opencl_frames_get_constraints(AVHWDeviceContext
         constraints->max_width = max_width;
     }
     cle = clGetDeviceInfo(hwctx->device_id, CL_DEVICE_IMAGE2D_MAX_HEIGHT,
-                          sizeof(max_height), &max_height, NULL);
+                          sizeof(max_height), &max_height, ((void*)0));
     if (cle != CL_SUCCESS) {
         av_log(hwdev, AV_LOG_ERROR, "Failed to query maximum "
                "supported image height: %d.\n", cle);
@@ -88,7 +88,7 @@ __attribute__((used)) static int opencl_frames_get_constraints(AVHWDeviceContext
     cle = clGetSupportedImageFormats(hwctx->context,
                                      CL_MEM_READ_WRITE,
                                      CL_MEM_OBJECT_IMAGE2D,
-                                     0, NULL, &nb_image_formats);
+                                     0, ((void*)0), &nb_image_formats);
     if (cle != CL_SUCCESS) {
         av_log(hwdev, AV_LOG_ERROR, "Failed to query supported "
                "image formats: %d.\n", cle);
@@ -113,7 +113,7 @@ __attribute__((used)) static int opencl_frames_get_constraints(AVHWDeviceContext
                                      CL_MEM_READ_WRITE,
                                      CL_MEM_OBJECT_IMAGE2D,
                                      nb_image_formats,
-                                     image_formats, NULL);
+                                     image_formats, ((void*)0));
     if (cle != CL_SUCCESS) {
         av_log(hwdev, AV_LOG_ERROR, "Failed to query supported "
                "image formats: %d.\n", cle);
@@ -124,7 +124,7 @@ __attribute__((used)) static int opencl_frames_get_constraints(AVHWDeviceContext
     pix_fmts_found = 0;
     for (pix_fmt = 0; pix_fmt < AV_PIX_FMT_NB; pix_fmt++) {
         cl_image_format image_format;
-        cl_image_desc   image_desc;
+        cl_image_desc image_desc;
         int plane, i;
 
         for (plane = 0;; plane++) {

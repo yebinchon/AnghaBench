@@ -1,33 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct coff_where {int where; int offset; TYPE_1__* section; } ;
 struct TYPE_2__ {char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
-#define  coff_where_entag 136 
-#define  coff_where_member_of_enum 135 
-#define  coff_where_member_of_struct 134 
-#define  coff_where_memory 133 
-#define  coff_where_register 132 
-#define  coff_where_stack 131 
-#define  coff_where_strtag 130 
-#define  coff_where_typedef 129 
-#define  coff_where_unknown 128 
- int /*<<< orphan*/  nl () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  tab (int) ; 
+
+ int abort () ;
+ int nl () ;
+ int printf (char*,...) ;
+ int tab (int) ;
 
 __attribute__((used)) static void
 dump_coff_where (struct coff_where *p)
@@ -35,30 +26,30 @@ dump_coff_where (struct coff_where *p)
   tab (1);
   switch (p->where)
     {
-    case coff_where_stack:
+    case 131:
       printf ("Stack offset %x", p->offset);
       break;
-    case coff_where_memory:
+    case 133:
       printf ("Memory section %s+%x", p->section->name, p->offset);
       break;
-    case coff_where_register:
+    case 132:
       printf ("Register %d", p->offset);
       break;
-    case coff_where_member_of_struct:
+    case 134:
       printf ("Struct Member offset %x", p->offset);
       break;
-    case coff_where_member_of_enum:
+    case 135:
       printf ("Enum Member offset %x", p->offset);
       break;
-    case coff_where_unknown:
+    case 128:
       printf ("Undefined symbol");
       break;
-    case coff_where_strtag:
+    case 130:
       printf ("STRTAG");
-    case coff_where_entag:
+    case 136:
       printf ("ENTAG");
       break;
-    case coff_where_typedef:
+    case 129:
       printf ("TYPEDEF");
       break;
     default:

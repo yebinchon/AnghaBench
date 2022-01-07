@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  QueryItem ;
-typedef  int /*<<< orphan*/  NODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clean_NOT_intree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * maketree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * plaintree (int /*<<< orphan*/ ,int*) ; 
+
+
+
+typedef int QueryItem ;
+typedef int NODE ;
+
+
+ int clean_NOT_intree (int *) ;
+ int * maketree (int *) ;
+ int * plaintree (int ,int*) ;
 
 QueryItem *
 clean_NOT(QueryItem *ptr, int *len)
 {
-	NODE	   *root = maketree(ptr);
+ NODE *root = maketree(ptr);
 
-	return plaintree(clean_NOT_intree(root), len);
+ return plaintree(clean_NOT_intree(root), len);
 }

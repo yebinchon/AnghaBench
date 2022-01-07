@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  lsm_db ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  treeShmalloc (int /*<<< orphan*/ *,int,int,int*) ; 
- void* treeShmptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+typedef int lsm_db ;
+
+
+ int LSM_OK ;
+ int assert (int) ;
+ int memset (void*,int ,int) ;
+ int treeShmalloc (int *,int,int,int*) ;
+ void* treeShmptr (int *,int ) ;
 
 __attribute__((used)) static void *treeShmallocZero(lsm_db *pDb, int nByte, u32 *piPtr, int *pRc){
   u32 iPtr;

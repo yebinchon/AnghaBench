@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* cheats; } ;
-struct TYPE_3__ {int state; int /*<<< orphan*/  code; } ;
+struct TYPE_3__ {int state; int code; } ;
 
-/* Variables and functions */
- TYPE_2__ cheat_manager_state ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  string_is_empty (char const*) ; 
+
+ TYPE_2__ cheat_manager_state ;
+ int strcpy (int ,char const*) ;
+ int string_is_empty (char const*) ;
 
 void cheat_manager_set_code(unsigned i, const char *str)
 {
@@ -28,5 +28,5 @@ void cheat_manager_set_code(unsigned i, const char *str)
    if (!string_is_empty(str))
       strcpy(cheat_manager_state.cheats[i].code, str);
 
-   cheat_manager_state.cheats[i].state = true;
+   cheat_manager_state.cheats[i].state = 1;
 }

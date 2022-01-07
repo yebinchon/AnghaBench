@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-struct TYPE_7__ {int /*<<< orphan*/  ADC_ScanDirection; int /*<<< orphan*/  ADC_DataAlign; int /*<<< orphan*/  ADC_ExternalTrigConvEdge; int /*<<< orphan*/  ADC_ContinuousConvMode; int /*<<< orphan*/  ADC_Resolution; } ;
-struct TYPE_6__ {int DMA_BufferSize; int /*<<< orphan*/  DMA_M2M; int /*<<< orphan*/  DMA_Priority; int /*<<< orphan*/  DMA_Mode; int /*<<< orphan*/  DMA_MemoryDataSize; int /*<<< orphan*/  DMA_PeripheralDataSize; int /*<<< orphan*/  DMA_MemoryInc; int /*<<< orphan*/  DMA_PeripheralInc; int /*<<< orphan*/  DMA_DIR; void* DMA_MemoryBaseAddr; void* DMA_PeripheralBaseAddr; } ;
-typedef  TYPE_1__ DMA_InitTypeDef ;
-typedef  TYPE_2__ ADC_InitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADC1 ; 
- int /*<<< orphan*/  ADC_ChannelConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADC_Channel_0 ; 
- int /*<<< orphan*/  ADC_Channel_1 ; 
- int /*<<< orphan*/  ADC_Channel_2 ; 
- int /*<<< orphan*/  ADC_Channel_3 ; 
- int /*<<< orphan*/  ADC_Channel_4 ; 
- int /*<<< orphan*/  ADC_Channel_5 ; 
- int /*<<< orphan*/  ADC_Channel_6 ; 
- int /*<<< orphan*/  ADC_Channel_7 ; 
- int /*<<< orphan*/  ADC_Channel_8 ; 
- int /*<<< orphan*/  ADC_Channel_9 ; 
- int /*<<< orphan*/  ADC_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADC_DMACmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADC_DMAMode_Circular ; 
- int /*<<< orphan*/  ADC_DMARequestModeConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ADC_DMA_ADDR ; 
- int /*<<< orphan*/  ADC_DataAlign_Right ; 
- int /*<<< orphan*/  ADC_ExternalTrigConvEdge_None ; 
- int /*<<< orphan*/  ADC_FLAG_ADRDY ; 
- int /*<<< orphan*/  ADC_GetCalibrationFactor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADC_GetFlagStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADC_Init (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ADC_PINS_NUM ; 
- int /*<<< orphan*/  ADC_POWER_AHB ; 
- int /*<<< orphan*/  ADC_POWER_APB1 ; 
- int /*<<< orphan*/  ADC_POWER_APB2 ; 
- int /*<<< orphan*/  ADC_Resolution_12b ; 
- int /*<<< orphan*/  ADC_SampleTime_239_5Cycles ; 
- int /*<<< orphan*/  ADC_ScanDirection_Upward ; 
- int /*<<< orphan*/  ADC_StartOfConversion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADC_StructInit (TYPE_2__*) ; 
- int /*<<< orphan*/  CONFIG_pins (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA1_Channel1 ; 
- int /*<<< orphan*/  DMA_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA_DIR_PeripheralSRC ; 
- int /*<<< orphan*/  DMA_DeInit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA_Init (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  DMA_M2M_Disable ; 
- int /*<<< orphan*/  DMA_MemoryDataSize_HalfWord ; 
- int /*<<< orphan*/  DMA_MemoryInc_Enable ; 
- int /*<<< orphan*/  DMA_Mode_Circular ; 
- int /*<<< orphan*/  DMA_PeripheralDataSize_HalfWord ; 
- int /*<<< orphan*/  DMA_PeripheralInc_Disable ; 
- int /*<<< orphan*/  DMA_Priority_High ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/  RCC_AHBPeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB1PeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB2PeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ adc_readings ; 
- int /*<<< orphan*/  pins_adc ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* uint32_t ;
+struct TYPE_7__ {int ADC_ScanDirection; int ADC_DataAlign; int ADC_ExternalTrigConvEdge; int ADC_ContinuousConvMode; int ADC_Resolution; } ;
+struct TYPE_6__ {int DMA_BufferSize; int DMA_M2M; int DMA_Priority; int DMA_Mode; int DMA_MemoryDataSize; int DMA_PeripheralDataSize; int DMA_MemoryInc; int DMA_PeripheralInc; int DMA_DIR; void* DMA_MemoryBaseAddr; void* DMA_PeripheralBaseAddr; } ;
+typedef TYPE_1__ DMA_InitTypeDef ;
+typedef TYPE_2__ ADC_InitTypeDef ;
+
+
+ int ADC1 ;
+ int ADC_ChannelConfig (int ,int ,int ) ;
+ int ADC_Channel_0 ;
+ int ADC_Channel_1 ;
+ int ADC_Channel_2 ;
+ int ADC_Channel_3 ;
+ int ADC_Channel_4 ;
+ int ADC_Channel_5 ;
+ int ADC_Channel_6 ;
+ int ADC_Channel_7 ;
+ int ADC_Channel_8 ;
+ int ADC_Channel_9 ;
+ int ADC_Cmd (int ,int ) ;
+ int ADC_DMACmd (int ,int ) ;
+ int ADC_DMAMode_Circular ;
+ int ADC_DMARequestModeConfig (int ,int ) ;
+ scalar_t__ ADC_DMA_ADDR ;
+ int ADC_DataAlign_Right ;
+ int ADC_ExternalTrigConvEdge_None ;
+ int ADC_FLAG_ADRDY ;
+ int ADC_GetCalibrationFactor (int ) ;
+ int ADC_GetFlagStatus (int ,int ) ;
+ int ADC_Init (int ,TYPE_2__*) ;
+ int ADC_PINS_NUM ;
+ int ADC_POWER_AHB ;
+ int ADC_POWER_APB1 ;
+ int ADC_POWER_APB2 ;
+ int ADC_Resolution_12b ;
+ int ADC_SampleTime_239_5Cycles ;
+ int ADC_ScanDirection_Upward ;
+ int ADC_StartOfConversion (int ) ;
+ int ADC_StructInit (TYPE_2__*) ;
+ int CONFIG_pins (int ,int ) ;
+ int DMA1_Channel1 ;
+ int DMA_Cmd (int ,int ) ;
+ int DMA_DIR_PeripheralSRC ;
+ int DMA_DeInit (int ) ;
+ int DMA_Init (int ,TYPE_1__*) ;
+ int DMA_M2M_Disable ;
+ int DMA_MemoryDataSize_HalfWord ;
+ int DMA_MemoryInc_Enable ;
+ int DMA_Mode_Circular ;
+ int DMA_PeripheralDataSize_HalfWord ;
+ int DMA_PeripheralInc_Disable ;
+ int DMA_Priority_High ;
+ int ENABLE ;
+ int RCC_AHBPeriphClockCmd (int ,int ) ;
+ int RCC_APB1PeriphClockCmd (int ,int ) ;
+ int RCC_APB2PeriphClockCmd (int ,int ) ;
+ scalar_t__ adc_readings ;
+ int pins_adc ;
 
 void ANALOG_Config(void) {
     ADC_InitTypeDef adci;
     DMA_InitTypeDef dmai;
 
-    // Enable clocks
+
     RCC_AHBPeriphClockCmd(ADC_POWER_AHB, ENABLE);
     RCC_APB1PeriphClockCmd(ADC_POWER_APB1, ENABLE);
-	RCC_APB2PeriphClockCmd(ADC_POWER_APB2, ENABLE);
+ RCC_APB2PeriphClockCmd(ADC_POWER_APB2, ENABLE);
 
-    // Configure the pins as analog inputs
+
     CONFIG_pins(pins_adc, ADC_PINS_NUM);
 
-    // configure ADC
+
     ADC_StructInit(&adci);
     adci.ADC_Resolution = ADC_Resolution_12b;
     adci.ADC_ContinuousConvMode = ENABLE;
@@ -92,7 +92,7 @@ void ANALOG_Config(void) {
     adci.ADC_ScanDirection = ADC_ScanDirection_Upward;
     ADC_Init(ADC1, &adci);
 
-    // configure channels
+
     ADC_ChannelConfig(ADC1, ADC_Channel_0, ADC_SampleTime_239_5Cycles);
     ADC_ChannelConfig(ADC1, ADC_Channel_1, ADC_SampleTime_239_5Cycles);
     ADC_ChannelConfig(ADC1, ADC_Channel_2, ADC_SampleTime_239_5Cycles);
@@ -104,17 +104,17 @@ void ANALOG_Config(void) {
     ADC_ChannelConfig(ADC1, ADC_Channel_8, ADC_SampleTime_239_5Cycles);
     ADC_ChannelConfig(ADC1, ADC_Channel_9, ADC_SampleTime_239_5Cycles);
 
-    // get calibration
+
     ADC_GetCalibrationFactor(ADC1);
 
-    // Set up DMA for circular buffer mode
+
     ADC_DMARequestModeConfig(ADC1, ADC_DMAMode_Circular);
 
     ADC_DMACmd(ADC1, ENABLE);
 
     ADC_Cmd(ADC1, ENABLE);
 
-    // wait for the ADRDY flag is set
+
     while( !ADC_GetFlagStatus(ADC1, ADC_FLAG_ADRDY));
 
     ADC_StartOfConversion(ADC1);

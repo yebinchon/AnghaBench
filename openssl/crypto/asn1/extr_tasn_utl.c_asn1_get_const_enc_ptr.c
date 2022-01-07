@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int flags; int /*<<< orphan*/  enc_offset; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int flags; int enc_offset; } ;
 struct TYPE_4__ {TYPE_2__* funcs; } ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  TYPE_1__ ASN1_ITEM ;
-typedef  int /*<<< orphan*/  ASN1_ENCODING ;
-typedef  TYPE_2__ ASN1_AUX ;
+typedef int ASN1_VALUE ;
+typedef TYPE_1__ ASN1_ITEM ;
+typedef int ASN1_ENCODING ;
+typedef TYPE_2__ ASN1_AUX ;
 
-/* Variables and functions */
- int ASN1_AFLG_ENCODING ; 
- int /*<<< orphan*/  const* offset2ptr (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int ASN1_AFLG_ENCODING ;
+ int const* offset2ptr (int const*,int ) ;
 
 __attribute__((used)) static const ASN1_ENCODING *asn1_get_const_enc_ptr(const ASN1_VALUE **pval,
                                                    const ASN1_ITEM *it)
 {
     const ASN1_AUX *aux;
 
-    if (pval == NULL || *pval == NULL)
-        return NULL;
+    if (pval == ((void*)0) || *pval == ((void*)0))
+        return ((void*)0);
     aux = it->funcs;
-    if (aux == NULL || (aux->flags & ASN1_AFLG_ENCODING) == 0)
-        return NULL;
+    if (aux == ((void*)0) || (aux->flags & ASN1_AFLG_ENCODING) == 0)
+        return ((void*)0);
     return offset2ptr(*pval, aux->enc_offset);
 }

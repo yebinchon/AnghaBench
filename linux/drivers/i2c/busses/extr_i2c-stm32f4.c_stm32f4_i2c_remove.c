@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stm32f4_i2c_dev {int /*<<< orphan*/  clk; int /*<<< orphan*/  adap; } ;
+
+
+
+
+struct stm32f4_i2c_dev {int clk; int adap; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_unprepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_del_adapter (int /*<<< orphan*/ *) ; 
- struct stm32f4_i2c_dev* platform_get_drvdata (struct platform_device*) ; 
+
+ int clk_unprepare (int ) ;
+ int i2c_del_adapter (int *) ;
+ struct stm32f4_i2c_dev* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int stm32f4_i2c_remove(struct platform_device *pdev)
 {
-	struct stm32f4_i2c_dev *i2c_dev = platform_get_drvdata(pdev);
+ struct stm32f4_i2c_dev *i2c_dev = platform_get_drvdata(pdev);
 
-	i2c_del_adapter(&i2c_dev->adap);
+ i2c_del_adapter(&i2c_dev->adap);
 
-	clk_unprepare(i2c_dev->clk);
+ clk_unprepare(i2c_dev->clk);
 
-	return 0;
+ return 0;
 }

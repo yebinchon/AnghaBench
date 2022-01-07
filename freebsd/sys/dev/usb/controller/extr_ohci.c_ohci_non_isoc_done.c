@@ -1,72 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usb_error_t ;
-struct TYPE_2__ {int /*<<< orphan*/  control_act; scalar_t__ control_xfr; scalar_t__ control_hdr; } ;
-struct usb_xfer {int aframes; int nframes; TYPE_1__ flags_int; int /*<<< orphan*/ * td_transfer_cache; int /*<<< orphan*/ * td_transfer_first; int /*<<< orphan*/  endpoint; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTFN (int,char*,struct usb_xfer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ohci_device_done (struct usb_xfer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ohci_dump_tds (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ohci_non_isoc_done_sub (struct usb_xfer*) ; 
- int ohcidebug ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int usb_error_t ;
+struct TYPE_2__ {int control_act; scalar_t__ control_xfr; scalar_t__ control_hdr; } ;
+struct usb_xfer {int aframes; int nframes; TYPE_1__ flags_int; int * td_transfer_cache; int * td_transfer_first; int endpoint; } ;
+
+
+ int DPRINTFN (int,char*,struct usb_xfer*,int ) ;
+ int ohci_device_done (struct usb_xfer*,int ) ;
+ int ohci_dump_tds (int *) ;
+ int ohci_non_isoc_done_sub (struct usb_xfer*) ;
+ int ohcidebug ;
 
 __attribute__((used)) static void
 ohci_non_isoc_done(struct usb_xfer *xfer)
 {
-	usb_error_t err = 0;
+ usb_error_t err = 0;
 
-	DPRINTFN(13, "xfer=%p endpoint=%p transfer done\n",
-	    xfer, xfer->endpoint);
+ DPRINTFN(13, "xfer=%p endpoint=%p transfer done\n",
+     xfer, xfer->endpoint);
+ xfer->td_transfer_cache = xfer->td_transfer_first;
 
-#ifdef USB_DEBUG
-	if (ohcidebug > 10) {
-		ohci_dump_tds(xfer->td_transfer_first);
-	}
-#endif
+ if (xfer->flags_int.control_xfr) {
 
-	/* reset scanner */
+  if (xfer->flags_int.control_hdr) {
 
-	xfer->td_transfer_cache = xfer->td_transfer_first;
+   err = ohci_non_isoc_done_sub(xfer);
+  }
+  xfer->aframes = 1;
 
-	if (xfer->flags_int.control_xfr) {
+  if (xfer->td_transfer_cache == ((void*)0)) {
+   goto done;
+  }
+ }
+ while (xfer->aframes != xfer->nframes) {
 
-		if (xfer->flags_int.control_hdr) {
+  err = ohci_non_isoc_done_sub(xfer);
+  xfer->aframes++;
 
-			err = ohci_non_isoc_done_sub(xfer);
-		}
-		xfer->aframes = 1;
+  if (xfer->td_transfer_cache == ((void*)0)) {
+   goto done;
+  }
+ }
 
-		if (xfer->td_transfer_cache == NULL) {
-			goto done;
-		}
-	}
-	while (xfer->aframes != xfer->nframes) {
+ if (xfer->flags_int.control_xfr &&
+     !xfer->flags_int.control_act) {
 
-		err = ohci_non_isoc_done_sub(xfer);
-		xfer->aframes++;
-
-		if (xfer->td_transfer_cache == NULL) {
-			goto done;
-		}
-	}
-
-	if (xfer->flags_int.control_xfr &&
-	    !xfer->flags_int.control_act) {
-
-		err = ohci_non_isoc_done_sub(xfer);
-	}
+  err = ohci_non_isoc_done_sub(xfer);
+ }
 done:
-	ohci_device_done(xfer, err);
+ ohci_device_done(xfer, err);
 }

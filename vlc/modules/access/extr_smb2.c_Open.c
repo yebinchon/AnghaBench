@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_22__ {char* psz_path; char* psz_host; int /*<<< orphan*/  i_port; } ;
-typedef  TYPE_1__ vlc_url_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+struct TYPE_22__ {char* psz_path; char* psz_host; int i_port; } ;
+typedef TYPE_1__ vlc_url_t ;
+typedef int vlc_object_t ;
 struct TYPE_23__ {char* psz_realm; scalar_t__ i_get_order; } ;
-typedef  TYPE_2__ vlc_credential ;
-struct smb2_url {int /*<<< orphan*/  server; int /*<<< orphan*/  share; } ;
-struct access_sys {int /*<<< orphan*/  error_status; TYPE_1__ encoded_url; int /*<<< orphan*/ * smb2; int /*<<< orphan*/ * share_enum; int /*<<< orphan*/ * smb2dir; int /*<<< orphan*/ * smb2fh; } ;
-struct TYPE_24__ {void* pf_control; int /*<<< orphan*/ * pf_seek; int /*<<< orphan*/  pf_readdir; int /*<<< orphan*/  pf_read; int /*<<< orphan*/  psz_url; struct access_sys* p_sys; } ;
-typedef  TYPE_3__ stream_t ;
+typedef TYPE_2__ vlc_credential ;
+struct smb2_url {int server; int share; } ;
+struct access_sys {int error_status; TYPE_1__ encoded_url; int * smb2; int * share_enum; int * smb2dir; int * smb2fh; } ;
+struct TYPE_24__ {void* pf_control; int * pf_seek; int pf_readdir; int pf_read; int psz_url; struct access_sys* p_sys; } ;
+typedef TYPE_3__ stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DirRead ; 
- int /*<<< orphan*/  EIO ; 
- void* FileControl ; 
- int /*<<< orphan*/  FileRead ; 
- int /*<<< orphan*/ * FileSeek ; 
- scalar_t__ GET_FROM_DIALOG ; 
- int /*<<< orphan*/  SMB2_NEGOTIATE_SIGNING_ENABLED ; 
- int /*<<< orphan*/  SMB_LOGIN_DIALOG_TEXT ; 
- int /*<<< orphan*/  SMB_LOGIN_DIALOG_TITLE ; 
- int /*<<< orphan*/  ShareEnum ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_ETIMEOUT ; 
- scalar_t__ VLC_SMB2_STATUS_DENIED (int /*<<< orphan*/ ) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_VAR_VOID ; 
- int /*<<< orphan*/  _ (char*) ; 
- void* access_vaDirectoryControlHelper ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  smb2_destroy_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smb2_destroy_url (struct smb2_url*) ; 
- char* smb2_get_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * smb2_init_context () ; 
- struct smb2_url* smb2_parse_url (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  smb2_set_security_mode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_Create (TYPE_3__*,char*,int /*<<< orphan*/ ) ; 
- char* var_InheritString (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  vlc_UrlClean (TYPE_1__*) ; 
- scalar_t__ vlc_UrlParseFixup (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- int /*<<< orphan*/  vlc_credential_clean (TYPE_2__*) ; 
- scalar_t__ vlc_credential_get (TYPE_2__*,TYPE_3__*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  vlc_credential_init (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_credential_store (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_dialog_display_error (TYPE_3__*,int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ vlc_killed () ; 
- struct access_sys* vlc_obj_calloc (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  vlc_smb2_disconnect_share (TYPE_3__*) ; 
- int vlc_smb2_open_share (TYPE_3__*,struct smb2_url*,TYPE_2__*) ; 
- char* vlc_smb2_resolve (TYPE_3__*,char*,int /*<<< orphan*/ ) ; 
- char* vlc_uri_compose (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_uri_decode (char*) ; 
+
+ int DirRead ;
+ int EIO ;
+ void* FileControl ;
+ int FileRead ;
+ int * FileSeek ;
+ scalar_t__ GET_FROM_DIALOG ;
+ int SMB2_NEGOTIATE_SIGNING_ENABLED ;
+ int SMB_LOGIN_DIALOG_TEXT ;
+ int SMB_LOGIN_DIALOG_TITLE ;
+ int ShareEnum ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_ETIMEOUT ;
+ scalar_t__ VLC_SMB2_STATUS_DENIED (int ) ;
+ int VLC_SUCCESS ;
+ int VLC_VAR_VOID ;
+ int _ (char*) ;
+ void* access_vaDirectoryControlHelper ;
+ int free (char*) ;
+ int msg_Err (TYPE_3__*,char*) ;
+ int smb2_destroy_context (int *) ;
+ int smb2_destroy_url (struct smb2_url*) ;
+ char* smb2_get_error (int *) ;
+ int * smb2_init_context () ;
+ struct smb2_url* smb2_parse_url (int *,char*) ;
+ int smb2_set_security_mode (int *,int ) ;
+ scalar_t__ unlikely (int ) ;
+ int var_Create (TYPE_3__*,char*,int ) ;
+ char* var_InheritString (TYPE_3__*,char*) ;
+ int vlc_UrlClean (TYPE_1__*) ;
+ scalar_t__ vlc_UrlParseFixup (TYPE_1__*,int ) ;
+ int vlc_assert_unreachable () ;
+ int vlc_credential_clean (TYPE_2__*) ;
+ scalar_t__ vlc_credential_get (TYPE_2__*,TYPE_3__*,char*,char*,int ,int ,...) ;
+ int vlc_credential_init (TYPE_2__*,TYPE_1__*) ;
+ int vlc_credential_store (TYPE_2__*,TYPE_3__*) ;
+ int vlc_dialog_display_error (TYPE_3__*,int ,char*,char const*) ;
+ scalar_t__ vlc_killed () ;
+ struct access_sys* vlc_obj_calloc (int *,int,int) ;
+ int vlc_smb2_disconnect_share (TYPE_3__*) ;
+ int vlc_smb2_open_share (TYPE_3__*,struct smb2_url*,TYPE_2__*) ;
+ char* vlc_smb2_resolve (TYPE_3__*,char*,int ) ;
+ char* vlc_uri_compose (TYPE_1__*) ;
+ int vlc_uri_decode (char*) ;
 
 __attribute__((used)) static int
 Open(vlc_object_t *p_obj)
 {
     stream_t *access = (stream_t *)p_obj;
     struct access_sys *sys = vlc_obj_calloc(p_obj, 1, sizeof (*sys));
-    struct smb2_url *smb2_url = NULL;
-    char *var_domain = NULL;
+    struct smb2_url *smb2_url = ((void*)0);
+    char *var_domain = ((void*)0);
 
-    if (unlikely(sys == NULL))
+    if (unlikely(sys == ((void*)0)))
         return VLC_ENOMEM;
     access->p_sys = sys;
 
-    /* Parse the encoded URL */
+
     if (vlc_UrlParseFixup(&sys->encoded_url, access->psz_url) != 0)
         return VLC_ENOMEM;
 
     sys->smb2 = smb2_init_context();
-    if (sys->smb2 == NULL)
+    if (sys->smb2 == ((void*)0))
     {
         msg_Err(access, "smb2_init_context failed");
         goto error;
@@ -94,16 +94,16 @@ Open(vlc_object_t *p_obj)
 
     smb2_set_security_mode(sys->smb2, SMB2_NEGOTIATE_SIGNING_ENABLED);
 
-    if (sys->encoded_url.psz_path == NULL)
+    if (sys->encoded_url.psz_path == ((void*)0))
         sys->encoded_url.psz_path = (char *) "/";
 
     char *resolved_host = vlc_smb2_resolve(access, sys->encoded_url.psz_host,
                                            sys->encoded_url.i_port);
 
-    /* smb2_* functions need a decoded url. Re compose the url from the
-     * modified sys->encoded_url (with the resolved host). */
+
+
     char *url;
-    if (resolved_host != NULL)
+    if (resolved_host != ((void*)0))
     {
         vlc_url_t resolved_url = sys->encoded_url;
         resolved_url.psz_host = resolved_host;
@@ -132,10 +132,10 @@ Open(vlc_object_t *p_obj)
     var_domain = var_InheritString(access, "smb-domain");
     credential.psz_realm = var_domain;
 
-    /* First, try Guest login or using "smb-" options (without
-     * keystore/user interaction) */
-    vlc_credential_get(&credential, access, "smb-user", "smb-pwd", NULL,
-                       NULL);
+
+
+    vlc_credential_get(&credential, access, "smb-user", "smb-pwd", ((void*)0),
+                       ((void*)0));
     ret = vlc_smb2_open_share(access, smb2_url, &credential);
 
     while (ret == -1
@@ -159,30 +159,30 @@ Open(vlc_object_t *p_obj)
                                      _("SMB2 operation failed"), "%s", error);
         if (credential.i_get_order == GET_FROM_DIALOG)
         {
-            /* Tell other smb modules (likely dsm) that we already requested
-             * credential to the users and that it it useless to try again.
-             * This avoid to show 2 login dialogs for the same access. */
+
+
+
             var_Create(access, "smb-dialog-failed", VLC_VAR_VOID);
         }
         goto error;
     }
 
-    if (sys->smb2fh != NULL)
+    if (sys->smb2fh != ((void*)0))
     {
         access->pf_read = FileRead;
         access->pf_seek = FileSeek;
         access->pf_control = FileControl;
     }
-    else if (sys->smb2dir != NULL)
+    else if (sys->smb2dir != ((void*)0))
     {
         access->pf_readdir = DirRead;
-        access->pf_seek = NULL;
+        access->pf_seek = ((void*)0);
         access->pf_control = access_vaDirectoryControlHelper;
     }
-    else if (sys->share_enum != NULL)
+    else if (sys->share_enum != ((void*)0))
     {
         access->pf_readdir = ShareEnum;
-        access->pf_seek = NULL;
+        access->pf_seek = ((void*)0);
         access->pf_control = access_vaDirectoryControlHelper;
     }
     else
@@ -193,9 +193,9 @@ Open(vlc_object_t *p_obj)
     return VLC_SUCCESS;
 
 error:
-    if (smb2_url != NULL)
+    if (smb2_url != ((void*)0))
         smb2_destroy_url(smb2_url);
-    if (sys->smb2 != NULL)
+    if (sys->smb2 != ((void*)0))
     {
         vlc_smb2_disconnect_share(access);
         smb2_destroy_context(sys->smb2);
@@ -203,11 +203,11 @@ error:
     vlc_UrlClean(&sys->encoded_url);
     free(var_domain);
 
-    /* Returning VLC_ETIMEOUT will stop the module probe and prevent to load
-     * the next smb module. The smb2 module can return this specific error in
-     * case of network error (EIO) or when the user asked to cancel it
-     * (vlc_killed()). Indeed, in these cases, it is useless to try next smb
-     * modules. */
+
+
+
+
+
     return vlc_killed() || sys->error_status == -EIO ? VLC_ETIMEOUT
          : VLC_EGENERIC;
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WORD ;
 struct TYPE_3__ {int line; int buffer_len; scalar_t__ text; scalar_t__ broken_text; } ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ BOOL ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EM_GETLINE ; 
- int /*<<< orphan*/  EM_GETLINECOUNT ; 
- scalar_t__ FALSE ; 
- int SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- TYPE_1__* gl ; 
- scalar_t__ is_rtl () ; 
- int /*<<< orphan*/  memset (char*,int,int const) ; 
- int min (int,scalar_t__) ; 
- int /*<<< orphan*/  new_richedit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcpy (char*,scalar_t__) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int const) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ int DestroyWindow (int ) ;
+ int EM_GETLINE ;
+ int EM_GETLINECOUNT ;
+ scalar_t__ FALSE ;
+ int SendMessageA (int ,int ,int,int ) ;
+ scalar_t__ TRUE ;
+ int WM_SETTEXT ;
+ TYPE_1__* gl ;
+ scalar_t__ is_rtl () ;
+ int memset (char*,int,int const) ;
+ int min (int,scalar_t__) ;
+ int new_richedit (int *) ;
+ int ok (int,char*,...) ;
+ int strcpy (char*,scalar_t__) ;
+ scalar_t__ strlen (char*) ;
+ int strncmp (char*,char*,int const) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_EM_GETLINE(void)
 {
   int i;
-  HWND hwndRichEdit = new_richedit(NULL);
+  HWND hwndRichEdit = new_richedit(((void*)0));
   static const int nBuf = 1024;
   char dest[1024], origdest[1024];
   LRESULT linecount;
@@ -67,27 +67,27 @@ __attribute__((used)) static void test_EM_GETLINE(void)
     char gl_text[1024];
 
     if (gl[i].line >= linecount)
-      continue; /* Win9x, WinME and NT4 */
+      continue;
 
     if (broken_os && gl[i].broken_text)
-      /* Win9x, WinME and NT4 */
+
       strcpy(gl_text, gl[i].broken_text);
     else
       strcpy(gl_text, gl[i].text);
 
     expected_nCopied = min(gl[i].buffer_len, strlen(gl_text));
-    /* Cater for the fact that Win9x, WinME and NT4 don't append the '\0' */
+
     expected_bytes_written = min(gl[i].buffer_len, strlen(gl_text) + (broken_os ? 0 : 1));
 
     memset(dest, 0xBB, nBuf);
     *(WORD *) dest = gl[i].buffer_len;
 
-    /* EM_GETLINE appends a "\r\0" to the end of the line
-     * nCopied counts up to and including the '\r' */
+
+
     nCopied = SendMessageA(hwndRichEdit, EM_GETLINE, gl[i].line, (LPARAM)dest);
     ok(nCopied == expected_nCopied, "%d: %d!=%d\n", i, nCopied,
        expected_nCopied);
-    /* two special cases since a parameter is passed via dest */
+
     if (gl[i].buffer_len == 0)
       ok(!dest[0] && !dest[1] && !strncmp(dest+2, origdest+2, nBuf-2),
          "buffer_len=0\n");

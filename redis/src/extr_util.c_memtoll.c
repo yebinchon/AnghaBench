@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- scalar_t__ EINVAL ; 
- scalar_t__ errno ; 
- scalar_t__ isdigit (char const) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned int) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
- long long strtoll (char*,char**,int) ; 
+
+
+
+typedef int buf ;
+
+
+ scalar_t__ EINVAL ;
+ scalar_t__ errno ;
+ scalar_t__ isdigit (char const) ;
+ int memcpy (char*,char const*,unsigned int) ;
+ int strcasecmp (char const*,char*) ;
+ long long strtoll (char*,char**,int) ;
 
 long long memtoll(const char *p, int *err) {
     const char *u;
     char buf[128];
-    long mul; /* unit multiplier */
+    long mul;
     long long val;
     unsigned int digits;
 
     if (err) *err = 0;
 
-    /* Search the first non digit character. */
+
     u = p;
     if (*u == '-') u++;
     while(*u && isdigit(*u)) u++;
@@ -52,8 +52,8 @@ long long memtoll(const char *p, int *err) {
         return 0;
     }
 
-    /* Copy the digits into a buffer, we'll use strtoll() to convert
-     * the digit (without the unit) into a number. */
+
+
     digits = u-p;
     if (digits >= sizeof(buf)) {
         if (err) *err = 1;

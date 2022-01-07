@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_3__* priv; } ;
 struct TYPE_9__ {int* icmap; unsigned long nb_inputcontrols; scalar_t__* ictlv; TYPE_1__* desc; } ;
-struct TYPE_8__ {scalar_t__ LowerBound; scalar_t__ UpperBound; int /*<<< orphan*/  HintDescriptor; } ;
+struct TYPE_8__ {scalar_t__ LowerBound; scalar_t__ UpperBound; int HintDescriptor; } ;
 struct TYPE_7__ {char* Label; scalar_t__ PortRangeHints; } ;
-typedef  TYPE_2__ LADSPA_PortRangeHint ;
-typedef  scalar_t__ LADSPA_Data ;
-typedef  TYPE_3__ LADSPAContext ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ LADSPA_PortRangeHint ;
+typedef scalar_t__ LADSPA_Data ;
+typedef TYPE_3__ LADSPAContext ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ LADSPA_IS_HINT_BOUNDED_ABOVE (int /*<<< orphan*/ ) ; 
- scalar_t__ LADSPA_IS_HINT_BOUNDED_BELOW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ scalar_t__ LADSPA_IS_HINT_BOUNDED_ABOVE (int ) ;
+ scalar_t__ LADSPA_IS_HINT_BOUNDED_BELOW (int ) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
 
 __attribute__((used)) static int set_control(AVFilterContext *ctx, unsigned long port, LADSPA_Data value)
 {

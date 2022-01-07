@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {int /*<<< orphan*/  input; } ;
-typedef  int /*<<< orphan*/  mp_cmd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_input_get_delay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mp_input_read_cmd (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_set_timeout (struct MPContext*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  run_command (struct MPContext*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct MPContext {int input; } ;
+typedef int mp_cmd_t ;
+
+
+ int mp_input_get_delay (int ) ;
+ int * mp_input_read_cmd (int ) ;
+ int mp_set_timeout (struct MPContext*,int ) ;
+ int run_command (struct MPContext*,int *,int *,int *,int *) ;
 
 void mp_process_input(struct MPContext *mpctx)
 {
@@ -25,7 +25,7 @@ void mp_process_input(struct MPContext *mpctx)
         mp_cmd_t *cmd = mp_input_read_cmd(mpctx->input);
         if (!cmd)
             break;
-        run_command(mpctx, cmd, NULL, NULL, NULL);
+        run_command(mpctx, cmd, ((void*)0), ((void*)0), ((void*)0));
     }
     mp_set_timeout(mpctx, mp_input_get_delay(mpctx->input));
 }

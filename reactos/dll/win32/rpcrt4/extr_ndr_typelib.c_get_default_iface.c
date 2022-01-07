@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-struct TYPE_4__ {int /*<<< orphan*/  guid; } ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HREFTYPE ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int IMPLTYPEFLAG_FDEFAULT ; 
- int /*<<< orphan*/  ITypeInfo_GetImplTypeFlags (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeOfImplType (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_4__ {int guid; } ;
+typedef TYPE_1__ TYPEATTR ;
+typedef int ITypeInfo ;
+typedef int HREFTYPE ;
+typedef int GUID ;
+
+
+ int IMPLTYPEFLAG_FDEFAULT ;
+ int ITypeInfo_GetImplTypeFlags (int *,int,int*) ;
+ int ITypeInfo_GetRefTypeInfo (int *,int ,int **) ;
+ int ITypeInfo_GetRefTypeOfImplType (int *,int,int *) ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
 
 __attribute__((used)) static void get_default_iface(ITypeInfo *typeinfo, WORD count, GUID *iid)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void get_default_iface(ITypeInfo *typeinfo, WORD co
             break;
     }
 
-    /* If no interface was explicitly marked default, choose the first one. */
+
     if (i == count)
         i = 0;
 

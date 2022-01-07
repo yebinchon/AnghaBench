@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  sent_messages; int /*<<< orphan*/  buffered_messages; } ;
-struct TYPE_6__ {TYPE_5__* d1; int /*<<< orphan*/  rlayer; } ;
-typedef  TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DTLS_RECORD_LAYER_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_5__*) ; 
- int /*<<< orphan*/  dtls1_clear_queues (TYPE_1__*) ; 
- int /*<<< orphan*/  pqueue_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssl3_free (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int sent_messages; int buffered_messages; } ;
+struct TYPE_6__ {TYPE_5__* d1; int rlayer; } ;
+typedef TYPE_1__ SSL ;
+
+
+ int DTLS_RECORD_LAYER_free (int *) ;
+ int OPENSSL_free (TYPE_5__*) ;
+ int dtls1_clear_queues (TYPE_1__*) ;
+ int pqueue_free (int ) ;
+ int ssl3_free (TYPE_1__*) ;
 
 void dtls1_free(SSL *s)
 {
@@ -35,5 +35,5 @@ void dtls1_free(SSL *s)
     pqueue_free(s->d1->sent_messages);
 
     OPENSSL_free(s->d1);
-    s->d1 = NULL;
+    s->d1 = ((void*)0);
 }

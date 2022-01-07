@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ims_pcu {int /*<<< orphan*/  dev; int /*<<< orphan*/ * cmd_buf; int /*<<< orphan*/  serial_number; int /*<<< orphan*/  date_of_manufacturing; int /*<<< orphan*/  part_number; } ;
 
-/* Variables and functions */
- size_t IMS_PCU_DATA_OFFSET ; 
- size_t IMS_PCU_INFO_DOM_OFFSET ; 
- size_t IMS_PCU_INFO_PART_OFFSET ; 
- size_t IMS_PCU_INFO_SERIAL_OFFSET ; 
- int /*<<< orphan*/  IMS_PCU_SET_INFO_SIZE ; 
- int /*<<< orphan*/  SET_INFO ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int) ; 
- int ims_pcu_execute_command (struct ims_pcu*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ims_pcu {int dev; int * cmd_buf; int serial_number; int date_of_manufacturing; int part_number; } ;
+
+
+ size_t IMS_PCU_DATA_OFFSET ;
+ size_t IMS_PCU_INFO_DOM_OFFSET ;
+ size_t IMS_PCU_INFO_PART_OFFSET ;
+ size_t IMS_PCU_INFO_SERIAL_OFFSET ;
+ int IMS_PCU_SET_INFO_SIZE ;
+ int SET_INFO ;
+ int dev_err (int ,char*,int) ;
+ int ims_pcu_execute_command (struct ims_pcu*,int ,int *,int ) ;
+ int memcpy (int *,int ,int) ;
 
 __attribute__((used)) static int ims_pcu_set_info(struct ims_pcu *pcu)
 {
-	int error;
+ int error;
 
-	memcpy(&pcu->cmd_buf[IMS_PCU_INFO_PART_OFFSET],
-	       pcu->part_number, sizeof(pcu->part_number));
-	memcpy(&pcu->cmd_buf[IMS_PCU_INFO_DOM_OFFSET],
-	       pcu->date_of_manufacturing, sizeof(pcu->date_of_manufacturing));
-	memcpy(&pcu->cmd_buf[IMS_PCU_INFO_SERIAL_OFFSET],
-	       pcu->serial_number, sizeof(pcu->serial_number));
+ memcpy(&pcu->cmd_buf[IMS_PCU_INFO_PART_OFFSET],
+        pcu->part_number, sizeof(pcu->part_number));
+ memcpy(&pcu->cmd_buf[IMS_PCU_INFO_DOM_OFFSET],
+        pcu->date_of_manufacturing, sizeof(pcu->date_of_manufacturing));
+ memcpy(&pcu->cmd_buf[IMS_PCU_INFO_SERIAL_OFFSET],
+        pcu->serial_number, sizeof(pcu->serial_number));
 
-	error = ims_pcu_execute_command(pcu, SET_INFO,
-					&pcu->cmd_buf[IMS_PCU_DATA_OFFSET],
-					IMS_PCU_SET_INFO_SIZE);
-	if (error) {
-		dev_err(pcu->dev,
-			"Failed to update device information, error: %d\n",
-			error);
-		return error;
-	}
+ error = ims_pcu_execute_command(pcu, SET_INFO,
+     &pcu->cmd_buf[IMS_PCU_DATA_OFFSET],
+     IMS_PCU_SET_INFO_SIZE);
+ if (error) {
+  dev_err(pcu->dev,
+   "Failed to update device information, error: %d\n",
+   error);
+  return error;
+ }
 
-	return 0;
+ return 0;
 }

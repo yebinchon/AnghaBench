@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_SCRIPT_TIMEOUT ; 
- void* MAX_WORKERS ; 
- void* atoi (char*) ; 
- char* cluster_name ; 
- void* http_port ; 
- int /*<<< orphan*/  ini_set (char*,char*) ; 
- int master_flag ; 
- void* master_port ; 
- int no_sql ; 
- char* optarg ; 
- int /*<<< orphan*/  read_engine_tag (char*) ; 
- int /*<<< orphan*/  read_tl_config (char*) ; 
- char* rpc_client_host ; 
- void* rpc_client_port ; 
- void* rpc_port ; 
- int run_once ; 
- int script_timeout ; 
- char* strchr (char*,char) ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- void* workers_n ; 
+ int MAX_SCRIPT_TIMEOUT ;
+ void* MAX_WORKERS ;
+ void* atoi (char*) ;
+ char* cluster_name ;
+ void* http_port ;
+ int ini_set (char*,char*) ;
+ int master_flag ;
+ void* master_port ;
+ int no_sql ;
+ char* optarg ;
+ int read_engine_tag (char*) ;
+ int read_tl_config (char*) ;
+ char* rpc_client_host ;
+ void* rpc_client_port ;
+ void* rpc_port ;
+ int run_once ;
+ int script_timeout ;
+ char* strchr (char*,char) ;
+ char* strrchr (char*,char) ;
+ int usage () ;
+ int vkprintf (int,char*) ;
+ void* workers_n ;
 
 int main_args_handler (int i) {
   switch (i) {
@@ -41,7 +33,7 @@ int main_args_handler (int i) {
     {
       char *key = optarg, *value;
       char *eq = strchr (key, '=');
-      if (eq == NULL) {
+      if (eq == ((void*)0)) {
         vkprintf (-1, "-D option, can't find '='\n");
         usage();
         return 2;
@@ -61,7 +53,7 @@ int main_args_handler (int i) {
     rpc_client_host = optarg;
     {
       char *colon = strrchr ((char *)rpc_client_host, ':');
-      if (colon == NULL) {
+      if (colon == ((void*)0)) {
         vkprintf (-1, "-w option, can't find ':'\n");
         usage();
         return 2;

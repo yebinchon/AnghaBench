@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_node_t ;
-typedef  int /*<<< orphan*/  xmlSchemaValidityWarningFunc ;
-typedef  int /*<<< orphan*/  xmlSchemaValidityErrorFunc ;
-typedef  int /*<<< orphan*/  xmlSchemaValidCtxtPtr ;
-typedef  int /*<<< orphan*/  xmlSchemaPtr ;
-typedef  int /*<<< orphan*/  xmlSchemaParserCtxtPtr ;
-typedef  int /*<<< orphan*/ * xmlNodePtr ;
-typedef  int /*<<< orphan*/ * xmlDocPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
+
+
+
+
+typedef int xml_node_t ;
+typedef int xmlSchemaValidityWarningFunc ;
+typedef int xmlSchemaValidityErrorFunc ;
+typedef int xmlSchemaValidCtxtPtr ;
+typedef int xmlSchemaPtr ;
+typedef int xmlSchemaParserCtxtPtr ;
+typedef int * xmlNodePtr ;
+typedef int * xmlDocPtr ;
+typedef int xmlChar ;
 struct xml_node_ctx {int dummy; } ;
 struct str_buf {char* buf; } ;
-typedef  int /*<<< orphan*/  errors ;
+typedef int errors ;
 
-/* Variables and functions */
- scalar_t__ add_str ; 
- int /*<<< orphan*/  os_free (char*) ; 
- int /*<<< orphan*/  os_memset (struct str_buf*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * xmlDocCopyNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  xmlDocSetRootElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlFreeDoc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xmlNewDoc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlSchemaFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlSchemaFreeParserCtxt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlSchemaFreeValidCtxt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlSchemaNewParserCtxt (char const*) ; 
- int /*<<< orphan*/  xmlSchemaNewValidCtxt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlSchemaParse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlSchemaSetParserErrors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct str_buf*) ; 
- int /*<<< orphan*/  xmlSchemaSetValidErrors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct str_buf*) ; 
- int xmlSchemaValidateDoc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ add_str ;
+ int os_free (char*) ;
+ int os_memset (struct str_buf*,int ,int) ;
+ int * xmlDocCopyNode (int *,int *,int) ;
+ int xmlDocSetRootElement (int *,int *) ;
+ int xmlFreeDoc (int *) ;
+ int * xmlNewDoc (int *) ;
+ int xmlSchemaFree (int ) ;
+ int xmlSchemaFreeParserCtxt (int ) ;
+ int xmlSchemaFreeValidCtxt (int ) ;
+ int xmlSchemaNewParserCtxt (char const*) ;
+ int xmlSchemaNewValidCtxt (int ) ;
+ int xmlSchemaParse (int ) ;
+ int xmlSchemaSetParserErrors (int ,int ,int ,struct str_buf*) ;
+ int xmlSchemaSetValidErrors (int ,int ,int ,struct str_buf*) ;
+ int xmlSchemaValidateDoc (int ,int *) ;
 
 int xml_validate(struct xml_node_ctx *ctx, xml_node_t *node,
-		 const char *xml_schema_fname, char **ret_err)
+   const char *xml_schema_fname, char **ret_err)
 {
-	xmlDocPtr doc;
-	xmlNodePtr n;
-	xmlSchemaParserCtxtPtr pctx;
-	xmlSchemaValidCtxtPtr vctx;
-	xmlSchemaPtr schema;
-	int ret;
-	struct str_buf errors;
+ xmlDocPtr doc;
+ xmlNodePtr n;
+ xmlSchemaParserCtxtPtr pctx;
+ xmlSchemaValidCtxtPtr vctx;
+ xmlSchemaPtr schema;
+ int ret;
+ struct str_buf errors;
 
-	if (ret_err)
-		*ret_err = NULL;
+ if (ret_err)
+  *ret_err = ((void*)0);
 
-	doc = xmlNewDoc((xmlChar *) "1.0");
-	if (doc == NULL)
-		return -1;
-	n = xmlDocCopyNode((xmlNodePtr) node, doc, 1);
-	if (n == NULL) {
-		xmlFreeDoc(doc);
-		return -1;
-	}
-	xmlDocSetRootElement(doc, n);
+ doc = xmlNewDoc((xmlChar *) "1.0");
+ if (doc == ((void*)0))
+  return -1;
+ n = xmlDocCopyNode((xmlNodePtr) node, doc, 1);
+ if (n == ((void*)0)) {
+  xmlFreeDoc(doc);
+  return -1;
+ }
+ xmlDocSetRootElement(doc, n);
 
-	os_memset(&errors, 0, sizeof(errors));
+ os_memset(&errors, 0, sizeof(errors));
 
-	pctx = xmlSchemaNewParserCtxt(xml_schema_fname);
-	xmlSchemaSetParserErrors(pctx, (xmlSchemaValidityErrorFunc) add_str,
-				 (xmlSchemaValidityWarningFunc) add_str,
-				 &errors);
-	schema = xmlSchemaParse(pctx);
-	xmlSchemaFreeParserCtxt(pctx);
+ pctx = xmlSchemaNewParserCtxt(xml_schema_fname);
+ xmlSchemaSetParserErrors(pctx, (xmlSchemaValidityErrorFunc) add_str,
+     (xmlSchemaValidityWarningFunc) add_str,
+     &errors);
+ schema = xmlSchemaParse(pctx);
+ xmlSchemaFreeParserCtxt(pctx);
 
-	vctx = xmlSchemaNewValidCtxt(schema);
-	xmlSchemaSetValidErrors(vctx, (xmlSchemaValidityErrorFunc) add_str,
-				(xmlSchemaValidityWarningFunc) add_str,
-				&errors);
+ vctx = xmlSchemaNewValidCtxt(schema);
+ xmlSchemaSetValidErrors(vctx, (xmlSchemaValidityErrorFunc) add_str,
+    (xmlSchemaValidityWarningFunc) add_str,
+    &errors);
 
-	ret = xmlSchemaValidateDoc(vctx, doc);
-	xmlSchemaFreeValidCtxt(vctx);
-	xmlFreeDoc(doc);
-	xmlSchemaFree(schema);
+ ret = xmlSchemaValidateDoc(vctx, doc);
+ xmlSchemaFreeValidCtxt(vctx);
+ xmlFreeDoc(doc);
+ xmlSchemaFree(schema);
 
-	if (ret == 0) {
-		os_free(errors.buf);
-		return 0;
-	} else if (ret > 0) {
-		if (ret_err)
-			*ret_err = errors.buf;
-		else
-			os_free(errors.buf);
-		return -1;
-	} else {
-		if (ret_err)
-			*ret_err = errors.buf;
-		else
-			os_free(errors.buf);
-		return -1;
-	}
+ if (ret == 0) {
+  os_free(errors.buf);
+  return 0;
+ } else if (ret > 0) {
+  if (ret_err)
+   *ret_err = errors.buf;
+  else
+   os_free(errors.buf);
+  return -1;
+ } else {
+  if (ret_err)
+   *ret_err = errors.buf;
+  else
+   os_free(errors.buf);
+  return -1;
+ }
 }

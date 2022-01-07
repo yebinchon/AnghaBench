@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct gpu_job_s {int dummy; } ;
-typedef  int int32_t ;
+typedef int int32_t ;
 struct TYPE_4__ {int size; struct gpu_job_s* data; } ;
-typedef  TYPE_1__ VCHIQ_ELEMENT_T ;
-struct TYPE_5__ {int /*<<< orphan*/  service; } ;
+typedef TYPE_1__ VCHIQ_ELEMENT_T ;
+struct TYPE_5__ {int service; } ;
 
-/* Variables and functions */
- int MAX_JOBS ; 
- scalar_t__ VCHIQ_SUCCESS ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- TYPE_3__ gpuserv_client ; 
- int /*<<< orphan*/  vc_gpuserv_init () ; 
- scalar_t__ vchiq_queue_message (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ) ; 
+
+ int MAX_JOBS ;
+ scalar_t__ VCHIQ_SUCCESS ;
+ int VCOS_FUNCTION ;
+ TYPE_3__ gpuserv_client ;
+ int vc_gpuserv_init () ;
+ scalar_t__ vchiq_queue_message (int ,TYPE_1__*,int) ;
+ int vcos_log_error (char*,int ) ;
 
 int32_t vc_gpuserv_execute_code(int num_jobs, struct gpu_job_s jobs[])
 {
    VCHIQ_ELEMENT_T elements[MAX_JOBS];
    int i;
 
-   // hack: temporarily allow calling this function without calling vc_gpuserv_init
-   // will be removed later
+
+
    if (!gpuserv_client.service)
    {
       vc_gpuserv_init();

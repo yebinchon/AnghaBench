@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pollfd {int fd; int events; int revents; } ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EAGAIN ; 
- int POLLIN ; 
- int POLLOUT ; 
- int ff_neterrno () ; 
- int poll (struct pollfd*,int,int) ; 
+
+ int AVERROR (int ) ;
+ int EAGAIN ;
+ int POLLIN ;
+ int POLLOUT ;
+ int ff_neterrno () ;
+ int poll (struct pollfd*,int,int) ;
 
 __attribute__((used)) static int sctp_wait_fd(int fd, int write)
 {
-    int ev          = write ? POLLOUT : POLLIN;
+    int ev = write ? POLLOUT : POLLIN;
     struct pollfd p = { .fd = fd, .events = ev, .revents = 0 };
     int ret;
 

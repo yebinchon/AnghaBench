@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/ * ifaddr_t ;
+typedef int * ifaddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ifa_ifwithaddr (struct sockaddr const*) ; 
+
+ int * ifa_ifwithaddr (struct sockaddr const*) ;
 
 ifaddr_t
 ifaddr_withaddr(const struct sockaddr *address)
 {
-	if (address == NULL)
-		return (NULL);
+ if (address == ((void*)0))
+  return (((void*)0));
 
-	return (ifa_ifwithaddr(address));
+ return (ifa_ifwithaddr(address));
 }

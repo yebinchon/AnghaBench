@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  Tox ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int Tox ;
 struct TYPE_2__ {scalar_t__ file; scalar_t__ friendnum; } ;
-typedef  scalar_t__ TOX_CONNECTION ;
+typedef scalar_t__ TOX_CONNECTION ;
 
-/* Variables and functions */
- unsigned int NUM_FILE_SENDERS ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- TYPE_1__* file_senders ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+ unsigned int NUM_FILE_SENDERS ;
+ int fclose (scalar_t__) ;
+ TYPE_1__* file_senders ;
+ int printf (char*) ;
 
 void print_online(Tox *tox, uint32_t friendnumber, TOX_CONNECTION status, void *userdata)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8 ;
 struct TYPE_5__ {int channels; int sample_rate; } ;
-typedef  TYPE_1__ stb_vorbis ;
+typedef TYPE_1__ stb_vorbis ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (short*) ; 
- scalar_t__ malloc (int) ; 
- scalar_t__ realloc (short*,int) ; 
- int /*<<< orphan*/  stb_vorbis_close (TYPE_1__*) ; 
- int stb_vorbis_get_frame_short_interleaved (TYPE_1__*,int,short*,int) ; 
- TYPE_1__* stb_vorbis_open_memory (int /*<<< orphan*/  const*,int,int*,int /*<<< orphan*/ *) ; 
+
+ int free (short*) ;
+ scalar_t__ malloc (int) ;
+ scalar_t__ realloc (short*,int) ;
+ int stb_vorbis_close (TYPE_1__*) ;
+ int stb_vorbis_get_frame_short_interleaved (TYPE_1__*,int,short*,int) ;
+ TYPE_1__* stb_vorbis_open_memory (int const*,int,int*,int *) ;
 
 int stb_vorbis_decode_memory(const uint8 *mem, int len, int *channels, int *sample_rate, short **output)
 {
    int data_len, offset, total, limit, error;
    short *data;
-   stb_vorbis *v = stb_vorbis_open_memory(mem, len, &error, NULL);
-   if (v == NULL) return -1;
+   stb_vorbis *v = stb_vorbis_open_memory(mem, len, &error, ((void*)0));
+   if (v == ((void*)0)) return -1;
    limit = v->channels * 4096;
    *channels = v->channels;
    if (sample_rate)
@@ -36,7 +36,7 @@ int stb_vorbis_decode_memory(const uint8 *mem, int len, int *channels, int *samp
    offset = data_len = 0;
    total = limit;
    data = (short *) malloc(total * sizeof(*data));
-   if (data == NULL) {
+   if (data == ((void*)0)) {
       stb_vorbis_close(v);
       return -2;
    }
@@ -49,7 +49,7 @@ int stb_vorbis_decode_memory(const uint8 *mem, int len, int *channels, int *samp
          short *data2;
          total *= 2;
          data2 = (short *) realloc(data, total * sizeof(*data));
-         if (data2 == NULL) {
+         if (data2 == ((void*)0)) {
             free(data);
             stb_vorbis_close(v);
             return -2;

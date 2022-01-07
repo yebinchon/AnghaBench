@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ptr_data {void* note_ptr_cookie; int /*<<< orphan*/  reorder_fn; } ;
-typedef  int /*<<< orphan*/  gt_handle_reorder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POINTER_HASH (void*) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- struct ptr_data* htab_find_with_hash (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  saving_htab ; 
+
+
+
+struct ptr_data {void* note_ptr_cookie; int reorder_fn; } ;
+typedef int gt_handle_reorder ;
+
+
+ int POINTER_HASH (void*) ;
+ int gcc_assert (int ) ;
+ struct ptr_data* htab_find_with_hash (int ,void*,int ) ;
+ int saving_htab ;
 
 void
 gt_pch_note_reorder (void *obj, void *note_ptr_cookie,
-		     gt_handle_reorder reorder_fn)
+       gt_handle_reorder reorder_fn)
 {
   struct ptr_data *data;
 
-  if (obj == NULL || obj == (void *) 1)
+  if (obj == ((void*)0) || obj == (void *) 1)
     return;
 
   data = htab_find_with_hash (saving_htab, obj, POINTER_HASH (obj));

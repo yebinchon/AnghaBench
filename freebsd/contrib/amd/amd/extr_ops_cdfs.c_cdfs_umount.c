@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int mf_flags; int /*<<< orphan*/  mf_mount; } ;
-typedef  TYPE_1__ mntfs ;
-typedef  int /*<<< orphan*/  am_node ;
 
-/* Variables and functions */
- int AMU_UMOUNT_AUTOFS ; 
- int MFF_ON_AUTOFS ; 
- int UMOUNT_FS (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mnttab_file_name ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mf_flags; int mf_mount; } ;
+typedef TYPE_1__ mntfs ;
+typedef int am_node ;
+
+
+ int AMU_UMOUNT_AUTOFS ;
+ int MFF_ON_AUTOFS ;
+ int UMOUNT_FS (int ,int ,int) ;
+ int mnttab_file_name ;
 
 __attribute__((used)) static int
 cdfs_umount(am_node *am, mntfs *mf)

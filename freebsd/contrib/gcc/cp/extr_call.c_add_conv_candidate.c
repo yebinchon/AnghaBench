@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ tree ;
 struct z_candidate {scalar_t__ fn; } ;
 struct TYPE_6__ {int ellipsis_p; scalar_t__ bad_p; } ;
-typedef  TYPE_1__ conversion ;
+typedef TYPE_1__ conversion ;
 
-/* Variables and functions */
- scalar_t__ FUNCTION_TYPE ; 
- int LOOKUP_NORMAL ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- scalar_t__ TREE_TYPE (scalar_t__) ; 
- scalar_t__ TREE_VALUE (scalar_t__) ; 
- scalar_t__ TYPE_ARG_TYPES (scalar_t__) ; 
- struct z_candidate* add_candidate (struct z_candidate**,scalar_t__,scalar_t__,int,TYPE_1__**,scalar_t__,scalar_t__,int) ; 
- TYPE_1__** alloc_conversions (int) ; 
- TYPE_1__* build_identity_conv (scalar_t__,scalar_t__) ; 
- TYPE_1__* implicit_conversion (scalar_t__,scalar_t__,scalar_t__,int,int) ; 
- int list_length (scalar_t__) ; 
- scalar_t__ lvalue_type (scalar_t__) ; 
- int /*<<< orphan*/  sufficient_parms_p (scalar_t__) ; 
- scalar_t__ void_list_node ; 
+
+ scalar_t__ FUNCTION_TYPE ;
+ int LOOKUP_NORMAL ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ scalar_t__ TREE_TYPE (scalar_t__) ;
+ scalar_t__ TREE_VALUE (scalar_t__) ;
+ scalar_t__ TYPE_ARG_TYPES (scalar_t__) ;
+ struct z_candidate* add_candidate (struct z_candidate**,scalar_t__,scalar_t__,int,TYPE_1__**,scalar_t__,scalar_t__,int) ;
+ TYPE_1__** alloc_conversions (int) ;
+ TYPE_1__* build_identity_conv (scalar_t__,scalar_t__) ;
+ TYPE_1__* implicit_conversion (scalar_t__,scalar_t__,scalar_t__,int,int) ;
+ int list_length (scalar_t__) ;
+ scalar_t__ lvalue_type (scalar_t__) ;
+ int sufficient_parms_p (scalar_t__) ;
+ scalar_t__ void_list_node ;
 
 __attribute__((used)) static struct z_candidate *
 add_conv_candidate (struct z_candidate **candidates, tree fn, tree obj,
-		    tree arglist, tree access_path, tree conversion_path)
+      tree arglist, tree access_path, tree conversion_path)
 {
   tree totype = TREE_TYPE (TREE_TYPE (fn));
   int i, len, viable, flags;
@@ -53,9 +53,9 @@ add_conv_candidate (struct z_candidate **candidates, tree fn, tree obj,
   viable = 1;
   flags = LOOKUP_NORMAL;
 
-  /* Don't bother looking up the same type twice.  */
+
   if (*candidates && (*candidates)->fn == totype)
-    return NULL;
+    return ((void*)0);
 
   for (i = 0; i < len; ++i)
     {
@@ -64,31 +64,31 @@ add_conv_candidate (struct z_candidate **candidates, tree fn, tree obj,
       conversion *t;
 
       if (i == 0)
-	t = implicit_conversion (totype, argtype, arg, /*c_cast_p=*/false,
-				 flags);
+ t = implicit_conversion (totype, argtype, arg, 0,
+     flags);
       else if (parmnode == void_list_node)
-	break;
+ break;
       else if (parmnode)
-	t = implicit_conversion (TREE_VALUE (parmnode), argtype, arg,
-				 /*c_cast_p=*/false, flags);
+ t = implicit_conversion (TREE_VALUE (parmnode), argtype, arg,
+                  0, flags);
       else
-	{
-	  t = build_identity_conv (argtype, arg);
-	  t->ellipsis_p = true;
-	}
+ {
+   t = build_identity_conv (argtype, arg);
+   t->ellipsis_p = 1;
+ }
 
       convs[i] = t;
       if (! t)
-	break;
+ break;
 
       if (t->bad_p)
-	viable = -1;
+ viable = -1;
 
       if (i == 0)
-	continue;
+ continue;
 
       if (parmnode)
-	parmnode = TREE_CHAIN (parmnode);
+ parmnode = TREE_CHAIN (parmnode);
       argnode = TREE_CHAIN (argnode);
     }
 
@@ -99,5 +99,5 @@ add_conv_candidate (struct z_candidate **candidates, tree fn, tree obj,
     viable = 0;
 
   return add_candidate (candidates, totype, arglist, len, convs,
-			access_path, conversion_path, viable);
+   access_path, conversion_path, viable);
 }

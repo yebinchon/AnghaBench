@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  process_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_SERVER_PATH ; 
- int /*<<< orphan*/  adb_push (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_server_path () ; 
- int process_check_success (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int process_t ;
+
+
+ int DEVICE_SERVER_PATH ;
+ int adb_push (char const*,int ,int ) ;
+ int get_server_path () ;
+ int process_check_success (int ,char*) ;
 
 __attribute__((used)) static bool
 push_server(const char *serial) {

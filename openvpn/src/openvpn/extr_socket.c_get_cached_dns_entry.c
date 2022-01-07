@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cached_dns_entry {int ai_family; int flags; struct addrinfo* ai; int /*<<< orphan*/  servname; int /*<<< orphan*/  hostname; struct cached_dns_entry* next; } ;
+
+
+
+
+struct cached_dns_entry {int ai_family; int flags; struct addrinfo* ai; int servname; int hostname; struct cached_dns_entry* next; } ;
 struct addrinfo {int dummy; } ;
 
-/* Variables and functions */
- int GETADDR_CACHE_MASK ; 
- scalar_t__ streqnull (int /*<<< orphan*/ ,char const*) ; 
+
+ int GETADDR_CACHE_MASK ;
+ scalar_t__ streqnull (int ,char const*) ;
 
 __attribute__((used)) static int
 get_cached_dns_entry(struct cached_dns_entry *dns_cache,
@@ -28,7 +28,7 @@ get_cached_dns_entry(struct cached_dns_entry *dns_cache,
     struct cached_dns_entry *ph;
     int flags;
 
-    /* Only use flags that are relevant for the structure */
+
     flags = resolve_flags & GETADDR_CACHE_MASK;
 
     for (ph = dns_cache; ph; ph = ph->next)

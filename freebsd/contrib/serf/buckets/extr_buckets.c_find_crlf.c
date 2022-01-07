@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int apr_size_t ;
 
-/* Variables and functions */
- int SERF_NEWLINE_CRLF ; 
- int SERF_NEWLINE_CRLF_SPLIT ; 
- int SERF_NEWLINE_NONE ; 
- char* memchr (char const*,char,int) ; 
+
+
+
+typedef int apr_size_t ;
+
+
+ int SERF_NEWLINE_CRLF ;
+ int SERF_NEWLINE_CRLF_SPLIT ;
+ int SERF_NEWLINE_NONE ;
+ char* memchr (char const*,char,int) ;
 
 __attribute__((used)) static void find_crlf(const char **data, apr_size_t *len, int *found)
 {
@@ -26,7 +26,7 @@ __attribute__((used)) static void find_crlf(const char **data, apr_size_t *len, 
     while (start < end) {
         const char *cr = memchr(start, '\r', *len);
 
-        if (cr == NULL) {
+        if (cr == ((void*)0)) {
             break;
         }
         ++cr;
@@ -44,7 +44,7 @@ __attribute__((used)) static void find_crlf(const char **data, apr_size_t *len, 
             return;
         }
 
-        /* It was a bare CR without an LF. Just move past it. */
+
         *len -= cr - start;
         start = cr;
     }

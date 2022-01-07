@@ -1,64 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- int MAX_CHILD_PROCESS ; 
- int MAX_CONNECTIONS ; 
- int MAX_THREADS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (void*) ; 
- void* backlog ; 
- scalar_t__ change_user_group (char*,char*) ; 
- int daemonize ; 
- int dynamic_data_buffer_size ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ geteuid () ; 
- int getopt (int,char**,char*) ; 
- char* groupname ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int job_nice ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int /*<<< orphan*/  kprintf_multiprocessing_mode_enable () ; 
- void* logname ; 
- int main_nice ; 
- long long max_all_results ; 
- long long max_load_image_area ; 
- int max_process_number ; 
- long long max_virtual_memory ; 
- int maxconn ; 
- long long memory_limit ; 
- scalar_t__ nice (int) ; 
- void* optarg ; 
- int port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (int) ; 
- int /*<<< orphan*/  req_structures_init () ; 
- long long rss_memory_limit ; 
- scalar_t__ server_socket (int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int sscanf (void*,char*,long long*,char*) ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int threads_limit ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- int /*<<< orphan*/  verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+ void* BACKLOG ;
+ int MAX_CHILD_PROCESS ;
+ int MAX_CONNECTIONS ;
+ int MAX_THREADS ;
+ int aes_load_pwd_file (int ) ;
+ int assert (int) ;
+ void* atoi (void*) ;
+ void* backlog ;
+ scalar_t__ change_user_group (char*,char*) ;
+ int daemonize ;
+ int dynamic_data_buffer_size ;
+ int exit (int) ;
+ scalar_t__ geteuid () ;
+ int getopt (int,char**,char*) ;
+ char* groupname ;
+ int init_dyn_data () ;
+ int job_nice ;
+ int kprintf (char*,...) ;
+ int kprintf_multiprocessing_mode_enable () ;
+ void* logname ;
+ int main_nice ;
+ long long max_all_results ;
+ long long max_load_image_area ;
+ int max_process_number ;
+ long long max_virtual_memory ;
+ int maxconn ;
+ long long memory_limit ;
+ scalar_t__ nice (int) ;
+ void* optarg ;
+ int port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (int) ;
+ int req_structures_init () ;
+ long long rss_memory_limit ;
+ scalar_t__ server_socket (int,int ,void*,int ) ;
+ int set_debug_handlers () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int sscanf (void*,char*,long long*,char*) ;
+ int start_server () ;
+ int start_time ;
+ int threads_limit ;
+ int time (int ) ;
+ int usage () ;
+ char* username ;
+ int verbosity ;
+ int vkprintf (int,char*) ;
 
 int main (int argc, char *argv[]) {
   int i, k;
@@ -76,10 +68,10 @@ int main (int argc, char *argv[]) {
        c = 0;
        assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
        switch (c | 0x20) {
-         case 'k':  x <<= 10; break;
-         case 'm':  x <<= 20; break;
-         case 'g':  x <<= 30; break;
-         case 't':  x <<= 40; break;
+         case 'k': x <<= 10; break;
+         case 'm': x <<= 20; break;
+         case 'g': x <<= 30; break;
+         case 't': x <<= 40; break;
          default: assert (c == 0x20);
        }
        if (i == 'A' && x >= (1 << 20) && x <= (1 << 30)) {
@@ -179,7 +171,7 @@ int main (int argc, char *argv[]) {
   vkprintf (3, "Command line parsed\n");
 
   if (!username && maxconn == MAX_CONNECTIONS && geteuid ()) {
-    maxconn = 1000; //not for root
+    maxconn = 1000;
   }
 
   dynamic_data_buffer_size = 1 << 22;

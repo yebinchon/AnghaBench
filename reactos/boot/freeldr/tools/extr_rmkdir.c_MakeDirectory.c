@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  chdir (char*) ; 
- int /*<<< orphan*/  getcwd (char*,int) ; 
- scalar_t__ mkdir (char*,...) ; 
- int /*<<< orphan*/  perror (char*) ; 
+ int chdir (char*) ;
+ int getcwd (char*,int) ;
+ scalar_t__ mkdir (char*,...) ;
+ int perror (char*) ;
 
 int MakeDirectory(char *Directory)
 {
-    char    CurrentDirectory[1024];
+    char CurrentDirectory[1024];
 
     getcwd(CurrentDirectory, 1024);
 
@@ -28,20 +20,12 @@ int MakeDirectory(char *Directory)
         chdir(CurrentDirectory);
         return 0;
     }
-
-#if defined (UNIX_PATHS) || defined (__DJGPP__)
-    if (mkdir(Directory, 0755) != 0)
-    {
-        perror("Failed to create directory");
-        return 1;
-    }
-#else
     if (mkdir(Directory) != 0)
     {
         perror("Failed to create directory");
         return 1;
     }
-#endif
+
 
     if (chdir(Directory) != 0)
     {

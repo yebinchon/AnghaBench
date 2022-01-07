@@ -1,73 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vm_paddr_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
-#define  G33_GMCH_GMS_STOLEN_128M 140 
-#define  G33_GMCH_GMS_STOLEN_256M 139 
- int /*<<< orphan*/  I830_GMCH_CTRL ; 
- int I855_GMCH_GMS_MASK ; 
-#define  I855_GMCH_GMS_STOLEN_16M 138 
-#define  I855_GMCH_GMS_STOLEN_1M 137 
-#define  I855_GMCH_GMS_STOLEN_32M 136 
-#define  I855_GMCH_GMS_STOLEN_4M 135 
-#define  I855_GMCH_GMS_STOLEN_8M 134 
-#define  I915_GMCH_GMS_STOLEN_48M 133 
-#define  I915_GMCH_GMS_STOLEN_64M 132 
-#define  INTEL_GMCH_GMS_STOLEN_160M 131 
-#define  INTEL_GMCH_GMS_STOLEN_224M 130 
-#define  INTEL_GMCH_GMS_STOLEN_352M 129 
-#define  INTEL_GMCH_GMS_STOLEN_96M 128 
- int MiB (int) ; 
- int pci_cfgregread (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int vm_paddr_t ;
+typedef int uint32_t ;
+
+
+
+
+ int I830_GMCH_CTRL ;
+ int I855_GMCH_GMS_MASK ;
+ int MiB (int) ;
+ int pci_cfgregread (int ,int ,int ,int ,int) ;
 
 __attribute__((used)) static vm_paddr_t
 intel_stolen_size_gen3(int bus, int slot, int func)
 {
-	uint32_t ctrl;
-	vm_paddr_t val;
+ uint32_t ctrl;
+ vm_paddr_t val;
 
-	ctrl = pci_cfgregread(0, 0, 0, I830_GMCH_CTRL, 2);
-	val = ctrl & I855_GMCH_GMS_MASK;
+ ctrl = pci_cfgregread(0, 0, 0, I830_GMCH_CTRL, 2);
+ val = ctrl & I855_GMCH_GMS_MASK;
 
-	switch (val) {
-	case I855_GMCH_GMS_STOLEN_1M:
-		return (MiB(1));
-	case I855_GMCH_GMS_STOLEN_4M:
-		return (MiB(4));
-	case I855_GMCH_GMS_STOLEN_8M:
-		return (MiB(8));
-	case I855_GMCH_GMS_STOLEN_16M:
-		return (MiB(16));
-	case I855_GMCH_GMS_STOLEN_32M:
-		return (MiB(32));
-	case I915_GMCH_GMS_STOLEN_48M:
-		return (MiB(48));
-	case I915_GMCH_GMS_STOLEN_64M:
-		return (MiB(64));
-	case G33_GMCH_GMS_STOLEN_128M:
-		return (MiB(128));
-	case G33_GMCH_GMS_STOLEN_256M:
-		return (MiB(256));
-	case INTEL_GMCH_GMS_STOLEN_96M:
-		return (MiB(96));
-	case INTEL_GMCH_GMS_STOLEN_160M:
-		return (MiB(160));
-	case INTEL_GMCH_GMS_STOLEN_224M:
-		return (MiB(224));
-	case INTEL_GMCH_GMS_STOLEN_352M:
-		return (MiB(352));
-	}
-	return (0);
+ switch (val) {
+ case 137:
+  return (MiB(1));
+ case 135:
+  return (MiB(4));
+ case 134:
+  return (MiB(8));
+ case 138:
+  return (MiB(16));
+ case 136:
+  return (MiB(32));
+ case 133:
+  return (MiB(48));
+ case 132:
+  return (MiB(64));
+ case 140:
+  return (MiB(128));
+ case 139:
+  return (MiB(256));
+ case 128:
+  return (MiB(96));
+ case 131:
+  return (MiB(160));
+ case 130:
+  return (MiB(224));
+ case 129:
+  return (MiB(352));
+ }
+ return (0);
 }

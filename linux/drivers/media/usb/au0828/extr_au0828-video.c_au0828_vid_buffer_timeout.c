@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct timer_list {int dummy; } ;
 struct au0828_dmaqueue {int dummy; } ;
 struct TYPE_3__ {struct au0828_buffer* buf; } ;
-struct au0828_dev {int vid_timeout_running; int /*<<< orphan*/  slock; int /*<<< orphan*/  vid_timeout; TYPE_1__ isoc_ctl; struct au0828_dmaqueue vidq; } ;
-struct TYPE_4__ {int /*<<< orphan*/  vb2_buf; } ;
-struct au0828_buffer {int /*<<< orphan*/  length; TYPE_2__ vb; } ;
+struct au0828_dev {int vid_timeout_running; int slock; int vid_timeout; TYPE_1__ isoc_ctl; struct au0828_dmaqueue vidq; } ;
+struct TYPE_4__ {int vb2_buf; } ;
+struct au0828_buffer {int length; TYPE_2__ vb; } ;
 
-/* Variables and functions */
- int HZ ; 
- int /*<<< orphan*/  buffer_filled (struct au0828_dev*,struct au0828_dmaqueue*,struct au0828_buffer*) ; 
- struct au0828_dev* dev ; 
- struct au0828_dev* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_next_buf (struct au0828_dmaqueue*,struct au0828_buffer**) ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- unsigned char* vb2_plane_vaddr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vid_timeout ; 
+
+ int HZ ;
+ int buffer_filled (struct au0828_dev*,struct au0828_dmaqueue*,struct au0828_buffer*) ;
+ struct au0828_dev* dev ;
+ struct au0828_dev* from_timer (int ,struct timer_list*,int ) ;
+ int get_next_buf (struct au0828_dmaqueue*,struct au0828_buffer**) ;
+ scalar_t__ jiffies ;
+ int memset (unsigned char*,int,int ) ;
+ int mod_timer (int *,scalar_t__) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ unsigned char* vb2_plane_vaddr (int *,int ) ;
+ int vid_timeout ;
 
 __attribute__((used)) static void au0828_vid_buffer_timeout(struct timer_list *t)
 {
-	struct au0828_dev *dev = from_timer(dev, t, vid_timeout);
-	struct au0828_dmaqueue *dma_q = &dev->vidq;
-	struct au0828_buffer *buf;
-	unsigned char *vid_data;
-	unsigned long flags = 0;
+ struct au0828_dev *dev = from_timer(dev, t, vid_timeout);
+ struct au0828_dmaqueue *dma_q = &dev->vidq;
+ struct au0828_buffer *buf;
+ unsigned char *vid_data;
+ unsigned long flags = 0;
 
-	spin_lock_irqsave(&dev->slock, flags);
+ spin_lock_irqsave(&dev->slock, flags);
 
-	buf = dev->isoc_ctl.buf;
-	if (buf != NULL) {
-		vid_data = vb2_plane_vaddr(&buf->vb.vb2_buf, 0);
-		memset(vid_data, 0x00, buf->length); /* Blank green frame */
-		buffer_filled(dev, dma_q, buf);
-	}
-	get_next_buf(dma_q, &buf);
+ buf = dev->isoc_ctl.buf;
+ if (buf != ((void*)0)) {
+  vid_data = vb2_plane_vaddr(&buf->vb.vb2_buf, 0);
+  memset(vid_data, 0x00, buf->length);
+  buffer_filled(dev, dma_q, buf);
+ }
+ get_next_buf(dma_q, &buf);
 
-	if (dev->vid_timeout_running == 1)
-		mod_timer(&dev->vid_timeout, jiffies + (HZ / 10));
+ if (dev->vid_timeout_running == 1)
+  mod_timer(&dev->vid_timeout, jiffies + (HZ / 10));
 
-	spin_unlock_irqrestore(&dev->slock, flags);
+ spin_unlock_irqrestore(&dev->slock, flags);
 }

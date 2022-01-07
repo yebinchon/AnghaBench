@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vary {char* arg; struct vary* next; } ;
 struct tm {int tm_isdst; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adjday (struct tm*,char,int,int) ; 
- int /*<<< orphan*/  adjhour (struct tm*,char,int,int) ; 
- int /*<<< orphan*/  adjmin (struct tm*,char,int,int) ; 
- int /*<<< orphan*/  adjmon (struct tm*,char,int,int,int) ; 
- int /*<<< orphan*/  adjsec (struct tm*,char,int,int) ; 
- int /*<<< orphan*/  adjwday (struct tm*,char,int,int,int) ; 
- int /*<<< orphan*/  adjyear (struct tm*,char,int,int) ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  digits ; 
- size_t strlen (char*) ; 
- size_t strspn (char*,int /*<<< orphan*/ ) ; 
- int trans (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trans_mon ; 
- int /*<<< orphan*/  trans_wday ; 
+
+ int adjday (struct tm*,char,int,int) ;
+ int adjhour (struct tm*,char,int,int) ;
+ int adjmin (struct tm*,char,int,int) ;
+ int adjmon (struct tm*,char,int,int,int) ;
+ int adjsec (struct tm*,char,int,int) ;
+ int adjwday (struct tm*,char,int,int,int) ;
+ int adjyear (struct tm*,char,int,int) ;
+ int atoi (char*) ;
+ int digits ;
+ size_t strlen (char*) ;
+ size_t strspn (char*,int ) ;
+ int trans (int ,char*) ;
+ int trans_mon ;
+ int trans_wday ;
 
 const struct vary *
 vary_apply(const struct vary *v, struct tm *t)
@@ -68,7 +68,7 @@ vary_apply(const struct vary *v, struct tm *t)
     } else {
       val = atoi(arg);
       which = arg[len-1];
-      
+
       switch (which) {
         case 'S':
           if (!adjsec(t, type, val, 1))

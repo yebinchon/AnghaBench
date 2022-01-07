@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* pthread_rwlock_t ;
-struct TYPE_4__ {scalar_t__ nMagic; scalar_t__ nExclusiveAccessCount; scalar_t__ nCompletedSharedAccessCount; int /*<<< orphan*/  mtxExclusiveAccess; int /*<<< orphan*/  mtxSharedAccessCompleted; int /*<<< orphan*/  cndSharedAccessCompleted; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- TYPE_1__* PTHREAD_RWLOCK_INITIALIZER ; 
- scalar_t__ PTW32_RWLOCK_MAGIC ; 
- int pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* pthread_rwlock_t ;
+struct TYPE_4__ {scalar_t__ nMagic; scalar_t__ nExclusiveAccessCount; scalar_t__ nCompletedSharedAccessCount; int mtxExclusiveAccess; int mtxSharedAccessCompleted; int cndSharedAccessCompleted; } ;
+
+
+ int EINVAL ;
+ TYPE_1__* PTHREAD_RWLOCK_INITIALIZER ;
+ scalar_t__ PTW32_RWLOCK_MAGIC ;
+ int pthread_cond_signal (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int
 pthread_rwlock_unlock (pthread_rwlock_t * rwlock)
@@ -28,16 +28,16 @@ pthread_rwlock_unlock (pthread_rwlock_t * rwlock)
   int result, result1;
   pthread_rwlock_t rwl;
 
-  if (rwlock == NULL || *rwlock == NULL)
+  if (rwlock == ((void*)0) || *rwlock == ((void*)0))
     {
       return (EINVAL);
     }
 
   if (*rwlock == PTHREAD_RWLOCK_INITIALIZER)
     {
-      /*
-       * Assume any race condition here is harmless.
-       */
+
+
+
       return 0;
     }
 
@@ -51,15 +51,15 @@ pthread_rwlock_unlock (pthread_rwlock_t * rwlock)
   if (rwl->nExclusiveAccessCount == 0)
     {
       if ((result =
-	   pthread_mutex_lock (&(rwl->mtxSharedAccessCompleted))) != 0)
-	{
-	  return result;
-	}
+    pthread_mutex_lock (&(rwl->mtxSharedAccessCompleted))) != 0)
+ {
+   return result;
+ }
 
       if (++rwl->nCompletedSharedAccessCount == 0)
-	{
-	  result = pthread_cond_signal (&(rwl->cndSharedAccessCompleted));
-	}
+ {
+   result = pthread_cond_signal (&(rwl->cndSharedAccessCompleted));
+ }
 
       result1 = pthread_mutex_unlock (&(rwl->mtxSharedAccessCompleted));
     }

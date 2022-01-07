@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  deferred_path; } ;
-typedef  TYPE_1__ menu_handle_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * environ_get; int /*<<< orphan*/ * args; int /*<<< orphan*/ * argv; scalar_t__ argc; } ;
-typedef  TYPE_2__ content_ctx_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CORE_TYPE_PLAIN ; 
- int /*<<< orphan*/  content_add_to_playlist (char const*) ; 
- int menu_cbs_exit () ; 
- TYPE_1__* menu_driver_get_ptr () ; 
- int /*<<< orphan*/  task_push_load_content_with_new_core_from_menu (char const*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int deferred_path; } ;
+typedef TYPE_1__ menu_handle_t ;
+struct TYPE_6__ {int * environ_get; int * args; int * argv; scalar_t__ argc; } ;
+typedef TYPE_2__ content_ctx_info_t ;
+
+
+ int CORE_TYPE_PLAIN ;
+ int content_add_to_playlist (char const*) ;
+ int menu_cbs_exit () ;
+ TYPE_1__* menu_driver_get_ptr () ;
+ int task_push_load_content_with_new_core_from_menu (char const*,int ,TYPE_2__*,int ,int *,int *) ;
 
 __attribute__((used)) static int action_ok_load_core_deferred(const char *path,
       const char *label, unsigned type, size_t idx, size_t entry_idx)
 {
    content_ctx_info_t content_info;
-   menu_handle_t *menu                 = menu_driver_get_ptr();
+   menu_handle_t *menu = menu_driver_get_ptr();
 
-   content_info.argc                   = 0;
-   content_info.argv                   = NULL;
-   content_info.args                   = NULL;
-   content_info.environ_get            = NULL;
+   content_info.argc = 0;
+   content_info.argv = ((void*)0);
+   content_info.args = ((void*)0);
+   content_info.environ_get = ((void*)0);
 
    if (!menu)
       return menu_cbs_exit();
@@ -42,7 +42,7 @@ __attribute__((used)) static int action_ok_load_core_deferred(const char *path,
             path, menu->deferred_path,
             &content_info,
             CORE_TYPE_PLAIN,
-            NULL, NULL))
+            ((void*)0), ((void*)0)))
       return -1;
    content_add_to_playlist(path);
 

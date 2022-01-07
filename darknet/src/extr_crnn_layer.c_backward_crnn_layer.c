@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int input; int delta; } ;
-typedef  TYPE_1__ network ;
+typedef TYPE_1__ network ;
 struct TYPE_9__ {int steps; int state; int hidden; int batch; int output; int delta; int inputs; scalar_t__ shortcut; struct TYPE_9__* output_layer; struct TYPE_9__* self_layer; struct TYPE_9__* input_layer; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  axpy_cpu (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  backward_convolutional_layer (TYPE_2__,TYPE_1__) ; 
- int /*<<< orphan*/  copy_cpu (int,int,int,int,int) ; 
- int /*<<< orphan*/  increment_layer (TYPE_2__*,int) ; 
+
+ int axpy_cpu (int,int,int,int,int,int) ;
+ int backward_convolutional_layer (TYPE_2__,TYPE_1__) ;
+ int copy_cpu (int,int,int,int,int) ;
+ int increment_layer (TYPE_2__*,int) ;
 
 void backward_crnn_layer(layer l, network net)
 {
@@ -45,15 +45,6 @@ void backward_crnn_layer(layer l, network net)
         backward_convolutional_layer(output_layer, s);
 
         l.state -= l.hidden*l.batch;
-        /*
-           if(i > 0){
-           copy_cpu(l.hidden * l.batch, input_layer.output - l.hidden*l.batch, 1, l.state, 1);
-           axpy_cpu(l.hidden * l.batch, 1, self_layer.output - l.hidden*l.batch, 1, l.state, 1);
-           }else{
-           fill_cpu(l.hidden * l.batch, 0, l.state, 1);
-           }
-         */
-
         s.input = l.state;
         s.delta = self_layer.delta - l.hidden*l.batch;
         if (i == 0) s.delta = 0;

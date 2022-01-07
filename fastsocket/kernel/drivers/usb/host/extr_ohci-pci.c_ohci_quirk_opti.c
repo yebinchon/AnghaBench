@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_hcd {int dummy; } ;
 struct ohci_hcd {int dummy; } ;
 
-/* Variables and functions */
- struct ohci_hcd* hcd_to_ohci (struct usb_hcd*) ; 
- int /*<<< orphan*/  ohci_dbg (struct ohci_hcd*,char*) ; 
+
+ struct ohci_hcd* hcd_to_ohci (struct usb_hcd*) ;
+ int ohci_dbg (struct ohci_hcd*,char*) ;
 
 __attribute__((used)) static int ohci_quirk_opti(struct usb_hcd *hcd)
 {
-	struct ohci_hcd	*ohci = hcd_to_ohci (hcd);
+ struct ohci_hcd *ohci = hcd_to_ohci (hcd);
 
-	ohci_dbg (ohci, "WARNING: OPTi workarounds unavailable\n");
+ ohci_dbg (ohci, "WARNING: OPTi workarounds unavailable\n");
 
-	return 0;
+ return 0;
 }

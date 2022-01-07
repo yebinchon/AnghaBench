@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  Value; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ INI_ENTRY ;
 
-/* Variables and functions */
- TYPE_1__* GetIniEntry (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ToInt (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int Value; } ;
+typedef int LIST ;
+typedef TYPE_1__ INI_ENTRY ;
+
+
+ TYPE_1__* GetIniEntry (int *,char*) ;
+ int ToInt (int ) ;
 
 UINT IniIntValue(LIST *o, char *key)
 {
-	INI_ENTRY *e;
-	// Validate arguments
-	if (o == NULL || key == NULL)
-	{
-		return 0;
-	}
+ INI_ENTRY *e;
 
-	e = GetIniEntry(o, key);
-	if (e == NULL)
-	{
-		return 0;
-	}
+ if (o == ((void*)0) || key == ((void*)0))
+ {
+  return 0;
+ }
 
-	return ToInt(e->Value);
+ e = GetIniEntry(o, key);
+ if (e == ((void*)0))
+ {
+  return 0;
+ }
+
+ return ToInt(e->Value);
 }

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cmd_dispatch (int,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmd_init () ; 
- int /*<<< orphan*/  cmd_load_dir (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int cmd_dispatch (int,char**,int *) ;
+ int cmd_init () ;
+ int cmd_load_dir (char*,int *,int *) ;
 
 int
 main(int argc, char *argv[])
 {
 
-	cmd_init();
+ cmd_init();
 
-	cmd_load_dir("/lib/nvmecontrol", NULL, NULL);
-	cmd_load_dir("/usr/local/lib/nvmecontrol", NULL, NULL);
+ cmd_load_dir("/lib/nvmecontrol", ((void*)0), ((void*)0));
+ cmd_load_dir("/usr/local/lib/nvmecontrol", ((void*)0), ((void*)0));
 
-	cmd_dispatch(argc, argv, NULL);
+ cmd_dispatch(argc, argv, ((void*)0));
 
-	return (0);
+ return (0);
 }

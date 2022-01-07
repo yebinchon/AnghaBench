@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_texture {int flags; int /*<<< orphan*/  target; } ;
-struct wined3d_sampler_desc {scalar_t__ address_u; scalar_t__ address_v; scalar_t__ address_w; scalar_t__ mag_filter; scalar_t__ min_filter; scalar_t__ mip_filter; scalar_t__ max_anisotropy; int /*<<< orphan*/  lod_bias; scalar_t__ compare; scalar_t__ srgb_decode; int /*<<< orphan*/ * border_color; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* p_glTexEnvf ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glTexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ;int /*<<< orphan*/  (* p_glTexParameterfv ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct wined3d_texture {int flags; int target; } ;
+struct wined3d_sampler_desc {scalar_t__ address_u; scalar_t__ address_v; scalar_t__ address_w; scalar_t__ mag_filter; scalar_t__ min_filter; scalar_t__ mip_filter; scalar_t__ max_anisotropy; int lod_bias; scalar_t__ compare; scalar_t__ srgb_decode; int * border_color; } ;
+struct TYPE_7__ {int (* p_glTexEnvf ) (int ,int ,int ) ;int (* p_glTexParameteri ) (int ,int ,scalar_t__) ;int (* p_glTexParameterfv ) (int ,int ,int *) ;} ;
 struct TYPE_8__ {TYPE_3__ gl; } ;
 struct wined3d_gl_info {scalar_t__* wrap_lookup; TYPE_4__ gl_ops; scalar_t__* supported; } ;
 struct wined3d_context {TYPE_1__* d3d_info; struct wined3d_gl_info* gl_info; } ;
-struct TYPE_6__ {scalar_t__ address_u; scalar_t__ address_v; scalar_t__ address_w; scalar_t__ mag_filter; scalar_t__ min_filter; scalar_t__ mip_filter; scalar_t__ max_anisotropy; scalar_t__ compare; scalar_t__ srgb_decode; int /*<<< orphan*/  border_color; } ;
+struct TYPE_6__ {scalar_t__ address_u; scalar_t__ address_v; scalar_t__ address_w; scalar_t__ mag_filter; scalar_t__ min_filter; scalar_t__ mip_filter; scalar_t__ max_anisotropy; scalar_t__ compare; scalar_t__ srgb_decode; int border_color; } ;
 struct gl_texture {TYPE_2__ sampler_desc; } ;
 struct TYPE_5__ {int wined3d_creation_flags; } ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  scalar_t__ DWORD ;
+typedef int GLenum ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- size_t ARB_TEXTURE_FILTER_ANISOTROPIC ; 
- size_t EXT_TEXTURE_LOD_BIAS ; 
- size_t EXT_TEXTURE_SRGB_DECODE ; 
- scalar_t__ GL_COMPARE_R_TO_TEXTURE_ARB ; 
- scalar_t__ GL_DECODE_EXT ; 
- scalar_t__ GL_NONE ; 
- scalar_t__ GL_SKIP_DECODE_EXT ; 
- int /*<<< orphan*/  GL_TEXTURE_BORDER_COLOR ; 
- int /*<<< orphan*/  GL_TEXTURE_COMPARE_MODE_ARB ; 
- int /*<<< orphan*/  GL_TEXTURE_FILTER_CONTROL_EXT ; 
- int /*<<< orphan*/  GL_TEXTURE_LOD_BIAS_EXT ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MAX_ANISOTROPY ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_SRGB_DECODE_EXT ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_R ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_texture*,struct wined3d_sampler_desc const*,struct wined3d_context const*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int WINED3D_SRGB_READ_WRITE_CONTROL ; 
- scalar_t__ WINED3D_TADDRESS_WRAP ; 
- int WINED3D_TEXTURE_IS_SRGB ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ wined3d_gl_mag_filter (scalar_t__) ; 
- scalar_t__ wined3d_gl_min_mip_filter (scalar_t__,scalar_t__) ; 
- struct gl_texture* wined3d_texture_get_gl_texture (struct wined3d_texture*,int) ; 
+
+ size_t ARB_TEXTURE_FILTER_ANISOTROPIC ;
+ size_t EXT_TEXTURE_LOD_BIAS ;
+ size_t EXT_TEXTURE_SRGB_DECODE ;
+ scalar_t__ GL_COMPARE_R_TO_TEXTURE_ARB ;
+ scalar_t__ GL_DECODE_EXT ;
+ scalar_t__ GL_NONE ;
+ scalar_t__ GL_SKIP_DECODE_EXT ;
+ int GL_TEXTURE_BORDER_COLOR ;
+ int GL_TEXTURE_COMPARE_MODE_ARB ;
+ int GL_TEXTURE_FILTER_CONTROL_EXT ;
+ int GL_TEXTURE_LOD_BIAS_EXT ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MAX_ANISOTROPY ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_SRGB_DECODE_EXT ;
+ int GL_TEXTURE_WRAP_R ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int TRACE (char*,struct wined3d_texture*,struct wined3d_sampler_desc const*,struct wined3d_context const*) ;
+ int WARN (char*) ;
+ int WINED3D_SRGB_READ_WRITE_CONTROL ;
+ scalar_t__ WINED3D_TADDRESS_WRAP ;
+ int WINED3D_TEXTURE_IS_SRGB ;
+ int checkGLcall (char*) ;
+ scalar_t__ memcmp (int ,int *,int) ;
+ int memcpy (int ,int *,int) ;
+ int stub1 (int ,int ,scalar_t__) ;
+ int stub10 (int ,int ,scalar_t__) ;
+ int stub11 (int ,int ,int ) ;
+ int stub2 (int ,int ,scalar_t__) ;
+ int stub3 (int ,int ,scalar_t__) ;
+ int stub4 (int ,int ,int *) ;
+ int stub5 (int ,int ,scalar_t__) ;
+ int stub6 (int ,int ,scalar_t__) ;
+ int stub7 (int ,int ,scalar_t__) ;
+ int stub8 (int ,int ,scalar_t__) ;
+ int stub9 (int ,int ,scalar_t__) ;
+ scalar_t__ wined3d_gl_mag_filter (scalar_t__) ;
+ scalar_t__ wined3d_gl_min_mip_filter (scalar_t__,scalar_t__) ;
+ struct gl_texture* wined3d_texture_get_gl_texture (struct wined3d_texture*,int) ;
 
 void wined3d_texture_apply_sampler_desc(struct wined3d_texture *texture,
         const struct wined3d_sampler_desc *sampler_desc, const struct wined3d_context *context)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  phys_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PORT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  writeb (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int phys_addr_t ;
+
+
+ int PORT (int ,int) ;
+ int writeb (int,int ) ;
 
 __attribute__((used)) static inline void serial_out(phys_addr_t base, int offset, int value)
 {
-	writeb(value, PORT(base, offset));
+ writeb(value, PORT(base, offset));
 }

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vector ;
-struct TYPE_4__ {int n; int /*<<< orphan*/  mem; } ;
 
-/* Variables and functions */
- int A ; 
- int /*<<< orphan*/  B ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int atoi (void*) ; 
- scalar_t__ change_user (char*) ; 
- int engineN ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  flush_w_buff () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * friends_list ; 
- scalar_t__ friends_list_n ; 
- int* fsize ; 
- int /*<<< orphan*/  gen_events (int /*<<< orphan*/ *,scalar_t__) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_data () ; 
- int /*<<< orphan*/  init_files (int) ; 
- void* input_name ; 
- long long* l_len ; 
- int lseek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int max_user_events ; 
- int /*<<< orphan*/  my_read () ; 
- int /*<<< orphan*/  my_write (int /*<<< orphan*/ ,int) ; 
- void* optarg ; 
- int optind ; 
- void* output_name ; 
- char* progname ; 
- TYPE_1__* qmalloc (int) ; 
- long long* qmalloc0 (int) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int uf ; 
- int /*<<< orphan*/  usage () ; 
- int userN ; 
- char* username ; 
- TYPE_1__* v ; 
- int /*<<< orphan*/  vct_init (TYPE_1__*) ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,long long*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vector ;
+struct TYPE_4__ {int n; int mem; } ;
+
+
+ int A ;
+ int B ;
+ int SEEK_SET ;
+ int assert (int) ;
+ int atoi (void*) ;
+ scalar_t__ change_user (char*) ;
+ int engineN ;
+ int exit (int) ;
+ int * fd ;
+ int flush_w_buff () ;
+ int fprintf (int ,char*,...) ;
+ int * friends_list ;
+ scalar_t__ friends_list_n ;
+ int* fsize ;
+ int gen_events (int *,scalar_t__) ;
+ int getopt (int,char**,char*) ;
+ int init_data () ;
+ int init_files (int) ;
+ void* input_name ;
+ long long* l_len ;
+ int lseek (int ,int,int ) ;
+ int max_user_events ;
+ int my_read () ;
+ int my_write (int ,int) ;
+ void* optarg ;
+ int optind ;
+ void* output_name ;
+ char* progname ;
+ TYPE_1__* qmalloc (int) ;
+ long long* qmalloc0 (int) ;
+ int set_debug_handlers () ;
+ int srand (int ) ;
+ int stderr ;
+ int time (int *) ;
+ int uf ;
+ int usage () ;
+ int userN ;
+ char* username ;
+ TYPE_1__* v ;
+ int vct_init (TYPE_1__*) ;
+ scalar_t__ verbosity ;
+ int write (int ,long long*,int) ;
 
 int main (int argc, char *argv[]) {
   int i;
 
   set_debug_handlers();
   progname = argv[0];
-  srand (time (NULL));
+  srand (time (((void*)0)));
 
   if (argc == 1) {
     usage();

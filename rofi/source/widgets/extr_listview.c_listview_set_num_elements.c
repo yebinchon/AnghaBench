@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {unsigned int req_elements; int /*<<< orphan*/  selected; } ;
-typedef  TYPE_1__ listview ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIDGET (TYPE_1__*) ; 
- int /*<<< orphan*/  listview_recompute_elements (TYPE_1__*) ; 
- int /*<<< orphan*/  listview_set_selected (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  widget_queue_redraw (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {unsigned int req_elements; int selected; } ;
+typedef TYPE_1__ listview ;
+
+
+ int WIDGET (TYPE_1__*) ;
+ int listview_recompute_elements (TYPE_1__*) ;
+ int listview_set_selected (TYPE_1__*,int ) ;
+ int widget_queue_redraw (int ) ;
 
 void listview_set_num_elements ( listview *lv, unsigned int rows )
 {
-    if ( lv == NULL ) {
+    if ( lv == ((void*)0) ) {
         return;
     }
     lv->req_elements = rows;

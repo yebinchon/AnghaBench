@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_t ;
-typedef  int /*<<< orphan*/  parser_ctx_t ;
-struct TYPE_3__ {int /*<<< orphan*/  stat; int /*<<< orphan*/ * body; int /*<<< orphan*/ * group_expr; int /*<<< orphan*/  const* identifier; } ;
-typedef  TYPE_1__ foreach_statement_t ;
-typedef  int /*<<< orphan*/  expression_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STAT_FOREACH ; 
- TYPE_1__* new_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int statement_t ;
+typedef int parser_ctx_t ;
+struct TYPE_3__ {int stat; int * body; int * group_expr; int const* identifier; } ;
+typedef TYPE_1__ foreach_statement_t ;
+typedef int expression_t ;
+typedef int WCHAR ;
+
+
+ int STAT_FOREACH ;
+ TYPE_1__* new_statement (int *,int ,int) ;
 
 __attribute__((used)) static statement_t *new_foreach_statement(parser_ctx_t *ctx, const WCHAR *identifier, expression_t *group_expr,
         statement_t *body)
@@ -29,7 +29,7 @@ __attribute__((used)) static statement_t *new_foreach_statement(parser_ctx_t *ct
 
     stat = new_statement(ctx, STAT_FOREACH, sizeof(*stat));
     if(!stat)
-        return NULL;
+        return ((void*)0);
 
     stat->identifier = identifier;
     stat->group_expr = group_expr;

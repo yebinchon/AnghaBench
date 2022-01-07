@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stat {int dummy; } ;
-typedef  int /*<<< orphan*/  TableScanDesc ;
+typedef int TableScanDesc ;
 struct TYPE_2__ {scalar_t__ oid; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  scalar_t__ Oid ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
-typedef  TYPE_1__* Form_pg_tablespace ;
+typedef int Relation ;
+typedef scalar_t__ Oid ;
+typedef int * HeapTuple ;
+typedef TYPE_1__* Form_pg_tablespace ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  ForwardScanDirection ; 
- int /*<<< orphan*/  GETSTRUCT (int /*<<< orphan*/ *) ; 
- scalar_t__ GLOBALTABLESPACE_OID ; 
- char* GetDatabasePath (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  TableSpaceRelationId ; 
- int /*<<< orphan*/ * heap_getnext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lstat (char*,struct stat*) ; 
- int /*<<< orphan*/  pfree (char*) ; 
- int /*<<< orphan*/  table_beginscan_catalog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AccessShareLock ;
+ int ForwardScanDirection ;
+ int GETSTRUCT (int *) ;
+ scalar_t__ GLOBALTABLESPACE_OID ;
+ char* GetDatabasePath (scalar_t__,scalar_t__) ;
+ int TableSpaceRelationId ;
+ int * heap_getnext (int ,int ) ;
+ scalar_t__ lstat (char*,struct stat*) ;
+ int pfree (char*) ;
+ int table_beginscan_catalog (int ,int ,int *) ;
+ int table_close (int ,int ) ;
+ int table_endscan (int ) ;
+ int table_open (int ,int ) ;
 
 __attribute__((used)) static bool
 check_db_file_conflict(Oid db_id)
 {
-	bool		result = false;
-	Relation	rel;
-	TableScanDesc scan;
-	HeapTuple	tuple;
+ bool result = 0;
+ Relation rel;
+ TableScanDesc scan;
+ HeapTuple tuple;
 
-	rel = table_open(TableSpaceRelationId, AccessShareLock);
-	scan = table_beginscan_catalog(rel, 0, NULL);
-	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
-	{
-		Form_pg_tablespace spcform = (Form_pg_tablespace) GETSTRUCT(tuple);
-		Oid			dsttablespace = spcform->oid;
-		char	   *dstpath;
-		struct stat st;
+ rel = table_open(TableSpaceRelationId, AccessShareLock);
+ scan = table_beginscan_catalog(rel, 0, ((void*)0));
+ while ((tuple = heap_getnext(scan, ForwardScanDirection)) != ((void*)0))
+ {
+  Form_pg_tablespace spcform = (Form_pg_tablespace) GETSTRUCT(tuple);
+  Oid dsttablespace = spcform->oid;
+  char *dstpath;
+  struct stat st;
 
-		/* Don't mess with the global tablespace */
-		if (dsttablespace == GLOBALTABLESPACE_OID)
-			continue;
 
-		dstpath = GetDatabasePath(db_id, dsttablespace);
+  if (dsttablespace == GLOBALTABLESPACE_OID)
+   continue;
 
-		if (lstat(dstpath, &st) == 0)
-		{
-			/* Found a conflicting file (or directory, whatever) */
-			pfree(dstpath);
-			result = true;
-			break;
-		}
+  dstpath = GetDatabasePath(db_id, dsttablespace);
 
-		pfree(dstpath);
-	}
+  if (lstat(dstpath, &st) == 0)
+  {
 
-	table_endscan(scan);
-	table_close(rel, AccessShareLock);
+   pfree(dstpath);
+   result = 1;
+   break;
+  }
 
-	return result;
+  pfree(dstpath);
+ }
+
+ table_endscan(scan);
+ table_close(rel, AccessShareLock);
+
+ return result;
 }

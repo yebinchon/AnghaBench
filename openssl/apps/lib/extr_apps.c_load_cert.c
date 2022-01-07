@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pem_password_cb ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int FORMAT_ASN1 ; 
- int FORMAT_HTTP ; 
- int FORMAT_PEM ; 
- int FORMAT_PKCS12 ; 
- int /*<<< orphan*/ * PEM_read_bio_X509_AUX (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char const*,char,int) ; 
- int /*<<< orphan*/ * d2i_X509_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dup_bio_in (int) ; 
- int /*<<< orphan*/  load_cert_crl_http (char const*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_pkcs12 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ password_callback ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  unbuffer (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pem_password_cb ;
+typedef int X509 ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int BIO_printf (int ,char*,...) ;
+ int ERR_print_errors (int ) ;
+ int FORMAT_ASN1 ;
+ int FORMAT_HTTP ;
+ int FORMAT_PEM ;
+ int FORMAT_PKCS12 ;
+ int * PEM_read_bio_X509_AUX (int *,int *,int *,int *) ;
+ int bio_err ;
+ int * bio_open_default (char const*,char,int) ;
+ int * d2i_X509_bio (int *,int *) ;
+ int * dup_bio_in (int) ;
+ int load_cert_crl_http (char const*,int **,int *) ;
+ int load_pkcs12 (int *,char const*,int *,int *,int *,int **,int *) ;
+ scalar_t__ password_callback ;
+ int stdin ;
+ int unbuffer (int ) ;
 
 X509 *load_cert(const char *file, int format, const char *cert_descrip)
 {
-    X509 *x = NULL;
+    X509 *x = ((void*)0);
     BIO *cert;
 
     if (format == FORMAT_HTTP) {
-#if !defined(OPENSSL_NO_OCSP) && !defined(OPENSSL_NO_SOCK)
-        load_cert_crl_http(file, &x, NULL);
-#endif
+
+        load_cert_crl_http(file, &x, ((void*)0));
+
         return x;
     }
 
-    if (file == NULL) {
+    if (file == ((void*)0)) {
         unbuffer(stdin);
         cert = dup_bio_in(format);
     } else {
         cert = bio_open_default(file, 'r', format);
     }
-    if (cert == NULL)
+    if (cert == ((void*)0))
         goto end;
 
     if (format == FORMAT_ASN1) {
-        x = d2i_X509_bio(cert, NULL);
+        x = d2i_X509_bio(cert, ((void*)0));
     } else if (format == FORMAT_PEM) {
-        x = PEM_read_bio_X509_AUX(cert, NULL,
-                                  (pem_password_cb *)password_callback, NULL);
+        x = PEM_read_bio_X509_AUX(cert, ((void*)0),
+                                  (pem_password_cb *)password_callback, ((void*)0));
     } else if (format == FORMAT_PKCS12) {
-        if (!load_pkcs12(cert, cert_descrip, NULL, NULL, NULL, &x, NULL))
+        if (!load_pkcs12(cert, cert_descrip, ((void*)0), ((void*)0), ((void*)0), &x, ((void*)0)))
             goto end;
     } else {
         BIO_printf(bio_err, "bad input format specified for %s\n", cert_descrip);
         goto end;
     }
  end:
-    if (x == NULL) {
+    if (x == ((void*)0)) {
         BIO_printf(bio_err, "unable to load certificate\n");
         ERR_print_errors(bio_err);
     }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- scalar_t__ atoi (char*) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inet_addr (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strlen (char*) ; 
- void* x (void*,int) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+
+
+ scalar_t__ atoi (char*) ;
+ void* calloc (int,int) ;
+ int htonl (int ) ;
+ int htons (int ) ;
+ int inet_addr (char*) ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
+ void* x (void*,int) ;
 
 int main(int argc, char **args)
 {
@@ -85,8 +85,8 @@ int main(int argc, char **args)
         return -1;
     }
 
-    // Yes we are leaking memory, but the program is so
-    // short lived that it doesn't really matter...
+
+
     printf("XOR'ing %d bytes of data...\n", len);
     data = x(data, len);
     for (i = 0; i < len; i++)

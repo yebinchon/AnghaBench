@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {long tv_sec; long tv_usec; } ;
-struct TYPE_12__ {scalar_t__ mode; scalar_t__ size; int num; scalar_t__ pos; TYPE_1__ tv; int /*<<< orphan*/  name; } ;
-struct TYPE_11__ {int /*<<< orphan*/  name; int /*<<< orphan*/  pid; } ;
-struct TYPE_10__ {scalar_t__ hsize; int /*<<< orphan*/ * hbegin; int /*<<< orphan*/ * hend; TYPE_4__ fd; TYPE_3__ pid; } ;
-typedef  TYPE_2__ result_t ;
-typedef  TYPE_3__ pidinfo_t ;
-typedef  scalar_t__ off_t ;
-typedef  TYPE_4__ fdinfo_t ;
+struct TYPE_12__ {scalar_t__ mode; scalar_t__ size; int num; scalar_t__ pos; TYPE_1__ tv; int name; } ;
+struct TYPE_11__ {int name; int pid; } ;
+struct TYPE_10__ {scalar_t__ hsize; int * hbegin; int * hend; TYPE_4__ fd; TYPE_3__ pid; } ;
+typedef TYPE_2__ result_t ;
+typedef TYPE_3__ pidinfo_t ;
+typedef scalar_t__ off_t ;
+typedef TYPE_4__ fdinfo_t ;
 
-/* Variables and functions */
- int MAX_FD_PER_PID ; 
- int MAX_PIDS ; 
- int MAX_RESULTS ; 
- scalar_t__ PM_READ ; 
- scalar_t__ PM_READWRITE ; 
- scalar_t__ PM_WRITE ; 
- scalar_t__ add_to_hlist (int /*<<< orphan*/ **,int /*<<< orphan*/ **,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  clear () ; 
- int /*<<< orphan*/  copy_and_clean_results (TYPE_2__*,int,int) ; 
- int find_fd_for_pid (int /*<<< orphan*/ ,int*,int) ; 
- scalar_t__ find_pid_by_id (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ find_pids_by_binary_name (int /*<<< orphan*/ ,TYPE_3__*,int) ; 
- scalar_t__ flag_monitor ; 
- scalar_t__ flag_monitor_continuous ; 
- scalar_t__ flag_open_mode ; 
- scalar_t__ flag_quiet ; 
- scalar_t__ flag_throughput ; 
- int /*<<< orphan*/  format_size (scalar_t__,char*) ; 
- char get_fdinfo (int /*<<< orphan*/ ,int,TYPE_4__*) ; 
- scalar_t__ get_hlist_average (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  nfprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  nprintf (char*,...) ; 
- int /*<<< orphan*/  print_eta (scalar_t__) ; 
- int /*<<< orphan*/ * proc_names ; 
- int proc_names_cnt ; 
- int /*<<< orphan*/ * proc_specifiq_name ; 
- int proc_specifiq_name_cnt ; 
- int /*<<< orphan*/ * proc_specifiq_pid ; 
- int proc_specifiq_pid_cnt ; 
- int /*<<< orphan*/  refresh () ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int throughput_wait_secs ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int MAX_FD_PER_PID ;
+ int MAX_PIDS ;
+ int MAX_RESULTS ;
+ scalar_t__ PM_READ ;
+ scalar_t__ PM_READWRITE ;
+ scalar_t__ PM_WRITE ;
+ scalar_t__ add_to_hlist (int **,int **,scalar_t__,scalar_t__) ;
+ int clear () ;
+ int copy_and_clean_results (TYPE_2__*,int,int) ;
+ int find_fd_for_pid (int ,int*,int) ;
+ scalar_t__ find_pid_by_id (int ,TYPE_3__*) ;
+ scalar_t__ find_pids_by_binary_name (int ,TYPE_3__*,int) ;
+ scalar_t__ flag_monitor ;
+ scalar_t__ flag_monitor_continuous ;
+ scalar_t__ flag_open_mode ;
+ scalar_t__ flag_quiet ;
+ scalar_t__ flag_throughput ;
+ int format_size (scalar_t__,char*) ;
+ char get_fdinfo (int ,int,TYPE_4__*) ;
+ scalar_t__ get_hlist_average (int *,scalar_t__) ;
+ int nfprintf (int ,char*,...) ;
+ int nprintf (char*,...) ;
+ int print_eta (scalar_t__) ;
+ int * proc_names ;
+ int proc_names_cnt ;
+ int * proc_specifiq_name ;
+ int proc_specifiq_name_cnt ;
+ int * proc_specifiq_pid ;
+ int proc_specifiq_pid_cnt ;
+ int refresh () ;
+ int stderr ;
+ scalar_t__ strcmp (int ,int ) ;
+ int throughput_wait_secs ;
+ int usleep (int) ;
 
 int monitor_processes(int *nb_pid)
 {
@@ -127,7 +127,7 @@ if (!pid_count) {
         return 0;
     if (flag_monitor || flag_monitor_continuous) {
         clear();
-	refresh();
+ refresh();
     }
     if (proc_specifiq_pid_cnt) {
         nfprintf(stderr, "No such pid: ");
@@ -160,7 +160,7 @@ for (i = 0 ; i < pid_count ; i++) {
 
     max_size = 0;
 
-    // let's find the biggest opened file
+
     for (j = 0 ; j < fd_count ; j++) {
         get_fdinfo(pidinfo_list[i].pid, fdnum_list[j], &fdinfo);
 
@@ -175,26 +175,26 @@ for (i = 0 ; i < pid_count ; i++) {
         }
     }
 
-    if (!max_size) { // nothing found
-    // this display is the root of too many confusion for the users, let's
-    // remove it. And it does not play well with --i option.
-/*        nprintf("[%5d] %s inactive/flushing/streaming/...\n",
-                pidinfo_list[i].pid,
-                pidinfo_list[i].name);*/
+    if (!max_size) {
+
+
+
+
+
         continue;
     }
 
-    // We've our biggest_fd now, let's store the result
+
     results[result_count].pid = pidinfo_list[i];
     results[result_count].fd = biggest_fd;
-    results[result_count].hbegin = NULL;
-    results[result_count].hend = NULL;
+    results[result_count].hbegin = ((void*)0);
+    results[result_count].hend = ((void*)0);
     results[result_count].hsize = 0;
 
     result_count++;
 }
 
-// wait a bit, so we can estimate the throughput
+
 if (flag_throughput && !first_pass)
     usleep(1000000 * throughput_wait_secs);
 if (flag_monitor || flag_monitor_continuous) {
@@ -206,17 +206,17 @@ for (i = 0 ; i < result_count ; i++) {
     if (flag_throughput && !first_pass) {
         still_there = get_fdinfo(results[i].pid.pid, results[i].fd.num, &fdinfo);
         if (still_there && strcmp(results[i].fd.name, fdinfo.name))
-            still_there = 0; // still there, but it's not the same file !
+            still_there = 0;
     } else
         still_there = 0;
 
     if (!still_there) {
-        // pid is no more here (or no throughput was asked), use initial info
+
         format_size(results[i].fd.pos, fpos);
         format_size(results[i].fd.size, fsize);
         perc = ((double)100 / (double)results[i].fd.size) * (double)results[i].fd.pos;
     } else {
-        // use the newest info
+
         format_size(fdinfo.pos, fpos);
         format_size(fdinfo.size, fsize);
         perc = ((double)100 / (double)fdinfo.size) * (double)fdinfo.pos;
@@ -232,12 +232,12 @@ for (i = 0 ; i < result_count ; i++) {
         fsize);
 
     if (flag_throughput && still_there && !first_pass) {
-        // results[i] vs fdinfo
+
         long long usec_diff;
         off_t byte_diff;
         off_t bytes_per_sec;
 
-        usec_diff =   (fdinfo.tv.tv_sec  - results[i].fd.tv.tv_sec) * 1000000L
+        usec_diff = (fdinfo.tv.tv_sec - results[i].fd.tv.tv_sec) * 1000000L
                     + (fdinfo.tv.tv_usec - results[i].fd.tv.tv_usec);
         byte_diff = fdinfo.pos - results[i].fd.pos;
         results[i].hsize += add_to_hlist(&results[i].hbegin, &results[i].hend, results[i].hsize, byte_diff / (usec_diff / 1000000.0));
@@ -253,10 +253,10 @@ for (i = 0 ; i < result_count ; i++) {
 
     nprintf("\n\n");
 
-    // Need to work on window width when using screen/watch/...
-    //~ printf("    [");
-    //~ print_bar(perc, ws.ws_col-6);
-    //~ printf("]\n");
+
+
+
+
 }
 if (flag_monitor || flag_monitor_continuous) {
     if (!result_count)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  wl_data; int /*<<< orphan*/  user_options; int /*<<< orphan*/  user_options_extra; int /*<<< orphan*/  tuning_db; int /*<<< orphan*/  straight_ctx; int /*<<< orphan*/  status_ctx; int /*<<< orphan*/  restore_ctx; int /*<<< orphan*/  potfile_ctx; int /*<<< orphan*/  pidfile_ctx; int /*<<< orphan*/  outfile_ctx; int /*<<< orphan*/  outcheck_ctx; int /*<<< orphan*/  backend_ctx; int /*<<< orphan*/  module_ctx; int /*<<< orphan*/  mask_ctx; int /*<<< orphan*/  loopback_ctx; int /*<<< orphan*/  logfile_ctx; int /*<<< orphan*/  induct_ctx; int /*<<< orphan*/  hwmon_ctx; int /*<<< orphan*/  hashes; int /*<<< orphan*/  hashconfig; int /*<<< orphan*/  hashcat_user; int /*<<< orphan*/  folder_config; int /*<<< orphan*/  event_ctx; int /*<<< orphan*/  dictstat_ctx; int /*<<< orphan*/  debugfile_ctx; int /*<<< orphan*/  cpt_ctx; int /*<<< orphan*/  combinator_ctx; int /*<<< orphan*/  bitmap_ctx; } ;
-typedef  TYPE_1__ hashcat_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hcfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int wl_data; int user_options; int user_options_extra; int tuning_db; int straight_ctx; int status_ctx; int restore_ctx; int potfile_ctx; int pidfile_ctx; int outfile_ctx; int outcheck_ctx; int backend_ctx; int module_ctx; int mask_ctx; int loopback_ctx; int logfile_ctx; int induct_ctx; int hwmon_ctx; int hashes; int hashconfig; int hashcat_user; int folder_config; int event_ctx; int dictstat_ctx; int debugfile_ctx; int cpt_ctx; int combinator_ctx; int bitmap_ctx; } ;
+typedef TYPE_1__ hashcat_ctx_t ;
+
+
+ int hcfree (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 void hashcat_destroy (hashcat_ctx_t *hashcat_ctx)
 {

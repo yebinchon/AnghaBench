@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  rev; int /*<<< orphan*/  relpath; } ;
-typedef  TYPE_2__ svn_pathrev_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_13__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  text; int /*<<< orphan*/  props; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_3__ svn_element__payload_t ;
-struct TYPE_14__ {int /*<<< orphan*/  fetch_baton; int /*<<< orphan*/  (* fetch_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;TYPE_1__* txn; } ;
-typedef  TYPE_4__ svn_branch__txn_priv_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_11__ {int /*<<< orphan*/  repos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAYLOAD_IS_ONLY_BY_REFERENCE (TYPE_3__*) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  payload_get_storage_pathrev (TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int svn_element__payload_invariants (TYPE_3__*) ; 
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int rev; int relpath; } ;
+typedef TYPE_2__ svn_pathrev_t ;
+typedef int svn_error_t ;
+struct TYPE_13__ {int pool; int text; int props; int kind; } ;
+typedef TYPE_3__ svn_element__payload_t ;
+struct TYPE_14__ {int fetch_baton; int (* fetch_func ) (int *,int *,int *,int *,int ,int ,int ,int ,int *) ;TYPE_1__* txn; } ;
+typedef TYPE_4__ svn_branch__txn_priv_t ;
+typedef int apr_pool_t ;
+struct TYPE_11__ {int repos; } ;
+
+
+ int PAYLOAD_IS_ONLY_BY_REFERENCE (TYPE_3__*) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int * SVN_NO_ERROR ;
+ int payload_get_storage_pathrev (TYPE_2__*,TYPE_3__*,int ,int *) ;
+ int stub1 (int *,int *,int *,int *,int ,int ,int ,int ,int *) ;
+ int svn_element__payload_invariants (TYPE_3__*) ;
 
 __attribute__((used)) static svn_error_t *
 payload_resolve(svn_element__payload_t *payload,
@@ -52,7 +52,7 @@ payload_resolve(svn_element__payload_t *payload,
   SVN_ERR(eb->fetch_func(&payload->kind,
                          &payload->props,
                          &payload->text,
-                         NULL,
+                         ((void*)0),
                          eb->fetch_baton,
                          storage.relpath, storage.rev,
                          payload->pool, scratch_pool));

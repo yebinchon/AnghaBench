@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_CONSOLE_OUTPUT ; 
- int /*<<< orphan*/  ACPI_DB_LINE_BUFFER_SIZE ; 
- int /*<<< orphan*/  ACPI_DEBUGGER_COMMAND_PROMPT ; 
- int /*<<< orphan*/  ACPI_DEBUGGER_EXECUTE_PROMPT ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_WAIT_FOREVER ; 
- int /*<<< orphan*/  AcpiDbSetOutputDestination (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGbl_DbCommandComplete ; 
- int /*<<< orphan*/  AcpiGbl_DbCommandReady ; 
- int /*<<< orphan*/  AcpiGbl_DbLineBuf ; 
- int /*<<< orphan*/  AcpiGbl_DbTerminateLoop ; 
- int /*<<< orphan*/  AcpiGbl_MethodExecuting ; 
- int /*<<< orphan*/  AcpiOsAcquireMutex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsGetLine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsReleaseMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtSafeStrncpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ int ACPI_DB_CONSOLE_OUTPUT ;
+ int ACPI_DB_LINE_BUFFER_SIZE ;
+ int ACPI_DEBUGGER_COMMAND_PROMPT ;
+ int ACPI_DEBUGGER_EXECUTE_PROMPT ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_WAIT_FOREVER ;
+ int AcpiDbSetOutputDestination (int ) ;
+ int AcpiGbl_DbCommandComplete ;
+ int AcpiGbl_DbCommandReady ;
+ int AcpiGbl_DbLineBuf ;
+ int AcpiGbl_DbTerminateLoop ;
+ int AcpiGbl_MethodExecuting ;
+ int AcpiOsAcquireMutex (int ,int ) ;
+ int AcpiOsGetLine (int ,int ,int *) ;
+ int AcpiOsPrintf (char*,int ) ;
+ int AcpiOsReleaseMutex (int ) ;
+ int AcpiUtSafeStrncpy (int ,char*,int ) ;
 
 __attribute__((used)) static void
 AcpiDbRunRemoteDebugger (
-    char                    *BatchBuffer)
+    char *BatchBuffer)
 {
-    ACPI_STATUS             Status;
-    char                    *Ptr = BatchBuffer;
-    char                    *Cmd = Ptr;
+    ACPI_STATUS Status;
+    char *Ptr = BatchBuffer;
+    char *Cmd = Ptr;
 
 
     while (!AcpiGbl_DbTerminateLoop)
@@ -50,7 +50,7 @@ AcpiDbRunRemoteDebugger (
                 {
                     if (*Ptr == ',')
                     {
-                        /* Convert commas to spaces */
+
                         *Ptr = ' ';
                     }
                     else if (*Ptr == ';')
@@ -73,11 +73,11 @@ AcpiDbRunRemoteDebugger (
         }
         else
         {
-            /* Force output to console until a command is entered */
+
 
             AcpiDbSetOutputDestination (ACPI_DB_CONSOLE_OUTPUT);
 
-            /* Different prompt if method is executing */
+
 
             if (!AcpiGbl_MethodExecuting)
             {
@@ -88,20 +88,20 @@ AcpiDbRunRemoteDebugger (
                 AcpiOsPrintf ("%1c ", ACPI_DEBUGGER_EXECUTE_PROMPT);
             }
 
-            /* Get the user input line */
+
 
             Status = AcpiOsGetLine (AcpiGbl_DbLineBuf,
-                ACPI_DB_LINE_BUFFER_SIZE, NULL);
+                ACPI_DB_LINE_BUFFER_SIZE, ((void*)0));
             if (ACPI_FAILURE (Status))
             {
                 return;
             }
         }
 
-        /*
-         * Signal the debug thread that we have a command to execute,
-         * and wait for the command to complete.
-         */
+
+
+
+
         AcpiOsReleaseMutex (AcpiGbl_DbCommandReady);
 
         Status = AcpiOsAcquireMutex (AcpiGbl_DbCommandComplete,

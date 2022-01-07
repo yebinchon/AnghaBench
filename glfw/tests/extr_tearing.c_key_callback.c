@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int width; int height; int /*<<< orphan*/  refreshRate; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  TYPE_1__ GLFWvidmode ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
-#define  GLFW_KEY_DOWN 132 
-#define  GLFW_KEY_ENTER 131 
-#define  GLFW_KEY_ESCAPE 130 
-#define  GLFW_KEY_F11 129 
-#define  GLFW_KEY_UP 128 
- int GLFW_MOD_ALT ; 
- int GLFW_PRESS ; 
- int /*<<< orphan*/ * glfwGetPrimaryMonitor () ; 
- TYPE_1__* glfwGetVideoMode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetWindowMonitor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetWindowPos (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetWindowSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwSetWindowMonitor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowShouldClose (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  set_swap_interval (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swap_interval ; 
- int /*<<< orphan*/  swap_tear ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int width; int height; int refreshRate; } ;
+typedef int GLFWwindow ;
+typedef TYPE_1__ GLFWvidmode ;
+typedef int GLFWmonitor ;
+
+
+
+
+
+
+
+ int GLFW_MOD_ALT ;
+ int GLFW_PRESS ;
+ int * glfwGetPrimaryMonitor () ;
+ TYPE_1__* glfwGetVideoMode (int *) ;
+ int glfwGetWindowMonitor (int *) ;
+ int glfwGetWindowPos (int *,int*,int*) ;
+ int glfwGetWindowSize (int *,int*,int*) ;
+ int glfwSetWindowMonitor (int *,int *,int,int,int,int,int ) ;
+ int glfwSetWindowShouldClose (int *,int) ;
+ int set_swap_interval (int *,int ) ;
+ int swap_interval ;
+ int swap_tear ;
 
 __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -42,14 +42,14 @@ __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int 
 
     switch (key)
     {
-        case GLFW_KEY_UP:
+        case 128:
         {
             if (swap_interval + 1 > swap_interval)
                 set_swap_interval(window, swap_interval + 1);
             break;
         }
 
-        case GLFW_KEY_DOWN:
+        case 132:
         {
             if (swap_tear)
             {
@@ -64,12 +64,12 @@ __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int 
             break;
         }
 
-        case GLFW_KEY_ESCAPE:
+        case 130:
             glfwSetWindowShouldClose(window, 1);
             break;
 
-        case GLFW_KEY_F11:
-        case GLFW_KEY_ENTER:
+        case 129:
+        case 131:
         {
             static int x, y, width, height;
 
@@ -77,7 +77,7 @@ __attribute__((used)) static void key_callback(GLFWwindow* window, int key, int 
                 return;
 
             if (glfwGetWindowMonitor(window))
-                glfwSetWindowMonitor(window, NULL, x, y, width, height, 0);
+                glfwSetWindowMonitor(window, ((void*)0), x, y, width, height, 0);
             else
             {
                 GLFWmonitor* monitor = glfwGetPrimaryMonitor();

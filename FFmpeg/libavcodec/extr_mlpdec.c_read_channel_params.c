@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int huff_lsbs; void* codebook; int /*<<< orphan*/  huff_offset; TYPE_3__* filter_params; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int huff_lsbs; void* codebook; int huff_offset; TYPE_3__* filter_params; } ;
 struct TYPE_9__ {int order; scalar_t__ shift; } ;
-struct TYPE_8__ {int /*<<< orphan*/  avctx; TYPE_1__* substream; } ;
+struct TYPE_8__ {int avctx; TYPE_1__* substream; } ;
 struct TYPE_7__ {int param_presence_flags; TYPE_4__* channel_params; } ;
-typedef  TYPE_1__ SubStream ;
-typedef  TYPE_2__ MLPDecodeContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ FilterParams ;
-typedef  TYPE_4__ ChannelParams ;
+typedef TYPE_1__ SubStream ;
+typedef TYPE_2__ MLPDecodeContext ;
+typedef int GetBitContext ;
+typedef TYPE_3__ FilterParams ;
+typedef TYPE_4__ ChannelParams ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- size_t FIR ; 
- size_t IIR ; 
- int PARAM_FIR ; 
- int PARAM_HUFFOFFSET ; 
- int PARAM_IIR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_sbits (int /*<<< orphan*/ *,int) ; 
- int read_filter_params (TYPE_2__*,int /*<<< orphan*/ *,unsigned int,unsigned int,size_t) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ size_t FIR ;
+ size_t IIR ;
+ int PARAM_FIR ;
+ int PARAM_HUFFOFFSET ;
+ int PARAM_IIR ;
+ int av_log (int ,int ,char*) ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_sbits (int *,int) ;
+ int read_filter_params (TYPE_2__*,int *,unsigned int,unsigned int,size_t) ;
 
 __attribute__((used)) static int read_channel_params(MLPDecodeContext *m, unsigned int substr,
                                GetBitContext *gbp, unsigned int ch)
@@ -68,11 +68,11 @@ __attribute__((used)) static int read_channel_params(MLPDecodeContext *m, unsign
                 "FIR and IIR filters must use the same precision.\n");
         return AVERROR_INVALIDDATA;
     }
-    /* The FIR and IIR filters must have the same precision.
-     * To simplify the filtering code, only the precision of the
-     * FIR filter is considered. If only the IIR filter is employed,
-     * the FIR filter precision is set to that of the IIR filter, so
-     * that the filtering code can use it. */
+
+
+
+
+
     if (!fir->order && iir->order)
         fir->shift = iir->shift;
 
@@ -80,7 +80,7 @@ __attribute__((used)) static int read_channel_params(MLPDecodeContext *m, unsign
         if (get_bits1(gbp))
             cp->huff_offset = get_sbits(gbp, 15);
 
-    cp->codebook  = get_bits(gbp, 2);
+    cp->codebook = get_bits(gbp, 2);
     cp->huff_lsbs = get_bits(gbp, 5);
 
     if (cp->huff_lsbs > 24) {

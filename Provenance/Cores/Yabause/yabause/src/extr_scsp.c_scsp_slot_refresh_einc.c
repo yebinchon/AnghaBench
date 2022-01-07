@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_3__ {int fsft; int krs; int /*<<< orphan*/ * rrp; int /*<<< orphan*/  eincr; int /*<<< orphan*/ * srp; int /*<<< orphan*/  eincs; int /*<<< orphan*/ * drp; int /*<<< orphan*/  eincd; int /*<<< orphan*/ * arp; int /*<<< orphan*/  einca; } ;
-typedef  TYPE_1__ slot_t ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_3__ {int fsft; int krs; int * rrp; int eincr; int * srp; int eincs; int * drp; int eincd; int * arp; int einca; } ;
+typedef TYPE_1__ slot_t ;
+
+
 
 __attribute__((used)) static void
 scsp_slot_refresh_einc (slot_t *slot, u32 adsr_bitmask)

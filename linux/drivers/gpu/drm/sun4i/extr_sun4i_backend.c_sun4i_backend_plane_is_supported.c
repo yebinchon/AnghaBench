@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_plane_state {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ sun4i_backend_plane_uses_frontend (struct drm_plane_state*) ; 
- scalar_t__ sun4i_backend_plane_uses_scaler (struct drm_plane_state*) ; 
+
+ scalar_t__ sun4i_backend_plane_uses_frontend (struct drm_plane_state*) ;
+ scalar_t__ sun4i_backend_plane_uses_scaler (struct drm_plane_state*) ;
 
 __attribute__((used)) static bool sun4i_backend_plane_is_supported(struct drm_plane_state *state,
-					     bool *uses_frontend)
+          bool *uses_frontend)
 {
-	if (sun4i_backend_plane_uses_frontend(state)) {
-		*uses_frontend = true;
-		return true;
-	}
+ if (sun4i_backend_plane_uses_frontend(state)) {
+  *uses_frontend = 1;
+  return 1;
+ }
 
-	*uses_frontend = false;
+ *uses_frontend = 0;
 
-	/* Scaling is not supported without the frontend. */
-	if (sun4i_backend_plane_uses_scaler(state))
-		return false;
 
-	return true;
+ if (sun4i_backend_plane_uses_scaler(state))
+  return 0;
+
+ return 1;
 }

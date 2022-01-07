@@ -1,70 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int type; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  key; int /*<<< orphan*/  my; int /*<<< orphan*/  mx; } ;
-typedef  TYPE_1__ stbwingraph_event ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FRAMEBUFFER_SRGB_EXT ; 
-#define  STBWGE_char 139 
-#define  STBWGE_create 138 
-#define  STBWGE_draw 137 
-#define  STBWGE_keydown 136 
-#define  STBWGE_keyup 135 
-#define  STBWGE_leftdown 134 
-#define  STBWGE_leftup 133 
-#define  STBWGE_mousemove 132 
-#define  STBWGE_mousewheel 131 
-#define  STBWGE_rightdown 130 
-#define  STBWGE_rightup 129 
-#define  STBWGE_size 128 
- int STBWINGRAPH_unprocessed ; 
- int STBWINGRAPH_winproc_exit ; 
- int /*<<< orphan*/  VK_DOWN ; 
- int /*<<< orphan*/  VK_LEFT ; 
- int /*<<< orphan*/  VK_RIGHT ; 
- int /*<<< orphan*/  VK_UP ; 
- int black_on_white ; 
- int /*<<< orphan*/  do_mouse (TYPE_1__*,int,int) ; 
- int font ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  initialized ; 
- int integer_align ; 
- int /*<<< orphan*/  loopmode (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int* move ; 
- int /*<<< orphan*/  raw_mouse_x ; 
- int /*<<< orphan*/  raw_mouse_y ; 
- int /*<<< orphan*/  rotate_t ; 
- int rotating ; 
- int show_tex ; 
- int srgb ; 
- int /*<<< orphan*/  stbwingraph_ShowCursor (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sx ; 
- int /*<<< orphan*/  sy ; 
- int /*<<< orphan*/  translate_t ; 
- int translating ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int type; int height; int width; int key; int my; int mx; } ;
+typedef TYPE_1__ stbwingraph_event ;
+
+
+ int GL_FRAMEBUFFER_SRGB_EXT ;
+ int STBWINGRAPH_unprocessed ;
+ int STBWINGRAPH_winproc_exit ;
+ int VK_DOWN ;
+ int VK_LEFT ;
+ int VK_RIGHT ;
+ int VK_UP ;
+ int black_on_white ;
+ int do_mouse (TYPE_1__*,int,int) ;
+ int font ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int initialized ;
+ int integer_align ;
+ int loopmode (int ,int,int ) ;
+ int* move ;
+ int raw_mouse_x ;
+ int raw_mouse_y ;
+ int rotate_t ;
+ int rotating ;
+ int show_tex ;
+ int srgb ;
+ int stbwingraph_ShowCursor (int *,int) ;
+ int sx ;
+ int sy ;
+ int translate_t ;
+ int translating ;
 
 int winproc(void *data, stbwingraph_event *e)
 {
    switch (e->type) {
-      case STBWGE_create:
+      case 138:
          break;
 
-      case STBWGE_char:
+      case 139:
          switch(e->key) {
             case 27:
-               stbwingraph_ShowCursor(NULL,1);
+               stbwingraph_ShowCursor(((void*)0),1);
                return STBWINGRAPH_winproc_exit;
                break;
             case 'o': case 'O':
@@ -100,39 +88,30 @@ int winproc(void *data, stbwingraph_event *e)
          }
          break;
 
-      case STBWGE_mousemove:
+      case 132:
          raw_mouse_x = e->mx;
          raw_mouse_y = e->my;
          break;
-
-#if 0
-      case STBWGE_mousewheel:  do_mouse(e,0,0); break;
-      case STBWGE_leftdown:    do_mouse(e, 1,0); break;
-      case STBWGE_leftup:      do_mouse(e,-1,0); break;
-      case STBWGE_rightdown:   do_mouse(e,0, 1); break;
-      case STBWGE_rightup:     do_mouse(e,0,-1); break;
-#endif
-
-      case STBWGE_keydown:
+      case 136:
          if (e->key == VK_RIGHT) move[0] = 1;
-         if (e->key == VK_LEFT)  move[1] = 1;
-         if (e->key == VK_UP)    move[2] = 1;
-         if (e->key == VK_DOWN)  move[3] = 1;
+         if (e->key == VK_LEFT) move[1] = 1;
+         if (e->key == VK_UP) move[2] = 1;
+         if (e->key == VK_DOWN) move[3] = 1;
          break;
-      case STBWGE_keyup:
+      case 135:
          if (e->key == VK_RIGHT) move[0] = 0;
-         if (e->key == VK_LEFT)  move[1] = 0;
-         if (e->key == VK_UP)    move[2] = 0;
-         if (e->key == VK_DOWN)  move[3] = 0;
+         if (e->key == VK_LEFT) move[1] = 0;
+         if (e->key == VK_UP) move[2] = 0;
+         if (e->key == VK_DOWN) move[3] = 0;
          break;
 
-      case STBWGE_size:
+      case 128:
          sx = e->width;
          sy = e->height;
          loopmode(0,1,0);
          break;
 
-      case STBWGE_draw:
+      case 137:
          if (initialized)
             loopmode(0,1,0);
          break;

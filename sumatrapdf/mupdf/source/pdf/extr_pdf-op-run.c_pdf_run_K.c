@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* dev; } ;
-typedef  TYPE_2__ pdf_run_processor ;
-typedef  int /*<<< orphan*/  pdf_processor ;
-typedef  int /*<<< orphan*/  fz_context ;
-struct TYPE_5__ {int /*<<< orphan*/  flags; } ;
+typedef TYPE_2__ pdf_run_processor ;
+typedef int pdf_processor ;
+typedef int fz_context ;
+struct TYPE_5__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FZ_DEVFLAG_STROKECOLOR_UNDEFINED ; 
- int /*<<< orphan*/  PDF_STROKE ; 
- int /*<<< orphan*/  fz_device_cmyk (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pdf_set_color (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  pdf_set_colorspace (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FZ_DEVFLAG_STROKECOLOR_UNDEFINED ;
+ int PDF_STROKE ;
+ int fz_device_cmyk (int *) ;
+ int pdf_set_color (int *,TYPE_2__*,int ,float*) ;
+ int pdf_set_colorspace (int *,TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static void pdf_run_K(fz_context *ctx, pdf_processor *proc, float c, float m, float y, float k)
 {
-	pdf_run_processor *pr = (pdf_run_processor *)proc;
-	float color[4] = {c, m, y, k};
-	pr->dev->flags &= ~FZ_DEVFLAG_STROKECOLOR_UNDEFINED;
-	pdf_set_colorspace(ctx, pr, PDF_STROKE, fz_device_cmyk(ctx));
-	pdf_set_color(ctx, pr, PDF_STROKE, color);
+ pdf_run_processor *pr = (pdf_run_processor *)proc;
+ float color[4] = {c, m, y, k};
+ pr->dev->flags &= ~FZ_DEVFLAG_STROKECOLOR_UNDEFINED;
+ pdf_set_colorspace(ctx, pr, PDF_STROKE, fz_device_cmyk(ctx));
+ pdf_set_color(ctx, pr, PDF_STROKE, color);
 }

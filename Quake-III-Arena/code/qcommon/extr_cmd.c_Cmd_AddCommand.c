@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xcommand_t ;
-struct TYPE_4__ {struct TYPE_4__* next; int /*<<< orphan*/ * function; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ cmd_function_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Com_Printf (char*,char const*) ; 
- int /*<<< orphan*/  CopyString (char const*) ; 
- TYPE_1__* S_Malloc (int) ; 
- TYPE_1__* cmd_functions ; 
- int /*<<< orphan*/  strcmp (char const*,int /*<<< orphan*/ ) ; 
 
-void	Cmd_AddCommand( const char *cmd_name, xcommand_t function ) {
-	cmd_function_t	*cmd;
-	
-	// fail if the command already exists
-	for ( cmd = cmd_functions ; cmd ; cmd=cmd->next ) {
-		if ( !strcmp( cmd_name, cmd->name ) ) {
-			// allow completion-only commands to be silently doubled
-			if ( function != NULL ) {
-				Com_Printf ("Cmd_AddCommand: %s already defined\n", cmd_name);
-			}
-			return;
-		}
-	}
+typedef struct TYPE_4__ TYPE_1__ ;
 
-	// use a small malloc to avoid zone fragmentation
-	cmd = S_Malloc (sizeof(cmd_function_t));
-	cmd->name = CopyString( cmd_name );
-	cmd->function = function;
-	cmd->next = cmd_functions;
-	cmd_functions = cmd;
+
+typedef int * xcommand_t ;
+struct TYPE_4__ {struct TYPE_4__* next; int * function; int name; } ;
+typedef TYPE_1__ cmd_function_t ;
+
+
+ int Com_Printf (char*,char const*) ;
+ int CopyString (char const*) ;
+ TYPE_1__* S_Malloc (int) ;
+ TYPE_1__* cmd_functions ;
+ int strcmp (char const*,int ) ;
+
+void Cmd_AddCommand( const char *cmd_name, xcommand_t function ) {
+ cmd_function_t *cmd;
+
+
+ for ( cmd = cmd_functions ; cmd ; cmd=cmd->next ) {
+  if ( !strcmp( cmd_name, cmd->name ) ) {
+
+   if ( function != ((void*)0) ) {
+    Com_Printf ("Cmd_AddCommand: %s already defined\n", cmd_name);
+   }
+   return;
+  }
+ }
+
+
+ cmd = S_Malloc (sizeof(cmd_function_t));
+ cmd->name = CopyString( cmd_name );
+ cmd->function = function;
+ cmd->next = cmd_functions;
+ cmd_functions = cmd;
 }

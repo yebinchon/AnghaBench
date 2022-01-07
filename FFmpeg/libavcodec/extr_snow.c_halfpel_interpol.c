@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_8__ {int* linesize; int** data; } ;
-struct TYPE_7__ {int nb_planes; TYPE_1__* avctx; int /*<<< orphan*/  chroma_v_shift; int /*<<< orphan*/  chroma_h_shift; } ;
+struct TYPE_7__ {int nb_planes; TYPE_1__* avctx; int chroma_v_shift; int chroma_h_shift; } ;
 struct TYPE_6__ {int width; int height; } ;
-typedef  TYPE_2__ SnowContext ;
-typedef  TYPE_3__ AVFrame ;
+typedef TYPE_2__ SnowContext ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int EDGE_WIDTH ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int* av_malloc_array (int,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int EDGE_WIDTH ;
+ int ENOMEM ;
+ int av_freep (int**) ;
+ int* av_malloc_array (int,int) ;
 
 __attribute__((used)) static int halfpel_interpol(SnowContext *s, uint8_t *halfpel[4][4], AVFrame *frame){
     int p,x,y;
 
     for(p=0; p < s->nb_planes; p++){
         int is_chroma= !!p;
-        int w= is_chroma ? AV_CEIL_RSHIFT(s->avctx->width,  s->chroma_h_shift) : s->avctx->width;
+        int w= is_chroma ? AV_CEIL_RSHIFT(s->avctx->width, s->chroma_h_shift) : s->avctx->width;
         int h= is_chroma ? AV_CEIL_RSHIFT(s->avctx->height, s->chroma_v_shift) : s->avctx->height;
         int ls= frame->linesize[p];
         uint8_t *src= frame->data[p];
@@ -75,7 +75,7 @@ __attribute__((used)) static int halfpel_interpol(SnowContext *s, uint8_t *halfp
             }
         }
 
-//FIXME border!
+
     }
     return 0;
 }

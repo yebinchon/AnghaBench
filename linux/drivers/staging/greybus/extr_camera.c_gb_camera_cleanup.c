@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gb_camera {int /*<<< orphan*/  mutex; int /*<<< orphan*/ * connection; int /*<<< orphan*/ * data_connection; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gb_camera_debugfs_cleanup (struct gb_camera*) ; 
- int /*<<< orphan*/  gb_connection_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gb_connection_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct gb_camera {int mutex; int * connection; int * data_connection; } ;
+
+
+ int gb_camera_debugfs_cleanup (struct gb_camera*) ;
+ int gb_connection_destroy (int *) ;
+ int gb_connection_disable (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void gb_camera_cleanup(struct gb_camera *gcam)
 {
-	gb_camera_debugfs_cleanup(gcam);
+ gb_camera_debugfs_cleanup(gcam);
 
-	mutex_lock(&gcam->mutex);
-	if (gcam->data_connection) {
-		gb_connection_disable(gcam->data_connection);
-		gb_connection_destroy(gcam->data_connection);
-		gcam->data_connection = NULL;
-	}
+ mutex_lock(&gcam->mutex);
+ if (gcam->data_connection) {
+  gb_connection_disable(gcam->data_connection);
+  gb_connection_destroy(gcam->data_connection);
+  gcam->data_connection = ((void*)0);
+ }
 
-	if (gcam->connection) {
-		gb_connection_disable(gcam->connection);
-		gb_connection_destroy(gcam->connection);
-		gcam->connection = NULL;
-	}
-	mutex_unlock(&gcam->mutex);
+ if (gcam->connection) {
+  gb_connection_disable(gcam->connection);
+  gb_connection_destroy(gcam->connection);
+  gcam->connection = ((void*)0);
+ }
+ mutex_unlock(&gcam->mutex);
 }

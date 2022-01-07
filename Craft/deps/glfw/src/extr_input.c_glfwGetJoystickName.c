@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
- int GLFW_JOYSTICK_LAST ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- char const* _glfwPlatformGetJoystickName (int) ; 
+ int GLFW_INVALID_ENUM ;
+ int GLFW_JOYSTICK_LAST ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int *) ;
+ int _glfwInputError (int ,char*) ;
+ char const* _glfwPlatformGetJoystickName (int) ;
 
 const char* glfwGetJoystickName(int joy)
 {
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+    _GLFW_REQUIRE_INIT_OR_RETURN(((void*)0));
 
     if (joy < 0 || joy > GLFW_JOYSTICK_LAST)
     {
         _glfwInputError(GLFW_INVALID_ENUM, "Invalid joystick");
-        return NULL;
+        return ((void*)0);
     }
 
     return _glfwPlatformGetJoystickName(joy);

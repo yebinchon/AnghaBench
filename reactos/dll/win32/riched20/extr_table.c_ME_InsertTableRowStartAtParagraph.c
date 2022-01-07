@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {TYPE_5__* pPara; int /*<<< orphan*/  pRun; scalar_t__ nOffset; } ;
-struct TYPE_14__ {int dwMask; int /*<<< orphan*/  wEffects; } ;
-struct TYPE_15__ {int nFlags; TYPE_5__* next_para; TYPE_1__ fmt; int /*<<< orphan*/  pCell; } ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_19__ {TYPE_5__* pPara; int pRun; scalar_t__ nOffset; } ;
+struct TYPE_14__ {int dwMask; int wEffects; } ;
+struct TYPE_15__ {int nFlags; TYPE_5__* next_para; TYPE_1__ fmt; int pCell; } ;
 struct TYPE_16__ {TYPE_2__ para; } ;
 struct TYPE_18__ {TYPE_3__ member; } ;
 struct TYPE_17__ {TYPE_6__* pCursors; } ;
-typedef  TYPE_4__ ME_TextEditor ;
-typedef  TYPE_5__ ME_DisplayItem ;
-typedef  TYPE_6__ ME_Cursor ;
+typedef TYPE_4__ ME_TextEditor ;
+typedef TYPE_5__ ME_DisplayItem ;
+typedef TYPE_6__ ME_Cursor ;
 
-/* Variables and functions */
- int MEPF_CELL ; 
- int MEPF_ROWEND ; 
- int MEPF_ROWSTART ; 
- int /*<<< orphan*/  ME_FindItemFwd (TYPE_5__*,int /*<<< orphan*/ ) ; 
- TYPE_5__* ME_GetParagraph (int /*<<< orphan*/ ) ; 
- TYPE_5__* ME_InsertTableRowStartFromCursor (TYPE_4__*) ; 
- int /*<<< orphan*/  PFE_TABLE ; 
- int /*<<< orphan*/  PFE_TABLEROWDELIMITER ; 
- int PFM_TABLE ; 
- int PFM_TABLEROWDELIMITER ; 
- int /*<<< orphan*/  diRun ; 
+
+ int MEPF_CELL ;
+ int MEPF_ROWEND ;
+ int MEPF_ROWSTART ;
+ int ME_FindItemFwd (TYPE_5__*,int ) ;
+ TYPE_5__* ME_GetParagraph (int ) ;
+ TYPE_5__* ME_InsertTableRowStartFromCursor (TYPE_4__*) ;
+ int PFE_TABLE ;
+ int PFE_TABLEROWDELIMITER ;
+ int PFM_TABLE ;
+ int PFM_TABLEROWDELIMITER ;
+ int diRun ;
 
 ME_DisplayItem* ME_InsertTableRowStartAtParagraph(ME_TextEditor *editor,
                                                   ME_DisplayItem *para)

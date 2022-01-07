@@ -1,107 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct SStream {int dummy; } ;
-struct TYPE_9__ {int /*<<< orphan*/  name; } ;
+struct TYPE_9__ {int name; } ;
 struct TYPE_8__ {size_t ins; int am; } ;
-struct TYPE_7__ {unsigned char Opcode; int /*<<< orphan*/  address; TYPE_1__* Operands; } ;
+struct TYPE_7__ {unsigned char Opcode; int address; TYPE_1__* Operands; } ;
 struct TYPE_6__ {unsigned int ImmVal; } ;
-typedef  TYPE_2__ MCInst ;
+typedef TYPE_2__ MCInst ;
 
-/* Variables and functions */
- TYPE_5__* InstructionInfoTable ; 
-#define  MOS65XX_AM_ABS 140 
-#define  MOS65XX_AM_ABSX 139 
-#define  MOS65XX_AM_ABSY 138 
-#define  MOS65XX_AM_ACC 137 
-#define  MOS65XX_AM_IMM 136 
-#define  MOS65XX_AM_IMP 135 
-#define  MOS65XX_AM_IND 134 
-#define  MOS65XX_AM_INDX 133 
-#define  MOS65XX_AM_INDY 132 
-#define  MOS65XX_AM_REL 131 
-#define  MOS65XX_AM_ZP 130 
-#define  MOS65XX_AM_ZPX 129 
-#define  MOS65XX_AM_ZPY 128 
- TYPE_3__* OpInfoTable ; 
- int /*<<< orphan*/  SStream_concat (struct SStream*,char*,...) ; 
- int /*<<< orphan*/  SStream_concat0 (struct SStream*,int /*<<< orphan*/ ) ; 
+
+ TYPE_5__* InstructionInfoTable ;
+ TYPE_3__* OpInfoTable ;
+ int SStream_concat (struct SStream*,char*,...) ;
+ int SStream_concat0 (struct SStream*,int ) ;
 
 void MOS65XX_printInst(MCInst *MI, struct SStream *O, void *PrinterInfo)
 {
-#ifndef CAPSTONE_DIET
-	unsigned char opcode = MI->Opcode;
 
-	SStream_concat0(O, InstructionInfoTable[OpInfoTable[MI->Opcode].ins].name);
-	unsigned int value = MI->Operands[0].ImmVal;
+ unsigned char opcode = MI->Opcode;
 
-	switch (OpInfoTable[opcode].am) {
-		default:
-			break;
+ SStream_concat0(O, InstructionInfoTable[OpInfoTable[MI->Opcode].ins].name);
+ unsigned int value = MI->Operands[0].ImmVal;
 
-		case MOS65XX_AM_IMP:
-			break;
+ switch (OpInfoTable[opcode].am) {
+  default:
+   break;
 
-		case MOS65XX_AM_ACC:
-			SStream_concat(O, " a");
-			break;
+  case 135:
+   break;
 
-		case MOS65XX_AM_ABS:
-			SStream_concat(O, " $0x%04x", value);
-			break;
+  case 137:
+   SStream_concat(O, " a");
+   break;
 
-		case MOS65XX_AM_IMM:
-			SStream_concat(O, " #$0x%02x", value);
-			break;
+  case 140:
+   SStream_concat(O, " $0x%04x", value);
+   break;
 
-		case MOS65XX_AM_ZP:
-			SStream_concat(O, " $0x%02x", value);
-			break;
+  case 136:
+   SStream_concat(O, " #$0x%02x", value);
+   break;
 
-		case MOS65XX_AM_ABSX:
-			SStream_concat(O, " $0x%04x, x", value);
-			break;
+  case 130:
+   SStream_concat(O, " $0x%02x", value);
+   break;
 
-		case MOS65XX_AM_ABSY:
-			SStream_concat(O, " $0x%04x, y", value);
-			break;
+  case 139:
+   SStream_concat(O, " $0x%04x, x", value);
+   break;
 
-		case MOS65XX_AM_ZPX:
-			SStream_concat(O, " $0x%02x, x", value);
-			break;
+  case 138:
+   SStream_concat(O, " $0x%04x, y", value);
+   break;
 
-		case MOS65XX_AM_ZPY:
-			SStream_concat(O, " $0x%02x, y", value);
-			break;
+  case 129:
+   SStream_concat(O, " $0x%02x, x", value);
+   break;
 
-		case MOS65XX_AM_REL:
-			SStream_concat(O, " $0x%04x", MI->address + (signed char) value + 2);
-			break;
+  case 128:
+   SStream_concat(O, " $0x%02x, y", value);
+   break;
 
-		case MOS65XX_AM_IND:
-			SStream_concat(O, " ($0x%04x)", value);
-			break;
+  case 131:
+   SStream_concat(O, " $0x%04x", MI->address + (signed char) value + 2);
+   break;
 
-		case MOS65XX_AM_INDX:
-			SStream_concat(O, " ($0x%02x, x)", value);
-			break;
+  case 134:
+   SStream_concat(O, " ($0x%04x)", value);
+   break;
 
-		case MOS65XX_AM_INDY:
-			SStream_concat(O, " ($0x%02x), y", value);
-			break;
-	}
-#endif
+  case 133:
+   SStream_concat(O, " ($0x%02x, x)", value);
+   break;
+
+  case 132:
+   SStream_concat(O, " ($0x%02x), y", value);
+   break;
+ }
+
 }

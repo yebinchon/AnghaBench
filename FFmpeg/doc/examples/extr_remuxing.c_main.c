@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+
+
 struct TYPE_29__ {scalar_t__ codec_type; scalar_t__ codec_tag; } ;
-struct TYPE_28__ {int nb_streams; int /*<<< orphan*/  pb; TYPE_1__** streams; TYPE_3__* oformat; } ;
+struct TYPE_28__ {int nb_streams; int pb; TYPE_1__** streams; TYPE_3__* oformat; } ;
 struct TYPE_27__ {int flags; } ;
-struct TYPE_26__ {size_t stream_index; int pos; int /*<<< orphan*/  duration; void* dts; void* pts; } ;
-struct TYPE_25__ {int /*<<< orphan*/  time_base; TYPE_5__* codecpar; } ;
-typedef  TYPE_1__ AVStream ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVOutputFormat ;
-typedef  TYPE_4__ AVFormatContext ;
-typedef  TYPE_5__ AVCodecParameters ;
+struct TYPE_26__ {size_t stream_index; int pos; int duration; void* dts; void* pts; } ;
+struct TYPE_25__ {int time_base; TYPE_5__* codecpar; } ;
+typedef TYPE_1__ AVStream ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVOutputFormat ;
+typedef TYPE_4__ AVFormatContext ;
+typedef TYPE_5__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_UNKNOWN ; 
- int AVFMT_NOFILE ; 
- int /*<<< orphan*/  AVIO_FLAG_WRITE ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_SUBTITLE ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int AV_ROUND_NEAR_INF ; 
- int AV_ROUND_PASS_MINMAX ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_dump_format (TYPE_4__*,int /*<<< orphan*/ ,char const*,int) ; 
- char* av_err2str (int) ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int av_interleaved_write_frame (TYPE_4__*,TYPE_2__*) ; 
- int* av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int av_read_frame (TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_rescale_q (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* av_rescale_q_rnd (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_write_trailer (TYPE_4__*) ; 
- int avcodec_parameters_copy (TYPE_5__*,TYPE_5__*) ; 
- int /*<<< orphan*/  avformat_alloc_output_context2 (TYPE_4__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  avformat_close_input (TYPE_4__**) ; 
- int avformat_find_stream_info (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avformat_free_context (TYPE_4__*) ; 
- TYPE_1__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int avformat_open_input (TYPE_4__**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int avformat_write_header (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_closep (int /*<<< orphan*/ *) ; 
- int avio_open (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  log_packet (TYPE_4__*,TYPE_2__*,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_UNKNOWN ;
+ int AVFMT_NOFILE ;
+ int AVIO_FLAG_WRITE ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_SUBTITLE ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_ROUND_NEAR_INF ;
+ int AV_ROUND_PASS_MINMAX ;
+ int ENOMEM ;
+ int av_dump_format (TYPE_4__*,int ,char const*,int) ;
+ char* av_err2str (int) ;
+ int av_freep (int**) ;
+ int av_interleaved_write_frame (TYPE_4__*,TYPE_2__*) ;
+ int* av_mallocz_array (int,int) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int av_read_frame (TYPE_4__*,TYPE_2__*) ;
+ int av_rescale_q (int ,int ,int ) ;
+ void* av_rescale_q_rnd (void*,int ,int ,int) ;
+ int av_write_trailer (TYPE_4__*) ;
+ int avcodec_parameters_copy (TYPE_5__*,TYPE_5__*) ;
+ int avformat_alloc_output_context2 (TYPE_4__**,int *,int *,char const*) ;
+ int avformat_close_input (TYPE_4__**) ;
+ int avformat_find_stream_info (TYPE_4__*,int ) ;
+ int avformat_free_context (TYPE_4__*) ;
+ TYPE_1__* avformat_new_stream (TYPE_4__*,int *) ;
+ int avformat_open_input (TYPE_4__**,char const*,int ,int ) ;
+ int avformat_write_header (TYPE_4__*,int *) ;
+ int avio_closep (int *) ;
+ int avio_open (int *,char const*,int ) ;
+ int fprintf (int ,char*,...) ;
+ int log_packet (TYPE_4__*,TYPE_2__*,char*) ;
+ int printf (char*,char*) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
-    AVOutputFormat *ofmt = NULL;
-    AVFormatContext *ifmt_ctx = NULL, *ofmt_ctx = NULL;
+    AVOutputFormat *ofmt = ((void*)0);
+    AVFormatContext *ifmt_ctx = ((void*)0), *ofmt_ctx = ((void*)0);
     AVPacket pkt;
     const char *in_filename, *out_filename;
     int ret, i;
     int stream_index = 0;
-    int *stream_mapping = NULL;
+    int *stream_mapping = ((void*)0);
     int stream_mapping_size = 0;
 
     if (argc < 3) {
@@ -82,7 +82,7 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    in_filename  = argv[1];
+    in_filename = argv[1];
     out_filename = argv[2];
 
     if ((ret = avformat_open_input(&ifmt_ctx, in_filename, 0, 0)) < 0) {
@@ -97,7 +97,7 @@ int main(int argc, char **argv)
 
     av_dump_format(ifmt_ctx, 0, in_filename, 0);
 
-    avformat_alloc_output_context2(&ofmt_ctx, NULL, NULL, out_filename);
+    avformat_alloc_output_context2(&ofmt_ctx, ((void*)0), ((void*)0), out_filename);
     if (!ofmt_ctx) {
         fprintf(stderr, "Could not create output context\n");
         ret = AVERROR_UNKNOWN;
@@ -127,7 +127,7 @@ int main(int argc, char **argv)
 
         stream_mapping[i] = stream_index++;
 
-        out_stream = avformat_new_stream(ofmt_ctx, NULL);
+        out_stream = avformat_new_stream(ofmt_ctx, ((void*)0));
         if (!out_stream) {
             fprintf(stderr, "Failed allocating output stream\n");
             ret = AVERROR_UNKNOWN;
@@ -151,7 +151,7 @@ int main(int argc, char **argv)
         }
     }
 
-    ret = avformat_write_header(ofmt_ctx, NULL);
+    ret = avformat_write_header(ofmt_ctx, ((void*)0));
     if (ret < 0) {
         fprintf(stderr, "Error occurred when opening output file\n");
         goto end;
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
         if (ret < 0)
             break;
 
-        in_stream  = ifmt_ctx->streams[pkt.stream_index];
+        in_stream = ifmt_ctx->streams[pkt.stream_index];
         if (pkt.stream_index >= stream_mapping_size ||
             stream_mapping[pkt.stream_index] < 0) {
             av_packet_unref(&pkt);
@@ -175,7 +175,7 @@ int main(int argc, char **argv)
         out_stream = ofmt_ctx->streams[pkt.stream_index];
         log_packet(ifmt_ctx, &pkt, "in");
 
-        /* copy packet */
+
         pkt.pts = av_rescale_q_rnd(pkt.pts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX);
         pkt.dts = av_rescale_q_rnd(pkt.dts, in_stream->time_base, out_stream->time_base, AV_ROUND_NEAR_INF|AV_ROUND_PASS_MINMAX);
         pkt.duration = av_rescale_q(pkt.duration, in_stream->time_base, out_stream->time_base);
@@ -195,7 +195,7 @@ end:
 
     avformat_close_input(&ifmt_ctx);
 
-    /* close output */
+
     if (ofmt_ctx && !(ofmt->flags & AVFMT_NOFILE))
         avio_closep(&ofmt_ctx->pb);
     avformat_free_context(ofmt_ctx);

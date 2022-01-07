@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_5__* ptr; } ;
 struct TYPE_9__ {size_t length; TYPE_5__* values; } ;
 struct TYPE_8__ {size_t length; TYPE_5__** values; } ;
 struct TYPE_11__ {TYPE_3__ string; TYPE_2__ object; TYPE_1__ array; } ;
 struct TYPE_12__ {int type; struct TYPE_12__* parent; TYPE_4__ u; struct TYPE_12__* value; } ;
-typedef  TYPE_5__ json_value ;
+typedef TYPE_5__ json_value ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_5__*) ; 
-#define  json_array 130 
-#define  json_object 129 
-#define  json_string 128 
+
+ int free (TYPE_5__*) ;
+
+
+
 
 void json_value_free (json_value * value)
 {
@@ -41,7 +41,7 @@ void json_value_free (json_value * value)
    {
       switch (value->type)
       {
-         case json_array:
+         case 130:
 
             if (!value->u.array.length)
             {
@@ -52,7 +52,7 @@ void json_value_free (json_value * value)
             value = value->u.array.values [-- value->u.array.length];
             continue;
 
-         case json_object:
+         case 129:
 
             if (!value->u.object.length)
             {
@@ -63,7 +63,7 @@ void json_value_free (json_value * value)
             value = value->u.object.values [-- value->u.object.length].value;
             continue;
 
-         case json_string:
+         case 128:
 
             free (value->u.string.ptr);
             break;

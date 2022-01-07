@@ -1,52 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int function; int /*<<< orphan*/  parameter; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * wave_queue; TYPE_1__ thread; int /*<<< orphan*/  kernel_device_handle; } ;
-typedef  TYPE_2__ SessionInfo ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  int /*<<< orphan*/  MMRESULT ;
-typedef  int /*<<< orphan*/  LPWAVEHDR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
-#define  DRVM_TERMINATE 140 
- int /*<<< orphan*/  GetDeviceData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  IOCTL_WAVE_GET_PITCH ; 
- int /*<<< orphan*/  IOCTL_WAVE_GET_PLAYBACK_RATE ; 
- int /*<<< orphan*/  IOCTL_WAVE_GET_VOLUME ; 
- int /*<<< orphan*/  IOCTL_WAVE_SET_PITCH ; 
- int /*<<< orphan*/  IOCTL_WAVE_SET_PLAYBACK_RATE ; 
- int /*<<< orphan*/  MMSYSERR_ERROR ; 
- int /*<<< orphan*/  MMSYSERR_NOERROR ; 
- int /*<<< orphan*/  QueueWaveBuffer (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetDeviceData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WAVERR_STILLPLAYING ; 
-#define  WODM_CLOSE 139 
-#define  WODM_GETPITCH 138 
-#define  WODM_GETPLAYBACKRATE 137 
-#define  WODM_GETPOS 136 
-#define  WODM_GETVOLUME 135 
-#define  WODM_PAUSE 134 
-#define  WODM_RESET 133 
-#define  WODM_RESTART 132 
-#define  WODM_SETPITCH 131 
-#define  WODM_SETPLAYBACKRATE 130 
-#define  WODM_SETVOLUME 129 
-#define  WODM_WRITE 128 
 
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int function; int parameter; } ;
+struct TYPE_6__ {int * wave_queue; TYPE_1__ thread; int kernel_device_handle; } ;
+typedef TYPE_2__ SessionInfo ;
+typedef int PBYTE ;
+typedef int MMRESULT ;
+typedef int LPWAVEHDR ;
+typedef int DWORD ;
+
+
+ int DPRINT (char*) ;
+
+ int GetDeviceData (int ,int ,int ,...) ;
+ int IOCTL_WAVE_GET_PITCH ;
+ int IOCTL_WAVE_GET_PLAYBACK_RATE ;
+ int IOCTL_WAVE_GET_VOLUME ;
+ int IOCTL_WAVE_SET_PITCH ;
+ int IOCTL_WAVE_SET_PLAYBACK_RATE ;
+ int MMSYSERR_ERROR ;
+ int MMSYSERR_NOERROR ;
+ int QueueWaveBuffer (TYPE_2__*,int ) ;
+ int SetDeviceData (int ,int ,int ,int) ;
+ int WAVERR_STILLPLAYING ;
 DWORD
 ProcessSessionThreadRequest(SessionInfo* session_info)
 {
@@ -54,38 +41,38 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
 
     switch ( session_info->thread.function )
     {
-        case WODM_WRITE :
+        case 128 :
         {
             result = QueueWaveBuffer(session_info,
                                      (LPWAVEHDR) session_info->thread.parameter);
             break;
         }
 
-        case WODM_RESET :
+        case 133 :
         {
-            /* TODO */
+
             break;
         }
 
-        case WODM_PAUSE :
+        case 134 :
         {
-            /* TODO */
+
             break;
         }
 
-        case WODM_RESTART :
+        case 132 :
         {
-            /* TODO */
+
             break;
         }
 
-        case WODM_GETPOS :
+        case 136 :
         {
-            /* TODO */
+
             break;
         }
 
-        case WODM_SETPITCH :
+        case 131 :
         {
             result = SetDeviceData(session_info->kernel_device_handle,
                                    IOCTL_WAVE_SET_PITCH,
@@ -94,7 +81,7 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
             break;
         }
 
-        case WODM_GETPITCH :
+        case 138 :
         {
             result = GetDeviceData(session_info->kernel_device_handle,
                                    IOCTL_WAVE_GET_PITCH,
@@ -103,22 +90,22 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
             break;
         }
 
-        case WODM_SETVOLUME :
+        case 129 :
         {
             break;
         }
 
-        case WODM_GETVOLUME :
+        case 135 :
         {
-#if 0
-            result = GetDeviceData(session_info->kernel_device_handle,
-                                   IOCTL_WAVE_GET_VOLUME,
-                                   (PBYTE) session_info->thread.parameter,);
-#endif
+
+
+
+
+
             break;
         }
 
-        case WODM_SETPLAYBACKRATE :
+        case 130 :
         {
             result = SetDeviceData(session_info->kernel_device_handle,
                                    IOCTL_WAVE_SET_PLAYBACK_RATE,
@@ -127,7 +114,7 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
             break;
         }
 
-        case WODM_GETPLAYBACKRATE :
+        case 137 :
         {
             result = GetDeviceData(session_info->kernel_device_handle,
                                    IOCTL_WAVE_GET_PLAYBACK_RATE,
@@ -136,11 +123,11 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
             break;
         }
 
-        case WODM_CLOSE :
+        case 139 :
         {
             DPRINT("Thread was asked if OK to close device\n");
 
-            if ( session_info->wave_queue != NULL )
+            if ( session_info->wave_queue != ((void*)0) )
                 result = WAVERR_STILLPLAYING;
             else
                 result = MMSYSERR_NOERROR;
@@ -148,7 +135,7 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
             break;
         }
 
-        case DRVM_TERMINATE :
+        case 140 :
         {
             DPRINT("Terminating thread...\n");
             result = MMSYSERR_NOERROR;
@@ -163,7 +150,7 @@ ProcessSessionThreadRequest(SessionInfo* session_info)
         }
     }
 
-    /* We're done with the function now */
+
 
     return result;
 }

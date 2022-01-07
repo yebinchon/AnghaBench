@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
 
-/* Variables and functions */
- int GetLastError () ; 
- int /*<<< orphan*/  GetModuleHandleA (int /*<<< orphan*/ *) ; 
- void* LoadStringA (int /*<<< orphan*/ ,int,char*,unsigned int const) ; 
- int MAKELONG (int,int) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  memcmp (char*,char const*,int const) ; 
- int /*<<< orphan*/  ok (int,char*,unsigned int const,...) ; 
+
+
+
+typedef int buf ;
+typedef int HINSTANCE ;
+
+
+ int GetLastError () ;
+ int GetModuleHandleA (int *) ;
+ void* LoadStringA (int ,int,char*,unsigned int const) ;
+ int MAKELONG (int,int) ;
+ int SetLastError (int) ;
+ int assert (int) ;
+ scalar_t__ broken (int) ;
+ int memcmp (char*,char const*,int const) ;
+ int ok (int,char*,unsigned int const,...) ;
 
 __attribute__((used)) static void test_LoadStringA (void)
 {
-    HINSTANCE hInst = GetModuleHandleA(NULL);
-    static const char str[] = "String resource"; /* same in resource.rc */
+    HINSTANCE hInst = GetModuleHandleA(((void*)0));
+    static const char str[] = "String resource";
     char buf[128];
     struct string_test {
         unsigned int bufsiz;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ fs_type; scalar_t__ result; } ;
-typedef  TYPE_1__ uv_fs_t ;
+typedef TYPE_1__ uv_fs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ UV_FS_UNLINK ; 
- int /*<<< orphan*/  unlink_cb_count ; 
- TYPE_1__ unlink_req ; 
- int /*<<< orphan*/  uv_fs_req_cleanup (TYPE_1__*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ UV_FS_UNLINK ;
+ int unlink_cb_count ;
+ TYPE_1__ unlink_req ;
+ int uv_fs_req_cleanup (TYPE_1__*) ;
 
 __attribute__((used)) static void unlink_cb(uv_fs_t* req) {
   ASSERT(req == &unlink_req);

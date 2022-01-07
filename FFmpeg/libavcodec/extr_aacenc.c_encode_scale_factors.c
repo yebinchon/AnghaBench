@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  pb; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int pb; } ;
 struct TYPE_6__ {int num_windows; int max_sfb; scalar_t__* group_len; } ;
-struct TYPE_7__ {int* sf_idx; scalar_t__* band_type; int /*<<< orphan*/ * zeroes; TYPE_1__ ics; } ;
-typedef  TYPE_2__ SingleChannelElement ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
-typedef  TYPE_3__ AACEncContext ;
+struct TYPE_7__ {int* sf_idx; scalar_t__* band_type; int * zeroes; TYPE_1__ ics; } ;
+typedef TYPE_2__ SingleChannelElement ;
+typedef int AVCodecContext ;
+typedef TYPE_3__ AACEncContext ;
 
-/* Variables and functions */
- scalar_t__ INTENSITY_BT ; 
- scalar_t__ INTENSITY_BT2 ; 
- scalar_t__ NOISE_BT ; 
- int NOISE_OFFSET ; 
- scalar_t__ NOISE_PRE ; 
- int /*<<< orphan*/  NOISE_PRE_BITS ; 
- scalar_t__ SCALE_DIFF_ZERO ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/ * ff_aac_scalefactor_bits ; 
- scalar_t__* ff_aac_scalefactor_code ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ INTENSITY_BT ;
+ scalar_t__ INTENSITY_BT2 ;
+ scalar_t__ NOISE_BT ;
+ int NOISE_OFFSET ;
+ scalar_t__ NOISE_PRE ;
+ int NOISE_PRE_BITS ;
+ scalar_t__ SCALE_DIFF_ZERO ;
+ int av_assert0 (int) ;
+ int * ff_aac_scalefactor_bits ;
+ scalar_t__* ff_aac_scalefactor_code ;
+ int put_bits (int *,int ,scalar_t__) ;
 
 __attribute__((used)) static void encode_scale_factors(AVCodecContext *avctx, AACEncContext *s,
                                  SingleChannelElement *sce)
@@ -50,7 +50,7 @@ __attribute__((used)) static void encode_scale_factors(AVCodecContext *avctx, AA
                         put_bits(&s->pb, NOISE_PRE_BITS, diff + NOISE_PRE);
                         continue;
                     }
-                } else if (sce->band_type[w*16 + i] == INTENSITY_BT  ||
+                } else if (sce->band_type[w*16 + i] == INTENSITY_BT ||
                            sce->band_type[w*16 + i] == INTENSITY_BT2) {
                     diff = sce->sf_idx[w*16 + i] - off_is;
                     off_is = sce->sf_idx[w*16 + i];

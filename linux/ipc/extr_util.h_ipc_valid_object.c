@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kern_ipc_perm {int /*<<< orphan*/  deleted; } ;
 
-/* Variables and functions */
+
+
+
+struct kern_ipc_perm {int deleted; } ;
+
+
 
 __attribute__((used)) static inline bool ipc_valid_object(struct kern_ipc_perm *perm)
 {
-	return !perm->deleted;
+ return !perm->deleted;
 }

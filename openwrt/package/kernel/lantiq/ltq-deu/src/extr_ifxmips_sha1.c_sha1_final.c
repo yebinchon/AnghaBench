@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u64 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+typedef int u32 ;
 struct shash_desc {int dummy; } ;
 struct sha1_ctx {int count; } ;
 struct deu_hash_t {int D1R; int D2R; int D3R; int D4R; int D5R; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRTCL_SECT_END ; 
- int /*<<< orphan*/  CRTCL_SECT_START ; 
- scalar_t__ HASH_START ; 
- int /*<<< orphan*/  memset (struct sha1_ctx*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sha1_update (struct shash_desc*,int const*,int) ; 
- struct sha1_ctx* shash_desc_ctx (struct shash_desc*) ; 
+
+ int CRTCL_SECT_END ;
+ int CRTCL_SECT_START ;
+ scalar_t__ HASH_START ;
+ int memset (struct sha1_ctx*,int ,int) ;
+ int sha1_update (struct shash_desc*,int const*,int) ;
+ struct sha1_ctx* shash_desc_ctx (struct shash_desc*) ;
 
 __attribute__((used)) static int sha1_final(struct shash_desc *desc, u8 *out)
 {
@@ -52,12 +52,12 @@ __attribute__((used)) static int sha1_final(struct shash_desc *desc, u8 *out)
     t >>= 8;
     bits[0] = 0xff & t;
 
-    /* Pad out to 56 mod 64 */
+
     index = (sctx->count >> 3) & 0x3f;
     padlen = (index < 56) ? (56 - index) : ((64 + 56) - index);
     sha1_update (desc, padding, padlen);
 
-    /* Append length */
+
     sha1_update (desc, bits, sizeof bits);
 
     CRTCL_SECT_START;
@@ -70,7 +70,7 @@ __attribute__((used)) static int sha1_final(struct shash_desc *desc, u8 *out)
 
     CRTCL_SECT_END;
 
-    // Wipe context
+
     memset (sctx, 0, sizeof *sctx);
 
     return 0;

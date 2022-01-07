@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ttm_mem_type_manager {struct nouveau_vm* priv; } ;
 struct nouveau_vm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nouveau_vm_ref (int /*<<< orphan*/ *,struct nouveau_vm**,int /*<<< orphan*/ *) ; 
+
+ int nouveau_vm_ref (int *,struct nouveau_vm**,int *) ;
 
 __attribute__((used)) static int
 nv04_gart_manager_fini(struct ttm_mem_type_manager *man)
 {
-	struct nouveau_vm *vm = man->priv;
-	nouveau_vm_ref(NULL, &vm, NULL);
-	man->priv = NULL;
-	return 0;
+ struct nouveau_vm *vm = man->priv;
+ nouveau_vm_ref(((void*)0), &vm, ((void*)0));
+ man->priv = ((void*)0);
+ return 0;
 }

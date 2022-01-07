@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ sbit; } ;
-typedef  TYPE_2__ sbit_modification ;
-struct TYPE_5__ {int /*<<< orphan*/  pread; } ;
+typedef TYPE_2__ sbit_modification ;
+struct TYPE_5__ {int pread; } ;
 struct TYPE_7__ {scalar_t__ bit_depth; int colour_type; scalar_t__ buffer_position; scalar_t__ buffer_count; scalar_t__* buffer; TYPE_1__ this; } ;
-typedef  TYPE_3__ png_modifier ;
-typedef  int /*<<< orphan*/  png_modification ;
-typedef  scalar_t__ png_byte ;
+typedef TYPE_3__ png_modifier ;
+typedef int png_modification ;
+typedef scalar_t__ png_byte ;
 
-/* Variables and functions */
- int CHUNK_sBIT ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  png_save_uint_32 (scalar_t__*,int) ; 
+
+ int CHUNK_sBIT ;
+ int png_error (int ,char*) ;
+ int png_save_uint_32 (scalar_t__*,int) ;
 
 __attribute__((used)) static int
 sbit_modify(png_modifier *pm, png_modification *me, int add)
@@ -67,10 +67,10 @@ sbit_modify(png_modifier *pm, png_modification *me, int add)
    }
    else if (!add)
    {
-      /* Remove the sBIT chunk */
+
       pm->buffer_count = pm->buffer_position = 0;
       return 1;
    }
    else
-      return 0; /* do nothing */
+      return 0;
 }

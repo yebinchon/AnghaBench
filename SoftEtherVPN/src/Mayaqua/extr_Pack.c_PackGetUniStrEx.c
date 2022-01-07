@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  ELEMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetElement (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetUniStrValue (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  UniStrCpy (scalar_t__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALUE_UNISTR ; 
+
+
+
+typedef scalar_t__ wchar_t ;
+typedef scalar_t__ UINT ;
+typedef int PACK ;
+typedef int ELEMENT ;
+
+
+ int * GetElement (int *,char*,int ) ;
+ int GetUniStrValue (int *,scalar_t__) ;
+ int UniStrCpy (scalar_t__*,scalar_t__,int ) ;
+ int VALUE_UNISTR ;
 
 bool PackGetUniStrEx(PACK *p, char *name, wchar_t *unistr, UINT size, UINT index)
 {
-	ELEMENT *e;
-	// Validate arguments
-	if (p == NULL || name == NULL || unistr == NULL || size == 0)
-	{
-		return false;
-	}
+ ELEMENT *e;
 
-	unistr[0] = 0;
+ if (p == ((void*)0) || name == ((void*)0) || unistr == ((void*)0) || size == 0)
+ {
+  return 0;
+ }
 
-	e = GetElement(p, name, VALUE_UNISTR);
-	if (e == NULL)
-	{
-		return false;
-	}
-	UniStrCpy(unistr, size, GetUniStrValue(e, index));
-	return true;
+ unistr[0] = 0;
+
+ e = GetElement(p, name, VALUE_UNISTR);
+ if (e == ((void*)0))
+ {
+  return 0;
+ }
+ UniStrCpy(unistr, size, GetUniStrValue(e, index));
+ return 1;
 }

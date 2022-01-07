@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  last_query_sent_time; int /*<<< orphan*/  Out; } ;
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int last_query_sent_time; int Out; } ;
+struct TYPE_3__ {int s_addr; } ;
 struct conn_target {int port; TYPE_1__ target; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* flush_query ) (struct connection*) ;} ;
+struct TYPE_4__ {int (* flush_query ) (struct connection*) ;} ;
 
-/* Variables and functions */
- TYPE_2__* MCC_FUNC (struct connection*) ; 
- int /*<<< orphan*/  assert (int) ; 
- char* conv_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct connection* get_target_connection (struct conn_target*) ; 
- int my_verbosity_tmp ; 
- int /*<<< orphan*/  precise_now ; 
- struct conn_target* queue_conn ; 
- int /*<<< orphan*/  sent_queries ; 
- int sprintf (char*,char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- scalar_t__ verbosity ; 
- int write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ TYPE_2__* MCC_FUNC (struct connection*) ;
+ int assert (int) ;
+ char* conv_addr (int ,int ) ;
+ int fprintf (int ,char*,...) ;
+ struct connection* get_target_connection (struct conn_target*) ;
+ int my_verbosity_tmp ;
+ int precise_now ;
+ struct conn_target* queue_conn ;
+ int sent_queries ;
+ int sprintf (char*,char*,int,int) ;
+ int stderr ;
+ int stub1 (struct connection*) ;
+ scalar_t__ verbosity ;
+ int write_out (int *,char*,int) ;
 
 int send_to_queue (char *query, int query_len, int q_id) {
   struct conn_target *S = queue_conn;

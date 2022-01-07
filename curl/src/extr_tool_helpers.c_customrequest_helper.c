@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct OperationConfig {int /*<<< orphan*/  global; } ;
-typedef  size_t HttpReq ;
 
-/* Variables and functions */
- scalar_t__ curl_strequal (char*,char const*) ; 
- int /*<<< orphan*/  notef (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  warnf (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct OperationConfig {int global; } ;
+typedef size_t HttpReq ;
+
+
+ scalar_t__ curl_strequal (char*,char const*) ;
+ int notef (int ,char*,char const*) ;
+ int warnf (int ,char*) ;
 
 void customrequest_helper(struct OperationConfig *config, HttpReq req,
                           char *method)
 {
-  /* this mirrors the HttpReq enum in tool_sdecls.h */
+
   const char *dflt[]= {
     "GET",
     "GET",

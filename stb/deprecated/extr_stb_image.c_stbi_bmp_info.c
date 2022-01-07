@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi ;
 
-/* Variables and functions */
- int get16le (int /*<<< orphan*/ *) ; 
- int get32le (int /*<<< orphan*/ *) ; 
- char get8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stbi_rewind (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stbi ;
+
+
+ int get16le (int *) ;
+ int get32le (int *) ;
+ char get8 (int *) ;
+ int skip (int *,int) ;
+ int stbi_rewind (int *) ;
 
 __attribute__((used)) static int stbi_bmp_info(stbi *s, int *x, int *y, int *comp)
 {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_10__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-struct TYPE_11__ {TYPE_1__* access; int /*<<< orphan*/  first; int /*<<< orphan*/  next; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_1__ stream_t ;
+struct TYPE_11__ {TYPE_1__* access; int first; int next; } ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- TYPE_1__* GetAccess (TYPE_1__*) ; 
- int /*<<< orphan*/  STREAM_CAN_SEEK ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  vlc_stream_Control (TYPE_1__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  vlc_stream_Delete (TYPE_1__*) ; 
- scalar_t__ vlc_stream_GetSize (TYPE_1__*,scalar_t__*) ; 
- scalar_t__ vlc_stream_Seek (TYPE_1__*,scalar_t__) ; 
+
+ TYPE_1__* GetAccess (TYPE_1__*) ;
+ int STREAM_CAN_SEEK ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int vlc_stream_Control (TYPE_1__*,int ,int*) ;
+ int vlc_stream_Delete (TYPE_1__*) ;
+ scalar_t__ vlc_stream_GetSize (TYPE_1__*,scalar_t__*) ;
+ scalar_t__ vlc_stream_Seek (TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static int Seek(stream_t *access, uint64_t position)
 {
     access_sys_t *sys = access->p_sys;
 
-    if (sys->access != NULL)
+    if (sys->access != ((void*)0))
     {
         vlc_stream_Delete(sys->access);
-        sys->access = NULL;
+        sys->access = ((void*)0);
     }
 
     sys->next = sys->first;
@@ -43,7 +43,7 @@ __attribute__((used)) static int Seek(stream_t *access, uint64_t position)
     for (uint64_t offset = 0;;)
     {
         stream_t *a = GetAccess(access);
-        if (a == NULL)
+        if (a == ((void*)0))
             break;
 
         bool can_seek;
@@ -64,7 +64,7 @@ __attribute__((used)) static int Seek(stream_t *access, uint64_t position)
 
         offset += size;
         vlc_stream_Delete(a);
-        sys->access = NULL;
+        sys->access = ((void*)0);
     }
 
     return VLC_EGENERIC;

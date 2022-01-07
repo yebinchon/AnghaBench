@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLTxtRange ;
-typedef  int /*<<< orphan*/  IHTMLSelectionObject ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ET_BODY ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_get_selection (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLSelectionObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLSelectionObject_createRange (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLTxtRange_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLTxtRange_moveToElementText (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLSelectionObject ; 
- int /*<<< orphan*/  IID_IHTMLTxtRange ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/  characterW ; 
- int /*<<< orphan*/ * doc_get_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/ * range_duplicate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  selection_iids ; 
- int /*<<< orphan*/ * test_create_body_range (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_ifaces (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_range_collapse (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_range_expand (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_range_inrange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_range_isequal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_range_move (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_range_moveend (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_range_movestart (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  test_range_parent (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_range_paste_html (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_range_put_text (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_range_set_end_point (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  test_range_text (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  texteditW ; 
- int /*<<< orphan*/  wordW ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLTxtRange ;
+typedef int IHTMLSelectionObject ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ET_BODY ;
+ scalar_t__ E_INVALIDARG ;
+ int FALSE ;
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ IHTMLDocument2_get_selection (int *,int **) ;
+ int IHTMLElement_Release (int *) ;
+ int IHTMLSelectionObject_Release (int *) ;
+ scalar_t__ IHTMLSelectionObject_createRange (int *,int **) ;
+ int IHTMLTxtRange_Release (int *) ;
+ scalar_t__ IHTMLTxtRange_moveToElementText (int *,int *) ;
+ int IID_IHTMLSelectionObject ;
+ int IID_IHTMLTxtRange ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int characterW ;
+ int * doc_get_body (int *) ;
+ int ok (int,char*,scalar_t__) ;
+ int * range_duplicate (int *) ;
+ int selection_iids ;
+ int * test_create_body_range (int *) ;
+ int test_disp (int *,int *,char*) ;
+ int test_ifaces (int *,int ) ;
+ int test_range_collapse (int *,int ) ;
+ int test_range_expand (int *,int ,int ,char*) ;
+ int test_range_inrange (int *,int *,int ) ;
+ int test_range_isequal (int *,int *,int ) ;
+ int test_range_move (int *,int ,int,int) ;
+ int test_range_moveend (int *,int ,int,int) ;
+ int test_range_movestart (int *,int ,int,int) ;
+ int test_range_parent (int *,int ) ;
+ int test_range_paste_html (int *,char*) ;
+ int test_range_put_text (int *,char*) ;
+ int test_range_set_end_point (int *,char*,int *,scalar_t__) ;
+ int test_range_text (int *,char*) ;
+ int texteditW ;
+ int wordW ;
 
 __attribute__((used)) static void test_txtrange(IHTMLDocument2 *doc)
 {
@@ -101,7 +101,7 @@ __attribute__((used)) static void test_txtrange(IHTMLDocument2 *doc)
     test_range_move(range, characterW, 2, 2);
     test_range_expand(range, wordW, VARIANT_TRUE, "123");
     test_range_moveend(range, characterW, -5, -5);
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
     test_range_moveend(range, characterW, 3, 3);
     test_range_text(range, "c 1");
     test_range_expand(range, texteditW, VARIANT_TRUE, "test abc 123\r\nit's text");
@@ -189,7 +189,7 @@ __attribute__((used)) static void test_txtrange(IHTMLDocument2 *doc)
     test_range_expand(range, wordW, VARIANT_TRUE, "test ");
     test_range_put_text(range, "word");
     test_range_text(body_range, "wordabc 123\r\nit's text");
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
     test_range_moveend(range, characterW, 3, 3);
     test_range_text(range, "abc");
     test_range_movestart(range, characterW, -2, -2);
@@ -197,13 +197,13 @@ __attribute__((used)) static void test_txtrange(IHTMLDocument2 *doc)
     test_range_movestart(range, characterW, 3, 3);
     test_range_text(range, "bc");
     test_range_movestart(range, characterW, 4, 4);
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
     test_range_movestart(range, characterW, -3, -3);
     test_range_text(range, "c 1");
     test_range_movestart(range, characterW, -7, -6);
     test_range_text(range, "wordabc 1");
     test_range_movestart(range, characterW, 100, 22);
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
 
     IHTMLTxtRange_Release(range);
 
@@ -221,7 +221,7 @@ __attribute__((used)) static void test_txtrange(IHTMLDocument2 *doc)
     ok(hres == S_OK, "Could not get IID_IHTMLTxtRange interface: 0x%08x\n", hres);
     IDispatch_Release(disp_range);
 
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
     test_range_moveend(range, characterW, 3, 3);
     test_range_text(range, "wor");
     test_range_parent(range, ET_BODY);
@@ -258,7 +258,7 @@ __attribute__((used)) static void test_txtrange(IHTMLDocument2 *doc)
 
     test_range_collapse(range, VARIANT_TRUE);
     test_range_paste_html(range, "<br>paste<br>");
-    test_range_text(range, NULL);
+    test_range_text(range, ((void*)0));
 
     test_range_moveend(range, characterW, 3, 3);
     test_range_text(range, "xyz");

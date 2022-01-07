@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  vfp_enable (int /*<<< orphan*/ *) ; 
+ int vfp_enable (int *) ;
 
 __attribute__((used)) static int vfp_starting_cpu(unsigned int unused)
 {
-	vfp_enable(NULL);
-	return 0;
+ vfp_enable(((void*)0));
+ return 0;
 }

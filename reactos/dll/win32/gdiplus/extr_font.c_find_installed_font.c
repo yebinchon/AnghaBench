@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct font_metrics {int /*<<< orphan*/  facename; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  lfFaceName; } ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  TYPE_1__ LOGFONTW ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateFontIndirectW (TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EnumFontFamiliesW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FontFamilyNotFound ; 
- int /*<<< orphan*/  NotTrueTypeFont ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ get_font_metrics (int /*<<< orphan*/ ,struct font_metrics*) ; 
- int /*<<< orphan*/  is_font_installed_proc ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct font_metrics {int facename; } ;
+typedef int WCHAR ;
+struct TYPE_3__ {int lfFaceName; } ;
+typedef int LPARAM ;
+typedef TYPE_1__ LOGFONTW ;
+typedef int HFONT ;
+typedef int HDC ;
+typedef int GpStatus ;
+
+
+ int CreateCompatibleDC (int ) ;
+ int CreateFontIndirectW (TYPE_1__*) ;
+ int DeleteDC (int ) ;
+ int DeleteObject (int ) ;
+ int EnumFontFamiliesW (int ,int const*,int ,int ) ;
+ int FontFamilyNotFound ;
+ int NotTrueTypeFont ;
+ int Ok ;
+ int SelectObject (int ,int ) ;
+ scalar_t__ get_font_metrics (int ,struct font_metrics*) ;
+ int is_font_installed_proc ;
+ int strcpyW (int ,int ) ;
 
 __attribute__((used)) static GpStatus find_installed_font(const WCHAR *name, struct font_metrics *fm)
 {

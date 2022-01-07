@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tx_state; } ;
-struct scc_channel {int /*<<< orphan*/  lock; TYPE_1__ stat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TXS_IDLE ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tx_state; } ;
+struct scc_channel {int lock; TYPE_1__ stat; } ;
+
+
+ int TXS_IDLE ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void scc_init_timer(struct scc_channel *scc)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&scc->lock, flags);	
-	scc->stat.tx_state = TXS_IDLE;
-	spin_unlock_irqrestore(&scc->lock, flags);
+ spin_lock_irqsave(&scc->lock, flags);
+ scc->stat.tx_state = TXS_IDLE;
+ spin_unlock_irqrestore(&scc->lock, flags);
 }

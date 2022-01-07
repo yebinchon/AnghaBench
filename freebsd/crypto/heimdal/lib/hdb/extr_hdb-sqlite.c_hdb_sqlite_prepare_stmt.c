@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  MAX_RETRIES ; 
- int SQLITE_BUSY ; 
- int SQLITE_IOERR_BLOCKED ; 
- int SQLITE_LOCKED ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  krb5_set_error_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_warnx (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+
+
+ int EINVAL ;
+ int MAX_RETRIES ;
+ int SQLITE_BUSY ;
+ int SQLITE_IOERR_BLOCKED ;
+ int SQLITE_LOCKED ;
+ int SQLITE_OK ;
+ int krb5_set_error_message (int ,int ,char*,char const*,int ) ;
+ int krb5_warnx (int ,char*) ;
+ int sleep (int) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,int *) ;
 
 __attribute__((used)) static krb5_error_code
 hdb_sqlite_prepare_stmt(krb5_context context,
@@ -36,20 +36,20 @@ hdb_sqlite_prepare_stmt(krb5_context context,
 {
     int ret, tries = 0;
 
-    ret = sqlite3_prepare_v2(db, str, -1, statement, NULL);
+    ret = sqlite3_prepare_v2(db, str, -1, statement, ((void*)0));
     while((tries++ < MAX_RETRIES) &&
-	  ((ret == SQLITE_BUSY) ||
+   ((ret == SQLITE_BUSY) ||
            (ret == SQLITE_IOERR_BLOCKED) ||
            (ret == SQLITE_LOCKED))) {
-	krb5_warnx(context, "hdb-sqlite: prepare busy");
+ krb5_warnx(context, "hdb-sqlite: prepare busy");
         sleep(1);
-        ret = sqlite3_prepare_v2(db, str, -1, statement, NULL);
+        ret = sqlite3_prepare_v2(db, str, -1, statement, ((void*)0));
     }
 
     if (ret != SQLITE_OK) {
         krb5_set_error_message(context, EINVAL,
-			       "Failed to prepare stmt %s: %s",
-			       str, sqlite3_errmsg(db));
+          "Failed to prepare stmt %s: %s",
+          str, sqlite3_errmsg(db));
         return EINVAL;
     }
 

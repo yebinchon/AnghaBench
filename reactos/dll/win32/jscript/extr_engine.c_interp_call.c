@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  acc; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int DISPATCH_JSCRIPT_CALLEREXECSSOURCE ; 
- int DISPATCH_METHOD ; 
- int /*<<< orphan*/  JS_E_INVALID_PROPERTY ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int const,int const) ; 
- int /*<<< orphan*/  clear_acc (TYPE_1__*) ; 
- int /*<<< orphan*/  disp_call_value (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,unsigned int const,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int get_op_int (TYPE_1__*,int) ; 
- unsigned int get_op_uint (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_args (TYPE_1__*,unsigned int const) ; 
- int /*<<< orphan*/  stack_topn (TYPE_1__*,unsigned int const) ; 
- int /*<<< orphan*/  throw_type_error (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int acc; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsval_t ;
+typedef int HRESULT ;
+
+
+ int DISPATCH_JSCRIPT_CALLEREXECSSOURCE ;
+ int DISPATCH_METHOD ;
+ int JS_E_INVALID_PROPERTY ;
+ int TRACE (char*,unsigned int const,int const) ;
+ int clear_acc (TYPE_1__*) ;
+ int disp_call_value (TYPE_1__*,int ,int *,int,unsigned int const,int ,int *) ;
+ int get_object (int ) ;
+ int get_op_int (TYPE_1__*,int) ;
+ unsigned int get_op_uint (TYPE_1__*,int ) ;
+ int is_object_instance (int ) ;
+ int stack_args (TYPE_1__*,unsigned int const) ;
+ int stack_topn (TYPE_1__*,unsigned int const) ;
+ int throw_type_error (TYPE_1__*,int ,int *) ;
 
 __attribute__((used)) static HRESULT interp_call(script_ctx_t *ctx)
 {
@@ -41,9 +41,9 @@ __attribute__((used)) static HRESULT interp_call(script_ctx_t *ctx)
 
     obj = stack_topn(ctx, argn);
     if(!is_object_instance(obj))
-        return throw_type_error(ctx, JS_E_INVALID_PROPERTY, NULL);
+        return throw_type_error(ctx, JS_E_INVALID_PROPERTY, ((void*)0));
 
     clear_acc(ctx);
-    return disp_call_value(ctx, get_object(obj), NULL, DISPATCH_METHOD | DISPATCH_JSCRIPT_CALLEREXECSSOURCE,
-                           argn, stack_args(ctx, argn), do_ret ? &ctx->acc : NULL);
+    return disp_call_value(ctx, get_object(obj), ((void*)0), DISPATCH_METHOD | DISPATCH_JSCRIPT_CALLEREXECSSOURCE,
+                           argn, stack_args(ctx, argn), do_ret ? &ctx->acc : ((void*)0));
 }

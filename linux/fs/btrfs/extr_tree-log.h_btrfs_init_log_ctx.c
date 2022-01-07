@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
-struct btrfs_log_ctx {int log_new_dentries; int /*<<< orphan*/  list; struct inode* inode; scalar_t__ log_transid; scalar_t__ log_ret; } ;
+struct btrfs_log_ctx {int log_new_dentries; int list; struct inode* inode; scalar_t__ log_transid; scalar_t__ log_ret; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
+
+ int INIT_LIST_HEAD (int *) ;
 
 __attribute__((used)) static inline void btrfs_init_log_ctx(struct btrfs_log_ctx *ctx,
-				      struct inode *inode)
+          struct inode *inode)
 {
-	ctx->log_ret = 0;
-	ctx->log_transid = 0;
-	ctx->log_new_dentries = false;
-	ctx->inode = inode;
-	INIT_LIST_HEAD(&ctx->list);
+ ctx->log_ret = 0;
+ ctx->log_transid = 0;
+ ctx->log_new_dentries = 0;
+ ctx->inode = inode;
+ INIT_LIST_HEAD(&ctx->list);
 }

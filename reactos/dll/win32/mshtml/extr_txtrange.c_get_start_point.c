@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rangepoint_t ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-struct TYPE_3__ {int /*<<< orphan*/  nsrange; } ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  TYPE_1__ HTMLTxtRange ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_rangepoint (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMRange_GetStartContainer (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMRange_GetStartOffset (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int rangepoint_t ;
+typedef int nsIDOMNode ;
+struct TYPE_3__ {int nsrange; } ;
+typedef int LONG ;
+typedef TYPE_1__ HTMLTxtRange ;
+
+
+ int init_rangepoint (int *,int *,int ) ;
+ int nsIDOMNode_Release (int *) ;
+ int nsIDOMRange_GetStartContainer (int ,int **) ;
+ int nsIDOMRange_GetStartOffset (int ,int *) ;
 
 __attribute__((used)) static void get_start_point(HTMLTxtRange *This, rangepoint_t *ret)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  int uint32 ;
-typedef  int uint16 ;
-typedef  scalar_t__ GR_WINDOW_ID ;
 
-/* Variables and functions */
- int COLOR16TO32 (int) ; 
- int /*<<< orphan*/  GrArea (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GrNewPixmap (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MWPF_RGB ; 
- int g_Bpp ; 
- int g_bpp ; 
- int /*<<< orphan*/  g_gc_clean ; 
- int g_server_bpp ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xmalloc (int) ; 
+
+
+
+typedef int uint8 ;
+typedef int uint32 ;
+typedef int uint16 ;
+typedef scalar_t__ GR_WINDOW_ID ;
+
+
+ int COLOR16TO32 (int) ;
+ int GrArea (scalar_t__,int ,int ,int ,int,int,int *,int ) ;
+ scalar_t__ GrNewPixmap (int,int,int ) ;
+ int MWPF_RGB ;
+ int g_Bpp ;
+ int g_bpp ;
+ int g_gc_clean ;
+ int g_server_bpp ;
+ int xfree (int *) ;
+ int * xmalloc (int) ;
 
 void * ui_create_bitmap(int width, int height, uint8 * data)
 {

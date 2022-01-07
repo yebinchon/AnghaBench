@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  test_int_numbers ;
-struct TYPE_3__ {int /*<<< orphan*/  typedarray_type; int /*<<< orphan*/ * constructor_name; } ;
-typedef  TYPE_1__ test_entry_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int jerry_typedarray_type_t ;
 
-/* Variables and functions */
-#define  JERRY_TYPEDARRAY_FLOAT32 132 
-#define  JERRY_TYPEDARRAY_FLOAT64 131 
-#define  JERRY_TYPEDARRAY_INT16 130 
-#define  JERRY_TYPEDARRAY_INT32 129 
-#define  JERRY_TYPEDARRAY_INT8 128 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- double fabs (int /*<<< orphan*/ ) ; 
- int isinf (int) ; 
- int /*<<< orphan*/  jerry_create_number (int) ; 
- int /*<<< orphan*/  jerry_create_number_infinity (int) ; 
- int /*<<< orphan*/  jerry_create_typedarray (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  jerry_delete_property_by_index (int /*<<< orphan*/ ,int) ; 
- int jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- int jerry_get_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_property_by_index (int /*<<< orphan*/ ,int) ; 
- int jerry_get_typedarray_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_set_property_by_index (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int jerry_value_is_boolean (int /*<<< orphan*/ ) ; 
- int jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int jerry_value_is_undefined (int /*<<< orphan*/ ) ; 
- double pow (int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef int test_int_numbers ;
+struct TYPE_3__ {int typedarray_type; int * constructor_name; } ;
+typedef TYPE_1__ test_entry_t ;
+typedef int jerry_value_t ;
+typedef int jerry_typedarray_type_t ;
+
+
+
+
+
+
+
+ int TEST_ASSERT (int) ;
+ double fabs (int ) ;
+ int isinf (int) ;
+ int jerry_create_number (int) ;
+ int jerry_create_number_infinity (int) ;
+ int jerry_create_typedarray (int ,size_t) ;
+ int jerry_delete_property_by_index (int ,int) ;
+ int jerry_get_boolean_value (int ) ;
+ int jerry_get_number_value (int ) ;
+ int jerry_get_property_by_index (int ,int) ;
+ int jerry_get_typedarray_type (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_set_property_by_index (int ,int,int ) ;
+ int jerry_value_is_boolean (int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerry_value_is_undefined (int ) ;
+ double pow (int,int) ;
 
 __attribute__((used)) static void test_property_by_index (test_entry_t test_entries[])
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_property_by_index (test_entry_t test_entr
   double test_double_numbers[5] = {-83.153, -35.15, 0, 13.1, 89.8975};
   uint8_t test_uint_numbers[5] = {83, 15, 36, 0, 43};
 
-  for (uint32_t i = 0; test_entries[i].constructor_name != NULL; i++)
+  for (uint32_t i = 0; test_entries[i].constructor_name != ((void*)0); i++)
   {
     jerry_value_t test_number;
     uint32_t test_numbers_length = sizeof (test_int_numbers) / sizeof (int);
@@ -61,9 +61,9 @@ __attribute__((used)) static void test_property_by_index (test_entry_t test_entr
 
     switch (type)
     {
-      case JERRY_TYPEDARRAY_INT8:
-      case JERRY_TYPEDARRAY_INT16:
-      case JERRY_TYPEDARRAY_INT32:
+      case 128:
+      case 130:
+      case 129:
       {
         for (uint8_t j = 0; j < test_numbers_length; j++)
         {
@@ -83,8 +83,8 @@ __attribute__((used)) static void test_property_by_index (test_entry_t test_entr
         }
         break;
       }
-      case JERRY_TYPEDARRAY_FLOAT32:
-      case JERRY_TYPEDARRAY_FLOAT64:
+      case 132:
+      case 131:
       {
         for (uint8_t j = 0; j < test_numbers_length; j++)
         {
@@ -105,7 +105,7 @@ __attribute__((used)) static void test_property_by_index (test_entry_t test_entr
           jerry_release_value (set_result);
           jerry_release_value (get_result);
 
-          /* Testing positive and negative infinity */
+
           for (uint8_t k = 0; k < 2; k++)
           {
             jerry_value_t inf = jerry_create_number_infinity (k);

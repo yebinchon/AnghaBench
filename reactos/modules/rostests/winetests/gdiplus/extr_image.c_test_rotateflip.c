@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bits ;
-typedef  int UINT ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int BYTE ;
-typedef  int ARGB ;
 
-/* Variables and functions */
- int GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int*) ; 
- int GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int GdipGetImageHeight (int /*<<< orphan*/ *,int*) ; 
- int GdipGetImageWidth (int /*<<< orphan*/ *,int*) ; 
- int GdipImageRotateFlip (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  Rotate90FlipNone ; 
- int /*<<< orphan*/  RotateNoneFlipX ; 
- int /*<<< orphan*/  RotateNoneFlipY ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int bits ;
+typedef int UINT ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+typedef int BYTE ;
+typedef int ARGB ;
+
+
+ int GdipBitmapGetPixel (int *,int,int,int*) ;
+ int GdipCreateBitmapFromScan0 (int,int,int,int ,int*,int **) ;
+ int GdipDisposeImage (int *) ;
+ int GdipGetImageHeight (int *,int*) ;
+ int GdipGetImageWidth (int *,int*) ;
+ int GdipImageRotateFlip (int *,int ) ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int Rotate90FlipNone ;
+ int RotateNoneFlipX ;
+ int RotateNoneFlipY ;
+ int expect (int,int) ;
+ int memcpy (int*,int const*,int) ;
 
 __attribute__((used)) static void test_rotateflip(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_rotateflip(void)
     GpStatus stat;
     BYTE bits[24];
     static const BYTE orig_bits[24] = {
-        0,0,0xff,    0,0xff,0,    0xff,0,0,    23,23,23,
+        0,0,0xff, 0,0xff,0, 0xff,0,0, 23,23,23,
         0xff,0xff,0, 0xff,0,0xff, 0,0xff,0xff, 23,23,23};
     UINT width, height;
     ARGB color;

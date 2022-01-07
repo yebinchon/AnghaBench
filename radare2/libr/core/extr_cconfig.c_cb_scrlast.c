@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* context; } ;
-struct TYPE_5__ {int /*<<< orphan*/  i_value; } ;
-struct TYPE_4__ {int /*<<< orphan*/  lastEnabled; } ;
-typedef  TYPE_2__ RConfigNode ;
+struct TYPE_5__ {int i_value; } ;
+struct TYPE_4__ {int lastEnabled; } ;
+typedef TYPE_2__ RConfigNode ;
 
-/* Variables and functions */
- TYPE_3__* r_cons_singleton () ; 
+
+ TYPE_3__* r_cons_singleton () ;
 
 __attribute__((used)) static bool cb_scrlast(void *user, void *data) {
-	RConfigNode *node = (RConfigNode *) data;
-	r_cons_singleton ()->context->lastEnabled = node->i_value;
-	return true;
+ RConfigNode *node = (RConfigNode *) data;
+ r_cons_singleton ()->context->lastEnabled = node->i_value;
+ return 1;
 }

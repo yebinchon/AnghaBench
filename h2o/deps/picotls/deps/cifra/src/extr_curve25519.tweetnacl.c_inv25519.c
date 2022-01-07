@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * gf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  sqr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * gf ;
+
+
+ int mul (int *,int *,int * const) ;
+ int sqr (int *,int *) ;
 
 __attribute__((used)) static void inv25519(gf o, const gf i)
 {
@@ -22,7 +22,7 @@ __attribute__((used)) static void inv25519(gf o, const gf i)
   int a;
   for (a = 0; a < 16; a++)
     c[a] = i[a];
-  
+
   for (a = 253; a >= 0; a--)
   {
     sqr(c, c);

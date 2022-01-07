@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  crypto_generichash_blake2b_state ;
 
-/* Variables and functions */
- size_t const BLAKE2B_KEYBYTES ; 
- size_t const BLAKE2B_OUTBYTES ; 
- size_t const UINT8_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ blake2b_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ blake2b_init_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int crypto_generichash_blake2b_state ;
+
+
+ size_t const BLAKE2B_KEYBYTES ;
+ size_t const BLAKE2B_OUTBYTES ;
+ size_t const UINT8_MAX ;
+ int assert (int) ;
+ scalar_t__ blake2b_init (int *,int ) ;
+ scalar_t__ blake2b_init_key (int *,int ,unsigned char const*,int ) ;
 
 int
 crypto_generichash_blake2b_init(crypto_generichash_blake2b_state *state,
@@ -32,13 +32,13 @@ crypto_generichash_blake2b_init(crypto_generichash_blake2b_state *state,
     }
     assert(outlen <= UINT8_MAX);
     assert(keylen <= UINT8_MAX);
-    if (key == NULL || keylen <= 0U) {
+    if (key == ((void*)0) || keylen <= 0U) {
         if (blake2b_init(state, (uint8_t) outlen) != 0) {
-            return -1; /* LCOV_EXCL_LINE */
+            return -1;
         }
     } else if (blake2b_init_key(state, (uint8_t) outlen, key,
                                 (uint8_t) keylen) != 0) {
-        return -1; /* LCOV_EXCL_LINE */
+        return -1;
     }
     return 0;
 }

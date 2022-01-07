@@ -1,48 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_conflict_result_t ;
-struct TYPE_3__ {int /*<<< orphan*/  kind; int /*<<< orphan*/  local_abspath; } ;
-typedef  TYPE_1__ svn_wc_conflict_description2_t ;
-typedef  scalar_t__ svn_wc_conflict_choice_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct conflict_func_merge_cmd_baton {int accept_which; int /*<<< orphan*/  conflict_stats; int /*<<< orphan*/  path_prefix; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
-#define  svn_cl__accept_base 139 
-#define  svn_cl__accept_edit 138 
-#define  svn_cl__accept_invalid 137 
-#define  svn_cl__accept_launch 136 
-#define  svn_cl__accept_mine_conflict 135 
-#define  svn_cl__accept_mine_full 134 
-#define  svn_cl__accept_postpone 133 
-#define  svn_cl__accept_recommended 132 
-#define  svn_cl__accept_theirs_conflict 131 
-#define  svn_cl__accept_theirs_full 130 
-#define  svn_cl__accept_unspecified 129 
-#define  svn_cl__accept_working 128 
- int /*<<< orphan*/  svn_cl__conflict_stats_resolved (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- char* svn_cl__local_style_skip_ancestor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_conflict_choose_base ; 
- scalar_t__ svn_wc_conflict_choose_merged ; 
- scalar_t__ svn_wc_conflict_choose_mine_conflict ; 
- scalar_t__ svn_wc_conflict_choose_mine_full ; 
- scalar_t__ svn_wc_conflict_choose_postpone ; 
- scalar_t__ svn_wc_conflict_choose_theirs_conflict ; 
- scalar_t__ svn_wc_conflict_choose_theirs_full ; 
- int /*<<< orphan*/ * svn_wc_create_conflict_result (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_wc_conflict_result_t ;
+struct TYPE_3__ {int kind; int local_abspath; } ;
+typedef TYPE_1__ svn_wc_conflict_description2_t ;
+typedef scalar_t__ svn_wc_conflict_choice_t ;
+typedef int svn_error_t ;
+struct conflict_func_merge_cmd_baton {int accept_which; int conflict_stats; int path_prefix; } ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ int svn_cl__conflict_stats_resolved (int ,char const*,int ) ;
+ char* svn_cl__local_style_skip_ancestor (int ,int ,int *) ;
+ scalar_t__ svn_wc_conflict_choose_base ;
+ scalar_t__ svn_wc_conflict_choose_merged ;
+ scalar_t__ svn_wc_conflict_choose_mine_conflict ;
+ scalar_t__ svn_wc_conflict_choose_mine_full ;
+ scalar_t__ svn_wc_conflict_choose_postpone ;
+ scalar_t__ svn_wc_conflict_choose_theirs_conflict ;
+ scalar_t__ svn_wc_conflict_choose_theirs_full ;
+ int * svn_wc_create_conflict_result (scalar_t__,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 conflict_func_merge_cmd(svn_wc_conflict_result_t **result,
@@ -56,42 +44,42 @@ conflict_func_merge_cmd(svn_wc_conflict_result_t **result,
 
   switch (b->accept_which)
     {
-    case svn_cl__accept_postpone:
-    case svn_cl__accept_invalid:
-    case svn_cl__accept_unspecified:
-    case svn_cl__accept_recommended:
-      /* Postpone or no valid --accept option, postpone the conflict. */
+    case 133:
+    case 137:
+    case 129:
+    case 132:
+
       choice = svn_wc_conflict_choose_postpone;
       break;
-    case svn_cl__accept_base:
+    case 139:
       choice = svn_wc_conflict_choose_base;
       break;
-    case svn_cl__accept_working:
+    case 128:
       choice = svn_wc_conflict_choose_merged;
       break;
-    case svn_cl__accept_mine_conflict:
+    case 135:
       choice = svn_wc_conflict_choose_mine_conflict;
       break;
-    case svn_cl__accept_theirs_conflict:
+    case 131:
       choice = svn_wc_conflict_choose_theirs_conflict;
       break;
-    case svn_cl__accept_mine_full:
+    case 134:
       choice = svn_wc_conflict_choose_mine_full;
       break;
-    case svn_cl__accept_theirs_full:
+    case 130:
       choice = svn_wc_conflict_choose_theirs_full;
       break;
-    case svn_cl__accept_edit:
-    case svn_cl__accept_launch:
-      /* The 'edit' and 'launch' options used to be valid in Subversion 1.9 but
-       * we can't support these options for the purposes of this callback. */
+    case 138:
+    case 136:
+
+
       choice = svn_wc_conflict_choose_postpone;
       break;
     }
 
-  *result = svn_wc_create_conflict_result(choice, NULL, result_pool);
+  *result = svn_wc_create_conflict_result(choice, ((void*)0), result_pool);
 
-  /* If we are resolving a conflict, adjust the summary of conflicts. */
+
   if (choice != svn_wc_conflict_choose_postpone)
     {
       const char *local_path;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509V3_EXT_METHOD ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int X509V3_EXT_METHOD ;
 struct TYPE_2__ {scalar_t__ onlyuser; scalar_t__ onlyCA; scalar_t__ indirectCRL; scalar_t__ onlyattr; scalar_t__ onlysomereasons; scalar_t__ distpoint; } ;
-typedef  TYPE_1__ ISSUING_DIST_POINT ;
-typedef  int /*<<< orphan*/  BIO ;
+typedef TYPE_1__ ISSUING_DIST_POINT ;
+typedef int BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,int,char*) ; 
- int /*<<< orphan*/  print_distpoint (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  print_reasons (int /*<<< orphan*/ *,char*,scalar_t__,int) ; 
+
+ int BIO_printf (int *,char*,int,char*) ;
+ int print_distpoint (int *,scalar_t__,int) ;
+ int print_reasons (int *,char*,scalar_t__,int) ;
 
 __attribute__((used)) static int i2r_idp(const X509V3_EXT_METHOD *method, void *pidp, BIO *out,
                    int indent)

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int KEY_CREATE_SUB_KEY ; 
- int KEY_SET_VALUE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCreateKeyExA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*,char const*,...) ; 
+
+
+
+typedef int LPBYTE ;
+typedef int LONG ;
+typedef int HKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseHandle (int ) ;
+ int ERROR_ACCESS_DENIED ;
+ int ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int HKEY_CLASSES_ROOT ;
+ int KEY_CREATE_SUB_KEY ;
+ int KEY_SET_VALUE ;
+ int REG_SZ ;
+ int RegCreateKeyExA (int ,char const*,int ,int *,int ,int,int *,int *,int *) ;
+ int RegSetValueExA (int ,char*,int ,int ,int ,int) ;
+ scalar_t__ TRUE ;
+ int ok (int,char*,char const*,...) ;
 
 __attribute__((used)) static BOOL create_test_class(const char* class, BOOL protocol)
 {
     HKEY hkey, hkey_shell;
     LONG rc;
 
-    rc = RegCreateKeyExA(HKEY_CLASSES_ROOT, class, 0, NULL, 0,
-                         KEY_CREATE_SUB_KEY | KEY_SET_VALUE, NULL,
-                         &hkey, NULL);
+    rc = RegCreateKeyExA(HKEY_CLASSES_ROOT, class, 0, ((void*)0), 0,
+                         KEY_CREATE_SUB_KEY | KEY_SET_VALUE, ((void*)0),
+                         &hkey, ((void*)0));
     ok(rc == ERROR_SUCCESS || rc == ERROR_ACCESS_DENIED,
        "could not create class %s (rc=%d)\n", class, rc);
     if (rc != ERROR_SUCCESS)
@@ -48,8 +48,8 @@ __attribute__((used)) static BOOL create_test_class(const char* class, BOOL prot
         ok(rc == ERROR_SUCCESS, "RegSetValueEx '%s' failed, expected ERROR_SUCCESS, got %d\n", class, rc);
     }
 
-    rc = RegCreateKeyExA(hkey, "shell", 0, NULL, 0,
-                         KEY_CREATE_SUB_KEY, NULL, &hkey_shell, NULL);
+    rc = RegCreateKeyExA(hkey, "shell", 0, ((void*)0), 0,
+                         KEY_CREATE_SUB_KEY, ((void*)0), &hkey_shell, ((void*)0));
     ok(rc == ERROR_SUCCESS, "RegCreateKeyEx 'shell' failed, expected ERROR_SUCCESS, got %d\n", rc);
 
     CloseHandle(hkey);

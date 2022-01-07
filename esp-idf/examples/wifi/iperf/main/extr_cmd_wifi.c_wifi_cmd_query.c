@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ wifi_mode_t ;
-struct TYPE_4__ {int /*<<< orphan*/  ssid; int /*<<< orphan*/  password; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ wifi_mode_t ;
+struct TYPE_4__ {int ssid; int password; } ;
 struct TYPE_5__ {TYPE_1__ ap; } ;
-typedef  TYPE_2__ wifi_config_t ;
+typedef TYPE_2__ wifi_config_t ;
 
-/* Variables and functions */
- int CONNECTED_BIT ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  WIFI_IF_AP ; 
- int /*<<< orphan*/  WIFI_IF_STA ; 
- scalar_t__ WIFI_MODE_AP ; 
- scalar_t__ WIFI_MODE_STA ; 
- int /*<<< orphan*/  esp_wifi_get_config (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  esp_wifi_get_mode (scalar_t__*) ; 
- int /*<<< orphan*/  wifi_event_group ; 
- int xEventGroupWaitBits (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int CONNECTED_BIT ;
+ int ESP_LOGI (int ,char*,...) ;
+ int TAG ;
+ int WIFI_IF_AP ;
+ int WIFI_IF_STA ;
+ scalar_t__ WIFI_MODE_AP ;
+ scalar_t__ WIFI_MODE_STA ;
+ int esp_wifi_get_config (int ,TYPE_2__*) ;
+ int esp_wifi_get_mode (scalar_t__*) ;
+ int wifi_event_group ;
+ int xEventGroupWaitBits (int ,int,int ,int,int ) ;
 
 __attribute__((used)) static int wifi_cmd_query(int argc, char** argv)
 {

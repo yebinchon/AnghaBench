@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fwohci_softc {int /*<<< orphan*/  fc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FW_GLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FW_GUNLOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwohci_check_stat (struct fwohci_softc*) ; 
+
+
+
+struct fwohci_softc {int fc; } ;
+
+
+ int FW_GLOCK (int *) ;
+ int FW_GUNLOCK (int *) ;
+ int fwohci_check_stat (struct fwohci_softc*) ;
 
 void
 fwohci_intr(void *arg)
 {
-	struct fwohci_softc *sc = (struct fwohci_softc *)arg;
+ struct fwohci_softc *sc = (struct fwohci_softc *)arg;
 
-	FW_GLOCK(&sc->fc);
-	fwohci_check_stat(sc);
-	FW_GUNLOCK(&sc->fc);
+ FW_GLOCK(&sc->fc);
+ fwohci_check_stat(sc);
+ FW_GUNLOCK(&sc->fc);
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_25__ {size_t idx; TYPE_2__* frag; int /*<<< orphan*/  cbc; TYPE_3__* pkt; TYPE_3__* in; } ;
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+struct TYPE_25__ {size_t idx; TYPE_2__* frag; int cbc; TYPE_3__* pkt; TYPE_3__* in; } ;
 struct TYPE_24__ {TYPE_5__* priv_data; } ;
-struct TYPE_23__ {scalar_t__ pts; int /*<<< orphan*/  data; } ;
+struct TYPE_23__ {scalar_t__ pts; int data; } ;
 struct TYPE_22__ {scalar_t__ nb_units; TYPE_1__* units; } ;
-struct TYPE_21__ {scalar_t__ type; int /*<<< orphan*/  content_ref; int /*<<< orphan*/  content; } ;
-typedef  TYPE_2__ CodedBitstreamFragment ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVBSFContext ;
-typedef  TYPE_5__ AV1FMergeContext ;
+struct TYPE_21__ {scalar_t__ type; int content_ref; int content; } ;
+typedef TYPE_2__ CodedBitstreamFragment ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVBSFContext ;
+typedef TYPE_5__ AV1FMergeContext ;
 
-/* Variables and functions */
- scalar_t__ AV1_OBU_TEMPORAL_DELIMITER ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  av1_frame_merge_flush (TYPE_4__*) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_packet_move_ref (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_3__*) ; 
- int ff_bsf_get_packet_ref (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ff_cbs_fragment_reset (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int ff_cbs_insert_unit_content (int /*<<< orphan*/ ,TYPE_2__*,int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_cbs_read_packet (int /*<<< orphan*/ ,TYPE_2__*,TYPE_3__*) ; 
- int ff_cbs_write_packet (int /*<<< orphan*/ ,TYPE_3__*,TYPE_2__*) ; 
+
+ scalar_t__ AV1_OBU_TEMPORAL_DELIMITER ;
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int EAGAIN ;
+ int av1_frame_merge_flush (TYPE_4__*) ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ int av_packet_move_ref (TYPE_3__*,TYPE_3__*) ;
+ int av_packet_unref (TYPE_3__*) ;
+ int ff_bsf_get_packet_ref (TYPE_4__*,TYPE_3__*) ;
+ int ff_cbs_fragment_reset (int ,TYPE_2__*) ;
+ int ff_cbs_insert_unit_content (int ,TYPE_2__*,int,scalar_t__,int ,int ) ;
+ int ff_cbs_read_packet (int ,TYPE_2__*,TYPE_3__*) ;
+ int ff_cbs_write_packet (int ,TYPE_3__*,TYPE_2__*) ;
 
 __attribute__((used)) static int av1_frame_merge_filter(AVBSFContext *bsf, AVPacket *out)
 {
@@ -92,7 +92,7 @@ eof:
         }
         av_packet_move_ref(out, buffer_pkt);
 
-        // Swap fragment index, to avoid copying fragment references.
+
         ctx->idx = !ctx->idx;
     } else {
         for (i = 0; i < frag->nb_units; i++) {
@@ -105,7 +105,7 @@ eof:
         err = AVERROR(EAGAIN);
     }
 
-    // Buffer packets with timestamps. There should be at most one per TU, be it split or not.
+
     if (!buffer_pkt->data && in->pts != AV_NOPTS_VALUE)
         av_packet_move_ref(buffer_pkt, in);
     else

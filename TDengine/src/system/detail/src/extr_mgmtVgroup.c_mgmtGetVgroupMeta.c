@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_17__ {TYPE_1__* pDb; } ;
 struct TYPE_16__ {void* numOfColumns; } ;
-struct TYPE_15__ {void* bytes; int /*<<< orphan*/  name; void* type; } ;
-struct TYPE_14__ {int* bytes; int numOfColumns; int* offset; int rowSize; TYPE_2__* pNode; int /*<<< orphan*/  numOfRows; } ;
+struct TYPE_15__ {void* bytes; int name; void* type; } ;
+struct TYPE_14__ {int* bytes; int numOfColumns; int* offset; int rowSize; TYPE_2__* pNode; int numOfRows; } ;
 struct TYPE_13__ {int numOfVnodes; struct TYPE_13__* next; } ;
-struct TYPE_12__ {TYPE_2__* pHead; int /*<<< orphan*/  numOfVgroups; } ;
-typedef  TYPE_2__ SVgObj ;
-typedef  TYPE_3__ SShowObj ;
-typedef  TYPE_4__ SSchema ;
-typedef  TYPE_5__ SMeterMeta ;
-typedef  TYPE_6__ SConnObj ;
+struct TYPE_12__ {TYPE_2__* pHead; int numOfVgroups; } ;
+typedef TYPE_2__ SVgObj ;
+typedef TYPE_3__ SShowObj ;
+typedef TYPE_4__ SSchema ;
+typedef TYPE_5__ SMeterMeta ;
+typedef TYPE_6__ SConnObj ;
 
-/* Variables and functions */
- int TSDB_CODE_DB_NOT_SELECTED ; 
- void* TSDB_DATA_TYPE_BINARY ; 
- void* TSDB_DATA_TYPE_INT ; 
- void* TSDB_DATA_TYPE_SMALLINT ; 
- void* htons (int) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- TYPE_4__* tsGetSchema (TYPE_5__*) ; 
+
+ int TSDB_CODE_DB_NOT_SELECTED ;
+ void* TSDB_DATA_TYPE_BINARY ;
+ void* TSDB_DATA_TYPE_INT ;
+ void* TSDB_DATA_TYPE_SMALLINT ;
+ void* htons (int) ;
+ int strcpy (int ,char*) ;
+ TYPE_4__* tsGetSchema (TYPE_5__*) ;
 
 int mgmtGetVgroupMeta(SMeterMeta *pMeta, SShowObj *pShow, SConnObj *pConn) {
   int cols = 0;
 
-  if (pConn->pDb == NULL) return TSDB_CODE_DB_NOT_SELECTED;
+  if (pConn->pDb == ((void*)0)) return TSDB_CODE_DB_NOT_SELECTED;
 
   SSchema *pSchema = tsGetSchema(pMeta);
 
@@ -62,9 +62,9 @@ int mgmtGetVgroupMeta(SMeterMeta *pMeta, SShowObj *pShow, SConnObj *pConn) {
   pSchema[cols].bytes = htons(pShow->bytes[cols]);
   cols++;
 
-  int     maxReplica = 0;
+  int maxReplica = 0;
   SVgObj *pVgroup = pConn->pDb->pHead;
-  while (pVgroup != NULL) {
+  while (pVgroup != ((void*)0)) {
     maxReplica = pVgroup->numOfVnodes > maxReplica ? pVgroup->numOfVnodes : maxReplica;
     pVgroup = pVgroup->next;
   }

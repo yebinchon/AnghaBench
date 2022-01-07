@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double X; double Y; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPath ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathLine (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipAddPathPolygon (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_path (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  poly_path ; 
+
+ int ARRAY_SIZE (int ) ;
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathLine (int *,double,double,double,double) ;
+ int GdipAddPathPolygon (int *,TYPE_1__*,int) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipDeletePath (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int ok_path (int *,int ,int ,int ) ;
+ int poly_path ;
 
 __attribute__((used)) static void test_polygon(void)
 {
@@ -49,21 +49,21 @@ __attribute__((used)) static void test_polygon(void)
 
     GdipCreatePath(FillModeAlternate, &path);
 
-    /* NULL args */
-    status = GdipAddPathPolygon(NULL, points, 5);
+
+    status = GdipAddPathPolygon(((void*)0), points, 5);
     expect(InvalidParameter, status);
-    status = GdipAddPathPolygon(path, NULL, 5);
+    status = GdipAddPathPolygon(path, ((void*)0), 5);
     expect(InvalidParameter, status);
-    /* Polygon should have 3 points at least */
+
     status = GdipAddPathPolygon(path, points, 2);
     expect(InvalidParameter, status);
 
-    /* to test how it prolongs not empty path */
+
     status = GdipAddPathLine(path, 5.0, 5.0, 6.0, 8.0);
     expect(Ok, status);
     status = GdipAddPathPolygon(path, points, 5);
     expect(Ok, status);
-    /* check resulting path */
+
     ok_path(path, poly_path, ARRAY_SIZE(poly_path), FALSE);
 
     GdipDeletePath(path);

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * current_async_response; int /*<<< orphan*/  async_handler_baton; int /*<<< orphan*/  (* async_handler ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  async_acceptor_baton; int /*<<< orphan*/  stream; int /*<<< orphan*/ * (* async_acceptor ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ serf_connection_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ APR_STATUS_IS_EOF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  APR_SUCCESS ; 
- int /*<<< orphan*/  serf_bucket_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * current_async_response; int async_handler_baton; int (* async_handler ) (int *,int *,int ,int *) ;int async_acceptor_baton; int stream; int * (* async_acceptor ) (int *,int ,int ,int *) ;} ;
+typedef TYPE_1__ serf_connection_t ;
+typedef int apr_status_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ APR_STATUS_IS_EOF (int ) ;
+ int APR_SUCCESS ;
+ int serf_bucket_destroy (int *) ;
+ int * stub1 (int *,int ,int ,int *) ;
+ int stub2 (int *,int *,int ,int *) ;
 
 __attribute__((used)) static apr_status_t handle_async_response(serf_connection_t *conn,
                                           apr_pool_t *pool)
 {
     apr_status_t status;
 
-    if (conn->current_async_response == NULL) {
+    if (conn->current_async_response == ((void*)0)) {
         conn->current_async_response =
-            (*conn->async_acceptor)(NULL, conn->stream,
+            (*conn->async_acceptor)(((void*)0), conn->stream,
                                     conn->async_acceptor_baton, pool);
     }
 
-    status = (*conn->async_handler)(NULL, conn->current_async_response,
+    status = (*conn->async_handler)(((void*)0), conn->current_async_response,
                                     conn->async_handler_baton, pool);
 
     if (APR_STATUS_IS_EOF(status)) {
         serf_bucket_destroy(conn->current_async_response);
-        conn->current_async_response = NULL;
+        conn->current_async_response = ((void*)0);
         status = APR_SUCCESS;
     }
 

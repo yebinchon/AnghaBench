@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dbi ;
-struct TYPE_3__ {int dbcc_size; int /*<<< orphan*/  dbcc_classguid; int /*<<< orphan*/  dbcc_devicetype; } ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  DEV_BROADCAST_HDR ;
-typedef  TYPE_1__ DEV_BROADCAST_DEVICEINTERFACE_W ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateWindowExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DBT_DEVTYP_DEVICEINTERFACE ; 
- int /*<<< orphan*/  DEVICE_NOTIFY_WINDOW_HANDLE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int /*<<< orphan*/  GUID_DEVINTERFACE_HID ; 
- int /*<<< orphan*/  GetModuleHandleW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HWND_MESSAGE ; 
- int /*<<< orphan*/  RegisterDeviceNotificationW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int WS_CLIPCHILDREN ; 
- int WS_CLIPSIBLINGS ; 
- int /*<<< orphan*/  WS_EX_OVERLAPPEDWINDOW ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _GLFW_WNDCLASSNAME ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int dbi ;
+struct TYPE_3__ {int dbcc_size; int dbcc_classguid; int dbcc_devicetype; } ;
+typedef int * HWND ;
+typedef int DEV_BROADCAST_HDR ;
+typedef TYPE_1__ DEV_BROADCAST_DEVICEINTERFACE_W ;
+
+
+ int * CreateWindowExW (int ,int ,char*,int,int ,int ,int,int,int ,int *,int ,int *) ;
+ int DBT_DEVTYP_DEVICEINTERFACE ;
+ int DEVICE_NOTIFY_WINDOW_HANDLE ;
+ int GLFW_PLATFORM_ERROR ;
+ int GUID_DEVINTERFACE_HID ;
+ int GetModuleHandleW (int *) ;
+ int HWND_MESSAGE ;
+ int RegisterDeviceNotificationW (int *,int *,int ) ;
+ int SW_HIDE ;
+ int ShowWindow (int *,int ) ;
+ int WS_CLIPCHILDREN ;
+ int WS_CLIPSIBLINGS ;
+ int WS_EX_OVERLAPPEDWINDOW ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int _GLFW_WNDCLASSNAME ;
+ int _glfwInputError (int ,char*) ;
 
 __attribute__((used)) static HWND createHelperWindow(void)
 {
@@ -42,21 +42,21 @@ __attribute__((used)) static HWND createHelperWindow(void)
                                   L"GLFW helper window",
                                   WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
                                   0, 0, 1, 1,
-                                  HWND_MESSAGE, NULL,
-                                  GetModuleHandleW(NULL),
-                                  NULL);
+                                  HWND_MESSAGE, ((void*)0),
+                                  GetModuleHandleW(((void*)0)),
+                                  ((void*)0));
     if (!window)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,
                         "Win32: Failed to create helper window");
-        return NULL;
+        return ((void*)0);
     }
 
-    // HACK: The first call to ShowWindow is ignored if the parent process
-    //       passed along a STARTUPINFO, so clear that flag with a no-op call
+
+
     ShowWindow(window, SW_HIDE);
 
-    // Register for HID device notifications
+
     {
         DEV_BROADCAST_DEVICEINTERFACE_W dbi;
         ZeroMemory(&dbi, sizeof(dbi));

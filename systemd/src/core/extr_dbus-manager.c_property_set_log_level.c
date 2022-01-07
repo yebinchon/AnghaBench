@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- scalar_t__ isempty (char const*) ; 
- int log_level_from_string (char const*) ; 
- int /*<<< orphan*/  manager_override_log_level (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  manager_restore_original_log_level (int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+typedef int Manager ;
+
+
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int assert (int *) ;
+ scalar_t__ isempty (char const*) ;
+ int log_level_from_string (char const*) ;
+ int manager_override_log_level (int *,int) ;
+ int manager_restore_original_log_level (int *) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*) ;
+ int sd_bus_message_read (int *,char*,char const**) ;
 
 __attribute__((used)) static int property_set_log_level(
                 sd_bus *bus,

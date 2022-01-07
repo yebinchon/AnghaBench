@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/ * GetCurrentProcess () ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pCheckRemoteDebuggerPresent (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int BOOL ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int * GetCurrentProcess () ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ int pCheckRemoteDebuggerPresent (int *,int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RemoteDebugger(void)
 {
@@ -39,14 +39,14 @@ __attribute__((used)) static void test_RemoteDebugger(void)
 
     present = TRUE;
     SetLastError(0xdeadbeef);
-    bret = pCheckRemoteDebuggerPresent(NULL,&present);
+    bret = pCheckRemoteDebuggerPresent(((void*)0),&present);
     ok(!bret , "expected CheckRemoteDebuggerPresent to fail\n");
     ok(present, "expected parameter to be unchanged\n");
     ok(ERROR_INVALID_PARAMETER == GetLastError(),
        "expected error ERROR_INVALID_PARAMETER, got %d/%x\n",GetLastError(), GetLastError());
 
     SetLastError(0xdeadbeef);
-    bret = pCheckRemoteDebuggerPresent(GetCurrentProcess(),NULL);
+    bret = pCheckRemoteDebuggerPresent(GetCurrentProcess(),((void*)0));
     ok(!bret , "expected CheckRemoteDebuggerPresent to fail\n");
     ok(ERROR_INVALID_PARAMETER == GetLastError(),
        "expected error ERROR_INVALID_PARAMETER, got %d/%x\n",GetLastError(), GetLastError());

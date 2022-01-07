@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {TYPE_2__** inner; } ;
-typedef  TYPE_1__ x509_noanchor_context ;
-typedef  int /*<<< orphan*/  br_x509_class ;
-struct TYPE_4__ {int /*<<< orphan*/  (* end_cert ) (TYPE_2__**) ;} ;
+typedef TYPE_1__ x509_noanchor_context ;
+typedef int br_x509_class ;
+struct TYPE_4__ {int (* end_cert ) (TYPE_2__**) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_2__**) ; 
+
+ int stub1 (TYPE_2__**) ;
 
 __attribute__((used)) static void
 xwc_end_cert(const br_x509_class **ctx)
 {
-	x509_noanchor_context *xwc;
+ x509_noanchor_context *xwc;
 
-	xwc = (x509_noanchor_context *)ctx;
-	(*xwc->inner)->end_cert(xwc->inner);
+ xwc = (x509_noanchor_context *)ctx;
+ (*xwc->inner)->end_cert(xwc->inner);
 }

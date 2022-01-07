@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct em28xx_dmaqueue {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  done; int /*<<< orphan*/  queue; int /*<<< orphan*/  ts; int /*<<< orphan*/  field_count; int /*<<< orphan*/  state; int /*<<< orphan*/  i; } ;
+struct TYPE_4__ {int done; int queue; int ts; int field_count; int state; int i; } ;
 struct em28xx_buffer {TYPE_2__ vb; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * vbi_buf; } ;
+struct TYPE_3__ {int * vbi_buf; } ;
 struct em28xx {TYPE_1__ isoc_ctl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDEOBUF_DONE ; 
- int /*<<< orphan*/  do_gettimeofday (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  em28xx_isocdbg (char*,struct em28xx_buffer*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+ int VIDEOBUF_DONE ;
+ int do_gettimeofday (int *) ;
+ int em28xx_isocdbg (char*,struct em28xx_buffer*,int ) ;
+ int list_del (int *) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static inline void vbi_buffer_filled(struct em28xx *dev,
-				     struct em28xx_dmaqueue *dma_q,
-				     struct em28xx_buffer *buf)
+         struct em28xx_dmaqueue *dma_q,
+         struct em28xx_buffer *buf)
 {
-	/* Advice that buffer was filled */
-	em28xx_isocdbg("[%p/%d] wakeup\n", buf, buf->vb.i);
 
-	buf->vb.state = VIDEOBUF_DONE;
-	buf->vb.field_count++;
-	do_gettimeofday(&buf->vb.ts);
+ em28xx_isocdbg("[%p/%d] wakeup\n", buf, buf->vb.i);
 
-	dev->isoc_ctl.vbi_buf = NULL;
+ buf->vb.state = VIDEOBUF_DONE;
+ buf->vb.field_count++;
+ do_gettimeofday(&buf->vb.ts);
 
-	list_del(&buf->vb.queue);
-	wake_up(&buf->vb.done);
+ dev->isoc_ctl.vbi_buf = ((void*)0);
+
+ list_del(&buf->vb.queue);
+ wake_up(&buf->vb.done);
 }

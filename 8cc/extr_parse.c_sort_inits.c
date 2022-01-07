@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  comp_init ; 
- int /*<<< orphan*/  qsort (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vec_len (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vector ;
+
+
+ int comp_init ;
+ int qsort (int ,int ,int,int ) ;
+ int vec_body (int *) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static void sort_inits(Vector *inits) {
     qsort(vec_body(inits), vec_len(inits), sizeof(void *), comp_init);

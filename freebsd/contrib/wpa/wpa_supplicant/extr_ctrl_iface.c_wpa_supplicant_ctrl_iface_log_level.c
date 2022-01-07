@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpa_supplicant {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  debug_level_str (int) ; 
- int /*<<< orphan*/  os_memcpy (char*,char*,int) ; 
- int os_snprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ os_snprintf_error (int,int) ; 
- char* os_strchr (char*,char) ; 
- scalar_t__ os_strlen (char*) ; 
- int str_to_debug_level (char*) ; 
- int wpa_debug_level ; 
- int /*<<< orphan*/  wpa_debug_timestamp ; 
+
+ int atoi (char*) ;
+ int debug_level_str (int) ;
+ int os_memcpy (char*,char*,int) ;
+ int os_snprintf (char*,int,char*,int ,int ) ;
+ scalar_t__ os_snprintf_error (int,int) ;
+ char* os_strchr (char*,char) ;
+ scalar_t__ os_strlen (char*) ;
+ int str_to_debug_level (char*) ;
+ int wpa_debug_level ;
+ int wpa_debug_timestamp ;
 
 __attribute__((used)) static int wpa_supplicant_ctrl_iface_log_level(struct wpa_supplicant *wpa_s,
-					       char *cmd, char *buf,
-					       size_t buflen)
+            char *cmd, char *buf,
+            size_t buflen)
 {
-	char *pos, *end, *stamp;
-	int ret;
+ char *pos, *end, *stamp;
+ int ret;
 
-	/* cmd: "LOG_LEVEL [<level>]" */
-	if (*cmd == '\0') {
-		pos = buf;
-		end = buf + buflen;
-		ret = os_snprintf(pos, end - pos, "Current level: %s\n"
-				  "Timestamp: %d\n",
-				  debug_level_str(wpa_debug_level),
-				  wpa_debug_timestamp);
-		if (os_snprintf_error(end - pos, ret))
-			ret = 0;
 
-		return ret;
-	}
+ if (*cmd == '\0') {
+  pos = buf;
+  end = buf + buflen;
+  ret = os_snprintf(pos, end - pos, "Current level: %s\n"
+      "Timestamp: %d\n",
+      debug_level_str(wpa_debug_level),
+      wpa_debug_timestamp);
+  if (os_snprintf_error(end - pos, ret))
+   ret = 0;
 
-	while (*cmd == ' ')
-		cmd++;
+  return ret;
+ }
 
-	stamp = os_strchr(cmd, ' ');
-	if (stamp) {
-		*stamp++ = '\0';
-		while (*stamp == ' ') {
-			stamp++;
-		}
-	}
+ while (*cmd == ' ')
+  cmd++;
 
-	if (os_strlen(cmd)) {
-		int level = str_to_debug_level(cmd);
-		if (level < 0)
-			return -1;
-		wpa_debug_level = level;
-	}
+ stamp = os_strchr(cmd, ' ');
+ if (stamp) {
+  *stamp++ = '\0';
+  while (*stamp == ' ') {
+   stamp++;
+  }
+ }
 
-	if (stamp && os_strlen(stamp))
-		wpa_debug_timestamp = atoi(stamp);
+ if (os_strlen(cmd)) {
+  int level = str_to_debug_level(cmd);
+  if (level < 0)
+   return -1;
+  wpa_debug_level = level;
+ }
 
-	os_memcpy(buf, "OK\n", 3);
-	return 3;
+ if (stamp && os_strlen(stamp))
+  wpa_debug_timestamp = atoi(stamp);
+
+ os_memcpy(buf, "OK\n", 3);
+ return 3;
 }

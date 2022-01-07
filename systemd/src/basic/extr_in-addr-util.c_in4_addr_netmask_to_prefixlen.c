@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct in_addr const*) ; 
- int /*<<< orphan*/  be32toh (int /*<<< orphan*/ ) ; 
- unsigned char u32ctz (int /*<<< orphan*/ ) ; 
+
+
+
+struct in_addr {int s_addr; } ;
+
+
+ int assert (struct in_addr const*) ;
+ int be32toh (int ) ;
+ unsigned char u32ctz (int ) ;
 
 unsigned char in4_addr_netmask_to_prefixlen(const struct in_addr *addr) {
         assert(addr);

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ isspace (char) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- char* strstr (char const*,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fputc (char,int *) ;
+ int fread (char*,int,size_t,int *) ;
+ int free (char*) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ int fwrite (char const*,int,int ,int *) ;
+ scalar_t__ isspace (char) ;
+ char* malloc (size_t) ;
+ int printf (char*,...) ;
+ int strcmp (char const*,char*) ;
+ int strlen (char const*) ;
+ int strncmp (char*,char*,int) ;
+ char* strstr (char const*,char*) ;
 
 int main(int argc, const char** argv)
 {
 
-   const char* slang = NULL;
-   const char* vs_asm = NULL;
-   const char* ps_asm = NULL;
-   const char* vs_out = NULL;
-   const char* ps_out = NULL;
+   const char* slang = ((void*)0);
+   const char* vs_asm = ((void*)0);
+   const char* ps_asm = ((void*)0);
+   const char* vs_out = ((void*)0);
+   const char* ps_out = ((void*)0);
 
    for(int i = 1; i < argc - 1; i+=2)
    {
@@ -84,8 +84,8 @@ int main(int argc, const char** argv)
 
    char* next = slang_buffer;
 
-   bool vson = true;
-   bool pson = true;
+   bool vson = 1;
+   bool pson = 1;
 
    while(*next)
    {
@@ -99,8 +99,8 @@ int main(int argc, const char** argv)
 
       *next++ = '\0';
 
-//      while((*next == '\n') || (*next == '\r'))
-//         *next++ = '\0';
+
+
 
       if(strstr(line, "#version"))
          continue;
@@ -109,13 +109,13 @@ int main(int argc, const char** argv)
       {
          if(strstr(line, "#pragma stage vertex"))
          {
-            vson = true;
-            pson = false;
+            vson = 1;
+            pson = 0;
          }
          else if(strstr(line, "#pragma stage fragment"))
          {
-            vson = false;
-            pson = true;
+            vson = 0;
+            pson = 1;
          }
 
          continue;

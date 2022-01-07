@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint_fast32_t ;
+
+
+
+
+typedef int uint_fast32_t ;
 struct vlc_http_msg {int dummy; } ;
 struct vlc_h2_frame {int dummy; } ;
 
-/* Variables and functions */
- int VLC_H2_DEFAULT_MAX_FRAME ; 
- int VLC_H2_MAX_HEADERS ; 
- int /*<<< orphan*/  assert (int) ; 
- struct vlc_http_msg* vlc_http_msg_h2_headers (unsigned int,char const***) ; 
+
+ int VLC_H2_DEFAULT_MAX_FRAME ;
+ int VLC_H2_MAX_HEADERS ;
+ int assert (int) ;
+ struct vlc_http_msg* vlc_http_msg_h2_headers (unsigned int,char const***) ;
 
 struct vlc_h2_frame *
 vlc_h2_frame_headers(uint_fast32_t id, uint_fast32_t mtu, bool eos,
@@ -39,5 +39,5 @@ vlc_h2_frame_headers(uint_fast32_t id, uint_fast32_t mtu, bool eos,
     }
 
     m = vlc_http_msg_h2_headers(count, headers);
-    return (struct vlc_h2_frame *)m; /* gruik */
+    return (struct vlc_h2_frame *)m;
 }

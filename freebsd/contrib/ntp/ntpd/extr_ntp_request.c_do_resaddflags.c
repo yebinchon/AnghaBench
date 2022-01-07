@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct req_pkt {int dummy; } ;
-typedef  int /*<<< orphan*/  sockaddr_u ;
-typedef  int /*<<< orphan*/  endpt ;
+typedef int sockaddr_u ;
+typedef int endpt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RESTRICT_FLAGS ; 
- int /*<<< orphan*/  do_restrict (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct req_pkt*,int /*<<< orphan*/ ) ; 
+
+ int RESTRICT_FLAGS ;
+ int do_restrict (int *,int *,struct req_pkt*,int ) ;
 
 __attribute__((used)) static void
 do_resaddflags(
-	sockaddr_u *srcadr,
-	endpt *inter,
-	struct req_pkt *inpkt
-	)
+ sockaddr_u *srcadr,
+ endpt *inter,
+ struct req_pkt *inpkt
+ )
 {
-	do_restrict(srcadr, inter, inpkt, RESTRICT_FLAGS);
+ do_restrict(srcadr, inter, inpkt, RESTRICT_FLAGS);
 }

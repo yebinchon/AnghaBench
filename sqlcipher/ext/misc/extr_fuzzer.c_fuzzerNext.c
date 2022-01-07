@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
 struct TYPE_14__ {scalar_t__ rCostX; struct TYPE_14__* pNext; } ;
-typedef  TYPE_1__ fuzzer_stem ;
-struct TYPE_15__ {scalar_t__ rLimit; TYPE_1__* pStem; TYPE_1__* pDone; int /*<<< orphan*/  zBuf; int /*<<< orphan*/  nBuf; int /*<<< orphan*/  iRowid; } ;
-typedef  TYPE_2__ fuzzer_cursor ;
-typedef  scalar_t__ fuzzer_cost ;
+typedef TYPE_1__ fuzzer_stem ;
+struct TYPE_15__ {scalar_t__ rLimit; TYPE_1__* pStem; TYPE_1__* pDone; int zBuf; int nBuf; int iRowid; } ;
+typedef TYPE_2__ fuzzer_cursor ;
+typedef scalar_t__ fuzzer_cost ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int fuzzerAdvance (TYPE_2__*,TYPE_1__*) ; 
- TYPE_1__* fuzzerInsert (TYPE_2__*,TYPE_1__*) ; 
- scalar_t__ fuzzerLowestCostStem (TYPE_2__*) ; 
- TYPE_1__* fuzzerNewStem (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int fuzzerRender (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int fuzzerSeen (TYPE_2__*,TYPE_1__*) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int fuzzerAdvance (TYPE_2__*,TYPE_1__*) ;
+ TYPE_1__* fuzzerInsert (TYPE_2__*,TYPE_1__*) ;
+ scalar_t__ fuzzerLowestCostStem (TYPE_2__*) ;
+ TYPE_1__* fuzzerNewStem (TYPE_2__*,int ,scalar_t__) ;
+ int fuzzerRender (TYPE_1__*,int *,int *) ;
+ int fuzzerSeen (TYPE_2__*,TYPE_1__*) ;
 
 __attribute__((used)) static int fuzzerNext(sqlite3_vtab_cursor *cur){
   fuzzer_cursor *pCur = (fuzzer_cursor*)cur;
@@ -36,9 +36,9 @@ __attribute__((used)) static int fuzzerNext(sqlite3_vtab_cursor *cur){
 
   pCur->iRowid++;
 
-  /* Use the element the cursor is currently point to to create
-  ** a new stem and insert the new stem into the priority queue.
-  */
+
+
+
   pStem = pCur->pStem;
   if( pStem->rCostX>0 ){
     rc = fuzzerRender(pStem, &pCur->zBuf, &pCur->nBuf);
@@ -58,9 +58,9 @@ __attribute__((used)) static int fuzzerNext(sqlite3_vtab_cursor *cur){
     }
   }
 
-  /* Adjust the priority queue so that the first element of the
-  ** stem list is the next lowest cost word.
-  */
+
+
+
   while( (pStem = pCur->pStem)!=0 ){
     int res = fuzzerAdvance(pCur, pStem);
     if( res<0 ){
@@ -72,7 +72,7 @@ __attribute__((used)) static int fuzzerNext(sqlite3_vtab_cursor *cur){
         if( rc<0 ) return SQLITE_NOMEM;
         continue;
       }
-      return SQLITE_OK;  /* New word found */
+      return SQLITE_OK;
     }
     pCur->pStem = 0;
     pStem->pNext = pCur->pDone;
@@ -86,8 +86,8 @@ __attribute__((used)) static int fuzzerNext(sqlite3_vtab_cursor *cur){
     }
   }
 
-  /* Reach this point only if queue has been exhausted and there is
-  ** nothing left to be output. */
+
+
   pCur->rLimit = (fuzzer_cost)0;
   return SQLITE_OK;
 }

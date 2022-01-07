@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__* PULONG ;
-typedef  char* PCHAR ;
 
-/* Variables and functions */
- scalar_t__ isspace (char) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef scalar_t__* PULONG ;
+typedef char* PCHAR ;
+
+
+ scalar_t__ isspace (char) ;
 
 __attribute__((used)) static
 PCHAR
@@ -26,16 +26,16 @@ IniCacheGetKeyName(
 {
     ULONG Size = 0;
 
-    *NamePtr = NULL;
+    *NamePtr = ((void*)0);
     *NameSize = 0;
 
     while (Ptr && *Ptr)
     {
-        *NamePtr = NULL;
+        *NamePtr = ((void*)0);
         *NameSize = 0;
         Size = 0;
 
-        /* Skip whitespace and empty lines */
+
         while (isspace(*Ptr) || *Ptr == '\n' || *Ptr == '\r')
         {
             Ptr++;

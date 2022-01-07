@@ -1,77 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  filename_ident ;
-typedef  int UINT ;
 
-/* Variables and functions */
- int MAX_SIZE ; 
- int /*<<< orphan*/  NormalizePathW (int*,int,int*) ; 
- int UniEndWith (int*,char*) ; 
- scalar_t__ UniStartWith (int*,char*) ; 
- int /*<<< orphan*/  UniStrCat (int*,int,...) ; 
- int /*<<< orphan*/  UniStrCpy (int*,int,int*) ; 
- int UniStrLen (int*) ; 
+
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int filename_ident ;
+typedef int UINT ;
+
+
+ int MAX_SIZE ;
+ int NormalizePathW (int*,int,int*) ;
+ int UniEndWith (int*,char*) ;
+ scalar_t__ UniStartWith (int*,char*) ;
+ int UniStrCat (int*,int,...) ;
+ int UniStrCpy (int*,int,int*) ;
+ int UniStrLen (int*) ;
 
 void ConbinePathW(wchar_t *dst, UINT size, wchar_t *dirname, wchar_t *filename)
 {
-	bool is_full_path;
-	wchar_t tmp[MAX_SIZE];
-	wchar_t filename_ident[MAX_SIZE];
-	// Validate arguments
-	if (dst == NULL || dirname == NULL || filename == NULL)
-	{
-		return;
-	}
+ bool is_full_path;
+ wchar_t tmp[MAX_SIZE];
+ wchar_t filename_ident[MAX_SIZE];
 
-	NormalizePathW(filename_ident, sizeof(filename_ident), filename);
+ if (dst == ((void*)0) || dirname == ((void*)0) || filename == ((void*)0))
+ {
+  return;
+ }
 
-	is_full_path = false;
+ NormalizePathW(filename_ident, sizeof(filename_ident), filename);
 
-	if (UniStartWith(filename_ident, L"\\") || UniStartWith(filename_ident, L"/"))
-	{
-		is_full_path = true;
-	}
+ is_full_path = 0;
 
-	filename = &filename_ident[0];
+ if (UniStartWith(filename_ident, L"\\") || UniStartWith(filename_ident, L"/"))
+ {
+  is_full_path = 1;
+ }
 
-#ifdef	OS_WIN32
-	if (UniStrLen(filename) >= 2)
-	{
-		if ((L'a' <= filename[0] && filename[0] <= L'z') || (L'A' <= filename[0] && filename[0] <= L'Z'))
-		{
-			if (filename[1] == L':')
-			{
-				is_full_path = true;
-			}
-		}
-	}
-#endif	// OS_WIN32
+ filename = &filename_ident[0];
+ if (is_full_path == 0)
+ {
+  UniStrCpy(tmp, sizeof(tmp), dirname);
+  if (UniEndWith(tmp, L"/") == 0 && UniEndWith(tmp, L"\\") == 0)
+  {
+   UniStrCat(tmp, sizeof(tmp), L"/");
+  }
+  UniStrCat(tmp, sizeof(tmp), filename);
+ }
+ else
+ {
+  UniStrCpy(tmp, sizeof(tmp), filename);
+ }
 
-	if (is_full_path == false)
-	{
-		UniStrCpy(tmp, sizeof(tmp), dirname);
-		if (UniEndWith(tmp, L"/") == false && UniEndWith(tmp, L"\\") == false)
-		{
-			UniStrCat(tmp, sizeof(tmp), L"/");
-		}
-		UniStrCat(tmp, sizeof(tmp), filename);
-	}
-	else
-	{
-		UniStrCpy(tmp, sizeof(tmp), filename);
-	}
-
-	NormalizePathW(dst, size, tmp);
+ NormalizePathW(dst, size, tmp);
 }

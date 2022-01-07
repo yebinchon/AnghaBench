@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ *,char*) ; 
- char* sqlite3MPrintf (int /*<<< orphan*/ *,char*,char*,...) ; 
+
+
+
+typedef int sqlite3 ;
+
+
+ int sqlite3DbFree (int *,char*) ;
+ char* sqlite3MPrintf (int *,char*,char*,...) ;
 
 __attribute__((used)) static char *whereOrName(sqlite3 *db, char *zWhere, char *zConstant){
   char *zNew;

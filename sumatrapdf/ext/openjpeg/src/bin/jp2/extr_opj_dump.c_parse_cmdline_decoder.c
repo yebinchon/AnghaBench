@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char* member_0; char member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/  member_1; } ;
-typedef  TYPE_1__ opj_option_t ;
-struct TYPE_8__ {scalar_t__* infile; scalar_t__* outfile; int m_verbose; int /*<<< orphan*/  decod_format; } ;
-typedef  TYPE_2__ opj_dparameters_t ;
-typedef  int /*<<< orphan*/  long_option ;
-struct TYPE_9__ {scalar_t__ set_out_format; char* imgdirpath; int set_imgdir; int /*<<< orphan*/  flag; } ;
-typedef  TYPE_3__ img_fol_t ;
 
-/* Variables and functions */
-#define  J2K_CFMT 130 
-#define  JP2_CFMT 129 
-#define  JPT_CFMT 128 
- int /*<<< orphan*/  REQ_ARG ; 
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  decode_help_display () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  infile_format (char*) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- int opj_getopt_long (int,char**,char const*,TYPE_1__*,int) ; 
- char* opj_optarg ; 
- int /*<<< orphan*/  opj_strcpy_s (scalar_t__*,int,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char* member_0; char member_3; int * member_2; int member_1; } ;
+typedef TYPE_1__ opj_option_t ;
+struct TYPE_8__ {scalar_t__* infile; scalar_t__* outfile; int m_verbose; int decod_format; } ;
+typedef TYPE_2__ opj_dparameters_t ;
+typedef int long_option ;
+struct TYPE_9__ {scalar_t__ set_out_format; char* imgdirpath; int set_imgdir; int flag; } ;
+typedef TYPE_3__ img_fol_t ;
+
+
+
+
+
+ int REQ_ARG ;
+ int atoi (char*) ;
+ int decode_help_display () ;
+ int fprintf (int ,char*,...) ;
+ int infile_format (char*) ;
+ scalar_t__ malloc (int ) ;
+ int opj_getopt_long (int,char**,char const*,TYPE_1__*,int) ;
+ char* opj_optarg ;
+ int opj_strcpy_s (scalar_t__*,int,char*) ;
+ int stderr ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int parse_cmdline_decoder(int argc, char **argv,
                                  opj_dparameters_t *parameters, img_fol_t *img_fol)
 {
     int totlen, c;
     opj_option_t long_option[] = {
-        {"ImgDir", REQ_ARG, NULL, 'y'}
+        {"ImgDir", REQ_ARG, ((void*)0), 'y'}
     };
     const char optlist[] = "i:o:f:hv";
 
@@ -55,15 +55,15 @@ __attribute__((used)) static int parse_cmdline_decoder(int argc, char **argv,
             break;
         }
         switch (c) {
-        case 'i': {         /* input file */
+        case 'i': {
             char *infile = opj_optarg;
             parameters->decod_format = infile_format(infile);
             switch (parameters->decod_format) {
-            case J2K_CFMT:
+            case 130:
                 break;
-            case JP2_CFMT:
+            case 129:
                 break;
-            case JPT_CFMT:
+            case 128:
                 break;
             default:
                 fprintf(stderr,
@@ -79,9 +79,9 @@ __attribute__((used)) static int parse_cmdline_decoder(int argc, char **argv,
         }
         break;
 
-        /* ------------------------------------------------------ */
 
-        case 'o': {   /* output file */
+
+        case 'o': {
             if (opj_strcpy_s(parameters->outfile, sizeof(parameters->outfile),
                              opj_optarg) != 0) {
                 fprintf(stderr, "[ERROR] Path is too long\n");
@@ -90,21 +90,21 @@ __attribute__((used)) static int parse_cmdline_decoder(int argc, char **argv,
         }
         break;
 
-        /* ----------------------------------------------------- */
-        case 'f':             /* flag */
+
+        case 'f':
             img_fol->flag = atoi(opj_optarg);
             break;
-        /* ----------------------------------------------------- */
 
-        case 'h':           /* display an help description */
+
+        case 'h':
             decode_help_display();
             return 1;
 
-        /* ------------------------------------------------------ */
 
-        case 'y': {         /* Image Directory path */
+
+        case 'y': {
             img_fol->imgdirpath = (char*)malloc(strlen(opj_optarg) + 1);
-            if (img_fol->imgdirpath == NULL) {
+            if (img_fol->imgdirpath == ((void*)0)) {
                 return 1;
             }
             strcpy(img_fol->imgdirpath, opj_optarg);
@@ -112,21 +112,21 @@ __attribute__((used)) static int parse_cmdline_decoder(int argc, char **argv,
         }
         break;
 
-        /* ----------------------------------------------------- */
 
-        case 'v': {         /* Verbose mode */
+
+        case 'v': {
             parameters->m_verbose = 1;
         }
         break;
 
-        /* ----------------------------------------------------- */
+
         default:
             fprintf(stderr, "[WARNING] An invalid option has been ignored.\n");
             break;
         }
     } while (c != -1);
 
-    /* check for possible errors */
+
     if (img_fol->set_imgdir == 1) {
         if (!(parameters->infile[0] == 0)) {
             fprintf(stderr, "[ERROR] options -ImgDir and -i cannot be used together.\n");

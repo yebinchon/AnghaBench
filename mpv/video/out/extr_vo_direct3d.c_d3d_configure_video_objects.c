@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  tex_h; int /*<<< orphan*/  tex_w; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  system; } ;
-struct texplane {int shift_x; int shift_y; TYPE_3__ texture; int /*<<< orphan*/  bits_per_pixel; int /*<<< orphan*/  d3d_format; } ;
-struct TYPE_8__ {scalar_t__ image_format; int plane_count; int src_width; int src_height; int /*<<< orphan*/  d3d_surface; int /*<<< orphan*/  movie_src_fmt; int /*<<< orphan*/  d3d_device; struct texplane* planes; scalar_t__ use_textures; } ;
-typedef  TYPE_1__ d3d_priv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DPOOL_DEFAULT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9_CreateOffscreenPlainSurface (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MP_ERR (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  MP_VERBOSE (TYPE_1__*,char*,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  d3d_clear_video_textures (TYPE_1__*) ; 
- int /*<<< orphan*/  d3dtex_allocate (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int tex_h; int tex_w; int h; int w; int system; } ;
+struct texplane {int shift_x; int shift_y; TYPE_3__ texture; int bits_per_pixel; int d3d_format; } ;
+struct TYPE_8__ {scalar_t__ image_format; int plane_count; int src_width; int src_height; int d3d_surface; int movie_src_fmt; int d3d_device; struct texplane* planes; scalar_t__ use_textures; } ;
+typedef TYPE_1__ d3d_priv ;
+
+
+ int D3DPOOL_DEFAULT ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DDevice9_CreateOffscreenPlainSurface (int ,int,int,int ,int ,int *,int *) ;
+ int MP_ERR (TYPE_1__*,char*,...) ;
+ int MP_VERBOSE (TYPE_1__*,char*,int,int ,int,int,int ,int ,int ,int ) ;
+ int assert (int) ;
+ int d3d_clear_video_textures (TYPE_1__*) ;
+ int d3dtex_allocate (TYPE_1__*,TYPE_3__*,int ,int,int) ;
 
 __attribute__((used)) static bool d3d_configure_video_objects(d3d_priv *priv)
 {
     int n;
-    bool need_clear = false;
+    bool need_clear = 0;
 
     assert(priv->image_format != 0);
 
@@ -47,7 +47,7 @@ __attribute__((used)) static bool d3d_configure_video_objects(d3d_priv *priv)
                 {
                     MP_ERR(priv, "Allocating plane %d"
                            " failed.\n", n);
-                    return false;
+                    return 0;
                 }
 
                 MP_VERBOSE(priv, "Allocated plane %d:"
@@ -57,7 +57,7 @@ __attribute__((used)) static bool d3d_configure_video_objects(d3d_priv *priv)
                        plane->texture.w, plane->texture.h,
                        plane->texture.tex_w, plane->texture.tex_h);
 
-                need_clear = true;
+                need_clear = 1;
             }
         }
 
@@ -69,12 +69,12 @@ __attribute__((used)) static bool d3d_configure_video_objects(d3d_priv *priv)
         if (!priv->d3d_surface &&
             FAILED(IDirect3DDevice9_CreateOffscreenPlainSurface(
                 priv->d3d_device, priv->src_width, priv->src_height,
-                priv->movie_src_fmt, D3DPOOL_DEFAULT, &priv->d3d_surface, NULL)))
+                priv->movie_src_fmt, D3DPOOL_DEFAULT, &priv->d3d_surface, ((void*)0))))
         {
             MP_ERR(priv, "Allocating offscreen surface failed.\n");
-            return false;
+            return 0;
         }
     }
 
-    return true;
+    return 1;
 }

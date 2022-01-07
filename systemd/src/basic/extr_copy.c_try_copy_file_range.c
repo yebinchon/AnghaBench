@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  loff_t ;
 
-/* Variables and functions */
- scalar_t__ ENOSYS ; 
- scalar_t__ copy_file_range (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,size_t,unsigned int) ; 
- scalar_t__ errno ; 
+
+
+
+typedef scalar_t__ ssize_t ;
+typedef int loff_t ;
+
+
+ scalar_t__ ENOSYS ;
+ scalar_t__ copy_file_range (int,int *,int,int *,size_t,unsigned int) ;
+ scalar_t__ errno ;
 
 __attribute__((used)) static ssize_t try_copy_file_range(
                 int fd_in, loff_t *off_in,

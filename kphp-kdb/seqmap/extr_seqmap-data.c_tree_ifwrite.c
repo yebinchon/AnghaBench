@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {int key_len; int value_len; int /*<<< orphan*/  value; int /*<<< orphan*/  key; } ;
 
-/* Variables and functions */
- int* B ; 
- int Bsize ; 
- scalar_t__* RR ; 
- size_t Rmax ; 
- scalar_t__ Rpos ; 
- size_t Rt ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct item {int key_len; int value_len; int value; int key; } ;
+
+
+ int* B ;
+ int Bsize ;
+ scalar_t__* RR ;
+ size_t Rmax ;
+ scalar_t__ Rpos ;
+ size_t Rt ;
+ int memcpy (int*,int ,int) ;
 
 int tree_ifwrite (struct item *I) {
   if (Rt < Rmax && RR[Rt] == Rpos) {

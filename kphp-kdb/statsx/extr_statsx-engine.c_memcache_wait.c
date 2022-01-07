@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int total_bytes; } ;
 struct connection {int flags; TYPE_2__* type; TYPE_1__ Out; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* writer ) (struct connection*) ;} ;
+struct TYPE_4__ {int (* writer ) (struct connection*) ;} ;
 
-/* Variables and functions */
- int C_INTIMEOUT ; 
- int C_WANTWR ; 
- int /*<<< orphan*/ * WaitAioArr ; 
- int /*<<< orphan*/  WaitAioArrClear () ; 
- int WaitAioArrPos ; 
- int /*<<< orphan*/  aio_metafile_query_type ; 
- double aio_t ; 
- int /*<<< orphan*/  conn_schedule_aio (int /*<<< orphan*/ ,struct connection*,double,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  set_connection_timeout (struct connection*,double) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (struct connection*) ; 
- int verbosity ; 
+
+ int C_INTIMEOUT ;
+ int C_WANTWR ;
+ int * WaitAioArr ;
+ int WaitAioArrClear () ;
+ int WaitAioArrPos ;
+ int aio_metafile_query_type ;
+ double aio_t ;
+ int conn_schedule_aio (int ,struct connection*,double,int *) ;
+ int fprintf (int ,char*,...) ;
+ int set_connection_timeout (struct connection*,double) ;
+ int stderr ;
+ int stub1 (struct connection*) ;
+ int verbosity ;
 
 int memcache_wait (struct connection *c) {
   if (verbosity > 2) {
@@ -46,12 +46,12 @@ int memcache_wait (struct connection *c) {
     c->flags |= C_WANTWR;
     c->type->writer (c);
   }
-  
+
   if (!WaitAioArrPos) {
     fprintf (stderr, "WaitAio=0 - no memory to load user metafile, query dropped.\n");
     return 0;
   }
-  
+
   int i;
   for (i = 0; i < WaitAioArrPos; i++) {
     conn_schedule_aio (WaitAioArr[i], c, 1.1 * aio_t, &aio_metafile_query_type);

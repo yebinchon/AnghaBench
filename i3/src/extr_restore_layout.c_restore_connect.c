@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ev_prepare {int dummy; } ;
 struct ev_io {int dummy; } ;
-typedef  int /*<<< orphan*/  placeholder_state ;
+typedef int placeholder_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EV_READ ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __lsan_do_leak_check () ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ev_io_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_io_start (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ev_io_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ev_prepare_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_prepare_start (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ev_prepare_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  main_loop ; 
- int /*<<< orphan*/ * restore_conn ; 
- int /*<<< orphan*/  restore_xcb_got_event ; 
- int /*<<< orphan*/  restore_xcb_prepare_cb ; 
- int /*<<< orphan*/ * scalloc (int,int) ; 
- int /*<<< orphan*/  state_head ; 
- int /*<<< orphan*/ * xcb_connect (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ xcb_connection_has_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_get_file_descriptor (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * xcb_prepare ; 
- int /*<<< orphan*/ * xcb_watcher ; 
+
+ int EV_READ ;
+ int EXIT_FAILURE ;
+ int TAILQ_EMPTY (int *) ;
+ int * TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,int *,int *) ;
+ int __lsan_do_leak_check () ;
+ int errx (int ,char*) ;
+ int ev_io_init (int *,int ,int ,int ) ;
+ int ev_io_start (int ,int *) ;
+ int ev_io_stop (int ,int *) ;
+ int ev_prepare_init (int *,int ) ;
+ int ev_prepare_start (int ,int *) ;
+ int ev_prepare_stop (int ,int *) ;
+ int free (int *) ;
+ int main_loop ;
+ int * restore_conn ;
+ int restore_xcb_got_event ;
+ int restore_xcb_prepare_cb ;
+ int * scalloc (int,int) ;
+ int state_head ;
+ int * xcb_connect (int *,int*) ;
+ scalar_t__ xcb_connection_has_error (int *) ;
+ int xcb_disconnect (int *) ;
+ int xcb_get_file_descriptor (int *) ;
+ int * xcb_prepare ;
+ int * xcb_watcher ;
 
 void restore_connect(void) {
-    if (restore_conn != NULL) {
-        /* This is not the initial connect, but a reconnect, most likely
-         * because our X11 connection was killed (e.g. by a user with xkill. */
+    if (restore_conn != ((void*)0)) {
+
+
         ev_io_stop(main_loop, xcb_watcher);
         ev_prepare_stop(main_loop, xcb_prepare);
 
@@ -56,24 +56,24 @@ void restore_connect(void) {
             free(state);
         }
 
-        /* xcb_disconnect leaks memory in libxcb versions earlier than 1.11,
-         * but it’s the right function to call. See
-         * https://cgit.freedesktop.org/xcb/libxcb/commit/src/xcb_conn.c?id=4dcbfd77b
-         */
+
+
+
+
         xcb_disconnect(restore_conn);
         free(xcb_watcher);
         free(xcb_prepare);
     }
 
     int screen;
-    restore_conn = xcb_connect(NULL, &screen);
-    if (restore_conn == NULL || xcb_connection_has_error(restore_conn)) {
-        if (restore_conn != NULL) {
+    restore_conn = xcb_connect(((void*)0), &screen);
+    if (restore_conn == ((void*)0) || xcb_connection_has_error(restore_conn)) {
+        if (restore_conn != ((void*)0)) {
             xcb_disconnect(restore_conn);
         }
-#ifdef I3_ASAN_ENABLED
-        __lsan_do_leak_check();
-#endif
+
+
+
         errx(EXIT_FAILURE, "Cannot open display");
     }
 

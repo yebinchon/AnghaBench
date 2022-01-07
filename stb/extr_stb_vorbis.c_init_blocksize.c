@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {float** A; float** B; float** C; float** window; int /*<<< orphan*/ ** bit_reverse; } ;
-typedef  TYPE_1__ vorb ;
-typedef  int /*<<< orphan*/  uint16 ;
 
-/* Variables and functions */
- int TRUE ; 
- int /*<<< orphan*/  VORBIS_outofmem ; 
- int /*<<< orphan*/  compute_bitreverse (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compute_twiddle_factors (int,float*,float*,float*) ; 
- int /*<<< orphan*/  compute_window (int,float*) ; 
- int error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ setup_malloc (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {float** A; float** B; float** C; float** window; int ** bit_reverse; } ;
+typedef TYPE_1__ vorb ;
+typedef int uint16 ;
+
+
+ int TRUE ;
+ int VORBIS_outofmem ;
+ int compute_bitreverse (int,int *) ;
+ int compute_twiddle_factors (int,float*,float*,float*) ;
+ int compute_window (int,float*) ;
+ int error (TYPE_1__*,int ) ;
+ scalar_t__ setup_malloc (TYPE_1__*,int) ;
 
 __attribute__((used)) static int init_blocksize(vorb *f, int b, int n)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct arge_softc {int /*<<< orphan*/  arge_link_task; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- struct arge_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taskqueue_enqueue (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_swi ; 
+
+
+
+struct arge_softc {int arge_link_task; } ;
+typedef int device_t ;
+
+
+ struct arge_softc* device_get_softc (int ) ;
+ int taskqueue_enqueue (int ,int *) ;
+ int taskqueue_swi ;
 
 __attribute__((used)) static void
 arge_miibus_statchg(device_t dev)
 {
-	struct arge_softc	*sc;
+ struct arge_softc *sc;
 
-	sc = device_get_softc(dev);
-	taskqueue_enqueue(taskqueue_swi, &sc->arge_link_task);
+ sc = device_get_softc(dev);
+ taskqueue_enqueue(taskqueue_swi, &sc->arge_link_task);
 }

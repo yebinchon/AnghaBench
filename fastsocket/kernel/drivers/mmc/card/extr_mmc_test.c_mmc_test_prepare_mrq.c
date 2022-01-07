@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct scatterlist {int dummy; } ;
-struct mmc_test_card {int /*<<< orphan*/  card; } ;
+struct mmc_test_card {int card; } ;
 struct mmc_request {TYPE_3__* data; TYPE_2__* stop; TYPE_1__* cmd; } ;
-struct TYPE_6__ {unsigned int blksz; unsigned int blocks; unsigned int sg_len; struct scatterlist* sg; int /*<<< orphan*/  flags; } ;
-struct TYPE_5__ {int flags; scalar_t__ arg; int /*<<< orphan*/  opcode; } ;
-struct TYPE_4__ {unsigned int arg; int flags; int /*<<< orphan*/  opcode; } ;
+struct TYPE_6__ {unsigned int blksz; unsigned int blocks; unsigned int sg_len; struct scatterlist* sg; int flags; } ;
+struct TYPE_5__ {int flags; scalar_t__ arg; int opcode; } ;
+struct TYPE_4__ {unsigned int arg; int flags; int opcode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int MMC_CMD_AC ; 
- int MMC_CMD_ADTC ; 
- int /*<<< orphan*/  MMC_DATA_READ ; 
- int /*<<< orphan*/  MMC_DATA_WRITE ; 
- int /*<<< orphan*/  MMC_READ_MULTIPLE_BLOCK ; 
- int /*<<< orphan*/  MMC_READ_SINGLE_BLOCK ; 
- int MMC_RSP_R1 ; 
- int MMC_RSP_R1B ; 
- int /*<<< orphan*/  MMC_STOP_TRANSMISSION ; 
- int /*<<< orphan*/  MMC_WRITE_BLOCK ; 
- int /*<<< orphan*/  MMC_WRITE_MULTIPLE_BLOCK ; 
- int /*<<< orphan*/  mmc_set_data_timeout (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int BUG_ON (int) ;
+ int MMC_CMD_AC ;
+ int MMC_CMD_ADTC ;
+ int MMC_DATA_READ ;
+ int MMC_DATA_WRITE ;
+ int MMC_READ_MULTIPLE_BLOCK ;
+ int MMC_READ_SINGLE_BLOCK ;
+ int MMC_RSP_R1 ;
+ int MMC_RSP_R1B ;
+ int MMC_STOP_TRANSMISSION ;
+ int MMC_WRITE_BLOCK ;
+ int MMC_WRITE_MULTIPLE_BLOCK ;
+ int mmc_set_data_timeout (TYPE_3__*,int ) ;
 
 __attribute__((used)) static void mmc_test_prepare_mrq(struct mmc_test_card *test,
-	struct mmc_request *mrq, struct scatterlist *sg, unsigned sg_len,
-	unsigned dev_addr, unsigned blocks, unsigned blksz, int write)
+ struct mmc_request *mrq, struct scatterlist *sg, unsigned sg_len,
+ unsigned dev_addr, unsigned blocks, unsigned blksz, int write)
 {
-	BUG_ON(!mrq || !mrq->cmd || !mrq->data || !mrq->stop);
+ BUG_ON(!mrq || !mrq->cmd || !mrq->data || !mrq->stop);
 
-	if (blocks > 1) {
-		mrq->cmd->opcode = write ?
-			MMC_WRITE_MULTIPLE_BLOCK : MMC_READ_MULTIPLE_BLOCK;
-	} else {
-		mrq->cmd->opcode = write ?
-			MMC_WRITE_BLOCK : MMC_READ_SINGLE_BLOCK;
-	}
+ if (blocks > 1) {
+  mrq->cmd->opcode = write ?
+   MMC_WRITE_MULTIPLE_BLOCK : MMC_READ_MULTIPLE_BLOCK;
+ } else {
+  mrq->cmd->opcode = write ?
+   MMC_WRITE_BLOCK : MMC_READ_SINGLE_BLOCK;
+ }
 
-	mrq->cmd->arg = dev_addr;
-	mrq->cmd->flags = MMC_RSP_R1 | MMC_CMD_ADTC;
+ mrq->cmd->arg = dev_addr;
+ mrq->cmd->flags = MMC_RSP_R1 | MMC_CMD_ADTC;
 
-	if (blocks == 1)
-		mrq->stop = NULL;
-	else {
-		mrq->stop->opcode = MMC_STOP_TRANSMISSION;
-		mrq->stop->arg = 0;
-		mrq->stop->flags = MMC_RSP_R1B | MMC_CMD_AC;
-	}
+ if (blocks == 1)
+  mrq->stop = ((void*)0);
+ else {
+  mrq->stop->opcode = MMC_STOP_TRANSMISSION;
+  mrq->stop->arg = 0;
+  mrq->stop->flags = MMC_RSP_R1B | MMC_CMD_AC;
+ }
 
-	mrq->data->blksz = blksz;
-	mrq->data->blocks = blocks;
-	mrq->data->flags = write ? MMC_DATA_WRITE : MMC_DATA_READ;
-	mrq->data->sg = sg;
-	mrq->data->sg_len = sg_len;
+ mrq->data->blksz = blksz;
+ mrq->data->blocks = blocks;
+ mrq->data->flags = write ? MMC_DATA_WRITE : MMC_DATA_READ;
+ mrq->data->sg = sg;
+ mrq->data->sg_len = sg_len;
 
-	mmc_set_data_timeout(mrq->data, test->card);
+ mmc_set_data_timeout(mrq->data, test->card);
 }

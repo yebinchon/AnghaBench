@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  ebml_master ;
-struct TYPE_6__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * tags_bc; int /*<<< orphan*/  seekhead; } ;
-typedef  TYPE_1__ MatroskaMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MATROSKA_ID_TAG ; 
- int /*<<< orphan*/  MATROSKA_ID_TAGS ; 
- int /*<<< orphan*/  MATROSKA_ID_TAGTARGETS ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  end_ebml_master (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int mkv_add_seekhead_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_ebml_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  start_ebml_master (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_ebml_master_crc32 (int /*<<< orphan*/ ,int /*<<< orphan*/ **,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int ebml_master ;
+struct TYPE_6__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_5__ {int * tags_bc; int seekhead; } ;
+typedef TYPE_1__ MatroskaMuxContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int MATROSKA_ID_TAG ;
+ int MATROSKA_ID_TAGS ;
+ int MATROSKA_ID_TAGTARGETS ;
+ int avio_tell (int ) ;
+ int end_ebml_master (int *,int ) ;
+ int mkv_add_seekhead_entry (int ,int ,int ) ;
+ int put_ebml_uint (int *,int ,unsigned int) ;
+ int start_ebml_master (int *,int ,int ) ;
+ int start_ebml_master_crc32 (int ,int **,TYPE_1__*,int ) ;
 
 __attribute__((used)) static int mkv_write_tag_targets(AVFormatContext *s, uint32_t elementid,
                                  unsigned int uid, ebml_master *tag)
@@ -47,7 +47,7 @@ __attribute__((used)) static int mkv_write_tag_targets(AVFormatContext *s, uint3
     }
     pb = mkv->tags_bc;
 
-    *tag    = start_ebml_master(pb, MATROSKA_ID_TAG,        0);
+    *tag = start_ebml_master(pb, MATROSKA_ID_TAG, 0);
     targets = start_ebml_master(pb, MATROSKA_ID_TAGTARGETS, 0);
     if (elementid)
         put_ebml_uint(pb, elementid, uid);

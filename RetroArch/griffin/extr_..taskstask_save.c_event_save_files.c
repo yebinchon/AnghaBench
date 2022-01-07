@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_CTL_IS_SRAM_USED ; 
- int /*<<< orphan*/  cheat_manager_save_game_specific_cheats () ; 
- int /*<<< orphan*/  content_save_ram_file (unsigned int) ; 
- int /*<<< orphan*/  rarch_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* task_save_files ; 
+
+ int RARCH_CTL_IS_SRAM_USED ;
+ int cheat_manager_save_game_specific_cheats () ;
+ int content_save_ram_file (unsigned int) ;
+ int rarch_ctl (int ,int *) ;
+ TYPE_1__* task_save_files ;
 
 bool event_save_files(void)
 {
@@ -26,11 +26,11 @@ bool event_save_files(void)
 
    cheat_manager_save_game_specific_cheats();
    if (!task_save_files ||
-         !rarch_ctl(RARCH_CTL_IS_SRAM_USED, NULL))
-      return false;
+         !rarch_ctl(RARCH_CTL_IS_SRAM_USED, ((void*)0)))
+      return 0;
 
    for (i = 0; i < task_save_files->size; i++)
       content_save_ram_file(i);
 
-   return true;
+   return 1;
 }

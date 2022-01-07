@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct port_info {int /*<<< orphan*/  link_check_task; int /*<<< orphan*/  port_id; struct adapter* adapter; } ;
-struct adapter {int /*<<< orphan*/  tq; int /*<<< orphan*/  open_device_map; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taskqueue_enqueue (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct port_info {int link_check_task; int port_id; struct adapter* adapter; } ;
+struct adapter {int tq; int open_device_map; } ;
+
+
+ int isset (int *,int ) ;
+ int taskqueue_enqueue (int ,int *) ;
 
 __attribute__((used)) static void
 link_check_callout(void *arg)
 {
-	struct port_info *pi = arg;
-	struct adapter *sc = pi->adapter;
+ struct port_info *pi = arg;
+ struct adapter *sc = pi->adapter;
 
-	if (!isset(&sc->open_device_map, pi->port_id))
-		return;
+ if (!isset(&sc->open_device_map, pi->port_id))
+  return;
 
-	taskqueue_enqueue(sc->tq, &pi->link_check_task);
+ taskqueue_enqueue(sc->tq, &pi->link_check_task);
 }

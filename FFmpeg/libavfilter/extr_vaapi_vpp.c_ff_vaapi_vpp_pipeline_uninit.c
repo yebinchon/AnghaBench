@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int nb_filter_buffers; scalar_t__* filter_buffers; scalar_t__ va_context; scalar_t__ va_config; TYPE_1__* hwctx; int /*<<< orphan*/  device_ref; } ;
-typedef  TYPE_2__ VAAPIVPPContext ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int nb_filter_buffers; scalar_t__* filter_buffers; scalar_t__ va_context; scalar_t__ va_config; TYPE_1__* hwctx; int device_ref; } ;
+typedef TYPE_2__ VAAPIVPPContext ;
 struct TYPE_7__ {TYPE_2__* priv; } ;
-struct TYPE_5__ {int /*<<< orphan*/  display; } ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_5__ {int display; } ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ VA_INVALID_ID ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vaDestroyBuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vaDestroyConfig (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vaDestroyContext (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ VA_INVALID_ID ;
+ int av_buffer_unref (int *) ;
+ int vaDestroyBuffer (int ,scalar_t__) ;
+ int vaDestroyConfig (int ,scalar_t__) ;
+ int vaDestroyContext (int ,scalar_t__) ;
 
 void ff_vaapi_vpp_pipeline_uninit(AVFilterContext *avctx)
 {
-    VAAPIVPPContext *ctx   = avctx->priv;
+    VAAPIVPPContext *ctx = avctx->priv;
     int i;
     for (i = 0; i < ctx->nb_filter_buffers; i++) {
         if (ctx->filter_buffers[i] != VA_INVALID_ID) {
@@ -49,5 +49,5 @@ void ff_vaapi_vpp_pipeline_uninit(AVFilterContext *avctx)
     }
 
     av_buffer_unref(&ctx->device_ref);
-    ctx->hwctx = NULL;
+    ctx->hwctx = ((void*)0);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct ipg_nic_private {int /*<<< orphan*/  mii_mutex; int /*<<< orphan*/  mii_if; } ;
+struct ipg_nic_private {int mii_mutex; int mii_if; } ;
 struct ethtool_cmd {int dummy; } ;
 
-/* Variables and functions */
- int mii_ethtool_gset (int /*<<< orphan*/ *,struct ethtool_cmd*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct ipg_nic_private* netdev_priv (struct net_device*) ; 
+
+ int mii_ethtool_gset (int *,struct ethtool_cmd*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct ipg_nic_private* netdev_priv (struct net_device*) ;
 
 __attribute__((used)) static int ipg_get_settings(struct net_device *dev, struct ethtool_cmd *cmd)
 {
-	struct ipg_nic_private *sp = netdev_priv(dev);
-	int rc;
+ struct ipg_nic_private *sp = netdev_priv(dev);
+ int rc;
 
-	mutex_lock(&sp->mii_mutex);
-	rc = mii_ethtool_gset(&sp->mii_if, cmd);
-	mutex_unlock(&sp->mii_mutex);
+ mutex_lock(&sp->mii_mutex);
+ rc = mii_ethtool_gset(&sp->mii_if, cmd);
+ mutex_unlock(&sp->mii_mutex);
 
-	return rc;
+ return rc;
 }

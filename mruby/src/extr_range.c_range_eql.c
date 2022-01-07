@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct RRange {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_8__ {int /*<<< orphan*/  range_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef int mrb_value ;
+struct TYPE_8__ {int range_class; } ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RANGE_BEG (struct RRange*) ; 
- int /*<<< orphan*/  RANGE_END (struct RRange*) ; 
- scalar_t__ RANGE_EXCL (struct RRange*) ; 
- int /*<<< orphan*/  mrb_eql (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_obj_equal (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_is_kind_of (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_range_p (int /*<<< orphan*/ ) ; 
- struct RRange* mrb_range_ptr (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
+
+ int RANGE_BEG (struct RRange*) ;
+ int RANGE_END (struct RRange*) ;
+ scalar_t__ RANGE_EXCL (struct RRange*) ;
+ int mrb_eql (TYPE_1__*,int ,int ) ;
+ int mrb_false_value () ;
+ int mrb_get_args (TYPE_1__*,char*,int *) ;
+ scalar_t__ mrb_obj_equal (TYPE_1__*,int ,int ) ;
+ int mrb_obj_is_kind_of (TYPE_1__*,int ,int ) ;
+ int mrb_range_p (int ) ;
+ struct RRange* mrb_range_ptr (TYPE_1__*,int ) ;
+ int mrb_true_value () ;
 
 __attribute__((used)) static mrb_value
 range_eql(mrb_state *mrb, mrb_value range)

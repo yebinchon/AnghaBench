@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ Information; } ;
 struct TYPE_12__ {TYPE_1__ IoStatus; } ;
 struct TYPE_11__ {scalar_t__ DeviceObject; } ;
 struct TYPE_10__ {scalar_t__ DeviceObject; void* PriorityBoost; TYPE_2__* DeviceExt; TYPE_5__* Irp; } ;
-struct TYPE_9__ {int /*<<< orphan*/  DirResource; } ;
-typedef  TYPE_3__* PVFAT_IRP_CONTEXT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_9__ {int DirResource; } ;
+typedef TYPE_3__* PVFAT_IRP_CONTEXT ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (TYPE_3__*) ; 
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- scalar_t__ FILE_OPENED ; 
- void* IO_DISK_INCREMENT ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VfatCreateFile (scalar_t__,TYPE_5__*) ; 
- TYPE_4__* VfatGlobalData ; 
+
+ int ASSERT (TYPE_3__*) ;
+ int DPRINT (char*) ;
+ int ExAcquireResourceExclusiveLite (int *,int ) ;
+ int ExReleaseResourceLite (int *) ;
+ scalar_t__ FILE_OPENED ;
+ void* IO_DISK_INCREMENT ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int STATUS_SUCCESS ;
+ int TRUE ;
+ int VfatCreateFile (scalar_t__,TYPE_5__*) ;
+ TYPE_4__* VfatGlobalData ;
 
 NTSTATUS
 VfatCreate(
@@ -46,7 +46,7 @@ VfatCreate(
 
     if (IrpContext->DeviceObject == VfatGlobalData->DeviceObject)
     {
-        /* DeviceObject represents FileSystem instead of logical volume */
+
         DPRINT ("FsdCreate called with file system\n");
         IrpContext->Irp->IoStatus.Information = FILE_OPENED;
         IrpContext->PriorityBoost = IO_DISK_INCREMENT;

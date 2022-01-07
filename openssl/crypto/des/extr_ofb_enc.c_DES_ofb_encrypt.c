@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DES_key_schedule ;
-typedef  unsigned char* DES_cblock ;
-typedef  int DES_LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_ENCRYPT ; 
- int /*<<< orphan*/  DES_encrypt1 (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c2l (unsigned char*,int) ; 
- int /*<<< orphan*/  c2ln (unsigned char const*,int,int,int) ; 
- int /*<<< orphan*/  l2c (int,unsigned char*) ; 
- int /*<<< orphan*/  l2cn (int,int,unsigned char*,int) ; 
+
+
+
+typedef int DES_key_schedule ;
+typedef unsigned char* DES_cblock ;
+typedef int DES_LONG ;
+
+
+ int DES_ENCRYPT ;
+ int DES_encrypt1 (int*,int *,int ) ;
+ int c2l (unsigned char*,int) ;
+ int c2ln (unsigned char const*,int,int,int) ;
+ int l2c (int,unsigned char*) ;
+ int l2cn (int,int,unsigned char*,int) ;
 
 void DES_ofb_encrypt(const unsigned char *in, unsigned char *out, int numbits,
                      long length, DES_key_schedule *schedule,
@@ -73,10 +73,10 @@ void DES_ofb_encrypt(const unsigned char *in, unsigned char *out, int numbits,
         } else if (num == 64) {
             v0 = vv0;
             v1 = vv1;
-        } else if (num > 32) {  /* && num != 64 */
+        } else if (num > 32) {
             v0 = ((v1 >> (num - 32)) | (vv0 << (64 - num))) & 0xffffffffL;
             v1 = ((vv0 >> (num - 32)) | (vv1 << (64 - num))) & 0xffffffffL;
-        } else {                /* num < 32 */
+        } else {
 
             v0 = ((v0 >> num) | (v1 << (32 - num))) & 0xffffffffL;
             v1 = ((v1 >> num) | (vv0 << (32 - num))) & 0xffffffffL;

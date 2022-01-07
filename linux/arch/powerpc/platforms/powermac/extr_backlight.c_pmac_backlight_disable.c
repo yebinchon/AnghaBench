@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kernel_backlight_disabled ; 
+ int atomic_inc (int *) ;
+ int kernel_backlight_disabled ;
 
 void pmac_backlight_disable(void)
 {
-	atomic_inc(&kernel_backlight_disabled);
+ atomic_inc(&kernel_backlight_disabled);
 }

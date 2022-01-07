@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ WebPInfoStatus ;
-typedef  int /*<<< orphan*/  WebPInfo ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ WebPInfoStatus ;
+typedef int WebPInfo ;
 struct TYPE_3__ {scalar_t__* payload_; size_t size_; } ;
-typedef  TYPE_1__ ChunkData ;
+typedef TYPE_1__ ChunkData ;
 
-/* Variables and functions */
- size_t CHUNK_HEADER_SIZE ; 
- int /*<<< orphan*/  LL_GET_BITS (int,int) ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- scalar_t__ ParseLosslessTransform (int /*<<< orphan*/ * const,scalar_t__ const*,size_t,int /*<<< orphan*/ * const) ; 
- size_t VP8L_FRAME_HEADER_SIZE ; 
- scalar_t__ const VP8L_MAGIC_BYTE ; 
- scalar_t__ WEBP_INFO_BITSTREAM_ERROR ; 
- scalar_t__ WEBP_INFO_OK ; 
- scalar_t__ WEBP_INFO_TRUNCATED_DATA ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ size_t CHUNK_HEADER_SIZE ;
+ int LL_GET_BITS (int,int) ;
+ int LOG_ERROR (char*) ;
+ scalar_t__ ParseLosslessTransform (int * const,scalar_t__ const*,size_t,int * const) ;
+ size_t VP8L_FRAME_HEADER_SIZE ;
+ scalar_t__ const VP8L_MAGIC_BYTE ;
+ scalar_t__ WEBP_INFO_BITSTREAM_ERROR ;
+ scalar_t__ WEBP_INFO_OK ;
+ scalar_t__ WEBP_INFO_TRUNCATED_DATA ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static WebPInfoStatus ParseLosslessHeader(const ChunkData* const chunk_data,
                                           WebPInfo* const webp_info) {

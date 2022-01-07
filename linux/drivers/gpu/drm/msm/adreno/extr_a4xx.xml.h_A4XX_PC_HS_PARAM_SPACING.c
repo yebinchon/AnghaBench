@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  enum a4xx_tess_spacing { ____Placeholder_a4xx_tess_spacing } a4xx_tess_spacing ;
 
-/* Variables and functions */
- int A4XX_PC_HS_PARAM_SPACING__MASK ; 
- int A4XX_PC_HS_PARAM_SPACING__SHIFT ; 
+
+
+
+typedef int uint32_t ;
+typedef enum a4xx_tess_spacing { ____Placeholder_a4xx_tess_spacing } a4xx_tess_spacing ;
+
+
+ int A4XX_PC_HS_PARAM_SPACING__MASK ;
+ int A4XX_PC_HS_PARAM_SPACING__SHIFT ;
 
 __attribute__((used)) static inline uint32_t A4XX_PC_HS_PARAM_SPACING(enum a4xx_tess_spacing val)
 {
-	return ((val) << A4XX_PC_HS_PARAM_SPACING__SHIFT) & A4XX_PC_HS_PARAM_SPACING__MASK;
+ return ((val) << A4XX_PC_HS_PARAM_SPACING__SHIFT) & A4XX_PC_HS_PARAM_SPACING__MASK;
 }

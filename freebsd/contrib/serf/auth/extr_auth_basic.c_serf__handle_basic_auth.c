@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_4__* conn; } ;
-typedef  TYPE_2__ serf_request_t ;
+typedef TYPE_2__ serf_request_t ;
 struct TYPE_17__ {TYPE_1__* scheme; TYPE_6__* baton; } ;
-struct TYPE_15__ {TYPE_5__ proxy_authn_info; int /*<<< orphan*/  cred_cb; } ;
-typedef  TYPE_3__ serf_context_t ;
-struct TYPE_16__ {int /*<<< orphan*/  pool; TYPE_3__* ctx; } ;
-typedef  TYPE_4__ serf_connection_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  TYPE_5__ serf__authn_info_t ;
-struct TYPE_18__ {char* header; int /*<<< orphan*/  value; } ;
-typedef  TYPE_6__ basic_authn_info_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_13__ {int /*<<< orphan*/  name; } ;
+struct TYPE_15__ {TYPE_5__ proxy_authn_info; int cred_cb; } ;
+typedef TYPE_3__ serf_context_t ;
+struct TYPE_16__ {int pool; TYPE_3__* ctx; } ;
+typedef TYPE_4__ serf_connection_t ;
+typedef int serf_bucket_t ;
+typedef TYPE_5__ serf__authn_info_t ;
+struct TYPE_18__ {char* header; int value; } ;
+typedef TYPE_6__ basic_authn_info_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+struct TYPE_13__ {int name; } ;
 
-/* Variables and functions */
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  HOST ; 
- int /*<<< orphan*/  PROXY ; 
- scalar_t__ SERF_ERROR_AUTHN_FAILED ; 
- scalar_t__ SERF_ERROR_AUTHN_MISSING_ATTRIBUTE ; 
- int /*<<< orphan*/  apr_pool_create (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pool_destroy (int /*<<< orphan*/ *) ; 
- char* apr_pstrcat (int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ *) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- char* serf__construct_realm (int /*<<< orphan*/ ,TYPE_4__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serf__encode_auth_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *) ; 
- TYPE_5__* serf__get_authn_info_for_server (TYPE_4__*) ; 
- scalar_t__ serf__provide_credentials (TYPE_3__*,char**,char**,TYPE_2__*,void*,int,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- char* strchr (char const*,char) ; 
- int strlen (char const*) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
+
+ scalar_t__ APR_SUCCESS ;
+ int HOST ;
+ int PROXY ;
+ scalar_t__ SERF_ERROR_AUTHN_FAILED ;
+ scalar_t__ SERF_ERROR_AUTHN_MISSING_ATTRIBUTE ;
+ int apr_pool_create (int **,int *) ;
+ int apr_pool_destroy (int *) ;
+ char* apr_pstrcat (int ,char*,char*,char*,int *) ;
+ char* apr_pstrdup (int *,char const*) ;
+ char* serf__construct_realm (int ,TYPE_4__*,char*,int *) ;
+ int serf__encode_auth_header (int *,int ,char const*,int,int *) ;
+ TYPE_5__* serf__get_authn_info_for_server (TYPE_4__*) ;
+ scalar_t__ serf__provide_credentials (TYPE_3__*,char**,char**,TYPE_2__*,void*,int,int ,char const*,int *) ;
+ char* strchr (char const*,char) ;
+ int strlen (char const*) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
 
 apr_status_t
 serf__handle_basic_auth(int code,
@@ -68,10 +68,10 @@ serf__handle_basic_auth(int code,
     apr_status_t status;
     apr_pool_t *cred_pool;
     char *username, *password, *realm_name;
-    const char *eq, *realm = NULL;
+    const char *eq, *realm = ((void*)0);
 
-    /* Can't do Basic authentication if there's no callback to get
-       username & password. */
+
+
     if (!ctx->cred_cb) {
         return SERF_ERROR_AUTHN_FAILED;
     }
@@ -83,7 +83,7 @@ serf__handle_basic_auth(int code,
     }
     basic_info = authn_info->baton;
 
-    realm_name = NULL;
+    realm_name = ((void*)0);
     eq = strchr(auth_attr, '=');
 
     if (eq && strncasecmp(auth_attr, "realm", 5) == 0) {
@@ -107,7 +107,7 @@ serf__handle_basic_auth(int code,
                                       pool);
     }
 
-    /* Ask the application for credentials */
+
     apr_pool_create(&cred_pool, pool);
     status = serf__provide_credentials(ctx,
                                        &username, &password,
@@ -119,7 +119,7 @@ serf__handle_basic_auth(int code,
         return status;
     }
 
-    tmp = apr_pstrcat(conn->pool, username, ":", password, NULL);
+    tmp = apr_pstrcat(conn->pool, username, ":", password, ((void*)0));
     tmp_len = strlen(tmp);
     apr_pool_destroy(cred_pool);
 

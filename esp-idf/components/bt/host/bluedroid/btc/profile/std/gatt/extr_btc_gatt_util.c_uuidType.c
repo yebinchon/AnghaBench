@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char* BASE_UUID ; 
- int LEN_UUID_128 ; 
- int LEN_UUID_16 ; 
- int LEN_UUID_32 ; 
+ unsigned char* BASE_UUID ;
+ int LEN_UUID_128 ;
+ int LEN_UUID_16 ;
+ int LEN_UUID_32 ;
 
 int uuidType(unsigned char *p_uuid)
 {

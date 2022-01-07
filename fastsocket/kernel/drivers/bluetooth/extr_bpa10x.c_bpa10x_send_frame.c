@@ -1,130 +1,130 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_ctrlrequest {int /*<<< orphan*/  wLength; int /*<<< orphan*/  wValue; int /*<<< orphan*/  wIndex; int /*<<< orphan*/  bRequest; int /*<<< orphan*/  bRequestType; } ;
-struct urb {int /*<<< orphan*/  setup_packet; } ;
-struct sk_buff {int /*<<< orphan*/  len; int /*<<< orphan*/  data; scalar_t__ dev; } ;
-struct TYPE_3__ {int /*<<< orphan*/  sco_tx; int /*<<< orphan*/  acl_tx; int /*<<< orphan*/  cmd_tx; } ;
-struct hci_dev {int /*<<< orphan*/  name; TYPE_1__ stat; int /*<<< orphan*/  flags; struct bpa10x_data* driver_data; } ;
-struct bpa10x_data {int /*<<< orphan*/  tx_anchor; int /*<<< orphan*/  udev; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct usb_ctrlrequest {int wLength; int wValue; int wIndex; int bRequest; int bRequestType; } ;
+struct urb {int setup_packet; } ;
+struct sk_buff {int len; int data; scalar_t__ dev; } ;
+struct TYPE_3__ {int sco_tx; int acl_tx; int cmd_tx; } ;
+struct hci_dev {int name; TYPE_1__ stat; int flags; struct bpa10x_data* driver_data; } ;
+struct bpa10x_data {int tx_anchor; int udev; } ;
 struct TYPE_4__ {int pkt_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BT_ERR (char*,int /*<<< orphan*/ ,struct urb*) ; 
- int EBUSY ; 
- int EILSEQ ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
-#define  HCI_ACLDATA_PKT 130 
-#define  HCI_COMMAND_PKT 129 
- int /*<<< orphan*/  HCI_RUNNING ; 
-#define  HCI_SCODATA_PKT 128 
- int /*<<< orphan*/  USB_TYPE_VENDOR ; 
- int /*<<< orphan*/  __cpu_to_le16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bpa10x_tx_complete ; 
- TYPE_2__* bt_cb (struct sk_buff*) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- struct usb_ctrlrequest* kmalloc (int,int /*<<< orphan*/ ) ; 
- int* skb_push (struct sk_buff*,int) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct urb* usb_alloc_urb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_anchor_urb (struct urb*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_fill_bulk_urb (struct urb*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sk_buff*) ; 
- int /*<<< orphan*/  usb_fill_control_urb (struct urb*,int /*<<< orphan*/ ,unsigned int,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sk_buff*) ; 
- int /*<<< orphan*/  usb_free_urb (struct urb*) ; 
- unsigned int usb_sndbulkpipe (int /*<<< orphan*/ ,int) ; 
- unsigned int usb_sndctrlpipe (int /*<<< orphan*/ ,int) ; 
- int usb_submit_urb (struct urb*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_unanchor_urb (struct urb*) ; 
+
+ int BT_DBG (char*,int ) ;
+ int BT_ERR (char*,int ,struct urb*) ;
+ int EBUSY ;
+ int EILSEQ ;
+ int ENOMEM ;
+ int GFP_ATOMIC ;
+
+
+ int HCI_RUNNING ;
+
+ int USB_TYPE_VENDOR ;
+ int __cpu_to_le16 (int ) ;
+ int bpa10x_tx_complete ;
+ TYPE_2__* bt_cb (struct sk_buff*) ;
+ int kfree (int ) ;
+ struct usb_ctrlrequest* kmalloc (int,int ) ;
+ int* skb_push (struct sk_buff*,int) ;
+ int test_bit (int ,int *) ;
+ struct urb* usb_alloc_urb (int ,int ) ;
+ int usb_anchor_urb (struct urb*,int *) ;
+ int usb_fill_bulk_urb (struct urb*,int ,unsigned int,int ,int ,int ,struct sk_buff*) ;
+ int usb_fill_control_urb (struct urb*,int ,unsigned int,void*,int ,int ,int ,struct sk_buff*) ;
+ int usb_free_urb (struct urb*) ;
+ unsigned int usb_sndbulkpipe (int ,int) ;
+ unsigned int usb_sndctrlpipe (int ,int) ;
+ int usb_submit_urb (struct urb*,int ) ;
+ int usb_unanchor_urb (struct urb*) ;
 
 __attribute__((used)) static int bpa10x_send_frame(struct sk_buff *skb)
 {
-	struct hci_dev *hdev = (struct hci_dev *) skb->dev;
-	struct bpa10x_data *data = hdev->driver_data;
-	struct usb_ctrlrequest *dr;
-	struct urb *urb;
-	unsigned int pipe;
-	int err;
+ struct hci_dev *hdev = (struct hci_dev *) skb->dev;
+ struct bpa10x_data *data = hdev->driver_data;
+ struct usb_ctrlrequest *dr;
+ struct urb *urb;
+ unsigned int pipe;
+ int err;
 
-	BT_DBG("%s", hdev->name);
+ BT_DBG("%s", hdev->name);
 
-	if (!test_bit(HCI_RUNNING, &hdev->flags))
-		return -EBUSY;
+ if (!test_bit(HCI_RUNNING, &hdev->flags))
+  return -EBUSY;
 
-	urb = usb_alloc_urb(0, GFP_ATOMIC);
-	if (!urb)
-		return -ENOMEM;
+ urb = usb_alloc_urb(0, GFP_ATOMIC);
+ if (!urb)
+  return -ENOMEM;
 
-	/* Prepend skb with frame type */
-	*skb_push(skb, 1) = bt_cb(skb)->pkt_type;
 
-	switch (bt_cb(skb)->pkt_type) {
-	case HCI_COMMAND_PKT:
-		dr = kmalloc(sizeof(*dr), GFP_ATOMIC);
-		if (!dr) {
-			usb_free_urb(urb);
-			return -ENOMEM;
-		}
+ *skb_push(skb, 1) = bt_cb(skb)->pkt_type;
 
-		dr->bRequestType = USB_TYPE_VENDOR;
-		dr->bRequest     = 0;
-		dr->wIndex       = 0;
-		dr->wValue       = 0;
-		dr->wLength      = __cpu_to_le16(skb->len);
+ switch (bt_cb(skb)->pkt_type) {
+ case 129:
+  dr = kmalloc(sizeof(*dr), GFP_ATOMIC);
+  if (!dr) {
+   usb_free_urb(urb);
+   return -ENOMEM;
+  }
 
-		pipe = usb_sndctrlpipe(data->udev, 0x00);
+  dr->bRequestType = USB_TYPE_VENDOR;
+  dr->bRequest = 0;
+  dr->wIndex = 0;
+  dr->wValue = 0;
+  dr->wLength = __cpu_to_le16(skb->len);
 
-		usb_fill_control_urb(urb, data->udev, pipe, (void *) dr,
-				skb->data, skb->len, bpa10x_tx_complete, skb);
+  pipe = usb_sndctrlpipe(data->udev, 0x00);
 
-		hdev->stat.cmd_tx++;
-		break;
+  usb_fill_control_urb(urb, data->udev, pipe, (void *) dr,
+    skb->data, skb->len, bpa10x_tx_complete, skb);
 
-	case HCI_ACLDATA_PKT:
-		pipe = usb_sndbulkpipe(data->udev, 0x02);
+  hdev->stat.cmd_tx++;
+  break;
 
-		usb_fill_bulk_urb(urb, data->udev, pipe,
-				skb->data, skb->len, bpa10x_tx_complete, skb);
+ case 130:
+  pipe = usb_sndbulkpipe(data->udev, 0x02);
 
-		hdev->stat.acl_tx++;
-		break;
+  usb_fill_bulk_urb(urb, data->udev, pipe,
+    skb->data, skb->len, bpa10x_tx_complete, skb);
 
-	case HCI_SCODATA_PKT:
-		pipe = usb_sndbulkpipe(data->udev, 0x02);
+  hdev->stat.acl_tx++;
+  break;
 
-		usb_fill_bulk_urb(urb, data->udev, pipe,
-				skb->data, skb->len, bpa10x_tx_complete, skb);
+ case 128:
+  pipe = usb_sndbulkpipe(data->udev, 0x02);
 
-		hdev->stat.sco_tx++;
-		break;
+  usb_fill_bulk_urb(urb, data->udev, pipe,
+    skb->data, skb->len, bpa10x_tx_complete, skb);
 
-	default:
-		usb_free_urb(urb);
-		return -EILSEQ;
-	}
+  hdev->stat.sco_tx++;
+  break;
 
-	usb_anchor_urb(urb, &data->tx_anchor);
+ default:
+  usb_free_urb(urb);
+  return -EILSEQ;
+ }
 
-	err = usb_submit_urb(urb, GFP_ATOMIC);
-	if (err < 0) {
-		BT_ERR("%s urb %p submission failed", hdev->name, urb);
-		kfree(urb->setup_packet);
-		usb_unanchor_urb(urb);
-	}
+ usb_anchor_urb(urb, &data->tx_anchor);
 
-	usb_free_urb(urb);
+ err = usb_submit_urb(urb, GFP_ATOMIC);
+ if (err < 0) {
+  BT_ERR("%s urb %p submission failed", hdev->name, urb);
+  kfree(urb->setup_packet);
+  usb_unanchor_urb(urb);
+ }
 
-	return 0;
+ usb_free_urb(urb);
+
+ return 0;
 }

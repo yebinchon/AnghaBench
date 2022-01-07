@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_11__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_image (TYPE_2__) ; 
- TYPE_2__ letterbox_image (TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- float* network_predict (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_batch_network (TYPE_1__*,int) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int h; int w; } ;
+typedef TYPE_1__ network ;
+struct TYPE_11__ {int data; } ;
+typedef TYPE_2__ image ;
+
+
+ int free_image (TYPE_2__) ;
+ TYPE_2__ letterbox_image (TYPE_2__,int ,int ) ;
+ float* network_predict (TYPE_1__*,int ) ;
+ int set_batch_network (TYPE_1__*,int) ;
 
 float *network_predict_image(network *net, image im)
 {

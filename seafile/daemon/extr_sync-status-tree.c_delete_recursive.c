@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t guint ;
-struct TYPE_8__ {int /*<<< orphan*/  dirents; } ;
-struct TYPE_7__ {TYPE_2__* subdir; int /*<<< orphan*/  mode; } ;
-typedef  TYPE_1__ SyncStatusDirent ;
-typedef  TYPE_2__ SyncStatusDir ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- TYPE_1__* g_hash_table_lookup (int /*<<< orphan*/ ,char*) ; 
- char* g_strconcat (char const*,char*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ is_empty_dir (TYPE_1__*) ; 
- int /*<<< orphan*/  remove_item (TYPE_2__*,char*,char*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t guint ;
+struct TYPE_8__ {int dirents; } ;
+struct TYPE_7__ {TYPE_2__* subdir; int mode; } ;
+typedef TYPE_1__ SyncStatusDirent ;
+typedef TYPE_2__ SyncStatusDir ;
+
+
+ scalar_t__ S_ISDIR (int ) ;
+ int g_free (char*) ;
+ TYPE_1__* g_hash_table_lookup (int ,char*) ;
+ char* g_strconcat (char const*,char*,char*,int *) ;
+ scalar_t__ is_empty_dir (TYPE_1__*) ;
+ int remove_item (TYPE_2__*,char*,char*) ;
 
 __attribute__((used)) static void
 delete_recursive (SyncStatusDir *dir, char **dnames, guint n, guint i,
@@ -32,10 +32,10 @@ delete_recursive (SyncStatusDir *dir, char **dnames, guint n, guint i,
 {
     char *dname;
     SyncStatusDirent *dirent;
-    char *fullpath = NULL;
+    char *fullpath = ((void*)0);
 
     dname = dnames[i];
-    fullpath = g_strconcat (base, "/", dname, NULL);
+    fullpath = g_strconcat (base, "/", dname, ((void*)0));
 
     dirent = g_hash_table_lookup (dir->dirents, dname);
     if (dirent) {
@@ -45,9 +45,9 @@ delete_recursive (SyncStatusDir *dir, char **dnames, guint n, guint i,
                     remove_item (dir, dname, fullpath);
             } else {
                 delete_recursive (dirent->subdir, dnames, n, ++i, fullpath);
-                /* If this dir becomes empty after deleting the entry below,
-                 * remove the dir itself too.
-                 */
+
+
+
                 if (is_empty_dir(dirent))
                     remove_item (dir, dname, fullpath);
             }

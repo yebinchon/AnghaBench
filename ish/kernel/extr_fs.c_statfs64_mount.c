@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct statfsbuf {int /*<<< orphan*/  flags; int /*<<< orphan*/  frsize; int /*<<< orphan*/  namelen; int /*<<< orphan*/  fsid; int /*<<< orphan*/  ffree; int /*<<< orphan*/  files; int /*<<< orphan*/  bavail; int /*<<< orphan*/  bfree; int /*<<< orphan*/  blocks; int /*<<< orphan*/  bsize; int /*<<< orphan*/  type; } ;
-struct statfs64_ {int /*<<< orphan*/  flags; int /*<<< orphan*/  frsize; int /*<<< orphan*/  namelen; int /*<<< orphan*/  fsid; int /*<<< orphan*/  ffree; int /*<<< orphan*/  files; int /*<<< orphan*/  bavail; int /*<<< orphan*/  bfree; int /*<<< orphan*/  blocks; int /*<<< orphan*/  bsize; int /*<<< orphan*/  type; } ;
+
+
+
+
+struct statfsbuf {int flags; int frsize; int namelen; int fsid; int ffree; int files; int bavail; int bfree; int blocks; int bsize; int type; } ;
+struct statfs64_ {int flags; int frsize; int namelen; int fsid; int ffree; int files; int bavail; int bfree; int blocks; int bsize; int type; } ;
 struct mount {int dummy; } ;
-typedef  int int_t ;
-typedef  int /*<<< orphan*/  addr_t ;
+typedef int int_t ;
+typedef int addr_t ;
 
-/* Variables and functions */
- int _EFAULT ; 
- int mount_statfs (struct mount*,struct statfsbuf*) ; 
- scalar_t__ user_put (int /*<<< orphan*/ ,struct statfs64_) ; 
+
+ int _EFAULT ;
+ int mount_statfs (struct mount*,struct statfsbuf*) ;
+ scalar_t__ user_put (int ,struct statfs64_) ;
 
 __attribute__((used)) static int_t statfs64_mount(struct mount *mount, addr_t buf_addr) {
     struct statfsbuf buf = {};

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-typedef  int tmsize_t ;
-typedef  int /*<<< orphan*/  TIFF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIFFSwabArrayOfDouble (double*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint8 ;
+typedef int tmsize_t ;
+typedef int TIFF ;
+
+
+ int TIFFSwabArrayOfDouble (double*,int) ;
+ int assert (int) ;
 
 void
 _TIFFSwab64BitData(TIFF* tif, uint8* buf, tmsize_t cc)

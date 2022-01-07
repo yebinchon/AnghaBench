@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pci_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  piix4_adap_remove (int /*<<< orphan*/ *) ; 
- int piix4_adapter_count ; 
- int /*<<< orphan*/ * piix4_aux_adapter ; 
- int /*<<< orphan*/ ** piix4_main_adapters ; 
+
+ int piix4_adap_remove (int *) ;
+ int piix4_adapter_count ;
+ int * piix4_aux_adapter ;
+ int ** piix4_main_adapters ;
 
 __attribute__((used)) static void piix4_remove(struct pci_dev *dev)
 {
-	int port = piix4_adapter_count;
+ int port = piix4_adapter_count;
 
-	while (--port >= 0) {
-		if (piix4_main_adapters[port]) {
-			piix4_adap_remove(piix4_main_adapters[port]);
-			piix4_main_adapters[port] = NULL;
-		}
-	}
+ while (--port >= 0) {
+  if (piix4_main_adapters[port]) {
+   piix4_adap_remove(piix4_main_adapters[port]);
+   piix4_main_adapters[port] = ((void*)0);
+  }
+ }
 
-	if (piix4_aux_adapter) {
-		piix4_adap_remove(piix4_aux_adapter);
-		piix4_aux_adapter = NULL;
-	}
+ if (piix4_aux_adapter) {
+  piix4_adap_remove(piix4_aux_adapter);
+  piix4_aux_adapter = ((void*)0);
+ }
 }

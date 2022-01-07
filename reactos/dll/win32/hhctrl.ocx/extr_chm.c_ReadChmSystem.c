@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ver ;
-typedef  int /*<<< orphan*/  entry ;
-typedef  int WORD ;
-typedef  char WCHAR ;
-struct TYPE_3__ {char* defToc; char* defTopic; char* defTitle; char* compiledFile; void* defWindow; int /*<<< orphan*/  codePage; int /*<<< orphan*/  pStorage; } ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  char DWORD ;
-typedef  TYPE_1__ CHMInfo ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLocaleInfoW (int /*<<< orphan*/ ,int,char*,int) ; 
- scalar_t__ IStorage_OpenStream (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IStream_Read (int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int LOCALE_IDEFAULTANSICODEPAGE ; 
- int LOCALE_RETURN_NUMBER ; 
- int /*<<< orphan*/  STGM_READ ; 
- int /*<<< orphan*/  SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_an (char*,int) ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_realloc (char*,char) ; 
- void* strdupnAtoW (char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ver ;
+typedef int entry ;
+typedef int WORD ;
+typedef char WCHAR ;
+struct TYPE_3__ {char* defToc; char* defTopic; char* defTitle; char* compiledFile; void* defWindow; int codePage; int pStorage; } ;
+typedef int LCID ;
+typedef int IStream ;
+typedef scalar_t__ HRESULT ;
+typedef char DWORD ;
+typedef TYPE_1__ CHMInfo ;
+typedef int BOOL ;
+
+
+ int CP_ACP ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int GetLocaleInfoW (int ,int,char*,int) ;
+ scalar_t__ IStorage_OpenStream (int ,char const*,int *,int ,int ,int **) ;
+ scalar_t__ IStream_Read (int *,...) ;
+ int IStream_Release (int *) ;
+ int LOCALE_IDEFAULTANSICODEPAGE ;
+ int LOCALE_RETURN_NUMBER ;
+ int STGM_READ ;
+ int SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int,...) ;
+ int WARN (char*,scalar_t__) ;
+ int debugstr_an (char*,int) ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ char* heap_realloc (char*,char) ;
+ void* strdupnAtoW (char*,int) ;
 
 __attribute__((used)) static BOOL ReadChmSystem(CHMInfo *chm)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static BOOL ReadChmSystem(CHMInfo *chm)
 
     static const WCHAR wszSYSTEM[] = {'#','S','Y','S','T','E','M',0};
 
-    hres = IStorage_OpenStream(chm->pStorage, wszSYSTEM, NULL, STGM_READ, 0, &stream);
+    hres = IStorage_OpenStream(chm->pStorage, wszSYSTEM, ((void*)0), STGM_READ, 0, &stream);
     if(FAILED(hres)) {
         WARN("Could not open #SYSTEM stream: %08x\n", hres);
         return FALSE;
@@ -99,7 +99,7 @@ __attribute__((used)) static BOOL ReadChmSystem(CHMInfo *chm)
             chm->defTitle = strdupnAtoW(buf, entry.len);
             break;
         case 0x4:
-            /* TODO: Currently only the Locale ID is loaded from this field */
+
             TRACE("Locale is: %d\n", *(LCID*)&buf[0]);
             if(!GetLocaleInfoW(*(LCID*)&buf[0], LOCALE_IDEFAULTANSICODEPAGE|LOCALE_RETURN_NUMBER,
                                (WCHAR *)&chm->codePage, sizeof(chm->codePage)/sizeof(WCHAR)))

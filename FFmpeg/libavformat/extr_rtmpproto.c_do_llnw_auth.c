@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct AVMD5 {int dummy; } ;
-typedef  int /*<<< orphan*/  cnonce ;
-struct TYPE_3__ {char* password; char* app; int /*<<< orphan*/  auth_params; } ;
-typedef  TYPE_1__ RTMPContext ;
+typedef int cnonce ;
+struct TYPE_3__ {char* password; char* app; int auth_params; } ;
+typedef TYPE_1__ RTMPContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (struct AVMD5*) ; 
- int av_get_random_seed () ; 
- struct AVMD5* av_md5_alloc () ; 
- int /*<<< orphan*/  av_md5_final (struct AVMD5*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_md5_init (struct AVMD5*) ; 
- int /*<<< orphan*/  av_md5_update (struct AVMD5*,char const*,int) ; 
- int /*<<< orphan*/  ff_data_to_hex (char*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  strchr (char*,char) ; 
- int strlen (char const*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_free (struct AVMD5*) ;
+ int av_get_random_seed () ;
+ struct AVMD5* av_md5_alloc () ;
+ int av_md5_final (struct AVMD5*,int *) ;
+ int av_md5_init (struct AVMD5*) ;
+ int av_md5_update (struct AVMD5*,char const*,int) ;
+ int ff_data_to_hex (char*,int *,int,int) ;
+ int snprintf (char*,int,char*,...) ;
+ int strchr (char*,char) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int do_llnw_auth(RTMPContext *rt, const char *user, const char *nonce)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  scalar_t__ vlc_fourcc_t ;
-struct hxxx_helper {int b_need_xvcC; scalar_t__ i_codec; int /*<<< orphan*/ * p_obj; } ;
 
-/* Variables and functions */
- scalar_t__ VLC_CODEC_H264 ; 
- scalar_t__ VLC_CODEC_HEVC ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (struct hxxx_helper*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef scalar_t__ vlc_fourcc_t ;
+struct hxxx_helper {int b_need_xvcC; scalar_t__ i_codec; int * p_obj; } ;
+
+
+ scalar_t__ VLC_CODEC_H264 ;
+ scalar_t__ VLC_CODEC_HEVC ;
+ int assert (int) ;
+ int memset (struct hxxx_helper*,int ,int) ;
 
 void
 hxxx_helper_init(struct hxxx_helper *hh, vlc_object_t *p_obj,

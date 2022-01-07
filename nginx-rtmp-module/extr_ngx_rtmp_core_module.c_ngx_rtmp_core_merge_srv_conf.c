@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int max_message; int out_queue; int out_cork; int /*<<< orphan*/ * pool; int /*<<< orphan*/  busy; int /*<<< orphan*/  buflen; int /*<<< orphan*/  publish_time_fix; int /*<<< orphan*/  play_time_fix; int /*<<< orphan*/  ack_window; int /*<<< orphan*/  chunk_size; int /*<<< orphan*/  max_streams; int /*<<< orphan*/  so_keepalive; int /*<<< orphan*/  ping_timeout; int /*<<< orphan*/  ping; int /*<<< orphan*/  timeout; } ;
-typedef  TYPE_2__ ngx_rtmp_core_srv_conf_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int max_message; int out_queue; int out_cork; int * pool; int busy; int buflen; int publish_time_fix; int play_time_fix; int ack_window; int chunk_size; int max_streams; int so_keepalive; int ping_timeout; int ping; int timeout; } ;
+typedef TYPE_2__ ngx_rtmp_core_srv_conf_t ;
 struct TYPE_7__ {TYPE_1__* cycle; } ;
-typedef  TYPE_3__ ngx_conf_t ;
-struct TYPE_5__ {int /*<<< orphan*/  new_log; } ;
+typedef TYPE_3__ ngx_conf_t ;
+struct TYPE_5__ {int new_log; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_size_value (int,int,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_uint_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * ngx_create_pool (int,int /*<<< orphan*/ *) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_size_value (int,int,int) ;
+ int ngx_conf_merge_uint_value (int ,int ,int) ;
+ int ngx_conf_merge_value (int ,int ,int) ;
+ int * ngx_create_pool (int,int *) ;
 
 __attribute__((used)) static char *
 ngx_rtmp_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -52,9 +52,9 @@ ngx_rtmp_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
     ngx_conf_merge_msec_value(conf->buflen, prev->buflen, 1000);
     ngx_conf_merge_value(conf->busy, prev->busy, 0);
 
-    if (prev->pool == NULL) {
+    if (prev->pool == ((void*)0)) {
         prev->pool = ngx_create_pool(4096, &cf->cycle->new_log);
-        if (prev->pool == NULL) {
+        if (prev->pool == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
     }

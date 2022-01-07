@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct utmpx {int ut_type; int /*<<< orphan*/  ut_user; int /*<<< orphan*/  ut_line; int /*<<< orphan*/  ut_id; int /*<<< orphan*/  ut_session; int /*<<< orphan*/  ut_pid; } ;
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int INIT_PROCESS ; 
- scalar_t__ IN_SET (int,int,int) ; 
- int LOGIN_PROCESS ; 
- int USER_PROCESS ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  copy_suffix (int /*<<< orphan*/ ,int,char const*) ; 
- int /*<<< orphan*/  init_timestamp (struct utmpx*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  strncpy_exact (int /*<<< orphan*/ ,char const*,int) ; 
- int write_entry_both (struct utmpx*) ; 
+
+
+
+struct utmpx {int ut_type; int ut_user; int ut_line; int ut_id; int ut_session; int ut_pid; } ;
+typedef int pid_t ;
+
+
+ int INIT_PROCESS ;
+ scalar_t__ IN_SET (int,int,int) ;
+ int LOGIN_PROCESS ;
+ int USER_PROCESS ;
+ int assert (char const*) ;
+ int copy_suffix (int ,int,char const*) ;
+ int init_timestamp (struct utmpx*,int ) ;
+ int strncpy (int ,char const*,int) ;
+ int strncpy_exact (int ,char const*,int) ;
+ int write_entry_both (struct utmpx*) ;
 
 int utmp_put_init_process(const char *id, pid_t pid, pid_t sid, const char *line, int ut_type, const char *user) {
         struct utmpx store = {
@@ -37,7 +37,7 @@ int utmp_put_init_process(const char *id, pid_t pid, pid_t sid, const char *line
 
         init_timestamp(&store, 0);
 
-        /* Copy the whole string if it fits, or just the suffix without the terminating NUL. */
+
         copy_suffix(store.ut_id, sizeof(store.ut_id), id);
 
         if (line)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hid_device {int dummy; } ;
-struct appleir {int /*<<< orphan*/  input_dev; } ;
+struct appleir {int input_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  input_report_key (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_sync (int /*<<< orphan*/ ) ; 
+
+ int input_report_key (int ,int,int ) ;
+ int input_sync (int ) ;
 
 __attribute__((used)) static void key_up(struct hid_device *hid, struct appleir *appleir, int key)
 {
-	input_report_key(appleir->input_dev, key, 0);
-	input_sync(appleir->input_dev);
+ input_report_key(appleir->input_dev, key, 0);
+ input_sync(appleir->input_dev);
 }

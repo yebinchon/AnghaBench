@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h ;
-struct TYPE_6__ {int /*<<< orphan*/  CertType; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * CertData; int /*<<< orphan*/  CertType; } ;
-typedef  TYPE_1__ IKE_PACKET_CERT_PAYLOAD ;
-typedef  TYPE_2__ IKE_CERT_HEADER ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int ReadBuf (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/ * ReadRemainBuf (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int h ;
+struct TYPE_6__ {int CertType; } ;
+struct TYPE_5__ {int * CertData; int CertType; } ;
+typedef TYPE_1__ IKE_PACKET_CERT_PAYLOAD ;
+typedef TYPE_2__ IKE_CERT_HEADER ;
+typedef int BUF ;
+
+
+ int ReadBuf (int *,TYPE_2__*,int) ;
+ int * ReadRemainBuf (int *) ;
 
 bool IkeParseCertPayload(IKE_PACKET_CERT_PAYLOAD *t, BUF *b)
 {
-	IKE_CERT_HEADER h;
-	// Validate arguments
-	if (t == NULL || b == NULL)
-	{
-		return false;
-	}
+ IKE_CERT_HEADER h;
 
-	if (ReadBuf(b, &h, sizeof(h)) != sizeof(h))
-	{
-		return false;
-	}
+ if (t == ((void*)0) || b == ((void*)0))
+ {
+  return 0;
+ }
 
-	t->CertType = h.CertType;
-	t->CertData = ReadRemainBuf(b);
-	if (t->CertData == NULL)
-	{
-		return false;
-	}
+ if (ReadBuf(b, &h, sizeof(h)) != sizeof(h))
+ {
+  return 0;
+ }
 
-	return true;
+ t->CertType = h.CertType;
+ t->CertData = ReadRemainBuf(b);
+ if (t->CertData == ((void*)0))
+ {
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * posix_spawnattr_t ;
-typedef  int /*<<< orphan*/  _posix_spawnattr_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  posix_spawn_destroycoalition_info_np (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  posix_spawn_destroypersona_info_np (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  posix_spawn_destroyportactions_np (int /*<<< orphan*/ **) ; 
+
+
+
+typedef int * posix_spawnattr_t ;
+typedef int _posix_spawnattr_t ;
+
+
+ int EINVAL ;
+ int free (int ) ;
+ int posix_spawn_destroycoalition_info_np (int **) ;
+ int posix_spawn_destroypersona_info_np (int **) ;
+ int posix_spawn_destroyportactions_np (int **) ;
 
 int
 posix_spawnattr_destroy(posix_spawnattr_t *attr)
 {
-	_posix_spawnattr_t psattr;
+ _posix_spawnattr_t psattr;
 
-	if (attr == NULL || *attr == NULL)
-		return EINVAL;
+ if (attr == ((void*)0) || *attr == ((void*)0))
+  return EINVAL;
 
-	psattr = *(_posix_spawnattr_t *)attr;
-	posix_spawn_destroyportactions_np(attr);
-	posix_spawn_destroycoalition_info_np(attr);
-	posix_spawn_destroypersona_info_np(attr);
+ psattr = *(_posix_spawnattr_t *)attr;
+ posix_spawn_destroyportactions_np(attr);
+ posix_spawn_destroycoalition_info_np(attr);
+ posix_spawn_destroypersona_info_np(attr);
 
-	free(psattr);
-	*attr = NULL;
+ free(psattr);
+ *attr = ((void*)0);
 
-	return (0);
+ return (0);
 }

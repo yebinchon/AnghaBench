@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct script_desc {int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  script_descs ; 
+
+
+
+struct script_desc {int node; } ;
+
+
+ int list_add_tail (int *,int *) ;
+ int script_descs ;
 
 __attribute__((used)) static void script_desc__add(struct script_desc *s)
 {
-	list_add_tail(&s->node, &script_descs);
+ list_add_tail(&s->node, &script_descs);
 }

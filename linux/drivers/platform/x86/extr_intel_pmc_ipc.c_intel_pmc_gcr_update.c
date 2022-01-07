@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_2__ {int gcr_mem_base; int /*<<< orphan*/  gcr_lock; } ;
 
-/* Variables and functions */
- int EIO ; 
- TYPE_1__ ipcdev ; 
- int is_gcr_valid (int) ; 
- int readl (int) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writel (int,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int gcr_mem_base; int gcr_lock; } ;
+
+
+ int EIO ;
+ TYPE_1__ ipcdev ;
+ int is_gcr_valid (int) ;
+ int readl (int) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int writel (int,int) ;
 
 int intel_pmc_gcr_update(u32 offset, u32 mask, u32 val)
 {
-	u32 new_val;
-	int ret = 0;
+ u32 new_val;
+ int ret = 0;
 
-	spin_lock(&ipcdev.gcr_lock);
+ spin_lock(&ipcdev.gcr_lock);
 
-	ret = is_gcr_valid(offset);
-	if (ret < 0)
-		goto gcr_ipc_unlock;
+ ret = is_gcr_valid(offset);
+ if (ret < 0)
+  goto gcr_ipc_unlock;
 
-	new_val = readl(ipcdev.gcr_mem_base + offset);
+ new_val = readl(ipcdev.gcr_mem_base + offset);
 
-	new_val &= ~mask;
-	new_val |= val & mask;
+ new_val &= ~mask;
+ new_val |= val & mask;
 
-	writel(new_val, ipcdev.gcr_mem_base + offset);
+ writel(new_val, ipcdev.gcr_mem_base + offset);
 
-	new_val = readl(ipcdev.gcr_mem_base + offset);
+ new_val = readl(ipcdev.gcr_mem_base + offset);
 
-	/* check whether the bit update is successful */
-	if ((new_val & mask) != (val & mask)) {
-		ret = -EIO;
-		goto gcr_ipc_unlock;
-	}
+
+ if ((new_val & mask) != (val & mask)) {
+  ret = -EIO;
+  goto gcr_ipc_unlock;
+ }
 
 gcr_ipc_unlock:
-	spin_unlock(&ipcdev.gcr_lock);
-	return ret;
+ spin_unlock(&ipcdev.gcr_lock);
+ return ret;
 }

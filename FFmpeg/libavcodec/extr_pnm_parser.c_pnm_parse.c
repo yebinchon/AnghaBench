@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-struct TYPE_15__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  pix_fmt; } ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+struct TYPE_15__ {int height; int width; int pix_fmt; } ;
 struct TYPE_14__ {TYPE_2__* priv_data; } ;
 struct TYPE_13__ {scalar_t__ bytestream_start; scalar_t__ bytestream; scalar_t__ bytestream_end; int type; } ;
 struct TYPE_11__ {scalar_t__ overread; scalar_t__ buffer; scalar_t__ index; scalar_t__ overread_index; } ;
 struct TYPE_12__ {int remaining_bytes; int ascii_scan; TYPE_1__ pc; } ;
-typedef  TYPE_1__ ParseContext ;
-typedef  TYPE_2__ PNMParseContext ;
-typedef  TYPE_3__ PNMContext ;
-typedef  TYPE_4__ AVCodecParserContext ;
-typedef  TYPE_5__ AVCodecContext ;
+typedef TYPE_1__ ParseContext ;
+typedef TYPE_2__ PNMParseContext ;
+typedef TYPE_3__ PNMContext ;
+typedef TYPE_4__ AVCodecParserContext ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int END_NOT_FOUND ; 
- unsigned int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int av_image_get_buffer_size (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ ff_combine_frame (TYPE_1__*,int,int /*<<< orphan*/  const**,int*) ; 
- scalar_t__ ff_pnm_decode_header (TYPE_5__*,TYPE_3__*) ; 
- int /*<<< orphan*/  const* memchr (int /*<<< orphan*/  const*,char,int) ; 
- int /*<<< orphan*/  memmove (scalar_t__,scalar_t__,scalar_t__) ; 
+
+ int END_NOT_FOUND ;
+ unsigned int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int av_assert0 (int) ;
+ int av_image_get_buffer_size (int ,int ,int ,int) ;
+ scalar_t__ ff_combine_frame (TYPE_1__*,int,int const**,int*) ;
+ scalar_t__ ff_pnm_decode_header (TYPE_5__*,TYPE_3__*) ;
+ int const* memchr (int const*,char,int) ;
+ int memmove (scalar_t__,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int pnm_parse(AVCodecParserContext *s, AVCodecContext *avctx,
                      const uint8_t **poutbuf, int *poutbuf_size,
@@ -50,7 +50,7 @@ __attribute__((used)) static int pnm_parse(AVCodecParserContext *s, AVCodecConte
 
     if (pc->overread > 0) {
         memmove(pc->buffer + pc->index, pc->buffer + pc->overread_index, pc->overread);
-        pc->index          += pc->overread;
+        pc->index += pc->overread;
         pc->overread_index += pc->overread;
         pc->overread = 0;
     }
@@ -68,12 +68,12 @@ __attribute__((used)) static int pnm_parse(AVCodecParserContext *s, AVCodecConte
 retry:
     if (pc->index) {
         pnmctx.bytestream_start =
-        pnmctx.bytestream       = pc->buffer;
-        pnmctx.bytestream_end   = pc->buffer + pc->index;
+        pnmctx.bytestream = pc->buffer;
+        pnmctx.bytestream_end = pc->buffer + pc->index;
     } else {
         pnmctx.bytestream_start =
-        pnmctx.bytestream       = (uint8_t *) buf + skip; /* casts avoid warnings */
-        pnmctx.bytestream_end   = (uint8_t *) buf + buf_size - skip;
+        pnmctx.bytestream = (uint8_t *) buf + skip;
+        pnmctx.bytestream_end = (uint8_t *) buf + buf_size - skip;
     }
     if (ff_pnm_decode_header(avctx, &pnmctx) < 0) {
         if (pnmctx.bytestream < pnmctx.bytestream_end) {
@@ -88,9 +88,9 @@ retry:
             goto retry;
         }
     } else if (pnmctx.type < 4) {
-              uint8_t *bs  = pnmctx.bytestream;
+              uint8_t *bs = pnmctx.bytestream;
         const uint8_t *end = pnmctx.bytestream_end;
-        uint8_t *sync      = bs;
+        uint8_t *sync = bs;
 
         if (pc->index) {
             av_assert0(pnmpc->ascii_scan <= end - bs);
@@ -101,7 +101,7 @@ retry:
             int c;
             sync = bs;
             c = *bs++;
-            if (c == '#')  {
+            if (c == '#') {
                 uint8_t *match = memchr(bs, '\n', end-bs);
                 if (match)
                     bs = match + 1;
@@ -127,11 +127,11 @@ retry:
     }
 end:
     if (ff_combine_frame(pc, next, &buf, &buf_size) < 0) {
-        *poutbuf      = NULL;
+        *poutbuf = ((void*)0);
         *poutbuf_size = 0;
         return buf_size;
     }
-    *poutbuf      = buf;
+    *poutbuf = buf;
     *poutbuf_size = buf_size;
     return next;
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int msgused; int hdrsize; unsigned char* hdrbuf; int request_id; TYPE_2__* msglist; } ;
-typedef  TYPE_3__ conn ;
-typedef  void* caddr_t ;
-struct TYPE_9__ {int /*<<< orphan*/  malloc_fails; } ;
+typedef TYPE_3__ conn ;
+typedef void* caddr_t ;
+struct TYPE_9__ {int malloc_fails; } ;
 struct TYPE_7__ {TYPE_1__* msg_iov; } ;
 struct TYPE_6__ {int iov_len; void* iov_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATS_LOCK () ; 
- int /*<<< orphan*/  STATS_UNLOCK () ; 
- int UDP_HEADER_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- void* malloc (int) ; 
- void* realloc (unsigned char*,int) ; 
- TYPE_4__ stats ; 
+
+ int STATS_LOCK () ;
+ int STATS_UNLOCK () ;
+ int UDP_HEADER_SIZE ;
+ int assert (int) ;
+ void* malloc (int) ;
+ void* realloc (unsigned char*,int) ;
+ TYPE_4__ stats ;
 
 __attribute__((used)) static int build_udp_headers(conn *c) {
     int i;
     unsigned char *hdr;
 
-    assert(c != NULL);
+    assert(c != ((void*)0));
 
     if (c->msgused > c->hdrsize) {
         void *new_hdrbuf;

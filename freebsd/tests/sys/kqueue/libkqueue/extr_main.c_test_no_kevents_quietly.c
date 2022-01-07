@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  timeo ;
+
+
+
+
+typedef int timeo ;
 struct timespec {int dummy; } ;
 struct kevent {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errx (int,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int kevent (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct kevent*,int,struct timespec*) ; 
- char* kevent_to_str (struct kevent*) ; 
- int /*<<< orphan*/  kqfd ; 
- int /*<<< orphan*/  memset (struct timespec*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  puts (char*) ; 
 
-void 
+ int errx (int,char*,int) ;
+ int free (char*) ;
+ int kevent (int ,int *,int ,struct kevent*,int,struct timespec*) ;
+ char* kevent_to_str (struct kevent*) ;
+ int kqfd ;
+ int memset (struct timespec*,int ,int) ;
+ int puts (char*) ;
+
+void
 test_no_kevents_quietly(void)
 {
     int nfds;
@@ -32,7 +32,7 @@ test_no_kevents_quietly(void)
     char *kev_str;
 
     memset(&timeo, 0, sizeof(timeo));
-    nfds = kevent(kqfd, NULL, 0, &kev, 1, &timeo);
+    nfds = kevent(kqfd, ((void*)0), 0, &kev, 1, &timeo);
     if (nfds != 0) {
         puts("\nUnexpected event:");
         kev_str = kevent_to_str(&kev);

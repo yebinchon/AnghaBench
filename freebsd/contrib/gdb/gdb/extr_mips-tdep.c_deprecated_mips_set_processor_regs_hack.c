@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gdbarch_tdep {int /*<<< orphan*/  mips_processor_reg_names; } ;
-typedef  int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRID_REGNUM ; 
- int /*<<< orphan*/  current_gdbarch ; 
- struct gdbarch_tdep* gdbarch_tdep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mips_r3041_reg_names ; 
- int read_register (int /*<<< orphan*/ ) ; 
+
+
+
+struct gdbarch_tdep {int mips_processor_reg_names; } ;
+typedef int CORE_ADDR ;
+
+
+ int PRID_REGNUM ;
+ int current_gdbarch ;
+ struct gdbarch_tdep* gdbarch_tdep (int ) ;
+ int mips_r3041_reg_names ;
+ int read_register (int ) ;
 
 void
 deprecated_mips_set_processor_regs_hack (void)

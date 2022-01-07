@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {int dummy; } ;
-struct timer_spec {int /*<<< orphan*/  value; int /*<<< orphan*/  interval; } ;
-struct timer {int running; int /*<<< orphan*/  lock; int /*<<< orphan*/  thread; int /*<<< orphan*/  interval; struct timespec start; int /*<<< orphan*/  end; } ;
+struct timer_spec {int value; int interval; } ;
+struct timer {int running; int lock; int thread; int interval; struct timespec start; int end; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct timer*) ; 
- int /*<<< orphan*/  pthread_detach (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_thread ; 
- int /*<<< orphan*/  timespec_add (struct timespec,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timespec_is_zero (int /*<<< orphan*/ ) ; 
- struct timespec timespec_now () ; 
- int /*<<< orphan*/  timespec_subtract (int /*<<< orphan*/ ,struct timespec) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ int SIGUSR1 ;
+ int lock (int *) ;
+ int pthread_create (int *,int *,int ,struct timer*) ;
+ int pthread_detach (int ) ;
+ int pthread_kill (int ,int ) ;
+ int timer_thread ;
+ int timespec_add (struct timespec,int ) ;
+ int timespec_is_zero (int ) ;
+ struct timespec timespec_now () ;
+ int timespec_subtract (int ,struct timespec) ;
+ int unlock (int *) ;
 
 int timer_set(struct timer *timer, struct timer_spec spec, struct timer_spec *oldspec) {
     lock(&timer->lock);
     struct timespec now = timespec_now();
-    if (oldspec != NULL) {
+    if (oldspec != ((void*)0)) {
         oldspec->value = timespec_subtract(timer->end, now);
         oldspec->interval = timer->interval;
     }
@@ -40,13 +40,13 @@ int timer_set(struct timer *timer, struct timer_spec spec, struct timer_spec *ol
     timer->interval = spec.interval;
     if (!timespec_is_zero(spec.value)) {
         if (!timer->running) {
-            timer->running = true;
-            pthread_create(&timer->thread, NULL, timer_thread, timer);
+            timer->running = 1;
+            pthread_create(&timer->thread, ((void*)0), timer_thread, timer);
             pthread_detach(timer->thread);
         }
     } else {
         if (timer->running) {
-            timer->running = false;
+            timer->running = 0;
             pthread_kill(timer->thread, SIGUSR1);
         }
     }

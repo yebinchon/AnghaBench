@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pfn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kvm_is_mmio_pfn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pfn_to_page (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_page (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pfn_t ;
+
+
+ int kvm_is_mmio_pfn (int ) ;
+ int pfn_to_page (int ) ;
+ int put_page (int ) ;
 
 void kvm_release_pfn_clean(pfn_t pfn)
 {
-	if (!kvm_is_mmio_pfn(pfn))
-		put_page(pfn_to_page(pfn));
+ if (!kvm_is_mmio_pfn(pfn))
+  put_page(pfn_to_page(pfn));
 }

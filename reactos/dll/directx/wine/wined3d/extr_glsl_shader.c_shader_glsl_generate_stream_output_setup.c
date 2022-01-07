@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_stream_output_element {unsigned int component_idx; int component_count; int /*<<< orphan*/  register_idx; scalar_t__ stream_idx; } ;
+struct wined3d_stream_output_element {unsigned int component_idx; int component_count; int register_idx; scalar_t__ stream_idx; } ;
 struct wined3d_stream_output_desc {unsigned int element_count; struct wined3d_stream_output_element* elements; } ;
 struct wined3d_shader {TYPE_1__* limits; } ;
 struct shader_glsl_priv {struct wined3d_string_buffer shader_buffer; } ;
-struct TYPE_2__ {int /*<<< orphan*/  packed_output; } ;
-typedef  unsigned int DWORD ;
+struct TYPE_2__ {int packed_output; } ;
+typedef unsigned int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,scalar_t__) ; 
- int /*<<< orphan*/  WINED3D_STREAM_OUTPUT_GAP ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_glsl_write_mask_to_str (unsigned int,char*) ; 
+
+ int FIXME (char*,scalar_t__) ;
+ int WINED3D_STREAM_OUTPUT_GAP ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_glsl_write_mask_to_str (unsigned int,char*) ;
 
 __attribute__((used)) static void shader_glsl_generate_stream_output_setup(struct shader_glsl_priv *priv,
         const struct wined3d_shader *shader, const struct wined3d_stream_output_desc *so_desc)

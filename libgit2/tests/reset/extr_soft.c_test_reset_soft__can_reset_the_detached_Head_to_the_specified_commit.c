@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert_reset_soft (int) ; 
- int /*<<< orphan*/  git_repository_detach_head (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  repo ; 
+ int assert_reset_soft (int) ;
+ int git_repository_detach_head (int ) ;
+ int repo ;
 
 void test_reset_soft__can_reset_the_detached_Head_to_the_specified_commit(void)
 {
-	git_repository_detach_head(repo);
+ git_repository_detach_head(repo);
 
-	assert_reset_soft(true);
+ assert_reset_soft(1);
 }

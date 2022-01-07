@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int long_locked_until; int long_lock_heap_pos; } ;
-typedef  TYPE_1__ transaction_t ;
+typedef TYPE_1__ transaction_t ;
 
-/* Variables and functions */
- TYPE_1__** LH ; 
- int LHN ; 
+
+ TYPE_1__** LH ;
+ int LHN ;
 
 __attribute__((used)) static int lock_heap_adjust (int i, transaction_t *T) {
   int j, x = T->long_locked_until;

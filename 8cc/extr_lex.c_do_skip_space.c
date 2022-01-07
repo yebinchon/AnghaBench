@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
- scalar_t__ iswhitespace (int) ; 
- scalar_t__ next (char) ; 
- int readc () ; 
- int /*<<< orphan*/  skip_block_comment () ; 
- int /*<<< orphan*/  skip_line () ; 
- int /*<<< orphan*/  unreadc (int) ; 
+ int EOF ;
+ scalar_t__ iswhitespace (int) ;
+ scalar_t__ next (char) ;
+ int readc () ;
+ int skip_block_comment () ;
+ int skip_line () ;
+ int unreadc (int) ;
 
 __attribute__((used)) static bool do_skip_space() {
     int c = readc();
     if (c == EOF)
-        return false;
+        return 0;
     if (iswhitespace(c))
-        return true;
+        return 1;
     if (c == '/') {
         if (next('*')) {
             skip_block_comment();
-            return true;
+            return 1;
         }
         if (next('/')) {
             skip_line();
-            return true;
+            return 1;
         }
     }
     unreadc(c);
-    return false;
+    return 0;
 }

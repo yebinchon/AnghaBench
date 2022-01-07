@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
 struct siphash {int v0; int v1; int v2; int v3; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_se (int) ; 
- int siphash24 (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  siphash24_compress (int /*<<< orphan*/  const*,size_t,struct siphash*) ; 
- int siphash24_finalize (struct siphash*) ; 
- int /*<<< orphan*/  siphash24_init (struct siphash*,int /*<<< orphan*/  const*) ; 
+
+ int assert_se (int) ;
+ int siphash24 (int const*,size_t,int const*) ;
+ int siphash24_compress (int const*,size_t,struct siphash*) ;
+ int siphash24_finalize (struct siphash*) ;
+ int siphash24_init (struct siphash*,int const*) ;
 
 __attribute__((used)) static void do_test(const uint8_t *in, size_t len, const uint8_t *key) {
         struct siphash state = {};
@@ -29,7 +29,7 @@ __attribute__((used)) static void do_test(const uint8_t *in, size_t len, const u
         out = siphash24(in, len, key);
         assert_se(out == 0xa129ca6149be45e5);
 
-        /* verify the internal state as given in the above paper */
+
         siphash24_init(&state, key);
         assert_se(state.v0 == 0x7469686173716475);
         assert_se(state.v1 == 0x6b617f6d656e6665);
@@ -47,8 +47,8 @@ __attribute__((used)) static void do_test(const uint8_t *in, size_t len, const u
         assert_se(state.v2 == 0x1b38329c099bb55a);
         assert_se(state.v3 == 0x1814bb89ad7be679);
 
-        /* verify that decomposing the input in three chunks gives the
-           same result */
+
+
         for (i = 0; i < len; i++) {
                 for (j = i; j < len; j++) {
                         siphash24_init(&state, key);

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PrintBuiltins () ; 
- int /*<<< orphan*/  PrintRenderingIntents (int /*<<< orphan*/ *) ; 
- int SW ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+ int PrintBuiltins () ;
+ int PrintRenderingIntents (int *) ;
+ int SW ;
+ int exit (int ) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static
 int Help(int level)
@@ -34,7 +26,7 @@ int Help(int level)
          fprintf(stderr, "flags:\n\n");
          fprintf(stderr, "%co<profile> - Output devicelink profile. [defaults to 'devicelink.icc']\n", SW);
 
-         PrintRenderingIntents(NULL);
+         PrintRenderingIntents(((void*)0));
 
          fprintf(stderr, "%cc<0,1,2> - Precision (0=LowRes, 1=Normal, 2=Hi-res) [defaults to 1]\n", SW);
          fprintf(stderr, "%cn<gridpoints> - Alternate way to set precision, number of CLUT points\n", SW);

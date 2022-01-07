@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct connectdata {struct Curl_easy* data; } ;
 struct TYPE_2__ {scalar_t__ use_ssl; } ;
 struct Curl_easy {TYPE_1__ set; } ;
-typedef  int /*<<< orphan*/  pop3state ;
-typedef  int /*<<< orphan*/  CURLcode ;
+typedef int pop3state ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_USE_SSL_FAILED ; 
- scalar_t__ CURLUSESSL_TRY ; 
- int /*<<< orphan*/  failf (struct Curl_easy*,char*) ; 
- int /*<<< orphan*/  pop3_perform_authentication (struct connectdata*) ; 
- int /*<<< orphan*/  pop3_perform_upgrade_tls (struct connectdata*) ; 
+
+ int CURLE_OK ;
+ int CURLE_USE_SSL_FAILED ;
+ scalar_t__ CURLUSESSL_TRY ;
+ int failf (struct Curl_easy*,char*) ;
+ int pop3_perform_authentication (struct connectdata*) ;
+ int pop3_perform_upgrade_tls (struct connectdata*) ;
 
 __attribute__((used)) static CURLcode pop3_state_starttls_resp(struct connectdata *conn,
                                          int pop3code,
@@ -32,7 +32,7 @@ __attribute__((used)) static CURLcode pop3_state_starttls_resp(struct connectdat
   CURLcode result = CURLE_OK;
   struct Curl_easy *data = conn->data;
 
-  (void)instate; /* no use for this yet */
+  (void)instate;
 
   if(pop3code != '+') {
     if(data->set.use_ssl != CURLUSESSL_TRY) {

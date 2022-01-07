@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_count; int /*<<< orphan*/  i_mtime; int /*<<< orphan*/  i_ctime; } ;
+
+
+
+
+struct inode {int i_count; int i_mtime; int i_ctime; } ;
 struct dentry {struct inode* d_inode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURRENT_TIME ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d_instantiate (struct dentry*,struct inode*) ; 
- int /*<<< orphan*/  dget (struct dentry*) ; 
- int /*<<< orphan*/  inc_nlink (struct inode*) ; 
+
+ int CURRENT_TIME ;
+ int atomic_inc (int *) ;
+ int d_instantiate (struct dentry*,struct inode*) ;
+ int dget (struct dentry*) ;
+ int inc_nlink (struct inode*) ;
 
 int simple_link(struct dentry *old_dentry, struct inode *dir, struct dentry *dentry)
 {
-	struct inode *inode = old_dentry->d_inode;
+ struct inode *inode = old_dentry->d_inode;
 
-	inode->i_ctime = dir->i_ctime = dir->i_mtime = CURRENT_TIME;
-	inc_nlink(inode);
-	atomic_inc(&inode->i_count);
-	dget(dentry);
-	d_instantiate(dentry, inode);
-	return 0;
+ inode->i_ctime = dir->i_ctime = dir->i_mtime = CURRENT_TIME;
+ inc_nlink(inode);
+ atomic_inc(&inode->i_count);
+ dget(dentry);
+ d_instantiate(dentry, inode);
+ return 0;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct TYPE_2__ {struct mlxsw_sp_acl_profile_ops* ops; } ;
-struct mlxsw_sp_acl_ruleset {int /*<<< orphan*/  priv; TYPE_1__ ht_key; } ;
-struct mlxsw_sp_acl_profile_ops {int /*<<< orphan*/  (* ruleset_group_id ) (int /*<<< orphan*/ ) ;} ;
+struct mlxsw_sp_acl_ruleset {int priv; TYPE_1__ ht_key; } ;
+struct mlxsw_sp_acl_profile_ops {int (* ruleset_group_id ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int stub1 (int ) ;
 
 u16 mlxsw_sp_acl_ruleset_group_id(struct mlxsw_sp_acl_ruleset *ruleset)
 {
-	const struct mlxsw_sp_acl_profile_ops *ops = ruleset->ht_key.ops;
+ const struct mlxsw_sp_acl_profile_ops *ops = ruleset->ht_key.ops;
 
-	return ops->ruleset_group_id(ruleset->priv);
+ return ops->ruleset_group_id(ruleset->priv);
 }

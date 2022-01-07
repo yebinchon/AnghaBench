@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckOneRGB (int /*<<< orphan*/ *,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  CheckOneRGB_double (int /*<<< orphan*/ *,double,double,int,double,double,int) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  TYPE_BGR_16 ; 
- int /*<<< orphan*/  TYPE_RGB_16 ; 
- int /*<<< orphan*/  TYPE_RGB_DBL ; 
- int /*<<< orphan*/ * cmsCloneTransformChangingFormats (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int * cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+
+
+ int CheckOneRGB (int *,int,int,int,int,int,int) ;
+ int CheckOneRGB_double (int *,double,double,int,double,double,int) ;
+ int DbgThread () ;
+ int INTENT_PERCEPTUAL ;
+ int TYPE_BGR_16 ;
+ int TYPE_RGB_16 ;
+ int TYPE_RGB_DBL ;
+ int * cmsCloneTransformChangingFormats (int ,int *,int ,int ) ;
+ int cmsCloseProfile (int ,int ) ;
+ int * cmsCreateTransform (int ,int ,int ,int ,int ,int ,int ) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int *) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckChangeBufferFormat(void)
@@ -38,7 +38,7 @@ cmsInt32Number CheckChangeBufferFormat(void)
 
     xform = cmsCreateTransform(DbgThread(), hsRGB, TYPE_RGB_16, hsRGB, TYPE_RGB_16, INTENT_PERCEPTUAL, 0);
     cmsCloseProfile(DbgThread(), hsRGB);
-    if (xform == NULL) return 0;
+    if (xform == ((void*)0)) return 0;
 
 
     if (!CheckOneRGB(xform, 0, 0, 0, 0, 0, 0)) return 0;

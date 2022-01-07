@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- struct RClass* module_from_sym (int /*<<< orphan*/ *,struct RClass*,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_const_defined_at (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_module_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RClass*) ; 
- int /*<<< orphan*/  setup_class (int /*<<< orphan*/ *,struct RClass*,struct RClass*,int /*<<< orphan*/ ) ; 
+
+ struct RClass* module_from_sym (int *,struct RClass*,int ) ;
+ scalar_t__ mrb_const_defined_at (int *,int ,int ) ;
+ struct RClass* mrb_module_new (int *) ;
+ int mrb_obj_value (struct RClass*) ;
+ int setup_class (int *,struct RClass*,struct RClass*,int ) ;
 
 __attribute__((used)) static struct RClass*
 define_module(mrb_state *mrb, mrb_sym name, struct RClass *outer)

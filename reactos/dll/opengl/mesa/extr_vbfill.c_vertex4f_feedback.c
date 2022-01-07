@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct vertex_buffer {size_t Count; int /*<<< orphan*/ * Edgeflag; int /*<<< orphan*/ * TexCoord; int /*<<< orphan*/ * Normal; int /*<<< orphan*/ * Findex; int /*<<< orphan*/ * Fcolor; int /*<<< orphan*/ * Obj; } ;
-struct TYPE_5__ {int /*<<< orphan*/  EdgeFlag; int /*<<< orphan*/  TexCoord; int /*<<< orphan*/  Normal; int /*<<< orphan*/  Index; int /*<<< orphan*/  ByteColor; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct vertex_buffer {size_t Count; int * Edgeflag; int * TexCoord; int * Normal; int * Findex; int * Fcolor; int * Obj; } ;
+struct TYPE_5__ {int EdgeFlag; int TexCoord; int Normal; int Index; int ByteColor; } ;
 struct TYPE_6__ {TYPE_1__ Current; struct vertex_buffer* VB; } ;
-typedef  size_t GLuint ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  TYPE_2__ GLcontext ;
+typedef size_t GLuint ;
+typedef int GLfloat ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSIGN_4V (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COPY_3V (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COPY_4UBV (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COPY_4V (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FALSE ; 
- size_t VB_MAX ; 
- int /*<<< orphan*/  gl_transform_vb_part1 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int ASSIGN_4V (int ,int ,int ,int ,int ) ;
+ int COPY_3V (int ,int ) ;
+ int COPY_4UBV (int ,int ) ;
+ int COPY_4V (int ,int ) ;
+ int GL_FALSE ;
+ size_t VB_MAX ;
+ int gl_transform_vb_part1 (TYPE_2__*,int ) ;
 
 __attribute__((used)) static void vertex4f_feedback( GLcontext *ctx,
                                GLfloat x, GLfloat y, GLfloat z, GLfloat w )
@@ -34,22 +34,22 @@ __attribute__((used)) static void vertex4f_feedback( GLcontext *ctx,
    struct vertex_buffer *VB = ctx->VB;
    GLuint count = VB->Count;
 
-   /* vertex */
+
    ASSIGN_4V( VB->Obj[count], x, y, z, w );
 
-   /* color */
+
    COPY_4UBV( VB->Fcolor[count], ctx->Current.ByteColor );
 
-   /* index */
+
    VB->Findex[count] = ctx->Current.Index;
 
-   /* normal */
+
    COPY_3V( VB->Normal[count], ctx->Current.Normal );
 
-   /* texcoord */
+
    COPY_4V( VB->TexCoord[count], ctx->Current.TexCoord );
 
-   /* edgeflag */
+
    VB->Edgeflag[count] = ctx->Current.EdgeFlag;
 
    count++;

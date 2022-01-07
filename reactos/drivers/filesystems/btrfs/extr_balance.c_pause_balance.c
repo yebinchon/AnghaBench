@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int paused; int /*<<< orphan*/  event; int /*<<< orphan*/  thread; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int paused; int event; int thread; } ;
 struct TYPE_5__ {TYPE_1__ balance; } ;
-typedef  TYPE_2__ device_extension ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  KPROCESSOR_MODE ;
+typedef TYPE_2__ device_extension ;
+typedef int NTSTATUS ;
+typedef int KPROCESSOR_MODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KeClearEvent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlConvertLongToLuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SE_MANAGE_VOLUME_PRIVILEGE ; 
- int /*<<< orphan*/  STATUS_DEVICE_NOT_READY ; 
- int /*<<< orphan*/  STATUS_PRIVILEGE_NOT_HELD ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SeSinglePrivilegeCheck (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int KeClearEvent (int *) ;
+ int RtlConvertLongToLuid (int ) ;
+ int SE_MANAGE_VOLUME_PRIVILEGE ;
+ int STATUS_DEVICE_NOT_READY ;
+ int STATUS_PRIVILEGE_NOT_HELD ;
+ int STATUS_SUCCESS ;
+ int SeSinglePrivilegeCheck (int ,int ) ;
 
 NTSTATUS pause_balance(device_extension* Vcb, KPROCESSOR_MODE processor_mode) {
     if (!SeSinglePrivilegeCheck(RtlConvertLongToLuid(SE_MANAGE_VOLUME_PRIVILEGE), processor_mode))
@@ -37,7 +37,7 @@ NTSTATUS pause_balance(device_extension* Vcb, KPROCESSOR_MODE processor_mode) {
     if (Vcb->balance.paused)
         return STATUS_DEVICE_NOT_READY;
 
-    Vcb->balance.paused = true;
+    Vcb->balance.paused = 1;
     KeClearEvent(&Vcb->balance.event);
 
     return STATUS_SUCCESS;

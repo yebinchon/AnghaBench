@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rvt_qp {struct qib_qp_priv* priv; } ;
-struct qib_qp_priv {int /*<<< orphan*/ * s_tx; int /*<<< orphan*/  s_dma_busy; int /*<<< orphan*/  wait_dma; } ;
+struct qib_qp_priv {int * s_tx; int s_dma_busy; int wait_dma; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qib_put_txreq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wait_event (int /*<<< orphan*/ ,int) ; 
+
+ int atomic_read (int *) ;
+ int qib_put_txreq (int *) ;
+ int wait_event (int ,int) ;
 
 void qib_quiesce_qp(struct rvt_qp *qp)
 {
-	struct qib_qp_priv *priv = qp->priv;
+ struct qib_qp_priv *priv = qp->priv;
 
-	wait_event(priv->wait_dma, !atomic_read(&priv->s_dma_busy));
-	if (priv->s_tx) {
-		qib_put_txreq(priv->s_tx);
-		priv->s_tx = NULL;
-	}
+ wait_event(priv->wait_dma, !atomic_read(&priv->s_dma_busy));
+ if (priv->s_tx) {
+  qib_put_txreq(priv->s_tx);
+  priv->s_tx = ((void*)0);
+ }
 }

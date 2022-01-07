@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_5__ {int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_5__ {int minor; int major; } ;
 struct TYPE_6__ {TYPE_1__ version; } ;
-struct TYPE_7__ {TYPE_2__ args; int /*<<< orphan*/  request; } ;
-typedef  TYPE_3__ command ;
-typedef  int /*<<< orphan*/  amb_dev ;
+struct TYPE_7__ {TYPE_2__ args; int request; } ;
+typedef TYPE_3__ command ;
+typedef int amb_dev ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_INFO ; 
- int /*<<< orphan*/  PRINTK (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRB_GET_VERSION ; 
- int /*<<< orphan*/  TASK_UNINTERRUPTIBLE ; 
- int /*<<< orphan*/  be32_to_cpu (int /*<<< orphan*/ ) ; 
- scalar_t__ command_do (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  cpu_to_be32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  schedule () ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
+
+ int KERN_INFO ;
+ int PRINTK (int ,char*,int ,int ) ;
+ int SRB_GET_VERSION ;
+ int TASK_UNINTERRUPTIBLE ;
+ int be32_to_cpu (int ) ;
+ scalar_t__ command_do (int *,TYPE_3__*) ;
+ int cpu_to_be32 (int ) ;
+ int schedule () ;
+ int set_current_state (int ) ;
 
 __attribute__((used)) static void amb_ucode_version(amb_dev *dev)
 {

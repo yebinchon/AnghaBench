@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  WN; int /*<<< orphan*/ * od; int /*<<< orphan*/ * x; int /*<<< orphan*/ * W; int /*<<< orphan*/ * u; } ;
-struct TYPE_3__ {int /*<<< orphan*/  QN2; int /*<<< orphan*/  QN1; int /*<<< orphan*/ * objValueOut; int /*<<< orphan*/ * DyN; int /*<<< orphan*/ * objValueIn; int /*<<< orphan*/ * R2; int /*<<< orphan*/ * R1; int /*<<< orphan*/ * Q2; int /*<<< orphan*/ * Q1; int /*<<< orphan*/ * Dy; } ;
 
-/* Variables and functions */
- TYPE_2__ acadoVariables ; 
- TYPE_1__ acadoWorkspace ; 
- int /*<<< orphan*/  acado_evaluateLSQ (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acado_evaluateLSQEndTerm (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acado_setObjQ1Q2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  acado_setObjQN1QN2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acado_setObjR1R2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
 
-void acado_evaluateObjective(  )
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int WN; int * od; int * x; int * W; int * u; } ;
+struct TYPE_3__ {int QN2; int QN1; int * objValueOut; int * DyN; int * objValueIn; int * R2; int * R1; int * Q2; int * Q1; int * Dy; } ;
+
+
+ TYPE_2__ acadoVariables ;
+ TYPE_1__ acadoWorkspace ;
+ int acado_evaluateLSQ (int *,int *) ;
+ int acado_evaluateLSQEndTerm (int *,int *) ;
+ int acado_setObjQ1Q2 (int *,int *,int *,int *) ;
+ int acado_setObjQN1QN2 (int *,int ,int ,int ) ;
+ int acado_setObjR1R2 (int *,int *,int *,int *) ;
+
+void acado_evaluateObjective( )
 {
 int runObj;
 for (runObj = 0; runObj < 20; ++runObj)

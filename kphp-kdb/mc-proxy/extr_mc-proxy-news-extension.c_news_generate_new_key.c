@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct news_gather_extra {int mask; int st_time; int end_time; int request_tag; int user_mode; int user_id; } ;
 
-/* Variables and functions */
- scalar_t__ NEWS_G_EXTENSION ; 
- scalar_t__ NEWS_UG_EXTENSION ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int sprintf (char*,char*,int,int,...) ; 
+
+ scalar_t__ NEWS_G_EXTENSION ;
+ scalar_t__ NEWS_UG_EXTENSION ;
+ int assert (int ) ;
+ int sprintf (char*,char*,int,int,...) ;
 
 int news_generate_new_key (char *buff, char *key, int len, void *E) {
   struct news_gather_extra *extra = E;

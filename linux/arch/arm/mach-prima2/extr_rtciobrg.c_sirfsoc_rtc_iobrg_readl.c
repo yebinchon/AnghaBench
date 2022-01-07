@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long u32 ;
 
-/* Variables and functions */
- unsigned long __sirfsoc_rtc_iobrg_readl (unsigned long) ; 
- int /*<<< orphan*/  rtciobrg_lock ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+typedef unsigned long u32 ;
+
+
+ unsigned long __sirfsoc_rtc_iobrg_readl (unsigned long) ;
+ int rtciobrg_lock ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 u32 sirfsoc_rtc_iobrg_readl(u32 addr)
 {
-	unsigned long flags, val;
+ unsigned long flags, val;
 
-	/* TODO: add hwspinlock to sync with M3 */
-	spin_lock_irqsave(&rtciobrg_lock, flags);
 
-	val = __sirfsoc_rtc_iobrg_readl(addr);
+ spin_lock_irqsave(&rtciobrg_lock, flags);
 
-	spin_unlock_irqrestore(&rtciobrg_lock, flags);
+ val = __sirfsoc_rtc_iobrg_readl(addr);
 
-	return val;
+ spin_unlock_irqrestore(&rtciobrg_lock, flags);
+
+ return val;
 }

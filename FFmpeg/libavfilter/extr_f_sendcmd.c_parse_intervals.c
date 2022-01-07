@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Interval ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int) ; 
- int /*<<< orphan*/  SPACES ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * av_realloc_f (int /*<<< orphan*/ *,int,int) ; 
- int parse_interval (int /*<<< orphan*/ *,int,char const**,void*) ; 
- int /*<<< orphan*/  skip_comments (char const**) ; 
- int /*<<< orphan*/  strspn (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Interval ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ int SPACES ;
+ int av_log (void*,int ,char*,...) ;
+ int * av_realloc_f (int *,int,int) ;
+ int parse_interval (int *,int,char const**,void*) ;
+ int skip_comments (char const**) ;
+ int strspn (char const*,int ) ;
 
 __attribute__((used)) static int parse_intervals(Interval **intervals, int *nb_intervals,
                            const char *buf, void *log_ctx)
@@ -31,7 +31,7 @@ __attribute__((used)) static int parse_intervals(Interval **intervals, int *nb_i
     int interval_count = 0;
     int ret, n = 0;
 
-    *intervals = NULL;
+    *intervals = ((void*)0);
     *nb_intervals = 0;
 
     if (!buf)
@@ -55,13 +55,13 @@ __attribute__((used)) static int parse_intervals(Interval **intervals, int *nb_i
                        interval_count);
                 return AVERROR(EINVAL);
             }
-            buf++; /* skip ';' */
+            buf++;
         }
         interval_count++;
 
-        /* (re)allocate commands array if required */
+
         if (*nb_intervals == n) {
-            n = FFMAX(16, 2*n); /* first allocation = 16, or double the number */
+            n = FFMAX(16, 2*n);
             *intervals = av_realloc_f(*intervals, n, 2*sizeof(Interval));
             if (!*intervals) {
                 av_log(log_ctx, AV_LOG_ERROR,

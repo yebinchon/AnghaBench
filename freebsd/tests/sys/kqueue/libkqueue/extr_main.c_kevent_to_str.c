@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uintmax_t ;
-struct kevent {scalar_t__* ext; int /*<<< orphan*/  udata; scalar_t__ data; int /*<<< orphan*/  filter; scalar_t__ ident; } ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* kevent_fflags_dump (struct kevent*) ; 
- char* kevent_flags_dump (struct kevent*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* strdup (char*) ; 
+
+
+
+typedef int uintmax_t ;
+struct kevent {scalar_t__* ext; int udata; scalar_t__ data; int filter; scalar_t__ ident; } ;
+typedef int buf ;
+
+
+ int free (char*) ;
+ char* kevent_fflags_dump (struct kevent*) ;
+ char* kevent_flags_dump (struct kevent*) ;
+ int snprintf (char*,int,char*,int ,int ,char*,char*,int ,int ,int ,int ,int ,int ) ;
+ char* strdup (char*) ;
 
 char *
 kevent_to_str(struct kevent *kev)
@@ -28,7 +28,7 @@ kevent_to_str(struct kevent *kev)
     char *flags_str = kevent_flags_dump(kev);
     char *fflags_str = kevent_fflags_dump(kev);
 
-    snprintf(&buf[0], sizeof(buf), 
+    snprintf(&buf[0], sizeof(buf),
             "[ident=%ju, filter=%d, %s, %s, data=%jd, udata=%p, "
             "ext=[%jx %jx %jx %jx]",
             (uintmax_t) kev->ident,
@@ -44,6 +44,6 @@ kevent_to_str(struct kevent *kev)
 
     free(flags_str);
     free(fflags_str);
-    
+
     return (strdup(buf));
 }

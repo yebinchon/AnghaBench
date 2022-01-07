@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_audio {scalar_t__ mode; int /*<<< orphan*/  capability; int /*<<< orphan*/  name; scalar_t__ index; } ;
+
+
+
+
+struct v4l2_audio {scalar_t__ mode; int capability; int name; scalar_t__ index; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  V4L2_AUDCAP_STEREO ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ int V4L2_AUDCAP_STEREO ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static int si470x_vidioc_g_audio(struct file *file, void *priv,
-		struct v4l2_audio *audio)
+  struct v4l2_audio *audio)
 {
-	/* driver constants */
-	audio->index = 0;
-	strcpy(audio->name, "Radio");
-	audio->capability = V4L2_AUDCAP_STEREO;
-	audio->mode = 0;
 
-	return 0;
+ audio->index = 0;
+ strcpy(audio->name, "Radio");
+ audio->capability = V4L2_AUDCAP_STEREO;
+ audio->mode = 0;
+
+ return 0;
 }

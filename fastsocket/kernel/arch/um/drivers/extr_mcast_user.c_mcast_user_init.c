@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mcast_data {void* dev; int /*<<< orphan*/  port; int /*<<< orphan*/  addr; int /*<<< orphan*/  mcast_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  new_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mcast_data {void* dev; int port; int addr; int mcast_addr; } ;
+
+
+ int new_addr (int ,int ) ;
 
 __attribute__((used)) static int mcast_user_init(void *data, void *dev)
 {
-	struct mcast_data *pri = data;
+ struct mcast_data *pri = data;
 
-	pri->mcast_addr = new_addr(pri->addr, pri->port);
-	pri->dev = dev;
-	return 0;
+ pri->mcast_addr = new_addr(pri->addr, pri->port);
+ pri->dev = dev;
+ return 0;
 }

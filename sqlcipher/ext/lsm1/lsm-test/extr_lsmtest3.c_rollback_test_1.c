@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TestDb ;
-typedef  int /*<<< orphan*/  Datasource ;
-typedef  int /*<<< orphan*/  CksumDb ;
 
-/* Variables and functions */
- int TEST_CKSUM_BYTES ; 
- char* getName (char const*) ; 
- int /*<<< orphan*/  tdb_begin (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  tdb_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tdb_commit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int tdb_open (char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  tdb_rollback (int /*<<< orphan*/ *,int) ; 
- scalar_t__ tdb_transaction_support (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testCaseFinish (int) ; 
- int /*<<< orphan*/  testCaseSkip () ; 
- int /*<<< orphan*/  testCaseStart (int*,char*) ; 
- int /*<<< orphan*/  testCksumArrayFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testCksumArrayGet (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * testCksumArrayNew (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int const,int) ; 
- int /*<<< orphan*/  testCksumDatabase (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  testCompareInt (int,int,int*) ; 
- int /*<<< orphan*/  testCompareStr (char*,int /*<<< orphan*/ ,int*) ; 
- int testCountDatabase (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testFree (char*) ; 
- int /*<<< orphan*/  testWriteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int*) ; 
+
+
+
+typedef int TestDb ;
+typedef int Datasource ;
+typedef int CksumDb ;
+
+
+ int TEST_CKSUM_BYTES ;
+ char* getName (char const*) ;
+ int tdb_begin (int *,int) ;
+ int tdb_close (int *) ;
+ int tdb_commit (int *,int ) ;
+ int tdb_open (char const*,int ,int,int **) ;
+ int tdb_rollback (int *,int) ;
+ scalar_t__ tdb_transaction_support (int *) ;
+ int testCaseFinish (int) ;
+ int testCaseSkip () ;
+ int testCaseStart (int*,char*) ;
+ int testCksumArrayFree (int *) ;
+ int testCksumArrayGet (int *,int) ;
+ int * testCksumArrayNew (int *,int ,int const,int) ;
+ int testCksumDatabase (int *,char*) ;
+ int testCompareInt (int,int,int*) ;
+ int testCompareStr (char*,int ,int*) ;
+ int testCountDatabase (int *) ;
+ int testFree (char*) ;
+ int testWriteDatasourceRange (int *,int *,int,int,int*) ;
 
 __attribute__((used)) static int rollback_test_1(
   const char *zSystem,
@@ -66,7 +66,7 @@ __attribute__((used)) static int rollback_test_1(
     int nDbRow;
     int iTrans;
 
-    /* Check that the database is the expected size. */
+
     nDbRow = testCountDatabase(pDb);
     testCompareInt(nCurrent, nDbRow, &rc);
 

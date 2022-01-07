@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int sldns_str2wire_rr_buf_internal (char const*,int /*<<< orphan*/ *,size_t*,size_t*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *,size_t,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int sldns_str2wire_rr_buf_internal (char const*,int *,size_t*,size_t*,int ,int *,size_t,int *,size_t,int) ;
 
 int sldns_str2wire_rr_question_buf(const char* str, uint8_t* rr, size_t* len,
-	size_t* dname_len, uint8_t* origin, size_t origin_len, uint8_t* prev,
-	size_t prev_len)
+ size_t* dname_len, uint8_t* origin, size_t origin_len, uint8_t* prev,
+ size_t prev_len)
 {
-	return sldns_str2wire_rr_buf_internal(str, rr, len, dname_len,
-		0, origin, origin_len, prev, prev_len, 1);
+ return sldns_str2wire_rr_buf_internal(str, rr, len, dname_len,
+  0, origin, origin_len, prev, prev_len, 1);
 }

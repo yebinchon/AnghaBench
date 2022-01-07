@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_chmap {int num; scalar_t__* speaker; } ;
 
-/* Variables and functions */
- int MP_NUM_CHANNELS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ mp_chmap_is_unknown (struct mp_chmap const*) ; 
+
+ int MP_NUM_CHANNELS ;
+ int assert (int) ;
+ scalar_t__ mp_chmap_is_unknown (struct mp_chmap const*) ;
 
 void mp_chmap_get_reorder(int src[MP_NUM_CHANNELS], const struct mp_chmap *from,
                           const struct mp_chmap *to)

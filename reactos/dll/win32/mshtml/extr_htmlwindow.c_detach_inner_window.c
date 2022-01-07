@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  IHTMLWindow2_iface; TYPE_7__* outer_window; } ;
-struct TYPE_21__ {TYPE_6__ base; int /*<<< orphan*/  task_magic; TYPE_11__* doc; } ;
+
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+struct TYPE_19__ {int IHTMLWindow2_iface; TYPE_7__* outer_window; } ;
+struct TYPE_21__ {TYPE_6__ base; int task_magic; TYPE_11__* doc; } ;
 struct TYPE_18__ {TYPE_8__* inner_window; } ;
 struct TYPE_20__ {TYPE_5__ base; TYPE_2__* doc_obj; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * forward_container; } ;
+struct TYPE_16__ {int * forward_container; } ;
 struct TYPE_17__ {TYPE_3__ cp_container; } ;
 struct TYPE_14__ {TYPE_7__* window; } ;
 struct TYPE_15__ {TYPE_1__ basedoc; } ;
-struct TYPE_13__ {int /*<<< orphan*/  plugin_hosts; TYPE_4__ basedoc; } ;
-typedef  TYPE_7__ HTMLOuterWindow ;
-typedef  TYPE_8__ HTMLInnerWindow ;
+struct TYPE_13__ {int plugin_hosts; TYPE_4__ basedoc; } ;
+typedef TYPE_7__ HTMLOuterWindow ;
+typedef TYPE_8__ HTMLInnerWindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIST_ENTRY (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PluginHost ; 
- int /*<<< orphan*/  abort_window_bindings (TYPE_8__*) ; 
- int /*<<< orphan*/  detach_events (TYPE_11__*) ; 
- int /*<<< orphan*/  detach_plugin_host (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  entry ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_script_hosts (TYPE_8__*) ; 
- int /*<<< orphan*/  remove_target_tasks (int /*<<< orphan*/ ) ; 
+
+ int IHTMLWindow2_Release (int *) ;
+ int LIST_ENTRY (int ,int ,int ) ;
+ int PluginHost ;
+ int abort_window_bindings (TYPE_8__*) ;
+ int detach_events (TYPE_11__*) ;
+ int detach_plugin_host (int ) ;
+ int entry ;
+ int list_empty (int *) ;
+ int list_head (int *) ;
+ int release_script_hosts (TYPE_8__*) ;
+ int remove_target_tasks (int ) ;
 
 __attribute__((used)) static void detach_inner_window(HTMLInnerWindow *window)
 {
     HTMLOuterWindow *outer_window = window->base.outer_window;
 
     if(outer_window && outer_window->doc_obj && outer_window == outer_window->doc_obj->basedoc.window)
-        window->doc->basedoc.cp_container.forward_container = NULL;
+        window->doc->basedoc.cp_container.forward_container = ((void*)0);
 
     if(window->doc) {
         detach_events(window->doc);
@@ -60,10 +60,10 @@ __attribute__((used)) static void detach_inner_window(HTMLInnerWindow *window)
     abort_window_bindings(window);
     remove_target_tasks(window->task_magic);
     release_script_hosts(window);
-    window->base.outer_window = NULL;
+    window->base.outer_window = ((void*)0);
 
     if(outer_window && outer_window->base.inner_window == window) {
-        outer_window->base.inner_window = NULL;
+        outer_window->base.inner_window = ((void*)0);
         IHTMLWindow2_Release(&window->base.IHTMLWindow2_iface);
     }
 }

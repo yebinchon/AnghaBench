@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listree_t ;
-typedef  int /*<<< orphan*/  list_t ;
-typedef  int /*<<< orphan*/  list_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAXINT ; 
- int MAX_RES ; 
- int /*<<< orphan*/  OTree ; 
- scalar_t__ R ; 
- scalar_t__ R_end ; 
- int /*<<< orphan*/ * __get_list_f (int /*<<< orphan*/ ,int) ; 
- int account_date_buckets ; 
- int account_date_step ; 
- int account_max_date ; 
- int account_min_date ; 
- int /*<<< orphan*/  barray_account_date ; 
- int /*<<< orphan*/  btree_account_date ; 
- int /*<<< orphan*/  carray_account_date ; 
- scalar_t__ conv_list_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctree_account_date ; 
- int /*<<< orphan*/  in_array ; 
- int /*<<< orphan*/  in_tree ; 
- int /*<<< orphan*/  listree_get_range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_o_tree_sub (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- scalar_t__ metafile_mode ; 
- scalar_t__ prepare_list_metafile (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unpack_metafile_pointers (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int listree_t ;
+typedef int list_t ;
+typedef int list_id_t ;
+
+
+ int MAXINT ;
+ int MAX_RES ;
+ int OTree ;
+ scalar_t__ R ;
+ scalar_t__ R_end ;
+ int * __get_list_f (int ,int) ;
+ int account_date_buckets ;
+ int account_date_step ;
+ int account_max_date ;
+ int account_min_date ;
+ int barray_account_date ;
+ int btree_account_date ;
+ int carray_account_date ;
+ scalar_t__ conv_list_id (int ) ;
+ int ctree_account_date ;
+ int in_array ;
+ int in_tree ;
+ int listree_get_range (int *,int ,int ) ;
+ int load_o_tree_sub (int *,int) ;
+ int memset (scalar_t__,int ,int) ;
+ scalar_t__ metafile_mode ;
+ scalar_t__ prepare_list_metafile (int ,int) ;
+ int unpack_metafile_pointers (int *) ;
 
 int prepare_list_date_distr (list_id_t list_id, int mode, int min_date, int max_date, int step) {
   if (min_date <= 0 || max_date <= min_date || step <= 0 || (unsigned) mode >= 16) {
@@ -79,10 +79,10 @@ int prepare_list_date_distr (list_id_t list_id, int mode, int min_date, int max_
   account_max_date = max_date;
   account_date_step = step;
   account_date_buckets = buckets;
-  
+
   listree_get_range (LT, 0, MAXINT);
 
   R_end = R + buckets + 2;
-  
+
   return buckets + 2;
 }

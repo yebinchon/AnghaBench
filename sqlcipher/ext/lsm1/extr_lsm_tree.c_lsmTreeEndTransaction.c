@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  aCksum; } ;
-struct TYPE_7__ {int /*<<< orphan*/  rollback; int /*<<< orphan*/  pEnv; TYPE_3__ treehdr; TYPE_2__* pShmhdr; } ;
-typedef  TYPE_1__ lsm_db ;
-typedef  int /*<<< orphan*/  TreeHeader ;
-struct TYPE_8__ {scalar_t__ bWriter; int /*<<< orphan*/  hdr1; int /*<<< orphan*/  hdr2; } ;
-typedef  TYPE_2__ ShmHeader ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  intArrayFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmShmBarrier (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int /*<<< orphan*/  treeHeaderChecksum (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int aCksum; } ;
+struct TYPE_7__ {int rollback; int pEnv; TYPE_3__ treehdr; TYPE_2__* pShmhdr; } ;
+typedef TYPE_1__ lsm_db ;
+typedef int TreeHeader ;
+struct TYPE_8__ {scalar_t__ bWriter; int hdr1; int hdr2; } ;
+typedef TYPE_2__ ShmHeader ;
+
+
+ int LSM_OK ;
+ int intArrayFree (int ,int *) ;
+ int lsmShmBarrier (TYPE_1__*) ;
+ int memcpy (int *,TYPE_3__*,int) ;
+ int treeHeaderChecksum (TYPE_3__*,int ) ;
 
 int lsmTreeEndTransaction(lsm_db *pDb, int bCommit){
   ShmHeader *pShm = pDb->pShmhdr;

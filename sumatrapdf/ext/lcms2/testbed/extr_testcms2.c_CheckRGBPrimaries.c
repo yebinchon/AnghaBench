@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-struct TYPE_7__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int cmsHPROFILE ;
+struct TYPE_7__ {int y; int x; } ;
 struct TYPE_5__ {TYPE_3__ Blue; TYPE_3__ Green; TYPE_3__ Red; } ;
-typedef  TYPE_1__ cmsCIExyYTRIPLE ;
-struct TYPE_6__ {int /*<<< orphan*/  Blue; int /*<<< orphan*/  Green; int /*<<< orphan*/  Red; } ;
-typedef  TYPE_2__ cmsCIEXYZTRIPLE ;
-typedef  int /*<<< orphan*/  cmsBool ;
+typedef TYPE_1__ cmsCIExyYTRIPLE ;
+struct TYPE_6__ {int Blue; int Green; int Red; } ;
+typedef TYPE_2__ cmsCIEXYZTRIPLE ;
+typedef int cmsBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int FALSE ; 
- int /*<<< orphan*/  Fail (char*) ; 
- int /*<<< orphan*/  GetProfileRGBPrimaries (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INTENT_ABSOLUTE_COLORIMETRIC ; 
- int /*<<< orphan*/  IsGoodFixed15_16 (char*,int /*<<< orphan*/ ,double) ; 
- int TRUE ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSetAdaptationState (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsXYZ2xyY (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int DbgThread () ;
+ int FALSE ;
+ int Fail (char*) ;
+ int GetProfileRGBPrimaries (int ,TYPE_2__*,int ) ;
+ int INTENT_ABSOLUTE_COLORIMETRIC ;
+ int IsGoodFixed15_16 (char*,int ,double) ;
+ int TRUE ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsSetAdaptationState (int ,int ) ;
+ int cmsXYZ2xyY (int ,TYPE_3__*,int *) ;
 
 __attribute__((used)) static
 int CheckRGBPrimaries(void)
@@ -56,8 +56,8 @@ int CheckRGBPrimaries(void)
     cmsXYZ2xyY(DbgThread(), &tripxyY.Green, &tripXYZ.Green);
     cmsXYZ2xyY(DbgThread(), &tripxyY.Blue, &tripXYZ.Blue);
 
-    /* valus were taken from
-    http://en.wikipedia.org/wiki/RGB_color_spaces#Specifications */
+
+
 
     if (!IsGoodFixed15_16("xRed", tripxyY.Red.x, 0.64) ||
         !IsGoodFixed15_16("yRed", tripxyY.Red.y, 0.33) ||

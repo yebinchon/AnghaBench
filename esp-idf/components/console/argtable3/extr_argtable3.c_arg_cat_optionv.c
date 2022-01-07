@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  arg_cat (char**,char const*,size_t*) ; 
- size_t strcspn (char const*,char*) ; 
- int /*<<< orphan*/  strncat (char*,char const*,size_t) ; 
+ int arg_cat (char**,char const*,size_t*) ;
+ size_t strcspn (char const*,char*) ;
+ int strncat (char*,char const*,size_t) ;
 
 __attribute__((used)) static
 void arg_cat_optionv(char *dest,
@@ -32,11 +24,11 @@ void arg_cat_optionv(char *dest,
         const char *c = shortopts;
         while(*c)
         {
-            /* "-a|-b|-c" */
+
             char shortopt[3];
 
-            /* note: shortopt array[] is initialiazed dynamically here to satisfy */
-            /* a deficiency in the watcom compiler wrt static array initializers. */
+
+
             shortopt[0] = '-';
             shortopt[1] = *c;
             shortopt[2] = 0;
@@ -47,7 +39,7 @@ void arg_cat_optionv(char *dest,
         }
     }
 
-    /* put separator between long opts and short opts */
+
     if (shortopts && longopts)
         arg_cat(&dest, separator, &ndest);
 
@@ -58,15 +50,15 @@ void arg_cat_optionv(char *dest,
         {
             size_t ncspn;
 
-            /* add "--" tag prefix */
+
             arg_cat(&dest, "--", &ndest);
 
-            /* add comma separated option tag */
+
             ncspn = strcspn(c, ",");
             strncat(dest, c, (ncspn < ndest) ? ncspn : ndest);
             c += ncspn;
 
-            /* add given separator in place of comma */
+
             if (*c == ',')
             {
                 arg_cat(&dest, separator, &ndest);

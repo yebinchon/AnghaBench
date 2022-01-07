@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scsi_cmnd {void (* scsi_done ) (struct scsi_cmnd*) ;TYPE_1__* device; } ;
-struct TYPE_2__ {int /*<<< orphan*/  host; } ;
+struct TYPE_2__ {int host; } ;
 
-/* Variables and functions */
- int virtscsi_queuecommand (int /*<<< orphan*/ ,struct scsi_cmnd*) ; 
+
+ int virtscsi_queuecommand (int ,struct scsi_cmnd*) ;
 
 __attribute__((used)) static int virtscsi_queue(struct scsi_cmnd *sc, void (*done)(struct scsi_cmnd *))
 {
-	sc->scsi_done = done;
-	return virtscsi_queuecommand(sc->device->host, sc);
+ sc->scsi_done = done;
+ return virtscsi_queuecommand(sc->device->host, sc);
 }

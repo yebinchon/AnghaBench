@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_4__ {TYPE_3__* p_style; } ;
-typedef  TYPE_1__ stl_sg_t ;
-struct TYPE_5__ {int i_style_flags; int f_font_relsize; int i_background_color; int i_font_color; int /*<<< orphan*/  i_features; } ;
+typedef TYPE_1__ stl_sg_t ;
+struct TYPE_5__ {int i_style_flags; int f_font_relsize; int i_background_color; int i_font_color; int i_features; } ;
 
-/* Variables and functions */
- TYPE_3__* CreateGroupStyle () ; 
- int STYLE_BACKGROUND ; 
- int STYLE_DEFAULT_REL_FONT_SIZE ; 
- int STYLE_DOUBLEWIDTH ; 
- int STYLE_HALFWIDTH ; 
- int /*<<< orphan*/  STYLE_HAS_FONT_COLOR ; 
+
+ TYPE_3__* CreateGroupStyle () ;
+ int STYLE_BACKGROUND ;
+ int STYLE_DEFAULT_REL_FONT_SIZE ;
+ int STYLE_DOUBLEWIDTH ;
+ int STYLE_HALFWIDTH ;
+ int STYLE_HAS_FONT_COLOR ;
 
 __attribute__((used)) static void GroupParseTeletext(stl_sg_t *p_group, uint8_t code)
 {
-    if(p_group->p_style == NULL &&
+    if(p_group->p_style == ((void*)0) &&
       !(p_group->p_style = CreateGroupStyle()))
         return;
 
-    /* See ETS 300 706 Table 26 as EBU 3264 does only name values
-       and does not explain at all */
+
+
 
     static const uint32_t colors[] =
     {
@@ -47,7 +47,7 @@ __attribute__((used)) static void GroupParseTeletext(stl_sg_t *p_group, uint8_t 
         0xFFFFFF,
     };
 
-    /* Teletext data received, so we need to enable background */
+
     p_group->p_style->i_style_flags |= STYLE_BACKGROUND;
 
     switch(code)
@@ -57,19 +57,19 @@ __attribute__((used)) static void GroupParseTeletext(stl_sg_t *p_group, uint8_t 
             p_group->p_style->i_style_flags &= ~(STYLE_DOUBLEWIDTH|STYLE_HALFWIDTH);
             break;
 
-        case 0x0d: /* double height */
+        case 0x0d:
             p_group->p_style->f_font_relsize = STYLE_DEFAULT_REL_FONT_SIZE * 2;
             p_group->p_style->i_style_flags &= ~STYLE_DOUBLEWIDTH;
             p_group->p_style->i_style_flags |= STYLE_HALFWIDTH;
             break;
 
-        case 0x0e: /* double width */
+        case 0x0e:
             p_group->p_style->f_font_relsize = STYLE_DEFAULT_REL_FONT_SIZE;
             p_group->p_style->i_style_flags &= ~STYLE_HALFWIDTH;
             p_group->p_style->i_style_flags |= STYLE_DOUBLEWIDTH;
             break;
 
-        case 0x0f: /* double size */
+        case 0x0f:
             p_group->p_style->f_font_relsize = STYLE_DEFAULT_REL_FONT_SIZE * 2;
             p_group->p_style->i_style_flags &= ~(STYLE_DOUBLEWIDTH|STYLE_HALFWIDTH);
             break;
@@ -90,7 +90,7 @@ __attribute__((used)) static void GroupParseTeletext(stl_sg_t *p_group, uint8_t 
                 p_group->p_style->i_features |= STYLE_HAS_FONT_COLOR;
             }
 
-            /* Need to handle Mosaic ? Really ? */
+
             break;
     }
 

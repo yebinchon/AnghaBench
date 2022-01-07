@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int js_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  js_newstring (int /*<<< orphan*/ *,char*) ; 
- char* js_tostring (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int js_State ;
+
+
+ int js_gettop (int *) ;
+ int js_newstring (int *,char*) ;
+ char* js_tostring (int *,int) ;
 
 __attribute__((used)) static void jsB_new_String(js_State *J)
 {
-	js_newstring(J, js_gettop(J) > 1 ? js_tostring(J, 1) : "");
+ js_newstring(J, js_gettop(J) > 1 ? js_tostring(J, 1) : "");
 }

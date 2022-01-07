@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-union sigval {int /*<<< orphan*/  sival_ptr; } ;
+
+
+
+
+union sigval {int sival_ptr; } ;
 struct thread {int dummy; } ;
-struct sigqueue_args {int /*<<< orphan*/  signum; int /*<<< orphan*/  pid; int /*<<< orphan*/  value; } ;
+struct sigqueue_args {int signum; int pid; int value; } ;
 
-/* Variables and functions */
- int kern_sigqueue (struct thread*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,union sigval*) ; 
+
+ int kern_sigqueue (struct thread*,int ,int ,union sigval*) ;
 
 int
 sys_sigqueue(struct thread *td, struct sigqueue_args *uap)
 {
-	union sigval sv;
+ union sigval sv;
 
-	sv.sival_ptr = uap->value;
+ sv.sival_ptr = uap->value;
 
-	return (kern_sigqueue(td, uap->pid, uap->signum, &sv));
+ return (kern_sigqueue(td, uap->pid, uap->signum, &sv));
 }

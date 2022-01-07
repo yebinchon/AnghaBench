@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int cols; int rows; scalar_t__ status; TYPE_1__** box; int /*<<< orphan*/  boxes_left; int /*<<< orphan*/  face_bmp; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cols; int rows; scalar_t__ status; TYPE_1__** box; int boxes_left; int face_bmp; } ;
 struct TYPE_4__ {scalar_t__ FlagType; scalar_t__ NumMines; scalar_t__ IsMine; } ;
-typedef  TYPE_2__ BOARD ;
+typedef TYPE_2__ BOARD ;
 
-/* Variables and functions */
- scalar_t__ COMPLETE ; 
- int /*<<< orphan*/  DEAD_BMP ; 
- scalar_t__ FLAG ; 
- scalar_t__ GAMEOVER ; 
+
+ scalar_t__ COMPLETE ;
+ int DEAD_BMP ;
+ scalar_t__ FLAG ;
+ scalar_t__ GAMEOVER ;
 
 __attribute__((used)) static void CompleteBox( BOARD *p_board, unsigned col, unsigned row )
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void CompleteBox( BOARD *p_board, unsigned col, uns
         {
             for( i = -1; i <= 1; i++ )
             for( j = -1; j <= 1; j++ )
-                CompleteBox( p_board, col + i, row + j  );
+                CompleteBox( p_board, col + i, row + j );
         }
     }
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iclass {int /*<<< orphan*/  name; scalar_t__ is_class; } ;
 
-/* Variables and functions */
- struct iclass** ics ; 
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct iclass {int name; scalar_t__ is_class; } ;
+
+
+ struct iclass** ics ;
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 sub_compare (const void *e1, const void *e2)

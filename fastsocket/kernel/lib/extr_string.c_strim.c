@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isspace (char) ; 
- char* skip_spaces (char*) ; 
- size_t strlen (char*) ; 
+ scalar_t__ isspace (char) ;
+ char* skip_spaces (char*) ;
+ size_t strlen (char*) ;
 
 char *strim(char *s)
 {
-	size_t size;
-	char *end;
+ size_t size;
+ char *end;
 
-	size = strlen(s);
+ size = strlen(s);
 
-	if (!size)
-		return s;
+ if (!size)
+  return s;
 
-	end = s + size - 1;
-	while (end >= s && isspace(*end))
-		end--;
-	*(end + 1) = '\0';
+ end = s + size - 1;
+ while (end >= s && isspace(*end))
+  end--;
+ *(end + 1) = '\0';
 
-	return skip_spaces(s);
+ return skip_spaces(s);
 }

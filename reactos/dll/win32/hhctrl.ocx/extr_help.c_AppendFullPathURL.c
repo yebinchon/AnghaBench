@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetFullPathNameW (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ ,char const*,char*,char const*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int LPWSTR ;
+typedef char* LPCWSTR ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int FALSE ;
+ int GetFullPathNameW (char*,int ,char*,int *) ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int TRACE (char*,int ,int ,int ) ;
+ int TRUE ;
+ int WARN (char*,int ) ;
+ int debugstr_w (char*) ;
+ int wsprintfW (int ,char const*,char*,char const*,char*) ;
 
 __attribute__((used)) static BOOL AppendFullPathURL(LPCWSTR file, LPWSTR buf, LPCWSTR index)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static BOOL AppendFullPathURL(LPCWSTR file, LPWSTR buf, LP
 
     TRACE("%s %p %s\n", debugstr_w(file), buf, debugstr_w(index));
 
-    if (!GetFullPathNameW(file, ARRAY_SIZE(full_path), full_path, NULL)) {
+    if (!GetFullPathNameW(file, ARRAY_SIZE(full_path), full_path, ((void*)0))) {
         WARN("GetFullPathName failed: %u\n", GetLastError());
         return FALSE;
     }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8 ;
-typedef  int int8 ;
-typedef  int /*<<< orphan*/  flag ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint8 ;
+typedef int int8 ;
+typedef int flag ;
 struct TYPE_2__ {char* name; int numInputs; } ;
 
-/* Variables and functions */
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- size_t NUM_FUNCTIONS ; 
- int ROUND_DOWN ; 
- int ROUND_NEAREST_EVEN ; 
- int ROUND_TO_ZERO ; 
- int ROUND_UP ; 
- int TININESS_AFTER_ROUNDING ; 
- int TININESS_BEFORE_ROUNDING ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  fail (char*,...) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* functions ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  timeFunction (size_t,int,int,int) ; 
+
+ int EXIT_SUCCESS ;
+ int FALSE ;
+ size_t NUM_FUNCTIONS ;
+ int ROUND_DOWN ;
+ int ROUND_NEAREST_EVEN ;
+ int ROUND_TO_ZERO ;
+ int ROUND_UP ;
+ int TININESS_AFTER_ROUNDING ;
+ int TININESS_BEFORE_ROUNDING ;
+ int TRUE ;
+ int fail (char*,...) ;
+ int fputs (char*,int ) ;
+ TYPE_1__* functions ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int timeFunction (size_t,int,int,int) ;
 
 main( int argc, char **argv )
 {
@@ -58,11 +58,11 @@ main( int argc, char **argv )
 "timesoftfloat [<option>...] <function>\n"
 "  <option>:  (* is default)\n"
 "    -help            --Write this message and exit.\n"
-#ifdef FLOATX80
-"    -precision32     --Only time rounding precision equivalent to float32.\n"
-"    -precision64     --Only time rounding precision equivalent to float64.\n"
-"    -precision80     --Only time maximum rounding precision.\n"
-#endif
+
+
+
+
+
 "    -nearesteven     --Only time rounding to nearest/even.\n"
 "    -tozero          --Only time rounding to zero.\n"
 "    -down            --Only time rounding down.\n"
@@ -85,33 +85,22 @@ main( int argc, char **argv )
 "  <float>:\n"
 "    float32          --Single precision.\n"
 "    float64          --Double precision.\n"
-#ifdef FLOATX80
-"    floatx80         --Extended double precision.\n"
-#endif
-#ifdef FLOAT128
-"    float128         --Quadruple precision.\n"
-#endif
+
+
+
+
+
+
                 ,
                 stdout
             );
             return EXIT_SUCCESS;
         }
-#ifdef FLOATX80
-        else if ( strcmp( argPtr, "precision32" ) == 0 ) {
-            roundingPrecision = 32;
-        }
-        else if ( strcmp( argPtr, "precision64" ) == 0 ) {
-            roundingPrecision = 64;
-        }
-        else if ( strcmp( argPtr, "precision80" ) == 0 ) {
-            roundingPrecision = 80;
-        }
-#endif
-        else if (    ( strcmp( argPtr, "nearesteven" ) == 0 )
+        else if ( ( strcmp( argPtr, "nearesteven" ) == 0 )
                   || ( strcmp( argPtr, "nearest_even" ) == 0 ) ) {
             roundingMode = ROUND_NEAREST_EVEN;
         }
-        else if (    ( strcmp( argPtr, "tozero" ) == 0 )
+        else if ( ( strcmp( argPtr, "tozero" ) == 0 )
                   || ( strcmp( argPtr, "to_zero" ) == 0 ) ) {
             roundingMode = ROUND_TO_ZERO;
         }
@@ -145,7 +134,7 @@ main( int argc, char **argv )
         else {
             for ( functionCode = 1;
                   functionCode < NUM_FUNCTIONS;
-                  ++functionCode 
+                  ++functionCode
                 ) {
                 if ( strcmp( argPtr, functions[ functionCode ].name ) == 0 ) {
                     break;

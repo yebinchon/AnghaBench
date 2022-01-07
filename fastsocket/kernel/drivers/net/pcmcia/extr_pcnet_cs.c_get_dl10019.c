@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_char ;
+
+
+
+
+typedef int u_char ;
 struct pcmcia_device {struct net_device* priv; } ;
 struct net_device {scalar_t__ base_addr; scalar_t__* dev_addr; } ;
-typedef  int /*<<< orphan*/  hw_info_t ;
+typedef int hw_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dl10019_info ; 
- int /*<<< orphan*/  dl10022_info ; 
- int inb (scalar_t__) ; 
- scalar_t__ inb_p (scalar_t__) ; 
+
+ int dl10019_info ;
+ int dl10022_info ;
+ int inb (scalar_t__) ;
+ scalar_t__ inb_p (scalar_t__) ;
 
 __attribute__((used)) static hw_info_t *get_dl10019(struct pcmcia_device *link)
 {
@@ -28,11 +28,11 @@ __attribute__((used)) static hw_info_t *get_dl10019(struct pcmcia_device *link)
     u_char sum;
 
     for (sum = 0, i = 0x14; i < 0x1c; i++)
-	sum += inb_p(dev->base_addr + i);
+ sum += inb_p(dev->base_addr + i);
     if (sum != 0xff)
-	return NULL;
+ return ((void*)0);
     for (i = 0; i < 6; i++)
-	dev->dev_addr[i] = inb_p(dev->base_addr + 0x14 + i);
+ dev->dev_addr[i] = inb_p(dev->base_addr + 0x14 + i);
     i = inb(dev->base_addr + 0x1f);
     return ((i == 0x91)||(i == 0x99)) ? &dl10022_info : &dl10019_info;
 }

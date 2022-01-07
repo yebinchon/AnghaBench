@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * jobs; } ;
-typedef  TYPE_1__ async_pool ;
-typedef  int /*<<< orphan*/  ASYNC_JOB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  async_job_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sk_ASYNC_JOB_pop (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * jobs; } ;
+typedef TYPE_1__ async_pool ;
+typedef int ASYNC_JOB ;
+
+
+ int async_job_free (int *) ;
+ int * sk_ASYNC_JOB_pop (int *) ;
 
 __attribute__((used)) static void async_empty_pool(async_pool *pool)
 {
     ASYNC_JOB *job;
 
-    if (pool == NULL || pool->jobs == NULL)
+    if (pool == ((void*)0) || pool->jobs == ((void*)0))
         return;
 
     do {

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
 struct TYPE_20__ {scalar_t__ slice_temporal_mvp_enabled_flag; } ;
 struct TYPE_19__ {TYPE_3__* sps; } ;
 struct TYPE_24__ {TYPE_5__ sh; TYPE_4__ ps; TYPE_1__* ref; TYPE_8__* HEVClc; } ;
 struct TYPE_17__ {int cand_bottom_left; int cand_left; int cand_up_left; int cand_up; int cand_up_right_sap; } ;
 struct TYPE_23__ {TYPE_2__ na; } ;
-struct TYPE_22__ {scalar_t__ x; scalar_t__ y; int /*<<< orphan*/  member_0; } ;
+struct TYPE_22__ {scalar_t__ x; scalar_t__ y; int member_0; } ;
 struct TYPE_21__ {int* ref_idx; TYPE_7__* mv; } ;
 struct TYPE_18__ {int min_pu_width; int height; int width; } ;
 struct TYPE_16__ {TYPE_6__* tab_mvf; } ;
-typedef  TYPE_6__ MvField ;
-typedef  TYPE_7__ Mv ;
-typedef  TYPE_8__ HEVCLocalContext ;
-typedef  TYPE_9__ HEVCContext ;
+typedef TYPE_6__ MvField ;
+typedef TYPE_7__ Mv ;
+typedef TYPE_8__ HEVCLocalContext ;
+typedef TYPE_9__ HEVCContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A0 ; 
- int /*<<< orphan*/  A1 ; 
- int AVAILABLE (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  B0 ; 
- int /*<<< orphan*/  B1 ; 
- int /*<<< orphan*/  B2 ; 
- scalar_t__ MP_MX (int /*<<< orphan*/ ,int,TYPE_7__) ; 
- int MP_MX_LT (int /*<<< orphan*/ ,int,TYPE_7__) ; 
- scalar_t__ PRED_BLOCK_AVAILABLE (int /*<<< orphan*/ ) ; 
- int temporal_luma_motion_vector (TYPE_9__*,int,int,int,int,int,TYPE_7__*,int) ; 
+
+ int A0 ;
+ int A1 ;
+ int AVAILABLE (int const,int ) ;
+ int B0 ;
+ int B1 ;
+ int B2 ;
+ scalar_t__ MP_MX (int ,int,TYPE_7__) ;
+ int MP_MX_LT (int ,int,TYPE_7__) ;
+ scalar_t__ PRED_BLOCK_AVAILABLE (int ) ;
+ int temporal_luma_motion_vector (TYPE_9__*,int,int,int,int,int,TYPE_7__*,int) ;
 
 void ff_hevc_luma_mv_mvp_mode(HEVCContext *s, int x0, int y0, int nPbW,
                               int nPbH, int log2_cb_size, int part_idx,
@@ -78,16 +78,16 @@ void ff_hevc_luma_mv_mvp_mode(HEVCContext *s, int x0, int y0, int nPbW,
     int pred_flag_index_l1;
 
     const int cand_bottom_left = lc->na.cand_bottom_left;
-    const int cand_left        = lc->na.cand_left;
-    const int cand_up_left     = lc->na.cand_up_left;
-    const int cand_up          = lc->na.cand_up;
-    const int cand_up_right    = lc->na.cand_up_right_sap;
-    ref_idx_curr       = LX;
-    ref_idx            = mv->ref_idx[LX];
+    const int cand_left = lc->na.cand_left;
+    const int cand_up_left = lc->na.cand_up_left;
+    const int cand_up = lc->na.cand_up;
+    const int cand_up_right = lc->na.cand_up_right_sap;
+    ref_idx_curr = LX;
+    ref_idx = mv->ref_idx[LX];
     pred_flag_index_l0 = LX;
     pred_flag_index_l1 = !LX;
 
-    // left bottom spatial candidate
+
     xA0 = x0 - 1;
     yA0 = y0 + nPbH;
 
@@ -95,9 +95,9 @@ void ff_hevc_luma_mv_mvp_mode(HEVCContext *s, int x0, int y0, int nPbW,
                       yA0 < s->ps.sps->height &&
                       PRED_BLOCK_AVAILABLE(A0);
 
-    //left spatial merge candidate
-    xA1    = x0 - 1;
-    yA1    = y0 + nPbH - 1;
+
+    xA1 = x0 - 1;
+    yA1 = y0 + nPbH - 1;
 
     is_available_a1 = AVAILABLE(cand_left, A1);
     if (is_available_a0 || is_available_a1)
@@ -141,26 +141,26 @@ void ff_hevc_luma_mv_mvp_mode(HEVCContext *s, int x0, int y0, int nPbW,
     availableFlagLXA0 = 0;
 
 b_candidates:
-    // B candidates
-    // above right spatial merge candidate
-    xB0    = x0 + nPbW;
-    yB0    = y0 - 1;
 
-    is_available_b0 =  AVAILABLE(cand_up_right, B0) &&
+
+    xB0 = x0 + nPbW;
+    yB0 = y0 - 1;
+
+    is_available_b0 = AVAILABLE(cand_up_right, B0) &&
                        xB0 < s->ps.sps->width &&
                        PRED_BLOCK_AVAILABLE(B0);
 
-    // above spatial merge candidate
-    xB1    = x0 + nPbW - 1;
-    yB1    = y0 - 1;
+
+    xB1 = x0 + nPbW - 1;
+    yB1 = y0 - 1;
     is_available_b1 = AVAILABLE(cand_up, B1);
 
-    // above left spatial merge candidate
+
     xB2 = x0 - 1;
     yB2 = y0 - 1;
     is_available_b2 = AVAILABLE(cand_up_left, B2);
 
-    // above right spatial merge candidate
+
     if (is_available_b0) {
         if (MP_MX(B0, pred_flag_index_l0, mxB)) {
             goto scalef;
@@ -170,7 +170,7 @@ b_candidates:
         }
     }
 
-    // above spatial merge candidate
+
     if (is_available_b1) {
         if (MP_MX(B1, pred_flag_index_l0, mxB)) {
             goto scalef;
@@ -180,7 +180,7 @@ b_candidates:
         }
     }
 
-    // above left spatial merge candidate
+
     if (is_available_b2) {
         if (MP_MX(B2, pred_flag_index_l0, mxB)) {
             goto scalef;
@@ -199,7 +199,7 @@ scalef:
         }
         availableFlagLXB0 = 0;
 
-        // XB0 and L1
+
         if (is_available_b0) {
             availableFlagLXB0 = MP_MX_LT(B0, pred_flag_index_l0, mxB);
             if (!availableFlagLXB0)
@@ -225,7 +225,7 @@ scalef:
     if (availableFlagLXB0 && (!availableFlagLXA0 || mxA.x != mxB.x || mxA.y != mxB.y))
         mvpcand_list[numMVPCandLX++] = mxB;
 
-    //temporal motion vector prediction candidate
+
     if (numMVPCandLX < 2 && s->sh.slice_temporal_mvp_enabled_flag &&
         mvp_lx_flag == numMVPCandLX) {
         Mv mv_col;

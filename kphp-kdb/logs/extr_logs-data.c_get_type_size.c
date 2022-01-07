@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * name; } ;
 
-/* Variables and functions */
- int MAX_TYPE ; 
- int /*<<< orphan*/  debug (char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* debug_buff ; 
- char* ds ; 
- int /*<<< orphan*/ * type_size ; 
- TYPE_1__* types ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * name; } ;
+
+
+ int MAX_TYPE ;
+ int debug (char*,int *,int,int ) ;
+ char* debug_buff ;
+ char* ds ;
+ int * type_size ;
+ TYPE_1__* types ;
 
 char *get_type_size (int type) {
   int first, last;
@@ -37,7 +37,7 @@ char *get_type_size (int type) {
 
   int i;
   for (i = first; i < last; i++) {
-    if (types[i].name != NULL) {
+    if (types[i].name != ((void*)0)) {
       debug ("[%40s](%5d) : %9lld\n", types[i].name, i, type_size[i]);
     }
   }

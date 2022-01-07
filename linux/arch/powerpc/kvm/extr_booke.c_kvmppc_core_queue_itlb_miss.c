@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm_vcpu {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOOKE_IRQPRIO_ITLB_MISS ; 
- int /*<<< orphan*/  kvmppc_booke_queue_irqprio (struct kvm_vcpu*,int /*<<< orphan*/ ) ; 
+
+ int BOOKE_IRQPRIO_ITLB_MISS ;
+ int kvmppc_booke_queue_irqprio (struct kvm_vcpu*,int ) ;
 
 void kvmppc_core_queue_itlb_miss(struct kvm_vcpu *vcpu)
 {
-	kvmppc_booke_queue_irqprio(vcpu, BOOKE_IRQPRIO_ITLB_MISS);
+ kvmppc_booke_queue_irqprio(vcpu, BOOKE_IRQPRIO_ITLB_MISS);
 }

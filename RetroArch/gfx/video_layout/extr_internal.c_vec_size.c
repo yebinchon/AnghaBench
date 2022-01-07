@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* realloc (void*,size_t) ; 
+ void* realloc (void*,size_t) ;
 
 bool vec_size(void **target, size_t elem_size, int count)
 {
@@ -22,9 +14,9 @@ bool vec_size(void **target, size_t elem_size, int count)
    {
       void *resized = realloc(*target, elem_size * (count + seg));
       if (!resized)
-         return false;
+         return 0;
       *target = resized;
    }
 
-   return true;
+   return 1;
 }

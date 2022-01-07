@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  table; } ;
-struct TYPE_5__ {int last_dc; int /*<<< orphan*/  avctx; int /*<<< orphan*/  gb; TYPE_1__ pre_vlc; int /*<<< orphan*/  pre_gb; } ;
-typedef  TYPE_2__ FourXContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACDC_VLC_BITS ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int* dequant_table ; 
- int* ff_zigzag_direct ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int get_xbits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_4__ {int table; } ;
+struct TYPE_5__ {int last_dc; int avctx; int gb; TYPE_1__ pre_vlc; int pre_gb; } ;
+typedef TYPE_2__ FourXContext ;
+
+
+ int ACDC_VLC_BITS ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int ,int ,char*,...) ;
+ int* dequant_table ;
+ int* ff_zigzag_direct ;
+ int get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int get_xbits (int *,int) ;
 
 __attribute__((used)) static int decode_i_block(FourXContext *f, int16_t *block)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int decode_i_block(FourXContext *f, int16_t *block)
         return AVERROR_INVALIDDATA;
     }
 
-    /* DC coef */
+
     val = get_vlc2(&f->pre_gb, f->pre_vlc.table, ACDC_VLC_BITS, 3);
     if (val >> 4) {
         av_log(f->avctx, AV_LOG_ERROR, "error dc run != 0\n");
@@ -47,14 +47,14 @@ __attribute__((used)) static int decode_i_block(FourXContext *f, int16_t *block)
     if (val)
         val = get_xbits(&f->gb, val);
 
-    val        = val * dequant_table[0] + f->last_dc;
+    val = val * dequant_table[0] + f->last_dc;
     f->last_dc = block[0] = val;
-    /* AC coefs */
+
     i = 1;
     for (;;) {
         code = get_vlc2(&f->pre_gb, f->pre_vlc.table, ACDC_VLC_BITS, 3);
 
-        /* EOB */
+
         if (code == 0)
             break;
         if (code == 0xf0) {
@@ -70,7 +70,7 @@ __attribute__((used)) static int decode_i_block(FourXContext *f, int16_t *block)
                 av_log(f->avctx, AV_LOG_ERROR, "0 coeff\n");
                 return AVERROR_INVALIDDATA;
             }
-            i    += code >> 4;
+            i += code >> 4;
             if (i >= 64) {
                 av_log(f->avctx, AV_LOG_ERROR, "run %d overflow\n", i);
                 return 0;

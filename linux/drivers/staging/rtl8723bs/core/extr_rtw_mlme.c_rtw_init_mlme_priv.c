@@ -1,116 +1,116 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct wlan_network {int /*<<< orphan*/  list; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct wlan_network {int list; } ;
 struct ndis_802_11_ssid {int dummy; } ;
-struct TYPE_6__ {int /*<<< orphan*/  queue; } ;
-struct TYPE_4__ {int /*<<< orphan*/  InfrastructureMode; } ;
+struct TYPE_6__ {int queue; } ;
+struct TYPE_4__ {int InfrastructureMode; } ;
 struct TYPE_5__ {TYPE_1__ network; } ;
-struct mlme_priv {int roam_flags; int /*<<< orphan*/  roam_scan_int_ms; int /*<<< orphan*/  roam_rssi_diff_th; int /*<<< orphan*/  roam_scanr_exp_ms; TYPE_3__ free_bss_pool; int /*<<< orphan*/ * free_bss_buf; int /*<<< orphan*/  assoc_ssid; TYPE_3__ scanned_queue; int /*<<< orphan*/  lock; int /*<<< orphan*/  scan_mode; TYPE_2__ cur_network; int /*<<< orphan*/  fw_state; int /*<<< orphan*/ * pscanned; int /*<<< orphan*/ * nic_hdl; } ;
+struct mlme_priv {int roam_flags; int roam_scan_int_ms; int roam_rssi_diff_th; int roam_scanr_exp_ms; TYPE_3__ free_bss_pool; int * free_bss_buf; int assoc_ssid; TYPE_3__ scanned_queue; int lock; int scan_mode; TYPE_2__ cur_network; int fw_state; int * pscanned; int * nic_hdl; } ;
 struct adapter {struct mlme_priv mlmepriv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int MAX_BSS_CNT ; 
- int /*<<< orphan*/  Ndis802_11AutoUnknown ; 
- int RTW_ROAM_ACTIVE ; 
- int RTW_ROAM_ON_EXPIRED ; 
- int RTW_ROAM_ON_RESUME ; 
- int /*<<< orphan*/  RTW_ROAM_RSSI_DIFF_TH ; 
- int /*<<< orphan*/  RTW_ROAM_SCAN_INTERVAL_MS ; 
- int /*<<< orphan*/  RTW_ROAM_SCAN_RESULT_EXP_MS ; 
- int /*<<< orphan*/  SCAN_ACTIVE ; 
- int /*<<< orphan*/  WIFI_STATION_STATE ; 
- int _FAIL ; 
- int _SUCCESS ; 
- int /*<<< orphan*/  _rtw_init_queue (TYPE_3__*) ; 
- int /*<<< orphan*/  array_size (int,int) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rtw_clear_scan_deny (struct adapter*) ; 
- int /*<<< orphan*/  rtw_init_mlme_timer (struct adapter*) ; 
- int /*<<< orphan*/  set_scanned_network_val (struct mlme_priv*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vzalloc (int /*<<< orphan*/ ) ; 
 
-int	rtw_init_mlme_priv(struct adapter *padapter)
+ int INIT_LIST_HEAD (int *) ;
+ int MAX_BSS_CNT ;
+ int Ndis802_11AutoUnknown ;
+ int RTW_ROAM_ACTIVE ;
+ int RTW_ROAM_ON_EXPIRED ;
+ int RTW_ROAM_ON_RESUME ;
+ int RTW_ROAM_RSSI_DIFF_TH ;
+ int RTW_ROAM_SCAN_INTERVAL_MS ;
+ int RTW_ROAM_SCAN_RESULT_EXP_MS ;
+ int SCAN_ACTIVE ;
+ int WIFI_STATION_STATE ;
+ int _FAIL ;
+ int _SUCCESS ;
+ int _rtw_init_queue (TYPE_3__*) ;
+ int array_size (int,int) ;
+ int list_add_tail (int *,int *) ;
+ int memset (int *,int ,int) ;
+ int rtw_clear_scan_deny (struct adapter*) ;
+ int rtw_init_mlme_timer (struct adapter*) ;
+ int set_scanned_network_val (struct mlme_priv*,int ) ;
+ int spin_lock_init (int *) ;
+ int * vzalloc (int ) ;
+
+int rtw_init_mlme_priv(struct adapter *padapter)
 {
-	int	i;
-	u8 *pbuf;
-	struct wlan_network	*pnetwork;
-	struct mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
-	int	res = _SUCCESS;
+ int i;
+ u8 *pbuf;
+ struct wlan_network *pnetwork;
+ struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+ int res = _SUCCESS;
 
-	pmlmepriv->nic_hdl = (u8 *)padapter;
+ pmlmepriv->nic_hdl = (u8 *)padapter;
 
-	pmlmepriv->pscanned = NULL;
-	pmlmepriv->fw_state = WIFI_STATION_STATE; /*  Must sync with rtw_wdev_alloc() */
-	/*  wdev->iftype = NL80211_IFTYPE_STATION */
-	pmlmepriv->cur_network.network.InfrastructureMode = Ndis802_11AutoUnknown;
-	pmlmepriv->scan_mode = SCAN_ACTIVE;/*  1: active, 0: pasive. Maybe someday we should rename this varable to "active_mode" (Jeff) */
+ pmlmepriv->pscanned = ((void*)0);
+ pmlmepriv->fw_state = WIFI_STATION_STATE;
 
-	spin_lock_init(&pmlmepriv->lock);
-	_rtw_init_queue(&pmlmepriv->free_bss_pool);
-	_rtw_init_queue(&pmlmepriv->scanned_queue);
+ pmlmepriv->cur_network.network.InfrastructureMode = Ndis802_11AutoUnknown;
+ pmlmepriv->scan_mode = SCAN_ACTIVE;
 
-	set_scanned_network_val(pmlmepriv, 0);
+ spin_lock_init(&pmlmepriv->lock);
+ _rtw_init_queue(&pmlmepriv->free_bss_pool);
+ _rtw_init_queue(&pmlmepriv->scanned_queue);
 
-	memset(&pmlmepriv->assoc_ssid, 0, sizeof(struct ndis_802_11_ssid));
+ set_scanned_network_val(pmlmepriv, 0);
 
-	pbuf = vzalloc(array_size(MAX_BSS_CNT, sizeof(struct wlan_network)));
+ memset(&pmlmepriv->assoc_ssid, 0, sizeof(struct ndis_802_11_ssid));
 
-	if (pbuf == NULL) {
-		res = _FAIL;
-		goto exit;
-	}
-	pmlmepriv->free_bss_buf = pbuf;
+ pbuf = vzalloc(array_size(MAX_BSS_CNT, sizeof(struct wlan_network)));
 
-	pnetwork = (struct wlan_network *)pbuf;
+ if (pbuf == ((void*)0)) {
+  res = _FAIL;
+  goto exit;
+ }
+ pmlmepriv->free_bss_buf = pbuf;
 
-	for (i = 0; i < MAX_BSS_CNT; i++) {
-		INIT_LIST_HEAD(&pnetwork->list);
+ pnetwork = (struct wlan_network *)pbuf;
 
-		list_add_tail(&pnetwork->list, &pmlmepriv->free_bss_pool.queue);
+ for (i = 0; i < MAX_BSS_CNT; i++) {
+  INIT_LIST_HEAD(&pnetwork->list);
 
-		pnetwork++;
-	}
+  list_add_tail(&pnetwork->list, &pmlmepriv->free_bss_pool.queue);
 
-	/* allocate DMA-able/Non-Page memory for cmd_buf and rsp_buf */
+  pnetwork++;
+ }
 
-	rtw_clear_scan_deny(padapter);
 
-	#define RTW_ROAM_SCAN_RESULT_EXP_MS 5000
-	#define RTW_ROAM_RSSI_DIFF_TH 10
-	#define RTW_ROAM_SCAN_INTERVAL_MS 10000
 
-	pmlmepriv->roam_flags = 0
-		| RTW_ROAM_ON_EXPIRED
-		| RTW_ROAM_ON_RESUME
-		#ifdef CONFIG_LAYER2_ROAMING_ACTIVE /* FIXME */
-		| RTW_ROAM_ACTIVE
-		#endif
-		;
+ rtw_clear_scan_deny(padapter);
 
-	pmlmepriv->roam_scanr_exp_ms = RTW_ROAM_SCAN_RESULT_EXP_MS;
-	pmlmepriv->roam_rssi_diff_th = RTW_ROAM_RSSI_DIFF_TH;
-	pmlmepriv->roam_scan_int_ms = RTW_ROAM_SCAN_INTERVAL_MS;
 
-	rtw_init_mlme_timer(padapter);
+
+
+
+ pmlmepriv->roam_flags = 0
+  | RTW_ROAM_ON_EXPIRED
+  | RTW_ROAM_ON_RESUME
+
+
+
+  ;
+
+ pmlmepriv->roam_scanr_exp_ms = 5000;
+ pmlmepriv->roam_rssi_diff_th = 10;
+ pmlmepriv->roam_scan_int_ms = 10000;
+
+ rtw_init_mlme_timer(padapter);
 
 exit:
 
-	return res;
+ return res;
 }

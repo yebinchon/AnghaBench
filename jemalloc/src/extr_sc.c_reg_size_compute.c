@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ZU (int) ; 
+ int ZU (int) ;
 
 __attribute__((used)) static size_t
 reg_size_compute(int lg_base, int lg_delta, int ndelta) {
-	return (ZU(1) << lg_base) + (ZU(ndelta) << lg_delta);
+ return (ZU(1) << lg_base) + (ZU(ndelta) << lg_delta);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ top; scalar_t__ bottom; scalar_t__ right; scalar_t__ left; } ;
-struct TYPE_5__ {int uThumbLen; int dwStyle; int /*<<< orphan*/  hwndSelf; TYPE_2__ rcChannel; } ;
-typedef  TYPE_1__ TRACKBAR_INFO ;
-typedef  TYPE_2__ RECT ;
-typedef  int INT ;
+struct TYPE_5__ {int uThumbLen; int dwStyle; int hwndSelf; TYPE_2__ rcChannel; } ;
+typedef TYPE_1__ TRACKBAR_INFO ;
+typedef TYPE_2__ RECT ;
+typedef int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int TBS_BOTH ; 
- int TBS_ENABLESELRANGE ; 
- int TBS_NOTICKS ; 
- int TBS_TOP ; 
- int TBS_VERT ; 
+
+ int GetClientRect (int ,TYPE_2__*) ;
+ int TBS_BOTH ;
+ int TBS_ENABLESELRANGE ;
+ int TBS_NOTICKS ;
+ int TBS_TOP ;
+ int TBS_VERT ;
 
 __attribute__((used)) static void
 TRACKBAR_CalcChannel (TRACKBAR_INFO *infoPtr)
@@ -35,10 +35,10 @@ TRACKBAR_CalcChannel (TRACKBAR_INFO *infoPtr)
     GetClientRect (infoPtr->hwndSelf, &lpRect);
 
     offsetthumb = infoPtr->uThumbLen / 4;
-    offsetedge  = offsetthumb + 3;
-    cyChannel   = (infoPtr->dwStyle & TBS_ENABLESELRANGE) ? offsetthumb*3 : 4;
+    offsetedge = offsetthumb + 3;
+    cyChannel = (infoPtr->dwStyle & TBS_ENABLESELRANGE) ? offsetthumb*3 : 4;
     if (infoPtr->dwStyle & TBS_VERT) {
-        channel->top    = lpRect.top + offsetedge;
+        channel->top = lpRect.top + offsetedge;
         channel->bottom = lpRect.bottom - offsetedge;
         if (infoPtr->dwStyle & TBS_ENABLESELRANGE)
             channel->left = lpRect.left + ((infoPtr->uThumbLen - cyChannel + 2) / 2);
@@ -76,6 +76,6 @@ TRACKBAR_CalcChannel (TRACKBAR_INFO *infoPtr)
             else
                 channel->top += 10;
         }
-        channel->bottom   = channel->top + cyChannel;
+        channel->bottom = channel->top + cyChannel;
     }
 }

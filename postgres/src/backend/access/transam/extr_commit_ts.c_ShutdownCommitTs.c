@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CommitTsCtl ; 
- int /*<<< orphan*/  SimpleLruFlush (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fsync_fname (char*,int) ; 
+ int CommitTsCtl ;
+ int SimpleLruFlush (int ,int) ;
+ int fsync_fname (char*,int) ;
 
 void
 ShutdownCommitTs(void)
 {
-	/* Flush dirty CommitTs pages to disk */
-	SimpleLruFlush(CommitTsCtl, false);
 
-	/*
-	 * fsync pg_commit_ts to ensure that any files flushed previously are
-	 * durably on disk.
-	 */
-	fsync_fname("pg_commit_ts", true);
+ SimpleLruFlush(CommitTsCtl, 0);
+
+
+
+
+
+ fsync_fname("pg_commit_ts", 1);
 }

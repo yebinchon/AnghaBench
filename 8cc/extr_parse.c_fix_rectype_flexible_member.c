@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_3__ {scalar_t__ kind; int len; scalar_t__ size; } ;
-typedef  TYPE_1__ Type ;
+typedef TYPE_1__ Type ;
 
-/* Variables and functions */
- scalar_t__ KIND_ARRAY ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ty2s (TYPE_1__*) ; 
- void** vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ KIND_ARRAY ;
+ int error (char*,int ,char*) ;
+ int ty2s (TYPE_1__*) ;
+ void** vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static void fix_rectype_flexible_member(Vector *fields) {
     for (int i = 0; i < vec_len(fields); i++) {

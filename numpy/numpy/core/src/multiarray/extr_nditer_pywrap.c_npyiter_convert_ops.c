@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_uint32 ;
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int NPY_ARRAY_WRITEBACKIFCOPY ; 
- int NPY_ITER_ALLOCATE ; 
- int NPY_ITER_READONLY ; 
- int NPY_ITER_READWRITE ; 
- int NPY_ITER_WRITEONLY ; 
- int NPY_MAXARGS ; 
- scalar_t__ PyArray_FROM_OF (int /*<<< orphan*/ *,int) ; 
- scalar_t__ PyErr_ExceptionMatches (int /*<<< orphan*/ ) ; 
- scalar_t__ PyErr_Occurred () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- scalar_t__ PyList_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PySequence_GetItem (int /*<<< orphan*/ *,int) ; 
- int PySequence_Size (int /*<<< orphan*/ *) ; 
- scalar_t__ PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int npyiter_convert_op_flags_array (int /*<<< orphan*/ *,int*,int) ; 
+
+
+
+typedef int npy_uint32 ;
+typedef int npy_intp ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+
+
+ int NPY_ARRAY_WRITEBACKIFCOPY ;
+ int NPY_ITER_ALLOCATE ;
+ int NPY_ITER_READONLY ;
+ int NPY_ITER_READWRITE ;
+ int NPY_ITER_WRITEONLY ;
+ int NPY_MAXARGS ;
+ scalar_t__ PyArray_FROM_OF (int *,int) ;
+ scalar_t__ PyErr_ExceptionMatches (int ) ;
+ scalar_t__ PyErr_Occurred () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_TypeError ;
+ int PyExc_ValueError ;
+ scalar_t__ PyList_Check (int *) ;
+ int * PySequence_GetItem (int *,int) ;
+ int PySequence_Size (int *) ;
+ scalar_t__ PyTuple_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int * Py_None ;
+ int Py_XDECREF (int *) ;
+ int npyiter_convert_op_flags_array (int *,int*,int) ;
 
 __attribute__((used)) static int
 npyiter_convert_ops(PyObject *op_in, PyObject *op_flags_in,
@@ -45,7 +45,7 @@ npyiter_convert_ops(PyObject *op_in, PyObject *op_flags_in,
 {
     int iop, nop;
 
-    /* nop and op */
+
     if (PyTuple_Check(op_in) || PyList_Check(op_in)) {
         nop = PySequence_Size(op_in);
         if (nop == 0) {
@@ -60,7 +60,7 @@ npyiter_convert_ops(PyObject *op_in, PyObject *op_flags_in,
 
         for (iop = 0; iop < nop; ++iop) {
             PyObject *item = PySequence_GetItem(op_in, iop);
-            if (item == NULL) {
+            if (item == ((void*)0)) {
                 npy_intp i;
                 for (i = 0; i < iop; ++i) {
                     Py_XDECREF(op[i]);
@@ -69,30 +69,30 @@ npyiter_convert_ops(PyObject *op_in, PyObject *op_flags_in,
             }
             else if (item == Py_None) {
                 Py_DECREF(item);
-                item = NULL;
+                item = ((void*)0);
             }
-            /* This is converted to an array after op flags are retrieved */
+
             op[iop] = (PyArrayObject *)item;
         }
     }
     else {
         nop = 1;
-        /* Is converted to an array after op flags are retrieved */
+
         Py_INCREF(op_in);
         op[0] = (PyArrayObject *)op_in;
     }
 
     *nop_out = nop;
 
-    /* op_flags */
-    if (op_flags_in == NULL || op_flags_in == Py_None) {
+
+    if (op_flags_in == ((void*)0) || op_flags_in == Py_None) {
         for (iop = 0; iop < nop; ++iop) {
-            /*
-             * By default, make NULL operands writeonly and flagged for
-             * allocation, and everything else readonly.  To write
-             * to a provided operand, you must specify the write flag manually.
-             */
-            if (op[iop] == NULL) {
+
+
+
+
+
+            if (op[iop] == ((void*)0)) {
                 op_flags[iop] = NPY_ITER_WRITEONLY | NPY_ITER_ALLOCATE;
             }
             else {
@@ -109,9 +109,9 @@ npyiter_convert_ops(PyObject *op_in, PyObject *op_flags_in,
         return 0;
     }
 
-    /* Now that we have the flags - convert all the ops to arrays */
+
     for (iop = 0; iop < nop; ++iop) {
-        if (op[iop] != NULL) {
+        if (op[iop] != ((void*)0)) {
             PyArrayObject *ao;
             int fromanyflags = 0;
 
@@ -120,7 +120,7 @@ npyiter_convert_ops(PyObject *op_in, PyObject *op_flags_in,
             }
             ao = (PyArrayObject *)PyArray_FROM_OF((PyObject *)op[iop],
                                                   fromanyflags);
-            if (ao == NULL) {
+            if (ao == ((void*)0)) {
                 if (PyErr_Occurred() &&
                             PyErr_ExceptionMatches(PyExc_TypeError)) {
                     PyErr_SetString(PyExc_TypeError,

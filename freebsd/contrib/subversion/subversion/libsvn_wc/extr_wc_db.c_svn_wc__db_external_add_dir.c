@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  abspath; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  void* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_10__ {char const* repos_root_url; char const* repos_uuid; char const* recorded_repos_relpath; int /*<<< orphan*/  const* work_items; void* recorded_revision; void* recorded_peg_revision; void* record_ancestor_relpath; int /*<<< orphan*/  presence; int /*<<< orphan*/  kind; } ;
-typedef  TYPE_2__ insert_external_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__DB_WITH_TXN (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  blank_ieb (TYPE_2__*) ; 
- int /*<<< orphan*/  insert_external_node (TYPE_2__*,TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_dirent_is_ancestor (int /*<<< orphan*/ ,char const*) ; 
- void* svn_dirent_skip_ancestor (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_wc__db_status_normal ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int abspath; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef void* svn_revnum_t ;
+typedef int svn_error_t ;
+struct TYPE_10__ {char const* repos_root_url; char const* repos_uuid; char const* recorded_repos_relpath; int const* work_items; void* recorded_revision; void* recorded_peg_revision; void* record_ancestor_relpath; int presence; int kind; } ;
+typedef TYPE_2__ insert_external_baton_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__DB_WITH_TXN (int ,TYPE_1__*) ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int blank_ieb (TYPE_2__*) ;
+ int insert_external_node (TYPE_2__*,TYPE_1__*,char const*,int *) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_dirent_is_ancestor (int ,char const*) ;
+ void* svn_dirent_skip_ancestor (int ,char const*) ;
+ int svn_node_dir ;
+ int svn_wc__db_status_normal ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_external_add_dir(svn_wc__db_t *db,

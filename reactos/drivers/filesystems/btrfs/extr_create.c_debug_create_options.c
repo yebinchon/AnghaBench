@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
 
-/* Variables and functions */
- scalar_t__ FILE_COMPLETE_IF_OPLOCKED ; 
- scalar_t__ FILE_CREATE_TREE_CONNECTION ; 
- scalar_t__ FILE_DELETE_ON_CLOSE ; 
- scalar_t__ FILE_DIRECTORY_FILE ; 
- scalar_t__ FILE_DISALLOW_EXCLUSIVE ; 
- scalar_t__ FILE_NON_DIRECTORY_FILE ; 
- scalar_t__ FILE_NO_COMPRESSION ; 
- scalar_t__ FILE_NO_EA_KNOWLEDGE ; 
- scalar_t__ FILE_NO_INTERMEDIATE_BUFFERING ; 
- scalar_t__ FILE_OPEN_BY_FILE_ID ; 
- scalar_t__ FILE_OPEN_FOR_BACKUP_INTENT ; 
- scalar_t__ FILE_OPEN_FOR_FREE_SPACE_QUERY ; 
- scalar_t__ FILE_OPEN_NO_RECALL ; 
- scalar_t__ FILE_OPEN_REMOTE_INSTANCE ; 
- scalar_t__ FILE_OPEN_REPARSE_POINT ; 
- scalar_t__ FILE_OPEN_REQUIRING_OPLOCK ; 
- scalar_t__ FILE_RANDOM_ACCESS ; 
- scalar_t__ FILE_RESERVE_OPFILTER ; 
- scalar_t__ FILE_SEQUENTIAL_ONLY ; 
- scalar_t__ FILE_SYNCHRONOUS_IO_ALERT ; 
- scalar_t__ FILE_SYNCHRONOUS_IO_NONALERT ; 
- scalar_t__ FILE_WRITE_THROUGH ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+
+
+ scalar_t__ FILE_COMPLETE_IF_OPLOCKED ;
+ scalar_t__ FILE_CREATE_TREE_CONNECTION ;
+ scalar_t__ FILE_DELETE_ON_CLOSE ;
+ scalar_t__ FILE_DIRECTORY_FILE ;
+ scalar_t__ FILE_DISALLOW_EXCLUSIVE ;
+ scalar_t__ FILE_NON_DIRECTORY_FILE ;
+ scalar_t__ FILE_NO_COMPRESSION ;
+ scalar_t__ FILE_NO_EA_KNOWLEDGE ;
+ scalar_t__ FILE_NO_INTERMEDIATE_BUFFERING ;
+ scalar_t__ FILE_OPEN_BY_FILE_ID ;
+ scalar_t__ FILE_OPEN_FOR_BACKUP_INTENT ;
+ scalar_t__ FILE_OPEN_FOR_FREE_SPACE_QUERY ;
+ scalar_t__ FILE_OPEN_NO_RECALL ;
+ scalar_t__ FILE_OPEN_REMOTE_INSTANCE ;
+ scalar_t__ FILE_OPEN_REPARSE_POINT ;
+ scalar_t__ FILE_OPEN_REQUIRING_OPLOCK ;
+ scalar_t__ FILE_RANDOM_ACCESS ;
+ scalar_t__ FILE_RESERVE_OPFILTER ;
+ scalar_t__ FILE_SEQUENTIAL_ONLY ;
+ scalar_t__ FILE_SYNCHRONOUS_IO_ALERT ;
+ scalar_t__ FILE_SYNCHRONOUS_IO_NONALERT ;
+ scalar_t__ FILE_WRITE_THROUGH ;
+ int TRACE (char*,...) ;
 
 __attribute__((used)) static __inline void debug_create_options(ULONG RequestedOptions) {
     if (RequestedOptions != 0) {
@@ -123,7 +123,7 @@ __attribute__((used)) static __inline void debug_create_options(ULONG RequestedO
             options &= ~FILE_NO_COMPRESSION;
         }
 
-#if NTDDI_VERSION >= NTDDI_WIN7
+
         if (options & FILE_OPEN_REQUIRING_OPLOCK) {
             TRACE("    FILE_OPEN_REQUIRING_OPLOCK\n");
             options &= ~FILE_OPEN_REQUIRING_OPLOCK;
@@ -133,7 +133,7 @@ __attribute__((used)) static __inline void debug_create_options(ULONG RequestedO
             TRACE("    FILE_DISALLOW_EXCLUSIVE\n");
             options &= ~FILE_DISALLOW_EXCLUSIVE;
         }
-#endif
+
 
         if (options & FILE_RESERVE_OPFILTER) {
             TRACE("    FILE_RESERVE_OPFILTER\n");

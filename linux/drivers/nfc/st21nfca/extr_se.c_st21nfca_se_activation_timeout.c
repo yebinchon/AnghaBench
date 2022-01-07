@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct timer_list {int dummy; } ;
-struct TYPE_3__ {int se_active; int /*<<< orphan*/  req_completion; } ;
+struct TYPE_3__ {int se_active; int req_completion; } ;
 struct st21nfca_hci_info {TYPE_1__ se_info; } ;
-struct TYPE_4__ {int /*<<< orphan*/  se_active_timer; } ;
+struct TYPE_4__ {int se_active_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- struct st21nfca_hci_info* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- struct st21nfca_hci_info* info ; 
- int /*<<< orphan*/  pr_debug (char*) ; 
- TYPE_2__ se_info ; 
+
+ int complete (int *) ;
+ struct st21nfca_hci_info* from_timer (int ,struct timer_list*,int ) ;
+ struct st21nfca_hci_info* info ;
+ int pr_debug (char*) ;
+ TYPE_2__ se_info ;
 
 __attribute__((used)) static void st21nfca_se_activation_timeout(struct timer_list *t)
 {
-	struct st21nfca_hci_info *info = from_timer(info, t,
-						    se_info.se_active_timer);
+ struct st21nfca_hci_info *info = from_timer(info, t,
+          se_info.se_active_timer);
 
-	pr_debug("\n");
+ pr_debug("\n");
 
-	info->se_info.se_active = false;
+ info->se_info.se_active = 0;
 
-	complete(&info->se_info.req_completion);
+ complete(&info->se_info.req_completion);
 }

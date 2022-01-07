@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* left; struct TYPE_5__* right; } ;
-typedef  TYPE_1__ utree_t ;
+typedef TYPE_1__ utree_t ;
 struct TYPE_6__ {int user_id; int rate; } ;
-typedef  TYPE_2__ user_t ;
+typedef TYPE_2__ user_t ;
 
-/* Variables and functions */
- int Q_limit ; 
- int* R ; 
- int R_cnt ; 
- scalar_t__ user_matches (TYPE_2__*) ; 
+
+ int Q_limit ;
+ int* R ;
+ int R_cnt ;
+ scalar_t__ user_matches (TYPE_2__*) ;
 
 __attribute__((used)) static void perform_query_rate_right (utree_t *T) {
   if (!T) {

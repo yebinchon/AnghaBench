@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  size_in_bits; } ;
-typedef  TYPE_1__ GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ,char const*) ; 
- int get_bits1 (TYPE_1__*) ; 
- scalar_t__ get_bits_count (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int size_in_bits; } ;
+typedef TYPE_1__ GetBitContext ;
+
+
+ int AV_LOG_INFO ;
+ int av_log (void*,int ,char*,scalar_t__,int ,char const*) ;
+ int get_bits1 (TYPE_1__*) ;
+ scalar_t__ get_bits_count (TYPE_1__*) ;
 
 __attribute__((used)) static inline int check_marker(void *logctx, GetBitContext *s, const char *msg)
 {

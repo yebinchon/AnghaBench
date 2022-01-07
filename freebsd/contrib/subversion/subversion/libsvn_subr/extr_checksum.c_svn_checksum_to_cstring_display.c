@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int kind; int /*<<< orphan*/  digest; } ;
-typedef  TYPE_1__ svn_checksum_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * digest_sizes ; 
- char const* svn__digest_to_cstring_display (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
-#define  svn_checksum_fnv1a_32 131 
-#define  svn_checksum_fnv1a_32x4 130 
-#define  svn_checksum_md5 129 
-#define  svn_checksum_sha1 128 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int kind; int digest; } ;
+typedef TYPE_1__ svn_checksum_t ;
+typedef int apr_pool_t ;
+
+
+ int * digest_sizes ;
+ char const* svn__digest_to_cstring_display (int ,int ,int *) ;
+
+
+
+
 
 const char *
 svn_checksum_to_cstring_display(const svn_checksum_t *checksum,
@@ -29,16 +29,16 @@ svn_checksum_to_cstring_display(const svn_checksum_t *checksum,
 {
   switch (checksum->kind)
     {
-      case svn_checksum_md5:
-      case svn_checksum_sha1:
-      case svn_checksum_fnv1a_32:
-      case svn_checksum_fnv1a_32x4:
+      case 129:
+      case 128:
+      case 131:
+      case 130:
         return svn__digest_to_cstring_display(checksum->digest,
                                               digest_sizes[checksum->kind],
                                               pool);
 
       default:
-        /* We really shouldn't get here, but if we do... */
-        return NULL;
+
+        return ((void*)0);
     }
 }

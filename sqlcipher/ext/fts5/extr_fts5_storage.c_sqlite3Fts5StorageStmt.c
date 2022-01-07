@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_4__ {int /*<<< orphan*/ ** aStmt; } ;
-typedef  TYPE_1__ Fts5Storage ;
 
-/* Variables and functions */
- int FTS5_STMT_LOOKUP ; 
- int FTS5_STMT_SCAN_ASC ; 
- int FTS5_STMT_SCAN_DESC ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts5StorageGetStmt (TYPE_1__*,int,int /*<<< orphan*/ **,char**) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_4__ {int ** aStmt; } ;
+typedef TYPE_1__ Fts5Storage ;
+
+
+ int FTS5_STMT_LOOKUP ;
+ int FTS5_STMT_SCAN_ASC ;
+ int FTS5_STMT_SCAN_DESC ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5StorageGetStmt (TYPE_1__*,int,int **,char**) ;
 
 int sqlite3Fts5StorageStmt(
-  Fts5Storage *p, 
-  int eStmt, 
-  sqlite3_stmt **pp, 
+  Fts5Storage *p,
+  int eStmt,
+  sqlite3_stmt **pp,
   char **pzErrMsg
 ){
   int rc;
-  assert( eStmt==FTS5_STMT_SCAN_ASC 
+  assert( eStmt==FTS5_STMT_SCAN_ASC
        || eStmt==FTS5_STMT_SCAN_DESC
        || eStmt==FTS5_STMT_LOOKUP
   );

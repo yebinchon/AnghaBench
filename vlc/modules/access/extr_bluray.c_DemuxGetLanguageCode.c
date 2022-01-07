@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char const* psz_eng_name; char const* psz_iso639_1; char const* psz_iso639_2T; char const* psz_iso639_2B; } ;
-typedef  TYPE_1__ iso639_lang_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+typedef TYPE_1__ iso639_lang_t ;
+typedef int demux_t ;
 
-/* Variables and functions */
- char const* LANGUAGE_DEFAULT ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* p_languages ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
- char* strchr (char*,char) ; 
- char* var_CreateGetString (int /*<<< orphan*/ *,char const*) ; 
+
+ char const* LANGUAGE_DEFAULT ;
+ int free (char*) ;
+ TYPE_1__* p_languages ;
+ int strcasecmp (char const*,char*) ;
+ char* strchr (char*,char) ;
+ char* var_CreateGetString (int *,char const*) ;
 
 __attribute__((used)) static const char *DemuxGetLanguageCode( demux_t *p_demux, const char *psz_var )
 {
@@ -33,12 +33,12 @@ __attribute__((used)) static const char *DemuxGetLanguageCode( demux_t *p_demux,
     if( !psz_lang )
         return LANGUAGE_DEFAULT;
 
-    /* XXX: we will use only the first value
-     * (and ignore other ones in case of a list) */
+
+
     if( ( p = strchr( psz_lang, ',' ) ) )
         *p = '\0';
 
-    for( pl = p_languages; pl->psz_eng_name != NULL; pl++ )
+    for( pl = p_languages; pl->psz_eng_name != ((void*)0); pl++ )
     {
         if( *psz_lang == '\0' )
             continue;
@@ -51,7 +51,7 @@ __attribute__((used)) static const char *DemuxGetLanguageCode( demux_t *p_demux,
 
     free( psz_lang );
 
-    if( pl->psz_eng_name != NULL )
+    if( pl->psz_eng_name != ((void*)0) )
         return pl->psz_iso639_2T;
 
     return LANGUAGE_DEFAULT;

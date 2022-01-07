@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ id; } ;
-typedef  TYPE_1__ sthread_t ;
+typedef TYPE_1__ sthread_t ;
 
-/* Variables and functions */
- scalar_t__ GetCurrentThreadId () ; 
- int pthread_equal (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  pthread_self () ; 
+
+ scalar_t__ GetCurrentThreadId () ;
+ int pthread_equal (int ,scalar_t__) ;
+ int pthread_self () ;
 
 bool sthread_isself(sthread_t *thread)
 {
-  /* This thread can't possibly be a null thread */
-  if (!thread)
-     return false;
 
-#ifdef USE_WIN32_THREADS
-   return GetCurrentThreadId() == thread->id;
-#else
+  if (!thread)
+     return 0;
+
+
+
+
    return pthread_equal(pthread_self(),thread->id);
-#endif
+
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lm75_softc {int /*<<< orphan*/  sc_hwtype; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int BUS_PROBE_GENERIC ; 
- int ENXIO ; 
- int /*<<< orphan*/  HWTYPE_LM75 ; 
- struct lm75_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ofw_bus_is_compatible (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct lm75_softc {int sc_hwtype; } ;
+typedef int device_t ;
+
+
+ int BUS_PROBE_GENERIC ;
+ int ENXIO ;
+ int HWTYPE_LM75 ;
+ struct lm75_softc* device_get_softc (int ) ;
+ int device_set_desc (int ,char*) ;
+ int ofw_bus_is_compatible (int ,char*) ;
 
 __attribute__((used)) static int
 lm75_probe(device_t dev)
 {
-	struct lm75_softc *sc;
+ struct lm75_softc *sc;
 
-	sc = device_get_softc(dev);
-	sc->sc_hwtype = HWTYPE_LM75;
-#ifdef FDT
-	if (!ofw_bus_is_compatible(dev, "national,lm75"))
-		return (ENXIO);
-#endif
-	device_set_desc(dev, "LM75 temperature sensor");
+ sc = device_get_softc(dev);
+ sc->sc_hwtype = HWTYPE_LM75;
 
-	return (BUS_PROBE_GENERIC);
+
+
+
+ device_set_desc(dev, "LM75 temperature sensor");
+
+ return (BUS_PROBE_GENERIC);
 }

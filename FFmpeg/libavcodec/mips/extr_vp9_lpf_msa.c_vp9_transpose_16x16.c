@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  scalar_t__ v4i32 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ILVEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVEV_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVEV_H2_SW (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_UB8 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRANSPOSE16x8_UB_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvev_w (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvod_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_ilvod_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_ilvod_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvod_w (scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef scalar_t__ v4i32 ;
+typedef int v2i64 ;
+typedef scalar_t__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+
+
+ int ILVEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVEV_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVEV_H2_SW (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_UB8 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int *,int) ;
+ int TRANSPOSE16x8_UB_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvev_w (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvod_b (int ,int ) ;
+ scalar_t__ __msa_ilvod_d (int ,int ) ;
+ scalar_t__ __msa_ilvod_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvod_w (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void vp9_transpose_16x16(uint8_t *input, int32_t in_pitch,
                                 uint8_t *output, int32_t out_pitch)
@@ -49,8 +49,8 @@ __attribute__((used)) static void vp9_transpose_16x16(uint8_t *input, int32_t in
                         row8, row9, row10, row11, row12, row13, row14, row15,
                         p7, p6, p5, p4, p3, p2, p1, p0);
 
-    /* transpose 16x8 matrix into 8x16 */
-    /* total 8 intermediate register and 32 instructions */
+
+
     q7 = (v16u8) __msa_ilvod_d((v2i64) row8, (v2i64) row0);
     q6 = (v16u8) __msa_ilvod_d((v2i64) row9, (v2i64) row1);
     q5 = (v16u8) __msa_ilvod_d((v2i64) row10, (v2i64) row2);

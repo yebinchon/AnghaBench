@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_un {char* sun_path; int /*<<< orphan*/  sun_family; } ;
+
+
+
+
+struct sockaddr_un {char* sun_path; int sun_family; } ;
 struct sockaddr {int dummy; } ;
-struct option {char* member_0; char* name; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  const member_1; } ;
+struct option {char* member_0; char* name; int member_3; int member_2; int const member_1; } ;
 struct ev_loop {int dummy; } ;
-typedef  int pid_t ;
-typedef  int /*<<< orphan*/  ev_io ;
-typedef  int /*<<< orphan*/  ev_child ;
+typedef int pid_t ;
+typedef int ev_io ;
+typedef int ev_child ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_LOCAL ; 
- int /*<<< orphan*/  AF_UNIX ; 
- int /*<<< orphan*/  EV_READ ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  FD_CLOEXEC ; 
- int /*<<< orphan*/  F_SETFD ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  atexit (int /*<<< orphan*/ ) ; 
- int bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  child_cb ; 
- int /*<<< orphan*/  cleanup_socket ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ev_child_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_child_start (struct ev_loop*,int /*<<< orphan*/ *) ; 
- struct ev_loop* ev_default_loop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_io_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ev_io_start (struct ev_loop*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ev_run (struct ev_loop*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  execvp (char*,char**) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ fcntl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fork () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  getmonitors_reply ; 
- int getopt_long (int,char**,char*,struct option*,int*) ; 
- int /*<<< orphan*/  getoutputinfo_reply ; 
- int listen (int,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_un*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  must_read_reply (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  optarg ; 
- int optind ; 
-#define  required_argument 128 
- int /*<<< orphan*/  sasprintf (char**,char*,int) ; 
- int /*<<< orphan*/  setenv (char*,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sstrdup (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  sun_path ; 
- int /*<<< orphan*/  uds_connection_cb ; 
- int /*<<< orphan*/  warn (char*,...) ; 
+
+ int AF_LOCAL ;
+ int AF_UNIX ;
+ int EV_READ ;
+ int EXIT_FAILURE ;
+ int FD_CLOEXEC ;
+ int F_SETFD ;
+ int SOCK_STREAM ;
+ int atexit (int ) ;
+ int bind (int,struct sockaddr*,int) ;
+ int child_cb ;
+ int cleanup_socket ;
+ int err (int ,char*) ;
+ int errx (int ,char*,char*) ;
+ int ev_child_init (int *,int ,int,int ) ;
+ int ev_child_start (struct ev_loop*,int *) ;
+ struct ev_loop* ev_default_loop (int ) ;
+ int ev_io_init (int *,int ,int,int ) ;
+ int ev_io_start (struct ev_loop*,int *) ;
+ int ev_run (struct ev_loop*,int ) ;
+ int execvp (char*,char**) ;
+ int exit (int ) ;
+ scalar_t__ fcntl (int,int ,int ) ;
+ int fork () ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int getmonitors_reply ;
+ int getopt_long (int,char**,char*,struct option*,int*) ;
+ int getoutputinfo_reply ;
+ int listen (int,int) ;
+ int memset (struct sockaddr_un*,int ,int) ;
+ int must_read_reply (int ,int *) ;
+ int optarg ;
+ int optind ;
+
+ int sasprintf (char**,char*,int) ;
+ int setenv (char*,char*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int socket (int ,int ,int ) ;
+ int sstrdup (char*) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
+ int sun_path ;
+ int uds_connection_cb ;
+ int warn (char*,...) ;
 
 int main(int argc, char *argv[]) {
     static struct option long_options[] = {
-        {"getmonitors_reply", required_argument, 0, 0},
-        {"getoutputinfo_reply", required_argument, 0, 0},
+        {"getmonitors_reply", 128, 0, 0},
+        {"getoutputinfo_reply", 128, 0, 0},
         {0, 0, 0, 0},
     };
     char *options_string = "";
@@ -107,19 +107,19 @@ int main(int argc, char *argv[]) {
     memset(&addr, 0, sizeof(struct sockaddr_un));
     addr.sun_family = AF_UNIX;
     int i;
-    bool bound = false;
+    bool bound = 0;
     for (i = 0; i < 100; i++) {
-        /* XXX: The path to X11 sockets differs on some platforms (e.g. Trusted
-         * Solaris, HPUX), but since libxcb doesn’t provide a function to
-         * generate the path, we’ll just have to hard-code it for now. */
+
+
+
         snprintf(addr.sun_path, sizeof(addr.sun_path), "/tmp/.X11-unix/X%d", i);
 
         if (bind(fd, (struct sockaddr *)&addr, sizeof(struct sockaddr_un)) == -1) {
             warn("bind(%s)", addr.sun_path);
         } else {
-            bound = true;
-            /* Let the user know bind() was successful, so that they know the
-             * error messages can be disregarded. */
+            bound = 1;
+
+
             fprintf(stderr, "Successfuly bound to %s\n", addr.sun_path);
             sun_path = sstrdup(addr.sun_path);
             break;
@@ -132,8 +132,8 @@ int main(int argc, char *argv[]) {
 
     atexit(cleanup_socket);
 
-    /* This program will be started for each testcase which requires it, so we
-     * expect precisely one connection. */
+
+
     if (listen(fd, 1) == -1) {
         err(EXIT_FAILURE, "listen()");
     }

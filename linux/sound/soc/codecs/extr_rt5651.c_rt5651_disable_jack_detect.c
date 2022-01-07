@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_soc_component {int dummy; } ;
-struct rt5651_priv {int /*<<< orphan*/ * hp_jack; int /*<<< orphan*/  irq; } ;
+struct rt5651_priv {int * hp_jack; int irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SND_JACK_BTN_0 ; 
- int /*<<< orphan*/  disable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt5651_cancel_work (struct rt5651_priv*) ; 
- int /*<<< orphan*/  rt5651_disable_micbias1_for_ovcd (struct snd_soc_component*) ; 
- int /*<<< orphan*/  rt5651_disable_micbias1_ovcd_irq (struct snd_soc_component*) ; 
- scalar_t__ rt5651_support_button_press (struct rt5651_priv*) ; 
- struct rt5651_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
- int /*<<< orphan*/  snd_soc_jack_report (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SND_JACK_BTN_0 ;
+ int disable_irq (int ) ;
+ int rt5651_cancel_work (struct rt5651_priv*) ;
+ int rt5651_disable_micbias1_for_ovcd (struct snd_soc_component*) ;
+ int rt5651_disable_micbias1_ovcd_irq (struct snd_soc_component*) ;
+ scalar_t__ rt5651_support_button_press (struct rt5651_priv*) ;
+ struct rt5651_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
+ int snd_soc_jack_report (int *,int ,int ) ;
 
 __attribute__((used)) static void rt5651_disable_jack_detect(struct snd_soc_component *component)
 {
-	struct rt5651_priv *rt5651 = snd_soc_component_get_drvdata(component);
+ struct rt5651_priv *rt5651 = snd_soc_component_get_drvdata(component);
 
-	disable_irq(rt5651->irq);
-	rt5651_cancel_work(rt5651);
+ disable_irq(rt5651->irq);
+ rt5651_cancel_work(rt5651);
 
-	if (rt5651_support_button_press(rt5651)) {
-		rt5651_disable_micbias1_ovcd_irq(component);
-		rt5651_disable_micbias1_for_ovcd(component);
-		snd_soc_jack_report(rt5651->hp_jack, 0, SND_JACK_BTN_0);
-	}
+ if (rt5651_support_button_press(rt5651)) {
+  rt5651_disable_micbias1_ovcd_irq(component);
+  rt5651_disable_micbias1_for_ovcd(component);
+  snd_soc_jack_report(rt5651->hp_jack, 0, SND_JACK_BTN_0);
+ }
 
-	rt5651->hp_jack = NULL;
+ rt5651->hp_jack = ((void*)0);
 }

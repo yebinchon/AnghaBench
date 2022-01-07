@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* glFramebufferRenderbuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* glFramebufferRenderbuffer ) (int ,int ,int ,int ) ;} ;
 struct wined3d_gl_info {TYPE_1__ fbo_ops; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int DWORD ;
+typedef int GLuint ;
+typedef int GLenum ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_DEPTH_ATTACHMENT ; 
- int /*<<< orphan*/  GL_RENDERBUFFER ; 
- int /*<<< orphan*/  GL_STENCIL_ATTACHMENT ; 
- int WINED3D_FBO_ENTRY_FLAG_DEPTH ; 
- int WINED3D_FBO_ENTRY_FLAG_STENCIL ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GL_DEPTH_ATTACHMENT ;
+ int GL_RENDERBUFFER ;
+ int GL_STENCIL_ATTACHMENT ;
+ int WINED3D_FBO_ENTRY_FLAG_DEPTH ;
+ int WINED3D_FBO_ENTRY_FLAG_STENCIL ;
+ int checkGLcall (char*) ;
+ int stub1 (int ,int ,int ,int ) ;
+ int stub2 (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void context_attach_depth_stencil_rb(const struct wined3d_gl_info *gl_info,
         GLenum fbo_target, DWORD flags, GLuint rb)

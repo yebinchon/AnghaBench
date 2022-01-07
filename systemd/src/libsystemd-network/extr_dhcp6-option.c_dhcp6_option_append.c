@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  assert_return (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy_safe (int /*<<< orphan*/ *,void const*,size_t) ; 
- int option_append_hdr (int /*<<< orphan*/ **,size_t*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int EINVAL ;
+ int assert_return (int ,int ) ;
+ int memcpy_safe (int *,void const*,size_t) ;
+ int option_append_hdr (int **,size_t*,int ,size_t) ;
 
 int dhcp6_option_append(uint8_t **buf, size_t *buflen, uint16_t code,
                         size_t optlen, const void *optval) {

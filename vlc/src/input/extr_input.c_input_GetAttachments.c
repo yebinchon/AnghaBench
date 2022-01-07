@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  input_thread_t ;
-struct TYPE_5__ {int i_attachment; TYPE_1__* p_item; int /*<<< orphan*/ * attachment; } ;
-typedef  TYPE_2__ input_thread_private_t ;
-typedef  int /*<<< orphan*/  input_attachment_t ;
-struct TYPE_4__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- TYPE_2__* input_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** vlc_alloc (int,int) ; 
- int /*<<< orphan*/ * vlc_input_attachment_Duplicate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int input_thread_t ;
+struct TYPE_5__ {int i_attachment; TYPE_1__* p_item; int * attachment; } ;
+typedef TYPE_2__ input_thread_private_t ;
+typedef int input_attachment_t ;
+struct TYPE_4__ {int lock; } ;
+
+
+ TYPE_2__* input_priv (int *) ;
+ int ** vlc_alloc (int,int) ;
+ int * vlc_input_attachment_Duplicate (int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 int input_GetAttachments(input_thread_t *input,
                          input_attachment_t ***attachments)
@@ -35,7 +35,7 @@ int input_GetAttachments(input_thread_t *input,
     if (attachments_count <= 0)
     {
         vlc_mutex_unlock(&priv->p_item->lock);
-        *attachments = NULL;
+        *attachments = ((void*)0);
         return 0;
     }
 

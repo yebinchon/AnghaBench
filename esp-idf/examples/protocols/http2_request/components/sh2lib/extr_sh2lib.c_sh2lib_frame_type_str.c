@@ -1,47 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  NGHTTP2_DATA 134 
-#define  NGHTTP2_GOAWAY 133 
-#define  NGHTTP2_HEADERS 132 
-#define  NGHTTP2_PING 131 
-#define  NGHTTP2_PUSH_PROMISE 130 
-#define  NGHTTP2_RST_STREAM 129 
-#define  NGHTTP2_SETTINGS 128 
-
 const char *sh2lib_frame_type_str(int type)
 {
     switch (type) {
-    case NGHTTP2_HEADERS:
+    case 132:
         return "HEADERS";
         break;
-    case NGHTTP2_RST_STREAM:
+    case 129:
         return "RST_STREAM";
         break;
-    case NGHTTP2_GOAWAY:
+    case 133:
         return "GOAWAY";
         break;
-    case NGHTTP2_DATA:
+    case 134:
         return "DATA";
         break;
-    case NGHTTP2_SETTINGS:
+    case 128:
         return "SETTINGS";
         break;
-    case NGHTTP2_PUSH_PROMISE:
+    case 130:
         return "PUSH_PROMISE";
         break;
-    case NGHTTP2_PING:
+    case 131:
         return "PING";
         break;
     default:

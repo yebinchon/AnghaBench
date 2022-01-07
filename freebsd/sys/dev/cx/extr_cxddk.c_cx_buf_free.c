@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  port; } ;
-typedef  TYPE_1__ cx_chan_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATBSTS (int /*<<< orphan*/ ) ; 
- int BSTS_OWN24 ; 
- int /*<<< orphan*/  BTBSTS (int /*<<< orphan*/ ) ; 
- int inb (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int port; } ;
+typedef TYPE_1__ cx_chan_t ;
+
+
+ int ATBSTS (int ) ;
+ int BSTS_OWN24 ;
+ int BTBSTS (int ) ;
+ int inb (int ) ;
 
 int cx_buf_free (cx_chan_t *c)
 {
-	return ! (inb (ATBSTS(c->port)) & BSTS_OWN24) +
-		! (inb (BTBSTS(c->port)) & BSTS_OWN24);
+ return ! (inb (ATBSTS(c->port)) & BSTS_OWN24) +
+  ! (inb (BTBSTS(c->port)) & BSTS_OWN24);
 }

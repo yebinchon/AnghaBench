@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  rtc_write_databit (unsigned int) ; 
+ int rtc_write_databit (unsigned int) ;
 
 __attribute__((used)) static void rtc_write_byte(unsigned int byte)
 {
-	int i;
+ int i;
 
-	for (i = 0; i <= 7; i++) {
-		rtc_write_databit(byte & 1L);
-		byte >>= 1;
-	}
+ for (i = 0; i <= 7; i++) {
+  rtc_write_databit(byte & 1L);
+  byte >>= 1;
+ }
 }

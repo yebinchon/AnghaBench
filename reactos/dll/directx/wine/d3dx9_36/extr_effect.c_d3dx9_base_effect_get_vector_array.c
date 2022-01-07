@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_parameter {scalar_t__ element_count; int class; int /*<<< orphan*/ * members; } ;
+
+
+
+
+struct d3dx_parameter {scalar_t__ element_count; int class; int * members; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DXVECTOR4 ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+typedef scalar_t__ UINT ;
+typedef int HRESULT ;
+typedef int D3DXVECTOR4 ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
-#define  D3DXPC_MATRIX_ROWS 132 
-#define  D3DXPC_OBJECT 131 
-#define  D3DXPC_SCALAR 130 
-#define  D3DXPC_STRUCT 129 
-#define  D3DXPC_VECTOR 128 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debug_d3dxparameter_class (int) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_vector (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int D3DERR_INVALIDCALL ;
+
+
+
+
+
+ int D3D_OK ;
+ int FIXME (char*,int ) ;
+ int TRACE (char*,int ) ;
+ int WARN (char*) ;
+ int debug_d3dxparameter_class (int) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
+ int get_vector (int *,int *) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_get_vector_array(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, D3DXVECTOR4 *vector, UINT count)
@@ -47,17 +47,17 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_get_vector_array(struct d
 
         switch (param->class)
         {
-            case D3DXPC_VECTOR:
+            case 128:
                 for (i = 0; i < count; ++i)
                 {
                     get_vector(&param->members[i], &vector[i]);
                 }
                 return D3D_OK;
 
-            case D3DXPC_SCALAR:
-            case D3DXPC_MATRIX_ROWS:
-            case D3DXPC_OBJECT:
-            case D3DXPC_STRUCT:
+            case 130:
+            case 132:
+            case 131:
+            case 129:
                 break;
 
             default:

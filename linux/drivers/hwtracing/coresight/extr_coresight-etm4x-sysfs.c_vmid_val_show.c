@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct etmv4_config {size_t vmid_idx; scalar_t__* vmid_val; } ;
 struct etmv4_drvdata {struct etmv4_config config; } ;
 struct device_attribute {int dummy; } ;
-struct device {int /*<<< orphan*/  parent; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+struct device {int parent; } ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- struct etmv4_drvdata* dev_get_drvdata (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scnprintf (char*,int /*<<< orphan*/ ,char*,unsigned long) ; 
+
+ int PAGE_SIZE ;
+ struct etmv4_drvdata* dev_get_drvdata (int ) ;
+ int scnprintf (char*,int ,char*,unsigned long) ;
 
 __attribute__((used)) static ssize_t vmid_val_show(struct device *dev,
-			     struct device_attribute *attr,
-			     char *buf)
+        struct device_attribute *attr,
+        char *buf)
 {
-	unsigned long val;
-	struct etmv4_drvdata *drvdata = dev_get_drvdata(dev->parent);
-	struct etmv4_config *config = &drvdata->config;
+ unsigned long val;
+ struct etmv4_drvdata *drvdata = dev_get_drvdata(dev->parent);
+ struct etmv4_config *config = &drvdata->config;
 
-	val = (unsigned long)config->vmid_val[config->vmid_idx];
-	return scnprintf(buf, PAGE_SIZE, "%#lx\n", val);
+ val = (unsigned long)config->vmid_val[config->vmid_idx];
+ return scnprintf(buf, PAGE_SIZE, "%#lx\n", val);
 }

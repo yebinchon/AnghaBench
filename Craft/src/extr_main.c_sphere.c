@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x; int y; int z; int w; } ;
-typedef  TYPE_1__ Block ;
+typedef TYPE_1__ Block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  builder_block (int,int,int,int) ; 
- float sqrtf (float) ; 
+
+ int builder_block (int,int,int,int) ;
+ float sqrtf (float) ;
 
 void sphere(Block *center, int radius, int fill, int fx, int fy, int fz) {
     static const float offsets[8][3] = {

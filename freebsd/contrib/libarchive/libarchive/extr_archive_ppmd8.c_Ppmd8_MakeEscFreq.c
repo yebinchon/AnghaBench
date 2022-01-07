@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  unsigned int UInt16 ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+typedef unsigned int UInt16 ;
 struct TYPE_10__ {int NumStats; int SummFreq; int Flags; } ;
 struct TYPE_9__ {scalar_t__ NumStats; } ;
 struct TYPE_7__ {unsigned int Summ; unsigned int Shift; } ;
 struct TYPE_8__ {TYPE_1__ DummySee; TYPE_4__* MinContext; scalar_t__* NS2Indx; TYPE_1__** See; } ;
-typedef  TYPE_1__ CPpmd_See ;
-typedef  TYPE_2__ CPpmd8 ;
+typedef TYPE_1__ CPpmd_See ;
+typedef TYPE_2__ CPpmd8 ;
 
-/* Variables and functions */
- TYPE_3__* SUFFIX (TYPE_4__*) ; 
+
+ TYPE_3__* SUFFIX (TYPE_4__*) ;
 
 CPpmd_See *Ppmd8_MakeEscFreq(CPpmd8 *p, unsigned numMasked1, UInt32 *escFreq)
 {

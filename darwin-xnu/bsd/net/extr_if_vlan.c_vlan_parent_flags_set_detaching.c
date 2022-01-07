@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlan_parent {int /*<<< orphan*/  vlp_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLPF_DETACHING ; 
+
+
+
+struct vlan_parent {int vlp_flags; } ;
+
+
+ int VLPF_DETACHING ;
 
 __attribute__((used)) static __inline__ void
 vlan_parent_flags_set_detaching(struct vlan_parent * vlp)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* treap_node_ptr ;
-struct TYPE_6__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_2__ pli ;
-struct TYPE_5__ {struct TYPE_5__* r; int /*<<< orphan*/  val; int /*<<< orphan*/  x; struct TYPE_5__* l; } ;
 
-/* Variables and functions */
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* treap_node_ptr ;
+struct TYPE_6__ {int y; int x; } ;
+typedef TYPE_2__ pli ;
+struct TYPE_5__ {struct TYPE_5__* r; int val; int x; struct TYPE_5__* l; } ;
+
+
 
 int treap_conv_to_array (treap_node_ptr v, pli *a, int n) {
-  if (v == NULL) {
+  if (v == ((void*)0)) {
     return 0;
   }
   int ln = treap_conv_to_array (v->l, a, n);

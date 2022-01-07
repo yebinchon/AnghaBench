@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {long long QuadPart; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PTHREAD_START_ROUTINE ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ LONG ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  HANDLE ;
+typedef int PVOID ;
+typedef int PTHREAD_START_ROUTINE ;
+typedef int NTSTATUS ;
+typedef scalar_t__ LONG ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtDelayExecution (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  NtResumeThread (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlpStartThreadFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtDelayExecution (int ,TYPE_1__*) ;
+ int NtResumeThread (int ,int *) ;
+ int RtlpStartThreadFunc (int ,int ,int *) ;
 
 __attribute__((used)) static NTSTATUS
 RtlpStartWorkerThread(PTHREAD_START_ROUTINE StartRoutine)
@@ -35,15 +35,15 @@ RtlpStartWorkerThread(PTHREAD_START_ROUTINE StartRoutine)
     LARGE_INTEGER Timeout;
     volatile LONG WorkerInitialized = 0;
 
-    Timeout.QuadPart = -10000LL; /* Wait for 100ms */
+    Timeout.QuadPart = -10000LL;
 
-    /* Start the thread */
+
     Status = RtlpStartThreadFunc(StartRoutine, (PVOID)&WorkerInitialized, &ThreadHandle);
     if (NT_SUCCESS(Status))
     {
-        NtResumeThread(ThreadHandle, NULL);
+        NtResumeThread(ThreadHandle, ((void*)0));
 
-        /* Poll until the thread got a chance to initialize */
+
         while (WorkerInitialized == 0)
         {
             NtDelayExecution(FALSE,

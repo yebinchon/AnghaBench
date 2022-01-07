@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_3__* priv; } ;
 struct TYPE_13__ {scalar_t__ container; } ;
 struct TYPE_12__ {unsigned int input_num; unsigned int output_num; TYPE_7__** output; TYPE_7__** input; TYPE_1__* priv; } ;
 struct TYPE_11__ {TYPE_2__* module; } ;
 struct TYPE_10__ {scalar_t__ queue; scalar_t__ format; } ;
 struct TYPE_9__ {TYPE_5__* module; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_4__ MMAL_COMPONENT_T ;
-typedef  TYPE_5__ MMAL_COMPONENT_MODULE_T ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_4__ MMAL_COMPONENT_T ;
+typedef TYPE_5__ MMAL_COMPONENT_MODULE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int /*<<< orphan*/  mmal_ports_free (TYPE_7__**,int) ; 
- int /*<<< orphan*/  mmal_queue_destroy (scalar_t__) ; 
- int /*<<< orphan*/  vc_container_close (scalar_t__) ; 
- int /*<<< orphan*/  vc_container_format_delete (scalar_t__) ; 
- int /*<<< orphan*/  vcos_free (TYPE_5__*) ; 
+
+ int MMAL_SUCCESS ;
+ int mmal_ports_free (TYPE_7__**,int) ;
+ int mmal_queue_destroy (scalar_t__) ;
+ int vc_container_close (scalar_t__) ;
+ int vc_container_format_delete (scalar_t__) ;
+ int vcos_free (TYPE_5__*) ;
 
 __attribute__((used)) static MMAL_STATUS_T container_component_destroy(MMAL_COMPONENT_T *component)
 {

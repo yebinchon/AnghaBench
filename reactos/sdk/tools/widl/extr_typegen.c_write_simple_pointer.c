@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ type_t ;
-typedef  enum type_context { ____Placeholder_type_context } type_context ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_IN ; 
- int /*<<< orphan*/  ATTR_OUT ; 
- unsigned char FC_ALLOCED_ON_STACK ; 
- unsigned char FC_ENUM16 ; 
- unsigned char FC_RP ; 
- unsigned char FC_SIMPLE_POINTER ; 
- scalar_t__ MODE_Oif ; 
- int TYPE_CONTEXT_TOPLEVELPARAM ; 
- scalar_t__ TYPE_ENUM ; 
- int /*<<< orphan*/  current_func ; 
- int /*<<< orphan*/  current_iface ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- unsigned char get_basic_fc (TYPE_1__ const*) ; 
- unsigned char get_enum_fc (TYPE_1__ const*) ; 
- unsigned char get_pointer_fc_context (TYPE_1__ const*,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ get_stub_mode () ; 
- int is_attr (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_interpreted_func (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_string_type (int /*<<< orphan*/  const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  string_of_type (unsigned char) ; 
- scalar_t__ type_get_type (TYPE_1__ const*) ; 
- TYPE_1__* type_pointer_get_ref (TYPE_1__ const*) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int name; } ;
+typedef TYPE_1__ type_t ;
+typedef enum type_context { ____Placeholder_type_context } type_context ;
+typedef int attr_list_t ;
+typedef int FILE ;
+
+
+ int ATTR_IN ;
+ int ATTR_OUT ;
+ unsigned char FC_ALLOCED_ON_STACK ;
+ unsigned char FC_ENUM16 ;
+ unsigned char FC_RP ;
+ unsigned char FC_SIMPLE_POINTER ;
+ scalar_t__ MODE_Oif ;
+ int TYPE_CONTEXT_TOPLEVELPARAM ;
+ scalar_t__ TYPE_ENUM ;
+ int current_func ;
+ int current_iface ;
+ int error (char*,int ) ;
+ unsigned char get_basic_fc (TYPE_1__ const*) ;
+ unsigned char get_enum_fc (TYPE_1__ const*) ;
+ unsigned char get_pointer_fc_context (TYPE_1__ const*,int const*,int) ;
+ scalar_t__ get_stub_mode () ;
+ int is_attr (int const*,int ) ;
+ int is_interpreted_func (int ,int ) ;
+ scalar_t__ is_string_type (int const*,TYPE_1__ const*) ;
+ int print_file (int *,int,char*,...) ;
+ int string_of_type (unsigned char) ;
+ scalar_t__ type_get_type (TYPE_1__ const*) ;
+ TYPE_1__* type_pointer_get_ref (TYPE_1__ const*) ;
 
 __attribute__((used)) static unsigned int write_simple_pointer(FILE *file, const attr_list_t *attrs,
                                          const type_t *type, enum type_context context)
@@ -52,8 +52,8 @@ __attribute__((used)) static unsigned int write_simple_pointer(FILE *file, const
     int out_attr = is_attr(attrs, ATTR_OUT);
     unsigned char flags = FC_SIMPLE_POINTER;
 
-    /* for historical reasons, write_simple_pointer also handled string types,
-     * but no longer does. catch bad uses of the function with this check */
+
+
     if (is_string_type(attrs, type))
         error("write_simple_pointer: can't handle type %s which is a string type\n", type->name);
 

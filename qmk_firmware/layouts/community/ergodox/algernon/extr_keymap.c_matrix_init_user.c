@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long uint8_t ;
 
-/* Variables and functions */
- unsigned long ADORE ; 
- int LED_BRIGHTNESS_HI ; 
- int LED_BRIGHTNESS_LO ; 
- int /*<<< orphan*/  UC_LNX ; 
- int /*<<< orphan*/  eeconfig_init () ; 
- int /*<<< orphan*/  eeconfig_is_enabled () ; 
- unsigned long eeconfig_read_default_layer () ; 
- int /*<<< orphan*/  ergodox_led_all_off () ; 
- int /*<<< orphan*/  ergodox_led_all_on () ; 
- int /*<<< orphan*/  ergodox_led_all_set (int) ; 
- int is_adore ; 
- int /*<<< orphan*/  set_unicode_input_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait_ms (int) ; 
+
+
+
+typedef unsigned long uint8_t ;
+
+
+ unsigned long ADORE ;
+ int LED_BRIGHTNESS_HI ;
+ int LED_BRIGHTNESS_LO ;
+ int UC_LNX ;
+ int eeconfig_init () ;
+ int eeconfig_is_enabled () ;
+ unsigned long eeconfig_read_default_layer () ;
+ int ergodox_led_all_off () ;
+ int ergodox_led_all_on () ;
+ int ergodox_led_all_set (int) ;
+ int is_adore ;
+ int set_unicode_input_mode (int ) ;
+ int wait_ms (int) ;
 
 void matrix_init_user(void) {
   uint8_t dl;

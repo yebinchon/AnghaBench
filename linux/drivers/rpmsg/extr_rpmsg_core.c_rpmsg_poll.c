@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rpmsg_endpoint {TYPE_1__* ops; } ;
 struct file {int dummy; } ;
-typedef  int /*<<< orphan*/  poll_table ;
-typedef  int /*<<< orphan*/  __poll_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* poll ) (struct rpmsg_endpoint*,struct file*,int /*<<< orphan*/ *) ;} ;
+typedef int poll_table ;
+typedef int __poll_t ;
+struct TYPE_2__ {int (* poll ) (struct rpmsg_endpoint*,struct file*,int *) ;} ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  stub1 (struct rpmsg_endpoint*,struct file*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ WARN_ON (int) ;
+ int stub1 (struct rpmsg_endpoint*,struct file*,int *) ;
 
 __poll_t rpmsg_poll(struct rpmsg_endpoint *ept, struct file *filp,
-			poll_table *wait)
+   poll_table *wait)
 {
-	if (WARN_ON(!ept))
-		return 0;
-	if (!ept->ops->poll)
-		return 0;
+ if (WARN_ON(!ept))
+  return 0;
+ if (!ept->ops->poll)
+  return 0;
 
-	return ept->ops->poll(ept, filp, wait);
+ return ept->ops->poll(ept, filp, wait);
 }

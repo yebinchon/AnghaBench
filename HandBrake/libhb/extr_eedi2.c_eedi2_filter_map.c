@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int MAX (int,int const) ; 
- int MIN (int,int const) ; 
- int const abs (int const) ; 
- int /*<<< orphan*/  eedi2_bit_blit (int*,int,int*,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int MAX (int,int const) ;
+ int MIN (int,int const) ;
+ int const abs (int const) ;
+ int eedi2_bit_blit (int*,int,int*,int,int,int) ;
 
 void eedi2_filter_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int dmsk_pitch,
                        uint8_t * dstp, int dst_pitch, int height, int width )
@@ -47,7 +47,7 @@ void eedi2_filter_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int dmsk_
                 {
                     if( ( abs( dmskpp[x+j] - dmskp[x] ) > lim && dmskpp[x+j] != 0xFF ) ||
                         ( dmskp[x+j] == 0xFF && dmskpp[x+j] == 0xFF ) ||
-                        ( abs(  dmskp[x+j] - dmskp[x] ) > lim &&  dmskp[x+j] != 0xFF ) )
+                        ( abs( dmskp[x+j] - dmskp[x] ) > lim && dmskp[x+j] != 0xFF ) )
                     {
                         ict = 1;
                         break;
@@ -61,7 +61,7 @@ void eedi2_filter_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int dmsk_
                 {
                     if( ( abs( dmskpp[x+j] - dmskp[x] ) > lim && dmskpp[x+j] != 0xFF ) ||
                         ( dmskp[x+j] == 0xFF && dmskpp[x+j] == 0xFF ) ||
-                        ( abs(  dmskp[x+j] - dmskp[x] ) > lim &&  dmskp[x+j] != 0xFF ) )
+                        ( abs( dmskp[x+j] - dmskp[x] ) > lim && dmskp[x+j] != 0xFF ) )
                     {
                         ict = 1;
                         break;
@@ -77,7 +77,7 @@ void eedi2_filter_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int dmsk_
                     {
                         if( ( abs( dmskpn[x+j] - dmskp[x] ) > lim && dmskpn[x+j] != 0xFF ) ||
                             ( dmskpn[x+j] == 0xFF && dmskp[x+j] == 0xFF ) ||
-                            ( abs(  dmskp[x+j] - dmskp[x] ) > lim &&  dmskp[x+j] != 0xFF ) )
+                            ( abs( dmskp[x+j] - dmskp[x] ) > lim && dmskp[x+j] != 0xFF ) )
                         {
                             icb = 1;
                             break;
@@ -91,7 +91,7 @@ void eedi2_filter_map( uint8_t * mskp, int msk_pitch, uint8_t * dmskp, int dmsk_
                     {
                         if( ( abs( dmskpn[x+j] - dmskp[x] ) > lim && dmskpn[x+j] != 0xFF ) ||
                             ( dmskpn[x+j] == 0xFF && dmskp[x+j] == 0xFF ) ||
-                            ( abs(  dmskp[x+j] - dmskp[x] ) > lim &&  dmskp[x+j] != 0xFF ) )
+                            ( abs( dmskp[x+j] - dmskp[x] ) > lim && dmskp[x+j] != 0xFF ) )
                         {
                             icb = 1;
                             break;

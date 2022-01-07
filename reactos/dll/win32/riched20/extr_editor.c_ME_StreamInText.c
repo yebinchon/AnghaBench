@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_7__ {int dwSize; char* buffer; TYPE_1__* editstream; } ;
 struct TYPE_6__ {scalar_t__ dwError; } ;
-typedef  int /*<<< orphan*/  ME_TextEditor ;
-typedef  int /*<<< orphan*/  ME_Style ;
-typedef  TYPE_2__ ME_InStream ;
-typedef  int LRESULT ;
-typedef  int LONG ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int ME_TextEditor ;
+typedef int ME_Style ;
+typedef TYPE_2__ ME_InStream ;
+typedef int LRESULT ;
+typedef int LONG ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CP_ACP ; 
- int CP_UTF8 ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  ME_InsertTextFromCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_StreamInFill (TYPE_2__*) ; 
- int MultiByteToWideChar (int,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SF_UNICODE ; 
- int /*<<< orphan*/  STREAMIN_BUFFER_SIZE ; 
- int /*<<< orphan*/  TRACE (char*,int,TYPE_2__*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+ int CP_ACP ;
+ int CP_UTF8 ;
+ scalar_t__ FALSE ;
+ int ME_InsertTextFromCursor (int *,int ,int *,int,int *) ;
+ int ME_StreamInFill (TYPE_2__*) ;
+ int MultiByteToWideChar (int,int ,char*,int,int *,int ) ;
+ int SF_UNICODE ;
+ int STREAMIN_BUFFER_SIZE ;
+ int TRACE (char*,int,TYPE_2__*) ;
+ scalar_t__ TRUE ;
+ int memcmp (char*,char const*,int) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static LRESULT ME_StreamInText(ME_TextEditor *editor, DWORD dwFormat, ME_InStream *stream, ME_Style *style)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static LRESULT ME_StreamInText(ME_TextEditor *editor, DWOR
   LRESULT total_bytes_read = 0;
   BOOL is_read = FALSE;
   DWORD cp = CP_ACP, copy = 0;
-  char conv_buf[4 + STREAMIN_BUFFER_SIZE]; /* up to 4 additional UTF-8 bytes */
+  char conv_buf[4 + STREAMIN_BUFFER_SIZE];
 
   static const char bom_utf8[] = {0xEF, 0xBB, 0xBF};
 
@@ -91,7 +91,7 @@ __attribute__((used)) static LRESULT ME_StreamInText(ME_TextEditor *editor, DWOR
         while ((buf[end-1] & 0xC0) == 0x80)
         {
           --end;
-          --total_bytes_read; /* strange, but seems to match windows */
+          --total_bytes_read;
         }
         if (buf[end-1] & 0x80)
         {
@@ -105,12 +105,12 @@ __attribute__((used)) static LRESULT ME_StreamInText(ME_TextEditor *editor, DWOR
 
           if (size - end >= need)
           {
-            /* we have enough bytes for this sequence */
+
             end = size;
           }
           else
           {
-            /* need more bytes, so don't transcode this sequence */
+
             --end;
           }
         }

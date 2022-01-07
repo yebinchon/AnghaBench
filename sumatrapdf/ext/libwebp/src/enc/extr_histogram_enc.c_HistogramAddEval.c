@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {double bit_cost_; int /*<<< orphan*/  palette_code_bits_; } ;
-typedef  TYPE_1__ VP8LHistogram ;
 
-/* Variables and functions */
- scalar_t__ GetCombinedHistogramEntropy (TYPE_1__ const* const,TYPE_1__ const* const,double,double*) ; 
- int /*<<< orphan*/  HistogramAdd (TYPE_1__ const* const,TYPE_1__ const* const,TYPE_1__* const) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {double bit_cost_; int palette_code_bits_; } ;
+typedef TYPE_1__ VP8LHistogram ;
+
+
+ scalar_t__ GetCombinedHistogramEntropy (TYPE_1__ const* const,TYPE_1__ const* const,double,double*) ;
+ int HistogramAdd (TYPE_1__ const* const,TYPE_1__ const* const,TYPE_1__* const) ;
 
 __attribute__((used)) static double HistogramAddEval(const VP8LHistogram* const a,
                                const VP8LHistogram* const b,

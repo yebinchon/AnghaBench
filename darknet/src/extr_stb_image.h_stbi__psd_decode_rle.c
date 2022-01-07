@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* stbi_uc ;
-typedef  int /*<<< orphan*/  stbi__context ;
 
-/* Variables and functions */
- void* stbi__get8 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef void* stbi_uc ;
+typedef int stbi__context ;
+
+
+ void* stbi__get8 (int *) ;
 
 __attribute__((used)) static int stbi__psd_decode_rle(stbi__context *s, stbi_uc *p, int pixelCount)
 {
@@ -24,11 +24,11 @@ __attribute__((used)) static int stbi__psd_decode_rle(stbi__context *s, stbi_uc 
    while ((nleft = pixelCount - count) > 0) {
       len = stbi__get8(s);
       if (len == 128) {
-         // No-op.
+
       } else if (len < 128) {
-         // Copy next len+1 bytes literally.
+
          len++;
-         if (len > nleft) return 0; // corrupt data
+         if (len > nleft) return 0;
          count += len;
          while (len) {
             *p = stbi__get8(s);
@@ -36,11 +36,11 @@ __attribute__((used)) static int stbi__psd_decode_rle(stbi__context *s, stbi_uc 
             len--;
          }
       } else if (len > 128) {
-         stbi_uc   val;
-         // Next -len+1 bytes in the dest are replicated from next source byte.
-         // (Interpret len as a negative 8-bit int.)
+         stbi_uc val;
+
+
          len = 257 - len;
-         if (len > nleft) return 0; // corrupt data
+         if (len > nleft) return 0;
          val = stbi__get8(s);
          count += len;
          while (len) {

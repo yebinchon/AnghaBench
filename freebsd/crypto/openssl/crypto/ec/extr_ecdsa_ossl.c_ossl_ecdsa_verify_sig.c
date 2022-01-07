@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* r; int /*<<< orphan*/  const* s; } ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  TYPE_1__ ECDSA_SIG ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_bin2bn (unsigned char const*,int,int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_is_negative (int /*<<< orphan*/  const*) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_mod_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_nnmod (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int BN_num_bits (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_rshift (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ BN_ucmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_F_OSSL_ECDSA_VERIFY_SIG ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_order (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_KEY_can_sign (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_KEY_get0_public_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_get_affine_coordinates (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_R_BAD_SIGNATURE ; 
- int /*<<< orphan*/  EC_R_CURVE_DOES_NOT_SUPPORT_SIGNING ; 
- int /*<<< orphan*/  EC_R_MISSING_PARAMETERS ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_BN_LIB ; 
- int /*<<< orphan*/  ERR_R_EC_LIB ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ec_group_do_inverse_ord (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* r; int const* s; } ;
+typedef int EC_POINT ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
+typedef TYPE_1__ ECDSA_SIG ;
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_bin2bn (unsigned char const*,int,int const*) ;
+ scalar_t__ BN_is_negative (int const*) ;
+ scalar_t__ BN_is_zero (int const*) ;
+ int BN_mod_mul (int const*,int const*,int const*,int const*,int *) ;
+ int BN_nnmod (int const*,int const*,int const*,int *) ;
+ int BN_num_bits (int const*) ;
+ int BN_rshift (int const*,int const*,int) ;
+ scalar_t__ BN_ucmp (int const*,int const*) ;
+ int EC_F_OSSL_ECDSA_VERIFY_SIG ;
+ int const* EC_GROUP_get0_order (int const*) ;
+ int EC_KEY_can_sign (int *) ;
+ int * EC_KEY_get0_group (int *) ;
+ int * EC_KEY_get0_public_key (int *) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_get_affine_coordinates (int const*,int *,int const*,int *,int *) ;
+ int EC_POINT_mul (int const*,int *,int const*,int const*,int const*,int *) ;
+ int * EC_POINT_new (int const*) ;
+ int EC_R_BAD_SIGNATURE ;
+ int EC_R_CURVE_DOES_NOT_SUPPORT_SIGNING ;
+ int EC_R_MISSING_PARAMETERS ;
+ int ECerr (int ,int ) ;
+ int ERR_R_BN_LIB ;
+ int ERR_R_EC_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ec_group_do_inverse_ord (int const*,int const*,int const*,int *) ;
 
 int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
                           const ECDSA_SIG *sig, EC_KEY *eckey)
@@ -58,13 +58,13 @@ int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
     BN_CTX *ctx;
     const BIGNUM *order;
     BIGNUM *u1, *u2, *m, *X;
-    EC_POINT *point = NULL;
+    EC_POINT *point = ((void*)0);
     const EC_GROUP *group;
     const EC_POINT *pub_key;
 
-    /* check input values */
-    if (eckey == NULL || (group = EC_KEY_get0_group(eckey)) == NULL ||
-        (pub_key = EC_KEY_get0_public_key(eckey)) == NULL || sig == NULL) {
+
+    if (eckey == ((void*)0) || (group = EC_KEY_get0_group(eckey)) == ((void*)0) ||
+        (pub_key = EC_KEY_get0_public_key(eckey)) == ((void*)0) || sig == ((void*)0)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, EC_R_MISSING_PARAMETERS);
         return -1;
     }
@@ -75,7 +75,7 @@ int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
     }
 
     ctx = BN_CTX_new();
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_MALLOC_FAILURE);
         return -1;
     }
@@ -84,13 +84,13 @@ int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
     u2 = BN_CTX_get(ctx);
     m = BN_CTX_get(ctx);
     X = BN_CTX_get(ctx);
-    if (X == NULL) {
+    if (X == ((void*)0)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
 
     order = EC_GROUP_get0_order(group);
-    if (order == NULL) {
+    if (order == ((void*)0)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_EC_LIB);
         goto err;
     }
@@ -99,42 +99,42 @@ int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
         BN_ucmp(sig->r, order) >= 0 || BN_is_zero(sig->s) ||
         BN_is_negative(sig->s) || BN_ucmp(sig->s, order) >= 0) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, EC_R_BAD_SIGNATURE);
-        ret = 0;                /* signature is invalid */
+        ret = 0;
         goto err;
     }
-    /* calculate tmp1 = inv(S) mod order */
+
     if (!ec_group_do_inverse_ord(group, u2, sig->s, ctx)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
-    /* digest -> m */
+
     i = BN_num_bits(order);
-    /*
-     * Need to truncate digest if it is too long: first truncate whole bytes.
-     */
+
+
+
     if (8 * dgst_len > i)
         dgst_len = (i + 7) / 8;
     if (!BN_bin2bn(dgst, dgst_len, m)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
-    /* If still too long truncate remaining bits with a shift */
+
     if ((8 * dgst_len > i) && !BN_rshift(m, m, 8 - (i & 0x7))) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
-    /* u1 = m * tmp mod order */
+
     if (!BN_mod_mul(u1, m, u2, order, ctx)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
-    /* u2 = r * w mod q */
+
     if (!BN_mod_mul(u2, sig->r, u2, order, ctx)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
 
-    if ((point = EC_POINT_new(group)) == NULL) {
+    if ((point = EC_POINT_new(group)) == ((void*)0)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_MALLOC_FAILURE);
         goto err;
     }
@@ -143,7 +143,7 @@ int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
         goto err;
     }
 
-    if (!EC_POINT_get_affine_coordinates(group, point, X, NULL, ctx)) {
+    if (!EC_POINT_get_affine_coordinates(group, point, X, ((void*)0), ctx)) {
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_EC_LIB);
         goto err;
     }
@@ -152,7 +152,7 @@ int ossl_ecdsa_verify_sig(const unsigned char *dgst, int dgst_len,
         ECerr(EC_F_OSSL_ECDSA_VERIFY_SIG, ERR_R_BN_LIB);
         goto err;
     }
-    /*  if the signature is correct u1 is equal to sig->r */
+
     ret = (BN_ucmp(u1, sig->r) == 0);
  err:
     BN_CTX_end(ctx);

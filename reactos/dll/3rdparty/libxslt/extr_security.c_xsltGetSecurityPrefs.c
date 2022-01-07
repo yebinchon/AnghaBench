@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltSecurityPrefsPtr ;
-typedef  int xsltSecurityOption ;
-typedef  int /*<<< orphan*/ * xsltSecurityCheck ;
-struct TYPE_3__ {int /*<<< orphan*/ * writeNet; int /*<<< orphan*/ * readNet; int /*<<< orphan*/ * createDir; int /*<<< orphan*/ * createFile; int /*<<< orphan*/ * readFile; } ;
 
-/* Variables and functions */
-#define  XSLT_SECPREF_CREATE_DIRECTORY 132 
-#define  XSLT_SECPREF_READ_FILE 131 
-#define  XSLT_SECPREF_READ_NETWORK 130 
-#define  XSLT_SECPREF_WRITE_FILE 129 
-#define  XSLT_SECPREF_WRITE_NETWORK 128 
 
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltSecurityPrefsPtr ;
+typedef int xsltSecurityOption ;
+typedef int * xsltSecurityCheck ;
+struct TYPE_3__ {int * writeNet; int * readNet; int * createDir; int * createFile; int * readFile; } ;
 xsltSecurityCheck
 xsltGetSecurityPrefs(xsltSecurityPrefsPtr sec, xsltSecurityOption option) {
-    if (sec == NULL)
-	return(NULL);
+    if (sec == ((void*)0))
+ return(((void*)0));
     switch (option) {
-        case XSLT_SECPREF_READ_FILE:
+        case 131:
             return(sec->readFile);
-        case XSLT_SECPREF_WRITE_FILE:
+        case 129:
             return(sec->createFile);
-        case XSLT_SECPREF_CREATE_DIRECTORY:
+        case 132:
             return(sec->createDir);
-        case XSLT_SECPREF_READ_NETWORK:
+        case 130:
             return(sec->readNet);
-        case XSLT_SECPREF_WRITE_NETWORK:
+        case 128:
             return(sec->writeNet);
     }
-    return(NULL);
+    return(((void*)0));
 }

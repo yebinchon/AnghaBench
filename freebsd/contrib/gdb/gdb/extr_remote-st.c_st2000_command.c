@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  expect_prompt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf_stdebug (char*,char*) ; 
- int /*<<< orphan*/  st2000_desc ; 
+ int error (char*) ;
+ int expect_prompt (int ) ;
+ int printf_stdebug (char*,char*) ;
+ int st2000_desc ;
 
 __attribute__((used)) static void
 st2000_command (char *args, int fromtty)

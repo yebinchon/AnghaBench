@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ len; } ;
-struct TYPE_8__ {int /*<<< orphan*/  resolver; int /*<<< orphan*/ * error_log; int /*<<< orphan*/  line; int /*<<< orphan*/  file_name; int /*<<< orphan*/ * protocol; TYPE_5__ server_name; int /*<<< orphan*/  resolver_timeout; int /*<<< orphan*/  timeout; } ;
-typedef  TYPE_2__ ngx_mail_core_srv_conf_t ;
-struct TYPE_9__ {TYPE_1__* cycle; int /*<<< orphan*/  log; } ;
-typedef  TYPE_3__ ngx_conf_t ;
-struct TYPE_7__ {int /*<<< orphan*/  new_log; TYPE_5__ hostname; } ;
+struct TYPE_8__ {int resolver; int * error_log; int line; int file_name; int * protocol; TYPE_5__ server_name; int resolver_timeout; int timeout; } ;
+typedef TYPE_2__ ngx_mail_core_srv_conf_t ;
+struct TYPE_9__ {TYPE_1__* cycle; int log; } ;
+typedef TYPE_3__ ngx_conf_t ;
+struct TYPE_7__ {int new_log; TYPE_5__ hostname; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  ngx_conf_merge_msec_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_conf_merge_ptr_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_conf_merge_str_value (TYPE_5__,TYPE_5__,char*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_LOG_EMERG ;
+ int ngx_conf_merge_msec_value (int ,int ,int) ;
+ int ngx_conf_merge_ptr_value (int ,int ,int *) ;
+ int ngx_conf_merge_str_value (TYPE_5__,TYPE_5__,char*) ;
+ int ngx_log_error (int ,int ,int ,char*,int ,int ) ;
 
 __attribute__((used)) static char *
 ngx_mail_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -47,14 +47,14 @@ ngx_mail_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
         conf->server_name = cf->cycle->hostname;
     }
 
-    if (conf->protocol == NULL) {
+    if (conf->protocol == ((void*)0)) {
         ngx_log_error(NGX_LOG_EMERG, cf->log, 0,
                       "unknown mail protocol for server in %s:%ui",
                       conf->file_name, conf->line);
         return NGX_CONF_ERROR;
     }
 
-    if (conf->error_log == NULL) {
+    if (conf->error_log == ((void*)0)) {
         if (prev->error_log) {
             conf->error_log = prev->error_log;
         } else {
@@ -62,7 +62,7 @@ ngx_mail_core_merge_srv_conf(ngx_conf_t *cf, void *parent, void *child)
         }
     }
 
-    ngx_conf_merge_ptr_value(conf->resolver, prev->resolver, NULL);
+    ngx_conf_merge_ptr_value(conf->resolver, prev->resolver, ((void*)0));
 
     return NGX_CONF_OK;
 }

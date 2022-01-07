@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  POOL_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  g_ctx ; 
+
+
+
+typedef int POOL_ctx ;
+
+
+ int assert (int) ;
+ int g_ctx ;
 
 size_t POOL_sizeof(POOL_ctx* ctx) {
-    if (ctx==NULL) return 0;  /* supports sizeof NULL */
+    if (ctx==((void*)0)) return 0;
     assert(ctx == &g_ctx);
     return sizeof(*ctx);
 }

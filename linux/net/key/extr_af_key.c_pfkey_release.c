@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {struct sock* sk; } ;
-struct sock {int /*<<< orphan*/  sk_write_queue; } ;
+struct sock {int sk_write_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pfkey_remove (struct sock*) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sock_orphan (struct sock*) ; 
- int /*<<< orphan*/  sock_put (struct sock*) ; 
- int /*<<< orphan*/  synchronize_rcu () ; 
+
+ int pfkey_remove (struct sock*) ;
+ int skb_queue_purge (int *) ;
+ int sock_orphan (struct sock*) ;
+ int sock_put (struct sock*) ;
+ int synchronize_rcu () ;
 
 __attribute__((used)) static int pfkey_release(struct socket *sock)
 {
-	struct sock *sk = sock->sk;
+ struct sock *sk = sock->sk;
 
-	if (!sk)
-		return 0;
+ if (!sk)
+  return 0;
 
-	pfkey_remove(sk);
+ pfkey_remove(sk);
 
-	sock_orphan(sk);
-	sock->sk = NULL;
-	skb_queue_purge(&sk->sk_write_queue);
+ sock_orphan(sk);
+ sock->sk = ((void*)0);
+ skb_queue_purge(&sk->sk_write_queue);
 
-	synchronize_rcu();
-	sock_put(sk);
+ synchronize_rcu();
+ sock_put(sk);
 
-	return 0;
+ return 0;
 }

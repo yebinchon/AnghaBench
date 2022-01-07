@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  subtype; int /*<<< orphan*/  majortype; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ AM_MEDIA_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,...) ; 
- scalar_t__ IsEqualIID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MEDIASUBTYPE_MPEG1Audio ; 
- int /*<<< orphan*/  MEDIASUBTYPE_MPEG1System ; 
- int /*<<< orphan*/  MEDIASUBTYPE_MPEG1Video ; 
- int /*<<< orphan*/  MEDIASUBTYPE_MPEG1VideoCD ; 
- int /*<<< orphan*/  MEDIATYPE_Stream ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int subtype; int majortype; } ;
+typedef int LPVOID ;
+typedef int HRESULT ;
+typedef TYPE_1__ AM_MEDIA_TYPE ;
+
+
+ int FIXME (char*,...) ;
+ scalar_t__ IsEqualIID (int *,int *) ;
+ int MEDIASUBTYPE_MPEG1Audio ;
+ int MEDIASUBTYPE_MPEG1System ;
+ int MEDIASUBTYPE_MPEG1Video ;
+ int MEDIASUBTYPE_MPEG1VideoCD ;
+ int MEDIATYPE_Stream ;
+ int S_FALSE ;
+ int S_OK ;
+ int debugstr_guid (int *) ;
 
 __attribute__((used)) static HRESULT MPEGSplitter_query_accept(LPVOID iface, const AM_MEDIA_TYPE *pmt)
 {

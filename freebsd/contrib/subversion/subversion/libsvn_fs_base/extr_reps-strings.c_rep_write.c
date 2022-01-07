@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  string_key; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+struct TYPE_6__ {int string_key; } ;
 struct TYPE_7__ {TYPE_1__ fulltext; } ;
 struct TYPE_8__ {scalar_t__ kind; TYPE_2__ contents; } ;
-typedef  TYPE_3__ representation_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ representation_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/  SVN_ERR_FS_REP_NOT_MUTABLE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * UNKNOWN_NODE_KIND (char const*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  rep_is_mutable (TYPE_3__*,char const*) ; 
- scalar_t__ rep_kind_delta ; 
- scalar_t__ rep_kind_fulltext ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_fs_bdb__read_rep (TYPE_3__**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_bdb__string_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_CORRUPT ;
+ int SVN_ERR_FS_REP_NOT_MUTABLE ;
+ int * SVN_NO_ERROR ;
+ int * UNKNOWN_NODE_KIND (char const*) ;
+ int _ (char*) ;
+ int rep_is_mutable (TYPE_3__*,char const*) ;
+ scalar_t__ rep_kind_delta ;
+ scalar_t__ rep_kind_fulltext ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_fs_bdb__read_rep (TYPE_3__**,int *,char const*,int *,int *) ;
+ int svn_fs_bdb__string_append (int *,int *,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 rep_write(svn_fs_t *fs,
@@ -52,7 +52,7 @@ rep_write(svn_fs_t *fs,
 
   if (! rep_is_mutable(rep, txn_id))
     return svn_error_createf
-      (SVN_ERR_FS_REP_NOT_MUTABLE, NULL,
+      (SVN_ERR_FS_REP_NOT_MUTABLE, ((void*)0),
        _("Rep '%s' is not mutable"), rep_key);
 
   if (rep->kind == rep_kind_fulltext)
@@ -63,14 +63,14 @@ rep_write(svn_fs_t *fs,
     }
   else if (rep->kind == rep_kind_delta)
     {
-      /* There should never be a case when we have a mutable
-         non-fulltext rep.  The only code that creates mutable reps is
-         in this file, and it creates them fulltext. */
+
+
+
       return svn_error_createf
-        (SVN_ERR_FS_CORRUPT, NULL,
+        (SVN_ERR_FS_CORRUPT, ((void*)0),
          _("Rep '%s' both mutable and non-fulltext"), rep_key);
     }
-  else /* unknown kind */
+  else
     return UNKNOWN_NODE_KIND(rep_key);
 
   return SVN_NO_ERROR;

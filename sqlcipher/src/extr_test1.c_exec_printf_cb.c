@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Tcl_DString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Tcl_DStringAppendElement (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ Tcl_DStringLength (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Tcl_DString ;
+
+
+ int Tcl_DStringAppendElement (int *,char*) ;
+ scalar_t__ Tcl_DStringLength (int *) ;
 
 __attribute__((used)) static int exec_printf_cb(void *pArg, int argc, char **argv, char **name){
   Tcl_DString *str = (Tcl_DString*)pArg;

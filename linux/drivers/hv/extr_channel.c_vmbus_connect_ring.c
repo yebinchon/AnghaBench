@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vmbus_channel {int dummy; } ;
 
-/* Variables and functions */
- int __vmbus_open (struct vmbus_channel*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void (*) (void*),void*) ; 
+
+ int __vmbus_open (struct vmbus_channel*,int *,int ,void (*) (void*),void*) ;
 
 int vmbus_connect_ring(struct vmbus_channel *newchannel,
-		       void (*onchannelcallback)(void *context), void *context)
+         void (*onchannelcallback)(void *context), void *context)
 {
-	return  __vmbus_open(newchannel, NULL, 0, onchannelcallback, context);
+ return __vmbus_open(newchannel, ((void*)0), 0, onchannelcallback, context);
 }

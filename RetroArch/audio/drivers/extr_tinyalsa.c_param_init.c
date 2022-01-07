@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_pcm_hw_params {unsigned int rmask; unsigned int info; scalar_t__ cmask; } ;
-struct snd_mask {int /*<<< orphan*/ * bits; } ;
-struct snd_interval {int /*<<< orphan*/  max; scalar_t__ min; } ;
+struct snd_mask {int * bits; } ;
+struct snd_interval {int max; scalar_t__ min; } ;
 
-/* Variables and functions */
- int SNDRV_PCM_HW_PARAM_FIRST_INTERVAL ; 
- int SNDRV_PCM_HW_PARAM_FIRST_MASK ; 
- int SNDRV_PCM_HW_PARAM_LAST_INTERVAL ; 
- int SNDRV_PCM_HW_PARAM_LAST_MASK ; 
- int /*<<< orphan*/  memset (struct snd_pcm_hw_params*,int /*<<< orphan*/ ,int) ; 
- struct snd_interval* param_to_interval (struct snd_pcm_hw_params*,int) ; 
- struct snd_mask* param_to_mask (struct snd_pcm_hw_params*,int) ; 
+
+ int SNDRV_PCM_HW_PARAM_FIRST_INTERVAL ;
+ int SNDRV_PCM_HW_PARAM_FIRST_MASK ;
+ int SNDRV_PCM_HW_PARAM_LAST_INTERVAL ;
+ int SNDRV_PCM_HW_PARAM_LAST_MASK ;
+ int memset (struct snd_pcm_hw_params*,int ,int) ;
+ struct snd_interval* param_to_interval (struct snd_pcm_hw_params*,int) ;
+ struct snd_mask* param_to_mask (struct snd_pcm_hw_params*,int) ;
 
 __attribute__((used)) static void param_init(struct snd_pcm_hw_params *p)
 {

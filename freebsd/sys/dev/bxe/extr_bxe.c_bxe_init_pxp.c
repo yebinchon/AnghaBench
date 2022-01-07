@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct bxe_softc {int mrrs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int PCIM_EXP_CTL_MAX_PAYLOAD ; 
- int PCIM_EXP_CTL_MAX_READ_REQUEST ; 
- int /*<<< orphan*/  PCIR_EXPRESS_DEVICE_CTL ; 
- int bxe_pcie_capability_read (struct bxe_softc*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ecore_init_pxp_arb (struct bxe_softc*,int,int) ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int) ;
+ int DBG_LOAD ;
+ int PCIM_EXP_CTL_MAX_PAYLOAD ;
+ int PCIM_EXP_CTL_MAX_READ_REQUEST ;
+ int PCIR_EXPRESS_DEVICE_CTL ;
+ int bxe_pcie_capability_read (struct bxe_softc*,int ,int) ;
+ int ecore_init_pxp_arb (struct bxe_softc*,int,int) ;
 
 __attribute__((used)) static void
 bxe_init_pxp(struct bxe_softc *sc)

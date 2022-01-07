@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int FIRST_PSEUDO_REGISTER ; 
- size_t GENERAL_REGS ; 
- int /*<<< orphan*/  Pmode ; 
- int /*<<< orphan*/  SImode ; 
- scalar_t__ TEST_HARD_REG_BIT (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  end_sequence () ; 
- int /*<<< orphan*/ * fixed_regs ; 
- int /*<<< orphan*/  gen_raw_REG (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gen_rtx_MEM (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_insns () ; 
- int /*<<< orphan*/ * reg_class_contents ; 
- void* seq_cost (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_sequence () ; 
- int /*<<< orphan*/  target_avail_regs ; 
- int target_pres_cost ; 
- int target_res_regs ; 
- int target_small_cost ; 
- void* target_spill_cost ; 
- int /*<<< orphan*/  validize_mem (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int FIRST_PSEUDO_REGISTER ;
+ size_t GENERAL_REGS ;
+ int Pmode ;
+ int SImode ;
+ scalar_t__ TEST_HARD_REG_BIT (int ,unsigned int) ;
+ int emit_move_insn (int ,int ) ;
+ int end_sequence () ;
+ int * fixed_regs ;
+ int gen_raw_REG (int ,int) ;
+ int gen_rtx_MEM (int ,int ) ;
+ int get_insns () ;
+ int * reg_class_contents ;
+ void* seq_cost (int ) ;
+ int start_sequence () ;
+ int target_avail_regs ;
+ int target_pres_cost ;
+ int target_res_regs ;
+ int target_small_cost ;
+ void* target_spill_cost ;
+ int validize_mem (int ) ;
 
 void
 init_set_costs (void)
@@ -46,12 +46,12 @@ init_set_costs (void)
 
   for (i = 0; i < FIRST_PSEUDO_REGISTER; i++)
     if (TEST_HARD_REG_BIT (reg_class_contents[GENERAL_REGS], i)
-	&& !fixed_regs[i])
+ && !fixed_regs[i])
       target_avail_regs++;
 
   target_res_regs = 3;
 
-  /* These are really just heuristic values.  */
+
 
   start_sequence ();
   emit_move_insn (reg1, reg2);

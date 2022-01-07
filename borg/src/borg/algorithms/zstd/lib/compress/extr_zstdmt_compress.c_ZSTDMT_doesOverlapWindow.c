@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ size; scalar_t__ start; } ;
-typedef  TYPE_1__ range_t ;
-typedef  int /*<<< orphan*/  buffer_t ;
+typedef TYPE_1__ range_t ;
+typedef int buffer_t ;
 struct TYPE_6__ {scalar_t__ dictLimit; scalar_t__ base; scalar_t__ nextSrc; scalar_t__ lowLimit; scalar_t__ dictBase; } ;
-typedef  TYPE_2__ ZSTD_window_t ;
+typedef TYPE_2__ ZSTD_window_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,...) ; 
- scalar_t__ ZSTDMT_isOverlapped (int /*<<< orphan*/ ,TYPE_1__) ; 
+
+ int DEBUGLOG (int,char*,...) ;
+ scalar_t__ ZSTDMT_isOverlapped (int ,TYPE_1__) ;
 
 __attribute__((used)) static int ZSTDMT_doesOverlapWindow(buffer_t buffer, ZSTD_window_t window)
 {

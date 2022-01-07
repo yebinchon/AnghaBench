@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_7__ {int state; int frame_start_found; } ;
-struct TYPE_6__ {int /*<<< orphan*/  pict_type; TYPE_1__* priv_data; } ;
+struct TYPE_6__ {int pict_type; TYPE_1__* priv_data; } ;
 struct TYPE_5__ {int is_be; int index; int remaining_size; int fsize; TYPE_3__ pc; } ;
-typedef  TYPE_1__ DPXParseContext ;
-typedef  TYPE_2__ AVCodecParserContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_1__ DPXParseContext ;
+typedef TYPE_2__ AVCodecParserContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int END_NOT_FOUND ; 
- int FFMIN (int,int) ; 
- int MKBETAG (char,char,char,char) ; 
- int MKTAG (char,char,char,char) ; 
- int av_bswap32 (int) ; 
- scalar_t__ ff_combine_frame (TYPE_3__*,int,int const**,int*) ; 
+
+ int AV_PICTURE_TYPE_I ;
+ int END_NOT_FOUND ;
+ int FFMIN (int,int) ;
+ int MKBETAG (char,char,char,char) ;
+ int MKTAG (char,char,char,char) ;
+ int av_bswap32 (int) ;
+ scalar_t__ ff_combine_frame (TYPE_3__*,int,int const**,int*) ;
 
 __attribute__((used)) static int dpx_parse(AVCodecParserContext *s, AVCodecContext *avctx,
                      const uint8_t **poutbuf, int *poutbuf_size,
@@ -97,7 +97,7 @@ flush:
 
     d->pc.frame_start_found = 0;
 
-    *poutbuf      = buf;
+    *poutbuf = buf;
     *poutbuf_size = buf_size;
     return next;
 }

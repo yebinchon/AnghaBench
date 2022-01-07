@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_9__ ;
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_18__ {TYPE_10__* nbns; int /*<<< orphan*/  dns_neg; TYPE_10__* dns; } ;
+
+
+typedef struct TYPE_20__ TYPE_9__ ;
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+struct TYPE_18__ {TYPE_10__* nbns; int dns_neg; TYPE_10__* dns; } ;
 struct TYPE_20__ {char* src; } ;
-struct TYPE_16__ {scalar_t__ slotcomp; int /*<<< orphan*/  slots; int /*<<< orphan*/  neg; } ;
+struct TYPE_16__ {scalar_t__ slotcomp; int slots; int neg; } ;
 struct TYPE_11__ {scalar_t__ s_addr; } ;
-struct TYPE_15__ {int maxreq; int maxtrm; int /*<<< orphan*/  timeout; } ;
-struct TYPE_19__ {TYPE_7__ ns; int /*<<< orphan*/  peer_range; TYPE_9__ peer_list; TYPE_5__ vj; TYPE_10__ TriggerAddress; scalar_t__ HaveTriggerAddress; int /*<<< orphan*/  my_range; TYPE_4__ fsm; } ;
+struct TYPE_15__ {int maxreq; int maxtrm; int timeout; } ;
+struct TYPE_19__ {TYPE_7__ ns; int peer_range; TYPE_9__ peer_list; TYPE_5__ vj; TYPE_10__ TriggerAddress; scalar_t__ HaveTriggerAddress; int my_range; TYPE_4__ fsm; } ;
 struct TYPE_17__ {TYPE_10__* dns; } ;
-struct TYPE_14__ {scalar_t__ state; int /*<<< orphan*/  name; } ;
-struct ipcp {int /*<<< orphan*/  throughput; TYPE_8__ cfg; TYPE_6__ ns; int /*<<< orphan*/  my_compproto; TYPE_10__ my_ip; int /*<<< orphan*/  peer_compproto; TYPE_10__ peer_ip; TYPE_3__ fsm; } ;
-struct cmdargs {int /*<<< orphan*/  prompt; TYPE_2__* bundle; } ;
+struct TYPE_14__ {scalar_t__ state; int name; } ;
+struct ipcp {int throughput; TYPE_8__ cfg; TYPE_6__ ns; int my_compproto; TYPE_10__ my_ip; int peer_compproto; TYPE_10__ peer_ip; TYPE_3__ fsm; } ;
+struct cmdargs {int prompt; TYPE_2__* bundle; } ;
 struct TYPE_12__ {struct ipcp ipcp; } ;
 struct TYPE_13__ {TYPE_1__ ncp; } ;
 
-/* Variables and functions */
- scalar_t__ INADDR_NONE ; 
- scalar_t__ ST_OPENED ; 
- int /*<<< orphan*/  State2Nam (scalar_t__) ; 
- char* command_ShowNegval (int /*<<< orphan*/ ) ; 
- char* inet_ntoa (TYPE_10__) ; 
- scalar_t__ ipcp_QueueLen (struct ipcp*) ; 
- scalar_t__ iplist_isvalid (TYPE_9__*) ; 
- char* ncprange_ntoa (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prompt_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  throughput_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vj2asc (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ INADDR_NONE ;
+ scalar_t__ ST_OPENED ;
+ int State2Nam (scalar_t__) ;
+ char* command_ShowNegval (int ) ;
+ char* inet_ntoa (TYPE_10__) ;
+ scalar_t__ ipcp_QueueLen (struct ipcp*) ;
+ scalar_t__ iplist_isvalid (TYPE_9__*) ;
+ char* ncprange_ntoa (int *) ;
+ int prompt_Printf (int ,char*,...) ;
+ int throughput_disp (int *,int ) ;
+ int vj2asc (int ) ;
 
 int
 ipcp_Show(struct cmdargs const *arg)

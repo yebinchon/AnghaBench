@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  token ;
-typedef  int /*<<< orphan*/  revision ;
-typedef  int /*<<< orphan*/  minor ;
-typedef  int /*<<< orphan*/  major ;
-typedef  int /*<<< orphan*/  build ;
-typedef  char* WORD ;
-typedef  char WCHAR ;
-typedef  char const* LPCWSTR ;
-typedef  int /*<<< orphan*/  IAssemblyName ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  char* BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASM_NAME_BUILD_NUMBER ; 
- int /*<<< orphan*/  ASM_NAME_MAJOR_VERSION ; 
- int /*<<< orphan*/  ASM_NAME_MINOR_VERSION ; 
- int /*<<< orphan*/  ASM_NAME_PUBLIC_KEY_TOKEN ; 
- int /*<<< orphan*/  ASM_NAME_REVISION_NUMBER ; 
- int BYTES_PER_TOKEN ; 
- int /*<<< orphan*/  IAssemblyName_GetName (int /*<<< orphan*/ *,int*,char*) ; 
- int /*<<< orphan*/  IAssemblyName_GetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**,int*) ; 
- int MAX_PATH ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TOKEN_LENGTH ; 
- int /*<<< orphan*/  swprintf (char*,char const*,char const*,...) ; 
- int /*<<< orphan*/  token_to_str (char**,char*) ; 
+
+
+
+typedef int token ;
+typedef int revision ;
+typedef int minor ;
+typedef int major ;
+typedef int build ;
+typedef char* WORD ;
+typedef char WCHAR ;
+typedef char const* LPCWSTR ;
+typedef int IAssemblyName ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef char* BYTE ;
+
+
+ int ASM_NAME_BUILD_NUMBER ;
+ int ASM_NAME_MAJOR_VERSION ;
+ int ASM_NAME_MINOR_VERSION ;
+ int ASM_NAME_PUBLIC_KEY_TOKEN ;
+ int ASM_NAME_REVISION_NUMBER ;
+ int BYTES_PER_TOKEN ;
+ int IAssemblyName_GetName (int *,int*,char*) ;
+ int IAssemblyName_GetProperty (int *,int ,char**,int*) ;
+ int MAX_PATH ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TOKEN_LENGTH ;
+ int swprintf (char*,char const*,char const*,...) ;
+ int token_to_str (char**,char*) ;
 
 __attribute__((used)) static void build_file_mask(IAssemblyName *name, int depth, const WCHAR *path,
                             const WCHAR *prefix, WCHAR *buf)
@@ -48,7 +48,7 @@ __attribute__((used)) static void build_file_mask(IAssemblyName *name, int depth
     static const WCHAR ver_fmt[] = {'%','u','.','%','u','.','%','u','.','%','u',0};
     static const WCHAR star_fmt[] = {'%','s','\\','*',0};
     static const WCHAR star_prefix_fmt[] = {'%','s','\\','%','s','*',0};
-    WCHAR disp[MAX_PATH], version[24]; /* strlen("65535") * 4 + 3 + 1 */
+    WCHAR disp[MAX_PATH], version[24];
     LPCWSTR verptr, pubkeyptr;
     HRESULT hr;
     DWORD size, major_size, minor_size, build_size, revision_size;

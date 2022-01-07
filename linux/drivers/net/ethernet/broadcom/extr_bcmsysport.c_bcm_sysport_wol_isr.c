@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct bcm_sysport_priv {TYPE_1__* pdev; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+typedef int irqreturn_t ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  pm_wakeup_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int IRQ_HANDLED ;
+ int pm_wakeup_event (int *,int ) ;
 
 __attribute__((used)) static irqreturn_t bcm_sysport_wol_isr(int irq, void *dev_id)
 {
-	struct bcm_sysport_priv *priv = dev_id;
+ struct bcm_sysport_priv *priv = dev_id;
 
-	pm_wakeup_event(&priv->pdev->dev, 0);
+ pm_wakeup_event(&priv->pdev->dev, 0);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

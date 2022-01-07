@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mv_rtc_softc {int /*<<< orphan*/  res; int /*<<< orphan*/  mutex; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_release_resources (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct mv_rtc_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  res_spec ; 
+
+
+
+struct mv_rtc_softc {int res; int mutex; } ;
+typedef int device_t ;
+
+
+ int bus_release_resources (int ,int ,int ) ;
+ struct mv_rtc_softc* device_get_softc (int ) ;
+ int mtx_destroy (int *) ;
+ int res_spec ;
 
 __attribute__((used)) static int
 mv_rtc_detach(device_t dev)
 {
-	struct mv_rtc_softc *sc;
+ struct mv_rtc_softc *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	mtx_destroy(&sc->mutex);
+ mtx_destroy(&sc->mutex);
 
-	bus_release_resources(dev, res_spec, sc->res);
+ bus_release_resources(dev, res_spec, sc->res);
 
-	return (0);
+ return (0);
 }

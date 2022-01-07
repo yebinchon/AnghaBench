@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bitmap_clear (int /*<<< orphan*/ ,unsigned long,int) ; 
- int /*<<< orphan*/  iommu_bitmap_lock ; 
- int /*<<< orphan*/  iommu_gart_bitmap ; 
- unsigned long next_bit ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+ int bitmap_clear (int ,unsigned long,int) ;
+ int iommu_bitmap_lock ;
+ int iommu_gart_bitmap ;
+ unsigned long next_bit ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void free_iommu(unsigned long offset, int size)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&iommu_bitmap_lock, flags);
-	bitmap_clear(iommu_gart_bitmap, offset, size);
-	if (offset >= next_bit)
-		next_bit = offset + size;
-	spin_unlock_irqrestore(&iommu_bitmap_lock, flags);
+ spin_lock_irqsave(&iommu_bitmap_lock, flags);
+ bitmap_clear(iommu_gart_bitmap, offset, size);
+ if (offset >= next_bit)
+  next_bit = offset + size;
+ spin_unlock_irqrestore(&iommu_bitmap_lock, flags);
 }

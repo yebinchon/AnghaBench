@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_IDirect3DRMFrame ; 
- int /*<<< orphan*/  IID_IDirect3DRMFrame2 ; 
- int /*<<< orphan*/  IID_IDirect3DRMFrame3 ; 
- int /*<<< orphan*/  IID_IDirect3DRMMeshBuilder ; 
- int /*<<< orphan*/  IID_IDirect3DRMMeshBuilder2 ; 
- int /*<<< orphan*/  IID_IDirect3DRMMeshBuilder3 ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int GUID ;
+
+
+ int IID_IDirect3DRMFrame ;
+ int IID_IDirect3DRMFrame2 ;
+ int IID_IDirect3DRMFrame3 ;
+ int IID_IDirect3DRMMeshBuilder ;
+ int IID_IDirect3DRMMeshBuilder2 ;
+ int IID_IDirect3DRMMeshBuilder3 ;
+ scalar_t__ IsEqualGUID (int const*,int *) ;
 
 __attribute__((used)) static const char* get_IID_string(const GUID* guid)
 {

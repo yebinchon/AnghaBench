@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* queue; struct TYPE_4__* distance; struct TYPE_4__* pair_vu; struct TYPE_4__* pair_uv; } ;
-typedef  TYPE_1__ BipartiteMatchState ;
+typedef TYPE_1__ BipartiteMatchState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pfree (TYPE_1__*) ; 
+
+ int pfree (TYPE_1__*) ;
 
 void
 BipartiteMatchFree(BipartiteMatchState *state)
 {
-	/* adjacency matrix is treated as owned by the caller */
-	pfree(state->pair_uv);
-	pfree(state->pair_vu);
-	pfree(state->distance);
-	pfree(state->queue);
-	pfree(state);
+
+ pfree(state->pair_uv);
+ pfree(state->pair_vu);
+ pfree(state->distance);
+ pfree(state->queue);
+ pfree(state);
 }

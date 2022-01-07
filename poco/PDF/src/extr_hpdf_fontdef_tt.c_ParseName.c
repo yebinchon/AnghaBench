@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {scalar_t__ base_font; int /*<<< orphan*/  flags; int /*<<< orphan*/  error; int /*<<< orphan*/  mmgr; int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {scalar_t__ base_font; int flags; int error; int mmgr; int attr; } ;
 struct TYPE_13__ {int offset; } ;
 struct TYPE_12__ {int platform_id; int encoding_id; int language_id; int name_id; int length; int offset; } ;
 struct TYPE_10__ {int format; int count; int string_offset; TYPE_3__* name_records; } ;
-struct TYPE_11__ {char* base_font; int /*<<< orphan*/  stream; TYPE_1__ name_tbl; } ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_2__* HPDF_TTFontDefAttr ;
-typedef  TYPE_3__ HPDF_TTF_NameRecord ;
-typedef  TYPE_4__ HPDF_TTFTable ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_5__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+struct TYPE_11__ {char* base_font; int stream; TYPE_1__ name_tbl; } ;
+typedef int HPDF_UINT ;
+typedef TYPE_2__* HPDF_TTFontDefAttr ;
+typedef TYPE_3__ HPDF_TTF_NameRecord ;
+typedef TYPE_4__ HPDF_TTFTable ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_5__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- TYPE_4__* FindTable (TYPE_5__*,char*) ; 
- scalar_t__ GetUINT16 (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_FONT_FOURCE_BOLD ; 
- int /*<<< orphan*/  HPDF_FONT_ITALIC ; 
- TYPE_3__* HPDF_GetMem (int /*<<< orphan*/ ,int) ; 
- int HPDF_LIMIT_MAX_NAME_LEN ; 
- scalar_t__ HPDF_MemCmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HPDF_MemCpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HPDF_MemSet (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- scalar_t__ HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_StrStr (char*,char*,int) ; 
- scalar_t__ HPDF_Stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ HPDF_Stream_Seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_TTF_INVALID_FOMAT ; 
- int /*<<< orphan*/  HPDF_TTF_MISSING_TABLE ; 
- scalar_t__ LoadUnicodeName (int /*<<< orphan*/ ,int,int,char*) ; 
+
+ TYPE_4__* FindTable (TYPE_5__*,char*) ;
+ scalar_t__ GetUINT16 (int ,int*) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ int HPDF_FONT_FOURCE_BOLD ;
+ int HPDF_FONT_ITALIC ;
+ TYPE_3__* HPDF_GetMem (int ,int) ;
+ int HPDF_LIMIT_MAX_NAME_LEN ;
+ scalar_t__ HPDF_MemCmp (int *,int *,int) ;
+ int HPDF_MemCpy (int *,int *,int) ;
+ int HPDF_MemSet (char*,int ,int) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ scalar_t__ HPDF_SetError (int ,int ,int) ;
+ scalar_t__ HPDF_StrStr (char*,char*,int) ;
+ scalar_t__ HPDF_Stream_Read (int ,int *,int*) ;
+ scalar_t__ HPDF_Stream_Seek (int ,int,int ) ;
+ int HPDF_TTF_INVALID_FOMAT ;
+ int HPDF_TTF_MISSING_TABLE ;
+ scalar_t__ LoadUnicodeName (int ,int,int,char*) ;
 
 __attribute__((used)) static HPDF_STATUS
-ParseName  (HPDF_FontDef  fontdef)
+ParseName (HPDF_FontDef fontdef)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_TTFTable *tbl = FindTable (fontdef, "name");
@@ -184,14 +184,6 @@ ParseName  (HPDF_FontDef  fontdef)
                 tmp)) != HPDF_OK)
             return ret;
     }
-
-   /*
-    * get "postscript name" of from a "name" table as BaseName.
-    * if subfamily name is not "Regular", add subfamily name to BaseName.
-    * if subfamily name includes the blank character, remove it.
-    * if subfamily name is "Bold" or "Italic" or "BoldItalic", set flags
-    * attribute.
-    */
     if (HPDF_MemCmp ((HPDF_BYTE *)tmp, (HPDF_BYTE *)"Regular", 7) != 0) {
         char *dst = attr->base_font + len_id1;
         char *src = tmp;

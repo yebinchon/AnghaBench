@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ attr; int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ attr; int error; } ;
 struct TYPE_10__ {TYPE_2__* parent; } ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_PageAttr ;
-typedef  TYPE_2__* HPDF_Page ;
-typedef  scalar_t__ HPDF_Array ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_PageAttr ;
+typedef TYPE_2__* HPDF_Page ;
+typedef scalar_t__ HPDF_Array ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Array_Insert (scalar_t__,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  HPDF_Dict_Add (TYPE_2__*,char*,TYPE_2__*) ; 
- scalar_t__ HPDF_Dict_GetItem (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_INVALID_PARAMETER ; 
- int /*<<< orphan*/  HPDF_OCLASS_ARRAY ; 
- int /*<<< orphan*/  HPDF_OCLASS_DICT ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PAGES_MISSING_KIDS_ENTRY ; 
- int /*<<< orphan*/  HPDF_PAGE_CANNOT_SET_PARENT ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int HPDF_Array_Insert (scalar_t__,TYPE_2__*,TYPE_2__*) ;
+ int HPDF_Dict_Add (TYPE_2__*,char*,TYPE_2__*) ;
+ scalar_t__ HPDF_Dict_GetItem (TYPE_2__*,char*,int ) ;
+ int HPDF_INVALID_PARAMETER ;
+ int HPDF_OCLASS_ARRAY ;
+ int HPDF_OCLASS_DICT ;
+ int HPDF_OK ;
+ int HPDF_PAGES_MISSING_KIDS_ENTRY ;
+ int HPDF_PAGE_CANNOT_SET_PARENT ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SetError (int ,int ,int ) ;
 
 HPDF_STATUS
-HPDF_Page_InsertBefore  (HPDF_Page   page,
-                         HPDF_Page   target)
+HPDF_Page_InsertBefore (HPDF_Page page,
+                         HPDF_Page target)
 {
     HPDF_Page parent;
     HPDF_Array kids;

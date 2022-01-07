@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct search_extra {int /*<<< orphan*/  sent_limit; int /*<<< orphan*/  mode; int /*<<< orphan*/  op; } ;
+
+
+
+
+struct search_extra {int sent_limit; int mode; int op; } ;
 struct gather {struct search_extra* extra; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tl_copy_through (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_fetch_unread () ; 
- int /*<<< orphan*/  tl_store_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ) ; 
+
+ int tl_copy_through (int ,int ) ;
+ int tl_fetch_unread () ;
+ int tl_store_int (int ) ;
+ int vkprintf (int,char*,int ) ;
 
 int rpc_proxy_search_on_send (struct gather *G, int num) {
   struct search_extra *extra = G->extra;

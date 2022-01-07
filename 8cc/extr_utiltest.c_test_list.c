@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_int (int,long) ; 
- int /*<<< orphan*/ * make_vector () ; 
- int /*<<< orphan*/ * vec_copy (int /*<<< orphan*/ *) ; 
- scalar_t__ vec_get (int /*<<< orphan*/ *,int) ; 
- scalar_t__ vec_head (int /*<<< orphan*/ *) ; 
- long vec_len (int /*<<< orphan*/ *) ; 
- scalar_t__ vec_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/ * vec_reverse (int /*<<< orphan*/ *) ; 
- scalar_t__ vec_tail (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vector ;
+
+
+ int assert_int (int,long) ;
+ int * make_vector () ;
+ int * vec_copy (int *) ;
+ scalar_t__ vec_get (int *,int) ;
+ scalar_t__ vec_head (int *) ;
+ long vec_len (int *) ;
+ scalar_t__ vec_pop (int *) ;
+ int vec_push (int *,void*) ;
+ int * vec_reverse (int *) ;
+ scalar_t__ vec_tail (int *) ;
 
 __attribute__((used)) static void test_list() {
     Vector *list = make_vector();

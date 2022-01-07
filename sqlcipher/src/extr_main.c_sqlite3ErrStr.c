@@ -1,70 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ALWAYS (int) ;
+ int ArraySize (char const* const*) ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  ALWAYS (int) ; 
- int ArraySize (char const* const*) ; 
-#define  SQLITE_ABORT_ROLLBACK 130 
-#define  SQLITE_DONE 129 
-#define  SQLITE_ROW 128 
 
 const char *sqlite3ErrStr(int rc){
   static const char* const aMsg[] = {
-    /* SQLITE_OK          */ "not an error",
-    /* SQLITE_ERROR       */ "SQL logic error",
-    /* SQLITE_INTERNAL    */ 0,
-    /* SQLITE_PERM        */ "access permission denied",
-    /* SQLITE_ABORT       */ "query aborted",
-    /* SQLITE_BUSY        */ "database is locked",
-    /* SQLITE_LOCKED      */ "database table is locked",
-    /* SQLITE_NOMEM       */ "out of memory",
-    /* SQLITE_READONLY    */ "attempt to write a readonly database",
-    /* SQLITE_INTERRUPT   */ "interrupted",
-    /* SQLITE_IOERR       */ "disk I/O error",
-    /* SQLITE_CORRUPT     */ "database disk image is malformed",
-    /* SQLITE_NOTFOUND    */ "unknown operation",
-    /* SQLITE_FULL        */ "database or disk is full",
-    /* SQLITE_CANTOPEN    */ "unable to open database file",
-    /* SQLITE_PROTOCOL    */ "locking protocol",
-    /* SQLITE_EMPTY       */ 0,
-    /* SQLITE_SCHEMA      */ "database schema has changed",
-    /* SQLITE_TOOBIG      */ "string or blob too big",
-    /* SQLITE_CONSTRAINT  */ "constraint failed",
-    /* SQLITE_MISMATCH    */ "datatype mismatch",
-    /* SQLITE_MISUSE      */ "bad parameter or other API misuse",
-#ifdef SQLITE_DISABLE_LFS
-    /* SQLITE_NOLFS       */ "large file support is disabled",
-#else
-    /* SQLITE_NOLFS       */ 0,
-#endif
-    /* SQLITE_AUTH        */ "authorization denied",
-    /* SQLITE_FORMAT      */ 0,
-    /* SQLITE_RANGE       */ "column index out of range",
-    /* SQLITE_NOTADB      */ "file is not a database",
-    /* SQLITE_NOTICE      */ "notification message",
-    /* SQLITE_WARNING     */ "warning message",
+                             "not an error",
+                             "SQL logic error",
+                             0,
+                             "access permission denied",
+                             "query aborted",
+                             "database is locked",
+                             "database table is locked",
+                             "out of memory",
+                             "attempt to write a readonly database",
+                             "interrupted",
+                             "disk I/O error",
+                             "database disk image is malformed",
+                             "unknown operation",
+                             "database or disk is full",
+                             "unable to open database file",
+                             "locking protocol",
+                             0,
+                             "database schema has changed",
+                             "string or blob too big",
+                             "constraint failed",
+                             "datatype mismatch",
+                             "bad parameter or other API misuse",
+
+
+
+                             0,
+
+                             "authorization denied",
+                             0,
+                             "column index out of range",
+                             "file is not a database",
+                             "notification message",
+                             "warning message",
   };
   const char *zErr = "unknown error";
   switch( rc ){
-    case SQLITE_ABORT_ROLLBACK: {
+    case 130: {
       zErr = "abort due to ROLLBACK";
       break;
     }
-    case SQLITE_ROW: {
+    case 128: {
       zErr = "another row available";
       break;
     }
-    case SQLITE_DONE: {
+    case 129: {
       zErr = "no more rows available";
       break;
     }

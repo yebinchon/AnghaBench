@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int jint ;
-struct TYPE_4__ {scalar_t__ (* AttachCurrentThread ) (TYPE_1__**,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__* JavaVM ;
-typedef  int /*<<< orphan*/  JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGE (char*) ; 
- scalar_t__ JNI_OK ; 
- TYPE_1__** g_jvm ; 
- int /*<<< orphan*/  g_key_once ; 
- int /*<<< orphan*/  g_thread_key ; 
- int /*<<< orphan*/  make_thread_key ; 
- scalar_t__ pthread_getspecific (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_setspecific (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (TYPE_1__**,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int jint ;
+struct TYPE_4__ {scalar_t__ (* AttachCurrentThread ) (TYPE_1__**,int **,int *) ;} ;
+typedef TYPE_1__* JavaVM ;
+typedef int JNIEnv ;
+
+
+ int ALOGE (char*) ;
+ scalar_t__ JNI_OK ;
+ TYPE_1__** g_jvm ;
+ int g_key_once ;
+ int g_thread_key ;
+ int make_thread_key ;
+ scalar_t__ pthread_getspecific (int ) ;
+ int pthread_once (int *,int ) ;
+ int pthread_setspecific (int ,int *) ;
+ scalar_t__ stub1 (TYPE_1__**,int **,int *) ;
 
 jint SDL_JNI_SetupThreadEnv(JNIEnv **p_env)
 {
@@ -44,7 +44,7 @@ jint SDL_JNI_SetupThreadEnv(JNIEnv **p_env)
         return 0;
     }
 
-    if ((*jvm)->AttachCurrentThread(jvm, &env, NULL) == JNI_OK) {
+    if ((*jvm)->AttachCurrentThread(jvm, &env, ((void*)0)) == JNI_OK) {
         pthread_setspecific(g_thread_key, env);
         *p_env = env;
         return 0;

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_9__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_15__ TYPE_9__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int ULONG ;
 struct TYPE_13__ {int ulVal; TYPE_2__* pwszVal; } ;
-struct TYPE_15__ {TYPE_1__ u; int /*<<< orphan*/  vt; } ;
+struct TYPE_15__ {TYPE_1__ u; int vt; } ;
 struct TYPE_14__ {TYPE_9__ value; TYPE_9__ id; TYPE_9__ schema; } ;
-typedef  TYPE_2__ MetadataItem ;
-typedef  TYPE_2__* LPWSTR ;
-typedef  int /*<<< orphan*/  ImageGamma ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
-typedef  TYPE_2__ BYTE ;
+typedef TYPE_2__ MetadataItem ;
+typedef TYPE_2__* LPWSTR ;
+typedef int ImageGamma ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int DWORD ;
+typedef TYPE_2__ BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  PropVariantInit (TYPE_9__*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VT_LPWSTR ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  memcpy (TYPE_2__*,char const*,int) ; 
- int /*<<< orphan*/  read_png_chunk (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__**,int*) ; 
- int read_ulong_be (TYPE_2__*) ; 
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ int PropVariantInit (TYPE_9__*) ;
+ int S_OK ;
+ int VT_LPWSTR ;
+ int VT_UI4 ;
+ int memcpy (TYPE_2__*,char const*,int) ;
+ int read_png_chunk (int *,TYPE_2__*,TYPE_2__**,int*) ;
+ int read_ulong_be (TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT LoadGamaMetadata(IStream *stream, const GUID *preferred_vendor,
     DWORD persist_options, MetadataItem **items, DWORD *item_count)

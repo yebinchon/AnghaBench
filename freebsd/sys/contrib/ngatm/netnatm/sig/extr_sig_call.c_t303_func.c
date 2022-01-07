@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct call {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGC_T303 ; 
- int /*<<< orphan*/  uni_enq_call (struct call*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SIGC_T303 ;
+ int uni_enq_call (struct call*,int ,int ,int *,int *) ;
 
 __attribute__((used)) static void
 t303_func(struct call *c)
 {
-	uni_enq_call(c, SIGC_T303, 0, NULL, NULL);
+ uni_enq_call(c, SIGC_T303, 0, ((void*)0), ((void*)0));
 }

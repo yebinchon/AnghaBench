@@ -1,117 +1,117 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pcmcia_socket {unsigned int thread_events; int /*<<< orphan*/  dev; int /*<<< orphan*/  skt_mutex; int /*<<< orphan*/  thread_lock; int /*<<< orphan*/  thread_done; int /*<<< orphan*/ * thread; int /*<<< orphan*/  socket; TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* set_socket ) (struct pcmcia_socket*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* init ) (struct pcmcia_socket*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_EVENT_BATTERY_DEAD ; 
- int /*<<< orphan*/  CS_EVENT_BATTERY_LOW ; 
- int /*<<< orphan*/  CS_EVENT_PRI_LOW ; 
- int /*<<< orphan*/  CS_EVENT_READY_CHANGE ; 
- int /*<<< orphan*/  KERN_WARNING ; 
- unsigned int SS_BATDEAD ; 
- unsigned int SS_BATWARN ; 
- unsigned int SS_DETECT ; 
- unsigned int SS_READY ; 
- int /*<<< orphan*/  TASK_INTERRUPTIBLE ; 
- int /*<<< orphan*/  TASK_RUNNING ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * current ; 
- int /*<<< orphan*/  dead_socket ; 
- int /*<<< orphan*/  dev_printk (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dev_warn (int /*<<< orphan*/ *,char*,int) ; 
- int device_register (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
- scalar_t__ kthread_should_stop () ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int pccard_sysfs_add_socket (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pccard_sysfs_remove_socket (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule () ; 
- int /*<<< orphan*/  send_event (struct pcmcia_socket*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_freezable () ; 
- int /*<<< orphan*/  socket_detect_change (struct pcmcia_socket*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct pcmcia_socket*) ; 
- int /*<<< orphan*/  stub2 (struct pcmcia_socket*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  try_to_freeze () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pcmcia_socket {unsigned int thread_events; int dev; int skt_mutex; int thread_lock; int thread_done; int * thread; int socket; TYPE_1__* ops; } ;
+struct TYPE_2__ {int (* set_socket ) (struct pcmcia_socket*,int *) ;int (* init ) (struct pcmcia_socket*) ;} ;
+
+
+ int CS_EVENT_BATTERY_DEAD ;
+ int CS_EVENT_BATTERY_LOW ;
+ int CS_EVENT_PRI_LOW ;
+ int CS_EVENT_READY_CHANGE ;
+ int KERN_WARNING ;
+ unsigned int SS_BATDEAD ;
+ unsigned int SS_BATWARN ;
+ unsigned int SS_DETECT ;
+ unsigned int SS_READY ;
+ int TASK_INTERRUPTIBLE ;
+ int TASK_RUNNING ;
+ int complete (int *) ;
+ int * current ;
+ int dead_socket ;
+ int dev_printk (int ,int *,char*) ;
+ int dev_warn (int *,char*,int) ;
+ int device_register (int *) ;
+ int device_unregister (int *) ;
+ scalar_t__ kthread_should_stop () ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pccard_sysfs_add_socket (int *) ;
+ int pccard_sysfs_remove_socket (int *) ;
+ int schedule () ;
+ int send_event (struct pcmcia_socket*,int ,int ) ;
+ int set_current_state (int ) ;
+ int set_freezable () ;
+ int socket_detect_change (struct pcmcia_socket*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct pcmcia_socket*) ;
+ int stub2 (struct pcmcia_socket*,int *) ;
+ int try_to_freeze () ;
 
 __attribute__((used)) static int pccardd(void *__skt)
 {
-	struct pcmcia_socket *skt = __skt;
-	int ret;
+ struct pcmcia_socket *skt = __skt;
+ int ret;
 
-	skt->thread = current;
-	skt->socket = dead_socket;
-	skt->ops->init(skt);
-	skt->ops->set_socket(skt, &skt->socket);
+ skt->thread = current;
+ skt->socket = dead_socket;
+ skt->ops->init(skt);
+ skt->ops->set_socket(skt, &skt->socket);
 
-	/* register with the device core */
-	ret = device_register(&skt->dev);
-	if (ret) {
-		dev_printk(KERN_WARNING, &skt->dev,
-			   "PCMCIA: unable to register socket\n");
-		skt->thread = NULL;
-		complete(&skt->thread_done);
-		return 0;
-	}
-	ret = pccard_sysfs_add_socket(&skt->dev);
-	if (ret)
-		dev_warn(&skt->dev, "err %d adding socket attributes\n", ret);
 
-	complete(&skt->thread_done);
+ ret = device_register(&skt->dev);
+ if (ret) {
+  dev_printk(KERN_WARNING, &skt->dev,
+      "PCMCIA: unable to register socket\n");
+  skt->thread = ((void*)0);
+  complete(&skt->thread_done);
+  return 0;
+ }
+ ret = pccard_sysfs_add_socket(&skt->dev);
+ if (ret)
+  dev_warn(&skt->dev, "err %d adding socket attributes\n", ret);
 
-	set_freezable();
-	for (;;) {
-		unsigned long flags;
-		unsigned int events;
+ complete(&skt->thread_done);
 
-		set_current_state(TASK_INTERRUPTIBLE);
+ set_freezable();
+ for (;;) {
+  unsigned long flags;
+  unsigned int events;
 
-		spin_lock_irqsave(&skt->thread_lock, flags);
-		events = skt->thread_events;
-		skt->thread_events = 0;
-		spin_unlock_irqrestore(&skt->thread_lock, flags);
+  set_current_state(TASK_INTERRUPTIBLE);
 
-		if (events) {
-			mutex_lock(&skt->skt_mutex);
-			if (events & SS_DETECT)
-				socket_detect_change(skt);
-			if (events & SS_BATDEAD)
-				send_event(skt, CS_EVENT_BATTERY_DEAD, CS_EVENT_PRI_LOW);
-			if (events & SS_BATWARN)
-				send_event(skt, CS_EVENT_BATTERY_LOW, CS_EVENT_PRI_LOW);
-			if (events & SS_READY)
-				send_event(skt, CS_EVENT_READY_CHANGE, CS_EVENT_PRI_LOW);
-			mutex_unlock(&skt->skt_mutex);
-			continue;
-		}
+  spin_lock_irqsave(&skt->thread_lock, flags);
+  events = skt->thread_events;
+  skt->thread_events = 0;
+  spin_unlock_irqrestore(&skt->thread_lock, flags);
 
-		if (kthread_should_stop())
-			break;
+  if (events) {
+   mutex_lock(&skt->skt_mutex);
+   if (events & SS_DETECT)
+    socket_detect_change(skt);
+   if (events & SS_BATDEAD)
+    send_event(skt, CS_EVENT_BATTERY_DEAD, CS_EVENT_PRI_LOW);
+   if (events & SS_BATWARN)
+    send_event(skt, CS_EVENT_BATTERY_LOW, CS_EVENT_PRI_LOW);
+   if (events & SS_READY)
+    send_event(skt, CS_EVENT_READY_CHANGE, CS_EVENT_PRI_LOW);
+   mutex_unlock(&skt->skt_mutex);
+   continue;
+  }
 
-		schedule();
-		try_to_freeze();
-	}
-	/* make sure we are running before we exit */
-	set_current_state(TASK_RUNNING);
+  if (kthread_should_stop())
+   break;
 
-	/* remove from the device core */
-	pccard_sysfs_remove_socket(&skt->dev);
-	device_unregister(&skt->dev);
+  schedule();
+  try_to_freeze();
+ }
 
-	return 0;
+ set_current_state(TASK_RUNNING);
+
+
+ pccard_sysfs_remove_socket(&skt->dev);
+ device_unregister(&skt->dev);
+
+ return 0;
 }

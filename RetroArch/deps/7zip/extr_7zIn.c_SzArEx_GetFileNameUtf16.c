@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_4__ {int * data; } ;
 struct TYPE_5__ {size_t* FileNameOffsets; TYPE_1__ FileNames; } ;
-typedef  TYPE_2__ CSzArEx ;
+typedef TYPE_2__ CSzArEx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetUi16 (int /*<<< orphan*/  const*) ; 
+
+ int GetUi16 (int const*) ;
 
 size_t SzArEx_GetFileNameUtf16(const CSzArEx *p, size_t fileIndex, uint16_t *dest)
 {

@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int i_rate; int i_channels; int i_bitspersample; int i_blockalign; } ;
 struct TYPE_9__ {int i_width; int i_height; int i_frame_rate; int i_frame_rate_base; } ;
 struct TYPE_11__ {scalar_t__ i_cat; int i_bitrate; scalar_t__ i_extra; scalar_t__ p_extra; TYPE_2__ audio; TYPE_1__ video; } ;
 struct TYPE_12__ {TYPE_3__ fmt_in; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ decoder_t ;
-struct TYPE_13__ {int /*<<< orphan*/  mft; TYPE_8__* subtype; } ;
-typedef  TYPE_5__ decoder_sys_t ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int UINT64 ;
-typedef  int /*<<< orphan*/  UINT32 ;
+typedef TYPE_4__ decoder_t ;
+struct TYPE_13__ {int mft; TYPE_8__* subtype; } ;
+typedef TYPE_5__ decoder_sys_t ;
+typedef int UINT8 ;
+typedef int UINT64 ;
+typedef int UINT32 ;
 struct TYPE_14__ {int Data1; } ;
-typedef  int /*<<< orphan*/  IMFMediaType ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int IMFMediaType ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IMFMediaType_GetBlobSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IMFMediaType_GetGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFMediaType_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IMFMediaType_SetBlob (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
- scalar_t__ IMFMediaType_SetUINT32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ IMFMediaType_SetUINT64 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ IMFTransform_GetInputAvailableType (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- scalar_t__ IMFTransform_SetInputType (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,TYPE_8__*) ; 
- scalar_t__ MF_E_ATTRIBUTENOTFOUND ; 
- scalar_t__ MF_E_NO_MORE_TYPES ; 
- scalar_t__ MF_E_TRANSFORM_TYPE_NOT_SET ; 
- int /*<<< orphan*/  MF_MT_AUDIO_AVG_BYTES_PER_SECOND ; 
- int /*<<< orphan*/  MF_MT_AUDIO_BITS_PER_SAMPLE ; 
- int /*<<< orphan*/  MF_MT_AUDIO_BLOCK_ALIGNMENT ; 
- int /*<<< orphan*/  MF_MT_AUDIO_NUM_CHANNELS ; 
- int /*<<< orphan*/  MF_MT_AUDIO_SAMPLES_PER_SECOND ; 
- int /*<<< orphan*/  MF_MT_FRAME_RATE ; 
- int /*<<< orphan*/  MF_MT_FRAME_SIZE ; 
- int /*<<< orphan*/  MF_MT_ORIGINAL_WAVE_FORMAT_TAG ; 
- int /*<<< orphan*/  MF_MT_SUBTYPE ; 
- int /*<<< orphan*/  MF_MT_USER_DATA ; 
- scalar_t__ VIDEO_ES ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*) ; 
+
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IMFMediaType_GetBlobSize (int *,int *,int *) ;
+ scalar_t__ IMFMediaType_GetGUID (int *,int *,int *) ;
+ int IMFMediaType_Release (int *) ;
+ scalar_t__ IMFMediaType_SetBlob (int *,int *,int const*,scalar_t__) ;
+ scalar_t__ IMFMediaType_SetUINT32 (int *,int *,int) ;
+ scalar_t__ IMFMediaType_SetUINT64 (int *,int *,int) ;
+ scalar_t__ IMFTransform_GetInputAvailableType (int ,int ,int,int **) ;
+ scalar_t__ IMFTransform_SetInputType (int ,int ,int *,int ) ;
+ scalar_t__ IsEqualGUID (int *,TYPE_8__*) ;
+ scalar_t__ MF_E_ATTRIBUTENOTFOUND ;
+ scalar_t__ MF_E_NO_MORE_TYPES ;
+ scalar_t__ MF_E_TRANSFORM_TYPE_NOT_SET ;
+ int MF_MT_AUDIO_AVG_BYTES_PER_SECOND ;
+ int MF_MT_AUDIO_BITS_PER_SAMPLE ;
+ int MF_MT_AUDIO_BLOCK_ALIGNMENT ;
+ int MF_MT_AUDIO_NUM_CHANNELS ;
+ int MF_MT_AUDIO_SAMPLES_PER_SECOND ;
+ int MF_MT_FRAME_RATE ;
+ int MF_MT_FRAME_SIZE ;
+ int MF_MT_ORIGINAL_WAVE_FORMAT_TAG ;
+ int MF_MT_SUBTYPE ;
+ int MF_MT_USER_DATA ;
+ scalar_t__ VIDEO_ES ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int msg_Err (TYPE_4__*,char*) ;
 
 __attribute__((used)) static int SetInputType(decoder_t *p_dec, DWORD stream_id, IMFMediaType **result)
 {
     decoder_sys_t *p_sys = p_dec->p_sys;
     HRESULT hr;
 
-    *result = NULL;
+    *result = ((void*)0);
 
-    IMFMediaType *input_media_type = NULL;
+    IMFMediaType *input_media_type = ((void*)0);
 
-    /* Search a suitable input type for the MFT. */
+
     int input_type_index = 0;
-    bool found = false;
+    bool found = 0;
     for (int i = 0; !found; ++i)
     {
         hr = IMFTransform_GetInputAvailableType(p_sys->mft, stream_id, i, &input_media_type);
@@ -80,7 +80,7 @@ __attribute__((used)) static int SetInputType(decoder_t *p_dec, DWORD stream_id,
             break;
         else if (hr == MF_E_TRANSFORM_TYPE_NOT_SET)
         {
-            /* The output type must be set before setting the input type for this MFT. */
+
             return VLC_SUCCESS;
         }
         else if (FAILED(hr))
@@ -92,13 +92,13 @@ __attribute__((used)) static int SetInputType(decoder_t *p_dec, DWORD stream_id,
             goto error;
 
         if (IsEqualGUID(&subtype, p_sys->subtype))
-            found = true;
+            found = 1;
 
         if (found)
             input_type_index = i;
 
         IMFMediaType_Release(input_media_type);
-        input_media_type = NULL;
+        input_media_type = ((void*)0);
     }
     if (!found)
         goto error;
@@ -116,7 +116,7 @@ __attribute__((used)) static int SetInputType(decoder_t *p_dec, DWORD stream_id,
         if (FAILED(hr))
             goto error;
 
-        /* Some transforms like to know the frame rate and may reject the input type otherwise. */
+
         UINT64 frame_ratio_num = p_dec->fmt_in.video.i_frame_rate;
         UINT64 frame_ratio_dem = p_dec->fmt_in.video.i_frame_rate_base;
         if(frame_ratio_num && frame_ratio_dem) {
@@ -167,10 +167,10 @@ __attribute__((used)) static int SetInputType(decoder_t *p_dec, DWORD stream_id,
     {
         UINT32 blob_size = 0;
         hr = IMFMediaType_GetBlobSize(input_media_type, &MF_MT_USER_DATA, &blob_size);
-        /*
-         * Do not overwrite existing user data in the input type, this
-         * can cause the MFT to reject the type.
-         */
+
+
+
+
         if (hr == MF_E_ATTRIBUTENOTFOUND)
         {
             hr = IMFMediaType_SetBlob(input_media_type, &MF_MT_USER_DATA,

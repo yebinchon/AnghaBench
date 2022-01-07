@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_partition_t ;
-typedef  int /*<<< orphan*/  esp_ota_select_entry_t ;
 
-/* Variables and functions */
- int SPI_FLASH_SEC_SIZE ; 
- int /*<<< orphan*/  esp_partition_write (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int esp_partition_t ;
+typedef int esp_ota_select_entry_t ;
+
+
+ int SPI_FLASH_SEC_SIZE ;
+ int esp_partition_write (int const*,int,int *,int) ;
 
 __attribute__((used)) static void write_ota_data(const esp_partition_t *otadata_partition, esp_ota_select_entry_t *ota_data, int sec_id)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp2 ;
-typedef  int /*<<< orphan*/  tmp1 ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int MAX_SIZE ; 
- int /*<<< orphan*/  ParseNtUsername (char*,char*,int,char*,int,int) ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int tmp2 ;
+typedef int tmp1 ;
+typedef int UINT ;
+
+
+ int MAX_SIZE ;
+ int ParseNtUsername (char*,char*,int,char*,int,int) ;
+ int StrCpy (char*,int ,char*) ;
 
 void MakeSimpleUsernameRemoveNtDomain(char *dst, UINT dst_size, char *src)
 {
-	char tmp1[MAX_SIZE];
-	char tmp2[MAX_SIZE];
-	// Validate arguments
-	if (dst == NULL || src == NULL)
-	{
-		return;
-	}
+ char tmp1[MAX_SIZE];
+ char tmp2[MAX_SIZE];
 
-	ParseNtUsername(src, tmp1, sizeof(tmp1), tmp2, sizeof(tmp2), false);
+ if (dst == ((void*)0) || src == ((void*)0))
+ {
+  return;
+ }
 
-	StrCpy(dst, dst_size, tmp1);
+ ParseNtUsername(src, tmp1, sizeof(tmp1), tmp2, sizeof(tmp2), 0);
+
+ StrCpy(dst, dst_size, tmp1);
 }

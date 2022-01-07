@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ clock_t ;
 
-/* Variables and functions */
- float CLOCKS_PER_SEC ; 
- scalar_t__ clock () ; 
- int /*<<< orphan*/  free (float*) ; 
- int /*<<< orphan*/  gemm_cpu (int,int,int,int,int,int,float*,int,float*,int,int,float*,int) ; 
- int /*<<< orphan*/  printf (char*,int,int,int,int,int,int,float) ; 
- float* random_matrix (int,int) ; 
+
+
+
+typedef scalar_t__ clock_t ;
+
+
+ float CLOCKS_PER_SEC ;
+ scalar_t__ clock () ;
+ int free (float*) ;
+ int gemm_cpu (int,int,int,int,int,int,float*,int,float*,int,int,float*,int) ;
+ int printf (char*,int,int,int,int,int,int,float) ;
+ float* random_matrix (int,int) ;
 
 void time_random_matrix(int TA, int TB, int m, int k, int n)
 {

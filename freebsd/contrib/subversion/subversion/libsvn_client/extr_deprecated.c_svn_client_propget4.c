@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  svn_client_propget5 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_ctx_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int svn_client_propget5 (int **,int *,char const*,char const*,int const*,int const*,int *,int ,int const*,int *,int *,int *) ;
+ int * svn_error_trace (int ) ;
 
 svn_error_t *
 svn_client_propget4(apr_hash_t **props,
@@ -36,7 +36,7 @@ svn_client_propget4(apr_hash_t **props,
                     apr_pool_t *result_pool,
                     apr_pool_t *scratch_pool)
 {
-  return svn_error_trace(svn_client_propget5(props, NULL, propname, target,
+  return svn_error_trace(svn_client_propget5(props, ((void*)0), propname, target,
                                              peg_revision, revision,
                                              actual_revnum, depth,
                                              changelists, ctx,

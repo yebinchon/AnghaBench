@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WriterContext ;
-struct TYPE_3__ {int nb_streams; int /*<<< orphan*/ * streams; int /*<<< orphan*/ * fmt_ctx; } ;
-typedef  TYPE_1__ InputFile ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SECTION_ID_STREAMS ; 
- scalar_t__* selected_streams ; 
- int show_stream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writer_print_section_footer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writer_print_section_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WriterContext ;
+struct TYPE_3__ {int nb_streams; int * streams; int * fmt_ctx; } ;
+typedef TYPE_1__ InputFile ;
+typedef int AVFormatContext ;
+
+
+ int SECTION_ID_STREAMS ;
+ scalar_t__* selected_streams ;
+ int show_stream (int *,int *,int,int *,int ) ;
+ int writer_print_section_footer (int *) ;
+ int writer_print_section_header (int *,int ) ;
 
 __attribute__((used)) static int show_streams(WriterContext *w, InputFile *ifile)
 {

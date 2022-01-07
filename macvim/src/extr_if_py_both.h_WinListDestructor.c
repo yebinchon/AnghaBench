@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * tabObject; } ;
-typedef  TYPE_1__ WinListObject ;
-typedef  int /*<<< orphan*/  TabPageObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DESTRUCTOR_FINISH (TYPE_1__*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * tabObject; } ;
+typedef TYPE_1__ WinListObject ;
+typedef int TabPageObject ;
+typedef int PyObject ;
+
+
+ int DESTRUCTOR_FINISH (TYPE_1__*) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static void
 WinListDestructor(WinListObject *self)
 {
-    TabPageObject	*tabObject = self->tabObject;
+    TabPageObject *tabObject = self->tabObject;
 
     if (tabObject)
     {
-	Py_DECREF((PyObject *)(tabObject));
+ Py_DECREF((PyObject *)(tabObject));
     }
 
     DESTRUCTOR_FINISH(self);

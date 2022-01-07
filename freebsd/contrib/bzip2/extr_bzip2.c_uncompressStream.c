@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UChar ;
-typedef  scalar_t__ Int32 ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  scalar_t__ Bool ;
-typedef  int /*<<< orphan*/  BZFILE ;
 
-/* Variables and functions */
- scalar_t__ BZ2_bzRead (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BZ2_bzReadClose (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BZ2_bzReadGetUnused (scalar_t__*,int /*<<< orphan*/ *,void**,scalar_t__*) ; 
- int /*<<< orphan*/ * BZ2_bzReadOpen (scalar_t__*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,scalar_t__) ; 
-#define  BZ_CONFIG_ERROR 133 
-#define  BZ_DATA_ERROR 132 
-#define  BZ_DATA_ERROR_MAGIC 131 
-#define  BZ_IO_ERROR 130 
- int BZ_MAX_UNUSED ; 
-#define  BZ_MEM_ERROR 129 
- scalar_t__ BZ_OK ; 
- scalar_t__ BZ_STREAM_END ; 
-#define  BZ_UNEXPECTED_EOF 128 
- scalar_t__ EOF ; 
- scalar_t__ False ; 
- int /*<<< orphan*/  SET_BINARY_MODE (int /*<<< orphan*/ *) ; 
- scalar_t__ True ; 
- int /*<<< orphan*/  applySavedFileAttrToOutputFile (scalar_t__) ; 
- int /*<<< orphan*/  compressedStreamEOF () ; 
- int /*<<< orphan*/  configError () ; 
- int /*<<< orphan*/  crcError () ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- scalar_t__ fflush (int /*<<< orphan*/ *) ; 
- scalar_t__ fileno (int /*<<< orphan*/ *) ; 
- scalar_t__ forceOverwrite ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ fread (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ *,int,scalar_t__,int /*<<< orphan*/ *) ; 
- char* inName ; 
- int /*<<< orphan*/  ioError () ; 
- scalar_t__ myfeof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  noisy ; 
- int /*<<< orphan*/  outOfMemory () ; 
- int /*<<< orphan*/ * outputHandleJustInCase ; 
- int /*<<< orphan*/  panic (char*) ; 
- char* progName ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- scalar_t__ smallMode ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/ * stdout ; 
- int verbosity ; 
 
-__attribute__((used)) static 
+
+
+typedef int UChar ;
+typedef scalar_t__ Int32 ;
+typedef int FILE ;
+typedef scalar_t__ Bool ;
+typedef int BZFILE ;
+
+
+ scalar_t__ BZ2_bzRead (scalar_t__*,int *,int *,int) ;
+ int BZ2_bzReadClose (scalar_t__*,int *) ;
+ int BZ2_bzReadGetUnused (scalar_t__*,int *,void**,scalar_t__*) ;
+ int * BZ2_bzReadOpen (scalar_t__*,int *,int,int,int *,scalar_t__) ;
+
+
+
+
+ int BZ_MAX_UNUSED ;
+
+ scalar_t__ BZ_OK ;
+ scalar_t__ BZ_STREAM_END ;
+
+ scalar_t__ EOF ;
+ scalar_t__ False ;
+ int SET_BINARY_MODE (int *) ;
+ scalar_t__ True ;
+ int applySavedFileAttrToOutputFile (scalar_t__) ;
+ int compressedStreamEOF () ;
+ int configError () ;
+ int crcError () ;
+ scalar_t__ fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ scalar_t__ fflush (int *) ;
+ scalar_t__ fileno (int *) ;
+ scalar_t__ forceOverwrite ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ fread (int *,int,int,int *) ;
+ int fwrite (int *,int,scalar_t__,int *) ;
+ char* inName ;
+ int ioError () ;
+ scalar_t__ myfeof (int *) ;
+ int noisy ;
+ int outOfMemory () ;
+ int * outputHandleJustInCase ;
+ int panic (char*) ;
+ char* progName ;
+ int rewind (int *) ;
+ scalar_t__ smallMode ;
+ int stderr ;
+ int * stdin ;
+ int * stdout ;
+ int verbosity ;
+
+__attribute__((used)) static
 Bool uncompressStream ( FILE *zStream, FILE *stream )
 {
-   BZFILE* bzf = NULL;
-   Int32   bzerr, bzerr_dummy, ret, nread, streamNo, i;
-   UChar   obuf[5000];
-   UChar   unused[BZ_MAX_UNUSED];
-   Int32   nUnused;
-   void*   unusedTmpV;
-   UChar*  unusedTmp;
+   BZFILE* bzf = ((void*)0);
+   Int32 bzerr, bzerr_dummy, ret, nread, streamNo, i;
+   UChar obuf[5000];
+   UChar unused[BZ_MAX_UNUSED];
+   Int32 nUnused;
+   void* unusedTmpV;
+   UChar* unusedTmp;
 
    nUnused = 0;
    streamNo = 0;
@@ -83,16 +83,16 @@ Bool uncompressStream ( FILE *zStream, FILE *stream )
 
    while (True) {
 
-      bzf = BZ2_bzReadOpen ( 
-               &bzerr, zStream, verbosity, 
+      bzf = BZ2_bzReadOpen (
+               &bzerr, zStream, verbosity,
                (int)smallMode, unused, nUnused
             );
-      if (bzf == NULL || bzerr != BZ_OK) goto errhandler;
+      if (bzf == ((void*)0) || bzerr != BZ_OK) goto errhandler;
       streamNo++;
 
       while (bzerr == BZ_OK) {
          nread = BZ2_bzRead ( &bzerr, bzf, obuf, 5000 );
-         if (bzerr == BZ_DATA_ERROR_MAGIC) goto trycat;
+         if (bzerr == 131) goto trycat;
          if ((bzerr == BZ_OK || bzerr == BZ_STREAM_END) && nread > 0)
             fwrite ( obuf, sizeof(UChar), nread, stream );
          if (ferror(stream)) goto errhandler_io;
@@ -126,56 +126,56 @@ Bool uncompressStream ( FILE *zStream, FILE *stream )
    if (ret != 0) goto errhandler_io;
    if (stream != stdout) {
       ret = fclose ( stream );
-      outputHandleJustInCase = NULL;
+      outputHandleJustInCase = ((void*)0);
       if (ret == EOF) goto errhandler_io;
    }
-   outputHandleJustInCase = NULL;
+   outputHandleJustInCase = ((void*)0);
    if (verbosity >= 2) fprintf ( stderr, "\n    " );
    return True;
 
-   trycat: 
+   trycat:
    if (forceOverwrite) {
       rewind(zStream);
       while (True) {
-      	 if (myfeof(zStream)) break;
-      	 nread = fread ( obuf, sizeof(UChar), 5000, zStream );
-      	 if (ferror(zStream)) goto errhandler_io;
-      	 if (nread > 0) fwrite ( obuf, sizeof(UChar), nread, stream );
-      	 if (ferror(stream)) goto errhandler_io;
+        if (myfeof(zStream)) break;
+        nread = fread ( obuf, sizeof(UChar), 5000, zStream );
+        if (ferror(zStream)) goto errhandler_io;
+        if (nread > 0) fwrite ( obuf, sizeof(UChar), nread, stream );
+        if (ferror(stream)) goto errhandler_io;
       }
       goto closeok;
    }
-  
+
    errhandler:
    BZ2_bzReadClose ( &bzerr_dummy, bzf );
    switch (bzerr) {
-      case BZ_CONFIG_ERROR:
+      case 133:
          configError(); break;
-      case BZ_IO_ERROR:
+      case 130:
          errhandler_io:
          ioError(); break;
-      case BZ_DATA_ERROR:
+      case 132:
          crcError();
-      case BZ_MEM_ERROR:
+      case 129:
          outOfMemory();
-      case BZ_UNEXPECTED_EOF:
+      case 128:
          compressedStreamEOF();
-      case BZ_DATA_ERROR_MAGIC:
+      case 131:
          if (zStream != stdin) fclose(zStream);
          if (stream != stdout) fclose(stream);
          if (streamNo == 1) {
             return False;
          } else {
             if (noisy)
-            fprintf ( stderr, 
+            fprintf ( stderr,
                       "\n%s: %s: trailing garbage after EOF ignored\n",
                       progName, inName );
-            return True;       
+            return True;
          }
       default:
          panic ( "decompress:unexpected error" );
    }
 
    panic ( "decompress:end" );
-   return True; /*notreached*/
+   return True;
 }

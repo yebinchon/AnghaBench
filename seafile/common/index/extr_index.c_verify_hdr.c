@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cache_header {scalar_t__ hdr_signature; scalar_t__ hdr_version; } ;
-typedef  int gsize ;
-typedef  int /*<<< orphan*/  GChecksum ;
+typedef int gsize ;
+typedef int GChecksum ;
 
-/* Variables and functions */
- int CACHE_SIGNATURE ; 
- int /*<<< orphan*/  G_CHECKSUM_SHA1 ; 
- int /*<<< orphan*/  g_checksum_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_checksum_get_digest (int /*<<< orphan*/ *,unsigned char*,int*) ; 
- int /*<<< orphan*/ * g_checksum_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_checksum_update (int /*<<< orphan*/ *,unsigned char*,unsigned long) ; 
- int /*<<< orphan*/  g_critical (char*) ; 
- scalar_t__ hashcmp (unsigned char*,unsigned char*) ; 
- scalar_t__ htonl (int) ; 
+
+ int CACHE_SIGNATURE ;
+ int G_CHECKSUM_SHA1 ;
+ int g_checksum_free (int *) ;
+ int g_checksum_get_digest (int *,unsigned char*,int*) ;
+ int * g_checksum_new (int ) ;
+ int g_checksum_update (int *,unsigned char*,unsigned long) ;
+ int g_critical (char*) ;
+ scalar_t__ hashcmp (unsigned char*,unsigned char*) ;
+ scalar_t__ htonl (int) ;
 
 __attribute__((used)) static int verify_hdr(struct cache_header *hdr, unsigned long size)
 {

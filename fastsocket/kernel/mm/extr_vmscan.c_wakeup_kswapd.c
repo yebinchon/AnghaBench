@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct zone {TYPE_1__* zone_pgdat; } ;
-struct TYPE_2__ {int kswapd_max_order; int /*<<< orphan*/  kswapd_wait; int /*<<< orphan*/  node_id; } ;
-typedef  TYPE_1__ pg_data_t ;
+struct TYPE_2__ {int kswapd_max_order; int kswapd_wait; int node_id; } ;
+typedef TYPE_1__ pg_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  cpuset_zone_allowed_hardwall (struct zone*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  low_wmark_pages (struct zone*) ; 
- int /*<<< orphan*/  populated_zone (struct zone*) ; 
- int /*<<< orphan*/  trace_mm_vmscan_wakeup_kswapd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  waitqueue_active (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zone_idx (struct zone*) ; 
- scalar_t__ zone_watermark_ok_safe (struct zone*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GFP_KERNEL ;
+ int cpuset_zone_allowed_hardwall (struct zone*,int ) ;
+ int low_wmark_pages (struct zone*) ;
+ int populated_zone (struct zone*) ;
+ int trace_mm_vmscan_wakeup_kswapd (int ,int ,int) ;
+ int waitqueue_active (int *) ;
+ int wake_up_interruptible (int *) ;
+ int zone_idx (struct zone*) ;
+ scalar_t__ zone_watermark_ok_safe (struct zone*,int,int ,int ,int ) ;
 
 void wakeup_kswapd(struct zone *zone, int order)
 {
-	pg_data_t *pgdat;
+ pg_data_t *pgdat;
 
-	if (!populated_zone(zone))
-		return;
+ if (!populated_zone(zone))
+  return;
 
-	if (!cpuset_zone_allowed_hardwall(zone, GFP_KERNEL))
-		return;
-	pgdat = zone->zone_pgdat;
-	if (pgdat->kswapd_max_order < order)
-		pgdat->kswapd_max_order = order;
-	if (!waitqueue_active(&pgdat->kswapd_wait))
-		return;
-	if (zone_watermark_ok_safe(zone, order, low_wmark_pages(zone), 0, 0))
-		return;
+ if (!cpuset_zone_allowed_hardwall(zone, GFP_KERNEL))
+  return;
+ pgdat = zone->zone_pgdat;
+ if (pgdat->kswapd_max_order < order)
+  pgdat->kswapd_max_order = order;
+ if (!waitqueue_active(&pgdat->kswapd_wait))
+  return;
+ if (zone_watermark_ok_safe(zone, order, low_wmark_pages(zone), 0, 0))
+  return;
 
-	trace_mm_vmscan_wakeup_kswapd(pgdat->node_id, zone_idx(zone), order);
-	wake_up_interruptible(&pgdat->kswapd_wait);
+ trace_mm_vmscan_wakeup_kswapd(pgdat->node_id, zone_idx(zone), order);
+ wake_up_interruptible(&pgdat->kswapd_wait);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {int tv_sec; scalar_t__ tv_nsec; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-typedef  int /*<<< orphan*/  siginfo_t ;
+typedef int sigset_t ;
+typedef int siginfo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigtimedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timespec*) ; 
+
+ int SIGHUP ;
+ int sigaddset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int sigtimedwait (int *,int *,struct timespec*) ;
 
 int
 main(void)

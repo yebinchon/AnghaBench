@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_10__ {TYPE_1__* prot; } ;
-struct TYPE_9__ {scalar_t__ logical_size; scalar_t__ read_logical_pos; int seek_request; int seek_whence; scalar_t__ seek_ret; int /*<<< orphan*/  file_mutex; int /*<<< orphan*/  cond_wakeup_main; int /*<<< orphan*/  cond_wakeup_file_background; scalar_t__ seek_completed; scalar_t__ seek_pos; int /*<<< orphan*/  cache_file_forwards_capacity; TYPE_4__* inner; scalar_t__ cache_file_close; } ;
+struct TYPE_9__ {scalar_t__ logical_size; scalar_t__ read_logical_pos; int seek_request; int seek_whence; scalar_t__ seek_ret; int file_mutex; int cond_wakeup_main; int cond_wakeup_file_background; scalar_t__ seek_completed; scalar_t__ seek_pos; int cache_file_forwards_capacity; TYPE_4__* inner; scalar_t__ cache_file_close; } ;
 struct TYPE_8__ {TYPE_3__* priv_data; } ;
 struct TYPE_7__ {scalar_t__ (* url_seek ) (TYPE_4__*,scalar_t__,int) ;} ;
-typedef  TYPE_2__ IjkURLContext ;
-typedef  TYPE_3__ IjkIOCacheContext ;
+typedef TYPE_2__ IjkURLContext ;
+typedef TYPE_3__ IjkIOCacheContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOSYS ; 
- scalar_t__ IJKAVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ IJKAVERROR_EXIT ; 
- int IJKAVSEEK_SIZE ; 
- int SEEK_CUR ; 
- int SEEK_SET ; 
- scalar_t__ ijkio_cache_check_interrupt (TYPE_2__*) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (TYPE_4__*,scalar_t__,int) ; 
+
+ int EINVAL ;
+ int ENOSYS ;
+ scalar_t__ IJKAVERROR (int ) ;
+ scalar_t__ IJKAVERROR_EXIT ;
+ int IJKAVSEEK_SIZE ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ scalar_t__ ijkio_cache_check_interrupt (TYPE_2__*) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ stub1 (TYPE_4__*,scalar_t__,int) ;
 
 __attribute__((used)) static int64_t ijkio_cache_seek(IjkURLContext *h, int64_t pos, int whence) {
     IjkIOCacheContext *c= h->priv_data;
@@ -66,9 +66,9 @@ __attribute__((used)) static int64_t ijkio_cache_seek(IjkURLContext *h, int64_t 
     }
 
     pthread_mutex_lock(&c->file_mutex);
-    c->seek_request   = 1;
-    c->seek_pos       = new_logical_pos;
-    c->seek_whence    = SEEK_SET;
+    c->seek_request = 1;
+    c->seek_pos = new_logical_pos;
+    c->seek_whence = SEEK_SET;
     c->seek_completed = 0;
 
     while (1) {

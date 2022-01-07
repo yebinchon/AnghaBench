@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  capsW ;
-typedef  int /*<<< orphan*/  capsA ;
-typedef  int /*<<< orphan*/  WAVEINCAPSW ;
-typedef  int /*<<< orphan*/  WAVEINCAPSA ;
-struct TYPE_3__ {int nChannels; int wBitsPerSample; int nSamplesPerSec; int nBlockAlign; int nAvgBytesPerSec; scalar_t__ cbSize; int /*<<< orphan*/  wFormatTag; } ;
-typedef  TYPE_1__ WAVEFORMATEX ;
-typedef  int UINT ;
-typedef  scalar_t__ MMRESULT ;
-typedef  int /*<<< orphan*/  HWAVEIN ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALLBACK_NULL ; 
- int /*<<< orphan*/  DRVM_MAPPER_PREFERRED_GET ; 
- scalar_t__ MMSYSERR_BADDEVICEID ; 
- scalar_t__ MMSYSERR_NODRIVER ; 
- scalar_t__ MMSYSERR_NOERROR ; 
- scalar_t__ MMSYSERR_NOTSUPPORTED ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- int WAVE_MAPPER ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  dev_name (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  trace (char*,int) ; 
- scalar_t__ waveInGetDevCapsA (int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ waveInGetDevCapsW (int,int /*<<< orphan*/ *,int) ; 
- int waveInGetNumDevs () ; 
- scalar_t__ waveInMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ waveInOpen (int /*<<< orphan*/ *,int,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wave_in_error (scalar_t__) ; 
- int /*<<< orphan*/  wave_in_test_device (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int capsW ;
+typedef int capsA ;
+typedef int WAVEINCAPSW ;
+typedef int WAVEINCAPSA ;
+struct TYPE_3__ {int nChannels; int wBitsPerSample; int nSamplesPerSec; int nBlockAlign; int nAvgBytesPerSec; scalar_t__ cbSize; int wFormatTag; } ;
+typedef TYPE_1__ WAVEFORMATEX ;
+typedef int UINT ;
+typedef scalar_t__ MMRESULT ;
+typedef int HWAVEIN ;
+typedef int DWORD_PTR ;
+typedef int DWORD ;
+
+
+ int CALLBACK_NULL ;
+ int DRVM_MAPPER_PREFERRED_GET ;
+ scalar_t__ MMSYSERR_BADDEVICEID ;
+ scalar_t__ MMSYSERR_NODRIVER ;
+ scalar_t__ MMSYSERR_NOERROR ;
+ scalar_t__ MMSYSERR_NOTSUPPORTED ;
+ int WAVE_FORMAT_PCM ;
+ int WAVE_MAPPER ;
+ scalar_t__ broken (int) ;
+ int dev_name (int) ;
+ int ok (int,char*,scalar_t__,...) ;
+ int trace (char*,int) ;
+ scalar_t__ waveInGetDevCapsA (int,int *,int) ;
+ scalar_t__ waveInGetDevCapsW (int,int *,int) ;
+ int waveInGetNumDevs () ;
+ scalar_t__ waveInMessage (int ,int ,int ,int ) ;
+ scalar_t__ waveInOpen (int *,int,TYPE_1__*,int ,int ,int ) ;
+ int wave_in_error (scalar_t__) ;
+ int wave_in_test_device (int) ;
 
 __attribute__((used)) static void wave_in_tests(void)
 {

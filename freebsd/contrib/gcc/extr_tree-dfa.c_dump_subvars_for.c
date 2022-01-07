@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  TYPE_1__* subvar_t ;
-struct TYPE_3__ {int /*<<< orphan*/  var; struct TYPE_3__* next; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dump_flags ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* get_subvars_for_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_generic_expr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef TYPE_1__* subvar_t ;
+struct TYPE_3__ {int var; struct TYPE_3__* next; } ;
+typedef int FILE ;
+
+
+ int dump_flags ;
+ int fprintf (int *,char*) ;
+ TYPE_1__* get_subvars_for_var (int ) ;
+ int print_generic_expr (int *,int ,int ) ;
 
 void
 dump_subvars_for (FILE *file, tree var)

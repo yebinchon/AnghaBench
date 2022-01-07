@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* str; scalar_t__ len; } ;
-typedef  TYPE_1__ strbuf ;
-typedef  char* LPCOLESTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ strbuf ;
+typedef char* LPCOLESTR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_EXCEPTION ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ iswspace (char) ; 
- int /*<<< orphan*/  strbuf_write (char*,TYPE_1__*,int) ; 
- char* wcschr (char*,char) ; 
+
+ int DISP_E_EXCEPTION ;
+ int S_OK ;
+ int WARN (char*) ;
+ scalar_t__ iswspace (char) ;
+ int strbuf_write (char*,TYPE_1__*,int) ;
+ char* wcschr (char*,char) ;
 
 __attribute__((used)) static HRESULT get_word(LPCOLESTR *str, strbuf *buf)
 {

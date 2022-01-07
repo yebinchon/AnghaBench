@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ fs_type; int result; int ptr; int path; } ;
-typedef  TYPE_1__ uv_fs_t ;
-struct TYPE_10__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ uv_dirent_t ;
+typedef TYPE_1__ uv_fs_t ;
+struct TYPE_10__ {int name; } ;
+typedef TYPE_2__ uv_dirent_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ UV_EOF ; 
- scalar_t__ UV_FS_SCANDIR ; 
- int /*<<< orphan*/  assert_is_file_type (TYPE_2__) ; 
- scalar_t__ memcmp (int,char*,int) ; 
- int /*<<< orphan*/  scandir_cb_count ; 
- TYPE_1__ scandir_req ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  uv_fs_req_cleanup (TYPE_1__*) ; 
- scalar_t__ uv_fs_scandir_next (TYPE_1__*,TYPE_2__*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ UV_EOF ;
+ scalar_t__ UV_FS_SCANDIR ;
+ int assert_is_file_type (TYPE_2__) ;
+ scalar_t__ memcmp (int,char*,int) ;
+ int scandir_cb_count ;
+ TYPE_1__ scandir_req ;
+ scalar_t__ strcmp (int ,char*) ;
+ int uv_fs_req_cleanup (TYPE_1__*) ;
+ scalar_t__ uv_fs_scandir_next (TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static void scandir_cb(uv_fs_t* req) {
   uv_dirent_t dent;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_size; } ;
-struct injected_reply {int len; int /*<<< orphan*/  buf; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct injected_reply {int len; int buf; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int /*<<< orphan*/  smalloc (int) ; 
+
+ int EXIT_FAILURE ;
+ int err (int ,char*,char const*) ;
+ int fclose (int *) ;
+ int fileno (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (int ,int,int,int *) ;
+ scalar_t__ fstat (int ,struct stat*) ;
+ int smalloc (int) ;
 
 __attribute__((used)) static void must_read_reply(const char *filename, struct injected_reply *reply) {
     FILE *f;
-    if ((f = fopen(filename, "r")) == NULL) {
+    if ((f = fopen(filename, "r")) == ((void*)0)) {
         err(EXIT_FAILURE, "fopen(%s)", filename);
     }
     struct stat stbuf;

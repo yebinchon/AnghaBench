@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct addrinfo {struct addrinfo* ai_next; int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; int /*<<< orphan*/  ai_flags; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  proto ;
-typedef  int /*<<< orphan*/  portstr ;
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  packet_size ;
-typedef  int /*<<< orphan*/  hostname ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct addrinfo {struct addrinfo* ai_next; int ai_addrlen; int ai_addr; int ai_socktype; int ai_family; int ai_flags; int member_0; } ;
+typedef int proto ;
+typedef int portstr ;
+typedef int path ;
+typedef int packet_size ;
+typedef int hostname ;
+typedef int buf ;
 struct TYPE_11__ {int rw_timeout; int max_packet_size; int is_streamed; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
+typedef TYPE_1__ URLContext ;
 struct TYPE_12__ {int eid; scalar_t__ rw_timeout; scalar_t__ mode; scalar_t__ recv_buffer_size; scalar_t__ send_buffer_size; int fd; void* listen_timeout; } ;
-typedef  TYPE_2__ SRTContext ;
+typedef TYPE_2__ SRTContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  AI_PASSIVE ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXIT ; 
- int AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SRTO_PAYLOADSIZE ; 
- int /*<<< orphan*/  SRTO_UDP_RCVBUF ; 
- int /*<<< orphan*/  SRTO_UDP_SNDBUF ; 
- scalar_t__ SRT_MODE_LISTENER ; 
- scalar_t__ SRT_MODE_RENDEZVOUS ; 
- scalar_t__ av_find_info_tag (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_url_split (char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int*,char*,int,char const*) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (char*,char*,struct addrinfo*,struct addrinfo**) ; 
- int libsrt_getsockopt (TYPE_1__*,int,int /*<<< orphan*/ ,char*,int*,int*) ; 
- int libsrt_listen (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int libsrt_listen_connect (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_1__*,int) ; 
- int libsrt_neterrno (TYPE_1__*) ; 
- int libsrt_set_options_post (TYPE_1__*,int) ; 
- int libsrt_set_options_pre (TYPE_1__*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int srt_bind (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  srt_close (int) ; 
- int srt_epoll_create () ; 
- int /*<<< orphan*/  srt_setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int srt_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* strchr (char const*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- void* strtol (char*,int /*<<< orphan*/ *,int) ; 
+
+ int AF_UNSPEC ;
+ int AI_PASSIVE ;
+ int AVERROR (int ) ;
+ int AVERROR_EXIT ;
+ int AVIO_FLAG_WRITE ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int EIO ;
+ int SOCK_DGRAM ;
+ int SOL_SOCKET ;
+ int SRTO_PAYLOADSIZE ;
+ int SRTO_UDP_RCVBUF ;
+ int SRTO_UDP_SNDBUF ;
+ scalar_t__ SRT_MODE_LISTENER ;
+ scalar_t__ SRT_MODE_RENDEZVOUS ;
+ scalar_t__ av_find_info_tag (char*,int,char*,char const*) ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int av_url_split (char*,int,int *,int ,char*,int,int*,char*,int,char const*) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (char*,char*,struct addrinfo*,struct addrinfo**) ;
+ int libsrt_getsockopt (TYPE_1__*,int,int ,char*,int*,int*) ;
+ int libsrt_listen (int,int,int ,int ,TYPE_1__*,int) ;
+ int libsrt_listen_connect (int,int,int ,int ,int,TYPE_1__*,int) ;
+ int libsrt_neterrno (TYPE_1__*) ;
+ int libsrt_set_options_post (TYPE_1__*,int) ;
+ int libsrt_set_options_pre (TYPE_1__*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int srt_bind (int,int ,int ) ;
+ int srt_close (int) ;
+ int srt_epoll_create () ;
+ int srt_setsockopt (int,int ,int ,scalar_t__*,int) ;
+ int srt_socket (int ,int ,int ) ;
+ char* strchr (char const*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ void* strtol (char*,int *,int) ;
 
 __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, int flags)
 {
@@ -80,7 +80,7 @@ __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, in
         return libsrt_neterrno(h);
     s->eid = eid;
 
-    av_url_split(proto, sizeof(proto), NULL, 0, hostname, sizeof(hostname),
+    av_url_split(proto, sizeof(proto), ((void*)0), 0, hostname, sizeof(hostname),
         &port, path, sizeof(path), uri);
     if (strcmp(proto, "srt"))
         return AVERROR(EINVAL);
@@ -91,10 +91,10 @@ __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, in
     p = strchr(uri, '?');
     if (p) {
         if (av_find_info_tag(buf, sizeof(buf), "timeout", p)) {
-            s->rw_timeout = strtol(buf, NULL, 10);
+            s->rw_timeout = strtol(buf, ((void*)0), 10);
         }
         if (av_find_info_tag(buf, sizeof(buf), "listen_timeout", p)) {
-            s->listen_timeout = strtol(buf, NULL, 10);
+            s->listen_timeout = strtol(buf, ((void*)0), 10);
         }
     }
     if (s->rw_timeout >= 0) {
@@ -105,7 +105,7 @@ __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, in
     snprintf(portstr, sizeof(portstr), "%d", port);
     if (s->mode == SRT_MODE_LISTENER)
         hints.ai_flags |= AI_PASSIVE;
-    ret = getaddrinfo(hostname[0] ? hostname : NULL, portstr, &hints, &ai);
+    ret = getaddrinfo(hostname[0] ? hostname : ((void*)0), portstr, &hints, &ai);
     if (ret) {
         av_log(h, AV_LOG_ERROR,
                "Failed to resolve hostname %s: %s\n",
@@ -127,8 +127,8 @@ __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, in
         goto fail;
     }
 
-    /* Set the socket's send or receive buffer sizes, if specified.
-       If unspecified or setting fails, system default is used. */
+
+
     if (s->recv_buffer_size > 0) {
         srt_setsockopt(fd, SOL_SOCKET, SRTO_UDP_RCVBUF, &s->recv_buffer_size, sizeof (s->recv_buffer_size));
     }
@@ -136,7 +136,7 @@ __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, in
         srt_setsockopt(fd, SOL_SOCKET, SRTO_UDP_SNDBUF, &s->send_buffer_size, sizeof (s->send_buffer_size));
     }
     if (s->mode == SRT_MODE_LISTENER) {
-        // multi-client
+
         if ((ret = libsrt_listen(s->eid, fd, cur_ai->ai_addr, cur_ai->ai_addrlen, h, open_timeout / 1000)) < 0)
             goto fail1;
         fd = ret;
@@ -177,7 +177,7 @@ __attribute__((used)) static int libsrt_setup(URLContext *h, const char *uri, in
 
  fail:
     if (cur_ai->ai_next) {
-        /* Retry with the next sockaddr */
+
         cur_ai = cur_ai->ai_next;
         if (fd >= 0)
             srt_close(fd);

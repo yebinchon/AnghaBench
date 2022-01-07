@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  area; int /*<<< orphan*/  parallel_state; } ;
-struct TYPE_7__ {int /*<<< orphan*/  shared; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int area; int parallel_state; } ;
+struct TYPE_7__ {int shared; } ;
 struct TYPE_8__ {TYPE_1__ next; } ;
-typedef  TYPE_2__* HashJoinTuple ;
-typedef  TYPE_3__* HashJoinTable ;
+typedef TYPE_2__* HashJoinTuple ;
+typedef TYPE_3__* HashJoinTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- scalar_t__ dsa_get_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Assert (int ) ;
+ scalar_t__ dsa_get_address (int ,int ) ;
 
 __attribute__((used)) static inline HashJoinTuple
 ExecParallelHashNextTuple(HashJoinTable hashtable, HashJoinTuple tuple)
 {
-	HashJoinTuple next;
+ HashJoinTuple next;
 
-	Assert(hashtable->parallel_state);
-	next = (HashJoinTuple) dsa_get_address(hashtable->area, tuple->next.shared);
+ Assert(hashtable->parallel_state);
+ next = (HashJoinTuple) dsa_get_address(hashtable->area, tuple->next.shared);
 
-	return next;
+ return next;
 }

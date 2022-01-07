@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_node_t ;
-struct hs20_osu_client {int /*<<< orphan*/  ifname; int /*<<< orphan*/  xml; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_INFO ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- scalar_t__ set_cred (int /*<<< orphan*/ ,int,char*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,...) ; 
- char* xml_node_get_base64_text (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int xml_node_t ;
+struct hs20_osu_client {int ifname; int xml; } ;
+
+
+ int MSG_INFO ;
+ int free (char*) ;
+ char* malloc (int) ;
+ scalar_t__ set_cred (int ,int,char*,char*) ;
+ int snprintf (char*,int,char*,char) ;
+ int wpa_printf (int ,char*,...) ;
+ char* xml_node_get_base64_text (int ,int *,int*) ;
 
 __attribute__((used)) static void set_pps_cred_password(struct hs20_osu_client *ctx, int id,
-				  xml_node_t *node)
+      xml_node_t *node)
 {
-	int len, i;
-	char *pw, *hex, *pos, *end;
+ int len, i;
+ char *pw, *hex, *pos, *end;
 
-	pw = xml_node_get_base64_text(ctx->xml, node, &len);
-	if (pw == NULL)
-		return;
+ pw = xml_node_get_base64_text(ctx->xml, node, &len);
+ if (pw == ((void*)0))
+  return;
 
-	wpa_printf(MSG_INFO, "- Credential/UsernamePassword/Password = %s", pw);
+ wpa_printf(MSG_INFO, "- Credential/UsernamePassword/Password = %s", pw);
 
-	hex = malloc(len * 2 + 1);
-	if (hex == NULL) {
-		free(pw);
-		return;
-	}
-	end = hex + len * 2 + 1;
-	pos = hex;
-	for (i = 0; i < len; i++) {
-		snprintf(pos, end - pos, "%02x", pw[i]);
-		pos += 2;
-	}
-	free(pw);
+ hex = malloc(len * 2 + 1);
+ if (hex == ((void*)0)) {
+  free(pw);
+  return;
+ }
+ end = hex + len * 2 + 1;
+ pos = hex;
+ for (i = 0; i < len; i++) {
+  snprintf(pos, end - pos, "%02x", pw[i]);
+  pos += 2;
+ }
+ free(pw);
 
-	if (set_cred(ctx->ifname, id, "password", hex) < 0)
-		wpa_printf(MSG_INFO, "Failed to set cred password");
-	free(hex);
+ if (set_cred(ctx->ifname, id, "password", hex) < 0)
+  wpa_printf(MSG_INFO, "Failed to set cred password");
+ free(hex);
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IMCR_L1DIBAR ; 
- int /*<<< orphan*/  IMCR_L1DIWC ; 
- int /*<<< orphan*/  cache_block_operation (unsigned int*,unsigned int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int IMCR_L1DIBAR ;
+ int IMCR_L1DIWC ;
+ int cache_block_operation (unsigned int*,unsigned int*,int ,int ) ;
 
 void L1D_cache_block_invalidate(unsigned int start, unsigned int end)
 {
-	cache_block_operation((unsigned int *) start,
-			      (unsigned int *) end,
-			      IMCR_L1DIBAR, IMCR_L1DIWC);
+ cache_block_operation((unsigned int *) start,
+         (unsigned int *) end,
+         IMCR_L1DIBAR, IMCR_L1DIWC);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sem_t ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int /*<<< orphan*/  PTHREAD_PROCESS_PRIVATE ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- char** error_string ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sem_post (int /*<<< orphan*/ *) ; 
- int sem_trywait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int sem_t ;
+
+
+ int EAGAIN ;
+ int PTHREAD_PROCESS_PRIVATE ;
+ int assert (int) ;
+ int errno ;
+ char** error_string ;
+ int fflush (int ) ;
+ int printf (char*,...) ;
+ scalar_t__ sem_init (int *,int ,int ) ;
+ int sem_post (int *) ;
+ int sem_trywait (int *) ;
+ int stdout ;
 
 void *
 thr(void * arg)
@@ -41,7 +41,7 @@ thr(void * arg)
     if (err != EAGAIN)
     {
       printf("thread: sem_trywait 1: expecting error %s: got %s\n",
-	     error_string[EAGAIN], error_string[err]); fflush(stdout);
+      error_string[EAGAIN], error_string[err]); fflush(stdout);
     }
     assert(err == EAGAIN);
   }
@@ -56,5 +56,5 @@ thr(void * arg)
 
   assert(sem_post(&s) == 0);
 
-  return NULL;
+  return ((void*)0);
 }

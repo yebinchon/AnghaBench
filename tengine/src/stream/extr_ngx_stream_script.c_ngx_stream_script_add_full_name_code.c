@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  conf_prefix; int /*<<< orphan*/  code; } ;
-typedef  TYPE_1__ ngx_stream_script_full_name_code_t ;
-struct TYPE_6__ {int /*<<< orphan*/  conf_prefix; int /*<<< orphan*/  main; int /*<<< orphan*/ * values; int /*<<< orphan*/ * lengths; } ;
-typedef  TYPE_2__ ngx_stream_script_compile_t ;
-typedef  int /*<<< orphan*/  ngx_stream_script_code_pt ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
- TYPE_1__* ngx_stream_script_add_code (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_stream_script_full_name_code ; 
- scalar_t__ ngx_stream_script_full_name_len_code ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int conf_prefix; int code; } ;
+typedef TYPE_1__ ngx_stream_script_full_name_code_t ;
+struct TYPE_6__ {int conf_prefix; int main; int * values; int * lengths; } ;
+typedef TYPE_2__ ngx_stream_script_compile_t ;
+typedef int ngx_stream_script_code_pt ;
+typedef int ngx_int_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_OK ;
+ TYPE_1__* ngx_stream_script_add_code (int ,int,int *) ;
+ int ngx_stream_script_full_name_code ;
+ scalar_t__ ngx_stream_script_full_name_len_code ;
 
 __attribute__((used)) static ngx_int_t
 ngx_stream_script_add_full_name_code(ngx_stream_script_compile_t *sc)
 {
-    ngx_stream_script_full_name_code_t  *code;
+    ngx_stream_script_full_name_code_t *code;
 
     code = ngx_stream_script_add_code(*sc->lengths,
                                     sizeof(ngx_stream_script_full_name_code_t),
-                                    NULL);
-    if (code == NULL) {
+                                    ((void*)0));
+    if (code == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -44,7 +44,7 @@ ngx_stream_script_add_full_name_code(ngx_stream_script_compile_t *sc)
 
     code = ngx_stream_script_add_code(*sc->values,
                         sizeof(ngx_stream_script_full_name_code_t), &sc->main);
-    if (code == NULL) {
+    if (code == ((void*)0)) {
         return NGX_ERROR;
     }
 

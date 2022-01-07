@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gem {int /*<<< orphan*/  napi; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  napi_enable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netif_wake_queue (int /*<<< orphan*/ ) ; 
+
+
+
+struct gem {int napi; int dev; } ;
+
+
+ int napi_enable (int *) ;
+ int netif_wake_queue (int ) ;
 
 __attribute__((used)) static inline void gem_netif_start(struct gem *gp)
 {
-	/* NOTE: unconditional netif_wake_queue is only
-	 * appropriate so long as all callers are assured to
-	 * have free tx slots.
-	 */
-	netif_wake_queue(gp->dev);
-	napi_enable(&gp->napi);
+
+
+
+
+ netif_wake_queue(gp->dev);
+ napi_enable(&gp->napi);
 }

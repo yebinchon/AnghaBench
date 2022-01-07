@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ cl_mem ;
-typedef  int cl_int ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ cl_mem ;
+typedef int cl_int ;
 struct TYPE_10__ {TYPE_3__* priv; } ;
 struct TYPE_8__ {TYPE_1__* hwctx; } ;
 struct TYPE_9__ {double* threshold; int coordinates; scalar_t__ coord; TYPE_2__ ocf; } ;
-struct TYPE_7__ {int /*<<< orphan*/  context; } ;
-typedef  TYPE_3__ NeighborOpenCLContext ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_7__ {int context; } ;
+typedef TYPE_3__ NeighborOpenCLContext ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int CL_MEM_COPY_HOST_PTR ; 
- int CL_MEM_HOST_NO_ACCESS ; 
- int CL_MEM_READ_ONLY ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ clCreateBuffer (int /*<<< orphan*/ ,int,int,int*,int*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int CL_MEM_COPY_HOST_PTR ;
+ int CL_MEM_HOST_NO_ACCESS ;
+ int CL_MEM_READ_ONLY ;
+ int EIO ;
+ int av_log (TYPE_4__*,int ,char*,int) ;
+ scalar_t__ clCreateBuffer (int ,int,int,int*,int*) ;
 
 __attribute__((used)) static int neighbor_opencl_make_filter_params(AVFilterContext *avctx)
 {

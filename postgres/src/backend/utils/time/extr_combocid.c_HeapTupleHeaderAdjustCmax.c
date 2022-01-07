@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HeapTupleHeader ;
-typedef  int /*<<< orphan*/  CommandId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetComboCommandId (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetCmin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawXmin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleHeaderXminCommitted (int /*<<< orphan*/ ) ; 
- scalar_t__ TransactionIdIsCurrentTransactionId (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HeapTupleHeader ;
+typedef int CommandId ;
+
+
+ int GetComboCommandId (int ,int ) ;
+ int HeapTupleHeaderGetCmin (int ) ;
+ int HeapTupleHeaderGetRawXmin (int ) ;
+ int HeapTupleHeaderXminCommitted (int ) ;
+ scalar_t__ TransactionIdIsCurrentTransactionId (int ) ;
 
 void
 HeapTupleHeaderAdjustCmax(HeapTupleHeader tup,
-						  CommandId *cmax,
-						  bool *iscombo)
+        CommandId *cmax,
+        bool *iscombo)
 {
-	/*
-	 * If we're marking a tuple deleted that was inserted by (any
-	 * subtransaction of) our transaction, we need to use a combo command id.
-	 * Test for HeapTupleHeaderXminCommitted() first, because it's cheaper
-	 * than a TransactionIdIsCurrentTransactionId call.
-	 */
-	if (!HeapTupleHeaderXminCommitted(tup) &&
-		TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmin(tup)))
-	{
-		CommandId	cmin = HeapTupleHeaderGetCmin(tup);
 
-		*cmax = GetComboCommandId(cmin, *cmax);
-		*iscombo = true;
-	}
-	else
-	{
-		*iscombo = false;
-	}
+
+
+
+
+
+ if (!HeapTupleHeaderXminCommitted(tup) &&
+  TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmin(tup)))
+ {
+  CommandId cmin = HeapTupleHeaderGetCmin(tup);
+
+  *cmax = GetComboCommandId(cmin, *cmax);
+  *iscombo = 1;
+ }
+ else
+ {
+  *iscombo = 0;
+ }
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  char WCHAR ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int INT_MAX ; 
- int INT_MIN ; 
- int MAXLONGLONG ; 
- int NAN ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ TRUE ; 
- scalar_t__ iswdigit (char const) ; 
- scalar_t__ iswspace (char const) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int) ; 
- int pow (int,int) ; 
- int /*<<< orphan*/  to_flat_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,char const**) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int WORD ;
+typedef char WCHAR ;
+typedef int LONGLONG ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int INT_MAX ;
+ int INT_MIN ;
+ int MAXLONGLONG ;
+ int NAN ;
+ int S_OK ;
+ scalar_t__ TRUE ;
+ scalar_t__ iswdigit (char const) ;
+ scalar_t__ iswspace (char const) ;
+ int jsstr_release (int *) ;
+ int jsval_number (int) ;
+ int pow (int,int) ;
+ int to_flat_string (int *,int ,int **,char const**) ;
 
 __attribute__((used)) static HRESULT JSGlobal_parseFloat(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

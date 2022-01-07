@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltTransformContextPtr ;
-typedef  void* xsltTemplatePtr ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltTransformContextPtr ;
+typedef void* xsltTemplatePtr ;
 struct TYPE_3__ {int templMax; void** templTab; int templNr; void* templ; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- scalar_t__ xmlMalloc (int) ; 
- scalar_t__ xmlRealloc (void**,int) ; 
+
+ int xmlGenericError (int ,char*) ;
+ int xmlGenericErrorContext ;
+ scalar_t__ xmlMalloc (int) ;
+ scalar_t__ xmlRealloc (void**,int) ;
 
 __attribute__((used)) static int
 templPush(xsltTransformContextPtr ctxt, xsltTemplatePtr value)
@@ -29,7 +29,7 @@ templPush(xsltTransformContextPtr ctxt, xsltTemplatePtr value)
         ctxt->templTab =
             (xsltTemplatePtr *) xmlMalloc(ctxt->templMax *
                                           sizeof(ctxt->templTab[0]));
-        if (ctxt->templTab == NULL) {
+        if (ctxt->templTab == ((void*)0)) {
             xmlGenericError(xmlGenericErrorContext, "malloc failed !\n");
             return (0);
         }
@@ -40,7 +40,7 @@ templPush(xsltTransformContextPtr ctxt, xsltTemplatePtr value)
             (xsltTemplatePtr *) xmlRealloc(ctxt->templTab,
                                            ctxt->templMax *
                                            sizeof(ctxt->templTab[0]));
-        if (ctxt->templTab == NULL) {
+        if (ctxt->templTab == ((void*)0)) {
             xmlGenericError(xmlGenericErrorContext, "realloc failed !\n");
             return (0);
         }

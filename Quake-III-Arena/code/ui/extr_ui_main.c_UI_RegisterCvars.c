@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  cvarFlags; int /*<<< orphan*/  defaultString; int /*<<< orphan*/  cvarName; int /*<<< orphan*/  vmCvar; } ;
-typedef  TYPE_1__ cvarTable_t ;
 
-/* Variables and functions */
- TYPE_1__* cvarTable ; 
- int cvarTableSize ; 
- int /*<<< orphan*/  trap_Cvar_Register (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cvarFlags; int defaultString; int cvarName; int vmCvar; } ;
+typedef TYPE_1__ cvarTable_t ;
+
+
+ TYPE_1__* cvarTable ;
+ int cvarTableSize ;
+ int trap_Cvar_Register (int ,int ,int ,int ) ;
 
 void UI_RegisterCvars( void ) {
-	int			i;
-	cvarTable_t	*cv;
+ int i;
+ cvarTable_t *cv;
 
-	for ( i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++ ) {
-		trap_Cvar_Register( cv->vmCvar, cv->cvarName, cv->defaultString, cv->cvarFlags );
-	}
+ for ( i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++ ) {
+  trap_Cvar_Register( cv->vmCvar, cv->cvarName, cv->defaultString, cv->cvarFlags );
+ }
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bo_vm_reservation_context {int reserved; int /*<<< orphan*/ * vm_pd; int /*<<< orphan*/ * sync; int /*<<< orphan*/  list; int /*<<< orphan*/  ticket; } ;
 
-/* Variables and functions */
- int amdgpu_sync_wait (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ttm_eu_backoff_reservation (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct bo_vm_reservation_context {int reserved; int * vm_pd; int * sync; int list; int ticket; } ;
+
+
+ int amdgpu_sync_wait (int *,int) ;
+ int kfree (int *) ;
+ int ttm_eu_backoff_reservation (int *,int *) ;
 
 __attribute__((used)) static int unreserve_bo_and_vms(struct bo_vm_reservation_context *ctx,
-				 bool wait, bool intr)
+     bool wait, bool intr)
 {
-	int ret = 0;
+ int ret = 0;
 
-	if (wait)
-		ret = amdgpu_sync_wait(ctx->sync, intr);
+ if (wait)
+  ret = amdgpu_sync_wait(ctx->sync, intr);
 
-	if (ctx->reserved)
-		ttm_eu_backoff_reservation(&ctx->ticket, &ctx->list);
-	kfree(ctx->vm_pd);
+ if (ctx->reserved)
+  ttm_eu_backoff_reservation(&ctx->ticket, &ctx->list);
+ kfree(ctx->vm_pd);
 
-	ctx->sync = NULL;
+ ctx->sync = ((void*)0);
 
-	ctx->reserved = false;
-	ctx->vm_pd = NULL;
+ ctx->reserved = 0;
+ ctx->vm_pd = ((void*)0);
 
-	return ret;
+ return ret;
 }

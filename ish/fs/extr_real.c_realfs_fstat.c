@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct statbuf {int dummy; } ;
 struct stat {int dummy; } ;
-struct fd {int /*<<< orphan*/  real_fd; } ;
+struct fd {int real_fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_stat (struct statbuf*,struct stat*) ; 
- int errno_map () ; 
- scalar_t__ fstat (int /*<<< orphan*/ ,struct stat*) ; 
+
+ int copy_stat (struct statbuf*,struct stat*) ;
+ int errno_map () ;
+ scalar_t__ fstat (int ,struct stat*) ;
 
 __attribute__((used)) static int realfs_fstat(struct fd *fd, struct statbuf *fake_stat) {
     struct stat real_stat;

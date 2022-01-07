@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_9__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_9__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
 struct TYPE_14__ {scalar_t__ type; } ;
-typedef  TYPE_1__ Unit ;
-struct TYPE_17__ {int /*<<< orphan*/ ** exec_command; } ;
-struct TYPE_16__ {int /*<<< orphan*/ ** exec_command; int /*<<< orphan*/ * control_command; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * control_command; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * control_command; } ;
-typedef  int /*<<< orphan*/  ExecCommand ;
+typedef TYPE_1__ Unit ;
+struct TYPE_17__ {int ** exec_command; } ;
+struct TYPE_16__ {int ** exec_command; int * control_command; } ;
+struct TYPE_15__ {int * control_command; } ;
+struct TYPE_13__ {int * control_command; } ;
+typedef int ExecCommand ;
 
-/* Variables and functions */
- unsigned int ELEMENTSOF (int /*<<< orphan*/ **) ; 
- TYPE_11__* MOUNT (TYPE_1__*) ; 
- TYPE_9__* SERVICE (TYPE_1__*) ; 
- TYPE_7__* SOCKET (TYPE_1__*) ; 
- TYPE_5__* SWAP (TYPE_1__*) ; 
- scalar_t__ UNIT_MOUNT ; 
- scalar_t__ UNIT_SERVICE ; 
- scalar_t__ UNIT_SOCKET ; 
- scalar_t__ UNIT_SWAP ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int verify_executable (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ unsigned int ELEMENTSOF (int **) ;
+ TYPE_11__* MOUNT (TYPE_1__*) ;
+ TYPE_9__* SERVICE (TYPE_1__*) ;
+ TYPE_7__* SOCKET (TYPE_1__*) ;
+ TYPE_5__* SWAP (TYPE_1__*) ;
+ scalar_t__ UNIT_MOUNT ;
+ scalar_t__ UNIT_SERVICE ;
+ scalar_t__ UNIT_SOCKET ;
+ scalar_t__ UNIT_SWAP ;
+ int assert (TYPE_1__*) ;
+ int verify_executable (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int verify_executables(Unit *u) {
         ExecCommand *exec;
@@ -43,9 +43,9 @@ __attribute__((used)) static int verify_executables(Unit *u) {
 
         assert(u);
 
-        exec =  u->type == UNIT_SOCKET ? SOCKET(u)->control_command :
+        exec = u->type == UNIT_SOCKET ? SOCKET(u)->control_command :
                 u->type == UNIT_MOUNT ? MOUNT(u)->control_command :
-                u->type == UNIT_SWAP ? SWAP(u)->control_command : NULL;
+                u->type == UNIT_SWAP ? SWAP(u)->control_command : ((void*)0);
         k = verify_executable(u, exec);
         if (k < 0 && r == 0)
                 r = k;

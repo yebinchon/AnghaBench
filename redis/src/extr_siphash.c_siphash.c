@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIPROUND ; 
- int /*<<< orphan*/  U64TO8_LE (int /*<<< orphan*/ *,int) ; 
- int U8TO64_LE (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+
+
+ int SIPROUND ;
+ int U64TO8_LE (int *,int) ;
+ int U8TO64_LE (int const*) ;
 
 uint64_t siphash(const uint8_t *in, const size_t inlen, const uint8_t *k) {
-#ifndef UNALIGNED_LE_CPU
+
     uint64_t hash;
     uint8_t *out = (uint8_t*) &hash;
-#endif
+
     uint64_t v0 = 0x736f6d6570736575ULL;
     uint64_t v1 = 0x646f72616e646f6dULL;
     uint64_t v2 = 0x6c7967656e657261ULL;
@@ -48,12 +48,12 @@ uint64_t siphash(const uint8_t *in, const size_t inlen, const uint8_t *k) {
     }
 
     switch (left) {
-    case 7: b |= ((uint64_t)in[6]) << 48; /* fall-thru */
-    case 6: b |= ((uint64_t)in[5]) << 40; /* fall-thru */
-    case 5: b |= ((uint64_t)in[4]) << 32; /* fall-thru */
-    case 4: b |= ((uint64_t)in[3]) << 24; /* fall-thru */
-    case 3: b |= ((uint64_t)in[2]) << 16; /* fall-thru */
-    case 2: b |= ((uint64_t)in[1]) << 8; /* fall-thru */
+    case 7: b |= ((uint64_t)in[6]) << 48;
+    case 6: b |= ((uint64_t)in[5]) << 40;
+    case 5: b |= ((uint64_t)in[4]) << 32;
+    case 4: b |= ((uint64_t)in[3]) << 24;
+    case 3: b |= ((uint64_t)in[2]) << 16;
+    case 2: b |= ((uint64_t)in[1]) << 8;
     case 1: b |= ((uint64_t)in[0]); break;
     case 0: break;
     }
@@ -69,10 +69,10 @@ uint64_t siphash(const uint8_t *in, const size_t inlen, const uint8_t *k) {
     SIPROUND;
 
     b = v0 ^ v1 ^ v2 ^ v3;
-#ifndef UNALIGNED_LE_CPU
+
     U64TO8_LE(out, b);
     return hash;
-#else
-    return b;
-#endif
+
+
+
 }

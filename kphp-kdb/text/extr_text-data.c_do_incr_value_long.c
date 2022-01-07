@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct value_data {int /*<<< orphan*/  data; scalar_t__ zero_mask; } ;
+
+
+
+
+struct value_data {int data; scalar_t__ zero_mask; } ;
 struct lev_incr_field_long {int local_id; long long value; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TX_INCR_FIELD_LONG ; 
- scalar_t__ adjust_message_values (int,int,struct value_data*) ; 
- struct lev_incr_field_long* alloc_log_event (scalar_t__,int,int) ; 
- struct value_data* alloc_value_data (int) ; 
- scalar_t__ conv_uid (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,long long) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,long long*,int) ; 
- int read_extra_mask ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int write_extra_mask ; 
+
+ scalar_t__ LEV_TX_INCR_FIELD_LONG ;
+ scalar_t__ adjust_message_values (int,int,struct value_data*) ;
+ struct lev_incr_field_long* alloc_log_event (scalar_t__,int,int) ;
+ struct value_data* alloc_value_data (int) ;
+ scalar_t__ conv_uid (int) ;
+ int fprintf (int ,char*,int,int,int,long long) ;
+ int memcpy (int *,long long*,int) ;
+ int read_extra_mask ;
+ int stderr ;
+ int verbosity ;
+ int write_extra_mask ;
 
 int do_incr_value_long (int user_id, int local_id, int value_id, long long incr) {
   if (verbosity > 1) {

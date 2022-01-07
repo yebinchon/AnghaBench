@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mod_item {int /*<<< orphan*/ * main_ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IPFW ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct mod_item {int * main_ptr; } ;
+
+
+ int M_IPFW ;
+ int free (int *,int ) ;
 
 __attribute__((used)) static void
 ta_flush_mod_numarray(void *ta_buf)
 {
-	struct mod_item *mi;
+ struct mod_item *mi;
 
-	mi = (struct mod_item *)ta_buf;
-	if (mi->main_ptr != NULL)
-		free(mi->main_ptr, M_IPFW);
+ mi = (struct mod_item *)ta_buf;
+ if (mi->main_ptr != ((void*)0))
+  free(mi->main_ptr, M_IPFW);
 }

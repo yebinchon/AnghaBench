@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * ScuBP ; 
- int /*<<< orphan*/ * ScuDsp ; 
- int /*<<< orphan*/ * ScuRegs ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+ int * ScuBP ;
+ int * ScuDsp ;
+ int * ScuRegs ;
+ int free (int *) ;
 
 void ScuDeInit(void) {
    if (ScuRegs)
       free(ScuRegs);
-   ScuRegs = NULL;
+   ScuRegs = ((void*)0);
 
    if (ScuDsp)
       free(ScuDsp);
-   ScuDsp = NULL;
+   ScuDsp = ((void*)0);
 
    if (ScuBP)
       free(ScuBP);
-   ScuBP = NULL;
+   ScuBP = ((void*)0);
 }

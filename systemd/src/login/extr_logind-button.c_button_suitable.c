@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CONST_MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int CONST_MAX4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVIOCGBIT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  EV_KEY ; 
- int /*<<< orphan*/  EV_SW ; 
- int /*<<< orphan*/  EV_SYN ; 
- int /*<<< orphan*/  KEY_POWER ; 
- int /*<<< orphan*/  KEY_POWER2 ; 
- int /*<<< orphan*/  KEY_SLEEP ; 
- int /*<<< orphan*/  KEY_SUSPEND ; 
- int /*<<< orphan*/  SW_DOCK ; 
- int /*<<< orphan*/  SW_LID ; 
- int ULONG_BITS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ bitset_get (unsigned long*,int /*<<< orphan*/ ) ; 
- int errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,unsigned long*) ; 
+ int CONST_MAX (int ,int ) ;
+ int CONST_MAX4 (int ,int ,int ,int ) ;
+ int EVIOCGBIT (int ,int) ;
+ int EV_KEY ;
+ int EV_SW ;
+ int EV_SYN ;
+ int KEY_POWER ;
+ int KEY_POWER2 ;
+ int KEY_SLEEP ;
+ int KEY_SUSPEND ;
+ int SW_DOCK ;
+ int SW_LID ;
+ int ULONG_BITS ;
+ int assert (int) ;
+ scalar_t__ bitset_get (unsigned long*,int ) ;
+ int errno ;
+ scalar_t__ ioctl (int,int ,unsigned long*) ;
 
 __attribute__((used)) static int button_suitable(int fd) {
         unsigned long types[CONST_MAX(EV_KEY, EV_SW)/ULONG_BITS+1];
@@ -48,7 +40,7 @@ __attribute__((used)) static int button_suitable(int fd) {
                     bitset_get(keys, KEY_POWER2) ||
                     bitset_get(keys, KEY_SLEEP) ||
                     bitset_get(keys, KEY_SUSPEND))
-                        return true;
+                        return 1;
         }
 
         if (bitset_get(types, EV_SW)) {
@@ -59,8 +51,8 @@ __attribute__((used)) static int button_suitable(int fd) {
 
                 if (bitset_get(switches, SW_LID) ||
                     bitset_get(switches, SW_DOCK))
-                        return true;
+                        return 1;
         }
 
-        return false;
+        return 0;
 }

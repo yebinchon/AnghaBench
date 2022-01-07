@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  arenaInfo; } ;
 
-/* Variables and functions */
- int QM_ACTIVATED ; 
- int /*<<< orphan*/  UI_SPArena_Start (int /*<<< orphan*/ ) ; 
- TYPE_1__ skillMenuInfo ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int arenaInfo; } ;
+
+
+ int QM_ACTIVATED ;
+ int UI_SPArena_Start (int ) ;
+ TYPE_1__ skillMenuInfo ;
 
 __attribute__((used)) static void UI_SPSkillMenu_FightEvent( void *ptr, int notification ) {
-	if (notification != QM_ACTIVATED)
-		return;
+ if (notification != QM_ACTIVATED)
+  return;
 
-	UI_SPArena_Start( skillMenuInfo.arenaInfo );
+ UI_SPArena_Start( skillMenuInfo.arenaInfo );
 }

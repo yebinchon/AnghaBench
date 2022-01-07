@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  Value ;
-struct TYPE_10__ {char* Data1; int /*<<< orphan*/ * Data4; int /*<<< orphan*/  Data3; int /*<<< orphan*/  Data2; } ;
-typedef  TYPE_1__ UUID ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int Value ;
+struct TYPE_10__ {char* Data1; int * Data4; int Data3; int Data2; } ;
+typedef TYPE_1__ UUID ;
 struct TYPE_11__ {int cb; scalar_t__ hProcess; scalar_t__ hThread; } ;
-typedef  int /*<<< orphan*/  StartupInfo ;
-typedef  int /*<<< orphan*/  ShowWizard ;
-typedef  TYPE_2__ STARTUPINFOW ;
-typedef  int /*<<< orphan*/  ProcessInfo ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int* PCWSTR ;
-typedef  int /*<<< orphan*/ * PBYTE ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  InstallEventName ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef int StartupInfo ;
+typedef int ShowWizard ;
+typedef TYPE_2__ STARTUPINFOW ;
+typedef int ProcessInfo ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int* PCWSTR ;
+typedef int * PBYTE ;
+typedef int * LPVOID ;
+typedef int InstallEventName ;
+typedef int HKEY ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int CONFIGFLAG_FAILEDINSTALL ; 
- int /*<<< orphan*/  CREATE_UNICODE_ENVIRONMENT ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  ConnectNamedPipe (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateEnvironmentBlock (int /*<<< orphan*/ **,scalar_t__,int) ; 
- scalar_t__ CreateEventW (int /*<<< orphan*/ *,int,int,int*) ; 
- scalar_t__ CreateNamedPipeW (int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateProcessAsUserW (scalar_t__,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  CreateProcessW (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  DPRINT (char*,int*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int*,...) ; 
- int /*<<< orphan*/  DestroyEnvironmentBlock (int /*<<< orphan*/ *) ; 
- int* ERROR_PIPE_CONNECTED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int* GetLastError () ; 
- int /*<<< orphan*/  INFINITE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  PIPE_ACCESS_OUTBOUND ; 
- int /*<<< orphan*/  PIPE_TYPE_BYTE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int TRUE ; 
- int /*<<< orphan*/  UuidCreate (TYPE_1__*) ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,int*,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
- int /*<<< orphan*/  hEnumKey ; 
- scalar_t__ hUserToken ; 
- int /*<<< orphan*/  swprintf (int*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wcscat (int*,int*) ; 
- int /*<<< orphan*/  wcscpy (int*,char*) ; 
- int wcslen (int*) ; 
+
+ int ASSERT (int) ;
+ int CONFIGFLAG_FAILEDINSTALL ;
+ int CREATE_UNICODE_ENVIRONMENT ;
+ int CloseHandle (scalar_t__) ;
+ int ConnectNamedPipe (scalar_t__,int *) ;
+ int CreateEnvironmentBlock (int **,scalar_t__,int) ;
+ scalar_t__ CreateEventW (int *,int,int,int*) ;
+ scalar_t__ CreateNamedPipeW (int*,int ,int ,int,int,int,int ,int *) ;
+ int CreateProcessAsUserW (scalar_t__,int *,int*,int *,int *,int,int ,int *,int *,TYPE_2__*,TYPE_2__*) ;
+ int CreateProcessW (int *,int*,int *,int *,int,int ,int *,int *,TYPE_2__*,TYPE_2__*) ;
+ int DPRINT (char*,int*,...) ;
+ int DPRINT1 (char*,int*,...) ;
+ int DestroyEnvironmentBlock (int *) ;
+ int* ERROR_PIPE_CONNECTED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int* GetLastError () ;
+ int INFINITE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int KEY_QUERY_VALUE ;
+ int PIPE_ACCESS_OUTBOUND ;
+ int PIPE_TYPE_BYTE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,int*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int *,int*) ;
+ int TRUE ;
+ int UuidCreate (TYPE_1__*) ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (scalar_t__,int ) ;
+ int WriteFile (scalar_t__,int*,int,int*,int *) ;
+ int ZeroMemory (TYPE_2__*,int) ;
+ int hEnumKey ;
+ scalar_t__ hUserToken ;
+ int swprintf (int*,char*,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int wcscat (int*,int*) ;
+ int wcscpy (int*,char*) ;
+ int wcslen (int*) ;
 
 __attribute__((used)) static BOOL
 InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
@@ -78,13 +78,13 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
     DWORD Value;
     HANDLE hInstallEvent;
     HANDLE hPipe = INVALID_HANDLE_VALUE;
-    LPVOID Environment = NULL;
+    LPVOID Environment = ((void*)0);
     PROCESS_INFORMATION ProcessInfo;
     STARTUPINFOW StartupInfo;
     UUID RandomUuid;
     HKEY DeviceKey;
 
-    /* The following lengths are constant (see below), they cannot overflow */
+
     WCHAR CommandLine[116];
     WCHAR InstallEventName[73];
     WCHAR PipeName[74];
@@ -102,10 +102,10 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
     {
         if (RegQueryValueExW(DeviceKey,
                              L"Class",
-                             NULL,
-                             NULL,
-                             NULL,
-                             NULL) == ERROR_SUCCESS)
+                             ((void*)0),
+                             ((void*)0),
+                             ((void*)0),
+                             ((void*)0)) == ERROR_SUCCESS)
         {
             DPRINT("No need to install: %S\n", DeviceInstance);
             RegCloseKey(DeviceKey);
@@ -115,8 +115,8 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
         BytesWritten = sizeof(DWORD);
         if (RegQueryValueExW(DeviceKey,
                              L"ConfigFlags",
-                             NULL,
-                             NULL,
+                             ((void*)0),
+                             ((void*)0),
                              (PBYTE)&Value,
                              &BytesWritten) == ERROR_SUCCESS)
         {
@@ -133,7 +133,7 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
 
     DPRINT1("Installing: %S\n", DeviceInstance);
 
-    /* Create a random UUID for the named pipe & event*/
+
     UuidCreate(&RandomUuid);
     swprintf(UuidString, L"{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}",
         RandomUuid.Data1, RandomUuid.Data2, RandomUuid.Data3,
@@ -141,27 +141,27 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
         RandomUuid.Data4[3], RandomUuid.Data4[4], RandomUuid.Data4[5],
         RandomUuid.Data4[6], RandomUuid.Data4[7]);
 
-    /* Create the event */
+
     wcscpy(InstallEventName, L"Global\\PNP_Device_Install_Event_0.");
     wcscat(InstallEventName, UuidString);
-    hInstallEvent = CreateEventW(NULL, TRUE, FALSE, InstallEventName);
+    hInstallEvent = CreateEventW(((void*)0), TRUE, FALSE, InstallEventName);
     if (!hInstallEvent)
     {
         DPRINT1("CreateEventW('%ls') failed with error %lu\n", InstallEventName, GetLastError());
         goto cleanup;
     }
 
-    /* Create the named pipe */
+
     wcscpy(PipeName, L"\\\\.\\pipe\\PNP_Device_Install_Pipe_0.");
     wcscat(PipeName, UuidString);
-    hPipe = CreateNamedPipeW(PipeName, PIPE_ACCESS_OUTBOUND, PIPE_TYPE_BYTE, 1, 512, 512, 0, NULL);
+    hPipe = CreateNamedPipeW(PipeName, PIPE_ACCESS_OUTBOUND, PIPE_TYPE_BYTE, 1, 512, 512, 0, ((void*)0));
     if (hPipe == INVALID_HANDLE_VALUE)
     {
         DPRINT1("CreateNamedPipeW failed with error %u\n", GetLastError());
         goto cleanup;
     }
 
-    /* Launch rundll32 to call ClientSideInstallW */
+
     wcscpy(CommandLine, L"rundll32.exe newdev.dll,ClientSideInstall ");
     wcscat(CommandLine, PipeName);
 
@@ -170,14 +170,14 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
 
     if (hUserToken)
     {
-        /* newdev has to run under the environment of the current user */
+
         if (!CreateEnvironmentBlock(&Environment, hUserToken, FALSE))
         {
             DPRINT1("CreateEnvironmentBlock failed with error %d\n", GetLastError());
             goto cleanup;
         }
 
-        if (!CreateProcessAsUserW(hUserToken, NULL, CommandLine, NULL, NULL, FALSE, CREATE_UNICODE_ENVIRONMENT, Environment, NULL, &StartupInfo, &ProcessInfo))
+        if (!CreateProcessAsUserW(hUserToken, ((void*)0), CommandLine, ((void*)0), ((void*)0), FALSE, CREATE_UNICODE_ENVIRONMENT, Environment, ((void*)0), &StartupInfo, &ProcessInfo))
         {
             DPRINT1("CreateProcessAsUserW failed with error %u\n", GetLastError());
             goto cleanup;
@@ -185,21 +185,21 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
     }
     else
     {
-        /* FIXME: This is probably not correct, I guess newdev should never be run with SYSTEM privileges.
 
-           Still, we currently do that in 2nd stage setup and probably Console mode as well, so allow it here.
-           (ShowWizard is only set to FALSE for these two modes) */
+
+
+
         ASSERT(!ShowWizard);
 
-        if (!CreateProcessW(NULL, CommandLine, NULL, NULL, FALSE, 0, NULL, NULL, &StartupInfo, &ProcessInfo))
+        if (!CreateProcessW(((void*)0), CommandLine, ((void*)0), ((void*)0), FALSE, 0, ((void*)0), ((void*)0), &StartupInfo, &ProcessInfo))
         {
             DPRINT1("CreateProcessW failed with error %u\n", GetLastError());
             goto cleanup;
         }
     }
 
-    /* Wait for the function to connect to our pipe */
-    if (!ConnectNamedPipe(hPipe, NULL))
+
+    if (!ConnectNamedPipe(hPipe, ((void*)0)))
     {
         if (GetLastError() != ERROR_PIPE_CONNECTED)
         {
@@ -208,23 +208,23 @@ InstallDevice(PCWSTR DeviceInstance, BOOL ShowWizard)
         }
     }
 
-    /* Pass the data. The following output is partly compatible to Windows XP SP2 (researched using a modified newdev.dll to log this stuff) */
-    Value = sizeof(InstallEventName);
-    WriteFile(hPipe, &Value, sizeof(Value), &BytesWritten, NULL);
-    WriteFile(hPipe, InstallEventName, Value, &BytesWritten, NULL);
 
-    /* I couldn't figure out what the following value means under WinXP. It's usually 0 in my tests, but was also 5 once.
-       Therefore the following line is entirely ReactOS-specific. We use the value here to pass the ShowWizard variable. */
-    WriteFile(hPipe, &ShowWizard, sizeof(ShowWizard), &BytesWritten, NULL);
+    Value = sizeof(InstallEventName);
+    WriteFile(hPipe, &Value, sizeof(Value), &BytesWritten, ((void*)0));
+    WriteFile(hPipe, InstallEventName, Value, &BytesWritten, ((void*)0));
+
+
+
+    WriteFile(hPipe, &ShowWizard, sizeof(ShowWizard), &BytesWritten, ((void*)0));
 
     Value = (wcslen(DeviceInstance) + 1) * sizeof(WCHAR);
-    WriteFile(hPipe, &Value, sizeof(Value), &BytesWritten, NULL);
-    WriteFile(hPipe, DeviceInstance, Value, &BytesWritten, NULL);
+    WriteFile(hPipe, &Value, sizeof(Value), &BytesWritten, ((void*)0));
+    WriteFile(hPipe, DeviceInstance, Value, &BytesWritten, ((void*)0));
 
-    /* Wait for newdev.dll to finish processing */
+
     WaitForSingleObject(ProcessInfo.hProcess, INFINITE);
 
-    /* If the event got signalled, this is success */
+
     DeviceInstalled = WaitForSingleObject(hInstallEvent, 0) == WAIT_OBJECT_0;
 
 cleanup:

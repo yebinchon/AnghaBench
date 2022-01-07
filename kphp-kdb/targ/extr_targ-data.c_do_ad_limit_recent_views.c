@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_generic {int dummy; } ;
 struct advert {int recent_views_limit; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TARG_AD_LIMIT_RECENT_VIEWS ; 
- int /*<<< orphan*/  ad_is_ancient (int) ; 
- int ad_limit_recent_views (struct lev_generic*) ; 
- struct lev_generic* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- struct advert* get_ad_f (int,int /*<<< orphan*/ ) ; 
- int load_ancient_ad (struct advert*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ scalar_t__ LEV_TARG_AD_LIMIT_RECENT_VIEWS ;
+ int ad_is_ancient (int) ;
+ int ad_limit_recent_views (struct lev_generic*) ;
+ struct lev_generic* alloc_log_event (scalar_t__,int,int) ;
+ int fprintf (int ,char*,int,int) ;
+ struct advert* get_ad_f (int,int ) ;
+ int load_ancient_ad (struct advert*) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int do_ad_limit_recent_views (int ad_id, int views) {
   struct advert *A = get_ad_f (ad_id, ad_is_ancient (ad_id));

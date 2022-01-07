@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid_t ;
-typedef  int /*<<< orphan*/  rpc_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_ERROR ; 
- int /*<<< orphan*/  RPC_SUCCESS ; 
- scalar_t__ asprintf (char**,char*,int,int,int,int,int,int,int,int) ; 
- scalar_t__ malloc (int) ; 
- int rand () ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uuid_generate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uuid_unparse_upper (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uuid_t ;
+typedef int rpc_status ;
+
+
+ int RPC_ERROR ;
+ int RPC_SUCCESS ;
+ scalar_t__ asprintf (char**,char*,int,int,int,int,int,int,int,int) ;
+ scalar_t__ malloc (int) ;
+ int rand () ;
+ int srand (int ) ;
+ int time (int *) ;
+ int uuid_generate (int ) ;
+ int uuid_unparse_upper (int ,char*) ;
 
 rpc_status rpc_new_uuid(char **to_uuid) {
   if (!to_uuid) {
     return RPC_ERROR;
   }
-#ifdef __MACH__
-  *to_uuid = (char *)malloc(37);
-  uuid_t uuid;
-  uuid_generate(uuid);
-  uuid_unparse_upper(uuid, *to_uuid);
-#else
-  // see stackoverflow.com/questions/2174768/clinuxgenerating-uuids-in-linux
-  static bool seeded = false;
+
+
+
+
+
+
+
+  static bool seeded = 0;
   if (!seeded) {
-    seeded = true;
-    srand(time(NULL));
+    seeded = 1;
+    srand(time(((void*)0)));
   }
   if (asprintf(to_uuid, "%x%x-%x-%x-%x-%x%x%x",
       rand(), rand(), rand(),
       ((rand() & 0x0fff) | 0x4000),
       rand() % 0x3fff + 0x8000,
       rand(), rand(), rand()) < 0) {
-    return RPC_ERROR;  // asprintf failed
+    return RPC_ERROR;
   }
-#endif
+
   return RPC_SUCCESS;
 }

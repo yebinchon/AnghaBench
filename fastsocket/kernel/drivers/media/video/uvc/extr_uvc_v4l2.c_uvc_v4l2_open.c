@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct uvc_streaming {int /*<<< orphan*/  chain; TYPE_1__* dev; } ;
-struct uvc_fh {int /*<<< orphan*/  state; struct uvc_streaming* stream; int /*<<< orphan*/  chain; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct uvc_streaming {int chain; TYPE_1__* dev; } ;
+struct uvc_fh {int state; struct uvc_streaming* stream; int chain; } ;
 struct file {struct uvc_fh* private_data; } ;
-struct TYPE_2__ {int state; int /*<<< orphan*/  users; int /*<<< orphan*/  intf; } ;
+struct TYPE_2__ {int state; int users; int intf; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int UVC_DEV_DISCONNECTED ; 
- int /*<<< orphan*/  UVC_HANDLE_PASSIVE ; 
- int /*<<< orphan*/  UVC_TRACE_CALLS ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int atomic_inc_return (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct uvc_fh*) ; 
- struct uvc_fh* kzalloc (int,int /*<<< orphan*/ ) ; 
- int usb_autopm_get_interface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_autopm_put_interface (int /*<<< orphan*/ ) ; 
- int uvc_status_start (TYPE_1__*) ; 
- int /*<<< orphan*/  uvc_trace (int /*<<< orphan*/ ,char*) ; 
- struct uvc_streaming* video_drvdata (struct file*) ; 
+
+ int ENODEV ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int UVC_DEV_DISCONNECTED ;
+ int UVC_HANDLE_PASSIVE ;
+ int UVC_TRACE_CALLS ;
+ int atomic_dec (int *) ;
+ int atomic_inc_return (int *) ;
+ int kfree (struct uvc_fh*) ;
+ struct uvc_fh* kzalloc (int,int ) ;
+ int usb_autopm_get_interface (int ) ;
+ int usb_autopm_put_interface (int ) ;
+ int uvc_status_start (TYPE_1__*) ;
+ int uvc_trace (int ,char*) ;
+ struct uvc_streaming* video_drvdata (struct file*) ;
 
 __attribute__((used)) static int uvc_v4l2_open(struct file *file)
 {
-	struct uvc_streaming *stream;
-	struct uvc_fh *handle;
-	int ret = 0;
+ struct uvc_streaming *stream;
+ struct uvc_fh *handle;
+ int ret = 0;
 
-	uvc_trace(UVC_TRACE_CALLS, "uvc_v4l2_open\n");
-	stream = video_drvdata(file);
+ uvc_trace(UVC_TRACE_CALLS, "uvc_v4l2_open\n");
+ stream = video_drvdata(file);
 
-	if (stream->dev->state & UVC_DEV_DISCONNECTED)
-		return -ENODEV;
+ if (stream->dev->state & UVC_DEV_DISCONNECTED)
+  return -ENODEV;
 
-	ret = usb_autopm_get_interface(stream->dev->intf);
-	if (ret < 0)
-		return ret;
+ ret = usb_autopm_get_interface(stream->dev->intf);
+ if (ret < 0)
+  return ret;
 
-	/* Create the device handle. */
-	handle = kzalloc(sizeof *handle, GFP_KERNEL);
-	if (handle == NULL) {
-		usb_autopm_put_interface(stream->dev->intf);
-		return -ENOMEM;
-	}
 
-	if (atomic_inc_return(&stream->dev->users) == 1) {
-		ret = uvc_status_start(stream->dev);
-		if (ret < 0) {
-			usb_autopm_put_interface(stream->dev->intf);
-			atomic_dec(&stream->dev->users);
-			kfree(handle);
-			return ret;
-		}
-	}
+ handle = kzalloc(sizeof *handle, GFP_KERNEL);
+ if (handle == ((void*)0)) {
+  usb_autopm_put_interface(stream->dev->intf);
+  return -ENOMEM;
+ }
 
-	handle->chain = stream->chain;
-	handle->stream = stream;
-	handle->state = UVC_HANDLE_PASSIVE;
-	file->private_data = handle;
+ if (atomic_inc_return(&stream->dev->users) == 1) {
+  ret = uvc_status_start(stream->dev);
+  if (ret < 0) {
+   usb_autopm_put_interface(stream->dev->intf);
+   atomic_dec(&stream->dev->users);
+   kfree(handle);
+   return ret;
+  }
+ }
 
-	return 0;
+ handle->chain = stream->chain;
+ handle->stream = stream;
+ handle->state = UVC_HANDLE_PASSIVE;
+ file->private_data = handle;
+
+ return 0;
 }

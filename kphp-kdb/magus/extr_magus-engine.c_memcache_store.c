@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int MAX_VALUE_LEN ; 
- int /*<<< orphan*/  MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- char* buf ; 
- int do_add_exception (int,int,char*) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  hst (char*,char const*,int,int) ; 
- char* msg_get_buf (int /*<<< orphan*/ ) ; 
- scalar_t__ msg_reinit (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  safe_read_in (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  set ; 
- int sscanf (char*,char*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+
+
+struct connection {int In; } ;
+
+
+ int INIT ;
+ int MAX_VALUE_LEN ;
+ int MESSAGE (struct connection*) ;
+ int RETURN (int ,int) ;
+ char* buf ;
+ int do_add_exception (int,int,char*) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,...) ;
+ int hst (char*,char const*,int,int) ;
+ char* msg_get_buf (int ) ;
+ scalar_t__ msg_reinit (int ,int,int) ;
+ int safe_read_in (int *,char*,int) ;
+ int set ;
+ int sscanf (char*,char*,int*,...) ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_store (struct connection *c, int op, const char *old_key, int old_key_len, int flags, int delay, int size) {
   INIT;

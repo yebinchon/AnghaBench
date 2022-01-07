@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  bf_key ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEYBYTES ; 
- int /*<<< orphan*/  bf_enc (int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bf_setkey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rtmpe9_keys ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int bf_key ;
+
+
+ int KEYBYTES ;
+ int bf_enc (int*,int *) ;
+ int bf_setkey (int ,int ,int *) ;
+ int * rtmpe9_keys ;
 
 __attribute__((used)) static void rtmpe9_sig(uint8_t *in, uint8_t *out, int keyid)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static void rtmpe9_sig(uint8_t *in, uint8_t *out, int keyi
 
     bf_setkey(rtmpe9_keys[keyid], KEYBYTES, &key);
 
-    /* input is little-endian */
+
     d[0] = in[0] | (in[1] << 8) | (in[2] << 16) | (in[3] << 24);
     d[1] = in[4] | (in[5] << 8) | (in[6] << 16) | (in[7] << 24);
     bf_enc(d, &key);

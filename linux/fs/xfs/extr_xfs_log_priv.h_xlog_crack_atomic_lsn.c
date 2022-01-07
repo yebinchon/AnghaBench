@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xfs_lsn_t ;
-typedef  int /*<<< orphan*/  uint ;
-typedef  int /*<<< orphan*/  atomic64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_LSN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CYCLE_LSN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atomic64_read (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int xfs_lsn_t ;
+typedef int uint ;
+typedef int atomic64_t ;
+
+
+ int BLOCK_LSN (int ) ;
+ int CYCLE_LSN (int ) ;
+ int atomic64_read (int *) ;
 
 __attribute__((used)) static inline void
 xlog_crack_atomic_lsn(atomic64_t *lsn, uint *cycle, uint *block)
 {
-	xfs_lsn_t val = atomic64_read(lsn);
+ xfs_lsn_t val = atomic64_read(lsn);
 
-	*cycle = CYCLE_LSN(val);
-	*block = BLOCK_LSN(val);
+ *cycle = CYCLE_LSN(val);
+ *block = BLOCK_LSN(val);
 }

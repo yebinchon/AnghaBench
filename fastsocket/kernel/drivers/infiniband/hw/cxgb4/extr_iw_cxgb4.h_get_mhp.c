@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct c4iw_mr {int dummy; } ;
-struct c4iw_dev {int /*<<< orphan*/  mmidr; } ;
+struct c4iw_dev {int mmidr; } ;
 
-/* Variables and functions */
- struct c4iw_mr* idr_find (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ struct c4iw_mr* idr_find (int *,int ) ;
 
 __attribute__((used)) static inline struct c4iw_mr *get_mhp(struct c4iw_dev *rhp, u32 mmid)
 {
-	return idr_find(&rhp->mmidr, mmid);
+ return idr_find(&rhp->mmidr, mmid);
 }

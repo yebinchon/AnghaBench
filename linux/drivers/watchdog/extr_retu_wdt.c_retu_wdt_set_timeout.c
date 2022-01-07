@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct watchdog_device {unsigned int timeout; } ;
-struct retu_wdt_dev {int /*<<< orphan*/  rdev; } ;
+struct retu_wdt_dev {int rdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETU_REG_WATCHDOG ; 
- int retu_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- struct retu_wdt_dev* watchdog_get_drvdata (struct watchdog_device*) ; 
+
+ int RETU_REG_WATCHDOG ;
+ int retu_write (int ,int ,unsigned int) ;
+ struct retu_wdt_dev* watchdog_get_drvdata (struct watchdog_device*) ;
 
 __attribute__((used)) static int retu_wdt_set_timeout(struct watchdog_device *wdog,
-				unsigned int timeout)
+    unsigned int timeout)
 {
-	struct retu_wdt_dev *wdev = watchdog_get_drvdata(wdog);
+ struct retu_wdt_dev *wdev = watchdog_get_drvdata(wdog);
 
-	wdog->timeout = timeout;
-	return retu_write(wdev->rdev, RETU_REG_WATCHDOG, wdog->timeout);
+ wdog->timeout = timeout;
+ return retu_write(wdev->rdev, RETU_REG_WATCHDOG, wdog->timeout);
 }

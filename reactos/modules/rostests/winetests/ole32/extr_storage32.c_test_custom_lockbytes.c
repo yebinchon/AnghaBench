@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_4__ {int locks_supported; int /*<<< orphan*/  ILockBytes_iface; scalar_t__ lock_hr; int /*<<< orphan*/  lock_called; } ;
-typedef  TYPE_1__ TestLockBytes ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateTestLockBytes (TYPE_1__**) ; 
- int /*<<< orphan*/  DeleteTestLockBytes (TYPE_1__*) ; 
- scalar_t__ IStorage_Commit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IStorage_CreateStream (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int LOCK_EXCLUSIVE ; 
- int LOCK_ONLYONCE ; 
- int LOCK_WRITE ; 
- int STGM_CREATE ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int STGM_TRANSACTED ; 
- scalar_t__ STG_E_INVALIDFUNCTION ; 
- scalar_t__ S_OK ; 
- scalar_t__ StgCreateDocfileOnILockBytes (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_4__ {int locks_supported; int ILockBytes_iface; scalar_t__ lock_hr; int lock_called; } ;
+typedef TYPE_1__ TestLockBytes ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CreateTestLockBytes (TYPE_1__**) ;
+ int DeleteTestLockBytes (TYPE_1__*) ;
+ scalar_t__ IStorage_Commit (int *,int ) ;
+ scalar_t__ IStorage_CreateStream (int *,char const*,int,int ,int ,int **) ;
+ int IStorage_Release (int *) ;
+ int IStream_Release (int *) ;
+ int LOCK_EXCLUSIVE ;
+ int LOCK_ONLYONCE ;
+ int LOCK_WRITE ;
+ int STGM_CREATE ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int STGM_TRANSACTED ;
+ scalar_t__ STG_E_INVALIDFUNCTION ;
+ scalar_t__ S_OK ;
+ scalar_t__ StgCreateDocfileOnILockBytes (int *,int,int ,int **) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_custom_lockbytes(void)
 {

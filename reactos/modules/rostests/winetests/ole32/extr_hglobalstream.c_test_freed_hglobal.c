@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  teststring ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int teststring ;
+typedef int buffer ;
+typedef int ULONG ;
 struct TYPE_3__ {int QuadPart; } ;
-typedef  TYPE_1__ ULARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/ * HGLOBAL ;
+typedef TYPE_1__ ULARGE_INTEGER ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int * HGLOBAL ;
 
-/* Variables and functions */
- int CreateStreamOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int GMEM_DDESHARE ; 
- int GMEM_MOVEABLE ; 
- int GMEM_NODISCARD ; 
- int GetLastError () ; 
- int /*<<< orphan*/ * GlobalAlloc (int,scalar_t__) ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ *) ; 
- char* GlobalLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ *) ; 
- int IStream_Read (int /*<<< orphan*/ *,char*,int,int*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int IStream_SetSize (int /*<<< orphan*/ *,TYPE_1__) ; 
- int IStream_Write (int /*<<< orphan*/ *,char*,int,int*) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_ole_success (int,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int CreateStreamOnHGlobal (int *,int ,int **) ;
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int GMEM_DDESHARE ;
+ int GMEM_MOVEABLE ;
+ int GMEM_NODISCARD ;
+ int GetLastError () ;
+ int * GlobalAlloc (int,scalar_t__) ;
+ int GlobalFree (int *) ;
+ char* GlobalLock (int *) ;
+ int GlobalUnlock (int *) ;
+ int IStream_Read (int *,char*,int,int*) ;
+ int IStream_Release (int *) ;
+ int IStream_SetSize (int *,TYPE_1__) ;
+ int IStream_Write (int *,char*,int,int*) ;
+ scalar_t__ broken (int) ;
+ int memset (char*,int ,int) ;
+ int ok (int,char*,...) ;
+ int ok_ole_success (int,char*) ;
+ int strcmp (char*,char const*) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void test_freed_hglobal(void)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_freed_hglobal(void)
     ULONG read, written;
 
     hglobal = GlobalAlloc(GMEM_DDESHARE|GMEM_NODISCARD|GMEM_MOVEABLE, strlen(teststring) + 1);
-    ok(hglobal != NULL, "GlobalAlloc failed with error %d\n", GetLastError());
+    ok(hglobal != ((void*)0), "GlobalAlloc failed with error %d\n", GetLastError());
     p = GlobalLock(hglobal);
     strcpy(p, teststring);
     GlobalUnlock(hglobal);
@@ -68,7 +68,7 @@ __attribute__((used)) static void test_freed_hglobal(void)
     ok_ole_success(hr, "IStream_Read");
     ok(!strcmp(buffer, teststring), "buffer data %s differs\n", buffer);
     ok(read == sizeof(teststring) ||
-       broken(read == ((sizeof(teststring) + 3) & ~3)), /* win9x rounds the size */
+       broken(read == ((sizeof(teststring) + 3) & ~3)),
        "read should be sizeof(teststring) instead of %d\n", read);
 
     GlobalFree(hglobal);

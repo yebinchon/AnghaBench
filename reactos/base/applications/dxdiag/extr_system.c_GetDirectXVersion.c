@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szVer ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetRegValue (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wcscmp (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,char*) ; 
 
-__attribute__((used)) static 
+
+
+typedef int szVer ;
+typedef int WCHAR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetRegValue (int ,char*,char*,int ,int *,int) ;
+ int HKEY_LOCAL_MACHINE ;
+ int REG_SZ ;
+ int TRUE ;
+ int wcscmp (int *,char*) ;
+ int wcscpy (int *,char*) ;
+
+__attribute__((used)) static
 BOOL
 GetDirectXVersion(WCHAR * szBuffer)
 {

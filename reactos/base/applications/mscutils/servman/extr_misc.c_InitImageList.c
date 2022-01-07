@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  scalar_t__ UINT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/ * HIMAGELIST ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int ILC_COLOR32 ; 
- int ILC_MASK ; 
- int /*<<< orphan*/  IMAGE_BITMAP ; 
- int /*<<< orphan*/  IMAGE_ICON ; 
- int ImageList_AddIcon (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ImageList_AddMasked (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ImageList_Create (scalar_t__,scalar_t__,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ImageList_Destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LR_LOADTRANSPARENT ; 
- int /*<<< orphan*/ * LoadImageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEW (scalar_t__) ; 
- int /*<<< orphan*/  RGB (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hInstance ; 
+
+
+
+typedef int ULONG ;
+typedef scalar_t__ UINT ;
+typedef int INT ;
+typedef int * HIMAGELIST ;
+typedef int * HANDLE ;
+
+
+ int DeleteObject (int *) ;
+ int ILC_COLOR32 ;
+ int ILC_MASK ;
+ int IMAGE_BITMAP ;
+ int IMAGE_ICON ;
+ int ImageList_AddIcon (int *,int *) ;
+ int ImageList_AddMasked (int *,int *,int ) ;
+ int * ImageList_Create (scalar_t__,scalar_t__,int,scalar_t__,int ) ;
+ int ImageList_Destroy (int *) ;
+ int LR_LOADTRANSPARENT ;
+ int * LoadImageW (int ,int ,int ,scalar_t__,scalar_t__,int ) ;
+ int MAKEINTRESOURCEW (scalar_t__) ;
+ int RGB (int,int ,int) ;
+ int hInstance ;
 
 HIMAGELIST
 InitImageList(UINT StartResource,
@@ -44,14 +44,14 @@ InitImageList(UINT StartResource,
     UINT i;
     INT ret;
 
-    /* Create the toolbar icon image list */
+
     himl = ImageList_Create(Width,
                             Height,
                             ILC_MASK | ILC_COLOR32,
                             EndResource - StartResource,
                             0);
-    if (himl == NULL)
-        return NULL;
+    if (himl == ((void*)0))
+        return ((void*)0);
 
     ret = 0;
     for (i = StartResource; i <= EndResource && ret != -1; i++)
@@ -62,10 +62,10 @@ InitImageList(UINT StartResource,
                             Width,
                             Height,
                             LR_LOADTRANSPARENT);
-        if (hImage == NULL)
+        if (hImage == ((void*)0))
         {
             ImageList_Destroy(himl);
-            himl = NULL;
+            himl = ((void*)0);
             break;
         }
 
@@ -87,7 +87,7 @@ InitImageList(UINT StartResource,
     if (ret == -1)
     {
         ImageList_Destroy(himl);
-        himl = NULL;
+        himl = ((void*)0);
     }
 
     return himl;

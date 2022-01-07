@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tegra_bpmp {struct tegra186_bpmp* priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  channel; } ;
+struct TYPE_2__ {int channel; } ;
 struct tegra186_bpmp {TYPE_1__ mbox; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbox_client_txdone (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mbox_send_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int mbox_client_txdone (int ,int ) ;
+ int mbox_send_message (int ,int *) ;
 
 __attribute__((used)) static int tegra186_bpmp_ring_doorbell(struct tegra_bpmp *bpmp)
 {
-	struct tegra186_bpmp *priv = bpmp->priv;
-	int err;
+ struct tegra186_bpmp *priv = bpmp->priv;
+ int err;
 
-	err = mbox_send_message(priv->mbox.channel, NULL);
-	if (err < 0)
-		return err;
+ err = mbox_send_message(priv->mbox.channel, ((void*)0));
+ if (err < 0)
+  return err;
 
-	mbox_client_txdone(priv->mbox.channel, 0);
+ mbox_client_txdone(priv->mbox.channel, 0);
 
-	return 0;
+ return 0;
 }

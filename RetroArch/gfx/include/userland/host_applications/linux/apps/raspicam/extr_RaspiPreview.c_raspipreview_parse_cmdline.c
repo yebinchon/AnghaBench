@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int height; int width; int y; int x; } ;
 struct TYPE_5__ {int wantPreview; int wantFullScreenPreview; int opacity; TYPE_1__ previewWindow; } ;
-typedef  TYPE_2__ RASPIPREVIEW_PARAMETERS ;
+typedef TYPE_2__ RASPIPREVIEW_PARAMETERS ;
 
-/* Variables and functions */
-#define  CommandDisablePreview 131 
-#define  CommandFullScreen 130 
-#define  CommandOpacity 129 
-#define  CommandPreview 128 
- int /*<<< orphan*/  cmdline_commands ; 
- int /*<<< orphan*/  cmdline_commands_size ; 
- int raspicli_get_command_id (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int*) ; 
- int sscanf (char const*,char*,int*,...) ; 
+
+
+
+
+
+ int cmdline_commands ;
+ int cmdline_commands_size ;
+ int raspicli_get_command_id (int ,int ,char const*,int*) ;
+ int sscanf (char const*,char*,int*,...) ;
 
 int raspipreview_parse_cmdline(RASPIPREVIEW_PARAMETERS *params, const char *arg1, const char *arg2)
 {
@@ -35,13 +35,13 @@ int raspipreview_parse_cmdline(RASPIPREVIEW_PARAMETERS *params, const char *arg1
 
    command_id = raspicli_get_command_id(cmdline_commands, cmdline_commands_size, arg1, &num_parameters);
 
-   // If invalid command, or we are missing a parameter, drop out
-   if (command_id==-1 || (command_id != -1 && num_parameters > 0 && arg2 == NULL))
+
+   if (command_id==-1 || (command_id != -1 && num_parameters > 0 && arg2 == ((void*)0)))
       return 0;
 
    switch (command_id)
    {
-   case CommandPreview: // Preview window
+   case 128:
    {
       int tmp;
 
@@ -51,7 +51,7 @@ int raspipreview_parse_cmdline(RASPIPREVIEW_PARAMETERS *params, const char *arg1
                    &params->previewWindow.x, &params->previewWindow.y,
                    &params->previewWindow.width, &params->previewWindow.height);
 
-      // Failed to get any window parameters, so revert to full screen
+
       if (tmp == 0)
          params->wantFullScreenPreview = 1;
       else
@@ -62,21 +62,21 @@ int raspipreview_parse_cmdline(RASPIPREVIEW_PARAMETERS *params, const char *arg1
       break;
    }
 
-   case CommandFullScreen: // Want full screen preview mode (overrides display rect)
+   case 130:
       params->wantPreview = 1;
       params->wantFullScreenPreview = 1;
 
       used = 1;
       break;
 
-   case CommandOpacity: // Define preview window opacity
+   case 129:
       if (sscanf(arg2, "%u", &params->opacity) != 1)
          params->opacity = 255;
       else
          used = 2;
       break;
 
-   case CommandDisablePreview: // Turn off preview output
+   case 131:
       params->wantPreview = 0;
       used = 1;
       break;

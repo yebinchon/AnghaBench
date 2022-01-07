@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pmac_i2c_host_kw {int /*<<< orphan*/  mutex; } ;
+
+
+
+
+struct pmac_i2c_host_kw {int mutex; } ;
 struct pmac_i2c_bus {struct pmac_i2c_host_kw* hostdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
+
+ int mutex_lock (int *) ;
 
 __attribute__((used)) static int kw_i2c_open(struct pmac_i2c_bus *bus)
 {
-	struct pmac_i2c_host_kw *host = bus->hostdata;
-	mutex_lock(&host->mutex);
-	return 0;
+ struct pmac_i2c_host_kw *host = bus->hostdata;
+ mutex_lock(&host->mutex);
+ return 0;
 }

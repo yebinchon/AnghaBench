@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u16 ;
 
-/* Variables and functions */
- int H2D_CMV_WRITE ; 
- int MSG_LENGTH ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+
+
+ int H2D_CMV_WRITE ;
+ int MSG_LENGTH ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int ,int) ;
 
 void
 makeCMV (u8 opcode, u8 group, u16 address, u16 index, int size, u16 * data, u16 *CMVMSG)

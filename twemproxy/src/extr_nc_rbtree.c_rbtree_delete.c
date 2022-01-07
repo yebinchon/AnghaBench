@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
 struct rbtree {struct rbnode* sentinel; struct rbnode* root; } ;
 struct rbnode {struct rbnode* parent; struct rbnode* left; struct rbnode* right; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rbtree_black (struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_copy_color (struct rbnode*,struct rbnode*) ; 
- scalar_t__ rbtree_is_black (struct rbnode*) ; 
- scalar_t__ rbtree_is_red (struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_left_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_node_init (struct rbnode*) ; 
- struct rbnode* rbtree_node_min (struct rbnode*,struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_red (struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_right_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ; 
+
+ int rbtree_black (struct rbnode*) ;
+ int rbtree_copy_color (struct rbnode*,struct rbnode*) ;
+ scalar_t__ rbtree_is_black (struct rbnode*) ;
+ scalar_t__ rbtree_is_red (struct rbnode*) ;
+ int rbtree_left_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ;
+ int rbtree_node_init (struct rbnode*) ;
+ struct rbnode* rbtree_node_min (struct rbnode*,struct rbnode*) ;
+ int rbtree_red (struct rbnode*) ;
+ int rbtree_right_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ;
 
 void
 rbtree_delete(struct rbtree *tree, struct rbnode *node)
@@ -33,7 +33,7 @@ rbtree_delete(struct rbtree *tree, struct rbnode *node)
     struct rbnode *subst, *temp, *w;
     uint8_t red;
 
-    /* a binary tree delete */
+
 
     if (node->left == sentinel) {
         temp = node->right;
@@ -103,7 +103,7 @@ rbtree_delete(struct rbtree *tree, struct rbnode *node)
         return;
     }
 
-    /* a delete fixup */
+
 
     while (temp != *root && rbtree_is_black(temp)) {
 

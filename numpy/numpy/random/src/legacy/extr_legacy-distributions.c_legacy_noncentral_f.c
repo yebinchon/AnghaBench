@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  aug_bitgen_t ;
 
-/* Variables and functions */
- double legacy_chisquare (int /*<<< orphan*/ *,double) ; 
- double legacy_noncentral_chisquare (int /*<<< orphan*/ *,double,double) ; 
+
+
+
+typedef int aug_bitgen_t ;
+
+
+ double legacy_chisquare (int *,double) ;
+ double legacy_noncentral_chisquare (int *,double,double) ;
 
 double legacy_noncentral_f(aug_bitgen_t *aug_state, double dfnum, double dfden,
                            double nonc) {

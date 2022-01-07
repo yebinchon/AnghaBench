@@ -1,54 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct urb {int actual_length; int /*<<< orphan*/  pipe; TYPE_1__* dev; int /*<<< orphan*/  transfer_buffer_length; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct urb {int actual_length; int pipe; TYPE_1__* dev; int transfer_buffer_length; } ;
+typedef int ssize_t ;
 struct TYPE_2__ {int speed; } ;
-
-/* Variables and functions */
-#define  PIPE_BULK 133 
-#define  PIPE_CONTROL 132 
-#define  PIPE_INTERRUPT 131 
-#define  USB_SPEED_FULL 130 
-#define  USB_SPEED_HIGH 129 
-#define  USB_SPEED_LOW 128 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,struct urb*,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int usb_pipeendpoint (int /*<<< orphan*/ ) ; 
- scalar_t__ usb_pipein (int /*<<< orphan*/ ) ; 
- int usb_pipetype (int /*<<< orphan*/ ) ; 
+ int snprintf (char*,size_t,char*,struct urb*,int ,int,char*,int ,int,int ) ;
+ int usb_pipeendpoint (int ) ;
+ scalar_t__ usb_pipein (int ) ;
+ int usb_pipetype (int ) ;
 
 __attribute__((used)) static inline ssize_t
 show_urb (char *buf, size_t size, struct urb *urb)
 {
-	int ep = usb_pipeendpoint (urb->pipe);
+ int ep = usb_pipeendpoint (urb->pipe);
 
-	return snprintf (buf, size,
-		"urb/%p %s ep%d%s%s len %d/%d\n",
-		urb,
-		({ char *s;
-		 switch (urb->dev->speed) {
-		 case USB_SPEED_LOW:	s = "ls"; break;
-		 case USB_SPEED_FULL:	s = "fs"; break;
-		 case USB_SPEED_HIGH:	s = "hs"; break;
-		 default:		s = "?"; break;
-		 }; s; }),
-		ep, ep ? (usb_pipein (urb->pipe) ? "in" : "out") : "",
-		({ char *s; \
-		 switch (usb_pipetype (urb->pipe)) { \
-		 case PIPE_CONTROL:	s = ""; break; \
-		 case PIPE_BULK:	s = "-bulk"; break; \
-		 case PIPE_INTERRUPT:	s = "-int"; break; \
-		 default: 		s = "-iso"; break; \
-		}; s;}),
-		urb->actual_length, urb->transfer_buffer_length);
+ return snprintf (buf, size,
+  "urb/%p %s ep%d%s%s len %d/%d\n",
+  urb,
+  ({ char *s;
+   switch (urb->dev->speed) {
+   case 128: s = "ls"; break;
+   case 130: s = "fs"; break;
+   case 129: s = "hs"; break;
+   default: s = "?"; break;
+   }; s; }),
+  ep, ep ? (usb_pipein (urb->pipe) ? "in" : "out") : "",
+  ({ char *s; switch (usb_pipetype (urb->pipe)) { case 132: s = ""; break; case 133: s = "-bulk"; break; case 131: s = "-int"; break; default: s = "-iso"; break; }; s;}),
+
+
+
+
+
+
+  urb->actual_length, urb->transfer_buffer_length);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int UINT ;
-struct TYPE_4__ {unsigned int container_count; void* containers; int /*<<< orphan*/ * container_formats; int /*<<< orphan*/  classkey; } ;
-typedef  TYPE_1__ MetadataReaderInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ComponentInfo_GetGuidList (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *,unsigned int*) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  containers_keyname ; 
- void* heap_calloc (unsigned int,int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_metadata_patterns (TYPE_1__*,int /*<<< orphan*/ *,void*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef unsigned int UINT ;
+struct TYPE_4__ {unsigned int container_count; void* containers; int * container_formats; int classkey; } ;
+typedef TYPE_1__ MetadataReaderInfo ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int BOOL ;
+
+
+ int ComponentInfo_GetGuidList (int ,int ,unsigned int,int *,unsigned int*) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int TRUE ;
+ int containers_keyname ;
+ void* heap_calloc (unsigned int,int) ;
+ int heap_free (int *) ;
+ int read_metadata_patterns (TYPE_1__*,int *,void*) ;
 
 __attribute__((used)) static BOOL read_metadata_info(MetadataReaderInfo *info)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static BOOL read_metadata_info(MetadataReaderInfo *info)
     GUID *formats;
     HRESULT hr;
 
-    hr = ComponentInfo_GetGuidList(info->classkey, containers_keyname, 0, NULL, &format_count);
+    hr = ComponentInfo_GetGuidList(info->classkey, containers_keyname, 0, ((void*)0), &format_count);
     if (FAILED(hr)) return TRUE;
 
     formats = heap_calloc(format_count, sizeof(*formats));

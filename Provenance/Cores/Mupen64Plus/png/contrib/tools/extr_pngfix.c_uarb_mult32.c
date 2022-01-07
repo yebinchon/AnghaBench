@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uarb ;
-typedef  int png_uint_32 ;
-typedef  int /*<<< orphan*/  png_uint_16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int uarb_mult_digit (scalar_t__,int,scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uarb ;
+typedef int png_uint_32 ;
+typedef int png_uint_16 ;
+
+
+ int assert (int) ;
+ int uarb_mult_digit (scalar_t__,int,scalar_t__,int,int ) ;
 
 __attribute__((used)) static int
 uarb_mult32(uarb acc, int a_digits, uarb num, int n_digits, png_uint_32 val)
-   /* calculate acc += num * val, 'val' may be any 32-bit value, 'acc' and 'num'
-    * may be any value, returns the number of digits in 'acc'.
-    */
+
+
+
 {
    if (n_digits > 0 && val > 0)
    {
@@ -34,7 +34,7 @@ uarb_mult32(uarb acc, int a_digits, uarb num, int n_digits, png_uint_32 val)
          a_digits = uarb_mult_digit(acc+1, a_digits-1, num, n_digits,
             (png_uint_16)val) + 1;
 
-      /* Because n_digits and val are >0 the following must be true: */
+
       assert(a_digits > 0);
    }
 

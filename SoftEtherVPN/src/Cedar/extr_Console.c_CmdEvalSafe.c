@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* Write ) (TYPE_1__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ CONSOLE ;
 
-/* Variables and functions */
- scalar_t__ IsSafeUniStr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_4__ {int (* Write ) (TYPE_1__*,int *) ;} ;
+typedef TYPE_1__ CONSOLE ;
+
+
+ scalar_t__ IsSafeUniStr (int *) ;
+ int * _UU (char*) ;
+ int stub1 (TYPE_1__*,int *) ;
 
 bool CmdEvalSafe(CONSOLE *c, wchar_t *str, void *param)
 {
-	wchar_t *p = (param == NULL) ? _UU("CMD_EVAL_SAFE") : (wchar_t *)param;
+ wchar_t *p = (param == ((void*)0)) ? _UU("CMD_EVAL_SAFE") : (wchar_t *)param;
 
-	if (IsSafeUniStr(str))
-	{
-		return true;
-	}
+ if (IsSafeUniStr(str))
+ {
+  return 1;
+ }
 
-	c->Write(c, p);
+ c->Write(c, p);
 
-	return false;
+ return 0;
 }

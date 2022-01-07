@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int WS_CAPTION ; 
- int WS_CHILD ; 
- int WS_CLIPSIBLINGS ; 
- int WS_DLGFRAME ; 
- int WS_EX_APPWINDOW ; 
- int WS_EX_DLGMODALFRAME ; 
- int WS_EX_LAYERED ; 
- int WS_EX_STATICEDGE ; 
- int WS_EX_TOOLWINDOW ; 
- int WS_EX_TRANSPARENT ; 
- int WS_EX_WINDOWEDGE ; 
- int WS_OVERLAPPEDWINDOW ; 
- int WS_POPUP ; 
- int WS_SYSMENU ; 
- int WS_THICKFRAME ; 
- int /*<<< orphan*/  check_window_style (int,int,int,int) ; 
- scalar_t__ pGetLayeredWindowAttributes ; 
- int /*<<< orphan*/  register_style_check_class () ; 
+ int WS_CAPTION ;
+ int WS_CHILD ;
+ int WS_CLIPSIBLINGS ;
+ int WS_DLGFRAME ;
+ int WS_EX_APPWINDOW ;
+ int WS_EX_DLGMODALFRAME ;
+ int WS_EX_LAYERED ;
+ int WS_EX_STATICEDGE ;
+ int WS_EX_TOOLWINDOW ;
+ int WS_EX_TRANSPARENT ;
+ int WS_EX_WINDOWEDGE ;
+ int WS_OVERLAPPEDWINDOW ;
+ int WS_POPUP ;
+ int WS_SYSMENU ;
+ int WS_THICKFRAME ;
+ int check_window_style (int,int,int,int) ;
+ scalar_t__ pGetLayeredWindowAttributes ;
+ int register_style_check_class () ;
 
 __attribute__((used)) static void test_window_styles(void)
 {

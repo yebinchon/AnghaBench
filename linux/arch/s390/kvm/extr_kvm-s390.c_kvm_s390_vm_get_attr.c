@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kvm_device_attr {int group; } ;
 struct kvm {int dummy; } ;
 
-/* Variables and functions */
- int ENXIO ; 
-#define  KVM_S390_VM_CPU_MODEL 131 
-#define  KVM_S390_VM_MEM_CTRL 130 
-#define  KVM_S390_VM_MIGRATION 129 
-#define  KVM_S390_VM_TOD 128 
- int kvm_s390_get_cpu_model (struct kvm*,struct kvm_device_attr*) ; 
- int kvm_s390_get_mem_control (struct kvm*,struct kvm_device_attr*) ; 
- int kvm_s390_get_tod (struct kvm*,struct kvm_device_attr*) ; 
- int kvm_s390_vm_get_migration (struct kvm*,struct kvm_device_attr*) ; 
+
+ int ENXIO ;
+
+
+
+
+ int kvm_s390_get_cpu_model (struct kvm*,struct kvm_device_attr*) ;
+ int kvm_s390_get_mem_control (struct kvm*,struct kvm_device_attr*) ;
+ int kvm_s390_get_tod (struct kvm*,struct kvm_device_attr*) ;
+ int kvm_s390_vm_get_migration (struct kvm*,struct kvm_device_attr*) ;
 
 __attribute__((used)) static int kvm_s390_vm_get_attr(struct kvm *kvm, struct kvm_device_attr *attr)
 {
-	int ret;
+ int ret;
 
-	switch (attr->group) {
-	case KVM_S390_VM_MEM_CTRL:
-		ret = kvm_s390_get_mem_control(kvm, attr);
-		break;
-	case KVM_S390_VM_TOD:
-		ret = kvm_s390_get_tod(kvm, attr);
-		break;
-	case KVM_S390_VM_CPU_MODEL:
-		ret = kvm_s390_get_cpu_model(kvm, attr);
-		break;
-	case KVM_S390_VM_MIGRATION:
-		ret = kvm_s390_vm_get_migration(kvm, attr);
-		break;
-	default:
-		ret = -ENXIO;
-		break;
-	}
+ switch (attr->group) {
+ case 130:
+  ret = kvm_s390_get_mem_control(kvm, attr);
+  break;
+ case 128:
+  ret = kvm_s390_get_tod(kvm, attr);
+  break;
+ case 131:
+  ret = kvm_s390_get_cpu_model(kvm, attr);
+  break;
+ case 129:
+  ret = kvm_s390_vm_get_migration(kvm, attr);
+  break;
+ default:
+  ret = -ENXIO;
+  break;
+ }
 
-	return ret;
+ return ret;
 }

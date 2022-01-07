@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SLIST_HEADER ;
-typedef  scalar_t__ PSLIST_HEADER ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HeapCreate (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlInitializeSListHead (scalar_t__) ; 
- scalar_t__ ShimLib_ShimMalloc (int) ; 
- int /*<<< orphan*/  g_ShimLib_Heap ; 
- int /*<<< orphan*/  g_ShimLib_hInstance ; 
- scalar_t__ g_UsedShims ; 
+
+
+
+typedef int SLIST_HEADER ;
+typedef scalar_t__ PSLIST_HEADER ;
+typedef int HINSTANCE ;
+
+
+ int HeapCreate (int ,int,int ) ;
+ int RtlInitializeSListHead (scalar_t__) ;
+ scalar_t__ ShimLib_ShimMalloc (int) ;
+ int g_ShimLib_Heap ;
+ int g_ShimLib_hInstance ;
+ scalar_t__ g_UsedShims ;
 
 void ShimLib_Init(HINSTANCE hInstance)
 {

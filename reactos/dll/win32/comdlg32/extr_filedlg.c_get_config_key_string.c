@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ REG_EXPAND_SZ ; 
- scalar_t__ REG_SZ ; 
- scalar_t__ RegQueryValueExW (scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * heap_alloc (scalar_t__) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ REG_EXPAND_SZ ;
+ scalar_t__ REG_SZ ;
+ scalar_t__ RegQueryValueExW (scalar_t__,int const*,int ,scalar_t__*,int *,scalar_t__*) ;
+ int TRUE ;
+ int * heap_alloc (scalar_t__) ;
+ int heap_free (int *) ;
 
 __attribute__((used)) static BOOL get_config_key_string(HKEY hkey, const WCHAR *name, WCHAR **value)
 {
     DWORD type, size;
     WCHAR *str;
 
-    if (hkey && !RegQueryValueExW(hkey, name, 0, &type, NULL, &size))
+    if (hkey && !RegQueryValueExW(hkey, name, 0, &type, ((void*)0), &size))
     {
         if (type != REG_SZ && type != REG_EXPAND_SZ)
             return FALSE;

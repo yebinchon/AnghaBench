@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* data; } ;
-typedef  TYPE_1__ uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  int uint64_t ;
+typedef TYPE_1__ uv_tcp_t ;
+typedef int uv_loop_t ;
+typedef int uint64_t ;
 struct sockaddr {int dummy; } ;
-struct server_ctx {unsigned int num_connects; int /*<<< orphan*/  semaphore; int /*<<< orphan*/  thread_id; int /*<<< orphan*/  async_handle; int /*<<< orphan*/  idle_handle; int /*<<< orphan*/  connect_req; int /*<<< orphan*/  client_handle; } ;
-struct client_ctx {unsigned int num_connects; int /*<<< orphan*/  semaphore; int /*<<< orphan*/  thread_id; int /*<<< orphan*/  async_handle; int /*<<< orphan*/  idle_handle; int /*<<< orphan*/  connect_req; int /*<<< orphan*/  client_handle; } ;
-typedef  int /*<<< orphan*/  servers ;
-typedef  int /*<<< orphan*/  clients ;
+struct server_ctx {unsigned int num_connects; int semaphore; int thread_id; int async_handle; int idle_handle; int connect_req; int client_handle; } ;
+struct client_ctx {unsigned int num_connects; int semaphore; int thread_id; int async_handle; int idle_handle; int connect_req; int client_handle; } ;
+typedef int servers ;
+typedef int clients ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- unsigned int NUM_CONNECTS ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  UV_TCP ; 
- struct server_ctx* calloc (unsigned int,int) ; 
- int /*<<< orphan*/  cl_connect_cb ; 
- int /*<<< orphan*/  free (struct server_ctx*) ; 
- int /*<<< orphan*/  listen_addr ; 
- int /*<<< orphan*/  printf (char*,unsigned int,double,double,...) ; 
- int /*<<< orphan*/  send_listen_handles (int /*<<< orphan*/ ,unsigned int,struct server_ctx*) ; 
- int /*<<< orphan*/  server_cb ; 
- int /*<<< orphan*/  uv_async_send (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * uv_default_loop () ; 
- int uv_hrtime () ; 
- scalar_t__ uv_idle_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ uv_run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_sem_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_tcp_connect (int /*<<< orphan*/ *,TYPE_1__*,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_tcp_init (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ uv_thread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct server_ctx*) ; 
- scalar_t__ uv_thread_join (int /*<<< orphan*/ *) ; 
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ unsigned int NUM_CONNECTS ;
+ int TEST_PORT ;
+ int UV_RUN_DEFAULT ;
+ int UV_TCP ;
+ struct server_ctx* calloc (unsigned int,int) ;
+ int cl_connect_cb ;
+ int free (struct server_ctx*) ;
+ int listen_addr ;
+ int printf (char*,unsigned int,double,double,...) ;
+ int send_listen_handles (int ,unsigned int,struct server_ctx*) ;
+ int server_cb ;
+ int uv_async_send (int *) ;
+ int * uv_default_loop () ;
+ int uv_hrtime () ;
+ scalar_t__ uv_idle_init (int *,int *) ;
+ scalar_t__ uv_ip4_addr (char*,int ,int *) ;
+ scalar_t__ uv_run (int *,int ) ;
+ int uv_sem_destroy (int *) ;
+ scalar_t__ uv_sem_init (int *,int ) ;
+ scalar_t__ uv_tcp_connect (int *,TYPE_1__*,struct sockaddr const*,int ) ;
+ scalar_t__ uv_tcp_init (int *,TYPE_1__*) ;
+ scalar_t__ uv_thread_create (int *,int ,struct server_ctx*) ;
+ scalar_t__ uv_thread_join (int *) ;
 
 __attribute__((used)) static int test_tcp(unsigned int num_servers, unsigned int num_clients) {
   struct server_ctx* servers;
@@ -61,13 +61,13 @@ __attribute__((used)) static int test_tcp(unsigned int num_servers, unsigned int
 
   servers = calloc(num_servers, sizeof(servers[0]));
   clients = calloc(num_clients, sizeof(clients[0]));
-  ASSERT(servers != NULL);
-  ASSERT(clients != NULL);
+  ASSERT(servers != ((void*)0));
+  ASSERT(clients != ((void*)0));
 
-  /* We're making the assumption here that from the perspective of the
-   * OS scheduler, threads are functionally equivalent to and interchangeable
-   * with full-blown processes.
-   */
+
+
+
+
   for (i = 0; i < num_servers; i++) {
     struct server_ctx* ctx = servers + i;
     ASSERT(0 == uv_sem_init(&ctx->semaphore, 0));

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DES_key_schedule ;
-typedef  unsigned char* DES_cblock ;
-typedef  int /*<<< orphan*/  DES_LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_decrypt3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DES_encrypt3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c2l (unsigned char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c2ln (unsigned char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  l2c (int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  l2cn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,long) ; 
+
+
+
+typedef int DES_key_schedule ;
+typedef unsigned char* DES_cblock ;
+typedef int DES_LONG ;
+
+
+ int DES_decrypt3 (int *,int *,int *,int *) ;
+ int DES_encrypt3 (int *,int *,int *,int *) ;
+ int c2l (unsigned char const*,int ) ;
+ int c2ln (unsigned char const*,int ,int ,long) ;
+ int l2c (int ,unsigned char*) ;
+ int l2cn (int ,int ,unsigned char*,long) ;
 
 void DES_ede3_cbc_encrypt(const unsigned char *input, unsigned char *output,
                           long length, DES_key_schedule *ks1,

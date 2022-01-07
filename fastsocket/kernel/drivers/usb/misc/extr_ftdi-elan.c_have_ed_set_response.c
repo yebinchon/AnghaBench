@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
-struct usb_ftdi {char* response; int expected; int ed_found; scalar_t__ recieved; int /*<<< orphan*/  u132_lock; } ;
+
+
+
+
+typedef int u16 ;
+struct usb_ftdi {char* response; int expected; int ed_found; scalar_t__ recieved; int u132_lock; } ;
 struct u132_target {int non_null; int repeat_number; scalar_t__ abandoning; scalar_t__ actual; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ftdi_elan_do_callback (struct usb_ftdi*,struct u132_target*,char*,int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int ftdi_elan_do_callback (struct usb_ftdi*,struct u132_target*,char*,int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static char *have_ed_set_response(struct usb_ftdi *ftdi,
         struct u132_target *target, u16 ed_length, int ed_number, int ed_type,

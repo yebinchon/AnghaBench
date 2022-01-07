@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  vdp; int /*<<< orphan*/  pool; int /*<<< orphan*/  mixer; } ;
-typedef  TYPE_1__ vlc_vdp_mixer_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int vdp; int pool; int mixer; } ;
+typedef TYPE_1__ vlc_vdp_mixer_t ;
+typedef int vlc_object_t ;
 struct TYPE_5__ {TYPE_1__* p_sys; } ;
-typedef  TYPE_2__ filter_t ;
+typedef TYPE_2__ filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Flush (TYPE_2__*) ; 
- int /*<<< orphan*/  picture_pool_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vdp_release_x11 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vdp_video_mixer_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Flush (TYPE_2__*) ;
+ int picture_pool_Release (int ) ;
+ int vdp_release_x11 (int ) ;
+ int vdp_video_mixer_destroy (int ,int ) ;
 
 __attribute__((used)) static void OutputClose(vlc_object_t *obj)
 {

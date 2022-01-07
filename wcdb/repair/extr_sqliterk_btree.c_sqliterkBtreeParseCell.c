@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_page ;
-typedef  int /*<<< orphan*/  sqliterk_column ;
-typedef  int /*<<< orphan*/  sqliterk_btree ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int SQLITERK_CANCELLED ; 
- int SQLITERK_MISUSE ; 
- int SQLITERK_OK ; 
- int sqliterkBtreeParsePayload (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int sqliterkColumnAlloc (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sqliterkColumnClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqliterkColumnFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqliterkColumnSetRowId (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqliterkOSDebug (int,char*) ; 
- unsigned char* sqliterkPageGetData (int /*<<< orphan*/ *) ; 
- int sqliterkParseVarint (unsigned char const*,int,int*,int*) ; 
- int sqliterkParseVarint64 (unsigned char const*,int,int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqliterk_page ;
+typedef int sqliterk_column ;
+typedef int sqliterk_btree ;
+typedef int int64_t ;
+
+
+ int SQLITERK_CANCELLED ;
+ int SQLITERK_MISUSE ;
+ int SQLITERK_OK ;
+ int sqliterkBtreeParsePayload (int *,int *,int,int,int *) ;
+ int sqliterkColumnAlloc (int **) ;
+ int sqliterkColumnClear (int *) ;
+ int sqliterkColumnFree (int *) ;
+ int sqliterkColumnSetRowId (int *,int ) ;
+ int sqliterkOSDebug (int,char*) ;
+ unsigned char* sqliterkPageGetData (int *) ;
+ int sqliterkParseVarint (unsigned char const*,int,int*,int*) ;
+ int sqliterkParseVarint64 (unsigned char const*,int,int*,int *) ;
 
 __attribute__((used)) static int sqliterkBtreeParseCell(sqliterk_btree *btree,
                                   sqliterk_page *page,
@@ -49,7 +49,7 @@ __attribute__((used)) static int sqliterkBtreeParseCell(sqliterk_btree *btree,
     for (i = 0; i < cellsCount; i++) {
         sqliterkColumnClear(column);
         int offset = cellPointerArray[i];
-        // Find payload
+
         int payloadSizeLength;
         int payloadSize;
         rc = sqliterkParseVarint(pagedata, offset, &payloadSizeLength,

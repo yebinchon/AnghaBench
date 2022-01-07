@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  TYPE_1__* stmt_ann_t ;
-struct TYPE_5__ {int /*<<< orphan*/  succs; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef TYPE_1__* stmt_ann_t ;
+struct TYPE_5__ {int succs; } ;
 struct TYPE_4__ {scalar_t__ has_volatile_ops; } ;
 
-/* Variables and functions */
-#define  ASM_EXPR 138 
-#define  BIND_EXPR 137 
-#define  CALL_EXPR 136 
-#define  CASE_LABEL_EXPR 135 
-#define  COND_EXPR 134 
- int EDGE_COUNT (int /*<<< orphan*/ ) ; 
- int EXC_PTR_EXPR ; 
- int FILTER_EXPR ; 
-#define  GOTO_EXPR 133 
-#define  LABEL_EXPR 132 
-#define  MODIFY_EXPR 131 
-#define  RESX_EXPR 130 
-#define  RETURN_EXPR 129 
-#define  SWITCH_EXPR 128 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_SIDE_EFFECTS (int /*<<< orphan*/ ) ; 
- TYPE_3__* bb_for_stmt (int /*<<< orphan*/ ) ; 
- scalar_t__ flag_non_call_exceptions ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  get_call_expr_in (int /*<<< orphan*/ ) ; 
- scalar_t__ is_ctrl_altering_stmt (int /*<<< orphan*/ ) ; 
- scalar_t__ is_hidden_global_store (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mark_stmt_necessary (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  simple_goto_p (int /*<<< orphan*/ ) ; 
- TYPE_1__* stmt_ann (int /*<<< orphan*/ ) ; 
- scalar_t__ tree_could_throw_p (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int EDGE_COUNT (int ) ;
+ int EXC_PTR_EXPR ;
+ int FILTER_EXPR ;
+
+
+
+
+
+
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int ) ;
+ int TREE_SIDE_EFFECTS (int ) ;
+ TYPE_3__* bb_for_stmt (int ) ;
+ scalar_t__ flag_non_call_exceptions ;
+ int gcc_assert (int) ;
+ int get_call_expr_in (int ) ;
+ scalar_t__ is_ctrl_altering_stmt (int ) ;
+ scalar_t__ is_hidden_global_store (int ) ;
+ int mark_stmt_necessary (int ,int) ;
+ int simple_goto_p (int ) ;
+ TYPE_1__* stmt_ann (int ) ;
+ scalar_t__ tree_could_throw_p (int ) ;
 
 __attribute__((used)) static void
 mark_stmt_if_obviously_necessary (tree stmt, bool aggressive)
@@ -52,73 +52,73 @@ mark_stmt_if_obviously_necessary (tree stmt, bool aggressive)
   stmt_ann_t ann;
   tree op;
 
-  /* With non-call exceptions, we have to assume that all statements could
-     throw.  If a statement may throw, it is inherently necessary.  */
+
+
   if (flag_non_call_exceptions
       && tree_could_throw_p (stmt))
     {
-      mark_stmt_necessary (stmt, true);
+      mark_stmt_necessary (stmt, 1);
       return;
     }
 
-  /* Statements that are implicitly live.  Most function calls, asm and return
-     statements are required.  Labels and BIND_EXPR nodes are kept because
-     they are control flow, and we have no way of knowing whether they can be
-     removed.  DCE can eliminate all the other statements in a block, and CFG
-     can then remove the block and labels.  */
+
+
+
+
+
   switch (TREE_CODE (stmt))
     {
-    case BIND_EXPR:
-    case LABEL_EXPR:
-    case CASE_LABEL_EXPR:
-      mark_stmt_necessary (stmt, false);
+    case 137:
+    case 132:
+    case 135:
+      mark_stmt_necessary (stmt, 0);
       return;
 
-    case ASM_EXPR:
-    case RESX_EXPR:
-    case RETURN_EXPR:
-      mark_stmt_necessary (stmt, true);
+    case 138:
+    case 130:
+    case 129:
+      mark_stmt_necessary (stmt, 1);
       return;
 
-    case CALL_EXPR:
-      /* Most, but not all function calls are required.  Function calls that
-	 produce no result and have no side effects (i.e. const pure
-	 functions) are unnecessary.  */
+    case 136:
+
+
+
       if (TREE_SIDE_EFFECTS (stmt))
-	mark_stmt_necessary (stmt, true);
+ mark_stmt_necessary (stmt, 1);
       return;
 
-    case MODIFY_EXPR:
+    case 131:
       op = get_call_expr_in (stmt);
       if (op && TREE_SIDE_EFFECTS (op))
-	{
-	  mark_stmt_necessary (stmt, true);
-	  return;
-	}
+ {
+   mark_stmt_necessary (stmt, 1);
+   return;
+ }
 
-      /* These values are mildly magic bits of the EH runtime.  We can't
-	 see the entire lifetime of these values until landing pads are
-	 generated.  */
+
+
+
       if (TREE_CODE (TREE_OPERAND (stmt, 0)) == EXC_PTR_EXPR
-	  || TREE_CODE (TREE_OPERAND (stmt, 0)) == FILTER_EXPR)
-	{
-	  mark_stmt_necessary (stmt, true);
-	  return;
-	}
+   || TREE_CODE (TREE_OPERAND (stmt, 0)) == FILTER_EXPR)
+ {
+   mark_stmt_necessary (stmt, 1);
+   return;
+ }
       break;
 
-    case GOTO_EXPR:
+    case 133:
       gcc_assert (!simple_goto_p (stmt));
-      mark_stmt_necessary (stmt, true);
+      mark_stmt_necessary (stmt, 1);
       return;
 
-    case COND_EXPR:
+    case 134:
       gcc_assert (EDGE_COUNT (bb_for_stmt (stmt)->succs) == 2);
-      /* Fall through.  */
 
-    case SWITCH_EXPR:
+
+    case 128:
       if (! aggressive)
-	mark_stmt_necessary (stmt, true);
+ mark_stmt_necessary (stmt, 1);
       break;
 
     default:
@@ -127,18 +127,18 @@ mark_stmt_if_obviously_necessary (tree stmt, bool aggressive)
 
   ann = stmt_ann (stmt);
 
-  /* If the statement has volatile operands, it needs to be preserved.
-     Same for statements that can alter control flow in unpredictable
-     ways.  */
+
+
+
   if (ann->has_volatile_ops || is_ctrl_altering_stmt (stmt))
     {
-      mark_stmt_necessary (stmt, true);
+      mark_stmt_necessary (stmt, 1);
       return;
     }
 
   if (is_hidden_global_store (stmt))
     {
-      mark_stmt_necessary (stmt, true);
+      mark_stmt_necessary (stmt, 1);
       return;
     }
 

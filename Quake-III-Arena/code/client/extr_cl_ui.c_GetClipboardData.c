@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Q_strncpyz (char*,char*,int) ; 
- char* Sys_GetClipboardData () ; 
- int /*<<< orphan*/  Z_Free (char*) ; 
+ int Q_strncpyz (char*,char*,int) ;
+ char* Sys_GetClipboardData () ;
+ int Z_Free (char*) ;
 
 __attribute__((used)) static void GetClipboardData( char *buf, int buflen ) {
-	char	*cbd;
+ char *cbd;
 
-	cbd = Sys_GetClipboardData();
+ cbd = Sys_GetClipboardData();
 
-	if ( !cbd ) {
-		*buf = 0;
-		return;
-	}
+ if ( !cbd ) {
+  *buf = 0;
+  return;
+ }
 
-	Q_strncpyz( buf, cbd, buflen );
+ Q_strncpyz( buf, cbd, buflen );
 
-	Z_Free( cbd );
+ Z_Free( cbd );
 }

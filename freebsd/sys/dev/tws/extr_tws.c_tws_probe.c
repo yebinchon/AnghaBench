@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int8_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int BUS_PROBE_DEFAULT ; 
- int ENXIO ; 
- scalar_t__ TWS_DEVICE_ID ; 
- char* TWS_DRIVER_VERSION_STRING ; 
- scalar_t__ TWS_VENDOR_ID ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ pci_get_device (int /*<<< orphan*/ ) ; 
- scalar_t__ pci_get_vendor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+
+
+
+typedef int u_int8_t ;
+typedef int device_t ;
+
+
+ int BUS_PROBE_DEFAULT ;
+ int ENXIO ;
+ scalar_t__ TWS_DEVICE_ID ;
+ char* TWS_DRIVER_VERSION_STRING ;
+ scalar_t__ TWS_VENDOR_ID ;
+ int device_set_desc (int ,char*) ;
+ scalar_t__ pci_get_device (int ) ;
+ scalar_t__ pci_get_vendor (int ) ;
+ int printf (char*,char*) ;
 
 __attribute__((used)) static int
 tws_probe(device_t dev)

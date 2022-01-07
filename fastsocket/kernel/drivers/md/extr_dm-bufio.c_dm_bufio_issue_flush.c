@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * addr; } ;
-struct TYPE_4__ {TYPE_1__ ptr; int /*<<< orphan*/  type; } ;
-struct dm_io_request {int /*<<< orphan*/  client; TYPE_2__ mem; int /*<<< orphan*/  bi_rw; } ;
-struct dm_io_region {int /*<<< orphan*/  count; int /*<<< orphan*/  sector; int /*<<< orphan*/  bdev; } ;
-struct dm_bufio_client {int /*<<< orphan*/  bdev; int /*<<< orphan*/  dm_io; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DM_IO_KMEM ; 
- int /*<<< orphan*/  WRITE_FLUSH ; 
- int /*<<< orphan*/  dm_bufio_in_request () ; 
- int dm_io (struct dm_io_request*,int,struct dm_io_region*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * addr; } ;
+struct TYPE_4__ {TYPE_1__ ptr; int type; } ;
+struct dm_io_request {int client; TYPE_2__ mem; int bi_rw; } ;
+struct dm_io_region {int count; int sector; int bdev; } ;
+struct dm_bufio_client {int bdev; int dm_io; } ;
+
+
+ int BUG_ON (int ) ;
+ int DM_IO_KMEM ;
+ int WRITE_FLUSH ;
+ int dm_bufio_in_request () ;
+ int dm_io (struct dm_io_request*,int,struct dm_io_region*,int *) ;
 
 int dm_bufio_issue_flush(struct dm_bufio_client *c)
 {
-	struct dm_io_request io_req = {
-		.bi_rw = WRITE_FLUSH,
-		.mem.type = DM_IO_KMEM,
-		.mem.ptr.addr = NULL,
-		.client = c->dm_io,
-	};
-	struct dm_io_region io_reg = {
-		.bdev = c->bdev,
-		.sector = 0,
-		.count = 0,
-	};
+ struct dm_io_request io_req = {
+  .bi_rw = WRITE_FLUSH,
+  .mem.type = DM_IO_KMEM,
+  .mem.ptr.addr = ((void*)0),
+  .client = c->dm_io,
+ };
+ struct dm_io_region io_reg = {
+  .bdev = c->bdev,
+  .sector = 0,
+  .count = 0,
+ };
 
-	BUG_ON(dm_bufio_in_request());
+ BUG_ON(dm_bufio_in_request());
 
-	return dm_io(&io_req, 1, &io_reg, NULL);
+ return dm_io(&io_req, 1, &io_reg, ((void*)0));
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64 ;
-typedef  int uint32 ;
-typedef  int /*<<< orphan*/  uint16 ;
-struct TYPE_5__ {int tif_flags; int /*<<< orphan*/  tif_clientdata; } ;
-typedef  int /*<<< orphan*/  TIFFDirEntry ;
-typedef  TYPE_1__ TIFF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIFFErrorExt (int /*<<< orphan*/ ,char const*,char*) ; 
- int TIFFWriteDirectoryTagCheckedIfd8Array (TYPE_1__*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int TIFFWriteDirectoryTagCheckedIfdArray (TYPE_1__*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int TIFF_BIGTIFF ; 
- int /*<<< orphan*/  _TIFFfree (int*) ; 
- int* _TIFFmalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64 ;
+typedef int uint32 ;
+typedef int uint16 ;
+struct TYPE_5__ {int tif_flags; int tif_clientdata; } ;
+typedef int TIFFDirEntry ;
+typedef TYPE_1__ TIFF ;
+
+
+ int TIFFErrorExt (int ,char const*,char*) ;
+ int TIFFWriteDirectoryTagCheckedIfd8Array (TYPE_1__*,int*,int *,int ,int,int*) ;
+ int TIFFWriteDirectoryTagCheckedIfdArray (TYPE_1__*,int*,int *,int ,int,int*) ;
+ int TIFF_BIGTIFF ;
+ int _TIFFfree (int*) ;
+ int* _TIFFmalloc (int) ;
 
 __attribute__((used)) static int
 TIFFWriteDirectoryTagIfdIfd8Array(TIFF* tif, uint32* ndir, TIFFDirEntry* dir, uint16 tag, uint32 count, uint64* value)
@@ -36,25 +36,25 @@ TIFFWriteDirectoryTagIfdIfd8Array(TIFF* tif, uint32* ndir, TIFFDirEntry* dir, ui
     uint32* q;
     int o;
 
-    /* is this just a counting pass? */
-    if (dir==NULL)
+
+    if (dir==((void*)0))
     {
         (*ndir)++;
         return(1);
     }
 
-    /* We always write IFD8 for BigTIFF, no checking needed. */
+
     if( tif->tif_flags&TIFF_BIGTIFF )
         return TIFFWriteDirectoryTagCheckedIfd8Array(tif,ndir,dir,
                                                      tag,count,value);
 
-    /*
-    ** For classic tiff we want to verify everything is in range for IFD
-    ** and convert to long format.
-    */
+
+
+
+
 
     p = _TIFFmalloc(count*sizeof(uint32));
-    if (p==NULL)
+    if (p==((void*)0))
     {
         TIFFErrorExt(tif->tif_clientdata,module,"Out of memory");
         return(0);

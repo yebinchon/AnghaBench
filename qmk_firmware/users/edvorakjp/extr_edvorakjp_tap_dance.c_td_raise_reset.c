@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qk_tap_dance_state_t ;
-struct TYPE_2__ {int /*<<< orphan*/  raise; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NONE ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- TYPE_1__ td_status ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int qk_tap_dance_state_t ;
+struct TYPE_2__ {int raise; } ;
+
+
+ int NONE ;
+ int _RAISE ;
+ int layer_off (int ) ;
+ TYPE_1__ td_status ;
 
 void td_raise_reset(qk_tap_dance_state_t *state, void *user_data) {
   layer_off(_RAISE);

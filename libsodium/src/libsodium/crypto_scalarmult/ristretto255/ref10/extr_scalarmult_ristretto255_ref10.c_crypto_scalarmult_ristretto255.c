@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ge25519_p3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ge25519_scalarmult (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ristretto255_frombytes (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  ristretto255_p3_tobytes (unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_is_zero (unsigned char*,int) ; 
+
+
+
+typedef int ge25519_p3 ;
+
+
+ int ge25519_scalarmult (int *,unsigned char*,int *) ;
+ scalar_t__ ristretto255_frombytes (int *,unsigned char const*) ;
+ int ristretto255_p3_tobytes (unsigned char*,int *) ;
+ scalar_t__ sodium_is_zero (unsigned char*,int) ;
 
 int
 crypto_scalarmult_ristretto255(unsigned char *q, const unsigned char *n,
                                const unsigned char *p)
 {
     unsigned char *t = q;
-    ge25519_p3     Q;
-    ge25519_p3     P;
-    unsigned int   i;
+    ge25519_p3 Q;
+    ge25519_p3 P;
+    unsigned int i;
 
     if (ristretto255_frombytes(&P, p) != 0) {
         return -1;

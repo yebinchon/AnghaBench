@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char UINT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- char DRIVE_NO_ROOT_DIR ; 
- char DRIVE_RAMDISK ; 
- char DRIVE_UNKNOWN ; 
- char GetDriveTypeW (char*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetLogicalDrives () ; 
- int /*<<< orphan*/  ok (int,char*,char,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- char wine_dbgstr_w (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char UINT ;
+typedef int DWORD ;
+
+
+ char DRIVE_NO_ROOT_DIR ;
+ char DRIVE_RAMDISK ;
+ char DRIVE_UNKNOWN ;
+ char GetDriveTypeW (char*) ;
+ int GetLastError () ;
+ int GetLogicalDrives () ;
+ int ok (int,char*,char,...) ;
+ int skip (char*) ;
+ char wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_GetDriveTypeW(void)
 {
@@ -57,24 +57,24 @@ __attribute__((used)) static void test_GetDriveTypeW(void)
     }
 
     drive[0] = existing_drive_letter;
-    drive[2] = 0; /* C: */
+    drive[2] = 0;
     type = GetDriveTypeW(drive);
     ok(type > DRIVE_NO_ROOT_DIR && type <= DRIVE_RAMDISK, "got %u for drive spec '%s'\n",
        type, wine_dbgstr_w(drive));
 
-    drive[1] = '?'; /* C? */
+    drive[1] = '?';
     type = GetDriveTypeW(drive);
     ok(type == DRIVE_NO_ROOT_DIR, "got %u for drive spec '%s'\n", type, wine_dbgstr_w(drive));
 
-    drive[1] = 0; /* C */
+    drive[1] = 0;
     type = GetDriveTypeW(drive);
     ok(type == DRIVE_NO_ROOT_DIR, "got %u for drive spec '%s'\n", type, wine_dbgstr_w(drive));
 
-    drive[0] = '?'; /* the string "?" */
+    drive[0] = '?';
     type = GetDriveTypeW(drive);
     ok(type == DRIVE_NO_ROOT_DIR, "got %u for drive spec '%s'\n", type, wine_dbgstr_w(drive));
 
-    drive[0] = 0; /* the empty string */
+    drive[0] = 0;
     type = GetDriveTypeW(drive);
     ok(type == DRIVE_NO_ROOT_DIR, "got %u for drive spec '%s'\n", type, wine_dbgstr_w(drive));
 }

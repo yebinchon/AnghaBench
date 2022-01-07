@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
-typedef  int /*<<< orphan*/  predicate ;
-typedef  int /*<<< orphan*/  data ;
 
-/* Variables and functions */
- int MAX_RESULT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int user_get (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * user_get_photo_data (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  user_loaded (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int user ;
+typedef int predicate ;
+typedef int data ;
+
+
+ int MAX_RESULT ;
+ int assert (int ) ;
+ int user_get (int *,int,int,int *) ;
+ int * user_get_photo_data (int *,int) ;
+ int user_loaded (int *) ;
 
 int user_get_photos (user *u, int aid, int offset, int limit, predicate *pred) {
   assert (user_loaded (u));
@@ -41,7 +41,7 @@ int user_get_photos (user *u, int aid, int offset, int limit, predicate *pred) {
   }
 
   data *d = user_get_photo_data (u, aid);
-  if (d == NULL) {
+  if (d == ((void*)0)) {
     return -1;
   }
   return user_get (d, limit, offset, pred);

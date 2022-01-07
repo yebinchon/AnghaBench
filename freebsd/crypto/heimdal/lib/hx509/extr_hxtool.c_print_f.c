@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct print_s {int /*<<< orphan*/  verbose; int /*<<< orphan*/  counter; } ;
-typedef  int /*<<< orphan*/  hx509_context ;
-typedef  int /*<<< orphan*/  hx509_cert ;
 
-/* Variables and functions */
- int /*<<< orphan*/  context ; 
- int /*<<< orphan*/  print_certificate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct print_s {int verbose; int counter; } ;
+typedef int hx509_context ;
+typedef int hx509_cert ;
+
+
+ int context ;
+ int print_certificate (int ,int ,int ) ;
+ int printf (char*,int ) ;
 
 __attribute__((used)) static int
 print_f(hx509_context hxcontext, void *ctx, hx509_cert cert)

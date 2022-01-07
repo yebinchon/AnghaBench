@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo {TYPE_1__* x11; int /*<<< orphan*/  dheight; int /*<<< orphan*/  dwidth; } ;
-struct TYPE_4__ {int /*<<< orphan*/  y0; int /*<<< orphan*/  x0; } ;
-struct priv {size_t current_buf; int reset_view; int /*<<< orphan*/  dst_h; int /*<<< orphan*/  dst_w; TYPE_2__ dst; int /*<<< orphan*/  gc; scalar_t__ Shmem_Flag; int /*<<< orphan*/ ** myximage; struct vo* vo; } ;
-typedef  int /*<<< orphan*/  XImage ;
-struct TYPE_3__ {int /*<<< orphan*/  window; int /*<<< orphan*/  display; int /*<<< orphan*/  ShmCompletionWaitCount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  True ; 
- int /*<<< orphan*/  XFillRectangle (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XPutImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XShmPutImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo {TYPE_1__* x11; int dheight; int dwidth; } ;
+struct TYPE_4__ {int y0; int x0; } ;
+struct priv {size_t current_buf; int reset_view; int dst_h; int dst_w; TYPE_2__ dst; int gc; scalar_t__ Shmem_Flag; int ** myximage; struct vo* vo; } ;
+typedef int XImage ;
+struct TYPE_3__ {int window; int display; int ShmCompletionWaitCount; } ;
+
+
+ int True ;
+ int XFillRectangle (int ,int ,int ,int ,int ,int ,int ) ;
+ int XPutImage (int ,int ,int ,int *,int ,int ,int ,int ,int ,int ) ;
+ int XShmPutImage (int ,int ,int ,int *,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void Display_Image(struct priv *p, XImage *myximage)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void Display_Image(struct priv *p, XImage *myximage
 
     if (p->reset_view) {
         XFillRectangle(vo->x11->display, vo->x11->window, p->gc, 0, 0, vo->dwidth, vo->dheight);
-        p->reset_view = false;
+        p->reset_view = 0;
     }
 
     if (p->Shmem_Flag) {

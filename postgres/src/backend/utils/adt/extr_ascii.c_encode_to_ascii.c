@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text ;
-typedef  scalar_t__ data ;
 
-/* Variables and functions */
- scalar_t__ VARDATA (int /*<<< orphan*/ *) ; 
- scalar_t__ VARSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pg_to_ascii (unsigned char*,unsigned char*,unsigned char*,int) ; 
+
+
+
+typedef int text ;
+typedef scalar_t__ data ;
+
+
+ scalar_t__ VARDATA (int *) ;
+ scalar_t__ VARSIZE (int *) ;
+ int pg_to_ascii (unsigned char*,unsigned char*,unsigned char*,int) ;
 
 __attribute__((used)) static text *
 encode_to_ascii(text *data, int enc)
 {
-	pg_to_ascii((unsigned char *) VARDATA(data),	/* src */
-				(unsigned char *) (data) + VARSIZE(data),	/* src end */
-				(unsigned char *) VARDATA(data),	/* dest */
-				enc);			/* encoding */
+ pg_to_ascii((unsigned char *) VARDATA(data),
+    (unsigned char *) (data) + VARSIZE(data),
+    (unsigned char *) VARDATA(data),
+    enc);
 
-	return data;
+ return data;
 }

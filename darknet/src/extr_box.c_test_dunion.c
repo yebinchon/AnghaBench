@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {float dx; float dy; float dw; float dh; } ;
-typedef  TYPE_1__ dbox ;
+typedef TYPE_1__ dbox ;
 struct TYPE_9__ {double member_0; double member_1; int member_2; int member_3; } ;
-typedef  TYPE_2__ box ;
+typedef TYPE_2__ box ;
 
-/* Variables and functions */
- float box_union (TYPE_2__,TYPE_2__) ; 
- TYPE_1__ dunion (TYPE_2__,TYPE_2__) ; 
- int /*<<< orphan*/  printf (char*,float,float,float,float) ; 
+
+ float box_union (TYPE_2__,TYPE_2__) ;
+ TYPE_1__ dunion (TYPE_2__,TYPE_2__) ;
+ int printf (char*,float,float,float,float) ;
 
 void test_dunion()
 {
@@ -33,7 +33,7 @@ void test_dunion()
     box b = {.5, .5, .2, .2};
     dbox di = dunion(a,b);
     printf("Union: %f %f %f %f\n", di.dx, di.dy, di.dw, di.dh);
-    float inter =  box_union(a, b);
+    float inter = box_union(a, b);
     float xinter = box_union(dxa, b);
     float yinter = box_union(dya, b);
     float winter = box_union(dwa, b);

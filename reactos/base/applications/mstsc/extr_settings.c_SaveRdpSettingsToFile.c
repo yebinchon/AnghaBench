@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  PRDPSETTINGS ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/ * LPITEMIDLIST ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CSIDL_PERSONAL ; 
- int /*<<< orphan*/  CloseRdpFile (scalar_t__) ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_PATH ; 
- scalar_t__ OpenRdpFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ SHGetFolderLocation (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ SHGetPathFromIDListW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WriteRdpFile (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wcscat (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int PRDPSETTINGS ;
+typedef int * LPWSTR ;
+typedef int * LPITEMIDLIST ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int BOOL ;
+
+
+ int CSIDL_PERSONAL ;
+ int CloseRdpFile (scalar_t__) ;
+ int CoTaskMemFree (int *) ;
+ int FALSE ;
+ int MAX_PATH ;
+ scalar_t__ OpenRdpFile (int *,int ) ;
+ scalar_t__ SHGetFolderLocation (int *,int ,int *,int ,int **) ;
+ scalar_t__ SHGetPathFromIDListW (int *,int *) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ scalar_t__ WriteRdpFile (scalar_t__,int ) ;
+ int wcscat (int *,char*) ;
 
 BOOL
 SaveRdpSettingsToFile(LPWSTR lpFile,
@@ -40,15 +40,15 @@ SaveRdpSettingsToFile(LPWSTR lpFile,
     HANDLE hFile;
     BOOL bRet = FALSE;
 
-    /* use default file */
-    if (lpFile == NULL)
+
+    if (lpFile == ((void*)0))
     {
         HRESULT hr;
-        LPITEMIDLIST lpidl= NULL;
+        LPITEMIDLIST lpidl= ((void*)0);
 
-        hr = SHGetFolderLocation(NULL,
+        hr = SHGetFolderLocation(((void*)0),
                                  CSIDL_PERSONAL,
-                                 NULL,
+                                 ((void*)0),
                                  0,
                                  &lpidl);
         if (hr == S_OK)

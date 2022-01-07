@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * ephemeron; int /*<<< orphan*/ * grayagain; int /*<<< orphan*/ * weak; } ;
-typedef  TYPE_1__ global_State ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  propagateall (TYPE_1__*) ; 
- int /*<<< orphan*/  propagatelist (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * ephemeron; int * grayagain; int * weak; } ;
+typedef TYPE_1__ global_State ;
+typedef int GCObject ;
+
+
+ int propagateall (TYPE_1__*) ;
+ int propagatelist (TYPE_1__*,int *) ;
 
 __attribute__((used)) static void retraversegrays (global_State *g) {
-  GCObject *weak = g->weak;  /* save original lists */
+  GCObject *weak = g->weak;
   GCObject *grayagain = g->grayagain;
   GCObject *ephemeron = g->ephemeron;
-  g->weak = g->grayagain = g->ephemeron = NULL;
-  propagateall(g);  /* traverse main gray list */
+  g->weak = g->grayagain = g->ephemeron = ((void*)0);
+  propagateall(g);
   propagatelist(g, grayagain);
   propagatelist(g, weak);
   propagatelist(g, ephemeron);

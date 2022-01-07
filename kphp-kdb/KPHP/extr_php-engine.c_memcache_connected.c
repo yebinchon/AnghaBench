@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/ * Tmp; int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_through (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int get_total_ready_bytes (int /*<<< orphan*/ *) ; 
+
+
+
+struct connection {int * Tmp; int Out; } ;
+
+
+ int copy_through (int *,int *,int) ;
+ int get_total_ready_bytes (int *) ;
 
 int memcache_connected (struct connection *c) {
-  if (c->Tmp != NULL) {
+  if (c->Tmp != ((void*)0)) {
     int query_len = get_total_ready_bytes (c->Tmp);
     copy_through (&c->Out, c->Tmp, query_len);
   }

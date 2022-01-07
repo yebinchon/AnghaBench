@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gdbarch {int dummy; } ;
 struct frame_info {int dummy; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARM_PC_REGNUM ; 
- scalar_t__ IS_THUMB_ADDR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNMAKE_THUMB_ADDR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  frame_unwind_register_unsigned (struct frame_info*,int /*<<< orphan*/ ) ; 
+
+ int ARM_PC_REGNUM ;
+ scalar_t__ IS_THUMB_ADDR (int ) ;
+ int UNMAKE_THUMB_ADDR (int ) ;
+ int frame_unwind_register_unsigned (struct frame_info*,int ) ;
 
 __attribute__((used)) static CORE_ADDR
 arm_unwind_pc (struct gdbarch *gdbarch, struct frame_info *this_frame)

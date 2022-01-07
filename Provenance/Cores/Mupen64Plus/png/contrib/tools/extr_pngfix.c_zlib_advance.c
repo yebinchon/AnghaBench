@@ -1,69 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int* next_in; int avail_in; int* next_out; int avail_out; int /*<<< orphan*/ * msg; } ;
-struct zlib {int state; int window_bits; int file_bits; int* header; int cksum; scalar_t__ ok_bits; scalar_t__ extra_bytes; scalar_t__ rewrite_offset; void* compressed_digits; int /*<<< orphan*/  compressed_bytes; void* uncompressed_digits; int /*<<< orphan*/  uncompressed_bytes; struct chunk* chunk; TYPE_1__ z; int /*<<< orphan*/  rc; struct file* file; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int* next_in; int avail_in; int* next_out; int avail_out; int * msg; } ;
+struct zlib {int state; int window_bits; int file_bits; int* header; int cksum; scalar_t__ ok_bits; scalar_t__ extra_bytes; scalar_t__ rewrite_offset; void* compressed_digits; int compressed_bytes; void* uncompressed_digits; int uncompressed_bytes; struct chunk* chunk; TYPE_1__ z; int rc; struct file* file; } ;
 struct file {int dummy; } ;
-struct chunk {int* rewrite_buffer; int rewrite_length; scalar_t__ rewrite_offset; int /*<<< orphan*/  compressed_bytes; void* compressed_digits; int /*<<< orphan*/  uncompressed_bytes; void* uncompressed_digits; } ;
-typedef  scalar_t__ png_uint_32 ;
-typedef  int png_byte ;
+struct chunk {int* rewrite_buffer; int rewrite_length; scalar_t__ rewrite_offset; int compressed_bytes; void* compressed_digits; int uncompressed_bytes; void* uncompressed_digits; } ;
+typedef scalar_t__ png_uint_32 ;
+typedef int png_byte ;
 
-/* Variables and functions */
- int ZLIB_FATAL ; 
- int ZLIB_OK ; 
- int ZLIB_STREAM_END ; 
- int ZLIB_TOO_FAR_BACK ; 
-#define  Z_BUF_ERROR 132 
-#define  Z_DATA_ERROR 131 
-#define  Z_NEED_DICT 130 
- int Z_NO_FLUSH ; 
-#define  Z_OK 129 
-#define  Z_STREAM_END 128 
- int Z_SYNC_FLUSH ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  chunk_message (struct chunk*,char*) ; 
- int /*<<< orphan*/  inflate (TYPE_1__*,int) ; 
- int reread_byte (struct file*) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ *,char*) ; 
- void* uarb_add32 (int /*<<< orphan*/ ,void*,scalar_t__) ; 
- void* uarb_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  zlib_message (struct zlib*,int) ; 
+
+ int ZLIB_FATAL ;
+ int ZLIB_OK ;
+ int ZLIB_STREAM_END ;
+ int ZLIB_TOO_FAR_BACK ;
+
+
+
+ int Z_NO_FLUSH ;
+
+
+ int Z_SYNC_FLUSH ;
+ int assert (int) ;
+ int chunk_message (struct chunk*,char*) ;
+ int inflate (TYPE_1__*,int) ;
+ int reread_byte (struct file*) ;
+ int strcmp (int *,char*) ;
+ void* uarb_add32 (int ,void*,scalar_t__) ;
+ void* uarb_copy (int ,int ,void*) ;
+ int zlib_message (struct zlib*,int) ;
 
 __attribute__((used)) static int
 zlib_advance(struct zlib *zlib, png_uint_32 nbytes)
-   /* Read nbytes compressed bytes; the stream will be initialized if required.
-    * Bytes are always being reread and errors are fatal.  The return code is as
-    * follows:
-    *
-    *    -1: saw the "too far back" error
-    *     0: ok, keep going
-    *     1: saw Z_STREAM_END (zlib->extra_bytes indicates too much data)
-    *     2: a zlib error that cannot be corrected (error message already
-    *        output if required.)
-    */
-#  define ZLIB_TOO_FAR_BACK (-1)
-#  define ZLIB_OK           0
-#  define ZLIB_STREAM_END   1
-#  define ZLIB_FATAL        2
 {
    int state = zlib->state;
-   int endrc = ZLIB_OK;
+   int endrc = 0;
    png_uint_32 in_bytes = 0;
    struct file *file = zlib->file;
 
    assert(state >= 0);
 
-   while (in_bytes < nbytes && endrc == ZLIB_OK)
+   while (in_bytes < nbytes && endrc == 0)
    {
       png_uint_32 out_bytes;
       int flush;
@@ -72,22 +58,22 @@ zlib_advance(struct zlib *zlib, png_uint_32 nbytes)
 
       switch (state)
       {
-         case 0: /* first header byte */
+         case 0:
             {
                int file_bits = 8+(bIn >> 4);
                int new_bits = zlib->window_bits;
 
                zlib->file_bits = file_bits;
 
-               /* Check against the existing value - it may not need to be
-                * changed.  Note that a bogus file_bits is allowed through once,
-                * to see if it works, but the window_bits value is set to 15,
-                * the maximum.
-                */
-               if (new_bits == 0) /* no change */
+
+
+
+
+
+               if (new_bits == 0)
                   zlib->window_bits = ((file_bits > 15) ? 15 : file_bits);
 
-               else if (new_bits != file_bits) /* rewrite required */
+               else if (new_bits != file_bits)
                   bIn = (png_byte)((bIn & 0xf) + ((new_bits-8) << 4));
             }
 
@@ -95,19 +81,19 @@ zlib_advance(struct zlib *zlib, png_uint_32 nbytes)
             zlib->state = state = 1;
             break;
 
-         case 1: /* second header byte */
+         case 1:
             {
-               int b2 = bIn & 0xe0; /* top 3 bits */
+               int b2 = bIn & 0xe0;
 
-               /* The checksum calculation, on the first 11 bits: */
+
                b2 += 0x1f - ((zlib->header[0] << 8) + b2) % 0x1f;
 
-               /* Update the checksum byte if required: */
+
                if (bIn != b2)
                {
-                  /* If the first byte wasn't changed this indicates an error in
-                   * the checksum calculation; signal this by setting 'cksum'.
-                   */
+
+
+
                   if (zlib->file_bits == zlib->window_bits)
                      zlib->cksum = 1;
 
@@ -119,31 +105,31 @@ zlib_advance(struct zlib *zlib, png_uint_32 nbytes)
             zlib->state = state = 2;
             break;
 
-         default: /* After the header bytes */
+         default:
             break;
       }
 
-      /* For some streams, perhaps only those compressed with 'superfast
-       * compression' (which results in a lot of copying) Z_BUF_ERROR can happen
-       * immediately after all output has been flushed on the next input byte.
-       * This is handled below when Z_BUF_ERROR is detected by adding an output
-       * byte.
-       */
+
+
+
+
+
+
       zlib->z.next_in = &bIn;
       zlib->z.avail_in = 1;
       zlib->z.next_out = &bOut;
-      zlib->z.avail_out = 0;     /* Initially */
+      zlib->z.avail_out = 0;
 
-      /* Initially use Z_NO_FLUSH in an attempt to persuade zlib to look at this
-       * byte without confusing what is going on with output.
-       */
+
+
+
       flush = Z_NO_FLUSH;
       out_bytes = 0;
 
-      /* NOTE: expression 3 is only evaluted on 'continue', because of the
-       * 'break' at the end of this loop below.
-       */
-      for (;endrc == ZLIB_OK;
+
+
+
+      for (;endrc == 0;
          flush = Z_SYNC_FLUSH,
          zlib->z.next_out = &bOut,
          zlib->z.avail_out = 1,
@@ -154,81 +140,81 @@ zlib_advance(struct zlib *zlib, png_uint_32 nbytes)
 
          switch (zlib->rc)
          {
-            case Z_BUF_ERROR:
+            case 132:
                if (zlib->z.avail_out == 0)
-                  continue; /* Try another output byte. */
+                  continue;
 
                if (zlib->z.avail_in == 0)
-                  break; /* Try another input byte */
+                  break;
 
-               /* Both avail_out and avail_in are 1 yet zlib returned a code
-                * indicating no progress was possible.  This is unexpected.
-                */
-               zlib_message(zlib, 1/*unexpected*/);
-               endrc = ZLIB_FATAL; /* stop processing */
+
+
+
+               zlib_message(zlib, 1 );
+               endrc = 2;
                break;
 
-            case Z_OK:
-               /* Zlib is supposed to have made progress: */
+            case 129:
+
                assert(zlib->z.avail_out == 0 || zlib->z.avail_in == 0);
                continue;
 
-            case Z_STREAM_END:
-               /* This is the successful end. */
-               zlib->state = 3; /* end of stream */
-               endrc = ZLIB_STREAM_END;
+            case 128:
+
+               zlib->state = 3;
+               endrc = 1;
                break;
 
-            case Z_NEED_DICT:
-               zlib_message(zlib, 0/*stream error*/);
-               endrc = ZLIB_FATAL;
+            case 130:
+               zlib_message(zlib, 0 );
+               endrc = 2;
                break;
 
-            case Z_DATA_ERROR:
-               /* The too far back error can be corrected, others cannot: */
-               if (zlib->z.msg != NULL &&
+            case 131:
+
+               if (zlib->z.msg != ((void*)0) &&
                   strcmp(zlib->z.msg, "invalid distance too far back") == 0)
                {
-                  endrc = ZLIB_TOO_FAR_BACK;
+                  endrc = (-1);
                   break;
                }
-               /* FALL THROUGH */
+
 
             default:
-               zlib_message(zlib, 0/*stream error*/);
-               endrc = ZLIB_FATAL;
+               zlib_message(zlib, 0 );
+               endrc = 2;
                break;
-         } /* switch (inflate rc) */
+         }
 
-         /* Control gets here when further output is not possible; endrc may
-          * still be ZLIB_OK if more input is required.
-          */
+
+
+
          break;
-      } /* for (output bytes) */
+      }
 
-      /* Keep a running count of output byte produced: */
+
       zlib->uncompressed_digits = uarb_add32(zlib->uncompressed_bytes,
          zlib->uncompressed_digits, out_bytes);
 
-      /* Keep going, the loop will terminate when endrc is no longer set to
-       * ZLIB_OK or all the input bytes have been consumed; meanwhile keep
-       * adding input bytes.
-       */
-      assert(zlib->z.avail_in == 0 || endrc != ZLIB_OK);
+
+
+
+
+      assert(zlib->z.avail_in == 0 || endrc != 0);
 
       in_bytes += 1 - zlib->z.avail_in;
-   } /* while (input bytes) */
+   }
 
-   assert(in_bytes == nbytes || endrc != ZLIB_OK);
+   assert(in_bytes == nbytes || endrc != 0);
 
-   /* Update the running total of input bytes consumed */
+
    zlib->compressed_digits = uarb_add32(zlib->compressed_bytes,
       zlib->compressed_digits, in_bytes - zlib->z.avail_in);
 
-   /* At the end of the stream update the chunk with the accumulated
-    * information if it is an improvement:
-    */
-   if (endrc == ZLIB_STREAM_END && zlib->window_bits < zlib->ok_bits)
+
+
+
+   if (endrc == 1 && zlib->window_bits < zlib->ok_bits)
    {
       struct chunk *chunk = zlib->chunk;
 
@@ -241,7 +227,7 @@ zlib_advance(struct zlib *zlib, png_uint_32 nbytes)
 
       if (zlib->window_bits != zlib->file_bits || zlib->cksum)
       {
-         /* A rewrite is required */
+
          chunk->rewrite_offset = zlib->rewrite_offset;
          chunk->rewrite_length = 2;
       }

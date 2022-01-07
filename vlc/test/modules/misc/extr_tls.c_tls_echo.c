@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void vlc_tls_t ;
-struct pollfd {int /*<<< orphan*/  events; int /*<<< orphan*/  fd; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  POLLIN ; 
- int /*<<< orphan*/  POLLOUT ; 
- int /*<<< orphan*/  poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  server_creds ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- int /*<<< orphan*/  vlc_tls_Close (void*) ; 
- int /*<<< orphan*/  vlc_tls_GetPollFD (void*,int /*<<< orphan*/ *) ; 
- int vlc_tls_Read (void*,char*,int,int) ; 
- int vlc_tls_SessionHandshake (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ vlc_tls_Shutdown (void*,int) ; 
- int vlc_tls_Write (void*,char*,int) ; 
+
+
+
+typedef void vlc_tls_t ;
+struct pollfd {int events; int fd; } ;
+typedef int ssize_t ;
+typedef int buf ;
+
+
+ int POLLIN ;
+ int POLLOUT ;
+ int poll (struct pollfd*,int,int) ;
+ int server_creds ;
+ int vlc_assert_unreachable () ;
+ int vlc_tls_Close (void*) ;
+ int vlc_tls_GetPollFD (void*,int *) ;
+ int vlc_tls_Read (void*,char*,int,int) ;
+ int vlc_tls_SessionHandshake (int ,void*) ;
+ scalar_t__ vlc_tls_Shutdown (void*,int) ;
+ int vlc_tls_Write (void*,char*,int) ;
 
 __attribute__((used)) static void *tls_echo(void *data)
 {
@@ -40,8 +40,8 @@ __attribute__((used)) static void *tls_echo(void *data)
 
         switch (val)
         {
-            case 1:  ufd.events = POLLIN;  break;
-            case 2:  ufd.events = POLLOUT; break;
+            case 1: ufd.events = POLLIN; break;
+            case 2: ufd.events = POLLOUT; break;
             default: vlc_assert_unreachable();
         }
 
@@ -52,16 +52,16 @@ __attribute__((used)) static void *tls_echo(void *data)
     if (val < 0)
         goto error;
 
-    while ((val = vlc_tls_Read(tls, buf, sizeof (buf), false)) > 0)
+    while ((val = vlc_tls_Read(tls, buf, sizeof (buf), 0)) > 0)
         if (vlc_tls_Write(tls, buf, val) < val)
             goto error;
 
-    if (val < 0 || vlc_tls_Shutdown(tls, false))
+    if (val < 0 || vlc_tls_Shutdown(tls, 0))
         goto error;
 
     vlc_tls_Close(tls);
     return tls;
 error:
     vlc_tls_Close(tls);
-    return NULL;
+    return ((void*)0);
 }

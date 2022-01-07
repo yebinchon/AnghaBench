@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUSID_SIZE ; 
- int MAX_BUSID ; 
- int /*<<< orphan*/ * busid_table ; 
- int /*<<< orphan*/  busid_table_lock ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+ int BUSID_SIZE ;
+ int MAX_BUSID ;
+ int * busid_table ;
+ int busid_table_lock ;
+ int memset (int ,int ,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int strncmp (int ,char*,int ) ;
 
 __attribute__((used)) static int del_match_busid(char *busid)
 {
-	int i;
+ int i;
 
-	spin_lock(&busid_table_lock);
+ spin_lock(&busid_table_lock);
 
-	for (i = 0; i < MAX_BUSID; i++)
-		if (!strncmp(busid_table[i], busid, BUSID_SIZE)) {
-			/* found */
-			memset(busid_table[i], 0, BUSID_SIZE);
-			spin_unlock(&busid_table_lock);
-			return 0;
-		}
+ for (i = 0; i < MAX_BUSID; i++)
+  if (!strncmp(busid_table[i], busid, BUSID_SIZE)) {
 
-	spin_unlock(&busid_table_lock);
+   memset(busid_table[i], 0, BUSID_SIZE);
+   spin_unlock(&busid_table_lock);
+   return 0;
+  }
 
-	return -1;
+ spin_unlock(&busid_table_lock);
+
+ return -1;
 }

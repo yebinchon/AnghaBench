@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ifaddrs {int dummy; } ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  NetlinkList ;
+typedef int pid_t ;
+typedef int NetlinkList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTM_GETADDR ; 
- int /*<<< orphan*/  RTM_GETLINK ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  freeResultList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getResultList (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int interpretAddrs (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct ifaddrs**,int) ; 
- int interpretLinks (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct ifaddrs**) ; 
- int netlink_socket (int /*<<< orphan*/ *) ; 
+
+ int RTM_GETADDR ;
+ int RTM_GETLINK ;
+ int close (int) ;
+ int freeResultList (int *) ;
+ int * getResultList (int,int ,int ) ;
+ int interpretAddrs (int,int ,int *,struct ifaddrs**,int) ;
+ int interpretLinks (int,int ,int *,struct ifaddrs**) ;
+ int netlink_socket (int *) ;
 
 int getifaddrs(struct ifaddrs **ifap)
 {
@@ -37,7 +37,7 @@ int getifaddrs(struct ifaddrs **ifap)
     {
         return -1;
     }
-    *ifap = NULL;
+    *ifap = ((void*)0);
 
     l_socket = netlink_socket(&l_pid);
     if(l_socket < 0)

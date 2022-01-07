@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct d3drm_matrix {float _11; float _21; float _31; float _41; float _12; float _22; float _32; float _42; float _13; float _23; float _33; float _43; float _14; float _24; float _34; float _44; } ;
 struct TYPE_9__ {float z; } ;
 struct TYPE_8__ {float x; } ;
 struct TYPE_7__ {float y; } ;
 struct TYPE_10__ {TYPE_3__ u3; TYPE_2__ u1; TYPE_1__ u2; } ;
-typedef  TYPE_4__ D3DVECTOR ;
+typedef TYPE_4__ D3DVECTOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DRMVectorNormalize (TYPE_4__*) ; 
- float cosf (float) ; 
- float sinf (float) ; 
+
+ int D3DRMVectorNormalize (TYPE_4__*) ;
+ float cosf (float) ;
+ float sinf (float) ;
 
 __attribute__((used)) static void d3drm_matrix_set_rotation(struct d3drm_matrix *matrix, D3DVECTOR *axis, float theta)
 {

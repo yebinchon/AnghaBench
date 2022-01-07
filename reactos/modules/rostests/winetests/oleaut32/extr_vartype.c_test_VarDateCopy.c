@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  COPYTEST (double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  VT_DATE ; 
- int /*<<< orphan*/  V_DATE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  V_DATEREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vDst ; 
- int /*<<< orphan*/  vSrc ; 
+ int COPYTEST (double,int ,int ,int ,int ,int ,char*) ;
+ int VT_DATE ;
+ int V_DATE (int *) ;
+ int V_DATEREF (int *) ;
+ int vDst ;
+ int vSrc ;
 
 __attribute__((used)) static void test_VarDateCopy(void)
 {

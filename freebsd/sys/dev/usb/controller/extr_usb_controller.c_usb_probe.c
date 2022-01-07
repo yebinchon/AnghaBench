@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTF (char*) ; 
+
+
+
+typedef int device_t ;
+
+
+ int DPRINTF (char*) ;
 
 __attribute__((used)) static int
 usb_probe(device_t dev)
 {
-	DPRINTF("\n");
-	return (0);
+ DPRINTF("\n");
+ return (0);
 }

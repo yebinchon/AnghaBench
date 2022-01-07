@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sfp_bus {int /*<<< orphan*/ * upstream; int /*<<< orphan*/ * upstream_ops; } ;
 
-/* Variables and functions */
+
+
+
+struct sfp_bus {int * upstream; int * upstream_ops; } ;
+
+
 
 __attribute__((used)) static void sfp_upstream_clear(struct sfp_bus *bus)
 {
-	bus->upstream_ops = NULL;
-	bus->upstream = NULL;
+ bus->upstream_ops = ((void*)0);
+ bus->upstream = ((void*)0);
 }

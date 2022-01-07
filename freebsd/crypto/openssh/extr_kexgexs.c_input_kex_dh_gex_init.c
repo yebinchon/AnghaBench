@@ -1,195 +1,184 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+
+
+typedef int u_int32_t ;
+typedef int u_char ;
 struct sshkey {int dummy; } ;
-struct ssh {int /*<<< orphan*/  compat; struct kex* kex; } ;
-struct kex {size_t session_id_len; int (* sign ) (struct sshkey*,struct sshkey*,int /*<<< orphan*/ **,size_t*,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * dh; int /*<<< orphan*/  hostkey_alg; int /*<<< orphan*/ * session_id; int /*<<< orphan*/  max; int /*<<< orphan*/  nbits; int /*<<< orphan*/  min; int /*<<< orphan*/  my; int /*<<< orphan*/  peer; int /*<<< orphan*/  server_version_string; int /*<<< orphan*/  client_version_string; int /*<<< orphan*/  hash_alg; int /*<<< orphan*/  hostkey_nid; int /*<<< orphan*/  hostkey_type; struct sshkey* (* load_host_private_key ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ssh*) ;struct sshkey* (* load_host_public_key ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ssh*) ;} ;
-typedef  int /*<<< orphan*/  hash ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
+struct ssh {int compat; struct kex* kex; } ;
+struct kex {size_t session_id_len; int (* sign ) (struct sshkey*,struct sshkey*,int **,size_t*,int *,size_t,int ,int ) ;int * dh; int hostkey_alg; int * session_id; int max; int nbits; int min; int my; int peer; int server_version_string; int client_version_string; int hash_alg; int hostkey_nid; int hostkey_type; struct sshkey* (* load_host_private_key ) (int ,int ,struct ssh*) ;struct sshkey* (* load_host_public_key ) (int ,int ,struct ssh*) ;} ;
+typedef int hash ;
+typedef int const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BN_bin2bn (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* BN_new () ; 
- int /*<<< orphan*/  BN_num_bits (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_print_fp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int DH_compute_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_get0_pqg (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- size_t DH_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DHparams_print_fp (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSH2_MSG_KEX_DH_GEX_REPLY ; 
- int SSH_DIGEST_MAX_LENGTH ; 
- int SSH_ERR_ALLOC_FAIL ; 
- int SSH_ERR_INVALID_ARGUMENT ; 
- int SSH_ERR_LIBCRYPTO_ERROR ; 
- int SSH_ERR_MESSAGE_INCOMPLETE ; 
- int SSH_ERR_NO_HOSTKEY_LOADED ; 
- int /*<<< orphan*/  debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dh_pub_is_valid (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  dump_digest (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  explicit_bzero (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int kex_derive_keys_bn (struct ssh*,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/  const*) ; 
- int kex_send_newkeys (struct ssh*) ; 
- int kexgex_hash (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,size_t*) ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  sshbuf_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sshbuf_ptr (int /*<<< orphan*/ ) ; 
- int sshkey_to_blob (struct sshkey*,int /*<<< orphan*/ **,size_t*) ; 
- int /*<<< orphan*/  sshpkt_disconnect (struct ssh*,char*) ; 
- int sshpkt_get_bignum2 (struct ssh*,int /*<<< orphan*/  const*) ; 
- int sshpkt_get_end (struct ssh*) ; 
- int sshpkt_put_bignum2 (struct ssh*,int /*<<< orphan*/  const*) ; 
- int sshpkt_put_string (struct ssh*,int /*<<< orphan*/ *,size_t) ; 
- int sshpkt_send (struct ssh*) ; 
- int sshpkt_start (struct ssh*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- struct sshkey* stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ssh*) ; 
- struct sshkey* stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ssh*) ; 
- int stub3 (struct sshkey*,struct sshkey*,int /*<<< orphan*/ **,size_t*,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int * BN_bin2bn (int *,int,int const*) ;
+ int BN_clear_free (int const*) ;
+ int const* BN_new () ;
+ int BN_num_bits (int const*) ;
+ int BN_print_fp (int ,int const*) ;
+ int DH_compute_key (int *,int const*,int *) ;
+ int DH_free (int *) ;
+ int DH_get0_key (int *,int const**,int *) ;
+ int DH_get0_pqg (int *,int const**,int *,int const**) ;
+ size_t DH_size (int *) ;
+ int DHparams_print_fp (int ,int *) ;
+ int SSH2_MSG_KEX_DH_GEX_REPLY ;
+ int SSH_DIGEST_MAX_LENGTH ;
+ int SSH_ERR_ALLOC_FAIL ;
+ int SSH_ERR_INVALID_ARGUMENT ;
+ int SSH_ERR_LIBCRYPTO_ERROR ;
+ int SSH_ERR_MESSAGE_INCOMPLETE ;
+ int SSH_ERR_NO_HOSTKEY_LOADED ;
+ int debug (char*,int ) ;
+ int dh_pub_is_valid (int *,int const*) ;
+ int dump_digest (char*,int *,int) ;
+ int explicit_bzero (int *,size_t) ;
+ int fprintf (int ,char*) ;
+ int free (int *) ;
+ int kex_derive_keys_bn (struct ssh*,int *,size_t,int const*) ;
+ int kex_send_newkeys (struct ssh*) ;
+ int kexgex_hash (int ,int ,int ,int ,int ,int ,int ,int *,size_t,int ,int ,int ,int const*,int const*,int const*,int const*,int const*,int *,size_t*) ;
+ void* malloc (size_t) ;
+ int memcpy (int *,int *,size_t) ;
+ int sshbuf_len (int ) ;
+ int sshbuf_ptr (int ) ;
+ int sshkey_to_blob (struct sshkey*,int **,size_t*) ;
+ int sshpkt_disconnect (struct ssh*,char*) ;
+ int sshpkt_get_bignum2 (struct ssh*,int const*) ;
+ int sshpkt_get_end (struct ssh*) ;
+ int sshpkt_put_bignum2 (struct ssh*,int const*) ;
+ int sshpkt_put_string (struct ssh*,int *,size_t) ;
+ int sshpkt_send (struct ssh*) ;
+ int sshpkt_start (struct ssh*,int ) ;
+ int stderr ;
+ struct sshkey* stub1 (int ,int ,struct ssh*) ;
+ struct sshkey* stub2 (int ,int ,struct ssh*) ;
+ int stub3 (struct sshkey*,struct sshkey*,int **,size_t*,int *,size_t,int ,int ) ;
 
 __attribute__((used)) static int
 input_kex_dh_gex_init(int type, u_int32_t seq, struct ssh *ssh)
 {
-	struct kex *kex = ssh->kex;
-	BIGNUM *shared_secret = NULL, *dh_client_pub = NULL;
-	const BIGNUM *pub_key, *dh_p, *dh_g;
-	struct sshkey *server_host_public, *server_host_private;
-	u_char *kbuf = NULL, *signature = NULL, *server_host_key_blob = NULL;
-	u_char hash[SSH_DIGEST_MAX_LENGTH];
-	size_t sbloblen, slen;
-	size_t klen = 0, hashlen;
-	int kout, r;
+ struct kex *kex = ssh->kex;
+ BIGNUM *shared_secret = ((void*)0), *dh_client_pub = ((void*)0);
+ const BIGNUM *pub_key, *dh_p, *dh_g;
+ struct sshkey *server_host_public, *server_host_private;
+ u_char *kbuf = ((void*)0), *signature = ((void*)0), *server_host_key_blob = ((void*)0);
+ u_char hash[SSH_DIGEST_MAX_LENGTH];
+ size_t sbloblen, slen;
+ size_t klen = 0, hashlen;
+ int kout, r;
 
-	if (kex->load_host_public_key == NULL ||
-	    kex->load_host_private_key == NULL) {
-		r = SSH_ERR_INVALID_ARGUMENT;
-		goto out;
-	}
-	server_host_public = kex->load_host_public_key(kex->hostkey_type,
-	    kex->hostkey_nid, ssh);
-	server_host_private = kex->load_host_private_key(kex->hostkey_type,
-	    kex->hostkey_nid, ssh);
-	if (server_host_public == NULL) {
-		r = SSH_ERR_NO_HOSTKEY_LOADED;
-		goto out;
-	}
+ if (kex->load_host_public_key == ((void*)0) ||
+     kex->load_host_private_key == ((void*)0)) {
+  r = SSH_ERR_INVALID_ARGUMENT;
+  goto out;
+ }
+ server_host_public = kex->load_host_public_key(kex->hostkey_type,
+     kex->hostkey_nid, ssh);
+ server_host_private = kex->load_host_private_key(kex->hostkey_type,
+     kex->hostkey_nid, ssh);
+ if (server_host_public == ((void*)0)) {
+  r = SSH_ERR_NO_HOSTKEY_LOADED;
+  goto out;
+ }
 
-	/* key, cert */
-	if ((dh_client_pub = BN_new()) == NULL) {
-		r = SSH_ERR_ALLOC_FAIL;
-		goto out;
-	}
-	if ((r = sshpkt_get_bignum2(ssh, dh_client_pub)) != 0 ||
-	    (r = sshpkt_get_end(ssh)) != 0)
-		goto out;
 
-	DH_get0_key(kex->dh, &pub_key, NULL);
-	DH_get0_pqg(kex->dh, &dh_p, NULL, &dh_g);
+ if ((dh_client_pub = BN_new()) == ((void*)0)) {
+  r = SSH_ERR_ALLOC_FAIL;
+  goto out;
+ }
+ if ((r = sshpkt_get_bignum2(ssh, dh_client_pub)) != 0 ||
+     (r = sshpkt_get_end(ssh)) != 0)
+  goto out;
 
-#ifdef DEBUG_KEXDH
-	fprintf(stderr, "dh_client_pub= ");
-	BN_print_fp(stderr, dh_client_pub);
-	fprintf(stderr, "\n");
-	debug("bits %d", BN_num_bits(dh_client_pub));
-	DHparams_print_fp(stderr, kex->dh);
-	fprintf(stderr, "pub= ");
-	BN_print_fp(stderr, pub_key);
-	fprintf(stderr, "\n");
-#endif
-	if (!dh_pub_is_valid(kex->dh, dh_client_pub)) {
-		sshpkt_disconnect(ssh, "bad client public DH value");
-		r = SSH_ERR_MESSAGE_INCOMPLETE;
-		goto out;
-	}
+ DH_get0_key(kex->dh, &pub_key, ((void*)0));
+ DH_get0_pqg(kex->dh, &dh_p, ((void*)0), &dh_g);
+ if (!dh_pub_is_valid(kex->dh, dh_client_pub)) {
+  sshpkt_disconnect(ssh, "bad client public DH value");
+  r = SSH_ERR_MESSAGE_INCOMPLETE;
+  goto out;
+ }
 
-	klen = DH_size(kex->dh);
-	if ((kbuf = malloc(klen)) == NULL ||
-	    (shared_secret = BN_new()) == NULL) {
-		r = SSH_ERR_ALLOC_FAIL;
-		goto out;
-	}
-	if ((kout = DH_compute_key(kbuf, dh_client_pub, kex->dh)) < 0 ||
-	    BN_bin2bn(kbuf, kout, shared_secret) == NULL) {
-		r = SSH_ERR_LIBCRYPTO_ERROR;
-		goto out;
-	}
-#ifdef DEBUG_KEXDH
-	dump_digest("shared secret", kbuf, kout);
-#endif
-	if ((r = sshkey_to_blob(server_host_public, &server_host_key_blob,
-	    &sbloblen)) != 0)
-		goto out;
-	/* calc H */
-	hashlen = sizeof(hash);
-	if ((r = kexgex_hash(
-	    kex->hash_alg,
-	    kex->client_version_string,
-	    kex->server_version_string,
-	    sshbuf_ptr(kex->peer), sshbuf_len(kex->peer),
-	    sshbuf_ptr(kex->my), sshbuf_len(kex->my),
-	    server_host_key_blob, sbloblen,
-	    kex->min, kex->nbits, kex->max,
-	    dh_p, dh_g,
-	    dh_client_pub,
-	    pub_key,
-	    shared_secret,
-	    hash, &hashlen)) != 0)
-		goto out;
+ klen = DH_size(kex->dh);
+ if ((kbuf = malloc(klen)) == ((void*)0) ||
+     (shared_secret = BN_new()) == ((void*)0)) {
+  r = SSH_ERR_ALLOC_FAIL;
+  goto out;
+ }
+ if ((kout = DH_compute_key(kbuf, dh_client_pub, kex->dh)) < 0 ||
+     BN_bin2bn(kbuf, kout, shared_secret) == ((void*)0)) {
+  r = SSH_ERR_LIBCRYPTO_ERROR;
+  goto out;
+ }
 
-	/* save session id := H */
-	if (kex->session_id == NULL) {
-		kex->session_id_len = hashlen;
-		kex->session_id = malloc(kex->session_id_len);
-		if (kex->session_id == NULL) {
-			r = SSH_ERR_ALLOC_FAIL;
-			goto out;
-		}
-		memcpy(kex->session_id, hash, kex->session_id_len);
-	}
 
-	/* sign H */
-	if ((r = kex->sign(server_host_private, server_host_public, &signature,
-	     &slen, hash, hashlen, kex->hostkey_alg, ssh->compat)) < 0)
-		goto out;
 
-	/* destroy_sensitive_data(); */
+ if ((r = sshkey_to_blob(server_host_public, &server_host_key_blob,
+     &sbloblen)) != 0)
+  goto out;
 
-	/* send server hostkey, DH pubkey 'f' and signed H */
-	if ((r = sshpkt_start(ssh, SSH2_MSG_KEX_DH_GEX_REPLY)) != 0 ||
-	    (r = sshpkt_put_string(ssh, server_host_key_blob, sbloblen)) != 0 ||
-	    (r = sshpkt_put_bignum2(ssh, pub_key)) != 0 ||     /* f */
-	    (r = sshpkt_put_string(ssh, signature, slen)) != 0 ||
-	    (r = sshpkt_send(ssh)) != 0)
-		goto out;
+ hashlen = sizeof(hash);
+ if ((r = kexgex_hash(
+     kex->hash_alg,
+     kex->client_version_string,
+     kex->server_version_string,
+     sshbuf_ptr(kex->peer), sshbuf_len(kex->peer),
+     sshbuf_ptr(kex->my), sshbuf_len(kex->my),
+     server_host_key_blob, sbloblen,
+     kex->min, kex->nbits, kex->max,
+     dh_p, dh_g,
+     dh_client_pub,
+     pub_key,
+     shared_secret,
+     hash, &hashlen)) != 0)
+  goto out;
 
-	if ((r = kex_derive_keys_bn(ssh, hash, hashlen, shared_secret)) == 0)
-		r = kex_send_newkeys(ssh);
+
+ if (kex->session_id == ((void*)0)) {
+  kex->session_id_len = hashlen;
+  kex->session_id = malloc(kex->session_id_len);
+  if (kex->session_id == ((void*)0)) {
+   r = SSH_ERR_ALLOC_FAIL;
+   goto out;
+  }
+  memcpy(kex->session_id, hash, kex->session_id_len);
+ }
+
+
+ if ((r = kex->sign(server_host_private, server_host_public, &signature,
+      &slen, hash, hashlen, kex->hostkey_alg, ssh->compat)) < 0)
+  goto out;
+
+
+
+
+ if ((r = sshpkt_start(ssh, SSH2_MSG_KEX_DH_GEX_REPLY)) != 0 ||
+     (r = sshpkt_put_string(ssh, server_host_key_blob, sbloblen)) != 0 ||
+     (r = sshpkt_put_bignum2(ssh, pub_key)) != 0 ||
+     (r = sshpkt_put_string(ssh, signature, slen)) != 0 ||
+     (r = sshpkt_send(ssh)) != 0)
+  goto out;
+
+ if ((r = kex_derive_keys_bn(ssh, hash, hashlen, shared_secret)) == 0)
+  r = kex_send_newkeys(ssh);
  out:
-	DH_free(kex->dh);
-	kex->dh = NULL;
-	BN_clear_free(dh_client_pub);
-	if (kbuf) {
-		explicit_bzero(kbuf, klen);
-		free(kbuf);
-	}
-	BN_clear_free(shared_secret);
-	free(server_host_key_blob);
-	free(signature);
-	return r;
+ DH_free(kex->dh);
+ kex->dh = ((void*)0);
+ BN_clear_free(dh_client_pub);
+ if (kbuf) {
+  explicit_bzero(kbuf, klen);
+  free(kbuf);
+ }
+ BN_clear_free(shared_secret);
+ free(server_host_key_blob);
+ free(signature);
+ return r;
 }

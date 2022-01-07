@@ -1,120 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct amdgpu_device {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int RREG32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WREG32 (int /*<<< orphan*/ ,int) ; 
- int kv_set_smc_sram_address (struct amdgpu_device*,int,int) ; 
- int /*<<< orphan*/  mmSMC_IND_DATA_0 ; 
+
+ int EINVAL ;
+ int RREG32 (int ) ;
+ int WREG32 (int ,int) ;
+ int kv_set_smc_sram_address (struct amdgpu_device*,int,int) ;
+ int mmSMC_IND_DATA_0 ;
 
 int amdgpu_kv_copy_bytes_to_smc(struct amdgpu_device *adev,
-			 u32 smc_start_address,
-			 const u8 *src, u32 byte_count, u32 limit)
+    u32 smc_start_address,
+    const u8 *src, u32 byte_count, u32 limit)
 {
-	int ret;
-	u32 data, original_data, addr, extra_shift, t_byte, count, mask;
+ int ret;
+ u32 data, original_data, addr, extra_shift, t_byte, count, mask;
 
-	if ((smc_start_address + byte_count) > limit)
-		return -EINVAL;
+ if ((smc_start_address + byte_count) > limit)
+  return -EINVAL;
 
-	addr = smc_start_address;
-	t_byte = addr & 3;
+ addr = smc_start_address;
+ t_byte = addr & 3;
 
-	/* RMW for the initial bytes */
-	if  (t_byte != 0) {
-		addr -= t_byte;
 
-		ret = kv_set_smc_sram_address(adev, addr, limit);
-		if (ret)
-			return ret;
+ if (t_byte != 0) {
+  addr -= t_byte;
 
-		original_data = RREG32(mmSMC_IND_DATA_0);
+  ret = kv_set_smc_sram_address(adev, addr, limit);
+  if (ret)
+   return ret;
 
-		data = 0;
-		mask = 0;
-		count = 4;
-		while (count > 0) {
-			if (t_byte > 0) {
-				mask = (mask << 8) | 0xff;
-				t_byte--;
-			} else if (byte_count > 0) {
-				data = (data << 8) + *src++;
-				byte_count--;
-				mask <<= 8;
-			} else {
-				data <<= 8;
-				mask = (mask << 8) | 0xff;
-			}
-			count--;
-		}
+  original_data = RREG32(mmSMC_IND_DATA_0);
 
-		data |= original_data & mask;
+  data = 0;
+  mask = 0;
+  count = 4;
+  while (count > 0) {
+   if (t_byte > 0) {
+    mask = (mask << 8) | 0xff;
+    t_byte--;
+   } else if (byte_count > 0) {
+    data = (data << 8) + *src++;
+    byte_count--;
+    mask <<= 8;
+   } else {
+    data <<= 8;
+    mask = (mask << 8) | 0xff;
+   }
+   count--;
+  }
 
-		ret = kv_set_smc_sram_address(adev, addr, limit);
-		if (ret)
-			return ret;
+  data |= original_data & mask;
 
-		WREG32(mmSMC_IND_DATA_0, data);
+  ret = kv_set_smc_sram_address(adev, addr, limit);
+  if (ret)
+   return ret;
 
-		addr += 4;
-	}
+  WREG32(mmSMC_IND_DATA_0, data);
 
-	while (byte_count >= 4) {
-		/* SMC address space is BE */
-		data = (src[0] << 24) + (src[1] << 16) + (src[2] << 8) + src[3];
+  addr += 4;
+ }
 
-		ret = kv_set_smc_sram_address(adev, addr, limit);
-		if (ret)
-			return ret;
+ while (byte_count >= 4) {
 
-		WREG32(mmSMC_IND_DATA_0, data);
+  data = (src[0] << 24) + (src[1] << 16) + (src[2] << 8) + src[3];
 
-		src += 4;
-		byte_count -= 4;
-		addr += 4;
-	}
+  ret = kv_set_smc_sram_address(adev, addr, limit);
+  if (ret)
+   return ret;
 
-	/* RMW for the final bytes */
-	if (byte_count > 0) {
-		data = 0;
+  WREG32(mmSMC_IND_DATA_0, data);
 
-		ret = kv_set_smc_sram_address(adev, addr, limit);
-		if (ret)
-			return ret;
+  src += 4;
+  byte_count -= 4;
+  addr += 4;
+ }
 
-		original_data = RREG32(mmSMC_IND_DATA_0);
 
-		extra_shift = 8 * (4 - byte_count);
+ if (byte_count > 0) {
+  data = 0;
 
-		while (byte_count > 0) {
-			/* SMC address space is BE */
-			data = (data << 8) + *src++;
-			byte_count--;
-		}
+  ret = kv_set_smc_sram_address(adev, addr, limit);
+  if (ret)
+   return ret;
 
-		data <<= extra_shift;
+  original_data = RREG32(mmSMC_IND_DATA_0);
 
-		data |= (original_data & ~((~0UL) << extra_shift));
+  extra_shift = 8 * (4 - byte_count);
 
-		ret = kv_set_smc_sram_address(adev, addr, limit);
-		if (ret)
-			return ret;
+  while (byte_count > 0) {
 
-		WREG32(mmSMC_IND_DATA_0, data);
-	}
-	return 0;
+   data = (data << 8) + *src++;
+   byte_count--;
+  }
+
+  data <<= extra_shift;
+
+  data |= (original_data & ~((~0UL) << extra_shift));
+
+  ret = kv_set_smc_sram_address(adev, addr, limit);
+  if (ret)
+   return ret;
+
+  WREG32(mmSMC_IND_DATA_0, data);
+ }
+ return 0;
 }

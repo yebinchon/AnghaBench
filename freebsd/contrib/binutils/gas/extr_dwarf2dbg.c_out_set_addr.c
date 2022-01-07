@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
-struct TYPE_3__ {scalar_t__ X_add_number; int /*<<< orphan*/ * X_add_symbol; int /*<<< orphan*/  X_op; } ;
-typedef  TYPE_1__ expressionS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DW_LNE_set_address ; 
- int /*<<< orphan*/  DW_LNS_extended_op ; 
- int /*<<< orphan*/  O_symbol ; 
- int /*<<< orphan*/  emit_expr (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  out_opcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  out_uleb128 (scalar_t__) ; 
- scalar_t__ sizeof_address ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int symbolS ;
+struct TYPE_3__ {scalar_t__ X_add_number; int * X_add_symbol; int X_op; } ;
+typedef TYPE_1__ expressionS ;
+
+
+ int DW_LNE_set_address ;
+ int DW_LNS_extended_op ;
+ int O_symbol ;
+ int emit_expr (TYPE_1__*,scalar_t__) ;
+ int out_opcode (int ) ;
+ int out_uleb128 (scalar_t__) ;
+ scalar_t__ sizeof_address ;
 
 __attribute__((used)) static void
 out_set_addr (symbolS *sym)

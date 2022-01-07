@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vm_fault {int /*<<< orphan*/  page; } ;
+
+
+
+
+struct vm_fault {int page; } ;
 struct vm_area_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_page (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ia32_shared_page ; 
- size_t smp_processor_id () ; 
+
+ int get_page (int ) ;
+ int * ia32_shared_page ;
+ size_t smp_processor_id () ;
 
 int
 ia32_install_shared_page (struct vm_area_struct *vma, struct vm_fault *vmf)
 {
-	vmf->page = ia32_shared_page[smp_processor_id()];
-	get_page(vmf->page);
-	return 0;
+ vmf->page = ia32_shared_page[smp_processor_id()];
+ get_page(vmf->page);
+ return 0;
 }

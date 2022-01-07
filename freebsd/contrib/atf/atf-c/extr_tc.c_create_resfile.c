@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_error_t ;
-typedef  int /*<<< orphan*/  atf_dynstr_t ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int const STDERR_FILENO ; 
- int const STDOUT_FILENO ; 
- int S_IRGRP ; 
- int S_IROTH ; 
- int S_IRUSR ; 
- int S_IWUSR ; 
- int /*<<< orphan*/  atf_dynstr_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_libc_error (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  check_fatal_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int const) ; 
- int /*<<< orphan*/  errno ; 
- int open (char const*,int,int) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- int /*<<< orphan*/  write_resfile (int const,char const*,int const,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int atf_error_t ;
+typedef int atf_dynstr_t ;
+
+
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int const STDERR_FILENO ;
+ int const STDOUT_FILENO ;
+ int S_IRGRP ;
+ int S_IROTH ;
+ int S_IRUSR ;
+ int S_IWUSR ;
+ int atf_dynstr_fini (int *) ;
+ int atf_libc_error (int ,char*,char const*) ;
+ int check_fatal_error (int ) ;
+ int close (int const) ;
+ int errno ;
+ int open (char const*,int,int) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ int write_resfile (int const,char const*,int const,int *) ;
 
 __attribute__((used)) static void
 create_resfile(const char *resfile, const char *result, const int arg,
@@ -54,7 +54,7 @@ create_resfile(const char *resfile, const char *result, const int arg,
         }
     }
 
-    if (reason != NULL)
+    if (reason != ((void*)0))
         atf_dynstr_fini(reason);
 
     check_fatal_error(err);

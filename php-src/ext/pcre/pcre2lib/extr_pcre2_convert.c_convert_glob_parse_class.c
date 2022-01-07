@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pcre2_output_context ;
-typedef  scalar_t__ PCRE2_UCHAR ;
-typedef  scalar_t__* PCRE2_SPTR ;
 
-/* Variables and functions */
- scalar_t__ CHAR_COLON ; 
- char const CHAR_NUL ; 
- scalar_t__ CHAR_RIGHT_SQUARE_BRACKET ; 
- scalar_t__ CHAR_a ; 
- scalar_t__ CHAR_z ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  convert_glob_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pcre2_output_context ;
+typedef scalar_t__ PCRE2_UCHAR ;
+typedef scalar_t__* PCRE2_SPTR ;
+
+
+ scalar_t__ CHAR_COLON ;
+ char const CHAR_NUL ;
+ scalar_t__ CHAR_RIGHT_SQUARE_BRACKET ;
+ scalar_t__ CHAR_a ;
+ scalar_t__ CHAR_z ;
+ scalar_t__ TRUE ;
+ int convert_glob_write (int *,int ) ;
 
 __attribute__((used)) static int
 convert_glob_parse_class(PCRE2_SPTR *from, PCRE2_SPTR pattern_end,

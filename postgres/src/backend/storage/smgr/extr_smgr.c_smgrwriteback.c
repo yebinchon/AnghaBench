@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* smgr_writeback ) (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* smgr_writeback ) (TYPE_1__*,int ,int ,int ) ;} ;
 struct TYPE_5__ {size_t smgr_which; } ;
-typedef  TYPE_1__* SMgrRelation ;
-typedef  int /*<<< orphan*/  ForkNumber ;
-typedef  int /*<<< orphan*/  BlockNumber ;
+typedef TYPE_1__* SMgrRelation ;
+typedef int ForkNumber ;
+typedef int BlockNumber ;
 
-/* Variables and functions */
- TYPE_4__* smgrsw ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_4__* smgrsw ;
+ int stub1 (TYPE_1__*,int ,int ,int ) ;
 
 void
 smgrwriteback(SMgrRelation reln, ForkNumber forknum, BlockNumber blocknum,
-			  BlockNumber nblocks)
+     BlockNumber nblocks)
 {
-	smgrsw[reln->smgr_which].smgr_writeback(reln, forknum, blocknum,
-											nblocks);
+ smgrsw[reln->smgr_which].smgr_writeback(reln, forknum, blocknum,
+           nblocks);
 }

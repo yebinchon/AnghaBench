@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct BannerOutput {int dummy; } ;
-typedef  int /*<<< orphan*/  snmp_response ;
+typedef int snmp_response ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROTO_SNMP ; 
- int /*<<< orphan*/  banout_init (struct BannerOutput*) ; 
- int /*<<< orphan*/  banout_release (struct BannerOutput*) ; 
- unsigned char* banout_string (struct BannerOutput*,int /*<<< orphan*/ ) ; 
- size_t banout_string_length (struct BannerOutput*,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (unsigned char const*,char*,size_t) ; 
- int /*<<< orphan*/  snmp_parse (unsigned char const*,int,struct BannerOutput*,unsigned int*) ; 
+
+ int PROTO_SNMP ;
+ int banout_init (struct BannerOutput*) ;
+ int banout_release (struct BannerOutput*) ;
+ unsigned char* banout_string (struct BannerOutput*,int ) ;
+ size_t banout_string_length (struct BannerOutput*,int ) ;
+ scalar_t__ memcmp (unsigned char const*,char*,size_t) ;
+ int snmp_parse (unsigned char const*,int,struct BannerOutput*,unsigned int*) ;
 
 __attribute__((used)) static int
 snmp_selftest_banner()
@@ -44,14 +44,14 @@ snmp_selftest_banner()
     struct BannerOutput banout[1];
     banout_init(banout);
 
-    /* parse a test packet */
-    snmp_parse( snmp_response, 
+
+    snmp_parse( snmp_response,
                 sizeof(snmp_response),
                 banout,
                 &request_id
                 );
-    
-    
+
+
     if (request_id != 0x26)
         return 1;
 

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  const* class; int /*<<< orphan*/  alias; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_1__*) ; 
- TYPE_1__* alias_map ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {int const* class; int alias; } ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_1__*) ;
+ TYPE_1__* alias_map ;
+ int strcmpiW (int const*,int ) ;
 
 __attribute__((used)) static const WCHAR *find_class( const WCHAR *alias )
 {
@@ -27,5 +27,5 @@ __attribute__((used)) static const WCHAR *find_class( const WCHAR *alias )
     {
         if (!strcmpiW( alias, alias_map[i].alias )) return alias_map[i].class;
     }
-    return NULL;
+    return ((void*)0);
 }

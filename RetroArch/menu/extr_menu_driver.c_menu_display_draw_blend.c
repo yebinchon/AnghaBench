@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_frame_info_t ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int video_frame_info_t ;
 struct TYPE_5__ {scalar_t__ height; scalar_t__ width; } ;
-typedef  TYPE_1__ menu_display_ctx_draw_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* draw ) (TYPE_1__*,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_1__ menu_display_ctx_draw_t ;
+struct TYPE_6__ {int (* draw ) (TYPE_1__*,int *) ;} ;
 
-/* Variables and functions */
- TYPE_4__* menu_disp ; 
- int /*<<< orphan*/  menu_display_blend_begin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  menu_display_blend_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ TYPE_4__* menu_disp ;
+ int menu_display_blend_begin (int *) ;
+ int menu_display_blend_end (int *) ;
+ int stub1 (TYPE_1__*,int *) ;
 
 void menu_display_draw_blend(menu_display_ctx_draw_t *draw,
       video_frame_info_t *video_info)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  guint8 ;
-typedef  int gboolean ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  calculate_sha1 (unsigned char*,char const*,int) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rawdata_to_hex (unsigned char*,char*,int) ; 
- scalar_t__ seaf_decompress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*) ; 
- scalar_t__ strcmp (char*,char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int guint8 ;
+typedef int gboolean ;
+
+
+ int FALSE ;
+ int calculate_sha1 (unsigned char*,char const*,int) ;
+ int g_free (int *) ;
+ int rawdata_to_hex (unsigned char*,char*,int) ;
+ scalar_t__ seaf_decompress (int *,int,int **,int*) ;
+ int seaf_warning (char*,char const*) ;
+ scalar_t__ strcmp (char*,char const*) ;
 
 __attribute__((used)) static gboolean
 verify_fs_object_json (const char *obj_id, uint8_t *data, int len)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmd ;
-struct TYPE_6__ {int /*<<< orphan*/  repo_id; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ WatchCommand ;
-struct TYPE_7__ {int /*<<< orphan*/ * cmd_pipe; } ;
-typedef  TYPE_2__ SeafWTMonitor ;
-typedef  int /*<<< orphan*/  CFOptionFlags ;
-typedef  int /*<<< orphan*/  CFFileDescriptorRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFFileDescriptorEnableCallBacks (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CFRunLoopGetCurrent () ; 
- int /*<<< orphan*/  handle_watch_command (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  kCFFileDescriptorReadCallBack ; 
- int /*<<< orphan*/  seaf_debug (char*,long,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int seaf_pipe_readn (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmd ;
+struct TYPE_6__ {int repo_id; int type; } ;
+typedef TYPE_1__ WatchCommand ;
+struct TYPE_7__ {int * cmd_pipe; } ;
+typedef TYPE_2__ SeafWTMonitor ;
+typedef int CFOptionFlags ;
+typedef int CFFileDescriptorRef ;
+
+
+ int CFFileDescriptorEnableCallBacks (int ,int ) ;
+ scalar_t__ CFRunLoopGetCurrent () ;
+ int handle_watch_command (TYPE_2__*,TYPE_1__*) ;
+ int kCFFileDescriptorReadCallBack ;
+ int seaf_debug (char*,long,int ,int ) ;
+ int seaf_pipe_readn (int ,TYPE_1__*,int) ;
+ int seaf_warning (char*) ;
 
 __attribute__((used)) static void
 command_read_cb (CFFileDescriptorRef fdref,

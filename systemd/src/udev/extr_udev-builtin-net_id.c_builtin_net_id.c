@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct netnames {scalar_t__ type; char* pci_path; char* pci_slot; int /*<<< orphan*/  bcma_core; int /*<<< orphan*/  usb_ports; scalar_t__ pci_onboard_label; scalar_t__* pci_onboard; int /*<<< orphan*/  netdevsim_path; int /*<<< orphan*/  platform_path; int /*<<< orphan*/  vio_slot; int /*<<< orphan*/  ccw_busid; int /*<<< orphan*/ * mac; scalar_t__ mac_valid; } ;
-typedef  int /*<<< orphan*/  sd_device ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct netnames {scalar_t__ type; char* pci_path; char* pci_slot; int bcma_core; int usb_ports; scalar_t__ pci_onboard_label; scalar_t__* pci_onboard; int netdevsim_path; int platform_path; int vio_slot; int ccw_busid; int * mac; scalar_t__ mac_valid; } ;
+typedef int sd_device ;
 struct TYPE_2__ {char* name; } ;
 
-/* Variables and functions */
-#define  ARPHRD_ETHER 130 
-#define  ARPHRD_INFINIBAND 129 
-#define  ARPHRD_SLIP 128 
- int IFNAMSIZ ; 
- int /*<<< orphan*/  NAMING_INFINIBAND ; 
- int /*<<< orphan*/  NAMING_LABEL_NOPREFIX ; 
- scalar_t__ NET_BCMA ; 
- scalar_t__ NET_CCW ; 
- scalar_t__ NET_NETDEVSIM ; 
- scalar_t__ NET_PCI ; 
- scalar_t__ NET_PLATFORM ; 
- scalar_t__ NET_USB ; 
- scalar_t__ NET_VIO ; 
- int /*<<< orphan*/  ieee_oui (int /*<<< orphan*/ *,struct netnames*,int) ; 
- scalar_t__ names_bcma (int /*<<< orphan*/ *,struct netnames*) ; 
- scalar_t__ names_ccw (int /*<<< orphan*/ *,struct netnames*) ; 
- int names_mac (int /*<<< orphan*/ *,struct netnames*) ; 
- scalar_t__ names_netdevsim (int /*<<< orphan*/ *,struct netnames*) ; 
- scalar_t__ names_pci (int /*<<< orphan*/ *,struct netnames*) ; 
- scalar_t__ names_platform (int /*<<< orphan*/ *,struct netnames*,int) ; 
- scalar_t__ names_usb (int /*<<< orphan*/ *,struct netnames*) ; 
- scalar_t__ names_vio (int /*<<< orphan*/ *,struct netnames*) ; 
- TYPE_1__* naming_scheme () ; 
- scalar_t__ naming_scheme_has (int /*<<< orphan*/ ) ; 
- scalar_t__ sd_device_get_devtype (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_sysattr_value (int /*<<< orphan*/ *,char*,char const**) ; 
- scalar_t__ snprintf (char*,int,char*,char const*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ snprintf_ok (char*,int,char*,char const*,char*,...) ; 
- scalar_t__ streq (char const*,char const*) ; 
- unsigned long strtoul (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udev_builtin_add_property (int /*<<< orphan*/ *,int,char*,char*) ; 
- int /*<<< orphan*/  xsprintf (char*,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+ int IFNAMSIZ ;
+ int NAMING_INFINIBAND ;
+ int NAMING_LABEL_NOPREFIX ;
+ scalar_t__ NET_BCMA ;
+ scalar_t__ NET_CCW ;
+ scalar_t__ NET_NETDEVSIM ;
+ scalar_t__ NET_PCI ;
+ scalar_t__ NET_PLATFORM ;
+ scalar_t__ NET_USB ;
+ scalar_t__ NET_VIO ;
+ int ieee_oui (int *,struct netnames*,int) ;
+ scalar_t__ names_bcma (int *,struct netnames*) ;
+ scalar_t__ names_ccw (int *,struct netnames*) ;
+ int names_mac (int *,struct netnames*) ;
+ scalar_t__ names_netdevsim (int *,struct netnames*) ;
+ scalar_t__ names_pci (int *,struct netnames*) ;
+ scalar_t__ names_platform (int *,struct netnames*,int) ;
+ scalar_t__ names_usb (int *,struct netnames*) ;
+ scalar_t__ names_vio (int *,struct netnames*) ;
+ TYPE_1__* naming_scheme () ;
+ scalar_t__ naming_scheme_has (int ) ;
+ scalar_t__ sd_device_get_devtype (int *,char const**) ;
+ int sd_device_get_sysattr_value (int *,char*,char const**) ;
+ scalar_t__ snprintf (char*,int,char*,char const*,char*,int ) ;
+ scalar_t__ snprintf_ok (char*,int,char*,char const*,char*,...) ;
+ scalar_t__ streq (char const*,char const*) ;
+ unsigned long strtoul (char const*,int *,int ) ;
+ int udev_builtin_add_property (int *,int,char*,char*) ;
+ int xsprintf (char*,char*,char const*,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *argv[], bool test) {
         const char *s, *p, *devtype, *prefix = "en";
@@ -55,30 +55,30 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
         unsigned long i;
         int r;
 
-        /* handle only ARPHRD_ETHER, ARPHRD_SLIP and ARPHRD_INFINIBAND devices */
+
         r = sd_device_get_sysattr_value(dev, "type", &s);
         if (r < 0)
                 return r;
 
-        i = strtoul(s, NULL, 0);
+        i = strtoul(s, ((void*)0), 0);
         switch (i) {
-        case ARPHRD_ETHER:
+        case 130:
                 prefix = "en";
                 break;
-        case ARPHRD_INFINIBAND:
+        case 129:
                 if (naming_scheme_has(NAMING_INFINIBAND))
                         prefix = "ib";
                 else
                         return 0;
                 break;
-        case ARPHRD_SLIP:
+        case 128:
                 prefix = "sl";
                 break;
         default:
                 return 0;
         }
 
-        /* skip stacked devices, like VLANs, ... */
+
         r = sd_device_get_sysattr_value(dev, "ifindex", &s);
         if (r < 0)
                 return r;
@@ -109,7 +109,7 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 ieee_oui(dev, &names, test);
         }
 
-        /* get path names for Linux on System z network devices */
+
         if (names_ccw(dev, &names) >= 0 && names.type == NET_CCW) {
                 char str[IFNAMSIZ];
 
@@ -118,7 +118,7 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 return 0;
         }
 
-        /* get ibmveth/ibmvnic slot-based names. */
+
         if (names_vio(dev, &names) >= 0 && names.type == NET_VIO) {
                 char str[IFNAMSIZ];
 
@@ -127,7 +127,7 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 return 0;
         }
 
-        /* get ACPI path names for ARM64 platform devices */
+
         if (names_platform(dev, &names, test) >= 0 && names.type == NET_PLATFORM) {
                 char str[IFNAMSIZ];
 
@@ -136,7 +136,7 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 return 0;
         }
 
-        /* get netdevsim path names */
+
         if (names_netdevsim(dev, &names) >= 0 && names.type == NET_NETDEVSIM) {
                 char str[IFNAMSIZ];
 
@@ -146,11 +146,11 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 return 0;
         }
 
-        /* get PCI based path names, we compose only PCI based paths */
+
         if (names_pci(dev, &names) < 0)
                 return 0;
 
-        /* plain PCI device */
+
         if (names.type == NET_PCI) {
                 char str[IFNAMSIZ];
 
@@ -174,7 +174,7 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 return 0;
         }
 
-        /* USB device */
+
         if (names_usb(dev, &names) >= 0 && names.type == NET_USB) {
                 char str[IFNAMSIZ];
 
@@ -188,7 +188,7 @@ __attribute__((used)) static int builtin_net_id(sd_device *dev, int argc, char *
                 return 0;
         }
 
-        /* Broadcom bus */
+
         if (names_bcma(dev, &names) >= 0 && names.type == NET_BCMA) {
                 char str[IFNAMSIZ];
 

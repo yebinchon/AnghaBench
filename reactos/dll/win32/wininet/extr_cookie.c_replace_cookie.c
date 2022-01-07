@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ cookie_t ;
-typedef  int /*<<< orphan*/  cookie_container_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_cookie (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  delete_cookie (TYPE_1__*) ; 
- TYPE_1__* find_cookie (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  substrz (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int name; } ;
+typedef TYPE_1__ cookie_t ;
+typedef int cookie_container_t ;
+
+
+ int add_cookie (int *,TYPE_1__*) ;
+ int delete_cookie (TYPE_1__*) ;
+ TYPE_1__* find_cookie (int *,int ) ;
+ int substrz (int ) ;
 
 __attribute__((used)) static void replace_cookie(cookie_container_t *container, cookie_t *new_cookie)
 {

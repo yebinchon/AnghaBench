@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TEST_LEA (char*) ; 
- int /*<<< orphan*/  TEST_LEA16 (char*) ; 
- int /*<<< orphan*/  TEST_LEAQ (char*) ; 
- long i2l (int) ; 
+ int TEST_LEA (char*) ;
+ int TEST_LEA16 (char*) ;
+ int TEST_LEAQ (char*) ;
+ long i2l (int) ;
 
 void test_lea(void)
 {
@@ -81,7 +73,7 @@ void test_lea(void)
     TEST_LEA("0x4000(%%edx, %%ecx, 4)");
     TEST_LEA("0x4000(%%esi, %%ecx, 8)");
 
-#if defined(__x86_64__)
+
     TEST_LEAQ("0x4000");
     TEST_LEAQ("0x4000(%%rip)");
 
@@ -136,22 +128,4 @@ void test_lea(void)
     TEST_LEAQ("0x4000(%%rcx, %%rcx, 2)");
     TEST_LEAQ("0x4000(%%rdx, %%rcx, 4)");
     TEST_LEAQ("0x4000(%%rsi, %%rcx, 8)");
-#elif 0
-    /* limited 16 bit addressing test */
-    TEST_LEA16("0x4000");
-    TEST_LEA16("(%%bx)");
-    TEST_LEA16("(%%si)");
-    TEST_LEA16("(%%di)");
-    TEST_LEA16("0x40(%%bx)");
-    TEST_LEA16("0x40(%%si)");
-    TEST_LEA16("0x40(%%di)");
-    TEST_LEA16("0x4000(%%bx)");
-    TEST_LEA16("0x4000(%%si)");
-    TEST_LEA16("(%%bx,%%si)");
-    TEST_LEA16("(%%bx,%%di)");
-    TEST_LEA16("0x40(%%bx,%%si)");
-    TEST_LEA16("0x40(%%bx,%%di)");
-    TEST_LEA16("0x4000(%%bx,%%si)");
-    TEST_LEA16("0x4000(%%bx,%%di)");
-#endif
 }

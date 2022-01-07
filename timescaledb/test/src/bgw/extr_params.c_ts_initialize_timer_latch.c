@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  timer_latch; } ;
-struct TYPE_6__ {int /*<<< orphan*/  mutex; TYPE_1__ params; } ;
-typedef  TYPE_2__ TestParamsWrapper ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitLatch (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SpinLockAcquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SpinLockRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  params_close_wrapper (TYPE_2__*) ; 
- TYPE_2__* params_open_wrapper () ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int timer_latch; } ;
+struct TYPE_6__ {int mutex; TYPE_1__ params; } ;
+typedef TYPE_2__ TestParamsWrapper ;
+
+
+ int Assert (int ) ;
+ int InitLatch (int *) ;
+ int SpinLockAcquire (int *) ;
+ int SpinLockRelease (int *) ;
+ int params_close_wrapper (TYPE_2__*) ;
+ TYPE_2__* params_open_wrapper () ;
 
 void
 ts_initialize_timer_latch()
 {
-	TestParamsWrapper *wrapper = params_open_wrapper();
+ TestParamsWrapper *wrapper = params_open_wrapper();
 
-	Assert(wrapper != NULL);
+ Assert(wrapper != ((void*)0));
 
-	SpinLockAcquire(&wrapper->mutex);
+ SpinLockAcquire(&wrapper->mutex);
 
-	InitLatch(&wrapper->params.timer_latch);
+ InitLatch(&wrapper->params.timer_latch);
 
-	SpinLockRelease(&wrapper->mutex);
+ SpinLockRelease(&wrapper->mutex);
 
-	params_close_wrapper(wrapper);
+ params_close_wrapper(wrapper);
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szNewTitle ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int GetDeviceMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDS_MODE_NOT_READY ; 
- int /*<<< orphan*/  IDS_MODE_OPEN ; 
- int /*<<< orphan*/  IDS_MODE_PAUSE ; 
- int /*<<< orphan*/  IDS_MODE_PLAY ; 
- int /*<<< orphan*/  IDS_MODE_RECORD ; 
- int /*<<< orphan*/  IDS_MODE_SEEK ; 
- int /*<<< orphan*/  IDS_MODE_STOP ; 
- int /*<<< orphan*/  IDS_MODE_UNKNOWN ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAX_PATH ; 
-#define  MCI_MODE_NOT_READY 134 
-#define  MCI_MODE_OPEN 133 
-#define  MCI_MODE_PAUSE 132 
-#define  MCI_MODE_PLAY 131 
-#define  MCI_MODE_RECORD 130 
-#define  MCI_MODE_SEEK 129 
-#define  MCI_MODE_STOP 128 
- int /*<<< orphan*/  SetWindowText (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StringCbPrintf (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  hInstance ; 
- int /*<<< orphan*/ * szAppTitle ; 
- int /*<<< orphan*/  szCurrentFile ; 
- scalar_t__ wDeviceId ; 
+
+
+
+typedef int szNewTitle ;
+typedef int TCHAR ;
+typedef int HWND ;
+
+
+ int ARRAYSIZE (int *) ;
+ int GetDeviceMode (int ) ;
+ int IDS_MODE_NOT_READY ;
+ int IDS_MODE_OPEN ;
+ int IDS_MODE_PAUSE ;
+ int IDS_MODE_PLAY ;
+ int IDS_MODE_RECORD ;
+ int IDS_MODE_SEEK ;
+ int IDS_MODE_STOP ;
+ int IDS_MODE_UNKNOWN ;
+ int LoadString (int ,int ,int *,int ) ;
+ int MAX_PATH ;
+
+
+
+
+
+
+
+ int SetWindowText (int ,int *) ;
+ int StringCbPrintf (int *,int,int ,int *,int ,int *) ;
+ int _T (char*) ;
+ int hInstance ;
+ int * szAppTitle ;
+ int szCurrentFile ;
+ scalar_t__ wDeviceId ;
 
 void UpdateWindowCaption(HWND hwnd)
 {
@@ -55,43 +55,43 @@ void UpdateWindowCaption(HWND hwnd)
 
     switch (GetDeviceMode(hwnd))
     {
-        case MCI_MODE_PAUSE:
+        case 132:
         {
             LoadString(hInstance, IDS_MODE_PAUSE, szStatus, ARRAYSIZE(szStatus));
             break;
         }
 
-        case MCI_MODE_STOP:
+        case 128:
         {
             LoadString(hInstance, IDS_MODE_STOP, szStatus, ARRAYSIZE(szStatus));
             break;
         }
 
-        case MCI_MODE_PLAY:
+        case 131:
         {
             LoadString(hInstance, IDS_MODE_PLAY, szStatus, ARRAYSIZE(szStatus));
             break;
         }
 
-        case MCI_MODE_OPEN:
+        case 133:
         {
             LoadString(hInstance, IDS_MODE_OPEN, szStatus, ARRAYSIZE(szStatus));
             break;
         }
 
-        case MCI_MODE_RECORD:
+        case 130:
         {
             LoadString(hInstance, IDS_MODE_RECORD, szStatus, ARRAYSIZE(szStatus));
             break;
         }
 
-        case MCI_MODE_SEEK:
+        case 129:
         {
             LoadString(hInstance, IDS_MODE_SEEK, szStatus, ARRAYSIZE(szStatus));
             break;
         }
 
-        case MCI_MODE_NOT_READY:
+        case 134:
         {
             LoadString(hInstance, IDS_MODE_NOT_READY, szStatus, ARRAYSIZE(szStatus));
             break;

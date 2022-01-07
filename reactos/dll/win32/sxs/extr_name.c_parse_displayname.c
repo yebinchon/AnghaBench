@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct name {void* version; void* type; void* token; void* arch; scalar_t__* name; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef char WCHAR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_SXS_INVALID_ASSEMBLY_IDENTITY_ATTRIBUTE_NAME ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  archW ; 
- int /*<<< orphan*/  memcmp (char const*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char const*,unsigned int) ; 
- void* parse_value (char const*,unsigned int*) ; 
- int /*<<< orphan*/  tokenW ; 
- int /*<<< orphan*/  typeW ; 
- int /*<<< orphan*/  versionW ; 
+
+ int ARRAY_SIZE (int ) ;
+ int ERROR_SXS_INVALID_ASSEMBLY_IDENTITY_ATTRIBUTE_NAME ;
+ int E_INVALIDARG ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ scalar_t__* HeapAlloc (int ,int ,unsigned int) ;
+ int S_OK ;
+ int archW ;
+ int memcmp (char const*,int ,unsigned int) ;
+ int memcpy (scalar_t__*,char const*,unsigned int) ;
+ void* parse_value (char const*,unsigned int*) ;
+ int tokenW ;
+ int typeW ;
+ int versionW ;
 
 __attribute__((used)) static HRESULT parse_displayname( struct name *name, const WCHAR *displayname )
 {

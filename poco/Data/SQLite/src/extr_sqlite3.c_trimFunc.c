@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char u8 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int i64 ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NULL ; 
- int SQLITE_PTR_TO_INT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SQLITE_SKIP_UTF8 (unsigned char const*) ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned char** contextMalloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ memcmp (unsigned char const*,unsigned char*,int) ; 
- int /*<<< orphan*/  sqlite3_free (unsigned char**) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- unsigned char const* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef unsigned char u8 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int i64 ;
+
+
+ scalar_t__ SQLITE_NULL ;
+ int SQLITE_PTR_TO_INT (int ) ;
+ int SQLITE_SKIP_UTF8 (unsigned char const*) ;
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ unsigned char** contextMalloc (int *,int) ;
+ scalar_t__ memcmp (unsigned char const*,unsigned char*,int) ;
+ int sqlite3_free (unsigned char**) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_user_data (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ unsigned char const* sqlite3_value_text (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void trimFunc(
   sqlite3_context *context,
   int argc,
   sqlite3_value **argv
 ){
-  const unsigned char *zIn;         /* Input string */
-  const unsigned char *zCharSet;    /* Set of characters to trim */
-  int nIn;                          /* Number of bytes in input */
-  int flags;                        /* 1: trimleft  2: trimright  3: trim */
-  int i;                            /* Loop counter */
-  unsigned char *aLen = 0;          /* Length of each character in zCharSet */
-  unsigned char **azChar = 0;       /* Individual characters in zCharSet */
-  int nChar;                        /* Number of characters in zCharSet */
+  const unsigned char *zIn;
+  const unsigned char *zCharSet;
+  int nIn;
+  int flags;
+  int i;
+  unsigned char *aLen = 0;
+  unsigned char **azChar = 0;
+  int nChar;
 
   if( sqlite3_value_type(argv[0])==SQLITE_NULL ){
     return;

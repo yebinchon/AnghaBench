@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h2o_cache_digests_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dispose_digests (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int h2o_cache_digests_t ;
+
+
+ int dispose_digests (int *) ;
+ int free (int *) ;
 
 void h2o_cache_digests_destroy(h2o_cache_digests_t *digests)
 {

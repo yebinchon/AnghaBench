@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  PINFCONTEXT ;
-typedef  int /*<<< orphan*/  INFSTATUS ;
-typedef  int /*<<< orphan*/  HINF ;
 
-/* Variables and functions */
- scalar_t__ INF_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InfpFindFirstLine (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+typedef int WCHAR ;
+typedef int PINFCONTEXT ;
+typedef int INFSTATUS ;
+typedef int HINF ;
+
+
+ scalar_t__ INF_SUCCESS (int ) ;
+ int InfpFindFirstLine (int ,int const*,int const*,int *) ;
+ int errno ;
 
 int
 InfHostFindFirstLine(HINF InfHandle,

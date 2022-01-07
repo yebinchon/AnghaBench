@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int const u16 ;
-struct TYPE_7__ {int hdrOffset; int const (* xCellSize ) (TYPE_2__*,int /*<<< orphan*/ *) ;int nCell; scalar_t__ nOverflow; TYPE_1__* pBt; int /*<<< orphan*/ * aCellIdx; int /*<<< orphan*/ * aData; } ;
-struct TYPE_6__ {int usableSize; int /*<<< orphan*/  pPager; } ;
-typedef  TYPE_2__ MemPage ;
 
-/* Variables and functions */
- scalar_t__ CORRUPT_DB ; 
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_WITHIN (int /*<<< orphan*/ *,int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  assert (int) ; 
- int get2byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
- int /*<<< orphan*/  put2byte (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * sqlite3PagerTempSpace (int /*<<< orphan*/ ) ; 
- int const stub1 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int const stub2 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int const u16 ;
+struct TYPE_7__ {int hdrOffset; int const (* xCellSize ) (TYPE_2__*,int *) ;int nCell; scalar_t__ nOverflow; TYPE_1__* pBt; int * aCellIdx; int * aData; } ;
+struct TYPE_6__ {int usableSize; int pPager; } ;
+typedef TYPE_2__ MemPage ;
+
+
+ scalar_t__ CORRUPT_DB ;
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_WITHIN (int *,int * const,int * const) ;
+ int assert (int) ;
+ int get2byte (int *) ;
+ int memcpy (int *,int *,int const) ;
+ int put2byte (int *,int) ;
+ int * sqlite3PagerTempSpace (int ) ;
+ int const stub1 (TYPE_2__*,int *) ;
+ int const stub2 (TYPE_2__*,int *) ;
+ int testcase (int) ;
 
 __attribute__((used)) static int rebuildPage(
-  MemPage *pPg,                   /* Edit this page */
-  int nCell,                      /* Final number of cells on page */
-  u8 **apCell,                    /* Array of cells */
-  u16 *szCell                     /* Array of cell sizes */
+  MemPage *pPg,
+  int nCell,
+  u8 **apCell,
+  u16 *szCell
 ){
-  const int hdr = pPg->hdrOffset;          /* Offset of header on pPg */
-  u8 * const aData = pPg->aData;           /* Pointer to data for pPg */
+  const int hdr = pPg->hdrOffset;
+  u8 * const aData = pPg->aData;
   const int usableSize = pPg->pBt->usableSize;
   u8 * const pEnd = &aData[usableSize];
   int i;
@@ -65,7 +65,7 @@ __attribute__((used)) static int rebuildPage(
     testcase( szCell[i]!=pPg->xCellSize(pPg,pCell) );
   }
 
-  /* The pPg->nFree field is now set incorrectly. The caller will fix it. */
+
   pPg->nCell = nCell;
   pPg->nOverflow = 0;
 

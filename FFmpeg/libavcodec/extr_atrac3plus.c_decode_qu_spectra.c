@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  bits; int /*<<< orphan*/  table; } ;
-typedef  TYPE_1__ VLC ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_5__ {int bits; int table; } ;
+typedef TYPE_1__ VLC ;
 struct TYPE_6__ {int group_size; int num_coeffs; int bits; int is_signed; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ Atrac3pSpecCodeTab ;
+typedef int GetBitContext ;
+typedef TYPE_2__ Atrac3pSpecCodeTab ;
 
-/* Variables and functions */
- int av_mod_uintp2 (unsigned int,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- unsigned int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int sign_extend (int,int) ; 
+
+ int av_mod_uintp2 (unsigned int,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ unsigned int get_vlc2 (int *,int ,int ,int) ;
+ int sign_extend (int,int) ;
 
 __attribute__((used)) static void decode_qu_spectra(GetBitContext *gb, const Atrac3pSpecCodeTab *tab,
                               VLC *vlc_tab, int16_t *out, const int num_specs)
@@ -31,8 +31,8 @@ __attribute__((used)) static void decode_qu_spectra(GetBitContext *gb, const Atr
     int i, j, pos, cf;
     int group_size = tab->group_size;
     int num_coeffs = tab->num_coeffs;
-    int bits       = tab->bits;
-    int is_signed  = tab->is_signed;
+    int bits = tab->bits;
+    int is_signed = tab->is_signed;
     unsigned val;
 
     for (pos = 0; pos < num_specs;) {
@@ -48,10 +48,10 @@ __attribute__((used)) static void decode_qu_spectra(GetBitContext *gb, const Atr
                         cf = -cf;
 
                     out[pos++] = cf;
-                    val      >>= bits;
+                    val >>= bits;
                 }
             }
-        } else /* group skipped */
+        } else
             pos += group_size * num_coeffs;
     }
 }

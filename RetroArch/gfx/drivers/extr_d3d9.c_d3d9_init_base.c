@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_info_t ;
-typedef  int /*<<< orphan*/  d3dpp ;
-struct TYPE_3__ {int /*<<< orphan*/  cur_mon_id; int /*<<< orphan*/  dev; } ;
-typedef  TYPE_1__ d3d9_video_t ;
-typedef  scalar_t__ LPDIRECT3D9 ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  int /*<<< orphan*/  D3DPRESENT_PARAMETERS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- scalar_t__ d3d9_create () ; 
- int /*<<< orphan*/  d3d9_create_device (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3d9_make_d3dpp (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ g_pD3D9 ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * win32_get_window () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int video_info_t ;
+typedef int d3dpp ;
+struct TYPE_3__ {int cur_mon_id; int dev; } ;
+typedef TYPE_1__ d3d9_video_t ;
+typedef scalar_t__ LPDIRECT3D9 ;
+typedef int * HWND ;
+typedef int D3DPRESENT_PARAMETERS ;
+
+
+ int RARCH_ERR (char*) ;
+ scalar_t__ d3d9_create () ;
+ int d3d9_create_device (int *,int *,scalar_t__,int *,int ) ;
+ int d3d9_make_d3dpp (TYPE_1__*,int const*,int *) ;
+ scalar_t__ g_pD3D9 ;
+ int memset (int *,int ,int) ;
+ int * win32_get_window () ;
 
 __attribute__((used)) static bool d3d9_init_base(void *data, const video_info_t *info)
 {
    D3DPRESENT_PARAMETERS d3dpp;
-   HWND focus_window  = NULL;
-   d3d9_video_t *d3d  = (d3d9_video_t*)data;
+   HWND focus_window = ((void*)0);
+   d3d9_video_t *d3d = (d3d9_video_t*)data;
 
-#ifndef _XBOX
-   focus_window       = win32_get_window();
-#endif
+
+   focus_window = win32_get_window();
+
 
    memset(&d3dpp, 0, sizeof(d3dpp));
 
-   g_pD3D9            = (LPDIRECT3D9)d3d9_create();
+   g_pD3D9 = (LPDIRECT3D9)d3d9_create();
 
-   /* this needs g_pD3D9 created first */
+
    d3d9_make_d3dpp(d3d, info, &d3dpp);
 
    if (!g_pD3D9)
    {
       RARCH_ERR("[D3D9]: Failed to create D3D interface.\n");
-      return false;
+      return 0;
    }
 
    if (!d3d9_create_device(&d3d->dev, &d3dpp,
@@ -58,8 +58,8 @@ __attribute__((used)) static bool d3d9_init_base(void *data, const video_info_t 
       )
    {
       RARCH_ERR("[D3D9]: Failed to initialize device.\n");
-      return false;
+      return 0;
    }
 
-   return true;
+   return 1;
 }

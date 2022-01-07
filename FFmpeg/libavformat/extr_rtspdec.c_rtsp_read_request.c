@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rbuf ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int rbuf ;
 struct TYPE_15__ {TYPE_1__* priv_data; } ;
 struct TYPE_14__ {scalar_t__ seq; } ;
 struct TYPE_13__ {scalar_t__ seq; scalar_t__* session_id; } ;
-typedef  TYPE_1__ RTSPState ;
-typedef  TYPE_2__ RTSPMessageHeader ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_1__ RTSPState ;
+typedef TYPE_2__ RTSPMessageHeader ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,scalar_t__,...) ; 
- int check_sessionid (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ff_rtsp_parse_line (TYPE_3__*,TYPE_2__*,char*,TYPE_1__*,char const*) ; 
- int read_line (TYPE_3__*,char*,int,int*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_TRACE ;
+ int EINVAL ;
+ int av_log (TYPE_3__*,int ,char*,scalar_t__,...) ;
+ int check_sessionid (TYPE_3__*,TYPE_2__*) ;
+ int ff_rtsp_parse_line (TYPE_3__*,TYPE_2__*,char*,TYPE_1__*,char const*) ;
+ int read_line (TYPE_3__*,char*,int,int*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static inline int rtsp_read_request(AVFormatContext *s,
                                     RTSPMessageHeader *request,

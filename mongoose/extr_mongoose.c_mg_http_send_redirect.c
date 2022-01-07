@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mg_str {scalar_t__ len; int /*<<< orphan*/  p; } ;
+
+
+
+
+struct mg_str {scalar_t__ len; int p; } ;
 struct mg_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  bhead ;
-typedef  int /*<<< orphan*/  bbody ;
+typedef int bhead ;
+typedef int bbody ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MG_FREE (char*) ; 
- int mg_asprintf (char**,int,char*,int,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  mg_send (struct mg_connection*,char*,int) ; 
- int /*<<< orphan*/  mg_send_response_line (struct mg_connection*,int,char*) ; 
+
+ int MG_FREE (char*) ;
+ int mg_asprintf (char**,int,char*,int,int ,...) ;
+ int mg_send (struct mg_connection*,char*,int) ;
+ int mg_send_response_line (struct mg_connection*,int,char*) ;
 
 void mg_http_send_redirect(struct mg_connection *nc, int status_code,
                            const struct mg_str location,

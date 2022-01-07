@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct et_occ {scalar_t__ depth; scalar_t__ min; int /*<<< orphan*/  min_occ; struct et_occ* prev; } ;
+
+
+
+
+struct et_occ {scalar_t__ depth; scalar_t__ min; int min_occ; struct et_occ* prev; } ;
 struct et_node {struct et_node* son; struct et_node* right; struct et_node* left; struct et_node* father; struct et_occ* parent_occ; struct et_occ* rightmost_occ; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  et_check_tree_sanity (struct et_occ*) ; 
- struct et_occ* et_new_occ (struct et_node*) ; 
- int /*<<< orphan*/  et_recomp_min (struct et_occ*) ; 
- int /*<<< orphan*/  et_splay (struct et_occ*) ; 
- int /*<<< orphan*/  record_path_before (struct et_occ*) ; 
- int /*<<< orphan*/  set_next (struct et_occ*,struct et_occ*) ; 
- int /*<<< orphan*/  set_prev (struct et_occ*,struct et_occ*) ; 
+
+ int et_check_tree_sanity (struct et_occ*) ;
+ struct et_occ* et_new_occ (struct et_node*) ;
+ int et_recomp_min (struct et_occ*) ;
+ int et_splay (struct et_occ*) ;
+ int record_path_before (struct et_occ*) ;
+ int set_next (struct et_occ*,struct et_occ*) ;
+ int set_prev (struct et_occ*,struct et_occ*) ;
 
 void
 et_set_father (struct et_node *t, struct et_node *father)
@@ -28,7 +28,7 @@ et_set_father (struct et_node *t, struct et_node *father)
   struct et_node *left, *right;
   struct et_occ *rmost, *left_part, *new_f_occ, *p;
 
-  /* Update the path represented in the splay tree.  */
+
   new_f_occ = et_new_occ (father);
 
   rmost = father->rightmost_occ;
@@ -56,7 +56,7 @@ et_set_father (struct et_node *t, struct et_node *father)
 
   t->parent_occ = new_f_occ;
 
-  /* Update the tree.  */
+
   t->father = father;
   right = father->son;
   if (right)
@@ -71,8 +71,8 @@ et_set_father (struct et_node *t, struct et_node *father)
 
   father->son = t;
 
-#ifdef DEBUG_ET
-  et_check_tree_sanity (rmost);
-  record_path_before (rmost);
-#endif
+
+
+
+
 }

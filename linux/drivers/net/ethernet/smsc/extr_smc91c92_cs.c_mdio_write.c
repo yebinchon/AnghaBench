@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
+
+
+
+
+typedef int u_int ;
 struct net_device {unsigned int base_addr; } ;
 
-/* Variables and functions */
- int MDIO_DATA_WRITE0 ; 
- int MDIO_DATA_WRITE1 ; 
- int MDIO_SHIFT_CLK ; 
- unsigned int MGMT ; 
- int /*<<< orphan*/  mdio_sync (unsigned int) ; 
- int /*<<< orphan*/  outb (int,unsigned int) ; 
+
+ int MDIO_DATA_WRITE0 ;
+ int MDIO_DATA_WRITE1 ;
+ int MDIO_SHIFT_CLK ;
+ unsigned int MGMT ;
+ int mdio_sync (unsigned int) ;
+ int outb (int,unsigned int) ;
 
 __attribute__((used)) static void mdio_write(struct net_device *dev, int phy_id, int loc, int value)
 {
@@ -29,12 +29,12 @@ __attribute__((used)) static void mdio_write(struct net_device *dev, int phy_id,
 
     mdio_sync(addr);
     for (i = 31; i >= 0; i--) {
-	int dat = (cmd&(1<<i)) ? MDIO_DATA_WRITE1 : MDIO_DATA_WRITE0;
-	outb(dat, addr);
-	outb(dat | MDIO_SHIFT_CLK, addr);
+ int dat = (cmd&(1<<i)) ? MDIO_DATA_WRITE1 : MDIO_DATA_WRITE0;
+ outb(dat, addr);
+ outb(dat | MDIO_SHIFT_CLK, addr);
     }
     for (i = 1; i >= 0; i--) {
-	outb(0, addr);
-	outb(MDIO_SHIFT_CLK, addr);
+ outb(0, addr);
+ outb(MDIO_SHIFT_CLK, addr);
     }
 }

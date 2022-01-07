@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sd_ass_priv {char* last_text; TYPE_1__* ass_track; } ;
 struct sd {struct sd_ass_priv* priv; } ;
 struct buf {char* member_0; int member_1; int len; char* start; } ;
 struct TYPE_4__ {long long Start; long long Duration; scalar_t__ Text; } ;
 struct TYPE_3__ {int n_events; TYPE_2__* events; } ;
-typedef  TYPE_1__ ASS_Track ;
-typedef  TYPE_2__ ASS_Event ;
+typedef TYPE_1__ ASS_Track ;
+typedef TYPE_2__ ASS_Event ;
 
-/* Variables and functions */
- double MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  append (struct buf*,char) ; 
- int /*<<< orphan*/  ass_to_plaintext (struct buf*,scalar_t__) ; 
- long long find_timestamp (struct sd*,double) ; 
- scalar_t__ is_whitespace_only (char*,int) ; 
+
+ double MP_NOPTS_VALUE ;
+ int append (struct buf*,char) ;
+ int ass_to_plaintext (struct buf*,scalar_t__) ;
+ long long find_timestamp (struct sd*,double) ;
+ scalar_t__ is_whitespace_only (char*,int) ;
 
 __attribute__((used)) static char *get_text(struct sd *sd, double pts)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static char *get_text(struct sd *sd, double pts)
     ASS_Track *track = ctx->ass_track;
 
     if (pts == MP_NOPTS_VALUE)
-        return NULL;
+        return ((void*)0);
     long long ipts = find_timestamp(sd, pts);
 
     struct buf b = {ctx->last_text, sizeof(ctx->last_text) - 1};

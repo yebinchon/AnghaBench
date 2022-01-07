@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/ * ethtool_ops; int /*<<< orphan*/ * netdev_ops; } ;
+
+
+
+
+struct net_device {int * ethtool_ops; int * netdev_ops; } ;
 struct aq_nic_s {struct net_device* ndev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AQ_CFG_VECS_MAX ; 
- struct net_device* alloc_etherdev_mq (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aq_ethtool_ops ; 
- int /*<<< orphan*/  aq_ndev_ops ; 
- struct aq_nic_s* netdev_priv (struct net_device*) ; 
+
+ int AQ_CFG_VECS_MAX ;
+ struct net_device* alloc_etherdev_mq (int,int ) ;
+ int aq_ethtool_ops ;
+ int aq_ndev_ops ;
+ struct aq_nic_s* netdev_priv (struct net_device*) ;
 
 struct net_device *aq_ndev_alloc(void)
 {
-	struct net_device *ndev = NULL;
-	struct aq_nic_s *aq_nic = NULL;
+ struct net_device *ndev = ((void*)0);
+ struct aq_nic_s *aq_nic = ((void*)0);
 
-	ndev = alloc_etherdev_mq(sizeof(struct aq_nic_s), AQ_CFG_VECS_MAX);
-	if (!ndev)
-		return NULL;
+ ndev = alloc_etherdev_mq(sizeof(struct aq_nic_s), AQ_CFG_VECS_MAX);
+ if (!ndev)
+  return ((void*)0);
 
-	aq_nic = netdev_priv(ndev);
-	aq_nic->ndev = ndev;
-	ndev->netdev_ops = &aq_ndev_ops;
-	ndev->ethtool_ops = &aq_ethtool_ops;
+ aq_nic = netdev_priv(ndev);
+ aq_nic->ndev = ndev;
+ ndev->netdev_ops = &aq_ndev_ops;
+ ndev->ethtool_ops = &aq_ethtool_ops;
 
-	return ndev;
+ return ndev;
 }

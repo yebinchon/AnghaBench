@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo_vsync_info {void* last_queue_display_time; } ;
-struct vo_internal {int num_successive_vsyncs; int num_vsync_samples; int* vsync_samples; int num_total_vsync_samples; int vsync_interval; double estimated_vsync_interval; int estimated_vsync_jitter; void* base_vsync; scalar_t__ drop_point; int /*<<< orphan*/  expecting_vsync; void* prev_vsync; } ;
+struct vo_internal {int num_successive_vsyncs; int num_vsync_samples; int* vsync_samples; int num_total_vsync_samples; int vsync_interval; double estimated_vsync_interval; int estimated_vsync_jitter; void* base_vsync; scalar_t__ drop_point; int expecting_vsync; void* prev_vsync; } ;
 struct vo {struct vo_internal* in; } ;
-typedef  void* int64_t ;
+typedef void* int64_t ;
 
-/* Variables and functions */
- int MAX_VSYNC_SAMPLES ; 
- scalar_t__ MPMIN (scalar_t__,int) ; 
- int /*<<< orphan*/  MP_STATS (struct vo*,char*,int) ; 
- int /*<<< orphan*/  MP_TARRAY_INSERT_AT (struct vo_internal*,int*,int,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  check_estimated_display_fps (struct vo*) ; 
- int /*<<< orphan*/  reset_vsync_timings (struct vo*) ; 
- int /*<<< orphan*/  vsync_skip_detection (struct vo*) ; 
- int vsync_stddef (struct vo*,int) ; 
+
+ int MAX_VSYNC_SAMPLES ;
+ scalar_t__ MPMIN (scalar_t__,int) ;
+ int MP_STATS (struct vo*,char*,int) ;
+ int MP_TARRAY_INSERT_AT (struct vo_internal*,int*,int,int ,void*) ;
+ int check_estimated_display_fps (struct vo*) ;
+ int reset_vsync_timings (struct vo*) ;
+ int vsync_skip_detection (struct vo*) ;
+ int vsync_stddef (struct vo*,int) ;
 
 __attribute__((used)) static void update_vsync_timing_after_swap(struct vo *vo,
                                            struct vo_vsync_info *vsync)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_2__ {size_t n_netif; int /*<<< orphan*/  netif; } ;
-typedef  TYPE_1__ MachineStatusInfo ;
 
-/* Variables and functions */
- int EBADMSG ; 
- int ENOMEM ; 
- int /*<<< orphan*/  SD_BUS_TYPE_INT32 ; 
- int /*<<< orphan*/  assert_cc (int) ; 
- int /*<<< orphan*/  memdup (void const*,size_t) ; 
- int sd_bus_message_read_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void const**,size_t*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+typedef int int32_t ;
+struct TYPE_2__ {size_t n_netif; int netif; } ;
+typedef TYPE_1__ MachineStatusInfo ;
+
+
+ int EBADMSG ;
+ int ENOMEM ;
+ int SD_BUS_TYPE_INT32 ;
+ int assert_cc (int) ;
+ int memdup (void const*,size_t) ;
+ int sd_bus_message_read_array (int *,int ,void const**,size_t*) ;
 
 __attribute__((used)) static int map_netif(sd_bus *bus, const char *member, sd_bus_message *m, sd_bus_error *error, void *userdata) {
         MachineStatusInfo *i = userdata;

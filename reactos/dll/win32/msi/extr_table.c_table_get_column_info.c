@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
-typedef  int /*<<< orphan*/  MSICOLUMNINFO ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- scalar_t__ get_tablecolumns (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/ * msi_alloc (scalar_t__) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIDATABASE ;
+typedef int MSICOLUMNINFO ;
+typedef int LPCWSTR ;
+
+
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (int ) ;
+ scalar_t__ get_tablecolumns (int *,int ,int *,scalar_t__*) ;
+ int * msi_alloc (scalar_t__) ;
+ int msi_free (int *) ;
 
 __attribute__((used)) static UINT table_get_column_info( MSIDATABASE *db, LPCWSTR name, MSICOLUMNINFO **pcols, UINT *pcount )
 {
     UINT r, column_count = 0;
     MSICOLUMNINFO *columns;
 
-    /* get the number of columns in this table */
+
     column_count = 0;
-    r = get_tablecolumns( db, name, NULL, &column_count );
+    r = get_tablecolumns( db, name, ((void*)0), &column_count );
     if (r != ERROR_SUCCESS)
         return r;
 
     *pcount = column_count;
 
-    /* if there are no columns, there's no table */
+
     if (!column_count)
         return ERROR_INVALID_PARAMETER;
 

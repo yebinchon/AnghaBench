@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * active_pids ; 
- int active_pnum ; 
- int /*<<< orphan*/  get_precise_time (int) ; 
- int /*<<< orphan*/  get_proc_status (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  last_check_time ; 
- scalar_t__ try_monitor_rpc (int /*<<< orphan*/ ) ; 
+ int * active_pids ;
+ int active_pnum ;
+ int get_precise_time (int) ;
+ int get_proc_status (int ) ;
+ int last_check_time ;
+ scalar_t__ try_monitor_rpc (int ) ;
 
 int do_monitor_rpc (void) {
   int cnt = 0, i;

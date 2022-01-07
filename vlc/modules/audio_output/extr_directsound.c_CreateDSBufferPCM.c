@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  aout_stream_sys_t ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ CreateDSBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,unsigned int,int,int) ; 
- scalar_t__ DS_OK ; 
- int /*<<< orphan*/  VLC_CODEC_FL32 ; 
- int /*<<< orphan*/  VLC_CODEC_S16N ; 
- scalar_t__ var_GetBool (int /*<<< orphan*/ *,char*) ; 
- unsigned int vlc_popcount (int) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int vlc_fourcc_t ;
+typedef int aout_stream_sys_t ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ CreateDSBuffer (int *,int *,int ,int,unsigned int,int,int) ;
+ scalar_t__ DS_OK ;
+ int VLC_CODEC_FL32 ;
+ int VLC_CODEC_S16N ;
+ scalar_t__ var_GetBool (int *,char*) ;
+ unsigned int vlc_popcount (int) ;
 
 __attribute__((used)) static HRESULT CreateDSBufferPCM( vlc_object_t *obj, aout_stream_sys_t *sys,
                                   vlc_fourcc_t *i_format, int i_channels,

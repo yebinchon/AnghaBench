@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  Fts3Table ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQL_NEXT_SEGMENT_INDEX ; 
- int fts3SqlStmt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_step (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static int fts3IncrmergeOutputIdx( 
-  Fts3Table *p,                   /* FTS Table handle */
-  sqlite3_int64 iAbsLevel,        /* Absolute index of input segments */
-  int *piIdx                      /* OUT: Next free index at iAbsLevel+1 */
+
+
+typedef int sqlite3_stmt ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int Fts3Table ;
+
+
+ int SQLITE_OK ;
+ int SQL_NEXT_SEGMENT_INDEX ;
+ int fts3SqlStmt (int *,int ,int **,int ) ;
+ int sqlite3_bind_int64 (int *,int,scalar_t__) ;
+ int sqlite3_column_int (int *,int ) ;
+ int sqlite3_reset (int *) ;
+ int sqlite3_step (int *) ;
+
+__attribute__((used)) static int fts3IncrmergeOutputIdx(
+  Fts3Table *p,
+  sqlite3_int64 iAbsLevel,
+  int *piIdx
 ){
   int rc;
-  sqlite3_stmt *pOutputIdx = 0;   /* SQL used to find output index */
+  sqlite3_stmt *pOutputIdx = 0;
 
   rc = fts3SqlStmt(p, SQL_NEXT_SEGMENT_INDEX, &pOutputIdx, 0);
   if( rc==SQLITE_OK ){

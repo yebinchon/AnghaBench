@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct termios {int c_iflag; int c_lflag; int* c_cc; int /*<<< orphan*/  c_cflag; int /*<<< orphan*/  c_oflag; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct termios {int c_iflag; int c_lflag; int* c_cc; int c_cflag; int c_oflag; } ;
 struct TYPE_4__ {int mode; struct termios orig_termios; } ;
-typedef  TYPE_1__ uv_tty_t ;
-typedef  int uv_tty_mode_t ;
+typedef TYPE_1__ uv_tty_t ;
+typedef int uv_tty_mode_t ;
 
-/* Variables and functions */
- int BRKINT ; 
- int /*<<< orphan*/  CS8 ; 
- int ECHO ; 
- int ICANON ; 
- int ICRNL ; 
- int IEXTEN ; 
- int INPCK ; 
- int ISIG ; 
- int ISTRIP ; 
- int IXON ; 
- int /*<<< orphan*/  ONLCR ; 
- int /*<<< orphan*/  TCSADRAIN ; 
-#define  UV_TTY_MODE_IO 130 
-#define  UV_TTY_MODE_NORMAL 129 
-#define  UV_TTY_MODE_RAW 128 
- int UV__ERR (int /*<<< orphan*/ ) ; 
- size_t VMIN ; 
- size_t VTIME ; 
- int /*<<< orphan*/  errno ; 
- struct termios orig_termios ; 
- int orig_termios_fd ; 
- scalar_t__ tcgetattr (int,struct termios*) ; 
- scalar_t__ tcsetattr (int,int /*<<< orphan*/ ,struct termios*) ; 
- int /*<<< orphan*/  termios_spinlock ; 
- int uv__stream_fd (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__tty_make_raw (struct termios*) ; 
- int /*<<< orphan*/  uv_spinlock_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_spinlock_unlock (int /*<<< orphan*/ *) ; 
+
+ int BRKINT ;
+ int CS8 ;
+ int ECHO ;
+ int ICANON ;
+ int ICRNL ;
+ int IEXTEN ;
+ int INPCK ;
+ int ISIG ;
+ int ISTRIP ;
+ int IXON ;
+ int ONLCR ;
+ int TCSADRAIN ;
+
+
+
+ int UV__ERR (int ) ;
+ size_t VMIN ;
+ size_t VTIME ;
+ int errno ;
+ struct termios orig_termios ;
+ int orig_termios_fd ;
+ scalar_t__ tcgetattr (int,struct termios*) ;
+ scalar_t__ tcsetattr (int,int ,struct termios*) ;
+ int termios_spinlock ;
+ int uv__stream_fd (TYPE_1__*) ;
+ int uv__tty_make_raw (struct termios*) ;
+ int uv_spinlock_lock (int *) ;
+ int uv_spinlock_unlock (int *) ;
 
 int uv_tty_set_mode(uv_tty_t* tty, uv_tty_mode_t mode) {
   struct termios tmp;
@@ -54,11 +54,11 @@ int uv_tty_set_mode(uv_tty_t* tty, uv_tty_mode_t mode) {
     return 0;
 
   fd = uv__stream_fd(tty);
-  if (tty->mode == UV_TTY_MODE_NORMAL && mode != UV_TTY_MODE_NORMAL) {
+  if (tty->mode == 129 && mode != 129) {
     if (tcgetattr(fd, &tty->orig_termios))
       return UV__ERR(errno);
 
-    /* This is used for uv_tty_reset_mode() */
+
     uv_spinlock_lock(&termios_spinlock);
     if (orig_termios_fd == -1) {
       orig_termios = tty->orig_termios;
@@ -69,9 +69,9 @@ int uv_tty_set_mode(uv_tty_t* tty, uv_tty_mode_t mode) {
 
   tmp = tty->orig_termios;
   switch (mode) {
-    case UV_TTY_MODE_NORMAL:
+    case 129:
       break;
-    case UV_TTY_MODE_RAW:
+    case 128:
       tmp.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
       tmp.c_oflag |= (ONLCR);
       tmp.c_cflag |= (CS8);
@@ -79,12 +79,12 @@ int uv_tty_set_mode(uv_tty_t* tty, uv_tty_mode_t mode) {
       tmp.c_cc[VMIN] = 1;
       tmp.c_cc[VTIME] = 0;
       break;
-    case UV_TTY_MODE_IO:
+    case 130:
       uv__tty_make_raw(&tmp);
       break;
   }
 
-  /* Apply changes after draining */
+
   if (tcsetattr(fd, TCSADRAIN, &tmp))
     return UV__ERR(errno);
 

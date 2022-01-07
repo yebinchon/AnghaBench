@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int MIN_QUALITY_FOR_HQ_CONTEXT_MODELING ; 
- double ShannonEntropy (int*,int,size_t*) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int MIN_QUALITY_FOR_HQ_CONTEXT_MODELING ;
+ double ShannonEntropy (int*,int,size_t*) ;
+ int assert (int) ;
 
 __attribute__((used)) static void ChooseContextMap(int quality,
                              uint32_t* bigram_histo,
@@ -60,11 +60,11 @@ __attribute__((used)) static void ChooseContextMap(int quality,
   entropy[3] *= entropy[0];
 
   if (quality < MIN_QUALITY_FOR_HQ_CONTEXT_MODELING) {
-    /* 3 context models is a bit slower, don't use it at lower qualities. */
+
     entropy[3] = entropy[1] * 10;
   }
-  /* If expected savings by symbol are less than 0.2 bits, skip the
-     context modeling -- in exchange for faster decoding speed. */
+
+
   if (entropy[1] - entropy[2] < 0.2 &&
       entropy[1] - entropy[3] < 0.2) {
     *num_literal_contexts = 1;

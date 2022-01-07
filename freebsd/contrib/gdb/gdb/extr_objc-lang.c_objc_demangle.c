@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  xfree (char*) ; 
- char* xmalloc (scalar_t__) ; 
+ char* strchr (char*,char) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
+ int xfree (char*) ;
+ char* xmalloc (scalar_t__) ;
 
 char *
 objc_demangle (const char *mangled, int options)
@@ -30,50 +22,50 @@ objc_demangle (const char *mangled, int options)
       cp = demangled = xmalloc(strlen(mangled) + 2);
 
       if (mangled[1] == 'i')
-	*cp++ = '-';		/* for instance method */
+ *cp++ = '-';
       else
-	*cp++ = '+';		/* for class    method */
+ *cp++ = '+';
 
-      *cp++ = '[';		/* opening left brace  */
-      strcpy(cp, mangled+3);	/* tack on the rest of the mangled name */
+      *cp++ = '[';
+      strcpy(cp, mangled+3);
 
       while (*cp && *cp == '_')
-	cp++;			/* skip any initial underbars in class name */
+ cp++;
 
       cp = strchr(cp, '_');
-      if (!cp)	                /* find first non-initial underbar */
-	{
-	  xfree(demangled);	/* not mangled name */
-	  return NULL;
-	}
-      if (cp[1] == '_') {	/* easy case: no category name     */
-	*cp++ = ' ';		/* replace two '_' with one ' '    */
-	strcpy(cp, mangled + (cp - demangled) + 2);
+      if (!cp)
+ {
+   xfree(demangled);
+   return ((void*)0);
+ }
+      if (cp[1] == '_') {
+ *cp++ = ' ';
+ strcpy(cp, mangled + (cp - demangled) + 2);
       }
       else {
-	*cp++ = '(';		/* less easy case: category name */
-	cp = strchr(cp, '_');
-	if (!cp)
-	  {
-	    xfree(demangled);	/* not mangled name */
-	    return NULL;
-	  }
-	*cp++ = ')';
-	*cp++ = ' ';		/* overwriting 1st char of method name...  */
-	strcpy(cp, mangled + (cp - demangled));	/* get it back */
+ *cp++ = '(';
+ cp = strchr(cp, '_');
+ if (!cp)
+   {
+     xfree(demangled);
+     return ((void*)0);
+   }
+ *cp++ = ')';
+ *cp++ = ' ';
+ strcpy(cp, mangled + (cp - demangled));
       }
 
       while (*cp && *cp == '_')
-	cp++;			/* skip any initial underbars in method name */
+ cp++;
 
       for (; *cp; cp++)
-	if (*cp == '_')
-	  *cp = ':';		/* replace remaining '_' with ':' */
+ if (*cp == '_')
+   *cp = ':';
 
-      *cp++ = ']';		/* closing right brace */
-      *cp++ = 0;		/* string terminator */
+      *cp++ = ']';
+      *cp++ = 0;
       return demangled;
     }
   else
-    return NULL;	/* Not an objc mangled name.  */
+    return ((void*)0);
 }

@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_aes_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbedtls_internal_aes_encrypt (int /*<<< orphan*/ *,unsigned char const*,unsigned char*) ; 
+
+
+
+typedef int mbedtls_aes_context ;
+
+
+ int mbedtls_internal_aes_encrypt (int *,unsigned char const*,unsigned char*) ;
 
 void mbedtls_aes_encrypt( mbedtls_aes_context *ctx,
                           const unsigned char input[16],

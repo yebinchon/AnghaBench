@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ev2_edit_baton {int /*<<< orphan*/  base_relpath; int /*<<< orphan*/  repos_root; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ svn_path_is_url (char const*) ; 
- char const* svn_relpath_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- char const* svn_uri_skip_ancestor (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+struct ev2_edit_baton {int base_relpath; int repos_root; } ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ svn_path_is_url (char const*) ;
+ char const* svn_relpath_join (int ,char const*,int *) ;
+ char const* svn_uri_skip_ancestor (int ,char const*,int *) ;
 
 __attribute__((used)) static const char *
 map_to_repos_relpath(struct ev2_edit_baton *eb,

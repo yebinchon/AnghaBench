@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct amdgpu_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG_GICST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_GICST_MASK ; 
- int /*<<< orphan*/  CG_GIT ; 
- int /*<<< orphan*/  R600_GICST_DFLT ; 
- int /*<<< orphan*/  WREG32_P (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CG_GICST (int ) ;
+ int CG_GICST_MASK ;
+ int CG_GIT ;
+ int R600_GICST_DFLT ;
+ int WREG32_P (int ,int ,int ) ;
 
 __attribute__((used)) static void si_program_git(struct amdgpu_device *adev)
 {
-	WREG32_P(CG_GIT, CG_GICST(R600_GICST_DFLT), ~CG_GICST_MASK);
+ WREG32_P(CG_GIT, CG_GICST(R600_GICST_DFLT), ~CG_GICST_MASK);
 }

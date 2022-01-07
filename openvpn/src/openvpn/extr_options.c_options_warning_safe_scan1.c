@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPTION_PARM_SIZE ; 
- scalar_t__ buf_parse (struct buffer*,int const,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- char* gc_malloc (int /*<<< orphan*/ ,int,struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  options_warning_safe_scan2 (int const,int const,int const,char*,struct buffer const*,char const*,char const*) ; 
+
+ int OPTION_PARM_SIZE ;
+ scalar_t__ buf_parse (struct buffer*,int const,char*,int ) ;
+ int gc_free (struct gc_arena*) ;
+ char* gc_malloc (int ,int,struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int options_warning_safe_scan2 (int const,int const,int const,char*,struct buffer const*,char const*,char const*) ;
 
 __attribute__((used)) static void
 options_warning_safe_scan1(const int msglevel,
@@ -32,7 +32,7 @@ options_warning_safe_scan1(const int msglevel,
 {
     struct gc_arena gc = gc_new();
     struct buffer b = *b1_src;
-    char *p = gc_malloc(OPTION_PARM_SIZE, true, &gc);
+    char *p = gc_malloc(OPTION_PARM_SIZE, 1, &gc);
 
     while (buf_parse(&b, delim, p, OPTION_PARM_SIZE))
     {

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,int /*<<< orphan*/ ,char const* const) ; 
- int /*<<< orphan*/  ENV_CLEVEL ; 
- int ZSTDCLI_CLEVEL_DEFAULT ; 
- char* getenv (int /*<<< orphan*/ ) ; 
- scalar_t__ readU32FromCharChecked (char const**,unsigned int*) ; 
+ int DISPLAYLEVEL (int,char*,int ,char const* const) ;
+ int ENV_CLEVEL ;
+ int ZSTDCLI_CLEVEL_DEFAULT ;
+ char* getenv (int ) ;
+ scalar_t__ readU32FromCharChecked (char const**,unsigned int*) ;
 
 __attribute__((used)) static int init_cLevel(void) {
     const char* const env = getenv(ENV_CLEVEL);

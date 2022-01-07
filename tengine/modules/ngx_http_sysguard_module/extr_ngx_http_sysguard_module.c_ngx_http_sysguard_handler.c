@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_str_t ;
-typedef  int ngx_int_t ;
-struct TYPE_17__ {double load; scalar_t__ mode; double cpuusage; double swap; int free; double rt; TYPE_1__* rt_ring; int /*<<< orphan*/  log_level; int /*<<< orphan*/  rt_action; int /*<<< orphan*/  interval; int /*<<< orphan*/  free_action; int /*<<< orphan*/  swap_action; int /*<<< orphan*/  cpuusage_action; int /*<<< orphan*/  load_action; int /*<<< orphan*/  enable; } ;
-typedef  TYPE_4__ ngx_http_sysguard_conf_t ;
-struct TYPE_18__ {TYPE_3__* connection; int /*<<< orphan*/  uri; TYPE_2__* main; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
-struct TYPE_16__ {int /*<<< orphan*/  log; } ;
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_17__ {double load; scalar_t__ mode; double cpuusage; double swap; int free; double rt; TYPE_1__* rt_ring; int log_level; int rt_action; int interval; int free_action; int swap_action; int cpuusage_action; int load_action; int enable; } ;
+typedef TYPE_4__ ngx_http_sysguard_conf_t ;
+struct TYPE_18__ {TYPE_3__* connection; int uri; TYPE_2__* main; } ;
+typedef TYPE_5__ ngx_http_request_t ;
+struct TYPE_16__ {int log; } ;
 struct TYPE_15__ {int sysguard_set; } ;
 struct TYPE_14__ {scalar_t__ cached_rt_exptime; double cached_rt; } ;
 
-/* Variables and functions */
- double NGX_CONF_UNSET ; 
- int NGX_CONF_UNSET_SIZE ; 
- int NGX_DECLINED ; 
- scalar_t__ NGX_HTTP_SYSGUARD_MODE_AND ; 
- scalar_t__ NGX_HTTP_SYSGUARD_MODE_OR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- TYPE_4__* ngx_http_get_module_loc_conf (TYPE_5__*,int /*<<< orphan*/ ) ; 
- double ngx_http_sysguard_cached_cpuusage ; 
- scalar_t__ ngx_http_sysguard_cached_cpuusage_exptime ; 
- int ngx_http_sysguard_cached_free ; 
- double ngx_http_sysguard_cached_load ; 
- scalar_t__ ngx_http_sysguard_cached_load_exptime ; 
- scalar_t__ ngx_http_sysguard_cached_mem_exptime ; 
- double ngx_http_sysguard_cached_swapstat ; 
- int ngx_http_sysguard_do_redirect (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_sysguard_module ; 
- int /*<<< orphan*/  ngx_http_sysguard_update_cpuusage (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_sysguard_update_load (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_sysguard_update_mem (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_sysguard_update_rt (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,double,double) ; 
- int /*<<< orphan*/  ngx_log_debug4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,double,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,double,double) ; 
- scalar_t__ ngx_time () ; 
+
+ double NGX_CONF_UNSET ;
+ int NGX_CONF_UNSET_SIZE ;
+ int NGX_DECLINED ;
+ scalar_t__ NGX_HTTP_SYSGUARD_MODE_AND ;
+ scalar_t__ NGX_HTTP_SYSGUARD_MODE_OR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ TYPE_4__* ngx_http_get_module_loc_conf (TYPE_5__*,int ) ;
+ double ngx_http_sysguard_cached_cpuusage ;
+ scalar_t__ ngx_http_sysguard_cached_cpuusage_exptime ;
+ int ngx_http_sysguard_cached_free ;
+ double ngx_http_sysguard_cached_load ;
+ scalar_t__ ngx_http_sysguard_cached_load_exptime ;
+ scalar_t__ ngx_http_sysguard_cached_mem_exptime ;
+ double ngx_http_sysguard_cached_swapstat ;
+ int ngx_http_sysguard_do_redirect (TYPE_5__*,int *) ;
+ int ngx_http_sysguard_module ;
+ int ngx_http_sysguard_update_cpuusage (TYPE_5__*,int ) ;
+ int ngx_http_sysguard_update_load (TYPE_5__*,int ) ;
+ int ngx_http_sysguard_update_mem (TYPE_5__*,int ) ;
+ int ngx_http_sysguard_update_rt (TYPE_5__*,int ) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,double,double) ;
+ int ngx_log_debug4 (int ,int ,int ,char*,int,double,int *,int *) ;
+ int ngx_log_error (int ,int ,int ,char*,double,double) ;
+ scalar_t__ ngx_time () ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_sysguard_handler(ngx_http_request_t *r)
 {
-    ngx_http_sysguard_conf_t  *glcf;
-    ngx_int_t                  load_log = 0, swap_log = 0,
+    ngx_http_sysguard_conf_t *glcf;
+    ngx_int_t load_log = 0, swap_log = 0,
                                free_log = 0, rt_log = 0,
                                cpu_log = 0;
-    ngx_str_t                 *action = NULL;
+    ngx_str_t *action = ((void*)0);
 
     if (r->main->sysguard_set) {
         return NGX_DECLINED;
@@ -72,7 +72,7 @@ ngx_http_sysguard_handler(ngx_http_request_t *r)
 
     r->main->sysguard_set = 1;
 
-    /* load */
+
 
     if (glcf->load != NGX_CONF_UNSET) {
 
@@ -108,7 +108,7 @@ ngx_http_sysguard_handler(ngx_http_request_t *r)
         }
     }
 
-    /* cpu */
+
 
     if (glcf->cpuusage != NGX_CONF_UNSET) {
 
@@ -146,7 +146,7 @@ ngx_http_sysguard_handler(ngx_http_request_t *r)
         }
     }
 
-    /* swap */
+
 
     if (glcf->swap != NGX_CONF_UNSET) {
 
@@ -182,7 +182,7 @@ ngx_http_sysguard_handler(ngx_http_request_t *r)
         }
     }
 
-    /* mem free */
+
 
     if (glcf->free != NGX_CONF_UNSET_SIZE) {
 
@@ -222,7 +222,7 @@ ngx_http_sysguard_handler(ngx_http_request_t *r)
         }
     }
 
-    /* response time */
+
 
     if (glcf->rt != NGX_CONF_UNSET) {
 

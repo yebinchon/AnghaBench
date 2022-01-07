@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct drbd_peer_device {int /*<<< orphan*/  debugfs_peer_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drbd_debugfs_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct drbd_peer_device {int debugfs_peer_dev; } ;
+
+
+ int drbd_debugfs_remove (int *) ;
 
 void drbd_debugfs_peer_device_cleanup(struct drbd_peer_device *peer_device)
 {
-	drbd_debugfs_remove(&peer_device->debugfs_peer_dev);
+ drbd_debugfs_remove(&peer_device->debugfs_peer_dev);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  malloc_mutex_postfork_child (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ql_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsd_add_nominal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsd_nominal_tsds ; 
- int /*<<< orphan*/  tsd_nominal_tsds_lock ; 
- scalar_t__ tsd_state_get (int /*<<< orphan*/ *) ; 
- scalar_t__ tsd_state_nominal_max ; 
- int /*<<< orphan*/  tsd_tsdn (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tsd_t ;
+
+
+ int malloc_mutex_postfork_child (int ,int *) ;
+ int ql_new (int *) ;
+ int tsd_add_nominal (int *) ;
+ int tsd_nominal_tsds ;
+ int tsd_nominal_tsds_lock ;
+ scalar_t__ tsd_state_get (int *) ;
+ scalar_t__ tsd_state_nominal_max ;
+ int tsd_tsdn (int *) ;
 
 void
 tsd_postfork_child(tsd_t *tsd) {
-	malloc_mutex_postfork_child(tsd_tsdn(tsd), &tsd_nominal_tsds_lock);
-	ql_new(&tsd_nominal_tsds);
+ malloc_mutex_postfork_child(tsd_tsdn(tsd), &tsd_nominal_tsds_lock);
+ ql_new(&tsd_nominal_tsds);
 
-	if (tsd_state_get(tsd) <= tsd_state_nominal_max) {
-		tsd_add_nominal(tsd);
-	}
+ if (tsd_state_get(tsd) <= tsd_state_nominal_max) {
+  tsd_add_nominal(tsd);
+ }
 }

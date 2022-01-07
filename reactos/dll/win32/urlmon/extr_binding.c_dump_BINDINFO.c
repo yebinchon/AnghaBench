@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  bInheritHandle; int /*<<< orphan*/  lpSecurityDescriptor; int /*<<< orphan*/  nLength; } ;
-struct TYPE_6__ {int /*<<< orphan*/  hGlobal; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pUnkForRelease; TYPE_1__ u; int /*<<< orphan*/  tymed; } ;
-struct TYPE_9__ {size_t grfBindInfoF; size_t dwBindVerb; int /*<<< orphan*/  dwReserved; int /*<<< orphan*/  pUnk; int /*<<< orphan*/  iid; TYPE_3__ securityAttributes; int /*<<< orphan*/  dwCodePage; int /*<<< orphan*/  dwOptionsFlags; int /*<<< orphan*/  dwOptions; int /*<<< orphan*/  cbstgmedData; int /*<<< orphan*/  szCustomVerb; TYPE_2__ stgmedData; int /*<<< orphan*/  szExtraInfo; int /*<<< orphan*/  cbSize; } ;
-typedef  TYPE_4__ BINDINFO ;
 
-/* Variables and functions */
- size_t BINDINFOF_URLENCODEDEXTRAINFO ; 
- size_t BINDVERB_CUSTOM ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int bInheritHandle; int lpSecurityDescriptor; int nLength; } ;
+struct TYPE_6__ {int hGlobal; } ;
+struct TYPE_7__ {int pUnkForRelease; TYPE_1__ u; int tymed; } ;
+struct TYPE_9__ {size_t grfBindInfoF; size_t dwBindVerb; int dwReserved; int pUnk; int iid; TYPE_3__ securityAttributes; int dwCodePage; int dwOptionsFlags; int dwOptions; int cbstgmedData; int szCustomVerb; TYPE_2__ stgmedData; int szExtraInfo; int cbSize; } ;
+typedef TYPE_4__ BINDINFO ;
+
+
+ size_t BINDINFOF_URLENCODEDEXTRAINFO ;
+ size_t BINDVERB_CUSTOM ;
+ int TRACE (char*,int ,int ,int ,int ,int ,char*,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int debugstr_guid (int *) ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static void dump_BINDINFO(BINDINFO *bi)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bfa_ioc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfa_ioc_hw_sem_get (struct bfa_ioc*) ; 
+
+ int bfa_ioc_hw_sem_get (struct bfa_ioc*) ;
 
 void
 bfa_nw_iocpf_sem_timeout(void *ioc_arg)
 {
-	struct bfa_ioc  *ioc = (struct bfa_ioc *) ioc_arg;
+ struct bfa_ioc *ioc = (struct bfa_ioc *) ioc_arg;
 
-	bfa_ioc_hw_sem_get(ioc);
+ bfa_ioc_hw_sem_get(ioc);
 }

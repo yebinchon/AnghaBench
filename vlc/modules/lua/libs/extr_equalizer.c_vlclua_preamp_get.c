@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aout_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int /*<<< orphan*/  var_GetFloat (int /*<<< orphan*/ *,char*) ; 
- char* var_GetNonEmptyString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * vlclua_get_aout_internal (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int audio_output_t ;
+
+
+ int aout_Release (int *) ;
+ int free (char*) ;
+ int lua_pushnumber (int *,int ) ;
+ int * strstr (char*,char*) ;
+ int var_GetFloat (int *,char*) ;
+ char* var_GetNonEmptyString (int *,char*) ;
+ int * vlclua_get_aout_internal (int *) ;
 
 __attribute__((used)) static int vlclua_preamp_get( lua_State *L )
 {
     audio_output_t *p_aout = vlclua_get_aout_internal(L);
-    if( p_aout == NULL )
+    if( p_aout == ((void*)0) )
         return 0;
 
     char *psz_af = var_GetNonEmptyString( p_aout, "audio-filter" );
-    if( !psz_af || strstr ( psz_af, "equalizer" ) == NULL )
+    if( !psz_af || strstr ( psz_af, "equalizer" ) == ((void*)0) )
     {
         free( psz_af );
         aout_Release(p_aout);

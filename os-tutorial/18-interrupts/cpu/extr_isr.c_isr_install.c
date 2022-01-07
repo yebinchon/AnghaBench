@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- scalar_t__ isr0 ; 
- scalar_t__ isr1 ; 
- scalar_t__ isr10 ; 
- scalar_t__ isr11 ; 
- scalar_t__ isr12 ; 
- scalar_t__ isr13 ; 
- scalar_t__ isr14 ; 
- scalar_t__ isr15 ; 
- scalar_t__ isr16 ; 
- scalar_t__ isr17 ; 
- scalar_t__ isr18 ; 
- scalar_t__ isr19 ; 
- scalar_t__ isr2 ; 
- scalar_t__ isr20 ; 
- scalar_t__ isr21 ; 
- scalar_t__ isr22 ; 
- scalar_t__ isr23 ; 
- scalar_t__ isr24 ; 
- scalar_t__ isr25 ; 
- scalar_t__ isr26 ; 
- scalar_t__ isr27 ; 
- scalar_t__ isr28 ; 
- scalar_t__ isr29 ; 
- scalar_t__ isr3 ; 
- scalar_t__ isr30 ; 
- scalar_t__ isr31 ; 
- scalar_t__ isr4 ; 
- scalar_t__ isr5 ; 
- scalar_t__ isr6 ; 
- scalar_t__ isr7 ; 
- scalar_t__ isr8 ; 
- scalar_t__ isr9 ; 
- int /*<<< orphan*/  set_idt () ; 
- int /*<<< orphan*/  set_idt_gate (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ scalar_t__ isr0 ;
+ scalar_t__ isr1 ;
+ scalar_t__ isr10 ;
+ scalar_t__ isr11 ;
+ scalar_t__ isr12 ;
+ scalar_t__ isr13 ;
+ scalar_t__ isr14 ;
+ scalar_t__ isr15 ;
+ scalar_t__ isr16 ;
+ scalar_t__ isr17 ;
+ scalar_t__ isr18 ;
+ scalar_t__ isr19 ;
+ scalar_t__ isr2 ;
+ scalar_t__ isr20 ;
+ scalar_t__ isr21 ;
+ scalar_t__ isr22 ;
+ scalar_t__ isr23 ;
+ scalar_t__ isr24 ;
+ scalar_t__ isr25 ;
+ scalar_t__ isr26 ;
+ scalar_t__ isr27 ;
+ scalar_t__ isr28 ;
+ scalar_t__ isr29 ;
+ scalar_t__ isr3 ;
+ scalar_t__ isr30 ;
+ scalar_t__ isr31 ;
+ scalar_t__ isr4 ;
+ scalar_t__ isr5 ;
+ scalar_t__ isr6 ;
+ scalar_t__ isr7 ;
+ scalar_t__ isr8 ;
+ scalar_t__ isr9 ;
+ int set_idt () ;
+ int set_idt_gate (int,int ) ;
 
 void isr_install() {
     set_idt_gate(0, (u32)isr0);
@@ -82,5 +82,5 @@ void isr_install() {
     set_idt_gate(30, (u32)isr30);
     set_idt_gate(31, (u32)isr31);
 
-    set_idt(); // Load with ASM
+    set_idt();
 }

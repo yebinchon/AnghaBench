@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ esp_err_t ;
-typedef  int /*<<< orphan*/  emac_dm9051_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM9051_PIDH ; 
- int /*<<< orphan*/  DM9051_PIDL ; 
- int /*<<< orphan*/  DM9051_VIDH ; 
- int /*<<< orphan*/  DM9051_VIDL ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_VERSION ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  MAC_CHECK (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ dm9051_register_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  err ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ esp_err_t ;
+typedef int emac_dm9051_t ;
+
+
+ int DM9051_PIDH ;
+ int DM9051_PIDL ;
+ int DM9051_VIDH ;
+ int DM9051_VIDL ;
+ int ESP_ERR_INVALID_VERSION ;
+ int ESP_FAIL ;
+ scalar_t__ ESP_OK ;
+ int MAC_CHECK (int,char*,int ,int ) ;
+ scalar_t__ dm9051_register_read (int *,int ,int*) ;
+ int err ;
 
 __attribute__((used)) static esp_err_t dm9051_verify_id(emac_dm9051_t *emac)
 {

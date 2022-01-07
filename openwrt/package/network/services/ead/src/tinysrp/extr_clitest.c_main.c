@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  username ;
-struct t_preconf {int /*<<< orphan*/  generator; int /*<<< orphan*/  modulus; } ;
+
+
+
+
+typedef int username ;
+struct t_preconf {int generator; int modulus; } ;
 struct t_num {char* data; void* len; } ;
 struct t_client {int dummy; } ;
-typedef  int /*<<< orphan*/  hexbuf ;
+typedef int hexbuf ;
 
-/* Variables and functions */
- int MAXHEXPARAMLEN ; 
- int MAXPARAMLEN ; 
- int MAXSALTLEN ; 
- int MAXUSERLEN ; 
- int RESPONSE_LEN ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdin ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  t_clientclose (struct t_client*) ; 
- struct t_num* t_clientgenexp (struct t_client*) ; 
- unsigned char* t_clientgetkey (struct t_client*,struct t_num*) ; 
- struct t_client* t_clientopen (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct t_num*) ; 
- int /*<<< orphan*/  t_clientpasswd (struct t_client*,char*) ; 
- unsigned char* t_clientresponse (struct t_client*) ; 
- scalar_t__ t_clientverify (struct t_client*,unsigned char*) ; 
- void* t_fromb64 (char*,char*) ; 
- int /*<<< orphan*/  t_fromhex (unsigned char*,char*) ; 
- int /*<<< orphan*/  t_getpass (char*,int,char*) ; 
- struct t_preconf* t_getpreparam (int) ; 
- char* t_tob64 (char*,char*,void*) ; 
- char* t_tohex (char*,unsigned char*,int) ; 
+
+ int MAXHEXPARAMLEN ;
+ int MAXPARAMLEN ;
+ int MAXSALTLEN ;
+ int MAXUSERLEN ;
+ int RESPONSE_LEN ;
+ int atoi (char*) ;
+ int exit (int) ;
+ int fgets (char*,int,int ) ;
+ int printf (char*,...) ;
+ int stdin ;
+ int strlen (char*) ;
+ int t_clientclose (struct t_client*) ;
+ struct t_num* t_clientgenexp (struct t_client*) ;
+ unsigned char* t_clientgetkey (struct t_client*,struct t_num*) ;
+ struct t_client* t_clientopen (char*,int *,int *,struct t_num*) ;
+ int t_clientpasswd (struct t_client*,char*) ;
+ unsigned char* t_clientresponse (struct t_client*) ;
+ scalar_t__ t_clientverify (struct t_client*,unsigned char*) ;
+ void* t_fromb64 (char*,char*) ;
+ int t_fromhex (unsigned char*,char*) ;
+ int t_getpass (char*,int,char*) ;
+ struct t_preconf* t_getpreparam (int) ;
+ char* t_tob64 (char*,char*,void*) ;
+ char* t_tohex (char*,unsigned char*,int) ;
 
 int
 main()

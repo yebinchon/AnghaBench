@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * config ; 
- char* config_get_string (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isxdigit (unsigned char) ; 
- int /*<<< orphan*/  sscanf (char const*,char*,unsigned int*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ int assert (int ) ;
+ int * config ;
+ char* config_get_string (int *,char const*,char const*,int *) ;
+ int isxdigit (unsigned char) ;
+ int sscanf (char const*,char*,unsigned int*) ;
+ size_t strlen (char const*) ;
 
 bool btc_config_get_bin(const char *section, const char *key, uint8_t *value, size_t *length)
 {
-    assert(config != NULL);
-    assert(section != NULL);
-    assert(key != NULL);
-    assert(value != NULL);
-    assert(length != NULL);
+    assert(config != ((void*)0));
+    assert(section != ((void*)0));
+    assert(key != ((void*)0));
+    assert(value != ((void*)0));
+    assert(length != ((void*)0));
 
-    const char *value_str = config_get_string(config, section, key, NULL);
+    const char *value_str = config_get_string(config, section, key, ((void*)0));
 
     if (!value_str) {
-        return false;
+        return 0;
     }
 
     size_t value_len = strlen(value_str);
     if ((value_len % 2) != 0 || *length < (value_len / 2)) {
-        return false;
+        return 0;
     }
 
     for (size_t i = 0; i < value_len; ++i)
         if (!isxdigit((unsigned char)value_str[i])) {
-            return false;
+            return 0;
         }
 
     for (*length = 0; *value_str; value_str += 2, *length += 1) {
@@ -50,5 +50,5 @@ bool btc_config_get_bin(const char *section, const char *key, uint8_t *value, si
         value[*length] = (uint8_t)(val);
     }
 
-    return true;
+    return 1;
 }

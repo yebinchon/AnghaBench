@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connectdata {int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  Curl_addrinfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_printable_address (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  infof (int /*<<< orphan*/ ,char*,char*,char*,int) ; 
+
+
+
+struct connectdata {int data; } ;
+typedef int buf ;
+typedef int Curl_addrinfo ;
+
+
+ int Curl_printable_address (int *,char*,int) ;
+ int infof (int ,char*,char*,char*,int) ;
 
 __attribute__((used)) static void
 ftp_pasv_verbose(struct connectdata *conn,
                  Curl_addrinfo *ai,
-                 char *newhost, /* ascii version */
+                 char *newhost,
                  int port)
 {
   char buf[256];

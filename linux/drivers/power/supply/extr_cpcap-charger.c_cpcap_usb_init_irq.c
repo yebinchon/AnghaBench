@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
-struct cpcap_interrupt_desc {char const* name; int irq; int /*<<< orphan*/  node; } ;
-struct cpcap_charger_ddata {int /*<<< orphan*/  irq_list; int /*<<< orphan*/  dev; } ;
+struct cpcap_interrupt_desc {char const* name; int irq; int node; } ;
+struct cpcap_charger_ddata {int irq_list; int dev; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  IRQF_SHARED ; 
- int /*<<< orphan*/  cpcap_charger_irq_thread ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,char const*,int) ; 
- struct cpcap_interrupt_desc* devm_kzalloc (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int devm_request_threaded_irq (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,struct cpcap_charger_ddata*) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int platform_get_irq_byname (struct platform_device*,char const*) ; 
+
+ int ENODEV ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int IRQF_SHARED ;
+ int cpcap_charger_irq_thread ;
+ int dev_err (int ,char*,char const*,int) ;
+ struct cpcap_interrupt_desc* devm_kzalloc (int ,int,int ) ;
+ int devm_request_threaded_irq (int ,int,int *,int ,int ,char const*,struct cpcap_charger_ddata*) ;
+ int list_add (int *,int *) ;
+ int platform_get_irq_byname (struct platform_device*,char const*) ;
 
 __attribute__((used)) static int cpcap_usb_init_irq(struct platform_device *pdev,
-			      struct cpcap_charger_ddata *ddata,
-			      const char *name)
+         struct cpcap_charger_ddata *ddata,
+         const char *name)
 {
-	struct cpcap_interrupt_desc *d;
-	int irq, error;
+ struct cpcap_interrupt_desc *d;
+ int irq, error;
 
-	irq = platform_get_irq_byname(pdev, name);
-	if (irq < 0)
-		return -ENODEV;
+ irq = platform_get_irq_byname(pdev, name);
+ if (irq < 0)
+  return -ENODEV;
 
-	error = devm_request_threaded_irq(ddata->dev, irq, NULL,
-					  cpcap_charger_irq_thread,
-					  IRQF_SHARED,
-					  name, ddata);
-	if (error) {
-		dev_err(ddata->dev, "could not get irq %s: %i\n",
-			name, error);
+ error = devm_request_threaded_irq(ddata->dev, irq, ((void*)0),
+       cpcap_charger_irq_thread,
+       IRQF_SHARED,
+       name, ddata);
+ if (error) {
+  dev_err(ddata->dev, "could not get irq %s: %i\n",
+   name, error);
 
-		return error;
-	}
+  return error;
+ }
 
-	d = devm_kzalloc(ddata->dev, sizeof(*d), GFP_KERNEL);
-	if (!d)
-		return -ENOMEM;
+ d = devm_kzalloc(ddata->dev, sizeof(*d), GFP_KERNEL);
+ if (!d)
+  return -ENOMEM;
 
-	d->name = name;
-	d->irq = irq;
-	list_add(&d->node, &ddata->irq_list);
+ d->name = name;
+ d->irq = irq;
+ list_add(&d->node, &ddata->irq_list);
 
-	return 0;
+ return 0;
 }

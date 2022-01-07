@@ -1,116 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  GeneralData; int /*<<< orphan*/  Delete; int /*<<< orphan*/  Notice; int /*<<< orphan*/  CertRequest; int /*<<< orphan*/  Cert; int /*<<< orphan*/  Id; int /*<<< orphan*/  Transform; int /*<<< orphan*/  Proposal; int /*<<< orphan*/  Sa; } ;
-struct TYPE_6__ {int PayloadType; int /*<<< orphan*/ * BitArray; TYPE_1__ Payload; } ;
-typedef  TYPE_2__ IKE_PACKET_PAYLOAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
-#define  IKE_PAYLOAD_CERT 145 
-#define  IKE_PAYLOAD_CERT_REQUEST 144 
-#define  IKE_PAYLOAD_DELETE 143 
-#define  IKE_PAYLOAD_HASH 142 
-#define  IKE_PAYLOAD_ID 141 
-#define  IKE_PAYLOAD_KEY_EXCHANGE 140 
-#define  IKE_PAYLOAD_NAT_D 139 
-#define  IKE_PAYLOAD_NAT_D_DRAFT 138 
-#define  IKE_PAYLOAD_NAT_OA 137 
-#define  IKE_PAYLOAD_NAT_OA_DRAFT 136 
-#define  IKE_PAYLOAD_NAT_OA_DRAFT_2 135 
-#define  IKE_PAYLOAD_NOTICE 134 
-#define  IKE_PAYLOAD_PROPOSAL 133 
-#define  IKE_PAYLOAD_RAND 132 
-#define  IKE_PAYLOAD_SA 131 
-#define  IKE_PAYLOAD_SIGN 130 
-#define  IKE_PAYLOAD_TRANSFORM 129 
-#define  IKE_PAYLOAD_VENDOR_ID 128 
- int /*<<< orphan*/  IkeFreeCertPayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeCertRequestPayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeDataPayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeDeletePayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeIdPayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeNoticePayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeProposalPayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeSaPayload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IkeFreeTransformPayload (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int GeneralData; int Delete; int Notice; int CertRequest; int Cert; int Id; int Transform; int Proposal; int Sa; } ;
+struct TYPE_6__ {int PayloadType; int * BitArray; TYPE_1__ Payload; } ;
+typedef TYPE_2__ IKE_PACKET_PAYLOAD ;
+
+
+ int Free (TYPE_2__*) ;
+ int FreeBuf (int *) ;
+ int IkeFreeCertPayload (int *) ;
+ int IkeFreeCertRequestPayload (int *) ;
+ int IkeFreeDataPayload (int *) ;
+ int IkeFreeDeletePayload (int *) ;
+ int IkeFreeIdPayload (int *) ;
+ int IkeFreeNoticePayload (int *) ;
+ int IkeFreeProposalPayload (int *) ;
+ int IkeFreeSaPayload (int *) ;
+ int IkeFreeTransformPayload (int *) ;
 
 void IkeFreePayload(IKE_PACKET_PAYLOAD *p)
 {
-	// Validate arguments
-	if (p == NULL)
-	{
-		return;
-	}
 
-	switch (p->PayloadType)
-	{
-	case IKE_PAYLOAD_SA:					// SA payload
-		IkeFreeSaPayload(&p->Payload.Sa);
-		break;
+ if (p == ((void*)0))
+ {
+  return;
+ }
 
-	case IKE_PAYLOAD_PROPOSAL:			// Proposal payload
-		IkeFreeProposalPayload(&p->Payload.Proposal);
-		break;
+ switch (p->PayloadType)
+ {
+ case 131:
+  IkeFreeSaPayload(&p->Payload.Sa);
+  break;
 
-	case IKE_PAYLOAD_TRANSFORM:			// Proposal payload
-		IkeFreeTransformPayload(&p->Payload.Transform);
-		break;
+ case 133:
+  IkeFreeProposalPayload(&p->Payload.Proposal);
+  break;
 
-	case IKE_PAYLOAD_ID:					// ID payload
-		IkeFreeIdPayload(&p->Payload.Id);
-		break;
+ case 129:
+  IkeFreeTransformPayload(&p->Payload.Transform);
+  break;
 
-	case IKE_PAYLOAD_CERT:				// Certificate payload
-		IkeFreeCertPayload(&p->Payload.Cert);
-		break;
+ case 141:
+  IkeFreeIdPayload(&p->Payload.Id);
+  break;
 
-	case IKE_PAYLOAD_CERT_REQUEST:		// Certificate request payload
-		IkeFreeCertRequestPayload(&p->Payload.CertRequest);
-		break;
+ case 145:
+  IkeFreeCertPayload(&p->Payload.Cert);
+  break;
 
-	case IKE_PAYLOAD_NOTICE:				// Notification Payload
-		IkeFreeNoticePayload(&p->Payload.Notice);
-		break;
+ case 144:
+  IkeFreeCertRequestPayload(&p->Payload.CertRequest);
+  break;
 
-	case IKE_PAYLOAD_DELETE:				// Deletion payload
-		IkeFreeDeletePayload(&p->Payload.Delete);
-		break;
+ case 134:
+  IkeFreeNoticePayload(&p->Payload.Notice);
+  break;
 
-	case IKE_PAYLOAD_NAT_OA:				// NAT-OD payload
-	case IKE_PAYLOAD_NAT_OA_DRAFT:
-	case IKE_PAYLOAD_NAT_OA_DRAFT_2:
-		// Do Nothing
-		break;
+ case 143:
+  IkeFreeDeletePayload(&p->Payload.Delete);
+  break;
 
-	case IKE_PAYLOAD_KEY_EXCHANGE:		// Key exchange payload
-	case IKE_PAYLOAD_HASH:				// Hash payload
-	case IKE_PAYLOAD_SIGN:				// Signature payload
-	case IKE_PAYLOAD_RAND:				// Random number payload
-	case IKE_PAYLOAD_VENDOR_ID:			// Vendor ID payload
-	case IKE_PAYLOAD_NAT_D:				// NAT-D payload
-	case IKE_PAYLOAD_NAT_D_DRAFT:		// NAT-D payload (draft)
-	default:
-		IkeFreeDataPayload(&p->Payload.GeneralData);
-		break;
-	}
+ case 137:
+ case 136:
+ case 135:
 
-	if (p->BitArray != NULL)
-	{
-		FreeBuf(p->BitArray);
-	}
+  break;
 
-	Free(p);
+ case 140:
+ case 142:
+ case 130:
+ case 132:
+ case 128:
+ case 139:
+ case 138:
+ default:
+  IkeFreeDataPayload(&p->Payload.GeneralData);
+  break;
+ }
+
+ if (p->BitArray != ((void*)0))
+ {
+  FreeBuf(p->BitArray);
+ }
+
+ Free(p);
 }

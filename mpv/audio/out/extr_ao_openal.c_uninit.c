@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  num_buffers; } ;
+
+
+
+
+struct priv {int num_buffers; } ;
 struct ao {struct priv* priv; } ;
-typedef  int /*<<< orphan*/  ALCdevice ;
-typedef  int /*<<< orphan*/  ALCcontext ;
+typedef int ALCdevice ;
+typedef int ALCcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AL_BUFFER ; 
- int /*<<< orphan*/  alDeleteBuffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alDeleteSources (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alSourceStop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alSourcei (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alcCloseDevice (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  alcDestroyContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * alcGetContextsDevice (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * alcGetCurrentContext () ; 
- int /*<<< orphan*/  alcMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ao_data ; 
- int /*<<< orphan*/  buffers ; 
- int /*<<< orphan*/  source ; 
+
+ int AL_BUFFER ;
+ int alDeleteBuffers (int ,int ) ;
+ int alDeleteSources (int,int *) ;
+ int alSourceStop (int ) ;
+ int alSourcei (int ,int ,int ) ;
+ int alcCloseDevice (int *) ;
+ int alcDestroyContext (int *) ;
+ int * alcGetContextsDevice (int *) ;
+ int * alcGetCurrentContext () ;
+ int alcMakeContextCurrent (int *) ;
+ int * ao_data ;
+ int buffers ;
+ int source ;
 
 __attribute__((used)) static void uninit(struct ao *ao)
 {
@@ -41,8 +41,8 @@ __attribute__((used)) static void uninit(struct ao *ao)
 
     ALCcontext *ctx = alcGetCurrentContext();
     ALCdevice *dev = alcGetContextsDevice(ctx);
-    alcMakeContextCurrent(NULL);
+    alcMakeContextCurrent(((void*)0));
     alcDestroyContext(ctx);
     alcCloseDevice(dev);
-    ao_data = NULL;
+    ao_data = ((void*)0);
 }

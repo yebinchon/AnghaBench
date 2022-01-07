@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  first_pcr; } ;
-typedef  TYPE_1__ vlc_clock_main_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
- int /*<<< orphan*/  clock_point_Create (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_clock_main_reset (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lock; int first_pcr; } ;
+typedef TYPE_1__ vlc_clock_main_t ;
+
+
+ int VLC_TICK_INVALID ;
+ int clock_point_Create (int ,int ) ;
+ int vlc_clock_main_reset (TYPE_1__*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void vlc_clock_main_Reset(vlc_clock_main_t *main_clock)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* tid; } ;
-typedef  TYPE_1__ tftp_connection_t ;
+typedef TYPE_1__ tftp_connection_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  enable_ipv6 ; 
- TYPE_1__* get_connection_f (int,int) ; 
- int open_udp_server_socket (int) ; 
- int /*<<< orphan*/  tftp_init_udp_port (TYPE_1__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ut_tftp_server ; 
- size_t working_mode ; 
+
+ int assert (int) ;
+ int enable_ipv6 ;
+ TYPE_1__* get_connection_f (int,int) ;
+ int open_udp_server_socket (int) ;
+ int tftp_init_udp_port (TYPE_1__*,int,int,int *,int ,int ) ;
+ int ut_tftp_server ;
+ size_t working_mode ;
 
 int tftp_init_listening_connection (int port, int udp_sfd) {
   tftp_connection_t *c = get_connection_f (port, 1);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int w; int h; } ;
-typedef  TYPE_1__ CinepakEncContext ;
+typedef TYPE_1__ CinepakEncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WB16 (unsigned char*,int) ; 
- int /*<<< orphan*/  AV_WB24 (unsigned char*,int) ; 
- int CVID_HEADER_SIZE ; 
+
+ int AV_WB16 (unsigned char*,int) ;
+ int AV_WB24 (unsigned char*,int) ;
+ int CVID_HEADER_SIZE ;
 
 __attribute__((used)) static int write_cvid_header(CinepakEncContext *s, unsigned char *buf,
                              int num_strips, int data_size, int isakeyframe)

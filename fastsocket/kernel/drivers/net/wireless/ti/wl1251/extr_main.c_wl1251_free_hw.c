@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wl1251 {int /*<<< orphan*/  hw; int /*<<< orphan*/ * rx_descriptor; int /*<<< orphan*/ * nvs; int /*<<< orphan*/ * fw; int /*<<< orphan*/ * data_path; int /*<<< orphan*/ * target_mem_map; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_free_hw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ieee80211_unregister_hw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl1251_debugfs_exit (struct wl1251*) ; 
+
+
+
+struct wl1251 {int hw; int * rx_descriptor; int * nvs; int * fw; int * data_path; int * target_mem_map; } ;
+
+
+ int ieee80211_free_hw (int ) ;
+ int ieee80211_unregister_hw (int ) ;
+ int kfree (int *) ;
+ int vfree (int *) ;
+ int wl1251_debugfs_exit (struct wl1251*) ;
 
 int wl1251_free_hw(struct wl1251 *wl)
 {
-	ieee80211_unregister_hw(wl->hw);
+ ieee80211_unregister_hw(wl->hw);
 
-	wl1251_debugfs_exit(wl);
+ wl1251_debugfs_exit(wl);
 
-	kfree(wl->target_mem_map);
-	kfree(wl->data_path);
-	vfree(wl->fw);
-	wl->fw = NULL;
-	kfree(wl->nvs);
-	wl->nvs = NULL;
+ kfree(wl->target_mem_map);
+ kfree(wl->data_path);
+ vfree(wl->fw);
+ wl->fw = ((void*)0);
+ kfree(wl->nvs);
+ wl->nvs = ((void*)0);
 
-	kfree(wl->rx_descriptor);
-	wl->rx_descriptor = NULL;
+ kfree(wl->rx_descriptor);
+ wl->rx_descriptor = ((void*)0);
 
-	ieee80211_free_hw(wl->hw);
+ ieee80211_free_hw(wl->hw);
 
-	return 0;
+ return 0;
 }

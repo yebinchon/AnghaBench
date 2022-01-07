@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct addrinfo {int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; struct addrinfo* ai_next; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct addrinfo {int ai_addrlen; int ai_addr; int ai_protocol; int ai_socktype; int ai_family; struct addrinfo* ai_next; } ;
 struct TYPE_3__ {int fd; } ;
-typedef  TYPE_1__ mbedtls_net_context ;
-typedef  int /*<<< orphan*/  hints ;
+typedef TYPE_1__ mbedtls_net_context ;
+typedef int hints ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int MBEDTLS_ERR_NET_CONNECT_FAILED ; 
- int MBEDTLS_ERR_NET_SOCKET_FAILED ; 
- int MBEDTLS_ERR_NET_UNKNOWN_HOST ; 
- int MBEDTLS_NET_PROTO_UDP ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- scalar_t__ getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int net_prepare () ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_UNSPEC ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int MBEDTLS_ERR_NET_CONNECT_FAILED ;
+ int MBEDTLS_ERR_NET_SOCKET_FAILED ;
+ int MBEDTLS_ERR_NET_UNKNOWN_HOST ;
+ int MBEDTLS_NET_PROTO_UDP ;
+ int SOCK_DGRAM ;
+ int SOCK_STREAM ;
+ int close (int) ;
+ scalar_t__ connect (int,int ,int ) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ scalar_t__ getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int net_prepare () ;
+ int socket (int ,int ,int ) ;
 
 int mbedtls_net_connect( mbedtls_net_context *ctx, const char *host, const char *port, int proto )
 {
@@ -43,7 +43,7 @@ int mbedtls_net_connect( mbedtls_net_context *ctx, const char *host, const char 
         return ( ret );
     }
 
-    /* Do name resolution with both IPv6 and IPv4 */
+
     memset( &hints, 0, sizeof( hints ) );
     hints.ai_family = AF_UNSPEC;
     hints.ai_socktype = proto == MBEDTLS_NET_PROTO_UDP ? SOCK_DGRAM : SOCK_STREAM;
@@ -53,9 +53,9 @@ int mbedtls_net_connect( mbedtls_net_context *ctx, const char *host, const char 
         return ( MBEDTLS_ERR_NET_UNKNOWN_HOST );
     }
 
-    /* Try the sockaddrs until a connection succeeds */
+
     ret = MBEDTLS_ERR_NET_UNKNOWN_HOST;
-    for ( cur = addr_list; cur != NULL; cur = cur->ai_next ) {
+    for ( cur = addr_list; cur != ((void*)0); cur = cur->ai_next ) {
         int fd = socket( cur->ai_family, cur->ai_socktype, cur->ai_protocol );
 
         if ( fd < 0 ) {
@@ -64,7 +64,7 @@ int mbedtls_net_connect( mbedtls_net_context *ctx, const char *host, const char 
         }
 
         if ( connect( fd, cur->ai_addr, cur->ai_addrlen ) == 0 ) {
-            ctx->fd = fd; // connected!
+            ctx->fd = fd;
             ret = 0;
             break;
         }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct TYPE_6__* next; } ;
-typedef  TYPE_1__ stbds_string_block ;
+typedef TYPE_1__ stbds_string_block ;
 struct TYPE_7__ {TYPE_1__* storage; } ;
-typedef  TYPE_2__ stbds_string_arena ;
+typedef TYPE_2__ stbds_string_arena ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STBDS_FREE (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int STBDS_FREE (int *,TYPE_1__*) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 void stbds_strreset(stbds_string_arena *a)
 {
@@ -27,7 +27,7 @@ void stbds_strreset(stbds_string_arena *a)
   x = a->storage;
   while (x) {
     y = x->next;
-    STBDS_FREE(NULL, x);
+    STBDS_FREE(((void*)0), x);
     x = y;
   }
   memset(a, 0, sizeof(*a));

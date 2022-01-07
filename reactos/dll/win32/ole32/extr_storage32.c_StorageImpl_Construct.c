@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_13__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_18__ {int openFlags; int ref; TYPE_10__ IStorage_iface; int /*<<< orphan*/  reverted; int /*<<< orphan*/  lockingrole; int /*<<< orphan*/  create; int /*<<< orphan*/ * baseVtbl; TYPE_2__ IDirectWriterLock_iface; TYPE_1__ IPropertySetStorage_iface; int /*<<< orphan*/  storageHead; int /*<<< orphan*/  strmHead; } ;
-struct TYPE_17__ {int /*<<< orphan*/  grfLocksSupported; } ;
-struct TYPE_16__ {TYPE_8__ base; int /*<<< orphan*/  locks_supported; int /*<<< orphan*/ * lockBytes; int /*<<< orphan*/  smallBlockSize; int /*<<< orphan*/  bigBlockSize; } ;
-typedef  TYPE_3__ StorageImpl ;
-typedef  TYPE_4__ STATSTG ;
-typedef  int /*<<< orphan*/  LPCOLESTR ;
-typedef  int /*<<< orphan*/  ILockBytes ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEF_SMALL_BLOCK_SIZE ; 
- int /*<<< orphan*/  DirectWriterLockVtbl ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FileLockBytesImpl_Construct (scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_3__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ILockBytes_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ILockBytes_Stat (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IPropertySetStorage_Vtbl ; 
- int /*<<< orphan*/  IStorage_Release (TYPE_10__*) ; 
- int /*<<< orphan*/  STATFLAG_NONAME ; 
- int STGM_CREATE ; 
- int STGM_DIRECT_SWMR ; 
- int STGM_READ ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_DENY_NONE ; 
- int STGM_SHARE_DENY_WRITE ; 
- int /*<<< orphan*/  STG_E_INVALIDFLAG ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SWMR_None ; 
- int /*<<< orphan*/  SWMR_Reader ; 
- int /*<<< orphan*/  SWMR_Writer ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StorageImpl_BaseVtbl ; 
- int /*<<< orphan*/  StorageImpl_Flush (TYPE_8__*) ; 
- int /*<<< orphan*/  StorageImpl_GrabLocks (TYPE_3__*,int) ; 
- int /*<<< orphan*/  StorageImpl_Refresh (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StorageImpl_Vtbl ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WINE_LOCK_READ ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  validateSTGM (int) ; 
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
+typedef int ULONG ;
+struct TYPE_13__ {int * lpVtbl; } ;
+struct TYPE_15__ {int * lpVtbl; } ;
+struct TYPE_14__ {int * lpVtbl; } ;
+struct TYPE_18__ {int openFlags; int ref; TYPE_10__ IStorage_iface; int reverted; int lockingrole; int create; int * baseVtbl; TYPE_2__ IDirectWriterLock_iface; TYPE_1__ IPropertySetStorage_iface; int storageHead; int strmHead; } ;
+struct TYPE_17__ {int grfLocksSupported; } ;
+struct TYPE_16__ {TYPE_8__ base; int locks_supported; int * lockBytes; int smallBlockSize; int bigBlockSize; } ;
+typedef TYPE_3__ StorageImpl ;
+typedef TYPE_4__ STATSTG ;
+typedef int LPCOLESTR ;
+typedef int ILockBytes ;
+typedef int HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int DEF_SMALL_BLOCK_SIZE ;
+ int DirectWriterLockVtbl ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FileLockBytesImpl_Construct (scalar_t__,int,int ,int **) ;
+ int GetProcessHeap () ;
+ TYPE_3__* HeapAlloc (int ,int ,int) ;
+ int ILockBytes_AddRef (int *) ;
+ int ILockBytes_Stat (int *,TYPE_4__*,int ) ;
+ int IPropertySetStorage_Vtbl ;
+ int IStorage_Release (TYPE_10__*) ;
+ int STATFLAG_NONAME ;
+ int STGM_CREATE ;
+ int STGM_DIRECT_SWMR ;
+ int STGM_READ ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_DENY_NONE ;
+ int STGM_SHARE_DENY_WRITE ;
+ int STG_E_INVALIDFLAG ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int SWMR_None ;
+ int SWMR_Reader ;
+ int SWMR_Writer ;
+ int S_OK ;
+ int StorageImpl_BaseVtbl ;
+ int StorageImpl_Flush (TYPE_8__*) ;
+ int StorageImpl_GrabLocks (TYPE_3__*,int) ;
+ int StorageImpl_Refresh (TYPE_3__*,int ,int ) ;
+ int StorageImpl_Vtbl ;
+ int TRUE ;
+ int WINE_LOCK_READ ;
+ int list_init (int *) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int validateSTGM (int) ;
 
 __attribute__((used)) static HRESULT StorageImpl_Construct(
-  HANDLE       hFile,
-  LPCOLESTR    pwcsName,
-  ILockBytes*  pLkbyt,
-  DWORD        openFlags,
-  BOOL         fileBased,
-  BOOL         create,
-  ULONG        sector_size,
+  HANDLE hFile,
+  LPCOLESTR pwcsName,
+  ILockBytes* pLkbyt,
+  DWORD openFlags,
+  BOOL fileBased,
+  BOOL create,
+  ULONG sector_size,
   StorageImpl** result)
 {
   StorageImpl* This;
@@ -113,10 +113,10 @@ __attribute__((used)) static HRESULT StorageImpl_Construct(
 
   This->base.reverted = FALSE;
 
-  /*
-   * Initialize the big block cache.
-   */
-  This->bigBlockSize   = sector_size;
+
+
+
+  This->bigBlockSize = sector_size;
   This->smallBlockSize = DEF_SMALL_BLOCK_SIZE;
   if (hFile)
     hr = FileLockBytesImpl_Construct(hFile, openFlags, pwcsName, &This->lockBytes);
@@ -133,7 +133,7 @@ __attribute__((used)) static HRESULT StorageImpl_Construct(
   {
     This->locks_supported = stat.grfLocksSupported;
     if (!hFile)
-        /* Don't try to use wine-internal locking flag with custom ILockBytes */
+
         This->locks_supported &= ~WINE_LOCK_READ;
 
     hr = StorageImpl_GrabLocks(This, openFlags);
@@ -145,7 +145,7 @@ __attribute__((used)) static HRESULT StorageImpl_Construct(
   if (FAILED(hr))
   {
     IStorage_Release(&This->base.IStorage_iface);
-    *result = NULL;
+    *result = ((void*)0);
   }
   else
   {

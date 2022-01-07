@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ u_int ;
-typedef  scalar_t__ u_char ;
-typedef  int /*<<< orphan*/  netdissect_options ;
 
-/* Variables and functions */
-#define  DH4OPT_DNS_SERVERS 130 
-#define  DH4OPT_DOMAIN_SEARCH 129 
-#define  DH4OPT_NTP_SERVERS 128 
- int /*<<< orphan*/  ND_PRINT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dh4opt_str ; 
- int /*<<< orphan*/  ipaddr_string (int /*<<< orphan*/ *,scalar_t__ const*) ; 
- scalar_t__* ns_nprint (int /*<<< orphan*/ *,scalar_t__ const*,scalar_t__ const*) ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ u_int ;
+typedef scalar_t__ u_char ;
+typedef int netdissect_options ;
+
+
+
+
+
+ int ND_PRINT (int *) ;
+ int dh4opt_str ;
+ int ipaddr_string (int *,scalar_t__ const*) ;
+ scalar_t__* ns_nprint (int *,scalar_t__ const*,scalar_t__ const*) ;
+ int tok2str (int ,char*,scalar_t__) ;
 
 __attribute__((used)) static int
 dhcpv4_print(netdissect_options *ndo,
@@ -52,8 +52,8 @@ dhcpv4_print(netdissect_options *ndo,
             return -1;
 
         switch (type) {
-        case DH4OPT_DNS_SERVERS:
-        case DH4OPT_NTP_SERVERS: {
+        case 130:
+        case 128: {
             if (optlen < 4 || optlen % 4 != 0) {
                 return -1;
             }
@@ -61,11 +61,11 @@ dhcpv4_print(netdissect_options *ndo,
                 ND_PRINT((ndo, " %s", ipaddr_string(ndo, value + t)));
         }
             break;
-        case DH4OPT_DOMAIN_SEARCH: {
+        case 129: {
             const u_char *tp = value;
             while (tp < value + optlen) {
                 ND_PRINT((ndo, " "));
-                if ((tp = ns_nprint(ndo, tp, value + optlen)) == NULL)
+                if ((tp = ns_nprint(ndo, tp, value + optlen)) == ((void*)0))
                     return -1;
             }
         }

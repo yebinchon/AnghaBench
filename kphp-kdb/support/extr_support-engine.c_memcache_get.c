@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  text; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ message ;
+struct TYPE_5__ {int text; int len; } ;
+typedef TYPE_1__ message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_LOG ; 
- int /*<<< orphan*/  INIT ; 
- int MAX_RES ; 
- TYPE_1__* MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_LOG_VERBOSITY ; 
- scalar_t__ STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  delete ; 
- int do_delete_answer (int) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  get ; 
- char* get_answer (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  hst (char*,char const*,int) ; 
- int /*<<< orphan*/  msg_free (TYPE_1__*) ; 
- scalar_t__ msg_verify (TYPE_1__*,int) ; 
- int prepare_stats (struct connection*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,scalar_t__,int) ; 
- int /*<<< orphan*/  return_one_key_flags (struct connection*,char const*,char*,int /*<<< orphan*/ ,int) ; 
- int sscanf (char*,char*,int*,int*,...) ; 
- scalar_t__ stats_buff ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int support_prepare_stats () ; 
+
+ int GET_LOG ;
+ int INIT ;
+ int MAX_RES ;
+ TYPE_1__* MESSAGE (struct connection*) ;
+ int RETURN (int ,int ) ;
+ int SET_LOG_VERBOSITY ;
+ scalar_t__ STATS_BUFF_SIZE ;
+ int delete ;
+ int do_delete_answer (int) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int get ;
+ char* get_answer (int,int,int ,int ,int,int) ;
+ int hst (char*,char const*,int) ;
+ int msg_free (TYPE_1__*) ;
+ scalar_t__ msg_verify (TYPE_1__*,int) ;
+ int prepare_stats (struct connection*,scalar_t__,scalar_t__) ;
+ int return_one_key (struct connection*,char const*,scalar_t__,int) ;
+ int return_one_key_flags (struct connection*,char const*,char*,int ,int) ;
+ int sscanf (char*,char*,int*,int*,...) ;
+ scalar_t__ stats_buff ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ int support_prepare_stats () ;
 
 int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
   hst ("memcache_get: key='%s', key_len=%d\n", old_key, old_key_len);
@@ -80,7 +80,7 @@ int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
 
     char *res = get_answer (user_id, agent_id, msg->len, msg->text, cnt, debug);
 
-    if (res != NULL) {
+    if (res != ((void*)0)) {
       return_one_key_flags (c, old_key, res, strlen (res), 1);
     }
 

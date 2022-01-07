@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct c8sectpfei {int /*<<< orphan*/ * root; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove_recursive (int /*<<< orphan*/ *) ; 
+
+
+
+struct c8sectpfei {int * root; } ;
+
+
+ int debugfs_remove_recursive (int *) ;
 
 void c8sectpfe_debugfs_exit(struct c8sectpfei *fei)
 {
-	debugfs_remove_recursive(fei->root);
-	fei->root = NULL;
+ debugfs_remove_recursive(fei->root);
+ fei->root = ((void*)0);
 }

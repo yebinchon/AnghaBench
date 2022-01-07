@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AboveCallback ; 
- int /*<<< orphan*/  AspectCallback ; 
- int /*<<< orphan*/  AutoScaleCallback ; 
- int /*<<< orphan*/  CropBorderCallback ; 
- int /*<<< orphan*/  CropCallback ; 
- int /*<<< orphan*/  FullscreenCallback ; 
- int /*<<< orphan*/  SnapshotCallback ; 
- int /*<<< orphan*/  SubFilterCallback ; 
- int /*<<< orphan*/  SubMarginCallback ; 
- int /*<<< orphan*/  SubSourceCallback ; 
- int /*<<< orphan*/  VideoFilterCallback ; 
- int /*<<< orphan*/  ViewpointCallback ; 
- int /*<<< orphan*/  WallPaperCallback ; 
- int /*<<< orphan*/  ZoomCallback ; 
- int /*<<< orphan*/  var_AddCallback (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vout_thread_t ;
+
+
+ int AboveCallback ;
+ int AspectCallback ;
+ int AutoScaleCallback ;
+ int CropBorderCallback ;
+ int CropCallback ;
+ int FullscreenCallback ;
+ int SnapshotCallback ;
+ int SubFilterCallback ;
+ int SubMarginCallback ;
+ int SubSourceCallback ;
+ int VideoFilterCallback ;
+ int ViewpointCallback ;
+ int WallPaperCallback ;
+ int ZoomCallback ;
+ int var_AddCallback (int *,char*,int ,int *) ;
 
 void vout_IntfInit( vout_thread_t *p_vout )
 {
-    var_AddCallback( p_vout, "autoscale", AutoScaleCallback, NULL );
-    var_AddCallback( p_vout, "zoom", ZoomCallback, NULL );
-    var_AddCallback( p_vout, "crop-left", CropBorderCallback, NULL );
-    var_AddCallback( p_vout, "crop-top", CropBorderCallback, NULL );
-    var_AddCallback( p_vout, "crop-right", CropBorderCallback, NULL );
-    var_AddCallback( p_vout, "crop-bottom", CropBorderCallback, NULL );
-    var_AddCallback( p_vout, "crop", CropCallback, NULL );
-    var_AddCallback( p_vout, "aspect-ratio", AspectCallback, NULL );
-    var_AddCallback( p_vout, "video-on-top", AboveCallback, NULL );
-    var_AddCallback( p_vout, "video-wallpaper", WallPaperCallback, NULL );
-    var_AddCallback( p_vout, "fullscreen", FullscreenCallback, NULL );
-    var_AddCallback( p_vout, "video-snapshot", SnapshotCallback, NULL );
-    var_AddCallback( p_vout, "video-filter", VideoFilterCallback, NULL );
-    var_AddCallback( p_vout, "sub-source", SubSourceCallback, NULL );
-    var_AddCallback( p_vout, "sub-filter", SubFilterCallback, NULL );
-    var_AddCallback( p_vout, "sub-margin", SubMarginCallback, NULL );
-    var_AddCallback( p_vout, "viewpoint", ViewpointCallback, NULL );
+    var_AddCallback( p_vout, "autoscale", AutoScaleCallback, ((void*)0) );
+    var_AddCallback( p_vout, "zoom", ZoomCallback, ((void*)0) );
+    var_AddCallback( p_vout, "crop-left", CropBorderCallback, ((void*)0) );
+    var_AddCallback( p_vout, "crop-top", CropBorderCallback, ((void*)0) );
+    var_AddCallback( p_vout, "crop-right", CropBorderCallback, ((void*)0) );
+    var_AddCallback( p_vout, "crop-bottom", CropBorderCallback, ((void*)0) );
+    var_AddCallback( p_vout, "crop", CropCallback, ((void*)0) );
+    var_AddCallback( p_vout, "aspect-ratio", AspectCallback, ((void*)0) );
+    var_AddCallback( p_vout, "video-on-top", AboveCallback, ((void*)0) );
+    var_AddCallback( p_vout, "video-wallpaper", WallPaperCallback, ((void*)0) );
+    var_AddCallback( p_vout, "fullscreen", FullscreenCallback, ((void*)0) );
+    var_AddCallback( p_vout, "video-snapshot", SnapshotCallback, ((void*)0) );
+    var_AddCallback( p_vout, "video-filter", VideoFilterCallback, ((void*)0) );
+    var_AddCallback( p_vout, "sub-source", SubSourceCallback, ((void*)0) );
+    var_AddCallback( p_vout, "sub-filter", SubFilterCallback, ((void*)0) );
+    var_AddCallback( p_vout, "sub-margin", SubMarginCallback, ((void*)0) );
+    var_AddCallback( p_vout, "viewpoint", ViewpointCallback, ((void*)0) );
 }

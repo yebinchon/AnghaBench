@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ulong ;
-typedef  int /*<<< orphan*/  uchar ;
-struct TYPE_10__ {int len; int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ulong ;
+typedef int uchar ;
+struct TYPE_10__ {int len; int * data; } ;
 struct TYPE_12__ {int addrsize; TYPE_1__ aranges; } ;
-struct TYPE_11__ {int addrsize; int /*<<< orphan*/ * p; int /*<<< orphan*/ * ep; TYPE_3__* d; } ;
-typedef  TYPE_2__ DwarfBuf ;
-typedef  TYPE_3__ Dwarf ;
+struct TYPE_11__ {int addrsize; int * p; int * ep; TYPE_3__* d; } ;
+typedef TYPE_2__ DwarfBuf ;
+typedef TYPE_3__ Dwarf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USED (int) ; 
- void* dwarfget1 (TYPE_2__*) ; 
- int dwarfget2 (TYPE_2__*) ; 
- int dwarfget4 (TYPE_2__*) ; 
- int dwarfgetaddr (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * nil ; 
- int /*<<< orphan*/  werrstr (char*,...) ; 
+
+ int USED (int) ;
+ void* dwarfget1 (TYPE_2__*) ;
+ int dwarfget2 (TYPE_2__*) ;
+ int dwarfget4 (TYPE_2__*) ;
+ int dwarfgetaddr (TYPE_2__*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int * nil ;
+ int werrstr (char*,...) ;
 
 int
 dwarfaddrtounit(Dwarf *d, ulong addr, ulong *unit)
@@ -61,7 +61,7 @@ dwarfaddrtounit(Dwarf *d, ulong addr, ulong *unit)
         if(d->addrsize == 0)
             d->addrsize = b.addrsize;
         segsize = dwarfget1(&b);
-        USED(segsize);	/* what am i supposed to do with this? */
+        USED(segsize);
         if(b.p == nil)
             goto underflow;
         if((i = (b.p-start) % (2*b.addrsize)) != 0)

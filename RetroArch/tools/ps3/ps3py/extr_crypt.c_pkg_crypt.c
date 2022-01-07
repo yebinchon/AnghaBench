@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_Parse (int /*<<< orphan*/ *,char*,int**,int*) ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int**,int*,int**,int*,int*) ; 
- int /*<<< orphan*/ * PyObject_CallObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,int*,int) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int*) ; 
- int* malloc (int) ; 
- int /*<<< orphan*/  manipulate (int*) ; 
- int /*<<< orphan*/  sha1_callback ; 
+
+
+
+typedef int uint8_t ;
+typedef int PyObject ;
+
+
+ int PyArg_Parse (int *,char*,int**,int*) ;
+ int PyArg_ParseTuple (int *,char*,int**,int*,int**,int*,int*) ;
+ int * PyObject_CallObject (int ,int *) ;
+ int * Py_BuildValue (char*,int*,int) ;
+ int Py_DECREF (int *) ;
+ int free (int*) ;
+ int* malloc (int) ;
+ int manipulate (int*) ;
+ int sha1_callback ;
 
 __attribute__((used)) static PyObject* pkg_crypt(PyObject *self, PyObject *args)
 {
@@ -34,8 +34,8 @@ __attribute__((used)) static PyObject* pkg_crypt(PyObject *self, PyObject *args)
    PyObject *result;
 
    if (!PyArg_ParseTuple(args, "s#s#i", &key, &key_length, &input, &input_length, &length))
-      return NULL;
-   ret       = malloc(length);
+      return ((void*)0);
+   ret = malloc(length);
    remaining = length;
 
    while (remaining > 0)
@@ -47,12 +47,12 @@ __attribute__((used)) static PyObject* pkg_crypt(PyObject *self, PyObject *args)
          bytes_to_dump = 0x10;
 
       arglist = Py_BuildValue("(s#)", key, 0x40);
-      result  = PyObject_CallObject(sha1_callback, arglist);
+      result = PyObject_CallObject(sha1_callback, arglist);
       Py_DECREF(arglist);
       if (!result)
-         return NULL;
+         return ((void*)0);
       if (!PyArg_Parse(result, "s#", &outHash, &outHash_length))
-         return NULL;
+         return ((void*)0);
 
       for(i = 0; i < bytes_to_dump; i++)
       {
@@ -64,7 +64,7 @@ __attribute__((used)) static PyObject* pkg_crypt(PyObject *self, PyObject *args)
       remaining -= bytes_to_dump;
    }
 
-   /* Return the encrypted data */
+
    PyObject *py_ret = Py_BuildValue("s#", ret, length);
    free(ret);
    return py_ret;

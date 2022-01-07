@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_int ;
 
-/* Variables and functions */
- size_t IPSEC_DIR_INBOUND ; 
- size_t IPSEC_DIR_OUTBOUND ; 
- int /*<<< orphan*/ * TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * V_sptree ; 
+
+
+
+typedef size_t u_int ;
+
+
+ size_t IPSEC_DIR_INBOUND ;
+ size_t IPSEC_DIR_OUTBOUND ;
+ int * TAILQ_FIRST (int *) ;
+ int * V_sptree ;
 
 int
 key_havesp(u_int dir)
 {
 
-	return (dir == IPSEC_DIR_INBOUND || dir == IPSEC_DIR_OUTBOUND ?
-		TAILQ_FIRST(&V_sptree[dir]) != NULL : 1);
+ return (dir == IPSEC_DIR_INBOUND || dir == IPSEC_DIR_OUTBOUND ?
+  TAILQ_FIRST(&V_sptree[dir]) != ((void*)0) : 1);
 }

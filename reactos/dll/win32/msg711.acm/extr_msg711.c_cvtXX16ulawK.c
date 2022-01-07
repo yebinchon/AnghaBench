@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACMDRVSTREAMINSTANCE ;
-typedef  int* LPDWORD ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R16 (unsigned char const*) ; 
- int /*<<< orphan*/  linear2ulaw (int /*<<< orphan*/ ) ; 
- int min (int,int) ; 
+
+
+
+typedef int PACMDRVSTREAMINSTANCE ;
+typedef int* LPDWORD ;
+typedef int DWORD ;
+
+
+ int R16 (unsigned char const*) ;
+ int linear2ulaw (int ) ;
+ int min (int,int) ;
 
 __attribute__((used)) static void cvtXX16ulawK(PACMDRVSTREAMINSTANCE adsi,
                          const unsigned char* src, LPDWORD srcsize,
                          unsigned char* dst, LPDWORD dstsize)
 {
-    DWORD       len = min(*srcsize / 2, *dstsize);
-    DWORD       i;
+    DWORD len = min(*srcsize / 2, *dstsize);
+    DWORD i;
 
     *srcsize = len * 2;
     *dstsize = len;

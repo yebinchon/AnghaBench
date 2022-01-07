@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_5__ {size_t nStack; int* aPgno; int szPg; int pgno; int /*<<< orphan*/  f; int /*<<< orphan*/ * aPage; int /*<<< orphan*/ ** aStack; scalar_t__ zErr; } ;
-typedef  TYPE_1__ GState ;
 
-/* Variables and functions */
- size_t ArraySize (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- size_t fread (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ofstError (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  ofstPopPage (TYPE_1__*) ; 
- int /*<<< orphan*/ * sqlite3_malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_5__ {size_t nStack; int* aPgno; int szPg; int pgno; int f; int * aPage; int ** aStack; scalar_t__ zErr; } ;
+typedef TYPE_1__ GState ;
+
+
+ size_t ArraySize (int **) ;
+ int SEEK_SET ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ size_t fread (int *,int,int,int ) ;
+ int fseek (int ,int,int ) ;
+ int ofstError (TYPE_1__*,char*,...) ;
+ int ofstPopPage (TYPE_1__*) ;
+ int * sqlite3_malloc (int) ;
+ int stderr ;
 
 __attribute__((used)) static void ofstPushPage(GState *p, int pgno){
   u8 *pPage;

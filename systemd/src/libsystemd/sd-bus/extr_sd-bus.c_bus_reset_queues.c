@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t rqueue_size; size_t wqueue_size; scalar_t__ wqueue_allocated; int /*<<< orphan*/ * wqueue; scalar_t__ rqueue_allocated; int /*<<< orphan*/ * rqueue; } ;
-typedef  TYPE_1__ sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_message_unref_queued (int /*<<< orphan*/ ,TYPE_1__*) ; 
- void* mfree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t rqueue_size; size_t wqueue_size; scalar_t__ wqueue_allocated; int * wqueue; scalar_t__ rqueue_allocated; int * rqueue; } ;
+typedef TYPE_1__ sd_bus ;
+
+
+ int assert (TYPE_1__*) ;
+ int bus_message_unref_queued (int ,TYPE_1__*) ;
+ void* mfree (int *) ;
 
 __attribute__((used)) static void bus_reset_queues(sd_bus *b) {
         assert(b);

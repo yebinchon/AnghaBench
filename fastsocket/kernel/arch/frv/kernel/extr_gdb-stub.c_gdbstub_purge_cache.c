@@ -1,23 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static void gdbstub_purge_cache(void)
 {
-	asm volatile("	dcef	@(gr0,gr0),#1	\n"
-		     "	icei	@(gr0,gr0),#1	\n"
-		     "	membar			\n"
-		     "	bar			\n"
-		     );
+ asm volatile("	dcef	@(gr0,gr0),#1	\n"
+       "	icei	@(gr0,gr0),#1	\n"
+       "	membar			\n"
+       "	bar			\n"
+       );
 }

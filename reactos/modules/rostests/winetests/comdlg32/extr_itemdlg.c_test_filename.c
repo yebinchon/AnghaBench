@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_4__ {char const* member_0; char const* member_1; } ;
-typedef  int /*<<< orphan*/  IShellItem ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_1__ COMDLG_FILTERSPEC ;
+typedef int IShellItem ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_1__ COMDLG_FILTERSPEC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileW (char const*) ; 
- int /*<<< orphan*/  GetCurrentDirectoryW (int,char*) ; 
- int /*<<< orphan*/  IID_IShellItem ; 
- int /*<<< orphan*/  IShellItem_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pSHCreateItemFromParsingName (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  test_filename_opendlg (char const*,int /*<<< orphan*/ *,char const*,TYPE_1__ const*,int,char const*) ; 
- int /*<<< orphan*/  test_filename_savedlg (char const*,char const*,TYPE_1__ const*,int,char const*) ; 
- int /*<<< orphan*/  touch_file (char const*) ; 
+
+ int DeleteFileW (char const*) ;
+ int GetCurrentDirectoryW (int,char*) ;
+ int IID_IShellItem ;
+ int IShellItem_Release (int *) ;
+ int MAX_PATH ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
+ scalar_t__ pSHCreateItemFromParsingName (char*,int *,int *,void**) ;
+ int test_filename_opendlg (char const*,int *,char const*,TYPE_1__ const*,int,char const*) ;
+ int test_filename_savedlg (char const*,char const*,TYPE_1__ const*,int,char const*) ;
+ int touch_file (char const*) ;
 
 __attribute__((used)) static void test_filename(void)
 {
@@ -60,44 +60,44 @@ __attribute__((used)) static void test_filename(void)
         { desc1, complexext }
     };
 
-    /* No extension */
-    test_filename_savedlg(filename_noextW, NULL, NULL, 0, filename_noextW);
-    /* Default extension */
-    test_filename_savedlg(filename_noextW, defextW, NULL, 0, filename_defextW);
-    /* Default extension on filename ending with a . */
-    test_filename_savedlg(filename_dotextW, defextW, NULL, 0, filename_dotanddefW);
-    /* Default extension on filename with default extension */
-    test_filename_savedlg(filename_defextW, defextW, NULL, 0, filename_defextW);
-    /* Default extension on filename with another extension */
-    test_filename_savedlg(filename_ext1W, defextW, NULL, 0, filename_ext1anddefW);
-    /* Default extension, filterspec without default extension */
+
+    test_filename_savedlg(filename_noextW, ((void*)0), ((void*)0), 0, filename_noextW);
+
+    test_filename_savedlg(filename_noextW, defextW, ((void*)0), 0, filename_defextW);
+
+    test_filename_savedlg(filename_dotextW, defextW, ((void*)0), 0, filename_dotanddefW);
+
+    test_filename_savedlg(filename_defextW, defextW, ((void*)0), 0, filename_defextW);
+
+    test_filename_savedlg(filename_ext1W, defextW, ((void*)0), 0, filename_ext1anddefW);
+
     test_filename_savedlg(filename_noextW, defextW, filterspec, 2, filename_ext1W);
-    /* Default extension, filterspec with default extension */
+
     test_filename_savedlg(filename_noextW, defextW, filterspec, 3, filename_ext1W);
-    /* Default extension, filterspec with "complex" extension */
+
     test_filename_savedlg(filename_noextW, defextW, filterspec2, 1, filename_ext2W);
 
     GetCurrentDirectoryW(MAX_PATH, buf);
     ok(!!pSHCreateItemFromParsingName, "SHCreateItemFromParsingName is missing.\n");
-    hr = pSHCreateItemFromParsingName(buf, NULL, &IID_IShellItem, (void**)&psi_current);
+    hr = pSHCreateItemFromParsingName(buf, ((void*)0), &IID_IShellItem, (void**)&psi_current);
     ok(hr == S_OK, "Got 0x%08x\n", hr);
 
     touch_file(filename_noextW);
     touch_file(filename_defextW);
     touch_file(filename_ext2W);
 
-    /* IFileOpenDialog, default extension */
-    test_filename_opendlg(filename_noextW, psi_current, defextW, NULL, 0, filename_noextW);
-    /* IFileOpenDialog, default extension and filterspec */
+
+    test_filename_opendlg(filename_noextW, psi_current, defextW, ((void*)0), 0, filename_noextW);
+
     test_filename_opendlg(filename_noextW, psi_current, defextW, filterspec, 2, filename_noextW);
 
     DeleteFileW(filename_noextW);
-    /* IFileOpenDialog, default extension, noextW deleted */
-    test_filename_opendlg(filename_noextW, psi_current, defextW, NULL, 0, filename_defextW);
-    if(0) /* Interactive */
+
+    test_filename_opendlg(filename_noextW, psi_current, defextW, ((void*)0), 0, filename_defextW);
+    if(0)
     {
-    /* IFileOpenDialog, filterspec, no default extension, noextW deleted */
-    test_filename_opendlg(filename_noextW, psi_current, NULL, filterspec, 2, NULL);
+
+    test_filename_opendlg(filename_noextW, psi_current, ((void*)0), filterspec, 2, ((void*)0));
     }
 
     IShellItem_Release(psi_current);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lm95234_data {scalar_t__ thyst; scalar_t__* tcrit2; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 struct TYPE_2__ {int index; } ;
 
-/* Variables and functions */
- struct lm95234_data* dev_get_drvdata (struct device*) ; 
- int lm95234_update_device (struct lm95234_data*) ; 
- int sprintf (char*,char*,int) ; 
- TYPE_1__* to_sensor_dev_attr (struct device_attribute*) ; 
+
+ struct lm95234_data* dev_get_drvdata (struct device*) ;
+ int lm95234_update_device (struct lm95234_data*) ;
+ int sprintf (char*,char*,int) ;
+ TYPE_1__* to_sensor_dev_attr (struct device_attribute*) ;
 
 __attribute__((used)) static ssize_t tcrit2_hyst_show(struct device *dev,
-				struct device_attribute *attr, char *buf)
+    struct device_attribute *attr, char *buf)
 {
-	struct lm95234_data *data = dev_get_drvdata(dev);
-	int index = to_sensor_dev_attr(attr)->index;
-	int ret = lm95234_update_device(data);
+ struct lm95234_data *data = dev_get_drvdata(dev);
+ int index = to_sensor_dev_attr(attr)->index;
+ int ret = lm95234_update_device(data);
 
-	if (ret)
-		return ret;
+ if (ret)
+  return ret;
 
-	/* Result can be negative, so be careful with unsigned operands */
-	return sprintf(buf, "%d",
-		       ((int)data->tcrit2[index] - (int)data->thyst) * 1000);
+
+ return sprintf(buf, "%d",
+         ((int)data->tcrit2[index] - (int)data->thyst) * 1000);
 }

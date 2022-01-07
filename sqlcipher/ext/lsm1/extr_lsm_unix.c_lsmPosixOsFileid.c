@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void u8 ;
-struct stat {int /*<<< orphan*/  st_ino; int /*<<< orphan*/  st_dev; } ;
-typedef  int /*<<< orphan*/  lsm_file ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_2__ {int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ PosixFile ;
 
-/* Variables and functions */
- int LSM_IOERR_BKPT ; 
- int LSM_OK ; 
- int fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (struct stat*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void u8 ;
+struct stat {int st_ino; int st_dev; } ;
+typedef int lsm_file ;
+typedef int buf ;
+struct TYPE_2__ {int fd; } ;
+typedef TYPE_1__ PosixFile ;
+
+
+ int LSM_IOERR_BKPT ;
+ int LSM_OK ;
+ int fstat (int ,struct stat*) ;
+ int memcpy (void*,int *,int) ;
+ int memset (struct stat*,int ,int) ;
 
 __attribute__((used)) static int lsmPosixOsFileid(
-  lsm_file *pFile, 
+  lsm_file *pFile,
   void *pBuf,
   int *pnBuf
 ){

@@ -1,71 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FAULT_SYSTICK ; 
- int /*<<< orphan*/  GPIOA1_BASE ; 
- int /*<<< orphan*/  GPIO_DIR_MODE_OUT ; 
- int /*<<< orphan*/  GPIO_IF_LedConfigure (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GPIO_IF_LedOn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED1 ; 
- int /*<<< orphan*/  LL_ERROR ; 
- int /*<<< orphan*/  LL_INFO ; 
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MAP_GPIODirModeSet (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAP_IntEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAP_IntMasterEnable () ; 
- int /*<<< orphan*/  MAP_IntVTableBaseSet (unsigned long) ; 
- int /*<<< orphan*/  MAP_PRCMPeripheralClkEnable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAP_PinTypeGPIO (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MCU_RED_LED_GPIO ; 
- int /*<<< orphan*/  MGOS_TASK_PRIORITY ; 
- int /*<<< orphan*/  MG_TASK_STACK_SIZE ; 
- int /*<<< orphan*/  PIN_64 ; 
- int /*<<< orphan*/  PIN_MODE_0 ; 
- int /*<<< orphan*/  PRCMCC3200MCUInit () ; 
- int /*<<< orphan*/  PRCM_GPIOA1 ; 
- int /*<<< orphan*/  PRCM_RUN_MODE_CLK ; 
- scalar_t__ VStartSimpleLinkSpawnTask (int) ; 
- int /*<<< orphan*/  _IOLBF ; 
- int /*<<< orphan*/  cs_log_set_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cs_log_set_level (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_pfnVectors ; 
- int /*<<< orphan*/  mg_init ; 
- int /*<<< orphan*/  mg_start_task (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  osi_start () ; 
- int /*<<< orphan*/  setvbuf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+ int FAULT_SYSTICK ;
+ int GPIOA1_BASE ;
+ int GPIO_DIR_MODE_OUT ;
+ int GPIO_IF_LedConfigure (int ) ;
+ int GPIO_IF_LedOn (int ) ;
+ int LED1 ;
+ int LL_ERROR ;
+ int LL_INFO ;
+ int LOG (int ,char*) ;
+ int MAP_GPIODirModeSet (int ,int,int ) ;
+ int MAP_IntEnable (int ) ;
+ int MAP_IntMasterEnable () ;
+ int MAP_IntVTableBaseSet (unsigned long) ;
+ int MAP_PRCMPeripheralClkEnable (int ,int ) ;
+ int MAP_PinTypeGPIO (int ,int ,int) ;
+ int MCU_RED_LED_GPIO ;
+ int MGOS_TASK_PRIORITY ;
+ int MG_TASK_STACK_SIZE ;
+ int PIN_64 ;
+ int PIN_MODE_0 ;
+ int PRCMCC3200MCUInit () ;
+ int PRCM_GPIOA1 ;
+ int PRCM_RUN_MODE_CLK ;
+ scalar_t__ VStartSimpleLinkSpawnTask (int) ;
+ int _IOLBF ;
+ int cs_log_set_file (int ) ;
+ int cs_log_set_level (int ) ;
+ int * g_pfnVectors ;
+ int mg_init ;
+ int mg_start_task (int ,int ,int ) ;
+ int osi_start () ;
+ int setvbuf (int ,int *,int ,int ) ;
+ int stderr ;
+ int stdout ;
 
 int main(void) {
-#ifndef USE_TIRTOS
+
   MAP_IntVTableBaseSet((unsigned long) &g_pfnVectors[0]);
-#endif
+
   MAP_IntEnable(FAULT_SYSTICK);
   MAP_IntMasterEnable();
   PRCMCC3200MCUInit();
 
-  setvbuf(stdout, NULL, _IOLBF, 0);
-  setvbuf(stderr, NULL, _IOLBF, 0);
+  setvbuf(stdout, ((void*)0), _IOLBF, 0);
+  setvbuf(stderr, ((void*)0), _IOLBF, 0);
   cs_log_set_level(LL_INFO);
   cs_log_set_file(stdout);
 
   LOG(LL_INFO, ("Hello, world!"));
 
-  /* Set up the red LED. Note that amber and green cannot be used as they share
-   * pins with I2C. */
+
+
   MAP_PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
-  MAP_PinTypeGPIO(PIN_64, PIN_MODE_0, false);
+  MAP_PinTypeGPIO(PIN_64, PIN_MODE_0, 0);
   MAP_GPIODirModeSet(GPIOA1_BASE, 0x2, GPIO_DIR_MODE_OUT);
   GPIO_IF_LedConfigure(LED1);
   GPIO_IF_LedOn(MCU_RED_LED_GPIO);

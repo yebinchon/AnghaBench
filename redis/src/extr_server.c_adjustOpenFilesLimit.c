@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rlimit {scalar_t__ rlim_cur; scalar_t__ rlim_max; } ;
-typedef  scalar_t__ rlim_t ;
+typedef scalar_t__ rlim_t ;
 struct TYPE_2__ {unsigned int maxclients; } ;
 
-/* Variables and functions */
- scalar_t__ CONFIG_MIN_RESERVED_FDS ; 
- int /*<<< orphan*/  LL_NOTICE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  RLIMIT_NOFILE ; 
- int errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int getrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,unsigned long long,...) ; 
- int setrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
- unsigned long long strerror (int) ; 
+
+ scalar_t__ CONFIG_MIN_RESERVED_FDS ;
+ int LL_NOTICE ;
+ int LL_WARNING ;
+ int RLIMIT_NOFILE ;
+ int errno ;
+ int exit (int) ;
+ int getrlimit (int ,struct rlimit*) ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,unsigned long long,...) ;
+ int setrlimit (int ,struct rlimit*) ;
+ unsigned long long strerror (int) ;
 
 void adjustOpenFilesLimit(void) {
     rlim_t maxfiles = server.maxclients+CONFIG_MIN_RESERVED_FDS;
@@ -39,14 +39,14 @@ void adjustOpenFilesLimit(void) {
     } else {
         rlim_t oldlimit = limit.rlim_cur;
 
-        /* Set the max number of files if the current limit is not enough
-         * for our needs. */
+
+
         if (oldlimit < maxfiles) {
             rlim_t bestlimit;
             int setrlimit_error = 0;
 
-            /* Try to set the file limit to match 'maxfiles' or at least
-             * to the higher value supported less than maxfiles. */
+
+
             bestlimit = maxfiles;
             while(bestlimit > oldlimit) {
                 rlim_t decr_step = 16;
@@ -56,22 +56,22 @@ void adjustOpenFilesLimit(void) {
                 if (setrlimit(RLIMIT_NOFILE,&limit) != -1) break;
                 setrlimit_error = errno;
 
-                /* We failed to set file limit to 'bestlimit'. Try with a
-                 * smaller limit decrementing by a few FDs per iteration. */
+
+
                 if (bestlimit < decr_step) break;
                 bestlimit -= decr_step;
             }
 
-            /* Assume that the limit we get initially is still valid if
-             * our last try was even lower. */
+
+
             if (bestlimit < oldlimit) bestlimit = oldlimit;
 
             if (bestlimit < maxfiles) {
                 unsigned int old_maxclients = server.maxclients;
                 server.maxclients = bestlimit-CONFIG_MIN_RESERVED_FDS;
-                /* maxclients is unsigned so may overflow: in order
-                 * to check if maxclients is now logically less than 1
-                 * we test indirectly via bestlimit. */
+
+
+
                 if (bestlimit <= CONFIG_MIN_RESERVED_FDS) {
                     serverLog(LL_WARNING,"Your current 'ulimit -n' "
                         "of %llu is not enough for the server to start. "

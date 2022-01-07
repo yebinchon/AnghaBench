@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  testout ;
+
+
+
+
+typedef int testout ;
 struct opie_otpkey {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffer ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memcpy (struct opie_otpkey*,unsigned char*,int) ; 
- int /*<<< orphan*/  opiebtoe (int /*<<< orphan*/ ,struct opie_otpkey*) ; 
+
+ int buffer ;
+ scalar_t__ memcmp (int ,char*,int) ;
+ int memcpy (struct opie_otpkey*,unsigned char*,int) ;
+ int opiebtoe (int ,struct opie_otpkey*) ;
 
 int testbtoe()
 {
   static unsigned char testin[sizeof(struct opie_otpkey)] = { 0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef };
   static char testout[] = "AIM HEW BLUM FED MITE WARM";
   struct opie_otpkey testin_aligned;
-  
+
   memcpy(&testin_aligned, testin, sizeof(struct opie_otpkey));
 
   if (!opiebtoe(buffer, &testin_aligned))
@@ -32,6 +32,6 @@ int testbtoe()
 
   if (memcmp(buffer, testout, sizeof(testout)))
     return -1;
-  
-  return 0;  
+
+  return 0;
 }

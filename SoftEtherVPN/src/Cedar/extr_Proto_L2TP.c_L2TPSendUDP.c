@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UDPPACKET ;
-struct TYPE_3__ {int /*<<< orphan*/  SendPacketList; } ;
-typedef  TYPE_1__ L2TP_SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UDPPACKET ;
+struct TYPE_3__ {int SendPacketList; } ;
+typedef TYPE_1__ L2TP_SERVER ;
+
+
+ int Add (int ,int *) ;
 
 void L2TPSendUDP(L2TP_SERVER *l2tp, UDPPACKET *p)
 {
-	// Validate arguments
-	if (l2tp == NULL || p == NULL)
-	{
-		return;
-	}
 
-	Add(l2tp->SendPacketList, p);
+ if (l2tp == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ Add(l2tp->SendPacketList, p);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_5__ {int rdSize; int* rdParm; int /*<<< orphan*/  rdFunction; } ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  TYPE_1__ METARECORD ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPCVOID ;
-typedef  int INT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  META_ESCAPE ; 
- int MFDRV_WriteRecord (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_5__ {int rdSize; int* rdParm; int rdFunction; } ;
+typedef int PHYSDEV ;
+typedef TYPE_1__ METARECORD ;
+typedef int LPVOID ;
+typedef int LPCVOID ;
+typedef int INT ;
+typedef int DWORD ;
+
+
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int META_ESCAPE ;
+ int MFDRV_WriteRecord (int ,TYPE_1__*,int) ;
+ int memcpy (int*,int ,int) ;
 
 __attribute__((used)) static INT MFDRV_ExtEscape( PHYSDEV dev, INT nEscape, INT cbInput, LPCVOID in_data,
                             INT cbOutput, LPVOID out_data )
@@ -36,7 +36,7 @@ __attribute__((used)) static INT MFDRV_ExtEscape( PHYSDEV dev, INT nEscape, INT 
     DWORD len;
     INT ret;
 
-    if (cbOutput) return 0;  /* escapes that require output cannot work in metafiles */
+    if (cbOutput) return 0;
 
     len = sizeof(*mr) + sizeof(WORD) + ((cbInput + 1) & ~1);
     mr = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, len);

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  ECPKPARAMETERS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECPKPARAMETERS_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_F_D2I_ECPKPARAMETERS ; 
- int /*<<< orphan*/  EC_GROUP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_GROUP_new_from_ecpkparameters (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_R_D2I_ECPKPARAMETERS_FAILURE ; 
- int /*<<< orphan*/  EC_R_PKPARAMETERS2GROUP_FAILURE ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * d2i_ECPKPARAMETERS (int /*<<< orphan*/ *,unsigned char const**,long) ; 
+
+
+
+typedef int EC_GROUP ;
+typedef int ECPKPARAMETERS ;
+
+
+ int ECPKPARAMETERS_free (int *) ;
+ int EC_F_D2I_ECPKPARAMETERS ;
+ int EC_GROUP_free (int *) ;
+ int * EC_GROUP_new_from_ecpkparameters (int *) ;
+ int EC_R_D2I_ECPKPARAMETERS_FAILURE ;
+ int EC_R_PKPARAMETERS2GROUP_FAILURE ;
+ int ECerr (int ,int ) ;
+ int * d2i_ECPKPARAMETERS (int *,unsigned char const**,long) ;
 
 EC_GROUP *d2i_ECPKParameters(EC_GROUP **a, const unsigned char **in, long len)
 {
-    EC_GROUP *group = NULL;
-    ECPKPARAMETERS *params = NULL;
+    EC_GROUP *group = ((void*)0);
+    ECPKPARAMETERS *params = ((void*)0);
     const unsigned char *p = *in;
 
-    if ((params = d2i_ECPKPARAMETERS(NULL, &p, len)) == NULL) {
+    if ((params = d2i_ECPKPARAMETERS(((void*)0), &p, len)) == ((void*)0)) {
         ECerr(EC_F_D2I_ECPKPARAMETERS, EC_R_D2I_ECPKPARAMETERS_FAILURE);
         ECPKPARAMETERS_free(params);
-        return NULL;
+        return ((void*)0);
     }
 
-    if ((group = EC_GROUP_new_from_ecpkparameters(params)) == NULL) {
+    if ((group = EC_GROUP_new_from_ecpkparameters(params)) == ((void*)0)) {
         ECerr(EC_F_D2I_ECPKPARAMETERS, EC_R_PKPARAMETERS2GROUP_FAILURE);
         ECPKPARAMETERS_free(params);
-        return NULL;
+        return ((void*)0);
     }
 
     if (a) {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  online_tree; } ;
-typedef  TYPE_1__ user_t ;
 
-/* Variables and functions */
- int FRIEND_MULT ; 
- int MAX_USER_FRIENDS ; 
- int /*<<< orphan*/  adjust_online_tree (TYPE_1__*) ; 
- TYPE_1__* get_user_f (int) ; 
- int /*<<< orphan*/  minsert_flag ; 
- int /*<<< orphan*/  now ; 
- int /*<<< orphan*/  stree_delete (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stree_insert (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_history (TYPE_1__*,int,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int online_tree; } ;
+typedef TYPE_1__ user_t ;
+
+
+ int FRIEND_MULT ;
+ int MAX_USER_FRIENDS ;
+ int adjust_online_tree (TYPE_1__*) ;
+ TYPE_1__* get_user_f (int) ;
+ int minsert_flag ;
+ int now ;
+ int stree_delete (int ,int) ;
+ int stree_insert (int ,int,int ) ;
+ int update_history (TYPE_1__*,int,int ,int) ;
 
 int user_friends_online (int user_id, int N, int *A) {
   user_t *U;
@@ -45,7 +45,7 @@ int user_friends_online (int user_id, int N, int *A) {
     U->online_tree = stree_insert (stree_delete (U->online_tree, x), x, now);
     adjust_online_tree (U);
     if (!minsert_flag) {
-      /* send online notification to U->user_id about user_id */
+
       update_history (U, -user_id, 0, 8);
     }
   }

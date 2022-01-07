@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct TYPE_3__ {float* input_mirror_modifier; scalar_t__ ih_flip; } ;
-typedef  TYPE_1__ V360Context ;
+typedef TYPE_1__ V360Context ;
 
-/* Variables and functions */
- float const M_PI ; 
- float M_PI_4 ; 
- float asinf (float const) ; 
- float atan2f (float const,float const) ; 
- scalar_t__ av_clip (int,int /*<<< orphan*/ ,int) ; 
- int floorf (float) ; 
+
+ float const M_PI ;
+ float M_PI_4 ;
+ float asinf (float const) ;
+ float atan2f (float const,float const) ;
+ scalar_t__ av_clip (int,int ,int) ;
+ int floorf (float) ;
 
 __attribute__((used)) static void xyz_to_barrel(const V360Context *s,
                           const float *vec, int width, int height,
@@ -29,7 +29,7 @@ __attribute__((used)) static void xyz_to_barrel(const V360Context *s,
 {
     const float scale = 0.99f;
 
-    const float phi   = atan2f(vec[0], -vec[2]) * s->input_mirror_modifier[0];
+    const float phi = atan2f(vec[0], -vec[2]) * s->input_mirror_modifier[0];
     const float theta = asinf(-vec[1]) * s->input_mirror_modifier[1];
     const float theta_range = M_PI_4;
 
@@ -45,19 +45,19 @@ __attribute__((used)) static void xyz_to_barrel(const V360Context *s,
         u_shift = s->ih_flip ? width / 5 : 0;
         v_shift = 0;
 
-        uf = (phi   / M_PI        * scale + 1.f) * ew / 2.f;
+        uf = (phi / M_PI * scale + 1.f) * ew / 2.f;
         vf = (theta / theta_range * scale + 1.f) * eh / 2.f;
     } else {
-        ew = width  / 5;
+        ew = width / 5;
         eh = height / 2;
 
         u_shift = s->ih_flip ? 0 : 4 * ew;
 
-        if (theta < 0.f) {  // UP
-            uf =  vec[0] / vec[1];
+        if (theta < 0.f) {
+            uf = vec[0] / vec[1];
             vf = -vec[2] / vec[1];
             v_shift = 0;
-        } else {            // DOWN
+        } else {
             uf = -vec[0] / vec[1];
             vf = -vec[2] / vec[1];
             v_shift = eh;

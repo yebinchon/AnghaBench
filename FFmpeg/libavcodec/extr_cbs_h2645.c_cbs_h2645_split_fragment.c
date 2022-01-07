@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
-struct TYPE_12__ {int /*<<< orphan*/  log_ctx; TYPE_2__* priv_data; TYPE_1__* codec; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+struct TYPE_12__ {int log_ctx; TYPE_2__* priv_data; TYPE_1__* codec; } ;
 struct TYPE_11__ {scalar_t__ nb_units; size_t data_size; scalar_t__* data; } ;
-struct TYPE_10__ {int mp4; int nal_length_size; int /*<<< orphan*/  read_packet; } ;
+struct TYPE_10__ {int mp4; int nal_length_size; int read_packet; } ;
 struct TYPE_9__ {int codec_id; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ CodedBitstreamH2645Context ;
-typedef  TYPE_3__ CodedBitstreamFragment ;
-typedef  TYPE_4__ CodedBitstreamContext ;
+typedef int GetByteContext ;
+typedef TYPE_2__ CodedBitstreamH2645Context ;
+typedef TYPE_3__ CodedBitstreamFragment ;
+typedef TYPE_4__ CodedBitstreamContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_CODEC_ID_H264 ; 
- int AV_CODEC_ID_HEVC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- void* bytestream2_get_be16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- size_t bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,size_t) ; 
- size_t bytestream2_tell (int /*<<< orphan*/ *) ; 
- int cbs_h2645_fragment_add_nals (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int ff_h2645_packet_split (int /*<<< orphan*/ *,scalar_t__*,size_t,int /*<<< orphan*/ ,int,int,int,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_CODEC_ID_H264 ;
+ int AV_CODEC_ID_HEVC ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int av_assert0 (int) ;
+ int av_log (int ,int ,char*,...) ;
+ void* bytestream2_get_be16 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ size_t bytestream2_get_bytes_left (int *) ;
+ int bytestream2_init (int *,scalar_t__*,size_t) ;
+ int bytestream2_skip (int *,size_t) ;
+ size_t bytestream2_tell (int *) ;
+ int cbs_h2645_fragment_add_nals (TYPE_4__*,TYPE_3__*,int *) ;
+ int ff_h2645_packet_split (int *,scalar_t__*,size_t,int ,int,int,int,int,int) ;
 
 __attribute__((used)) static int cbs_h2645_split_fragment(CodedBitstreamContext *ctx,
                                     CodedBitstreamFragment *frag,
@@ -55,7 +55,7 @@ __attribute__((used)) static int cbs_h2645_split_fragment(CodedBitstreamContext 
         return 0;
 
     if (header && frag->data[0] && codec_id == AV_CODEC_ID_H264) {
-        // AVCC header.
+
         size_t size, start, end;
         int i, count, version;
 
@@ -76,7 +76,7 @@ __attribute__((used)) static int cbs_h2645_split_fragment(CodedBitstreamContext 
         bytestream2_skip(&gbc, 3);
         priv->nal_length_size = (bytestream2_get_byte(&gbc) & 3) + 1;
 
-        // SPS array.
+
         count = bytestream2_get_byte(&gbc) & 0x1f;
         start = bytestream2_tell(&gbc);
         for (i = 0; i < count; i++) {
@@ -100,7 +100,7 @@ __attribute__((used)) static int cbs_h2645_split_fragment(CodedBitstreamContext 
         if (err < 0)
             return err;
 
-        // PPS array.
+
         count = bytestream2_get_byte(&gbc);
         start = bytestream2_tell(&gbc);
         for (i = 0; i < count; i++) {
@@ -130,7 +130,7 @@ __attribute__((used)) static int cbs_h2645_split_fragment(CodedBitstreamContext 
         }
 
     } else if (header && frag->data[0] && codec_id == AV_CODEC_ID_HEVC) {
-        // HVCC header.
+
         size_t size, start, end;
         int i, j, nb_arrays, nal_unit_type, nb_nals, version;
 
@@ -182,7 +182,7 @@ __attribute__((used)) static int cbs_h2645_split_fragment(CodedBitstreamContext 
         }
 
     } else {
-        // Annex B, or later MP4 with already-known parameters.
+
 
         err = ff_h2645_packet_split(&priv->read_packet,
                                     frag->data, frag->data_size,

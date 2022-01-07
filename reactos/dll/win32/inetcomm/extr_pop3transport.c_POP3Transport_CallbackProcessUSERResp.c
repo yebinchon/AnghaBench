@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pass ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int pass ;
 struct TYPE_6__ {char* szPassword; } ;
 struct TYPE_8__ {TYPE_1__ ServerInfo; scalar_t__ pCallback; } ;
 struct TYPE_7__ {TYPE_5__ InetTransport; } ;
-typedef  TYPE_2__ POP3Transport ;
-typedef  int /*<<< orphan*/  POP3RESPONSE ;
-typedef  int /*<<< orphan*/  IPOP3Callback ;
-typedef  int /*<<< orphan*/  IInternetTransport ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_2__ POP3Transport ;
+typedef int POP3RESPONSE ;
+typedef int IPOP3Callback ;
+typedef int IInternetTransport ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IPOP3Callback_OnResponse (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InternetTransport_DoCommand (TYPE_5__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POP3Transport_CallbackRecvPASSResp ; 
- int /*<<< orphan*/  POP3Transport_ParseResponse (TYPE_2__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  POP3_PASS ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  init_parser (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int IPOP3Callback_OnResponse (int *,int *) ;
+ int InternetTransport_DoCommand (TYPE_5__*,char*,int ) ;
+ int POP3Transport_CallbackRecvPASSResp ;
+ int POP3Transport_ParseResponse (TYPE_2__*,char*,int *) ;
+ int POP3_PASS ;
+ int TRACE (char*) ;
+ int init_parser (TYPE_2__*,int ) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void POP3Transport_CallbackProcessUSERResp(IInternetTransport *iface, char *pBuffer, int cbBuffer)
 {
@@ -53,13 +53,13 @@ __attribute__((used)) static void POP3Transport_CallbackProcessUSERResp(IInterne
     hr = POP3Transport_ParseResponse(This, pBuffer, &response);
     if (FAILED(hr))
     {
-        /* FIXME: handle error */
+
         return;
     }
 
     IPOP3Callback_OnResponse((IPOP3Callback *)This->InetTransport.pCallback, &response);
 
-    len = sizeof(pass) + strlen(This->InetTransport.ServerInfo.szPassword) + 2; /* "\r\n" */
+    len = sizeof(pass) + strlen(This->InetTransport.ServerInfo.szPassword) + 2;
     command = HeapAlloc(GetProcessHeap(), 0, len);
 
     strcpy(command, pass);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct decoder_owner {int /*<<< orphan*/  out_pool; int /*<<< orphan*/  p_vout; } ;
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  decoder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct decoder_owner* dec_get_owner (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  picture_Reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * picture_pool_Wait (int /*<<< orphan*/ ) ; 
+
+
+
+struct decoder_owner {int out_pool; int p_vout; } ;
+typedef int picture_t ;
+typedef int decoder_t ;
+
+
+ int assert (int ) ;
+ struct decoder_owner* dec_get_owner (int *) ;
+ int picture_Reset (int *) ;
+ int * picture_pool_Wait (int ) ;
 
 __attribute__((used)) static picture_t *ModuleThread_NewVideoBuffer( decoder_t *p_dec )
 {

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- void* MAX_CONNECTIONS ; 
- void* atoi (void*) ; 
- void* backlog ; 
- int /*<<< orphan*/  binlog_disabled ; 
- int daemonize ; 
- int /*<<< orphan*/  exit (int) ; 
- void* logname ; 
- void* maxconn ; 
- void* optarg ; 
- void* port ; 
- int /*<<< orphan*/  usage () ; 
- void* username ; 
- int /*<<< orphan*/  verbosity ; 
+ void* BACKLOG ;
+ void* MAX_CONNECTIONS ;
+ void* atoi (void*) ;
+ void* backlog ;
+ int binlog_disabled ;
+ int daemonize ;
+ int exit (int) ;
+ void* logname ;
+ void* maxconn ;
+ void* optarg ;
+ void* port ;
+ int usage () ;
+ void* username ;
+ int verbosity ;
 
 int process_engine_option (int opt) {
-  switch (opt) {      
+  switch (opt) {
   case 'v':
     verbosity++;
     break;

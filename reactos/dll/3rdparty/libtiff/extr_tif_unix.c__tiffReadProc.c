@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ tmsize_t ;
-typedef  int /*<<< orphan*/  thandle_t ;
-struct TYPE_2__ {int /*<<< orphan*/  fd; int /*<<< orphan*/  h; } ;
-typedef  TYPE_1__ fd_as_handle_union_t ;
-typedef  int /*<<< orphan*/  TIFFIOSize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- size_t TIFF_IO_MAX ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ read (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ tmsize_t ;
+typedef int thandle_t ;
+struct TYPE_2__ {int fd; int h; } ;
+typedef TYPE_1__ fd_as_handle_union_t ;
+typedef int TIFFIOSize_t ;
+
+
+ int EINVAL ;
+ size_t TIFF_IO_MAX ;
+ int errno ;
+ scalar_t__ read (int ,char*,int ) ;
 
 __attribute__((used)) static tmsize_t
 _tiffReadProc(thandle_t fd, void* buf, tmsize_t size)
 {
-	fd_as_handle_union_t fdh;
+ fd_as_handle_union_t fdh;
         const size_t bytes_total = (size_t) size;
         size_t bytes_read;
         tmsize_t count = -1;
-	if ((tmsize_t) bytes_total != size)
-	{
-		errno=EINVAL;
-		return (tmsize_t) -1;
-	}
-	fdh.h = fd;
+ if ((tmsize_t) bytes_total != size)
+ {
+  errno=EINVAL;
+  return (tmsize_t) -1;
+ }
+ fdh.h = fd;
         for (bytes_read=0; bytes_read < bytes_total; bytes_read+=count)
         {
                 char *buf_offset = (char *) buf+bytes_read;

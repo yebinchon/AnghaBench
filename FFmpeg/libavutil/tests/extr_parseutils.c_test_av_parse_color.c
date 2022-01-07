@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int FF_ARRAY_ELEMS (char const* const*) ; 
- int /*<<< orphan*/  av_log_set_level (int /*<<< orphan*/ ) ; 
- scalar_t__ av_parse_color (int*,char const* const,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char const* const,...) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int AV_LOG_DEBUG ;
+ int FF_ARRAY_ELEMS (char const* const*) ;
+ int av_log_set_level (int ) ;
+ scalar_t__ av_parse_color (int*,char const* const,int,int *) ;
+ int printf (char*,char const* const,...) ;
 
 __attribute__((used)) static void test_av_parse_color(void)
 {
@@ -64,8 +64,8 @@ __attribute__((used)) static void test_av_parse_color(void)
 
     av_log_set_level(AV_LOG_DEBUG);
 
-    for (i = 0;  i < FF_ARRAY_ELEMS(color_names); i++) {
-        if (av_parse_color(rgba, color_names[i], -1, NULL) >= 0)
+    for (i = 0; i < FF_ARRAY_ELEMS(color_names); i++) {
+        if (av_parse_color(rgba, color_names[i], -1, ((void*)0)) >= 0)
             printf("%s -> R(%d) G(%d) B(%d) A(%d)\n",
                    color_names[i], rgba[0], rgba[1], rgba[2], rgba[3]);
         else

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* pBtree; int /*<<< orphan*/  curFlags; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* pBtree; int curFlags; } ;
 struct TYPE_4__ {int hasIncrblobCur; } ;
-typedef  TYPE_2__ BtCursor ;
+typedef TYPE_2__ BtCursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTCF_Incrblob ; 
+
+ int BTCF_Incrblob ;
 
 void sqlite3BtreeIncrblobCursor(BtCursor *pCur){
   pCur->curFlags |= BTCF_Incrblob;

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  enomem () ; 
- char* strdup (char const*) ; 
+ int enomem () ;
+ char* strdup (char const*) ;
 
 char *
 estrdup(const char *str)
 {
-	char *p;
+ char *p;
 
-	if ((p = strdup(str)) == NULL)
-		enomem();
-	return(p);
+ if ((p = strdup(str)) == ((void*)0))
+  enomem();
+ return(p);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  float uint8_t ;
-struct TYPE_11__ {int /*<<< orphan*/  audio; } ;
-struct TYPE_10__ {int /*<<< orphan*/  audio; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef float uint8_t ;
+struct TYPE_11__ {int audio; } ;
+struct TYPE_10__ {int audio; } ;
 struct TYPE_13__ {TYPE_2__ fmt_out; TYPE_1__ fmt_in; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ filter_t ;
+typedef TYPE_4__ filter_t ;
 struct TYPE_14__ {size_t i_overflow_buffer_size; unsigned int i_nb_atomic_operations; TYPE_3__* p_atomic_operations; scalar_t__ p_overflow_buffer; } ;
-typedef  TYPE_5__ filter_sys_t ;
+typedef TYPE_5__ filter_sys_t ;
 struct TYPE_15__ {size_t i_buffer; unsigned int i_nb_samples; scalar_t__ p_buffer; } ;
-typedef  TYPE_6__ block_t ;
+typedef TYPE_6__ block_t ;
 struct TYPE_12__ {int i_source_channel_offset; int i_dest_channel_offset; unsigned int i_delay; double d_amplitude_factor; } ;
 
-/* Variables and functions */
- size_t __MIN (size_t,size_t) ; 
- int aout_FormatNbChannels (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (float*,float*,size_t) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,size_t) ; 
+
+ size_t __MIN (size_t,size_t) ;
+ int aout_FormatNbChannels (int *) ;
+ int memcpy (float*,float*,size_t) ;
+ int memset (float*,int ,size_t) ;
 
 __attribute__((used)) static void DoWork( filter_t * p_filter,
                     block_t * p_in_buf, block_t * p_out_buf )
@@ -46,8 +46,8 @@ __attribute__((used)) static void DoWork( filter_t * p_filter,
     uint8_t * p_end_overflow;
     uint8_t * p_slide;
 
-    size_t i_overflow_size;     /* in bytes */
-    size_t i_out_size;          /* in bytes */
+    size_t i_overflow_size;
+    size_t i_out_size;
 
     unsigned int i, j;
 
@@ -59,7 +59,7 @@ __attribute__((used)) static void DoWork( filter_t * p_filter,
     p_out = (float *)p_out_buf->p_buffer;
     i_out_size = p_out_buf->i_buffer;
 
-    /* Slide the overflow buffer */
+
     p_overflow = (uint8_t *) p_sys->p_overflow_buffer;
     i_overflow_size = p_sys->i_overflow_buffer_size;
     p_end_overflow = p_overflow + i_overflow_size;
@@ -89,10 +89,10 @@ __attribute__((used)) static void DoWork( filter_t * p_filter,
         p_slide += i_bytes_copied;
     }
 
-    /* apply the atomic operations */
+
     for( i = 0; i < p_sys->i_nb_atomic_operations; i++ )
     {
-        /* shorter variable names */
+
         i_source_channel_offset
             = p_sys->p_atomic_operations[i].i_source_channel_offset;
         i_dest_channel_offset
@@ -103,7 +103,7 @@ __attribute__((used)) static void DoWork( filter_t * p_filter,
 
         if( p_out_buf->i_nb_samples > i_delay )
         {
-            /* current buffer coefficients */
+
             for( j = 0; j < p_out_buf->i_nb_samples - i_delay; j++ )
             {
                 ((float*)p_out)[ (i_delay+j)*i_output_nb + i_dest_channel_offset ]
@@ -111,7 +111,7 @@ __attribute__((used)) static void DoWork( filter_t * p_filter,
                        * d_amplitude_factor;
             }
 
-            /* overflow buffer coefficients */
+
             for( j = 0; j < i_delay; j++ )
             {
                 ((float*)p_overflow)[ j*i_output_nb + i_dest_channel_offset ]
@@ -122,7 +122,7 @@ __attribute__((used)) static void DoWork( filter_t * p_filter,
         }
         else
         {
-            /* overflow buffer coefficients only */
+
             for( j = 0; j < p_out_buf->i_nb_samples; j++ )
             {
                 ((float*)p_overflow)[ (i_delay - p_out_buf->i_nb_samples + j)

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  code; int /*<<< orphan*/  idFrom; int /*<<< orphan*/  hwndFrom; } ;
-struct TYPE_6__ {int nTrackTool; int /*<<< orphan*/  hwndSelf; TYPE_1__* tools; } ;
-struct TYPE_5__ {int /*<<< orphan*/  uId; int /*<<< orphan*/  hwnd; } ;
-typedef  TYPE_1__ TTTOOL_INFO ;
-typedef  TYPE_2__ TOOLTIPS_INFO ;
-typedef  TYPE_3__ NMHDR ;
-typedef  int /*<<< orphan*/  LPARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HWND_TOP ; 
- int SWP_HIDEWINDOW ; 
- int SWP_NOACTIVATE ; 
- int SWP_NOZORDER ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  TTN_POP ; 
- int /*<<< orphan*/  WM_NOTIFY ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int code; int idFrom; int hwndFrom; } ;
+struct TYPE_6__ {int nTrackTool; int hwndSelf; TYPE_1__* tools; } ;
+struct TYPE_5__ {int uId; int hwnd; } ;
+typedef TYPE_1__ TTTOOL_INFO ;
+typedef TYPE_2__ TOOLTIPS_INFO ;
+typedef TYPE_3__ NMHDR ;
+typedef int LPARAM ;
+
+
+ int HWND_TOP ;
+ int SWP_HIDEWINDOW ;
+ int SWP_NOACTIVATE ;
+ int SWP_NOZORDER ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int SetWindowPos (int ,int ,int ,int ,int ,int ,int) ;
+ int TRACE (char*,int) ;
+ int TTN_POP ;
+ int WM_NOTIFY ;
 
 __attribute__((used)) static void
 TOOLTIPS_TrackHide (const TOOLTIPS_INFO *infoPtr)
@@ -41,7 +41,7 @@ TOOLTIPS_TrackHide (const TOOLTIPS_INFO *infoPtr)
     TRACE("hide tracking tooltip %d\n", infoPtr->nTrackTool);
 
     if (infoPtr->nTrackTool == -1)
-	return;
+ return;
 
     toolPtr = &infoPtr->tools[infoPtr->nTrackTool];
 
@@ -51,5 +51,5 @@ TOOLTIPS_TrackHide (const TOOLTIPS_INFO *infoPtr)
     SendMessageW (toolPtr->hwnd, WM_NOTIFY, toolPtr->uId, (LPARAM)&hdr);
 
     SetWindowPos (infoPtr->hwndSelf, HWND_TOP, 0, 0, 0, 0,
-		    SWP_NOZORDER | SWP_HIDEWINDOW | SWP_NOACTIVATE);
+      SWP_NOZORDER | SWP_HIDEWINDOW | SWP_NOACTIVATE);
 }

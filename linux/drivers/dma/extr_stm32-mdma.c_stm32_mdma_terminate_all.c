@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
-struct stm32_mdma_chan {TYPE_1__ vchan; int /*<<< orphan*/ * desc; scalar_t__ busy; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lock; } ;
+struct stm32_mdma_chan {TYPE_1__ vchan; int * desc; scalar_t__ busy; } ;
 struct dma_chan {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_HEAD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  head ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stm32_mdma_stop (struct stm32_mdma_chan*) ; 
- struct stm32_mdma_chan* to_stm32_mdma_chan (struct dma_chan*) ; 
- int /*<<< orphan*/  vchan_dma_desc_free_list (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vchan_get_all_descriptors (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+ int LIST_HEAD (int ) ;
+ int head ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stm32_mdma_stop (struct stm32_mdma_chan*) ;
+ struct stm32_mdma_chan* to_stm32_mdma_chan (struct dma_chan*) ;
+ int vchan_dma_desc_free_list (TYPE_1__*,int *) ;
+ int vchan_get_all_descriptors (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int stm32_mdma_terminate_all(struct dma_chan *c)
 {
-	struct stm32_mdma_chan *chan = to_stm32_mdma_chan(c);
-	unsigned long flags;
-	LIST_HEAD(head);
+ struct stm32_mdma_chan *chan = to_stm32_mdma_chan(c);
+ unsigned long flags;
+ LIST_HEAD(head);
 
-	spin_lock_irqsave(&chan->vchan.lock, flags);
-	if (chan->busy) {
-		stm32_mdma_stop(chan);
-		chan->desc = NULL;
-	}
-	vchan_get_all_descriptors(&chan->vchan, &head);
-	spin_unlock_irqrestore(&chan->vchan.lock, flags);
+ spin_lock_irqsave(&chan->vchan.lock, flags);
+ if (chan->busy) {
+  stm32_mdma_stop(chan);
+  chan->desc = ((void*)0);
+ }
+ vchan_get_all_descriptors(&chan->vchan, &head);
+ spin_unlock_irqrestore(&chan->vchan.lock, flags);
 
-	vchan_dma_desc_free_list(&chan->vchan, &head);
+ vchan_dma_desc_free_list(&chan->vchan, &head);
 
-	return 0;
+ return 0;
 }

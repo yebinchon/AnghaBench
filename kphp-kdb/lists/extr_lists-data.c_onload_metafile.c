@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct metafile {int num; struct aio_connection* aio; scalar_t__ data; } ;
 struct connection {int dummy; } ;
 struct aio_connection {scalar_t__ basic_type; scalar_t__ extra; } ;
 struct TYPE_5__ {scalar_t__ metafile_index; } ;
-typedef  TYPE_1__ list_t ;
+typedef TYPE_1__ list_t ;
 struct TYPE_7__ {int tot_lists; } ;
 struct TYPE_6__ {scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLI_ENTRY_LIST_ID (int) ; 
- TYPE_4__ Header ; 
- int /*<<< orphan*/  Snapshot ; 
- TYPE_1__* __get_list_f (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  add_use (int) ; 
- scalar_t__ aio_errors_verbosity ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ compute_crc32 (scalar_t__,long long) ; 
- scalar_t__ crc32_check_mode ; 
- scalar_t__ ct_aio ; 
- int /*<<< orphan*/  data_metafiles_loaded ; 
- int /*<<< orphan*/  do_postponed (scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- long long get_metafile_offset (int) ; 
- long long get_revlist_metafile_offset (int) ; 
- int /*<<< orphan*/  kfs_buffer_crypt (int /*<<< orphan*/ ,scalar_t__,long long,long long) ; 
- TYPE_2__** metafiles ; 
- int /*<<< orphan*/  metafiles_load_errors ; 
- int /*<<< orphan*/  metafiles_load_success ; 
- int /*<<< orphan*/  metafiles_loaded ; 
- scalar_t__* revlist_metafiles_crc32 ; 
- int /*<<< orphan*/  revlist_metafiles_loaded ; 
- int /*<<< orphan*/  stderr ; 
- int tot_aio_loaded_bytes ; 
- long long tot_metafiles_memory ; 
- int tot_revlist_metafiles ; 
- int /*<<< orphan*/  total_aio_time ; 
- int verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int /*<<< orphan*/  zzfree (scalar_t__,long long) ; 
+
+ int FLI_ENTRY_LIST_ID (int) ;
+ TYPE_4__ Header ;
+ int Snapshot ;
+ TYPE_1__* __get_list_f (int ,int) ;
+ int add_use (int) ;
+ scalar_t__ aio_errors_verbosity ;
+ int assert (int) ;
+ scalar_t__ compute_crc32 (scalar_t__,long long) ;
+ scalar_t__ crc32_check_mode ;
+ scalar_t__ ct_aio ;
+ int data_metafiles_loaded ;
+ int do_postponed (scalar_t__) ;
+ int fprintf (int ,char*,...) ;
+ long long get_metafile_offset (int) ;
+ long long get_revlist_metafile_offset (int) ;
+ int kfs_buffer_crypt (int ,scalar_t__,long long,long long) ;
+ TYPE_2__** metafiles ;
+ int metafiles_load_errors ;
+ int metafiles_load_success ;
+ int metafiles_loaded ;
+ scalar_t__* revlist_metafiles_crc32 ;
+ int revlist_metafiles_loaded ;
+ int stderr ;
+ int tot_aio_loaded_bytes ;
+ long long tot_metafiles_memory ;
+ int tot_revlist_metafiles ;
+ int total_aio_time ;
+ int verbosity ;
+ int vkprintf (int,char*,...) ;
+ int zzfree (scalar_t__,long long) ;
 
 int onload_metafile (struct connection *c, int read_bytes) {
   vkprintf (4, "onload_metafile(%p,%d) total_aio_time = %lf\n", c, read_bytes, total_aio_time);
@@ -60,7 +60,7 @@ int onload_metafile (struct connection *c, int read_bytes) {
   struct metafile *meta = (struct metafile *) a->extra;
 
   assert (a->basic_type == ct_aio);
-  assert (meta != NULL);          
+  assert (meta != ((void*)0));
 
   if (meta->aio != a) {
     fprintf (stderr, "assertion (meta->aio == a) will fail\n");
@@ -93,7 +93,7 @@ int onload_metafile (struct connection *c, int read_bytes) {
       }
       assert (compute_crc32 (metafiles[x]->data, size) == revlist_metafiles_crc32[x - Header.tot_lists - 1]);
     }
-  }    
+  }
 
   if (read_bytes != size) {
     if (verbosity > 0 || aio_errors_verbosity) {
@@ -105,20 +105,20 @@ int onload_metafile (struct connection *c, int read_bytes) {
   }
 
   if (read_bytes != size) {
-    meta->aio = NULL;
-    zzfree (meta->data, size);  
+    meta->aio = ((void*)0);
+    zzfree (meta->data, size);
     tot_metafiles_memory -= size;
     meta->data = 0;
     metafiles_load_errors ++;
   } else {
     kfs_buffer_crypt (Snapshot, meta->data, size, offset);
-    meta->aio = NULL;
+    meta->aio = ((void*)0);
     metafiles_loaded ++;
     add_use (meta->num);
     metafiles_load_success ++;
     tot_aio_loaded_bytes += read_bytes;
-    if (x <= Header.tot_lists) { 
-      //list_t *L = get_list_m (FLI_ENTRY_LIST_ID (x));
+    if (x <= Header.tot_lists) {
+
       list_t *L = __get_list_f (FLI_ENTRY_LIST_ID (x), -1);
       if (!L || L->metafile_index >= 0) {
         assert (!L || L->metafile_index == meta->num);

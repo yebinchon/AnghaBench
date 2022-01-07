@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct qdisc_watchdog {int dummy; } ;
 struct Qdisc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  qdisc_watchdog_init_clockid (struct qdisc_watchdog*,struct Qdisc*,int /*<<< orphan*/ ) ; 
+
+ int CLOCK_MONOTONIC ;
+ int qdisc_watchdog_init_clockid (struct qdisc_watchdog*,struct Qdisc*,int ) ;
 
 void qdisc_watchdog_init(struct qdisc_watchdog *wd, struct Qdisc *qdisc)
 {
-	qdisc_watchdog_init_clockid(wd, qdisc, CLOCK_MONOTONIC);
+ qdisc_watchdog_init_clockid(wd, qdisc, CLOCK_MONOTONIC);
 }

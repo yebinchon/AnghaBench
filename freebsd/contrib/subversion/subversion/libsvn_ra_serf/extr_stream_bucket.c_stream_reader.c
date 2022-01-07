@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_2__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  errfunc_baton; int /*<<< orphan*/  (* errfunc ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ stream_bucket_ctx_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  scalar_t__ apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_EOF ; 
- int /*<<< orphan*/  APR_SUCCESS ; 
- int /*<<< orphan*/  SVN_ERR_RA_SERF_STREAM_BUCKET_READ_ERROR ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_stream_read_full (int /*<<< orphan*/ ,char*,scalar_t__*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_2__ {int stream; int errfunc_baton; int (* errfunc ) (int ,int *) ;} ;
+typedef TYPE_1__ stream_bucket_ctx_t ;
+typedef int apr_status_t ;
+typedef scalar_t__ apr_size_t ;
+
+
+ int APR_EOF ;
+ int APR_SUCCESS ;
+ int SVN_ERR_RA_SERF_STREAM_BUCKET_READ_ERROR ;
+ int stub1 (int ,int *) ;
+ int svn_error_clear (int *) ;
+ int * svn_stream_close (int ) ;
+ int * svn_stream_read_full (int ,char*,scalar_t__*) ;
 
 __attribute__((used)) static apr_status_t
 stream_reader(void *baton, apr_size_t bufsize, char *buf, apr_size_t *len)

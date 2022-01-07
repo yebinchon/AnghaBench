@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* bswap_buf ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_4__ {int (* bswap_buf ) (int *,int const*,int) ;} ;
 struct TYPE_5__ {int flag; int* offset1; int* offset2; int* pulseval; int* pulseoff; void** pulsepos; void** vector; scalar_t__ buffer; TYPE_1__ bdsp; } ;
-typedef  TYPE_2__ TSContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_2__ TSContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- void* get_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- void*** ts_codebook ; 
+
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ void* get_bits_long (int *,int) ;
+ int init_get_bits (int *,scalar_t__,int) ;
+ int stub1 (int *,int const*,int) ;
+ void*** ts_codebook ;
 
 __attribute__((used)) static void truespeech_read_frame(TSContext *dec, const uint8_t *input)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void truespeech_read_frame(TSContext *dec, const ui
     dec->vector[2] = ts_codebook[2][get_bits(&gb, 4)];
     dec->vector[1] = ts_codebook[1][get_bits(&gb, 5)];
     dec->vector[0] = ts_codebook[0][get_bits(&gb, 5)];
-    dec->flag      = get_bits1(&gb);
+    dec->flag = get_bits1(&gb);
 
     dec->offset1[0] = get_bits(&gb, 4) << 4;
     dec->offset2[3] = get_bits(&gb, 7);
@@ -50,7 +50,7 @@ __attribute__((used)) static void truespeech_read_frame(TSContext *dec, const ui
     dec->offset2[1] = get_bits(&gb, 7);
     dec->offset2[0] = get_bits(&gb, 7);
 
-    dec->offset1[1]  = get_bits(&gb, 4);
+    dec->offset1[1] = get_bits(&gb, 4);
     dec->pulseval[1] = get_bits(&gb, 14);
     dec->pulseval[0] = get_bits(&gb, 14);
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  picture_hash; } ;
-typedef  TYPE_1__ HEVCSEI ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
-#define  HEVC_SEI_TYPE_DECODED_PICTURE_HASH 128 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,int) ; 
- int decode_nal_sei_decoded_picture_hash (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int picture_hash; } ;
+typedef TYPE_1__ HEVCSEI ;
+typedef int GetBitContext ;
+
+
+ int AV_LOG_DEBUG ;
+
+ int av_log (void*,int ,char*,int) ;
+ int decode_nal_sei_decoded_picture_hash (int *,int *) ;
+ int skip_bits_long (int *,int) ;
 
 __attribute__((used)) static int decode_nal_sei_suffix(GetBitContext *gb, void *logctx, HEVCSEI *s,
                                  int type, int size)
 {
     switch (type) {
-    case HEVC_SEI_TYPE_DECODED_PICTURE_HASH:
+    case 128:
         return decode_nal_sei_decoded_picture_hash(&s->picture_hash, gb);
     default:
         av_log(logctx, AV_LOG_DEBUG, "Skipped SUFFIX SEI %d\n", type);

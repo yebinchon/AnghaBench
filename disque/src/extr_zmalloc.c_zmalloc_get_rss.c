@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- int /*<<< orphan*/  close (int) ; 
- int getpid () ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int,char*,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- char* strchr (char*,char) ; 
- size_t strtoll (char*,int /*<<< orphan*/ *,int) ; 
- int sysconf (int /*<<< orphan*/ ) ; 
+ int O_RDONLY ;
+ int _SC_PAGESIZE ;
+ int close (int) ;
+ int getpid () ;
+ int open (char*,int ) ;
+ scalar_t__ read (int,char*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ char* strchr (char*,char) ;
+ size_t strtoll (char*,int *,int) ;
+ int sysconf (int ) ;
 
 size_t zmalloc_get_rss(void) {
     int page = sysconf(_SC_PAGESIZE);
@@ -40,7 +32,7 @@ size_t zmalloc_get_rss(void) {
     close(fd);
 
     p = buf;
-    count = 23; /* RSS is the 24th field in /proc/<pid>/stat */
+    count = 23;
     while(p && count--) {
         p = strchr(p,' ');
         if (p) p++;
@@ -50,7 +42,7 @@ size_t zmalloc_get_rss(void) {
     if (!x) return 0;
     *x = '\0';
 
-    rss = strtoll(p,NULL,10);
+    rss = strtoll(p,((void*)0),10);
     rss *= page;
     return rss;
 }

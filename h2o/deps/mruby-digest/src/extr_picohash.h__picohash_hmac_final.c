@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  (* hash_final ) (TYPE_2__*,void*) ;int /*<<< orphan*/  (* hash_reset ) (TYPE_2__*) ;} ;
-struct TYPE_10__ {TYPE_1__ _hmac; int /*<<< orphan*/  digest_length; } ;
-typedef  TYPE_2__ picohash_ctx_t ;
 
-/* Variables and functions */
- int PICOHASH_MAX_DIGEST_LENGTH ; 
- int /*<<< orphan*/  _picohash_hmac_apply_key (TYPE_2__*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  picohash_update (TYPE_2__*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,unsigned char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,void*) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int (* hash_final ) (TYPE_2__*,void*) ;int (* hash_reset ) (TYPE_2__*) ;} ;
+struct TYPE_10__ {TYPE_1__ _hmac; int digest_length; } ;
+typedef TYPE_2__ picohash_ctx_t ;
+
+
+ int PICOHASH_MAX_DIGEST_LENGTH ;
+ int _picohash_hmac_apply_key (TYPE_2__*,int) ;
+ int memset (unsigned char*,int ,int ) ;
+ int picohash_update (TYPE_2__*,unsigned char*,int ) ;
+ int stub1 (TYPE_2__*,unsigned char*) ;
+ int stub2 (TYPE_2__*) ;
+ int stub3 (TYPE_2__*,void*) ;
 
 __attribute__((used)) static void _picohash_hmac_final(picohash_ctx_t *ctx, void *digest)
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  authmod ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int buf ;
+typedef int authmod ;
 struct TYPE_7__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_8__ {char* username; int auth_tried; char* auth_params; int /*<<< orphan*/ * password; } ;
-typedef  TYPE_2__ RTMPContext ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_8__ {char* username; int auth_tried; char* auth_params; int * password; } ;
+typedef TYPE_2__ RTMPContext ;
 
-/* Variables and functions */
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,int) ; 
- int do_adobe_auth (TYPE_2__*,char const*,char const*,char const*,char const*) ; 
- int do_llnw_auth (TYPE_2__*,char const*,char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- char* strstr (char const*,char*) ; 
+
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int AV_LOG_WARNING ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int av_strlcpy (char*,char const*,int) ;
+ int do_adobe_auth (TYPE_2__*,char const*,char const*,char const*,char const*) ;
+ int do_llnw_auth (TYPE_2__*,char const*,char const*) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ char* strchr (char*,char) ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
+ char* strstr (char const*,char*) ;
 
 __attribute__((used)) static int handle_connect_error(URLContext *s, const char *desc)
 {
     RTMPContext *rt = s->priv_data;
     char buf[300], *ptr, authmod[15];
     int i = 0, ret = 0;
-    const char *user = "", *salt = "", *opaque = NULL,
-               *challenge = NULL, *cptr = NULL, *nonce = NULL;
+    const char *user = "", *salt = "", *opaque = ((void*)0),
+               *challenge = ((void*)0), *cptr = ((void*)0), *nonce = ((void*)0);
 
     if (!(cptr = strstr(desc, "authmod=adobe")) &&
         !(cptr = strstr(desc, "authmod=llnw"))) {
@@ -88,7 +88,7 @@ __attribute__((used)) static int handle_connect_error(URLContext *s, const char 
     ptr = buf;
 
     while (ptr) {
-        char *next  = strchr(ptr, '&');
+        char *next = strchr(ptr, '&');
         char *value = strchr(ptr, '=');
         if (next)
             *next++ = '\0';

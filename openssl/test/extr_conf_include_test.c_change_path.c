@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DIRSEP ; 
- size_t DIRSEP_PRESERVE ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char const*) ; 
- int /*<<< orphan*/  TEST_note (char*,char*) ; 
- int chdir (char*) ; 
- char* strpbrk (char*,int /*<<< orphan*/ ) ; 
+ int DIRSEP ;
+ size_t DIRSEP_PRESERVE ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char const*) ;
+ int TEST_note (char*,char*) ;
+ int chdir (char*) ;
+ char* strpbrk (char*,int ) ;
 
 __attribute__((used)) static int change_path(const char *file)
 {
     char *s = OPENSSL_strdup(file);
     char *p = s;
-    char *last = NULL;
+    char *last = ((void*)0);
     int ret;
 
-    if (s == NULL)
+    if (s == ((void*)0))
         return -1;
 
-    while ((p = strpbrk(p, DIRSEP)) != NULL) {
+    while ((p = strpbrk(p, DIRSEP)) != ((void*)0)) {
         last = p++;
     }
-    if (last == NULL)
+    if (last == ((void*)0))
         return 0;
     last[DIRSEP_PRESERVE] = 0;
 

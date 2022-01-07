@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double usec_t ;
-typedef  double uint32_t ;
 
-/* Variables and functions */
- int ERANGE ; 
- double UINT32_MAX ; 
- int /*<<< orphan*/  assert (double*) ; 
- int tc_init (double*) ; 
+
+
+
+typedef double usec_t ;
+typedef double uint32_t ;
+
+
+ int ERANGE ;
+ double UINT32_MAX ;
+ int assert (double*) ;
+ int tc_init (double*) ;
 
 int tc_time_to_tick(usec_t t, uint32_t *ret) {
         static double ticks_in_usec = -1;

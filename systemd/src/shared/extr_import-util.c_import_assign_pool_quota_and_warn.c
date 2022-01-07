@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOTTY ; 
- int btrfs_subvol_auto_qgroup (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_debug (char*,char const*) ; 
- int /*<<< orphan*/  log_debug_errno (int,char*,...) ; 
- int log_error_errno (int,char*,...) ; 
- int /*<<< orphan*/  log_info (char*) ; 
+ int ENOTTY ;
+ int btrfs_subvol_auto_qgroup (char const*,int ,int) ;
+ int log_debug (char*,char const*) ;
+ int log_debug_errno (int,char*,...) ;
+ int log_error_errno (int,char*,...) ;
+ int log_info (char*) ;
 
 int import_assign_pool_quota_and_warn(const char *path) {
         int r;
 
-        r = btrfs_subvol_auto_qgroup("/var/lib/machines", 0, true);
-        if (r == -ENOTTY)  {
+        r = btrfs_subvol_auto_qgroup("/var/lib/machines", 0, 1);
+        if (r == -ENOTTY) {
                 log_debug_errno(r, "Failed to set up default quota hierarchy for /var/lib/machines, as directory is not on btrfs or not a subvolume. Ignoring.");
                 return 0;
         }
@@ -32,7 +24,7 @@ int import_assign_pool_quota_and_warn(const char *path) {
         if (r > 0)
                 log_info("Set up default quota hierarchy for /var/lib/machines.");
 
-        r = btrfs_subvol_auto_qgroup(path, 0, true);
+        r = btrfs_subvol_auto_qgroup(path, 0, 1);
         if (r == -ENOTTY) {
                 log_debug_errno(r, "Failed to set up quota hierarchy for %s, as directory is not on btrfs or not a subvolume. Ignoring.", path);
                 return 0;

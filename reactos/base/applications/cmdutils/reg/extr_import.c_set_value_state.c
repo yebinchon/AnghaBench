@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {scalar_t__ reg_version; int /*<<< orphan*/  data_size; int /*<<< orphan*/  data; int /*<<< orphan*/  data_type; int /*<<< orphan*/  value_name; int /*<<< orphan*/  hkey; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINE_START ; 
- int /*<<< orphan*/  PARSE_WIN31_LINE ; 
- scalar_t__ REG_VERSION_31 ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_parser_data (struct parser*) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+
+
+struct parser {scalar_t__ reg_version; int data_size; int data; int data_type; int value_name; int hkey; } ;
+typedef int WCHAR ;
+
+
+ int LINE_START ;
+ int PARSE_WIN31_LINE ;
+ scalar_t__ REG_VERSION_31 ;
+ int RegSetValueExW (int ,int ,int ,int ,int ,int ) ;
+ int free_parser_data (struct parser*) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *set_value_state(struct parser *parser, WCHAR *pos)
 {

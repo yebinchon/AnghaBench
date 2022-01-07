@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ lastfree; scalar_t__ node; } ;
-typedef  TYPE_1__ Table ;
-typedef  int /*<<< orphan*/  Node ;
+typedef TYPE_1__ Table ;
+typedef int Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gkey (scalar_t__) ; 
- scalar_t__ ttisnil (int /*<<< orphan*/ ) ; 
+
+ int gkey (scalar_t__) ;
+ scalar_t__ ttisnil (int ) ;
 
 __attribute__((used)) static Node *getfreepos (Table *t) {
   while (t->lastfree > t->node) {
@@ -25,5 +25,5 @@ __attribute__((used)) static Node *getfreepos (Table *t) {
     if (ttisnil(gkey(t->lastfree)))
       return t->lastfree;
   }
-  return NULL;  /* could not find a free place */
+  return ((void*)0);
 }

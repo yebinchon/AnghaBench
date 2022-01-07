@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdhci_slot {int /*<<< orphan*/ * curcmd; struct mmc_request* req; int /*<<< orphan*/  timeout_callout; } ;
-struct mmc_request {int /*<<< orphan*/  (* done ) (struct mmc_request*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  callout_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct mmc_request*) ; 
+
+
+
+struct sdhci_slot {int * curcmd; struct mmc_request* req; int timeout_callout; } ;
+struct mmc_request {int (* done ) (struct mmc_request*) ;} ;
+
+
+ int callout_stop (int *) ;
+ int stub1 (struct mmc_request*) ;
 
 __attribute__((used)) static void
 sdhci_req_done(struct sdhci_slot *slot)
 {
-	struct mmc_request *req;
+ struct mmc_request *req;
 
-	if (slot->req != NULL && slot->curcmd != NULL) {
-		callout_stop(&slot->timeout_callout);
-		req = slot->req;
-		slot->req = NULL;
-		slot->curcmd = NULL;
-		req->done(req);
-	}
+ if (slot->req != ((void*)0) && slot->curcmd != ((void*)0)) {
+  callout_stop(&slot->timeout_callout);
+  req = slot->req;
+  slot->req = ((void*)0);
+  slot->curcmd = ((void*)0);
+  req->done(req);
+ }
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TL_ERROR_BAD_VALUE ; 
- int log_split_min ; 
- int log_split_mod ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,...) ; 
+ int TL_ERROR_BAD_VALUE ;
+ int log_split_min ;
+ int log_split_mod ;
+ int tl_fetch_set_error_format (int ,char*,...) ;
 
 __attribute__((used)) static int check_vector_id (int vector_id) {
   if (vector_id <= 0) {

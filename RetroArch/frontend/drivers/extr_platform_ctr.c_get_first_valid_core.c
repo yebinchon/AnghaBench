@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {char const* d_name; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- scalar_t__ envIsHomebrew () ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char const*) ; 
+
+ int closedir (int *) ;
+ scalar_t__ envIsHomebrew () ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ int strcat (char*,char*) ;
+ int strcmp (char const*,char const*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void get_first_valid_core(char* path_return)
 {
@@ -32,11 +32,11 @@ __attribute__((used)) static void get_first_valid_core(char* path_return)
    path_return[0] = '\0';
 
    dir = opendir("sdmc:/retroarch/cores");
-   if (dir != NULL)
+   if (dir != ((void*)0))
    {
       while (ent = readdir(dir))
       {
-         if (ent == NULL)
+         if (ent == ((void*)0))
             break;
          if (strlen(ent->d_name) > strlen(extension) && !strcmp(ent->d_name + strlen(ent->d_name) - strlen(extension), extension))
          {

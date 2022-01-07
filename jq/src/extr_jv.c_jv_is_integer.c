@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ DBL_EPSILON ; 
- int /*<<< orphan*/  JVP_HAS_KIND (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JV_KIND_NUMBER ; 
- scalar_t__ fabs (double) ; 
- double jv_number_value (int /*<<< orphan*/ ) ; 
- double modf (double,double*) ; 
+
+
+
+typedef int jv ;
+
+
+ scalar_t__ DBL_EPSILON ;
+ int JVP_HAS_KIND (int ,int ) ;
+ int JV_KIND_NUMBER ;
+ scalar_t__ fabs (double) ;
+ double jv_number_value (int ) ;
+ double modf (double,double*) ;
 
 int jv_is_integer(jv j){
   if(!JVP_HAS_KIND(j, JV_KIND_NUMBER)){

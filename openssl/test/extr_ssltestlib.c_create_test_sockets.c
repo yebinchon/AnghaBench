@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  sin ;
+typedef int socklen_t ;
+typedef int sin ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ EAGAIN ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int accept (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,struct sockaddr*,int) ; 
- scalar_t__ errno ; 
- scalar_t__ getsockname (int,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  inet_addr (char const*) ; 
- scalar_t__ listen (int,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int set_nb (int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ scalar_t__ EAGAIN ;
+ int SOCK_STREAM ;
+ int accept (int,int *,int ) ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int close (int) ;
+ scalar_t__ connect (int,struct sockaddr*,int) ;
+ scalar_t__ errno ;
+ scalar_t__ getsockname (int,struct sockaddr*,int*) ;
+ int inet_addr (char const*) ;
+ scalar_t__ listen (int,int) ;
+ int memset (char*,int ,int) ;
+ int set_nb (int) ;
+ int socket (int ,int ,int ) ;
 
 int create_test_sockets(int *cfd, int *sfd)
 {
@@ -69,7 +69,7 @@ int create_test_sockets(int *cfd, int *sfd)
         goto out;
 
     while (*sfd == -1 || !cfd_connected ) {
-        *sfd = accept(afd, NULL, 0);
+        *sfd = accept(afd, ((void*)0), 0);
         if (*sfd == -1 && errno != EAGAIN)
             goto out;
 

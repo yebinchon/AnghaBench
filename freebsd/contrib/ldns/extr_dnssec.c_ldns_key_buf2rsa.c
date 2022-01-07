@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_buffer ;
-typedef  int /*<<< orphan*/  RSA ;
 
-/* Variables and functions */
- scalar_t__ ldns_buffer_begin (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ldns_buffer_position (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * ldns_key_buf2rsa_raw (unsigned char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ldns_buffer ;
+typedef int RSA ;
+
+
+ scalar_t__ ldns_buffer_begin (int const*) ;
+ int ldns_buffer_position (int const*) ;
+ int * ldns_key_buf2rsa_raw (unsigned char const*,int ) ;
 
 RSA *
 ldns_key_buf2rsa(const ldns_buffer *key)
 {
-	return ldns_key_buf2rsa_raw((const unsigned char*)ldns_buffer_begin(key),
-						   ldns_buffer_position(key));
+ return ldns_key_buf2rsa_raw((const unsigned char*)ldns_buffer_begin(key),
+         ldns_buffer_position(key));
 }

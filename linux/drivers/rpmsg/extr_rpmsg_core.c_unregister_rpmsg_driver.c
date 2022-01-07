@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpmsg_driver {int /*<<< orphan*/  drv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  driver_unregister (int /*<<< orphan*/ *) ; 
+
+
+
+struct rpmsg_driver {int drv; } ;
+
+
+ int driver_unregister (int *) ;
 
 void unregister_rpmsg_driver(struct rpmsg_driver *rpdrv)
 {
-	driver_unregister(&rpdrv->drv);
+ driver_unregister(&rpdrv->drv);
 }

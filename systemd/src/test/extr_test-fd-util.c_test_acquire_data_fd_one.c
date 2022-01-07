@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wbuffer ;
-typedef  int /*<<< orphan*/  rbuffer ;
 
-/* Variables and functions */
- int acquire_data_fd (char*,int,unsigned int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  random_bytes (char*,int) ; 
- int read (int,char*,int) ; 
- int safe_close (int) ; 
- int streq (char*,char*) ; 
- int /*<<< orphan*/  zero (char*) ; 
+
+
+
+typedef int wbuffer ;
+typedef int rbuffer ;
+
+
+ int acquire_data_fd (char*,int,unsigned int) ;
+ int assert_se (int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int random_bytes (char*,int) ;
+ int read (int,char*,int) ;
+ int safe_close (int) ;
+ int streq (char*,char*) ;
+ int zero (char*) ;
 
 __attribute__((used)) static void test_acquire_data_fd_one(unsigned flags) {
         char wbuffer[196*1024 - 7];

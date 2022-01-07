@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int sizearray; int /*<<< orphan*/ * gclist; int /*<<< orphan*/ * array; int /*<<< orphan*/  marked; } ;
-typedef  TYPE_1__ Table ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- TYPE_1__* gco2h (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gnode (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * gval (int /*<<< orphan*/ *) ; 
- scalar_t__ iscleared (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * key2tval (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  removeentry (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setnilvalue (int /*<<< orphan*/ *) ; 
- int sizenode (TYPE_1__*) ; 
- scalar_t__ testbit (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ttisnil (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sizearray; int * gclist; int * array; int marked; } ;
+typedef TYPE_1__ Table ;
+typedef int TValue ;
+typedef int Node ;
+typedef int GCObject ;
+
+
+ TYPE_1__* gco2h (int *) ;
+ int * gnode (TYPE_1__*,int) ;
+ int * gval (int *) ;
+ scalar_t__ iscleared (int *,int) ;
+ int * key2tval (int *) ;
+ int removeentry (int *) ;
+ int setnilvalue (int *) ;
+ int sizenode (TYPE_1__*) ;
+ scalar_t__ testbit (int ,int) ;
+ int ttisnil (int *) ;
 
 __attribute__((used)) static void cleartable(GCObject*l){
 while(l){

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MD5_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_MD_meth_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_meth_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_app_datasize (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_final (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_input_blocksize (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_result_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MD_meth_set_update (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MD5_CBLOCK ; 
- int /*<<< orphan*/  MD5_DIGEST_LENGTH ; 
- int /*<<< orphan*/  NID_md5 ; 
- int /*<<< orphan*/  NID_md5WithRSAEncryption ; 
- int /*<<< orphan*/  const* _hidden_md5_md ; 
- int /*<<< orphan*/  digest_md5_final ; 
- int /*<<< orphan*/  digest_md5_init ; 
- int /*<<< orphan*/  digest_md5_update ; 
+
+
+
+typedef int MD5_CTX ;
+typedef int EVP_MD ;
+
+
+ int EVP_MD_meth_free (int *) ;
+ int * EVP_MD_meth_new (int ,int ) ;
+ int EVP_MD_meth_set_app_datasize (int *,int) ;
+ int EVP_MD_meth_set_final (int *,int ) ;
+ int EVP_MD_meth_set_flags (int *,int ) ;
+ int EVP_MD_meth_set_init (int *,int ) ;
+ int EVP_MD_meth_set_input_blocksize (int *,int ) ;
+ int EVP_MD_meth_set_result_size (int *,int ) ;
+ int EVP_MD_meth_set_update (int *,int ) ;
+ int MD5_CBLOCK ;
+ int MD5_DIGEST_LENGTH ;
+ int NID_md5 ;
+ int NID_md5WithRSAEncryption ;
+ int const* _hidden_md5_md ;
+ int digest_md5_final ;
+ int digest_md5_init ;
+ int digest_md5_update ;
 
 __attribute__((used)) static const EVP_MD *digest_md5(void)
 {
-    if (_hidden_md5_md == NULL) {
+    if (_hidden_md5_md == ((void*)0)) {
         EVP_MD *md;
 
-        if ((md = EVP_MD_meth_new(NID_md5, NID_md5WithRSAEncryption)) == NULL
+        if ((md = EVP_MD_meth_new(NID_md5, NID_md5WithRSAEncryption)) == ((void*)0)
             || !EVP_MD_meth_set_result_size(md, MD5_DIGEST_LENGTH)
             || !EVP_MD_meth_set_input_blocksize(md, MD5_CBLOCK)
             || !EVP_MD_meth_set_app_datasize(md,
@@ -47,7 +47,7 @@ __attribute__((used)) static const EVP_MD *digest_md5(void)
             || !EVP_MD_meth_set_update(md, digest_md5_update)
             || !EVP_MD_meth_set_final(md, digest_md5_final)) {
             EVP_MD_meth_free(md);
-            md = NULL;
+            md = ((void*)0);
         }
         _hidden_md5_md = md;
     }

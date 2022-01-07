@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  drm_magic_lock ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
+ int drm_magic_lock ;
+ int mtx_destroy (int *) ;
 
 __attribute__((used)) static void
 drm_magic_fini(void *arg)
 {
 
-	mtx_destroy(&drm_magic_lock);
+ mtx_destroy(&drm_magic_lock);
 }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  check_shuffle_bytes (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  check_uyvy_to_422p () ; 
- int /*<<< orphan*/  ff_sws_rgb2rgb_init () ; 
- int /*<<< orphan*/  report (char*) ; 
- int /*<<< orphan*/  shuffle_bytes_0321 ; 
- int /*<<< orphan*/  shuffle_bytes_1230 ; 
- int /*<<< orphan*/  shuffle_bytes_2103 ; 
- int /*<<< orphan*/  shuffle_bytes_3012 ; 
- int /*<<< orphan*/  shuffle_bytes_3210 ; 
+ int check_shuffle_bytes (int ,char*) ;
+ int check_uyvy_to_422p () ;
+ int ff_sws_rgb2rgb_init () ;
+ int report (char*) ;
+ int shuffle_bytes_0321 ;
+ int shuffle_bytes_1230 ;
+ int shuffle_bytes_2103 ;
+ int shuffle_bytes_3012 ;
+ int shuffle_bytes_3210 ;
 
 void checkasm_check_sw_rgb(void)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {float re; double im; } ;
 struct TYPE_12__ {scalar_t__* extended_data; } ;
-struct TYPE_11__ {int window_length; float* window; int fft_length2; int* noise_band_edge; int /*<<< orphan*/  sample_floor; int /*<<< orphan*/  fft_length; } ;
-struct TYPE_10__ {int* noise_band_norm; double* noise_band_avr; double* noise_band_avi; double* noise_band_var; double* noisy_data; TYPE_7__* fft_data; int /*<<< orphan*/  fft; } ;
-typedef  TYPE_1__ DeNoiseChannel ;
-typedef  TYPE_2__ AudioFFTDeNoiseContext ;
-typedef  TYPE_3__ AVFrame ;
+struct TYPE_11__ {int window_length; float* window; int fft_length2; int* noise_band_edge; int sample_floor; int fft_length; } ;
+struct TYPE_10__ {int* noise_band_norm; double* noise_band_avr; double* noise_band_avi; double* noise_band_var; double* noisy_data; TYPE_7__* fft_data; int fft; } ;
+typedef TYPE_1__ DeNoiseChannel ;
+typedef TYPE_2__ AudioFFTDeNoiseContext ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_fft_calc (int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  av_fft_permute (int /*<<< orphan*/ ,TYPE_7__*) ; 
- double fmax (double,int /*<<< orphan*/ ) ; 
- int fmin (int,int) ; 
- int /*<<< orphan*/  preprocess (TYPE_7__*,int /*<<< orphan*/ ) ; 
+
+ int av_fft_calc (int ,TYPE_7__*) ;
+ int av_fft_permute (int ,TYPE_7__*) ;
+ double fmax (double,int ) ;
+ int fmin (int,int) ;
+ int preprocess (TYPE_7__*,int ) ;
 
 __attribute__((used)) static void sample_noise_block(AudioFFTDeNoiseContext *s,
                                DeNoiseChannel *dnch,

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_4__ {int /*<<< orphan*/  Information; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/ * PULONG ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  KEVENT ;
-typedef  TYPE_1__ IO_STATUS_BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AFD_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IoBuildDeviceIoControlRequest (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  IoGetRelatedDeviceObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KeInitializeEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MIN_TRACE ; 
- int /*<<< orphan*/  NotificationEvent ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  TdiCall (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_4__ {int Information; } ;
+typedef int PVOID ;
+typedef int * PULONG ;
+typedef int PIRP ;
+typedef int PFILE_OBJECT ;
+typedef int PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
+typedef int KEVENT ;
+typedef TYPE_1__ IO_STATUS_BLOCK ;
+
+
+ int AFD_DbgPrint (int ,char*) ;
+ int FALSE ;
+ int IoBuildDeviceIoControlRequest (int ,int ,int ,int ,int ,int ,int ,int *,TYPE_1__*) ;
+ int IoGetRelatedDeviceObject (int ) ;
+ int KeInitializeEvent (int *,int ,int ) ;
+ int MIN_TRACE ;
+ int NotificationEvent ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_INVALID_PARAMETER ;
+ int TdiCall (int ,int ,int *,TYPE_1__*) ;
 
 NTSTATUS TdiQueryDeviceControl(
     PFILE_OBJECT FileObject,
@@ -42,18 +42,6 @@ NTSTATUS TdiQueryDeviceControl(
     PVOID OutputBuffer,
     ULONG OutputBufferLength,
     PULONG Return)
-/*
- * FUNCTION: Queries a device for information
- * ARGUMENTS:
- *     FileObject         = Pointer to file object
- *     IoControlCode      = I/O control code
- *     InputBuffer        = Pointer to buffer with input data
- *     InputBufferLength  = Length of InputBuffer
- *     OutputBuffer       = Address of buffer to place output data
- *     OutputBufferLength = Length of OutputBuffer
- * RETURNS:
- *     Status of operation
- */
 {
     PDEVICE_OBJECT DeviceObject;
     IO_STATUS_BLOCK Iosb;

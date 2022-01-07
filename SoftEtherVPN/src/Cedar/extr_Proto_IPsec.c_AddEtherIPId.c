@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
-struct TYPE_14__ {int /*<<< orphan*/  Id; } ;
-struct TYPE_13__ {int /*<<< orphan*/  LockSettings; int /*<<< orphan*/  EtherIPIdListSettingVerNo; int /*<<< orphan*/  EtherIPIdList; } ;
-typedef  TYPE_1__ IPSEC_SERVER ;
-typedef  TYPE_2__ ETHERIP_ID ;
 
-/* Variables and functions */
- TYPE_2__* Clone (TYPE_2__*,int) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
- int /*<<< orphan*/  Insert (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- TYPE_2__* Search (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int t ;
+struct TYPE_14__ {int Id; } ;
+struct TYPE_13__ {int LockSettings; int EtherIPIdListSettingVerNo; int EtherIPIdList; } ;
+typedef TYPE_1__ IPSEC_SERVER ;
+typedef TYPE_2__ ETHERIP_ID ;
+
+
+ TYPE_2__* Clone (TYPE_2__*,int) ;
+ int Delete (int ,TYPE_2__*) ;
+ int Free (TYPE_2__*) ;
+ int Insert (int ,TYPE_2__*) ;
+ int Lock (int ) ;
+ TYPE_2__* Search (int ,TYPE_2__*) ;
+ int StrCpy (int ,int,int ) ;
+ int Unlock (int ) ;
+ int Zero (TYPE_2__*,int) ;
 
 void AddEtherIPId(IPSEC_SERVER *s, ETHERIP_ID *id)
 {
-	// Validate arguments
-	if (s == NULL || id == NULL)
-	{
-		return;
-	}
 
-	Lock(s->LockSettings);
-	{
-		// If there is the same key, remove them
-		ETHERIP_ID t, *k;
+ if (s == ((void*)0) || id == ((void*)0))
+ {
+  return;
+ }
 
-		Zero(&t, sizeof(t));
+ Lock(s->LockSettings);
+ {
 
-		StrCpy(t.Id, sizeof(t.Id), id->Id);
+  ETHERIP_ID t, *k;
 
-		k = Search(s->EtherIPIdList, &t);
+  Zero(&t, sizeof(t));
 
-		if (k != NULL)
-		{
-			Delete(s->EtherIPIdList, k);
+  StrCpy(t.Id, sizeof(t.Id), id->Id);
 
-			Free(k);
-		}
+  k = Search(s->EtherIPIdList, &t);
 
-		// Add
-		k = Clone(id, sizeof(ETHERIP_ID));
+  if (k != ((void*)0))
+  {
+   Delete(s->EtherIPIdList, k);
 
-		Insert(s->EtherIPIdList, k);
+   Free(k);
+  }
 
-		s->EtherIPIdListSettingVerNo++;
-	}
-	Unlock(s->LockSettings);
+
+  k = Clone(id, sizeof(ETHERIP_ID));
+
+  Insert(s->EtherIPIdList, k);
+
+  s->EtherIPIdListSettingVerNo++;
+ }
+ Unlock(s->LockSettings);
 }

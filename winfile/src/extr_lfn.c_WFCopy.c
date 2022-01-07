@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChangeFileSystem (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ CopyFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_INVALID_NAME ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FSC_CREATE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  IDS_COPYINGMSG ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/  Notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoveLast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdlgProgress ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+typedef scalar_t__ DWORD ;
+
+
+ int ChangeFileSystem (int ,int *,int *) ;
+ scalar_t__ CopyFile (int *,int *,int ) ;
+ scalar_t__ ERROR_INVALID_NAME ;
+ int FALSE ;
+ int FSC_CREATE ;
+ scalar_t__ GetLastError () ;
+ int IDS_COPYINGMSG ;
+ int MAXPATHLEN ;
+ int Notify (int ,int ,int *,int *) ;
+ int RemoveLast (int *) ;
+ int hdlgProgress ;
+ int lstrcpy (int *,int *) ;
 
 DWORD
 WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
@@ -38,7 +38,7 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
 
     if (CopyFile(pszFrom, pszTo, FALSE))
     {
-        ChangeFileSystem(FSC_CREATE, pszTo, NULL);
+        ChangeFileSystem(FSC_CREATE, pszTo, ((void*)0));
         dwRet = 0;
     }
     else
@@ -46,21 +46,21 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
         dwRet = GetLastError();
         if (dwRet == ERROR_INVALID_NAME)
         {
-            //
-            //  Try copying without the file name in the TO field.
-            //  This is for the case where it's trying to copy to a print
-            //  share.  CopyFile fails if the file name is tacked onto the
-            //  end in the case of printer shares.
-            //
+
+
+
+
+
+
             lstrcpy(szTemp, pszTo);
             RemoveLast(szTemp);
             if (CopyFile(pszFrom, szTemp, FALSE))
             {
-                ChangeFileSystem(FSC_CREATE, szTemp, NULL);
+                ChangeFileSystem(FSC_CREATE, szTemp, ((void*)0));
                 dwRet = 0;
             }
 
-            // else ... use the original dwRet value.
+
         }
     }
 

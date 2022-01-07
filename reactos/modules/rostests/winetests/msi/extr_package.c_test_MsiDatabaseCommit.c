@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  char* UINT ;
-typedef  int MSIHANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- char* ERROR_INSTALL_PACKAGE_REJECTED ; 
- char* ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int) ; 
- char* MsiDatabaseCommit (int) ; 
- char* MsiGetPropertyA (int,char*,char*,int*) ; 
- char* MsiOpenPackageA (char*,int*) ; 
- char* MsiSetPropertyA (int,char*,char*) ; 
- int create_package_db () ; 
- int /*<<< orphan*/  create_property_table (int) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+typedef int buf ;
+typedef char* UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ char* ERROR_INSTALL_PACKAGE_REJECTED ;
+ char* ERROR_SUCCESS ;
+ int MsiCloseHandle (int) ;
+ char* MsiDatabaseCommit (int) ;
+ char* MsiGetPropertyA (int,char*,char*,int*) ;
+ char* MsiOpenPackageA (char*,int*) ;
+ char* MsiSetPropertyA (int,char*,char*) ;
+ int create_package_db () ;
+ int create_property_table (int) ;
+ int lstrcmpA (char*,char*) ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static void test_MsiDatabaseCommit(void)
 {

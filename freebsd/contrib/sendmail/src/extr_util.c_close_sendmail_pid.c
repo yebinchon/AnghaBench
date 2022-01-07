@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * Pidf ; 
- int /*<<< orphan*/  SM_TIME_DEFAULT ; 
- int /*<<< orphan*/  sm_io_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int * Pidf ;
+ int SM_TIME_DEFAULT ;
+ int sm_io_close (int *,int ) ;
 
 void
 close_sendmail_pid()
 {
-	if (Pidf == NULL)
-		return;
+ if (Pidf == ((void*)0))
+  return;
 
-	(void) sm_io_close(Pidf, SM_TIME_DEFAULT);
-	Pidf = NULL;
+ (void) sm_io_close(Pidf, SM_TIME_DEFAULT);
+ Pidf = ((void*)0);
 }

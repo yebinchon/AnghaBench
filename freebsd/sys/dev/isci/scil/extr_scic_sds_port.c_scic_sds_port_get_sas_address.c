@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t U32 ;
-struct TYPE_8__ {int /*<<< orphan*/ ** phy_table; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t U32 ;
+struct TYPE_8__ {int ** phy_table; } ;
 struct TYPE_7__ {scalar_t__ low; scalar_t__ high; } ;
-typedef  TYPE_1__ SCI_SAS_ADDRESS_T ;
-typedef  TYPE_2__ SCIC_SDS_PORT_T ;
+typedef TYPE_1__ SCI_SAS_ADDRESS_T ;
+typedef TYPE_2__ SCIC_SDS_PORT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_OBJECT_PORT ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- size_t SCI_MAX_PHYS ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_2__*) ; 
- int /*<<< orphan*/  scic_sds_phy_get_sas_address (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int SCIC_LOG_OBJECT_PORT ;
+ int SCIC_LOG_TRACE (int ) ;
+ size_t SCI_MAX_PHYS ;
+ int sci_base_object_get_logger (TYPE_2__*) ;
+ int scic_sds_phy_get_sas_address (int *,TYPE_1__*) ;
 
 void scic_sds_port_get_sas_address(
-   SCIC_SDS_PORT_T   * this_port,
+   SCIC_SDS_PORT_T * this_port,
    SCI_SAS_ADDRESS_T * sas_address
 )
 {
@@ -40,11 +40,11 @@ void scic_sds_port_get_sas_address(
    ));
 
    sas_address->high = 0;
-   sas_address->low  = 0;
+   sas_address->low = 0;
 
    for (index = 0; index < SCI_MAX_PHYS; index++)
    {
-      if (this_port->phy_table[index] != NULL)
+      if (this_port->phy_table[index] != ((void*)0))
       {
          scic_sds_phy_get_sas_address(this_port->phy_table[index], sas_address);
       }

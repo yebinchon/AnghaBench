@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_6__ {int Grouping; int PositiveOrder; scalar_t__ NegativeOrder; int /*<<< orphan*/  lpCurrencySymbol; int /*<<< orphan*/  lpThousandSep; int /*<<< orphan*/  lpDecimalSep; scalar_t__ LeadingZero; int /*<<< orphan*/  NumDigits; } ;
-struct TYPE_5__ {int nCurrPosFormat; int /*<<< orphan*/  UserLCID; int /*<<< orphan*/  szCurrSymbol; int /*<<< orphan*/  szCurrThousandSep; int /*<<< orphan*/  szCurrDecimalSep; int /*<<< orphan*/  nCurrDigits; } ;
-typedef  TYPE_1__* PGLOBALDATA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_2__ CURRENCYFMTW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_INSERTSTRING ; 
- int /*<<< orphan*/  CB_SETCURSEL ; 
- int /*<<< orphan*/  GetCurrencyFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IDC_CURRENCYPOSVALUE ; 
- int MAX_FMT_SIZE ; 
- int /*<<< orphan*/  SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+struct TYPE_6__ {int Grouping; int PositiveOrder; scalar_t__ NegativeOrder; int lpCurrencySymbol; int lpThousandSep; int lpDecimalSep; scalar_t__ LeadingZero; int NumDigits; } ;
+struct TYPE_5__ {int nCurrPosFormat; int UserLCID; int szCurrSymbol; int szCurrThousandSep; int szCurrDecimalSep; int nCurrDigits; } ;
+typedef TYPE_1__* PGLOBALDATA ;
+typedef int LPARAM ;
+typedef int INT ;
+typedef int HWND ;
+typedef TYPE_2__ CURRENCYFMTW ;
+
+
+ int CB_INSERTSTRING ;
+ int CB_SETCURSEL ;
+ int GetCurrencyFormatW (int ,int ,char*,TYPE_2__*,int *,int) ;
+ int IDC_CURRENCYPOSVALUE ;
+ int MAX_FMT_SIZE ;
+ int SendDlgItemMessageW (int ,int ,int ,int,int ) ;
 
 __attribute__((used)) static VOID
 InitCurrencyPositiveFormats(HWND hwndDlg, PGLOBALDATA pGlobalData)
@@ -37,7 +37,7 @@ InitCurrencyPositiveFormats(HWND hwndDlg, PGLOBALDATA pGlobalData)
     CURRENCYFMTW cyFmt;
     INT i;
 
-    /* positive currency values */
+
     cyFmt.NumDigits = pGlobalData->nCurrDigits;
     cyFmt.LeadingZero = 0;
     cyFmt.Grouping = 3;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int tv_sec; int tv_usec; } ;
-struct TYPE_6__ {TYPE_5__ timeout; int /*<<< orphan*/  port; int /*<<< orphan*/  host; } ;
+struct TYPE_6__ {TYPE_5__ timeout; int port; int host; } ;
 struct config {TYPE_1__ tcp; } ;
-struct TYPE_7__ {scalar_t__ err; int /*<<< orphan*/  errstr; } ;
-typedef  TYPE_2__ redisContext ;
-typedef  int LONG_MAX ;
+struct TYPE_7__ {scalar_t__ err; int errstr; } ;
+typedef TYPE_2__ redisContext ;
+typedef int LONG_MAX ;
 
-/* Variables and functions */
- scalar_t__ REDIS_ERR_IO ; 
- TYPE_2__* redisConnectWithTimeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__) ; 
- int /*<<< orphan*/  redisFree (TYPE_2__*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test (char*) ; 
- int /*<<< orphan*/  test_cond (int) ; 
+
+ scalar_t__ REDIS_ERR_IO ;
+ TYPE_2__* redisConnectWithTimeout (int ,int ,TYPE_5__) ;
+ int redisFree (TYPE_2__*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int test (char*) ;
+ int test_cond (int) ;
 
 __attribute__((used)) static void test_invalid_timeout_errors(struct config config) {
     redisContext *c;

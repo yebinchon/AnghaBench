@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RC4_HMAC_MD5_BLOCK_BITS ; 
- int /*<<< orphan*/  RC4_HMAC_MD5_FLAGS ; 
- int /*<<< orphan*/  RC4_HMAC_MD5_IV_BITS ; 
- int /*<<< orphan*/  RC4_HMAC_MD5_KEY_BITS ; 
- int /*<<< orphan*/  RC4_HMAC_MD5_MODE ; 
- int cipher_generic_get_params (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OSSL_PARAM ;
+
+
+ int RC4_HMAC_MD5_BLOCK_BITS ;
+ int RC4_HMAC_MD5_FLAGS ;
+ int RC4_HMAC_MD5_IV_BITS ;
+ int RC4_HMAC_MD5_KEY_BITS ;
+ int RC4_HMAC_MD5_MODE ;
+ int cipher_generic_get_params (int *,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int rc4_hmac_md5_get_params(OSSL_PARAM params[])
 {

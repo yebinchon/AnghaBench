@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ui_file {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ islower (char) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- char toupper (char) ; 
- int /*<<< orphan*/  ui_out_text (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  uiout ; 
- int /*<<< orphan*/  xfree (char*) ; 
- scalar_t__ xmalloc (int) ; 
+
+ scalar_t__ islower (char) ;
+ int strncpy (char*,char*,int) ;
+ char toupper (char) ;
+ int ui_out_text (int ,char*) ;
+ int uiout ;
+ int xfree (char*) ;
+ scalar_t__ xmalloc (int) ;
 
 void
 print_doc_line (struct ui_file *stream, char *str)

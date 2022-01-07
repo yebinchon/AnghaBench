@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmw_cmdbuf_man {int /*<<< orphan*/  cur_mutex; } ;
 
-/* Variables and functions */
- int ERESTARTSYS ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ mutex_lock_interruptible (int /*<<< orphan*/ *) ; 
+
+
+
+struct vmw_cmdbuf_man {int cur_mutex; } ;
+
+
+ int ERESTARTSYS ;
+ int mutex_lock (int *) ;
+ scalar_t__ mutex_lock_interruptible (int *) ;
 
 __attribute__((used)) static int vmw_cmdbuf_cur_lock(struct vmw_cmdbuf_man *man, bool interruptible)
 {
-	if (interruptible) {
-		if (mutex_lock_interruptible(&man->cur_mutex))
-			return -ERESTARTSYS;
-	} else {
-		mutex_lock(&man->cur_mutex);
-	}
+ if (interruptible) {
+  if (mutex_lock_interruptible(&man->cur_mutex))
+   return -ERESTARTSYS;
+ } else {
+  mutex_lock(&man->cur_mutex);
+ }
 
-	return 0;
+ return 0;
 }

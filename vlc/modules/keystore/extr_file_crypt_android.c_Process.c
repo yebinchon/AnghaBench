@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_9__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_keystore ;
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int jsize ;
-typedef  int /*<<< orphan*/  jobject ;
-typedef  int /*<<< orphan*/ * jbyteArray ;
-typedef  int const jbyte ;
-struct TYPE_11__ {int /*<<< orphan*/  doFinal; } ;
-struct TYPE_10__ {int (* GetArrayLength ) (TYPE_1__**,int /*<<< orphan*/ *) ;int* (* GetByteArrayElements ) (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ReleaseByteArrayElements ) (TYPE_1__**,int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* SetByteArrayRegion ) (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int const*) ;int /*<<< orphan*/ * (* NewByteArray ) (TYPE_1__**,size_t) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- scalar_t__ CALL_OBJ (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ CHECK_EXCEPTION () ; 
- TYPE_9__ Cipher ; 
- int /*<<< orphan*/  DEL_LREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int*) ; 
- int* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__**,size_t) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int const*) ; 
- int stub3 (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int* stub4 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (TYPE_1__**,int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (TYPE_1__**,int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_9__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int vlc_keystore ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int jsize ;
+typedef int jobject ;
+typedef int * jbyteArray ;
+typedef int const jbyte ;
+struct TYPE_11__ {int doFinal; } ;
+struct TYPE_10__ {int (* GetArrayLength ) (TYPE_1__**,int *) ;int* (* GetByteArrayElements ) (TYPE_1__**,int *,int ) ;int (* ReleaseByteArrayElements ) (TYPE_1__**,int *,int const*,int ) ;int (* SetByteArrayRegion ) (TYPE_1__**,int *,int ,size_t,int const*) ;int * (* NewByteArray ) (TYPE_1__**,size_t) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ scalar_t__ CALL_OBJ (int ,int ,int *) ;
+ scalar_t__ CHECK_EXCEPTION () ;
+ TYPE_9__ Cipher ;
+ int DEL_LREF (int *) ;
+ int free (int*) ;
+ int* malloc (int) ;
+ int memcpy (int*,int const*,int) ;
+ int * stub1 (TYPE_1__**,size_t) ;
+ int stub2 (TYPE_1__**,int *,int ,size_t,int const*) ;
+ int stub3 (TYPE_1__**,int *) ;
+ int* stub4 (TYPE_1__**,int *,int ) ;
+ int stub5 (TYPE_1__**,int *,int const*,int ) ;
+ int stub6 (TYPE_1__**,int *,int const*,int ) ;
 
 __attribute__((used)) static size_t
 Process(vlc_keystore *p_keystore, JNIEnv *p_env, jobject jcipher,
@@ -45,7 +45,7 @@ Process(vlc_keystore *p_keystore, JNIEnv *p_env, jobject jcipher,
 {
     size_t i_dst_size = 0;
     uint8_t *p_dst;
-    jbyteArray jsrcArray = NULL, jdstArray = NULL;
+    jbyteArray jsrcArray = ((void*)0), jdstArray = ((void*)0);
 
     jsrcArray = (*p_env)->NewByteArray(p_env, i_src_len);
     if (CHECK_EXCEPTION())
@@ -56,7 +56,7 @@ Process(vlc_keystore *p_keystore, JNIEnv *p_env, jobject jcipher,
     if (CHECK_EXCEPTION())
         goto end;
 
-    if (jdstArray == NULL)
+    if (jdstArray == ((void*)0))
         goto end;
 
     jsize dstSize = (*p_env)->GetArrayLength(p_env, jdstArray);
@@ -68,7 +68,7 @@ Process(vlc_keystore *p_keystore, JNIEnv *p_env, jobject jcipher,
 
     p_dst = i_iv_len > 0 ? malloc(dstSize + i_iv_len + sizeof(uint32_t))
                          : malloc(dstSize);
-    if (p_dst == NULL)
+    if (p_dst == ((void*)0))
     {
         (*p_env)->ReleaseByteArrayElements(p_env, jdstArray, p_bytes, 0);
         free(p_dst);
@@ -77,7 +77,7 @@ Process(vlc_keystore *p_keystore, JNIEnv *p_env, jobject jcipher,
 
     if (i_iv_len > 0)
     {
-        /* Store the IV just before the encrypted password */
+
         memcpy(p_dst, &i_iv_len, sizeof(uint32_t));
         memcpy(p_dst + sizeof(uint32_t), p_iv, i_iv_len);
         memcpy(p_dst + sizeof(uint32_t) + i_iv_len, p_bytes, dstSize);
@@ -93,9 +93,9 @@ Process(vlc_keystore *p_keystore, JNIEnv *p_env, jobject jcipher,
     *pp_dst = p_dst;
 
 end:
-    if (jsrcArray != NULL)
+    if (jsrcArray != ((void*)0))
         DEL_LREF(jsrcArray);
-    if (jdstArray != NULL)
+    if (jdstArray != ((void*)0))
         DEL_LREF(jdstArray);
     return i_dst_size;
 }

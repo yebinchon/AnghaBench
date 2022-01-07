@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ certnum; scalar_t__ expected_prot; int /*<<< orphan*/  cipher; } ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cipher_list (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert1 ; 
- int /*<<< orphan*/  cert2 ; 
- TYPE_1__* ciphers ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  privkey1 ; 
- int /*<<< orphan*/  privkey2 ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ certnum; scalar_t__ expected_prot; int cipher; } ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_cipher_list (int *,int ) ;
+ int SSL_ERROR_NONE ;
+ int SSL_free (int *) ;
+ int SSL_version (int *) ;
+ int TEST_false (int ) ;
+ int TEST_int_eq (int ,scalar_t__) ;
+ int TEST_true (int ) ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert1 ;
+ int cert2 ;
+ TYPE_1__* ciphers ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int privkey1 ;
+ int privkey2 ;
 
 __attribute__((used)) static int test_tls13(int idx)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
 
     if (!TEST_true(create_ssl_ctx_pair(TLS_server_method(),
@@ -56,7 +56,7 @@ __attribute__((used)) static int test_tls13(int idx)
     if (!TEST_true(SSL_CTX_set_cipher_list(cctx, ciphers[idx].cipher))
             || !TEST_true(SSL_CTX_set_cipher_list(sctx, ciphers[idx].cipher))
             || !TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL)))
+                                             ((void*)0), ((void*)0))))
         goto end;
 
     if (ciphers[idx].expected_prot == 0) {

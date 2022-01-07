@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zBase ;
-typedef  int /*<<< orphan*/  utf8 ;
-typedef  scalar_t__ u8 ;
-struct TYPE_19__ {int nVdbeExec; int /*<<< orphan*/ * aLimit; } ;
-typedef  TYPE_2__ sqlite3 ;
+
+
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int zBase ;
+typedef int utf8 ;
+typedef scalar_t__ u8 ;
+struct TYPE_19__ {int nVdbeExec; int * aLimit; } ;
+typedef TYPE_2__ sqlite3 ;
 struct TYPE_20__ {int nVar; TYPE_5__* aVar; TYPE_2__* db; } ;
-typedef  TYPE_3__ Vdbe ;
+typedef TYPE_3__ Vdbe ;
 struct TYPE_18__ {int i; int r; int nZero; } ;
 struct TYPE_22__ {int flags; int* z; int n; TYPE_1__ u; TYPE_2__* db; } ;
 struct TYPE_21__ {scalar_t__ accError; scalar_t__ nAlloc; } ;
-typedef  TYPE_4__ StrAccum ;
-typedef  TYPE_5__ Mem ;
+typedef TYPE_4__ StrAccum ;
+typedef TYPE_5__ Mem ;
 
-/* Variables and functions */
- scalar_t__ ENC (TYPE_2__*) ; 
- int MEM_Blob ; 
- int MEM_Int ; 
- int MEM_Null ; 
- int MEM_Real ; 
- int MEM_Str ; 
- int MEM_Zero ; 
- size_t SQLITE_LIMIT_LENGTH ; 
- scalar_t__ SQLITE_NOMEM ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int SQLITE_TRACE_SIZE_LIMIT ; 
- scalar_t__ SQLITE_UTF8 ; 
- int /*<<< orphan*/  assert (int) ; 
- int findNextHostParameter (char const*,int*) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3GetInt32 (char const*,int*) ; 
- int sqlite3Isdigit (char const) ; 
- char* sqlite3StrAccumFinish (TYPE_4__*) ; 
- int /*<<< orphan*/  sqlite3StrAccumInit (TYPE_4__*,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3Strlen30 (char const*) ; 
- scalar_t__ sqlite3VdbeChangeEncoding (TYPE_5__*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3VdbeMemRelease (TYPE_5__*) ; 
- int /*<<< orphan*/  sqlite3VdbeMemSetStr (TYPE_5__*,int*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeParameterIndex (TYPE_3__*,char const*,int) ; 
- int /*<<< orphan*/  sqlite3_str_append (TYPE_4__*,char const*,int) ; 
- int /*<<< orphan*/  sqlite3_str_appendf (TYPE_4__*,char*,int,...) ; 
- int /*<<< orphan*/  sqlite3_str_reset (TYPE_4__*) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ scalar_t__ ENC (TYPE_2__*) ;
+ int MEM_Blob ;
+ int MEM_Int ;
+ int MEM_Null ;
+ int MEM_Real ;
+ int MEM_Str ;
+ int MEM_Zero ;
+ size_t SQLITE_LIMIT_LENGTH ;
+ scalar_t__ SQLITE_NOMEM ;
+ int SQLITE_STATIC ;
+ int SQLITE_TRACE_SIZE_LIMIT ;
+ scalar_t__ SQLITE_UTF8 ;
+ int assert (int) ;
+ int findNextHostParameter (char const*,int*) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int sqlite3GetInt32 (char const*,int*) ;
+ int sqlite3Isdigit (char const) ;
+ char* sqlite3StrAccumFinish (TYPE_4__*) ;
+ int sqlite3StrAccumInit (TYPE_4__*,int ,char*,int,int ) ;
+ int sqlite3Strlen30 (char const*) ;
+ scalar_t__ sqlite3VdbeChangeEncoding (TYPE_5__*,scalar_t__) ;
+ int sqlite3VdbeMemRelease (TYPE_5__*) ;
+ int sqlite3VdbeMemSetStr (TYPE_5__*,int*,int,scalar_t__,int ) ;
+ int sqlite3VdbeParameterIndex (TYPE_3__*,char const*,int) ;
+ int sqlite3_str_append (TYPE_4__*,char const*,int) ;
+ int sqlite3_str_appendf (TYPE_4__*,char*,int,...) ;
+ int sqlite3_str_reset (TYPE_4__*) ;
+ int testcase (int) ;
 
 char *sqlite3VdbeExpandSql(
-  Vdbe *p,                 /* The prepared statement being evaluated */
-  const char *zRawSql      /* Raw text of the SQL statement */
+  Vdbe *p,
+  const char *zRawSql
 ){
-  sqlite3 *db;             /* The database connection */
-  int idx = 0;             /* Index of a host parameter */
-  int nextIndex = 1;       /* Index of next ? host parameter */
-  int n;                   /* Length of a token prefix */
-  int nToken;              /* Length of the parameter token */
-  int i;                   /* Loop counter */
-  Mem *pVar;               /* Value of a host parameter */
-  StrAccum out;            /* Accumulate the output here */
-#ifndef SQLITE_OMIT_UTF16
-  Mem utf8;                /* Used to convert UTF16 into UTF8 for display */
-#endif
-  char zBase[100];         /* Initial working space */
+  sqlite3 *db;
+  int idx = 0;
+  int nextIndex = 1;
+  int n;
+  int nToken;
+  int i;
+  Mem *pVar;
+  StrAccum out;
+
+  Mem utf8;
+
+  char zBase[100];
 
   db = p->db;
-  sqlite3StrAccumInit(&out, 0, zBase, sizeof(zBase), 
+  sqlite3StrAccumInit(&out, 0, zBase, sizeof(zBase),
                       db->aLimit[SQLITE_LIMIT_LENGTH]);
   if( db->nVdbeExec>1 ){
     while( *zRawSql ){
@@ -124,8 +124,8 @@ char *sqlite3VdbeExpandSql(
       }else if( pVar->flags & MEM_Real ){
         sqlite3_str_appendf(&out, "%!.15g", pVar->u.r);
       }else if( pVar->flags & MEM_Str ){
-        int nOut;  /* Number of bytes of the string text to include in output */
-#ifndef SQLITE_OMIT_UTF16
+        int nOut;
+
         u8 enc = ENC(db);
         if( enc!=SQLITE_UTF8 ){
           memset(&utf8, 0, sizeof(utf8));
@@ -137,42 +137,42 @@ char *sqlite3VdbeExpandSql(
           }
           pVar = &utf8;
         }
-#endif
+
         nOut = pVar->n;
-#ifdef SQLITE_TRACE_SIZE_LIMIT
-        if( nOut>SQLITE_TRACE_SIZE_LIMIT ){
-          nOut = SQLITE_TRACE_SIZE_LIMIT;
-          while( nOut<pVar->n && (pVar->z[nOut]&0xc0)==0x80 ){ nOut++; }
-        }
-#endif    
+
+
+
+
+
+
         sqlite3_str_appendf(&out, "'%.*q'", nOut, pVar->z);
-#ifdef SQLITE_TRACE_SIZE_LIMIT
-        if( nOut<pVar->n ){
-          sqlite3_str_appendf(&out, "/*+%d bytes*/", pVar->n-nOut);
-        }
-#endif
-#ifndef SQLITE_OMIT_UTF16
+
+
+
+
+
+
         if( enc!=SQLITE_UTF8 ) sqlite3VdbeMemRelease(&utf8);
-#endif
+
       }else if( pVar->flags & MEM_Zero ){
         sqlite3_str_appendf(&out, "zeroblob(%d)", pVar->u.nZero);
       }else{
-        int nOut;  /* Number of bytes of the blob to include in output */
+        int nOut;
         assert( pVar->flags & MEM_Blob );
         sqlite3_str_append(&out, "x'", 2);
         nOut = pVar->n;
-#ifdef SQLITE_TRACE_SIZE_LIMIT
-        if( nOut>SQLITE_TRACE_SIZE_LIMIT ) nOut = SQLITE_TRACE_SIZE_LIMIT;
-#endif
+
+
+
         for(i=0; i<nOut; i++){
           sqlite3_str_appendf(&out, "%02x", pVar->z[i]&0xff);
         }
         sqlite3_str_append(&out, "'", 1);
-#ifdef SQLITE_TRACE_SIZE_LIMIT
-        if( nOut<pVar->n ){
-          sqlite3_str_appendf(&out, "/*+%d bytes*/", pVar->n-nOut);
-        }
-#endif
+
+
+
+
+
       }
     }
   }

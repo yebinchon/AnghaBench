@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- int cf_norx32_decrypt (int*,int*,int*,int,int*,int,int*,int,int*,int*) ; 
- int /*<<< orphan*/  cf_norx32_encrypt (int*,int*,int*,int,int*,int,int*,int,int*,int*) ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  unhex (int*,int,char*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int TEST_CHECK (int) ;
+ int cf_norx32_decrypt (int*,int*,int*,int,int*,int,int*,int,int*,int*) ;
+ int cf_norx32_encrypt (int*,int*,int*,int,int*,int,int*,int,int*,int*) ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int unhex (int*,int,char*) ;
 
 __attribute__((used)) static void test_vector(void)
 {
   uint8_t K[16], N[8], A[128], M[128], Z[128], C[128], T[16];
 
-  /* This is from the v2.0 paper, section A.2. */
+
 
   unhex(K, sizeof K, "000102030405060708090a0b0c0d0e0f");
   unhex(N, sizeof N, "f0e0d0c0b0a09080");

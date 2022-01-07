@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * b; int /*<<< orphan*/ * g; int /*<<< orphan*/ * r; } ;
-typedef  TYPE_1__ cvid_codebook ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAKECOLOUR16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * b; int * g; int * r; } ;
+typedef TYPE_1__ cvid_codebook ;
+typedef int BOOL ;
+
+
+ int MAKECOLOUR16 (int ,int ,int ) ;
 
 __attribute__((used)) static void cvid_v4_16(unsigned char *frm, unsigned char *limit, int stride, BOOL inverted,
     cvid_codebook *cb0, cvid_codebook *cb1, cvid_codebook *cb2, cvid_codebook *cb3)
@@ -31,7 +31,7 @@ int x, y;
     else
         row_inc = stride/2;
 
-    /* fill 4x4 block of pixels with colour values from codebooks */
+
     for (y = 0; y < 4; y++)
     {
         if (&vptr[y*row_inc] < (unsigned short *)limit) return;

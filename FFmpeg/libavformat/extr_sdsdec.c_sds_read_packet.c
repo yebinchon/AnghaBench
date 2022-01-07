@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_9__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
-struct TYPE_8__ {int /*<<< orphan*/  pos; scalar_t__ stream_index; int /*<<< orphan*/  flags; scalar_t__ data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  data; int /*<<< orphan*/  (* read_block ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  size; } ;
-typedef  TYPE_1__ SDSContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PKT_FLAG_CORRUPT ; 
- int av_new_packet (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_rb16 (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_9__ {int * pb; TYPE_1__* priv_data; } ;
+struct TYPE_8__ {int pos; scalar_t__ stream_index; int flags; scalar_t__ data; } ;
+struct TYPE_7__ {int data; int (* read_block ) (int ,int *) ;int size; } ;
+typedef TYPE_1__ SDSContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
+
+
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_PKT_FLAG_CORRUPT ;
+ int av_new_packet (TYPE_2__*,int ) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_r8 (int *) ;
+ int avio_rb16 (int *) ;
+ int avio_read (int *,int ,int) ;
+ int avio_skip (int *,int) ;
+ int avio_tell (int *) ;
+ int stub1 (int ,int *) ;
 
 __attribute__((used)) static int sds_read_packet(AVFormatContext *ctx, AVPacket *pkt)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static int sds_read_packet(AVFormatContext *ctx, AVPacket 
 
     s->read_block(s->data, (uint32_t *)pkt->data);
 
-    avio_skip(pb, 1); // checksum
+    avio_skip(pb, 1);
     if (avio_r8(pb) != 0xF7)
         return AVERROR_INVALIDDATA;
 

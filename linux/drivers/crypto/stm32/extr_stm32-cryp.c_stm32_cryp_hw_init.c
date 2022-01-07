@@ -1,160 +1,160 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct stm32_cryp {int /*<<< orphan*/  flags; TYPE_3__* req; TYPE_2__* areq; int /*<<< orphan*/  dev; TYPE_1__* ctx; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct stm32_cryp {int flags; TYPE_3__* req; TYPE_2__* areq; int dev; TYPE_1__* ctx; } ;
 struct TYPE_6__ {scalar_t__ info; } ;
-struct TYPE_5__ {int /*<<< orphan*/  assoclen; } ;
+struct TYPE_5__ {int assoclen; } ;
 struct TYPE_4__ {int keylen; } ;
 
-/* Variables and functions */
-#define  AES_KEYSIZE_128 136 
-#define  AES_KEYSIZE_192 135 
-#define  AES_KEYSIZE_256 134 
- int /*<<< orphan*/  CRYP_CR ; 
- int /*<<< orphan*/  CRYP_IMSCR ; 
-#define  CR_AES_CBC 133 
-#define  CR_AES_CCM 132 
-#define  CR_AES_CTR 131 
- int CR_AES_ECB ; 
-#define  CR_AES_GCM 130 
- int CR_AES_KP ; 
- int CR_AES_UNKNOWN ; 
- int CR_CRYPEN ; 
- int CR_DATA8 ; 
- int CR_DEC_NOT_ENC ; 
-#define  CR_DES_CBC 129 
- int CR_FFLUSH ; 
- int CR_KEY128 ; 
- int CR_KEY192 ; 
- int CR_KEY256 ; 
- int CR_PH_HEADER ; 
- int CR_PH_INIT ; 
- int CR_PH_PAYLOAD ; 
-#define  CR_TDES_CBC 128 
- int EINVAL ; 
- int /*<<< orphan*/  FLG_CCM_PADDED_WA ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ is_decrypt (struct stm32_cryp*) ; 
- int /*<<< orphan*/  pm_runtime_get_sync (int /*<<< orphan*/ ) ; 
- int stm32_cryp_ccm_init (struct stm32_cryp*,int) ; 
- int stm32_cryp_gcm_init (struct stm32_cryp*,int) ; 
- int stm32_cryp_get_hw_mode (struct stm32_cryp*) ; 
- int /*<<< orphan*/  stm32_cryp_get_input_text_len (struct stm32_cryp*) ; 
- int /*<<< orphan*/  stm32_cryp_hw_write_iv (struct stm32_cryp*,int*) ; 
- int /*<<< orphan*/  stm32_cryp_hw_write_key (struct stm32_cryp*) ; 
- int stm32_cryp_wait_busy (struct stm32_cryp*) ; 
- int /*<<< orphan*/  stm32_cryp_write (struct stm32_cryp*,int /*<<< orphan*/ ,int) ; 
+
+
+
+
+ int CRYP_CR ;
+ int CRYP_IMSCR ;
+
+
+
+ int CR_AES_ECB ;
+
+ int CR_AES_KP ;
+ int CR_AES_UNKNOWN ;
+ int CR_CRYPEN ;
+ int CR_DATA8 ;
+ int CR_DEC_NOT_ENC ;
+
+ int CR_FFLUSH ;
+ int CR_KEY128 ;
+ int CR_KEY192 ;
+ int CR_KEY256 ;
+ int CR_PH_HEADER ;
+ int CR_PH_INIT ;
+ int CR_PH_PAYLOAD ;
+
+ int EINVAL ;
+ int FLG_CCM_PADDED_WA ;
+ int dev_err (int ,char*) ;
+ scalar_t__ is_decrypt (struct stm32_cryp*) ;
+ int pm_runtime_get_sync (int ) ;
+ int stm32_cryp_ccm_init (struct stm32_cryp*,int) ;
+ int stm32_cryp_gcm_init (struct stm32_cryp*,int) ;
+ int stm32_cryp_get_hw_mode (struct stm32_cryp*) ;
+ int stm32_cryp_get_input_text_len (struct stm32_cryp*) ;
+ int stm32_cryp_hw_write_iv (struct stm32_cryp*,int*) ;
+ int stm32_cryp_hw_write_key (struct stm32_cryp*) ;
+ int stm32_cryp_wait_busy (struct stm32_cryp*) ;
+ int stm32_cryp_write (struct stm32_cryp*,int ,int) ;
 
 __attribute__((used)) static int stm32_cryp_hw_init(struct stm32_cryp *cryp)
 {
-	int ret;
-	u32 cfg, hw_mode;
+ int ret;
+ u32 cfg, hw_mode;
 
-	pm_runtime_get_sync(cryp->dev);
+ pm_runtime_get_sync(cryp->dev);
 
-	/* Disable interrupt */
-	stm32_cryp_write(cryp, CRYP_IMSCR, 0);
 
-	/* Set key */
-	stm32_cryp_hw_write_key(cryp);
+ stm32_cryp_write(cryp, CRYP_IMSCR, 0);
 
-	/* Set configuration */
-	cfg = CR_DATA8 | CR_FFLUSH;
 
-	switch (cryp->ctx->keylen) {
-	case AES_KEYSIZE_128:
-		cfg |= CR_KEY128;
-		break;
+ stm32_cryp_hw_write_key(cryp);
 
-	case AES_KEYSIZE_192:
-		cfg |= CR_KEY192;
-		break;
 
-	default:
-	case AES_KEYSIZE_256:
-		cfg |= CR_KEY256;
-		break;
-	}
+ cfg = CR_DATA8 | CR_FFLUSH;
 
-	hw_mode = stm32_cryp_get_hw_mode(cryp);
-	if (hw_mode == CR_AES_UNKNOWN)
-		return -EINVAL;
+ switch (cryp->ctx->keylen) {
+ case 136:
+  cfg |= CR_KEY128;
+  break;
 
-	/* AES ECB/CBC decrypt: run key preparation first */
-	if (is_decrypt(cryp) &&
-	    ((hw_mode == CR_AES_ECB) || (hw_mode == CR_AES_CBC))) {
-		stm32_cryp_write(cryp, CRYP_CR, cfg | CR_AES_KP | CR_CRYPEN);
+ case 135:
+  cfg |= CR_KEY192;
+  break;
 
-		/* Wait for end of processing */
-		ret = stm32_cryp_wait_busy(cryp);
-		if (ret) {
-			dev_err(cryp->dev, "Timeout (key preparation)\n");
-			return ret;
-		}
-	}
+ default:
+ case 134:
+  cfg |= CR_KEY256;
+  break;
+ }
 
-	cfg |= hw_mode;
+ hw_mode = stm32_cryp_get_hw_mode(cryp);
+ if (hw_mode == CR_AES_UNKNOWN)
+  return -EINVAL;
 
-	if (is_decrypt(cryp))
-		cfg |= CR_DEC_NOT_ENC;
 
-	/* Apply config and flush (valid when CRYPEN = 0) */
-	stm32_cryp_write(cryp, CRYP_CR, cfg);
+ if (is_decrypt(cryp) &&
+     ((hw_mode == CR_AES_ECB) || (hw_mode == 133))) {
+  stm32_cryp_write(cryp, CRYP_CR, cfg | CR_AES_KP | CR_CRYPEN);
 
-	switch (hw_mode) {
-	case CR_AES_GCM:
-	case CR_AES_CCM:
-		/* Phase 1 : init */
-		if (hw_mode == CR_AES_CCM)
-			ret = stm32_cryp_ccm_init(cryp, cfg);
-		else
-			ret = stm32_cryp_gcm_init(cryp, cfg);
 
-		if (ret)
-			return ret;
+  ret = stm32_cryp_wait_busy(cryp);
+  if (ret) {
+   dev_err(cryp->dev, "Timeout (key preparation)\n");
+   return ret;
+  }
+ }
 
-		/* Phase 2 : header (authenticated data) */
-		if (cryp->areq->assoclen) {
-			cfg |= CR_PH_HEADER;
-		} else if (stm32_cryp_get_input_text_len(cryp)) {
-			cfg |= CR_PH_PAYLOAD;
-			stm32_cryp_write(cryp, CRYP_CR, cfg);
-		} else {
-			cfg |= CR_PH_INIT;
-		}
+ cfg |= hw_mode;
 
-		break;
+ if (is_decrypt(cryp))
+  cfg |= CR_DEC_NOT_ENC;
 
-	case CR_DES_CBC:
-	case CR_TDES_CBC:
-	case CR_AES_CBC:
-	case CR_AES_CTR:
-		stm32_cryp_hw_write_iv(cryp, (u32 *)cryp->req->info);
-		break;
 
-	default:
-		break;
-	}
+ stm32_cryp_write(cryp, CRYP_CR, cfg);
 
-	/* Enable now */
-	cfg |= CR_CRYPEN;
+ switch (hw_mode) {
+ case 130:
+ case 132:
 
-	stm32_cryp_write(cryp, CRYP_CR, cfg);
+  if (hw_mode == 132)
+   ret = stm32_cryp_ccm_init(cryp, cfg);
+  else
+   ret = stm32_cryp_gcm_init(cryp, cfg);
 
-	cryp->flags &= ~FLG_CCM_PADDED_WA;
+  if (ret)
+   return ret;
 
-	return 0;
+
+  if (cryp->areq->assoclen) {
+   cfg |= CR_PH_HEADER;
+  } else if (stm32_cryp_get_input_text_len(cryp)) {
+   cfg |= CR_PH_PAYLOAD;
+   stm32_cryp_write(cryp, CRYP_CR, cfg);
+  } else {
+   cfg |= CR_PH_INIT;
+  }
+
+  break;
+
+ case 129:
+ case 128:
+ case 133:
+ case 131:
+  stm32_cryp_hw_write_iv(cryp, (u32 *)cryp->req->info);
+  break;
+
+ default:
+  break;
+ }
+
+
+ cfg |= CR_CRYPEN;
+
+ stm32_cryp_write(cryp, CRYP_CR, cfg);
+
+ cryp->flags &= ~FLG_CCM_PADDED_WA;
+
+ return 0;
 }

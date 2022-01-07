@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  char* DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ *) ; 
- char* ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- char* RegCopyTreeW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,char**) ; 
- int /*<<< orphan*/  RegFlushKey (int /*<<< orphan*/ *) ; 
- char* RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- char* ScmCopyTree (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,char*,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * HKEY ;
+typedef char* DWORD ;
+
+
+ int DPRINT (char*,int *) ;
+ char* ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int KEY_WRITE ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int *) ;
+ char* RegCopyTreeW (int *,int *,int *) ;
+ char* RegCreateKeyExW (int ,int *,int ,int *,int ,int ,int *,int **,char**) ;
+ int RegFlushKey (int *) ;
+ char* RegOpenKeyExW (int ,int *,int ,int ,int **) ;
+ char* ScmCopyTree (int *,int *) ;
+ int swprintf (int *,char*,char*) ;
 
 __attribute__((used)) static
 DWORD
@@ -37,20 +37,20 @@ ScmCopyControlSet(
 {
     WCHAR szSourceControlSetName[32];
     WCHAR szDestinationControlSetName[32];
-    HKEY hSourceControlSetKey = NULL;
-    HKEY hDestinationControlSetKey = NULL;
+    HKEY hSourceControlSetKey = ((void*)0);
+    HKEY hDestinationControlSetKey = ((void*)0);
     DWORD dwDisposition;
     DWORD dwError;
 
-    /* Create the source control set name */
+
     swprintf(szSourceControlSetName, L"SYSTEM\\ControlSet%03lu", dwSourceControlSet);
     DPRINT("Source control set: %S\n", szSourceControlSetName);
 
-    /* Create the destination control set name */
+
     swprintf(szDestinationControlSetName, L"SYSTEM\\ControlSet%03lu", dwDestinationControlSet);
     DPRINT("Destination control set: %S\n", szDestinationControlSetName);
 
-    /* Open the source control set key */
+
     dwError = RegOpenKeyExW(HKEY_LOCAL_MACHINE,
                             szSourceControlSetName,
                             0,
@@ -59,38 +59,38 @@ ScmCopyControlSet(
     if (dwError != ERROR_SUCCESS)
         goto done;
 
-    /* Create the destination control set key */
+
     dwError = RegCreateKeyExW(HKEY_LOCAL_MACHINE,
                               szDestinationControlSetName,
                               0,
-                              NULL,
+                              ((void*)0),
                               REG_OPTION_NON_VOLATILE,
                               KEY_WRITE,
-                              NULL,
+                              ((void*)0),
                               &hDestinationControlSetKey,
                               &dwDisposition);
     if (dwError != ERROR_SUCCESS)
         goto done;
 
-    /* Copy the source control set to the destination control set */
-#if (_WIN32_WINNT >= 0x0600)
-    dwError = RegCopyTreeW(hSourceControlSetKey,
-                           NULL,
-                           hDestinationControlSetKey);
-#else
+
+
+
+
+
+
     dwError = ScmCopyTree(hSourceControlSetKey,
                           hDestinationControlSetKey);
-#endif
+
     if (dwError != ERROR_SUCCESS)
         goto done;
 
     RegFlushKey(hDestinationControlSetKey);
 
 done:
-    if (hDestinationControlSetKey != NULL)
+    if (hDestinationControlSetKey != ((void*)0))
         RegCloseKey(hDestinationControlSetKey);
 
-    if (hSourceControlSetKey != NULL)
+    if (hSourceControlSetKey != ((void*)0))
         RegCloseKey(hSourceControlSetKey);
 
     return dwError;

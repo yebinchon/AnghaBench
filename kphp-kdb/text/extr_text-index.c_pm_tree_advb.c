@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct pm_tree_builder {int* next; size_t choice; long long* freq; } ;
 struct TYPE_4__ {int left; int right; } ;
-typedef  TYPE_1__ pm_cell_t ;
+typedef TYPE_1__ pm_cell_t ;
 
-/* Variables and functions */
- void* FREQ_INFTY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  pm_tree_advance (TYPE_1__*,struct pm_tree_builder*) ; 
+
+ void* FREQ_INFTY ;
+ int assert (int) ;
+ int pm_tree_advance (TYPE_1__*,struct pm_tree_builder*) ;
 
 __attribute__((used)) static void pm_tree_advb (pm_cell_t *A, struct pm_tree_builder *B) {
   ++B;
@@ -45,7 +45,7 @@ __attribute__((used)) static void pm_tree_advb (pm_cell_t *A, struct pm_tree_bui
   int n = A[0].left;
   if (n) {
     A[0].left = A[n].left;
-  } else { /* no cells in free list */
+  } else {
     n = --A[0].right;
     assert (n && "Out of package-merge cell memory" != 0);
   }

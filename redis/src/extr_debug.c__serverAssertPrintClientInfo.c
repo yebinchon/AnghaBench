@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  conninfo ;
-struct TYPE_4__ {int argc; TYPE_2__** argv; int /*<<< orphan*/  conn; scalar_t__ flags; } ;
-typedef  TYPE_1__ client ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_5__ {int type; int encoding; int /*<<< orphan*/  refcount; scalar_t__ ptr; } ;
 
-/* Variables and functions */
- int CONN_INFO_LEN ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int OBJ_STRING ; 
- int /*<<< orphan*/  bugReportStart () ; 
- int /*<<< orphan*/  connGetInfo (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ sdsEncodedObject (TYPE_2__*) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int conninfo ;
+struct TYPE_4__ {int argc; TYPE_2__** argv; int conn; scalar_t__ flags; } ;
+typedef TYPE_1__ client ;
+typedef int buf ;
+struct TYPE_5__ {int type; int encoding; int refcount; scalar_t__ ptr; } ;
+
+
+ int CONN_INFO_LEN ;
+ int LL_WARNING ;
+ int OBJ_STRING ;
+ int bugReportStart () ;
+ int connGetInfo (int ,char*,int) ;
+ scalar_t__ sdsEncodedObject (TYPE_2__*) ;
+ int serverLog (int ,char*,...) ;
+ int snprintf (char*,int,char*,int,int) ;
 
 void _serverAssertPrintClientInfo(const client *c) {
     int j;

@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct value {int dummy; } ;
 struct type {int dummy; } ;
-typedef  enum type_code { ____Placeholder_type_code } type_code ;
-typedef  int /*<<< orphan*/  LONGEST ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef enum type_code { ____Placeholder_type_code } type_code ;
+typedef int LONGEST ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int TYPE_CODE (struct type*) ; 
-#define  TYPE_CODE_BOOL 135 
-#define  TYPE_CODE_CHAR 134 
-#define  TYPE_CODE_ENUM 133 
-#define  TYPE_CODE_INT 132 
-#define  TYPE_CODE_PTR 131 
-#define  TYPE_CODE_RANGE 130 
-#define  TYPE_CODE_REF 129 
-#define  TYPE_CODE_TYPEDEF 128 
- int TYPE_LENGTH (struct type*) ; 
- int /*<<< orphan*/  VALUE_CONTENTS_RAW (struct value*) ; 
- struct value* allocate_value (struct type*) ; 
- struct type* check_typedef (struct type*) ; 
- int /*<<< orphan*/  error (char*,int) ; 
- int /*<<< orphan*/  store_signed_integer (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  store_typed_address (int /*<<< orphan*/ ,struct type*,int /*<<< orphan*/ ) ; 
+
+ int TYPE_CODE (struct type*) ;
+ int TYPE_LENGTH (struct type*) ;
+ int VALUE_CONTENTS_RAW (struct value*) ;
+ struct value* allocate_value (struct type*) ;
+ struct type* check_typedef (struct type*) ;
+ int error (char*,int) ;
+ int store_signed_integer (int ,int,int ) ;
+ int store_typed_address (int ,struct type*,int ) ;
 
 struct value *
 value_from_longest (struct type *type, LONGEST num)
@@ -46,19 +38,19 @@ retry:
 
   switch (code)
     {
-    case TYPE_CODE_TYPEDEF:
+    case 128:
       type = check_typedef (type);
       goto retry;
-    case TYPE_CODE_INT:
-    case TYPE_CODE_CHAR:
-    case TYPE_CODE_ENUM:
-    case TYPE_CODE_BOOL:
-    case TYPE_CODE_RANGE:
+    case 132:
+    case 134:
+    case 133:
+    case 135:
+    case 130:
       store_signed_integer (VALUE_CONTENTS_RAW (val), len, num);
       break;
 
-    case TYPE_CODE_REF:
-    case TYPE_CODE_PTR:
+    case 129:
+    case 131:
       store_typed_address (VALUE_CONTENTS_RAW (val), type, (CORE_ADDR) num);
       break;
 

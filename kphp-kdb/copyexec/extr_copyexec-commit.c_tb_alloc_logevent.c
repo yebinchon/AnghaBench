@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct transaction_buffer {scalar_t__ p; scalar_t__ size; void* buff; } ;
-struct lev_generic {int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  lev_type_t ;
+struct lev_generic {int type; } ;
+typedef int lev_type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,long long) ; 
- int /*<<< orphan*/  vkprintf (int,char*,scalar_t__,scalar_t__) ; 
+
+ int exit (int) ;
+ int kprintf (char*,scalar_t__) ;
+ int memset (void*,int ,long long) ;
+ int vkprintf (int,char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void *tb_alloc_logevent (struct transaction_buffer *B, lev_type_t type, long long size) {
   size = (size + 3) & -4;

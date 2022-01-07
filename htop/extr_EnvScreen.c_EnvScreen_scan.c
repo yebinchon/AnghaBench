@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  lines; TYPE_1__* process; TYPE_2__* display; } ;
-struct TYPE_10__ {int /*<<< orphan*/  items; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pid; } ;
-typedef  TYPE_2__ Panel ;
-typedef  TYPE_3__ InfoScreen ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRT_dropPrivileges () ; 
- int /*<<< orphan*/  CRT_restorePrivileges () ; 
- int /*<<< orphan*/  InfoScreen_addLine (TYPE_3__*,char*) ; 
- int MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Panel_getSelectedIndex (TYPE_2__*) ; 
- int /*<<< orphan*/  Panel_prune (TYPE_2__*) ; 
- int /*<<< orphan*/  Panel_setSelected (TYPE_2__*,int) ; 
- char* Platform_getProcessEnv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vector_insertionSort (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strrchr (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int lines; TYPE_1__* process; TYPE_2__* display; } ;
+struct TYPE_10__ {int items; } ;
+struct TYPE_9__ {int pid; } ;
+typedef TYPE_2__ Panel ;
+typedef TYPE_3__ InfoScreen ;
+
+
+ int CRT_dropPrivileges () ;
+ int CRT_restorePrivileges () ;
+ int InfoScreen_addLine (TYPE_3__*,char*) ;
+ int MAX (int ,int ) ;
+ int Panel_getSelectedIndex (TYPE_2__*) ;
+ int Panel_prune (TYPE_2__*) ;
+ int Panel_setSelected (TYPE_2__*,int) ;
+ char* Platform_getProcessEnv (int ) ;
+ int Vector_insertionSort (int ) ;
+ int free (char*) ;
+ char* strrchr (char*,int ) ;
 
 void EnvScreen_scan(InfoScreen* this) {
    Panel* panel = this->display;

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ t_Handle ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct TYPE_7__ {int flags; scalar_t__ bpid; int spMaxBufs; int /*<<< orphan*/  numOfBuffers; int /*<<< orphan*/  h_BmPortal; struct TYPE_7__* p_BmPoolDriverParams; struct bm_buffer* sp; int /*<<< orphan*/  depletionThresholds; int /*<<< orphan*/  h_Bm; scalar_t__ useDepletion; int /*<<< orphan*/  shadowMode; scalar_t__ useStockpile; scalar_t__ dynamicBpid; } ;
-typedef  TYPE_1__ t_BmPool ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ t_Handle ;
+typedef int t_Error ;
+struct TYPE_7__ {int flags; scalar_t__ bpid; int spMaxBufs; int numOfBuffers; int h_BmPortal; struct TYPE_7__* p_BmPoolDriverParams; struct bm_buffer* sp; int depletionThresholds; int h_Bm; scalar_t__ useDepletion; int shadowMode; scalar_t__ useStockpile; scalar_t__ dynamicBpid; } ;
+typedef TYPE_1__ t_BmPool ;
 struct bm_buffer {int dummy; } ;
 
-/* Variables and functions */
- int BMAN_POOL_FLAG_DEPLETION ; 
- int BMAN_POOL_FLAG_DYNAMIC_BPID ; 
- int BMAN_POOL_FLAG_STOCKPILE ; 
- int /*<<< orphan*/  BM_POOL_FillBufs (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BM_POOL_Free (TYPE_1__*) ; 
- scalar_t__ BmBpidGet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ BmSetPoolThresholds (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRITICAL ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  E_NO_MEMORY ; 
- int /*<<< orphan*/  E_OK ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ ILLEGAL_BASE ; 
- int /*<<< orphan*/  MAJOR ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XX_Free (TYPE_1__*) ; 
- scalar_t__ XX_Malloc (int) ; 
- int /*<<< orphan*/  depletion_link (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (struct bm_buffer*,int /*<<< orphan*/ ,int) ; 
+
+ int BMAN_POOL_FLAG_DEPLETION ;
+ int BMAN_POOL_FLAG_DYNAMIC_BPID ;
+ int BMAN_POOL_FLAG_STOCKPILE ;
+ int BM_POOL_FillBufs (TYPE_1__*,int ,int ) ;
+ int BM_POOL_Free (TYPE_1__*) ;
+ scalar_t__ BmBpidGet (int ,int ,scalar_t__) ;
+ scalar_t__ BmSetPoolThresholds (int ,scalar_t__,int ) ;
+ int CRITICAL ;
+ int E_INVALID_HANDLE ;
+ int E_INVALID_STATE ;
+ int E_NO_MEMORY ;
+ int E_OK ;
+ int FALSE ;
+ scalar_t__ ILLEGAL_BASE ;
+ int MAJOR ;
+ char* NO_MSG ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int ) ;
+ int TRUE ;
+ int XX_Free (TYPE_1__*) ;
+ scalar_t__ XX_Malloc (int) ;
+ int depletion_link (TYPE_1__*) ;
+ int memset (struct bm_buffer*,int ,int) ;
 
 t_Error BM_POOL_Init(t_Handle h_BmPool)
 {
-    t_BmPool        *p_BmPool = (t_BmPool *)h_BmPool;
-    t_Error         err;
+    t_BmPool *p_BmPool = (t_BmPool *)h_BmPool;
+    t_Error err;
 
     SANITY_CHECK_RETURN_ERROR(p_BmPool, E_INVALID_HANDLE);
     SANITY_CHECK_RETURN_ERROR(p_BmPool->p_BmPoolDriverParams, E_INVALID_HANDLE);
@@ -96,11 +96,11 @@ t_Error BM_POOL_Init(t_Handle h_BmPool)
     }
 
     XX_Free(p_BmPool->p_BmPoolDriverParams);
-    p_BmPool->p_BmPoolDriverParams = NULL;
+    p_BmPool->p_BmPoolDriverParams = ((void*)0);
 
-    /*******************/
-    /* Create buffers  */
-    /*******************/
+
+
+
     if ((err = BM_POOL_FillBufs (p_BmPool, p_BmPool->h_BmPortal, p_BmPool->numOfBuffers)) != E_OK)
     {
         BM_POOL_Free(p_BmPool);

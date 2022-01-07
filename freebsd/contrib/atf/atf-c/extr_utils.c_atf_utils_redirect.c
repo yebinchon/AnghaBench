@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int O_CREAT ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int const STDERR_FILENO ; 
- int const STDOUT_FILENO ; 
- int /*<<< orphan*/  close (int const) ; 
- int dup2 (int const,int const) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int open (char const*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+ int EXIT_FAILURE ;
+ int O_CREAT ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int const STDERR_FILENO ;
+ int const STDOUT_FILENO ;
+ int close (int const) ;
+ int dup2 (int const,int const) ;
+ int err (int ,char*,...) ;
+ int fflush (int ) ;
+ int open (char const*,int,int) ;
+ int stderr ;
+ int stdout ;
 
 void
 atf_utils_redirect(const int target_fd, const char *name)

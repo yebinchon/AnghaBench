@@ -1,42 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum mlx4_resource { ____Placeholder_mlx4_resource } mlx4_resource ;
 
-/* Variables and functions */
-#define  RES_COUNTER 137 
-#define  RES_CQ 136 
-#define  RES_EQ 135 
-#define  RES_FS_RULE 134 
-#define  RES_MAC 133 
-#define  RES_MPT 132 
-#define  RES_MTT 131 
-#define  RES_QP 130 
-#define  RES_SRQ 129 
-#define  RES_XRCD 128 
 
+
+
+typedef enum mlx4_resource { ____Placeholder_mlx4_resource } mlx4_resource ;
 __attribute__((used)) static const char *ResourceType(enum mlx4_resource rt)
 {
-	switch (rt) {
-	case RES_QP: return "RES_QP";
-	case RES_CQ: return "RES_CQ";
-	case RES_SRQ: return "RES_SRQ";
-	case RES_MPT: return "RES_MPT";
-	case RES_MTT: return "RES_MTT";
-	case RES_MAC: return  "RES_MAC";
-	case RES_EQ: return "RES_EQ";
-	case RES_COUNTER: return "RES_COUNTER";
-	case RES_FS_RULE: return "RES_FS_RULE";
-	case RES_XRCD: return "RES_XRCD";
-	default: return "Unknown resource type !!!";
-	};
+ switch (rt) {
+ case 130: return "RES_QP";
+ case 136: return "RES_CQ";
+ case 129: return "RES_SRQ";
+ case 132: return "RES_MPT";
+ case 131: return "RES_MTT";
+ case 133: return "RES_MAC";
+ case 135: return "RES_EQ";
+ case 137: return "RES_COUNTER";
+ case 134: return "RES_FS_RULE";
+ case 128: return "RES_XRCD";
+ default: return "Unknown resource type !!!";
+ };
 }

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int XtRemoveInput (scalar_t__) ;
+ int close (int) ;
+ scalar_t__ inputHandler ;
+ int sd ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  XtRemoveInput (scalar_t__) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ inputHandler ; 
- int sd ; 
-
-void	workshop_disconnect()
+void workshop_disconnect()
 {
-	/* Probably need to send some message here */
 
-	/*
-	 * socket closed on other end
-	 */
-	XtRemoveInput(inputHandler);
-	close(sd);
-	inputHandler = 0;
-	sd = -1;
+
+
+
+
+ XtRemoveInput(inputHandler);
+ close(sd);
+ inputHandler = 0;
+ sd = -1;
 
 }

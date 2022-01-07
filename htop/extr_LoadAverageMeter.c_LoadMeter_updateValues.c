@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__* values; scalar_t__ total; } ;
-typedef  TYPE_1__ Meter ;
+typedef TYPE_1__ Meter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Platform_getLoadAverage (scalar_t__*,double*,double*) ; 
- int /*<<< orphan*/  xSnprintf (char*,int,char*,scalar_t__) ; 
+
+ int Platform_getLoadAverage (scalar_t__*,double*,double*) ;
+ int xSnprintf (char*,int,char*,scalar_t__) ;
 
 __attribute__((used)) static void LoadMeter_updateValues(Meter* this, char* buffer, int size) {
    double five, fifteen;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-typedef  int /*<<< orphan*/  i64 ;
-typedef  int /*<<< orphan*/  FSE_dtable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const FSE_peek_symbol (int /*<<< orphan*/  const* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FSE_update_state (int /*<<< orphan*/  const* const,int /*<<< orphan*/ * const,int /*<<< orphan*/  const* const,int /*<<< orphan*/ * const) ; 
+
+
+
+typedef int const u8 ;
+typedef int u16 ;
+typedef int i64 ;
+typedef int FSE_dtable ;
+
+
+ int const FSE_peek_symbol (int const* const,int ) ;
+ int FSE_update_state (int const* const,int * const,int const* const,int * const) ;
 
 __attribute__((used)) static inline u8 FSE_decode_symbol(const FSE_dtable *const dtable,
                                    u16 *const state, const u8 *const src,

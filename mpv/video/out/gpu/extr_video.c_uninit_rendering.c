@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gl_video {int num_hook_textures; int /*<<< orphan*/  sc; int /*<<< orphan*/ * hook_textures; int /*<<< orphan*/  ra; TYPE_1__* surfaces; int /*<<< orphan*/ * error_diffusion_tex; int /*<<< orphan*/  output_tex; int /*<<< orphan*/  screen_tex; int /*<<< orphan*/  blend_subs_tex; int /*<<< orphan*/  indirect_tex; int /*<<< orphan*/ * integer_tex; int /*<<< orphan*/ * scale_tex; int /*<<< orphan*/ * merge_tex; int /*<<< orphan*/  dither_texture; int /*<<< orphan*/ * scaler; } ;
-struct TYPE_2__ {int /*<<< orphan*/  tex; } ;
 
-/* Variables and functions */
- int SCALER_COUNT ; 
- int SURFACES_MAX ; 
- int /*<<< orphan*/  gl_sc_reset_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_video_reset_hooks (struct gl_video*) ; 
- int /*<<< orphan*/  gl_video_reset_surfaces (struct gl_video*) ; 
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uninit_scaler (struct gl_video*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gl_video {int num_hook_textures; int sc; int * hook_textures; int ra; TYPE_1__* surfaces; int * error_diffusion_tex; int output_tex; int screen_tex; int blend_subs_tex; int indirect_tex; int * integer_tex; int * scale_tex; int * merge_tex; int dither_texture; int * scaler; } ;
+struct TYPE_2__ {int tex; } ;
+
+
+ int SCALER_COUNT ;
+ int SURFACES_MAX ;
+ int gl_sc_reset_error (int ) ;
+ int gl_video_reset_hooks (struct gl_video*) ;
+ int gl_video_reset_surfaces (struct gl_video*) ;
+ int ra_tex_free (int ,int *) ;
+ int uninit_scaler (struct gl_video*,int *) ;
 
 __attribute__((used)) static void uninit_rendering(struct gl_video *p)
 {

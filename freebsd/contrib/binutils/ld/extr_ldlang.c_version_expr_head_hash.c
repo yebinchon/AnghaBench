@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfd_elf_version_expr {int /*<<< orphan*/  symbol; } ;
-typedef  int /*<<< orphan*/  hashval_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  htab_hash_string (int /*<<< orphan*/ ) ; 
+
+
+
+struct bfd_elf_version_expr {int symbol; } ;
+typedef int hashval_t ;
+
+
+ int htab_hash_string (int ) ;
 
 __attribute__((used)) static hashval_t
 version_expr_head_hash (const void *p)

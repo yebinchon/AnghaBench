@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_NOPROGRESS ; 
- int /*<<< orphan*/  CURLOPT_NOSIGNAL ; 
- int /*<<< orphan*/  CURLOPT_PROGRESSDATA ; 
- int /*<<< orphan*/  CURLOPT_PROGRESSFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_TIMEOUT ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- long progressKiller ; 
+
+
+
+typedef int CURL ;
+
+
+ int CURLOPT_NOPROGRESS ;
+ int CURLOPT_NOSIGNAL ;
+ int CURLOPT_PROGRESSDATA ;
+ int CURLOPT_PROGRESSFUNCTION ;
+ int CURLOPT_TIMEOUT ;
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,...) ;
+ int global_init (int ) ;
+ long progressKiller ;
 
 int test(char *URL)
 {
@@ -41,14 +41,14 @@ int test(char *URL)
   easy_setopt(curl, CURLOPT_TIMEOUT, (long)7);
   easy_setopt(curl, CURLOPT_NOSIGNAL, (long)1);
   easy_setopt(curl, CURLOPT_PROGRESSFUNCTION, progressKiller);
-  easy_setopt(curl, CURLOPT_PROGRESSDATA, NULL);
+  easy_setopt(curl, CURLOPT_PROGRESSDATA, ((void*)0));
   easy_setopt(curl, CURLOPT_NOPROGRESS, (long)0);
 
   res = curl_easy_perform(curl);
 
 test_cleanup:
 
-  /* undocumented cleanup sequence - type UA */
+
 
   curl_easy_cleanup(curl);
   curl_global_cleanup();

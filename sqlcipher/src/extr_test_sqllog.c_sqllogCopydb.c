@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct SLConn {int /*<<< orphan*/  fd; int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  sqlite3_backup ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_2__ {int bRec; int /*<<< orphan*/  iClock; int /*<<< orphan*/  zIdx; int /*<<< orphan*/  zPrefix; int /*<<< orphan*/  iNextDb; scalar_t__ bReuse; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int SQLLOG_NAMESZ ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int sqlite3_backup_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_backup_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sqlite3_backup_step (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- int sqlite3_errcode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_exec (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- int /*<<< orphan*/  sqlite3_log (int,char*) ; 
- char* sqlite3_mprintf (char*,...) ; 
- int sqlite3_open (char*,int /*<<< orphan*/ **) ; 
- int sqllogFindAttached (int /*<<< orphan*/ ,char const*,char*,char*) ; 
- char* sqllogFindFile (char*) ; 
- TYPE_1__ sqllogglobal ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct SLConn {int fd; int db; } ;
+typedef int sqlite3_backup ;
+typedef int sqlite3 ;
+struct TYPE_2__ {int bRec; int iClock; int zIdx; int zPrefix; int iNextDb; scalar_t__ bReuse; } ;
+typedef int FILE ;
+
+
+ int SQLITE_OK ;
+ int SQLLOG_NAMESZ ;
+ int assert (int) ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fprintf (int ,char*,...) ;
+ int sqlite3_backup_finish (int *) ;
+ int * sqlite3_backup_init (int *,char*,int ,char*) ;
+ int sqlite3_backup_step (int *,int) ;
+ int sqlite3_close (int *) ;
+ int sqlite3_errcode (int *) ;
+ int sqlite3_exec (int *,char*,int ,int ,int ) ;
+ int sqlite3_free (char*) ;
+ int sqlite3_log (int,char*) ;
+ char* sqlite3_mprintf (char*,...) ;
+ int sqlite3_open (char*,int **) ;
+ int sqllogFindAttached (int ,char const*,char*,char*) ;
+ char* sqllogFindFile (char*) ;
+ TYPE_1__ sqllogglobal ;
 
 __attribute__((used)) static void sqllogCopydb(struct SLConn *p, const char *zSearch, int bLog){
-  char zName[SQLLOG_NAMESZ];      /* Attached database name */
-  char zFile[SQLLOG_NAMESZ];      /* Database file name */
+  char zName[SQLLOG_NAMESZ];
+  char zFile[SQLLOG_NAMESZ];
   char *zFree;
   char *zInit = 0;
   int rc;
@@ -61,11 +61,11 @@ __attribute__((used)) static void sqllogCopydb(struct SLConn *p, const char *zSe
       sqlite3 *copy = 0;
       int iDb;
 
-      /* Generate a file-name to use for the copy of this database */
+
       iDb = sqllogglobal.iNextDb++;
       zInit = sqlite3_mprintf("%s_%02d.db", sqllogglobal.zPrefix, iDb);
 
-      /* Create the backup */
+
       assert( sqllogglobal.bRec==0 );
       sqllogglobal.bRec = 1;
       rc = sqlite3_open(zInit, &copy);
@@ -84,7 +84,7 @@ __attribute__((used)) static void sqllogCopydb(struct SLConn *p, const char *zSe
       sqllogglobal.bRec = 0;
 
       if( rc==SQLITE_OK ){
-        /* Write an entry into the database index file */
+
         FILE *fd = fopen(sqllogglobal.zIdx, "a");
         if( fd ){
           fprintf(fd, "%d %s\n", iDb, zFile);
@@ -97,7 +97,7 @@ __attribute__((used)) static void sqllogCopydb(struct SLConn *p, const char *zSe
   }
 
   if( bLog ){
-    zFree = sqlite3_mprintf("ATTACH '%q' AS '%q'; -- clock=%d\n", 
+    zFree = sqlite3_mprintf("ATTACH '%q' AS '%q'; -- clock=%d\n",
         zInit, zName, sqllogglobal.iClock++
     );
   }else{

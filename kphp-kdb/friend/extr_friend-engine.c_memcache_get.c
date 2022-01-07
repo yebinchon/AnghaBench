@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeCnt ; 
- int MAX_RECORD_WORDS ; 
- int /*<<< orphan*/ * NewAllocations ; 
- int /*<<< orphan*/  SplitBlocks ; 
- int /*<<< orphan*/  UsedCnt ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  exec_get_check_privacy (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_common_friends (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_common_friends_num (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_friends (struct connection*,char const*,int,int) ; 
- int /*<<< orphan*/  exec_get_one_friend (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_one_request (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_privacy (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_recent_friends (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  exec_get_requests (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
- int /*<<< orphan*/  friend_prepare_stats (struct connection*) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  return_one_key_list (struct connection*,char const*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ reverse_friends_mode ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int) ; 
- int start_write_binlog () ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int stop_write_binlog () ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int verbosity ; 
+
+ int FreeCnt ;
+ int MAX_RECORD_WORDS ;
+ int * NewAllocations ;
+ int SplitBlocks ;
+ int UsedCnt ;
+ int binlog_disabled ;
+ int exec_get_check_privacy (struct connection*,char const*,int) ;
+ int exec_get_common_friends (struct connection*,char const*,int) ;
+ int exec_get_common_friends_num (struct connection*,char const*,int) ;
+ int exec_get_friends (struct connection*,char const*,int,int) ;
+ int exec_get_one_friend (struct connection*,char const*,int) ;
+ int exec_get_one_request (struct connection*,char const*,int) ;
+ int exec_get_privacy (struct connection*,char const*,int) ;
+ int exec_get_recent_friends (struct connection*,char const*,int) ;
+ int exec_get_requests (struct connection*,char const*,int) ;
+ int fprintf (int ,char*,char const*) ;
+ int free_tmp_buffers (struct connection*) ;
+ int friend_prepare_stats (struct connection*) ;
+ int return_one_key (struct connection*,char const*,int ,int ) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int ,int ,int) ;
+ scalar_t__ reverse_friends_mode ;
+ int sprintf (int ,char*,int) ;
+ int start_write_binlog () ;
+ int stats_buff ;
+ int stderr ;
+ int stop_write_binlog () ;
+ int strncmp (char const*,char*,int) ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   if (verbosity > 1) {

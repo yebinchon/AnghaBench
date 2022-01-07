@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char HEX (int) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int FILE ;
+
+
+ char HEX (int) ;
+ int fputc (char,int *) ;
+ int fputs (char*,int *) ;
 
 void xdump(FILE * file, char *msg, void *p, int size)
 {
-#define HEX(x)  ((x) < 10 ? '0' + (x) : 'a' + ((x) -10))
-	uint8_t *cp = p;
-	int i;
 
-	if (msg)
-		fputs(msg, file);
+ uint8_t *cp = p;
+ int i;
 
-	for (i = 0; i < size;) {
-		fputc(HEX(*cp >> 4), file);
-		fputc(HEX(*cp & 0xf), file);
-		if (++i >= size)
-			break;
-		fputc(HEX(cp[1] >> 4), file);
-		fputc(HEX(cp[1] & 0xf), file);
-		if ((++i) % 16)
-			fputc(' ', file);
-		else
-			fputc('\n', file);
-		cp += 2;
-	}
-	if (i % 16)
-		fputc('\n', file);
+ if (msg)
+  fputs(msg, file);
+
+ for (i = 0; i < size;) {
+  fputc(((*cp >> 4) < 10 ? '0' + (*cp >> 4) : 'a' + ((*cp >> 4) -10)), file);
+  fputc(((*cp & 0xf) < 10 ? '0' + (*cp & 0xf) : 'a' + ((*cp & 0xf) -10)), file);
+  if (++i >= size)
+   break;
+  fputc(((cp[1] >> 4) < 10 ? '0' + (cp[1] >> 4) : 'a' + ((cp[1] >> 4) -10)), file);
+  fputc(((cp[1] & 0xf) < 10 ? '0' + (cp[1] & 0xf) : 'a' + ((cp[1] & 0xf) -10)), file);
+  if ((++i) % 16)
+   fputc(' ', file);
+  else
+   fputc('\n', file);
+  cp += 2;
+ }
+ if (i % 16)
+  fputc('\n', file);
 }

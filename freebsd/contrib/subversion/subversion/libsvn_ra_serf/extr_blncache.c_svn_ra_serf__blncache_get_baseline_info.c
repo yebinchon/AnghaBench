@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-struct TYPE_5__ {int /*<<< orphan*/  baseline_info; } ;
-typedef  TYPE_1__ svn_ra_serf__blncache_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  bc_url; } ;
-typedef  TYPE_2__ baseline_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+struct TYPE_5__ {int baseline_info; } ;
+typedef TYPE_1__ svn_ra_serf__blncache_t ;
+typedef int svn_error_t ;
+struct TYPE_6__ {int revision; int bc_url; } ;
+typedef TYPE_2__ baseline_info_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ char* apr_pstrdup (int *,int ) ;
+ TYPE_2__* svn_hash_gets (int ,char const*) ;
 
 svn_error_t *
 svn_ra_serf__blncache_get_baseline_info(const char **bc_url_p,
@@ -41,7 +41,7 @@ svn_ra_serf__blncache_get_baseline_info(const char **bc_url_p,
     }
   else
     {
-      *bc_url_p = NULL;
+      *bc_url_p = ((void*)0);
       *revision_p = SVN_INVALID_REVNUM;
     }
 

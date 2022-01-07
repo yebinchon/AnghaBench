@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hash ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int EVP_MAX_MD_SIZE ; 
- int IVLEN ; 
- int KEYLEN ; 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ; 
- int /*<<< orphan*/  ssl_handshake_hash (int /*<<< orphan*/ *,unsigned char*,int,size_t*) ; 
- int /*<<< orphan*/ * ssl_handshake_md (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tls13_derive_iv (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  tls13_derive_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  tls13_hkdf_expand (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned char*,unsigned char const*,size_t,unsigned char*,size_t,unsigned char*,size_t,int) ; 
+
+
+
+typedef int hash ;
+typedef int SSL ;
+typedef int EVP_MD ;
+
+
+ int EVP_MAX_MD_SIZE ;
+ int IVLEN ;
+ int KEYLEN ;
+ int TEST_error (char*) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ;
+ int ssl_handshake_hash (int *,unsigned char*,int,size_t*) ;
+ int * ssl_handshake_md (int *) ;
+ int tls13_derive_iv (int *,int const*,unsigned char*,unsigned char*,int) ;
+ int tls13_derive_key (int *,int const*,unsigned char*,unsigned char*,int) ;
+ int tls13_hkdf_expand (int *,int const*,unsigned char*,unsigned char const*,size_t,unsigned char*,size_t,unsigned char*,size_t,int) ;
 
 __attribute__((used)) static int test_secret(SSL *s, unsigned char *prk,
                        const unsigned char *label, size_t labellen,

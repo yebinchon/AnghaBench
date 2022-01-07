@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct socket {struct sock* sk; } ;
-struct TYPE_2__ {unsigned long data; int /*<<< orphan*/  function; scalar_t__ expires; } ;
-struct sock {TYPE_1__ sk_timer; int /*<<< orphan*/  sk_receive_queue; int /*<<< orphan*/  (* sk_state_change ) (struct sock*) ;} ;
+struct TYPE_2__ {unsigned long data; int function; scalar_t__ expires; } ;
+struct sock {TYPE_1__ sk_timer; int sk_receive_queue; int (* sk_state_change ) (struct sock*) ;} ;
 
-/* Variables and functions */
- scalar_t__ HZ ; 
- int /*<<< orphan*/  add_timer (TYPE_1__*) ; 
- int /*<<< orphan*/  econet_destroy_timer ; 
- int /*<<< orphan*/  econet_mutex ; 
- int /*<<< orphan*/  econet_remove_socket (int /*<<< orphan*/ *,struct sock*) ; 
- int /*<<< orphan*/  econet_sklist ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sk_free (struct sock*) ; 
- scalar_t__ sk_has_allocations (struct sock*) ; 
- int /*<<< orphan*/  skb_queue_purge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sock_orphan (struct sock*) ; 
- int /*<<< orphan*/  stub1 (struct sock*) ; 
+
+ scalar_t__ HZ ;
+ int add_timer (TYPE_1__*) ;
+ int econet_destroy_timer ;
+ int econet_mutex ;
+ int econet_remove_socket (int *,struct sock*) ;
+ int econet_sklist ;
+ scalar_t__ jiffies ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int sk_free (struct sock*) ;
+ scalar_t__ sk_has_allocations (struct sock*) ;
+ int skb_queue_purge (int *) ;
+ int sock_orphan (struct sock*) ;
+ int stub1 (struct sock*) ;
 
 __attribute__((used)) static int econet_release(struct socket *sock)
 {
-	struct sock *sk;
+ struct sock *sk;
 
-	mutex_lock(&econet_mutex);
+ mutex_lock(&econet_mutex);
 
-	sk = sock->sk;
-	if (!sk)
-		goto out_unlock;
+ sk = sock->sk;
+ if (!sk)
+  goto out_unlock;
 
-	econet_remove_socket(&econet_sklist, sk);
+ econet_remove_socket(&econet_sklist, sk);
 
-	/*
-	 *	Now the socket is dead. No more input will appear.
-	 */
 
-	sk->sk_state_change(sk);	/* It is useless. Just for sanity. */
 
-	sock_orphan(sk);
 
-	/* Purge queues */
 
-	skb_queue_purge(&sk->sk_receive_queue);
+ sk->sk_state_change(sk);
 
-	if (sk_has_allocations(sk)) {
-		sk->sk_timer.data     = (unsigned long)sk;
-		sk->sk_timer.expires  = jiffies + HZ;
-		sk->sk_timer.function = econet_destroy_timer;
-		add_timer(&sk->sk_timer);
+ sock_orphan(sk);
 
-		goto out_unlock;
-	}
 
-	sk_free(sk);
+
+ skb_queue_purge(&sk->sk_receive_queue);
+
+ if (sk_has_allocations(sk)) {
+  sk->sk_timer.data = (unsigned long)sk;
+  sk->sk_timer.expires = jiffies + HZ;
+  sk->sk_timer.function = econet_destroy_timer;
+  add_timer(&sk->sk_timer);
+
+  goto out_unlock;
+ }
+
+ sk_free(sk);
 
 out_unlock:
-	mutex_unlock(&econet_mutex);
-	return 0;
+ mutex_unlock(&econet_mutex);
+ return 0;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/ * stdout ; 
- int sun2amd_convert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sun2amd_open (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sun2amd_usage () ; 
+
+
+
+typedef int FILE ;
+
+
+ int exit (int) ;
+ int getopt (int,char**,char*) ;
+ int optarg ;
+ int * stdin ;
+ int * stdout ;
+ int sun2amd_convert (int *,int *) ;
+ int * sun2amd_open (int ,char*) ;
+ int sun2amd_usage () ;
 
 int
 main(int argc, char **argv)
 {
-  /* default in/out to stdin/stdout */
+
   FILE *sun_in = stdin, *amd_out = stdout;
   int opt, retval = 1;
 
@@ -33,14 +33,14 @@ main(int argc, char **argv)
     switch (opt) {
 
     case 'i':
-      if ((sun_in = sun2amd_open(optarg,"r")) == NULL) {
-	goto err;
+      if ((sun_in = sun2amd_open(optarg,"r")) == ((void*)0)) {
+ goto err;
       }
       break;
 
     case 'o':
-      if ((amd_out = sun2amd_open(optarg,"w")) == NULL) {
-	goto err;
+      if ((amd_out = sun2amd_open(optarg,"w")) == ((void*)0)) {
+ goto err;
       }
       break;
 

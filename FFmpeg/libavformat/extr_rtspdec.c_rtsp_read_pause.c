@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* priv_data; } ;
 struct TYPE_8__ {scalar_t__ status_code; } ;
-struct TYPE_7__ {scalar_t__ state; scalar_t__ server_type; int /*<<< orphan*/  control_uri; scalar_t__ need_subscription; } ;
-typedef  TYPE_1__ RTSPState ;
-typedef  TYPE_2__ RTSPMessageHeader ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_7__ {scalar_t__ state; scalar_t__ server_type; int control_uri; scalar_t__ need_subscription; } ;
+typedef TYPE_1__ RTSPState ;
+typedef TYPE_2__ RTSPMessageHeader ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ RTSP_SERVER_REAL ; 
- scalar_t__ RTSP_STATE_PAUSED ; 
- scalar_t__ RTSP_STATE_STREAMING ; 
- scalar_t__ RTSP_STATUS_OK ; 
- int ff_rtsp_averror (scalar_t__,int) ; 
- int /*<<< orphan*/  ff_rtsp_send_cmd (TYPE_3__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ RTSP_SERVER_REAL ;
+ scalar_t__ RTSP_STATE_PAUSED ;
+ scalar_t__ RTSP_STATE_STREAMING ;
+ scalar_t__ RTSP_STATUS_OK ;
+ int ff_rtsp_averror (scalar_t__,int) ;
+ int ff_rtsp_send_cmd (TYPE_3__*,char*,int ,int *,TYPE_2__*,int *) ;
 
 __attribute__((used)) static int rtsp_read_pause(AVFormatContext *s)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static int rtsp_read_pause(AVFormatContext *s)
     if (rt->state != RTSP_STATE_STREAMING)
         return 0;
     else if (!(rt->server_type == RTSP_SERVER_REAL && rt->need_subscription)) {
-        ff_rtsp_send_cmd(s, "PAUSE", rt->control_uri, NULL, reply, NULL);
+        ff_rtsp_send_cmd(s, "PAUSE", rt->control_uri, ((void*)0), reply, ((void*)0));
         if (reply->status_code != RTSP_STATUS_OK) {
             return ff_rtsp_averror(reply->status_code, -1);
         }

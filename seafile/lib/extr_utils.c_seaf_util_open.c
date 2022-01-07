@@ -1,71 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int FILE_SHARE_DELETE ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int O_RDWR ; 
- int O_WRONLY ; 
- int _open_osfhandle (intptr_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int open (char const*,int) ; 
- int /*<<< orphan*/ * win32_long_path (char const*) ; 
- int /*<<< orphan*/  windows_error_to_errno (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wchar_t ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+
+
+ scalar_t__ CreateFileW (int *,int ,int,int *,int ,int ,int *) ;
+ int FILE_SHARE_DELETE ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int O_RDWR ;
+ int O_WRONLY ;
+ int _open_osfhandle (intptr_t,int ) ;
+ int errno ;
+ int g_free (int *) ;
+ int open (char const*,int) ;
+ int * win32_long_path (char const*) ;
+ int windows_error_to_errno (int ) ;
 
 int
 seaf_util_open (const char *path, int flags)
 {
-#ifdef WIN32
-    wchar_t *wpath;
-    DWORD access = 0;
-    HANDLE handle;
-    int fd;
-
-    access |= GENERIC_READ;
-    if (flags & (O_WRONLY | O_RDWR))
-        access |= GENERIC_WRITE;
-
-    wpath = win32_long_path (path);
-
-    handle = CreateFileW (wpath,
-                          access,
-                          FILE_SHARE_DELETE | FILE_SHARE_READ | FILE_SHARE_WRITE,
-                          NULL,
-                          OPEN_EXISTING,
-                          0,
-                          NULL);
-    if (handle == INVALID_HANDLE_VALUE) {
-        errno = windows_error_to_errno (GetLastError());
-        g_free (wpath);
-        return -1;
-    }
-
-    fd = _open_osfhandle ((intptr_t)handle, 0);
-
-    g_free (wpath);
-    return fd;
-#else
     return open (path, flags);
-#endif
+
 }

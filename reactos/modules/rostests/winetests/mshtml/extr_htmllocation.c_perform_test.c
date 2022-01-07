@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  url ;
-struct location_test {int /*<<< orphan*/  name; int /*<<< orphan*/  url; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IPersistMoniker ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IHTMLLocation ;
-typedef  int /*<<< orphan*/  IHTMLDocument6 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int CLSCTX_INPROC_HANDLER ; 
- int CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_HTMLDocument ; 
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ CreateBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ CreateURLMoniker (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_get_location (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLDocument6_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLLocation_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLDocument2 ; 
- int /*<<< orphan*/  IID_IHTMLDocument6 ; 
- int /*<<< orphan*/  IID_IPersistMoniker ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int INTERNET_MAX_URL_LENGTH ; 
- scalar_t__ IPersistMoniker_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IPersistMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  test_hash (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_host (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_hostname (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_href (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_pathname (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_port (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_protocol (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  test_search (int /*<<< orphan*/ *,struct location_test const*) ; 
- int /*<<< orphan*/  win_skip (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int url ;
+struct location_test {int name; int url; } ;
+typedef int WCHAR ;
+typedef int IPersistMoniker ;
+typedef int IMoniker ;
+typedef int IHTMLLocation ;
+typedef int IHTMLDocument6 ;
+typedef int IHTMLDocument2 ;
+typedef int IBindCtx ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_HANDLER ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_HTMLDocument ;
+ int CP_ACP ;
+ scalar_t__ CoCreateInstance (int *,int *,int,int *,void**) ;
+ scalar_t__ CreateBindCtx (int ,int **) ;
+ scalar_t__ CreateURLMoniker (int *,int *,int **) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int IBindCtx_Release (int *) ;
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IHTMLDocument2_Release (int *) ;
+ scalar_t__ IHTMLDocument2_get_location (int *,int **) ;
+ int IHTMLDocument6_Release (int *) ;
+ int IHTMLLocation_Release (int *) ;
+ int IID_IHTMLDocument2 ;
+ int IID_IHTMLDocument6 ;
+ int IID_IPersistMoniker ;
+ int IMoniker_Release (int *) ;
+ int INTERNET_MAX_URL_LENGTH ;
+ scalar_t__ IPersistMoniker_Load (int *,int ,int *,int *,int) ;
+ int IPersistMoniker_Release (int *) ;
+ int MultiByteToWideChar (int ,int ,int ,int,int *,int) ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,int ,scalar_t__) ;
+ int test_hash (int *,struct location_test const*) ;
+ int test_host (int *,struct location_test const*) ;
+ int test_hostname (int *,int *,struct location_test const*) ;
+ int test_href (int *,struct location_test const*) ;
+ int test_pathname (int *,struct location_test const*) ;
+ int test_port (int *,struct location_test const*) ;
+ int test_protocol (int *,struct location_test const*) ;
+ int test_search (int *,struct location_test const*) ;
+ int win_skip (char*,int ) ;
 
 __attribute__((used)) static void perform_test(const struct location_test* test)
 {
@@ -76,14 +76,14 @@ __attribute__((used)) static void perform_test(const struct location_test* test)
         return;
 
     MultiByteToWideChar(CP_ACP, 0, test->url, -1, url, sizeof(url)/sizeof(WCHAR));
-    hres = CreateURLMoniker(NULL, url, &url_mon);
+    hres = CreateURLMoniker(((void*)0), url, &url_mon);
     ok(hres == S_OK, "%s: CreateURLMoniker failed: 0x%08x\n", test->name, hres);
     if(FAILED(hres)){
         IBindCtx_Release(bc);
         return;
     }
 
-    hres = CoCreateInstance(&CLSID_HTMLDocument, NULL,
+    hres = CoCreateInstance(&CLSID_HTMLDocument, ((void*)0),
             CLSCTX_INPROC_SERVER | CLSCTX_INPROC_HANDLER, &IID_IHTMLDocument2,
             (void**)&doc);
     ok(hres == S_OK, "%s: CoCreateInstance failed: 0x%08x\n", test->name, hres);

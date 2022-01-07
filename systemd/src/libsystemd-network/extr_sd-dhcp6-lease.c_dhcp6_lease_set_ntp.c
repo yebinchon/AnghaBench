@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int ntp_count; int ntp_fqdn_count; int /*<<< orphan*/  ntp_fqdn; scalar_t__ ntp_allocated; int /*<<< orphan*/  ntp; } ;
-typedef  TYPE_1__ uint8_t ;
-typedef  int uint16_t ;
-typedef  TYPE_1__ sd_dhcp6_lease ;
 
-/* Variables and functions */
-#define  DHCP6_NTP_SUBOPTION_MC_ADDR 130 
-#define  DHCP6_NTP_SUBOPTION_SRV_ADDR 129 
-#define  DHCP6_NTP_SUBOPTION_SRV_FQDN 128 
- int /*<<< orphan*/  EINVAL ; 
- int ENOMSG ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int dhcp6_option_parse (TYPE_1__**,size_t*,int*,size_t*,TYPE_1__**) ; 
- int dhcp6_option_parse_domainname (TYPE_1__*,size_t,char***) ; 
- int dhcp6_option_parse_ip6addrs (TYPE_1__*,size_t,int /*<<< orphan*/ *,int,scalar_t__*) ; 
- int /*<<< orphan*/  mfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strv_free_and_replace (int /*<<< orphan*/ ,char**) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int ntp_count; int ntp_fqdn_count; int ntp_fqdn; scalar_t__ ntp_allocated; int ntp; } ;
+typedef TYPE_1__ uint8_t ;
+typedef int uint16_t ;
+typedef TYPE_1__ sd_dhcp6_lease ;
+
+
+
+
+
+ int EINVAL ;
+ int ENOMSG ;
+ int assert_return (TYPE_1__*,int ) ;
+ int dhcp6_option_parse (TYPE_1__**,size_t*,int*,size_t*,TYPE_1__**) ;
+ int dhcp6_option_parse_domainname (TYPE_1__*,size_t,char***) ;
+ int dhcp6_option_parse_ip6addrs (TYPE_1__*,size_t,int *,int,scalar_t__*) ;
+ int mfree (int ) ;
+ int strv_free_and_replace (int ,char**) ;
 
 int dhcp6_lease_set_ntp(sd_dhcp6_lease *lease, uint8_t *optval, size_t optlen) {
         int r;
@@ -48,8 +48,8 @@ int dhcp6_lease_set_ntp(sd_dhcp6_lease *lease, uint8_t *optval, size_t optlen) {
                 char **servers;
 
                 switch(subopt) {
-                case DHCP6_NTP_SUBOPTION_SRV_ADDR:
-                case DHCP6_NTP_SUBOPTION_MC_ADDR:
+                case 129:
+                case 130:
                         if (sublen != 16)
                                 return 0;
 
@@ -64,7 +64,7 @@ int dhcp6_lease_set_ntp(sd_dhcp6_lease *lease, uint8_t *optval, size_t optlen) {
 
                         break;
 
-                case DHCP6_NTP_SUBOPTION_SRV_FQDN:
+                case 128:
                         r = dhcp6_option_parse_domainname(subval, sublen,
                                                           &servers);
                         if (r < 0)

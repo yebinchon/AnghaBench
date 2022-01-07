@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvt_dev {int /*<<< orphan*/  cr_efir; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  EFER_EFM_ENABLE ; 
- int /*<<< orphan*/  NVT_DRIVER_NAME ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  request_muxed_region (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+struct nvt_dev {int cr_efir; } ;
+
+
+ int EBUSY ;
+ int EFER_EFM_ENABLE ;
+ int NVT_DRIVER_NAME ;
+ int outb (int ,int ) ;
+ int request_muxed_region (int ,int,int ) ;
 
 __attribute__((used)) static inline int nvt_efm_enable(struct nvt_dev *nvt)
 {
-	if (!request_muxed_region(nvt->cr_efir, 2, NVT_DRIVER_NAME))
-		return -EBUSY;
+ if (!request_muxed_region(nvt->cr_efir, 2, NVT_DRIVER_NAME))
+  return -EBUSY;
 
-	/* Enabling Extended Function Mode explicitly requires writing 2x */
-	outb(EFER_EFM_ENABLE, nvt->cr_efir);
-	outb(EFER_EFM_ENABLE, nvt->cr_efir);
 
-	return 0;
+ outb(EFER_EFM_ENABLE, nvt->cr_efir);
+ outb(EFER_EFM_ENABLE, nvt->cr_efir);
+
+ return 0;
 }

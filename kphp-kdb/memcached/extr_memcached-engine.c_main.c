@@ -1,63 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- int LAST_OPER_BUF_SIZE ; 
- int MAX_CONNECTIONS ; 
- scalar_t__ MAX_ZMALLOC_MEM ; 
- int /*<<< orphan*/  MCL_FUTURE ; 
- int /*<<< orphan*/  adjust_oom_score (void*) ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- void* atoi (void*) ; 
- void* backlog ; 
- int daemonize ; 
- int dynamic_data_buffer_size ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_min_memory () ; 
- scalar_t__ geteuid () ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  help () ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_hash_table () ; 
- int /*<<< orphan*/  last_oper_type ; 
- void* logname ; 
- int max_memory ; 
- int maxconn ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  mlockall (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nice (void*) ; 
- void* oom_score_adj ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  perror (char*) ; 
- int port ; 
- scalar_t__ raise_file_rlimit (int) ; 
- int return_false_if_not_found ; 
- int rpc_crc32_mode ; 
- int rpc_disable_crc32_check ; 
- scalar_t__ server_socket (int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- void* udp_port ; 
- void* username ; 
- int /*<<< orphan*/  verbosity ; 
+ void* BACKLOG ;
+ int LAST_OPER_BUF_SIZE ;
+ int MAX_CONNECTIONS ;
+ scalar_t__ MAX_ZMALLOC_MEM ;
+ int MCL_FUTURE ;
+ int adjust_oom_score (void*) ;
+ int aes_load_pwd_file (int ) ;
+ void* atoi (void*) ;
+ void* backlog ;
+ int daemonize ;
+ int dynamic_data_buffer_size ;
+ int errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int get_min_memory () ;
+ scalar_t__ geteuid () ;
+ int getopt (int,char**,char*) ;
+ int help () ;
+ int init_dyn_data () ;
+ int init_hash_table () ;
+ int last_oper_type ;
+ void* logname ;
+ int max_memory ;
+ int maxconn ;
+ int memset (int ,int,int) ;
+ int mlockall (int ) ;
+ int nice (void*) ;
+ void* oom_score_adj ;
+ void* optarg ;
+ int optind ;
+ int perror (char*) ;
+ int port ;
+ scalar_t__ raise_file_rlimit (int) ;
+ int return_false_if_not_found ;
+ int rpc_crc32_mode ;
+ int rpc_disable_crc32_check ;
+ scalar_t__ server_socket (int,int ,void*,int ) ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int time (int *) ;
+ void* udp_port ;
+ void* username ;
+ int verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -120,14 +112,14 @@ int main (int argc, char *argv[]) {
       return_false_if_not_found = 1;
       break;
     case 'r':
-      // nothing to do
+
       break;
     case 'C':
       rpc_crc32_mode = atoi (optarg);
       rpc_disable_crc32_check = (rpc_crc32_mode & 1);
     case 'k':
       break;
-      if (mlockall (/* MCL_CURRENT | */ MCL_FUTURE) != 0) {
+      if (mlockall ( MCL_FUTURE) != 0) {
         fprintf (stderr, "error: fail to lock paged memory\n");
       }
       break;
@@ -140,7 +132,7 @@ int main (int argc, char *argv[]) {
   }
 
   if (!username && maxconn == MAX_CONNECTIONS && geteuid()) {
-    maxconn = 1000; //not for root
+    maxconn = 1000;
   }
 
   if (dynamic_data_buffer_size > max_memory) {
@@ -152,9 +144,9 @@ int main (int argc, char *argv[]) {
   }
 
   init_hash_table();
-#ifdef HISTORY
-  memset (last_oper_type, -1, LAST_OPER_BUF_SIZE * sizeof (char));
-#endif
+
+
+
 
   if (raise_file_rlimit (maxconn + 16) < 0) {
     fprintf (stderr, "fatal: cannot raise open file limit to %d\n", maxconn + 16);
@@ -173,7 +165,7 @@ int main (int argc, char *argv[]) {
     exit (1);
   }
 
-  start_time = time (NULL);
+  start_time = time (((void*)0));
 
   start_server();
 

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_opt_subcommand_desc2_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_getopt_option_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  svn_opt_subcommand_help3 (char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_opt_subcommand_desc2_t ;
+typedef int apr_pool_t ;
+typedef int apr_getopt_option_t ;
+
+
+ int svn_opt_subcommand_help3 (char const*,int const*,int const*,int *,int *) ;
 
 void
 svn_opt_subcommand_help2(const char *subcommand,
@@ -24,5 +24,5 @@ svn_opt_subcommand_help2(const char *subcommand,
                          apr_pool_t *pool)
 {
   svn_opt_subcommand_help3(subcommand, table, options_table,
-                           NULL, pool);
+                           ((void*)0), pool);
 }

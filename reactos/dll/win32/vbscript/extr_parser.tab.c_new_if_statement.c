@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  statement_t ;
-typedef  int /*<<< orphan*/  parser_ctx_t ;
-struct TYPE_3__ {int /*<<< orphan*/  stat; int /*<<< orphan*/ * else_stat; int /*<<< orphan*/ * elseifs; int /*<<< orphan*/ * if_stat; int /*<<< orphan*/ * expr; } ;
-typedef  TYPE_1__ if_statement_t ;
-typedef  int /*<<< orphan*/  expression_t ;
-typedef  int /*<<< orphan*/  elseif_decl_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STAT_IF ; 
- TYPE_1__* new_statement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int statement_t ;
+typedef int parser_ctx_t ;
+struct TYPE_3__ {int stat; int * else_stat; int * elseifs; int * if_stat; int * expr; } ;
+typedef TYPE_1__ if_statement_t ;
+typedef int expression_t ;
+typedef int elseif_decl_t ;
+
+
+ int STAT_IF ;
+ TYPE_1__* new_statement (int *,int ,int) ;
 
 __attribute__((used)) static statement_t *new_if_statement(parser_ctx_t *ctx, expression_t *expr, statement_t *if_stat, elseif_decl_t *elseif_decl,
         statement_t *else_stat)
@@ -29,7 +29,7 @@ __attribute__((used)) static statement_t *new_if_statement(parser_ctx_t *ctx, ex
 
     stat = new_statement(ctx, STAT_IF, sizeof(*stat));
     if(!stat)
-        return NULL;
+        return ((void*)0);
 
     stat->expr = expr;
     stat->if_stat = if_stat;

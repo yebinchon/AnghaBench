@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  h2o_mem_pool_t ;
-struct TYPE_3__ {char* base; scalar_t__ len; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ h2o_iovec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_STRLIT (char*) ; 
- int /*<<< orphan*/  h2o_base64_encode (char*,int /*<<< orphan*/  const*,scalar_t__,int) ; 
- TYPE_1__ h2o_decode_base64url (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_mem_clear_pool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_mem_init_pool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int h2o_mem_pool_t ;
+struct TYPE_3__ {char* base; scalar_t__ len; int member_0; } ;
+typedef TYPE_1__ h2o_iovec_t ;
+
+
+ int H2O_STRLIT (char*) ;
+ int h2o_base64_encode (char*,int const*,scalar_t__,int) ;
+ TYPE_1__ h2o_decode_base64url (int *,char*,int ) ;
+ int h2o_mem_clear_pool (int *) ;
+ int h2o_mem_init_pool (int *) ;
+ int ok (int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test_decode_base64(void)
 {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_14__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_14__ ;
+
+
 struct TYPE_18__ {int size_in_bits; } ;
 struct TYPE_17__ {int nfreqbands; } ;
 struct TYPE_16__ {int nactivechsets; int* navi; int nfreqbands; int nframesegs; int nchsets; TYPE_3__ gb; TYPE_14__* avctx; TYPE_2__* chset; } ;
 struct TYPE_15__ {int err_recognition; } ;
-typedef  TYPE_1__ DCAXllDecoder ;
-typedef  TYPE_2__ DCAXllChSet ;
+typedef TYPE_1__ DCAXllDecoder ;
+typedef TYPE_2__ DCAXllChSet ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_EF_EXPLODE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_14__*,int /*<<< orphan*/ ,char*) ; 
- int chs_alloc_lsb_band_data (TYPE_1__*,TYPE_2__*) ; 
- int chs_alloc_msb_band_data (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  chs_clear_band_data (TYPE_1__*,TYPE_2__*,int,int) ; 
- int chs_parse_band_data (TYPE_1__*,TYPE_2__*,int,int,int) ; 
- int get_bits_count (TYPE_3__*) ; 
- int /*<<< orphan*/  skip_bits_long (TYPE_3__*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_EF_EXPLODE ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_14__*,int ,char*) ;
+ int chs_alloc_lsb_band_data (TYPE_1__*,TYPE_2__*) ;
+ int chs_alloc_msb_band_data (TYPE_1__*,TYPE_2__*) ;
+ int chs_clear_band_data (TYPE_1__*,TYPE_2__*,int,int) ;
+ int chs_parse_band_data (TYPE_1__*,TYPE_2__*,int,int,int) ;
+ int get_bits_count (TYPE_3__*) ;
+ int skip_bits_long (TYPE_3__*,int) ;
 
 __attribute__((used)) static int parse_band_data(DCAXllDecoder *s)
 {

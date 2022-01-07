@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {size_t conn_service; int /*<<< orphan*/  conn_handle; int /*<<< orphan*/  peer_addr; int /*<<< orphan*/  peer_scn; int /*<<< orphan*/  cli_sec_mask; } ;
-typedef  TYPE_1__ tBTA_AG_SCB ;
-typedef  int /*<<< orphan*/  tBTA_AG_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPL_TRACE_DEBUG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BTA_AG_MTU ; 
- int /*<<< orphan*/  BTA_AG_RFC_CLOSE_EVT ; 
- int /*<<< orphan*/  BTM_SEC_PROTO_RFCOMM ; 
- int /*<<< orphan*/  BTM_SetSecurityLevel (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BT_PSM_RFCOMM ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ PORT_SUCCESS ; 
- scalar_t__ RFCOMM_CreateConnection (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * bta_ag_mgmt_cback_tbl ; 
- int bta_ag_scb_to_idx (TYPE_1__*) ; 
- int /*<<< orphan*/ * bta_ag_sec_id ; 
- int /*<<< orphan*/  bta_ag_setup_port (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bta_ag_sm_execute (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * bta_ag_uuid ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {size_t conn_service; int conn_handle; int peer_addr; int peer_scn; int cli_sec_mask; } ;
+typedef TYPE_1__ tBTA_AG_SCB ;
+typedef int tBTA_AG_DATA ;
+
+
+ int APPL_TRACE_DEBUG (char*,int ) ;
+ int BTA_AG_MTU ;
+ int BTA_AG_RFC_CLOSE_EVT ;
+ int BTM_SEC_PROTO_RFCOMM ;
+ int BTM_SetSecurityLevel (int ,char*,int ,int ,int ,int ,int ) ;
+ int BT_PSM_RFCOMM ;
+ int FALSE ;
+ scalar_t__ PORT_SUCCESS ;
+ scalar_t__ RFCOMM_CreateConnection (int ,int ,int ,int ,int ,int *,int ) ;
+ int TRUE ;
+ int * bta_ag_mgmt_cback_tbl ;
+ int bta_ag_scb_to_idx (TYPE_1__*) ;
+ int * bta_ag_sec_id ;
+ int bta_ag_setup_port (TYPE_1__*,int ) ;
+ int bta_ag_sm_execute (TYPE_1__*,int ,int *) ;
+ int * bta_ag_uuid ;
 
 void bta_ag_rfc_do_open(tBTA_AG_SCB *p_scb, tBTA_AG_DATA *p_data)
 {
@@ -44,7 +44,7 @@ void bta_ag_rfc_do_open(tBTA_AG_SCB *p_scb, tBTA_AG_DATA *p_data)
         bta_ag_setup_port(p_scb, p_scb->conn_handle);
         APPL_TRACE_DEBUG("bta_ag_rfc_do_open : conn_handle = %d", p_scb->conn_handle);
     } else {
-        /* RFCOMM create connection failed; send ourselves RFCOMM close event */
+
         bta_ag_sm_execute(p_scb, BTA_AG_RFC_CLOSE_EVT, p_data);
     }
 }

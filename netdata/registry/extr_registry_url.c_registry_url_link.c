@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  links; int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ REGISTRY_URL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REGISTRY ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int links; int url; } ;
+typedef TYPE_1__ REGISTRY_URL ;
+
+
+ int D_REGISTRY ;
+ int debug (int ,char*,int ,int ) ;
 
 void registry_url_link(REGISTRY_URL *u) {
     u->links++;

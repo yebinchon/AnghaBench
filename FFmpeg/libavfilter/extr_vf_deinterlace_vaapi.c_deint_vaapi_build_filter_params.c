@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  params ;
-typedef  scalar_t__ VAStatus ;
-struct TYPE_13__ {scalar_t__ algorithm; scalar_t__ flags; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ VAProcFilterParameterBufferDeinterlacing ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int params ;
+typedef scalar_t__ VAStatus ;
+struct TYPE_13__ {scalar_t__ algorithm; scalar_t__ flags; int type; } ;
+typedef TYPE_2__ VAProcFilterParameterBufferDeinterlacing ;
 struct TYPE_16__ {scalar_t__ num_backward_references; scalar_t__ num_forward_references; } ;
-struct TYPE_14__ {int nb_deint_caps; scalar_t__ mode; int extra_delay_for_timestamps; int field_rate; scalar_t__ queue_depth; TYPE_6__ pipeline_caps; int /*<<< orphan*/ * filter_buffers; int /*<<< orphan*/  va_context; TYPE_1__* hwctx; TYPE_7__* deint_caps; } ;
-typedef  TYPE_3__ VAAPIVPPContext ;
+struct TYPE_14__ {int nb_deint_caps; scalar_t__ mode; int extra_delay_for_timestamps; int field_rate; scalar_t__ queue_depth; TYPE_6__ pipeline_caps; int * filter_buffers; int va_context; TYPE_1__* hwctx; TYPE_7__* deint_caps; } ;
+typedef TYPE_3__ VAAPIVPPContext ;
 struct TYPE_17__ {scalar_t__ type; } ;
 struct TYPE_15__ {TYPE_3__* priv; } ;
-struct TYPE_12__ {int /*<<< orphan*/  display; } ;
-typedef  TYPE_3__ DeintVAAPIContext ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_12__ {int display; } ;
+typedef TYPE_3__ DeintVAAPIContext ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOSYS ; 
- scalar_t__ MAX_REFERENCES ; 
- int VAProcDeinterlacingCount ; 
- scalar_t__ VAProcDeinterlacingNone ; 
- int /*<<< orphan*/  VAProcFilterDeinterlacing ; 
- int /*<<< orphan*/  VAProcFilterParameterBufferType ; 
- scalar_t__ VA_STATUS_SUCCESS ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__) ; 
- scalar_t__ deint_vaapi_mode_name (scalar_t__) ; 
- scalar_t__ ff_vaapi_vpp_make_param_buffers (TYPE_5__*,int /*<<< orphan*/ ,TYPE_2__*,int,int) ; 
- scalar_t__ vaErrorStr (scalar_t__) ; 
- scalar_t__ vaQueryVideoProcFilterCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_7__**,int*) ; 
- scalar_t__ vaQueryVideoProcPipelineCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,TYPE_6__*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ int EINVAL ;
+ int EIO ;
+ int ENOSYS ;
+ scalar_t__ MAX_REFERENCES ;
+ int VAProcDeinterlacingCount ;
+ scalar_t__ VAProcDeinterlacingNone ;
+ int VAProcFilterDeinterlacing ;
+ int VAProcFilterParameterBufferType ;
+ scalar_t__ VA_STATUS_SUCCESS ;
+ int av_log (TYPE_5__*,int ,char*,scalar_t__,scalar_t__) ;
+ scalar_t__ deint_vaapi_mode_name (scalar_t__) ;
+ scalar_t__ ff_vaapi_vpp_make_param_buffers (TYPE_5__*,int ,TYPE_2__*,int,int) ;
+ scalar_t__ vaErrorStr (scalar_t__) ;
+ scalar_t__ vaQueryVideoProcFilterCaps (int ,int ,int ,TYPE_7__**,int*) ;
+ scalar_t__ vaQueryVideoProcPipelineCaps (int ,int ,int *,int,TYPE_6__*) ;
 
 __attribute__((used)) static int deint_vaapi_build_filter_params(AVFilterContext *avctx)
 {
     VAAPIVPPContext *vpp_ctx = avctx->priv;
-    DeintVAAPIContext *ctx   = avctx->priv;
+    DeintVAAPIContext *ctx = avctx->priv;
     VAStatus vas;
     VAProcFilterParameterBufferDeinterlacing params;
     int i;
@@ -90,9 +90,9 @@ __attribute__((used)) static int deint_vaapi_build_filter_params(AVFilterContext
         }
     }
 
-    params.type      = VAProcFilterDeinterlacing;
+    params.type = VAProcFilterDeinterlacing;
     params.algorithm = ctx->mode;
-    params.flags     = 0;
+    params.flags = 0;
 
     vas = ff_vaapi_vpp_make_param_buffers(avctx,
                                           VAProcFilterParameterBufferType,

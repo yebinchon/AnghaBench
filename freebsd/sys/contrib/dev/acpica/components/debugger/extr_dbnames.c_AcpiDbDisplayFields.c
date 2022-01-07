@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_2__ {int DisplayType; int /*<<< orphan*/  AddressSpaceId; int /*<<< orphan*/  DebugLevel; int /*<<< orphan*/  OwnerId; scalar_t__ Count; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_REGION_WALK_INFO ;
 
-/* Variables and functions */
- int ACPI_DISPLAY_SHORT ; 
- int ACPI_DISPLAY_SUMMARY ; 
- int /*<<< orphan*/  ACPI_OWNER_ID_MAX ; 
- int /*<<< orphan*/  ACPI_ROOT_OBJECT ; 
- int /*<<< orphan*/  ACPI_TYPE_LOCAL_REGION_FIELD ; 
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiDbWalkForFields ; 
- int /*<<< orphan*/  AcpiWalkNamespace (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+struct TYPE_2__ {int DisplayType; int AddressSpaceId; int DebugLevel; int OwnerId; scalar_t__ Count; } ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__ ACPI_REGION_WALK_INFO ;
+
+
+ int ACPI_DISPLAY_SHORT ;
+ int ACPI_DISPLAY_SUMMARY ;
+ int ACPI_OWNER_ID_MAX ;
+ int ACPI_ROOT_OBJECT ;
+ int ACPI_TYPE_LOCAL_REGION_FIELD ;
+ int ACPI_UINT32_MAX ;
+ int AE_OK ;
+ int AcpiDbWalkForFields ;
+ int AcpiWalkNamespace (int ,int ,int ,int ,int *,void*,int *) ;
 
 ACPI_STATUS
 AcpiDbDisplayFields (
-    UINT32                  AddressSpaceId)
+    UINT32 AddressSpaceId)
 {
-    ACPI_REGION_WALK_INFO  Info;
+    ACPI_REGION_WALK_INFO Info;
 
 
     Info.Count = 0;
@@ -40,11 +40,11 @@ AcpiDbDisplayFields (
     Info.DisplayType = ACPI_DISPLAY_SUMMARY | ACPI_DISPLAY_SHORT;
     Info.AddressSpaceId = AddressSpaceId;
 
-    /* Walk the namespace from the root */
+
 
     (void) AcpiWalkNamespace (ACPI_TYPE_LOCAL_REGION_FIELD, ACPI_ROOT_OBJECT,
-          ACPI_UINT32_MAX, AcpiDbWalkForFields, NULL,
-          (void *) &Info, NULL);
+          ACPI_UINT32_MAX, AcpiDbWalkForFields, ((void*)0),
+          (void *) &Info, ((void*)0));
 
     return (AE_OK);
 }

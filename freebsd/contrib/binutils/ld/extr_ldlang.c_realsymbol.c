@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int bfd_boolean ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ strlen (char const*) ; 
- char* xmalloc (scalar_t__) ; 
+
+
+
+typedef int bfd_boolean ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int free (char*) ;
+ scalar_t__ strlen (char const*) ;
+ char* xmalloc (scalar_t__) ;
 
 __attribute__((used)) static const char *
 realsymbol (const char *pattern)
@@ -28,22 +28,22 @@ realsymbol (const char *pattern)
 
   for (p = pattern, s = symbol; *p != '\0'; ++p)
     {
-      /* It is a glob pattern only if there is no preceding
-	 backslash.  */
+
+
       if (! backslash && (*p == '?' || *p == '*' || *p == '['))
-	{
-	  free (symbol);
-	  return NULL;
-	}
+ {
+   free (symbol);
+   return ((void*)0);
+ }
 
       if (backslash)
-	{
-	  /* Remove the preceding backslash.  */
-	  *(s - 1) = *p;
-	  changed = TRUE;
-	}
+ {
+
+   *(s - 1) = *p;
+   changed = TRUE;
+ }
       else
-	*s++ = *p;
+ *s++ = *p;
 
       backslash = *p == '\\';
     }

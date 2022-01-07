@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT8 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_BAD_HEX_CONSTANT ; 
- int /*<<< orphan*/  AE_OK ; 
- int AcpiUtAsciiCharToHex (char) ; 
- int /*<<< orphan*/  isxdigit (int) ; 
+
+
+
+typedef int UINT8 ;
+typedef int ACPI_STATUS ;
+
+
+ int AE_BAD_HEX_CONSTANT ;
+ int AE_OK ;
+ int AcpiUtAsciiCharToHex (char) ;
+ int isxdigit (int) ;
 
 ACPI_STATUS
 AcpiUtAsciiToHexByte (
-    char                    *TwoAsciiChars,
-    UINT8                   *ReturnByte)
+    char *TwoAsciiChars,
+    UINT8 *ReturnByte)
 {
 
-    /* Both ASCII characters must be valid hex digits */
+
 
     if (!isxdigit ((int) TwoAsciiChars[0]) ||
         !isxdigit ((int) TwoAsciiChars[1]))

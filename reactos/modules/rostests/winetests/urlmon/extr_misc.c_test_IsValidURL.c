@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsValidURL (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  wszHttpWineHQ ; 
+
+
+
+typedef int IBindCtx ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CreateBindCtx (int ,int **) ;
+ scalar_t__ E_INVALIDARG ;
+ int IBindCtx_Release (int *) ;
+ scalar_t__ IsValidURL (int *,int ,int ) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ int wszHttpWineHQ ;
 
 __attribute__((used)) static void test_IsValidURL(void)
 {
     HRESULT hr;
-    IBindCtx *bctx = NULL;
+    IBindCtx *bctx = ((void*)0);
 
-    hr = IsValidURL(NULL, 0, 0);
+    hr = IsValidURL(((void*)0), 0, 0);
     ok(hr == E_INVALIDARG, "Expected E_INVALIDARG, got %08x\n", hr);
 
-    hr = IsValidURL(NULL, wszHttpWineHQ, 0);
+    hr = IsValidURL(((void*)0), wszHttpWineHQ, 0);
     ok(hr == S_OK, "Expected S_OK, got %08x\n", hr);
 
     CreateBindCtx(0, &bctx);

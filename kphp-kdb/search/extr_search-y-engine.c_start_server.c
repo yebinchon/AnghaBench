@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NB_alloc ; 
- int /*<<< orphan*/  NB_max ; 
- int /*<<< orphan*/  NB_used ; 
- int /*<<< orphan*/  active_connections ; 
- int /*<<< orphan*/  ct_rpc_server ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  maxconn ; 
- int /*<<< orphan*/  process_signals () ; 
- int /*<<< orphan*/  rpc_methods ; 
- int /*<<< orphan*/  searchy_engine ; 
- int /*<<< orphan*/  searchy_functions ; 
- int /*<<< orphan*/  searchy_parse_function ; 
- int /*<<< orphan*/  searchy_stats ; 
- int /*<<< orphan*/  server_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  server_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- double tl_aio_timeout ; 
- int /*<<< orphan*/  tl_parse_function ; 
- int /*<<< orphan*/  tl_restart_all_ready () ; 
- int /*<<< orphan*/  tl_stat_function ; 
- int verbosity ; 
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int active_connections ;
+ int ct_rpc_server ;
+ int epoll_work (int) ;
+ int kprintf (char*,int ,int ,int ,int ,int ) ;
+ int maxconn ;
+ int process_signals () ;
+ int rpc_methods ;
+ int searchy_engine ;
+ int searchy_functions ;
+ int searchy_parse_function ;
+ int searchy_stats ;
+ int server_exit (int *) ;
+ int server_init (int *,int *,int *,int *) ;
+ double tl_aio_timeout ;
+ int tl_parse_function ;
+ int tl_restart_all_ready () ;
+ int tl_stat_function ;
+ int verbosity ;
 
 void start_server (void) {
   int i;
@@ -48,7 +40,7 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (verbosity > 1 && !(i & 255)) {
       kprintf ("epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
 
     epoll_work (57);

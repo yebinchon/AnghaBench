@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  close (int const) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int const,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,size_t const,size_t) ; 
- size_t fwrite (int /*<<< orphan*/  const*,int,size_t,int /*<<< orphan*/ *) ; 
- int mkstemp (char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strdup (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int FILE ;
+
+
+ int abort () ;
+ int close (int const) ;
+ int fclose (int *) ;
+ int * fdopen (int const,char*) ;
+ int fprintf (int ,char*,size_t const,size_t) ;
+ size_t fwrite (int const*,int,size_t,int *) ;
+ int mkstemp (char*) ;
+ int perror (char*) ;
+ int stderr ;
+ char* strdup (char*) ;
 
 __attribute__((used)) static char* fuzzer_get_tmpfile(const uint8_t* data, size_t size) {
   char* filename_buffer = strdup("/tmp/generate_temporary_file.XXXXXX");

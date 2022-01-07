@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpv_handle ;
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_FORMAT_DOUBLE ; 
- int /*<<< orphan*/ * jclient (int /*<<< orphan*/ *) ; 
- double js_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  js_tostring (int /*<<< orphan*/ *,int) ; 
- int mpv_set_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  push_status (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int mpv_handle ;
+typedef int js_State ;
+
+
+ int MPV_FORMAT_DOUBLE ;
+ int * jclient (int *) ;
+ double js_tonumber (int *,int) ;
+ int js_tostring (int *,int) ;
+ int mpv_set_property (int *,int ,int ,double*) ;
+ int push_status (int *,int) ;
 
 __attribute__((used)) static void script_set_property_number(js_State *J)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-struct TYPE_12__ {int /*<<< orphan*/  repos_relpath; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  local_abspath; } ;
-typedef  TYPE_2__ svn_wc__committable_external_info_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+struct TYPE_12__ {int repos_relpath; int repos_root_url; int local_abspath; } ;
+typedef TYPE_2__ svn_wc__committable_external_info_t ;
 struct TYPE_13__ {scalar_t__ apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_3__ svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_3__*) ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_3__* SVN_NO_ERROR ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_3__*) ; 
- TYPE_3__* svn_wc__db_base_get_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (TYPE_3__*) ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_3__* SVN_NO_ERROR ;
+ scalar_t__ strcmp (int ,char const*) ;
+ int svn_error_clear (TYPE_3__*) ;
+ TYPE_3__* svn_wc__db_base_get_info (int *,int *,int *,char const**,char const**,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int ,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 is_external_rolled_out(svn_boolean_t *is_rolled_out,
@@ -43,9 +43,9 @@ is_external_rolled_out(svn_boolean_t *is_rolled_out,
 
   *is_rolled_out = FALSE;
 
-  err = svn_wc__db_base_get_info(NULL, NULL, NULL, &repos_relpath,
-                                 &repos_root_url, NULL, NULL, NULL, NULL,
-                                 NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+  err = svn_wc__db_base_get_info(((void*)0), ((void*)0), ((void*)0), &repos_relpath,
+                                 &repos_root_url, ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                 ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                  wc_ctx->db, xinfo->local_abspath,
                                  scratch_pool, scratch_pool);
 

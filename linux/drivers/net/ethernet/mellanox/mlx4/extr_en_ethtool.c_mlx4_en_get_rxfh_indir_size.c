@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct net_device {int dummy; } ;
-struct mlx4_en_priv {int /*<<< orphan*/  rx_ring_num; } ;
+struct mlx4_en_priv {int rx_ring_num; } ;
 
-/* Variables and functions */
- struct mlx4_en_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  rounddown_pow_of_two (int /*<<< orphan*/ ) ; 
+
+ struct mlx4_en_priv* netdev_priv (struct net_device*) ;
+ int rounddown_pow_of_two (int ) ;
 
 __attribute__((used)) static u32 mlx4_en_get_rxfh_indir_size(struct net_device *dev)
 {
-	struct mlx4_en_priv *priv = netdev_priv(dev);
+ struct mlx4_en_priv *priv = netdev_priv(dev);
 
-	return rounddown_pow_of_two(priv->rx_ring_num);
+ return rounddown_pow_of_two(priv->rx_ring_num);
 }

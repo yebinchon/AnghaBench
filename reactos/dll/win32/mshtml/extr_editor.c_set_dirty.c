@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  scalar_t__ VARIANT_BOOL ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef scalar_t__ VARIANT_BOOL ;
 struct TYPE_7__ {TYPE_1__* doc_obj; } ;
-struct TYPE_6__ {int /*<<< orphan*/  editor; } ;
+struct TYPE_6__ {int editor; } ;
 struct TYPE_5__ {scalar_t__ usermode; TYPE_2__* nscontainer; } ;
-typedef  TYPE_3__ HTMLDocument ;
+typedef TYPE_3__ HTMLDocument ;
 
-/* Variables and functions */
- scalar_t__ EDITMODE ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIEditor_IncrementModificationCount (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nsIEditor_ResetModificationCount (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EDITMODE ;
+ int ERR (char*,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int nsIEditor_IncrementModificationCount (int ,int) ;
+ int nsIEditor_ResetModificationCount (int ) ;
 
 void set_dirty(HTMLDocument *This, VARIANT_BOOL dirty)
 {

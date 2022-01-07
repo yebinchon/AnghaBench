@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mid_q_entry {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GlobalMid_Lock ; 
- int /*<<< orphan*/  _cifs_mid_q_entry_release ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct mid_q_entry {int refcount; } ;
+
+
+ int GlobalMid_Lock ;
+ int _cifs_mid_q_entry_release ;
+ int kref_put (int *,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void cifs_mid_q_entry_release(struct mid_q_entry *midEntry)
 {
-	spin_lock(&GlobalMid_Lock);
-	kref_put(&midEntry->refcount, _cifs_mid_q_entry_release);
-	spin_unlock(&GlobalMid_Lock);
+ spin_lock(&GlobalMid_Lock);
+ kref_put(&midEntry->refcount, _cifs_mid_q_entry_release);
+ spin_unlock(&GlobalMid_Lock);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  IKE_SERVER ;
-typedef  int /*<<< orphan*/  IKE_PACKET_PAYLOAD ;
-typedef  int /*<<< orphan*/  IKE_CLIENT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IKE_PROTOCOL_ID_IKE ; 
- int /*<<< orphan*/ * IkeNewDeletePayload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  NewListSingle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendInformationalExchangePacket (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WriteBufInt64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT64 ;
+typedef int IKE_SERVER ;
+typedef int IKE_PACKET_PAYLOAD ;
+typedef int IKE_CLIENT ;
+typedef int BUF ;
+
+
+ int IKE_PROTOCOL_ID_IKE ;
+ int * IkeNewDeletePayload (int ,int ) ;
+ int * NewBuf () ;
+ int NewListSingle (int *) ;
+ int SendInformationalExchangePacket (int *,int *,int *) ;
+ int WriteBufInt64 (int *,int ) ;
 
 void SendDeleteIkeSaPacket(IKE_SERVER *ike, IKE_CLIENT *c, UINT64 init_cookie, UINT64 resp_cookie)
 {
-	IKE_PACKET_PAYLOAD *payload;
-	BUF *buf;
-	// Validate arguments
-	if (ike == NULL || c == NULL)
-	{
-		return;
-	}
+ IKE_PACKET_PAYLOAD *payload;
+ BUF *buf;
 
-	buf = NewBuf();
-	WriteBufInt64(buf, init_cookie);
-	WriteBufInt64(buf, resp_cookie);
+ if (ike == ((void*)0) || c == ((void*)0))
+ {
+  return;
+ }
 
-	payload = IkeNewDeletePayload(IKE_PROTOCOL_ID_IKE, NewListSingle(buf));
+ buf = NewBuf();
+ WriteBufInt64(buf, init_cookie);
+ WriteBufInt64(buf, resp_cookie);
 
-	SendInformationalExchangePacket(ike, c, payload);
+ payload = IkeNewDeletePayload(IKE_PROTOCOL_ID_IKE, NewListSingle(buf));
+
+ SendInformationalExchangePacket(ike, c, payload);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int /*<<< orphan*/  cmsTagSignature ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddIdentityCLUTfloat (int /*<<< orphan*/ *) ; 
- int CheckFloatLUT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CreateSegmentedCurve () ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  _cmsStageAllocLabV2ToV4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _cmsStageAllocLabV4ToV2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsAT_BEGIN ; 
- int /*<<< orphan*/  cmsAT_END ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsPipelineAlloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  cmsPipelineFree (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsStageAllocToneCurves (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsTagSignature ;
+typedef int cmsPipeline ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+
+
+ int AddIdentityCLUTfloat (int *) ;
+ int CheckFloatLUT (int *) ;
+ int * CreateSegmentedCurve () ;
+ int DbgThread () ;
+ int _cmsStageAllocLabV2ToV4 (int ) ;
+ int _cmsStageAllocLabV4ToV2 (int ) ;
+ int cmsAT_BEGIN ;
+ int cmsAT_END ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int * cmsPipelineAlloc (int ,int,int) ;
+ int cmsPipelineFree (int ,int *) ;
+ int cmsPipelineInsertStage (int ,int *,int ,int ) ;
+ scalar_t__ cmsReadTag (int ,int ,int ) ;
+ int cmsStageAllocToneCurves (int ,int,int **) ;
+ int cmsWriteTag (int ,int ,int ,int *) ;
 
 __attribute__((used)) static
-cmsInt32Number CheckMPE(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTagSignature tag)
+cmsInt32Number CheckMPE(cmsInt32Number Pass, cmsHPROFILE hProfile, cmsTagSignature tag)
 {
     cmsPipeline* Lut, *Pt;
     cmsToneCurve* G[3];
@@ -60,7 +60,7 @@ cmsInt32Number CheckMPE(cmsInt32Number Pass,  cmsHPROFILE hProfile, cmsTagSignat
 
         case 2:
             Pt = (cmsPipeline *) cmsReadTag(DbgThread(), hProfile, tag);
-            if (Pt == NULL) return 0;
+            if (Pt == ((void*)0)) return 0;
             return CheckFloatLUT(Pt);
 
         default:

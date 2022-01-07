@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
 struct TYPE_7__ {int hlfmt_disable; } ;
-typedef  TYPE_1__ hashconfig_t ;
+typedef TYPE_1__ hashconfig_t ;
 struct TYPE_8__ {TYPE_1__* hashconfig; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  HCFILE ;
+typedef TYPE_2__ hashcat_ctx_t ;
+typedef int HCFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HCBUFSIZ_LARGE ; 
- scalar_t__ HLFMTS_CNT ; 
- scalar_t__ HLFMT_HASHCAT ; 
- size_t HLFMT_PASSWD ; 
- size_t HLFMT_PWDUMP ; 
- size_t HLFMT_SHADOW ; 
- size_t fgetl (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- int /*<<< orphan*/  hc_feof (int /*<<< orphan*/ *) ; 
- scalar_t__ hccalloc (scalar_t__,int) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- scalar_t__ hcmalloc (int /*<<< orphan*/ ) ; 
- scalar_t__ hlfmt_detect_passwd (TYPE_2__*,char*,size_t const) ; 
- scalar_t__ hlfmt_detect_pwdump (TYPE_2__*,char*,size_t const) ; 
- scalar_t__ hlfmt_detect_shadow (TYPE_2__*,char*,size_t const) ; 
+
+ int HCBUFSIZ_LARGE ;
+ scalar_t__ HLFMTS_CNT ;
+ scalar_t__ HLFMT_HASHCAT ;
+ size_t HLFMT_PASSWD ;
+ size_t HLFMT_PWDUMP ;
+ size_t HLFMT_SHADOW ;
+ size_t fgetl (int *,char*,int ) ;
+ int free (scalar_t__*) ;
+ int hc_feof (int *) ;
+ scalar_t__ hccalloc (scalar_t__,int) ;
+ int hcfree (char*) ;
+ scalar_t__ hcmalloc (int ) ;
+ scalar_t__ hlfmt_detect_passwd (TYPE_2__*,char*,size_t const) ;
+ scalar_t__ hlfmt_detect_pwdump (TYPE_2__*,char*,size_t const) ;
+ scalar_t__ hlfmt_detect_shadow (TYPE_2__*,char*,size_t const) ;
 
 u32 hlfmt_detect (hashcat_ctx_t *hashcat_ctx, HCFILE *fp, u32 max_check)
 {
   const hashconfig_t *hashconfig = hashcat_ctx->hashconfig;
 
-  // Exception: those formats are wrongly detected as HLFMT_SHADOW, prevent it
 
-  if (hashconfig->hlfmt_disable == true) return HLFMT_HASHCAT;
+
+  if (hashconfig->hlfmt_disable == 1) return HLFMT_HASHCAT;
 
   u32 *formats_cnt = (u32 *) hccalloc (HLFMTS_CNT, sizeof (u32));
 

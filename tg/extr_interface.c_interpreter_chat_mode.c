@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TLS ; 
- int /*<<< orphan*/  chat_mode_id ; 
- scalar_t__ in_chat_mode ; 
- int /*<<< orphan*/  offline_mode ; 
- int /*<<< orphan*/  print_msg_list_gw ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  tgl_do_get_history (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tgl_do_mark_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tgl_do_send_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_prompt () ; 
+ int TLS ;
+ int chat_mode_id ;
+ scalar_t__ in_chat_mode ;
+ int offline_mode ;
+ int print_msg_list_gw ;
+ int sscanf (char*,char*,int*) ;
+ scalar_t__ strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ int tgl_do_get_history (int ,int ,int ,int,int ,int ,int ) ;
+ int tgl_do_mark_read (int ,int ,int ,int ) ;
+ int tgl_do_send_message (int ,int ,char*,scalar_t__,int ,int *,int ,int ) ;
+ int update_prompt () ;
 
 void interpreter_chat_mode (char *line) {
-  if (line == NULL || /* EOF received */
+  if (line == ((void*)0) ||
           !strncmp (line, "/exit", 5) || !strncmp (line, "/quit", 5)) {
     in_chat_mode = 0;
     update_prompt ();
@@ -44,6 +36,6 @@ void interpreter_chat_mode (char *line) {
     return;
   }
   if (strlen (line) > 0) {
-    tgl_do_send_message (TLS, chat_mode_id, line, strlen (line), 0, NULL, 0, 0);
+    tgl_do_send_message (TLS, chat_mode_id, line, strlen (line), 0, ((void*)0), 0, 0);
   }
 }

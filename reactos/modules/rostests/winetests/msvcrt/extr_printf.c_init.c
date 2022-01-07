@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- void* p__ecvt_s ; 
- void* p__fcvt_s ; 
- void* p__get_output_format ; 
- void* p__set_output_format ; 
- void* p__vscprintf ; 
- void* p__vscwprintf ; 
- void* p__vsnwprintf_s ; 
- void* p__vsprintf_p ; 
- void* p__vswprintf ; 
- void* p__vswprintf_c ; 
- void* p__vswprintf_c_l ; 
- void* p__vswprintf_l ; 
- void* p__vswprintf_p_l ; 
- void* p_sprintf ; 
- void* p_vswprintf ; 
+
+
+
+typedef int HMODULE ;
+
+
+ int GetModuleHandleA (char*) ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ void* p__ecvt_s ;
+ void* p__fcvt_s ;
+ void* p__get_output_format ;
+ void* p__set_output_format ;
+ void* p__vscprintf ;
+ void* p__vscwprintf ;
+ void* p__vsnwprintf_s ;
+ void* p__vsprintf_p ;
+ void* p__vswprintf ;
+ void* p__vswprintf_c ;
+ void* p__vswprintf_c_l ;
+ void* p__vswprintf_l ;
+ void* p__vswprintf_p_l ;
+ void* p_sprintf ;
+ void* p_vswprintf ;
 
 __attribute__((used)) static void init( void )
 {

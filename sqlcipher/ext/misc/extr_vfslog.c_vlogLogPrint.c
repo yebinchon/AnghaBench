@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  z3 ;
-typedef  int /*<<< orphan*/  z2 ;
-typedef  int /*<<< orphan*/  z1 ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-struct TYPE_3__ {scalar_t__ zFilename; int /*<<< orphan*/  out; } ;
-typedef  TYPE_1__ VLogLog ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,char*,char*,char*,int) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,int,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int z3 ;
+typedef int z2 ;
+typedef int z1 ;
+typedef int sqlite3_int64 ;
+struct TYPE_3__ {scalar_t__ zFilename; int out; } ;
+typedef TYPE_1__ VLogLog ;
+
+
+ int fprintf (int ,char*,int ,int ,char const*,int,char*,char*,char*,int) ;
+ int sqlite3_snprintf (int,char*,char*,int,...) ;
 
 __attribute__((used)) static void vlogLogPrint(
-  VLogLog *pLog,                 /* The log file to write into */
-  sqlite3_int64 tStart,            /* Start time of system call */
-  sqlite3_int64 tElapse,           /* Elapse time of system call */
-  const char *zOp,                 /* Type of system call */
-  sqlite3_int64 iArg1,             /* First argument */
-  sqlite3_int64 iArg2,             /* Second argument */
-  const char *zArg3,               /* Third argument */
-  int iRes                         /* Result */
+  VLogLog *pLog,
+  sqlite3_int64 tStart,
+  sqlite3_int64 tElapse,
+  const char *zOp,
+  sqlite3_int64 iArg1,
+  sqlite3_int64 iArg2,
+  const char *zArg3,
+  int iRes
 ){
   char z1[40], z2[40], z3[2000];
   if( pLog==0 ) return;

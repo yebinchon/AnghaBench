@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {struct TYPE_11__* Flink; } ;
 struct TYPE_13__ {TYPE_1__ ReceiveQueue; } ;
-struct TYPE_12__ {scalar_t__ Irp; int /*<<< orphan*/  ListEntry; } ;
-typedef  TYPE_1__* PLIST_ENTRY ;
-typedef  scalar_t__ PIRP ;
-typedef  TYPE_2__* PDATAGRAM_RECEIVE_REQUEST ;
-typedef  TYPE_3__* PADDRESS_FILE ;
-typedef  int /*<<< orphan*/  KIRQL ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_12__ {scalar_t__ Irp; int ListEntry; } ;
+typedef TYPE_1__* PLIST_ENTRY ;
+typedef scalar_t__ PIRP ;
+typedef TYPE_2__* PDATAGRAM_RECEIVE_REQUEST ;
+typedef TYPE_3__* PADDRESS_FILE ;
+typedef int KIRQL ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- TYPE_2__* CONTAINING_RECORD (TYPE_1__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  DATAGRAM_RECEIVE_REQUEST ; 
- int /*<<< orphan*/  DATAGRAM_RECV_TAG ; 
- int /*<<< orphan*/  ExFreePoolWithTag (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LockObject (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_TRACE ; 
- int /*<<< orphan*/  RemoveEntryList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UnlockObject (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* CONTAINING_RECORD (TYPE_1__*,int ,TYPE_1__*) ;
+ int DATAGRAM_RECEIVE_REQUEST ;
+ int DATAGRAM_RECV_TAG ;
+ int ExFreePoolWithTag (TYPE_2__*,int ) ;
+ int FALSE ;
+ int LockObject (TYPE_3__*,int *) ;
+ int MAX_TRACE ;
+ int RemoveEntryList (int *) ;
+ int TI_DbgPrint (int ,char*) ;
+ int TRUE ;
+ int UnlockObject (TYPE_3__*,int ) ;
 
 BOOLEAN DGRemoveIRP(
     PADDRESS_FILE AddrFile,
@@ -50,7 +50,7 @@ BOOLEAN DGRemoveIRP(
 
     LockObject(AddrFile, &OldIrql);
 
-    for( ListEntry = AddrFile->ReceiveQueue.Flink; 
+    for( ListEntry = AddrFile->ReceiveQueue.Flink;
          ListEntry != &AddrFile->ReceiveQueue;
          ListEntry = ListEntry->Flink )
     {

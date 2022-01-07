@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  framebuffer_size_callback ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (float,float,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glColor3f (float,float,float) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glOrtho (float,float,float,float,float,float) ; 
- int /*<<< orphan*/  glRectf (float,float,float,float) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWaitEvents () ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ int error_callback ;
+ int exit (int ) ;
+ int fprintf (int ,char*) ;
+ int framebuffer_size_callback ;
+ int getopt (int,char**,char*) ;
+ int glClear (int ) ;
+ int glClearColor (float,float,float,int ) ;
+ int glColor3f (float,float,float) ;
+ int glMatrixMode (int ) ;
+ int glOrtho (float,float,float,float,float,float) ;
+ int glRectf (float,float,float,float) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetFramebufferSizeCallback (int *,int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwSwapInterval (int) ;
+ int glfwTerminate () ;
+ int glfwWaitEvents () ;
+ int glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int stderr ;
+ int usage () ;
 
 int main(int argc, char** argv)
 {
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
         exit(EXIT_FAILURE);
     }
 
-    window = glfwCreateWindow(200, 200, "Clipboard Test", NULL, NULL);
+    window = glfwCreateWindow(200, 200, "Clipboard Test", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();

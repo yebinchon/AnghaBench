@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int READ_PERI_REG (int /*<<< orphan*/ ) ; 
- int UART_CLKDIV_M ; 
- int /*<<< orphan*/  UART_CLKDIV_REG (int) ; 
- int /*<<< orphan*/  uart_div_modify (int,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int READ_PERI_REG (int ) ;
+ int UART_CLKDIV_M ;
+ int UART_CLKDIV_REG (int) ;
+ int uart_div_modify (int,int) ;
 
 uint32_t set_baud_rate(uint32_t uart_no, uint32_t old_baud_rate,
                        uint32_t new_baud_rate) {

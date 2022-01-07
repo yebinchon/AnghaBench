@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int metafile_len; int /*<<< orphan*/  sugg; int /*<<< orphan*/  new_exceptions; int /*<<< orphan*/ * prev_used; int /*<<< orphan*/ * next_used; int /*<<< orphan*/ * aio; int /*<<< orphan*/ * metafile; } ;
-typedef  TYPE_1__ user ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHG_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trp_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int metafile_len; int sugg; int new_exceptions; int * prev_used; int * next_used; int * aio; int * metafile; } ;
+typedef TYPE_1__ user ;
+
+
+ int CHG_INIT (int ) ;
+ int trp_init (int *) ;
 
 void user_init (user *u) {
-  u->metafile = NULL;
+  u->metafile = ((void*)0);
   u->metafile_len = -1;
-  u->aio = NULL;
-  u->next_used = NULL;
-  u->prev_used = NULL;
+  u->aio = ((void*)0);
+  u->next_used = ((void*)0);
+  u->prev_used = ((void*)0);
 
   CHG_INIT (u->new_exceptions);
   trp_init (&u->sugg);

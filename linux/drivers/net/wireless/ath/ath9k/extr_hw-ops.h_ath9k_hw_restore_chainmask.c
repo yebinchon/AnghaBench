@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ath_hw {int dummy; } ;
 struct TYPE_2__ {void (* restore_chainmask ) (struct ath_hw*) ;} ;
 
-/* Variables and functions */
- TYPE_1__* ath9k_hw_private_ops (struct ath_hw*) ; 
- void stub1 (struct ath_hw*) ; 
+
+ TYPE_1__* ath9k_hw_private_ops (struct ath_hw*) ;
+ void stub1 (struct ath_hw*) ;
 
 __attribute__((used)) static inline void ath9k_hw_restore_chainmask(struct ath_hw *ah)
 {
-	if (!ath9k_hw_private_ops(ah)->restore_chainmask)
-		return;
+ if (!ath9k_hw_private_ops(ah)->restore_chainmask)
+  return;
 
-	return ath9k_hw_private_ops(ah)->restore_chainmask(ah);
+ return ath9k_hw_private_ops(ah)->restore_chainmask(ah);
 }

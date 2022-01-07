@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cfg_file ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xstrdup (char const*) ; 
+ int cfg_file ;
+ int free (int ) ;
+ int xstrdup (char const*) ;
 
 void
 set_cfg_file(const char *path)
 {
-	free(cfg_file);
-	cfg_file = xstrdup(path);
+ free(cfg_file);
+ cfg_file = xstrdup(path);
 }

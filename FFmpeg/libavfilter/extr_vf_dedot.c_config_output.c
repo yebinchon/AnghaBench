@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; TYPE_1__* comp; } ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int log2_chroma_h; int log2_chroma_w; TYPE_1__* comp; } ;
 struct TYPE_10__ {TYPE_3__** inputs; TYPE_2__* priv; } ;
-struct TYPE_9__ {void* h; void* w; int /*<<< orphan*/  format; TYPE_4__* src; } ;
-struct TYPE_8__ {int depth; int max; int luma2d; int lt; int lumaT; int tl; int chromaT1; int tc; int chromaT2; int ct; int /*<<< orphan*/  derainbow; int /*<<< orphan*/  dedotcrawl; void** planeheight; TYPE_6__* desc; void** planewidth; int /*<<< orphan*/  nb_planes; } ;
+struct TYPE_9__ {void* h; void* w; int format; TYPE_4__* src; } ;
+struct TYPE_8__ {int depth; int max; int luma2d; int lt; int lumaT; int tl; int chromaT1; int tc; int chromaT2; int ct; int derainbow; int dedotcrawl; void** planeheight; TYPE_6__* desc; void** planewidth; int nb_planes; } ;
 struct TYPE_7__ {int depth; } ;
-typedef  TYPE_2__ DedotContext ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_2__ DedotContext ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_BUG ; 
- void* AV_CEIL_RSHIFT (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_pix_fmt_count_planes (int /*<<< orphan*/ ) ; 
- TYPE_6__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dedotcrawl16 ; 
- int /*<<< orphan*/  dedotcrawl8 ; 
- int /*<<< orphan*/  derainbow16 ; 
- int /*<<< orphan*/  derainbow8 ; 
+
+ int AVERROR_BUG ;
+ void* AV_CEIL_RSHIFT (void*,int ) ;
+ int av_pix_fmt_count_planes (int ) ;
+ TYPE_6__* av_pix_fmt_desc_get (int ) ;
+ int dedotcrawl16 ;
+ int dedotcrawl8 ;
+ int derainbow16 ;
+ int derainbow8 ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ DRIVE_CDROM ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ GetDriveTypeA (char*) ; 
- char GetLastError () ; 
- int GetLogicalDrives () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  test_dvd_read_structure (scalar_t__) ; 
- int /*<<< orphan*/  trace (char*,char) ; 
+
+
+
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int,int *,int ,int ,int ) ;
+ scalar_t__ DRIVE_CDROM ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_READ ;
+ scalar_t__ GetDriveTypeA (char*) ;
+ char GetLastError () ;
+ int GetLogicalDrives () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int test_dvd_read_structure (scalar_t__) ;
+ int trace (char*,char) ;
 
 __attribute__((used)) static void test_cdrom_ioctl(void)
 {
@@ -56,14 +56,14 @@ __attribute__((used)) static void test_cdrom_ioctl(void)
         trace("Testing with %c:\n", drive_letter);
 
         drive_full_path[4] = drive_letter;
-        handle = CreateFileA(drive_full_path, GENERIC_READ, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, 0);
+        handle = CreateFileA(drive_full_path, GENERIC_READ, FILE_SHARE_READ|FILE_SHARE_WRITE, ((void*)0), OPEN_EXISTING, 0, 0);
         if(handle == INVALID_HANDLE_VALUE)
         {
             trace("Failed to open the device : %u\n", GetLastError());
             continue;
         }
 
-        /* Add your tests here */
+
         test_dvd_read_structure(handle);
 
         CloseHandle(handle);

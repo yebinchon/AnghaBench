@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct object_id {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RESOLVE_REF_READING ; 
- int read_ref_full (char const*,int /*<<< orphan*/ ,struct object_id*,int /*<<< orphan*/ *) ; 
+
+ int RESOLVE_REF_READING ;
+ int read_ref_full (char const*,int ,struct object_id*,int *) ;
 
 int read_ref(const char *refname, struct object_id *oid)
 {
-	return read_ref_full(refname, RESOLVE_REF_READING, oid, NULL);
+ return read_ref_full(refname, RESOLVE_REF_READING, oid, ((void*)0));
 }

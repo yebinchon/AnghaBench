@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACKET ;
 
-/* Variables and functions */
- scalar_t__ BUF_LEN ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  PACKET_buf_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  PACKET_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PACKET_forward (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PACKET_memdup (int /*<<< orphan*/ *,unsigned char**,size_t*) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  TEST_size_t_eq (size_t,scalar_t__) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smbuf ; 
+
+
+
+typedef int PACKET ;
+
+
+ scalar_t__ BUF_LEN ;
+ int OPENSSL_free (unsigned char*) ;
+ int PACKET_buf_init (int *,int ,scalar_t__) ;
+ int PACKET_data (int *) ;
+ int PACKET_forward (int *,int) ;
+ int PACKET_memdup (int *,unsigned char**,size_t*) ;
+ int TEST_mem_eq (unsigned char*,size_t,int ,size_t) ;
+ int TEST_size_t_eq (size_t,scalar_t__) ;
+ int TEST_true (int ) ;
+ int smbuf ;
 
 __attribute__((used)) static int test_PACKET_memdup(void)
 {
-    unsigned char *data = NULL;
+    unsigned char *data = ((void*)0);
     size_t len;
     PACKET pkt;
     int result = 0;

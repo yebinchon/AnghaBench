@@ -1,132 +1,132 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int UINT ;
-typedef  int UCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT64 ;
+typedef int UINT ;
+typedef int UCHAR ;
 struct TYPE_5__ {int OpCode; int KeyId; int DataSize; int NumAck; int* AckPacketId; void* Data; void* PacketId; void* YourSessionId; void* MySessionId; } ;
-typedef  TYPE_1__ OPENVPN_PACKET ;
+typedef TYPE_1__ OPENVPN_PACKET ;
 
-/* Variables and functions */
- void* Clone (int*,int) ; 
- int OPENVPN_P_ACK_V1 ; 
- int OPENVPN_P_DATA_V1 ; 
- int /*<<< orphan*/  OvsFreePacket (TYPE_1__*) ; 
- void* READ_UINT (int*) ; 
- void* READ_UINT64 (int*) ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+ void* Clone (int*,int) ;
+ int OPENVPN_P_ACK_V1 ;
+ int OPENVPN_P_DATA_V1 ;
+ int OvsFreePacket (TYPE_1__*) ;
+ void* READ_UINT (int*) ;
+ void* READ_UINT64 (int*) ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 OPENVPN_PACKET *OvsParsePacket(UCHAR *data, UINT size)
 {
-	UCHAR uc;
-	OPENVPN_PACKET *ret = NULL;
-	// Validate arguments
-	if (data == NULL || size == 0)
-	{
-		return NULL;
-	}
+ UCHAR uc;
+ OPENVPN_PACKET *ret = ((void*)0);
 
-	ret = ZeroMalloc(sizeof(OPENVPN_PACKET));
+ if (data == ((void*)0) || size == 0)
+ {
+  return ((void*)0);
+ }
 
-	uc = *((UCHAR *)data);
-	data++;
-	size--;
+ ret = ZeroMalloc(sizeof(OPENVPN_PACKET));
 
-	ret->OpCode = ((uc & 0xF8) >> 3) & 0x1F;
-	ret->KeyId = uc & 0x07;
+ uc = *((UCHAR *)data);
+ data++;
+ size--;
 
-	if (ret->OpCode == OPENVPN_P_DATA_V1)
-	{
-		// Data packet
-		ret->DataSize = size;
-		ret->Data = Clone(data, size);
-		return ret;
-	}
+ ret->OpCode = ((uc & 0xF8) >> 3) & 0x1F;
+ ret->KeyId = uc & 0x07;
 
-	// Sender Channel ID
-	if (size < sizeof(UINT64))
-	{
-		goto LABEL_ERROR;
-	}
-	ret->MySessionId = READ_UINT64(data);
-	data += sizeof(UINT64);
-	size -= sizeof(UINT64);
+ if (ret->OpCode == OPENVPN_P_DATA_V1)
+ {
 
-	// ACK
-	if (size < 1)
-	{
-		goto LABEL_ERROR;
-	}
-	uc = *((UCHAR *)data);
-	data++;
-	size--;
+  ret->DataSize = size;
+  ret->Data = Clone(data, size);
+  return ret;
+ }
 
-	ret->NumAck = uc;
 
-	if (ret->NumAck > 4)
-	{
-		goto LABEL_ERROR;
-	}
+ if (size < sizeof(UINT64))
+ {
+  goto LABEL_ERROR;
+ }
+ ret->MySessionId = READ_UINT64(data);
+ data += sizeof(UINT64);
+ size -= sizeof(UINT64);
 
-	if (ret->NumAck >= 1)
-	{
-		UINT i;
 
-		if (size < (sizeof(UINT) * (UINT)ret->NumAck + sizeof(UINT64)))
-		{
-			goto LABEL_ERROR;
-		}
+ if (size < 1)
+ {
+  goto LABEL_ERROR;
+ }
+ uc = *((UCHAR *)data);
+ data++;
+ size--;
 
-		for (i = 0;i < ret->NumAck;i++)
-		{
-			UINT ui;
+ ret->NumAck = uc;
 
-			ui = READ_UINT(data);
+ if (ret->NumAck > 4)
+ {
+  goto LABEL_ERROR;
+ }
 
-			ret->AckPacketId[i] = ui;
+ if (ret->NumAck >= 1)
+ {
+  UINT i;
 
-			data += sizeof(UINT);
-			size -= sizeof(UINT);
-		}
+  if (size < (sizeof(UINT) * (UINT)ret->NumAck + sizeof(UINT64)))
+  {
+   goto LABEL_ERROR;
+  }
 
-		ret->YourSessionId = READ_UINT64(data);
-		data += sizeof(UINT64);
-		size -= sizeof(UINT64);
-	}
+  for (i = 0;i < ret->NumAck;i++)
+  {
+   UINT ui;
 
-	if (ret->OpCode != OPENVPN_P_ACK_V1)
-	{
-		// Read the Packet ID Because in the case of other than ACK
-		if (size < sizeof(UINT))
-		{
-			goto LABEL_ERROR;
-		}
+   ui = READ_UINT(data);
 
-		ret->PacketId = READ_UINT(data);
-		data += sizeof(UINT);
-		size -= sizeof(UINT);
+   ret->AckPacketId[i] = ui;
 
-		// Payload
-		ret->DataSize = size;
-		if (size >= 1)
-		{
-			ret->Data = Clone(data, size);
-		}
-	}
+   data += sizeof(UINT);
+   size -= sizeof(UINT);
+  }
 
-	return ret;
+  ret->YourSessionId = READ_UINT64(data);
+  data += sizeof(UINT64);
+  size -= sizeof(UINT64);
+ }
+
+ if (ret->OpCode != OPENVPN_P_ACK_V1)
+ {
+
+  if (size < sizeof(UINT))
+  {
+   goto LABEL_ERROR;
+  }
+
+  ret->PacketId = READ_UINT(data);
+  data += sizeof(UINT);
+  size -= sizeof(UINT);
+
+
+  ret->DataSize = size;
+  if (size >= 1)
+  {
+   ret->Data = Clone(data, size);
+  }
+ }
+
+ return ret;
 
 LABEL_ERROR:
-	OvsFreePacket(ret);
-	return NULL;
+ OvsFreePacket(ret);
+ return ((void*)0);
 }

@@ -1,125 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT32 ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT32 ;
 struct TYPE_10__ {char* TableSignature; char* TableId; } ;
 struct TYPE_7__ {char* String; scalar_t__* Buffer; } ;
-struct TYPE_8__ {void* ParseOpcode; TYPE_3__* Next; TYPE_1__ Value; int /*<<< orphan*/  Filename; TYPE_3__* Child; } ;
+struct TYPE_8__ {void* ParseOpcode; TYPE_3__* Next; TYPE_1__ Value; int Filename; TYPE_3__* Child; } ;
 struct TYPE_9__ {TYPE_2__ Asl; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int ACPI_SIZE ;
-typedef  TYPE_3__ ACPI_PARSE_OBJECT ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_SIZE ;
+typedef TYPE_3__ ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_NAMESEG_SIZE ; 
- scalar_t__ ACPI_OEM_ID_SIZE ; 
- int ACPI_OEM_TABLE_ID_SIZE ; 
- int /*<<< orphan*/  ASL_ERROR ; 
- int /*<<< orphan*/  ASL_FILE_AML_OUTPUT ; 
- int /*<<< orphan*/  ASL_MSG_OEM_ID ; 
- int /*<<< orphan*/  ASL_MSG_OEM_TABLE_ID ; 
- int /*<<< orphan*/  ASL_MSG_OUTPUT_FILE_OPEN ; 
- int /*<<< orphan*/  ASL_MSG_TABLE_SIGNATURE ; 
- int /*<<< orphan*/  AslError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,char*) ; 
- char* AslGbl_DirectoryPath ; 
- TYPE_5__* AslGbl_FilesList ; 
- char* AslGbl_OutputFilenamePrefix ; 
- char* AslGbl_TableId ; 
- char* AslGbl_TableSignature ; 
- scalar_t__ AslGbl_UseDefaultAmlFilename ; 
- int /*<<< orphan*/  FlCloseFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FlDeleteFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FlOpenAmlOutputFile (char*) ; 
- int /*<<< orphan*/  FlSwitchFileSet (int /*<<< orphan*/ ) ; 
- void* PARSEOP_DEFAULT_ARG ; 
- int /*<<< orphan*/  UtConvertBackslashes (char*) ; 
- char* UtLocalCacheCalloc (int) ; 
- int /*<<< orphan*/  isalnum (int) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ scalar_t__ ACPI_NAMESEG_SIZE ;
+ scalar_t__ ACPI_OEM_ID_SIZE ;
+ int ACPI_OEM_TABLE_ID_SIZE ;
+ int ASL_ERROR ;
+ int ASL_FILE_AML_OUTPUT ;
+ int ASL_MSG_OEM_ID ;
+ int ASL_MSG_OEM_TABLE_ID ;
+ int ASL_MSG_OUTPUT_FILE_OPEN ;
+ int ASL_MSG_TABLE_SIGNATURE ;
+ int AslError (int ,int ,TYPE_3__*,char*) ;
+ char* AslGbl_DirectoryPath ;
+ TYPE_5__* AslGbl_FilesList ;
+ char* AslGbl_OutputFilenamePrefix ;
+ char* AslGbl_TableId ;
+ char* AslGbl_TableSignature ;
+ scalar_t__ AslGbl_UseDefaultAmlFilename ;
+ int FlCloseFile (int ) ;
+ int FlDeleteFile (int ) ;
+ int FlOpenAmlOutputFile (char*) ;
+ int FlSwitchFileSet (int ) ;
+ void* PARSEOP_DEFAULT_ARG ;
+ int UtConvertBackslashes (char*) ;
+ char* UtLocalCacheCalloc (int) ;
+ int isalnum (int) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void
 OpnDoDefinitionBlock (
-    ACPI_PARSE_OBJECT       *Op)
+    ACPI_PARSE_OBJECT *Op)
 {
-    ACPI_PARSE_OBJECT       *Child;
-    ACPI_SIZE               Length;
-    UINT32                  i;
-    char                    *Filename;
-    ACPI_STATUS             Status;
-
-
-    /*
-     * These nodes get stuffed into the table header. They are special
-     * cased when the table is written to the output file.
-     *
-     * Mark all of these nodes as non-usable so they won't get output
-     * as AML opcodes!
-     */
-
-    /* Get AML filename. Use it if non-null */
-
+    ACPI_PARSE_OBJECT *Child;
+    ACPI_SIZE Length;
+    UINT32 i;
+    char *Filename;
+    ACPI_STATUS Status;
     Child = Op->Asl.Child;
-    if (Child->Asl.Value.Buffer  &&
+    if (Child->Asl.Value.Buffer &&
         *Child->Asl.Value.Buffer &&
         (AslGbl_UseDefaultAmlFilename))
     {
-        /*
-         * The walk may traverse multiple definition blocks. Switch files
-         * to ensure that the correct files are manipulated.
-         */
+
+
+
+
         FlSwitchFileSet (Op->Asl.Filename);
 
-        /*
-         * We will use the AML filename that is embedded in the source file
-         * for the output filename.
-         */
+
+
+
+
         Filename = UtLocalCacheCalloc (strlen (AslGbl_DirectoryPath) +
             strlen ((char *) Child->Asl.Value.Buffer) + 1);
 
-        /* Prepend the current directory path */
+
 
         strcpy (Filename, AslGbl_DirectoryPath);
         strcat (Filename, (char *) Child->Asl.Value.Buffer);
 
         AslGbl_OutputFilenamePrefix = Filename;
         UtConvertBackslashes (AslGbl_OutputFilenamePrefix);
-
-        /*
-         * Use the definition block file parameter instead of the input
-         * filename. Since all files were opened previously, remove the
-         * existing file and open a new file with the name of this
-         * definiton block parameter. Since AML code generation has yet
-         * to happen, the previous file can be removed without any impacts.
-         */
         FlCloseFile (ASL_FILE_AML_OUTPUT);
         FlDeleteFile (ASL_FILE_AML_OUTPUT);
         Status = FlOpenAmlOutputFile (AslGbl_OutputFilenamePrefix);
         if (ACPI_FAILURE (Status))
         {
-            AslError (ASL_ERROR, ASL_MSG_OUTPUT_FILE_OPEN, NULL, NULL);
+            AslError (ASL_ERROR, ASL_MSG_OUTPUT_FILE_OPEN, ((void*)0), ((void*)0));
             return;
         }
     }
 
     Child->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;
 
-    /* Signature */
+
 
     Child = Child->Asl.Next;
     Child->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;
@@ -143,16 +123,16 @@ OpnDoDefinitionBlock (
         }
     }
 
-    /* Revision */
+
 
     Child = Child->Asl.Next;
     Child->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;
 
-    /*
-     * We used the revision to set the integer width earlier
-     */
 
-    /* OEMID */
+
+
+
+
 
     Child = Child->Asl.Next;
     Child->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;
@@ -163,7 +143,7 @@ OpnDoDefinitionBlock (
             "Length cannot exceed 6 characters");
     }
 
-    /* OEM TableID */
+
 
     Child = Child->Asl.Next;
     Child->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;
@@ -180,10 +160,10 @@ OpnDoDefinitionBlock (
         strcpy (AslGbl_TableId, Child->Asl.Value.String);
         AslGbl_FilesList->TableId = AslGbl_TableId;
 
-        /*
-         * Convert anything non-alphanumeric to an underscore. This
-         * allows us to use the TableID to generate unique C symbols.
-         */
+
+
+
+
         for (i = 0; i < Length; i++)
         {
             if (!isalnum ((int) AslGbl_TableId[i]))
@@ -193,7 +173,7 @@ OpnDoDefinitionBlock (
         }
     }
 
-    /* OEM Revision */
+
 
     Child = Child->Asl.Next;
     Child->Asl.ParseOpcode = PARSEOP_DEFAULT_ARG;

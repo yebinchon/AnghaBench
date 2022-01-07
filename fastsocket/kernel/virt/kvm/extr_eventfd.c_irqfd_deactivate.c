@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _irqfd {int /*<<< orphan*/  shutdown; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  irqfd_cleanup_wq ; 
- int /*<<< orphan*/  irqfd_is_active (struct _irqfd*) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct _irqfd {int shutdown; int list; } ;
+
+
+ int BUG_ON (int) ;
+ int irqfd_cleanup_wq ;
+ int irqfd_is_active (struct _irqfd*) ;
+ int list_del_init (int *) ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void
 irqfd_deactivate(struct _irqfd *irqfd)
 {
-	BUG_ON(!irqfd_is_active(irqfd));
+ BUG_ON(!irqfd_is_active(irqfd));
 
-	list_del_init(&irqfd->list);
+ list_del_init(&irqfd->list);
 
-	queue_work(irqfd_cleanup_wq, &irqfd->shutdown);
+ queue_work(irqfd_cleanup_wq, &irqfd->shutdown);
 }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MACH_IS_Q40 ; 
- int q40_probe_irq_off (unsigned long) ; 
+ scalar_t__ MACH_IS_Q40 ;
+ int q40_probe_irq_off (unsigned long) ;
 
 int probe_irq_off (unsigned long irqs)
 {
-#ifdef CONFIG_Q40
-	if (MACH_IS_Q40)
-		return q40_probe_irq_off(irqs);
-#endif
-	return 0;
+
+
+
+
+ return 0;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct clock_event_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cev_delta2ns (unsigned long,struct clock_event_device*,int) ; 
+
+ int cev_delta2ns (unsigned long,struct clock_event_device*,int) ;
 
 u64 clockevent_delta2ns(unsigned long latch, struct clock_event_device *evt)
 {
-	return cev_delta2ns(latch, evt, false);
+ return cev_delta2ns(latch, evt, 0);
 }

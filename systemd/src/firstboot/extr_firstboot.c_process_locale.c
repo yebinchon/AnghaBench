@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  COPY_REFLINK ; 
- int ENOENT ; 
- int /*<<< orphan*/  F_OK ; 
- scalar_t__ arg_copy_locale ; 
- int /*<<< orphan*/  arg_locale ; 
- int /*<<< orphan*/  arg_locale_messages ; 
- scalar_t__ arg_root ; 
- int copy_file (char*,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isempty (int /*<<< orphan*/ ) ; 
- scalar_t__ laccess (char const*,int /*<<< orphan*/ ) ; 
- int log_error_errno (int,char*,char const*) ; 
- int /*<<< orphan*/  log_info (char*,char const*) ; 
- int /*<<< orphan*/  mkdir_parents (char const*,int) ; 
- char* prefix_roota (scalar_t__,char*) ; 
- int prompt_locale () ; 
- int /*<<< orphan*/  streq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* strjoina (char*,int /*<<< orphan*/ ) ; 
- int write_env_file (char const*,char**) ; 
+ int COPY_REFLINK ;
+ int ENOENT ;
+ int F_OK ;
+ scalar_t__ arg_copy_locale ;
+ int arg_locale ;
+ int arg_locale_messages ;
+ scalar_t__ arg_root ;
+ int copy_file (char*,char const*,int ,int,int ,int ,int ) ;
+ int isempty (int ) ;
+ scalar_t__ laccess (char const*,int ) ;
+ int log_error_errno (int,char*,char const*) ;
+ int log_info (char*,char const*) ;
+ int mkdir_parents (char const*,int) ;
+ char* prefix_roota (scalar_t__,char*) ;
+ int prompt_locale () ;
+ int streq (int ,int ) ;
+ char* strjoina (char*,int ) ;
+ int write_env_file (char const*,char**) ;
 
 __attribute__((used)) static int process_locale(void) {
         const char *etc_localeconf;
@@ -66,7 +58,7 @@ __attribute__((used)) static int process_locale(void) {
         if (i == 0)
                 return 0;
 
-        locales[i] = NULL;
+        locales[i] = ((void*)0);
 
         (void) mkdir_parents(etc_localeconf, 0755);
         r = write_env_file(etc_localeconf, locales);

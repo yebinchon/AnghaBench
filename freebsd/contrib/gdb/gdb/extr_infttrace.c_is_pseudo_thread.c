@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int am_pseudo; scalar_t__ terminated; } ;
-typedef  TYPE_1__ thread_info ;
-typedef  int /*<<< orphan*/  lwpid_t ;
+typedef TYPE_1__ thread_info ;
+typedef int lwpid_t ;
 
-/* Variables and functions */
- TYPE_1__* find_thread_info (int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* find_thread_info (int ) ;
 
 __attribute__((used)) static int
 is_pseudo_thread (lwpid_t tid)
 {
   thread_info *p = find_thread_info (tid);
-  if (NULL == p || p->terminated)
+  if (((void*)0) == p || p->terminated)
     return 0;
   else
     return p->am_pseudo;

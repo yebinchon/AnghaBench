@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCOS_THREAD_ATTR_T ;
-typedef  scalar_t__ VCOS_STATUS_T ;
-struct TYPE_3__ {int zero_copy; scalar_t__ init_result; int /*<<< orphan*/  init_sem; int /*<<< orphan*/  encoder_stats; scalar_t__ uri; int /*<<< orphan*/  render_stats; int /*<<< orphan*/  camera_num; int /*<<< orphan*/  focus_test; int /*<<< orphan*/  bit_rate; int /*<<< orphan*/  vformat; int /*<<< orphan*/  layer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_BIT_RATE ; 
- int /*<<< orphan*/  DEFAULT_CAM_NUM ; 
- int /*<<< orphan*/  DEFAULT_VIDEO_FORMAT ; 
- int /*<<< orphan*/  LOG_ERROR (char*,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*) ; 
- scalar_t__ MMALCAM_INIT_SUCCESS ; 
- int /*<<< orphan*/  MMAL_PARAM_FOCUS_MAX ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  VCOS_LOG_CATEGORY ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  VIEWFINDER_LAYER ; 
- TYPE_1__ camcorder_behaviour ; 
- int /*<<< orphan*/  camcorder_thread ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sleep (scalar_t__) ; 
- scalar_t__ sleepy_time ; 
- int stop ; 
- int /*<<< orphan*/  test_mmal_camcorder ; 
- int /*<<< orphan*/  test_mmalcam_dump_stats (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ test_parse_cmdline (int,char const**) ; 
- int /*<<< orphan*/  test_signal_handler ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_log_register (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ vcos_semaphore_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_thread_attr_init (int /*<<< orphan*/ *) ; 
- scalar_t__ vcos_thread_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_thread_join (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VCOS_THREAD_ATTR_T ;
+typedef scalar_t__ VCOS_STATUS_T ;
+struct TYPE_3__ {int zero_copy; scalar_t__ init_result; int init_sem; int encoder_stats; scalar_t__ uri; int render_stats; int camera_num; int focus_test; int bit_rate; int vformat; int layer; } ;
+
+
+ int DEFAULT_BIT_RATE ;
+ int DEFAULT_CAM_NUM ;
+ int DEFAULT_VIDEO_FORMAT ;
+ int LOG_ERROR (char*,...) ;
+ int LOG_TRACE (char*) ;
+ scalar_t__ MMALCAM_INIT_SUCCESS ;
+ int MMAL_PARAM_FOCUS_MAX ;
+ int SIGINT ;
+ int VCOS_LOG_CATEGORY ;
+ scalar_t__ VCOS_SUCCESS ;
+ int VIEWFINDER_LAYER ;
+ TYPE_1__ camcorder_behaviour ;
+ int camcorder_thread ;
+ int printf (char*) ;
+ int signal (int ,int ) ;
+ int sleep (scalar_t__) ;
+ scalar_t__ sleepy_time ;
+ int stop ;
+ int test_mmal_camcorder ;
+ int test_mmalcam_dump_stats (char*,int *) ;
+ scalar_t__ test_parse_cmdline (int,char const**) ;
+ int test_signal_handler ;
+ int vcos_assert (int) ;
+ int vcos_log_register (char*,int ) ;
+ scalar_t__ vcos_semaphore_create (int *,char*,int ) ;
+ int vcos_semaphore_delete (int *) ;
+ int vcos_semaphore_wait (int *) ;
+ int vcos_thread_attr_init (int *) ;
+ scalar_t__ vcos_thread_create (int *,char*,int *,int ,TYPE_1__*) ;
+ int vcos_thread_join (int *,int *) ;
 
 int main(int argc, const char **argv)
 {
@@ -97,7 +97,7 @@ int main(int argc, const char **argv)
 
 error:
    LOG_TRACE("Waiting for camcorder thread to terminate");
-   vcos_thread_join(&camcorder_thread, NULL);
+   vcos_thread_join(&camcorder_thread, ((void*)0));
 
    test_mmalcam_dump_stats("Render", &camcorder_behaviour.render_stats);
    if (camcorder_behaviour.uri)

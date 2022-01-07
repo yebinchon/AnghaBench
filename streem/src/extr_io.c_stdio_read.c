@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct fd_read_buffer {int /*<<< orphan*/  fd; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct fd_read_buffer {int fd; } ;
+typedef int strm_value ;
 struct TYPE_4__ {struct fd_read_buffer* data; } ;
-typedef  TYPE_1__ strm_stream ;
+typedef TYPE_1__ strm_stream ;
 
-/* Variables and functions */
- int STRM_OK ; 
- int /*<<< orphan*/  read_cb ; 
- int /*<<< orphan*/  strm_io_start_read (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int STRM_OK ;
+ int read_cb ;
+ int strm_io_start_read (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static int
 stdio_read(strm_stream* strm, strm_value data)

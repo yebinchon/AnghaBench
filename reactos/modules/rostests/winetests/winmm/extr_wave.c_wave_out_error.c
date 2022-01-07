@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-typedef  scalar_t__ MMRESULT ;
 
-/* Variables and functions */
- scalar_t__ MMSYSERR_NOERROR ; 
- char* mmsys_error (scalar_t__) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- scalar_t__ waveOutGetErrorTextA (scalar_t__,char*,int) ; 
+
+
+
+typedef int msg ;
+typedef scalar_t__ MMRESULT ;
+
+
+ scalar_t__ MMSYSERR_NOERROR ;
+ char* mmsys_error (scalar_t__) ;
+ int sprintf (char*,char*,char*,char*) ;
+ scalar_t__ waveOutGetErrorTextA (scalar_t__,char*,int) ;
 
 const char* wave_out_error(MMRESULT error)
 {

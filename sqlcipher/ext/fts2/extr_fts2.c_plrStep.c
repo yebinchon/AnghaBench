@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int nData; int iColumn; int iPosition; scalar_t__ iType; int /*<<< orphan*/ * pData; scalar_t__ iStartOffset; scalar_t__ iEndOffset; } ;
-typedef  TYPE_1__ PLReader ;
 
-/* Variables and functions */
- scalar_t__ DL_POSITIONS_OFFSETS ; 
- int POS_BASE ; 
- int POS_COLUMN ; 
- int POS_END ; 
- int /*<<< orphan*/  assert (int) ; 
- int getVarint32 (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  plrAtEnd (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int nData; int iColumn; int iPosition; scalar_t__ iType; int * pData; scalar_t__ iStartOffset; scalar_t__ iEndOffset; } ;
+typedef TYPE_1__ PLReader ;
+
+
+ scalar_t__ DL_POSITIONS_OFFSETS ;
+ int POS_BASE ;
+ int POS_COLUMN ;
+ int POS_END ;
+ int assert (int) ;
+ int getVarint32 (int *,int*) ;
+ int plrAtEnd (TYPE_1__*) ;
 
 __attribute__((used)) static void plrStep(PLReader *pReader){
   int i, n;
@@ -29,7 +29,7 @@ __attribute__((used)) static void plrStep(PLReader *pReader){
   assert( !plrAtEnd(pReader) );
 
   if( pReader->nData==0 ){
-    pReader->pData = NULL;
+    pReader->pData = ((void*)0);
     return;
   }
 
@@ -40,12 +40,12 @@ __attribute__((used)) static void plrStep(PLReader *pReader){
     pReader->iStartOffset = 0;
     n += getVarint32(pReader->pData+n, &i);
   }
-  /* Should never see adjacent column changes. */
+
   assert( i!=POS_COLUMN );
 
   if( i==POS_END ){
     pReader->nData = 0;
-    pReader->pData = NULL;
+    pReader->pData = ((void*)0);
     return;
   }
 

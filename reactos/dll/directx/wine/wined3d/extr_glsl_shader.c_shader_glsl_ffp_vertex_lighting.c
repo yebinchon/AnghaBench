@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_ffp_vs_settings {unsigned int point_light_count; unsigned int spot_light_count; unsigned int directional_light_count; unsigned int parallel_point_light_count; int /*<<< orphan*/  normal; int /*<<< orphan*/  emissive_source; int /*<<< orphan*/  specular_source; int /*<<< orphan*/  diffuse_source; int /*<<< orphan*/  ambient_source; int /*<<< orphan*/  lighting; } ;
-typedef  scalar_t__ BOOL ;
+struct wined3d_ffp_vs_settings {unsigned int point_light_count; unsigned int spot_light_count; unsigned int directional_light_count; unsigned int parallel_point_light_count; int normal; int emissive_source; int specular_source; int diffuse_source; int ambient_source; int lighting; } ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- char* shader_glsl_ffp_mcs (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  shader_glsl_ffp_vertex_lighting_footer (struct wined3d_string_buffer*,struct wined3d_ffp_vs_settings const*,unsigned int) ; 
+
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ char* shader_glsl_ffp_mcs (int ,char*) ;
+ int shader_glsl_ffp_vertex_lighting_footer (struct wined3d_string_buffer*,struct wined3d_ffp_vs_settings const*,unsigned int) ;
 
 __attribute__((used)) static void shader_glsl_ffp_vertex_lighting(struct wined3d_string_buffer *buffer,
         const struct wined3d_ffp_vs_settings *settings, BOOL legacy_lighting)

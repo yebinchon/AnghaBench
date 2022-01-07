@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* desc; } ;
-typedef  TYPE_3__ vbdisp_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
+typedef TYPE_3__ vbdisp_t ;
+typedef int VARIANT ;
 struct TYPE_6__ {TYPE_1__* ctx; } ;
-struct TYPE_5__ {int /*<<< orphan*/  err_number; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_5__ {int err_number; } ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
+
+ int E_UNEXPECTED ;
+ int S_OK ;
+ int TRACE (char*) ;
 
 __attribute__((used)) static HRESULT Err_Clear(vbdisp_t *This, VARIANT *args, unsigned args_cnt, VARIANT *res)
 {

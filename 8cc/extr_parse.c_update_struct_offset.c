@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_4__ {int align; scalar_t__ kind; int size; scalar_t__ bitsize; int offset; int bitoff; } ;
-typedef  TYPE_1__ Type ;
-typedef  int /*<<< orphan*/  Dict ;
+typedef TYPE_1__ Type ;
+typedef int Dict ;
 
-/* Variables and functions */
- scalar_t__ KIND_STRUCT ; 
- int MAX (int,int) ; 
- int compute_padding (int,int) ; 
- int /*<<< orphan*/  dict_put (int /*<<< orphan*/ *,char*,TYPE_1__*) ; 
- int /*<<< orphan*/  finish_bitfield (int*,int*) ; 
- int /*<<< orphan*/ * make_dict () ; 
- int /*<<< orphan*/  squash_unnamed_struct (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- void** vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ KIND_STRUCT ;
+ int MAX (int,int) ;
+ int compute_padding (int,int) ;
+ int dict_put (int *,char*,TYPE_1__*) ;
+ int finish_bitfield (int*,int*) ;
+ int * make_dict () ;
+ int squash_unnamed_struct (int *,TYPE_1__*,int) ;
+ void** vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static Dict *update_struct_offset(int *rsize, int *align, Vector *fields) {
     int off = 0, bitoff = 0;
@@ -34,15 +34,15 @@ __attribute__((used)) static Dict *update_struct_offset(int *rsize, int *align, 
         void **pair = vec_get(fields, i);
         char *name = pair[0];
         Type *fieldtype = pair[1];
-        // C11 6.7.2.1p14: Each member is aligned to its natural boundary.
-        // As a result the entire struct is aligned to the largest among its members.
-        // Unnamed fields will never be accessed, so they shouldn't be taken into account
-        // when calculating alignment.
+
+
+
+
         if (name)
             *align = MAX(*align, fieldtype->align);
 
-        if (name == NULL && fieldtype->kind == KIND_STRUCT) {
-            // C11 6.7.2.1p13: Anonymous struct
+        if (name == ((void*)0) && fieldtype->kind == KIND_STRUCT) {
+
             finish_bitfield(&off, &bitoff);
             off += compute_padding(off, fieldtype->align);
             squash_unnamed_struct(r, fieldtype, off);
@@ -50,8 +50,8 @@ __attribute__((used)) static Dict *update_struct_offset(int *rsize, int *align, 
             continue;
         }
         if (fieldtype->bitsize == 0) {
-            // C11 6.7.2.1p12: The zero-size bit-field indicates the end of the
-            // current run of the bit-fields.
+
+
             finish_bitfield(&off, &bitoff);
             off += compute_padding(off, fieldtype->align);
             bitoff = 0;

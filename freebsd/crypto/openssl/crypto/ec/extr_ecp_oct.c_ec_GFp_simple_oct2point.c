@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int point_conversion_form_t ;
-struct TYPE_6__ {int /*<<< orphan*/  field; } ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  TYPE_1__ EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_bin2bn (unsigned char const*,size_t,int /*<<< orphan*/ *) ; 
- int BN_is_odd (int /*<<< orphan*/ *) ; 
- size_t BN_num_bytes (int /*<<< orphan*/ ) ; 
- scalar_t__ BN_ucmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_F_EC_GFP_SIMPLE_OCT2POINT ; 
- int /*<<< orphan*/  EC_POINT_set_affine_coordinates (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_set_compressed_coordinates (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int EC_POINT_set_to_infinity (TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_R_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  EC_R_INVALID_ENCODING ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int POINT_CONVERSION_COMPRESSED ; 
- int POINT_CONVERSION_HYBRID ; 
- int POINT_CONVERSION_UNCOMPRESSED ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int point_conversion_form_t ;
+struct TYPE_6__ {int field; } ;
+typedef int EC_POINT ;
+typedef TYPE_1__ EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_get (int *) ;
+ int * BN_CTX_new () ;
+ int BN_CTX_start (int *) ;
+ int BN_bin2bn (unsigned char const*,size_t,int *) ;
+ int BN_is_odd (int *) ;
+ size_t BN_num_bytes (int ) ;
+ scalar_t__ BN_ucmp (int *,int ) ;
+ int EC_F_EC_GFP_SIMPLE_OCT2POINT ;
+ int EC_POINT_set_affine_coordinates (TYPE_1__ const*,int *,int *,int *,int *) ;
+ int EC_POINT_set_compressed_coordinates (TYPE_1__ const*,int *,int *,int,int *) ;
+ int EC_POINT_set_to_infinity (TYPE_1__ const*,int *) ;
+ int EC_R_BUFFER_TOO_SMALL ;
+ int EC_R_INVALID_ENCODING ;
+ int ECerr (int ,int ) ;
+ int POINT_CONVERSION_COMPRESSED ;
+ int POINT_CONVERSION_HYBRID ;
+ int POINT_CONVERSION_UNCOMPRESSED ;
 
 int ec_GFp_simple_oct2point(const EC_GROUP *group, EC_POINT *point,
                             const unsigned char *buf, size_t len, BN_CTX *ctx)
 {
     point_conversion_form_t form;
     int y_bit;
-    BN_CTX *new_ctx = NULL;
+    BN_CTX *new_ctx = ((void*)0);
     BIGNUM *x, *y;
     size_t field_len, enc_len;
     int ret = 0;
@@ -86,16 +86,16 @@ int ec_GFp_simple_oct2point(const EC_GROUP *group, EC_POINT *point,
         return 0;
     }
 
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ctx = new_ctx = BN_CTX_new();
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             return 0;
     }
 
     BN_CTX_start(ctx);
     x = BN_CTX_get(ctx);
     y = BN_CTX_get(ctx);
-    if (y == NULL)
+    if (y == ((void*)0))
         goto err;
 
     if (!BN_bin2bn(buf + 1, field_len, x))
@@ -122,10 +122,10 @@ int ec_GFp_simple_oct2point(const EC_GROUP *group, EC_POINT *point,
             }
         }
 
-        /*
-         * EC_POINT_set_affine_coordinates is responsible for checking that
-         * the point is on the curve.
-         */
+
+
+
+
         if (!EC_POINT_set_affine_coordinates(group, point, x, y, ctx))
             goto err;
     }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIALOG_AddFilterItem (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DIALOG_Browse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDS_ALL_FILES ; 
- int /*<<< orphan*/  IDS_LIBRARIES_DLL ; 
- int /*<<< orphan*/  IDS_PROGRAMS ; 
- int /*<<< orphan*/  IDS_SYMBOLS_ICO ; 
- int /*<<< orphan*/  IDS_SYMBOL_FILES ; 
- int MAX_STRING_LEN ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int INT ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int DIALOG_AddFilterItem (int **,int ,char*) ;
+ int DIALOG_Browse (int ,int *,int *,int ) ;
+ int IDS_ALL_FILES ;
+ int IDS_LIBRARIES_DLL ;
+ int IDS_PROGRAMS ;
+ int IDS_SYMBOLS_ICO ;
+ int IDS_SYMBOL_FILES ;
+ int MAX_STRING_LEN ;
 
 __attribute__((used)) static
 BOOL

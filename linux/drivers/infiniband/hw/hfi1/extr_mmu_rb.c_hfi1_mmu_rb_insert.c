@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mmu_rb_node {int /*<<< orphan*/  list; int /*<<< orphan*/  len; int /*<<< orphan*/  addr; } ;
-struct mmu_rb_handler {int /*<<< orphan*/  lock; int /*<<< orphan*/  root; int /*<<< orphan*/  ops_arg; TYPE_1__* ops; int /*<<< orphan*/  lru_list; } ;
-struct TYPE_2__ {int (* insert ) (int /*<<< orphan*/ ,struct mmu_rb_node*) ;} ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  __mmu_int_rb_insert (struct mmu_rb_node*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __mmu_int_rb_remove (struct mmu_rb_node*,int /*<<< orphan*/ *) ; 
- struct mmu_rb_node* __mmu_rb_search (struct mmu_rb_handler*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int stub1 (int /*<<< orphan*/ ,struct mmu_rb_node*) ; 
- int /*<<< orphan*/  trace_hfi1_mmu_rb_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mmu_rb_node {int list; int len; int addr; } ;
+struct mmu_rb_handler {int lock; int root; int ops_arg; TYPE_1__* ops; int lru_list; } ;
+struct TYPE_2__ {int (* insert ) (int ,struct mmu_rb_node*) ;} ;
+
+
+ int EINVAL ;
+ int __mmu_int_rb_insert (struct mmu_rb_node*,int *) ;
+ int __mmu_int_rb_remove (struct mmu_rb_node*,int *) ;
+ struct mmu_rb_node* __mmu_rb_search (struct mmu_rb_handler*,int ,int ) ;
+ int list_add (int *,int *) ;
+ int list_del (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (int ,struct mmu_rb_node*) ;
+ int trace_hfi1_mmu_rb_insert (int ,int ) ;
 
 int hfi1_mmu_rb_insert(struct mmu_rb_handler *handler,
-		       struct mmu_rb_node *mnode)
+         struct mmu_rb_node *mnode)
 {
-	struct mmu_rb_node *node;
-	unsigned long flags;
-	int ret = 0;
+ struct mmu_rb_node *node;
+ unsigned long flags;
+ int ret = 0;
 
-	trace_hfi1_mmu_rb_insert(mnode->addr, mnode->len);
-	spin_lock_irqsave(&handler->lock, flags);
-	node = __mmu_rb_search(handler, mnode->addr, mnode->len);
-	if (node) {
-		ret = -EINVAL;
-		goto unlock;
-	}
-	__mmu_int_rb_insert(mnode, &handler->root);
-	list_add(&mnode->list, &handler->lru_list);
+ trace_hfi1_mmu_rb_insert(mnode->addr, mnode->len);
+ spin_lock_irqsave(&handler->lock, flags);
+ node = __mmu_rb_search(handler, mnode->addr, mnode->len);
+ if (node) {
+  ret = -EINVAL;
+  goto unlock;
+ }
+ __mmu_int_rb_insert(mnode, &handler->root);
+ list_add(&mnode->list, &handler->lru_list);
 
-	ret = handler->ops->insert(handler->ops_arg, mnode);
-	if (ret) {
-		__mmu_int_rb_remove(mnode, &handler->root);
-		list_del(&mnode->list); /* remove from LRU list */
-	}
+ ret = handler->ops->insert(handler->ops_arg, mnode);
+ if (ret) {
+  __mmu_int_rb_remove(mnode, &handler->root);
+  list_del(&mnode->list);
+ }
 unlock:
-	spin_unlock_irqrestore(&handler->lock, flags);
-	return ret;
+ spin_unlock_irqrestore(&handler->lock, flags);
+ return ret;
 }

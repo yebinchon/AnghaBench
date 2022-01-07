@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct redisMemOverhead {size_t total_allocated; size_t startup_allocated; float peak_allocated; float total_frag; float allocator_frag; float allocator_frag_bytes; float allocator_rss; float allocator_rss_bytes; float rss_extra; size_t repl_backlog; size_t clients_slaves; size_t clients_normal; size_t aof_buffer; size_t lua_caches; long long total_keys; int num_dbs; size_t overhead_total; size_t dataset; float peak_perc; float dataset_perc; size_t bytes_per_key; TYPE_4__* db; scalar_t__ rss_extra_bytes; scalar_t__ total_frag_bytes; } ;
-typedef  int /*<<< orphan*/  robj ;
-struct TYPE_11__ {int /*<<< orphan*/  expires; int /*<<< orphan*/  dict; } ;
-typedef  TYPE_2__ redisDb ;
-typedef  int /*<<< orphan*/  listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-typedef  int /*<<< orphan*/  dictEntry ;
-struct TYPE_12__ {int flags; int /*<<< orphan*/  querybuf; } ;
-typedef  TYPE_3__ client ;
+typedef int robj ;
+struct TYPE_11__ {int expires; int dict; } ;
+typedef TYPE_2__ redisDb ;
+typedef int listNode ;
+typedef int listIter ;
+typedef int dictEntry ;
+struct TYPE_12__ {int flags; int querybuf; } ;
+typedef TYPE_3__ client ;
 struct TYPE_10__ {float zmalloc_used; float allocator_active; float allocator_allocated; float allocator_resident; scalar_t__ process_rss; } ;
-struct TYPE_14__ {size_t initial_memory_usage; float stat_peak_memory; scalar_t__ aof_state; size_t lua_scripts_mem; int dbnum; TYPE_2__* db; int /*<<< orphan*/  repl_scriptcache_fifo; int /*<<< orphan*/  repl_scriptcache_dict; int /*<<< orphan*/  lua_scripts; int /*<<< orphan*/  aof_buf; int /*<<< orphan*/  clients; int /*<<< orphan*/  slaves; scalar_t__ repl_backlog; TYPE_1__ cron_malloc_stats; } ;
+struct TYPE_14__ {size_t initial_memory_usage; float stat_peak_memory; scalar_t__ aof_state; size_t lua_scripts_mem; int dbnum; TYPE_2__* db; int repl_scriptcache_fifo; int repl_scriptcache_dict; int lua_scripts; int aof_buf; int clients; int slaves; scalar_t__ repl_backlog; TYPE_1__ cron_malloc_stats; } ;
 struct TYPE_13__ {int dbid; size_t overhead_ht_main; size_t overhead_ht_expires; } ;
 
-/* Variables and functions */
- scalar_t__ AOF_OFF ; 
- int CLIENT_MONITOR ; 
- int CLIENT_SLAVE ; 
- scalar_t__ aofRewriteBufferSize () ; 
- int dictSize (int /*<<< orphan*/ ) ; 
- int dictSlots (int /*<<< orphan*/ ) ; 
- scalar_t__ getClientOutputBufferMemoryUsage (TYPE_3__*) ; 
- int /*<<< orphan*/ * listFirst (int /*<<< orphan*/ ) ; 
- int listLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * listNext (int /*<<< orphan*/ *) ; 
- TYPE_3__* listNodeValue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ sdsAllocSize (int /*<<< orphan*/ ) ; 
- int sdsZmallocSize (TYPE_3__*) ; 
- scalar_t__ sdsalloc (int /*<<< orphan*/ ) ; 
- TYPE_6__ server ; 
- struct redisMemOverhead* zcalloc (int) ; 
- scalar_t__ zmalloc_size (scalar_t__) ; 
- size_t zmalloc_used_memory () ; 
- TYPE_4__* zrealloc (TYPE_4__*,int) ; 
+
+ scalar_t__ AOF_OFF ;
+ int CLIENT_MONITOR ;
+ int CLIENT_SLAVE ;
+ scalar_t__ aofRewriteBufferSize () ;
+ int dictSize (int ) ;
+ int dictSlots (int ) ;
+ scalar_t__ getClientOutputBufferMemoryUsage (TYPE_3__*) ;
+ int * listFirst (int ) ;
+ int listLength (int ) ;
+ int * listNext (int *) ;
+ TYPE_3__* listNodeValue (int *) ;
+ int listRewind (int ,int *) ;
+ scalar_t__ sdsAllocSize (int ) ;
+ int sdsZmallocSize (TYPE_3__*) ;
+ scalar_t__ sdsalloc (int ) ;
+ TYPE_6__ server ;
+ struct redisMemOverhead* zcalloc (int) ;
+ scalar_t__ zmalloc_size (scalar_t__) ;
+ size_t zmalloc_used_memory () ;
+ TYPE_4__* zrealloc (TYPE_4__*,int) ;
 
 struct redisMemOverhead *getMemoryOverheadData(void) {
     int j;
@@ -133,7 +133,7 @@ struct redisMemOverhead *getMemoryOverheadData(void) {
     mem += dictSize(server.repl_scriptcache_dict) * sizeof(dictEntry) +
         dictSlots(server.repl_scriptcache_dict) * sizeof(dictEntry*);
     if (listLength(server.repl_scriptcache_fifo) > 0) {
-        mem += listLength(server.repl_scriptcache_fifo) * (sizeof(listNode) + 
+        mem += listLength(server.repl_scriptcache_fifo) * (sizeof(listNode) +
             sdsZmallocSize(listNodeValue(listFirst(server.repl_scriptcache_fifo))));
     }
     mh->lua_caches = mem;
@@ -166,8 +166,8 @@ struct redisMemOverhead *getMemoryOverheadData(void) {
     mh->dataset = zmalloc_used - mem_total;
     mh->peak_perc = (float)zmalloc_used*100/mh->peak_allocated;
 
-    /* Metrics computed after subtracting the startup memory from
-     * the total memory. */
+
+
     size_t net_usage = 1;
     if (zmalloc_used > mh->startup_allocated)
         net_usage = zmalloc_used - mh->startup_allocated;

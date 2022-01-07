@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VkInstance ;
-typedef  int /*<<< orphan*/  VkBool32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VK_FALSE ; 
- int /*<<< orphan*/  VK_TRUE ; 
- int /*<<< orphan*/  VULKAN_SYMBOL_WRAPPER_LOAD_INSTANCE_SYMBOL (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkCreateDevice ; 
- int /*<<< orphan*/  vkDestroyInstance ; 
- int /*<<< orphan*/  vkEnumerateDeviceExtensionProperties ; 
- int /*<<< orphan*/  vkEnumerateDeviceLayerProperties ; 
- int /*<<< orphan*/  vkEnumeratePhysicalDevices ; 
- int /*<<< orphan*/  vkGetDeviceProcAddr ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceFeatures ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceFormatProperties ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceImageFormatProperties ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceMemoryProperties ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceProperties ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceQueueFamilyProperties ; 
- int /*<<< orphan*/  vkGetPhysicalDeviceSparseImageFormatProperties ; 
+
+
+
+typedef int VkInstance ;
+typedef int VkBool32 ;
+
+
+ int VK_FALSE ;
+ int VK_TRUE ;
+ int VULKAN_SYMBOL_WRAPPER_LOAD_INSTANCE_SYMBOL (int ,char*,int ) ;
+ int vkCreateDevice ;
+ int vkDestroyInstance ;
+ int vkEnumerateDeviceExtensionProperties ;
+ int vkEnumerateDeviceLayerProperties ;
+ int vkEnumeratePhysicalDevices ;
+ int vkGetDeviceProcAddr ;
+ int vkGetPhysicalDeviceFeatures ;
+ int vkGetPhysicalDeviceFormatProperties ;
+ int vkGetPhysicalDeviceImageFormatProperties ;
+ int vkGetPhysicalDeviceMemoryProperties ;
+ int vkGetPhysicalDeviceProperties ;
+ int vkGetPhysicalDeviceQueueFamilyProperties ;
+ int vkGetPhysicalDeviceSparseImageFormatProperties ;
 
 VkBool32 vulkan_symbol_wrapper_load_core_instance_symbols(VkInstance instance)
 {

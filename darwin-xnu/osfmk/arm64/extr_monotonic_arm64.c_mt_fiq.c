@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mt_cpu_pmi (void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int mt_cpu_pmi (void*,int ) ;
 
 void
 mt_fiq(void *cpu, uint64_t pmsr, uint64_t upmsr)
 {
-	mt_cpu_pmi(cpu, pmsr);
+ mt_cpu_pmi(cpu, pmsr);
 
 #pragma unused(upmsr)
 }

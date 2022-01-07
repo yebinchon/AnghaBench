@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct acpi_acad_softc {int status; } ;
-typedef  int /*<<< orphan*/ * device_t ;
+typedef int * device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  acpi_acad_devclass ; 
- int /*<<< orphan*/  acpi_acad_get_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * devclass_get_device (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct acpi_acad_softc* device_get_softc (int /*<<< orphan*/ *) ; 
+
+ int ENXIO ;
+ int acpi_acad_devclass ;
+ int acpi_acad_get_status (int *) ;
+ int * devclass_get_device (int ,int ) ;
+ struct acpi_acad_softc* device_get_softc (int *) ;
 
 int
 acpi_acad_get_acline(int *status)
@@ -27,8 +27,8 @@ acpi_acad_get_acline(int *status)
     device_t dev;
 
     dev = devclass_get_device(acpi_acad_devclass, 0);
-    if (dev == NULL)
-	return (ENXIO);
+    if (dev == ((void*)0))
+ return (ENXIO);
     sc = device_get_softc(dev);
 
     acpi_acad_get_status(dev);

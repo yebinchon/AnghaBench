@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wb_list {int /*<<< orphan*/ * tail; int /*<<< orphan*/ * head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+struct wb_list {int * tail; int * head; } ;
+
+
+ int assert (int ) ;
 
 __attribute__((used)) static inline void
 check_wb_list(struct wb_list *s) {
-	assert(s->head == NULL);
-	assert(s->tail == NULL);
+ assert(s->head == ((void*)0));
+ assert(s->tail == ((void*)0));
 }

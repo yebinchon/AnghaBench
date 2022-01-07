@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_FLAGS_MEM_RDONLY ; 
- int /*<<< orphan*/  BIO_clear_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  BIO_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_s_mem () ; 
- int /*<<< orphan*/  BIO_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (char*,int,char*,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BIO ;
+
+
+ int BIO_FLAGS_MEM_RDONLY ;
+ int BIO_clear_flags (int *,int ) ;
+ int BIO_free (int *) ;
+ int * BIO_new (int ) ;
+ int BIO_puts (int *,char*) ;
+ int BIO_read (int *,char*,int) ;
+ int BIO_reset (int *) ;
+ int BIO_s_mem () ;
+ int BIO_set_flags (int *,int ) ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_int_gt (int ,int ) ;
+ int TEST_mem_eq (char*,int,char*,int) ;
+ int TEST_ptr (int *) ;
 
 __attribute__((used)) static int test_bio_rdwr_rdonly(void)
 {
     int ok = 0;
-    BIO *bio = NULL;
+    BIO *bio = ((void*)0);
     char data[16];
 
     bio = BIO_new(BIO_s_mem());

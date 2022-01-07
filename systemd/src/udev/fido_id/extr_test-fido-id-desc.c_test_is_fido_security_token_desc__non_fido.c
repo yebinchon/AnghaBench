@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  NON_FIDO_HID_DESC_3 ;
-typedef  int /*<<< orphan*/  NON_FIDO_HID_DESC_2 ;
-typedef  int /*<<< orphan*/  NON_FIDO_HID_DESC_1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ is_fido_security_token_desc (int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int NON_FIDO_HID_DESC_3 ;
+typedef int NON_FIDO_HID_DESC_2 ;
+typedef int NON_FIDO_HID_DESC_1 ;
+
+
+ int assert_se (int) ;
+ scalar_t__ is_fido_security_token_desc (int const*,int) ;
 
 __attribute__((used)) static void test_is_fido_security_token_desc__non_fido(void) {
-        /* Wrong usage page */
+
         static const uint8_t NON_FIDO_HID_DESC_1[] = {
                 0x06, 0xd0, 0xf0, 0x09, 0x01, 0xa1, 0x01, 0x09, 0x20, 0x15, 0x00, 0x26, 0xff, 0x00, 0x75,
                 0x08, 0x95, 0x40, 0x81, 0x02, 0x09, 0x21, 0x15, 0x00, 0x26, 0xff, 0x00, 0x75, 0x08, 0x95,
@@ -28,7 +28,7 @@ __attribute__((used)) static void test_is_fido_security_token_desc__non_fido(voi
         };
         assert_se(is_fido_security_token_desc(NON_FIDO_HID_DESC_1, sizeof(NON_FIDO_HID_DESC_1)) == 0);
 
-        /* Wrong usage */
+
         static const uint8_t NON_FIDO_HID_DESC_2[] = {
                 0x06, 0xd0, 0xf1, 0x09, 0x02, 0xa1, 0x01, 0x09, 0x20, 0x15, 0x00, 0x26, 0xff, 0x00, 0x75,
                 0x08, 0x95, 0x40, 0x81, 0x02, 0x09, 0x21, 0x15, 0x00, 0x26, 0xff, 0x00, 0x75, 0x08, 0x95,

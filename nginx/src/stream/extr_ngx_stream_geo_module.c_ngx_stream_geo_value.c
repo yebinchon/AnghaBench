@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_16__ {int valid; int /*<<< orphan*/ * data; scalar_t__ len; scalar_t__ not_found; scalar_t__ no_cacheable; } ;
-typedef  TYPE_3__ ngx_stream_variable_value_t ;
-struct TYPE_13__ {int /*<<< orphan*/  key; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * data; scalar_t__ len; } ;
+
+
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_16__ {int valid; int * data; scalar_t__ len; scalar_t__ not_found; scalar_t__ no_cacheable; } ;
+typedef TYPE_3__ ngx_stream_variable_value_t ;
+struct TYPE_13__ {int key; } ;
+struct TYPE_14__ {int * data; scalar_t__ len; } ;
 struct TYPE_15__ {TYPE_11__ node; TYPE_1__ str; } ;
 struct TYPE_17__ {TYPE_2__ sn; scalar_t__ offset; TYPE_3__* value; } ;
-typedef  TYPE_4__ ngx_stream_geo_variable_value_node_t ;
-struct TYPE_18__ {int /*<<< orphan*/  data_size; int /*<<< orphan*/  rbtree; int /*<<< orphan*/  temp_pool; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_5__ ngx_stream_geo_conf_ctx_t ;
-struct TYPE_19__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_6__ ngx_str_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
+typedef TYPE_4__ ngx_stream_geo_variable_value_node_t ;
+struct TYPE_18__ {int data_size; int rbtree; int temp_pool; int pool; } ;
+typedef TYPE_5__ ngx_stream_geo_conf_ctx_t ;
+struct TYPE_19__ {scalar_t__ len; int data; } ;
+typedef TYPE_6__ ngx_str_t ;
+typedef int ngx_conf_t ;
 
-/* Variables and functions */
- scalar_t__ ngx_align (scalar_t__,int) ; 
- int /*<<< orphan*/  ngx_crc32_long (int /*<<< orphan*/ ,scalar_t__) ; 
- void* ngx_palloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * ngx_pstrdup (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_rbtree_insert (int /*<<< orphan*/ *,TYPE_11__*) ; 
- scalar_t__ ngx_str_rbtree_lookup (int /*<<< orphan*/ *,TYPE_6__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ngx_align (scalar_t__,int) ;
+ int ngx_crc32_long (int ,scalar_t__) ;
+ void* ngx_palloc (int ,int) ;
+ int * ngx_pstrdup (int ,TYPE_6__*) ;
+ int ngx_rbtree_insert (int *,TYPE_11__*) ;
+ scalar_t__ ngx_str_rbtree_lookup (int *,TYPE_6__*,int ) ;
 
 __attribute__((used)) static ngx_stream_variable_value_t *
 ngx_stream_geo_value(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
     ngx_str_t *value)
 {
-    uint32_t                               hash;
-    ngx_stream_variable_value_t           *val;
-    ngx_stream_geo_variable_value_node_t  *gvvn;
+    uint32_t hash;
+    ngx_stream_variable_value_t *val;
+    ngx_stream_geo_variable_value_node_t *gvvn;
 
     hash = ngx_crc32_long(value->data, value->len);
 
@@ -57,14 +57,14 @@ ngx_stream_geo_value(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
     }
 
     val = ngx_palloc(ctx->pool, sizeof(ngx_stream_variable_value_t));
-    if (val == NULL) {
-        return NULL;
+    if (val == ((void*)0)) {
+        return ((void*)0);
     }
 
     val->len = value->len;
     val->data = ngx_pstrdup(ctx->pool, value);
-    if (val->data == NULL) {
-        return NULL;
+    if (val->data == ((void*)0)) {
+        return ((void*)0);
     }
 
     val->valid = 1;
@@ -73,8 +73,8 @@ ngx_stream_geo_value(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
 
     gvvn = ngx_palloc(ctx->temp_pool,
                       sizeof(ngx_stream_geo_variable_value_node_t));
-    if (gvvn == NULL) {
-        return NULL;
+    if (gvvn == ((void*)0)) {
+        return ((void*)0);
     }
 
     gvvn->sn.node.key = hash;

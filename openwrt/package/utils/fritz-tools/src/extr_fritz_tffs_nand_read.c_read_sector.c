@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- scalar_t__ TFFS_SECTOR_SIZE ; 
- int /*<<< orphan*/  mtdfd ; 
- scalar_t__ pread (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  readbuf ; 
+
+
+
+typedef int off_t ;
+
+
+ scalar_t__ TFFS_SECTOR_SIZE ;
+ int mtdfd ;
+ scalar_t__ pread (int ,int ,scalar_t__,int ) ;
+ int readbuf ;
 
 __attribute__((used)) static int read_sector(off_t pos)
 {
-	if (pread(mtdfd, readbuf, TFFS_SECTOR_SIZE, pos) != TFFS_SECTOR_SIZE) {
-		return -1;
-	}
+ if (pread(mtdfd, readbuf, TFFS_SECTOR_SIZE, pos) != TFFS_SECTOR_SIZE) {
+  return -1;
+ }
 
-	return 0;
+ return 0;
 }

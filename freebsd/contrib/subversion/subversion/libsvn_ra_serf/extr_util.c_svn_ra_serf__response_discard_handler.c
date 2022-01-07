@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_request_t ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drain_bucket (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int serf_request_t ;
+typedef int serf_bucket_t ;
+typedef int apr_status_t ;
+typedef int apr_pool_t ;
+
+
+ int drain_bucket (int *) ;
 
 apr_status_t
 svn_ra_serf__response_discard_handler(serf_request_t *request,

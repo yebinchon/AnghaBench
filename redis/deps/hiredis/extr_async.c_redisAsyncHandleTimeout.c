@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int flags; int /*<<< orphan*/  err; } ;
-typedef  TYPE_1__ redisContext ;
-typedef  int /*<<< orphan*/  redisCallback ;
-struct TYPE_11__ {int /*<<< orphan*/ * head; } ;
-struct TYPE_10__ {TYPE_5__ replies; int /*<<< orphan*/  (* onConnect ) (TYPE_2__*,int /*<<< orphan*/ ) ;TYPE_1__ c; } ;
-typedef  TYPE_2__ redisAsyncContext ;
 
-/* Variables and functions */
- int REDIS_CONNECTED ; 
- int /*<<< orphan*/  REDIS_ERR ; 
- int /*<<< orphan*/  REDIS_ERR_TIMEOUT ; 
- scalar_t__ REDIS_OK ; 
- int /*<<< orphan*/  __redisAsyncDisconnect (TYPE_2__*) ; 
- int /*<<< orphan*/  __redisRunCallback (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __redisSetError (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ __redisShiftCallback (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int flags; int err; } ;
+typedef TYPE_1__ redisContext ;
+typedef int redisCallback ;
+struct TYPE_11__ {int * head; } ;
+struct TYPE_10__ {TYPE_5__ replies; int (* onConnect ) (TYPE_2__*,int ) ;TYPE_1__ c; } ;
+typedef TYPE_2__ redisAsyncContext ;
+
+
+ int REDIS_CONNECTED ;
+ int REDIS_ERR ;
+ int REDIS_ERR_TIMEOUT ;
+ scalar_t__ REDIS_OK ;
+ int __redisAsyncDisconnect (TYPE_2__*) ;
+ int __redisRunCallback (TYPE_2__*,int *,int *) ;
+ int __redisSetError (TYPE_1__*,int ,char*) ;
+ scalar_t__ __redisShiftCallback (TYPE_5__*,int *) ;
+ int stub1 (TYPE_2__*,int ) ;
 
 void redisAsyncHandleTimeout(redisAsyncContext *ac) {
     redisContext *c = &(ac->c);
     redisCallback cb;
 
-    if ((c->flags & REDIS_CONNECTED) && ac->replies.head == NULL) {
-        /* Nothing to do - just an idle timeout */
+    if ((c->flags & REDIS_CONNECTED) && ac->replies.head == ((void*)0)) {
+
         return;
     }
 
@@ -49,12 +49,12 @@ void redisAsyncHandleTimeout(redisAsyncContext *ac) {
     }
 
     while (__redisShiftCallback(&ac->replies, &cb) == REDIS_OK) {
-        __redisRunCallback(ac, &cb, NULL);
+        __redisRunCallback(ac, &cb, ((void*)0));
     }
 
-    /**
-     * TODO: Don't automatically sever the connection,
-     * rather, allow to ignore <x> responses before the queue is clear
-     */
+
+
+
+
     __redisAsyncDisconnect(ac);
 }

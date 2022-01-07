@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPACKET ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPACKET ;
 struct TYPE_3__ {int init_num; scalar_t__ init_off; } ;
-typedef  TYPE_1__ SSL ;
+typedef TYPE_1__ SSL ;
 
-/* Variables and functions */
- size_t INT_MAX ; 
- int SSL3_MT_CHANGE_CIPHER_SPEC ; 
- int /*<<< orphan*/  WPACKET_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WPACKET_get_length (int /*<<< orphan*/ *,size_t*) ; 
+
+ size_t INT_MAX ;
+ int SSL3_MT_CHANGE_CIPHER_SPEC ;
+ int WPACKET_close (int *) ;
+ int WPACKET_get_length (int *,size_t*) ;
 
 int tls_close_construct_packet(SSL *s, WPACKET *pkt, int htype)
 {

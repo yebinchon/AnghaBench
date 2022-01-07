@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fullscreen_mode_t ;
-struct TYPE_13__ {scalar_t__ type; int /*<<< orphan*/  name; int /*<<< orphan*/  fullscreen_mode; } ;
-typedef  TYPE_1__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_GLOBAL ; 
- int /*<<< orphan*/  CF_OUTPUT ; 
- scalar_t__ CT_WORKSPACE ; 
- int /*<<< orphan*/  DLOG (char*,...) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  con_activate (TYPE_1__*) ; 
- int /*<<< orphan*/  con_disable_fullscreen (TYPE_1__*) ; 
- TYPE_1__* con_get_fullscreen_con (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* con_get_workspace (TYPE_1__*) ; 
- int /*<<< orphan*/  con_set_fullscreen_mode (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* croot ; 
- TYPE_1__* focused ; 
- int /*<<< orphan*/  workspace_show (TYPE_1__*) ; 
+
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int fullscreen_mode_t ;
+struct TYPE_13__ {scalar_t__ type; int name; int fullscreen_mode; } ;
+typedef TYPE_1__ Con ;
+
+
+ int CF_GLOBAL ;
+ int CF_OUTPUT ;
+ scalar_t__ CT_WORKSPACE ;
+ int DLOG (char*,...) ;
+ int assert (int) ;
+ int con_activate (TYPE_1__*) ;
+ int con_disable_fullscreen (TYPE_1__*) ;
+ TYPE_1__* con_get_fullscreen_con (TYPE_1__*,int ) ;
+ TYPE_1__* con_get_workspace (TYPE_1__*) ;
+ int con_set_fullscreen_mode (TYPE_1__*,int ) ;
+ TYPE_1__* croot ;
+ TYPE_1__* focused ;
+ int workspace_show (TYPE_1__*) ;
 
 void con_enable_fullscreen(Con *con, fullscreen_mode_t fullscreen_mode) {
     if (con->type == CT_WORKSPACE) {
@@ -50,16 +50,16 @@ void con_enable_fullscreen(Con *con, fullscreen_mode_t fullscreen_mode) {
 
     Con *con_ws = con_get_workspace(con);
 
-    /* Disable any fullscreen container that would conflict the new one. */
+
     Con *fullscreen = con_get_fullscreen_con(croot, CF_GLOBAL);
-    if (fullscreen == NULL)
+    if (fullscreen == ((void*)0))
         fullscreen = con_get_fullscreen_con(con_ws, CF_OUTPUT);
-    if (fullscreen != NULL)
+    if (fullscreen != ((void*)0))
         con_disable_fullscreen(fullscreen);
 
-    /* Set focus to new fullscreen container. Unless in global fullscreen mode
-     * and on another workspace restore focus afterwards.
-     * Switch to the container’s workspace if mode is global. */
+
+
+
     Con *cur_ws = con_get_workspace(focused);
     Con *old_focused = focused;
     if (fullscreen_mode == CF_GLOBAL && cur_ws != con_ws)

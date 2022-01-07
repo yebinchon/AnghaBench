@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct wl12xx_vif {int dummy; } ;
 struct wl1271 {int dummy; } ;
-struct ieee80211_channel_sw_ie {int /*<<< orphan*/  count; } ;
+struct ieee80211_channel_sw_ie {int count; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  WLAN_EID_CHANNEL_SWITCH ; 
- int /*<<< orphan*/ * wlcore_get_beacon_ie (struct wl1271*,struct wl12xx_vif*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int WLAN_EID_CHANNEL_SWITCH ;
+ int * wlcore_get_beacon_ie (struct wl1271*,struct wl12xx_vif*,int ) ;
 
 __attribute__((used)) static int wlcore_get_csa_count(struct wl1271 *wl, struct wl12xx_vif *wlvif,
-				u8 *csa_count)
+    u8 *csa_count)
 {
-	const u8 *ie;
-	const struct ieee80211_channel_sw_ie *ie_csa;
+ const u8 *ie;
+ const struct ieee80211_channel_sw_ie *ie_csa;
 
-	ie = wlcore_get_beacon_ie(wl, wlvif, WLAN_EID_CHANNEL_SWITCH);
-	if (!ie)
-		return -EINVAL;
+ ie = wlcore_get_beacon_ie(wl, wlvif, WLAN_EID_CHANNEL_SWITCH);
+ if (!ie)
+  return -EINVAL;
 
-	ie_csa = (struct ieee80211_channel_sw_ie *)&ie[2];
-	*csa_count = ie_csa->count;
+ ie_csa = (struct ieee80211_channel_sw_ie *)&ie[2];
+ *csa_count = ie_csa->count;
 
-	return 0;
+ return 0;
 }

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EVENTHANDLER_REGISTER (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MTX_DEF ; 
- int /*<<< orphan*/  SHUTDOWN_PRI_LAST ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  poll_mtx ; 
- int /*<<< orphan*/  poll_shutdown ; 
- int /*<<< orphan*/  shutdown_post_sync ; 
+ int EVENTHANDLER_REGISTER (int ,int ,int *,int ) ;
+ int MTX_DEF ;
+ int SHUTDOWN_PRI_LAST ;
+ int mtx_init (int *,char*,int *,int ) ;
+ int poll_mtx ;
+ int poll_shutdown ;
+ int shutdown_post_sync ;
 
 __attribute__((used)) static void
 init_device_poll(void)
 {
 
-	mtx_init(&poll_mtx, "polling", NULL, MTX_DEF);
-	EVENTHANDLER_REGISTER(shutdown_post_sync, poll_shutdown, NULL,
-	    SHUTDOWN_PRI_LAST);
+ mtx_init(&poll_mtx, "polling", ((void*)0), MTX_DEF);
+ EVENTHANDLER_REGISTER(shutdown_post_sync, poll_shutdown, ((void*)0),
+     SHUTDOWN_PRI_LAST);
 }

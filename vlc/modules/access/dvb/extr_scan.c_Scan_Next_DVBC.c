@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolrates ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int symbolrates ;
 struct TYPE_10__ {int modulation; int i_symbolrate; int i_frequency; } ;
-typedef  TYPE_1__ scan_tuner_config_t ;
-struct TYPE_11__ {scalar_t__ i_symbolrate; scalar_t__ b_exhaustive; int /*<<< orphan*/  b_modulation_set; } ;
-typedef  TYPE_2__ scan_parameter_t ;
+typedef TYPE_1__ scan_tuner_config_t ;
+struct TYPE_11__ {scalar_t__ i_symbolrate; scalar_t__ b_exhaustive; int b_modulation_set; } ;
+typedef TYPE_2__ scan_parameter_t ;
 struct TYPE_12__ {int modulation; int i_symbolrate_index; int i_index; } ;
-typedef  TYPE_3__ scan_enumeration_t ;
-typedef  int /*<<< orphan*/  frequencies ;
+typedef TYPE_3__ scan_enumeration_t ;
+typedef int frequencies ;
 
-/* Variables and functions */
- int SCAN_MODULATION_QAM_256 ; 
- int SCAN_MODULATION_QAM_64 ; 
- int Scan_Next_DVB_SpectrumExhaustive (TYPE_2__ const*,TYPE_3__*,TYPE_1__*,double*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
+
+ int SCAN_MODULATION_QAM_256 ;
+ int SCAN_MODULATION_QAM_64 ;
+ int Scan_Next_DVB_SpectrumExhaustive (TYPE_2__ const*,TYPE_3__*,TYPE_1__*,double*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
 
 __attribute__((used)) static int Scan_Next_DVBC( const scan_parameter_t *p_params, scan_enumeration_t *p_spectrum,
                            scan_tuner_config_t *p_cfg, double *pf_pos )
 {
-    bool b_rotate=true;
+    bool b_rotate=1;
     if( !p_params->b_modulation_set )
     {
         p_spectrum->modulation = (p_spectrum->modulation >> 1 );
-        /* if we iterated all modulations, move on */
-        /* dvb utils dvb-c channels files seems to have only
-               QAM64...QAM256, so lets just iterate over those */
+
+
+
         if( p_spectrum->modulation < SCAN_MODULATION_QAM_64)
         {
             p_spectrum->modulation = SCAN_MODULATION_QAM_256;
         } else {
-            b_rotate=false;
+            b_rotate=0;
         }
     }
     p_cfg->modulation = p_spectrum->modulation;
 
     if( p_params->i_symbolrate == 0 )
     {
-        /* symbol rates from dvb-tools dvb-c files */
+
         static const unsigned short symbolrates[] = {
             6900, 6875, 6950
-            /* With DR_44 we can cover other symbolrates from NIT-info
-                    as all channel-seed files have atleast one channel that
-                    has one of these symbolrate
-                  */
+
+
+
+
         };
 
         enum { num_symbols = (sizeof(symbolrates)/sizeof(*symbolrates)) };
 
-        /* if we rotated modulations, rotate symbolrate */
+
         if( b_rotate )
         {
             p_spectrum->i_symbolrate_index++;
@@ -70,7 +70,7 @@ __attribute__((used)) static int Scan_Next_DVBC( const scan_parameter_t *p_param
         p_cfg->i_symbolrate = 1000 * (symbolrates[ p_spectrum->i_symbolrate_index ] );
 
         if( p_spectrum->i_symbolrate_index )
-            b_rotate=false;
+            b_rotate=0;
     }
     else
     {
@@ -80,8 +80,8 @@ __attribute__((used)) static int Scan_Next_DVBC( const scan_parameter_t *p_param
     if( p_params->b_exhaustive )
         return Scan_Next_DVB_SpectrumExhaustive( p_params, p_spectrum, p_cfg, pf_pos );
 
-    /* Values taken from dvb-scan utils frequency-files, sorted by how
-     * often they appear. This hopefully speeds up finding services. */
+
+
     static const unsigned int frequencies[] = { 41000, 39400, 40200,
     38600, 41800, 36200, 44200, 43400, 37000, 35400, 42600, 37800,
     34600, 45800, 45000, 46600, 32200, 51400, 49000, 33800, 31400,
@@ -104,7 +104,7 @@ __attribute__((used)) static int Scan_Next_DVBC( const scan_parameter_t *p_param
     enum { num_frequencies = (sizeof(frequencies)/sizeof(*frequencies)) };
 
     if( p_spectrum->i_index >= num_frequencies )
-        return VLC_EGENERIC; /* End */
+        return VLC_EGENERIC;
 
     p_cfg->i_frequency = 10000 * ( frequencies[ p_spectrum->i_index ] );
     *pf_pos = (double)(p_spectrum->i_index * 1000 +

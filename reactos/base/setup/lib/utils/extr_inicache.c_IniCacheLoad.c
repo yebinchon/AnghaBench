@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  PWCHAR ;
-typedef  int /*<<< orphan*/ * PINICACHE ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int FILE_GENERIC_READ ; 
- int FILE_NON_DIRECTORY_FILE ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int FILE_SYNCHRONOUS_IO_NONALERT ; 
- int /*<<< orphan*/  IniCacheLoadByHandle (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtOpenFile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int SYNCHRONIZE ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int PWCHAR ;
+typedef int * PINICACHE ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef int HANDLE ;
+typedef int BOOLEAN ;
+
+
+ int DPRINT (char*,...) ;
+ int FILE_GENERIC_READ ;
+ int FILE_NON_DIRECTORY_FILE ;
+ int FILE_SHARE_READ ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ int IniCacheLoadByHandle (int **,int ,int ) ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int NT_SUCCESS (int ) ;
+ int NtClose (int ) ;
+ int NtOpenFile (int *,int,int *,int *,int ,int) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RtlInitUnicodeString (int *,int ) ;
+ int SYNCHRONIZE ;
 
 NTSTATUS
 IniCacheLoad(
@@ -46,16 +46,16 @@ IniCacheLoad(
     IO_STATUS_BLOCK IoStatusBlock;
     HANDLE FileHandle;
 
-    *Cache = NULL;
+    *Cache = ((void*)0);
 
-    /* Open the INI file */
+
     RtlInitUnicodeString(&Name, FileName);
 
     InitializeObjectAttributes(&ObjectAttributes,
                                &Name,
                                OBJ_CASE_INSENSITIVE,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0));
 
     Status = NtOpenFile(&FileHandle,
                         FILE_GENERIC_READ | SYNCHRONIZE,
@@ -73,7 +73,7 @@ IniCacheLoad(
 
     Status = IniCacheLoadByHandle(Cache, FileHandle, String);
 
-    /* Close the INI file */
+
     NtClose(FileHandle);
     return Status;
 }

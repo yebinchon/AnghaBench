@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int should_free_lines; int width; TYPE_1__* plane; scalar_t__ is_ring; } ;
 struct TYPE_5__ {int available_lines; scalar_t__* line; } ;
-typedef  TYPE_2__ SwsSlice ;
+typedef TYPE_2__ SwsSlice ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- scalar_t__ av_malloc (int) ; 
- int /*<<< orphan*/  free_lines (TYPE_2__*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_assert0 (int) ;
+ scalar_t__ av_malloc (int) ;
+ int free_lines (TYPE_2__*) ;
 
 __attribute__((used)) static int alloc_lines(SwsSlice *s, int size, int width)
 {
@@ -38,8 +38,8 @@ __attribute__((used)) static int alloc_lines(SwsSlice *s, int size, int width)
 
         av_assert0(n == s->plane[ii].available_lines);
         for (j = 0; j < n; ++j) {
-            // chroma plane line U and V are expected to be contiguous in memory
-            // by mmx vertical scaler code
+
+
             s->plane[i].line[j] = av_malloc(size * 2 + 32);
             if (!s->plane[i].line[j]) {
                 free_lines(s);

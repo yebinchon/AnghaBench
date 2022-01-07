@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef size_t ngx_uint_t ;
 struct TYPE_9__ {char* data; int len; } ;
-typedef  TYPE_1__ ngx_str_t ;
-struct TYPE_10__ {char** data; int /*<<< orphan*/  handler; } ;
-typedef  TYPE_2__ ngx_pool_cleanup_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; int /*<<< orphan*/  pool; int /*<<< orphan*/  conf_ctx; } ;
-typedef  TYPE_3__ ngx_cycle_t ;
+typedef TYPE_1__ ngx_str_t ;
+struct TYPE_10__ {char** data; int handler; } ;
+typedef TYPE_2__ ngx_pool_cleanup_t ;
+struct TYPE_11__ {int log; int pool; int conf_ctx; } ;
+typedef TYPE_3__ ngx_cycle_t ;
 struct TYPE_13__ {size_t nelts; TYPE_1__* elts; } ;
 struct TYPE_12__ {char** environment; TYPE_8__ env; } ;
-typedef  TYPE_4__ ngx_core_conf_t ;
+typedef TYPE_4__ ngx_core_conf_t ;
 
-/* Variables and functions */
- char** environ ; 
- char** ngx_alloc (size_t,int /*<<< orphan*/ ) ; 
- TYPE_1__* ngx_array_push (TYPE_8__*) ; 
- int /*<<< orphan*/  ngx_cleanup_environment ; 
- int /*<<< orphan*/  ngx_core_module ; 
- scalar_t__ ngx_get_conf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char** ngx_os_environ ; 
- TYPE_2__* ngx_pool_cleanup_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_strcmp (char*,char*) ; 
- scalar_t__ ngx_strncmp (char*,char*,int) ; 
+
+ char** environ ;
+ char** ngx_alloc (size_t,int ) ;
+ TYPE_1__* ngx_array_push (TYPE_8__*) ;
+ int ngx_cleanup_environment ;
+ int ngx_core_module ;
+ scalar_t__ ngx_get_conf (int ,int ) ;
+ char** ngx_os_environ ;
+ TYPE_2__* ngx_pool_cleanup_add (int ,int ) ;
+ scalar_t__ ngx_strcmp (char*,char*) ;
+ scalar_t__ ngx_strncmp (char*,char*,int) ;
 
 char **
 ngx_set_environment(ngx_cycle_t *cycle, ngx_uint_t *last)
 {
-    char                **p, **env;
-    ngx_str_t            *var;
-    ngx_uint_t            i, n;
-    ngx_core_conf_t      *ccf;
-    ngx_pool_cleanup_t   *cln;
+    char **p, **env;
+    ngx_str_t *var;
+    ngx_uint_t i, n;
+    ngx_core_conf_t *ccf;
+    ngx_pool_cleanup_t *cln;
 
     ccf = (ngx_core_conf_t *) ngx_get_conf(cycle->conf_ctx, ngx_core_module);
 
-    if (last == NULL && ccf->environment) {
+    if (last == ((void*)0) && ccf->environment) {
         return ccf->environment;
     }
 
@@ -65,8 +65,8 @@ ngx_set_environment(ngx_cycle_t *cycle, ngx_uint_t *last)
     }
 
     var = ngx_array_push(&ccf->env);
-    if (var == NULL) {
-        return NULL;
+    if (var == ((void*)0)) {
+        return ((void*)0);
     }
 
     var->len = 2;
@@ -98,21 +98,21 @@ tz_found:
 
     if (last) {
         env = ngx_alloc((*last + n + 1) * sizeof(char *), cycle->log);
-        if (env == NULL) {
-            return NULL;
+        if (env == ((void*)0)) {
+            return ((void*)0);
         }
 
         *last = n;
 
     } else {
         cln = ngx_pool_cleanup_add(cycle->pool, 0);
-        if (cln == NULL) {
-            return NULL;
+        if (cln == ((void*)0)) {
+            return ((void*)0);
         }
 
         env = ngx_alloc((n + 1) * sizeof(char *), cycle->log);
-        if (env == NULL) {
-            return NULL;
+        if (env == ((void*)0)) {
+            return ((void*)0);
         }
 
         cln->handler = ngx_cleanup_environment;
@@ -139,9 +139,9 @@ tz_found:
         }
     }
 
-    env[n] = NULL;
+    env[n] = ((void*)0);
 
-    if (last == NULL) {
+    if (last == ((void*)0)) {
         ccf->environment = env;
         environ = env;
     }

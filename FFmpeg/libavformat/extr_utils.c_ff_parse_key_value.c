@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* ff_parse_key_val_cb ) (void*,char const*,int,char**,int*) ;
 
-/* Variables and functions */
- scalar_t__ av_isspace (char const) ; 
- char* strchr (char const*,char) ; 
+
+
+
+typedef int (* ff_parse_key_val_cb ) (void*,char const*,int,char**,int*) ;
+
+
+ scalar_t__ av_isspace (char const) ;
+ char* strchr (char const*,char) ;
 
 void ff_parse_key_value(const char *str, ff_parse_key_val_cb callback_get_buf,
                         void *context)
 {
     const char *ptr = str;
 
-    /* Parse key=value pairs. */
+
     for (;;) {
         const char *key;
-        char *dest = NULL, *dest_end;
+        char *dest = ((void*)0), *dest_end;
         int key_len, dest_len = 0;
 
-        /* Skip whitespace and potential commas. */
+
         while (*ptr && (av_isspace(*ptr) || *ptr == ','))
             ptr++;
         if (!*ptr)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cf_chash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cf_sha256 ; 
- int /*<<< orphan*/  cf_sha256_digest_final ; 
- int /*<<< orphan*/  vector (int /*<<< orphan*/  const*,char*,int,char*,int) ; 
- int /*<<< orphan*/  vector_abc_final (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  vector_length (int /*<<< orphan*/  const*,int,char*,int) ; 
+
+
+
+typedef int cf_chash ;
+
+
+ int cf_sha256 ;
+ int cf_sha256_digest_final ;
+ int vector (int const*,char*,int,char*,int) ;
+ int vector_abc_final (int const*,int ,char*,int) ;
+ int vector_length (int const*,int,char*,int) ;
 
 __attribute__((used)) static void test_sha256(void)
 {

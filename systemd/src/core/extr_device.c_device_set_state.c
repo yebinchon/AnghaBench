@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ state; } ;
-typedef  scalar_t__ DeviceState ;
-typedef  TYPE_1__ Device ;
+typedef scalar_t__ DeviceState ;
+typedef TYPE_1__ Device ;
 
-/* Variables and functions */
- scalar_t__ DEVICE_DEAD ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_unit_send_pending_change_signal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  device_state_to_string (scalar_t__) ; 
- int /*<<< orphan*/  device_unset_sysfs (TYPE_1__*) ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * state_translation_table ; 
- int /*<<< orphan*/  unit_notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DEVICE_DEAD ;
+ int UNIT (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int bus_unit_send_pending_change_signal (int ,int) ;
+ int device_state_to_string (scalar_t__) ;
+ int device_unset_sysfs (TYPE_1__*) ;
+ int log_unit_debug (int ,char*,int ,int ) ;
+ int * state_translation_table ;
+ int unit_notify (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void device_set_state(Device *d, DeviceState state) {
         DeviceState old_state;
         assert(d);
 
         if (d->state != state)
-                bus_unit_send_pending_change_signal(UNIT(d), false);
+                bus_unit_send_pending_change_signal(UNIT(d), 0);
 
         old_state = d->state;
         d->state = state;

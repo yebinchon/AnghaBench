@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  ExitProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_TTY (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STDERR_FILENO ; 
- scalar_t__ can_restore ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  original ; 
- int /*<<< orphan*/  stderr ; 
+ int EXIT_FAILURE ;
+ int ExitProgram (int ) ;
+ int SET_TTY (int ,int *) ;
+ int STDERR_FILENO ;
+ scalar_t__ can_restore ;
+ int fflush (int ) ;
+ int fprintf (int ,char*) ;
+ int original ;
+ int stderr ;
 
 __attribute__((used)) static void
 exit_error(void)
 {
     if (can_restore)
-	SET_TTY(STDERR_FILENO, &original);
+ SET_TTY(STDERR_FILENO, &original);
     (void) fprintf(stderr, "\n");
     fflush(stderr);
     ExitProgram(EXIT_FAILURE);
-    /* NOTREACHED */
+
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmd ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmd ;
 struct TYPE_6__ {char* buffer; char* command; } ;
-typedef  int /*<<< orphan*/  TAOS ;
-typedef  TYPE_1__ Command ;
+typedef int TAOS ;
+typedef TYPE_1__ Command ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_COMMAND_SIZE ; 
- scalar_t__ calloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char getchar () ; 
- int /*<<< orphan*/  insertChar (TYPE_1__*,char) ; 
- int /*<<< orphan*/  isReadyGo (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  shellPrintContinuePrompt () ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  updateBuffer (TYPE_1__*) ; 
+
+ int MAX_COMMAND_SIZE ;
+ scalar_t__ calloc (int,int ) ;
+ int free (char*) ;
+ char getchar () ;
+ int insertChar (TYPE_1__*,char) ;
+ int isReadyGo (TYPE_1__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int shellPrintContinuePrompt () ;
+ int sprintf (char*,char*,char*,char*) ;
+ int updateBuffer (TYPE_1__*) ;
 
 void shellReadCommand(TAOS *con, char command[]) {
   Command cmd;
@@ -34,7 +34,7 @@ void shellReadCommand(TAOS *con, char command[]) {
   cmd.buffer = (char *)calloc(1, MAX_COMMAND_SIZE);
   cmd.command = (char *)calloc(1, MAX_COMMAND_SIZE);
 
-  // Read input.
+
   char c;
   while (1) {
     c = getchar();
@@ -45,9 +45,9 @@ void shellReadCommand(TAOS *con, char command[]) {
         if (isReadyGo(&cmd)) {
           sprintf(command, "%s%s", cmd.buffer, cmd.command);
           free(cmd.buffer);
-          cmd.buffer = NULL;
+          cmd.buffer = ((void*)0);
           free(cmd.command);
-          cmd.command = NULL;
+          cmd.command = ((void*)0);
           return;
         } else {
           shellPrintContinuePrompt();

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char** insn_name_ptr ; 
- int insn_name_ptr_size ; 
- int /*<<< orphan*/  memset (char**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,int) ; 
- scalar_t__ strlen (char const*) ; 
- char* xmalloc (scalar_t__) ; 
- char** xrealloc (char**,int) ; 
- char* xstrdup (char const*) ; 
+ char** insn_name_ptr ;
+ int insn_name_ptr_size ;
+ int memset (char**,int ,int) ;
+ int sprintf (char*,char*,char const*,int) ;
+ scalar_t__ strlen (char const*) ;
+ char* xmalloc (scalar_t__) ;
+ char** xrealloc (char**,int) ;
+ char* xstrdup (char const*) ;
 
 __attribute__((used)) static void
 record_insn_name (int code, const char *name)
@@ -34,7 +26,7 @@ record_insn_name (int code, const char *name)
       new_size = (insn_name_ptr_size ? insn_name_ptr_size * 2 : 512);
       insn_name_ptr = xrealloc (insn_name_ptr, sizeof(char *) * new_size);
       memset (insn_name_ptr + insn_name_ptr_size, 0,
-	      sizeof(char *) * (new_size - insn_name_ptr_size));
+       sizeof(char *) * (new_size - insn_name_ptr_size));
       insn_name_ptr_size = new_size;
     }
 

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WORD ;
 struct TYPE_2__ {char CurrentDrive; void* LastErrorCode; } ;
-typedef  int* PWORD ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  char CHAR ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int* PWORD ;
+typedef int DWORD ;
+typedef char CHAR ;
+typedef int BYTE ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,char*,...) ; 
-#define  DRIVE_CDROM 134 
-#define  DRIVE_FIXED 133 
-#define  DRIVE_NO_ROOT_DIR 132 
-#define  DRIVE_RAMDISK 131 
-#define  DRIVE_REMOTE 130 
-#define  DRIVE_REMOVABLE 129 
-#define  DRIVE_UNKNOWN 128 
- void* ERROR_INVALID_FUNCTION ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDriveTypeA (char*) ; 
- TYPE_1__* Sda ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int DPRINT1 (char*,char*,...) ;
+
+
+
+
+
+
+
+ void* ERROR_INVALID_FUNCTION ;
+ int FALSE ;
+ int GetDriveTypeA (char*) ;
+ TYPE_1__* Sda ;
+ int TRUE ;
+ int assert (int ) ;
 
 BOOLEAN DosDeviceIoControlDrive(WORD DriveNumber, BYTE ControlCode, DWORD Buffer, PWORD Result)
 {
@@ -60,21 +60,21 @@ BOOLEAN DosDeviceIoControlDrive(WORD DriveNumber, BYTE ControlCode, DWORD Buffer
 
             switch (DriveType)
             {
-            case DRIVE_UNKNOWN:
-            case DRIVE_NO_ROOT_DIR:
+            case 128:
+            case 132:
             default:
                 DPRINT1("INT 21h, 4408h, %s -> DriveType = 0x%x\n", RootPath, DriveType);
                 *Result = 0x000f;
                 return TRUE;
-            case DRIVE_REMOVABLE:
-            case DRIVE_CDROM:
+            case 129:
+            case 134:
                 *Result = 0x0000;
                 return TRUE;
-            case DRIVE_FIXED:
+            case 133:
                 *Result = 0x0001;
                 return TRUE;
-            case DRIVE_REMOTE:
-            case DRIVE_RAMDISK: // ??
+            case 130:
+            case 131:
                 break;
             }
             Sda->LastErrorCode = ERROR_INVALID_FUNCTION;

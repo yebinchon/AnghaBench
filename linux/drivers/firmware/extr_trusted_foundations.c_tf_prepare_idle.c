@@ -1,60 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EINVAL ;
+ int TF_CPU_PM ;
+ int TF_CPU_PM_S1 ;
+ int TF_CPU_PM_S1_NOFLUSH_L2 ;
+ int TF_CPU_PM_S2 ;
+ int TF_CPU_PM_S2_NO_MC_CLK ;
+ int TF_CPU_PM_S3 ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  TF_CPU_PM ; 
- int /*<<< orphan*/  TF_CPU_PM_S1 ; 
- int /*<<< orphan*/  TF_CPU_PM_S1_NOFLUSH_L2 ; 
- int /*<<< orphan*/  TF_CPU_PM_S2 ; 
- int /*<<< orphan*/  TF_CPU_PM_S2_NO_MC_CLK ; 
- int /*<<< orphan*/  TF_CPU_PM_S3 ; 
-#define  TF_PM_MODE_LP0 132 
-#define  TF_PM_MODE_LP1 131 
-#define  TF_PM_MODE_LP1_NO_MC_CLK 130 
-#define  TF_PM_MODE_LP2 129 
-#define  TF_PM_MODE_LP2_NOFLUSH_L2 128 
- int /*<<< orphan*/  cpu_boot_addr ; 
- int /*<<< orphan*/  tf_generic_smc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+ int cpu_boot_addr ;
+ int tf_generic_smc (int ,int ,int ) ;
 
 __attribute__((used)) static int tf_prepare_idle(unsigned long mode)
 {
-	switch (mode) {
-	case TF_PM_MODE_LP0:
-		tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S3, cpu_boot_addr);
-		break;
+ switch (mode) {
+ case 132:
+  tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S3, cpu_boot_addr);
+  break;
 
-	case TF_PM_MODE_LP1:
-		tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S2, cpu_boot_addr);
-		break;
+ case 131:
+  tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S2, cpu_boot_addr);
+  break;
 
-	case TF_PM_MODE_LP1_NO_MC_CLK:
-		tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S2_NO_MC_CLK,
-			       cpu_boot_addr);
-		break;
+ case 130:
+  tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S2_NO_MC_CLK,
+          cpu_boot_addr);
+  break;
 
-	case TF_PM_MODE_LP2:
-		tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S1, cpu_boot_addr);
-		break;
+ case 129:
+  tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S1, cpu_boot_addr);
+  break;
 
-	case TF_PM_MODE_LP2_NOFLUSH_L2:
-		tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S1_NOFLUSH_L2,
-			       cpu_boot_addr);
-		break;
+ case 128:
+  tf_generic_smc(TF_CPU_PM, TF_CPU_PM_S1_NOFLUSH_L2,
+          cpu_boot_addr);
+  break;
 
-	default:
-		return -EINVAL;
-	}
+ default:
+  return -EINVAL;
+ }
 
-	return 0;
+ return 0;
 }

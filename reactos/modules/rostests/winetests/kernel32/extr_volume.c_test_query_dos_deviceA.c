@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer2 ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int QueryDosDeviceA (char*,char*,int) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ strlen (char*) ; 
- scalar_t__ strstr (char*,char*) ; 
- char toupper (char) ; 
+
+
+
+typedef int buffer2 ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int QueryDosDeviceA (char*,char*,int) ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ scalar_t__ strlen (char*) ;
+ scalar_t__ strstr (char*,char*) ;
+ char toupper (char) ;
 
 __attribute__((used)) static void test_query_dos_deviceA(void)
 {
@@ -37,15 +37,15 @@ __attribute__((used)) static void test_query_dos_deviceA(void)
     DWORD ret, ret2, buflen=32768;
     BOOL found = FALSE;
 
-    /* callers must guess the buffer size */
+
     SetLastError(0xdeadbeef);
-    ret = QueryDosDeviceA( NULL, NULL, 0 );
+    ret = QueryDosDeviceA( ((void*)0), ((void*)0), 0 );
     ok(!ret && GetLastError() == ERROR_INSUFFICIENT_BUFFER,
        "QueryDosDeviceA(no buffer): returned %u, le=%u\n", ret, GetLastError());
 
     buffer = HeapAlloc( GetProcessHeap(), 0, buflen );
     SetLastError(0xdeadbeef);
-    ret = QueryDosDeviceA( NULL, buffer, buflen );
+    ret = QueryDosDeviceA( ((void*)0), buffer, buflen );
     ok((ret && GetLastError() != ERROR_INSUFFICIENT_BUFFER),
         "QueryDosDeviceA failed to return list, last error %u\n", GetLastError());
 
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_query_dos_deviceA(void)
     }
 
     for (;drivestr[0] <= 'z'; drivestr[0]++) {
-        /* Older W2K fails with ERROR_INSUFFICIENT_BUFFER when buflen is > 32767 */
+
         ret = QueryDosDeviceA( drivestr, buffer, buflen - 1);
         ok(ret || GetLastError() == ERROR_FILE_NOT_FOUND,
             "QueryDosDeviceA failed to return current mapping for %s, last error %u\n", drivestr, GetLastError());

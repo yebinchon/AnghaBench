@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  eedump_len; int /*<<< orphan*/  regdump_len; int /*<<< orphan*/  bus_info; int /*<<< orphan*/  version; int /*<<< orphan*/  driver; } ;
-struct e1000_adapter {int /*<<< orphan*/  pdev; } ;
+struct ethtool_drvinfo {int eedump_len; int regdump_len; int bus_info; int version; int driver; } ;
+struct e1000_adapter {int pdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  e1000_driver_name ; 
- int /*<<< orphan*/  e1000_driver_version ; 
- int /*<<< orphan*/  e1000_get_eeprom_len (struct net_device*) ; 
- int /*<<< orphan*/  e1000_get_regs_len (struct net_device*) ; 
- struct e1000_adapter* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  pci_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int e1000_driver_name ;
+ int e1000_driver_version ;
+ int e1000_get_eeprom_len (struct net_device*) ;
+ int e1000_get_regs_len (struct net_device*) ;
+ struct e1000_adapter* netdev_priv (struct net_device*) ;
+ int pci_name (int ) ;
+ int strlcpy (int ,int ,int) ;
 
 __attribute__((used)) static void e1000_get_drvinfo(struct net_device *netdev,
-			      struct ethtool_drvinfo *drvinfo)
+         struct ethtool_drvinfo *drvinfo)
 {
-	struct e1000_adapter *adapter = netdev_priv(netdev);
+ struct e1000_adapter *adapter = netdev_priv(netdev);
 
-	strlcpy(drvinfo->driver,  e1000_driver_name,
-		sizeof(drvinfo->driver));
-	strlcpy(drvinfo->version, e1000_driver_version,
-		sizeof(drvinfo->version));
+ strlcpy(drvinfo->driver, e1000_driver_name,
+  sizeof(drvinfo->driver));
+ strlcpy(drvinfo->version, e1000_driver_version,
+  sizeof(drvinfo->version));
 
-	strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
-		sizeof(drvinfo->bus_info));
-	drvinfo->regdump_len = e1000_get_regs_len(netdev);
-	drvinfo->eedump_len = e1000_get_eeprom_len(netdev);
+ strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
+  sizeof(drvinfo->bus_info));
+ drvinfo->regdump_len = e1000_get_regs_len(netdev);
+ drvinfo->eedump_len = e1000_get_eeprom_len(netdev);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  MB_OK ; 
- int /*<<< orphan*/  MessageBeep (int /*<<< orphan*/ ) ; 
- int SPIF_SENDCHANGE ; 
- int SPIF_UPDATEINIFILE ; 
- int /*<<< orphan*/  SPI_GETBEEP ; 
- int /*<<< orphan*/  SPI_SETBEEP ; 
- int /*<<< orphan*/  SPI_SETBEEP_REGKEY ; 
- int /*<<< orphan*/  SPI_SETBEEP_VALNAME ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ SystemParametersInfoA (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int) ; 
- scalar_t__ SystemParametersInfoW (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  eq (scalar_t__,scalar_t__,char*,char*) ; 
- int /*<<< orphan*/  ok (scalar_t__,char*,...) ; 
- int /*<<< orphan*/  test_change_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_error_msg (scalar_t__,char*) ; 
- int /*<<< orphan*/  test_reg_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*) ; 
 
-__attribute__((used)) static void test_SPI_SETBEEP( void )                   /*      2 */
+
+
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetLastError () ;
+ int MB_OK ;
+ int MessageBeep (int ) ;
+ int SPIF_SENDCHANGE ;
+ int SPIF_UPDATEINIFILE ;
+ int SPI_GETBEEP ;
+ int SPI_SETBEEP ;
+ int SPI_SETBEEP_REGKEY ;
+ int SPI_SETBEEP_VALNAME ;
+ int SetLastError (int) ;
+ scalar_t__ SystemParametersInfoA (int ,scalar_t__,scalar_t__*,int) ;
+ scalar_t__ SystemParametersInfoW (int ,scalar_t__,scalar_t__*,int) ;
+ scalar_t__ TRUE ;
+ int eq (scalar_t__,scalar_t__,char*,char*) ;
+ int ok (scalar_t__,char*,...) ;
+ int test_change_message (int ,int ) ;
+ int test_error_msg (scalar_t__,char*) ;
+ int test_reg_key (int ,int ,char*) ;
+ int trace (char*) ;
+
+__attribute__((used)) static void test_SPI_SETBEEP( void )
 {
     BOOL rc;
     BOOL old_b;
@@ -66,7 +66,7 @@ __attribute__((used)) static void test_SPI_SETBEEP( void )                   /* 
         eq( b, curr_val, "SystemParametersInfoW", "%d" );
     }
 
-    /* is a message sent for the second change? */
+
     rc=SystemParametersInfoA( SPI_SETBEEP, curr_val, 0, SPIF_UPDATEINIFILE | SPIF_SENDCHANGE );
     ok(rc, "SystemParametersInfoA: rc=%d err=%d\n", rc, GetLastError());
     test_change_message( SPI_SETBEEP, 0 );

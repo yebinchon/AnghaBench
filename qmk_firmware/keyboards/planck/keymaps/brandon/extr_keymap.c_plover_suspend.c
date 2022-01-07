@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PV_LH ; 
- int /*<<< orphan*/  PV_LP ; 
- int /*<<< orphan*/  PV_LR ; 
- int /*<<< orphan*/  PV_O ; 
- int /*<<< orphan*/  PV_RF ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+ int PV_LH ;
+ int PV_LP ;
+ int PV_LR ;
+ int PV_O ;
+ int PV_RF ;
+ int register_code (int ) ;
+ int unregister_code (int ) ;
 
 void plover_suspend(void) {
   register_code(PV_LP);

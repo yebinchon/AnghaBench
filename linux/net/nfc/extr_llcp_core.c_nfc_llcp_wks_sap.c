@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ **) ; 
- int EINVAL ; 
- int /*<<< orphan*/  pr_debug (char*,char*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/ ** wks ; 
+ int ARRAY_SIZE (int **) ;
+ int EINVAL ;
+ int pr_debug (char*,char*) ;
+ scalar_t__ strncmp (int *,char*,size_t) ;
+ int ** wks ;
 
 __attribute__((used)) static int nfc_llcp_wks_sap(char *service_name, size_t service_name_len)
 {
-	int sap, num_wks;
+ int sap, num_wks;
 
-	pr_debug("%s\n", service_name);
+ pr_debug("%s\n", service_name);
 
-	if (service_name == NULL)
-		return -EINVAL;
+ if (service_name == ((void*)0))
+  return -EINVAL;
 
-	num_wks = ARRAY_SIZE(wks);
+ num_wks = ARRAY_SIZE(wks);
 
-	for (sap = 0; sap < num_wks; sap++) {
-		if (wks[sap] == NULL)
-			continue;
+ for (sap = 0; sap < num_wks; sap++) {
+  if (wks[sap] == ((void*)0))
+   continue;
 
-		if (strncmp(wks[sap], service_name, service_name_len) == 0)
-			return sap;
-	}
+  if (strncmp(wks[sap], service_name, service_name_len) == 0)
+   return sap;
+ }
 
-	return -EINVAL;
+ return -EINVAL;
 }

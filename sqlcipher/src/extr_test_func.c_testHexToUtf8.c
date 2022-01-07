@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_free ; 
- char* sqlite3_malloc (int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testHexToBin (char const*,char*) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int assert (int) ;
+ int sqlite3_free ;
+ char* sqlite3_malloc (int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ int testHexToBin (char const*,char*) ;
 
 __attribute__((used)) static void testHexToUtf8(
-  sqlite3_context *pCtx, 
+  sqlite3_context *pCtx,
   int nArg,
   sqlite3_value **argv
 ){

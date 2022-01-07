@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__* charCount ; 
- size_t charCountLen ; 
- size_t countPointer ; 
- int /*<<< orphan*/  printString (char*) ; 
- int /*<<< orphan*/  printTableAbbreviation () ; 
- int sendAbbr ; 
- char* tableNameList ; 
- int tableNameListLen ; 
+ scalar_t__* charCount ;
+ size_t charCountLen ;
+ size_t countPointer ;
+ int printString (char*) ;
+ int printTableAbbreviation () ;
+ int sendAbbr ;
+ char* tableNameList ;
+ int tableNameListLen ;
 
 void printStringAndQueueChar(char* str)
 {
@@ -27,7 +19,7 @@ void printStringAndQueueChar(char* str)
   {
     countPointer++;
   }
-  sendAbbr = true;
+  sendAbbr = 1;
   if (str[0] != '\0')
   {
     printString(str);
@@ -46,12 +38,12 @@ void printStringAndQueueChar(char* str)
         break;
       }
     }
-    //for (i = 0; i < tableNameListLen && tableNameList[i] > 0; i++)
-    //{
-    //  send_char(tableNameList[i]);
-    //}
-    //send_string_P("Darden");
-    //send_string_P(&myarray);
-    //send_string_P(str);
+
+
+
+
+
+
+
   }
 }

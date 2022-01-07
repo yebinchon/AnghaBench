@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int int64_t ;
-struct TYPE_19__ {int /*<<< orphan*/  num; int /*<<< orphan*/  den; } ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int64_t ;
+struct TYPE_19__ {int num; int den; } ;
 struct TYPE_24__ {int width; int height; TYPE_1__ framerate; TYPE_3__* priv_data; } ;
-struct TYPE_23__ {int height; int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_22__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_20__ {int /*<<< orphan*/  (* bswap16_buf ) (scalar_t__,int /*<<< orphan*/  const*,int) ;} ;
-struct TYPE_21__ {int mb_y; int mb_x; TYPE_5__* last_frame; scalar_t__ bitstream_buf; int /*<<< orphan*/  gb; TYPE_2__ bbdsp; int /*<<< orphan*/  bitstream_buf_size; } ;
-typedef  TYPE_3__ MadContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_4__ AVPacket ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVCodecContext ;
+struct TYPE_23__ {int height; int* linesize; int ** data; } ;
+struct TYPE_22__ {int size; int * data; } ;
+struct TYPE_20__ {int (* bswap16_buf ) (scalar_t__,int const*,int) ;} ;
+struct TYPE_21__ {int mb_y; int mb_x; TYPE_5__* last_frame; scalar_t__ bitstream_buf; int gb; TYPE_2__ bbdsp; int bitstream_buf_size; } ;
+typedef TYPE_3__ MadContext ;
+typedef int GetByteContext ;
+typedef TYPE_4__ AVPacket ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int MADe_TAG ; 
- int MADm_TAG ; 
- int /*<<< orphan*/  av_fast_padded_malloc (scalar_t__*,int /*<<< orphan*/ *,int) ; 
- int av_frame_ref (TYPE_5__*,TYPE_5__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_5__*) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_reduce (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  calc_quant_matrix (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ decode_mb (TYPE_3__*,TYPE_5__*,int) ; 
- int ff_get_buffer (TYPE_6__*,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_6__*,int,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stub1 (scalar_t__,int /*<<< orphan*/  const*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int MADe_TAG ;
+ int MADm_TAG ;
+ int av_fast_padded_malloc (scalar_t__*,int *,int) ;
+ int av_frame_ref (TYPE_5__*,TYPE_5__*) ;
+ int av_frame_unref (TYPE_5__*) ;
+ int av_log (TYPE_6__*,int ,char*) ;
+ int av_reduce (int *,int *,int,int,int) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
+ int calc_quant_matrix (TYPE_3__*,int ) ;
+ scalar_t__ decode_mb (TYPE_3__*,TYPE_5__*,int) ;
+ int ff_get_buffer (TYPE_6__*,TYPE_5__*,int ) ;
+ int ff_set_dimensions (TYPE_6__*,int,int) ;
+ int init_get_bits (int *,scalar_t__,int) ;
+ int memset (int *,int,int) ;
+ int stub1 (scalar_t__,int const*,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
                         void *data, int *got_frame,
                         AVPacket *avpkt)
 {
     const uint8_t *buf = avpkt->data;
-    int buf_size       = avpkt->size;
-    MadContext *s     = avctx->priv_data;
-    AVFrame *frame    = data;
+    int buf_size = avpkt->size;
+    MadContext *s = avctx->priv_data;
+    AVFrame *frame = data;
     GetByteContext gb;
     int width, height;
     int chunk_type;
@@ -83,7 +83,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
     av_reduce(&avctx->framerate.den, &avctx->framerate.num,
               bytestream2_get_le16(&gb), 1000, 1<<30);
 
-    width  = bytestream2_get_le16(&gb);
+    width = bytestream2_get_le16(&gb);
     height = bytestream2_get_le16(&gb);
     bytestream2_skip(&gb, 1);
     calc_quant_matrix(s, bytestream2_get_byte(&gb));

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_4__ {char* pName; } ;
-typedef  TYPE_1__ PORT_INFO_1W ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  size_t DWORD ;
+typedef TYPE_1__ PORT_INFO_1W ;
+typedef int * LPBYTE ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int PORTNAME_MAXSIZE ; 
- size_t PORTNAME_MINSIZE ; 
- int PORTNAME_PREFIX ; 
- char* have_com ; 
- char* have_file ; 
- char* have_lpt ; 
- scalar_t__ lstrcmpiW (char*,int /*<<< orphan*/ ) ; 
- size_t lstrlenW (char*) ; 
- int /*<<< orphan*/  memcpy (char**,char*,size_t) ; 
- size_t pEnumPorts (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,size_t,size_t*,size_t*) ; 
- int /*<<< orphan*/  portname_comW ; 
- int /*<<< orphan*/  portname_fileW ; 
- int /*<<< orphan*/  portname_lptW ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int PORTNAME_MAXSIZE ;
+ size_t PORTNAME_MINSIZE ;
+ int PORTNAME_PREFIX ;
+ char* have_com ;
+ char* have_file ;
+ char* have_lpt ;
+ scalar_t__ lstrcmpiW (char*,int ) ;
+ size_t lstrlenW (char*) ;
+ int memcpy (char**,char*,size_t) ;
+ size_t pEnumPorts (int *,int,int *,size_t,size_t*,size_t*) ;
+ int portname_comW ;
+ int portname_fileW ;
+ int portname_lptW ;
+ int skip (char*) ;
 
 __attribute__((used)) static void find_installed_ports(void)
 {
-    PORT_INFO_1W * pi = NULL;
-    WCHAR   nameW[PORTNAME_MAXSIZE];
-    DWORD   needed;
-    DWORD   returned;
-    DWORD   res;
-    DWORD   id;
+    PORT_INFO_1W * pi = ((void*)0);
+    WCHAR nameW[PORTNAME_MAXSIZE];
+    DWORD needed;
+    DWORD returned;
+    DWORD res;
+    DWORD id;
 
     have_com[0] = '\0';
     have_lpt[0] = '\0';
@@ -53,11 +53,11 @@ __attribute__((used)) static void find_installed_ports(void)
 
     if (!pEnumPorts) return;
 
-    res = pEnumPorts(NULL, 1, NULL, 0, &needed, &returned);
+    res = pEnumPorts(((void*)0), 1, ((void*)0), 0, &needed, &returned);
     if (!res && (GetLastError() == ERROR_INSUFFICIENT_BUFFER)) {
         pi = HeapAlloc(GetProcessHeap(), 0, needed);
     }
-    res = pEnumPorts(NULL, 1, (LPBYTE) pi, needed, &needed, &returned);
+    res = pEnumPorts(((void*)0), 1, (LPBYTE) pi, needed, &needed, &returned);
 
     if (!res) {
         skip("no ports found\n");
@@ -70,7 +70,7 @@ __attribute__((used)) static void find_installed_ports(void)
         res = lstrlenW(pi[id].pName);
         if ((res >= PORTNAME_MINSIZE) && (res < PORTNAME_MAXSIZE) &&
             (pi[id].pName[res-1] == ':')) {
-            /* copy only the prefix ("LPT" or "COM") */
+
             memcpy(&nameW, pi[id].pName, PORTNAME_PREFIX * sizeof(WCHAR));
             nameW[PORTNAME_PREFIX] = '\0';
 

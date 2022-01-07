@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SDIO ; 
- int /*<<< orphan*/  brcmf_dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  brcmf_sdmmc_driver ; 
- int /*<<< orphan*/  sdio_unregister_driver (int /*<<< orphan*/ *) ; 
+ int SDIO ;
+ int brcmf_dbg (int ,char*) ;
+ int brcmf_sdmmc_driver ;
+ int sdio_unregister_driver (int *) ;
 
 void brcmf_sdio_exit(void)
 {
-	brcmf_dbg(SDIO, "Enter\n");
+ brcmf_dbg(SDIO, "Enter\n");
 
-	sdio_unregister_driver(&brcmf_sdmmc_driver);
+ sdio_unregister_driver(&brcmf_sdmmc_driver);
 }

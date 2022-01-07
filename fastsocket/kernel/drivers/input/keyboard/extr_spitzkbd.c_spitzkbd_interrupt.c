@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spitzkbd {int /*<<< orphan*/  timer; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  spitzkbd_scankeyboard (struct spitzkbd*) ; 
- int /*<<< orphan*/  timer_pending (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+
+
+struct spitzkbd {int timer; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int spitzkbd_scankeyboard (struct spitzkbd*) ;
+ int timer_pending (int *) ;
+ int udelay (int) ;
 
 __attribute__((used)) static irqreturn_t spitzkbd_interrupt(int irq, void *dev_id)
 {
-	struct spitzkbd *spitzkbd_data = dev_id;
+ struct spitzkbd *spitzkbd_data = dev_id;
 
-	if (!timer_pending(&spitzkbd_data->timer)) {
-		/** wait chattering delay **/
-		udelay(20);
-		spitzkbd_scankeyboard(spitzkbd_data);
-	}
+ if (!timer_pending(&spitzkbd_data->timer)) {
 
-	return IRQ_HANDLED;
+  udelay(20);
+  spitzkbd_scankeyboard(spitzkbd_data);
+ }
+
+ return IRQ_HANDLED;
 }

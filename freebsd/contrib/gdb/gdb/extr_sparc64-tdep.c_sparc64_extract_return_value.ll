@@ -1,0 +1,185 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/gdb/gdb/extr_sparc64-tdep.c_sparc64_extract_return_value.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/gdb/gdb/extr_sparc64-tdep.c_sparc64_extract_return_value.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.type = type { i32 }
+%struct.regcache = type { i32 }
+
+@SPARC_O0_REGNUM = common dso_local global i64 0, align 8
+@TYPE_CODE_UNION = common dso_local global i64 0, align 8
+@SPARC_F0_REGNUM = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.type*, %struct.regcache*, i8*)* @sparc64_extract_return_value to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @sparc64_extract_return_value(%struct.type* %0, %struct.regcache* %1, i8* %2) #0 {
+  %4 = alloca %struct.type*, align 8
+  %5 = alloca %struct.regcache*, align 8
+  %6 = alloca i8*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca [32 x i8], align 16
+  %9 = alloca i32, align 4
+  store %struct.type* %0, %struct.type** %4, align 8
+  store %struct.regcache* %1, %struct.regcache** %5, align 8
+  store i8* %2, i8** %6, align 8
+  %10 = load %struct.type*, %struct.type** %4, align 8
+  %11 = call i32 @TYPE_LENGTH(%struct.type* %10)
+  store i32 %11, i32* %7, align 4
+  %12 = load %struct.type*, %struct.type** %4, align 8
+  %13 = call i64 @sparc64_structure_or_union_p(%struct.type* %12)
+  %14 = icmp ne i64 %13, 0
+  br i1 %14, label %15, label %56
+
+15:                                               ; preds = %3
+  %16 = load i32, i32* %7, align 4
+  %17 = icmp sle i32 %16, 32
+  %18 = zext i1 %17 to i32
+  %19 = call i32 @gdb_assert(i32 %18)
+  store i32 0, i32* %9, align 4
+  br label %20
+
+20:                                               ; preds = %38, %15
+  %21 = load i32, i32* %9, align 4
+  %22 = load i32, i32* %7, align 4
+  %23 = add nsw i32 %22, 7
+  %24 = sdiv i32 %23, 8
+  %25 = icmp slt i32 %21, %24
+  br i1 %25, label %26, label %41
+
+26:                                               ; preds = %20
+  %27 = load %struct.regcache*, %struct.regcache** %5, align 8
+  %28 = load i64, i64* @SPARC_O0_REGNUM, align 8
+  %29 = load i32, i32* %9, align 4
+  %30 = sext i32 %29 to i64
+  %31 = add nsw i64 %28, %30
+  %32 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %33 = load i32, i32* %9, align 4
+  %34 = mul nsw i32 %33, 8
+  %35 = sext i32 %34 to i64
+  %36 = getelementptr inbounds i8, i8* %32, i64 %35
+  %37 = call i32 @regcache_cooked_read(%struct.regcache* %27, i64 %31, i8* %36)
+  br label %38
+
+38:                                               ; preds = %26
+  %39 = load i32, i32* %9, align 4
+  %40 = add nsw i32 %39, 1
+  store i32 %40, i32* %9, align 4
+  br label %20
+
+41:                                               ; preds = %20
+  %42 = load %struct.type*, %struct.type** %4, align 8
+  %43 = call i64 @TYPE_CODE(%struct.type* %42)
+  %44 = load i64, i64* @TYPE_CODE_UNION, align 8
+  %45 = icmp ne i64 %43, %44
+  br i1 %45, label %46, label %51
+
+46:                                               ; preds = %41
+  %47 = load %struct.regcache*, %struct.regcache** %5, align 8
+  %48 = load %struct.type*, %struct.type** %4, align 8
+  %49 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %50 = call i32 @sparc64_extract_floating_fields(%struct.regcache* %47, %struct.type* %48, i8* %49, i32 0)
+  br label %51
+
+51:                                               ; preds = %46, %41
+  %52 = load i8*, i8** %6, align 8
+  %53 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %54 = load i32, i32* %7, align 4
+  %55 = call i32 @memcpy(i8* %52, i8* %53, i32 %54)
+  br label %104
+
+56:                                               ; preds = %3
+  %57 = load %struct.type*, %struct.type** %4, align 8
+  %58 = call i64 @sparc64_floating_p(%struct.type* %57)
+  %59 = icmp ne i64 %58, 0
+  br i1 %59, label %60, label %86
+
+60:                                               ; preds = %56
+  store i32 0, i32* %9, align 4
+  br label %61
+
+61:                                               ; preds = %78, %60
+  %62 = load i32, i32* %9, align 4
+  %63 = load i32, i32* %7, align 4
+  %64 = sdiv i32 %63, 4
+  %65 = icmp slt i32 %62, %64
+  br i1 %65, label %66, label %81
+
+66:                                               ; preds = %61
+  %67 = load %struct.regcache*, %struct.regcache** %5, align 8
+  %68 = load i64, i64* @SPARC_F0_REGNUM, align 8
+  %69 = load i32, i32* %9, align 4
+  %70 = sext i32 %69 to i64
+  %71 = add nsw i64 %68, %70
+  %72 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %73 = load i32, i32* %9, align 4
+  %74 = mul nsw i32 %73, 4
+  %75 = sext i32 %74 to i64
+  %76 = getelementptr inbounds i8, i8* %72, i64 %75
+  %77 = call i32 @regcache_cooked_read(%struct.regcache* %67, i64 %71, i8* %76)
+  br label %78
+
+78:                                               ; preds = %66
+  %79 = load i32, i32* %9, align 4
+  %80 = add nsw i32 %79, 1
+  store i32 %80, i32* %9, align 4
+  br label %61
+
+81:                                               ; preds = %61
+  %82 = load i8*, i8** %6, align 8
+  %83 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %84 = load i32, i32* %7, align 4
+  %85 = call i32 @memcpy(i8* %82, i8* %83, i32 %84)
+  br label %103
+
+86:                                               ; preds = %56
+  %87 = load %struct.type*, %struct.type** %4, align 8
+  %88 = call i32 @sparc64_integral_or_pointer_p(%struct.type* %87)
+  %89 = call i32 @gdb_assert(i32 %88)
+  %90 = load %struct.regcache*, %struct.regcache** %5, align 8
+  %91 = load i64, i64* @SPARC_O0_REGNUM, align 8
+  %92 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %93 = call i32 @regcache_cooked_read(%struct.regcache* %90, i64 %91, i8* %92)
+  %94 = load i8*, i8** %6, align 8
+  %95 = getelementptr inbounds [32 x i8], [32 x i8]* %8, i64 0, i64 0
+  %96 = getelementptr inbounds i8, i8* %95, i64 8
+  %97 = load i32, i32* %7, align 4
+  %98 = sext i32 %97 to i64
+  %99 = sub i64 0, %98
+  %100 = getelementptr inbounds i8, i8* %96, i64 %99
+  %101 = load i32, i32* %7, align 4
+  %102 = call i32 @memcpy(i8* %94, i8* %100, i32 %101)
+  br label %103
+
+103:                                              ; preds = %86, %81
+  br label %104
+
+104:                                              ; preds = %103, %51
+  ret void
+}
+
+declare dso_local i32 @TYPE_LENGTH(%struct.type*) #1
+
+declare dso_local i64 @sparc64_structure_or_union_p(%struct.type*) #1
+
+declare dso_local i32 @gdb_assert(i32) #1
+
+declare dso_local i32 @regcache_cooked_read(%struct.regcache*, i64, i8*) #1
+
+declare dso_local i64 @TYPE_CODE(%struct.type*) #1
+
+declare dso_local i32 @sparc64_extract_floating_fields(%struct.regcache*, %struct.type*, i8*, i32) #1
+
+declare dso_local i32 @memcpy(i8*, i8*, i32) #1
+
+declare dso_local i64 @sparc64_floating_p(%struct.type*) #1
+
+declare dso_local i32 @sparc64_integral_or_pointer_p(%struct.type*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

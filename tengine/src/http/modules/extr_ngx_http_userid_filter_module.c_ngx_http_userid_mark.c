@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char u_char ;
 struct TYPE_7__ {char* data; int len; } ;
-typedef  TYPE_2__ ngx_str_t ;
+typedef TYPE_2__ ngx_str_t ;
 struct TYPE_8__ {char mark; } ;
-typedef  TYPE_3__ ngx_http_userid_conf_t ;
+typedef TYPE_3__ ngx_http_userid_conf_t ;
 struct TYPE_9__ {TYPE_1__* args; } ;
-typedef  TYPE_4__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+typedef TYPE_4__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_6__ {TYPE_2__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_OK ; 
- scalar_t__ ngx_strcmp (char*,char*) ; 
+
+ char* NGX_CONF_OK ;
+ scalar_t__ ngx_strcmp (char*,char*) ;
 
 __attribute__((used)) static char *
 ngx_http_userid_mark(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
     ngx_http_userid_conf_t *ucf = conf;
 
-    ngx_str_t  *value;
+    ngx_str_t *value;
 
     if (ucf->mark != (u_char) '\xFF') {
         return "is duplicate";

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx4_mpt_entry {int /*<<< orphan*/  mtt_sz; } ;
 
-/* Variables and functions */
- int be32_to_cpu (int /*<<< orphan*/ ) ; 
+
+
+
+struct mlx4_mpt_entry {int mtt_sz; } ;
+
+
+ int be32_to_cpu (int ) ;
 
 __attribute__((used)) static int mr_get_mtt_size(struct mlx4_mpt_entry *mpt)
 {
-	return be32_to_cpu(mpt->mtt_sz);
+ return be32_to_cpu(mpt->mtt_sz);
 }

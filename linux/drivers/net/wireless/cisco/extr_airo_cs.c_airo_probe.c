@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcmcia_device {struct local_info* priv; int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct pcmcia_device {struct local_info* priv; int dev; } ;
 struct local_info {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int airo_config (struct pcmcia_device*) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- struct local_info* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int airo_config (struct pcmcia_device*) ;
+ int dev_dbg (int *,char*) ;
+ struct local_info* kzalloc (int,int ) ;
 
 __attribute__((used)) static int airo_probe(struct pcmcia_device *p_dev)
 {
-	struct local_info *local;
+ struct local_info *local;
 
-	dev_dbg(&p_dev->dev, "airo_attach()\n");
+ dev_dbg(&p_dev->dev, "airo_attach()\n");
 
-	/* Allocate space for private device-specific data */
-	local = kzalloc(sizeof(*local), GFP_KERNEL);
-	if (!local)
-		return -ENOMEM;
 
-	p_dev->priv = local;
+ local = kzalloc(sizeof(*local), GFP_KERNEL);
+ if (!local)
+  return -ENOMEM;
 
-	return airo_config(p_dev);
+ p_dev->priv = local;
+
+ return airo_config(p_dev);
 }

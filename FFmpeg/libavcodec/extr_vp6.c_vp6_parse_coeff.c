@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int /*<<< orphan*/  VP56RangeCoder ;
-struct TYPE_8__ {size_t** coeff_dccv; size_t*** coeff_dcct; int* coeff_index_to_pos; size_t** coeff_runv; size_t**** coeff_ract; int /*<<< orphan*/ * coeff_index_to_idct_selector; } ;
-typedef  TYPE_3__ VP56Model ;
-struct TYPE_9__ {size_t* idct_scantable; size_t* above_block_idx; int dequant_ac; int** block_coeff; int /*<<< orphan*/ * idct_selector; TYPE_2__* above_blocks; TYPE_1__* left_block; int /*<<< orphan*/  avctx; TYPE_3__* modelp; int /*<<< orphan*/ * ccp; } ;
-typedef  TYPE_4__ VP56Context ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int VP56RangeCoder ;
+struct TYPE_8__ {size_t** coeff_dccv; size_t*** coeff_dcct; int* coeff_index_to_pos; size_t** coeff_runv; size_t**** coeff_ract; int * coeff_index_to_idct_selector; } ;
+typedef TYPE_3__ VP56Model ;
+struct TYPE_9__ {size_t* idct_scantable; size_t* above_block_idx; int dequant_ac; int** block_coeff; int * idct_selector; TYPE_2__* above_blocks; TYPE_1__* left_block; int avctx; TYPE_3__* modelp; int * ccp; } ;
+typedef TYPE_4__ VP56Context ;
 struct TYPE_7__ {int not_null_dc; } ;
 struct TYPE_6__ {int not_null_dc; } ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- size_t FFMIN (int,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- size_t* ff_vp56_b6to4 ; 
- int* ff_vp56_coeff_bias ; 
- int* ff_vp56_coeff_bit_length ; 
- size_t** ff_vp56_coeff_parse_table ; 
- int /*<<< orphan*/  ff_vp56_pc_tree ; 
- int vp56_rac_get (int /*<<< orphan*/ *) ; 
- int vp56_rac_get_prob (int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ vp56_rac_get_prob_branchy (int /*<<< orphan*/ *,size_t) ; 
- int vp56_rac_get_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ; 
- int* vp6_coeff_groups ; 
- int /*<<< orphan*/  vp6_pcr_tree ; 
- scalar_t__ vpX_rac_is_end (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ size_t FFMIN (int,int) ;
+ int av_log (int ,int ,char*) ;
+ size_t* ff_vp56_b6to4 ;
+ int* ff_vp56_coeff_bias ;
+ int* ff_vp56_coeff_bit_length ;
+ size_t** ff_vp56_coeff_parse_table ;
+ int ff_vp56_pc_tree ;
+ int vp56_rac_get (int *) ;
+ int vp56_rac_get_prob (int *,size_t) ;
+ scalar_t__ vp56_rac_get_prob_branchy (int *,size_t) ;
+ int vp56_rac_get_tree (int *,int ,size_t*) ;
+ int* vp6_coeff_groups ;
+ int vp6_pcr_tree ;
+ scalar_t__ vpX_rac_is_end (int *) ;
 
 __attribute__((used)) static int vp6_parse_coeff(VP56Context *s)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int vp6_parse_coeff(VP56Context *s)
     uint8_t *model1, *model2, *model3;
     int coeff, sign, coeff_idx;
     int b, i, cg, idx, ctx;
-    int pt = 0;    /* plane type (0 for Y, 1 for U or V) */
+    int pt = 0;
 
     if (vpX_rac_is_end(c)) {
         av_log(s->avctx, AV_LOG_ERROR, "End of AC stream reached in vp6_parse_coeff\n");
@@ -57,7 +57,7 @@ __attribute__((used)) static int vp6_parse_coeff(VP56Context *s)
     }
 
     for (b=0; b<6; b++) {
-        int ct = 1;    /* code type */
+        int ct = 1;
         int run = 1;
 
         if (b > 3) pt = 1;
@@ -70,7 +70,7 @@ __attribute__((used)) static int vp6_parse_coeff(VP56Context *s)
         coeff_idx = 0;
         for (;;) {
             if ((coeff_idx>1 && ct==0) || vp56_rac_get_prob_branchy(c, model2[0])) {
-                /* parse a coeff */
+
                 if (vp56_rac_get_prob_branchy(c, model2[2])) {
                     if (vp56_rac_get_prob_branchy(c, model2[3])) {
                         idx = vp56_rac_get_tree(c, ff_vp56_pc_tree, model1);
@@ -96,7 +96,7 @@ __attribute__((used)) static int vp6_parse_coeff(VP56Context *s)
                 s->block_coeff[b][permute[idx]] = coeff;
                 run = 1;
             } else {
-                /* parse a run */
+
                 ct = 0;
                 if (coeff_idx > 0) {
                     if (!vp56_rac_get_prob_branchy(c, model2[1]))

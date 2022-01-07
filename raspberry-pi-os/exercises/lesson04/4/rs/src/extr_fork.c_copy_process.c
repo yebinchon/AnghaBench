@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned long x19; unsigned long x20; unsigned long pc; scalar_t__ sp; } ;
-struct task_struct {long priority; long counter; int preempt_count; struct task_struct* next; TYPE_1__ cpu_context; int /*<<< orphan*/  state; } ;
+struct task_struct {long priority; long counter; int preempt_count; struct task_struct* next; TYPE_1__ cpu_context; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TASK_RUNNING ; 
- scalar_t__ THREAD_SIZE ; 
- scalar_t__ get_free_page () ; 
- struct task_struct* init ; 
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  preempt_enable () ; 
- scalar_t__ ret_from_fork ; 
+
+ int TASK_RUNNING ;
+ scalar_t__ THREAD_SIZE ;
+ scalar_t__ get_free_page () ;
+ struct task_struct* init ;
+ int preempt_disable () ;
+ int preempt_enable () ;
+ scalar_t__ ret_from_fork ;
 
 int copy_process(unsigned long fn, unsigned long arg, long pri) {
   preempt_disable();
@@ -33,7 +33,7 @@ int copy_process(unsigned long fn, unsigned long arg, long pri) {
   p->priority = pri;
   p->state = TASK_RUNNING;
   p->counter = p->priority;
-  p->preempt_count = 1; // disable preemtion untill schedule_tail
+  p->preempt_count = 1;
   p->next = 0;
 
   p->cpu_context.x19 = fn;

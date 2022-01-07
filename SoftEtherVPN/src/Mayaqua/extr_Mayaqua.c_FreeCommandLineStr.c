@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetCommandLineStr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * exename ; 
- int /*<<< orphan*/ * exename_w ; 
+ int Free (int *) ;
+ int SetCommandLineStr (int *) ;
+ int * exename ;
+ int * exename_w ;
 
 void FreeCommandLineStr()
 {
-	SetCommandLineStr(NULL);
+ SetCommandLineStr(((void*)0));
 
-	if (exename != NULL)
-	{
-		Free(exename);
-		exename = NULL;
-	}
+ if (exename != ((void*)0))
+ {
+  Free(exename);
+  exename = ((void*)0);
+ }
 
-	if (exename_w != NULL)
-	{
-		Free(exename_w);
-		exename_w = NULL;
-	}
+ if (exename_w != ((void*)0))
+ {
+  Free(exename_w);
+  exename_w = ((void*)0);
+ }
 }

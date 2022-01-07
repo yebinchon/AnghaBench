@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct ncpaddr {int dummy; } ;
 struct ncp {int dummy; } ;
-struct iface {unsigned int addrs; TYPE_1__* addr; int /*<<< orphan*/  name; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ifa; } ;
+struct iface {unsigned int addrs; TYPE_1__* addr; int name; } ;
+struct TYPE_5__ {int ifa; } ;
 
-/* Variables and functions */
- int ID0socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  bcopy (TYPE_1__*,TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ iface_addr_Zap (int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ncp_IfaceAddrDeleted (struct ncp*,TYPE_1__*) ; 
- scalar_t__ ncpaddr_equal (struct ncpaddr*,struct ncpaddr const*) ; 
- int /*<<< orphan*/  ncpaddr_family (struct ncpaddr const*) ; 
- int /*<<< orphan*/  ncprange_getaddr (int /*<<< orphan*/ *,struct ncpaddr*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int ID0socket (int ,int ,int ) ;
+ int LogERROR ;
+ int SOCK_DGRAM ;
+ int bcopy (TYPE_1__*,TYPE_1__*,unsigned int) ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ iface_addr_Zap (int ,TYPE_1__*,int) ;
+ int log_Printf (int ,char*,int ) ;
+ int ncp_IfaceAddrDeleted (struct ncp*,TYPE_1__*) ;
+ scalar_t__ ncpaddr_equal (struct ncpaddr*,struct ncpaddr const*) ;
+ int ncpaddr_family (struct ncpaddr const*) ;
+ int ncprange_getaddr (int *,struct ncpaddr*) ;
+ int strerror (int ) ;
 
 int
 iface_Delete(struct iface *iface, struct ncp *ncp, const struct ncpaddr *del)

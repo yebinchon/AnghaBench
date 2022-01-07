@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  VividasDemuxContext ;
-struct TYPE_7__ {int extradata_size; int* extradata; void* sample_rate; void* channels; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; void* height; void* width; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int int64_t ;
+typedef int VividasDemuxContext ;
+struct TYPE_7__ {int extradata_size; int* extradata; void* sample_rate; void* channels; int codec_id; int codec_type; void* height; void* width; } ;
 struct TYPE_5__ {void* den; void* num; } ;
 struct TYPE_6__ {int id; TYPE_3__* codecpar; void* nb_frames; TYPE_1__ time_base; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+typedef TYPE_2__ AVStream ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_CODEC_ID_VORBIS ; 
- int /*<<< orphan*/  AV_CODEC_ID_VP6 ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT_MAX ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- unsigned int av_xiphlacing (int*,int) ; 
- TYPE_2__* avformat_new_stream (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * avio_alloc_context (int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,int*,int) ; 
- void* avio_rl16 (int /*<<< orphan*/ *) ; 
- void* avio_rl32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- scalar_t__ ff_alloc_extradata (TYPE_3__*,int) ; 
- int ffio_read_varlen (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormatContext *s,  uint8_t *buf, int size)
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CODEC_ID_VORBIS ;
+ int AV_CODEC_ID_VP6 ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int av_free (int *) ;
+ int av_freep (int**) ;
+ int av_log (int *,int ,char*,int) ;
+ unsigned int av_xiphlacing (int*,int) ;
+ TYPE_2__* avformat_new_stream (int *,int *) ;
+ int * avio_alloc_context (int*,int,int ,int *,int *,int *,int *) ;
+ int avio_r8 (int *) ;
+ int avio_read (int *,int*,int) ;
+ void* avio_rl16 (int *) ;
+ void* avio_rl32 (int *) ;
+ int avio_seek (int *,int,int ) ;
+ int avio_tell (int *) ;
+ scalar_t__ ff_alloc_extradata (TYPE_3__*,int) ;
+ int ffio_read_varlen (int *) ;
+
+__attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormatContext *s, uint8_t *buf, int size)
 {
     int i,j;
     int64_t off;
@@ -59,29 +59,29 @@ __attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormat
     int num_video, num_audio;
     AVIOContext *pb;
 
-    pb = avio_alloc_context(buf, size, 0, NULL, NULL, NULL, NULL);
+    pb = avio_alloc_context(buf, size, 0, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
     if (!pb)
         return AVERROR(ENOMEM);
 
-    ffio_read_varlen(pb); // track_header_len
-    avio_r8(pb); // '1'
+    ffio_read_varlen(pb);
+    avio_r8(pb);
 
     val_1 = ffio_read_varlen(pb);
 
     for (i=0;i<val_1;i++) {
         int c = avio_r8(pb);
         for (j=0;j<c;j++) {
-            avio_r8(pb); // val_3
-            avio_r8(pb); // val_4
+            avio_r8(pb);
+            avio_r8(pb);
         }
     }
 
-    avio_r8(pb); // num_streams
+    avio_r8(pb);
 
     off = avio_tell(pb);
-    off += ffio_read_varlen(pb); // val_5
+    off += ffio_read_varlen(pb);
 
-    avio_r8(pb); // '2'
+    avio_r8(pb);
     num_video = avio_r8(pb);
 
     avio_seek(pb, off, SEEK_SET);
@@ -89,7 +89,7 @@ __attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormat
         av_log(s, AV_LOG_WARNING, "number of video tracks %d is not 1\n", num_video);
 
     for (i = 0; i < num_video; i++) {
-        AVStream *st = avformat_new_stream(s, NULL);
+        AVStream *st = avformat_new_stream(s, ((void*)0));
 
         st->id = i;
 
@@ -98,22 +98,22 @@ __attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormat
 
         off = avio_tell(pb);
         off += ffio_read_varlen(pb);
-        avio_r8(pb); // '3'
-        avio_r8(pb); // val_7
-        st->time_base.num = avio_rl32(pb); // frame_time
-        st->time_base.den = avio_rl32(pb); // time_base
-        st->nb_frames = avio_rl32(pb); // n frames
-        st->codecpar->width = avio_rl16(pb); // width
-        st->codecpar->height = avio_rl16(pb); // height
-        avio_r8(pb); // val_8
-        avio_rl32(pb); // val_9
+        avio_r8(pb);
+        avio_r8(pb);
+        st->time_base.num = avio_rl32(pb);
+        st->time_base.den = avio_rl32(pb);
+        st->nb_frames = avio_rl32(pb);
+        st->codecpar->width = avio_rl16(pb);
+        st->codecpar->height = avio_rl16(pb);
+        avio_r8(pb);
+        avio_rl32(pb);
 
         avio_seek(pb, off, SEEK_SET);
     }
 
     off = avio_tell(pb);
-    off += ffio_read_varlen(pb); // val_10
-    avio_r8(pb); // '4'
+    off += ffio_read_varlen(pb);
+    avio_r8(pb);
     num_audio = avio_r8(pb);
     avio_seek(pb, off, SEEK_SET);
 
@@ -122,7 +122,7 @@ __attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormat
 
     for(i=0;i<num_audio;i++) {
         int q;
-        AVStream *st = avformat_new_stream(s, NULL);
+        AVStream *st = avformat_new_stream(s, ((void*)0));
 
         st->id = num_video + i;
 
@@ -130,16 +130,16 @@ __attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormat
         st->codecpar->codec_id = AV_CODEC_ID_VORBIS;
 
         off = avio_tell(pb);
-        off += ffio_read_varlen(pb); // length
-        avio_r8(pb); // '5'
-        avio_r8(pb); //codec_id
-        avio_rl16(pb); //codec_subid
-        st->codecpar->channels = avio_rl16(pb); // channels
-        st->codecpar->sample_rate = avio_rl32(pb); // sample_rate
-        avio_seek(pb, 10, SEEK_CUR); // data_1
+        off += ffio_read_varlen(pb);
+        avio_r8(pb);
+        avio_r8(pb);
+        avio_rl16(pb);
+        st->codecpar->channels = avio_rl16(pb);
+        st->codecpar->sample_rate = avio_rl32(pb);
+        avio_seek(pb, 10, SEEK_CUR);
         q = avio_r8(pb);
-        avio_seek(pb, q, SEEK_CUR); // data_2
-        avio_r8(pb); // zeropad
+        avio_seek(pb, q, SEEK_CUR);
+        avio_r8(pb);
 
         if (avio_tell(pb) < off) {
             int num_data;
@@ -147,9 +147,9 @@ __attribute__((used)) static int track_header(VividasDemuxContext *viv, AVFormat
             int data_len[256];
             int offset = 1;
             uint8_t *p;
-            ffio_read_varlen(pb); // val_13
-            avio_r8(pb); // '19'
-            ffio_read_varlen(pb); // len_3
+            ffio_read_varlen(pb);
+            avio_r8(pb);
+            ffio_read_varlen(pb);
             num_data = avio_r8(pb);
             for (j = 0; j < num_data; j++) {
                 uint64_t len = ffio_read_varlen(pb);

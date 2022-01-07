@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  OffsetNumber ;
-typedef  int /*<<< orphan*/  IndexTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PageGetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItemId (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetMaxOffsetNumber (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Page ;
+typedef int OffsetNumber ;
+typedef int IndexTuple ;
+
+
+ int PageGetItem (int ,int ) ;
+ int PageGetItemId (int ,int ) ;
+ int PageGetMaxOffsetNumber (int ) ;
 
 __attribute__((used)) static IndexTuple
 getRightMostTuple(Page page)
 {
-	OffsetNumber maxoff = PageGetMaxOffsetNumber(page);
+ OffsetNumber maxoff = PageGetMaxOffsetNumber(page);
 
-	return (IndexTuple) PageGetItem(page, PageGetItemId(page, maxoff));
+ return (IndexTuple) PageGetItem(page, PageGetItemId(page, maxoff));
 }

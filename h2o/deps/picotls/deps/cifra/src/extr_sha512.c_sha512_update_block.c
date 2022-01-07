@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-struct TYPE_2__ {int /*<<< orphan*/  blocks; scalar_t__* H; } ;
-typedef  TYPE_1__ cf_sha512_context ;
 
-/* Variables and functions */
- scalar_t__ BSIG0 (scalar_t__) ; 
- scalar_t__ BSIG1 (scalar_t__) ; 
- scalar_t__ CH (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__* K ; 
- scalar_t__ MAJ (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ SSIG0 (scalar_t__) ; 
- scalar_t__ SSIG1 (scalar_t__) ; 
- scalar_t__ read64_be (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+struct TYPE_2__ {int blocks; scalar_t__* H; } ;
+typedef TYPE_1__ cf_sha512_context ;
+
+
+ scalar_t__ BSIG0 (scalar_t__) ;
+ scalar_t__ BSIG1 (scalar_t__) ;
+ scalar_t__ CH (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__* K ;
+ scalar_t__ MAJ (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ SSIG0 (scalar_t__) ;
+ scalar_t__ SSIG1 (scalar_t__) ;
+ scalar_t__ read64_be (int const*) ;
 
 __attribute__((used)) static void sha512_update_block(void *vctx, const uint8_t *inp)
 {

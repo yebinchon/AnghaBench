@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  Cwd ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ InitCwd () ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ malloc (int) ; 
+ int CP_ACP ;
+ int Cwd ;
+ int ENOMEM ;
+ int GetLastError () ;
+ scalar_t__ InitCwd () ;
+ int WideCharToMultiByte (int ,int ,int ,int,char*,int,int *,int *) ;
+ int errno ;
+ scalar_t__ malloc (int) ;
 
 char* wceex_getcwd( char *buffer, int maxlen )
 {
-    if( !buffer && (buffer = (char*)malloc(maxlen)) == NULL )
+    if( !buffer && (buffer = (char*)malloc(maxlen)) == ((void*)0) )
     {
         errno = ENOMEM;
-        return NULL;
+        return ((void*)0);
     }
     if( InitCwd() )
-        return NULL;    
-	if( !WideCharToMultiByte( CP_ACP, 0, Cwd, -1, buffer, maxlen, NULL, NULL ) )
+        return ((void*)0);
+ if( !WideCharToMultiByte( CP_ACP, 0, Cwd, -1, buffer, maxlen, ((void*)0), ((void*)0) ) )
     {
         errno = GetLastError();
-        return NULL;
+        return ((void*)0);
     }
     return buffer;
 }

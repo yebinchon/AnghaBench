@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sector_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sector_div (scalar_t__,int) ; 
+
+
+
+typedef scalar_t__ sector_t ;
+
+
+ int sector_div (scalar_t__,int) ;
 
 __attribute__((used)) static inline int
 aic_sector_div(sector_t capacity, int heads, int sectors)
 {
-	/* ugly, ugly sector_div calling convention.. */
-	sector_div(capacity, (heads * sectors));
-	return (int)capacity;
+
+ sector_div(capacity, (heads * sectors));
+ return (int)capacity;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ base; scalar_t__ top; } ;
-typedef  TYPE_1__ lua_State ;
+typedef TYPE_1__ lua_State ;
 
-/* Variables and functions */
- int LJ_52 ; 
- int /*<<< orphan*/  dooptions (TYPE_1__*,int) ; 
- char* luaL_checkstring (TYPE_1__*,int) ; 
- int /*<<< orphan*/  luaL_pushmodule (TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  lua_getfield (TYPE_1__*,int,char*) ; 
- int /*<<< orphan*/  lua_isnil (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lua_pop (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lua_pushvalue (TYPE_1__*,int) ; 
- int /*<<< orphan*/  modinit (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  setfenv (TYPE_1__*) ; 
+
+ int LJ_52 ;
+ int dooptions (TYPE_1__*,int) ;
+ char* luaL_checkstring (TYPE_1__*,int) ;
+ int luaL_pushmodule (TYPE_1__*,char const*,int) ;
+ int lua_getfield (TYPE_1__*,int,char*) ;
+ int lua_isnil (TYPE_1__*,int) ;
+ int lua_pop (TYPE_1__*,int) ;
+ int lua_pushvalue (TYPE_1__*,int) ;
+ int modinit (TYPE_1__*,char const*) ;
+ int setfenv (TYPE_1__*) ;
 
 __attribute__((used)) static int lj_cf_package_module(lua_State *L)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int lj_cf_package_module(lua_State *L)
   int lastarg = (int)(L->top - L->base);
   luaL_pushmodule(L, modname, 1);
   lua_getfield(L, -1, "_NAME");
-  if (!lua_isnil(L, -1)) {  /* Module already initialized? */
+  if (!lua_isnil(L, -1)) {
     lua_pop(L, 1);
   } else {
     lua_pop(L, 1);

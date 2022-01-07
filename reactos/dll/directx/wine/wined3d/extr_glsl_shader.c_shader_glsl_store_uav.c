@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_shader_version {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct wined3d_shader_version {int type; } ;
 struct wined3d_shader_reg_maps {TYPE_5__* uav_resource_info; struct wined3d_shader_version shader_version; } ;
-struct wined3d_shader_instruction {TYPE_4__* ctx; int /*<<< orphan*/ * src; TYPE_3__* dst; } ;
-struct glsl_src_param {int /*<<< orphan*/  param_str; } ;
-typedef  enum wined3d_shader_resource_type { ____Placeholder_wined3d_shader_resource_type } wined3d_shader_resource_type ;
-typedef  enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
+struct wined3d_shader_instruction {TYPE_4__* ctx; int * src; TYPE_3__* dst; } ;
+struct glsl_src_param {int param_str; } ;
+typedef enum wined3d_shader_resource_type { ____Placeholder_wined3d_shader_resource_type } wined3d_shader_resource_type ;
+typedef enum wined3d_data_type { ____Placeholder_wined3d_data_type } wined3d_data_type ;
 struct TYPE_11__ {int type; int data_type; unsigned int coord_size; } ;
-struct TYPE_10__ {int /*<<< orphan*/  buffer; struct wined3d_shader_reg_maps* reg_maps; } ;
+struct TYPE_10__ {int buffer; struct wined3d_shader_reg_maps* reg_maps; } ;
 struct TYPE_8__ {TYPE_1__* idx; } ;
 struct TYPE_9__ {TYPE_2__ reg; } ;
 struct TYPE_7__ {unsigned int offset; } ;
-typedef  unsigned int DWORD ;
+typedef unsigned int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_5__*) ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- int /*<<< orphan*/  WINED3DSP_WRITEMASK_ALL ; 
- TYPE_5__* resource_type_info ; 
- int /*<<< orphan*/  shader_addline (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,unsigned int,struct glsl_src_param*) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param_ext (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct glsl_src_param*,int) ; 
- int /*<<< orphan*/  shader_glsl_get_prefix (int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (TYPE_5__*) ;
+ int ERR (char*,int) ;
+ int WINED3DSP_WRITEMASK_ALL ;
+ TYPE_5__* resource_type_info ;
+ int shader_addline (int ,char*,int ,unsigned int,int ,int ) ;
+ int shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int *,unsigned int,struct glsl_src_param*) ;
+ int shader_glsl_add_src_param_ext (struct wined3d_shader_instruction const*,int *,int ,struct glsl_src_param*,int) ;
+ int shader_glsl_get_prefix (int ) ;
 
 __attribute__((used)) static void shader_glsl_store_uav(const struct wined3d_shader_instruction *ins)
 {

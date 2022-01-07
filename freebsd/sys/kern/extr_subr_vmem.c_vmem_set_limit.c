@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  vm_limit; } ;
-typedef  TYPE_1__ vmem_t ;
-typedef  int /*<<< orphan*/  vmem_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VMEM_LOCK (TYPE_1__*) ; 
- int /*<<< orphan*/  VMEM_UNLOCK (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int vm_limit; } ;
+typedef TYPE_1__ vmem_t ;
+typedef int vmem_size_t ;
+
+
+ int VMEM_LOCK (TYPE_1__*) ;
+ int VMEM_UNLOCK (TYPE_1__*) ;
 
 void
 vmem_set_limit(vmem_t *vm, vmem_size_t limit)
 {
 
-	VMEM_LOCK(vm);
-	vm->vm_limit = limit;
-	VMEM_UNLOCK(vm);
+ VMEM_LOCK(vm);
+ vm->vm_limit = limit;
+ VMEM_UNLOCK(vm);
 }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DisaGetEa (char*,int,int) ; 
- int DisaPc ; 
- int /*<<< orphan*/  DisaText ; 
- scalar_t__ DisaWord (int) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,char*,char*,int) ; 
+ int DisaGetEa (char*,int,int) ;
+ int DisaPc ;
+ int DisaText ;
+ scalar_t__ DisaWord (int) ;
+ int sprintf (int ,char*,char*,char*,int) ;
 
 __attribute__((used)) static int DisaDbra(int op)
 {
-  // 0101cccc 11001nnn offset  (dbra/dbxx Rn,offset)
+
   int dea=0; char deat[64]="";
   int pc=0,Offset=0;
 
@@ -32,10 +24,10 @@ __attribute__((used)) static int DisaDbra(int op)
   dea=op&7;
   DisaGetEa(deat,dea,2);
 
-  // Get condition code
+
   Bra=BraCode[(op>>8)&0xf];
 
-  // Get offset
+
   pc=DisaPc;
   Offset=(short)DisaWord(DisaPc); DisaPc+=2;
 

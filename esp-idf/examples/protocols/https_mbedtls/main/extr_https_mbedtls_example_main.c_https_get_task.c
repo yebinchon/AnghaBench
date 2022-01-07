@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_x509_crt ;
-typedef  int /*<<< orphan*/  mbedtls_ssl_context ;
-typedef  int /*<<< orphan*/  mbedtls_ssl_config ;
-typedef  int /*<<< orphan*/  mbedtls_net_context ;
-typedef  int /*<<< orphan*/  mbedtls_entropy_context ;
-typedef  int /*<<< orphan*/  mbedtls_ctr_drbg_context ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_MBEDTLS_DEBUG_LEVEL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGW (int /*<<< orphan*/ ,char*,...) ; 
- int MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY ; 
- int MBEDTLS_ERR_SSL_WANT_READ ; 
- int MBEDTLS_ERR_SSL_WANT_WRITE ; 
- int /*<<< orphan*/  MBEDTLS_NET_PROTO_TCP ; 
- int /*<<< orphan*/  MBEDTLS_SSL_IS_CLIENT ; 
- int /*<<< orphan*/  MBEDTLS_SSL_PRESET_DEFAULT ; 
- int /*<<< orphan*/  MBEDTLS_SSL_TRANSPORT_STREAM ; 
- int /*<<< orphan*/  MBEDTLS_SSL_VERIFY_OPTIONAL ; 
- scalar_t__ REQUEST ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  WEB_PORT ; 
- int /*<<< orphan*/  WEB_SERVER ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  bzero (char*,int) ; 
- int /*<<< orphan*/  mbedtls_ctr_drbg_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ctr_drbg_random ; 
- int mbedtls_ctr_drbg_seed (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_entropy_func ; 
- int /*<<< orphan*/  mbedtls_entropy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_esp_enable_debug_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int mbedtls_net_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_net_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_net_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_net_recv ; 
- int /*<<< orphan*/  mbedtls_net_send ; 
- int /*<<< orphan*/  mbedtls_ssl_close_notify (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_conf_authmode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_ssl_conf_ca_chain (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_conf_rng (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_config_defaults (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_ssl_config_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_get_ciphersuite (int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_get_verify_result (int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_handshake (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_init (int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  mbedtls_ssl_session_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_ssl_set_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_set_hostname (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int mbedtls_ssl_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_write (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  mbedtls_strerror (int,char*,int) ; 
- int /*<<< orphan*/  mbedtls_x509_crt_init (int /*<<< orphan*/ *) ; 
- int mbedtls_x509_crt_parse (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  mbedtls_x509_crt_verify_info (char*,int,char*,int) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  putchar (char) ; 
- scalar_t__ server_root_cert_pem_end ; 
- scalar_t__ server_root_cert_pem_start ; 
- size_t strlen (scalar_t__) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+
+
+typedef int mbedtls_x509_crt ;
+typedef int mbedtls_ssl_context ;
+typedef int mbedtls_ssl_config ;
+typedef int mbedtls_net_context ;
+typedef int mbedtls_entropy_context ;
+typedef int mbedtls_ctr_drbg_context ;
+typedef int buf ;
+
+
+ int CONFIG_MBEDTLS_DEBUG_LEVEL ;
+ int ESP_LOGD (int ,char*,int) ;
+ int ESP_LOGE (int ,char*,int,...) ;
+ int ESP_LOGI (int ,char*,...) ;
+ int ESP_LOGW (int ,char*,...) ;
+ int MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY ;
+ int MBEDTLS_ERR_SSL_WANT_READ ;
+ int MBEDTLS_ERR_SSL_WANT_WRITE ;
+ int MBEDTLS_NET_PROTO_TCP ;
+ int MBEDTLS_SSL_IS_CLIENT ;
+ int MBEDTLS_SSL_PRESET_DEFAULT ;
+ int MBEDTLS_SSL_TRANSPORT_STREAM ;
+ int MBEDTLS_SSL_VERIFY_OPTIONAL ;
+ scalar_t__ REQUEST ;
+ int TAG ;
+ int WEB_PORT ;
+ int WEB_SERVER ;
+ int abort () ;
+ int bzero (char*,int) ;
+ int mbedtls_ctr_drbg_init (int *) ;
+ int mbedtls_ctr_drbg_random ;
+ int mbedtls_ctr_drbg_seed (int *,int ,int *,int *,int ) ;
+ int mbedtls_entropy_func ;
+ int mbedtls_entropy_init (int *) ;
+ int mbedtls_esp_enable_debug_log (int *,int ) ;
+ int mbedtls_net_connect (int *,int ,int ,int ) ;
+ int mbedtls_net_free (int *) ;
+ int mbedtls_net_init (int *) ;
+ int mbedtls_net_recv ;
+ int mbedtls_net_send ;
+ int mbedtls_ssl_close_notify (int *) ;
+ int mbedtls_ssl_conf_authmode (int *,int ) ;
+ int mbedtls_ssl_conf_ca_chain (int *,int *,int *) ;
+ int mbedtls_ssl_conf_rng (int *,int ,int *) ;
+ int mbedtls_ssl_config_defaults (int *,int ,int ,int ) ;
+ int mbedtls_ssl_config_init (int *) ;
+ int mbedtls_ssl_get_ciphersuite (int *) ;
+ int mbedtls_ssl_get_verify_result (int *) ;
+ int mbedtls_ssl_handshake (int *) ;
+ int mbedtls_ssl_init (int *) ;
+ int mbedtls_ssl_read (int *,unsigned char*,int) ;
+ int mbedtls_ssl_session_reset (int *) ;
+ int mbedtls_ssl_set_bio (int *,int *,int ,int ,int *) ;
+ int mbedtls_ssl_set_hostname (int *,int ) ;
+ int mbedtls_ssl_setup (int *,int *) ;
+ int mbedtls_ssl_write (int *,unsigned char const*,size_t) ;
+ int mbedtls_strerror (int,char*,int) ;
+ int mbedtls_x509_crt_init (int *) ;
+ int mbedtls_x509_crt_parse (int *,scalar_t__,scalar_t__) ;
+ int mbedtls_x509_crt_verify_info (char*,int,char*,int) ;
+ int portTICK_PERIOD_MS ;
+ int putchar (char) ;
+ scalar_t__ server_root_cert_pem_end ;
+ scalar_t__ server_root_cert_pem_start ;
+ size_t strlen (scalar_t__) ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void https_get_task(void *pvParameters)
 {
@@ -97,7 +97,7 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
 
     mbedtls_entropy_init(&entropy);
     if((ret = mbedtls_ctr_drbg_seed(&ctr_drbg, mbedtls_entropy_func, &entropy,
-                                    NULL, 0)) != 0)
+                                    ((void*)0), 0)) != 0)
     {
         ESP_LOGE(TAG, "mbedtls_ctr_drbg_seed returned %d", ret);
         abort();
@@ -116,7 +116,7 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
 
     ESP_LOGI(TAG, "Setting hostname for TLS session...");
 
-     /* Hostname set here should match CN in server certificate */
+
     if((ret = mbedtls_ssl_set_hostname(&ssl, WEB_SERVER)) != 0)
     {
         ESP_LOGE(TAG, "mbedtls_ssl_set_hostname returned -0x%x", -ret);
@@ -134,17 +134,17 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
         goto exit;
     }
 
-    /* MBEDTLS_SSL_VERIFY_OPTIONAL is bad for security, in this example it will print
-       a warning if CA verification fails but it will continue to connect.
 
-       You should consider using MBEDTLS_SSL_VERIFY_REQUIRED in your own code.
-    */
+
+
+
+
     mbedtls_ssl_conf_authmode(&conf, MBEDTLS_SSL_VERIFY_OPTIONAL);
-    mbedtls_ssl_conf_ca_chain(&conf, &cacert, NULL);
+    mbedtls_ssl_conf_ca_chain(&conf, &cacert, ((void*)0));
     mbedtls_ssl_conf_rng(&conf, mbedtls_ctr_drbg_random, &ctr_drbg);
-#ifdef CONFIG_MBEDTLS_DEBUG
-    mbedtls_esp_enable_debug_log(&conf, CONFIG_MBEDTLS_DEBUG_LEVEL);
-#endif
+
+
+
 
     if ((ret = mbedtls_ssl_setup(&ssl, &conf)) != 0)
     {
@@ -166,7 +166,7 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
 
         ESP_LOGI(TAG, "Connected.");
 
-        mbedtls_ssl_set_bio(&ssl, &server_fd, mbedtls_net_send, mbedtls_net_recv, NULL);
+        mbedtls_ssl_set_bio(&ssl, &server_fd, mbedtls_net_send, mbedtls_net_recv, ((void*)0));
 
         ESP_LOGI(TAG, "Performing the SSL/TLS handshake...");
 
@@ -183,7 +183,7 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
 
         if ((flags = mbedtls_ssl_get_verify_result(&ssl)) != 0)
         {
-            /* In real life, we probably want to close connection if ret != 0 */
+
             ESP_LOGW(TAG, "Failed to verify peer certificate!");
             bzero(buf, sizeof(buf));
             mbedtls_x509_crt_verify_info(buf, sizeof(buf), "  ! ", flags);
@@ -241,7 +241,7 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
 
             len = ret;
             ESP_LOGD(TAG, "%d bytes read", len);
-            /* Print response directly to stdout as it is read */
+
             for(int i = 0; i < len; i++) {
                 putchar(buf[i]);
             }
@@ -259,7 +259,7 @@ __attribute__((used)) static void https_get_task(void *pvParameters)
             ESP_LOGE(TAG, "Last error was: -0x%x - %s", -ret, buf);
         }
 
-        putchar('\n'); // JSON output doesn't have a newline at end
+        putchar('\n');
 
         static int request_count;
         ESP_LOGI(TAG, "Completed %d requests", ++request_count);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct switches {int mode; int unit; int nat; int quiet; int fg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EX_START ; 
- int /*<<< orphan*/  LogWARN ; 
- int Nam2mode (char*) ; 
-#define  PHYS_ALL 129 
- scalar_t__ PHYS_AUTO ; 
- int PHYS_FOREGROUND ; 
- int PHYS_INTERACTIVE ; 
-#define  PHYS_NONE 128 
- int /*<<< orphan*/  Usage () ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  memset (struct switches*,char,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+ int EX_START ;
+ int LogWARN ;
+ int Nam2mode (char*) ;
+
+ scalar_t__ PHYS_AUTO ;
+ int PHYS_FOREGROUND ;
+ int PHYS_INTERACTIVE ;
+
+ int Usage () ;
+ void* atoi (char*) ;
+ int exit (int ) ;
+ int fprintf (int ,char*,...) ;
+ int log_Printf (int ,char*,char*) ;
+ int memset (struct switches*,char,int) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int
 ProcessArgs(int argc, char **argv, struct switches *sw)
@@ -46,28 +46,28 @@ ProcessArgs(int argc, char **argv, struct switches *sw)
     cp = argv[arg] + 1;
     newmode = Nam2mode(cp);
     switch (newmode) {
-      case PHYS_NONE:
+      case 128:
         if (strcmp(cp, "nat") == 0) {
-#ifdef NONAT
-          log_Printf(LogWARN, "%s ignored: NAT is compiled out\n", argv[arg]);
-#else
+
+
+
           sw->nat = 1;
-#endif
-          optc--;			/* this option isn't exclusive */
+
+          optc--;
         } else if (strcmp(cp, "alias") == 0) {
-#ifdef NONAT
-          log_Printf(LogWARN, "%s ignored: NAT is compiled out\n", argv[arg]);
-          fprintf(stderr, "%s ignored: NAT is compiled out\n", argv[arg]);
-#else
+
+
+
+
           log_Printf(LogWARN, "%s is deprecated\n", argv[arg]);
           fprintf(stderr, "%s is deprecated\n", argv[arg]);
           sw->nat = 1;
-#endif
-          optc--;			/* this option isn't exclusive */
+
+          optc--;
         } else if (strncmp(cp, "unit", 4) == 0) {
-          optc--;			/* this option isn't exclusive */
+          optc--;
           if (cp[4] == '\0') {
-            optc--;			/* nor is the argument */
+            optc--;
             if (++arg == argc) {
               fprintf(stderr, "-unit: Expected unit number\n");
               Usage();
@@ -77,12 +77,12 @@ ProcessArgs(int argc, char **argv, struct switches *sw)
             sw->unit = atoi(cp + 4);
         } else if (strcmp(cp, "quiet") == 0) {
           sw->quiet = 1;
-          optc--;			/* this option isn't exclusive */
+          optc--;
         } else
           Usage();
         break;
 
-      case PHYS_ALL:
+      case 129:
         Usage();
         break;
 
@@ -103,5 +103,5 @@ ProcessArgs(int argc, char **argv, struct switches *sw)
     exit(EX_START);
   }
 
-  return arg;		/* Don't SetLabel yet ! */
+  return arg;
 }

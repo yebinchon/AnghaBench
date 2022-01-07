@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct dxva2_picture_context {scalar_t__ slice_count; scalar_t__ bitstream_size; int /*<<< orphan*/  qm; int /*<<< orphan*/  pp; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct dxva2_picture_context {scalar_t__ slice_count; scalar_t__ bitstream_size; int qm; int pp; } ;
 struct MpegEncContext {TYPE_1__* current_picture_ptr; } ;
-struct TYPE_6__ {int /*<<< orphan*/  height; struct MpegEncContext* priv_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  f; struct dxva2_picture_context* hwaccel_picture_private; } ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_6__ {int height; struct MpegEncContext* priv_data; } ;
+struct TYPE_5__ {int f; struct dxva2_picture_context* hwaccel_picture_private; } ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  commit_bitstream_and_slice_buffer ; 
- int ff_dxva2_common_end_frame (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_mpeg_draw_horiz_band (struct MpegEncContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int commit_bitstream_and_slice_buffer ;
+ int ff_dxva2_common_end_frame (TYPE_2__*,int ,int *,int,int *,int,int ) ;
+ int ff_mpeg_draw_horiz_band (struct MpegEncContext*,int ,int ) ;
 
 __attribute__((used)) static int dxva2_mpeg2_end_frame(AVCodecContext *avctx)
 {

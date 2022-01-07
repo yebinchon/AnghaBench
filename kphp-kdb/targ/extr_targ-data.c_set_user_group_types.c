@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  user_group_types; } ;
-typedef  TYPE_1__ user_t ;
-struct lev_targ_user_group_types {int /*<<< orphan*/  user_group_types; int /*<<< orphan*/  user_id; } ;
 
-/* Variables and functions */
- TYPE_1__* get_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int user_group_types; } ;
+typedef TYPE_1__ user_t ;
+struct lev_targ_user_group_types {int user_group_types; int user_id; } ;
+
+
+ TYPE_1__* get_user (int ) ;
+ int memcpy (int ,int ,int) ;
 
 __attribute__((used)) static int set_user_group_types (struct lev_targ_user_group_types *E) {
   user_t *U = get_user (E->user_id);

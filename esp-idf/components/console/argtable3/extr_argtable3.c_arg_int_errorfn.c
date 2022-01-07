@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* shortopts; char* longopts; char* datatype; } ;
 struct arg_int {TYPE_1__ hdr; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
-#define  EBADINT 131 
-#define  EMAXCOUNT 130 
-#define  EMINCOUNT 129 
-#define  EOVERFLOW 128 
- int /*<<< orphan*/  arg_print_option (int /*<<< orphan*/ *,char const*,char const*,char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
+
+
+
+
+
+ int arg_print_option (int *,char const*,char const*,char const*,char*) ;
+ int fprintf (int *,char*,char const*) ;
+ int fputs (char*,int *) ;
 
 __attribute__((used)) static void arg_int_errorfn(
     struct arg_int *parent,
@@ -32,31 +32,31 @@ __attribute__((used)) static void arg_int_errorfn(
     const char *progname)
 {
     const char *shortopts = parent->hdr.shortopts;
-    const char *longopts  = parent->hdr.longopts;
-    const char *datatype  = parent->hdr.datatype;
+    const char *longopts = parent->hdr.longopts;
+    const char *datatype = parent->hdr.datatype;
 
-    /* make argval NULL safe */
+
     argval = argval ? argval : "";
 
     fprintf(fp, "%s: ", progname);
     switch(errorcode)
     {
-    case EMINCOUNT:
+    case 129:
         fputs("missing option ", fp);
         arg_print_option(fp, shortopts, longopts, datatype, "\n");
         break;
 
-    case EMAXCOUNT:
+    case 130:
         fputs("excess option ", fp);
         arg_print_option(fp, shortopts, longopts, argval, "\n");
         break;
 
-    case EBADINT:
+    case 131:
         fprintf(fp, "invalid argument \"%s\" to option ", argval);
         arg_print_option(fp, shortopts, longopts, datatype, "\n");
         break;
 
-    case EOVERFLOW:
+    case 128:
         fputs("integer overflow at option ", fp);
         arg_print_option(fp, shortopts, longopts, datatype, " ");
         fprintf(fp, "(%s is too large)\n", argval);

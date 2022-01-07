@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double X; double Y; } ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPath ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathClosedCurve2 (int /*<<< orphan*/ *,TYPE_1__*,int,double) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  addclosedcurve_path ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_path (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (int ) ;
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathClosedCurve2 (int *,TYPE_1__*,int,double) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipDeletePath (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int addclosedcurve_path ;
+ int expect (int ,int ) ;
+ int ok_path (int *,int ,int ,int ) ;
 
 __attribute__((used)) static void test_addclosedcurve(void)
 {
@@ -46,17 +46,17 @@ __attribute__((used)) static void test_addclosedcurve(void)
 
     GdipCreatePath(FillModeAlternate, &path);
 
-    /* NULL args */
-    status = GdipAddPathClosedCurve2(NULL, NULL, 0, 0.0);
+
+    status = GdipAddPathClosedCurve2(((void*)0), ((void*)0), 0, 0.0);
     expect(InvalidParameter, status);
-    status = GdipAddPathClosedCurve2(path, NULL, 0, 0.0);
+    status = GdipAddPathClosedCurve2(path, ((void*)0), 0, 0.0);
     expect(InvalidParameter, status);
     status = GdipAddPathClosedCurve2(path, points, -1, 0.0);
     expect(InvalidParameter, status);
     status = GdipAddPathClosedCurve2(path, points, 1, 1.0);
     expect(InvalidParameter, status);
 
-    /* add to empty path */
+
     status = GdipAddPathClosedCurve2(path, points, 4, 1.0);
     expect(Ok, status);
     ok_path(path, addclosedcurve_path, ARRAY_SIZE(addclosedcurve_path), FALSE);

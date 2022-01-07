@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char* query; scalar_t__ expiration_time; int /*<<< orphan*/  res; int /*<<< orphan*/  cpu_time; } ;
-typedef  TYPE_1__ search_query_heap_en_t ;
-typedef  int /*<<< orphan*/  A ;
 
-/* Variables and functions */
- scalar_t__ SEARCH_QUERY_EXPIRATION_TIME ; 
- TYPE_1__* SQH ; 
- int SQH_SIZE ; 
- TYPE_1__** alloca (int) ; 
- int /*<<< orphan*/  cmp_search_queries ; 
- int /*<<< orphan*/  qsort (TYPE_1__**,int,int,int /*<<< orphan*/ ) ; 
- int sprintf (char*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char* query; scalar_t__ expiration_time; int res; int cpu_time; } ;
+typedef TYPE_1__ search_query_heap_en_t ;
+typedef int A ;
+
+
+ scalar_t__ SEARCH_QUERY_EXPIRATION_TIME ;
+ TYPE_1__* SQH ;
+ int SQH_SIZE ;
+ TYPE_1__** alloca (int) ;
+ int cmp_search_queries ;
+ int qsort (TYPE_1__**,int,int,int ) ;
+ int sprintf (char*,char*,char*,int ,int ,scalar_t__) ;
+ int strlen (char*) ;
 
 int search_query_worst (char *output, int olen) {
   int i;

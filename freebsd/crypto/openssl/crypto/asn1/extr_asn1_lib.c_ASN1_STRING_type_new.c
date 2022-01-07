@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int type; } ;
-typedef  TYPE_1__ ASN1_STRING ;
+typedef TYPE_1__ ASN1_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_STRING_TYPE_NEW ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- TYPE_1__* OPENSSL_zalloc (int) ; 
+
+ int ASN1_F_ASN1_STRING_TYPE_NEW ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ TYPE_1__* OPENSSL_zalloc (int) ;
 
 ASN1_STRING *ASN1_STRING_type_new(int type)
 {
     ASN1_STRING *ret;
 
     ret = OPENSSL_zalloc(sizeof(*ret));
-    if (ret == NULL) {
+    if (ret == ((void*)0)) {
         ASN1err(ASN1_F_ASN1_STRING_TYPE_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
     ret->type = type;
     return ret;

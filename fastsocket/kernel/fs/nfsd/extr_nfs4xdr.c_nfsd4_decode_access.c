@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nfsd4_compoundargs {int dummy; } ;
-struct nfsd4_access {int /*<<< orphan*/  ac_req_access; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+struct nfsd4_access {int ac_req_access; } ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECODE_HEAD ; 
- int /*<<< orphan*/  DECODE_TAIL ; 
- int /*<<< orphan*/  READ32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  READ_BUF (int) ; 
+
+ int DECODE_HEAD ;
+ int DECODE_TAIL ;
+ int READ32 (int ) ;
+ int READ_BUF (int) ;
 
 __attribute__((used)) static __be32
 nfsd4_decode_access(struct nfsd4_compoundargs *argp, struct nfsd4_access *access)
 {
-	DECODE_HEAD;
+ DECODE_HEAD;
 
-	READ_BUF(4);
-	READ32(access->ac_req_access);
+ READ_BUF(4);
+ READ32(access->ac_req_access);
 
-	DECODE_TAIL;
+ DECODE_TAIL;
 }

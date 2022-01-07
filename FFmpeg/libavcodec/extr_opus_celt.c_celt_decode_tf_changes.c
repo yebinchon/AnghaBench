@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int transient; size_t size; int framebits; int start_band; int end_band; int* tf_change; } ;
-typedef  int /*<<< orphan*/  OpusRangeCoder ;
-typedef  TYPE_1__ CeltFrame ;
+typedef int OpusRangeCoder ;
+typedef TYPE_1__ CeltFrame ;
 
-/* Variables and functions */
- int**** ff_celt_tf_select ; 
- int ff_opus_rc_dec_log (int /*<<< orphan*/ *,int) ; 
- int opus_rc_tell (int /*<<< orphan*/ *) ; 
+
+ int**** ff_celt_tf_select ;
+ int ff_opus_rc_dec_log (int *,int) ;
+ int opus_rc_tell (int *) ;
 
 __attribute__((used)) static void celt_decode_tf_changes(CeltFrame *f, OpusRangeCoder *rc)
 {

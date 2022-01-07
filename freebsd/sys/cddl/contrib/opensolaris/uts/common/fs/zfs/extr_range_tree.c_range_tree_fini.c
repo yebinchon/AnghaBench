@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  kmem_cache_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * range_seg_cache ; 
+ int kmem_cache_destroy (int *) ;
+ int * range_seg_cache ;
 
 void
 range_tree_fini(void)
 {
-	kmem_cache_destroy(range_seg_cache);
-	range_seg_cache = NULL;
+ kmem_cache_destroy(range_seg_cache);
+ range_seg_cache = ((void*)0);
 }

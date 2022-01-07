@@ -1,0 +1,575 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/mxge/extr_if_mxge.c_mxge_add_sysctls.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/mxge/extr_if_mxge.c_mxge_add_sysctls.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_13__ = type { i32, i8*, %struct.mxge_slice_state*, %struct.sysctl_ctx_list, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+%struct.mxge_slice_state = type { %struct.TYPE_12__, %struct.TYPE_11__, %struct.TYPE_10__, %struct.TYPE_9__, i8*, %struct.sysctl_ctx_list, %struct.TYPE_14__* }
+%struct.TYPE_12__ = type { i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+%struct.TYPE_11__ = type { i32, i32, i32 }
+%struct.TYPE_10__ = type { i32 }
+%struct.TYPE_9__ = type { i32 }
+%struct.TYPE_14__ = type { %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__, %struct.TYPE_13__ }
+%struct.sysctl_ctx_list = type { i32 }
+%struct.sysctl_oid_list = type { i32 }
+
+@OID_AUTO = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [17 x i8] c"firmware_version\00", align 1
+@CTLFLAG_RD = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [17 x i8] c"firmware version\00", align 1
+@.str.2 = private unnamed_addr constant [14 x i8] c"serial_number\00", align 1
+@.str.3 = private unnamed_addr constant [14 x i8] c"serial number\00", align 1
+@.str.4 = private unnamed_addr constant [13 x i8] c"product_code\00", align 1
+@.str.5 = private unnamed_addr constant [16 x i8] c"pcie_link_width\00", align 1
+@.str.6 = private unnamed_addr constant [12 x i8] c"tx_boundary\00", align 1
+@.str.7 = private unnamed_addr constant [14 x i8] c"write_combine\00", align 1
+@.str.8 = private unnamed_addr constant [21 x i8] c"write combining PIO?\00", align 1
+@.str.9 = private unnamed_addr constant [13 x i8] c"read_dma_MBs\00", align 1
+@.str.10 = private unnamed_addr constant [23 x i8] c"DMA Read speed in MB/s\00", align 1
+@.str.11 = private unnamed_addr constant [14 x i8] c"write_dma_MBs\00", align 1
+@.str.12 = private unnamed_addr constant [24 x i8] c"DMA Write speed in MB/s\00", align 1
+@.str.13 = private unnamed_addr constant [19 x i8] c"read_write_dma_MBs\00", align 1
+@.str.14 = private unnamed_addr constant [40 x i8] c"DMA concurrent Read/Write speed in MB/s\00", align 1
+@.str.15 = private unnamed_addr constant [16 x i8] c"watchdog_resets\00", align 1
+@.str.16 = private unnamed_addr constant [30 x i8] c"Number of times NIC was reset\00", align 1
+@.str.17 = private unnamed_addr constant [16 x i8] c"intr_coal_delay\00", align 1
+@CTLTYPE_INT = common dso_local global i32 0, align 4
+@CTLFLAG_RW = common dso_local global i32 0, align 4
+@mxge_change_intr_coal = common dso_local global i32 0, align 4
+@.str.18 = private unnamed_addr constant [2 x i8] c"I\00", align 1
+@.str.19 = private unnamed_addr constant [36 x i8] c"interrupt coalescing delay in usecs\00", align 1
+@.str.20 = private unnamed_addr constant [9 x i8] c"throttle\00", align 1
+@mxge_change_throttle = common dso_local global i32 0, align 4
+@.str.21 = private unnamed_addr constant [20 x i8] c"transmit throttling\00", align 1
+@.str.22 = private unnamed_addr constant [21 x i8] c"flow_control_enabled\00", align 1
+@mxge_change_flow_control = common dso_local global i32 0, align 4
+@.str.23 = private unnamed_addr constant [14 x i8] c"deassert_wait\00", align 1
+@mxge_deassert_wait = common dso_local global i32 0, align 4
+@.str.24 = private unnamed_addr constant [40 x i8] c"Wait for IRQ line to go low in ihandler\00", align 1
+@.str.25 = private unnamed_addr constant [8 x i8] c"link_up\00", align 1
+@mxge_handle_be32 = common dso_local global i32 0, align 4
+@.str.26 = private unnamed_addr constant [8 x i8] c"link up\00", align 1
+@.str.27 = private unnamed_addr constant [20 x i8] c"rdma_tags_available\00", align 1
+@.str.28 = private unnamed_addr constant [18 x i8] c"dropped_bad_crc32\00", align 1
+@.str.29 = private unnamed_addr constant [16 x i8] c"dropped_bad_phy\00", align 1
+@.str.30 = private unnamed_addr constant [31 x i8] c"dropped_link_error_or_filtered\00", align 1
+@.str.31 = private unnamed_addr constant [22 x i8] c"dropped_link_overflow\00", align 1
+@.str.32 = private unnamed_addr constant [27 x i8] c"dropped_multicast_filtered\00", align 1
+@.str.33 = private unnamed_addr constant [22 x i8] c"dropped_no_big_buffer\00", align 1
+@.str.34 = private unnamed_addr constant [24 x i8] c"dropped_no_small_buffer\00", align 1
+@.str.35 = private unnamed_addr constant [16 x i8] c"dropped_overrun\00", align 1
+@.str.36 = private unnamed_addr constant [14 x i8] c"dropped_pause\00", align 1
+@.str.37 = private unnamed_addr constant [13 x i8] c"dropped_runt\00", align 1
+@.str.38 = private unnamed_addr constant [25 x i8] c"dropped_unicast_filtered\00", align 1
+@.str.39 = private unnamed_addr constant [8 x i8] c"verbose\00", align 1
+@mxge_verbose = common dso_local global i32 0, align 4
+@.str.40 = private unnamed_addr constant [17 x i8] c"verbose printing\00", align 1
+@.str.41 = private unnamed_addr constant [6 x i8] c"slice\00", align 1
+@.str.42 = private unnamed_addr constant [1 x i8] zeroinitializer, align 1
+@.str.43 = private unnamed_addr constant [3 x i8] c"%d\00", align 1
+@.str.44 = private unnamed_addr constant [13 x i8] c"rx_small_cnt\00", align 1
+@.str.45 = private unnamed_addr constant [11 x i8] c"rx_big_cnt\00", align 1
+@.str.46 = private unnamed_addr constant [12 x i8] c"lro_flushed\00", align 1
+@.str.47 = private unnamed_addr constant [35 x i8] c"number of lro merge queues flushed\00", align 1
+@.str.48 = private unnamed_addr constant [13 x i8] c"lro_bad_csum\00", align 1
+@.str.49 = private unnamed_addr constant [35 x i8] c"number of bad csums preventing LRO\00", align 1
+@.str.50 = private unnamed_addr constant [11 x i8] c"lro_queued\00", align 1
+@.str.51 = private unnamed_addr constant [45 x i8] c"number of frames appended to lro mergequeues\00", align 1
+@.str.52 = private unnamed_addr constant [7 x i8] c"tx_req\00", align 1
+@.str.53 = private unnamed_addr constant [8 x i8] c"tx_done\00", align 1
+@.str.54 = private unnamed_addr constant [12 x i8] c"tx_pkt_done\00", align 1
+@.str.55 = private unnamed_addr constant [9 x i8] c"tx_stall\00", align 1
+@.str.56 = private unnamed_addr constant [8 x i8] c"tx_wake\00", align 1
+@.str.57 = private unnamed_addr constant [10 x i8] c"tx_defrag\00", align 1
+@.str.58 = private unnamed_addr constant [16 x i8] c"tx_queue_active\00", align 1
+@.str.59 = private unnamed_addr constant [12 x i8] c"tx_activate\00", align 1
+@.str.60 = private unnamed_addr constant [14 x i8] c"tx_deactivate\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.TYPE_13__*)* @mxge_add_sysctls to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @mxge_add_sysctls(%struct.TYPE_13__* %0) #0 {
+  %2 = alloca %struct.TYPE_13__*, align 8
+  %3 = alloca %struct.sysctl_ctx_list*, align 8
+  %4 = alloca %struct.sysctl_oid_list*, align 8
+  %5 = alloca %struct.TYPE_14__*, align 8
+  %6 = alloca %struct.mxge_slice_state*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca [8 x i8], align 1
+  store %struct.TYPE_13__* %0, %struct.TYPE_13__** %2, align 8
+  %9 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %10 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %9, i32 0, i32 14
+  %11 = load i32, i32* %10, align 4
+  %12 = call %struct.sysctl_ctx_list* @device_get_sysctl_ctx(i32 %11)
+  store %struct.sysctl_ctx_list* %12, %struct.sysctl_ctx_list** %3, align 8
+  %13 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %14 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %13, i32 0, i32 14
+  %15 = load i32, i32* %14, align 4
+  %16 = call i8* @device_get_sysctl_tree(i32 %15)
+  %17 = call %struct.sysctl_oid_list* @SYSCTL_CHILDREN(i8* %16)
+  store %struct.sysctl_oid_list* %17, %struct.sysctl_oid_list** %4, align 8
+  %18 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %19 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %18, i32 0, i32 2
+  %20 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %19, align 8
+  %21 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %20, i64 0
+  %22 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %21, i32 0, i32 6
+  %23 = load %struct.TYPE_14__*, %struct.TYPE_14__** %22, align 8
+  store %struct.TYPE_14__* %23, %struct.TYPE_14__** %5, align 8
+  %24 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %25 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %26 = load i32, i32* @OID_AUTO, align 4
+  %27 = load i32, i32* @CTLFLAG_RD, align 4
+  %28 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %29 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %28, i32 0, i32 13
+  %30 = load i32, i32* %29, align 8
+  %31 = call i32 @SYSCTL_ADD_STRING(%struct.sysctl_ctx_list* %24, %struct.sysctl_oid_list* %25, i32 %26, i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str, i64 0, i64 0), i32 %27, i32 %30, i32 0, i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.1, i64 0, i64 0))
+  %32 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %33 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %34 = load i32, i32* @OID_AUTO, align 4
+  %35 = load i32, i32* @CTLFLAG_RD, align 4
+  %36 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %37 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %36, i32 0, i32 12
+  %38 = load i32, i32* %37, align 4
+  %39 = call i32 @SYSCTL_ADD_STRING(%struct.sysctl_ctx_list* %32, %struct.sysctl_oid_list* %33, i32 %34, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.2, i64 0, i64 0), i32 %35, i32 %38, i32 0, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.3, i64 0, i64 0))
+  %40 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %41 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %42 = load i32, i32* @OID_AUTO, align 4
+  %43 = load i32, i32* @CTLFLAG_RD, align 4
+  %44 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %45 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %44, i32 0, i32 11
+  %46 = load i32, i32* %45, align 8
+  %47 = call i32 @SYSCTL_ADD_STRING(%struct.sysctl_ctx_list* %40, %struct.sysctl_oid_list* %41, i32 %42, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.4, i64 0, i64 0), i32 %43, i32 %46, i32 0, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.4, i64 0, i64 0))
+  %48 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %49 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %50 = load i32, i32* @OID_AUTO, align 4
+  %51 = load i32, i32* @CTLFLAG_RD, align 4
+  %52 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %53 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %52, i32 0, i32 10
+  %54 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %48, %struct.sysctl_oid_list* %49, i32 %50, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.5, i64 0, i64 0), i32 %51, i32* %53, i32 0, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i64 0, i64 0))
+  %55 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %56 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %57 = load i32, i32* @OID_AUTO, align 4
+  %58 = load i32, i32* @CTLFLAG_RD, align 4
+  %59 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %60 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %59, i32 0, i32 9
+  %61 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %55, %struct.sysctl_oid_list* %56, i32 %57, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i64 0, i64 0), i32 %58, i32* %60, i32 0, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.6, i64 0, i64 0))
+  %62 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %63 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %64 = load i32, i32* @OID_AUTO, align 4
+  %65 = load i32, i32* @CTLFLAG_RD, align 4
+  %66 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %67 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %66, i32 0, i32 8
+  %68 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %62, %struct.sysctl_oid_list* %63, i32 %64, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.7, i64 0, i64 0), i32 %65, i32* %67, i32 0, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.8, i64 0, i64 0))
+  %69 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %70 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %71 = load i32, i32* @OID_AUTO, align 4
+  %72 = load i32, i32* @CTLFLAG_RD, align 4
+  %73 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %74 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %73, i32 0, i32 7
+  %75 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %69, %struct.sysctl_oid_list* %70, i32 %71, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.9, i64 0, i64 0), i32 %72, i32* %74, i32 0, i8* getelementptr inbounds ([23 x i8], [23 x i8]* @.str.10, i64 0, i64 0))
+  %76 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %77 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %78 = load i32, i32* @OID_AUTO, align 4
+  %79 = load i32, i32* @CTLFLAG_RD, align 4
+  %80 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %81 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %80, i32 0, i32 6
+  %82 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %76, %struct.sysctl_oid_list* %77, i32 %78, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.11, i64 0, i64 0), i32 %79, i32* %81, i32 0, i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.12, i64 0, i64 0))
+  %83 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %84 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %85 = load i32, i32* @OID_AUTO, align 4
+  %86 = load i32, i32* @CTLFLAG_RD, align 4
+  %87 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %88 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %87, i32 0, i32 5
+  %89 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %83, %struct.sysctl_oid_list* %84, i32 %85, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str.13, i64 0, i64 0), i32 %86, i32* %88, i32 0, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.14, i64 0, i64 0))
+  %90 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %91 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %92 = load i32, i32* @OID_AUTO, align 4
+  %93 = load i32, i32* @CTLFLAG_RD, align 4
+  %94 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %95 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %94, i32 0, i32 4
+  %96 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %90, %struct.sysctl_oid_list* %91, i32 %92, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.15, i64 0, i64 0), i32 %93, i32* %95, i32 0, i8* getelementptr inbounds ([30 x i8], [30 x i8]* @.str.16, i64 0, i64 0))
+  %97 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %98 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %99 = load i32, i32* @OID_AUTO, align 4
+  %100 = load i32, i32* @CTLTYPE_INT, align 4
+  %101 = load i32, i32* @CTLFLAG_RW, align 4
+  %102 = or i32 %100, %101
+  %103 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %104 = load i32, i32* @mxge_change_intr_coal, align 4
+  %105 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %97, %struct.sysctl_oid_list* %98, i32 %99, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.17, i64 0, i64 0), i32 %102, %struct.TYPE_13__* %103, i32 0, i32 %104, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.19, i64 0, i64 0))
+  %106 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %107 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %108 = load i32, i32* @OID_AUTO, align 4
+  %109 = load i32, i32* @CTLTYPE_INT, align 4
+  %110 = load i32, i32* @CTLFLAG_RW, align 4
+  %111 = or i32 %109, %110
+  %112 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %113 = load i32, i32* @mxge_change_throttle, align 4
+  %114 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %106, %struct.sysctl_oid_list* %107, i32 %108, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.20, i64 0, i64 0), i32 %111, %struct.TYPE_13__* %112, i32 0, i32 %113, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.21, i64 0, i64 0))
+  %115 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %116 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %117 = load i32, i32* @OID_AUTO, align 4
+  %118 = load i32, i32* @CTLTYPE_INT, align 4
+  %119 = load i32, i32* @CTLFLAG_RW, align 4
+  %120 = or i32 %118, %119
+  %121 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %122 = load i32, i32* @mxge_change_flow_control, align 4
+  %123 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %115, %struct.sysctl_oid_list* %116, i32 %117, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.22, i64 0, i64 0), i32 %120, %struct.TYPE_13__* %121, i32 0, i32 %122, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([36 x i8], [36 x i8]* @.str.19, i64 0, i64 0))
+  %124 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %125 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %126 = load i32, i32* @OID_AUTO, align 4
+  %127 = load i32, i32* @CTLFLAG_RW, align 4
+  %128 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %124, %struct.sysctl_oid_list* %125, i32 %126, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.23, i64 0, i64 0), i32 %127, i32* @mxge_deassert_wait, i32 0, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.24, i64 0, i64 0))
+  %129 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %130 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %131 = load i32, i32* @OID_AUTO, align 4
+  %132 = load i32, i32* @CTLTYPE_INT, align 4
+  %133 = load i32, i32* @CTLFLAG_RD, align 4
+  %134 = or i32 %132, %133
+  %135 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %136 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %135, i32 0, i32 12
+  %137 = load i32, i32* @mxge_handle_be32, align 4
+  %138 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %129, %struct.sysctl_oid_list* %130, i32 %131, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.25, i64 0, i64 0), i32 %134, %struct.TYPE_13__* %136, i32 0, i32 %137, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.26, i64 0, i64 0))
+  %139 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %140 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %141 = load i32, i32* @OID_AUTO, align 4
+  %142 = load i32, i32* @CTLTYPE_INT, align 4
+  %143 = load i32, i32* @CTLFLAG_RD, align 4
+  %144 = or i32 %142, %143
+  %145 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %146 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %145, i32 0, i32 11
+  %147 = load i32, i32* @mxge_handle_be32, align 4
+  %148 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %139, %struct.sysctl_oid_list* %140, i32 %141, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.27, i64 0, i64 0), i32 %144, %struct.TYPE_13__* %146, i32 0, i32 %147, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str.27, i64 0, i64 0))
+  %149 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %150 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %151 = load i32, i32* @OID_AUTO, align 4
+  %152 = load i32, i32* @CTLTYPE_INT, align 4
+  %153 = load i32, i32* @CTLFLAG_RD, align 4
+  %154 = or i32 %152, %153
+  %155 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %156 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %155, i32 0, i32 10
+  %157 = load i32, i32* @mxge_handle_be32, align 4
+  %158 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %149, %struct.sysctl_oid_list* %150, i32 %151, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.28, i64 0, i64 0), i32 %154, %struct.TYPE_13__* %156, i32 0, i32 %157, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.28, i64 0, i64 0))
+  %159 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %160 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %161 = load i32, i32* @OID_AUTO, align 4
+  %162 = load i32, i32* @CTLTYPE_INT, align 4
+  %163 = load i32, i32* @CTLFLAG_RD, align 4
+  %164 = or i32 %162, %163
+  %165 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %166 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %165, i32 0, i32 9
+  %167 = load i32, i32* @mxge_handle_be32, align 4
+  %168 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %159, %struct.sysctl_oid_list* %160, i32 %161, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.29, i64 0, i64 0), i32 %164, %struct.TYPE_13__* %166, i32 0, i32 %167, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.29, i64 0, i64 0))
+  %169 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %170 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %171 = load i32, i32* @OID_AUTO, align 4
+  %172 = load i32, i32* @CTLTYPE_INT, align 4
+  %173 = load i32, i32* @CTLFLAG_RD, align 4
+  %174 = or i32 %172, %173
+  %175 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %176 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %175, i32 0, i32 8
+  %177 = load i32, i32* @mxge_handle_be32, align 4
+  %178 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %169, %struct.sysctl_oid_list* %170, i32 %171, i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.30, i64 0, i64 0), i32 %174, %struct.TYPE_13__* %176, i32 0, i32 %177, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([31 x i8], [31 x i8]* @.str.30, i64 0, i64 0))
+  %179 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %180 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %181 = load i32, i32* @OID_AUTO, align 4
+  %182 = load i32, i32* @CTLTYPE_INT, align 4
+  %183 = load i32, i32* @CTLFLAG_RD, align 4
+  %184 = or i32 %182, %183
+  %185 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %186 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %185, i32 0, i32 7
+  %187 = load i32, i32* @mxge_handle_be32, align 4
+  %188 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %179, %struct.sysctl_oid_list* %180, i32 %181, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.31, i64 0, i64 0), i32 %184, %struct.TYPE_13__* %186, i32 0, i32 %187, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.31, i64 0, i64 0))
+  %189 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %190 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %191 = load i32, i32* @OID_AUTO, align 4
+  %192 = load i32, i32* @CTLTYPE_INT, align 4
+  %193 = load i32, i32* @CTLFLAG_RD, align 4
+  %194 = or i32 %192, %193
+  %195 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %196 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %195, i32 0, i32 6
+  %197 = load i32, i32* @mxge_handle_be32, align 4
+  %198 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %189, %struct.sysctl_oid_list* %190, i32 %191, i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str.32, i64 0, i64 0), i32 %194, %struct.TYPE_13__* %196, i32 0, i32 %197, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([27 x i8], [27 x i8]* @.str.32, i64 0, i64 0))
+  %199 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %200 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %201 = load i32, i32* @OID_AUTO, align 4
+  %202 = load i32, i32* @CTLTYPE_INT, align 4
+  %203 = load i32, i32* @CTLFLAG_RD, align 4
+  %204 = or i32 %202, %203
+  %205 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %206 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %205, i32 0, i32 5
+  %207 = load i32, i32* @mxge_handle_be32, align 4
+  %208 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %199, %struct.sysctl_oid_list* %200, i32 %201, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.33, i64 0, i64 0), i32 %204, %struct.TYPE_13__* %206, i32 0, i32 %207, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str.33, i64 0, i64 0))
+  %209 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %210 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %211 = load i32, i32* @OID_AUTO, align 4
+  %212 = load i32, i32* @CTLTYPE_INT, align 4
+  %213 = load i32, i32* @CTLFLAG_RD, align 4
+  %214 = or i32 %212, %213
+  %215 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %216 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %215, i32 0, i32 4
+  %217 = load i32, i32* @mxge_handle_be32, align 4
+  %218 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %209, %struct.sysctl_oid_list* %210, i32 %211, i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.34, i64 0, i64 0), i32 %214, %struct.TYPE_13__* %216, i32 0, i32 %217, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([24 x i8], [24 x i8]* @.str.34, i64 0, i64 0))
+  %219 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %220 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %221 = load i32, i32* @OID_AUTO, align 4
+  %222 = load i32, i32* @CTLTYPE_INT, align 4
+  %223 = load i32, i32* @CTLFLAG_RD, align 4
+  %224 = or i32 %222, %223
+  %225 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %226 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %225, i32 0, i32 3
+  %227 = load i32, i32* @mxge_handle_be32, align 4
+  %228 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %219, %struct.sysctl_oid_list* %220, i32 %221, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.35, i64 0, i64 0), i32 %224, %struct.TYPE_13__* %226, i32 0, i32 %227, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.35, i64 0, i64 0))
+  %229 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %230 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %231 = load i32, i32* @OID_AUTO, align 4
+  %232 = load i32, i32* @CTLTYPE_INT, align 4
+  %233 = load i32, i32* @CTLFLAG_RD, align 4
+  %234 = or i32 %232, %233
+  %235 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %236 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %235, i32 0, i32 2
+  %237 = load i32, i32* @mxge_handle_be32, align 4
+  %238 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %229, %struct.sysctl_oid_list* %230, i32 %231, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.36, i64 0, i64 0), i32 %234, %struct.TYPE_13__* %236, i32 0, i32 %237, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.36, i64 0, i64 0))
+  %239 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %240 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %241 = load i32, i32* @OID_AUTO, align 4
+  %242 = load i32, i32* @CTLTYPE_INT, align 4
+  %243 = load i32, i32* @CTLFLAG_RD, align 4
+  %244 = or i32 %242, %243
+  %245 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %246 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %245, i32 0, i32 1
+  %247 = load i32, i32* @mxge_handle_be32, align 4
+  %248 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %239, %struct.sysctl_oid_list* %240, i32 %241, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.37, i64 0, i64 0), i32 %244, %struct.TYPE_13__* %246, i32 0, i32 %247, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.37, i64 0, i64 0))
+  %249 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %250 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %251 = load i32, i32* @OID_AUTO, align 4
+  %252 = load i32, i32* @CTLTYPE_INT, align 4
+  %253 = load i32, i32* @CTLFLAG_RD, align 4
+  %254 = or i32 %252, %253
+  %255 = load %struct.TYPE_14__*, %struct.TYPE_14__** %5, align 8
+  %256 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %255, i32 0, i32 0
+  %257 = load i32, i32* @mxge_handle_be32, align 4
+  %258 = call i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list* %249, %struct.sysctl_oid_list* %250, i32 %251, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.38, i64 0, i64 0), i32 %254, %struct.TYPE_13__* %256, i32 0, i32 %257, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.18, i64 0, i64 0), i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.38, i64 0, i64 0))
+  %259 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %260 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %261 = load i32, i32* @OID_AUTO, align 4
+  %262 = load i32, i32* @CTLFLAG_RW, align 4
+  %263 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %259, %struct.sysctl_oid_list* %260, i32 %261, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.39, i64 0, i64 0), i32 %262, i32* @mxge_verbose, i32 0, i8* getelementptr inbounds ([17 x i8], [17 x i8]* @.str.40, i64 0, i64 0))
+  %264 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %265 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %264, i32 0, i32 3
+  %266 = call i32 @sysctl_ctx_init(%struct.sysctl_ctx_list* %265)
+  %267 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %268 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %267, i32 0, i32 3
+  %269 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %270 = load i32, i32* @OID_AUTO, align 4
+  %271 = load i32, i32* @CTLFLAG_RD, align 4
+  %272 = call i8* @SYSCTL_ADD_NODE(%struct.sysctl_ctx_list* %268, %struct.sysctl_oid_list* %269, i32 %270, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.41, i64 0, i64 0), i32 %271, i32 0, i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.42, i64 0, i64 0))
+  %273 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %274 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %273, i32 0, i32 1
+  store i8* %272, i8** %274, align 8
+  store i32 0, i32* %7, align 4
+  br label %275
+
+275:                                              ; preds = %428, %1
+  %276 = load i32, i32* %7, align 4
+  %277 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %278 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %277, i32 0, i32 0
+  %279 = load i32, i32* %278, align 8
+  %280 = icmp slt i32 %276, %279
+  br i1 %280, label %281, label %431
+
+281:                                              ; preds = %275
+  %282 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %283 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %282, i32 0, i32 2
+  %284 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %283, align 8
+  %285 = load i32, i32* %7, align 4
+  %286 = sext i32 %285 to i64
+  %287 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %284, i64 %286
+  store %struct.mxge_slice_state* %287, %struct.mxge_slice_state** %6, align 8
+  %288 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %289 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %288, i32 0, i32 5
+  %290 = call i32 @sysctl_ctx_init(%struct.sysctl_ctx_list* %289)
+  %291 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %292 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %291, i32 0, i32 5
+  store %struct.sysctl_ctx_list* %292, %struct.sysctl_ctx_list** %3, align 8
+  %293 = load %struct.TYPE_13__*, %struct.TYPE_13__** %2, align 8
+  %294 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %293, i32 0, i32 1
+  %295 = load i8*, i8** %294, align 8
+  %296 = call %struct.sysctl_oid_list* @SYSCTL_CHILDREN(i8* %295)
+  store %struct.sysctl_oid_list* %296, %struct.sysctl_oid_list** %4, align 8
+  %297 = getelementptr inbounds [8 x i8], [8 x i8]* %8, i64 0, i64 0
+  %298 = load i32, i32* %7, align 4
+  %299 = call i32 @sprintf(i8* %297, i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.43, i64 0, i64 0), i32 %298)
+  %300 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %301 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %302 = load i32, i32* @OID_AUTO, align 4
+  %303 = getelementptr inbounds [8 x i8], [8 x i8]* %8, i64 0, i64 0
+  %304 = load i32, i32* @CTLFLAG_RD, align 4
+  %305 = call i8* @SYSCTL_ADD_NODE(%struct.sysctl_ctx_list* %300, %struct.sysctl_oid_list* %301, i32 %302, i8* %303, i32 %304, i32 0, i8* getelementptr inbounds ([1 x i8], [1 x i8]* @.str.42, i64 0, i64 0))
+  %306 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %307 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %306, i32 0, i32 4
+  store i8* %305, i8** %307, align 8
+  %308 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %309 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %308, i32 0, i32 4
+  %310 = load i8*, i8** %309, align 8
+  %311 = call %struct.sysctl_oid_list* @SYSCTL_CHILDREN(i8* %310)
+  store %struct.sysctl_oid_list* %311, %struct.sysctl_oid_list** %4, align 8
+  %312 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %313 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %314 = load i32, i32* @OID_AUTO, align 4
+  %315 = load i32, i32* @CTLFLAG_RD, align 4
+  %316 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %317 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %316, i32 0, i32 3
+  %318 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %317, i32 0, i32 0
+  %319 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %312, %struct.sysctl_oid_list* %313, i32 %314, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.44, i64 0, i64 0), i32 %315, i32* %318, i32 0, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.44, i64 0, i64 0))
+  %320 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %321 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %322 = load i32, i32* @OID_AUTO, align 4
+  %323 = load i32, i32* @CTLFLAG_RD, align 4
+  %324 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %325 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %324, i32 0, i32 2
+  %326 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %325, i32 0, i32 0
+  %327 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %320, %struct.sysctl_oid_list* %321, i32 %322, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.45, i64 0, i64 0), i32 %323, i32* %326, i32 0, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.44, i64 0, i64 0))
+  %328 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %329 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %330 = load i32, i32* @OID_AUTO, align 4
+  %331 = load i32, i32* @CTLFLAG_RD, align 4
+  %332 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %333 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %332, i32 0, i32 1
+  %334 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %333, i32 0, i32 2
+  %335 = call i32 @SYSCTL_ADD_U64(%struct.sysctl_ctx_list* %328, %struct.sysctl_oid_list* %329, i32 %330, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.46, i64 0, i64 0), i32 %331, i32* %334, i32 0, i8* getelementptr inbounds ([35 x i8], [35 x i8]* @.str.47, i64 0, i64 0))
+  %336 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %337 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %338 = load i32, i32* @OID_AUTO, align 4
+  %339 = load i32, i32* @CTLFLAG_RD, align 4
+  %340 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %341 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %340, i32 0, i32 1
+  %342 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %341, i32 0, i32 1
+  %343 = call i32 @SYSCTL_ADD_U64(%struct.sysctl_ctx_list* %336, %struct.sysctl_oid_list* %337, i32 %338, i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str.48, i64 0, i64 0), i32 %339, i32* %342, i32 0, i8* getelementptr inbounds ([35 x i8], [35 x i8]* @.str.49, i64 0, i64 0))
+  %344 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %345 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %346 = load i32, i32* @OID_AUTO, align 4
+  %347 = load i32, i32* @CTLFLAG_RD, align 4
+  %348 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %349 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %348, i32 0, i32 1
+  %350 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %349, i32 0, i32 0
+  %351 = call i32 @SYSCTL_ADD_U64(%struct.sysctl_ctx_list* %344, %struct.sysctl_oid_list* %345, i32 %346, i8* getelementptr inbounds ([11 x i8], [11 x i8]* @.str.50, i64 0, i64 0), i32 %347, i32* %350, i32 0, i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.51, i64 0, i64 0))
+  %352 = load i32, i32* %7, align 4
+  %353 = icmp sgt i32 %352, 0
+  br i1 %353, label %354, label %355
+
+354:                                              ; preds = %281
+  br label %428
+
+355:                                              ; preds = %281
+  %356 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %357 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %358 = load i32, i32* @OID_AUTO, align 4
+  %359 = load i32, i32* @CTLFLAG_RD, align 4
+  %360 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %361 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %360, i32 0, i32 0
+  %362 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %361, i32 0, i32 8
+  %363 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %356, %struct.sysctl_oid_list* %357, i32 %358, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.52, i64 0, i64 0), i32 %359, i32* %362, i32 0, i8* getelementptr inbounds ([7 x i8], [7 x i8]* @.str.52, i64 0, i64 0))
+  %364 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %365 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %366 = load i32, i32* @OID_AUTO, align 4
+  %367 = load i32, i32* @CTLFLAG_RD, align 4
+  %368 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %369 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %368, i32 0, i32 0
+  %370 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %369, i32 0, i32 7
+  %371 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %364, %struct.sysctl_oid_list* %365, i32 %366, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.53, i64 0, i64 0), i32 %367, i32* %370, i32 0, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.53, i64 0, i64 0))
+  %372 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %373 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %374 = load i32, i32* @OID_AUTO, align 4
+  %375 = load i32, i32* @CTLFLAG_RD, align 4
+  %376 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %377 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %376, i32 0, i32 0
+  %378 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %377, i32 0, i32 6
+  %379 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %372, %struct.sysctl_oid_list* %373, i32 %374, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.54, i64 0, i64 0), i32 %375, i32* %378, i32 0, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.53, i64 0, i64 0))
+  %380 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %381 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %382 = load i32, i32* @OID_AUTO, align 4
+  %383 = load i32, i32* @CTLFLAG_RD, align 4
+  %384 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %385 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %384, i32 0, i32 0
+  %386 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %385, i32 0, i32 5
+  %387 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %380, %struct.sysctl_oid_list* %381, i32 %382, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.55, i64 0, i64 0), i32 %383, i32* %386, i32 0, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.55, i64 0, i64 0))
+  %388 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %389 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %390 = load i32, i32* @OID_AUTO, align 4
+  %391 = load i32, i32* @CTLFLAG_RD, align 4
+  %392 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %393 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %392, i32 0, i32 0
+  %394 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %393, i32 0, i32 4
+  %395 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %388, %struct.sysctl_oid_list* %389, i32 %390, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.56, i64 0, i64 0), i32 %391, i32* %394, i32 0, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.56, i64 0, i64 0))
+  %396 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %397 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %398 = load i32, i32* @OID_AUTO, align 4
+  %399 = load i32, i32* @CTLFLAG_RD, align 4
+  %400 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %401 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %400, i32 0, i32 0
+  %402 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %401, i32 0, i32 3
+  %403 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %396, %struct.sysctl_oid_list* %397, i32 %398, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.57, i64 0, i64 0), i32 %399, i32* %402, i32 0, i8* getelementptr inbounds ([10 x i8], [10 x i8]* @.str.57, i64 0, i64 0))
+  %404 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %405 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %406 = load i32, i32* @OID_AUTO, align 4
+  %407 = load i32, i32* @CTLFLAG_RD, align 4
+  %408 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %409 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %408, i32 0, i32 0
+  %410 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %409, i32 0, i32 2
+  %411 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %404, %struct.sysctl_oid_list* %405, i32 %406, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.58, i64 0, i64 0), i32 %407, i32* %410, i32 0, i8* getelementptr inbounds ([16 x i8], [16 x i8]* @.str.58, i64 0, i64 0))
+  %412 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %413 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %414 = load i32, i32* @OID_AUTO, align 4
+  %415 = load i32, i32* @CTLFLAG_RD, align 4
+  %416 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %417 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %416, i32 0, i32 0
+  %418 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %417, i32 0, i32 1
+  %419 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %412, %struct.sysctl_oid_list* %413, i32 %414, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.59, i64 0, i64 0), i32 %415, i32* %418, i32 0, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.59, i64 0, i64 0))
+  %420 = load %struct.sysctl_ctx_list*, %struct.sysctl_ctx_list** %3, align 8
+  %421 = load %struct.sysctl_oid_list*, %struct.sysctl_oid_list** %4, align 8
+  %422 = load i32, i32* @OID_AUTO, align 4
+  %423 = load i32, i32* @CTLFLAG_RD, align 4
+  %424 = load %struct.mxge_slice_state*, %struct.mxge_slice_state** %6, align 8
+  %425 = getelementptr inbounds %struct.mxge_slice_state, %struct.mxge_slice_state* %424, i32 0, i32 0
+  %426 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %425, i32 0, i32 0
+  %427 = call i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list* %420, %struct.sysctl_oid_list* %421, i32 %422, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.60, i64 0, i64 0), i32 %423, i32* %426, i32 0, i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.60, i64 0, i64 0))
+  br label %428
+
+428:                                              ; preds = %355, %354
+  %429 = load i32, i32* %7, align 4
+  %430 = add nsw i32 %429, 1
+  store i32 %430, i32* %7, align 4
+  br label %275
+
+431:                                              ; preds = %275
+  ret void
+}
+
+declare dso_local %struct.sysctl_ctx_list* @device_get_sysctl_ctx(i32) #1
+
+declare dso_local %struct.sysctl_oid_list* @SYSCTL_CHILDREN(i8*) #1
+
+declare dso_local i8* @device_get_sysctl_tree(i32) #1
+
+declare dso_local i32 @SYSCTL_ADD_STRING(%struct.sysctl_ctx_list*, %struct.sysctl_oid_list*, i32, i8*, i32, i32, i32, i8*) #1
+
+declare dso_local i32 @SYSCTL_ADD_INT(%struct.sysctl_ctx_list*, %struct.sysctl_oid_list*, i32, i8*, i32, i32*, i32, i8*) #1
+
+declare dso_local i32 @SYSCTL_ADD_PROC(%struct.sysctl_ctx_list*, %struct.sysctl_oid_list*, i32, i8*, i32, %struct.TYPE_13__*, i32, i32, i8*, i8*) #1
+
+declare dso_local i32 @sysctl_ctx_init(%struct.sysctl_ctx_list*) #1
+
+declare dso_local i8* @SYSCTL_ADD_NODE(%struct.sysctl_ctx_list*, %struct.sysctl_oid_list*, i32, i8*, i32, i32, i8*) #1
+
+declare dso_local i32 @sprintf(i8*, i8*, i32) #1
+
+declare dso_local i32 @SYSCTL_ADD_U64(%struct.sysctl_ctx_list*, %struct.sysctl_oid_list*, i32, i8*, i32, i32*, i32, i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

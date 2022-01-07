@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  cxx_pretty_printer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_LANG_SPECIFIC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_NAMESPACE_ALIAS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_SAVED_TREE (int /*<<< orphan*/ ) ; 
- int DECL_USE_TEMPLATE (int /*<<< orphan*/ ) ; 
-#define  FUNCTION_DECL 131 
-#define  NAMESPACE_DECL 130 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
-#define  TYPE_DECL 129 
-#define  VAR_DECL 128 
- int /*<<< orphan*/  pp_cxx_explicit_instantiation (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_explicit_specialization (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_function_definition (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_namespace_alias_definition (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_original_namespace_definition (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_simple_declaration (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_template_declaration (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_unsupported_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int cxx_pretty_printer ;
+
+
+ int DECL_LANG_SPECIFIC (int ) ;
+ int DECL_NAMESPACE_ALIAS (int ) ;
+ int DECL_SAVED_TREE (int ) ;
+ int DECL_USE_TEMPLATE (int ) ;
+
+
+ int TREE_CODE (int ) ;
+
+
+ int pp_cxx_explicit_instantiation (int *,int ) ;
+ int pp_cxx_explicit_specialization (int *,int ) ;
+ int pp_cxx_function_definition (int *,int ) ;
+ int pp_cxx_namespace_alias_definition (int *,int ) ;
+ int pp_cxx_original_namespace_definition (int *,int ) ;
+ int pp_cxx_simple_declaration (int *,int ) ;
+ int pp_cxx_template_declaration (int *,int ) ;
+ int pp_unsupported_tree (int *,int ) ;
 
 void
 pp_cxx_declaration (cxx_pretty_printer *pp, tree t)
@@ -41,39 +41,39 @@ pp_cxx_declaration (cxx_pretty_printer *pp, tree t)
     switch (DECL_USE_TEMPLATE (t))
       {
       case 1:
-	pp_cxx_template_declaration (pp, t);
-	break;
+ pp_cxx_template_declaration (pp, t);
+ break;
 
       case 2:
-	pp_cxx_explicit_specialization (pp, t);
-	break;
+ pp_cxx_explicit_specialization (pp, t);
+ break;
 
       case 3:
-	pp_cxx_explicit_instantiation (pp, t);
-	break;
+ pp_cxx_explicit_instantiation (pp, t);
+ break;
 
       default:
-	break;
+ break;
       }
   else switch (TREE_CODE (t))
     {
-    case VAR_DECL:
-    case TYPE_DECL:
+    case 128:
+    case 129:
       pp_cxx_simple_declaration (pp, t);
       break;
 
-    case FUNCTION_DECL:
+    case 131:
       if (DECL_SAVED_TREE (t))
-	pp_cxx_function_definition (pp, t);
+ pp_cxx_function_definition (pp, t);
       else
-	pp_cxx_simple_declaration (pp, t);
+ pp_cxx_simple_declaration (pp, t);
       break;
 
-    case NAMESPACE_DECL:
+    case 130:
       if (DECL_NAMESPACE_ALIAS (t))
-	pp_cxx_namespace_alias_definition (pp, t);
+ pp_cxx_namespace_alias_definition (pp, t);
       else
-	pp_cxx_original_namespace_definition (pp, t);
+ pp_cxx_original_namespace_definition (pp, t);
       break;
 
     default:

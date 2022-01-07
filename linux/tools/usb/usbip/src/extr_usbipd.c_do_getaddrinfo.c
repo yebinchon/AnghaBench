@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int ai_family; int /*<<< orphan*/  ai_flags; int /*<<< orphan*/  ai_socktype; } ;
-typedef  int /*<<< orphan*/  hints ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AI_PASSIVE ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  err (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (char*,int /*<<< orphan*/ ,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  usbip_port_string ; 
+
+
+
+struct addrinfo {int ai_family; int ai_flags; int ai_socktype; } ;
+typedef int hints ;
+
+
+ int AI_PASSIVE ;
+ int SOCK_STREAM ;
+ int err (char*,int ,int ) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (char*,int ,struct addrinfo*,struct addrinfo**) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int usbip_port_string ;
 
 __attribute__((used)) static struct addrinfo *do_getaddrinfo(char *host, int ai_family)
 {
-	struct addrinfo hints, *ai_head;
-	int rc;
+ struct addrinfo hints, *ai_head;
+ int rc;
 
-	memset(&hints, 0, sizeof(hints));
-	hints.ai_family   = ai_family;
-	hints.ai_socktype = SOCK_STREAM;
-	hints.ai_flags    = AI_PASSIVE;
+ memset(&hints, 0, sizeof(hints));
+ hints.ai_family = ai_family;
+ hints.ai_socktype = SOCK_STREAM;
+ hints.ai_flags = AI_PASSIVE;
 
-	rc = getaddrinfo(host, usbip_port_string, &hints, &ai_head);
-	if (rc) {
-		err("failed to get a network address %s: %s", usbip_port_string,
-		    gai_strerror(rc));
-		return NULL;
-	}
+ rc = getaddrinfo(host, usbip_port_string, &hints, &ai_head);
+ if (rc) {
+  err("failed to get a network address %s: %s", usbip_port_string,
+      gai_strerror(rc));
+  return ((void*)0);
+ }
 
-	return ai_head;
+ return ai_head;
 }

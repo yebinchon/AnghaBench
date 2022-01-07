@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct eap_sm {int /*<<< orphan*/  EAP_state; int /*<<< orphan*/  decision; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECISION_COND_SUCC ; 
- int /*<<< orphan*/  EAP_SUCCESS ; 
+
+
+
+struct eap_sm {int EAP_state; int decision; } ;
+
+
+ int DECISION_COND_SUCC ;
+ int EAP_SUCCESS ;
 
 void eap_notify_success(struct eap_sm *sm)
 {
-	if (sm) {
-		sm->decision = DECISION_COND_SUCC;
-		sm->EAP_state = EAP_SUCCESS;
-	}
+ if (sm) {
+  sm->decision = DECISION_COND_SUCC;
+  sm->EAP_state = EAP_SUCCESS;
+ }
 }

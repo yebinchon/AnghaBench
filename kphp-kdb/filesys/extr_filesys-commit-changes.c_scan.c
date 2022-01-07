@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PATH_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int clone_file (char const* const,double) ; 
- scalar_t__ compute_tmp_dir_name (char const* const) ; 
- int /*<<< orphan*/  copy_file ; 
- int /*<<< orphan*/  copy_file_cloning_mode ; 
- int /*<<< orphan*/  copy_file_po_mode ; 
- int delete_file (char const* const) ; 
- int /*<<< orphan*/  do_transaction_begin () ; 
- int /*<<< orphan*/  do_transaction_end () ; 
- scalar_t__ events ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ faults ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ mkdir (double,int) ; 
- double mytime () ; 
- int /*<<< orphan*/  new_dir ; 
- int new_dir_length ; 
- int /*<<< orphan*/  old_dir ; 
- int old_dir_length ; 
- int /*<<< orphan*/  pending_operations_apply () ; 
- int /*<<< orphan*/  pending_operations_init (double,char const* const) ; 
- int /*<<< orphan*/  pending_operations_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rec_scan (int,int,int*) ; 
- int rename (double,char const* const) ; 
- scalar_t__ rmdir (double) ; 
- scalar_t__ status ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const* const) ; 
- int strlen (char const* const) ; 
- double tmp_dir ; 
- scalar_t__ use_clone ; 
- int /*<<< orphan*/  vkprintf (int,char*,double) ; 
+ int PATH_MAX ;
+ int assert (int) ;
+ int clone_file (char const* const,double) ;
+ scalar_t__ compute_tmp_dir_name (char const* const) ;
+ int copy_file ;
+ int copy_file_cloning_mode ;
+ int copy_file_po_mode ;
+ int delete_file (char const* const) ;
+ int do_transaction_begin () ;
+ int do_transaction_end () ;
+ scalar_t__ events ;
+ int exit (int) ;
+ scalar_t__ faults ;
+ int kprintf (char*,...) ;
+ scalar_t__ mkdir (double,int) ;
+ double mytime () ;
+ int new_dir ;
+ int new_dir_length ;
+ int old_dir ;
+ int old_dir_length ;
+ int pending_operations_apply () ;
+ int pending_operations_init (double,char const* const) ;
+ int pending_operations_reset (int ) ;
+ int rec_scan (int,int,int*) ;
+ int rename (double,char const* const) ;
+ scalar_t__ rmdir (double) ;
+ scalar_t__ status ;
+ int strcpy (int ,char const* const) ;
+ int strlen (char const* const) ;
+ double tmp_dir ;
+ scalar_t__ use_clone ;
+ int vkprintf (int,char*,double) ;
 
 __attribute__((used)) static int scan (const char *const old, const char *const new) {
   faults = 0;

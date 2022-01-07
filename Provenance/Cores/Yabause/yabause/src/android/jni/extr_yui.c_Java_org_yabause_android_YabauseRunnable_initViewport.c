@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EGL_EXTENSIONS ; 
- int /*<<< orphan*/  EGL_NO_CONTEXT ; 
- int /*<<< orphan*/  EGL_NO_SURFACE ; 
- int /*<<< orphan*/  EGL_READ ; 
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_EXTENSIONS ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_RENDERER ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_TEXTURE ; 
- int /*<<< orphan*/  GL_VENDOR ; 
- int /*<<< orphan*/  GL_VERSION ; 
- int /*<<< orphan*/  eglGetCurrentContext () ; 
- int /*<<< orphan*/  eglGetCurrentDisplay () ; 
- int /*<<< orphan*/  eglGetCurrentSurface (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglQueryString (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglSwapInterval (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_Context ; 
- int /*<<< orphan*/  g_Display ; 
- int /*<<< orphan*/  g_Surface ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glOrthof (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yprintf (int /*<<< orphan*/ ) ; 
+ int EGL_EXTENSIONS ;
+ int EGL_NO_CONTEXT ;
+ int EGL_NO_SURFACE ;
+ int EGL_READ ;
+ int GL_BLEND ;
+ int GL_EXTENSIONS ;
+ int GL_MODELVIEW ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_PROJECTION ;
+ int GL_RENDERER ;
+ int GL_SRC_ALPHA ;
+ int GL_TEXTURE ;
+ int GL_VENDOR ;
+ int GL_VERSION ;
+ int eglGetCurrentContext () ;
+ int eglGetCurrentDisplay () ;
+ int eglGetCurrentSurface (int ) ;
+ int eglMakeCurrent (int ,int ,int ,int ) ;
+ int eglQueryString (int ,int ) ;
+ int eglSwapInterval (int ,int ) ;
+ int g_Context ;
+ int g_Display ;
+ int g_Surface ;
+ int glBlendFunc (int ,int ) ;
+ int glDisable (int ) ;
+ int glGetString (int ) ;
+ int glLoadIdentity () ;
+ int glMatrixMode (int ) ;
+ int glOrthof (int ,int,int,int ,int,int ) ;
+ int yprintf (int ) ;
 
 int Java_org_yabause_android_YabauseRunnable_initViewport()
 {

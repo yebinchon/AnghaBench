@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zmq_msg_t ;
-struct TYPE_5__ {int /*<<< orphan*/  responder; } ;
-typedef  TYPE_1__ ZMQContext ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int zmq_msg_t ;
+struct TYPE_5__ {int responder; } ;
+typedef TYPE_1__ ZMQContext ;
 struct TYPE_6__ {TYPE_1__* priv; } ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ZMQ_DONTWAIT ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- char* av_malloc (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  zmq_msg_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmq_msg_data (int /*<<< orphan*/ *) ; 
- int zmq_msg_init (int /*<<< orphan*/ *) ; 
- int zmq_msg_recv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int zmq_msg_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmq_strerror (scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_WARNING ;
+ scalar_t__ EAGAIN ;
+ int ENOMEM ;
+ int ZMQ_DONTWAIT ;
+ int av_log (TYPE_2__*,int ,char*,int ) ;
+ char* av_malloc (int) ;
+ scalar_t__ errno ;
+ int memcpy (char*,int ,int) ;
+ int zmq_msg_close (int *) ;
+ int zmq_msg_data (int *) ;
+ int zmq_msg_init (int *) ;
+ int zmq_msg_recv (int *,int ,int ) ;
+ int zmq_msg_size (int *) ;
+ int zmq_strerror (scalar_t__) ;
 
 __attribute__((used)) static int recv_msg(AVFilterContext *ctx, char **buf, int *buf_size)
 {

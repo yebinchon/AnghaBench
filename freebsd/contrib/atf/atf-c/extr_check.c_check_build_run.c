@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_process_status_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INV (int) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_process_status_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fork_and_wait (char const* const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_array (char const* const*,char*) ; 
- int /*<<< orphan*/  update_success_from_status (char const* const,int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int atf_process_status_t ;
+typedef int atf_error_t ;
+
+
+ int INV (int) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_process_status_fini (int *) ;
+ int fork_and_wait (char const* const*,int *,int *,int *) ;
+ int print_array (char const* const*,char*) ;
+ int update_success_from_status (char const* const,int *,int*) ;
 
 __attribute__((used)) static
 atf_error_t
@@ -30,7 +30,7 @@ check_build_run(const char *const *argv, bool *success)
 
     print_array(argv, ">");
 
-    err = fork_and_wait(argv, NULL, NULL, &status);
+    err = fork_and_wait(argv, ((void*)0), ((void*)0), &status);
     if (atf_is_error(err))
         goto out;
 

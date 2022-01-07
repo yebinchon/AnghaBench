@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pool_entry_t {int /*<<< orphan*/  target_link; int /*<<< orphan*/  all_link; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_detached (struct pool_entry_t*) ; 
- int /*<<< orphan*/  h2o_linklist_unlink (int /*<<< orphan*/ *) ; 
+
+
+
+struct pool_entry_t {int target_link; int all_link; } ;
+
+
+ int destroy_detached (struct pool_entry_t*) ;
+ int h2o_linklist_unlink (int *) ;
 
 __attribute__((used)) static void destroy_attached(struct pool_entry_t *entry)
 {

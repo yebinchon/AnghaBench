@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_5__ {int** coeff; int* fbits; } ;
 struct TYPE_7__ {TYPE_1__ matrix_params; } ;
 struct TYPE_6__ {unsigned int num_channels; TYPE_3__* cur_decoding_params; } ;
-typedef  TYPE_1__ MatrixParams ;
-typedef  TYPE_2__ MLPEncodeContext ;
-typedef  TYPE_3__ DecodingParams ;
+typedef TYPE_1__ MatrixParams ;
+typedef TYPE_2__ MLPEncodeContext ;
+typedef TYPE_3__ DecodingParams ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void code_matrix_coeffs(MLPEncodeContext *ctx, unsigned int mat)
 {
@@ -38,5 +38,5 @@ __attribute__((used)) static void code_matrix_coeffs(MLPEncodeContext *ctx, unsi
 
     for (bits = 0; bits < 14 && !(coeff_mask & (1<<bits)); bits++);
 
-    mp->fbits   [mat] = 14 - bits;
+    mp->fbits [mat] = 14 - bits;
 }

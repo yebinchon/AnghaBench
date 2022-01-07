@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ILVRL_H2_SH (int,int,int,int) ; 
- int /*<<< orphan*/  ILVR_B2_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  LD_SB (int /*<<< orphan*/  const*) ; 
- int LW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  MUL4 (int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_B4_SB (int,int,int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SLDI_B4_SH (int,int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  SRARI_H4_SH (int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_W8 (int,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SW (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UNPCK_UB_SH (int /*<<< orphan*/ ,int,int) ; 
- int __msa_fill_h (int) ; 
- int* intra_pred_angle_low ; 
+
+
+
+typedef int v8i16 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int ILVRL_H2_SH (int,int,int,int) ;
+ int ILVR_B2_SH (int ,int ,int ,int ,int,int) ;
+ int LD_SB (int const*) ;
+ int LW (int const*) ;
+ int MUL4 (int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int PCKEV_B4_SB (int,int,int,int,int,int,int,int,int ,int ,int ,int ) ;
+ int SLDI_B4_SH (int,int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int SRARI_H4_SH (int,int,int,int,int) ;
+ int ST_W8 (int,int,int ,int,int,int,int ,int,int,int,int *,int) ;
+ int SW (int,int *) ;
+ int UNPCK_UB_SH (int ,int,int) ;
+ int __msa_fill_h (int) ;
+ int* intra_pred_angle_low ;
 
 __attribute__((used)) static void hevc_intra_pred_angular_lower_8width_msa(const uint8_t *src_top,
                                                      const uint8_t *src_left,

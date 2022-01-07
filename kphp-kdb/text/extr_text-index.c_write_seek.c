@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  flushout () ; 
- long long lseek (int /*<<< orphan*/ ,long long,int /*<<< orphan*/ ) ; 
- long long write_pos ; 
+ int SEEK_SET ;
+ int assert (int) ;
+ int * fd ;
+ int flushout () ;
+ long long lseek (int ,long long,int ) ;
+ long long write_pos ;
 
 void write_seek (long long new_pos) {
   flushout();

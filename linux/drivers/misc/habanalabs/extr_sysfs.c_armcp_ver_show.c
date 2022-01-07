@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* armcp_version; } ;
 struct TYPE_4__ {TYPE_1__ armcp_info; } ;
 struct hl_device {TYPE_2__ asic_prop; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- struct hl_device* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+ struct hl_device* dev_get_drvdata (struct device*) ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static ssize_t armcp_ver_show(struct device *dev, struct device_attribute *attr,
-				char *buf)
+    char *buf)
 {
-	struct hl_device *hdev = dev_get_drvdata(dev);
+ struct hl_device *hdev = dev_get_drvdata(dev);
 
-	return sprintf(buf, "%s\n", hdev->asic_prop.armcp_info.armcp_version);
+ return sprintf(buf, "%s\n", hdev->asic_prop.armcp_info.armcp_version);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udev_list {int /*<<< orphan*/  unique_entries; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- struct udev_list* mfree (struct udev_list*) ; 
- int /*<<< orphan*/  udev_list_cleanup (struct udev_list*) ; 
+
+
+
+struct udev_list {int unique_entries; } ;
+
+
+ int hashmap_free (int ) ;
+ struct udev_list* mfree (struct udev_list*) ;
+ int udev_list_cleanup (struct udev_list*) ;
 
 struct udev_list *udev_list_free(struct udev_list *list) {
         if (!list)
-                return NULL;
+                return ((void*)0);
 
         udev_list_cleanup(list);
         hashmap_free(list->unique_entries);

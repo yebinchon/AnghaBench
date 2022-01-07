@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_39__   TYPE_6__ ;
-typedef  struct TYPE_38__   TYPE_5__ ;
-typedef  struct TYPE_37__   TYPE_4__ ;
-typedef  struct TYPE_36__   TYPE_3__ ;
-typedef  struct TYPE_35__   TYPE_2__ ;
-typedef  struct TYPE_34__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  scalar_t__ int32_t ;
+
+
+typedef struct TYPE_39__ TYPE_6__ ;
+typedef struct TYPE_38__ TYPE_5__ ;
+typedef struct TYPE_37__ TYPE_4__ ;
+typedef struct TYPE_36__ TYPE_3__ ;
+typedef struct TYPE_35__ TYPE_2__ ;
+typedef struct TYPE_34__ TYPE_1__ ;
+
+
+typedef int lua_Number ;
+typedef int int64_t ;
+typedef scalar_t__ int32_t ;
 struct TYPE_34__ {scalar_t__ info; } ;
-struct TYPE_35__ {TYPE_1__ s; int /*<<< orphan*/  nval; } ;
-struct TYPE_39__ {scalar_t__ k; TYPE_2__ u; int /*<<< orphan*/  t; int /*<<< orphan*/  f; } ;
+struct TYPE_35__ {TYPE_1__ s; int nval; } ;
+struct TYPE_39__ {scalar_t__ k; TYPE_2__ u; int t; int f; } ;
 struct TYPE_38__ {scalar_t__ freereg; } ;
 struct TYPE_37__ {scalar_t__ ctypeid; } ;
 struct TYPE_36__ {scalar_t__ u64; } ;
-typedef  TYPE_3__ TValue ;
-typedef  TYPE_4__ GCcdata ;
-typedef  TYPE_5__ FuncState ;
-typedef  TYPE_6__ ExpDesc ;
-typedef  int /*<<< orphan*/  BCPos ;
-typedef  scalar_t__ BCOp ;
+typedef TYPE_3__ TValue ;
+typedef TYPE_4__ GCcdata ;
+typedef TYPE_5__ FuncState ;
+typedef TYPE_6__ ExpDesc ;
+typedef int BCPos ;
+typedef scalar_t__ BCOp ;
 
-/* Variables and functions */
- scalar_t__ BC_LEN ; 
- scalar_t__ BC_NOT ; 
- scalar_t__ BC_UNM ; 
- scalar_t__ CTID_COMPLEX_DOUBLE ; 
- scalar_t__ LJ_HASFFI ; 
- scalar_t__ U64x (int,int) ; 
- scalar_t__ VJMP ; 
- scalar_t__ VKCDATA ; 
- scalar_t__ VKFALSE ; 
- scalar_t__ VKNIL ; 
- scalar_t__ VKTRUE ; 
- scalar_t__ VNONRELOC ; 
- scalar_t__ VRELOCABLE ; 
- scalar_t__ bcemit_AD (TYPE_5__*,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  bcptr (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  bcreg_reserve (TYPE_5__*,int) ; 
- TYPE_4__* cdataV (int /*<<< orphan*/ *) ; 
- scalar_t__ cdataptr (TYPE_4__*) ; 
- int /*<<< orphan*/  expr_discharge (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  expr_free (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  expr_hasjump (TYPE_6__*) ; 
- scalar_t__ expr_isk (TYPE_6__*) ; 
- scalar_t__ expr_isnumk (TYPE_6__*) ; 
- int /*<<< orphan*/  expr_numiszero (TYPE_6__*) ; 
- TYPE_3__* expr_numtv (TYPE_6__*) ; 
- int /*<<< orphan*/  expr_toanyreg (TYPE_5__*,TYPE_6__*) ; 
- scalar_t__ intV (TYPE_3__*) ; 
- int /*<<< orphan*/  invertcond (TYPE_5__*,TYPE_6__*) ; 
- int /*<<< orphan*/  jmp_dropval (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  setbc_a (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  setintV (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  setnumV (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ tvisint (TYPE_3__*) ; 
+
+ scalar_t__ BC_LEN ;
+ scalar_t__ BC_NOT ;
+ scalar_t__ BC_UNM ;
+ scalar_t__ CTID_COMPLEX_DOUBLE ;
+ scalar_t__ LJ_HASFFI ;
+ scalar_t__ U64x (int,int) ;
+ scalar_t__ VJMP ;
+ scalar_t__ VKCDATA ;
+ scalar_t__ VKFALSE ;
+ scalar_t__ VKNIL ;
+ scalar_t__ VKTRUE ;
+ scalar_t__ VNONRELOC ;
+ scalar_t__ VRELOCABLE ;
+ scalar_t__ bcemit_AD (TYPE_5__*,scalar_t__,int ,scalar_t__) ;
+ int bcptr (TYPE_5__*,TYPE_6__*) ;
+ int bcreg_reserve (TYPE_5__*,int) ;
+ TYPE_4__* cdataV (int *) ;
+ scalar_t__ cdataptr (TYPE_4__*) ;
+ int expr_discharge (TYPE_5__*,TYPE_6__*) ;
+ int expr_free (TYPE_5__*,TYPE_6__*) ;
+ int expr_hasjump (TYPE_6__*) ;
+ scalar_t__ expr_isk (TYPE_6__*) ;
+ scalar_t__ expr_isnumk (TYPE_6__*) ;
+ int expr_numiszero (TYPE_6__*) ;
+ TYPE_3__* expr_numtv (TYPE_6__*) ;
+ int expr_toanyreg (TYPE_5__*,TYPE_6__*) ;
+ scalar_t__ intV (TYPE_3__*) ;
+ int invertcond (TYPE_5__*,TYPE_6__*) ;
+ int jmp_dropval (TYPE_5__*,int ) ;
+ int lua_assert (int) ;
+ int setbc_a (int ,scalar_t__) ;
+ int setintV (TYPE_3__*,scalar_t__) ;
+ int setnumV (TYPE_3__*,int ) ;
+ scalar_t__ tvisint (TYPE_3__*) ;
 
 __attribute__((used)) static void bcemit_unop(FuncState *fs, BCOp op, ExpDesc *e)
 {
   if (op == BC_NOT) {
-    /* Swap true and false lists. */
+
     { BCPos temp = e->f; e->f = e->t; e->t = temp; }
     jmp_dropval(fs, e->f);
     jmp_dropval(fs, e->t);
@@ -95,31 +95,20 @@ __attribute__((used)) static void bcemit_unop(FuncState *fs, BCOp op, ExpDesc *e
     }
   } else {
     lua_assert(op == BC_UNM || op == BC_LEN);
-    if (op == BC_UNM && !expr_hasjump(e)) {  /* Constant-fold negations. */
-#if LJ_HASFFI
-      if (e->k == VKCDATA) {  /* Fold in-place since cdata is not interned. */
-	GCcdata *cd = cdataV(&e->u.nval);
-	int64_t *p = (int64_t *)cdataptr(cd);
-	if (cd->ctypeid == CTID_COMPLEX_DOUBLE)
-	  p[1] ^= (int64_t)U64x(80000000,00000000);
-	else
-	  *p = -*p;
-	return;
-      } else
-#endif
-      if (expr_isnumk(e) && !expr_numiszero(e)) {  /* Avoid folding to -0. */
-	TValue *o = expr_numtv(e);
-	if (tvisint(o)) {
-	  int32_t k = intV(o);
-	  if (k == -k)
-	    setnumV(o, -(lua_Number)k);
-	  else
-	    setintV(o, -k);
-	  return;
-	} else {
-	  o->u64 ^= U64x(80000000,00000000);
-	  return;
-	}
+    if (op == BC_UNM && !expr_hasjump(e)) {
+      if (expr_isnumk(e) && !expr_numiszero(e)) {
+ TValue *o = expr_numtv(e);
+ if (tvisint(o)) {
+   int32_t k = intV(o);
+   if (k == -k)
+     setnumV(o, -(lua_Number)k);
+   else
+     setintV(o, -k);
+   return;
+ } else {
+   o->u64 ^= U64x(80000000,00000000);
+   return;
+ }
       }
     }
     expr_toanyreg(fs, e);

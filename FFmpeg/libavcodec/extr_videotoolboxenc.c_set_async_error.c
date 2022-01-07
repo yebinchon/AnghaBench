@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int async_error; int /*<<< orphan*/  lock; int /*<<< orphan*/ * q_tail; TYPE_2__* q_head; } ;
-typedef  TYPE_1__ VTEncContext ;
-struct TYPE_6__ {int /*<<< orphan*/  cm_buffer; struct TYPE_6__* next; } ;
-typedef  TYPE_2__ BufNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (TYPE_2__*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int async_error; int lock; int * q_tail; TYPE_2__* q_head; } ;
+typedef TYPE_1__ VTEncContext ;
+struct TYPE_6__ {int cm_buffer; struct TYPE_6__* next; } ;
+typedef TYPE_2__ BufNode ;
+
+
+ int CFRelease (int ) ;
+ int av_free (TYPE_2__*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void set_async_error(VTEncContext *vtctx, int err)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void set_async_error(VTEncContext *vtctx, int err)
     vtctx->async_error = err;
 
     info = vtctx->q_head;
-    vtctx->q_head = vtctx->q_tail = NULL;
+    vtctx->q_head = vtctx->q_tail = ((void*)0);
 
     while (info) {
         BufNode *next = info->next;

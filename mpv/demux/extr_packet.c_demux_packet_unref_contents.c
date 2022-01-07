@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct demux_packet {scalar_t__ len; int /*<<< orphan*/ * buffer; int /*<<< orphan*/ * avpacket; int /*<<< orphan*/  is_cached; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct demux_packet {scalar_t__ len; int * buffer; int * avpacket; int is_cached; } ;
+
+
+ int assert (int) ;
+ int av_packet_unref (int *) ;
+ int talloc_free (int *) ;
 
 void demux_packet_unref_contents(struct demux_packet *dp)
 {
@@ -23,8 +23,8 @@ void demux_packet_unref_contents(struct demux_packet *dp)
         assert(!dp->is_cached);
         av_packet_unref(dp->avpacket);
         talloc_free(dp->avpacket);
-        dp->avpacket = NULL;
-        dp->buffer = NULL;
+        dp->avpacket = ((void*)0);
+        dp->buffer = ((void*)0);
         dp->len = 0;
     }
 }

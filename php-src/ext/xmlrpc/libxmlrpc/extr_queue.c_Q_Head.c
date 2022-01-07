@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* cursor; TYPE_1__* head; } ;
-typedef  TYPE_2__ queue ;
+typedef TYPE_2__ queue ;
 struct TYPE_5__ {void* data; } ;
 
-/* Variables and functions */
- scalar_t__ Q_IsEmpty (TYPE_2__*) ; 
+
+ scalar_t__ Q_IsEmpty (TYPE_2__*) ;
 
 void *Q_Head(queue *q)
 {
    if(Q_IsEmpty(q))
-      return NULL;
+      return ((void*)0);
 
    q->cursor = q->head;
 
-   return  q->cursor->data;
+   return q->cursor->data;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int nb_streams; TYPE_3__** streams; TYPE_2__* priv_data; } ;
 struct TYPE_12__ {TYPE_1__* codecpar; } ;
 struct TYPE_11__ {scalar_t__ mode; } ;
 struct TYPE_10__ {scalar_t__ codec_type; } ;
-typedef  TYPE_2__ MOVMuxContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_2__ MOVMuxContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ MODE_PSP ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ is_cover_image (TYPE_3__*) ; 
- int /*<<< orphan*/  mov_write_ftyp_tag (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int mov_write_uuidprof_tag (int /*<<< orphan*/ *,TYPE_4__*) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ scalar_t__ MODE_PSP ;
+ int av_log (TYPE_4__*,int ,char*) ;
+ scalar_t__ is_cover_image (TYPE_3__*) ;
+ int mov_write_ftyp_tag (int *,TYPE_4__*) ;
+ int mov_write_uuidprof_tag (int *,TYPE_4__*) ;
 
 __attribute__((used)) static int mov_write_identification(AVIOContext *pb, AVFormatContext *s)
 {

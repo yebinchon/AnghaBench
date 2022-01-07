@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t renegotiate_count; size_t byte_count; unsigned long renegotiate_timeout; unsigned long last_time; int /*<<< orphan*/  num_renegotiates; int /*<<< orphan*/ * ssl; } ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  TYPE_1__ BIO_SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int BIO_RR_CONNECT ; 
- int BIO_RR_SSL_X509_LOOKUP ; 
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- TYPE_1__* BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_retry_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_retry_reason (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIO_set_retry_special (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_retry_write (int /*<<< orphan*/ *) ; 
-#define  SSL_ERROR_NONE 134 
-#define  SSL_ERROR_SSL 133 
-#define  SSL_ERROR_SYSCALL 132 
-#define  SSL_ERROR_WANT_CONNECT 131 
-#define  SSL_ERROR_WANT_READ 130 
-#define  SSL_ERROR_WANT_WRITE 129 
-#define  SSL_ERROR_WANT_X509_LOOKUP 128 
- int SSL_get_error (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SSL_renegotiate (int /*<<< orphan*/ *) ; 
- int ssl_write_internal (int /*<<< orphan*/ *,char const*,size_t,size_t*) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t renegotiate_count; size_t byte_count; unsigned long renegotiate_timeout; unsigned long last_time; int num_renegotiates; int * ssl; } ;
+typedef int SSL ;
+typedef TYPE_1__ BIO_SSL ;
+typedef int BIO ;
+
+
+ int BIO_RR_CONNECT ;
+ int BIO_RR_SSL_X509_LOOKUP ;
+ int BIO_clear_retry_flags (int *) ;
+ TYPE_1__* BIO_get_data (int *) ;
+ int BIO_set_retry_read (int *) ;
+ int BIO_set_retry_reason (int *,int) ;
+ int BIO_set_retry_special (int *) ;
+ int BIO_set_retry_write (int *) ;
+
+
+
+
+
+
+
+ int SSL_get_error (int *,int) ;
+ int SSL_renegotiate (int *) ;
+ int ssl_write_internal (int *,char const*,size_t,size_t*) ;
+ scalar_t__ time (int *) ;
 
 __attribute__((used)) static int ssl_write(BIO *b, const char *buf, size_t size, size_t *written)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int ssl_write(BIO *b, const char *buf, size_t size,
     SSL *ssl;
     BIO_SSL *bs;
 
-    if (buf == NULL)
+    if (buf == ((void*)0))
         return 0;
     bs = BIO_get_data(b);
     ssl = bs->ssl;
@@ -54,7 +54,7 @@ __attribute__((used)) static int ssl_write(BIO *b, const char *buf, size_t size,
     ret = ssl_write_internal(ssl, buf, size, written);
 
     switch (SSL_get_error(ssl, ret)) {
-    case SSL_ERROR_NONE:
+    case 134:
         if (bs->renegotiate_count > 0) {
             bs->byte_count += *written;
             if (bs->byte_count > bs->renegotiate_count) {
@@ -67,7 +67,7 @@ __attribute__((used)) static int ssl_write(BIO *b, const char *buf, size_t size,
         if ((bs->renegotiate_timeout > 0) && (!r)) {
             unsigned long tm;
 
-            tm = (unsigned long)time(NULL);
+            tm = (unsigned long)time(((void*)0));
             if (tm > bs->last_time + bs->renegotiate_timeout) {
                 bs->last_time = tm;
                 bs->num_renegotiates++;
@@ -75,21 +75,21 @@ __attribute__((used)) static int ssl_write(BIO *b, const char *buf, size_t size,
             }
         }
         break;
-    case SSL_ERROR_WANT_WRITE:
+    case 129:
         BIO_set_retry_write(b);
         break;
-    case SSL_ERROR_WANT_READ:
+    case 130:
         BIO_set_retry_read(b);
         break;
-    case SSL_ERROR_WANT_X509_LOOKUP:
+    case 128:
         BIO_set_retry_special(b);
         retry_reason = BIO_RR_SSL_X509_LOOKUP;
         break;
-    case SSL_ERROR_WANT_CONNECT:
+    case 131:
         BIO_set_retry_special(b);
         retry_reason = BIO_RR_CONNECT;
-    case SSL_ERROR_SYSCALL:
-    case SSL_ERROR_SSL:
+    case 132:
+    case 133:
     default:
         break;
     }

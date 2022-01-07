@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u_int ;
-struct status_line {int /*<<< orphan*/  screen; int /*<<< orphan*/ * active; TYPE_2__* entries; } ;
-struct TYPE_3__ {int /*<<< orphan*/  sx; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t u_int ;
+struct status_line {int screen; int * active; TYPE_2__* entries; } ;
+struct TYPE_3__ {int sx; } ;
 struct client {TYPE_1__ tty; struct status_line status; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ranges; } ;
+struct TYPE_4__ {int ranges; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- size_t nitems (TYPE_2__*) ; 
- int /*<<< orphan*/  screen_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int TAILQ_INIT (int *) ;
+ size_t nitems (TYPE_2__*) ;
+ int screen_init (int *,int ,int,int ) ;
 
 void
 status_init(struct client *c)
 {
-	struct status_line	*sl = &c->status;
-	u_int			 i;
+ struct status_line *sl = &c->status;
+ u_int i;
 
-	for (i = 0; i < nitems(sl->entries); i++)
-		TAILQ_INIT(&sl->entries[i].ranges);
+ for (i = 0; i < nitems(sl->entries); i++)
+  TAILQ_INIT(&sl->entries[i].ranges);
 
-	screen_init(&sl->screen, c->tty.sx, 1, 0);
-	sl->active = &sl->screen;
+ screen_init(&sl->screen, c->tty.sx, 1, 0);
+ sl->active = &sl->screen;
 }

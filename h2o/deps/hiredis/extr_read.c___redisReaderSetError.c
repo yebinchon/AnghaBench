@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int ridx; int err; char* errstr; scalar_t__ len; scalar_t__ pos; int /*<<< orphan*/ * buf; int /*<<< orphan*/ * reply; TYPE_1__* fn; } ;
-typedef  TYPE_2__ redisReader ;
-struct TYPE_4__ {int /*<<< orphan*/  (* freeObject ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ *) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int ridx; int err; char* errstr; scalar_t__ len; scalar_t__ pos; int * buf; int * reply; TYPE_1__* fn; } ;
+typedef TYPE_2__ redisReader ;
+struct TYPE_4__ {int (* freeObject ) (int *) ;} ;
+
+
+ int memcpy (char*,char const*,size_t) ;
+ int sdsfree (int *) ;
+ size_t strlen (char const*) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static void __redisReaderSetError(redisReader *r, int type, const char *str) {
     size_t len;
 
-    if (r->reply != NULL && r->fn && r->fn->freeObject) {
+    if (r->reply != ((void*)0) && r->fn && r->fn->freeObject) {
         r->fn->freeObject(r->reply);
-        r->reply = NULL;
+        r->reply = ((void*)0);
     }
 
-    /* Clear input buffer on errors. */
-    if (r->buf != NULL) {
+
+    if (r->buf != ((void*)0)) {
         sdsfree(r->buf);
-        r->buf = NULL;
+        r->buf = ((void*)0);
         r->pos = r->len = 0;
     }
 
-    /* Reset task stack. */
+
     r->ridx = -1;
 
-    /* Set error. */
+
     r->err = type;
     len = strlen(str);
     len = len < (sizeof(r->errstr)-1) ? len : (sizeof(r->errstr)-1);

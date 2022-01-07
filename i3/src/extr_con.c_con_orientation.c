@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  orientation_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int orientation_t ;
 struct TYPE_3__ {int layout; } ;
-typedef  TYPE_1__ Con ;
+typedef TYPE_1__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ELOG (char*,...) ; 
- int /*<<< orphan*/  HORIZ ; 
-#define  L_DEFAULT 134 
-#define  L_DOCKAREA 133 
-#define  L_OUTPUT 132 
-#define  L_SPLITH 131 
-#define  L_SPLITV 130 
-#define  L_STACKED 129 
-#define  L_TABBED 128 
- int /*<<< orphan*/  VERT ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int ELOG (char*,...) ;
+ int HORIZ ;
+
+
+
+
+
+
+
+ int VERT ;
+ int assert (int) ;
 
 orientation_t con_orientation(Con *con) {
     switch (con->layout) {
-        case L_SPLITV:
-        /* stacking containers behave like they are in vertical orientation */
-        case L_STACKED:
+        case 130:
+
+        case 129:
             return VERT;
 
-        case L_SPLITH:
-        /* tabbed containers behave like they are in vertical orientation */
-        case L_TABBED:
+        case 131:
+
+        case 128:
             return HORIZ;
 
-        case L_DEFAULT:
+        case 134:
             ELOG("Someone called con_orientation() on a con with L_DEFAULT, this is a bug in the code.\n");
-            assert(false);
+            assert(0);
 
-        case L_DOCKAREA:
-        case L_OUTPUT:
+        case 133:
+        case 132:
             ELOG("con_orientation() called on dockarea/output (%d) container %p\n", con->layout, con);
-            assert(false);
+            assert(0);
     }
-    /* should not be reached */
-    assert(false);
+
+    assert(0);
 }

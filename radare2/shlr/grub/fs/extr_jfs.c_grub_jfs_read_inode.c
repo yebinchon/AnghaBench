@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct grub_jfs_inode {TYPE_1__* inodes; } ;
 struct grub_jfs_iag {TYPE_1__* inodes; } ;
-struct TYPE_4__ {int /*<<< orphan*/  log2_blksz; } ;
-struct grub_jfs_data {int /*<<< orphan*/  disk; TYPE_2__ sblock; int /*<<< orphan*/  fileset; } ;
-typedef  int grub_uint32_t ;
-typedef  scalar_t__ grub_err_t ;
-struct TYPE_3__ {int /*<<< orphan*/  blk2; } ;
+struct TYPE_4__ {int log2_blksz; } ;
+struct grub_jfs_data {int disk; TYPE_2__ sblock; int fileset; } ;
+typedef int grub_uint32_t ;
+typedef scalar_t__ grub_err_t ;
+struct TYPE_3__ {int blk2; } ;
 
-/* Variables and functions */
- int GRUB_DISK_SECTOR_BITS ; 
- scalar_t__ grub_disk_read (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,struct grub_jfs_inode*) ; 
- scalar_t__ grub_errno ; 
- int grub_jfs_blkno (struct grub_jfs_data*,int /*<<< orphan*/ *,int) ; 
- int grub_le_to_cpu16 (int /*<<< orphan*/ ) ; 
- int grub_le_to_cpu32 (int /*<<< orphan*/ ) ; 
+
+ int GRUB_DISK_SECTOR_BITS ;
+ scalar_t__ grub_disk_read (int ,int,int ,int,struct grub_jfs_inode*) ;
+ scalar_t__ grub_errno ;
+ int grub_jfs_blkno (struct grub_jfs_data*,int *,int) ;
+ int grub_le_to_cpu16 (int ) ;
+ int grub_le_to_cpu32 (int ) ;
 
 __attribute__((used)) static grub_err_t
 grub_jfs_read_inode (struct grub_jfs_data *data, int ino,
-		     struct grub_jfs_inode *inode)
+       struct grub_jfs_inode *inode)
 {
   struct grub_jfs_iag iag;
   int iagnum = ino / 4096;
@@ -43,20 +43,20 @@ grub_jfs_read_inode (struct grub_jfs_data *data, int ino,
   if (grub_errno)
     return grub_errno;
 
-  /* Read in the IAG.  */
+
   if (grub_disk_read (data->disk,
-		      iagblk << (grub_le_to_cpu16 (data->sblock.log2_blksz)
-				 - GRUB_DISK_SECTOR_BITS), 0,
-		      sizeof (struct grub_jfs_iag), &iag))
+        iagblk << (grub_le_to_cpu16 (data->sblock.log2_blksz)
+     - GRUB_DISK_SECTOR_BITS), 0,
+        sizeof (struct grub_jfs_iag), &iag))
     return grub_errno;
 
   inoblk = grub_le_to_cpu32 (iag.inodes[inoext].blk2);
   inoblk <<= (grub_le_to_cpu16 (data->sblock.log2_blksz)
-	      - GRUB_DISK_SECTOR_BITS);
+       - GRUB_DISK_SECTOR_BITS);
   inoblk += inonum;
 
   if (grub_disk_read (data->disk, inoblk, 0,
-		      sizeof (struct grub_jfs_inode), inode))
+        sizeof (struct grub_jfs_inode), inode))
     return grub_errno;
 
   return 0;

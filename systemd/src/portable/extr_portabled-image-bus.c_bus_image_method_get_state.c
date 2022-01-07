@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  PortableState ;
-typedef  TYPE_1__ Image ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int portable_get_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  portable_state_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_bus_message_get_bus (TYPE_1__*) ; 
- int sd_bus_reply_method_return (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int path; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int PortableState ;
+typedef TYPE_1__ Image ;
+
+
+ int assert (TYPE_1__*) ;
+ int portable_get_state (int ,int ,int ,int *,int *) ;
+ int portable_state_to_string (int ) ;
+ int sd_bus_message_get_bus (TYPE_1__*) ;
+ int sd_bus_reply_method_return (TYPE_1__*,char*,int ) ;
 
 __attribute__((used)) static int bus_image_method_get_state(
                 sd_bus_message *message,

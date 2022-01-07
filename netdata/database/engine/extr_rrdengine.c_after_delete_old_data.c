@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct rrdengine_instance* data; } ;
-typedef  TYPE_3__ uv_work_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * data; } ;
-struct rrdengine_worker_config {int /*<<< orphan*/  async; TYPE_2__ now_deleting; } ;
+typedef TYPE_3__ uv_work_t ;
+struct TYPE_6__ {int * data; } ;
+struct rrdengine_worker_config {int async; TYPE_2__ now_deleting; } ;
 struct rrdengine_journalfile {unsigned int pos; struct rrdengine_journalfile* journalfile; } ;
 struct TYPE_5__ {struct rrdengine_journalfile* first; } ;
 struct rrdengine_instance {unsigned int disk_space; TYPE_1__ datafiles; struct rrdengine_worker_config worker_config; } ;
 struct rrdengine_datafile {unsigned int pos; struct rrdengine_datafile* journalfile; } ;
-typedef  int /*<<< orphan*/  path ;
+typedef int path ;
 
-/* Variables and functions */
- int RRDENG_PATH_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  datafile_list_delete (struct rrdengine_instance*,struct rrdengine_journalfile*) ; 
- int destroy_data_file (struct rrdengine_journalfile*) ; 
- int destroy_journal_file (struct rrdengine_journalfile*,struct rrdengine_journalfile*) ; 
- int /*<<< orphan*/  freez (struct rrdengine_journalfile*) ; 
- int /*<<< orphan*/  generate_datafilepath (struct rrdengine_journalfile*,char*,int) ; 
- int /*<<< orphan*/  generate_journalfilepath (struct rrdengine_journalfile*,char*,int) ; 
- int /*<<< orphan*/  info (char*,...) ; 
- scalar_t__ uv_async_send (int /*<<< orphan*/ *) ; 
+
+ int RRDENG_PATH_MAX ;
+ int assert (int) ;
+ int datafile_list_delete (struct rrdengine_instance*,struct rrdengine_journalfile*) ;
+ int destroy_data_file (struct rrdengine_journalfile*) ;
+ int destroy_journal_file (struct rrdengine_journalfile*,struct rrdengine_journalfile*) ;
+ int freez (struct rrdengine_journalfile*) ;
+ int generate_datafilepath (struct rrdengine_journalfile*,char*,int) ;
+ int generate_journalfilepath (struct rrdengine_journalfile*,char*,int) ;
+ int info (char*,...) ;
+ scalar_t__ uv_async_send (int *) ;
 
 __attribute__((used)) static void after_delete_old_data(uv_work_t *req, int status)
 {
@@ -72,8 +72,8 @@ __attribute__((used)) static void after_delete_old_data(uv_work_t *req, int stat
     ctx->disk_space -= deleted_bytes;
     info("Reclaimed %u bytes of disk space.", deleted_bytes);
 
-    /* unfreeze command processing */
-    wc->now_deleting.data = NULL;
-    /* wake up event loop */
+
+    wc->now_deleting.data = ((void*)0);
+
     assert(0 == uv_async_send(&wc->async));
 }

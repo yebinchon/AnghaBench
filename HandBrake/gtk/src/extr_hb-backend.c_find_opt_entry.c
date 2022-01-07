@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ gint64 ;
-typedef  size_t gint ;
-typedef  int /*<<< orphan*/  gchar ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ gint64 ;
+typedef size_t gint ;
+typedef int gchar ;
 struct TYPE_5__ {size_t count; TYPE_1__* map; } ;
-typedef  TYPE_2__ combo_opts_t ;
-struct TYPE_4__ {scalar_t__ ivalue; int /*<<< orphan*/  option; int /*<<< orphan*/  shortOpt; } ;
-typedef  int /*<<< orphan*/  GhbValue ;
+typedef TYPE_2__ combo_opts_t ;
+struct TYPE_4__ {scalar_t__ ivalue; int option; int shortOpt; } ;
+typedef int GhbValue ;
 
-/* Variables and functions */
- scalar_t__ GHB_BOOL ; 
- scalar_t__ GHB_DOUBLE ; 
- scalar_t__ GHB_INT ; 
- scalar_t__ GHB_STRING ; 
- scalar_t__ ghb_value_get_int (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * ghb_value_get_string (int /*<<< orphan*/  const*) ; 
- scalar_t__ ghb_value_type (int /*<<< orphan*/  const*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ scalar_t__ GHB_BOOL ;
+ scalar_t__ GHB_DOUBLE ;
+ scalar_t__ GHB_INT ;
+ scalar_t__ GHB_STRING ;
+ scalar_t__ ghb_value_get_int (int const*) ;
+ int * ghb_value_get_string (int const*) ;
+ scalar_t__ ghb_value_type (int const*) ;
+ scalar_t__ strcmp (int ,int const*) ;
 
 gint
 find_opt_entry(const combo_opts_t *opts, const GhbValue *gval)
 {
     gint ii;
 
-    if (opts == NULL)
+    if (opts == ((void*)0))
         return 0;
 
     if (ghb_value_type(gval) == GHB_STRING)

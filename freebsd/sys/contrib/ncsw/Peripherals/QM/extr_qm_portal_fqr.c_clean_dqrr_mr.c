@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  p_LowQmPortal; } ;
-typedef  TYPE_1__ t_QmPortal ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int p_LowQmPortal; } ;
+typedef TYPE_1__ t_QmPortal ;
 struct qm_mr_entry {int dummy; } ;
 struct qm_dqrr_entry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XX_UDelay (int) ; 
- int /*<<< orphan*/  qmPortalDqrrCciConsume (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qmPortalDqrrPvbPrefetch (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qmPortalDqrrPvbUpdate (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qmPortalMrCciConsume (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qmPortalMrPvbUpdate (int /*<<< orphan*/ ) ; 
- struct qm_dqrr_entry* qm_dqrr_current (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qm_dqrr_next (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qm_dqrr_sdqcr_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qm_dqrr_vdqcr_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct qm_mr_entry* qm_mr_current (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qm_mr_next (int /*<<< orphan*/ ) ; 
+
+ int XX_UDelay (int) ;
+ int qmPortalDqrrCciConsume (int ,int) ;
+ int qmPortalDqrrPvbPrefetch (int ) ;
+ int qmPortalDqrrPvbUpdate (int ) ;
+ int qmPortalMrCciConsume (int ,int) ;
+ int qmPortalMrPvbUpdate (int ) ;
+ struct qm_dqrr_entry* qm_dqrr_current (int ) ;
+ int qm_dqrr_next (int ) ;
+ int qm_dqrr_sdqcr_set (int ,int ) ;
+ int qm_dqrr_vdqcr_set (int ,int ) ;
+ struct qm_mr_entry* qm_mr_current (int ) ;
+ int qm_mr_next (int ) ;
 
 __attribute__((used)) static void clean_dqrr_mr(t_QmPortal *p_QmPortal)
 {
-    struct qm_dqrr_entry    *p_Dq;
-    struct qm_mr_entry      *p_Msg;
-    int                     idle = 0;
+    struct qm_dqrr_entry *p_Dq;
+    struct qm_mr_entry *p_Msg;
+    int idle = 0;
 
     qm_dqrr_sdqcr_set(p_QmPortal->p_LowQmPortal, 0);
     qm_dqrr_vdqcr_set(p_QmPortal->p_LowQmPortal, 0);

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int firstDrawSurf; } ;
-typedef  TYPE_1__ entity_t ;
+typedef TYPE_1__ entity_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClassifySurfaces (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FinishSurface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_VRB ; 
- int /*<<< orphan*/  Sys_FPrintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TidyEntitySurfaces (TYPE_1__*) ; 
- int /*<<< orphan*/ * mapDrawSurfs ; 
- int numMapDrawSurfs ; 
+
+ int ClassifySurfaces (int,int *) ;
+ int FinishSurface (int *) ;
+ int SYS_VRB ;
+ int Sys_FPrintf (int ,char*) ;
+ int TidyEntitySurfaces (TYPE_1__*) ;
+ int * mapDrawSurfs ;
+ int numMapDrawSurfs ;
 
 void ClassifyEntitySurfaces( entity_t *e ){
-	int i;
+ int i;
 
 
-	/* note it */
-	Sys_FPrintf( SYS_VRB, "--- ClassifyEntitySurfaces ---\n" );
 
-	/* walk the surface list */
-	for ( i = e->firstDrawSurf; i < numMapDrawSurfs; i++ )
-	{
-		FinishSurface( &mapDrawSurfs[ i ] );
-		ClassifySurfaces( 1, &mapDrawSurfs[ i ] );
-	}
+ Sys_FPrintf( SYS_VRB, "--- ClassifyEntitySurfaces ---\n" );
 
-	/* tidy things up */
-	TidyEntitySurfaces( e );
+
+ for ( i = e->firstDrawSurf; i < numMapDrawSurfs; i++ )
+ {
+  FinishSurface( &mapDrawSurfs[ i ] );
+  ClassifySurfaces( 1, &mapDrawSurfs[ i ] );
+ }
+
+
+ TidyEntitySurfaces( e );
 }

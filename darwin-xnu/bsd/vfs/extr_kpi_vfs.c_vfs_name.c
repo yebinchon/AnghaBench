@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* mount_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_2__* mount_t ;
 struct TYPE_5__ {TYPE_1__* mnt_vtable; } ;
-struct TYPE_4__ {int /*<<< orphan*/  vfc_name; } ;
+struct TYPE_4__ {int vfc_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MFSNAMELEN ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-void 
+ int MFSNAMELEN ;
+ int strncpy (char*,int ,int ) ;
+
+void
 vfs_name(mount_t mp, char *buffer)
 {
         strncpy(buffer, mp->mnt_vtable->vfc_name, MFSNAMELEN);

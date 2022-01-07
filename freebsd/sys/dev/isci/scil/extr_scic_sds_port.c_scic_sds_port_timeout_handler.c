@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ U32 ;
-struct TYPE_5__ {int /*<<< orphan*/  state_machine; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ U32 ;
+struct TYPE_5__ {int state_machine; } ;
 struct TYPE_6__ {TYPE_1__ parent; } ;
-typedef  TYPE_2__ SCIC_SDS_PORT_T ;
+typedef TYPE_2__ SCIC_SDS_PORT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCIC_LOG_OBJECT_PORT ; 
- int /*<<< orphan*/  SCI_BASE_PORT_STATE_FAILED ; 
- scalar_t__ SCI_BASE_PORT_STATE_RESETTING ; 
- scalar_t__ SCI_BASE_PORT_STATE_STOPPED ; 
- scalar_t__ SCI_BASE_PORT_STATE_STOPPING ; 
- int /*<<< orphan*/  SCI_FAILURE_TIMEOUT ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_2__*) ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sci_base_state_machine_get_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scic_cb_port_stop_complete (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_sds_port_get_controller (TYPE_2__*) ; 
+
+ int SCIC_LOG_ERROR (int ) ;
+ int SCIC_LOG_OBJECT_PORT ;
+ int SCI_BASE_PORT_STATE_FAILED ;
+ scalar_t__ SCI_BASE_PORT_STATE_RESETTING ;
+ scalar_t__ SCI_BASE_PORT_STATE_STOPPED ;
+ scalar_t__ SCI_BASE_PORT_STATE_STOPPING ;
+ int SCI_FAILURE_TIMEOUT ;
+ int sci_base_object_get_logger (TYPE_2__*) ;
+ int sci_base_state_machine_change_state (int *,int ) ;
+ scalar_t__ sci_base_state_machine_get_state (int *) ;
+ int scic_cb_port_stop_complete (int ,void*,int ) ;
+ int scic_sds_port_get_controller (TYPE_2__*) ;
 
 void scic_sds_port_timeout_handler(
    void *port
@@ -44,8 +44,8 @@ void scic_sds_port_timeout_handler(
 
    if (current_state == SCI_BASE_PORT_STATE_RESETTING)
    {
-      // if the port is still in the resetting state then the timeout fired
-      // before the reset completed.
+
+
       sci_base_state_machine_change_state(
          &this_port->parent.state_machine,
          SCI_BASE_PORT_STATE_FAILED
@@ -53,8 +53,8 @@ void scic_sds_port_timeout_handler(
    }
    else if (current_state == SCI_BASE_PORT_STATE_STOPPED)
    {
-      // if the port is stopped then the start request failed
-      // In this case stay in the stopped state.
+
+
       SCIC_LOG_ERROR((
          sci_base_object_get_logger(this_port),
          SCIC_LOG_OBJECT_PORT,
@@ -64,7 +64,7 @@ void scic_sds_port_timeout_handler(
    }
    else if (current_state == SCI_BASE_PORT_STATE_STOPPING)
    {
-      // if the port is still stopping then the stop has not completed
+
       scic_cb_port_stop_complete(
          scic_sds_port_get_controller(this_port),
          port,
@@ -73,8 +73,8 @@ void scic_sds_port_timeout_handler(
    }
    else
    {
-      // The port is in the ready state and we have a timer reporting a timeout
-      // this should not happen.
+
+
       SCIC_LOG_ERROR((
          sci_base_object_get_logger(this_port),
          SCIC_LOG_OBJECT_PORT,

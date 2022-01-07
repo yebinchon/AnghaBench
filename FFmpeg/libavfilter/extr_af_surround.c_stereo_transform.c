@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FFDIFFSIGN (float,int /*<<< orphan*/ ) ; 
- float M_PI ; 
- float M_PI_2 ; 
- float M_PI_4 ; 
- float atan2f (float,float) ; 
- float av_clipf (float,int,int) ; 
- float cosf (float) ; 
- float fabsf (float) ; 
- float hypotf (float,float) ; 
- float sinf (float) ; 
+ int FFDIFFSIGN (float,int ) ;
+ float M_PI ;
+ float M_PI_2 ;
+ float M_PI_4 ;
+ float atan2f (float,float) ;
+ float av_clipf (float,int,int) ;
+ float cosf (float) ;
+ float fabsf (float) ;
+ float hypotf (float,float) ;
+ float sinf (float) ;
 
 __attribute__((used)) static void stereo_transform(float *x, float *y, float angle)
 {

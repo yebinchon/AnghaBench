@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sys_prot_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_lwip_protect_mutex ; 
- int /*<<< orphan*/  sys_mutex_lock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sys_prot_t ;
+
+
+ int g_lwip_protect_mutex ;
+ int sys_mutex_lock (int *) ;
 
 sys_prot_t
 sys_arch_protect(void)

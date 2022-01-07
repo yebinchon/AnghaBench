@@ -1,57 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WORD ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_7__ {int /*<<< orphan*/  name; } ;
-struct TYPE_6__ {unsigned long FramePtr; int Scope; int IsUwop; unsigned char Code; unsigned char Location; unsigned char Reg; int Offset; unsigned long Reg2; int TryLevel; unsigned long FramePtrDiff; TYPE_1__* SehBlock; int /*<<< orphan*/  cScopes; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WORD ;
+typedef scalar_t__ ULONG ;
+struct TYPE_7__ {int name; } ;
+struct TYPE_6__ {unsigned long FramePtr; int Scope; int IsUwop; unsigned char Code; unsigned char Location; unsigned char Reg; int Offset; unsigned long Reg2; int TryLevel; unsigned long FramePtrDiff; TYPE_1__* SehBlock; int cScopes; } ;
 struct TYPE_5__ {unsigned char BeginTry; unsigned char EndTry; unsigned char Target; unsigned char End; unsigned long Handler; } ;
-typedef  TYPE_2__* PDW2CFSTATE ;
-typedef  unsigned char DWORD ;
+typedef TYPE_2__* PDW2CFSTATE ;
+typedef unsigned char DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,void*,unsigned char,unsigned char,unsigned long,unsigned long,int /*<<< orphan*/ ) ; 
-#define  DW_CFA_GNU_args_size 145 
- unsigned char DW_CFA_advance_loc ; 
-#define  DW_CFA_advance_loc1 144 
-#define  DW_CFA_advance_loc2 143 
-#define  DW_CFA_advance_loc4 142 
-#define  DW_CFA_def_cfa 141 
-#define  DW_CFA_def_cfa_offset 140 
-#define  DW_CFA_def_cfa_register 139 
-#define  DW_CFA_def_cfa_sf 138 
-#define  DW_CFA_nop 137 
- unsigned char DW_CFA_offset ; 
-#define  DW_CFA_offset_extended 136 
-#define  DW_CFA_offset_extended_sf 135 
-#define  DW_CFA_register 134 
-#define  DW_CFA_remember_state 133 
- unsigned char DW_CFA_restore ; 
-#define  DW_CFA_restore_extended 132 
-#define  DW_CFA_restore_state 131 
-#define  DW_CFA_same_value 130 
-#define  DW_CFA_set_loc 129 
-#define  DW_CFA_undefined 128 
- unsigned long DwDecodeSleb128 (unsigned long*,char*) ; 
- scalar_t__ DwDecodeUleb128 (unsigned long*,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned char,char*) ; 
- scalar_t__ g_ehframep ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- TYPE_3__* regs ; 
- int /*<<< orphan*/  stderr ; 
+
+ int DPRINT (char*,void*,unsigned char,unsigned char,unsigned long,unsigned long,int ) ;
+
+ unsigned char DW_CFA_advance_loc ;
+ unsigned char DW_CFA_offset ;
+
+
+
+
+ unsigned char DW_CFA_restore ;
+
+
+
+
+
+ unsigned long DwDecodeSleb128 (unsigned long*,char*) ;
+ scalar_t__ DwDecodeUleb128 (unsigned long*,char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,unsigned char,char*) ;
+ scalar_t__ g_ehframep ;
+ int printf (char*,...) ;
+ TYPE_3__* regs ;
+ int stderr ;
 
 unsigned long
 DwExecIntruction(PDW2CFSTATE State, char *pc)
@@ -74,7 +66,7 @@ DwExecIntruction(PDW2CFSTATE State, char *pc)
         State->Code = DW_CFA_offset;
         State->Reg = Code & 0x3f;
         Length += DwDecodeUleb128((unsigned long*)&State->Offset, pc + 1);
-        State->Offset *= 8; // fixme data alignment
+        State->Offset *= 8;
         State->IsUwop = 1;
     }
     else if ((Code & 0xc0) == DW_CFA_restore)
@@ -84,90 +76,90 @@ DwExecIntruction(PDW2CFSTATE State, char *pc)
     }
     else switch (Code)
     {
-        case DW_CFA_nop:
+        case 137:
             break;
-        case DW_CFA_set_loc:
-            Length = 9; // address
+        case 129:
+            Length = 9;
             State->Location = *(DWORD*)(pc + 1);
             break;
-        case DW_CFA_advance_loc1:
+        case 144:
             Length = 2;
             State->Location += pc[1];
             break;
-        case DW_CFA_advance_loc2:
+        case 143:
             Length = 3;
-//            printf("Found a DW_CFA_advance_loc2 : 0x%lx ->", *(WORD*)(pc + 1));
+
             State->Location += *(WORD*)(pc + 1);
-//            printf(" 0x%lx\n", State->Location);
+
             break;
-        case DW_CFA_advance_loc4:
+        case 142:
             Length = 5;
-//            printf("Found a DW_CFA_advance_loc4 : 0x%lx ->", *(DWORD*)(pc + 1));
+
             State->Location += *(DWORD*)(pc + 1);
-//            printf(" 0x%lx\n", State->Location);
+
             break;
-        case DW_CFA_offset_extended:
+        case 136:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             Length += DwDecodeUleb128((unsigned long*)&State->Offset, pc + Length);
             State->IsUwop = 1;
             break;
-        case DW_CFA_offset_extended_sf:
+        case 135:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             Length += DwDecodeSleb128(&State->Offset, pc + Length);
             State->IsUwop = 1;
             break;
-        case DW_CFA_restore_extended:
+        case 132:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             break;
-        case DW_CFA_undefined:
+        case 128:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             break;
-        case DW_CFA_same_value:
+        case 130:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             break;
-        case DW_CFA_register:
+        case 134:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             Length += DwDecodeUleb128(&State->Reg2, pc + Length);
             break;
-        case DW_CFA_remember_state:
+        case 133:
             break;
-        case DW_CFA_restore_state:
+        case 131:
             break;
-        case DW_CFA_def_cfa:
+        case 141:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             Length += DwDecodeUleb128((unsigned long*)&State->FramePtr, pc + Length);
             State->IsUwop = 1;
             break;
-        case DW_CFA_def_cfa_register:
+        case 139:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             break;
-        case DW_CFA_def_cfa_offset:
+        case 140:
             Length += DwDecodeUleb128((unsigned long*)&State->FramePtr, pc + Length);
             State->IsUwop = 1;
             break;
-        case DW_CFA_def_cfa_sf:
+        case 138:
             Length += DwDecodeUleb128(&State->Reg, pc + Length);
             Length += DwDecodeSleb128(&State->FramePtr, pc + Length);
-            State->FramePtr *= 8; // data alignment
+            State->FramePtr *= 8;
             State->IsUwop = 1;
             break;
-        case DW_CFA_GNU_args_size:
+        case 145:
         {
             unsigned long argsize;
             printf("Warning, DW_CFA_GNU_args_size is unimplemented\n");
             Length += DwDecodeUleb128(&argsize, pc + Length);
             break;
         }
-        /* PSEH */
+
         case 0x21:
         {
             unsigned long SehType;
 
-//            printf("found 0x21 at %lx\n", State->Location);
+
             Length += DwDecodeUleb128(&SehType, pc + Length);
             switch (SehType)
             {
-                case 1: /* Begin Try */
+                case 1:
                     State->TryLevel++;
                     if (State->TryLevel >= 20)
                     {
@@ -175,21 +167,21 @@ DwExecIntruction(PDW2CFSTATE State, char *pc)
                         exit(1);
                     }
                     State->SehBlock[State->TryLevel-1].BeginTry = State->Location;
-//                    printf("Found begintry at 0x%lx\n", State->Location);
+
                     State->Scope = 1;
                     break;
 
-                case 2: /* End Try */
+                case 2:
                     State->SehBlock[State->TryLevel-1].EndTry = State->Location;
                     State->Scope = 2;
                     break;
 
-                case 3: /* Jump target */
+                case 3:
                     State->SehBlock[State->TryLevel-1].Target = State->Location;
                     State->Scope = 3;
                     break;
 
-                case 4: /* SEH End */
+                case 4:
                     if (State->TryLevel == 20)
                     {
                         printf("Ooops, end of SEH with trylevel at 0!\n");
@@ -201,26 +193,26 @@ DwExecIntruction(PDW2CFSTATE State, char *pc)
                     State->Scope = 0;
                     break;
 
-                case 5: /* Constant filter */
+                case 5:
                 {
                     unsigned long value;
                     Length += DwDecodeUleb128(&value, pc + Length);
                     State->SehBlock[State->TryLevel-1].Handler = value;
-//                     printf("Found a constant filter at 0x%lx\n", State->Location);
+
                     break;
                 }
 
-               /* These work differently. We are in a new function.
-                 * We have to parse a lea opcode to find the adress of
-                 * the jump target. This is the reference to find the 
-                 * appropriate C_SCOPE_TABLE. */
-                case 6: /* Filter func */
-//                    printf("Found a filter func at 0x%lx\n", State->Location);
+
+
+
+
+                case 6:
+
                     break;
 
-                case 7: /* Finally func */
+                case 7:
                 {
-//                     printf("Found a finally func at 0x%lx\n", State->Location);
+
                     break;
                 }
 
@@ -234,9 +226,9 @@ DwExecIntruction(PDW2CFSTATE State, char *pc)
             fprintf(stderr, "unknown instruction 0x%x at 0x%p\n", Code, pc);
             exit(1);
     }
-    
+
     State->FramePtrDiff = State->FramePtr - PrevFramePtr;
-    DPRINT("@%p: code=%x, Loc=%lx, offset=%lx, reg=0x%lx:%s\n", 
+    DPRINT("@%p: code=%x, Loc=%lx, offset=%lx, reg=0x%lx:%s\n",
         (void*)((ULONG)pc - g_ehframep), Code, State->Location, State->Offset, State->Reg, regs[State->Reg].name);
     return Length;
 }

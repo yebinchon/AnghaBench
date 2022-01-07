@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int lineno; int /*<<< orphan*/  jmp; scalar_t__ filename_sym; int /*<<< orphan*/  mrb; int /*<<< orphan*/  mpool; int /*<<< orphan*/  lines; int /*<<< orphan*/  iseq; struct TYPE_3__* prev; } ;
-typedef  TYPE_1__ codegen_scope ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_THROW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  mrb_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_pool_close (int /*<<< orphan*/ ) ; 
- char* mrb_sym_name_len (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lineno; int jmp; scalar_t__ filename_sym; int mrb; int mpool; int lines; int iseq; struct TYPE_3__* prev; } ;
+typedef TYPE_1__ codegen_scope ;
+
+
+ int MRB_THROW (int *) ;
+ int fprintf (int ,char*,char const*,...) ;
+ int mrb_free (int ,int ) ;
+ int mrb_pool_close (int ) ;
+ char* mrb_sym_name_len (int ,scalar_t__,int *) ;
+ int stderr ;
 
 __attribute__((used)) static void
 codegen_error(codegen_scope *s, const char *message)
@@ -33,14 +33,14 @@ codegen_error(codegen_scope *s, const char *message)
     mrb_pool_close(s->mpool);
     s = tmp;
   }
-#ifndef MRB_DISABLE_STDIO
+
   if (s->filename_sym && s->lineno) {
-    const char *filename = mrb_sym_name_len(s->mrb, s->filename_sym, NULL);
+    const char *filename = mrb_sym_name_len(s->mrb, s->filename_sym, ((void*)0));
     fprintf(stderr, "codegen error:%s:%d: %s\n", filename, s->lineno, message);
   }
   else {
     fprintf(stderr, "codegen error: %s\n", message);
   }
-#endif
+
   MRB_THROW(&s->jmp);
 }

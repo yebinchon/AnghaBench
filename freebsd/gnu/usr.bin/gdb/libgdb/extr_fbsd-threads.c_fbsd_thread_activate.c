@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  enable_thread_event_reporting () ; 
- int fbsd_thread_active ; 
- scalar_t__ fbsd_thread_core ; 
- int /*<<< orphan*/  fbsd_thread_find_new_threads () ; 
- int /*<<< orphan*/  get_current_thread () ; 
- int /*<<< orphan*/  init_thread_list () ; 
+ int enable_thread_event_reporting () ;
+ int fbsd_thread_active ;
+ scalar_t__ fbsd_thread_core ;
+ int fbsd_thread_find_new_threads () ;
+ int get_current_thread () ;
+ int init_thread_list () ;
 
 __attribute__((used)) static void
 fbsd_thread_activate (void)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpa_group {scalar_t__ wpa_group_state; scalar_t__ GKeyDoneStations; scalar_t__ GTKReKey; scalar_t__ GTKAuthenticator; scalar_t__ GInit; } ;
 struct wpa_authenticator {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ WPA_GROUP_GTK_INIT ; 
- scalar_t__ WPA_GROUP_SETKEYS ; 
- scalar_t__ WPA_GROUP_SETKEYSDONE ; 
- int /*<<< orphan*/  wpa_group_gtk_init (struct wpa_authenticator*,struct wpa_group*) ; 
- int /*<<< orphan*/  wpa_group_setkeys (struct wpa_authenticator*,struct wpa_group*) ; 
- int /*<<< orphan*/  wpa_group_setkeysdone (struct wpa_authenticator*,struct wpa_group*) ; 
+
+ scalar_t__ WPA_GROUP_GTK_INIT ;
+ scalar_t__ WPA_GROUP_SETKEYS ;
+ scalar_t__ WPA_GROUP_SETKEYSDONE ;
+ int wpa_group_gtk_init (struct wpa_authenticator*,struct wpa_group*) ;
+ int wpa_group_setkeys (struct wpa_authenticator*,struct wpa_group*) ;
+ int wpa_group_setkeysdone (struct wpa_authenticator*,struct wpa_group*) ;
 
 __attribute__((used)) static void wpa_group_sm_step(struct wpa_authenticator *wpa_auth,
                   struct wpa_group *group)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_context {size_t* dirtyArray; unsigned int* isStateDirty; int /*<<< orphan*/  numDirtyEntries; TYPE_1__* state_table; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_context {size_t* dirtyArray; unsigned int* isStateDirty; int numDirtyEntries; TYPE_1__* state_table; } ;
 struct TYPE_2__ {size_t representative; } ;
-typedef  size_t DWORD ;
-typedef  unsigned int BYTE ;
+typedef size_t DWORD ;
+typedef unsigned int BYTE ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
- scalar_t__ isStateDirty (struct wined3d_context*,size_t) ; 
+
+ int CHAR_BIT ;
+ scalar_t__ isStateDirty (struct wined3d_context*,size_t) ;
 
 void context_invalidate_state(struct wined3d_context *context, DWORD state)
 {

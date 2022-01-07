@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Device_STATUSLED ; 
- int STATE_LED_CAPS_LOCK ; 
- int STATE_LED_LAYER_0 ; 
- int STATE_LED_LAYER_1 ; 
- int STATE_LED_LAYER_2 ; 
- int STATE_LED_LAYER_3 ; 
- int STATE_LED_LAYER_4 ; 
- int STATE_LED_NUM_LOCK ; 
- int STATE_LED_SCROLL_LOCK ; 
- int backlight_state_led ; 
- int /*<<< orphan*/  cli () ; 
- int /*<<< orphan*/  sei () ; 
- int /*<<< orphan*/  send_color (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  show () ; 
+ int Device_STATUSLED ;
+ int STATE_LED_CAPS_LOCK ;
+ int STATE_LED_LAYER_0 ;
+ int STATE_LED_LAYER_1 ;
+ int STATE_LED_LAYER_2 ;
+ int STATE_LED_LAYER_3 ;
+ int STATE_LED_LAYER_4 ;
+ int STATE_LED_NUM_LOCK ;
+ int STATE_LED_SCROLL_LOCK ;
+ int backlight_state_led ;
+ int cli () ;
+ int sei () ;
+ int send_color (int,int,int,int ) ;
+ int show () ;
 
 void backlight_update_state()
 {

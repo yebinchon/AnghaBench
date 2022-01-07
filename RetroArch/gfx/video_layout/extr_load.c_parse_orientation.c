@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_layout_orientation_t ;
-typedef  int /*<<< orphan*/  scope_t ;
-typedef  int /*<<< orphan*/  rxml_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDEO_LAYOUT_FLIP_X ; 
- int /*<<< orphan*/  VIDEO_LAYOUT_FLIP_Y ; 
- int /*<<< orphan*/  VIDEO_LAYOUT_ROT0 ; 
- int /*<<< orphan*/  VIDEO_LAYOUT_ROT180 ; 
- int /*<<< orphan*/  VIDEO_LAYOUT_ROT270 ; 
- int /*<<< orphan*/  VIDEO_LAYOUT_ROT90 ; 
- int /*<<< orphan*/  VIDEO_LAYOUT_SWAP_XY ; 
- int /*<<< orphan*/  rxml_node_attrib (int /*<<< orphan*/ *,char*) ; 
- char* scope_eval (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int video_layout_orientation_t ;
+typedef int scope_t ;
+typedef int rxml_node_t ;
+
+
+ int VIDEO_LAYOUT_FLIP_X ;
+ int VIDEO_LAYOUT_FLIP_Y ;
+ int VIDEO_LAYOUT_ROT0 ;
+ int VIDEO_LAYOUT_ROT180 ;
+ int VIDEO_LAYOUT_ROT270 ;
+ int VIDEO_LAYOUT_ROT90 ;
+ int VIDEO_LAYOUT_SWAP_XY ;
+ int rxml_node_attrib (int *,char*) ;
+ char* scope_eval (int *,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static video_layout_orientation_t parse_orientation(scope_t *scope, rxml_node_t *node)
 {

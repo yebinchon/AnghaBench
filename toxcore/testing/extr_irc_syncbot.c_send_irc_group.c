@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  Tox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current_group ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- scalar_t__ strstr (char*,char*) ; 
- int /*<<< orphan*/  tox_group_message_send (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef char uint8_t ;
+typedef int uint16_t ;
+typedef int Tox ;
+
+
+ int current_group ;
+ int memcpy (char*,char*,int) ;
+ scalar_t__ strstr (char*,char*) ;
+ int tox_group_message_send (int *,int ,char*,int) ;
 
 void send_irc_group(Tox *tox, uint8_t *msg, uint16_t len)
 {
@@ -55,7 +55,7 @@ void send_irc_group(Tox *tox, uint8_t *msg, uint16_t len)
 
     uint8_t *pmsg = (uint8_t *)strstr((char *)req, " PRIVMSG");
 
-    if (pmsg == NULL)
+    if (pmsg == ((void*)0))
         return;
 
     uint8_t *dt = req;

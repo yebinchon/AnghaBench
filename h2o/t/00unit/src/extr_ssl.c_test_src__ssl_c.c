@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  subtest (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_load_tickets_file ; 
- int /*<<< orphan*/  test_memcached_ticket_update ; 
- int /*<<< orphan*/  test_serialize_tickets ; 
+ int subtest (char*,int ) ;
+ int test_load_tickets_file ;
+ int test_memcached_ticket_update ;
+ int test_serialize_tickets ;
 
 void test_src__ssl_c(void)
 {

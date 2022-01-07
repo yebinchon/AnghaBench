@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StrAccum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3StrAccumAppend (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+typedef int StrAccum ;
+
+
+ int sqlite3StrAccumAppend (int *,char const*,int) ;
 
 __attribute__((used)) static void explainAppendTerm(
-  StrAccum *pStr,             /* The text expression being built */
-  int iTerm,                  /* Index of this term.  First is zero */
-  const char *zColumn,        /* Name of the column */
-  const char *zOp             /* Name of the operator */
+  StrAccum *pStr,
+  int iTerm,
+  const char *zColumn,
+  const char *zOp
 ){
   if( iTerm ) sqlite3StrAccumAppend(pStr, " AND ", 5);
   sqlite3StrAccumAppend(pStr, zColumn, -1);

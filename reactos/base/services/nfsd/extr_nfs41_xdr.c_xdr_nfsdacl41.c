@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xdrproc_t ;
-struct TYPE_3__ {int /*<<< orphan*/  count; int /*<<< orphan*/  aces; int /*<<< orphan*/  flag; } ;
-typedef  TYPE_1__ nfsacl41 ;
-typedef  int /*<<< orphan*/  nfsace4 ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  xdr_array (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ xdr_nfsace4 ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int xdrproc_t ;
+struct TYPE_3__ {int count; int aces; int flag; } ;
+typedef TYPE_1__ nfsacl41 ;
+typedef int nfsace4 ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int xdr_array (int *,char**,int *,int,int,int ) ;
+ scalar_t__ xdr_nfsace4 ;
+ int xdr_u_int32_t (int *,int *) ;
 
 __attribute__((used)) static bool_t xdr_nfsdacl41(
     XDR *xdr,

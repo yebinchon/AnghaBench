@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iio_dma_buffer_queue {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct iio_dma_buffer_queue {int lock; } ;
+
+
+ int mutex_destroy (int *) ;
 
 void iio_dma_buffer_release(struct iio_dma_buffer_queue *queue)
 {
-	mutex_destroy(&queue->lock);
+ mutex_destroy(&queue->lock);
 }

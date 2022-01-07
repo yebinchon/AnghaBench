@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int JPWL_EXPECTED_COMPONENTS ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+ int JPWL_EXPECTED_COMPONENTS ;
+ int fprintf (int ,char*,...) ;
+ int stdout ;
 
 void decode_help_display(void)
 {
     fprintf(stdout, "HELP for j2k_to_image\n----\n\n");
     fprintf(stdout, "- the -h option displays this help information on screen\n\n");
 
-    /* UniPG>> */
+
     fprintf(stdout, "List of parameters for the JPEG 2000 "
-#ifdef USE_JPWL
-            "+ JPWL "
-#endif /* USE_JPWL */
+
+
+
             "decoder:\n");
-    /* <<UniPG */
+
     fprintf(stdout, "\n");
     fprintf(stdout, "\n");
     fprintf(stdout, "  -ImgDir \n");
@@ -76,19 +68,5 @@ void decode_help_display(void)
     fprintf(stdout, "  -x  \n");
     fprintf(stdout, "    Create an index file *.Idx (-x index_name.Idx) \n");
     fprintf(stdout, "\n");
-    /* UniPG>> */
-#ifdef USE_JPWL
-    fprintf(stdout, "  -W <options>\n");
-    fprintf(stdout,
-            "    Activates the JPWL correction capability, if the codestream complies.\n");
-    fprintf(stdout,
-            "    Options can be a comma separated list of <param=val> tokens:\n");
-    fprintf(stdout, "    c, c=numcomps\n");
-    fprintf(stdout,
-            "       numcomps is the number of expected components in the codestream\n");
-    fprintf(stdout, "       (search of first EPB rely upon this, default is %d)\n",
-            JPWL_EXPECTED_COMPONENTS);
-#endif /* USE_JPWL */
-    /* <<UniPG */
     fprintf(stdout, "\n");
 }

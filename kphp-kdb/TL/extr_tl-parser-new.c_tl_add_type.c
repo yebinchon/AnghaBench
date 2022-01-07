@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_type {char* id; int params_num; long long params_types; char* print_id; int flags; scalar_t__ real_id; scalar_t__ constructors; scalar_t__ constructors_num; scalar_t__ name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TL_ERROR (char*,char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lrand48 () ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  tl_type_tree ; 
- int /*<<< orphan*/  total_types_num ; 
- int /*<<< orphan*/  tree_insert_tl_type (int /*<<< orphan*/ ,struct tl_type*,int /*<<< orphan*/ ) ; 
- struct tl_type** tree_lookup_value_tl_type (int /*<<< orphan*/ ,struct tl_type*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
- int /*<<< orphan*/  zfree (char*,int) ; 
- void* zmalloc (int) ; 
- char* zstrdup (char*) ; 
+
+ int TL_ERROR (char*,char*) ;
+ int assert (int) ;
+ int lrand48 () ;
+ int memcpy (char*,char const*,int) ;
+ int tl_type_tree ;
+ int total_types_num ;
+ int tree_insert_tl_type (int ,struct tl_type*,int ) ;
+ struct tl_type** tree_lookup_value_tl_type (int ,struct tl_type*) ;
+ int vkprintf (int,char*,char*) ;
+ int zfree (char*,int) ;
+ void* zmalloc (int) ;
+ char* zstrdup (char*) ;
 
 struct tl_type *tl_add_type (const char *_id, int len, int params_num, long long params_types) {
   char *id = zmalloc (len + 1);

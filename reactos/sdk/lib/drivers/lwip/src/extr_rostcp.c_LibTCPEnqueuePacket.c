@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct pbuf {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Lock; int /*<<< orphan*/  PacketQueue; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ListEntry; scalar_t__ Offset; struct pbuf* p; } ;
-typedef  TYPE_1__* PQUEUE_ENTRY ;
-typedef  TYPE_2__* PCONNECTION_ENDPOINT ;
+struct TYPE_5__ {int Lock; int PacketQueue; } ;
+struct TYPE_4__ {int ListEntry; scalar_t__ Offset; struct pbuf* p; } ;
+typedef TYPE_1__* PQUEUE_ENTRY ;
+typedef TYPE_2__* PCONNECTION_ENDPOINT ;
 
-/* Variables and functions */
- scalar_t__ ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExInterlockedInsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QueueEntryLookasideList ; 
+
+ scalar_t__ ExAllocateFromNPagedLookasideList (int *) ;
+ int ExInterlockedInsertTailList (int *,int *,int *) ;
+ int QueueEntryLookasideList ;
 
 void LibTCPEnqueuePacket(PCONNECTION_ENDPOINT Connection, struct pbuf *p)
 {

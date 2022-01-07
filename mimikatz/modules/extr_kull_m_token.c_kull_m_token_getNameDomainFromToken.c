@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  Sid; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int Sid; } ;
 struct TYPE_6__ {TYPE_1__ User; } ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  TYPE_2__* PTOKEN_USER ;
-typedef  int /*<<< orphan*/  PSID_NAME_USE ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int PWSTR ;
+typedef TYPE_2__* PTOKEN_USER ;
+typedef int PSID_NAME_USE ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConvertSidToStringSid (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ GetTokenInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LPTR ; 
- scalar_t__ LocalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LocalFree (TYPE_2__*) ; 
- int /*<<< orphan*/  TokenUser ; 
- int /*<<< orphan*/  kull_m_token_getNameDomainFromSID (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ConvertSidToStringSid (int ,int *) ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ GetTokenInformation (int ,int ,TYPE_2__*,int ,int *) ;
+ int LPTR ;
+ scalar_t__ LocalAlloc (int ,int ) ;
+ int LocalFree (TYPE_2__*) ;
+ int TokenUser ;
+ int kull_m_token_getNameDomainFromSID (int ,int *,int *,int ,int *) ;
 
 BOOL kull_m_token_getNameDomainFromToken(HANDLE hToken, PWSTR * pName, PWSTR * pDomain, PWSTR * pSid, PSID_NAME_USE pSidNameUse)
 {
-	BOOL result = FALSE;
-	PTOKEN_USER pTokenUser;
-	DWORD szNeeded;
+ BOOL result = FALSE;
+ PTOKEN_USER pTokenUser;
+ DWORD szNeeded;
 
-	if(!GetTokenInformation(hToken, TokenUser, NULL, 0, &szNeeded) && (GetLastError() == ERROR_INSUFFICIENT_BUFFER))
-	{
-		if(pTokenUser = (PTOKEN_USER) LocalAlloc(LPTR, szNeeded))
-		{
-			if(GetTokenInformation(hToken, TokenUser, pTokenUser, szNeeded, &szNeeded))
-			{
-				if((result = kull_m_token_getNameDomainFromSID(pTokenUser->User.Sid, pName, pDomain, pSidNameUse, NULL)) && pSid)
-					result = ConvertSidToStringSid(pTokenUser->User.Sid, pSid);
-			}
-			LocalFree(pTokenUser);
-		}
-	}
-	return result;
+ if(!GetTokenInformation(hToken, TokenUser, ((void*)0), 0, &szNeeded) && (GetLastError() == ERROR_INSUFFICIENT_BUFFER))
+ {
+  if(pTokenUser = (PTOKEN_USER) LocalAlloc(LPTR, szNeeded))
+  {
+   if(GetTokenInformation(hToken, TokenUser, pTokenUser, szNeeded, &szNeeded))
+   {
+    if((result = kull_m_token_getNameDomainFromSID(pTokenUser->User.Sid, pName, pDomain, pSidNameUse, ((void*)0))) && pSid)
+     result = ConvertSidToStringSid(pTokenUser->User.Sid, pSid);
+   }
+   LocalFree(pTokenUser);
+  }
+ }
+ return result;
 }

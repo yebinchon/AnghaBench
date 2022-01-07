@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bio {int dummy; } ;
-struct batcher {int commit_scheduled; int /*<<< orphan*/  lock; int /*<<< orphan*/  bios; } ;
+struct batcher {int commit_scheduled; int lock; int bios; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  async_commit (struct batcher*) ; 
- int /*<<< orphan*/  bio_list_add (int /*<<< orphan*/ *,struct bio*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int async_commit (struct batcher*) ;
+ int bio_list_add (int *,struct bio*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void issue_after_commit(struct batcher *b, struct bio *bio)
 {
@@ -30,5 +30,5 @@ __attribute__((used)) static void issue_after_commit(struct batcher *b, struct b
        spin_unlock_irqrestore(&b->lock, flags);
 
        if (commit_scheduled)
-	       async_commit(b);
+        async_commit(b);
 }

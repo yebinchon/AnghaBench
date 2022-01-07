@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  prefs; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_4__ signal_user_data_t ;
-struct TYPE_13__ {int width; int height; int /*<<< orphan*/  par; } ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int prefs; int settings; } ;
+typedef TYPE_4__ signal_user_data_t ;
+struct TYPE_13__ {int width; int height; int par; } ;
 struct TYPE_16__ {TYPE_2__ geometry; } ;
-typedef  TYPE_5__ hb_title_t ;
-struct TYPE_17__ {int width; int height; int /*<<< orphan*/  par; } ;
-typedef  TYPE_6__ hb_geometry_t ;
+typedef TYPE_5__ hb_title_t ;
+struct TYPE_17__ {int width; int height; int par; } ;
+typedef TYPE_6__ hb_geometry_t ;
 struct TYPE_12__ {void* den; void* num; } ;
 struct TYPE_14__ {void* height; void* width; TYPE_1__ par; } ;
-struct TYPE_18__ {scalar_t__ mode; int modulus; int* crop; TYPE_3__ geometry; scalar_t__ maxHeight; scalar_t__ maxWidth; scalar_t__ itu_par; int /*<<< orphan*/  keep; } ;
-typedef  TYPE_7__ hb_geometry_settings_t ;
-typedef  int gdouble ;
+struct TYPE_18__ {scalar_t__ mode; int modulus; int* crop; TYPE_3__ geometry; scalar_t__ maxHeight; scalar_t__ maxWidth; scalar_t__ itu_par; int keep; } ;
+typedef TYPE_7__ hb_geometry_settings_t ;
+typedef int gdouble ;
 
-/* Variables and functions */
- scalar_t__ HB_ANAMORPHIC_LOOSE ; 
- scalar_t__ HB_ANAMORPHIC_STRICT ; 
- int /*<<< orphan*/  HB_KEEP_DISPLAY_ASPECT ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ ,char*) ; 
- void* ghb_dict_get_int (int /*<<< orphan*/ ,char*) ; 
- void* ghb_settings_combo_int (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ HB_ANAMORPHIC_LOOSE ;
+ scalar_t__ HB_ANAMORPHIC_STRICT ;
+ int HB_KEEP_DISPLAY_ASPECT ;
+ scalar_t__ ghb_dict_get_bool (int ,char*) ;
+ void* ghb_dict_get_int (int ,char*) ;
+ void* ghb_settings_combo_int (int ,char*) ;
 
 __attribute__((used)) static void
 get_preview_geometry(signal_user_data_t *ud, const hb_title_t *title,
                      hb_geometry_t *srcGeo, hb_geometry_settings_t *uiGeo)
 {
-    srcGeo->width  = title->geometry.width;
+    srcGeo->width = title->geometry.width;
     srcGeo->height = title->geometry.height;
-    srcGeo->par    = title->geometry.par;
+    srcGeo->par = title->geometry.par;
 
     uiGeo->mode = ghb_settings_combo_int(ud->settings, "PicturePAR");
     uiGeo->keep = (ghb_dict_get_bool(ud->settings, "PictureKeepRatio") ||
-                                 uiGeo->mode == HB_ANAMORPHIC_STRICT  ||
+                                 uiGeo->mode == HB_ANAMORPHIC_STRICT ||
                                  uiGeo->mode == HB_ANAMORPHIC_LOOSE) ?
                                  HB_KEEP_DISPLAY_ASPECT : 0;
     uiGeo->itu_par = 0;

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
 struct TYPE_11__ {int iOverflow; } ;
-struct TYPE_10__ {scalar_t__* aData; scalar_t__ isInit; int nCell; int maskPage; int hdrOffset; int /*<<< orphan*/  pDbPage; TYPE_1__* pBt; } ;
-struct TYPE_9__ {int /*<<< orphan*/  mutex; } ;
-typedef  scalar_t__ Pgno ;
-typedef  TYPE_2__ MemPage ;
-typedef  TYPE_3__ CellInfo ;
+struct TYPE_10__ {scalar_t__* aData; scalar_t__ isInit; int nCell; int maskPage; int hdrOffset; int pDbPage; TYPE_1__* pBt; } ;
+struct TYPE_9__ {int mutex; } ;
+typedef scalar_t__ Pgno ;
+typedef TYPE_2__ MemPage ;
+typedef TYPE_3__ CellInfo ;
 
-/* Variables and functions */
- scalar_t__ PTRMAP_BTREE ; 
- scalar_t__ PTRMAP_OVERFLOW1 ; 
- scalar_t__ PTRMAP_OVERFLOW2 ; 
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btreeInitPage (TYPE_2__*) ; 
- int /*<<< orphan*/  btreeParseCellPtr (TYPE_2__*,scalar_t__*,TYPE_3__*) ; 
- scalar_t__* findCell (TYPE_2__*,int) ; 
- scalar_t__ get4byte (scalar_t__*) ; 
- int /*<<< orphan*/  put4byte (scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3PagerIswriteable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ PTRMAP_BTREE ;
+ scalar_t__ PTRMAP_OVERFLOW1 ;
+ scalar_t__ PTRMAP_OVERFLOW2 ;
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_OK ;
+ int assert (int ) ;
+ int btreeInitPage (TYPE_2__*) ;
+ int btreeParseCellPtr (TYPE_2__*,scalar_t__*,TYPE_3__*) ;
+ scalar_t__* findCell (TYPE_2__*,int) ;
+ scalar_t__ get4byte (scalar_t__*) ;
+ int put4byte (scalar_t__*,scalar_t__) ;
+ int sqlite3PagerIswriteable (int ) ;
+ int sqlite3_mutex_held (int ) ;
 
 __attribute__((used)) static int modifyPagePointer(MemPage *pPage, Pgno iFrom, Pgno iTo, u8 eType){
   assert( sqlite3_mutex_held(pPage->pBt->mutex) );
   assert( sqlite3PagerIswriteable(pPage->pDbPage) );
   if( eType==PTRMAP_OVERFLOW2 ){
-    /* The pointer is always the first 4 bytes of the page in this case.  */
+
     if( get4byte(pPage->aData)!=iFrom ){
       return SQLITE_CORRUPT_BKPT;
     }
@@ -72,9 +72,9 @@ __attribute__((used)) static int modifyPagePointer(MemPage *pPage, Pgno iFrom, P
         }
       }
     }
-  
+
     if( i==nCell ){
-      if( eType!=PTRMAP_BTREE || 
+      if( eType!=PTRMAP_BTREE ||
           get4byte(&pPage->aData[pPage->hdrOffset+8])!=iFrom ){
         return SQLITE_CORRUPT_BKPT;
       }

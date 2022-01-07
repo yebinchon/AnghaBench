@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_expression {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  client_command_generator ; 
- int /*<<< orphan*/  cstr_free (char**) ; 
- char* cstr_substr (char*,int,int) ; 
- struct tl_expression* expected_expr ; 
- scalar_t__ expected_type ; 
- struct tl_expression* find_expression (int) ; 
- int /*<<< orphan*/  isspace (char) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- char** rl_completion_matches (char const*,int /*<<< orphan*/ ) ; 
- char* rl_line_buffer ; 
- int /*<<< orphan*/  tl_arg_generator ; 
- int /*<<< orphan*/  tl_command_generator ; 
- scalar_t__ tl_expression_get_argument_type (struct tl_expression*,char*) ; 
- int /*<<< orphan*/  tl_type_generator ; 
+
+ int client_command_generator ;
+ int cstr_free (char**) ;
+ char* cstr_substr (char*,int,int) ;
+ struct tl_expression* expected_expr ;
+ scalar_t__ expected_type ;
+ struct tl_expression* find_expression (int) ;
+ int isspace (char) ;
+ int memcmp (char*,char*,int) ;
+ char** rl_completion_matches (char const*,int ) ;
+ char* rl_line_buffer ;
+ int tl_arg_generator ;
+ int tl_command_generator ;
+ scalar_t__ tl_expression_get_argument_type (struct tl_expression*,char*) ;
+ int tl_type_generator ;
 
 __attribute__((used)) static char **tl_completion (const char *text, int start, int end) {
   if (start == 0) {
@@ -50,11 +50,11 @@ __attribute__((used)) static char **tl_completion (const char *text, int start, 
       i--;
     }
     struct tl_expression *E = find_expression (i);
-    if (E != NULL) {
+    if (E != ((void*)0)) {
       char *field_name = cstr_substr (rl_line_buffer, i + 1, j - 1);
-      //kprintf ("field_name: %s\n", field_name);
+
       expected_type = tl_expression_get_argument_type (E, field_name);
-      //kprintf ("expected_type: %s\n", expected_type);
+
       cstr_free (&field_name);
       if (expected_type) {
         return rl_completion_matches (text, tl_type_generator);
@@ -67,5 +67,5 @@ __attribute__((used)) static char **tl_completion (const char *text, int start, 
     expected_expr = E;
     return rl_completion_matches (text, tl_arg_generator);
   }
-  return NULL;
+  return ((void*)0);
 }

@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_4__ {scalar_t__ pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  COLEMAK 130 
-#define  DVORAK 129 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  QWERTY 128 
- unsigned long _COLEMAK ; 
- unsigned long _DVORAK ; 
- unsigned long _QWERTY ; 
- scalar_t__ rl_start_time ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (unsigned long) ; 
- int /*<<< orphan*/  tone_colemak ; 
- int /*<<< orphan*/  tone_dvorak ; 
- int /*<<< orphan*/  tone_qwerty ; 
+
+
+
+ int PLAY_SONG (int ) ;
+
+ unsigned long _COLEMAK ;
+ unsigned long _DVORAK ;
+ unsigned long _QWERTY ;
+ scalar_t__ rl_start_time ;
+ int set_single_persistent_default_layer (unsigned long) ;
+ int tone_colemak ;
+ int tone_dvorak ;
+ int tone_qwerty ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if(rl_start_time && record->event.pressed) rl_start_time = 0;
   switch (keycode) {
-    case QWERTY:
+    case 128:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_qwerty);
-        #endif
+
+
+
         set_single_persistent_default_layer(1UL<<_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 130:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_colemak);
-        #endif
+
+
+
         set_single_persistent_default_layer(1UL<<_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case DVORAK:
+    case 129:
       if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_dvorak);
-        #endif
+
+
+
         set_single_persistent_default_layer(1UL<<_DVORAK);
       }
-      return false;
+      return 0;
       break;
   }
-  return true;
+  return 1;
 }

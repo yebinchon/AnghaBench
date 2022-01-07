@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  scalar_t__ i64 ;
-struct TYPE_17__ {int nn; int /*<<< orphan*/ * p; } ;
+
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int sqlite3_value ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3_context ;
+typedef scalar_t__ i64 ;
+struct TYPE_17__ {int nn; int * p; } ;
 struct TYPE_16__ {int iLeafPgno; scalar_t__ bEof; char const* iRowid; int n; scalar_t__ p; TYPE_2__* pData; } ;
-typedef  TYPE_1__ Fts5DlidxLvl ;
-typedef  TYPE_2__ Fts5Data ;
-typedef  TYPE_1__ Fts5Buffer ;
+typedef TYPE_1__ Fts5DlidxLvl ;
+typedef TYPE_2__ Fts5Data ;
+typedef TYPE_1__ Fts5Buffer ;
 
-/* Variables and functions */
- scalar_t__ FTS5_AVERAGES_ROWID ; 
- int FTS5_CORRUPT ; 
- scalar_t__ FTS5_DATA_ZERO_PADDING ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  UNUSED_PARAM (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fts5BufferAppendBlob (int*,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fts5BufferFree (TYPE_1__*) ; 
- int /*<<< orphan*/  fts5DebugRowid (int*,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  fts5DecodeAverages (int*,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ fts5DecodeDoclist (int*,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5DecodePoslist (int*,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5DecodeRowid (scalar_t__,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  fts5DecodeRowidList (int*,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5DecodeStructure (int*,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5DlidxLvlNext (TYPE_1__*) ; 
- int fts5GetU16 (int /*<<< orphan*/ *) ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferAppendPrintf (int*,TYPE_1__*,char*,int,char const*) ; 
- int /*<<< orphan*/  sqlite3Fts5BufferSet (int*,TYPE_1__*,int,int /*<<< orphan*/  const*) ; 
- scalar_t__ sqlite3Fts5MallocZero (int*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FTS5_AVERAGES_ROWID ;
+ int FTS5_CORRUPT ;
+ scalar_t__ FTS5_DATA_ZERO_PADDING ;
+ int SQLITE_OK ;
+ int SQLITE_TRANSIENT ;
+ int UNUSED_PARAM (int) ;
+ int assert (int) ;
+ int fts5BufferAppendBlob (int*,TYPE_1__*,int,int *) ;
+ int fts5BufferFree (TYPE_1__*) ;
+ int fts5DebugRowid (int*,TYPE_1__*,scalar_t__) ;
+ int fts5DecodeAverages (int*,TYPE_1__*,int *,int) ;
+ scalar_t__ fts5DecodeDoclist (int*,TYPE_1__*,int *,int) ;
+ int fts5DecodePoslist (int*,TYPE_1__*,int *,int) ;
+ int fts5DecodeRowid (scalar_t__,int*,int*,int*,int*) ;
+ int fts5DecodeRowidList (int*,TYPE_1__*,int *,int) ;
+ int fts5DecodeStructure (int*,TYPE_1__*,int *,int) ;
+ int fts5DlidxLvlNext (TYPE_1__*) ;
+ int fts5GetU16 (int *) ;
+ scalar_t__ fts5GetVarint32 (int *,int) ;
+ int memcpy (int *,int const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3Fts5BufferAppendPrintf (int*,TYPE_1__*,char*,int,char const*) ;
+ int sqlite3Fts5BufferSet (int*,TYPE_1__*,int,int const*) ;
+ scalar_t__ sqlite3Fts5MallocZero (int*,scalar_t__) ;
+ int sqlite3_free (int *) ;
+ int sqlite3_result_error_code (int *,int) ;
+ int sqlite3_result_text (int *,char const*,int,int ) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int * sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_int64 (int *) ;
 
 __attribute__((used)) static void fts5DecodeFunction(
-  sqlite3_context *pCtx,          /* Function call context */
-  int nArg,                       /* Number of args (always 2) */
-  sqlite3_value **apVal           /* Function arguments */
+  sqlite3_context *pCtx,
+  int nArg,
+  sqlite3_value **apVal
 ){
-  i64 iRowid;                     /* Rowid for record being decoded */
-  int iSegid,iHeight,iPgno,bDlidx;/* Rowid components */
-  const u8 *aBlob; int n;         /* Record to decode */
+  i64 iRowid;
+  int iSegid,iHeight,iPgno,bDlidx;
+  const u8 *aBlob; int n;
   u8 *a = 0;
-  Fts5Buffer s;                   /* Build up text to return here */
-  int rc = SQLITE_OK;             /* Return code */
+  Fts5Buffer s;
+  int rc = SQLITE_OK;
   sqlite3_int64 nSpace = 0;
   int eDetailNone = (sqlite3_user_data(pCtx)!=0);
 
@@ -75,9 +75,9 @@ __attribute__((used)) static void fts5DecodeFunction(
   memset(&s, 0, sizeof(Fts5Buffer));
   iRowid = sqlite3_value_int64(apVal[0]);
 
-  /* Make a copy of the second argument (a blob) in aBlob[]. The aBlob[]
-  ** copy is followed by FTS5_DATA_ZERO_PADDING 0x00 bytes, which prevents
-  ** buffer overreads even if the record is corrupt.  */
+
+
+
   n = sqlite3_value_bytes(apVal[1]);
   aBlob = sqlite3_value_blob(apVal[1]);
   nSpace = n + FTS5_DATA_ZERO_PADDING;
@@ -100,7 +100,7 @@ __attribute__((used)) static void fts5DecodeFunction(
     lvl.iLeafPgno = iPgno;
 
     for(fts5DlidxLvlNext(&lvl); lvl.bEof==0; fts5DlidxLvlNext(&lvl)){
-      sqlite3Fts5BufferAppendPrintf(&rc, &s, 
+      sqlite3Fts5BufferAppendPrintf(&rc, &s,
           " %d(%lld)", lvl.iLeafPgno, lvl.iRowid
       );
     }
@@ -111,7 +111,7 @@ __attribute__((used)) static void fts5DecodeFunction(
       fts5DecodeStructure(&rc, &s, a, n);
     }
   }else if( eDetailNone ){
-    Fts5Buffer term;              /* Current term read from page */
+    Fts5Buffer term;
     int szLeaf;
     int iPgidxOff = szLeaf = fts5GetU16(&a[2]);
     int iTermOff;
@@ -120,7 +120,7 @@ __attribute__((used)) static void fts5DecodeFunction(
 
     memset(&term, 0, sizeof(Fts5Buffer));
 
-    /* Decode any entries that occur before the first term. */
+
     if( szLeaf<n ){
       iPgidxOff += fts5GetVarint32(&a[iPgidxOff], iTermOff);
     }else{
@@ -132,7 +132,7 @@ __attribute__((used)) static void fts5DecodeFunction(
     while( iOff<szLeaf ){
       int nAppend;
 
-      /* Read the term data for the next term*/
+
       iOff += fts5GetVarint32(&a[iOff], nAppend);
       term.n = nKeep;
       fts5BufferAppendBlob(&rc, &term, nAppend, &a[iOff]);
@@ -141,7 +141,7 @@ __attribute__((used)) static void fts5DecodeFunction(
       );
       iOff += nAppend;
 
-      /* Figure out where the doclist for this term ends */
+
       if( iPgidxOff<n ){
         int nIncr;
         iPgidxOff += fts5GetVarint32(&a[iPgidxOff], nIncr);
@@ -159,10 +159,10 @@ __attribute__((used)) static void fts5DecodeFunction(
 
     fts5BufferFree(&term);
   }else{
-    Fts5Buffer term;              /* Current term read from page */
-    int szLeaf;                   /* Offset of pgidx in a[] */
+    Fts5Buffer term;
+    int szLeaf;
     int iPgidxOff;
-    int iPgidxPrev = 0;           /* Previous value read from pgidx */
+    int iPgidxPrev = 0;
     int iTermOff = 0;
     int iRowidOff = 0;
     int iOff;
@@ -184,7 +184,7 @@ __attribute__((used)) static void fts5DecodeFunction(
       }
     }
 
-    /* Decode the position list tail at the start of the page */
+
     if( iRowidOff!=0 ){
       iOff = iRowidOff;
     }else if( iTermOff!=0 ){
@@ -198,8 +198,8 @@ __attribute__((used)) static void fts5DecodeFunction(
     }
     fts5DecodePoslist(&rc, &s, &a[4], iOff-4);
 
-    /* Decode any more doclist data that appears on the page before the
-    ** first term. */
+
+
     nDoclist = (iTermOff ? iTermOff : szLeaf) - iOff;
     if( nDoclist+iOff>n ){
       rc = FTS5_CORRUPT;
@@ -208,10 +208,10 @@ __attribute__((used)) static void fts5DecodeFunction(
     fts5DecodeDoclist(&rc, &s, &a[iOff], nDoclist);
 
     while( iPgidxOff<n && rc==SQLITE_OK ){
-      int bFirst = (iPgidxOff==szLeaf);     /* True for first term on page */
-      int nByte;                            /* Bytes of data */
+      int bFirst = (iPgidxOff==szLeaf);
+      int nByte;
       int iEnd;
-      
+
       iPgidxOff += fts5GetVarint32(&a[iPgidxOff], nByte);
       iPgidxPrev += nByte;
       iOff = iPgidxPrev;
@@ -251,7 +251,7 @@ __attribute__((used)) static void fts5DecodeFunction(
 
     fts5BufferFree(&term);
   }
-  
+
  decode_out:
   sqlite3_free(a);
   if( rc==SQLITE_OK ){

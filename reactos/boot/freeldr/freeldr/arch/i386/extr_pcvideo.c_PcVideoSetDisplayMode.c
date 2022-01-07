@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VIDEODISPLAYMODE ;
-typedef  scalar_t__ USHORT ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DisplayMode ; 
- int /*<<< orphan*/  PcConsGetCh () ; 
- scalar_t__ PcVideoDetectVideoCard () ; 
- int /*<<< orphan*/  PcVideoSetBlinkBit (int) ; 
- int /*<<< orphan*/  PcVideoSetMode (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ VIDEOCARD_CGA_OR_OTHER ; 
- scalar_t__ VIDEOCARD_EGA ; 
- scalar_t__ VIDEOMODE_EXTENDED_TEXT ; 
- scalar_t__ VIDEOMODE_NORMAL_TEXT ; 
- scalar_t__ _stricmp (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VIDEODISPLAYMODE ;
+typedef scalar_t__ USHORT ;
+typedef int BOOLEAN ;
+
+
+ int DisplayMode ;
+ int PcConsGetCh () ;
+ scalar_t__ PcVideoDetectVideoCard () ;
+ int PcVideoSetBlinkBit (int) ;
+ int PcVideoSetMode (scalar_t__) ;
+ int TRACE (char*) ;
+ scalar_t__ VIDEOCARD_CGA_OR_OTHER ;
+ scalar_t__ VIDEOCARD_EGA ;
+ scalar_t__ VIDEOMODE_EXTENDED_TEXT ;
+ scalar_t__ VIDEOMODE_NORMAL_TEXT ;
+ scalar_t__ _stricmp (char*,char*) ;
+ int printf (char*,...) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
 
 VIDEODISPLAYMODE
 PcVideoSetDisplayMode(char *DisplayModeName, BOOLEAN Init)
 {
   USHORT VideoMode = VIDEOMODE_NORMAL_TEXT;
 
-  if (NULL == DisplayModeName || '\0' == *DisplayModeName)
+  if (((void*)0) == DisplayModeName || '\0' == *DisplayModeName)
     {
       PcVideoSetBlinkBit(! Init);
       return DisplayMode;
@@ -54,7 +54,7 @@ PcVideoSetDisplayMode(char *DisplayModeName, BOOLEAN Init)
       printf("Using 80x25 text mode.\n");
       VideoMode = VIDEOMODE_NORMAL_TEXT;
     }
-  else /* if (VIDEOCARD_VGA == PcVideoDetectVideoCard()) */
+  else
     {
       TRACE("VGA display adapter detected.\n");
 
@@ -68,7 +68,7 @@ PcVideoSetDisplayMode(char *DisplayModeName, BOOLEAN Init)
         }
       else
         {
-          VideoMode = (USHORT)strtoul(DisplayModeName, NULL, 0);
+          VideoMode = (USHORT)strtoul(DisplayModeName, ((void*)0), 0);
         }
     }
 

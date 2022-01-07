@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  REFGUID ;
-typedef  int /*<<< orphan*/  REFCLSID ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int KEY_READ ; 
- int KEY_WRITE ; 
- scalar_t__ REG_CREATED_NEW_KEY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  StringFromGUID2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  szwEnable ; 
- int /*<<< orphan*/  szwFullLangfmt ; 
- int /*<<< orphan*/  szwLngp ; 
- char* szwSystemTIPKey ; 
+
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef int REFGUID ;
+typedef int REFCLSID ;
+typedef int LPBYTE ;
+typedef int LANGID ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int HKEY_CURRENT_USER ;
+ int KEY_READ ;
+ int KEY_WRITE ;
+ scalar_t__ REG_CREATED_NEW_KEY ;
+ int REG_DWORD ;
+ int RegCloseKey (int ) ;
+ int RegCreateKeyExW (int ,int *,int ,int *,int ,int,int *,int *,scalar_t__*) ;
+ int RegSetValueExW (int ,int ,int ,int ,int ,int) ;
+ int StringFromGUID2 (int ,int *,int) ;
+ int TRACE (char*) ;
+ int swprintf (int *,int ,char*,int *,int ,int ,int *) ;
+ int szwEnable ;
+ int szwFullLangfmt ;
+ int szwLngp ;
+ char* szwSystemTIPKey ;
 
 __attribute__((used)) static void add_userkey( REFCLSID rclsid, LANGID langid,
                                 REFGUID guidProfile)
@@ -52,8 +52,8 @@ __attribute__((used)) static void add_userkey( REFCLSID rclsid, LANGID langid,
     StringFromGUID2(guidProfile, buf2, 39);
     swprintf(fullkey,szwFullLangfmt,szwSystemTIPKey,buf,szwLngp,langid,buf2);
 
-    res = RegCreateKeyExW(HKEY_CURRENT_USER,fullkey, 0, NULL, 0,
-                   KEY_READ | KEY_WRITE, NULL, &key, &disposition);
+    res = RegCreateKeyExW(HKEY_CURRENT_USER,fullkey, 0, ((void*)0), 0,
+                   KEY_READ | KEY_WRITE, ((void*)0), &key, &disposition);
 
     if (!res && disposition == REG_CREATED_NEW_KEY)
     {

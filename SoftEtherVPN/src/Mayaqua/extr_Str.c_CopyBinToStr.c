@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BinToStr (char*,int,void*,int) ; 
- char* ZeroMalloc (int) ; 
+
+
+
+typedef int UINT ;
+
+
+ int BinToStr (char*,int,void*,int) ;
+ char* ZeroMalloc (int) ;
 
 char *CopyBinToStr(void *data, UINT data_size)
 {
-	char *ret;
-	UINT size;
-	// Validate arguments
-	if (data == NULL)
-	{
-		return NULL;
-	}
+ char *ret;
+ UINT size;
 
-	size = data_size * 2 + 1;
-	ret = ZeroMalloc(size);
+ if (data == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	BinToStr(ret, size, data, data_size);
+ size = data_size * 2 + 1;
+ ret = ZeroMalloc(size);
 
-	return ret;
+ BinToStr(ret, size, data, data_size);
+
+ return ret;
 }

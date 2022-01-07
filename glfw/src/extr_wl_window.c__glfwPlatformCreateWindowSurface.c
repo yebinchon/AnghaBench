@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sci ;
-struct TYPE_10__ {int /*<<< orphan*/  surface; } ;
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int sci ;
+struct TYPE_10__ {int surface; } ;
 struct TYPE_11__ {TYPE_2__ wl; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-struct TYPE_12__ {int /*<<< orphan*/  surface; int /*<<< orphan*/  display; int /*<<< orphan*/  sType; } ;
-typedef  TYPE_4__ VkWaylandSurfaceCreateInfoKHR ;
-typedef  int /*<<< orphan*/  VkSurfaceKHR ;
-typedef  scalar_t__ VkResult ;
-typedef  int /*<<< orphan*/  VkInstance ;
-typedef  int /*<<< orphan*/  VkAllocationCallbacks ;
-struct TYPE_9__ {int /*<<< orphan*/  display; } ;
+typedef TYPE_3__ _GLFWwindow ;
+struct TYPE_12__ {int surface; int display; int sType; } ;
+typedef TYPE_4__ VkWaylandSurfaceCreateInfoKHR ;
+typedef int VkSurfaceKHR ;
+typedef scalar_t__ VkResult ;
+typedef int VkInstance ;
+typedef int VkAllocationCallbacks ;
+struct TYPE_9__ {int display; } ;
 struct TYPE_13__ {TYPE_1__ wl; } ;
-typedef  scalar_t__ (* PFN_vkCreateWaylandSurfaceKHR ) (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ;
+typedef scalar_t__ (* PFN_vkCreateWaylandSurfaceKHR ) (int ,TYPE_4__*,int const*,int *) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- scalar_t__ VK_ERROR_EXTENSION_NOT_PRESENT ; 
- int /*<<< orphan*/  VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR ; 
- TYPE_8__ _glfw ; 
- int /*<<< orphan*/  _glfwGetVulkanResultString (scalar_t__) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ vkGetInstanceProcAddr (int /*<<< orphan*/ ,char*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_PLATFORM_ERROR ;
+ scalar_t__ VK_ERROR_EXTENSION_NOT_PRESENT ;
+ int VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR ;
+ TYPE_8__ _glfw ;
+ int _glfwGetVulkanResultString (scalar_t__) ;
+ int _glfwInputError (int ,char*,...) ;
+ int memset (TYPE_4__*,int ,int) ;
+ scalar_t__ vkGetInstanceProcAddr (int ,char*) ;
 
 VkResult _glfwPlatformCreateWindowSurface(VkInstance instance,
                                           _GLFWwindow* window,

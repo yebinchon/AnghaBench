@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat64 {int /*<<< orphan*/  st_blksize; } ;
-struct stat {int /*<<< orphan*/  st_blksize; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sb_hiwat; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct stat64 {int st_blksize; } ;
+struct stat {int st_blksize; } ;
+struct TYPE_2__ {int sb_hiwat; } ;
 struct socket {TYPE_1__ so_snd; } ;
 
-/* Variables and functions */
+
 
 int
 pru_sense_null(struct socket *so, void *ub, int isstat64)
 {
-	if (isstat64 != 0) {
-		struct stat64 *sb64;
+ if (isstat64 != 0) {
+  struct stat64 *sb64;
 
-		sb64 = (struct stat64 *)ub;
-		sb64->st_blksize = so->so_snd.sb_hiwat;
-	} else {
-		struct stat *sb;
+  sb64 = (struct stat64 *)ub;
+  sb64->st_blksize = so->so_snd.sb_hiwat;
+ } else {
+  struct stat *sb;
 
-		sb = (struct stat *)ub;
-		sb->st_blksize = so->so_snd.sb_hiwat;
-	}
+  sb = (struct stat *)ub;
+  sb->st_blksize = so->so_snd.sb_hiwat;
+ }
 
-	return (0);
+ return (0);
 }

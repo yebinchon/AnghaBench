@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock {int /*<<< orphan*/  sk_receive_queue; } ;
+
+
+
+
+struct sock {int sk_receive_queue; } ;
 struct sk_buff {int dummy; } ;
 
-/* Variables and functions */
- struct sk_buff* __skb_dequeue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- int /*<<< orphan*/  skb_dst_set (struct sk_buff*,void*) ; 
+
+ struct sk_buff* __skb_dequeue (int *) ;
+ int kfree_skb (struct sk_buff*) ;
+ int skb_dst_set (struct sk_buff*,void*) ;
 
 __attribute__((used)) static void chtls_purge_receive_queue(struct sock *sk)
 {
-	struct sk_buff *skb;
+ struct sk_buff *skb;
 
-	while ((skb = __skb_dequeue(&sk->sk_receive_queue)) != NULL) {
-		skb_dst_set(skb, (void *)NULL);
-		kfree_skb(skb);
-	}
+ while ((skb = __skb_dequeue(&sk->sk_receive_queue)) != ((void*)0)) {
+  skb_dst_set(skb, (void *)((void*)0));
+  kfree_skb(skb);
+ }
 }

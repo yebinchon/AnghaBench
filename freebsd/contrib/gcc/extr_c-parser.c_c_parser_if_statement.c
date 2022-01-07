@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  location_t ;
-typedef  int /*<<< orphan*/  c_parser ;
-struct TYPE_2__ {int /*<<< orphan*/  location; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  RID_ELSE ; 
- int /*<<< orphan*/  RID_IF ; 
- int /*<<< orphan*/  add_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c_begin_compound_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c_end_compound_stmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c_finish_if_stmt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  c_parser_consume_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c_parser_if_body (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ c_parser_next_token_is_keyword (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  c_parser_paren_condition (int /*<<< orphan*/ *) ; 
- TYPE_1__* c_parser_peek_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  flag_isoc99 ; 
- int /*<<< orphan*/  gcc_assert (scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef int location_t ;
+typedef int c_parser ;
+struct TYPE_2__ {int location; } ;
+
+
+ int NULL_TREE ;
+ int RID_ELSE ;
+ int RID_IF ;
+ int add_stmt (int ) ;
+ int c_begin_compound_stmt (int ) ;
+ int c_end_compound_stmt (int ,int ) ;
+ int c_finish_if_stmt (int ,int ,int ,int ,int) ;
+ int c_parser_consume_token (int *) ;
+ int c_parser_if_body (int *,int*) ;
+ scalar_t__ c_parser_next_token_is_keyword (int *,int ) ;
+ int c_parser_paren_condition (int *) ;
+ TYPE_1__* c_parser_peek_token (int *) ;
+ int flag_isoc99 ;
+ int gcc_assert (scalar_t__) ;
 
 __attribute__((used)) static void
 c_parser_if_statement (c_parser *parser)
@@ -38,7 +38,7 @@ c_parser_if_statement (c_parser *parser)
   tree block;
   location_t loc;
   tree cond;
-  bool first_if = false, second_if = false;
+  bool first_if = 0, second_if = 0;
   tree first_body, second_body;
   gcc_assert (c_parser_next_token_is_keyword (parser, RID_IF));
   c_parser_consume_token (parser);

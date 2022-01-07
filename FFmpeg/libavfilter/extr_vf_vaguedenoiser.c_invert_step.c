@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VagueDenoiserContext ;
 
-/* Variables and functions */
- int NPAD ; 
- int /*<<< orphan*/  memcpy (float*,float const*,int const) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  symmetric_extension (float*,int const,int,int) ; 
- float* synthesis_high ; 
- float* synthesis_low ; 
+
+
+
+typedef int VagueDenoiserContext ;
+
+
+ int NPAD ;
+ int memcpy (float*,float const*,int const) ;
+ int memset (float*,int ,int) ;
+ int symmetric_extension (float*,int const,int,int) ;
+ float* synthesis_high ;
+ float* synthesis_low ;
 
 __attribute__((used)) static void invert_step(const float *input, float *output, float *temp, const int size, VagueDenoiserContext *s)
 {
@@ -45,9 +45,9 @@ __attribute__((used)) static void invert_step(const float *input, float *output,
         output[2 * i - 12] += b;
         output[2 * i - 11] += c;
         output[2 * i - 10] += d;
-        output[2 * i -  9] += c;
-        output[2 * i -  8] += b;
-        output[2 * i -  7] += a;
+        output[2 * i - 9] += c;
+        output[2 * i - 8] += b;
+        output[2 * i - 7] += a;
     }
 
     memcpy(temp + NPAD, input + NPAD + low_size, high_size * sizeof(float));
@@ -67,10 +67,10 @@ __attribute__((used)) static void invert_step(const float *input, float *output,
         output[2 * i - 12] += b;
         output[2 * i - 11] += c;
         output[2 * i - 10] += d;
-        output[2 * i -  9] += e;
-        output[2 * i -  8] += d;
-        output[2 * i -  7] += c;
-        output[2 * i -  6] += b;
-        output[2 * i -  5] += a;
+        output[2 * i - 9] += e;
+        output[2 * i - 8] += d;
+        output[2 * i - 7] += c;
+        output[2 * i - 6] += b;
+        output[2 * i - 5] += a;
     }
 }

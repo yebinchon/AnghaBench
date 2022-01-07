@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CONF ;
 
-/* Variables and functions */
- scalar_t__ IS_COMMENT (int /*<<< orphan*/ *,char) ; 
- scalar_t__ IS_DQUOTE (int /*<<< orphan*/ *,char) ; 
- scalar_t__ IS_EOF (int /*<<< orphan*/ *,char) ; 
- scalar_t__ IS_ESC (int /*<<< orphan*/ *,char) ; 
- scalar_t__ IS_FCOMMENT (int /*<<< orphan*/ *,char) ; 
- scalar_t__ IS_QUOTE (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  IS_WS (int /*<<< orphan*/ *,char) ; 
- char* scan_dquote (int /*<<< orphan*/ *,char*) ; 
- char* scan_esc (int /*<<< orphan*/ *,char*) ; 
- char* scan_quote (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int CONF ;
+
+
+ scalar_t__ IS_COMMENT (int *,char) ;
+ scalar_t__ IS_DQUOTE (int *,char) ;
+ scalar_t__ IS_EOF (int *,char) ;
+ scalar_t__ IS_ESC (int *,char) ;
+ scalar_t__ IS_FCOMMENT (int *,char) ;
+ scalar_t__ IS_QUOTE (int *,char) ;
+ int IS_WS (int *,char) ;
+ char* scan_dquote (int *,char*) ;
+ char* scan_esc (int *,char*) ;
+ char* scan_quote (int *,char*) ;
 
 __attribute__((used)) static void clear_comments(CONF *conf, char *p)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_photo_rotate_photo {int user_id; int photo_id; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_PHOTO_ROTATE_PHOTO ; 
- int MY_LOG_EVENT_HANDLER (int /*<<< orphan*/ ,int) ; 
- struct lev_photo_rotate_photo* alloc_log_event (scalar_t__,int,int) ; 
- int /*<<< orphan*/  check_photo_id (int) ; 
- int mode ; 
- int /*<<< orphan*/  rotate_photo ; 
+
+ scalar_t__ LEV_PHOTO_ROTATE_PHOTO ;
+ int MY_LOG_EVENT_HANDLER (int ,int) ;
+ struct lev_photo_rotate_photo* alloc_log_event (scalar_t__,int,int) ;
+ int check_photo_id (int) ;
+ int mode ;
+ int rotate_photo ;
 
 int do_rotate_photo (int uid, int pid, int dir) {
   if (dir == -1) {

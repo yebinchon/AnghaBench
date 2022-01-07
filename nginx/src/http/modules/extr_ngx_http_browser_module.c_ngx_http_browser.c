@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_9__ ;
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_20__ {size_t len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_7__ ngx_str_t ;
+
+
+typedef struct TYPE_22__ TYPE_9__ ;
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
+typedef char u_char ;
+typedef size_t ngx_uint_t ;
+struct TYPE_20__ {size_t len; int data; } ;
+typedef TYPE_7__ ngx_str_t ;
 struct TYPE_16__ {TYPE_2__* user_agent; } ;
 struct TYPE_21__ {TYPE_5__* connection; TYPE_3__ headers_in; } ;
-typedef  TYPE_8__ ngx_http_request_t ;
-struct TYPE_22__ {int skip; size_t version; int /*<<< orphan*/  add; int /*<<< orphan*/  name; } ;
-typedef  TYPE_9__ ngx_http_modern_browser_t ;
+typedef TYPE_8__ ngx_http_request_t ;
+struct TYPE_22__ {int skip; size_t version; int add; int name; } ;
+typedef TYPE_9__ ngx_http_modern_browser_t ;
 struct TYPE_13__ {scalar_t__ modern_unlisted_browsers; TYPE_6__* ancient_browsers; scalar_t__ netscape4; TYPE_4__* modern_browsers; } ;
-typedef  TYPE_10__ ngx_http_browser_conf_t ;
+typedef TYPE_10__ ngx_http_browser_conf_t ;
 struct TYPE_19__ {size_t nelts; TYPE_7__* elts; } ;
-struct TYPE_18__ {int /*<<< orphan*/  log; } ;
+struct TYPE_18__ {int log; } ;
 struct TYPE_17__ {size_t nelts; TYPE_9__* elts; } ;
 struct TYPE_14__ {char* data; size_t len; } ;
 struct TYPE_15__ {TYPE_1__ value; } ;
 
-/* Variables and functions */
- size_t NGX_HTTP_ANCIENT_BROWSER ; 
- size_t NGX_HTTP_MODERN_BROWSER ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,...) ; 
- scalar_t__ ngx_strncmp (char*,char*,int) ; 
- int /*<<< orphan*/ * ngx_strstr (char*,int /*<<< orphan*/ ) ; 
+
+ size_t NGX_HTTP_ANCIENT_BROWSER ;
+ size_t NGX_HTTP_MODERN_BROWSER ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int ngx_log_debug1 (int ,int ,int ,char*,char*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,size_t,...) ;
+ scalar_t__ ngx_strncmp (char*,char*,int) ;
+ int * ngx_strstr (char*,int ) ;
 
 __attribute__((used)) static ngx_uint_t
 ngx_http_browser(ngx_http_request_t *r, ngx_http_browser_conf_t *cf)
 {
-    size_t                      len;
-    u_char                     *name, *ua, *last, c;
-    ngx_str_t                  *ancient;
-    ngx_uint_t                  i, version, ver, scale;
-    ngx_http_modern_browser_t  *modern;
+    size_t len;
+    u_char *name, *ua, *last, c;
+    ngx_str_t *ancient;
+    ngx_uint_t i, version, ver, scale;
+    ngx_http_modern_browser_t *modern;
 
-    if (r->headers_in.user_agent == NULL) {
+    if (r->headers_in.user_agent == ((void*)0)) {
         if (cf->modern_unlisted_browsers) {
             return NGX_HTTP_MODERN_BROWSER;
         }
@@ -79,7 +79,7 @@ ngx_http_browser(ngx_http_request_t *r, ngx_http_browser_conf_t *cf)
 
             name = (u_char *) ngx_strstr(name, modern[i].name);
 
-            if (name == NULL) {
+            if (name == ((void*)0)) {
                 continue;
             }
 
@@ -159,7 +159,7 @@ ngx_http_browser(ngx_http_request_t *r, ngx_http_browser_conf_t *cf)
 
         for (i = 0; i < cf->ancient_browsers->nelts; i++) {
             if (len >= ancient[i].len
-                && ngx_strstr(ua, ancient[i].data) != NULL)
+                && ngx_strstr(ua, ancient[i].data) != ((void*)0))
             {
                 return NGX_HTTP_ANCIENT_BROWSER;
             }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TitanSetResolution (int,int) ; 
- int rbg0height ; 
- int rbg0width ; 
- int vdp2_interlace ; 
- int vdp2_x_hires ; 
- int vdp2height ; 
- int vdp2width ; 
+
+
+
+typedef int u16 ;
+
+
+ int TitanSetResolution (int,int) ;
+ int rbg0height ;
+ int rbg0width ;
+ int vdp2_interlace ;
+ int vdp2_x_hires ;
+ int vdp2height ;
+ int vdp2width ;
 
 void VIDSoftVdp2SetResolution(u16 TVMD)
 {
-   // This needs some work
 
-   // Horizontal Resolution
+
+
    switch (TVMD & 0x7)
    {
       case 0:
@@ -63,7 +63,7 @@ void VIDSoftVdp2SetResolution(u16 TVMD)
    else
       vdp2_x_hires = 0;
 
-   // Vertical Resolution
+
    switch ((TVMD >> 4) & 0x3)
    {
       case 0:
@@ -78,15 +78,15 @@ void VIDSoftVdp2SetResolution(u16 TVMD)
       default: break;
    }
 
-   // Check for interlace
+
    switch ((TVMD >> 6) & 0x3)
    {
-      case 3: // Double-density Interlace
+      case 3:
          vdp2height *= 2;
          vdp2_interlace=1;
          break;
-      case 2: // Single-density Interlace
-      case 0: // Non-interlace
+      case 2:
+      case 0:
       default:
          vdp2_interlace = 0;
          break;

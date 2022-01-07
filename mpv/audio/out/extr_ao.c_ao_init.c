@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct mpv_global {int dummy; } ;
 struct mp_chmap {int num; } ;
 struct encode_lavc_context {int dummy; } ;
-struct ao {int samplerate; int format; int init_flags; char* device; int stream_silence; int period_size; char* redirect; int sstride; int num_planes; int bps; int device_buffer; int buffer; int def_buffer; TYPE_2__* api; TYPE_1__* driver; struct mp_chmap channels; int /*<<< orphan*/  api_priv; struct encode_lavc_context* encode_lavc_ctx; } ;
-typedef  int /*<<< orphan*/  redirect ;
-typedef  int /*<<< orphan*/  rdevice ;
-struct TYPE_5__ {scalar_t__ (* init ) (struct ao*) ;int /*<<< orphan*/  options; int /*<<< orphan*/  priv_defaults; int /*<<< orphan*/  priv_size; } ;
+struct ao {int samplerate; int format; int init_flags; char* device; int stream_silence; int period_size; char* redirect; int sstride; int num_planes; int bps; int device_buffer; int buffer; int def_buffer; TYPE_2__* api; TYPE_1__* driver; struct mp_chmap channels; int api_priv; struct encode_lavc_context* encode_lavc_ctx; } ;
+typedef int redirect ;
+typedef int rdevice ;
+struct TYPE_5__ {scalar_t__ (* init ) (struct ao*) ;int options; int priv_defaults; int priv_size; } ;
 struct TYPE_4__ {int encode; int (* init ) (struct ao*) ;int (* get_space ) (struct ao*) ;scalar_t__ play; } ;
 
-/* Variables and functions */
- int AO_INIT_STREAM_SILENCE ; 
- void* MPMAX (int,int) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*,int,...) ; 
- scalar_t__ af_fmt_is_planar (int) ; 
- int af_fmt_to_bytes (int) ; 
- int /*<<< orphan*/  af_fmt_to_str (int) ; 
- int af_format_sample_alignment (int) ; 
- struct ao* ao_alloc (int,struct mpv_global*,void (*) (void*),void*,char*) ; 
- TYPE_2__ ao_api_pull ; 
- TYPE_2__ ao_api_push ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mp_chmap_to_str (struct mp_chmap*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int stub1 (struct ao*) ; 
- int stub2 (struct ao*) ; 
- scalar_t__ stub3 (struct ao*) ; 
- int /*<<< orphan*/  talloc_free (struct ao*) ; 
- char* talloc_strdup (struct ao*,char*) ; 
- int /*<<< orphan*/  talloc_zero_size (struct ao*,int /*<<< orphan*/ ) ; 
+
+ int AO_INIT_STREAM_SILENCE ;
+ void* MPMAX (int,int) ;
+ int MP_ERR (struct ao*,char*) ;
+ int MP_VERBOSE (struct ao*,char*,int,...) ;
+ scalar_t__ af_fmt_is_planar (int) ;
+ int af_fmt_to_bytes (int) ;
+ int af_fmt_to_str (int) ;
+ int af_format_sample_alignment (int) ;
+ struct ao* ao_alloc (int,struct mpv_global*,void (*) (void*),void*,char*) ;
+ TYPE_2__ ao_api_pull ;
+ TYPE_2__ ao_api_push ;
+ int assert (int) ;
+ int mp_chmap_to_str (struct mp_chmap*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int stub1 (struct ao*) ;
+ int stub2 (struct ao*) ;
+ scalar_t__ stub3 (struct ao*) ;
+ int talloc_free (struct ao*) ;
+ char* talloc_strdup (struct ao*,char*) ;
+ int talloc_zero_size (struct ao*,int ) ;
 
 __attribute__((used)) static struct ao *ao_init(bool probing, struct mpv_global *global,
                           void (*wakeup_cb)(void *ctx), void *wakeup_ctx,
@@ -51,7 +51,7 @@ __attribute__((used)) static struct ao *ao_init(bool probing, struct mpv_global 
 {
     struct ao *ao = ao_alloc(probing, global, wakeup_cb, wakeup_ctx, name);
     if (!ao)
-        return NULL;
+        return ((void*)0);
     ao->samplerate = samplerate;
     ao->channels = channels;
     ao->format = format;
@@ -76,7 +76,7 @@ __attribute__((used)) static struct ao *ao_init(bool probing, struct mpv_global 
 
     int r = ao->driver->init(ao);
     if (r < 0) {
-        // Silly exception for coreaudio spdif redirection
+
         if (ao->redirect) {
             char redirect[80], rdevice[80];
             snprintf(redirect, sizeof(redirect), "%s", ao->redirect);
@@ -120,5 +120,5 @@ __attribute__((used)) static struct ao *ao_init(bool probing, struct mpv_global 
 
 fail:
     talloc_free(ao);
-    return NULL;
+    return ((void*)0);
 }

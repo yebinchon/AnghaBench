@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t nwatchers; scalar_t__* watchers; } ;
-typedef  TYPE_1__ uv_loop_t ;
+typedef TYPE_1__ uv_loop_t ;
 struct kevent {int ident; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 void uv__platform_invalidate_fd(uv_loop_t* loop, int fd) {
   struct kevent* events;
   uintptr_t i;
   uintptr_t nfds;
 
-  assert(loop->watchers != NULL);
+  assert(loop->watchers != ((void*)0));
   assert(fd >= 0);
 
   events = (struct kevent*) loop->watchers[loop->nwatchers];
   nfds = (uintptr_t) loop->watchers[loop->nwatchers + 1];
-  if (events == NULL)
+  if (events == ((void*)0))
     return;
 
-  /* Invalidate events with same file descriptor */
+
   for (i = 0; i < nfds; i++)
     if ((int) events[i].ident == fd)
       events[i].ident = -1;

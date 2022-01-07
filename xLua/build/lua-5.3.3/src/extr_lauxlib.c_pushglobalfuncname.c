@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Debug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- scalar_t__ findfield (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_copy (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lua_getinfo (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  lua_remove (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Debug ;
+
+
+ int LUA_REGISTRYINDEX ;
+ scalar_t__ findfield (int *,int,int) ;
+ int lua_copy (int *,int,int) ;
+ int lua_getfield (int *,int ,char*) ;
+ int lua_getinfo (int *,char*,int *) ;
+ int lua_gettop (int *) ;
+ int lua_pop (int *,int) ;
+ int lua_pushstring (int *,char const*) ;
+ int lua_remove (int *,int) ;
+ int lua_settop (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int pushglobalfuncname (lua_State *L, lua_Debug *ar) {
   int top = lua_gettop(L);
-  lua_getinfo(L, "f", ar);  /* push function */
+  lua_getinfo(L, "f", ar);
   lua_getfield(L, LUA_REGISTRYINDEX, "_LOADED");
   if (findfield(L, top + 1, 2)) {
     const char *name = lua_tostring(L, -1);
-    if (strncmp(name, "_G.", 3) == 0) {  /* name start with '_G.'? */
-      lua_pushstring(L, name + 3);  /* push name without prefix */
-      lua_remove(L, -2);  /* remove original name */
+    if (strncmp(name, "_G.", 3) == 0) {
+      lua_pushstring(L, name + 3);
+      lua_remove(L, -2);
     }
-    lua_copy(L, -1, top + 1);  /* move name to proper place */
-    lua_pop(L, 2);  /* remove pushed values */
+    lua_copy(L, -1, top + 1);
+    lua_pop(L, 2);
     return 1;
   }
   else {
-    lua_settop(L, top);  /* remove function and global table */
+    lua_settop(L, top);
     return 0;
   }
 }

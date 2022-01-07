@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  reploffset; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int reploffset; } ;
 struct TYPE_8__ {scalar_t__ btype; TYPE_1__ bpop; } ;
-typedef  TYPE_2__ client ;
+typedef TYPE_2__ client ;
 
-/* Variables and functions */
- scalar_t__ BLOCKED_LIST ; 
- scalar_t__ BLOCKED_MODULE ; 
- scalar_t__ BLOCKED_STREAM ; 
- scalar_t__ BLOCKED_WAIT ; 
- scalar_t__ BLOCKED_ZSET ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyNullArray (TYPE_2__*) ; 
- int /*<<< orphan*/  moduleBlockedClientTimedOut (TYPE_2__*) ; 
- int /*<<< orphan*/  replicationCountAcksByOffset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverPanic (char*) ; 
+
+ scalar_t__ BLOCKED_LIST ;
+ scalar_t__ BLOCKED_MODULE ;
+ scalar_t__ BLOCKED_STREAM ;
+ scalar_t__ BLOCKED_WAIT ;
+ scalar_t__ BLOCKED_ZSET ;
+ int addReplyLongLong (TYPE_2__*,int ) ;
+ int addReplyNullArray (TYPE_2__*) ;
+ int moduleBlockedClientTimedOut (TYPE_2__*) ;
+ int replicationCountAcksByOffset (int ) ;
+ int serverPanic (char*) ;
 
 void replyToBlockedClientTimedOut(client *c) {
     if (c->btype == BLOCKED_LIST ||

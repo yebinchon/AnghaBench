@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mtx {int dummy; } ;
 struct hdac_softc {struct mtx* lock; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- struct hdac_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ struct hdac_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static struct mtx *
 hdac_get_mtx(device_t dev, device_t child)
 {
-	struct hdac_softc *sc = device_get_softc(dev);
+ struct hdac_softc *sc = device_get_softc(dev);
 
-	return (sc->lock);
+ return (sc->lock);
 }

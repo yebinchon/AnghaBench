@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct metafile {int next; int prev; int num; int data; int /*<<< orphan*/ * aio; } ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct metafile {int next; int prev; int num; int data; int * aio; } ;
 struct TYPE_6__ {scalar_t__ metafile_index; } ;
-typedef  TYPE_1__ list_t ;
+typedef TYPE_1__ list_t ;
 struct TYPE_8__ {int tot_lists; } ;
-struct TYPE_7__ {int /*<<< orphan*/  fd; } ;
+struct TYPE_7__ {int fd; } ;
 
-/* Variables and functions */
- int FILE_LIST_MAGIC ; 
- int /*<<< orphan*/  FLI_ENTRY_LIST_ID (int) ; 
- TYPE_5__ Header ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_2__* Snapshot ; 
- int /*<<< orphan*/  WaitAioArrAdd (int /*<<< orphan*/ *) ; 
- TYPE_1__* __get_list_f (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  add_use (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  check_aio_completion (int /*<<< orphan*/ *) ; 
- scalar_t__ compute_crc32 (int,long long) ; 
- scalar_t__ crc32_check_mode ; 
- int /*<<< orphan*/ * create_aio_read_connection (int /*<<< orphan*/ ,int,long long,long long,int /*<<< orphan*/ *,struct metafile*) ; 
- int /*<<< orphan*/  ct_metafile_aio ; 
- int /*<<< orphan*/  data_metafiles_loaded ; 
- int /*<<< orphan*/  do_postponed (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- long long get_metafile_offset (int) ; 
- long long get_revlist_metafile_offset (int) ; 
- long long kfs_read_file (TYPE_2__*,int,long long) ; 
- long long lseek (int /*<<< orphan*/ ,long long,int /*<<< orphan*/ ) ; 
- struct metafile** metafiles ; 
- int /*<<< orphan*/  metafiles_loaded ; 
- scalar_t__* revlist_metafiles_crc32 ; 
- int /*<<< orphan*/  revlist_metafiles_loaded ; 
- int /*<<< orphan*/  stderr ; 
- long long tot_metafiles_memory ; 
- int tot_revlist_metafiles ; 
- int verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- struct metafile* zmalloc0 (int) ; 
- void* zzmalloc (long long) ; 
+
+ int FILE_LIST_MAGIC ;
+ int FLI_ENTRY_LIST_ID (int) ;
+ TYPE_5__ Header ;
+ int SEEK_SET ;
+ TYPE_2__* Snapshot ;
+ int WaitAioArrAdd (int *) ;
+ TYPE_1__* __get_list_f (int ,int) ;
+ int add_use (int) ;
+ int assert (int) ;
+ int check_aio_completion (int *) ;
+ scalar_t__ compute_crc32 (int,long long) ;
+ scalar_t__ crc32_check_mode ;
+ int * create_aio_read_connection (int ,int,long long,long long,int *,struct metafile*) ;
+ int ct_metafile_aio ;
+ int data_metafiles_loaded ;
+ int do_postponed (int) ;
+ int fprintf (int ,char*,...) ;
+ long long get_metafile_offset (int) ;
+ long long get_revlist_metafile_offset (int) ;
+ long long kfs_read_file (TYPE_2__*,int,long long) ;
+ long long lseek (int ,long long,int ) ;
+ struct metafile** metafiles ;
+ int metafiles_loaded ;
+ scalar_t__* revlist_metafiles_crc32 ;
+ int revlist_metafiles_loaded ;
+ int stderr ;
+ long long tot_metafiles_memory ;
+ int tot_revlist_metafiles ;
+ int verbosity ;
+ int vkprintf (int,char*,...) ;
+ struct metafile* zmalloc0 (int) ;
+ void* zzmalloc (long long) ;
 
 int load_metafile_aio (int x, int use_aio) {
-  //assert (!use_aio);
+
   if (verbosity >= 4) {
     fprintf (stderr, "load_metafile_aio. x = %d, use_aio = %d\n", x, use_aio);
   }
@@ -79,7 +79,7 @@ int load_metafile_aio (int x, int use_aio) {
   }
   metafiles[x]->num = x;
   if (!metafiles[x]->data) {
-    //metafiles[x]->data = zmalloc (size);
+
     metafiles[x]->data = zzmalloc (size);
     assert (metafiles[x]->data);
     tot_metafiles_memory += size;
@@ -93,13 +93,13 @@ int load_metafile_aio (int x, int use_aio) {
       } else {
         assert (compute_crc32 (metafiles[x]->data, size) == revlist_metafiles_crc32[x - Header.tot_lists - 1]);
       }
-    }    
+    }
     add_use (x);
     vkprintf (4, "load success #%d. memory %lld\n", x, tot_metafiles_memory);
 
     if (x < Header.tot_lists) {
       assert (*(int *)(metafiles[x]->data) == FILE_LIST_MAGIC);
-      //list_t *L = get_list_m (FLI_ENTRY_LIST_ID (x));
+
       list_t *L = __get_list_f (FLI_ENTRY_LIST_ID (x), -1);
       vkprintf (4, "L = %p\n", L);
       if (!L || L->metafile_index >= 0) {
@@ -116,8 +116,8 @@ int load_metafile_aio (int x, int use_aio) {
     struct metafile *meta = metafiles[x];
     if (meta->aio) {
       check_aio_completion (meta->aio);
-      if (meta->aio != NULL) {
-        //WaitAio = meta->aio;
+      if (meta->aio != ((void*)0)) {
+
         WaitAioArrAdd (meta->aio);
         return -2;
       }
@@ -125,16 +125,16 @@ int load_metafile_aio (int x, int use_aio) {
         return 1;
       } else {
         fprintf (stderr, "Previous AIO query failed at %p (metafile_num = %d), scheduling a new one\n", meta, meta->num);
-        meta->data = zzmalloc (size);  
+        meta->data = zzmalloc (size);
         tot_metafiles_memory += size;
       }
     }
     meta->aio = create_aio_read_connection (Snapshot->fd, meta->data, offset, size, &ct_metafile_aio, meta);
     vkprintf (4, "AIO query created\n");
-    assert (meta->aio != NULL);
-    //WaitAio = meta->aio;
+    assert (meta->aio != ((void*)0));
+
     WaitAioArrAdd (meta->aio);
 
-    return -2;    
+    return -2;
   }
 }

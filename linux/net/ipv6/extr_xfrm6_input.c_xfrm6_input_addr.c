@@ -1,128 +1,128 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xfrm_address_t ;
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_8__ {int /*<<< orphan*/  packets; int /*<<< orphan*/  bytes; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int xfrm_address_t ;
+typedef int u8 ;
+struct TYPE_8__ {int packets; int bytes; } ;
 struct TYPE_6__ {scalar_t__ state; } ;
 struct TYPE_5__ {int flags; } ;
-struct xfrm_state {int /*<<< orphan*/  lock; TYPE_4__ curlft; TYPE_3__* type; TYPE_2__ km; TYPE_1__ props; } ;
-struct sk_buff {scalar_t__ len; int /*<<< orphan*/  mark; int /*<<< orphan*/  dev; } ;
+struct xfrm_state {int lock; TYPE_4__ curlft; TYPE_3__* type; TYPE_2__ km; TYPE_1__ props; } ;
+struct sk_buff {scalar_t__ len; int mark; int dev; } ;
 struct sec_path {scalar_t__ len; struct xfrm_state** xvec; } ;
 struct net {int dummy; } ;
 struct TYPE_7__ {scalar_t__ (* input ) (struct xfrm_state*,struct sk_buff*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  LINUX_MIB_XFRMINBUFFERERROR ; 
- int /*<<< orphan*/  LINUX_MIB_XFRMINERROR ; 
- int /*<<< orphan*/  LINUX_MIB_XFRMINNOSTATES ; 
- int /*<<< orphan*/  XFRM_INC_STATS (struct net*,int /*<<< orphan*/ ) ; 
- scalar_t__ XFRM_MAX_DEPTH ; 
- scalar_t__ XFRM_STATE_VALID ; 
- int XFRM_STATE_WILDRECV ; 
- struct net* dev_net (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in6addr_any ; 
- scalar_t__ likely (int) ; 
- struct sec_path* secpath_set (struct sk_buff*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (struct xfrm_state*,struct sk_buff*) ; 
- int /*<<< orphan*/  xfrm_audit_state_notfound_simple (struct sk_buff*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfrm_state_check_expire (struct xfrm_state*) ; 
- struct xfrm_state* xfrm_state_lookup_byaddr (struct net*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfrm_state_put (struct xfrm_state*) ; 
+
+ int AF_INET6 ;
+ int LINUX_MIB_XFRMINBUFFERERROR ;
+ int LINUX_MIB_XFRMINERROR ;
+ int LINUX_MIB_XFRMINNOSTATES ;
+ int XFRM_INC_STATS (struct net*,int ) ;
+ scalar_t__ XFRM_MAX_DEPTH ;
+ scalar_t__ XFRM_STATE_VALID ;
+ int XFRM_STATE_WILDRECV ;
+ struct net* dev_net (int ) ;
+ int in6addr_any ;
+ scalar_t__ likely (int) ;
+ struct sec_path* secpath_set (struct sk_buff*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ scalar_t__ stub1 (struct xfrm_state*,struct sk_buff*) ;
+ int xfrm_audit_state_notfound_simple (struct sk_buff*,int ) ;
+ int xfrm_state_check_expire (struct xfrm_state*) ;
+ struct xfrm_state* xfrm_state_lookup_byaddr (struct net*,int ,int *,int *,int ,int ) ;
+ int xfrm_state_put (struct xfrm_state*) ;
 
 int xfrm6_input_addr(struct sk_buff *skb, xfrm_address_t *daddr,
-		     xfrm_address_t *saddr, u8 proto)
+       xfrm_address_t *saddr, u8 proto)
 {
-	struct net *net = dev_net(skb->dev);
-	struct xfrm_state *x = NULL;
-	struct sec_path *sp;
-	int i = 0;
+ struct net *net = dev_net(skb->dev);
+ struct xfrm_state *x = ((void*)0);
+ struct sec_path *sp;
+ int i = 0;
 
-	sp = secpath_set(skb);
-	if (!sp) {
-		XFRM_INC_STATS(net, LINUX_MIB_XFRMINERROR);
-		goto drop;
-	}
+ sp = secpath_set(skb);
+ if (!sp) {
+  XFRM_INC_STATS(net, LINUX_MIB_XFRMINERROR);
+  goto drop;
+ }
 
-	if (1 + sp->len == XFRM_MAX_DEPTH) {
-		XFRM_INC_STATS(net, LINUX_MIB_XFRMINBUFFERERROR);
-		goto drop;
-	}
+ if (1 + sp->len == XFRM_MAX_DEPTH) {
+  XFRM_INC_STATS(net, LINUX_MIB_XFRMINBUFFERERROR);
+  goto drop;
+ }
 
-	for (i = 0; i < 3; i++) {
-		xfrm_address_t *dst, *src;
+ for (i = 0; i < 3; i++) {
+  xfrm_address_t *dst, *src;
 
-		switch (i) {
-		case 0:
-			dst = daddr;
-			src = saddr;
-			break;
-		case 1:
-			/* lookup state with wild-card source address */
-			dst = daddr;
-			src = (xfrm_address_t *)&in6addr_any;
-			break;
-		default:
-			/* lookup state with wild-card addresses */
-			dst = (xfrm_address_t *)&in6addr_any;
-			src = (xfrm_address_t *)&in6addr_any;
-			break;
-		}
+  switch (i) {
+  case 0:
+   dst = daddr;
+   src = saddr;
+   break;
+  case 1:
 
-		x = xfrm_state_lookup_byaddr(net, skb->mark, dst, src, proto, AF_INET6);
-		if (!x)
-			continue;
+   dst = daddr;
+   src = (xfrm_address_t *)&in6addr_any;
+   break;
+  default:
 
-		spin_lock(&x->lock);
+   dst = (xfrm_address_t *)&in6addr_any;
+   src = (xfrm_address_t *)&in6addr_any;
+   break;
+  }
 
-		if ((!i || (x->props.flags & XFRM_STATE_WILDRECV)) &&
-		    likely(x->km.state == XFRM_STATE_VALID) &&
-		    !xfrm_state_check_expire(x)) {
-			spin_unlock(&x->lock);
-			if (x->type->input(x, skb) > 0) {
-				/* found a valid state */
-				break;
-			}
-		} else
-			spin_unlock(&x->lock);
+  x = xfrm_state_lookup_byaddr(net, skb->mark, dst, src, proto, AF_INET6);
+  if (!x)
+   continue;
 
-		xfrm_state_put(x);
-		x = NULL;
-	}
+  spin_lock(&x->lock);
 
-	if (!x) {
-		XFRM_INC_STATS(net, LINUX_MIB_XFRMINNOSTATES);
-		xfrm_audit_state_notfound_simple(skb, AF_INET6);
-		goto drop;
-	}
+  if ((!i || (x->props.flags & XFRM_STATE_WILDRECV)) &&
+      likely(x->km.state == XFRM_STATE_VALID) &&
+      !xfrm_state_check_expire(x)) {
+   spin_unlock(&x->lock);
+   if (x->type->input(x, skb) > 0) {
 
-	sp->xvec[sp->len++] = x;
+    break;
+   }
+  } else
+   spin_unlock(&x->lock);
 
-	spin_lock(&x->lock);
+  xfrm_state_put(x);
+  x = ((void*)0);
+ }
 
-	x->curlft.bytes += skb->len;
-	x->curlft.packets++;
+ if (!x) {
+  XFRM_INC_STATS(net, LINUX_MIB_XFRMINNOSTATES);
+  xfrm_audit_state_notfound_simple(skb, AF_INET6);
+  goto drop;
+ }
 
-	spin_unlock(&x->lock);
+ sp->xvec[sp->len++] = x;
 
-	return 1;
+ spin_lock(&x->lock);
+
+ x->curlft.bytes += skb->len;
+ x->curlft.packets++;
+
+ spin_unlock(&x->lock);
+
+ return 1;
 
 drop:
-	return -1;
+ return -1;
 }

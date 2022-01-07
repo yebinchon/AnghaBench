@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_reference ;
-typedef  int /*<<< orphan*/  git_oid ;
-typedef  int /*<<< orphan*/  git_object ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_OBJECT_ANY ; 
- int GIT_OID_HEXSZ ; 
- scalar_t__ GIT_REFERENCE_SYMBOLIC ; 
- int /*<<< orphan*/  check_lg2 (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  git_object_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_object_type (int /*<<< orphan*/ *) ; 
- char* git_object_type2string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_oid_fmt (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
- char* git_reference_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_resolve (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * git_reference_target (int /*<<< orphan*/ *) ; 
- scalar_t__ git_reference_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char*,char*,char*) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_reference ;
+typedef int git_oid ;
+typedef int git_object ;
+
+
+ int GIT_OBJECT_ANY ;
+ int GIT_OID_HEXSZ ;
+ scalar_t__ GIT_REFERENCE_SYMBOLIC ;
+ int check_lg2 (int ,char*,char*) ;
+ int git_object_lookup (int **,int *,int const*,int ) ;
+ int git_object_type (int *) ;
+ char* git_object_type2string (int ) ;
+ int git_oid_fmt (char*,int const*) ;
+ int git_reference_free (int *) ;
+ char* git_reference_name (int *) ;
+ int git_reference_resolve (int **,int *) ;
+ int * git_reference_target (int *) ;
+ scalar_t__ git_reference_type (int *) ;
+ int printf (char*,char*,char*,char*) ;
 
 __attribute__((used)) static int show_ref(git_reference *ref, void *data)
 {
         git_repository *repo = data;
-        git_reference *resolved = NULL;
+        git_reference *resolved = ((void*)0);
         char hex[GIT_OID_HEXSZ+1];
         const git_oid *oid;
         git_object *obj;

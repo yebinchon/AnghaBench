@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_8__ {int /*<<< orphan*/  (* pf_update_progress ) (int /*<<< orphan*/ ,TYPE_3__*,float,char*) ;} ;
-struct TYPE_9__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  p_cbs_data; TYPE_1__ cbs; } ;
-typedef  TYPE_2__ vlc_dialog_provider ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_8__ {int (* pf_update_progress ) (int ,TYPE_3__*,float,char*) ;} ;
+struct TYPE_9__ {int lock; int p_cbs_data; TYPE_1__ cbs; } ;
+typedef TYPE_2__ vlc_dialog_provider ;
 struct TYPE_10__ {char* psz_progress_text; scalar_t__ b_progress_indeterminate; } ;
-typedef  TYPE_3__ vlc_dialog_id ;
+typedef TYPE_3__ vlc_dialog_id ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_2__* get_dialog_provider (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_3__*,float,char*) ; 
- scalar_t__ vlc_dialog_is_cancelled (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int free (char*) ;
+ TYPE_2__* get_dialog_provider (int *,int) ;
+ int stub1 (int ,TYPE_3__*,float,char*) ;
+ scalar_t__ vlc_dialog_is_cancelled (int *,TYPE_3__*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static int
 dialog_update_progress(vlc_object_t *p_obj, vlc_dialog_id *p_id, float f_value,
                        char *psz_text)
 {
-    assert(p_obj != NULL && p_id != NULL);
-    vlc_dialog_provider *p_provider = get_dialog_provider(p_obj, false);
+    assert(p_obj != ((void*)0) && p_id != ((void*)0));
+    vlc_dialog_provider *p_provider = get_dialog_provider(p_obj, 0);
 
     vlc_mutex_lock(&p_provider->lock);
-    if (p_provider->cbs.pf_update_progress == NULL ||
+    if (p_provider->cbs.pf_update_progress == ((void*)0) ||
         vlc_dialog_is_cancelled(p_obj, p_id))
     {
         vlc_mutex_unlock(&p_provider->lock);
@@ -50,7 +50,7 @@ dialog_update_progress(vlc_object_t *p_obj, vlc_dialog_id *p_id, float f_value,
     if (p_id->b_progress_indeterminate)
         f_value = 0.0f;
 
-    if (psz_text != NULL)
+    if (psz_text != ((void*)0))
     {
         free(p_id->psz_progress_text);
         p_id->psz_progress_text = psz_text;

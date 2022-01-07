@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mwifiex_adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIGURATION_REG ; 
- int /*<<< orphan*/  EVENT ; 
- int /*<<< orphan*/  HOST_POWER_UP ; 
- int /*<<< orphan*/  mwifiex_dbg (struct mwifiex_adapter*,int /*<<< orphan*/ ,char*) ; 
- int mwifiex_write_reg (struct mwifiex_adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CONFIGURATION_REG ;
+ int EVENT ;
+ int HOST_POWER_UP ;
+ int mwifiex_dbg (struct mwifiex_adapter*,int ,char*) ;
+ int mwifiex_write_reg (struct mwifiex_adapter*,int ,int ) ;
 
 __attribute__((used)) static int mwifiex_pm_wakeup_card(struct mwifiex_adapter *adapter)
 {
-	mwifiex_dbg(adapter, EVENT,
-		    "event: wakeup device...\n");
+ mwifiex_dbg(adapter, EVENT,
+      "event: wakeup device...\n");
 
-	return mwifiex_write_reg(adapter, CONFIGURATION_REG, HOST_POWER_UP);
+ return mwifiex_write_reg(adapter, CONFIGURATION_REG, HOST_POWER_UP);
 }

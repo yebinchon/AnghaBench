@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_2__ {scalar_t__ mmal; int /*<<< orphan*/  omx; } ;
-typedef  int /*<<< orphan*/  OMX_COLORSPACETYPE ;
 
-/* Variables and functions */
- scalar_t__ MMAL_COLOR_SPACE_UNKNOWN ; 
- TYPE_1__* mmal_omx_colorspace_coding_table ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_2__ {scalar_t__ mmal; int omx; } ;
+typedef int OMX_COLORSPACETYPE ;
+
+
+ scalar_t__ MMAL_COLOR_SPACE_UNKNOWN ;
+ TYPE_1__* mmal_omx_colorspace_coding_table ;
 
 OMX_COLORSPACETYPE mmalil_color_space_to_omx(uint32_t coding)
 {

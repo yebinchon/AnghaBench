@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int release; } ;
-typedef  TYPE_1__ binding_t ;
-struct TYPE_5__ {int disable_binding_mode_indicator; int disable_ws; int strip_ws_numbers; int strip_ws_name; int verbose; int /*<<< orphan*/  bindings; } ;
+typedef TYPE_1__ binding_t ;
+struct TYPE_5__ {int disable_binding_mode_indicator; int disable_ws; int strip_ws_numbers; int strip_ws_name; int verbose; int bindings; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,int) ; 
- int /*<<< orphan*/  ELOG (char*,...) ; 
- TYPE_1__* TAILQ_LAST (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bindings_head ; 
- TYPE_2__ config ; 
- int /*<<< orphan*/  cur_key ; 
- scalar_t__ parsing_bindings ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ int DLOG (char*,int) ;
+ int ELOG (char*,...) ;
+ TYPE_1__* TAILQ_LAST (int *,int ) ;
+ int bindings_head ;
+ TYPE_2__ config ;
+ int cur_key ;
+ scalar_t__ parsing_bindings ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static int config_boolean_cb(void *params_, int val) {
     if (parsing_bindings) {
         if (strcmp(cur_key, "release") == 0) {
             binding_t *binding = TAILQ_LAST(&(config.bindings), bindings_head);
-            if (binding == NULL) {
+            if (binding == ((void*)0)) {
                 ELOG("There is no binding to put the current command onto. This is a bug in i3.\n");
                 return 0;
             }

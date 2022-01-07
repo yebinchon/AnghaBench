@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPDecBuffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int WebPDecBuffer ;
+typedef int FILE ;
+
+
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 int WebPWritePNG(FILE* fout, const WebPDecBuffer* const buffer) {
-  if (fout == NULL || buffer == NULL) return 0;
+  if (fout == ((void*)0) || buffer == ((void*)0)) return 0;
 
   fprintf(stderr, "PNG support not compiled. Please install the libpng "
           "development package before building.\n");

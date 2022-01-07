@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* rpc_t ;
-typedef  int /*<<< orphan*/  rpc_status ;
-typedef  int /*<<< orphan*/  plist_t ;
-struct TYPE_4__ {int /*<<< orphan*/  (* send_plist ) (TYPE_1__*,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPC_ERROR ; 
- int /*<<< orphan*/  plist_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plist_dict_set_item (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plist_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plist_new_dict () ; 
- int /*<<< orphan*/  plist_new_string (char const*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* rpc_t ;
+typedef int rpc_status ;
+typedef int plist_t ;
+struct TYPE_4__ {int (* send_plist ) (TYPE_1__*,int ) ;} ;
+
+
+ int RPC_ERROR ;
+ int plist_copy (int ) ;
+ int plist_dict_set_item (int ,char*,int ) ;
+ int plist_free (int ) ;
+ int plist_new_dict () ;
+ int plist_new_string (char const*) ;
+ int stub1 (TYPE_1__*,int ) ;
 
 rpc_status rpc_send_msg(rpc_t self, const char *selector, plist_t args) {
   if (!selector || !args) {

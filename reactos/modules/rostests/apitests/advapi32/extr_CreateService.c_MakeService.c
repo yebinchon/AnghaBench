@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateServiceW (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DELETE ; 
- int /*<<< orphan*/  DNS_ERROR_RCODE_NXRRSET ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- scalar_t__ REG_DWORD ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  SERVICE_BOOT_START ; 
- int /*<<< orphan*/  SERVICE_ERROR_IGNORE ; 
- int /*<<< orphan*/  SERVICE_KERNEL_DRIVER ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringCbPrintfW (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_err (scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int wchar_t ;
+typedef int * SC_HANDLE ;
+typedef int PBYTE ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int * CreateServiceW (int *,int const*,int *,int ,int ,int ,int ,char*,char*,scalar_t__*,int *,int *,int *) ;
+ int DELETE ;
+ int DNS_ERROR_RCODE_NXRRSET ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetLastError () ;
+ int HKEY_LOCAL_MACHINE ;
+ scalar_t__ REG_DWORD ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyW (int ,int *,int **) ;
+ scalar_t__ RegQueryValueExW (int *,char*,int *,scalar_t__*,int ,scalar_t__*) ;
+ int SERVICE_BOOT_START ;
+ int SERVICE_ERROR_IGNORE ;
+ int SERVICE_KERNEL_DRIVER ;
+ int SetLastError (int ) ;
+ int StringCbPrintfW (int *,int,char*,int const*) ;
+ int ok (int,char*,...) ;
+ int ok_err (scalar_t__) ;
+ int skip (char*) ;
 
 __attribute__((used)) static int MakeService(SC_HANDLE hScm, const wchar_t *serviceName, SC_HANDLE *hService, DWORD *tag)
 {
     DWORD ret;
-    HKEY hKey = NULL;
+    HKEY hKey = ((void*)0);
     DWORD type = 0, tagData = 0, tagSize;
     wchar_t keyName[256];
 
@@ -47,7 +47,7 @@ __attribute__((used)) static int MakeService(SC_HANDLE hScm, const wchar_t *serv
     *hService = CreateServiceW(
                     hScm,
                     serviceName,
-                    NULL,
+                    ((void*)0),
                     DELETE,
                     SERVICE_KERNEL_DRIVER,
                     SERVICE_BOOT_START,
@@ -55,11 +55,11 @@ __attribute__((used)) static int MakeService(SC_HANDLE hScm, const wchar_t *serv
                     L"%systemroot%\\drivers\\win32k.sys",
                     L"advapi32_apitest_CreateService_Test_Group",
                     tag,
-                    NULL,
-                    NULL,
-                    NULL);
+                    ((void*)0),
+                    ((void*)0),
+                    ((void*)0));
 
-    ok(*hService != NULL, "Failed to create service, error=0x%08lx\n", GetLastError());
+    ok(*hService != ((void*)0), "Failed to create service, error=0x%08lx\n", GetLastError());
     if (!*hService)
     {
         skip("No service; cannot proceed with CreateService test\n");
@@ -80,7 +80,7 @@ __attribute__((used)) static int MakeService(SC_HANDLE hScm, const wchar_t *serv
     }
 
     tagSize = sizeof tagData;
-    ret = RegQueryValueExW(hKey, L"Tag", NULL, &type, (PBYTE)&tagData, &tagSize);
+    ret = RegQueryValueExW(hKey, L"Tag", ((void*)0), &type, (PBYTE)&tagData, &tagSize);
     ok(ret == ERROR_SUCCESS, "RegQueryValueExW returned 0x%08lx\n", ret);
     ok(type == REG_DWORD, "type=%lu, expected REG_DWORD\n", type);
     ok(tagSize == sizeof tagData, "tagSize=%lu, expected 4\n", tagSize);

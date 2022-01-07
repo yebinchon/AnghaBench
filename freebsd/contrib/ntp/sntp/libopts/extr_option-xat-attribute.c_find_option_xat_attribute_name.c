@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* xat_name; } ;
-typedef  TYPE_1__ option_xat_attribute_map_t ;
+typedef TYPE_1__ option_xat_attribute_map_t ;
 
-/* Variables and functions */
- scalar_t__ option_xat_attribute_hash (char const*,unsigned int) ; 
- TYPE_1__ const* option_xat_attribute_table ; 
- int /*<<< orphan*/  strncmp (char const*,char const*,unsigned int) ; 
+
+ scalar_t__ option_xat_attribute_hash (char const*,unsigned int) ;
+ TYPE_1__ const* option_xat_attribute_table ;
+ int strncmp (char const*,char const*,unsigned int) ;
 
 __attribute__((used)) static inline const option_xat_attribute_map_t *
 find_option_xat_attribute_name (register const char *str, register unsigned int len)

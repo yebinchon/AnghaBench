@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in6_addr {int dummy; } ;
-typedef  int /*<<< orphan*/  gboolean ;
+typedef int gboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int evutil_inet_pton (int /*<<< orphan*/ ,char const*,unsigned char*) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int FALSE ;
+ int TRUE ;
+ int evutil_inet_pton (int ,char const*,unsigned char*) ;
 
 gboolean is_ipaddr_valid (const char *ip)
 {
@@ -29,6 +29,6 @@ gboolean is_ipaddr_valid (const char *ip)
 
     if (evutil_inet_pton(AF_INET6, ip, buf) == 1)
         return TRUE;
-    
+
     return FALSE;
 }

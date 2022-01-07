@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_fb_state {int dummy; } ;
 struct wined3d_device {int dummy; } ;
 struct wined3d_color {int dummy; } ;
 struct wined3d_blitter {TYPE_1__* ops; struct wined3d_blitter* next; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* blitter_clear ) (struct wined3d_blitter*,struct wined3d_device*,unsigned int,struct wined3d_fb_state const*,unsigned int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,struct wined3d_color const*,float,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct TYPE_2__ {int (* blitter_clear ) (struct wined3d_blitter*,struct wined3d_device*,unsigned int,struct wined3d_fb_state const*,unsigned int,int const*,int const*,int ,struct wined3d_color const*,float,int ) ;} ;
+typedef int RECT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_blitter*) ; 
- int /*<<< orphan*/  stub1 (struct wined3d_blitter*,struct wined3d_device*,unsigned int,struct wined3d_fb_state const*,unsigned int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,struct wined3d_color const*,float,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int TRACE (char*,struct wined3d_blitter*) ;
+ int stub1 (struct wined3d_blitter*,struct wined3d_device*,unsigned int,struct wined3d_fb_state const*,unsigned int,int const*,int const*,int ,struct wined3d_color const*,float,int ) ;
 
 __attribute__((used)) static void raw_blitter_clear(struct wined3d_blitter *blitter, struct wined3d_device *device,
         unsigned int rt_count, const struct wined3d_fb_state *fb, unsigned int rect_count, const RECT *clear_rects,

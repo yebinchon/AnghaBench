@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int gc_svc; } ;
-struct rpc_sspi_data {TYPE_2__ gc; TYPE_1__* sec; int /*<<< orphan*/  established; } ;
-typedef  int /*<<< orphan*/  bool_t ;
+struct rpc_sspi_data {TYPE_2__ gc; TYPE_1__* sec; int established; } ;
+typedef int bool_t ;
 struct TYPE_3__ {int svc; } ;
-typedef  int /*<<< orphan*/  AUTH ;
+typedef int AUTH ;
 
-/* Variables and functions */
- struct rpc_sspi_data* AUTH_PRIVATE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  log_debug (char*) ; 
+
+ struct rpc_sspi_data* AUTH_PRIVATE (int *) ;
+ int FALSE ;
+ int TRUE ;
+ int log_debug (char*) ;
 
 bool_t
 authsspi_service(AUTH *auth, int svc)
 {
-	struct rpc_sspi_data	*gd;
+ struct rpc_sspi_data *gd;
 
-	log_debug("in authgss_service()");
+ log_debug("in authgss_service()");
 
-	if (!auth) 
+ if (!auth)
         return(FALSE);
-	gd = AUTH_PRIVATE(auth);
-	if (!gd || !gd->established)
-		return (FALSE);
-	gd->sec->svc = svc;
-	gd->gc.gc_svc = svc;
-	return (TRUE);
+ gd = AUTH_PRIVATE(auth);
+ if (!gd || !gd->established)
+  return (FALSE);
+ gd->sec->svc = svc;
+ gd->gc.gc_svc = svc;
+ return (TRUE);
 }

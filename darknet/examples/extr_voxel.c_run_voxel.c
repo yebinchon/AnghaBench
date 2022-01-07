@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  extract_voxel (char*,char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_voxel (char*,char*,char*) ; 
- int /*<<< orphan*/  train_voxel (char*,char*) ; 
+ int extract_voxel (char*,char*,char*) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_voxel (char*,char*,char*) ;
+ int train_voxel (char*,char*) ;
 
 void run_voxel(int argc, char **argv)
 {
@@ -32,7 +24,7 @@ void run_voxel(int argc, char **argv)
     if(0==strcmp(argv[2], "train")) train_voxel(cfg, weights);
     else if(0==strcmp(argv[2], "test")) test_voxel(cfg, weights, filename);
     else if(0==strcmp(argv[2], "extract")) extract_voxel(argv[3], argv[4], argv[5]);
-    /*
-       else if(0==strcmp(argv[2], "valid")) validate_voxel(cfg, weights);
-     */
+
+
+
 }

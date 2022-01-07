@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_6__ {size_t size; size_t length; int owner; int eof; void* arg; int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_2__ buf_desc_t ;
-typedef  int /*<<< orphan*/  TickType_t ;
-struct TYPE_5__ {int /*<<< orphan*/  sending_mode; } ;
-struct TYPE_7__ {int /*<<< orphan*/  sendbuf; TYPE_1__ config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  SDIO_SLAVE_CHECK (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDIO_SLAVE_SEND_PACKET ; 
- TYPE_4__ context ; 
- scalar_t__ esp_ptr_dma_capable (int /*<<< orphan*/ *) ; 
- scalar_t__ sdio_ringbuf_send (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_isr_invoke () ; 
- int /*<<< orphan*/  send_write_desc ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_6__ {size_t size; size_t length; int owner; int eof; void* arg; int * buf; } ;
+typedef TYPE_2__ buf_desc_t ;
+typedef int TickType_t ;
+struct TYPE_5__ {int sending_mode; } ;
+struct TYPE_7__ {int sendbuf; TYPE_1__ config; } ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ scalar_t__ ESP_OK ;
+ int SDIO_SLAVE_CHECK (int,char*,int ) ;
+ int SDIO_SLAVE_SEND_PACKET ;
+ TYPE_4__ context ;
+ scalar_t__ esp_ptr_dma_capable (int *) ;
+ scalar_t__ sdio_ringbuf_send (int *,int ,TYPE_2__*,int ) ;
+ int send_isr_invoke () ;
+ int send_write_desc ;
 
 esp_err_t sdio_slave_send_queue(uint8_t* addr, size_t len, void* arg, TickType_t wait)
 {
@@ -40,13 +40,13 @@ esp_err_t sdio_slave_send_queue(uint8_t* addr, size_t len, void* arg, TickType_t
         ESP_ERR_INVALID_ARG);
 
     buf_desc_t new_desc = {
-        .size   =   len,
-        .length =   len,
-        .buf    =   addr,
-        .owner  =   1,
-        // in stream mode, the eof is only appended (in ISR) when new packet is ready to be sent
-        .eof    =   (context.config.sending_mode == SDIO_SLAVE_SEND_PACKET?1:0),
-        .arg    =   arg,
+        .size = len,
+        .length = len,
+        .buf = addr,
+        .owner = 1,
+
+        .eof = (context.config.sending_mode == SDIO_SLAVE_SEND_PACKET?1:0),
+        .arg = arg,
     };
 
     esp_err_t ret = sdio_ringbuf_send(&context.sendbuf, send_write_desc, &new_desc, wait);

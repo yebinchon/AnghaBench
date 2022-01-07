@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FilterTypes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BlackmanFilter ; 
- int /*<<< orphan*/  BoxFilter ; 
- int /*<<< orphan*/  CatromFilter ; 
- int /*<<< orphan*/  CubicFilter ; 
- int /*<<< orphan*/  GaussianFilter ; 
- int /*<<< orphan*/  HanningFilter ; 
- int /*<<< orphan*/  HermiteFilter ; 
- int /*<<< orphan*/  LanczosFilter ; 
- int /*<<< orphan*/  MitchellFilter ; 
- int /*<<< orphan*/  PointFilter ; 
- int /*<<< orphan*/  QuadraticFilter ; 
- int /*<<< orphan*/  SincFilter ; 
- int /*<<< orphan*/  TriangleFilter ; 
- int /*<<< orphan*/  UndefinedFilter ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
+
+
+
+typedef int FilterTypes ;
+
+
+ int BlackmanFilter ;
+ int BoxFilter ;
+ int CatromFilter ;
+ int CubicFilter ;
+ int GaussianFilter ;
+ int HanningFilter ;
+ int HermiteFilter ;
+ int LanczosFilter ;
+ int MitchellFilter ;
+ int PointFilter ;
+ int QuadraticFilter ;
+ int SincFilter ;
+ int TriangleFilter ;
+ int UndefinedFilter ;
+ int strcmp (char*,char const*) ;
 
 __attribute__((used)) static FilterTypes get_filter_type (const char* s) {
   switch (*s++) {

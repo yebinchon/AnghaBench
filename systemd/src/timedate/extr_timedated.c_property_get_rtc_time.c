@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int usec_t ;
+
+
+
+
+typedef int usec_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
 
-/* Variables and functions */
- int EBUSY ; 
- int ENOENT ; 
- int USEC_PER_SEC ; 
- int clock_get_hwclock (struct tm*) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int /*<<< orphan*/  log_warning (char*) ; 
- int sd_bus_error_set_errnof (int /*<<< orphan*/ *,int,char*) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ timegm (struct tm*) ; 
+
+ int EBUSY ;
+ int ENOENT ;
+ int USEC_PER_SEC ;
+ int clock_get_hwclock (struct tm*) ;
+ int log_debug (char*) ;
+ int log_warning (char*) ;
+ int sd_bus_error_set_errnof (int *,int,char*) ;
+ int sd_bus_message_append (int *,char*,int) ;
+ scalar_t__ timegm (struct tm*) ;
 
 __attribute__((used)) static int property_get_rtc_time(
                 sd_bus *bus,

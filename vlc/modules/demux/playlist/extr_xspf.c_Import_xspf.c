@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xspf_sys_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pf_control; int /*<<< orphan*/  pf_readdir; int /*<<< orphan*/ * p_sys; int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_FILE (TYPE_1__*) ; 
- int /*<<< orphan*/  ReadDir ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  access_vaDirectoryControlHelper ; 
- int /*<<< orphan*/ * calloc (int,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  stream_HasExtension (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  stream_IsMimeType (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int xspf_sys_t ;
+typedef int vlc_object_t ;
+struct TYPE_5__ {int pf_control; int pf_readdir; int * p_sys; int s; } ;
+typedef TYPE_1__ stream_t ;
+
+
+ int CHECK_FILE (TYPE_1__*) ;
+ int ReadDir ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int access_vaDirectoryControlHelper ;
+ int * calloc (int,int) ;
+ int msg_Dbg (TYPE_1__*,char*) ;
+ int stream_HasExtension (TYPE_1__*,char*) ;
+ int stream_IsMimeType (int ,char*) ;
+ scalar_t__ unlikely (int ) ;
 
 int Import_xspf(vlc_object_t *p_this)
 {
@@ -40,7 +40,7 @@ int Import_xspf(vlc_object_t *p_this)
         return VLC_EGENERIC;
 
     xspf_sys_t *sys = calloc(1, sizeof (*sys));
-    if (unlikely(sys == NULL))
+    if (unlikely(sys == ((void*)0)))
         return VLC_ENOMEM;
 
     msg_Dbg(p_stream, "using XSPF playlist reader");

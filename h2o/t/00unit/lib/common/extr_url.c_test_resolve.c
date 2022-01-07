@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_16__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_15__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-struct TYPE_18__ {int _port; TYPE_3__ path; TYPE_2__ host; TYPE_1__ authority; int /*<<< orphan*/ * scheme; } ;
-typedef  TYPE_4__ h2o_url_t ;
-typedef  int /*<<< orphan*/  h2o_mem_pool_t ;
-struct TYPE_19__ {int /*<<< orphan*/  len; int /*<<< orphan*/  base; } ;
-typedef  TYPE_5__ h2o_iovec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_STRLIT (char*) ; 
- int /*<<< orphan*/  H2O_URL_SCHEME_HTTP ; 
- int /*<<< orphan*/  H2O_URL_SCHEME_HTTPS ; 
- int /*<<< orphan*/  SIZE_MAX ; 
- int /*<<< orphan*/  h2o_mem_clear_pool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_mem_init_pool (int /*<<< orphan*/ *) ; 
- int h2o_memis (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int h2o_url_get_port (TYPE_4__*) ; 
- int h2o_url_parse (char*,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int h2o_url_parse_relative (char*,int /*<<< orphan*/ ,TYPE_4__*) ; 
- TYPE_5__ h2o_url_resolve (int /*<<< orphan*/ *,TYPE_4__*,TYPE_4__*,TYPE_4__*) ; 
- TYPE_5__ h2o_url_stringify (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  ok (int) ; 
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_17__ {int len; int base; } ;
+struct TYPE_16__ {int len; int base; } ;
+struct TYPE_15__ {int len; int base; } ;
+struct TYPE_18__ {int _port; TYPE_3__ path; TYPE_2__ host; TYPE_1__ authority; int * scheme; } ;
+typedef TYPE_4__ h2o_url_t ;
+typedef int h2o_mem_pool_t ;
+struct TYPE_19__ {int len; int base; } ;
+typedef TYPE_5__ h2o_iovec_t ;
+
+
+ int H2O_STRLIT (char*) ;
+ int H2O_URL_SCHEME_HTTP ;
+ int H2O_URL_SCHEME_HTTPS ;
+ int SIZE_MAX ;
+ int h2o_mem_clear_pool (int *) ;
+ int h2o_mem_init_pool (int *) ;
+ int h2o_memis (int ,int ,int ) ;
+ int h2o_url_get_port (TYPE_4__*) ;
+ int h2o_url_parse (char*,int ,TYPE_4__*) ;
+ int h2o_url_parse_relative (char*,int ,TYPE_4__*) ;
+ TYPE_5__ h2o_url_resolve (int *,TYPE_4__*,TYPE_4__*,TYPE_4__*) ;
+ TYPE_5__ h2o_url_stringify (int *,TYPE_4__*) ;
+ int ok (int) ;
 
 __attribute__((used)) static void test_resolve(void)
 {

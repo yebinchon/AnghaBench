@@ -1,40 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ all; } ;
 struct TYPE_7__ {scalar_t__* R; scalar_t__ PC; scalar_t__ PR; scalar_t__ MACL; scalar_t__ MACH; scalar_t__ VBR; scalar_t__ GBR; TYPE_1__ SR; } ;
-struct TYPE_6__ {int /*<<< orphan*/  isslave; TYPE_4__ regs; } ;
-typedef  TYPE_2__ SH2_struct ;
+struct TYPE_6__ {int isslave; TYPE_4__ regs; } ;
+typedef TYPE_2__ SH2_struct ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AllocAmendPrintString (char*,void const*) ; 
- int /*<<< orphan*/  SH2GetRegisters (TYPE_2__*,TYPE_4__*) ; 
-#define  YAB_ERR_CANNOTINIT 138 
-#define  YAB_ERR_FILENOTFOUND 137 
-#define  YAB_ERR_FILEREAD 136 
-#define  YAB_ERR_FILEWRITE 135 
-#define  YAB_ERR_MEMORYALLOC 134 
-#define  YAB_ERR_OTHER 133 
-#define  YAB_ERR_SDL 132 
-#define  YAB_ERR_SH2INVALIDOPCODE 131 
-#define  YAB_ERR_SH2READ 130 
-#define  YAB_ERR_SH2WRITE 129 
-#define  YAB_ERR_UNKNOWN 128 
- int /*<<< orphan*/  YuiErrorMsg (char*) ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long) ; 
+
+ int AllocAmendPrintString (char*,void const*) ;
+ int SH2GetRegisters (TYPE_2__*,TYPE_4__*) ;
+ int YuiErrorMsg (char*) ;
+ char* _ (char*) ;
+ int sprintf (char*,char*,char*,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long) ;
 
 void YabSetError(int type, const void *extra)
 {
@@ -43,22 +32,22 @@ void YabSetError(int type, const void *extra)
 
    switch (type)
    {
-      case YAB_ERR_FILENOTFOUND:
+      case 137:
          AllocAmendPrintString(_("File not found: "), extra);
          break;
-      case YAB_ERR_MEMORYALLOC:
+      case 134:
          YuiErrorMsg(_("Error allocating memory\n"));
          break;
-      case YAB_ERR_FILEREAD:
+      case 136:
          AllocAmendPrintString(_("Error reading file: "), extra);
          break;
-      case YAB_ERR_FILEWRITE:
+      case 135:
          AllocAmendPrintString(_("Error writing file: "), extra);
          break;
-      case YAB_ERR_CANNOTINIT:
+      case 138:
          AllocAmendPrintString(_("Cannot initialize "), extra);
          break;
-      case YAB_ERR_SH2INVALIDOPCODE:
+      case 131:
          sh = (SH2_struct *)extra;
          SH2GetRegisters(sh, &sh->regs);
          sprintf(tempstr, "%s SH2 invalid opcode\n\n"
@@ -88,19 +77,19 @@ void YabSetError(int type, const void *extra)
                           (long)sh->regs.R[11]);
          YuiErrorMsg(tempstr);
          break;
-      case YAB_ERR_SH2READ:
-         YuiErrorMsg(_("SH2 read error\n")); // fix me
+      case 130:
+         YuiErrorMsg(_("SH2 read error\n"));
          break;
-      case YAB_ERR_SH2WRITE:
-         YuiErrorMsg(_("SH2 write error\n")); // fix me
+      case 129:
+         YuiErrorMsg(_("SH2 write error\n"));
          break;
-      case YAB_ERR_SDL:
+      case 132:
          AllocAmendPrintString(_("SDL Error: "), extra);
          break;
-      case YAB_ERR_OTHER:
+      case 133:
          YuiErrorMsg((char *)extra);
          break;
-      case YAB_ERR_UNKNOWN:
+      case 128:
       default:
          YuiErrorMsg(_("Unknown error occurred\n"));
          break;

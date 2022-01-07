@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Status {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (struct Status*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int UNUSEDPARM (struct Status*) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 void
 status_finish(struct Status *status)

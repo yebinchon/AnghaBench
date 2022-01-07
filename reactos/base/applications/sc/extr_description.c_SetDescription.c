@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ lpDescription; } ;
-typedef  TYPE_1__ SERVICE_DESCRIPTION ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  scalar_t__ LPTSTR ;
-typedef  scalar_t__ LPCTSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ SERVICE_DESCRIPTION ;
+typedef int * SC_HANDLE ;
+typedef scalar_t__ LPTSTR ;
+typedef scalar_t__ LPCTSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChangeServiceConfig2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CONFIG ; 
- int /*<<< orphan*/  SERVICE_CONFIG_DESCRIPTION ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
+
+ int ChangeServiceConfig2 (int *,int ,int ) ;
+ int CloseServiceHandle (int *) ;
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int * OpenService (int *,scalar_t__,int ) ;
+ int ReportLastError () ;
+ int SC_MANAGER_CONNECT ;
+ int SERVICE_CHANGE_CONFIG ;
+ int SERVICE_CONFIG_DESCRIPTION ;
+ scalar_t__ TRUE ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
 
 BOOL SetDescription(LPCTSTR ServiceName, LPCTSTR Description)
 {
-    SC_HANDLE hManager = NULL;
-    SC_HANDLE hService = NULL;
+    SC_HANDLE hManager = ((void*)0);
+    SC_HANDLE hService = ((void*)0);
     BOOL bResult = TRUE;
     SERVICE_DESCRIPTION ServiceDescription;
 
-#ifdef SCDBG
-    _tprintf(_T("service to set description - %s\n\n"), ServiceName);
-#endif
 
-    hManager = OpenSCManager(NULL,
-                             NULL,
+
+
+
+    hManager = OpenSCManager(((void*)0),
+                             ((void*)0),
                              SC_MANAGER_CONNECT);
-    if (hManager == NULL)
+    if (hManager == ((void*)0))
     {
         _tprintf(_T("[SC] OpenSCManager FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -56,7 +56,7 @@ BOOL SetDescription(LPCTSTR ServiceName, LPCTSTR Description)
     }
 
     hService = OpenService(hManager, ServiceName, SERVICE_CHANGE_CONFIG);
-    if (hService == NULL)
+    if (hService == ((void*)0))
     {
         _tprintf(_T("[SC] OpenService FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;

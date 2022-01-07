@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct CGroupInfo {TYPE_1__* parent; int /*<<< orphan*/  pids; struct CGroupInfo* cgroup_path; int /*<<< orphan*/  is_const; struct CGroupInfo* children; } ;
-struct TYPE_2__ {int /*<<< orphan*/  children; } ;
-typedef  struct CGroupInfo Hashmap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct CGroupInfo*) ; 
- int /*<<< orphan*/  assert (struct CGroupInfo*) ; 
- int /*<<< orphan*/  free (struct CGroupInfo*) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_remove (struct CGroupInfo*,struct CGroupInfo*) ; 
- int /*<<< orphan*/  siblings ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct CGroupInfo {TYPE_1__* parent; int pids; struct CGroupInfo* cgroup_path; int is_const; struct CGroupInfo* children; } ;
+struct TYPE_2__ {int children; } ;
+typedef struct CGroupInfo Hashmap ;
+
+
+ int LIST_REMOVE (int ,int ,struct CGroupInfo*) ;
+ int assert (struct CGroupInfo*) ;
+ int free (struct CGroupInfo*) ;
+ int hashmap_free (int ) ;
+ int hashmap_remove (struct CGroupInfo*,struct CGroupInfo*) ;
+ int siblings ;
 
 __attribute__((used)) static void remove_cgroup(Hashmap *cgroups, struct CGroupInfo *cg) {
         assert(cgroups);

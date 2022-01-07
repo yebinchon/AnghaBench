@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * a; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * a; } ;
 struct TYPE_6__ {TYPE_1__ ctx; } ;
 struct TYPE_7__ {TYPE_2__ u; } ;
-typedef  TYPE_3__ vk_aes_ctx_t ;
+typedef TYPE_3__ vk_aes_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aesni256_encrypt (unsigned char*,unsigned char*,unsigned char*) ; 
- unsigned char* align16 (int /*<<< orphan*/ *) ; 
+
+ int aesni256_encrypt (unsigned char*,unsigned char*,unsigned char*) ;
+ unsigned char* align16 (int *) ;
 
 __attribute__((used)) static void vk_aesni_ctr_crypt (vk_aes_ctx_t *ctx, const unsigned char *in, unsigned char *out, int size, unsigned char iv[16], unsigned long long offset) {
   unsigned char *a = align16 (&ctx->u.ctx.a[0]);

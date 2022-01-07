@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_source_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct file_baton {int /*<<< orphan*/  pfb; int /*<<< orphan*/  pristine_props; int /*<<< orphan*/  path_start_revision; int /*<<< orphan*/  path; } ;
-struct edit_baton {TYPE_1__* processor; int /*<<< orphan*/  text_deltas; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  (* cancel_func ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  revision; } ;
-struct dir_baton {int /*<<< orphan*/  pdb; struct edit_baton* edit_baton; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_3__ {int /*<<< orphan*/  (* file_deleted ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* file_opened ) (int /*<<< orphan*/ *,scalar_t__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  get_file_from_ra (struct file_baton*,int,int /*<<< orphan*/ *) ; 
- struct file_baton* make_file_baton (char const*,struct dir_baton*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,scalar_t__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff__source_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_diff_source_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct file_baton {int pfb; int pristine_props; int path_start_revision; int path; } ;
+struct edit_baton {TYPE_1__* processor; int text_deltas; int cancel_baton; int (* cancel_func ) (int ) ;int revision; } ;
+struct dir_baton {int pdb; struct edit_baton* edit_baton; } ;
+typedef int apr_pool_t ;
+struct TYPE_3__ {int (* file_deleted ) (int ,int *,int ,int ,int ,TYPE_1__*,int *) ;int (* file_opened ) (int *,scalar_t__*,char const*,int *,int *,int *,int ,TYPE_1__*,int *,int *) ;} ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int get_file_from_ra (struct file_baton*,int,int *) ;
+ struct file_baton* make_file_baton (char const*,struct dir_baton*,scalar_t__,int *) ;
+ int stub1 (int ) ;
+ int stub2 (int *,scalar_t__*,char const*,int *,int *,int *,int ,TYPE_1__*,int *,int *) ;
+ int stub3 (int ) ;
+ int stub4 (int ,int *,int ,int ,int ,TYPE_1__*,int *) ;
+ int * svn_diff__source_create (int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 diff_deleted_file(const char *path,
@@ -48,8 +48,8 @@ diff_deleted_file(const char *path,
 
   SVN_ERR(eb->processor->file_opened(&fb->pfb, &skip, path,
                                      left_source,
-                                     NULL /* right_source */,
-                                     NULL /* copyfrom_source */,
+                                     ((void*)0) ,
+                                     ((void*)0) ,
                                      db->pdb,
                                      eb->processor,
                                      scratch_pool, scratch_pool));

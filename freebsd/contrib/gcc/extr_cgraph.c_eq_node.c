@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cgraph_node {int /*<<< orphan*/  decl; } ;
 
-/* Variables and functions */
- scalar_t__ DECL_UID (int /*<<< orphan*/ ) ; 
+
+
+
+struct cgraph_node {int decl; } ;
+
+
+ scalar_t__ DECL_UID (int ) ;
 
 __attribute__((used)) static int
 eq_node (const void *p1, const void *p2)

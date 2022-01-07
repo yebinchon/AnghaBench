@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  sl_curr; TYPE_2__* slots; } ;
-typedef  TYPE_1__ slabclass_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sl_curr; TYPE_2__* slots; } ;
+typedef TYPE_1__ slabclass_t ;
 struct TYPE_6__ {int it_flags; unsigned int slabs_clsid; struct TYPE_6__* prev; struct TYPE_6__* next; } ;
-typedef  TYPE_2__ item ;
+typedef TYPE_2__ item ;
 
-/* Variables and functions */
- int ITEM_CHUNKED ; 
- int ITEM_SLABBED ; 
- int /*<<< orphan*/  MEMCACHED_SLABS_FREE (size_t const,unsigned int,void*) ; 
- unsigned int POWER_SMALLEST ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  do_slabs_free_chunked (TYPE_2__*,size_t const) ; 
- unsigned int power_largest ; 
- TYPE_1__* slabclass ; 
+
+ int ITEM_CHUNKED ;
+ int ITEM_SLABBED ;
+ int MEMCACHED_SLABS_FREE (size_t const,unsigned int,void*) ;
+ unsigned int POWER_SMALLEST ;
+ int assert (int) ;
+ int do_slabs_free_chunked (TYPE_2__*,size_t const) ;
+ unsigned int power_largest ;
+ TYPE_1__* slabclass ;
 
 __attribute__((used)) static void do_slabs_free(void *ptr, const size_t size, unsigned int id) {
     slabclass_t *p;

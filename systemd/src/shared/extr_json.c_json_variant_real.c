@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uintmax_t ;
-typedef  scalar_t__ intmax_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ uintmax_t ;
+typedef scalar_t__ intmax_t ;
 struct TYPE_8__ {long double real; scalar_t__ unsig; scalar_t__ integer; } ;
 struct TYPE_9__ {int type; TYPE_1__ value; struct TYPE_9__* reference; scalar_t__ is_reference; } ;
-typedef  TYPE_2__ JsonVariant ;
+typedef TYPE_2__ JsonVariant ;
 
-/* Variables and functions */
-#define  JSON_VARIANT_INTEGER 130 
- TYPE_2__* JSON_VARIANT_MAGIC_ZERO_INTEGER ; 
- TYPE_2__* JSON_VARIANT_MAGIC_ZERO_REAL ; 
- TYPE_2__* JSON_VARIANT_MAGIC_ZERO_UNSIGNED ; 
-#define  JSON_VARIANT_REAL 129 
-#define  JSON_VARIANT_UNSIGNED 128 
- int /*<<< orphan*/  json_variant_is_regular (TYPE_2__*) ; 
- int /*<<< orphan*/  log_debug (char*,...) ; 
+
+
+ TYPE_2__* JSON_VARIANT_MAGIC_ZERO_INTEGER ;
+ TYPE_2__* JSON_VARIANT_MAGIC_ZERO_REAL ;
+ TYPE_2__* JSON_VARIANT_MAGIC_ZERO_UNSIGNED ;
+
+
+ int json_variant_is_regular (TYPE_2__*) ;
+ int log_debug (char*,...) ;
 
 long double json_variant_real(JsonVariant *v) {
         if (!v)
@@ -42,10 +42,10 @@ long double json_variant_real(JsonVariant *v) {
 
         switch (v->type) {
 
-        case JSON_VARIANT_REAL:
+        case 129:
                 return v->value.real;
 
-        case JSON_VARIANT_INTEGER: {
+        case 130: {
                 long double converted;
 
                 converted = (long double) v->value.integer;
@@ -57,7 +57,7 @@ long double json_variant_real(JsonVariant *v) {
                 return 0.0;
         }
 
-        case JSON_VARIANT_UNSIGNED: {
+        case 128: {
                 long double converted;
 
                 converted = (long double) v->value.unsig;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* nodes; } ;
-typedef  TYPE_1__ opj_tgt_tree_t ;
+typedef TYPE_1__ opj_tgt_tree_t ;
 struct TYPE_5__ {scalar_t__ low; scalar_t__ value; struct TYPE_5__* parent; } ;
-typedef  TYPE_2__ opj_tgt_node_t ;
-typedef  int /*<<< orphan*/  opj_bio_t ;
-typedef  size_t OPJ_UINT32 ;
-typedef  scalar_t__ OPJ_INT32 ;
+typedef TYPE_2__ opj_tgt_node_t ;
+typedef int opj_bio_t ;
+typedef size_t OPJ_UINT32 ;
+typedef scalar_t__ OPJ_INT32 ;
 
-/* Variables and functions */
- scalar_t__ opj_bio_read (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ opj_bio_read (int *,int) ;
 
 OPJ_UINT32 opj_tgt_decode(opj_bio_t *bio, opj_tgt_tree_t *tree,
                           OPJ_UINT32 leafno, OPJ_INT32 threshold)

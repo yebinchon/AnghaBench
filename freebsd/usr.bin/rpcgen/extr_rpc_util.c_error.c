@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  crash () ; 
- int /*<<< orphan*/  infilename ; 
- int /*<<< orphan*/  linenum ; 
- int /*<<< orphan*/  printwhere () ; 
- int /*<<< orphan*/  warnx (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+ int crash () ;
+ int infilename ;
+ int linenum ;
+ int printwhere () ;
+ int warnx (char*,int ,int ,char const*) ;
 
 void
 error(const char *msg)
 {
-	printwhere();
-	warnx("%s, line %d: %s", infilename, linenum, msg);
-	crash();
+ printwhere();
+ warnx("%s, line %d: %s", infilename, linenum, msg);
+ crash();
 }

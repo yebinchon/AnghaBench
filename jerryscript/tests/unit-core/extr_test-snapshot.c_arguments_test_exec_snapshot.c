@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_exec_snapshot (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- double jerry_get_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int jerry_value_is_number (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int jerry_value_t ;
+
+
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int jerry_cleanup () ;
+ int jerry_exec_snapshot (int *,size_t,int ,int ) ;
+ double jerry_get_number_value (int ) ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerry_value_is_number (int ) ;
 
 __attribute__((used)) static void arguments_test_exec_snapshot (uint32_t *snapshot_p, size_t snapshot_size, uint32_t exec_snapshot_flags)
 {

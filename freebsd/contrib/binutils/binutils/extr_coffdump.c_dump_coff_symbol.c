@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct coff_symbol {char* name; int tag; int number; struct coff_symbol* next; int /*<<< orphan*/  visible; int /*<<< orphan*/  where; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dump_coff_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_coff_visible (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_coff_where (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nl () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  tab (int) ; 
+
+
+
+struct coff_symbol {char* name; int tag; int number; struct coff_symbol* next; int visible; int where; int type; } ;
+
+
+ int dump_coff_type (int ) ;
+ int dump_coff_visible (int ) ;
+ int dump_coff_where (int ) ;
+ int nl () ;
+ int printf (char*,...) ;
+ int tab (int) ;
 
 __attribute__((used)) static void
 dump_coff_symbol (struct coff_symbol *p)

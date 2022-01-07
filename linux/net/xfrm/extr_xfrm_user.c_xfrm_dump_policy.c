@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct xfrm_policy_walk {int dummy; } ;
-struct xfrm_dump_info {int /*<<< orphan*/  nlmsg_flags; int /*<<< orphan*/  nlmsg_seq; struct sk_buff* out_skb; int /*<<< orphan*/  in_skb; } ;
-struct sk_buff {int len; int /*<<< orphan*/  sk; } ;
-struct netlink_callback {TYPE_1__* nlh; int /*<<< orphan*/  skb; scalar_t__ args; } ;
+struct xfrm_dump_info {int nlmsg_flags; int nlmsg_seq; struct sk_buff* out_skb; int in_skb; } ;
+struct sk_buff {int len; int sk; } ;
+struct netlink_callback {TYPE_1__* nlh; int skb; scalar_t__ args; } ;
 struct net {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  nlmsg_seq; } ;
+struct TYPE_2__ {int nlmsg_seq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NLM_F_MULTI ; 
- int /*<<< orphan*/  dump_one_policy ; 
- struct net* sock_net (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xfrm_policy_walk (struct net*,struct xfrm_policy_walk*,int /*<<< orphan*/ ,struct xfrm_dump_info*) ; 
+
+ int NLM_F_MULTI ;
+ int dump_one_policy ;
+ struct net* sock_net (int ) ;
+ int xfrm_policy_walk (struct net*,struct xfrm_policy_walk*,int ,struct xfrm_dump_info*) ;
 
 __attribute__((used)) static int xfrm_dump_policy(struct sk_buff *skb, struct netlink_callback *cb)
 {
-	struct net *net = sock_net(skb->sk);
-	struct xfrm_policy_walk *walk = (struct xfrm_policy_walk *)cb->args;
-	struct xfrm_dump_info info;
+ struct net *net = sock_net(skb->sk);
+ struct xfrm_policy_walk *walk = (struct xfrm_policy_walk *)cb->args;
+ struct xfrm_dump_info info;
 
-	info.in_skb = cb->skb;
-	info.out_skb = skb;
-	info.nlmsg_seq = cb->nlh->nlmsg_seq;
-	info.nlmsg_flags = NLM_F_MULTI;
+ info.in_skb = cb->skb;
+ info.out_skb = skb;
+ info.nlmsg_seq = cb->nlh->nlmsg_seq;
+ info.nlmsg_flags = NLM_F_MULTI;
 
-	(void) xfrm_policy_walk(net, walk, dump_one_policy, &info);
+ (void) xfrm_policy_walk(net, walk, dump_one_policy, &info);
 
-	return skb->len;
+ return skb->len;
 }

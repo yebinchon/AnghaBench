@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ magic; int /*<<< orphan*/  code; TYPE_3__* waiter; } ;
-typedef  TYPE_1__ VCOS_MSG_T ;
-struct TYPE_6__ {int /*<<< orphan*/  (* on_reply ) (TYPE_3__*,TYPE_1__*) ;} ;
 
-/* Variables and functions */
- scalar_t__ MAGIC ; 
- int /*<<< orphan*/  MSG_REPLY_BIT ; 
- int /*<<< orphan*/  VCOS_ALERT (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ magic; int code; TYPE_3__* waiter; } ;
+typedef TYPE_1__ VCOS_MSG_T ;
+struct TYPE_6__ {int (* on_reply ) (TYPE_3__*,TYPE_1__*) ;} ;
+
+
+ scalar_t__ MAGIC ;
+ int MSG_REPLY_BIT ;
+ int VCOS_ALERT (char*,int ,int ) ;
+ int VCOS_FUNCTION ;
+ int stub1 (TYPE_3__*,TYPE_1__*) ;
+ int vcos_assert (int) ;
 
 void vcos_msg_reply(VCOS_MSG_T *msg)
 {

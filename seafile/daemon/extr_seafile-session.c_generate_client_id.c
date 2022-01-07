@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  calculate_sha1 (unsigned char*,char*,int) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup (char*) ; 
- char* gen_uuid () ; 
- int /*<<< orphan*/  rawdata_to_hex (unsigned char*,char*,int) ; 
+ int calculate_sha1 (unsigned char*,char*,int) ;
+ int g_free (char*) ;
+ char* g_strdup (char*) ;
+ char* gen_uuid () ;
+ int rawdata_to_hex (unsigned char*,char*,int) ;
 
 __attribute__((used)) static char *
 generate_client_id ()

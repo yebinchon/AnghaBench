@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hidpad_psxadapter_data {int* data; } ;
-typedef  int int16_t ;
+typedef int int16_t ;
 
-/* Variables and functions */
- int abs (int) ; 
+
+ int abs (int) ;
 
 __attribute__((used)) static int16_t hidpad_psxadapter_get_axis(void *data, unsigned axis)
 {
-   int val                               = 0;
+   int val = 0;
    struct hidpad_psxadapter_data *device = (struct hidpad_psxadapter_data*)data;
 
-   if (!device || axis >= 4   ||
-       (device->data[2]==0x7F) ) /* digital mode detection */
+   if (!device || axis >= 4 ||
+       (device->data[2]==0x7F) )
       return 0;
 
    switch (axis)
@@ -43,5 +43,5 @@ __attribute__((used)) static int16_t hidpad_psxadapter_get_axis(void *data, unsi
 
    val = (val << 8) - 0x8000;
 
-   return (abs(val) > 0x1000) ? val : 0; /* hard coded deadzone */
+   return (abs(val) > 0x1000) ? val : 0;
 }

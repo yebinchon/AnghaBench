@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_7__ {int /*<<< orphan*/  seaf_dir; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_7__ {int seaf_dir; } ;
 struct TYPE_6__ {TYPE_1__* priv; } ;
-struct TYPE_5__ {int /*<<< orphan*/  db_lock; int /*<<< orphan*/  hash_lock; int /*<<< orphan*/  repo_locked_files; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_2__ SeafFilelockManager ;
+struct TYPE_5__ {int db_lock; int hash_lock; int repo_locked_files; int * db; } ;
+typedef TYPE_2__ SeafFilelockManager ;
 
-/* Variables and functions */
- char* g_build_filename (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_locked_files ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_4__* seaf ; 
- scalar_t__ sqlite_foreach_selected_row (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite_open_db (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  sqlite_query_exec (int /*<<< orphan*/ *,char*) ; 
+
+ char* g_build_filename (int ,char*,int *) ;
+ int g_free (char*) ;
+ int g_hash_table_destroy (int ) ;
+ int load_locked_files ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ TYPE_4__* seaf ;
+ scalar_t__ sqlite_foreach_selected_row (int *,char*,int ,int ) ;
+ scalar_t__ sqlite_open_db (char*,int **) ;
+ int sqlite_query_exec (int *,char*) ;
 
 int
 seaf_filelock_manager_init (SeafFilelockManager *mgr)
@@ -38,7 +38,7 @@ seaf_filelock_manager_init (SeafFilelockManager *mgr)
     sqlite3 *db;
     char *sql;
 
-    db_path = g_build_filename (seaf->seaf_dir, "filelocks.db", NULL);
+    db_path = g_build_filename (seaf->seaf_dir, "filelocks.db", ((void*)0));
     if (sqlite_open_db (db_path, &db) < 0)
         return -1;
     g_free (db_path);

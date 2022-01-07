@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
 struct TYPE_7__ {int bps; scalar_t__ ch_count; scalar_t__* ch; } ;
-struct TYPE_6__ {int** matrix_ch; double** matrix; float** matrix_flt; int** matrix32; int /*<<< orphan*/  int_sample_fmt; int /*<<< orphan*/  native_matrix; int /*<<< orphan*/  (* mix_2_1_f ) (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int,int) ;int /*<<< orphan*/  native_simd_matrix; int /*<<< orphan*/  (* mix_2_1_simd ) (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int,int) ;int /*<<< orphan*/  (* mix_1_1_f ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ;int /*<<< orphan*/  (* mix_1_1_simd ) (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int) ;int /*<<< orphan*/  in_ch_layout; int /*<<< orphan*/  out_ch_layout; int /*<<< orphan*/  (* mix_any_f ) (scalar_t__*,int /*<<< orphan*/  const**,int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_1__ SwrContext ;
-typedef  TYPE_2__ AudioData ;
+struct TYPE_6__ {int** matrix_ch; double** matrix; float** matrix_flt; int** matrix32; int int_sample_fmt; int native_matrix; int (* mix_2_1_f ) (scalar_t__,scalar_t__,scalar_t__,int ,int,int,int) ;int native_simd_matrix; int (* mix_2_1_simd ) (scalar_t__,scalar_t__,scalar_t__,int ,int,int,int) ;int (* mix_1_1_f ) (int ,int ,int ,int,int) ;int (* mix_1_1_simd ) (scalar_t__,scalar_t__,int ,int,int) ;int in_ch_layout; int out_ch_layout; int (* mix_any_f ) (scalar_t__*,int const**,int ,int) ;} ;
+typedef TYPE_1__ SwrContext ;
+typedef TYPE_2__ AudioData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_SAMPLE_FMT_DBLP ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_FLTP ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int av_get_bytes_per_sample (int /*<<< orphan*/ ) ; 
- scalar_t__ av_get_channel_layout_nb_channels (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (scalar_t__*,int /*<<< orphan*/  const**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub2 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub4 (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  stub5 (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  stub6 (scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int,int) ; 
+
+ int AV_SAMPLE_FMT_DBLP ;
+ int AV_SAMPLE_FMT_FLTP ;
+ int av_assert0 (int) ;
+ int av_get_bytes_per_sample (int ) ;
+ scalar_t__ av_get_channel_layout_nb_channels (int ) ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ int memset (scalar_t__,int ,int) ;
+ int stub1 (scalar_t__*,int const**,int ,int) ;
+ int stub2 (scalar_t__,scalar_t__,int ,int,int) ;
+ int stub3 (int ,int ,int ,int,int) ;
+ int stub4 (scalar_t__,scalar_t__,scalar_t__,int ,int,int,int) ;
+ int stub5 (scalar_t__,scalar_t__,scalar_t__,int ,int,int,int) ;
+ int stub6 (scalar_t__,scalar_t__,scalar_t__,int ,int,int,int) ;
 
 int swri_rematrix(SwrContext *s, AudioData *out, AudioData *in, int len, int mustcopy){
     int out_i, in_i, i, j;
@@ -62,9 +62,9 @@ int swri_rematrix(SwrContext *s, AudioData *out, AudioData *in, int len, int mus
             in_i= s->matrix_ch[out_i][1];
             if(s->matrix[out_i][in_i]!=1.0){
                 if(s->mix_1_1_simd && len1)
-                    s->mix_1_1_simd(out->ch[out_i]    , in->ch[in_i]    , s->native_simd_matrix, in->ch_count*out_i + in_i, len1);
+                    s->mix_1_1_simd(out->ch[out_i] , in->ch[in_i] , s->native_simd_matrix, in->ch_count*out_i + in_i, len1);
                 if(len != len1)
-                    s->mix_1_1_f   (out->ch[out_i]+off, in->ch[in_i]+off, s->native_matrix, in->ch_count*out_i + in_i, len-len1);
+                    s->mix_1_1_f (out->ch[out_i]+off, in->ch[in_i]+off, s->native_matrix, in->ch_count*out_i + in_i, len-len1);
             }else if(mustcopy){
                 memcpy(out->ch[out_i], in->ch[in_i], len*out->bps);
             }else{
@@ -75,11 +75,11 @@ int swri_rematrix(SwrContext *s, AudioData *out, AudioData *in, int len, int mus
             int in_i1 = s->matrix_ch[out_i][1];
             int in_i2 = s->matrix_ch[out_i][2];
             if(s->mix_2_1_simd && len1)
-                s->mix_2_1_simd(out->ch[out_i]    , in->ch[in_i1]    , in->ch[in_i2]    , s->native_simd_matrix, in->ch_count*out_i + in_i1, in->ch_count*out_i + in_i2, len1);
+                s->mix_2_1_simd(out->ch[out_i] , in->ch[in_i1] , in->ch[in_i2] , s->native_simd_matrix, in->ch_count*out_i + in_i1, in->ch_count*out_i + in_i2, len1);
             else
-                s->mix_2_1_f   (out->ch[out_i]    , in->ch[in_i1]    , in->ch[in_i2]    , s->native_matrix, in->ch_count*out_i + in_i1, in->ch_count*out_i + in_i2, len1);
+                s->mix_2_1_f (out->ch[out_i] , in->ch[in_i1] , in->ch[in_i2] , s->native_matrix, in->ch_count*out_i + in_i1, in->ch_count*out_i + in_i2, len1);
             if(len != len1)
-                s->mix_2_1_f   (out->ch[out_i]+off, in->ch[in_i1]+off, in->ch[in_i2]+off, s->native_matrix, in->ch_count*out_i + in_i1, in->ch_count*out_i + in_i2, len-len1);
+                s->mix_2_1_f (out->ch[out_i]+off, in->ch[in_i1]+off, in->ch[in_i2]+off, s->native_matrix, in->ch_count*out_i + in_i1, in->ch_count*out_i + in_i2, len-len1);
             break;}
         default:
             if(s->int_sample_fmt == AV_SAMPLE_FMT_FLTP){

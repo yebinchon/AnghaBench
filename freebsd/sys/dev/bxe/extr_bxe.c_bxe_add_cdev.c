@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct bxe_softc {TYPE_1__* ioctl_dev; int /*<<< orphan*/ * eeprom; TYPE_2__* ifp; } ;
-struct TYPE_4__ {int /*<<< orphan*/  if_dunit; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct bxe_softc {TYPE_1__* ioctl_dev; int * eeprom; TYPE_2__* ifp; } ;
+struct TYPE_4__ {int if_dunit; } ;
 struct TYPE_3__ {struct bxe_softc* si_drv1; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGW (struct bxe_softc*,char*) ; 
- int /*<<< orphan*/  BXE_EEPROM_MAX_DATA_LEN ; 
- int /*<<< orphan*/  GID_WHEEL ; 
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  UID_ROOT ; 
- int /*<<< orphan*/  bxe_cdevsw ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  if_name (TYPE_2__*) ; 
- TYPE_1__* make_dev (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BLOGW (struct bxe_softc*,char*) ;
+ int BXE_EEPROM_MAX_DATA_LEN ;
+ int GID_WHEEL ;
+ int M_DEVBUF ;
+ int M_NOWAIT ;
+ int UID_ROOT ;
+ int bxe_cdevsw ;
+ int free (int *,int ) ;
+ int if_name (TYPE_2__*) ;
+ TYPE_1__* make_dev (int *,int ,int ,int ,int,char*,int ) ;
+ int * malloc (int ,int ,int ) ;
 
 __attribute__((used)) static int
 bxe_add_cdev(struct bxe_softc *sc)
 {
     sc->eeprom = malloc(BXE_EEPROM_MAX_DATA_LEN, M_DEVBUF, M_NOWAIT);
 
-    if (sc->eeprom == NULL) {
+    if (sc->eeprom == ((void*)0)) {
         BLOGW(sc, "Unable to alloc for eeprom size buffer\n");
         return (-1);
     }
@@ -47,9 +47,9 @@ bxe_add_cdev(struct bxe_softc *sc)
                             "%s",
                             if_name(sc->ifp));
 
-    if (sc->ioctl_dev == NULL) {
+    if (sc->ioctl_dev == ((void*)0)) {
         free(sc->eeprom, M_DEVBUF);
-        sc->eeprom = NULL;
+        sc->eeprom = ((void*)0);
         return (-1);
     }
 

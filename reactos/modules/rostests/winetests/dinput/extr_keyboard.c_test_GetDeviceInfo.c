@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  instA ;
-typedef  int /*<<< orphan*/  inst3A ;
-struct TYPE_5__ {int dwSize; int dwDevType; int /*<<< orphan*/  guidProduct; int /*<<< orphan*/  guidInstance; } ;
-struct TYPE_4__ {int dwSize; int dwDevType; int /*<<< orphan*/  guidProduct; int /*<<< orphan*/  guidInstance; } ;
-typedef  int /*<<< orphan*/  IDirectInputDeviceA ;
-typedef  int /*<<< orphan*/  IDirectInputA ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DIDEVICEINSTANCE_DX3A ;
-typedef  TYPE_2__ DIDEVICEINSTANCEA ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GUID_SysKeyboard ; 
- int /*<<< orphan*/  IDirectInputDevice_GetDeviceInfo (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  IDirectInput_CreateDevice (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int instA ;
+typedef int inst3A ;
+struct TYPE_5__ {int dwSize; int dwDevType; int guidProduct; int guidInstance; } ;
+struct TYPE_4__ {int dwSize; int dwDevType; int guidProduct; int guidInstance; } ;
+typedef int IDirectInputDeviceA ;
+typedef int IDirectInputA ;
+typedef int HRESULT ;
+typedef TYPE_1__ DIDEVICEINSTANCE_DX3A ;
+typedef TYPE_2__ DIDEVICEINSTANCEA ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int GUID_SysKeyboard ;
+ int IDirectInputDevice_GetDeviceInfo (int *,TYPE_2__*) ;
+ int IDirectInput_CreateDevice (int *,int *,int **,int *) ;
+ int IUnknown_Release (int *) ;
+ int IsEqualGUID (int *,int *) ;
+ int SUCCEEDED (int ) ;
+ int ok (int,char*,int,...) ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_GetDeviceInfo(IDirectInputA *pDI)
 {
     HRESULT hr;
-    IDirectInputDeviceA *pKey = NULL;
+    IDirectInputDeviceA *pKey = ((void*)0);
     DIDEVICEINSTANCEA instA;
     DIDEVICEINSTANCE_DX3A inst3A;
 
-    hr = IDirectInput_CreateDevice(pDI, &GUID_SysKeyboard, &pKey, NULL);
+    hr = IDirectInput_CreateDevice(pDI, &GUID_SysKeyboard, &pKey, ((void*)0));
     ok(SUCCEEDED(hr), "IDirectInput_CreateDevice() failed: %08x\n", hr);
     if (FAILED(hr)) return;
 

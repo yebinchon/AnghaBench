@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vdbe ;
-typedef  int /*<<< orphan*/  Parse ;
 
-/* Variables and functions */
- int OE_Abort ; 
-#define  OP_Ge 129 
-#define  OP_Gt 128 
- int /*<<< orphan*/  OP_Halt ; 
- int /*<<< orphan*/  OP_Integer ; 
- int /*<<< orphan*/  OP_MustBeInt ; 
- int /*<<< orphan*/  P4_STATIC ; 
- int SQLITE_ERROR ; 
- int /*<<< orphan*/  VdbeCoverageIf (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VdbeCoverageNeverNullIf (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3GetTempReg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3GetVdbe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3MayAbort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempReg (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAppendP4 (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeCurrentAddr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vdbe ;
+typedef int Parse ;
+
+
+ int OE_Abort ;
+
+
+ int OP_Halt ;
+ int OP_Integer ;
+ int OP_MustBeInt ;
+ int P4_STATIC ;
+ int SQLITE_ERROR ;
+ int VdbeCoverageIf (int *,int) ;
+ int VdbeCoverageNeverNullIf (int *,int) ;
+ int assert (int) ;
+ int sqlite3GetTempReg (int *) ;
+ int * sqlite3GetVdbe (int *) ;
+ int sqlite3MayAbort (int *) ;
+ int sqlite3ReleaseTempReg (int *,int) ;
+ int sqlite3VdbeAddOp2 (int *,int ,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int,int,int,int) ;
+ int sqlite3VdbeAppendP4 (int *,void*,int ) ;
+ int sqlite3VdbeCurrentAddr (int *) ;
 
 __attribute__((used)) static void windowCheckIntValue(Parse *pParse, int reg, int eCond){
   static const char *azErr[] = {
@@ -40,7 +40,7 @@ __attribute__((used)) static void windowCheckIntValue(Parse *pParse, int reg, in
     "frame ending offset must be a non-negative integer",
     "second argument to nth_value must be a positive integer"
   };
-  static int aOp[] = { OP_Ge, OP_Ge, OP_Gt };
+  static int aOp[] = { 129, 129, 128 };
   Vdbe *v = sqlite3GetVdbe(pParse);
   int regZero = sqlite3GetTempReg(pParse);
   assert( eCond==0 || eCond==1 || eCond==2 );

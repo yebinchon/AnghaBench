@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {char* name; char* chart; TYPE_1__* rrdset; } ;
-struct TYPE_9__ {int /*<<< orphan*/  families; int /*<<< orphan*/  hosts; int /*<<< orphan*/  contexts; int /*<<< orphan*/  charts; int /*<<< orphan*/  alarms; scalar_t__ families_pattern; scalar_t__ charts_pattern; scalar_t__ hosts_pattern; scalar_t__ contexts_pattern; scalar_t__ alarms_pattern; struct TYPE_9__* next; } ;
+struct TYPE_9__ {int families; int hosts; int contexts; int charts; int alarms; scalar_t__ families_pattern; scalar_t__ charts_pattern; scalar_t__ hosts_pattern; scalar_t__ contexts_pattern; scalar_t__ alarms_pattern; struct TYPE_9__* next; } ;
 struct TYPE_8__ {scalar_t__ stype; TYPE_3__* silencers; } ;
 struct TYPE_7__ {char* context; char* family; } ;
-typedef  scalar_t__ SILENCE_TYPE ;
-typedef  TYPE_2__ SILENCERS ;
-typedef  TYPE_3__ SILENCER ;
-typedef  TYPE_4__ RRDCALC ;
+typedef scalar_t__ SILENCE_TYPE ;
+typedef TYPE_2__ SILENCERS ;
+typedef TYPE_3__ SILENCER ;
+typedef TYPE_4__ RRDCALC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- scalar_t__ STYPE_DISABLE_ALARMS ; 
- scalar_t__ STYPE_NONE ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*,...) ; 
- scalar_t__ simple_pattern_matches (scalar_t__,char*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_HEALTH ;
+ scalar_t__ STYPE_DISABLE_ALARMS ;
+ scalar_t__ STYPE_NONE ;
+ int debug (int ,char*,char*,...) ;
+ scalar_t__ simple_pattern_matches (scalar_t__,char*) ;
+ scalar_t__ unlikely (int) ;
 
 SILENCE_TYPE check_silenced(RRDCALC *rc, char* host, SILENCERS *silencers) {
     SILENCER *s;
     debug(D_HEALTH, "Checking if alarm was silenced via the command API. Alarm info name:%s context:%s chart:%s host:%s family:%s",
             rc->name, (rc->rrdset)?rc->rrdset->context:"", rc->chart, host, (rc->rrdset)?rc->rrdset->family:"");
 
-    for (s = silencers->silencers; s!=NULL; s=s->next){
+    for (s = silencers->silencers; s!=((void*)0); s=s->next){
         if (
                 (!s->alarms_pattern || (rc->name && s->alarms_pattern && simple_pattern_matches(s->alarms_pattern,rc->name))) &&
                 (!s->contexts_pattern || (rc->rrdset && rc->rrdset->context && s->contexts_pattern && simple_pattern_matches(s->contexts_pattern,rc->rrdset->context))) &&

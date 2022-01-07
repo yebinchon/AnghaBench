@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeCnt ; 
- int MAX_RECORD_WORDS ; 
- int /*<<< orphan*/ * NewAllocations ; 
- int /*<<< orphan*/  SplitBlocks ; 
- int /*<<< orphan*/  UsedCnt ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  exec_get_count (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_counts (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_datedistr (struct connection*,char*,int,char const*,int) ; 
- int /*<<< orphan*/  exec_get_entry (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_entry_pos (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_entry_sublist_pos (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_flags (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_incr_value (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_intersect (struct connection*,char*,int,int,char const*,int) ; 
- int /*<<< orphan*/  exec_get_list (struct connection*,char*,int,char const*,int) ; 
- int /*<<< orphan*/  exec_get_sorted_list (struct connection*,char*,int,char const*,int) ; 
- int /*<<< orphan*/  exec_get_text (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  exec_get_value (struct connection*,char*,int,char const*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int lists_prepare_stats (struct connection*) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  return_one_key_list (struct connection*,char const*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+ int FreeCnt ;
+ int MAX_RECORD_WORDS ;
+ int * NewAllocations ;
+ int SplitBlocks ;
+ int UsedCnt ;
+ int eat_at (char const*,int,char**,int*) ;
+ int exec_get_count (struct connection*,char*,int,char const*) ;
+ int exec_get_counts (struct connection*,char*,int,char const*) ;
+ int exec_get_datedistr (struct connection*,char*,int,char const*,int) ;
+ int exec_get_entry (struct connection*,char*,int,char const*) ;
+ int exec_get_entry_pos (struct connection*,char*,int,char const*) ;
+ int exec_get_entry_sublist_pos (struct connection*,char*,int,char const*) ;
+ int exec_get_flags (struct connection*,char*,int,char const*) ;
+ int exec_get_incr_value (struct connection*,char*,int,char const*) ;
+ int exec_get_intersect (struct connection*,char*,int,int,char const*,int) ;
+ int exec_get_list (struct connection*,char*,int,char const*,int) ;
+ int exec_get_sorted_list (struct connection*,char*,int,char const*,int) ;
+ int exec_get_text (struct connection*,char*,int,char const*) ;
+ int exec_get_value (struct connection*,char*,int,char const*) ;
+ int fprintf (int ,char*,char const*) ;
+ int lists_prepare_stats (struct connection*) ;
+ int return_one_key (struct connection*,char const*,int ,int) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int ,int ,int) ;
+ int stats_buff ;
+ int stderr ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   if (verbosity > 1) {

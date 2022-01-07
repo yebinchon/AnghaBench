@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mask; int data; } ;
 
-/* Variables and functions */
- int MW_LM1992_ADDR ; 
- TYPE_1__ tt_microwire ; 
+
+ int MW_LM1992_ADDR ;
+ TYPE_1__ tt_microwire ;
 
 void atari_microwire_cmd (int cmd)
 {
-	tt_microwire.mask = 0x7ff;
-	tt_microwire.data = MW_LM1992_ADDR | cmd;
+ tt_microwire.mask = 0x7ff;
+ tt_microwire.data = MW_LM1992_ADDR | cmd;
 
-	/* Busy wait for data being completely sent :-( */
-	while( tt_microwire.mask != 0x7ff)
-		;
+
+ while( tt_microwire.mask != 0x7ff)
+  ;
 }

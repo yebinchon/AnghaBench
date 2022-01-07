@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct filter_level {float default_val; float max; float min; } ;
 struct TYPE_8__ {float ll; } ;
 struct TYPE_7__ {float ll; } ;
 struct TYPE_6__ {float ll; } ;
 struct TYPE_9__ {TYPE_3__ DefaultValue; TYPE_2__ MinValue; TYPE_1__ MaxValue; } ;
-typedef  float LONG ;
-typedef  TYPE_4__ DXVA2_ValueRange ;
+typedef float LONG ;
+typedef TYPE_4__ DXVA2_ValueRange ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static LONG StoreLevel(const struct filter_level *range, const DXVA2_ValueRange *Range, float val)
 {

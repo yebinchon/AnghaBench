@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ configMAX_PRIORITIES ; 
- int /*<<< orphan*/  init () ; 
- int /*<<< orphan*/  rx_task ; 
- int /*<<< orphan*/  tx_task ; 
- int /*<<< orphan*/  xTaskCreate (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
+ scalar_t__ configMAX_PRIORITIES ;
+ int init () ;
+ int rx_task ;
+ int tx_task ;
+ int xTaskCreate (int ,char*,int,int *,scalar_t__,int *) ;
 
 void app_main(void)
 {
     init();
-    xTaskCreate(rx_task, "uart_rx_task", 1024*2, NULL, configMAX_PRIORITIES, NULL);
-    xTaskCreate(tx_task, "uart_tx_task", 1024*2, NULL, configMAX_PRIORITIES-1, NULL);
+    xTaskCreate(rx_task, "uart_rx_task", 1024*2, ((void*)0), configMAX_PRIORITIES, ((void*)0));
+    xTaskCreate(tx_task, "uart_tx_task", 1024*2, ((void*)0), configMAX_PRIORITIES-1, ((void*)0));
 }

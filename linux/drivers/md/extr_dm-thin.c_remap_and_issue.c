@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thin_c {int dummy; } ;
 struct bio {int dummy; } ;
-typedef  int /*<<< orphan*/  dm_block_t ;
+typedef int dm_block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  issue (struct thin_c*,struct bio*) ; 
- int /*<<< orphan*/  remap (struct thin_c*,struct bio*,int /*<<< orphan*/ ) ; 
+
+ int issue (struct thin_c*,struct bio*) ;
+ int remap (struct thin_c*,struct bio*,int ) ;
 
 __attribute__((used)) static void remap_and_issue(struct thin_c *tc, struct bio *bio,
-			    dm_block_t block)
+       dm_block_t block)
 {
-	remap(tc, bio, block);
-	issue(tc, bio);
+ remap(tc, bio, block);
+ issue(tc, bio);
 }

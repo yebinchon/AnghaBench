@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetExitCodeProcess (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
+
+
+
+typedef int UINT ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_SUCCESS ;
+ int GetExitCodeProcess (int ,scalar_t__*) ;
+ int TRACE (char*,scalar_t__) ;
 
 __attribute__((used)) static UINT custom_get_process_return( HANDLE process )
 {

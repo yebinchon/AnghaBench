@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAXPATHLEN ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_WRONLY ; 
- int PERFINDEX_SUCCESS ; 
- int /*<<< orphan*/  VERIFY (int,char*) ; 
- int /*<<< orphan*/  close (int) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int,long long) ; 
- int unlink (char*) ; 
+ int MAXPATHLEN ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_WRONLY ;
+ int PERFINDEX_SUCCESS ;
+ int VERIFY (int,char*) ;
+ int close (int) ;
+ int open (char*,int,int) ;
+ int snprintf (char*,int,char*,char*,int,long long) ;
+ int unlink (char*) ;
 
 int test_file_create(char* path, int thread_id, int num_threads, long long length) {
   long long i;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int op; int tr_tm; int /*<<< orphan*/  pColumns; struct TYPE_9__* pNext; } ;
-typedef  TYPE_2__ Trigger ;
-typedef  int /*<<< orphan*/  Table ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int op; int tr_tm; int pColumns; struct TYPE_9__* pNext; } ;
+typedef TYPE_2__ Trigger ;
+typedef int Table ;
 struct TYPE_10__ {TYPE_1__* db; } ;
 struct TYPE_8__ {int flags; } ;
-typedef  TYPE_3__ Parse ;
-typedef  int /*<<< orphan*/  ExprList ;
+typedef TYPE_3__ Parse ;
+typedef int ExprList ;
 
-/* Variables and functions */
- scalar_t__ IsVirtual (int /*<<< orphan*/ *) ; 
- int SQLITE_EnableTrigger ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ checkColumnOverlap (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* sqlite3TriggerList (TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ IsVirtual (int *) ;
+ int SQLITE_EnableTrigger ;
+ int assert (int) ;
+ scalar_t__ checkColumnOverlap (int ,int *) ;
+ TYPE_2__* sqlite3TriggerList (TYPE_3__*,int *) ;
 
 Trigger *sqlite3TriggersExist(
-  Parse *pParse,          /* Parse context */
-  Table *pTab,            /* The table the contains the triggers */
-  int op,                 /* one of TK_DELETE, TK_INSERT, TK_UPDATE */
-  ExprList *pChanges,     /* Columns that change in an UPDATE statement */
-  int *pMask              /* OUT: Mask of TRIGGER_BEFORE|TRIGGER_AFTER */
+  Parse *pParse,
+  Table *pTab,
+  int op,
+  ExprList *pChanges,
+  int *pMask
 ){
   int mask = 0;
   Trigger *pList = 0;

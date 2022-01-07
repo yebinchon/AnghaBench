@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  cbData; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Algid; } ;
-struct TYPE_6__ {int /*<<< orphan*/  pwszCNGExtraAlgid; int /*<<< orphan*/  pwszCNGAlgid; TYPE_2__ ExtraInfo; TYPE_1__ u; int /*<<< orphan*/  dwGroupId; int /*<<< orphan*/  pwszName; int /*<<< orphan*/  pszOID; } ;
-struct OIDInfo {int /*<<< orphan*/  entry; TYPE_3__ info; } ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ CRYPT_INSTALL_OID_INFO_BEFORE_FLAG ; 
- scalar_t__ ERROR_NO_MORE_ITEMS ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  oidInfo ; 
- struct OIDInfo* read_oid_info (int /*<<< orphan*/ ,char*,scalar_t__*) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cbData; } ;
+struct TYPE_4__ {int Algid; } ;
+struct TYPE_6__ {int pwszCNGExtraAlgid; int pwszCNGAlgid; TYPE_2__ ExtraInfo; TYPE_1__ u; int dwGroupId; int pwszName; int pszOID; } ;
+struct OIDInfo {int entry; TYPE_3__ info; } ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ CRYPT_INSTALL_OID_INFO_BEFORE_FLAG ;
+ scalar_t__ ERROR_NO_MORE_ITEMS ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyA (int ,int ,char*,int) ;
+ scalar_t__ RegOpenKeyExA (int ,char*,int ,int ,int *) ;
+ int TRACE (char*,int ,int ,int ,int ,int ,int ,int ) ;
+ int debugstr_a (int ) ;
+ int debugstr_w (int ) ;
+ int list_add_head (int *,int *) ;
+ int list_add_tail (int *,int *) ;
+ int oidInfo ;
+ struct OIDInfo* read_oid_info (int ,char*,scalar_t__*) ;
 
 __attribute__((used)) static void init_registered_oid_info(void)
 {

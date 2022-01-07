@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LOG_LEVEL ;
 
-/* Variables and functions */
- int LOG_ERR ; 
- int LOG_INFO ; 
-#define  LOG_LEVEL_ERROR 130 
-#define  LOG_LEVEL_INFO 129 
-#define  LOG_LEVEL_WARNING 128 
- int LOG_WARNING ; 
+
+
+
+typedef int LOG_LEVEL ;
+
+
+ int LOG_ERR ;
+ int LOG_INFO ;
+
+
+
+ int LOG_WARNING ;
 
 int level_syslog(LOG_LEVEL level)
 {
     switch (level) {
-        case LOG_LEVEL_INFO:
+        case 129:
             return LOG_INFO;
 
-        case LOG_LEVEL_WARNING:
+        case 128:
             return LOG_WARNING;
 
-        case LOG_LEVEL_ERROR:
+        case 130:
             return LOG_ERR;
     }
 

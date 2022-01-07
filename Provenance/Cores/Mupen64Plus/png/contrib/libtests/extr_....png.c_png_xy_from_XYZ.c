@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  whitey; int /*<<< orphan*/  whitex; int /*<<< orphan*/  bluey; int /*<<< orphan*/  bluex; int /*<<< orphan*/  greeny; int /*<<< orphan*/  greenx; int /*<<< orphan*/  redy; int /*<<< orphan*/  redx; } ;
-typedef  TYPE_1__ png_xy ;
-typedef  scalar_t__ png_int_32 ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int whitey; int whitex; int bluey; int bluex; int greeny; int greenx; int redy; int redx; } ;
+typedef TYPE_1__ png_xy ;
+typedef scalar_t__ png_int_32 ;
 struct TYPE_6__ {scalar_t__ blue_Y; scalar_t__ blue_X; scalar_t__ blue_Z; scalar_t__ green_Y; scalar_t__ green_X; scalar_t__ green_Z; scalar_t__ red_Y; scalar_t__ red_X; scalar_t__ red_Z; } ;
-typedef  TYPE_2__ png_XYZ ;
+typedef TYPE_2__ png_XYZ ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_FP_1 ; 
- scalar_t__ png_muldiv (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int PNG_FP_1 ;
+ scalar_t__ png_muldiv (int *,scalar_t__,int ,scalar_t__) ;
 
 __attribute__((used)) static int
 png_xy_from_XYZ(png_xy *xy, const png_XYZ *XYZ)
@@ -54,9 +54,9 @@ png_xy_from_XYZ(png_xy *xy, const png_XYZ *XYZ)
    whiteX += XYZ->blue_X;
    whiteY += XYZ->blue_Y;
 
-   /* The reference white is simply the sum of the end-point (X,Y,Z) vectors,
-    * thus:
-    */
+
+
+
    if (png_muldiv(&xy->whitex, whiteX, PNG_FP_1, dwhite) == 0)
       return 1;
    if (png_muldiv(&xy->whitey, whiteY, PNG_FP_1, dwhite) == 0)

@@ -1,228 +1,195 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int classId; scalar_t__ objectSubId; } ;
-typedef  int /*<<< orphan*/  ObjectClass ;
-typedef  TYPE_1__ ObjectAddress ;
+typedef int ObjectClass ;
+typedef TYPE_1__ ObjectAddress ;
+ int ERROR ;
 
-/* Variables and functions */
-#define  AccessMethodOperatorRelationId 165 
-#define  AccessMethodProcedureRelationId 164 
-#define  AccessMethodRelationId 163 
-#define  AttrDefaultRelationId 162 
-#define  AuthIdRelationId 161 
-#define  CastRelationId 160 
-#define  CollationRelationId 159 
-#define  ConstraintRelationId 158 
-#define  ConversionRelationId 157 
-#define  DatabaseRelationId 156 
-#define  DefaultAclRelationId 155 
- int /*<<< orphan*/  ERROR ; 
-#define  EventTriggerRelationId 154 
-#define  ExtensionRelationId 153 
-#define  ForeignDataWrapperRelationId 152 
-#define  ForeignServerRelationId 151 
-#define  LanguageRelationId 150 
-#define  LargeObjectRelationId 149 
-#define  NamespaceRelationId 148 
- int /*<<< orphan*/  OCLASS_AM ; 
- int /*<<< orphan*/  OCLASS_AMOP ; 
- int /*<<< orphan*/  OCLASS_AMPROC ; 
- int /*<<< orphan*/  OCLASS_CAST ; 
- int /*<<< orphan*/  OCLASS_CLASS ; 
- int /*<<< orphan*/  OCLASS_COLLATION ; 
- int /*<<< orphan*/  OCLASS_CONSTRAINT ; 
- int /*<<< orphan*/  OCLASS_CONVERSION ; 
- int /*<<< orphan*/  OCLASS_DATABASE ; 
- int /*<<< orphan*/  OCLASS_DEFACL ; 
- int /*<<< orphan*/  OCLASS_DEFAULT ; 
- int /*<<< orphan*/  OCLASS_EVENT_TRIGGER ; 
- int /*<<< orphan*/  OCLASS_EXTENSION ; 
- int /*<<< orphan*/  OCLASS_FDW ; 
- int /*<<< orphan*/  OCLASS_FOREIGN_SERVER ; 
- int /*<<< orphan*/  OCLASS_LANGUAGE ; 
- int /*<<< orphan*/  OCLASS_LARGEOBJECT ; 
- int /*<<< orphan*/  OCLASS_OPCLASS ; 
- int /*<<< orphan*/  OCLASS_OPERATOR ; 
- int /*<<< orphan*/  OCLASS_OPFAMILY ; 
- int /*<<< orphan*/  OCLASS_POLICY ; 
- int /*<<< orphan*/  OCLASS_PROC ; 
- int /*<<< orphan*/  OCLASS_PUBLICATION ; 
- int /*<<< orphan*/  OCLASS_PUBLICATION_REL ; 
- int /*<<< orphan*/  OCLASS_REWRITE ; 
- int /*<<< orphan*/  OCLASS_ROLE ; 
- int /*<<< orphan*/  OCLASS_SCHEMA ; 
- int /*<<< orphan*/  OCLASS_STATISTIC_EXT ; 
- int /*<<< orphan*/  OCLASS_SUBSCRIPTION ; 
- int /*<<< orphan*/  OCLASS_TBLSPACE ; 
- int /*<<< orphan*/  OCLASS_TRANSFORM ; 
- int /*<<< orphan*/  OCLASS_TRIGGER ; 
- int /*<<< orphan*/  OCLASS_TSCONFIG ; 
- int /*<<< orphan*/  OCLASS_TSDICT ; 
- int /*<<< orphan*/  OCLASS_TSPARSER ; 
- int /*<<< orphan*/  OCLASS_TSTEMPLATE ; 
- int /*<<< orphan*/  OCLASS_TYPE ; 
- int /*<<< orphan*/  OCLASS_USER_MAPPING ; 
-#define  OperatorClassRelationId 147 
-#define  OperatorFamilyRelationId 146 
-#define  OperatorRelationId 145 
-#define  PolicyRelationId 144 
-#define  ProcedureRelationId 143 
-#define  PublicationRelRelationId 142 
-#define  PublicationRelationId 141 
-#define  RelationRelationId 140 
-#define  RewriteRelationId 139 
-#define  StatisticExtRelationId 138 
-#define  SubscriptionRelationId 137 
-#define  TSConfigRelationId 136 
-#define  TSDictionaryRelationId 135 
-#define  TSParserRelationId 134 
-#define  TSTemplateRelationId 133 
-#define  TableSpaceRelationId 132 
-#define  TransformRelationId 131 
-#define  TriggerRelationId 130 
-#define  TypeRelationId 129 
-#define  UserMappingRelationId 128 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+
+
+
+ int OCLASS_AM ;
+ int OCLASS_AMOP ;
+ int OCLASS_AMPROC ;
+ int OCLASS_CAST ;
+ int OCLASS_CLASS ;
+ int OCLASS_COLLATION ;
+ int OCLASS_CONSTRAINT ;
+ int OCLASS_CONVERSION ;
+ int OCLASS_DATABASE ;
+ int OCLASS_DEFACL ;
+ int OCLASS_DEFAULT ;
+ int OCLASS_EVENT_TRIGGER ;
+ int OCLASS_EXTENSION ;
+ int OCLASS_FDW ;
+ int OCLASS_FOREIGN_SERVER ;
+ int OCLASS_LANGUAGE ;
+ int OCLASS_LARGEOBJECT ;
+ int OCLASS_OPCLASS ;
+ int OCLASS_OPERATOR ;
+ int OCLASS_OPFAMILY ;
+ int OCLASS_POLICY ;
+ int OCLASS_PROC ;
+ int OCLASS_PUBLICATION ;
+ int OCLASS_PUBLICATION_REL ;
+ int OCLASS_REWRITE ;
+ int OCLASS_ROLE ;
+ int OCLASS_SCHEMA ;
+ int OCLASS_STATISTIC_EXT ;
+ int OCLASS_SUBSCRIPTION ;
+ int OCLASS_TBLSPACE ;
+ int OCLASS_TRANSFORM ;
+ int OCLASS_TRIGGER ;
+ int OCLASS_TSCONFIG ;
+ int OCLASS_TSDICT ;
+ int OCLASS_TSPARSER ;
+ int OCLASS_TSTEMPLATE ;
+ int OCLASS_TYPE ;
+ int OCLASS_USER_MAPPING ;
+ int elog (int ,char*,int) ;
 
 ObjectClass
 getObjectClass(const ObjectAddress *object)
 {
-	/* only pg_class entries can have nonzero objectSubId */
-	if (object->classId != RelationRelationId &&
-		object->objectSubId != 0)
-		elog(ERROR, "invalid non-zero objectSubId for object class %u",
-			 object->classId);
 
-	switch (object->classId)
-	{
-		case RelationRelationId:
-			/* caller must check objectSubId */
-			return OCLASS_CLASS;
+ if (object->classId != 140 &&
+  object->objectSubId != 0)
+  elog(ERROR, "invalid non-zero objectSubId for object class %u",
+    object->classId);
 
-		case ProcedureRelationId:
-			return OCLASS_PROC;
+ switch (object->classId)
+ {
+  case 140:
 
-		case TypeRelationId:
-			return OCLASS_TYPE;
+   return OCLASS_CLASS;
 
-		case CastRelationId:
-			return OCLASS_CAST;
+  case 143:
+   return OCLASS_PROC;
 
-		case CollationRelationId:
-			return OCLASS_COLLATION;
+  case 129:
+   return OCLASS_TYPE;
 
-		case ConstraintRelationId:
-			return OCLASS_CONSTRAINT;
+  case 160:
+   return OCLASS_CAST;
 
-		case ConversionRelationId:
-			return OCLASS_CONVERSION;
+  case 159:
+   return OCLASS_COLLATION;
 
-		case AttrDefaultRelationId:
-			return OCLASS_DEFAULT;
+  case 158:
+   return OCLASS_CONSTRAINT;
 
-		case LanguageRelationId:
-			return OCLASS_LANGUAGE;
+  case 157:
+   return OCLASS_CONVERSION;
 
-		case LargeObjectRelationId:
-			return OCLASS_LARGEOBJECT;
+  case 162:
+   return OCLASS_DEFAULT;
 
-		case OperatorRelationId:
-			return OCLASS_OPERATOR;
+  case 150:
+   return OCLASS_LANGUAGE;
 
-		case OperatorClassRelationId:
-			return OCLASS_OPCLASS;
+  case 149:
+   return OCLASS_LARGEOBJECT;
 
-		case OperatorFamilyRelationId:
-			return OCLASS_OPFAMILY;
+  case 145:
+   return OCLASS_OPERATOR;
 
-		case AccessMethodRelationId:
-			return OCLASS_AM;
+  case 147:
+   return OCLASS_OPCLASS;
 
-		case AccessMethodOperatorRelationId:
-			return OCLASS_AMOP;
+  case 146:
+   return OCLASS_OPFAMILY;
 
-		case AccessMethodProcedureRelationId:
-			return OCLASS_AMPROC;
+  case 163:
+   return OCLASS_AM;
 
-		case RewriteRelationId:
-			return OCLASS_REWRITE;
+  case 165:
+   return OCLASS_AMOP;
 
-		case TriggerRelationId:
-			return OCLASS_TRIGGER;
+  case 164:
+   return OCLASS_AMPROC;
 
-		case NamespaceRelationId:
-			return OCLASS_SCHEMA;
+  case 139:
+   return OCLASS_REWRITE;
 
-		case StatisticExtRelationId:
-			return OCLASS_STATISTIC_EXT;
+  case 130:
+   return OCLASS_TRIGGER;
 
-		case TSParserRelationId:
-			return OCLASS_TSPARSER;
+  case 148:
+   return OCLASS_SCHEMA;
 
-		case TSDictionaryRelationId:
-			return OCLASS_TSDICT;
+  case 138:
+   return OCLASS_STATISTIC_EXT;
 
-		case TSTemplateRelationId:
-			return OCLASS_TSTEMPLATE;
+  case 134:
+   return OCLASS_TSPARSER;
 
-		case TSConfigRelationId:
-			return OCLASS_TSCONFIG;
+  case 135:
+   return OCLASS_TSDICT;
 
-		case AuthIdRelationId:
-			return OCLASS_ROLE;
+  case 133:
+   return OCLASS_TSTEMPLATE;
 
-		case DatabaseRelationId:
-			return OCLASS_DATABASE;
+  case 136:
+   return OCLASS_TSCONFIG;
 
-		case TableSpaceRelationId:
-			return OCLASS_TBLSPACE;
+  case 161:
+   return OCLASS_ROLE;
 
-		case ForeignDataWrapperRelationId:
-			return OCLASS_FDW;
+  case 156:
+   return OCLASS_DATABASE;
 
-		case ForeignServerRelationId:
-			return OCLASS_FOREIGN_SERVER;
+  case 132:
+   return OCLASS_TBLSPACE;
 
-		case UserMappingRelationId:
-			return OCLASS_USER_MAPPING;
+  case 152:
+   return OCLASS_FDW;
 
-		case DefaultAclRelationId:
-			return OCLASS_DEFACL;
+  case 151:
+   return OCLASS_FOREIGN_SERVER;
 
-		case ExtensionRelationId:
-			return OCLASS_EXTENSION;
+  case 128:
+   return OCLASS_USER_MAPPING;
 
-		case EventTriggerRelationId:
-			return OCLASS_EVENT_TRIGGER;
+  case 155:
+   return OCLASS_DEFACL;
 
-		case PolicyRelationId:
-			return OCLASS_POLICY;
+  case 153:
+   return OCLASS_EXTENSION;
 
-		case PublicationRelationId:
-			return OCLASS_PUBLICATION;
+  case 154:
+   return OCLASS_EVENT_TRIGGER;
 
-		case PublicationRelRelationId:
-			return OCLASS_PUBLICATION_REL;
+  case 144:
+   return OCLASS_POLICY;
 
-		case SubscriptionRelationId:
-			return OCLASS_SUBSCRIPTION;
+  case 141:
+   return OCLASS_PUBLICATION;
 
-		case TransformRelationId:
-			return OCLASS_TRANSFORM;
-	}
+  case 142:
+   return OCLASS_PUBLICATION_REL;
 
-	/* shouldn't get here */
-	elog(ERROR, "unrecognized object class: %u", object->classId);
-	return OCLASS_CLASS;		/* keep compiler quiet */
+  case 137:
+   return OCLASS_SUBSCRIPTION;
+
+  case 131:
+   return OCLASS_TRANSFORM;
+ }
+
+
+ elog(ERROR, "unrecognized object class: %u", object->classId);
+ return OCLASS_CLASS;
 }

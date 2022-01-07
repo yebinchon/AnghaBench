@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int primary_color; int font_name; scalar_t__ font_size; scalar_t__ bold; scalar_t__ italic; scalar_t__ underline; int alignment; } ;
-struct TYPE_7__ {int alignment_applied; int /*<<< orphan*/  ass_ctx; } ;
-typedef  TYPE_1__ SRTContext ;
-typedef  TYPE_2__ ASSStyle ;
+struct TYPE_7__ {int alignment_applied; int ass_ctx; } ;
+typedef TYPE_1__ SRTContext ;
+typedef TYPE_2__ ASSStyle ;
 
-/* Variables and functions */
- int ASS_DEFAULT_ALIGNMENT ; 
- scalar_t__ ASS_DEFAULT_BOLD ; 
- int ASS_DEFAULT_COLOR ; 
- int /*<<< orphan*/  ASS_DEFAULT_FONT ; 
- scalar_t__ ASS_DEFAULT_FONT_SIZE ; 
- scalar_t__ ASS_DEFAULT_ITALIC ; 
- scalar_t__ ASS_DEFAULT_UNDERLINE ; 
- TYPE_2__* ff_ass_style_get (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  srt_print (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  srt_stack_push (TYPE_1__*,unsigned char) ; 
- scalar_t__ strcmp (int,int /*<<< orphan*/ ) ; 
+
+ int ASS_DEFAULT_ALIGNMENT ;
+ scalar_t__ ASS_DEFAULT_BOLD ;
+ int ASS_DEFAULT_COLOR ;
+ int ASS_DEFAULT_FONT ;
+ scalar_t__ ASS_DEFAULT_FONT_SIZE ;
+ scalar_t__ ASS_DEFAULT_ITALIC ;
+ scalar_t__ ASS_DEFAULT_UNDERLINE ;
+ TYPE_2__* ff_ass_style_get (int ,char const*) ;
+ int srt_print (TYPE_1__*,char*,...) ;
+ int srt_stack_push (TYPE_1__*,unsigned char) ;
+ scalar_t__ strcmp (int,int ) ;
 
 __attribute__((used)) static void srt_style_apply(SRTContext *s, const char *style)
 {

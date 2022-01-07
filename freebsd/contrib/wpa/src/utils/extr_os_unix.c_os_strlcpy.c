@@ -1,38 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 size_t os_strlcpy(char *dest, const char *src, size_t siz)
 {
-	const char *s = src;
-	size_t left = siz;
+ const char *s = src;
+ size_t left = siz;
 
-	if (left) {
-		/* Copy string up to the maximum size of the dest buffer */
-		while (--left != 0) {
-			if ((*dest++ = *s++) == '\0')
-				break;
-		}
-	}
+ if (left) {
 
-	if (left == 0) {
-		/* Not enough room for the string; force NUL-termination */
-		if (siz != 0)
-			*dest = '\0';
-		while (*s++)
-			; /* determine total src string length */
-	}
+  while (--left != 0) {
+   if ((*dest++ = *s++) == '\0')
+    break;
+  }
+ }
 
-	return s - src - 1;
+ if (left == 0) {
+
+  if (siz != 0)
+   *dest = '\0';
+  while (*s++)
+   ;
+ }
+
+ return s - src - 1;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jclient (int /*<<< orphan*/ *) ; 
- int js_toboolean (int /*<<< orphan*/ *,int) ; 
- char* js_tostring (int /*<<< orphan*/ *,int) ; 
- char* mpv_event_name (int) ; 
- int /*<<< orphan*/  mpv_request_event (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  push_failure (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  push_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+
+
+typedef int js_State ;
+
+
+ int jclient (int *) ;
+ int js_toboolean (int *,int) ;
+ char* js_tostring (int *,int) ;
+ char* mpv_event_name (int) ;
+ int mpv_request_event (int ,int,int) ;
+ int push_failure (int *,char*) ;
+ int push_status (int *,int ) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 __attribute__((used)) static void script__request_event(js_State *J)
 {

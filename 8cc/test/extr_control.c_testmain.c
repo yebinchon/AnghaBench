@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  test_computed_goto () ; 
- int /*<<< orphan*/  test_do () ; 
- int /*<<< orphan*/  test_for () ; 
- int /*<<< orphan*/  test_goto () ; 
- int /*<<< orphan*/  test_if () ; 
- int /*<<< orphan*/  test_label () ; 
- int /*<<< orphan*/  test_logor () ; 
- int /*<<< orphan*/  test_switch () ; 
- int /*<<< orphan*/  test_while () ; 
+ int print (char*) ;
+ int test_computed_goto () ;
+ int test_do () ;
+ int test_for () ;
+ int test_goto () ;
+ int test_if () ;
+ int test_label () ;
+ int test_logor () ;
+ int test_switch () ;
+ int test_while () ;
 
 void testmain() {
     print("control flow");

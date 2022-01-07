@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_cache_policy {int /*<<< orphan*/  (* set_dirty ) (struct dm_cache_policy*,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  dm_cblock_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct dm_cache_policy*,int /*<<< orphan*/ ) ; 
+
+
+
+struct dm_cache_policy {int (* set_dirty ) (struct dm_cache_policy*,int ) ;} ;
+typedef int dm_cblock_t ;
+
+
+ int stub1 (struct dm_cache_policy*,int ) ;
 
 __attribute__((used)) static inline void policy_set_dirty(struct dm_cache_policy *p, dm_cblock_t cblock)
 {
-	p->set_dirty(p, cblock);
+ p->set_dirty(p, cblock);
 }

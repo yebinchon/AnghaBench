@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int socklen_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int socklen_t ;
 struct TYPE_2__ {int verbose; } ;
 
-/* Variables and functions */
- int MAX_SENDBUF_SIZE ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_SNDBUF ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int const,int,int) ; 
- scalar_t__ getsockopt (int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ setsockopt (int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
- TYPE_1__ settings ; 
- int /*<<< orphan*/  stderr ; 
+
+ int MAX_SENDBUF_SIZE ;
+ int SOL_SOCKET ;
+ int SO_SNDBUF ;
+ int fprintf (int ,char*,int const,int,int) ;
+ scalar_t__ getsockopt (int const,int ,int ,int*,int*) ;
+ int perror (char*) ;
+ scalar_t__ setsockopt (int const,int ,int ,void*,int) ;
+ TYPE_1__ settings ;
+ int stderr ;
 
 __attribute__((used)) static void maximize_sndbuf(const int sfd) {
     socklen_t intsize = sizeof(int);
@@ -31,14 +31,14 @@ __attribute__((used)) static void maximize_sndbuf(const int sfd) {
     int min, max, avg;
     int old_size;
 
-    /* Start with the default size. */
+
     if (getsockopt(sfd, SOL_SOCKET, SO_SNDBUF, &old_size, &intsize) != 0) {
         if (settings.verbose > 0)
             perror("getsockopt(SO_SNDBUF)");
         return;
     }
 
-    /* Binary-search for the real maximum. */
+
     min = old_size;
     max = MAX_SENDBUF_SIZE;
 

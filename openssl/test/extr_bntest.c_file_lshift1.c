@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  STANZA ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_div (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_lshift1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_rshift1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_bit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
- int /*<<< orphan*/  equalBN (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getBN (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int STANZA ;
+typedef int BIGNUM ;
+
+
+ int BN_add (int *,int *,int *) ;
+ int BN_div (int *,int *,int *,int *,int ) ;
+ int BN_free (int *) ;
+ int BN_lshift1 (int *,int *) ;
+ int BN_mul (int *,int *,int *,int ) ;
+ int * BN_new () ;
+ int BN_rshift1 (int *,int *) ;
+ int BN_set_bit (int *,int ) ;
+ int BN_set_word (int *,int) ;
+ int BN_zero (int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int ctx ;
+ int equalBN (char*,int *,int *) ;
+ int * getBN (int *,char*) ;
 
 __attribute__((used)) static int file_lshift1(STANZA *s)
 {
-    BIGNUM *a = NULL, *lshift1 = NULL, *zero = NULL, *ret = NULL;
-    BIGNUM *two = NULL, *remainder = NULL;
+    BIGNUM *a = ((void*)0), *lshift1 = ((void*)0), *zero = ((void*)0), *ret = ((void*)0);
+    BIGNUM *two = ((void*)0), *remainder = ((void*)0);
     int st = 0;
 
     if (!TEST_ptr(a = getBN(s, "A"))
@@ -62,9 +62,9 @@ __attribute__((used)) static int file_lshift1(STANZA *s)
             || !equalBN("LShift >> 1", a, ret))
         goto err;
 
-    /* Set the LSB to 1 and test rshift1 again. */
+
     if (!TEST_true(BN_set_bit(lshift1, 0))
-            || !TEST_true(BN_div(ret, NULL /* rem */ , lshift1, two, ctx))
+            || !TEST_true(BN_div(ret, ((void*)0) , lshift1, two, ctx))
             || !equalBN("(LShift1 | 1) / 2", a, ret)
             || !TEST_true(BN_rshift1(ret, lshift1))
             || !equalBN("(LShift | 1) >> 1", a, ret))

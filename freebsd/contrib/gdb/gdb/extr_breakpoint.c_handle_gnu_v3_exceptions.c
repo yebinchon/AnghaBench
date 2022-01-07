@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symtabs_and_lines {scalar_t__ nelts; char* sals; } ;
-struct breakpoint {int thread; char* addr_string; int /*<<< orphan*/ * ops; int /*<<< orphan*/  disposition; int /*<<< orphan*/  enable_state; int /*<<< orphan*/ * cond_string; int /*<<< orphan*/ * cond; scalar_t__ number; } ;
-typedef  enum exception_event_kind { ____Placeholder_exception_event_kind } exception_event_kind ;
+struct breakpoint {int thread; char* addr_string; int * ops; int disposition; int enable_state; int * cond_string; int * cond; scalar_t__ number; } ;
+typedef enum exception_event_kind { ____Placeholder_exception_event_kind } exception_event_kind ;
 
-/* Variables and functions */
- int EX_EVENT_CATCH ; 
- int /*<<< orphan*/  bp_breakpoint ; 
- int /*<<< orphan*/  bp_enabled ; 
- scalar_t__ breakpoint_count ; 
- struct symtabs_and_lines decode_line_1 (char**,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  disp_del ; 
- int /*<<< orphan*/  disp_donttouch ; 
- int /*<<< orphan*/  gnu_v3_exception_catchpoint_ops ; 
- int /*<<< orphan*/  mention (struct breakpoint*) ; 
- int /*<<< orphan*/ * savestring (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_breakpoint_count (scalar_t__) ; 
- struct breakpoint* set_raw_breakpoint (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  xfree (char*) ; 
- char* xstrdup (char*) ; 
+
+ int EX_EVENT_CATCH ;
+ int bp_breakpoint ;
+ int bp_enabled ;
+ scalar_t__ breakpoint_count ;
+ struct symtabs_and_lines decode_line_1 (char**,int,int *,int ,int *,int *) ;
+ int disp_del ;
+ int disp_donttouch ;
+ int gnu_v3_exception_catchpoint_ops ;
+ int mention (struct breakpoint*) ;
+ int * savestring (char*,int ) ;
+ int set_breakpoint_count (scalar_t__) ;
+ struct breakpoint* set_raw_breakpoint (char,int ) ;
+ int strlen (char*) ;
+ int xfree (char*) ;
+ char* xstrdup (char*) ;
 
 __attribute__((used)) static int
 handle_gnu_v3_exceptions (int tempflag, char *cond_string,
-			  enum exception_event_kind ex_event, int from_tty)
+     enum exception_event_kind ex_event, int from_tty)
 {
   char *trigger_func_name, *nameptr;
   struct symtabs_and_lines sals;
@@ -45,7 +45,7 @@ handle_gnu_v3_exceptions (int tempflag, char *cond_string,
     trigger_func_name = xstrdup ("__cxa_throw");
 
   nameptr = trigger_func_name;
-  sals = decode_line_1 (&nameptr, 1, NULL, 0, NULL, NULL);
+  sals = decode_line_1 (&nameptr, 1, ((void*)0), 0, ((void*)0), ((void*)0));
   if (sals.nelts == 0)
     {
       xfree (trigger_func_name);
@@ -55,9 +55,9 @@ handle_gnu_v3_exceptions (int tempflag, char *cond_string,
   b = set_raw_breakpoint (sals.sals[0], bp_breakpoint);
   set_breakpoint_count (breakpoint_count + 1);
   b->number = breakpoint_count;
-  b->cond = NULL;
-  b->cond_string = (cond_string == NULL) ? 
-    NULL : savestring (cond_string, strlen (cond_string));
+  b->cond = ((void*)0);
+  b->cond_string = (cond_string == ((void*)0)) ?
+    ((void*)0) : savestring (cond_string, strlen (cond_string));
   b->thread = -1;
   b->addr_string = trigger_func_name;
   b->enable_state = bp_enabled;

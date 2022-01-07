@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int off_t ;
 
-/* Variables and functions */
- int hp_sdc_rtc_proc_output (char*) ; 
+
+
+
+typedef int off_t ;
+
+
+ int hp_sdc_rtc_proc_output (char*) ;
 
 __attribute__((used)) static int hp_sdc_rtc_read_proc(char *page, char **start, off_t off,
                          int count, int *eof, void *data)
 {
-	int len = hp_sdc_rtc_proc_output (page);
+ int len = hp_sdc_rtc_proc_output (page);
         if (len <= off+count) *eof = 1;
         *start = page + off;
         len -= off;

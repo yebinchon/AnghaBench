@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_19__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-typedef  int ULONGLONG ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_19__ ;
+
+
+typedef int ULONG_PTR ;
+typedef int ULONGLONG ;
+typedef int ULONG ;
 struct TYPE_26__ {int QuadPart; } ;
 struct TYPE_23__ {int BytesPerIndexRecord; int BytesPerCluster; } ;
 struct TYPE_25__ {TYPE_1__ NtfsInfo; } ;
-struct TYPE_24__ {int /*<<< orphan*/  FileMFTIndex; TYPE_19__* pRecord; } ;
+struct TYPE_24__ {int FileMFTIndex; TYPE_19__* pRecord; } ;
 struct TYPE_22__ {scalar_t__ IsNonResident; } ;
-typedef  int /*<<< orphan*/  RTL_BITMAP ;
-typedef  int* PULONGLONG ;
-typedef  int* PULONG ;
-typedef  int /*<<< orphan*/  PUCHAR ;
-typedef  TYPE_2__* PNTFS_ATTR_CONTEXT ;
-typedef  int /*<<< orphan*/  PFILE_RECORD_HEADER ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_4__ LARGE_INTEGER ;
+typedef int RTL_BITMAP ;
+typedef int* PULONGLONG ;
+typedef int* PULONG ;
+typedef int PUCHAR ;
+typedef TYPE_2__* PNTFS_ATTR_CONTEXT ;
+typedef int PFILE_RECORD_HEADER ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
+typedef int PCHAR ;
+typedef int NTSTATUS ;
+typedef TYPE_4__ LARGE_INTEGER ;
 
-/* Variables and functions */
- int ALIGN_UP (int,int /*<<< orphan*/ ) ; 
- scalar_t__ ALIGN_UP_BY (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ATTR_RECORD_ALIGNMENT ; 
- int /*<<< orphan*/  AttributeBitmap ; 
- int AttributeDataLength (TYPE_19__*) ; 
- int /*<<< orphan*/  DPRINT (char*,int) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FindAttribute (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,TYPE_2__**,int*) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  ReadAttribute (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_2__*) ; 
- int /*<<< orphan*/  RtlInitializeBitMap (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  RtlSetBits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  RtlZeroMemory (int*,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  SetNonResidentAttributeDataLength (TYPE_3__*,TYPE_2__*,int,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  SetResidentAttributeDataLength (TYPE_3__*,TYPE_2__*,int,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  TAG_NTFS ; 
- int /*<<< orphan*/  UpdateFileRecord (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteAttribute (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int,int*,int /*<<< orphan*/ ) ; 
+
+ int ALIGN_UP (int,int ) ;
+ scalar_t__ ALIGN_UP_BY (int ,int) ;
+ int ATTR_RECORD_ALIGNMENT ;
+ int AttributeBitmap ;
+ int AttributeDataLength (TYPE_19__*) ;
+ int DPRINT (char*,int) ;
+ int DPRINT1 (char*,...) ;
+ int * ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePoolWithTag (int *,int ) ;
+ int FindAttribute (TYPE_3__*,int ,int ,char*,int,TYPE_2__**,int*) ;
+ int NT_SUCCESS (int ) ;
+ int NonPagedPool ;
+ int ReadAttribute (TYPE_3__*,TYPE_2__*,int ,int ,int) ;
+ int ReleaseAttributeContext (TYPE_2__*) ;
+ int RtlInitializeBitMap (int *,int*,int) ;
+ int RtlSetBits (int *,int,int) ;
+ int RtlZeroMemory (int*,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_NOT_IMPLEMENTED ;
+ int SetNonResidentAttributeDataLength (TYPE_3__*,TYPE_2__*,int,int ,TYPE_4__*) ;
+ int SetResidentAttributeDataLength (TYPE_3__*,TYPE_2__*,int,int ,TYPE_4__*) ;
+ int TAG_NTFS ;
+ int UpdateFileRecord (TYPE_3__*,int ,int ) ;
+ int WriteAttribute (TYPE_3__*,TYPE_2__*,int ,int const,int,int*,int ) ;
 
 NTSTATUS
 AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
@@ -87,10 +87,10 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
             IndexAllocationOffset,
             NewVCN);
 
-    // Get the length of the attribute allocation
+
     IndexAllocationLength = AttributeDataLength(IndexAllocationCtx->pRecord);
 
-    // Find the bitmap attribute for the index
+
     Status = FindAttribute(DeviceExt,
                            FileRecord,
                            AttributeBitmap,
@@ -104,24 +104,24 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
         return STATUS_NOT_IMPLEMENTED;
     }
 
-    // Get the length of the bitmap attribute
+
     BitmapLength = AttributeDataLength(BitmapCtx->pRecord);
 
     NextNodeNumber = IndexAllocationLength / DeviceExt->NtfsInfo.BytesPerIndexRecord;
 
-    // TODO: Find unused allocation in bitmap and use that space first
 
-    // Add another bit to bitmap
 
-    // See how many bytes we need to store the amount of bits we'll have
+
+
+
     BytesNeeded = NextNodeNumber / 8;
     BytesNeeded++;
 
-    // Windows seems to allocate the bitmap in 8-byte chunks to keep any bytes from being wasted on padding
+
     BytesNeeded = ALIGN_UP(BytesNeeded, ATTR_RECORD_ALIGNMENT);
 
-    // Allocate memory for the bitmap, including some padding; RtlInitializeBitmap() wants a pointer 
-    // that's ULONG-aligned, and it wants the size of the memory allocated for it to be a ULONG-multiple.
+
+
     BitmapMem = ExAllocatePoolWithTag(NonPagedPool, BytesNeeded + sizeof(ULONG), TAG_NTFS);
     if (!BitmapMem)
     {
@@ -129,22 +129,22 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
         ReleaseAttributeContext(BitmapCtx);
         return STATUS_INSUFFICIENT_RESOURCES;
     }
-    // RtlInitializeBitmap() wants a pointer that's ULONG-aligned.
+
     BitmapPtr = (PULONG)ALIGN_UP_BY((ULONG_PTR)BitmapMem, sizeof(ULONG));
 
     RtlZeroMemory(BitmapPtr, BytesNeeded);
 
-    // Read the existing bitmap data
+
     Status = ReadAttribute(DeviceExt, BitmapCtx, 0, (PCHAR)BitmapPtr, BitmapLength);
 
-    // Initialize bitmap
+
     RtlInitializeBitMap(&Bitmap, BitmapPtr, NextNodeNumber);
 
-    // Do we need to enlarge the bitmap?
+
     if (BytesNeeded > BitmapLength)
     {
-        // TODO: handle synchronization issues that could occur from changing the directory's file record
-        // Change bitmap size
+
+
         DataSize.QuadPart = BytesNeeded;
         if (BitmapCtx->pRecord->IsNonResident)
         {
@@ -170,7 +170,7 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
         }
     }
 
-    // Enlarge Index Allocation attribute
+
     DataSize.QuadPart = IndexAllocationLength + IndexBufferSize;
     Status = SetNonResidentAttributeDataLength(DeviceExt,
                                                IndexAllocationCtx,
@@ -184,7 +184,7 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
         return Status;
     }
 
-    // Update file record on disk
+
     Status = UpdateFileRecord(DeviceExt, IndexAllocationCtx->FileMFTIndex, FileRecord);
     if (!NT_SUCCESS(Status))
     {
@@ -193,10 +193,10 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
         return Status;
     }
 
-    // Set the bit for the new index record
+
     RtlSetBits(&Bitmap, NextNodeNumber, 1);
-  
-    // Write the new bitmap attribute
+
+
     Status = WriteAttribute(DeviceExt,
                             BitmapCtx,
                             0,
@@ -209,7 +209,7 @@ AllocateIndexNode(PDEVICE_EXTENSION DeviceExt,
         DPRINT1("ERROR: Unable to write to $I30 bitmap attribute!\n");
     }
 
-    // Calculate VCN of new node number
+
     *NewVCN = NextNodeNumber * (IndexBufferSize / DeviceExt->NtfsInfo.BytesPerCluster);
 
     DPRINT("New VCN: %I64u\n", *NewVCN);

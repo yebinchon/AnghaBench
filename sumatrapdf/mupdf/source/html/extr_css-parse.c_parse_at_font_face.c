@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lexbuf {int /*<<< orphan*/  pool; int /*<<< orphan*/  ctx; } ;
-typedef  int /*<<< orphan*/  fz_css_selector ;
-typedef  int /*<<< orphan*/  fz_css_rule ;
-typedef  int /*<<< orphan*/  fz_css_property ;
 
-/* Variables and functions */
- int /*<<< orphan*/  expect (struct lexbuf*,char) ; 
- int /*<<< orphan*/ * fz_new_css_rule (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fz_new_css_selector (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * parse_declaration_list (struct lexbuf*) ; 
- int /*<<< orphan*/  white (struct lexbuf*) ; 
+
+
+
+struct lexbuf {int pool; int ctx; } ;
+typedef int fz_css_selector ;
+typedef int fz_css_rule ;
+typedef int fz_css_property ;
+
+
+ int expect (struct lexbuf*,char) ;
+ int * fz_new_css_rule (int ,int ,int *,int *) ;
+ int * fz_new_css_selector (int ,int ,char*) ;
+ int * parse_declaration_list (struct lexbuf*) ;
+ int white (struct lexbuf*) ;
 
 __attribute__((used)) static fz_css_rule *parse_at_font_face(struct lexbuf *buf)
 {
-	fz_css_selector *s = NULL;
-	fz_css_property *p = NULL;
+ fz_css_selector *s = ((void*)0);
+ fz_css_property *p = ((void*)0);
 
-	white(buf);
-	expect(buf, '{');
-	p = parse_declaration_list(buf);
-	expect(buf, '}');
-	white(buf);
+ white(buf);
+ expect(buf, '{');
+ p = parse_declaration_list(buf);
+ expect(buf, '}');
+ white(buf);
 
-	s = fz_new_css_selector(buf->ctx, buf->pool, "@font-face");
-	return fz_new_css_rule(buf->ctx, buf->pool, s, p);
+ s = fz_new_css_selector(buf->ctx, buf->pool, "@font-face");
+ return fz_new_css_rule(buf->ctx, buf->pool, s, p);
 }

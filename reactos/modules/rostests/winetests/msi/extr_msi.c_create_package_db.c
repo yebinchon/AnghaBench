@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  char* LPSTR ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- scalar_t__ MsiDatabaseCommit (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ run_query (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  set_summary_info (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef char* LPSTR ;
+typedef char CHAR ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MAX_PATH ;
+ int MSIDBOPEN_CREATE ;
+ scalar_t__ MsiDatabaseCommit (int ) ;
+ scalar_t__ MsiOpenDatabaseW (int ,int ,int *) ;
+ int msifile ;
+ int msifileW ;
+ int ok (int,char*) ;
+ scalar_t__ run_query (int ,char*) ;
+ int set_summary_info (int ,char*) ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static MSIHANDLE create_package_db(LPSTR prodcode)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static MSIHANDLE create_package_db(LPSTR prodcode)
 
     DeleteFileA(msifile);
 
-    /* create an empty database */
+
     res = MsiOpenDatabaseW(msifileW, MSIDBOPEN_CREATE, &hdb);
     ok( res == ERROR_SUCCESS , "Failed to create database\n" );
     if (res != ERROR_SUCCESS)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WORD ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ WORD ;
 struct TYPE_12__ {int NumberOfNamedEntries; int NumberOfIdEntries; } ;
 struct TYPE_10__ {scalar_t__ Id; } ;
 struct TYPE_8__ {int OffsetToDirectory; } ;
 struct TYPE_9__ {TYPE_1__ s2; } ;
 struct TYPE_11__ {TYPE_3__ u; TYPE_2__ u2; } ;
-typedef  TYPE_4__ IMAGE_RESOURCE_DIRECTORY_ENTRY ;
-typedef  TYPE_5__ IMAGE_RESOURCE_DIRECTORY ;
+typedef TYPE_4__ IMAGE_RESOURCE_DIRECTORY_ENTRY ;
+typedef TYPE_5__ IMAGE_RESOURCE_DIRECTORY ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_by_id( const IMAGE_RESOURCE_DIRECTORY *dir,
                                                          WORD id, const void *root )
@@ -43,5 +43,5 @@ __attribute__((used)) static const IMAGE_RESOURCE_DIRECTORY *find_entry_by_id( c
         if (entry[pos].u.Id > id) max = pos - 1;
         else min = pos + 1;
     }
-    return NULL;
+    return ((void*)0);
 }

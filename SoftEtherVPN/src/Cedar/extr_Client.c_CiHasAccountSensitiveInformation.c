@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* ClientAuth; } ;
 struct TYPE_6__ {scalar_t__ AuthType; } ;
-typedef  TYPE_2__ RPC_CLIENT_CREATE_ACCOUNT ;
-typedef  int /*<<< orphan*/  BUF ;
+typedef TYPE_2__ RPC_CLIENT_CREATE_ACCOUNT ;
+typedef int BUF ;
 
-/* Variables and functions */
- scalar_t__ CLIENT_AUTHTYPE_PASSWORD ; 
- scalar_t__ CLIENT_AUTHTYPE_PLAIN_PASSWORD ; 
- TYPE_2__* CiCfgToAccount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CiFreeClientCreateAccount (TYPE_2__*) ; 
- int /*<<< orphan*/  Free (TYPE_2__*) ; 
+
+ scalar_t__ CLIENT_AUTHTYPE_PASSWORD ;
+ scalar_t__ CLIENT_AUTHTYPE_PLAIN_PASSWORD ;
+ TYPE_2__* CiCfgToAccount (int *) ;
+ int CiFreeClientCreateAccount (TYPE_2__*) ;
+ int Free (TYPE_2__*) ;
 
 bool CiHasAccountSensitiveInformation(BUF *b)
 {
-	RPC_CLIENT_CREATE_ACCOUNT *a;
-	bool ret = false;
-	// Validate arguments
-	if (b == NULL)
-	{
-		return false;
-	}
+ RPC_CLIENT_CREATE_ACCOUNT *a;
+ bool ret = 0;
 
-	a = CiCfgToAccount(b);
-	if (a == NULL)
-	{
-		return false;
-	}
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (a->ClientAuth->AuthType == CLIENT_AUTHTYPE_PASSWORD)
-	{
-		ret = true;
-	}
-	else if (a->ClientAuth->AuthType == CLIENT_AUTHTYPE_PLAIN_PASSWORD)
-	{
-		ret = true;
-	}
+ a = CiCfgToAccount(b);
+ if (a == ((void*)0))
+ {
+  return 0;
+ }
 
-	CiFreeClientCreateAccount(a);
-	Free(a);
+ if (a->ClientAuth->AuthType == CLIENT_AUTHTYPE_PASSWORD)
+ {
+  ret = 1;
+ }
+ else if (a->ClientAuth->AuthType == CLIENT_AUTHTYPE_PLAIN_PASSWORD)
+ {
+  ret = 1;
+ }
 
-	return ret;
+ CiFreeClientCreateAccount(a);
+ Free(a);
+
+ return ret;
 }

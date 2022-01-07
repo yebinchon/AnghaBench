@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lastFTPCmdResultLL; int /*<<< orphan*/  ctrlSrl; int /*<<< orphan*/ * startingWorkingDirectory; int /*<<< orphan*/ * buf; int /*<<< orphan*/  bufSize; } ;
-typedef  TYPE_1__* FTPCIPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DisposeLineListContents (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DisposeSReadlineInfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lastFTPCmdResultLL; int ctrlSrl; int * startingWorkingDirectory; int * buf; int bufSize; } ;
+typedef TYPE_1__* FTPCIPtr ;
+
+
+ int DisposeLineListContents (int *) ;
+ int DisposeSReadlineInfo (int *) ;
+ int free (int *) ;
+ int memset (int *,int ,int ) ;
 
 __attribute__((used)) static void
 FTPDeallocateHost(const FTPCIPtr cip)
 {
-	/* Requires the cip->bufSize field set,
-	 * and the cip->buf set if the
-	 * buffer is allocated.
-	 */
-	if (cip->buf != NULL) {
-		(void) memset(cip->buf, 0, cip->bufSize);
-		free(cip->buf);
-		cip->buf = NULL;
-	}
 
-	if (cip->startingWorkingDirectory != NULL) {
-		free(cip->startingWorkingDirectory);
-		cip->startingWorkingDirectory = NULL;
-	}
 
-#if USE_SIO
-	DisposeSReadlineInfo(&cip->ctrlSrl);
-#endif
-	DisposeLineListContents(&cip->lastFTPCmdResultLL);
+
+
+ if (cip->buf != ((void*)0)) {
+  (void) memset(cip->buf, 0, cip->bufSize);
+  free(cip->buf);
+  cip->buf = ((void*)0);
+ }
+
+ if (cip->startingWorkingDirectory != ((void*)0)) {
+  free(cip->startingWorkingDirectory);
+  cip->startingWorkingDirectory = ((void*)0);
+ }
+
+
+
+
+ DisposeLineListContents(&cip->lastFTPCmdResultLL);
 }

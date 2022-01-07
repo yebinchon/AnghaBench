@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  UID ;
-struct TYPE_2__ {int /*<<< orphan*/  structural_components_count; int /*<<< orphan*/  structural_components_refs; int /*<<< orphan*/  origin; int /*<<< orphan*/  data_definition_ul; int /*<<< orphan*/  duration; } ;
-typedef  TYPE_1__ MXFSequence ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int mxf_read_strong_ref_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int UID ;
+struct TYPE_2__ {int structural_components_count; int structural_components_refs; int origin; int data_definition_ul; int duration; } ;
+typedef TYPE_1__ MXFSequence ;
+typedef int AVIOContext ;
+
+
+ int avio_r8 (int *) ;
+ int avio_rb64 (int *) ;
+ int avio_read (int *,int ,int) ;
+ int mxf_read_strong_ref_array (int *,int *,int *) ;
 
 __attribute__((used)) static int mxf_read_sequence(void *arg, AVIOContext *pb, int tag, int size, UID uid, int64_t klv_offset)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sc25519 ;
-typedef  int /*<<< orphan*/  ge25519 ;
 
-/* Variables and functions */
- int crypto_hash_sha512_BYTES ; 
- int crypto_verify_32 (unsigned char const*,unsigned char*) ; 
- int /*<<< orphan*/  ge25519_base ; 
- int /*<<< orphan*/  ge25519_double_scalarmult_vartime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_pack (unsigned char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ge25519_unpackneg_vartime (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  get_hram (unsigned char*,unsigned char const*,unsigned char const*,unsigned char*,unsigned long long) ; 
- int /*<<< orphan*/  sc25519_from32bytes (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  sc25519_from64bytes (int /*<<< orphan*/ *,unsigned char*) ; 
+
+
+
+typedef int sc25519 ;
+typedef int ge25519 ;
+
+
+ int crypto_hash_sha512_BYTES ;
+ int crypto_verify_32 (unsigned char const*,unsigned char*) ;
+ int ge25519_base ;
+ int ge25519_double_scalarmult_vartime (int *,int *,int *,int *,int *) ;
+ int ge25519_pack (unsigned char*,int *) ;
+ scalar_t__ ge25519_unpackneg_vartime (int *,unsigned char const*) ;
+ int get_hram (unsigned char*,unsigned char const*,unsigned char const*,unsigned char*,unsigned long long) ;
+ int sc25519_from32bytes (int *,unsigned char const*) ;
+ int sc25519_from64bytes (int *,unsigned char*) ;
 
 int crypto_sign_ed25519_open(
     unsigned char *m,unsigned long long *mlen,

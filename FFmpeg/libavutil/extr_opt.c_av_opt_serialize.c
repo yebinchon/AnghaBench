@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {scalar_t__ type; int flags; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ AVOption ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  AV_ESCAPE_MODE_BACKSLASH ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_OPT_SERIALIZE_OPT_FLAGS_EXACT ; 
- int AV_OPT_SERIALIZE_SKIP_DEFAULTS ; 
- scalar_t__ AV_OPT_TYPE_CONST ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_bprint_append_data (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  av_bprint_escape (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*) ; 
- int av_opt_get (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ av_opt_is_set_to_default (void*,TYPE_1__ const*) ; 
- TYPE_1__* av_opt_next (void*,TYPE_1__ const*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {scalar_t__ type; int flags; int * name; } ;
+typedef TYPE_1__ AVOption ;
+typedef int AVBPrint ;
+
+
+ int AVERROR (int ) ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int AV_ESCAPE_MODE_BACKSLASH ;
+ int AV_LOG_ERROR ;
+ int AV_OPT_SERIALIZE_OPT_FLAGS_EXACT ;
+ int AV_OPT_SERIALIZE_SKIP_DEFAULTS ;
+ scalar_t__ AV_OPT_TYPE_CONST ;
+ int EINVAL ;
+ int av_bprint_append_data (int *,char const*,int) ;
+ int av_bprint_escape (int *,int *,char const*,int ,int ) ;
+ int av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int,int ) ;
+ int av_freep (int **) ;
+ int av_log (void*,int ,char*) ;
+ int av_opt_get (void*,int *,int ,int **) ;
+ scalar_t__ av_opt_is_set_to_default (void*,TYPE_1__ const*) ;
+ TYPE_1__* av_opt_next (void*,TYPE_1__ const*) ;
 
 int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
                      const char key_val_sep, const char pairs_sep)
 {
-    const AVOption *o = NULL;
+    const AVOption *o = ((void*)0);
     uint8_t *buf;
     AVBPrint bprint;
     int ret, cnt = 0;
@@ -53,7 +53,7 @@ int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
     if (!obj || !buffer)
         return AVERROR(EINVAL);
 
-    *buffer = NULL;
+    *buffer = ((void*)0);
     av_bprint_init(&bprint, 64, AV_BPRINT_SIZE_UNLIMITED);
 
     while (o = av_opt_next(obj, o)) {
@@ -66,7 +66,7 @@ int av_opt_serialize(void *obj, int opt_flags, int flags, char **buffer,
         if (flags & AV_OPT_SERIALIZE_SKIP_DEFAULTS && av_opt_is_set_to_default(obj, o) > 0)
             continue;
         if ((ret = av_opt_get(obj, o->name, 0, &buf)) < 0) {
-            av_bprint_finalize(&bprint, NULL);
+            av_bprint_finalize(&bprint, ((void*)0));
             return ret;
         }
         if (buf) {

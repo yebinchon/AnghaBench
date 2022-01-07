@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HASHINFO ;
-typedef  int /*<<< orphan*/  DB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DB_HASH ; 
- int /*<<< orphan*/  PERM_SECURE ; 
- int /*<<< orphan*/ * dbopen (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HASHINFO ;
+typedef int DB ;
+
+
+ int DB_HASH ;
+ int PERM_SECURE ;
+ int * dbopen (char*,int,int ,int ,int *) ;
 
 __attribute__((used)) static DB *
 open_db(char *path, int flags)
 {
-	extern HASHINFO openinfo;
+ extern HASHINFO openinfo;
 
-	return(dbopen(path, flags, PERM_SECURE, DB_HASH, &openinfo));
+ return(dbopen(path, flags, PERM_SECURE, DB_HASH, &openinfo));
 }

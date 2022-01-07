@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TCSANOW ; 
- int /*<<< orphan*/  oldtty ; 
- scalar_t__ restore_tty ; 
- int /*<<< orphan*/  tcsetattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int TCSANOW ;
+ int oldtty ;
+ scalar_t__ restore_tty ;
+ int tcsetattr (int ,int ,int *) ;
 
 __attribute__((used)) static void term_exit_sigsafe(void)
 {
-#if HAVE_TERMIOS_H
-    if(restore_tty)
-        tcsetattr (0, TCSANOW, &oldtty);
-#endif
+
+
+
+
 }

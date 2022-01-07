@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parFmt ;
-typedef  int /*<<< orphan*/  charFmt ;
-typedef  char WCHAR ;
-struct TYPE_11__ {int cbSize; void* dwEffects; int /*<<< orphan*/  dwMask; } ;
-struct TYPE_10__ {int cbSize; int dxStartIndent; int /*<<< orphan*/  dwMask; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int parFmt ;
+typedef int charFmt ;
+typedef char WCHAR ;
+struct TYPE_11__ {int cbSize; void* dwEffects; int dwMask; } ;
+struct TYPE_10__ {int cbSize; int dxStartIndent; int dwMask; } ;
 struct TYPE_9__ {TYPE_1__* pCertInfo; } ;
-struct TYPE_8__ {int /*<<< orphan*/  NotAfter; int /*<<< orphan*/  NotBefore; } ;
-typedef  TYPE_2__* PCCERT_CONTEXT ;
-typedef  TYPE_3__ PARAFORMAT2 ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_4__ CHARFORMATW ;
+struct TYPE_8__ {int NotAfter; int NotBefore; } ;
+typedef TYPE_2__* PCCERT_CONTEXT ;
+typedef TYPE_3__ PARAFORMAT2 ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef TYPE_4__ CHARFORMATW ;
 
-/* Variables and functions */
- void* CFE_BOLD ; 
- int /*<<< orphan*/  CFM_BOLD ; 
- int /*<<< orphan*/  EM_SETCHARFORMAT ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_CERTIFICATE_NAMES ; 
- int /*<<< orphan*/  IDS_VALID_FROM ; 
- int /*<<< orphan*/  IDS_VALID_TO ; 
- int MY_INDENT ; 
- int /*<<< orphan*/  PFM_STARTINDENT ; 
- int /*<<< orphan*/  SCF_SELECTION ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_date_string_to_control (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_string_resource_to_control (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_string_resource_with_paraformat_to_control (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  add_unformatted_text_to_control (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
+
+ void* CFE_BOLD ;
+ int CFM_BOLD ;
+ int EM_SETCHARFORMAT ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_CERTIFICATE_NAMES ;
+ int IDS_VALID_FROM ;
+ int IDS_VALID_TO ;
+ int MY_INDENT ;
+ int PFM_STARTINDENT ;
+ int SCF_SELECTION ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int add_date_string_to_control (int ,int *) ;
+ int add_string_resource_to_control (int ,int ) ;
+ int add_string_resource_with_paraformat_to_control (int ,int ,TYPE_3__*) ;
+ int add_unformatted_text_to_control (int ,char*,int) ;
+ int memset (TYPE_4__*,int ,int) ;
 
 __attribute__((used)) static void set_cert_validity_period(HWND hwnd, PCCERT_CONTEXT cert)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t USHORT ;
-typedef  int ULONG_PTR ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_7__ {int /*<<< orphan*/  SizeOfHeaders; TYPE_1__* DataDirectory; int /*<<< orphan*/  NumberOfRvaAndSizes; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t USHORT ;
+typedef int ULONG_PTR ;
+typedef scalar_t__ ULONG ;
+struct TYPE_7__ {int SizeOfHeaders; TYPE_1__* DataDirectory; int NumberOfRvaAndSizes; } ;
 struct TYPE_8__ {TYPE_2__ OptionalHeader; } ;
-struct TYPE_6__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  VirtualAddress; } ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  scalar_t__* PULONG ;
-typedef  TYPE_3__* PIMAGE_NT_HEADERS ;
-typedef  scalar_t__ BOOLEAN ;
+struct TYPE_6__ {int Size; int VirtualAddress; } ;
+typedef int * PVOID ;
+typedef scalar_t__* PULONG ;
+typedef TYPE_3__* PIMAGE_NT_HEADERS ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- TYPE_3__* RtlImageNtHeader (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RtlImageRvaToVa (TYPE_3__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ SWAPD (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FALSE ;
+ TYPE_3__* RtlImageNtHeader (int *) ;
+ int * RtlImageRvaToVa (TYPE_3__*,int *,scalar_t__,int *) ;
+ scalar_t__ SWAPD (int ) ;
 
 PVOID
 __RtlImageDirectoryEntryToData(
@@ -40,7 +40,7 @@ __RtlImageDirectoryEntryToData(
     PIMAGE_NT_HEADERS NtHeader;
     ULONG Va;
 
-    /* Magic flag for non-mapped images. */
+
     if ((ULONG_PTR)BaseAddress & 1)
     {
         BaseAddress = (PVOID)((ULONG_PTR)BaseAddress & ~1);
@@ -48,21 +48,21 @@ __RtlImageDirectoryEntryToData(
     }
 
     NtHeader = RtlImageNtHeader(BaseAddress);
-    if (NtHeader == NULL)
-        return NULL;
+    if (NtHeader == ((void*)0))
+        return ((void*)0);
 
     if (Directory >= SWAPD(NtHeader->OptionalHeader.NumberOfRvaAndSizes))
-        return NULL;
+        return ((void*)0);
 
     Va = SWAPD(NtHeader->OptionalHeader.DataDirectory[Directory].VirtualAddress);
     if (Va == 0)
-        return NULL;
+        return ((void*)0);
 
     *Size = SWAPD(NtHeader->OptionalHeader.DataDirectory[Directory].Size);
 
     if (MappedAsImage || Va < SWAPD(NtHeader->OptionalHeader.SizeOfHeaders))
         return (PVOID)((ULONG_PTR)BaseAddress + Va);
 
-    /* Image mapped as ordinary file, we must find raw pointer */
-    return RtlImageRvaToVa(NtHeader, BaseAddress, Va, NULL);
+
+    return RtlImageRvaToVa(NtHeader, BaseAddress, Va, ((void*)0));
 }

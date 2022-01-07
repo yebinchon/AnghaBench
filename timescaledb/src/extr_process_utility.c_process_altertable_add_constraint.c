@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  main_table_relid; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_1__ Hypertable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  foreach_chunk (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_relation_constraint_oid (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  process_add_constraint_chunk ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int main_table_relid; } ;
+typedef int Oid ;
+typedef TYPE_1__ Hypertable ;
+
+
+ int Assert (int ) ;
+ int foreach_chunk (TYPE_1__*,int ,int *) ;
+ int get_relation_constraint_oid (int ,char const*,int) ;
+ int process_add_constraint_chunk ;
 
 __attribute__((used)) static void
 process_altertable_add_constraint(Hypertable *ht, const char *constraint_name)
 {
-	Oid hypertable_constraint_oid =
-		get_relation_constraint_oid(ht->main_table_relid, constraint_name, false);
+ Oid hypertable_constraint_oid =
+  get_relation_constraint_oid(ht->main_table_relid, constraint_name, 0);
 
-	Assert(constraint_name != NULL);
+ Assert(constraint_name != ((void*)0));
 
-	foreach_chunk(ht, process_add_constraint_chunk, &hypertable_constraint_oid);
+ foreach_chunk(ht, process_add_constraint_chunk, &hypertable_constraint_oid);
 }

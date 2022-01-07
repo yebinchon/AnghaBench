@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  lfUnderline; } ;
-struct TYPE_10__ {int /*<<< orphan*/  Self; int /*<<< orphan*/  BreakChar; int /*<<< orphan*/ * LinkFont; int /*<<< orphan*/  Font; } ;
-struct TYPE_9__ {int /*<<< orphan*/  tmBreakChar; } ;
-typedef  TYPE_1__ TEXTMETRICW ;
-typedef  TYPE_2__ SYSLINK_INFO ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_3__ LOGFONTW ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateFontIndirectW (TYPE_3__*) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ GetClientRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- scalar_t__ GetObjectW (int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- scalar_t__ GetTextMetricsW (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int RDW_INVALIDATE ; 
- int RDW_UPDATENOW ; 
- int /*<<< orphan*/  RedrawWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYSLINK_Render (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int lfUnderline; } ;
+struct TYPE_10__ {int Self; int BreakChar; int * LinkFont; int Font; } ;
+struct TYPE_9__ {int tmBreakChar; } ;
+typedef TYPE_1__ TEXTMETRICW ;
+typedef TYPE_2__ SYSLINK_INFO ;
+typedef int RECT ;
+typedef TYPE_3__ LOGFONTW ;
+typedef int HFONT ;
+typedef int * HDC ;
+typedef scalar_t__ BOOL ;
+
+
+ int * CreateFontIndirectW (TYPE_3__*) ;
+ int DeleteObject (int *) ;
+ int ERR (char*) ;
+ scalar_t__ GetClientRect (int ,int *) ;
+ int * GetDC (int ) ;
+ scalar_t__ GetObjectW (int ,int,TYPE_3__*) ;
+ scalar_t__ GetTextMetricsW (int *,TYPE_1__*) ;
+ int RDW_INVALIDATE ;
+ int RDW_UPDATENOW ;
+ int RedrawWindow (int ,int *,int *,int) ;
+ int ReleaseDC (int ,int *) ;
+ int SYSLINK_Render (TYPE_2__*,int *,int *) ;
+ int TRUE ;
 
 __attribute__((used)) static HFONT SYSLINK_SetFont (SYSLINK_INFO *infoPtr, HFONT hFont, BOOL bRedraw)
 {
@@ -47,21 +47,21 @@ __attribute__((used)) static HFONT SYSLINK_SetFont (SYSLINK_INFO *infoPtr, HFONT
     RECT rcClient;
     HFONT hOldFont = infoPtr->Font;
     infoPtr->Font = hFont;
-    
-    /* free the underline font */
-    if(infoPtr->LinkFont != NULL)
+
+
+    if(infoPtr->LinkFont != ((void*)0))
     {
         DeleteObject(infoPtr->LinkFont);
-        infoPtr->LinkFont = NULL;
+        infoPtr->LinkFont = ((void*)0);
     }
 
-    /* Render text position and word wrapping in memory */
+
     if (GetClientRect(infoPtr->Self, &rcClient))
     {
         hdc = GetDC(infoPtr->Self);
-        if(hdc != NULL)
+        if(hdc != ((void*)0))
         {
-            /* create a new underline font */
+
             if(GetTextMetricsW(hdc, &tm) &&
                GetObjectW(infoPtr->Font, sizeof(LOGFONTW), &lf))
             {
@@ -78,11 +78,11 @@ __attribute__((used)) static HFONT SYSLINK_SetFont (SYSLINK_INFO *infoPtr, HFONT
             ReleaseDC(infoPtr->Self, hdc);
         }
     }
-    
+
     if(bRedraw)
     {
-        RedrawWindow(infoPtr->Self, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW);
+        RedrawWindow(infoPtr->Self, ((void*)0), ((void*)0), RDW_INVALIDATE | RDW_UPDATENOW);
     }
-    
+
     return hOldFont;
 }

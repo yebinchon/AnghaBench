@@ -1,119 +1,119 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  message; } ;
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  SV ;
-typedef  int /*<<< orphan*/ * SPIPlanPtr ;
-typedef  int /*<<< orphan*/  ResourceOwner ;
-typedef  TYPE_1__* Portal ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  TYPE_2__ ErrorData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginInternalSubTransaction (int /*<<< orphan*/ *) ; 
- TYPE_2__* CopyErrorData () ; 
- int /*<<< orphan*/  CurrentMemoryContext ; 
- int /*<<< orphan*/  CurrentResourceOwner ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  FlushErrorState () ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PG_CATCH () ; 
- int /*<<< orphan*/  PG_END_TRY () ; 
- int /*<<< orphan*/  PG_TRY () ; 
- int /*<<< orphan*/  PinPortal (TYPE_1__*) ; 
- int /*<<< orphan*/  ReleaseCurrentSubTransaction () ; 
- int /*<<< orphan*/  RollbackAndReleaseCurrentSubTransaction () ; 
- TYPE_1__* SPI_cursor_open (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SPI_freeplan (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SPI_prepare (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SPI_result ; 
- int /*<<< orphan*/  SPI_result_code_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_spi_usage_allowed () ; 
- int /*<<< orphan*/  croak_cstr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cstr2sv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pg_verifymbstr (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int message; } ;
+struct TYPE_6__ {int name; } ;
+typedef int SV ;
+typedef int * SPIPlanPtr ;
+typedef int ResourceOwner ;
+typedef TYPE_1__* Portal ;
+typedef int MemoryContext ;
+typedef TYPE_2__ ErrorData ;
+
+
+ int BeginInternalSubTransaction (int *) ;
+ TYPE_2__* CopyErrorData () ;
+ int CurrentMemoryContext ;
+ int CurrentResourceOwner ;
+ int ERROR ;
+ int FlushErrorState () ;
+ int MemoryContextSwitchTo (int ) ;
+ int PG_CATCH () ;
+ int PG_END_TRY () ;
+ int PG_TRY () ;
+ int PinPortal (TYPE_1__*) ;
+ int ReleaseCurrentSubTransaction () ;
+ int RollbackAndReleaseCurrentSubTransaction () ;
+ TYPE_1__* SPI_cursor_open (int *,int *,int *,int *,int) ;
+ int SPI_freeplan (int *) ;
+ int * SPI_prepare (char*,int ,int *) ;
+ int SPI_result ;
+ int SPI_result_code_string (int ) ;
+ int check_spi_usage_allowed () ;
+ int croak_cstr (int ) ;
+ int * cstr2sv (int ) ;
+ int elog (int ,char*,int ) ;
+ int pg_verifymbstr (char*,int ,int) ;
+ int strlen (char*) ;
 
 SV *
 plperl_spi_query(char *query)
 {
-	SV		   *cursor;
+ SV *cursor;
 
-	/*
-	 * Execute the query inside a sub-transaction, so we can cope with errors
-	 * sanely
-	 */
-	MemoryContext oldcontext = CurrentMemoryContext;
-	ResourceOwner oldowner = CurrentResourceOwner;
 
-	check_spi_usage_allowed();
 
-	BeginInternalSubTransaction(NULL);
-	/* Want to run inside function's memory context */
-	MemoryContextSwitchTo(oldcontext);
 
-	PG_TRY();
-	{
-		SPIPlanPtr	plan;
-		Portal		portal;
 
-		/* Make sure the query is validly encoded */
-		pg_verifymbstr(query, strlen(query), false);
+ MemoryContext oldcontext = CurrentMemoryContext;
+ ResourceOwner oldowner = CurrentResourceOwner;
 
-		/* Create a cursor for the query */
-		plan = SPI_prepare(query, 0, NULL);
-		if (plan == NULL)
-			elog(ERROR, "SPI_prepare() failed:%s",
-				 SPI_result_code_string(SPI_result));
+ check_spi_usage_allowed();
 
-		portal = SPI_cursor_open(NULL, plan, NULL, NULL, false);
-		SPI_freeplan(plan);
-		if (portal == NULL)
-			elog(ERROR, "SPI_cursor_open() failed:%s",
-				 SPI_result_code_string(SPI_result));
-		cursor = cstr2sv(portal->name);
+ BeginInternalSubTransaction(((void*)0));
 
-		PinPortal(portal);
+ MemoryContextSwitchTo(oldcontext);
 
-		/* Commit the inner transaction, return to outer xact context */
-		ReleaseCurrentSubTransaction();
-		MemoryContextSwitchTo(oldcontext);
-		CurrentResourceOwner = oldowner;
-	}
-	PG_CATCH();
-	{
-		ErrorData  *edata;
+ PG_TRY();
+ {
+  SPIPlanPtr plan;
+  Portal portal;
 
-		/* Save error info */
-		MemoryContextSwitchTo(oldcontext);
-		edata = CopyErrorData();
-		FlushErrorState();
 
-		/* Abort the inner transaction */
-		RollbackAndReleaseCurrentSubTransaction();
-		MemoryContextSwitchTo(oldcontext);
-		CurrentResourceOwner = oldowner;
+  pg_verifymbstr(query, strlen(query), 0);
 
-		/* Punt the error to Perl */
-		croak_cstr(edata->message);
 
-		/* Can't get here, but keep compiler quiet */
-		return NULL;
-	}
-	PG_END_TRY();
+  plan = SPI_prepare(query, 0, ((void*)0));
+  if (plan == ((void*)0))
+   elog(ERROR, "SPI_prepare() failed:%s",
+     SPI_result_code_string(SPI_result));
 
-	return cursor;
+  portal = SPI_cursor_open(((void*)0), plan, ((void*)0), ((void*)0), 0);
+  SPI_freeplan(plan);
+  if (portal == ((void*)0))
+   elog(ERROR, "SPI_cursor_open() failed:%s",
+     SPI_result_code_string(SPI_result));
+  cursor = cstr2sv(portal->name);
+
+  PinPortal(portal);
+
+
+  ReleaseCurrentSubTransaction();
+  MemoryContextSwitchTo(oldcontext);
+  CurrentResourceOwner = oldowner;
+ }
+ PG_CATCH();
+ {
+  ErrorData *edata;
+
+
+  MemoryContextSwitchTo(oldcontext);
+  edata = CopyErrorData();
+  FlushErrorState();
+
+
+  RollbackAndReleaseCurrentSubTransaction();
+  MemoryContextSwitchTo(oldcontext);
+  CurrentResourceOwner = oldowner;
+
+
+  croak_cstr(edata->message);
+
+
+  return ((void*)0);
+ }
+ PG_END_TRY();
+
+ return cursor;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct scsi_cmnd {unsigned long serial_number; int /*<<< orphan*/  request; int /*<<< orphan*/  lun; int /*<<< orphan*/  target; int /*<<< orphan*/  channel; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct scsi_cmnd {unsigned long serial_number; int request; int lun; int target; int channel; } ;
 struct mscp {scalar_t__ xdir; struct scsi_cmnd* SCpnt; } ;
 struct TYPE_2__ {struct mscp* cp; } ;
 
-/* Variables and functions */
- scalar_t__ DTD_IN ; 
- int FALSE ; 
- TYPE_1__* HD (unsigned int) ; 
- unsigned int TRUE ; 
- unsigned long ULONG_MAX ; 
- int /*<<< orphan*/  YESNO (unsigned int) ; 
- unsigned long blk_rq_pos (int /*<<< orphan*/ ) ; 
- unsigned long blk_rq_sectors (int /*<<< orphan*/ ) ; 
- unsigned int link_statistics ; 
- int /*<<< orphan*/  printk (char*,...) ; 
- int /*<<< orphan*/  sort (unsigned long*,unsigned int*,unsigned int,int) ; 
+
+ scalar_t__ DTD_IN ;
+ int FALSE ;
+ TYPE_1__* HD (unsigned int) ;
+ unsigned int TRUE ;
+ unsigned long ULONG_MAX ;
+ int YESNO (unsigned int) ;
+ unsigned long blk_rq_pos (int ) ;
+ unsigned long blk_rq_sectors (int ) ;
+ unsigned int link_statistics ;
+ int printk (char*,...) ;
+ int sort (unsigned long*,unsigned int*,unsigned int,int) ;
 
 __attribute__((used)) static int reorder(unsigned int j, unsigned long cursec,
                  unsigned int ihdlr, unsigned int il[], unsigned int n_ready) {
@@ -45,8 +45,8 @@ __attribute__((used)) static int reorder(unsigned int j, unsigned long cursec,
    static unsigned long seeksorted = 0, seeknosort = 0;
 
    if (link_statistics && !(++flushcount % link_statistics))
-      printk("fc %d bc %d ic %d oc %d rc %d rs %d sc %d re %d"\
-             " av %ldK as %ldK.\n", flushcount, batchcount, inputcount,
+      printk("fc %d bc %d ic %d oc %d rc %d rs %d sc %d re %d" " av %ldK as %ldK.\n", flushcount, batchcount, inputcount,
+
              ovlcount, readycount, readysorted, sortcount, revcount,
              seeknosort / (readycount + 1),
              seeksorted / (readycount + 1));
@@ -59,9 +59,9 @@ __attribute__((used)) static int reorder(unsigned int j, unsigned long cursec,
       if (!(cpp->xdir == DTD_IN)) input_only = FALSE;
 
       if (blk_rq_pos(SCpnt->request) < minsec)
-	 minsec = blk_rq_pos(SCpnt->request);
+  minsec = blk_rq_pos(SCpnt->request);
       if (blk_rq_pos(SCpnt->request) > maxsec)
-	 maxsec = blk_rq_pos(SCpnt->request);
+  maxsec = blk_rq_pos(SCpnt->request);
 
       sl[n] = blk_rq_pos(SCpnt->request);
       ioseek += blk_rq_sectors(SCpnt->request);
@@ -108,22 +108,8 @@ __attribute__((used)) static int reorder(unsigned int j, unsigned long cursec,
       if (input_only) inputcount++;
       if (overlap) { ovlcount++; seeksorted += iseek / 1024; }
       else seeksorted += (iseek + maxsec - minsec) / 1024;
-      if (rev && !r)     {  revcount++; readysorted += n_ready; }
-      if (!rev && !s)    { sortcount++; readysorted += n_ready; }
+      if (rev && !r) { revcount++; readysorted += n_ready; }
+      if (!rev && !s) { sortcount++; readysorted += n_ready; }
       }
-
-#if defined(DEBUG_LINKED_COMMANDS)
-   if (link_statistics && (overlap || !(flushcount % link_statistics)))
-      for (n = 0; n < n_ready; n++) {
-         k = il[n]; cpp = &HD(j)->cp[k]; SCpnt = cpp->SCpnt;
-         printk("%s %d.%d:%d pid %ld mb %d fc %d nr %d sec %ld ns %u"\
-                " cur %ld s:%c r:%c rev:%c in:%c ov:%c xd %d.\n",
-                (ihdlr ? "ihdlr" : "qcomm"), SCpnt->channel, SCpnt->target,
-                SCpnt->lun, SCpnt->serial_number, k, flushcount, n_ready,
-                blk_rq_pos(SCpnt->request), blk_rq_sectors(SCpnt->request),
-		cursec, YESNO(s), YESNO(r), YESNO(rev), YESNO(input_only),
-                YESNO(overlap), cpp->xdir);
-         }
-#endif
    return overlap;
 }

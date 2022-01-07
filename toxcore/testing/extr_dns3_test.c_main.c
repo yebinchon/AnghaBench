@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  scalar_t__ uint32_t ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_addr; void* sin_family; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef scalar_t__ uint32_t ;
+struct sockaddr_in {int sin_port; int sin_addr; void* sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  string ;
-typedef  int /*<<< orphan*/  sock_t ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_4__ {int /*<<< orphan*/  in_addr; } ;
-struct TYPE_5__ {TYPE_1__ ip4; void* family; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ IP ;
+typedef int string ;
+typedef int sock_t ;
+typedef int buffer ;
+struct TYPE_4__ {int in_addr; } ;
+struct TYPE_5__ {TYPE_1__ ip4; void* family; int member_0; } ;
+typedef TYPE_2__ IP ;
 
-/* Variables and functions */
- void* AF_INET ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int TOX_ADDRESS_SIZE ; 
- int /*<<< orphan*/  addr_resolve_or_parse_ip (char*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ create_packet (char*,char*,int,char) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hex_string_to_bin (char*) ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char rand () ; 
- int recv (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sendto (int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ,struct sockaddr*,size_t) ; 
- int /*<<< orphan*/  sock_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- scalar_t__ tox_decrypt_dns3_TXT (void*,char*,char*,int,scalar_t__) ; 
- void* tox_dns3_new (int /*<<< orphan*/ ) ; 
- int tox_generate_dns3_string (void*,char*,int,scalar_t__*,char*,int) ; 
+
+ void* AF_INET ;
+ int IPPROTO_UDP ;
+ int SOCK_DGRAM ;
+ int TOX_ADDRESS_SIZE ;
+ int addr_resolve_or_parse_ip (char*,TYPE_2__*,int ) ;
+ scalar_t__ create_packet (char*,char*,int,char) ;
+ int exit (int ) ;
+ int hex_string_to_bin (char*) ;
+ int htons (int) ;
+ int memcpy (char*,char*,int) ;
+ int printf (char*,...) ;
+ char rand () ;
+ int recv (int ,char*,int,int ) ;
+ scalar_t__ sendto (int ,char*,scalar_t__,int ,struct sockaddr*,size_t) ;
+ int sock_valid (int ) ;
+ int socket (void*,int ,int ) ;
+ int strlen (char*) ;
+ scalar_t__ tox_decrypt_dns3_TXT (void*,char*,char*,int,scalar_t__) ;
+ void* tox_dns3_new (int ) ;
+ int tox_generate_dns3_string (void*,char*,int,scalar_t__*,char*,int) ;
 
 int main(int argc, char *argv[])
 {
@@ -73,11 +73,11 @@ int main(int argc, char *argv[])
     void *d = tox_dns3_new(hex_string_to_bin(argv[2]));
     unsigned int i;
     uint32_t request_id;
-    /*
-    for (i = 0; i < 255; ++i) {
-        tox_generate_dns3_string(d, string, sizeof(string), &request_id, string, i);
-        printf("%s\n", string);
-    }*/
+
+
+
+
+
     int len = tox_generate_dns3_string(d, string + 1, sizeof(string) - 1, &request_id, (uint8_t *)argv[3], strlen(argv[3]));
 
     if (len == -1)
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
 
     printf("The Tox id for username %s is:\n", argv[3]);
 
-    //unsigned int i;
+
     for (i = 0; i < TOX_ADDRESS_SIZE; ++i) {
         printf("%02hhX", tox_id[i]);
     }

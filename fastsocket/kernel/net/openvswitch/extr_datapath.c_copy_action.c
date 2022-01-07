@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sw_flow_actions {int dummy; } ;
-struct nlattr {int /*<<< orphan*/  nla_len; } ;
+struct nlattr {int nla_len; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR (struct nlattr*) ; 
- int NLA_ALIGN (int /*<<< orphan*/ ) ; 
- int PTR_ERR (struct nlattr*) ; 
- int /*<<< orphan*/  memcpy (struct nlattr*,struct nlattr const*,int) ; 
- struct nlattr* reserve_sfa_size (struct sw_flow_actions**,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ IS_ERR (struct nlattr*) ;
+ int NLA_ALIGN (int ) ;
+ int PTR_ERR (struct nlattr*) ;
+ int memcpy (struct nlattr*,struct nlattr const*,int) ;
+ struct nlattr* reserve_sfa_size (struct sw_flow_actions**,int ) ;
 
 __attribute__((used)) static int copy_action(const struct nlattr *from,
-		       struct sw_flow_actions **sfa)
+         struct sw_flow_actions **sfa)
 {
-	int totlen = NLA_ALIGN(from->nla_len);
-	struct nlattr *to;
+ int totlen = NLA_ALIGN(from->nla_len);
+ struct nlattr *to;
 
-	to = reserve_sfa_size(sfa, from->nla_len);
-	if (IS_ERR(to))
-		return PTR_ERR(to);
+ to = reserve_sfa_size(sfa, from->nla_len);
+ if (IS_ERR(to))
+  return PTR_ERR(to);
 
-	memcpy(to, from, totlen);
-	return 0;
+ memcpy(to, from, totlen);
+ return 0;
 }

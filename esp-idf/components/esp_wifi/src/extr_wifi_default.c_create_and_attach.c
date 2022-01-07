@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * wifi_netif_driver_t ;
-typedef  int /*<<< orphan*/  wifi_interface_t ;
-typedef  int /*<<< orphan*/  esp_netif_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_netif_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * esp_wifi_create_if_driver (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * wifi_netif_driver_t ;
+typedef int wifi_interface_t ;
+typedef int esp_netif_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*) ;
+ int TAG ;
+ int esp_netif_attach (int *,int *) ;
+ int * esp_wifi_create_if_driver (int ) ;
 
 __attribute__((used)) static esp_err_t create_and_attach(wifi_interface_t wifi_if, esp_netif_t* esp_netif)
 {
     wifi_netif_driver_t driver = esp_wifi_create_if_driver(wifi_if);
-    if (driver == NULL) {
+    if (driver == ((void*)0)) {
         ESP_LOGE(TAG, "Failed to create wifi interface handle");
         return ESP_FAIL;
     }

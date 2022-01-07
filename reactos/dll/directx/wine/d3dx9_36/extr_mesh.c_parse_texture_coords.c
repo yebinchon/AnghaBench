@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct mesh_data {int num_vertices; int /*<<< orphan*/  fvf; int /*<<< orphan*/ * tex_coords; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct mesh_data {int num_vertices; int fvf; int * tex_coords; } ;
 struct TYPE_7__ {TYPE_1__* lpVtbl; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* Unlock ) (TYPE_2__*) ;int /*<<< orphan*/  (* Lock ) (TYPE_2__*,int*,void const**) ;} ;
-typedef  int SIZE_T ;
-typedef  TYPE_2__ ID3DXFileData ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_6__ {int (* Unlock ) (TYPE_2__*) ;int (* Lock ) (TYPE_2__*,int*,void const**) ;} ;
+typedef int SIZE_T ;
+typedef TYPE_2__ ID3DXFileData ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DFVF_TEX1 ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,int,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int*,void const**) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*) ; 
+
+ int D3DFVF_TEX1 ;
+ int D3D_OK ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int WARN (char*,int,...) ;
+ int memcpy (int *,int const*,int) ;
+ int stub1 (TYPE_2__*,int*,void const**) ;
+ int stub2 (TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT parse_texture_coords(ID3DXFileData *filedata, struct mesh_data *mesh)
 {
@@ -42,21 +42,10 @@ __attribute__((used)) static HRESULT parse_texture_coords(ID3DXFileData *filedat
     const BYTE *data;
 
     HeapFree(GetProcessHeap(), 0, mesh->tex_coords);
-    mesh->tex_coords = NULL;
+    mesh->tex_coords = ((void*)0);
 
     hr = filedata->lpVtbl->Lock(filedata, &data_size, (const void**)&data);
     if (FAILED(hr)) return hr;
-
-    /* template Coords2d {
-     *     FLOAT u;
-     *     FLOAT v;
-     * }
-     * template MeshTextureCoords {
-     *     DWORD nTextureCoords;
-     *     array Coords2d textureCoords[nTextureCoords];
-     * }
-     */
-
     hr = E_FAIL;
 
     if (data_size < sizeof(DWORD)) {

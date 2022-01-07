@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int GetTextSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- float M_PI ; 
- int /*<<< orphan*/  SetTextAlpha (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  SetTextSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int abs (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int sin (float) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+
+
+typedef int FILE ;
+
+
+ int GetTextSize (int *,int *,int) ;
+ float M_PI ;
+ int SetTextAlpha (int *,int *,int,int) ;
+ int SetTextColor (int *,int *,int,int,int,int) ;
+ int SetTextSize (int *,int *,int,int) ;
+ int abs (int) ;
+ int printf (char*,...) ;
+ int sin (float) ;
+ int sleep (int) ;
+ int usleep (int) ;
 
 void TextTest( FILE *p_cmd, FILE *p_res, int i_overlay ) {
     printf( "Sweeping (text) alpha..." );

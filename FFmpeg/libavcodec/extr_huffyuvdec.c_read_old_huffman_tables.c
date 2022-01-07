@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {int bitstream_bpp; int /*<<< orphan*/ ** bits; int /*<<< orphan*/ ** len; int /*<<< orphan*/ * vlc; } ;
-typedef  TYPE_1__ HYuvContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_BITS ; 
- int /*<<< orphan*/ * classic_add_chroma ; 
- int /*<<< orphan*/ * classic_add_luma ; 
- int /*<<< orphan*/  classic_shift_chroma ; 
- int classic_shift_chroma_table_size ; 
- int /*<<< orphan*/  classic_shift_luma ; 
- int classic_shift_luma_table_size ; 
- int /*<<< orphan*/  ff_free_vlc (int /*<<< orphan*/ *) ; 
- int generate_joint_tables (TYPE_1__*) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int init_vlc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int read_len_table (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_4__ {int bitstream_bpp; int ** bits; int ** len; int * vlc; } ;
+typedef TYPE_1__ HYuvContext ;
+typedef int GetBitContext ;
+
+
+ int VLC_BITS ;
+ int * classic_add_chroma ;
+ int * classic_add_luma ;
+ int classic_shift_chroma ;
+ int classic_shift_chroma_table_size ;
+ int classic_shift_luma ;
+ int classic_shift_luma_table_size ;
+ int ff_free_vlc (int *) ;
+ int generate_joint_tables (TYPE_1__*) ;
+ int init_get_bits (int *,int ,int) ;
+ int init_vlc (int *,int ,int,int *,int,int,int *,int,int,int ) ;
+ int memcpy (int *,int *,int) ;
+ int read_len_table (int *,int *,int) ;
 
 __attribute__((used)) static int read_old_huffman_tables(HYuvContext *s)
 {

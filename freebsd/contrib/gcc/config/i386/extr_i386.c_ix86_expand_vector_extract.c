@@ -1,154 +1,144 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_INT (int) ; 
- int GET_MODE (int /*<<< orphan*/ ) ; 
- int GET_MODE_INNER (int) ; 
- int GET_MODE_SIZE (int) ; 
- int HImode ; 
- int const SFmode ; 
- int const SImode ; 
- int /*<<< orphan*/  TARGET_3DNOW_A ; 
- int /*<<< orphan*/  TARGET_SSE ; 
- int TARGET_SSE2 ; 
-#define  V16QImode 137 
-#define  V2DFmode 136 
-#define  V2DImode 135 
-#define  V2SFmode 134 
-#define  V2SImode 133 
-#define  V4HImode 132 
-#define  V4SFmode 131 
-#define  V4SImode 130 
-#define  V8HImode 129 
-#define  V8QImode 128 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  adjust_address (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  assign_stack_temp (int,int,int) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  gen_lowpart (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int) ; 
- int /*<<< orphan*/  gen_rtvec (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_PARALLEL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_SELECT (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_ZERO_EXTEND (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse2_pshufd_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse2_punpckhdq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse_shufps_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse_unpckhps (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GEN_INT (int) ;
+ int GET_MODE (int ) ;
+ int GET_MODE_INNER (int) ;
+ int GET_MODE_SIZE (int) ;
+ int HImode ;
+ int const SFmode ;
+ int const SImode ;
+ int TARGET_3DNOW_A ;
+ int TARGET_SSE ;
+ int TARGET_SSE2 ;
+ int VOIDmode ;
+ int adjust_address (int ,int,int) ;
+ int assign_stack_temp (int,int,int) ;
+ int emit_insn (int ) ;
+ int emit_move_insn (int ,int ) ;
+ int gcc_unreachable () ;
+ int gen_lowpart (int const,int ) ;
+ int gen_reg_rtx (int) ;
+ int gen_rtvec (int,int ) ;
+ int gen_rtx_PARALLEL (int ,int ) ;
+ int gen_rtx_SET (int ,int ,int ) ;
+ int gen_rtx_VEC_SELECT (int,int ,int ) ;
+ int gen_rtx_ZERO_EXTEND (int const,int ) ;
+ int gen_sse2_pshufd_1 (int ,int ,int ,int ,int ,int ) ;
+ int gen_sse2_punpckhdq (int ,int ,int ) ;
+ int gen_sse_shufps_1 (int ,int ,int ,int ,int ,int ,int ) ;
+ int gen_sse_unpckhps (int ,int ,int ) ;
 
 void
 ix86_expand_vector_extract (bool mmx_ok, rtx target, rtx vec, int elt)
 {
   enum machine_mode mode = GET_MODE (vec);
   enum machine_mode inner_mode = GET_MODE_INNER (mode);
-  bool use_vec_extr = false;
+  bool use_vec_extr = 0;
   rtx tmp;
 
   switch (mode)
     {
-    case V2SImode:
-    case V2SFmode:
+    case 133:
+    case 134:
       if (!mmx_ok)
-	break;
-      /* FALLTHRU */
+ break;
 
-    case V2DFmode:
-    case V2DImode:
-      use_vec_extr = true;
+
+    case 136:
+    case 135:
+      use_vec_extr = 1;
       break;
 
-    case V4SFmode:
+    case 131:
       switch (elt)
-	{
-	case 0:
-	  tmp = vec;
-	  break;
+ {
+ case 0:
+   tmp = vec;
+   break;
 
-	case 1:
-	case 3:
-	  tmp = gen_reg_rtx (mode);
-	  emit_insn (gen_sse_shufps_1 (tmp, vec, vec,
-				       GEN_INT (elt), GEN_INT (elt),
-				       GEN_INT (elt+4), GEN_INT (elt+4)));
-	  break;
+ case 1:
+ case 3:
+   tmp = gen_reg_rtx (mode);
+   emit_insn (gen_sse_shufps_1 (tmp, vec, vec,
+           GEN_INT (elt), GEN_INT (elt),
+           GEN_INT (elt+4), GEN_INT (elt+4)));
+   break;
 
-	case 2:
-	  tmp = gen_reg_rtx (mode);
-	  emit_insn (gen_sse_unpckhps (tmp, vec, vec));
-	  break;
+ case 2:
+   tmp = gen_reg_rtx (mode);
+   emit_insn (gen_sse_unpckhps (tmp, vec, vec));
+   break;
 
-	default:
-	  gcc_unreachable ();
-	}
+ default:
+   gcc_unreachable ();
+ }
       vec = tmp;
-      use_vec_extr = true;
+      use_vec_extr = 1;
       elt = 0;
       break;
 
-    case V4SImode:
+    case 130:
       if (TARGET_SSE2)
-	{
-	  switch (elt)
-	    {
-	    case 0:
-	      tmp = vec;
-	      break;
+ {
+   switch (elt)
+     {
+     case 0:
+       tmp = vec;
+       break;
 
-	    case 1:
-	    case 3:
-	      tmp = gen_reg_rtx (mode);
-	      emit_insn (gen_sse2_pshufd_1 (tmp, vec,
-					    GEN_INT (elt), GEN_INT (elt),
-					    GEN_INT (elt), GEN_INT (elt)));
-	      break;
+     case 1:
+     case 3:
+       tmp = gen_reg_rtx (mode);
+       emit_insn (gen_sse2_pshufd_1 (tmp, vec,
+         GEN_INT (elt), GEN_INT (elt),
+         GEN_INT (elt), GEN_INT (elt)));
+       break;
 
-	    case 2:
-	      tmp = gen_reg_rtx (mode);
-	      emit_insn (gen_sse2_punpckhdq (tmp, vec, vec));
-	      break;
+     case 2:
+       tmp = gen_reg_rtx (mode);
+       emit_insn (gen_sse2_punpckhdq (tmp, vec, vec));
+       break;
 
-	    default:
-	      gcc_unreachable ();
-	    }
-	  vec = tmp;
-	  use_vec_extr = true;
-	  elt = 0;
-	}
+     default:
+       gcc_unreachable ();
+     }
+   vec = tmp;
+   use_vec_extr = 1;
+   elt = 0;
+ }
       else
-	{
-	  /* For SSE1, we have to reuse the V4SF code.  */
-	  ix86_expand_vector_extract (false, gen_lowpart (SFmode, target),
-				      gen_lowpart (V4SFmode, vec), elt);
-	  return;
-	}
+ {
+
+   ix86_expand_vector_extract (0, gen_lowpart (SFmode, target),
+          gen_lowpart (131, vec), elt);
+   return;
+ }
       break;
 
-    case V8HImode:
+    case 129:
       use_vec_extr = TARGET_SSE2;
       break;
-    case V4HImode:
+    case 132:
       use_vec_extr = mmx_ok && (TARGET_SSE || TARGET_3DNOW_A);
       break;
 
-    case V16QImode:
-    case V8QImode:
-      /* ??? Could extract the appropriate HImode element and shift.  */
+    case 137:
+    case 128:
+
     default:
       break;
     }
@@ -158,18 +148,18 @@ ix86_expand_vector_extract (bool mmx_ok, rtx target, rtx vec, int elt)
       tmp = gen_rtx_PARALLEL (VOIDmode, gen_rtvec (1, GEN_INT (elt)));
       tmp = gen_rtx_VEC_SELECT (inner_mode, vec, tmp);
 
-      /* Let the rtl optimizers know about the zero extension performed.  */
+
       if (inner_mode == HImode)
-	{
-	  tmp = gen_rtx_ZERO_EXTEND (SImode, tmp);
-	  target = gen_lowpart (SImode, target);
-	}
+ {
+   tmp = gen_rtx_ZERO_EXTEND (SImode, tmp);
+   target = gen_lowpart (SImode, target);
+ }
 
       emit_insn (gen_rtx_SET (VOIDmode, target, tmp));
     }
   else
     {
-      rtx mem = assign_stack_temp (mode, GET_MODE_SIZE (mode), false);
+      rtx mem = assign_stack_temp (mode, GET_MODE_SIZE (mode), 0);
 
       emit_move_insn (mem, vec);
 

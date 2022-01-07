@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef scalar_t__ UINT ;
 struct TYPE_5__ {scalar_t__ Param; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * InBuf; } ;
-typedef  TYPE_1__ LOCAL_CONSOLE_PARAM ;
-typedef  TYPE_2__ CONSOLE ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_4__ {int * InBuf; } ;
+typedef TYPE_1__ LOCAL_CONSOLE_PARAM ;
+typedef TYPE_2__ CONSOLE ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ CalcUtf8ToUni (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* CfgReadNextLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
- int /*<<< orphan*/  Utf8ToUni (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ZeroMalloc (scalar_t__) ; 
+
+ scalar_t__ CalcUtf8ToUni (int *,int ) ;
+ char* CfgReadNextLine (int *) ;
+ int Free (char*) ;
+ int IsEmptyStr (char*) ;
+ int StrLen (char*) ;
+ int Trim (char*) ;
+ int Utf8ToUni (int *,scalar_t__,int *,int ) ;
+ int * ZeroMalloc (scalar_t__) ;
 
 wchar_t *ConsoleReadNextFromInFile(CONSOLE *c)
 {
-	LOCAL_CONSOLE_PARAM *p;
-	char *str;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return NULL;
-	}
+ LOCAL_CONSOLE_PARAM *p;
+ char *str;
 
-	p = (LOCAL_CONSOLE_PARAM *)c->Param;
+ if (c == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	if (p->InBuf == NULL)
-	{
-		return NULL;
-	}
+ p = (LOCAL_CONSOLE_PARAM *)c->Param;
 
-	while (true)
-	{
-		str = CfgReadNextLine(p->InBuf);
+ if (p->InBuf == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-		if (str == NULL)
-		{
-			return NULL;
-		}
+ while (1)
+ {
+  str = CfgReadNextLine(p->InBuf);
 
-		Trim(str);
+  if (str == ((void*)0))
+  {
+   return ((void*)0);
+  }
 
-		if (IsEmptyStr(str) == false)
-		{
-			UINT size;
-			wchar_t *ret;
+  Trim(str);
 
-			size = CalcUtf8ToUni((BYTE *)str, StrLen(str));
-			ret = ZeroMalloc(size + 32);
-			Utf8ToUni(ret, size, (BYTE *)str, StrLen(str));
+  if (IsEmptyStr(str) == 0)
+  {
+   UINT size;
+   wchar_t *ret;
 
-			Free(str);
+   size = CalcUtf8ToUni((BYTE *)str, StrLen(str));
+   ret = ZeroMalloc(size + 32);
+   Utf8ToUni(ret, size, (BYTE *)str, StrLen(str));
 
-			return ret;
-		}
+   Free(str);
 
-		Free(str);
-	}
+   return ret;
+  }
+
+  Free(str);
+ }
 }

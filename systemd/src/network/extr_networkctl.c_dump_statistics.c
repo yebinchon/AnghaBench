@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Table ;
-struct TYPE_3__ {int /*<<< orphan*/  has_stats; int /*<<< orphan*/  has_stats64; } ;
-typedef  TYPE_1__ LinkInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUMP_STATS_ONE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arg_stats ; 
- int /*<<< orphan*/  collisions ; 
- int /*<<< orphan*/  multicast ; 
- int /*<<< orphan*/  rx_bytes ; 
- int /*<<< orphan*/  rx_dropped ; 
- int /*<<< orphan*/  rx_errors ; 
- int /*<<< orphan*/  rx_packets ; 
- int /*<<< orphan*/  tx_bytes ; 
- int /*<<< orphan*/  tx_dropped ; 
- int /*<<< orphan*/  tx_errors ; 
- int /*<<< orphan*/  tx_packets ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Table ;
+struct TYPE_3__ {int has_stats; int has_stats64; } ;
+typedef TYPE_1__ LinkInfo ;
+
+
+ int DUMP_STATS_ONE (char*,int ) ;
+ int arg_stats ;
+ int collisions ;
+ int multicast ;
+ int rx_bytes ;
+ int rx_dropped ;
+ int rx_errors ;
+ int rx_packets ;
+ int tx_bytes ;
+ int tx_dropped ;
+ int tx_errors ;
+ int tx_packets ;
 
 __attribute__((used)) static int dump_statistics(Table *table, const LinkInfo *info) {
         int r;

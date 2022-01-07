@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct RBasic {int dummy; } ;
 struct TYPE_5__ {TYPE_4__* shared; scalar_t__ capa; } ;
-struct TYPE_6__ {TYPE_1__ aux; scalar_t__ len; int /*<<< orphan*/ * ptr; } ;
+struct TYPE_6__ {TYPE_1__ aux; scalar_t__ len; int * ptr; } ;
 struct TYPE_7__ {TYPE_2__ heap; } ;
 struct RArray {TYPE_3__ as; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-struct TYPE_8__ {int /*<<< orphan*/  refcnt; } ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+struct TYPE_8__ {int refcnt; } ;
 
-/* Variables and functions */
- scalar_t__ ARY_CAPA (struct RArray*) ; 
- scalar_t__ ARY_EMBED_P (struct RArray*) ; 
- scalar_t__ ARY_LEN (struct RArray*) ; 
- int /*<<< orphan*/  ARY_PTR (struct RArray*) ; 
- scalar_t__ ARY_REPLACE_SHARED_MIN ; 
- int /*<<< orphan*/  ARY_SET_LEN (struct RArray*,scalar_t__) ; 
- int /*<<< orphan*/  ARY_SET_SHARED_FLAG (struct RArray*) ; 
- scalar_t__ ARY_SHARED_P (struct RArray*) ; 
- int /*<<< orphan*/  ARY_UNSET_EMBED_FLAG (struct RArray*) ; 
- int /*<<< orphan*/  ARY_UNSET_SHARED_FLAG (struct RArray*) ; 
- int /*<<< orphan*/  array_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ary_expand_capa (int /*<<< orphan*/ *,struct RArray*,scalar_t__) ; 
- int /*<<< orphan*/  ary_make_shared (int /*<<< orphan*/ *,struct RArray*) ; 
- int /*<<< orphan*/  ary_modify_check (int /*<<< orphan*/ *,struct RArray*) ; 
- int /*<<< orphan*/  mrb_ary_decref (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  mrb_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_frozen_p (struct RArray*) ; 
- int /*<<< orphan*/  mrb_write_barrier (int /*<<< orphan*/ *,struct RBasic*) ; 
+
+ scalar_t__ ARY_CAPA (struct RArray*) ;
+ scalar_t__ ARY_EMBED_P (struct RArray*) ;
+ scalar_t__ ARY_LEN (struct RArray*) ;
+ int ARY_PTR (struct RArray*) ;
+ scalar_t__ ARY_REPLACE_SHARED_MIN ;
+ int ARY_SET_LEN (struct RArray*,scalar_t__) ;
+ int ARY_SET_SHARED_FLAG (struct RArray*) ;
+ scalar_t__ ARY_SHARED_P (struct RArray*) ;
+ int ARY_UNSET_EMBED_FLAG (struct RArray*) ;
+ int ARY_UNSET_SHARED_FLAG (struct RArray*) ;
+ int array_copy (int ,int ,scalar_t__) ;
+ int ary_expand_capa (int *,struct RArray*,scalar_t__) ;
+ int ary_make_shared (int *,struct RArray*) ;
+ int ary_modify_check (int *,struct RArray*) ;
+ int mrb_ary_decref (int *,TYPE_4__*) ;
+ int mrb_free (int *,int *) ;
+ int mrb_frozen_p (struct RArray*) ;
+ int mrb_write_barrier (int *,struct RBasic*) ;
 
 __attribute__((used)) static void
 ary_replace(mrb_state *mrb, struct RArray *a, struct RArray *b)
@@ -54,7 +54,7 @@ ary_replace(mrb_state *mrb, struct RArray *a, struct RArray *b)
     mrb_ary_decref(mrb, a->as.heap.aux.shared);
     a->as.heap.aux.capa = 0;
     a->as.heap.len = 0;
-    a->as.heap.ptr = NULL;
+    a->as.heap.ptr = ((void*)0);
     ARY_UNSET_SHARED_FLAG(a);
   }
   if (ARY_SHARED_P(b)) {

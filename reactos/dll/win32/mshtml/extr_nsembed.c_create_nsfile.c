@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIFile ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  PRUnichar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_NewLocalFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIFile ;
+typedef int nsAString ;
+typedef int PRUnichar ;
+
+
+ int FALSE ;
+ scalar_t__ NS_FAILED (int ) ;
+ int NS_NewLocalFile (int *,int ,int **) ;
+ int WARN (char*,int ) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
 
 nsresult create_nsfile(const PRUnichar *path, nsIFile **ret)
 {

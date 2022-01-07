@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CY_SPI_WR_OP ; 
- int cyttsp_spi_xfer (struct device*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+ int CY_SPI_WR_OP ;
+ int cyttsp_spi_xfer (struct device*,int *,int ,int ,void*,int ) ;
 
 __attribute__((used)) static int cyttsp_spi_write_block_data(struct device *dev, u8 *xfer_buf,
-				       u16 addr, u8 length, const void *data)
+           u16 addr, u8 length, const void *data)
 {
-	return cyttsp_spi_xfer(dev, xfer_buf, CY_SPI_WR_OP, addr, (void *)data,
-			length);
+ return cyttsp_spi_xfer(dev, xfer_buf, CY_SPI_WR_OP, addr, (void *)data,
+   length);
 }

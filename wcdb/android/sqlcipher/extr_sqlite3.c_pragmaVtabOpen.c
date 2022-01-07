@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * pVtab; } ;
-typedef  TYPE_1__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * pVtab; } ;
+typedef TYPE_1__ sqlite3_vtab_cursor ;
+typedef int sqlite3_vtab ;
 struct TYPE_6__ {TYPE_1__ base; } ;
-typedef  TYPE_2__ PragmaVtabCursor ;
+typedef TYPE_2__ PragmaVtabCursor ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_malloc (int) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memset (TYPE_2__*,int ,int) ;
+ scalar_t__ sqlite3_malloc (int) ;
 
 __attribute__((used)) static int pragmaVtabOpen(sqlite3_vtab *pVtab, sqlite3_vtab_cursor **ppCursor){
   PragmaVtabCursor *pCsr;

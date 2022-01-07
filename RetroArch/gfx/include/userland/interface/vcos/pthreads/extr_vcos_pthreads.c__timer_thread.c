@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  orig_context; int /*<<< orphan*/  (* orig_expiration_routine ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  expires; int /*<<< orphan*/  settings_changed; int /*<<< orphan*/  quit; } ;
-typedef  TYPE_1__ VCOS_TIMER_T ;
+struct TYPE_2__ {int lock; int orig_context; int (* orig_expiration_routine ) (int ) ;int expires; int settings_changed; int quit; } ;
+typedef TYPE_1__ VCOS_TIMER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- scalar_t__ _timespec_is_larger (int /*<<< orphan*/ *,struct timespec*) ; 
- scalar_t__ _timespec_is_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _timespec_set_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- int /*<<< orphan*/  pthread_cond_timedwait (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int CLOCK_REALTIME ;
+ scalar_t__ _timespec_is_larger (int *,struct timespec*) ;
+ scalar_t__ _timespec_is_zero (int *) ;
+ int _timespec_set_zero (int *) ;
+ int clock_gettime (int ,struct timespec*) ;
+ int pthread_cond_timedwait (int *,int *,int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void* _timer_thread(void *arg)
 {
@@ -36,24 +36,24 @@ __attribute__((used)) static void* _timer_thread(void *arg)
    {
       struct timespec now;
 
-      /* Wait until next expiry time, or until timer's settings are changed */
+
       if (_timespec_is_zero(&timer->expires))
          pthread_cond_wait(&timer->settings_changed, &timer->lock);
       else
          pthread_cond_timedwait(&timer->settings_changed, &timer->lock, &timer->expires);
 
-      /* See if the timer has expired - reloop if it didn't */
+
       clock_gettime(CLOCK_REALTIME, &now);
       if (_timespec_is_zero(&timer->expires) || _timespec_is_larger(&timer->expires, &now))
          continue;
 
-      /* The timer has expired. Clear the expiry time and call the
-       * expiration routine
-       */
+
+
+
       _timespec_set_zero(&timer->expires);
       timer->orig_expiration_routine(timer->orig_context);
    }
    pthread_mutex_unlock(&timer->lock);
 
-   return NULL;
+   return ((void*)0);
 }

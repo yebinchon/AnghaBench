@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_8__ {int /*<<< orphan*/  path; } ;
-struct TYPE_7__ {int /*<<< orphan*/  path; } ;
-struct TYPE_9__ {int /*<<< orphan*/  mmap; TYPE_2__ system_storage; TYPE_1__ runtime_storage; int /*<<< orphan*/  hostname_field; int /*<<< orphan*/  cgroup_root; int /*<<< orphan*/  tty_path; int /*<<< orphan*/  buffer; scalar_t__ kernel_seqnum; scalar_t__ ratelimit; int /*<<< orphan*/  notify_fd; int /*<<< orphan*/  hostname_fd; int /*<<< orphan*/  audit_fd; int /*<<< orphan*/  dev_kmsg_fd; int /*<<< orphan*/  stdout_fd; int /*<<< orphan*/  native_fd; int /*<<< orphan*/  syslog_fd; int /*<<< orphan*/  event; int /*<<< orphan*/  watchdog_event_source; int /*<<< orphan*/  notify_event_source; int /*<<< orphan*/  hostname_event_source; int /*<<< orphan*/  sigrtmin1_event_source; int /*<<< orphan*/  sigint_event_source; int /*<<< orphan*/  sigterm_event_source; int /*<<< orphan*/  sigusr2_event_source; int /*<<< orphan*/  sigusr1_event_source; int /*<<< orphan*/  sync_event_source; int /*<<< orphan*/  audit_event_source; int /*<<< orphan*/  dev_kmsg_event_source; int /*<<< orphan*/  stdout_event_source; int /*<<< orphan*/  native_event_source; int /*<<< orphan*/  syslog_event_source; int /*<<< orphan*/  varlink_server; int /*<<< orphan*/  user_journals; int /*<<< orphan*/  runtime_journal; int /*<<< orphan*/  system_journal; scalar_t__ stdout_streams; int /*<<< orphan*/  deferred_closes; } ;
-typedef  TYPE_3__ Server ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- int /*<<< orphan*/  client_context_flush_all (TYPE_3__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  journal_file_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  journal_ratelimit_free (scalar_t__) ; 
- int /*<<< orphan*/  mmap_cache_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  munmap (scalar_t__,int) ; 
- int /*<<< orphan*/  ordered_hashmap_free_with_destructor (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free_with_destructor (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  stdout_stream_free (scalar_t__) ; 
- int /*<<< orphan*/  varlink_server_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_8__ {int path; } ;
+struct TYPE_7__ {int path; } ;
+struct TYPE_9__ {int mmap; TYPE_2__ system_storage; TYPE_1__ runtime_storage; int hostname_field; int cgroup_root; int tty_path; int buffer; scalar_t__ kernel_seqnum; scalar_t__ ratelimit; int notify_fd; int hostname_fd; int audit_fd; int dev_kmsg_fd; int stdout_fd; int native_fd; int syslog_fd; int event; int watchdog_event_source; int notify_event_source; int hostname_event_source; int sigrtmin1_event_source; int sigint_event_source; int sigterm_event_source; int sigusr2_event_source; int sigusr1_event_source; int sync_event_source; int audit_event_source; int dev_kmsg_event_source; int stdout_event_source; int native_event_source; int syslog_event_source; int varlink_server; int user_journals; int runtime_journal; int system_journal; scalar_t__ stdout_streams; int deferred_closes; } ;
+typedef TYPE_3__ Server ;
+
+
+ int assert (TYPE_3__*) ;
+ int client_context_flush_all (TYPE_3__*) ;
+ int free (int ) ;
+ int journal_file_close (int ) ;
+ int journal_ratelimit_free (scalar_t__) ;
+ int mmap_cache_unref (int ) ;
+ int munmap (scalar_t__,int) ;
+ int ordered_hashmap_free_with_destructor (int ,int (*) (int )) ;
+ int safe_close (int ) ;
+ int sd_event_source_unref (int ) ;
+ int sd_event_unref (int ) ;
+ int set_free_with_destructor (int ,int (*) (int )) ;
+ int stdout_stream_free (scalar_t__) ;
+ int varlink_server_unref (int ) ;
 
 void server_done(Server *s) {
         assert(s);

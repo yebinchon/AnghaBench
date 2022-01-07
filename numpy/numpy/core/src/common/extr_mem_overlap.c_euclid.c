@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int npy_int64 ;
+
+
+ int assert (int) ;
 
 __attribute__((used)) static void
 euclid(npy_int64 a1, npy_int64 a2, npy_int64 *a_gcd, npy_int64 *gamma, npy_int64 *epsilon)
@@ -28,8 +28,8 @@ euclid(npy_int64 a1, npy_int64 a2, npy_int64 *a_gcd, npy_int64 *gamma, npy_int64
     epsilon1 = 0;
     epsilon2 = 1;
 
-    /* The numbers remain bounded by |a1|, |a2| during
-       the iteration, so no integer overflows */
+
+
     while (1) {
         if (a2 > 0) {
             r = a1/a2;

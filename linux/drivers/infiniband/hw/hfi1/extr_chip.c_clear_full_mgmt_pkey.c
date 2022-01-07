@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hfi1_pportdata {scalar_t__* pkeys; int /*<<< orphan*/  port; int /*<<< orphan*/  dd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HFI1_IB_CFG_PKEYS ; 
- int /*<<< orphan*/  hfi1_event_pkey_change (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hfi1_set_ib_cfg (struct hfi1_pportdata*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct hfi1_pportdata {scalar_t__* pkeys; int port; int dd; } ;
+
+
+ int HFI1_IB_CFG_PKEYS ;
+ int hfi1_event_pkey_change (int ,int ) ;
+ int hfi1_set_ib_cfg (struct hfi1_pportdata*,int ,int ) ;
 
 __attribute__((used)) static void clear_full_mgmt_pkey(struct hfi1_pportdata *ppd)
 {
-	if (ppd->pkeys[2] != 0) {
-		ppd->pkeys[2] = 0;
-		(void)hfi1_set_ib_cfg(ppd, HFI1_IB_CFG_PKEYS, 0);
-		hfi1_event_pkey_change(ppd->dd, ppd->port);
-	}
+ if (ppd->pkeys[2] != 0) {
+  ppd->pkeys[2] = 0;
+  (void)hfi1_set_ib_cfg(ppd, HFI1_IB_CFG_PKEYS, 0);
+  hfi1_event_pkey_change(ppd->dd, ppd->port);
+ }
 }

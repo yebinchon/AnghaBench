@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- scalar_t__ OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_array_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_element_type (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Oid ;
+
+
+ int InvalidOid ;
+ scalar_t__ OidIsValid (int ) ;
+ int get_array_type (int ) ;
+ int get_element_type (int ) ;
 
 Oid
 get_promoted_array_type(Oid typid)
 {
-	Oid			array_type = get_array_type(typid);
+ Oid array_type = get_array_type(typid);
 
-	if (OidIsValid(array_type))
-		return array_type;
-	if (OidIsValid(get_element_type(typid)))
-		return typid;
-	return InvalidOid;
+ if (OidIsValid(array_type))
+  return array_type;
+ if (OidIsValid(get_element_type(typid)))
+  return typid;
+ return InvalidOid;
 }

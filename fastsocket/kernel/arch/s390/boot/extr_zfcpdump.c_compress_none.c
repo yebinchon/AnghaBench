@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  __u32 ;
 
-/* Variables and functions */
+
+
+
+typedef int __u32 ;
+
+
 
 __attribute__((used)) static int compress_none(const unsigned char *old, __u32 old_size,
-			 unsigned char *new, __u32 new_size)
+    unsigned char *new, __u32 new_size)
 {
-	return -1; /* "-1" indicates, that compression was not done */
+ return -1;
 }

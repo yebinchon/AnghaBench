@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {int ref; TYPE_4__ IBindStatusCallback_iface; int /*<<< orphan*/  hres; int /*<<< orphan*/ * memstream; int /*<<< orphan*/ * binding; int /*<<< orphan*/  (* onDataAvailable ) (void*,char*,DWORD) ;void* obj; } ;
-typedef  TYPE_1__ bsc_t ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBindStatusCallback_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  IID_IStream ; 
- int /*<<< orphan*/  IMoniker_BindToStorage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegisterBindStatusCallback (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bsc_vtbl ; 
- TYPE_1__* heap_alloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * lpVtbl; } ;
+struct TYPE_6__ {int ref; TYPE_4__ IBindStatusCallback_iface; int hres; int * memstream; int * binding; int (* onDataAvailable ) (void*,char*,DWORD) ;void* obj; } ;
+typedef TYPE_1__ bsc_t ;
+typedef int LPVOID ;
+typedef int IStream ;
+typedef int IMoniker ;
+typedef int IBindCtx ;
+typedef int HRESULT ;
+
+
+ int CreateBindCtx (int ,int **) ;
+ scalar_t__ FAILED (int ) ;
+ int IBindCtx_Release (int *) ;
+ int IBindStatusCallback_Release (TYPE_4__*) ;
+ int IID_IStream ;
+ int IMoniker_BindToStorage (int *,int *,int *,int *,int *) ;
+ int IStream_Release (int *) ;
+ int RegisterBindStatusCallback (int *,TYPE_4__*,int *,int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int TRACE (char*,int *) ;
+ int bsc_vtbl ;
+ TYPE_1__* heap_alloc (int) ;
 
 HRESULT bind_url(IMoniker *mon, HRESULT (*onDataAvailable)(void*,char*,DWORD),
         void *obj, bsc_t **ret)
@@ -55,15 +55,15 @@ HRESULT bind_url(IMoniker *mon, HRESULT (*onDataAvailable)(void*,char*,DWORD),
     bsc->ref = 1;
     bsc->obj = obj;
     bsc->onDataAvailable = onDataAvailable;
-    bsc->binding = NULL;
-    bsc->memstream = NULL;
+    bsc->binding = ((void*)0);
+    bsc->memstream = ((void*)0);
     bsc->hres = S_OK;
 
-    hr = RegisterBindStatusCallback(pbc, &bsc->IBindStatusCallback_iface, NULL, 0);
+    hr = RegisterBindStatusCallback(pbc, &bsc->IBindStatusCallback_iface, ((void*)0), 0);
     if(SUCCEEDED(hr))
     {
         IStream *stream;
-        hr = IMoniker_BindToStorage(mon, pbc, NULL, &IID_IStream, (LPVOID*)&stream);
+        hr = IMoniker_BindToStorage(mon, pbc, ((void*)0), &IID_IStream, (LPVOID*)&stream);
         if(stream)
             IStream_Release(stream);
         IBindCtx_Release(pbc);
@@ -72,7 +72,7 @@ HRESULT bind_url(IMoniker *mon, HRESULT (*onDataAvailable)(void*,char*,DWORD),
     if(FAILED(hr))
     {
         IBindStatusCallback_Release(&bsc->IBindStatusCallback_iface);
-        bsc = NULL;
+        bsc = ((void*)0);
     }
 
     *ret = bsc;

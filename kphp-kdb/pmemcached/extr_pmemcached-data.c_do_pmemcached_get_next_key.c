@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_entry {int data_len; char* data; int key_len; } ;
 struct hash_entry {int key_len; char* key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cache_load_local (char*,int,struct hash_entry*,struct index_entry*) ; 
- struct hash_entry* get_next_entry (char const*,int) ; 
- struct index_entry* index_get_next (char const*,int) ; 
- int mystrcmp (char*,int,char*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int) ; 
+
+ int cache_load_local (char*,int,struct hash_entry*,struct index_entry*) ;
+ struct hash_entry* get_next_entry (char const*,int) ;
+ struct index_entry* index_get_next (char const*,int) ;
+ int mystrcmp (char*,int,char*,int) ;
+ int vkprintf (int,char*,int,int) ;
 
 int do_pmemcached_get_next_key (const char *key, int key_len, char **result_key, int *result_key_len) {
   char *cur_key = 0;
@@ -31,7 +31,7 @@ int do_pmemcached_get_next_key (const char *key, int key_len, char **result_key,
     r = 0;
   }
   struct index_entry *index_entry = index_get_next (key, key_len);
-  if (!index_entry) {    
+  if (!index_entry) {
     return -2;
   }
   vkprintf (4, "next in index: %d, next in memory: %d\n", index_entry->data_len != -1, r != -1);

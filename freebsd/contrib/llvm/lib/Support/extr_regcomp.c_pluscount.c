@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct re_guts {int /*<<< orphan*/  iflags; int /*<<< orphan*/ * strip; } ;
+
+
+
+
+struct re_guts {int iflags; int * strip; } ;
 struct parse {scalar_t__ error; } ;
-typedef  scalar_t__ sopno ;
-typedef  int /*<<< orphan*/  sop ;
+typedef scalar_t__ sopno ;
+typedef int sop ;
 
-/* Variables and functions */
- int OEND ; 
- int OP (int /*<<< orphan*/ ) ; 
-#define  OPLUS_ 129 
-#define  O_PLUS 128 
- int /*<<< orphan*/  REGEX_BAD ; 
 
-__attribute__((used)) static sopno			/* nesting depth */
+ int OEND ;
+ int OP (int ) ;
+
+
+ int REGEX_BAD ;
+
+__attribute__((used)) static sopno
 pluscount(struct parse *p, struct re_guts *g)
 {
-	sop *scan;
-	sop s;
-	sopno plusnest = 0;
-	sopno maxnest = 0;
+ sop *scan;
+ sop s;
+ sopno plusnest = 0;
+ sopno maxnest = 0;
 
-	if (p->error != 0)
-		return(0);	/* there may not be an OEND */
+ if (p->error != 0)
+  return(0);
 
-	scan = g->strip + 1;
-	do {
-		s = *scan++;
-		switch (OP(s)) {
-		case OPLUS_:
-			plusnest++;
-			break;
-		case O_PLUS:
-			if (plusnest > maxnest)
-				maxnest = plusnest;
-			plusnest--;
-			break;
-		}
-	} while (OP(s) != OEND);
-	if (plusnest != 0)
-		g->iflags |= REGEX_BAD;
-	return(maxnest);
+ scan = g->strip + 1;
+ do {
+  s = *scan++;
+  switch (OP(s)) {
+  case 129:
+   plusnest++;
+   break;
+  case 128:
+   if (plusnest > maxnest)
+    maxnest = plusnest;
+   plusnest--;
+   break;
+  }
+ } while (OP(s) != OEND);
+ if (plusnest != 0)
+  g->iflags |= REGEX_BAD;
+ return(maxnest);
 }

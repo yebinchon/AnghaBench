@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ExprList_item {int /*<<< orphan*/  pExpr; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ExprList_item {int pExpr; } ;
 struct TYPE_3__ {int nExpr; struct ExprList_item* a; } ;
-typedef  TYPE_1__ ExprList ;
-typedef  int /*<<< orphan*/  DbFixer ;
+typedef TYPE_1__ ExprList ;
+typedef int DbFixer ;
 
-/* Variables and functions */
- scalar_t__ sqlite3FixExpr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ sqlite3FixExpr (int *,int ) ;
 
 int sqlite3FixExprList(
-  DbFixer *pFix,     /* Context of the fixation */
-  ExprList *pList    /* The expression to be fixed to one database */
+  DbFixer *pFix,
+  ExprList *pList
 ){
   int i;
   struct ExprList_item *pItem;

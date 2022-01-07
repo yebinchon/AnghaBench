@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * streams; TYPE_1__* priv_data; int /*<<< orphan*/ * pb; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_6__ {int * streams; TYPE_1__* priv_data; int * pb; } ;
 struct TYPE_5__ {int continue_pes; } ;
-typedef  TYPE_1__ PVAContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ PVAContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVINDEX_KEYFRAME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  EIO ; 
- int PVA_AUDIO_PAYLOAD ; 
- int PVA_MAGIC ; 
- int PVA_MAX_PAYLOAD_LENGTH ; 
- int PVA_VIDEO_PAYLOAD ; 
- int /*<<< orphan*/  av_add_index_entry (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_rb16 (int /*<<< orphan*/ *) ; 
- int avio_rb24 (int /*<<< orphan*/ *) ; 
- scalar_t__ avio_rb32 (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- scalar_t__ ff_parse_pes_pts (unsigned char*) ; 
- int /*<<< orphan*/  pva_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AVINDEX_KEYFRAME ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int EIO ;
+ int PVA_AUDIO_PAYLOAD ;
+ int PVA_MAGIC ;
+ int PVA_MAX_PAYLOAD_LENGTH ;
+ int PVA_VIDEO_PAYLOAD ;
+ int av_add_index_entry (int ,scalar_t__,scalar_t__,int ,int ,int ) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_r8 (int *) ;
+ int avio_rb16 (int *) ;
+ int avio_rb24 (int *) ;
+ scalar_t__ avio_rb32 (int *) ;
+ int avio_read (int *,unsigned char*,int) ;
+ int avio_skip (int *,int) ;
+ scalar_t__ avio_tell (int *) ;
+ scalar_t__ ff_parse_pes_pts (unsigned char*) ;
+ int pva_log (TYPE_2__*,int ,char*,...) ;
 
 __attribute__((used)) static int read_part_of_packet(AVFormatContext *s, int64_t *pts,
                                int *len, int *strid, int read_packet) {
@@ -57,10 +57,10 @@ recover:
 
     syncword = avio_rb16(pb);
     streamid = avio_r8(pb);
-    avio_r8(pb);               /* counter not used */
+    avio_r8(pb);
     reserved = avio_r8(pb);
-    flags    = avio_r8(pb);
-    length   = avio_rb16(pb);
+    flags = avio_r8(pb);
+    length = avio_rb16(pb);
 
     pts_flag = flags & 0x10;
 
@@ -84,19 +84,19 @@ recover:
         pva_pts = avio_rb32(pb);
         length -= 4;
     } else if (streamid == PVA_AUDIO_PAYLOAD) {
-        /* PVA Audio Packets either start with a signaled PES packet or
-         * are a continuation of the previous PES packet. New PES packets
-         * always start at the beginning of a PVA Packet, never somewhere in
-         * the middle. */
+
+
+
+
         if (!pvactx->continue_pes) {
             int pes_signal, pes_header_data_length, pes_packet_length,
                 pes_flags;
             unsigned char pes_header_data[256];
 
-            pes_signal             = avio_rb24(pb);
+            pes_signal = avio_rb24(pb);
             avio_r8(pb);
-            pes_packet_length      = avio_rb16(pb);
-            pes_flags              = avio_rb16(pb);
+            pes_packet_length = avio_rb16(pb);
+            pes_flags = avio_rb16(pb);
             pes_header_data_length = avio_r8(pb);
 
             if (avio_feof(pb)) {
@@ -142,8 +142,8 @@ recover:
     if (pva_pts != AV_NOPTS_VALUE)
         av_add_index_entry(s->streams[streamid-1], startpos, pva_pts, 0, 0, AVINDEX_KEYFRAME);
 
-    *pts   = pva_pts;
-    *len   = length;
+    *pts = pva_pts;
+    *len = length;
     *strid = streamid;
     return 0;
 }

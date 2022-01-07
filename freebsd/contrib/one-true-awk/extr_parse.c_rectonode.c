@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  Cell ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CUNK ; 
- int /*<<< orphan*/  INDIRECT ; 
- int /*<<< orphan*/  celltonode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * op1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-Node *rectonode(void)	/* make $0 into a Node */
+
+
+typedef int Node ;
+typedef int Cell ;
+
+
+ int CUNK ;
+ int INDIRECT ;
+ int celltonode (int *,int ) ;
+ int * op1 (int ,int ) ;
+
+Node *rectonode(void)
 {
-	extern Cell *literal0;
-	return op1(INDIRECT, celltonode(literal0, CUNK));
+ extern Cell *literal0;
+ return op1(INDIRECT, celltonode(literal0, CUNK));
 }

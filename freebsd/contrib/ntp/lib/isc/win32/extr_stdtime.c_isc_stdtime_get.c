@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
-typedef  int /*<<< orphan*/  isc_stdtime_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int time_t ;
+typedef int isc_stdtime_t ;
+
+
+ int REQUIRE (int ) ;
+ int time (int *) ;
 
 void
 isc_stdtime_get(isc_stdtime_t *t) {
-	/*
-	 * Set 't' to the number of seconds past 00:00:00 UTC, January 1, 1970.
-	 */
 
-	REQUIRE(t != NULL);
 
-	(void)time((time_t *)t);
+
+
+ REQUIRE(t != ((void*)0));
+
+ (void)time((time_t *)t);
 }

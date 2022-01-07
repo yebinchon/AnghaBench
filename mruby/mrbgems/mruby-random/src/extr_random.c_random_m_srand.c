@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  rand_state ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_opt (int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_fixnum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- scalar_t__ rand_seed (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ rand_uint32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * random_ptr (int /*<<< orphan*/ ) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int rand_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+
+
+ int get_opt (int *) ;
+ scalar_t__ mrb_fixnum (int ) ;
+ int mrb_fixnum_value (int ) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ scalar_t__ rand_seed (int *,scalar_t__) ;
+ scalar_t__ rand_uint32 (int *) ;
+ int * random_ptr (int ) ;
+ scalar_t__ time (int *) ;
 
 __attribute__((used)) static mrb_value
 random_m_srand(mrb_state *mrb, mrb_value self)
@@ -36,7 +36,7 @@ random_m_srand(mrb_state *mrb, mrb_value self)
 
   sv = get_opt(mrb);
   if (mrb_nil_p(sv)) {
-    seed = (uint32_t)time(NULL) + rand_uint32(t);
+    seed = (uint32_t)time(((void*)0)) + rand_uint32(t);
   }
   else {
     seed = (uint32_t)mrb_fixnum(sv);

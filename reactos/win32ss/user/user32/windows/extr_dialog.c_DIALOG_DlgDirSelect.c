@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ LPWSTR ;
-typedef  scalar_t__* LPSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_GETCURSEL ; 
- int /*<<< orphan*/  CB_GETLBTEXT ; 
- int /*<<< orphan*/  CB_GETLBTEXTLEN ; 
- int /*<<< orphan*/  CP_ACP ; 
- int FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ LB_ERR ; 
- int /*<<< orphan*/  LB_GETCURSEL ; 
- int /*<<< orphan*/  LB_GETTEXT ; 
- int /*<<< orphan*/  LB_GETTEXTLEN ; 
- scalar_t__ SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,scalar_t__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (scalar_t__*) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__) ; 
- int /*<<< orphan*/  lstrcpynW (scalar_t__,char*,scalar_t__) ; 
- int /*<<< orphan*/ * strchrW (char*,char) ; 
- size_t strlenW (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ LPWSTR ;
+typedef scalar_t__* LPSTR ;
+typedef int LPARAM ;
+typedef scalar_t__ INT ;
+typedef int HWND ;
+typedef int BOOL ;
+
+
+ int CB_GETCURSEL ;
+ int CB_GETLBTEXT ;
+ int CB_GETLBTEXTLEN ;
+ int CP_ACP ;
+ int FALSE ;
+ int GetDlgItem (int ,scalar_t__) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,char*) ;
+ scalar_t__ LB_ERR ;
+ int LB_GETCURSEL ;
+ int LB_GETTEXT ;
+ int LB_GETTEXTLEN ;
+ scalar_t__ SendMessageW (int ,int ,scalar_t__,int ) ;
+ int TRACE (char*,int,int ,...) ;
+ int WideCharToMultiByte (int ,int ,char*,int,scalar_t__*,scalar_t__,int ,int ) ;
+ int debugstr_a (scalar_t__*) ;
+ int debugstr_w (scalar_t__) ;
+ int lstrcpynW (scalar_t__,char*,scalar_t__) ;
+ int * strchrW (char*,char) ;
+ size_t strlenW (char*) ;
 
 __attribute__((used)) static BOOL DIALOG_DlgDirSelect( HWND hwnd, LPWSTR str, INT len,
                                  INT id, BOOL unicode, BOOL combo )
@@ -62,9 +62,9 @@ __attribute__((used)) static BOOL DIALOG_DlgDirSelect( HWND hwnd, LPWSTR str, IN
 
     SendMessageW( listbox, combo ? CB_GETLBTEXT : LB_GETTEXT, item, (LPARAM)buffer );
 
-    if ((ret = (buffer[0] == '[')))  /* drive or directory */
+    if ((ret = (buffer[0] == '[')))
     {
-        if (buffer[1] == '-')  /* drive */
+        if (buffer[1] == '-')
         {
             buffer[3] = ':';
             buffer[4] = 0;
@@ -78,8 +78,8 @@ __attribute__((used)) static BOOL DIALOG_DlgDirSelect( HWND hwnd, LPWSTR str, IN
     }
     else
     {
-        /* Filenames without a dot extension must have one tacked at the end */
-        if (strchrW(buffer, '.') == NULL)
+
+        if (strchrW(buffer, '.') == ((void*)0))
         {
             buffer[strlenW(buffer)+1] = '\0';
             buffer[strlenW(buffer)] = '.';

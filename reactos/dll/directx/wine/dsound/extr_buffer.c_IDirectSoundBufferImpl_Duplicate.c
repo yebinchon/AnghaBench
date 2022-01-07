@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  driver; } ;
-struct TYPE_18__ {int ref; int numIfaces; struct TYPE_18__* pwfx; TYPE_1__* buffer; int /*<<< orphan*/  entry; struct TYPE_18__* tmp_buffer; int /*<<< orphan*/  lock; int /*<<< orphan*/  buflen; int /*<<< orphan*/ * iks; int /*<<< orphan*/ * ds3db; TYPE_3__* device; scalar_t__ nrofnotifies; int /*<<< orphan*/ * notifies; int /*<<< orphan*/ * notify; scalar_t__ sec_mixpos; scalar_t__ buf_mixpos; int /*<<< orphan*/  state; scalar_t__ hwbuf; } ;
-struct TYPE_17__ {int /*<<< orphan*/  ref; int /*<<< orphan*/  buffers; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  TYPE_2__ IDirectSoundBufferImpl ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_3__ DirectSoundDevice ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyMemory (TYPE_2__*,TYPE_2__*,int) ; 
- scalar_t__ DSERR_OUTOFMEMORY ; 
- TYPE_2__* DSOUND_CopyFormat (TYPE_2__*) ; 
- int /*<<< orphan*/  DSOUND_MixToTemporary (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSOUND_RecalcFormat (TYPE_2__*) ; 
- scalar_t__ DS_OK ; 
- scalar_t__ DirectSoundDevice_AddBuffer (TYPE_3__*,TYPE_2__*) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ IDsDriver_DuplicateSoundBuffer (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlDeleteResource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlInitializeResource (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STATE_STOPPED ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int driver; } ;
+struct TYPE_18__ {int ref; int numIfaces; struct TYPE_18__* pwfx; TYPE_1__* buffer; int entry; struct TYPE_18__* tmp_buffer; int lock; int buflen; int * iks; int * ds3db; TYPE_3__* device; scalar_t__ nrofnotifies; int * notifies; int * notify; scalar_t__ sec_mixpos; scalar_t__ buf_mixpos; int state; scalar_t__ hwbuf; } ;
+struct TYPE_17__ {int ref; int buffers; } ;
+typedef int LPVOID ;
+typedef TYPE_2__ IDirectSoundBufferImpl ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_3__ DirectSoundDevice ;
+
+
+ int CopyMemory (TYPE_2__*,TYPE_2__*,int) ;
+ scalar_t__ DSERR_OUTOFMEMORY ;
+ TYPE_2__* DSOUND_CopyFormat (TYPE_2__*) ;
+ int DSOUND_MixToTemporary (TYPE_2__*,int ,int ,int ) ;
+ int DSOUND_RecalcFormat (TYPE_2__*) ;
+ scalar_t__ DS_OK ;
+ scalar_t__ DirectSoundDevice_AddBuffer (TYPE_3__*,TYPE_2__*) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ scalar_t__ IDsDriver_DuplicateSoundBuffer (int ,scalar_t__,int *) ;
+ int RtlDeleteResource (int *) ;
+ int RtlInitializeResource (int *) ;
+ int STATE_STOPPED ;
+ int TRACE (char*,...) ;
+ int WARN (char*,...) ;
+ int list_add_head (int *,int *) ;
+ int list_remove (int *) ;
 
 HRESULT IDirectSoundBufferImpl_Duplicate(
     DirectSoundDevice *device,
@@ -53,17 +53,17 @@ HRESULT IDirectSoundBufferImpl_Duplicate(
     TRACE("(%p,%p,%p)\n", device, ppdsb, pdsb);
 
     dsb = HeapAlloc(GetProcessHeap(),0,sizeof(*dsb));
-    if (dsb == NULL) {
+    if (dsb == ((void*)0)) {
         WARN("out of memory\n");
-        *ppdsb = NULL;
+        *ppdsb = ((void*)0);
         return DSERR_OUTOFMEMORY;
     }
     CopyMemory(dsb, pdsb, sizeof(*dsb));
 
     dsb->pwfx = DSOUND_CopyFormat(pdsb->pwfx);
-    if (dsb->pwfx == NULL) {
+    if (dsb->pwfx == ((void*)0)) {
         HeapFree(GetProcessHeap(),0,dsb);
-        *ppdsb = NULL;
+        *ppdsb = ((void*)0);
         return DSERR_OUTOFMEMORY;
     }
 
@@ -76,7 +76,7 @@ HRESULT IDirectSoundBufferImpl_Duplicate(
             WARN("IDsDriver_DuplicateSoundBuffer failed (%08x)\n", hres);
             HeapFree(GetProcessHeap(),0,dsb->pwfx);
             HeapFree(GetProcessHeap(),0,dsb);
-            *ppdsb = NULL;
+            *ppdsb = ((void*)0);
             return hres;
         }
     }
@@ -87,19 +87,19 @@ HRESULT IDirectSoundBufferImpl_Duplicate(
     dsb->numIfaces = 1;
     dsb->state = STATE_STOPPED;
     dsb->buf_mixpos = dsb->sec_mixpos = 0;
-    dsb->notify = NULL;
-    dsb->notifies = NULL;
+    dsb->notify = ((void*)0);
+    dsb->notifies = ((void*)0);
     dsb->nrofnotifies = 0;
     dsb->device = device;
-    dsb->ds3db = NULL;
-    dsb->iks = NULL; /* FIXME? */
-    dsb->tmp_buffer = NULL;
+    dsb->ds3db = ((void*)0);
+    dsb->iks = ((void*)0);
+    dsb->tmp_buffer = ((void*)0);
     DSOUND_RecalcFormat(dsb);
     DSOUND_MixToTemporary(dsb, 0, dsb->buflen, FALSE);
 
     RtlInitializeResource(&dsb->lock);
 
-    /* register buffer */
+
     hres = DirectSoundDevice_AddBuffer(device, dsb);
     if (hres != DS_OK) {
         RtlDeleteResource(&dsb->lock);
@@ -108,7 +108,7 @@ HRESULT IDirectSoundBufferImpl_Duplicate(
         dsb->buffer->ref--;
         HeapFree(GetProcessHeap(),0,dsb->pwfx);
         HeapFree(GetProcessHeap(),0,dsb);
-        dsb = NULL;
+        dsb = ((void*)0);
     }
 
     *ppdsb = dsb;

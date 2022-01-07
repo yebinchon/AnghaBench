@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct value {int dummy; } ;
 struct type {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COERCE_NUMBER (struct value*) ; 
- scalar_t__ TYPE_CODE (struct type*) ; 
- scalar_t__ TYPE_CODE_FLT ; 
- int TYPE_LENGTH (struct type*) ; 
- char* VALUE_CONTENTS (struct value*) ; 
- int /*<<< orphan*/  VALUE_TYPE (struct value*) ; 
- struct type* check_typedef (int /*<<< orphan*/ ) ; 
- scalar_t__ value_as_double (struct value*) ; 
+
+ int COERCE_NUMBER (struct value*) ;
+ scalar_t__ TYPE_CODE (struct type*) ;
+ scalar_t__ TYPE_CODE_FLT ;
+ int TYPE_LENGTH (struct type*) ;
+ char* VALUE_CONTENTS (struct value*) ;
+ int VALUE_TYPE (struct value*) ;
+ struct type* check_typedef (int ) ;
+ scalar_t__ value_as_double (struct value*) ;
 
 int
 value_logical_not (struct value *arg1)
@@ -42,7 +42,7 @@ value_logical_not (struct value *arg1)
   while (--len >= 0)
     {
       if (*p++)
-	break;
+ break;
     }
 
   return len < 0;

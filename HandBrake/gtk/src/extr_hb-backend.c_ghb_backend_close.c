@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * h_live ; 
- int /*<<< orphan*/ * h_queue ; 
- int /*<<< orphan*/ * h_scan ; 
- int /*<<< orphan*/  hb_close (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  hb_global_close () ; 
+ int * h_live ;
+ int * h_queue ;
+ int * h_scan ;
+ int hb_close (int **) ;
+ int hb_global_close () ;
 
 void
 ghb_backend_close()
 {
-    if (h_live != NULL)
+    if (h_live != ((void*)0))
         hb_close(&h_live);
-    if (h_queue != NULL)
+    if (h_queue != ((void*)0))
         hb_close(&h_queue);
-    if (h_scan != NULL)
+    if (h_scan != ((void*)0))
         hb_close(&h_scan);
     hb_global_close();
 }

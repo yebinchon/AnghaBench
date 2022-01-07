@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-struct e1000_tx_ring {int /*<<< orphan*/ * desc; int /*<<< orphan*/  dma; int /*<<< orphan*/  size; int /*<<< orphan*/ * buffer_info; } ;
+
+
+
+
+struct pci_dev {int dev; } ;
+struct e1000_tx_ring {int * desc; int dma; int size; int * buffer_info; } ;
 struct e1000_adapter {struct pci_dev* pdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  e1000_clean_tx_ring (struct e1000_adapter*,struct e1000_tx_ring*) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
+
+ int dma_free_coherent (int *,int ,int *,int ) ;
+ int e1000_clean_tx_ring (struct e1000_adapter*,struct e1000_tx_ring*) ;
+ int vfree (int *) ;
 
 __attribute__((used)) static void e1000_free_tx_resources(struct e1000_adapter *adapter,
-				    struct e1000_tx_ring *tx_ring)
+        struct e1000_tx_ring *tx_ring)
 {
-	struct pci_dev *pdev = adapter->pdev;
+ struct pci_dev *pdev = adapter->pdev;
 
-	e1000_clean_tx_ring(adapter, tx_ring);
+ e1000_clean_tx_ring(adapter, tx_ring);
 
-	vfree(tx_ring->buffer_info);
-	tx_ring->buffer_info = NULL;
+ vfree(tx_ring->buffer_info);
+ tx_ring->buffer_info = ((void*)0);
 
-	dma_free_coherent(&pdev->dev, tx_ring->size, tx_ring->desc,
-			  tx_ring->dma);
+ dma_free_coherent(&pdev->dev, tx_ring->size, tx_ring->desc,
+     tx_ring->dma);
 
-	tx_ring->desc = NULL;
+ tx_ring->desc = ((void*)0);
 }

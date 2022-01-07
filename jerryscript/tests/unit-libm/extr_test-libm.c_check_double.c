@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_2__ {double value; scalar_t__ bits64; scalar_t__* bits32; } ;
-typedef  TYPE_1__ double_bits_t ;
+typedef TYPE_1__ double_bits_t ;
 
-/* Variables and functions */
- scalar_t__ isnan (double) ; 
- int passed ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ scalar_t__ isnan (double) ;
+ int passed ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 check_double (const char *expr, double computed, double expected)
@@ -36,7 +36,7 @@ check_double (const char *expr, double computed, double expected)
   bool result;
   if (isnan (computed) && isnan (expected))
   {
-    result = true;
+    result = 1;
   }
   else
   {
@@ -46,9 +46,9 @@ check_double (const char *expr, double computed, double expected)
       diff = -diff;
     }
 
-    if (diff <= 1) /* tolerate 1 bit of differene in the last place */
+    if (diff <= 1)
     {
-      result = true;
+      result = 1;
       if (diff != 0)
       {
         printf ("APPROX ");
@@ -56,7 +56,7 @@ check_double (const char *expr, double computed, double expected)
     }
     else
     {
-      result = false;
+      result = 0;
     }
   }
   printf ("%s\n", result ? "PASS" : "FAIL");

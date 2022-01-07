@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pcre_uchar ;
-typedef  int /*<<< orphan*/  compile_data ;
-struct TYPE_3__ {struct TYPE_3__* outer; int /*<<< orphan*/  const* current_branch; } ;
-typedef  TYPE_1__ branch_chain ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  could_be_empty_branch (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pcre_uchar ;
+typedef int compile_data ;
+struct TYPE_3__ {struct TYPE_3__* outer; int const* current_branch; } ;
+typedef TYPE_1__ branch_chain ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int could_be_empty_branch (int const*,int const*,int ,int *,int *) ;
 
 __attribute__((used)) static BOOL
 could_be_empty(const pcre_uchar *code, const pcre_uchar *endcode,
   branch_chain *bcptr, BOOL utf, compile_data *cd)
 {
-while (bcptr != NULL && bcptr->current_branch >= code)
+while (bcptr != ((void*)0) && bcptr->current_branch >= code)
   {
-  if (!could_be_empty_branch(bcptr->current_branch, endcode, utf, cd, NULL))
+  if (!could_be_empty_branch(bcptr->current_branch, endcode, utf, cd, ((void*)0)))
     return FALSE;
   bcptr = bcptr->outer;
   }

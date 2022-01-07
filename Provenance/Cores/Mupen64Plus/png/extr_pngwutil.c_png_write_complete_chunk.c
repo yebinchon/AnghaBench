@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_uint_32 ;
-typedef  int /*<<< orphan*/ * png_structrp ;
-typedef  scalar_t__ png_size_t ;
-typedef  int /*<<< orphan*/  png_const_bytep ;
 
-/* Variables and functions */
- scalar_t__ PNG_UINT_31_MAX ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  png_write_chunk_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  png_write_chunk_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  png_write_chunk_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int png_uint_32 ;
+typedef int * png_structrp ;
+typedef scalar_t__ png_size_t ;
+typedef int png_const_bytep ;
+
+
+ scalar_t__ PNG_UINT_31_MAX ;
+ int png_error (int *,char*) ;
+ int png_write_chunk_data (int *,int ,scalar_t__) ;
+ int png_write_chunk_end (int *) ;
+ int png_write_chunk_header (int *,int ,int ) ;
 
 __attribute__((used)) static void
 png_write_complete_chunk(png_structrp png_ptr, png_uint_32 chunk_name,
     png_const_bytep data, png_size_t length)
 {
-   if (png_ptr == NULL)
+   if (png_ptr == ((void*)0))
       return;
 
-   /* On 64-bit architectures 'length' may not fit in a png_uint_32. */
+
    if (length > PNG_UINT_31_MAX)
       png_error(png_ptr, "length exceeds PNG maximum");
 

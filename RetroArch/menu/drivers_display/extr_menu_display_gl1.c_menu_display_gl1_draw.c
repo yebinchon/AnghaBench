@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ * matrix; TYPE_6__* data; } ;
-typedef  TYPE_3__ video_shader_ctx_mvp_t ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int * matrix; TYPE_6__* data; } ;
+typedef TYPE_3__ video_shader_ctx_mvp_t ;
 struct TYPE_15__ {scalar_t__ userdata; } ;
-typedef  TYPE_4__ video_frame_info_t ;
-struct TYPE_16__ {TYPE_1__* coords; int /*<<< orphan*/  prim_type; scalar_t__ matrix_data; scalar_t__ texture; } ;
-typedef  TYPE_5__ menu_display_ctx_draw_t ;
-typedef  int /*<<< orphan*/  math_matrix_4x4 ;
-struct TYPE_13__ {int /*<<< orphan*/  color; } ;
-struct TYPE_17__ {int /*<<< orphan*/  white_color_ptr; TYPE_2__ coords; } ;
-typedef  TYPE_6__ gl1_t ;
-struct TYPE_12__ {float* vertex; int vertices; void* tex_coord; int /*<<< orphan*/  color; void* lut_tex_coord; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLfloat ;
+typedef TYPE_4__ video_frame_info_t ;
+struct TYPE_16__ {TYPE_1__* coords; int prim_type; scalar_t__ matrix_data; scalar_t__ texture; } ;
+typedef TYPE_5__ menu_display_ctx_draw_t ;
+typedef int math_matrix_4x4 ;
+struct TYPE_13__ {int color; } ;
+struct TYPE_17__ {int white_color_ptr; TYPE_2__ coords; } ;
+typedef TYPE_6__ gl1_t ;
+struct TYPE_12__ {float* vertex; int vertices; void* tex_coord; int color; void* lut_tex_coord; } ;
+typedef int GLuint ;
+typedef int GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_ARRAY ; 
- int /*<<< orphan*/  GL_FLOAT ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_COORD_ARRAY ; 
- int /*<<< orphan*/  GL_VERTEX_ARRAY ; 
- int /*<<< orphan*/  free (float*) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glColorPointer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisableClientState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDrawArrays (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnableClientState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glLoadIdentity () ; 
- int /*<<< orphan*/  glLoadMatrixf (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glPopMatrix () ; 
- int /*<<< orphan*/  glPushMatrix () ; 
- int /*<<< orphan*/  glTexCoordPointer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  glVertexPointer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (float*,float*,int) ; 
- scalar_t__ menu_display_gl1_get_default_mvp (TYPE_4__*) ; 
- void* menu_display_gl1_get_default_tex_coords () ; 
- float* menu_display_gl1_get_default_vertices () ; 
- int /*<<< orphan*/  menu_display_gl1_viewport (TYPE_5__*,TYPE_4__*) ; 
- int /*<<< orphan*/  menu_display_prim_to_gl1_enum (int /*<<< orphan*/ ) ; 
- float* vertices3 ; 
+
+ int GL_COLOR_ARRAY ;
+ int GL_FLOAT ;
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_COORD_ARRAY ;
+ int GL_VERTEX_ARRAY ;
+ int free (float*) ;
+ int glBindTexture (int ,int ) ;
+ int glColorPointer (int,int ,int ,int ) ;
+ int glDisableClientState (int ) ;
+ int glDrawArrays (int ,int ,int) ;
+ int glEnable (int ) ;
+ int glEnableClientState (int ) ;
+ int glLoadIdentity () ;
+ int glLoadMatrixf (int const*) ;
+ int glMatrixMode (int ) ;
+ int glPopMatrix () ;
+ int glPushMatrix () ;
+ int glTexCoordPointer (int,int ,int ,void*) ;
+ int glVertexPointer (int,int ,int ,float*) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (float*,float*,int) ;
+ scalar_t__ menu_display_gl1_get_default_mvp (TYPE_4__*) ;
+ void* menu_display_gl1_get_default_tex_coords () ;
+ float* menu_display_gl1_get_default_vertices () ;
+ int menu_display_gl1_viewport (TYPE_5__*,TYPE_4__*) ;
+ int menu_display_prim_to_gl1_enum (int ) ;
+ float* vertices3 ;
 
 __attribute__((used)) static void menu_display_gl1_draw(menu_display_ctx_draw_t *draw,
       video_frame_info_t *video_info)
 {
    video_shader_ctx_mvp_t mvp;
-   gl1_t             *gl1          = (gl1_t*)video_info->userdata;
+   gl1_t *gl1 = (gl1_t*)video_info->userdata;
 
    if (!gl1 || !draw)
       return;
@@ -83,7 +83,7 @@ __attribute__((used)) static void menu_display_gl1_draw(menu_display_ctx_draw_t 
 
    glBindTexture(GL_TEXTURE_2D, (GLuint)draw->texture);
 
-   mvp.data   = gl1;
+   mvp.data = gl1;
    mvp.matrix = draw->matrix_data ? (math_matrix_4x4*)draw->matrix_data
       : (math_matrix_4x4*)menu_display_gl1_get_default_mvp(video_info);
 
@@ -98,21 +98,8 @@ __attribute__((used)) static void menu_display_gl1_draw(menu_display_ctx_draw_t 
    glEnableClientState(GL_COLOR_ARRAY);
    glEnableClientState(GL_VERTEX_ARRAY);
    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-#ifdef VITA
-   if (vertices3)
-      free(vertices3);
-   vertices3 = (float*)malloc(sizeof(float) * 3 * draw->coords->vertices);
-   int i;
-   for (i = 0; i < draw->coords->vertices; i++) {
-      memcpy(&vertices3[i*3], &draw->coords->vertex[i*2], sizeof(float) * 2);
-      vertices3[i*3] -= 0.5f;
-      vertices3[i*3+2] = 0.0f;
-   }
-   glVertexPointer(3, GL_FLOAT, 0, vertices3);   
-#else
    glVertexPointer(2, GL_FLOAT, 0, draw->coords->vertex);
-#endif
+
 
    glColorPointer(4, GL_FLOAT, 0, draw->coords->color);
    glTexCoordPointer(2, GL_FLOAT, 0, draw->coords->tex_coord);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ref_buf ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_INT8_ARRAY (char const*,char*,int) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fgetc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ftell (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ref_buf ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int SEEK_CUR ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int TEST_ASSERT_EQUAL (int,int ) ;
+ int TEST_ASSERT_EQUAL_INT8_ARRAY (char const*,char*,int) ;
+ int TEST_ASSERT_NOT_NULL (int *) ;
+ int fclose (int *) ;
+ int fgetc (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int *,char*) ;
+ int fread (char*,int,int,int *) ;
+ int fseek (int *,int,int ) ;
+ int ftell (int *) ;
 
 void test_fatfs_lseek(const char* filename)
 {

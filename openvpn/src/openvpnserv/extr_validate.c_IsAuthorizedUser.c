@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  SID_NAME_USE ;
-typedef  int /*<<< orphan*/  PTOKEN_GROUPS ;
-typedef  int /*<<< orphan*/  PSID ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetBuiltinAdminGroupName (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTokenGroups (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  IsUserInGroup (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  LookupAccountSidW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int*,char*,int*,int /*<<< orphan*/ *) ; 
- int MAX_NAME ; 
- int /*<<< orphan*/  M_INFO ; 
- int /*<<< orphan*/  M_SYSERR ; 
- int /*<<< orphan*/  MsgToEventLog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- char* SYSTEM_ADMIN_GROUP ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int /*<<< orphan*/  _countof (char*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int SID_NAME_USE ;
+typedef int PTOKEN_GROUPS ;
+typedef int PSID ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ GetBuiltinAdminGroupName (char*,int ) ;
+ int GetTokenGroups (int const) ;
+ int IsUserInGroup (int ,int ,char const*) ;
+ int LookupAccountSidW (int *,int ,char*,int*,char*,int*,int *) ;
+ int MAX_NAME ;
+ int M_INFO ;
+ int M_SYSERR ;
+ int MsgToEventLog (int ,int ,...) ;
+ char* SYSTEM_ADMIN_GROUP ;
+ int TEXT (char*) ;
+ int _countof (char*) ;
+ int free (int ) ;
 
 BOOL
 IsAuthorizedUser(PSID sid, const HANDLE token, const WCHAR *ovpn_admin_group)
@@ -44,11 +44,11 @@ IsAuthorizedUser(PSID sid, const HANDLE token, const WCHAR *ovpn_admin_group)
     BOOL ret = FALSE;
     SID_NAME_USE sid_type;
 
-    /* Get username */
-    if (!LookupAccountSidW(NULL, sid, username, &len, domain, &len, &sid_type))
+
+    if (!LookupAccountSidW(((void*)0), sid, username, &len, domain, &len, &sid_type))
     {
         MsgToEventLog(M_SYSERR, TEXT("LookupAccountSid"));
-        /* not fatal as this is now used only for logging */
+
         username[0] = '\0';
         domain[0] = '\0';
     }
@@ -60,7 +60,7 @@ IsAuthorizedUser(PSID sid, const HANDLE token, const WCHAR *ovpn_admin_group)
     else
     {
         MsgToEventLog(M_SYSERR, TEXT("Failed to get the name of Administrators group. Using the default."));
-        /* use the default value */
+
         admin_group[0] = SYSTEM_ADMIN_GROUP;
     }
     admin_group[1] = ovpn_admin_group;

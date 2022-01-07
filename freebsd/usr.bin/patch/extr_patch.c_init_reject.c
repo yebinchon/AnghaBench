@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  pfatal (char*,char const*) ; 
- int /*<<< orphan*/ * rejfp ; 
+ int * fopen (char const*,char*) ;
+ int pfatal (char*,char const*) ;
+ int * rejfp ;
 
 __attribute__((used)) static void
 init_reject(const char *name)
 {
-	rejfp = fopen(name, "w");
-	if (rejfp == NULL)
-		pfatal("can't create %s", name);
+ rejfp = fopen(name, "w");
+ if (rejfp == ((void*)0))
+  pfatal("can't create %s", name);
 }

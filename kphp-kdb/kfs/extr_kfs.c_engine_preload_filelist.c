@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- void* engine_replica ; 
- scalar_t__* engine_replica_name ; 
- void* engine_snapshot_replica ; 
- scalar_t__* engine_snapshot_replica_name ; 
- scalar_t__* malloc (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char const*,int) ; 
- void* open_replica (scalar_t__*,int) ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
- scalar_t__* strdup (char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,char const*,int) ; 
+ int assert (int) ;
+ void* engine_replica ;
+ scalar_t__* engine_replica_name ;
+ void* engine_snapshot_replica ;
+ scalar_t__* engine_snapshot_replica_name ;
+ scalar_t__* malloc (int) ;
+ int memcpy (scalar_t__*,char const*,int) ;
+ void* open_replica (scalar_t__*,int) ;
+ int strcmp (char const*,char const*) ;
+ scalar_t__* strdup (char const*) ;
+ int strlen (char const*) ;
+ int strncmp (char const*,char const*,int) ;
 
 int engine_preload_filelist (const char *main_replica_name, const char *aux_replica_name) {
   int l = strlen (main_replica_name);
-  if (!aux_replica_name || !*aux_replica_name || !strcmp (aux_replica_name, ".bin") 
+  if (!aux_replica_name || !*aux_replica_name || !strcmp (aux_replica_name, ".bin")
      || !strcmp (aux_replica_name, main_replica_name)
      || (!strncmp (aux_replica_name, main_replica_name, l) && !strcmp (aux_replica_name + l, ".bin"))) {
     engine_snapshot_replica_name = engine_replica_name = strdup (main_replica_name);

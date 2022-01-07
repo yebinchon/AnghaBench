@@ -1,67 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int i64 ;
-struct TYPE_9__ {scalar_t__ eState; scalar_t__ xCodec; int hasHeldSharedLock; int errCode; int pageSize; int /*<<< orphan*/  fd; scalar_t__ tempFile; int /*<<< orphan*/  pWal; } ;
-typedef  int Pgno ;
-typedef  int /*<<< orphan*/  PgHdr ;
-typedef  TYPE_1__ Pager ;
-typedef  int /*<<< orphan*/  DbPage ;
 
-/* Variables and functions */
- int PAGER_GET_READONLY ; 
- scalar_t__ PAGER_READER ; 
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_OK ; 
- int USEFETCH (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int assert_pager_state (TYPE_1__*) ; 
- int getPageNormal (TYPE_1__*,int,int /*<<< orphan*/ **,int) ; 
- int pagerAcquireMapPage (TYPE_1__*,int,void*,int /*<<< orphan*/ **) ; 
- scalar_t__ pagerUseWal (TYPE_1__*) ; 
- int sqlite3OsFetch (int /*<<< orphan*/ ,int,int,void**) ; 
- int /*<<< orphan*/  sqlite3OsUnfetch (int /*<<< orphan*/ ,int,void*) ; 
- int /*<<< orphan*/ * sqlite3PagerLookup (TYPE_1__*,int) ; 
- int sqlite3WalFindFrame (int /*<<< orphan*/ ,int,scalar_t__*) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+typedef int i64 ;
+struct TYPE_9__ {scalar_t__ eState; scalar_t__ xCodec; int hasHeldSharedLock; int errCode; int pageSize; int fd; scalar_t__ tempFile; int pWal; } ;
+typedef int Pgno ;
+typedef int PgHdr ;
+typedef TYPE_1__ Pager ;
+typedef int DbPage ;
+
+
+ int PAGER_GET_READONLY ;
+ scalar_t__ PAGER_READER ;
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_OK ;
+ int USEFETCH (TYPE_1__*) ;
+ int assert (int) ;
+ int assert_pager_state (TYPE_1__*) ;
+ int getPageNormal (TYPE_1__*,int,int **,int) ;
+ int pagerAcquireMapPage (TYPE_1__*,int,void*,int **) ;
+ scalar_t__ pagerUseWal (TYPE_1__*) ;
+ int sqlite3OsFetch (int ,int,int,void**) ;
+ int sqlite3OsUnfetch (int ,int,void*) ;
+ int * sqlite3PagerLookup (TYPE_1__*,int) ;
+ int sqlite3WalFindFrame (int ,int,scalar_t__*) ;
 
 __attribute__((used)) static int getPageMMap(
-  Pager *pPager,      /* The pager open on the database file */
-  Pgno pgno,          /* Page number to fetch */
-  DbPage **ppPage,    /* Write a pointer to the page here */
-  int flags           /* PAGER_GET_XXX flags */
+  Pager *pPager,
+  Pgno pgno,
+  DbPage **ppPage,
+  int flags
 ){
   int rc = SQLITE_OK;
   PgHdr *pPg = 0;
-  u32 iFrame = 0;                 /* Frame to read from WAL file */
+  u32 iFrame = 0;
 
-  /* It is acceptable to use a read-only (mmap) page for any page except
-  ** page 1 if there is no write-transaction open or the ACQUIRE_READONLY
-  ** flag was specified by the caller. And so long as the db is not a
-  ** temporary or in-memory database.  */
+
+
+
+
   const int bMmapOk = (pgno>1
    && (pPager->eState==PAGER_READER || (flags & PAGER_GET_READONLY))
   );
 
   assert( USEFETCH(pPager) );
-#ifdef SQLITE_HAS_CODEC
-  assert( pPager->xCodec==0 );
-#endif
-
-  /* Optimization note:  Adding the "pgno<=1" term before "pgno==0" here
-  ** allows the compiler optimizer to reuse the results of the "pgno>1"
-  ** test in the previous statement, and avoid testing pgno==0 in the
-  ** common case where pgno is large. */
   if( pgno<=1 && pgno==0 ){
     return SQLITE_CORRUPT_BKPT;
   }

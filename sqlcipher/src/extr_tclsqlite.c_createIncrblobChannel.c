@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zChannel ;
-typedef  int /*<<< orphan*/  sqlite_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_blob ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  Tcl_Interp ;
-struct TYPE_6__ {int /*<<< orphan*/  channel; TYPE_1__* pDb; struct TYPE_6__* pPrev; struct TYPE_6__* pNext; int /*<<< orphan*/ * pBlob; scalar_t__ iSeek; } ;
-struct TYPE_5__ {TYPE_2__* pIncrblob; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ SqliteDb ;
-typedef  TYPE_2__ IncrblobChannel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IncrblobChannelType ; 
- int SQLITE_OK ; 
- int TCL_ERROR ; 
- int TCL_OK ; 
- int TCL_READABLE ; 
- int /*<<< orphan*/  TCL_VOLATILE ; 
- int TCL_WRITABLE ; 
- scalar_t__ Tcl_Alloc (int) ; 
- int /*<<< orphan*/  Tcl_CreateChannel (int /*<<< orphan*/ *,char*,TYPE_2__*,int) ; 
- scalar_t__ Tcl_GetChannelName (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_RegisterChannel (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_SetResult (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int sqlite3_blob_open (int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- scalar_t__ sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int zChannel ;
+typedef int sqlite_int64 ;
+typedef int sqlite3_blob ;
+typedef int sqlite3 ;
+typedef int Tcl_Interp ;
+struct TYPE_6__ {int channel; TYPE_1__* pDb; struct TYPE_6__* pPrev; struct TYPE_6__* pNext; int * pBlob; scalar_t__ iSeek; } ;
+struct TYPE_5__ {TYPE_2__* pIncrblob; int * db; } ;
+typedef TYPE_1__ SqliteDb ;
+typedef TYPE_2__ IncrblobChannel ;
+
+
+ int IncrblobChannelType ;
+ int SQLITE_OK ;
+ int TCL_ERROR ;
+ int TCL_OK ;
+ int TCL_READABLE ;
+ int TCL_VOLATILE ;
+ int TCL_WRITABLE ;
+ scalar_t__ Tcl_Alloc (int) ;
+ int Tcl_CreateChannel (int *,char*,TYPE_2__*,int) ;
+ scalar_t__ Tcl_GetChannelName (int ) ;
+ int Tcl_RegisterChannel (int *,int ) ;
+ int Tcl_SetResult (int *,char*,int ) ;
+ int sqlite3_blob_open (int *,char const*,char const*,char const*,int ,int,int **) ;
+ scalar_t__ sqlite3_errmsg (int *) ;
+ int sqlite3_snprintf (int,char*,char*,int) ;
 
 __attribute__((used)) static int createIncrblobChannel(
   Tcl_Interp *interp,
@@ -54,7 +54,7 @@ __attribute__((used)) static int createIncrblobChannel(
   int rc;
   int flags = TCL_READABLE|(isReadonly ? 0 : TCL_WRITABLE);
 
-  /* This variable is used to name the channels: "incrblob_[incr count]" */
+
   static int count = 0;
   char zChannel[64];
 
@@ -72,7 +72,7 @@ __attribute__((used)) static int createIncrblobChannel(
   p->channel = Tcl_CreateChannel(&IncrblobChannelType, zChannel, p, flags);
   Tcl_RegisterChannel(interp, p->channel);
 
-  /* Link the new channel into the SqliteDb.pIncrblob list. */
+
   p->pNext = pDb->pIncrblob;
   p->pPrev = 0;
   if( p->pNext ){

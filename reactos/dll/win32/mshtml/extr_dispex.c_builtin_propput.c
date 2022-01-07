@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {size_t tid; int /*<<< orphan*/  prop_vt; int /*<<< orphan*/  put_vtbl_off; } ;
-typedef  TYPE_1__ func_info_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_9__ {int cArgs; int cNamedArgs; scalar_t__* rgdispidNamedArgs; int /*<<< orphan*/ * rgvarg; } ;
-struct TYPE_8__ {int /*<<< orphan*/  outer; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ DispatchEx ;
-typedef  TYPE_3__ DISPPARAMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUILTIN_TYPES_SWITCH ; 
- scalar_t__ DISPID_PROPERTYPUT ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT_VARIANT ; 
- int /*<<< orphan*/  V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  change_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tid_ids ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {size_t tid; int prop_vt; int put_vtbl_off; } ;
+typedef TYPE_1__ func_info_t ;
+typedef int VARIANT ;
+struct TYPE_9__ {int cArgs; int cNamedArgs; scalar_t__* rgdispidNamedArgs; int * rgvarg; } ;
+struct TYPE_8__ {int outer; } ;
+typedef int IUnknown ;
+typedef int IServiceProvider ;
+typedef int HRESULT ;
+typedef TYPE_2__ DispatchEx ;
+typedef TYPE_3__ DISPPARAMS ;
+
+
+ int BUILTIN_TYPES_SWITCH ;
+ scalar_t__ DISPID_PROPERTYPUT ;
+ int E_FAIL ;
+ int E_INVALIDARG ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int IUnknown_QueryInterface (int ,int ,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int VT_VARIANT ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int change_type (int *,int *,int ,int *) ;
+ int * tid_ids ;
 
 __attribute__((used)) static HRESULT builtin_propput(DispatchEx *This, func_info_t *func, DISPPARAMS *dp, IServiceProvider *caller)
 {
@@ -69,12 +69,12 @@ __attribute__((used)) static HRESULT builtin_propput(DispatchEx *This, func_info
     hres = IUnknown_QueryInterface(This->outer, tid_ids[func->tid], (void**)&iface);
     if(SUCCEEDED(hres)) {
         switch(func->prop_vt) {
-#define CASE_VT(vt,type,access) \
-        case vt: \
-            hres = ((HRESULT (WINAPI*)(IUnknown*,type))((void**)iface->lpVtbl)[func->put_vtbl_off])(iface,access(v)); \
-            break
+
+
+
+
         BUILTIN_TYPES_SWITCH;
-#undef CASE_VT
+
         default:
             FIXME("Unimplemented vt %d\n", func->prop_vt);
             hres = E_NOTIMPL;

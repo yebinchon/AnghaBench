@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_shape_sk_t ;
-typedef  int /*<<< orphan*/  xcb_rectangle_t ;
-struct TYPE_10__ {int /*<<< orphan*/  id; } ;
-struct TYPE_7__ {int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int xcb_shape_sk_t ;
+typedef int xcb_rectangle_t ;
+struct TYPE_10__ {int id; } ;
+struct TYPE_7__ {int id; } ;
 struct TYPE_8__ {scalar_t__ y; scalar_t__ x; } ;
 struct TYPE_9__ {TYPE_1__ frame; TYPE_6__* window; scalar_t__ border_width; TYPE_2__ window_rect; } ;
-typedef  TYPE_3__ Con ;
+typedef TYPE_3__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XCB_CLIP_ORDERING_UNSORTED ; 
- int /*<<< orphan*/  XCB_SHAPE_SO_SET ; 
- int /*<<< orphan*/  XCB_SHAPE_SO_UNION ; 
- int /*<<< orphan*/  assert (TYPE_6__*) ; 
- int /*<<< orphan*/  conn ; 
- size_t x_get_border_rectangles (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_shape_combine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_shape_rectangles (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
+
+ int XCB_CLIP_ORDERING_UNSORTED ;
+ int XCB_SHAPE_SO_SET ;
+ int XCB_SHAPE_SO_UNION ;
+ int assert (TYPE_6__*) ;
+ int conn ;
+ size_t x_get_border_rectangles (TYPE_3__*,int *) ;
+ int xcb_shape_combine (int ,int ,int ,int ,int ,scalar_t__,scalar_t__,int ) ;
+ int xcb_shape_rectangles (int ,int ,int ,int ,int ,int ,int ,size_t,int *) ;
 
 __attribute__((used)) static void x_shape_frame(Con *con, xcb_shape_sk_t shape_kind) {
     assert(con->window);

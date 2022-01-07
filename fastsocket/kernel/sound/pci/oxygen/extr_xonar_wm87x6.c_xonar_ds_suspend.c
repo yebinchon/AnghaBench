@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct oxygen {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xonar_ds_cleanup (struct oxygen*) ; 
+
+ int xonar_ds_cleanup (struct oxygen*) ;
 
 __attribute__((used)) static void xonar_ds_suspend(struct oxygen *chip)
 {
-	xonar_ds_cleanup(chip);
+ xonar_ds_cleanup(chip);
 }

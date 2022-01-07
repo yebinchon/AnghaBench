@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kill {int how_often_length; int /*<<< orphan*/ * how_often_data; scalar_t__ how_often_set; int /*<<< orphan*/  action_data; int /*<<< orphan*/  weapon_data; } ;
+
+
+
+
+struct kill {int how_often_length; int * how_often_data; scalar_t__ how_often_set; int action_data; int weapon_data; } ;
 struct evbuffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KILL_ACTION ; 
- int /*<<< orphan*/  KILL_HOW_OFTEN ; 
- int /*<<< orphan*/  KILL_WEAPON ; 
- int /*<<< orphan*/  evtag_marshal_int (struct evbuffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  evtag_marshal_string (struct evbuffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int KILL_ACTION ;
+ int KILL_HOW_OFTEN ;
+ int KILL_WEAPON ;
+ int evtag_marshal_int (struct evbuffer*,int ,int ) ;
+ int evtag_marshal_string (struct evbuffer*,int ,int ) ;
 
 void
 kill_marshal(struct evbuffer *evbuf, const struct kill *tmp){

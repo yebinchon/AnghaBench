@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ lo; } ;
 struct TYPE_4__ {double dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- double T0 ; 
- double T1 ; 
- double T10 ; 
- double T11 ; 
- double T12 ; 
- double T2 ; 
- double T3 ; 
- double T4 ; 
- double T5 ; 
- double T6 ; 
- double T7 ; 
- double T8 ; 
- double T9 ; 
- int __HI (double) ; 
- int __LO (double) ; 
- double fabs (double) ; 
- double one ; 
- double pio4 ; 
- double pio4lo ; 
+
+ double T0 ;
+ double T1 ;
+ double T10 ;
+ double T11 ;
+ double T12 ;
+ double T2 ;
+ double T3 ;
+ double T4 ;
+ double T5 ;
+ double T6 ;
+ double T7 ;
+ double T8 ;
+ double T9 ;
+ int __HI (double) ;
+ int __LO (double) ;
+ double fabs (double) ;
+ double one ;
+ double pio4 ;
+ double pio4lo ;
 
 __attribute__((used)) static double
 __kernel_tan (double x, double y, int iy)
@@ -44,11 +44,11 @@ __kernel_tan (double x, double y, int iy)
   double r, v, w, s;
   int ix, hx;
 
-  hx = __HI (x); /* high word of x */
-  ix = hx & 0x7fffffff; /* high word of |x| */
-  if (ix < 0x3e300000) /* x < 2**-28 */
+  hx = __HI (x);
+  ix = hx & 0x7fffffff;
+  if (ix < 0x3e300000)
   {
-    if ((int) x == 0) /* generate inexact */
+    if ((int) x == 0)
     {
       if (((ix | __LO (x)) | (iy + 1)) == 0)
       {
@@ -60,7 +60,7 @@ __kernel_tan (double x, double y, int iy)
         {
           return x;
         }
-        else /* compute -1 / (x + y) carefully */
+        else
         {
           double a;
           double_accessor t;
@@ -76,7 +76,7 @@ __kernel_tan (double x, double y, int iy)
       }
     }
   }
-  if (ix >= 0x3FE59428) /* |x| >= 0.6744 */
+  if (ix >= 0x3FE59428)
   {
     if (hx < 0)
     {
@@ -90,11 +90,11 @@ __kernel_tan (double x, double y, int iy)
   }
   z.dbl = x * x;
   w = z.dbl * z.dbl;
-  /*
-   * Break x^5 * (T[1] + x^2 * T[2] + ...) into
-   * x^5 (T[1] + x^4 * T[3] + ... + x^20 * T[11]) +
-   * x^5 (x^2 * (T[2] + x^4 * T[4] + ... + x^22 * [T12]))
-   */
+
+
+
+
+
   r = T1 + w * (T3 + w * (T5 + w * (T7 + w * (T9 + w * T11))));
   v = z.dbl * (T2 + w * (T4 + w * (T6 + w * (T8 + w * (T10 + w * T12)))));
   s = z.dbl * x;
@@ -112,18 +112,18 @@ __kernel_tan (double x, double y, int iy)
   }
   else
   {
-    /*
-     * if allow error up to 2 ulp, simply return
-     * -1.0 / (x + r) here
-     */
-    /* compute -1.0 / (x + r) accurately */
+
+
+
+
+
     double a;
     double_accessor t;
 
     z.dbl = w;
     z.as_int.lo = 0;
-    v = r - (z.dbl - x); /* z + v = r + x */
-    t.dbl = a = -1.0 / w; /* a = -1.0 / w */
+    v = r - (z.dbl - x);
+    t.dbl = a = -1.0 / w;
     t.as_int.lo = 0;
     s = 1.0 + t.dbl * z.dbl;
     return t.dbl + a * (s + t.dbl * v);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  IsGoodVal (char*,int /*<<< orphan*/ ,double,double) ; 
- int /*<<< orphan*/ * cmsBuildGamma (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  cmsEstimateGamma (int /*<<< orphan*/ ,int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  cmsFreeToneCurveTriple (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSigVcgtTag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef int cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int IsGoodVal (char*,int ,double,double) ;
+ int * cmsBuildGamma (int ,double) ;
+ int cmsEstimateGamma (int ,int *,double) ;
+ int cmsFreeToneCurveTriple (int ,int **) ;
+ scalar_t__ cmsReadTag (int ,int ,int ) ;
+ int cmsSigVcgtTag ;
+ int cmsWriteTag (int ,int ,int ,int **) ;
 
 __attribute__((used)) static
-cmsInt32Number CheckVCGT(cmsInt32Number Pass,  cmsHPROFILE hProfile)
+cmsInt32Number CheckVCGT(cmsInt32Number Pass, cmsHPROFILE hProfile)
 {
     cmsToneCurve* Curves[3];
     cmsToneCurve** PtrCurve;
@@ -46,7 +46,7 @@ cmsInt32Number CheckVCGT(cmsInt32Number Pass,  cmsHPROFILE hProfile)
         case 2:
 
              PtrCurve = (cmsToneCurve **) cmsReadTag(DbgThread(), hProfile, cmsSigVcgtTag);
-             if (PtrCurve == NULL) return 0;
+             if (PtrCurve == ((void*)0)) return 0;
              if (!IsGoodVal("VCGT R", cmsEstimateGamma(DbgThread(), PtrCurve[0], 0.01), 1.1, 0.001)) return 0;
              if (!IsGoodVal("VCGT G", cmsEstimateGamma(DbgThread(), PtrCurve[1], 0.01), 2.2, 0.001)) return 0;
              if (!IsGoodVal("VCGT B", cmsEstimateGamma(DbgThread(), PtrCurve[2], 0.01), 3.4, 0.001)) return 0;

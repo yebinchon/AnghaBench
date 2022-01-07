@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TSKEY ;
 
-/* Variables and functions */
+
+
+
+typedef scalar_t__ TSKEY ;
+
+
 
 int vnodeInterpolationSearchKey(char *pValue, int num, TSKEY key, int order) {
-  int    firstPos, lastPos, midPos = -1;
-  int    delta, numOfPoints;
+  int firstPos, lastPos, midPos = -1;
+  int delta, numOfPoints;
   TSKEY *keyList;
 
   keyList = (TSKEY *)pValue;
@@ -24,7 +24,7 @@ int vnodeInterpolationSearchKey(char *pValue, int num, TSKEY key, int order) {
   lastPos = num - 1;
 
   if (order == 0) {
-    // from latest to oldest
+
     while (1) {
       if (key >= keyList[lastPos]) return lastPos;
       if (key == keyList[firstPos]) return firstPos;
@@ -44,7 +44,7 @@ int vnodeInterpolationSearchKey(char *pValue, int num, TSKEY key, int order) {
     }
 
   } else {
-    // from oldest to latest
+
     while (1) {
       if (key <= keyList[firstPos]) return firstPos;
       if (key == keyList[lastPos]) return lastPos;

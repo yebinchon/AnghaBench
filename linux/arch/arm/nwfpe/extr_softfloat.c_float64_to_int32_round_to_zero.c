@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32 ;
-typedef  int int16 ;
-typedef  int /*<<< orphan*/  float64 ;
-typedef  int flag ;
-typedef  int bits64 ;
 
-/* Variables and functions */
- int LIT64 (int) ; 
- int extractFloat64Exp (int /*<<< orphan*/ ) ; 
- int extractFloat64Frac (int /*<<< orphan*/ ) ; 
- int extractFloat64Sign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  float_flag_inexact ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- int /*<<< orphan*/  float_raise (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32 ;
+typedef int int16 ;
+typedef int float64 ;
+typedef int flag ;
+typedef int bits64 ;
+
+
+ int LIT64 (int) ;
+ int extractFloat64Exp (int ) ;
+ int extractFloat64Frac (int ) ;
+ int extractFloat64Sign (int ) ;
+ int float_flag_inexact ;
+ int float_flag_invalid ;
+ int float_raise (int ) ;
 
 int32 float64_to_int32_round_to_zero( float64 a )
 {

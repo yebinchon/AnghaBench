@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  out ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int out ;
 struct TYPE_8__ {unsigned char* data; size_t size; } ;
 struct TYPE_7__ {unsigned char* data; } ;
 struct TYPE_6__ {unsigned char* data; size_t size; } ;
 struct TYPE_9__ {TYPE_3__ expected; TYPE_2__ key; TYPE_1__ input; } ;
-typedef  TYPE_4__ TESTDATA ;
-typedef  int /*<<< orphan*/  POLY1305 ;
+typedef TYPE_4__ TESTDATA ;
+typedef int POLY1305 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Poly1305_Final (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  Poly1305_Init (int /*<<< orphan*/ *,unsigned char const*) ; 
- int /*<<< orphan*/  Poly1305_Update (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  TEST_info (char*,int,...) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  TEST_size_t_eq (size_t,int) ; 
- TYPE_4__* tests ; 
+
+ int Poly1305_Final (int *,unsigned char*) ;
+ int Poly1305_Init (int *,unsigned char const*) ;
+ int Poly1305_Update (int *,unsigned char const*,size_t) ;
+ int TEST_info (char*,int,...) ;
+ int TEST_mem_eq (unsigned char*,size_t,unsigned char const*,size_t) ;
+ int TEST_size_t_eq (size_t,int) ;
+ TYPE_4__* tests ;
 
 __attribute__((used)) static int test_poly1305(int idx)
 {

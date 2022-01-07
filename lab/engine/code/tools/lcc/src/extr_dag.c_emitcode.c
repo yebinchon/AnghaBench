@@ -1,111 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  (* defaddress ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* stabsym ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* emit ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* stabline ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* stabblock ) (char,scalar_t__,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int (* defaddress ) (int ) ;int (* stabsym ) (int ) ;int (* emit ) (int ) ;int (* stabline ) (int *) ;int (* stabblock ) (char,scalar_t__,int ) ;} ;
 struct TYPE_13__ {TYPE_5__* next; } ;
-struct TYPE_10__ {int size; long* values; int /*<<< orphan*/ * labels; int /*<<< orphan*/  deflab; int /*<<< orphan*/  table; } ;
-struct TYPE_9__ {int /*<<< orphan*/  src; } ;
-struct TYPE_8__ {int /*<<< orphan*/  locals; scalar_t__ level; int /*<<< orphan*/  types; int /*<<< orphan*/  identifiers; } ;
-struct TYPE_11__ {TYPE_3__ swtch; int /*<<< orphan*/  var; int /*<<< orphan*/  forest; TYPE_2__ point; TYPE_1__ block; TYPE_5__* begin; } ;
+struct TYPE_10__ {int size; long* values; int * labels; int deflab; int table; } ;
+struct TYPE_9__ {int src; } ;
+struct TYPE_8__ {int locals; scalar_t__ level; int types; int identifiers; } ;
+struct TYPE_11__ {TYPE_3__ swtch; int var; int forest; TYPE_2__ point; TYPE_1__ block; TYPE_5__* begin; } ;
 struct TYPE_12__ {int kind; TYPE_4__ u; struct TYPE_12__* next; } ;
-typedef  int /*<<< orphan*/  Coordinate ;
-typedef  TYPE_5__* Code ;
+typedef int Coordinate ;
+typedef TYPE_5__* Code ;
 
-/* Variables and functions */
-#define  Address 136 
-#define  Blockbeg 135 
-#define  Blockend 134 
- int /*<<< orphan*/  CODE ; 
-#define  Defpoint 133 
-#define  Gen 132 
- TYPE_7__* IR ; 
-#define  Jump 131 
- int /*<<< orphan*/  LIT ; 
- scalar_t__ LOCAL ; 
- long LONG_MAX ; 
-#define  Label 130 
-#define  Local 129 
-#define  Switch 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_6__ codehead ; 
- int /*<<< orphan*/  defglobal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  equated (int /*<<< orphan*/ ) ; 
- scalar_t__ errcnt ; 
- int /*<<< orphan*/  foreach (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glevel ; 
- int /*<<< orphan*/  src ; 
- int /*<<< orphan*/  stub1 (char,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (char,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  swtoseg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  typestab ; 
+
+
+
+
+ int CODE ;
+
+
+ TYPE_7__* IR ;
+
+ int LIT ;
+ scalar_t__ LOCAL ;
+ long LONG_MAX ;
+
+
+
+ int assert (int ) ;
+ TYPE_6__ codehead ;
+ int defglobal (int ,int ) ;
+ int equated (int ) ;
+ scalar_t__ errcnt ;
+ int foreach (int ,scalar_t__,int ,int *) ;
+ int glevel ;
+ int src ;
+ int stub1 (char,scalar_t__,int ) ;
+ int stub2 (char,scalar_t__,int ) ;
+ int stub3 (int *) ;
+ int stub4 (int ) ;
+ int stub5 (int ) ;
+ int stub6 (int ) ;
+ int stub7 (int ) ;
+ int stub8 (int ) ;
+ int swtoseg (int ) ;
+ int typestab ;
 
 void emitcode(void) {
-	Code cp;
-	Coordinate save;
+ Code cp;
+ Coordinate save;
 
-	save = src;
-	cp = codehead.next;
-	for ( ; errcnt <= 0 && cp; cp = cp->next)
-		switch (cp->kind) {
-		case Address: break;
-		case Blockbeg: if (glevel && IR->stabblock) {
-			       	(*IR->stabblock)('{',  cp->u.block.level - LOCAL, cp->u.block.locals);
-			       	swtoseg(CODE);
-			       }
+ save = src;
+ cp = codehead.next;
+ for ( ; errcnt <= 0 && cp; cp = cp->next)
+  switch (cp->kind) {
+  case 136: break;
+  case 135: if (glevel && IR->stabblock) {
+           (*IR->stabblock)('{', cp->u.block.level - LOCAL, cp->u.block.locals);
+           swtoseg(CODE);
+          }
  break;
-		case Blockend: if (glevel && IR->stabblock) {
-			       	Code bp = cp->u.begin;
-			       	foreach(bp->u.block.identifiers, bp->u.block.level, typestab, NULL);
-			       	foreach(bp->u.block.types,       bp->u.block.level, typestab, NULL);
-			       	(*IR->stabblock)('}', bp->u.block.level - LOCAL, bp->u.block.locals);
-			       	swtoseg(CODE);
-			       }
+  case 134: if (glevel && IR->stabblock) {
+           Code bp = cp->u.begin;
+           foreach(bp->u.block.identifiers, bp->u.block.level, typestab, ((void*)0));
+           foreach(bp->u.block.types, bp->u.block.level, typestab, ((void*)0));
+           (*IR->stabblock)('}', bp->u.block.level - LOCAL, bp->u.block.locals);
+           swtoseg(CODE);
+          }
  break;
-		case Defpoint: src = cp->u.point.src;
-			       if (glevel > 0 && IR->stabline) {
-			       	(*IR->stabline)(&cp->u.point.src); swtoseg(CODE); } break;
-		case Gen: case Jump:
-		case Label:    if (cp->u.forest)
-			       	(*IR->emit)(cp->u.forest); break;
-		case Local:    if (glevel && IR->stabsym) {
-			       	(*IR->stabsym)(cp->u.var);
-			       	swtoseg(CODE);
-			       } break;
-		case Switch:   {	int i;
-			       	defglobal(cp->u.swtch.table, LIT);
-			       	(*IR->defaddress)(equated(cp->u.swtch.labels[0]));
-			       	for (i = 1; i < cp->u.swtch.size; i++) {
-			       		long k = cp->u.swtch.values[i-1];
-			       		while (++k < cp->u.swtch.values[i])
-			       			assert(k < LONG_MAX),
-			       			(*IR->defaddress)(equated(cp->u.swtch.deflab));
-			       		(*IR->defaddress)(equated(cp->u.swtch.labels[i]));
-			       	}
-			       	swtoseg(CODE);
-			       } break;
-		default: assert(0);
-		}
-	src = save;
+  case 133: src = cp->u.point.src;
+          if (glevel > 0 && IR->stabline) {
+           (*IR->stabline)(&cp->u.point.src); swtoseg(CODE); } break;
+  case 132: case 131:
+  case 130: if (cp->u.forest)
+           (*IR->emit)(cp->u.forest); break;
+  case 129: if (glevel && IR->stabsym) {
+           (*IR->stabsym)(cp->u.var);
+           swtoseg(CODE);
+          } break;
+  case 128: { int i;
+           defglobal(cp->u.swtch.table, LIT);
+           (*IR->defaddress)(equated(cp->u.swtch.labels[0]));
+           for (i = 1; i < cp->u.swtch.size; i++) {
+            long k = cp->u.swtch.values[i-1];
+            while (++k < cp->u.swtch.values[i])
+             assert(k < LONG_MAX),
+             (*IR->defaddress)(equated(cp->u.swtch.deflab));
+            (*IR->defaddress)(equated(cp->u.swtch.labels[i]));
+           }
+           swtoseg(CODE);
+          } break;
+  default: assert(0);
+  }
+ src = save;
 }

@@ -1,71 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_2__ {int nFocusPanel; int /*<<< orphan*/  hTreeWnd; int /*<<< orphan*/  hListWnd; } ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HTREEITEM ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyKeyName (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateNewKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteNode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExportRegistryFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FindDialog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetItemPath (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
-#define  ID_EDIT_COPYKEYNAME 141 
-#define  ID_EDIT_FIND 140 
-#define  ID_EDIT_NEW_BINARYVALUE 139 
-#define  ID_EDIT_NEW_DWORDVALUE 138 
-#define  ID_EDIT_NEW_KEY 137 
-#define  ID_EDIT_NEW_STRINGVALUE 136 
-#define  ID_REGISTRY_EXIT 135 
-#define  ID_SWITCH_PANELS 134 
-#define  ID_TREE_COLLAPSEBRANCH 133 
-#define  ID_TREE_DELETE 132 
-#define  ID_TREE_EXPANDBRANCH 131 
-#define  ID_TREE_EXPORT 130 
-#define  ID_TREE_RENAME 129 
- int ID_TREE_SUGGESTION_MAX ; 
- int ID_TREE_SUGGESTION_MIN ; 
-#define  ID_VIEW_REFRESH 128 
- int LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MB_ICONHAND ; 
- int /*<<< orphan*/  MessageBeep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectNode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetFocus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Suggestions ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TVE_COLLAPSE ; 
- int /*<<< orphan*/  TVE_EXPAND ; 
- int /*<<< orphan*/  TreeView_EditLabel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TreeView_Expand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TreeView_GetSelection (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UNREFERENCED_PARAMETER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_COMMAND ; 
- TYPE_1__* g_pChildWnd ; 
- int /*<<< orphan*/  hFrameWnd ; 
- int /*<<< orphan*/  wcslen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int WORD ;
+typedef int UINT ;
+struct TYPE_2__ {int nFocusPanel; int hTreeWnd; int hListWnd; } ;
+typedef int * LPCWSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int HTREEITEM ;
+typedef int HKEY ;
+typedef int BOOL ;
+
+
+ int CopyKeyName (int ,int ,int *) ;
+ int CreateNewKey (int ,int ) ;
+ int DeleteKey (int ,int ,int *) ;
+ int DeleteNode (int ,int ) ;
+ int DestroyWindow (int ) ;
+ int ExportRegistryFile (int ) ;
+ int FALSE ;
+ int FindDialog (int ) ;
+ int * GetItemPath (int ,int ,int *) ;
+ int ID_TREE_SUGGESTION_MAX ;
+ int ID_TREE_SUGGESTION_MIN ;
+
+ int LOWORD (int ) ;
+ int MB_ICONHAND ;
+ int MessageBeep (int ) ;
+ int SelectNode (int ,int *) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int SetFocus (int ) ;
+ int * Suggestions ;
+ int TRUE ;
+ int TVE_COLLAPSE ;
+ int TVE_EXPAND ;
+ int TreeView_EditLabel (int ,int ) ;
+ int TreeView_Expand (int ,int ,int ) ;
+ int TreeView_GetSelection (int ) ;
+ int UNREFERENCED_PARAMETER (int ) ;
+ int WM_COMMAND ;
+ TYPE_1__* g_pChildWnd ;
+ int hFrameWnd ;
+ int wcslen (int *) ;
 
 __attribute__((used)) static BOOL ChildWnd_CmdWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -78,24 +65,24 @@ __attribute__((used)) static BOOL ChildWnd_CmdWndProc(HWND hWnd, UINT message, W
 
     switch (wID)
     {
-        /* Parse the menu selections: */
-    case ID_REGISTRY_EXIT:
+
+    case 135:
         DestroyWindow(hWnd);
         break;
-    case ID_VIEW_REFRESH:
-        /* TODO */
+    case 128:
+
         break;
-    case ID_TREE_EXPANDBRANCH:
+    case 131:
         TreeView_Expand(g_pChildWnd->hTreeWnd, TreeView_GetSelection(g_pChildWnd->hTreeWnd), TVE_EXPAND);
         break;
-    case ID_TREE_COLLAPSEBRANCH:
+    case 133:
         TreeView_Expand(g_pChildWnd->hTreeWnd, TreeView_GetSelection(g_pChildWnd->hTreeWnd), TVE_COLLAPSE);
         break;
-    case ID_TREE_RENAME:
+    case 129:
         SetFocus(g_pChildWnd->hTreeWnd);
         TreeView_EditLabel(g_pChildWnd->hTreeWnd, TreeView_GetSelection(g_pChildWnd->hTreeWnd));
         break;
-    case ID_TREE_DELETE:
+    case 132:
         hSelection = TreeView_GetSelection(g_pChildWnd->hTreeWnd);
         keyPath = GetItemPath(g_pChildWnd->hTreeWnd, hSelection, &hRootKey);
 
@@ -106,26 +93,26 @@ __attribute__((used)) static BOOL ChildWnd_CmdWndProc(HWND hWnd, UINT message, W
         else if (DeleteKey(hWnd, hRootKey, keyPath))
             DeleteNode(g_pChildWnd->hTreeWnd, 0);
         break;
-    case ID_TREE_EXPORT:
+    case 130:
         ExportRegistryFile(g_pChildWnd->hTreeWnd);
         break;
-    case ID_EDIT_FIND:
+    case 140:
         FindDialog(hWnd);
         break;
-    case ID_EDIT_COPYKEYNAME:
+    case 141:
         hSelection = TreeView_GetSelection(g_pChildWnd->hTreeWnd);
         keyPath = GetItemPath(g_pChildWnd->hTreeWnd, hSelection, &hRootKey);
         CopyKeyName(hWnd, hRootKey, keyPath);
         break;
-    case ID_EDIT_NEW_KEY:
+    case 137:
         CreateNewKey(g_pChildWnd->hTreeWnd, TreeView_GetSelection(g_pChildWnd->hTreeWnd));
         break;
-    case ID_EDIT_NEW_STRINGVALUE:
-    case ID_EDIT_NEW_BINARYVALUE:
-    case ID_EDIT_NEW_DWORDVALUE:
+    case 136:
+    case 139:
+    case 138:
         SendMessageW(hFrameWnd, WM_COMMAND, wParam, lParam);
         break;
-    case ID_SWITCH_PANELS:
+    case 134:
         g_pChildWnd->nFocusPanel = !g_pChildWnd->nFocusPanel;
         SetFocus(g_pChildWnd->nFocusPanel? g_pChildWnd->hListWnd: g_pChildWnd->hTreeWnd);
         break;

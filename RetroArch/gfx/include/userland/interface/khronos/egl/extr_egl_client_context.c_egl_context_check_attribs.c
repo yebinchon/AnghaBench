@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int EGLint ;
-typedef  int /*<<< orphan*/  EGLBoolean ;
 
-/* Variables and functions */
-#define  EGL_CONTEXT_CLIENT_VERSION 129 
- int /*<<< orphan*/  EGL_FALSE ; 
-#define  EGL_NONE 128 
- int /*<<< orphan*/  EGL_TRUE ; 
+
+
+
+typedef int EGLint ;
+typedef int EGLBoolean ;
+
+
+
+ int EGL_FALSE ;
+
+ int EGL_TRUE ;
 
 EGLBoolean egl_context_check_attribs(const EGLint *attrib_list, EGLint max_version, EGLint *version)
 {
@@ -26,7 +26,7 @@ EGLBoolean egl_context_check_attribs(const EGLint *attrib_list, EGLint max_versi
 
    while (1) {
       switch (*attrib_list++) {
-      case EGL_CONTEXT_CLIENT_VERSION:
+      case 129:
       {
          EGLint value = *attrib_list++;
 
@@ -37,7 +37,7 @@ EGLBoolean egl_context_check_attribs(const EGLint *attrib_list, EGLint max_versi
 
          break;
       }
-      case EGL_NONE:
+      case 128:
          return EGL_TRUE;
       default:
          return EGL_FALSE;

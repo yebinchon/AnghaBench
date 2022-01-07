@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  fatal (int /*<<< orphan*/ ,char const*,char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* mcset_mc_basename ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*,char*,char const*) ; 
- size_t strlen (char const*) ; 
- char* xmalloc (size_t) ; 
+
+
+
+typedef int FILE ;
+
+
+ int _ (char*) ;
+ int fatal (int ,char const*,char*) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ char* mcset_mc_basename ;
+ int sprintf (char*,char*,char const*,char*,char const*) ;
+ size_t strlen (char const*) ;
+ char* xmalloc (size_t) ;
 
 __attribute__((used)) static FILE *
 mc_create_path_text_file (const char *path, const char *ext)
@@ -29,13 +29,13 @@ mc_create_path_text_file (const char *path, const char *ext)
   size_t len = 1;
   char *hsz;
 
-  len += (path != NULL ? strlen (path) : 0);
+  len += (path != ((void*)0) ? strlen (path) : 0);
   len += strlen (mcset_mc_basename);
-  len += (ext != NULL ? strlen (ext) : 0);
+  len += (ext != ((void*)0) ? strlen (ext) : 0);
   hsz = xmalloc (len);
-  sprintf (hsz, "%s%s%s", (path != NULL ? path : ""), mcset_mc_basename,
-    (ext != NULL ? ext : ""));
-  if ((ret = fopen (hsz, "wb")) == NULL)
+  sprintf (hsz, "%s%s%s", (path != ((void*)0) ? path : ""), mcset_mc_basename,
+    (ext != ((void*)0) ? ext : ""));
+  if ((ret = fopen (hsz, "wb")) == ((void*)0))
     fatal (_("can't create %s file ,%s' for output.\n"), (ext ? ext : "text"), hsz);
   free (hsz);
   return ret;

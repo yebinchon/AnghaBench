@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ida {int /*<<< orphan*/  idr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  idr_remove (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct ida {int idr; } ;
+
+
+ int idr_remove (int *,int) ;
 
 void
 ida_remove(struct ida *ida, int id)
 {
-	idr_remove(&ida->idr, id);
+ idr_remove(&ida->idr, id);
 }

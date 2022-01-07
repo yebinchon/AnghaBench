@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_7__ {int /*<<< orphan*/  ITypeInfo2_iface; } ;
-struct TYPE_6__ {int /*<<< orphan*/  cbAlignment; int /*<<< orphan*/  cbSizeInstance; } ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  TYPE_2__ ITypeInfoImpl ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HREFTYPE ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeInfo2_GetRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  S_OK ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int ULONG ;
+struct TYPE_7__ {int ITypeInfo2_iface; } ;
+struct TYPE_6__ {int cbAlignment; int cbSizeInstance; } ;
+typedef TYPE_1__ TYPEATTR ;
+typedef TYPE_2__ ITypeInfoImpl ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+typedef int HREFTYPE ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int ITypeInfo2_GetRefTypeInfo (int *,int ,int **) ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT TLB_get_size_from_hreftype(ITypeInfoImpl *info, HREFTYPE href,
         ULONG *size, WORD *align)

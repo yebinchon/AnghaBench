@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct stm32_ready_gate {int /*<<< orphan*/  bit_rdy; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct stm32_ready_gate {int bit_rdy; } ;
 struct clk_hw {int dummy; } ;
-struct clk_gate {int /*<<< orphan*/  reg; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* disable ) (struct clk_hw*) ;int /*<<< orphan*/  (* is_enabled ) (struct clk_hw*) ;} ;
+struct clk_gate {int reg; } ;
+struct TYPE_2__ {int (* disable ) (struct clk_hw*) ;int (* is_enabled ) (struct clk_hw*) ;} ;
 
-/* Variables and functions */
- int BIT (int /*<<< orphan*/ ) ; 
- unsigned int RGATE_TIMEOUT ; 
- TYPE_1__ clk_gate_ops ; 
- int readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct clk_hw*) ; 
- int /*<<< orphan*/  stub2 (struct clk_hw*) ; 
- struct clk_gate* to_clk_gate (struct clk_hw*) ; 
- struct stm32_ready_gate* to_ready_gate_clk (struct clk_gate*) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int BIT (int ) ;
+ unsigned int RGATE_TIMEOUT ;
+ TYPE_1__ clk_gate_ops ;
+ int readl (int ) ;
+ int stub1 (struct clk_hw*) ;
+ int stub2 (struct clk_hw*) ;
+ struct clk_gate* to_clk_gate (struct clk_hw*) ;
+ struct stm32_ready_gate* to_ready_gate_clk (struct clk_gate*) ;
+ int udelay (int) ;
 
 __attribute__((used)) static void ready_gate_clk_disable(struct clk_hw *hw)
 {
-	struct clk_gate *gate = to_clk_gate(hw);
-	struct stm32_ready_gate *rgate = to_ready_gate_clk(gate);
-	int bit_status;
-	unsigned int timeout = RGATE_TIMEOUT;
+ struct clk_gate *gate = to_clk_gate(hw);
+ struct stm32_ready_gate *rgate = to_ready_gate_clk(gate);
+ int bit_status;
+ unsigned int timeout = RGATE_TIMEOUT;
 
-	if (!clk_gate_ops.is_enabled(hw))
-		return;
+ if (!clk_gate_ops.is_enabled(hw))
+  return;
 
-	clk_gate_ops.disable(hw);
+ clk_gate_ops.disable(hw);
 
-	do {
-		bit_status = !!(readl(gate->reg) & BIT(rgate->bit_rdy));
+ do {
+  bit_status = !!(readl(gate->reg) & BIT(rgate->bit_rdy));
 
-		if (bit_status)
-			udelay(100);
+  if (bit_status)
+   udelay(100);
 
-	} while (bit_status && --timeout);
+ } while (bit_status && --timeout);
 }

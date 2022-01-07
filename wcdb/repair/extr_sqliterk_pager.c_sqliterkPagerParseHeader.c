@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int pagesize; int integrity; int freepagecount; int reservedBytes; int pagecount; size_t usableSize; int /*<<< orphan*/  file; scalar_t__ codec; } ;
-typedef  TYPE_1__ sqliterk_pager ;
 
-/* Variables and functions */
- int SQLITERK_DAMAGED ; 
- int SQLITERK_INTEGRITY_HEADER ; 
- int SQLITERK_MISUSE ; 
- int SQLITERK_NOMEM ; 
- int SQLITERK_OK ; 
- int SQLITERK_SHORT_READ ; 
- void* SQLITRK_CONFIG_DEFAULT_PAGESIZE ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ memcmp (unsigned char*,char*,int) ; 
- int sqliterkCryptoDecode (scalar_t__,int,unsigned char*) ; 
- int /*<<< orphan*/  sqliterkOSError (int,char*,...) ; 
- int sqliterkOSFileSize (int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  sqliterkOSFree (unsigned char*) ; 
- int /*<<< orphan*/  sqliterkOSGetFilePath (int /*<<< orphan*/ ) ; 
- unsigned char* sqliterkOSMalloc (size_t) ; 
- int sqliterkOSRead (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  sqliterkOSWarning (int,char*,...) ; 
- int /*<<< orphan*/  sqliterkParseInt (unsigned char*,int,int,int*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pagesize; int integrity; int freepagecount; int reservedBytes; int pagecount; size_t usableSize; int file; scalar_t__ codec; } ;
+typedef TYPE_1__ sqliterk_pager ;
+
+
+ int SQLITERK_DAMAGED ;
+ int SQLITERK_INTEGRITY_HEADER ;
+ int SQLITERK_MISUSE ;
+ int SQLITERK_NOMEM ;
+ int SQLITERK_OK ;
+ int SQLITERK_SHORT_READ ;
+ void* SQLITRK_CONFIG_DEFAULT_PAGESIZE ;
+ int errno ;
+ scalar_t__ memcmp (unsigned char*,char*,int) ;
+ int sqliterkCryptoDecode (scalar_t__,int,unsigned char*) ;
+ int sqliterkOSError (int,char*,...) ;
+ int sqliterkOSFileSize (int ,size_t*) ;
+ int sqliterkOSFree (unsigned char*) ;
+ int sqliterkOSGetFilePath (int ) ;
+ unsigned char* sqliterkOSMalloc (size_t) ;
+ int sqliterkOSRead (int ,int ,unsigned char*,size_t*) ;
+ int sqliterkOSWarning (int,char*,...) ;
+ int sqliterkParseInt (unsigned char*,int,int,int*) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager, int forcePageSize)
 {
-    // For encrypted databases, assume default page size, decode the first
-    // page, and we have the plain-text header.
+
+
 
     if (!pager) {
         return SQLITERK_MISUSE;
     }
     int rc = SQLITERK_OK;
 
-    // Overwrite pager page size if forcePageSize is specified.
+
     if (forcePageSize) {
         pager->pagesize = forcePageSize;
     }
 
     size_t size = pager->codec ? pager->pagesize : 100;
 
-    // Read data
+
     unsigned char *buffer = sqliterkOSMalloc(size);
     if (!buffer) {
         rc = SQLITERK_NOMEM;
@@ -85,11 +85,11 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
 
     if (pager->integrity & SQLITERK_INTEGRITY_HEADER) {
         if (memcmp(buffer, "SQLite format 3\000", 16) == 0) {
-            //parse pagesize
+
             int pagesize;
             sqliterkParseInt(buffer, 16, 2, &pagesize);
             if (pager->codec || forcePageSize) {
-                // Page size is predefined, check whether it matches the header.
+
                 if (pagesize != pager->pagesize) {
                     sqliterkOSWarning(
                         SQLITERK_DAMAGED,
@@ -98,8 +98,8 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
                     pager->integrity &= ~SQLITERK_INTEGRITY_HEADER;
                 }
             } else if (((pagesize - 1) & pagesize) != 0 || pagesize < 512) {
-                // Page size is not predefined and value in the header is invalid,
-                // use the default page size.
+
+
                 sqliterkOSWarning(SQLITERK_DAMAGED,
                                   "Page size field is corrupted. Default page "
                                   "size %d is used",
@@ -107,15 +107,15 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
                 pager->pagesize = SQLITRK_CONFIG_DEFAULT_PAGESIZE;
                 pager->integrity &= ~SQLITERK_INTEGRITY_HEADER;
             } else {
-                // Page size is not predefined and value in the header is valid,
-                // use the value in header.
+
+
                 pager->pagesize = pagesize;
             }
 
-            // parse free page count
+
             sqliterkParseInt(buffer, 36, 4, &pager->freepagecount);
 
-            // parse reserved bytes
+
             int reservedBytes;
             sqliterkParseInt(buffer, 20, 1, &reservedBytes);
             if (pager->codec) {
@@ -135,7 +135,7 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
             } else
                 pager->reservedBytes = reservedBytes;
         } else {
-            // Header is corrupted. Defaults the config
+
             sqliterkOSWarning(SQLITERK_DAMAGED,
                               "SQLite format magic corrupted.");
             if (!pager->codec) {
@@ -147,7 +147,7 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
         }
     }
 
-    // Assign page count
+
     size_t filesize;
     rc = sqliterkOSFileSize(pager->file, &filesize);
     if (rc != SQLITERK_OK) {
@@ -164,7 +164,7 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
         goto sqliterkPagerParseHeader_End;
     }
 
-    // Check free page
+
     if (pager->freepagecount < 0 || pager->freepagecount > pager->pagecount) {
         sqliterkOSWarning(
             SQLITERK_DAMAGED,
@@ -173,7 +173,7 @@ __attribute__((used)) static int sqliterkPagerParseHeader(sqliterk_pager *pager,
         pager->integrity &= ~SQLITERK_INTEGRITY_HEADER;
     }
 
-    // Assign usableSize
+
     pager->usableSize = pager->pagesize - pager->reservedBytes;
 
 sqliterkPagerParseHeader_End:

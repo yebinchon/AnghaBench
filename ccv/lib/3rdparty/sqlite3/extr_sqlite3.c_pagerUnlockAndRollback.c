@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ eState; int /*<<< orphan*/  exclusiveMode; } ;
-typedef  TYPE_1__ Pager ;
 
-/* Variables and functions */
- scalar_t__ PAGER_ERROR ; 
- scalar_t__ PAGER_OPEN ; 
- scalar_t__ PAGER_READER ; 
- scalar_t__ PAGER_WRITER_LOCKED ; 
- int /*<<< orphan*/  assert (int) ; 
- int assert_pager_state (TYPE_1__*) ; 
- int /*<<< orphan*/  pager_end_transaction (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pager_unlock (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3BeginBenignMalloc () ; 
- int /*<<< orphan*/  sqlite3EndBenignMalloc () ; 
- int /*<<< orphan*/  sqlite3PagerRollback (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ eState; int exclusiveMode; } ;
+typedef TYPE_1__ Pager ;
+
+
+ scalar_t__ PAGER_ERROR ;
+ scalar_t__ PAGER_OPEN ;
+ scalar_t__ PAGER_READER ;
+ scalar_t__ PAGER_WRITER_LOCKED ;
+ int assert (int) ;
+ int assert_pager_state (TYPE_1__*) ;
+ int pager_end_transaction (TYPE_1__*,int ,int ) ;
+ int pager_unlock (TYPE_1__*) ;
+ int sqlite3BeginBenignMalloc () ;
+ int sqlite3EndBenignMalloc () ;
+ int sqlite3PagerRollback (TYPE_1__*) ;
 
 __attribute__((used)) static void pagerUnlockAndRollback(Pager *pPager){
   if( pPager->eState!=PAGER_ERROR && pPager->eState!=PAGER_OPEN ){

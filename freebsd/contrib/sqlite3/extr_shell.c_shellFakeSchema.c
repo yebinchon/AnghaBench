@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
 struct TYPE_5__ {char* z; } ;
-typedef  TYPE_1__ ShellText ;
+typedef TYPE_1__ ShellText ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  appendText (TYPE_1__*,char const*,char) ; 
- int /*<<< orphan*/  freeText (TYPE_1__*) ; 
- int /*<<< orphan*/  initText (TYPE_1__*) ; 
- char quoteChar (char const*) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,char const*) ; 
- int /*<<< orphan*/  sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_stricmp (char const*,char*) ; 
+
+ scalar_t__ SQLITE_ROW ;
+ int appendText (TYPE_1__*,char const*,char) ;
+ int freeText (TYPE_1__*) ;
+ int initText (TYPE_1__*) ;
+ char quoteChar (char const*) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,char const*) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_stricmp (char const*,char*) ;
 
 __attribute__((used)) static char *shellFakeSchema(
-  sqlite3 *db,            /* The database connection containing the vtab */
-  const char *zSchema,    /* Schema of the database holding the vtab */
-  const char *zName       /* The name of the virtual table */
+  sqlite3 *db,
+  const char *zSchema,
+  const char *zName
 ){
   sqlite3_stmt *pStmt = 0;
   char *zSql;

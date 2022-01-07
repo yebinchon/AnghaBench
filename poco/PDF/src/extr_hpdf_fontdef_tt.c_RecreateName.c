@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_22__ {int /*<<< orphan*/  error; int /*<<< orphan*/  mmgr; int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_22__ {int error; int mmgr; int attr; } ;
 struct TYPE_21__ {scalar_t__ size; } ;
 struct TYPE_20__ {scalar_t__ offset; } ;
 struct TYPE_19__ {scalar_t__ length; scalar_t__ offset; int name_id; int platform_id; int encoding_id; int language_id; } ;
 struct TYPE_17__ {int format; int count; int string_offset; TYPE_3__* name_records; } ;
-struct TYPE_18__ {int /*<<< orphan*/  stream; scalar_t__ tag_name; scalar_t__ tag_name2; TYPE_1__ name_tbl; } ;
-typedef  int HPDF_UINT16 ;
-typedef  scalar_t__ HPDF_UINT ;
-typedef  TYPE_2__* HPDF_TTFontDefAttr ;
-typedef  TYPE_3__ HPDF_TTF_NameRecord ;
-typedef  TYPE_4__ HPDF_TTFTable ;
-typedef  TYPE_5__* HPDF_Stream ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_6__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
+struct TYPE_18__ {int stream; scalar_t__ tag_name; scalar_t__ tag_name2; TYPE_1__ name_tbl; } ;
+typedef int HPDF_UINT16 ;
+typedef scalar_t__ HPDF_UINT ;
+typedef TYPE_2__* HPDF_TTFontDefAttr ;
+typedef TYPE_3__ HPDF_TTF_NameRecord ;
+typedef TYPE_4__ HPDF_TTFTable ;
+typedef TYPE_5__* HPDF_Stream ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_6__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
 
-/* Variables and functions */
- TYPE_4__* FindTable (TYPE_6__*,char*) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- TYPE_5__* HPDF_MemStream_New (int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- int HPDF_STREAM_BUF_SIZ ; 
- int /*<<< orphan*/  HPDF_STREAM_FILTER_NONE ; 
- int /*<<< orphan*/  HPDF_Stream_Free (TYPE_5__*) ; 
- scalar_t__ HPDF_Stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ HPDF_Stream_Seek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Write (TYPE_5__*,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ HPDF_Stream_WriteToStream (TYPE_5__*,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ WriteUINT16 (TYPE_5__*,int) ; 
+
+ TYPE_4__* FindTable (TYPE_6__*,char*) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ TYPE_5__* HPDF_MemStream_New (int ,int) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ int HPDF_STREAM_BUF_SIZ ;
+ int HPDF_STREAM_FILTER_NONE ;
+ int HPDF_Stream_Free (TYPE_5__*) ;
+ scalar_t__ HPDF_Stream_Read (int ,int *,scalar_t__*) ;
+ scalar_t__ HPDF_Stream_Seek (int ,scalar_t__,int ) ;
+ scalar_t__ HPDF_Stream_Write (TYPE_5__*,int *,scalar_t__) ;
+ scalar_t__ HPDF_Stream_WriteToStream (TYPE_5__*,TYPE_5__*,int ,int *) ;
+ scalar_t__ WriteUINT16 (TYPE_5__*,int) ;
 
 __attribute__((used)) static HPDF_STATUS
-RecreateName  (HPDF_FontDef   fontdef,
-               HPDF_Stream    stream)
+RecreateName (HPDF_FontDef fontdef,
+               HPDF_Stream stream)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_TTFTable *tbl = FindTable (fontdef, "name");
@@ -83,7 +83,7 @@ RecreateName  (HPDF_FontDef   fontdef,
                 name_rec->offset;
         HPDF_UINT rec_offset = tmp_stream->size;
 
-        /* add suffix to font-name. */
+
         if (name_rec->name_id == 1 || name_rec->name_id == 4) {
             if (name_rec->platform_id == 0 || name_rec->platform_id == 3) {
                 ret += HPDF_Stream_Write (tmp_stream, (HPDF_BYTE *)attr->tag_name2,
@@ -137,7 +137,7 @@ RecreateName  (HPDF_FontDef   fontdef,
     }
 
     ret = HPDF_Stream_WriteToStream (tmp_stream, stream,
-                HPDF_STREAM_FILTER_NONE, NULL);
+                HPDF_STREAM_FILTER_NONE, ((void*)0));
 
     HPDF_Stream_Free (tmp_stream);
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  bind_to_device; } ;
-typedef  TYPE_1__ Socket ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  UNIT_BINDS_TO ; 
- int /*<<< orphan*/  UNIT_DEPENDENCY_FILE ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ streq (int /*<<< orphan*/ ,char*) ; 
- char* strjoina (char*,int /*<<< orphan*/ ) ; 
- int unit_add_node_dependency (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int bind_to_device; } ;
+typedef TYPE_1__ Socket ;
+
+
+ int UNIT (TYPE_1__*) ;
+ int UNIT_BINDS_TO ;
+ int UNIT_DEPENDENCY_FILE ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ streq (int ,char*) ;
+ char* strjoina (char*,int ) ;
+ int unit_add_node_dependency (int ,char*,int ,int ) ;
 
 __attribute__((used)) static int socket_add_device_dependencies(Socket *s) {
         char *t;

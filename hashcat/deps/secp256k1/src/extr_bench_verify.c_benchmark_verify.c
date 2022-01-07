@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_pubkey ;
-typedef  int /*<<< orphan*/  secp256k1_ecdsa_signature ;
-struct TYPE_2__ {int* sig; int /*<<< orphan*/  siglen; int /*<<< orphan*/  msg; int /*<<< orphan*/  ctx; int /*<<< orphan*/  pubkeylen; int /*<<< orphan*/  pubkey; } ;
-typedef  TYPE_1__ benchmark_verify_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int secp256k1_ec_pubkey_parse (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int secp256k1_ecdsa_signature_parse_der (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int secp256k1_ecdsa_verify (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int secp256k1_pubkey ;
+typedef int secp256k1_ecdsa_signature ;
+struct TYPE_2__ {int* sig; int siglen; int msg; int ctx; int pubkeylen; int pubkey; } ;
+typedef TYPE_1__ benchmark_verify_t ;
+
+
+ int CHECK (int) ;
+ int secp256k1_ec_pubkey_parse (int ,int *,int ,int ) ;
+ int secp256k1_ecdsa_signature_parse_der (int ,int *,int*,int ) ;
+ int secp256k1_ecdsa_verify (int ,int *,int ,int *) ;
 
 __attribute__((used)) static void benchmark_verify(void* arg) {
     int i;

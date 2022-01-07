@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct usb_device_id {int dummy; } ;
-struct sd {int /*<<< orphan*/  quality; int /*<<< orphan*/  ctrls; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ctrls; int /*<<< orphan*/  nmodes; int /*<<< orphan*/  cam_mode; } ;
+struct sd {int quality; int ctrls; } ;
+struct TYPE_2__ {int ctrls; int nmodes; int cam_mode; } ;
 struct gspca_dev {TYPE_1__ cam; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QUALITY_DEF ; 
- int /*<<< orphan*/  vga_mode ; 
+
+ int ARRAY_SIZE (int ) ;
+ int QUALITY_DEF ;
+ int vga_mode ;
 
 __attribute__((used)) static int sd_config(struct gspca_dev *gspca_dev,
-			const struct usb_device_id *id)
+   const struct usb_device_id *id)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
+ struct sd *sd = (struct sd *) gspca_dev;
 
-	gspca_dev->cam.cam_mode = vga_mode;
-	gspca_dev->cam.nmodes = ARRAY_SIZE(vga_mode);
-	gspca_dev->cam.ctrls = sd->ctrls;
-	sd->quality = QUALITY_DEF;
-	return 0;
+ gspca_dev->cam.cam_mode = vga_mode;
+ gspca_dev->cam.nmodes = ARRAY_SIZE(vga_mode);
+ gspca_dev->cam.ctrls = sd->ctrls;
+ sd->quality = QUALITY_DEF;
+ return 0;
 }

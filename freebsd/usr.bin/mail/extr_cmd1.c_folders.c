@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dirname ;
 
-/* Variables and functions */
- int PATHSIZE ; 
- scalar_t__ getfold (char*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  run_command (char*,int /*<<< orphan*/ ,int,int,char*,int /*<<< orphan*/ *) ; 
- char* value (char*) ; 
+
+
+
+typedef int dirname ;
+
+
+ int PATHSIZE ;
+ scalar_t__ getfold (char*,int) ;
+ int printf (char*) ;
+ int run_command (char*,int ,int,int,char*,int *) ;
+ char* value (char*) ;
 
 int
 folders(void)
 {
-	char dirname[PATHSIZE];
-	char *cmd;
+ char dirname[PATHSIZE];
+ char *cmd;
 
-	if (getfold(dirname, sizeof(dirname)) < 0) {
-		printf("No value set for \"folder\"\n");
-		return (1);
-	}
-	if ((cmd = value("LISTER")) == NULL)
-		cmd = "ls";
-	(void)run_command(cmd, 0, -1, -1, dirname, NULL);
-	return (0);
+ if (getfold(dirname, sizeof(dirname)) < 0) {
+  printf("No value set for \"folder\"\n");
+  return (1);
+ }
+ if ((cmd = value("LISTER")) == ((void*)0))
+  cmd = "ls";
+ (void)run_command(cmd, 0, -1, -1, dirname, ((void*)0));
+ return (0);
 }

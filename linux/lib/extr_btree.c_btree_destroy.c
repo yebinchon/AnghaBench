@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btree_head {int /*<<< orphan*/ * mempool; int /*<<< orphan*/  node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mempool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mempool_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct btree_head {int * mempool; int node; } ;
+
+
+ int mempool_destroy (int *) ;
+ int mempool_free (int ,int *) ;
 
 void btree_destroy(struct btree_head *head)
 {
-	mempool_free(head->node, head->mempool);
-	mempool_destroy(head->mempool);
-	head->mempool = NULL;
+ mempool_free(head->node, head->mempool);
+ mempool_destroy(head->mempool);
+ head->mempool = ((void*)0);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  udev_input_t ;
-struct TYPE_5__ {int /*<<< orphan*/  l; } ;
-typedef  TYPE_1__ udev_input_mouse_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
-#define  RETRO_DEVICE_ID_POINTER_PRESSED 130 
-#define  RETRO_DEVICE_ID_POINTER_X 129 
-#define  RETRO_DEVICE_ID_POINTER_Y 128 
- TYPE_1__* udev_get_mouse (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  udev_mouse_get_pointer_x (TYPE_1__*,int) ; 
- int /*<<< orphan*/  udev_mouse_get_pointer_y (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int udev_input_t ;
+struct TYPE_5__ {int l; } ;
+typedef TYPE_1__ udev_input_mouse_t ;
+typedef int int16_t ;
+
+
+
+
+
+ TYPE_1__* udev_get_mouse (int *,unsigned int) ;
+ int udev_mouse_get_pointer_x (TYPE_1__*,int) ;
+ int udev_mouse_get_pointer_y (TYPE_1__*,int) ;
 
 __attribute__((used)) static int16_t udev_pointer_state(udev_input_t *udev,
       unsigned port, unsigned id, bool screen)
@@ -34,11 +34,11 @@ __attribute__((used)) static int16_t udev_pointer_state(udev_input_t *udev,
 
    switch (id)
    {
-      case RETRO_DEVICE_ID_POINTER_X:
+      case 129:
          return udev_mouse_get_pointer_x(mouse, screen);
-      case RETRO_DEVICE_ID_POINTER_Y:
+      case 128:
          return udev_mouse_get_pointer_y(mouse, screen);
-      case RETRO_DEVICE_ID_POINTER_PRESSED:
+      case 130:
          return mouse->l;
    }
 

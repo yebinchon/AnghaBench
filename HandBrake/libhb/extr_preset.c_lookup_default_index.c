@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int depth; } ;
 struct TYPE_4__ {TYPE_3__ path; } ;
-typedef  TYPE_1__ preset_do_context_t ;
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_preset_index_t ;
+typedef TYPE_1__ preset_do_context_t ;
+typedef int hb_value_t ;
+typedef int hb_preset_index_t ;
 
-/* Variables and functions */
- int PRESET_DO_SUCCESS ; 
- int /*<<< orphan*/  do_find_default ; 
- int /*<<< orphan*/ * hb_preset_index_dup (TYPE_3__*) ; 
- int presets_do (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int PRESET_DO_SUCCESS ;
+ int do_find_default ;
+ int * hb_preset_index_dup (TYPE_3__*) ;
+ int presets_do (int ,int *,TYPE_1__*) ;
 
 __attribute__((used)) static hb_preset_index_t * lookup_default_index(hb_value_t *list)
 {

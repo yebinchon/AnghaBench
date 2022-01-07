@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int bfd_size_type ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_5__ {int /*<<< orphan*/ * used_by_bfd; } ;
-typedef  TYPE_1__ asection ;
-typedef  int /*<<< orphan*/  _arm_elf_section_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  _bfd_elf_new_section_hook (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * bfd_zalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  record_section_with_arm_elf_section_data (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int bfd_size_type ;
+typedef int bfd_boolean ;
+typedef int bfd ;
+struct TYPE_5__ {int * used_by_bfd; } ;
+typedef TYPE_1__ asection ;
+typedef int _arm_elf_section_data ;
+
+
+ int FALSE ;
+ int _bfd_elf_new_section_hook (int *,TYPE_1__*) ;
+ int * bfd_zalloc (int *,int) ;
+ int record_section_with_arm_elf_section_data (TYPE_1__*) ;
 
 __attribute__((used)) static bfd_boolean
 elf32_arm_new_section_hook (bfd *abfd, asection *sec)
@@ -33,8 +33,8 @@ elf32_arm_new_section_hook (bfd *abfd, asection *sec)
       bfd_size_type amt = sizeof (*sdata);
 
       sdata = bfd_zalloc (abfd, amt);
-      if (sdata == NULL)
-	return FALSE;
+      if (sdata == ((void*)0))
+ return FALSE;
       sec->used_by_bfd = sdata;
     }
 

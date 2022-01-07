@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int format_flags; struct wined3d_format* format; } ;
 struct wined3d_texture {unsigned int level_count; TYPE_1__ resource; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct wined3d_format {int conv_byte_count; int /*<<< orphan*/  glType; int /*<<< orphan*/  glFormat; int /*<<< orphan*/  (* upload ) (void*,void*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ;} ;
+struct wined3d_format {int conv_byte_count; int glType; int glFormat; int (* upload ) (void*,void*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ;} ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
 struct wined3d_const_bo_address {void* addr; scalar_t__ buffer_object; } ;
 struct wined3d_box {unsigned int left; unsigned int top; unsigned int front; unsigned int right; unsigned int bottom; unsigned int back; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FIXME (char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_PIXEL_UNPACK_BUFFER ; 
- int /*<<< orphan*/  GL_TEXTURE_3D ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_texture*,unsigned int,struct wined3d_context const*,int /*<<< orphan*/ ,scalar_t__,void*,unsigned int,unsigned int) ; 
- int WINED3DFMT_FLAG_BLOCKS ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  debug_box (struct wined3d_box const*) ; 
- int /*<<< orphan*/  glBindBuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glTexSubImage3D (int /*<<< orphan*/ ,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void const*) ; 
- void* heap_calloc (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  heap_free (void*) ; 
- int /*<<< orphan*/  stub1 (void*,void*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ; 
- unsigned int wined3d_texture_get_level_depth (struct wined3d_texture*,unsigned int) ; 
- unsigned int wined3d_texture_get_level_height (struct wined3d_texture*,unsigned int) ; 
- unsigned int wined3d_texture_get_level_width (struct wined3d_texture*,unsigned int) ; 
- int /*<<< orphan*/  wined3d_texture_get_pitch (struct wined3d_texture*,unsigned int,unsigned int*,unsigned int*) ; 
+
+ int ERR (char*) ;
+ int FIXME (char*,unsigned int,unsigned int) ;
+ int GL_EXTCALL (int ) ;
+ int GL_PIXEL_UNPACK_BUFFER ;
+ int GL_TEXTURE_3D ;
+ int TRACE (char*,struct wined3d_texture*,unsigned int,struct wined3d_context const*,int ,scalar_t__,void*,unsigned int,unsigned int) ;
+ int WINED3DFMT_FLAG_BLOCKS ;
+ int checkGLcall (char*) ;
+ int debug_box (struct wined3d_box const*) ;
+ int glBindBuffer (int ,scalar_t__) ;
+ int glTexSubImage3D (int ,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int ,int ,void const*) ;
+ void* heap_calloc (unsigned int,unsigned int) ;
+ int heap_free (void*) ;
+ int stub1 (void*,void*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int) ;
+ unsigned int wined3d_texture_get_level_depth (struct wined3d_texture*,unsigned int) ;
+ unsigned int wined3d_texture_get_level_height (struct wined3d_texture*,unsigned int) ;
+ unsigned int wined3d_texture_get_level_width (struct wined3d_texture*,unsigned int) ;
+ int wined3d_texture_get_pitch (struct wined3d_texture*,unsigned int,unsigned int*,unsigned int*) ;
 
 __attribute__((used)) static void texture3d_upload_data(struct wined3d_texture *texture, unsigned int sub_resource_idx,
         const struct wined3d_context *context, const struct wined3d_box *box,
@@ -50,7 +50,7 @@ __attribute__((used)) static void texture3d_upload_data(struct wined3d_texture *
     unsigned int dst_row_pitch, dst_slice_pitch;
     unsigned int width, height, depth;
     const void *mem = data->addr;
-    void *converted_mem = NULL;
+    void *converted_mem = ((void*)0);
 
     TRACE("texture %p, sub_resource_idx %u, context %p, box %s, data {%#x:%p}, row_pitch %#x, slice_pitch %#x.\n",
             texture, sub_resource_idx, context, debug_box(box),

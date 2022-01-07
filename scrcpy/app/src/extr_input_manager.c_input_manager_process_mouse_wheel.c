@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct position {int /*<<< orphan*/  point; int /*<<< orphan*/  screen_size; } ;
-struct input_manager {int /*<<< orphan*/  controller; TYPE_1__* screen; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct position {int point; int screen_size; } ;
+struct input_manager {int controller; TYPE_1__* screen; } ;
 struct control_msg {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  frame_size; } ;
-typedef  int /*<<< orphan*/  SDL_MouseWheelEvent ;
+struct TYPE_2__ {int frame_size; } ;
+typedef int SDL_MouseWheelEvent ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGW (char*) ; 
- int /*<<< orphan*/  controller_push_msg (int /*<<< orphan*/ ,struct control_msg*) ; 
- scalar_t__ convert_mouse_wheel (int /*<<< orphan*/  const*,struct position,struct control_msg*) ; 
- int /*<<< orphan*/  get_mouse_point (TYPE_1__*) ; 
+
+ int LOGW (char*) ;
+ int controller_push_msg (int ,struct control_msg*) ;
+ scalar_t__ convert_mouse_wheel (int const*,struct position,struct control_msg*) ;
+ int get_mouse_point (TYPE_1__*) ;
 
 void
 input_manager_process_mouse_wheel(struct input_manager *input_manager,

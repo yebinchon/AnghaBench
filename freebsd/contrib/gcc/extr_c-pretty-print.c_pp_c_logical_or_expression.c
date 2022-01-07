@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  c_pretty_printer ;
 
-/* Variables and functions */
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- scalar_t__ TRUTH_ORIF_EXPR ; 
- int /*<<< orphan*/  pp_c_logical_and_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_c_whitespace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_identifier (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int tree ;
+typedef int c_pretty_printer ;
+
+
+ scalar_t__ TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ scalar_t__ TRUTH_ORIF_EXPR ;
+ int pp_c_logical_and_expression (int *,int ) ;
+ int pp_c_whitespace (int *) ;
+ int pp_identifier (int *,char*) ;
 
 void
 pp_c_logical_or_expression (c_pretty_printer *pp, tree e)

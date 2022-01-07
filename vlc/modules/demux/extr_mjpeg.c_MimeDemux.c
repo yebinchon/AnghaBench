@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  s; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_11__ {int i_data_peeked; char* p_peek; int /*<<< orphan*/  psz_separator; } ;
-typedef  TYPE_2__ demux_sys_t ;
 
-/* Variables and functions */
- int CheckMimeHeader (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  Peek (TYPE_1__*,int) ; 
- int SendBlock (TYPE_1__*,int) ; 
- int VLC_DEMUXER_EOF ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char*,int) ; 
- int vlc_stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int s; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_11__ {int i_data_peeked; char* p_peek; int psz_separator; } ;
+typedef TYPE_2__ demux_sys_t ;
+
+
+ int CheckMimeHeader (TYPE_1__*,int*) ;
+ int Peek (TYPE_1__*,int) ;
+ int SendBlock (TYPE_1__*,int) ;
+ int VLC_DEMUXER_EOF ;
+ int msg_Dbg (TYPE_1__*,char*,int) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ int msg_Warn (TYPE_1__*,char*) ;
+ int strlen (int ) ;
+ int strncmp (int ,char*,int) ;
+ int vlc_stream_Read (int ,int *,int) ;
 
 __attribute__((used)) static int MimeDemux( demux_t *p_demux )
 {
     demux_sys_t *p_sys = p_demux->p_sys;
-    int         i_size, i;
+    int i_size, i;
 
-    bool  b_match = CheckMimeHeader( p_demux, &i_size );
+    bool b_match = CheckMimeHeader( p_demux, &i_size );
 
     if( i_size > 0 )
     {
-        if( vlc_stream_Read( p_demux->s, NULL, i_size ) != i_size )
+        if( vlc_stream_Read( p_demux->s, ((void*)0), i_size ) != i_size )
             return VLC_DEMUXER_EOF;
     }
     else if( i_size < 0 )
@@ -47,11 +47,11 @@ __attribute__((used)) static int MimeDemux( demux_t *p_demux )
     }
     else
     {
-        // No MIME header, assume OK
-        b_match = true;
+
+        b_match = 1;
     }
 
-    if( !Peek( p_demux, true ) )
+    if( !Peek( p_demux, 1 ) )
     {
         msg_Warn( p_demux, "cannot peek data" );
         return VLC_DEMUXER_EOF;
@@ -76,7 +76,7 @@ __attribute__((used)) static int MimeDemux( demux_t *p_demux )
                 msg_Dbg( p_demux, "MIME boundary not found in %d bytes of "
                          "data", p_sys->i_data_peeked );
 
-                if( !Peek( p_demux, false ) )
+                if( !Peek( p_demux, 0 ) )
                 {
                     msg_Warn( p_demux, "no more data is available at the "
                               "moment" );
@@ -85,7 +85,7 @@ __attribute__((used)) static int MimeDemux( demux_t *p_demux )
             }
         }
 
-        /* Handle old and new style of separators */
+
         if (!strncmp(p_sys->psz_separator, (char *)(p_sys->p_peek + i + 2),
                      strlen( p_sys->psz_separator ))
          || ((strlen(p_sys->psz_separator) > 4)

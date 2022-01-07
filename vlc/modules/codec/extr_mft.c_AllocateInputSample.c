@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_11__ {int /*<<< orphan*/  (* fptr_MFCreateMemoryBuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ;int /*<<< orphan*/  (* fptr_MFCreateSample ) (int /*<<< orphan*/ **) ;} ;
-struct TYPE_9__ {int /*<<< orphan*/  mft; TYPE_4__ mf_handle; } ;
-typedef  TYPE_2__ decoder_sys_t ;
-struct TYPE_10__ {int /*<<< orphan*/  cbSize; } ;
-typedef  TYPE_3__ MFT_INPUT_STREAM_INFO ;
-typedef  TYPE_4__ MFHandle ;
-typedef  int /*<<< orphan*/  IMFSample ;
-typedef  int /*<<< orphan*/  IMFMediaBuffer ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_11__ {int (* fptr_MFCreateMemoryBuffer ) (int ,int **) ;int (* fptr_MFCreateSample ) (int **) ;} ;
+struct TYPE_9__ {int mft; TYPE_4__ mf_handle; } ;
+typedef TYPE_2__ decoder_sys_t ;
+struct TYPE_10__ {int cbSize; } ;
+typedef TYPE_3__ MFT_INPUT_STREAM_INFO ;
+typedef TYPE_4__ MFHandle ;
+typedef int IMFSample ;
+typedef int IMFMediaBuffer ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMFMediaBuffer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFSample_AddBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMFTransform_GetInputStreamInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  __MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IMFMediaBuffer_Release (int *) ;
+ int IMFSample_AddBuffer (int *,int *) ;
+ int IMFSample_Release (int *) ;
+ int IMFTransform_GetInputStreamInfo (int ,int ,TYPE_3__*) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int __MAX (int ,int ) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ int stub1 (int **) ;
+ int stub2 (int ,int **) ;
 
 __attribute__((used)) static int AllocateInputSample(decoder_t *p_dec, DWORD stream_id, IMFSample** result, DWORD size)
 {
@@ -46,9 +46,9 @@ __attribute__((used)) static int AllocateInputSample(decoder_t *p_dec, DWORD str
     MFHandle *mf = &p_sys->mf_handle;
     HRESULT hr;
 
-    *result = NULL;
+    *result = ((void*)0);
 
-    IMFSample *input_sample = NULL;
+    IMFSample *input_sample = ((void*)0);
 
     MFT_INPUT_STREAM_INFO input_info;
     hr = IMFTransform_GetInputStreamInfo(p_sys->mft, stream_id, &input_info);
@@ -59,7 +59,7 @@ __attribute__((used)) static int AllocateInputSample(decoder_t *p_dec, DWORD str
     if (FAILED(hr))
         goto error;
 
-    IMFMediaBuffer *input_media_buffer = NULL;
+    IMFMediaBuffer *input_media_buffer = ((void*)0);
     DWORD allocation_size = __MAX(input_info.cbSize, size);
     hr = mf->fptr_MFCreateMemoryBuffer(allocation_size, &input_media_buffer);
     if (FAILED(hr))

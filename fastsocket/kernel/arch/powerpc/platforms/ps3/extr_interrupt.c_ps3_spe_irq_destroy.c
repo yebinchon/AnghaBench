@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  ps3_chip_mask (unsigned int) ; 
- int ps3_irq_plug_destroy (unsigned int) ; 
+ int BUG_ON (int) ;
+ int ps3_chip_mask (unsigned int) ;
+ int ps3_irq_plug_destroy (unsigned int) ;
 
 int ps3_spe_irq_destroy(unsigned int virq)
 {
-	int result;
+ int result;
 
-	ps3_chip_mask(virq);
+ ps3_chip_mask(virq);
 
-	result = ps3_irq_plug_destroy(virq);
-	BUG_ON(result);
+ result = ps3_irq_plug_destroy(virq);
+ BUG_ON(result);
 
-	return result;
+ return result;
 }

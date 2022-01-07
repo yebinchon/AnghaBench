@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_nl {int /*<<< orphan*/  nl_family; } ;
+
+
+
+
+struct sockaddr_nl {int nl_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  nladdr ;
+typedef int nladdr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_NETLINK ; 
- int /*<<< orphan*/  NETLINK_ROUTE ; 
- int /*<<< orphan*/  PF_NETLINK ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_nl*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nl_close (int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_NETLINK ;
+ int NETLINK_ROUTE ;
+ int PF_NETLINK ;
+ int SOCK_RAW ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int memset (struct sockaddr_nl*,int ,int) ;
+ int nl_close (int) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int
 nl_open(void)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * fd; int /*<<< orphan*/  fd_buf; int /*<<< orphan*/  pathname; } ;
-typedef  TYPE_1__ _UserData ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CDIO_FOPEN (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  CDIO_STDIO_BUFSIZE ; 
- int /*<<< orphan*/  _IOFBF ; 
- int /*<<< orphan*/  calloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setvbuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * fd; int fd_buf; int pathname; } ;
+typedef TYPE_1__ _UserData ;
+
+
+ int * CDIO_FOPEN (int ,char*) ;
+ int CDIO_STDIO_BUFSIZE ;
+ int _IOFBF ;
+ int calloc (int,int ) ;
+ int setvbuf (int *,int ,int ,int ) ;
 
 __attribute__((used)) static int
 _stdio_open (void *user_data)
@@ -32,5 +32,5 @@ _stdio_open (void *user_data)
       setvbuf (ud->fd, ud->fd_buf, _IOFBF, CDIO_STDIO_BUFSIZE);
     }
 
-  return (ud->fd == NULL);
+  return (ud->fd == ((void*)0));
 }

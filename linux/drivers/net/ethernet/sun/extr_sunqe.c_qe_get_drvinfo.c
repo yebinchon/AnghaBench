@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sunqe {struct platform_device* op; } ;
-struct TYPE_2__ {int /*<<< orphan*/  of_node; } ;
+struct TYPE_2__ {int of_node; } ;
 struct platform_device {TYPE_1__ dev; } ;
 struct net_device {int dummy; } ;
 struct linux_prom_registers {int which_io; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  bus_info; int /*<<< orphan*/  version; int /*<<< orphan*/  driver; } ;
+struct ethtool_drvinfo {int bus_info; int version; int driver; } ;
 
-/* Variables and functions */
- struct sunqe* netdev_priv (struct net_device*) ; 
- struct linux_prom_registers* of_get_property (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,int) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int) ; 
+
+ struct sunqe* netdev_priv (struct net_device*) ;
+ struct linux_prom_registers* of_get_property (int ,char*,int *) ;
+ int snprintf (int ,int,char*,int) ;
+ int strlcpy (int ,char*,int) ;
 
 __attribute__((used)) static void qe_get_drvinfo(struct net_device *dev, struct ethtool_drvinfo *info)
 {
-	const struct linux_prom_registers *regs;
-	struct sunqe *qep = netdev_priv(dev);
-	struct platform_device *op;
+ const struct linux_prom_registers *regs;
+ struct sunqe *qep = netdev_priv(dev);
+ struct platform_device *op;
 
-	strlcpy(info->driver, "sunqe", sizeof(info->driver));
-	strlcpy(info->version, "3.0", sizeof(info->version));
+ strlcpy(info->driver, "sunqe", sizeof(info->driver));
+ strlcpy(info->version, "3.0", sizeof(info->version));
 
-	op = qep->op;
-	regs = of_get_property(op->dev.of_node, "reg", NULL);
-	if (regs)
-		snprintf(info->bus_info, sizeof(info->bus_info), "SBUS:%d",
-			 regs->which_io);
+ op = qep->op;
+ regs = of_get_property(op->dev.of_node, "reg", ((void*)0));
+ if (regs)
+  snprintf(info->bus_info, sizeof(info->bus_info), "SBUS:%d",
+    regs->which_io);
 
 }

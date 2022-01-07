@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LOG_LEVEL ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
-#define  LOG_LEVEL_ERROR 130 
-#define  LOG_LEVEL_INFO 129 
-#define  LOG_LEVEL_WARNING 128 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
+
+
+
+typedef int LOG_LEVEL ;
+typedef int FILE ;
+
+
+
+
+
+ int * stderr ;
+ int * stdout ;
 
 FILE *level_stdout(LOG_LEVEL level)
 {
     switch (level) {
-        case LOG_LEVEL_INFO:
+        case 129:
             return stdout;
 
-        case LOG_LEVEL_WARNING: // intentional fallthrough
-        case LOG_LEVEL_ERROR:
+        case 128:
+        case 130:
             return stderr;
     }
 

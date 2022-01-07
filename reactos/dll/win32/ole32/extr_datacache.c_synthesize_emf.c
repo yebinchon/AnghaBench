@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_9__ {int /*<<< orphan*/  hMF; } ;
-struct TYPE_7__ {int /*<<< orphan*/  hEnhMetaFile; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * pUnkForRelease; int /*<<< orphan*/  tymed; TYPE_1__ u; } ;
-typedef  TYPE_2__ STGMEDIUM ;
-typedef  TYPE_3__ METAFILEPICT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HMETAFILEPICT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  GetMetaFileBitsEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_3__* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SetWinMetaFileBits (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  TYMED_ENHMF ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_9__ {int hMF; } ;
+struct TYPE_7__ {int hEnhMetaFile; } ;
+struct TYPE_8__ {int * pUnkForRelease; int tymed; TYPE_1__ u; } ;
+typedef TYPE_2__ STGMEDIUM ;
+typedef TYPE_3__ METAFILEPICT ;
+typedef int HRESULT ;
+typedef int HMETAFILEPICT ;
+
+
+ int E_FAIL ;
+ int GetMetaFileBitsEx (int ,int ,void*) ;
+ int GetProcessHeap () ;
+ TYPE_3__* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ void* HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,void*) ;
+ int S_OK ;
+ int SetWinMetaFileBits (int ,void*,int *,TYPE_3__*) ;
+ int TYMED_ENHMF ;
 
 __attribute__((used)) static HRESULT synthesize_emf( HMETAFILEPICT data, STGMEDIUM *med )
 {
@@ -43,14 +43,14 @@ __attribute__((used)) static HRESULT synthesize_emf( HMETAFILEPICT data, STGMEDI
 
     if (!(pict = GlobalLock( data ))) return hr;
 
-    size = GetMetaFileBitsEx( pict->hMF, 0, NULL );
+    size = GetMetaFileBitsEx( pict->hMF, 0, ((void*)0) );
     if ((bits = HeapAlloc( GetProcessHeap(), 0, size )))
     {
         GetMetaFileBitsEx( pict->hMF, size, bits );
-        med->u.hEnhMetaFile = SetWinMetaFileBits( size, bits, NULL, pict );
+        med->u.hEnhMetaFile = SetWinMetaFileBits( size, bits, ((void*)0), pict );
         HeapFree( GetProcessHeap(), 0, bits );
         med->tymed = TYMED_ENHMF;
-        med->pUnkForRelease = NULL;
+        med->pUnkForRelease = ((void*)0);
         hr = S_OK;
     }
 

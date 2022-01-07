@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HTREEITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * TreeView_GetChild (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TreeView_GetLastFromItem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TreeView_GetParent (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * TreeView_GetPrevSibling (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HWND ;
+typedef int * HTREEITEM ;
+
+
+ int * TreeView_GetChild (int ,int *) ;
+ int * TreeView_GetLastFromItem (int ,int *) ;
+ int * TreeView_GetParent (int ,int *) ;
+ int * TreeView_GetPrevSibling (int ,int *) ;
 
 HTREEITEM TreeView_GetPrev(HWND hTree, HTREEITEM hItem)
 {
     HTREEITEM hPrev, hTmp;
 
     if (!hTree)
-        return NULL;
+        return ((void*)0);
 
     hPrev = TreeView_GetPrevSibling(hTree, hItem);
     if (!hPrev)

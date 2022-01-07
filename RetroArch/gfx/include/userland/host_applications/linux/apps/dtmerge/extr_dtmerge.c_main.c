@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DTBLOB_T ;
 
-/* Variables and functions */
- int dtoverlay_apply_override (int /*<<< orphan*/ *,char*,void const*,int,char*) ; 
- int /*<<< orphan*/  dtoverlay_enable_debug (int) ; 
- void* dtoverlay_find_override (int /*<<< orphan*/ *,char*,int*) ; 
- int dtoverlay_fixup_overlay (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dtoverlay_free_dtb (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dtoverlay_load_dtb (char const*,int) ; 
- int dtoverlay_merge_overlay (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dtoverlay_pack_dtb (int /*<<< orphan*/ *) ; 
- int dtoverlay_save_dtb (int /*<<< orphan*/ *,char const*) ; 
- int dtoverlay_set_synonym (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strcspn (char*,char*) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int DTBLOB_T ;
+
+
+ int dtoverlay_apply_override (int *,char*,void const*,int,char*) ;
+ int dtoverlay_enable_debug (int) ;
+ void* dtoverlay_find_override (int *,char*,int*) ;
+ int dtoverlay_fixup_overlay (int *,int *) ;
+ int dtoverlay_free_dtb (int *) ;
+ int * dtoverlay_load_dtb (char const*,int) ;
+ int dtoverlay_merge_overlay (int *,int *) ;
+ int dtoverlay_pack_dtb (int *) ;
+ int dtoverlay_save_dtb (int *,char const*) ;
+ int dtoverlay_set_synonym (int *,char*,char*) ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strcspn (char*,char*) ;
+ int usage () ;
 
 int main(int argc, char **argv)
 {
@@ -86,9 +86,9 @@ int main(int argc, char **argv)
    {
       overlay_dtb = dtoverlay_load_dtb(overlay_file, max_dtb_size);
       if (overlay_dtb)
-	  err = dtoverlay_fixup_overlay(base_dtb, overlay_dtb);
+   err = dtoverlay_fixup_overlay(base_dtb, overlay_dtb);
       else
-	  err = -1;
+   err = -1;
    }
 
    while (!err && (argn < argc))
@@ -104,8 +104,8 @@ int main(int argc, char **argv)
       }
       else
       {
-         /* This isn't a well-formed parameter assignment, but it can be
-            treated as an assignment of true. */
+
+
          param_value = "true";
       }
 

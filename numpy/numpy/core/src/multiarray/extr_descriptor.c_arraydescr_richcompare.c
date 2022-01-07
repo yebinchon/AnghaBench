@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
 
-/* Variables and functions */
- scalar_t__ NPY_FAIL ; 
- int /*<<< orphan*/  PyArray_CanCastTo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DescrCheck (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_DescrConverter (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyArray_EquivTypes (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  Py_EQ 133 
- int /*<<< orphan*/ * Py_False ; 
-#define  Py_GE 132 
-#define  Py_GT 131 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
-#define  Py_LE 130 
-#define  Py_LT 129 
-#define  Py_NE 128 
- int /*<<< orphan*/ * Py_NotImplemented ; 
- int /*<<< orphan*/ * Py_True ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+
+
+ scalar_t__ NPY_FAIL ;
+ int PyArray_CanCastTo (int *,int *) ;
+ int PyArray_DescrCheck (int *) ;
+ scalar_t__ PyArray_DescrConverter (int *,int **) ;
+ int PyArray_EquivTypes (int *,int *) ;
+
+ int * Py_False ;
+
+
+ int Py_INCREF (int *) ;
+
+
+
+ int * Py_NotImplemented ;
+ int * Py_True ;
+ int Py_XDECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 arraydescr_richcompare(PyArray_Descr *self, PyObject *other, int cmp_op)
 {
-    PyArray_Descr *new = NULL;
+    PyArray_Descr *new = ((void*)0);
     PyObject *result = Py_NotImplemented;
     if (!PyArray_DescrCheck(other)) {
         if (PyArray_DescrConverter(other, &new) == NPY_FAIL) {
-            return NULL;
+            return ((void*)0);
         }
     }
     else {
@@ -46,7 +46,7 @@ arraydescr_richcompare(PyArray_Descr *self, PyObject *other, int cmp_op)
         Py_INCREF(new);
     }
     switch (cmp_op) {
-    case Py_LT:
+    case 129:
         if (!PyArray_EquivTypes(self, new) && PyArray_CanCastTo(self, new)) {
             result = Py_True;
         }
@@ -54,7 +54,7 @@ arraydescr_richcompare(PyArray_Descr *self, PyObject *other, int cmp_op)
             result = Py_False;
         }
         break;
-    case Py_LE:
+    case 130:
         if (PyArray_CanCastTo(self, new)) {
             result = Py_True;
         }
@@ -62,7 +62,7 @@ arraydescr_richcompare(PyArray_Descr *self, PyObject *other, int cmp_op)
             result = Py_False;
         }
         break;
-    case Py_EQ:
+    case 133:
         if (PyArray_EquivTypes(self, new)) {
             result = Py_True;
         }
@@ -70,13 +70,13 @@ arraydescr_richcompare(PyArray_Descr *self, PyObject *other, int cmp_op)
             result = Py_False;
         }
         break;
-    case Py_NE:
+    case 128:
         if (PyArray_EquivTypes(self, new))
             result = Py_False;
         else
             result = Py_True;
         break;
-    case Py_GT:
+    case 131:
         if (!PyArray_EquivTypes(self, new) && PyArray_CanCastTo(new, self)) {
             result = Py_True;
         }
@@ -84,7 +84,7 @@ arraydescr_richcompare(PyArray_Descr *self, PyObject *other, int cmp_op)
             result = Py_False;
         }
         break;
-    case Py_GE:
+    case 132:
         if (PyArray_CanCastTo(new, self)) {
             result = Py_True;
         }

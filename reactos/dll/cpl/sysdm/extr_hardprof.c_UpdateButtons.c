@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_3__ {scalar_t__ dwSelectedProfileIndex; int dwProfileCount; } ;
-typedef  TYPE_1__* PPROFILEDATA ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__* PPROFILEDATA ;
+typedef int HWND ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_HRDPROFCOPY ; 
- int /*<<< orphan*/  IDC_HRDPROFDEL ; 
- int /*<<< orphan*/  IDC_HRDPROFDWN ; 
- int /*<<< orphan*/  IDC_HRDPROFPROP ; 
- int /*<<< orphan*/  IDC_HRDPROFRENAME ; 
- int /*<<< orphan*/  IDC_HRDPROFUP ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int EnableWindow (int ,int ) ;
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_HRDPROFCOPY ;
+ int IDC_HRDPROFDEL ;
+ int IDC_HRDPROFDWN ;
+ int IDC_HRDPROFPROP ;
+ int IDC_HRDPROFRENAME ;
+ int IDC_HRDPROFUP ;
+ int TRUE ;
 
 __attribute__((used)) static
 VOID

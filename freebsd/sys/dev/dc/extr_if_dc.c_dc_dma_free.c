@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * dc_sbuf; int /*<<< orphan*/ ** dc_tx_map; int /*<<< orphan*/ ** dc_rx_map; } ;
-struct TYPE_3__ {scalar_t__ dc_rx_list_paddr; scalar_t__ dc_tx_list_paddr; int /*<<< orphan*/ * dc_tx_list; int /*<<< orphan*/ * dc_rx_list; } ;
-struct dc_softc {scalar_t__ dc_saddr; int /*<<< orphan*/ * dc_stag; int /*<<< orphan*/  dc_smap; TYPE_2__ dc_cdata; int /*<<< orphan*/ * dc_tx_ltag; int /*<<< orphan*/  dc_tx_lmap; TYPE_1__ dc_ldata; int /*<<< orphan*/ * dc_rx_ltag; int /*<<< orphan*/  dc_rx_lmap; int /*<<< orphan*/ * dc_tx_mtag; int /*<<< orphan*/ * dc_rx_mtag; int /*<<< orphan*/ * dc_sparemap; } ;
 
-/* Variables and functions */
- int DC_RX_LIST_CNT ; 
- int DC_TX_LIST_CNT ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamap_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamap_unload (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * dc_sbuf; int ** dc_tx_map; int ** dc_rx_map; } ;
+struct TYPE_3__ {scalar_t__ dc_rx_list_paddr; scalar_t__ dc_tx_list_paddr; int * dc_tx_list; int * dc_rx_list; } ;
+struct dc_softc {scalar_t__ dc_saddr; int * dc_stag; int dc_smap; TYPE_2__ dc_cdata; int * dc_tx_ltag; int dc_tx_lmap; TYPE_1__ dc_ldata; int * dc_rx_ltag; int dc_rx_lmap; int * dc_tx_mtag; int * dc_rx_mtag; int * dc_sparemap; } ;
+
+
+ int DC_RX_LIST_CNT ;
+ int DC_TX_LIST_CNT ;
+ int bus_dma_tag_destroy (int *) ;
+ int bus_dmamap_destroy (int *,int *) ;
+ int bus_dmamap_unload (int *,int ) ;
+ int bus_dmamem_free (int *,int *,int ) ;
 
 __attribute__((used)) static void
 dc_dma_free(struct dc_softc *sc)
 {
-	int i;
+ int i;
 
-	/* RX buffers. */
-	if (sc->dc_rx_mtag != NULL) {
-		for (i = 0; i < DC_RX_LIST_CNT; i++) {
-			if (sc->dc_cdata.dc_rx_map[i] != NULL)
-				bus_dmamap_destroy(sc->dc_rx_mtag,
-				    sc->dc_cdata.dc_rx_map[i]);
-		}
-		if (sc->dc_sparemap != NULL)
-			bus_dmamap_destroy(sc->dc_rx_mtag, sc->dc_sparemap);
-		bus_dma_tag_destroy(sc->dc_rx_mtag);
-	}
 
-	/* TX buffers. */
-	if (sc->dc_rx_mtag != NULL) {
-		for (i = 0; i < DC_TX_LIST_CNT; i++) {
-			if (sc->dc_cdata.dc_tx_map[i] != NULL)
-				bus_dmamap_destroy(sc->dc_tx_mtag,
-				    sc->dc_cdata.dc_tx_map[i]);
-		}
-		bus_dma_tag_destroy(sc->dc_tx_mtag);
-	}
+ if (sc->dc_rx_mtag != ((void*)0)) {
+  for (i = 0; i < DC_RX_LIST_CNT; i++) {
+   if (sc->dc_cdata.dc_rx_map[i] != ((void*)0))
+    bus_dmamap_destroy(sc->dc_rx_mtag,
+        sc->dc_cdata.dc_rx_map[i]);
+  }
+  if (sc->dc_sparemap != ((void*)0))
+   bus_dmamap_destroy(sc->dc_rx_mtag, sc->dc_sparemap);
+  bus_dma_tag_destroy(sc->dc_rx_mtag);
+ }
 
-	/* RX descriptor list. */
-	if (sc->dc_rx_ltag) {
-		if (sc->dc_ldata.dc_rx_list_paddr != 0)
-			bus_dmamap_unload(sc->dc_rx_ltag, sc->dc_rx_lmap);
-		if (sc->dc_ldata.dc_rx_list != NULL)
-			bus_dmamem_free(sc->dc_rx_ltag, sc->dc_ldata.dc_rx_list,
-			    sc->dc_rx_lmap);
-		bus_dma_tag_destroy(sc->dc_rx_ltag);
-	}
 
-	/* TX descriptor list. */
-	if (sc->dc_tx_ltag) {
-		if (sc->dc_ldata.dc_tx_list_paddr != 0)
-			bus_dmamap_unload(sc->dc_tx_ltag, sc->dc_tx_lmap);
-		if (sc->dc_ldata.dc_tx_list != NULL)
-			bus_dmamem_free(sc->dc_tx_ltag, sc->dc_ldata.dc_tx_list,
-			    sc->dc_tx_lmap);
-		bus_dma_tag_destroy(sc->dc_tx_ltag);
-	}
+ if (sc->dc_rx_mtag != ((void*)0)) {
+  for (i = 0; i < DC_TX_LIST_CNT; i++) {
+   if (sc->dc_cdata.dc_tx_map[i] != ((void*)0))
+    bus_dmamap_destroy(sc->dc_tx_mtag,
+        sc->dc_cdata.dc_tx_map[i]);
+  }
+  bus_dma_tag_destroy(sc->dc_tx_mtag);
+ }
 
-	/* multicast setup frame. */
-	if (sc->dc_stag) {
-		if (sc->dc_saddr != 0)
-			bus_dmamap_unload(sc->dc_stag, sc->dc_smap);
-		if (sc->dc_cdata.dc_sbuf != NULL)
-			bus_dmamem_free(sc->dc_stag, sc->dc_cdata.dc_sbuf,
-			    sc->dc_smap);
-		bus_dma_tag_destroy(sc->dc_stag);
-	}
+
+ if (sc->dc_rx_ltag) {
+  if (sc->dc_ldata.dc_rx_list_paddr != 0)
+   bus_dmamap_unload(sc->dc_rx_ltag, sc->dc_rx_lmap);
+  if (sc->dc_ldata.dc_rx_list != ((void*)0))
+   bus_dmamem_free(sc->dc_rx_ltag, sc->dc_ldata.dc_rx_list,
+       sc->dc_rx_lmap);
+  bus_dma_tag_destroy(sc->dc_rx_ltag);
+ }
+
+
+ if (sc->dc_tx_ltag) {
+  if (sc->dc_ldata.dc_tx_list_paddr != 0)
+   bus_dmamap_unload(sc->dc_tx_ltag, sc->dc_tx_lmap);
+  if (sc->dc_ldata.dc_tx_list != ((void*)0))
+   bus_dmamem_free(sc->dc_tx_ltag, sc->dc_ldata.dc_tx_list,
+       sc->dc_tx_lmap);
+  bus_dma_tag_destroy(sc->dc_tx_ltag);
+ }
+
+
+ if (sc->dc_stag) {
+  if (sc->dc_saddr != 0)
+   bus_dmamap_unload(sc->dc_stag, sc->dc_smap);
+  if (sc->dc_cdata.dc_sbuf != ((void*)0))
+   bus_dmamem_free(sc->dc_stag, sc->dc_cdata.dc_sbuf,
+       sc->dc_smap);
+  bus_dma_tag_destroy(sc->dc_stag);
+ }
 }

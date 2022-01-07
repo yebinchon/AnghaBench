@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsdn_t ;
-typedef  int /*<<< orphan*/  ctl_named_node_t ;
 
-/* Variables and functions */
- size_t SC_NBINS ; 
- int /*<<< orphan*/  const* super_stats_arenas_i_bins_j_node ; 
+
+
+
+typedef int tsdn_t ;
+typedef int ctl_named_node_t ;
+
+
+ size_t SC_NBINS ;
+ int const* super_stats_arenas_i_bins_j_node ;
 
 __attribute__((used)) static const ctl_named_node_t *
 stats_arenas_i_bins_j_index(tsdn_t *tsdn, const size_t *mib,
     size_t miblen, size_t j) {
-	if (j > SC_NBINS) {
-		return NULL;
-	}
-	return super_stats_arenas_i_bins_j_node;
+ if (j > SC_NBINS) {
+  return ((void*)0);
+ }
+ return super_stats_arenas_i_bins_j_node;
 }

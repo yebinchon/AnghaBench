@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  srtp_session_t ;
-typedef  int /*<<< orphan*/  bsalt ;
-typedef  int /*<<< orphan*/  bkey ;
 
-/* Variables and functions */
- int EINVAL ; 
- int hexstring (char const*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ srtp_setkey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ssize_t ;
+typedef int srtp_session_t ;
+typedef int bsalt ;
+typedef int bkey ;
+
+
+ int EINVAL ;
+ int hexstring (char const*,int *,int) ;
+ scalar_t__ srtp_setkey (int *,int *,int,int *,int) ;
 
 int
 srtp_setkeystring (srtp_session_t *s, const char *key, const char *salt)
 {
-    uint8_t bkey[16]; /* TODO/NOTE: hard-coded for AES */
-    uint8_t bsalt[14]; /* TODO/NOTE: hard-coded for the PRF-AES-CM */
+    uint8_t bkey[16];
+    uint8_t bsalt[14];
     ssize_t bkeylen = hexstring (key, bkey, sizeof (bkey));
     ssize_t bsaltlen = hexstring (salt, bsalt, sizeof (bsalt));
 

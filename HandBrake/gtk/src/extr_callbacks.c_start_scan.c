@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  prefs; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_2__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gint ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int prefs; int builder; } ;
+typedef TYPE_2__ signal_user_data_t ;
+typedef int gint ;
 struct TYPE_6__ {scalar_t__ state; } ;
 struct TYPE_8__ {TYPE_1__ scan; } ;
-typedef  TYPE_3__ ghb_status_t ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkWidget ;
+typedef TYPE_3__ ghb_status_t ;
+typedef int gchar ;
+typedef int GtkWidget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GHB_STATE_IDLE ; 
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GTK_TOOL_BUTTON (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GTK_TOOL_ITEM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  ghb_backend_scan (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long) ; 
- long ghb_dict_get_int (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ghb_get_status (TYPE_3__*) ; 
- int /*<<< orphan*/  gtk_tool_button_set_icon_name (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gtk_tool_button_set_label (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_tool_item_set_tooltip_text (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_widget_set_sensitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ scalar_t__ GHB_STATE_IDLE ;
+ int * GHB_WIDGET (int ,char*) ;
+ int GTK_TOOL_BUTTON (int *) ;
+ int GTK_TOOL_ITEM (int *) ;
+ int _ (char*) ;
+ int ghb_backend_scan (int const*,int ,int ,long) ;
+ long ghb_dict_get_int (int ,char*) ;
+ int ghb_get_status (TYPE_3__*) ;
+ int gtk_tool_button_set_icon_name (int ,char*) ;
+ int gtk_tool_button_set_label (int ,int ) ;
+ int gtk_tool_item_set_tooltip_text (int ,int ) ;
+ int gtk_widget_set_sensitive (int *,int ) ;
 
 __attribute__((used)) static void
 start_scan(

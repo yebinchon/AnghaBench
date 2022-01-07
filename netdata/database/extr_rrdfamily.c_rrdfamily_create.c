@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char* family; int /*<<< orphan*/  use_count; int /*<<< orphan*/  rrdvar_root_index; int /*<<< orphan*/  hash_family; } ;
-typedef  int /*<<< orphan*/  RRDHOST ;
-typedef  TYPE_1__ RRDFAMILY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avl_init_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* callocz (int,int) ; 
- int /*<<< orphan*/  error (char*,char*,char*) ; 
- TYPE_1__* rrdfamily_index_add (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* rrdfamily_index_find (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdvar_compare ; 
- int /*<<< orphan*/  simple_hash (char*) ; 
- char* strdupz (char const*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char* family; int use_count; int rrdvar_root_index; int hash_family; } ;
+typedef int RRDHOST ;
+typedef TYPE_1__ RRDFAMILY ;
+
+
+ int avl_init_lock (int *,int ) ;
+ TYPE_1__* callocz (int,int) ;
+ int error (char*,char*,char*) ;
+ TYPE_1__* rrdfamily_index_add (int *,TYPE_1__*) ;
+ TYPE_1__* rrdfamily_index_find (int *,char const*,int ) ;
+ int rrdvar_compare ;
+ int simple_hash (char*) ;
+ char* strdupz (char const*) ;
 
 RRDFAMILY *rrdfamily_create(RRDHOST *host, const char *id) {
     RRDFAMILY *rc = rrdfamily_index_find(host, id, 0);
@@ -33,7 +33,7 @@ RRDFAMILY *rrdfamily_create(RRDHOST *host, const char *id) {
         rc->family = strdupz(id);
         rc->hash_family = simple_hash(rc->family);
 
-        // initialize the variables index
+
         avl_init_lock(&rc->rrdvar_root_index, rrdvar_compare);
 
         RRDFAMILY *ret = rrdfamily_index_add(host, rc);

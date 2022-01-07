@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * _cb; int /*<<< orphan*/  _pending; } ;
-typedef  TYPE_1__ h2o_hostinfo_getaddr_req_t ;
-struct TYPE_6__ {int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ h2o_linklist_is_linked (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_linklist_unlink (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_2__ queue ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * _cb; int _pending; } ;
+typedef TYPE_1__ h2o_hostinfo_getaddr_req_t ;
+struct TYPE_6__ {int mutex; } ;
+
+
+ int free (TYPE_1__*) ;
+ scalar_t__ h2o_linklist_is_linked (int *) ;
+ int h2o_linklist_unlink (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ TYPE_2__ queue ;
 
 void h2o_hostinfo_getaddr_cancel(h2o_hostinfo_getaddr_req_t *req)
 {
@@ -34,7 +34,7 @@ void h2o_hostinfo_getaddr_cancel(h2o_hostinfo_getaddr_req_t *req)
         h2o_linklist_unlink(&req->_pending);
         should_free = 1;
     } else {
-        req->_cb = NULL;
+        req->_cb = ((void*)0);
     }
 
     pthread_mutex_unlock(&queue.mutex);

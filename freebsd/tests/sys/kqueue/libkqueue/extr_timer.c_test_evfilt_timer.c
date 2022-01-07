@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disable_and_enable () ; 
- int /*<<< orphan*/  kqfd ; 
- int /*<<< orphan*/  kqueue () ; 
- int /*<<< orphan*/  test_abstime () ; 
- int /*<<< orphan*/  test_kevent_timer_add () ; 
- int /*<<< orphan*/  test_kevent_timer_del () ; 
- int /*<<< orphan*/  test_kevent_timer_get () ; 
- int /*<<< orphan*/  test_oneshot () ; 
- int /*<<< orphan*/  test_periodic () ; 
- int /*<<< orphan*/  test_update () ; 
- int /*<<< orphan*/  test_update_equal () ; 
- int /*<<< orphan*/  test_update_expired () ; 
- int /*<<< orphan*/  test_update_periodic () ; 
- int /*<<< orphan*/  test_update_timing () ; 
+ int close (int ) ;
+ int disable_and_enable () ;
+ int kqfd ;
+ int kqueue () ;
+ int test_abstime () ;
+ int test_kevent_timer_add () ;
+ int test_kevent_timer_del () ;
+ int test_kevent_timer_get () ;
+ int test_oneshot () ;
+ int test_periodic () ;
+ int test_update () ;
+ int test_update_equal () ;
+ int test_update_expired () ;
+ int test_update_periodic () ;
+ int test_update_timing () ;
 
 void
 test_evfilt_timer()

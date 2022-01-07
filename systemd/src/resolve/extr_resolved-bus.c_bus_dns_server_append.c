@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-struct TYPE_4__ {int /*<<< orphan*/  family; int /*<<< orphan*/  address; } ;
-typedef  TYPE_1__ DnsServer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  FAMILY_ADDRESS_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dns_server_ifindex (TYPE_1__*) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,...) ; 
- int sd_bus_message_append_array (int /*<<< orphan*/ *,char,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sd_bus_message_close_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_open_container (int /*<<< orphan*/ *,char,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+struct TYPE_4__ {int family; int address; } ;
+typedef TYPE_1__ DnsServer ;
+
+
+ int AF_UNSPEC ;
+ int FAMILY_ADDRESS_SIZE (int ) ;
+ int assert (int *) ;
+ int dns_server_ifindex (TYPE_1__*) ;
+ int sd_bus_message_append (int *,char*,int ,...) ;
+ int sd_bus_message_append_array (int *,char,int *,int ) ;
+ int sd_bus_message_close_container (int *) ;
+ int sd_bus_message_open_container (int *,char,char*) ;
 
 int bus_dns_server_append(sd_bus_message *reply, DnsServer *s, bool with_ifindex) {
         int r;

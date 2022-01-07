@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ OMX_ERRORTYPE ;
 
-/* Variables and functions */
- size_t MMALOMX_SAT (int,int /*<<< orphan*/ ,int) ; 
- scalar_t__ OMX_ErrorInsufficientResources ; 
- scalar_t__ OMX_ErrorNone ; 
- scalar_t__ vcos_countof (char const**) ; 
+
+
+
+typedef scalar_t__ OMX_ERRORTYPE ;
+
+
+ size_t MMALOMX_SAT (int,int ,int) ;
+ scalar_t__ OMX_ErrorInsufficientResources ;
+ scalar_t__ OMX_ErrorNone ;
+ scalar_t__ vcos_countof (char const**) ;
 
 const char *mmalomx_error_to_string(OMX_ERRORTYPE error)
 {

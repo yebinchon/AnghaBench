@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-struct TYPE_3__ {int /*<<< orphan*/  Cedar; } ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_1__ CLIENT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddCa (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BufToX (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * CfgGetBuf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X ;
+struct TYPE_3__ {int Cedar; } ;
+typedef int FOLDER ;
+typedef TYPE_1__ CLIENT ;
+typedef int BUF ;
+
+
+ int AddCa (int ,int *) ;
+ int * BufToX (int *,int) ;
+ int * CfgGetBuf (int *,char*) ;
+ int FreeBuf (int *) ;
+ int FreeX (int *) ;
 
 void CiLoadCACert(CLIENT *c, FOLDER *f)
 {
-	BUF *b;
-	X *x;
-	// Validate arguments
-	if (c == NULL || f == NULL)
-	{
-		return;
-	}
+ BUF *b;
+ X *x;
 
-	b = CfgGetBuf(f, "X509");
-	if (b == NULL)
-	{
-		return;
-	}
+ if (c == ((void*)0) || f == ((void*)0))
+ {
+  return;
+ }
 
-	x = BufToX(b, false);
+ b = CfgGetBuf(f, "X509");
+ if (b == ((void*)0))
+ {
+  return;
+ }
 
-	AddCa(c->Cedar, x);
+ x = BufToX(b, 0);
 
-	FreeX(x);
+ AddCa(c->Cedar, x);
 
-	FreeBuf(b);
+ FreeX(x);
+
+ FreeBuf(b);
 }

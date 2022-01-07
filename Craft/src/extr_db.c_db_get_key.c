@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  db_enabled ; 
- int /*<<< orphan*/  get_key_stmt ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ ,int,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ ) ; 
+ scalar_t__ SQLITE_ROW ;
+ int db_enabled ;
+ int get_key_stmt ;
+ int sqlite3_bind_int (int ,int,int) ;
+ int sqlite3_column_int (int ,int ) ;
+ int sqlite3_reset (int ) ;
+ scalar_t__ sqlite3_step (int ) ;
 
 int db_get_key(int p, int q) {
     if (!db_enabled) {

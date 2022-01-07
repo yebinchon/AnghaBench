@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  VCHIQ_STATUS_T ;
-typedef  int /*<<< orphan*/  VCHIQ_SERVICE_HANDLE_T ;
-typedef  scalar_t__ VCHIQ_REASON_T ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int data ;
+typedef int VCHIQ_STATUS_T ;
+typedef int VCHIQ_SERVICE_HANDLE_T ;
+typedef scalar_t__ VCHIQ_REASON_T ;
 struct TYPE_5__ {size_t size; char* data; } ;
-typedef  TYPE_1__ VCHIQ_HEADER_T ;
-struct TYPE_6__ {size_t iters; scalar_t__ echo; int /*<<< orphan*/  blocksize; scalar_t__ verify; } ;
+typedef TYPE_1__ VCHIQ_HEADER_T ;
+struct TYPE_6__ {size_t iters; scalar_t__ echo; int blocksize; scalar_t__ verify; } ;
 
-/* Variables and functions */
- int MSG_ECHO ; 
- size_t NUM_BULK_BUFS ; 
- scalar_t__ VCHIQ_BULK_RECEIVE_ABORTED ; 
- scalar_t__ VCHIQ_BULK_RECEIVE_DONE ; 
- scalar_t__ VCHIQ_BULK_TRANSMIT_ABORTED ; 
- scalar_t__ VCHIQ_BULK_TRANSMIT_DONE ; 
- scalar_t__ VCHIQ_MESSAGE_AVAILABLE ; 
- int /*<<< orphan*/  VCHIQ_SUCCESS ; 
- int /*<<< orphan*/  VCOS_BKPT ; 
- char** bulk_rx_data ; 
- int bulk_rx_received ; 
- size_t bulk_rx_sent ; 
- char** bulk_tx_data ; 
- int bulk_tx_received ; 
- size_t bulk_tx_sent ; 
- size_t ctrl_received ; 
- int /*<<< orphan*/  g_mutex ; 
- TYPE_3__ g_params ; 
- char* g_server_error ; 
- int /*<<< orphan*/  g_server_reply ; 
- int /*<<< orphan*/  g_shutdown ; 
- scalar_t__ mem_check (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiq_queue_bulk_receive (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  vchiq_queue_bulk_transmit (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  vchiq_release_message (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_event_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_info (char*,int) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int,...) ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int MSG_ECHO ;
+ size_t NUM_BULK_BUFS ;
+ scalar_t__ VCHIQ_BULK_RECEIVE_ABORTED ;
+ scalar_t__ VCHIQ_BULK_RECEIVE_DONE ;
+ scalar_t__ VCHIQ_BULK_TRANSMIT_ABORTED ;
+ scalar_t__ VCHIQ_BULK_TRANSMIT_DONE ;
+ scalar_t__ VCHIQ_MESSAGE_AVAILABLE ;
+ int VCHIQ_SUCCESS ;
+ int VCOS_BKPT ;
+ char** bulk_rx_data ;
+ int bulk_rx_received ;
+ size_t bulk_rx_sent ;
+ char** bulk_tx_data ;
+ int bulk_tx_received ;
+ size_t bulk_tx_sent ;
+ size_t ctrl_received ;
+ int g_mutex ;
+ TYPE_3__ g_params ;
+ char* g_server_error ;
+ int g_server_reply ;
+ int g_shutdown ;
+ scalar_t__ mem_check (char*,char*,int ) ;
+ int memcpy (int*,char*,int) ;
+ int memset (char*,int,int ) ;
+ int vchiq_queue_bulk_receive (int ,char*,int ,void*) ;
+ int vchiq_queue_bulk_transmit (int ,char*,int ,void*) ;
+ int vchiq_release_message (int ,TYPE_1__*) ;
+ int vcos_assert (int) ;
+ int vcos_event_signal (int *) ;
+ int vcos_log_error (char*,int,unsigned int,unsigned int,int ) ;
+ int vcos_log_info (char*,int) ;
+ int vcos_log_trace (char*,int,...) ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 __attribute__((used)) static VCHIQ_STATUS_T
 clnt_callback(VCHIQ_REASON_T reason, VCHIQ_HEADER_T *header,
@@ -64,19 +64,19 @@ clnt_callback(VCHIQ_REASON_T reason, VCHIQ_HEADER_T *header,
    vcos_mutex_lock(&g_mutex);
    if (reason == VCHIQ_MESSAGE_AVAILABLE)
    {
-      /*
-       * Store the header size as it is going to be released
-       * and the size may be overwritten by the release.
-       */
+
+
+
+
       size_t header_size = header->size;
 
       if (header_size <= 1)
          vchiq_release_message(service, header);
       else
-      /* Responses of length 0 are not sync points */
+
       if ((header_size >= 4) && (memcpy(&data, header->data, sizeof(data)), data == MSG_ECHO))
       {
-         /* This is a complete echoed packet */
+
          if (g_params.verify && (mem_check(header->data, bulk_tx_data[ctrl_received % NUM_BULK_BUFS], g_params.blocksize) != 0))
             g_server_error = "corrupt data";
          else

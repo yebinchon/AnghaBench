@@ -1,67 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CorruptEnvValueMsg ; 
- int /*<<< orphan*/  EFAULT ; 
- int /*<<< orphan*/  __clean_env (int) ; 
- int /*<<< orphan*/  __env_warnx (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int __setenv (char*,int,char*,int) ; 
- scalar_t__ envActive ; 
- char** environ ; 
- int /*<<< orphan*/  errno ; 
- char** intEnviron ; 
- char** origEnviron ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int CorruptEnvValueMsg ;
+ int EFAULT ;
+ int __clean_env (int) ;
+ int __env_warnx (int ,char*,int ) ;
+ int __setenv (char*,int,char*,int) ;
+ scalar_t__ envActive ;
+ char** environ ;
+ int errno ;
+ char** intEnviron ;
+ char** origEnviron ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 __merge_environ(void)
 {
-	char **env;
-	char *equals;
+ char **env;
+ char *equals;
 
-	/*
-	 * Internally-built environ has been replaced or cleared (detected by
-	 * using the count of active variables against a NULL as the first value
-	 * in environ).  Clean up everything.
-	 */
-	if (intEnviron != NULL && (environ != intEnviron || (envActive > 0 &&
-	    environ[0] == NULL))) {
-		/* Deactivate all environment variables. */
-		if (envActive > 0) {
-			origEnviron = NULL;
-			__clean_env(false);
-		}
 
-		/*
-		 * Insert new environ into existing, yet deactivated,
-		 * environment array.
-		 */
-		origEnviron = environ;
-		if (origEnviron != NULL)
-			for (env = origEnviron; *env != NULL; env++) {
-				if ((equals = strchr(*env, '=')) == NULL) {
-					__env_warnx(CorruptEnvValueMsg, *env,
-					    strlen(*env));
-					errno = EFAULT;
-					return (-1);
-				}
-				if (__setenv(*env, equals - *env, equals + 1,
-				    1) == -1)
-					return (-1);
-			}
-	}
 
-	return (0);
+
+
+
+ if (intEnviron != ((void*)0) && (environ != intEnviron || (envActive > 0 &&
+     environ[0] == ((void*)0)))) {
+
+  if (envActive > 0) {
+   origEnviron = ((void*)0);
+   __clean_env(0);
+  }
+
+
+
+
+
+  origEnviron = environ;
+  if (origEnviron != ((void*)0))
+   for (env = origEnviron; *env != ((void*)0); env++) {
+    if ((equals = strchr(*env, '=')) == ((void*)0)) {
+     __env_warnx(CorruptEnvValueMsg, *env,
+         strlen(*env));
+     errno = EFAULT;
+     return (-1);
+    }
+    if (__setenv(*env, equals - *env, equals + 1,
+        1) == -1)
+     return (-1);
+   }
+ }
+
+ return (0);
 }

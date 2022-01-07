@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int input_size; int word_bits; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  gb; int /*<<< orphan*/  avctx; int /*<<< orphan*/ * input; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ DBEContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (int /*<<< orphan*/ *) ; 
- int AV_RB24 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AV_WB16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  AV_WB24 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int input_size; int word_bits; int * buffer; int gb; int avctx; int * input; } ;
+typedef int PutBitContext ;
+typedef TYPE_1__ DBEContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int *) ;
+ int AV_RB24 (int *) ;
+ int AV_WB16 (int *,int) ;
+ int AV_WB24 (int *,int) ;
+ int av_assert0 (int) ;
+ int av_log (int ,int ,char*) ;
+ int flush_put_bits (int *) ;
+ int init_get_bits (int *,int *,int) ;
+ int init_put_bits (int *,int *,int) ;
+ int put_bits (int *,int,int) ;
 
 __attribute__((used)) static int convert_input(DBEContext *s, int nb_words, int key)
 {

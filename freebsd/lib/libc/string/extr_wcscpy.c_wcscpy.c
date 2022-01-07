@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
 
-/* Variables and functions */
+
+
+
+typedef int wchar_t ;
+
+
 
 wchar_t *
 wcscpy(wchar_t * __restrict s1, const wchar_t * __restrict s2)
 {
-	wchar_t *cp;
+ wchar_t *cp;
 
-	cp = s1;
-	while ((*cp++ = *s2++) != L'\0')
-		;
+ cp = s1;
+ while ((*cp++ = *s2++) != L'\0')
+  ;
 
-	return (s1);
+ return (s1);
 }

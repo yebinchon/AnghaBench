@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const* golomb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int compute_golomb_parameter (int,int) ; 
- scalar_t__ cur_bit ; 
- int /*<<< orphan*/  load_bit () ; 
+
+
+
+typedef char const* golomb ;
+
+
+ int assert (int) ;
+ int compute_golomb_parameter (int,int) ;
+ scalar_t__ cur_bit ;
+ int load_bit () ;
 
 int golomb_decode_list (golomb ptr, int tot_items, int bytes, int *P) {
   const char *end = ptr + bytes;
@@ -71,7 +71,7 @@ int golomb_decode_list (golomb ptr, int tot_items, int bytes, int *P) {
       d -= p;
     }
     a -= d + 1;
-    // fprintf (stderr, "golomb decode: %d (delta=%d)\n", a, d);
+
     assert (a == *P);
     P++;
   }
@@ -79,6 +79,6 @@ int golomb_decode_list (golomb ptr, int tot_items, int bytes, int *P) {
   assert (ptr == end);
 
   return tmp + 1;
-#undef cur_bit
-#undef load_bit
+
+
 }

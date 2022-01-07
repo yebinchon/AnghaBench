@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  _exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  exit_failure ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int) ; 
- char* program_error_message ; 
- char* program_name ; 
- int /*<<< orphan*/  segv_action (int) ; 
- char* stack_overflow_message ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char const*,int) ; 
+ int STDERR_FILENO ;
+ int _exit (int ) ;
+ int abort () ;
+ int exit_failure ;
+ int getpid () ;
+ int kill (int ,int) ;
+ char* program_error_message ;
+ char* program_name ;
+ int segv_action (int) ;
+ char* stack_overflow_message ;
+ int strlen (char const*) ;
+ int write (int ,char const*,int) ;
 
 __attribute__((used)) static void
 die (int signo)

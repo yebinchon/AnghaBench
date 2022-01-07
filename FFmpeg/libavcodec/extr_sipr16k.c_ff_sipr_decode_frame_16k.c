@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fixed_vector ;
-struct TYPE_10__ {void* pitch_lag; int /*<<< orphan*/  pitch_fac; } ;
-struct TYPE_9__ {float* synth_buf; float* excitation; float* lsp_history_16k; float* synth; double* energy_history; float* iir_mem; int /*<<< orphan*/  mem_preemph; int /*<<< orphan*/  filt_mem; void* pitch_lag_prev; int /*<<< orphan*/  lsf_history; } ;
-struct TYPE_8__ {size_t* gp_index; size_t* gc_index; int /*<<< orphan*/ * fc_indexes; int /*<<< orphan*/ * pitch_delay; int /*<<< orphan*/  ma_pred_switch; int /*<<< orphan*/  vq_indexes; } ;
-typedef  TYPE_1__ SiprParameters ;
-typedef  TYPE_2__ SiprContext ;
-typedef  TYPE_3__ AMRFixed ;
 
-/* Variables and functions */
- void* DIVIDE_BY_3 (int) ; 
- int /*<<< orphan*/  FFMIN (float,double) ; 
- int /*<<< orphan*/  LP_FILTER_ORDER ; 
- int LP_FILTER_ORDER_16k ; 
- int LSFQ_DIFF_MIN ; 
- int L_INTERPOL ; 
- int L_SUBFR_16k ; 
- double M_LN10 ; 
- double M_LN2 ; 
- int PITCH_MAX ; 
- int /*<<< orphan*/  PITCH_MIN ; 
- int SUBFRAME_COUNT_16k ; 
- float acelp_decode_gain_codef (int /*<<< orphan*/ ,float*,double,int /*<<< orphan*/ ,double*,int,int) ; 
- int /*<<< orphan*/  acelp_lp_decodef (float*,float*,double*,float*) ; 
- int dec_delay3_1st (int /*<<< orphan*/ ) ; 
- int dec_delay3_2nd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,void*) ; 
- int /*<<< orphan*/  ff_acelp_interpolatef (float*,float*,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_celp_lp_synthesis_filterf (float*,float*,float*,int,int) ; 
- int /*<<< orphan*/  ff_decode_10_pulses_35bits (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ff_fc_4pulses_8bits_tracks_13 ; 
- int /*<<< orphan*/  ff_set_fixed_vector (float*,TYPE_3__*,double,int) ; 
- int /*<<< orphan*/  ff_set_min_dist_lsf (float*,int,int) ; 
- int /*<<< orphan*/  ff_weighted_vector_sumf (float*,float*,float*,float,float,int) ; 
- float* gain_cb_16k ; 
- float* gain_pitch_cb_16k ; 
- double log10f (float) ; 
- int /*<<< orphan*/  lsf2lsp (float*,double*) ; 
- int /*<<< orphan*/  lsf_decode_fp_16k (int /*<<< orphan*/ ,float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (float*,...) ; 
- int /*<<< orphan*/  memmove (float*,float*,int) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  postfilter (float*,float*,float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pred_16k ; 
- int /*<<< orphan*/  sinc_win ; 
- int /*<<< orphan*/  sqrt (int) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int fixed_vector ;
+struct TYPE_10__ {void* pitch_lag; int pitch_fac; } ;
+struct TYPE_9__ {float* synth_buf; float* excitation; float* lsp_history_16k; float* synth; double* energy_history; float* iir_mem; int mem_preemph; int filt_mem; void* pitch_lag_prev; int lsf_history; } ;
+struct TYPE_8__ {size_t* gp_index; size_t* gc_index; int * fc_indexes; int * pitch_delay; int ma_pred_switch; int vq_indexes; } ;
+typedef TYPE_1__ SiprParameters ;
+typedef TYPE_2__ SiprContext ;
+typedef TYPE_3__ AMRFixed ;
+
+
+ void* DIVIDE_BY_3 (int) ;
+ int FFMIN (float,double) ;
+ int LP_FILTER_ORDER ;
+ int LP_FILTER_ORDER_16k ;
+ int LSFQ_DIFF_MIN ;
+ int L_INTERPOL ;
+ int L_SUBFR_16k ;
+ double M_LN10 ;
+ double M_LN2 ;
+ int PITCH_MAX ;
+ int PITCH_MIN ;
+ int SUBFRAME_COUNT_16k ;
+ float acelp_decode_gain_codef (int ,float*,double,int ,double*,int,int) ;
+ int acelp_lp_decodef (float*,float*,double*,float*) ;
+ int dec_delay3_1st (int ) ;
+ int dec_delay3_2nd (int ,int ,int,void*) ;
+ int ff_acelp_interpolatef (float*,float*,int ,int,int,int ,int) ;
+ int ff_celp_lp_synthesis_filterf (float*,float*,float*,int,int) ;
+ int ff_decode_10_pulses_35bits (int ,TYPE_3__*,int ,int,int) ;
+ int ff_fc_4pulses_8bits_tracks_13 ;
+ int ff_set_fixed_vector (float*,TYPE_3__*,double,int) ;
+ int ff_set_min_dist_lsf (float*,int,int) ;
+ int ff_weighted_vector_sumf (float*,float*,float*,float,float,int) ;
+ float* gain_cb_16k ;
+ float* gain_pitch_cb_16k ;
+ double log10f (float) ;
+ int lsf2lsp (float*,double*) ;
+ int lsf_decode_fp_16k (int ,float*,int ,int ) ;
+ int memcpy (float*,...) ;
+ int memmove (float*,float*,int) ;
+ int memset (float*,int ,int) ;
+ int postfilter (float*,float*,float*,int ,int ) ;
+ int pred_16k ;
+ int sinc_win ;
+ int sqrt (int) ;
 
 void ff_sipr_decode_frame_16k(SiprContext *ctx, SiprParameters *params,
                               float *out_data)
@@ -107,7 +107,7 @@ void ff_sipr_decode_frame_16k(SiprContext *ctx, SiprParameters *params,
         f.pitch_lag = DIVIDE_BY_3(pitch_delay_3x+1);
         ctx->pitch_lag_prev = f.pitch_lag;
 
-        pitch_delay_int  = DIVIDE_BY_3(pitch_delay_3x + 2);
+        pitch_delay_int = DIVIDE_BY_3(pitch_delay_3x + 2);
         pitch_delay_frac = pitch_delay_3x + 2 - 3*pitch_delay_int;
 
         ff_acelp_interpolatef(&excitation[i_subfr],

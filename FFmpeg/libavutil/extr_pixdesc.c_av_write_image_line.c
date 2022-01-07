@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_write_image_line2 (int /*<<< orphan*/  const*,int /*<<< orphan*/ **,int const*,int /*<<< orphan*/  const*,int,int,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int AVPixFmtDescriptor ;
+
+
+ int av_write_image_line2 (int const*,int **,int const*,int const*,int,int,int,int,int) ;
 
 void av_write_image_line(const uint16_t *src,
                          uint8_t *data[4], const int linesize[4],

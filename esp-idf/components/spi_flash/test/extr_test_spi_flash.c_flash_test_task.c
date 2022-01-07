@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct flash_test_ctx {int offset; int fail; int /*<<< orphan*/  done; } ;
 
-/* Variables and functions */
- scalar_t__ ESP_OK ; 
- int SPI_FLASH_SEC_SIZE ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ spi_flash_erase_sector (int const) ; 
- scalar_t__ spi_flash_read (int const,int /*<<< orphan*/ *,int) ; 
- scalar_t__ spi_flash_write (int const,int /*<<< orphan*/  const*,int) ; 
- int start ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct flash_test_ctx {int offset; int fail; int done; } ;
+
+
+ scalar_t__ ESP_OK ;
+ int SPI_FLASH_SEC_SIZE ;
+ int portTICK_PERIOD_MS ;
+ int printf (char*,...) ;
+ scalar_t__ spi_flash_erase_sector (int const) ;
+ scalar_t__ spi_flash_read (int const,int *,int) ;
+ scalar_t__ spi_flash_write (int const,int const*,int) ;
+ int start ;
+ int vTaskDelay (int) ;
+ int vTaskDelete (int *) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void flash_test_task(void *arg)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static void flash_test_task(void *arg)
     printf("t%d\n", sector);
     printf("es%d\n", sector);
     if (spi_flash_erase_sector(sector) != ESP_OK) {
-        ctx->fail = true;
+        ctx->fail = 1;
         printf("Erase failed\r\n");
         xSemaphoreGive(ctx->done);
-        vTaskDelete(NULL);
+        vTaskDelete(((void*)0));
     }
     printf("ed%d\n", sector);
 
@@ -48,7 +48,7 @@ __attribute__((used)) static void flash_test_task(void *arg)
     for (uint32_t offset = 0; offset < SPI_FLASH_SEC_SIZE; offset += 4) {
         if (spi_flash_write(sector * SPI_FLASH_SEC_SIZE + offset, (const uint8_t *) &val, 4) != ESP_OK) {
             printf("Write failed at offset=%d\r\n", offset);
-            ctx->fail = true;
+            ctx->fail = 1;
             break;
         }
     }
@@ -60,16 +60,16 @@ __attribute__((used)) static void flash_test_task(void *arg)
     for (uint32_t offset = 0; offset < SPI_FLASH_SEC_SIZE; offset += 4) {
         if (spi_flash_read(sector * SPI_FLASH_SEC_SIZE + offset, (uint8_t *) &val_read, 4) != ESP_OK) {
             printf("Read failed at offset=%d\r\n", offset);
-            ctx->fail = true;
+            ctx->fail = 1;
             break;
         }
         if (val_read != val) {
             printf("Read invalid value=%08x at offset=%d\r\n", val_read, offset);
-            ctx->fail = true;
+            ctx->fail = 1;
             break;
         }
     }
     printf("td%d\n", sector);
     xSemaphoreGive(ctx->done);
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_PATCHWELCOME ; 
- int AV_CODEC_ID_DOLBY_E ; 
- scalar_t__ IS_16LE_MARKER (int /*<<< orphan*/ ) ; 
- scalar_t__ IS_20LE_MARKER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+typedef int AVFormatContext ;
+
+
+ int AVERROR_PATCHWELCOME ;
+ int AV_CODEC_ID_DOLBY_E ;
+ scalar_t__ IS_16LE_MARKER (int ) ;
+ scalar_t__ IS_20LE_MARKER (int ) ;
+ int avpriv_report_missing_feature (int *,char*,int) ;
 
 __attribute__((used)) static int s337m_get_offset_and_codec(AVFormatContext *s,
                                       uint64_t state,

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int left; int top; int right; int bottom; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  LPPOINT ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRGN ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBITMAP ;
+typedef TYPE_1__ RECT ;
+typedef int LPPOINT ;
+typedef int INT ;
+typedef int HRGN ;
+typedef int HDC ;
+typedef int HBITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleBitmap (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateRectRgn (int,int,int,int) ; 
- int /*<<< orphan*/  DPtoLP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRandomRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetRgnBox (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MoveWindow (int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYSRGN ; 
- int /*<<< orphan*/  SelectClipRgn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghdcWindow ; 
- int /*<<< orphan*/  ghwnd ; 
- int /*<<< orphan*/  ok_int (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok_long (int,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+ int CreateCompatibleBitmap (int ,int,int) ;
+ int CreateCompatibleDC (int ) ;
+ int CreateRectRgn (int,int,int,int) ;
+ int DPtoLP (int ,int ,int) ;
+ int DeleteDC (int ) ;
+ int DeleteObject (int ) ;
+ int GetRandomRgn (int ,int ,int ) ;
+ int GetRgnBox (int ,TYPE_1__*) ;
+ int MoveWindow (int ,int,int,int,int,int ) ;
+ int SYSRGN ;
+ int SelectClipRgn (int ,int ) ;
+ int SelectObject (int ,int ) ;
+ int ghdcWindow ;
+ int ghwnd ;
+ int ok_int (int ,int) ;
+ int ok_long (int,int) ;
+ int printf (char*) ;
 
 void Test_GetRandomRgn_SYSRGN()
 {
@@ -95,12 +95,12 @@ void Test_GetRandomRgn_SYSRGN()
     ok_int(ret, 1);
     GetRgnBox(hrgn1, &rect);
     DPtoLP(ghdcWindow, (LPPOINT)&rect, 2);
-#if 0 // FIXME: this needs calculation
-    ok_long(rect.left, 104);
-    ok_long(rect.top, 124);
-    ok_long(rect.right, 209);
-    ok_long(rect.bottom, 196);
-#endif
+
+
+
+
+
+
 
     MoveWindow(ghwnd, 200, 400, 200, 200, 0);
 
@@ -108,12 +108,12 @@ void Test_GetRandomRgn_SYSRGN()
     ok_int(ret, 1);
     GetRgnBox(hrgn1, &rect2);
     DPtoLP(ghdcWindow, (LPPOINT)&rect2, 2);
-#if 0 // FIXME: this needs calculation
-    ok_long(rect2.left, rect.left + 100);
-    ok_long(rect2.top, rect.top + 300);
-    ok_long(rect2.right, rect.right + 200 - 13);
-    ok_long(rect2.bottom, rect.bottom + 400);
-#endif
+
+
+
+
+
+
 
     DeleteObject(hrgn1);
     DeleteDC(hdc);

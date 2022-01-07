@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
-#define  ADDR_DIFF_VEC 141 
-#define  ADDR_VEC 140 
-#define  ASM_INPUT 139 
- int BUF_LEN ; 
-#define  CALL 138 
-#define  CLOBBER 137 
-#define  COND_EXEC 136 
- int /*<<< orphan*/  COND_EXEC_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COND_EXEC_TEST (int /*<<< orphan*/ ) ; 
- int EQ ; 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- int NE ; 
-#define  PARALLEL 135 
-#define  RETURN 134 
-#define  SEQUENCE 133 
-#define  SET 132 
- int /*<<< orphan*/  SET_DEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_SRC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRAP_CONDITION (int /*<<< orphan*/ ) ; 
-#define  TRAP_IF 131 
-#define  UNSPEC 130 
-#define  UNSPEC_VOLATILE 129 
-#define  USE 128 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- char* XSTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int XVECLEN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  print_exp (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  print_value (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int rtx ;
+
+
+
+
+
+ int BUF_LEN ;
+
+
+
+ int COND_EXEC_CODE (int ) ;
+ int COND_EXEC_TEST (int ) ;
+ int EQ ;
+ int GET_CODE (int ) ;
+ int NE ;
+
+
+
+
+ int SET_DEST (int ) ;
+ int SET_SRC (int ) ;
+ int TRAP_CONDITION (int ) ;
+
+
+
+
+ int XEXP (int ,int) ;
+ char* XSTR (int ,int ) ;
+ int XVECEXP (int ,int ,int) ;
+ int XVECLEN (int ,int ) ;
+ int const0_rtx ;
+ int gcc_unreachable () ;
+ int print_exp (char*,int ,int) ;
+ int print_value (char*,int ,int) ;
+ int sprintf (char*,char*,...) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void
 print_pattern (char *buf, rtx x, int verbose)
@@ -54,95 +54,95 @@ print_pattern (char *buf, rtx x, int verbose)
 
   switch (GET_CODE (x))
     {
-    case SET:
+    case 132:
       print_value (t1, SET_DEST (x), verbose);
       print_value (t2, SET_SRC (x), verbose);
       sprintf (buf, "%s=%s", t1, t2);
       break;
-    case RETURN:
+    case 134:
       sprintf (buf, "return");
       break;
-    case CALL:
+    case 138:
       print_exp (buf, x, verbose);
       break;
-    case CLOBBER:
+    case 137:
       print_value (t1, XEXP (x, 0), verbose);
       sprintf (buf, "clobber %s", t1);
       break;
-    case USE:
+    case 128:
       print_value (t1, XEXP (x, 0), verbose);
       sprintf (buf, "use %s", t1);
       break;
-    case COND_EXEC:
+    case 136:
       if (GET_CODE (COND_EXEC_TEST (x)) == NE
-	  && XEXP (COND_EXEC_TEST (x), 1) == const0_rtx)
-	print_value (t1, XEXP (COND_EXEC_TEST (x), 0), verbose);
+   && XEXP (COND_EXEC_TEST (x), 1) == const0_rtx)
+ print_value (t1, XEXP (COND_EXEC_TEST (x), 0), verbose);
       else if (GET_CODE (COND_EXEC_TEST (x)) == EQ
-	       && XEXP (COND_EXEC_TEST (x), 1) == const0_rtx)
-	{
-	  t1[0] = '!';
-	  print_value (t1 + 1, XEXP (COND_EXEC_TEST (x), 0), verbose);
-	}
+        && XEXP (COND_EXEC_TEST (x), 1) == const0_rtx)
+ {
+   t1[0] = '!';
+   print_value (t1 + 1, XEXP (COND_EXEC_TEST (x), 0), verbose);
+ }
       else
-	print_value (t1, COND_EXEC_TEST (x), verbose);
+ print_value (t1, COND_EXEC_TEST (x), verbose);
       print_pattern (t2, COND_EXEC_CODE (x), verbose);
       sprintf (buf, "(%s) %s", t1, t2);
       break;
-    case PARALLEL:
+    case 135:
       {
-	int i;
+ int i;
 
-	sprintf (t1, "{");
-	for (i = 0; i < XVECLEN (x, 0); i++)
-	  {
-	    print_pattern (t2, XVECEXP (x, 0, i), verbose);
-	    sprintf (t3, "%s%s;", t1, t2);
-	    strcpy (t1, t3);
-	  }
-	sprintf (buf, "%s}", t1);
+ sprintf (t1, "{");
+ for (i = 0; i < XVECLEN (x, 0); i++)
+   {
+     print_pattern (t2, XVECEXP (x, 0, i), verbose);
+     sprintf (t3, "%s%s;", t1, t2);
+     strcpy (t1, t3);
+   }
+ sprintf (buf, "%s}", t1);
       }
       break;
-    case SEQUENCE:
-      /* Should never see SEQUENCE codes until after reorg.  */
+    case 133:
+
       gcc_unreachable ();
-    case ASM_INPUT:
+    case 139:
       sprintf (buf, "asm {%s}", XSTR (x, 0));
       break;
-    case ADDR_VEC:
+    case 140:
       break;
-    case ADDR_DIFF_VEC:
+    case 141:
       print_value (buf, XEXP (x, 0), verbose);
       break;
-    case TRAP_IF:
+    case 131:
       print_value (t1, TRAP_CONDITION (x), verbose);
       sprintf (buf, "trap_if %s", t1);
       break;
-    case UNSPEC:
+    case 130:
       {
-	int i;
+ int i;
 
-	sprintf (t1, "unspec{");
-	for (i = 0; i < XVECLEN (x, 0); i++)
-	  {
-	    print_pattern (t2, XVECEXP (x, 0, i), verbose);
-	    sprintf (t3, "%s%s;", t1, t2);
-	    strcpy (t1, t3);
-	  }
-	sprintf (buf, "%s}", t1);
+ sprintf (t1, "unspec{");
+ for (i = 0; i < XVECLEN (x, 0); i++)
+   {
+     print_pattern (t2, XVECEXP (x, 0, i), verbose);
+     sprintf (t3, "%s%s;", t1, t2);
+     strcpy (t1, t3);
+   }
+ sprintf (buf, "%s}", t1);
       }
       break;
-    case UNSPEC_VOLATILE:
+    case 129:
       {
-	int i;
+ int i;
 
-	sprintf (t1, "unspec/v{");
-	for (i = 0; i < XVECLEN (x, 0); i++)
-	  {
-	    print_pattern (t2, XVECEXP (x, 0, i), verbose);
-	    sprintf (t3, "%s%s;", t1, t2);
-	    strcpy (t1, t3);
-	  }
-	sprintf (buf, "%s}", t1);
+ sprintf (t1, "unspec/v{");
+ for (i = 0; i < XVECLEN (x, 0); i++)
+   {
+     print_pattern (t2, XVECEXP (x, 0, i), verbose);
+     sprintf (t3, "%s%s;", t1, t2);
+     strcpy (t1, t3);
+   }
+ sprintf (buf, "%s}", t1);
       }
       break;
     default:

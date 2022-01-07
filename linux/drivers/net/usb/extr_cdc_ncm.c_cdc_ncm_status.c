@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct usbnet {TYPE_1__* udev; int /*<<< orphan*/  flags; int /*<<< orphan*/  net; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct usbnet {TYPE_1__* udev; int flags; int net; } ;
 struct usb_cdc_speed_change {int dummy; } ;
-struct usb_cdc_notification {int bNotificationType; int /*<<< orphan*/  wValue; } ;
+struct usb_cdc_notification {int bNotificationType; int wValue; } ;
 struct urb {int actual_length; struct usb_cdc_notification* transfer_buffer; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVENT_STS_SPLIT ; 
-#define  USB_CDC_NOTIFY_NETWORK_CONNECTION 129 
-#define  USB_CDC_NOTIFY_SPEED_CHANGE 128 
- int /*<<< orphan*/  cdc_ncm_speed_change (struct usbnet*,struct usb_cdc_speed_change*) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  link ; 
- int /*<<< orphan*/  netif_info (struct usbnet*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usbnet_link_change (struct usbnet*,int,int /*<<< orphan*/ ) ; 
+
+ int EVENT_STS_SPLIT ;
+
+
+ int cdc_ncm_speed_change (struct usbnet*,struct usb_cdc_speed_change*) ;
+ int dev_dbg (int *,char*,int) ;
+ int link ;
+ int netif_info (struct usbnet*,int ,int ,char*,char*) ;
+ int set_bit (int ,int *) ;
+ scalar_t__ test_and_clear_bit (int ,int *) ;
+ int usbnet_link_change (struct usbnet*,int,int ) ;
 
 __attribute__((used)) static void cdc_ncm_status(struct usbnet *dev, struct urb *urb)
 {
-	struct usb_cdc_notification *event;
+ struct usb_cdc_notification *event;
 
-	if (urb->actual_length < sizeof(*event))
-		return;
+ if (urb->actual_length < sizeof(*event))
+  return;
 
-	/* test for split data in 8-byte chunks */
-	if (test_and_clear_bit(EVENT_STS_SPLIT, &dev->flags)) {
-		cdc_ncm_speed_change(dev,
-		      (struct usb_cdc_speed_change *)urb->transfer_buffer);
-		return;
-	}
 
-	event = urb->transfer_buffer;
+ if (test_and_clear_bit(EVENT_STS_SPLIT, &dev->flags)) {
+  cdc_ncm_speed_change(dev,
+        (struct usb_cdc_speed_change *)urb->transfer_buffer);
+  return;
+ }
 
-	switch (event->bNotificationType) {
-	case USB_CDC_NOTIFY_NETWORK_CONNECTION:
-		/*
-		 * According to the CDC NCM specification ch.7.1
-		 * USB_CDC_NOTIFY_NETWORK_CONNECTION notification shall be
-		 * sent by device after USB_CDC_NOTIFY_SPEED_CHANGE.
-		 */
-		netif_info(dev, link, dev->net,
-			   "network connection: %sconnected\n",
-			   !!event->wValue ? "" : "dis");
-		usbnet_link_change(dev, !!event->wValue, 0);
-		break;
+ event = urb->transfer_buffer;
 
-	case USB_CDC_NOTIFY_SPEED_CHANGE:
-		if (urb->actual_length < (sizeof(*event) +
-					sizeof(struct usb_cdc_speed_change)))
-			set_bit(EVENT_STS_SPLIT, &dev->flags);
-		else
-			cdc_ncm_speed_change(dev,
-					     (struct usb_cdc_speed_change *)&event[1]);
-		break;
+ switch (event->bNotificationType) {
+ case 129:
 
-	default:
-		dev_dbg(&dev->udev->dev,
-			"NCM: unexpected notification 0x%02x!\n",
-			event->bNotificationType);
-		break;
-	}
+
+
+
+
+  netif_info(dev, link, dev->net,
+      "network connection: %sconnected\n",
+      !!event->wValue ? "" : "dis");
+  usbnet_link_change(dev, !!event->wValue, 0);
+  break;
+
+ case 128:
+  if (urb->actual_length < (sizeof(*event) +
+     sizeof(struct usb_cdc_speed_change)))
+   set_bit(EVENT_STS_SPLIT, &dev->flags);
+  else
+   cdc_ncm_speed_change(dev,
+          (struct usb_cdc_speed_change *)&event[1]);
+  break;
+
+ default:
+  dev_dbg(&dev->udev->dev,
+   "NCM: unexpected notification 0x%02x!\n",
+   event->bNotificationType);
+  break;
+ }
 }

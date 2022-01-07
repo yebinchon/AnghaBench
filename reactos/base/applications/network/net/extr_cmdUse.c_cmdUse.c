@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_3__ {char* lpLocalName; char* lpRemoteName; int /*<<< orphan*/ * lpProvider; int /*<<< orphan*/  dwType; } ;
-typedef  TYPE_1__ NETRESOURCE ;
-typedef  char* LPWSTR ;
-typedef  int INT ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ARRAYSIZE (char*) ; 
- scalar_t__ CONNECT_LOCALDRIVE ; 
- int CONNECT_REDIRECT ; 
- int CONNECT_UPDATE_PROFILE ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ EnumerateConnections (char*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IDS_USE_NOW_CONNECTED ; 
- scalar_t__ NO_ERROR ; 
- int /*<<< orphan*/  PrintError (scalar_t__) ; 
- int /*<<< orphan*/  PrintErrorMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PrintMessageStringV (int,char*) ; 
- int /*<<< orphan*/  RESOURCETYPE_DISK ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ValidateDeviceName (char*) ; 
- scalar_t__ WNetCancelConnection2 (char*,int,scalar_t__) ; 
- scalar_t__ WNetUseConnection (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*,scalar_t__*,scalar_t__*) ; 
- char towupper (char) ; 
- scalar_t__ wcsicmp (char*,char*) ; 
- scalar_t__ wcslen (char*) ; 
- char* wcsstr (char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_3__ {char* lpLocalName; char* lpRemoteName; int * lpProvider; int dwType; } ;
+typedef TYPE_1__ NETRESOURCE ;
+typedef char* LPWSTR ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ARRAYSIZE (char*) ;
+ scalar_t__ CONNECT_LOCALDRIVE ;
+ int CONNECT_REDIRECT ;
+ int CONNECT_UPDATE_PROFILE ;
+ int ConResPrintf (int ,int ,char*,char*) ;
+ int ERROR_SUCCESS ;
+ scalar_t__ EnumerateConnections (char*) ;
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,char*) ;
+ int IDS_USE_NOW_CONNECTED ;
+ scalar_t__ NO_ERROR ;
+ int PrintError (scalar_t__) ;
+ int PrintErrorMessage (int ) ;
+ int PrintMessageStringV (int,char*) ;
+ int RESOURCETYPE_DISK ;
+ int StdOut ;
+ scalar_t__ TRUE ;
+ int ValidateDeviceName (char*) ;
+ scalar_t__ WNetCancelConnection2 (char*,int,scalar_t__) ;
+ scalar_t__ WNetUseConnection (int *,TYPE_1__*,int *,int *,int,char*,scalar_t__*,scalar_t__*) ;
+ char towupper (char) ;
+ scalar_t__ wcsicmp (char*,char*) ;
+ scalar_t__ wcslen (char*) ;
+ char* wcsstr (char*,char*) ;
 
 INT
 cmdUse(
@@ -56,7 +56,7 @@ cmdUse(
 
     if (argc == 2)
     {
-        Status = EnumerateConnections(NULL);
+        Status = EnumerateConnections(((void*)0));
         if (Status == NO_ERROR)
             PrintErrorMessage(ERROR_SUCCESS);
         else
@@ -173,11 +173,11 @@ cmdUse(
         }
 
         lpNet.dwType = RESOURCETYPE_DISK;
-        lpNet.lpLocalName = (argv[2][0] != L'*') ? argv[2] : NULL;
+        lpNet.lpLocalName = (argv[2][0] != L'*') ? argv[2] : ((void*)0);
         lpNet.lpRemoteName = argv[3];
-        lpNet.lpProvider = NULL;
+        lpNet.lpProvider = ((void*)0);
 
-        Status = WNetUseConnection(NULL, &lpNet, NULL, NULL, CONNECT_REDIRECT | (Persist ? CONNECT_UPDATE_PROFILE : 0), Access, &Size, &OutFlags);
+        Status = WNetUseConnection(((void*)0), &lpNet, ((void*)0), ((void*)0), CONNECT_REDIRECT | (Persist ? CONNECT_UPDATE_PROFILE : 0), Access, &Size, &OutFlags);
         if (argv[2][0] == L'*' && Status == NO_ERROR && OutFlags == CONNECT_LOCALDRIVE)
             ConResPrintf(StdOut, IDS_USE_NOW_CONNECTED, argv[3], Access);
         else if (Status != NO_ERROR)

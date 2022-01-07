@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ocfs2_super {int /*<<< orphan*/  osb_wipe_event; int /*<<< orphan*/  osb_lock; int /*<<< orphan*/ * osb_orphan_wipes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct ocfs2_super {int osb_wipe_event; int osb_lock; int * osb_orphan_wipes; } ;
+
+
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static void ocfs2_signal_wipe_completion(struct ocfs2_super *osb,
-					 int slot)
+      int slot)
 {
-	spin_lock(&osb->osb_lock);
-	osb->osb_orphan_wipes[slot]--;
-	spin_unlock(&osb->osb_lock);
+ spin_lock(&osb->osb_lock);
+ osb->osb_orphan_wipes[slot]--;
+ spin_unlock(&osb->osb_lock);
 
-	wake_up(&osb->osb_wipe_event);
+ wake_up(&osb->osb_wipe_event);
 }

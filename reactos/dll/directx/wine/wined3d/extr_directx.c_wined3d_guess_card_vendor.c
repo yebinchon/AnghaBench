@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum wined3d_pci_vendor { ____Placeholder_wined3d_pci_vendor } wined3d_pci_vendor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int HW_VENDOR_AMD ; 
- int HW_VENDOR_INTEL ; 
- int HW_VENDOR_NVIDIA ; 
- int HW_VENDOR_SOFTWARE ; 
- int HW_VENDOR_VMWARE ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- scalar_t__ strstr (char const*,char*) ; 
+
+
+
+typedef enum wined3d_pci_vendor { ____Placeholder_wined3d_pci_vendor } wined3d_pci_vendor ;
+
+
+ int FIXME (char*,int ) ;
+ int HW_VENDOR_AMD ;
+ int HW_VENDOR_INTEL ;
+ int HW_VENDOR_NVIDIA ;
+ int HW_VENDOR_SOFTWARE ;
+ int HW_VENDOR_VMWARE ;
+ int debugstr_a (char const*) ;
+ scalar_t__ strstr (char const*,char*) ;
 
 __attribute__((used)) static enum wined3d_pci_vendor wined3d_guess_card_vendor(const char *gl_vendor_string, const char *gl_renderer)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static enum wined3d_pci_vendor wined3d_guess_card_vendor(c
         return HW_VENDOR_AMD;
 
     if (strstr(gl_vendor_string, "Intel(R)")
-            /* Intel switched from Intel(R) to Intel® recently, so just match Intel. */
+
             || strstr(gl_renderer, "Intel")
             || strstr(gl_renderer, "i915")
             || strstr(gl_vendor_string, "Intel Inc."))

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int i_media; TYPE_1__** media; } ;
-typedef  TYPE_2__ vlm_t ;
-typedef  int /*<<< orphan*/  vlm_media_t ;
-struct TYPE_4__ {int /*<<< orphan*/  cfg; } ;
+typedef TYPE_2__ vlm_t ;
+typedef int vlm_media_t ;
+struct TYPE_4__ {int cfg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_APPEND (int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAB_INIT (int,int /*<<< orphan*/ **) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/ * vlm_media_Duplicate (int /*<<< orphan*/ *) ; 
+
+ int TAB_APPEND (int,int **,int *) ;
+ int TAB_INIT (int,int **) ;
+ int VLC_SUCCESS ;
+ int * vlm_media_Duplicate (int *) ;
 
 __attribute__((used)) static int vlm_ControlMediaGets( vlm_t *p_vlm, vlm_media_t ***ppp_dsc, int *pi_dsc )
 {
     vlm_media_t **pp_dsc;
-    int                     i_dsc;
+    int i_dsc;
 
     TAB_INIT( i_dsc, pp_dsc );
     for( int i = 0; i < p_vlm->i_media; i++ )

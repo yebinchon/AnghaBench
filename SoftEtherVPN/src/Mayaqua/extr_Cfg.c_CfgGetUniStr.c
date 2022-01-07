@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {scalar_t__ Type; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ ITEM ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- TYPE_1__* CfgFindItem (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ ITEM_TYPE_STRING ; 
- int /*<<< orphan*/  UniStrCpy (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ wchar_t ;
+typedef int UINT ;
+struct TYPE_3__ {scalar_t__ Type; int Buf; } ;
+typedef TYPE_1__ ITEM ;
+typedef int FOLDER ;
+
+
+ TYPE_1__* CfgFindItem (int *,char*) ;
+ scalar_t__ ITEM_TYPE_STRING ;
+ int UniStrCpy (scalar_t__*,int ,int ) ;
 
 bool CfgGetUniStr(FOLDER *f, char *name, wchar_t *str, UINT size)
 {
-	ITEM *t;
-	// Validate arguments
-	if (f == NULL || name == NULL || str == NULL)
-	{
-		return false;
-	}
+ ITEM *t;
 
-	str[0] = 0;
+ if (f == ((void*)0) || name == ((void*)0) || str == ((void*)0))
+ {
+  return 0;
+ }
 
-	t = CfgFindItem(f, name);
-	if (t == NULL)
-	{
-		return false;
-	}
-	if (t->Type != ITEM_TYPE_STRING)
-	{
-		return false;
-	}
-	UniStrCpy(str, size, t->Buf);
-	return true;
+ str[0] = 0;
+
+ t = CfgFindItem(f, name);
+ if (t == ((void*)0))
+ {
+  return 0;
+ }
+ if (t->Type != ITEM_TYPE_STRING)
+ {
+  return 0;
+ }
+ UniStrCpy(str, size, t->Buf);
+ return 1;
 }

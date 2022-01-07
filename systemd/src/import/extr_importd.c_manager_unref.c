@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Transfer ;
-struct TYPE_6__ {int /*<<< orphan*/  event; int /*<<< orphan*/  bus; int /*<<< orphan*/  polkit_registry; int /*<<< orphan*/  transfers; int /*<<< orphan*/  notify_fd; int /*<<< orphan*/  notify_event_source; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bus_verify_polkit_async_registry_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * hashmap_first (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  safe_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_bus_flush_close_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transfer_unref (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Transfer ;
+struct TYPE_6__ {int event; int bus; int polkit_registry; int transfers; int notify_fd; int notify_event_source; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int bus_verify_polkit_async_registry_free (int ) ;
+ int * hashmap_first (int ) ;
+ int hashmap_free (int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int safe_close (int ) ;
+ int sd_bus_flush_close_unref (int ) ;
+ int sd_event_source_unref (int ) ;
+ int sd_event_unref (int ) ;
+ int transfer_unref (int *) ;
 
 __attribute__((used)) static Manager *manager_unref(Manager *m) {
         Transfer *t;
 
         if (!m)
-                return NULL;
+                return ((void*)0);
 
         sd_event_source_unref(m->notify_event_source);
         safe_close(m->notify_fd);

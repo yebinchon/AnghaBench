@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ usec_t ;
-typedef  int /*<<< orphan*/  sd_device ;
-typedef  int /*<<< orphan*/  dev_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int ENODATA ; 
- int ENOENT ; 
- scalar_t__ IN_SET (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  log_info (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ major (int /*<<< orphan*/ ) ; 
- int sd_device_get_devname (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_devnum (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sd_device_get_devpath (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_devtype (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_driver (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_ifindex (int /*<<< orphan*/ *,int*) ; 
- int sd_device_get_is_initialized (int /*<<< orphan*/ *) ; 
- int sd_device_get_property_value (int /*<<< orphan*/ *,char*,char const**) ; 
- int sd_device_get_subsystem (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_sysattr_value (int /*<<< orphan*/ *,char*,char const**) ; 
- scalar_t__ sd_device_get_sysname (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_sysnum (int /*<<< orphan*/ *,char const**) ; 
- scalar_t__ sd_device_get_syspath (int /*<<< orphan*/ *,char const**) ; 
- int sd_device_get_usec_since_initialized (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  strna (char const*) ; 
- int /*<<< orphan*/  yes_no (int) ; 
+
+
+
+typedef scalar_t__ usec_t ;
+typedef int sd_device ;
+typedef int dev_t ;
+
+
+ int EINVAL ;
+ int ENODATA ;
+ int ENOENT ;
+ scalar_t__ IN_SET (int,int,int ) ;
+ int assert_se (int) ;
+ int log_info (char*,char const*,int ,int ) ;
+ scalar_t__ major (int ) ;
+ int sd_device_get_devname (int *,char const**) ;
+ int sd_device_get_devnum (int *,int *) ;
+ scalar_t__ sd_device_get_devpath (int *,char const**) ;
+ int sd_device_get_devtype (int *,char const**) ;
+ int sd_device_get_driver (int *,char const**) ;
+ int sd_device_get_ifindex (int *,int*) ;
+ int sd_device_get_is_initialized (int *) ;
+ int sd_device_get_property_value (int *,char*,char const**) ;
+ int sd_device_get_subsystem (int *,char const**) ;
+ int sd_device_get_sysattr_value (int *,char*,char const**) ;
+ scalar_t__ sd_device_get_sysname (int *,char const**) ;
+ int sd_device_get_sysnum (int *,char const**) ;
+ scalar_t__ sd_device_get_syspath (int *,char const**) ;
+ int sd_device_get_usec_since_initialized (int *,scalar_t__*) ;
+ int strna (char const*) ;
+ int yes_no (int) ;
 
 __attribute__((used)) static void test_sd_device_one(sd_device *d) {
         const char *syspath, *subsystem, *val;

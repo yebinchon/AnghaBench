@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIOCGDELETE ; 
- int g_ioctl_arg (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int off_t ;
+
+
+ int DIOCGDELETE ;
+ int g_ioctl_arg (int,int ,int *) ;
 
 int
 g_delete(int fd, off_t offset, off_t length)
 {
-	off_t arg[2];
+ off_t arg[2];
 
-	arg[0] = offset;
-	arg[1] = length;
-	return (g_ioctl_arg(fd, DIOCGDELETE, arg));
+ arg[0] = offset;
+ arg[1] = length;
+ return (g_ioctl_arg(fd, DIOCGDELETE, arg));
 }

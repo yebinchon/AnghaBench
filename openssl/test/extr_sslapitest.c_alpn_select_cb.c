@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int SSL_TLSEXT_ERR_NOACK ; 
- int SSL_TLSEXT_ERR_OK ; 
- scalar_t__ memcmp (unsigned char const*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  servalpn ; 
- unsigned int strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SSL ;
+
+
+ int SSL_TLSEXT_ERR_NOACK ;
+ int SSL_TLSEXT_ERR_OK ;
+ scalar_t__ memcmp (unsigned char const*,int ,unsigned int) ;
+ int servalpn ;
+ unsigned int strlen (int ) ;
 
 __attribute__((used)) static int alpn_select_cb(SSL *ssl, const unsigned char **out,
                           unsigned char *outlen, const unsigned char *in,

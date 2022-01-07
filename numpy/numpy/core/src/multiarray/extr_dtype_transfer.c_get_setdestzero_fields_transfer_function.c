@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_intp ;
-typedef  int npy_int ;
-struct TYPE_10__ {int dst_offset; scalar_t__ src_itemsize; scalar_t__ src_offset; int /*<<< orphan*/  data; int /*<<< orphan*/  stransfer; } ;
-typedef  TYPE_2__ _single_field_transfer ;
-struct TYPE_9__ {int /*<<< orphan*/ * clone; int /*<<< orphan*/ * free; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int npy_intp ;
+typedef int npy_int ;
+struct TYPE_10__ {int dst_offset; scalar_t__ src_itemsize; scalar_t__ src_offset; int data; int stransfer; } ;
+typedef TYPE_2__ _single_field_transfer ;
+struct TYPE_9__ {int * clone; int * free; } ;
 struct TYPE_11__ {int field_count; TYPE_2__ fields; TYPE_1__ base; } ;
-typedef  TYPE_3__ _field_transfer_data ;
-struct TYPE_12__ {int /*<<< orphan*/  fields; int /*<<< orphan*/ * names; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_StridedUnaryOp ;
-typedef  TYPE_4__ PyArray_Descr ;
-typedef  int /*<<< orphan*/  NpyAuxData ;
+typedef TYPE_3__ _field_transfer_data ;
+struct TYPE_12__ {int fields; int * names; } ;
+typedef int PyObject ;
+typedef int PyArray_StridedUnaryOp ;
+typedef TYPE_4__ PyArray_Descr ;
+typedef int NpyAuxData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_AUXDATA_FREE (int /*<<< orphan*/ ) ; 
- int NPY_FAIL ; 
- scalar_t__ NPY_SUCCEED ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,TYPE_4__**,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PyArray_free (TYPE_3__*) ; 
- scalar_t__ PyArray_malloc (int) ; 
- int /*<<< orphan*/ * PyDict_GetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int) ; 
- int PyTuple_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _field_transfer_data_clone ; 
- int /*<<< orphan*/  _field_transfer_data_free ; 
- int /*<<< orphan*/  _strided_to_strided_field_transfer ; 
- scalar_t__ get_setdstzero_transfer_function (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
+
+ int NPY_AUXDATA_FREE (int ) ;
+ int NPY_FAIL ;
+ scalar_t__ NPY_SUCCEED ;
+ int PyArg_ParseTuple (int *,char*,TYPE_4__**,int*,int **) ;
+ int PyArray_free (TYPE_3__*) ;
+ scalar_t__ PyArray_malloc (int) ;
+ int * PyDict_GetItem (int ,int *) ;
+ int PyErr_NoMemory () ;
+ int * PyTuple_GET_ITEM (int *,int) ;
+ int PyTuple_GET_SIZE (int *) ;
+ int _field_transfer_data_clone ;
+ int _field_transfer_data_free ;
+ int _strided_to_strided_field_transfer ;
+ scalar_t__ get_setdstzero_transfer_function (int ,int ,TYPE_4__*,int *,int *,int*) ;
 
 __attribute__((used)) static int
 get_setdestzero_fields_transfer_function(int aligned,
@@ -64,9 +64,9 @@ get_setdestzero_fields_transfer_function(int aligned,
     field_count = names_size;
     structsize = sizeof(_field_transfer_data) +
                     field_count * sizeof(_single_field_transfer);
-    /* Allocate the data and populate it */
+
     data = (_field_transfer_data *)PyArray_malloc(structsize);
-    if (data == NULL) {
+    if (data == ((void*)0)) {
         PyErr_NoMemory();
         return NPY_FAIL;
     }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* MPV_CONFDIR ; 
- char const* getenv (char*) ; 
- char const* mpv_home ; 
- char const* old_home ; 
- int /*<<< orphan*/  path_init ; 
- int /*<<< orphan*/  path_init_once ; 
- int /*<<< orphan*/  pthread_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+ char const* MPV_CONFDIR ;
+ char const* getenv (char*) ;
+ char const* mpv_home ;
+ char const* old_home ;
+ int path_init ;
+ int path_init_once ;
+ int pthread_once (int *,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 const char *mp_get_platform_path_unix(void *talloc_ctx, const char *type)
 {
@@ -32,5 +24,5 @@ const char *mp_get_platform_path_unix(void *talloc_ctx, const char *type)
         return MPV_CONFDIR;
     if (strcmp(type, "desktop") == 0)
         return getenv("HOME");
-    return NULL;
+    return ((void*)0);
 }

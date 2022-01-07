@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int Class; int /*<<< orphan*/  Value; int /*<<< orphan*/ * Object; } ;
+
+
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int Class; int Value; int * Object; } ;
 struct TYPE_15__ {int Type; int Flags; } ;
 struct TYPE_17__ {TYPE_2__ Reference; TYPE_1__ Common; } ;
-typedef  int /*<<< orphan*/  ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_3__ ACPI_OPERAND_OBJECT ;
-typedef  int /*<<< orphan*/  ACPI_NAMESPACE_NODE ;
+typedef int ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef TYPE_3__ ACPI_OPERAND_OBJECT ;
+typedef int ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_EXEC ; 
- int /*<<< orphan*/  ACPI_DEBUG_OBJECT (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_DESC_TYPE_NAMED ; 
- int /*<<< orphan*/  ACPI_DUMP_ENTRY (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE_PTR (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ ACPI_GET_DESCRIPTOR_TYPE (TYPE_3__*) ; 
- int /*<<< orphan*/  ACPI_IMPLICIT_CONVERSION ; 
- int /*<<< orphan*/  ACPI_LV_INFO ; 
-#define  ACPI_REFCLASS_ARG 134 
-#define  ACPI_REFCLASS_DEBUG 133 
-#define  ACPI_REFCLASS_INDEX 132 
-#define  ACPI_REFCLASS_LOCAL 131 
-#define  ACPI_REFCLASS_REFOF 130 
-#define  ACPI_TYPE_INTEGER 129 
-#define  ACPI_TYPE_LOCAL_REFERENCE 128 
- int /*<<< orphan*/  AE_AML_INTERNAL ; 
- int /*<<< orphan*/  AE_AML_NO_OPERAND ; 
- int /*<<< orphan*/  AE_AML_OPERAND_TYPE ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AE_OK ; 
- int AOPOBJ_AML_CONSTANT ; 
- int /*<<< orphan*/  AcpiDsStoreObjectToLocal (int,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiExStoreObjectToIndex (TYPE_3__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiExStoreObjectToNode (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtGetObjectTypeName (TYPE_3__*) ; 
- int /*<<< orphan*/  ExStore ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ int ACPI_DB_EXEC ;
+ int ACPI_DEBUG_OBJECT (TYPE_3__*,int ,int ) ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ scalar_t__ ACPI_DESC_TYPE_NAMED ;
+ int ACPI_DUMP_ENTRY (TYPE_3__*,int ) ;
+ int ACPI_ERROR (int ) ;
+ int ACPI_FUNCTION_TRACE_PTR (int ,TYPE_3__*) ;
+ scalar_t__ ACPI_GET_DESCRIPTOR_TYPE (TYPE_3__*) ;
+ int ACPI_IMPLICIT_CONVERSION ;
+ int ACPI_LV_INFO ;
+
+
+
+
+
+
+
+ int AE_AML_INTERNAL ;
+ int AE_AML_NO_OPERAND ;
+ int AE_AML_OPERAND_TYPE ;
+ int AE_INFO ;
+ int AE_OK ;
+ int AOPOBJ_AML_CONSTANT ;
+ int AcpiDsStoreObjectToLocal (int,int ,TYPE_3__*,int *) ;
+ int AcpiExStoreObjectToIndex (TYPE_3__*,TYPE_3__*,int *) ;
+ int AcpiExStoreObjectToNode (TYPE_3__*,int *,int *,int ) ;
+ int AcpiUtGetObjectTypeName (TYPE_3__*) ;
+ int ExStore ;
+ int return_ACPI_STATUS (int ) ;
 
 ACPI_STATUS
 AcpiExStore (
-    ACPI_OPERAND_OBJECT     *SourceDesc,
-    ACPI_OPERAND_OBJECT     *DestDesc,
-    ACPI_WALK_STATE         *WalkState)
+    ACPI_OPERAND_OBJECT *SourceDesc,
+    ACPI_OPERAND_OBJECT *DestDesc,
+    ACPI_WALK_STATE *WalkState)
 {
-    ACPI_STATUS             Status = AE_OK;
-    ACPI_OPERAND_OBJECT     *RefDesc = DestDesc;
+    ACPI_STATUS Status = AE_OK;
+    ACPI_OPERAND_OBJECT *RefDesc = DestDesc;
 
 
     ACPI_FUNCTION_TRACE_PTR (ExStore, DestDesc);
 
 
-    /* Validate parameters */
+
 
     if (!SourceDesc || !DestDesc)
     {
@@ -73,14 +73,14 @@ AcpiExStore (
         return_ACPI_STATUS (AE_AML_NO_OPERAND);
     }
 
-    /* DestDesc can be either a namespace node or an ACPI object */
+
 
     if (ACPI_GET_DESCRIPTOR_TYPE (DestDesc) == ACPI_DESC_TYPE_NAMED)
     {
-        /*
-         * Dest is a namespace node,
-         * Storing an object into a Named node.
-         */
+
+
+
+
         Status = AcpiExStoreObjectToNode (SourceDesc,
             (ACPI_NAMESPACE_NODE *) DestDesc, WalkState,
             ACPI_IMPLICIT_CONVERSION);
@@ -88,28 +88,28 @@ AcpiExStore (
         return_ACPI_STATUS (Status);
     }
 
-    /* Destination object must be a Reference or a Constant object */
+
 
     switch (DestDesc->Common.Type)
     {
-    case ACPI_TYPE_LOCAL_REFERENCE:
+    case 128:
 
         break;
 
-    case ACPI_TYPE_INTEGER:
+    case 129:
 
-        /* Allow stores to Constants -- a Noop as per ACPI spec */
+
 
         if (DestDesc->Common.Flags & AOPOBJ_AML_CONSTANT)
         {
             return_ACPI_STATUS (AE_OK);
         }
 
-        /*lint -fallthrough */
+
 
     default:
 
-        /* Destination is not a Reference object */
+
 
         ACPI_ERROR ((AE_INFO,
             "Target is not a Reference or Constant object - [%s] %p",
@@ -117,47 +117,38 @@ AcpiExStore (
 
         return_ACPI_STATUS (AE_AML_OPERAND_TYPE);
     }
-
-    /*
-     * Examine the Reference class. These cases are handled:
-     *
-     * 1) Store to Name (Change the object associated with a name)
-     * 2) Store to an indexed area of a Buffer or Package
-     * 3) Store to a Method Local or Arg
-     * 4) Store to the debug object
-     */
     switch (RefDesc->Reference.Class)
     {
-    case ACPI_REFCLASS_REFOF:
+    case 130:
 
-        /* Storing an object into a Name "container" */
+
 
         Status = AcpiExStoreObjectToNode (SourceDesc,
             RefDesc->Reference.Object,
             WalkState, ACPI_IMPLICIT_CONVERSION);
         break;
 
-    case ACPI_REFCLASS_INDEX:
+    case 132:
 
-        /* Storing to an Index (pointer into a packager or buffer) */
+
 
         Status = AcpiExStoreObjectToIndex (SourceDesc, RefDesc, WalkState);
         break;
 
-    case ACPI_REFCLASS_LOCAL:
-    case ACPI_REFCLASS_ARG:
+    case 131:
+    case 134:
 
-        /* Store to a method local/arg  */
+
 
         Status = AcpiDsStoreObjectToLocal (RefDesc->Reference.Class,
             RefDesc->Reference.Value, SourceDesc, WalkState);
         break;
 
-    case ACPI_REFCLASS_DEBUG:
-        /*
-         * Storing to the Debug object causes the value stored to be
-         * displayed and otherwise has no effect -- see ACPI Specification
-         */
+    case 133:
+
+
+
+
         ACPI_DEBUG_PRINT ((ACPI_DB_EXEC,
             "**** Write to Debug Object: Object %p [%s] ****:\n\n",
             SourceDesc, AcpiUtGetObjectTypeName (SourceDesc)));

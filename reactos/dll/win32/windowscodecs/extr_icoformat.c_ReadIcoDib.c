@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int Width; int Height; scalar_t__ Y; scalar_t__ X; } ;
-typedef  TYPE_1__ WICRect ;
-typedef  int /*<<< orphan*/  WICPixelFormatGUID ;
-typedef  int ULONG ;
-typedef  int UINT ;
-struct TYPE_9__ {int width; int height; int* bits; int /*<<< orphan*/  dpiY; int /*<<< orphan*/  dpiX; } ;
+typedef TYPE_1__ WICRect ;
+typedef int WICPixelFormatGUID ;
+typedef int ULONG ;
+typedef int UINT ;
+struct TYPE_9__ {int width; int height; int* bits; int dpiY; int dpiX; } ;
 struct TYPE_8__ {int QuadPart; } ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  TYPE_3__ IcoFrameDecode ;
-typedef  int /*<<< orphan*/  IWICBitmapSource ;
-typedef  int /*<<< orphan*/  IWICBitmapFrameDecode ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoder ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BmpDecoder ;
-typedef  int BYTE ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef TYPE_3__ IcoFrameDecode ;
+typedef int IWICBitmapSource ;
+typedef int IWICBitmapFrameDecode ;
+typedef int IWICBitmapDecoder ;
+typedef int IStream ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BmpDecoder ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BmpDecoder_FindIconMask (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  BmpDecoder_GetWICDecoder (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GUID_WICPixelFormat32bppBGR ; 
- int /*<<< orphan*/  GUID_WICPixelFormat32bppBGRA ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,int*,int,int*) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_GetFrame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Initialize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_GetPixelFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_GetResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_GetSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapSource_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapSource_CopyPixels (int /*<<< orphan*/ *,TYPE_1__*,int,int,int*) ; 
- int /*<<< orphan*/  IWICBitmapSource_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IcoDibDecoder_CreateInstance (int /*<<< orphan*/ **) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WICConvertBitmapSource (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WICDecodeMetadataCacheOnLoad ; 
- int /*<<< orphan*/  pixel_set_trans (int /*<<< orphan*/ ,int) ; 
+
+ int BmpDecoder_FindIconMask (int *,int*,int*) ;
+ int BmpDecoder_GetWICDecoder (int *,int **) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FALSE ;
+ int GUID_WICPixelFormat32bppBGR ;
+ int GUID_WICPixelFormat32bppBGRA ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int IStream_Read (int *,int*,int,int*) ;
+ int IStream_Seek (int *,TYPE_2__,int ,int ) ;
+ int IWICBitmapDecoder_GetFrame (int *,int ,int **) ;
+ int IWICBitmapDecoder_Initialize (int *,int *,int ) ;
+ int IWICBitmapDecoder_Release (int *) ;
+ int IWICBitmapFrameDecode_GetPixelFormat (int *,int *) ;
+ int IWICBitmapFrameDecode_GetResolution (int *,int *,int *) ;
+ int IWICBitmapFrameDecode_GetSize (int *,int*,int*) ;
+ int IWICBitmapFrameDecode_Release (int *) ;
+ int IWICBitmapSource_AddRef (int *) ;
+ int IWICBitmapSource_CopyPixels (int *,TYPE_1__*,int,int,int*) ;
+ int IWICBitmapSource_Release (int *) ;
+ int IcoDibDecoder_CreateInstance (int **) ;
+ scalar_t__ IsEqualGUID (int *,int *) ;
+ int STREAM_SEEK_SET ;
+ scalar_t__ SUCCEEDED (int ) ;
+ scalar_t__ TRUE ;
+ int WICConvertBitmapSource (int *,int *,int **) ;
+ int WICDecodeMetadataCacheOnLoad ;
+ int pixel_set_trans (int ,int) ;
 
 __attribute__((used)) static HRESULT ReadIcoDib(IStream *stream, IcoFrameDecode *result)
 {
@@ -72,7 +72,7 @@ __attribute__((used)) static HRESULT ReadIcoDib(IStream *stream, IcoFrameDecode 
     IWICBitmapFrameDecode *framedecode;
     WICPixelFormatGUID pixelformat;
     IWICBitmapSource *source;
-    BOOL has_alpha=FALSE; /* if TRUE, alpha data might be in the image data */
+    BOOL has_alpha=FALSE;
     WICRect rc;
 
     hr = IcoDibDecoder_CreateInstance(&bmp_decoder);
@@ -131,7 +131,7 @@ __attribute__((used)) static HRESULT ReadIcoDib(IStream *stream, IcoFrameDecode 
 
         if (SUCCEEDED(hr) && has_alpha)
         {
-            /* If the alpha channel is fully transparent, we should ignore it. */
+
             int nonzero_alpha = 0;
             UINT i;
 
@@ -155,11 +155,11 @@ __attribute__((used)) static HRESULT ReadIcoDib(IStream *stream, IcoFrameDecode 
 
         if (SUCCEEDED(hr) && !has_alpha)
         {
-            /* set alpha data based on the AND mask */
+
             UINT andBytesPerRow = (result->width+31)/32*4;
             UINT andBytes = andBytesPerRow * result->height;
             INT andStride;
-            BYTE *tempdata=NULL;
+            BYTE *tempdata=((void*)0);
             BYTE *andRow;
             BYTE *bitsRow;
             UINT bitsStride = result->width * 4;

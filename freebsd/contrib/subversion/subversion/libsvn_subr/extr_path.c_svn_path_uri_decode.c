@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t len; char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  size_t apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef size_t apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- scalar_t__ strlen (char const*) ; 
- scalar_t__ strtol (char*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ svn_ctype_isxdigit (char const) ; 
- TYPE_1__* svn_stringbuf_create_ensure (scalar_t__,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ scalar_t__ strlen (char const*) ;
+ scalar_t__ strtol (char*,int *,int) ;
+ scalar_t__ svn_ctype_isxdigit (char const) ;
+ TYPE_1__* svn_stringbuf_create_ensure (scalar_t__,int *) ;
 
 const char *
 svn_path_uri_decode(const char *path, apr_pool_t *pool)
@@ -32,7 +32,7 @@ svn_path_uri_decode(const char *path, apr_pool_t *pool)
   apr_size_t i;
   svn_boolean_t query_start = FALSE;
 
-  /* avoid repeated realloc */
+
   retstr = svn_stringbuf_create_ensure(strlen(path) + 1, pool);
 
   retstr->len = 0;
@@ -42,13 +42,13 @@ svn_path_uri_decode(const char *path, apr_pool_t *pool)
 
       if (c == '?')
         {
-          /* Mark the start of the query string, if it exists. */
+
           query_start = TRUE;
         }
       else if (c == '+' && query_start)
         {
-          /* Only do this if we are into the query string.
-           * RFC 2396, section 3.3  */
+
+
           c = ' ';
         }
       else if (c == '%' && svn_ctype_isxdigit(path[i + 1])
@@ -58,13 +58,13 @@ svn_path_uri_decode(const char *path, apr_pool_t *pool)
           digitz[0] = path[++i];
           digitz[1] = path[++i];
           digitz[2] = '\0';
-          c = (char)(strtol(digitz, NULL, 16));
+          c = (char)(strtol(digitz, ((void*)0), 16));
         }
 
       retstr->data[retstr->len++] = c;
     }
 
-  /* Null-terminate this bad-boy. */
+
   retstr->data[retstr->len] = 0;
 
   return retstr->data;

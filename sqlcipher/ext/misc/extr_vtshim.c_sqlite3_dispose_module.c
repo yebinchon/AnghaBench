@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  pChild; TYPE_3__* pAllCur; struct TYPE_6__* pNext; } ;
-typedef  TYPE_2__ vtshim_vtab ;
-struct TYPE_7__ {int /*<<< orphan*/  pChild; struct TYPE_7__* pNext; } ;
-typedef  TYPE_3__ vtshim_cursor ;
-struct TYPE_8__ {int bDisposed; int /*<<< orphan*/  (* xChildDestroy ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  pChildAux; TYPE_1__* pMod; TYPE_2__* pAllVtab; } ;
-typedef  TYPE_4__ vtshim_aux ;
-struct TYPE_5__ {int /*<<< orphan*/  (* xDisconnect ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* xClose ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int pChild; TYPE_3__* pAllCur; struct TYPE_6__* pNext; } ;
+typedef TYPE_2__ vtshim_vtab ;
+struct TYPE_7__ {int pChild; struct TYPE_7__* pNext; } ;
+typedef TYPE_3__ vtshim_cursor ;
+struct TYPE_8__ {int bDisposed; int (* xChildDestroy ) (int ) ;int pChildAux; TYPE_1__* pMod; TYPE_2__* pAllVtab; } ;
+typedef TYPE_4__ vtshim_aux ;
+struct TYPE_5__ {int (* xDisconnect ) (int ) ;int (* xClose ) (int ) ;} ;
+
+
+ int stub1 (int ) ;
+ int stub2 (int ) ;
+ int stub3 (int ) ;
 
 void sqlite3_dispose_module(void *pX){
   vtshim_aux *pAux = (vtshim_aux*)pX;

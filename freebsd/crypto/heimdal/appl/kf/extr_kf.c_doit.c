@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {int /*<<< orphan*/  ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; struct addrinfo* ai_next; } ;
-typedef  int /*<<< orphan*/  portstr ;
-typedef  int /*<<< orphan*/  hints ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int NI_MAXSERV ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errx (int,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (char const*,char*,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int ntohs (int) ; 
- int proto (int,char const*,char const*,char*,size_t) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warn (char*,char const*) ; 
- int /*<<< orphan*/  warnx (char*,char const*) ; 
+
+
+
+struct addrinfo {int ai_addrlen; int ai_addr; int ai_protocol; int ai_socktype; int ai_family; struct addrinfo* ai_next; } ;
+typedef int portstr ;
+typedef int hints ;
+
+
+ int IPPROTO_TCP ;
+ int NI_MAXSERV ;
+ int SOCK_STREAM ;
+ int close (int) ;
+ scalar_t__ connect (int,int ,int ) ;
+ int errx (int,char*,char const*,int ) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (char const*,char*,struct addrinfo*,struct addrinfo**) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int ntohs (int) ;
+ int proto (int,char const*,char const*,char*,size_t) ;
+ int snprintf (char*,int,char*,int) ;
+ int socket (int ,int ,int ) ;
+ int warn (char*,char const*) ;
+ int warnx (char*,char const*) ;
 
 __attribute__((used)) static int
 doit (const char *hostname, int port, const char *service,
@@ -49,22 +49,22 @@ doit (const char *hostname, int port, const char *service,
 
     error = getaddrinfo (hostname, portstr, &hints, &ai);
     if (error) {
-	errx (1, "getaddrinfo(%s): %s", hostname, gai_strerror(error));
+ errx (1, "getaddrinfo(%s): %s", hostname, gai_strerror(error));
     }
 
-    for (a = ai; a != NULL; a = a->ai_next) {
-	int s;
+    for (a = ai; a != ((void*)0); a = a->ai_next) {
+ int s;
 
-	s = socket (a->ai_family, a->ai_socktype, a->ai_protocol);
-	if (s < 0)
-	    continue;
-	if (connect (s, a->ai_addr, a->ai_addrlen) < 0) {
-	    warn ("connect(%s)", hostname);
-	    close (s);
-	    continue;
-	}
-	freeaddrinfo (ai);
-	return proto (s, hostname, service, message, len);
+ s = socket (a->ai_family, a->ai_socktype, a->ai_protocol);
+ if (s < 0)
+     continue;
+ if (connect (s, a->ai_addr, a->ai_addrlen) < 0) {
+     warn ("connect(%s)", hostname);
+     close (s);
+     continue;
+ }
+ freeaddrinfo (ai);
+ return proto (s, hostname, service, message, len);
     }
     warnx ("failed to contact %s", hostname);
     freeaddrinfo (ai);

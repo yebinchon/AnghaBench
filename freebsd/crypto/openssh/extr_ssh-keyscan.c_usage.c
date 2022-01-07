@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* __progname ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ char* __progname ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static void
 usage(void)
 {
-	fprintf(stderr,
-	    "usage: %s [-46cDHv] [-f file] [-p port] [-T timeout] [-t type]\n"
-	    "\t\t   [host | addrlist namelist]\n",
-	    __progname);
-	exit(1);
+ fprintf(stderr,
+     "usage: %s [-46cDHv] [-f file] [-p port] [-T timeout] [-t type]\n"
+     "\t\t   [host | addrlist namelist]\n",
+     __progname);
+ exit(1);
 }

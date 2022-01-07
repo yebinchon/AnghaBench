@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* ptr; size_t capacity; size_t size; } ;
-typedef  TYPE_1__ buffer_t ;
+typedef TYPE_1__ buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTROL (int) ; 
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,...) ; 
- size_t UINT_MAX ; 
- size_t ZDICT_trainFromBuffer (void* const,size_t,void const*,size_t const*,unsigned int) ; 
- int /*<<< orphan*/  ZSTD_isError (size_t const) ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__ createBuffer_fromFile (char const*) ; 
- void* malloc (size_t) ; 
+
+ int CONTROL (int) ;
+ int DISPLAYLEVEL (int,char*,...) ;
+ size_t UINT_MAX ;
+ size_t ZDICT_trainFromBuffer (void* const,size_t,void const*,size_t const*,unsigned int) ;
+ int ZSTD_isError (size_t const) ;
+ int assert (int) ;
+ TYPE_1__ createBuffer_fromFile (char const*) ;
+ void* malloc (size_t) ;
 
 __attribute__((used)) static buffer_t
 createDictionaryBuffer(const char* dictionaryName,
@@ -32,14 +32,14 @@ createDictionaryBuffer(const char* dictionaryName,
 {
     if (dictionaryName) {
         DISPLAYLEVEL(3, "loading dictionary %s \n", dictionaryName);
-        return createBuffer_fromFile(dictionaryName);  /* note : result might be kBuffNull */
+        return createBuffer_fromFile(dictionaryName);
 
     } else {
 
         DISPLAYLEVEL(3, "creating dictionary, of target size %u bytes \n",
                         (unsigned)requestedDictSize);
         void* const dictBuffer = malloc(requestedDictSize);
-        CONTROL(dictBuffer != NULL);
+        CONTROL(dictBuffer != ((void*)0));
 
         assert(nbBlocks <= UINT_MAX);
         size_t const dictSize = ZDICT_trainFromBuffer(dictBuffer, requestedDictSize,

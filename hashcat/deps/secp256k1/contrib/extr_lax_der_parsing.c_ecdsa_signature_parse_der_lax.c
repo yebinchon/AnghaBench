@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_ecdsa_signature ;
-typedef  int /*<<< orphan*/  secp256k1_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  secp256k1_ecdsa_signature_parse_compact (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,unsigned char*) ; 
+
+
+
+typedef int secp256k1_ecdsa_signature ;
+typedef int secp256k1_context ;
+
+
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
+ int secp256k1_ecdsa_signature_parse_compact (int const*,int *,unsigned char*) ;
 
 int ecdsa_signature_parse_der_lax(const secp256k1_context* ctx, secp256k1_ecdsa_signature* sig, const unsigned char *input, size_t inputlen) {
     size_t rpos, rlen, spos, slen;
@@ -25,16 +25,16 @@ int ecdsa_signature_parse_der_lax(const secp256k1_context* ctx, secp256k1_ecdsa_
     unsigned char tmpsig[64] = {0};
     int overflow = 0;
 
-    /* Hack to initialize sig with a correctly-parsed but invalid signature. */
+
     secp256k1_ecdsa_signature_parse_compact(ctx, sig, tmpsig);
 
-    /* Sequence tag byte */
+
     if (pos == inputlen || input[pos] != 0x30) {
         return 0;
     }
     pos++;
 
-    /* Sequence length bytes */
+
     if (pos == inputlen) {
         return 0;
     }
@@ -47,13 +47,13 @@ int ecdsa_signature_parse_der_lax(const secp256k1_context* ctx, secp256k1_ecdsa_
         pos += lenbyte;
     }
 
-    /* Integer tag byte for R */
+
     if (pos == inputlen || input[pos] != 0x02) {
         return 0;
     }
     pos++;
 
-    /* Integer length for R */
+
     if (pos == inputlen) {
         return 0;
     }
@@ -85,13 +85,13 @@ int ecdsa_signature_parse_der_lax(const secp256k1_context* ctx, secp256k1_ecdsa_
     rpos = pos;
     pos += rlen;
 
-    /* Integer tag byte for S */
+
     if (pos == inputlen || input[pos] != 0x02) {
         return 0;
     }
     pos++;
 
-    /* Integer length for S */
+
     if (pos == inputlen) {
         return 0;
     }
@@ -123,24 +123,24 @@ int ecdsa_signature_parse_der_lax(const secp256k1_context* ctx, secp256k1_ecdsa_
     spos = pos;
     pos += slen;
 
-    /* Ignore leading zeroes in R */
+
     while (rlen > 0 && input[rpos] == 0) {
         rlen--;
         rpos++;
     }
-    /* Copy R value */
+
     if (rlen > 32) {
         overflow = 1;
     } else {
         memcpy(tmpsig + 32 - rlen, input + rpos, rlen);
     }
 
-    /* Ignore leading zeroes in S */
+
     while (slen > 0 && input[spos] == 0) {
         slen--;
         spos++;
     }
-    /* Copy S value */
+
     if (slen > 32) {
         overflow = 1;
     } else {

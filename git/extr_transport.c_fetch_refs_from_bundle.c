@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct transport {scalar_t__ progress; struct bundle_transport_data* data; } ;
 struct ref {int dummy; } ;
-struct bundle_transport_data {int /*<<< orphan*/  fd; int /*<<< orphan*/  header; int /*<<< orphan*/  get_refs_from_bundle_called; } ;
+struct bundle_transport_data {int fd; int header; int get_refs_from_bundle_called; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUNDLE_VERBOSE ; 
- int /*<<< orphan*/  get_refs_from_bundle (struct transport*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  the_repository ; 
- int unbundle (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BUNDLE_VERBOSE ;
+ int get_refs_from_bundle (struct transport*,int ,int *) ;
+ int the_repository ;
+ int unbundle (int ,int *,int ,int ) ;
 
 __attribute__((used)) static int fetch_refs_from_bundle(struct transport *transport,
-			       int nr_heads, struct ref **to_fetch)
+          int nr_heads, struct ref **to_fetch)
 {
-	struct bundle_transport_data *data = transport->data;
+ struct bundle_transport_data *data = transport->data;
 
-	if (!data->get_refs_from_bundle_called)
-		get_refs_from_bundle(transport, 0, NULL);
-	return unbundle(the_repository, &data->header, data->fd,
-			transport->progress ? BUNDLE_VERBOSE : 0);
+ if (!data->get_refs_from_bundle_called)
+  get_refs_from_bundle(transport, 0, ((void*)0));
+ return unbundle(the_repository, &data->header, data->fd,
+   transport->progress ? BUNDLE_VERBOSE : 0);
 }

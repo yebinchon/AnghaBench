@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- scalar_t__ CmpIpAddr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IntToSubnetMask6 (int /*<<< orphan*/ *,int) ; 
- int IsIP6 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int IP ;
+
+
+ scalar_t__ CmpIpAddr (int *,int *) ;
+ int IntToSubnetMask6 (int *,int) ;
+ int IsIP6 (int *) ;
 
 UINT SubnetMaskToInt6(IP *a)
 {
-	UINT i;
-	// Validate arguments
-	if (IsIP6(a) == false)
-	{
-		return 0;
-	}
+ UINT i;
 
-	for (i = 0;i <= 128;i++)
-	{
-		IP tmp;
+ if (IsIP6(a) == 0)
+ {
+  return 0;
+ }
 
-		IntToSubnetMask6(&tmp, i);
+ for (i = 0;i <= 128;i++)
+ {
+  IP tmp;
 
-		if (CmpIpAddr(a, &tmp) == 0)
-		{
-			return i;
-		}
-	}
+  IntToSubnetMask6(&tmp, i);
 
-	return 0;
+  if (CmpIpAddr(a, &tmp) == 0)
+  {
+   return i;
+  }
+ }
+
+ return 0;
 }

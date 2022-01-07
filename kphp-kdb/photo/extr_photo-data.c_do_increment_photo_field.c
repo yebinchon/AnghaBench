@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LEV_PHOTO_INCREM_PHOTO_FIELD ; 
- scalar_t__ PHOTO_TYPE ; 
- int /*<<< orphan*/  check_photo_id (int) ; 
- int do_increment_data (int,int,int,int,int /*<<< orphan*/ ) ; 
- int get_field_id (scalar_t__,char*) ; 
- scalar_t__ types ; 
+ int LEV_PHOTO_INCREM_PHOTO_FIELD ;
+ scalar_t__ PHOTO_TYPE ;
+ int check_photo_id (int) ;
+ int do_increment_data (int,int,int,int,int ) ;
+ int get_field_id (scalar_t__,char*) ;
+ scalar_t__ types ;
 
 int do_increment_photo_field (int uid, int pid, char *field_name, int cnt) {
-  if (field_name == NULL) {
+  if (field_name == ((void*)0)) {
     return 0;
   }
 

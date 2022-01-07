@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_11__ {int * pb; TYPE_1__* priv_data; } ;
 struct TYPE_10__ {scalar_t__ stream_index; } ;
 struct TYPE_9__ {scalar_t__ data_end; scalar_t__ mlast_frame; } ;
-typedef  TYPE_1__ TAKDemuxContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_1__ TAKDemuxContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- scalar_t__ FFMIN (scalar_t__,int) ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_2__*,scalar_t__) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int ff_raw_read_partial_packet (TYPE_3__*,TYPE_2__*) ; 
+
+ int AVERROR_EOF ;
+ scalar_t__ FFMIN (scalar_t__,int) ;
+ int av_get_packet (int *,TYPE_2__*,scalar_t__) ;
+ scalar_t__ avio_tell (int *) ;
+ int ff_raw_read_partial_packet (TYPE_3__*,TYPE_2__*) ;
 
 __attribute__((used)) static int raw_read_packet(AVFormatContext *s, AVPacket *pkt)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DBusMessage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WPAS_DBUS_ERROR_UNKNOWN_ERROR ; 
- int /*<<< orphan*/ * dbus_message_new_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int DBusMessage ;
+
+
+ int WPAS_DBUS_ERROR_UNKNOWN_ERROR ;
+ int * dbus_message_new_error (int *,int ,char const*) ;
 
 DBusMessage * wpas_dbus_error_unknown_error(DBusMessage *message,
-					    const char *arg)
+         const char *arg)
 {
-	return dbus_message_new_error(message, WPAS_DBUS_ERROR_UNKNOWN_ERROR,
-				      arg);
+ return dbus_message_new_error(message, WPAS_DBUS_ERROR_UNKNOWN_ERROR,
+          arg);
 }

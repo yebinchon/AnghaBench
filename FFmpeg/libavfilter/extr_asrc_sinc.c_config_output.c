@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* priv; } ;
 struct TYPE_8__ {float sample_rate; TYPE_3__* src; } ;
-struct TYPE_7__ {float sample_rate; float Fc0; float Fc1; int* num_taps; float phase; int n; int rdft_len; float* coeffs; int /*<<< orphan*/ * irdft; int /*<<< orphan*/ * rdft; int /*<<< orphan*/  round; int /*<<< orphan*/  beta; int /*<<< orphan*/  att; int /*<<< orphan*/  tbw1; int /*<<< orphan*/  tbw0; scalar_t__ pts; } ;
-typedef  TYPE_1__ SincContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_7__ {float sample_rate; float Fc0; float Fc1; int* num_taps; float phase; int n; int rdft_len; float* coeffs; int * irdft; int * rdft; int round; int beta; int att; int tbw1; int tbw0; scalar_t__ pts; } ;
+typedef TYPE_1__ SincContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- float* av_calloc (int,int) ; 
- int /*<<< orphan*/  av_free (float*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,float) ; 
- int av_log2 (int) ; 
- int /*<<< orphan*/  av_rdft_end (int /*<<< orphan*/ *) ; 
- int fir_to_phase (TYPE_1__*,float**,int*,int*,float) ; 
- int /*<<< orphan*/  invert (float*,int) ; 
- float* lpf (float,float,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ float* av_calloc (int,int) ;
+ int av_free (float*) ;
+ int av_log (TYPE_3__*,int ,char*,float) ;
+ int av_log2 (int) ;
+ int av_rdft_end (int *) ;
+ int fir_to_phase (TYPE_1__*,float**,int*,int*,float) ;
+ int invert (float*,int) ;
+ float* lpf (float,float,int ,int*,int ,int *,int ) ;
 
 __attribute__((used)) static int config_output(AVFilterLink *outlink)
 {
@@ -90,7 +90,7 @@ __attribute__((used)) static int config_output(AVFilterLink *outlink)
 
     av_rdft_end(s->rdft);
     av_rdft_end(s->irdft);
-    s->rdft = s->irdft = NULL;
+    s->rdft = s->irdft = ((void*)0);
 
     return 0;
 }

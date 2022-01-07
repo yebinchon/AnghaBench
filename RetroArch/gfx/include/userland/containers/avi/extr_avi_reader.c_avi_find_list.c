@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-typedef  scalar_t__ VC_CONTAINER_FOURCC_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVI_SKIP_CHUNK (int /*<<< orphan*/ *,scalar_t__) ; 
- int PEEK_BYTES (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ READ_FOURCC (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ READ_U32 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  STREAM_STATUS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- scalar_t__ VC_FOURCC (char,char,char,char) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+typedef scalar_t__ VC_CONTAINER_FOURCC_T ;
+
+
+ int AVI_SKIP_CHUNK (int *,scalar_t__) ;
+ int PEEK_BYTES (int *,int *,int) ;
+ scalar_t__ READ_FOURCC (int *,char*) ;
+ scalar_t__ READ_U32 (int *,char*) ;
+ int STREAM_STATUS (int *) ;
+ int VC_CONTAINER_ERROR_FORMAT_NOT_SUPPORTED ;
+ int VC_CONTAINER_SUCCESS ;
+ scalar_t__ VC_FOURCC (char,char,char,char) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T avi_find_list(VC_CONTAINER_T *p_ctx, VC_CONTAINER_FOURCC_T fourcc, uint32_t *size)
 {
@@ -48,9 +48,9 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T avi_find_list(VC_CONTAINER_T 
             return VC_CONTAINER_SUCCESS;
          }
       }
-      /* Not interested in this chunk, skip it. */
+
       AVI_SKIP_CHUNK(p_ctx, chunk_size);
    } while((status = STREAM_STATUS(p_ctx)) == VC_CONTAINER_SUCCESS);
 
-   return status; /* list not found */
+   return status;
 }

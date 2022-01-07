@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lwan_key_value_array {int dummy; } ;
-struct lwan_key_value {char* key; int /*<<< orphan*/ * value; } ;
+struct lwan_key_value {char* key; int * value; } ;
 struct coro {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * coro_strdup (struct coro*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- struct lwan_key_value* lwan_key_value_array_append (struct lwan_key_value_array*) ; 
+
+ int * coro_strdup (struct coro*,int ) ;
+ int lua_tostring (int *,int) ;
+ struct lwan_key_value* lwan_key_value_array_append (struct lwan_key_value_array*) ;
 
 __attribute__((used)) static bool append_key_value(lua_State *L,
                              struct coro *coro,
@@ -30,10 +30,10 @@ __attribute__((used)) static bool append_key_value(lua_State *L,
 
     kv = lwan_key_value_array_append(arr);
     if (!kv)
-        return false;
+        return 0;
 
     kv->key = key;
     kv->value = coro_strdup(coro, lua_tostring(L, value_index));
 
-    return kv->value != NULL;
+    return kv->value != ((void*)0);
 }

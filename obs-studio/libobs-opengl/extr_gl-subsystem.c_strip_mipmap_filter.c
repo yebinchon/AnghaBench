@@ -1,39 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GLint ;
 
-/* Variables and functions */
-#define  GL_LINEAR 133 
-#define  GL_LINEAR_MIPMAP_LINEAR 132 
-#define  GL_LINEAR_MIPMAP_NEAREST 131 
-#define  GL_NEAREST 130 
-#define  GL_NEAREST_MIPMAP_LINEAR 129 
-#define  GL_NEAREST_MIPMAP_NEAREST 128 
 
+
+
+typedef int GLint ;
 __attribute__((used)) static void strip_mipmap_filter(GLint *filter)
 {
-	switch (*filter) {
-	case GL_NEAREST:
-	case GL_LINEAR:
-		return;
-	case GL_NEAREST_MIPMAP_NEAREST:
-	case GL_NEAREST_MIPMAP_LINEAR:
-		*filter = GL_NEAREST;
-		return;
-	case GL_LINEAR_MIPMAP_NEAREST:
-	case GL_LINEAR_MIPMAP_LINEAR:
-		*filter = GL_LINEAR;
-		return;
-	}
-	*filter = GL_NEAREST;
+ switch (*filter) {
+ case 130:
+ case 133:
+  return;
+ case 128:
+ case 129:
+  *filter = 130;
+  return;
+ case 131:
+ case 132:
+  *filter = 133;
+  return;
+ }
+ *filter = 130;
 }

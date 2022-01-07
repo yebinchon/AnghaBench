@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int exp_tag; int exp_class; int exp_constructed; int exp_pad; } ;
-typedef  TYPE_1__ tag_exp_type ;
+typedef TYPE_1__ tag_exp_type ;
 struct TYPE_5__ {int imp_tag; scalar_t__ exp_count; int imp_class; TYPE_1__* exp_list; } ;
-typedef  TYPE_2__ tag_exp_arg ;
+typedef TYPE_2__ tag_exp_arg ;
 
-/* Variables and functions */
- scalar_t__ ASN1_FLAG_EXP_MAX ; 
- int /*<<< orphan*/  ASN1_F_APPEND_EXP ; 
- int /*<<< orphan*/  ASN1_R_DEPTH_EXCEEDED ; 
- int /*<<< orphan*/  ASN1_R_ILLEGAL_IMPLICIT_TAG ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ASN1_FLAG_EXP_MAX ;
+ int ASN1_F_APPEND_EXP ;
+ int ASN1_R_DEPTH_EXCEEDED ;
+ int ASN1_R_ILLEGAL_IMPLICIT_TAG ;
+ int ASN1err (int ,int ) ;
 
 __attribute__((used)) static int append_exp(tag_exp_arg *arg, int exp_tag, int exp_class,
                       int exp_constructed, int exp_pad, int imp_ok)
 {
     tag_exp_type *exp_tmp;
-    /* Can only have IMPLICIT if permitted */
+
     if ((arg->imp_tag != -1) && !imp_ok) {
         ASN1err(ASN1_F_APPEND_EXP, ASN1_R_ILLEGAL_IMPLICIT_TAG);
         return 0;
@@ -41,10 +41,10 @@ __attribute__((used)) static int append_exp(tag_exp_arg *arg, int exp_tag, int e
 
     exp_tmp = &arg->exp_list[arg->exp_count++];
 
-    /*
-     * If IMPLICIT set tag to implicit value then reset implicit tag since it
-     * has been used.
-     */
+
+
+
+
     if (arg->imp_tag != -1) {
         exp_tmp->exp_tag = arg->imp_tag;
         exp_tmp->exp_class = arg->imp_class;

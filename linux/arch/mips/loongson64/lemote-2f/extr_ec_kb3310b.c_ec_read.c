@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EC_IO_PORT_DATA ; 
- int /*<<< orphan*/  EC_IO_PORT_HIGH ; 
- int /*<<< orphan*/  EC_IO_PORT_LOW ; 
- unsigned char inb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  index_access_lock ; 
- int /*<<< orphan*/  outb (unsigned short,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+ int EC_IO_PORT_DATA ;
+ int EC_IO_PORT_HIGH ;
+ int EC_IO_PORT_LOW ;
+ unsigned char inb (int ) ;
+ int index_access_lock ;
+ int outb (unsigned short,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 unsigned char ec_read(unsigned short addr)
 {
-	unsigned char value;
-	unsigned long flags;
+ unsigned char value;
+ unsigned long flags;
 
-	spin_lock_irqsave(&index_access_lock, flags);
-	outb((addr & 0xff00) >> 8, EC_IO_PORT_HIGH);
-	outb((addr & 0x00ff), EC_IO_PORT_LOW);
-	value = inb(EC_IO_PORT_DATA);
-	spin_unlock_irqrestore(&index_access_lock, flags);
+ spin_lock_irqsave(&index_access_lock, flags);
+ outb((addr & 0xff00) >> 8, EC_IO_PORT_HIGH);
+ outb((addr & 0x00ff), EC_IO_PORT_LOW);
+ value = inb(EC_IO_PORT_DATA);
+ spin_unlock_irqrestore(&index_access_lock, flags);
 
-	return value;
+ return value;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_pipe_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int /*<<< orphan*/  do_writes_and_reads (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  notify_parent_process () ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int uv_pipe_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int uv_pipe_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_sleep (int) ; 
+
+
+
+typedef int uv_stream_t ;
+typedef int uv_pipe_t ;
+
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int do_writes_and_reads (int *) ;
+ int notify_parent_process () ;
+ int uv_default_loop () ;
+ int uv_pipe_init (int ,int *,int) ;
+ int uv_pipe_open (int *,int ) ;
+ int uv_sleep (int) ;
 
 int ipc_helper_heavy_traffic_deadlock_bug(void) {
   uv_pipe_t pipe;

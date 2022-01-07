@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct route_ipv4 {int flags; } ;
 struct gc_arena {int dummy; } ;
 
-/* Variables and functions */
- int RT_DEFINED ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  route_string (struct route_ipv4 const*,struct gc_arena*) ; 
+
+ int RT_DEFINED ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int,char*,int ) ;
+ int route_string (struct route_ipv4 const*,struct gc_arena*) ;
 
 __attribute__((used)) static void
 print_route(const struct route_ipv4 *r, int level)

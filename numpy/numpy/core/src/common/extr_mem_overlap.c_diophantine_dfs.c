@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int npy_int64 ;
-typedef  int /*<<< orphan*/  npy_extint128_t ;
-typedef  scalar_t__ mem_overlap_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int npy_int64 ;
+typedef int npy_extint128_t ;
+typedef scalar_t__ mem_overlap_t ;
 struct TYPE_4__ {int a; int ub; } ;
-typedef  TYPE_1__ diophantine_term_t ;
-typedef  int /*<<< orphan*/  Py_ssize_t ;
+typedef TYPE_1__ diophantine_term_t ;
+typedef int Py_ssize_t ;
 
-/* Variables and functions */
- scalar_t__ MEM_OVERLAP_NO ; 
- scalar_t__ MEM_OVERLAP_OVERFLOW ; 
- scalar_t__ MEM_OVERLAP_TOO_HARD ; 
- scalar_t__ MEM_OVERLAP_YES ; 
- int /*<<< orphan*/  add_128 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ceildiv_128_64 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  floordiv_128_64 (int /*<<< orphan*/ ,int) ; 
- scalar_t__ gt_128 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mul_64_64 (int,int) ; 
- int /*<<< orphan*/  neg_128 (int /*<<< orphan*/ ) ; 
- int safe_mul (int,int,char*) ; 
- int safe_sub (int,int,char*) ; 
- int /*<<< orphan*/  sub_128 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  to_128 (int) ; 
- int to_64 (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ MEM_OVERLAP_NO ;
+ scalar_t__ MEM_OVERLAP_OVERFLOW ;
+ scalar_t__ MEM_OVERLAP_TOO_HARD ;
+ scalar_t__ MEM_OVERLAP_YES ;
+ int add_128 (int ,int ,char*) ;
+ int ceildiv_128_64 (int ,int) ;
+ int floordiv_128_64 (int ,int) ;
+ scalar_t__ gt_128 (int ,int ) ;
+ int mul_64_64 (int,int) ;
+ int neg_128 (int ) ;
+ int safe_mul (int,int,char*) ;
+ int safe_sub (int,int,char*) ;
+ int sub_128 (int ,int ,char*) ;
+ int to_128 (int) ;
+ int to_64 (int ,char*) ;
 
 __attribute__((used)) static mem_overlap_t
 diophantine_dfs(unsigned int n,
@@ -56,7 +56,7 @@ diophantine_dfs(unsigned int n,
         return MEM_OVERLAP_TOO_HARD;
     }
 
-    /* Fetch precomputed values for the reduced problem */
+
     if (v == 1) {
         a1 = E[0].a;
         u1 = E[0].ub;
@@ -73,7 +73,7 @@ diophantine_dfs(unsigned int n,
     gamma = Gamma[v-1];
     epsilon = Epsilon[v-1];
 
-    /* Generate set of allowed solutions */
+
     c = b / a_gcd;
     r = b % a_gcd;
     if (r != 0) {
@@ -83,17 +83,6 @@ diophantine_dfs(unsigned int n,
 
     c1 = a2 / a_gcd;
     c2 = a1 / a_gcd;
-
-    /*
-      The set to enumerate is:
-      x1 = gamma*c + c1*t
-      x2 = epsilon*c - c2*t
-      t integer
-      0 <= x1 <= u1
-      0 <= x2 <= u2
-      and we have c, c1, c2 >= 0
-     */
-
     x10 = mul_64_64(gamma, c);
     x20 = mul_64_64(epsilon, c);
 
@@ -135,10 +124,10 @@ diophantine_dfs(unsigned int n,
         return MEM_OVERLAP_OVERFLOW;
     }
 
-    /* The bounds t_l, t_u ensure the x computed below do not overflow */
+
 
     if (v == 1) {
-        /* Base case */
+
         if (t_u >= t_l) {
             x[0] = x1 + c1*t_l;
             x[1] = x2 - c2*t_l;
@@ -155,7 +144,7 @@ diophantine_dfs(unsigned int n,
                 }
 
                 if (is_ub_trivial) {
-                    /* Ignore 'trivial' solution */
+
                     ++*count;
                     return MEM_OVERLAP_NO;
                 }
@@ -166,11 +155,11 @@ diophantine_dfs(unsigned int n,
         return MEM_OVERLAP_NO;
     }
     else {
-        /* Recurse to all candidates */
+
         for (t = t_l; t <= t_u; ++t) {
             x[v] = x2 - c2*t;
 
-            /* b2 = b - a2*x[v]; */
+
             b2 = safe_sub(b, safe_mul(a2, x[v], &overflow), &overflow);
             if (overflow) {
                 return MEM_OVERLAP_OVERFLOW;

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EINVAL ;
+ int O_ACCMODE ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int EINVAL ; 
- int O_ACCMODE ; 
-#define  O_RDONLY 130 
-#define  O_RDWR 129 
-#define  O_WRONLY 128 
- int PROT_READ ; 
- int PROT_WRITE ; 
+ int PROT_READ ;
+ int PROT_WRITE ;
 
 int prot_from_flags(int flags) {
 
         switch (flags & O_ACCMODE) {
 
-        case O_RDONLY:
+        case 130:
                 return PROT_READ;
 
-        case O_WRONLY:
+        case 128:
                 return PROT_WRITE;
 
-        case O_RDWR:
+        case 129:
                 return PROT_READ|PROT_WRITE;
 
         default:

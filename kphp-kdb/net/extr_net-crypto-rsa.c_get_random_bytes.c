@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int open (char*,int) ; 
- int read (int,void*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int close (int) ;
+ int open (char*,int) ;
+ int read (int,void*,int) ;
+ int vkprintf (int,char*,int) ;
 
 int get_random_bytes (void *buf, int n) {
   int r = 0, h = open ("/dev/random", O_RDONLY | O_NONBLOCK);

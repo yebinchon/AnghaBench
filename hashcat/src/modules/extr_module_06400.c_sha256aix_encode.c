@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int int_to_itoa64 (int) ; 
+
+
+
+typedef int u8 ;
+
+
+ int int_to_itoa64 (int) ;
 
 __attribute__((used)) static void sha256aix_encode (const u8 digest[32], u8 buf[43])
 {
@@ -89,9 +89,9 @@ __attribute__((used)) static void sha256aix_encode (const u8 digest[32], u8 buf[
   buf[38] = int_to_itoa64 (l & 0x3f); l >>= 6;
   buf[39] = int_to_itoa64 (l & 0x3f);
 
-  l =                 0 | (digest[31] << 8) | (digest[30] << 16);
+  l = 0 | (digest[31] << 8) | (digest[30] << 16);
 
   buf[40] = int_to_itoa64 (l & 0x3f); l >>= 6;
   buf[41] = int_to_itoa64 (l & 0x3f); l >>= 6;
-  buf[42] = int_to_itoa64 (l & 0x3f); //l >>= 6;
+  buf[42] = int_to_itoa64 (l & 0x3f);
 }

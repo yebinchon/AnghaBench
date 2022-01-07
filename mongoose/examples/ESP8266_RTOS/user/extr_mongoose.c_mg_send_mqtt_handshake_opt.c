@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct mg_send_mqtt_handshake_opts {char const* user_name; int flags; char const* password; char const* will_topic; char const* will_message; int keep_alive; } ;
 struct mg_mqtt_proto_data {int keep_alive; } ;
 struct mg_connection {scalar_t__ proto_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MG_MQTT_CMD_CONNECT ; 
- int MG_MQTT_HAS_PASSWORD ; 
- int MG_MQTT_HAS_USER_NAME ; 
- int MG_MQTT_HAS_WILL ; 
- int htons (int) ; 
- int /*<<< orphan*/  mg_send (struct mg_connection*,...) ; 
- int /*<<< orphan*/  mg_send_mqtt_header (struct mg_connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int strlen (char const*) ; 
+
+ int MG_MQTT_CMD_CONNECT ;
+ int MG_MQTT_HAS_PASSWORD ;
+ int MG_MQTT_HAS_USER_NAME ;
+ int MG_MQTT_HAS_WILL ;
+ int htons (int) ;
+ int mg_send (struct mg_connection*,...) ;
+ int mg_send_mqtt_header (struct mg_connection*,int ,int ,size_t) ;
+ int strlen (char const*) ;
 
 void mg_send_mqtt_handshake_opt(struct mg_connection *nc, const char *client_id,
                                 struct mg_send_mqtt_handshake_opts opts) {
@@ -32,19 +32,19 @@ void mg_send_mqtt_handshake_opt(struct mg_connection *nc, const char *client_id,
   uint16_t netbytes;
   size_t total_len;
 
-  if (client_id != NULL) {
+  if (client_id != ((void*)0)) {
     id_len = strlen(client_id);
   }
 
   total_len = 7 + 1 + 2 + 2 + id_len;
 
-  if (opts.user_name != NULL) {
+  if (opts.user_name != ((void*)0)) {
     opts.flags |= MG_MQTT_HAS_USER_NAME;
   }
-  if (opts.password != NULL) {
+  if (opts.password != ((void*)0)) {
     opts.flags |= MG_MQTT_HAS_PASSWORD;
   }
-  if (opts.will_topic != NULL && opts.will_message != NULL) {
+  if (opts.will_topic != ((void*)0) && opts.will_message != ((void*)0)) {
     wt_len = strlen(opts.will_topic);
     wm_len = strlen(opts.will_message);
     opts.flags |= MG_MQTT_HAS_WILL;
@@ -97,7 +97,7 @@ void mg_send_mqtt_handshake_opt(struct mg_connection *nc, const char *client_id,
     mg_send(nc, opts.password, pw_len);
   }
 
-  if (pd != NULL) {
+  if (pd != ((void*)0)) {
     pd->keep_alive = opts.keep_alive;
   }
 }

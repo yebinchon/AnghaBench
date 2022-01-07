@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  bus; int /*<<< orphan*/  duids_requesting_uuid; int /*<<< orphan*/  links_requesting_uuid; scalar_t__ has_product_uuid; } ;
-typedef  TYPE_1__ Manager ;
-typedef  int /*<<< orphan*/  Link ;
-typedef  int /*<<< orphan*/  DUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  assert_se (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_product_uuid_handler ; 
- int /*<<< orphan*/ * link_get_duid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  link_ref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_oom () ; 
- int log_warning_errno (int,char*) ; 
- int sd_bus_call_method_async (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,char*,char*,int /*<<< orphan*/ ,TYPE_1__*,char*,int) ; 
- scalar_t__ sd_bus_is_ready (int /*<<< orphan*/ ) ; 
- int set_ensure_allocated (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int set_put (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int bus; int duids_requesting_uuid; int links_requesting_uuid; scalar_t__ has_product_uuid; } ;
+typedef TYPE_1__ Manager ;
+typedef int Link ;
+typedef int DUID ;
+
+
+ int assert (TYPE_1__*) ;
+ int assert_se (int *) ;
+ int get_product_uuid_handler ;
+ int * link_get_duid (int *) ;
+ int link_ref (int *) ;
+ int log_debug (char*) ;
+ int log_oom () ;
+ int log_warning_errno (int,char*) ;
+ int sd_bus_call_method_async (int ,int *,char*,char*,char*,char*,int ,TYPE_1__*,char*,int) ;
+ scalar_t__ sd_bus_is_ready (int ) ;
+ int set_ensure_allocated (int *,int *) ;
+ int set_put (int ,int *) ;
 
 int manager_request_product_uuid(Manager *m, Link *link) {
         int r;
@@ -45,11 +45,11 @@ int manager_request_product_uuid(Manager *m, Link *link) {
 
                 assert_se(duid = link_get_duid(link));
 
-                r = set_ensure_allocated(&m->links_requesting_uuid, NULL);
+                r = set_ensure_allocated(&m->links_requesting_uuid, ((void*)0));
                 if (r < 0)
                         return log_oom();
 
-                r = set_ensure_allocated(&m->duids_requesting_uuid, NULL);
+                r = set_ensure_allocated(&m->duids_requesting_uuid, ((void*)0));
                 if (r < 0)
                         return log_oom();
 
@@ -71,7 +71,7 @@ int manager_request_product_uuid(Manager *m, Link *link) {
 
         r = sd_bus_call_method_async(
                         m->bus,
-                        NULL,
+                        ((void*)0),
                         "org.freedesktop.hostname1",
                         "/org/freedesktop/hostname1",
                         "org.freedesktop.hostname1",
@@ -79,7 +79,7 @@ int manager_request_product_uuid(Manager *m, Link *link) {
                         get_product_uuid_handler,
                         m,
                         "b",
-                        false);
+                        0);
         if (r < 0)
                 return log_warning_errno(r, "Failed to get product UUID: %m");
 

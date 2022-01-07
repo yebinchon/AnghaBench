@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  btc_config_section_iter_t ;
-typedef  int /*<<< orphan*/  bt_status_t ;
-typedef  int /*<<< orphan*/  bt_bdaddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTC_STORAGE_LINK_KEY_STR ; 
- int /*<<< orphan*/  BTC_STORAGE_LINK_KEY_TYPE_STR ; 
- int /*<<< orphan*/  BTC_STORAGE_PIN_LENGTH_STR ; 
- int /*<<< orphan*/  BT_STATUS_SUCCESS ; 
- scalar_t__ btc_config_exist (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btc_config_lock () ; 
- int /*<<< orphan*/ * btc_config_section_begin () ; 
- int /*<<< orphan*/  const* btc_config_section_end () ; 
- char* btc_config_section_name (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * btc_config_section_next (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  btc_config_unlock () ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ string_is_bdaddr (char const*) ; 
- int /*<<< orphan*/  string_to_bdaddr (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int btc_config_section_iter_t ;
+typedef int bt_status_t ;
+typedef int bt_bdaddr_t ;
+
+
+ int BTC_STORAGE_LINK_KEY_STR ;
+ int BTC_STORAGE_LINK_KEY_TYPE_STR ;
+ int BTC_STORAGE_PIN_LENGTH_STR ;
+ int BT_STATUS_SUCCESS ;
+ scalar_t__ btc_config_exist (char const*,int ) ;
+ int btc_config_lock () ;
+ int * btc_config_section_begin () ;
+ int const* btc_config_section_end () ;
+ char* btc_config_section_name (int const*) ;
+ int * btc_config_section_next (int const*) ;
+ int btc_config_unlock () ;
+ int memcpy (int *,int *,int) ;
+ scalar_t__ string_is_bdaddr (char const*) ;
+ int string_to_bdaddr (char const*,int *) ;
 
 bt_status_t btc_storage_get_bonded_bt_devices_list(bt_bdaddr_t *bond_dev, int dev_num)
 {

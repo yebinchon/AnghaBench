@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_shader_instruction {int dummy; } ;
-struct wined3d_shader_dst_param {int /*<<< orphan*/  reg; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct wined3d_shader_dst_param {int reg; } ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  shader_arb_get_register_name (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shader_arb_get_write_mask (struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param const*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ int shader_arb_get_register_name (struct wined3d_shader_instruction const*,int *,char*,int *) ;
+ int shader_arb_get_write_mask (struct wined3d_shader_instruction const*,struct wined3d_shader_dst_param const*,char*) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void shader_arb_get_dst_param(const struct wined3d_shader_instruction *ins,
         const struct wined3d_shader_dst_param *wined3d_dst, char *str)

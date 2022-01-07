@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  IXMLDOMAttribute ;
-typedef  scalar_t__ HRESULT ;
-typedef  char CHAR ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_HR (scalar_t__,scalar_t__) ; 
- scalar_t__ E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IID_IXMLDOMElement ; 
- int /*<<< orphan*/  IXMLDOMAttribute_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMAttribute_get_nodeName (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMAttribute_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_get_namespaceURI (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ IXMLDOMDocument_selectSingleNode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMElement_getAttributeNode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNode_get_firstChild (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMNode_get_namespaceURI (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMNode_get_nodeName (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMNode_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  _bstr_ (char const*) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/ * wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument ;
+typedef int IXMLDOMAttribute ;
+typedef scalar_t__ HRESULT ;
+typedef char CHAR ;
+typedef int * BSTR ;
+
+
+ int EXPECT_HR (scalar_t__,scalar_t__) ;
+ scalar_t__ E_INVALIDARG ;
+ int IID_IXMLDOMDocument ;
+ int IID_IXMLDOMElement ;
+ int IXMLDOMAttribute_Release (int *) ;
+ scalar_t__ IXMLDOMAttribute_get_nodeName (int *,int **) ;
+ scalar_t__ IXMLDOMAttribute_get_prefix (int *,int **) ;
+ int IXMLDOMDocument_Release (int *) ;
+ scalar_t__ IXMLDOMDocument_get_namespaceURI (int *,int **) ;
+ scalar_t__ IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ scalar_t__ IXMLDOMDocument_selectSingleNode (int *,int ,int **) ;
+ int IXMLDOMElement_Release (int *) ;
+ scalar_t__ IXMLDOMElement_getAttributeNode (int *,int ,int **) ;
+ scalar_t__ IXMLDOMNode_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMNode_Release (int *) ;
+ scalar_t__ IXMLDOMNode_get_firstChild (int *,int **) ;
+ scalar_t__ IXMLDOMNode_get_namespaceURI (int *,int **) ;
+ scalar_t__ IXMLDOMNode_get_nodeName (int *,int **) ;
+ scalar_t__ IXMLDOMNode_get_prefix (int *,int **) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int *) ;
+ scalar_t__ VARIANT_TRUE ;
+ int _bstr_ (char const*) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int lstrcmpW (int *,int ) ;
+ int ok (int,char*,scalar_t__) ;
+ int * wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_namespaces_basic(void)
 {
@@ -77,7 +77,7 @@ __attribute__((used)) static void test_namespaces_basic(void)
     str = (void *)0xdeadbeef;
     hr = IXMLDOMDocument_get_namespaceURI(doc, &str);
     EXPECT_HR(hr, S_FALSE);
-    ok(str == NULL, "got %p\n", str);
+    ok(str == ((void*)0), "got %p\n", str);
 
     hr = IXMLDOMDocument_selectSingleNode(doc, _bstr_("//XMI.content"), &node );
     EXPECT_HR(hr, S_OK);
@@ -88,12 +88,12 @@ __attribute__((used)) static void test_namespaces_basic(void)
 
         hr = IXMLDOMNode_get_firstChild(node, &node2);
         EXPECT_HR(hr, S_OK);
-        ok(node2 != NULL, "got %p\n", node2);
+        ok(node2 != ((void*)0), "got %p\n", node2);
 
-        /* Test get_prefix */
-        hr = IXMLDOMNode_get_prefix(node2, NULL);
+
+        hr = IXMLDOMNode_get_prefix(node2, ((void*)0));
         EXPECT_HR(hr, E_INVALIDARG);
-        /* NOTE: Need to test that arg2 gets cleared on Error. */
+
 
         hr = IXMLDOMNode_get_prefix(node2, &str);
         EXPECT_HR(hr, S_OK);
@@ -105,10 +105,10 @@ __attribute__((used)) static void test_namespaces_basic(void)
         ok(!lstrcmpW( str, _bstr_("Model:Package")), "got %s\n", wine_dbgstr_w(str));
         SysFreeString(str);
 
-        /* Test get_namespaceURI */
-        hr = IXMLDOMNode_get_namespaceURI(node2, NULL);
+
+        hr = IXMLDOMNode_get_namespaceURI(node2, ((void*)0));
         EXPECT_HR(hr, E_INVALIDARG);
-        /* NOTE: Need to test that arg2 gets cleared on Error. */
+
 
         hr = IXMLDOMNode_get_namespaceURI(node2, &str);
         EXPECT_HR(hr, S_OK);

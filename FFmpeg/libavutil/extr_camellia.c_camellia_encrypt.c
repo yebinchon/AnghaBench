@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_3__ {int key_bits; int /*<<< orphan*/ * Kw; int /*<<< orphan*/ * K; int /*<<< orphan*/ * Ke; } ;
-typedef  TYPE_1__ AVCAMELLIA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_RB64 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_WB64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  F (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FLINV (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+struct TYPE_3__ {int key_bits; int * Kw; int * K; int * Ke; } ;
+typedef TYPE_1__ AVCAMELLIA ;
+
+
+ int AV_RB64 (int const*) ;
+ int AV_WB64 (int *,int ) ;
+ int F (int ,int ) ;
+ int FL (int ,int ) ;
+ int FLINV (int ,int ) ;
 
 __attribute__((used)) static void camellia_encrypt(AVCAMELLIA *cs, uint8_t *dst, const uint8_t *src)
 {

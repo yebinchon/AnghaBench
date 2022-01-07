@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  LcidList; int /*<<< orphan*/  LangList; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_1__ LANGLIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeStrList (int /*<<< orphan*/ ) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseIntList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_4__ {int LcidList; int LangList; } ;
+typedef int LIST ;
+typedef TYPE_1__ LANGLIST ;
+
+
+ int Free (TYPE_1__*) ;
+ int FreeStrList (int ) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int ReleaseIntList (int ) ;
+ int ReleaseList (int *) ;
 
 void FreeLangList(LIST *o)
 {
-	UINT i;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		LANGLIST *e = LIST_DATA(o, i);
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-		FreeStrList(e->LangList);
-		ReleaseIntList(e->LcidList);
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  LANGLIST *e = LIST_DATA(o, i);
 
-		Free(e);
-	}
+  FreeStrList(e->LangList);
+  ReleaseIntList(e->LcidList);
 
-	ReleaseList(o);
+  Free(e);
+ }
+
+ ReleaseList(o);
 }

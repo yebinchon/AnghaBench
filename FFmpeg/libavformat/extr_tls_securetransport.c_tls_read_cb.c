@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_3__* priv_data; } ;
-typedef  TYPE_2__ URLContext ;
-struct TYPE_4__ {int /*<<< orphan*/  tcp; } ;
+typedef TYPE_2__ URLContext ;
+struct TYPE_4__ {int tcp; } ;
 struct TYPE_6__ {int lastErr; TYPE_1__ tls_shared; } ;
-typedef  TYPE_3__ TLSContext ;
-typedef  scalar_t__ SSLConnectionRef ;
-typedef  int /*<<< orphan*/  OSStatus ;
+typedef TYPE_3__ TLSContext ;
+typedef scalar_t__ SSLConnectionRef ;
+typedef int OSStatus ;
 
-/* Variables and functions */
- int AVUNERROR (int) ; 
-#define  EAGAIN 130 
-#define  ECONNRESET 129 
-#define  ENOENT 128 
- int /*<<< orphan*/  errSSLClosedAbort ; 
- int /*<<< orphan*/  errSSLClosedGraceful ; 
- int /*<<< orphan*/  errSSLWouldBlock ; 
- int ffurl_read (int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/  ioErr ; 
- int /*<<< orphan*/  noErr ; 
+
+ int AVUNERROR (int) ;
+
+
+
+ int errSSLClosedAbort ;
+ int errSSLClosedGraceful ;
+ int errSSLWouldBlock ;
+ int ffurl_read (int ,void*,size_t) ;
+ int ioErr ;
+ int noErr ;
 
 __attribute__((used)) static OSStatus tls_read_cb(SSLConnectionRef connection, void *data, size_t *dataLength)
 {
@@ -42,12 +42,12 @@ __attribute__((used)) static OSStatus tls_read_cb(SSLConnectionRef connection, v
     if (read <= 0) {
         *dataLength = 0;
         switch(AVUNERROR(read)) {
-            case ENOENT:
+            case 128:
             case 0:
                 return errSSLClosedGraceful;
-            case ECONNRESET:
+            case 129:
                 return errSSLClosedAbort;
-            case EAGAIN:
+            case 130:
                 return errSSLWouldBlock;
             default:
                 c->lastErr = read;

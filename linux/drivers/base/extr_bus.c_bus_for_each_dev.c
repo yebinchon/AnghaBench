@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct klist_iter {int dummy; } ;
 struct device {TYPE_1__* p; } ;
 struct bus_type {TYPE_2__* p; } ;
-struct TYPE_4__ {int /*<<< orphan*/  klist_devices; } ;
-struct TYPE_3__ {int /*<<< orphan*/  knode_bus; } ;
+struct TYPE_4__ {int klist_devices; } ;
+struct TYPE_3__ {int knode_bus; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  klist_iter_exit (struct klist_iter*) ; 
- int /*<<< orphan*/  klist_iter_init_node (int /*<<< orphan*/ *,struct klist_iter*,int /*<<< orphan*/ *) ; 
- struct device* next_device (struct klist_iter*) ; 
+
+ int EINVAL ;
+ int klist_iter_exit (struct klist_iter*) ;
+ int klist_iter_init_node (int *,struct klist_iter*,int *) ;
+ struct device* next_device (struct klist_iter*) ;
 
 int bus_for_each_dev(struct bus_type *bus, struct device *start,
-		     void *data, int (*fn)(struct device *, void *))
+       void *data, int (*fn)(struct device *, void *))
 {
-	struct klist_iter i;
-	struct device *dev;
-	int error = 0;
+ struct klist_iter i;
+ struct device *dev;
+ int error = 0;
 
-	if (!bus || !bus->p)
-		return -EINVAL;
+ if (!bus || !bus->p)
+  return -EINVAL;
 
-	klist_iter_init_node(&bus->p->klist_devices, &i,
-			     (start ? &start->p->knode_bus : NULL));
-	while (!error && (dev = next_device(&i)))
-		error = fn(dev, data);
-	klist_iter_exit(&i);
-	return error;
+ klist_iter_init_node(&bus->p->klist_devices, &i,
+        (start ? &start->p->knode_bus : ((void*)0)));
+ while (!error && (dev = next_device(&i)))
+  error = fn(dev, data);
+ klist_iter_exit(&i);
+ return error;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- scalar_t__ H2O_LIKELY (int) ; 
- size_t SIZE_MAX ; 
- size_t encode_as_is (char*,char const*,size_t) ; 
- int encode_int_is_onebyte (int /*<<< orphan*/ ,int) ; 
- size_t h2o_hpack_encode_huffman (char*,char const*,size_t) ; 
- char* h2o_hpack_encode_int (char*,size_t,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
+
+
+
+typedef char uint8_t ;
+typedef int uint32_t ;
+
+
+ scalar_t__ H2O_LIKELY (int) ;
+ size_t SIZE_MAX ;
+ size_t encode_as_is (char*,char const*,size_t) ;
+ int encode_int_is_onebyte (int ,int) ;
+ size_t h2o_hpack_encode_huffman (char*,char const*,size_t) ;
+ char* h2o_hpack_encode_int (char*,size_t,int) ;
+ int memcpy (char*,char*,size_t) ;
+ int memmove (char*,char*,size_t) ;
 
 size_t h2o_hpack_encode_string(uint8_t *dst, const char *s, size_t len)
 {
     if (H2O_LIKELY(len != 0)) {
-        /* try to encode using huffman */
+
         size_t hufflen = h2o_hpack_encode_huffman(dst + 1, (const uint8_t *)s, len);
         if (H2O_LIKELY(hufflen != SIZE_MAX)) {
             size_t head_len;

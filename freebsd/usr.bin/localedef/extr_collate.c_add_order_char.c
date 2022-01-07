@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * ref; } ;
-typedef  TYPE_1__ collchar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTERR ; 
- int /*<<< orphan*/  add_order_pri (int /*<<< orphan*/ ) ; 
- size_t curr_weight ; 
- TYPE_1__* get_collchar (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_3__ {int * ref; } ;
+typedef TYPE_1__ collchar_t ;
+
+
+ int INTERR ;
+ int add_order_pri (int ) ;
+ size_t curr_weight ;
+ TYPE_1__* get_collchar (int ,int) ;
 
 void
 add_order_char(wchar_t wc)
 {
-	collchar_t *cc;
+ collchar_t *cc;
 
-	if ((cc = get_collchar(wc, 1)) == NULL) {
-		INTERR;
-		return;
-	}
+ if ((cc = get_collchar(wc, 1)) == ((void*)0)) {
+  INTERR;
+  return;
+ }
 
-	add_order_pri(cc->ref[curr_weight]);
+ add_order_pri(cc->ref[curr_weight]);
 }

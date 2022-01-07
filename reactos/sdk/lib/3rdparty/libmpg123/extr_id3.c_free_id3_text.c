@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mpg123_text ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_mpg123_text (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mpg123_text ;
+
+
+ int free (int *) ;
+ int free_mpg123_text (int *) ;
 
 __attribute__((used)) static void free_id3_text(mpg123_text **list, size_t *size)
 {
-	size_t i;
-	for(i=0; i<*size; ++i) free_mpg123_text(&((*list)[i]));
+ size_t i;
+ for(i=0; i<*size; ++i) free_mpg123_text(&((*list)[i]));
 
-	free(*list);
-	*list = NULL;
-	*size = 0;
+ free(*list);
+ *list = ((void*)0);
+ *size = 0;
 }

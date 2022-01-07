@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int PurposeSelection ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_ADD_PURPOSE ; 
- int /*<<< orphan*/  IDC_CERTIFICATE_USAGES ; 
-#define  PurposeDisableAll 130 
-#define  PurposeEnableAll 129 
-#define  PurposeEnableSelected 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  redraw_states (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PurposeSelection ;
+typedef int HWND ;
+
+
+ int EnableWindow (int ,int ) ;
+ int FALSE ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_ADD_PURPOSE ;
+ int IDC_CERTIFICATE_USAGES ;
+
+
+
+ int TRUE ;
+ int redraw_states (int ,int ) ;
 
 __attribute__((used)) static void select_purposes(HWND hwnd, PurposeSelection selection)
 {
@@ -31,13 +31,13 @@ __attribute__((used)) static void select_purposes(HWND hwnd, PurposeSelection se
 
     switch (selection)
     {
-    case PurposeEnableAll:
-    case PurposeDisableAll:
+    case 129:
+    case 130:
         EnableWindow(lv, FALSE);
         redraw_states(lv, FALSE);
         EnableWindow(GetDlgItem(hwnd, IDC_ADD_PURPOSE), FALSE);
         break;
-    case PurposeEnableSelected:
+    case 128:
         EnableWindow(lv, TRUE);
         redraw_states(lv, TRUE);
         EnableWindow(GetDlgItem(hwnd, IDC_ADD_PURPOSE), TRUE);

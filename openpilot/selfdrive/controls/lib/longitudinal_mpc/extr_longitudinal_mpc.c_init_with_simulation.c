@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {double* x; double* u; double* y; double* yN; } ;
 
-/* Variables and functions */
- int N ; 
- int NU ; 
- int NX ; 
- int NY ; 
- int NYN ; 
- TYPE_1__ acadoVariables ; 
+
+ int N ;
+ int NU ;
+ int NX ;
+ int NY ;
+ int NYN ;
+ TYPE_1__ acadoVariables ;
 
 void init_with_simulation(double v_ego, double x_l_0, double v_l_0, double a_l_0, double l){
   int i;
@@ -44,7 +44,7 @@ void init_with_simulation(double v_ego, double x_l_0, double v_l_0, double a_l_0
       dt = 0.6;
     }
 
-    /* printf("%.2f\t%.2f\t%.2f\t%.2f\n", t, x_ego, v_ego, a_l); */
+
     acadoVariables.x[i*NX] = x_ego;
     acadoVariables.x[i*NX+1] = v_ego;
     acadoVariables.x[i*NX+2] = a_ego;
@@ -60,7 +60,7 @@ void init_with_simulation(double v_ego, double x_l_0, double v_l_0, double a_l_0
     t += dt;
   }
 
-  for (i = 0; i < NU * N; ++i)  acadoVariables.u[ i ] = 0.0;
-  for (i = 0; i < NY * N; ++i)  acadoVariables.y[ i ] = 0.0;
-  for (i = 0; i < NYN; ++i)  acadoVariables.yN[ i ] = 0.0;
+  for (i = 0; i < NU * N; ++i) acadoVariables.u[ i ] = 0.0;
+  for (i = 0; i < NY * N; ++i) acadoVariables.y[ i ] = 0.0;
+  for (i = 0; i < NYN; ++i) acadoVariables.yN[ i ] = 0.0;
 }

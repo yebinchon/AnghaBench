@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wasapi_state {int /*<<< orphan*/  deviceID; scalar_t__ hAudioThread; scalar_t__ hWake; scalar_t__ hInitDone; } ;
+
+
+
+
+struct wasapi_state {int deviceID; scalar_t__ hAudioThread; scalar_t__ hWake; scalar_t__ hInitDone; } ;
 struct ao {struct wasapi_state* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  MP_DBG (struct ao*,char*) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*) ; 
- int /*<<< orphan*/  SAFE_DESTROY (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- int /*<<< orphan*/  WASAPI_THREAD_SHUTDOWN ; 
- scalar_t__ WaitForSingleObject (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_thread_state (struct ao*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wasapi_change_uninit (struct ao*) ; 
+
+ int CloseHandle (scalar_t__) ;
+ int CoUninitialize () ;
+ int INFINITE ;
+ int MP_DBG (struct ao*,char*) ;
+ int MP_ERR (struct ao*,char*) ;
+ int SAFE_DESTROY (scalar_t__,int ) ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ int WASAPI_THREAD_SHUTDOWN ;
+ scalar_t__ WaitForSingleObject (scalar_t__,int ) ;
+ int set_thread_state (struct ao*,int ) ;
+ int talloc_free (int ) ;
+ int wasapi_change_uninit (struct ao*) ;
 
 __attribute__((used)) static void uninit(struct ao *ao)
 {
@@ -41,8 +41,8 @@ __attribute__((used)) static void uninit(struct ao *ao)
                "while waiting for audio thread to terminate\n");
     }
 
-    SAFE_DESTROY(state->hInitDone,   CloseHandle(state->hInitDone));
-    SAFE_DESTROY(state->hWake,       CloseHandle(state->hWake));
+    SAFE_DESTROY(state->hInitDone, CloseHandle(state->hInitDone));
+    SAFE_DESTROY(state->hWake, CloseHandle(state->hWake));
     SAFE_DESTROY(state->hAudioThread,CloseHandle(state->hAudioThread));
 
     wasapi_change_uninit(ao);

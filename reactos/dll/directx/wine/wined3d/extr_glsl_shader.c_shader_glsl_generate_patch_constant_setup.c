@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_signature_element {scalar_t__ register_idx; int /*<<< orphan*/  mask; int /*<<< orphan*/  sysval_semantic; } ;
+struct wined3d_shader_signature_element {scalar_t__ register_idx; int mask; int sysval_semantic; } ;
 struct wined3d_shader_signature {unsigned int element_count; struct wined3d_shader_signature_element* elements; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- unsigned int max (scalar_t__,unsigned int) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_glsl_generate_patch_constant_name (struct wined3d_string_buffer*,struct wined3d_shader_signature_element const*,unsigned int*,char*) ; 
- int /*<<< orphan*/  shader_glsl_write_mask_to_str (int /*<<< orphan*/ ,char*) ; 
+
+ unsigned int max (scalar_t__,unsigned int) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_glsl_generate_patch_constant_name (struct wined3d_string_buffer*,struct wined3d_shader_signature_element const*,unsigned int*,char*) ;
+ int shader_glsl_write_mask_to_str (int ,char*) ;
 
 __attribute__((used)) static void shader_glsl_generate_patch_constant_setup(struct wined3d_string_buffer *buffer,
         const struct wined3d_shader_signature *signature, BOOL input_setup)

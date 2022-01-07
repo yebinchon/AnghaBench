@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct protection_domain {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __detach_device (struct protection_domain*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  amd_iommu_devtable_lock ; 
- int /*<<< orphan*/  write_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int __detach_device (struct protection_domain*,int ) ;
+ int amd_iommu_devtable_lock ;
+ int write_lock_irqsave (int *,unsigned long) ;
+ int write_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void detach_device(struct protection_domain *domain, u16 devid)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	/* lock device table */
-	write_lock_irqsave(&amd_iommu_devtable_lock, flags);
-	__detach_device(domain, devid);
-	write_unlock_irqrestore(&amd_iommu_devtable_lock, flags);
+
+ write_lock_irqsave(&amd_iommu_devtable_lock, flags);
+ __detach_device(domain, devid);
+ write_unlock_irqrestore(&amd_iommu_devtable_lock, flags);
 }

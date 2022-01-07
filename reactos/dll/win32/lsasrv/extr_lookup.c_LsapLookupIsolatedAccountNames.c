@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ULONG ;
-struct TYPE_22__ {scalar_t__ Use; int DomainIndex; scalar_t__ Flags; int /*<<< orphan*/ * Sid; } ;
+
+
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef size_t ULONG ;
+struct TYPE_22__ {scalar_t__ Use; int DomainIndex; scalar_t__ Flags; int * Sid; } ;
 struct TYPE_21__ {scalar_t__ Length; } ;
-struct TYPE_20__ {scalar_t__* Element; int /*<<< orphan*/ * member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ SAMPR_ULONG_ARRAY ;
-typedef  int /*<<< orphan*/ * SAMPR_HANDLE ;
-typedef  int /*<<< orphan*/ * PULONG ;
-typedef  TYPE_2__* PRPC_UNICODE_STRING ;
-typedef  TYPE_3__* PLSAPR_TRANSLATED_SID_EX2 ;
-typedef  int /*<<< orphan*/  PLSAPR_REFERENCED_DOMAIN_LIST ;
-typedef  TYPE_2__* NTSTATUS ;
-typedef  size_t DWORD ;
+struct TYPE_20__ {scalar_t__* Element; int * member_1; int member_0; } ;
+typedef TYPE_1__ SAMPR_ULONG_ARRAY ;
+typedef int * SAMPR_HANDLE ;
+typedef int * PULONG ;
+typedef TYPE_2__* PRPC_UNICODE_STRING ;
+typedef TYPE_3__* PLSAPR_TRANSLATED_SID_EX2 ;
+typedef int PLSAPR_REFERENCED_DOMAIN_LIST ;
+typedef TYPE_2__* NTSTATUS ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccountDomainName ; 
- int /*<<< orphan*/  AccountDomainSid ; 
- int /*<<< orphan*/ * CreateSidFromSidAndRid (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  DOMAIN_LOOKUP ; 
- TYPE_2__* LsapAddDomainToDomainsList (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ; 
- scalar_t__ NT_SUCCESS (TYPE_2__*) ; 
- int SAM_SERVER_CONNECT ; 
- int SAM_SERVER_LOOKUP_DOMAIN ; 
- TYPE_2__* STATUS_INSUFFICIENT_RESOURCES ; 
- TYPE_2__* STATUS_SUCCESS ; 
- int /*<<< orphan*/  SamIFree_SAMPR_ULONG_ARRAY (TYPE_1__*) ; 
- int /*<<< orphan*/  SamrCloseHandle (int /*<<< orphan*/ **) ; 
- TYPE_2__* SamrConnect (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- TYPE_2__* SamrLookupNamesInDomain (int /*<<< orphan*/ *,int,TYPE_2__*,TYPE_1__*,TYPE_1__*) ; 
- TYPE_2__* SamrOpenDomain (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ SidTypeUnknown ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
+
+ int AccountDomainName ;
+ int AccountDomainSid ;
+ int * CreateSidFromSidAndRid (int ,scalar_t__) ;
+ int DOMAIN_LOOKUP ;
+ TYPE_2__* LsapAddDomainToDomainsList (int ,int *,int ,size_t*) ;
+ scalar_t__ NT_SUCCESS (TYPE_2__*) ;
+ int SAM_SERVER_CONNECT ;
+ int SAM_SERVER_LOOKUP_DOMAIN ;
+ TYPE_2__* STATUS_INSUFFICIENT_RESOURCES ;
+ TYPE_2__* STATUS_SUCCESS ;
+ int SamIFree_SAMPR_ULONG_ARRAY (TYPE_1__*) ;
+ int SamrCloseHandle (int **) ;
+ TYPE_2__* SamrConnect (int *,int **,int) ;
+ TYPE_2__* SamrLookupNamesInDomain (int *,int,TYPE_2__*,TYPE_1__*,TYPE_1__*) ;
+ TYPE_2__* SamrOpenDomain (int *,int ,int ,int **) ;
+ scalar_t__ SidTypeUnknown ;
+ int TRACE (char*,...) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -54,17 +54,17 @@ LsapLookupIsolatedAccountNames(DWORD Count,
                                PLSAPR_TRANSLATED_SID_EX2 SidsBuffer,
                                PULONG Mapped)
 {
-    SAMPR_HANDLE ServerHandle = NULL;
-    SAMPR_HANDLE DomainHandle = NULL;
-    SAMPR_ULONG_ARRAY RelativeIds = {0, NULL};
-    SAMPR_ULONG_ARRAY Use = {0, NULL};
+    SAMPR_HANDLE ServerHandle = ((void*)0);
+    SAMPR_HANDLE DomainHandle = ((void*)0);
+    SAMPR_ULONG_ARRAY RelativeIds = {0, ((void*)0)};
+    SAMPR_ULONG_ARRAY Use = {0, ((void*)0)};
     ULONG DomainIndex;
     ULONG i;
     NTSTATUS Status = STATUS_SUCCESS;
 
     TRACE("()\n");
 
-    Status = SamrConnect(NULL,
+    Status = SamrConnect(((void*)0),
                          &ServerHandle,
                          SAM_SERVER_CONNECT | SAM_SERVER_LOOKUP_DOMAIN);
     if (!NT_SUCCESS(Status))
@@ -85,11 +85,11 @@ LsapLookupIsolatedAccountNames(DWORD Count,
 
     for (i = 0; i < Count; i++)
     {
-        /* Ignore names which were already mapped */
+
         if (SidsBuffer[i].Use != SidTypeUnknown)
             continue;
 
-        /* Ignore fully qualified account names */
+
         if (DomainNames[i].Length != 0)
             continue;
 
@@ -107,7 +107,7 @@ LsapLookupIsolatedAccountNames(DWORD Count,
             SidsBuffer[i].Use = Use.Element[0];
             SidsBuffer[i].Sid = CreateSidFromSidAndRid(AccountDomainSid,
                                                        RelativeIds.Element[0]);
-            if (SidsBuffer[i].Sid == NULL)
+            if (SidsBuffer[i].Sid == ((void*)0))
             {
                 Status = STATUS_INSUFFICIENT_RESOURCES;
                 goto done;
@@ -133,10 +133,10 @@ LsapLookupIsolatedAccountNames(DWORD Count,
     }
 
 done:
-    if (DomainHandle != NULL)
+    if (DomainHandle != ((void*)0))
         SamrCloseHandle(&DomainHandle);
 
-    if (ServerHandle != NULL)
+    if (ServerHandle != ((void*)0))
         SamrCloseHandle(&ServerHandle);
 
     return Status;

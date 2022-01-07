@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  search_name; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int search_name; } ;
 struct TYPE_6__ {TYPE_1__ dir; } ;
 struct TYPE_7__ {scalar_t__ type; TYPE_2__ _; } ;
-typedef  int /*<<< orphan*/  OSSL_STORE_SEARCH ;
-typedef  TYPE_3__ OSSL_STORE_LOADER_CTX ;
+typedef int OSSL_STORE_SEARCH ;
+typedef TYPE_3__ OSSL_STORE_LOADER_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_snprintf (int /*<<< orphan*/ ,int,char*,unsigned long) ; 
- int /*<<< orphan*/  OSSL_STORE_F_FILE_FIND ; 
- int /*<<< orphan*/  OSSL_STORE_R_SEARCH_ONLY_SUPPORTED_FOR_DIRECTORIES ; 
- int /*<<< orphan*/  OSSL_STORE_R_UNSUPPORTED_SEARCH_TYPE ; 
- scalar_t__ OSSL_STORE_SEARCH_BY_NAME ; 
- int /*<<< orphan*/  OSSL_STORE_SEARCH_get0_name (int /*<<< orphan*/ *) ; 
- scalar_t__ OSSL_STORE_SEARCH_get_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STOREerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned long X509_NAME_hash (int /*<<< orphan*/ ) ; 
- scalar_t__ is_dir ; 
+
+ int BIO_snprintf (int ,int,char*,unsigned long) ;
+ int OSSL_STORE_F_FILE_FIND ;
+ int OSSL_STORE_R_SEARCH_ONLY_SUPPORTED_FOR_DIRECTORIES ;
+ int OSSL_STORE_R_UNSUPPORTED_SEARCH_TYPE ;
+ scalar_t__ OSSL_STORE_SEARCH_BY_NAME ;
+ int OSSL_STORE_SEARCH_get0_name (int *) ;
+ scalar_t__ OSSL_STORE_SEARCH_get_type (int *) ;
+ int OSSL_STOREerr (int ,int ) ;
+ unsigned long X509_NAME_hash (int ) ;
+ scalar_t__ is_dir ;
 
 __attribute__((used)) static int file_find(OSSL_STORE_LOADER_CTX *ctx, OSSL_STORE_SEARCH *search)
 {
-    /*
-     * If ctx == NULL, the library is looking to know if this loader supports
-     * the given search type.
-     */
+
+
+
+
 
     if (OSSL_STORE_SEARCH_get_type(search) == OSSL_STORE_SEARCH_BY_NAME) {
         unsigned long hash = 0;
 
-        if (ctx == NULL)
+        if (ctx == ((void*)0))
             return 1;
 
         if (ctx->type != is_dir) {
@@ -56,7 +56,7 @@ __attribute__((used)) static int file_find(OSSL_STORE_LOADER_CTX *ctx, OSSL_STOR
         return 1;
     }
 
-    if (ctx != NULL)
+    if (ctx != ((void*)0))
         OSSL_STOREerr(OSSL_STORE_F_FILE_FIND,
                       OSSL_STORE_R_UNSUPPORTED_SEARCH_TYPE);
     return 0;

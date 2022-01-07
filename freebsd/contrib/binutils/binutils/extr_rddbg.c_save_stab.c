@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_vma ;
-struct TYPE_2__ {int type; int desc; int /*<<< orphan*/ * string; int /*<<< orphan*/  value; } ;
 
-/* Variables and functions */
- size_t SAVE_STABS_COUNT ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_1__* saved_stabs ; 
- size_t saved_stabs_index ; 
- int /*<<< orphan*/ * xstrdup (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bfd_vma ;
+struct TYPE_2__ {int type; int desc; int * string; int value; } ;
+
+
+ size_t SAVE_STABS_COUNT ;
+ int free (int *) ;
+ TYPE_1__* saved_stabs ;
+ size_t saved_stabs_index ;
+ int * xstrdup (char const*) ;
 
 __attribute__((used)) static void
 save_stab (int type, int desc, bfd_vma value, const char *string)
 {
-  if (saved_stabs[saved_stabs_index].string != NULL)
+  if (saved_stabs[saved_stabs_index].string != ((void*)0))
     free (saved_stabs[saved_stabs_index].string);
   saved_stabs[saved_stabs_index].type = type;
   saved_stabs[saved_stabs_index].desc = desc;

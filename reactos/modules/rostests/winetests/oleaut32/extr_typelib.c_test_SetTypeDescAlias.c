@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t ULONG ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int WCHAR ;
+typedef size_t ULONG ;
 struct TYPE_7__ {scalar_t__ vt; } ;
 struct TYPE_6__ {size_t cbSizeInstance; int cbAlignment; } ;
-typedef  TYPE_1__ TYPEATTR ;
-typedef  int SYSKIND ;
-typedef  char OLECHAR ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  ICreateTypeLib2 ;
-typedef  int /*<<< orphan*/  ICreateTypeInfo ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HREFTYPE ;
-typedef  int /*<<< orphan*/  CHAR ;
+typedef TYPE_1__ TYPEATTR ;
+typedef int SYSKIND ;
+typedef char OLECHAR ;
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef int ICreateTypeLib2 ;
+typedef int ICreateTypeInfo ;
+typedef scalar_t__ HRESULT ;
+typedef int HREFTYPE ;
+typedef int CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ CreateTypeLib2 (int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetTempFileNameA (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeInfo_AddRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeInfo_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  ICreateTypeInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeLib2_CreateTypeInfo (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ ICreateTypeLib2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ ICreateTypeLib2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeLib2_SaveAllChanges (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_ITypeInfo ; 
- int /*<<< orphan*/  IID_ITypeLib ; 
- scalar_t__ ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ ITypeLib_GetTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ ITypeLib_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ LoadTypeLibEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  REGKIND_NONE ; 
-#define  SYS_WIN32 129 
-#define  SYS_WIN64 128 
- scalar_t__ S_OK ; 
- TYPE_2__* TDATests ; 
- int /*<<< orphan*/  TKIND_INTERFACE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  testTDA (int /*<<< orphan*/ *,TYPE_2__*,int,int /*<<< orphan*/ ,size_t,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+ int CP_ACP ;
+ scalar_t__ CreateTypeLib2 (int,int *,int **) ;
+ int DeleteFileA (int *) ;
+ int FALSE ;
+ int GetTempFileNameA (char*,char*,int ,int *) ;
+ scalar_t__ ICreateTypeInfo_AddRefTypeInfo (int *,int *,int *) ;
+ scalar_t__ ICreateTypeInfo_QueryInterface (int *,int *,void**) ;
+ int ICreateTypeInfo_Release (int *) ;
+ scalar_t__ ICreateTypeLib2_CreateTypeInfo (int *,char*,int ,int **) ;
+ scalar_t__ ICreateTypeLib2_QueryInterface (int *,int *,void**) ;
+ scalar_t__ ICreateTypeLib2_Release (int *) ;
+ scalar_t__ ICreateTypeLib2_SaveAllChanges (int *) ;
+ int IID_ITypeInfo ;
+ int IID_ITypeLib ;
+ scalar_t__ ITypeInfo_GetTypeAttr (int *,TYPE_1__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_1__*) ;
+ scalar_t__ ITypeLib_GetTypeInfo (int *,int ,int **) ;
+ scalar_t__ ITypeLib_Release (int *) ;
+ scalar_t__ LoadTypeLibEx (int *,int ,int **) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,int *,int,int *,int) ;
+ int REGKIND_NONE ;
+
+
+ scalar_t__ S_OK ;
+ TYPE_2__* TDATests ;
+ int TKIND_INTERFACE ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ int testTDA (int *,TYPE_2__*,int,int ,size_t,int,int ) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_SetTypeDescAlias(SYSKIND kind)
 {
@@ -79,11 +79,11 @@ __attribute__((used)) static void test_SetTypeDescAlias(SYSKIND kind)
     static OLECHAR interfaceW[] = {'i','n','t','e','r','f','a','c','e',0};
 
     switch(kind){
-    case SYS_WIN32:
+    case 129:
         trace("testing SYS_WIN32\n");
         ptr_size = 4;
         break;
-    case SYS_WIN64:
+    case 128:
         trace("testing SYS_WIN64\n");
         ptr_size = 8;
         break;

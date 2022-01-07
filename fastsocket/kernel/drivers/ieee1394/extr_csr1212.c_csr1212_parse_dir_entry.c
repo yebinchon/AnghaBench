@@ -1,107 +1,107 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-struct csr1212_keyval {struct csr1212_keyval* next; struct csr1212_keyval* prev; scalar_t__ offset; int /*<<< orphan*/  valid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CSR1212_KV_KEY_ID (scalar_t__) ; 
- int CSR1212_KV_KEY_TYPE (scalar_t__) ; 
-#define  CSR1212_KV_TYPE_CSR_OFFSET 129 
- int CSR1212_KV_TYPE_DIRECTORY ; 
-#define  CSR1212_KV_TYPE_IMMEDIATE 128 
- int /*<<< orphan*/  CSR1212_KV_VAL (scalar_t__) ; 
- int CSR1212_SUCCESS ; 
- int EIO ; 
- int ENOMEM ; 
- int __csr1212_attach_keyval_to_directory (struct csr1212_keyval*,struct csr1212_keyval*,int) ; 
- struct csr1212_keyval* csr1212_find_keyval_offset (struct csr1212_keyval*,scalar_t__) ; 
- struct csr1212_keyval* csr1212_new_csr_offset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct csr1212_keyval* csr1212_new_directory (int /*<<< orphan*/ ) ; 
- struct csr1212_keyval* csr1212_new_immediate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct csr1212_keyval* csr1212_new_leaf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_keyval (struct csr1212_keyval*) ; 
- scalar_t__ quads_to_bytes (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ u32 ;
+struct csr1212_keyval {struct csr1212_keyval* next; struct csr1212_keyval* prev; scalar_t__ offset; int valid; } ;
+
+
+ int CSR1212_KV_KEY_ID (scalar_t__) ;
+ int CSR1212_KV_KEY_TYPE (scalar_t__) ;
+
+ int CSR1212_KV_TYPE_DIRECTORY ;
+
+ int CSR1212_KV_VAL (scalar_t__) ;
+ int CSR1212_SUCCESS ;
+ int EIO ;
+ int ENOMEM ;
+ int __csr1212_attach_keyval_to_directory (struct csr1212_keyval*,struct csr1212_keyval*,int) ;
+ struct csr1212_keyval* csr1212_find_keyval_offset (struct csr1212_keyval*,scalar_t__) ;
+ struct csr1212_keyval* csr1212_new_csr_offset (int ,int ) ;
+ struct csr1212_keyval* csr1212_new_directory (int ) ;
+ struct csr1212_keyval* csr1212_new_immediate (int ,int ) ;
+ struct csr1212_keyval* csr1212_new_leaf (int ,int *,int ) ;
+ int free_keyval (struct csr1212_keyval*) ;
+ scalar_t__ quads_to_bytes (int ) ;
 
 __attribute__((used)) static int
 csr1212_parse_dir_entry(struct csr1212_keyval *dir, u32 ki, u32 kv_pos)
 {
-	int ret = CSR1212_SUCCESS;
-	struct csr1212_keyval *k = NULL;
-	u32 offset;
-	bool keep_keyval = true;
+ int ret = CSR1212_SUCCESS;
+ struct csr1212_keyval *k = ((void*)0);
+ u32 offset;
+ bool keep_keyval = 1;
 
-	switch (CSR1212_KV_KEY_TYPE(ki)) {
-	case CSR1212_KV_TYPE_IMMEDIATE:
-		k = csr1212_new_immediate(CSR1212_KV_KEY_ID(ki),
-					  CSR1212_KV_VAL(ki));
-		if (!k) {
-			ret = -ENOMEM;
-			goto out;
-		}
-		/* Don't keep local reference when parsing. */
-		keep_keyval = false;
-		break;
+ switch (CSR1212_KV_KEY_TYPE(ki)) {
+ case 128:
+  k = csr1212_new_immediate(CSR1212_KV_KEY_ID(ki),
+       CSR1212_KV_VAL(ki));
+  if (!k) {
+   ret = -ENOMEM;
+   goto out;
+  }
 
-	case CSR1212_KV_TYPE_CSR_OFFSET:
-		k = csr1212_new_csr_offset(CSR1212_KV_KEY_ID(ki),
-					   CSR1212_KV_VAL(ki));
-		if (!k) {
-			ret = -ENOMEM;
-			goto out;
-		}
-		/* Don't keep local reference when parsing. */
-		keep_keyval = false;
-		break;
+  keep_keyval = 0;
+  break;
 
-	default:
-		/* Compute the offset from 0xffff f000 0000. */
-		offset = quads_to_bytes(CSR1212_KV_VAL(ki)) + kv_pos;
-		if (offset == kv_pos) {
-			/* Uh-oh.  Can't have a relative offset of 0 for Leaves
-			 * or Directories.  The Config ROM image is most likely
-			 * messed up, so we'll just abort here. */
-			ret = -EIO;
-			goto out;
-		}
+ case 129:
+  k = csr1212_new_csr_offset(CSR1212_KV_KEY_ID(ki),
+        CSR1212_KV_VAL(ki));
+  if (!k) {
+   ret = -ENOMEM;
+   goto out;
+  }
 
-		k = csr1212_find_keyval_offset(dir, offset);
+  keep_keyval = 0;
+  break;
 
-		if (k)
-			break;		/* Found it. */
+ default:
 
-		if (CSR1212_KV_KEY_TYPE(ki) == CSR1212_KV_TYPE_DIRECTORY)
-			k = csr1212_new_directory(CSR1212_KV_KEY_ID(ki));
-		else
-			k = csr1212_new_leaf(CSR1212_KV_KEY_ID(ki), NULL, 0);
+  offset = quads_to_bytes(CSR1212_KV_VAL(ki)) + kv_pos;
+  if (offset == kv_pos) {
 
-		if (!k) {
-			ret = -ENOMEM;
-			goto out;
-		}
-		/* Don't keep local reference when parsing. */
-		keep_keyval = false;
-		/* Contents not read yet so it's not valid. */
-		k->valid = 0;
-		k->offset = offset;
 
-		k->prev = dir;
-		k->next = dir->next;
-		dir->next->prev = k;
-		dir->next = k;
-	}
-	ret = __csr1212_attach_keyval_to_directory(dir, k, keep_keyval);
+
+   ret = -EIO;
+   goto out;
+  }
+
+  k = csr1212_find_keyval_offset(dir, offset);
+
+  if (k)
+   break;
+
+  if (CSR1212_KV_KEY_TYPE(ki) == CSR1212_KV_TYPE_DIRECTORY)
+   k = csr1212_new_directory(CSR1212_KV_KEY_ID(ki));
+  else
+   k = csr1212_new_leaf(CSR1212_KV_KEY_ID(ki), ((void*)0), 0);
+
+  if (!k) {
+   ret = -ENOMEM;
+   goto out;
+  }
+
+  keep_keyval = 0;
+
+  k->valid = 0;
+  k->offset = offset;
+
+  k->prev = dir;
+  k->next = dir->next;
+  dir->next->prev = k;
+  dir->next = k;
+ }
+ ret = __csr1212_attach_keyval_to_directory(dir, k, keep_keyval);
 out:
-	if (ret != CSR1212_SUCCESS && k != NULL)
-		free_keyval(k);
-	return ret;
+ if (ret != CSR1212_SUCCESS && k != ((void*)0))
+  free_keyval(k);
+ return ret;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ left; scalar_t__ right; } ;
 struct TYPE_10__ {int cx; int cy; } ;
 struct TYPE_9__ {scalar_t__ y; scalar_t__ x; } ;
 struct TYPE_13__ {TYPE_3__ rcView; scalar_t__ nAvailWidth; TYPE_2__ dpi; TYPE_1__ pt; TYPE_4__* editor; scalar_t__ hDC; } ;
 struct TYPE_12__ {scalar_t__ nAvailWidth; TYPE_3__ rcFormat; } ;
-typedef  TYPE_4__ ME_TextEditor ;
-typedef  TYPE_5__ ME_Context ;
-typedef  scalar_t__ HDC ;
+typedef TYPE_4__ ME_TextEditor ;
+typedef TYPE_5__ ME_Context ;
+typedef scalar_t__ HDC ;
 
-/* Variables and functions */
- void* GetDeviceCaps (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGPIXELSX ; 
- int /*<<< orphan*/  LOGPIXELSY ; 
- scalar_t__ ME_twips2pointsX (TYPE_5__*,scalar_t__) ; 
+
+ void* GetDeviceCaps (scalar_t__,int ) ;
+ int LOGPIXELSX ;
+ int LOGPIXELSY ;
+ scalar_t__ ME_twips2pointsX (TYPE_5__*,scalar_t__) ;
 
 void ME_InitContext(ME_Context *c, ME_TextEditor *editor, HDC hDC)
 {

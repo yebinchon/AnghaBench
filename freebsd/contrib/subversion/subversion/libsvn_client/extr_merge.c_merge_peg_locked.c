@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_rangelist_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client__pathrev_t ;
-typedef  int /*<<< orphan*/  svn_client__conflict_report_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_5__ {int /*<<< orphan*/  loc; } ;
-typedef  TYPE_1__ merge_target_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * do_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ getenv (char*) ; 
- scalar_t__ is_same_repos (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * normalize_merge_sources (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * open_target_wc (TYPE_1__**,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__merge_elements (scalar_t__*,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__ra_session_from_path2 (int /*<<< orphan*/ **,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_depth_infinity ; 
- scalar_t__ svn_depth_unknown ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_io_sleep_for_timestamps (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int svn_rangelist_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_depth_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client__pathrev_t ;
+typedef int svn_client__conflict_report_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_5__ {int loc; } ;
+typedef TYPE_1__ merge_target_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int *) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int * do_merge (int *,int *,int **,scalar_t__*,int *,TYPE_1__*,int *,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int *,scalar_t__,scalar_t__,scalar_t__,int const*,int *,int *,int *) ;
+ scalar_t__ getenv (char*) ;
+ scalar_t__ is_same_repos (int *,int *,int ) ;
+ int * normalize_merge_sources (int **,char const*,int *,int const*,int *,int *,int *,int *) ;
+ int * open_target_wc (TYPE_1__**,char const*,scalar_t__,int ,int ,int *,int *,int *) ;
+ int * svn_client__merge_elements (scalar_t__*,int *,TYPE_1__*,int *,scalar_t__,scalar_t__,scalar_t__,int const*,int *,int *,int *) ;
+ int * svn_client__ra_session_from_path2 (int **,int **,char const*,int *,int const*,int const*,int *,int *) ;
+ scalar_t__ svn_depth_infinity ;
+ scalar_t__ svn_depth_unknown ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_io_sleep_for_timestamps (char const*,int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static svn_error_t *
 merge_peg_locked(svn_client__conflict_report_t **conflict_report,
@@ -78,26 +78,26 @@ merge_peg_locked(svn_client__conflict_report_t **conflict_report,
                          allow_mixed_rev, TRUE, TRUE,
                          ctx, scratch_pool, scratch_pool));
 
-  /* Create a short lived session pool */
+
   sesspool = svn_pool_create(scratch_pool);
 
-  /* Open an RA session to our source URL, and determine its root URL. */
+
   SVN_ERR(svn_client__ra_session_from_path2(
             &ra_session, &source_loc,
-            source_path_or_url, NULL, source_peg_revision, source_peg_revision,
+            source_path_or_url, ((void*)0), source_peg_revision, source_peg_revision,
             ctx, sesspool));
 
-  /* Normalize our merge sources. */
+
   SVN_ERR(normalize_merge_sources(&merge_sources, source_path_or_url,
                                   source_loc,
                                   ranges_to_merge, ra_session, ctx,
                                   scratch_pool, scratch_pool));
 
-  /* Check for same_repos. */
-  same_repos = is_same_repos(&target->loc, source_loc, TRUE /* strict_urls */);
 
-  /* Do the real merge!  (We say with confidence that our merge
-     sources are both ancestral and related.) */
+  same_repos = is_same_repos(&target->loc, source_loc, TRUE );
+
+
+
   if (getenv("SVN_ELEMENT_MERGE")
       && same_repos
       && (depth == svn_depth_infinity || depth == svn_depth_unknown)
@@ -109,18 +109,18 @@ merge_peg_locked(svn_client__conflict_report_t **conflict_report,
                                        diff_ignore_ancestry, force_delete,
                                        dry_run, merge_options,
                                        ctx, result_pool, scratch_pool);
-      /* ### Currently this merge just errors out on any conflicts */
-      *conflict_report = NULL;
+
+      *conflict_report = ((void*)0);
     }
   else
-  err = do_merge(NULL, NULL, conflict_report, &use_sleep,
+  err = do_merge(((void*)0), ((void*)0), conflict_report, &use_sleep,
                  merge_sources, target, ra_session,
-                 TRUE /*sources_related*/, same_repos, ignore_mergeinfo,
+                 TRUE , same_repos, ignore_mergeinfo,
                  diff_ignore_ancestry, force_delete, dry_run,
-                 record_only, NULL, FALSE, FALSE, depth, merge_options,
+                 record_only, ((void*)0), FALSE, FALSE, depth, merge_options,
                  ctx, result_pool, scratch_pool);
 
-  /* We're done with our RA session. */
+
   svn_pool_destroy(sesspool);
 
   if (use_sleep)

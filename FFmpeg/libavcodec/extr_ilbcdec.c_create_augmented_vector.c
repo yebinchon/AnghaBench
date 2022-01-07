@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t int16_t ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int SUBL ; 
- int /*<<< orphan*/  add_vector_and_shift (size_t*,size_t*,size_t*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * alpha ; 
- int /*<<< orphan*/  memcpy (size_t*,size_t*,int) ; 
- int /*<<< orphan*/  vector_multiplication (size_t*,size_t*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  vector_rmultiplication (size_t*,size_t*,int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef size_t int16_t ;
+
+
+ int FFMIN (int,int) ;
+ int SUBL ;
+ int add_vector_and_shift (size_t*,size_t*,size_t*,int,int ) ;
+ int * alpha ;
+ int memcpy (size_t*,size_t*,int) ;
+ int vector_multiplication (size_t*,size_t*,int *,int,int) ;
+ int vector_rmultiplication (size_t*,size_t*,int *,int,int) ;
 
 __attribute__((used)) static void create_augmented_vector(int index, int16_t *buffer, int16_t *cbVec)
 {

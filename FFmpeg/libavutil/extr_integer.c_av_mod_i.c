@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int16_t ;
+
+
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef scalar_t__ int16_t ;
 struct TYPE_16__ {int* v; } ;
-typedef  TYPE_1__ AVInteger ;
+typedef TYPE_1__ AVInteger ;
 
-/* Variables and functions */
- int AV_INTEGER_SIZE ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- scalar_t__ av_cmp_i (TYPE_1__,TYPE_1__) ; 
- scalar_t__ av_log2_i (TYPE_1__) ; 
- TYPE_1__ av_shr_i (TYPE_1__,int) ; 
- TYPE_1__ av_sub_i (TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__ zero_i ; 
+
+ int AV_INTEGER_SIZE ;
+ int av_assert2 (int) ;
+ scalar_t__ av_cmp_i (TYPE_1__,TYPE_1__) ;
+ scalar_t__ av_log2_i (TYPE_1__) ;
+ TYPE_1__ av_shr_i (TYPE_1__,int) ;
+ TYPE_1__ av_sub_i (TYPE_1__,TYPE_1__) ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__ zero_i ;
 
 AVInteger av_mod_i(AVInteger *quot, AVInteger a, AVInteger b){
     int i= av_log2_i(a) - av_log2_i(b);

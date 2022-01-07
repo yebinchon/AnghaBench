@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MAGIC ; 
- int /*<<< orphan*/  TLS_SCHEMA ; 
- int /*<<< orphan*/  TLS_SCHEMA_V2 ; 
- int __f ; 
- scalar_t__ num ; 
- int schema_version ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_function_tree ; 
- int /*<<< orphan*/  tl_type_tree ; 
- int /*<<< orphan*/  total_constructors_num ; 
- int /*<<< orphan*/  total_functions_num ; 
- int /*<<< orphan*/  total_types_num ; 
- int /*<<< orphan*/  tree_act_tl_constructor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_act_tl_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_function ; 
- int /*<<< orphan*/  write_type ; 
- int /*<<< orphan*/  write_type_constructors ; 
+ int MAGIC ;
+ int TLS_SCHEMA ;
+ int TLS_SCHEMA_V2 ;
+ int __f ;
+ scalar_t__ num ;
+ int schema_version ;
+ int time (int ) ;
+ int tl_function_tree ;
+ int tl_type_tree ;
+ int total_constructors_num ;
+ int total_functions_num ;
+ int total_types_num ;
+ int tree_act_tl_constructor (int ,int ) ;
+ int tree_act_tl_type (int ,int ) ;
+ int wint (int ) ;
+ int write_function ;
+ int write_type ;
+ int write_type_constructors ;
 
 void write_types (int f) {
   __f = f;

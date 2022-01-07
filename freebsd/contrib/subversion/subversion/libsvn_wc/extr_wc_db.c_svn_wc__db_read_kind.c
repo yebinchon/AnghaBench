@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  void* svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  STMT_SELECT_NODE_INFO ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  convert_to_working_status (int*,int) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  presence_map ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- void* svn_node_none ; 
- void* svn_node_unknown ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int svn_wc__db_status_base_deleted ; 
-#define  svn_wc__db_status_deleted 131 
-#define  svn_wc__db_status_excluded 130 
-#define  svn_wc__db_status_not_present 129 
-#define  svn_wc__db_status_server_excluded 128 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_wc__db_status_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef void* svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ FALSE ;
+ int STMT_SELECT_NODE_INFO ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int _ (char*) ;
+ int convert_to_working_status (int*,int) ;
+ int kind_map ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int presence_map ;
+ int svn_dirent_is_absolute (char const*) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_error_trace (int ) ;
+ void* svn_node_none ;
+ void* svn_node_unknown ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ void* svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc__db_status_base_deleted ;
+
+
+
+
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_read_kind(svn_node_kind_t *kind,
@@ -90,7 +90,7 @@ svn_wc__db_read_kind(svn_node_kind_t *kind,
       else
         {
           SVN_ERR(svn_sqlite__reset(stmt_info));
-          return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+          return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                                    _("The node '%s' was not found."),
                                    path_for_error_message(wcroot,
                                                           local_relpath,
@@ -102,14 +102,14 @@ svn_wc__db_read_kind(svn_node_kind_t *kind,
 
   if (show_deleted && status == svn_wc__db_status_base_deleted)
     {
-      /* Let's return the kind of what is really deleted insead of what
-         we have cached in the base-deleted record */
+
+
 
       SVN_ERR(svn_sqlite__step(&have_info, stmt_info));
 
       if (!have_info)
         {
-          /* No lower layer deleted? Database inconsistency! */
+
           *kind = svn_node_none;
           return svn_error_trace(svn_sqlite__reset(stmt_info));
         }
@@ -125,16 +125,16 @@ svn_wc__db_read_kind(svn_node_kind_t *kind,
 
       switch (status)
         {
-          case svn_wc__db_status_not_present:
+          case 129:
             if (! (show_hidden && show_deleted))
               report_none = TRUE;
             break;
-          case svn_wc__db_status_excluded:
-          case svn_wc__db_status_server_excluded:
+          case 130:
+          case 128:
             if (! show_hidden)
               report_none = TRUE;
             break;
-          case svn_wc__db_status_deleted:
+          case 131:
             if (! show_deleted)
               report_none = TRUE;
             break;

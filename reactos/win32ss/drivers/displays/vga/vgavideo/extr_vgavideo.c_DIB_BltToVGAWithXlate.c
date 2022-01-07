@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XLATEOBJ ;
-typedef  size_t ULONG ;
-typedef  int* PUCHAR ;
 
-/* Variables and functions */
- scalar_t__ GRA_D ; 
- scalar_t__ GRA_I ; 
- int /*<<< orphan*/  READ_REGISTER_UCHAR (size_t) ; 
- int /*<<< orphan*/  WRITE_PORT_UCHAR (int*,int) ; 
- int /*<<< orphan*/  WRITE_REGISTER_UCHAR (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLATEOBJ_iXlate (int /*<<< orphan*/ *,int) ; 
- int* maskbit ; 
- size_t vidmem ; 
- size_t* xconv ; 
- size_t* y80 ; 
+
+
+
+typedef int XLATEOBJ ;
+typedef size_t ULONG ;
+typedef int* PUCHAR ;
+
+
+ scalar_t__ GRA_D ;
+ scalar_t__ GRA_I ;
+ int READ_REGISTER_UCHAR (size_t) ;
+ int WRITE_PORT_UCHAR (int*,int) ;
+ int WRITE_REGISTER_UCHAR (size_t,int ) ;
+ int XLATEOBJ_iXlate (int *,int) ;
+ int* maskbit ;
+ size_t vidmem ;
+ size_t* xconv ;
+ size_t* y80 ;
 
 void DIB_BltToVGAWithXlate(int x, int y, int w, int h, void *b, int Source_lDelta, XLATEOBJ* Xlate)
 {
@@ -39,7 +39,7 @@ void DIB_BltToVGAWithXlate(int x, int y, int w, int h, void *b, int Source_lDelt
         pb = opb;
         offset = xconv[i] + y80[y];
 
-        WRITE_PORT_UCHAR((PUCHAR)GRA_I, 0x08);       // set the mask
+        WRITE_PORT_UCHAR((PUCHAR)GRA_I, 0x08);
         WRITE_PORT_UCHAR((PUCHAR)GRA_D, maskbit[i]);
 
         if (0 == ((i - x) % 2))

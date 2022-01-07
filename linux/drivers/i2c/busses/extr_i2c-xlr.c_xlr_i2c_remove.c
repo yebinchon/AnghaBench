@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xlr_i2c_private {int /*<<< orphan*/  clk; int /*<<< orphan*/  adap; } ;
+
+
+
+
+struct xlr_i2c_private {int clk; int adap; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_unprepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_del_adapter (int /*<<< orphan*/ *) ; 
- struct xlr_i2c_private* platform_get_drvdata (struct platform_device*) ; 
+
+ int clk_unprepare (int ) ;
+ int i2c_del_adapter (int *) ;
+ struct xlr_i2c_private* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int xlr_i2c_remove(struct platform_device *pdev)
 {
-	struct xlr_i2c_private *priv;
+ struct xlr_i2c_private *priv;
 
-	priv = platform_get_drvdata(pdev);
-	i2c_del_adapter(&priv->adap);
-	clk_unprepare(priv->clk);
+ priv = platform_get_drvdata(pdev);
+ i2c_del_adapter(&priv->adap);
+ clk_unprepare(priv->clk);
 
-	return 0;
+ return 0;
 }

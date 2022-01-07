@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int arg_noresume ; 
- int /*<<< orphan*/  arg_resume_device ; 
- int /*<<< orphan*/  arg_resume_options ; 
- int /*<<< orphan*/  arg_root_options ; 
- int /*<<< orphan*/  free_and_replace (int /*<<< orphan*/ ,char*) ; 
- char* fstab_node_to_udev_node (char const*) ; 
- int log_oom () ; 
- int /*<<< orphan*/  log_warning (char*) ; 
- scalar_t__ proc_cmdline_value_missing (char const*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
- int /*<<< orphan*/  strextend_with_separator (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ *) ; 
+ int arg_noresume ;
+ int arg_resume_device ;
+ int arg_resume_options ;
+ int arg_root_options ;
+ int free_and_replace (int ,char*) ;
+ char* fstab_node_to_udev_node (char const*) ;
+ int log_oom () ;
+ int log_warning (char*) ;
+ scalar_t__ proc_cmdline_value_missing (char const*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
+ int strextend_with_separator (int *,char*,char const*,int *) ;
 
 __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const char *value, void *data) {
 
@@ -43,7 +35,7 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                 if (proc_cmdline_value_missing(key, value))
                         return 0;
 
-                if (!strextend_with_separator(&arg_resume_options, ",", value, NULL))
+                if (!strextend_with_separator(&arg_resume_options, ",", value, ((void*)0)))
                         return log_oom();
 
         } else if (streq(key, "rootflags")) {
@@ -51,7 +43,7 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                 if (proc_cmdline_value_missing(key, value))
                         return 0;
 
-                if (!strextend_with_separator(&arg_root_options, ",", value, NULL))
+                if (!strextend_with_separator(&arg_root_options, ",", value, ((void*)0)))
                         return log_oom();
 
         } else if (streq(key, "noresume")) {
@@ -60,7 +52,7 @@ __attribute__((used)) static int parse_proc_cmdline_item(const char *key, const 
                         return 0;
                 }
 
-                arg_noresume = true;
+                arg_noresume = 1;
         }
 
         return 0;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct thread {int /*<<< orphan*/  td_pcb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRITICAL_ASSERT (struct thread*) ; 
- int /*<<< orphan*/  KASSERT (int,char*) ; 
- int /*<<< orphan*/  PCB_FPUINITDONE ; 
- struct thread* PCPU_GET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCPU_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clear_pcb_flags (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct thread* curthread ; 
- int /*<<< orphan*/  fpcurthread ; 
- int /*<<< orphan*/  start_emulating () ; 
+
+
+
+struct thread {int td_pcb; } ;
+
+
+ int CRITICAL_ASSERT (struct thread*) ;
+ int KASSERT (int,char*) ;
+ int PCB_FPUINITDONE ;
+ struct thread* PCPU_GET (int ) ;
+ int PCPU_SET (int ,int *) ;
+ int clear_pcb_flags (int ,int ) ;
+ struct thread* curthread ;
+ int fpcurthread ;
+ int start_emulating () ;
 
 void
 fpudrop(void)
 {
-	struct thread *td;
+ struct thread *td;
 
-	td = PCPU_GET(fpcurthread);
-	KASSERT(td == curthread, ("fpudrop: fpcurthread != curthread"));
-	CRITICAL_ASSERT(td);
-	PCPU_SET(fpcurthread, NULL);
-	clear_pcb_flags(td->td_pcb, PCB_FPUINITDONE);
-	start_emulating();
+ td = PCPU_GET(fpcurthread);
+ KASSERT(td == curthread, ("fpudrop: fpcurthread != curthread"));
+ CRITICAL_ASSERT(td);
+ PCPU_SET(fpcurthread, ((void*)0));
+ clear_pcb_flags(td->td_pcb, PCB_FPUINITDONE);
+ start_emulating();
 }

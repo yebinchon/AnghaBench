@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dst ;
 
-/* Variables and functions */
- int EILSEQ ; 
- int EINVAL ; 
- int ERANGE ; 
- int _getmbcp () ; 
- int /*<<< orphan*/  _setmbcp (int) ; 
- int /*<<< orphan*/  memcmp (unsigned char*,char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int p_mbscat_s (unsigned char*,int,unsigned char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int dst ;
+
+
+ int EILSEQ ;
+ int EINVAL ;
+ int ERANGE ;
+ int _getmbcp () ;
+ int _setmbcp (int) ;
+ int memcmp (unsigned char*,char*,int) ;
+ int memset (unsigned char*,char,int) ;
+ int ok (int,char*,...) ;
+ int p_mbscat_s (unsigned char*,int,unsigned char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__mbscat_s(void)
 {
@@ -38,10 +38,10 @@ __attribute__((used)) static void test__mbscat_s(void)
 
 
     src[0] = dst[0] = 0;
-    err = p_mbscat_s(NULL, sizeof(dst), src);
+    err = p_mbscat_s(((void*)0), sizeof(dst), src);
     ok(err == EINVAL, "_mbscat_s returned %d\n", err);
 
-    err = p_mbscat_s(dst, sizeof(dst), NULL);
+    err = p_mbscat_s(dst, sizeof(dst), ((void*)0));
     ok(err == EINVAL, "_mbscat_s returned %d\n", err);
 
     dst[0] = 'a';
@@ -63,7 +63,7 @@ __attribute__((used)) static void test__mbscat_s(void)
     ok(dst[1] == 'a', "dst[1] = %c\n", dst[1]);
 
     _setmbcp(932);
-    /* test invalid str in dst */
+
     dst[0] = 0x81;
     dst[1] = 0x81;
     dst[2] = 0x52;
@@ -73,7 +73,7 @@ __attribute__((used)) static void test__mbscat_s(void)
     err = p_mbscat_s(dst, sizeof(dst), src);
     ok(err == 0, "_mbscat_s returned %d\n", err);
 
-    /* test invalid str in src */
+
     dst[0] = 0;
     src[0] = 0x81;
     src[1] = 0x81;
@@ -82,7 +82,7 @@ __attribute__((used)) static void test__mbscat_s(void)
     err = p_mbscat_s(dst, sizeof(dst), src);
     ok(err == 0, "_mbscat_s returned %d\n", err);
 
-    /* test dst with leading byte on the end of buffer */
+
     dst[0] = 'a';
     dst[1] = 0x81;
     dst[2] = 0;
@@ -92,7 +92,7 @@ __attribute__((used)) static void test__mbscat_s(void)
     ok(err == EILSEQ, "_mbscat_s returned %d\n", err);
     ok(!memcmp(dst, "aR", 3), "dst = %s\n", dst);
 
-    /* test src with leading byte on the end of buffer */
+
     dst[0] = 'a';
     dst[1] = 0;
     src[0] = 'b';

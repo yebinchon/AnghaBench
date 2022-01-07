@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wdtbd70528 {int /*<<< orphan*/  mfd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bd70528_wdt_lock (int /*<<< orphan*/ ) ; 
- int bd70528_wdt_set_locked (struct wdtbd70528*,int) ; 
- int /*<<< orphan*/  bd70528_wdt_unlock (int /*<<< orphan*/ ) ; 
+
+
+
+struct wdtbd70528 {int mfd; } ;
+
+
+ int bd70528_wdt_lock (int ) ;
+ int bd70528_wdt_set_locked (struct wdtbd70528*,int) ;
+ int bd70528_wdt_unlock (int ) ;
 
 __attribute__((used)) static int bd70528_wdt_change(struct wdtbd70528 *w, int enable)
 {
-	int ret;
+ int ret;
 
-	bd70528_wdt_lock(w->mfd);
-	ret = bd70528_wdt_set_locked(w, enable);
-	bd70528_wdt_unlock(w->mfd);
+ bd70528_wdt_lock(w->mfd);
+ ret = bd70528_wdt_set_locked(w, enable);
+ bd70528_wdt_unlock(w->mfd);
 
-	return ret;
+ return ret;
 }

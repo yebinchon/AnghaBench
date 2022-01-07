@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  si ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-struct TYPE_9__ {int cb; int /*<<< orphan*/ * hProcess; int /*<<< orphan*/ * hThread; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int si ;
+typedef int VOID ;
+typedef int ULONG_PTR ;
+struct TYPE_9__ {int cb; int * hProcess; int * hThread; } ;
 struct TYPE_10__ {size_t Selection; TYPE_2__ PrevWindowPi; TYPE_1__* ScreenSaverItems; } ;
-struct TYPE_8__ {int /*<<< orphan*/  szFilename; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_2__ STARTUPINFO ;
-typedef  TYPE_3__* PDATA ;
-typedef  scalar_t__ HWND ;
+struct TYPE_8__ {int szFilename; } ;
+typedef int TCHAR ;
+typedef TYPE_2__ STARTUPINFO ;
+typedef TYPE_3__* PDATA ;
+typedef scalar_t__ HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateProcess (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetDlgItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_SCREENS_PREVIEW ; 
- int /*<<< orphan*/  TerminateProcess (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _stprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CloseHandle (int *) ;
+ int CreateProcess (int *,int *,int *,int *,int ,int ,int *,int *,TYPE_2__*,TYPE_2__*) ;
+ int FALSE ;
+ scalar_t__ GetDlgItem (scalar_t__,int ) ;
+ int IDC_SCREENS_PREVIEW ;
+ int TerminateProcess (int *,int ) ;
+ int ZeroMemory (TYPE_2__*,int) ;
+ int _T (char*) ;
+ int _stprintf (int *,int ,int ,int ) ;
 
 __attribute__((used)) static VOID
 SetScreenSaverPreviewBox(HWND hwndDlg, PDATA pData)
@@ -42,13 +42,13 @@ SetScreenSaverPreviewBox(HWND hwndDlg, PDATA pData)
     STARTUPINFO si;
     TCHAR szCmdline[2048];
 
-    /* Kill off the previous preview process */
+
     if (pData->PrevWindowPi.hProcess)
     {
         TerminateProcess(pData->PrevWindowPi.hProcess, 0);
         CloseHandle(pData->PrevWindowPi.hProcess);
         CloseHandle(pData->PrevWindowPi.hThread);
-        pData->PrevWindowPi.hThread = pData->PrevWindowPi.hProcess = NULL;
+        pData->PrevWindowPi.hThread = pData->PrevWindowPi.hProcess = ((void*)0);
     }
 
     if (pData->Selection > 0)
@@ -62,18 +62,18 @@ SetScreenSaverPreviewBox(HWND hwndDlg, PDATA pData)
         si.cb = sizeof(si);
         ZeroMemory(&pData->PrevWindowPi, sizeof(pData->PrevWindowPi));
 
-        if (!CreateProcess(NULL,
+        if (!CreateProcess(((void*)0),
                            szCmdline,
-                           NULL,
-                           NULL,
+                           ((void*)0),
+                           ((void*)0),
                            FALSE,
                            0,
-                           NULL,
-                           NULL,
+                           ((void*)0),
+                           ((void*)0),
                            &si,
                            &pData->PrevWindowPi))
         {
-            pData->PrevWindowPi.hThread = pData->PrevWindowPi.hProcess = NULL;
+            pData->PrevWindowPi.hThread = pData->PrevWindowPi.hProcess = ((void*)0);
         }
     }
 }

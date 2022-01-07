@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bit_to_wchan (void*,int) ; 
- int /*<<< orphan*/  wake_up_sleepers (int /*<<< orphan*/ ) ; 
+ int bit_to_wchan (void*,int) ;
+ int wake_up_sleepers (int ) ;
 
 void
 linux_wake_up_bit(void *word, int bit)
 {
 
-	wake_up_sleepers(bit_to_wchan(word, bit));
+ wake_up_sleepers(bit_to_wchan(word, bit));
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  winxpW ;
-typedef  int /*<<< orphan*/  winxp64W ;
-typedef  int /*<<< orphan*/  windowsW ;
-typedef  int /*<<< orphan*/  win8W ;
-typedef  int /*<<< orphan*/  win81W ;
-typedef  int /*<<< orphan*/  win7W ;
-typedef  int /*<<< orphan*/  win2008r2W ;
-typedef  int /*<<< orphan*/  win2008W ;
-typedef  int /*<<< orphan*/  win2003W ;
-typedef  int /*<<< orphan*/  win2000W ;
-typedef  int /*<<< orphan*/  win10W ;
-typedef  int /*<<< orphan*/  vistaW ;
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int winxpW ;
+typedef int winxp64W ;
+typedef int windowsW ;
+typedef int win8W ;
+typedef int win81W ;
+typedef int win7W ;
+typedef int win2008r2W ;
+typedef int win2008W ;
+typedef int win2003W ;
+typedef int win2000W ;
+typedef int win10W ;
+typedef int vistaW ;
+typedef char WCHAR ;
 struct TYPE_3__ {int dwMajorVersion; int dwMinorVersion; scalar_t__ wProductType; } ;
-typedef  TYPE_1__ OSVERSIONINFOEXW ;
+typedef TYPE_1__ OSVERSIONINFOEXW ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- scalar_t__ VER_NT_WORKSTATION ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+ int ARRAY_SIZE (char const*) ;
+ scalar_t__ VER_NT_WORKSTATION ;
+ char* heap_alloc (int) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static WCHAR *get_oscaption( OSVERSIONINFOEXW *ver )
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static WCHAR *get_oscaption( OSVERSIONINFOEXW *ver )
     int len = ARRAY_SIZE( windowsW );
     WCHAR *ret;
 
-    if (!(ret = heap_alloc( len * sizeof(WCHAR) + sizeof(win2003W) ))) return NULL;
+    if (!(ret = heap_alloc( len * sizeof(WCHAR) + sizeof(win2003W) ))) return ((void*)0);
     memcpy( ret, windowsW, sizeof(windowsW) );
     if (ver->dwMajorVersion == 10 && ver->dwMinorVersion == 0) memcpy( ret + len, win10W, sizeof(win10W) );
     else if (ver->dwMajorVersion == 6 && ver->dwMinorVersion == 3) memcpy( ret + len, win8W, sizeof(win8W) );

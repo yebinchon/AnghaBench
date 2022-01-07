@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  expect (double,double) ; 
- int /*<<< orphan*/  expectd (double,double) ; 
- int /*<<< orphan*/  expectf (double,double) ; 
- int /*<<< orphan*/  print (char*) ; 
- double recursive (int) ; 
- int /*<<< orphan*/  std () ; 
- double tf1 (int) ; 
- double tf2 (int) ; 
- double tf3 (int) ; 
+ int expect (double,double) ;
+ int expectd (double,double) ;
+ int expectf (double,double) ;
+ int print (char*) ;
+ double recursive (int) ;
+ int std () ;
+ double tf1 (int) ;
+ double tf2 (int) ;
+ double tf3 (int) ;
 
 void testmain() {
     print("float");

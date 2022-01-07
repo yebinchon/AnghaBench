@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int grub_size_t ;
-typedef  TYPE_1__* grub_mm_region_t ;
-struct TYPE_3__ {int /*<<< orphan*/  first; struct TYPE_3__* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_OUT_OF_MEMORY ; 
- int GRUB_MM_ALIGN ; 
- int GRUB_MM_ALIGN_LOG2 ; 
- TYPE_1__* base ; 
- int /*<<< orphan*/  grub_disk_cache_invalidate_all () ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- void* grub_real_malloc (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int grub_size_t ;
+typedef TYPE_1__* grub_mm_region_t ;
+struct TYPE_3__ {int first; struct TYPE_3__* next; } ;
+
+
+ int GRUB_ERR_OUT_OF_MEMORY ;
+ int GRUB_MM_ALIGN ;
+ int GRUB_MM_ALIGN_LOG2 ;
+ TYPE_1__* base ;
+ int grub_disk_cache_invalidate_all () ;
+ int grub_error (int ,char*) ;
+ void* grub_real_malloc (int *,int,int) ;
 
 void *
 grub_memalign (grub_size_t align, grub_size_t size)
@@ -43,21 +43,21 @@ grub_memalign (grub_size_t align, grub_size_t size)
 
       p = grub_real_malloc (&(r->first), n, align);
       if (p)
-	return p;
+ return p;
     }
 
-  /* If failed, increase free memory somehow.  */
+
   switch (count)
     {
     case 0:
-      /* Invalidate disk caches.  */
+
       grub_disk_cache_invalidate_all ();
       count++;
       goto again;
 
     case 1:
-      /* Unload unneeded modules.  */
-      //grub_dl_unload_unneeded ();
+
+
       count++;
       goto again;
 

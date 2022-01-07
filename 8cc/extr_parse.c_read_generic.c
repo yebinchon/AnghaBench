@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Type ;
-typedef  int /*<<< orphan*/  Token ;
-struct TYPE_6__ {int /*<<< orphan*/  ty; } ;
-typedef  TYPE_1__ Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errort (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (char) ; 
- int /*<<< orphan*/  node2s (TYPE_1__*) ; 
- int /*<<< orphan*/ * peek () ; 
- TYPE_1__* read_assignment_expr () ; 
- int /*<<< orphan*/ * read_generic_list (TYPE_1__**) ; 
- int /*<<< orphan*/  ty2s (int /*<<< orphan*/ ) ; 
- scalar_t__ type_compatible (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void** vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Vector ;
+typedef int Type ;
+typedef int Token ;
+struct TYPE_6__ {int ty; } ;
+typedef TYPE_1__ Node ;
+
+
+ int errort (int *,char*,int ,int ) ;
+ int expect (char) ;
+ int node2s (TYPE_1__*) ;
+ int * peek () ;
+ TYPE_1__* read_assignment_expr () ;
+ int * read_generic_list (TYPE_1__**) ;
+ int ty2s (int ) ;
+ scalar_t__ type_compatible (int ,int *) ;
+ void** vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static Node *read_generic() {
     expect('(');
     Token *tok = peek();
     Node *contexpr = read_assignment_expr();
     expect(',');
-    Node *defaultexpr = NULL;
+    Node *defaultexpr = ((void*)0);
     Vector *list = read_generic_list(&defaultexpr);
     for (int i = 0; i < vec_len(list); i++) {
         void **pair = vec_get(list, i);

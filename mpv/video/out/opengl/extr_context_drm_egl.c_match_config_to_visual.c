@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ra_ctx {struct priv* priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  display; } ;
+struct TYPE_2__ {int display; } ;
 struct priv {scalar_t__ const gbm_format; TYPE_1__ egl; } ;
-typedef  scalar_t__ const EGLint ;
-typedef  int /*<<< orphan*/  EGLConfig ;
+typedef scalar_t__ const EGLint ;
+typedef int EGLConfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_NATIVE_VISUAL_ID ; 
- int /*<<< orphan*/  MP_ERR (struct ra_ctx*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ra_ctx*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglGetConfigAttrib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__ const*) ; 
- int /*<<< orphan*/  fallback_format_for (scalar_t__ const) ; 
- int /*<<< orphan*/  gbm_format_to_string (scalar_t__ const) ; 
+
+ int EGL_NATIVE_VISUAL_ID ;
+ int MP_ERR (struct ra_ctx*,char*,int ) ;
+ int MP_VERBOSE (struct ra_ctx*,char*,int ) ;
+ int eglGetConfigAttrib (int ,int ,int ,scalar_t__ const*) ;
+ int fallback_format_for (scalar_t__ const) ;
+ int gbm_format_to_string (scalar_t__ const) ;
 
 __attribute__((used)) static int match_config_to_visual(void *user_data, EGLConfig *configs, int num_configs)
 {

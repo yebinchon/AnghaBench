@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rpc_task {int dummy; } ;
 struct nfs_write_data {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nfs_writeback_done (struct rpc_task*,struct nfs_write_data*) ; 
+
+ int nfs_writeback_done (struct rpc_task*,struct nfs_write_data*) ;
 
 __attribute__((used)) static void nfs_writeback_done_common(struct rpc_task *task, void *calldata)
 {
-	struct nfs_write_data	*data = calldata;
+ struct nfs_write_data *data = calldata;
 
-	nfs_writeback_done(task, data);
+ nfs_writeback_done(task, data);
 }

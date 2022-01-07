@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netif {char* name; int mtu; int /*<<< orphan*/  state; scalar_t__ num; int /*<<< orphan*/  flags; int /*<<< orphan*/  output; } ;
-typedef  int /*<<< orphan*/  err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_IF ; 
- int /*<<< orphan*/  ERR_OK ; 
- int /*<<< orphan*/  LWIP_DEBUGF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NETIF_FLAG_POINTTOPOINT ; 
- int /*<<< orphan*/  SLIPIF_THREAD_PRIO ; 
- int /*<<< orphan*/  SLIP_DEBUG ; 
- int /*<<< orphan*/  sio_open (scalar_t__) ; 
- int /*<<< orphan*/  slipif_loop ; 
- int /*<<< orphan*/  slipif_output ; 
- int /*<<< orphan*/  sys_thread_new (int /*<<< orphan*/ ,struct netif*,int /*<<< orphan*/ ) ; 
+
+
+
+struct netif {char* name; int mtu; int state; scalar_t__ num; int flags; int output; } ;
+typedef int err_t ;
+
+
+ int ERR_IF ;
+ int ERR_OK ;
+ int LWIP_DEBUGF (int ,char*) ;
+ int NETIF_FLAG_POINTTOPOINT ;
+ int SLIPIF_THREAD_PRIO ;
+ int SLIP_DEBUG ;
+ int sio_open (scalar_t__) ;
+ int slipif_loop ;
+ int slipif_output ;
+ int sys_thread_new (int ,struct netif*,int ) ;
 
 err_t
 slipif_init(struct netif *netif)

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  complaint (int /*<<< orphan*/ *,char*,char*) ; 
- char* method_name_from_physname (char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  symfile_complaints ; 
- int /*<<< orphan*/  xfree (char*) ; 
+ int complaint (int *,char*,char*) ;
+ char* method_name_from_physname (char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int symfile_complaints ;
+ int xfree (char*) ;
 
 __attribute__((used)) static void
 update_method_name_from_physname (char **old_name, char *physname)
@@ -25,10 +17,10 @@ update_method_name_from_physname (char **old_name, char *physname)
 
   method_name = method_name_from_physname (physname);
 
-  if (method_name == NULL)
+  if (method_name == ((void*)0))
     {
       complaint (&symfile_complaints,
-		 "Method has bad physname %s\n", physname);
+   "Method has bad physname %s\n", physname);
       return;
     }
 

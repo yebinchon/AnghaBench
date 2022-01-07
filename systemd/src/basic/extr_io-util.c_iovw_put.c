@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iovec_wrapper {scalar_t__ count; int /*<<< orphan*/ * iovec; int /*<<< orphan*/  size_bytes; } ;
 
-/* Variables and functions */
- int E2BIG ; 
- int /*<<< orphan*/  GREEDY_REALLOC (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  IOVEC_MAKE (void*,size_t) ; 
- scalar_t__ IOV_MAX ; 
- int log_oom () ; 
+
+
+
+struct iovec_wrapper {scalar_t__ count; int * iovec; int size_bytes; } ;
+
+
+ int E2BIG ;
+ int GREEDY_REALLOC (int *,int ,scalar_t__) ;
+ int IOVEC_MAKE (void*,size_t) ;
+ scalar_t__ IOV_MAX ;
+ int log_oom () ;
 
 int iovw_put(struct iovec_wrapper *iovw, void *data, size_t len) {
         if (iovw->count >= IOV_MAX)

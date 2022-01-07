@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
+
+
+
+
+typedef int uint8 ;
 struct station_config {int dummy; } ;
-typedef  int /*<<< orphan*/  sta_conf ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int sta_conf ;
+typedef int lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (struct station_config*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wifi_station_disconnect () ; 
- int /*<<< orphan*/  wifi_station_set_auto_connect (int /*<<< orphan*/ ) ; 
- int wifi_station_set_config (struct station_config*) ; 
- int wifi_station_set_config_current (struct station_config*) ; 
+
+ int lua_pushboolean (int *,int) ;
+ int memset (struct station_config*,int ,int) ;
+ int wifi_station_disconnect () ;
+ int wifi_station_set_auto_connect (int ) ;
+ int wifi_station_set_config (struct station_config*) ;
+ int wifi_station_set_config_current (struct station_config*) ;
 
 __attribute__((used)) static int wifi_station_clear_config ( lua_State* L )
 {
   struct station_config sta_conf;
-  bool auto_connect=true;
-  bool save_to_flash=true;
+  bool auto_connect=1;
+  bool save_to_flash=1;
 
   memset(&sta_conf, 0, sizeof(sta_conf));
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  loff_t ;
-typedef  int /*<<< orphan*/  ctl_table ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lasat_write_eeprom_info () ; 
- int proc_dointvec (int /*<<< orphan*/ *,int,void*,size_t*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int loff_t ;
+typedef int ctl_table ;
+
+
+ int lasat_write_eeprom_info () ;
+ int proc_dointvec (int *,int,void*,size_t*,int *) ;
 
 int proc_dolasatint(ctl_table *table, int write,
-		       void *buffer, size_t *lenp, loff_t *ppos)
+         void *buffer, size_t *lenp, loff_t *ppos)
 {
-	int r;
+ int r;
 
-	r = proc_dointvec(table, write, buffer, lenp, ppos);
-	if ((!write) || r)
-		return r;
+ r = proc_dointvec(table, write, buffer, lenp, ppos);
+ if ((!write) || r)
+  return r;
 
-	lasat_write_eeprom_info();
+ lasat_write_eeprom_info();
 
-	return 0;
+ return 0;
 }

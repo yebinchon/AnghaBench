@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  failover_state_change_time; int /*<<< orphan*/  failover_state; struct TYPE_7__* promoted_slave; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ sentinelRedisInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_NOTICE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  SENTINEL_FAILOVER_STATE_SEND_SLAVEOF_NOONE ; 
- int /*<<< orphan*/  SRI_PROMOTED ; 
- int /*<<< orphan*/  mstime () ; 
- int /*<<< orphan*/  sentinelAbortFailover (TYPE_1__*) ; 
- int /*<<< orphan*/  sentinelEvent (int /*<<< orphan*/ ,char*,TYPE_1__*,char*) ; 
- TYPE_1__* sentinelSelectSlave (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int failover_state_change_time; int failover_state; struct TYPE_7__* promoted_slave; int flags; } ;
+typedef TYPE_1__ sentinelRedisInstance ;
+
+
+ int LL_NOTICE ;
+ int LL_WARNING ;
+ int SENTINEL_FAILOVER_STATE_SEND_SLAVEOF_NOONE ;
+ int SRI_PROMOTED ;
+ int mstime () ;
+ int sentinelAbortFailover (TYPE_1__*) ;
+ int sentinelEvent (int ,char*,TYPE_1__*,char*) ;
+ TYPE_1__* sentinelSelectSlave (TYPE_1__*) ;
 
 void sentinelFailoverSelectSlave(sentinelRedisInstance *ri) {
     sentinelRedisInstance *slave = sentinelSelectSlave(ri);
 
-    /* We don't handle the timeout in this state as the function aborts
-     * the failover or go forward in the next state. */
-    if (slave == NULL) {
+
+
+    if (slave == ((void*)0)) {
         sentinelEvent(LL_WARNING,"-failover-abort-no-good-slave",ri,"%@");
         sentinelAbortFailover(ri);
     } else {

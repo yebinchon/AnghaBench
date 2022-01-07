@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ unit; int scale; int /*<<< orphan*/  hdc; int /*<<< orphan*/  xres; int /*<<< orphan*/  worldtrans; } ;
-struct TYPE_10__ {scalar_t__ unit; int width; scalar_t__ dash; int* dashes; int /*<<< orphan*/  style; int /*<<< orphan*/  brush; int /*<<< orphan*/  numdashes; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ unit; int scale; int hdc; int xres; int worldtrans; } ;
+struct TYPE_10__ {scalar_t__ unit; int width; scalar_t__ dash; int* dashes; int style; int brush; int numdashes; } ;
 struct TYPE_9__ {double X; double Y; } ;
-typedef  int REAL ;
-typedef  int /*<<< orphan*/  LOGBRUSH ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  HPEN ;
-typedef  TYPE_1__ GpPointF ;
-typedef  TYPE_2__ GpPen ;
-typedef  TYPE_3__ GpGraphics ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int REAL ;
+typedef int LOGBRUSH ;
+typedef size_t INT ;
+typedef int HPEN ;
+typedef TYPE_1__ GpPointF ;
+typedef TYPE_2__ GpPen ;
+typedef TYPE_3__ GpGraphics ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoordinateSpaceDevice ; 
- scalar_t__ DashStyleCustom ; 
- int /*<<< orphan*/  EndPath (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExtCreatePen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipTransformMatrixPoints (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int MAX_DASHLEN ; 
- size_t SaveDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ UnitPixel ; 
- scalar_t__ UnitWorld ; 
- int /*<<< orphan*/  WineCoordinateSpaceGdiDevice ; 
- int /*<<< orphan*/  create_gdi_logbrush (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_gdi_logbrush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gdip_round (int) ; 
- int /*<<< orphan*/  gdip_transform_points (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- size_t min (int /*<<< orphan*/ ,int) ; 
- int sqrt (double) ; 
- int units_to_pixels (int,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int CoordinateSpaceDevice ;
+ scalar_t__ DashStyleCustom ;
+ int EndPath (int ) ;
+ int ExtCreatePen (int ,int ,int *,size_t,int *) ;
+ int GdipTransformMatrixPoints (int *,TYPE_1__*,int) ;
+ int MAX_DASHLEN ;
+ size_t SaveDC (int ) ;
+ int SelectObject (int ,int ) ;
+ int TRACE (char*,...) ;
+ scalar_t__ UnitPixel ;
+ scalar_t__ UnitWorld ;
+ int WineCoordinateSpaceGdiDevice ;
+ int create_gdi_logbrush (int ,int *) ;
+ int free_gdi_logbrush (int *) ;
+ int gdip_round (int) ;
+ int gdip_transform_points (TYPE_3__*,int ,int ,TYPE_1__*,int) ;
+ size_t min (int ,int) ;
+ int sqrt (double) ;
+ int units_to_pixels (int,scalar_t__,int ) ;
 
 __attribute__((used)) static INT prepare_dc(GpGraphics *graphics, GpPen *pen)
 {
@@ -63,8 +63,8 @@ __attribute__((used)) static INT prepare_dc(GpGraphics *graphics, GpPen *pen)
         width = pen->width;
     }
     else{
-        /* Get an estimate for the amount the pen width is affected by the world
-         * transform. (This is similar to what some of the wine drivers do.) */
+
+
         pt[0].X = 0.0;
         pt[0].Y = 0.0;
         pt[1].X = 1.0;
@@ -103,7 +103,7 @@ __attribute__((used)) static INT prepare_dc(GpGraphics *graphics, GpPen *pen)
     else
     {
         create_gdi_logbrush(pen->brush, &lb);
-        gdipen = ExtCreatePen(pen->style, gdip_round(width), &lb, 0, NULL);
+        gdipen = ExtCreatePen(pen->style, gdip_round(width), &lb, 0, ((void*)0));
         free_gdi_logbrush(&lb);
     }
 

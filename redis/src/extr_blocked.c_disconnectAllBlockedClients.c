@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listNode ;
-typedef  int /*<<< orphan*/  listIter ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int listNode ;
+typedef int listIter ;
 struct TYPE_6__ {int flags; } ;
-typedef  TYPE_1__ client ;
-struct TYPE_7__ {int /*<<< orphan*/  clients; } ;
+typedef TYPE_1__ client ;
+struct TYPE_7__ {int clients; } ;
 
-/* Variables and functions */
- int CLIENT_BLOCKED ; 
- int CLIENT_CLOSE_AFTER_REPLY ; 
- int /*<<< orphan*/  addReplySds (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * listNext (int /*<<< orphan*/ *) ; 
- TYPE_1__* listNodeValue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- TYPE_3__ server ; 
- int /*<<< orphan*/  unblockClient (TYPE_1__*) ; 
+
+ int CLIENT_BLOCKED ;
+ int CLIENT_CLOSE_AFTER_REPLY ;
+ int addReplySds (TYPE_1__*,int ) ;
+ int * listNext (int *) ;
+ TYPE_1__* listNodeValue (int *) ;
+ int listRewind (int ,int *) ;
+ int sdsnew (char*) ;
+ TYPE_3__ server ;
+ int unblockClient (TYPE_1__*) ;
 
 void disconnectAllBlockedClients(void) {
     listNode *ln;

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ch_mem_range {int len; int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHELSIO_LOAD_BOOT ; 
- int MAX_BOOT_IMAGE_SIZE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ doit (char const*,int /*<<< orphan*/ ,struct ch_mem_range*) ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  errx (int,char*) ; 
- int /*<<< orphan*/  malloc (int) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int read (int,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ch_mem_range {int len; int buf; } ;
+
+
+ int CHELSIO_LOAD_BOOT ;
+ int MAX_BOOT_IMAGE_SIZE ;
+ int O_RDONLY ;
+ int close (int) ;
+ scalar_t__ doit (char const*,int ,struct ch_mem_range*) ;
+ int err (int,char*) ;
+ int errx (int,char*) ;
+ int malloc (int) ;
+ int open (char const*,int ) ;
+ int read (int,int ,int) ;
 
 __attribute__((used)) static int
 load_boot(int argc, char *argv[], int start_arg, const char *iff_name)
 {
-	int fd, len;
-	struct ch_mem_range op;
-	const char *fname = argv[start_arg];
+ int fd, len;
+ struct ch_mem_range op;
+ const char *fname = argv[start_arg];
 
-	if (argc != start_arg + 1) return -1;
+ if (argc != start_arg + 1) return -1;
 
-	fd = open(fname, O_RDONLY);
-	if (fd < 0)
-		err(1, "load boot image");
+ fd = open(fname, O_RDONLY);
+ if (fd < 0)
+  err(1, "load boot image");
 
-	op.buf = malloc(MAX_BOOT_IMAGE_SIZE + 1);
-	if (!op.buf)
-		err(1, "load boot image");
+ op.buf = malloc(MAX_BOOT_IMAGE_SIZE + 1);
+ if (!op.buf)
+  err(1, "load boot image");
 
-	len = read(fd, op.buf, MAX_BOOT_IMAGE_SIZE + 1);
-	if (len < 0)
-		err(1, "load boot image");
- 	if (len > MAX_BOOT_IMAGE_SIZE)
-		errx(1, "boot image too large");
+ len = read(fd, op.buf, MAX_BOOT_IMAGE_SIZE + 1);
+ if (len < 0)
+  err(1, "load boot image");
+  if (len > MAX_BOOT_IMAGE_SIZE)
+  errx(1, "boot image too large");
 
-	op.len = len;
+ op.len = len;
 
-	if (doit(iff_name, CHELSIO_LOAD_BOOT, &op) < 0)
-		err(1, "load boot image");
+ if (doit(iff_name, CHELSIO_LOAD_BOOT, &op) < 0)
+  err(1, "load boot image");
 
-	close(fd);
-	return 0;
+ close(fd);
+ return 0;
 }

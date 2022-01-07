@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- scalar_t__ VP8SSIMGet (int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ VP8SSIMGetClipped (int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int,int,int,int,int) ; 
- int VP8_SSIM_KERNEL ; 
+
+
+
+typedef int uint8_t ;
+
+
+ scalar_t__ VP8SSIMGet (int const*,int,int const*,int) ;
+ scalar_t__ VP8SSIMGetClipped (int const*,int,int const*,int,int,int,int,int) ;
+ int VP8_SSIM_KERNEL ;
 
 __attribute__((used)) static double AccumulateSSIM(const uint8_t* src, int src_stride,
                              const uint8_t* ref, int ref_stride,

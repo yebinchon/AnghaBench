@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ COMPLEX_CST ; 
- scalar_t__ COMPLEX_EXPR ; 
- int /*<<< orphan*/  IMAGPART_EXPR ; 
- scalar_t__ MULT_EXPR ; 
- scalar_t__ PLUS_EXPR ; 
- int /*<<< orphan*/  REALPART_EXPR ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_IMAGPART (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TREE_REALPART (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_build1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_build2 (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_convert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  integer_zero_node ; 
- int /*<<< orphan*/  save_expr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ COMPLEX_CST ;
+ scalar_t__ COMPLEX_EXPR ;
+ int IMAGPART_EXPR ;
+ scalar_t__ MULT_EXPR ;
+ scalar_t__ PLUS_EXPR ;
+ int REALPART_EXPR ;
+ scalar_t__ TREE_CODE (int ) ;
+ int TREE_IMAGPART (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TREE_REALPART (int ) ;
+ int TREE_TYPE (int ) ;
+ int fold_build1 (int ,int ,int ) ;
+ int fold_build2 (scalar_t__,int ,int ,int ) ;
+ int fold_convert (int ,int ) ;
+ int integer_zero_node ;
+ int save_expr (int ) ;
 
 __attribute__((used)) static tree
 fold_mult_zconjz (tree type, tree expr)
@@ -56,8 +56,8 @@ fold_mult_zconjz (tree type, tree expr)
   rpart = save_expr (rpart);
   ipart = save_expr (ipart);
   tem = fold_build2 (PLUS_EXPR, itype,
-		     fold_build2 (MULT_EXPR, itype, rpart, rpart),
-		     fold_build2 (MULT_EXPR, itype, ipart, ipart));
+       fold_build2 (MULT_EXPR, itype, rpart, rpart),
+       fold_build2 (MULT_EXPR, itype, ipart, ipart));
   return fold_build2 (COMPLEX_EXPR, type, tem,
-		      fold_convert (itype, integer_zero_node));
+        fold_convert (itype, integer_zero_node));
 }

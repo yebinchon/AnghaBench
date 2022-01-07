@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  TDI_STATUS ;
-typedef  int /*<<< orphan*/  TDIEntityID ;
-typedef  int* PUINT ;
-typedef  int /*<<< orphan*/  PNDIS_BUFFER ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  KIRQL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyBufferToBufferChain (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DEBUG_INFO ; 
- int EntityCount ; 
- int /*<<< orphan*/ * EntityList ; 
- int /*<<< orphan*/  EntityListLock ; 
- int /*<<< orphan*/  TDI_SUCCESS ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TcpipAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TcpipReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int TDI_STATUS ;
+typedef int TDIEntityID ;
+typedef int* PUINT ;
+typedef int PNDIS_BUFFER ;
+typedef int PCHAR ;
+typedef int KIRQL ;
+
+
+ int CopyBufferToBufferChain (int ,int,int ,int) ;
+ int DEBUG_INFO ;
+ int EntityCount ;
+ int * EntityList ;
+ int EntityListLock ;
+ int TDI_SUCCESS ;
+ int TI_DbgPrint (int ,char*) ;
+ int TcpipAcquireSpinLock (int *,int *) ;
+ int TcpipReleaseSpinLock (int *,int ) ;
 
 TDI_STATUS InfoTdiQueryListEntities(PNDIS_BUFFER Buffer,
-				    PUINT BufferSize)
+        PUINT BufferSize)
 {
     UINT Count, Size, BufSize = *BufferSize;
     KIRQL OldIrql;
 
     TI_DbgPrint(DEBUG_INFO,("About to copy %d TDIEntityIDs to user\n",
-			   EntityCount));
+      EntityCount));
 
     TcpipAcquireSpinLock(&EntityListLock, &OldIrql);
 
@@ -47,18 +47,18 @@ TDI_STATUS InfoTdiQueryListEntities(PNDIS_BUFFER Buffer,
 
     if (BufSize < Size || !Buffer)
     {
-	TcpipReleaseSpinLock( &EntityListLock, OldIrql );
-	/* The buffer is too small to contain requested data, but we return
-         * success anyway, as we did everything we wanted. */
-	return TDI_SUCCESS;
+ TcpipReleaseSpinLock( &EntityListLock, OldIrql );
+
+
+ return TDI_SUCCESS;
     }
 
-    /* Return entity list -- Copy only the TDIEntityID parts. */
+
     for( Count = 0; Count < EntityCount; Count++ ) {
-	CopyBufferToBufferChain(Buffer,
-				Count * sizeof(TDIEntityID),
-				(PCHAR)&EntityList[Count],
-				sizeof(TDIEntityID));
+ CopyBufferToBufferChain(Buffer,
+    Count * sizeof(TDIEntityID),
+    (PCHAR)&EntityList[Count],
+    sizeof(TDIEntityID));
     }
 
     TcpipReleaseSpinLock(&EntityListLock, OldIrql);

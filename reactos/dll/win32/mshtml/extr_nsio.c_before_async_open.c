@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int nsresult ;
 struct TYPE_10__ {TYPE_1__* uri; } ;
-typedef  TYPE_2__ nsChannel ;
-struct TYPE_12__ {int /*<<< orphan*/  basedoc; int /*<<< orphan*/  client; } ;
+typedef TYPE_2__ nsChannel ;
+struct TYPE_12__ {int basedoc; int client; } ;
 struct TYPE_11__ {TYPE_4__* doc; } ;
-struct TYPE_9__ {int /*<<< orphan*/  uri; } ;
-typedef  TYPE_3__ NSContainer ;
-typedef  TYPE_4__ HTMLDocumentObj ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_9__ {int uri; } ;
+typedef TYPE_3__ NSContainer ;
+typedef TYPE_4__ HTMLDocumentObj ;
+typedef int HRESULT ;
+typedef int BSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IUri_GetDisplayUri (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NS_ERROR_FAILURE ; 
- int /*<<< orphan*/  NS_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  exec_shldocvw_67 (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hlink_frame_navigate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int IUri_GetDisplayUri (int ,int *) ;
+ int NS_ERROR_FAILURE ;
+ int NS_OK ;
+ int SysFreeString (int ) ;
+ int TRUE ;
+ int exec_shldocvw_67 (TYPE_4__*,int ) ;
+ int hlink_frame_navigate (int *,int ,TYPE_2__*,int ,int *) ;
 
 __attribute__((used)) static nsresult before_async_open(nsChannel *channel, NSContainer *container, BOOL *cancel)
 {

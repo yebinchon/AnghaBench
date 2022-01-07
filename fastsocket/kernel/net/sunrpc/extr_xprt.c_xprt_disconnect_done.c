@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_xprt {int /*<<< orphan*/  transport_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  dprintk (char*,struct rpc_xprt*) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xprt_clear_connected (struct rpc_xprt*) ; 
- int /*<<< orphan*/  xprt_wake_pending_tasks (struct rpc_xprt*,int /*<<< orphan*/ ) ; 
+
+
+
+struct rpc_xprt {int transport_lock; } ;
+
+
+ int EAGAIN ;
+ int dprintk (char*,struct rpc_xprt*) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
+ int xprt_clear_connected (struct rpc_xprt*) ;
+ int xprt_wake_pending_tasks (struct rpc_xprt*,int ) ;
 
 void xprt_disconnect_done(struct rpc_xprt *xprt)
 {
-	dprintk("RPC:       disconnected transport %p\n", xprt);
-	spin_lock_bh(&xprt->transport_lock);
-	xprt_clear_connected(xprt);
-	xprt_wake_pending_tasks(xprt, -EAGAIN);
-	spin_unlock_bh(&xprt->transport_lock);
+ dprintk("RPC:       disconnected transport %p\n", xprt);
+ spin_lock_bh(&xprt->transport_lock);
+ xprt_clear_connected(xprt);
+ xprt_wake_pending_tasks(xprt, -EAGAIN);
+ spin_unlock_bh(&xprt->transport_lock);
 }

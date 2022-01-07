@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- unsigned int LIGHT_SLEEP_T ; 
- unsigned int MODEM_SLEEP_T ; 
- unsigned int NONE_SLEEP_T ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- unsigned int lua_tointeger (int /*<<< orphan*/ *,int) ; 
- unsigned int wifi_get_sleep_type () ; 
- int /*<<< orphan*/  wifi_set_sleep_type (unsigned int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ unsigned int LIGHT_SLEEP_T ;
+ unsigned int MODEM_SLEEP_T ;
+ unsigned int NONE_SLEEP_T ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ int lua_pushinteger (int *,unsigned int) ;
+ int lua_pushnil (int *) ;
+ unsigned int lua_tointeger (int *,int) ;
+ unsigned int wifi_get_sleep_type () ;
+ int wifi_set_sleep_type (unsigned int) ;
 
 __attribute__((used)) static int wifi_station_sleeptype( lua_State* L )
 {

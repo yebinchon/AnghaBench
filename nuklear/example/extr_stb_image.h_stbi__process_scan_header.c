@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int scan_n; int* order; int spec_start; int spec_end; int succ_high; int succ_low; scalar_t__ progressive; TYPE_4__* s; TYPE_1__* img_comp; } ;
-typedef  TYPE_2__ stbi__jpeg ;
+typedef TYPE_2__ stbi__jpeg ;
 struct TYPE_8__ {int img_n; } ;
 struct TYPE_6__ {int id; int hd; int ha; } ;
 
-/* Variables and functions */
- int stbi__err (char*,char*) ; 
- int stbi__get16be (TYPE_4__*) ; 
- void* stbi__get8 (TYPE_4__*) ; 
+
+ int stbi__err (char*,char*) ;
+ int stbi__get16be (TYPE_4__*) ;
+ void* stbi__get8 (TYPE_4__*) ;
 
 __attribute__((used)) static int stbi__process_scan_header(stbi__jpeg *z)
 {
@@ -36,21 +36,21 @@ __attribute__((used)) static int stbi__process_scan_header(stbi__jpeg *z)
       for (which = 0; which < z->s->img_n; ++which)
          if (z->img_comp[which].id == id)
             break;
-      if (which == z->s->img_n) return 0; // no match
-      z->img_comp[which].hd = q >> 4;   if (z->img_comp[which].hd > 3) return stbi__err("bad DC huff","Corrupt JPEG");
-      z->img_comp[which].ha = q & 15;   if (z->img_comp[which].ha > 3) return stbi__err("bad AC huff","Corrupt JPEG");
+      if (which == z->s->img_n) return 0;
+      z->img_comp[which].hd = q >> 4; if (z->img_comp[which].hd > 3) return stbi__err("bad DC huff","Corrupt JPEG");
+      z->img_comp[which].ha = q & 15; if (z->img_comp[which].ha > 3) return stbi__err("bad AC huff","Corrupt JPEG");
       z->order[i] = which;
    }
 
    {
       int aa;
       z->spec_start = stbi__get8(z->s);
-      z->spec_end   = stbi__get8(z->s); // should be 63, but might be 0
+      z->spec_end = stbi__get8(z->s);
       aa = stbi__get8(z->s);
       z->succ_high = (aa >> 4);
-      z->succ_low  = (aa & 15);
+      z->succ_low = (aa & 15);
       if (z->progressive) {
-         if (z->spec_start > 63 || z->spec_end > 63  || z->spec_start > z->spec_end || z->succ_high > 13 || z->succ_low > 13)
+         if (z->spec_start > 63 || z->spec_end > 63 || z->spec_start > z->spec_end || z->succ_high > 13 || z->succ_low > 13)
             return stbi__err("bad SOS", "Corrupt JPEG");
       } else {
          if (z->spec_start != 0) return stbi__err("bad SOS","Corrupt JPEG");

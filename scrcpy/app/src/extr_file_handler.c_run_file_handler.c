@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_handler_request {scalar_t__ action; int /*<<< orphan*/  file; } ;
-struct file_handler {int /*<<< orphan*/  push_target; int /*<<< orphan*/  mutex; int /*<<< orphan*/  current_process; int /*<<< orphan*/  serial; int /*<<< orphan*/  queue; scalar_t__ stopped; int /*<<< orphan*/  event_cond; } ;
-typedef  int /*<<< orphan*/  process_t ;
 
-/* Variables and functions */
- scalar_t__ ACTION_INSTALL_APK ; 
- int /*<<< orphan*/  LOGE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  LOGI (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  PROCESS_NONE ; 
- int /*<<< orphan*/  SDL_assert (int) ; 
- scalar_t__ cbuf_is_empty (int /*<<< orphan*/ *) ; 
- int cbuf_take (int /*<<< orphan*/ *,struct file_handler_request*) ; 
- int /*<<< orphan*/  cond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_handler_request_destroy (struct file_handler_request*) ; 
- int /*<<< orphan*/  install_apk (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ ) ; 
- scalar_t__ process_check_success (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  push_file (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct file_handler_request {scalar_t__ action; int file; } ;
+struct file_handler {int push_target; int mutex; int current_process; int serial; int queue; scalar_t__ stopped; int event_cond; } ;
+typedef int process_t ;
+
+
+ scalar_t__ ACTION_INSTALL_APK ;
+ int LOGE (char*,int ,...) ;
+ int LOGI (char*,int ,...) ;
+ int PROCESS_NONE ;
+ int SDL_assert (int) ;
+ scalar_t__ cbuf_is_empty (int *) ;
+ int cbuf_take (int *,struct file_handler_request*) ;
+ int cond_wait (int ,int ) ;
+ int file_handler_request_destroy (struct file_handler_request*) ;
+ int install_apk (int ,int ) ;
+ int mutex_lock (int ) ;
+ int mutex_unlock (int ) ;
+ scalar_t__ process_check_success (int ,char*) ;
+ int push_file (int ,int ,int ) ;
 
 __attribute__((used)) static int
 run_file_handler(void *data) {
@@ -41,7 +41,7 @@ run_file_handler(void *data) {
             cond_wait(file_handler->event_cond, file_handler->mutex);
         }
         if (file_handler->stopped) {
-            // stop immediately, do not process further events
+
             mutex_unlock(file_handler->mutex);
             break;
         }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int BlendChannelNonPremult (int,int const,int,int const,int const,int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int BlendChannelNonPremult (int,int const,int,int const,int const,int) ;
+ int assert (int) ;
 
 __attribute__((used)) static uint32_t BlendPixelNonPremult(uint32_t src, uint32_t dst) {
   const uint8_t src_a = (src >> 24) & 0xff;
@@ -24,8 +24,8 @@ __attribute__((used)) static uint32_t BlendPixelNonPremult(uint32_t src, uint32_
     return dst;
   } else {
     const uint8_t dst_a = (dst >> 24) & 0xff;
-    // This is the approximate integer arithmetic for the actual formula:
-    // dst_factor_a = (dst_a * (255 - src_a)) / 255.
+
+
     const uint8_t dst_factor_a = (dst_a * (256 - src_a)) >> 8;
     const uint8_t blend_a = src_a + dst_factor_a;
     const uint32_t scale = (1UL << 24) / blend_a;

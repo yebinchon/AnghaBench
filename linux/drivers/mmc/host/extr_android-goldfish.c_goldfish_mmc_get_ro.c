@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct mmc_host {int dummy; } ;
 struct goldfish_mmc_host {int dummy; } ;
 
-/* Variables and functions */
- int GOLDFISH_MMC_READ (struct goldfish_mmc_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MMC_STATE ; 
- int MMC_STATE_READ_ONLY ; 
- struct goldfish_mmc_host* mmc_priv (struct mmc_host*) ; 
+
+ int GOLDFISH_MMC_READ (struct goldfish_mmc_host*,int ) ;
+ int MMC_STATE ;
+ int MMC_STATE_READ_ONLY ;
+ struct goldfish_mmc_host* mmc_priv (struct mmc_host*) ;
 
 __attribute__((used)) static int goldfish_mmc_get_ro(struct mmc_host *mmc)
 {
-	uint32_t state;
-	struct goldfish_mmc_host *host = mmc_priv(mmc);
+ uint32_t state;
+ struct goldfish_mmc_host *host = mmc_priv(mmc);
 
-	state = GOLDFISH_MMC_READ(host, MMC_STATE);
-	return ((state & MMC_STATE_READ_ONLY) != 0);
+ state = GOLDFISH_MMC_READ(host, MMC_STATE);
+ return ((state & MMC_STATE_READ_ONLY) != 0);
 }

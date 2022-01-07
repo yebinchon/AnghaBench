@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SA_OK ; 
- int /*<<< orphan*/  free (char*) ; 
- int get_linux_shareopts (char const*,char**) ; 
+ int SA_OK ;
+ int free (char*) ;
+ int get_linux_shareopts (char const*,char**) ;
 
 __attribute__((used)) static int
 nfs_validate_shareopts(const char *shareopts)
 {
-	char *linux_opts;
-	int rc;
+ char *linux_opts;
+ int rc;
 
-	rc = get_linux_shareopts(shareopts, &linux_opts);
+ rc = get_linux_shareopts(shareopts, &linux_opts);
 
-	if (rc != SA_OK)
-		return (rc);
+ if (rc != SA_OK)
+  return (rc);
 
-	free(linux_opts);
+ free(linux_opts);
 
-	return (SA_OK);
+ return (SA_OK);
 }

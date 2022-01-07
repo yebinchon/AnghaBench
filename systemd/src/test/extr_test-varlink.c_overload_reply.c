@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VarlinkReplyFlags ;
-typedef  int /*<<< orphan*/  Varlink ;
-typedef  int /*<<< orphan*/  JsonVariant ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VARLINK_ERROR_DISCONNECTED ; 
- int /*<<< orphan*/  assert_se (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_exit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  streq (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strna (char const*) ; 
- int /*<<< orphan*/  varlink_get_event (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VarlinkReplyFlags ;
+typedef int Varlink ;
+typedef int JsonVariant ;
+
+
+ int VARLINK_ERROR_DISCONNECTED ;
+ int assert_se (int ) ;
+ int log_debug (char*,int ) ;
+ int sd_event_exit (int ,int ) ;
+ int streq (char const*,int ) ;
+ int strna (char const*) ;
+ int varlink_get_event (int *) ;
 
 __attribute__((used)) static int overload_reply(Varlink *link, JsonVariant *parameters, const char *error_id, VarlinkReplyFlags flags, void *userdata) {
 
-        /* This method call reply should always be called with a disconnection, since the method call should
-         * be talking to an overloaded server */
+
+
 
         log_debug("Over reply triggered with error: %s", strna(error_id));
         assert_se(streq(error_id, VARLINK_ERROR_DISCONNECTED));

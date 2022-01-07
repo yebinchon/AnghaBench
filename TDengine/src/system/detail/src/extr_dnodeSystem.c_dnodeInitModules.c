@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* name; int num; scalar_t__ equalVnodeNum; scalar_t__ curNum; int /*<<< orphan*/  stopFp; int /*<<< orphan*/  startFp; int /*<<< orphan*/  cleanUpFp; int /*<<< orphan*/  initFp; } ;
 
-/* Variables and functions */
- size_t TSDB_MOD_HTTP ; 
- size_t TSDB_MOD_MGMT ; 
- size_t TSDB_MOD_MONITOR ; 
- int /*<<< orphan*/  httpCleanUpSystem ; 
- int /*<<< orphan*/  httpInitSystem ; 
- int /*<<< orphan*/  httpStartSystem ; 
- int /*<<< orphan*/  httpStopSystem ; 
- int /*<<< orphan*/  mgmtCleanUpSystem ; 
- int /*<<< orphan*/  mgmtInitSystem ; 
- int /*<<< orphan*/  mgmtStartSystem ; 
- int /*<<< orphan*/  mgmtStopSystem ; 
- int /*<<< orphan*/  monitorCleanUpSystem ; 
- int /*<<< orphan*/  monitorInitSystem ; 
- int /*<<< orphan*/  monitorStartSystem ; 
- int /*<<< orphan*/  monitorStopSystem ; 
- int tsEnableHttpModule ; 
- int tsEnableMonitorModule ; 
- scalar_t__ tsMgmtEqualVnodeNum ; 
- TYPE_1__* tsModule ; 
- int tsNumOfMPeers ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* name; int num; scalar_t__ equalVnodeNum; scalar_t__ curNum; int stopFp; int startFp; int cleanUpFp; int initFp; } ;
+
+
+ size_t TSDB_MOD_HTTP ;
+ size_t TSDB_MOD_MGMT ;
+ size_t TSDB_MOD_MONITOR ;
+ int httpCleanUpSystem ;
+ int httpInitSystem ;
+ int httpStartSystem ;
+ int httpStopSystem ;
+ int mgmtCleanUpSystem ;
+ int mgmtInitSystem ;
+ int mgmtStartSystem ;
+ int mgmtStopSystem ;
+ int monitorCleanUpSystem ;
+ int monitorInitSystem ;
+ int monitorStartSystem ;
+ int monitorStopSystem ;
+ int tsEnableHttpModule ;
+ int tsEnableMonitorModule ;
+ scalar_t__ tsMgmtEqualVnodeNum ;
+ TYPE_1__* tsModule ;
+ int tsNumOfMPeers ;
 
 void dnodeInitModules() {
   tsModule[TSDB_MOD_MGMT].name = "mgmt";

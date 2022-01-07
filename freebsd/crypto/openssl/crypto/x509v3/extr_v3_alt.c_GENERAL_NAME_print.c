@@ -1,80 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  rid; TYPE_1__* ip; int /*<<< orphan*/  dirn; int /*<<< orphan*/  ia5; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int rid; TYPE_1__* ip; int dirn; int ia5; } ;
 struct TYPE_7__ {int type; TYPE_2__ d; } ;
 struct TYPE_5__ {unsigned char* data; int length; } ;
-typedef  TYPE_3__ GENERAL_NAME ;
-typedef  int /*<<< orphan*/  BIO ;
+typedef TYPE_3__ GENERAL_NAME ;
+typedef int BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STRING_print (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
-#define  GEN_DIRNAME 136 
-#define  GEN_DNS 135 
-#define  GEN_EDIPARTY 134 
-#define  GEN_EMAIL 133 
-#define  GEN_IPADD 132 
-#define  GEN_OTHERNAME 131 
-#define  GEN_RID 130 
-#define  GEN_URI 129 
-#define  GEN_X400 128 
- int /*<<< orphan*/  X509_NAME_print_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XN_FLAG_ONELINE ; 
- int /*<<< orphan*/  i2a_ASN1_OBJECT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ASN1_STRING_print (int *,int ) ;
+ int BIO_printf (int *,char*,...) ;
+ int BIO_puts (int *,char*) ;
+ int X509_NAME_print_ex (int *,int ,int ,int ) ;
+ int XN_FLAG_ONELINE ;
+ int i2a_ASN1_OBJECT (int *,int ) ;
 
 int GENERAL_NAME_print(BIO *out, GENERAL_NAME *gen)
 {
     unsigned char *p;
     int i;
     switch (gen->type) {
-    case GEN_OTHERNAME:
+    case 131:
         BIO_printf(out, "othername:<unsupported>");
         break;
 
-    case GEN_X400:
+    case 128:
         BIO_printf(out, "X400Name:<unsupported>");
         break;
 
-    case GEN_EDIPARTY:
-        /* Maybe fix this: it is supported now */
+    case 134:
+
         BIO_printf(out, "EdiPartyName:<unsupported>");
         break;
 
-    case GEN_EMAIL:
+    case 133:
         BIO_printf(out, "email:");
         ASN1_STRING_print(out, gen->d.ia5);
         break;
 
-    case GEN_DNS:
+    case 135:
         BIO_printf(out, "DNS:");
         ASN1_STRING_print(out, gen->d.ia5);
         break;
 
-    case GEN_URI:
+    case 129:
         BIO_printf(out, "URI:");
         ASN1_STRING_print(out, gen->d.ia5);
         break;
 
-    case GEN_DIRNAME:
+    case 136:
         BIO_printf(out, "DirName:");
         X509_NAME_print_ex(out, gen->d.dirn, 0, XN_FLAG_ONELINE);
         break;
 
-    case GEN_IPADD:
+    case 132:
         p = gen->d.ip->data;
         if (gen->d.ip->length == 4)
             BIO_printf(out, "IP Address:%d.%d.%d.%d", p[0], p[1], p[2], p[3]);
@@ -91,7 +82,7 @@ int GENERAL_NAME_print(BIO *out, GENERAL_NAME *gen)
         }
         break;
 
-    case GEN_RID:
+    case 130:
         BIO_printf(out, "Registered ID:");
         i2a_ASN1_OBJECT(out, gen->d.rid);
         break;

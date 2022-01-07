@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tBTA_SET_RAND_ADDR_CBACK ;
-typedef  int* BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BD_ADDR_LEN ; 
- int /*<<< orphan*/  BTA_DmSetRandAddress (int*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  BTC_TRACE_ERROR (char*) ; 
- int /*<<< orphan*/  BTM_INVALID_STATIC_RAND_ADDR ; 
- int BT_STATIC_RAND_ADDR_MASK ; 
- int /*<<< orphan*/  btc_set_rand_addr_callback (int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
+
+
+
+typedef int tBTA_SET_RAND_ADDR_CBACK ;
+typedef int* BD_ADDR ;
+
+
+ int BD_ADDR_LEN ;
+ int BTA_DmSetRandAddress (int*,int (*) (int )) ;
+ int BTC_TRACE_ERROR (char*) ;
+ int BTM_INVALID_STATIC_RAND_ADDR ;
+ int BT_STATIC_RAND_ADDR_MASK ;
+ int btc_set_rand_addr_callback (int ) ;
+ scalar_t__ memcmp (int*,int*,int ) ;
+ int memset (int*,int,int) ;
 
 __attribute__((used)) static void btc_ble_set_rand_addr (BD_ADDR rand_addr, tBTA_SET_RAND_ADDR_CBACK *p_set_rand_addr_cback)
 {
-    if (rand_addr != NULL) {
-        /*
-        A static address is a 48-bit randomly generated address and shall meet the following requirements:
-        • The two most significant bits of the address shall be equal to 1
-        • All bits of the random part of the address shall not be equal to 1
-        • All bits of the random part of the address shall not be equal to 0
-        */
+    if (rand_addr != ((void*)0)) {
+
+
+
+
+
+
         BD_ADDR invalid_rand_addr_a, invalid_rand_addr_b;
         memset(invalid_rand_addr_a, 0xff, sizeof(BD_ADDR));
         memset(invalid_rand_addr_b, 0x00, sizeof(BD_ADDR));

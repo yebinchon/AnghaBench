@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  pcap_if_t ;
-typedef  int /*<<< orphan*/  pcap_if_list_t ;
-typedef  int /*<<< orphan*/  get_if_flags_func ;
-typedef  int /*<<< orphan*/  bpf_u_int32 ;
+typedef int pcap_if_t ;
+typedef int pcap_if_list_t ;
+typedef int get_if_flags_func ;
+typedef int bpf_u_int32 ;
 
-/* Variables and functions */
- int add_addr_to_dev (int /*<<< orphan*/ *,struct sockaddr*,size_t,struct sockaddr*,size_t,struct sockaddr*,size_t,struct sockaddr*,size_t,char*) ; 
- int /*<<< orphan*/ * find_or_add_if (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int add_addr_to_dev (int *,struct sockaddr*,size_t,struct sockaddr*,size_t,struct sockaddr*,size_t,struct sockaddr*,size_t,char*) ;
+ int * find_or_add_if (int *,char const*,int ,int ,char*) ;
 
 int
 add_addr_to_if(pcap_if_list_t *devlistp, const char *name,
@@ -29,34 +29,34 @@ add_addr_to_if(pcap_if_list_t *devlistp, const char *name,
     struct sockaddr *dstaddr, size_t dstaddr_size,
     char *errbuf)
 {
-	pcap_if_t *curdev;
+ pcap_if_t *curdev;
 
-	/*
-	 * Check whether the device exists and, if not, add it.
-	 */
-	curdev = find_or_add_if(devlistp, name, if_flags, get_flags_func,
-	    errbuf);
-	if (curdev == NULL) {
-		/*
-		 * Error - give up.
-		 */
-		return (-1);
-	}
 
-	if (addr == NULL) {
-		/*
-		 * There's no address to add; this entry just meant
-		 * "here's a new interface".
-		 */
-		return (0);
-	}
 
-	/*
-	 * "curdev" is an entry for this interface, and we have an
-	 * address for it; add an entry for that address to the
-	 * interface's list of addresses.
-	 */
-	return (add_addr_to_dev(curdev, addr, addr_size, netmask,
-	    netmask_size, broadaddr, broadaddr_size, dstaddr,
-	    dstaddr_size, errbuf));
+
+ curdev = find_or_add_if(devlistp, name, if_flags, get_flags_func,
+     errbuf);
+ if (curdev == ((void*)0)) {
+
+
+
+  return (-1);
+ }
+
+ if (addr == ((void*)0)) {
+
+
+
+
+  return (0);
+ }
+
+
+
+
+
+
+ return (add_addr_to_dev(curdev, addr, addr_size, netmask,
+     netmask_size, broadaddr, broadaddr_size, dstaddr,
+     dstaddr_size, errbuf));
 }

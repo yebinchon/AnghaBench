@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DUPLICATE_SAME_ACCESS ; 
- int /*<<< orphan*/  DuplicateHandle (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * GetCurrentProcess () ; 
- int /*<<< orphan*/  GetCurrentProcessId () ; 
- int /*<<< orphan*/  GetCurrentThreadId () ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/ * OpenProcess (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenThread (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int PROCESS_ALL_ACCESS ; 
- int /*<<< orphan*/  PROCESS_ALL_ACCESS_NT4 ; 
- int PROCESS_QUERY_LIMITED_INFORMATION ; 
- int PROCESS_TERMINATE ; 
- int PROCESS_VM_READ ; 
- int SPECIFIC_RIGHTS_ALL ; 
- int STANDARD_RIGHTS_ALL ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TEST_GRANTED_ACCESS (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEST_GRANTED_ACCESS2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  THREAD_SET_THREAD_TOKEN ; 
- int /*<<< orphan*/  THREAD_TERMINATE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int * HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (int *) ;
+ int DUPLICATE_SAME_ACCESS ;
+ int DuplicateHandle (int *,int *,int *,int **,int,int ,int ) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ int FALSE ;
+ int * GetCurrentProcess () ;
+ int GetCurrentProcessId () ;
+ int GetCurrentThreadId () ;
+ scalar_t__ GetLastError () ;
+ int * OpenProcess (int,int ,int ) ;
+ int * OpenThread (int ,int ,int ) ;
+ int PROCESS_ALL_ACCESS ;
+ int PROCESS_ALL_ACCESS_NT4 ;
+ int PROCESS_QUERY_LIMITED_INFORMATION ;
+ int PROCESS_TERMINATE ;
+ int PROCESS_VM_READ ;
+ int SPECIFIC_RIGHTS_ALL ;
+ int STANDARD_RIGHTS_ALL ;
+ int SetLastError (int) ;
+ int TEST_GRANTED_ACCESS (int *,int) ;
+ int TEST_GRANTED_ACCESS2 (int *,int ,int) ;
+ int THREAD_SET_THREAD_TOKEN ;
+ int THREAD_TERMINATE ;
+ int TRUE ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_process_security_child(void)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void test_process_security_child(void)
     DWORD err;
 
     handle = OpenProcess( PROCESS_TERMINATE, FALSE, GetCurrentProcessId() );
-    ok(handle != NULL, "OpenProcess(PROCESS_TERMINATE) with err:%d\n", GetLastError());
+    ok(handle != ((void*)0), "OpenProcess(PROCESS_TERMINATE) with err:%d\n", GetLastError());
     TEST_GRANTED_ACCESS( handle, PROCESS_TERMINATE );
 
     ret = DuplicateHandle( GetCurrentProcess(), handle, GetCurrentProcess(),
@@ -67,13 +67,13 @@ __attribute__((used)) static void test_process_security_child(void)
 
     CloseHandle( handle );
 
-    /* These two should fail - they are denied by ACL */
-    handle = OpenProcess( PROCESS_VM_READ, FALSE, GetCurrentProcessId() );
-    ok(handle == NULL, "OpenProcess(PROCESS_VM_READ) should have failed\n");
-    handle = OpenProcess( PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId() );
-    ok(handle == NULL, "OpenProcess(PROCESS_ALL_ACCESS) should have failed\n");
 
-    /* Documented privilege elevation */
+    handle = OpenProcess( PROCESS_VM_READ, FALSE, GetCurrentProcessId() );
+    ok(handle == ((void*)0), "OpenProcess(PROCESS_VM_READ) should have failed\n");
+    handle = OpenProcess( PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId() );
+    ok(handle == ((void*)0), "OpenProcess(PROCESS_ALL_ACCESS) should have failed\n");
+
+
     ret = DuplicateHandle( GetCurrentProcess(), GetCurrentProcess(), GetCurrentProcess(),
                            &handle, 0, TRUE, DUPLICATE_SAME_ACCESS );
     ok(ret, "duplicating handle err:%d\n", GetLastError());
@@ -82,7 +82,7 @@ __attribute__((used)) static void test_process_security_child(void)
 
     CloseHandle( handle );
 
-    /* Same only explicitly asking for all access rights */
+
     ret = DuplicateHandle( GetCurrentProcess(), GetCurrentProcess(), GetCurrentProcess(),
                            &handle, PROCESS_ALL_ACCESS, TRUE, 0 );
     ok(ret, "duplicating handle err:%d\n", GetLastError());
@@ -95,12 +95,12 @@ __attribute__((used)) static void test_process_security_child(void)
     CloseHandle( handle1 );
     CloseHandle( handle );
 
-    /* Test thread security */
+
     handle = OpenThread( THREAD_TERMINATE, FALSE, GetCurrentThreadId() );
-    ok(handle != NULL, "OpenThread(THREAD_TERMINATE) with err:%d\n", GetLastError());
+    ok(handle != ((void*)0), "OpenThread(THREAD_TERMINATE) with err:%d\n", GetLastError());
     TEST_GRANTED_ACCESS( handle, PROCESS_TERMINATE );
     CloseHandle( handle );
 
     handle = OpenThread( THREAD_SET_THREAD_TOKEN, FALSE, GetCurrentThreadId() );
-    ok(handle == NULL, "OpenThread(THREAD_SET_THREAD_TOKEN) should have failed\n");
+    ok(handle == ((void*)0), "OpenThread(THREAD_SET_THREAD_TOKEN) should have failed\n");
 }

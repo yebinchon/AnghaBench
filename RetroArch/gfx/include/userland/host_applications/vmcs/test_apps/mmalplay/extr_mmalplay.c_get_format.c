@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  fcc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_ENCODING_I420 ; 
- int /*<<< orphan*/  MMAL_ENCODING_OPAQUE ; 
- int /*<<< orphan*/  MMAL_ENCODING_UNKNOWN ; 
- int /*<<< orphan*/  MMAL_ENCODING_YUVUV128 ; 
- int /*<<< orphan*/  MMAL_FOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  MMAL_MIN (size_t,int) ; 
- int /*<<< orphan*/  memcmp (char const*,char*,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int /*<<< orphan*/ ) ; 
- int sscanf (char*,char*,unsigned int*,unsigned int*) ; 
- char* strchr (char const*,char) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int fcc ;
+
+
+ int MMAL_ENCODING_I420 ;
+ int MMAL_ENCODING_OPAQUE ;
+ int MMAL_ENCODING_UNKNOWN ;
+ int MMAL_ENCODING_YUVUV128 ;
+ int MMAL_FOURCC (char,char,char,char) ;
+ int MMAL_MIN (size_t,int) ;
+ int memcmp (char const*,char*,size_t) ;
+ int memcpy (char*,char const*,int ) ;
+ int sscanf (char*,char*,unsigned int*,unsigned int*) ;
+ char* strchr (char const*,char) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int get_format(const char *name, uint32_t *fourcc, unsigned int *width, unsigned int *height)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static int get_format(const char *name, uint32_t *fourcc, 
    *width = *height = 0;
    *fourcc = MMAL_ENCODING_UNKNOWN;
 
-   /* Fourcc is the first element */
+
    delim = strchr(name, ':');
    size = delim ? (size_t)(delim - name) : strlen(name);
    memcpy(fcc, name, MMAL_MIN(size, sizeof(fcc)));
@@ -52,10 +52,10 @@ __attribute__((used)) static int get_format(const char *name, uint32_t *fourcc, 
       return 1;
 
    if (!delim)
-      return 0; /* Nothing more to parse */
+      return 0;
 
-   /* Width/height are next */
-   /* coverity[secure_coding] Only reading integers, so can't overflow */
+
+
    if (sscanf(delim+1, "%ux%u", &value_u1, &value_u2) != 2)
       return 1;
 

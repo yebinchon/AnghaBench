@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  VP56RangeCoder ;
-struct TYPE_9__ {int filter_header; int sub_version; int golden_frame; int deblock_filtering; int filter_mode; int sample_variance_threshold; int max_vector_length; int filter_selection; int use_huffman; TYPE_5__* avctx; int /*<<< orphan*/  c; int /*<<< orphan*/ * ccp; int /*<<< orphan*/  cc; int /*<<< orphan*/  gb; int /*<<< orphan*/  parse_coeff; int /*<<< orphan*/  macroblocks; TYPE_1__** frames; } ;
-typedef  TYPE_2__ VP56Context ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int VP56RangeCoder ;
+struct TYPE_9__ {int filter_header; int sub_version; int golden_frame; int deblock_filtering; int filter_mode; int sample_variance_threshold; int max_vector_length; int filter_selection; int use_huffman; TYPE_5__* avctx; int c; int * ccp; int cc; int gb; int parse_coeff; int macroblocks; TYPE_1__** frames; } ;
+typedef TYPE_2__ VP56Context ;
 struct TYPE_10__ {int coded_width; int coded_height; int extradata_size; int width; int height; int* extradata; } ;
 struct TYPE_8__ {int key_frame; } ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (int const*) ; 
- int FFALIGN (int,int) ; 
- size_t VP56_FRAME_CURRENT ; 
- int VP56_SIZE_CHANGE ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (TYPE_5__*,char*) ; 
- int ff_set_dimensions (TYPE_5__*,int,int) ; 
- int /*<<< orphan*/  ff_vp56_init_dequant (TYPE_2__*,int const) ; 
- int ff_vp56_init_range_decoder (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int const*,int) ; 
- int vp56_rac_get (int /*<<< orphan*/ *) ; 
- int vp56_rac_gets (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vp6_parse_coeff ; 
- int /*<<< orphan*/  vp6_parse_coeff_huffman ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int const*) ;
+ int FFALIGN (int,int) ;
+ size_t VP56_FRAME_CURRENT ;
+ int VP56_SIZE_CHANGE ;
+ int av_log (TYPE_5__*,int ,char*,int,int) ;
+ int avpriv_report_missing_feature (TYPE_5__*,char*) ;
+ int ff_set_dimensions (TYPE_5__*,int,int) ;
+ int ff_vp56_init_dequant (TYPE_2__*,int const) ;
+ int ff_vp56_init_range_decoder (int *,int const*,int) ;
+ int init_get_bits (int *,int const*,int) ;
+ int vp56_rac_get (int *) ;
+ int vp56_rac_gets (int *,int) ;
+ int vp6_parse_coeff ;
+ int vp6_parse_coeff_huffman ;
 
 __attribute__((used)) static int vp6_parse_header(VP56Context *s, const uint8_t *buf, int buf_size)
 {
@@ -69,25 +69,25 @@ __attribute__((used)) static int vp6_parse_header(VP56Context *s, const uint8_t 
             buf_size -= 2;
         }
 
-        rows = buf[2];  /* number of stored macroblock rows */
-        cols = buf[3];  /* number of stored macroblock cols */
-        /* buf[4] is number of displayed macroblock rows */
-        /* buf[5] is number of displayed macroblock cols */
+        rows = buf[2];
+        cols = buf[3];
+
+
         if (!rows || !cols) {
             av_log(s->avctx, AV_LOG_ERROR, "Invalid size %dx%d\n", cols << 4, rows << 4);
             return AVERROR_INVALIDDATA;
         }
 
-        if (!s->macroblocks || /* first frame */
+        if (!s->macroblocks ||
             16*cols != s->avctx->coded_width ||
             16*rows != s->avctx->coded_height) {
             if (s->avctx->extradata_size == 0 &&
-                FFALIGN(s->avctx->width,  16) == 16 * cols &&
+                FFALIGN(s->avctx->width, 16) == 16 * cols &&
                 FFALIGN(s->avctx->height, 16) == 16 * rows) {
-                // We assume this is properly signalled container cropping,
-                // in an F4V file. Just set the coded_width/height, don't
-                // touch the cropped ones.
-                s->avctx->coded_width  = 16 * cols;
+
+
+
+                s->avctx->coded_width = 16 * cols;
                 s->avctx->coded_height = 16 * rows;
             } else {
                 ret = ff_set_dimensions(s->avctx, 16 * cols, 16 * rows);
@@ -95,7 +95,7 @@ __attribute__((used)) static int vp6_parse_header(VP56Context *s, const uint8_t 
                     return ret;
 
                 if (s->avctx->extradata_size == 1) {
-                    s->avctx->width  -= s->avctx->extradata[0] >> 4;
+                    s->avctx->width -= s->avctx->extradata[0] >> 4;
                     s->avctx->height -= s->avctx->extradata[0] & 0x0F;
                 }
             }
@@ -155,7 +155,7 @@ __attribute__((used)) static int vp6_parse_header(VP56Context *s, const uint8_t 
 
     s->parse_coeff = vp6_parse_coeff;
     if (coeff_offset) {
-        buf      += coeff_offset;
+        buf += coeff_offset;
         buf_size -= coeff_offset;
         if (buf_size < 0) {
             ret = AVERROR_INVALIDDATA;

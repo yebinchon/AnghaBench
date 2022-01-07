@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct internal_reloc {int r_symndx; int r_type; int r_offset; scalar_t__ r_extern; scalar_t__ r_size; int /*<<< orphan*/  r_vaddr; } ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_2__ {int /*<<< orphan*/  r_type; int /*<<< orphan*/  r_symndx; int /*<<< orphan*/  r_vaddr; } ;
-typedef  TYPE_1__ RELOC ;
 
-/* Variables and functions */
- int H_GET_16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_GET_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int H_GET_S32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
-#define  MIPS_R_PAIR 129 
-#define  MIPS_R_REFHI 128 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct internal_reloc {int r_symndx; int r_type; int r_offset; scalar_t__ r_extern; scalar_t__ r_size; int r_vaddr; } ;
+typedef int bfd ;
+struct TYPE_2__ {int r_type; int r_symndx; int r_vaddr; } ;
+typedef TYPE_1__ RELOC ;
+
+
+ int H_GET_16 (int *,int ) ;
+ int H_GET_32 (int *,int ) ;
+ int H_GET_S32 (int *,int ) ;
+
+
 
 __attribute__((used)) static void
 mips_swap_reloc_in (bfd * abfd, void * src, void * dst)
@@ -39,10 +39,10 @@ mips_swap_reloc_in (bfd * abfd, void * src, void * dst)
 
   switch (reloc_dst->r_type)
   {
-  case MIPS_R_REFHI:
+  case 128:
     pair_prev = *reloc_dst;
     break;
-  case MIPS_R_PAIR:
+  case 129:
     reloc_dst->r_offset = reloc_dst->r_symndx;
     if (reloc_dst->r_offset & 0x8000)
       reloc_dst->r_offset -= 0x10000;

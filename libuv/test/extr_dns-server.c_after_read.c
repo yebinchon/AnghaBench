@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_shutdown_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
+typedef int uv_shutdown_t ;
 struct TYPE_4__ {scalar_t__ base; } ;
-typedef  TYPE_1__ uv_buf_t ;
-typedef  scalar_t__ ssize_t ;
+typedef TYPE_1__ uv_buf_t ;
+typedef scalar_t__ ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ UV_EOF ; 
- int /*<<< orphan*/  after_shutdown ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  process_req (int /*<<< orphan*/ *,scalar_t__,TYPE_1__ const*) ; 
- int /*<<< orphan*/  uv_shutdown (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ UV_EOF ;
+ int after_shutdown ;
+ int free (scalar_t__) ;
+ int * malloc (int) ;
+ int process_req (int *,scalar_t__,TYPE_1__ const*) ;
+ int uv_shutdown (int *,int *,int ) ;
 
 __attribute__((used)) static void after_read(uv_stream_t* handle,
                        ssize_t nread,
@@ -32,7 +32,7 @@ __attribute__((used)) static void after_read(uv_stream_t* handle,
   uv_shutdown_t* req;
 
   if (nread < 0) {
-    /* Error or EOF */
+
     ASSERT(nread == UV_EOF);
 
     if (buf->base) {
@@ -46,10 +46,10 @@ __attribute__((used)) static void after_read(uv_stream_t* handle,
   }
 
   if (nread == 0) {
-    /* Everything OK, but nothing read. */
+
     free(buf->base);
     return;
   }
-  /* process requests and send responses */
+
   process_req(handle, nread, buf);
 }

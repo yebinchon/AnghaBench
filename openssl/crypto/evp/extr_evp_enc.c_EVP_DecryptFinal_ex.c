@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int flags; int* final; TYPE_1__* cipher; int /*<<< orphan*/  final_used; scalar_t__ buf_len; int /*<<< orphan*/  provctx; scalar_t__ encrypt; } ;
-struct TYPE_6__ {int (* cfinal ) (int /*<<< orphan*/ ,unsigned char*,size_t*,int) ;int flags; int (* do_cipher ) (TYPE_2__*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;unsigned int block_size; int /*<<< orphan*/ * prov; } ;
-typedef  TYPE_2__ EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- int EVP_CIPHER_CTX_block_size (TYPE_2__*) ; 
- int EVP_CIPH_FLAG_CUSTOM_CIPHER ; 
- int EVP_CIPH_NO_PADDING ; 
- int /*<<< orphan*/  EVP_F_EVP_DECRYPTFINAL_EX ; 
- int /*<<< orphan*/  EVP_R_BAD_DECRYPT ; 
- int /*<<< orphan*/  EVP_R_DATA_NOT_MULTIPLE_OF_BLOCK_LENGTH ; 
- int /*<<< orphan*/  EVP_R_FINAL_ERROR ; 
- int /*<<< orphan*/  EVP_R_INVALID_OPERATION ; 
- int /*<<< orphan*/  EVP_R_NO_CIPHER_SET ; 
- int /*<<< orphan*/  EVP_R_WRONG_FINAL_BLOCK_LENGTH ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t INT_MAX ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int stub1 (int /*<<< orphan*/ ,unsigned char*,size_t*,int) ; 
- int stub2 (TYPE_2__*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int flags; int* final; TYPE_1__* cipher; int final_used; scalar_t__ buf_len; int provctx; scalar_t__ encrypt; } ;
+struct TYPE_6__ {int (* cfinal ) (int ,unsigned char*,size_t*,int) ;int flags; int (* do_cipher ) (TYPE_2__*,unsigned char*,int *,int ) ;unsigned int block_size; int * prov; } ;
+typedef TYPE_2__ EVP_CIPHER_CTX ;
+
+
+ int EVP_CIPHER_CTX_block_size (TYPE_2__*) ;
+ int EVP_CIPH_FLAG_CUSTOM_CIPHER ;
+ int EVP_CIPH_NO_PADDING ;
+ int EVP_F_EVP_DECRYPTFINAL_EX ;
+ int EVP_R_BAD_DECRYPT ;
+ int EVP_R_DATA_NOT_MULTIPLE_OF_BLOCK_LENGTH ;
+ int EVP_R_FINAL_ERROR ;
+ int EVP_R_INVALID_OPERATION ;
+ int EVP_R_NO_CIPHER_SET ;
+ int EVP_R_WRONG_FINAL_BLOCK_LENGTH ;
+ int EVPerr (int ,int ) ;
+ size_t INT_MAX ;
+ int OPENSSL_assert (int) ;
+ int stub1 (int ,unsigned char*,size_t*,int) ;
+ int stub2 (TYPE_2__*,unsigned char*,int *,int ) ;
 
 int EVP_DecryptFinal_ex(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl)
 {
@@ -41,23 +41,23 @@ int EVP_DecryptFinal_ex(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl)
     int ret;
     int blocksize;
 
-    /* Prevent accidental use of encryption context when decrypting */
+
     if (ctx->encrypt) {
         EVPerr(EVP_F_EVP_DECRYPTFINAL_EX, EVP_R_INVALID_OPERATION);
         return 0;
     }
 
-    if (ctx->cipher == NULL) {
+    if (ctx->cipher == ((void*)0)) {
         EVPerr(EVP_F_EVP_DECRYPTFINAL_EX, EVP_R_NO_CIPHER_SET);
         return 0;
     }
 
-    if (ctx->cipher->prov == NULL)
+    if (ctx->cipher->prov == ((void*)0))
         goto legacy;
 
     blocksize = EVP_CIPHER_CTX_block_size(ctx);
 
-    if (blocksize < 1 || ctx->cipher->cfinal == NULL) {
+    if (blocksize < 1 || ctx->cipher->cfinal == ((void*)0)) {
         EVPerr(EVP_F_EVP_DECRYPTFINAL_EX, EVP_R_FINAL_ERROR);
         return 0;
     }
@@ -75,12 +75,12 @@ int EVP_DecryptFinal_ex(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl)
 
     return ret;
 
-    /* TODO(3.0): Remove legacy code below */
+
  legacy:
 
     *outl = 0;
     if (ctx->cipher->flags & EVP_CIPH_FLAG_CUSTOM_CIPHER) {
-        i = ctx->cipher->do_cipher(ctx, out, NULL, 0);
+        i = ctx->cipher->do_cipher(ctx, out, ((void*)0), 0);
         if (i < 0)
             return 0;
         else
@@ -105,10 +105,10 @@ int EVP_DecryptFinal_ex(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl)
         }
         OPENSSL_assert(b <= sizeof(ctx->final));
 
-        /*
-         * The following assumes that the ciphertext has been authenticated.
-         * Otherwise it provides a padding oracle.
-         */
+
+
+
+
         n = ctx->final[b - 1];
         if (n == 0 || n > (int)b) {
             EVPerr(EVP_F_EVP_DECRYPTFINAL_EX, EVP_R_BAD_DECRYPT);

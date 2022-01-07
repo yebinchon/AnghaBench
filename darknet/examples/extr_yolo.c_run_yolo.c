@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  demo (char*,char*,float,int,char*,int /*<<< orphan*/ ,int,int,char*,int,double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* find_char_arg (int,char**,char*,int /*<<< orphan*/ ) ; 
- float find_float_arg (int,char**,char*,double) ; 
- int find_int_arg (int,char**,char*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_yolo (char*,char*,char*,float) ; 
- int /*<<< orphan*/  train_yolo (char*,char*) ; 
- int /*<<< orphan*/  validate_yolo (char*,char*) ; 
- int /*<<< orphan*/  validate_yolo_recall (char*,char*) ; 
- int /*<<< orphan*/  voc_names ; 
+ int demo (char*,char*,float,int,char*,int ,int,int,char*,int,double,int ,int ,int ,int ) ;
+ char* find_char_arg (int,char**,char*,int ) ;
+ float find_float_arg (int,char**,char*,double) ;
+ int find_int_arg (int,char**,char*,int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_yolo (char*,char*,char*,float) ;
+ int train_yolo (char*,char*) ;
+ int validate_yolo (char*,char*) ;
+ int validate_yolo_recall (char*,char*) ;
+ int voc_names ;
 
 void run_yolo(int argc, char **argv)
 {

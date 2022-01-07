@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  SoftFloat ;
 
-/* Variables and functions */
- int INT32_MIN ; 
- int UINT64_MAX ; 
- int /*<<< orphan*/  av_int2sf (unsigned int,int) ; 
+
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
+typedef int SoftFloat ;
+
+
+ int INT32_MIN ;
+ int UINT64_MAX ;
+ int av_int2sf (unsigned int,int) ;
 
 __attribute__((used)) static SoftFloat sbr_sum_square_c(int (*x)[2], int n)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static SoftFloat sbr_sum_square_c(int (*x)[2], int n)
                 accu1 >>= 1;
                 accu2 >>= 1;
                 accu3 >>= 1;
-                accu  >>= 1;
+                accu >>= 1;
                 nz ++;
             }
             accu += accu0 + accu1 + accu2 + accu3;

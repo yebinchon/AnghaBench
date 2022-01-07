@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  scalar_t__ mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- size_t RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RSTRUCT_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_name_error (int /*<<< orphan*/ *,scalar_t__,char*,scalar_t__) ; 
- int /*<<< orphan*/  mrb_struct_modify (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_symbol (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  struct_members (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef scalar_t__ mrb_sym ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ size_t RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int * RSTRUCT_PTR (int ) ;
+ int mrb_name_error (int *,scalar_t__,char*,scalar_t__) ;
+ int mrb_struct_modify (int *,int ) ;
+ scalar_t__ mrb_symbol (int const) ;
+ int struct_members (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_struct_aset_sym(mrb_state *mrb, mrb_value s, mrb_sym id, mrb_value val)
@@ -43,5 +43,5 @@ mrb_struct_aset_sym(mrb_state *mrb, mrb_value s, mrb_sym id, mrb_value val)
     }
   }
   mrb_name_error(mrb, id, "no member '%n' in struct", id);
-  return val;                   /* not reach */
+  return val;
 }

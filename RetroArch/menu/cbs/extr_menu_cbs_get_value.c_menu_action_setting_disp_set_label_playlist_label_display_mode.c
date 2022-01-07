@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  playlist_t ;
-typedef  int /*<<< orphan*/  file_list_t ;
-typedef  enum playlist_label_display_mode { ____Placeholder_playlist_label_display_mode } playlist_label_display_mode ;
 
-/* Variables and functions */
-#define  LABEL_DISPLAY_MODE_KEEP_DISC_INDEX 133 
-#define  LABEL_DISPLAY_MODE_KEEP_REGION 132 
-#define  LABEL_DISPLAY_MODE_KEEP_REGION_AND_DISC_INDEX 131 
-#define  LABEL_DISPLAY_MODE_REMOVE_BRACKETS 130 
-#define  LABEL_DISPLAY_MODE_REMOVE_PARENTHESES 129 
-#define  LABEL_DISPLAY_MODE_REMOVE_PARENTHESES_AND_BRACKETS 128 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_DEFAULT ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_DISC_INDEX ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_REGION ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_REGION_AND_DISC_INDEX ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_BRACKETS ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_PARENS ; 
- int /*<<< orphan*/  MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_PARENS_AND_BRACKETS ; 
- char const* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * playlist_get_cached () ; 
- int playlist_get_label_display_mode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,size_t) ; 
+
+
+
+typedef int playlist_t ;
+typedef int file_list_t ;
+typedef enum playlist_label_display_mode { ____Placeholder_playlist_label_display_mode } playlist_label_display_mode ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_DEFAULT ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_DISC_INDEX ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_REGION ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_REGION_AND_DISC_INDEX ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_BRACKETS ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_PARENS ;
+ int MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_PARENS_AND_BRACKETS ;
+ char const* msg_hash_to_str (int ) ;
+ int * playlist_get_cached () ;
+ int playlist_get_label_display_mode (int *) ;
+ int strlcpy (char*,char const*,size_t) ;
 
 __attribute__((used)) static void menu_action_setting_disp_set_label_playlist_label_display_mode(
       file_list_t* list,
@@ -42,7 +34,7 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_playlist_la
       char *s2, size_t len2)
 {
    enum playlist_label_display_mode label_display_mode;
-   playlist_t *playlist  = playlist_get_cached();
+   playlist_t *playlist = playlist_get_cached();
 
    if (!playlist)
       return;
@@ -55,22 +47,22 @@ __attribute__((used)) static void menu_action_setting_disp_set_label_playlist_la
 
    switch (label_display_mode)
    {
-      case LABEL_DISPLAY_MODE_REMOVE_PARENTHESES :
+      case 129 :
          strlcpy(s, msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_PARENS), len);
          break;
-      case LABEL_DISPLAY_MODE_REMOVE_BRACKETS :
+      case 130 :
          strlcpy(s, msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_BRACKETS), len);
          break;
-      case LABEL_DISPLAY_MODE_REMOVE_PARENTHESES_AND_BRACKETS :
+      case 128 :
          strlcpy(s, msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_REMOVE_PARENS_AND_BRACKETS), len);
          break;
-      case LABEL_DISPLAY_MODE_KEEP_DISC_INDEX :
+      case 133 :
          strlcpy(s, msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_DISC_INDEX), len);
          break;
-      case LABEL_DISPLAY_MODE_KEEP_REGION :
+      case 132 :
          strlcpy(s, msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_REGION), len);
          break;
-      case LABEL_DISPLAY_MODE_KEEP_REGION_AND_DISC_INDEX :
+      case 131 :
          strlcpy(s, msg_hash_to_str(MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_LABEL_DISPLAY_MODE_KEEP_REGION_AND_DISC_INDEX), len);
          break;
       default:

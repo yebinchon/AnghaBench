@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int metafile_len; int /*<<< orphan*/ * metafile; int /*<<< orphan*/  album_by_photo; int /*<<< orphan*/  d; int /*<<< orphan*/  photos; } ;
-typedef  TYPE_1__ user ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EMPTY__METAFILE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_data ; 
- int /*<<< orphan*/  data_unload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dl_free (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lookup_unload (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_int_vptr_del (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  map_int_vptr_foreach (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * todel ; 
- int todel_n ; 
- int verbosity ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int metafile_len; int * metafile; int album_by_photo; int d; int photos; } ;
+typedef TYPE_1__ user ;
+
+
+ int * EMPTY__METAFILE ;
+ int assert (int ) ;
+ int check_data ;
+ int data_unload (int *) ;
+ int dl_free (int *,int) ;
+ int fprintf (int ,char*) ;
+ int lookup_unload (int *) ;
+ int map_int_vptr_del (int *,int ) ;
+ int map_int_vptr_foreach (int *,int ) ;
+ int stderr ;
+ int * todel ;
+ int todel_n ;
+ int verbosity ;
 
 void unbind_user_metafile (user *u) {
-  assert (u != NULL);
+  assert (u != ((void*)0));
 
   if (verbosity > 2) {
     fprintf (stderr, "unbind_user_metafile\n");
@@ -42,15 +42,15 @@ void unbind_user_metafile (user *u) {
     map_int_vptr_del (&u->photos, todel[i]);
   }
 
- // map_int_vptr_pack (&u->photos);
+
 
   data_unload (&u->d);
   lookup_unload (&u->album_by_photo);
 
-  if (u->metafile != NULL && u->metafile != EMPTY__METAFILE) {
+  if (u->metafile != ((void*)0) && u->metafile != EMPTY__METAFILE) {
     dl_free (u->metafile, u->metafile_len);
   }
 
-  u->metafile = NULL;
+  u->metafile = ((void*)0);
   u->metafile_len = -1;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPENSSL_SA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sa_doall (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sa_free_leaf ; 
- int /*<<< orphan*/  sa_free_node ; 
+
+
+
+typedef int OPENSSL_SA ;
+
+
+ int OPENSSL_free (int *) ;
+ int sa_doall (int *,int *,int *,int *) ;
+ int sa_free_leaf ;
+ int sa_free_node ;
 
 void OPENSSL_SA_free_leaves(OPENSSL_SA *sa)
 {
-    sa_doall(sa, &sa_free_node, &sa_free_leaf, NULL);
+    sa_doall(sa, &sa_free_node, &sa_free_leaf, ((void*)0));
     OPENSSL_free(sa);
 }

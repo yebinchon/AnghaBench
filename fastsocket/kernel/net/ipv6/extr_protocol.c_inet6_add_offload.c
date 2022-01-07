@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_offload {int dummy; } ;
 
-/* Variables and functions */
- int MAX_INET_PROTOS ; 
- int /*<<< orphan*/  inet6_offload_lock ; 
- struct net_offload const** inet6_offloads ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int MAX_INET_PROTOS ;
+ int inet6_offload_lock ;
+ struct net_offload const** inet6_offloads ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 int inet6_add_offload(const struct net_offload *prot, unsigned char protocol)
 {
-	int ret, hash = protocol & (MAX_INET_PROTOS - 1);
+ int ret, hash = protocol & (MAX_INET_PROTOS - 1);
 
-	spin_lock_bh(&inet6_offload_lock);
+ spin_lock_bh(&inet6_offload_lock);
 
-	if (inet6_offloads[hash]) {
-		ret = -1;
-	} else {
-		inet6_offloads[hash] = prot;
-		ret = 0;
-	}
+ if (inet6_offloads[hash]) {
+  ret = -1;
+ } else {
+  inet6_offloads[hash] = prot;
+  ret = 0;
+ }
 
-	spin_unlock_bh(&inet6_offload_lock);
+ spin_unlock_bh(&inet6_offload_lock);
 
-	return ret;
+ return ret;
 }

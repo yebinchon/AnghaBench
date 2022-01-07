@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ locale_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOENT ; 
- int /*<<< orphan*/  LC_MESSAGES_MASK ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- int /*<<< orphan*/  freelocale (scalar_t__) ; 
- scalar_t__ newlocale (int /*<<< orphan*/ ,char const*,scalar_t__) ; 
- char* strerror_l (int,scalar_t__) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef scalar_t__ locale_t ;
+
+
+ int EINVAL ;
+ int ENOENT ;
+ int LC_MESSAGES_MASK ;
+ int assert (int) ;
+ int errno ;
+ int freelocale (scalar_t__) ;
+ scalar_t__ newlocale (int ,char const*,scalar_t__) ;
+ char* strerror_l (int,scalar_t__) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static const char *vlc_strerror_l(int errnum, const char *lname)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static const char *vlc_strerror_l(int errnum, const char *
 
     if (unlikely(loc == (locale_t)0))
     {
-        if (errno == ENOENT) /* fallback to POSIX locale */
+        if (errno == ENOENT)
             loc = newlocale(LC_MESSAGES_MASK, "C", (locale_t)0);
 
         if (unlikely(loc == (locale_t)0))

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct nat44_cfg_spool {int /*<<< orphan*/  port; TYPE_1__ addr; } ;
-struct nat44_cfg_redir {TYPE_1__ paddr; TYPE_1__ laddr; int /*<<< orphan*/  spool_cnt; int /*<<< orphan*/  mode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INADDR_NONE ; 
- int /*<<< orphan*/  REDIR_ADDR ; 
- int /*<<< orphan*/  StrToAddr (char*,TYPE_1__*) ; 
- int /*<<< orphan*/ * strchr (char*,char) ; 
- char* strtok (char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct nat44_cfg_spool {int port; TYPE_1__ addr; } ;
+struct nat44_cfg_redir {TYPE_1__ paddr; TYPE_1__ laddr; int spool_cnt; int mode; } ;
+
+
+ int INADDR_NONE ;
+ int REDIR_ADDR ;
+ int StrToAddr (char*,TYPE_1__*) ;
+ int * strchr (char*,char) ;
+ char* strtok (char*,char*) ;
 
 __attribute__((used)) static int
 setup_redir_addr(char *buf, int *ac, char ***av)
 {
-	struct nat44_cfg_redir *r;
-	char *sep;
-	size_t space;
+ struct nat44_cfg_redir *r;
+ char *sep;
+ size_t space;
 
-	r = (struct nat44_cfg_redir *)buf;
-	r->mode = REDIR_ADDR;
-	/* Skip nat44_cfg_redir at beginning of buf. */
-	buf = &buf[sizeof(struct nat44_cfg_redir)];
-	space = sizeof(struct nat44_cfg_redir);
+ r = (struct nat44_cfg_redir *)buf;
+ r->mode = REDIR_ADDR;
 
-	/* Extract local address. */
-	if (strchr(**av, ',') != NULL) {
-		struct nat44_cfg_spool *spool;
+ buf = &buf[sizeof(struct nat44_cfg_redir)];
+ space = sizeof(struct nat44_cfg_redir);
 
-		/* Setup LSNAT server pool. */
-		r->laddr.s_addr = INADDR_NONE;
-		sep = strtok(**av, ",");
-		while (sep != NULL) {
-			spool = (struct nat44_cfg_spool *)buf;
-			space += sizeof(struct nat44_cfg_spool);
-			StrToAddr(sep, &spool->addr);
-			spool->port = ~0;
-			r->spool_cnt++;
-			/* Point to the next possible nat44_cfg_spool. */
-			buf = &buf[sizeof(struct nat44_cfg_spool)];
-			sep = strtok(NULL, ",");
-		}
-	} else
-		StrToAddr(**av, &r->laddr);
-	(*av)++; (*ac)--;
 
-	/* Extract public address. */
-	StrToAddr(**av, &r->paddr);
-	(*av)++; (*ac)--;
+ if (strchr(**av, ',') != ((void*)0)) {
+  struct nat44_cfg_spool *spool;
 
-	return (space);
+
+  r->laddr.s_addr = INADDR_NONE;
+  sep = strtok(**av, ",");
+  while (sep != ((void*)0)) {
+   spool = (struct nat44_cfg_spool *)buf;
+   space += sizeof(struct nat44_cfg_spool);
+   StrToAddr(sep, &spool->addr);
+   spool->port = ~0;
+   r->spool_cnt++;
+
+   buf = &buf[sizeof(struct nat44_cfg_spool)];
+   sep = strtok(((void*)0), ",");
+  }
+ } else
+  StrToAddr(**av, &r->laddr);
+ (*av)++; (*ac)--;
+
+
+ StrToAddr(**av, &r->paddr);
+ (*av)++; (*ac)--;
+
+ return (space);
 }

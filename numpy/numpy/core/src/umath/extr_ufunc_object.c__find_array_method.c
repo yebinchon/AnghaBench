@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int NPY_MAXARGS ; 
- int /*<<< orphan*/  NPY_PRIORITY ; 
- scalar_t__ PyArray_CheckExact (int /*<<< orphan*/ *) ; 
- double PyArray_GetPriority (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_IsAnyScalar (int /*<<< orphan*/ *) ; 
- scalar_t__ PyCallable_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Clear () ; 
- int /*<<< orphan*/ * PyObject_GetAttr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int) ; 
- int PyTuple_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int NPY_MAXARGS ;
+ int NPY_PRIORITY ;
+ scalar_t__ PyArray_CheckExact (int *) ;
+ double PyArray_GetPriority (int *,int ) ;
+ scalar_t__ PyArray_IsAnyScalar (int *) ;
+ scalar_t__ PyCallable_Check (int *) ;
+ int PyErr_Clear () ;
+ int * PyObject_GetAttr (int *,int *) ;
+ int * PyTuple_GET_ITEM (int *,int) ;
+ int PyTuple_GET_SIZE (int *) ;
+ int Py_DECREF (int *) ;
 
 __attribute__((used)) static PyObject*
 _find_array_method(PyObject *args, PyObject *method_name)
@@ -31,7 +31,7 @@ _find_array_method(PyObject *args, PyObject *method_name)
     int i, n_methods;
     PyObject *obj;
     PyObject *with_method[NPY_MAXARGS], *methods[NPY_MAXARGS];
-    PyObject *method = NULL;
+    PyObject *method = ((void*)0);
 
     n_methods = 0;
     for (i = 0; i < PyTuple_GET_SIZE(args); i++) {
@@ -48,7 +48,7 @@ _find_array_method(PyObject *args, PyObject *method_name)
             }
             else {
                 Py_DECREF(method);
-                method = NULL;
+                method = ((void*)0);
             }
         }
         else {
@@ -56,7 +56,7 @@ _find_array_method(PyObject *args, PyObject *method_name)
         }
     }
     if (n_methods > 0) {
-        /* If we have some methods defined, find the one of highest priority */
+
         method = methods[0];
         if (n_methods > 1) {
             double maxpriority = PyArray_GetPriority(with_method[0],

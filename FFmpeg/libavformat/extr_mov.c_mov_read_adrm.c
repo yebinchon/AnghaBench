@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct AVSHA {int dummy; } ;
-struct TYPE_3__ {int aax_mode; int activation_bytes_size; int audible_fixed_key_size; scalar_t__* file_key; scalar_t__* file_iv; int /*<<< orphan*/  fc; int /*<<< orphan*/  aes_decrypt; scalar_t__* audible_fixed_key; scalar_t__* activation_bytes; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_3__ {int aax_mode; int activation_bytes_size; int audible_fixed_key_size; scalar_t__* file_key; scalar_t__* file_iv; int fc; int aes_decrypt; scalar_t__* audible_fixed_key; scalar_t__* activation_bytes; } ;
+typedef TYPE_1__ MOVContext ;
+typedef int MOVAtom ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int DRM_BLOB_SIZE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_aes_alloc () ; 
- int /*<<< orphan*/  av_aes_crypt (int /*<<< orphan*/ ,scalar_t__*,scalar_t__*,int,scalar_t__*,int) ; 
- int /*<<< orphan*/  av_aes_init (int /*<<< orphan*/ ,scalar_t__*,int,int) ; 
- int /*<<< orphan*/  av_free (struct AVSHA*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- struct AVSHA* av_sha_alloc () ; 
- int /*<<< orphan*/  av_sha_final (struct AVSHA*,scalar_t__*) ; 
- int /*<<< orphan*/  av_sha_init (struct AVSHA*,int) ; 
- int /*<<< orphan*/  av_sha_update (struct AVSHA*,scalar_t__*,int) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- scalar_t__ memcmp (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_FATAL ;
+ int AV_LOG_INFO ;
+ int AV_LOG_WARNING ;
+ int DRM_BLOB_SIZE ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_aes_alloc () ;
+ int av_aes_crypt (int ,scalar_t__*,scalar_t__*,int,scalar_t__*,int) ;
+ int av_aes_init (int ,scalar_t__*,int,int) ;
+ int av_free (struct AVSHA*) ;
+ int av_log (int ,int ,char*,...) ;
+ struct AVSHA* av_sha_alloc () ;
+ int av_sha_final (struct AVSHA*,scalar_t__*) ;
+ int av_sha_init (struct AVSHA*,int) ;
+ int av_sha_update (struct AVSHA*,scalar_t__*,int) ;
+ int avio_read (int *,scalar_t__*,int) ;
+ scalar_t__ memcmp (scalar_t__*,scalar_t__*,int) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
 
 __attribute__((used)) static int mov_read_adrm(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -66,21 +66,21 @@ __attribute__((used)) static int mov_read_adrm(MOVContext *c, AVIOContext *pb, M
         goto fail;
     }
 
-    /* drm blob processing */
-    avio_read(pb, output, 8); // go to offset 8, absolute position 0x251
+
+    avio_read(pb, output, 8);
     avio_read(pb, input, DRM_BLOB_SIZE);
-    avio_read(pb, output, 4); // go to offset 4, absolute position 0x28d
+    avio_read(pb, output, 4);
     avio_read(pb, file_checksum, 20);
 
-    av_log(c->fc, AV_LOG_INFO, "[aax] file checksum == "); // required by external tools
+    av_log(c->fc, AV_LOG_INFO, "[aax] file checksum == ");
     for (i = 0; i < 20; i++)
         av_log(c->fc, AV_LOG_INFO, "%02x", file_checksum[i]);
     av_log(c->fc, AV_LOG_INFO, "\n");
 
-    /* verify activation data */
+
     if (!activation_bytes) {
         av_log(c->fc, AV_LOG_WARNING, "[aax] activation_bytes option is missing!\n");
-        ret = 0;  /* allow ffprobe to continue working on .aax files */
+        ret = 0;
         goto fail;
     }
     if (c->activation_bytes_size != 4) {
@@ -89,14 +89,14 @@ __attribute__((used)) static int mov_read_adrm(MOVContext *c, AVIOContext *pb, M
         goto fail;
     }
 
-    /* verify fixed key */
+
     if (c->audible_fixed_key_size != 16) {
         av_log(c->fc, AV_LOG_FATAL, "[aax] audible_fixed_key value needs to be 16 bytes!\n");
         ret = AVERROR(EINVAL);
         goto fail;
     }
 
-    /* AAX (and AAX+) key derivation */
+
     av_sha_init(sha, 160);
     av_sha_update(sha, fixed_key, 16);
     av_sha_update(sha, activation_bytes, 4);
@@ -110,7 +110,7 @@ __attribute__((used)) static int mov_read_adrm(MOVContext *c, AVIOContext *pb, M
     av_sha_update(sha, intermediate_key, 16);
     av_sha_update(sha, intermediate_iv, 16);
     av_sha_final(sha, calculated_checksum);
-    if (memcmp(calculated_checksum, file_checksum, 20)) { // critical error
+    if (memcmp(calculated_checksum, file_checksum, 20)) {
         av_log(c->fc, AV_LOG_ERROR, "[aax] mismatch in checksums!\n");
         ret = AVERROR_INVALIDDATA;
         goto fail;
@@ -118,8 +118,8 @@ __attribute__((used)) static int mov_read_adrm(MOVContext *c, AVIOContext *pb, M
     av_aes_init(c->aes_decrypt, intermediate_key, 128, 1);
     av_aes_crypt(c->aes_decrypt, output, input, DRM_BLOB_SIZE >> 4, intermediate_iv, 1);
     for (i = 0; i < 4; i++) {
-        // file data (in output) is stored in big-endian mode
-        if (activation_bytes[i] != output[3 - i]) { // critical error
+
+        if (activation_bytes[i] != output[3 - i]) {
             av_log(c->fc, AV_LOG_ERROR, "[aax] error in drm blob decryption!\n");
             ret = AVERROR_INVALIDDATA;
             goto fail;

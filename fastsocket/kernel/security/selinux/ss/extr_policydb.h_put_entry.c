@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct policy_file {size_t data; size_t len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (size_t,void*,size_t) ; 
+
+ int memcpy (size_t,void*,size_t) ;
 
 __attribute__((used)) static inline int put_entry(void *buf, size_t bytes, int num, struct policy_file *fp)
 {
-	size_t len = bytes * num;
+ size_t len = bytes * num;
 
-	memcpy(fp->data, buf, len);
-	fp->data += len;
-	fp->len -= len;
+ memcpy(fp->data, buf, len);
+ fp->data += len;
+ fp->len -= len;
 
-	return 0;
+ return 0;
 }

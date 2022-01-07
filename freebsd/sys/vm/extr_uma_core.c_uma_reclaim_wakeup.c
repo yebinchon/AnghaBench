@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ atomic_fetchadd_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uma_reclaim ; 
- int /*<<< orphan*/  uma_reclaim_needed ; 
- int /*<<< orphan*/  wakeup (int /*<<< orphan*/ ) ; 
+ scalar_t__ atomic_fetchadd_int (int *,int) ;
+ int uma_reclaim ;
+ int uma_reclaim_needed ;
+ int wakeup (int ) ;
 
 void
 uma_reclaim_wakeup(void)
 {
 
-	if (atomic_fetchadd_int(&uma_reclaim_needed, 1) == 0)
-		wakeup(uma_reclaim);
+ if (atomic_fetchadd_int(&uma_reclaim_needed, 1) == 0)
+  wakeup(uma_reclaim);
 }

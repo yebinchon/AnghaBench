@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ len; int /*<<< orphan*/  value; int /*<<< orphan*/  offset; int /*<<< orphan*/  handle; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ tGATT_VALUE ;
-typedef  int /*<<< orphan*/  tGATT_TCB ;
-struct TYPE_10__ {scalar_t__ op_subtype; int /*<<< orphan*/  status; } ;
-typedef  TYPE_2__ tGATT_CLCB ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  scalar_t__ UINT16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GATT_INVALID_PDU ; 
- scalar_t__ GATT_PREP_WRITE_RSP_MIN_LEN ; 
- int /*<<< orphan*/  GATT_SUCCESS ; 
- int /*<<< orphan*/  GATT_TRACE_DEBUG (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  GATT_TRACE_ERROR (char*) ; 
- scalar_t__ GATT_WRITE ; 
- scalar_t__ GATT_WRITE_PREPARE ; 
- int /*<<< orphan*/  STREAM_TO_UINT16 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gatt_check_write_long_terminate (int /*<<< orphan*/ *,TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  gatt_dbg_op_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gatt_end_operation (TYPE_2__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  gatt_send_prepare_write (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ len; int value; int offset; int handle; int member_0; } ;
+typedef TYPE_1__ tGATT_VALUE ;
+typedef int tGATT_TCB ;
+struct TYPE_10__ {scalar_t__ op_subtype; int status; } ;
+typedef TYPE_2__ tGATT_CLCB ;
+typedef int UINT8 ;
+typedef scalar_t__ UINT16 ;
+
+
+ int GATT_INVALID_PDU ;
+ scalar_t__ GATT_PREP_WRITE_RSP_MIN_LEN ;
+ int GATT_SUCCESS ;
+ int GATT_TRACE_DEBUG (char*,int ,scalar_t__) ;
+ int GATT_TRACE_ERROR (char*) ;
+ scalar_t__ GATT_WRITE ;
+ scalar_t__ GATT_WRITE_PREPARE ;
+ int STREAM_TO_UINT16 (int ,int *) ;
+ int gatt_check_write_long_terminate (int *,TYPE_2__*,TYPE_1__*) ;
+ int gatt_dbg_op_name (int ) ;
+ int gatt_end_operation (TYPE_2__*,int ,TYPE_1__*) ;
+ int gatt_send_prepare_write (int *,TYPE_2__*) ;
+ int memcpy (int ,int *,scalar_t__) ;
 
 void gatt_process_prep_write_rsp (tGATT_TCB *p_tcb, tGATT_CLCB *p_clcb, UINT8 op_code,
                                   UINT16 len, UINT8 *p_data)
 {
-    tGATT_VALUE  value = {0};
-    UINT8        *p = p_data;
+    tGATT_VALUE value = {0};
+    UINT8 *p = p_data;
 
     GATT_TRACE_DEBUG("value resp op_code = %s len = %d", gatt_dbg_op_name(op_code), len);
 
@@ -58,8 +58,8 @@ void gatt_process_prep_write_rsp (tGATT_TCB *p_tcb, tGATT_CLCB *p_clcb, UINT8 op
 
     if (p_clcb->op_subtype == GATT_WRITE_PREPARE) {
         p_clcb->status = GATT_SUCCESS;
-        /* application should verify handle offset
-           and value are matched or not */
+
+
 
         gatt_end_operation(p_clcb, p_clcb->status, &value);
     } else if (p_clcb->op_subtype == GATT_WRITE ) {

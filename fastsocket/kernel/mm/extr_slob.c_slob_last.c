@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  slob_t ;
 
-/* Variables and functions */
- unsigned long PAGE_MASK ; 
- scalar_t__ slob_next (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int slob_t ;
+
+
+ unsigned long PAGE_MASK ;
+ scalar_t__ slob_next (int *) ;
 
 __attribute__((used)) static int slob_last(slob_t *s)
 {
-	return !((unsigned long)slob_next(s) & ~PAGE_MASK);
+ return !((unsigned long)slob_next(s) & ~PAGE_MASK);
 }

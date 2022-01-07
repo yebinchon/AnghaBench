@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mp_ring {int /*<<< orphan*/  rpos; scalar_t__ buffer; } ;
 
-/* Variables and functions */
- int MPMIN (int,int) ; 
- int /*<<< orphan*/  atomic_fetch_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,scalar_t__,int) ; 
- int mp_ring_buffered (struct mp_ring*) ; 
- int mp_ring_get_rpos (struct mp_ring*) ; 
- int mp_ring_size (struct mp_ring*) ; 
+
+
+
+struct mp_ring {int rpos; scalar_t__ buffer; } ;
+
+
+ int MPMIN (int,int) ;
+ int atomic_fetch_add (int *,int) ;
+ int memcpy (unsigned char*,scalar_t__,int) ;
+ int mp_ring_buffered (struct mp_ring*) ;
+ int mp_ring_get_rpos (struct mp_ring*) ;
+ int mp_ring_size (struct mp_ring*) ;
 
 int mp_ring_read(struct mp_ring *buffer, unsigned char *dest, int len)
 {
-    int size     = mp_ring_size(buffer);
+    int size = mp_ring_size(buffer);
     int buffered = mp_ring_buffered(buffer);
     int read_len = MPMIN(len, buffered);
     int read_ptr = mp_ring_get_rpos(buffer) % size;

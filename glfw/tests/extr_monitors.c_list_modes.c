@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {float width; int height; } ;
-typedef  TYPE_1__ GLFWvidmode ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
+typedef TYPE_1__ GLFWvidmode ;
+typedef int GLFWmonitor ;
 
-/* Variables and functions */
- char* format_mode (TYPE_1__ const*) ; 
- int /*<<< orphan*/  glfwGetMonitorContentScale (int /*<<< orphan*/ *,float*,float*) ; 
- char* glfwGetMonitorName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetMonitorPhysicalSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetMonitorPos (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetMonitorWorkarea (int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int /*<<< orphan*/ * glfwGetPrimaryMonitor () ; 
- TYPE_1__* glfwGetVideoMode (int /*<<< orphan*/ *) ; 
- TYPE_1__* glfwGetVideoModes (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ memcmp (TYPE_1__ const*,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  putchar (char) ; 
+
+ char* format_mode (TYPE_1__ const*) ;
+ int glfwGetMonitorContentScale (int *,float*,float*) ;
+ char* glfwGetMonitorName (int *) ;
+ int glfwGetMonitorPhysicalSize (int *,int*,int*) ;
+ int glfwGetMonitorPos (int *,int*,int*) ;
+ int glfwGetMonitorWorkarea (int *,int*,int*,int*,int*) ;
+ int * glfwGetPrimaryMonitor () ;
+ TYPE_1__* glfwGetVideoMode (int *) ;
+ TYPE_1__* glfwGetVideoModes (int *,int*) ;
+ scalar_t__ memcmp (TYPE_1__ const*,TYPE_1__ const*,int) ;
+ int printf (char*,...) ;
+ int putchar (char) ;
 
 __attribute__((used)) static void list_modes(GLFWmonitor* monitor)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static void list_modes(GLFWmonitor* monitor)
 
     printf("Modes:\n");
 
-    for (i = 0;  i < count;  i++)
+    for (i = 0; i < count; i++)
     {
         printf("%3u: %s", (unsigned int) i, format_mode(modes + i));
 

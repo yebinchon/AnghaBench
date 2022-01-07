@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yyscan_t ;
-typedef  int /*<<< orphan*/  vlc_css_parser_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  YY_BUFFER_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  yy_delete_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yy_scan_bytes (char const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yylex_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yylex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yyparse (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int yyscan_t ;
+typedef int vlc_css_parser_t ;
+typedef int uint8_t ;
+typedef int YY_BUFFER_STATE ;
+
+
+ int yy_delete_buffer (int ,int ) ;
+ int yy_scan_bytes (char const*,size_t,int ) ;
+ int yylex_destroy (int ) ;
+ int yylex_init (int *) ;
+ int yyparse (int ,int *) ;
 
 bool vlc_css_parser_ParseBytes( vlc_css_parser_t *p_parser, const uint8_t *p_data, size_t i_data )
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int int64_t ;
-struct TYPE_5__ {int (* io_open ) (TYPE_1__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int /*<<< orphan*/  EIO ; 
- int MKTAG (unsigned char,unsigned char,char,char) ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- int avio_rb64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,int*,int) ; 
- scalar_t__ avio_rl32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  memcmp (int*,int const*,int) ; 
- int stub1 (TYPE_1__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int64_t ;
+struct TYPE_5__ {int (* io_open ) (TYPE_1__*,int **,char const*,int ,int *) ;} ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_READ ;
+ int EIO ;
+ int MKTAG (unsigned char,unsigned char,char,char) ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int avio_rb32 (int *) ;
+ int avio_rb64 (int *) ;
+ int avio_read (int *,int*,int) ;
+ scalar_t__ avio_rl32 (int *) ;
+ int avio_seek (int *,int,int ) ;
+ int avio_tell (int *) ;
+ int ff_format_io_close (TYPE_1__*,int **) ;
+ int memcmp (int*,int const*,int) ;
+ int stub1 (TYPE_1__*,int **,char const*,int ,int *) ;
 
 __attribute__((used)) static int parse_fragment(AVFormatContext *s, const char *filename, int64_t *start_ts, int64_t *duration, int64_t *moof_size, int64_t size)
 {
     AVIOContext *in;
     int ret;
     uint32_t len;
-    if ((ret = s->io_open(s, &in, filename, AVIO_FLAG_READ, NULL)) < 0)
+    if ((ret = s->io_open(s, &in, filename, AVIO_FLAG_READ, ((void*)0))) < 0)
         return ret;
     ret = AVERROR(EIO);
     *moof_size = avio_rb32(in);
@@ -54,7 +54,7 @@ __attribute__((used)) static int parse_fragment(AVFormatContext *s, const char *
     if (avio_rl32(in) != MKTAG('m','f','h','d'))
         goto fail;
     avio_seek(in, len - 8, SEEK_CUR);
-    avio_rb32(in); /* traf size */
+    avio_rb32(in);
     if (avio_rl32(in) != MKTAG('t','r','a','f'))
         goto fail;
     while (avio_tell(in) < *moof_size) {

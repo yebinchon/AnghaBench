@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
 struct TYPE_12__ {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
 struct rusage {TYPE_4__ ru_stime; TYPE_3__ ru_utime; } ;
-struct TYPE_18__ {int /*<<< orphan*/  waiting_ct; int /*<<< orphan*/  total_jobs_ct; int /*<<< orphan*/  buried_ct; int /*<<< orphan*/  reserved_ct; int /*<<< orphan*/  urgent_ct; } ;
-struct TYPE_17__ {int /*<<< orphan*/  machine; int /*<<< orphan*/  version; int /*<<< orphan*/  nodename; } ;
-struct TYPE_16__ {int /*<<< orphan*/  len; } ;
-struct TYPE_14__ {int /*<<< orphan*/  filesize; int /*<<< orphan*/  nrec; int /*<<< orphan*/  nmig; TYPE_2__* cur; TYPE_1__* head; } ;
+struct TYPE_18__ {int waiting_ct; int total_jobs_ct; int buried_ct; int reserved_ct; int urgent_ct; } ;
+struct TYPE_17__ {int machine; int version; int nodename; } ;
+struct TYPE_16__ {int len; } ;
+struct TYPE_14__ {int filesize; int nrec; int nmig; TYPE_2__* cur; TYPE_1__* head; } ;
 struct TYPE_15__ {TYPE_5__ wal; } ;
 struct TYPE_11__ {int seq; } ;
 struct TYPE_10__ {int seq; } ;
-typedef  TYPE_6__ Server ;
+typedef TYPE_6__ Server ;
 
-/* Variables and functions */
- size_t OP_BURY ; 
- size_t OP_DELETE ; 
- size_t OP_IGNORE ; 
- size_t OP_KICK ; 
- size_t OP_LIST_TUBES ; 
- size_t OP_LIST_TUBES_WATCHED ; 
- size_t OP_LIST_TUBE_USED ; 
- size_t OP_PAUSE_TUBE ; 
- size_t OP_PEEKJOB ; 
- size_t OP_PEEK_BURIED ; 
- size_t OP_PEEK_DELAYED ; 
- size_t OP_PEEK_READY ; 
- size_t OP_PUT ; 
- size_t OP_RELEASE ; 
- size_t OP_RESERVE ; 
- size_t OP_RESERVE_TIMEOUT ; 
- size_t OP_STATS ; 
- size_t OP_STATSJOB ; 
- size_t OP_STATS_TUBE ; 
- size_t OP_TOUCH ; 
- size_t OP_USE ; 
- size_t OP_WATCH ; 
- int /*<<< orphan*/  RUSAGE_SELF ; 
- char* STATS_FMT ; 
- int /*<<< orphan*/  count_cur_conns () ; 
- int /*<<< orphan*/  count_cur_producers () ; 
- int /*<<< orphan*/  count_cur_workers () ; 
- int /*<<< orphan*/  count_tot_conns () ; 
- scalar_t__ drain_mode ; 
- int /*<<< orphan*/  get_delayed_job_ct () ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  getrusage (int /*<<< orphan*/ ,struct rusage*) ; 
- TYPE_9__ global_stat ; 
- int /*<<< orphan*/  instance_hex ; 
- int /*<<< orphan*/  job_data_size_limit ; 
- TYPE_8__ node_info ; 
- int /*<<< orphan*/ * op_ct ; 
- int /*<<< orphan*/  ready_ct ; 
- int snprintf (char*,size_t,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,long,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timeout_ct ; 
- TYPE_7__ tubes ; 
- int /*<<< orphan*/  uptime () ; 
- int /*<<< orphan*/  version ; 
+
+ size_t OP_BURY ;
+ size_t OP_DELETE ;
+ size_t OP_IGNORE ;
+ size_t OP_KICK ;
+ size_t OP_LIST_TUBES ;
+ size_t OP_LIST_TUBES_WATCHED ;
+ size_t OP_LIST_TUBE_USED ;
+ size_t OP_PAUSE_TUBE ;
+ size_t OP_PEEKJOB ;
+ size_t OP_PEEK_BURIED ;
+ size_t OP_PEEK_DELAYED ;
+ size_t OP_PEEK_READY ;
+ size_t OP_PUT ;
+ size_t OP_RELEASE ;
+ size_t OP_RESERVE ;
+ size_t OP_RESERVE_TIMEOUT ;
+ size_t OP_STATS ;
+ size_t OP_STATSJOB ;
+ size_t OP_STATS_TUBE ;
+ size_t OP_TOUCH ;
+ size_t OP_USE ;
+ size_t OP_WATCH ;
+ int RUSAGE_SELF ;
+ char* STATS_FMT ;
+ int count_cur_conns () ;
+ int count_cur_producers () ;
+ int count_cur_workers () ;
+ int count_tot_conns () ;
+ scalar_t__ drain_mode ;
+ int get_delayed_job_ct () ;
+ scalar_t__ getpid () ;
+ int getrusage (int ,struct rusage*) ;
+ TYPE_9__ global_stat ;
+ int instance_hex ;
+ int job_data_size_limit ;
+ TYPE_8__ node_info ;
+ int * op_ct ;
+ int ready_ct ;
+ int snprintf (char*,size_t,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,long,int ,int,int,int,int,int ,int,int,int ,int ,int ,char*,int ,int ,int ,int ) ;
+ int timeout_ct ;
+ TYPE_7__ tubes ;
+ int uptime () ;
+ int version ;
 
 __attribute__((used)) static int
 fmt_stats(char *buf, size_t size, void *x)
@@ -93,7 +93,7 @@ fmt_stats(char *buf, size_t size, void *x)
         wcur = s->wal.cur->seq;
     }
 
-    getrusage(RUSAGE_SELF, &ru); /* don't care if it fails */
+    getrusage(RUSAGE_SELF, &ru);
     return snprintf(buf, size, STATS_FMT,
                     global_stat.urgent_ct,
                     ready_ct,

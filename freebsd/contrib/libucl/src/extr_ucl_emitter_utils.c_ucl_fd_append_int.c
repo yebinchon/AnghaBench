@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  intmax_t ;
-typedef  int /*<<< orphan*/  intbuf ;
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int write (int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int intmax_t ;
+typedef int intbuf ;
+typedef scalar_t__ int64_t ;
+
+
+ int snprintf (char*,int,char*,int ) ;
+ int strlen (char*) ;
+ int write (int,char*,int ) ;
 
 __attribute__((used)) static int
 ucl_fd_append_int (int64_t val, void *ud)
 {
-	int fd = *(int *)ud;
-	char intbuf[64];
+ int fd = *(int *)ud;
+ char intbuf[64];
 
-	snprintf (intbuf, sizeof (intbuf), "%jd", (intmax_t)val);
-	return write (fd, intbuf, strlen (intbuf));
+ snprintf (intbuf, sizeof (intbuf), "%jd", (intmax_t)val);
+ return write (fd, intbuf, strlen (intbuf));
 }

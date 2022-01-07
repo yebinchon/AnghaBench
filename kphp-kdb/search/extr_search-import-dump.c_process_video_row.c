@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {int rate2; unsigned int obj_id; char* text; scalar_t__ rate; scalar_t__ type; } ;
-struct lev_search_text_long_entry {int rate2; unsigned int obj_id; int text_len; char* text; scalar_t__ rate; int /*<<< orphan*/  type; } ;
+struct lev_search_text_long_entry {int rate2; unsigned int obj_id; int text_len; char* text; scalar_t__ rate; int type; } ;
 
-/* Variables and functions */
- int* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/  fits (int) ; 
- size_t vi_description ; 
- size_t vi_duration ; 
- size_t vi_id ; 
- size_t vi_owner_id ; 
- size_t vi_privacy ; 
- size_t vi_source ; 
- size_t vi_title ; 
- size_t vi_uploaded ; 
- void* write_alloc (int) ; 
+
+ int* I ;
+ int* L ;
+ int LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ char** S ;
+ int adj_rec ;
+ int fits (int) ;
+ size_t vi_description ;
+ size_t vi_duration ;
+ size_t vi_id ;
+ size_t vi_owner_id ;
+ size_t vi_privacy ;
+ size_t vi_source ;
+ size_t vi_title ;
+ size_t vi_uploaded ;
+ void* write_alloc (int) ;
 
 void process_video_row (void) {
   char *p, *q;

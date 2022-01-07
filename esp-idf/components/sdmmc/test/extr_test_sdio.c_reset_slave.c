@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int pin_bit_mask; int /*<<< orphan*/  mode; } ;
-typedef  TYPE_1__ gpio_config_t ;
 
-/* Variables and functions */
- int BIT (int const) ; 
- int /*<<< orphan*/  GPIO_MODE_OUTPUT_OD ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_config (TYPE_1__*) ; 
- int /*<<< orphan*/  gpio_set_level (int const,int) ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pin_bit_mask; int mode; } ;
+typedef TYPE_1__ gpio_config_t ;
+
+
+ int BIT (int const) ;
+ int GPIO_MODE_OUTPUT_OD ;
+ int TEST_ESP_OK (int ) ;
+ int gpio_config (TYPE_1__*) ;
+ int gpio_set_level (int const,int) ;
+ int portTICK_PERIOD_MS ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void reset_slave(void)
 {

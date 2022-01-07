@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int stub1 (unsigned int) ; 
+ int stub1 (unsigned int) ;
 
 __attribute__((used)) static unsigned int smbb_hw_lookup(unsigned int val, int (*fn)(unsigned int))
 {
-	unsigned int widx;
-	unsigned int sel;
+ unsigned int widx;
+ unsigned int sel;
 
-	for (widx = sel = 0; (*fn)(widx) <= val; ++widx)
-		sel = widx;
+ for (widx = sel = 0; (*fn)(widx) <= val; ++widx)
+  sel = widx;
 
-	return sel;
+ return sel;
 }

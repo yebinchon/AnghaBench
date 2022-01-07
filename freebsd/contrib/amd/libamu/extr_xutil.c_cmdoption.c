@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct opt_tab {int /*<<< orphan*/  flag; scalar_t__ opt; } ;
 
-/* Variables and functions */
- scalar_t__ STREQ (char*,scalar_t__) ; 
- int /*<<< orphan*/  XLOG_ERROR ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*,char*) ; 
- char* strchr (char*,char) ; 
+
+
+
+typedef int u_int ;
+struct opt_tab {int flag; scalar_t__ opt; } ;
+
+
+ scalar_t__ STREQ (char*,scalar_t__) ;
+ int XLOG_ERROR ;
+ int plog (int ,char*,char*) ;
+ char* strchr (char*,char) ;
 
 int
 cmdoption(char *s, struct opt_tab *optb, u_int *flags)
@@ -28,14 +28,14 @@ cmdoption(char *s, struct opt_tab *optb, u_int *flags)
   while (p && *p) {
     int neg;
     char *opt;
-    struct opt_tab *dp, *dpn = NULL;
+    struct opt_tab *dp, *dpn = ((void*)0);
 
     s = p;
     p = strchr(p, ',');
     if (p)
       *p = '\0';
 
-    /* check for "no" prefix to options */
+
     if (s[0] == 'n' && s[1] == 'o') {
       opt = s + 2;
       neg = 1;
@@ -44,40 +44,40 @@ cmdoption(char *s, struct opt_tab *optb, u_int *flags)
       neg = 0;
     }
 
-    /*
-     * Scan the array of debug options to find the
-     * corresponding flag value.  If it is found
-     * then set (or clear) the flag (depending on
-     * whether the option was prefixed with "no").
-     */
+
+
+
+
+
+
     for (dp = optb; dp->opt; dp++) {
       if (STREQ(opt, dp->opt))
-	break;
+ break;
       if (opt != s && !dpn && STREQ(s, dp->opt))
-	dpn = dp;
+ dpn = dp;
     }
 
     if (dp->opt || dpn) {
       if (!dp->opt) {
-	dp = dpn;
-	neg = !neg;
+ dp = dpn;
+ neg = !neg;
       }
       if (neg)
-	*flags &= ~dp->flag;
+ *flags &= ~dp->flag;
       else
-	*flags |= dp->flag;
+ *flags |= dp->flag;
     } else {
-      /*
-       * This will log to stderr when parsing the command line
-       * since any -l option will not yet have taken effect.
-       */
+
+
+
+
       plog(XLOG_ERROR, "option \"%s\" not recognized", s);
       errs++;
     }
 
-    /*
-     * Put the comma back
-     */
+
+
+
     if (p)
       *p++ = ',';
   }

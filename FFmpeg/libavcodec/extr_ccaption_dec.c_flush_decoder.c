@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int flags2; TYPE_2__* priv_data; } ;
-struct TYPE_6__ {int rollup; int cursor_row; int /*<<< orphan*/  buffer; scalar_t__ readorder; scalar_t__ buffer_changed; scalar_t__ screen_touched; scalar_t__ last_real_time; scalar_t__ active_screen; scalar_t__ cursor_charset; scalar_t__ cursor_color; scalar_t__ cursor_font; scalar_t__ cursor_column; int /*<<< orphan*/  mode; scalar_t__* prev_cmd; TYPE_1__* screen; } ;
+struct TYPE_6__ {int rollup; int cursor_row; int buffer; scalar_t__ readorder; scalar_t__ buffer_changed; scalar_t__ screen_touched; scalar_t__ last_real_time; scalar_t__ active_screen; scalar_t__ cursor_charset; scalar_t__ cursor_color; scalar_t__ cursor_font; scalar_t__ cursor_column; int mode; scalar_t__* prev_cmd; TYPE_1__* screen; } ;
 struct TYPE_5__ {scalar_t__ row_used; } ;
-typedef  TYPE_2__ CCaptionSubContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ CCaptionSubContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AV_CODEC_FLAG2_RO_FLUSH_NOOP ; 
- int /*<<< orphan*/  CCMODE_ROLLUP ; 
- int /*<<< orphan*/  av_bprint_clear (int /*<<< orphan*/ *) ; 
+
+ int AV_CODEC_FLAG2_RO_FLUSH_NOOP ;
+ int CCMODE_ROLLUP ;
+ int av_bprint_clear (int *) ;
 
 __attribute__((used)) static void flush_decoder(AVCodecContext *avctx)
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GXV_Validator ;
-typedef  int /*<<< orphan*/  FT_UShort ;
-typedef  scalar_t__ FT_Short ;
-typedef  int /*<<< orphan*/  FT_Bytes ;
 
-/* Variables and functions */
- scalar_t__ FT_NEXT_SHORT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GXV_EXIT ; 
- int /*<<< orphan*/  GXV_LIMIT_CHECK (int) ; 
- int /*<<< orphan*/  GXV_NAME_ENTER (char*) ; 
- int /*<<< orphan*/  GXV_TRACE (char*) ; 
- int /*<<< orphan*/  gxv_sfntName_validate (int /*<<< orphan*/ ,int,unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GXV_Validator ;
+typedef int FT_UShort ;
+typedef scalar_t__ FT_Short ;
+typedef int FT_Bytes ;
+
+
+ scalar_t__ FT_NEXT_SHORT (int ) ;
+ int GXV_EXIT ;
+ int GXV_LIMIT_CHECK (int) ;
+ int GXV_NAME_ENTER (char*) ;
+ int GXV_TRACE (char*) ;
+ int gxv_sfntName_validate (int ,int,unsigned int,int ) ;
 
 __attribute__((used)) static void
-  gxv_feat_name_index_validate( FT_Bytes       table,
-                                FT_Bytes       limit,
-                                GXV_Validator  gxvalid )
+  gxv_feat_name_index_validate( FT_Bytes table,
+                                FT_Bytes limit,
+                                GXV_Validator gxvalid )
   {
-    FT_Bytes  p = table;
+    FT_Bytes p = table;
 
-    FT_Short  nameIndex;
+    FT_Short nameIndex;
 
 
     GXV_NAME_ENTER( "nameIndex" );

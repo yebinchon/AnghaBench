@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- size_t mg_fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_send (struct mg_connection*,char*,size_t) ; 
+
+ int BUFSIZ ;
+ size_t mg_fread (char*,int,int,int *) ;
+ int mg_send (struct mg_connection*,char*,size_t) ;
 
 __attribute__((used)) static void mg_send_file_data(struct mg_connection *nc, FILE *fp) {
   char buf[BUFSIZ];

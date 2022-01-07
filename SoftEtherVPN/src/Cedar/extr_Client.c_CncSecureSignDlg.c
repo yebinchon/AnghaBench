@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  SECURE_SIGN ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CncConnect () ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcSecureSign (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InRpcSecureSign (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  OutRpcSecureSign (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int PackGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * RecvPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendPack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Zero (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int SOCK ;
+typedef int SECURE_SIGN ;
+typedef int PACK ;
+
+
+ int * CncConnect () ;
+ int Disconnect (int *) ;
+ int FreePack (int *) ;
+ int FreeRpcSecureSign (int *) ;
+ int InRpcSecureSign (int *,int *) ;
+ int * NewPack () ;
+ int OutRpcSecureSign (int *,int *) ;
+ int PackAddStr (int *,char*,char*) ;
+ int PackGetBool (int *,char*) ;
+ int * RecvPack (int *) ;
+ int ReleaseSock (int *) ;
+ int SendPack (int *,int *) ;
+ int Zero (int *,int) ;
 
 bool CncSecureSignDlg(SECURE_SIGN *sign)
 {
-	SOCK *s;
-	PACK *p;
-	bool ret = false;
-	// Validate arguments
-	if (sign == NULL)
-	{
-		return false;
-	}
+ SOCK *s;
+ PACK *p;
+ bool ret = 0;
 
-	s = CncConnect();
-	if (s == NULL)
-	{
-		return false;
-	}
+ if (sign == ((void*)0))
+ {
+  return 0;
+ }
 
-	p = NewPack();
-	PackAddStr(p, "function", "secure_sign");
-	OutRpcSecureSign(p, sign);
+ s = CncConnect();
+ if (s == ((void*)0))
+ {
+  return 0;
+ }
 
-	SendPack(s, p);
-	FreePack(p);
+ p = NewPack();
+ PackAddStr(p, "function", "secure_sign");
+ OutRpcSecureSign(p, sign);
 
-	p = RecvPack(s);
-	if (p != NULL)
-	{
-		ret = PackGetBool(p, "ret");
+ SendPack(s, p);
+ FreePack(p);
 
-		if (ret)
-		{
-			FreeRpcSecureSign(sign);
+ p = RecvPack(s);
+ if (p != ((void*)0))
+ {
+  ret = PackGetBool(p, "ret");
 
-			Zero(sign, sizeof(SECURE_SIGN));
-			InRpcSecureSign(sign, p);
-		}
+  if (ret)
+  {
+   FreeRpcSecureSign(sign);
 
-		FreePack(p);
-	}
+   Zero(sign, sizeof(SECURE_SIGN));
+   InRpcSecureSign(sign, p);
+  }
 
-	Disconnect(s);
-	ReleaseSock(s);
+  FreePack(p);
+ }
 
-	return ret;
+ Disconnect(s);
+ ReleaseSock(s);
+
+ return ret;
 }

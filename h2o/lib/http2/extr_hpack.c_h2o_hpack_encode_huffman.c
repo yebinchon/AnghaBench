@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
 struct TYPE_3__ {int nbits; scalar_t__ code; } ;
-typedef  TYPE_1__ nghttp2_huff_sym ;
+typedef TYPE_1__ nghttp2_huff_sym ;
 
-/* Variables and functions */
- size_t SIZE_MAX ; 
- TYPE_1__* huff_sym_table ; 
+
+ size_t SIZE_MAX ;
+ TYPE_1__* huff_sym_table ;
 
 size_t h2o_hpack_encode_huffman(uint8_t *_dst, const uint8_t *src, size_t len)
 {

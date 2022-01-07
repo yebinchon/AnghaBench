@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_compiler {int /*<<< orphan*/  hm_composite_typename; int /*<<< orphan*/ * hm_combinator; int /*<<< orphan*/ * hm_magic; int /*<<< orphan*/  tmp_error_buff; int /*<<< orphan*/ * error_msg; } ;
 
-/* Variables and functions */
- int TL_MAX_ERRORS ; 
- int /*<<< orphan*/  cstr_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tl_hashmap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tl_list_expressions_free (struct tl_compiler*,int) ; 
- int /*<<< orphan*/  tl_string_buffer_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct tl_compiler {int hm_composite_typename; int * hm_combinator; int * hm_magic; int tmp_error_buff; int * error_msg; } ;
+
+
+ int TL_MAX_ERRORS ;
+ int cstr_free (int *) ;
+ int tl_hashmap_free (int *) ;
+ int tl_list_expressions_free (struct tl_compiler*,int) ;
+ int tl_string_buffer_free (int *) ;
 
 void tl_compiler_free (struct tl_compiler *C) {
   int i;

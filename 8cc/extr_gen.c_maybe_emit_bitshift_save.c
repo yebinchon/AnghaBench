@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ bitsize; int bitoff; } ;
-typedef  TYPE_1__ Type ;
+typedef TYPE_1__ Type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAVE ; 
- int /*<<< orphan*/  emit (char*,...) ; 
- int /*<<< orphan*/  get_int_reg (TYPE_1__*,char) ; 
- int /*<<< orphan*/  pop (char*) ; 
- int /*<<< orphan*/  push (char*) ; 
+
+ int SAVE ;
+ int emit (char*,...) ;
+ int get_int_reg (TYPE_1__*,char) ;
+ int pop (char*) ;
+ int push (char*) ;
 
 __attribute__((used)) static void maybe_emit_bitshift_save(Type *ty, char *addr) {
     SAVE;

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct HelloTypeObject {struct HelloTypeNode* head; } ;
-struct HelloTypeNode {struct HelloTypeNode* next; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleKey ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
+struct HelloTypeNode {struct HelloTypeNode* next; int value; } ;
+typedef int RedisModuleString ;
+typedef int RedisModuleKey ;
+typedef int RedisModuleCtx ;
 
-/* Variables and functions */
- scalar_t__ HelloType ; 
- char* REDISMODULE_ERRORMSG_WRONGTYPE ; 
- int REDISMODULE_KEYTYPE_EMPTY ; 
- scalar_t__ REDISMODULE_OK ; 
- int /*<<< orphan*/  REDISMODULE_POSTPONED_ARRAY_LEN ; 
- int REDISMODULE_READ ; 
- int REDISMODULE_WRITE ; 
- int /*<<< orphan*/  RedisModule_AutoMemory (int /*<<< orphan*/ *) ; 
- int RedisModule_KeyType (int /*<<< orphan*/ *) ; 
- scalar_t__ RedisModule_ModuleTypeGetType (int /*<<< orphan*/ *) ; 
- struct HelloTypeObject* RedisModule_ModuleTypeGetValue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_OpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RedisModule_ReplySetArrayLength (int /*<<< orphan*/ *,long long) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithArray (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithLongLong (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RedisModule_StringToLongLong (int /*<<< orphan*/ *,long long*) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ HelloType ;
+ char* REDISMODULE_ERRORMSG_WRONGTYPE ;
+ int REDISMODULE_KEYTYPE_EMPTY ;
+ scalar_t__ REDISMODULE_OK ;
+ int REDISMODULE_POSTPONED_ARRAY_LEN ;
+ int REDISMODULE_READ ;
+ int REDISMODULE_WRITE ;
+ int RedisModule_AutoMemory (int *) ;
+ int RedisModule_KeyType (int *) ;
+ scalar_t__ RedisModule_ModuleTypeGetType (int *) ;
+ struct HelloTypeObject* RedisModule_ModuleTypeGetValue (int *) ;
+ int * RedisModule_OpenKey (int *,int *,int) ;
+ int RedisModule_ReplySetArrayLength (int *,long long) ;
+ int RedisModule_ReplyWithArray (int *,int ) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithLongLong (int *,int ) ;
+ scalar_t__ RedisModule_StringToLongLong (int *,long long*) ;
+ int RedisModule_WrongArity (int *) ;
 
 int HelloTypeRange_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
-    RedisModule_AutoMemory(ctx); /* Use automatic memory management. */
+    RedisModule_AutoMemory(ctx);
 
     if (argc != 4) return RedisModule_WrongArity(ctx);
     RedisModuleKey *key = RedisModule_OpenKey(ctx,argv[1],
@@ -59,7 +59,7 @@ int HelloTypeRange_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, i
     }
 
     struct HelloTypeObject *hto = RedisModule_ModuleTypeGetValue(key);
-    struct HelloTypeNode *node = hto ? hto->head : NULL;
+    struct HelloTypeNode *node = hto ? hto->head : ((void*)0);
     RedisModule_ReplyWithArray(ctx,REDISMODULE_POSTPONED_ARRAY_LEN);
     long long arraylen = 0;
     while(node && count--) {

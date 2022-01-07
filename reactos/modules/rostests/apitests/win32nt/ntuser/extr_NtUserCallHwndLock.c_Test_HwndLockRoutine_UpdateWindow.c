@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int NtUserCallHwndLock (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST (int) ; 
+
+
+
+typedef int HWND ;
+
+
+ int NtUserCallHwndLock (int ,int) ;
+ int TEST (int) ;
 
 void
-Test_HwndLockRoutine_UpdateWindow(HWND hWnd) /* 0x5e */
+Test_HwndLockRoutine_UpdateWindow(HWND hWnd)
 {
     TEST(NtUserCallHwndLock(hWnd, 0x5e) == 1);
 

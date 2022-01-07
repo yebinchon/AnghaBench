@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct device_node {int dummy; } ;
-struct device {int /*<<< orphan*/ * driver; struct device_node const* of_node; } ;
-struct TYPE_2__ {int /*<<< orphan*/  driver; } ;
+struct device {int * driver; struct device_node const* of_node; } ;
+struct TYPE_2__ {int driver; } ;
 
-/* Variables and functions */
- TYPE_1__ isp1301_driver ; 
+
+ TYPE_1__ isp1301_driver ;
 
 __attribute__((used)) static int match(struct device *dev, const void *data)
 {
-	const struct device_node *node = (const struct device_node *)data;
-	return (dev->of_node == node) &&
-		(dev->driver == &isp1301_driver.driver);
+ const struct device_node *node = (const struct device_node *)data;
+ return (dev->of_node == node) &&
+  (dev->driver == &isp1301_driver.driver);
 }

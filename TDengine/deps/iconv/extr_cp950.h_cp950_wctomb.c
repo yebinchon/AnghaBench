@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
- int /*<<< orphan*/  abort () ; 
- int ascii_wctomb (int /*<<< orphan*/ ,unsigned char*,int,int) ; 
- int big5_wctomb (int /*<<< orphan*/ ,unsigned char*,int,int) ; 
- int cp950ext_wctomb (int /*<<< orphan*/ ,unsigned char*,int,int) ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
+ int abort () ;
+ int ascii_wctomb (int ,unsigned char*,int,int) ;
+ int big5_wctomb (int ,unsigned char*,int,int) ;
+ int cp950ext_wctomb (int ,unsigned char*,int,int) ;
 
 __attribute__((used)) static int
 cp950_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
@@ -27,12 +27,12 @@ cp950_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
   unsigned char buf[2];
   int ret;
 
-  /* Code set 0 (ASCII) */
+
   ret = ascii_wctomb(conv,r,wc,n);
   if (ret != RET_ILUNI)
     return ret;
 
-  /* Code set 1 (BIG5 extended) */
+
   switch (wc >> 8) {
     case 0x00:
       if (wc == 0x00af) { buf[0] = 0xa1; buf[1] = 0xc2; ret = 2; break; }
@@ -67,7 +67,7 @@ cp950_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     case 0xec: case 0xed: case 0xee: case 0xef: case 0xf0: case 0xf1:
     case 0xf2: case 0xf3: case 0xf4: case 0xf5: case 0xf6:
       {
-        /* User-defined characters */
+
         unsigned int i = wc - 0xe000;
         if (i < 5809) {
           unsigned int c1 = i / 157;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ VkResult ;
-typedef  int /*<<< orphan*/ * VkPhysicalDevice ;
-struct TYPE_4__ {int /*<<< orphan*/  extensionName; } ;
-typedef  TYPE_1__ VkExtensionProperties ;
 
-/* Variables and functions */
- scalar_t__ VK_SUCCESS ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ vkEnumerateDeviceExtensionProperties (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,TYPE_1__*) ; 
- scalar_t__ vkEnumerateInstanceExtensionProperties (int /*<<< orphan*/ *,int*,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ VkResult ;
+typedef int * VkPhysicalDevice ;
+struct TYPE_4__ {int extensionName; } ;
+typedef TYPE_1__ VkExtensionProperties ;
+
+
+ scalar_t__ VK_SUCCESS ;
+ scalar_t__ calloc (int,int) ;
+ int free (void*) ;
+ scalar_t__ malloc (size_t) ;
+ int memcpy (char*,int ,size_t) ;
+ int strlen (int ) ;
+ scalar_t__ vkEnumerateDeviceExtensionProperties (int *,int *,int*,TYPE_1__*) ;
+ scalar_t__ vkEnumerateInstanceExtensionProperties (int *,int*,TYPE_1__*) ;
 
 __attribute__((used)) static int glad_vk_get_extensions( VkPhysicalDevice physical_device, uint32_t *out_extension_count, char ***out_extensions) {
     uint32_t i;
@@ -37,17 +37,17 @@ __attribute__((used)) static int glad_vk_get_extensions( VkPhysicalDevice physic
     VkExtensionProperties *ext_properties;
     VkResult result;
 
-    if (vkEnumerateInstanceExtensionProperties == NULL || (physical_device != NULL && vkEnumerateDeviceExtensionProperties == NULL)) {
+    if (vkEnumerateInstanceExtensionProperties == ((void*)0) || (physical_device != ((void*)0) && vkEnumerateDeviceExtensionProperties == ((void*)0))) {
         return 0;
     }
 
-    result = vkEnumerateInstanceExtensionProperties(NULL, &instance_extension_count, NULL);
+    result = vkEnumerateInstanceExtensionProperties(((void*)0), &instance_extension_count, ((void*)0));
     if (result != VK_SUCCESS) {
         return 0;
     }
 
-    if (physical_device != NULL) {
-        result = vkEnumerateDeviceExtensionProperties(physical_device, NULL, &device_extension_count, NULL);
+    if (physical_device != ((void*)0)) {
+        result = vkEnumerateDeviceExtensionProperties(physical_device, ((void*)0), &device_extension_count, ((void*)0));
         if (result != VK_SUCCESS) {
             return 0;
         }
@@ -58,18 +58,18 @@ __attribute__((used)) static int glad_vk_get_extensions( VkPhysicalDevice physic
         ? instance_extension_count : device_extension_count;
 
     ext_properties = (VkExtensionProperties*) malloc(max_extension_count * sizeof(VkExtensionProperties));
-    if (ext_properties == NULL) {
+    if (ext_properties == ((void*)0)) {
         return 0;
     }
 
-    result = vkEnumerateInstanceExtensionProperties(NULL, &instance_extension_count, ext_properties);
+    result = vkEnumerateInstanceExtensionProperties(((void*)0), &instance_extension_count, ext_properties);
     if (result != VK_SUCCESS) {
         free((void*) ext_properties);
         return 0;
     }
 
     extensions = (char**) calloc(total_extension_count, sizeof(char*));
-    if (extensions == NULL) {
+    if (extensions == ((void*)0)) {
         free((void*) ext_properties);
         return 0;
     }
@@ -82,8 +82,8 @@ __attribute__((used)) static int glad_vk_get_extensions( VkPhysicalDevice physic
         memcpy(extensions[i], ext.extensionName, extension_name_length * sizeof(char));
     }
 
-    if (physical_device != NULL) {
-        result = vkEnumerateDeviceExtensionProperties(physical_device, NULL, &device_extension_count, ext_properties);
+    if (physical_device != ((void*)0)) {
+        result = vkEnumerateDeviceExtensionProperties(physical_device, ((void*)0), &device_extension_count, ext_properties);
         if (result != VK_SUCCESS) {
             for (i = 0; i < instance_extension_count; ++i) {
                 free((void*) extensions[i]);

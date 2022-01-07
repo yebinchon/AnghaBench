@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  check (char*,char*,char*,char*) ; 
+ int check (char*,char*,char*,char*) ;
 
 __attribute__((used)) static void test_poly1305(void)
 {
@@ -30,7 +22,7 @@ __attribute__((used)) static void test_poly1305(void)
         "dd3fab2251f11ac759f0887129cc2ee7",
         "",
         "dd3fab2251f11ac759f0887129cc2ee7");
-  
+
   check("48443d0bb0d21109c89a100b5ce2c208",
         "83149c69b561dd88298a1798b10716ef",
         "663cea190ffb83d89593f3f476b6bc24d7e679107ea26adb8caf6652d0656136",
@@ -41,7 +33,7 @@ __attribute__((used)) static void test_poly1305(void)
         "ab0812724a7f1e342742cbed374d94d136c6b8795d45b3819830f2c04491faf0990c62e48b8018b2c3e4a0fa3134cb67fa83e158c994d961c4cb21095c1bf9",
         "5154ad0d2cb26e01274fc51148491f1b");
 
-  /* extras from RFC7539 */
+
   check("02000000000000000000000000000000",
         "00000000000000000000000000000000",
         "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",

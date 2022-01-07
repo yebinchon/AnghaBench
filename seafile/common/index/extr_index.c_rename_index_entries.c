@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_state {int cache_alloc; int cache_nr; int cache_changed; scalar_t__ cache; } ;
 struct cache_entry {int dummy; } ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  CECallback ;
+typedef int gboolean ;
+typedef int CECallback ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  add_name_hash (struct index_state*,struct cache_entry*) ; 
- int /*<<< orphan*/  cache_entry_free (struct cache_entry*) ; 
- struct cache_entry** create_renamed_cache_entries (struct index_state*,char const*,char const*,int*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  free (struct cache_entry**) ; 
- int index_name_pos (struct index_state*,char const*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,struct cache_entry**,int) ; 
- int /*<<< orphan*/  memmove (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  remove_empty_parent_dir_entry (struct index_state*,char const*) ; 
- int /*<<< orphan*/  remove_from_index_with_prefix (struct index_state*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- int strlen (char const*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int add_name_hash (struct index_state*,struct cache_entry*) ;
+ int cache_entry_free (struct cache_entry*) ;
+ struct cache_entry** create_renamed_cache_entries (struct index_state*,char const*,char const*,int*,int ,void*) ;
+ int free (struct cache_entry**) ;
+ int index_name_pos (struct index_state*,char const*,int) ;
+ int memcpy (scalar_t__,struct cache_entry**,int) ;
+ int memmove (scalar_t__,scalar_t__,int) ;
+ int remove_empty_parent_dir_entry (struct index_state*,char const*) ;
+ int remove_from_index_with_prefix (struct index_state*,char const*,int *) ;
+ int seaf_warning (char*,...) ;
+ int strlen (char const*) ;
 
 int
 rename_index_entries (struct index_state *istate,
@@ -54,14 +54,14 @@ rename_index_entries (struct index_state *istate,
         return 0;
     }
 
-    /* Remove entries under dst_path. It's necessary for the situation that
-     * one file is renamed to overwrite another file.
-     */
-    remove_from_index_with_prefix (istate, dst_path, NULL);
+
+
+
+    remove_from_index_with_prefix (istate, dst_path, ((void*)0));
 
     remove_empty_parent_dir_entry (istate, dst_path);
 
-    /* Insert the renamed entries to their position. */
+
     int dst_pathlen = strlen(dst_path);
     int pos = index_name_pos (istate, dst_path, dst_pathlen);
     if (pos >= 0) {
@@ -72,10 +72,10 @@ rename_index_entries (struct index_state *istate,
 
     pos = -pos-1;
 
-    /* There should be at least n_entries free room in istate->cache array,
-     * since we just removed n_entries from the index in
-     * create_renamed_cache_entires(). 
-     */
+
+
+
+
     if (istate->cache_alloc - istate->cache_nr < n_entries) {
         seaf_warning ("BUG: not enough room to insert renamed entries.\n"
                    "cache_alloc: %u, cache_nr: %u, n_entries: %d.\n",

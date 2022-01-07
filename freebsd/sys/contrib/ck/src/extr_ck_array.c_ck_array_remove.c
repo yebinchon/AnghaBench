@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ck_array {unsigned int n_entries; struct _ck_array* transaction; struct _ck_array* active; int /*<<< orphan*/  allocator; } ;
+
+
+
+
+struct ck_array {unsigned int n_entries; struct _ck_array* transaction; struct _ck_array* active; int allocator; } ;
 struct _ck_array {void** values; unsigned int n_committed; int length; } ;
 
-/* Variables and functions */
- struct _ck_array* ck_array_create (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ck_pr_store_ptr (void**,void*) ; 
- int /*<<< orphan*/  memcpy (void**,void**,int) ; 
+
+ struct _ck_array* ck_array_create (int ,size_t) ;
+ int ck_pr_store_ptr (void**,void*) ;
+ int memcpy (void**,void**,int) ;
 
 bool
 ck_array_remove(struct ck_array *array, void *value)
 {
-	struct _ck_array *target;
-	unsigned int i;
+ struct _ck_array *target;
+ unsigned int i;
 
-	if (array->transaction != NULL) {
-		target = array->transaction;
+ if (array->transaction != ((void*)0)) {
+  target = array->transaction;
 
-		for (i = 0; i < array->n_entries; i++) {
-			if (target->values[i] == value) {
-				target->values[i] = target->values[--array->n_entries];
-				return true;
-			}
-		}
+  for (i = 0; i < array->n_entries; i++) {
+   if (target->values[i] == value) {
+    target->values[i] = target->values[--array->n_entries];
+    return 1;
+   }
+  }
 
-		return false;
-	}
+  return 0;
+ }
 
-	target = array->active;
+ target = array->active;
 
-	for (i = 0; i < array->n_entries; i++) {
-		if (target->values[i] == value)
-			break;
-	}
+ for (i = 0; i < array->n_entries; i++) {
+  if (target->values[i] == value)
+   break;
+ }
 
-	if (i == array->n_entries)
-		return false;
+ if (i == array->n_entries)
+  return 0;
 
-	/* If there are pending additions, immediately eliminate the operation. */
-	if (target->n_committed != array->n_entries) {
-		ck_pr_store_ptr(&target->values[i], target->values[--array->n_entries]);
-		return true;
-	}
 
-	/*
-	 * The assumption is that these allocations are small to begin with.
-	 * If there is no immediate opportunity for transaction, allocate a
-	 * transactional array which will be applied upon commit time.
-	 */
-	target = ck_array_create(array->allocator, array->n_entries);
-	if (target == NULL)
-		return false;
+ if (target->n_committed != array->n_entries) {
+  ck_pr_store_ptr(&target->values[i], target->values[--array->n_entries]);
+  return 1;
+ }
 
-	memcpy(target->values, array->active->values, sizeof(void *) * array->n_entries);
-	target->length = array->n_entries;
-	target->n_committed = array->n_entries;
-	target->values[i] = target->values[--array->n_entries];
 
-	array->transaction = target;
-	return true;
+
+
+
+
+ target = ck_array_create(array->allocator, array->n_entries);
+ if (target == ((void*)0))
+  return 0;
+
+ memcpy(target->values, array->active->values, sizeof(void *) * array->n_entries);
+ target->length = array->n_entries;
+ target->n_committed = array->n_entries;
+ target->values[i] = target->values[--array->n_entries];
+
+ array->transaction = target;
+ return 1;
 }

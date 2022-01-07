@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_NO_HZ_FULL ; 
- int /*<<< orphan*/  CONFIG_PREEMPT ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cond_resched () ; 
- scalar_t__ need_resched () ; 
- int /*<<< orphan*/  schedule () ; 
+ int CONFIG_NO_HZ_FULL ;
+ int CONFIG_PREEMPT ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int cond_resched () ;
+ scalar_t__ need_resched () ;
+ int schedule () ;
 
 __attribute__((used)) static void rcu_torture_fwd_prog_cond_resched(unsigned long iter)
 {
-	if (IS_ENABLED(CONFIG_PREEMPT) && IS_ENABLED(CONFIG_NO_HZ_FULL)) {
-		// Real call_rcu() floods hit userspace, so emulate that.
-		if (need_resched() || (iter & 0xfff))
-			schedule();
-	} else {
-		// No userspace emulation: CB invocation throttles call_rcu()
-		cond_resched();
-	}
+ if (IS_ENABLED(CONFIG_PREEMPT) && IS_ENABLED(CONFIG_NO_HZ_FULL)) {
+
+  if (need_resched() || (iter & 0xfff))
+   schedule();
+ } else {
+
+  cond_resched();
+ }
 }

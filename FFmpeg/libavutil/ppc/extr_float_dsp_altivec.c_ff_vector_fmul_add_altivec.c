@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec_f ;
 
-/* Variables and functions */
- int /*<<< orphan*/  s0 ; 
- int s1 ; 
- int s2 ; 
- int s3 ; 
- int /*<<< orphan*/  vcprm (int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  vec_ld (int,float const*) ; 
- int /*<<< orphan*/  vec_madd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec_perm (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vec_st (int /*<<< orphan*/ ,int,float*) ; 
+
+
+
+typedef int vec_f ;
+
+
+ int s0 ;
+ int s1 ;
+ int s2 ;
+ int s3 ;
+ int vcprm (int ,int,int,int) ;
+ int vec_ld (int,float const*) ;
+ int vec_madd (int ,int ,int ) ;
+ int vec_perm (int ,int ,int ) ;
+ int vec_st (int ,int,float*) ;
 
 void ff_vector_fmul_add_altivec(float *dst, const float *src0,
                                 const float *src1, const float *src2,

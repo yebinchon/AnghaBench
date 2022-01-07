@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef char uint8_t ;
+
+
 
 __attribute__((used)) static size_t
 prefix_codefence(uint8_t *data, size_t size)
 {
-	size_t i = 0, n = 0;
-	uint8_t c;
+ size_t i = 0, n = 0;
+ uint8_t c;
 
-	/* skipping initial spaces */
-	if (size < 3) return 0;
-	if (data[0] == ' ') { i++;
-	if (data[1] == ' ') { i++;
-	if (data[2] == ' ') { i++; } } }
 
-	/* looking at the hrule uint8_t */
-	if (i + 2 >= size || !(data[i] == '~' || data[i] == '`'))
-		return 0;
+ if (size < 3) return 0;
+ if (data[0] == ' ') { i++;
+ if (data[1] == ' ') { i++;
+ if (data[2] == ' ') { i++; } } }
 
-	c = data[i];
 
-	/* the whole line must be the uint8_t or whitespace */
-	while (i < size && data[i] == c) {
-		n++; i++;
-	}
+ if (i + 2 >= size || !(data[i] == '~' || data[i] == '`'))
+  return 0;
 
-	if (n < 3)
-		return 0;
+ c = data[i];
 
-	return i;
+
+ while (i < size && data[i] == c) {
+  n++; i++;
+ }
+
+ if (n < 3)
+  return 0;
+
+ return i;
 }

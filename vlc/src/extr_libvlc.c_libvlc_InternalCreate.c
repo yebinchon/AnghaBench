@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * vlc_custom_create ;
-struct TYPE_3__ {int /*<<< orphan*/  exit; int /*<<< orphan*/ * media_source_provider; int /*<<< orphan*/ * p_vlm; int /*<<< orphan*/ * main_playlist; int /*<<< orphan*/ * interfaces; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ libvlc_priv_t ;
-typedef  int /*<<< orphan*/  libvlc_int_t ;
 
-/* Variables and functions */
- TYPE_1__* libvlc_priv (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_ExitInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int * vlc_custom_create ;
+struct TYPE_3__ {int exit; int * media_source_provider; int * p_vlm; int * main_playlist; int * interfaces; int lock; } ;
+typedef TYPE_1__ libvlc_priv_t ;
+typedef int libvlc_int_t ;
+
+
+ TYPE_1__* libvlc_priv (int *) ;
+ int vlc_ExitInit (int *) ;
+ int vlc_mutex_init (int *) ;
 
 libvlc_int_t * libvlc_InternalCreate( void )
 {
     libvlc_int_t *p_libvlc;
     libvlc_priv_t *priv;
 
-    /* Allocate a libvlc instance object */
-    p_libvlc = (vlc_custom_create)( NULL, sizeof (*priv), "libvlc" );
-    if( p_libvlc == NULL )
-        return NULL;
+
+    p_libvlc = (vlc_custom_create)( ((void*)0), sizeof (*priv), "libvlc" );
+    if( p_libvlc == ((void*)0) )
+        return ((void*)0);
 
     priv = libvlc_priv (p_libvlc);
     vlc_mutex_init(&priv->lock);
-    priv->interfaces = NULL;
-    priv->main_playlist = NULL;
-    priv->p_vlm = NULL;
-    priv->media_source_provider = NULL;
+    priv->interfaces = ((void*)0);
+    priv->main_playlist = ((void*)0);
+    priv->p_vlm = ((void*)0);
+    priv->media_source_provider = ((void*)0);
 
     vlc_ExitInit( &priv->exit );
 

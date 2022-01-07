@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {unsigned int width; unsigned int height; } ;
-typedef  TYPE_1__ video_frame_info_t ;
+typedef TYPE_1__ video_frame_info_t ;
 struct TYPE_11__ {int size; } ;
-typedef  TYPE_2__ font_data_t ;
+typedef TYPE_2__ font_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEXT_ALIGN_CENTER ; 
- int /*<<< orphan*/  menu_display_blend_begin (TYPE_1__*) ; 
- int /*<<< orphan*/  menu_display_blend_end (TYPE_1__*) ; 
- int /*<<< orphan*/  menu_display_draw_quad (TYPE_1__*,int /*<<< orphan*/ ,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  menu_display_draw_text (TYPE_2__ const*,char*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,float,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  menu_display_draw_texture (TYPE_1__*,unsigned int,unsigned int,int,int,unsigned int,unsigned int,float*,uintptr_t) ; 
- int /*<<< orphan*/ * osk_dark ; 
+
+ int TEXT_ALIGN_CENTER ;
+ int menu_display_blend_begin (TYPE_1__*) ;
+ int menu_display_blend_end (TYPE_1__*) ;
+ int menu_display_draw_quad (TYPE_1__*,int ,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int *) ;
+ int menu_display_draw_text (TYPE_2__ const*,char*,unsigned int,unsigned int,unsigned int,unsigned int,unsigned int,int ,float,int,int ,int) ;
+ int menu_display_draw_texture (TYPE_1__*,unsigned int,unsigned int,int,int,unsigned int,unsigned int,float*,uintptr_t) ;
+ int * osk_dark ;
 
 void menu_display_draw_keyboard(
       uintptr_t hover_texture,
@@ -35,10 +35,10 @@ void menu_display_draw_keyboard(
 {
    unsigned i;
    int ptr_width, ptr_height;
-   unsigned width    = video_info->width;
-   unsigned height   = video_info->height;
+   unsigned width = video_info->width;
+   unsigned height = video_info->height;
 
-   float white[16]=  {
+   float white[16]= {
       1.00, 1.00, 1.00, 1.00,
       1.00, 1.00, 1.00, 1.00,
       1.00, 1.00, 1.00, 1.00,
@@ -51,7 +51,7 @@ void menu_display_draw_keyboard(
          width, height,
          &osk_dark[0]);
 
-   ptr_width  = width  / 11;
+   ptr_width = width / 11;
    ptr_height = height / 10;
 
    if (ptr_width >= ptr_height)
@@ -59,7 +59,7 @@ void menu_display_draw_keyboard(
 
    for (i = 0; i < 44; i++)
    {
-      int line_y     = (i / 11) * height / 10.0;
+      int line_y = (i / 11) * height / 10.0;
       unsigned color = 0xffffffff;
 
       if (i == id)
@@ -85,6 +85,6 @@ void menu_display_draw_keyboard(
             * ptr_width + ptr_width/2.0,
             height/2.0 + ptr_height + line_y + font->size / 3,
             width, height, color, TEXT_ALIGN_CENTER, 1.0f,
-            false, 0, false);
+            0, 0, 0);
    }
 }

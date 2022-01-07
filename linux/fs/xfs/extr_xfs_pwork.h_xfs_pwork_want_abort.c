@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfs_pwork {int /*<<< orphan*/  pctl; } ;
 
-/* Variables and functions */
- int xfs_pwork_ctl_want_abort (int /*<<< orphan*/ ) ; 
+
+
+
+struct xfs_pwork {int pctl; } ;
+
+
+ int xfs_pwork_ctl_want_abort (int ) ;
 
 __attribute__((used)) static inline bool
 xfs_pwork_want_abort(
-	struct xfs_pwork	*pwork)
+ struct xfs_pwork *pwork)
 {
-	return xfs_pwork_ctl_want_abort(pwork->pctl);
+ return xfs_pwork_ctl_want_abort(pwork->pctl);
 }

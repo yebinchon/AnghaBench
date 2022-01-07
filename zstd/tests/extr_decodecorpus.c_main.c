@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  genType_e ;
-typedef  int U32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int genType_e ;
+typedef int U32 ;
 struct TYPE_2__ {int contentSize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*) ; 
- int /*<<< orphan*/  MAX_DECOMPRESSED_SIZE_LOG ; 
- int /*<<< orphan*/  MIN (int /*<<< orphan*/ ,int) ; 
- int ZSTD_BLOCKSIZE_MAX ; 
- int /*<<< orphan*/  advancedUsage (char*) ; 
- int /*<<< orphan*/  g_displayLevel ; 
- unsigned int g_maxBlockSize ; 
- int /*<<< orphan*/  g_maxDecompressedSizeLog ; 
- int generateCorpus (int,unsigned int,char const*,char const*,int /*<<< orphan*/ ) ; 
- int generateCorpusWithDict (int,unsigned int,char const*,char const*,unsigned int,int /*<<< orphan*/ ) ; 
- int generateFile (int,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gt_block ; 
- int /*<<< orphan*/  gt_frame ; 
- int /*<<< orphan*/  longCommandWArg (char const**,char*) ; 
- int makeSeed () ; 
- TYPE_1__ opts ; 
- void* readInt (char const**) ; 
- void* readU32FromChar (char const**) ; 
- int runTestMode (int,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+ int DISPLAY (char*) ;
+ int MAX_DECOMPRESSED_SIZE_LOG ;
+ int MIN (int ,int) ;
+ int ZSTD_BLOCKSIZE_MAX ;
+ int advancedUsage (char*) ;
+ int g_displayLevel ;
+ unsigned int g_maxBlockSize ;
+ int g_maxDecompressedSizeLog ;
+ int generateCorpus (int,unsigned int,char const*,char const*,int ) ;
+ int generateCorpusWithDict (int,unsigned int,char const*,char const*,unsigned int,int ) ;
+ int generateFile (int,char const*,char const*,int ) ;
+ int gt_block ;
+ int gt_frame ;
+ int longCommandWArg (char const**,char*) ;
+ int makeSeed () ;
+ TYPE_1__ opts ;
+ void* readInt (char const**) ;
+ void* readU32FromChar (char const**) ;
+ int runTestMode (int,unsigned int,unsigned int,int ) ;
+ int strcmp (char const*,char*) ;
+ int strlen (char const*) ;
+ int usage (char*) ;
 
 int main(int argc, char** argv)
 {
@@ -46,20 +46,20 @@ int main(int argc, char** argv)
     unsigned numFiles = 0;
     unsigned testDuration = 0;
     int testMode = 0;
-    const char* path = NULL;
-    const char* origPath = NULL;
+    const char* path = ((void*)0);
+    const char* origPath = ((void*)0);
     int useDict = 0;
-    unsigned dictSize = (10 << 10); /* 10 kB default */
+    unsigned dictSize = (10 << 10);
     genType_e genType = gt_frame;
 
     int argNb;
 
-    /* Check command line */
+
     for (argNb=1; argNb<argc; argNb++) {
         const char* argument = argv[argNb];
-        if(!argument) continue;   /* Protection if argument empty */
+        if(!argument) continue;
 
-        /* Handle commands. Aggregated commands are allowed */
+
         if (argument[0]=='-') {
             argument++;
             while (*argument!=0) {
@@ -134,7 +134,7 @@ int main(int argc, char** argv)
                 default:
                     usage(argv[0]);
                     return 1;
-    }   }   }   }   /* for (argNb=1; argNb<argc; argNb++) */
+    } } } }
 
     if (!seedset) {
         seed = makeSeed();
@@ -161,7 +161,7 @@ int main(int argc, char** argv)
     } else if (useDict == 0){
         return generateCorpus(seed, numFiles, path, origPath, genType);
     } else {
-        /* should generate files with a dictionary */
+
         return generateCorpusWithDict(seed, numFiles, path, origPath, dictSize, genType);
     }
 

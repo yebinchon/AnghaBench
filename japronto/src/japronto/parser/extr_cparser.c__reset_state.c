@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct phr_chunked_decoder {int dummy; } ;
 struct TYPE_5__ {int consume_trailer; } ;
-struct TYPE_4__ {scalar_t__ buffer_end; scalar_t__ buffer_start; int /*<<< orphan*/  connection; scalar_t__ chunked_offset; TYPE_2__ chunked_decoder; int /*<<< orphan*/  content_length; int /*<<< orphan*/  transfer; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ Parser ;
+struct TYPE_4__ {scalar_t__ buffer_end; scalar_t__ buffer_start; int connection; scalar_t__ chunked_offset; TYPE_2__ chunked_decoder; int content_length; int transfer; int state; } ;
+typedef TYPE_1__ Parser ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTENT_LENGTH_UNSET ; 
- int /*<<< orphan*/  PARSER_CONNECTION_UNSET ; 
- int /*<<< orphan*/  PARSER_HEADERS ; 
- int /*<<< orphan*/  PARSER_TRANSFER_UNSET ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int CONTENT_LENGTH_UNSET ;
+ int PARSER_CONNECTION_UNSET ;
+ int PARSER_HEADERS ;
+ int PARSER_TRANSFER_UNSET ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static void _reset_state(Parser* self, bool disconnect) {
     self->state = PARSER_HEADERS;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct hxxx_bsfw_ep3b_ctx_s {int dummy; } ;
-typedef  int /*<<< orphan*/  pf_get_matchedxps ;
+typedef int pf_get_matchedxps ;
 struct TYPE_7__ {int nuh_layer_id; void* temporal_id_plus1; void* nal_type; } ;
-typedef  TYPE_1__ hevc_slice_segment_header_t ;
-typedef  int /*<<< orphan*/  bs_t ;
+typedef TYPE_1__ hevc_slice_segment_header_t ;
+typedef int bs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bs_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  bs_init_custom (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,struct hxxx_bsfw_ep3b_ctx_s*) ; 
- void* bs_read (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bs_skip (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  hevc_parse_slice_segment_header_rbsp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,TYPE_1__*) ; 
- int /*<<< orphan*/  hevc_rbsp_release_slice_header (TYPE_1__*) ; 
- int /*<<< orphan*/  hxxx_bsfw_ep3b_callbacks ; 
- int /*<<< orphan*/  hxxx_bsfw_ep3b_ctx_init (struct hxxx_bsfw_ep3b_ctx_s*) ; 
- scalar_t__ likely (TYPE_1__*) ; 
+
+ int bs_init (int *,int const*,size_t) ;
+ int bs_init_custom (int *,int const*,size_t,int *,struct hxxx_bsfw_ep3b_ctx_s*) ;
+ void* bs_read (int *,int) ;
+ int bs_skip (int *,int) ;
+ TYPE_1__* calloc (int,int) ;
+ int hevc_parse_slice_segment_header_rbsp (int *,int ,void*,TYPE_1__*) ;
+ int hevc_rbsp_release_slice_header (TYPE_1__*) ;
+ int hxxx_bsfw_ep3b_callbacks ;
+ int hxxx_bsfw_ep3b_ctx_init (struct hxxx_bsfw_ep3b_ctx_s*) ;
+ scalar_t__ likely (TYPE_1__*) ;
 
 hevc_slice_segment_header_t * hevc_decode_slice_header( const uint8_t *p_buf, size_t i_buf, bool b_escaped,
                                                         pf_get_matchedxps get_matchedxps, void *priv )
@@ -52,7 +52,7 @@ hevc_slice_segment_header_t * hevc_decode_slice_header( const uint8_t *p_buf, si
            !hevc_parse_slice_segment_header_rbsp( &bs, get_matchedxps, priv, p_sh ) )
         {
             hevc_rbsp_release_slice_header( p_sh );
-            p_sh = NULL;
+            p_sh = ((void*)0);
         }
     }
     return p_sh;

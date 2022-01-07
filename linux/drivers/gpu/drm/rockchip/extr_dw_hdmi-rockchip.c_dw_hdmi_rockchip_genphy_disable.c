@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rockchip_hdmi {int /*<<< orphan*/  phy; } ;
+
+
+
+
+struct rockchip_hdmi {int phy; } ;
 struct dw_hdmi {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  phy_power_off (int /*<<< orphan*/ ) ; 
+
+ int phy_power_off (int ) ;
 
 __attribute__((used)) static void dw_hdmi_rockchip_genphy_disable(struct dw_hdmi *dw_hdmi, void *data)
 {
-	struct rockchip_hdmi *hdmi = (struct rockchip_hdmi *)data;
+ struct rockchip_hdmi *hdmi = (struct rockchip_hdmi *)data;
 
-	phy_power_off(hdmi->phy);
+ phy_power_off(hdmi->phy);
 }

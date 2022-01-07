@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  PUNICODE_STRING ;
-typedef  int /*<<< orphan*/  PDRIVER_OBJECT ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_DEVICE_RASACD ; 
- int /*<<< orphan*/  IoCreateDevice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int PUNICODE_STRING ;
+typedef int PDRIVER_OBJECT ;
+typedef int PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
+
+
+ int DPRINT1 (char*,int ) ;
+ int FALSE ;
+ int FILE_DEVICE_RASACD ;
+ int IoCreateDevice (int ,int ,int *,int ,int ,int ,int *) ;
+ int NT_SUCCESS (int ) ;
+ int RtlInitUnicodeString (int *,char*) ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS
-DriverEntry(PDRIVER_OBJECT  pDriverObject,
+DriverEntry(PDRIVER_OBJECT pDriverObject,
             PUNICODE_STRING pRegistryPath)
 {
     UNICODE_STRING DeviceName;

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsFloat64Number ;
-typedef  int /*<<< orphan*/ * cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGATSoutFilename ; 
- int /*<<< orphan*/  CloseTransforms (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HandleSwitches (int /*<<< orphan*/ *,int,char**) ; 
- int /*<<< orphan*/  Help () ; 
- int /*<<< orphan*/  InitUtils (int /*<<< orphan*/ *,char*) ; 
- double LCMS_VERSION ; 
- int /*<<< orphan*/  OpenCGATSFiles (int /*<<< orphan*/ *,int,char**) ; 
- int /*<<< orphan*/  OpenTransforms (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintEncodedResults (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintFloatResults (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintPCSEncoded (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintPCSFloat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PutCGATSValues (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TakeCGATSValues (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TakeFloatValues (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int Verbose ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cmsIT8Free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsIT8SaveToFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int cmsMAXCHANNELS ; 
- scalar_t__ feof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,double) ; 
- int /*<<< orphan*/ * hIT8in ; 
- int /*<<< orphan*/ * hIT8out ; 
- int /*<<< orphan*/  hTrans ; 
- scalar_t__ lIsFloat ; 
- int nMaxPatches ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsFloat64Number ;
+typedef int * cmsContext ;
+
+
+ int CGATSoutFilename ;
+ int CloseTransforms (int *) ;
+ int HandleSwitches (int *,int,char**) ;
+ int Help () ;
+ int InitUtils (int *,char*) ;
+ double LCMS_VERSION ;
+ int OpenCGATSFiles (int *,int,char**) ;
+ int OpenTransforms (int *) ;
+ int PrintEncodedResults (int *,int *) ;
+ int PrintFloatResults (int *,int *) ;
+ int PrintPCSEncoded (int *,int *) ;
+ int PrintPCSFloat (int *,int *) ;
+ int PutCGATSValues (int *,int *) ;
+ int TakeCGATSValues (int *,int ,int *) ;
+ int TakeFloatValues (int *,int *) ;
+ int Verbose ;
+ int cmsDoTransform (int *,int ,int *,int *,int) ;
+ int cmsIT8Free (int *,int *) ;
+ int cmsIT8SaveToFile (int *,int *,int ) ;
+ int cmsMAXCHANNELS ;
+ scalar_t__ feof (int ) ;
+ int fprintf (int ,char*,double) ;
+ int * hIT8in ;
+ int * hIT8out ;
+ int hTrans ;
+ scalar_t__ lIsFloat ;
+ int nMaxPatches ;
+ int stderr ;
+ int stdin ;
 
 int main(int argc, char *argv[])
 {
     cmsUInt16Number Output[cmsMAXCHANNELS];
     cmsFloat64Number OutputFloat[cmsMAXCHANNELS];
     cmsFloat64Number InputFloat[cmsMAXCHANNELS];
-    cmsContext ContextID =  NULL;
+    cmsContext ContextID = ((void*)0);
 
     int nPatch = 0;
 
@@ -68,16 +68,16 @@ int main(int argc, char *argv[])
 
     HandleSwitches(ContextID, argc, argv);
 
-    // Open profiles, create transforms
+
     if (!OpenTransforms(ContextID)) return 1;
 
-    // Open CGATS input if specified
+
     OpenCGATSFiles(ContextID, argc, argv);
 
-    // Main loop: read all values and convert them
+
     for(;;) {
 
-        if (hIT8in != NULL) {
+        if (hIT8in != ((void*)0)) {
 
             if (nPatch >= nMaxPatches) break;
             TakeCGATSValues(ContextID, nPatch++, InputFloat);
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
             cmsDoTransform(ContextID, hTrans, InputFloat, Output, 1);
 
 
-        if (hIT8out != NULL) {
+        if (hIT8out != ((void*)0)) {
 
             PutCGATSValues(ContextID, OutputFloat);
         }
@@ -105,14 +105,14 @@ int main(int argc, char *argv[])
                 PrintFloatResults(ContextID, OutputFloat); PrintPCSFloat(ContextID, InputFloat);
             }
             else {
-                PrintEncodedResults(ContextID, Output);   PrintPCSEncoded(ContextID, InputFloat);
+                PrintEncodedResults(ContextID, Output); PrintPCSEncoded(ContextID, InputFloat);
             }
 
         }
     }
 
 
-    // Cleanup
+
     CloseTransforms(ContextID);
 
     if (hIT8in)
@@ -123,6 +123,6 @@ int main(int argc, char *argv[])
         cmsIT8Free(ContextID, hIT8out);
     }
 
-    // All is ok
+
     return 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_ra_serf__xml_estate_t ;
-typedef  int /*<<< orphan*/  svn_ra_serf__dav_props_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_ra_serf__xml_estate_t ;
+typedef int svn_ra_serf__dav_props_t ;
+typedef int svn_error_t ;
 struct TYPE_2__ {void* collect_paths; void* collect_revprops; } ;
-typedef  TYPE_1__ log_context_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ log_context_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int ITEM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_serf__xml_state_pool (int /*<<< orphan*/ *) ; 
+
+ int ITEM ;
+ int * SVN_NO_ERROR ;
+ void* apr_hash_make (int *) ;
+ int * svn_ra_serf__xml_state_pool (int *) ;
 
 __attribute__((used)) static svn_error_t *
 log_opened(svn_ra_serf__xml_estate_t *xes,

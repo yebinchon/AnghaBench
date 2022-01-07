@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  (* WebPSamplerRowFunc ) (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int (* WebPSamplerRowFunc ) (int const*,int const*,int const*,int *,int) ;
+
+
 
 void WebPSamplerProcessPlane(const uint8_t* y, int y_stride,
                              const uint8_t* u, const uint8_t* v, int uv_stride,

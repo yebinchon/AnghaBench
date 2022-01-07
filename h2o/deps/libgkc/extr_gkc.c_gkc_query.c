@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct list {struct list* next; } ;
-struct gkc_tuple {double g; double delta; int /*<<< orphan*/  value; } ;
+struct gkc_tuple {double g; double delta; int value; } ;
 struct gkc_summary {double nr_elems; double epsilon; struct list head; } ;
 
-/* Variables and functions */
- scalar_t__ list_empty (struct list*) ; 
- struct gkc_tuple* list_to_tuple (struct list*) ; 
+
+ scalar_t__ list_empty (struct list*) ;
+ struct gkc_tuple* list_to_tuple (struct list*) ;
 
 uint64_t gkc_query(struct gkc_summary *s, double q)
 {

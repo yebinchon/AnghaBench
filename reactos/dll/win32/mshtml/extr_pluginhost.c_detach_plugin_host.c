@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * doc; int /*<<< orphan*/  entry; TYPE_2__* element; TYPE_1__* sink; int /*<<< orphan*/ * plugin_unk; scalar_t__ ip_object; scalar_t__ ui_active; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * plugin_host; } ;
-struct TYPE_7__ {int /*<<< orphan*/  IDispatch_iface; int /*<<< orphan*/ * host; int /*<<< orphan*/  cookie; int /*<<< orphan*/  iid; } ;
-typedef  TYPE_3__ PluginHost ;
-typedef  int /*<<< orphan*/  IOleObject ;
-typedef  int /*<<< orphan*/  IConnectionPointContainer ;
-typedef  int /*<<< orphan*/  IConnectionPoint ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IConnectionPointContainer_FindConnectionPoint (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IConnectionPointContainer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IConnectionPoint_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IConnectionPoint_Unadvise (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IConnectionPointContainer ; 
- int /*<<< orphan*/  IID_IOleObject ; 
- int /*<<< orphan*/  IOleInPlaceObject_InPlaceDeactivate (scalar_t__) ; 
- int /*<<< orphan*/  IOleInPlaceObject_UIDeactivate (scalar_t__) ; 
- int /*<<< orphan*/  IOleObject_Close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOleObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_SetClientSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  OLECLOSE_NOSAVE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_3__*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_plugin_ifaces (TYPE_3__*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * doc; int entry; TYPE_2__* element; TYPE_1__* sink; int * plugin_unk; scalar_t__ ip_object; scalar_t__ ui_active; } ;
+struct TYPE_8__ {int * plugin_host; } ;
+struct TYPE_7__ {int IDispatch_iface; int * host; int cookie; int iid; } ;
+typedef TYPE_3__ PluginHost ;
+typedef int IOleObject ;
+typedef int IConnectionPointContainer ;
+typedef int IConnectionPoint ;
+typedef int HRESULT ;
+
+
+ int IConnectionPointContainer_FindConnectionPoint (int *,int *,int **) ;
+ int IConnectionPointContainer_Release (int *) ;
+ int IConnectionPoint_Release (int *) ;
+ int IConnectionPoint_Unadvise (int *,int ) ;
+ int IDispatch_Release (int *) ;
+ int IID_IConnectionPointContainer ;
+ int IID_IOleObject ;
+ int IOleInPlaceObject_InPlaceDeactivate (scalar_t__) ;
+ int IOleInPlaceObject_UIDeactivate (scalar_t__) ;
+ int IOleObject_Close (int *,int ) ;
+ int IOleObject_Release (int *) ;
+ int IOleObject_SetClientSite (int *,int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int OLECLOSE_NOSAVE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,TYPE_3__*) ;
+ int assert (int ) ;
+ int list_init (int *) ;
+ int list_remove (int *) ;
+ int release_plugin_ifaces (TYPE_3__*) ;
 
 void detach_plugin_host(PluginHost *host)
 {
@@ -66,7 +66,7 @@ void detach_plugin_host(PluginHost *host)
         if(SUCCEEDED(hres)) {
             if(!host->ip_object)
                 IOleObject_Close(ole_obj, OLECLOSE_NOSAVE);
-            IOleObject_SetClientSite(ole_obj, NULL);
+            IOleObject_SetClientSite(ole_obj, ((void*)0));
             IOleObject_Release(ole_obj);
         }
     }
@@ -75,7 +75,7 @@ void detach_plugin_host(PluginHost *host)
         IConnectionPointContainer *cp_container;
         IConnectionPoint *cp;
 
-        assert(host->plugin_unk != NULL);
+        assert(host->plugin_unk != ((void*)0));
 
         hres = IUnknown_QueryInterface(host->plugin_unk, &IID_IConnectionPointContainer, (void**)&cp_container);
         if(SUCCEEDED(hres)) {
@@ -87,19 +87,19 @@ void detach_plugin_host(PluginHost *host)
             }
         }
 
-        host->sink->host = NULL;
+        host->sink->host = ((void*)0);
         IDispatch_Release(&host->sink->IDispatch_iface);
-        host->sink = NULL;
+        host->sink = ((void*)0);
     }
 
     release_plugin_ifaces(host);
 
     if(host->element) {
-        host->element->plugin_host = NULL;
-        host->element = NULL;
+        host->element->plugin_host = ((void*)0);
+        host->element = ((void*)0);
     }
 
     list_remove(&host->entry);
     list_init(&host->entry);
-    host->doc = NULL;
+    host->doc = ((void*)0);
 }

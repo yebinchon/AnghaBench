@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t xtensa_state ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t xtensa_state ;
 struct TYPE_5__ {TYPE_1__* states; } ;
-typedef  TYPE_2__ xtensa_isa_internal ;
-typedef  scalar_t__ xtensa_isa ;
+typedef TYPE_2__ xtensa_isa_internal ;
+typedef scalar_t__ xtensa_isa ;
 struct TYPE_4__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_STATE (TYPE_2__*,size_t,int /*<<< orphan*/ ) ; 
- int XTENSA_STATE_IS_EXPORTED ; 
- int /*<<< orphan*/  XTENSA_UNDEFINED ; 
+
+ int CHECK_STATE (TYPE_2__*,size_t,int ) ;
+ int XTENSA_STATE_IS_EXPORTED ;
+ int XTENSA_UNDEFINED ;
 
 int
 xtensa_state_is_exported (xtensa_isa isa, xtensa_state st)
@@ -29,7 +29,7 @@ xtensa_state_is_exported (xtensa_isa isa, xtensa_state st)
   xtensa_isa_internal *intisa = (xtensa_isa_internal *) isa;
   CHECK_STATE (intisa, st, XTENSA_UNDEFINED);
   if ((intisa->states[st].flags & XTENSA_STATE_IS_EXPORTED) != 0) {
-	  return 1;
+   return 1;
   }
   return 0;
 }

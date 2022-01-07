@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {size_t dirs_no; TYPE_1__* directory_data; } ;
-typedef  TYPE_2__ urlcache_header ;
-struct TYPE_8__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_3__ cache_container ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
-typedef  char* LPWSTR ;
-typedef  int* LPLONG ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int LONG ;
-typedef  size_t BYTE ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_2__ urlcache_header ;
+struct TYPE_8__ {int path; } ;
+typedef TYPE_3__ cache_container ;
+typedef int WCHAR ;
+struct TYPE_6__ {int name; } ;
+typedef char* LPWSTR ;
+typedef int* LPLONG ;
+typedef int LPCSTR ;
+typedef int LONG ;
+typedef size_t BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- size_t CACHE_CONTAINER_NO_SUBDIR ; 
- int /*<<< orphan*/  CP_ACP ; 
- int DIR_LENGTH ; 
- scalar_t__ FALSE ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+ size_t CACHE_CONTAINER_NO_SUBDIR ;
+ int CP_ACP ;
+ int DIR_LENGTH ;
+ scalar_t__ FALSE ;
+ int MultiByteToWideChar (int ,int ,int ,int,char*,int) ;
+ scalar_t__ TRUE ;
+ int memcpy (char*,int ,int) ;
+ int strlenW (int ) ;
 
 __attribute__((used)) static BOOL urlcache_create_file_pathW(
     const cache_container *pContainer,
@@ -47,7 +47,7 @@ __attribute__((used)) static BOOL urlcache_create_file_pathW(
 {
     LONG nRequired;
     int path_len = strlenW(pContainer->path);
-    int file_name_len = MultiByteToWideChar(CP_ACP, 0, szLocalFileName, -1, NULL, 0);
+    int file_name_len = MultiByteToWideChar(CP_ACP, 0, szLocalFileName, -1, ((void*)0), 0);
     if (Directory!=CACHE_CONTAINER_NO_SUBDIR && Directory>=pHeader->dirs_no)
     {
         *lpBufferSize = 0;

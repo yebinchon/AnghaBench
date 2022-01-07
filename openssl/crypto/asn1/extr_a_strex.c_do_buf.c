@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  utfbuf ;
-typedef  int /*<<< orphan*/  char_io ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_DO_BUF ; 
- int /*<<< orphan*/  ASN1_R_INVALID_BMPSTRING_LENGTH ; 
- int /*<<< orphan*/  ASN1_R_INVALID_UNIVERSALSTRING_LENGTH ; 
- unsigned short ASN1_STRFLGS_ESC_2253 ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int BUF_TYPE_CONVUTF8 ; 
- int BUF_TYPE_WIDTH_MASK ; 
- unsigned short CHARTYPE_FIRST_ESC_2253 ; 
- unsigned short CHARTYPE_LAST_ESC_2253 ; 
- int UTF8_getc (unsigned char*,int,unsigned long*) ; 
- int UTF8_putc (unsigned char*,int,unsigned long) ; 
- int do_esc_char (unsigned long,unsigned short,char*,int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int utfbuf ;
+typedef int char_io ;
+
+
+ int ASN1_F_DO_BUF ;
+ int ASN1_R_INVALID_BMPSTRING_LENGTH ;
+ int ASN1_R_INVALID_UNIVERSALSTRING_LENGTH ;
+ unsigned short ASN1_STRFLGS_ESC_2253 ;
+ int ASN1err (int ,int ) ;
+ int BUF_TYPE_CONVUTF8 ;
+ int BUF_TYPE_WIDTH_MASK ;
+ unsigned short CHARTYPE_FIRST_ESC_2253 ;
+ unsigned short CHARTYPE_LAST_ESC_2253 ;
+ int UTF8_getc (unsigned char*,int,unsigned long*) ;
+ int UTF8_putc (unsigned char*,int,unsigned long) ;
+ int do_esc_char (unsigned long,unsigned short,char*,int *,void*) ;
 
 __attribute__((used)) static int do_buf(unsigned char *buf, int buflen,
                   int type, unsigned short flags, char *quotes, char_io *io_ch,
@@ -84,12 +84,12 @@ __attribute__((used)) static int do_buf(unsigned char *buf, int buflen,
         case 0:
             i = UTF8_getc(p, buflen, &c);
             if (i < 0)
-                return -1;      /* Invalid UTF8String */
+                return -1;
             buflen -= i;
             p += i;
             break;
         default:
-            return -1;          /* invalid width */
+            return -1;
         }
         if (p == q && flags & ASN1_STRFLGS_ESC_2253)
             orflags = CHARTYPE_LAST_ESC_2253;
@@ -98,12 +98,12 @@ __attribute__((used)) static int do_buf(unsigned char *buf, int buflen,
             int utflen;
             utflen = UTF8_putc(utfbuf, sizeof(utfbuf), c);
             for (i = 0; i < utflen; i++) {
-                /*
-                 * We don't need to worry about setting orflags correctly
-                 * because if utflen==1 its value will be correct anyway
-                 * otherwise each character will be > 0x7f and so the
-                 * character will never be escaped on first and last.
-                 */
+
+
+
+
+
+
                 len = do_esc_char(utfbuf[i], flags | orflags, quotes,
                                   io_ch, arg);
                 if (len < 0)

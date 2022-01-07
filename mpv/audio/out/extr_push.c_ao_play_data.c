@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct ao_push_state {int still_playing; int wait_on_ao; scalar_t__ expected_end_time; int /*<<< orphan*/  buffer; scalar_t__ final_chunk; int /*<<< orphan*/ ** silence; scalar_t__ paused; } ;
-struct ao {int period_size; int device_buffer; int /*<<< orphan*/  wakeup_ctx; int /*<<< orphan*/  (* wakeup_cb ) (int /*<<< orphan*/ ) ;TYPE_1__* driver; scalar_t__ stream_silence; struct ao_push_state* api_priv; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct ao_push_state {int still_playing; int wait_on_ao; scalar_t__ expected_end_time; int buffer; scalar_t__ final_chunk; int ** silence; scalar_t__ paused; } ;
+struct ao {int period_size; int device_buffer; int wakeup_ctx; int (* wakeup_cb ) (int ) ;TYPE_1__* driver; scalar_t__ stream_silence; struct ao_push_state* api_priv; } ;
 struct TYPE_2__ {int (* get_space ) (struct ao*) ;int (* play ) (struct ao*,void**,int,int) ;} ;
 
-/* Variables and functions */
- int AOPLAY_FINAL_CHUNK ; 
- int MPMAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*,...) ; 
- int /*<<< orphan*/  MP_STATS (struct ao*,char*) ; 
- int /*<<< orphan*/  MP_TRACE (struct ao*,char*,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ao_post_process_data (struct ao*,void**,int) ; 
- int /*<<< orphan*/  mp_audio_buffer_peek (int /*<<< orphan*/ ,int /*<<< orphan*/ ***,int*) ; 
- int /*<<< orphan*/  mp_audio_buffer_skip (int /*<<< orphan*/ ,int) ; 
- scalar_t__ realloc_silence (struct ao*,int) ; 
- int stub1 (struct ao*) ; 
- int stub2 (struct ao*,void**,int,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int unlocked_get_space (struct ao*) ; 
+
+ int AOPLAY_FINAL_CHUNK ;
+ int MPMAX (int,int ) ;
+ int MP_ERR (struct ao*,char*,...) ;
+ int MP_STATS (struct ao*,char*) ;
+ int MP_TRACE (struct ao*,char*,int,int,int,int,int,int,int,int) ;
+ int ao_post_process_data (struct ao*,void**,int) ;
+ int mp_audio_buffer_peek (int ,int ***,int*) ;
+ int mp_audio_buffer_skip (int ,int) ;
+ scalar_t__ realloc_silence (struct ao*,int) ;
+ int stub1 (struct ao*) ;
+ int stub2 (struct ao*,void**,int,int) ;
+ int stub3 (int ) ;
+ int unlocked_get_space (struct ao*) ;
 
 __attribute__((used)) static void ao_play_data(struct ao *ao)
 {
@@ -73,7 +73,7 @@ __attribute__((used)) static void ao_play_data(struct ao *ao)
                ao->period_size, flags & AOPLAY_FINAL_CHUNK ? " final" : "");
     }
     r = MPMAX(r, 0);
-    // Probably can't copy the rest of the buffer due to period alignment.
+
     bool stuck_eof = r <= 0 && space >= max && samples > 0;
     if ((flags & AOPLAY_FINAL_CHUNK) && stuck_eof) {
         MP_ERR(ao, "Audio output driver seems to ignore AOPLAY_FINAL_CHUNK.\n");
@@ -83,22 +83,22 @@ __attribute__((used)) static void ao_play_data(struct ao *ao)
         mp_audio_buffer_skip(p->buffer, r);
     if (r > 0)
         p->expected_end_time = 0;
-    // Nothing written, but more input data than space - this must mean the
-    // AO's get_space() doesn't do period alignment correctly.
+
+
     bool stuck = r == 0 && max >= space && space > 0;
     if (stuck)
         MP_ERR(ao, "Audio output is reporting incorrect buffer status.\n");
-    // Wait until space becomes available. Also wait if we actually wrote data,
-    // so the AO wakes us up properly if it needs more data.
+
+
     p->wait_on_ao = space == 0 || r > 0 || stuck;
     p->still_playing |= r > 0 && !play_silence;
-    // If we just filled the AO completely (r == space), don't refill for a
-    // while. Prevents wakeup feedback with byte-granular AOs.
+
+
     int needed = unlocked_get_space(ao);
     bool more = needed >= (r == space ? ao->device_buffer / 4 : 1) && !stuck &&
                 !(flags & AOPLAY_FINAL_CHUNK);
     if (more)
-        ao->wakeup_cb(ao->wakeup_ctx); // request more data
+        ao->wakeup_cb(ao->wakeup_ctx);
     MP_TRACE(ao, "in=%d flags=%d space=%d r=%d wa/pl=%d/%d needed=%d more=%d\n",
              max, flags, space, r, p->wait_on_ao, p->still_playing, needed, more);
 }

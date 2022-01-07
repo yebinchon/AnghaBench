@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mm_struct {int /*<<< orphan*/  mm_count; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mm_struct {int mm_count; } ;
 struct TYPE_2__ {struct mm_struct* active_mm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPUHP_AP_ONLINE_IDLE ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cpu_running ; 
- int /*<<< orphan*/  cpu_startup_entry (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpumask_set_cpu (unsigned int,int /*<<< orphan*/ ) ; 
- TYPE_1__* current ; 
- struct mm_struct init_mm ; 
- int /*<<< orphan*/  local_irq_enable () ; 
- int /*<<< orphan*/  mm_cpumask (struct mm_struct*) ; 
- int /*<<< orphan*/  notify_cpu_starting (unsigned int) ; 
- int /*<<< orphan*/  openrisc_clockevent_init () ; 
- int /*<<< orphan*/  pr_info (char*,unsigned int) ; 
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  set_cpu_online (unsigned int,int) ; 
- int /*<<< orphan*/  setup_cpuinfo () ; 
- unsigned int smp_processor_id () ; 
- int /*<<< orphan*/  synchronise_count_slave (unsigned int) ; 
+
+ int CPUHP_AP_ONLINE_IDLE ;
+ int atomic_inc (int *) ;
+ int complete (int *) ;
+ int cpu_running ;
+ int cpu_startup_entry (int ) ;
+ int cpumask_set_cpu (unsigned int,int ) ;
+ TYPE_1__* current ;
+ struct mm_struct init_mm ;
+ int local_irq_enable () ;
+ int mm_cpumask (struct mm_struct*) ;
+ int notify_cpu_starting (unsigned int) ;
+ int openrisc_clockevent_init () ;
+ int pr_info (char*,unsigned int) ;
+ int preempt_disable () ;
+ int set_cpu_online (unsigned int,int) ;
+ int setup_cpuinfo () ;
+ unsigned int smp_processor_id () ;
+ int synchronise_count_slave (unsigned int) ;
 
 void secondary_start_kernel(void)
 {
-	struct mm_struct *mm = &init_mm;
-	unsigned int cpu = smp_processor_id();
-	/*
-	 * All kernel threads share the same mm context; grab a
-	 * reference and switch to it.
-	 */
-	atomic_inc(&mm->mm_count);
-	current->active_mm = mm;
-	cpumask_set_cpu(cpu, mm_cpumask(mm));
+ struct mm_struct *mm = &init_mm;
+ unsigned int cpu = smp_processor_id();
 
-	pr_info("CPU%u: Booted secondary processor\n", cpu);
 
-	setup_cpuinfo();
-	openrisc_clockevent_init();
 
-	notify_cpu_starting(cpu);
 
-	/*
-	 * OK, now it's safe to let the boot CPU continue
-	 */
-	complete(&cpu_running);
+ atomic_inc(&mm->mm_count);
+ current->active_mm = mm;
+ cpumask_set_cpu(cpu, mm_cpumask(mm));
 
-	synchronise_count_slave(cpu);
-	set_cpu_online(cpu, true);
+ pr_info("CPU%u: Booted secondary processor\n", cpu);
 
-	local_irq_enable();
+ setup_cpuinfo();
+ openrisc_clockevent_init();
 
-	preempt_disable();
-	/*
-	 * OK, it's off to the idle thread for us
-	 */
-	cpu_startup_entry(CPUHP_AP_ONLINE_IDLE);
+ notify_cpu_starting(cpu);
+
+
+
+
+ complete(&cpu_running);
+
+ synchronise_count_slave(cpu);
+ set_cpu_online(cpu, 1);
+
+ local_irq_enable();
+
+ preempt_disable();
+
+
+
+ cpu_startup_entry(CPUHP_AP_ONLINE_IDLE);
 }

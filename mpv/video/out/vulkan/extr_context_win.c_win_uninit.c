@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ra_ctx {int /*<<< orphan*/  vo; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  vk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mpvk_uninit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ra_vk_ctx_uninit (struct ra_ctx*) ; 
- int /*<<< orphan*/  vo_w32_uninit (int /*<<< orphan*/ ) ; 
+
+
+
+struct ra_ctx {int vo; struct priv* priv; } ;
+struct priv {int vk; } ;
+
+
+ int mpvk_uninit (int *) ;
+ int ra_vk_ctx_uninit (struct ra_ctx*) ;
+ int vo_w32_uninit (int ) ;
 
 __attribute__((used)) static void win_uninit(struct ra_ctx *ctx)
 {

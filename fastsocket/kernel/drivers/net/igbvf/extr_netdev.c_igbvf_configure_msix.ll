@@ -1,0 +1,129 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/net/igbvf/extr_netdev.c_igbvf_configure_msix.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/net/igbvf/extr_netdev.c_igbvf_configure_msix.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.igbvf_adapter = type { i32, i32, %struct.igbvf_ring*, %struct.igbvf_ring*, %struct.e1000_hw }
+%struct.igbvf_ring = type { i32, i64, i32 }
+%struct.e1000_hw = type { i64 }
+
+@IGBVF_NO_QUEUE = common dso_local global i32 0, align 4
+@E1000_IVAR_VALID = common dso_local global i32 0, align 4
+@IVAR_MISC = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.igbvf_adapter*)* @igbvf_configure_msix to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @igbvf_configure_msix(%struct.igbvf_adapter* %0) #0 {
+  %2 = alloca %struct.igbvf_adapter*, align 8
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.e1000_hw*, align 8
+  %5 = alloca %struct.igbvf_ring*, align 8
+  %6 = alloca %struct.igbvf_ring*, align 8
+  %7 = alloca i32, align 4
+  store %struct.igbvf_adapter* %0, %struct.igbvf_adapter** %2, align 8
+  %8 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %9 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %8, i32 0, i32 4
+  store %struct.e1000_hw* %9, %struct.e1000_hw** %4, align 8
+  %10 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %11 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %10, i32 0, i32 3
+  %12 = load %struct.igbvf_ring*, %struct.igbvf_ring** %11, align 8
+  store %struct.igbvf_ring* %12, %struct.igbvf_ring** %5, align 8
+  %13 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %14 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %13, i32 0, i32 2
+  %15 = load %struct.igbvf_ring*, %struct.igbvf_ring** %14, align 8
+  store %struct.igbvf_ring* %15, %struct.igbvf_ring** %6, align 8
+  store i32 0, i32* %7, align 4
+  %16 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %17 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %16, i32 0, i32 0
+  store i32 0, i32* %17, align 8
+  %18 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %19 = load i32, i32* @IGBVF_NO_QUEUE, align 4
+  %20 = load i32, i32* %7, align 4
+  %21 = add nsw i32 %20, 1
+  store i32 %21, i32* %7, align 4
+  %22 = call i32 @igbvf_assign_vector(%struct.igbvf_adapter* %18, i32 %19, i32 0, i32 %20)
+  %23 = load %struct.igbvf_ring*, %struct.igbvf_ring** %5, align 8
+  %24 = getelementptr inbounds %struct.igbvf_ring, %struct.igbvf_ring* %23, i32 0, i32 0
+  %25 = load i32, i32* %24, align 8
+  %26 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %27 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %26, i32 0, i32 0
+  %28 = load i32, i32* %27, align 8
+  %29 = or i32 %28, %25
+  store i32 %29, i32* %27, align 8
+  %30 = load %struct.igbvf_ring*, %struct.igbvf_ring** %5, align 8
+  %31 = getelementptr inbounds %struct.igbvf_ring, %struct.igbvf_ring* %30, i32 0, i32 2
+  %32 = load i32, i32* %31, align 8
+  %33 = load %struct.e1000_hw*, %struct.e1000_hw** %4, align 8
+  %34 = getelementptr inbounds %struct.e1000_hw, %struct.e1000_hw* %33, i32 0, i32 0
+  %35 = load i64, i64* %34, align 8
+  %36 = load %struct.igbvf_ring*, %struct.igbvf_ring** %5, align 8
+  %37 = getelementptr inbounds %struct.igbvf_ring, %struct.igbvf_ring* %36, i32 0, i32 1
+  %38 = load i64, i64* %37, align 8
+  %39 = add nsw i64 %35, %38
+  %40 = call i32 @writel(i32 %32, i64 %39)
+  %41 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %42 = load i32, i32* @IGBVF_NO_QUEUE, align 4
+  %43 = load i32, i32* %7, align 4
+  %44 = add nsw i32 %43, 1
+  store i32 %44, i32* %7, align 4
+  %45 = call i32 @igbvf_assign_vector(%struct.igbvf_adapter* %41, i32 0, i32 %42, i32 %43)
+  %46 = load %struct.igbvf_ring*, %struct.igbvf_ring** %6, align 8
+  %47 = getelementptr inbounds %struct.igbvf_ring, %struct.igbvf_ring* %46, i32 0, i32 0
+  %48 = load i32, i32* %47, align 8
+  %49 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %50 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %49, i32 0, i32 0
+  %51 = load i32, i32* %50, align 8
+  %52 = or i32 %51, %48
+  store i32 %52, i32* %50, align 8
+  %53 = load %struct.igbvf_ring*, %struct.igbvf_ring** %6, align 8
+  %54 = getelementptr inbounds %struct.igbvf_ring, %struct.igbvf_ring* %53, i32 0, i32 2
+  %55 = load i32, i32* %54, align 8
+  %56 = load %struct.e1000_hw*, %struct.e1000_hw** %4, align 8
+  %57 = getelementptr inbounds %struct.e1000_hw, %struct.e1000_hw* %56, i32 0, i32 0
+  %58 = load i64, i64* %57, align 8
+  %59 = load %struct.igbvf_ring*, %struct.igbvf_ring** %6, align 8
+  %60 = getelementptr inbounds %struct.igbvf_ring, %struct.igbvf_ring* %59, i32 0, i32 1
+  %61 = load i64, i64* %60, align 8
+  %62 = add nsw i64 %58, %61
+  %63 = call i32 @writel(i32 %55, i64 %62)
+  %64 = load i32, i32* %7, align 4
+  %65 = add nsw i32 %64, 1
+  store i32 %65, i32* %7, align 4
+  %66 = load i32, i32* @E1000_IVAR_VALID, align 4
+  %67 = or i32 %64, %66
+  store i32 %67, i32* %3, align 4
+  %68 = load i32, i32* @IVAR_MISC, align 4
+  %69 = load i32, i32* %3, align 4
+  %70 = call i32 @ew32(i32 %68, i32 %69)
+  %71 = load i32, i32* %7, align 4
+  %72 = shl i32 1, %71
+  %73 = sub nsw i32 %72, 1
+  %74 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %75 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %74, i32 0, i32 0
+  store i32 %73, i32* %75, align 8
+  %76 = load i32, i32* %7, align 4
+  %77 = sub nsw i32 %76, 1
+  %78 = shl i32 1, %77
+  %79 = load %struct.igbvf_adapter*, %struct.igbvf_adapter** %2, align 8
+  %80 = getelementptr inbounds %struct.igbvf_adapter, %struct.igbvf_adapter* %79, i32 0, i32 1
+  store i32 %78, i32* %80, align 4
+  %81 = call i32 (...) @e1e_flush()
+  ret void
+}
+
+declare dso_local i32 @igbvf_assign_vector(%struct.igbvf_adapter*, i32, i32, i32) #1
+
+declare dso_local i32 @writel(i32, i64) #1
+
+declare dso_local i32 @ew32(i32, i32) #1
+
+declare dso_local i32 @e1e_flush(...) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

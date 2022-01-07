@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_3__ {int (* get_freq ) (int /*<<< orphan*/ *,size_t,size_t*) ;int (* decode ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,size_t,size_t) ;int /*<<< orphan*/  rc; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ SCPRContext ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- size_t BOT ; 
- int stub1 (int /*<<< orphan*/ *,size_t,size_t*) ; 
- int stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,size_t,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_3__ {int (* get_freq ) (int *,size_t,size_t*) ;int (* decode ) (int *,int *,size_t,size_t,size_t) ;int rc; int gb; } ;
+typedef TYPE_1__ SCPRContext ;
+typedef int RangeCoder ;
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ size_t BOT ;
+ int stub1 (int *,size_t,size_t*) ;
+ int stub2 (int *,int *,size_t,size_t,size_t) ;
 
 __attribute__((used)) static int decode_value(SCPRContext *s, uint32_t *cnt, uint32_t maxc, uint32_t step, uint32_t *rval)
 {

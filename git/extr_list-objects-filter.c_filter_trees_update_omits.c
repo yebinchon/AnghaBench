@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct oidset {int dummy; } ;
-struct object {int /*<<< orphan*/  oid; } ;
+struct object {int oid; } ;
 
-/* Variables and functions */
- int oidset_insert (struct oidset*,int /*<<< orphan*/ *) ; 
- int oidset_remove (struct oidset*,int /*<<< orphan*/ *) ; 
+
+ int oidset_insert (struct oidset*,int *) ;
+ int oidset_remove (struct oidset*,int *) ;
 
 __attribute__((used)) static int filter_trees_update_omits(
-	struct object *obj,
-	struct oidset *omits,
-	int include_it)
+ struct object *obj,
+ struct oidset *omits,
+ int include_it)
 {
-	if (!omits)
-		return 0;
+ if (!omits)
+  return 0;
 
-	if (include_it)
-		return oidset_remove(omits, &obj->oid);
-	else
-		return oidset_insert(omits, &obj->oid);
+ if (include_it)
+  return oidset_remove(omits, &obj->oid);
+ else
+  return oidset_insert(omits, &obj->oid);
 }

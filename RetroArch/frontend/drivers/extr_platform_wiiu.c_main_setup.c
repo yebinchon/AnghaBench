@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ProcUIInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SaveCallback ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_logging () ; 
- int /*<<< orphan*/  init_network () ; 
- int /*<<< orphan*/  init_pad_libraries () ; 
- int /*<<< orphan*/  setup_os_exceptions () ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  verbosity_enable () ; 
+ int ProcUIInit (int *) ;
+ int SaveCallback ;
+ int fflush (int ) ;
+ int init_logging () ;
+ int init_network () ;
+ int init_pad_libraries () ;
+ int setup_os_exceptions () ;
+ int stdout ;
+ int verbosity_enable () ;
 
 __attribute__((used)) static void main_setup(void)
 {

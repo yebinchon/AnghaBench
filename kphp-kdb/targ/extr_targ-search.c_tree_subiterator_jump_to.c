@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  treespace_t ;
-typedef  void* treeref_t ;
-struct tree_subiterator {int pos; long sp; void** S; int /*<<< orphan*/  mult; } ;
-struct intree_node {int x; int /*<<< orphan*/  z; void* right; void* left; } ;
 
-/* Variables and functions */
- int INFTY ; 
- long MAX_DEPTH ; 
- struct intree_node* TS_NODE (void*) ; 
- int /*<<< orphan*/  WordSpace ; 
- int /*<<< orphan*/  assert (int) ; 
- int tree_subiterator_next (struct tree_subiterator*) ; 
+
+
+
+typedef int treespace_t ;
+typedef void* treeref_t ;
+struct tree_subiterator {int pos; long sp; void** S; int mult; } ;
+struct intree_node {int x; int z; void* right; void* left; } ;
+
+
+ int INFTY ;
+ long MAX_DEPTH ;
+ struct intree_node* TS_NODE (void*) ;
+ int WordSpace ;
+ int assert (int) ;
+ int tree_subiterator_next (struct tree_subiterator*) ;
 
 int tree_subiterator_jump_to (struct tree_subiterator *TI, int req_pos) {
   if (req_pos == TI->pos + 1) {
@@ -61,7 +61,7 @@ int tree_subiterator_jump_to (struct tree_subiterator *TI, int req_pos) {
   TI->sp = i;
   if (!i) {
     return TI->pos = INFTY;
-  } 
+  }
   TC = TS_NODE (TI->S[i - 1]);
   TI->mult = TC->z;
   return TI->pos = TC->x;

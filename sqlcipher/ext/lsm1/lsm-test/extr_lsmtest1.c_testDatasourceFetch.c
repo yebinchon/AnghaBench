@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TestDb ;
-typedef  int /*<<< orphan*/  Datasource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  testDatasourceEntry (int /*<<< orphan*/ *,int,void**,int*,void**,int*) ; 
- int /*<<< orphan*/  testFetch (int /*<<< orphan*/ *,void*,int,void*,int,int*) ; 
+
+
+
+typedef int TestDb ;
+typedef int Datasource ;
+
+
+ int testDatasourceEntry (int *,int,void**,int*,void**,int*) ;
+ int testFetch (int *,void*,int,void*,int,int*) ;
 
 void testDatasourceFetch(
-  TestDb *pDb,                    /* Database handle */
+  TestDb *pDb,
   Datasource *pData,
   int iKey,
-  int *pRc                        /* IN/OUT: Error code */
+  int *pRc
 ){
-  void *pKey; int nKey;           /* Database key to query for */
-  void *pVal; int nVal;           /* Expected result of query */
+  void *pKey; int nKey;
+  void *pVal; int nVal;
 
   testDatasourceEntry(pData, iKey, &pKey, &nKey, &pVal, &nVal);
   testFetch(pDb, pKey, nKey, pVal, nVal, pRc);

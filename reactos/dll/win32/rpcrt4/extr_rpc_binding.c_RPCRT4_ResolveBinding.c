@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * Assoc; int /*<<< orphan*/  NetworkOptions; int /*<<< orphan*/  Endpoint; int /*<<< orphan*/  NetworkAddr; int /*<<< orphan*/  Protseq; } ;
-typedef  TYPE_1__ RpcBinding ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  int /*<<< orphan*/  LPCSTR ;
 
-/* Variables and functions */
- scalar_t__ RPCRT4_GetAssociation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  RPCRT4_strdupA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RPCRT4_strfree (int /*<<< orphan*/ ) ; 
- scalar_t__ RPC_S_OK ; 
- int /*<<< orphan*/  RpcAssoc_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * Assoc; int NetworkOptions; int Endpoint; int NetworkAddr; int Protseq; } ;
+typedef TYPE_1__ RpcBinding ;
+typedef scalar_t__ RPC_STATUS ;
+typedef int LPCSTR ;
+
+
+ scalar_t__ RPCRT4_GetAssociation (int ,int ,int ,int ,int **) ;
+ int RPCRT4_strdupA (int ) ;
+ int RPCRT4_strfree (int ) ;
+ scalar_t__ RPC_S_OK ;
+ int RpcAssoc_Release (int *) ;
+ int TRACE (char*,TYPE_1__*,int ) ;
 
 RPC_STATUS RPCRT4_ResolveBinding(RpcBinding* Binding, LPCSTR Endpoint)
 {
@@ -34,7 +34,7 @@ RPC_STATUS RPCRT4_ResolveBinding(RpcBinding* Binding, LPCSTR Endpoint)
   Binding->Endpoint = RPCRT4_strdupA(Endpoint);
 
   if (Binding->Assoc) RpcAssoc_Release(Binding->Assoc);
-  Binding->Assoc = NULL;
+  Binding->Assoc = ((void*)0);
   status = RPCRT4_GetAssociation(Binding->Protseq, Binding->NetworkAddr,
                                  Binding->Endpoint, Binding->NetworkOptions,
                                  &Binding->Assoc);

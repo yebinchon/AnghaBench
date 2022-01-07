@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct rgbvec {int r; int g; int b; } ;
 struct TYPE_6__ {TYPE_1__* priv; } ;
 struct TYPE_5__ {int lutsize; struct rgbvec* lut; } ;
-typedef  TYPE_1__ LUT3DContext ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef TYPE_1__ LUT3DContext ;
+typedef int FILE ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int MAX_LINE_SIZE ; 
- int /*<<< orphan*/  NEXT_LINE (int /*<<< orphan*/ ) ; 
- int allocate_3dlut (TYPE_2__*,int const) ; 
- int av_sscanf (char*,char*,int*,int*,int*) ; 
- int /*<<< orphan*/  skip_line (char*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int MAX_LINE_SIZE ;
+ int NEXT_LINE (int ) ;
+ int allocate_3dlut (TYPE_2__*,int const) ;
+ int av_sscanf (char*,char*,int*,int*,int*) ;
+ int skip_line (char*) ;
 
 __attribute__((used)) static int parse_3dl(AVFilterContext *ctx, FILE *f)
 {

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct iommu_table {long it_offset; scalar_t__ it_base; } ;
 struct dma_attrs {int dummy; } ;
-typedef  enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
+typedef enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
 
-/* Variables and functions */
- int IOBMAP_L2E_V ; 
- long IOBMAP_PAGE_SHIFT ; 
- scalar_t__ IOBMAP_PAGE_SIZE ; 
- scalar_t__ IOB_AT_INVAL_TLB_REG ; 
- scalar_t__ iob ; 
- int /*<<< orphan*/  out_le32 (scalar_t__,unsigned long) ; 
- int /*<<< orphan*/  pr_debug (char*,long,long,unsigned long) ; 
- long virt_to_abs (unsigned long) ; 
+
+ int IOBMAP_L2E_V ;
+ long IOBMAP_PAGE_SHIFT ;
+ scalar_t__ IOBMAP_PAGE_SIZE ;
+ scalar_t__ IOB_AT_INVAL_TLB_REG ;
+ scalar_t__ iob ;
+ int out_le32 (scalar_t__,unsigned long) ;
+ int pr_debug (char*,long,long,unsigned long) ;
+ long virt_to_abs (unsigned long) ;
 
 __attribute__((used)) static int iobmap_build(struct iommu_table *tbl, long index,
-			 long npages, unsigned long uaddr,
-			 enum dma_data_direction direction,
-			 struct dma_attrs *attrs)
+    long npages, unsigned long uaddr,
+    enum dma_data_direction direction,
+    struct dma_attrs *attrs)
 {
-	u32 *ip;
-	u32 rpn;
-	unsigned long bus_addr;
+ u32 *ip;
+ u32 rpn;
+ unsigned long bus_addr;
 
-	pr_debug("iobmap: build at: %lx, %lx, addr: %lx\n", index, npages, uaddr);
+ pr_debug("iobmap: build at: %lx, %lx, addr: %lx\n", index, npages, uaddr);
 
-	bus_addr = (tbl->it_offset + index) << IOBMAP_PAGE_SHIFT;
+ bus_addr = (tbl->it_offset + index) << IOBMAP_PAGE_SHIFT;
 
-	ip = ((u32 *)tbl->it_base) + index;
+ ip = ((u32 *)tbl->it_base) + index;
 
-	while (npages--) {
-		rpn = virt_to_abs(uaddr) >> IOBMAP_PAGE_SHIFT;
+ while (npages--) {
+  rpn = virt_to_abs(uaddr) >> IOBMAP_PAGE_SHIFT;
 
-		*(ip++) = IOBMAP_L2E_V | rpn;
-		/* invalidate tlb, can be optimized more */
-		out_le32(iob+IOB_AT_INVAL_TLB_REG, bus_addr >> 14);
+  *(ip++) = IOBMAP_L2E_V | rpn;
 
-		uaddr += IOBMAP_PAGE_SIZE;
-		bus_addr += IOBMAP_PAGE_SIZE;
-	}
-	return 0;
+  out_le32(iob+IOB_AT_INVAL_TLB_REG, bus_addr >> 14);
+
+  uaddr += IOBMAP_PAGE_SIZE;
+  bus_addr += IOBMAP_PAGE_SIZE;
+ }
+ return 0;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-struct TYPE_4__ {scalar_t__ buffer_ref; int min_needed; int min_available; size_t buffer_len; scalar_t__ complete; scalar_t__ error; int /*<<< orphan*/  jsn; void* buffer; int /*<<< orphan*/ * L; } ;
-typedef  TYPE_1__ JSN_DATA ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  jsonsl_feed (int /*<<< orphan*/ ,char const*,size_t) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  luaL_addvalue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ lua_ref (int /*<<< orphan*/ *,int) ; 
- int sjson_decoder_result_int (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  sjson_free_working_data (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+struct TYPE_4__ {scalar_t__ buffer_ref; int min_needed; int min_available; size_t buffer_len; scalar_t__ complete; scalar_t__ error; int jsn; void* buffer; int * L; } ;
+typedef TYPE_1__ JSN_DATA ;
+
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int jsonsl_feed (int ,char const*,size_t) ;
+ int luaL_addlstring (int *,char const*,size_t) ;
+ int luaL_addvalue (int *) ;
+ int luaL_buffinit (int *,int *) ;
+ void* luaL_checklstring (int *,int,size_t*) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*,...) ;
+ int luaL_pushresult (int *) ;
+ int luaL_unref (int *,int ,scalar_t__) ;
+ int lua_pop (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ scalar_t__ lua_ref (int *,int) ;
+ int sjson_decoder_result_int (int *,TYPE_1__*) ;
+ int sjson_free_working_data (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int sjson_decoder_write_int(lua_State *L, int udata_pos, int string_pos) {
   JSN_DATA *data = (JSN_DATA *)luaL_checkudata(L, udata_pos, "sjson.decoder");
@@ -48,7 +48,7 @@ __attribute__((used)) static int sjson_decoder_write_int(lua_State *L, int udata
   if (!data->complete) {
     data->L = L;
 
-    // Merge into any existing buffer and deal with discard
+
     if (data->buffer_ref != LUA_NOREF) {
       luaL_Buffer b;
       luaL_buffinit(L, &b);
@@ -56,7 +56,7 @@ __attribute__((used)) static int sjson_decoder_write_int(lua_State *L, int udata
       lua_rawgeti(L, LUA_REGISTRYINDEX, data->buffer_ref);
       size_t prev_len;
       const char *prev_buffer = luaL_checklstring(L, -1, &prev_len);
-      lua_pop(L, 1);              // But string still referenced so it cannot move
+      lua_pop(L, 1);
       int discard = data->min_needed - data->min_available;
       prev_buffer += discard;
       prev_len -= discard;
@@ -88,7 +88,7 @@ __attribute__((used)) static int sjson_decoder_write_int(lua_State *L, int udata
   }
 
   if (data->complete) {
-    // We no longer need the buffer
+
     sjson_free_working_data(L, data);
 
     return sjson_decoder_result_int(L, data);

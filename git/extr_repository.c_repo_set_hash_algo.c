@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct repository {int /*<<< orphan*/ * hash_algo; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * hash_algos ; 
+
+
+
+struct repository {int * hash_algo; } ;
+
+
+ int * hash_algos ;
 
 void repo_set_hash_algo(struct repository *repo, int hash_algo)
 {
-	repo->hash_algo = &hash_algos[hash_algo];
+ repo->hash_algo = &hash_algos[hash_algo];
 }

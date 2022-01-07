@@ -1,90 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_f_base64 () ; 
- scalar_t__ BIO_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/ * BIO_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ *,char*) ; 
- int BIO_write (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int FORMAT_BASE64 ; 
- int FORMAT_BINARY ; 
- int FORMAT_TEXT ; 
-#define  OPT_BASE64 135 
-#define  OPT_ENGINE 134 
-#define  OPT_EOF 133 
-#define  OPT_ERR 132 
-#define  OPT_HELP 131 
-#define  OPT_HEX 130 
-#define  OPT_OUT 129 
-#define  OPT_R_CASES 128 
- int RAND_bytes (unsigned char*,int) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char*,char,int) ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opt_int (char*,int*) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_rand (int) ; 
- char** opt_rest () ; 
- int /*<<< orphan*/  rand_options ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int buf ;
+typedef int OPTION_CHOICE ;
+typedef int ENGINE ;
+typedef int BIO ;
+
+
+ int BIO_f_base64 () ;
+ scalar_t__ BIO_flush (int *) ;
+ int BIO_free_all (int *) ;
+ int * BIO_new (int ) ;
+ int BIO_printf (int *,char*,...) ;
+ int * BIO_push (int *,int *) ;
+ int BIO_puts (int *,char*) ;
+ int BIO_write (int *,unsigned char*,int) ;
+ int ERR_print_errors (int ) ;
+ int FORMAT_BASE64 ;
+ int FORMAT_BINARY ;
+ int FORMAT_TEXT ;
+ int RAND_bytes (unsigned char*,int) ;
+ int bio_err ;
+ int * bio_open_default (char*,char,int) ;
+ char* opt_arg () ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_int (char*,int*) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_rand (int) ;
+ char** opt_rest () ;
+ int rand_options ;
+ int release_engine (int *) ;
+ int * setup_engine (char*,int ) ;
 
 int rand_main(int argc, char **argv)
 {
-    ENGINE *e = NULL;
-    BIO *out = NULL;
-    char *outfile = NULL, *prog;
+    ENGINE *e = ((void*)0);
+    BIO *out = ((void*)0);
+    char *outfile = ((void*)0), *prog;
     OPTION_CHOICE o;
     int format = FORMAT_BINARY, i, num = -1, r, ret = 1;
 
     prog = opt_init(argc, argv, rand_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 133) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 133:
+        case 132:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 131:
             opt_help(rand_options);
             ret = 0;
             goto end;
-        case OPT_OUT:
+        case 129:
             outfile = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 134:
             e = setup_engine(opt_arg(), 0);
             break;
-        case OPT_R_CASES:
+        case 128:
             if (!opt_rand(o))
                 goto end;
             break;
-        case OPT_BASE64:
+        case 135:
             format = FORMAT_BASE64;
             break;
-        case OPT_HEX:
+        case 130:
             format = FORMAT_TEXT;
             break;
         }
@@ -100,12 +92,12 @@ int rand_main(int argc, char **argv)
     }
 
     out = bio_open_default(outfile, 'w', format);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     if (format == FORMAT_BASE64) {
         BIO *b64 = BIO_new(BIO_f_base64());
-        if (b64 == NULL)
+        if (b64 == ((void*)0))
             goto end;
         out = BIO_push(b64, out);
     }

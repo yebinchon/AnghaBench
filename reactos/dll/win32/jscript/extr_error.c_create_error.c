@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PROPF_CONFIGURABLE ; 
- int PROPF_ENUMERABLE ; 
- int PROPF_WRITABLE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  alloc_error (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  descriptionW ; 
- int /*<<< orphan*/  jsdisp_define_data_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  messageW ; 
- int /*<<< orphan*/  numberW ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef scalar_t__ UINT ;
+typedef int INT ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int PROPF_CONFIGURABLE ;
+ int PROPF_ENUMERABLE ;
+ int PROPF_WRITABLE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int alloc_error (int *,int *,int *,int **) ;
+ int descriptionW ;
+ int jsdisp_define_data_property (int *,int ,int,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_number (int ) ;
+ int jsval_string (int *) ;
+ int messageW ;
+ int numberW ;
 
 __attribute__((used)) static HRESULT create_error(script_ctx_t *ctx, jsdisp_t *constr,
         UINT number, jsstr_t *msg, jsdisp_t **ret)
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT create_error(script_ctx_t *ctx, jsdisp_t *c
     jsdisp_t *err;
     HRESULT hres;
 
-    hres = alloc_error(ctx, NULL, constr, &err);
+    hres = alloc_error(ctx, ((void*)0), constr, &err);
     if(FAILED(hres))
         return hres;
 

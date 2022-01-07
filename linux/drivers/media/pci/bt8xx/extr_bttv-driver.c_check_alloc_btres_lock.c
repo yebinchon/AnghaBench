@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ end; } ;
-struct bttv_fh {int resources; TYPE_3__ vbi_fmt; int /*<<< orphan*/  do_crop; } ;
+struct bttv_fh {int resources; TYPE_3__ vbi_fmt; int do_crop; } ;
 struct bttv {int resources; scalar_t__ vbi_end; scalar_t__ crop_start; TYPE_2__* crop; } ;
-typedef  scalar_t__ __s32 ;
+typedef scalar_t__ __s32 ;
 struct TYPE_4__ {scalar_t__ top; } ;
 struct TYPE_5__ {TYPE_1__ rect; } ;
 
-/* Variables and functions */
- int RESOURCE_VIDEO_READ ; 
- int RESOURCE_VIDEO_STREAM ; 
- int VBI_RESOURCES ; 
- int VIDEO_RESOURCES ; 
+
+ int RESOURCE_VIDEO_READ ;
+ int RESOURCE_VIDEO_STREAM ;
+ int VBI_RESOURCES ;
+ int VIDEO_RESOURCES ;
 
 __attribute__((used)) static
 int check_alloc_btres_lock(struct bttv *btv, struct bttv_fh *fh, int bit)
 {
-	int xbits; /* mutual exclusive resources */
+ int xbits;
 
-	if (fh->resources & bit)
-		/* have it already allocated */
-		return 1;
+ if (fh->resources & bit)
 
-	xbits = bit;
-	if (bit & (RESOURCE_VIDEO_READ | RESOURCE_VIDEO_STREAM))
-		xbits |= RESOURCE_VIDEO_READ | RESOURCE_VIDEO_STREAM;
+  return 1;
 
-	/* is it free? */
-	if (btv->resources & xbits) {
-		/* no, someone else uses it */
-		goto fail;
-	}
+ xbits = bit;
+ if (bit & (RESOURCE_VIDEO_READ | RESOURCE_VIDEO_STREAM))
+  xbits |= RESOURCE_VIDEO_READ | RESOURCE_VIDEO_STREAM;
 
-	if ((bit & VIDEO_RESOURCES)
-	    && 0 == (btv->resources & VIDEO_RESOURCES)) {
-		/* Do crop - use current, don't - use default parameters. */
-		__s32 top = btv->crop[!!fh->do_crop].rect.top;
 
-		if (btv->vbi_end > top)
-			goto fail;
+ if (btv->resources & xbits) {
 
-		/* We cannot capture the same line as video and VBI data.
-		   Claim scan lines crop[].rect.top to bottom. */
-		btv->crop_start = top;
-	} else if (bit & VBI_RESOURCES) {
-		__s32 end = fh->vbi_fmt.end;
+  goto fail;
+ }
 
-		if (end > btv->crop_start)
-			goto fail;
+ if ((bit & VIDEO_RESOURCES)
+     && 0 == (btv->resources & VIDEO_RESOURCES)) {
 
-		/* Claim scan lines above fh->vbi_fmt.end. */
-		btv->vbi_end = end;
-	}
+  __s32 top = btv->crop[!!fh->do_crop].rect.top;
 
-	/* it's free, grab it */
-	fh->resources  |= bit;
-	btv->resources |= bit;
-	return 1;
+  if (btv->vbi_end > top)
+   goto fail;
+
+
+
+  btv->crop_start = top;
+ } else if (bit & VBI_RESOURCES) {
+  __s32 end = fh->vbi_fmt.end;
+
+  if (end > btv->crop_start)
+   goto fail;
+
+
+  btv->vbi_end = end;
+ }
+
+
+ fh->resources |= bit;
+ btv->resources |= bit;
+ return 1;
 
  fail:
-	return 0;
+ return 0;
 }

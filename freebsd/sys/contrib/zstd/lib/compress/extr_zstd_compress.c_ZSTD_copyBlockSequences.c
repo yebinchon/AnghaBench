@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {size_t longLengthPos; int longLengthID; TYPE_3__ const* sequences; TYPE_3__* sequencesStart; } ;
-typedef  TYPE_2__ seqStore_t ;
+typedef TYPE_2__ seqStore_t ;
 struct TYPE_11__ {unsigned int offset; scalar_t__ litLength; scalar_t__ matchLength; } ;
-typedef  TYPE_3__ seqDef ;
+typedef TYPE_3__ seqDef ;
 struct TYPE_12__ {unsigned int offset; scalar_t__ litLength; unsigned int rep; unsigned int matchPos; scalar_t__ matchLength; } ;
-typedef  TYPE_4__ ZSTD_Sequence ;
+typedef TYPE_4__ ZSTD_Sequence ;
 struct TYPE_9__ {size_t seqIndex; int maxSequences; TYPE_4__* seqStart; } ;
 struct TYPE_13__ {TYPE_1__ seqCollector; } ;
-typedef  TYPE_5__ ZSTD_CCtx ;
+typedef TYPE_5__ ZSTD_CCtx ;
 
-/* Variables and functions */
- scalar_t__ MINMATCH ; 
- unsigned int ZSTD_REP_NUM ; 
- TYPE_2__* ZSTD_getSeqStore (TYPE_5__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int* repStartValue ; 
+
+ scalar_t__ MINMATCH ;
+ unsigned int ZSTD_REP_NUM ;
+ TYPE_2__* ZSTD_getSeqStore (TYPE_5__*) ;
+ int assert (int) ;
+ int* repStartValue ;
 
 __attribute__((used)) static void ZSTD_copyBlockSequences(ZSTD_CCtx* zc)
 {

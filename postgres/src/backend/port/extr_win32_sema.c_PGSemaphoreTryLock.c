@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PGSemaphore ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  FATAL ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WAIT_TIMEOUT ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+typedef int PGSemaphore ;
+typedef scalar_t__ DWORD ;
+
+
+ int EAGAIN ;
+ int FATAL ;
+ int GetLastError () ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WAIT_TIMEOUT ;
+ scalar_t__ WaitForSingleObject (int ,int ) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*,int ) ;
+ int errno ;
 
 bool
 PGSemaphoreTryLock(PGSemaphore sema)
 {
-	DWORD		ret;
+ DWORD ret;
 
-	ret = WaitForSingleObject(sema, 0);
+ ret = WaitForSingleObject(sema, 0);
 
-	if (ret == WAIT_OBJECT_0)
-	{
-		/* We got it! */
-		return true;
-	}
-	else if (ret == WAIT_TIMEOUT)
-	{
-		/* Can't get it */
-		errno = EAGAIN;
-		return false;
-	}
+ if (ret == WAIT_OBJECT_0)
+ {
 
-	/* Otherwise we are in trouble */
-	ereport(FATAL,
-			(errmsg("could not try-lock semaphore: error code %lu",
-					GetLastError())));
+  return 1;
+ }
+ else if (ret == WAIT_TIMEOUT)
+ {
 
-	/* keep compiler quiet */
-	return false;
+  errno = EAGAIN;
+  return 0;
+ }
+
+
+ ereport(FATAL,
+   (errmsg("could not try-lock semaphore: error code %lu",
+     GetLastError())));
+
+
+ return 0;
 }

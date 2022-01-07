@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoInternetCombineUrlEx (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int URL_DONT_ESCAPE_EXTRA_INFO ; 
- int URL_ESCAPE_SPACES_ONLY ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_uri_nofrag (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int IUri ;
+typedef int HRESULT ;
+
+
+ int CoInternetCombineUrlEx (int *,int const*,int,int **,int ) ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int IUri_Release (int *) ;
+ int URL_DONT_ESCAPE_EXTRA_INFO ;
+ int URL_ESCAPE_SPACES_ONLY ;
+ int WARN (char*,int ) ;
+ int * get_uri_nofrag (int *) ;
 
 __attribute__((used)) static HRESULT combine_url(IUri *base_uri, const WCHAR *rel_url, IUri **ret)
 {

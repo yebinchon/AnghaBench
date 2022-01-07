@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_2__** inputs; TYPE_1__* priv; } ;
-struct TYPE_9__ {int /*<<< orphan*/  sample_rate; } ;
+struct TYPE_9__ {int sample_rate; } ;
 struct TYPE_8__ {scalar_t__ orientation; int channel_height; int channel_width; scalar_t__ mode; float** color_buffer; } ;
-typedef  TYPE_1__ ShowSpectrumContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_1__ ShowSpectrumContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ COMBINED ; 
- int FFMIN (int,int const) ; 
- scalar_t__ VERTICAL ; 
- float bin_pos (int,int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  color_range (TYPE_1__*,int const,float*,float*,float*) ; 
- float get_value (TYPE_3__*,int const,int) ; 
- int lrintf (float) ; 
- int /*<<< orphan*/  pick_color (TYPE_1__*,float,float,float,float,float*) ; 
+
+ scalar_t__ COMBINED ;
+ int FFMIN (int,int const) ;
+ scalar_t__ VERTICAL ;
+ float bin_pos (int,int const,int ) ;
+ int color_range (TYPE_1__*,int const,float*,float*,float*) ;
+ float get_value (TYPE_3__*,int const,int) ;
+ int lrintf (float) ;
+ int pick_color (TYPE_1__*,float,float,float,float,float*) ;
 
 __attribute__((used)) static int plot_channel_log(AVFilterContext *ctx, void *arg, int jobnr, int nb_jobs)
 {
@@ -39,10 +39,10 @@ __attribute__((used)) static int plot_channel_log(AVFilterContext *ctx, void *ar
     float y, yf, uf, vf;
     int yy = 0;
 
-    /* decide color range */
+
     color_range(s, ch, &yf, &uf, &vf);
 
-    /* draw the channel */
+
     for (y = 0; y < h && yy < h; yy++) {
         float pos0 = bin_pos(yy+0, h, inlink->sample_rate);
         float pos1 = bin_pos(yy+1, h, inlink->sample_rate);

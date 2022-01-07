@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MultiXactMemberCtl ; 
- int /*<<< orphan*/  MultiXactOffsetCtl ; 
- int /*<<< orphan*/  SimpleLruFlush (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE (int) ; 
- int /*<<< orphan*/  TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_START (int) ; 
+ int MultiXactMemberCtl ;
+ int MultiXactOffsetCtl ;
+ int SimpleLruFlush (int ,int) ;
+ int TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE (int) ;
+ int TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_START (int) ;
 
 void
 CheckPointMultiXact(void)
 {
-	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_START(true);
+ TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_START(1);
 
-	/* Flush dirty MultiXact pages to disk */
-	SimpleLruFlush(MultiXactOffsetCtl, true);
-	SimpleLruFlush(MultiXactMemberCtl, true);
 
-	TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE(true);
+ SimpleLruFlush(MultiXactOffsetCtl, 1);
+ SimpleLruFlush(MultiXactMemberCtl, 1);
+
+ TRACE_POSTGRESQL_MULTIXACT_CHECKPOINT_DONE(1);
 }

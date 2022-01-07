@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * area; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * area; } ;
 struct snd_pcm_substream {TYPE_1__ dma_buffer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snd_dma_free_pages (TYPE_1__*) ; 
+
+ int snd_dma_free_pages (TYPE_1__*) ;
 
 __attribute__((used)) static void snd_pcm_lib_preallocate_dma_free(struct snd_pcm_substream *substream)
 {
-	if (substream->dma_buffer.area == NULL)
-		return;
-	snd_dma_free_pages(&substream->dma_buffer);
-	substream->dma_buffer.area = NULL;
+ if (substream->dma_buffer.area == ((void*)0))
+  return;
+ snd_dma_free_pages(&substream->dma_buffer);
+ substream->dma_buffer.area = ((void*)0);
 }

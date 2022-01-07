@@ -1,0 +1,797 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/ethernet/atheros/atlx/extr_atl1.c_atl1_configure.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/ethernet/atheros/atlx/extr_atl1.c_atl1_configure.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.atl1_adapter = type { %struct.atl1_hw, %struct.TYPE_9__, i32, i32, %struct.TYPE_7__, %struct.TYPE_8__, %struct.TYPE_6__, %struct.TYPE_10__ }
+%struct.atl1_hw = type { i32, i32, i64, i32, i32, i32, i32, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64* }
+%struct.TYPE_9__ = type { i32, i32, i32 }
+%struct.TYPE_7__ = type { i32, i32, i64 }
+%struct.TYPE_8__ = type { i32, i32, i32 }
+%struct.TYPE_6__ = type { i32 }
+%struct.TYPE_10__ = type { i32 }
+
+@REG_ISR = common dso_local global i64 0, align 8
+@REG_MAC_STA_ADDR = common dso_local global i64 0, align 8
+@REG_DESC_BASE_ADDR_HI = common dso_local global i64 0, align 8
+@REG_DESC_RFD_ADDR_LO = common dso_local global i64 0, align 8
+@REG_DESC_RRD_ADDR_LO = common dso_local global i64 0, align 8
+@REG_DESC_TPD_ADDR_LO = common dso_local global i64 0, align 8
+@REG_DESC_CMB_ADDR_LO = common dso_local global i64 0, align 8
+@REG_DESC_SMB_ADDR_LO = common dso_local global i64 0, align 8
+@REG_DESC_RFD_RRD_RING_SIZE = common dso_local global i64 0, align 8
+@REG_DESC_TPD_RING_SIZE = common dso_local global i64 0, align 8
+@REG_LOAD_PTR = common dso_local global i64 0, align 8
+@MB_TPD_PROD_INDX_MASK = common dso_local global i32 0, align 4
+@MB_TPD_PROD_INDX_SHIFT = common dso_local global i32 0, align 4
+@MB_RRD_CONS_INDX_MASK = common dso_local global i32 0, align 4
+@MB_RRD_CONS_INDX_SHIFT = common dso_local global i32 0, align 4
+@MB_RFD_PROD_INDX_MASK = common dso_local global i32 0, align 4
+@MB_RFD_PROD_INDX_SHIFT = common dso_local global i32 0, align 4
+@REG_MAILBOX = common dso_local global i64 0, align 8
+@MAC_IPG_IFG_IPGT_MASK = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_IPGT_SHIFT = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_MIFG_MASK = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_MIFG_SHIFT = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_IPGR1_MASK = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_IPGR1_SHIFT = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_IPGR2_MASK = common dso_local global i32 0, align 4
+@MAC_IPG_IFG_IPGR2_SHIFT = common dso_local global i32 0, align 4
+@REG_MAC_IPG_IFG = common dso_local global i64 0, align 8
+@MAC_HALF_DUPLX_CTRL_LCOL_MASK = common dso_local global i32 0, align 4
+@MAC_HALF_DUPLX_CTRL_RETRY_MASK = common dso_local global i32 0, align 4
+@MAC_HALF_DUPLX_CTRL_RETRY_SHIFT = common dso_local global i32 0, align 4
+@MAC_HALF_DUPLX_CTRL_EXC_DEF_EN = common dso_local global i32 0, align 4
+@MAC_HALF_DUPLX_CTRL_ABEBT_SHIFT = common dso_local global i32 0, align 4
+@MAC_HALF_DUPLX_CTRL_JAMIPG_MASK = common dso_local global i32 0, align 4
+@MAC_HALF_DUPLX_CTRL_JAMIPG_SHIFT = common dso_local global i32 0, align 4
+@REG_MAC_HALF_DUPLX_CTRL = common dso_local global i64 0, align 8
+@REG_IRQ_MODU_TIMER_INIT = common dso_local global i64 0, align 8
+@MASTER_CTRL_ITIMER_EN = common dso_local global i32 0, align 4
+@REG_MASTER_CTRL = common dso_local global i64 0, align 8
+@REG_CMBDISDMA_TIMER = common dso_local global i64 0, align 8
+@REG_MTU = common dso_local global i64 0, align 8
+@RXQ_JMBOSZ_TH_MASK = common dso_local global i32 0, align 4
+@RXQ_JMBOSZ_TH_SHIFT = common dso_local global i32 0, align 4
+@RXQ_JMBO_LKAH_MASK = common dso_local global i32 0, align 4
+@RXQ_JMBO_LKAH_SHIFT = common dso_local global i32 0, align 4
+@RXQ_RRD_TIMER_MASK = common dso_local global i32 0, align 4
+@RXQ_RRD_TIMER_SHIFT = common dso_local global i32 0, align 4
+@REG_RXQ_JMBOSZ_RRDTIM = common dso_local global i64 0, align 8
+@TXQ_CTRL_TPD_BURST_NUM_MASK = common dso_local global i32 0, align 4
+@TXQ_CTRL_TPD_BURST_NUM_SHIFT = common dso_local global i32 0, align 4
+@TXQ_CTRL_TXF_BURST_NUM_MASK = common dso_local global i32 0, align 4
+@TXQ_CTRL_TXF_BURST_NUM_SHIFT = common dso_local global i32 0, align 4
+@TXQ_CTRL_TPD_FETCH_TH_MASK = common dso_local global i32 0, align 4
+@TXQ_CTRL_TPD_FETCH_TH_SHIFT = common dso_local global i32 0, align 4
+@TXQ_CTRL_ENH_MODE = common dso_local global i32 0, align 4
+@TXQ_CTRL_EN = common dso_local global i32 0, align 4
+@REG_TXQ_CTRL = common dso_local global i64 0, align 8
+@TX_JUMBO_TASK_TH_MASK = common dso_local global i32 0, align 4
+@TX_JUMBO_TASK_TH_SHIFT = common dso_local global i32 0, align 4
+@TX_TPD_MIN_IPG_MASK = common dso_local global i32 0, align 4
+@TX_TPD_MIN_IPG_SHIFT = common dso_local global i32 0, align 4
+@REG_TX_JUMBO_TASK_TH_TPD_IPG = common dso_local global i64 0, align 8
+@RXQ_CTRL_RFD_BURST_NUM_MASK = common dso_local global i32 0, align 4
+@RXQ_CTRL_RFD_BURST_NUM_SHIFT = common dso_local global i32 0, align 4
+@RXQ_CTRL_RRD_BURST_THRESH_MASK = common dso_local global i32 0, align 4
+@RXQ_CTRL_RRD_BURST_THRESH_SHIFT = common dso_local global i32 0, align 4
+@RXQ_CTRL_RFD_PREF_MIN_IPG_MASK = common dso_local global i32 0, align 4
+@RXQ_CTRL_RFD_PREF_MIN_IPG_SHIFT = common dso_local global i32 0, align 4
+@RXQ_CTRL_CUT_THRU_EN = common dso_local global i32 0, align 4
+@RXQ_CTRL_EN = common dso_local global i32 0, align 4
+@REG_RXQ_CTRL = common dso_local global i64 0, align 8
+@DMA_CTRL_DMAR_BURST_LEN_MASK = common dso_local global i32 0, align 4
+@DMA_CTRL_DMAR_BURST_LEN_SHIFT = common dso_local global i32 0, align 4
+@DMA_CTRL_DMAW_BURST_LEN_MASK = common dso_local global i32 0, align 4
+@DMA_CTRL_DMAW_BURST_LEN_SHIFT = common dso_local global i32 0, align 4
+@DMA_CTRL_DMAR_EN = common dso_local global i32 0, align 4
+@DMA_CTRL_DMAW_EN = common dso_local global i32 0, align 4
+@atl1_rcb_128 = common dso_local global i64 0, align 8
+@DMA_CTRL_RCB_VALUE = common dso_local global i32 0, align 4
+@REG_DMA_CTRL = common dso_local global i64 0, align 8
+@REG_CMB_WRITE_TH = common dso_local global i64 0, align 8
+@REG_CMB_WRITE_TIMER = common dso_local global i64 0, align 8
+@REG_SMB_TIMER = common dso_local global i64 0, align 8
+@CSMB_CTRL_CMB_EN = common dso_local global i32 0, align 4
+@CSMB_CTRL_SMB_EN = common dso_local global i32 0, align 4
+@REG_CSMB_CTRL = common dso_local global i64 0, align 8
+@ISR_PHY_LINKDOWN = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.atl1_adapter*)* @atl1_configure to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @atl1_configure(%struct.atl1_adapter* %0) #0 {
+  %2 = alloca %struct.atl1_adapter*, align 8
+  %3 = alloca %struct.atl1_hw*, align 8
+  %4 = alloca i32, align 4
+  store %struct.atl1_adapter* %0, %struct.atl1_adapter** %2, align 8
+  %5 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %6 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %5, i32 0, i32 0
+  store %struct.atl1_hw* %6, %struct.atl1_hw** %3, align 8
+  %7 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %8 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %7, i32 0, i32 0
+  %9 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %8, i32 0, i32 7
+  %10 = load i64, i64* %9, align 8
+  %11 = load i64, i64* @REG_ISR, align 8
+  %12 = add nsw i64 %10, %11
+  %13 = call i32 @iowrite32(i32 -1, i64 %12)
+  %14 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %15 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %14, i32 0, i32 30
+  %16 = load i64*, i64** %15, align 8
+  %17 = getelementptr inbounds i64, i64* %16, i64 2
+  %18 = load i64, i64* %17, align 8
+  %19 = trunc i64 %18 to i32
+  %20 = shl i32 %19, 24
+  %21 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %22 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %21, i32 0, i32 30
+  %23 = load i64*, i64** %22, align 8
+  %24 = getelementptr inbounds i64, i64* %23, i64 3
+  %25 = load i64, i64* %24, align 8
+  %26 = trunc i64 %25 to i32
+  %27 = shl i32 %26, 16
+  %28 = or i32 %20, %27
+  %29 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %30 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %29, i32 0, i32 30
+  %31 = load i64*, i64** %30, align 8
+  %32 = getelementptr inbounds i64, i64* %31, i64 4
+  %33 = load i64, i64* %32, align 8
+  %34 = trunc i64 %33 to i32
+  %35 = shl i32 %34, 8
+  %36 = or i32 %28, %35
+  %37 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %38 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %37, i32 0, i32 30
+  %39 = load i64*, i64** %38, align 8
+  %40 = getelementptr inbounds i64, i64* %39, i64 5
+  %41 = load i64, i64* %40, align 8
+  %42 = trunc i64 %41 to i32
+  %43 = or i32 %36, %42
+  store i32 %43, i32* %4, align 4
+  %44 = load i32, i32* %4, align 4
+  %45 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %46 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %45, i32 0, i32 7
+  %47 = load i64, i64* %46, align 8
+  %48 = load i64, i64* @REG_MAC_STA_ADDR, align 8
+  %49 = add nsw i64 %47, %48
+  %50 = call i32 @iowrite32(i32 %44, i64 %49)
+  %51 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %52 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %51, i32 0, i32 30
+  %53 = load i64*, i64** %52, align 8
+  %54 = getelementptr inbounds i64, i64* %53, i64 0
+  %55 = load i64, i64* %54, align 8
+  %56 = trunc i64 %55 to i32
+  %57 = shl i32 %56, 8
+  %58 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %59 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %58, i32 0, i32 30
+  %60 = load i64*, i64** %59, align 8
+  %61 = getelementptr inbounds i64, i64* %60, i64 1
+  %62 = load i64, i64* %61, align 8
+  %63 = trunc i64 %62 to i32
+  %64 = or i32 %57, %63
+  store i32 %64, i32* %4, align 4
+  %65 = load i32, i32* %4, align 4
+  %66 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %67 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %66, i32 0, i32 7
+  %68 = load i64, i64* %67, align 8
+  %69 = load i64, i64* @REG_MAC_STA_ADDR, align 8
+  %70 = add nsw i64 %69, 4
+  %71 = add nsw i64 %68, %70
+  %72 = call i32 @iowrite32(i32 %65, i64 %71)
+  %73 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %74 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %73, i32 0, i32 1
+  %75 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %74, i32 0, i32 0
+  %76 = load i32, i32* %75, align 8
+  %77 = sext i32 %76 to i64
+  %78 = and i64 %77, -4294967296
+  %79 = lshr i64 %78, 32
+  %80 = trunc i64 %79 to i32
+  %81 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %82 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %81, i32 0, i32 7
+  %83 = load i64, i64* %82, align 8
+  %84 = load i64, i64* @REG_DESC_BASE_ADDR_HI, align 8
+  %85 = add nsw i64 %83, %84
+  %86 = call i32 @iowrite32(i32 %80, i64 %85)
+  %87 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %88 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %87, i32 0, i32 4
+  %89 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %88, i32 0, i32 0
+  %90 = load i32, i32* %89, align 8
+  %91 = sext i32 %90 to i64
+  %92 = and i64 %91, 4294967295
+  %93 = trunc i64 %92 to i32
+  %94 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %95 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %94, i32 0, i32 7
+  %96 = load i64, i64* %95, align 8
+  %97 = load i64, i64* @REG_DESC_RFD_ADDR_LO, align 8
+  %98 = add nsw i64 %96, %97
+  %99 = call i32 @iowrite32(i32 %93, i64 %98)
+  %100 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %101 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %100, i32 0, i32 5
+  %102 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %101, i32 0, i32 0
+  %103 = load i32, i32* %102, align 8
+  %104 = sext i32 %103 to i64
+  %105 = and i64 %104, 4294967295
+  %106 = trunc i64 %105 to i32
+  %107 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %108 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %107, i32 0, i32 7
+  %109 = load i64, i64* %108, align 8
+  %110 = load i64, i64* @REG_DESC_RRD_ADDR_LO, align 8
+  %111 = add nsw i64 %109, %110
+  %112 = call i32 @iowrite32(i32 %106, i64 %111)
+  %113 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %114 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %113, i32 0, i32 1
+  %115 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %114, i32 0, i32 0
+  %116 = load i32, i32* %115, align 8
+  %117 = sext i32 %116 to i64
+  %118 = and i64 %117, 4294967295
+  %119 = trunc i64 %118 to i32
+  %120 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %121 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %120, i32 0, i32 7
+  %122 = load i64, i64* %121, align 8
+  %123 = load i64, i64* @REG_DESC_TPD_ADDR_LO, align 8
+  %124 = add nsw i64 %122, %123
+  %125 = call i32 @iowrite32(i32 %119, i64 %124)
+  %126 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %127 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %126, i32 0, i32 7
+  %128 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %127, i32 0, i32 0
+  %129 = load i32, i32* %128, align 8
+  %130 = sext i32 %129 to i64
+  %131 = and i64 %130, 4294967295
+  %132 = trunc i64 %131 to i32
+  %133 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %134 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %133, i32 0, i32 7
+  %135 = load i64, i64* %134, align 8
+  %136 = load i64, i64* @REG_DESC_CMB_ADDR_LO, align 8
+  %137 = add nsw i64 %135, %136
+  %138 = call i32 @iowrite32(i32 %132, i64 %137)
+  %139 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %140 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %139, i32 0, i32 6
+  %141 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %140, i32 0, i32 0
+  %142 = load i32, i32* %141, align 4
+  %143 = sext i32 %142 to i64
+  %144 = and i64 %143, 4294967295
+  %145 = trunc i64 %144 to i32
+  %146 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %147 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %146, i32 0, i32 7
+  %148 = load i64, i64* %147, align 8
+  %149 = load i64, i64* @REG_DESC_SMB_ADDR_LO, align 8
+  %150 = add nsw i64 %148, %149
+  %151 = call i32 @iowrite32(i32 %145, i64 %150)
+  %152 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %153 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %152, i32 0, i32 5
+  %154 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %153, i32 0, i32 1
+  %155 = load i32, i32* %154, align 4
+  store i32 %155, i32* %4, align 4
+  %156 = load i32, i32* %4, align 4
+  %157 = shl i32 %156, 16
+  store i32 %157, i32* %4, align 4
+  %158 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %159 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %158, i32 0, i32 4
+  %160 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %159, i32 0, i32 2
+  %161 = load i64, i64* %160, align 8
+  %162 = load i32, i32* %4, align 4
+  %163 = sext i32 %162 to i64
+  %164 = add nsw i64 %163, %161
+  %165 = trunc i64 %164 to i32
+  store i32 %165, i32* %4, align 4
+  %166 = load i32, i32* %4, align 4
+  %167 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %168 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %167, i32 0, i32 7
+  %169 = load i64, i64* %168, align 8
+  %170 = load i64, i64* @REG_DESC_RFD_RRD_RING_SIZE, align 8
+  %171 = add nsw i64 %169, %170
+  %172 = call i32 @iowrite32(i32 %166, i64 %171)
+  %173 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %174 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %173, i32 0, i32 1
+  %175 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %174, i32 0, i32 1
+  %176 = load i32, i32* %175, align 4
+  %177 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %178 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %177, i32 0, i32 7
+  %179 = load i64, i64* %178, align 8
+  %180 = load i64, i64* @REG_DESC_TPD_RING_SIZE, align 8
+  %181 = add nsw i64 %179, %180
+  %182 = call i32 @iowrite32(i32 %176, i64 %181)
+  %183 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %184 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %183, i32 0, i32 7
+  %185 = load i64, i64* %184, align 8
+  %186 = load i64, i64* @REG_LOAD_PTR, align 8
+  %187 = add nsw i64 %185, %186
+  %188 = call i32 @iowrite32(i32 1, i64 %187)
+  %189 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %190 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %189, i32 0, i32 1
+  %191 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %190, i32 0, i32 2
+  %192 = call i32 @atomic_read(i32* %191)
+  %193 = load i32, i32* @MB_TPD_PROD_INDX_MASK, align 4
+  %194 = and i32 %192, %193
+  %195 = load i32, i32* @MB_TPD_PROD_INDX_SHIFT, align 4
+  %196 = shl i32 %194, %195
+  %197 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %198 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %197, i32 0, i32 5
+  %199 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %198, i32 0, i32 2
+  %200 = call i32 @atomic_read(i32* %199)
+  %201 = load i32, i32* @MB_RRD_CONS_INDX_MASK, align 4
+  %202 = and i32 %200, %201
+  %203 = load i32, i32* @MB_RRD_CONS_INDX_SHIFT, align 4
+  %204 = shl i32 %202, %203
+  %205 = or i32 %196, %204
+  %206 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %207 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %206, i32 0, i32 4
+  %208 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %207, i32 0, i32 1
+  %209 = call i32 @atomic_read(i32* %208)
+  %210 = load i32, i32* @MB_RFD_PROD_INDX_MASK, align 4
+  %211 = and i32 %209, %210
+  %212 = load i32, i32* @MB_RFD_PROD_INDX_SHIFT, align 4
+  %213 = shl i32 %211, %212
+  %214 = or i32 %205, %213
+  store i32 %214, i32* %4, align 4
+  %215 = load i32, i32* %4, align 4
+  %216 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %217 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %216, i32 0, i32 7
+  %218 = load i64, i64* %217, align 8
+  %219 = load i64, i64* @REG_MAILBOX, align 8
+  %220 = add nsw i64 %218, %219
+  %221 = call i32 @iowrite32(i32 %215, i64 %220)
+  %222 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %223 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %222, i32 0, i32 29
+  %224 = load i64, i64* %223, align 8
+  %225 = trunc i64 %224 to i32
+  %226 = load i32, i32* @MAC_IPG_IFG_IPGT_MASK, align 4
+  %227 = and i32 %225, %226
+  %228 = load i32, i32* @MAC_IPG_IFG_IPGT_SHIFT, align 4
+  %229 = shl i32 %227, %228
+  %230 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %231 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %230, i32 0, i32 28
+  %232 = load i64, i64* %231, align 8
+  %233 = trunc i64 %232 to i32
+  %234 = load i32, i32* @MAC_IPG_IFG_MIFG_MASK, align 4
+  %235 = and i32 %233, %234
+  %236 = load i32, i32* @MAC_IPG_IFG_MIFG_SHIFT, align 4
+  %237 = shl i32 %235, %236
+  %238 = or i32 %229, %237
+  %239 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %240 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %239, i32 0, i32 27
+  %241 = load i64, i64* %240, align 8
+  %242 = trunc i64 %241 to i32
+  %243 = load i32, i32* @MAC_IPG_IFG_IPGR1_MASK, align 4
+  %244 = and i32 %242, %243
+  %245 = load i32, i32* @MAC_IPG_IFG_IPGR1_SHIFT, align 4
+  %246 = shl i32 %244, %245
+  %247 = or i32 %238, %246
+  %248 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %249 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %248, i32 0, i32 26
+  %250 = load i64, i64* %249, align 8
+  %251 = trunc i64 %250 to i32
+  %252 = load i32, i32* @MAC_IPG_IFG_IPGR2_MASK, align 4
+  %253 = and i32 %251, %252
+  %254 = load i32, i32* @MAC_IPG_IFG_IPGR2_SHIFT, align 4
+  %255 = shl i32 %253, %254
+  %256 = or i32 %247, %255
+  store i32 %256, i32* %4, align 4
+  %257 = load i32, i32* %4, align 4
+  %258 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %259 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %258, i32 0, i32 7
+  %260 = load i64, i64* %259, align 8
+  %261 = load i64, i64* @REG_MAC_IPG_IFG, align 8
+  %262 = add nsw i64 %260, %261
+  %263 = call i32 @iowrite32(i32 %257, i64 %262)
+  %264 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %265 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %264, i32 0, i32 25
+  %266 = load i64, i64* %265, align 8
+  %267 = trunc i64 %266 to i32
+  %268 = load i32, i32* @MAC_HALF_DUPLX_CTRL_LCOL_MASK, align 4
+  %269 = and i32 %267, %268
+  %270 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %271 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %270, i32 0, i32 24
+  %272 = load i64, i64* %271, align 8
+  %273 = trunc i64 %272 to i32
+  %274 = load i32, i32* @MAC_HALF_DUPLX_CTRL_RETRY_MASK, align 4
+  %275 = and i32 %273, %274
+  %276 = load i32, i32* @MAC_HALF_DUPLX_CTRL_RETRY_SHIFT, align 4
+  %277 = shl i32 %275, %276
+  %278 = or i32 %269, %277
+  %279 = load i32, i32* @MAC_HALF_DUPLX_CTRL_EXC_DEF_EN, align 4
+  %280 = or i32 %278, %279
+  %281 = load i32, i32* @MAC_HALF_DUPLX_CTRL_ABEBT_SHIFT, align 4
+  %282 = shl i32 10, %281
+  %283 = or i32 %280, %282
+  %284 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %285 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %284, i32 0, i32 23
+  %286 = load i64, i64* %285, align 8
+  %287 = trunc i64 %286 to i32
+  %288 = load i32, i32* @MAC_HALF_DUPLX_CTRL_JAMIPG_MASK, align 4
+  %289 = and i32 %287, %288
+  %290 = load i32, i32* @MAC_HALF_DUPLX_CTRL_JAMIPG_SHIFT, align 4
+  %291 = shl i32 %289, %290
+  %292 = or i32 %283, %291
+  store i32 %292, i32* %4, align 4
+  %293 = load i32, i32* %4, align 4
+  %294 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %295 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %294, i32 0, i32 7
+  %296 = load i64, i64* %295, align 8
+  %297 = load i64, i64* @REG_MAC_HALF_DUPLX_CTRL, align 8
+  %298 = add nsw i64 %296, %297
+  %299 = call i32 @iowrite32(i32 %293, i64 %298)
+  %300 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %301 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %300, i32 0, i32 3
+  %302 = load i32, i32* %301, align 8
+  %303 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %304 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %303, i32 0, i32 7
+  %305 = load i64, i64* %304, align 8
+  %306 = load i64, i64* @REG_IRQ_MODU_TIMER_INIT, align 8
+  %307 = add nsw i64 %305, %306
+  %308 = call i32 @iowrite16(i32 %302, i64 %307)
+  %309 = load i32, i32* @MASTER_CTRL_ITIMER_EN, align 4
+  %310 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %311 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %310, i32 0, i32 7
+  %312 = load i64, i64* %311, align 8
+  %313 = load i64, i64* @REG_MASTER_CTRL, align 8
+  %314 = add nsw i64 %312, %313
+  %315 = call i32 @iowrite32(i32 %309, i64 %314)
+  %316 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %317 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %316, i32 0, i32 2
+  %318 = load i32, i32* %317, align 4
+  %319 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %320 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %319, i32 0, i32 7
+  %321 = load i64, i64* %320, align 8
+  %322 = load i64, i64* @REG_CMBDISDMA_TIMER, align 8
+  %323 = add nsw i64 %321, %322
+  %324 = call i32 @iowrite16(i32 %318, i64 %323)
+  %325 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %326 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %325, i32 0, i32 0
+  %327 = load i32, i32* %326, align 8
+  %328 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %329 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %328, i32 0, i32 7
+  %330 = load i64, i64* %329, align 8
+  %331 = load i64, i64* @REG_MTU, align 8
+  %332 = add nsw i64 %330, %331
+  %333 = call i32 @iowrite32(i32 %327, i64 %332)
+  %334 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %335 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %334, i32 0, i32 22
+  %336 = load i64, i64* %335, align 8
+  %337 = trunc i64 %336 to i32
+  %338 = load i32, i32* @RXQ_JMBOSZ_TH_MASK, align 4
+  %339 = and i32 %337, %338
+  %340 = load i32, i32* @RXQ_JMBOSZ_TH_SHIFT, align 4
+  %341 = shl i32 %339, %340
+  %342 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %343 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %342, i32 0, i32 21
+  %344 = load i64, i64* %343, align 8
+  %345 = trunc i64 %344 to i32
+  %346 = load i32, i32* @RXQ_JMBO_LKAH_MASK, align 4
+  %347 = and i32 %345, %346
+  %348 = load i32, i32* @RXQ_JMBO_LKAH_SHIFT, align 4
+  %349 = shl i32 %347, %348
+  %350 = or i32 %341, %349
+  %351 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %352 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %351, i32 0, i32 20
+  %353 = load i64, i64* %352, align 8
+  %354 = trunc i64 %353 to i32
+  %355 = load i32, i32* @RXQ_RRD_TIMER_MASK, align 4
+  %356 = and i32 %354, %355
+  %357 = load i32, i32* @RXQ_RRD_TIMER_SHIFT, align 4
+  %358 = shl i32 %356, %357
+  %359 = or i32 %350, %358
+  store i32 %359, i32* %4, align 4
+  %360 = load i32, i32* %4, align 4
+  %361 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %362 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %361, i32 0, i32 7
+  %363 = load i64, i64* %362, align 8
+  %364 = load i64, i64* @REG_RXQ_JMBOSZ_RRDTIM, align 8
+  %365 = add nsw i64 %363, %364
+  %366 = call i32 @iowrite32(i32 %360, i64 %365)
+  %367 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %368 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %367, i32 0, i32 1
+  %369 = load i32, i32* %368, align 4
+  switch i32 %369, label %373 [
+    i32 32769, label %370
+    i32 36865, label %370
+    i32 36866, label %370
+    i32 36867, label %370
+  ]
+
+370:                                              ; preds = %1, %1, %1, %1
+  %371 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %372 = call i32 @set_flow_ctrl_old(%struct.atl1_adapter* %371)
+  br label %376
+
+373:                                              ; preds = %1
+  %374 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %375 = call i32 @set_flow_ctrl_new(%struct.atl1_hw* %374)
+  br label %376
+
+376:                                              ; preds = %373, %370
+  %377 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %378 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %377, i32 0, i32 19
+  %379 = load i64, i64* %378, align 8
+  %380 = trunc i64 %379 to i32
+  %381 = load i32, i32* @TXQ_CTRL_TPD_BURST_NUM_MASK, align 4
+  %382 = and i32 %380, %381
+  %383 = load i32, i32* @TXQ_CTRL_TPD_BURST_NUM_SHIFT, align 4
+  %384 = shl i32 %382, %383
+  %385 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %386 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %385, i32 0, i32 18
+  %387 = load i64, i64* %386, align 8
+  %388 = trunc i64 %387 to i32
+  %389 = load i32, i32* @TXQ_CTRL_TXF_BURST_NUM_MASK, align 4
+  %390 = and i32 %388, %389
+  %391 = load i32, i32* @TXQ_CTRL_TXF_BURST_NUM_SHIFT, align 4
+  %392 = shl i32 %390, %391
+  %393 = or i32 %384, %392
+  %394 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %395 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %394, i32 0, i32 17
+  %396 = load i64, i64* %395, align 8
+  %397 = trunc i64 %396 to i32
+  %398 = load i32, i32* @TXQ_CTRL_TPD_FETCH_TH_MASK, align 4
+  %399 = and i32 %397, %398
+  %400 = load i32, i32* @TXQ_CTRL_TPD_FETCH_TH_SHIFT, align 4
+  %401 = shl i32 %399, %400
+  %402 = or i32 %393, %401
+  %403 = load i32, i32* @TXQ_CTRL_ENH_MODE, align 4
+  %404 = or i32 %402, %403
+  %405 = load i32, i32* @TXQ_CTRL_EN, align 4
+  %406 = or i32 %404, %405
+  store i32 %406, i32* %4, align 4
+  %407 = load i32, i32* %4, align 4
+  %408 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %409 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %408, i32 0, i32 7
+  %410 = load i64, i64* %409, align 8
+  %411 = load i64, i64* @REG_TXQ_CTRL, align 8
+  %412 = add nsw i64 %410, %411
+  %413 = call i32 @iowrite32(i32 %407, i64 %412)
+  %414 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %415 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %414, i32 0, i32 16
+  %416 = load i64, i64* %415, align 8
+  %417 = trunc i64 %416 to i32
+  %418 = load i32, i32* @TX_JUMBO_TASK_TH_MASK, align 4
+  %419 = and i32 %417, %418
+  %420 = load i32, i32* @TX_JUMBO_TASK_TH_SHIFT, align 4
+  %421 = shl i32 %419, %420
+  %422 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %423 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %422, i32 0, i32 15
+  %424 = load i64, i64* %423, align 8
+  %425 = trunc i64 %424 to i32
+  %426 = load i32, i32* @TX_TPD_MIN_IPG_MASK, align 4
+  %427 = and i32 %425, %426
+  %428 = load i32, i32* @TX_TPD_MIN_IPG_SHIFT, align 4
+  %429 = shl i32 %427, %428
+  %430 = or i32 %421, %429
+  store i32 %430, i32* %4, align 4
+  %431 = load i32, i32* %4, align 4
+  %432 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %433 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %432, i32 0, i32 7
+  %434 = load i64, i64* %433, align 8
+  %435 = load i64, i64* @REG_TX_JUMBO_TASK_TH_TPD_IPG, align 8
+  %436 = add nsw i64 %434, %435
+  %437 = call i32 @iowrite32(i32 %431, i64 %436)
+  %438 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %439 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %438, i32 0, i32 14
+  %440 = load i64, i64* %439, align 8
+  %441 = trunc i64 %440 to i32
+  %442 = load i32, i32* @RXQ_CTRL_RFD_BURST_NUM_MASK, align 4
+  %443 = and i32 %441, %442
+  %444 = load i32, i32* @RXQ_CTRL_RFD_BURST_NUM_SHIFT, align 4
+  %445 = shl i32 %443, %444
+  %446 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %447 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %446, i32 0, i32 13
+  %448 = load i64, i64* %447, align 8
+  %449 = trunc i64 %448 to i32
+  %450 = load i32, i32* @RXQ_CTRL_RRD_BURST_THRESH_MASK, align 4
+  %451 = and i32 %449, %450
+  %452 = load i32, i32* @RXQ_CTRL_RRD_BURST_THRESH_SHIFT, align 4
+  %453 = shl i32 %451, %452
+  %454 = or i32 %445, %453
+  %455 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %456 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %455, i32 0, i32 12
+  %457 = load i64, i64* %456, align 8
+  %458 = trunc i64 %457 to i32
+  %459 = load i32, i32* @RXQ_CTRL_RFD_PREF_MIN_IPG_MASK, align 4
+  %460 = and i32 %458, %459
+  %461 = load i32, i32* @RXQ_CTRL_RFD_PREF_MIN_IPG_SHIFT, align 4
+  %462 = shl i32 %460, %461
+  %463 = or i32 %454, %462
+  %464 = load i32, i32* @RXQ_CTRL_CUT_THRU_EN, align 4
+  %465 = or i32 %463, %464
+  %466 = load i32, i32* @RXQ_CTRL_EN, align 4
+  %467 = or i32 %465, %466
+  store i32 %467, i32* %4, align 4
+  %468 = load i32, i32* %4, align 4
+  %469 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %470 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %469, i32 0, i32 7
+  %471 = load i64, i64* %470, align 8
+  %472 = load i64, i64* @REG_RXQ_CTRL, align 8
+  %473 = add nsw i64 %471, %472
+  %474 = call i32 @iowrite32(i32 %468, i64 %473)
+  %475 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %476 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %475, i32 0, i32 11
+  %477 = load i64, i64* %476, align 8
+  %478 = trunc i64 %477 to i32
+  %479 = load i32, i32* @DMA_CTRL_DMAR_BURST_LEN_MASK, align 4
+  %480 = and i32 %478, %479
+  %481 = load i32, i32* @DMA_CTRL_DMAR_BURST_LEN_SHIFT, align 4
+  %482 = shl i32 %480, %481
+  %483 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %484 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %483, i32 0, i32 10
+  %485 = load i64, i64* %484, align 8
+  %486 = trunc i64 %485 to i32
+  %487 = load i32, i32* @DMA_CTRL_DMAW_BURST_LEN_MASK, align 4
+  %488 = and i32 %486, %487
+  %489 = load i32, i32* @DMA_CTRL_DMAW_BURST_LEN_SHIFT, align 4
+  %490 = shl i32 %488, %489
+  %491 = or i32 %482, %490
+  %492 = load i32, i32* @DMA_CTRL_DMAR_EN, align 4
+  %493 = or i32 %491, %492
+  %494 = load i32, i32* @DMA_CTRL_DMAW_EN, align 4
+  %495 = or i32 %493, %494
+  store i32 %495, i32* %4, align 4
+  %496 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %497 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %496, i32 0, i32 9
+  %498 = load i64, i64* %497, align 8
+  %499 = trunc i64 %498 to i32
+  %500 = load i32, i32* %4, align 4
+  %501 = or i32 %500, %499
+  store i32 %501, i32* %4, align 4
+  %502 = load i64, i64* @atl1_rcb_128, align 8
+  %503 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %504 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %503, i32 0, i32 2
+  %505 = load i64, i64* %504, align 8
+  %506 = icmp eq i64 %502, %505
+  br i1 %506, label %507, label %511
+
+507:                                              ; preds = %376
+  %508 = load i32, i32* @DMA_CTRL_RCB_VALUE, align 4
+  %509 = load i32, i32* %4, align 4
+  %510 = or i32 %509, %508
+  store i32 %510, i32* %4, align 4
+  br label %511
+
+511:                                              ; preds = %507, %376
+  %512 = load i32, i32* %4, align 4
+  %513 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %514 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %513, i32 0, i32 7
+  %515 = load i64, i64* %514, align 8
+  %516 = load i64, i64* @REG_DMA_CTRL, align 8
+  %517 = add nsw i64 %515, %516
+  %518 = call i32 @iowrite32(i32 %512, i64 %517)
+  %519 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %520 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %519, i32 0, i32 3
+  %521 = load i32, i32* %520, align 8
+  %522 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %523 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %522, i32 0, i32 1
+  %524 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %523, i32 0, i32 1
+  %525 = load i32, i32* %524, align 4
+  %526 = icmp sgt i32 %521, %525
+  br i1 %526, label %527, label %531
+
+527:                                              ; preds = %511
+  %528 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %529 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %528, i32 0, i32 3
+  %530 = load i32, i32* %529, align 8
+  br label %536
+
+531:                                              ; preds = %511
+  %532 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %533 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %532, i32 0, i32 1
+  %534 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %533, i32 0, i32 1
+  %535 = load i32, i32* %534, align 4
+  br label %536
+
+536:                                              ; preds = %531, %527
+  %537 = phi i32 [ %530, %527 ], [ %535, %531 ]
+  store i32 %537, i32* %4, align 4
+  %538 = load i32, i32* %4, align 4
+  %539 = shl i32 %538, 16
+  store i32 %539, i32* %4, align 4
+  %540 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %541 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %540, i32 0, i32 4
+  %542 = load i32, i32* %541, align 4
+  %543 = load i32, i32* %4, align 4
+  %544 = or i32 %543, %542
+  store i32 %544, i32* %4, align 4
+  %545 = load i32, i32* %4, align 4
+  %546 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %547 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %546, i32 0, i32 7
+  %548 = load i64, i64* %547, align 8
+  %549 = load i64, i64* @REG_CMB_WRITE_TH, align 8
+  %550 = add nsw i64 %548, %549
+  %551 = call i32 @iowrite32(i32 %545, i64 %550)
+  %552 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %553 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %552, i32 0, i32 5
+  %554 = load i32, i32* %553, align 8
+  %555 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %556 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %555, i32 0, i32 8
+  %557 = load i64, i64* %556, align 8
+  %558 = trunc i64 %557 to i32
+  %559 = shl i32 %558, 16
+  %560 = or i32 %554, %559
+  store i32 %560, i32* %4, align 4
+  %561 = load i32, i32* %4, align 4
+  %562 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %563 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %562, i32 0, i32 7
+  %564 = load i64, i64* %563, align 8
+  %565 = load i64, i64* @REG_CMB_WRITE_TIMER, align 8
+  %566 = add nsw i64 %564, %565
+  %567 = call i32 @iowrite32(i32 %561, i64 %566)
+  %568 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %569 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %568, i32 0, i32 6
+  %570 = load i32, i32* %569, align 4
+  %571 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %572 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %571, i32 0, i32 7
+  %573 = load i64, i64* %572, align 8
+  %574 = load i64, i64* @REG_SMB_TIMER, align 8
+  %575 = add nsw i64 %573, %574
+  %576 = call i32 @iowrite32(i32 %570, i64 %575)
+  %577 = load i32, i32* @CSMB_CTRL_CMB_EN, align 4
+  %578 = load i32, i32* @CSMB_CTRL_SMB_EN, align 4
+  %579 = or i32 %577, %578
+  store i32 %579, i32* %4, align 4
+  %580 = load i32, i32* %4, align 4
+  %581 = load %struct.atl1_hw*, %struct.atl1_hw** %3, align 8
+  %582 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %581, i32 0, i32 7
+  %583 = load i64, i64* %582, align 8
+  %584 = load i64, i64* @REG_CSMB_CTRL, align 8
+  %585 = add nsw i64 %583, %584
+  %586 = call i32 @iowrite32(i32 %580, i64 %585)
+  %587 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %588 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %587, i32 0, i32 0
+  %589 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %588, i32 0, i32 7
+  %590 = load i64, i64* %589, align 8
+  %591 = load i64, i64* @REG_ISR, align 8
+  %592 = add nsw i64 %590, %591
+  %593 = call i32 @ioread32(i64 %592)
+  store i32 %593, i32* %4, align 4
+  %594 = load i32, i32* %4, align 4
+  %595 = load i32, i32* @ISR_PHY_LINKDOWN, align 4
+  %596 = and i32 %594, %595
+  %597 = icmp ne i32 %596, 0
+  %598 = zext i1 %597 to i32
+  %599 = call i64 @unlikely(i32 %598)
+  %600 = icmp ne i64 %599, 0
+  br i1 %600, label %601, label %602
+
+601:                                              ; preds = %536
+  store i32 1, i32* %4, align 4
+  br label %603
+
+602:                                              ; preds = %536
+  store i32 0, i32* %4, align 4
+  br label %603
+
+603:                                              ; preds = %602, %601
+  %604 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %605 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %604, i32 0, i32 0
+  %606 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %605, i32 0, i32 7
+  %607 = load i64, i64* %606, align 8
+  %608 = load i64, i64* @REG_ISR, align 8
+  %609 = add nsw i64 %607, %608
+  %610 = call i32 @iowrite32(i32 1073741823, i64 %609)
+  %611 = load %struct.atl1_adapter*, %struct.atl1_adapter** %2, align 8
+  %612 = getelementptr inbounds %struct.atl1_adapter, %struct.atl1_adapter* %611, i32 0, i32 0
+  %613 = getelementptr inbounds %struct.atl1_hw, %struct.atl1_hw* %612, i32 0, i32 7
+  %614 = load i64, i64* %613, align 8
+  %615 = load i64, i64* @REG_ISR, align 8
+  %616 = add nsw i64 %614, %615
+  %617 = call i32 @iowrite32(i32 0, i64 %616)
+  %618 = load i32, i32* %4, align 4
+  ret i32 %618
+}
+
+declare dso_local i32 @iowrite32(i32, i64) #1
+
+declare dso_local i32 @atomic_read(i32*) #1
+
+declare dso_local i32 @iowrite16(i32, i64) #1
+
+declare dso_local i32 @set_flow_ctrl_old(%struct.atl1_adapter*) #1
+
+declare dso_local i32 @set_flow_ctrl_new(%struct.atl1_hw*) #1
+
+declare dso_local i32 @ioread32(i64) #1
+
+declare dso_local i64 @unlikely(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint_fast32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- char* strtok_r (char*,char*,char**) ; 
- scalar_t__ unlikely (int) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * vlc_alloc (size_t,int) ; 
- int /*<<< orphan*/  vlc_str2keycode (char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int uint_fast32_t ;
+
+
+ int assert (int) ;
+ int free (char*) ;
+ int sprintf (char*,char*,char*,char const*) ;
+ int strlen (char const*) ;
+ char* strtok_r (char*,char*,char**) ;
+ scalar_t__ unlikely (int) ;
+ char* var_InheritString (int *,char*) ;
+ int * vlc_alloc (size_t,int) ;
+ int vlc_str2keycode (char*) ;
 
 size_t
 vlc_actions_get_keycodes(vlc_object_t *p_obj, const char *psz_key_name,
                         bool b_global, uint_fast32_t **pp_keycodes)
 {
-    char varname[12 /* "global-key-" */ + strlen( psz_key_name )];
+    char varname[12 + strlen( psz_key_name )];
     sprintf( varname, "%skey-%s", b_global ? "global-" : "", psz_key_name );
 
-    *pp_keycodes = NULL;
+    *pp_keycodes = ((void*)0);
 
     char *psz_keys = var_InheritString( p_obj, varname );
-    if( psz_keys == NULL )
+    if( psz_keys == ((void*)0) )
         return 0;
 
     size_t i_nb_keycodes = 0;
@@ -52,8 +52,8 @@ vlc_actions_get_keycodes(vlc_object_t *p_obj, const char *psz_key_name,
     }
     size_t i = 0;
     for( char *buf, *key = strtok_r( psz_keys, "\t", &buf );
-         key != NULL;
-         key = strtok_r( NULL, "\t", &buf ), ++i )
+         key != ((void*)0);
+         key = strtok_r( ((void*)0), "\t", &buf ), ++i )
     {
         (*pp_keycodes)[i] = vlc_str2keycode( key );
     }

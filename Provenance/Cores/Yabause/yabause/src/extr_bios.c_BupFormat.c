@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_2__ {int cartid; int /*<<< orphan*/  bupram; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BupRam ; 
- TYPE_1__* CartridgeArea ; 
- int /*<<< orphan*/  FormatBackupRam (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LOG (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int cartid; int bupram; } ;
+
+
+ int BupRam ;
+ TYPE_1__* CartridgeArea ;
+ int FormatBackupRam (int ,int) ;
+ int LOG (char*) ;
 
 void BupFormat(u32 device)
 {

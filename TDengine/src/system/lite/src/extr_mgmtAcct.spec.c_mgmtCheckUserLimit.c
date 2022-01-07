@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SAcctObj ;
 
-/* Variables and functions */
- int TSDB_CODE_TOO_MANY_USERS ; 
- int /*<<< orphan*/  mWarn (char*,int,int) ; 
- int sdbGetNumOfRows (int /*<<< orphan*/ ) ; 
- int tsMaxUsers ; 
- int /*<<< orphan*/  userSdb ; 
+
+
+
+typedef int SAcctObj ;
+
+
+ int TSDB_CODE_TOO_MANY_USERS ;
+ int mWarn (char*,int,int) ;
+ int sdbGetNumOfRows (int ) ;
+ int tsMaxUsers ;
+ int userSdb ;
 
 int mgmtCheckUserLimit(SAcctObj *pAcct) {
   int numOfUsers = sdbGetNumOfRows(userSdb);

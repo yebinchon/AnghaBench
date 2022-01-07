@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  identify; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int identify; } ;
 struct TYPE_4__ {scalar_t__ type; TYPE_1__ ops; } ;
 struct ixgbe_hw {TYPE_2__ phy; } ;
-typedef  int /*<<< orphan*/  s32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IXGBE_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  IXGBE_SUCCESS ; 
- int /*<<< orphan*/  ixgbe_call_func (struct ixgbe_hw*,int /*<<< orphan*/ ,struct ixgbe_hw*,int /*<<< orphan*/ ) ; 
- scalar_t__ ixgbe_phy_unknown ; 
+
+ int IXGBE_NOT_IMPLEMENTED ;
+ int IXGBE_SUCCESS ;
+ int ixgbe_call_func (struct ixgbe_hw*,int ,struct ixgbe_hw*,int ) ;
+ scalar_t__ ixgbe_phy_unknown ;
 
 s32 ixgbe_identify_phy(struct ixgbe_hw *hw)
 {
-	s32 status = IXGBE_SUCCESS;
+ s32 status = IXGBE_SUCCESS;
 
-	if (hw->phy.type == ixgbe_phy_unknown) {
-		status = ixgbe_call_func(hw, hw->phy.ops.identify, (hw),
-					 IXGBE_NOT_IMPLEMENTED);
-	}
+ if (hw->phy.type == ixgbe_phy_unknown) {
+  status = ixgbe_call_func(hw, hw->phy.ops.identify, (hw),
+      IXGBE_NOT_IMPLEMENTED);
+ }
 
-	return status;
+ return status;
 }

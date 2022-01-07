@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* string; } ;
 struct ieee_name_type_hash_entry {struct ieee_name_type* types; TYPE_1__ root; } ;
 struct ieee_buflist {int dummy; } ;
-struct TYPE_5__ {scalar_t__ localp; char* name; scalar_t__ ignorep; struct ieee_buflist strdef; int /*<<< orphan*/  indx; } ;
+struct TYPE_5__ {scalar_t__ localp; char* name; scalar_t__ ignorep; struct ieee_buflist strdef; int indx; } ;
 struct ieee_name_type {unsigned int id; scalar_t__ kind; TYPE_2__ type; struct ieee_name_type* next; } ;
-struct ieee_handle {TYPE_3__* type_stack; int /*<<< orphan*/  type_indx; int /*<<< orphan*/  tags; } ;
-typedef  scalar_t__ bfd_boolean ;
+struct ieee_handle {TYPE_3__* type_stack; int type_indx; int tags; } ;
+typedef scalar_t__ bfd_boolean ;
 struct TYPE_6__ {TYPE_2__ type; } ;
 
-/* Variables and functions */
- scalar_t__ DEBUG_KIND_ILLEGAL ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ieee_define_named_type (struct ieee_handle*,char const*,int /*<<< orphan*/ ,unsigned int,scalar_t__,scalar_t__,struct ieee_buflist*) ; 
- int /*<<< orphan*/  ieee_init_buffer (struct ieee_handle*,struct ieee_buflist*) ; 
- struct ieee_name_type_hash_entry* ieee_name_type_hash_lookup (int /*<<< orphan*/ *,char const*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ieee_write_number (struct ieee_handle*,unsigned int) ; 
- int /*<<< orphan*/  memset (struct ieee_name_type*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
- scalar_t__ xmalloc (int) ; 
+
+ scalar_t__ DEBUG_KIND_ILLEGAL ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int assert (int) ;
+ int ieee_define_named_type (struct ieee_handle*,char const*,int ,unsigned int,scalar_t__,scalar_t__,struct ieee_buflist*) ;
+ int ieee_init_buffer (struct ieee_handle*,struct ieee_buflist*) ;
+ struct ieee_name_type_hash_entry* ieee_name_type_hash_lookup (int *,char const*,scalar_t__,scalar_t__) ;
+ int ieee_write_number (struct ieee_handle*,unsigned int) ;
+ int memset (struct ieee_name_type*,int ,int) ;
+ int sprintf (char*,char*,unsigned int) ;
+ scalar_t__ xmalloc (int) ;
 
 __attribute__((used)) static bfd_boolean
 ieee_start_struct_type (void *p, const char *tag, unsigned int id,
-			bfd_boolean structp, unsigned int size)
+   bfd_boolean structp, unsigned int size)
 {
   struct ieee_handle *info = (struct ieee_handle *) p;
   bfd_boolean localp, ignorep;
@@ -51,10 +51,10 @@ ieee_start_struct_type (void *p, const char *tag, unsigned int id,
   localp = FALSE;
   ignorep = FALSE;
 
-  /* We need to create a tag for internal use even if we don't want
-     one for external use.  This will let us refer to an anonymous
-     struct.  */
-  if (tag != NULL)
+
+
+
+  if (tag != ((void*)0))
     {
       look = tag;
       copy = FALSE;
@@ -66,35 +66,35 @@ ieee_start_struct_type (void *p, const char *tag, unsigned int id,
       copy = TRUE;
     }
 
-  /* If we already have references to the tag, we must use the
-     existing type index.  */
+
+
   h = ieee_name_type_hash_lookup (&info->tags, look, TRUE, copy);
-  if (h == NULL)
+  if (h == ((void*)0))
     return FALSE;
 
-  nt = NULL;
-  for (ntlook = h->types; ntlook != NULL; ntlook = ntlook->next)
+  nt = ((void*)0);
+  for (ntlook = h->types; ntlook != ((void*)0); ntlook = ntlook->next)
     {
       if (ntlook->id == id)
-	nt = ntlook;
+ nt = ntlook;
       else if (! ntlook->type.localp)
-	{
-	  /* We are creating a duplicate definition of a globally
-	     defined tag.  Force it to be local to avoid
-	     confusion.  */
-	  localp = TRUE;
-	}
+ {
+
+
+
+   localp = TRUE;
+ }
     }
 
-  if (nt != NULL)
+  if (nt != ((void*)0))
     {
       assert (localp == nt->type.localp);
       if (nt->kind == DEBUG_KIND_ILLEGAL && ! localp)
-	{
-	  /* We've already seen a global definition of the type.
-             Ignore this new definition.  */
-	  ignorep = TRUE;
-	}
+ {
+
+
+   ignorep = TRUE;
+ }
     }
   else
     {
@@ -112,7 +112,7 @@ ieee_start_struct_type (void *p, const char *tag, unsigned int id,
 
   if (! ieee_init_buffer (info, &strdef)
       || ! ieee_define_named_type (info, tag, nt->type.indx, size, TRUE,
-				   localp, &strdef)
+       localp, &strdef)
       || ! ieee_write_number (info, structp ? 'S' : 'U')
       || ! ieee_write_number (info, size))
     return FALSE;
@@ -121,9 +121,9 @@ ieee_start_struct_type (void *p, const char *tag, unsigned int id,
     {
       const char *hold;
 
-      /* We never want nt->type.name to be NULL.  We want the rest of
-	 the type to be the object set up on the type stack; it will
-	 have a NULL name if tag is NULL.  */
+
+
+
       hold = nt->type.name;
       nt->type = info->type_stack->type;
       nt->type.name = hold;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ XMLRPC_VALUE ;
-typedef  int /*<<< orphan*/  XMLRPC_SERVER ;
-typedef  scalar_t__ XMLRPC_REQUEST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XMLRPC_AddValueToVector (scalar_t__,scalar_t__) ; 
- scalar_t__ XMLRPC_CreateVector (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_RequestFree (scalar_t__,int) ; 
- scalar_t__ XMLRPC_RequestGetData (scalar_t__) ; 
- scalar_t__ XMLRPC_RequestNew () ; 
- int /*<<< orphan*/  XMLRPC_RequestSetData (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XMLRPC_RequestSetMethodName (scalar_t__,char const*) ; 
- int /*<<< orphan*/  XMLRPC_RequestSetRequestType (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ XMLRPC_ServerCallMethod (int /*<<< orphan*/ ,scalar_t__,void*) ; 
- char* XMLRPC_VectorGetStringWithID (scalar_t__,char*) ; 
- scalar_t__ XMLRPC_VectorGetValueWithID (scalar_t__,char*) ; 
- scalar_t__ XMLRPC_VectorNext (scalar_t__) ; 
- scalar_t__ XMLRPC_VectorRewind (scalar_t__) ; 
- int /*<<< orphan*/  xmlrpc_request_call ; 
- int /*<<< orphan*/  xmlrpc_vector_array ; 
+
+
+
+typedef scalar_t__ XMLRPC_VALUE ;
+typedef int XMLRPC_SERVER ;
+typedef scalar_t__ XMLRPC_REQUEST ;
+
+
+ int XMLRPC_AddValueToVector (scalar_t__,scalar_t__) ;
+ scalar_t__ XMLRPC_CreateVector (int ,int ) ;
+ int XMLRPC_RequestFree (scalar_t__,int) ;
+ scalar_t__ XMLRPC_RequestGetData (scalar_t__) ;
+ scalar_t__ XMLRPC_RequestNew () ;
+ int XMLRPC_RequestSetData (scalar_t__,scalar_t__) ;
+ int XMLRPC_RequestSetMethodName (scalar_t__,char const*) ;
+ int XMLRPC_RequestSetRequestType (scalar_t__,int ) ;
+ scalar_t__ XMLRPC_ServerCallMethod (int ,scalar_t__,void*) ;
+ char* XMLRPC_VectorGetStringWithID (scalar_t__,char*) ;
+ scalar_t__ XMLRPC_VectorGetValueWithID (scalar_t__,char*) ;
+ scalar_t__ XMLRPC_VectorNext (scalar_t__) ;
+ scalar_t__ XMLRPC_VectorRewind (scalar_t__) ;
+ int xmlrpc_request_call ;
+ int xmlrpc_vector_array ;
 
 XMLRPC_VALUE xsm_system_multicall_cb(XMLRPC_SERVER server, XMLRPC_REQUEST input, void* userData) {
    XMLRPC_VALUE xArray = XMLRPC_VectorRewind(XMLRPC_RequestGetData(input));

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/  tv_usec; int /*<<< orphan*/  tv_sec; } ;
-typedef  TYPE_1__ GTimeVal ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_get_current_time (TYPE_1__*) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int tv_usec; int tv_sec; } ;
+typedef TYPE_1__ GTimeVal ;
+
+
+ int g_get_current_time (TYPE_1__*) ;
+ int lua_newtable (int *) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
 
 __attribute__((used)) static int lua_g_get_current_time (lua_State *L) {
-	GTimeVal t;
+ GTimeVal t;
 
-	g_get_current_time(&t);
+ g_get_current_time(&t);
 
-	lua_newtable(L);
-	lua_pushinteger(L, t.tv_sec);
-	lua_setfield(L, -2, "tv_sec");
-	lua_pushinteger(L, t.tv_usec);
-	lua_setfield(L, -2, "tv_usec");
+ lua_newtable(L);
+ lua_pushinteger(L, t.tv_sec);
+ lua_setfield(L, -2, "tv_sec");
+ lua_pushinteger(L, t.tv_usec);
+ lua_setfield(L, -2, "tv_usec");
 
-	return 1;
+ return 1;
 }

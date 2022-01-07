@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT32 ;
-typedef  scalar_t__ UINT16 ;
 
-/* Variables and functions */
- size_t ACPI_ARRAY_LENGTH (char**) ; 
- scalar_t__ ASL_MSG_MAIN_COMPILER_END ; 
- scalar_t__ ASL_MSG_PREPROCESSOR ; 
- scalar_t__ ASL_MSG_PREPROCESSOR_END ; 
- scalar_t__ ASL_MSG_TABLE_COMPILER ; 
- scalar_t__ ASL_MSG_TABLE_COMPILER_END ; 
- char** AslCompilerMsgs ; 
- char** AslPreprocessorMsgs ; 
- char** AslTableCompilerMsgs ; 
+
+
+
+typedef size_t UINT32 ;
+typedef scalar_t__ UINT16 ;
+
+
+ size_t ACPI_ARRAY_LENGTH (char**) ;
+ scalar_t__ ASL_MSG_MAIN_COMPILER_END ;
+ scalar_t__ ASL_MSG_PREPROCESSOR ;
+ scalar_t__ ASL_MSG_PREPROCESSOR_END ;
+ scalar_t__ ASL_MSG_TABLE_COMPILER ;
+ scalar_t__ ASL_MSG_TABLE_COMPILER_END ;
+ char** AslCompilerMsgs ;
+ char** AslPreprocessorMsgs ;
+ char** AslTableCompilerMsgs ;
 
 const char *
 AeDecodeMessageId (
-    UINT16                  MessageId)
+    UINT16 MessageId)
 {
-    UINT32                  Index;
-    const char              **MessageTable;
+    UINT32 Index;
+    const char **MessageTable;
 
 
-    /* Main ASL Compiler messages */
+
 
     if (MessageId <= ASL_MSG_MAIN_COMPILER_END)
     {
@@ -45,7 +45,7 @@ AeDecodeMessageId (
         }
     }
 
-    /* Data Table Compiler messages */
+
 
     else if (MessageId <= ASL_MSG_TABLE_COMPILER_END)
     {
@@ -58,7 +58,7 @@ AeDecodeMessageId (
         }
     }
 
-    /* Preprocessor messages */
+
 
     else if (MessageId <= ASL_MSG_PREPROCESSOR_END)
     {
@@ -71,7 +71,7 @@ AeDecodeMessageId (
         }
     }
 
-    /* Everything else is unknown */
+
 
     else
     {

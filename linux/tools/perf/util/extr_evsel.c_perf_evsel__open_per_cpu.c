@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct perf_cpu_map {int dummy; } ;
 struct evsel {int dummy; } ;
 
-/* Variables and functions */
- int evsel__open (struct evsel*,struct perf_cpu_map*,int /*<<< orphan*/ *) ; 
+
+ int evsel__open (struct evsel*,struct perf_cpu_map*,int *) ;
 
 int perf_evsel__open_per_cpu(struct evsel *evsel,
-			     struct perf_cpu_map *cpus)
+        struct perf_cpu_map *cpus)
 {
-	return evsel__open(evsel, cpus, NULL);
+ return evsel__open(evsel, cpus, ((void*)0));
 }

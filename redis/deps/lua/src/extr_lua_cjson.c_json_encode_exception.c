@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strbuf_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/  encode_keep_buffer; } ;
-typedef  TYPE_1__ json_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  lua_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_typename (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strbuf_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int strbuf_t ;
+typedef int lua_State ;
+struct TYPE_3__ {int encode_keep_buffer; } ;
+typedef TYPE_1__ json_config_t ;
+
+
+ int luaL_error (int *,char*,int ,char const*) ;
+ int lua_type (int *,int) ;
+ int lua_typename (int *,int ) ;
+ int strbuf_free (int *) ;
 
 __attribute__((used)) static void json_encode_exception(lua_State *l, json_config_t *cfg, strbuf_t *json, int lindex,
                                   const char *reason)

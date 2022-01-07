@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTRL_PASS ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_SCRYPT_MAXMEM_BYTES ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_SCRYPT_N ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_SCRYPT_P ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_SCRYPT_R ; 
- int /*<<< orphan*/  EVP_PKEY_CTRL_SCRYPT_SALT ; 
- int EVP_PKEY_CTX_hex2ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int EVP_PKEY_CTX_str2ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  KDF_F_PKEY_SCRYPT_CTRL_STR ; 
- int /*<<< orphan*/  KDF_R_UNKNOWN_PARAMETER_TYPE ; 
- int /*<<< orphan*/  KDF_R_VALUE_MISSING ; 
- int /*<<< orphan*/  KDFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pkey_scrypt_ctrl_uint64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int EVP_PKEY_CTX ;
+
+
+ int EVP_PKEY_CTRL_PASS ;
+ int EVP_PKEY_CTRL_SCRYPT_MAXMEM_BYTES ;
+ int EVP_PKEY_CTRL_SCRYPT_N ;
+ int EVP_PKEY_CTRL_SCRYPT_P ;
+ int EVP_PKEY_CTRL_SCRYPT_R ;
+ int EVP_PKEY_CTRL_SCRYPT_SALT ;
+ int EVP_PKEY_CTX_hex2ctrl (int *,int ,char const*) ;
+ int EVP_PKEY_CTX_str2ctrl (int *,int ,char const*) ;
+ int KDF_F_PKEY_SCRYPT_CTRL_STR ;
+ int KDF_R_UNKNOWN_PARAMETER_TYPE ;
+ int KDF_R_VALUE_MISSING ;
+ int KDFerr (int ,int ) ;
+ int pkey_scrypt_ctrl_uint64 (int *,int ,char const*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int pkey_scrypt_ctrl_str(EVP_PKEY_CTX *ctx, const char *type,
                                 const char *value)
 {
-    if (value == NULL) {
+    if (value == ((void*)0)) {
         KDFerr(KDF_F_PKEY_SCRYPT_CTRL_STR, KDF_R_VALUE_MISSING);
         return 0;
     }

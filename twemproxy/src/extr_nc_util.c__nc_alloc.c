@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  LOG_VVERB ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,size_t,void*,char const*,int) ; 
- int /*<<< orphan*/  log_error (char*,size_t,char const*,int) ; 
- void* malloc (size_t) ; 
+ int ASSERT (int) ;
+ int LOG_VVERB ;
+ int log_debug (int ,char*,size_t,void*,char const*,int) ;
+ int log_error (char*,size_t,char const*,int) ;
+ void* malloc (size_t) ;
 
 void *
 _nc_alloc(size_t size, const char *name, int line)
@@ -26,7 +18,7 @@ _nc_alloc(size_t size, const char *name, int line)
     ASSERT(size != 0);
 
     p = malloc(size);
-    if (p == NULL) {
+    if (p == ((void*)0)) {
         log_error("malloc(%zu) failed @ %s:%d", size, name, line);
     } else {
         log_debug(LOG_VVERB, "malloc(%zu) at %p @ %s:%d", size, p, name, line);

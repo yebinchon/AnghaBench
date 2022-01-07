@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_hex2bn (int /*<<< orphan*/ **,char const*) ; 
- int TEST (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_BN_eq (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ne (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,char const*) ;
+ int TEST (int,int ) ;
+ int TEST_BN_eq (int *,int *) ;
+ int TEST_BN_ne (int *,int *) ;
+ scalar_t__ TEST_true (int ) ;
 
 __attribute__((used)) static int test_long_bignum(void)
 {
     int r;
-    BIGNUM *a = NULL, *b = NULL, *c = NULL, *d = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *c = ((void*)0), *d = ((void*)0);
     const char as[] = "1234567890123456789012345678901234567890123456789012"
                       "1234567890123456789012345678901234567890123456789012"
                       "1234567890123456789012345678901234567890123456789012"
@@ -34,11 +34,11 @@ __attribute__((used)) static int test_long_bignum(void)
     const char bs[] = "1234567890123456789012345678901234567890123456789012"
                       "1234567890123456789012345678901234567890123456789013"
                       "987657";
-    const char cs[] = "-"        /* 64 characters plus sign */
+    const char cs[] = "-"
                       "123456789012345678901234567890"
                       "123456789012345678901234567890"
                       "ABCD";
-    const char ds[] = "-"        /* 63 characters plus sign */
+    const char ds[] = "-"
                       "23456789A123456789B123456789C"
                       "123456789D123456789E123456789F"
                       "ABCD";
@@ -49,9 +49,9 @@ __attribute__((used)) static int test_long_bignum(void)
         && TEST_true(BN_hex2bn(&d, ds))
         && (TEST(0, TEST_BN_eq(a, b))
             & TEST(0, TEST_BN_eq(b, a))
-            & TEST(0, TEST_BN_eq(b, NULL))
-            & TEST(0, TEST_BN_eq(NULL, a))
-            & TEST(1, TEST_BN_ne(a, NULL))
+            & TEST(0, TEST_BN_eq(b, ((void*)0)))
+            & TEST(0, TEST_BN_eq(((void*)0), a))
+            & TEST(1, TEST_BN_ne(a, ((void*)0)))
             & TEST(0, TEST_BN_eq(c, d)));
     BN_free(a);
     BN_free(b);

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  framerate; int /*<<< orphan*/  hw_frames_ctx; } ;
-struct TYPE_10__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  pix_fmt; int /*<<< orphan*/  hw_frames_ctx; } ;
-struct TYPE_9__ {int /*<<< orphan*/  codecpar; int /*<<< orphan*/  time_base; } ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVCodec ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_PIX_FMT_VAAPI ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_buffer_ref (int /*<<< orphan*/ ) ; 
- char* av_err2str (int) ; 
- int /*<<< orphan*/ * av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_inv_q (int /*<<< orphan*/ ) ; 
- int avcodec_open2 (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int avcodec_parameters_from_context (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int avcodec_receive_frame (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int avcodec_send_packet (TYPE_3__*,int /*<<< orphan*/ *) ; 
- TYPE_1__* avformat_new_stream (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int avformat_write_header (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* decoder_ctx ; 
- int encode_write (int /*<<< orphan*/ *) ; 
- TYPE_2__* encoder_ctx ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int initialized ; 
- int /*<<< orphan*/  ofmt_ctx ; 
- TYPE_1__* ost ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int height; int width; int framerate; int hw_frames_ctx; } ;
+struct TYPE_10__ {int time_base; int height; int width; int pix_fmt; int hw_frames_ctx; } ;
+struct TYPE_9__ {int codecpar; int time_base; } ;
+typedef int AVPacket ;
+typedef int AVFrame ;
+typedef int AVCodec ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_PIX_FMT_VAAPI ;
+ int EAGAIN ;
+ int ENOMEM ;
+ int av_buffer_ref (int ) ;
+ char* av_err2str (int) ;
+ int * av_frame_alloc () ;
+ int av_frame_free (int **) ;
+ int av_inv_q (int ) ;
+ int avcodec_open2 (TYPE_2__*,int *,int *) ;
+ int avcodec_parameters_from_context (int ,TYPE_2__*) ;
+ int avcodec_receive_frame (TYPE_3__*,int *) ;
+ int avcodec_send_packet (TYPE_3__*,int *) ;
+ TYPE_1__* avformat_new_stream (int ,int *) ;
+ int avformat_write_header (int ,int *) ;
+ TYPE_3__* decoder_ctx ;
+ int encode_write (int *) ;
+ TYPE_2__* encoder_ctx ;
+ int fprintf (int ,char*,...) ;
+ int initialized ;
+ int ofmt_ctx ;
+ TYPE_1__* ost ;
+ int stderr ;
 
 __attribute__((used)) static int dec_enc(AVPacket *pkt, AVCodec *enc_codec)
 {
@@ -71,23 +71,23 @@ __attribute__((used)) static int dec_enc(AVPacket *pkt, AVCodec *enc_codec)
         }
 
         if (!initialized) {
-            /* we need to ref hw_frames_ctx of decoder to initialize encoder's codec.
-               Only after we get a decoded frame, can we obtain its hw_frames_ctx */
+
+
             encoder_ctx->hw_frames_ctx = av_buffer_ref(decoder_ctx->hw_frames_ctx);
             if (!encoder_ctx->hw_frames_ctx) {
                 ret = AVERROR(ENOMEM);
                 goto fail;
             }
-            /* set AVCodecContext Parameters for encoder, here we keep them stay
-             * the same as decoder.
-             * xxx: now the sample can't handle resolution change case.
-             */
-            encoder_ctx->time_base = av_inv_q(decoder_ctx->framerate);
-            encoder_ctx->pix_fmt   = AV_PIX_FMT_VAAPI;
-            encoder_ctx->width     = decoder_ctx->width;
-            encoder_ctx->height    = decoder_ctx->height;
 
-            if ((ret = avcodec_open2(encoder_ctx, enc_codec, NULL)) < 0) {
+
+
+
+            encoder_ctx->time_base = av_inv_q(decoder_ctx->framerate);
+            encoder_ctx->pix_fmt = AV_PIX_FMT_VAAPI;
+            encoder_ctx->width = decoder_ctx->width;
+            encoder_ctx->height = decoder_ctx->height;
+
+            if ((ret = avcodec_open2(encoder_ctx, enc_codec, ((void*)0))) < 0) {
                 fprintf(stderr, "Failed to open encode codec. Error code: %s\n",
                         av_err2str(ret));
                 goto fail;
@@ -107,8 +107,8 @@ __attribute__((used)) static int dec_enc(AVPacket *pkt, AVCodec *enc_codec)
                 goto fail;
             }
 
-            /* write the stream header */
-            if ((ret = avformat_write_header(ofmt_ctx, NULL)) < 0) {
+
+            if ((ret = avformat_write_header(ofmt_ctx, ((void*)0))) < 0) {
                 fprintf(stderr, "Error while writing stream header. "
                         "Error code: %s\n", av_err2str(ret));
                 goto fail;

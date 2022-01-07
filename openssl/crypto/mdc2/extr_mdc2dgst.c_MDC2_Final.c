@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int num; int pad_type; int* data; scalar_t__ hh; scalar_t__ h; } ;
-typedef  TYPE_1__ MDC2_CTX ;
+typedef TYPE_1__ MDC2_CTX ;
 
-/* Variables and functions */
- unsigned int MDC2_BLOCK ; 
- int /*<<< orphan*/  mdc2_body (TYPE_1__*,int*,unsigned int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,char*,unsigned int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ unsigned int MDC2_BLOCK ;
+ int mdc2_body (TYPE_1__*,int*,unsigned int) ;
+ int memcpy (unsigned char*,char*,unsigned int) ;
+ int memset (int*,int ,unsigned int) ;
 
 int MDC2_Final(unsigned char *md, MDC2_CTX *c)
 {

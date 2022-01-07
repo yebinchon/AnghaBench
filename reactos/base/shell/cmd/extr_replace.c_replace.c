@@ -1,129 +1,129 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ dwHighDateTime; scalar_t__ dwLowDateTime; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int INT ;
-typedef  scalar_t__ HANDLE ;
-typedef  TYPE_1__ FILETIME ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int TCHAR ;
+typedef int * LPBYTE ;
+typedef int INT ;
+typedef scalar_t__ HANDLE ;
+typedef TYPE_1__ FILETIME ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_INPUT ; 
- int /*<<< orphan*/  BUFF_SIZE ; 
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- scalar_t__ CheckCtrlBreak (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  ConOutResPaging (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConOutResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ConOutResPuts (int /*<<< orphan*/ ) ; 
- scalar_t__ CreateFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  FilePromptYNA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int GetFileAttributes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetFileTime (scalar_t__,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  GetPathCase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ IsExistingFile (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MEM_COMMIT ; 
- int /*<<< orphan*/  MEM_RELEASE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- int REPLACE_ADD ; 
- int REPLACE_CONFIRM ; 
- int REPLACE_UPDATE ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STRING_COPY_ERROR1 ; 
- int /*<<< orphan*/  STRING_COPY_ERROR3 ; 
- int /*<<< orphan*/  STRING_ERROR_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  STRING_REPLACE_ERROR7 ; 
- int /*<<< orphan*/  STRING_REPLACE_HELP10 ; 
- int /*<<< orphan*/  STRING_REPLACE_HELP11 ; 
- int /*<<< orphan*/  STRING_REPLACE_HELP5 ; 
- int /*<<< orphan*/  STRING_REPLACE_HELP9 ; 
- int /*<<< orphan*/  SetFileAttributes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SetFileTime (scalar_t__,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * VirtualAlloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VirtualFree (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _tcscmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _totupper (int /*<<< orphan*/ ) ; 
- int nErrorLevel ; 
+
+ int BREAK_INPUT ;
+ int BUFF_SIZE ;
+ int CREATE_ALWAYS ;
+ scalar_t__ CheckCtrlBreak (int ) ;
+ int CloseHandle (scalar_t__) ;
+ int ConOutResPaging (int ,int ) ;
+ int ConOutResPrintf (int ,int *) ;
+ int ConOutResPuts (int ) ;
+ scalar_t__ CreateFile (int *,int ,int ,int *,int ,int ,int *) ;
+ int DeleteFile (int *) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int FilePromptYNA (int ) ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GetFileAttributes (int *) ;
+ int GetFileTime (scalar_t__,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int GetPathCase (int *,int *) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ IsExistingFile (int *) ;
+ int MAX_PATH ;
+ int MEM_COMMIT ;
+ int MEM_RELEASE ;
+ int OPEN_EXISTING ;
+ int PAGE_READWRITE ;
+ int REPLACE_ADD ;
+ int REPLACE_CONFIRM ;
+ int REPLACE_UPDATE ;
+ int ReadFile (scalar_t__,int *,int ,int*,int *) ;
+ int STRING_COPY_ERROR1 ;
+ int STRING_COPY_ERROR3 ;
+ int STRING_ERROR_OUT_OF_MEMORY ;
+ int STRING_REPLACE_ERROR7 ;
+ int STRING_REPLACE_HELP10 ;
+ int STRING_REPLACE_HELP11 ;
+ int STRING_REPLACE_HELP5 ;
+ int STRING_REPLACE_HELP9 ;
+ int SetFileAttributes (int *,int) ;
+ int SetFileTime (scalar_t__,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ int TRUE ;
+ int * VirtualAlloc (int *,int ,int ,int ) ;
+ int VirtualFree (int *,int ,int ) ;
+ int WriteFile (scalar_t__,int *,int,int*,int *) ;
+ int _tcscmp (int *,int *) ;
+ int _totupper (int ) ;
+ int nErrorLevel ;
 
 INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *doMore)
 {
     TCHAR d[MAX_PATH];
     TCHAR s[MAX_PATH];
     HANDLE hFileSrc, hFileDest;
-    DWORD  dwAttrib, dwRead, dwWritten;
+    DWORD dwAttrib, dwRead, dwWritten;
     LPBYTE buffer;
-    BOOL   bEof = FALSE;
+    BOOL bEof = FALSE;
     FILETIME srcCreationTime, destCreationTime, srcLastAccessTime, destLastAccessTime;
     FILETIME srcLastWriteTime, destLastWriteTime;
     GetPathCase(source, s);
     GetPathCase(dest, d);
     s[0] = _totupper(s[0]);
     d[0] = _totupper(d[0]);
-    // ConOutPrintf(_T("old-src:  %s\n"), s);
-    // ConOutPrintf(_T("old-dest: %s\n"), d);
-    // ConOutPrintf(_T("src:  %s\n"), source);
-    // ConOutPrintf(_T("dest: %s\n"), dest);
 
-    /* Open up the sourcefile */
-    hFileSrc = CreateFile (source, GENERIC_READ, FILE_SHARE_READ,NULL, OPEN_EXISTING, 0, NULL);
+
+
+
+
+
+    hFileSrc = CreateFile (source, GENERIC_READ, FILE_SHARE_READ,((void*)0), OPEN_EXISTING, 0, ((void*)0));
     if (hFileSrc == INVALID_HANDLE_VALUE)
     {
         ConOutResPrintf(STRING_COPY_ERROR1, source);
         return 0;
     }
 
-    /*
-     * Get the time from source file to be used in the comparison
-     * with dest time if update switch is set.
-     */
+
+
+
+
     GetFileTime (hFileSrc, &srcCreationTime, &srcLastAccessTime, &srcLastWriteTime);
 
-    /*
-     * Retrieve the source attributes so that they later on
-     * can be inserted in to the destination.
-     */
+
+
+
+
     dwAttrib = GetFileAttributes (source);
 
     if (IsExistingFile (dest))
     {
-        /*
-         * Resets the attributes to avoid problems with read only files,
-         * checks for read only has been made earlier.
-         */
+
+
+
+
         SetFileAttributes(dest,FILE_ATTRIBUTE_NORMAL);
-        /*
-         * Is the update flas set? The time has to be controled so that
-         * only older files are replaced.
-         */
+
+
+
+
         if (dwFlags & REPLACE_UPDATE)
         {
-            /* Read destination time */
-            hFileDest = CreateFile(dest, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
-                0, NULL);
+
+            hFileDest = CreateFile(dest, GENERIC_READ, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING,
+                0, ((void*)0));
 
             if (hFileDest == INVALID_HANDLE_VALUE)
             {
@@ -132,7 +132,7 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
                 return 0;
             }
 
-            /* Compare time */
+
             GetFileTime (hFileDest, &destCreationTime, &destLastAccessTime, &destLastWriteTime);
             if (!((srcLastWriteTime.dwHighDateTime > destLastWriteTime.dwHighDateTime) ||
                     (srcLastWriteTime.dwHighDateTime == destLastWriteTime.dwHighDateTime &&
@@ -144,14 +144,14 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
             }
             CloseHandle (hFileDest);
         }
-        /* Delete the old file */
+
         DeleteFile (dest);
     }
 
-    /* Check confirm flag, and take appropriate action */
+
     if (dwFlags & REPLACE_CONFIRM)
     {
-        /* Output depending on add flag */
+
         if (dwFlags & REPLACE_ADD)
             ConOutResPrintf(STRING_REPLACE_HELP9, dest);
         else
@@ -163,13 +163,13 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
         }
     }
 
-    /* Output depending on add flag */
+
     if (dwFlags & REPLACE_ADD)
         ConOutResPrintf(STRING_REPLACE_HELP11, dest);
     else
         ConOutResPrintf(STRING_REPLACE_HELP5, dest);
 
-    /* Make sure source and destination is not the same */
+
     if (!_tcscmp(s, d))
     {
         ConOutResPaging(TRUE, STRING_REPLACE_ERROR7);
@@ -178,8 +178,8 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
         return 0;
     }
 
-    /* Open destination file to write to */
-    hFileDest = CreateFile (dest, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, NULL);
+
+    hFileDest = CreateFile (dest, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, 0, ((void*)0));
     if (hFileDest == INVALID_HANDLE_VALUE)
     {
         CloseHandle (hFileSrc);
@@ -188,9 +188,9 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
         return 0;
     }
 
-    /* Get buffer for the copy process */
-    buffer = VirtualAlloc(NULL, BUFF_SIZE, MEM_COMMIT, PAGE_READWRITE);
-    if (buffer == NULL)
+
+    buffer = VirtualAlloc(((void*)0), BUFF_SIZE, MEM_COMMIT, PAGE_READWRITE);
+    if (buffer == ((void*)0))
     {
         CloseHandle (hFileDest);
         CloseHandle (hFileSrc);
@@ -198,22 +198,22 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
         return 0;
     }
 
-    /* Put attribute and time to the new destination file */
+
     SetFileAttributes (dest, dwAttrib);
     SetFileTime (hFileDest, &srcCreationTime, &srcLastAccessTime, &srcLastWriteTime);
     do
     {
-        /* Read data from source */
-        ReadFile (hFileSrc, buffer, BUFF_SIZE, &dwRead, NULL);
 
-        /* Done? */
+        ReadFile (hFileSrc, buffer, BUFF_SIZE, &dwRead, ((void*)0));
+
+
         if (dwRead == 0)
             break;
 
-        /* Write to destination file */
-        WriteFile (hFileDest, buffer, dwRead, &dwWritten, NULL);
 
-        /* Done! or ctrl break! */
+        WriteFile (hFileDest, buffer, dwRead, &dwWritten, ((void*)0));
+
+
         if (dwWritten != dwRead || CheckCtrlBreak(BREAK_INPUT))
         {
             ConOutResPuts(STRING_COPY_ERROR3);
@@ -226,11 +226,11 @@ INT replace(TCHAR source[MAX_PATH], TCHAR dest[MAX_PATH], DWORD dwFlags, BOOL *d
     }
     while (!bEof);
 
-    /* Return memory and close files */
+
     VirtualFree (buffer, 0, MEM_RELEASE);
     CloseHandle (hFileDest);
     CloseHandle (hFileSrc);
 
-    /* Return one file replaced */
+
     return 1;
 }

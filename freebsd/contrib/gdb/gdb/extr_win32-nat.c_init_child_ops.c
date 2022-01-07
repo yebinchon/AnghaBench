@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_stop; int /*<<< orphan*/  to_pid_to_str; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_can_run; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_terminal_info; int /*<<< orphan*/  to_terminal_save_ours; int /*<<< orphan*/  to_terminal_ours; int /*<<< orphan*/  to_terminal_ours_for_output; int /*<<< orphan*/  to_terminal_inferior; int /*<<< orphan*/  to_terminal_init; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_attach; int /*<<< orphan*/  to_close; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  child_attach ; 
- int /*<<< orphan*/  child_can_run ; 
- int /*<<< orphan*/  child_close ; 
- int /*<<< orphan*/  child_create_inferior ; 
- int /*<<< orphan*/  child_detach ; 
- int /*<<< orphan*/  child_fetch_inferior_registers ; 
- int /*<<< orphan*/  child_files_info ; 
- int /*<<< orphan*/  child_kill_inferior ; 
- int /*<<< orphan*/  child_mourn_inferior ; 
- int /*<<< orphan*/  child_open ; 
- TYPE_1__ child_ops ; 
- int /*<<< orphan*/  child_prepare_to_store ; 
- int /*<<< orphan*/  child_resume ; 
- int /*<<< orphan*/  child_stop ; 
- int /*<<< orphan*/  child_store_inferior_registers ; 
- int /*<<< orphan*/  child_terminal_info ; 
- int /*<<< orphan*/  child_wait ; 
- int /*<<< orphan*/  child_xfer_memory ; 
- int /*<<< orphan*/  cygwin_pid_to_str ; 
- int /*<<< orphan*/  memory_insert_breakpoint ; 
- int /*<<< orphan*/  memory_remove_breakpoint ; 
- int /*<<< orphan*/  process_stratum ; 
- int /*<<< orphan*/  terminal_inferior ; 
- int /*<<< orphan*/  terminal_init_inferior ; 
- int /*<<< orphan*/  terminal_ours ; 
- int /*<<< orphan*/  terminal_ours_for_output ; 
- int /*<<< orphan*/  terminal_save_ours ; 
- int /*<<< orphan*/  win32_child_thread_alive ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_magic; int to_stratum; int to_stop; int to_pid_to_str; int to_thread_alive; int to_can_run; int to_mourn_inferior; int to_create_inferior; int to_kill; int to_terminal_info; int to_terminal_save_ours; int to_terminal_ours; int to_terminal_ours_for_output; int to_terminal_inferior; int to_terminal_init; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_wait; int to_resume; int to_detach; int to_attach; int to_close; int to_open; } ;
+
+
+ int OPS_MAGIC ;
+ int child_attach ;
+ int child_can_run ;
+ int child_close ;
+ int child_create_inferior ;
+ int child_detach ;
+ int child_fetch_inferior_registers ;
+ int child_files_info ;
+ int child_kill_inferior ;
+ int child_mourn_inferior ;
+ int child_open ;
+ TYPE_1__ child_ops ;
+ int child_prepare_to_store ;
+ int child_resume ;
+ int child_stop ;
+ int child_store_inferior_registers ;
+ int child_terminal_info ;
+ int child_wait ;
+ int child_xfer_memory ;
+ int cygwin_pid_to_str ;
+ int memory_insert_breakpoint ;
+ int memory_remove_breakpoint ;
+ int process_stratum ;
+ int terminal_inferior ;
+ int terminal_init_inferior ;
+ int terminal_ours ;
+ int terminal_ours_for_output ;
+ int terminal_save_ours ;
+ int win32_child_thread_alive ;
 
 __attribute__((used)) static void
 init_child_ops (void)

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct loops {unsigned int num; int /*<<< orphan*/  state; int /*<<< orphan*/ * parray; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOOPS_HAVE_PREHEADERS ; 
- int /*<<< orphan*/  create_preheader (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct loops {unsigned int num; int state; int * parray; } ;
+
+
+ int LOOPS_HAVE_PREHEADERS ;
+ int create_preheader (int ,int) ;
 
 void
 create_preheaders (struct loops *loops, int flags)

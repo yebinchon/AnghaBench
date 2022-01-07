@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-typedef  int /*<<< orphan*/  hevc_video_parameter_set_t ;
-typedef  int /*<<< orphan*/  hevc_sequence_parameter_set_t ;
-typedef  int /*<<< orphan*/  hevc_picture_parameter_set_t ;
-struct TYPE_11__ {unsigned int i_frame_rate; unsigned int i_frame_rate_base; unsigned int i_width; unsigned int i_height; unsigned int i_visible_width; unsigned int i_visible_height; int /*<<< orphan*/  color_range; int /*<<< orphan*/  space; int /*<<< orphan*/  transfer; int /*<<< orphan*/  primaries; } ;
-struct TYPE_13__ {int /*<<< orphan*/  i_extra; int /*<<< orphan*/  p_extra; void* i_level; void* i_profile; TYPE_2__ video; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+typedef int hevc_video_parameter_set_t ;
+typedef int hevc_sequence_parameter_set_t ;
+typedef int hevc_picture_parameter_set_t ;
+struct TYPE_11__ {unsigned int i_frame_rate; unsigned int i_frame_rate_base; unsigned int i_width; unsigned int i_height; unsigned int i_visible_width; unsigned int i_visible_height; int color_range; int space; int transfer; int primaries; } ;
+struct TYPE_13__ {int i_extra; int p_extra; void* i_level; void* i_profile; TYPE_2__ video; } ;
 struct TYPE_10__ {scalar_t__ primaries; scalar_t__ i_visible_width; } ;
 struct TYPE_12__ {int i_profile; TYPE_1__ video; } ;
 struct TYPE_14__ {TYPE_4__ fmt_out; TYPE_3__ fmt_in; TYPE_6__* p_sys; } ;
-typedef  TYPE_5__ decoder_t ;
+typedef TYPE_5__ decoder_t ;
 struct TYPE_16__ {unsigned int i_divider_den; int i_divider_num; } ;
-struct TYPE_15__ {TYPE_7__ dts; int /*<<< orphan*/  const* p_active_vps; int /*<<< orphan*/  const* p_active_sps; int /*<<< orphan*/  const* p_active_pps; } ;
-typedef  TYPE_6__ decoder_sys_t ;
+struct TYPE_15__ {TYPE_7__ dts; int const* p_active_vps; int const* p_active_sps; int const* p_active_pps; } ;
+typedef TYPE_6__ decoder_sys_t ;
 
-/* Variables and functions */
- scalar_t__ COLOR_PRIMARIES_UNDEF ; 
- int /*<<< orphan*/  SetsToAnnexB (TYPE_6__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void***,int /*<<< orphan*/ *) ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  date_Change (TYPE_7__*,int,unsigned int) ; 
- int /*<<< orphan*/  hevc_get_colorimetry (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ hevc_get_frame_rate (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,unsigned int*,unsigned int*) ; 
- scalar_t__ hevc_get_picture_size (int /*<<< orphan*/  const*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ; 
- scalar_t__ hevc_get_sps_profile_tier_level (int /*<<< orphan*/  const*,void**,void**) ; 
+
+ scalar_t__ COLOR_PRIMARIES_UNDEF ;
+ int SetsToAnnexB (TYPE_6__*,int const*,int const*,int const*,void***,int *) ;
+ int UINT_MAX ;
+ int date_Change (TYPE_7__*,int,unsigned int) ;
+ int hevc_get_colorimetry (int const*,int *,int *,int *,int *) ;
+ scalar_t__ hevc_get_frame_rate (int const*,int const*,unsigned int*,unsigned int*) ;
+ scalar_t__ hevc_get_picture_size (int const*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ;
+ scalar_t__ hevc_get_sps_profile_tier_level (int const*,void**,void**) ;
 
 __attribute__((used)) static void ActivateSets(decoder_t *p_dec,
                          const hevc_picture_parameter_set_t *p_pps,

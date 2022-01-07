@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ao_convert_fmt {int channels; int /*<<< orphan*/  src_fmt; } ;
 
-/* Variables and functions */
- int af_fmt_is_planar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_plane (int,void*,int) ; 
- int get_conv_type (struct ao_convert_fmt*) ; 
+
+
+
+struct ao_convert_fmt {int channels; int src_fmt; } ;
+
+
+ int af_fmt_is_planar (int ) ;
+ int convert_plane (int,void*,int) ;
+ int get_conv_type (struct ao_convert_fmt*) ;
 
 void ao_convert_inplace(struct ao_convert_fmt *fmt, void **data, int num_samples)
 {

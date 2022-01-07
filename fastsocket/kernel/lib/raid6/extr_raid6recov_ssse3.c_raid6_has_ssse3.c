@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  X86_FEATURE_SSSE3 ; 
- int /*<<< orphan*/  X86_FEATURE_XMM ; 
- int /*<<< orphan*/  X86_FEATURE_XMM2 ; 
- scalar_t__ boot_cpu_has (int /*<<< orphan*/ ) ; 
+ int X86_FEATURE_SSSE3 ;
+ int X86_FEATURE_XMM ;
+ int X86_FEATURE_XMM2 ;
+ scalar_t__ boot_cpu_has (int ) ;
 
 __attribute__((used)) static int raid6_has_ssse3(void)
 {
-	return boot_cpu_has(X86_FEATURE_XMM) &&
-		boot_cpu_has(X86_FEATURE_XMM2) &&
-		boot_cpu_has(X86_FEATURE_SSSE3);
+ return boot_cpu_has(X86_FEATURE_XMM) &&
+  boot_cpu_has(X86_FEATURE_XMM2) &&
+  boot_cpu_has(X86_FEATURE_SSSE3);
 }

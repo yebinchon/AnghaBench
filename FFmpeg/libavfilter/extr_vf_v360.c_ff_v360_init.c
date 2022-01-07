@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int interp; int /*<<< orphan*/  remap_line; } ;
-typedef  TYPE_1__ V360Context ;
 
-/* Variables and functions */
- scalar_t__ ARCH_X86 ; 
-#define  BICUBIC 131 
-#define  BILINEAR 130 
-#define  LANCZOS 129 
-#define  NEAREST 128 
- int /*<<< orphan*/  ff_v360_init_x86 (TYPE_1__*,int) ; 
- int /*<<< orphan*/  remap1_16bit_line_c ; 
- int /*<<< orphan*/  remap1_8bit_line_c ; 
- int /*<<< orphan*/  remap2_16bit_line_c ; 
- int /*<<< orphan*/  remap2_8bit_line_c ; 
- int /*<<< orphan*/  remap4_16bit_line_c ; 
- int /*<<< orphan*/  remap4_8bit_line_c ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int interp; int remap_line; } ;
+typedef TYPE_1__ V360Context ;
+
+
+ scalar_t__ ARCH_X86 ;
+
+
+
+
+ int ff_v360_init_x86 (TYPE_1__*,int) ;
+ int remap1_16bit_line_c ;
+ int remap1_8bit_line_c ;
+ int remap2_16bit_line_c ;
+ int remap2_8bit_line_c ;
+ int remap4_16bit_line_c ;
+ int remap4_8bit_line_c ;
 
 void ff_v360_init(V360Context *s, int depth)
 {
     switch (s->interp) {
-    case NEAREST:
+    case 128:
         s->remap_line = depth <= 8 ? remap1_8bit_line_c : remap1_16bit_line_c;
         break;
-    case BILINEAR:
+    case 130:
         s->remap_line = depth <= 8 ? remap2_8bit_line_c : remap2_16bit_line_c;
         break;
-    case BICUBIC:
-    case LANCZOS:
+    case 131:
+    case 129:
         s->remap_line = depth <= 8 ? remap4_8bit_line_c : remap4_16bit_line_c;
         break;
     }

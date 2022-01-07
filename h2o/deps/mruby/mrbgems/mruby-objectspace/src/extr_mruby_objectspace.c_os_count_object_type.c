@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct os_count_struct {int /*<<< orphan*/ * counts; int /*<<< orphan*/  freed; int /*<<< orphan*/  total; } ;
+
+
+
+
+struct os_count_struct {int * counts; int freed; int total; } ;
 struct RBasic {size_t tt; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int MRB_EACH_OBJ_OK ; 
- scalar_t__ mrb_object_dead_p (int /*<<< orphan*/ *,struct RBasic*) ; 
+
+ int MRB_EACH_OBJ_OK ;
+ scalar_t__ mrb_object_dead_p (int *,struct RBasic*) ;
 
 __attribute__((used)) static int
 os_count_object_type(mrb_state *mrb, struct RBasic *obj, void *data)

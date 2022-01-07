@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  current_package ; 
- int /*<<< orphan*/  sym_global_type (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  type_bool ; 
- int /*<<< orphan*/  type_char ; 
- int /*<<< orphan*/  type_double ; 
- int /*<<< orphan*/  type_float ; 
- int /*<<< orphan*/  type_int ; 
- int /*<<< orphan*/  type_llong ; 
- int /*<<< orphan*/  type_long ; 
- int /*<<< orphan*/  type_schar ; 
- int /*<<< orphan*/  type_short ; 
- int /*<<< orphan*/  type_uchar ; 
- int /*<<< orphan*/  type_uint ; 
- int /*<<< orphan*/  type_ullong ; 
- int /*<<< orphan*/  type_ulong ; 
- int /*<<< orphan*/  type_ushort ; 
- int /*<<< orphan*/  type_void ; 
+ int assert (int ) ;
+ int current_package ;
+ int sym_global_type (char*,int ) ;
+ int type_bool ;
+ int type_char ;
+ int type_double ;
+ int type_float ;
+ int type_int ;
+ int type_llong ;
+ int type_long ;
+ int type_schar ;
+ int type_short ;
+ int type_uchar ;
+ int type_uint ;
+ int type_ullong ;
+ int type_ulong ;
+ int type_ushort ;
+ int type_void ;
 
 void init_builtin_syms() {
     assert(current_package);

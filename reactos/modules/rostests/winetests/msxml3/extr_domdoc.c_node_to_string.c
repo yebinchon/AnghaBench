@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DOMNodeType ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IXMLDOMNode_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_get_nodeName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_get_nodeType (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMNode_get_parentNode (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IXMLDOMNode_selectSingleNode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  NODE_ATTRIBUTE ; 
- int /*<<< orphan*/  SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int get_node_position (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_str_for_type (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lstrcpyA (char*,char*) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ole_check (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  wsprintfA (char*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IXMLDOMNode ;
+typedef scalar_t__ HRESULT ;
+typedef int DOMNodeType ;
+typedef int BSTR ;
+
+
+ int IXMLDOMNode_AddRef (int *) ;
+ int IXMLDOMNode_Release (int *) ;
+ int IXMLDOMNode_get_nodeName (int *,int *) ;
+ int IXMLDOMNode_get_nodeType (int *,int *) ;
+ scalar_t__ IXMLDOMNode_get_parentNode (int *,int **) ;
+ scalar_t__ IXMLDOMNode_selectSingleNode (int *,int ,int **) ;
+ int NODE_ATTRIBUTE ;
+ int SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int _bstr_ (char*) ;
+ int get_node_position (int *) ;
+ int get_str_for_type (int ,char*) ;
+ int lstrcpyA (char*,char*) ;
+ int ok (int ,char*,scalar_t__) ;
+ int ole_check (int ) ;
+ int sprintf (char*,char*,int) ;
+ int strlen (char*) ;
+ int wsprintfA (char*,char*,int ) ;
 
 __attribute__((used)) static void node_to_string(IXMLDOMNode *node, char *buf)
 {
     HRESULT r = S_OK;
     DOMNodeType type;
 
-    if (node == NULL)
+    if (node == ((void*)0))
     {
         lstrcpyA(buf, "(null)");
         return;

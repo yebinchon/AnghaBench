@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct zx_hdmi_i2c {int /*<<< orphan*/  lock; } ;
-struct zx_hdmi {int /*<<< orphan*/  dev; struct zx_hdmi_i2c* ddc; } ;
-struct i2c_msg {int flags; int /*<<< orphan*/  len; } ;
+
+
+
+
+struct zx_hdmi_i2c {int lock; } ;
+struct zx_hdmi {int dev; struct zx_hdmi_i2c* ddc; } ;
+struct i2c_msg {int flags; int len; } ;
 struct i2c_adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_DEV_DEBUG (int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HW_DDC_MASTER ; 
- int I2C_M_RD ; 
- int /*<<< orphan*/  TPI_DDC_MASTER_EN ; 
- int /*<<< orphan*/  hdmi_writeb_mask (struct zx_hdmi*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct zx_hdmi* i2c_get_adapdata (struct i2c_adapter*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int zx_hdmi_i2c_read (struct zx_hdmi*,struct i2c_msg*) ; 
- int zx_hdmi_i2c_write (struct zx_hdmi*,struct i2c_msg*) ; 
+
+ int DRM_DEV_DEBUG (int ,char*,int,int,int ,int) ;
+ int HW_DDC_MASTER ;
+ int I2C_M_RD ;
+ int TPI_DDC_MASTER_EN ;
+ int hdmi_writeb_mask (struct zx_hdmi*,int ,int ,int ) ;
+ struct zx_hdmi* i2c_get_adapdata (struct i2c_adapter*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int zx_hdmi_i2c_read (struct zx_hdmi*,struct i2c_msg*) ;
+ int zx_hdmi_i2c_write (struct zx_hdmi*,struct i2c_msg*) ;
 
 __attribute__((used)) static int zx_hdmi_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
-			    int num)
+       int num)
 {
-	struct zx_hdmi *hdmi = i2c_get_adapdata(adap);
-	struct zx_hdmi_i2c *ddc = hdmi->ddc;
-	int i, ret = 0;
+ struct zx_hdmi *hdmi = i2c_get_adapdata(adap);
+ struct zx_hdmi_i2c *ddc = hdmi->ddc;
+ int i, ret = 0;
 
-	mutex_lock(&ddc->lock);
+ mutex_lock(&ddc->lock);
 
-	/* Enable DDC master access */
-	hdmi_writeb_mask(hdmi, TPI_DDC_MASTER_EN, HW_DDC_MASTER, HW_DDC_MASTER);
 
-	for (i = 0; i < num; i++) {
-		DRM_DEV_DEBUG(hdmi->dev,
-			      "xfer: num: %d/%d, len: %d, flags: %#x\n",
-			      i + 1, num, msgs[i].len, msgs[i].flags);
+ hdmi_writeb_mask(hdmi, TPI_DDC_MASTER_EN, HW_DDC_MASTER, HW_DDC_MASTER);
 
-		if (msgs[i].flags & I2C_M_RD)
-			ret = zx_hdmi_i2c_read(hdmi, &msgs[i]);
-		else
-			ret = zx_hdmi_i2c_write(hdmi, &msgs[i]);
+ for (i = 0; i < num; i++) {
+  DRM_DEV_DEBUG(hdmi->dev,
+         "xfer: num: %d/%d, len: %d, flags: %#x\n",
+         i + 1, num, msgs[i].len, msgs[i].flags);
 
-		if (ret < 0)
-			break;
-	}
+  if (msgs[i].flags & I2C_M_RD)
+   ret = zx_hdmi_i2c_read(hdmi, &msgs[i]);
+  else
+   ret = zx_hdmi_i2c_write(hdmi, &msgs[i]);
 
-	if (!ret)
-		ret = num;
+  if (ret < 0)
+   break;
+ }
 
-	/* Disable DDC master access */
-	hdmi_writeb_mask(hdmi, TPI_DDC_MASTER_EN, HW_DDC_MASTER, 0);
+ if (!ret)
+  ret = num;
 
-	mutex_unlock(&ddc->lock);
 
-	return ret;
+ hdmi_writeb_mask(hdmi, TPI_DDC_MASTER_EN, HW_DDC_MASTER, 0);
+
+ mutex_unlock(&ddc->lock);
+
+ return ret;
 }

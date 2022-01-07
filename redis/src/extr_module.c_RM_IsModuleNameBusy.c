@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  dictEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * dictFind (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  modules ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsnew (char const*) ; 
+
+
+
+typedef int sds ;
+typedef int dictEntry ;
+
+
+ int * dictFind (int ,int ) ;
+ int modules ;
+ int sdsfree (int ) ;
+ int sdsnew (char const*) ;
 
 int RM_IsModuleNameBusy(const char *name) {
     sds modulename = sdsnew(name);
     dictEntry *de = dictFind(modules,modulename);
     sdsfree(modulename);
-    return de != NULL;
+    return de != ((void*)0);
 }

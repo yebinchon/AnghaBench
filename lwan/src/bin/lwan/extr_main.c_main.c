@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwan_url_map {char* prefix; int /*<<< orphan*/  member_1; } ;
-struct lwan_straitjacket {scalar_t__ user_name; int /*<<< orphan*/  chroot_path; } ;
+
+
+
+
+struct lwan_url_map {char* prefix; int member_1; } ;
+struct lwan_straitjacket {scalar_t__ user_name; int chroot_path; } ;
 struct lwan_config {char* listener; char* config_file_path; } ;
 struct lwan {int dummy; } ;
 
-/* Variables and functions */
-#define  ARGS_FAILED 130 
-#define  ARGS_SERVE_FILES 129 
-#define  ARGS_USE_CONFIG 128 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int PATH_MAX ; 
- int /*<<< orphan*/  SERVE_FILES (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  getcwd (char*,int) ; 
- struct lwan_config* lwan_get_default_config () ; 
- int /*<<< orphan*/  lwan_init (struct lwan*) ; 
- int /*<<< orphan*/  lwan_init_with_config (struct lwan*,struct lwan_config*) ; 
- int /*<<< orphan*/  lwan_main_loop (struct lwan*) ; 
- int /*<<< orphan*/  lwan_set_url_map (struct lwan*,struct lwan_url_map const*) ; 
- int /*<<< orphan*/  lwan_shutdown (struct lwan*) ; 
- int /*<<< orphan*/  lwan_status_info (char*,char*) ; 
- int /*<<< orphan*/  lwan_straitjacket_enforce (struct lwan_straitjacket*) ; 
- int parse_args (int,char**,struct lwan_config*,char*,struct lwan_straitjacket*) ; 
- char* strdup (char*) ; 
+
+
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int PATH_MAX ;
+ int SERVE_FILES (char*) ;
+ int free (char*) ;
+ int getcwd (char*,int) ;
+ struct lwan_config* lwan_get_default_config () ;
+ int lwan_init (struct lwan*) ;
+ int lwan_init_with_config (struct lwan*,struct lwan_config*) ;
+ int lwan_main_loop (struct lwan*) ;
+ int lwan_set_url_map (struct lwan*,struct lwan_url_map const*) ;
+ int lwan_shutdown (struct lwan*) ;
+ int lwan_status_info (char*,char*) ;
+ int lwan_straitjacket_enforce (struct lwan_straitjacket*) ;
+ int parse_args (int,char**,struct lwan_config*,char*,struct lwan_straitjacket*) ;
+ char* strdup (char*) ;
 
 int
 main(int argc, char *argv[])
@@ -53,7 +53,7 @@ main(int argc, char *argv[])
     c.listener = strdup("*:8080");
 
     switch (parse_args(argc, argv, &c, root, &sj)) {
-    case ARGS_SERVE_FILES:
+    case 129:
         lwan_status_info("Serving files from %s", root);
 
         if (sj.chroot_path) {
@@ -69,14 +69,14 @@ main(int argc, char *argv[])
         };
         lwan_set_url_map(&l, map);
         break;
-    case ARGS_USE_CONFIG:
+    case 128:
         lwan_straitjacket_enforce(&sj);
         if (c.config_file_path)
             lwan_init_with_config(&l, &c);
         else
             lwan_init(&l);
         break;
-    case ARGS_FAILED:
+    case 130:
         ret = EXIT_FAILURE;
         goto out;
     }

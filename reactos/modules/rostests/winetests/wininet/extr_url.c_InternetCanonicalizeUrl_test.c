@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dst ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ICU_BROWSER_MODE ; 
- int /*<<< orphan*/  ICU_DECODE ; 
- int /*<<< orphan*/  ICU_ENCODE_PERCENT ; 
- int /*<<< orphan*/  ICU_ENCODE_SPACES_ONLY ; 
- int /*<<< orphan*/  ICU_ESCAPE ; 
- int /*<<< orphan*/  ICU_NO_ENCODE ; 
- int /*<<< orphan*/  ICU_NO_META ; 
- int /*<<< orphan*/  InternetCanonicalizeUrlA (char*,char*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef int dst ;
+typedef int DWORD ;
+
+
+ int ICU_BROWSER_MODE ;
+ int ICU_DECODE ;
+ int ICU_ENCODE_PERCENT ;
+ int ICU_ENCODE_SPACES_ONLY ;
+ int ICU_ESCAPE ;
+ int ICU_NO_ENCODE ;
+ int ICU_NO_META ;
+ int InternetCanonicalizeUrlA (char*,char*,int*,int ) ;
+ int ok (int,char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void InternetCanonicalizeUrl_test(void)
 {
@@ -35,12 +35,12 @@ __attribute__((used)) static void InternetCanonicalizeUrl_test(void)
     InternetCanonicalizeUrlA(src, dst, &dstlen, 0);
     ok(strcmp(dst, "http://www.winehq.org/%27/%20/%3E/#>") == 0, "Got \"%s\"\n", dst);
 
-    /* despite what MSDN says, ICU_BROWSER_MODE seems to be ignored */
+
     dstlen = sizeof(dst);
     InternetCanonicalizeUrlA(src, dst, &dstlen, ICU_BROWSER_MODE);
     ok(strcmp(dst, "http://www.winehq.org/%27/%20/%3E/#>") == 0, "Got \"%s\"\n", dst);
 
-    /* ICU_ESCAPE is supposed to be ignored */
+
     dstlen = sizeof(dst);
     InternetCanonicalizeUrlA(src, dst, &dstlen, ICU_ESCAPE);
     ok(strcmp(dst, "http://www.winehq.org/%27/%20/%3E/#>") == 0, "Got \"%s\"\n", dst);

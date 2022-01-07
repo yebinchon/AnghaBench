@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xml_entity_s {int /*<<< orphan*/  psz_entity; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int strncmp (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct xml_entity_s {int psz_entity; } ;
+
+
+ int strlen (int ) ;
+ int strncmp (char const*,int ,int ) ;
 
 __attribute__((used)) static int cmp_entity (const void *key, const void *elem)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int flags; unsigned int immsym_min; unsigned int immsym_max; } ;
 
-/* Variables and functions */
- int DESA68_SYMBOL_FLAG ; 
- TYPE_1__ d ; 
- int /*<<< orphan*/  desa_ascii (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  desa_char (char) ; 
- scalar_t__ desa_isascii (unsigned int) ; 
- int /*<<< orphan*/  desa_label (unsigned int) ; 
- int /*<<< orphan*/  desa_signifiant (int) ; 
- int /*<<< orphan*/  update_ea (unsigned int) ; 
+
+ int DESA68_SYMBOL_FLAG ;
+ TYPE_1__ d ;
+ int desa_ascii (int ) ;
+ int desa_char (char) ;
+ scalar_t__ desa_isascii (unsigned int) ;
+ int desa_label (unsigned int) ;
+ int desa_signifiant (int) ;
+ int update_ea (unsigned int) ;
 
 __attribute__((used)) static void desa_immL(int v)
 {

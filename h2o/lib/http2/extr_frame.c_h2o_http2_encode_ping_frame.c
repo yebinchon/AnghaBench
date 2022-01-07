@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  h2o_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_HTTP2_FRAME_FLAG_ACK ; 
- int /*<<< orphan*/  H2O_HTTP2_FRAME_TYPE_PING ; 
- int /*<<< orphan*/ * allocate_frame (int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int h2o_buffer_t ;
+
+
+ int H2O_HTTP2_FRAME_FLAG_ACK ;
+ int H2O_HTTP2_FRAME_TYPE_PING ;
+ int * allocate_frame (int **,int,int ,int ,int ) ;
+ int memcpy (int *,int const*,int) ;
 
 void h2o_http2_encode_ping_frame(h2o_buffer_t **buf, int is_ack, const uint8_t *data)
 {

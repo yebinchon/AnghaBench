@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  EntryName; } ;
-typedef  TYPE_1__ WPC_ENTRY ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- scalar_t__ Cmp (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int WPC_DATA_ENTRY_SIZE ; 
- int /*<<< orphan*/  WpcFillEntryName (char*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int EntryName; } ;
+typedef TYPE_1__ WPC_ENTRY ;
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+
+
+ scalar_t__ Cmp (int ,char*,int) ;
+ TYPE_1__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int WPC_DATA_ENTRY_SIZE ;
+ int WpcFillEntryName (char*,char*) ;
 
 WPC_ENTRY *WpcFindDataEntry(LIST *o, char *name)
 {
-	UINT i;
-	char name_str[WPC_DATA_ENTRY_SIZE];
-	// Validate arguments
-	if (o == NULL || name == NULL)
-	{
-		return NULL;
-	}
+ UINT i;
+ char name_str[WPC_DATA_ENTRY_SIZE];
 
-	WpcFillEntryName(name_str, name);
+ if (o == ((void*)0) || name == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		WPC_ENTRY *e = LIST_DATA(o, i);
+ WpcFillEntryName(name_str, name);
 
-		if (Cmp(e->EntryName, name_str, WPC_DATA_ENTRY_SIZE) == 0)
-		{
-			return e;
-		}
-	}
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  WPC_ENTRY *e = LIST_DATA(o, i);
 
-	return NULL;
+  if (Cmp(e->EntryName, name_str, WPC_DATA_ENTRY_SIZE) == 0)
+  {
+   return e;
+  }
+ }
+
+ return ((void*)0);
 }

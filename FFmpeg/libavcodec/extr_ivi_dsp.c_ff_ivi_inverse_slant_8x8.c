@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
-typedef  int /*<<< orphan*/  out ;
-typedef  int int32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IVI_INV_SLANT8 (int const,int const,int const,int const,int const,int const,int const,int const,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int ptrdiff_t ;
+typedef int out ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int IVI_INV_SLANT8 (int const,int const,int const,int const,int const,int const,int const,int const,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int memset (int*,int ,int) ;
 
 void ff_ivi_inverse_slant_8x8(const int32_t *in, int16_t *out, ptrdiff_t pitch, const uint8_t *flags)
 {
-    int     i;
+    int i;
     const int32_t *src;
     int32_t *dst;
-    int     tmp[64];
-    int     t0, t1, t2, t3, t4, t5, t6, t7, t8;
+    int tmp[64];
+    int t0, t1, t2, t3, t4, t5, t6, t7, t8;
 
-#define COMPENSATE(x) (x)
+
     src = in;
     dst = tmp;
     for (i = 0; i < 8; i++) {
@@ -42,9 +42,9 @@ void ff_ivi_inverse_slant_8x8(const int32_t *in, int16_t *out, ptrdiff_t pitch, 
         src++;
         dst++;
     }
-#undef COMPENSATE
 
-#define COMPENSATE(x) (((x) + 1)>>1)
+
+
     src = tmp;
     for (i = 0; i < 8; i++) {
         if (!src[0] && !src[1] && !src[2] && !src[3] && !src[4] && !src[5] && !src[6] && !src[7]) {
@@ -57,5 +57,5 @@ void ff_ivi_inverse_slant_8x8(const int32_t *in, int16_t *out, ptrdiff_t pitch, 
         src += 8;
         out += pitch;
     }
-#undef COMPENSATE
+
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_20__ {int /*<<< orphan*/  (* autocorrelate ) (int const**,TYPE_1__***) ;} ;
+
+
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_20__ {int (* autocorrelate ) (int const**,TYPE_1__***) ;} ;
 struct TYPE_19__ {int mant; int exp; } ;
-typedef  TYPE_1__ SoftFloat ;
-typedef  TYPE_2__ SBRDSPContext ;
+typedef TYPE_1__ SoftFloat ;
+typedef TYPE_2__ SBRDSPContext ;
 
-/* Variables and functions */
- TYPE_1__ FLOAT_0 ; 
- TYPE_1__ FLOAT_0999999 ; 
- TYPE_1__ av_add_sf (TYPE_1__,TYPE_1__) ; 
- TYPE_1__ av_div_sf (TYPE_1__,TYPE_1__) ; 
- TYPE_1__ av_mul_sf (TYPE_1__,TYPE_1__) ; 
- TYPE_1__ av_sub_sf (TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  stub1 (int const**,TYPE_1__***) ; 
+
+ TYPE_1__ FLOAT_0 ;
+ TYPE_1__ FLOAT_0999999 ;
+ TYPE_1__ av_add_sf (TYPE_1__,TYPE_1__) ;
+ TYPE_1__ av_div_sf (TYPE_1__,TYPE_1__) ;
+ TYPE_1__ av_mul_sf (TYPE_1__,TYPE_1__) ;
+ TYPE_1__ av_sub_sf (TYPE_1__,TYPE_1__) ;
+ int stub1 (int const**,TYPE_1__***) ;
 
 __attribute__((used)) static void sbr_hf_inverse_filter(SBRDSPContext *dsp,
                                   int (*alpha0)[2], int (*alpha1)[2],
@@ -53,12 +53,12 @@ __attribute__((used)) static void sbr_hf_inverse_filter(SBRDSPContext *dsp,
             temp_real = av_sub_sf(av_sub_sf(av_mul_sf(phi[0][0][0], phi[1][1][0]),
                                             av_mul_sf(phi[0][0][1], phi[1][1][1])),
                                   av_mul_sf(phi[0][1][0], phi[1][0][0]));
-            temp_im   = av_sub_sf(av_add_sf(av_mul_sf(phi[0][0][0], phi[1][1][1]),
+            temp_im = av_sub_sf(av_add_sf(av_mul_sf(phi[0][0][0], phi[1][1][1]),
                                             av_mul_sf(phi[0][0][1], phi[1][1][0])),
                                   av_mul_sf(phi[0][1][1], phi[1][0][0]));
 
             a10 = av_div_sf(temp_real, dk);
-            a11 = av_div_sf(temp_im,   dk);
+            a11 = av_div_sf(temp_im, dk);
         }
 
         if (!phi[1][0][0].mant) {
@@ -69,14 +69,14 @@ __attribute__((used)) static void sbr_hf_inverse_filter(SBRDSPContext *dsp,
             temp_real = av_add_sf(phi[0][0][0],
                                   av_add_sf(av_mul_sf(a10, phi[1][1][0]),
                                             av_mul_sf(a11, phi[1][1][1])));
-            temp_im   = av_add_sf(phi[0][0][1],
+            temp_im = av_add_sf(phi[0][0][1],
                                   av_sub_sf(av_mul_sf(a11, phi[1][1][0]),
                                             av_mul_sf(a10, phi[1][1][1])));
 
             temp_real.mant = -temp_real.mant;
-            temp_im.mant   = -temp_im.mant;
+            temp_im.mant = -temp_im.mant;
             a00 = av_div_sf(temp_real, phi[1][0][0]);
-            a01 = av_div_sf(temp_im,   phi[1][0][0]);
+            a01 = av_div_sf(temp_im, phi[1][0][0]);
         }
 
         shift = a00.exp;
@@ -138,9 +138,9 @@ __attribute__((used)) static void sbr_hf_inverse_filter(SBRDSPContext *dsp,
             }
         }
 
-        shift = (int)(((int64_t)(alpha1[k][0]>>1) * (alpha1[k][0]>>1) + \
-                       (int64_t)(alpha1[k][1]>>1) * (alpha1[k][1]>>1) + \
-                       0x40000000) >> 31);
+        shift = (int)(((int64_t)(alpha1[k][0]>>1) * (alpha1[k][0]>>1) + (int64_t)(alpha1[k][1]>>1) * (alpha1[k][1]>>1) + 0x40000000) >> 31);
+
+
         if (shift >= 0x20000000){
             alpha1[k][0] = 0;
             alpha1[k][1] = 0;
@@ -148,9 +148,9 @@ __attribute__((used)) static void sbr_hf_inverse_filter(SBRDSPContext *dsp,
             alpha0[k][1] = 0;
         }
 
-        shift = (int)(((int64_t)(alpha0[k][0]>>1) * (alpha0[k][0]>>1) + \
-                       (int64_t)(alpha0[k][1]>>1) * (alpha0[k][1]>>1) + \
-                       0x40000000) >> 31);
+        shift = (int)(((int64_t)(alpha0[k][0]>>1) * (alpha0[k][0]>>1) + (int64_t)(alpha0[k][1]>>1) * (alpha0[k][1]>>1) + 0x40000000) >> 31);
+
+
         if (shift >= 0x20000000){
             alpha1[k][0] = 0;
             alpha1[k][1] = 0;

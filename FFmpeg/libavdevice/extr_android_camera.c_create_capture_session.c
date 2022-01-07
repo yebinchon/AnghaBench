@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ camera_status_t ;
-struct TYPE_8__ {int /*<<< orphan*/  onActive; int /*<<< orphan*/  onReady; int /*<<< orphan*/  onClosed; TYPE_2__* context; } ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ camera_status_t ;
+struct TYPE_8__ {int onActive; int onReady; int onClosed; TYPE_2__* context; } ;
 struct TYPE_7__ {TYPE_1__* priv_data; } ;
-struct TYPE_6__ {int /*<<< orphan*/  capture_request; int /*<<< orphan*/  capture_session; TYPE_5__ capture_session_state_callbacks; int /*<<< orphan*/  capture_session_output_container; int /*<<< orphan*/  camera_dev; int /*<<< orphan*/  camera_output_target; int /*<<< orphan*/  framerate_range; int /*<<< orphan*/  image_reader_window; int /*<<< orphan*/  capture_session_output; } ;
-typedef  TYPE_1__ AndroidCameraCtx ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_6__ {int capture_request; int capture_session; TYPE_5__ capture_session_state_callbacks; int capture_session_output_container; int camera_dev; int camera_output_target; int framerate_range; int image_reader_window; int capture_session_output; } ;
+typedef TYPE_1__ AndroidCameraCtx ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACAMERA_CONTROL_AE_TARGET_FPS_RANGE ; 
- scalar_t__ ACAMERA_OK ; 
- scalar_t__ ACameraCaptureSession_setRepeatingRequest (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ACameraDevice_createCaptureRequest (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ACameraDevice_createCaptureSession (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ *) ; 
- scalar_t__ ACameraOutputTarget_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ACaptureRequest_addTarget (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ACaptureRequest_setEntry_i32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ ACaptureSessionOutputContainer_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ACaptureSessionOutputContainer_create (int /*<<< orphan*/ *) ; 
- scalar_t__ ACaptureSessionOutput_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ANativeWindow_acquire (int /*<<< orphan*/ ) ; 
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  TEMPLATE_RECORD ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  camera_status_string (scalar_t__) ; 
- int /*<<< orphan*/  capture_session_active ; 
- int /*<<< orphan*/  capture_session_closed ; 
- int /*<<< orphan*/  capture_session_ready ; 
+
+ int ACAMERA_CONTROL_AE_TARGET_FPS_RANGE ;
+ scalar_t__ ACAMERA_OK ;
+ scalar_t__ ACameraCaptureSession_setRepeatingRequest (int ,int *,int,int *,int *) ;
+ scalar_t__ ACameraDevice_createCaptureRequest (int ,int ,int *) ;
+ scalar_t__ ACameraDevice_createCaptureSession (int ,int ,TYPE_5__*,int *) ;
+ scalar_t__ ACameraOutputTarget_create (int ,int *) ;
+ scalar_t__ ACaptureRequest_addTarget (int ,int ) ;
+ scalar_t__ ACaptureRequest_setEntry_i32 (int ,int ,int,int ) ;
+ scalar_t__ ACaptureSessionOutputContainer_add (int ,int ) ;
+ scalar_t__ ACaptureSessionOutputContainer_create (int *) ;
+ scalar_t__ ACaptureSessionOutput_create (int ,int *) ;
+ int ANativeWindow_acquire (int ) ;
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ int TEMPLATE_RECORD ;
+ int av_log (TYPE_2__*,int ,char*,int ) ;
+ int camera_status_string (scalar_t__) ;
+ int capture_session_active ;
+ int capture_session_closed ;
+ int capture_session_ready ;
 
 __attribute__((used)) static int create_capture_session(AVFormatContext *avctx)
 {
@@ -121,7 +121,7 @@ __attribute__((used)) static int create_capture_session(AVFormatContext *avctx)
         return AVERROR_EXTERNAL;
     }
 
-    ret = ACameraCaptureSession_setRepeatingRequest(ctx->capture_session, NULL, 1, &ctx->capture_request, NULL);
+    ret = ACameraCaptureSession_setRepeatingRequest(ctx->capture_session, ((void*)0), 1, &ctx->capture_request, ((void*)0));
     if (ret != ACAMERA_OK) {
         av_log(avctx, AV_LOG_ERROR,
                "Failed to set repeating request on capture session, error: %s.\n",

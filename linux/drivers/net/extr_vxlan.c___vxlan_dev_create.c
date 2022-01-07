@@ -1,134 +1,134 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct vxlan_rdst {struct net_device* remote_dev; int /*<<< orphan*/  remote_vni; scalar_t__ remote_ifindex; int /*<<< orphan*/  remote_ip; } ;
-struct vxlan_net {int /*<<< orphan*/  vxlan_list; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct vxlan_rdst {struct net_device* remote_dev; int remote_vni; scalar_t__ remote_ifindex; int remote_ip; } ;
+struct vxlan_net {int vxlan_list; } ;
 struct vxlan_fdb {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dst_port; } ;
-struct vxlan_dev {int /*<<< orphan*/  next; TYPE_1__ cfg; struct vxlan_rdst default_dst; } ;
+struct TYPE_2__ {int dst_port; } ;
+struct vxlan_dev {int next; TYPE_1__ cfg; struct vxlan_rdst default_dst; } ;
 struct vxlan_config {int dummy; } ;
 struct netlink_ext_ack {int dummy; } ;
-struct net_device {int /*<<< orphan*/ * ethtool_ops; } ;
+struct net_device {int * ethtool_ops; } ;
 struct net {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NTF_SELF ; 
- int NUD_PERMANENT ; 
- int NUD_REACHABLE ; 
- int /*<<< orphan*/  RTM_NEWNEIGH ; 
- struct net_device* __dev_get_by_index (struct net*,scalar_t__) ; 
- int /*<<< orphan*/  __vxlan_fdb_free (struct vxlan_fdb*) ; 
- int /*<<< orphan*/  all_zeros_mac ; 
- int /*<<< orphan*/  first_remote_rtnl (struct vxlan_fdb*) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct vxlan_net* net_generic (struct net*,int /*<<< orphan*/ ) ; 
- struct vxlan_dev* netdev_priv (struct net_device*) ; 
- int netdev_upper_dev_link (struct net_device*,struct net_device*,struct netlink_ext_ack*) ; 
- int /*<<< orphan*/  netdev_upper_dev_unlink (struct net_device*,struct net_device*) ; 
- int register_netdevice (struct net_device*) ; 
- int rtnl_configure_link (struct net_device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unregister_netdevice (struct net_device*) ; 
- int /*<<< orphan*/  vxlan_addr_any (int /*<<< orphan*/ *) ; 
- int vxlan_dev_configure (struct net*,struct net_device*,struct vxlan_config*,int,struct netlink_ext_ack*) ; 
- int /*<<< orphan*/  vxlan_ethtool_ops ; 
- int vxlan_fdb_create (struct vxlan_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,struct vxlan_fdb**) ; 
- int /*<<< orphan*/  vxlan_fdb_destroy (struct vxlan_dev*,struct vxlan_fdb*,int,int) ; 
- int /*<<< orphan*/  vxlan_fdb_insert (struct vxlan_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct vxlan_fdb*) ; 
- int vxlan_fdb_notify (struct vxlan_dev*,struct vxlan_fdb*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct netlink_ext_ack*) ; 
- int /*<<< orphan*/  vxlan_net_id ; 
+
+ int NTF_SELF ;
+ int NUD_PERMANENT ;
+ int NUD_REACHABLE ;
+ int RTM_NEWNEIGH ;
+ struct net_device* __dev_get_by_index (struct net*,scalar_t__) ;
+ int __vxlan_fdb_free (struct vxlan_fdb*) ;
+ int all_zeros_mac ;
+ int first_remote_rtnl (struct vxlan_fdb*) ;
+ int list_add (int *,int *) ;
+ struct vxlan_net* net_generic (struct net*,int ) ;
+ struct vxlan_dev* netdev_priv (struct net_device*) ;
+ int netdev_upper_dev_link (struct net_device*,struct net_device*,struct netlink_ext_ack*) ;
+ int netdev_upper_dev_unlink (struct net_device*,struct net_device*) ;
+ int register_netdevice (struct net_device*) ;
+ int rtnl_configure_link (struct net_device*,int *) ;
+ int unregister_netdevice (struct net_device*) ;
+ int vxlan_addr_any (int *) ;
+ int vxlan_dev_configure (struct net*,struct net_device*,struct vxlan_config*,int,struct netlink_ext_ack*) ;
+ int vxlan_ethtool_ops ;
+ int vxlan_fdb_create (struct vxlan_dev*,int ,int *,int,int ,int ,int ,scalar_t__,int ,struct vxlan_fdb**) ;
+ int vxlan_fdb_destroy (struct vxlan_dev*,struct vxlan_fdb*,int,int) ;
+ int vxlan_fdb_insert (struct vxlan_dev*,int ,int ,struct vxlan_fdb*) ;
+ int vxlan_fdb_notify (struct vxlan_dev*,struct vxlan_fdb*,int ,int ,int,struct netlink_ext_ack*) ;
+ int vxlan_net_id ;
 
 __attribute__((used)) static int __vxlan_dev_create(struct net *net, struct net_device *dev,
-			      struct vxlan_config *conf,
-			      struct netlink_ext_ack *extack)
+         struct vxlan_config *conf,
+         struct netlink_ext_ack *extack)
 {
-	struct vxlan_net *vn = net_generic(net, vxlan_net_id);
-	struct vxlan_dev *vxlan = netdev_priv(dev);
-	struct net_device *remote_dev = NULL;
-	struct vxlan_fdb *f = NULL;
-	bool unregister = false;
-	struct vxlan_rdst *dst;
-	int err;
+ struct vxlan_net *vn = net_generic(net, vxlan_net_id);
+ struct vxlan_dev *vxlan = netdev_priv(dev);
+ struct net_device *remote_dev = ((void*)0);
+ struct vxlan_fdb *f = ((void*)0);
+ bool unregister = 0;
+ struct vxlan_rdst *dst;
+ int err;
 
-	dst = &vxlan->default_dst;
-	err = vxlan_dev_configure(net, dev, conf, false, extack);
-	if (err)
-		return err;
+ dst = &vxlan->default_dst;
+ err = vxlan_dev_configure(net, dev, conf, 0, extack);
+ if (err)
+  return err;
 
-	dev->ethtool_ops = &vxlan_ethtool_ops;
+ dev->ethtool_ops = &vxlan_ethtool_ops;
 
-	/* create an fdb entry for a valid default destination */
-	if (!vxlan_addr_any(&dst->remote_ip)) {
-		err = vxlan_fdb_create(vxlan, all_zeros_mac,
-				       &dst->remote_ip,
-				       NUD_REACHABLE | NUD_PERMANENT,
-				       vxlan->cfg.dst_port,
-				       dst->remote_vni,
-				       dst->remote_vni,
-				       dst->remote_ifindex,
-				       NTF_SELF, &f);
-		if (err)
-			return err;
-	}
 
-	err = register_netdevice(dev);
-	if (err)
-		goto errout;
-	unregister = true;
+ if (!vxlan_addr_any(&dst->remote_ip)) {
+  err = vxlan_fdb_create(vxlan, all_zeros_mac,
+           &dst->remote_ip,
+           NUD_REACHABLE | NUD_PERMANENT,
+           vxlan->cfg.dst_port,
+           dst->remote_vni,
+           dst->remote_vni,
+           dst->remote_ifindex,
+           NTF_SELF, &f);
+  if (err)
+   return err;
+ }
 
-	if (dst->remote_ifindex) {
-		remote_dev = __dev_get_by_index(net, dst->remote_ifindex);
-		if (!remote_dev)
-			goto errout;
+ err = register_netdevice(dev);
+ if (err)
+  goto errout;
+ unregister = 1;
 
-		err = netdev_upper_dev_link(remote_dev, dev, extack);
-		if (err)
-			goto errout;
-	}
+ if (dst->remote_ifindex) {
+  remote_dev = __dev_get_by_index(net, dst->remote_ifindex);
+  if (!remote_dev)
+   goto errout;
 
-	err = rtnl_configure_link(dev, NULL);
-	if (err)
-		goto unlink;
+  err = netdev_upper_dev_link(remote_dev, dev, extack);
+  if (err)
+   goto errout;
+ }
 
-	if (f) {
-		vxlan_fdb_insert(vxlan, all_zeros_mac, dst->remote_vni, f);
+ err = rtnl_configure_link(dev, ((void*)0));
+ if (err)
+  goto unlink;
 
-		/* notify default fdb entry */
-		err = vxlan_fdb_notify(vxlan, f, first_remote_rtnl(f),
-				       RTM_NEWNEIGH, true, extack);
-		if (err) {
-			vxlan_fdb_destroy(vxlan, f, false, false);
-			if (remote_dev)
-				netdev_upper_dev_unlink(remote_dev, dev);
-			goto unregister;
-		}
-	}
+ if (f) {
+  vxlan_fdb_insert(vxlan, all_zeros_mac, dst->remote_vni, f);
 
-	list_add(&vxlan->next, &vn->vxlan_list);
-	if (remote_dev)
-		dst->remote_dev = remote_dev;
-	return 0;
+
+  err = vxlan_fdb_notify(vxlan, f, first_remote_rtnl(f),
+           RTM_NEWNEIGH, 1, extack);
+  if (err) {
+   vxlan_fdb_destroy(vxlan, f, 0, 0);
+   if (remote_dev)
+    netdev_upper_dev_unlink(remote_dev, dev);
+   goto unregister;
+  }
+ }
+
+ list_add(&vxlan->next, &vn->vxlan_list);
+ if (remote_dev)
+  dst->remote_dev = remote_dev;
+ return 0;
 unlink:
-	if (remote_dev)
-		netdev_upper_dev_unlink(remote_dev, dev);
+ if (remote_dev)
+  netdev_upper_dev_unlink(remote_dev, dev);
 errout:
-	/* unregister_netdevice() destroys the default FDB entry with deletion
-	 * notification. But the addition notification was not sent yet, so
-	 * destroy the entry by hand here.
-	 */
-	if (f)
-		__vxlan_fdb_free(f);
+
+
+
+
+ if (f)
+  __vxlan_fdb_free(f);
 unregister:
-	if (unregister)
-		unregister_netdevice(dev);
-	return err;
+ if (unregister)
+  unregister_netdevice(dev);
+ return err;
 }

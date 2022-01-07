@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ version; TYPE_2__* method; } ;
 struct TYPE_7__ {TYPE_1__* ssl3_enc; } ;
 struct TYPE_6__ {int (* export_keying_material ) (TYPE_3__*,unsigned char*,size_t,char const*,size_t,unsigned char const*,size_t,int) ;} ;
-typedef  TYPE_3__ SSL ;
+typedef TYPE_3__ SSL ;
 
-/* Variables and functions */
- scalar_t__ DTLS1_BAD_VER ; 
- scalar_t__ TLS1_VERSION ; 
- int stub1 (TYPE_3__*,unsigned char*,size_t,char const*,size_t,unsigned char const*,size_t,int) ; 
+
+ scalar_t__ DTLS1_BAD_VER ;
+ scalar_t__ TLS1_VERSION ;
+ int stub1 (TYPE_3__*,unsigned char*,size_t,char const*,size_t,unsigned char const*,size_t,int) ;
 
 int SSL_export_keying_material(SSL *s, unsigned char *out, size_t olen,
                                const char *label, size_t llen,

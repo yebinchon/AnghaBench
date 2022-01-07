@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {scalar_t__ num_of_sources_or_masks; scalar_t__ registrations; int to_be_deleted; int /*<<< orphan*/  handle; scalar_t__ used_for_off_screen; } ;
-typedef  TYPE_1__ WFC_STREAM_T ;
-typedef  int /*<<< orphan*/  WFCNativeStreamType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_UNLOCK (TYPE_1__*) ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_info (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int vcos_process_id_current () ; 
- int /*<<< orphan*/  wfc_server_stream_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wfc_stream_destroy_stream_ptr (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct TYPE_4__ {scalar_t__ num_of_sources_or_masks; scalar_t__ registrations; int to_be_deleted; int handle; scalar_t__ used_for_off_screen; } ;
+typedef TYPE_1__ WFC_STREAM_T ;
+typedef int WFCNativeStreamType ;
+
+
+ int STREAM_UNLOCK (TYPE_1__*) ;
+ int VCOS_FUNCTION ;
+ int vcos_log_error (char*,int ) ;
+ int vcos_log_info (char*,int ,int ) ;
+ int vcos_log_trace (char*,int ,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int vcos_process_id_current () ;
+ int wfc_server_stream_destroy (int ,int ,int ) ;
+ int wfc_stream_destroy_stream_ptr (int ) ;
 
 __attribute__((used)) static void wfc_stream_destroy_if_ready(WFC_STREAM_T *stream_ptr)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void wfc_stream_destroy_if_ready(WFC_STREAM_T *stre
    uint32_t pid_lo = (uint32_t)pid;
    uint32_t pid_hi = (uint32_t)(pid >> 32);
 
-   if (stream_ptr == NULL)
+   if (stream_ptr == ((void*)0))
    {
       vcos_log_error("%s: stream_ptr is NULL", VCOS_FUNCTION);
       return;
@@ -55,10 +55,10 @@ __attribute__((used)) static void wfc_stream_destroy_if_ready(WFC_STREAM_T *stre
 
    vcos_log_info("%s: stream: %X to be destroyed", VCOS_FUNCTION, stream);
 
-   // Prevent stream from being found, although it can be recycled.
-   stream_ptr->to_be_deleted = true;
 
-   // Delete server-side stream
+   stream_ptr->to_be_deleted = 1;
+
+
    wfc_server_stream_destroy(stream, pid_lo, pid_hi);
 
    STREAM_UNLOCK(stream_ptr);

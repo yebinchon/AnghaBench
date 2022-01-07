@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_16__ {int size_in_bits; } ;
-struct TYPE_14__ {int mb_num; int mb_x; int mb_width; int mb_y; int quant_precision; int chroma_qscale; int qscale; scalar_t__ pict_type; TYPE_3__ gb; int /*<<< orphan*/  avctx; } ;
+struct TYPE_14__ {int mb_num; int mb_x; int mb_width; int mb_y; int quant_precision; int chroma_qscale; int qscale; scalar_t__ pict_type; TYPE_3__ gb; int avctx; } ;
 struct TYPE_15__ {scalar_t__ shape; int time_increment_bits; scalar_t__ vol_sprite_usage; scalar_t__ new_pred; TYPE_1__ m; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  TYPE_2__ Mpeg4DecContext ;
+typedef TYPE_1__ MpegEncContext ;
+typedef TYPE_2__ Mpeg4DecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PICTURE_TYPE_B ; 
- scalar_t__ AV_PICTURE_TYPE_I ; 
- scalar_t__ AV_PICTURE_TYPE_S ; 
- scalar_t__ BIN_ONLY_SHAPE ; 
- scalar_t__ GMC_SPRITE ; 
- scalar_t__ RECT_SHAPE ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int av_log2 (int) ; 
- int /*<<< orphan*/  check_marker (int /*<<< orphan*/ ,TYPE_3__*,char*) ; 
- int /*<<< orphan*/  decode_new_pred (TYPE_2__*,TYPE_3__*) ; 
- int ff_mpeg4_get_video_packet_prefix_length (TYPE_1__*) ; 
- int get_bits (TYPE_3__*,int) ; 
- int get_bits1 (TYPE_3__*) ; 
- int get_bits_count (TYPE_3__*) ; 
- scalar_t__ mpeg4_decode_sprite_trajectory (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  skip_bits (TYPE_3__*,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PICTURE_TYPE_B ;
+ scalar_t__ AV_PICTURE_TYPE_I ;
+ scalar_t__ AV_PICTURE_TYPE_S ;
+ scalar_t__ BIN_ONLY_SHAPE ;
+ scalar_t__ GMC_SPRITE ;
+ scalar_t__ RECT_SHAPE ;
+ int av_log (int ,int ,char*,...) ;
+ int av_log2 (int) ;
+ int check_marker (int ,TYPE_3__*,char*) ;
+ int decode_new_pred (TYPE_2__*,TYPE_3__*) ;
+ int ff_mpeg4_get_video_packet_prefix_length (TYPE_1__*) ;
+ int get_bits (TYPE_3__*,int) ;
+ int get_bits1 (TYPE_3__*) ;
+ int get_bits_count (TYPE_3__*) ;
+ scalar_t__ mpeg4_decode_sprite_trajectory (TYPE_2__*,TYPE_3__*) ;
+ int skip_bits (TYPE_3__*,int) ;
 
 int ff_mpeg4_decode_video_packet_header(Mpeg4DecContext *ctx)
 {
     MpegEncContext *s = &ctx->m;
 
-    int mb_num_bits      = av_log2(s->mb_num - 1) + 1;
+    int mb_num_bits = av_log2(s->mb_num - 1) + 1;
     int header_extension = 0, mb_num, len;
 
-    /* is there enough space left for a video packet + header */
+
     if (get_bits_count(&s->gb) > s->gb.size_in_bits - 20)
         return AVERROR_INVALIDDATA;
 
@@ -61,7 +61,7 @@ int ff_mpeg4_decode_video_packet_header(Mpeg4DecContext *ctx)
 
     if (ctx->shape != RECT_SHAPE) {
         header_extension = get_bits1(&s->gb);
-        // FIXME more stuff here
+
     }
 
     mb_num = get_bits(&s->gb, mb_num_bits);
@@ -90,15 +90,15 @@ int ff_mpeg4_decode_video_packet_header(Mpeg4DecContext *ctx)
             time_incr++;
 
         check_marker(s->avctx, &s->gb, "before time_increment in video packed header");
-        skip_bits(&s->gb, ctx->time_increment_bits);      /* time_increment */
+        skip_bits(&s->gb, ctx->time_increment_bits);
         check_marker(s->avctx, &s->gb, "before vop_coding_type in video packed header");
 
-        skip_bits(&s->gb, 2); /* vop coding type */
-        // FIXME not rect stuff here
+        skip_bits(&s->gb, 2);
+
 
         if (ctx->shape != BIN_ONLY_SHAPE) {
-            skip_bits(&s->gb, 3); /* intra dc vlc threshold */
-            // FIXME don't just ignore everything
+            skip_bits(&s->gb, 3);
+
             if (s->pict_type == AV_PICTURE_TYPE_S &&
                 ctx->vol_sprite_usage == GMC_SPRITE) {
                 if (mpeg4_decode_sprite_trajectory(ctx, &s->gb) < 0)
@@ -106,10 +106,10 @@ int ff_mpeg4_decode_video_packet_header(Mpeg4DecContext *ctx)
                 av_log(s->avctx, AV_LOG_ERROR, "untested\n");
             }
 
-            // FIXME reduced res stuff here
+
 
             if (s->pict_type != AV_PICTURE_TYPE_I) {
-                int f_code = get_bits(&s->gb, 3);       /* fcode_for */
+                int f_code = get_bits(&s->gb, 3);
                 if (f_code == 0)
                     av_log(s->avctx, AV_LOG_ERROR,
                            "Error, video packet header damaged (f_code=0)\n");

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdargs {int argc; int argn; int /*<<< orphan*/ * argv; TYPE_1__* cx; int /*<<< orphan*/  bundle; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- scalar_t__ bundle_RenameDatalink (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cmdargs {int argc; int argn; int * argv; TYPE_1__* cx; int bundle; } ;
+struct TYPE_2__ {int name; } ;
+
+
+ int LogWARN ;
+ scalar_t__ bundle_RenameDatalink (int ,TYPE_1__*,int ) ;
+ int log_Printf (int ,char*,int ,int ) ;
 
 __attribute__((used)) static int
 RenameCommand(struct cmdargs const *arg)

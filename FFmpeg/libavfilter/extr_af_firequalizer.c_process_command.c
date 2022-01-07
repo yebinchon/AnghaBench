@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* priv; } ;
 struct TYPE_8__ {char* gain_cmd; char* gain_entry_cmd; } ;
-typedef  TYPE_1__ FIREqualizerContext ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef TYPE_1__ FIREqualizerContext ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- char* SELECT_GAIN (TYPE_1__*) ; 
- char const* SELECT_GAIN_ENTRY (TYPE_1__*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- char* av_strdup (char const*) ; 
- int generate_kernel (TYPE_2__*,char*,char*) ; 
- int /*<<< orphan*/  strcmp (char const*,char const*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int ENOMEM ;
+ int ENOSYS ;
+ char* SELECT_GAIN (TYPE_1__*) ;
+ char const* SELECT_GAIN_ENTRY (TYPE_1__*) ;
+ int av_freep (char**) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ char* av_strdup (char const*) ;
+ int generate_kernel (TYPE_2__*,char*,char*) ;
+ int strcmp (char const*,char const*) ;
 
 __attribute__((used)) static int process_command(AVFilterContext *ctx, const char *cmd, const char *args,
                            char *res, int res_len, int flags)

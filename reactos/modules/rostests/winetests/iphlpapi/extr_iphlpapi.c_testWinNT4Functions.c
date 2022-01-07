@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  testGetIcmpStatistics () ; 
- int /*<<< orphan*/  testGetIcmpStatisticsEx () ; 
- int /*<<< orphan*/  testGetIfTable () ; 
- int /*<<< orphan*/  testGetIpAddrTable () ; 
- int /*<<< orphan*/  testGetIpForwardTable () ; 
- int /*<<< orphan*/  testGetIpNetTable () ; 
- int /*<<< orphan*/  testGetIpStatistics () ; 
- int /*<<< orphan*/  testGetIpStatisticsEx () ; 
- int /*<<< orphan*/  testGetNumberOfInterfaces () ; 
- int /*<<< orphan*/  testGetTcpStatistics () ; 
- int /*<<< orphan*/  testGetTcpStatisticsEx () ; 
- int /*<<< orphan*/  testGetTcpTable () ; 
- int /*<<< orphan*/  testGetUdpStatistics () ; 
- int /*<<< orphan*/  testGetUdpStatisticsEx () ; 
- int /*<<< orphan*/  testGetUdpTable () ; 
- int /*<<< orphan*/  testIcmpSendEcho () ; 
- int /*<<< orphan*/  testSetTcpEntry () ; 
+ int testGetIcmpStatistics () ;
+ int testGetIcmpStatisticsEx () ;
+ int testGetIfTable () ;
+ int testGetIpAddrTable () ;
+ int testGetIpForwardTable () ;
+ int testGetIpNetTable () ;
+ int testGetIpStatistics () ;
+ int testGetIpStatisticsEx () ;
+ int testGetNumberOfInterfaces () ;
+ int testGetTcpStatistics () ;
+ int testGetTcpStatisticsEx () ;
+ int testGetTcpTable () ;
+ int testGetUdpStatistics () ;
+ int testGetUdpStatisticsEx () ;
+ int testGetUdpTable () ;
+ int testIcmpSendEcho () ;
+ int testSetTcpEntry () ;
 
 __attribute__((used)) static void testWinNT4Functions(void)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int offset; } ;
 
-/* Variables and functions */
- TYPE_1__* partab ; 
+
+ TYPE_1__* partab ;
 
 __attribute__((used)) static unsigned
 pcheck(
-	register unsigned char *buf,
-	register int   idx
-	)
+ register unsigned char *buf,
+ register int idx
+ )
 {
-	register int i,last;
-	register unsigned psum = 1;
+ register int i,last;
+ register unsigned psum = 1;
 
-	last = partab[idx+1].offset;
+ last = partab[idx+1].offset;
 
-	for (i = partab[idx].offset; i < last; i++)
-	    psum ^= (buf[i] != '-');
+ for (i = partab[idx].offset; i < last; i++)
+     psum ^= (buf[i] != '-');
 
-	return psum;
+ return psum;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  acct; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * pMetric; int /*<<< orphan*/ * vgTimer; scalar_t__ numOfTables; scalar_t__ numOfVgroups; int /*<<< orphan*/ * pTail; int /*<<< orphan*/ * pHead; TYPE_1__ cfg; } ;
-typedef  TYPE_2__ SDbObj ;
-typedef  int /*<<< orphan*/  SAcctObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mgmtAddDbIntoAcct (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/ * mgmtGetAcct (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int acct; } ;
+struct TYPE_5__ {int * pMetric; int * vgTimer; scalar_t__ numOfTables; scalar_t__ numOfVgroups; int * pTail; int * pHead; TYPE_1__ cfg; } ;
+typedef TYPE_2__ SDbObj ;
+typedef int SAcctObj ;
+
+
+ int mgmtAddDbIntoAcct (int *,TYPE_2__*) ;
+ int * mgmtGetAcct (int ) ;
 
 void *mgmtDbActionInsert(void *row, char *str, int size, int *ssize) {
-  SDbObj *  pDb = (SDbObj *)row;
+  SDbObj * pDb = (SDbObj *)row;
   SAcctObj *pAcct = mgmtGetAcct(pDb->cfg.acct);
 
-  pDb->pHead = NULL;
-  pDb->pTail = NULL;
+  pDb->pHead = ((void*)0);
+  pDb->pTail = ((void*)0);
   pDb->numOfVgroups = 0;
   pDb->numOfTables = 0;
-  pDb->vgTimer = NULL;
-  pDb->pMetric = NULL;
+  pDb->vgTimer = ((void*)0);
+  pDb->pMetric = ((void*)0);
   mgmtAddDbIntoAcct(pAcct, pDb);
 
-  return NULL;
+  return ((void*)0);
 }

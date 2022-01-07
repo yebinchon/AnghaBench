@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t maxCons; int /*<<< orphan*/ * delegate; TYPE_1__* connections; int /*<<< orphan*/ * remote_connections; } ;
-struct TYPE_4__ {int /*<<< orphan*/  advf; int /*<<< orphan*/ * pAdvSink; int /*<<< orphan*/  formatetc; } ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  int /*<<< orphan*/  IDataAdviseHolder ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ DataAdviseHolder ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDataObject_DAdvise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WINE_ADVF_REMOTE ; 
- TYPE_2__* impl_from_IDataAdviseHolder (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t maxCons; int * delegate; TYPE_1__* connections; int * remote_connections; } ;
+struct TYPE_4__ {int advf; int * pAdvSink; int formatetc; } ;
+typedef int IDataObject ;
+typedef int IDataAdviseHolder ;
+typedef int HRESULT ;
+typedef TYPE_2__ DataAdviseHolder ;
+typedef size_t DWORD ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IDataObject_DAdvise (int *,int *,int ,int *,int *) ;
+ int S_OK ;
+ int WINE_ADVF_REMOTE ;
+ TYPE_2__* impl_from_IDataAdviseHolder (int *) ;
 
 HRESULT DataAdviseHolder_OnConnect(IDataAdviseHolder *iface, IDataObject *pDelegate)
 {
@@ -35,7 +35,7 @@ HRESULT DataAdviseHolder_OnConnect(IDataAdviseHolder *iface, IDataObject *pDeleg
 
   for(index = 0; index < This->maxCons; index++)
   {
-    if(This->connections[index].pAdvSink != NULL)
+    if(This->connections[index].pAdvSink != ((void*)0))
     {
       hr = IDataObject_DAdvise(pDelegate, &This->connections[index].formatetc,
                                This->connections[index].advf,

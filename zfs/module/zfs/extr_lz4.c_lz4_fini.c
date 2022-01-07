@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  kmem_cache_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lz4_cache ; 
+ int kmem_cache_destroy (int *) ;
+ int * lz4_cache ;
 
 void
 lz4_fini(void)
 {
-	if (lz4_cache) {
-		kmem_cache_destroy(lz4_cache);
-		lz4_cache = NULL;
-	}
+ if (lz4_cache) {
+  kmem_cache_destroy(lz4_cache);
+  lz4_cache = ((void*)0);
+ }
 }

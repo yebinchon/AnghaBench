@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct thin_c {int /*<<< orphan*/  lock; int /*<<< orphan*/  retry_on_resume_list; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct thin_c {int lock; int retry_on_resume_list; } ;
 struct dm_thin_endio_hook {struct thin_c* tc; } ;
 struct bio {int dummy; } ;
 struct TYPE_2__ {struct dm_thin_endio_hook* ptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bio_list_add (int /*<<< orphan*/ *,struct bio*) ; 
- TYPE_1__* dm_get_mapinfo (struct bio*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int bio_list_add (int *,struct bio*) ;
+ TYPE_1__* dm_get_mapinfo (struct bio*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void retry_on_resume(struct bio *bio)
 {
-	struct dm_thin_endio_hook *h = dm_get_mapinfo(bio)->ptr;
-	struct thin_c *tc = h->tc;
-	unsigned long flags;
+ struct dm_thin_endio_hook *h = dm_get_mapinfo(bio)->ptr;
+ struct thin_c *tc = h->tc;
+ unsigned long flags;
 
-	spin_lock_irqsave(&tc->lock, flags);
-	bio_list_add(&tc->retry_on_resume_list, bio);
-	spin_unlock_irqrestore(&tc->lock, flags);
+ spin_lock_irqsave(&tc->lock, flags);
+ bio_list_add(&tc->retry_on_resume_list, bio);
+ spin_unlock_irqrestore(&tc->lock, flags);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
 struct TYPE_10__ {TYPE_2__* c; } ;
-typedef  TYPE_3__ mrb_state ;
-typedef  int /*<<< orphan*/  mrb_int ;
+typedef TYPE_3__ mrb_state ;
+typedef int mrb_int ;
 struct TYPE_9__ {TYPE_1__* ci; } ;
-struct TYPE_8__ {int /*<<< orphan*/  target_class; } ;
+struct TYPE_8__ {int target_class; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (TYPE_3__*,char*,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_yield_cont (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int E_ARGUMENT_ERROR ;
+ int mrb_class_ptr (int ) ;
+ int mrb_get_args (TYPE_3__*,char*,int const**,int *,int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_raise (TYPE_3__*,int ,char*) ;
+ int mrb_yield_cont (TYPE_3__*,int ,int ,int ,int const*) ;
 
 __attribute__((used)) static mrb_value
 mrb_mod_module_exec(mrb_state *mrb, mrb_value self)

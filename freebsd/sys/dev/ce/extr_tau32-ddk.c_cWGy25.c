@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* fV7o35; } ;
-typedef  TYPE_2__ kWMzp1 ;
-typedef  enum bmwN91 { ____Placeholder_bmwN91 } bmwN91 ;
+typedef TYPE_2__ kWMzp1 ;
+typedef enum bmwN91 { ____Placeholder_bmwN91 } bmwN91 ;
 struct TYPE_5__ {int y8QlL; unsigned int Be1a54; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KahAO3 ; 
- int /*<<< orphan*/  TifAa1 (TYPE_2__*,unsigned long) ; 
- int Wa6IF1 ; 
- unsigned long WdFDP4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int cy2jE4 ; 
- int gQf6j1 ; 
- int tXFTB4 ; 
- int wTSMD1 ; 
+
+ int KahAO3 ;
+ int TifAa1 (TYPE_2__*,unsigned long) ;
+ int Wa6IF1 ;
+ unsigned long WdFDP4 (int ,int ,int ,int ,int,int ) ;
+ int cy2jE4 ;
+ int gQf6j1 ;
+ int tXFTB4 ;
+ int wTSMD1 ;
 
 __attribute__((used)) static enum bmwN91 cWGy25(kWMzp1*J7Iki4){unsigned
 Vdg6P1,J2Fer3=0;unsigned long RcNOn;{rfb4A1:{__asm __volatile(""::);

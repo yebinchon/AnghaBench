@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NO_HINT ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  get_string (int /*<<< orphan*/ ) ; 
- scalar_t__ is_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isnan (double) ; 
- scalar_t__ jsstr_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  to_primitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int NO_HINT ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int get_string (int ) ;
+ scalar_t__ is_string (int ) ;
+ int isnan (double) ;
+ scalar_t__ jsstr_cmp (int ,int ) ;
+ int jsstr_release (int ) ;
+ int jsval_release (int ) ;
+ int to_number (int *,int ,double*) ;
+ int to_primitive (int *,int ,int *,int ) ;
 
 __attribute__((used)) static HRESULT less_eval(script_ctx_t *ctx, jsval_t lval, jsval_t rval, BOOL greater, BOOL *ret)
 {

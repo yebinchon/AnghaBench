@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64 ;
-struct TYPE_3__ {int /*<<< orphan*/  defname; int /*<<< orphan*/ * arg; } ;
-typedef  TYPE_1__ DefElem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CStringGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DatumGetInt64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DirectFunctionCall1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERRCODE_SYNTAX_ERROR ; 
- int /*<<< orphan*/  ERROR ; 
-#define  T_Float 129 
-#define  T_Integer 128 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  int8in ; 
- int /*<<< orphan*/  intVal (int /*<<< orphan*/ *) ; 
- int nodeTag (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strVal (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int64 ;
+struct TYPE_3__ {int defname; int * arg; } ;
+typedef TYPE_1__ DefElem ;
+
+
+ int CStringGetDatum (int ) ;
+ int DatumGetInt64 (int ) ;
+ int DirectFunctionCall1 (int ,int ) ;
+ int ERRCODE_SYNTAX_ERROR ;
+ int ERROR ;
+
+
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
+ int int8in ;
+ int intVal (int *) ;
+ int nodeTag (int *) ;
+ int strVal (int *) ;
 
 int64
 defGetInt64(DefElem *def)
 {
-	if (def->arg == NULL)
-		ereport(ERROR,
-				(errcode(ERRCODE_SYNTAX_ERROR),
-				 errmsg("%s requires a numeric value",
-						def->defname)));
-	switch (nodeTag(def->arg))
-	{
-		case T_Integer:
-			return (int64) intVal(def->arg);
-		case T_Float:
+ if (def->arg == ((void*)0))
+  ereport(ERROR,
+    (errcode(ERRCODE_SYNTAX_ERROR),
+     errmsg("%s requires a numeric value",
+      def->defname)));
+ switch (nodeTag(def->arg))
+ {
+  case 128:
+   return (int64) intVal(def->arg);
+  case 129:
 
-			/*
-			 * Values too large for int4 will be represented as Float
-			 * constants by the lexer.  Accept these if they are valid int8
-			 * strings.
-			 */
-			return DatumGetInt64(DirectFunctionCall1(int8in,
-													 CStringGetDatum(strVal(def->arg))));
-		default:
-			ereport(ERROR,
-					(errcode(ERRCODE_SYNTAX_ERROR),
-					 errmsg("%s requires a numeric value",
-							def->defname)));
-	}
-	return 0;					/* keep compiler quiet */
+
+
+
+
+
+   return DatumGetInt64(DirectFunctionCall1(int8in,
+              CStringGetDatum(strVal(def->arg))));
+  default:
+   ereport(ERROR,
+     (errcode(ERRCODE_SYNTAX_ERROR),
+      errmsg("%s requires a numeric value",
+       def->defname)));
+ }
+ return 0;
 }

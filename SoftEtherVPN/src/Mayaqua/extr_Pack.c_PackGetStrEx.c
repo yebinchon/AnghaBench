@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  ELEMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetElement (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetStrValue (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  StrCpy (char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALUE_STR ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int PACK ;
+typedef int ELEMENT ;
+
+
+ int * GetElement (int *,char*,int ) ;
+ int GetStrValue (int *,scalar_t__) ;
+ int StrCpy (char*,scalar_t__,int ) ;
+ int VALUE_STR ;
 
 bool PackGetStrEx(PACK *p, char *name, char *str, UINT size, UINT index)
 {
-	ELEMENT *e;
-	// Validate arguments
-	if (p == NULL || name == NULL || str == NULL || size == 0)
-	{
-		return false;
-	}
+ ELEMENT *e;
 
-	str[0] = 0;
+ if (p == ((void*)0) || name == ((void*)0) || str == ((void*)0) || size == 0)
+ {
+  return 0;
+ }
 
-	e = GetElement(p, name, VALUE_STR);
-	if (e == NULL)
-	{
-		return false;
-	}
+ str[0] = 0;
 
-	StrCpy(str, size, GetStrValue(e, index));
-	return true;
+ e = GetElement(p, name, VALUE_STR);
+ if (e == ((void*)0))
+ {
+  return 0;
+ }
+
+ StrCpy(str, size, GetStrValue(e, index));
+ return 1;
 }

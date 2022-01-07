@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct st_lsm6dsx_hw {int /*<<< orphan*/  page_lock; int /*<<< orphan*/  regmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int regmap_bulk_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int st_lsm6dsx_set_page (struct st_lsm6dsx_hw*,int) ; 
+
+
+
+typedef int u8 ;
+struct st_lsm6dsx_hw {int page_lock; int regmap; } ;
+
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int regmap_bulk_read (int ,int ,int *,int) ;
+ int st_lsm6dsx_set_page (struct st_lsm6dsx_hw*,int) ;
 
 __attribute__((used)) static int st_lsm6dsx_shub_read_reg(struct st_lsm6dsx_hw *hw, u8 addr,
-				    u8 *data, int len)
+        u8 *data, int len)
 {
-	int err;
+ int err;
 
-	mutex_lock(&hw->page_lock);
+ mutex_lock(&hw->page_lock);
 
-	err = st_lsm6dsx_set_page(hw, true);
-	if (err < 0)
-		goto out;
+ err = st_lsm6dsx_set_page(hw, 1);
+ if (err < 0)
+  goto out;
 
-	err = regmap_bulk_read(hw->regmap, addr, data, len);
+ err = regmap_bulk_read(hw->regmap, addr, data, len);
 
-	st_lsm6dsx_set_page(hw, false);
+ st_lsm6dsx_set_page(hw, 0);
 out:
-	mutex_unlock(&hw->page_lock);
+ mutex_unlock(&hw->page_lock);
 
-	return err;
+ return err;
 }

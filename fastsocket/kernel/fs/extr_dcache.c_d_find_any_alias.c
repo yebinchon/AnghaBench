@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct dentry {int dummy; } ;
 
-/* Variables and functions */
- struct dentry* __d_find_any_alias (struct inode*) ; 
- int /*<<< orphan*/  dcache_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ struct dentry* __d_find_any_alias (struct inode*) ;
+ int dcache_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static struct dentry * d_find_any_alias(struct inode *inode)
 {
-	struct dentry *de;
+ struct dentry *de;
 
-	spin_lock(&dcache_lock);
-	de = __d_find_any_alias(inode);
-	spin_unlock(&dcache_lock);
-	return de;
+ spin_lock(&dcache_lock);
+ de = __d_find_any_alias(inode);
+ spin_unlock(&dcache_lock);
+ return de;
 }

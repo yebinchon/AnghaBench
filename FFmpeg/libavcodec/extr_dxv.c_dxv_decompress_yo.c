@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  DXVContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_RL32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AV_WL32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int dxv_decompress_cgo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int*,unsigned int,int /*<<< orphan*/ **,int*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int dxv_decompress_opcodes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int GetByteContext ;
+typedef int DXVContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_RL32 (int *) ;
+ int AV_WL32 (int *,int) ;
+ int SEEK_SET ;
+ int bytestream2_get_bytes_left (int *) ;
+ void* bytestream2_get_le32 (int *) ;
+ int bytestream2_seek (int *,int,int ) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
+ int dxv_decompress_cgo (int *,int *,int *,int,int *,int*,unsigned int,int **,int*,int **,int **,int ) ;
+ int dxv_decompress_opcodes (int *,int *,unsigned int) ;
 
 __attribute__((used)) static int dxv_decompress_yo(DXVContext *ctx, GetByteContext *gb,
                              uint8_t *tex_data, int tex_size,

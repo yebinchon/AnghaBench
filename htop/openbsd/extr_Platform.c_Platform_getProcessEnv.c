@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kinfo_proc {int dummy; } ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  kvm_t ;
+typedef int pid_t ;
+typedef int kvm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_PROC_PID ; 
- int /*<<< orphan*/  KVM_NO_FILES ; 
- int _POSIX2_LINE_MAX ; 
- int /*<<< orphan*/  kvm_close (int /*<<< orphan*/ *) ; 
- char** kvm_getenvv (int /*<<< orphan*/ *,struct kinfo_proc*,int /*<<< orphan*/ ) ; 
- struct kinfo_proc* kvm_getprocs (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/ * kvm_openfiles (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
- int strlen (char*) ; 
- char* xMalloc (size_t) ; 
- char* xRealloc (char*,size_t) ; 
+
+ int KERN_PROC_PID ;
+ int KVM_NO_FILES ;
+ int _POSIX2_LINE_MAX ;
+ int kvm_close (int *) ;
+ char** kvm_getenvv (int *,struct kinfo_proc*,int ) ;
+ struct kinfo_proc* kvm_getprocs (int *,int ,int ,int,int*) ;
+ int * kvm_openfiles (int *,int *,int *,int ,char*) ;
+ int strlcpy (char*,char*,size_t) ;
+ int strlen (char*) ;
+ char* xMalloc (size_t) ;
+ char* xRealloc (char*,size_t) ;
 
 char* Platform_getProcessEnv(pid_t pid) {
    char errbuf[_POSIX2_LINE_MAX];
@@ -36,18 +36,18 @@ char* Platform_getProcessEnv(pid_t pid) {
    struct kinfo_proc *kproc;
    size_t capacity = 4096, size = 0;
 
-   if ((kt = kvm_openfiles(NULL, NULL, NULL, KVM_NO_FILES, errbuf)) == NULL)
-      return NULL;
+   if ((kt = kvm_openfiles(((void*)0), ((void*)0), ((void*)0), KVM_NO_FILES, errbuf)) == ((void*)0))
+      return ((void*)0);
 
    if ((kproc = kvm_getprocs(kt, KERN_PROC_PID, pid,
-                             sizeof(struct kinfo_proc), &count)) == NULL) {\
-      (void) kvm_close(kt);
-      return NULL;
+                             sizeof(struct kinfo_proc), &count)) == ((void*)0)) { (void) kvm_close(kt);
+
+      return ((void*)0);
    }
 
-   if ((ptr = kvm_getenvv(kt, kproc, 0)) == NULL) {
+   if ((ptr = kvm_getenvv(kt, kproc, 0)) == ((void*)0)) {
       (void) kvm_close(kt);
-      return NULL;
+      return ((void*)0);
    }
 
    env = xMalloc(capacity);

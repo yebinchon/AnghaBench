@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-typedef  int /*<<< orphan*/  Unit ;
-typedef  unsigned int ExecDirectoryType ;
-typedef  int /*<<< orphan*/  ExecCleanMask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAGS_SET (int /*<<< orphan*/ ,unsigned int) ; 
- unsigned int _EXEC_DIRECTORY_TYPE_MAX ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exec_resource_type_to_string (unsigned int) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int sd_bus_message_close_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_open_container (int /*<<< orphan*/ *,char,char*) ; 
- int unit_can_clean (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+typedef int Unit ;
+typedef unsigned int ExecDirectoryType ;
+typedef int ExecCleanMask ;
+
+
+ int FLAGS_SET (int ,unsigned int) ;
+ unsigned int _EXEC_DIRECTORY_TYPE_MAX ;
+ int assert (int *) ;
+ int exec_resource_type_to_string (unsigned int) ;
+ int sd_bus_message_append (int *,char*,int ) ;
+ int sd_bus_message_close_container (int *) ;
+ int sd_bus_message_open_container (int *,char,char*) ;
+ int unit_can_clean (int *,int *) ;
 
 __attribute__((used)) static int property_get_can_clean(
                 sd_bus *bus,

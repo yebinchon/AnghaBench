@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dm_exception {unsigned long long new_chunk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- unsigned long long DM_CHUNK_NUMBER_BITS ; 
- int /*<<< orphan*/  dm_consecutive_chunk_count (struct dm_exception*) ; 
+
+ int BUG_ON (int) ;
+ unsigned long long DM_CHUNK_NUMBER_BITS ;
+ int dm_consecutive_chunk_count (struct dm_exception*) ;
 
 __attribute__((used)) static inline void dm_consecutive_chunk_count_dec(struct dm_exception *e)
 {
-	BUG_ON(!dm_consecutive_chunk_count(e));
+ BUG_ON(!dm_consecutive_chunk_count(e));
 
-	e->new_chunk -= (1ULL << DM_CHUNK_NUMBER_BITS);
+ e->new_chunk -= (1ULL << DM_CHUNK_NUMBER_BITS);
 }

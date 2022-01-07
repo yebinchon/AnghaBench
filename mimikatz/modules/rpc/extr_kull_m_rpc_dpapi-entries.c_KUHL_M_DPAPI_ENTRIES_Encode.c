@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  handle_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * Format; } ;
-typedef  int /*<<< orphan*/  PMIDL_TYPE_PICKLING_INFO ;
-typedef  int /*<<< orphan*/  PFORMAT_STRING ;
-typedef  int /*<<< orphan*/  KUHL_M_DPAPI_ENTRIES ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPAPIEntries_StubDesc ; 
- int /*<<< orphan*/  NdrMesTypeEncode2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  __MIDL_TypePicklingInfo ; 
- size_t _dpapi2Dentries_MIDL_TYPE_FORMAT_OFFSET ; 
- TYPE_1__ dpapi2Dentries__MIDL_TypeFormatString ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int handle_t ;
+struct TYPE_2__ {int * Format; } ;
+typedef int PMIDL_TYPE_PICKLING_INFO ;
+typedef int PFORMAT_STRING ;
+typedef int KUHL_M_DPAPI_ENTRIES ;
+
+
+ int DPAPIEntries_StubDesc ;
+ int NdrMesTypeEncode2 (int ,int ,int *,int ,int *) ;
+ int __MIDL_TypePicklingInfo ;
+ size_t _dpapi2Dentries_MIDL_TYPE_FORMAT_OFFSET ;
+ TYPE_1__ dpapi2Dentries__MIDL_TypeFormatString ;
 
 void KUHL_M_DPAPI_ENTRIES_Encode(handle_t _MidlEsHandle, KUHL_M_DPAPI_ENTRIES * _pType)
 {

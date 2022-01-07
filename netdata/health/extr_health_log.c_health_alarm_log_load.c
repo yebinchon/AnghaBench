@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {char* health_log_filename; int /*<<< orphan*/  hostname; scalar_t__ health_log_entries_written; } ;
-typedef  TYPE_1__ RRDHOST ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  health_alarm_log_close (TYPE_1__*) ; 
- int /*<<< orphan*/  health_alarm_log_open (TYPE_1__*) ; 
- int /*<<< orphan*/  health_alarm_log_read (TYPE_1__*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,char*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {char* health_log_filename; int hostname; scalar_t__ health_log_entries_written; } ;
+typedef TYPE_1__ RRDHOST ;
+typedef int FILE ;
+
+
+ int FILENAME_MAX ;
+ int error (char*,int ,char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int health_alarm_log_close (TYPE_1__*) ;
+ int health_alarm_log_open (TYPE_1__*) ;
+ int health_alarm_log_read (TYPE_1__*,int *,char*) ;
+ int snprintfz (char*,int ,char*,char*) ;
 
 inline void health_alarm_log_load(RRDHOST *host) {
     health_alarm_log_close(host);

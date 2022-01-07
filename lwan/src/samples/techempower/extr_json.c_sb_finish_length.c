@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* cur; char* start; } ;
-typedef  TYPE_1__ SB ;
+typedef TYPE_1__ SB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- size_t strlen (char*) ; 
+
+ int assert (int) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static char *sb_finish_length(SB *sb, size_t *length)
 {
-	*sb->cur = 0;
-	assert(sb->start <= sb->cur && strlen(sb->start) == (size_t)(sb->cur - sb->start));
-	*length = (size_t)(sb->cur - sb->start);
-	return sb->start;
+ *sb->cur = 0;
+ assert(sb->start <= sb->cur && strlen(sb->start) == (size_t)(sb->cur - sb->start));
+ *length = (size_t)(sb->cur - sb->start);
+ return sb->start;
 }

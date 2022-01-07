@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {unsigned int component_count; unsigned int component_size; } ;
-struct TYPE_6__ {size_t Type; int UsageIndex; unsigned int Offset; int /*<<< orphan*/  Method; scalar_t__ Stream; void* Usage; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  TYPE_1__ D3DVERTEXELEMENT9 ;
-typedef  int BOOL ;
+struct TYPE_6__ {size_t Type; int UsageIndex; unsigned int Offset; int Method; scalar_t__ Stream; void* Usage; } ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ D3DVERTEXELEMENT9 ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DDECLMETHOD_DEFAULT ; 
- void* D3DDECLTYPE_D3DCOLOR ; 
- void* D3DDECLTYPE_FLOAT1 ; 
- void* D3DDECLTYPE_FLOAT2 ; 
- void* D3DDECLTYPE_FLOAT3 ; 
- void* D3DDECLTYPE_FLOAT4 ; 
- size_t D3DDECLTYPE_UBYTE4 ; 
- void* D3DDECLUSAGE_BLENDINDICES ; 
- void* D3DDECLUSAGE_BLENDWEIGHT ; 
- void* D3DDECLUSAGE_COLOR ; 
- void* D3DDECLUSAGE_NORMAL ; 
- void* D3DDECLUSAGE_POSITION ; 
- void* D3DDECLUSAGE_POSITIONT ; 
- void* D3DDECLUSAGE_PSIZE ; 
- void* D3DDECLUSAGE_TEXCOORD ; 
- TYPE_1__ D3DDECL_END () ; 
- int /*<<< orphan*/  D3DERR_OUTOFVIDEOMEMORY ; 
- int D3DFVF_DIFFUSE ; 
- int D3DFVF_LASTBETA_D3DCOLOR ; 
- int D3DFVF_LASTBETA_UBYTE4 ; 
- int D3DFVF_NORMAL ; 
- int D3DFVF_POSITION_MASK ; 
- int D3DFVF_PSIZE ; 
- int D3DFVF_SPECULAR ; 
- int D3DFVF_TEXCOUNT_MASK ; 
- int D3DFVF_TEXCOUNT_SHIFT ; 
-#define  D3DFVF_TEXTUREFORMAT1 131 
-#define  D3DFVF_TEXTUREFORMAT2 130 
-#define  D3DFVF_TEXTUREFORMAT3 129 
-#define  D3DFVF_TEXTUREFORMAT4 128 
- int D3DFVF_XYZB1 ; 
- int D3DFVF_XYZB2 ; 
- int D3DFVF_XYZB5 ; 
- int D3DFVF_XYZRHW ; 
- int D3DFVF_XYZW ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- TYPE_4__* d3d_dtype_lookup ; 
- TYPE_1__* heap_alloc (unsigned int) ; 
+
+ int D3DDECLMETHOD_DEFAULT ;
+ void* D3DDECLTYPE_D3DCOLOR ;
+ void* D3DDECLTYPE_FLOAT1 ;
+ void* D3DDECLTYPE_FLOAT2 ;
+ void* D3DDECLTYPE_FLOAT3 ;
+ void* D3DDECLTYPE_FLOAT4 ;
+ size_t D3DDECLTYPE_UBYTE4 ;
+ void* D3DDECLUSAGE_BLENDINDICES ;
+ void* D3DDECLUSAGE_BLENDWEIGHT ;
+ void* D3DDECLUSAGE_COLOR ;
+ void* D3DDECLUSAGE_NORMAL ;
+ void* D3DDECLUSAGE_POSITION ;
+ void* D3DDECLUSAGE_POSITIONT ;
+ void* D3DDECLUSAGE_PSIZE ;
+ void* D3DDECLUSAGE_TEXCOORD ;
+ TYPE_1__ D3DDECL_END () ;
+ int D3DERR_OUTOFVIDEOMEMORY ;
+ int D3DFVF_DIFFUSE ;
+ int D3DFVF_LASTBETA_D3DCOLOR ;
+ int D3DFVF_LASTBETA_UBYTE4 ;
+ int D3DFVF_NORMAL ;
+ int D3DFVF_POSITION_MASK ;
+ int D3DFVF_PSIZE ;
+ int D3DFVF_SPECULAR ;
+ int D3DFVF_TEXCOUNT_MASK ;
+ int D3DFVF_TEXCOUNT_SHIFT ;
+
+
+
+
+ int D3DFVF_XYZB1 ;
+ int D3DFVF_XYZB2 ;
+ int D3DFVF_XYZB5 ;
+ int D3DFVF_XYZRHW ;
+ int D3DFVF_XYZW ;
+ int D3D_OK ;
+ int ERR (char*,int) ;
+ TYPE_4__* d3d_dtype_lookup ;
+ TYPE_1__* heap_alloc (unsigned int) ;
 
 HRESULT vdecl_convert_fvf(
     DWORD fvf,
@@ -82,17 +82,17 @@ HRESULT vdecl_convert_fvf(
     DWORD texcoords = (fvf & 0xFFFF0000) >> 16;
 
     D3DVERTEXELEMENT9 end_element = D3DDECL_END();
-    D3DVERTEXELEMENT9 *elements = NULL;
+    D3DVERTEXELEMENT9 *elements = ((void*)0);
 
     unsigned int size;
     DWORD num_blends = 1 + (((fvf & D3DFVF_XYZB5) - D3DFVF_XYZB1) >> 1);
     if (has_blend_idx) num_blends--;
 
-    /* Compute declaration size */
+
     size = has_pos + (has_blend && num_blends > 0) + has_blend_idx + has_normal +
            has_psize + has_diffuse + has_specular + num_textures + 1;
 
-    /* convert the declaration */
+
     if (!(elements = heap_alloc(size * sizeof(*elements))))
         return D3DERR_OUTOFVIDEOMEMORY;
 
@@ -170,16 +170,16 @@ HRESULT vdecl_convert_fvf(
     for (idx2 = 0; idx2 < num_textures; idx2++) {
         unsigned int numcoords = (texcoords >> (idx2*2)) & 0x03;
         switch (numcoords) {
-            case D3DFVF_TEXTUREFORMAT1:
+            case 131:
                 elements[idx].Type = D3DDECLTYPE_FLOAT1;
                 break;
-            case D3DFVF_TEXTUREFORMAT2:
+            case 130:
                 elements[idx].Type = D3DDECLTYPE_FLOAT2;
                 break;
-            case D3DFVF_TEXTUREFORMAT3:
+            case 129:
                 elements[idx].Type = D3DDECLTYPE_FLOAT3;
                 break;
-            case D3DFVF_TEXTUREFORMAT4:
+            case 128:
                 elements[idx].Type = D3DDECLTYPE_FLOAT4;
                 break;
         }
@@ -188,7 +188,7 @@ HRESULT vdecl_convert_fvf(
         idx++;
     }
 
-    /* Now compute offsets, and initialize the rest of the fields */
+
     for (idx = 0, offset = 0; idx < size-1; idx++) {
         elements[idx].Stream = 0;
         elements[idx].Method = D3DDECLMETHOD_DEFAULT;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fw_sysfs {int dummy; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct fw_sysfs*) ; 
- struct fw_sysfs* to_fw_sysfs (struct device*) ; 
+
+ int kfree (struct fw_sysfs*) ;
+ struct fw_sysfs* to_fw_sysfs (struct device*) ;
 
 __attribute__((used)) static void fw_dev_release(struct device *dev)
 {
-	struct fw_sysfs *fw_sysfs = to_fw_sysfs(dev);
+ struct fw_sysfs *fw_sysfs = to_fw_sysfs(dev);
 
-	kfree(fw_sysfs);
+ kfree(fw_sysfs);
 }

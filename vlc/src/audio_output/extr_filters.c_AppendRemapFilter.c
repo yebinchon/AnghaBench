@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  config_chain_t ;
-typedef  int /*<<< orphan*/  audio_sample_format_t ;
-typedef  int /*<<< orphan*/  aout_filters_t ;
 
-/* Variables and functions */
- int AOUT_CHAN_MAX ; 
- int AppendFilter (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int asprintf (char**,char*,int,int,int,int,int,int,int,int,int) ; 
- char* config_ChainCreate (char**,int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  config_ChainDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+typedef int config_chain_t ;
+typedef int audio_sample_format_t ;
+typedef int aout_filters_t ;
+
+
+ int AOUT_CHAN_MAX ;
+ int AppendFilter (int *,char*,char*,int *,int *,int const*,int *) ;
+ int asprintf (char**,char*,int,int,int,int,int,int,int,int,int) ;
+ char* config_ChainCreate (char**,int **,char*) ;
+ int config_ChainDestroy (int *) ;
+ int free (char*) ;
 
 __attribute__((used)) static int AppendRemapFilter(vlc_object_t *obj, aout_filters_t *restrict filters,
                              audio_sample_format_t *restrict infmt,
@@ -32,14 +32,14 @@ __attribute__((used)) static int AppendRemapFilter(vlc_object_t *obj, aout_filte
     char *name;
     config_chain_t *cfg;
 
-    /* The remap audio filter use a different order than wg4 */
+
     static const uint8_t wg4_to_remap[] = { 0, 2, 6, 7, 3, 5, 4, 1, 8 };
     int remap[AOUT_CHAN_MAX];
-    bool needed = false;
+    bool needed = 0;
     for (int i = 0; i < AOUT_CHAN_MAX; ++i)
     {
         if (wg4_remap[i] != i)
-            needed = true;
+            needed = 1;
         remap[i] = wg4_remap[i] >= 0 ? wg4_to_remap[wg4_remap[i]] : -1;
     }
     if (!needed)
@@ -57,7 +57,7 @@ __attribute__((used)) static int AppendRemapFilter(vlc_object_t *obj, aout_filte
         return -1;
 
     free(config_ChainCreate(&name, &cfg, str));
-    if (name != NULL && cfg != NULL)
+    if (name != ((void*)0) && cfg != ((void*)0))
         ret = AppendFilter(obj, "audio filter", name, filters,
                            infmt, outfmt, cfg);
     else

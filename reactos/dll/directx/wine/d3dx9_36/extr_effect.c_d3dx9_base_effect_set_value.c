@@ -1,49 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_parameter {scalar_t__ class; int type; scalar_t__ bytes; int element_count; scalar_t__ data; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+typedef scalar_t__ UINT ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- scalar_t__ D3DXPC_OBJECT ; 
-#define  D3DXPT_BOOL 137 
-#define  D3DXPT_FLOAT 136 
-#define  D3DXPT_INT 135 
-#define  D3DXPT_STRING 134 
-#define  D3DXPT_TEXTURE 133 
-#define  D3DXPT_TEXTURE1D 132 
-#define  D3DXPT_TEXTURE2D 131 
-#define  D3DXPT_TEXTURE3D 130 
-#define  D3DXPT_TEXTURECUBE 129 
-#define  D3DXPT_VOID 128 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  debug_d3dxparameter_type (int) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_param_type_sampler (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,void const*,scalar_t__) ; 
- int /*<<< orphan*/  set_dirty (struct d3dx_parameter*) ; 
- int /*<<< orphan*/  set_string (char**,char const*) ; 
+
+ int D3DERR_INVALIDCALL ;
+ scalar_t__ D3DXPC_OBJECT ;
+ int D3D_OK ;
+ int E_FAIL ;
+ int FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int IUnknown_AddRef (int *) ;
+ int IUnknown_Release (int *) ;
+ int TRACE (char*,...) ;
+ int WARN (char*,...) ;
+ int debug_d3dxparameter_type (int) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
+ scalar_t__ is_param_type_sampler (int) ;
+ int memcpy (scalar_t__,void const*,scalar_t__) ;
+ int set_dirty (struct d3dx_parameter*) ;
+ int set_string (char**,char const*) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_set_value(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, const void *data, UINT bytes)
@@ -57,7 +47,7 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_set_value(struct d3dx9_ba
         return D3DERR_INVALIDCALL;
     }
 
-    /* samplers don't touch data */
+
     if (param->class == D3DXPC_OBJECT && is_param_type_sampler(param->type))
     {
         TRACE("Sampler: returning E_FAIL\n");
@@ -68,11 +58,11 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_set_value(struct d3dx9_ba
     {
         switch (param->type)
         {
-            case D3DXPT_TEXTURE:
-            case D3DXPT_TEXTURE1D:
-            case D3DXPT_TEXTURE2D:
-            case D3DXPT_TEXTURE3D:
-            case D3DXPT_TEXTURECUBE:
+            case 133:
+            case 132:
+            case 131:
+            case 130:
+            case 129:
                 for (i = 0; i < (param->element_count ? param->element_count : 1); ++i)
                 {
                     IUnknown *old_texture = ((IUnknown **)param->data)[i];
@@ -86,17 +76,17 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_set_value(struct d3dx9_ba
                     if (old_texture)
                         IUnknown_Release(old_texture);
                 }
-            /* fallthrough */
-            case D3DXPT_VOID:
-            case D3DXPT_BOOL:
-            case D3DXPT_INT:
-            case D3DXPT_FLOAT:
+
+            case 128:
+            case 137:
+            case 135:
+            case 136:
                 TRACE("Copy %u bytes.\n", param->bytes);
                 memcpy(param->data, data, param->bytes);
                 set_dirty(param);
                 break;
 
-            case D3DXPT_STRING:
+            case 134:
             {
                 HRESULT hr;
 

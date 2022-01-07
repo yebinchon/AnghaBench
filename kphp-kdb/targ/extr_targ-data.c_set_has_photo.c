@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int has_photo; int /*<<< orphan*/  uid; } ;
-typedef  TYPE_1__ user_t ;
-struct lev_generic {int type; int /*<<< orphan*/  a; } ;
 
-/* Variables and functions */
- TYPE_1__* get_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  q_has_photo ; 
- int /*<<< orphan*/  q_pays_money ; 
- int /*<<< orphan*/  q_uses_apps ; 
- int /*<<< orphan*/  user_change_field (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int has_photo; int uid; } ;
+typedef TYPE_1__ user_t ;
+struct lev_generic {int type; int a; } ;
+
+
+ TYPE_1__* get_user (int ) ;
+ int q_has_photo ;
+ int q_pays_money ;
+ int q_uses_apps ;
+ int user_change_field (int ,int ,int,int) ;
 
 int set_has_photo (struct lev_generic *E) {
   user_t *U = get_user (E->a);

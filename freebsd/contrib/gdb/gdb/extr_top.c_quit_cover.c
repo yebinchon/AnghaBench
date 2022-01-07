@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ caution ; 
- int /*<<< orphan*/  quit_command (char*,int /*<<< orphan*/ ) ; 
+ scalar_t__ caution ;
+ int quit_command (char*,int ) ;
 
 int
 quit_cover (void *s)
 {
-  caution = 0;			/* Throw caution to the wind -- we're exiting.
-				   This prevents asking the user dumb questions.  */
+  caution = 0;
+
   quit_command ((char *) 0, 0);
   return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfsclwritedsdorpc {int done; int /*<<< orphan*/  err; int /*<<< orphan*/  p; int /*<<< orphan*/  cred; int /*<<< orphan*/  minorvers; int /*<<< orphan*/  vers; int /*<<< orphan*/  fhp; int /*<<< orphan*/  dsp; int /*<<< orphan*/  len; int /*<<< orphan*/  off; int /*<<< orphan*/  vp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NFSCL_DEBUG (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfsrpc_commitds (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct nfsclwritedsdorpc {int done; int err; int p; int cred; int minorvers; int vers; int fhp; int dsp; int len; int off; int vp; } ;
+
+
+ int NFSCL_DEBUG (int,char*,int ) ;
+ int nfsrpc_commitds (int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void
 start_commitds(void *arg, int pending)
 {
-	struct nfsclwritedsdorpc *drpc;
+ struct nfsclwritedsdorpc *drpc;
 
-	drpc = (struct nfsclwritedsdorpc *)arg;
-	drpc->err = nfsrpc_commitds(drpc->vp, drpc->off, drpc->len,
-	    drpc->dsp, drpc->fhp, drpc->vers, drpc->minorvers, drpc->cred,
-	    drpc->p);
-	drpc->done = 1;
-	NFSCL_DEBUG(4, "start_commitds: err=%d\n", drpc->err);
+ drpc = (struct nfsclwritedsdorpc *)arg;
+ drpc->err = nfsrpc_commitds(drpc->vp, drpc->off, drpc->len,
+     drpc->dsp, drpc->fhp, drpc->vers, drpc->minorvers, drpc->cred,
+     drpc->p);
+ drpc->done = 1;
+ NFSCL_DEBUG(4, "start_commitds: err=%d\n", drpc->err);
 }

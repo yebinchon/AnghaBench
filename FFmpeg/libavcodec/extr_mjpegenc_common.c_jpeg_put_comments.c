@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {scalar_t__ num; scalar_t__ den; } ;
 struct TYPE_6__ {int flags; scalar_t__ pix_fmt; scalar_t__ color_range; TYPE_1__ sample_aspect_ratio; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ AVRational ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef int PutBitContext ;
+typedef TYPE_1__ AVRational ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP0 ; 
- scalar_t__ AVCOL_RANGE_JPEG ; 
- scalar_t__ AVCOL_RANGE_MPEG ; 
- int AV_CODEC_FLAG_BITEXACT ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_PIX_FMT_YUV420P ; 
- scalar_t__ AV_PIX_FMT_YUV422P ; 
- scalar_t__ AV_PIX_FMT_YUV444P ; 
- int /*<<< orphan*/  AV_WB16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  COM ; 
- char* LIBAVCODEC_IDENT ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  av_reduce (int*,int*,int,int,int) ; 
- int /*<<< orphan*/  avpriv_put_string (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * put_bits_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_marker (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
+
+ int APP0 ;
+ scalar_t__ AVCOL_RANGE_JPEG ;
+ scalar_t__ AVCOL_RANGE_MPEG ;
+ int AV_CODEC_FLAG_BITEXACT ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_PIX_FMT_YUV420P ;
+ scalar_t__ AV_PIX_FMT_YUV422P ;
+ scalar_t__ AV_PIX_FMT_YUV444P ;
+ int AV_WB16 (int *,int) ;
+ int COM ;
+ char* LIBAVCODEC_IDENT ;
+ int av_log (TYPE_2__*,int ,char*,int,int) ;
+ int av_reduce (int*,int*,int,int,int) ;
+ int avpriv_put_string (int *,char*,int) ;
+ int flush_put_bits (int *) ;
+ int put_bits (int *,int,int) ;
+ int * put_bits_ptr (int *) ;
+ int put_marker (int *,int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void jpeg_put_comments(AVCodecContext *avctx, PutBitContext *p)
 {
@@ -56,27 +56,27 @@ __attribute__((used)) static void jpeg_put_comments(AVCodecContext *avctx, PutBi
                     avctx->sample_aspect_ratio.den);
         }
 
-        /* JFIF header */
+
         put_marker(p, APP0);
         put_bits(p, 16, 16);
-        avpriv_put_string(p, "JFIF", 1); /* this puts the trailing zero-byte too */
-        /* The most significant byte is used for major revisions, the least
-         * significant byte for minor revisions. Version 1.02 is the current
-         * released revision. */
+        avpriv_put_string(p, "JFIF", 1);
+
+
+
         put_bits(p, 16, 0x0102);
-        put_bits(p,  8, 0);              /* units type: 0 - aspect ratio */
+        put_bits(p, 8, 0);
         put_bits(p, 16, sar.num);
         put_bits(p, 16, sar.den);
-        put_bits(p, 8, 0); /* thumbnail width */
-        put_bits(p, 8, 0); /* thumbnail height */
+        put_bits(p, 8, 0);
+        put_bits(p, 8, 0);
     }
 
-    /* comment */
+
     if (!(avctx->flags & AV_CODEC_FLAG_BITEXACT)) {
         put_marker(p, COM);
         flush_put_bits(p);
         ptr = put_bits_ptr(p);
-        put_bits(p, 16, 0); /* patched later */
+        put_bits(p, 16, 0);
         avpriv_put_string(p, LIBAVCODEC_IDENT, 1);
         size = strlen(LIBAVCODEC_IDENT)+3;
         AV_WB16(ptr, size);
@@ -89,7 +89,7 @@ __attribute__((used)) static void jpeg_put_comments(AVCodecContext *avctx, PutBi
         put_marker(p, COM);
         flush_put_bits(p);
         ptr = put_bits_ptr(p);
-        put_bits(p, 16, 0); /* patched later */
+        put_bits(p, 16, 0);
         avpriv_put_string(p, "CS=ITU601", 1);
         size = strlen("CS=ITU601")+3;
         AV_WB16(ptr, size);

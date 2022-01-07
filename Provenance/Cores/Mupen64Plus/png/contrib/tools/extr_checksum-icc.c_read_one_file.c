@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uLong ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int Byte ;
 
-/* Variables and functions */
- int EOF ; 
- int adler32 (int,int*,int) ; 
- int crc32 (int,int*,int) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,unsigned long,unsigned long,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long,char const*) ; 
- int /*<<< orphan*/  u16 (int) ; 
- int /*<<< orphan*/  u32 (int) ; 
+
+
+
+typedef int uLong ;
+typedef int FILE ;
+typedef int Byte ;
+
+
+ int EOF ;
+ int adler32 (int,int*,int) ;
+ int crc32 (int,int*,int) ;
+ scalar_t__ ferror (int *) ;
+ int getc (int *) ;
+ int printf (char*,unsigned long,unsigned long,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int ,int ,int ,int ,int ,int ,int ,unsigned long,char const*) ;
+ int u16 (int) ;
+ int u32 (int) ;
 
 __attribute__((used)) static int
 read_one_file(FILE *ip, const char *name)
 {
    uLong length = 0;
-   uLong a32 = adler32(0, NULL, 0);
-   uLong c32 = crc32(0, NULL, 0);
+   uLong a32 = adler32(0, ((void*)0), 0);
+   uLong c32 = crc32(0, ((void*)0), 0);
    Byte header[132];
 
    for (;;)
@@ -52,7 +52,7 @@ read_one_file(FILE *ip, const char *name)
    if (ferror(ip))
       return 0;
 
-   /* Success */
+
    printf("PNG_ICC_CHECKSUM(0x%8.8lx, 0x%8.8lx,\n   PNG_MD5("
       "0x%2.2x%2.2x%2.2x%2.2x, 0x%2.2x%2.2x%2.2x%2.2x, 0x%2.2x%2.2x%2.2x%2.2x,"
       " 0x%2.2x%2.2x%2.2x%2.2x), %d,\n"
@@ -62,9 +62,9 @@ read_one_file(FILE *ip, const char *name)
       header[88], header[89], header[90], header[91],
       header[92], header[93], header[94], header[95],
       header[96], header[97], header[98], header[99],
-#     define u16(x) (header[x] * 256 + header[x+1])
-#     define u32(x) (u16(x) * 65536 + u16(x+2))
-      u32(64), u16(24), u16(26), u16(28), u16(30), u16(32), u16(34),
+
+
+      ((header[64] * 256 + header[64 +1]) * 65536 + (header[64 +2] * 256 + header[64 +2 +1])), (header[24] * 256 + header[24 +1]), (header[26] * 256 + header[26 +1]), (header[28] * 256 + header[28 +1]), (header[30] * 256 + header[30 +1]), (header[32] * 256 + header[32 +1]), (header[34] * 256 + header[34 +1]),
       (unsigned long)length, name);
 
    return 1;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
-struct mv88e6xxx_chip {int /*<<< orphan*/  bus; } ;
 
-/* Variables and functions */
- int mdiobus_read_nested (int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int u16 ;
+struct mv88e6xxx_chip {int bus; } ;
+
+
+ int mdiobus_read_nested (int ,int,int) ;
 
 __attribute__((used)) static int mv88e6xxx_smi_direct_read(struct mv88e6xxx_chip *chip,
-				     int dev, int reg, u16 *data)
+         int dev, int reg, u16 *data)
 {
-	int ret;
+ int ret;
 
-	ret = mdiobus_read_nested(chip->bus, dev, reg);
-	if (ret < 0)
-		return ret;
+ ret = mdiobus_read_nested(chip->bus, dev, reg);
+ if (ret < 0)
+  return ret;
 
-	*data = ret & 0xffff;
+ *data = ret & 0xffff;
 
-	return 0;
+ return 0;
 }

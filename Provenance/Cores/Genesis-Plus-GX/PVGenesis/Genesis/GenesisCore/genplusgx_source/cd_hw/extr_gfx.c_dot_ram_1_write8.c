@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8 ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8 ;
 struct TYPE_6__ {unsigned int*** lut_prio; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * word_ram; TYPE_1__* regs; } ;
+struct TYPE_5__ {int * word_ram; TYPE_1__* regs; } ;
 struct TYPE_4__ {int w; } ;
 
-/* Variables and functions */
- int READ_BYTE (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  WRITE_BYTE (int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- TYPE_3__ gfx ; 
- TYPE_2__ scd ; 
+
+ int READ_BYTE (int ,unsigned int) ;
+ int WRITE_BYTE (int ,unsigned int,unsigned int) ;
+ TYPE_3__ gfx ;
+ TYPE_2__ scd ;
 
 void dot_ram_1_write8(unsigned int address, unsigned int data)
 {

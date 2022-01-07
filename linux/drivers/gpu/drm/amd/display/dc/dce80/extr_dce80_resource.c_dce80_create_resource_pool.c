@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct resource_pool {int dummy; } ;
 struct dce110_resource_pool {struct resource_pool base; } ;
 struct dc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BREAK_TO_DEBUGGER () ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ dce80_construct (int /*<<< orphan*/ ,struct dc*,struct dce110_resource_pool*) ; 
- struct dce110_resource_pool* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int BREAK_TO_DEBUGGER () ;
+ int GFP_KERNEL ;
+ scalar_t__ dce80_construct (int ,struct dc*,struct dce110_resource_pool*) ;
+ struct dce110_resource_pool* kzalloc (int,int ) ;
 
 struct resource_pool *dce80_create_resource_pool(
-	uint8_t num_virtual_links,
-	struct dc *dc)
+ uint8_t num_virtual_links,
+ struct dc *dc)
 {
-	struct dce110_resource_pool *pool =
-		kzalloc(sizeof(struct dce110_resource_pool), GFP_KERNEL);
+ struct dce110_resource_pool *pool =
+  kzalloc(sizeof(struct dce110_resource_pool), GFP_KERNEL);
 
-	if (!pool)
-		return NULL;
+ if (!pool)
+  return ((void*)0);
 
-	if (dce80_construct(num_virtual_links, dc, pool))
-		return &pool->base;
+ if (dce80_construct(num_virtual_links, dc, pool))
+  return &pool->base;
 
-	BREAK_TO_DEBUGGER();
-	return NULL;
+ BREAK_TO_DEBUGGER();
+ return ((void*)0);
 }

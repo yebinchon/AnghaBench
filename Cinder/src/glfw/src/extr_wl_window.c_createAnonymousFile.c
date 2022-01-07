@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  template ;
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- int ENOENT ; 
- char* calloc (scalar_t__,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int createTmpfileCloexec (char*) ; 
- int errno ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- int posix_fallocate (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int template ;
+typedef int off_t ;
+
+
+ int ENOENT ;
+ char* calloc (scalar_t__,int) ;
+ int close (int) ;
+ int createTmpfileCloexec (char*) ;
+ int errno ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ int posix_fallocate (int,int ,int ) ;
+ int strcat (char*,char const*) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 int
 createAnonymousFile(off_t size)

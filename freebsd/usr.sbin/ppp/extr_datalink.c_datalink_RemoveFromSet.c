@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct datalink {int /*<<< orphan*/  physical; } ;
-typedef  int /*<<< orphan*/  fd_set ;
 
-/* Variables and functions */
- int physical_RemoveFromSet (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct datalink {int physical; } ;
+typedef int fd_set ;
+
+
+ int physical_RemoveFromSet (int ,int *,int *,int *) ;
 
 int
 datalink_RemoveFromSet(struct datalink *dl, fd_set *r, fd_set *w, fd_set *e)

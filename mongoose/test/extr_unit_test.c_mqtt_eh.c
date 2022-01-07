@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t len; } ;
-struct mg_mqtt_message {TYPE_2__ payload; int /*<<< orphan*/  topic; } ;
+struct mg_mqtt_message {TYPE_2__ payload; int topic; } ;
 struct TYPE_3__ {char* buf; } ;
 struct mg_connection {TYPE_1__ recv_mbuf; scalar_t__ user_data; } ;
 
-/* Variables and functions */
-#define  MG_EV_MQTT_CONNACK 130 
-#define  MG_EV_MQTT_PUBLISH 129 
-#define  MG_EV_MQTT_SUBACK 128 
- int /*<<< orphan*/  mg_vcmp (int /*<<< orphan*/ *,char*) ; 
- size_t mqtt_long_payload_len ; 
- size_t mqtt_very_long_payload_len ; 
+
+
+
+
+ int mg_vcmp (int *,char*) ;
+ size_t mqtt_long_payload_len ;
+ size_t mqtt_very_long_payload_len ;
 
 __attribute__((used)) static void mqtt_eh(struct mg_connection *nc, int ev, void *ev_data) {
   int *check = (int *) nc->user_data;
@@ -33,10 +33,10 @@ __attribute__((used)) static void mqtt_eh(struct mg_connection *nc, int ev, void
   (void) ev_data;
 
   switch (ev) {
-    case MG_EV_MQTT_SUBACK:
+    case 128:
       *check = 1;
       break;
-    case MG_EV_MQTT_PUBLISH:
+    case 129:
       *check = 0;
       if (mg_vcmp(&mm->topic, "/topic")) {
         *check = -1;
@@ -56,7 +56,7 @@ __attribute__((used)) static void mqtt_eh(struct mg_connection *nc, int ev, void
         *check = 3;
       }
       break;
-    case MG_EV_MQTT_CONNACK:
+    case 130:
       *check = 4;
       break;
   }

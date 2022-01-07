@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_ALREADY_EXISTS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetCurrentDirectoryA (int,char*) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RemoveDirectoryA (char*) ; 
- int /*<<< orphan*/  SetCurrentDirectoryA (char*) ; 
- scalar_t__ TRUE ; 
- char* _fullpath (char*,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CreateDirectoryA (char*,int *) ;
+ scalar_t__ ERROR_ALREADY_EXISTS ;
+ scalar_t__ FALSE ;
+ int GetCurrentDirectoryA (int,char*) ;
+ scalar_t__ GetLastError () ;
+ int GetTempPathA (int,char*) ;
+ int MAX_PATH ;
+ int RemoveDirectoryA (char*) ;
+ int SetCurrentDirectoryA (char*) ;
+ scalar_t__ TRUE ;
+ char* _fullpath (char*,char*,int) ;
+ int free (char*) ;
+ int memcpy (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_fullpath(void)
 {
@@ -48,34 +48,34 @@ __attribute__((used)) static void test_fullpath(void)
     strcpy(level1,tmppath);
     strcat(level1,"msvcrt-test\\");
 
-    rc = CreateDirectoryA(level1,NULL);
+    rc = CreateDirectoryA(level1,((void*)0));
     if (!rc && GetLastError()==ERROR_ALREADY_EXISTS)
         free1=FALSE;
 
     strcpy(level2,level1);
     strcat(level2,"nextlevel\\");
-    rc = CreateDirectoryA(level2,NULL);
+    rc = CreateDirectoryA(level2,((void*)0));
     if (!rc && GetLastError()==ERROR_ALREADY_EXISTS)
         free2=FALSE;
     SetCurrentDirectoryA(level2);
 
-    ok(_fullpath(full,"test", MAX_PATH)!=NULL,"_fullpath failed\n");
+    ok(_fullpath(full,"test", MAX_PATH)!=((void*)0),"_fullpath failed\n");
     strcpy(teststring,level2);
     strcat(teststring,"test");
     ok(strcmp(full,teststring)==0,"Invalid Path returned %s\n",full);
-    ok(_fullpath(full,"\\test", MAX_PATH)!=NULL,"_fullpath failed\n");
+    ok(_fullpath(full,"\\test", MAX_PATH)!=((void*)0),"_fullpath failed\n");
     memcpy(teststring,level2,3);
     teststring[3]=0;
     strcat(teststring,"test");
     ok(strcmp(full,teststring)==0,"Invalid Path returned %s\n",full);
-    ok(_fullpath(full,"..\\test", MAX_PATH)!=NULL,"_fullpath failed\n");
+    ok(_fullpath(full,"..\\test", MAX_PATH)!=((void*)0),"_fullpath failed\n");
     strcpy(teststring,level1);
     strcat(teststring,"test");
     ok(strcmp(full,teststring)==0,"Invalid Path returned %s\n",full);
-    ok(_fullpath(full,"..\\test", 10)==NULL,"_fullpath failed to generate error\n");
+    ok(_fullpath(full,"..\\test", 10)==((void*)0),"_fullpath failed to generate error\n");
 
-    freeme = _fullpath(NULL,"test", 0);
-    ok(freeme!=NULL,"No path returned\n");
+    freeme = _fullpath(((void*)0),"test", 0);
+    ok(freeme!=((void*)0),"No path returned\n");
     strcpy(teststring,level2);
     strcat(teststring,"test");
     ok(strcmp(freeme,teststring)==0,"Invalid Path returned %s\n",freeme);

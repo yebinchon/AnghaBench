@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct map_info {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * x; } ;
-typedef  TYPE_1__ map_word ;
+struct TYPE_3__ {int * x; } ;
+typedef TYPE_1__ map_word ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tsunami_tig_writeb (int /*<<< orphan*/ ,unsigned long) ; 
+
+ int tsunami_tig_writeb (int ,unsigned long) ;
 
 __attribute__((used)) static void tsunami_flash_write8(struct map_info *map, map_word value, unsigned long offset)
 {
-	tsunami_tig_writeb(value.x[0], offset);
+ tsunami_tig_writeb(value.x[0], offset);
 }

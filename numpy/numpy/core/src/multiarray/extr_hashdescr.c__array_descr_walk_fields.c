@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_DescrCheck (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyDict_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyDict_GetItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_SystemError ; 
- int /*<<< orphan*/  PyInt_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyList_Append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int) ; 
- int PyTuple_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyUString_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int _array_descr_walk (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+
+
+ int PyArray_DescrCheck (int *) ;
+ int PyDict_Check (int *) ;
+ int * PyDict_GetItem (int *,int *) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_SystemError ;
+ int PyInt_Check (int *) ;
+ int PyList_Append (int *,int *) ;
+ int PyTuple_Check (int *) ;
+ int * PyTuple_GET_ITEM (int *,int) ;
+ int PyTuple_GET_SIZE (int *) ;
+ int PyUString_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int _array_descr_walk (int *,int *) ;
 
 __attribute__((used)) static int _array_descr_walk_fields(PyObject *names, PyObject* fields, PyObject* l)
 {
@@ -48,13 +48,13 @@ __attribute__((used)) static int _array_descr_walk_fields(PyObject *names, PyObj
     }
 
     for (pos = 0; pos < PyTuple_GET_SIZE(names); pos++) {
-        /*
-         * For each field, add the key + descr + offset to l
-         */
+
+
+
         key = PyTuple_GET_ITEM(names, pos);
         value = PyDict_GetItem(fields, key);
-        /* XXX: are those checks necessary ? */
-        if (value == NULL) {
+
+        if (value == ((void*)0)) {
             PyErr_SetString(PyExc_SystemError,
                     "(Hash) names and fields inconsistent ???");
             return -1;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct soc_pcmcia_socket {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASSABET_BCR_CF_BUS_OFF ; 
- int /*<<< orphan*/  ASSABET_BCR_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irqs ; 
- int /*<<< orphan*/  soc_pcmcia_enable_irqs (struct soc_pcmcia_socket*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (int ) ;
+ int ASSABET_BCR_CF_BUS_OFF ;
+ int ASSABET_BCR_clear (int ) ;
+ int irqs ;
+ int soc_pcmcia_enable_irqs (struct soc_pcmcia_socket*,int ,int ) ;
 
 __attribute__((used)) static void assabet_pcmcia_socket_init(struct soc_pcmcia_socket *skt)
 {
-	/*
-	 * Enable CF bus
-	 */
-	ASSABET_BCR_clear(ASSABET_BCR_CF_BUS_OFF);
 
-	soc_pcmcia_enable_irqs(skt, irqs, ARRAY_SIZE(irqs));
+
+
+ ASSABET_BCR_clear(ASSABET_BCR_CF_BUS_OFF);
+
+ soc_pcmcia_enable_irqs(skt, irqs, ARRAY_SIZE(irqs));
 }

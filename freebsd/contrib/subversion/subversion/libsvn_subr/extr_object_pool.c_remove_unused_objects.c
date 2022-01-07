@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  unused_count; int /*<<< orphan*/  object_count; int /*<<< orphan*/  objects; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ svn_object_pool__t ;
-struct TYPE_6__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * pool; TYPE_1__ key; int /*<<< orphan*/  ref_count; } ;
-typedef  TYPE_3__ object_ref_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_atomic_dec (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int unused_count; int object_count; int objects; int pool; } ;
+typedef TYPE_2__ svn_object_pool__t ;
+struct TYPE_6__ {int size; int data; } ;
+struct TYPE_8__ {int * pool; TYPE_1__ key; int ref_count; } ;
+typedef TYPE_3__ object_ref_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
+
+
+ int * apr_hash_first (int *,int ) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_set (int ,int ,int ,int *) ;
+ TYPE_3__* apr_hash_this_val (int *) ;
+ int svn_atomic_dec (int *) ;
+ scalar_t__ svn_atomic_read (int *) ;
+ int * svn_pool_create (int ) ;
+ int svn_pool_destroy (int *) ;
 
 __attribute__((used)) static void
 remove_unused_objects(svn_object_pool__t *object_pool)
 {
   apr_pool_t *subpool = svn_pool_create(object_pool->pool);
 
-  /* process all hash buckets */
+
   apr_hash_index_t *hi;
   for (hi = apr_hash_first(subpool, object_pool->objects);
-       hi != NULL;
+       hi != ((void*)0);
        hi = apr_hash_next(hi))
     {
       object_ref_t *object_ref = apr_hash_this_val(hi);
 
-      /* note that we won't hand out new references while access
-         to the hash is serialized */
+
+
       if (svn_atomic_read(&object_ref->ref_count) == 0)
         {
           apr_hash_set(object_pool->objects, object_ref->key.data,
-                       object_ref->key.size, NULL);
+                       object_ref->key.size, ((void*)0));
           svn_atomic_dec(&object_pool->object_count);
           svn_atomic_dec(&object_pool->unused_count);
 

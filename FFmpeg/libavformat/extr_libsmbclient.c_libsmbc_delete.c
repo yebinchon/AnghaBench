@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-struct TYPE_6__ {int /*<<< orphan*/  filename; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct stat {int st_mode; } ;
+struct TYPE_6__ {int filename; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
 struct TYPE_7__ {int fd; } ;
-typedef  TYPE_2__ LIBSMBContext ;
+typedef TYPE_2__ LIBSMBContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  O_WRONLY ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  libsmbc_close (TYPE_1__*) ; 
- int libsmbc_connect (TYPE_1__*) ; 
- int /*<<< orphan*/  smbc_close (int) ; 
- scalar_t__ smbc_fstat (int,struct stat*) ; 
- int smbc_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ smbc_rmdir (int /*<<< orphan*/ ) ; 
- scalar_t__ smbc_unlink (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int O_WRONLY ;
+ scalar_t__ S_ISDIR (int ) ;
+ int errno ;
+ int libsmbc_close (TYPE_1__*) ;
+ int libsmbc_connect (TYPE_1__*) ;
+ int smbc_close (int) ;
+ scalar_t__ smbc_fstat (int,struct stat*) ;
+ int smbc_open (int ,int ,int) ;
+ scalar_t__ smbc_rmdir (int ) ;
+ scalar_t__ smbc_unlink (int ) ;
 
 __attribute__((used)) static int libsmbc_delete(URLContext *h)
 {

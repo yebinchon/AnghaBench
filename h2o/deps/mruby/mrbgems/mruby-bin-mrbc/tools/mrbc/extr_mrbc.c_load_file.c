@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct mrbc_args {char** argv; size_t idx; char* prog; size_t argc; scalar_t__ verbose; } ;
 struct TYPE_7__ {void* no_exec; void* dump_result; } ;
-typedef  TYPE_1__ mrbc_context ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  void* mrb_bool ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ mrbc_context ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef void* mrb_bool ;
+typedef int FILE ;
 
-/* Variables and functions */
- void* FALSE ; 
- void* TRUE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  mrb_load_file_cxt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- scalar_t__ mrb_undef_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrbc_context_free (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* mrbc_context_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrbc_filename (int /*<<< orphan*/ *,TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrbc_partial_hook (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  partial_hook ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * stdin ; 
+
+ void* FALSE ;
+ void* TRUE ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int mrb_load_file_cxt (int *,int *,TYPE_1__*) ;
+ int mrb_nil_value () ;
+ scalar_t__ mrb_undef_p (int ) ;
+ int mrbc_context_free (int *,TYPE_1__*) ;
+ TYPE_1__* mrbc_context_new (int *) ;
+ int mrbc_filename (int *,TYPE_1__*,char*) ;
+ int mrbc_partial_hook (int *,TYPE_1__*,int ,void*) ;
+ int partial_hook ;
+ int stderr ;
+ int * stdin ;
 
 __attribute__((used)) static mrb_value
 load_file(mrb_state *mrb, struct mrbc_args *args)
@@ -54,7 +54,7 @@ load_file(mrb_state *mrb, struct mrbc_args *args)
   }
   else {
     need_close = TRUE;
-    if ((infile = fopen(input, "r")) == NULL) {
+    if ((infile = fopen(input, "r")) == ((void*)0)) {
       fprintf(stderr, "%s: cannot open program file. (%s)\n", args->prog, input);
       return mrb_nil_value();
     }

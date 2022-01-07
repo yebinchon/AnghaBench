@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CheckSum ; 
- scalar_t__ FALSE ; 
- int RecLength ; 
- scalar_t__ RecStart ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  binOut32 (int) ; 
- scalar_t__ debug ; 
- int /*<<< orphan*/  dumpfTell (char*,int) ; 
- int /*<<< orphan*/  fOut ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,long,int /*<<< orphan*/ ) ; 
- long ftell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int,int,...) ; 
- scalar_t__ verbose ; 
+ int CheckSum ;
+ scalar_t__ FALSE ;
+ int RecLength ;
+ scalar_t__ RecStart ;
+ int SEEK_CUR ;
+ int SEEK_SET ;
+ int binOut32 (int) ;
+ scalar_t__ debug ;
+ int dumpfTell (char*,int) ;
+ int fOut ;
+ int fseek (int ,long,int ) ;
+ long ftell (int ) ;
+ int printf (char*,int,int,...) ;
+ scalar_t__ verbose ;
 
 void binRecEnd(void)
 {
     long RecEnd;
 
-    if (!RecStart)   //  if no record started, do not end it
+    if (!RecStart)
     {
         return;
     }
@@ -39,31 +31,31 @@ void binRecEnd(void)
     RecStart = FALSE;
 
 
-    RecEnd = ftell(fOut);         // Save Current position
+    RecEnd = ftell(fOut);
 
     if (debug)
           printf("[RecEnd  ] CheckSum[0x%08X] Length[%4d] Length[0x%X] RecEnd[0x%08lX]\n",
                 CheckSum, RecLength, RecLength, RecEnd);
 
-    fseek( fOut, -((long) RecLength), SEEK_CUR);  // move back Start Of Data
+    fseek( fOut, -((long) RecLength), SEEK_CUR);
 
     dumpfTell("Data   ", -1);
 
-    fseek( fOut, -4, SEEK_CUR);  // move back Start Of Address
+    fseek( fOut, -4, SEEK_CUR);
 
     dumpfTell("Address   ", -1);
 
-    fseek( fOut, -4, SEEK_CUR);  // move back Start Of Length
+    fseek( fOut, -4, SEEK_CUR);
 
     dumpfTell("Length   ", -1);
 
     binOut32( RecLength );
 
-    fseek( fOut, RecEnd, SEEK_SET);  // move to end of Record
+    fseek( fOut, RecEnd, SEEK_SET);
 
     CheckSum += RecLength;
 
-    CheckSum =  ~CheckSum + 1;  // Two's complement
+    CheckSum = ~CheckSum + 1;
 
     binOut32( CheckSum );
 

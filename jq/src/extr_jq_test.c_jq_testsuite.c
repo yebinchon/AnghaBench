@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  jv_test () ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  run_jq_tests (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int jv ;
+typedef int FILE ;
+
+
+ int atoi (char*) ;
+ int exit (int) ;
+ int * fopen (char*,char*) ;
+ int jv_test () ;
+ int perror (char*) ;
+ int run_jq_tests (int ,int,int *,int,int) ;
+ int * stdin ;
+ int strcmp (char*,char*) ;
 
 int jq_testsuite(jv libdirs, int verbose, int argc, char* argv[]) {
   FILE *testdata = stdin;

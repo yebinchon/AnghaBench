@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float gdouble ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkScaleButton ;
-typedef  int /*<<< orphan*/  GtkAdjustment ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GTK_SCALE_BUTTON (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_adjustment_configure (int /*<<< orphan*/ *,float,float,float,float,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_scale_button_get_adjustment (int /*<<< orphan*/ *) ; 
- float hb_audio_quality_get_default (int) ; 
- int /*<<< orphan*/  hb_audio_quality_get_limits (int,float*,float*,float*,int*) ; 
+
+
+
+typedef float gdouble ;
+typedef scalar_t__ gboolean ;
+typedef int GtkWidget ;
+typedef int GtkScaleButton ;
+typedef int GtkAdjustment ;
+
+
+ int * GTK_SCALE_BUTTON (int *) ;
+ int gtk_adjustment_configure (int *,float,float,float,float,float,int ) ;
+ int * gtk_scale_button_get_adjustment (int *) ;
+ float hb_audio_quality_get_default (int) ;
+ int hb_audio_quality_get_limits (int,float*,float*,float*,int*) ;
 
 __attribute__((used)) static void audio_quality_update_limits(
     GtkWidget *widget,
@@ -39,7 +39,7 @@ __attribute__((used)) static void audio_quality_update_limits(
     }
     if (dir)
     {
-        // Quality values are inverted
+
         value = high - value + low;
     }
     GtkScaleButton *sb;

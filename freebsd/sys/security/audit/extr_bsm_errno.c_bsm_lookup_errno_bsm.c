@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_char ;
+
+
+
+
+typedef scalar_t__ u_char ;
 struct bsm_errno {scalar_t__ be_bsm_errno; } ;
 
-/* Variables and functions */
- struct bsm_errno const* bsm_errnos ; 
- int nitems (struct bsm_errno const*) ; 
+
+ struct bsm_errno const* bsm_errnos ;
+ int nitems (struct bsm_errno const*) ;
 
 __attribute__((used)) static const struct bsm_errno *
 bsm_lookup_errno_bsm(u_char bsm_errno)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < nitems(bsm_errnos); i++) {
-		if (bsm_errnos[i].be_bsm_errno == bsm_errno)
-			return (&bsm_errnos[i]);
-	}
-	return (NULL);
+ for (i = 0; i < nitems(bsm_errnos); i++) {
+  if (bsm_errnos[i].be_bsm_errno == bsm_errno)
+   return (&bsm_errnos[i]);
+ }
+ return (((void*)0));
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int entropy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  lock; TYPE_1__ pool; } ;
-typedef  TYPE_2__ isc_entropy_t ;
+struct TYPE_5__ {int lock; TYPE_1__ pool; } ;
+typedef TYPE_2__ isc_entropy_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UNLOCK (int /*<<< orphan*/ *) ; 
+
+ int LOCK (int *) ;
+ int UNLOCK (int *) ;
 
 unsigned int
 isc_entropy_status(isc_entropy_t *ent) {
-	unsigned int estimate;
+ unsigned int estimate;
 
-	LOCK(&ent->lock);
-	estimate = ent->pool.entropy;
-	UNLOCK(&ent->lock);
+ LOCK(&ent->lock);
+ estimate = ent->pool.entropy;
+ UNLOCK(&ent->lock);
 
-	return estimate;
+ return estimate;
 }

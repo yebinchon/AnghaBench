@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int todo; int restart_interval; scalar_t__ eob_run; int /*<<< orphan*/  marker; TYPE_1__* img_comp; scalar_t__ nomore; scalar_t__ code_buffer; scalar_t__ code_bits; } ;
-typedef  TYPE_2__ stbi__jpeg ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int todo; int restart_interval; scalar_t__ eob_run; int marker; TYPE_1__* img_comp; scalar_t__ nomore; scalar_t__ code_buffer; scalar_t__ code_bits; } ;
+typedef TYPE_2__ stbi__jpeg ;
 struct TYPE_4__ {scalar_t__ dc_pred; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STBI__MARKER_none ; 
+
+ int STBI__MARKER_none ;
 
 __attribute__((used)) static void stbi__jpeg_reset(stbi__jpeg *j)
 {
@@ -28,6 +28,6 @@ __attribute__((used)) static void stbi__jpeg_reset(stbi__jpeg *j)
    j->marker = STBI__MARKER_none;
    j->todo = j->restart_interval ? j->restart_interval : 0x7fffffff;
    j->eob_run = 0;
-   // no more than 1<<31 MCUs if no restart_interal? that's plenty safe,
-   // since we don't even allow 1<<30 pixels
+
+
 }

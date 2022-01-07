@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  salt ;
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  info ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTX_add1_hkdf_info (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new_id (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_set1_hkdf_key (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_set1_hkdf_salt (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_set_hkdf_md (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_HKDF ; 
- int /*<<< orphan*/  EVP_PKEY_derive (int /*<<< orphan*/ *,unsigned char*,size_t*) ; 
- int /*<<< orphan*/  EVP_PKEY_derive_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_sha256 () ; 
- int /*<<< orphan*/  TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int salt ;
+typedef int out ;
+typedef int key ;
+typedef int info ;
+typedef int expected ;
+typedef int EVP_PKEY_CTX ;
+
+
+ int EVP_PKEY_CTX_add1_hkdf_info (int *,unsigned char*,int) ;
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new_id (int ,int *) ;
+ int EVP_PKEY_CTX_set1_hkdf_key (int *,unsigned char*,int) ;
+ int EVP_PKEY_CTX_set1_hkdf_salt (int *,unsigned char*,int) ;
+ int EVP_PKEY_CTX_set_hkdf_md (int *,int ) ;
+ int EVP_PKEY_HKDF ;
+ int EVP_PKEY_derive (int *,unsigned char*,size_t*) ;
+ int EVP_PKEY_derive_init (int *) ;
+ int EVP_sha256 () ;
+ int TEST_int_gt (int ,int ) ;
+ int TEST_mem_eq (unsigned char*,size_t,unsigned char const*,size_t) ;
+ int TEST_ptr (int *) ;
+ int memset (unsigned char*,int ,size_t) ;
 
 __attribute__((used)) static int test_HKDF(void)
 {
@@ -48,10 +48,10 @@ __attribute__((used)) static int test_HKDF(void)
     };
     size_t expectedlen = sizeof(expected);
 
-    if (!TEST_ptr(pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_HKDF, NULL)))
+    if (!TEST_ptr(pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_HKDF, ((void*)0))))
         goto done;
 
-    /* We do this twice to test reuse of the EVP_PKEY_CTX */
+
     for (i = 0; i < 2; i++) {
         outlen = sizeof(out);
         memset(out, 0, outlen);

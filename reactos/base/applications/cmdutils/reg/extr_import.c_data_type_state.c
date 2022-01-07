@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parser {int parse_type; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef int WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWORD_DATA ; 
- int /*<<< orphan*/  HEX_DATA ; 
- int /*<<< orphan*/  LINE_START ; 
-#define  REG_BINARY 130 
-#define  REG_DWORD 129 
-#define  REG_SZ 128 
- int /*<<< orphan*/  STRING_DATA ; 
- int /*<<< orphan*/  UNKNOWN_DATA ; 
- int /*<<< orphan*/  parse_data_type (struct parser*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+ int DWORD_DATA ;
+ int HEX_DATA ;
+ int LINE_START ;
+
+
+
+ int STRING_DATA ;
+ int UNKNOWN_DATA ;
+ int parse_data_type (struct parser*,int **) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *data_type_state(struct parser *parser, WCHAR *pos)
 {
@@ -37,13 +37,13 @@ __attribute__((used)) static WCHAR *data_type_state(struct parser *parser, WCHAR
 
     switch (parser->parse_type)
     {
-    case REG_SZ:
+    case 128:
         set_state(parser, STRING_DATA);
         break;
-    case REG_DWORD:
+    case 129:
         set_state(parser, DWORD_DATA);
         break;
-    case REG_BINARY: /* all hex data types, including undefined */
+    case 130:
         set_state(parser, HEX_DATA);
         break;
     default:

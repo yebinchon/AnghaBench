@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  n; int /*<<< orphan*/  d; int /*<<< orphan*/  e; } ;
-typedef  TYPE_1__ RSA ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_mod_exp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RSA_F_RSA_SP800_56B_PAIRWISE_TEST ; 
- int /*<<< orphan*/  RSA_R_PAIRWISE_TEST_FAILURE ; 
- int /*<<< orphan*/  RSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int n; int d; int e; } ;
+typedef TYPE_1__ RSA ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int * BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ scalar_t__ BN_cmp (int *,int *) ;
+ scalar_t__ BN_mod_exp (int *,int *,int ,int ,int *) ;
+ scalar_t__ BN_set_word (int *,int) ;
+ int RSA_F_RSA_SP800_56B_PAIRWISE_TEST ;
+ int RSA_R_PAIRWISE_TEST_FAILURE ;
+ int RSAerr (int ,int ) ;
 
 int rsa_sp800_56b_pairwise_test(RSA *rsa, BN_CTX *ctx)
 {
@@ -35,7 +35,7 @@ int rsa_sp800_56b_pairwise_test(RSA *rsa, BN_CTX *ctx)
     BN_CTX_start(ctx);
     tmp = BN_CTX_get(ctx);
     k = BN_CTX_get(ctx);
-    if (k == NULL)
+    if (k == ((void*)0))
         goto err;
 
     ret = (BN_set_word(k, 2)

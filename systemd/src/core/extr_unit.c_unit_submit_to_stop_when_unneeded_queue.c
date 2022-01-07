@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int in_stop_when_unneeded_queue; TYPE_1__* manager; int /*<<< orphan*/  stop_when_unneeded; } ;
-typedef  TYPE_2__ Unit ;
-struct TYPE_7__ {int /*<<< orphan*/  stop_when_unneeded_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_PREPEND (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  UNIT_IS_ACTIVE_OR_RELOADING (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  stop_when_unneeded_queue ; 
- int /*<<< orphan*/  unit_active_state (TYPE_2__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int in_stop_when_unneeded_queue; TYPE_1__* manager; int stop_when_unneeded; } ;
+typedef TYPE_2__ Unit ;
+struct TYPE_7__ {int stop_when_unneeded_queue; } ;
+
+
+ int LIST_PREPEND (int ,int ,TYPE_2__*) ;
+ int UNIT_IS_ACTIVE_OR_RELOADING (int ) ;
+ int assert (TYPE_2__*) ;
+ int stop_when_unneeded_queue ;
+ int unit_active_state (TYPE_2__*) ;
 
 void unit_submit_to_stop_when_unneeded_queue(Unit *u) {
         assert(u);
@@ -36,5 +36,5 @@ void unit_submit_to_stop_when_unneeded_queue(Unit *u) {
                 return;
 
         LIST_PREPEND(stop_when_unneeded_queue, u->manager->stop_when_unneeded_queue, u);
-        u->in_stop_when_unneeded_queue = true;
+        u->in_stop_when_unneeded_queue = 1;
 }

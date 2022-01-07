@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/ * DLL_DIRECTORY_COOKIE ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileW (char*) ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ GetLastError () ; 
- int GetTempFileNameW (char*,char const*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetTempPathW (int,char*) ; 
- int /*<<< orphan*/  GetWindowsDirectoryW (char*,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * pAddDllDirectory (char const*) ; 
- int pRemoveDllDirectory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int path ;
+typedef char WCHAR ;
+typedef int * DLL_DIRECTORY_COOKIE ;
+typedef int BOOL ;
+
+
+ int DeleteFileW (char*) ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ GetLastError () ;
+ int GetTempFileNameW (char*,char const*,int ,char*) ;
+ int GetTempPathW (int,char*) ;
+ int GetWindowsDirectoryW (char*,int) ;
+ int MAX_PATH ;
+ int SetLastError (int) ;
+ int lstrcpyW (char*,char const*) ;
+ int ok (int,char*,...) ;
+ int * pAddDllDirectory (char const*) ;
+ int pRemoveDllDirectory (int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_AddDllDirectory(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void test_AddDllDirectory(void)
     ok( ret, "GetTempFileName failed err %u\n", GetLastError() );
     SetLastError( 0xdeadbeef );
     cookie = pAddDllDirectory( buf );
-    ok( cookie != NULL, "AddDllDirectory failed err %u\n", GetLastError() );
+    ok( cookie != ((void*)0), "AddDllDirectory failed err %u\n", GetLastError() );
     SetLastError( 0xdeadbeef );
     ret = pRemoveDllDirectory( cookie );
     ok( ret, "RemoveDllDirectory failed err %u\n", GetLastError() );
@@ -66,7 +66,7 @@ __attribute__((used)) static void test_AddDllDirectory(void)
     ok( !cookie, "AddDllDirectory succeeded\n" );
     ok( GetLastError() == ERROR_INVALID_PARAMETER, "wrong error %u\n", GetLastError() );
     cookie = pAddDllDirectory( rootW );
-    ok( cookie != NULL, "AddDllDirectory failed err %u\n", GetLastError() );
+    ok( cookie != ((void*)0), "AddDllDirectory failed err %u\n", GetLastError() );
     SetLastError( 0xdeadbeef );
     ret = pRemoveDllDirectory( cookie );
     ok( ret, "RemoveDllDirectory failed err %u\n", GetLastError() );

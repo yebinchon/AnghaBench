@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int l; } ;
-typedef  TYPE_1__ textfont_prop_val ;
-typedef  enum textfont_prop_id { ____Placeholder_textfont_prop_id } textfont_prop_id ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  ITextFontImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ textfont_prop_val ;
+typedef enum textfont_prop_id { ____Placeholder_textfont_prop_id } textfont_prop_id ;
+typedef int LONG ;
+typedef int ITextFontImpl ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  get_textfont_propl (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  set_textfont_prop (int /*<<< orphan*/ *,int,TYPE_1__*) ; 
-#define  tomFalse 131 
-#define  tomToggle 130 
-#define  tomTrue 129 
-#define  tomUndefined 128 
+
+ int E_INVALIDARG ;
+ int S_OK ;
+ int get_textfont_propl (int *,int,int*) ;
+ int set_textfont_prop (int *,int,TYPE_1__*) ;
+
+
+
+
 
 __attribute__((used)) static HRESULT set_textfont_propd(ITextFontImpl *font, enum textfont_prop_id propid, LONG value)
 {
@@ -34,21 +34,21 @@ __attribute__((used)) static HRESULT set_textfont_propd(ITextFontImpl *font, enu
 
     switch (value)
     {
-    case tomUndefined:
+    case 128:
         return S_OK;
-    case tomToggle: {
+    case 130: {
         LONG oldvalue;
         get_textfont_propl(font, propid, &oldvalue);
-        if (oldvalue == tomFalse)
-            value = tomTrue;
-        else if (oldvalue == tomTrue)
-            value = tomFalse;
+        if (oldvalue == 131)
+            value = 129;
+        else if (oldvalue == 129)
+            value = 131;
         else
             return E_INVALIDARG;
-        /* fallthrough */
+
     }
-    case tomTrue:
-    case tomFalse:
+    case 129:
+    case 131:
         v.l = value;
         return set_textfont_prop(font, propid, &v);
     default:

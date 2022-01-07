@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* next; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_file (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmp (char const* const,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* next; int filename; } ;
+typedef TYPE_1__ file_t ;
+
+
+ int assert (int ) ;
+ int free_file (TYPE_1__*) ;
+ int strcmp (char const* const,int ) ;
 
 file_t *remove_file_from_list (file_t *x, const char *const filename) {
   int t = 0;
   file_t **p = &x;
-  while (*p != NULL) {
+  while (*p != ((void*)0)) {
     file_t *V = *p;
     assert (V->filename);
     if (!strcmp (filename, V->filename)) {

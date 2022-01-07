@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  IXMLDOMAttribute ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMAttribute_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_getAttributeNode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysAllocString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  nonexistent_attrW ; 
- int /*<<< orphan*/  nonexistent_fileW ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- char* szExampleXML ; 
+
+
+
+typedef int VARIANT_BOOL ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocument ;
+typedef int IXMLDOMAttribute ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ int EXPECT_HR (int ,int ) ;
+ int E_FAIL ;
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMAttribute_Release (int *) ;
+ int IXMLDOMDocument_Release (int *) ;
+ int IXMLDOMDocument_get_documentElement (int *,int **) ;
+ int IXMLDOMDocument_loadXML (int *,int ,int *) ;
+ int IXMLDOMElement_Release (int *) ;
+ int IXMLDOMElement_getAttributeNode (int *,int ,int **) ;
+ int S_FALSE ;
+ int S_OK ;
+ int SysAllocString (int ) ;
+ int SysFreeString (int ) ;
+ int _bstr_ (char*) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int nonexistent_attrW ;
+ int nonexistent_fileW ;
+ int ok (int ,char*,int *) ;
+ char* szExampleXML ;
 
 __attribute__((used)) static void test_getAttributeNode(void)
 {
@@ -57,23 +57,23 @@ __attribute__((used)) static void test_getAttributeNode(void)
     EXPECT_HR(hr, S_OK);
 
     str = SysAllocString(nonexistent_fileW);
-    hr = IXMLDOMElement_getAttributeNode(elem, str, NULL);
+    hr = IXMLDOMElement_getAttributeNode(elem, str, ((void*)0));
     EXPECT_HR(hr, E_FAIL);
 
     attr = (IXMLDOMAttribute*)0xdeadbeef;
     hr = IXMLDOMElement_getAttributeNode(elem, str, &attr);
     EXPECT_HR(hr, E_FAIL);
-    ok(attr == NULL, "got %p\n", attr);
+    ok(attr == ((void*)0), "got %p\n", attr);
     SysFreeString(str);
 
     str = SysAllocString(nonexistent_attrW);
-    hr = IXMLDOMElement_getAttributeNode(elem, str, NULL);
+    hr = IXMLDOMElement_getAttributeNode(elem, str, ((void*)0));
     EXPECT_HR(hr, S_FALSE);
 
     attr = (IXMLDOMAttribute*)0xdeadbeef;
     hr = IXMLDOMElement_getAttributeNode(elem, str, &attr);
     EXPECT_HR(hr, S_FALSE);
-    ok(attr == NULL, "got %p\n", attr);
+    ok(attr == ((void*)0), "got %p\n", attr);
     SysFreeString(str);
 
     hr = IXMLDOMElement_getAttributeNode(elem, _bstr_("foo:b"), &attr);

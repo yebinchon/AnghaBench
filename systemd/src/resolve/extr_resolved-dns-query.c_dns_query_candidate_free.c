@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {TYPE_2__* scope; TYPE_1__* query; int /*<<< orphan*/  search_domain; int /*<<< orphan*/  transactions; } ;
-struct TYPE_11__ {int /*<<< orphan*/  query_candidates; } ;
-struct TYPE_10__ {int /*<<< orphan*/  candidates; } ;
-typedef  TYPE_3__ DnsQueryCandidate ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  candidates_by_query ; 
- int /*<<< orphan*/  candidates_by_scope ; 
- int /*<<< orphan*/  dns_query_candidate_stop (TYPE_3__*) ; 
- int /*<<< orphan*/  dns_search_domain_unref (int /*<<< orphan*/ ) ; 
- TYPE_3__* mfree (TYPE_3__*) ; 
- int /*<<< orphan*/  set_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {TYPE_2__* scope; TYPE_1__* query; int search_domain; int transactions; } ;
+struct TYPE_11__ {int query_candidates; } ;
+struct TYPE_10__ {int candidates; } ;
+typedef TYPE_3__ DnsQueryCandidate ;
+
+
+ int LIST_REMOVE (int ,int ,TYPE_3__*) ;
+ int candidates_by_query ;
+ int candidates_by_scope ;
+ int dns_query_candidate_stop (TYPE_3__*) ;
+ int dns_search_domain_unref (int ) ;
+ TYPE_3__* mfree (TYPE_3__*) ;
+ int set_free (int ) ;
 
 DnsQueryCandidate* dns_query_candidate_free(DnsQueryCandidate *c) {
 
         if (!c)
-                return NULL;
+                return ((void*)0);
 
         dns_query_candidate_stop(c);
 

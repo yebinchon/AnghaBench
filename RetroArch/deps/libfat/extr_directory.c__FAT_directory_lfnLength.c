@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char ABOVE_UCS_RANGE ; 
- int /*<<< orphan*/  ILLEGAL_LFN_CHARACTERS ; 
- int MAX_LFN_LENGTH ; 
- size_t NAME_MAX ; 
- int mbsrtowcs (int /*<<< orphan*/ *,char const**,int,int /*<<< orphan*/ *) ; 
- size_t strnlen (char const*,size_t) ; 
- int /*<<< orphan*/ * strpbrk (char const*,int /*<<< orphan*/ ) ; 
+ unsigned char ABOVE_UCS_RANGE ;
+ int ILLEGAL_LFN_CHARACTERS ;
+ int MAX_LFN_LENGTH ;
+ size_t NAME_MAX ;
+ int mbsrtowcs (int *,char const**,int,int *) ;
+ size_t strnlen (char const*,size_t) ;
+ int * strpbrk (char const*,int ) ;
 
 __attribute__((used)) static int _FAT_directory_lfnLength (const char* name)
 {
    unsigned int i;
    int ucsLength;
    const char* tempName = name;
-   size_t nameLength    = strnlen(name, NAME_MAX);
+   size_t nameLength = strnlen(name, NAME_MAX);
 
-   /* Make sure the name is short enough to be valid */
+
    if ( nameLength >= NAME_MAX)
       return -1;
 
-   /* Make sure it doesn't contain any invalid characters */
-   if (strpbrk (name, ILLEGAL_LFN_CHARACTERS) != NULL)
+
+   if (strpbrk (name, ILLEGAL_LFN_CHARACTERS) != ((void*)0))
       return -1;
 
-   /* Make sure the name doesn't contain any control codes or codes not representable in UCS-2 */
+
    for (i = 0; i < nameLength; i++)
    {
       unsigned char ch = (unsigned char) name[i];
@@ -43,11 +35,11 @@ __attribute__((used)) static int _FAT_directory_lfnLength (const char* name)
          return -1;
    }
 
-   /* Convert to UCS-2 and get the resulting length */
-   ucsLength = mbsrtowcs(NULL, &tempName, MAX_LFN_LENGTH, NULL);
+
+   ucsLength = mbsrtowcs(((void*)0), &tempName, MAX_LFN_LENGTH, ((void*)0));
    if (ucsLength < 0 || ucsLength >= MAX_LFN_LENGTH)
       return -1;
 
-   /* Otherwise it is valid */
+
    return ucsLength;
 }

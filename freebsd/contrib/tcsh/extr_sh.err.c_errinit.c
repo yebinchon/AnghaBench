@@ -1,174 +1,154 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CGETS (size_t,int,char*) ; 
- scalar_t__ CSAVS (int,int,char*) ; 
- size_t ERR_ALIASLOOP ; 
- size_t ERR_AMBIG ; 
- size_t ERR_ARCH ; 
- size_t ERR_ARGC ; 
- size_t ERR_ASSIGN ; 
- size_t ERR_BADBANG ; 
- size_t ERR_BADBANGARG ; 
- size_t ERR_BADBANGMOD ; 
- size_t ERR_BADCOLORVAR ; 
- size_t ERR_BADDIR ; 
- size_t ERR_BADJOB ; 
- size_t ERR_BADMOD ; 
- size_t ERR_BADNUM ; 
- size_t ERR_BADPLP ; 
- size_t ERR_BADPLPS ; 
- size_t ERR_BADSCALE ; 
- size_t ERR_BADSIG ; 
- size_t ERR_BADSUBST ; 
- size_t ERR_CANTCHANGE ; 
- size_t ERR_COMMAND ; 
- size_t ERR_COMPCOM ; 
- size_t ERR_COMPINC ; 
- size_t ERR_COMPINV ; 
- size_t ERR_COMPMIS ; 
- size_t ERR_DANGER ; 
- size_t ERR_DEEP ; 
- size_t ERR_DIGIT ; 
- size_t ERR_DIRUS ; 
- size_t ERR_DIV0 ; 
- size_t ERR_DOLZERO ; 
- size_t ERR_EMPTY ; 
- size_t ERR_EMPTYIF ; 
- size_t ERR_EOF ; 
- size_t ERR_EXISTS ; 
- size_t ERR_EXPORD ; 
- size_t ERR_EXPOVFL ; 
- size_t ERR_EXPRESSION ; 
- size_t ERR_FILEINQ ; 
- size_t ERR_FILENAME ; 
- size_t ERR_GLOB ; 
- size_t ERR_HFLAG ; 
- size_t ERR_HISTLOOP ; 
- size_t ERR_HISTUS ; 
- size_t ERR_IMPRTHEN ; 
- size_t ERR_INCBR ; 
- size_t ERR_INRED ; 
- size_t ERR_INTR ; 
- size_t ERR_JOBARGS ; 
- size_t ERR_JOBCONTROL ; 
- size_t ERR_JOBCTRLSUB ; 
- size_t ERR_JOBCUR ; 
- size_t ERR_JOBPAT ; 
- size_t ERR_JOBPREV ; 
- size_t ERR_JOBS ; 
- size_t ERR_LHS ; 
- size_t ERR_LIMIT ; 
- size_t ERR_LTOOLONG ; 
- size_t ERR_MASK ; 
- size_t ERR_MFLAG ; 
- size_t ERR_MISRED ; 
- size_t ERR_MISSING ; 
- size_t ERR_MOD0 ; 
- size_t ERR_MODFAIL ; 
- size_t ERR_NESTING ; 
- size_t ERR_NEWLINE ; 
- size_t ERR_NLINDEX ; 
- size_t ERR_NODIR ; 
- size_t ERR_NOEVENT ; 
- size_t ERR_NOHOME ; 
- size_t ERR_NOHOMEDIR ; 
- size_t ERR_NOMATCH ; 
- size_t ERR_NOMEM ; 
- size_t ERR_NOMORE ; 
- size_t ERR_NOPAREN ; 
- size_t ERR_NOPROC ; 
- size_t ERR_NOSCHED ; 
- size_t ERR_NOSEARCH ; 
- size_t ERR_NOSUBST ; 
- size_t ERR_NOSUCHJOB ; 
- size_t ERR_NOTALLOWED ; 
- size_t ERR_NOTFOUND ; 
- size_t ERR_NOTLOGIN ; 
- size_t ERR_NOTWHILE ; 
- size_t ERR_NOWATCH ; 
- size_t ERR_NULLCOM ; 
- size_t ERR_OUTRED ; 
- size_t ERR_OVERFLOW ; 
- size_t ERR_PIPE ; 
- size_t ERR_RANGE ; 
- size_t ERR_READONLY ; 
- size_t ERR_REDPAR ; 
- size_t ERR_RHSLONG ; 
- size_t ERR_SCALEF ; 
- size_t ERR_SCHEDCOM ; 
- size_t ERR_SCHEDEV ; 
- size_t ERR_SCHEDREL ; 
- size_t ERR_SCHEDTIME ; 
- size_t ERR_SCHEDUSAGE ; 
- size_t ERR_SELOVFL ; 
- size_t ERR_SETTCUS ; 
- size_t ERR_SPDOLLT ; 
- size_t ERR_SPSTAR ; 
- size_t ERR_STOPPED ; 
- size_t ERR_STRING ; 
- size_t ERR_SUBOVFL ; 
- size_t ERR_SUBSCRIPT ; 
- size_t ERR_SUSPLOG ; 
- size_t ERR_SYNC ; 
- size_t ERR_SYNTAX ; 
- size_t ERR_SYSTEM ; 
- size_t ERR_TCARGS ; 
- size_t ERR_TCCAP ; 
- size_t ERR_TCNARGS ; 
- size_t ERR_TCNOSTR ; 
- size_t ERR_TCPARM ; 
- size_t ERR_TCSHUSAGE ; 
- size_t ERR_TCUSAGE ; 
- size_t ERR_TERMINAL ; 
- size_t ERR_TOOFEW ; 
- size_t ERR_TOOLARGE ; 
- size_t ERR_TOOMANY ; 
- size_t ERR_TOOMANYLP ; 
- size_t ERR_TOOMANYRP ; 
- size_t ERR_ULIMUS ; 
- size_t ERR_UNDVAR ; 
- size_t ERR_UNKNOWNOP ; 
- size_t ERR_UNKSIG ; 
- size_t ERR_UNKUSER ; 
- size_t ERR_UNMATCHED ; 
- size_t ERR_VARALNUM ; 
- size_t ERR_VARBEGIN ; 
- size_t ERR_VARILL ; 
- size_t ERR_VARSYN ; 
- size_t ERR_VARTOOLONG ; 
- size_t ERR_WTOOLONG ; 
- size_t NLS_MAXSET ; 
- size_t NO_ERRORS ; 
- scalar_t__* elst ; 
- int /*<<< orphan*/  xfree (char*) ; 
+ int CGETS (size_t,int,char*) ;
+ scalar_t__ CSAVS (int,int,char*) ;
+ size_t ERR_ALIASLOOP ;
+ size_t ERR_AMBIG ;
+ size_t ERR_ARCH ;
+ size_t ERR_ARGC ;
+ size_t ERR_ASSIGN ;
+ size_t ERR_BADBANG ;
+ size_t ERR_BADBANGARG ;
+ size_t ERR_BADBANGMOD ;
+ size_t ERR_BADCOLORVAR ;
+ size_t ERR_BADDIR ;
+ size_t ERR_BADJOB ;
+ size_t ERR_BADMOD ;
+ size_t ERR_BADNUM ;
+ size_t ERR_BADPLP ;
+ size_t ERR_BADPLPS ;
+ size_t ERR_BADSCALE ;
+ size_t ERR_BADSIG ;
+ size_t ERR_BADSUBST ;
+ size_t ERR_CANTCHANGE ;
+ size_t ERR_COMMAND ;
+ size_t ERR_COMPCOM ;
+ size_t ERR_COMPINC ;
+ size_t ERR_COMPINV ;
+ size_t ERR_COMPMIS ;
+ size_t ERR_DANGER ;
+ size_t ERR_DEEP ;
+ size_t ERR_DIGIT ;
+ size_t ERR_DIRUS ;
+ size_t ERR_DIV0 ;
+ size_t ERR_DOLZERO ;
+ size_t ERR_EMPTY ;
+ size_t ERR_EMPTYIF ;
+ size_t ERR_EOF ;
+ size_t ERR_EXISTS ;
+ size_t ERR_EXPORD ;
+ size_t ERR_EXPOVFL ;
+ size_t ERR_EXPRESSION ;
+ size_t ERR_FILEINQ ;
+ size_t ERR_FILENAME ;
+ size_t ERR_GLOB ;
+ size_t ERR_HFLAG ;
+ size_t ERR_HISTLOOP ;
+ size_t ERR_HISTUS ;
+ size_t ERR_IMPRTHEN ;
+ size_t ERR_INCBR ;
+ size_t ERR_INRED ;
+ size_t ERR_INTR ;
+ size_t ERR_JOBARGS ;
+ size_t ERR_JOBCONTROL ;
+ size_t ERR_JOBCTRLSUB ;
+ size_t ERR_JOBCUR ;
+ size_t ERR_JOBPAT ;
+ size_t ERR_JOBPREV ;
+ size_t ERR_JOBS ;
+ size_t ERR_LHS ;
+ size_t ERR_LIMIT ;
+ size_t ERR_LTOOLONG ;
+ size_t ERR_MASK ;
+ size_t ERR_MFLAG ;
+ size_t ERR_MISRED ;
+ size_t ERR_MISSING ;
+ size_t ERR_MOD0 ;
+ size_t ERR_MODFAIL ;
+ size_t ERR_NESTING ;
+ size_t ERR_NEWLINE ;
+ size_t ERR_NLINDEX ;
+ size_t ERR_NODIR ;
+ size_t ERR_NOEVENT ;
+ size_t ERR_NOHOME ;
+ size_t ERR_NOHOMEDIR ;
+ size_t ERR_NOMATCH ;
+ size_t ERR_NOMEM ;
+ size_t ERR_NOMORE ;
+ size_t ERR_NOPAREN ;
+ size_t ERR_NOPROC ;
+ size_t ERR_NOSCHED ;
+ size_t ERR_NOSEARCH ;
+ size_t ERR_NOSUBST ;
+ size_t ERR_NOSUCHJOB ;
+ size_t ERR_NOTALLOWED ;
+ size_t ERR_NOTFOUND ;
+ size_t ERR_NOTLOGIN ;
+ size_t ERR_NOTWHILE ;
+ size_t ERR_NOWATCH ;
+ size_t ERR_NULLCOM ;
+ size_t ERR_OUTRED ;
+ size_t ERR_OVERFLOW ;
+ size_t ERR_PIPE ;
+ size_t ERR_RANGE ;
+ size_t ERR_READONLY ;
+ size_t ERR_REDPAR ;
+ size_t ERR_RHSLONG ;
+ size_t ERR_SCALEF ;
+ size_t ERR_SCHEDCOM ;
+ size_t ERR_SCHEDEV ;
+ size_t ERR_SCHEDREL ;
+ size_t ERR_SCHEDTIME ;
+ size_t ERR_SCHEDUSAGE ;
+ size_t ERR_SELOVFL ;
+ size_t ERR_SETTCUS ;
+ size_t ERR_SPDOLLT ;
+ size_t ERR_SPSTAR ;
+ size_t ERR_STOPPED ;
+ size_t ERR_STRING ;
+ size_t ERR_SUBOVFL ;
+ size_t ERR_SUBSCRIPT ;
+ size_t ERR_SUSPLOG ;
+ size_t ERR_SYNC ;
+ size_t ERR_SYNTAX ;
+ size_t ERR_SYSTEM ;
+ size_t ERR_TCARGS ;
+ size_t ERR_TCCAP ;
+ size_t ERR_TCNARGS ;
+ size_t ERR_TCNOSTR ;
+ size_t ERR_TCPARM ;
+ size_t ERR_TCSHUSAGE ;
+ size_t ERR_TCUSAGE ;
+ size_t ERR_TERMINAL ;
+ size_t ERR_TOOFEW ;
+ size_t ERR_TOOLARGE ;
+ size_t ERR_TOOMANY ;
+ size_t ERR_TOOMANYLP ;
+ size_t ERR_TOOMANYRP ;
+ size_t ERR_ULIMUS ;
+ size_t ERR_UNDVAR ;
+ size_t ERR_UNKNOWNOP ;
+ size_t ERR_UNKSIG ;
+ size_t ERR_UNKUSER ;
+ size_t ERR_UNMATCHED ;
+ size_t ERR_VARALNUM ;
+ size_t ERR_VARBEGIN ;
+ size_t ERR_VARILL ;
+ size_t ERR_VARSYN ;
+ size_t ERR_VARTOOLONG ;
+ size_t ERR_WTOOLONG ;
+ size_t NLS_MAXSET ;
+ size_t NO_ERRORS ;
+ scalar_t__* elst ;
+ int xfree (char*) ;
 
 void
 errinit(void)
 {
-#ifdef NLS_CATALOGS
-    size_t i;
-
-    for (i = 0; i < NO_ERRORS; i++)
-	xfree((char *)(intptr_t)elst[i]);
-#  if defined(__FreeBSD__) || defined(hpux) || defined(__MidnightBSD__)
-#  define NLS_MAXSET 30
-    for (i = 1; i <= NLS_MAXSET; i++)
-	CGETS(i, 1, "" );
-#  endif
-#endif
-
     elst[ERR_SYNTAX] = CSAVS(1, 1, "Syntax Error");
     elst[ERR_NOTALLOWED] = CSAVS(1, 2, "%s is not allowed");
     elst[ERR_WTOOLONG] = CSAVS(1, 3, "Word too long");
@@ -201,7 +181,7 @@ errinit(void)
     elst[ERR_VARBEGIN] = CSAVS(1, 30, "Variable name must begin with a letter");
     elst[ERR_VARTOOLONG] = CSAVS(1, 31, "Variable name too long");
     elst[ERR_VARALNUM] = CSAVS(1, 32,
-	"Variable name must contain alphanumeric characters");
+ "Variable name must contain alphanumeric characters");
     elst[ERR_JOBCONTROL] = CSAVS(1, 33, "No job control in this shell");
     elst[ERR_EXPRESSION] = CSAVS(1, 34, "Expression Syntax");
     elst[ERR_NOHOMEDIR] = CSAVS(1, 35, "No home directory");
@@ -235,11 +215,11 @@ errinit(void)
     elst[ERR_JOBCTRLSUB] = CSAVS(1, 63, "No job control in subshells");
     elst[ERR_SYNC] = CSAVS(1, 64, "Sync fault: Process %d not found");
     elst[ERR_STOPPED] =
-#ifdef SUSPENDED
-	CSAVS(1, 65, "%sThere are suspended jobs");
-#else
-	CSAVS(1, 66, "%sThere are stopped jobs");
-#endif /* SUSPENDED */
+
+
+
+ CSAVS(1, 66, "%sThere are stopped jobs");
+
     elst[ERR_NODIR] = CSAVS(1, 67, "No other directory");
     elst[ERR_EMPTY] = CSAVS(1, 68, "Directory stack empty");
     elst[ERR_BADDIR] = CSAVS(1, 69, "Bad directory");
@@ -253,7 +233,7 @@ errinit(void)
     elst[ERR_UNKUSER] = CSAVS(1, 77, "Unknown user: %s");
     elst[ERR_NOHOME] = CSAVS(1, 78, "No $home variable set");
     elst[ERR_HISTUS] = CSAVS(1, 79,
-	"Usage: history [-%s] [# number of events]");
+ "Usage: history [-%s] [# number of events]");
     elst[ERR_SPDOLLT] = CSAVS(1, 80, "$, ! or < not allowed with $# or $?");
     elst[ERR_NEWLINE] = CSAVS(1, 81, "Newline in variable name");
     elst[ERR_SPSTAR] = CSAVS(1, 82, "* not allowed with $# or $?");
@@ -285,7 +265,7 @@ errinit(void)
     elst[ERR_NOWATCH] = CSAVS(1, 108, "No $watch variable set");
     elst[ERR_NOSCHED] = CSAVS(1, 109, "No scheduled events");
     elst[ERR_SCHEDUSAGE] = CSAVS(1, 110,
-	"Usage: sched -<item#>.\nUsage: sched [+]hh:mm <command>");
+ "Usage: sched -<item#>.\nUsage: sched [+]hh:mm <command>");
     elst[ERR_SCHEDEV] = CSAVS(1, 111, "Not that many scheduled events");
     elst[ERR_SCHEDCOM] = CSAVS(1, 112, "No command to run");
     elst[ERR_SCHEDTIME] = CSAVS(1, 113, "Invalid time for event");
@@ -297,27 +277,19 @@ errinit(void)
     elst[ERR_TCARGS] = CSAVS(1, 119, "Too many arguments for `%s' (%d)");
     elst[ERR_TCNARGS] = CSAVS(1, 120, "`%s' requires %d arguments");
     elst[ERR_TCUSAGE] = CSAVS(1, 121,
-	"Usage: echotc [-v|-s] [<capability> [<args>]]");
+ "Usage: echotc [-v|-s] [<capability> [<args>]]");
     elst[ERR_ARCH] = CSAVS(1, 122, "%s: %s. Binary file not executable");
     elst[ERR_HISTLOOP] = CSAVS(1, 123, "!# History loop");
     elst[ERR_FILEINQ] = CSAVS(1, 124, "Malformed file inquiry");
     elst[ERR_SELOVFL] = CSAVS(1, 125, "Selector overflow");
-#ifdef apollo
-    elst[ERR_TCSHUSAGE] = CSAVS(1, 126,
-"Unknown option: `-%s'\nUsage: %s [ -bcdefilmnqstvVxX -Dname[=value] ] [ argument ... ]");
-#else /* !apollo */
-# ifdef convex
-    elst[ERR_TCSHUSAGE] = CSAVS(1, 127,
-"Unknown option: `-%s'\nUsage: %s [ -bcdefFilmnqstvVxX ] [ argument ... ]");
-# else /* rest */
     elst[ERR_TCSHUSAGE] = CSAVS(1, 128,
 "Unknown option: `-%s'\nUsage: %s [ -bcdefilmnqstvVxX ] [ argument ... ]");
-# endif /* convex */
-#endif /* apollo */
+
+
     elst[ERR_COMPCOM] = CSAVS(1, 129, "\nInvalid completion: \"%s\"");
     elst[ERR_COMPINV] = CSAVS(1, 130, "\nInvalid %s: '%c'");
     elst[ERR_COMPMIS] = CSAVS(1, 131,
-	"\nMissing separator '%c' after %s \"%s\"");
+ "\nMissing separator '%c' after %s \"%s\"");
     elst[ERR_COMPINC] = CSAVS(1, 132, "\nIncomplete %s: \"%s\"");
     elst[ERR_MFLAG] = CSAVS(1, 133, "No operand for -m flag");
     elst[ERR_ULIMUS] = CSAVS(1, 134, "Usage: unlimit [-fh] [limits]");

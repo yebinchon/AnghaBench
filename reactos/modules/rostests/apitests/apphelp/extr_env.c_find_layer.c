@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  TAGREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDB_DATABASE_MAIN_SHIM ; 
- scalar_t__ g_LayerDB ; 
- int /*<<< orphan*/  mbstowcs (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pSdbGetLayerTagRef (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ pSdbInitDatabase (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int TAGREF ;
+
+
+ int SDB_DATABASE_MAIN_SHIM ;
+ scalar_t__ g_LayerDB ;
+ int mbstowcs (int *,char*,int ) ;
+ int pSdbGetLayerTagRef (scalar_t__,int *) ;
+ scalar_t__ pSdbInitDatabase (int ,int ) ;
+ int strlen (char*) ;
+ int strncpy (char*,char const*,int) ;
 
 TAGREF find_layer(const char* szLayerStart, const char* szLayerEnd)
 {

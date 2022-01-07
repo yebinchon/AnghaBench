@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int ctrl_inl (int) ; 
+
+
+
+typedef int u32 ;
+
+
+ int ctrl_inl (int) ;
 
 __attribute__((used)) static int bb_read(u32 addr, u32 msk)
 {
-	return (ctrl_inl(addr) & msk) != 0;
+ return (ctrl_inl(addr) & msk) != 0;
 }

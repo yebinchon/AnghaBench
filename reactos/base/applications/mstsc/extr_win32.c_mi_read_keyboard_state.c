@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- short GetKeyState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VK_CAPITAL ; 
- int /*<<< orphan*/  VK_NUMLOCK ; 
- int /*<<< orphan*/  VK_SCROLL ; 
+ short GetKeyState (int ) ;
+ int VK_CAPITAL ;
+ int VK_NUMLOCK ;
+ int VK_SCROLL ;
 
 int
 mi_read_keyboard_state(void)

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strchr (char const*,char) ; 
+ scalar_t__ strchr (char const*,char) ;
 
 char *git__strtok(char **end, const char *sep)
 {
-	char *ptr = *end;
+ char *ptr = *end;
 
-	while (*ptr && strchr(sep, *ptr))
-		++ptr;
+ while (*ptr && strchr(sep, *ptr))
+  ++ptr;
 
-	if (*ptr) {
-		char *start = ptr;
-		*end = start + 1;
+ if (*ptr) {
+  char *start = ptr;
+  *end = start + 1;
 
-		while (**end && !strchr(sep, **end))
-			++*end;
+  while (**end && !strchr(sep, **end))
+   ++*end;
 
-		if (**end) {
-			**end = '\0';
-			++*end;
-		}
+  if (**end) {
+   **end = '\0';
+   ++*end;
+  }
 
-		return start;
-	}
+  return start;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

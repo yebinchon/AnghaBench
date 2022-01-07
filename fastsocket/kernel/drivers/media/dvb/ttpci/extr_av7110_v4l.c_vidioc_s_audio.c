@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct v4l2_audio {int /*<<< orphan*/  index; } ;
+
+
+
+
+struct v4l2_audio {int index; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dprintk (int,char*,int /*<<< orphan*/ ) ; 
+
+ int dprintk (int,char*,int ) ;
 
 __attribute__((used)) static int vidioc_s_audio(struct file *file, void *fh, struct v4l2_audio *a)
 {
-	dprintk(2, "VIDIOC_S_AUDIO: %d\n", a->index);
-	return 0;
+ dprintk(2, "VIDIOC_S_AUDIO: %d\n", a->index);
+ return 0;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct TYPE_8__ {int /*<<< orphan*/  s; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_9__ {int b_fragments_probed; int b_error; TYPE_1__* p_moov; int /*<<< orphan*/  b_fastseekable; } ;
-typedef  TYPE_3__ demux_sys_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+struct TYPE_8__ {int s; TYPE_3__* p_sys; } ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_9__ {int b_fragments_probed; int b_error; TYPE_1__* p_moov; int b_fastseekable; } ;
+typedef TYPE_3__ demux_sys_t ;
 struct TYPE_7__ {scalar_t__ const i_size; scalar_t__ const i_pos; } ;
 
-/* Variables and functions */
- int ProbeFragments (TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  VLC_DIALOG_QUESTION_NORMAL ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- char* _ (char*) ; 
- int vlc_dialog_wait_question (TYPE_2__*,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ *,char*,char*,char const*) ; 
- int vlc_stream_Seek (int /*<<< orphan*/ ,scalar_t__ const) ; 
- scalar_t__ vlc_stream_Tell (int /*<<< orphan*/ ) ; 
+
+ int ProbeFragments (TYPE_2__*,int,int*) ;
+ int VLC_DIALOG_QUESTION_NORMAL ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ char* _ (char*) ;
+ int vlc_dialog_wait_question (TYPE_2__*,int ,char*,char*,int *,char*,char*,char const*) ;
+ int vlc_stream_Seek (int ,scalar_t__ const) ;
+ scalar_t__ vlc_stream_Tell (int ) ;
 
 __attribute__((used)) static int ProbeFragmentsChecked( demux_t *p_demux )
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static int ProbeFragmentsChecked( demux_t *p_demux )
                                                VLC_DIALOG_QUESTION_NORMAL,
                                                _("Do not seek"),
                                                _("Build index"),
-                                               NULL,
+                                               ((void*)0),
                                                _("Broken or missing Index"),
                                                "%s", psz_msg );
         if( !b_continue )
@@ -62,8 +62,8 @@ __attribute__((used)) static int ProbeFragmentsChecked( demux_t *p_demux )
     if( i_ret == VLC_SUCCESS )
     {
         bool foo;
-        i_ret = ProbeFragments( p_demux, true, &foo );
-        p_sys->b_fragments_probed = true;
+        i_ret = ProbeFragments( p_demux, 1, &foo );
+        p_sys->b_fragments_probed = 1;
     }
 
     if( i_ret != VLC_SUCCESS )

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  size_t uint16_t ;
-struct TYPE_4__ {size_t bytes_left; size_t offset; int /*<<< orphan*/ * data; } ;
-struct TYPE_3__ {int /*<<< orphan*/  inflate; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef size_t uint16_t ;
+struct TYPE_4__ {size_t bytes_left; size_t offset; int * data; } ;
+struct TYPE_3__ {int inflate; } ;
 struct ar_archive_zip_uncomp {TYPE_2__ input; TYPE_1__ state; } ;
 
-/* Variables and functions */
- int EOF ; 
- size_t ERR_UNCOMP ; 
- int inflate_process (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t*,void*,size_t*) ; 
- int /*<<< orphan*/  warn (char*,...) ; 
+
+ int EOF ;
+ size_t ERR_UNCOMP ;
+ int inflate_process (int ,int *,size_t*,void*,size_t*) ;
+ int warn (char*,...) ;
 
 __attribute__((used)) static uint32_t zip_uncompress_data_deflate64(struct ar_archive_zip_uncomp *uncomp, void *buffer, uint32_t buffer_size, bool is_last_chunk)
 {

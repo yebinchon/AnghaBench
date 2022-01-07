@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
-struct TYPE_4__ {int cy; int cx; struct TYPE_4__* next; scalar_t__ y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ myrect ;
 
-/* Variables and functions */
- int g_server_Bpp ; 
- int /*<<< orphan*/  g_server_bpp ; 
- int g_width ; 
- int /*<<< orphan*/ * get_ptr (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* head_rect ; 
- int /*<<< orphan*/  sdata ; 
- int /*<<< orphan*/  vga_drawscansegment (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  xfree (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+struct TYPE_4__ {int cy; int cx; struct TYPE_4__* next; scalar_t__ y; int x; } ;
+typedef TYPE_1__ myrect ;
+
+
+ int g_server_Bpp ;
+ int g_server_bpp ;
+ int g_width ;
+ int * get_ptr (int ,scalar_t__,int ,int,int ) ;
+ TYPE_1__* head_rect ;
+ int sdata ;
+ int vga_drawscansegment (int *,int ,scalar_t__,int) ;
+ int xfree (TYPE_1__*) ;
 
 void draw_cache_rects(void)
 {
@@ -32,7 +32,7 @@ void draw_cache_rects(void)
   myrect* rect1;
   uint8* p;
 
-  // draw all the rects
+
   rect = head_rect;
   while (rect != 0)
   {

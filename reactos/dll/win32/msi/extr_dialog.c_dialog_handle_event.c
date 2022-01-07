@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_6__* package; } ;
-typedef  TYPE_1__ msi_dialog ;
-struct TYPE_13__ {int progress_max; int progress_current; int attributes; int /*<<< orphan*/  hwnd; int /*<<< orphan*/  property; int /*<<< orphan*/  progress_backwards; } ;
-typedef  TYPE_2__ msi_control ;
-typedef  int /*<<< orphan*/  const WCHAR ;
+typedef TYPE_1__ msi_dialog ;
+struct TYPE_13__ {int progress_max; int progress_current; int attributes; int hwnd; int property; int progress_backwards; } ;
+typedef TYPE_2__ msi_control ;
+typedef int const WCHAR ;
 struct TYPE_15__ {int action_progress_increment; } ;
-struct TYPE_14__ {int /*<<< orphan*/  Directory; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  TYPE_3__ MSIFEATURE ;
-typedef  int /*<<< orphan*/  const* LPWSTR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+struct TYPE_14__ {int Directory; } ;
+typedef int MSIRECORD ;
+typedef TYPE_3__ MSIFEATURE ;
+typedef int const* LPWSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  MAKELPARAM (int /*<<< orphan*/ ,int) ; 
- int MSI_RecordGetInteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  const* MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int MulDiv (int,int,int) ; 
- int /*<<< orphan*/  PBM_SETPOS ; 
- int /*<<< orphan*/  PBM_SETRANGE ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowTextW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TRACE (char*,int,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  deformat_string (TYPE_6__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  msi_dialog_check_messages (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* msi_dialog_dup_property (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* msi_dialog_find_control (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* msi_dialog_get_style (int /*<<< orphan*/  const*,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  msi_dialog_set_property (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/  const*) ; 
- TYPE_3__* msi_seltree_get_selected_feature (TYPE_2__*) ; 
- int msidbControlAttributesIndirect ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* szEmpty ; 
- int /*<<< orphan*/  szProgress ; 
- int /*<<< orphan*/  szProperty ; 
- int /*<<< orphan*/  szSelectionPath ; 
- int /*<<< orphan*/  szText ; 
+
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int MAKELPARAM (int ,int) ;
+ int MSI_RecordGetInteger (int *,int) ;
+ int const* MSI_RecordGetString (int *,int) ;
+ int MulDiv (int,int,int) ;
+ int PBM_SETPOS ;
+ int PBM_SETRANGE ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int SetWindowTextW (int ,int const*) ;
+ int TRACE (char*,int,int,int) ;
+ int TRUE ;
+ int debugstr_w (int const*) ;
+ int deformat_string (TYPE_6__*,int const*,int const**) ;
+ int msi_dialog_check_messages (int *) ;
+ int const* msi_dialog_dup_property (TYPE_1__*,int ,int) ;
+ TYPE_2__* msi_dialog_find_control (TYPE_1__*,int const*) ;
+ int const* msi_dialog_get_style (int const*,int const**) ;
+ int msi_dialog_set_property (TYPE_6__*,int ,int ) ;
+ int msi_free (int const*) ;
+ TYPE_3__* msi_seltree_get_selected_feature (TYPE_2__*) ;
+ int msidbControlAttributesIndirect ;
+ int strcmpW (int const*,int ) ;
+ int const* szEmpty ;
+ int szProgress ;
+ int szProperty ;
+ int szSelectionPath ;
+ int szText ;
 
 __attribute__((used)) static void dialog_handle_event( msi_dialog *dialog, const WCHAR *control,
                                  const WCHAR *attribute, MSIRECORD *rec )
@@ -67,8 +67,8 @@ __attribute__((used)) static void dialog_handle_event( msi_dialog *dialog, const
         return;
     if( !strcmpW( attribute, szText ) )
     {
-        const WCHAR *font_text, *text = NULL;
-        WCHAR *font, *text_fmt = NULL;
+        const WCHAR *font_text, *text = ((void*)0);
+        WCHAR *font, *text_fmt = ((void*)0);
 
         font_text = MSI_RecordGetString( rec , 1 );
         font = msi_dialog_get_style( font_text, &text );
@@ -80,7 +80,7 @@ __attribute__((used)) static void dialog_handle_event( msi_dialog *dialog, const
 
         msi_free( font );
         msi_free( text_fmt );
-        msi_dialog_check_messages( NULL );
+        msi_dialog_check_messages( ((void*)0) );
     }
     else if( !strcmpW( attribute, szProgress ) )
     {
@@ -95,7 +95,7 @@ __attribute__((used)) static void dialog_handle_event( msi_dialog *dialog, const
         units = val1 / 512;
         switch (func)
         {
-        case 0: /* init */
+        case 0:
             SendMessageW( ctrl->hwnd, PBM_SETRANGE, 0, MAKELPARAM(0,100) );
             if (val2)
             {
@@ -112,11 +112,11 @@ __attribute__((used)) static void dialog_handle_event( msi_dialog *dialog, const
                 SendMessageW( ctrl->hwnd, PBM_SETPOS, 0, 0 );
             }
             break;
-        case 1: /* action data increment */
+        case 1:
             if (val2) dialog->package->action_progress_increment = val1;
             else dialog->package->action_progress_increment = 0;
             break;
-        case 2: /* move */
+        case 2:
             if (ctrl->progress_backwards)
             {
                 if (units >= ctrl->progress_current) ctrl->progress_current -= units;
@@ -129,7 +129,7 @@ __attribute__((used)) static void dialog_handle_event( msi_dialog *dialog, const
             }
             SendMessageW( ctrl->hwnd, PBM_SETPOS, MulDiv(100, ctrl->progress_current, ctrl->progress_max), 0 );
             break;
-        case 3: /* add */
+        case 3:
             ctrl->progress_max += units;
             break;
         default:

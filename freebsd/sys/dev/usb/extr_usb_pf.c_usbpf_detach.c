@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_bus {int /*<<< orphan*/  parent; int /*<<< orphan*/ * ifp; } ;
 
-/* Variables and functions */
- scalar_t__ bootverbose ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  usbpf_clone_destroy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usbpf_cloner ; 
+
+
+
+struct usb_bus {int parent; int * ifp; } ;
+
+
+ scalar_t__ bootverbose ;
+ int device_printf (int ,char*) ;
+ int usbpf_clone_destroy (int ,int *) ;
+ int usbpf_cloner ;
 
 void
 usbpf_detach(struct usb_bus *ubus)
 {
 
-	if (ubus->ifp != NULL)
-		usbpf_clone_destroy(usbpf_cloner, ubus->ifp);
-	if (bootverbose)
-		device_printf(ubus->parent, "usbpf: Detached\n");
+ if (ubus->ifp != ((void*)0))
+  usbpf_clone_destroy(usbpf_cloner, ubus->ifp);
+ if (bootverbose)
+  device_printf(ubus->parent, "usbpf: Detached\n");
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- unsigned int QUEUE_MASK ; 
- int QUEUE_SIZE ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int bytestream2_peek_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_peek_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skipu (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int,int) ; 
+
+
+
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ unsigned int QUEUE_MASK ;
+ int QUEUE_SIZE ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ void* bytestream2_get_byteu (int *) ;
+ unsigned int bytestream2_get_le32 (int *) ;
+ int bytestream2_init (int *,unsigned char const*,int) ;
+ int bytestream2_peek_byte (int *) ;
+ int bytestream2_peek_le32 (int *) ;
+ int bytestream2_skipu (int *,int) ;
+ int memset (unsigned char*,int,int) ;
 
 __attribute__((used)) static int lz_unpack(const unsigned char *src, int src_len,
                       unsigned char *dest, int dest_len)
@@ -54,7 +54,7 @@ __attribute__((used)) static int lz_unpack(const unsigned char *src, int src_len
         speclen = 0xF + 3;
     } else {
         qpos = 0xFEE;
-        speclen = 100;  /* no speclen */
+        speclen = 100;
     }
 
     while (dataleft > 0 && bytestream2_get_bytes_left(&gb) > 0) {

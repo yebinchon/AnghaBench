@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * pSupportedQueriesList; scalar_t__ NumSupportedQueries; int /*<<< orphan*/ * pSupportedExtendedModes; scalar_t__ NumSupportedExtendedModes; int /*<<< orphan*/ * pSupportedFormatOps; scalar_t__ NumSupportedFormatOps; int /*<<< orphan*/  dwRefreshRate; int /*<<< orphan*/  DisplayFormat; int /*<<< orphan*/  RawDisplayFormat; int /*<<< orphan*/  dwDisplayHeight; int /*<<< orphan*/  dwDisplayWidth; } ;
-struct TYPE_6__ {TYPE_2__ DriverCaps; int /*<<< orphan*/  hD3DRefDll; int /*<<< orphan*/  szDeviceName; int /*<<< orphan*/  D3D9Callbacks; int /*<<< orphan*/ * pUnknown6BC; int /*<<< orphan*/  DeviceType; int /*<<< orphan*/  hDC; } ;
-typedef  int /*<<< orphan*/ * LPDDSURFACEDESC ;
-typedef  TYPE_1__* LPD3D9_DEVICEDATA ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  DDSURFACEDESC ;
-typedef  int /*<<< orphan*/  DDPIXELFORMAT ;
-typedef  int /*<<< orphan*/  D3DQUERYTYPE ;
-typedef  int /*<<< orphan*/  D3DHAL_GLOBALDRIVERDATA ;
-typedef  int /*<<< orphan*/  D3DHAL_D3DEXTENDEDCAPS ;
-typedef  int /*<<< orphan*/  D3DDISPLAYMODE ;
-typedef  TYPE_2__ D3D9_DRIVERCAPS ;
-typedef  int /*<<< orphan*/  D3D9_CALLBACKS ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CanReenableDirectDrawObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateInternalDeviceData (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetD3D9DriverInfo (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseInternalDeviceData (TYPE_1__*) ; 
- scalar_t__ TRUE ; 
- int max (scalar_t__,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * pSupportedQueriesList; scalar_t__ NumSupportedQueries; int * pSupportedExtendedModes; scalar_t__ NumSupportedExtendedModes; int * pSupportedFormatOps; scalar_t__ NumSupportedFormatOps; int dwRefreshRate; int DisplayFormat; int RawDisplayFormat; int dwDisplayHeight; int dwDisplayWidth; } ;
+struct TYPE_6__ {TYPE_2__ DriverCaps; int hD3DRefDll; int szDeviceName; int D3D9Callbacks; int * pUnknown6BC; int DeviceType; int hDC; } ;
+typedef int * LPDDSURFACEDESC ;
+typedef TYPE_1__* LPD3D9_DEVICEDATA ;
+typedef scalar_t__ DWORD ;
+typedef int DDSURFACEDESC ;
+typedef int DDPIXELFORMAT ;
+typedef int D3DQUERYTYPE ;
+typedef int D3DHAL_GLOBALDRIVERDATA ;
+typedef int D3DHAL_D3DEXTENDEDCAPS ;
+typedef int D3DDISPLAYMODE ;
+typedef TYPE_2__ D3D9_DRIVERCAPS ;
+typedef int D3D9_CALLBACKS ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CanReenableDirectDrawObject (int *) ;
+ int CreateInternalDeviceData (int ,int ,int **,int ,int *) ;
+ int DPRINT1 (char*) ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetD3D9DriverInfo (int *,TYPE_2__*,int *,int ,int ,int *,int *,int *,int *,int *,int *,scalar_t__*,scalar_t__*,scalar_t__*,scalar_t__*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int ReleaseInternalDeviceData (TYPE_1__*) ;
+ scalar_t__ TRUE ;
+ int max (scalar_t__,int) ;
 
 BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
 {
@@ -55,7 +55,7 @@ BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
     DWORD NumExtendedFormats = 0;
     DWORD NumQueries = 0;
 
-    if (NULL == pDeviceData->pUnknown6BC)
+    if (((void*)0) == pDeviceData->pUnknown6BC)
     {
         CreateInternalDeviceData(
             pDeviceData->hDC,
@@ -65,7 +65,7 @@ BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
             &pDeviceData->hD3DRefDll
             );
 
-        if (NULL == pDeviceData->pUnknown6BC)
+        if (((void*)0) == pDeviceData->pUnknown6BC)
         {
             DPRINT1("Failed to create DirectDrawObject for Direct3D9");
             return FALSE;
@@ -90,10 +90,10 @@ BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
             pDeviceData->hD3DRefDll,
             &GlobalDriverData,
             &D3dExtendedCaps,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
+            ((void*)0),
+            ((void*)0),
+            ((void*)0),
+            ((void*)0),
             &NumTextureFormats,
             &NumStencilFormats,
             &NumExtendedFormats,
@@ -112,21 +112,21 @@ BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
         return bRet;
     }
 
-    /* Cleanup of old stuff */
+
     if (pDeviceData->DriverCaps.pSupportedFormatOps)
     {
         HeapFree(GetProcessHeap(), 0, pDeviceData->DriverCaps.pSupportedFormatOps);
-        pDeviceData->DriverCaps.pSupportedFormatOps = NULL;
+        pDeviceData->DriverCaps.pSupportedFormatOps = ((void*)0);
     }
     if (pDeviceData->DriverCaps.pSupportedExtendedModes)
     {
         HeapFree(GetProcessHeap(), 0, pDeviceData->DriverCaps.pSupportedExtendedModes);
-        pDeviceData->DriverCaps.pSupportedExtendedModes = NULL;
+        pDeviceData->DriverCaps.pSupportedExtendedModes = ((void*)0);
     }
     if (pDeviceData->DriverCaps.pSupportedQueriesList)
     {
         HeapFree(GetProcessHeap(), 0, pDeviceData->DriverCaps.pSupportedQueriesList);
-        pDeviceData->DriverCaps.pSupportedQueriesList = NULL;
+        pDeviceData->DriverCaps.pSupportedQueriesList = ((void*)0);
     }
 
     if (FALSE == CanReenableDirectDrawObject(pDeviceData->pUnknown6BC))
@@ -144,10 +144,10 @@ BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
         pDeviceData->hD3DRefDll,
         &GlobalDriverData,
         &D3dExtendedCaps,
-        NULL,
-        NULL,
-        NULL,
-        NULL,
+        ((void*)0),
+        ((void*)0),
+        ((void*)0),
+        ((void*)0),
         &NumTextureFormats,
         &NumStencilFormats,
         &NumExtendedFormats,
@@ -206,8 +206,8 @@ BOOL GetDeviceData(LPD3D9_DEVICEDATA pDeviceData)
     pDeviceData->DriverCaps.NumSupportedQueries = NumQueries;
     if (NumQueries > 0)
         pDeviceData->DriverCaps.pSupportedQueriesList = pD3dQueryList;
-    
-    HeapFree(GetProcessHeap(), 0, pD3dZStencilFormatList); 
+
+    HeapFree(GetProcessHeap(), 0, pD3dZStencilFormatList);
 
     return TRUE;
 }

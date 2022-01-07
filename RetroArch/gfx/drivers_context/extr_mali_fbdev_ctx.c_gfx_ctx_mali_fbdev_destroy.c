@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int resize; int /*<<< orphan*/  egl; } ;
-typedef  TYPE_1__ mali_ctx_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDWR ; 
- int /*<<< orphan*/  VT_ACTIVATE ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  egl_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  ioctl (int,int /*<<< orphan*/ ,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  system (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int resize; int egl; } ;
+typedef TYPE_1__ mali_ctx_data_t ;
+
+
+ int O_RDWR ;
+ int VT_ACTIVATE ;
+ int close (int) ;
+ int egl_destroy (int *) ;
+ int free (TYPE_1__*) ;
+ int ioctl (int,int ,int) ;
+ int open (char*,int ) ;
+ int system (char*) ;
 
 __attribute__((used)) static void gfx_ctx_mali_fbdev_destroy(void *data)
 {
@@ -31,15 +31,15 @@ __attribute__((used)) static void gfx_ctx_mali_fbdev_destroy(void *data)
 
    if (mali)
    {
-#ifdef HAVE_EGL
-       egl_destroy(&mali->egl);
-#endif
 
-       mali->resize       = false;
+
+
+
+       mali->resize = 0;
        free(mali);
    }
 
-   /* Clear framebuffer and set cursor on again */
+
    fd = open("/dev/tty", O_RDWR);
    ioctl(fd, VT_ACTIVATE, 5);
    ioctl(fd, VT_ACTIVATE, 1);

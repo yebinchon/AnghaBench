@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U8 ;
-typedef  int U32 ;
-struct TYPE_4__ {int ata_transfer_length; int /*<<< orphan*/  protocol; int /*<<< orphan*/  data_direction; } ;
-typedef  TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATA_DOWNLOAD_MICROCODE ; 
- int /*<<< orphan*/  ATA_MICROCODE_DOWNLOAD_SAVE ; 
- int /*<<< orphan*/  SATI_DATA_DIRECTION_OUT ; 
- int /*<<< orphan*/  SAT_PROTOCOL_PIO_DATA_OUT ; 
- int /*<<< orphan*/  sati_ata_non_data_command (void*,TYPE_1__*) ; 
- int /*<<< orphan*/ * sati_cb_get_h2d_register_fis_address (void*) ; 
- int /*<<< orphan*/  sati_set_ata_command (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_set_ata_features (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_set_ata_lba_high (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_set_ata_lba_low (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_set_ata_lba_mid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sati_set_ata_sector_count (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int U8 ;
+typedef int U32 ;
+struct TYPE_4__ {int ata_transfer_length; int protocol; int data_direction; } ;
+typedef TYPE_1__ SATI_TRANSLATOR_SEQUENCE_T ;
+
+
+ int ATA_DOWNLOAD_MICROCODE ;
+ int ATA_MICROCODE_DOWNLOAD_SAVE ;
+ int SATI_DATA_DIRECTION_OUT ;
+ int SAT_PROTOCOL_PIO_DATA_OUT ;
+ int sati_ata_non_data_command (void*,TYPE_1__*) ;
+ int * sati_cb_get_h2d_register_fis_address (void*) ;
+ int sati_set_ata_command (int *,int ) ;
+ int sati_set_ata_features (int *,int ) ;
+ int sati_set_ata_lba_high (int *,int ) ;
+ int sati_set_ata_lba_low (int *,int ) ;
+ int sati_set_ata_lba_mid (int *,int ) ;
+ int sati_set_ata_sector_count (int *,int ) ;
 
 void sati_ata_download_microcode_construct(
-   void                       * ata_io,
+   void * ata_io,
    SATI_TRANSLATOR_SEQUENCE_T * sequence,
-   U8                           mode,
-   U32                          allocation_length,
-   U32                          buffer_offset
+   U8 mode,
+   U32 allocation_length,
+   U32 buffer_offset
 )
 {
    U8 * register_fis = sati_cb_get_h2d_register_fis_address(ata_io);
@@ -50,7 +50,7 @@ void sati_ata_download_microcode_construct(
       sati_set_ata_sector_count(register_fis, (U8) (allocation_length >> 9));
       sati_set_ata_lba_low(register_fis, (U8) (allocation_length >> 17));
    }
-   else //mode == 0x03
+   else
    {
       sati_set_ata_sector_count(register_fis, (U8) (allocation_blocks & 0xff));
       sati_set_ata_lba_low(register_fis, (U8) ((allocation_blocks >> 8) & 0xff));
@@ -64,8 +64,8 @@ void sati_ata_download_microcode_construct(
    }
    else
    {
-      sequence->data_direction      = SATI_DATA_DIRECTION_OUT;
-      sequence->protocol            = SAT_PROTOCOL_PIO_DATA_OUT;
+      sequence->data_direction = SATI_DATA_DIRECTION_OUT;
+      sequence->protocol = SAT_PROTOCOL_PIO_DATA_OUT;
       sequence->ata_transfer_length = allocation_length;
    }
 }

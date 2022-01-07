@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_8__ {int blocks; int height; int width; int* ulti_codebook; int /*<<< orphan*/  frame; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ UltimotionDecodeContext ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_8__ {int blocks; int height; int width; int* ulti_codebook; int frame; int gb; } ;
+typedef TYPE_1__ UltimotionDecodeContext ;
 struct TYPE_10__ {TYPE_1__* priv_data; } ;
 struct TYPE_9__ {int* data; int size; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int* angle_by_index ; 
- int av_frame_ref (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int* block_coords ; 
- int bytestream2_get_be16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_be24 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_be24u (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int const*,int) ; 
- int ff_reget_buffer (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ulti_convert_yuv (int /*<<< orphan*/ ,int,int,int*,int) ; 
- int /*<<< orphan*/  ulti_grad (int /*<<< orphan*/ ,int,int,int*,int,int) ; 
- int /*<<< orphan*/  ulti_pattern (int /*<<< orphan*/ ,int,int,int,int,int,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_INFO ;
+ int* angle_by_index ;
+ int av_frame_ref (void*,int ) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int* block_coords ;
+ int bytestream2_get_be16 (int *) ;
+ int bytestream2_get_be24 (int *) ;
+ int bytestream2_get_be24u (int *) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int ff_reget_buffer (TYPE_3__*,int ,int ) ;
+ int ulti_convert_yuv (int ,int,int,int*,int) ;
+ int ulti_grad (int ,int,int,int*,int,int) ;
+ int ulti_pattern (int ,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                              void *data, int *got_frame,
@@ -66,28 +66,28 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
     while(!done) {
         int idx;
         if(blocks >= s->blocks || y >= s->height)
-            break;//all blocks decoded
+            break;
 
         if (bytestream2_get_bytes_left(&s->gb) < 1)
             goto err;
         idx = bytestream2_get_byteu(&s->gb);
         if((idx & 0xF8) == 0x70) {
             switch(idx) {
-            case 0x70: //change modifier
+            case 0x70:
                 modifier = bytestream2_get_byte(&s->gb);
                 if(modifier>1)
                     av_log(avctx, AV_LOG_INFO, "warning: modifier must be 0 or 1, got %i\n", modifier);
                 break;
-            case 0x71: // set uniq flag
+            case 0x71:
                 uniq = 1;
                 break;
-            case 0x72: //toggle mode
+            case 0x72:
                 mode = !mode;
                 break;
-            case 0x73: //end-of-frame
+            case 0x73:
                 done = 1;
                 break;
-            case 0x74: //skip some blocks
+            case 0x74:
                 skip = bytestream2_get_byte(&s->gb);
                 if ((blocks + skip) >= s->blocks)
                     break;
@@ -101,12 +101,12 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
             default:
                 av_log(avctx, AV_LOG_INFO, "warning: unknown escape 0x%02X\n", idx);
             }
-        } else { //handle one block
+        } else {
             int code;
             int cf;
             int angle = 0;
-            uint8_t Y[4]; // luma samples of block
-            int tx = 0, ty = 0; //coords of subblock
+            uint8_t Y[4];
+            int tx = 0, ty = 0;
             int chroma = 0;
             if (mode || uniq) {
                 uniq = 0;
@@ -118,9 +118,9 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                     chroma = bytestream2_get_byte(&s->gb);
                 }
             }
-            for (i = 0; i < 4; i++) { // for every subblock
-                code = (idx >> (6 - i*2)) & 3; //extract 2 bits
-                if(!code) //skip subblock
+            for (i = 0; i < 4; i++) {
+                code = (idx >> (6 - i*2)) & 3;
+                if(!code)
                     continue;
                 if(cf) {
                     chroma = bytestream2_get_byte(&s->gb);
@@ -148,7 +148,7 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                     break;
 
                 case 2:
-                    if (modifier) { // unpack four luma samples
+                    if (modifier) {
                         tmp = bytestream2_get_be24(&s->gb);
 
                         Y[0] = (tmp >> 18) & 0x3F;
@@ -156,7 +156,7 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                         Y[2] = (tmp >> 6) & 0x3F;
                         Y[3] = tmp & 0x3F;
                         angle = 16;
-                    } else { // retrieve luma samples from codebook
+                    } else {
                         tmp = bytestream2_get_be16(&s->gb);
 
                         angle = (tmp >> 12) & 0xF;
@@ -170,7 +170,7 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                     break;
 
                 case 3:
-                    if (modifier) { // all 16 luma samples
+                    if (modifier) {
                         uint8_t Luma[16];
 
                         if (bytestream2_get_bytes_left(&s->gb) < 12)
@@ -211,8 +211,8 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                             Y[1] = tmp & 0x3F;
                             Y[2] = bytestream2_get_byteu(&s->gb) & 0x3F;
                             Y[3] = bytestream2_get_byteu(&s->gb) & 0x3F;
-                            ulti_grad(s->frame, tx, ty, Y, chroma, angle); //draw block
-                        } else { // some patterns
+                            ulti_grad(s->frame, tx, ty, Y, chroma, angle);
+                        } else {
                             int f0 = tmp;
                             int f1 = bytestream2_get_byteu(&s->gb);
                             Y[0] = bytestream2_get_byteu(&s->gb) & 0x3F;
@@ -223,7 +223,7 @@ __attribute__((used)) static int ulti_decode_frame(AVCodecContext *avctx,
                     break;
                 }
                 if(code != 3)
-                    ulti_grad(s->frame, tx, ty, Y, chroma, angle); // draw block
+                    ulti_grad(s->frame, tx, ty, Y, chroma, angle);
             }
             blocks++;
                 x += 8;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ kind; } ;
-typedef  TYPE_1__ svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  diff_driver_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_ctx_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int diff_driver_info_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  check_paths (scalar_t__*,scalar_t__*,char const*,char const*,TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  diff_repos_repos (char const**,scalar_t__*,int /*<<< orphan*/ *,char const*,char const*,TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  diff_repos_wc (char const**,scalar_t__*,int /*<<< orphan*/ *,char const*,TYPE_1__ const*,TYPE_1__ const*,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  diff_wc_wc (char const**,scalar_t__*,int /*<<< orphan*/ *,char const*,TYPE_1__ const*,char const*,TYPE_1__ const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__arbitrary_nodes_diff (char const**,scalar_t__*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_opt_revision_working ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int check_paths (scalar_t__*,scalar_t__*,char const*,char const*,TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*) ;
+ int diff_repos_repos (char const**,scalar_t__*,int *,char const*,char const*,TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*,int ,scalar_t__,scalar_t__,int const*,int *,int *,int *) ;
+ int diff_repos_wc (char const**,scalar_t__*,int *,char const*,TYPE_1__ const*,TYPE_1__ const*,char const*,scalar_t__,int ,int ,scalar_t__,int const*,int const*,int *,int *,int *) ;
+ int diff_wc_wc (char const**,scalar_t__*,int *,char const*,TYPE_1__ const*,char const*,TYPE_1__ const*,int ,scalar_t__,int const*,int const*,int *,int *,int *) ;
+ int svn_client__arbitrary_nodes_diff (char const**,scalar_t__*,char const*,char const*,int ,int const*,int *,int *,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ scalar_t__ svn_opt_revision_working ;
 
 __attribute__((used)) static svn_error_t *
 do_diff(const char **root_relpath,
@@ -57,7 +57,7 @@ do_diff(const char **root_relpath,
   svn_boolean_t is_repos1;
   svn_boolean_t is_repos2;
 
-  /* Check if paths/revisions are urls/local. */
+
   SVN_ERR(check_paths(&is_repos1, &is_repos2, path_or_url1, path_or_url2,
                       revision1, revision2, peg_revision));
 
@@ -65,7 +65,7 @@ do_diff(const char **root_relpath,
     {
       if (is_repos2)
         {
-          /* Ignores changelists. */
+
           SVN_ERR(diff_repos_repos(root_relpath, root_is_dir,
                                    ddi,
                                    path_or_url1, path_or_url2,
@@ -75,7 +75,7 @@ do_diff(const char **root_relpath,
                                    diff_processor, ctx,
                                    result_pool, scratch_pool));
         }
-      else /* path_or_url2 is a working copy path */
+      else
         {
           SVN_ERR(diff_repos_wc(root_relpath, root_is_dir, ddi,
                                 path_or_url1, revision1,
@@ -88,7 +88,7 @@ do_diff(const char **root_relpath,
                                 result_pool, scratch_pool));
         }
     }
-  else /* path_or_url1 is a working copy path */
+  else
     {
       if (is_repos2)
         {
@@ -103,7 +103,7 @@ do_diff(const char **root_relpath,
                                 diff_processor, ctx,
                                 result_pool, scratch_pool));
         }
-      else /* path_or_url2 is a working copy path */
+      else
         {
           if (revision1->kind == svn_opt_revision_working
               && revision2->kind == svn_opt_revision_working)
@@ -116,8 +116,8 @@ do_diff(const char **root_relpath,
               SVN_ERR(svn_dirent_get_absolute(&abspath2, path_or_url2,
                                               scratch_pool));
 
-              /* ### What about ddi? */
-              /* Ignores changelists, ignore_ancestry */
+
+
               SVN_ERR(svn_client__arbitrary_nodes_diff(root_relpath, root_is_dir,
                                                        abspath1, abspath2,
                                                        depth,

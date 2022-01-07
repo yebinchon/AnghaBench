@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int routerExecutable; int hasReturning; int /*<<< orphan*/ * masterQuery; int /*<<< orphan*/ * workerJob; int /*<<< orphan*/ * planningError; int /*<<< orphan*/  modLevel; } ;
-typedef  int /*<<< orphan*/  Query ;
-typedef  int /*<<< orphan*/  PlannerRestrictionContext ;
-typedef  int /*<<< orphan*/  Job ;
-typedef  TYPE_1__ DistributedPlan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG2 ; 
- int /*<<< orphan*/ * RouterJob (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  RowModifyLevelForQuery (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int routerExecutable; int hasReturning; int * masterQuery; int * workerJob; int * planningError; int modLevel; } ;
+typedef int Query ;
+typedef int PlannerRestrictionContext ;
+typedef int Job ;
+typedef TYPE_1__ DistributedPlan ;
+
+
+ int DEBUG2 ;
+ int * RouterJob (int *,int *,int **) ;
+ int RowModifyLevelForQuery (int *) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
 
 __attribute__((used)) static void
 CreateSingleTaskRouterPlan(DistributedPlan *distributedPlan, Query *originalQuery,
-						   Query *query,
-						   PlannerRestrictionContext *plannerRestrictionContext)
+         Query *query,
+         PlannerRestrictionContext *plannerRestrictionContext)
 {
-	Job *job = NULL;
+ Job *job = ((void*)0);
 
-	distributedPlan->modLevel = RowModifyLevelForQuery(query);
+ distributedPlan->modLevel = RowModifyLevelForQuery(query);
 
-	/* we cannot have multi shard update/delete query via this code path */
-	job = RouterJob(originalQuery, plannerRestrictionContext,
-					&distributedPlan->planningError);
 
-	if (distributedPlan->planningError != NULL)
-	{
-		/* query cannot be handled by this planner */
-		return;
-	}
+ job = RouterJob(originalQuery, plannerRestrictionContext,
+     &distributedPlan->planningError);
 
-	ereport(DEBUG2, (errmsg("Creating router plan")));
+ if (distributedPlan->planningError != ((void*)0))
+ {
 
-	distributedPlan->workerJob = job;
-	distributedPlan->masterQuery = NULL;
-	distributedPlan->routerExecutable = true;
-	distributedPlan->hasReturning = false;
+  return;
+ }
+
+ ereport(DEBUG2, (errmsg("Creating router plan")));
+
+ distributedPlan->workerJob = job;
+ distributedPlan->masterQuery = ((void*)0);
+ distributedPlan->routerExecutable = 1;
+ distributedPlan->hasReturning = 0;
 }

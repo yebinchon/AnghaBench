@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int UINT ;
-struct TYPE_7__ {int uiCodePage; int /*<<< orphan*/  wszProportionalFont; int /*<<< orphan*/  wszFixedWidthFont; int /*<<< orphan*/  wszDescription; int /*<<< orphan*/  ScriptId; } ;
-typedef  TYPE_1__ SCRIPTINFO ;
-typedef  int /*<<< orphan*/  IMultiLanguage2 ;
-typedef  int /*<<< orphan*/  IEnumScript ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int E_FAIL ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int IEnumScript_Next (int /*<<< orphan*/ *,int,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  IEnumScript_Release (int /*<<< orphan*/ *) ; 
- int IEnumScript_Reset (int /*<<< orphan*/ *) ; 
- int IEnumScript_Skip (int /*<<< orphan*/ *,int) ; 
- int IMultiLanguage2_EnumScripts (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int IMultiLanguage2_GetNumberOfScripts (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- scalar_t__ pGetCPInfoExA ; 
- int /*<<< orphan*/  scriptinfo_cmp (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  trace (char*,int,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+typedef int UINT ;
+struct TYPE_7__ {int uiCodePage; int wszProportionalFont; int wszFixedWidthFont; int wszDescription; int ScriptId; } ;
+typedef TYPE_1__ SCRIPTINFO ;
+typedef int IMultiLanguage2 ;
+typedef int IEnumScript ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int IEnumScript_Next (int *,int,TYPE_1__*,int*) ;
+ int IEnumScript_Release (int *) ;
+ int IEnumScript_Reset (int *) ;
+ int IEnumScript_Skip (int *,int) ;
+ int IMultiLanguage2_EnumScripts (int *,int,int ,int **) ;
+ int IMultiLanguage2_GetNumberOfScripts (int *,int*) ;
+ int LANG_NEUTRAL ;
+ int S_FALSE ;
+ int S_OK ;
+ int ok (int,char*,int,...) ;
+ scalar_t__ pGetCPInfoExA ;
+ int scriptinfo_cmp (TYPE_1__*,TYPE_1__*) ;
+ int trace (char*,int,...) ;
+ int wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_EnumScripts(IMultiLanguage2 *iML2, DWORD flags)
 {
-    IEnumScript *iEnumScript = NULL;
+    IEnumScript *iEnumScript = ((void*)0);
     SCRIPTINFO *sinfo;
     SCRIPTINFO sinfo2;
     HRESULT ret;
@@ -61,9 +61,9 @@ __attribute__((used)) static void test_EnumScripts(IMultiLanguage2 *iML2, DWORD 
     ret = IEnumScript_Reset(iEnumScript);
     ok(ret == S_OK, "IEnumScript_Reset: expected S_OK, got %08x\n", ret);
     n = 65536;
-    ret = IEnumScript_Next(iEnumScript, 0, NULL, &n);
+    ret = IEnumScript_Next(iEnumScript, 0, ((void*)0), &n);
     ok(n == 65536 && ret == E_FAIL, "IEnumScript_Next: expected 65536/E_FAIL, got %u/%08x\n", n, ret);
-    ret = IEnumScript_Next(iEnumScript, 0, NULL, NULL);
+    ret = IEnumScript_Next(iEnumScript, 0, ((void*)0), ((void*)0));
     ok(ret == E_FAIL, "IEnumScript_Next: expected E_FAIL, got %08x\n", ret);
 
     sinfo = HeapAlloc(GetProcessHeap(), 0, sizeof(*sinfo) * total * 2);
@@ -80,31 +80,16 @@ __attribute__((used)) static void test_EnumScripts(IMultiLanguage2 *iML2, DWORD 
 
     if (!flags)
     {
-	ok(n == total, "IEnumScript_Next: expected %u, got %u\n", total, n);
+ ok(n == total, "IEnumScript_Next: expected %u, got %u\n", total, n);
     }
 
     total = n;
 
     for (i = 0; pGetCPInfoExA && i < n; i++)
     {
-#ifdef DUMP_SCRIPT_INFO
-	trace("SCRIPTINFO #%u:\n"
-	      "ScriptId %08x\n"
-	      "uiCodePage %u\n"
-	      "wszDescription %s\n"
-	      "wszFixedWidthFont %s\n"
-	      "wszProportionalFont %s\n\n",
-	      i,
-	      sinfo[i].ScriptId,
-	      sinfo[i].uiCodePage,
-	      wine_dbgstr_w(sinfo[i].wszDescription),
-	      wine_dbgstr_w(sinfo[i].wszFixedWidthFont),
-	      wine_dbgstr_w(sinfo[i].wszProportionalFont));
-        trace("%u codepage %u\n", i, sinfo[i].uiCodePage);
-#endif
     }
 
-    /* now IEnumScript_Next should fail, since pointer is at the end */
+
     n = 1;
     ret = IEnumScript_Next(iEnumScript, 1, &sinfo2, &n);
     ok(ret == S_FALSE && n == 0, "IEnumScript_Next: expected S_FALSE/0, got %08x/%u\n", ret, n);
@@ -118,9 +103,9 @@ __attribute__((used)) static void test_EnumScripts(IMultiLanguage2 *iML2, DWORD 
 
     if (0)
     {
-    /* Due to a bug in MS' implementation of IEnumScript_Skip
-     * it's not used here.
-     */
+
+
+
     ret = IEnumScript_Skip(iEnumScript, 1);
     ok(ret == S_OK, "IEnumScript_Skip: expected S_OK, got %08x\n", ret);
     }

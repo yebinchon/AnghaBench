@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* ULONG ;
-struct TYPE_6__ {int Length; int /*<<< orphan*/  RegionListEntry; void* Protect; void* Type; } ;
-typedef  int SIZE_T ;
-typedef  scalar_t__ PVOID ;
-typedef  TYPE_1__* PMM_REGION ;
-typedef  int /*<<< orphan*/  (* PMM_ALTER_REGION_FUNC ) (int /*<<< orphan*/ ,scalar_t__,int,void*,void*,void*,void*) ;
-typedef  int /*<<< orphan*/  PMMSUPPORT ;
-typedef  int /*<<< orphan*/  MM_REGION ;
 
-/* Variables and functions */
- TYPE_1__* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InsertAfterEntry (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  RemoveEntryList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAG_MM_REGION ; 
- int min (int,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* ULONG ;
+struct TYPE_6__ {int Length; int RegionListEntry; void* Protect; void* Type; } ;
+typedef int SIZE_T ;
+typedef scalar_t__ PVOID ;
+typedef TYPE_1__* PMM_REGION ;
+typedef int (* PMM_ALTER_REGION_FUNC ) (int ,scalar_t__,int,void*,void*,void*,void*) ;
+typedef int PMMSUPPORT ;
+typedef int MM_REGION ;
+
+
+ TYPE_1__* ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePoolWithTag (TYPE_1__*,int ) ;
+ int InsertAfterEntry (int *,int *) ;
+ int NonPagedPool ;
+ int RemoveEntryList (int *) ;
+ int TAG_MM_REGION ;
+ int min (int,int) ;
 
 __attribute__((used)) static PMM_REGION
 MmSplitRegion(PMM_REGION InitialRegion, PVOID InitialBaseAddress,
@@ -39,21 +39,21 @@ MmSplitRegion(PMM_REGION InitialRegion, PVOID InitialBaseAddress,
     PMM_REGION NewRegion2;
     SIZE_T InternalLength;
 
-    /* Allocate this in front otherwise the failure case is too difficult. */
+
     NewRegion2 = ExAllocatePoolWithTag(NonPagedPool, sizeof(MM_REGION),
                                        TAG_MM_REGION);
-    if (NewRegion2 == NULL)
+    if (NewRegion2 == ((void*)0))
     {
-        return(NULL);
+        return(((void*)0));
     }
 
-    /* Create the new region. */
+
     NewRegion1 = ExAllocatePoolWithTag(NonPagedPool, sizeof(MM_REGION),
                                        TAG_MM_REGION);
-    if (NewRegion1 == NULL)
+    if (NewRegion1 == ((void*)0))
     {
         ExFreePoolWithTag(NewRegion2, TAG_MM_REGION);
-        return(NULL);
+        return(((void*)0));
     }
     NewRegion1->Type = NewType;
     NewRegion1->Protect = NewProtect;
@@ -63,17 +63,17 @@ MmSplitRegion(PMM_REGION InitialRegion, PVOID InitialBaseAddress,
     InsertAfterEntry(&InitialRegion->RegionListEntry,
                      &NewRegion1->RegionListEntry);
 
-    /*
-     * Call our helper function to do the changes on the addresses contained
-     * in the initial region.
-     */
+
+
+
+
     AlterFunc(AddressSpace, StartAddress, InternalLength, InitialRegion->Type,
               InitialRegion->Protect, NewType, NewProtect);
 
-    /*
-     * If necessary create a new region for the portion of the initial region
-     * beyond the range of addresses to alter.
-     */
+
+
+
+
     if (((char*)InitialBaseAddress + InitialRegion->Length) > ((char*)StartAddress + Length))
     {
         NewRegion2->Type = InitialRegion->Type;
@@ -88,7 +88,7 @@ MmSplitRegion(PMM_REGION InitialRegion, PVOID InitialBaseAddress,
         ExFreePoolWithTag(NewRegion2, TAG_MM_REGION);
     }
 
-    /* Either remove or shrink the initial region. */
+
     if (InitialBaseAddress == StartAddress)
     {
         RemoveEntryList(&InitialRegion->RegionListEntry);

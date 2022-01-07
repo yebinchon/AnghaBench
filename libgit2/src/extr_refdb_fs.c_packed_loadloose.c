@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  direach_flags; int /*<<< orphan*/  gitpath; } ;
-typedef  TYPE_1__ refdb_fs_backend ;
-typedef  int /*<<< orphan*/  git_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_BUF_INIT ; 
- int /*<<< orphan*/  GIT_REFS_DIR ; 
- int /*<<< orphan*/  _dirent_loose_load ; 
- int /*<<< orphan*/  git_buf_dispose (int /*<<< orphan*/ *) ; 
- scalar_t__ git_buf_joinpath (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int git_path_direach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int direach_flags; int gitpath; } ;
+typedef TYPE_1__ refdb_fs_backend ;
+typedef int git_buf ;
+
+
+ int GIT_BUF_INIT ;
+ int GIT_REFS_DIR ;
+ int _dirent_loose_load ;
+ int git_buf_dispose (int *) ;
+ scalar_t__ git_buf_joinpath (int *,int ,int ) ;
+ int git_path_direach (int *,int ,int ,TYPE_1__*) ;
 
 __attribute__((used)) static int packed_loadloose(refdb_fs_backend *backend)
 {
-	int error;
-	git_buf refs_path = GIT_BUF_INIT;
+ int error;
+ git_buf refs_path = GIT_BUF_INIT;
 
-	if (git_buf_joinpath(&refs_path, backend->gitpath, GIT_REFS_DIR) < 0)
-		return -1;
+ if (git_buf_joinpath(&refs_path, backend->gitpath, GIT_REFS_DIR) < 0)
+  return -1;
 
-	/*
-	 * Load all the loose files from disk into the Packfile table.
-	 * This will overwrite any old packed entries with their
-	 * updated loose versions
-	 */
-	error = git_path_direach(
-		&refs_path, backend->direach_flags, _dirent_loose_load, backend);
 
-	git_buf_dispose(&refs_path);
 
-	return error;
+
+
+
+ error = git_path_direach(
+  &refs_path, backend->direach_flags, _dirent_loose_load, backend);
+
+ git_buf_dispose(&refs_path);
+
+ return error;
 }

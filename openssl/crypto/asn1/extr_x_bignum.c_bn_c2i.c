@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  int /*<<< orphan*/  ASN1_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_bin2bn (unsigned char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bn_free (int /*<<< orphan*/ **,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  bn_new (int /*<<< orphan*/ **,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BIGNUM ;
+typedef int ASN1_VALUE ;
+typedef int ASN1_ITEM ;
+
+
+ int BN_bin2bn (unsigned char const*,int,int *) ;
+ int bn_free (int **,int const*) ;
+ int bn_new (int **,int const*) ;
 
 __attribute__((used)) static int bn_c2i(ASN1_VALUE **pval, const unsigned char *cont, int len,
                   int utype, char *free_cont, const ASN1_ITEM *it)
 {
     BIGNUM *bn;
 
-    if (*pval == NULL && !bn_new(pval, it))
+    if (*pval == ((void*)0) && !bn_new(pval, it))
         return 0;
     bn = (BIGNUM *)*pval;
     if (!BN_bin2bn(cont, len, bn)) {

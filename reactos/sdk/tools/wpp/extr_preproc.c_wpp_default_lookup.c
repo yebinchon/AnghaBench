@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- char* pp_xmalloc (scalar_t__) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char const*) ; 
- char* strrchr (char const*,char) ; 
+ int O_RDONLY ;
+ int close (int) ;
+ int free (char*) ;
+ int memcpy (char*,char const*,int) ;
+ int open (char*,int ) ;
+ char* pp_xmalloc (scalar_t__) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char const*) ;
+ char* strrchr (char const*,char) ;
 
 __attribute__((used)) static char *wpp_default_lookup(const char *name, int type, const char *parent_name,
                                 char **include_path, int include_path_count)
@@ -34,14 +26,14 @@ __attribute__((used)) static char *wpp_default_lookup(const char *name, int type
 
     cpy = pp_xmalloc(strlen(name)+1);
     if(!cpy)
-        return NULL;
+        return ((void*)0);
     cptr = cpy;
 
     for(ccptr = name; *ccptr; ccptr++)
     {
-        /* Convert to forward slash */
+
         if(*ccptr == '\\') {
-            /* kill double backslash */
+
             if(ccptr[1] == '\\')
                 ccptr++;
             *cptr = '/';
@@ -54,7 +46,7 @@ __attribute__((used)) static char *wpp_default_lookup(const char *name, int type
 
     if(type && parent_name)
     {
-        /* Search directory of parent include and then -I path */
+
         const char *p;
 
         if ((p = strrchr( parent_name, '/' ))) p++;
@@ -63,7 +55,7 @@ __attribute__((used)) static char *wpp_default_lookup(const char *name, int type
         if(!path)
         {
             free(cpy);
-            return NULL;
+            return ((void*)0);
         }
         memcpy( path, parent_name, p - parent_name );
         strcpy( path + (p - parent_name), cpy );
@@ -76,14 +68,14 @@ __attribute__((used)) static char *wpp_default_lookup(const char *name, int type
         }
         free( path );
     }
-    /* Search -I path */
+
     for(i = 0; i < include_path_count; i++)
     {
         path = pp_xmalloc(strlen(include_path[i]) + strlen(cpy) + 2);
         if(!path)
         {
             free(cpy);
-            return NULL;
+            return ((void*)0);
         }
         strcpy(path, include_path[i]);
         strcat(path, "/");
@@ -98,5 +90,5 @@ __attribute__((used)) static char *wpp_default_lookup(const char *name, int type
         free( path );
     }
     free( cpy );
-    return NULL;
+    return ((void*)0);
 }

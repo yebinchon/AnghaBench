@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ahc_softc {int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  bus_dmamap_t ;
-typedef  TYPE_1__* bus_dma_tag_t ;
-struct TYPE_3__ {int /*<<< orphan*/  maxsize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ahc_softc {int dev; } ;
+typedef int bus_dmamap_t ;
+typedef TYPE_1__* bus_dma_tag_t ;
+struct TYPE_3__ {int maxsize; } ;
+
+
+ int dma_free_coherent (int ,int ,void*,int ) ;
 
 void
 ahc_dmamem_free(struct ahc_softc *ahc, bus_dma_tag_t dmat,
-		void* vaddr, bus_dmamap_t map)
+  void* vaddr, bus_dmamap_t map)
 {
-	dma_free_coherent(ahc->dev, dmat->maxsize, vaddr, map);
+ dma_free_coherent(ahc->dev, dmat->maxsize, vaddr, map);
 }

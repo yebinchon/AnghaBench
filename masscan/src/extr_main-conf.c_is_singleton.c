@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char const* name; int flags; char const** alts; } ;
 
-/* Variables and functions */
- scalar_t__ EQUALS (char const*,char const*) ; 
- int F_BOOL ; 
- TYPE_1__* config_parameters ; 
+
+ scalar_t__ EQUALS (char const*,char const*) ;
+ int F_BOOL ;
+ TYPE_1__* config_parameters ;
 
 __attribute__((used)) static int
 is_singleton(const char *name)
@@ -44,7 +44,7 @@ is_singleton(const char *name)
         if (EQUALS(singletons[i], name))
             return 1;
     }
-    
+
     for (i=0; config_parameters[i].name; i++) {
         if (EQUALS(config_parameters[i].name, name)) {
             return (config_parameters[i].flags & F_BOOL) == F_BOOL;
@@ -57,6 +57,6 @@ is_singleton(const char *name)
             }
         }
     }
-    
+
     return 0;
 }

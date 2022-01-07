@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tonga_smumgr {int dummy; } ;
 struct pp_hwmgr {struct tonga_smumgr* smu_backend; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kfree (struct tonga_smumgr*) ; 
- struct tonga_smumgr* kzalloc (int,int /*<<< orphan*/ ) ; 
- scalar_t__ smu7_init (struct pp_hwmgr*) ; 
+
+ int EINVAL ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int kfree (struct tonga_smumgr*) ;
+ struct tonga_smumgr* kzalloc (int,int ) ;
+ scalar_t__ smu7_init (struct pp_hwmgr*) ;
 
 __attribute__((used)) static int tonga_smu_init(struct pp_hwmgr *hwmgr)
 {
-	struct tonga_smumgr *tonga_priv = NULL;
+ struct tonga_smumgr *tonga_priv = ((void*)0);
 
-	tonga_priv = kzalloc(sizeof(struct tonga_smumgr), GFP_KERNEL);
-	if (tonga_priv == NULL)
-		return -ENOMEM;
+ tonga_priv = kzalloc(sizeof(struct tonga_smumgr), GFP_KERNEL);
+ if (tonga_priv == ((void*)0))
+  return -ENOMEM;
 
-	hwmgr->smu_backend = tonga_priv;
+ hwmgr->smu_backend = tonga_priv;
 
-	if (smu7_init(hwmgr)) {
-		kfree(tonga_priv);
-		return -EINVAL;
-	}
+ if (smu7_init(hwmgr)) {
+  kfree(tonga_priv);
+  return -EINVAL;
+ }
 
-	return 0;
+ return 0;
 }

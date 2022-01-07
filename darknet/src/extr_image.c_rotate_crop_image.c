@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int w; int h; int c; } ;
-typedef  TYPE_1__ image ;
+typedef TYPE_1__ image ;
 
-/* Variables and functions */
- float bilinear_interpolate (TYPE_1__,float,float,int) ; 
- int cos (float) ; 
- TYPE_1__ make_image (int,int,int) ; 
- int /*<<< orphan*/  set_pixel (TYPE_1__,int,int,int,float) ; 
- int sin (float) ; 
+
+ float bilinear_interpolate (TYPE_1__,float,float,int) ;
+ int cos (float) ;
+ TYPE_1__ make_image (int,int,int) ;
+ int set_pixel (TYPE_1__,int,int,int,float) ;
+ int sin (float) ;
 
 image rotate_crop_image(image im, float rad, float s, int w, int h, float dx, float dy, float aspect)
 {

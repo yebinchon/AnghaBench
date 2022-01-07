@@ -1,85 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  udph ;
+
+
+
+
+typedef int udph ;
 struct v6hdr {int dummy; } ;
-struct udphdr {int /*<<< orphan*/  dest; int /*<<< orphan*/  protocol; } ;
-struct gre_hdr {int /*<<< orphan*/  dest; int /*<<< orphan*/  protocol; } ;
+struct udphdr {int dest; int protocol; } ;
+struct gre_hdr {int dest; int protocol; } ;
 struct __sk_buff {int dummy; } ;
-typedef  int /*<<< orphan*/  mpls_label ;
-typedef  int /*<<< orphan*/  greh ;
+typedef int mpls_label ;
+typedef int greh ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BPF_ADJ_ROOM_MAC ; 
- int /*<<< orphan*/  BPF_F_ADJ_ROOM_FIXED_GSO ; 
- int ETH_HLEN ; 
-#define  ETH_OVER_UDP_PORT 135 
-#define  ETH_P_MPLS_UC 134 
-#define  ETH_P_TEB 133 
-#define  IPPROTO_GRE 132 
-#define  IPPROTO_IPIP 131 
-#define  IPPROTO_IPV6 130 
-#define  IPPROTO_UDP 129 
-#define  MPLS_OVER_UDP_PORT 128 
- int TC_ACT_OK ; 
- int TC_ACT_SHOT ; 
- int /*<<< orphan*/  bpf_ntohs (int /*<<< orphan*/ ) ; 
- scalar_t__ bpf_skb_adjust_room (struct __sk_buff*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bpf_skb_load_bytes (struct __sk_buff*,int,struct udphdr*,int) ; 
+
+ int BPF_ADJ_ROOM_MAC ;
+ int BPF_F_ADJ_ROOM_FIXED_GSO ;
+ int ETH_HLEN ;
+ int TC_ACT_OK ;
+ int TC_ACT_SHOT ;
+ int bpf_ntohs (int ) ;
+ scalar_t__ bpf_skb_adjust_room (struct __sk_buff*,int,int ,int ) ;
+ int bpf_skb_load_bytes (struct __sk_buff*,int,struct udphdr*,int) ;
 
 __attribute__((used)) static int decap_internal(struct __sk_buff *skb, int off, int len, char proto)
 {
-	char buf[sizeof(struct v6hdr)];
-	struct gre_hdr greh;
-	struct udphdr udph;
-	int olen = len;
+ char buf[sizeof(struct v6hdr)];
+ struct gre_hdr greh;
+ struct udphdr udph;
+ int olen = len;
 
-	switch (proto) {
-	case IPPROTO_IPIP:
-	case IPPROTO_IPV6:
-		break;
-	case IPPROTO_GRE:
-		olen += sizeof(struct gre_hdr);
-		if (bpf_skb_load_bytes(skb, off + len, &greh, sizeof(greh)) < 0)
-			return TC_ACT_OK;
-		switch (bpf_ntohs(greh.protocol)) {
-		case ETH_P_MPLS_UC:
-			olen += sizeof(mpls_label);
-			break;
-		case ETH_P_TEB:
-			olen += ETH_HLEN;
-			break;
-		}
-		break;
-	case IPPROTO_UDP:
-		olen += sizeof(struct udphdr);
-		if (bpf_skb_load_bytes(skb, off + len, &udph, sizeof(udph)) < 0)
-			return TC_ACT_OK;
-		switch (bpf_ntohs(udph.dest)) {
-		case MPLS_OVER_UDP_PORT:
-			olen += sizeof(mpls_label);
-			break;
-		case ETH_OVER_UDP_PORT:
-			olen += ETH_HLEN;
-			break;
-		}
-		break;
-	default:
-		return TC_ACT_OK;
-	}
+ switch (proto) {
+ case 131:
+ case 130:
+  break;
+ case 132:
+  olen += sizeof(struct gre_hdr);
+  if (bpf_skb_load_bytes(skb, off + len, &greh, sizeof(greh)) < 0)
+   return TC_ACT_OK;
+  switch (bpf_ntohs(greh.protocol)) {
+  case 134:
+   olen += sizeof(mpls_label);
+   break;
+  case 133:
+   olen += ETH_HLEN;
+   break;
+  }
+  break;
+ case 129:
+  olen += sizeof(struct udphdr);
+  if (bpf_skb_load_bytes(skb, off + len, &udph, sizeof(udph)) < 0)
+   return TC_ACT_OK;
+  switch (bpf_ntohs(udph.dest)) {
+  case 128:
+   olen += sizeof(mpls_label);
+   break;
+  case 135:
+   olen += ETH_HLEN;
+   break;
+  }
+  break;
+ default:
+  return TC_ACT_OK;
+ }
 
-	if (bpf_skb_adjust_room(skb, -olen, BPF_ADJ_ROOM_MAC,
-				BPF_F_ADJ_ROOM_FIXED_GSO))
-		return TC_ACT_SHOT;
+ if (bpf_skb_adjust_room(skb, -olen, BPF_ADJ_ROOM_MAC,
+    BPF_F_ADJ_ROOM_FIXED_GSO))
+  return TC_ACT_SHOT;
 
-	return TC_ACT_OK;
+ return TC_ACT_OK;
 }

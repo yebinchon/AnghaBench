@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct udp_target_set {int state; int T_count; struct udp_target* last; struct udp_target* S; int /*<<< orphan*/  T; int /*<<< orphan*/  pid; int /*<<< orphan*/  utime; } ;
-struct TYPE_3__ {int /*<<< orphan*/  pid; int /*<<< orphan*/  utime; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct udp_target_set {int state; int T_count; struct udp_target* last; struct udp_target* S; int T; int pid; int utime; } ;
+struct TYPE_3__ {int pid; int utime; } ;
 struct udp_target {TYPE_1__ PID; } ;
-struct process_id {int /*<<< orphan*/  pid; int /*<<< orphan*/  utime; } ;
+struct process_id {int pid; int utime; } ;
 struct TYPE_4__ {struct udp_target* x; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  tree_clear_udp_target_by_fpid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_delete_udp_target_by_fpid (int /*<<< orphan*/ ,struct udp_target*) ; 
- TYPE_2__* tree_get_min_udp_target_by_fpid (int /*<<< orphan*/ ) ; 
- struct udp_target** tree_lookup_value_udp_target_by_fpid (int /*<<< orphan*/ ,void*) ; 
- struct udp_target_set** tree_lookup_value_udp_target_set (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  udp_target_free (struct udp_target*) ; 
- int /*<<< orphan*/  udp_target_set_tree ; 
+
+ int assert (int) ;
+ int tree_clear_udp_target_by_fpid (int ) ;
+ int tree_delete_udp_target_by_fpid (int ,struct udp_target*) ;
+ TYPE_2__* tree_get_min_udp_target_by_fpid (int ) ;
+ struct udp_target** tree_lookup_value_udp_target_by_fpid (int ,void*) ;
+ struct udp_target_set** tree_lookup_value_udp_target_set (int ,void*) ;
+ int udp_target_free (struct udp_target*) ;
+ int udp_target_set_tree ;
 
 void udp_target_delete_by_pid (struct process_id *pid) {
   struct udp_target_set **_S = tree_lookup_value_udp_target_set (udp_target_set_tree, (void *)pid);
@@ -58,7 +58,7 @@ void udp_target_delete_by_pid (struct process_id *pid) {
         ST->T = tree_delete_udp_target_by_fpid (ST->T, S);
         ST->T_count --;
         udp_target_free (S);
-        
+
         S = tree_get_min_udp_target_by_fpid (ST->T)->x;
 
         if (ST->T_count == 1) {
@@ -66,7 +66,7 @@ void udp_target_delete_by_pid (struct process_id *pid) {
           ST->state = 2;
           ST->S = S;
         } else {
-          if (!ok) { 
+          if (!ok) {
             ST->last = S;
           }
         }
@@ -76,7 +76,7 @@ void udp_target_delete_by_pid (struct process_id *pid) {
   default:
     assert (0);
     return;
-    
+
   }
 
 }

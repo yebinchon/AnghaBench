@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_8__ {int flv_size; int flv_off; int /*<<< orphan*/  const* flv_data; } ;
-struct TYPE_7__ {int size; int timestamp; int /*<<< orphan*/  const* data; } ;
-typedef  TYPE_1__ RTMPPacket ;
-typedef  TYPE_2__ RTMPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int RTMP_HEADER ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int av_reallocp (int /*<<< orphan*/  const**,int) ; 
- int bytestream_get_be24 (int /*<<< orphan*/  const**) ; 
- int bytestream_get_byte (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  bytestream_put_be24 (int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  bytestream_put_be32 (int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/  const**,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int update_offset (TYPE_2__*,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int uint32_t ;
+struct TYPE_8__ {int flv_size; int flv_off; int const* flv_data; } ;
+struct TYPE_7__ {int size; int timestamp; int const* data; } ;
+typedef TYPE_1__ RTMPPacket ;
+typedef TYPE_2__ RTMPContext ;
+
+
+ int AV_LOG_WARNING ;
+ int RTMP_HEADER ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int av_reallocp (int const**,int) ;
+ int bytestream_get_be24 (int const**) ;
+ int bytestream_get_byte (int const**) ;
+ int bytestream_put_be24 (int const**,int) ;
+ int bytestream_put_be32 (int const**,int) ;
+ int bytestream_put_byte (int const**,int) ;
+ int memcpy (int const*,int const*,int) ;
+ int update_offset (TYPE_2__*,int) ;
 
 __attribute__((used)) static int handle_metadata(RTMPContext *rt, RTMPPacket *pkt)
 {
@@ -48,15 +48,15 @@ __attribute__((used)) static int handle_metadata(RTMPContext *rt, RTMPPacket *pk
     }
 
     next = pkt->data;
-    p    = rt->flv_data + old_flv_size;
+    p = rt->flv_data + old_flv_size;
 
-    /* copy data while rewriting timestamps */
+
     ts = pkt->timestamp;
 
     while (next - pkt->data < pkt->size - RTMP_HEADER) {
         type = bytestream_get_byte(&next);
         size = bytestream_get_be24(&next);
-        cts  = bytestream_get_be24(&next);
+        cts = bytestream_get_be24(&next);
         cts |= bytestream_get_byte(&next) << 24;
         if (!pts)
             pts = cts;
@@ -69,7 +69,7 @@ __attribute__((used)) static int handle_metadata(RTMPContext *rt, RTMPPacket *pk
         bytestream_put_be24(&p, ts);
         bytestream_put_byte(&p, ts >> 24);
         memcpy(p, next, size + 3 + 4);
-        p    += size + 3;
+        p += size + 3;
         bytestream_put_be32(&p, size + RTMP_HEADER);
         next += size + 3 + 4;
     }

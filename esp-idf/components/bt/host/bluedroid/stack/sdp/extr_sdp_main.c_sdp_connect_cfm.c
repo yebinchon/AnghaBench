@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ mode; int /*<<< orphan*/  mps; int /*<<< orphan*/  mon_tout; int /*<<< orphan*/  rtrans_tout; int /*<<< orphan*/  max_transmit; int /*<<< orphan*/  tx_win_sz; } ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ mode; int mps; int mon_tout; int rtrans_tout; int max_transmit; int tx_win_sz; } ;
 struct TYPE_9__ {TYPE_1__ fcr; scalar_t__ fcr_present; } ;
-typedef  TYPE_2__ tL2CAP_CFG_INFO ;
-struct TYPE_10__ {scalar_t__ con_state; int /*<<< orphan*/  user_data; int /*<<< orphan*/  (* p_cb2 ) (scalar_t__,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_cb ) (scalar_t__) ;int /*<<< orphan*/  connection_id; } ;
-typedef  TYPE_3__ tCONN_CB ;
-typedef  scalar_t__ UINT16 ;
+typedef TYPE_2__ tL2CAP_CFG_INFO ;
+struct TYPE_10__ {scalar_t__ con_state; int user_data; int (* p_cb2 ) (scalar_t__,int ) ;int (* p_cb ) (scalar_t__) ;int connection_id; } ;
+typedef TYPE_3__ tCONN_CB ;
+typedef scalar_t__ UINT16 ;
 struct TYPE_11__ {TYPE_2__ l2cap_my_cfg; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ HCI_ERR_AUTH_FAILURE ; 
- scalar_t__ HCI_ERR_HOST_REJECT_DEVICE ; 
- scalar_t__ HCI_ERR_HOST_REJECT_SECURITY ; 
- scalar_t__ HCI_ERR_KEY_MISSING ; 
- scalar_t__ HCI_ERR_PAIRING_NOT_ALLOWED ; 
- scalar_t__ HCI_ERR_PAIRING_WITH_UNIT_KEY_NOT_SUPPORTED ; 
- scalar_t__ L2CAP_CONN_OK ; 
- scalar_t__ L2CAP_FCR_BASIC_MODE ; 
- int /*<<< orphan*/  L2CA_ConfigReq (scalar_t__,TYPE_2__*) ; 
- scalar_t__ SDP_CONN_FAILED ; 
- scalar_t__ SDP_CONN_REJECTED ; 
- scalar_t__ SDP_SECURITY_ERR ; 
- scalar_t__ SDP_STATE_CFG_SETUP ; 
- scalar_t__ SDP_STATE_CONN_SETUP ; 
- int /*<<< orphan*/  SDP_TRACE_DEBUG (char*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDP_TRACE_EVENT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDP_TRACE_WARNING (char*,scalar_t__,...) ; 
- TYPE_6__ sdp_cb ; 
- TYPE_3__* sdpu_find_ccb_by_cid (scalar_t__) ; 
- int /*<<< orphan*/  sdpu_release_ccb (TYPE_3__*) ; 
- int /*<<< orphan*/  stub1 (scalar_t__) ; 
- int /*<<< orphan*/  stub2 (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ HCI_ERR_AUTH_FAILURE ;
+ scalar_t__ HCI_ERR_HOST_REJECT_DEVICE ;
+ scalar_t__ HCI_ERR_HOST_REJECT_SECURITY ;
+ scalar_t__ HCI_ERR_KEY_MISSING ;
+ scalar_t__ HCI_ERR_PAIRING_NOT_ALLOWED ;
+ scalar_t__ HCI_ERR_PAIRING_WITH_UNIT_KEY_NOT_SUPPORTED ;
+ scalar_t__ L2CAP_CONN_OK ;
+ scalar_t__ L2CAP_FCR_BASIC_MODE ;
+ int L2CA_ConfigReq (scalar_t__,TYPE_2__*) ;
+ scalar_t__ SDP_CONN_FAILED ;
+ scalar_t__ SDP_CONN_REJECTED ;
+ scalar_t__ SDP_SECURITY_ERR ;
+ scalar_t__ SDP_STATE_CFG_SETUP ;
+ scalar_t__ SDP_STATE_CONN_SETUP ;
+ int SDP_TRACE_DEBUG (char*,scalar_t__,int ,int ,int ,int ,int ) ;
+ int SDP_TRACE_EVENT (char*,int ) ;
+ int SDP_TRACE_WARNING (char*,scalar_t__,...) ;
+ TYPE_6__ sdp_cb ;
+ TYPE_3__* sdpu_find_ccb_by_cid (scalar_t__) ;
+ int sdpu_release_ccb (TYPE_3__*) ;
+ int stub1 (scalar_t__) ;
+ int stub2 (scalar_t__,int ) ;
 
 __attribute__((used)) static void sdp_connect_cfm (UINT16 l2cap_cid, UINT16 result)
 {
-    tCONN_CB    *p_ccb;
+    tCONN_CB *p_ccb;
     tL2CAP_CFG_INFO cfg;
 
-    /* Find CCB based on CID */
-    if ((p_ccb = sdpu_find_ccb_by_cid (l2cap_cid)) == NULL) {
+
+    if ((p_ccb = sdpu_find_ccb_by_cid (l2cap_cid)) == ((void*)0)) {
         SDP_TRACE_WARNING ("SDP - Rcvd conn cnf for unknown CID 0x%x\n", l2cap_cid);
         return;
     }
 
-    /* If the connection response contains success status, then */
-    /* Transition to the next state and startup the timer.      */
+
+
     if ((result == L2CAP_CONN_OK) && (p_ccb->con_state == SDP_STATE_CONN_SETUP)) {
         p_ccb->con_state = SDP_STATE_CFG_SETUP;
 
@@ -73,7 +73,7 @@ __attribute__((used)) static void sdp_connect_cfm (UINT16 l2cap_cid, UINT16 resu
 
         if ((!L2CA_ConfigReq (l2cap_cid, &cfg)) && cfg.fcr_present
                 && cfg.fcr.mode != L2CAP_FCR_BASIC_MODE) {
-            /* FCR not desired; try again in basic mode */
+
             cfg.fcr_present = FALSE;
             cfg.fcr.mode = L2CAP_FCR_BASIC_MODE;
             L2CA_ConfigReq (l2cap_cid, &cfg);
@@ -83,7 +83,7 @@ __attribute__((used)) static void sdp_connect_cfm (UINT16 l2cap_cid, UINT16 resu
     } else {
         SDP_TRACE_WARNING ("SDP - Rcvd conn cnf with error: 0x%x  CID 0x%x\n", result, p_ccb->connection_id);
 
-        /* Tell the user if he has a callback */
+
         if (p_ccb->p_cb || p_ccb->p_cb2) {
             UINT16 err = -1;
             if ((result == HCI_ERR_HOST_REJECT_SECURITY)

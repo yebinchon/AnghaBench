@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t openvpn_service_type ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastErrorText () ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SC_MANAGER_ALL_ACCESS ; 
- int /*<<< orphan*/  SERVICE_ALL_ACCESS ; 
- scalar_t__ StartService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
- TYPE_1__* openvpn_service ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t openvpn_service_type ;
+struct TYPE_2__ {int name; } ;
+typedef int * SC_HANDLE ;
+
+
+ int CloseServiceHandle (int *) ;
+ int GetLastErrorText () ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int * OpenService (int *,int ,int ) ;
+ int SC_MANAGER_ALL_ACCESS ;
+ int SERVICE_ALL_ACCESS ;
+ scalar_t__ StartService (int *,int ,int *) ;
+ int TEXT (char*) ;
+ int _tprintf (int ,...) ;
+ TYPE_1__* openvpn_service ;
 
 __attribute__((used)) static int
 CmdStartService(openvpn_service_type type)
@@ -34,8 +34,8 @@ CmdStartService(openvpn_service_type type)
     SC_HANDLE svc_ctl_mgr;
     SC_HANDLE service;
 
-    svc_ctl_mgr = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
-    if (svc_ctl_mgr == NULL)
+    svc_ctl_mgr = OpenSCManager(((void*)0), ((void*)0), SC_MANAGER_ALL_ACCESS);
+    if (svc_ctl_mgr == ((void*)0))
     {
         _tprintf(TEXT("OpenSCManager failed - %s\n"), GetLastErrorText());
         return 1;
@@ -44,7 +44,7 @@ CmdStartService(openvpn_service_type type)
     service = OpenService(svc_ctl_mgr, openvpn_service[type].name, SERVICE_ALL_ACCESS);
     if (service)
     {
-        if (StartService(service, 0, NULL))
+        if (StartService(service, 0, ((void*)0)))
         {
             _tprintf(TEXT("Service Started\n"));
             ret = 0;

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int connection_number_tcp; int /*<<< orphan*/  rtt_time; int /*<<< orphan*/  packets_left; void* packet_send_rate_requested; void* packet_send_rate; int /*<<< orphan*/  dht_public_key; int /*<<< orphan*/  status; int /*<<< orphan*/  shared_key; int /*<<< orphan*/  sessionsecret_key; int /*<<< orphan*/  peersessionpublic_key; int /*<<< orphan*/  sessionpublic_key; int /*<<< orphan*/  sent_nonce; int /*<<< orphan*/  recv_nonce; int /*<<< orphan*/  public_key; } ;
-struct TYPE_11__ {int /*<<< orphan*/  tcp_mutex; int /*<<< orphan*/  tcp_c; TYPE_3__* crypto_connections; } ;
-struct TYPE_10__ {scalar_t__ cookie_length; int /*<<< orphan*/  source; int /*<<< orphan*/  dht_public_key; int /*<<< orphan*/  cookie; int /*<<< orphan*/  peersessionpublic_key; int /*<<< orphan*/  recv_nonce; int /*<<< orphan*/  public_key; } ;
-typedef  TYPE_1__ New_Connection ;
-typedef  TYPE_2__ Net_Crypto ;
-typedef  TYPE_3__ Crypto_Connection ;
 
-/* Variables and functions */
- scalar_t__ COOKIE_LENGTH ; 
- int /*<<< orphan*/  CRYPTO_CONN_NOT_CONFIRMED ; 
- int /*<<< orphan*/  CRYPTO_CONN_NO_CONNECTION ; 
- int /*<<< orphan*/  CRYPTO_MIN_QUEUE_LENGTH ; 
- void* CRYPTO_PACKET_MIN_RATE ; 
- int /*<<< orphan*/  DEFAULT_PING_CONNECTION ; 
- int create_crypto_connection (TYPE_2__*) ; 
- scalar_t__ create_send_handshake (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_box_NONCEBYTES ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  crypto_box_keypair (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_connection_add_source (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  encrypt_precompute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int getcryptconnection_id (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kill_tcp_connection_to (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int new_tcp_connection_to (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  random_nonce (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int connection_number_tcp; int rtt_time; int packets_left; void* packet_send_rate_requested; void* packet_send_rate; int dht_public_key; int status; int shared_key; int sessionsecret_key; int peersessionpublic_key; int sessionpublic_key; int sent_nonce; int recv_nonce; int public_key; } ;
+struct TYPE_11__ {int tcp_mutex; int tcp_c; TYPE_3__* crypto_connections; } ;
+struct TYPE_10__ {scalar_t__ cookie_length; int source; int dht_public_key; int cookie; int peersessionpublic_key; int recv_nonce; int public_key; } ;
+typedef TYPE_1__ New_Connection ;
+typedef TYPE_2__ Net_Crypto ;
+typedef TYPE_3__ Crypto_Connection ;
+
+
+ scalar_t__ COOKIE_LENGTH ;
+ int CRYPTO_CONN_NOT_CONFIRMED ;
+ int CRYPTO_CONN_NO_CONNECTION ;
+ int CRYPTO_MIN_QUEUE_LENGTH ;
+ void* CRYPTO_PACKET_MIN_RATE ;
+ int DEFAULT_PING_CONNECTION ;
+ int create_crypto_connection (TYPE_2__*) ;
+ scalar_t__ create_send_handshake (TYPE_2__*,int,int ,int ) ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_keypair (int ,int ) ;
+ int crypto_connection_add_source (TYPE_2__*,int,int ) ;
+ int encrypt_precompute (int ,int ,int ) ;
+ int getcryptconnection_id (TYPE_2__*,int ) ;
+ int kill_tcp_connection_to (int ,int) ;
+ int memcpy (int ,int ,int ) ;
+ int new_tcp_connection_to (int ,int ,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int random_nonce (int ) ;
 
 int accept_crypto_connection(Net_Crypto *c, New_Connection *n_c)
 {

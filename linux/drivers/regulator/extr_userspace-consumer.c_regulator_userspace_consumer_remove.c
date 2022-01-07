@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct userspace_consumer_data {int /*<<< orphan*/  supplies; int /*<<< orphan*/  num_supplies; scalar_t__ enabled; } ;
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct userspace_consumer_data {int supplies; int num_supplies; scalar_t__ enabled; } ;
+struct TYPE_2__ {int kobj; } ;
 struct platform_device {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  attr_group ; 
- struct userspace_consumer_data* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  regulator_bulk_disable (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int attr_group ;
+ struct userspace_consumer_data* platform_get_drvdata (struct platform_device*) ;
+ int regulator_bulk_disable (int ,int ) ;
+ int sysfs_remove_group (int *,int *) ;
 
 __attribute__((used)) static int regulator_userspace_consumer_remove(struct platform_device *pdev)
 {
-	struct userspace_consumer_data *data = platform_get_drvdata(pdev);
+ struct userspace_consumer_data *data = platform_get_drvdata(pdev);
 
-	sysfs_remove_group(&pdev->dev.kobj, &attr_group);
+ sysfs_remove_group(&pdev->dev.kobj, &attr_group);
 
-	if (data->enabled)
-		regulator_bulk_disable(data->num_supplies, data->supplies);
+ if (data->enabled)
+  regulator_bulk_disable(data->num_supplies, data->supplies);
 
-	return 0;
+ return 0;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int queue_start; int queue_end; int /*<<< orphan*/ * protocol; int /*<<< orphan*/ * queue; int /*<<< orphan*/  (* ready ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PipelineEntry ;
-typedef  TYPE_1__ Pipeline ;
 
-/* Variables and functions */
- scalar_t__ PIPELINE_EMPTY (TYPE_1__*) ; 
- int /*<<< orphan*/  PipelineEntry_DECREF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PipelineEntry_get_task (int /*<<< orphan*/ ) ; 
- scalar_t__ PipelineEntry_is_task (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyObject_CallFunctionObjArgs (int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,int /*<<< orphan*/ *),int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/ * PyObject_GetAttrString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_False ; 
- int /*<<< orphan*/ * Py_True ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XINCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int queue_start; int queue_end; int * protocol; int * queue; int (* ready ) (int ,int *) ;} ;
+typedef int PyObject ;
+typedef int PipelineEntry ;
+typedef TYPE_1__ Pipeline ;
+
+
+ scalar_t__ PIPELINE_EMPTY (TYPE_1__*) ;
+ int PipelineEntry_DECREF (int ) ;
+ int * PipelineEntry_get_task (int ) ;
+ scalar_t__ PipelineEntry_is_task (int ) ;
+ int * PyObject_CallFunctionObjArgs (int (*) (int ,int *),int ,...) ;
+ int * PyObject_GetAttrString (int *,char*) ;
+ int Py_DECREF (int *) ;
+ int * Py_False ;
+ int * Py_True ;
+ int Py_XDECREF (int *) ;
+ int Py_XINCREF (int *) ;
+ int stub1 (int ,int *) ;
 
 __attribute__((used)) static PyObject*
 Pipeline__task_done(Pipeline* self, PyObject* task)
@@ -38,8 +38,8 @@ Pipeline__task_done(Pipeline* self, PyObject* task)
   PipelineEntry *queue_entry;
   for(queue_entry = self->queue + self->queue_start;
       queue_entry < self->queue + self->queue_end; queue_entry++) {
-    PyObject* done = NULL;
-    PyObject* done_result = NULL;
+    PyObject* done = ((void*)0);
+    PyObject* done_result = ((void*)0);
     result = Py_True;
 
     if(PipelineEntry_is_task(*queue_entry)) {
@@ -48,7 +48,7 @@ Pipeline__task_done(Pipeline* self, PyObject* task)
       if(!(done = PyObject_GetAttrString(task, "done")))
         goto loop_error;
 
-      if(!(done_result = PyObject_CallFunctionObjArgs(done, NULL)))
+      if(!(done_result = PyObject_CallFunctionObjArgs(done, ((void*)0))))
         goto loop_error;
 
       if(done_result == Py_False) {
@@ -57,22 +57,22 @@ Pipeline__task_done(Pipeline* self, PyObject* task)
       }
     }
 
-#ifdef PIPELINE_OPAQUE
-    PyObject* tmp;
-    if(!(tmp = PyObject_CallFunctionObjArgs(self->ready, *queue_entry, NULL)))
-      goto loop_error;
-    Py_DECREF(tmp);
-#else
+
+
+
+
+
+
     if(!self->ready(*queue_entry, self->protocol))
       goto loop_error;
-#endif
+
 
     PipelineEntry_DECREF(*queue_entry);
 
     goto loop_finally;
 
     loop_error:
-    result = NULL;
+    result = ((void*)0);
 
     loop_finally:
     Py_XDECREF(done_result);
@@ -85,16 +85,16 @@ Pipeline__task_done(Pipeline* self, PyObject* task)
 
   self->queue_start = queue_entry - self->queue;
 
-#ifndef PIPELINE_OPAQUE
+
   if(PIPELINE_EMPTY(self))
-    // we became empty so release protocol
+
     Py_DECREF(self->protocol);
-#endif
+
 
   goto finally;
 
   error:
-  result = NULL;
+  result = ((void*)0);
 
   finally:
   Py_XINCREF(result);

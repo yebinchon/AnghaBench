@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct aic7xxx_host {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISCONNECTED_SCBH ; 
- int /*<<< orphan*/  SCBPTR ; 
- unsigned char SCB_LIST_NULL ; 
- int /*<<< orphan*/  SCB_NEXT ; 
- int /*<<< orphan*/  aic7xxx_add_curscb_to_free_list (struct aic7xxx_host*) ; 
- unsigned char aic_inb (struct aic7xxx_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aic_outb (struct aic7xxx_host*,unsigned char,int /*<<< orphan*/ ) ; 
+
+ int DISCONNECTED_SCBH ;
+ int SCBPTR ;
+ unsigned char SCB_LIST_NULL ;
+ int SCB_NEXT ;
+ int aic7xxx_add_curscb_to_free_list (struct aic7xxx_host*) ;
+ unsigned char aic_inb (struct aic7xxx_host*,int ) ;
+ int aic_outb (struct aic7xxx_host*,unsigned char,int ) ;
 
 __attribute__((used)) static unsigned char
 aic7xxx_rem_scb_from_disc_list(struct aic7xxx_host *p, unsigned char scbptr,

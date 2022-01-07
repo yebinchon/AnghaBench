@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int IsNullCipher; int Encrypt; int /*<<< orphan*/  Cipher; int /*<<< orphan*/ * Ctx; } ;
-typedef  TYPE_1__ CIPHER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_CipherInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int IsNullCipher; int Encrypt; int Cipher; int * Ctx; } ;
+typedef TYPE_1__ CIPHER ;
+
+
+ int EVP_CipherInit (int *,int ,void*,int *,int) ;
 
 void SetCipherKey(CIPHER *c, void *key, bool enc)
 {
-	// Validate arguments
-	if (c == NULL || key == NULL)
-	{
-		return;
-	}
 
-	if (c->IsNullCipher == false)
-	{
-		if (c->Ctx != NULL)
-		{
-			EVP_CipherInit(c->Ctx, c->Cipher, key, NULL, enc);
-		}
-	}
+ if (c == ((void*)0) || key == ((void*)0))
+ {
+  return;
+ }
 
-	c->Encrypt = enc;
+ if (c->IsNullCipher == 0)
+ {
+  if (c->Ctx != ((void*)0))
+  {
+   EVP_CipherInit(c->Ctx, c->Cipher, key, ((void*)0), enc);
+  }
+ }
+
+ c->Encrypt = enc;
 }

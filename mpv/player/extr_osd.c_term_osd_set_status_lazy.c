@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MPContext {char* term_osd_status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strchr (char*,char) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
- char* talloc_strdup (struct MPContext*,char const*) ; 
- int /*<<< orphan*/  terminal_get_size (int*,int*) ; 
+
+ int strchr (char*,char) ;
+ int strlen (char*) ;
+ int talloc_free (char*) ;
+ char* talloc_strdup (struct MPContext*,char const*) ;
+ int terminal_get_size (int*,int*) ;
 
 __attribute__((used)) static void term_osd_set_status_lazy(struct MPContext *mpctx, const char *text)
 {

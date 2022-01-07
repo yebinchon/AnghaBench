@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CGroupMask ;
-typedef  scalar_t__ CGroupController ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGROUP_CONTROLLER_TO_MASK (scalar_t__) ; 
- int /*<<< orphan*/  CGROUP_MASK_EXTEND_JOINED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CGROUP_MASK_V1 ; 
- scalar_t__ FLAGS_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYSTEMD_CGROUP_CONTROLLER ; 
- scalar_t__ _CGROUP_CONTROLLER_MAX ; 
- int cg_all_unified () ; 
- int cg_trim (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  cgroup_controller_to_string (scalar_t__) ; 
+
+
+
+typedef int CGroupMask ;
+typedef scalar_t__ CGroupController ;
+
+
+ int CGROUP_CONTROLLER_TO_MASK (scalar_t__) ;
+ int CGROUP_MASK_EXTEND_JOINED (int ) ;
+ int CGROUP_MASK_V1 ;
+ scalar_t__ FLAGS_SET (int ,int ) ;
+ int SYSTEMD_CGROUP_CONTROLLER ;
+ scalar_t__ _CGROUP_CONTROLLER_MAX ;
+ int cg_all_unified () ;
+ int cg_trim (int ,char const*,int) ;
+ int cgroup_controller_to_string (scalar_t__) ;
 
 int cg_trim_everywhere(CGroupMask supported, const char *path, bool delete_root) {
         CGroupController c;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * dc_clk; int /*<<< orphan*/ * hhc_clk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  clk_enable (int /*<<< orphan*/ *) ; 
- TYPE_1__* udc ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * dc_clk; int * hhc_clk; } ;
+
+
+ int clk_disable (int *) ;
+ int clk_enable (int *) ;
+ TYPE_1__* udc ;
+ int udelay (int) ;
 
 __attribute__((used)) static void omap_udc_enable_clock(int enable)
 {
-	if (udc == NULL || udc->dc_clk == NULL || udc->hhc_clk == NULL)
-		return;
+ if (udc == ((void*)0) || udc->dc_clk == ((void*)0) || udc->hhc_clk == ((void*)0))
+  return;
 
-	if (enable) {
-		clk_enable(udc->dc_clk);
-		clk_enable(udc->hhc_clk);
-		udelay(100);
-	} else {
-		clk_disable(udc->hhc_clk);
-		clk_disable(udc->dc_clk);
-	}
+ if (enable) {
+  clk_enable(udc->dc_clk);
+  clk_enable(udc->hhc_clk);
+  udelay(100);
+ } else {
+  clk_disable(udc->hhc_clk);
+  clk_disable(udc->dc_clk);
+ }
 }

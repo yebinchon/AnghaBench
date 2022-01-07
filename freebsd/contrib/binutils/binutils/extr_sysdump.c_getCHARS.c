@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,unsigned char*,int) ; 
- char* xcalloc (int,int) ; 
+ int memcpy (char*,unsigned char*,int) ;
+ char* xcalloc (int,int) ;
 
 __attribute__((used)) static char *
 getCHARS (unsigned char *ptr, int *idx, int size, int max)
@@ -27,7 +19,7 @@ getCHARS (unsigned char *ptr, int *idx, int size, int max)
 
   if (b == 0)
     {
-      /* Got to work out the length of the string from self.  */
+
       b = ptr[oc++];
       (*idx) += 8;
     }

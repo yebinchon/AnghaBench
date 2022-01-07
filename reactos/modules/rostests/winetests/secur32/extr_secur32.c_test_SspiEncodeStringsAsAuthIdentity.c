@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char WCHAR ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  int /*<<< orphan*/ * PSEC_WINNT_AUTH_IDENTITY_OPAQUE ;
 
-/* Variables and functions */
- scalar_t__ SEC_E_INVALID_TOKEN ; 
- scalar_t__ SEC_E_OK ; 
- int /*<<< orphan*/  lstrcmpW (unsigned char const*,unsigned char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pSspiEncodeAuthIdentityAsStrings (int /*<<< orphan*/ *,unsigned char const**,unsigned char const**,unsigned char const**) ; 
- scalar_t__ pSspiEncodeStringsAsAuthIdentity (unsigned char const*,unsigned char const*,unsigned char const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  pSspiFreeAuthIdentity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pSspiLocalFree (void*) ; 
- int /*<<< orphan*/  pSspiZeroAuthIdentity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef unsigned char WCHAR ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef int * PSEC_WINNT_AUTH_IDENTITY_OPAQUE ;
+
+
+ scalar_t__ SEC_E_INVALID_TOKEN ;
+ scalar_t__ SEC_E_OK ;
+ int lstrcmpW (unsigned char const*,unsigned char const*) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pSspiEncodeAuthIdentityAsStrings (int *,unsigned char const**,unsigned char const**,unsigned char const**) ;
+ scalar_t__ pSspiEncodeStringsAsAuthIdentity (unsigned char const*,unsigned char const*,unsigned char const*,int **) ;
+ int pSspiFreeAuthIdentity (int *) ;
+ int pSspiLocalFree (void*) ;
+ int pSspiZeroAuthIdentity (int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_SspiEncodeStringsAsAuthIdentity(void)
 {
@@ -41,44 +41,44 @@ __attribute__((used)) static void test_SspiEncodeStringsAsAuthIdentity(void)
         return;
     }
 
-    status = pSspiEncodeStringsAsAuthIdentity( NULL, NULL, NULL, NULL );
+    status = pSspiEncodeStringsAsAuthIdentity( ((void*)0), ((void*)0), ((void*)0), ((void*)0) );
     ok( status == SEC_E_INVALID_TOKEN, "got %08x\n", status );
 
     id = (PSEC_WINNT_AUTH_IDENTITY_OPAQUE)0xdeadbeef;
-    status = pSspiEncodeStringsAsAuthIdentity( NULL, NULL, NULL, &id );
+    status = pSspiEncodeStringsAsAuthIdentity( ((void*)0), ((void*)0), ((void*)0), &id );
     ok( status == SEC_E_INVALID_TOKEN, "got %08x\n", status );
     ok( id == (PSEC_WINNT_AUTH_IDENTITY_OPAQUE)0xdeadbeef, "id set\n" );
 
-    id = NULL;
-    status = pSspiEncodeStringsAsAuthIdentity( NULL, NULL, password, &id );
+    id = ((void*)0);
+    status = pSspiEncodeStringsAsAuthIdentity( ((void*)0), ((void*)0), password, &id );
     ok( status == SEC_E_OK, "got %08x\n", status );
-    ok( id != NULL, "id not set\n" );
+    ok( id != ((void*)0), "id not set\n" );
     pSspiFreeAuthIdentity( id );
 
-    id = NULL;
-    status = pSspiEncodeStringsAsAuthIdentity( NULL, domainname, password, &id );
+    id = ((void*)0);
+    status = pSspiEncodeStringsAsAuthIdentity( ((void*)0), domainname, password, &id );
     ok( status == SEC_E_OK, "got %08x\n", status );
-    ok( id != NULL, "id not set\n" );
+    ok( id != ((void*)0), "id not set\n" );
     pSspiFreeAuthIdentity( id );
 
-    id = NULL;
-    status = pSspiEncodeStringsAsAuthIdentity( username, NULL, password, &id );
+    id = ((void*)0);
+    status = pSspiEncodeStringsAsAuthIdentity( username, ((void*)0), password, &id );
     ok( status == SEC_E_OK, "got %08x\n", status );
-    ok( id != NULL, "id not set\n" );
+    ok( id != ((void*)0), "id not set\n" );
     pSspiFreeAuthIdentity( id );
 
-    id = NULL;
-    status = pSspiEncodeStringsAsAuthIdentity( username, NULL, NULL, &id );
+    id = ((void*)0);
+    status = pSspiEncodeStringsAsAuthIdentity( username, ((void*)0), ((void*)0), &id );
     ok( status == SEC_E_OK, "got %08x\n", status );
-    ok( id != NULL, "id not set\n" );
+    ok( id != ((void*)0), "id not set\n" );
     pSspiFreeAuthIdentity( id );
 
-    id = NULL;
+    id = ((void*)0);
     status = pSspiEncodeStringsAsAuthIdentity( username, domainname, password, &id );
     ok( status == SEC_E_OK, "got %08x\n", status );
-    ok( id != NULL, "id not set\n" );
+    ok( id != ((void*)0), "id not set\n" );
 
-    username_ptr = domainname_ptr = password_ptr = NULL;
+    username_ptr = domainname_ptr = password_ptr = ((void*)0);
     status = pSspiEncodeAuthIdentityAsStrings( id, &username_ptr, &domainname_ptr, &password_ptr );
     ok( status == SEC_E_OK, "got %08x\n", status );
     ok( !lstrcmpW( username, username_ptr ), "wrong username\n" );
@@ -92,17 +92,17 @@ __attribute__((used)) static void test_SspiEncodeStringsAsAuthIdentity(void)
     pSspiLocalFree( (void *)password_ptr );
     pSspiFreeAuthIdentity( id );
 
-    id = NULL;
-    status = pSspiEncodeStringsAsAuthIdentity( username, NULL, password, &id );
+    id = ((void*)0);
+    status = pSspiEncodeStringsAsAuthIdentity( username, ((void*)0), password, &id );
     ok( status == SEC_E_OK, "got %08x\n", status );
-    ok( id != NULL, "id not set\n" );
+    ok( id != ((void*)0), "id not set\n" );
 
-    username_ptr = password_ptr = NULL;
+    username_ptr = password_ptr = ((void*)0);
     domainname_ptr = (const WCHAR *)0xdeadbeef;
     status = pSspiEncodeAuthIdentityAsStrings( id, &username_ptr, &domainname_ptr, &password_ptr );
     ok( status == SEC_E_OK, "got %08x\n", status );
     ok( !lstrcmpW( username, username_ptr ), "wrong username\n" );
-    ok( domainname_ptr == NULL, "domainname_ptr not cleared\n" );
+    ok( domainname_ptr == ((void*)0), "domainname_ptr not cleared\n" );
     ok( !lstrcmpW( password, password_ptr ), "wrong password\n" );
 
     pSspiLocalFree( (void *)username_ptr );

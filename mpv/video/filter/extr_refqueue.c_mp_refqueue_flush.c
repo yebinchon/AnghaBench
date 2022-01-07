@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mp_refqueue {int num_queue; int pos; int second_field; int eof; int /*<<< orphan*/  next; int /*<<< orphan*/ * queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_image_unrefp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
+
+
+
+struct mp_refqueue {int num_queue; int pos; int second_field; int eof; int next; int * queue; } ;
+
+
+ int mp_image_unrefp (int *) ;
+ int talloc_free (int ) ;
 
 void mp_refqueue_flush(struct mp_refqueue *q)
 {
@@ -22,7 +22,7 @@ void mp_refqueue_flush(struct mp_refqueue *q)
         talloc_free(q->queue[n]);
     q->num_queue = 0;
     q->pos = -1;
-    q->second_field = false;
-    q->eof = false;
+    q->second_field = 0;
+    q->eof = 0;
     mp_image_unrefp(&q->next);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cf_lexer {int unexpected_eof; int /*<<< orphan*/ * write_offset; int /*<<< orphan*/ * reformatted; int /*<<< orphan*/ * file; int /*<<< orphan*/  tokens; int /*<<< orphan*/  base_lexer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  da_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lexer_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct cf_lexer {int unexpected_eof; int * write_offset; int * reformatted; int * file; int tokens; int base_lexer; } ;
+
+
+ int da_init (int ) ;
+ int lexer_init (int *) ;
 
 void cf_lexer_init(struct cf_lexer *lex)
 {
-	lexer_init(&lex->base_lexer);
-	da_init(lex->tokens);
+ lexer_init(&lex->base_lexer);
+ da_init(lex->tokens);
 
-	lex->file = NULL;
-	lex->reformatted = NULL;
-	lex->write_offset = NULL;
-	lex->unexpected_eof = false;
+ lex->file = ((void*)0);
+ lex->reformatted = ((void*)0);
+ lex->write_offset = ((void*)0);
+ lex->unexpected_eof = 0;
 }

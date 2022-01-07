@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
 struct TYPE_7__ {TYPE_1__* vtbl; } ;
-struct TYPE_6__ {unsigned int argc; int /*<<< orphan*/  this; TYPE_3__* target; int /*<<< orphan*/ * args; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* call ) (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FunctionInstance ;
-typedef  TYPE_2__ BindFunction ;
+struct TYPE_6__ {unsigned int argc; int this; TYPE_3__* target; int * args; } ;
+struct TYPE_5__ {int (* call ) (int *,TYPE_3__*,int ,unsigned int,unsigned int,int *,int *) ;} ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int FunctionInstance ;
+typedef TYPE_2__ BindFunction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*) ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int E_OUTOFMEMORY ;
+ int TRACE (char*,TYPE_2__*) ;
+ int * heap_alloc (int) ;
+ int heap_free (int *) ;
+ int memcpy (int *,int *,unsigned int) ;
+ int stub1 (int *,TYPE_3__*,int ,unsigned int,unsigned int,int *,int *) ;
 
 __attribute__((used)) static HRESULT BindFunction_call(script_ctx_t *ctx, FunctionInstance *func, IDispatch *this_obj, unsigned flags,
          unsigned argc, jsval_t *argv, jsval_t *r)
 {
     BindFunction *function = (BindFunction*)func;
-    jsval_t *call_args = NULL;
+    jsval_t *call_args = ((void*)0);
     unsigned call_argc;
     HRESULT hres;
 

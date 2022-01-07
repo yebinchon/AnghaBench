@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ vlc_media_tree_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
-typedef  enum input_item_preparse_status { ____Placeholder_input_item_preparse_status } input_item_preparse_status ;
 
-/* Variables and functions */
- int /*<<< orphan*/  on_preparse_end ; 
- int vlc_media_tree_FindNodeByMedia (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_media_tree_Lock (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_media_tree_Notify (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_media_tree_Unlock (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int root; } ;
+typedef TYPE_1__ vlc_media_tree_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+typedef enum input_item_preparse_status { ____Placeholder_input_item_preparse_status } input_item_preparse_status ;
+
+
+ int on_preparse_end ;
+ int vlc_media_tree_FindNodeByMedia (int *,int *,int **,int *) ;
+ int vlc_media_tree_Lock (TYPE_1__*) ;
+ int vlc_media_tree_Notify (TYPE_1__*,int ,int *,int) ;
+ int vlc_media_tree_Unlock (TYPE_1__*) ;
 
 __attribute__((used)) static void
 media_subtree_preparse_ended(input_item_t *media,
@@ -33,11 +33,11 @@ media_subtree_preparse_ended(input_item_t *media,
 
     vlc_media_tree_Lock(tree);
     input_item_node_t *subtree_root;
-    /* TODO retrieve the node without traversing the tree */
+
     bool found = vlc_media_tree_FindNodeByMedia(&tree->root, media,
-                                                &subtree_root, NULL);
+                                                &subtree_root, ((void*)0));
     if (!found) {
-        /* the node probably failed to be allocated */
+
         vlc_media_tree_Unlock(tree);
         return;
     }

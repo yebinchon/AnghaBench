@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int O_BINARY ; 
- int O_CREAT ; 
- int O_RDONLY ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int _S_IREAD ; 
- int _S_IWRITE ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lseek (int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int open (char*,int,...) ; 
- int /*<<< orphan*/  unlink (char*) ; 
- int /*<<< orphan*/  write (int,char const*,int) ; 
+
+
+
+typedef int buffer ;
+typedef int FILE ;
+
+
+ int O_BINARY ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_WRONLY ;
+ int SEEK_SET ;
+ int _S_IREAD ;
+ int _S_IWRITE ;
+ int close (int) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int fread (char*,int,int,int *) ;
+ int lseek (int,int,int ) ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ int ok (int,char*) ;
+ int open (char*,int,...) ;
+ int unlink (char*) ;
+ int write (int,char const*,int) ;
 
 __attribute__((used)) static void test_fdopen( void )
 {

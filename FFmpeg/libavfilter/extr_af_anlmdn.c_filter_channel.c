@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  is_disabled; TYPE_4__* priv; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int is_disabled; TYPE_4__* priv; } ;
 struct TYPE_12__ {scalar_t__* extended_data; } ;
-struct TYPE_10__ {float (* compute_distance_ssd ) (float const*,float const*,int const) ;int /*<<< orphan*/  (* compute_cache ) (float*,float const*,int const,int const,int,int) ;} ;
-struct TYPE_11__ {int S; int K; int om; int offset; float m; int const H; float pdiff_lut_scale; float* weight_lut; TYPE_3__ dsp; int /*<<< orphan*/  a; TYPE_2__* cache; TYPE_1__* in; } ;
+struct TYPE_10__ {float (* compute_distance_ssd ) (float const*,float const*,int const) ;int (* compute_cache ) (float*,float const*,int const,int const,int,int) ;} ;
+struct TYPE_11__ {int S; int K; int om; int offset; float m; int const H; float pdiff_lut_scale; float* weight_lut; TYPE_3__ dsp; int a; TYPE_2__* cache; TYPE_1__* in; } ;
 struct TYPE_9__ {scalar_t__* extended_data; } ;
 struct TYPE_8__ {scalar_t__* extended_data; } ;
-typedef  TYPE_4__ AudioNLMeansContext ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVFilterContext ;
+typedef TYPE_4__ AudioNLMeansContext ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVFilterContext ;
 
-/* Variables and functions */
-#define  IN_MODE 130 
-#define  NOISE_MODE 129 
-#define  OUT_MODE 128 
- unsigned int WEIGHT_LUT_SIZE ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- float sqrtf (int /*<<< orphan*/ ) ; 
- float stub1 (float const*,float const*,int const) ; 
- int /*<<< orphan*/  stub2 (float*,float const*,int const,int const,int,int) ; 
- int /*<<< orphan*/  stub3 (float*,float const*,int const,int const,int,int) ; 
+
+
+
+
+ unsigned int WEIGHT_LUT_SIZE ;
+ int av_assert2 (int) ;
+ float sqrtf (int ) ;
+ float stub1 (float const*,float const*,int const) ;
+ int stub2 (float*,float const*,int const,int const,int,int) ;
+ int stub3 (float*,float const*,int const,int const,int,int) ;
 
 __attribute__((used)) static int filter_channel(AVFilterContext *ctx, void *arg, int ch, int nb_jobs)
 {
@@ -88,9 +88,9 @@ __attribute__((used)) static int filter_channel(AVFilterContext *ctx, void *arg,
         Q += 1;
 
         switch (om) {
-        case IN_MODE:    dst[i - S] = f[i];           break;
-        case OUT_MODE:   dst[i - S] = P / Q;          break;
-        case NOISE_MODE: dst[i - S] = f[i] - (P / Q); break;
+        case 130: dst[i - S] = f[i]; break;
+        case 128: dst[i - S] = P / Q; break;
+        case 129: dst[i - S] = f[i] - (P / Q); break;
         }
     }
 

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t READ ; 
- size_t WRITE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  c ; 
- int /*<<< orphan*/ * pipe_fd1 ; 
- int /*<<< orphan*/ * pipe_fd2 ; 
- int read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  touch () ; 
- int write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+ size_t READ ;
+ size_t WRITE ;
+ int assert (int) ;
+ int c ;
+ int * pipe_fd1 ;
+ int * pipe_fd2 ;
+ int read (int ,int *,int) ;
+ int touch () ;
+ int write (int ,int *,int) ;
 
 __attribute__((used)) static void *pipe_thread2(void *arg)
 {
-	while (1) {
-		assert(write(pipe_fd1[WRITE], &c, 1) == 1);
-		touch();
+ while (1) {
+  assert(write(pipe_fd1[WRITE], &c, 1) == 1);
+  touch();
 
-		assert(read(pipe_fd2[READ], &c, 1) == 1);
-		touch();
-	}
+  assert(read(pipe_fd2[READ], &c, 1) == 1);
+  touch();
+ }
 
-	return NULL;
+ return ((void*)0);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct ath_hw {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  switchcomspdt; } ;
+struct TYPE_2__ {int switchcomspdt; } ;
 
-/* Variables and functions */
- TYPE_1__* ar9003_modal_header (struct ath_hw*,int) ; 
- int /*<<< orphan*/  le16_to_cpu (int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* ar9003_modal_header (struct ath_hw*,int) ;
+ int le16_to_cpu (int ) ;
 
 __attribute__((used)) static u16 ar9003_switch_com_spdt_get(struct ath_hw *ah, bool is2ghz)
 {
-	return le16_to_cpu(ar9003_modal_header(ah, is2ghz)->switchcomspdt);
+ return le16_to_cpu(ar9003_modal_header(ah, is2ghz)->switchcomspdt);
 }

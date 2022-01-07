@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  groups; int /*<<< orphan*/  (* release ) (struct device*) ;int /*<<< orphan*/  id; int /*<<< orphan*/ * bus; } ;
-struct pcpu {int /*<<< orphan*/  cpu_id; struct device dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int device_register (struct device*) ; 
- int /*<<< orphan*/  pcpu_dev_groups ; 
- int /*<<< orphan*/  pcpu_release (struct device*) ; 
- int /*<<< orphan*/  xen_pcpu_subsys ; 
+
+
+
+struct device {int groups; int (* release ) (struct device*) ;int id; int * bus; } ;
+struct pcpu {int cpu_id; struct device dev; } ;
+
+
+ int EINVAL ;
+ int device_register (struct device*) ;
+ int pcpu_dev_groups ;
+ int pcpu_release (struct device*) ;
+ int xen_pcpu_subsys ;
 
 __attribute__((used)) static int register_pcpu(struct pcpu *pcpu)
 {
-	struct device *dev;
-	int err = -EINVAL;
+ struct device *dev;
+ int err = -EINVAL;
 
-	if (!pcpu)
-		return err;
+ if (!pcpu)
+  return err;
 
-	dev = &pcpu->dev;
-	dev->bus = &xen_pcpu_subsys;
-	dev->id = pcpu->cpu_id;
-	dev->release = pcpu_release;
-	dev->groups = pcpu_dev_groups;
+ dev = &pcpu->dev;
+ dev->bus = &xen_pcpu_subsys;
+ dev->id = pcpu->cpu_id;
+ dev->release = pcpu_release;
+ dev->groups = pcpu_dev_groups;
 
-	err = device_register(dev);
-	if (err) {
-		pcpu_release(dev);
-		return err;
-	}
+ err = device_register(dev);
+ if (err) {
+  pcpu_release(dev);
+  return err;
+ }
 
-	return 0;
+ return 0;
 }

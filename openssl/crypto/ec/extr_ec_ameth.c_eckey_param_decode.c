@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EC_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_F_ECKEY_PARAM_DECODE ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_EC_LIB ; 
- int /*<<< orphan*/  EVP_PKEY_assign_EC_KEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_ECParameters (int /*<<< orphan*/ *,unsigned char const**,int) ; 
+
+
+
+typedef int EVP_PKEY ;
+typedef int EC_KEY ;
+
+
+ int EC_F_ECKEY_PARAM_DECODE ;
+ int ECerr (int ,int ) ;
+ int ERR_R_EC_LIB ;
+ int EVP_PKEY_assign_EC_KEY (int *,int *) ;
+ int * d2i_ECParameters (int *,unsigned char const**,int) ;
 
 __attribute__((used)) static int eckey_param_decode(EVP_PKEY *pkey,
                               const unsigned char **pder, int derlen)
 {
     EC_KEY *eckey;
 
-    if ((eckey = d2i_ECParameters(NULL, pder, derlen)) == NULL) {
+    if ((eckey = d2i_ECParameters(((void*)0), pder, derlen)) == ((void*)0)) {
         ECerr(EC_F_ECKEY_PARAM_DECODE, ERR_R_EC_LIB);
         return 0;
     }

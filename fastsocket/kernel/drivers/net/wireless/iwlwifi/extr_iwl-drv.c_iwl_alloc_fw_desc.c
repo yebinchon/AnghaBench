@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iwl_drv {int dummy; } ;
-struct fw_sec {int /*<<< orphan*/  data; int /*<<< orphan*/  offset; int /*<<< orphan*/  size; } ;
-struct fw_desc {int /*<<< orphan*/ * data; int /*<<< orphan*/  len; int /*<<< orphan*/  offset; } ;
+struct fw_sec {int data; int offset; int size; } ;
+struct fw_desc {int * data; int len; int offset; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* vmalloc (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int ENOMEM ;
+ int memcpy (void*,int ,int ) ;
+ void* vmalloc (int ) ;
 
 __attribute__((used)) static int iwl_alloc_fw_desc(struct iwl_drv *drv, struct fw_desc *desc,
-			     struct fw_sec *sec)
+        struct fw_sec *sec)
 {
-	void *data;
+ void *data;
 
-	desc->data = NULL;
+ desc->data = ((void*)0);
 
-	if (!sec || !sec->size)
-		return -EINVAL;
+ if (!sec || !sec->size)
+  return -EINVAL;
 
-	data = vmalloc(sec->size);
-	if (!data)
-		return -ENOMEM;
+ data = vmalloc(sec->size);
+ if (!data)
+  return -ENOMEM;
 
-	desc->len = sec->size;
-	desc->offset = sec->offset;
-	memcpy(data, sec->data, desc->len);
-	desc->data = data;
+ desc->len = sec->size;
+ desc->offset = sec->offset;
+ memcpy(data, sec->data, desc->len);
+ desc->data = data;
 
-	return 0;
+ return 0;
 }

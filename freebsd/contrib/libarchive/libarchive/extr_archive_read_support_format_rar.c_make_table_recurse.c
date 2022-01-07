@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct huffman_table_entry {int length; int value; } ;
 struct huffman_code {int numentries; TYPE_1__* tree; } ;
-struct archive_read {int /*<<< orphan*/  archive; } ;
+struct archive_read {int archive; } ;
 struct TYPE_2__ {int* branches; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_ERRNO_FILE_FORMAT ; 
- int ARCHIVE_FATAL ; 
- int ARCHIVE_OK ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ int ARCHIVE_ERRNO_FILE_FORMAT ;
+ int ARCHIVE_FATAL ;
+ int ARCHIVE_OK ;
+ int archive_set_error (int *,int ,char*) ;
 
 __attribute__((used)) static int
 make_table_recurse(struct archive_read *a, struct huffman_code *code, int node,

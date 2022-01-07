@@ -1,51 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct dxbc_section {int tag; int /*<<< orphan*/  data_size; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct dxbc_section {int tag; int data_size; int data; } ;
 struct dxbc {unsigned int count; struct dxbc_section* sections; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3dcompiler_shader_reflection {int refcount; int /*<<< orphan*/  target; void* pcsg; void* osgn; void* isgn; int /*<<< orphan*/  types; TYPE_1__ ID3D11ShaderReflection_iface; } ;
-typedef  int /*<<< orphan*/  SIZE_T ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_2__ {int * lpVtbl; } ;
+struct d3dcompiler_shader_reflection {int refcount; int target; void* pcsg; void* osgn; void* isgn; int types; TYPE_1__ ID3D11ShaderReflection_iface; } ;
+typedef int SIZE_T ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
-#define  TAG_ISGN 135 
-#define  TAG_OSG5 134 
-#define  TAG_OSGN 133 
-#define  TAG_PCSG 132 
-#define  TAG_RDEF 131 
-#define  TAG_SHDR 130 
-#define  TAG_SHEX 129 
-#define  TAG_STAT 128 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  d3dcompiler_parse_rdef (struct d3dcompiler_shader_reflection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3dcompiler_parse_shdr (struct d3dcompiler_shader_reflection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3dcompiler_parse_signature (void*,struct dxbc_section*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3dcompiler_parse_stat (struct d3dcompiler_shader_reflection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3dcompiler_shader_reflection_type_compare ; 
- int /*<<< orphan*/  d3dcompiler_shader_reflection_vtbl ; 
- int /*<<< orphan*/  debugstr_an (char const*,int) ; 
- int /*<<< orphan*/  dxbc_destroy (struct dxbc*) ; 
- int /*<<< orphan*/  dxbc_parse (void const*,int /*<<< orphan*/ ,struct dxbc*) ; 
- int /*<<< orphan*/  reflection_cleanup (struct d3dcompiler_shader_reflection*) ; 
- int /*<<< orphan*/  wine_rb_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int WARN (char*) ;
+ int d3dcompiler_parse_rdef (struct d3dcompiler_shader_reflection*,int ,int ) ;
+ int d3dcompiler_parse_shdr (struct d3dcompiler_shader_reflection*,int ,int ) ;
+ int d3dcompiler_parse_signature (void*,struct dxbc_section*,int ) ;
+ int d3dcompiler_parse_stat (struct d3dcompiler_shader_reflection*,int ,int ) ;
+ int d3dcompiler_shader_reflection_type_compare ;
+ int d3dcompiler_shader_reflection_vtbl ;
+ int debugstr_an (char const*,int) ;
+ int dxbc_destroy (struct dxbc*) ;
+ int dxbc_parse (void const*,int ,struct dxbc*) ;
+ int reflection_cleanup (struct d3dcompiler_shader_reflection*) ;
+ int wine_rb_init (int *,int ) ;
 
 __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d3dcompiler_shader_reflection *reflection,
         const void *data, SIZE_T data_size)
@@ -72,7 +64,7 @@ __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d
 
         switch (section->tag)
         {
-            case TAG_RDEF:
+            case 131:
                 hr = d3dcompiler_parse_rdef(reflection, section->data, section->data_size);
                 if (FAILED(hr))
                 {
@@ -81,7 +73,7 @@ __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d
                 }
                 break;
 
-            case TAG_ISGN:
+            case 135:
                 reflection->isgn = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*reflection->isgn));
                 if (!reflection->isgn)
                 {
@@ -98,8 +90,8 @@ __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d
                 }
                 break;
 
-            case TAG_OSG5:
-            case TAG_OSGN:
+            case 134:
+            case 133:
                 reflection->osgn = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*reflection->osgn));
                 if (!reflection->osgn)
                 {
@@ -116,7 +108,7 @@ __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d
                 }
                 break;
 
-            case TAG_PCSG:
+            case 132:
                 reflection->pcsg = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*reflection->pcsg));
                 if (!reflection->pcsg)
                 {
@@ -133,8 +125,8 @@ __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d
                 }
                 break;
 
-            case TAG_SHEX:
-            case TAG_SHDR:
+            case 129:
+            case 130:
                 hr = d3dcompiler_parse_shdr(reflection, section->data, section->data_size);
                 if (FAILED(hr))
                 {
@@ -143,7 +135,7 @@ __attribute__((used)) static HRESULT d3dcompiler_shader_reflection_init(struct d
                 }
                 break;
 
-            case TAG_STAT:
+            case 128:
                 hr = d3dcompiler_parse_stat(reflection, section->data, section->data_size);
                 if (FAILED(hr))
                 {

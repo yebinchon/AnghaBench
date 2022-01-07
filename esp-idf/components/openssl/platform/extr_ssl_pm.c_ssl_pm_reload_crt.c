@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct x509_pm {scalar_t__ ex_crt; scalar_t__ x509_crt; } ;
-struct ssl_pm {int /*<<< orphan*/  conf; } ;
+struct ssl_pm {int conf; } ;
 struct pkey_pm {scalar_t__ ex_pkey; scalar_t__ pkey; } ;
 struct TYPE_11__ {int verify_mode; TYPE_4__* cert; TYPE_1__* client_CA; struct ssl_pm* ssl_pm; } ;
 struct TYPE_10__ {TYPE_3__* x509; TYPE_2__* pkey; } ;
 struct TYPE_9__ {scalar_t__ x509_pm; } ;
 struct TYPE_8__ {scalar_t__ pkey_pm; } ;
 struct TYPE_7__ {scalar_t__ x509_pm; } ;
-typedef  TYPE_5__ SSL ;
+typedef TYPE_5__ SSL ;
 
-/* Variables and functions */
- int MBEDTLS_SSL_VERIFY_NONE ; 
- int MBEDTLS_SSL_VERIFY_OPTIONAL ; 
- int MBEDTLS_SSL_VERIFY_REQUIRED ; 
- int MBEDTLS_SSL_VERIFY_UNSET ; 
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  SSL_PLATFORM_ERROR_LEVEL ; 
- int SSL_VERIFY_CLIENT_ONCE ; 
- int SSL_VERIFY_FAIL_IF_NO_PEER_CERT ; 
- int SSL_VERIFY_PEER ; 
- int /*<<< orphan*/  mbedtls_ssl_conf_authmode (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mbedtls_ssl_conf_ca_chain (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_conf_own_cert (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
+
+ int MBEDTLS_SSL_VERIFY_NONE ;
+ int MBEDTLS_SSL_VERIFY_OPTIONAL ;
+ int MBEDTLS_SSL_VERIFY_REQUIRED ;
+ int MBEDTLS_SSL_VERIFY_UNSET ;
+ int SSL_DEBUG (int ,char*,int) ;
+ int SSL_PLATFORM_ERROR_LEVEL ;
+ int SSL_VERIFY_CLIENT_ONCE ;
+ int SSL_VERIFY_FAIL_IF_NO_PEER_CERT ;
+ int SSL_VERIFY_PEER ;
+ int mbedtls_ssl_conf_authmode (int *,int) ;
+ int mbedtls_ssl_conf_ca_chain (int *,scalar_t__,int *) ;
+ int mbedtls_ssl_conf_own_cert (int *,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int ssl_pm_reload_crt(SSL *ssl)
 {
@@ -61,9 +61,9 @@ __attribute__((used)) static int ssl_pm_reload_crt(SSL *ssl)
     mbedtls_ssl_conf_authmode(&ssl_pm->conf, mode);
 
     if (ca_pm->x509_crt) {
-        mbedtls_ssl_conf_ca_chain(&ssl_pm->conf, ca_pm->x509_crt, NULL);
+        mbedtls_ssl_conf_ca_chain(&ssl_pm->conf, ca_pm->x509_crt, ((void*)0));
     } else if (ca_pm->ex_crt) {
-        mbedtls_ssl_conf_ca_chain(&ssl_pm->conf, ca_pm->ex_crt, NULL);
+        mbedtls_ssl_conf_ca_chain(&ssl_pm->conf, ca_pm->ex_crt, ((void*)0));
     }
 
     if (crt_pm->x509_crt && pkey_pm->pkey) {

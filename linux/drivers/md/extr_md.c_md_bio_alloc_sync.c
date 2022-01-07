@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mddev {int /*<<< orphan*/  sync_set; } ;
+
+
+
+
+struct mddev {int sync_set; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_NOIO ; 
- struct bio* bio_alloc (int /*<<< orphan*/ ,int) ; 
- struct bio* bio_alloc_bioset (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bioset_initialized (int /*<<< orphan*/ *) ; 
+
+ int GFP_NOIO ;
+ struct bio* bio_alloc (int ,int) ;
+ struct bio* bio_alloc_bioset (int ,int,int *) ;
+ int bioset_initialized (int *) ;
 
 __attribute__((used)) static struct bio *md_bio_alloc_sync(struct mddev *mddev)
 {
-	if (!mddev || !bioset_initialized(&mddev->sync_set))
-		return bio_alloc(GFP_NOIO, 1);
+ if (!mddev || !bioset_initialized(&mddev->sync_set))
+  return bio_alloc(GFP_NOIO, 1);
 
-	return bio_alloc_bioset(GFP_NOIO, 1, &mddev->sync_set);
+ return bio_alloc_bioset(GFP_NOIO, 1, &mddev->sync_set);
 }

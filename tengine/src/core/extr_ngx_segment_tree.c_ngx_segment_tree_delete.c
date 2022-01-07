@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ (* cmp ) (TYPE_2__*,TYPE_2__*) ;TYPE_2__* segments; int /*<<< orphan*/  extreme; } ;
-typedef  TYPE_1__ ngx_segment_tree_t ;
-typedef  size_t ngx_int_t ;
-struct TYPE_8__ {int /*<<< orphan*/  key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ngx_segment_node_copy (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ stub1 (TYPE_2__*,TYPE_2__*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ (* cmp ) (TYPE_2__*,TYPE_2__*) ;TYPE_2__* segments; int extreme; } ;
+typedef TYPE_1__ ngx_segment_tree_t ;
+typedef size_t ngx_int_t ;
+struct TYPE_8__ {int key; } ;
+
+
+ int ngx_segment_node_copy (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ stub1 (TYPE_2__*,TYPE_2__*) ;
 
 void
 ngx_segment_tree_delete(ngx_segment_tree_t *tree, ngx_int_t index,
     ngx_int_t l, ngx_int_t r, ngx_int_t pos)
 {
-    ngx_int_t  child, mid;
+    ngx_int_t child, mid;
 
     if (l == r && l == pos) {
         tree->segments[index].key = tree->extreme;

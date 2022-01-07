@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * uwb_est ; 
- scalar_t__ uwb_est_size ; 
- scalar_t__ uwb_est_used ; 
+ int kfree (int *) ;
+ int * uwb_est ;
+ scalar_t__ uwb_est_size ;
+ scalar_t__ uwb_est_used ;
 
 void uwb_est_destroy(void)
 {
-	kfree(uwb_est);
-	uwb_est = NULL;
-	uwb_est_size = uwb_est_used = 0;
+ kfree(uwb_est);
+ uwb_est = ((void*)0);
+ uwb_est_size = uwb_est_used = 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  DBT ;
 
-/* Variables and functions */
- TYPE_1__* svn_fs_base__id_unparse (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_base__set_dbt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int len; int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_fs_id_t ;
+typedef int apr_pool_t ;
+typedef int DBT ;
+
+
+ TYPE_1__* svn_fs_base__id_unparse (int const*,int *) ;
+ int svn_fs_base__set_dbt (int *,int ,int ) ;
 
 DBT *
 svn_fs_base__id_to_dbt(DBT *dbt,

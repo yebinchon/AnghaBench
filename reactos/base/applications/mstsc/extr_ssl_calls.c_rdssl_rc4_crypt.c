@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rc4_state {int /*<<< orphan*/  hKey; } ;
-typedef  int DWORD ;
-typedef  char BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CryptEncrypt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int*,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetLastError () ; 
- int /*<<< orphan*/  error (char*,...) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_malloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+
+
+struct rc4_state {int hKey; } ;
+typedef int DWORD ;
+typedef char BYTE ;
+typedef int BOOL ;
+
+
+ int CryptEncrypt (int ,int ,int ,int ,char*,int*,int) ;
+ int FALSE ;
+ int GetLastError () ;
+ int error (char*,...) ;
+ int g_free (char*) ;
+ char* g_malloc (int,int ) ;
+ int memcpy (char*,char*,int) ;
 
 void
 rdssl_rc4_crypt(void* rc4_info, char* in_data, char* out_data, int len)

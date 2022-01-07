@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PyCapsule_New (void*,char const*,int /*<<< orphan*/ *) ; 
- int PyModule_AddObject (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int * PyCapsule_New (void*,char const*,int *) ;
+ int PyModule_AddObject (int *,char const*,int *) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
 
 PyObject* put_ptr_in_mod(PyObject* m, void* ptr, const char* attr_name,
                          const char* capsule_name)
 {
-  PyObject* capsule = NULL;
+  PyObject* capsule = ((void*)0);
 
-  capsule = PyCapsule_New(ptr, capsule_name, NULL);
+  capsule = PyCapsule_New(ptr, capsule_name, ((void*)0));
   if(!capsule)
     goto error;
 
@@ -35,7 +35,7 @@ PyObject* put_ptr_in_mod(PyObject* m, void* ptr, const char* attr_name,
 
   error:
   Py_XDECREF(capsule);
-  capsule = NULL;
+  capsule = ((void*)0);
 
   finally:
   return capsule;

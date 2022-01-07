@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  sd_id128_t ;
-typedef  int /*<<< orphan*/  direction_t ;
-struct TYPE_7__ {int /*<<< orphan*/  n_entries; int /*<<< orphan*/  entry_array_offset; int /*<<< orphan*/  entry_offset; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int sd_id128_t ;
+typedef int direction_t ;
+struct TYPE_7__ {int n_entries; int entry_array_offset; int entry_offset; } ;
 struct TYPE_8__ {TYPE_1__ data; } ;
-typedef  TYPE_2__ Object ;
-typedef  int /*<<< orphan*/  JournalFile ;
+typedef TYPE_2__ Object ;
+typedef int JournalFile ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/  OBJECT_DATA ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int find_data_object_by_boot_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**,scalar_t__*) ; 
- int generic_array_bisect_plus_one (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**,scalar_t__*,int /*<<< orphan*/ *) ; 
- int journal_file_move_to_object (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,TYPE_2__**) ; 
- int /*<<< orphan*/  le64toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_object_monotonic ; 
- int /*<<< orphan*/  test_object_offset ; 
+
+ int ENOENT ;
+ int OBJECT_DATA ;
+ int assert (int *) ;
+ int find_data_object_by_boot_id (int *,int ,TYPE_2__**,scalar_t__*) ;
+ int generic_array_bisect_plus_one (int *,int ,int ,int ,scalar_t__,int ,int ,TYPE_2__**,scalar_t__*,int *) ;
+ int journal_file_move_to_object (int *,int ,scalar_t__,TYPE_2__**) ;
+ int le64toh (int ) ;
+ int test_object_monotonic ;
+ int test_object_offset ;
 
 int journal_file_move_to_entry_by_monotonic_for_data(
                 JournalFile *f,
@@ -45,7 +45,7 @@ int journal_file_move_to_entry_by_monotonic_for_data(
 
         assert(f);
 
-        /* First, seek by time */
+
         r = find_data_object_by_boot_id(f, boot_id, &o, &b);
         if (r < 0)
                 return r;
@@ -59,12 +59,12 @@ int journal_file_move_to_entry_by_monotonic_for_data(
                                           monotonic,
                                           test_object_monotonic,
                                           direction,
-                                          NULL, &z, NULL);
+                                          ((void*)0), &z, ((void*)0));
         if (r <= 0)
                 return r;
 
-        /* And now, continue seeking until we find an entry that
-         * exists in both bisection arrays */
+
+
 
         for (;;) {
                 Object *qo;
@@ -81,7 +81,7 @@ int journal_file_move_to_entry_by_monotonic_for_data(
                                                   z,
                                                   test_object_offset,
                                                   direction,
-                                                  NULL, &p, NULL);
+                                                  ((void*)0), &p, ((void*)0));
                 if (r <= 0)
                         return r;
 
@@ -96,7 +96,7 @@ int journal_file_move_to_entry_by_monotonic_for_data(
                                                   p,
                                                   test_object_offset,
                                                   direction,
-                                                  &qo, &q, NULL);
+                                                  &qo, &q, ((void*)0));
 
                 if (r <= 0)
                         return r;

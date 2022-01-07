@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct downloadcb {int ref; char* id; char* display; int /*<<< orphan*/  file_name; int /*<<< orphan*/  event_done; int /*<<< orphan*/  dl_previous_kb; int /*<<< orphan*/  dl_size; TYPE_3__* engine; int /*<<< orphan*/  hr; TYPE_1__ IBindStatusCallback_iface; } ;
-struct TYPE_6__ {int /*<<< orphan*/  downloaded_kb; } ;
-struct TYPE_7__ {int /*<<< orphan*/  IInstallEngine2_iface; TYPE_2__ thread; } ;
-typedef  TYPE_3__ InstallEngine ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BindStatusCallbackVtbl ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  IInstallEngine2_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- struct downloadcb* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (struct downloadcb*) ; 
- int /*<<< orphan*/  strAtoW (char*) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * lpVtbl; } ;
+struct downloadcb {int ref; char* id; char* display; int file_name; int event_done; int dl_previous_kb; int dl_size; TYPE_3__* engine; int hr; TYPE_1__ IBindStatusCallback_iface; } ;
+struct TYPE_6__ {int downloaded_kb; } ;
+struct TYPE_7__ {int IInstallEngine2_iface; TYPE_2__ thread; } ;
+typedef TYPE_3__ InstallEngine ;
+typedef int HRESULT ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int BindStatusCallbackVtbl ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int IInstallEngine2_AddRef (int *) ;
+ int S_OK ;
+ struct downloadcb* heap_alloc_zero (int) ;
+ int heap_free (struct downloadcb*) ;
+ int strAtoW (char*) ;
 
 __attribute__((used)) static HRESULT downloadcb_create(InstallEngine *engine, HANDLE event, char *file_name, char *id,
                                  char *display, DWORD dl_size, struct downloadcb **callback)

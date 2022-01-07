@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct linenoiseState {int history_index; char* buf; int buflen; int /*<<< orphan*/  pos; int /*<<< orphan*/  len; } ;
 
-/* Variables and functions */
- int LINENOISE_HISTORY_PREV ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * history ; 
- int history_len ; 
- int /*<<< orphan*/  refreshLine (struct linenoiseState*) ; 
- int /*<<< orphan*/  strdup (char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct linenoiseState {int history_index; char* buf; int buflen; int pos; int len; } ;
+
+
+ int LINENOISE_HISTORY_PREV ;
+ int free (int ) ;
+ int * history ;
+ int history_len ;
+ int refreshLine (struct linenoiseState*) ;
+ int strdup (char*) ;
+ int strlen (char*) ;
+ int strncpy (char*,int ,int) ;
 
 void linenoiseEditHistoryNext(struct linenoiseState *l, int dir) {
     if (history_len > 1) {
-        /* Update the current history entry before to
-         * overwrite it with the next one. */
+
+
         free(history[history_len - 1 - l->history_index]);
         history[history_len - 1 - l->history_index] = strdup(l->buf);
-        /* Show the new entry */
+
         l->history_index += (dir == LINENOISE_HISTORY_PREV) ? 1 : -1;
         if (l->history_index < 0) {
             l->history_index = 0;

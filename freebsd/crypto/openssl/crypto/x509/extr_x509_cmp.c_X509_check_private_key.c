@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int EVP_PKEY_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  X509_F_X509_CHECK_PRIVATE_KEY ; 
- int /*<<< orphan*/  X509_R_KEY_TYPE_MISMATCH ; 
- int /*<<< orphan*/  X509_R_KEY_VALUES_MISMATCH ; 
- int /*<<< orphan*/  X509_R_UNKNOWN_KEY_TYPE ; 
- int /*<<< orphan*/ * X509_get0_pubkey (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  X509err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int X509 ;
+typedef int EVP_PKEY ;
+
+
+ int EVP_PKEY_cmp (int const*,int const*) ;
+ int X509_F_X509_CHECK_PRIVATE_KEY ;
+ int X509_R_KEY_TYPE_MISMATCH ;
+ int X509_R_KEY_VALUES_MISMATCH ;
+ int X509_R_UNKNOWN_KEY_TYPE ;
+ int * X509_get0_pubkey (int const*) ;
+ int X509err (int ,int ) ;
 
 int X509_check_private_key(const X509 *x, const EVP_PKEY *k)
 {

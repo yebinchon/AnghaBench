@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_14__ {int /*<<< orphan*/  fd; int /*<<< orphan*/  ac; int /*<<< orphan*/  version; } ;
-typedef  TYPE_1__ slave ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  int krb5_error_code ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_14__ {int fd; int ac; int version; } ;
+typedef TYPE_1__ slave ;
+typedef int krb5_storage ;
+typedef int krb5_error_code ;
 struct TYPE_15__ {char* data; int length; } ;
-typedef  TYPE_2__ krb5_data ;
-typedef  int /*<<< orphan*/  krb5_context ;
-struct TYPE_16__ {int (* hdb_open ) (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* hdb_destroy ) (int /*<<< orphan*/ ,TYPE_3__*) ;int /*<<< orphan*/  (* hdb_close ) (int /*<<< orphan*/ ,TYPE_3__*) ;} ;
-typedef  TYPE_3__ HDB ;
+typedef TYPE_2__ krb5_data ;
+typedef int krb5_context ;
+struct TYPE_16__ {int (* hdb_open ) (int ,TYPE_3__*,int ,int ) ;int (* hdb_destroy ) (int ,TYPE_3__*) ;int (* hdb_close ) (int ,TYPE_3__*) ;} ;
+typedef TYPE_3__ HDB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HDB_F_ADMIN_DATA ; 
- int /*<<< orphan*/  NOW_YOU_HAVE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  TELL_YOU_EVERYTHING ; 
- int hdb_create (int /*<<< orphan*/ ,TYPE_3__**,char const*) ; 
- int hdb_foreach (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  krb5_err (int /*<<< orphan*/ ,int,int,char*,...) ; 
- int /*<<< orphan*/  krb5_errx (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  krb5_storage_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * krb5_storage_from_mem (char*,int) ; 
- int /*<<< orphan*/  krb5_store_int32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_warn (int /*<<< orphan*/ ,int,char*) ; 
- int krb5_write_priv_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  prop_one ; 
- int /*<<< orphan*/  slave_dead (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  slave_seen (TYPE_1__*) ; 
- int stub1 (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,TYPE_3__*) ; 
+
+ int HDB_F_ADMIN_DATA ;
+ int NOW_YOU_HAVE ;
+ int O_RDONLY ;
+ int TELL_YOU_EVERYTHING ;
+ int hdb_create (int ,TYPE_3__**,char const*) ;
+ int hdb_foreach (int ,TYPE_3__*,int ,int ,TYPE_1__*) ;
+ int krb5_err (int ,int,int,char*,...) ;
+ int krb5_errx (int ,int,char*) ;
+ int krb5_storage_free (int *) ;
+ int * krb5_storage_from_mem (char*,int) ;
+ int krb5_store_int32 (int *,int ) ;
+ int krb5_warn (int ,int,char*) ;
+ int krb5_write_priv_message (int ,int ,int *,TYPE_2__*) ;
+ int prop_one ;
+ int slave_dead (int ,TYPE_1__*) ;
+ int slave_seen (TYPE_1__*) ;
+ int stub1 (int ,TYPE_3__*,int ,int ) ;
+ int stub2 (int ,TYPE_3__*) ;
+ int stub3 (int ,TYPE_3__*) ;
 
 __attribute__((used)) static int
 send_complete (krb5_context context, slave *s,
-	       const char *database, uint32_t current_version)
+        const char *database, uint32_t current_version)
 {
     krb5_error_code ret;
     krb5_storage *sp;
@@ -57,41 +57,41 @@ send_complete (krb5_context context, slave *s,
 
     ret = hdb_create (context, &db, database);
     if (ret)
-	krb5_err (context, 1, ret, "hdb_create: %s", database);
+ krb5_err (context, 1, ret, "hdb_create: %s", database);
     ret = db->hdb_open (context, db, O_RDONLY, 0);
     if (ret)
-	krb5_err (context, 1, ret, "db->open");
+ krb5_err (context, 1, ret, "db->open");
 
     sp = krb5_storage_from_mem (buf, 4);
-    if (sp == NULL)
-	krb5_errx (context, 1, "krb5_storage_from_mem");
+    if (sp == ((void*)0))
+ krb5_errx (context, 1, "krb5_storage_from_mem");
     krb5_store_int32 (sp, TELL_YOU_EVERYTHING);
     krb5_storage_free (sp);
 
-    data.data   = buf;
+    data.data = buf;
     data.length = 4;
 
     ret = krb5_write_priv_message(context, s->ac, &s->fd, &data);
 
     if (ret) {
-	krb5_warn (context, ret, "krb5_write_priv_message");
-	slave_dead(context, s);
-	return ret;
+ krb5_warn (context, ret, "krb5_write_priv_message");
+ slave_dead(context, s);
+ return ret;
     }
 
     ret = hdb_foreach (context, db, HDB_F_ADMIN_DATA, prop_one, s);
     if (ret) {
-	krb5_warn (context, ret, "hdb_foreach");
-	slave_dead(context, s);
-	return ret;
+ krb5_warn (context, ret, "hdb_foreach");
+ slave_dead(context, s);
+ return ret;
     }
 
     (*db->hdb_close)(context, db);
     (*db->hdb_destroy)(context, db);
 
     sp = krb5_storage_from_mem (buf, 8);
-    if (sp == NULL)
-	krb5_errx (context, 1, "krb5_storage_from_mem");
+    if (sp == ((void*)0))
+ krb5_errx (context, 1, "krb5_storage_from_mem");
     krb5_store_int32 (sp, NOW_YOU_HAVE);
     krb5_store_int32 (sp, current_version);
     krb5_storage_free (sp);
@@ -102,9 +102,9 @@ send_complete (krb5_context context, slave *s,
 
     ret = krb5_write_priv_message(context, s->ac, &s->fd, &data);
     if (ret) {
-	slave_dead(context, s);
-	krb5_warn (context, ret, "krb5_write_priv_message");
-	return ret;
+ slave_dead(context, s);
+ krb5_warn (context, ret, "krb5_write_priv_message");
+ return ret;
     }
 
     slave_seen(s);

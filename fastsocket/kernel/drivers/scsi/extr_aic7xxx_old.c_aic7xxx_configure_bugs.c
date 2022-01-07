@@ -1,86 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct aic7xxx_host {int chip; int bugs; int /*<<< orphan*/  pdev; } ;
 
-/* Variables and functions */
-#define  AHC_AIC7850 136 
-#define  AHC_AIC7860 135 
-#define  AHC_AIC7870 134 
-#define  AHC_AIC7880 133 
-#define  AHC_AIC7890 132 
-#define  AHC_AIC7892 131 
-#define  AHC_AIC7895 130 
-#define  AHC_AIC7896 129 
-#define  AHC_AIC7899 128 
- int AHC_BUG_AUTOFLUSH ; 
- int AHC_BUG_CACHETHEN ; 
- int AHC_BUG_CACHETHEN_DIS ; 
- int AHC_BUG_PCI_2_1_RETRY ; 
- int AHC_BUG_PCI_MWI ; 
- int AHC_BUG_SCBCHAN_UPLOAD ; 
- int AHC_BUG_TMODE_WIDEODD ; 
- int AHC_CHIPID_MASK ; 
- int CACHETHEN ; 
- int /*<<< orphan*/  DSCOMMAND0 ; 
- int /*<<< orphan*/  PCI_COMMAND ; 
- unsigned short PCI_COMMAND_INVALIDATE ; 
- int aic_inb (struct aic7xxx_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aic_outb (struct aic7xxx_host*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_read_config_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned short*) ; 
- int /*<<< orphan*/  pci_write_config_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned short) ; 
+
+
+
+struct aic7xxx_host {int chip; int bugs; int pdev; } ;
+ int AHC_BUG_AUTOFLUSH ;
+ int AHC_BUG_CACHETHEN ;
+ int AHC_BUG_CACHETHEN_DIS ;
+ int AHC_BUG_PCI_2_1_RETRY ;
+ int AHC_BUG_PCI_MWI ;
+ int AHC_BUG_SCBCHAN_UPLOAD ;
+ int AHC_BUG_TMODE_WIDEODD ;
+ int AHC_CHIPID_MASK ;
+ int CACHETHEN ;
+ int DSCOMMAND0 ;
+ int PCI_COMMAND ;
+ unsigned short PCI_COMMAND_INVALIDATE ;
+ int aic_inb (struct aic7xxx_host*,int ) ;
+ int aic_outb (struct aic7xxx_host*,int,int ) ;
+ int pci_read_config_word (int ,int ,unsigned short*) ;
+ int pci_write_config_word (int ,int ,unsigned short) ;
 
 __attribute__((used)) static void
 aic7xxx_configure_bugs(struct aic7xxx_host *p)
 {
   unsigned short tmp_word;
- 
+
   switch(p->chip & AHC_CHIPID_MASK)
   {
-    case AHC_AIC7860:
+    case 135:
       p->bugs |= AHC_BUG_PCI_2_1_RETRY;
-      /* fall through */
-    case AHC_AIC7850:
-    case AHC_AIC7870:
+
+    case 136:
+    case 134:
       p->bugs |= AHC_BUG_TMODE_WIDEODD | AHC_BUG_CACHETHEN | AHC_BUG_PCI_MWI;
       break;
-    case AHC_AIC7880:
+    case 133:
       p->bugs |= AHC_BUG_TMODE_WIDEODD | AHC_BUG_PCI_2_1_RETRY |
                  AHC_BUG_CACHETHEN | AHC_BUG_PCI_MWI;
       break;
-    case AHC_AIC7890:
+    case 132:
       p->bugs |= AHC_BUG_AUTOFLUSH | AHC_BUG_CACHETHEN;
       break;
-    case AHC_AIC7892:
+    case 131:
       p->bugs |= AHC_BUG_SCBCHAN_UPLOAD;
       break;
-    case AHC_AIC7895:
+    case 130:
       p->bugs |= AHC_BUG_TMODE_WIDEODD | AHC_BUG_PCI_2_1_RETRY |
                  AHC_BUG_CACHETHEN | AHC_BUG_PCI_MWI;
       break;
-    case AHC_AIC7896:
+    case 129:
       p->bugs |= AHC_BUG_CACHETHEN_DIS;
       break;
-    case AHC_AIC7899:
+    case 128:
       p->bugs |= AHC_BUG_SCBCHAN_UPLOAD;
       break;
     default:
-      /* Nothing to do */
+
       break;
   }
 
-  /*
-   * Now handle the bugs that require PCI register or card register tweaks
-   */
+
+
+
   pci_read_config_word(p->pdev, PCI_COMMAND, &tmp_word);
   if(p->bugs & AHC_BUG_PCI_MWI)
   {

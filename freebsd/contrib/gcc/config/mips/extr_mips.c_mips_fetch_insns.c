@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MEM_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- int mips_address_insns (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int GET_MODE (int ) ;
+ int MEM_P (int ) ;
+ int XEXP (int ,int ) ;
+ int gcc_assert (int ) ;
+ int mips_address_insns (int ,int ) ;
 
 int
 mips_fetch_insns (rtx x)

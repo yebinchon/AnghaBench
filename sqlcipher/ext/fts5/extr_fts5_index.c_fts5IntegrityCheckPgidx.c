@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int n; int /*<<< orphan*/ * p; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_12__ {int szLeaf; int nn; int /*<<< orphan*/ * p; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int n; int * p; int member_2; int member_1; int member_0; } ;
+struct TYPE_12__ {int szLeaf; int nn; int * p; } ;
 struct TYPE_11__ {scalar_t__ rc; } ;
-typedef  TYPE_1__ Fts5Index ;
-typedef  TYPE_2__ Fts5Data ;
-typedef  TYPE_3__ Fts5Buffer ;
+typedef TYPE_1__ Fts5Index ;
+typedef TYPE_2__ Fts5Data ;
+typedef TYPE_3__ Fts5Buffer ;
 
-/* Variables and functions */
- void* FTS5_CORRUPT ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  fts5BufferAppendBlob (scalar_t__*,TYPE_3__*,int,int /*<<< orphan*/ *) ; 
- int fts5BufferCompare (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  fts5BufferFree (TYPE_3__*) ; 
- int /*<<< orphan*/  fts5BufferSet (scalar_t__*,TYPE_3__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/ *,int) ; 
+
+ void* FTS5_CORRUPT ;
+ scalar_t__ SQLITE_OK ;
+ int fts5BufferAppendBlob (scalar_t__*,TYPE_3__*,int,int *) ;
+ int fts5BufferCompare (TYPE_3__*,TYPE_3__*) ;
+ int fts5BufferFree (TYPE_3__*) ;
+ int fts5BufferSet (scalar_t__*,TYPE_3__*,int,int *) ;
+ scalar_t__ fts5GetVarint32 (int *,int) ;
 
 __attribute__((used)) static void fts5IntegrityCheckPgidx(Fts5Index *p, Fts5Data *pLeaf){
   int iTermOff = 0;

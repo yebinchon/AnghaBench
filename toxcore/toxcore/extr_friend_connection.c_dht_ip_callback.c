@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_8__ {int crypt_connection_id; scalar_t__ hosting_tcp_relay; int /*<<< orphan*/  dht_temp_pk; int /*<<< orphan*/  dht_ip_port_lastrecv; int /*<<< orphan*/  dht_ip_port; } ;
-struct TYPE_7__ {int /*<<< orphan*/  net_crypto; } ;
-typedef  int /*<<< orphan*/  IP_Port ;
-typedef  TYPE_1__ Friend_Connections ;
-typedef  TYPE_2__ Friend_Conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  friend_add_tcp_relay (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  friend_new_connection (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* get_conn (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_direct_ip_port (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unix_time () ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_8__ {int crypt_connection_id; scalar_t__ hosting_tcp_relay; int dht_temp_pk; int dht_ip_port_lastrecv; int dht_ip_port; } ;
+struct TYPE_7__ {int net_crypto; } ;
+typedef int IP_Port ;
+typedef TYPE_1__ Friend_Connections ;
+typedef TYPE_2__ Friend_Conn ;
+
+
+ int friend_add_tcp_relay (TYPE_1__*,int ,int ,int ) ;
+ int friend_new_connection (TYPE_1__*,int ) ;
+ TYPE_2__* get_conn (TYPE_1__*,int ) ;
+ int set_direct_ip_port (int ,int,int ,int) ;
+ int unix_time () ;
 
 __attribute__((used)) static void dht_ip_callback(void *object, int32_t number, IP_Port ip_port)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  FuncState ;
 
-/* Variables and functions */
- int addk (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setnvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_Number ;
+typedef int TValue ;
+typedef int FuncState ;
+
+
+ int addk (int *,int *,int *) ;
+ int setnvalue (int *,int ) ;
 
 __attribute__((used)) static int luaK_numberK(FuncState*fs,lua_Number r){
 TValue o;

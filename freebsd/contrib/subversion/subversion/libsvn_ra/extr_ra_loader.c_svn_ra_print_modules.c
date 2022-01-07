@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
-struct TYPE_4__ {char** (* get_schemes ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* get_description ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* get_version ) () ;} ;
-typedef  TYPE_1__ svn_ra__vtable_t ;
-typedef  int /*<<< orphan*/  (* svn_ra__init_func_t ) (int /*<<< orphan*/ ,TYPE_1__ const**,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct ra_lib_defn {int /*<<< orphan*/ * ra_name; int /*<<< orphan*/  (* initfunc ) (int /*<<< orphan*/ ,TYPE_1__ const**,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const* const,...) ; 
- int /*<<< orphan*/  check_ra_version (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_ra_module (int /*<<< orphan*/  (*) (int /*<<< orphan*/ ,TYPE_1__ const**,int /*<<< orphan*/ *),int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct ra_lib_defn* ra_libraries ; 
- int /*<<< orphan*/  stub1 () ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- char** stub3 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_version () ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_stringbuf_t ;
+struct TYPE_4__ {char** (* get_schemes ) (int *) ;int (* get_description ) (int *) ;int (* get_version ) () ;} ;
+typedef TYPE_1__ svn_ra__vtable_t ;
+typedef int (* svn_ra__init_func_t ) (int ,TYPE_1__ const**,int *) ;
+typedef int svn_error_t ;
+struct ra_lib_defn {int * ra_name; int (* initfunc ) (int ,TYPE_1__ const**,int *) ;} ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ char* apr_psprintf (int *,char*,char const* const,...) ;
+ int check_ra_version (int ,int *) ;
+ int load_ra_module (int (*) (int ,TYPE_1__ const**,int *),int *,int *,int *) ;
+ struct ra_lib_defn* ra_libraries ;
+ int stub1 () ;
+ int stub2 (int *) ;
+ char** stub3 (int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_ra_version () ;
+ int svn_stringbuf_appendcstr (int *,char*) ;
 
 svn_error_t *
 svn_ra_print_modules(svn_stringbuf_t *output,
@@ -46,7 +46,7 @@ svn_ra_print_modules(svn_stringbuf_t *output,
   const svn_ra__vtable_t *vtable;
   apr_pool_t *iterpool = svn_pool_create(pool);
 
-  for (defn = ra_libraries; defn->ra_name != NULL; ++defn)
+  for (defn = ra_libraries; defn->ra_name != ((void*)0); ++defn)
     {
       char *line;
 
@@ -54,7 +54,7 @@ svn_ra_print_modules(svn_stringbuf_t *output,
 
       initfunc = defn->initfunc;
       if (! initfunc)
-        SVN_ERR(load_ra_module(&initfunc, NULL, defn->ra_name,
+        SVN_ERR(load_ra_module(&initfunc, ((void*)0), defn->ra_name,
                                iterpool));
 
       if (initfunc)
@@ -63,15 +63,15 @@ svn_ra_print_modules(svn_stringbuf_t *output,
 
           SVN_ERR(check_ra_version(vtable->get_version(), defn->ra_name));
 
-          /* Note: if you change the formatting of the description,
-             bear in mind that ra_svn's description has multiple lines when
-             built with SASL. */
+
+
+
           line = apr_psprintf(iterpool, "* ra_%s : %s\n",
                               defn->ra_name,
                               vtable->get_description(iterpool));
           svn_stringbuf_appendcstr(output, line);
 
-          for (schemes = vtable->get_schemes(iterpool); *schemes != NULL;
+          for (schemes = vtable->get_schemes(iterpool); *schemes != ((void*)0);
                ++schemes)
             {
               line = apr_psprintf(iterpool, _("  - handles '%s' scheme\n"),

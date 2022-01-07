@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAXLEN ; 
- int /*<<< orphan*/  assert (int) ; 
- int crypto_generichash (unsigned char*,unsigned long long,unsigned char*,unsigned long long,unsigned char*,int) ; 
- int crypto_generichash_BYTES_MAX ; 
- int crypto_generichash_KEYBYTES_MAX ; 
- unsigned int crypto_generichash_blake2b_bytes () ; 
- unsigned int crypto_generichash_blake2b_bytes_max () ; 
- unsigned int crypto_generichash_blake2b_bytes_min () ; 
- unsigned int crypto_generichash_blake2b_keybytes () ; 
- unsigned int crypto_generichash_blake2b_keybytes_max () ; 
- unsigned int crypto_generichash_blake2b_keybytes_min () ; 
- unsigned int crypto_generichash_blake2b_personalbytes () ; 
- unsigned int crypto_generichash_blake2b_saltbytes () ; 
- unsigned int crypto_generichash_bytes () ; 
- unsigned int crypto_generichash_bytes_max () ; 
- unsigned int crypto_generichash_bytes_min () ; 
- unsigned int crypto_generichash_keybytes () ; 
- unsigned int crypto_generichash_keybytes_max () ; 
- unsigned int crypto_generichash_keybytes_min () ; 
- int /*<<< orphan*/  crypto_generichash_primitive () ; 
- unsigned char* guard_page ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tv () ; 
+ int MAXLEN ;
+ int assert (int) ;
+ int crypto_generichash (unsigned char*,unsigned long long,unsigned char*,unsigned long long,unsigned char*,int) ;
+ int crypto_generichash_BYTES_MAX ;
+ int crypto_generichash_KEYBYTES_MAX ;
+ unsigned int crypto_generichash_blake2b_bytes () ;
+ unsigned int crypto_generichash_blake2b_bytes_max () ;
+ unsigned int crypto_generichash_blake2b_bytes_min () ;
+ unsigned int crypto_generichash_blake2b_keybytes () ;
+ unsigned int crypto_generichash_blake2b_keybytes_max () ;
+ unsigned int crypto_generichash_blake2b_keybytes_min () ;
+ unsigned int crypto_generichash_blake2b_personalbytes () ;
+ unsigned int crypto_generichash_blake2b_saltbytes () ;
+ unsigned int crypto_generichash_bytes () ;
+ unsigned int crypto_generichash_bytes_max () ;
+ unsigned int crypto_generichash_bytes_min () ;
+ unsigned int crypto_generichash_keybytes () ;
+ unsigned int crypto_generichash_keybytes_max () ;
+ unsigned int crypto_generichash_keybytes_min () ;
+ int crypto_generichash_primitive () ;
+ unsigned char* guard_page ;
+ int memset (unsigned char*,int ,int) ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int tv () ;
 
 int
 main(void)
@@ -44,9 +36,9 @@ main(void)
     unsigned char in[MAXLEN];
     unsigned char out[crypto_generichash_BYTES_MAX];
     unsigned char k[crypto_generichash_KEYBYTES_MAX];
-    size_t        h;
-    size_t        i;
-    size_t        j;
+    size_t h;
+    size_t i;
+    size_t j;
 
     tv();
 

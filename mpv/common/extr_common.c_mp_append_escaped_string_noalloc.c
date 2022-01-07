@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int len; char* start; } ;
-typedef  TYPE_1__ bstr ;
+typedef TYPE_1__ bstr ;
 
-/* Variables and functions */
- TYPE_1__ bstr_cut (TYPE_1__,int) ; 
- TYPE_1__ bstr_splice (TYPE_1__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bstr_xappend (void*,TYPE_1__*,TYPE_1__) ; 
- int /*<<< orphan*/  mp_parse_escape (void*,TYPE_1__*,TYPE_1__*) ; 
+
+ TYPE_1__ bstr_cut (TYPE_1__,int) ;
+ TYPE_1__ bstr_splice (TYPE_1__,int ,int) ;
+ int bstr_xappend (void*,TYPE_1__*,TYPE_1__) ;
+ int mp_parse_escape (void*,TYPE_1__*,TYPE_1__*) ;
 
 bool mp_append_escaped_string_noalloc(void *talloc_ctx, bstr *dst, bstr *src)
 {
@@ -28,12 +28,12 @@ bool mp_append_escaped_string_noalloc(void *talloc_ctx, bstr *dst, bstr *src)
         if (cur >= t.len || t.start[cur] == '"') {
             *src = bstr_cut(t, cur);
             t = bstr_splice(t, 0, cur);
-            if (dst->start == NULL) {
+            if (dst->start == ((void*)0)) {
                 *dst = t;
             } else {
                 bstr_xappend(talloc_ctx, dst, t);
             }
-            return true;
+            return 1;
         } else if (t.start[cur] == '\\') {
             bstr_xappend(talloc_ctx, dst, bstr_splice(t, 0, cur));
             t = bstr_cut(t, cur + 1);
@@ -45,5 +45,5 @@ bool mp_append_escaped_string_noalloc(void *talloc_ctx, bstr *dst, bstr *src)
         }
     }
 error:
-    return false;
+    return 0;
 }

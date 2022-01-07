@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t length; scalar_t__ data; } ;
-typedef  TYPE_1__ BUF_MEM ;
+typedef TYPE_1__ BUF_MEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUF_MEM_grow (TYPE_1__*,size_t) ; 
- TYPE_1__* BUF_MEM_new () ; 
- int /*<<< orphan*/  ERR_LIB_EVP ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,void*,size_t) ; 
+
+ int BUF_MEM_grow (TYPE_1__*,size_t) ;
+ TYPE_1__* BUF_MEM_new () ;
+ int ERR_LIB_EVP ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ERR_raise (int ,int ) ;
+ int memcpy (scalar_t__,void*,size_t) ;
 
 __attribute__((used)) static int collect(BUF_MEM **collector, void *data, size_t datalen)
 {
     size_t i;
 
-    if (*collector == NULL)
+    if (*collector == ((void*)0))
         *collector = BUF_MEM_new();
-    if (*collector == NULL) {
+    if (*collector == ((void*)0)) {
         ERR_raise(ERR_LIB_EVP, ERR_R_MALLOC_FAILURE);
         return 0;
     }
 
-    if (data != NULL && datalen > 0) {
-        i = (*collector)->length; /* BUF_MEM_grow() changes it! */
+    if (data != ((void*)0) && datalen > 0) {
+        i = (*collector)->length;
 
         if (!BUF_MEM_grow(*collector, i + datalen))
             return 0;

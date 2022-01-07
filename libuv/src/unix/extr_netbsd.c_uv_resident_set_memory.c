@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kinfo_proc2 {int p_vm_rssize; } ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  kvm_t ;
+typedef int pid_t ;
+typedef int kvm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_PROC_PID ; 
- int /*<<< orphan*/  KVM_NO_FILES ; 
- int UV_EPERM ; 
- int getpagesize () ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kvm_close (int /*<<< orphan*/ *) ; 
- struct kinfo_proc2* kvm_getproc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/ * kvm_open (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ int KERN_PROC_PID ;
+ int KVM_NO_FILES ;
+ int UV_EPERM ;
+ int getpagesize () ;
+ int getpid () ;
+ int kvm_close (int *) ;
+ struct kinfo_proc2* kvm_getproc2 (int *,int ,int ,int,int*) ;
+ int * kvm_open (int *,int *,int *,int ,char*) ;
 
 int uv_resident_set_memory(size_t* rss) {
-  kvm_t *kd = NULL;
-  struct kinfo_proc2 *kinfo = NULL;
+  kvm_t *kd = ((void*)0);
+  struct kinfo_proc2 *kinfo = ((void*)0);
   pid_t pid;
   int nprocs;
   int max_size = sizeof(struct kinfo_proc2);
@@ -35,12 +35,12 @@ int uv_resident_set_memory(size_t* rss) {
   page_size = getpagesize();
   pid = getpid();
 
-  kd = kvm_open(NULL, NULL, NULL, KVM_NO_FILES, "kvm_open");
+  kd = kvm_open(((void*)0), ((void*)0), ((void*)0), KVM_NO_FILES, "kvm_open");
 
-  if (kd == NULL) goto error;
+  if (kd == ((void*)0)) goto error;
 
   kinfo = kvm_getproc2(kd, KERN_PROC_PID, pid, max_size, &nprocs);
-  if (kinfo == NULL) goto error;
+  if (kinfo == ((void*)0)) goto error;
 
   *rss = kinfo->p_vm_rssize * page_size;
 

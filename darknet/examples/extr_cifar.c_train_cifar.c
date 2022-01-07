@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {double learning_rate; double momentum; double decay; int* seen; int max_batches; } ;
-typedef  TYPE_1__ network ;
-typedef  int /*<<< orphan*/  data ;
-typedef  scalar_t__ clock_t ;
+typedef TYPE_1__ network ;
+typedef int data ;
+typedef scalar_t__ clock_t ;
 
-/* Variables and functions */
- char* basecfg (char*) ; 
- scalar_t__ clock () ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  free_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_network (TYPE_1__*) ; 
- int /*<<< orphan*/  free_ptrs (void**,int) ; 
- int get_current_batch (TYPE_1__*) ; 
- int /*<<< orphan*/  get_current_rate (TYPE_1__*) ; 
- char** get_labels (char*) ; 
- int /*<<< orphan*/  load_all_cifar10 () ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  save_weights (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  sec (scalar_t__) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*,...) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- float train_network_sgd (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ char* basecfg (char*) ;
+ scalar_t__ clock () ;
+ int free (char*) ;
+ int free_data (int ) ;
+ int free_network (TYPE_1__*) ;
+ int free_ptrs (void**,int) ;
+ int get_current_batch (TYPE_1__*) ;
+ int get_current_rate (TYPE_1__*) ;
+ char** get_labels (char*) ;
+ int load_all_cifar10 () ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ int printf (char*,...) ;
+ int save_weights (TYPE_1__*,char*) ;
+ int sec (scalar_t__) ;
+ int sprintf (char*,char*,char*,char*,...) ;
+ int srand (int ) ;
+ int time (int ) ;
+ float train_network_sgd (TYPE_1__*,int ,int) ;
 
 void train_cifar(char *cfgfile, char *weightfile)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  Tox ;
-typedef  int /*<<< orphan*/  TOX_MESSAGE_TYPE ;
-typedef  int /*<<< orphan*/  TOX_ERR_FRIEND_SEND_MESSAGE ;
-typedef  int /*<<< orphan*/  Messenger ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_ERROR_PARAMETER (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TOX_ERR_FRIEND_SEND_MESSAGE_EMPTY ; 
- int /*<<< orphan*/  TOX_ERR_FRIEND_SEND_MESSAGE_NULL ; 
- int /*<<< orphan*/  m_send_message_generic (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_message_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int Tox ;
+typedef int TOX_MESSAGE_TYPE ;
+typedef int TOX_ERR_FRIEND_SEND_MESSAGE ;
+typedef int Messenger ;
+
+
+ int SET_ERROR_PARAMETER (int *,int ) ;
+ int TOX_ERR_FRIEND_SEND_MESSAGE_EMPTY ;
+ int TOX_ERR_FRIEND_SEND_MESSAGE_NULL ;
+ int m_send_message_generic (int *,int ,int ,int const*,size_t,int *) ;
+ int set_message_error (int ,int *) ;
 
 uint32_t tox_friend_send_message(Tox *tox, uint32_t friend_number, TOX_MESSAGE_TYPE type, const uint8_t *message,
                                  size_t length, TOX_ERR_FRIEND_SEND_MESSAGE *error)

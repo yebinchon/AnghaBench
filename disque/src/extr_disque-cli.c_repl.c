@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * sds ;
-struct TYPE_2__ {int interactive; char* prompt; scalar_t__ cluster_reissue_command; scalar_t__ cluster_mode; void* hostport; int /*<<< orphan*/  hostip; } ;
 
-/* Variables and functions */
- scalar_t__ REDIS_OK ; 
- void* atoi (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cliConnect (int) ; 
- int /*<<< orphan*/  cliPrintContextError () ; 
- int /*<<< orphan*/  cliRefreshPrompt () ; 
- scalar_t__ cliSendCommand (int,int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  completionCallback ; 
- TYPE_1__ config ; 
- scalar_t__ context ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * getenv (char*) ; 
- scalar_t__ isatty (int /*<<< orphan*/ ) ; 
- char* linenoise (char*) ; 
- int /*<<< orphan*/  linenoiseClearScreen () ; 
- int /*<<< orphan*/  linenoiseHistoryAdd (char*) ; 
- int /*<<< orphan*/  linenoiseHistoryLoad (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  linenoiseHistorySave (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  linenoiseSetCompletionCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  linenoiseSetMultiLine (int) ; 
- long long mstime () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/ * sdscatprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsfreesplitres (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  sdsnew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** sdssplitargs (char*,int*) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * sds ;
+struct TYPE_2__ {int interactive; char* prompt; scalar_t__ cluster_reissue_command; scalar_t__ cluster_mode; void* hostport; int hostip; } ;
+
+
+ scalar_t__ REDIS_OK ;
+ void* atoi (int *) ;
+ int cliConnect (int) ;
+ int cliPrintContextError () ;
+ int cliRefreshPrompt () ;
+ scalar_t__ cliSendCommand (int,int **,int) ;
+ int completionCallback ;
+ TYPE_1__ config ;
+ scalar_t__ context ;
+ int exit (int ) ;
+ int fileno (int ) ;
+ int free (char*) ;
+ int * getenv (char*) ;
+ scalar_t__ isatty (int ) ;
+ char* linenoise (char*) ;
+ int linenoiseClearScreen () ;
+ int linenoiseHistoryAdd (char*) ;
+ int linenoiseHistoryLoad (int *) ;
+ int linenoiseHistorySave (int *) ;
+ int linenoiseSetCompletionCallback (int ) ;
+ int linenoiseSetMultiLine (int) ;
+ long long mstime () ;
+ int printf (char*,...) ;
+ int * sdscatprintf (int ,char*,int *) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int sdsfreesplitres (int **,int) ;
+ int sdsnew (int *) ;
+ int ** sdssplitargs (char*,int*) ;
+ int stdin ;
+ scalar_t__ strcasecmp (int *,char*) ;
 
 __attribute__((used)) static void repl(void) {
-    sds historyfile = NULL;
+    sds historyfile = ((void*)0);
     int history = 0;
     char *line;
     int argc;
@@ -58,24 +58,24 @@ __attribute__((used)) static void repl(void) {
     linenoiseSetMultiLine(1);
     linenoiseSetCompletionCallback(completionCallback);
 
-    /* Only use history when stdin is a tty. */
+
     if (isatty(fileno(stdin))) {
         history = 1;
 
-        if (getenv("HOME") != NULL) {
+        if (getenv("HOME") != ((void*)0)) {
             historyfile = sdscatprintf(sdsempty(),"%s/.disque_history",getenv("HOME"));
             linenoiseHistoryLoad(historyfile);
         }
     }
 
     cliRefreshPrompt();
-    while((line = linenoise(context ? config.prompt : "not connected> ")) != NULL) {
+    while((line = linenoise(context ? config.prompt : "not connected> ")) != ((void*)0)) {
         if (line[0] != '\0') {
             argv = sdssplitargs(line,&argc);
             if (history) linenoiseHistoryAdd(line);
             if (historyfile) linenoiseHistorySave(historyfile);
 
-            if (argv == NULL) {
+            if (argv == ((void*)0)) {
                 printf("Invalid argument(s)\n");
                 free(line);
                 continue;
@@ -110,13 +110,13 @@ __attribute__((used)) static void repl(void) {
                         {
                             cliConnect(1);
 
-                            /* If we still cannot send the command print error.
-                             * We'll try to reconnect the next time. */
+
+
                             if (cliSendCommand(argc-skipargs,argv+skipargs,repeat)
                                 != REDIS_OK)
                                 cliPrintContextError();
                         }
-                        /* Issue the command again if we got redirected in cluster mode */
+
                         if (config.cluster_mode && config.cluster_reissue_command) {
                             cliConnect(1);
                         } else {
@@ -129,10 +129,10 @@ __attribute__((used)) static void repl(void) {
                     }
                 }
             }
-            /* Free the argument vector */
+
             sdsfreesplitres(argv,argc);
         }
-        /* linenoise() returns malloc-ed lines like readline() */
+
         free(line);
     }
     exit(0);

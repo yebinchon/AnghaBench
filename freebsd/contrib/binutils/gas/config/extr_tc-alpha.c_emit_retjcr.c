@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ X_op; int /*<<< orphan*/  X_add_number; } ;
-typedef  TYPE_1__ expressionS ;
 
-/* Variables and functions */
- int AXP_REG_RA ; 
- int AXP_REG_ZERO ; 
- scalar_t__ O_cpregister ; 
- scalar_t__ O_pregister ; 
- scalar_t__ O_register ; 
- int /*<<< orphan*/  assemble_tokens (char const*,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int regno (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_tok_const (TYPE_1__,int) ; 
- int /*<<< orphan*/  set_tok_cpreg (TYPE_1__,int) ; 
- int /*<<< orphan*/  set_tok_reg (TYPE_1__,int) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ X_op; int X_add_number; } ;
+typedef TYPE_1__ expressionS ;
+
+
+ int AXP_REG_RA ;
+ int AXP_REG_ZERO ;
+ scalar_t__ O_cpregister ;
+ scalar_t__ O_pregister ;
+ scalar_t__ O_register ;
+ int assemble_tokens (char const*,TYPE_1__*,int,int ) ;
+ int regno (int ) ;
+ int set_tok_const (TYPE_1__,int) ;
+ int set_tok_cpreg (TYPE_1__,int) ;
+ int set_tok_reg (TYPE_1__,int) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static void
 emit_retjcr (const expressionS *tok,
-	     int ntok,
-	     const void * vopname)
+      int ntok,
+      const void * vopname)
 {
   const char *opname = (const char *) vopname;
   expressionS newtok[3];

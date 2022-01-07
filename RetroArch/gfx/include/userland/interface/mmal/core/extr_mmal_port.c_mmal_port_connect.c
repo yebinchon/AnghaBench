@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_14__ {int core_owns_connection; TYPE_2__* connected_port; } ;
-struct TYPE_13__ {scalar_t__ type; TYPE_1__* priv; scalar_t__ is_enabled; int /*<<< orphan*/  name; } ;
+struct TYPE_13__ {scalar_t__ type; TYPE_1__* priv; scalar_t__ is_enabled; int name; } ;
 struct TYPE_12__ {scalar_t__ (* pf_connect ) (TYPE_2__*,TYPE_2__*) ;TYPE_3__* core; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_2__ MMAL_PORT_T ;
-typedef  TYPE_3__ MMAL_PORT_PRIVATE_CORE_T ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_2__ MMAL_PORT_T ;
+typedef TYPE_3__ MMAL_PORT_PRIVATE_CORE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK_CONNECTION (TYPE_2__*) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,...) ; 
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ MMAL_EINVAL ; 
- scalar_t__ MMAL_EISCONN ; 
- scalar_t__ MMAL_ENOSYS ; 
- scalar_t__ MMAL_PORT_TYPE_CLOCK ; 
- scalar_t__ MMAL_PORT_TYPE_OUTPUT ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  UNLOCK_CONNECTION (TYPE_2__*) ; 
- scalar_t__ stub1 (TYPE_2__*,TYPE_2__*) ; 
+
+ int LOCK_CONNECTION (TYPE_2__*) ;
+ int LOG_ERROR (char*,...) ;
+ int LOG_TRACE (char*,int ,TYPE_2__*,int ,TYPE_2__*) ;
+ scalar_t__ MMAL_EINVAL ;
+ scalar_t__ MMAL_EISCONN ;
+ scalar_t__ MMAL_ENOSYS ;
+ scalar_t__ MMAL_PORT_TYPE_CLOCK ;
+ scalar_t__ MMAL_PORT_TYPE_OUTPUT ;
+ scalar_t__ MMAL_SUCCESS ;
+ int UNLOCK_CONNECTION (TYPE_2__*) ;
+ scalar_t__ stub1 (TYPE_2__*,TYPE_2__*) ;
 
 MMAL_STATUS_T mmal_port_connect(MMAL_PORT_T *port, MMAL_PORT_T *other_port)
 {
    MMAL_PORT_PRIVATE_CORE_T* core;
    MMAL_PORT_PRIVATE_CORE_T* other_core;
    MMAL_STATUS_T status = MMAL_SUCCESS;
-   MMAL_PORT_T* output_port = NULL;
+   MMAL_PORT_T* output_port = ((void*)0);
 
    if (!port || !port->priv || !other_port || !other_port->priv)
    {
@@ -97,8 +97,8 @@ MMAL_STATUS_T mmal_port_connect(MMAL_PORT_T *port, MMAL_PORT_T *other_port)
    core->core_owns_connection = 0;
    other_core->core_owns_connection = 0;
 
-   /* Check to see if the port will manage the connection on its own. If not then the core
-    * will manage it. */
+
+
    output_port = port->type == MMAL_PORT_TYPE_OUTPUT ? port : other_port;
    if (output_port->priv->pf_connect(port, other_port) == MMAL_SUCCESS)
       goto finish;

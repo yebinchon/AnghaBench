@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * row_pointers; int /*<<< orphan*/ * image_data; int /*<<< orphan*/ * infile; int /*<<< orphan*/ * outfile; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_1__ wpng_info ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * row_pointers; int * image_data; int * infile; int * outfile; } ;
+
+
+ int fclose (int *) ;
+ int free (int *) ;
+ TYPE_1__ wpng_info ;
 
 __attribute__((used)) static void wpng_cleanup(void)
 {
     if (wpng_info.outfile) {
         fclose(wpng_info.outfile);
-        wpng_info.outfile = NULL;
+        wpng_info.outfile = ((void*)0);
     }
 
     if (wpng_info.infile) {
         fclose(wpng_info.infile);
-        wpng_info.infile = NULL;
+        wpng_info.infile = ((void*)0);
     }
 
     if (wpng_info.image_data) {
         free(wpng_info.image_data);
-        wpng_info.image_data = NULL;
+        wpng_info.image_data = ((void*)0);
     }
 
     if (wpng_info.row_pointers) {
         free(wpng_info.row_pointers);
-        wpng_info.row_pointers = NULL;
+        wpng_info.row_pointers = ((void*)0);
     }
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt16 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UInt16 ;
 struct TYPE_4__ {scalar_t__* data; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_1__ CBuf ;
-typedef  scalar_t__ Bool ;
+typedef int SRes ;
+typedef TYPE_1__ CBuf ;
+typedef scalar_t__ Bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Buf_EnsureSize (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  SZ_ERROR_FAIL ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
- scalar_t__ Utf16_To_Utf8 (scalar_t__*,size_t*,int /*<<< orphan*/  const*,size_t) ; 
+
+ int Buf_EnsureSize (TYPE_1__*,size_t) ;
+ int SZ_ERROR_FAIL ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
+ scalar_t__ Utf16_To_Utf8 (scalar_t__*,size_t*,int const*,size_t) ;
 
 __attribute__((used)) static SRes Utf16_To_Utf8Buf(CBuf *dest, const UInt16 *src, size_t srcLen)
 {
   size_t destLen = 0;
   Bool res;
-  Utf16_To_Utf8(NULL, &destLen, src, srcLen);
+  Utf16_To_Utf8(((void*)0), &destLen, src, srcLen);
   destLen += 1;
   if (!Buf_EnsureSize(dest, destLen))
     return SZ_ERROR_MEM;

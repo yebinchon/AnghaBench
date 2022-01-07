@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_3__ {scalar_t__ Selection; } ;
-typedef  TYPE_1__* PDATA ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int BOOL ;
+typedef TYPE_1__* PDATA ;
+typedef scalar_t__ INT ;
+typedef int HWND ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_GETCURSEL ; 
- int /*<<< orphan*/  CB_GETITEMDATA ; 
- int /*<<< orphan*/  EnableWindow (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_MINTEXT ; 
- int /*<<< orphan*/  IDC_SCREENS_LIST ; 
- int /*<<< orphan*/  IDC_SCREENS_SETTINGS ; 
- int /*<<< orphan*/  IDC_SCREENS_TESTSC ; 
- int /*<<< orphan*/  IDC_SCREENS_TIME ; 
- int /*<<< orphan*/  IDC_SCREENS_TIMEDELAY ; 
- int /*<<< orphan*/  IDC_SCREENS_USEPASSCHK ; 
- int /*<<< orphan*/  IDC_WAITTEXT ; 
- scalar_t__ SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int CB_GETCURSEL ;
+ int CB_GETITEMDATA ;
+ int EnableWindow (int ,int) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_MINTEXT ;
+ int IDC_SCREENS_LIST ;
+ int IDC_SCREENS_SETTINGS ;
+ int IDC_SCREENS_TESTSC ;
+ int IDC_SCREENS_TIME ;
+ int IDC_SCREENS_TIMEDELAY ;
+ int IDC_SCREENS_USEPASSCHK ;
+ int IDC_WAITTEXT ;
+ scalar_t__ SendMessage (int ,int ,scalar_t__,int ) ;
 
 __attribute__((used)) static VOID
 SelectionChanged(HWND hwndDlg, PDATA pData)

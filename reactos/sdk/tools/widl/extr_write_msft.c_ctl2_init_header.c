@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int magic1; int magic2; int posguid; int lcid; int lcid2; int varflags; int helpstring; int NameOffset; int helpfile; int CustomDataOffset; int res44; int res48; int dispatchpos; scalar_t__ nimpinfos; scalar_t__ nametablechars; scalar_t__ nametablecount; scalar_t__ helpcontext; scalar_t__ helpstringcontext; scalar_t__ nrtypeinfos; scalar_t__ flags; scalar_t__ version; } ;
 struct TYPE_5__ {TYPE_1__ typelib_header; } ;
-typedef  TYPE_2__ msft_typelib_t ;
+typedef TYPE_2__ msft_typelib_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void ctl2_init_header(
-	msft_typelib_t *typelib) /* [I] The typelib to initialize. */
+ msft_typelib_t *typelib)
 {
     typelib->typelib_header.magic1 = 0x5446534d;
     typelib->typelib_header.magic2 = 0x00010002;

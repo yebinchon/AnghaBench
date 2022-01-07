@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct ttusb_dec {int /*<<< orphan*/  filter_stream_count; int /*<<< orphan*/  filter_info_list_lock; } ;
-struct filter_info {int stream_id; int /*<<< orphan*/  filter_info_list; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct ttusb_dec {int filter_stream_count; int filter_info_list_lock; } ;
+struct filter_info {int stream_id; int filter_info_list; } ;
 struct dvb_demux_feed {scalar_t__ priv; TYPE_1__* demux; } ;
-typedef  int /*<<< orphan*/  b0 ;
+typedef int b0 ;
 struct TYPE_2__ {struct ttusb_dec* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct filter_info*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  ttusb_dec_send_command (struct ttusb_dec*,int,int,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ttusb_dec_stop_iso_xfer (struct ttusb_dec*) ; 
+
+ int kfree (struct filter_info*) ;
+ int list_del (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int ttusb_dec_send_command (struct ttusb_dec*,int,int,int*,int *,int *) ;
+ int ttusb_dec_stop_iso_xfer (struct ttusb_dec*) ;
 
 __attribute__((used)) static int ttusb_dec_stop_sec_feed(struct dvb_demux_feed *dvbdmxfeed)
 {
-	struct ttusb_dec *dec = dvbdmxfeed->demux->priv;
-	u8 b0[] = { 0x00, 0x00 };
-	struct filter_info *finfo = (struct filter_info *)dvbdmxfeed->priv;
-	unsigned long flags;
+ struct ttusb_dec *dec = dvbdmxfeed->demux->priv;
+ u8 b0[] = { 0x00, 0x00 };
+ struct filter_info *finfo = (struct filter_info *)dvbdmxfeed->priv;
+ unsigned long flags;
 
-	b0[1] = finfo->stream_id;
-	spin_lock_irqsave(&dec->filter_info_list_lock, flags);
-	list_del(&finfo->filter_info_list);
-	spin_unlock_irqrestore(&dec->filter_info_list_lock, flags);
-	kfree(finfo);
-	ttusb_dec_send_command(dec, 0x62, sizeof(b0), b0, NULL, NULL);
+ b0[1] = finfo->stream_id;
+ spin_lock_irqsave(&dec->filter_info_list_lock, flags);
+ list_del(&finfo->filter_info_list);
+ spin_unlock_irqrestore(&dec->filter_info_list_lock, flags);
+ kfree(finfo);
+ ttusb_dec_send_command(dec, 0x62, sizeof(b0), b0, ((void*)0), ((void*)0));
 
-	dec->filter_stream_count--;
+ dec->filter_stream_count--;
 
-	ttusb_dec_stop_iso_xfer(dec);
+ ttusb_dec_stop_iso_xfer(dec);
 
-	return 0;
+ return 0;
 }

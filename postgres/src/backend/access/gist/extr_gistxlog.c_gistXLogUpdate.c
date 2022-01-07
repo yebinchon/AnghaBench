@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int ntodelete; int ntoinsert; } ;
-typedef  TYPE_1__ gistxlogPageUpdate ;
-typedef  int /*<<< orphan*/  XLogRecPtr ;
-typedef  int /*<<< orphan*/  OffsetNumber ;
-typedef  scalar_t__ IndexTuple ;
-typedef  int /*<<< orphan*/  Buffer ;
+typedef TYPE_1__ gistxlogPageUpdate ;
+typedef int XLogRecPtr ;
+typedef int OffsetNumber ;
+typedef scalar_t__ IndexTuple ;
+typedef int Buffer ;
 
-/* Variables and functions */
- scalar_t__ BufferIsValid (int /*<<< orphan*/ ) ; 
- int IndexTupleSize (scalar_t__) ; 
- int /*<<< orphan*/  REGBUF_STANDARD ; 
- int /*<<< orphan*/  RM_GIST_ID ; 
- int /*<<< orphan*/  XLOG_GIST_PAGE_UPDATE ; 
- int /*<<< orphan*/  XLogBeginInsert () ; 
- int /*<<< orphan*/  XLogInsert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLogRegisterBufData (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  XLogRegisterBuffer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLogRegisterData (char*,int) ; 
+
+ scalar_t__ BufferIsValid (int ) ;
+ int IndexTupleSize (scalar_t__) ;
+ int REGBUF_STANDARD ;
+ int RM_GIST_ID ;
+ int XLOG_GIST_PAGE_UPDATE ;
+ int XLogBeginInsert () ;
+ int XLogInsert (int ,int ) ;
+ int XLogRegisterBufData (int ,char*,int) ;
+ int XLogRegisterBuffer (int,int ,int ) ;
+ int XLogRegisterData (char*,int) ;
 
 XLogRecPtr
 gistXLogUpdate(Buffer buffer,
-			   OffsetNumber *todelete, int ntodelete,
-			   IndexTuple *itup, int ituplen,
-			   Buffer leftchildbuf)
+      OffsetNumber *todelete, int ntodelete,
+      IndexTuple *itup, int ituplen,
+      Buffer leftchildbuf)
 {
-	gistxlogPageUpdate xlrec;
-	int			i;
-	XLogRecPtr	recptr;
+ gistxlogPageUpdate xlrec;
+ int i;
+ XLogRecPtr recptr;
 
-	xlrec.ntodelete = ntodelete;
-	xlrec.ntoinsert = ituplen;
+ xlrec.ntodelete = ntodelete;
+ xlrec.ntoinsert = ituplen;
 
-	XLogBeginInsert();
-	XLogRegisterData((char *) &xlrec, sizeof(gistxlogPageUpdate));
+ XLogBeginInsert();
+ XLogRegisterData((char *) &xlrec, sizeof(gistxlogPageUpdate));
 
-	XLogRegisterBuffer(0, buffer, REGBUF_STANDARD);
-	XLogRegisterBufData(0, (char *) todelete, sizeof(OffsetNumber) * ntodelete);
+ XLogRegisterBuffer(0, buffer, REGBUF_STANDARD);
+ XLogRegisterBufData(0, (char *) todelete, sizeof(OffsetNumber) * ntodelete);
 
-	/* new tuples */
-	for (i = 0; i < ituplen; i++)
-		XLogRegisterBufData(0, (char *) (itup[i]), IndexTupleSize(itup[i]));
 
-	/*
-	 * Include a full page image of the child buf. (only necessary if a
-	 * checkpoint happened since the child page was split)
-	 */
-	if (BufferIsValid(leftchildbuf))
-		XLogRegisterBuffer(1, leftchildbuf, REGBUF_STANDARD);
+ for (i = 0; i < ituplen; i++)
+  XLogRegisterBufData(0, (char *) (itup[i]), IndexTupleSize(itup[i]));
 
-	recptr = XLogInsert(RM_GIST_ID, XLOG_GIST_PAGE_UPDATE);
 
-	return recptr;
+
+
+
+ if (BufferIsValid(leftchildbuf))
+  XLogRegisterBuffer(1, leftchildbuf, REGBUF_STANDARD);
+
+ recptr = XLogInsert(RM_GIST_ID, XLOG_GIST_PAGE_UPDATE);
+
+ return recptr;
 }

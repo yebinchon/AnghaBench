@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_GPIOE (int) ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,void*) ; 
+
+ int IRQ_GPIOE (int) ;
+ int free_irq (int ,void*) ;
 
 __attribute__((used)) static void mx27ads_sdhc1_exit(struct device *dev, void *data)
 {
-	free_irq(IRQ_GPIOE(21), data);
+ free_irq(IRQ_GPIOE(21), data);
 }

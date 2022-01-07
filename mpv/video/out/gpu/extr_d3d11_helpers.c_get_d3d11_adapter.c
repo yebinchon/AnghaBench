@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
 struct bstr {scalar_t__ len; } ;
-struct TYPE_3__ {int /*<<< orphan*/  VendorId; int /*<<< orphan*/  Description; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  IDXGIFactory1 ;
-typedef  int /*<<< orphan*/  IDXGIAdapter1 ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_1__ DXGI_ADAPTER_DESC1 ;
+struct TYPE_3__ {int VendorId; int Description; int member_0; } ;
+typedef int IDXGIFactory1 ;
+typedef int IDXGIAdapter1 ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_1__ DXGI_ADAPTER_DESC1 ;
 
-/* Variables and functions */
- scalar_t__ DXGI_ERROR_NOT_FOUND ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IDXGIAdapter1_GetDesc1 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ IDXGIFactory1_EnumAdapters1 (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IDXGIFactory1 ; 
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  bstr0 (char*) ; 
- scalar_t__ bstr_case_startswith (int /*<<< orphan*/ ,struct bstr) ; 
- int /*<<< orphan*/  bstr_xappend_asprintf (int /*<<< orphan*/ *,struct bstr*,char*,unsigned int,int /*<<< orphan*/ ,char*) ; 
- unsigned int mp_HRESULT_to_str (scalar_t__) ; 
- int /*<<< orphan*/  mp_fatal (struct mp_log*,char*,unsigned int) ; 
- char* mp_to_utf8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pCreateDXGIFactory1 (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
+
+ scalar_t__ DXGI_ERROR_NOT_FOUND ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IDXGIAdapter1_GetDesc1 (int *,TYPE_1__*) ;
+ scalar_t__ IDXGIFactory1_EnumAdapters1 (int *,unsigned int,int **) ;
+ int IID_IDXGIFactory1 ;
+ int SAFE_RELEASE (int *) ;
+ scalar_t__ S_OK ;
+ int bstr0 (char*) ;
+ scalar_t__ bstr_case_startswith (int ,struct bstr) ;
+ int bstr_xappend_asprintf (int *,struct bstr*,char*,unsigned int,int ,char*) ;
+ unsigned int mp_HRESULT_to_str (scalar_t__) ;
+ int mp_fatal (struct mp_log*,char*,unsigned int) ;
+ char* mp_to_utf8 (int *,int ) ;
+ scalar_t__ pCreateDXGIFactory1 (int *,void**) ;
+ int talloc_free (char*) ;
 
 __attribute__((used)) static IDXGIAdapter1 *get_d3d11_adapter(struct mp_log *log,
                                         struct bstr requested_adapter_name,
@@ -42,20 +42,20 @@ __attribute__((used)) static IDXGIAdapter1 *get_d3d11_adapter(struct mp_log *log
 {
     HRESULT hr = S_OK;
     IDXGIFactory1 *factory;
-    IDXGIAdapter1 *picked_adapter = NULL;
+    IDXGIAdapter1 *picked_adapter = ((void*)0);
 
     hr = pCreateDXGIFactory1(&IID_IDXGIFactory1, (void **)&factory);
     if (FAILED(hr)) {
         mp_fatal(log, "Failed to create a DXGI factory: %s\n",
                  mp_HRESULT_to_str(hr));
-        return NULL;
+        return ((void*)0);
     }
 
     for (unsigned int adapter_num = 0; hr != DXGI_ERROR_NOT_FOUND; adapter_num++)
     {
-        IDXGIAdapter1 *adapter = NULL;
+        IDXGIAdapter1 *adapter = ((void*)0);
         DXGI_ADAPTER_DESC1 desc = { 0 };
-        char *adapter_description = NULL;
+        char *adapter_description = ((void*)0);
 
         hr = IDXGIFactory1_EnumAdapters1(factory, adapter_num, &adapter);
         if (FAILED(hr)) {
@@ -72,10 +72,10 @@ __attribute__((used)) static IDXGIAdapter1 *get_d3d11_adapter(struct mp_log *log
             continue;
         }
 
-        adapter_description = mp_to_utf8(NULL, desc.Description);
+        adapter_description = mp_to_utf8(((void*)0), desc.Description);
 
         if (listing) {
-            bstr_xappend_asprintf(NULL, listing,
+            bstr_xappend_asprintf(((void*)0), listing,
                                   "Adapter %u: vendor: %u, description: %s\n",
                                   adapter_num, desc.VendorId,
                                   adapter_description);

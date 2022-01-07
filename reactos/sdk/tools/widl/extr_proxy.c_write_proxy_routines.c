@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* iface; } ;
 struct TYPE_9__ {char* name; TYPE_2__ details; } ;
-typedef  TYPE_3__ type_t ;
-typedef  int /*<<< orphan*/  statement_list_t ;
+typedef TYPE_3__ type_t ;
+typedef int statement_list_t ;
 struct TYPE_7__ {TYPE_3__* async_iface; } ;
 
-/* Variables and functions */
- scalar_t__ MODE_Oif ; 
- scalar_t__ does_any_iface (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_delegation_indirect (TYPE_3__*,TYPE_3__ const**) ; 
- scalar_t__ get_stub_mode () ; 
- int /*<<< orphan*/  header_name ; 
- int /*<<< orphan*/  indent ; 
- int /*<<< orphan*/  need_proxy ; 
- int /*<<< orphan*/  need_proxy_and_inline_stubs ; 
- int pointer_size ; 
- int /*<<< orphan*/  print_proxy (char*,...) ; 
- int /*<<< orphan*/  proxy ; 
- char* proxy_token ; 
- TYPE_3__** sort_interfaces (int /*<<< orphan*/  const*,int*) ; 
- int /*<<< orphan*/  write_exceptions (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_expr_eval_routine_list (int /*<<< orphan*/ ,char*) ; 
- int write_expr_eval_routines (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  write_formatstringsdecl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_procformatstring (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_proxy_stmts (int /*<<< orphan*/  const*,unsigned int*) ; 
- int /*<<< orphan*/  write_stubdesc (int) ; 
- int /*<<< orphan*/  write_stubdescproto () ; 
- int /*<<< orphan*/  write_typeformatstring (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_user_quad_list (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ MODE_Oif ;
+ scalar_t__ does_any_iface (int const*,int ) ;
+ int fprintf (int ,char*,...) ;
+ int get_delegation_indirect (TYPE_3__*,TYPE_3__ const**) ;
+ scalar_t__ get_stub_mode () ;
+ int header_name ;
+ int indent ;
+ int need_proxy ;
+ int need_proxy_and_inline_stubs ;
+ int pointer_size ;
+ int print_proxy (char*,...) ;
+ int proxy ;
+ char* proxy_token ;
+ TYPE_3__** sort_interfaces (int const*,int*) ;
+ int write_exceptions (int ) ;
+ int write_expr_eval_routine_list (int ,char*) ;
+ int write_expr_eval_routines (int ,char*) ;
+ int write_formatstringsdecl (int ,int ,int const*,int ) ;
+ int write_procformatstring (int ,int const*,int ) ;
+ int write_proxy_stmts (int const*,unsigned int*) ;
+ int write_stubdesc (int) ;
+ int write_stubdescproto () ;
+ int write_typeformatstring (int ,int const*,int ) ;
+ int write_user_quad_list (int ) ;
 
 __attribute__((used)) static void write_proxy_routines(const statement_list_t *stmts)
 {
@@ -129,7 +129,7 @@ __attribute__((used)) static void write_proxy_routines(const statement_list_t *s
   fprintf(proxy, "\n");
 
   for (i = 0; i < count; i++)
-      if ((have_baseiid = get_delegation_indirect( interfaces[i], NULL ))) break;
+      if ((have_baseiid = get_delegation_indirect( interfaces[i], ((void*)0) ))) break;
 
   if (have_baseiid)
   {

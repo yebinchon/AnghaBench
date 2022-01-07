@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ services_discovery_t ;
+typedef TYPE_1__ services_discovery_t ;
 struct TYPE_5__ {int i_urls; char** ppsz_urls; } ;
-typedef  TYPE_2__ services_discovery_sys_t ;
+typedef TYPE_2__ services_discovery_sys_t ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  config_PutPsz (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ calloc (int,int) ;
+ int config_PutPsz (char*,char*) ;
+ int free (char*) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void SaveUrls( services_discovery_t *p_sd )
 {

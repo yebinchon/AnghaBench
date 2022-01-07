@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct blkfront_info {int /*<<< orphan*/  irq; int /*<<< orphan*/  ring; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RING_PUSH_REQUESTS_AND_CHECK_NOTIFY (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  notify_remote_via_irq (int /*<<< orphan*/ ) ; 
+
+
+
+struct blkfront_info {int irq; int ring; } ;
+
+
+ int RING_PUSH_REQUESTS_AND_CHECK_NOTIFY (int *,int) ;
+ int notify_remote_via_irq (int ) ;
 
 __attribute__((used)) static inline void flush_requests(struct blkfront_info *info)
 {
-	int notify;
+ int notify;
 
-	RING_PUSH_REQUESTS_AND_CHECK_NOTIFY(&info->ring, notify);
+ RING_PUSH_REQUESTS_AND_CHECK_NOTIFY(&info->ring, notify);
 
-	if (notify)
-		notify_remote_via_irq(info->irq);
+ if (notify)
+  notify_remote_via_irq(info->irq);
 }

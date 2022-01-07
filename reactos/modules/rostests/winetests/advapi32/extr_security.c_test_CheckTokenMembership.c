@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {size_t GroupCount; TYPE_1__* Groups; } ;
-struct TYPE_6__ {int Attributes; int /*<<< orphan*/  Sid; } ;
-typedef  TYPE_2__* PTOKEN_GROUPS ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  size_t DWORD ;
-typedef  int BOOL ;
+struct TYPE_6__ {int Attributes; int Sid; } ;
+typedef TYPE_2__* PTOKEN_GROUPS ;
+typedef int * HANDLE ;
+typedef size_t DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ *) ; 
- int DuplicateToken (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  ERROR_NO_IMPERSONATION_TOKEN ; 
- int FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetTokenInformation (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,size_t,size_t*) ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int OpenProcessToken (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int SE_GROUP_ENABLED ; 
- int /*<<< orphan*/  SecurityImpersonation ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int TOKEN_DUPLICATE ; 
- int TOKEN_QUERY ; 
- int TRUE ; 
- int /*<<< orphan*/  TokenGroups ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pCheckTokenMembership (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int CloseHandle (int *) ;
+ int DuplicateToken (int *,int ,int **) ;
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_NO_IMPERSONATION_TOKEN ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int GetTokenInformation (int *,int ,TYPE_2__*,size_t,size_t*) ;
+ TYPE_2__* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ int OpenProcessToken (int ,int,int **) ;
+ int SE_GROUP_ENABLED ;
+ int SecurityImpersonation ;
+ int SetLastError (int) ;
+ int TOKEN_DUPLICATE ;
+ int TOKEN_QUERY ;
+ int TRUE ;
+ int TokenGroups ;
+ int ok (int,char*,...) ;
+ int pCheckTokenMembership (int *,int ,int*) ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_CheckTokenMembership(void)
 {
@@ -64,8 +64,8 @@ __attribute__((used)) static void test_CheckTokenMembership(void)
     ret = DuplicateToken(process_token, SecurityImpersonation, &token);
     ok(ret, "DuplicateToken failed with error %d\n", GetLastError());
 
-    /* groups */
-    ret = GetTokenInformation(token, TokenGroups, NULL, 0, &size);
+
+    ret = GetTokenInformation(token, TokenGroups, ((void*)0), 0, &size);
     ok(!ret && GetLastError() == ERROR_INSUFFICIENT_BUFFER,
         "GetTokenInformation(TokenGroups) %s with error %d\n",
         ret ? "succeeded" : "failed", GetLastError());
@@ -93,7 +93,7 @@ __attribute__((used)) static void test_CheckTokenMembership(void)
     ok(is_member, "CheckTokenMembership should have detected sid as member\n");
 
     is_member = FALSE;
-    ret = pCheckTokenMembership(NULL, token_groups->Groups[i].Sid, &is_member);
+    ret = pCheckTokenMembership(((void*)0), token_groups->Groups[i].Sid, &is_member);
     ok(ret, "CheckTokenMembership failed with error %d\n", GetLastError());
     ok(is_member, "CheckTokenMembership should have detected sid as member\n");
 

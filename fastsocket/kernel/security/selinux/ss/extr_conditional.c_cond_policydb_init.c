@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct policydb {int /*<<< orphan*/  te_cond_avtab; int /*<<< orphan*/ * cond_list; int /*<<< orphan*/ * bool_val_to_struct; } ;
 
-/* Variables and functions */
- int avtab_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct policydb {int te_cond_avtab; int * cond_list; int * bool_val_to_struct; } ;
+
+
+ int avtab_init (int *) ;
 
 int cond_policydb_init(struct policydb *p)
 {
-	int rc;
+ int rc;
 
-	p->bool_val_to_struct = NULL;
-	p->cond_list = NULL;
+ p->bool_val_to_struct = ((void*)0);
+ p->cond_list = ((void*)0);
 
-	rc = avtab_init(&p->te_cond_avtab);
-	if (rc)
-		return rc;
+ rc = avtab_init(&p->te_cond_avtab);
+ if (rc)
+  return rc;
 
-	return 0;
+ return 0;
 }

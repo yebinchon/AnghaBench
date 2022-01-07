@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
 struct TYPE_4__ {struct filter_tree_baton_t* baton; } ;
-typedef  TYPE_1__ svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_diff_source_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct filter_tree_baton_t {TYPE_2__* processor; int /*<<< orphan*/  changelist_hash; int /*<<< orphan*/  wc_ctx; int /*<<< orphan*/  root_local_abspath; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* file_opened ) (void**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_1__ svn_diff_tree_processor_t ;
+typedef int svn_diff_source_t ;
+typedef int svn_boolean_t ;
+struct filter_tree_baton_t {TYPE_2__* processor; int changelist_hash; int wc_ctx; int root_local_abspath; } ;
+typedef int apr_pool_t ;
+struct TYPE_5__ {int (* file_opened ) (void**,int *,char const*,int const*,int const*,int const*,void*,TYPE_2__*,int *,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  stub1 (void**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__changelist_match (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int stub1 (void**,int *,char const*,int const*,int const*,int const*,void*,TYPE_2__*,int *,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int svn_wc__changelist_match (int ,char const*,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 filter_file_opened(void **new_file_baton,
@@ -45,7 +45,7 @@ filter_file_opened(void **new_file_baton,
   const char *local_abspath
     = svn_dirent_join(fb->root_local_abspath, relpath, scratch_pool);
 
-  /* Skip if not a member of a given changelist */
+
   if (! svn_wc__changelist_match(fb->wc_ctx, local_abspath,
                                  fb->changelist_hash, scratch_pool))
     {

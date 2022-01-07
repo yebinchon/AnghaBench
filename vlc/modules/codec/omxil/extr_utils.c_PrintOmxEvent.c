@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  scalar_t__ OMX_U32 ;
-typedef  int /*<<< orphan*/  OMX_STATETYPE ;
-typedef  scalar_t__ OMX_PTR ;
-typedef  int OMX_EVENTTYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
 
-/* Variables and functions */
- unsigned int CommandToString (scalar_t__) ; 
- int /*<<< orphan*/  ErrorToString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EventToString (int) ; 
-#define  OMX_CommandStateSet 130 
-#define  OMX_EventCmdComplete 129 
-#define  OMX_EventError 128 
- unsigned int StateToString (scalar_t__) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,unsigned int,unsigned int,...) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef scalar_t__ OMX_U32 ;
+typedef int OMX_STATETYPE ;
+typedef scalar_t__ OMX_PTR ;
+typedef int OMX_EVENTTYPE ;
+typedef int OMX_ERRORTYPE ;
+
+
+ unsigned int CommandToString (scalar_t__) ;
+ int ErrorToString (int ) ;
+ int EventToString (int) ;
+
+
+
+ unsigned int StateToString (scalar_t__) ;
+ int msg_Dbg (int *,char*,int ,unsigned int,unsigned int,...) ;
 
 void PrintOmxEvent(vlc_object_t *p_this, OMX_EVENTTYPE event, OMX_U32 data_1,
     OMX_U32 data_2, OMX_PTR event_data)
 {
     switch (event)
     {
-    case OMX_EventCmdComplete:
+    case 129:
         switch ((OMX_STATETYPE)data_1)
         {
-        case OMX_CommandStateSet:
+        case 130:
             msg_Dbg( p_this, "OmxEventHandler (%s, %s, %s)", EventToString(event),
                      CommandToString(data_1), StateToString(data_2) );
             break;
@@ -47,7 +47,7 @@ void PrintOmxEvent(vlc_object_t *p_this, OMX_EVENTTYPE event, OMX_U32 data_1,
         }
         break;
 
-    case OMX_EventError:
+    case 128:
         msg_Dbg( p_this, "OmxEventHandler (%s, %s, %u, %s)", EventToString(event),
                  ErrorToString((OMX_ERRORTYPE)data_1), (unsigned int)data_2,
                  (const char *)event_data);

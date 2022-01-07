@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  size_t UCHAR ;
-struct TYPE_4__ {size_t tableSize; int /*<<< orphan*/  cs; TYPE_1__* table; scalar_t__ enumerating; } ;
-struct TYPE_3__ {scalar_t__ transport_id; int /*<<< orphan*/  impl; } ;
-typedef  int /*<<< orphan*/  (* NetBIOSEnumAdaptersCallback ) (size_t,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,void*) ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALL_TRANSPORTS ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,int /*<<< orphan*/  (*) (size_t,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,void*),void*) ; 
- scalar_t__ TRUE ; 
- TYPE_2__ gNBTable ; 
- scalar_t__ memcmp (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nbInternalEnum () ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+typedef size_t UCHAR ;
+struct TYPE_4__ {size_t tableSize; int cs; TYPE_1__* table; scalar_t__ enumerating; } ;
+struct TYPE_3__ {scalar_t__ transport_id; int impl; } ;
+typedef int (* NetBIOSEnumAdaptersCallback ) (size_t,int ,scalar_t__,int *,void*) ;
+typedef int BOOL ;
+
+
+ int ALL_TRANSPORTS ;
+ int EnterCriticalSection (int *) ;
+ scalar_t__ FALSE ;
+ int LeaveCriticalSection (int *) ;
+ int TRACE (char*,scalar_t__,int (*) (size_t,int ,scalar_t__,int *,void*),void*) ;
+ scalar_t__ TRUE ;
+ TYPE_2__ gNBTable ;
+ scalar_t__ memcmp (scalar_t__*,int ,int) ;
+ int nbInternalEnum () ;
 
 void NetBIOSEnumAdapters(ULONG transport, NetBIOSEnumAdaptersCallback cb,
  void *closure)

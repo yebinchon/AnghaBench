@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  tsa_name; int /*<<< orphan*/  nonce; int /*<<< orphan*/  data; int /*<<< orphan*/  imprint; int /*<<< orphan*/  md_alg; int /*<<< orphan*/  policy; int /*<<< orphan*/  certs; int /*<<< orphan*/  store; } ;
-typedef  TYPE_1__ TS_VERIFY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_INTEGER_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASN1_OBJECT_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GENERAL_NAME_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TS_VERIFY_CTX_init (TYPE_1__*) ; 
- int /*<<< orphan*/  X509_ALGOR_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_STORE_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_free ; 
- int /*<<< orphan*/  sk_X509_pop_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int tsa_name; int nonce; int data; int imprint; int md_alg; int policy; int certs; int store; } ;
+typedef TYPE_1__ TS_VERIFY_CTX ;
+
+
+ int ASN1_INTEGER_free (int ) ;
+ int ASN1_OBJECT_free (int ) ;
+ int BIO_free_all (int ) ;
+ int GENERAL_NAME_free (int ) ;
+ int OPENSSL_free (int ) ;
+ int TS_VERIFY_CTX_init (TYPE_1__*) ;
+ int X509_ALGOR_free (int ) ;
+ int X509_STORE_free (int ) ;
+ int X509_free ;
+ int sk_X509_pop_free (int ,int ) ;
 
 void TS_VERIFY_CTX_cleanup(TS_VERIFY_CTX *ctx)
 {

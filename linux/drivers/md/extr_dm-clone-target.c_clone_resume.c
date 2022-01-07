@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dm_target {struct clone* private; } ;
-struct TYPE_2__ {int /*<<< orphan*/  work; } ;
-struct clone {TYPE_1__ waker; int /*<<< orphan*/  flags; } ;
+struct TYPE_2__ {int work; } ;
+struct clone {TYPE_1__ waker; int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM_CLONE_HYDRATION_SUSPENDED ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  do_waker (int /*<<< orphan*/ *) ; 
+
+ int DM_CLONE_HYDRATION_SUSPENDED ;
+ int clear_bit (int ,int *) ;
+ int do_waker (int *) ;
 
 __attribute__((used)) static void clone_resume(struct dm_target *ti)
 {
-	struct clone *clone = ti->private;
+ struct clone *clone = ti->private;
 
-	clear_bit(DM_CLONE_HYDRATION_SUSPENDED, &clone->flags);
-	do_waker(&clone->waker.work);
+ clear_bit(DM_CLONE_HYDRATION_SUSPENDED, &clone->flags);
+ do_waker(&clone->waker.work);
 }

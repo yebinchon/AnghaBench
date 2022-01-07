@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty_file_private {int dummy; } ;
 struct file {struct tty_file_private* private_data; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct tty_file_private* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ struct tty_file_private* kmalloc (int,int ) ;
 
 int tty_alloc_file(struct file *file)
 {
-	struct tty_file_private *priv;
+ struct tty_file_private *priv;
 
-	priv = kmalloc(sizeof(*priv), GFP_KERNEL);
-	if (!priv)
-		return -ENOMEM;
+ priv = kmalloc(sizeof(*priv), GFP_KERNEL);
+ if (!priv)
+  return -ENOMEM;
 
-	file->private_data = priv;
+ file->private_data = priv;
 
-	return 0;
+ return 0;
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct timeval {int tv_sec; int tv_usec; } ;
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
-struct TYPE_7__ {int /*<<< orphan*/  pid; } ;
-typedef  TYPE_1__ process_info_t ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int pthread_t ;
+typedef int pthread_attr_t ;
+struct TYPE_7__ {int pid; } ;
+typedef TYPE_1__ process_info_t ;
+typedef int fd_set ;
 struct TYPE_8__ {int n; int* pipe; TYPE_1__* vec; } ;
-typedef  TYPE_2__ dowait_args ;
+typedef TYPE_2__ dowait_args ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  dowait (TYPE_2__*) ; 
- scalar_t__ errno ; 
- scalar_t__ gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int pipe (int*) ; 
- scalar_t__ pthread_attr_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_attr_init (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_attr_setstacksize (int /*<<< orphan*/ *,int) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (TYPE_2__*),TYPE_2__*) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ scalar_t__ EINTR ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int SIGTERM ;
+ int abort () ;
+ int assert (int) ;
+ int close (int) ;
+ int dowait (TYPE_2__*) ;
+ scalar_t__ errno ;
+ scalar_t__ gettimeofday (struct timeval*,int *) ;
+ int kill (int ,int ) ;
+ int perror (char*) ;
+ int pipe (int*) ;
+ scalar_t__ pthread_attr_destroy (int *) ;
+ scalar_t__ pthread_attr_init (int *) ;
+ scalar_t__ pthread_attr_setstacksize (int *,int) ;
+ int pthread_create (int *,int *,int (*) (TYPE_2__*),TYPE_2__*) ;
+ scalar_t__ pthread_join (int ,int *) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
 
 int process_wait(process_info_t* vec, int n, int timeout) {
   int i;
@@ -60,17 +60,17 @@ int process_wait(process_info_t* vec, int n, int timeout) {
   args.pipe[0] = -1;
   args.pipe[1] = -1;
 
-  /* The simple case is where there is no timeout */
+
   if (timeout == -1) {
     dowait(&args);
     return 0;
   }
 
-  /* Hard case. Do the wait with a timeout.
-   *
-   * Assumption: we are the only ones making this call right now. Otherwise
-   * we'd need to lock vec.
-   */
+
+
+
+
+
 
   r = pipe((int*)&(args.pipe));
   if (r) {
@@ -81,11 +81,11 @@ int process_wait(process_info_t* vec, int n, int timeout) {
   if (pthread_attr_init(&attr))
     abort();
 
-#if defined(__MVS__)
-  if (pthread_attr_setstacksize(&attr, 1024 * 1024))
-#else
+
+
+
   if (pthread_attr_setstacksize(&attr, 256 * 1024))
-#endif
+
     abort();
 
   r = pthread_create(&tid, &attr, dowait, &args);
@@ -99,12 +99,12 @@ int process_wait(process_info_t* vec, int n, int timeout) {
     goto terminate;
   }
 
-  if (gettimeofday(&timebase, NULL))
+  if (gettimeofday(&timebase, ((void*)0)))
     abort();
 
   tv = timebase;
   for (;;) {
-    /* Check that gettimeofday() doesn't jump back in time. */
+
     assert(tv.tv_sec > timebase.tv_sec ||
            (tv.tv_sec == timebase.tv_sec && tv.tv_usec >= timebase.tv_usec));
 
@@ -113,7 +113,7 @@ int process_wait(process_info_t* vec, int n, int timeout) {
         (tv.tv_usec / 1000) -
         (timebase.tv_usec / 1000);
 
-    r = 0;  /* Timeout. */
+    r = 0;
     if (elapsed_ms >= (unsigned) timeout)
       break;
 
@@ -123,11 +123,11 @@ int process_wait(process_info_t* vec, int n, int timeout) {
     FD_ZERO(&fds);
     FD_SET(args.pipe[0], &fds);
 
-    r = select(args.pipe[0] + 1, &fds, NULL, NULL, &tv);
+    r = select(args.pipe[0] + 1, &fds, ((void*)0), ((void*)0), &tv);
     if (!(r == -1 && errno == EINTR))
       break;
 
-    if (gettimeofday(&tv, NULL))
+    if (gettimeofday(&tv, ((void*)0)))
       abort();
   }
 
@@ -136,11 +136,11 @@ int process_wait(process_info_t* vec, int n, int timeout) {
     retval = -1;
 
   } else if (r) {
-    /* The thread completed successfully. */
+
     retval = 0;
 
   } else {
-    /* Timeout. Kill all the children. */
+
     for (i = 0; i < n; i++) {
       p = (process_info_t*)(vec + i * sizeof(process_info_t));
       kill(p->pid, SIGTERM);
@@ -148,7 +148,7 @@ int process_wait(process_info_t* vec, int n, int timeout) {
     retval = -2;
   }
 
-  if (pthread_join(tid, NULL))
+  if (pthread_join(tid, ((void*)0)))
     abort();
 
 terminate:

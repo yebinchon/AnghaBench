@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  query ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int query ;
 struct TYPE_14__ {int commitSlot; scalar_t__ commitPoint; int maxBlocks; } ;
 struct TYPE_13__ {scalar_t__ firstKey; scalar_t__ lastKey; int slot; scalar_t__ pos; scalar_t__ key; TYPE_3__* pObj; } ;
-struct TYPE_12__ {scalar_t__ pointsPerBlock; int /*<<< orphan*/  meterId; int /*<<< orphan*/  sid; int /*<<< orphan*/  vnode; scalar_t__ pCache; } ;
+struct TYPE_12__ {scalar_t__ pointsPerBlock; int meterId; int sid; int vnode; scalar_t__ pCache; } ;
 struct TYPE_10__ {int order; } ;
 struct TYPE_11__ {scalar_t__ ekey; int slot; scalar_t__ pos; scalar_t__ key; scalar_t__ skey; TYPE_1__ order; } ;
-typedef  scalar_t__ TSKEY ;
-typedef  TYPE_2__ SQuery ;
-typedef  TYPE_3__ SMeterObj ;
-typedef  TYPE_4__ SImportInfo ;
-typedef  TYPE_5__ SCacheInfo ;
+typedef scalar_t__ TSKEY ;
+typedef TYPE_2__ SQuery ;
+typedef TYPE_3__ SMeterObj ;
+typedef TYPE_4__ SImportInfo ;
+typedef TYPE_5__ SCacheInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dTrace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vnodeSearchPointInCache (TYPE_3__*,TYPE_2__*) ; 
+
+ int dTrace (char*,int ,int ,int ,scalar_t__) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int vnodeSearchPointInCache (TYPE_3__*,TYPE_2__*) ;
 
 int vnodeFindKeyInCache(SImportInfo *pImport, int order) {
-  SMeterObj  *pObj = pImport->pObj;
-  int         code = 0;
-  SQuery      query;
+  SMeterObj *pObj = pImport->pObj;
+  int code = 0;
+  SQuery query;
   SCacheInfo *pInfo = (SCacheInfo *)pObj->pCache;
 
   TSKEY key = order ? pImport->firstKey : pImport->lastKey;
@@ -59,7 +59,7 @@ int vnodeFindKeyInCache(SImportInfo *pImport, int order) {
 
     if (key != query.key) {
       if (order == 0) {
-        // since pos is the position which has smaller key, data shall be imported after it
+
         pImport->pos++;
         if (pImport->pos >= pObj->pointsPerBlock) {
           pImport->slot = (pImport->slot + 1) % pInfo->maxBlocks;

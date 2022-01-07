@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kpc_get_counters_remote {int buf_stride; int /*<<< orphan*/  nb_counters; int /*<<< orphan*/ * buf; int /*<<< orphan*/  classes; } ;
-typedef  int /*<<< orphan*/  event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int cpu_number () ; 
- int /*<<< orphan*/  hw_atomic_add (int /*<<< orphan*/ *,int) ; 
- scalar_t__ hw_atomic_sub (int /*<<< orphan*/ *,int) ; 
- int kpc_get_curcpu_counters (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kpc_xread_sync ; 
- int /*<<< orphan*/  thread_wakeup (int /*<<< orphan*/ ) ; 
+
+
+
+struct kpc_get_counters_remote {int buf_stride; int nb_counters; int * buf; int classes; } ;
+typedef int event_t ;
+
+
+ int assert (int ) ;
+ int cpu_number () ;
+ int hw_atomic_add (int *,int) ;
+ scalar_t__ hw_atomic_sub (int *,int) ;
+ int kpc_get_curcpu_counters (int ,int *,int *) ;
+ int kpc_xread_sync ;
+ int thread_wakeup (int ) ;
 
 __attribute__((used)) static void
 kpc_get_curcpu_counters_xcall(void *args)
 {
-	struct kpc_get_counters_remote *handler = args;
+ struct kpc_get_counters_remote *handler = args;
 
-	assert(handler != NULL);
-	assert(handler->buf != NULL);
+ assert(handler != ((void*)0));
+ assert(handler->buf != ((void*)0));
 
-	int offset = cpu_number() * handler->buf_stride;
-	int r = kpc_get_curcpu_counters(handler->classes, NULL, &handler->buf[offset]);
+ int offset = cpu_number() * handler->buf_stride;
+ int r = kpc_get_curcpu_counters(handler->classes, ((void*)0), &handler->buf[offset]);
 
-	/* number of counters added by this CPU, needs to be atomic  */
-	hw_atomic_add(&(handler->nb_counters), r);
 
-	if (hw_atomic_sub(&kpc_xread_sync, 1) == 0) {
-		thread_wakeup((event_t) &kpc_xread_sync);
-	}
+ hw_atomic_add(&(handler->nb_counters), r);
+
+ if (hw_atomic_sub(&kpc_xread_sync, 1) == 0) {
+  thread_wakeup((event_t) &kpc_xread_sync);
+ }
 }

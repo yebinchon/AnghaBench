@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name2 ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 
-/* Variables and functions */
- int AV_PIX_FMT_NONE ; 
- int AV_PIX_FMT_VAAPI ; 
- char* X_NE (char*,char*) ; 
- int get_pix_fmt_internal (char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef int name2 ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+ int AV_PIX_FMT_NONE ;
+ int AV_PIX_FMT_VAAPI ;
+ char* X_NE (char*,char*) ;
+ int get_pix_fmt_internal (char const*) ;
+ int snprintf (char*,int,char*,char const*,char*) ;
+ int strcmp (char const*,char*) ;
 
 enum AVPixelFormat av_get_pix_fmt(const char *name)
 {
@@ -38,9 +38,9 @@ enum AVPixelFormat av_get_pix_fmt(const char *name)
         pix_fmt = get_pix_fmt_internal(name2);
     }
 
-#if FF_API_VAAPI
-    if (pix_fmt == AV_PIX_FMT_NONE && !strcmp(name, "vaapi"))
-        pix_fmt = AV_PIX_FMT_VAAPI;
-#endif
+
+
+
+
     return pix_fmt;
 }

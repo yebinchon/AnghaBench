@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vtscsi_softc {int /*<<< orphan*/ * vtscsi_sim; int /*<<< orphan*/ * vtscsi_path; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VTSCSI_LOCK (struct vtscsi_softc*) ; 
- int /*<<< orphan*/  VTSCSI_UNLOCK (struct vtscsi_softc*) ; 
- int /*<<< orphan*/  cam_sim_free (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cam_sim_path (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vtscsi_deregister_async (struct vtscsi_softc*) ; 
- int /*<<< orphan*/  xpt_bus_deregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xpt_free_path (int /*<<< orphan*/ *) ; 
+
+
+
+struct vtscsi_softc {int * vtscsi_sim; int * vtscsi_path; } ;
+
+
+ int VTSCSI_LOCK (struct vtscsi_softc*) ;
+ int VTSCSI_UNLOCK (struct vtscsi_softc*) ;
+ int cam_sim_free (int *,int) ;
+ int cam_sim_path (int *) ;
+ int vtscsi_deregister_async (struct vtscsi_softc*) ;
+ int xpt_bus_deregister (int ) ;
+ int xpt_free_path (int *) ;
 
 __attribute__((used)) static void
 vtscsi_free_cam(struct vtscsi_softc *sc)
 {
 
-	VTSCSI_LOCK(sc);
+ VTSCSI_LOCK(sc);
 
-	if (sc->vtscsi_path != NULL) {
-		vtscsi_deregister_async(sc);
+ if (sc->vtscsi_path != ((void*)0)) {
+  vtscsi_deregister_async(sc);
 
-		xpt_free_path(sc->vtscsi_path);
-		sc->vtscsi_path = NULL;
+  xpt_free_path(sc->vtscsi_path);
+  sc->vtscsi_path = ((void*)0);
 
-		xpt_bus_deregister(cam_sim_path(sc->vtscsi_sim));
-	}
+  xpt_bus_deregister(cam_sim_path(sc->vtscsi_sim));
+ }
 
-	if (sc->vtscsi_sim != NULL) {
-		cam_sim_free(sc->vtscsi_sim, 1);
-		sc->vtscsi_sim = NULL;
-	}
+ if (sc->vtscsi_sim != ((void*)0)) {
+  cam_sim_free(sc->vtscsi_sim, 1);
+  sc->vtscsi_sim = ((void*)0);
+ }
 
-	VTSCSI_UNLOCK(sc);
+ VTSCSI_UNLOCK(sc);
 }

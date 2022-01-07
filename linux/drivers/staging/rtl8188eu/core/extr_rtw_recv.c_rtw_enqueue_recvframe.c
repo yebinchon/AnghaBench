@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct recv_frame {int dummy; } ;
-struct __queue {int /*<<< orphan*/  lock; } ;
+struct __queue {int lock; } ;
 
-/* Variables and functions */
- int _rtw_enqueue_recvframe (struct recv_frame*,struct __queue*) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int _rtw_enqueue_recvframe (struct recv_frame*,struct __queue*) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 int rtw_enqueue_recvframe(struct recv_frame *precvframe, struct __queue *queue)
 {
-	int ret;
+ int ret;
 
-	spin_lock_bh(&queue->lock);
-	ret = _rtw_enqueue_recvframe(precvframe, queue);
-	spin_unlock_bh(&queue->lock);
+ spin_lock_bh(&queue->lock);
+ ret = _rtw_enqueue_recvframe(precvframe, queue);
+ spin_unlock_bh(&queue->lock);
 
-	return ret;
+ return ret;
 }

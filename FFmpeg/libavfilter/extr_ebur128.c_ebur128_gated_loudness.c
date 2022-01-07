@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int mode; TYPE_1__* d; } ;
 struct TYPE_5__ {double* block_energy_histogram; } ;
-typedef  TYPE_2__ FFEBUR128State ;
+typedef TYPE_2__ FFEBUR128State ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int FF_EBUR128_MODE_I ; 
- double HUGE_VAL ; 
- int /*<<< orphan*/  ebur128_calc_relative_threshold (TYPE_2__**,size_t,double*) ; 
- double ebur128_energy_to_loudness (double) ; 
- size_t find_histogram_index (double) ; 
- double* histogram_energies ; 
- double* histogram_energy_boundaries ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int FF_EBUR128_MODE_I ;
+ double HUGE_VAL ;
+ int ebur128_calc_relative_threshold (TYPE_2__**,size_t,double*) ;
+ double ebur128_energy_to_loudness (double) ;
+ size_t find_histogram_index (double) ;
+ double* histogram_energies ;
+ double* histogram_energy_boundaries ;
 
 __attribute__((used)) static int ebur128_gated_loudness(FFEBUR128State ** sts, size_t size,
                                   double *out)

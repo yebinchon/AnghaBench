@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int member_0; int member_1; int member_2; int member_3; int member_4; int member_5; int member_6; int member_7; } ;
 struct TYPE_8__ {int member_0; int member_1; int member_2; TYPE_1__ member_3; } ;
-typedef  TYPE_2__ GUID ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_2__ GUID ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_BAD_ARGUMENTS ; 
- scalar_t__ ERROR_DEVICE_NOT_CONNECTED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  IsEqualGUID (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ XUSER_MAX_COUNT ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pXInputGetDSoundAudioDeviceGuids (scalar_t__,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  skip (char*,scalar_t__) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+ scalar_t__ ERROR_BAD_ARGUMENTS ;
+ scalar_t__ ERROR_DEVICE_NOT_CONNECTED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int IsEqualGUID (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ XUSER_MAX_COUNT ;
+ int ok (int,char*,...) ;
+ scalar_t__ pXInputGetDSoundAudioDeviceGuids (scalar_t__,TYPE_2__*,TYPE_2__*) ;
+ int skip (char*,scalar_t__) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_get_dsoundaudiodevice(void)
 {

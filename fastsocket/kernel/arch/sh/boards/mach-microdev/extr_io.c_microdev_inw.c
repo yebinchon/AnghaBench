@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long PCIBIOS_MIN_IO ; 
- scalar_t__ PORT2ADDR (unsigned long) ; 
- unsigned short microdev_pci_inw (unsigned long) ; 
+ unsigned long PCIBIOS_MIN_IO ;
+ scalar_t__ PORT2ADDR (unsigned long) ;
+ unsigned short microdev_pci_inw (unsigned long) ;
 
 unsigned short microdev_inw(unsigned long port)
 {
-#ifdef CONFIG_PCI
-	if (port >= PCIBIOS_MIN_IO)
-		return microdev_pci_inw(port);
-#endif
-	return *(volatile unsigned short*)PORT2ADDR(port);
+
+
+
+
+ return *(volatile unsigned short*)PORT2ADDR(port);
 }

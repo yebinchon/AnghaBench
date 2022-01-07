@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcb_shape_sk_t ;
-struct TYPE_4__ {int /*<<< orphan*/  id; } ;
-struct TYPE_5__ {TYPE_1__ frame; int /*<<< orphan*/  window; } ;
-typedef  TYPE_2__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XCB_PIXMAP_NONE ; 
- int /*<<< orphan*/  XCB_SHAPE_SO_SET ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn ; 
- int /*<<< orphan*/  xcb_shape_mask (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xcb_shape_sk_t ;
+struct TYPE_4__ {int id; } ;
+struct TYPE_5__ {TYPE_1__ frame; int window; } ;
+typedef TYPE_2__ Con ;
+
+
+ int XCB_PIXMAP_NONE ;
+ int XCB_SHAPE_SO_SET ;
+ int assert (int ) ;
+ int conn ;
+ int xcb_shape_mask (int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void x_unshape_frame(Con *con, xcb_shape_sk_t shape_kind) {
     assert(con->window);

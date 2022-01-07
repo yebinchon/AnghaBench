@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int word ;
-typedef  int dword ;
-typedef  scalar_t__ byte ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int word ;
+typedef int dword ;
+typedef scalar_t__ byte ;
 struct TYPE_9__ {int* flag_table; int chflags; } ;
-struct TYPE_8__ {int li_base; int manufacturer_features; TYPE_1__* AdvSignalPLCI; int /*<<< orphan*/  li_pri; TYPE_1__* plci; } ;
+struct TYPE_8__ {int li_base; int manufacturer_features; TYPE_1__* AdvSignalPLCI; int li_pri; TYPE_1__* plci; } ;
 struct TYPE_7__ {int li_bchannel_id; scalar_t__ tel; } ;
-typedef  TYPE_1__ PLCI ;
-typedef  TYPE_2__ DIVA_CAPI_ADAPTER ;
+typedef TYPE_1__ PLCI ;
+typedef TYPE_2__ DIVA_CAPI_ADAPTER ;
 
-/* Variables and functions */
- scalar_t__ ADV_VOICE ; 
- int EXT_CONTROLLER ; 
- int LI2_FLAG_INTERCONNECT_A_B ; 
- int LI2_FLAG_INTERCONNECT_B_A ; 
- int LI2_FLAG_LOOP_B ; 
- int LI2_FLAG_LOOP_PC ; 
- int LI2_FLAG_LOOP_X ; 
- int LI2_FLAG_MIX_B ; 
- int LI2_FLAG_MIX_X ; 
- int LI2_FLAG_MONITOR_B ; 
- int LI2_FLAG_MONITOR_X ; 
- int LI2_FLAG_PCCONNECT_A_B ; 
- int LI2_FLAG_PCCONNECT_B_A ; 
- int LI_CHFLAG_LOOP ; 
- int LI_CHFLAG_MIX ; 
- int LI_CHFLAG_MONITOR ; 
- int LI_FLAG_CONFERENCE ; 
- int LI_FLAG_INTERCONNECT ; 
- int LI_FLAG_MIX ; 
- int LI_FLAG_MONITOR ; 
- int LI_FLAG_PCCONNECT ; 
- int MANUFACTURER_FEATURE_SLAVE_CODEC ; 
- int MIXER_IC_CHANNEL_BASE ; 
- int MapController (scalar_t__) ; 
- TYPE_2__* adapter ; 
- TYPE_3__* li_config_table ; 
 
-__attribute__((used)) static void li2_update_connect (dword Id, DIVA_CAPI_ADAPTER   *a, PLCI   *plci,
+ scalar_t__ ADV_VOICE ;
+ int EXT_CONTROLLER ;
+ int LI2_FLAG_INTERCONNECT_A_B ;
+ int LI2_FLAG_INTERCONNECT_B_A ;
+ int LI2_FLAG_LOOP_B ;
+ int LI2_FLAG_LOOP_PC ;
+ int LI2_FLAG_LOOP_X ;
+ int LI2_FLAG_MIX_B ;
+ int LI2_FLAG_MIX_X ;
+ int LI2_FLAG_MONITOR_B ;
+ int LI2_FLAG_MONITOR_X ;
+ int LI2_FLAG_PCCONNECT_A_B ;
+ int LI2_FLAG_PCCONNECT_B_A ;
+ int LI_CHFLAG_LOOP ;
+ int LI_CHFLAG_MIX ;
+ int LI_CHFLAG_MONITOR ;
+ int LI_FLAG_CONFERENCE ;
+ int LI_FLAG_INTERCONNECT ;
+ int LI_FLAG_MIX ;
+ int LI_FLAG_MONITOR ;
+ int LI_FLAG_PCCONNECT ;
+ int MANUFACTURER_FEATURE_SLAVE_CODEC ;
+ int MIXER_IC_CHANNEL_BASE ;
+ int MapController (scalar_t__) ;
+ TYPE_2__* adapter ;
+ TYPE_3__* li_config_table ;
+
+__attribute__((used)) static void li2_update_connect (dword Id, DIVA_CAPI_ADAPTER *a, PLCI *plci,
   dword plci_b_id, byte connect, dword li_flags)
 {
   word ch_a, ch_a_v, ch_a_s, ch_b, ch_b_v, ch_b_s;
-  PLCI   *plci_b;
-  DIVA_CAPI_ADAPTER   *a_b;
+  PLCI *plci_b;
+  DIVA_CAPI_ADAPTER *a_b;
 
   a_b = &(adapter[MapController ((byte)(plci_b_id & 0x7f)) - 1]);
   plci_b = &(a_b->plci[((plci_b_id >> 8) & 0xff) - 1]);

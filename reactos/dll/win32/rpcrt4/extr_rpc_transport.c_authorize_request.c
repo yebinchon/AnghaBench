@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct authinfo {scalar_t__ scheme; scalar_t__ finished; int /*<<< orphan*/  data_len; int /*<<< orphan*/  data; } ;
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct authinfo {scalar_t__ scheme; scalar_t__ finished; int data_len; int data; } ;
+typedef char WCHAR ;
 struct TYPE_10__ {TYPE_3__* QOS; } ;
-struct TYPE_11__ {int /*<<< orphan*/  cancel_event; int /*<<< orphan*/  async_data; TYPE_4__ common; int /*<<< orphan*/  servername; } ;
+struct TYPE_11__ {int cancel_event; int async_data; TYPE_4__ common; int servername; } ;
 struct TYPE_9__ {TYPE_2__* qos; } ;
-struct TYPE_7__ {int /*<<< orphan*/  HttpCredentials; } ;
+struct TYPE_7__ {int HttpCredentials; } ;
 struct TYPE_8__ {TYPE_1__ u; } ;
-typedef  TYPE_5__ RpcConnection_http ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  int /*<<< orphan*/  HINTERNET ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_5__ RpcConnection_http ;
+typedef scalar_t__ RPC_STATUS ;
+typedef int HINTERNET ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_ACCESS_DENIED ; 
- int HTTP_ADDREQ_FLAG_ADD ; 
- int HTTP_ADDREQ_FLAG_REPLACE ; 
- int /*<<< orphan*/  HttpAddRequestHeadersW (int /*<<< orphan*/ ,char const*,int,int) ; 
- int /*<<< orphan*/  HttpSendRequestW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RPC_C_HTTP_AUTHN_SCHEME_BASIC ; 
- scalar_t__ RPC_S_OK ; 
- int /*<<< orphan*/  destroy_authinfo (struct authinfo*) ; 
- scalar_t__ do_authorization (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct authinfo**) ; 
- int /*<<< orphan*/  drain_content (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ insert_authorization_header (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prepare_async_request (int /*<<< orphan*/ ) ; 
- scalar_t__ rpcrt4_http_check_response (int /*<<< orphan*/ ) ; 
- scalar_t__ wait_async_request (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ int HTTP_ADDREQ_FLAG_ADD ;
+ int HTTP_ADDREQ_FLAG_REPLACE ;
+ int HttpAddRequestHeadersW (int ,char const*,int,int) ;
+ int HttpSendRequestW (int ,int *,int ,int *,int ) ;
+ scalar_t__ RPC_C_HTTP_AUTHN_SCHEME_BASIC ;
+ scalar_t__ RPC_S_OK ;
+ int destroy_authinfo (struct authinfo*) ;
+ scalar_t__ do_authorization (int ,int ,int ,struct authinfo**) ;
+ int drain_content (int ,int ,int ) ;
+ scalar_t__ insert_authorization_header (int ,scalar_t__,int ,int ) ;
+ int prepare_async_request (int ) ;
+ scalar_t__ rpcrt4_http_check_response (int ) ;
+ scalar_t__ wait_async_request (int ,int ,int ) ;
 
 __attribute__((used)) static RPC_STATUS authorize_request(RpcConnection_http *httpc, HINTERNET request)
 {
     static const WCHAR authW[] = {'A','u','t','h','o','r','i','z','a','t','i','o','n',':','\r','\n',0};
-    struct authinfo *info = NULL;
+    struct authinfo *info = ((void*)0);
     RPC_STATUS status;
     BOOL ret;
 
@@ -59,7 +59,7 @@ __attribute__((used)) static RPC_STATUS authorize_request(RpcConnection_http *ht
         if (status != RPC_S_OK) break;
 
         prepare_async_request(httpc->async_data);
-        ret = HttpSendRequestW(request, NULL, 0, NULL, 0);
+        ret = HttpSendRequestW(request, ((void*)0), 0, ((void*)0), 0);
         status = wait_async_request(httpc->async_data, ret, httpc->cancel_event);
         if (status != RPC_S_OK || info->finished) break;
 

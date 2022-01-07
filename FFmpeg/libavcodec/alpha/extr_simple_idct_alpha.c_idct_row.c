@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint16_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int ROW_SHIFT ; 
- int W1 ; 
- int W2 ; 
- int W3 ; 
- int W4 ; 
- int W5 ; 
- int W6 ; 
- int W7 ; 
- int extwl (int,int) ; 
- int ldq (int*) ; 
- int sextw (int) ; 
- int /*<<< orphan*/  stq (int,int*) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint16_t ;
+typedef int int16_t ;
+
+
+ int ROW_SHIFT ;
+ int W1 ;
+ int W2 ;
+ int W3 ;
+ int W4 ;
+ int W5 ;
+ int W6 ;
+ int W7 ;
+ int extwl (int,int) ;
+ int ldq (int*) ;
+ int sextw (int) ;
+ int stq (int,int*) ;
 
 __attribute__((used)) static inline int idct_row(int16_t *row)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
     a2 = a0;
     a3 = a0;
 
-    t = extwl(l, 4);            /* row[2] */
+    t = extwl(l, 4);
     if (t != 0) {
         t = sextw(t);
         a0 += W2 * t;
@@ -64,7 +64,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
         a3 -= W2 * t;
     }
 
-    t = extwl(r, 0);            /* row[4] */
+    t = extwl(r, 0);
     if (t != 0) {
         t = sextw(t);
         a0 += W4 * t;
@@ -73,7 +73,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
         a3 += W4 * t;
     }
 
-    t = extwl(r, 4);            /* row[6] */
+    t = extwl(r, 4);
     if (t != 0) {
         t = sextw(t);
         a0 += W6 * t;
@@ -82,7 +82,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
         a3 -= W6 * t;
     }
 
-    t = extwl(l, 2);            /* row[1] */
+    t = extwl(l, 2);
     if (t != 0) {
         t = sextw(t);
         b0 = W1 * t;
@@ -96,7 +96,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
         b3 = 0;
     }
 
-    t = extwl(l, 6);            /* row[3] */
+    t = extwl(l, 6);
     if (t) {
         t = sextw(t);
         b0 += W3 * t;
@@ -106,7 +106,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
     }
 
 
-    t = extwl(r, 2);            /* row[5] */
+    t = extwl(r, 2);
     if (t) {
         t = sextw(t);
         b0 += W5 * t;
@@ -115,7 +115,7 @@ __attribute__((used)) static inline int idct_row(int16_t *row)
         b3 += W3 * t;
     }
 
-    t = extwl(r, 6);            /* row[7] */
+    t = extwl(r, 6);
     if (t) {
         t = sextw(t);
         b0 += W7 * t;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {float* input; float* workspace; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_8__ {int size; int n; int h; int w; int c; int outputs; int batch; float* weights; int out_h; int out_w; int /*<<< orphan*/  activation; scalar_t__ output; int /*<<< orphan*/  biases; scalar_t__ batch_normalize; int /*<<< orphan*/  pad; int /*<<< orphan*/  stride; int /*<<< orphan*/  out_c; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_8__ {int size; int n; int h; int w; int c; int outputs; int batch; float* weights; int out_h; int out_w; int activation; scalar_t__ output; int biases; scalar_t__ batch_normalize; int pad; int stride; int out_c; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  activate_array (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_bias (scalar_t__,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  col2im_cpu (float*,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  fill_cpu (int,int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  forward_batchnorm_layer (TYPE_2__ const,TYPE_1__) ; 
- int /*<<< orphan*/  gemm_cpu (int,int /*<<< orphan*/ ,int,int,int,int,float*,int,float*,int,int /*<<< orphan*/ ,float*,int) ; 
+
+ int activate_array (scalar_t__,int,int ) ;
+ int add_bias (scalar_t__,int ,int,int,int) ;
+ int col2im_cpu (float*,int ,int,int,int,int ,int ,scalar_t__) ;
+ int fill_cpu (int,int ,scalar_t__,int) ;
+ int forward_batchnorm_layer (TYPE_2__ const,TYPE_1__) ;
+ int gemm_cpu (int,int ,int,int,int,int,float*,int,float*,int,int ,float*,int) ;
 
 void forward_deconvolutional_layer(const layer l, network net)
 {

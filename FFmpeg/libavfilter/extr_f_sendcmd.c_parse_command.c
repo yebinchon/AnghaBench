@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  flag_buf ;
-struct TYPE_4__ {int index; int /*<<< orphan*/ * arg; int /*<<< orphan*/ * command; int /*<<< orphan*/ * target; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ Command ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  COMMAND_DELIMS ; 
- int /*<<< orphan*/  COMMAND_FLAG_ENTER ; 
- int /*<<< orphan*/  COMMAND_FLAG_LEAVE ; 
- int /*<<< orphan*/  EINVAL ; 
- char* SPACES ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- void* av_get_token (char const**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int strcspn (char const*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strspn (char const*,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int flag_buf ;
+struct TYPE_4__ {int index; int * arg; int * command; int * target; int flags; } ;
+typedef TYPE_1__ Command ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int COMMAND_DELIMS ;
+ int COMMAND_FLAG_ENTER ;
+ int COMMAND_FLAG_LEAVE ;
+ int EINVAL ;
+ char* SPACES ;
+ int av_freep (int **) ;
+ void* av_get_token (char const**,int ) ;
+ int av_log (void*,int ,char*,...) ;
+ int av_strlcpy (char*,char const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int strcspn (char const*,char*) ;
+ int strlen (char*) ;
+ int strncmp (char const*,char*,int ) ;
+ int strspn (char const*,char*) ;
 
 __attribute__((used)) static int parse_command(Command *cmd, int cmd_count, int interval_count,
                          const char **buf, void *log_ctx)
@@ -41,17 +41,17 @@ __attribute__((used)) static int parse_command(Command *cmd, int cmd_count, int 
     memset(cmd, 0, sizeof(Command));
     cmd->index = cmd_count;
 
-    /* format: [FLAGS] target command arg */
+
     *buf += strspn(*buf, SPACES);
 
-    /* parse flags */
+
     if (**buf == '[') {
-        (*buf)++; /* skip "[" */
+        (*buf)++;
 
         while (**buf) {
             int len = strcspn(*buf, "|+]");
 
-            if      (!strncmp(*buf, "enter", strlen("enter"))) cmd->flags |= COMMAND_FLAG_ENTER;
+            if (!strncmp(*buf, "enter", strlen("enter"))) cmd->flags |= COMMAND_FLAG_ENTER;
             else if (!strncmp(*buf, "leave", strlen("leave"))) cmd->flags |= COMMAND_FLAG_LEAVE;
             else {
                 char flag_buf[64];
@@ -80,7 +80,7 @@ __attribute__((used)) static int parse_command(Command *cmd, int cmd_count, int 
                    "in interval #%d, command #%d\n", interval_count, cmd_count);
             return AVERROR(EINVAL);
         }
-        (*buf)++; /* skip "]" */
+        (*buf)++;
     } else {
         cmd->flags = COMMAND_FLAG_ENTER;
     }

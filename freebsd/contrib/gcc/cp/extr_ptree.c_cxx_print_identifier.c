@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDENTIFIER_BINDING (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDENTIFIER_LABEL_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDENTIFIER_NAMESPACE_BINDINGS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDENTIFIER_TEMPLATE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cxx_print_binding (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  indent_to (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_node (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int tree ;
+typedef int FILE ;
+
+
+ int IDENTIFIER_BINDING (int ) ;
+ int IDENTIFIER_LABEL_VALUE (int ) ;
+ int IDENTIFIER_NAMESPACE_BINDINGS (int ) ;
+ int IDENTIFIER_TEMPLATE (int ) ;
+ int cxx_print_binding (int *,int ,char*) ;
+ int fprintf (int *,char*) ;
+ int indent_to (int *,int) ;
+ int print_node (int *,char*,int ,int) ;
 
 void
 cxx_print_identifier (FILE *file, tree node, int indent)

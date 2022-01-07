@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  cc; } ;
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int cc; } ;
 struct TYPE_14__ {TYPE_3__* sps; TYPE_2__* pps; } ;
-struct TYPE_11__ {size_t slice_ctb_addr_rs; scalar_t__ dependent_slice_segment_flag; int /*<<< orphan*/  first_slice_in_pic_flag; } ;
+struct TYPE_11__ {size_t slice_ctb_addr_rs; scalar_t__ dependent_slice_segment_flag; int first_slice_in_pic_flag; } ;
 struct TYPE_15__ {int threads_number; TYPE_4__ ps; TYPE_8__* HEVClc; TYPE_1__ sh; } ;
 struct TYPE_13__ {int ctb_width; } ;
 struct TYPE_12__ {int* ctb_addr_rs_to_ts; scalar_t__* tile_id; scalar_t__ entropy_coding_sync_enabled_flag; scalar_t__ tiles_enabled_flag; } ;
-typedef  TYPE_5__ HEVCContext ;
+typedef TYPE_5__ HEVCContext ;
 
-/* Variables and functions */
- int cabac_init_decoder (TYPE_5__*) ; 
- int /*<<< orphan*/  cabac_init_state (TYPE_5__*) ; 
- int cabac_reinit (TYPE_8__*) ; 
- int /*<<< orphan*/  get_cabac_terminate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_states (TYPE_5__*) ; 
+
+ int cabac_init_decoder (TYPE_5__*) ;
+ int cabac_init_state (TYPE_5__*) ;
+ int cabac_reinit (TYPE_8__*) ;
+ int get_cabac_terminate (int *) ;
+ int load_states (TYPE_5__*) ;
 
 int ff_hevc_cabac_init(HEVCContext *s, int ctb_addr_ts)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * XMLRPC_VALUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XMLRPC_AddValueToVector (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * XMLRPC_CreateVector (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_VectorAppendInt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XMLRPC_VectorAppendString (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xi_token_default ; 
- int /*<<< orphan*/  xi_token_description ; 
- int /*<<< orphan*/  xi_token_name ; 
- int /*<<< orphan*/  xi_token_optional ; 
- int /*<<< orphan*/  xi_token_type ; 
- int /*<<< orphan*/  xmlrpc_vector_struct ; 
+
+
+
+typedef int * XMLRPC_VALUE ;
+
+
+ int XMLRPC_AddValueToVector (int *,int *) ;
+ int * XMLRPC_CreateVector (int *,int ) ;
+ int XMLRPC_VectorAppendInt (int *,int ,int) ;
+ int XMLRPC_VectorAppendString (int *,int ,char const*,int ) ;
+ int xi_token_default ;
+ int xi_token_description ;
+ int xi_token_name ;
+ int xi_token_optional ;
+ int xi_token_type ;
+ int xmlrpc_vector_struct ;
 
 __attribute__((used)) static XMLRPC_VALUE describeValue_worker(const char* type, const char* id, const char* desc, int optional, const char* default_val, XMLRPC_VALUE sub_params) {
-   XMLRPC_VALUE xParam = NULL;
+   XMLRPC_VALUE xParam = ((void*)0);
    if(id || desc) {
-      xParam = XMLRPC_CreateVector(NULL, xmlrpc_vector_struct);
+      xParam = XMLRPC_CreateVector(((void*)0), xmlrpc_vector_struct);
       XMLRPC_VectorAppendString(xParam, xi_token_name, id, 0);
       XMLRPC_VectorAppendString(xParam, xi_token_type, type, 0);
       XMLRPC_VectorAppendString(xParam, xi_token_description, desc, 0);

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct ra_swapchain {struct ra_ctx* ctx; } ;
 struct ra_ctx {TYPE_5__* vo; struct priv* priv; } ;
-struct TYPE_8__ {int num_bos; TYPE_4__** bo_queue; int /*<<< orphan*/  surface; } ;
-struct TYPE_6__ {int /*<<< orphan*/  surface; int /*<<< orphan*/  display; } ;
-struct priv {TYPE_3__ gbm; scalar_t__ waiting_for_flip; TYPE_1__ egl; int /*<<< orphan*/  active; scalar_t__ still; scalar_t__ paused; } ;
+struct TYPE_8__ {int num_bos; TYPE_4__** bo_queue; int surface; } ;
+struct TYPE_6__ {int surface; int display; } ;
+struct priv {TYPE_3__ gbm; scalar_t__ waiting_for_flip; TYPE_1__ egl; int active; scalar_t__ still; scalar_t__ paused; } ;
 struct gbm_bo {int dummy; } ;
 struct TYPE_10__ {TYPE_2__* opts; } ;
-struct TYPE_9__ {int /*<<< orphan*/  bo; } ;
+struct TYPE_9__ {int bo; } ;
 struct TYPE_7__ {int swapchain_depth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  eglSwapBuffers (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enqueue_bo (struct ra_ctx*,struct gbm_bo*) ; 
- int /*<<< orphan*/  gbm_surface_has_free_buffers (int /*<<< orphan*/ ) ; 
- struct gbm_bo* gbm_surface_lock_front_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  new_fence (struct ra_ctx*) ; 
- int /*<<< orphan*/  queue_flip (struct ra_ctx*,TYPE_4__*) ; 
- int /*<<< orphan*/  swapchain_step (struct ra_ctx*) ; 
- int /*<<< orphan*/  wait_fence (struct ra_ctx*) ; 
- int /*<<< orphan*/  wait_on_flip (struct ra_ctx*) ; 
+
+ int MP_ERR (TYPE_5__*,char*) ;
+ int eglSwapBuffers (int ,int ) ;
+ int enqueue_bo (struct ra_ctx*,struct gbm_bo*) ;
+ int gbm_surface_has_free_buffers (int ) ;
+ struct gbm_bo* gbm_surface_lock_front_buffer (int ) ;
+ int new_fence (struct ra_ctx*) ;
+ int queue_flip (struct ra_ctx*,TYPE_4__*) ;
+ int swapchain_step (struct ra_ctx*) ;
+ int wait_fence (struct ra_ctx*) ;
+ int wait_on_flip (struct ra_ctx*) ;
 
 __attribute__((used)) static void drm_egl_swap_buffers(struct ra_swapchain *sw)
 {
     struct ra_ctx *ctx = sw->ctx;
     struct priv *p = ctx->priv;
-    const bool drain = p->paused || p->still;  // True when we need to drain the swapchain
+    const bool drain = p->paused || p->still;
 
     if (!p->active)
         return;

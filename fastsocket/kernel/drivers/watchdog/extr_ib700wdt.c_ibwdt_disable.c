@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WDT_STOP ; 
- int /*<<< orphan*/  ibwdt_lock ; 
- int /*<<< orphan*/  outb_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+ int WDT_STOP ;
+ int ibwdt_lock ;
+ int outb_p (int ,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void ibwdt_disable(void)
 {
-	spin_lock(&ibwdt_lock);
-	outb_p(0, WDT_STOP);
-	spin_unlock(&ibwdt_lock);
+ spin_lock(&ibwdt_lock);
+ outb_p(0, WDT_STOP);
+ spin_unlock(&ibwdt_lock);
 }

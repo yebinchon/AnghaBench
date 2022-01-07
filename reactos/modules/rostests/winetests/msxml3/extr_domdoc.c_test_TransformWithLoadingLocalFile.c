@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IID_IXMLDOMNode ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ IXMLDOMDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ IXMLDOMDocument_transformNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocStringLen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int compareIgnoreReturns (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  lstrcatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int lstrlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int strlen (char*) ; 
- char* szBasicTransformOutput ; 
- char* szBasicTransformSSXMLPart1 ; 
- char* szBasicTransformSSXMLPart2 ; 
- char* szBasicTransformXML ; 
- char* szTypeValueXML ; 
+
+
+
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMDocument ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BSTR ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ int DeleteFileA (char*) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ int GetTempPathA (int,char*) ;
+ int IID_IXMLDOMDocument ;
+ int IID_IXMLDOMNode ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ IXMLDOMDocument_QueryInterface (int *,int *,void**) ;
+ int IXMLDOMDocument_Release (int *) ;
+ scalar_t__ IXMLDOMDocument_loadXML (int *,int ,scalar_t__*) ;
+ scalar_t__ IXMLDOMDocument_transformNode (int *,int *,int *) ;
+ int IXMLDOMNode_Release (int *) ;
+ int MAX_PATH ;
+ scalar_t__ S_OK ;
+ int SysAllocStringLen (int *,int) ;
+ int SysFreeString (int ) ;
+ scalar_t__ VARIANT_TRUE ;
+ int WriteFile (scalar_t__,char*,int,int *,int *) ;
+ int _bstr_ (char*) ;
+ int compareIgnoreReturns (int ,int ) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ int lstrcatW (int ,int ) ;
+ int lstrcpyW (int ,int ) ;
+ int lstrlenW (int ) ;
+ int ok (int,char*,...) ;
+ int strcat (char*,char*) ;
+ int strlen (char*) ;
+ char* szBasicTransformOutput ;
+ char* szBasicTransformSSXMLPart1 ;
+ char* szBasicTransformSSXMLPart2 ;
+ char* szBasicTransformXML ;
+ char* szTypeValueXML ;
 
 __attribute__((used)) static void test_TransformWithLoadingLocalFile(void)
 {
@@ -69,19 +69,19 @@ __attribute__((used)) static void test_TransformWithLoadingLocalFile(void)
     char lpPathBuffer[MAX_PATH];
     int i;
 
-    /* Create a Temp File. */
+
     GetTempPathA(MAX_PATH, lpPathBuffer);
     strcat(lpPathBuffer, "customers.xml" );
 
-    file = CreateFileA(lpPathBuffer, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL );
+    file = CreateFileA(lpPathBuffer, GENERIC_WRITE, 0, ((void*)0), CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, ((void*)0) );
     ok(file != INVALID_HANDLE_VALUE, "Could not create file: %u\n", GetLastError());
     if(file == INVALID_HANDLE_VALUE)
         return;
 
-    WriteFile(file, szBasicTransformXML, strlen(szBasicTransformXML), &dwWritten, NULL);
+    WriteFile(file, szBasicTransformXML, strlen(szBasicTransformXML), &dwWritten, ((void*)0));
     CloseHandle(file);
 
-    /* Correct path to not include an escape character. */
+
     for(i=0; i < strlen(lpPathBuffer); i++)
     {
         if(lpPathBuffer[i] == '\\')
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_TransformWithLoadingLocalFile(void)
         BSTR sFileName = _bstr_(lpPathBuffer);
         int nLength = lstrlenW(sPart1) + lstrlenW(sPart2) + lstrlenW(sFileName) + 1;
 
-        sXSL = SysAllocStringLen(NULL, nLength);
+        sXSL = SysAllocStringLen(((void*)0), nLength);
         lstrcpyW(sXSL, sPart1);
         lstrcatW(sXSL, sFileName);
         lstrcatW(sXSL, sPart2);
@@ -118,7 +118,7 @@ __attribute__((used)) static void test_TransformWithLoadingLocalFile(void)
             ok(hr == S_OK, "ret %08x\n", hr );
             if(hr == S_OK)
             {
-                /* This will load the temp file via the XSL */
+
                 hr = IXMLDOMDocument_transformNode(doc, pNode, &sResult);
                 ok(hr == S_OK, "ret %08x\n", hr );
                 if(hr == S_OK)

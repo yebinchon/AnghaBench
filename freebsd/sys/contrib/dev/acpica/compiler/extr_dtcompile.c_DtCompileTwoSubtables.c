@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DT_SUBTABLE ;
-typedef  int /*<<< orphan*/  DT_FIELD ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_DMTABLE_INFO ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  DtCompileTable (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DtInsertSubtable (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DtPeekSubtable () ; 
+
+
+
+typedef int DT_SUBTABLE ;
+typedef int DT_FIELD ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_DMTABLE_INFO ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int AE_OK ;
+ int DtCompileTable (int **,int *,int **) ;
+ int DtInsertSubtable (int *,int *) ;
+ int * DtPeekSubtable () ;
 
 ACPI_STATUS
 DtCompileTwoSubtables (
-    void                    **List,
-    ACPI_DMTABLE_INFO       *TableInfo1,
-    ACPI_DMTABLE_INFO       *TableInfo2)
+    void **List,
+    ACPI_DMTABLE_INFO *TableInfo1,
+    ACPI_DMTABLE_INFO *TableInfo2)
 {
-    ACPI_STATUS             Status;
-    DT_SUBTABLE             *Subtable;
-    DT_SUBTABLE             *ParentTable;
-    DT_FIELD                **PFieldList = (DT_FIELD **) List;
+    ACPI_STATUS Status;
+    DT_SUBTABLE *Subtable;
+    DT_SUBTABLE *ParentTable;
+    DT_FIELD **PFieldList = (DT_FIELD **) List;
 
 
     Status = DtCompileTable (PFieldList, TableInfo1, &Subtable);

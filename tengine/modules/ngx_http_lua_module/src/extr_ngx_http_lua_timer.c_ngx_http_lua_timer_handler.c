@@ -1,119 +1,119 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_53__   TYPE_9__ ;
-typedef  struct TYPE_52__   TYPE_8__ ;
-typedef  struct TYPE_51__   TYPE_7__ ;
-typedef  struct TYPE_50__   TYPE_6__ ;
-typedef  struct TYPE_49__   TYPE_5__ ;
-typedef  struct TYPE_48__   TYPE_4__ ;
-typedef  struct TYPE_47__   TYPE_3__ ;
-typedef  struct TYPE_46__   TYPE_39__ ;
-typedef  struct TYPE_45__   TYPE_2__ ;
-typedef  struct TYPE_44__   TYPE_1__ ;
-typedef  struct TYPE_43__   TYPE_13__ ;
-typedef  struct TYPE_42__   TYPE_12__ ;
-typedef  struct TYPE_41__   TYPE_11__ ;
-typedef  struct TYPE_40__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_47__ {scalar_t__ data; int /*<<< orphan*/  (* handler ) (scalar_t__) ;} ;
-typedef  TYPE_3__ ngx_pool_cleanup_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_48__ {TYPE_12__* connection; int /*<<< orphan*/  read_event_handler; int /*<<< orphan*/  pool; int /*<<< orphan*/  loc_conf; int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; } ;
-typedef  TYPE_4__ ngx_http_request_t ;
-struct TYPE_49__ {scalar_t__ delay; unsigned int co; scalar_t__ pool; scalar_t__ vm_state; scalar_t__ co_ref; int /*<<< orphan*/  premature; int /*<<< orphan*/  loc_conf; int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; int /*<<< orphan*/  client_addr_text; int /*<<< orphan*/  listening; TYPE_6__* lmcf; } ;
-typedef  TYPE_5__ ngx_http_lua_timer_ctx_t ;
-struct TYPE_50__ {scalar_t__ running_timers; scalar_t__ max_running_timers; int /*<<< orphan*/  pending_timers; } ;
-typedef  TYPE_6__ ngx_http_lua_main_conf_t ;
-struct TYPE_45__ {unsigned int co; int co_top; int /*<<< orphan*/  co_status; scalar_t__ co_ref; } ;
-struct TYPE_51__ {int entered_content_phase; TYPE_2__* cur_co_ctx; int /*<<< orphan*/  context; int /*<<< orphan*/ * cleanup; TYPE_2__ entry_co_ctx; scalar_t__ vm_state; } ;
-typedef  TYPE_7__ ngx_http_lua_ctx_t ;
+
+
+typedef struct TYPE_53__ TYPE_9__ ;
+typedef struct TYPE_52__ TYPE_8__ ;
+typedef struct TYPE_51__ TYPE_7__ ;
+typedef struct TYPE_50__ TYPE_6__ ;
+typedef struct TYPE_49__ TYPE_5__ ;
+typedef struct TYPE_48__ TYPE_4__ ;
+typedef struct TYPE_47__ TYPE_3__ ;
+typedef struct TYPE_46__ TYPE_39__ ;
+typedef struct TYPE_45__ TYPE_2__ ;
+typedef struct TYPE_44__ TYPE_1__ ;
+typedef struct TYPE_43__ TYPE_13__ ;
+typedef struct TYPE_42__ TYPE_12__ ;
+typedef struct TYPE_41__ TYPE_11__ ;
+typedef struct TYPE_40__ TYPE_10__ ;
+
+
+struct TYPE_47__ {scalar_t__ data; int (* handler ) (scalar_t__) ;} ;
+typedef TYPE_3__ ngx_pool_cleanup_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_48__ {TYPE_12__* connection; int read_event_handler; int pool; int loc_conf; int srv_conf; int main_conf; } ;
+typedef TYPE_4__ ngx_http_request_t ;
+struct TYPE_49__ {scalar_t__ delay; unsigned int co; scalar_t__ pool; scalar_t__ vm_state; scalar_t__ co_ref; int premature; int loc_conf; int srv_conf; int main_conf; int client_addr_text; int listening; TYPE_6__* lmcf; } ;
+typedef TYPE_5__ ngx_http_lua_timer_ctx_t ;
+struct TYPE_50__ {scalar_t__ running_timers; scalar_t__ max_running_timers; int pending_timers; } ;
+typedef TYPE_6__ ngx_http_lua_main_conf_t ;
+struct TYPE_45__ {unsigned int co; int co_top; int co_status; scalar_t__ co_ref; } ;
+struct TYPE_51__ {int entered_content_phase; TYPE_2__* cur_co_ctx; int context; int * cleanup; TYPE_2__ entry_co_ctx; scalar_t__ vm_state; } ;
+typedef TYPE_7__ ngx_http_lua_ctx_t ;
 struct TYPE_52__ {TYPE_13__* error_log; } ;
-typedef  TYPE_8__ ngx_http_core_loc_conf_t ;
-struct TYPE_53__ {int /*<<< orphan*/  handler; TYPE_7__* data; } ;
-typedef  TYPE_9__ ngx_http_cleanup_t ;
-struct TYPE_40__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_10__ ngx_event_t ;
-struct TYPE_41__ {TYPE_1__* log; int /*<<< orphan*/  addr_text; int /*<<< orphan*/  listening; } ;
-typedef  TYPE_11__ ngx_connection_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_46__ {int /*<<< orphan*/  log; } ;
-struct TYPE_44__ {int log_level; int /*<<< orphan*/  file; TYPE_11__* data; int /*<<< orphan*/  handler; } ;
-struct TYPE_43__ {int log_level; int /*<<< orphan*/  file; } ;
-struct TYPE_42__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_8__ ngx_http_core_loc_conf_t ;
+struct TYPE_53__ {int handler; TYPE_7__* data; } ;
+typedef TYPE_9__ ngx_http_cleanup_t ;
+struct TYPE_40__ {int data; } ;
+typedef TYPE_10__ ngx_event_t ;
+struct TYPE_41__ {TYPE_1__* log; int addr_text; int listening; } ;
+typedef TYPE_11__ ngx_connection_t ;
+typedef int lua_State ;
+struct TYPE_46__ {int log; } ;
+struct TYPE_44__ {int log_level; int file; TYPE_11__* data; int handler; } ;
+struct TYPE_43__ {int log_level; int file; } ;
+struct TYPE_42__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- scalar_t__ NGX_AGAIN ; 
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_CONTEXT_TIMER ; 
- int /*<<< orphan*/  NGX_HTTP_LUA_CO_RUNNING ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int NGX_LOG_DEBUG_CONNECTION ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  coroutines_key ; 
- int /*<<< orphan*/  dd (char*,...) ; 
- int /*<<< orphan*/  luaL_unref (unsigned int,int,scalar_t__) ; 
- int lua_gettop (unsigned int) ; 
- int /*<<< orphan*/  lua_insert (unsigned int,int) ; 
- int /*<<< orphan*/  lua_pushboolean (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_rawget (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settop (unsigned int,int /*<<< orphan*/ ) ; 
- TYPE_39__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_destroy_pool (scalar_t__) ; 
- int /*<<< orphan*/  ngx_exiting ; 
- int /*<<< orphan*/  ngx_free (TYPE_10__*) ; 
- int /*<<< orphan*/  ngx_http_block_reading ; 
- TYPE_9__* ngx_http_cleanup_add (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- TYPE_8__* ngx_http_get_module_loc_conf (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_cleanup_vm (scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_lua_close_fake_connection (TYPE_11__*) ; 
- scalar_t__ ngx_http_lua_content_run_posted_threads (int /*<<< orphan*/ *,TYPE_4__*,TYPE_7__*,int) ; 
- TYPE_7__* ngx_http_lua_create_ctx (TYPE_4__*) ; 
- TYPE_11__* ngx_http_lua_create_fake_connection (scalar_t__) ; 
- TYPE_4__* ngx_http_lua_create_fake_request (TYPE_11__*) ; 
- int /*<<< orphan*/  ngx_http_lua_finalize_request (TYPE_4__*,scalar_t__) ; 
- int /*<<< orphan*/ * ngx_http_lua_get_lua_vm (TYPE_4__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_log_timer_error ; 
- int /*<<< orphan*/  ngx_http_lua_request_cleanup_handler ; 
- scalar_t__ ngx_http_lua_run_thread (int /*<<< orphan*/ *,TYPE_4__*,TYPE_7__*,int) ; 
- int /*<<< orphan*/  ngx_http_lua_set_req (unsigned int,TYPE_4__*) ; 
- scalar_t__ ngx_http_lua_timer_copy (TYPE_5__*) ; 
- int /*<<< orphan*/  ngx_http_set_connection_log (TYPE_12__*,TYPE_13__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  ngx_memcpy (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- TYPE_3__* ngx_pool_cleanup_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_set_connection_log (TYPE_12__*,TYPE_13__*) ; 
+
+ int LUA_REGISTRYINDEX ;
+ scalar_t__ NGX_AGAIN ;
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_LUA_CONTEXT_TIMER ;
+ int NGX_HTTP_LUA_CO_RUNNING ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_CONNECTION ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ int coroutines_key ;
+ int dd (char*,...) ;
+ int luaL_unref (unsigned int,int,scalar_t__) ;
+ int lua_gettop (unsigned int) ;
+ int lua_insert (unsigned int,int) ;
+ int lua_pushboolean (unsigned int,int ) ;
+ int lua_pushlightuserdata (unsigned int,int ) ;
+ int lua_rawget (unsigned int,int ) ;
+ int lua_settop (unsigned int,int ) ;
+ TYPE_39__* ngx_cycle ;
+ int ngx_destroy_pool (scalar_t__) ;
+ int ngx_exiting ;
+ int ngx_free (TYPE_10__*) ;
+ int ngx_http_block_reading ;
+ TYPE_9__* ngx_http_cleanup_add (TYPE_4__*,int ) ;
+ int ngx_http_core_module ;
+ TYPE_8__* ngx_http_get_module_loc_conf (TYPE_4__*,int ) ;
+ int ngx_http_lua_cleanup_vm (scalar_t__) ;
+ int ngx_http_lua_close_fake_connection (TYPE_11__*) ;
+ scalar_t__ ngx_http_lua_content_run_posted_threads (int *,TYPE_4__*,TYPE_7__*,int) ;
+ TYPE_7__* ngx_http_lua_create_ctx (TYPE_4__*) ;
+ TYPE_11__* ngx_http_lua_create_fake_connection (scalar_t__) ;
+ TYPE_4__* ngx_http_lua_create_fake_request (TYPE_11__*) ;
+ int ngx_http_lua_finalize_request (TYPE_4__*,scalar_t__) ;
+ int * ngx_http_lua_get_lua_vm (TYPE_4__*,TYPE_7__*) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_http_lua_log_timer_error ;
+ int ngx_http_lua_request_cleanup_handler ;
+ scalar_t__ ngx_http_lua_run_thread (int *,TYPE_4__*,TYPE_7__*,int) ;
+ int ngx_http_lua_set_req (unsigned int,TYPE_4__*) ;
+ scalar_t__ ngx_http_lua_timer_copy (TYPE_5__*) ;
+ int ngx_http_set_connection_log (TYPE_12__*,TYPE_13__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_error (int ,int ,int ,char*,unsigned int) ;
+ int ngx_memcpy (TYPE_5__*,int ,int) ;
+ TYPE_3__* ngx_pool_cleanup_add (int ,int ) ;
+ int ngx_set_connection_log (TYPE_12__*,TYPE_13__*) ;
 
 __attribute__((used)) static void
 ngx_http_lua_timer_handler(ngx_event_t *ev)
 {
-    int                      n;
-    lua_State               *L;
-    ngx_int_t                rc;
-    ngx_connection_t        *c = NULL;
-    ngx_http_request_t      *r = NULL;
-    ngx_http_lua_ctx_t      *ctx;
-    ngx_http_cleanup_t      *cln;
-    ngx_pool_cleanup_t      *pcln;
+    int n;
+    lua_State *L;
+    ngx_int_t rc;
+    ngx_connection_t *c = ((void*)0);
+    ngx_http_request_t *r = ((void*)0);
+    ngx_http_lua_ctx_t *ctx;
+    ngx_http_cleanup_t *cln;
+    ngx_pool_cleanup_t *pcln;
 
-    ngx_http_lua_timer_ctx_t         tctx;
-    ngx_http_lua_main_conf_t        *lmcf;
-    ngx_http_core_loc_conf_t        *clcf;
+    ngx_http_lua_timer_ctx_t tctx;
+    ngx_http_lua_main_conf_t *lmcf;
+    ngx_http_core_loc_conf_t *clcf;
 
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, ngx_cycle->log, 0,
                    "lua ngx.timer expired");
@@ -142,7 +142,7 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
     }
 
     c = ngx_http_lua_create_fake_connection(tctx.pool);
-    if (c == NULL) {
+    if (c == ((void*)0)) {
         ngx_log_error(NGX_LOG_ALERT, ngx_cycle->log, 0,
                       "failed to create fake connection to run timer (co: %p)",
                       tctx.co);
@@ -156,7 +156,7 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
     c->addr_text = tctx.client_addr_text;
 
     r = ngx_http_lua_create_fake_request(c);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         ngx_log_error(NGX_LOG_ALERT, ngx_cycle->log, 0,
                       "failed to create fake request to run timer (co: %p)",
                       tctx.co);
@@ -168,33 +168,18 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
     r->loc_conf = tctx.loc_conf;
 
     clcf = ngx_http_get_module_loc_conf(r, ngx_http_core_module);
-
-#if defined(nginx_version) && nginx_version >= 1003014
-
-#   if nginx_version >= 1009000
-
-    ngx_set_connection_log(r->connection, clcf->error_log);
-
-#   else
-
-    ngx_http_set_connection_log(r->connection, clcf->error_log);
-
-#   endif
-
-#else
-
     c->log->file = clcf->error_log->file;
 
     if (!(c->log->log_level & NGX_LOG_DEBUG_CONNECTION)) {
         c->log->log_level = clcf->error_log->log_level;
     }
 
-#endif
+
 
     dd("lmcf: %p", lmcf);
 
     ctx = ngx_http_lua_create_ctx(r);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         ngx_log_error(NGX_LOG_ALERT, ngx_cycle->log, 0,
                       "failed to create ctx to run timer (co: %p)", tctx.co);
         goto failed;
@@ -204,7 +189,7 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
         ctx->vm_state = tctx.vm_state;
 
         pcln = ngx_pool_cleanup_add(r->pool, 0);
-        if (pcln == NULL) {
+        if (pcln == ((void*)0)) {
             ngx_log_error(NGX_LOG_ALERT, ngx_cycle->log, 0,
                           "failed to add vm cleanup to run timer (co: %p)",
                           tctx.co);
@@ -220,7 +205,7 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
     L = ngx_http_lua_get_lua_vm(r, ctx);
 
     cln = ngx_http_cleanup_add(r, 0);
-    if (cln == NULL) {
+    if (cln == ((void*)0)) {
         ngx_log_error(NGX_LOG_ALERT, ngx_cycle->log, 0,
                       "failed to add request cleanup to run timer (co: %p)",
                       tctx.co);
@@ -242,7 +227,7 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
 
     dd("r connection: %p, log %p", r->connection, r->connection->log);
 
-    /*  save the request in coroutine globals table */
+
     ngx_http_lua_set_req(tctx.co, r);
 
     lmcf->running_timers++;
@@ -254,16 +239,16 @@ ngx_http_lua_timer_handler(ngx_event_t *ev)
         lua_insert(tctx.co, 2);
     }
 
-#ifdef NGX_LUA_USE_ASSERT
-    ctx->cur_co_ctx->co_top = 1;
-#endif
+
+
+
 
     rc = ngx_http_lua_run_thread(L, r, ctx, n - 1);
 
     dd("timer lua run thread: %d", (int) rc);
 
     if (rc == NGX_ERROR || rc >= NGX_OK) {
-        /* do nothing */
+
 
     } else if (rc == NGX_AGAIN) {
         rc = ngx_http_lua_content_run_posted_threads(L, r, ctx, 0);

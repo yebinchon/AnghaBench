@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_6__ {scalar_t__ pressed; } ;
 struct TYPE_7__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_8__ {int /*<<< orphan*/  mode; } ;
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_8__ {int mode; } ;
 
-/* Variables and functions */
-#define  ADJUST 132 
-#define  LOWER 131 
-#define  RAISE 130 
-#define  RGBRST 129 
-#define  RGB_MOD 128 
- int /*<<< orphan*/  RGB_current_mode ; 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  eeconfig_update_rgblight_default () ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- TYPE_4__ rgblight_config ; 
- int /*<<< orphan*/  rgblight_enable () ; 
- int /*<<< orphan*/  rgblight_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgblight_step () ; 
- int /*<<< orphan*/  set_keylog (int,TYPE_2__*) ; 
- int /*<<< orphan*/  update_tri_layer_RGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int RGB_current_mode ;
+ int _ADJUST ;
+ int _LOWER ;
+ int _RAISE ;
+ int eeconfig_update_rgblight_default () ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ TYPE_4__ rgblight_config ;
+ int rgblight_enable () ;
+ int rgblight_mode (int ) ;
+ int rgblight_step () ;
+ int set_keylog (int,TYPE_2__*) ;
+ int update_tri_layer_RGB (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-#ifdef SSD1306OLED
-    set_keylog(keycode, record);
-#endif
-    // set_timelog();
+
+
+
+
   }
 
   switch (keycode) {
-    case LOWER:
+    case 131:
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
@@ -56,9 +56,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LOWER);
         update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RAISE:
+    case 130:
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
@@ -66,35 +66,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RAISE);
         update_tri_layer_RGB(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case ADJUST:
+    case 132:
         if (record->event.pressed) {
           layer_on(_ADJUST);
         } else {
           layer_off(_ADJUST);
         }
-        return false;
+        return 0;
         break;
-    case RGB_MOD:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          rgblight_mode(RGB_current_mode);
-          rgblight_step();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
-      return false;
+    case 128:
+
+
+
+
+
+
+
+      return 0;
       break;
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
+    case 129:
+
+
+
+
+
+
+
       break;
   }
-  return true;
+  return 1;
 }

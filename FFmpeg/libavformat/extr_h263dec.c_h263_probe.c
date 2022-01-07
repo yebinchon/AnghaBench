@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_3__ {int buf_size; int* buf; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
+
+ int AVPROBE_SCORE_EXTENSION ;
 
 __attribute__((used)) static int h263_probe(const AVProbeData *p)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static int h263_probe(const AVProbeData *p)
         if ((code & 0xfffffc000000) == 0x80000000) {
             tr = (code >> 18) & 0xFF;
             src_fmt= (code>>10)&7;
-            if(   src_fmt != last_src_fmt
+            if( src_fmt != last_src_fmt
                && last_src_fmt>0 && last_src_fmt<6
                && src_fmt<6)
                 res_change++;

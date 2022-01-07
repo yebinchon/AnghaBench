@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  sd_event_time_handler_t ;
+
+
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int sd_event_time_handler_t ;
 struct TYPE_16__ {scalar_t__ description; } ;
-typedef  TYPE_1__ sd_event_source ;
-typedef  TYPE_1__* sd_event ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  scalar_t__ clockid_t ;
+typedef TYPE_1__ sd_event_source ;
+typedef TYPE_1__* sd_event ;
+typedef int int64_t ;
+typedef scalar_t__ clockid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int SD_EVENT_OFF ; 
- int /*<<< orphan*/  SD_EVENT_ONESHOT ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_1__**) ; 
- int log_debug_errno (int,char*,...) ; 
- int sd_event_add_time (TYPE_1__**,TYPE_1__**,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int sd_event_source_get_enabled (TYPE_1__*,int*) ; 
- int sd_event_source_get_time_clock (TYPE_1__*,scalar_t__*) ; 
- int sd_event_source_set_description (TYPE_1__*,char const*) ; 
- int sd_event_source_set_enabled (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_priority (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_time (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int sd_event_source_set_time_accuracy (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_set_userdata (TYPE_1__*,void*) ; 
- char const* strna (char const*) ; 
+
+ int EINVAL ;
+ int SD_EVENT_OFF ;
+ int SD_EVENT_ONESHOT ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert (TYPE_1__**) ;
+ int log_debug_errno (int,char*,...) ;
+ int sd_event_add_time (TYPE_1__**,TYPE_1__**,scalar_t__,int ,int ,int ,void*) ;
+ int sd_event_source_get_enabled (TYPE_1__*,int*) ;
+ int sd_event_source_get_time_clock (TYPE_1__*,scalar_t__*) ;
+ int sd_event_source_set_description (TYPE_1__*,char const*) ;
+ int sd_event_source_set_enabled (TYPE_1__*,int ) ;
+ int sd_event_source_set_priority (TYPE_1__*,int ) ;
+ int sd_event_source_set_time (TYPE_1__*,int ) ;
+ int sd_event_source_set_time_accuracy (TYPE_1__*,int ) ;
+ int sd_event_source_set_userdata (TYPE_1__*,void*) ;
+ char const* strna (char const*) ;
 
 int event_reset_time(
                 sd_event *e,
@@ -49,7 +49,7 @@ int event_reset_time(
                 const char *description,
                 bool force_reset) {
 
-        bool created = false;
+        bool created = 0;
         int enabled, r;
         clockid_t c;
 
@@ -86,7 +86,7 @@ int event_reset_time(
                 if (r < 0)
                         return log_debug_errno(r, "sd-event: Failed to set accuracy for event source \"%s\": %m", strna((*s)->description ?: description));
 
-                /* callback function is not updated, as we do not have sd_event_source_set_time_callback(). */
+
 
                 (void) sd_event_source_set_userdata(*s, userdata);
 
@@ -98,7 +98,7 @@ int event_reset_time(
                 if (r < 0)
                         return log_debug_errno(r, "sd-event: Failed to create timer event \"%s\": %m", strna(description));
 
-                created = true;
+                created = 1;
         }
 
         r = sd_event_source_set_priority(*s, priority);

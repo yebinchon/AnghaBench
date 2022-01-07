@@ -1,57 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_2__ {int /*<<< orphan*/ * system; } ;
 
-/* Variables and functions */
-#define  DEVICE_LIGHTGUN 137 
-#define  DEVICE_MOUSE 136 
-#define  DEVICE_PAD2B 135 
-#define  DEVICE_PAD3B 134 
-#define  DEVICE_PAD6B 133 
-#define  DEVICE_PADDLE 132 
-#define  DEVICE_PICO 131 
-#define  DEVICE_SPORTSPAD 130 
-#define  DEVICE_TEREBI 129 
-#define  DEVICE_XE_A1P 128 
- int /*<<< orphan*/  GUI_WaitPrompt (char*,char*) ; 
- size_t KEY_BUTTONA ; 
- size_t KEY_BUTTONB ; 
- size_t KEY_BUTTONC ; 
- size_t KEY_BUTTONX ; 
- size_t KEY_BUTTONY ; 
- size_t KEY_BUTTONZ ; 
- size_t KEY_MODE ; 
- size_t KEY_START ; 
- int /*<<< orphan*/  SYSTEM_JUSTIFIER ; 
- int /*<<< orphan*/  SYSTEM_MENACER ; 
- TYPE_1__ input ; 
- int /*<<< orphan*/ * keyname ; 
- int /*<<< orphan*/  pad_config (int,int,int) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wpad_config (int,int,int,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_2__ {int * system; } ;
+ int GUI_WaitPrompt (char*,char*) ;
+ size_t KEY_BUTTONA ;
+ size_t KEY_BUTTONB ;
+ size_t KEY_BUTTONC ;
+ size_t KEY_BUTTONX ;
+ size_t KEY_BUTTONY ;
+ size_t KEY_BUTTONZ ;
+ size_t KEY_MODE ;
+ size_t KEY_START ;
+ int SYSTEM_JUSTIFIER ;
+ int SYSTEM_MENACER ;
+ TYPE_1__ input ;
+ int * keyname ;
+ int pad_config (int,int,int) ;
+ int sprintf (int ,char*) ;
+ int wpad_config (int,int,int,int) ;
 
 void gx_input_Config(u8 chan, u8 device, u8 type)
 {
   int first_key, last_key;
 
-  /* emulated device */
+
   switch (type)
   {
-    case DEVICE_PADDLE:
-    case DEVICE_PAD2B:
-    case DEVICE_SPORTSPAD:
+    case 132:
+    case 135:
+    case 130:
     {
       first_key = KEY_BUTTONB;
       last_key = KEY_START;
@@ -61,7 +49,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_XE_A1P:
+    case 128:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_MODE;
@@ -76,7 +64,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_MOUSE:
+    case 136:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_START;
@@ -87,7 +75,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_PAD3B:
+    case 134:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_START;
@@ -98,7 +86,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_PAD6B:
+    case 133:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_MODE;
@@ -113,7 +101,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_LIGHTGUN:
+    case 137:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_START;
@@ -141,7 +129,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_PICO:
+    case 131:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_BUTTONB;
@@ -150,7 +138,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
       break;
     }
 
-    case DEVICE_TEREBI:
+    case 129:
     {
       first_key = KEY_BUTTONA;
       last_key = KEY_BUTTONA;
@@ -168,7 +156,7 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
     }
   }
 
-  /* Input device */
+
   switch (device)
   {
     case 0:
@@ -179,9 +167,9 @@ void gx_input_Config(u8 chan, u8 device, u8 type)
 
     default:
     {
-#ifdef HW_RVL
-      wpad_config(device - 1, chan, first_key, last_key);
-#endif
+
+
+
       break;
     }
   }

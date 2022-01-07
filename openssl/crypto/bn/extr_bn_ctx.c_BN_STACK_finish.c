@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * indexes; } ;
-typedef  TYPE_1__ BN_STACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * indexes; } ;
+typedef TYPE_1__ BN_STACK ;
+
+
+ int OPENSSL_free (int *) ;
 
 __attribute__((used)) static void BN_STACK_finish(BN_STACK *st)
 {
     OPENSSL_free(st->indexes);
-    st->indexes = NULL;
+    st->indexes = ((void*)0);
 }

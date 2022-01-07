@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  memcpy (char*,char const* const,int) ; 
- int /*<<< orphan*/  sqlite3Fts3Dequote (char*) ; 
- char** sqlite3_malloc64 (int) ; 
- scalar_t__ strlen (char const* const) ; 
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int memcpy (char*,char const* const,int) ;
+ int sqlite3Fts3Dequote (char*) ;
+ char** sqlite3_malloc64 (int) ;
+ scalar_t__ strlen (char const* const) ;
 
 __attribute__((used)) static int fts3tokDequoteArray(
-  int argc,                       /* Number of elements in argv[] */
-  const char * const *argv,       /* Input array */
-  char ***pazDequote              /* Output array */
+  int argc,
+  const char * const *argv,
+  char ***pazDequote
 ){
-  int rc = SQLITE_OK;             /* Return code */
+  int rc = SQLITE_OK;
   if( argc==0 ){
     *pazDequote = 0;
   }else{

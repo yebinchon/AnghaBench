@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_13__ {char* tags; int /*<<< orphan*/  createFlag; int /*<<< orphan*/  meterId; } ;
-struct TYPE_12__ {int /*<<< orphan*/  name; } ;
-struct TYPE_11__ {int /*<<< orphan*/  db; } ;
-struct TYPE_10__ {int allocSize; char* payload; scalar_t__* defaultVal; int payloadLen; int /*<<< orphan*/  msgType; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_13__ {char* tags; int createFlag; int meterId; } ;
+struct TYPE_12__ {int name; } ;
+struct TYPE_11__ {int db; } ;
+struct TYPE_10__ {int allocSize; char* payload; scalar_t__* defaultVal; int payloadLen; int msgType; } ;
 struct TYPE_9__ {TYPE_2__ cmd; } ;
-typedef  int /*<<< orphan*/  STagData ;
-typedef  TYPE_1__ SSqlObj ;
-typedef  TYPE_2__ SSqlCmd ;
-typedef  TYPE_3__ SMgmtHead ;
-typedef  TYPE_4__ SMeterMetaInfo ;
-typedef  TYPE_5__ SMeterInfoMsg ;
+typedef int STagData ;
+typedef TYPE_1__ SSqlObj ;
+typedef TYPE_2__ SSqlCmd ;
+typedef TYPE_3__ SMgmtHead ;
+typedef TYPE_4__ SMeterMetaInfo ;
+typedef TYPE_5__ SMeterInfoMsg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TSDB_MSG_TYPE_METERINFO ; 
- int /*<<< orphan*/  assert (int) ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- scalar_t__ minMsgSize () ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tfree (char*) ; 
- int tsRpcHeadSize ; 
- int /*<<< orphan*/  tscGetDBInfoFromMeterId (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__* tscGetMeterMetaInfo (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int TSDB_MSG_TYPE_METERINFO ;
+ int assert (int) ;
+ char* calloc (int,int) ;
+ int htons (int ) ;
+ int memcpy (char*,char*,int) ;
+ scalar_t__ minMsgSize () ;
+ int strcpy (int ,int ) ;
+ int tfree (char*) ;
+ int tsRpcHeadSize ;
+ int tscGetDBInfoFromMeterId (int ,int ) ;
+ TYPE_4__* tscGetMeterMetaInfo (TYPE_2__*,int ) ;
 
 int tscBuildMeterMetaMsg(SSqlObj *pSql) {
   SMeterInfoMsg *pInfoMsg;
-  char *         pMsg, *pStart;
-  int            msgLen = 0;
+  char * pMsg, *pStart;
+  int msgLen = 0;
 
   char *tmpData = 0;
   if (pSql->cmd.allocSize > 0) {
     tmpData = calloc(1, pSql->cmd.allocSize);
-    if (NULL == tmpData) return -1;
-    // STagData is in binary format, strncpy is not available
+    if (((void*)0) == tmpData) return -1;
+
     memcpy(tmpData, pSql->cmd.payload, pSql->cmd.allocSize);
   }
 
-  SSqlCmd *       pCmd = &pSql->cmd;
+  SSqlCmd * pCmd = &pSql->cmd;
   SMeterMetaInfo *pMeterMetaInfo = tscGetMeterMetaInfo(pCmd, 0);
 
   pMsg = pCmd->payload + tsRpcHeadSize;

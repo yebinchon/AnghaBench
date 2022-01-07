@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-struct rep_write_baton {char const* rep_key; char const* txn_id; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * trail; int /*<<< orphan*/ * fs; void* sha1_checksum_ctx; void* md5_checksum_ctx; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- struct rep_write_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- void* svn_checksum_ctx_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_checksum_md5 ; 
- int /*<<< orphan*/  svn_checksum_sha1 ; 
+
+
+
+typedef int trail_t ;
+typedef int svn_fs_t ;
+struct rep_write_baton {char const* rep_key; char const* txn_id; int * pool; int * trail; int * fs; void* sha1_checksum_ctx; void* md5_checksum_ctx; } ;
+typedef int apr_pool_t ;
+
+
+ struct rep_write_baton* apr_pcalloc (int *,int) ;
+ void* svn_checksum_ctx_create (int ,int *) ;
+ int svn_checksum_md5 ;
+ int svn_checksum_sha1 ;
 
 __attribute__((used)) static struct rep_write_baton *
 rep_write_get_baton(svn_fs_t *fs,

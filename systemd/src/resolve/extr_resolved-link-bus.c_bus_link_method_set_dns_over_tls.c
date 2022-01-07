@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_1__* manager; } ;
-typedef  TYPE_2__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-struct TYPE_12__ {int /*<<< orphan*/  polkit_registry; } ;
-typedef  TYPE_2__ Link ;
-typedef  scalar_t__ DnsOverTlsMode ;
+typedef TYPE_2__ sd_bus_message ;
+typedef int sd_bus_error ;
+struct TYPE_12__ {int polkit_registry; } ;
+typedef TYPE_2__ Link ;
+typedef scalar_t__ DnsOverTlsMode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_NET_ADMIN ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  UID_INVALID ; 
- scalar_t__ _DNS_OVER_TLS_MODE_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int bus_verify_polkit_async (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ dns_over_tls_mode_from_string (char const*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  link_save_user (TYPE_2__*) ; 
- int /*<<< orphan*/  link_set_dns_over_tls_mode (TYPE_2__*,scalar_t__) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int sd_bus_message_read (TYPE_2__*,char*,char const**) ; 
- int sd_bus_reply_method_return (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int verify_unmanaged_link (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int CAP_NET_ADMIN ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int UID_INVALID ;
+ scalar_t__ _DNS_OVER_TLS_MODE_INVALID ;
+ int assert (TYPE_2__*) ;
+ int bus_verify_polkit_async (TYPE_2__*,int ,char*,int *,int,int ,int *,int *) ;
+ scalar_t__ dns_over_tls_mode_from_string (char const*) ;
+ scalar_t__ isempty (char const*) ;
+ int link_save_user (TYPE_2__*) ;
+ int link_set_dns_over_tls_mode (TYPE_2__*,scalar_t__) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*) ;
+ int sd_bus_message_read (TYPE_2__*,char*,char const**) ;
+ int sd_bus_reply_method_return (TYPE_2__*,int *) ;
+ int verify_unmanaged_link (TYPE_2__*,int *) ;
 
 int bus_link_method_set_dns_over_tls(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Link *l = userdata;
@@ -62,16 +62,16 @@ int bus_link_method_set_dns_over_tls(sd_bus_message *message, void *userdata, sd
 
         r = bus_verify_polkit_async(message, CAP_NET_ADMIN,
                                     "org.freedesktop.resolve1.set-dns-over-tls",
-                                    NULL, true, UID_INVALID,
+                                    ((void*)0), 1, UID_INVALID,
                                     &l->manager->polkit_registry, error);
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* Polkit will call us back */
+                return 1;
 
         link_set_dns_over_tls_mode(l, mode);
 
         (void) link_save_user(l);
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

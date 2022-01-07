@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-struct beiscsi_hba {int /*<<< orphan*/  shost; int /*<<< orphan*/  pcidev; int /*<<< orphan*/  boot_kset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  beiscsi_destroy_def_ifaces (struct beiscsi_hba*) ; 
- int /*<<< orphan*/  beiscsi_quiesce (struct beiscsi_hba*) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  iscsi_boot_destroy_kset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iscsi_host_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iscsi_host_remove (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_dev_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_disable_device (struct pci_dev*) ; 
- struct beiscsi_hba* pci_get_drvdata (struct pci_dev*) ; 
+
+
+
+struct pci_dev {int dev; } ;
+struct beiscsi_hba {int shost; int pcidev; int boot_kset; } ;
+
+
+ int beiscsi_destroy_def_ifaces (struct beiscsi_hba*) ;
+ int beiscsi_quiesce (struct beiscsi_hba*) ;
+ int dev_err (int *,char*) ;
+ int iscsi_boot_destroy_kset (int ) ;
+ int iscsi_host_free (int ) ;
+ int iscsi_host_remove (int ) ;
+ int pci_dev_put (int ) ;
+ int pci_disable_device (struct pci_dev*) ;
+ struct beiscsi_hba* pci_get_drvdata (struct pci_dev*) ;
 
 __attribute__((used)) static void beiscsi_remove(struct pci_dev *pcidev)
 {
 
-	struct beiscsi_hba *phba = NULL;
+ struct beiscsi_hba *phba = ((void*)0);
 
-	phba = pci_get_drvdata(pcidev);
-	if (!phba) {
-		dev_err(&pcidev->dev, "beiscsi_remove called with no phba\n");
-		return;
-	}
+ phba = pci_get_drvdata(pcidev);
+ if (!phba) {
+  dev_err(&pcidev->dev, "beiscsi_remove called with no phba\n");
+  return;
+ }
 
-	beiscsi_destroy_def_ifaces(phba);
-	beiscsi_quiesce(phba);
-	iscsi_boot_destroy_kset(phba->boot_kset);
-	iscsi_host_remove(phba->shost);
-	pci_dev_put(phba->pcidev);
-	iscsi_host_free(phba->shost);
-	pci_disable_device(pcidev);
+ beiscsi_destroy_def_ifaces(phba);
+ beiscsi_quiesce(phba);
+ iscsi_boot_destroy_kset(phba->boot_kset);
+ iscsi_host_remove(phba->shost);
+ pci_dev_put(phba->pcidev);
+ iscsi_host_free(phba->shost);
+ pci_disable_device(pcidev);
 }

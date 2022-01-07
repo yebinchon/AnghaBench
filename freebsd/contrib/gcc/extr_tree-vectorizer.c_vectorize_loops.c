@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct loops {unsigned int num; struct loop** parray; } ;
-struct loop {int /*<<< orphan*/ * aux; } ;
-typedef  int /*<<< orphan*/ * loop_vec_info ;
+struct loop {int * aux; } ;
+typedef int * loop_vec_info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITMAP_ALLOC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BITMAP_FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOOP_VINFO_VECTORIZABLE_P (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REPORT_VECTORIZED_LOOPS ; 
- int /*<<< orphan*/  UNKNOWN_LOC ; 
- int /*<<< orphan*/  destroy_loop_vec_info (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_loop_location (struct loop*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/ * vect_analyze_loop (struct loop*) ; 
- int /*<<< orphan*/  vect_dump ; 
- int /*<<< orphan*/  vect_loop_location ; 
- unsigned int vect_loops_num ; 
- scalar_t__ vect_print_dump_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vect_set_dump_settings () ; 
- int /*<<< orphan*/  vect_transform_loop (int /*<<< orphan*/ *,struct loops*) ; 
- int /*<<< orphan*/  vect_vnames_to_rename ; 
+
+ int BITMAP_ALLOC (int *) ;
+ int BITMAP_FREE (int ) ;
+ int LOOP_VINFO_VECTORIZABLE_P (int *) ;
+ int REPORT_VECTORIZED_LOOPS ;
+ int UNKNOWN_LOC ;
+ int destroy_loop_vec_info (int *) ;
+ int find_loop_location (struct loop*) ;
+ int fprintf (int ,char*,unsigned int) ;
+ int * vect_analyze_loop (struct loop*) ;
+ int vect_dump ;
+ int vect_loop_location ;
+ unsigned int vect_loops_num ;
+ scalar_t__ vect_print_dump_info (int ) ;
+ int vect_set_dump_settings () ;
+ int vect_transform_loop (int *,struct loops*) ;
+ int vect_vnames_to_rename ;
 
 void
 vectorize_loops (struct loops *loops)
@@ -38,18 +38,18 @@ vectorize_loops (struct loops *loops)
   unsigned int i;
   unsigned int num_vectorized_loops = 0;
 
-  /* Fix the verbosity level if not defined explicitly by the user.  */
+
   vect_set_dump_settings ();
 
-  /* Allocate the bitmap that records which virtual variables that 
-     need to be renamed.  */
-  vect_vnames_to_rename = BITMAP_ALLOC (NULL);
 
-  /*  ----------- Analyze loops. -----------  */
 
-  /* If some loop was duplicated, it gets bigger number 
-     than all previously defined loops. This fact allows us to run 
-     only over initial loops skipping newly generated ones.  */
+  vect_vnames_to_rename = BITMAP_ALLOC (((void*)0));
+
+
+
+
+
+
   vect_loops_num = loops->num;
   for (i = 1; i < vect_loops_num; i++)
     {
@@ -64,7 +64,7 @@ vectorize_loops (struct loops *loops)
       loop->aux = loop_vinfo;
 
       if (!loop_vinfo || !LOOP_VINFO_VECTORIZABLE_P (loop_vinfo))
-	continue;
+ continue;
 
       vect_transform_loop (loop_vinfo, loops);
       num_vectorized_loops++;
@@ -73,9 +73,9 @@ vectorize_loops (struct loops *loops)
 
   if (vect_print_dump_info (REPORT_VECTORIZED_LOOPS))
     fprintf (vect_dump, "vectorized %u loops in function.\n",
-	     num_vectorized_loops);
+      num_vectorized_loops);
 
-  /*  ----------- Finalize. -----------  */
+
 
   BITMAP_FREE (vect_vnames_to_rename);
 
@@ -85,9 +85,9 @@ vectorize_loops (struct loops *loops)
       loop_vec_info loop_vinfo;
 
       if (!loop)
-	continue;
+ continue;
       loop_vinfo = loop->aux;
       destroy_loop_vec_info (loop_vinfo);
-      loop->aux = NULL;
+      loop->aux = ((void*)0);
     }
 }

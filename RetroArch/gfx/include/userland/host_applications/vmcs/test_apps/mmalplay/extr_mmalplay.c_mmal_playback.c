@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  render_layer; int /*<<< orphan*/  output_uri; } ;
-struct TYPE_8__ {int /*<<< orphan*/  status; int /*<<< orphan*/  name; int /*<<< orphan*/  lock; int /*<<< orphan*/ * ctx; int /*<<< orphan*/  uri; TYPE_1__ options; } ;
-struct TYPE_7__ {int /*<<< orphan*/  disable_playback; int /*<<< orphan*/  render_layer; int /*<<< orphan*/  output_uri; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMALPLAY_T ;
-typedef  TYPE_2__ MMALPLAY_OPTIONS_T ;
-typedef  TYPE_3__ FILE_PLAY_INFO_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mmalplay_create (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmalplay_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmalplay_play (int /*<<< orphan*/ *) ; 
- TYPE_2__ options ; 
- scalar_t__ unclean_exit ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int render_layer; int output_uri; } ;
+struct TYPE_8__ {int status; int name; int lock; int * ctx; int uri; TYPE_1__ options; } ;
+struct TYPE_7__ {int disable_playback; int render_layer; int output_uri; } ;
+typedef int MMAL_STATUS_T ;
+typedef int MMALPLAY_T ;
+typedef TYPE_2__ MMALPLAY_OPTIONS_T ;
+typedef TYPE_3__ FILE_PLAY_INFO_T ;
+
+
+ int LOG_TRACE (char*,int ,int ) ;
+ int * mmalplay_create (int ,TYPE_2__*,int *) ;
+ int mmalplay_destroy (int *) ;
+ int mmalplay_play (int *) ;
+ TYPE_2__ options ;
+ scalar_t__ unclean_exit ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 __attribute__((used)) static void *mmal_playback(void *id)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void *mmal_playback(void *id)
    MMAL_STATUS_T status;
    MMALPLAY_T *ctx;
 
-   /* Setup the options */
+
    opts = options;
    opts.output_uri = play_info->options.output_uri;
    opts.render_layer = play_info->options.render_layer;
@@ -59,8 +59,8 @@ __attribute__((used)) static void *mmal_playback(void *id)
    vcos_mutex_lock(&play_info->lock);
    if (ctx)
    {
-      /* coverity[use] Suppress ATOMICITY warning - ctx might have changed since
-       * we initialised it above, which is okay */
+
+
       mmalplay_destroy(ctx);
    }
    play_info->ctx = 0;
@@ -69,5 +69,5 @@ __attribute__((used)) static void *mmal_playback(void *id)
  end:
    LOG_TRACE("Thread %s terminating, result %d", play_info->name, status);
    play_info->status = status;
-   return NULL;
+   return ((void*)0);
 }

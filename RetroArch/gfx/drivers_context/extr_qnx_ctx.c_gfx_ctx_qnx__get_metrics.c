@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qnx_ctx_data_t ;
-typedef  enum display_metric_types { ____Placeholder_display_metric_types } display_metric_types ;
 
-/* Variables and functions */
-#define  DISPLAY_METRIC_DPI 131 
-#define  DISPLAY_METRIC_MM_HEIGHT 130 
-#define  DISPLAY_METRIC_MM_WIDTH 129 
-#define  DISPLAY_METRIC_NONE 128 
- int dpi_get_density (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int qnx_ctx_data_t ;
+typedef enum display_metric_types { ____Placeholder_display_metric_types } display_metric_types ;
+
+
+
+
+
+
+ int dpi_get_density (int *) ;
 
 __attribute__((used)) static bool gfx_ctx_qnx__get_metrics(void *data,
     enum display_metric_types type, float *value)
@@ -28,11 +28,11 @@ __attribute__((used)) static bool gfx_ctx_qnx__get_metrics(void *data,
 
    switch (type)
    {
-      case DISPLAY_METRIC_MM_WIDTH:
-         return false;
-      case DISPLAY_METRIC_MM_HEIGHT:
-         return false;
-      case DISPLAY_METRIC_DPI:
+      case 129:
+         return 0;
+      case 130:
+         return 0;
+      case 131:
          if (dpi == -1)
          {
             dpi = dpi_get_density(qnx);
@@ -41,18 +41,18 @@ __attribute__((used)) static bool gfx_ctx_qnx__get_metrics(void *data,
          }
          *value = (float)dpi;
          break;
-      case DISPLAY_METRIC_NONE:
+      case 128:
       default:
          *value = 0;
-         return false;
+         return 0;
    }
 
-   return true;
+   return 1;
 
 dpi_fallback:
-   /* Add a fallback in case the device doesn't report DPI.
-    * Calculated as an average of all BB10 device DPIs circa 2016. */
-   dpi    = 345;
+
+
+   dpi = 345;
    *value = (float)dpi;
-   return true;
+   return 1;
 }

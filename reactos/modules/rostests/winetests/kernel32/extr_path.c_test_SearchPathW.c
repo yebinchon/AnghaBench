@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pathW ;
-typedef  int /*<<< orphan*/  path2W ;
-typedef  int /*<<< orphan*/  buffW ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ERROR_INVALID_PARAMETER ; 
- int GetLastError () ; 
- int /*<<< orphan*/  GetSystemDirectoryW (char*,int) ; 
- int /*<<< orphan*/  GetWindowsDirectoryW (char*,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  create_manifest_file (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delete_manifest_file (char*) ; 
- int /*<<< orphan*/  lstrcmpW (char*,char*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  manifest_dep ; 
- int /*<<< orphan*/  manifest_main ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int pActivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int pDeactivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pReleaseActCtx (int /*<<< orphan*/ ) ; 
- int pSearchPathW (char*,char const*,char const*,int,char*,char**) ; 
- int /*<<< orphan*/  test_create (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+
+
+typedef int pathW ;
+typedef int path2W ;
+typedef int buffW ;
+typedef char WCHAR ;
+typedef int ULONG_PTR ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int GetLastError () ;
+ int GetSystemDirectoryW (char*,int) ;
+ int GetWindowsDirectoryW (char*,int) ;
+ int MAX_PATH ;
+ int SetLastError (int) ;
+ int create_manifest_file (char*,int ) ;
+ int delete_manifest_file (char*) ;
+ int lstrcmpW (char*,char*) ;
+ int lstrlenW (char*) ;
+ int manifest_dep ;
+ int manifest_main ;
+ int ok (int,char*,int,...) ;
+ int pActivateActCtx (int ,int *) ;
+ int pDeactivateActCtx (int ,int ) ;
+ int pReleaseActCtx (int ) ;
+ int pSearchPathW (char*,char const*,char const*,int,char*,char**) ;
+ int test_create (char*) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_SearchPathW(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void test_SearchPathW(void)
     static const WCHAR dllW[] = {'.','d','l','l',0};
     static const WCHAR fileW[] = { 0 };
     WCHAR pathW[MAX_PATH], buffW[MAX_PATH], path2W[MAX_PATH];
-    WCHAR *ptrW = NULL;
+    WCHAR *ptrW = ((void*)0);
     ULONG_PTR cookie;
     HANDLE handle;
     DWORD ret;
@@ -65,15 +65,15 @@ __attribute__((used)) static void test_SearchPathW(void)
 
 if (0)
 {
-    /* NULL filename, crashes on nt4 */
-    pSearchPathW(pathW, NULL, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, &ptrW);
+
+    pSearchPathW(pathW, ((void*)0), ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, &ptrW);
 }
 
     GetWindowsDirectoryW(pathW, sizeof(pathW)/sizeof(WCHAR));
 
-    /* empty filename */
+
     SetLastError(0xdeadbeef);
-    ret = pSearchPathW(pathW, fileW, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, &ptrW);
+    ret = pSearchPathW(pathW, fileW, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, &ptrW);
     ok(ret == 0, "Expected failure, got %d\n", ret);
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
       "Expected ERROR_INVALID_PARAMETER, got %x\n", GetLastError());
@@ -88,16 +88,16 @@ if (0)
     delete_manifest_file("testdep1.manifest");
     delete_manifest_file("main.manifest");
 
-    /* search fails without active context */
-    ret = pSearchPathW(NULL, testdepW, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+
+    ret = pSearchPathW(((void*)0), testdepW, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(ret == 0, "got %d\n", ret);
 
-    ret = pSearchPathW(NULL, kernel32dllW, NULL, sizeof(path2W)/sizeof(WCHAR), path2W, NULL);
+    ret = pSearchPathW(((void*)0), kernel32dllW, ((void*)0), sizeof(path2W)/sizeof(WCHAR), path2W, ((void*)0));
     ok(ret && ret == lstrlenW(path2W), "got %d\n", ret);
 
-    /* full path, name without 'dll' extension */
+
     GetSystemDirectoryW(pathW, sizeof(pathW)/sizeof(WCHAR));
-    ret = pSearchPathW(pathW, kernel32W, NULL, sizeof(path2W)/sizeof(WCHAR), path2W, NULL);
+    ret = pSearchPathW(pathW, kernel32W, ((void*)0), sizeof(path2W)/sizeof(WCHAR), path2W, ((void*)0));
     ok(ret == 0, "got %d\n", ret);
 
     GetWindowsDirectoryW(pathW, sizeof(pathW)/sizeof(WCHAR));
@@ -105,34 +105,34 @@ if (0)
     ret = pActivateActCtx(handle, &cookie);
     ok(ret, "failed to activate context, %u\n", GetLastError());
 
-    /* works when activated */
-    ret = pSearchPathW(NULL, testdepW, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+
+    ret = pSearchPathW(((void*)0), testdepW, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(ret && ret == lstrlenW(buffW), "got %d\n", ret);
 
-    ret = pSearchPathW(NULL, testdepW, extW, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+    ret = pSearchPathW(((void*)0), testdepW, extW, sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(ret && ret == lstrlenW(buffW), "got %d\n", ret);
 
-    ret = pSearchPathW(NULL, testdep1W, dllW, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+    ret = pSearchPathW(((void*)0), testdep1W, dllW, sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(ret && ret == lstrlenW(buffW), "got %d\n", ret);
 
-    ret = pSearchPathW(NULL, testdep1W, extW, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+    ret = pSearchPathW(((void*)0), testdep1W, extW, sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(!ret, "got %d\n", ret);
 
-    /* name contains path */
-    ret = pSearchPathW(NULL, testdeprelW, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+
+    ret = pSearchPathW(((void*)0), testdeprelW, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(!ret, "got %d\n", ret);
 
-    /* fails with specified path that doesn't contain this file */
-    ret = pSearchPathW(pathW, testdepW, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+
+    ret = pSearchPathW(pathW, testdepW, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(!ret, "got %d\n", ret);
 
-    /* path is redirected for wellknown names too, meaning it takes precedence over normal search order */
-    ret = pSearchPathW(NULL, kernel32dllW, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+
+    ret = pSearchPathW(((void*)0), kernel32dllW, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(ret && ret == lstrlenW(buffW), "got %d\n", ret);
     ok(lstrcmpW(buffW, path2W), "got wrong path %s, %s\n", wine_dbgstr_w(buffW), wine_dbgstr_w(path2W));
 
-    /* path is built using on manifest file name */
-    ret = pSearchPathW(NULL, ole32W, NULL, sizeof(buffW)/sizeof(WCHAR), buffW, NULL);
+
+    ret = pSearchPathW(((void*)0), ole32W, ((void*)0), sizeof(buffW)/sizeof(WCHAR), buffW, ((void*)0));
     ok(ret && ret == lstrlenW(buffW), "got %d\n", ret);
 
     ret = pDeactivateActCtx(0, cookie);

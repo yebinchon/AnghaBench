@@ -1,43 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
 
-/* Variables and functions */
-#define  CC0 145 
-#define  CONST 144 
-#define  CONST_DOUBLE 143 
-#define  CONST_INT 142 
-#define  CONST_VECTOR 141 
-#define  GE 140 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- char* GET_RTX_FORMAT (int) ; 
- int GET_RTX_LENGTH (int) ; 
-#define  GEU 139 
-#define  GT 138 
-#define  GTU 137 
-#define  LABEL_REF 136 
-#define  LE 135 
-#define  LEU 134 
-#define  LT 133 
-#define  LTU 132 
-#define  PC 131 
-#define  REG 130 
-#define  SCRATCH 129 
-#define  SYMBOL_REF 128 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int,int) ; 
- int XVECLEN (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+ int GET_CODE (int ) ;
+ char* GET_RTX_FORMAT (int) ;
+ int GET_RTX_LENGTH (int) ;
+ int XEXP (int ,int) ;
+ int XVECEXP (int ,int,int) ;
+ int XVECLEN (int ,int) ;
 
 int
 inequality_comparisons_p (rtx x)
@@ -48,26 +28,26 @@ inequality_comparisons_p (rtx x)
 
   switch (code)
     {
-    case REG:
-    case SCRATCH:
-    case PC:
-    case CC0:
-    case CONST_INT:
-    case CONST_DOUBLE:
-    case CONST_VECTOR:
-    case CONST:
-    case LABEL_REF:
-    case SYMBOL_REF:
+    case 130:
+    case 129:
+    case 131:
+    case 145:
+    case 142:
+    case 143:
+    case 141:
+    case 144:
+    case 136:
+    case 128:
       return 0;
 
-    case LT:
-    case LTU:
-    case GT:
-    case GTU:
-    case LE:
-    case LEU:
-    case GE:
-    case GEU:
+    case 133:
+    case 132:
+    case 138:
+    case 137:
+    case 135:
+    case 134:
+    case 140:
+    case 139:
       return 1;
 
     default:
@@ -80,17 +60,17 @@ inequality_comparisons_p (rtx x)
   for (i = 0; i < len; i++)
     {
       if (fmt[i] == 'e')
-	{
-	  if (inequality_comparisons_p (XEXP (x, i)))
-	    return 1;
-	}
+ {
+   if (inequality_comparisons_p (XEXP (x, i)))
+     return 1;
+ }
       else if (fmt[i] == 'E')
-	{
-	  int j;
-	  for (j = XVECLEN (x, i) - 1; j >= 0; j--)
-	    if (inequality_comparisons_p (XVECEXP (x, i, j)))
-	      return 1;
-	}
+ {
+   int j;
+   for (j = XVECLEN (x, i) - 1; j >= 0; j--)
+     if (inequality_comparisons_p (XVECEXP (x, i, j)))
+       return 1;
+ }
     }
 
   return 0;

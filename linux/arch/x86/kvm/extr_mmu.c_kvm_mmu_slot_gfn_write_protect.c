@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct kvm_rmap_head {int dummy; } ;
 struct kvm_memory_slot {int dummy; } ;
 struct kvm {int dummy; } ;
 
-/* Variables and functions */
- int PT_MAX_HUGEPAGE_LEVEL ; 
- int PT_PAGE_TABLE_LEVEL ; 
- struct kvm_rmap_head* __gfn_to_rmap (int /*<<< orphan*/ ,int,struct kvm_memory_slot*) ; 
- int __rmap_write_protect (struct kvm*,struct kvm_rmap_head*,int) ; 
+
+ int PT_MAX_HUGEPAGE_LEVEL ;
+ int PT_PAGE_TABLE_LEVEL ;
+ struct kvm_rmap_head* __gfn_to_rmap (int ,int,struct kvm_memory_slot*) ;
+ int __rmap_write_protect (struct kvm*,struct kvm_rmap_head*,int) ;
 
 bool kvm_mmu_slot_gfn_write_protect(struct kvm *kvm,
-				    struct kvm_memory_slot *slot, u64 gfn)
+        struct kvm_memory_slot *slot, u64 gfn)
 {
-	struct kvm_rmap_head *rmap_head;
-	int i;
-	bool write_protected = false;
+ struct kvm_rmap_head *rmap_head;
+ int i;
+ bool write_protected = 0;
 
-	for (i = PT_PAGE_TABLE_LEVEL; i <= PT_MAX_HUGEPAGE_LEVEL; ++i) {
-		rmap_head = __gfn_to_rmap(gfn, i, slot);
-		write_protected |= __rmap_write_protect(kvm, rmap_head, true);
-	}
+ for (i = PT_PAGE_TABLE_LEVEL; i <= PT_MAX_HUGEPAGE_LEVEL; ++i) {
+  rmap_head = __gfn_to_rmap(gfn, i, slot);
+  write_protected |= __rmap_write_protect(kvm, rmap_head, 1);
+ }
 
-	return write_protected;
+ return write_protected;
 }

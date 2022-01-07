@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct DictionaryClosure {int bytesWritten; void* hr; } ;
-typedef  int /*<<< orphan*/  propid ;
-typedef  int /*<<< orphan*/  keyLen ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_2__ {scalar_t__ codePage; int /*<<< orphan*/  stm; } ;
-typedef  TYPE_1__ PropertyStorage_impl ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int propid ;
+typedef int keyLen ;
+typedef int WCHAR ;
+typedef int ULONG ;
+struct TYPE_2__ {scalar_t__ codePage; int stm; } ;
+typedef TYPE_1__ PropertyStorage_impl ;
+typedef int LPCWSTR ;
+typedef int LPCSTR ;
+typedef int LPBYTE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ CP_UNICODE ; 
- scalar_t__ FAILED (void*) ; 
- void* IStream_Write (int /*<<< orphan*/ ,void const*,int,int /*<<< orphan*/ *) ; 
- void* PropertStorage_WriteWStringToStream (int /*<<< orphan*/ ,void const*,int,int /*<<< orphan*/ *) ; 
- int PtrToUlong (void const*) ; 
- int /*<<< orphan*/  SUCCEEDED (void*) ; 
- int /*<<< orphan*/  StorageUtl_WriteDWord (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int lstrlenW (int /*<<< orphan*/ ) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CP_UNICODE ;
+ scalar_t__ FAILED (void*) ;
+ void* IStream_Write (int ,void const*,int,int *) ;
+ void* PropertStorage_WriteWStringToStream (int ,void const*,int,int *) ;
+ int PtrToUlong (void const*) ;
+ int SUCCEEDED (void*) ;
+ int StorageUtl_WriteDWord (int ,int ,int) ;
+ int assert (void*) ;
+ int lstrlenW (int ) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static BOOL PropertyStorage_DictionaryWriter(const void *key,
  const void *value, void *extra, void *closure)

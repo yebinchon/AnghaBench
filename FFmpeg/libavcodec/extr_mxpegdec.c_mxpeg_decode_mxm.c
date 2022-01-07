@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_4__ {int /*<<< orphan*/  avctx; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int avctx; } ;
 struct TYPE_5__ {unsigned int mb_width; unsigned int mb_height; unsigned int bitmask_size; int* mxm_bitmask; int* completion_bitmask; int got_mxm_bitmask; int has_complete_frame; TYPE_1__ jpg; } ;
-typedef  TYPE_2__ MXpegDecodeContext ;
+typedef TYPE_2__ MXpegDecodeContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- void* AV_RL16 (int const*) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int* av_malloc (unsigned int) ; 
- int* av_mallocz (unsigned int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,unsigned int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ void* AV_RL16 (int const*) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_freep (int**) ;
+ int av_log (int ,int ,char*) ;
+ int* av_malloc (unsigned int) ;
+ int* av_mallocz (unsigned int) ;
+ int memcpy (int*,int const*,unsigned int) ;
 
 __attribute__((used)) static int mxpeg_decode_mxm(MXpegDecodeContext *s,
                             const uint8_t *buf_ptr, int buf_size)
@@ -35,7 +35,7 @@ __attribute__((used)) static int mxpeg_decode_mxm(MXpegDecodeContext *s,
     unsigned bitmask_size, mb_count;
     int i;
 
-    s->mb_width  = AV_RL16(buf_ptr+4);
+    s->mb_width = AV_RL16(buf_ptr+4);
     s->mb_height = AV_RL16(buf_ptr+6);
     mb_count = s->mb_width * s->mb_height;
 

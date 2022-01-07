@@ -1,91 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct i2c_client {int /*<<< orphan*/  addr; struct i2c_adapter* adapter; } ;
-struct i2c_board_info {int /*<<< orphan*/  type; } ;
-struct i2c_adapter {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  I2C_FUNC_SMBUS_BYTE_DATA ; 
- int /*<<< orphan*/  I2C_NAME_SIZE ; 
- int /*<<< orphan*/  MAX1619_REG_R_CHIP_ID ; 
- int /*<<< orphan*/  MAX1619_REG_R_CONFIG ; 
- int /*<<< orphan*/  MAX1619_REG_R_CONVRATE ; 
- int /*<<< orphan*/  MAX1619_REG_R_MAN_ID ; 
- int /*<<< orphan*/  MAX1619_REG_R_STATUS ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*,int,int) ; 
- int /*<<< orphan*/  i2c_check_functionality (struct i2c_adapter*,int /*<<< orphan*/ ) ; 
- int i2c_smbus_read_byte_data (struct i2c_client*,int /*<<< orphan*/ ) ; 
- int max1619 ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct i2c_client {int addr; struct i2c_adapter* adapter; } ;
+struct i2c_board_info {int type; } ;
+struct i2c_adapter {int dev; } ;
+
+
+ int ENODEV ;
+ int I2C_FUNC_SMBUS_BYTE_DATA ;
+ int I2C_NAME_SIZE ;
+ int MAX1619_REG_R_CHIP_ID ;
+ int MAX1619_REG_R_CONFIG ;
+ int MAX1619_REG_R_CONVRATE ;
+ int MAX1619_REG_R_MAN_ID ;
+ int MAX1619_REG_R_STATUS ;
+ int dev_dbg (int *,char*,int ) ;
+ int dev_info (int *,char*,int,int) ;
+ int i2c_check_functionality (struct i2c_adapter*,int ) ;
+ int i2c_smbus_read_byte_data (struct i2c_client*,int ) ;
+ int max1619 ;
+ int strlcpy (int ,char*,int ) ;
 
 __attribute__((used)) static int max1619_detect(struct i2c_client *new_client, int kind,
-			  struct i2c_board_info *info)
+     struct i2c_board_info *info)
 {
-	struct i2c_adapter *adapter = new_client->adapter;
-	u8 reg_config=0, reg_convrate=0, reg_status=0;
+ struct i2c_adapter *adapter = new_client->adapter;
+ u8 reg_config=0, reg_convrate=0, reg_status=0;
 
-	if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BYTE_DATA))
-		return -ENODEV;
+ if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BYTE_DATA))
+  return -ENODEV;
+ if (kind < 0) {
+  reg_config = i2c_smbus_read_byte_data(new_client,
+         MAX1619_REG_R_CONFIG);
+  reg_convrate = i2c_smbus_read_byte_data(new_client,
+          MAX1619_REG_R_CONVRATE);
+  reg_status = i2c_smbus_read_byte_data(new_client,
+    MAX1619_REG_R_STATUS);
+  if ((reg_config & 0x03) != 0x00
+   || reg_convrate > 0x07 || (reg_status & 0x61 ) !=0x00) {
+   dev_dbg(&adapter->dev,
+    "MAX1619 detection failed at 0x%02x.\n",
+    new_client->addr);
+   return -ENODEV;
+  }
+ }
 
-	/*
-	 * Now we do the remaining detection. A negative kind means that
-	 * the driver was loaded with no force parameter (default), so we
-	 * must both detect and identify the chip. A zero kind means that
-	 * the driver was loaded with the force parameter, the detection
-	 * step shall be skipped. A positive kind means that the driver
-	 * was loaded with the force parameter and a given kind of chip is
-	 * requested, so both the detection and the identification steps
-	 * are skipped.
-	 */
-	if (kind < 0) { /* detection */
-		reg_config = i2c_smbus_read_byte_data(new_client,
-			      MAX1619_REG_R_CONFIG);
-		reg_convrate = i2c_smbus_read_byte_data(new_client,
-			       MAX1619_REG_R_CONVRATE);
-		reg_status = i2c_smbus_read_byte_data(new_client,
-				MAX1619_REG_R_STATUS);
-		if ((reg_config & 0x03) != 0x00
-		 || reg_convrate > 0x07 || (reg_status & 0x61 ) !=0x00) {
-			dev_dbg(&adapter->dev,
-				"MAX1619 detection failed at 0x%02x.\n",
-				new_client->addr);
-			return -ENODEV;
-		}
-	}
+ if (kind <= 0) {
+  u8 man_id, chip_id;
 
-	if (kind <= 0) { /* identification */
-		u8 man_id, chip_id;
-	
-		man_id = i2c_smbus_read_byte_data(new_client,
-			 MAX1619_REG_R_MAN_ID);
-		chip_id = i2c_smbus_read_byte_data(new_client,
-			  MAX1619_REG_R_CHIP_ID);
-		
-		if ((man_id == 0x4D) && (chip_id == 0x04))
-			kind = max1619;
+  man_id = i2c_smbus_read_byte_data(new_client,
+    MAX1619_REG_R_MAN_ID);
+  chip_id = i2c_smbus_read_byte_data(new_client,
+     MAX1619_REG_R_CHIP_ID);
 
-		if (kind <= 0) { /* identification failed */
-			dev_info(&adapter->dev,
-			    "Unsupported chip (man_id=0x%02X, "
-			    "chip_id=0x%02X).\n", man_id, chip_id);
-			return -ENODEV;
-		}
-	}
+  if ((man_id == 0x4D) && (chip_id == 0x04))
+   kind = max1619;
 
-	strlcpy(info->type, "max1619", I2C_NAME_SIZE);
+  if (kind <= 0) {
+   dev_info(&adapter->dev,
+       "Unsupported chip (man_id=0x%02X, "
+       "chip_id=0x%02X).\n", man_id, chip_id);
+   return -ENODEV;
+  }
+ }
 
-	return 0;
+ strlcpy(info->type, "max1619", I2C_NAME_SIZE);
+
+ return 0;
 }

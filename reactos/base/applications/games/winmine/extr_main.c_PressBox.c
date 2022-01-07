@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  hWnd; int /*<<< orphan*/  hMinesBMP; } ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_1__ BOARD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawMine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int hWnd; int hMinesBMP; } ;
+typedef int HGDIOBJ ;
+typedef int HDC ;
+typedef TYPE_1__ BOARD ;
+
+
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int DrawMine (int ,int ,TYPE_1__*,unsigned int,unsigned int,int ) ;
+ int GetDC (int ) ;
+ int ReleaseDC (int ,int ) ;
+ int SelectObject (int ,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static void PressBox( BOARD *p_board, unsigned col, unsigned row )
 {

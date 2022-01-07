@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int timediff_t ;
+
+
+
+
+typedef int timediff_t ;
 struct curltime {int tv_sec; int tv_usec; } ;
 
-/* Variables and functions */
- int TIMEDIFF_T_MAX ; 
- int TIMEDIFF_T_MIN ; 
+
+ int TIMEDIFF_T_MAX ;
+ int TIMEDIFF_T_MIN ;
 
 timediff_t Curl_timediff(struct curltime newer, struct curltime older)
 {

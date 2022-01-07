@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int KC_0 ; 
- int KC_1 ; 
- int KC_NO ; 
- int NEO_A ; 
- int NEO_B ; 
- int NEO_C ; 
- int NEO_D ; 
- int NEO_E ; 
- int NEO_F ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int KC_0 ;
+ int KC_1 ;
+ int KC_NO ;
+ int NEO_A ;
+ int NEO_B ;
+ int NEO_C ;
+ int NEO_D ;
+ int NEO_E ;
+ int NEO_F ;
 
 uint16_t hex_to_keycode(uint8_t hex)
 {

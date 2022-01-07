@@ -1,0 +1,413 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/gpu/drm/amd/powerplay/hwmgr/extr_vega12_hwmgr.c_vega12_init_dpm_defaults.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/gpu/drm/amd/powerplay/hwmgr/extr_vega12_hwmgr.c_vega12_init_dpm_defaults.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pp_hwmgr = type { %struct.amdgpu_device*, i64 }
+%struct.amdgpu_device = type { i32 }
+%struct.vega12_hwmgr = type { %struct.TYPE_4__, %struct.TYPE_3__* }
+%struct.TYPE_4__ = type { i32 }
+%struct.TYPE_3__ = type { i64, i32, i32 }
+
+@FEATURE_DPM_PREFETCHER_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_PREFETCHER = common dso_local global i64 0, align 8
+@FEATURE_DPM_GFXCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_GFXCLK = common dso_local global i64 0, align 8
+@FEATURE_DPM_UCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_UCLK = common dso_local global i64 0, align 8
+@FEATURE_DPM_SOCCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_SOCCLK = common dso_local global i64 0, align 8
+@FEATURE_DPM_UVD_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_UVD = common dso_local global i64 0, align 8
+@FEATURE_DPM_VCE_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_VCE = common dso_local global i64 0, align 8
+@FEATURE_ULV_BIT = common dso_local global i64 0, align 8
+@GNLD_ULV = common dso_local global i64 0, align 8
+@FEATURE_DPM_MP0CLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_MP0CLK = common dso_local global i64 0, align 8
+@FEATURE_DPM_LINK_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_LINK = common dso_local global i64 0, align 8
+@FEATURE_DPM_DCEFCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DPM_DCEFCLK = common dso_local global i64 0, align 8
+@FEATURE_DS_GFXCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DS_GFXCLK = common dso_local global i64 0, align 8
+@FEATURE_DS_SOCCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DS_SOCCLK = common dso_local global i64 0, align 8
+@FEATURE_DS_LCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DS_LCLK = common dso_local global i64 0, align 8
+@FEATURE_PPT_BIT = common dso_local global i64 0, align 8
+@GNLD_PPT = common dso_local global i64 0, align 8
+@FEATURE_TDC_BIT = common dso_local global i64 0, align 8
+@GNLD_TDC = common dso_local global i64 0, align 8
+@FEATURE_THERMAL_BIT = common dso_local global i64 0, align 8
+@GNLD_THERMAL = common dso_local global i64 0, align 8
+@FEATURE_GFX_PER_CU_CG_BIT = common dso_local global i64 0, align 8
+@GNLD_GFX_PER_CU_CG = common dso_local global i64 0, align 8
+@FEATURE_RM_BIT = common dso_local global i64 0, align 8
+@GNLD_RM = common dso_local global i64 0, align 8
+@FEATURE_DS_DCEFCLK_BIT = common dso_local global i64 0, align 8
+@GNLD_DS_DCEFCLK = common dso_local global i64 0, align 8
+@FEATURE_ACDC_BIT = common dso_local global i64 0, align 8
+@GNLD_ACDC = common dso_local global i64 0, align 8
+@FEATURE_VR0HOT_BIT = common dso_local global i64 0, align 8
+@GNLD_VR0HOT = common dso_local global i64 0, align 8
+@FEATURE_VR1HOT_BIT = common dso_local global i64 0, align 8
+@GNLD_VR1HOT = common dso_local global i64 0, align 8
+@FEATURE_FW_CTF_BIT = common dso_local global i64 0, align 8
+@GNLD_FW_CTF = common dso_local global i64 0, align 8
+@FEATURE_LED_DISPLAY_BIT = common dso_local global i64 0, align 8
+@GNLD_LED_DISPLAY = common dso_local global i64 0, align 8
+@FEATURE_FAN_CONTROL_BIT = common dso_local global i64 0, align 8
+@GNLD_FAN_CONTROL = common dso_local global i64 0, align 8
+@FEATURE_GFX_EDC_BIT = common dso_local global i64 0, align 8
+@GNLD_DIDT = common dso_local global i64 0, align 8
+@FEATURE_GFXOFF_BIT = common dso_local global i64 0, align 8
+@GNLD_GFXOFF = common dso_local global i64 0, align 8
+@FEATURE_CG_BIT = common dso_local global i64 0, align 8
+@GNLD_CG = common dso_local global i64 0, align 8
+@FEATURE_ACG_BIT = common dso_local global i64 0, align 8
+@GNLD_ACG = common dso_local global i64 0, align 8
+@GNLD_FEATURES_MAX = common dso_local global i32 0, align 4
+@PPSMC_MSG_ReadSerialNumTop32 = common dso_local global i32 0, align 4
+@PPSMC_MSG_ReadSerialNumBottom32 = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.pp_hwmgr*)* @vega12_init_dpm_defaults to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @vega12_init_dpm_defaults(%struct.pp_hwmgr* %0) #0 {
+  %2 = alloca %struct.pp_hwmgr*, align 8
+  %3 = alloca %struct.vega12_hwmgr*, align 8
+  %4 = alloca %struct.amdgpu_device*, align 8
+  %5 = alloca i32, align 4
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  store %struct.pp_hwmgr* %0, %struct.pp_hwmgr** %2, align 8
+  %8 = load %struct.pp_hwmgr*, %struct.pp_hwmgr** %2, align 8
+  %9 = getelementptr inbounds %struct.pp_hwmgr, %struct.pp_hwmgr* %8, i32 0, i32 1
+  %10 = load i64, i64* %9, align 8
+  %11 = inttoptr i64 %10 to %struct.vega12_hwmgr*
+  store %struct.vega12_hwmgr* %11, %struct.vega12_hwmgr** %3, align 8
+  %12 = load %struct.pp_hwmgr*, %struct.pp_hwmgr** %2, align 8
+  %13 = getelementptr inbounds %struct.pp_hwmgr, %struct.pp_hwmgr* %12, i32 0, i32 0
+  %14 = load %struct.amdgpu_device*, %struct.amdgpu_device** %13, align 8
+  store %struct.amdgpu_device* %14, %struct.amdgpu_device** %4, align 8
+  %15 = load i64, i64* @FEATURE_DPM_PREFETCHER_BIT, align 8
+  %16 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %17 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %16, i32 0, i32 1
+  %18 = load %struct.TYPE_3__*, %struct.TYPE_3__** %17, align 8
+  %19 = load i64, i64* @GNLD_DPM_PREFETCHER, align 8
+  %20 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %18, i64 %19
+  %21 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %20, i32 0, i32 0
+  store i64 %15, i64* %21, align 8
+  %22 = load i64, i64* @FEATURE_DPM_GFXCLK_BIT, align 8
+  %23 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %24 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %23, i32 0, i32 1
+  %25 = load %struct.TYPE_3__*, %struct.TYPE_3__** %24, align 8
+  %26 = load i64, i64* @GNLD_DPM_GFXCLK, align 8
+  %27 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %25, i64 %26
+  %28 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %27, i32 0, i32 0
+  store i64 %22, i64* %28, align 8
+  %29 = load i64, i64* @FEATURE_DPM_UCLK_BIT, align 8
+  %30 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %31 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %30, i32 0, i32 1
+  %32 = load %struct.TYPE_3__*, %struct.TYPE_3__** %31, align 8
+  %33 = load i64, i64* @GNLD_DPM_UCLK, align 8
+  %34 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %32, i64 %33
+  %35 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %34, i32 0, i32 0
+  store i64 %29, i64* %35, align 8
+  %36 = load i64, i64* @FEATURE_DPM_SOCCLK_BIT, align 8
+  %37 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %38 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %37, i32 0, i32 1
+  %39 = load %struct.TYPE_3__*, %struct.TYPE_3__** %38, align 8
+  %40 = load i64, i64* @GNLD_DPM_SOCCLK, align 8
+  %41 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %39, i64 %40
+  %42 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %41, i32 0, i32 0
+  store i64 %36, i64* %42, align 8
+  %43 = load i64, i64* @FEATURE_DPM_UVD_BIT, align 8
+  %44 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %45 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %44, i32 0, i32 1
+  %46 = load %struct.TYPE_3__*, %struct.TYPE_3__** %45, align 8
+  %47 = load i64, i64* @GNLD_DPM_UVD, align 8
+  %48 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %46, i64 %47
+  %49 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %48, i32 0, i32 0
+  store i64 %43, i64* %49, align 8
+  %50 = load i64, i64* @FEATURE_DPM_VCE_BIT, align 8
+  %51 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %52 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %51, i32 0, i32 1
+  %53 = load %struct.TYPE_3__*, %struct.TYPE_3__** %52, align 8
+  %54 = load i64, i64* @GNLD_DPM_VCE, align 8
+  %55 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %53, i64 %54
+  %56 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %55, i32 0, i32 0
+  store i64 %50, i64* %56, align 8
+  %57 = load i64, i64* @FEATURE_ULV_BIT, align 8
+  %58 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %59 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %58, i32 0, i32 1
+  %60 = load %struct.TYPE_3__*, %struct.TYPE_3__** %59, align 8
+  %61 = load i64, i64* @GNLD_ULV, align 8
+  %62 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %60, i64 %61
+  %63 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %62, i32 0, i32 0
+  store i64 %57, i64* %63, align 8
+  %64 = load i64, i64* @FEATURE_DPM_MP0CLK_BIT, align 8
+  %65 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %66 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %65, i32 0, i32 1
+  %67 = load %struct.TYPE_3__*, %struct.TYPE_3__** %66, align 8
+  %68 = load i64, i64* @GNLD_DPM_MP0CLK, align 8
+  %69 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %67, i64 %68
+  %70 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %69, i32 0, i32 0
+  store i64 %64, i64* %70, align 8
+  %71 = load i64, i64* @FEATURE_DPM_LINK_BIT, align 8
+  %72 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %73 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %72, i32 0, i32 1
+  %74 = load %struct.TYPE_3__*, %struct.TYPE_3__** %73, align 8
+  %75 = load i64, i64* @GNLD_DPM_LINK, align 8
+  %76 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %74, i64 %75
+  %77 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %76, i32 0, i32 0
+  store i64 %71, i64* %77, align 8
+  %78 = load i64, i64* @FEATURE_DPM_DCEFCLK_BIT, align 8
+  %79 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %80 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %79, i32 0, i32 1
+  %81 = load %struct.TYPE_3__*, %struct.TYPE_3__** %80, align 8
+  %82 = load i64, i64* @GNLD_DPM_DCEFCLK, align 8
+  %83 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %81, i64 %82
+  %84 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %83, i32 0, i32 0
+  store i64 %78, i64* %84, align 8
+  %85 = load i64, i64* @FEATURE_DS_GFXCLK_BIT, align 8
+  %86 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %87 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %86, i32 0, i32 1
+  %88 = load %struct.TYPE_3__*, %struct.TYPE_3__** %87, align 8
+  %89 = load i64, i64* @GNLD_DS_GFXCLK, align 8
+  %90 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %88, i64 %89
+  %91 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %90, i32 0, i32 0
+  store i64 %85, i64* %91, align 8
+  %92 = load i64, i64* @FEATURE_DS_SOCCLK_BIT, align 8
+  %93 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %94 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %93, i32 0, i32 1
+  %95 = load %struct.TYPE_3__*, %struct.TYPE_3__** %94, align 8
+  %96 = load i64, i64* @GNLD_DS_SOCCLK, align 8
+  %97 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %95, i64 %96
+  %98 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %97, i32 0, i32 0
+  store i64 %92, i64* %98, align 8
+  %99 = load i64, i64* @FEATURE_DS_LCLK_BIT, align 8
+  %100 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %101 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %100, i32 0, i32 1
+  %102 = load %struct.TYPE_3__*, %struct.TYPE_3__** %101, align 8
+  %103 = load i64, i64* @GNLD_DS_LCLK, align 8
+  %104 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %102, i64 %103
+  %105 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %104, i32 0, i32 0
+  store i64 %99, i64* %105, align 8
+  %106 = load i64, i64* @FEATURE_PPT_BIT, align 8
+  %107 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %108 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %107, i32 0, i32 1
+  %109 = load %struct.TYPE_3__*, %struct.TYPE_3__** %108, align 8
+  %110 = load i64, i64* @GNLD_PPT, align 8
+  %111 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %109, i64 %110
+  %112 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %111, i32 0, i32 0
+  store i64 %106, i64* %112, align 8
+  %113 = load i64, i64* @FEATURE_TDC_BIT, align 8
+  %114 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %115 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %114, i32 0, i32 1
+  %116 = load %struct.TYPE_3__*, %struct.TYPE_3__** %115, align 8
+  %117 = load i64, i64* @GNLD_TDC, align 8
+  %118 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %116, i64 %117
+  %119 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %118, i32 0, i32 0
+  store i64 %113, i64* %119, align 8
+  %120 = load i64, i64* @FEATURE_THERMAL_BIT, align 8
+  %121 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %122 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %121, i32 0, i32 1
+  %123 = load %struct.TYPE_3__*, %struct.TYPE_3__** %122, align 8
+  %124 = load i64, i64* @GNLD_THERMAL, align 8
+  %125 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %123, i64 %124
+  %126 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %125, i32 0, i32 0
+  store i64 %120, i64* %126, align 8
+  %127 = load i64, i64* @FEATURE_GFX_PER_CU_CG_BIT, align 8
+  %128 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %129 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %128, i32 0, i32 1
+  %130 = load %struct.TYPE_3__*, %struct.TYPE_3__** %129, align 8
+  %131 = load i64, i64* @GNLD_GFX_PER_CU_CG, align 8
+  %132 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %130, i64 %131
+  %133 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %132, i32 0, i32 0
+  store i64 %127, i64* %133, align 8
+  %134 = load i64, i64* @FEATURE_RM_BIT, align 8
+  %135 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %136 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %135, i32 0, i32 1
+  %137 = load %struct.TYPE_3__*, %struct.TYPE_3__** %136, align 8
+  %138 = load i64, i64* @GNLD_RM, align 8
+  %139 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %137, i64 %138
+  %140 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %139, i32 0, i32 0
+  store i64 %134, i64* %140, align 8
+  %141 = load i64, i64* @FEATURE_DS_DCEFCLK_BIT, align 8
+  %142 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %143 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %142, i32 0, i32 1
+  %144 = load %struct.TYPE_3__*, %struct.TYPE_3__** %143, align 8
+  %145 = load i64, i64* @GNLD_DS_DCEFCLK, align 8
+  %146 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %144, i64 %145
+  %147 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %146, i32 0, i32 0
+  store i64 %141, i64* %147, align 8
+  %148 = load i64, i64* @FEATURE_ACDC_BIT, align 8
+  %149 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %150 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %149, i32 0, i32 1
+  %151 = load %struct.TYPE_3__*, %struct.TYPE_3__** %150, align 8
+  %152 = load i64, i64* @GNLD_ACDC, align 8
+  %153 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %151, i64 %152
+  %154 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %153, i32 0, i32 0
+  store i64 %148, i64* %154, align 8
+  %155 = load i64, i64* @FEATURE_VR0HOT_BIT, align 8
+  %156 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %157 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %156, i32 0, i32 1
+  %158 = load %struct.TYPE_3__*, %struct.TYPE_3__** %157, align 8
+  %159 = load i64, i64* @GNLD_VR0HOT, align 8
+  %160 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %158, i64 %159
+  %161 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %160, i32 0, i32 0
+  store i64 %155, i64* %161, align 8
+  %162 = load i64, i64* @FEATURE_VR1HOT_BIT, align 8
+  %163 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %164 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %163, i32 0, i32 1
+  %165 = load %struct.TYPE_3__*, %struct.TYPE_3__** %164, align 8
+  %166 = load i64, i64* @GNLD_VR1HOT, align 8
+  %167 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %165, i64 %166
+  %168 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %167, i32 0, i32 0
+  store i64 %162, i64* %168, align 8
+  %169 = load i64, i64* @FEATURE_FW_CTF_BIT, align 8
+  %170 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %171 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %170, i32 0, i32 1
+  %172 = load %struct.TYPE_3__*, %struct.TYPE_3__** %171, align 8
+  %173 = load i64, i64* @GNLD_FW_CTF, align 8
+  %174 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %172, i64 %173
+  %175 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %174, i32 0, i32 0
+  store i64 %169, i64* %175, align 8
+  %176 = load i64, i64* @FEATURE_LED_DISPLAY_BIT, align 8
+  %177 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %178 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %177, i32 0, i32 1
+  %179 = load %struct.TYPE_3__*, %struct.TYPE_3__** %178, align 8
+  %180 = load i64, i64* @GNLD_LED_DISPLAY, align 8
+  %181 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %179, i64 %180
+  %182 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %181, i32 0, i32 0
+  store i64 %176, i64* %182, align 8
+  %183 = load i64, i64* @FEATURE_FAN_CONTROL_BIT, align 8
+  %184 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %185 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %184, i32 0, i32 1
+  %186 = load %struct.TYPE_3__*, %struct.TYPE_3__** %185, align 8
+  %187 = load i64, i64* @GNLD_FAN_CONTROL, align 8
+  %188 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %186, i64 %187
+  %189 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %188, i32 0, i32 0
+  store i64 %183, i64* %189, align 8
+  %190 = load i64, i64* @FEATURE_GFX_EDC_BIT, align 8
+  %191 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %192 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %191, i32 0, i32 1
+  %193 = load %struct.TYPE_3__*, %struct.TYPE_3__** %192, align 8
+  %194 = load i64, i64* @GNLD_DIDT, align 8
+  %195 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %193, i64 %194
+  %196 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %195, i32 0, i32 0
+  store i64 %190, i64* %196, align 8
+  %197 = load i64, i64* @FEATURE_GFXOFF_BIT, align 8
+  %198 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %199 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %198, i32 0, i32 1
+  %200 = load %struct.TYPE_3__*, %struct.TYPE_3__** %199, align 8
+  %201 = load i64, i64* @GNLD_GFXOFF, align 8
+  %202 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %200, i64 %201
+  %203 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %202, i32 0, i32 0
+  store i64 %197, i64* %203, align 8
+  %204 = load i64, i64* @FEATURE_CG_BIT, align 8
+  %205 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %206 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %205, i32 0, i32 1
+  %207 = load %struct.TYPE_3__*, %struct.TYPE_3__** %206, align 8
+  %208 = load i64, i64* @GNLD_CG, align 8
+  %209 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %207, i64 %208
+  %210 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %209, i32 0, i32 0
+  store i64 %204, i64* %210, align 8
+  %211 = load i64, i64* @FEATURE_ACG_BIT, align 8
+  %212 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %213 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %212, i32 0, i32 1
+  %214 = load %struct.TYPE_3__*, %struct.TYPE_3__** %213, align 8
+  %215 = load i64, i64* @GNLD_ACG, align 8
+  %216 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %214, i64 %215
+  %217 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %216, i32 0, i32 0
+  store i64 %211, i64* %217, align 8
+  store i32 0, i32* %7, align 4
+  br label %218
+
+218:                                              ; preds = %257, %1
+  %219 = load i32, i32* %7, align 4
+  %220 = load i32, i32* @GNLD_FEATURES_MAX, align 4
+  %221 = icmp slt i32 %219, %220
+  br i1 %221, label %222, label %260
+
+222:                                              ; preds = %218
+  %223 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %224 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %223, i32 0, i32 1
+  %225 = load %struct.TYPE_3__*, %struct.TYPE_3__** %224, align 8
+  %226 = load i32, i32* %7, align 4
+  %227 = sext i32 %226 to i64
+  %228 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %225, i64 %227
+  %229 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %228, i32 0, i32 0
+  %230 = load i64, i64* %229, align 8
+  %231 = shl i64 1, %230
+  %232 = trunc i64 %231 to i32
+  %233 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %234 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %233, i32 0, i32 1
+  %235 = load %struct.TYPE_3__*, %struct.TYPE_3__** %234, align 8
+  %236 = load i32, i32* %7, align 4
+  %237 = sext i32 %236 to i64
+  %238 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %235, i64 %237
+  %239 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %238, i32 0, i32 1
+  store i32 %232, i32* %239, align 8
+  %240 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %241 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %240, i32 0, i32 0
+  %242 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %241, i32 0, i32 0
+  %243 = load i32, i32* %242, align 8
+  %244 = load i32, i32* %7, align 4
+  %245 = ashr i32 %243, %244
+  %246 = and i32 %245, 1
+  %247 = icmp ne i32 %246, 0
+  %248 = zext i1 %247 to i64
+  %249 = select i1 %247, i32 0, i32 1
+  %250 = load %struct.vega12_hwmgr*, %struct.vega12_hwmgr** %3, align 8
+  %251 = getelementptr inbounds %struct.vega12_hwmgr, %struct.vega12_hwmgr* %250, i32 0, i32 1
+  %252 = load %struct.TYPE_3__*, %struct.TYPE_3__** %251, align 8
+  %253 = load i32, i32* %7, align 4
+  %254 = sext i32 %253 to i64
+  %255 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %252, i64 %254
+  %256 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %255, i32 0, i32 2
+  store i32 %249, i32* %256, align 4
+  br label %257
+
+257:                                              ; preds = %222
+  %258 = load i32, i32* %7, align 4
+  %259 = add nsw i32 %258, 1
+  store i32 %259, i32* %7, align 4
+  br label %218
+
+260:                                              ; preds = %218
+  %261 = load %struct.pp_hwmgr*, %struct.pp_hwmgr** %2, align 8
+  %262 = load i32, i32* @PPSMC_MSG_ReadSerialNumTop32, align 4
+  %263 = call i32 @smum_send_msg_to_smc(%struct.pp_hwmgr* %261, i32 %262)
+  %264 = load %struct.pp_hwmgr*, %struct.pp_hwmgr** %2, align 8
+  %265 = call i32 @smum_get_argument(%struct.pp_hwmgr* %264)
+  store i32 %265, i32* %5, align 4
+  %266 = load %struct.pp_hwmgr*, %struct.pp_hwmgr** %2, align 8
+  %267 = load i32, i32* @PPSMC_MSG_ReadSerialNumBottom32, align 4
+  %268 = call i32 @smum_send_msg_to_smc(%struct.pp_hwmgr* %266, i32 %267)
+  %269 = load %struct.pp_hwmgr*, %struct.pp_hwmgr** %2, align 8
+  %270 = call i32 @smum_get_argument(%struct.pp_hwmgr* %269)
+  store i32 %270, i32* %6, align 4
+  %271 = load i32, i32* %6, align 4
+  %272 = shl i32 %271, 32
+  %273 = load i32, i32* %5, align 4
+  %274 = or i32 %272, %273
+  %275 = load %struct.amdgpu_device*, %struct.amdgpu_device** %4, align 8
+  %276 = getelementptr inbounds %struct.amdgpu_device, %struct.amdgpu_device* %275, i32 0, i32 0
+  store i32 %274, i32* %276, align 4
+  ret void
+}
+
+declare dso_local i32 @smum_send_msg_to_smc(%struct.pp_hwmgr*, i32) #1
+
+declare dso_local i32 @smum_get_argument(%struct.pp_hwmgr*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iovec {char* iov_base; int /*<<< orphan*/  iov_len; } ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  serf_iovec_read_iovec (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,struct iovec*,int*) ; 
+
+
+
+struct iovec {char* iov_base; int iov_len; } ;
+typedef int serf_bucket_t ;
+typedef int apr_status_t ;
+typedef int apr_size_t ;
+
+
+ int serf_iovec_read_iovec (int *,int ,int,struct iovec*,int*) ;
 
 __attribute__((used)) static apr_status_t serf_iovec_read(serf_bucket_t *bucket,
                                     apr_size_t requested,

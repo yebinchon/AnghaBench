@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free_baddr (unsigned long) ; 
+ int free_baddr (unsigned long) ;
 
 void dvma_unmap(void *baddr)
 {
-	unsigned long addr;
+ unsigned long addr;
 
-	addr = (unsigned long)baddr;
-	/* check if this is a vme mapping */
-	if(!(addr & 0x00f00000))
-		addr |= 0xf00000;
+ addr = (unsigned long)baddr;
 
-	free_baddr(addr);
+ if(!(addr & 0x00f00000))
+  addr |= 0xf00000;
 
-	return;
+ free_baddr(addr);
+
+ return;
 
 }

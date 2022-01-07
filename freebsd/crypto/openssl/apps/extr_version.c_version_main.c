@@ -1,57 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE ;
 
-/* Variables and functions */
- char* BF_options () ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- char* BN_options () ; 
- char* DES_options () ; 
-#define  DEVRANDOM 141 
-#define  DEVRANDOM_EGD 140 
- char* IDEA_options () ; 
- char* MD2_options () ; 
- int /*<<< orphan*/  OPENSSL_BUILT_ON ; 
- int /*<<< orphan*/  OPENSSL_CFLAGS ; 
- int /*<<< orphan*/  OPENSSL_DIR ; 
- int /*<<< orphan*/  OPENSSL_ENGINES_DIR ; 
- int /*<<< orphan*/  OPENSSL_PLATFORM ; 
- int /*<<< orphan*/  OPENSSL_VERSION ; 
- scalar_t__ OPENSSL_VERSION_NUMBER ; 
- char* OPENSSL_VERSION_TEXT ; 
-#define  OPT_A 139 
-#define  OPT_B 138 
-#define  OPT_D 137 
-#define  OPT_E 136 
-#define  OPT_EOF 135 
-#define  OPT_ERR 134 
-#define  OPT_F 133 
-#define  OPT_HELP 132 
-#define  OPT_O 131 
-#define  OPT_P 130 
-#define  OPT_R 129 
-#define  OPT_V 128 
- char* OpenSSL_version (int /*<<< orphan*/ ) ; 
- scalar_t__ OpenSSL_version_num () ; 
- char* RC4_options () ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- scalar_t__ opt_num_rest () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  printlist (char*,char const**) ; 
- int /*<<< orphan*/  version_options ; 
+
+
+
+typedef int OPTION_CHOICE ;
+
+
+ char* BF_options () ;
+ int BIO_printf (int ,char*,...) ;
+ char* BN_options () ;
+ char* DES_options () ;
+
+
+ char* IDEA_options () ;
+ char* MD2_options () ;
+ int OPENSSL_BUILT_ON ;
+ int OPENSSL_CFLAGS ;
+ int OPENSSL_DIR ;
+ int OPENSSL_ENGINES_DIR ;
+ int OPENSSL_PLATFORM ;
+ int OPENSSL_VERSION ;
+ scalar_t__ OPENSSL_VERSION_NUMBER ;
+ char* OPENSSL_VERSION_TEXT ;
+ char* OpenSSL_version (int ) ;
+ scalar_t__ OpenSSL_version_num () ;
+ char* RC4_options () ;
+ int bio_err ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ scalar_t__ opt_num_rest () ;
+ int printf (char*,...) ;
+ int printlist (char*,char const**) ;
+ int version_options ;
 
 int version_main(int argc, char **argv)
 {
@@ -62,42 +50,42 @@ int version_main(int argc, char **argv)
     OPTION_CHOICE o;
 
     prog = opt_init(argc, argv, version_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 135) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 135:
+        case 134:
 opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 132:
             opt_help(version_options);
             ret = 0;
             goto end;
-        case OPT_B:
+        case 138:
             dirty = date = 1;
             break;
-        case OPT_D:
+        case 137:
             dirty = dir = 1;
             break;
-        case OPT_E:
+        case 136:
             dirty = engdir = 1;
             break;
-        case OPT_F:
+        case 133:
             dirty = cflags = 1;
             break;
-        case OPT_O:
+        case 131:
             dirty = options = 1;
             break;
-        case OPT_P:
+        case 130:
             dirty = platform = 1;
             break;
-        case OPT_R:
+        case 129:
             dirty = seed = 1;
             break;
-        case OPT_V:
+        case 128:
             dirty = version = 1;
             break;
-        case OPT_A:
+        case 139:
             seed = options = cflags = version = date = platform = dir = engdir
                 = 1;
             break;
@@ -124,21 +112,21 @@ opthelp:
     if (options) {
         printf("options:  ");
         printf("%s ", BN_options());
-#ifndef OPENSSL_NO_MD2
+
         printf("%s ", MD2_options());
-#endif
-#ifndef OPENSSL_NO_RC4
+
+
         printf("%s ", RC4_options());
-#endif
-#ifndef OPENSSL_NO_DES
+
+
         printf("%s ", DES_options());
-#endif
-#ifndef OPENSSL_NO_IDEA
+
+
         printf("%s ", IDEA_options());
-#endif
-#ifndef OPENSSL_NO_BF
+
+
         printf("%s ", BF_options());
-#endif
+
         printf("\n");
     }
     if (cflags)
@@ -149,36 +137,6 @@ opthelp:
         printf("%s\n", OpenSSL_version(OPENSSL_ENGINES_DIR));
     if (seed) {
         printf("Seeding source:");
-#ifdef OPENSSL_RAND_SEED_RTDSC
-        printf(" rtdsc");
-#endif
-#ifdef OPENSSL_RAND_SEED_RDCPU
-        printf(" rdrand ( rdseed rdrand )");
-#endif
-#ifdef OPENSSL_RAND_SEED_LIBRANDOM
-        printf(" C-library-random");
-#endif
-#ifdef OPENSSL_RAND_SEED_GETRANDOM
-        printf(" getrandom-syscall");
-#endif
-#ifdef OPENSSL_RAND_SEED_DEVRANDOM
-        {
-            static const char *dev[] = { DEVRANDOM, NULL };
-            printlist(" random-device", dev);
-        }
-#endif
-#ifdef OPENSSL_RAND_SEED_EGD
-        {
-            static const char *dev[] = { DEVRANDOM_EGD, NULL };
-            printlist(" EGD", dev);
-        }
-#endif
-#ifdef OPENSSL_RAND_SEED_NONE
-        printf(" none");
-#endif
-#ifdef OPENSSL_RAND_SEED_OS
-        printf(" os-specific");
-#endif
         printf("\n");
     }
     ret = 0;

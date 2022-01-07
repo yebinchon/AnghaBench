@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32 ;
-typedef  int ttile_t ;
-typedef  int tsize_t ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  TIFF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OutOfMem (int) ; 
- int /*<<< orphan*/  TIFFGetFieldDefaulted (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int TIFFNumberOfStrips (int /*<<< orphan*/ *) ; 
- scalar_t__ TIFFReadEncodedStrip (int /*<<< orphan*/ *,int,unsigned char*,int) ; 
- int TIFFStripSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TIFFTAG_IMAGELENGTH ; 
- int /*<<< orphan*/  TIFFTAG_IMAGEWIDTH ; 
- int /*<<< orphan*/  TIFFTAG_ROWSPERSTRIP ; 
- scalar_t__ TIFFWriteEncodedStrip (int /*<<< orphan*/ *,int,unsigned char*,int) ; 
- int /*<<< orphan*/  _TIFFfree (unsigned char*) ; 
- scalar_t__ _TIFFmalloc (int) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char*,unsigned char*,int) ; 
+
+
+
+typedef int uint32 ;
+typedef int ttile_t ;
+typedef int tsize_t ;
+typedef int cmsHTRANSFORM ;
+typedef int TIFF ;
+
+
+ int OutOfMem (int) ;
+ int TIFFGetFieldDefaulted (int *,int ,int*) ;
+ int TIFFNumberOfStrips (int *) ;
+ scalar_t__ TIFFReadEncodedStrip (int *,int,unsigned char*,int) ;
+ int TIFFStripSize (int *) ;
+ int TIFFTAG_IMAGELENGTH ;
+ int TIFFTAG_IMAGEWIDTH ;
+ int TIFFTAG_ROWSPERSTRIP ;
+ scalar_t__ TIFFWriteEncodedStrip (int *,int,unsigned char*,int) ;
+ int _TIFFfree (unsigned char*) ;
+ scalar_t__ _TIFFmalloc (int) ;
+ int cmsDoTransform (int *,int ,unsigned char*,unsigned char*,int) ;
 
 __attribute__((used)) static
 int StripBasedXform(cmsHTRANSFORM hXForm, TIFF* in, TIFF* out, int nPlanes)
 {
-    tsize_t BufSizeIn  = TIFFStripSize(in);
+    tsize_t BufSizeIn = TIFFStripSize(in);
     tsize_t BufSizeOut = TIFFStripSize(out);
     unsigned char *BufferIn, *BufferOut;
     ttile_t i, StripCount = TIFFNumberOfStrips(in) / nPlanes;
@@ -43,13 +43,13 @@ int StripBasedXform(cmsHTRANSFORM hXForm, TIFF* in, TIFF* out, int nPlanes)
     int j;
     int PixelCount;
 
-    TIFFGetFieldDefaulted(in, TIFFTAG_IMAGEWIDTH,  &sw);
+    TIFFGetFieldDefaulted(in, TIFFTAG_IMAGEWIDTH, &sw);
     TIFFGetFieldDefaulted(in, TIFFTAG_ROWSPERSTRIP, &sl);
     TIFFGetFieldDefaulted(in, TIFFTAG_IMAGELENGTH, &iml);
 
-    // It is possible to get infinite rows per strip
+
     if (sl == 0 || sl > iml)
-        sl = iml;   // One strip for whole image
+        sl = iml;
 
     BufferIn = (unsigned char *) _TIFFmalloc(BufSizeIn * nPlanes);
     if (!BufferIn) OutOfMem(BufSizeIn * nPlanes);
@@ -63,13 +63,13 @@ int StripBasedXform(cmsHTRANSFORM hXForm, TIFF* in, TIFF* out, int nPlanes)
         for (j=0; j < nPlanes; j++) {
 
             if (TIFFReadEncodedStrip(in, i + (j * StripCount),
-                BufferIn + (j * BufSizeIn), BufSizeIn) < 0)   goto cleanup;
+                BufferIn + (j * BufSizeIn), BufSizeIn) < 0) goto cleanup;
         }
 
         PixelCount = (int) sw * (iml < sl ? iml : sl);
         iml -= sl;
 
-        cmsDoTransform(NULL, hXForm, BufferIn, BufferOut, PixelCount);
+        cmsDoTransform(((void*)0), hXForm, BufferIn, BufferOut, PixelCount);
 
         for (j=0; j < nPlanes; j++) {
             if (TIFFWriteEncodedStrip(out, i + (j * StripCount),

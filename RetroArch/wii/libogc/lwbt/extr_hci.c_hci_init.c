@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hci_pcb {int dummy; } ;
-typedef  int /*<<< orphan*/  err_t ;
+typedef int err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR (char*) ; 
- int /*<<< orphan*/  ERR_MEM ; 
- int /*<<< orphan*/  ERR_OK ; 
- int /*<<< orphan*/ * btmemb_alloc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btmemb_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  btmemr_init () ; 
- int /*<<< orphan*/  btpbuf_init () ; 
- int /*<<< orphan*/ * hci_active_links ; 
- int /*<<< orphan*/ * hci_dev ; 
- int /*<<< orphan*/  hci_inq_results ; 
- int /*<<< orphan*/  hci_link_key_results ; 
- int /*<<< orphan*/  hci_links ; 
- int /*<<< orphan*/  hci_pcbs ; 
- int /*<<< orphan*/ * hci_tmp_link ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int ERROR (char*) ;
+ int ERR_MEM ;
+ int ERR_OK ;
+ int * btmemb_alloc (int *) ;
+ int btmemb_init (int *) ;
+ int btmemr_init () ;
+ int btpbuf_init () ;
+ int * hci_active_links ;
+ int * hci_dev ;
+ int hci_inq_results ;
+ int hci_link_key_results ;
+ int hci_links ;
+ int hci_pcbs ;
+ int * hci_tmp_link ;
+ int memset (int *,int ,int) ;
 
 err_t hci_init(void)
 {
-	btmemr_init();
-	btpbuf_init();
+ btmemr_init();
+ btpbuf_init();
 
-	btmemb_init(&hci_pcbs);
-	btmemb_init(&hci_links);
-	btmemb_init(&hci_inq_results);
-	btmemb_init(&hci_link_key_results);
+ btmemb_init(&hci_pcbs);
+ btmemb_init(&hci_links);
+ btmemb_init(&hci_inq_results);
+ btmemb_init(&hci_link_key_results);
 
-	if((hci_dev=btmemb_alloc(&hci_pcbs))==NULL) {
-		ERROR("hci_init: Could not allocate memory for hci_dev\n");
-		return ERR_MEM;
-	}
-	memset(hci_dev,0,sizeof(struct hci_pcb));
+ if((hci_dev=btmemb_alloc(&hci_pcbs))==((void*)0)) {
+  ERROR("hci_init: Could not allocate memory for hci_dev\n");
+  return ERR_MEM;
+ }
+ memset(hci_dev,0,sizeof(struct hci_pcb));
 
-	hci_active_links = NULL;
-	hci_tmp_link = NULL;
+ hci_active_links = ((void*)0);
+ hci_tmp_link = ((void*)0);
 
-	return ERR_OK;
+ return ERR_OK;
 }

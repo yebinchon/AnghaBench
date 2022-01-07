@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct null_output {int /*<<< orphan*/  output; int /*<<< orphan*/  stop_thread; scalar_t__ stop_thread_active; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  obs_output_begin_data_capture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obs_output_can_begin_data_capture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obs_output_initialize_encoders (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct null_output {int output; int stop_thread; scalar_t__ stop_thread_active; } ;
+
+
+ int obs_output_begin_data_capture (int ,int ) ;
+ int obs_output_can_begin_data_capture (int ,int ) ;
+ int obs_output_initialize_encoders (int ,int ) ;
+ int pthread_join (int ,int *) ;
 
 __attribute__((used)) static bool null_output_start(void *data)
 {
-	struct null_output *context = data;
+ struct null_output *context = data;
 
-	if (!obs_output_can_begin_data_capture(context->output, 0))
-		return false;
-	if (!obs_output_initialize_encoders(context->output, 0))
-		return false;
+ if (!obs_output_can_begin_data_capture(context->output, 0))
+  return 0;
+ if (!obs_output_initialize_encoders(context->output, 0))
+  return 0;
 
-	if (context->stop_thread_active)
-		pthread_join(context->stop_thread, NULL);
+ if (context->stop_thread_active)
+  pthread_join(context->stop_thread, ((void*)0));
 
-	obs_output_begin_data_capture(context->output, 0);
-	return true;
+ obs_output_begin_data_capture(context->output, 0);
+ return 1;
 }

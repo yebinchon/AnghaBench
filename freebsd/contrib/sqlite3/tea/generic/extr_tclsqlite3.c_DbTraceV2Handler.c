@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  Tcl_WideInt ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-struct TYPE_2__ {char* zTraceV2; int /*<<< orphan*/  interp; } ;
-typedef  TYPE_1__ SqliteDb ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
-#define  SQLITE_TRACE_CLOSE 131 
-#define  SQLITE_TRACE_PROFILE 130 
-#define  SQLITE_TRACE_ROW 129 
-#define  SQLITE_TRACE_STMT 128 
- int /*<<< orphan*/  TCL_EVAL_DIRECT ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_EvalObjEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_NewStringObj (char*,int) ; 
- int /*<<< orphan*/ * Tcl_NewWideIntObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_ResetResult (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3_int64 ;
+typedef int sqlite3 ;
+typedef int Tcl_WideInt ;
+typedef int Tcl_Obj ;
+struct TYPE_2__ {char* zTraceV2; int interp; } ;
+typedef TYPE_1__ SqliteDb ;
+
+
+ int SQLITE_OK ;
+
+
+
+
+ int TCL_EVAL_DIRECT ;
+ int Tcl_DecrRefCount (int *) ;
+ int Tcl_EvalObjEx (int ,int *,int ) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int ,int *,int *) ;
+ int * Tcl_NewStringObj (char*,int) ;
+ int * Tcl_NewWideIntObj (int ) ;
+ int Tcl_ResetResult (int ) ;
 
 __attribute__((used)) static int DbTraceV2Handler(
-  unsigned type, /* One of the SQLITE_TRACE_* event types. */
-  void *cd,      /* The original context data pointer. */
-  void *pd,      /* Primary event data, depends on event type. */
-  void *xd       /* Extra event data, depends on event type. */
+  unsigned type,
+  void *cd,
+  void *pd,
+  void *xd
 ){
   SqliteDb *pDb = (SqliteDb*)cd;
   Tcl_Obj *pCmd;
 
   switch( type ){
-    case SQLITE_TRACE_STMT: {
+    case 128: {
       sqlite3_stmt *pStmt = (sqlite3_stmt *)pd;
       char *zSql = (char *)xd;
 
@@ -59,7 +59,7 @@ __attribute__((used)) static int DbTraceV2Handler(
       Tcl_ResetResult(pDb->interp);
       break;
     }
-    case SQLITE_TRACE_PROFILE: {
+    case 130: {
       sqlite3_stmt *pStmt = (sqlite3_stmt *)pd;
       sqlite3_int64 ns = *(sqlite3_int64*)xd;
 
@@ -74,7 +74,7 @@ __attribute__((used)) static int DbTraceV2Handler(
       Tcl_ResetResult(pDb->interp);
       break;
     }
-    case SQLITE_TRACE_ROW: {
+    case 129: {
       sqlite3_stmt *pStmt = (sqlite3_stmt *)pd;
 
       pCmd = Tcl_NewStringObj(pDb->zTraceV2, -1);
@@ -86,7 +86,7 @@ __attribute__((used)) static int DbTraceV2Handler(
       Tcl_ResetResult(pDb->interp);
       break;
     }
-    case SQLITE_TRACE_CLOSE: {
+    case 131: {
       sqlite3 *db = (sqlite3 *)pd;
 
       pCmd = Tcl_NewStringObj(pDb->zTraceV2, -1);

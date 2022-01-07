@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct tm {char* tm_hour; int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; } ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_6__ {char* order; size_t array_siz; int /*<<< orphan*/  array; int /*<<< orphan*/  num; int /*<<< orphan*/  addr; int /*<<< orphan*/  threadid; int /*<<< orphan*/  line; int /*<<< orphan*/  file; int /*<<< orphan*/  time; } ;
-struct TYPE_5__ {int /*<<< orphan*/  bytes; int /*<<< orphan*/  chunks; int /*<<< orphan*/  print_cb_arg; int /*<<< orphan*/  (* print_cb ) (char*,size_t,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ MEM_LEAK ;
-typedef  TYPE_2__ MEM ;
 
-/* Variables and functions */
- int BIO_snprintf (char*,size_t,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* OPENSSL_buf2hexstr (unsigned char const*,int) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char** backtrace_symbols (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char**) ; 
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stub1 (char*,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct tm {char* tm_hour; int tm_sec; int tm_min; } ;
+typedef int buf ;
+struct TYPE_6__ {char* order; size_t array_siz; int array; int num; int addr; int threadid; int line; int file; int time; } ;
+struct TYPE_5__ {int bytes; int chunks; int print_cb_arg; int (* print_cb ) (char*,size_t,int ) ;} ;
+typedef TYPE_1__ MEM_LEAK ;
+typedef TYPE_2__ MEM ;
+
+
+ int BIO_snprintf (char*,size_t,char*,char*,int ,int ) ;
+ char* OPENSSL_buf2hexstr (unsigned char const*,int) ;
+ int OPENSSL_free (char*) ;
+ char** backtrace_symbols (int ,size_t) ;
+ int fprintf (int ,char*,char*) ;
+ int free (char**) ;
+ struct tm* localtime (int *) ;
+ int stderr ;
+ int stub1 (char*,size_t,int ) ;
 
 __attribute__((used)) static void print_leak(const MEM *m, MEM_LEAK *l)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void print_leak(const MEM *m, MEM_LEAK *l)
     char *bufp = buf, *hex;
     size_t len = sizeof(buf);
     int n;
-    struct tm *lcl = NULL;
+    struct tm *lcl = ((void*)0);
 
     lcl = localtime(&m->time);
     n = BIO_snprintf(bufp, len, "[%02d:%02d:%02d] ",
@@ -69,7 +69,7 @@ __attribute__((used)) static void print_leak(const MEM *m, MEM_LEAK *l)
     l->chunks++;
     l->bytes += m->num;
 
-#ifndef OPENSSL_NO_CRYPTO_MDEBUG_BACKTRACE
+
     {
         size_t i;
         char **strings = backtrace_symbols(m->array, m->array_siz);
@@ -78,5 +78,5 @@ __attribute__((used)) static void print_leak(const MEM *m, MEM_LEAK *l)
             fprintf(stderr, "##> %s\n", strings[i]);
         free(strings);
     }
-#endif
+
 }

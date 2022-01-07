@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_mod_header_t ;
 
-/* Variables and functions */
- int PRIME ; 
- int /*<<< orphan*/ ** UserModHeaders ; 
- int* Users ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * dyn_alloc (int,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int u_cnt ; 
+
+
+
+typedef int user_mod_header_t ;
+
+
+ int PRIME ;
+ int ** UserModHeaders ;
+ int* Users ;
+ int assert (int) ;
+ int * dyn_alloc (int,int) ;
+ int memset (int *,int ,int) ;
+ int u_cnt ;
 
 user_mod_header_t *dyn_user_header (int user_id, int force) {
   int h = user_id % PRIME;
@@ -30,8 +30,8 @@ user_mod_header_t *dyn_user_header (int user_id, int force) {
 
   while (Users[h] && Users[h] != user_id) {
     h += h1;
-    if (h >= PRIME) { 
-      h -= PRIME; 
+    if (h >= PRIME) {
+      h -= PRIME;
     }
   }
   if (Users[h] == user_id) {
@@ -45,7 +45,7 @@ user_mod_header_t *dyn_user_header (int user_id, int force) {
   }
 
   R = dyn_alloc (sizeof(user_mod_header_t), sizeof(int));
-  if (!R) { 
+  if (!R) {
     return 0;
   }
   memset (R, 0, sizeof(user_mod_header_t));

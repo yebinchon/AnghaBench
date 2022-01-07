@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfc_mei_phy {int /*<<< orphan*/  cldev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct nfc_mei_phy*) ; 
- int /*<<< orphan*/  mei_cldev_disable (int /*<<< orphan*/ ) ; 
+
+
+
+struct nfc_mei_phy {int cldev; } ;
+
+
+ int kfree (struct nfc_mei_phy*) ;
+ int mei_cldev_disable (int ) ;
 
 void nfc_mei_phy_free(struct nfc_mei_phy *phy)
 {
-	mei_cldev_disable(phy->cldev);
-	kfree(phy);
+ mei_cldev_disable(phy->cldev);
+ kfree(phy);
 }

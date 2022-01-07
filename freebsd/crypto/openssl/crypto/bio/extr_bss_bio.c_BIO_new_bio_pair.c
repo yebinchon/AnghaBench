@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- long BIO_make_bio_pair (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_s_bio () ; 
- long BIO_set_write_buf_size (int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ long BIO_make_bio_pair (int *,int *) ;
+ int * BIO_new (int ) ;
+ int BIO_s_bio () ;
+ long BIO_set_write_buf_size (int *,size_t) ;
 
 int BIO_new_bio_pair(BIO **bio1_p, size_t writebuf1,
                      BIO **bio2_p, size_t writebuf2)
 {
-    BIO *bio1 = NULL, *bio2 = NULL;
+    BIO *bio1 = ((void*)0), *bio2 = ((void*)0);
     long r;
     int ret = 0;
 
     bio1 = BIO_new(BIO_s_bio());
-    if (bio1 == NULL)
+    if (bio1 == ((void*)0))
         goto err;
     bio2 = BIO_new(BIO_s_bio());
-    if (bio2 == NULL)
+    if (bio2 == ((void*)0))
         goto err;
 
     if (writebuf1) {
@@ -52,9 +52,9 @@ int BIO_new_bio_pair(BIO **bio1_p, size_t writebuf1,
  err:
     if (ret == 0) {
         BIO_free(bio1);
-        bio1 = NULL;
+        bio1 = ((void*)0);
         BIO_free(bio2);
-        bio2 = NULL;
+        bio2 = ((void*)0);
     }
 
     *bio1_p = bio1;

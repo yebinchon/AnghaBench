@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__* have_com ; 
- scalar_t__* have_file ; 
- scalar_t__* have_lpt ; 
- int /*<<< orphan*/  ok (scalar_t__,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ pClosePort (scalar_t__) ; 
- scalar_t__ pOpenPort (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int SetLastError (int) ;
+ scalar_t__* have_com ;
+ scalar_t__* have_file ;
+ scalar_t__* have_lpt ;
+ int ok (scalar_t__,char*,scalar_t__,int ) ;
+ scalar_t__ pClosePort (scalar_t__) ;
+ scalar_t__ pOpenPort (scalar_t__*,scalar_t__*) ;
+ int trace (char*,scalar_t__,int ) ;
 
 __attribute__((used)) static void test_ClosePort(void)
 {
-    HANDLE  hPort;
-    HANDLE  hPort2;
-    LPWSTR  nameW = NULL;
-    DWORD   res;
-    DWORD   res2;
+    HANDLE hPort;
+    HANDLE hPort2;
+    LPWSTR nameW = ((void*)0);
+    DWORD res;
+    DWORD res2;
 
 
     if (!pOpenPort || !pClosePort) return;
@@ -104,10 +104,10 @@ __attribute__((used)) static void test_ClosePort(void)
     }
 
     if (0) {
-        /* an invalid HANDLE crash native localspl.dll */
+
 
         SetLastError(0xdeadbeef);
-        res = pClosePort(NULL);
+        res = pClosePort(((void*)0));
         trace("got %u with %u\n", res, GetLastError());
 
         SetLastError(0xdeadbeef);

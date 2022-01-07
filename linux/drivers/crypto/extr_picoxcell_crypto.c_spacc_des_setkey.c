@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct spacc_ablk_ctx {unsigned int key_len; int /*<<< orphan*/  key; } ;
+
+
+
+
+typedef int u8 ;
+struct spacc_ablk_ctx {unsigned int key_len; int key; } ;
 struct crypto_ablkcipher {int dummy; } ;
 
-/* Variables and functions */
- struct spacc_ablk_ctx* crypto_ablkcipher_ctx (struct crypto_ablkcipher*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,unsigned int) ; 
- int verify_ablkcipher_des_key (struct crypto_ablkcipher*,int /*<<< orphan*/  const*) ; 
+
+ struct spacc_ablk_ctx* crypto_ablkcipher_ctx (struct crypto_ablkcipher*) ;
+ int memcpy (int ,int const*,unsigned int) ;
+ int verify_ablkcipher_des_key (struct crypto_ablkcipher*,int const*) ;
 
 __attribute__((used)) static int spacc_des_setkey(struct crypto_ablkcipher *cipher, const u8 *key,
-			    unsigned int len)
+       unsigned int len)
 {
-	struct spacc_ablk_ctx *ctx = crypto_ablkcipher_ctx(cipher);
-	int err;
+ struct spacc_ablk_ctx *ctx = crypto_ablkcipher_ctx(cipher);
+ int err;
 
-	err = verify_ablkcipher_des_key(cipher, key);
-	if (err)
-		return err;
+ err = verify_ablkcipher_des_key(cipher, key);
+ if (err)
+  return err;
 
-	memcpy(ctx->key, key, len);
-	ctx->key_len = len;
+ memcpy(ctx->key, key, len);
+ ctx->key_len = len;
 
-	return 0;
+ return 0;
 }

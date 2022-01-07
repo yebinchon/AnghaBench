@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-typedef  int /*<<< orphan*/  WebPInfo ;
-struct TYPE_11__ {size_t offset_; size_t size_; scalar_t__ id_; int /*<<< orphan*/  payload_; } ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int WebPInfoStatus ;
+typedef int WebPInfo ;
+struct TYPE_11__ {size_t offset_; size_t size_; scalar_t__ id_; int payload_; } ;
 struct TYPE_10__ {size_t start_; } ;
-typedef  TYPE_1__ MemBuffer ;
-typedef  scalar_t__ ChunkID ;
-typedef  TYPE_2__ ChunkData ;
+typedef TYPE_1__ MemBuffer ;
+typedef scalar_t__ ChunkID ;
+typedef TYPE_2__ ChunkData ;
 
-/* Variables and functions */
- int const ANMF_CHUNK_SIZE ; 
- scalar_t__ CHUNK_ANMF ; 
- int const CHUNK_HEADER_SIZE ; 
- int CHUNK_TYPES ; 
- int /*<<< orphan*/  GetBuffer (TYPE_1__* const) ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int const MAX_CHUNK_PAYLOAD ; 
- int const MemDataSize (TYPE_1__* const) ; 
- int ReadMemBufLE32 (TYPE_1__* const) ; 
- int /*<<< orphan*/  Skip (TYPE_1__* const,int const) ; 
- int /*<<< orphan*/  TAG_SIZE ; 
- int /*<<< orphan*/  WEBP_INFO_INVALID_PARAM ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int /*<<< orphan*/  WEBP_INFO_TRUNCATED_DATA ; 
- int /*<<< orphan*/ * kWebPChunkTags ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__* const,int /*<<< orphan*/ ,int) ; 
+
+ int const ANMF_CHUNK_SIZE ;
+ scalar_t__ CHUNK_ANMF ;
+ int const CHUNK_HEADER_SIZE ;
+ int CHUNK_TYPES ;
+ int GetBuffer (TYPE_1__* const) ;
+ int LOG_ERROR (char*) ;
+ int const MAX_CHUNK_PAYLOAD ;
+ int const MemDataSize (TYPE_1__* const) ;
+ int ReadMemBufLE32 (TYPE_1__* const) ;
+ int Skip (TYPE_1__* const,int const) ;
+ int TAG_SIZE ;
+ int WEBP_INFO_INVALID_PARAM ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int WEBP_INFO_TRUNCATED_DATA ;
+ int * kWebPChunkTags ;
+ int memcmp (int ,int const*,int ) ;
+ int memset (TYPE_2__* const,int ,int) ;
 
 __attribute__((used)) static WebPInfoStatus ParseChunk(const WebPInfo* const webp_info,
                                  MemBuffer* const mem,
@@ -75,7 +75,7 @@ __attribute__((used)) static WebPInfoStatus ParseChunk(const WebPInfo* const web
         LOG_ERROR("ANMF chunk size should always be even.");
         return WEBP_INFO_PARSE_ERROR;
       }
-      // There are sub-chunks to be parsed in an ANMF chunk.
+
       Skip(mem, ANMF_CHUNK_SIZE);
     } else {
       Skip(mem, payload_size_padded);

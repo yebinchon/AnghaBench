@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pcc_acpi {struct pcc_acpi* sinf; int /*<<< orphan*/  input_dev; int /*<<< orphan*/  backlight; } ;
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pcc_acpi {struct pcc_acpi* sinf; int input_dev; int backlight; } ;
+struct TYPE_2__ {int kobj; } ;
 struct acpi_device {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- struct pcc_acpi* acpi_driver_data (struct acpi_device*) ; 
- int /*<<< orphan*/  backlight_device_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct pcc_acpi*) ; 
- int /*<<< orphan*/  pcc_attr_group ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int EINVAL ;
+ struct pcc_acpi* acpi_driver_data (struct acpi_device*) ;
+ int backlight_device_unregister (int ) ;
+ int input_unregister_device (int ) ;
+ int kfree (struct pcc_acpi*) ;
+ int pcc_attr_group ;
+ int sysfs_remove_group (int *,int *) ;
 
 __attribute__((used)) static int acpi_pcc_hotkey_remove(struct acpi_device *device)
 {
-	struct pcc_acpi *pcc = acpi_driver_data(device);
+ struct pcc_acpi *pcc = acpi_driver_data(device);
 
-	if (!device || !pcc)
-		return -EINVAL;
+ if (!device || !pcc)
+  return -EINVAL;
 
-	sysfs_remove_group(&device->dev.kobj, &pcc_attr_group);
+ sysfs_remove_group(&device->dev.kobj, &pcc_attr_group);
 
-	backlight_device_unregister(pcc->backlight);
+ backlight_device_unregister(pcc->backlight);
 
-	input_unregister_device(pcc->input_dev);
+ input_unregister_device(pcc->input_dev);
 
-	kfree(pcc->sinf);
-	kfree(pcc);
+ kfree(pcc->sinf);
+ kfree(pcc);
 
-	return 0;
+ return 0;
 }

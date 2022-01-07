@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_8__ {int i_group; int i_pair; int i_delay; int i_rate; int /*<<< orphan*/ * p_es; } ;
-typedef  TYPE_1__ sdi_audio_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_8__ {int i_group; int i_pair; int i_delay; int i_rate; int * p_es; } ;
+typedef TYPE_1__ sdi_audio_t ;
 struct TYPE_9__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
+typedef TYPE_2__ demux_t ;
 struct TYPE_10__ {TYPE_1__* p_audios; } ;
-typedef  TYPE_3__ demux_sys_t ;
+typedef TYPE_3__ demux_sys_t ;
 
-/* Variables and functions */
- scalar_t__ InitAudio (TYPE_2__*,TYPE_1__*) ; 
- int MAX_AUDIOS ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  msg_Warn (TYPE_2__*,char*,...) ; 
+
+ scalar_t__ InitAudio (TYPE_2__*,TYPE_1__*) ;
+ int MAX_AUDIOS ;
+ scalar_t__ VLC_SUCCESS ;
+ int msg_Warn (TYPE_2__*,char*,...) ;
 
 __attribute__((used)) static void HandleAudioConfig( demux_t *p_demux, const uint16_t *p_anc,
                                uint8_t i_data_count, uint8_t i_group )
@@ -43,7 +43,7 @@ __attribute__((used)) static void HandleAudioConfig( demux_t *p_demux, const uin
     for ( int i = 0; i < MAX_AUDIOS; i++ )
     {
         sdi_audio_t *p_audio = &p_sys->p_audios[i];
-        if ( p_audio->i_group == i_group && p_audio->p_es == NULL )
+        if ( p_audio->i_group == i_group && p_audio->p_es == ((void*)0) )
         {
             unsigned int i_rate;
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  gimple ;
 
-/* Variables and functions */
- scalar_t__ gimple_get_lhs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_gimple_reg (scalar_t__) ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int gimple ;
+
+
+ scalar_t__ gimple_get_lhs (int ) ;
+ int is_gimple_reg (scalar_t__) ;
 
 __attribute__((used)) static inline bool gimple_store_p(gimple gs)
 {
-	tree lhs = gimple_get_lhs(gs);
+ tree lhs = gimple_get_lhs(gs);
 
-	return lhs && !is_gimple_reg(lhs);
+ return lhs && !is_gimple_reg(lhs);
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct pkey_pm {unsigned char* pkey; } ;
-typedef  int /*<<< orphan*/  mbedtls_pk_context ;
+typedef int mbedtls_pk_context ;
 struct TYPE_3__ {scalar_t__ pkey_pm; } ;
-typedef  TYPE_1__ EVP_PKEY ;
+typedef TYPE_1__ EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  SSL_PLATFORM_ERROR_LEVEL ; 
- int /*<<< orphan*/  mbedtls_pk_free (unsigned char*) ; 
- int /*<<< orphan*/  mbedtls_pk_init (unsigned char*) ; 
- int mbedtls_pk_parse_key (unsigned char*,unsigned char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ssl_mem_free (unsigned char*) ; 
- void* ssl_mem_malloc (int) ; 
- int /*<<< orphan*/  ssl_memcpy (unsigned char*,unsigned char const*,int) ; 
+
+ int SSL_DEBUG (int ,char*,...) ;
+ int SSL_PLATFORM_ERROR_LEVEL ;
+ int mbedtls_pk_free (unsigned char*) ;
+ int mbedtls_pk_init (unsigned char*) ;
+ int mbedtls_pk_parse_key (unsigned char*,unsigned char*,int,int *,int ) ;
+ int ssl_mem_free (unsigned char*) ;
+ void* ssl_mem_malloc (int) ;
+ int ssl_memcpy (unsigned char*,unsigned char const*,int) ;
 
 int pkey_pm_load(EVP_PKEY *pk, const unsigned char *buffer, int len)
 {
@@ -54,7 +54,7 @@ int pkey_pm_load(EVP_PKEY *pk, const unsigned char *buffer, int len)
 
     mbedtls_pk_init(pkey_pm->pkey);
 
-    ret = mbedtls_pk_parse_key(pkey_pm->pkey, load_buf, len + 1, NULL, 0);
+    ret = mbedtls_pk_parse_key(pkey_pm->pkey, load_buf, len + 1, ((void*)0), 0);
     ssl_mem_free(load_buf);
 
     if (ret) {
@@ -67,7 +67,7 @@ int pkey_pm_load(EVP_PKEY *pk, const unsigned char *buffer, int len)
 failed:
     mbedtls_pk_free(pkey_pm->pkey);
     ssl_mem_free(pkey_pm->pkey);
-    pkey_pm->pkey = NULL;
+    pkey_pm->pkey = ((void*)0);
 no_mem:
     return -1;
 }

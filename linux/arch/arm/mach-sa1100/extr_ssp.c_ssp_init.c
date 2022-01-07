@@ -1,53 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EBUSY ; 
- int ENODEV ; 
- int /*<<< orphan*/  IRQ_Ser4SSP ; 
- int MCCR0_MCE ; 
- int PPAR ; 
- int PPAR_SPR ; 
- int /*<<< orphan*/  SSSR_ROR ; 
- int Ser4MCCR0 ; 
- int /*<<< orphan*/  Ser4SSCR0 ; 
- int /*<<< orphan*/  Ser4SSSR ; 
- int /*<<< orphan*/  __PREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_mem_region (int /*<<< orphan*/ ,int) ; 
- int request_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  request_mem_region (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  ssp_interrupt ; 
+ int EBUSY ;
+ int ENODEV ;
+ int IRQ_Ser4SSP ;
+ int MCCR0_MCE ;
+ int PPAR ;
+ int PPAR_SPR ;
+ int SSSR_ROR ;
+ int Ser4MCCR0 ;
+ int Ser4SSCR0 ;
+ int Ser4SSSR ;
+ int __PREG (int ) ;
+ int release_mem_region (int ,int) ;
+ int request_irq (int ,int ,int ,char*,int *) ;
+ int request_mem_region (int ,int,char*) ;
+ int ssp_interrupt ;
 
 int ssp_init(void)
 {
-	int ret;
+ int ret;
 
-	if (!(PPAR & PPAR_SPR) && (Ser4MCCR0 & MCCR0_MCE))
-		return -ENODEV;
+ if (!(PPAR & PPAR_SPR) && (Ser4MCCR0 & MCCR0_MCE))
+  return -ENODEV;
 
-	if (!request_mem_region(__PREG(Ser4SSCR0), 0x18, "SSP")) {
-		return -EBUSY;
-	}
+ if (!request_mem_region(__PREG(Ser4SSCR0), 0x18, "SSP")) {
+  return -EBUSY;
+ }
 
-	Ser4SSSR = SSSR_ROR;
+ Ser4SSSR = SSSR_ROR;
 
-	ret = request_irq(IRQ_Ser4SSP, ssp_interrupt, 0, "SSP", NULL);
-	if (ret)
-		goto out_region;
+ ret = request_irq(IRQ_Ser4SSP, ssp_interrupt, 0, "SSP", ((void*)0));
+ if (ret)
+  goto out_region;
 
-	return 0;
+ return 0;
 
  out_region:
-	release_mem_region(__PREG(Ser4SSCR0), 0x18);
-	return ret;
+ release_mem_region(__PREG(Ser4SSCR0), 0x18);
+ return ret;
 }

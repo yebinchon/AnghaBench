@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  char u32 ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef char u32 ;
 struct TYPE_10__ {int opts_type; } ;
-typedef  TYPE_1__ hashconfig_t ;
+typedef TYPE_1__ hashconfig_t ;
 struct TYPE_11__ {TYPE_1__* hashconfig; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 struct TYPE_12__ {char* cs_buf; int cs_len; } ;
-typedef  TYPE_3__ cs_t ;
+typedef TYPE_3__ cs_t ;
 
-/* Variables and functions */
- int OPTS_TYPE_PT_HEX ; 
- int /*<<< orphan*/  event_log_error (TYPE_2__*,char*,...) ; 
- scalar_t__ hex_convert (int /*<<< orphan*/ ) ; 
- int is_valid_hex_char (int /*<<< orphan*/ ) ; 
- void* mp_add_cs_buf (TYPE_2__*,char*,int,TYPE_3__*,char) ; 
+
+ int OPTS_TYPE_PT_HEX ;
+ int event_log_error (TYPE_2__*,char*,...) ;
+ scalar_t__ hex_convert (int ) ;
+ int is_valid_hex_char (int ) ;
+ void* mp_add_cs_buf (TYPE_2__*,char*,int,TYPE_3__*,char) ;
 
 __attribute__((used)) static int mp_expand (hashcat_ctx_t *hashcat_ctx, const char *in_buf, size_t in_len, cs_t *mp_sys, cs_t *mp_usr, u32 mp_usr_offset, int interpret)
 {
@@ -86,7 +86,7 @@ __attribute__((used)) static int mp_expand (hashcat_ctx_t *hashcat_ctx, const ch
                   break;
         case '?': rc = mp_add_cs_buf (hashcat_ctx, &p0, 1, mp_usr, mp_usr_offset);
                   break;
-        default:  event_log_error (hashcat_ctx, "Syntax error in mask: %s", in_buf);
+        default: event_log_error (hashcat_ctx, "Syntax error in mask: %s", in_buf);
                   return -1;
       }
 
@@ -107,7 +107,7 @@ __attribute__((used)) static int mp_expand (hashcat_ctx_t *hashcat_ctx, const ch
 
         u32 p1 = in_buf[in_pos] & 0xff;
 
-        if ((is_valid_hex_char ((u8) p0) == false) || (is_valid_hex_char ((u8) p1) == false))
+        if ((is_valid_hex_char ((u8) p0) == 0) || (is_valid_hex_char ((u8) p1) == 0))
         {
           event_log_error (hashcat_ctx, "Invalid hex character detected in mask %s", in_buf);
 
@@ -116,7 +116,7 @@ __attribute__((used)) static int mp_expand (hashcat_ctx_t *hashcat_ctx, const ch
 
         u32 chr = 0;
 
-        chr  = (u32) hex_convert ((u8) p1) << 0;
+        chr = (u32) hex_convert ((u8) p1) << 0;
         chr |= (u32) hex_convert ((u8) p0) << 4;
 
         const int rc = mp_add_cs_buf (hashcat_ctx, &chr, 1, mp_usr, mp_usr_offset);

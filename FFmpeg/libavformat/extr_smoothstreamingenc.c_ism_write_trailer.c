@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  filename ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int filename ;
 struct TYPE_7__ {char* url; TYPE_1__* priv_data; } ;
 struct TYPE_6__ {scalar_t__ remove_at_exit; } ;
-typedef  TYPE_1__ SmoothStreamingContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ SmoothStreamingContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ism_flush (TYPE_2__*,int) ; 
- int /*<<< orphan*/  ism_free (TYPE_2__*) ; 
- int /*<<< orphan*/  rmdir (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int ism_flush (TYPE_2__*,int) ;
+ int ism_free (TYPE_2__*) ;
+ int rmdir (char*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static int ism_write_trailer(AVFormatContext *s)
 {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ngx_int_t ;
 struct TYPE_13__ {int content_length_n; int last_modified_time; } ;
-struct TYPE_12__ {int /*<<< orphan*/  log_error; int /*<<< orphan*/  log; } ;
+struct TYPE_12__ {int log_error; int log; } ;
 struct TYPE_14__ {TYPE_4__ headers_in; TYPE_3__ peer; scalar_t__ cleanup; } ;
-typedef  TYPE_5__ ngx_http_upstream_t ;
-struct TYPE_15__ {int /*<<< orphan*/ * cache; TYPE_2__* connection; TYPE_5__* upstream; int /*<<< orphan*/  pool; TYPE_1__* main; } ;
-typedef  TYPE_6__ ngx_http_request_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
-struct TYPE_10__ {int /*<<< orphan*/  count; } ;
+typedef TYPE_5__ ngx_http_upstream_t ;
+struct TYPE_15__ {int * cache; TYPE_2__* connection; TYPE_5__* upstream; int pool; TYPE_1__* main; } ;
+typedef TYPE_6__ ngx_http_request_t ;
+struct TYPE_11__ {int log; } ;
+struct TYPE_10__ {int count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_ERROR_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_upstream_cleanup (TYPE_6__*) ; 
- TYPE_5__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
+
+ int NGX_ERROR ;
+ int NGX_ERROR_ERR ;
+ int NGX_OK ;
+ int ngx_http_upstream_cleanup (TYPE_6__*) ;
+ TYPE_5__* ngx_pcalloc (int ,int) ;
 
 ngx_int_t
 ngx_http_upstream_create(ngx_http_request_t *r)
 {
-    ngx_http_upstream_t  *u;
+    ngx_http_upstream_t *u;
 
     u = r->upstream;
 
@@ -46,7 +46,7 @@ ngx_http_upstream_create(ngx_http_request_t *r)
     }
 
     u = ngx_pcalloc(r->pool, sizeof(ngx_http_upstream_t));
-    if (u == NULL) {
+    if (u == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -55,9 +55,9 @@ ngx_http_upstream_create(ngx_http_request_t *r)
     u->peer.log = r->connection->log;
     u->peer.log_error = NGX_ERROR_ERR;
 
-#if (NGX_HTTP_CACHE)
-    r->cache = NULL;
-#endif
+
+
+
 
     u->headers_in.content_length_n = -1;
     u->headers_in.last_modified_time = -1;

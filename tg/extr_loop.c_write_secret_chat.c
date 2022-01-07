@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tgl_peer_t ;
-struct tgl_secret_chat {scalar_t__ state; int* print_name; int user_id; int admin_id; int date; int ttl; int layer; int access_hash; int key_fingerprint; int key; int first_key_sha; int in_seq_no; int last_in_seq_no; int out_seq_no; int /*<<< orphan*/  id; } ;
 
-/* Variables and functions */
- scalar_t__ TGL_PEER_ENCR_CHAT ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ sc_ok ; 
- int strlen (int*) ; 
- int tgl_get_peer_id (int /*<<< orphan*/ ) ; 
- scalar_t__ tgl_get_peer_type (int /*<<< orphan*/ ) ; 
- int write (int,int*,int) ; 
+
+
+
+typedef int tgl_peer_t ;
+struct tgl_secret_chat {scalar_t__ state; int* print_name; int user_id; int admin_id; int date; int ttl; int layer; int access_hash; int key_fingerprint; int key; int first_key_sha; int in_seq_no; int last_in_seq_no; int out_seq_no; int id; } ;
+
+
+ scalar_t__ TGL_PEER_ENCR_CHAT ;
+ int assert (int) ;
+ scalar_t__ sc_ok ;
+ int strlen (int*) ;
+ int tgl_get_peer_id (int ) ;
+ scalar_t__ tgl_get_peer_type (int ) ;
+ int write (int,int*,int) ;
 
 void write_secret_chat (tgl_peer_t *Peer, void *extra) {
   struct tgl_secret_chat *P = (void *)Peer;
@@ -32,7 +32,7 @@ void write_secret_chat (tgl_peer_t *Peer, void *extra) {
 
   int id = tgl_get_peer_id (P->id);
   assert (write (fd, &id, 4) == 4);
-  //assert (write (fd, &P->flags, 4) == 4);
+
   int l = strlen (P->print_name);
   assert (write (fd, &l, 4) == 4);
   assert (write (fd, P->print_name, l) == l);

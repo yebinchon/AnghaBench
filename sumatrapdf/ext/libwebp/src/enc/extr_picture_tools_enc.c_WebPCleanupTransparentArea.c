@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_3__ {int width; int height; int argb_stride; int y_stride; int uv_stride; int a_stride; int* y; int* u; int* v; int* a; int /*<<< orphan*/ * argb; scalar_t__ use_argb; } ;
-typedef  TYPE_1__ WebPPicture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Flatten (int*,int,int const,int const) ; 
- int /*<<< orphan*/  FlattenARGB (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ IsTransparentARGBArea (int /*<<< orphan*/ *,int,int) ; 
- int SIZE ; 
- int const SIZE2 ; 
- scalar_t__ SmoothenBlock (int const*,int const,int*,int const,int const,int const) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int width; int height; int argb_stride; int y_stride; int uv_stride; int a_stride; int* y; int* u; int* v; int* a; int * argb; scalar_t__ use_argb; } ;
+typedef TYPE_1__ WebPPicture ;
+
+
+ int Flatten (int*,int,int const,int const) ;
+ int FlattenARGB (int *,int ,int,int) ;
+ scalar_t__ IsTransparentARGBArea (int *,int,int) ;
+ int SIZE ;
+ int const SIZE2 ;
+ scalar_t__ SmoothenBlock (int const*,int const,int*,int const,int const,int const) ;
 
 void WebPCleanupTransparentArea(WebPPicture* pic) {
   int x, y, w, h;
-  if (pic == NULL) return;
+  if (pic == ((void*)0)) return;
   w = pic->width / SIZE;
   h = pic->height / SIZE;
 
-  // note: we ignore the left-overs on right/bottom, except for SmoothenBlock().
+
   if (pic->use_argb) {
     uint32_t argb_value = 0;
     for (y = 0; y < h; ++y) {
@@ -59,7 +59,7 @@ void WebPCleanupTransparentArea(WebPPicture* pic) {
     uint8_t* v_ptr = pic->v;
     const uint8_t* a_ptr = pic->a;
     int values[3] = { 0 };
-    if (a_ptr == NULL || y_ptr == NULL || u_ptr == NULL || v_ptr == NULL) {
+    if (a_ptr == ((void*)0) || y_ptr == ((void*)0) || u_ptr == ((void*)0) || v_ptr == ((void*)0)) {
       return;
     }
     for (y = 0; y + SIZE <= height; y += SIZE) {
@@ -73,7 +73,7 @@ void WebPCleanupTransparentArea(WebPPicture* pic) {
             values[2] = v_ptr[x >> 1];
             need_reset = 0;
           }
-          Flatten(y_ptr + x,        values[0], y_stride,  SIZE);
+          Flatten(y_ptr + x, values[0], y_stride, SIZE);
           Flatten(u_ptr + (x >> 1), values[1], uv_stride, SIZE2);
           Flatten(v_ptr + (x >> 1), values[2], uv_stride, SIZE2);
         } else {

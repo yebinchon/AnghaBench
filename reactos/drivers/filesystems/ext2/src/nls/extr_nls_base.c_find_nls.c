@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nls_table {int /*<<< orphan*/  owner; scalar_t__ alias; scalar_t__ charset; struct nls_table* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nls_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (scalar_t__,char*) ; 
- struct nls_table* tables ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+
+
+struct nls_table {int owner; scalar_t__ alias; scalar_t__ charset; struct nls_table* next; } ;
+
+
+ int nls_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int strcmp (scalar_t__,char*) ;
+ struct nls_table* tables ;
+ int try_module_get (int ) ;
 
 __attribute__((used)) static struct nls_table *find_nls(char *charset)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static struct nls_table *find_nls(char *charset)
             break;
     }
     if (nls && !try_module_get(nls->owner))
-        nls = NULL;
+        nls = ((void*)0);
     spin_unlock(&nls_lock);
     return nls;
 }

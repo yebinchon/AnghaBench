@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float M_PI ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- float* av_calloc (int,int) ; 
- float bessel_I_0 (float) ; 
- float sinf (float) ; 
- float sqrtf (float) ; 
+ float M_PI ;
+ int av_assert0 (int) ;
+ float* av_calloc (int,int) ;
+ float bessel_I_0 (float) ;
+ float sinf (float) ;
+ float sqrtf (float) ;
 
 __attribute__((used)) static float *make_lpf(int num_taps, float Fc, float beta, float rho,
                        float scale, int dc_norm)

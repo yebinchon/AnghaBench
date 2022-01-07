@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct agp_bridge_data {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * agp_bridge ; 
- int /*<<< orphan*/  agp_bridges ; 
- int /*<<< orphan*/  kfree (struct agp_bridge_data*) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
+
+ int * agp_bridge ;
+ int agp_bridges ;
+ int kfree (struct agp_bridge_data*) ;
+ scalar_t__ list_empty (int *) ;
 
 void agp_put_bridge(struct agp_bridge_data *bridge)
 {
         kfree(bridge);
 
         if (list_empty(&agp_bridges))
-                agp_bridge = NULL;
+                agp_bridge = ((void*)0);
 }

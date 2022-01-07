@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  winmod ;
-struct TYPE_9__ {void* m_pThis; struct TYPE_9__* m_pNext; int /*<<< orphan*/  m_dwThreadID; } ;
-typedef  TYPE_2__ _AtlCreateWndData ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int winmod ;
+struct TYPE_9__ {void* m_pThis; struct TYPE_9__* m_pNext; int m_dwThreadID; } ;
+typedef TYPE_2__ _AtlCreateWndData ;
 struct TYPE_8__ {int LockCount; } ;
 struct TYPE_10__ {int cbSize; TYPE_2__* m_pCreateWndList; TYPE_1__ m_csWindowCreate; } ;
-typedef  TYPE_3__ _ATL_MODULEW ;
-typedef  scalar_t__ HRESULT ;
+typedef TYPE_3__ _ATL_MODULEW ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AtlModuleAddCreateWndData (TYPE_3__*,TYPE_2__*,void*) ; 
- void* AtlModuleExtractCreateWndData (TYPE_3__*) ; 
- scalar_t__ AtlModuleInit (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetCurrentThreadId () ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int AtlModuleAddCreateWndData (TYPE_3__*,TYPE_2__*,void*) ;
+ void* AtlModuleExtractCreateWndData (TYPE_3__*) ;
+ scalar_t__ AtlModuleInit (TYPE_3__*,int *,int *) ;
+ int GetCurrentThreadId () ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_winmodule(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_winmodule(void)
     winmod.cbSize = sizeof(winmod);
     winmod.m_pCreateWndList = (void*)0xdeadbeef;
     winmod.m_csWindowCreate.LockCount = 0xdeadbeef;
-    hres = AtlModuleInit(&winmod, NULL, NULL);
+    hres = AtlModuleInit(&winmod, ((void*)0), ((void*)0));
     ok(hres == S_OK, "AtlModuleInit failed: %08x\n", hres);
     ok(!winmod.m_pCreateWndList, "winmod.m_pCreateWndList = %p\n", winmod.m_pCreateWndList);
     ok(winmod.m_csWindowCreate.LockCount == -1, "winmod.m_csWindowCreate.LockCount = %d\n",

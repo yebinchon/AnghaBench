@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  esp_efuse_block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_OK ; 
- int esp_efuse_utility_read_reg (int /*<<< orphan*/ ,unsigned int) ; 
- int get_mask (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int esp_err_t ;
+typedef int esp_efuse_block_t ;
+
+
+ int ESP_OK ;
+ int esp_efuse_utility_read_reg (int ,unsigned int) ;
+ int get_mask (int,int ) ;
 
 esp_err_t esp_efuse_utility_fill_buff(unsigned int num_reg, esp_efuse_block_t efuse_block, int bit_start, int bit_count, void* arr_out, int* bits_counter)
 {

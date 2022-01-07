@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ISecurityObjectTypeInfo {int dummy; } ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int /*<<< orphan*/  PCRegKeySecurity ;
+typedef scalar_t__ ULONG_PTR ;
+typedef int PCRegKeySecurity ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRegKeySecurity ; 
- scalar_t__ FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lpISecurityObjectTypeInfoVtbl ; 
+
+ int CRegKeySecurity ;
+ scalar_t__ FIELD_OFFSET (int ,int ) ;
+ int lpISecurityObjectTypeInfoVtbl ;
 
 __attribute__((used)) static __inline PCRegKeySecurity
 impl_from_ISecurityObjectTypeInfo(struct ISecurityObjectTypeInfo *iface)

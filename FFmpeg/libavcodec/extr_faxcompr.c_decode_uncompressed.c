@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int av_log2 (int) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- int show_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (int *,int ,char*) ;
+ int av_log2 (int) ;
+ int get_bits1 (int *) ;
+ int show_bits (int *,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int decode_uncompressed(AVCodecContext *avctx, GetBitContext *gb,
                                unsigned int *pix_left, int **runs,
@@ -87,7 +87,7 @@ __attribute__((used)) static int decode_uncompressed(AVCodecContext *avctx, GetB
     *pix_left -= saved_run;
     saved_run = 0;
     *mode = !*mode;
-    if (newmode != *mode) { //FIXME CHECK
+    if (newmode != *mode) {
         *(*runs)++ = 0;
         if (*runs >= runend) {
             av_log(avctx, AV_LOG_ERROR, "uncompressed run overrun\n");

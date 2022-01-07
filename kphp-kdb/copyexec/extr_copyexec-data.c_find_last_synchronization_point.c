@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int copyexec_aux_replay_binlog (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__,scalar_t__) ; 
- scalar_t__ last_decryption_failed_transaction_pos ; 
- int last_synchronization_point_id ; 
- scalar_t__ last_synchronization_point_pos ; 
- int /*<<< orphan*/  replay_synchronization_point ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+ int copyexec_aux_replay_binlog (int ,int ) ;
+ int exit (int) ;
+ int kprintf (char*,scalar_t__,scalar_t__) ;
+ scalar_t__ last_decryption_failed_transaction_pos ;
+ int last_synchronization_point_id ;
+ scalar_t__ last_synchronization_point_pos ;
+ int replay_synchronization_point ;
+ int vkprintf (int,char*,int) ;
 
 int find_last_synchronization_point (void) {
   last_synchronization_point_id = 0;

@@ -1,57 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int arm_shifter ;
 
-/* Variables and functions */
-#define  ARM_SFT_ASR 137 
-#define  ARM_SFT_ASR_REG 136 
-#define  ARM_SFT_LSL 135 
-#define  ARM_SFT_LSL_REG 134 
-#define  ARM_SFT_LSR 133 
-#define  ARM_SFT_LSR_REG 132 
-#define  ARM_SFT_ROR 131 
-#define  ARM_SFT_ROR_REG 130 
-#define  ARM_SFT_RRX 129 
-#define  ARM_SFT_RRX_REG 128 
 
+
+
+typedef int arm_shifter ;
 __attribute__((used)) static const char *decode_shift(arm_shifter shift) {
-	static const char *E_OP_SR = ">>";
-	static const char *E_OP_SL = "<<";
-	static const char *E_OP_RR = ">>>";
-	static const char *E_OP_ASR = ">>>>";
-	static const char *E_OP_VOID = "";
+ static const char *E_OP_SR = ">>";
+ static const char *E_OP_SL = "<<";
+ static const char *E_OP_RR = ">>>";
+ static const char *E_OP_ASR = ">>>>";
+ static const char *E_OP_VOID = "";
 
-	switch (shift) {
-	case ARM_SFT_ASR:
-	case ARM_SFT_ASR_REG:
-		return E_OP_ASR;
+ switch (shift) {
+ case 137:
+ case 136:
+  return E_OP_ASR;
 
-	case ARM_SFT_LSR:
-	case ARM_SFT_LSR_REG:
-		return E_OP_SR;
+ case 133:
+ case 132:
+  return E_OP_SR;
 
-	case ARM_SFT_LSL:
-	case ARM_SFT_LSL_REG:
-		return E_OP_SL;
+ case 135:
+ case 134:
+  return E_OP_SL;
 
-	case ARM_SFT_ROR:
-	case ARM_SFT_RRX:
-	case ARM_SFT_ROR_REG:
-	case ARM_SFT_RRX_REG:
-		return E_OP_RR;
+ case 131:
+ case 129:
+ case 130:
+ case 128:
+  return E_OP_RR;
 
-	default:
-		break;
-	}
-	return E_OP_VOID;
+ default:
+  break;
+ }
+ return E_OP_VOID;
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WHITESPACE ; 
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ isspace (char const) ; 
- size_t strspn (char const*,int /*<<< orphan*/ ) ; 
+ int WHITESPACE ;
+ int assert (char const*) ;
+ scalar_t__ isspace (char const) ;
+ size_t strspn (char const*,int ) ;
 
 size_t util_replace_whitespace(const char *str, char *to, size_t len) {
-        bool is_space = false;
+        bool is_space = 0;
         size_t i, j;
 
         assert(str);
@@ -28,7 +20,7 @@ size_t util_replace_whitespace(const char *str, char *to, size_t len) {
 
         for (j = 0; j < len && i < len && str[i] != '\0'; i++) {
                 if (isspace(str[i])) {
-                        is_space = true;
+                        is_space = 1;
                         continue;
                 }
 
@@ -37,7 +29,7 @@ size_t util_replace_whitespace(const char *str, char *to, size_t len) {
                                 break;
 
                         to[j++] = '_';
-                        is_space = false;
+                        is_space = 0;
                 }
                 to[j++] = str[i];
         }

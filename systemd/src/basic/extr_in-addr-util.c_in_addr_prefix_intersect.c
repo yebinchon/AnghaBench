@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* s6_addr; } ;
 struct TYPE_3__ {int s_addr; } ;
 union in_addr_union {TYPE_2__ in6; TYPE_1__ in; } ;
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+typedef int uint8_t ;
+typedef int uint32_t ;
 
-/* Variables and functions */
- int AF_INET ; 
- int AF_INET6 ; 
- int EAFNOSUPPORT ; 
- unsigned int MIN (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  assert (union in_addr_union const*) ; 
- int be32toh (int) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int EAFNOSUPPORT ;
+ unsigned int MIN (unsigned int,unsigned int) ;
+ int assert (union in_addr_union const*) ;
+ int be32toh (int) ;
 
 int in_addr_prefix_intersect(
                 int family,
@@ -38,8 +38,8 @@ int in_addr_prefix_intersect(
         assert(a);
         assert(b);
 
-        /* Checks whether there are any addresses that are in both
-         * networks */
+
+
 
         m = MIN(aprefixlen, bprefixlen);
 

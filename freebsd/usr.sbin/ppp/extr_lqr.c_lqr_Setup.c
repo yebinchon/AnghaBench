@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  name; } ;
-struct TYPE_16__ {char* name; int load; struct lcp* arg; int /*<<< orphan*/  func; } ;
-struct TYPE_11__ {int peer_timeout; int /*<<< orphan*/  peer; scalar_t__ resent; } ;
+
+
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int name; } ;
+struct TYPE_16__ {char* name; int load; struct lcp* arg; int func; } ;
+struct TYPE_11__ {int peer_timeout; int peer; scalar_t__ resent; } ;
 struct TYPE_10__ {scalar_t__ seq_recv; scalar_t__ seq_sent; } ;
 struct TYPE_13__ {int method; TYPE_8__ timer; TYPE_3__ lqr; TYPE_2__ echo; } ;
 struct TYPE_14__ {TYPE_5__ lqm; } ;
 struct physical {TYPE_7__ link; TYPE_6__ hdlc; } ;
-struct TYPE_12__ {int lqrperiod; int /*<<< orphan*/  lqr; scalar_t__ echo; } ;
-struct TYPE_9__ {int /*<<< orphan*/  link; } ;
+struct TYPE_12__ {int lqrperiod; int lqr; scalar_t__ echo; } ;
+struct TYPE_9__ {int link; } ;
 struct lcp {int his_lqrperiod; int want_lqrperiod; TYPE_4__ cfg; TYPE_1__ fsm; } ;
 
-/* Variables and functions */
- scalar_t__ IsEnabled (int /*<<< orphan*/ ) ; 
- int LQM_ECHO ; 
- int LQM_LQR ; 
- int /*<<< orphan*/  LogLQM ; 
- int /*<<< orphan*/  REJECTED (struct lcp*,int /*<<< orphan*/ ) ; 
- int SECTICKS ; 
- int /*<<< orphan*/  SendLqrReport ; 
- int /*<<< orphan*/  TY_QUALPROTO ; 
- struct physical* link2physical (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  timer_Stop (TYPE_8__*) ; 
+
+ scalar_t__ IsEnabled (int ) ;
+ int LQM_ECHO ;
+ int LQM_LQR ;
+ int LogLQM ;
+ int REJECTED (struct lcp*,int ) ;
+ int SECTICKS ;
+ int SendLqrReport ;
+ int TY_QUALPROTO ;
+ struct physical* link2physical (int ) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int memset (int *,char,int) ;
+ int timer_Stop (TYPE_8__*) ;
 
 __attribute__((used)) static void
 lqr_Setup(struct lcp *lcp)

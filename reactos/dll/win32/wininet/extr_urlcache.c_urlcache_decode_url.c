@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uc ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uc ;
+typedef int WCHAR ;
 struct TYPE_4__ {int dwStructSize; int dwHostNameLength; scalar_t__ nScheme; char const* lpszHostName; } ;
-typedef  TYPE_1__ URL_COMPONENTSA ;
-typedef  int DWORD ;
+typedef TYPE_1__ URL_COMPONENTSA ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  ERROR_INTERNET_INVALID_URL ; 
- scalar_t__ INTERNET_SCHEME_HTTP ; 
- scalar_t__ INTERNET_SCHEME_HTTPS ; 
- scalar_t__ INTERNET_SCHEME_UNKNOWN ; 
- int IdnToUnicode (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  InternetCrackUrlA (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int CP_UTF8 ;
+ int ERROR_INTERNET_INVALID_URL ;
+ scalar_t__ INTERNET_SCHEME_HTTP ;
+ scalar_t__ INTERNET_SCHEME_HTTPS ;
+ scalar_t__ INTERNET_SCHEME_UNKNOWN ;
+ int IdnToUnicode (int ,int *,int,int *,int) ;
+ int InternetCrackUrlA (char const*,int ,int ,TYPE_1__*) ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int SetLastError (int ) ;
+ int * heap_alloc (int) ;
+ int heap_free (int *) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static int urlcache_decode_url(const char *url, WCHAR *decoded_url, int decoded_len)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static int urlcache_decode_url(const char *url, WCHAR *dec
         return 0;
     }
     part_len = IdnToUnicode(0, host_name, uc.dwHostNameLength,
-            decoded_url ? decoded_url+len : NULL, decoded_len);
+            decoded_url ? decoded_url+len : ((void*)0), decoded_len);
     heap_free(host_name);
     if(!part_len) {
         SetLastError(ERROR_INTERNET_INVALID_URL);
@@ -76,7 +76,7 @@ __attribute__((used)) static int urlcache_decode_url(const char *url, WCHAR *dec
 
     part_len = MultiByteToWideChar(CP_UTF8, 0,
             uc.lpszHostName+uc.dwHostNameLength,
-            -1, decoded_url ? decoded_url+len : NULL, decoded_len);
+            -1, decoded_url ? decoded_url+len : ((void*)0), decoded_len);
     if(!part_len)
         return 0;
     len += part_len;

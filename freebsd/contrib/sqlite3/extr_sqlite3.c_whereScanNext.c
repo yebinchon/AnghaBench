@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_9__ ;
-typedef  struct TYPE_26__   TYPE_8__ ;
-typedef  struct TYPE_25__   TYPE_7__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ i16 ;
+
+
+typedef struct TYPE_27__ TYPE_9__ ;
+typedef struct TYPE_26__ TYPE_8__ ;
+typedef struct TYPE_25__ TYPE_7__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef scalar_t__ i16 ;
 struct TYPE_19__ {scalar_t__ leftColumn; } ;
 struct TYPE_22__ {int leftCursor; int eOperator; TYPE_8__* pExpr; TYPE_1__ u; } ;
-typedef  TYPE_4__ WhereTerm ;
-struct TYPE_23__ {int k; int iEquiv; int nEquiv; scalar_t__* aiColumn; int* aiCur; int opMask; TYPE_6__* pOrigWC; TYPE_6__* pWC; scalar_t__ zCollName; int /*<<< orphan*/  idxaff; int /*<<< orphan*/  pIdxExpr; } ;
-typedef  TYPE_5__ WhereScan ;
+typedef TYPE_4__ WhereTerm ;
+struct TYPE_23__ {int k; int iEquiv; int nEquiv; scalar_t__* aiColumn; int* aiCur; int opMask; TYPE_6__* pOrigWC; TYPE_6__* pWC; scalar_t__ zCollName; int idxaff; int pIdxExpr; } ;
+typedef TYPE_5__ WhereScan ;
 struct TYPE_24__ {int nTerm; struct TYPE_24__* pOuter; TYPE_2__* pWInfo; TYPE_4__* a; } ;
-typedef  TYPE_6__ WhereClause ;
-struct TYPE_27__ {int /*<<< orphan*/  zName; } ;
+typedef TYPE_6__ WhereClause ;
+struct TYPE_27__ {int zName; } ;
 struct TYPE_26__ {int pLeft; scalar_t__ op; int iTable; scalar_t__ iColumn; struct TYPE_26__* pRight; } ;
 struct TYPE_25__ {TYPE_3__* db; } ;
 struct TYPE_21__ {TYPE_9__* pDfltColl; } ;
 struct TYPE_20__ {TYPE_7__* pParse; } ;
-typedef  TYPE_7__ Parse ;
-typedef  TYPE_8__ Expr ;
-typedef  TYPE_9__ CollSeq ;
+typedef TYPE_7__ Parse ;
+typedef TYPE_8__ Expr ;
+typedef TYPE_9__ CollSeq ;
 
-/* Variables and functions */
- int ArraySize (int*) ; 
- int /*<<< orphan*/  EP_FromJoin ; 
- int /*<<< orphan*/  ExprHasProperty (TYPE_8__*,int /*<<< orphan*/ ) ; 
- scalar_t__ TK_COLUMN ; 
- int WO_EQ ; 
- int WO_EQUIV ; 
- int WO_IS ; 
- int WO_ISNULL ; 
- scalar_t__ XN_EXPR ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_9__* sqlite3BinaryCompareCollSeq (TYPE_7__*,int,TYPE_8__*) ; 
- scalar_t__ sqlite3ExprCompareSkip (int,int /*<<< orphan*/ ,int) ; 
- TYPE_8__* sqlite3ExprSkipCollateAndLikely (TYPE_8__*) ; 
- int /*<<< orphan*/  sqlite3IndexAffinityOk (TYPE_8__*,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3StrICmp (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+ int ArraySize (int*) ;
+ int EP_FromJoin ;
+ int ExprHasProperty (TYPE_8__*,int ) ;
+ scalar_t__ TK_COLUMN ;
+ int WO_EQ ;
+ int WO_EQUIV ;
+ int WO_IS ;
+ int WO_ISNULL ;
+ scalar_t__ XN_EXPR ;
+ int assert (int) ;
+ TYPE_9__* sqlite3BinaryCompareCollSeq (TYPE_7__*,int,TYPE_8__*) ;
+ scalar_t__ sqlite3ExprCompareSkip (int,int ,int) ;
+ TYPE_8__* sqlite3ExprSkipCollateAndLikely (TYPE_8__*) ;
+ int sqlite3IndexAffinityOk (TYPE_8__*,int ) ;
+ scalar_t__ sqlite3StrICmp (int ,scalar_t__) ;
+ int testcase (int) ;
 
 __attribute__((used)) static WhereTerm *whereScanNext(WhereScan *pScan){
-  int iCur;            /* The cursor on the LHS of the term */
-  i16 iColumn;         /* The column on the LHS of the term.  -1 for IPK */
-  Expr *pX;            /* An expression being tested */
-  WhereClause *pWC;    /* Shorthand for pScan->pWC */
-  WhereTerm *pTerm;    /* The term being tested */
-  int k = pScan->k;    /* Where to start scanning */
+  int iCur;
+  i16 iColumn;
+  Expr *pX;
+  WhereClause *pWC;
+  WhereTerm *pTerm;
+  int k = pScan->k;
 
   assert( pScan->iEquiv<=pScan->nEquiv );
   pWC = pScan->pWC;
@@ -96,7 +96,7 @@ __attribute__((used)) static WhereTerm *whereScanNext(WhereScan *pScan){
             }
           }
           if( (pTerm->eOperator & pScan->opMask)!=0 ){
-            /* Verify the affinity and collating sequence match */
+
             if( pScan->zCollName && (pTerm->eOperator & WO_ISNULL)==0 ){
               CollSeq *pColl;
               Parse *pParse = pWC->pWInfo->pParse;

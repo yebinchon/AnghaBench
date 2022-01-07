@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int* getenv (char*) ; 
- int* hostname ; 
- int* hostname_buffer ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+ int O_RDONLY ;
+ int close (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int* getenv (char*) ;
+ int* hostname ;
+ int* hostname_buffer ;
+ int open (char*,int ) ;
+ int read (int,int*,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int detect_hostname (void) {
   int r, i;

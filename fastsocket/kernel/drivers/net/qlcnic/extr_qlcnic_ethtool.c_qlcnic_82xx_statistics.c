@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qlcnic_83xx_mac_stats_strings ; 
- int /*<<< orphan*/  qlcnic_device_gstrings_stats ; 
+ int ARRAY_SIZE (int ) ;
+ int qlcnic_83xx_mac_stats_strings ;
+ int qlcnic_device_gstrings_stats ;
 
 __attribute__((used)) static inline int qlcnic_82xx_statistics(void)
 {
-	return ARRAY_SIZE(qlcnic_device_gstrings_stats) +
-	       ARRAY_SIZE(qlcnic_83xx_mac_stats_strings);
+ return ARRAY_SIZE(qlcnic_device_gstrings_stats) +
+        ARRAY_SIZE(qlcnic_83xx_mac_stats_strings);
 }

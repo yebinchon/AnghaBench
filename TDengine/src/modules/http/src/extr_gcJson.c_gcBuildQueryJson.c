@@ -1,87 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char* int8_t ;
-typedef  int int64_t ;
-typedef  char* int32_t ;
-typedef  char* int16_t ;
-struct TYPE_6__ {scalar_t__ numOfRows; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  table; int /*<<< orphan*/  values; } ;
-struct TYPE_5__ {int type; int /*<<< orphan*/  bytes; } ;
-typedef  int /*<<< orphan*/ ** TAOS_ROW ;
-typedef  int /*<<< orphan*/  TAOS_RES ;
-typedef  TYPE_1__ TAOS_FIELD ;
-typedef  int /*<<< orphan*/  JsonBuf ;
-typedef  TYPE_2__ HttpSqlCmd ;
-typedef  int /*<<< orphan*/  HttpContext ;
 
-/* Variables and functions */
- int HTTP_GC_TARGET_SIZE ; 
- int /*<<< orphan*/  JsonArrEnd ; 
- int /*<<< orphan*/  JsonArrStt ; 
-#define  TSDB_DATA_TYPE_BIGINT 137 
-#define  TSDB_DATA_TYPE_BINARY 136 
-#define  TSDB_DATA_TYPE_BOOL 135 
-#define  TSDB_DATA_TYPE_DOUBLE 134 
-#define  TSDB_DATA_TYPE_FLOAT 133 
-#define  TSDB_DATA_TYPE_INT 132 
-#define  TSDB_DATA_TYPE_NCHAR 131 
-#define  TSDB_DATA_TYPE_SMALLINT 130 
-#define  TSDB_DATA_TYPE_TIMESTAMP 129 
-#define  TSDB_DATA_TYPE_TINYINT 128 
- int TSDB_TIME_PRECISION_MILLI ; 
- int /*<<< orphan*/  gcWriteTargetEndJson (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gcWriteTargetStartJson (int /*<<< orphan*/ *,char*,char*) ; 
- char* httpGetCmdsString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpJsonDouble (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  httpJsonFloat (int /*<<< orphan*/ *,float) ; 
- int /*<<< orphan*/  httpJsonInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  httpJsonInt64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  httpJsonItemToken (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  httpJsonOriginString (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  httpJsonString (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  httpJsonStringForTransMean (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  httpJsonToken (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * httpMallocJsonBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- TYPE_1__* taos_fetch_fields (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ ** taos_fetch_row (int /*<<< orphan*/ *) ; 
- int taos_num_fields (int /*<<< orphan*/ *) ; 
- int taos_result_precision (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char* int8_t ;
+typedef int int64_t ;
+typedef char* int32_t ;
+typedef char* int16_t ;
+struct TYPE_6__ {scalar_t__ numOfRows; int timestamp; int table; int values; } ;
+struct TYPE_5__ {int type; int bytes; } ;
+typedef int ** TAOS_ROW ;
+typedef int TAOS_RES ;
+typedef TYPE_1__ TAOS_FIELD ;
+typedef int JsonBuf ;
+typedef TYPE_2__ HttpSqlCmd ;
+typedef int HttpContext ;
+
+
+ int HTTP_GC_TARGET_SIZE ;
+ int JsonArrEnd ;
+ int JsonArrStt ;
+ int TSDB_TIME_PRECISION_MILLI ;
+ int gcWriteTargetEndJson (int *) ;
+ int gcWriteTargetStartJson (int *,char*,char*) ;
+ char* httpGetCmdsString (int *,int ) ;
+ int httpJsonDouble (int *,double) ;
+ int httpJsonFloat (int *,float) ;
+ int httpJsonInt (int *,char*) ;
+ int httpJsonInt64 (int *,int) ;
+ int httpJsonItemToken (int *) ;
+ int httpJsonOriginString (int *,char*,int) ;
+ int httpJsonString (int *,char*,int) ;
+ int httpJsonStringForTransMean (int *,int *,int ) ;
+ int httpJsonToken (int *,int ) ;
+ int * httpMallocJsonBuf (int *) ;
+ int snprintf (char*,int,char*,char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int strncpy (char*,char*,int) ;
+ TYPE_1__* taos_fetch_fields (int *) ;
+ int ** taos_fetch_row (int *) ;
+ int taos_num_fields (int *) ;
+ int taos_result_precision (int *) ;
 
 bool gcBuildQueryJson(HttpContext *pContext, HttpSqlCmd *cmd, TAOS_RES *result, int numOfRows) {
   JsonBuf *jsonBuf = httpMallocJsonBuf(pContext);
-  if (jsonBuf == NULL) return false;
+  if (jsonBuf == ((void*)0)) return 0;
 
-  int         num_fields = taos_num_fields(result);
+  int num_fields = taos_num_fields(result);
   TAOS_FIELD *fields = taos_fetch_fields(result);
   if (num_fields == 0) {
-    return false;
+    return 0;
   }
 
   int precision = taos_result_precision(result);
 
-  // such as select count(*) from sys.cpu
-  // such as select count(*) from sys.cpu group by ipaddr
-  // such as select count(*) from sys.cpu interval(1d)
-  // such as select count(*) from sys.cpu interval(1d) group by ipaddr
-  // such as select count(*) count(*) from sys.cpu group by ipaddr interval(1d)
-  int  dataFields = -1;
-  int  groupFields = -1;
-  bool hasTimestamp = fields[0].type == TSDB_DATA_TYPE_TIMESTAMP;
+
+
+
+
+
+  int dataFields = -1;
+  int groupFields = -1;
+  bool hasTimestamp = fields[0].type == 129;
   if (hasTimestamp) {
     dataFields = 1;
     if (num_fields > 2) groupFields = num_fields - 1;
@@ -102,35 +92,35 @@ bool gcBuildQueryJson(HttpContext *pContext, HttpSqlCmd *cmd, TAOS_RES *result, 
   for (int i = 0; i < numOfRows; ++i) {
     TAOS_ROW row = taos_fetch_row(result);
 
-    // for group by
+
     if (groupFields != -1) {
       char target[HTTP_GC_TARGET_SIZE];
 
       switch (fields[groupFields].type) {
-        case TSDB_DATA_TYPE_BOOL:
-        case TSDB_DATA_TYPE_TINYINT:
+        case 135:
+        case 128:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%d", aliasBuffer, *((int8_t *)row[groupFields]));
           break;
-        case TSDB_DATA_TYPE_SMALLINT:
+        case 130:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%d", aliasBuffer, *((int16_t *)row[groupFields]));
           break;
-        case TSDB_DATA_TYPE_INT:
+        case 132:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%d", aliasBuffer, *((int32_t *)row[groupFields]));
           break;
-        case TSDB_DATA_TYPE_BIGINT:
+        case 137:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%ld", aliasBuffer, *((int64_t *)row[groupFields]));
           break;
-        case TSDB_DATA_TYPE_FLOAT:
+        case 133:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%.5f", aliasBuffer, *((float *)row[groupFields]));
           break;
-        case TSDB_DATA_TYPE_DOUBLE:
+        case 134:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%.9f", aliasBuffer, *((double *)row[groupFields]));
           break;
-        case TSDB_DATA_TYPE_BINARY:
-        case TSDB_DATA_TYPE_NCHAR:
+        case 136:
+        case 131:
           snprintf(target, HTTP_GC_TARGET_SIZE, "%s%s", aliasBuffer, (char *)row[groupFields]);
           break;
-        case TSDB_DATA_TYPE_TIMESTAMP:
+        case 129:
           if (precision == TSDB_TIME_PRECISION_MILLI) {
             snprintf(target, HTTP_GC_TARGET_SIZE, "%s%ld", aliasBuffer, *((int64_t *) row[groupFields]));
           } else {
@@ -143,54 +133,54 @@ bool gcBuildQueryJson(HttpContext *pContext, HttpSqlCmd *cmd, TAOS_RES *result, 
       }
 
       if (strcmp(target, targetBuffer) != 0) {
-        // first target not write this section
+
         if (strlen(targetBuffer) != 0) {
           gcWriteTargetEndJson(jsonBuf);
         }
 
-        // start new target
+
         gcWriteTargetStartJson(jsonBuf, refIdBuffer, target);
         strncpy(targetBuffer, target, HTTP_GC_TARGET_SIZE);
       }
-    }  // end of group by
+    }
 
-    // data row array begin
+
     httpJsonItemToken(jsonBuf);
     httpJsonToken(jsonBuf, JsonArrStt);
 
     for (int i = dataFields; i >= 0; i--) {
       httpJsonItemToken(jsonBuf);
-      if (row[i] == NULL) {
+      if (row[i] == ((void*)0)) {
         httpJsonOriginString(jsonBuf, "null", 4);
         continue;
       }
 
       switch (fields[i].type) {
-        case TSDB_DATA_TYPE_BOOL:
-        case TSDB_DATA_TYPE_TINYINT:
+        case 135:
+        case 128:
           httpJsonInt(jsonBuf, *((int8_t *)row[i]));
           break;
-        case TSDB_DATA_TYPE_SMALLINT:
+        case 130:
           httpJsonInt(jsonBuf, *((int16_t *)row[i]));
           break;
-        case TSDB_DATA_TYPE_INT:
+        case 132:
           httpJsonInt(jsonBuf, *((int32_t *)row[i]));
           break;
-        case TSDB_DATA_TYPE_BIGINT:
+        case 137:
           httpJsonInt64(jsonBuf, *((int64_t *)row[i]));
           break;
-        case TSDB_DATA_TYPE_FLOAT:
+        case 133:
           httpJsonFloat(jsonBuf, *((float *)row[i]));
           break;
-        case TSDB_DATA_TYPE_DOUBLE:
+        case 134:
           httpJsonDouble(jsonBuf, *((double *)row[i]));
           break;
-        case TSDB_DATA_TYPE_BINARY:
-        case TSDB_DATA_TYPE_NCHAR:
+        case 136:
+        case 131:
           httpJsonStringForTransMean(jsonBuf, row[i], fields[i].bytes);
           break;
-        case TSDB_DATA_TYPE_TIMESTAMP:
-          if (precision == TSDB_TIME_PRECISION_MILLI) { //ms
+        case 129:
+          if (precision == TSDB_TIME_PRECISION_MILLI) {
             httpJsonInt64(jsonBuf, *((int64_t *)row[i]));
           } else {
             httpJsonInt64(jsonBuf, *((int64_t *)row[i]) / 1000);
@@ -207,9 +197,9 @@ bool gcBuildQueryJson(HttpContext *pContext, HttpSqlCmd *cmd, TAOS_RES *result, 
       httpJsonString(jsonBuf, "-", 1);
     }
 
-    // data row array end
+
     httpJsonToken(jsonBuf, JsonArrEnd);
   }
 
-  return true;
+  return 1;
 }

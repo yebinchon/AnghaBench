@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_dbd_t ;
-typedef  int /*<<< orphan*/  apr_dbd_driver_t ;
 
-/* Variables and functions */
- int apr_dbd_query (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int*,char const*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int apr_pool_t ;
+typedef int apr_dbd_t ;
+typedef int apr_dbd_driver_t ;
+
+
+ int apr_dbd_query (int const*,int *,int*,char const*) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static int insert_rows(apr_pool_t* pool, apr_dbd_t* handle,
                        const apr_dbd_driver_t* driver)
@@ -40,10 +40,10 @@ __attribute__((used)) static int insert_rows(apr_pool_t* pool, apr_dbd_t* handle
             "INSERT into apr_dbd_test values ('wibble', 'nothing', 5);",
             "INSERT into apr_dbd_test values ('qwerty', 'foo', 0);",
             "INSERT into apr_dbd_test values ('asdfgh', 'bar', 1);",
-            NULL
+            ((void*)0)
         };
         printf("Compound insert failed; trying statements one-by-one\n") ;
-        for (i=0; stmt[i] != NULL; ++i) {
+        for (i=0; stmt[i] != ((void*)0); ++i) {
             statement = stmt[i];
             rv = apr_dbd_query(driver, handle, &nrows, statement);
             if (rv) {

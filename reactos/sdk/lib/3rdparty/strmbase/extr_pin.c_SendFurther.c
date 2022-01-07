@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {int /*<<< orphan*/ * pFilter; } ;
-typedef  scalar_t__ (* SendPinFunc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;
-typedef  TYPE_1__ PIN_INFO ;
-typedef  scalar_t__ PIN_DIRECTION ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IPin ;
-typedef  int /*<<< orphan*/  IEnumPins ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- scalar_t__ IBaseFilter_EnumPins (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IBaseFilter_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IEnumPins_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumPins_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IEnumPins_Reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPin_ConnectedTo (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IPin_QueryDirection (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IPin_QueryInternalConnections (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IPin_QueryPinInfo (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  IPin_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ VFW_E_ENUM_OUT_OF_SYNC ; 
- scalar_t__ updatehres (scalar_t__,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {int * pFilter; } ;
+typedef scalar_t__ (* SendPinFunc ) (int *,int ) ;
+typedef TYPE_1__ PIN_INFO ;
+typedef scalar_t__ PIN_DIRECTION ;
+typedef int LPVOID ;
+typedef int IPin ;
+typedef int IEnumPins ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ scalar_t__ IBaseFilter_EnumPins (int *,int **) ;
+ int IBaseFilter_Release (int *) ;
+ scalar_t__ IEnumPins_Next (int *,int,int **,int *) ;
+ int IEnumPins_Release (int *) ;
+ scalar_t__ IEnumPins_Reset (int *) ;
+ int IPin_ConnectedTo (int *,int **) ;
+ int IPin_QueryDirection (int *,scalar_t__*) ;
+ scalar_t__ IPin_QueryInternalConnections (int *,int *,scalar_t__*) ;
+ scalar_t__ IPin_QueryPinInfo (int *,TYPE_1__*) ;
+ int IPin_Release (int *) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ scalar_t__ VFW_E_ENUM_OUT_OF_SYNC ;
+ scalar_t__ updatehres (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static HRESULT SendFurther( IPin *from, SendPinFunc fnMiddle, LPVOID arg, SendPinFunc fnEnd )
 {
@@ -48,17 +48,17 @@ __attribute__((used)) static HRESULT SendFurther( IPin *from, SendPinFunc fnMidd
     ULONG amount = 0;
     HRESULT hr = S_OK;
     HRESULT hr_return = S_OK;
-    IEnumPins *enumpins = NULL;
+    IEnumPins *enumpins = ((void*)0);
     BOOL foundend = TRUE;
     PIN_DIRECTION from_dir;
 
     IPin_QueryDirection( from, &from_dir );
 
-    hr = IPin_QueryInternalConnections( from, NULL, &amount );
+    hr = IPin_QueryInternalConnections( from, ((void*)0), &amount );
     if (hr != E_NOTIMPL && amount)
         FIXME("Use QueryInternalConnections!\n");
 
-    pin_info.pFilter = NULL;
+    pin_info.pFilter = ((void*)0);
     hr = IPin_QueryPinInfo( from, &pin_info );
     if (FAILED(hr))
         goto out;
@@ -69,8 +69,8 @@ __attribute__((used)) static HRESULT SendFurther( IPin *from, SendPinFunc fnMidd
 
     hr = IEnumPins_Reset( enumpins );
     while (hr == S_OK) {
-        IPin *pin = NULL;
-        hr = IEnumPins_Next( enumpins, 1, &pin, NULL );
+        IPin *pin = ((void*)0);
+        hr = IEnumPins_Next( enumpins, 1, &pin, ((void*)0) );
         if (hr == VFW_E_ENUM_OUT_OF_SYNC)
         {
             hr = IEnumPins_Reset( enumpins );
@@ -83,7 +83,7 @@ __attribute__((used)) static HRESULT SendFurther( IPin *from, SendPinFunc fnMidd
             IPin_QueryDirection( pin, &dir );
             if (dir != from_dir)
             {
-                IPin *connected = NULL;
+                IPin *connected = ((void*)0);
 
                 foundend = FALSE;
                 IPin_ConnectedTo( pin, &connected );

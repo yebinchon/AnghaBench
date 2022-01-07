@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- int /*<<< orphan*/  ecma_finalize () ; 
- int /*<<< orphan*/  ecma_init () ; 
- int /*<<< orphan*/  jmem_finalize () ; 
- int /*<<< orphan*/  jmem_init () ; 
- int /*<<< orphan*/  lexer_hex_to_character (int /*<<< orphan*/ ,char const*,int) ; 
- size_t lit_char_get_utf8_length (int /*<<< orphan*/ ) ; 
+
+
+
+typedef char uint8_t ;
+
+
+ int TEST_ASSERT (int) ;
+ int TEST_INIT () ;
+ int ecma_finalize () ;
+ int ecma_init () ;
+ int jmem_finalize () ;
+ int jmem_init () ;
+ int lexer_hex_to_character (int ,char const*,int) ;
+ size_t lit_char_get_utf8_length (int ) ;
 
 int
 main (void)
@@ -44,7 +44,7 @@ main (void)
 
   size_t length;
 
-  /* Test 1-byte-long unicode sequences. */
+
   length = lit_char_get_utf8_length (lexer_hex_to_character (0, _1_byte_long1 + 2, 4));
   TEST_ASSERT (length == 1);
 
@@ -54,7 +54,7 @@ main (void)
   length = lit_char_get_utf8_length (lexer_hex_to_character (0, _1_byte_long3 + 2, 4));
   TEST_ASSERT (length == 1);
 
-  /* Test 2-byte-long unicode sequences. */
+
   length = lit_char_get_utf8_length (lexer_hex_to_character (0, _2_byte_long1 + 2, 4));
   TEST_ASSERT (length == 2);
 
@@ -64,7 +64,7 @@ main (void)
   length = lit_char_get_utf8_length (lexer_hex_to_character (0, _2_byte_long3 + 2, 4));
   TEST_ASSERT (length == 2);
 
-  /* Test 3-byte-long unicode sequences. */
+
   length = lit_char_get_utf8_length (lexer_hex_to_character (0, _3_byte_long1 + 2, 4));
   TEST_ASSERT (length != 2);
 

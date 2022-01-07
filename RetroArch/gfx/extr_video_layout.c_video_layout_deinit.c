@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  video_driver_data; } ;
-struct TYPE_8__ {int images_count; int io_count; int /*<<< orphan*/  view_array; struct TYPE_8__* io; struct TYPE_8__* name; struct TYPE_8__* images; TYPE_2__ render_info; TYPE_1__* render; struct TYPE_8__* base_path; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* free_image ) (int /*<<< orphan*/ ,TYPE_3__) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_3__) ; 
- TYPE_3__* video_layout_state ; 
- int /*<<< orphan*/  view_array_deinit (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int video_driver_data; } ;
+struct TYPE_8__ {int images_count; int io_count; int view_array; struct TYPE_8__* io; struct TYPE_8__* name; struct TYPE_8__* images; TYPE_2__ render_info; TYPE_1__* render; struct TYPE_8__* base_path; } ;
+struct TYPE_6__ {int (* free_image ) (int ,TYPE_3__) ;} ;
+
+
+ int free (TYPE_3__*) ;
+ int stub1 (int ,TYPE_3__) ;
+ TYPE_3__* video_layout_state ;
+ int view_array_deinit (int *) ;
 
 void video_layout_deinit(void)
 {
@@ -50,5 +50,5 @@ void video_layout_deinit(void)
    view_array_deinit(&video_layout_state->view_array);
 
    free(video_layout_state);
-   video_layout_state = NULL;
+   video_layout_state = ((void*)0);
 }

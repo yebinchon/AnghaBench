@@ -1,111 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_39__   TYPE_8__ ;
-typedef  struct TYPE_38__   TYPE_7__ ;
-typedef  struct TYPE_37__   TYPE_6__ ;
-typedef  struct TYPE_36__   TYPE_5__ ;
-typedef  struct TYPE_35__   TYPE_4__ ;
-typedef  struct TYPE_34__   TYPE_3__ ;
-typedef  struct TYPE_33__   TYPE_2__ ;
-typedef  struct TYPE_32__   TYPE_27__ ;
-typedef  struct TYPE_31__   TYPE_26__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_39__ TYPE_8__ ;
+typedef struct TYPE_38__ TYPE_7__ ;
+typedef struct TYPE_37__ TYPE_6__ ;
+typedef struct TYPE_36__ TYPE_5__ ;
+typedef struct TYPE_35__ TYPE_4__ ;
+typedef struct TYPE_34__ TYPE_3__ ;
+typedef struct TYPE_33__ TYPE_2__ ;
+typedef struct TYPE_32__ TYPE_27__ ;
+typedef struct TYPE_31__ TYPE_26__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+
+
 struct TYPE_34__ {scalar_t__ text_status; scalar_t__ prop_status; } ;
-typedef  TYPE_3__ svn_wc_status3_t ;
-typedef  scalar_t__ svn_subst_eol_style_t ;
-struct TYPE_35__ {int /*<<< orphan*/  data; scalar_t__ len; } ;
-typedef  TYPE_4__ svn_stringbuf_t ;
+typedef TYPE_3__ svn_wc_status3_t ;
+typedef scalar_t__ svn_subst_eol_style_t ;
+struct TYPE_35__ {int data; scalar_t__ len; } ;
+typedef TYPE_4__ svn_stringbuf_t ;
 struct TYPE_36__ {char* data; } ;
-typedef  TYPE_5__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
+typedef TYPE_5__ svn_string_t ;
+typedef int svn_stream_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef int svn_ra_session_t ;
 struct TYPE_30__ {scalar_t__ number; } ;
 struct TYPE_37__ {scalar_t__ kind; TYPE_1__ value; } ;
-typedef  TYPE_6__ svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_file_options_t ;
-struct TYPE_38__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  (* cancel_func ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_7__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  (* svn_client_blame_receiver3_t ) (void*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;
-struct TYPE_39__ {int /*<<< orphan*/  url; } ;
-typedef  TYPE_8__ svn_client__pathrev_t ;
-typedef  int svn_boolean_t ;
-struct file_rev_baton {scalar_t__ start_rev; scalar_t__ end_rev; char const* target; int include_merged_revisions; char const* last_filename; int backwards; int check_mime_type; int /*<<< orphan*/ * prevfilepool; int /*<<< orphan*/ * filepool; int /*<<< orphan*/ * currpool; int /*<<< orphan*/ * lastpool; TYPE_26__* chain; TYPE_27__* merged_chain; int /*<<< orphan*/ * last_rev; int /*<<< orphan*/  const* diff_options; int /*<<< orphan*/ * mainpool; int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/ * last_props; scalar_t__ last_revnum; int /*<<< orphan*/ * last_original_filename; TYPE_7__* ctx; } ;
+typedef TYPE_6__ svn_opt_revision_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_file_options_t ;
+struct TYPE_38__ {int cancel_baton; int (* cancel_func ) (int ) ;int wc_ctx; } ;
+typedef TYPE_7__ svn_client_ctx_t ;
+typedef int (* svn_client_blame_receiver3_t ) (void*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int *,scalar_t__,int *,char const*,int ,int,int *) ;
+struct TYPE_39__ {int url; } ;
+typedef TYPE_8__ svn_client__pathrev_t ;
+typedef int svn_boolean_t ;
+struct file_rev_baton {scalar_t__ start_rev; scalar_t__ end_rev; char const* target; int include_merged_revisions; char const* last_filename; int backwards; int check_mime_type; int * prevfilepool; int * filepool; int * currpool; int * lastpool; TYPE_26__* chain; TYPE_27__* merged_chain; int * last_rev; int const* diff_options; int * mainpool; int repos_root_url; int * last_props; scalar_t__ last_revnum; int * last_original_filename; TYPE_7__* ctx; } ;
 struct blame {scalar_t__ start; struct blame* next; TYPE_2__* rev; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_off_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-struct TYPE_33__ {scalar_t__ revision; char* path; int /*<<< orphan*/ * rev_props; } ;
-struct TYPE_32__ {struct blame* blame; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * avail; } ;
-struct TYPE_31__ {struct blame* blame; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * avail; } ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_off_t ;
+typedef int apr_hash_t ;
+struct TYPE_33__ {scalar_t__ revision; char* path; int * rev_props; } ;
+struct TYPE_32__ {struct blame* blame; int * pool; int * avail; } ;
+struct TYPE_31__ {struct blame* blame; int * pool; int * avail; } ;
 
-/* Variables and functions */
- int FALSE ; 
- scalar_t__ MAX (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CLIENT_BAD_REVISION ; 
- int /*<<< orphan*/  SVN_ERR_CLIENT_IS_BINARY_FILE ; 
- scalar_t__ SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EOL_STYLE ; 
- int /*<<< orphan*/  SVN_PROP_MIME_TYPE ; 
- int TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add_file_blame (char const*,char const*,TYPE_26__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ),int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- struct blame* blame_create (TYPE_26__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_rev_handler ; 
- int /*<<< orphan*/  normalize_blames (TYPE_26__*,TYPE_27__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_client__get_normalized_stream (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,TYPE_6__*,int,int,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ),int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__get_revision_number (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,TYPE_6__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__ra_session_from_path2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,TYPE_6__ const*,TYPE_6__ const*,TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__resolve_rev_and_url (TYPE_8__**,int /*<<< orphan*/ *,char const*,TYPE_6__ const*,TYPE_6__*,TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- char const* svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- TYPE_5__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- scalar_t__ svn_mime_type_is_binary (char const*) ; 
- scalar_t__ svn_opt_revision_base ; 
- scalar_t__ svn_opt_revision_number ; 
- scalar_t__ svn_opt_revision_unspecified ; 
- scalar_t__ svn_opt_revision_working ; 
- scalar_t__ svn_path_is_url (char const*) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- void* svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- char* svn_prop_get_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_get_file (int /*<<< orphan*/ *,char*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_file_revs2 (int /*<<< orphan*/ *,char*,scalar_t__,scalar_t__,int,int /*<<< orphan*/ ,struct file_rev_baton*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_repos_root2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_reparent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ ),int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_readline (int /*<<< orphan*/ *,TYPE_4__**,char*,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_from_value (scalar_t__*,char const**,char*) ; 
- scalar_t__ svn_subst_eol_style_native ; 
- int /*<<< orphan*/ * svn_subst_stream_translated (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_get_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_prop_get2 (TYPE_5__ const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_status3 (TYPE_3__**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_status_none ; 
- scalar_t__ svn_wc_status_normal ; 
+
+ int FALSE ;
+ scalar_t__ MAX (scalar_t__,scalar_t__) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_CLIENT_BAD_REVISION ;
+ int SVN_ERR_CLIENT_IS_BINARY_FILE ;
+ scalar_t__ SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EOL_STYLE ;
+ int SVN_PROP_MIME_TYPE ;
+ int TRUE ;
+ int _ (char*) ;
+ int add_file_blame (char const*,char const*,TYPE_26__*,int *,int const*,int (*) (int ),int ,int *) ;
+ void* apr_palloc (int *,int) ;
+ struct blame* blame_create (TYPE_26__*,int *,int ) ;
+ int file_rev_handler ;
+ int normalize_blames (TYPE_26__*,TYPE_27__*,int *) ;
+ int stub1 (int ) ;
+ int svn_client__get_normalized_stream (int **,int ,char const*,TYPE_6__*,int,int,int (*) (int ),int ,int *,int *) ;
+ int svn_client__get_revision_number (scalar_t__*,int *,int ,char const*,int *,TYPE_6__ const*,int *) ;
+ int svn_client__ra_session_from_path2 (int **,int *,char const*,int *,TYPE_6__ const*,TYPE_6__ const*,TYPE_7__*,int *) ;
+ int svn_client__resolve_rev_and_url (TYPE_8__**,int *,char const*,TYPE_6__ const*,TYPE_6__*,TYPE_7__*,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ char const* svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_create (int ,int *,int *) ;
+ int * svn_error_createf (int ,int ,int ,char const*) ;
+ TYPE_5__* svn_hash_gets (int *,int ) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ scalar_t__ svn_mime_type_is_binary (char const*) ;
+ scalar_t__ svn_opt_revision_base ;
+ scalar_t__ svn_opt_revision_number ;
+ scalar_t__ svn_opt_revision_unspecified ;
+ scalar_t__ svn_opt_revision_working ;
+ scalar_t__ svn_path_is_url (char const*) ;
+ int svn_pool_clear (int *) ;
+ void* svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ char* svn_prop_get_value (int *,int ) ;
+ int svn_ra_get_file (int *,char*,scalar_t__,int *,int *,int **,int *) ;
+ int svn_ra_get_file_revs2 (int *,char*,scalar_t__,scalar_t__,int,int ,struct file_rev_baton*,int *) ;
+ int svn_ra_get_repos_root2 (int *,int *,int *) ;
+ int svn_ra_reparent (int *,int ,int *) ;
+ int svn_stream_close (int *) ;
+ int svn_stream_copy3 (int *,int *,int (*) (int ),int ,int *) ;
+ int svn_stream_open_readonly (int **,char const*,int *,int *) ;
+ int svn_stream_open_unique (int **,char const**,int *,int ,int *,int *) ;
+ int svn_stream_readline (int *,TYPE_4__**,char*,int*,int *) ;
+ int svn_subst_eol_style_from_value (scalar_t__*,char const**,char*) ;
+ scalar_t__ svn_subst_eol_style_native ;
+ int * svn_subst_stream_translated (int *,char*,int,int *,int,int *) ;
+ int svn_wc_get_pristine_props (int **,int ,char const*,int *,int *) ;
+ int svn_wc_prop_get2 (TYPE_5__ const**,int ,char const*,int ,int *,int *) ;
+ int svn_wc_status3 (TYPE_3__**,int ,char const*,int *,int *) ;
+ scalar_t__ svn_wc_status_none ;
+ scalar_t__ svn_wc_status_normal ;
 
 svn_error_t *
 svn_client_blame5(const char *target,
@@ -123,7 +123,7 @@ svn_client_blame5(const char *target,
   struct file_rev_baton frb;
   svn_ra_session_t *ra_session;
   svn_revnum_t start_revnum, end_revnum;
-  struct blame *walk, *walk_merged = NULL;
+  struct blame *walk, *walk_merged = ((void*)0);
   apr_pool_t *iterpool;
   svn_stream_t *last_stream;
   svn_stream_t *stream;
@@ -132,24 +132,24 @@ svn_client_blame5(const char *target,
   if (start->kind == svn_opt_revision_unspecified
       || end->kind == svn_opt_revision_unspecified)
     return svn_error_create
-      (SVN_ERR_CLIENT_BAD_REVISION, NULL, NULL);
+      (SVN_ERR_CLIENT_BAD_REVISION, ((void*)0), ((void*)0));
 
   if (svn_path_is_url(target))
     target_abspath_or_url = target;
   else
     SVN_ERR(svn_dirent_get_absolute(&target_abspath_or_url, target, pool));
 
-  /* Get an RA plugin for this filesystem object. */
-  SVN_ERR(svn_client__ra_session_from_path2(&ra_session, NULL,
-                                            target, NULL, peg_revision,
+
+  SVN_ERR(svn_client__ra_session_from_path2(&ra_session, ((void*)0),
+                                            target, ((void*)0), peg_revision,
                                             peg_revision,
                                             ctx, pool));
 
-  SVN_ERR(svn_client__get_revision_number(&start_revnum, NULL, ctx->wc_ctx,
+  SVN_ERR(svn_client__get_revision_number(&start_revnum, ((void*)0), ctx->wc_ctx,
                                           target_abspath_or_url, ra_session,
                                           start, pool));
 
-  SVN_ERR(svn_client__get_revision_number(&end_revnum, NULL, ctx->wc_ctx,
+  SVN_ERR(svn_client__get_revision_number(&end_revnum, ((void*)0), ctx->wc_ctx,
                                           target_abspath_or_url, ra_session,
                                           end, pool));
 
@@ -164,29 +164,29 @@ svn_client_blame5(const char *target,
                                             &younger_end,
                                             ctx, pool));
 
-    /* Make the session point to the real URL. */
+
     SVN_ERR(svn_ra_reparent(ra_session, loc->url, pool));
   }
 
-  /* We check the mime-type of the yougest revision before getting all
-     the older revisions. */
+
+
   if (!ignore_mime_type
       && start_revnum < end_revnum)
     {
       apr_hash_t *props;
-      const char *mime_type = NULL;
+      const char *mime_type = ((void*)0);
 
       if (svn_path_is_url(target)
           || start_revnum > end_revnum
           || (end->kind != svn_opt_revision_working
               && end->kind != svn_opt_revision_base))
         {
-          SVN_ERR(svn_ra_get_file(ra_session, "", end_revnum, NULL, NULL,
+          SVN_ERR(svn_ra_get_file(ra_session, "", end_revnum, ((void*)0), ((void*)0),
                                   &props, pool));
 
           mime_type = svn_prop_get_value(props, SVN_PROP_MIME_TYPE);
         }
-      else 
+      else
         {
           const svn_string_t *value;
 
@@ -202,10 +202,10 @@ svn_client_blame5(const char *target,
                                                 pool, pool));
 
               value = props ? svn_hash_gets(props, SVN_PROP_MIME_TYPE)
-                            : NULL;
+                            : ((void*)0);
             }
 
-          mime_type = value ? value->data : NULL;
+          mime_type = value ? value->data : ((void*)0);
         }
 
       if (mime_type)
@@ -225,31 +225,31 @@ svn_client_blame5(const char *target,
   frb.ctx = ctx;
   frb.diff_options = diff_options;
   frb.include_merged_revisions = include_merged_revisions;
-  frb.last_filename = NULL;
-  frb.last_rev = NULL;
-  frb.last_original_filename = NULL;
+  frb.last_filename = ((void*)0);
+  frb.last_rev = ((void*)0);
+  frb.last_original_filename = ((void*)0);
   frb.chain = apr_palloc(pool, sizeof(*frb.chain));
-  frb.chain->blame = NULL;
-  frb.chain->avail = NULL;
+  frb.chain->blame = ((void*)0);
+  frb.chain->avail = ((void*)0);
   frb.chain->pool = pool;
   if (include_merged_revisions)
     {
       frb.merged_chain = apr_palloc(pool, sizeof(*frb.merged_chain));
-      frb.merged_chain->blame = NULL;
-      frb.merged_chain->avail = NULL;
+      frb.merged_chain->blame = ((void*)0);
+      frb.merged_chain->avail = ((void*)0);
       frb.merged_chain->pool = pool;
     }
   frb.backwards = (frb.start_rev > frb.end_rev);
   frb.last_revnum = SVN_INVALID_REVNUM;
-  frb.last_props = NULL;
+  frb.last_props = ((void*)0);
   frb.check_mime_type = (frb.backwards && !ignore_mime_type);
 
   SVN_ERR(svn_ra_get_repos_root2(ra_session, &frb.repos_root_url, pool));
 
   frb.mainpool = pool;
-  /* The callback will flip the following two pools, because it needs
-     information from the previous call.  Obviously, it can't rely on
-     the lifetime of the pool provided by get_file_revs. */
+
+
+
   frb.lastpool = svn_pool_create(pool);
   frb.currpool = svn_pool_create(pool);
   if (include_merged_revisions)
@@ -258,10 +258,10 @@ svn_client_blame5(const char *target,
       frb.prevfilepool = svn_pool_create(pool);
     }
 
-  /* Collect all blame information.
-     We need to ensure that we get one revision before the start_rev,
-     if available so that we can know what was actually changed in the start
-     revision. */
+
+
+
+
   SVN_ERR(svn_ra_get_file_revs2(ra_session, "",
                                 frb.backwards ? start_revnum
                                               : MAX(0, start_revnum-1),
@@ -271,8 +271,8 @@ svn_client_blame5(const char *target,
 
   if (end->kind == svn_opt_revision_working)
     {
-      /* If the local file is modified we have to call the handler on the
-         working copy file with keywords unexpanded */
+
+
       svn_wc_status3_t *status;
 
       SVN_ERR(svn_wc_status3(&status, ctx->wc_ctx, target_abspath_or_url, pool,
@@ -314,14 +314,14 @@ svn_client_blame5(const char *target,
                                                     ctx->cancel_baton,
                                                     pool, pool));
 
-          SVN_ERR(svn_stream_open_unique(&tempfile, &temppath, NULL,
+          SVN_ERR(svn_stream_open_unique(&tempfile, &temppath, ((void*)0),
                                          svn_io_file_del_on_pool_cleanup,
                                          pool, pool));
 
           SVN_ERR(svn_stream_copy3(wcfile, tempfile, ctx->cancel_func,
                                    ctx->cancel_baton, pool));
 
-          SVN_ERR(add_file_blame(frb.last_filename, temppath, frb.chain, NULL,
+          SVN_ERR(add_file_blame(frb.last_filename, temppath, frb.chain, ((void*)0),
                                  frb.diff_options,
                                  ctx->cancel_func, ctx->cancel_baton, pool));
 
@@ -329,29 +329,29 @@ svn_client_blame5(const char *target,
         }
     }
 
-  /* Report the blame to the caller. */
 
-  /* The callback has to have been called at least once. */
-  SVN_ERR_ASSERT(frb.last_filename != NULL);
 
-  /* Create a pool for the iteration below. */
+
+  SVN_ERR_ASSERT(frb.last_filename != ((void*)0));
+
+
   iterpool = svn_pool_create(pool);
 
-  /* Open the last file and get a stream. */
+
   SVN_ERR(svn_stream_open_readonly(&last_stream, frb.last_filename,
                                    pool, pool));
   stream = svn_subst_stream_translated(last_stream,
-                                       "\n", TRUE, NULL, FALSE, pool);
+                                       "\n", TRUE, ((void*)0), FALSE, pool);
 
-  /* Perform optional merged chain normalization. */
+
   if (include_merged_revisions)
     {
-      /* If we never created any blame for the original chain, create it now,
-         with the most recent changed revision.  This could occur if a file
-         was created on a branch and them merged to another branch.  This is
-         semanticly a copy, and we want to use the revision on the branch as
-         the most recently changed revision.  ### Is this really what we want
-         to do here?  Do the sematics of copy change? */
+
+
+
+
+
+
       if (!frb.chain->blame)
         frb.chain->blame = blame_create(frb.chain, frb.last_rev, 0);
 
@@ -359,7 +359,7 @@ svn_client_blame5(const char *target,
       walk_merged = frb.merged_chain->blame;
     }
 
-  /* Process each blame item. */
+
   for (walk = frb.chain->blame; walk; walk = walk->next)
     {
       apr_off_t line_no;
@@ -376,8 +376,8 @@ svn_client_blame5(const char *target,
       else
         {
           merged_rev = SVN_INVALID_REVNUM;
-          merged_rev_props = NULL;
-          merged_path = NULL;
+          merged_rev_props = ((void*)0);
+          merged_path = ((void*)0);
         }
 
       for (line_no = walk->start;
@@ -402,8 +402,8 @@ svn_client_blame5(const char *target,
               else
                 SVN_ERR(receiver(receiver_baton, start_revnum, end_revnum,
                                  line_no, SVN_INVALID_REVNUM,
-                                 NULL, SVN_INVALID_REVNUM,
-                                 NULL, NULL,
+                                 ((void*)0), SVN_INVALID_REVNUM,
+                                 ((void*)0), ((void*)0),
                                  sb->data, TRUE, iterpool));
             }
           if (eof) break;

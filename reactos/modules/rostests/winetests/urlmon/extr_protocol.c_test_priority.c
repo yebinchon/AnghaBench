@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  int /*<<< orphan*/  IInternetPriority ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IID_IInternetPriority ; 
- scalar_t__ IInternetPriority_GetPriority (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IInternetPriority_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetPriority_SetPriority (int /*<<< orphan*/ *,int) ; 
- scalar_t__ IInternetProtocol_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int LONG ;
+typedef int IInternetProtocol ;
+typedef int IInternetPriority ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ FAILED (scalar_t__) ;
+ int IID_IInternetPriority ;
+ scalar_t__ IInternetPriority_GetPriority (int *,int*) ;
+ int IInternetPriority_Release (int *) ;
+ scalar_t__ IInternetPriority_SetPriority (int *,int) ;
+ scalar_t__ IInternetProtocol_QueryInterface (int *,int *,void**) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_priority(IInternetProtocol *protocol)
 {

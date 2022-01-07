@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/ * PETHREAD ;
-typedef  int* PCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GspDbgThread ; 
- int /*<<< orphan*/  GspFindThread (int*,int /*<<< orphan*/ **) ; 
- char* GspOutBuffer ; 
- int /*<<< orphan*/ * GspRunThread ; 
- int /*<<< orphan*/  ObDereferenceObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ObReferenceObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PsGetCurrentThread () ; 
+
+
+
+typedef int VOID ;
+typedef int * PETHREAD ;
+typedef int* PCHAR ;
+
+
+ int * GspDbgThread ;
+ int GspFindThread (int*,int **) ;
+ char* GspOutBuffer ;
+ int * GspRunThread ;
+ int ObDereferenceObject (int *) ;
+ int ObReferenceObject (int *) ;
+ int * PsGetCurrentThread () ;
 
 VOID
 GspSetThread(PCHAR Request)
@@ -31,18 +31,18 @@ GspSetThread(PCHAR Request)
 
     switch (Request[0])
     {
-        case 'c': /* Run thread */
+        case 'c':
             if (GspFindThread(ptr, &ThreadInfo))
             {
                 GspOutBuffer[0] = 'O';
                 GspOutBuffer[1] = 'K';
 
-                if (NULL != GspRunThread)
+                if (((void*)0) != GspRunThread)
                     ObDereferenceObject(GspRunThread);
 
                 GspRunThread = ThreadInfo;
 
-                if (NULL != GspRunThread)
+                if (((void*)0) != GspRunThread)
                     ObReferenceObject(GspRunThread);
             }
             else
@@ -51,18 +51,18 @@ GspSetThread(PCHAR Request)
             }
             break;
 
-        case 'g': /* Debug thread */
+        case 'g':
             if (GspFindThread(ptr, &ThreadInfo))
             {
                 GspOutBuffer[0] = 'O';
                 GspOutBuffer[1] = 'K';
 
-                if (NULL != GspDbgThread)
+                if (((void*)0) != GspDbgThread)
                     ObDereferenceObject(GspDbgThread);
 
                 if (ThreadInfo == PsGetCurrentThread())
                 {
-                    GspDbgThread = NULL;
+                    GspDbgThread = ((void*)0);
                     ObDereferenceObject(ThreadInfo);
                 }
                 else

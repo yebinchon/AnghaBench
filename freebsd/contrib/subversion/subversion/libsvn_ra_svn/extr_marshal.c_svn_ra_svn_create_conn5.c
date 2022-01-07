@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct TYPE_4__ {int may_check_for_error; int compression_level; int /*<<< orphan*/ * remote_ip; int /*<<< orphan*/  stream; int /*<<< orphan*/ * pool; scalar_t__ zero_copy_limit; int /*<<< orphan*/  capabilities; int /*<<< orphan*/ * block_baton; int /*<<< orphan*/ * block_handler; scalar_t__ current_out; void* max_out; scalar_t__ current_in; void* max_in; scalar_t__ error_check_interval; scalar_t__ written_since_error_check; scalar_t__ write_pos; int /*<<< orphan*/  read_buf; int /*<<< orphan*/  read_end; int /*<<< orphan*/  read_ptr; int /*<<< orphan*/ * session; int /*<<< orphan*/  encrypted; int /*<<< orphan*/ * sock; } ;
-typedef  TYPE_1__ svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  apr_uintptr_t ;
-typedef  void* apr_uint64_t ;
-typedef  int /*<<< orphan*/  apr_socket_t ;
-typedef  int /*<<< orphan*/  apr_sockaddr_t ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ APR_ALIGN (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  APR_REMOTE ; 
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ SVN_RA_SVN__PAGE_SIZE ; 
- int /*<<< orphan*/  apr_hash_make (int /*<<< orphan*/ *) ; 
- void* apr_palloc (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ apr_sockaddr_ip_get (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_socket_addr_get (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  get_timeout (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_ra_svn__stream_from_sock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__stream_from_streams (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__stream_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+struct TYPE_4__ {int may_check_for_error; int compression_level; int * remote_ip; int stream; int * pool; scalar_t__ zero_copy_limit; int capabilities; int * block_baton; int * block_handler; scalar_t__ current_out; void* max_out; scalar_t__ current_in; void* max_in; scalar_t__ error_check_interval; scalar_t__ written_since_error_check; scalar_t__ write_pos; int read_buf; int read_end; int read_ptr; int * session; int encrypted; int * sock; } ;
+typedef TYPE_1__ svn_ra_svn_conn_t ;
+typedef int apr_uintptr_t ;
+typedef void* apr_uint64_t ;
+typedef int apr_socket_t ;
+typedef int apr_sockaddr_t ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ APR_ALIGN (int ,scalar_t__) ;
+ int APR_REMOTE ;
+ scalar_t__ APR_SUCCESS ;
+ int FALSE ;
+ scalar_t__ SVN_RA_SVN__PAGE_SIZE ;
+ int apr_hash_make (int *) ;
+ void* apr_palloc (int *,scalar_t__) ;
+ scalar_t__ apr_sockaddr_ip_get (int **,int *) ;
+ scalar_t__ apr_socket_addr_get (int **,int ,int *) ;
+ int assert (int) ;
+ int get_timeout (TYPE_1__*) ;
+ int svn_ra_svn__stream_from_sock (int *,int *) ;
+ int svn_ra_svn__stream_from_streams (int *,int *,int *) ;
+ int svn_ra_svn__stream_timeout (int ,int ) ;
 
 svn_ra_svn_conn_t *svn_ra_svn_create_conn5(apr_socket_t *sock,
                                            svn_stream_t *in_stream,
@@ -53,11 +53,11 @@ svn_ra_svn_conn_t *svn_ra_svn_create_conn5(apr_socket_t *sock,
 
   assert((sock && !in_stream && !out_stream)
          || (!sock && in_stream && out_stream));
-#ifdef SVN_HAVE_SASL
-  conn->sock = sock;
-  conn->encrypted = FALSE;
-#endif
-  conn->session = NULL;
+
+
+
+
+  conn->session = ((void*)0);
   conn->read_ptr = conn->read_buf;
   conn->read_end = conn->read_buf;
   conn->write_pos = 0;
@@ -68,27 +68,27 @@ svn_ra_svn_conn_t *svn_ra_svn_create_conn5(apr_socket_t *sock,
   conn->current_in = 0;
   conn->max_out = max_out;
   conn->current_out = 0;
-  conn->block_handler = NULL;
-  conn->block_baton = NULL;
+  conn->block_handler = ((void*)0);
+  conn->block_baton = ((void*)0);
   conn->capabilities = apr_hash_make(result_pool);
   conn->compression_level = compression_level;
   conn->zero_copy_limit = zero_copy_limit;
   conn->pool = result_pool;
 
-  if (sock != NULL)
+  if (sock != ((void*)0))
     {
       apr_sockaddr_t *sa;
       conn->stream = svn_ra_svn__stream_from_sock(sock, result_pool);
       if (!(apr_socket_addr_get(&sa, APR_REMOTE, sock) == APR_SUCCESS
             && apr_sockaddr_ip_get(&conn->remote_ip, sa) == APR_SUCCESS))
-        conn->remote_ip = NULL;
+        conn->remote_ip = ((void*)0);
       svn_ra_svn__stream_timeout(conn->stream, get_timeout(conn));
     }
   else
     {
       conn->stream = svn_ra_svn__stream_from_streams(in_stream, out_stream,
                                                      result_pool);
-      conn->remote_ip = NULL;
+      conn->remote_ip = ((void*)0);
     }
 
   return conn;

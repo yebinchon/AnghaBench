@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u_char ;
-typedef  int /*<<< orphan*/  ngx_pool_t ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef size_t u_char ;
+typedef int ngx_pool_t ;
 struct TYPE_12__ {size_t* table; size_t length; } ;
-typedef  TYPE_1__ ngx_http_charset_ctx_t ;
+typedef TYPE_1__ ngx_http_charset_ctx_t ;
 struct TYPE_13__ {TYPE_3__* buf; struct TYPE_13__* next; } ;
-typedef  TYPE_2__ ngx_chain_t ;
-struct TYPE_14__ {size_t* pos; size_t* last; size_t* end; struct TYPE_14__* shadow; int /*<<< orphan*/  flush; int /*<<< orphan*/  last_in_chain; int /*<<< orphan*/  last_buf; int /*<<< orphan*/  mmap; int /*<<< orphan*/  memory; int /*<<< orphan*/  temporary; } ;
-typedef  TYPE_3__ ngx_buf_t ;
+typedef TYPE_2__ ngx_chain_t ;
+struct TYPE_14__ {size_t* pos; size_t* last; size_t* end; struct TYPE_14__* shadow; int flush; int last_in_chain; int last_buf; int mmap; int memory; int temporary; } ;
+typedef TYPE_3__ ngx_buf_t ;
 
-/* Variables and functions */
- size_t NGX_UTF_LEN ; 
- TYPE_2__* ngx_alloc_chain_link (int /*<<< orphan*/ *) ; 
- TYPE_2__* ngx_http_charset_get_buf (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_2__* ngx_http_charset_get_buffer (int /*<<< orphan*/ *,TYPE_1__*,size_t) ; 
+
+ size_t NGX_UTF_LEN ;
+ TYPE_2__* ngx_alloc_chain_link (int *) ;
+ TYPE_2__* ngx_http_charset_get_buf (int *,TYPE_1__*) ;
+ TYPE_2__* ngx_http_charset_get_buffer (int *,TYPE_1__*,size_t) ;
 
 __attribute__((used)) static ngx_chain_t *
 ngx_http_charset_recode_to_utf8(ngx_pool_t *pool, ngx_buf_t *buf,
     ngx_http_charset_ctx_t *ctx)
 {
-    size_t        len, size;
-    u_char       *p, *src, *dst, *table;
-    ngx_buf_t    *b;
-    ngx_chain_t  *out, *cl, **ll;
+    size_t len, size;
+    u_char *p, *src, *dst, *table;
+    ngx_buf_t *b;
+    ngx_chain_t *out, *cl, **ll;
 
     table = ctx->table;
 
@@ -48,28 +48,28 @@ ngx_http_charset_recode_to_utf8(ngx_pool_t *pool, ngx_buf_t *buf,
     }
 
     out = ngx_alloc_chain_link(pool);
-    if (out == NULL) {
-        return NULL;
+    if (out == ((void*)0)) {
+        return ((void*)0);
     }
 
     out->buf = buf;
-    out->next = NULL;
+    out->next = ((void*)0);
 
     return out;
 
 recode:
 
-    /*
-     * we assume that there are about half of characters to be recoded,
-     * so we preallocate "size / 2 + size / 2 * ctx->length"
-     */
+
+
+
+
 
     len = src - buf->pos;
 
     if (len > 512) {
         out = ngx_http_charset_get_buf(pool, ctx);
-        if (out == NULL) {
-            return NULL;
+        if (out == ((void*)0)) {
+            return ((void*)0);
         }
 
         b = out->buf;
@@ -83,13 +83,13 @@ recode:
         b->last = src;
 
         out->buf = b;
-        out->next = NULL;
+        out->next = ((void*)0);
 
         size = buf->last - src;
         size = size / 2 + size / 2 * ctx->length;
 
     } else {
-        out = NULL;
+        out = ((void*)0);
 
         size = buf->last - src;
         size = len + size / 2 + size / 2 * ctx->length;
@@ -98,8 +98,8 @@ recode:
     }
 
     cl = ngx_http_charset_get_buffer(pool, ctx, size);
-    if (cl == NULL) {
-        return NULL;
+    if (cl == ((void*)0)) {
+        return ((void*)0);
     }
 
     if (out) {
@@ -126,8 +126,8 @@ recode:
             size = len + size / 2 + size / 2 * ctx->length;
 
             cl = ngx_http_charset_get_buffer(pool, ctx, size);
-            if (cl == NULL) {
-                return NULL;
+            if (cl == ((void*)0)) {
+                return ((void*)0);
             }
 
             *ll = cl;

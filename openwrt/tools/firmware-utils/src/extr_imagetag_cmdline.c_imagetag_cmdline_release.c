@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gengetopt_args_info {int /*<<< orphan*/  pad_orig; int /*<<< orphan*/  reserved2_orig; int /*<<< orphan*/  reserved2_arg; int /*<<< orphan*/  inactive_orig; int /*<<< orphan*/  inactive_arg; int /*<<< orphan*/  second_image_flag_orig; int /*<<< orphan*/  second_image_flag_arg; int /*<<< orphan*/  rsa_signature_orig; int /*<<< orphan*/  rsa_signature_arg; int /*<<< orphan*/  info2_orig; int /*<<< orphan*/  info2_arg; int /*<<< orphan*/  altinfo_orig; int /*<<< orphan*/  altinfo_arg; int /*<<< orphan*/  info1_orig; int /*<<< orphan*/  info1_arg; int /*<<< orphan*/  layoutver_orig; int /*<<< orphan*/  layoutver_arg; int /*<<< orphan*/  entry_orig; int /*<<< orphan*/  entry_arg; int /*<<< orphan*/  load_addr_orig; int /*<<< orphan*/  load_addr_arg; int /*<<< orphan*/  block_size_orig; int /*<<< orphan*/  block_size_arg; int /*<<< orphan*/  signature2_orig; int /*<<< orphan*/  signature2_arg; int /*<<< orphan*/  signature_orig; int /*<<< orphan*/  signature_arg; int /*<<< orphan*/  tag_version_orig; int /*<<< orphan*/  tag_version_arg; int /*<<< orphan*/  image_offset_orig; int /*<<< orphan*/  image_offset_arg; int /*<<< orphan*/  flash_start_orig; int /*<<< orphan*/  flash_start_arg; int /*<<< orphan*/  chipid_orig; int /*<<< orphan*/  chipid_arg; int /*<<< orphan*/  boardid_orig; int /*<<< orphan*/  boardid_arg; int /*<<< orphan*/  cfe_orig; int /*<<< orphan*/  cfe_arg; int /*<<< orphan*/  output_orig; int /*<<< orphan*/  output_arg; int /*<<< orphan*/  rootfs_orig; int /*<<< orphan*/  rootfs_arg; int /*<<< orphan*/  kernel_orig; int /*<<< orphan*/  kernel_arg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_given (struct gengetopt_args_info*) ; 
- int /*<<< orphan*/  free_string_field (int /*<<< orphan*/ *) ; 
+
+
+
+struct gengetopt_args_info {int pad_orig; int reserved2_orig; int reserved2_arg; int inactive_orig; int inactive_arg; int second_image_flag_orig; int second_image_flag_arg; int rsa_signature_orig; int rsa_signature_arg; int info2_orig; int info2_arg; int altinfo_orig; int altinfo_arg; int info1_orig; int info1_arg; int layoutver_orig; int layoutver_arg; int entry_orig; int entry_arg; int load_addr_orig; int load_addr_arg; int block_size_orig; int block_size_arg; int signature2_orig; int signature2_arg; int signature_orig; int signature_arg; int tag_version_orig; int tag_version_arg; int image_offset_orig; int image_offset_arg; int flash_start_orig; int flash_start_arg; int chipid_orig; int chipid_arg; int boardid_orig; int boardid_arg; int cfe_orig; int cfe_arg; int output_orig; int output_arg; int rootfs_orig; int rootfs_arg; int kernel_orig; int kernel_arg; } ;
+
+
+ int clear_given (struct gengetopt_args_info*) ;
+ int free_string_field (int *) ;
 
 __attribute__((used)) static void
 imagetag_cmdline_release (struct gengetopt_args_info *args_info)
@@ -65,8 +65,8 @@ imagetag_cmdline_release (struct gengetopt_args_info *args_info)
   free_string_field (&(args_info->reserved2_arg));
   free_string_field (&(args_info->reserved2_orig));
   free_string_field (&(args_info->pad_orig));
-  
-  
+
+
 
   clear_given (args_info);
 }

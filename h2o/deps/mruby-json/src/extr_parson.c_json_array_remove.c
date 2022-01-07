@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int count; scalar_t__ items; } ;
-typedef  int /*<<< orphan*/  JSON_Value ;
-typedef  int /*<<< orphan*/  JSON_Status ;
-typedef  TYPE_1__ JSON_Array ;
+typedef int JSON_Value ;
+typedef int JSON_Status ;
+typedef TYPE_1__ JSON_Array ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSONFailure ; 
- int /*<<< orphan*/  JSONSuccess ; 
- int json_array_get_count (TYPE_1__*) ; 
- int /*<<< orphan*/  json_array_get_value (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  json_value_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (scalar_t__,scalar_t__,size_t) ; 
+
+ int JSONFailure ;
+ int JSONSuccess ;
+ int json_array_get_count (TYPE_1__*) ;
+ int json_array_get_value (TYPE_1__*,size_t) ;
+ int json_value_free (int ) ;
+ int memmove (scalar_t__,scalar_t__,size_t) ;
 
 JSON_Status json_array_remove(JSON_Array *array, size_t ix) {
     size_t to_move_bytes = 0;
-    if (array == NULL || ix >= json_array_get_count(array)) {
+    if (array == ((void*)0) || ix >= json_array_get_count(array)) {
         return JSONFailure;
     }
     json_value_free(json_array_get_value(array, ix));

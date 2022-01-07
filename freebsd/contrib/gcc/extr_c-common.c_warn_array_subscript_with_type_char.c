@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ INTEGER_CST ; 
- int /*<<< orphan*/  OPT_Wchar_subscripts ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ TYPE_MAIN_VARIANT (int /*<<< orphan*/ ) ; 
- scalar_t__ char_type_node ; 
- int /*<<< orphan*/  warning (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ INTEGER_CST ;
+ int OPT_Wchar_subscripts ;
+ scalar_t__ TREE_CODE (int ) ;
+ int TREE_TYPE (int ) ;
+ scalar_t__ TYPE_MAIN_VARIANT (int ) ;
+ scalar_t__ char_type_node ;
+ int warning (int ,char*) ;
 
 void
 warn_array_subscript_with_type_char (tree index)

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rrdengine_datafile {int dummy; } ;
-typedef  int /*<<< orphan*/  path2 ;
-typedef  int /*<<< orphan*/  path1 ;
+typedef int path2 ;
+typedef int path1 ;
 
-/* Variables and functions */
- int RRDENG_PATH_MAX ; 
- int /*<<< orphan*/  generate_datafilepath (struct rrdengine_datafile*,char*,int) ; 
- int strcmp (char*,char*) ; 
+
+ int RRDENG_PATH_MAX ;
+ int generate_datafilepath (struct rrdengine_datafile*,char*,int) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int scan_data_files_cmp(const void *a, const void *b)
 {

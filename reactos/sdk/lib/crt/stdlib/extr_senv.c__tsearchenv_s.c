@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char _TCHAR ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOENT ; 
- int ERANGE ; 
- scalar_t__ GetFileAttributes (char const*) ; 
- int /*<<< orphan*/  GetFullPathName (char const*,int,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSVCRT_CHECK_PMT (int) ; 
- int /*<<< orphan*/  MSVCRT_INVALID_PMT (char*,int) ; 
- int /*<<< orphan*/  _dosmaperr (int /*<<< orphan*/ ) ; 
- int* _errno () ; 
- int /*<<< orphan*/  _set_errno (int) ; 
- int /*<<< orphan*/  _tcscat (char*,char const*) ; 
- int /*<<< orphan*/  _tcscpy (char*,char*) ; 
- int _tcslen (char*) ; 
- char* _tgetenv (char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+
+
+typedef char _TCHAR ;
+
+
+ int EINVAL ;
+ int ENOENT ;
+ int ERANGE ;
+ scalar_t__ GetFileAttributes (char const*) ;
+ int GetFullPathName (char const*,int,char*,int *) ;
+ int GetLastError () ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int MAX_PATH ;
+ int MSVCRT_CHECK_PMT (int) ;
+ int MSVCRT_INVALID_PMT (char*,int) ;
+ int _dosmaperr (int ) ;
+ int* _errno () ;
+ int _set_errno (int) ;
+ int _tcscat (char*,char const*) ;
+ int _tcscpy (char*,char*) ;
+ int _tcslen (char*) ;
+ char* _tgetenv (char const*) ;
+ int memcpy (char*,char*,int) ;
 
 int _tsearchenv_s(const _TCHAR* file, const _TCHAR* env, _TCHAR *buf, size_t count)
 {
   _TCHAR *envVal, *penv;
   _TCHAR curPath[MAX_PATH];
 
-  if (!MSVCRT_CHECK_PMT(file != NULL) || !MSVCRT_CHECK_PMT(buf != NULL) ||
+  if (!MSVCRT_CHECK_PMT(file != ((void*)0)) || !MSVCRT_CHECK_PMT(buf != ((void*)0)) ||
       !MSVCRT_CHECK_PMT(count > 0))
   {
       *_errno() = EINVAL;
@@ -46,15 +46,15 @@ int _tsearchenv_s(const _TCHAR* file, const _TCHAR* env, _TCHAR *buf, size_t cou
 
   *buf = '\0';
 
-  /* Try CWD first */
+
   if (GetFileAttributes( file ) != INVALID_FILE_ATTRIBUTES)
   {
-    GetFullPathName( file, MAX_PATH, buf, NULL );
+    GetFullPathName( file, MAX_PATH, buf, ((void*)0) );
     _dosmaperr(GetLastError());
     return 0;
   }
 
-  /* Search given environment variable */
+
   envVal = _tgetenv(env);
   if (!envVal)
   {
@@ -68,7 +68,7 @@ int _tsearchenv_s(const _TCHAR* file, const _TCHAR* env, _TCHAR *buf, size_t cou
   {
     _TCHAR *end = penv;
 
-    while(*end && *end != ';') end++; /* Find end of next path */
+    while(*end && *end != ';') end++;
     if (penv == end || !*penv)
     {
       _set_errno(ENOENT);

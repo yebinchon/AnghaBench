@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct teo_cpu {int /*<<< orphan*/ * intervals; } ;
+
+
+
+
+struct teo_cpu {int * intervals; } ;
 struct cpuidle_driver {int dummy; } ;
-struct cpuidle_device {int /*<<< orphan*/  cpu; } ;
+struct cpuidle_device {int cpu; } ;
 
-/* Variables and functions */
- int INTERVALS ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  memset (struct teo_cpu*,int /*<<< orphan*/ ,int) ; 
- struct teo_cpu* per_cpu_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  teo_cpus ; 
+
+ int INTERVALS ;
+ int UINT_MAX ;
+ int memset (struct teo_cpu*,int ,int) ;
+ struct teo_cpu* per_cpu_ptr (int *,int ) ;
+ int teo_cpus ;
 
 __attribute__((used)) static int teo_enable_device(struct cpuidle_driver *drv,
-			     struct cpuidle_device *dev)
+        struct cpuidle_device *dev)
 {
-	struct teo_cpu *cpu_data = per_cpu_ptr(&teo_cpus, dev->cpu);
-	int i;
+ struct teo_cpu *cpu_data = per_cpu_ptr(&teo_cpus, dev->cpu);
+ int i;
 
-	memset(cpu_data, 0, sizeof(*cpu_data));
+ memset(cpu_data, 0, sizeof(*cpu_data));
 
-	for (i = 0; i < INTERVALS; i++)
-		cpu_data->intervals[i] = UINT_MAX;
+ for (i = 0; i < INTERVALS; i++)
+  cpu_data->intervals[i] = UINT_MAX;
 
-	return 0;
+ return 0;
 }

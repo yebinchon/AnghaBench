@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  char WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  nsinput; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  TYPE_1__ HTMLInputElement ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- TYPE_1__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLInputElement_GetType (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/  const*,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsAString ;
+typedef char WCHAR ;
+struct TYPE_3__ {int nsinput; } ;
+typedef int PRUnichar ;
+typedef TYPE_1__ HTMLInputElement ;
+typedef int HTMLDOMNode ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ TYPE_1__* impl_from_HTMLDOMNode (int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLInputElement_GetType (int ,int *) ;
+ int strcmpW (int const*,char const*) ;
 
 __attribute__((used)) static BOOL HTMLInputElement_is_text_edit(HTMLDOMNode *iface)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static BOOL HTMLInputElement_is_text_edit(HTMLDOMNode *ifa
     static const WCHAR submitW[] = {'s','u','b','m','i','t',0};
     static const WCHAR textW[] = {'t','e','x','t',0};
 
-    nsAString_Init(&nsstr, NULL);
+    nsAString_Init(&nsstr, ((void*)0));
     nsres = nsIDOMHTMLInputElement_GetType(This->nsinput, &nsstr);
     if(NS_SUCCEEDED(nsres)) {
         nsAString_GetData(&nsstr, &type);

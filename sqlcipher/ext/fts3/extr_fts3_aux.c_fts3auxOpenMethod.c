@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  Fts3auxCursor ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_malloc (int) ; 
+
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_vtab ;
+typedef int Fts3auxCursor ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAMETER (int *) ;
+ int memset (int *,int ,int) ;
+ scalar_t__ sqlite3_malloc (int) ;
 
 __attribute__((used)) static int fts3auxOpenMethod(sqlite3_vtab *pVTab, sqlite3_vtab_cursor **ppCsr){
-  Fts3auxCursor *pCsr;            /* Pointer to cursor object to return */
+  Fts3auxCursor *pCsr;
 
   UNUSED_PARAMETER(pVTab);
 

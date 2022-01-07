@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int wordcount_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uECC_word_t ;
-typedef  TYPE_1__* uECC_Curve ;
-typedef  scalar_t__ bitcount_t ;
-struct TYPE_8__ {int num_words; int num_bytes; size_t const* G; int /*<<< orphan*/  n; int /*<<< orphan*/  p; int /*<<< orphan*/  (* double_jacobian ) (size_t*,size_t*,size_t*,TYPE_1__*) ;int /*<<< orphan*/  num_n_bits; } ;
 
-/* Variables and functions */
- int BITS_TO_WORDS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XYcZ_add (size_t*,size_t*,size_t*,size_t*,TYPE_1__*) ; 
- int /*<<< orphan*/  apply_z (size_t*,size_t*,size_t*,TYPE_1__*) ; 
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  bits2int (size_t*,int /*<<< orphan*/  const*,unsigned int,TYPE_1__*) ; 
- scalar_t__ smax (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (size_t*,size_t*,size_t*,TYPE_1__*) ; 
- int uECC_MAX_WORDS ; 
- int /*<<< orphan*/  uECC_vli_bytesToNative (size_t*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  uECC_vli_clear (size_t*,int) ; 
- int uECC_vli_cmp_unsafe (int /*<<< orphan*/ ,size_t*,int) ; 
- scalar_t__ uECC_vli_equal (size_t*,size_t*,int) ; 
- scalar_t__ uECC_vli_isZero (size_t*,int) ; 
- int /*<<< orphan*/  uECC_vli_modInv (size_t*,size_t*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uECC_vli_modMult (size_t*,size_t*,size_t*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uECC_vli_modMult_fast (size_t*,size_t*,size_t*,TYPE_1__*) ; 
- int /*<<< orphan*/  uECC_vli_modSub (size_t*,size_t*,size_t*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uECC_vli_numBits (size_t*,int) ; 
- int /*<<< orphan*/  uECC_vli_set (size_t*,size_t const*,int) ; 
- int /*<<< orphan*/  uECC_vli_sub (size_t*,size_t*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uECC_vli_testBit (size_t*,scalar_t__) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int wordcount_t ;
+typedef int uint8_t ;
+typedef size_t uECC_word_t ;
+typedef TYPE_1__* uECC_Curve ;
+typedef scalar_t__ bitcount_t ;
+struct TYPE_8__ {int num_words; int num_bytes; size_t const* G; int n; int p; int (* double_jacobian ) (size_t*,size_t*,size_t*,TYPE_1__*) ;int num_n_bits; } ;
+
+
+ int BITS_TO_WORDS (int ) ;
+ int XYcZ_add (size_t*,size_t*,size_t*,size_t*,TYPE_1__*) ;
+ int apply_z (size_t*,size_t*,size_t*,TYPE_1__*) ;
+ int bcopy (int *,int const*,int) ;
+ int bits2int (size_t*,int const*,unsigned int,TYPE_1__*) ;
+ scalar_t__ smax (int ,int ) ;
+ int stub1 (size_t*,size_t*,size_t*,TYPE_1__*) ;
+ int uECC_MAX_WORDS ;
+ int uECC_vli_bytesToNative (size_t*,int const*,int) ;
+ int uECC_vli_clear (size_t*,int) ;
+ int uECC_vli_cmp_unsafe (int ,size_t*,int) ;
+ scalar_t__ uECC_vli_equal (size_t*,size_t*,int) ;
+ scalar_t__ uECC_vli_isZero (size_t*,int) ;
+ int uECC_vli_modInv (size_t*,size_t*,int ,int) ;
+ int uECC_vli_modMult (size_t*,size_t*,size_t*,int ,int) ;
+ int uECC_vli_modMult_fast (size_t*,size_t*,size_t*,TYPE_1__*) ;
+ int uECC_vli_modSub (size_t*,size_t*,size_t*,int ,int) ;
+ int uECC_vli_numBits (size_t*,int) ;
+ int uECC_vli_set (size_t*,size_t const*,int) ;
+ int uECC_vli_sub (size_t*,size_t*,int ,int) ;
+ int uECC_vli_testBit (size_t*,scalar_t__) ;
 
 int uECC_verify(const uint8_t *public_key,
                 const uint8_t *message_hash,
@@ -58,11 +58,11 @@ int uECC_verify(const uint8_t *public_key,
     const uECC_word_t *point;
     bitcount_t num_bits;
     bitcount_t i;
-#if uECC_VLI_NATIVE_LITTLE_ENDIAN
-    uECC_word_t *_public = (uECC_word_t *)public_key;
-#else
+
+
+
     uECC_word_t _public[uECC_MAX_WORDS * 2];
-#endif    
+
     uECC_word_t r[uECC_MAX_WORDS], s[uECC_MAX_WORDS];
     wordcount_t num_words = curve->num_words;
     wordcount_t num_n_words = BITS_TO_WORDS(curve->num_n_bits);
@@ -71,46 +71,46 @@ int uECC_verify(const uint8_t *public_key,
     r[num_n_words - 1] = 0;
     s[num_n_words - 1] = 0;
 
-#if uECC_VLI_NATIVE_LITTLE_ENDIAN
-    bcopy((uint8_t *) r, signature, curve->num_bytes);
-    bcopy((uint8_t *) s, signature + curve->num_bytes, curve->num_bytes);
-#else
+
+
+
+
     uECC_vli_bytesToNative(_public, public_key, curve->num_bytes);
     uECC_vli_bytesToNative(
         _public + num_words, public_key + curve->num_bytes, curve->num_bytes);
     uECC_vli_bytesToNative(r, signature, curve->num_bytes);
     uECC_vli_bytesToNative(s, signature + curve->num_bytes, curve->num_bytes);
-#endif
 
-    /* r, s must not be 0. */
+
+
     if (uECC_vli_isZero(r, num_words) || uECC_vli_isZero(s, num_words)) {
         return 0;
     }
 
-    /* r, s must be < n. */
+
     if (uECC_vli_cmp_unsafe(curve->n, r, num_n_words) != 1 ||
             uECC_vli_cmp_unsafe(curve->n, s, num_n_words) != 1) {
         return 0;
     }
 
-    /* Calculate u1 and u2. */
-    uECC_vli_modInv(z, s, curve->n, num_n_words); /* z = 1/s */
+
+    uECC_vli_modInv(z, s, curve->n, num_n_words);
     u1[num_n_words - 1] = 0;
     bits2int(u1, message_hash, hash_size, curve);
-    uECC_vli_modMult(u1, u1, z, curve->n, num_n_words); /* u1 = e/s */
-    uECC_vli_modMult(u2, r, z, curve->n, num_n_words); /* u2 = r/s */
+    uECC_vli_modMult(u1, u1, z, curve->n, num_n_words);
+    uECC_vli_modMult(u2, r, z, curve->n, num_n_words);
 
-    /* Calculate sum = G + Q. */
+
     uECC_vli_set(sum, _public, num_words);
     uECC_vli_set(sum + num_words, _public + num_words, num_words);
     uECC_vli_set(tx, curve->G, num_words);
     uECC_vli_set(ty, curve->G + num_words, num_words);
-    uECC_vli_modSub(z, sum, tx, curve->p, num_words); /* z = x2 - x1 */
+    uECC_vli_modSub(z, sum, tx, curve->p, num_words);
     XYcZ_add(tx, ty, sum, sum + num_words, curve);
-    uECC_vli_modInv(z, z, curve->p, num_words); /* z = 1/z */
+    uECC_vli_modInv(z, z, curve->p, num_words);
     apply_z(sum, sum + num_words, z, curve);
 
-    /* Use Shamir's trick to calculate u1*G + u2*Q */
+
     points[0] = 0;
     points[1] = curve->G;
     points[2] = _public;
@@ -135,20 +135,20 @@ int uECC_verify(const uint8_t *public_key,
             uECC_vli_set(tx, point, num_words);
             uECC_vli_set(ty, point + num_words, num_words);
             apply_z(tx, ty, z, curve);
-            uECC_vli_modSub(tz, rx, tx, curve->p, num_words); /* Z = x2 - x1 */
+            uECC_vli_modSub(tz, rx, tx, curve->p, num_words);
             XYcZ_add(tx, ty, rx, ry, curve);
             uECC_vli_modMult_fast(z, z, tz, curve);
         }
     }
 
-    uECC_vli_modInv(z, z, curve->p, num_words); /* Z = 1/Z */
+    uECC_vli_modInv(z, z, curve->p, num_words);
     apply_z(rx, ry, z, curve);
 
-    /* v = x1 (mod n) */
+
     if (uECC_vli_cmp_unsafe(curve->n, rx, num_n_words) != 1) {
         uECC_vli_sub(rx, rx, curve->n, num_n_words);
     }
 
-    /* Accept only if v == r. */
+
     return (int)(uECC_vli_equal(rx, r, num_words));
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_6__ {size_t id; size_t magic; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  size_t DWORD ;
-typedef  TYPE_1__ CookieInternal ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- size_t array_size ; 
- TYPE_1__* cookies ; 
- size_t id_last ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_6__ {size_t id; size_t magic; int data; } ;
+typedef int LPVOID ;
+typedef size_t DWORD ;
+typedef TYPE_1__ CookieInternal ;
+
+
+ int ERR (char*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ TYPE_1__* HeapReAlloc (int ,int ,TYPE_1__*,int) ;
+ size_t array_size ;
+ TYPE_1__* cookies ;
+ size_t id_last ;
 
 DWORD generate_Cookie(DWORD magic, LPVOID data)
 {
     UINT i;
 
-    /* try to reuse IDs if possible */
+
     for (i = 0; i < id_last; i++)
         if (cookies[i].id == 0) break;
 
@@ -61,7 +61,7 @@ DWORD generate_Cookie(DWORD magic, LPVOID data)
         }
     }
 
-    cookies[i].id = i + 1; /* a return of 0 is used for failure */
+    cookies[i].id = i + 1;
     cookies[i].magic = magic;
     cookies[i].data = data;
 

@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* I ; 
- int /*<<< orphan*/  adj_rec ; 
- scalar_t__ check_id (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int last_date ; 
- int /*<<< orphan*/  log_11_set (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_timestamp (int) ; 
- int /*<<< orphan*/  stderr ; 
- size_t wv_option ; 
- size_t wv_user ; 
- size_t wv_voted ; 
- size_t wv_voting ; 
+ int* I ;
+ int adj_rec ;
+ scalar_t__ check_id (int) ;
+ int fprintf (int ,char*,int) ;
+ int last_date ;
+ int log_11_set (int,int,int,int ) ;
+ int log_timestamp (int) ;
+ int stderr ;
+ size_t wv_option ;
+ size_t wv_user ;
+ size_t wv_voted ;
+ size_t wv_voting ;
 
 void process_widget_votes_row (void) {
   int user = I[wv_user];

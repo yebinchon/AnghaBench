@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cnic_ulp_ops {int /*<<< orphan*/  (* cnic_stop ) (int /*<<< orphan*/ ) ;} ;
-struct cnic_local {int /*<<< orphan*/ * ulp_flags; int /*<<< orphan*/ * ulp_handle; int /*<<< orphan*/ * ulp_ops; } ;
 
-/* Variables and functions */
- int CNIC_ULP_ISCSI ; 
- int /*<<< orphan*/  ISCSI_KEVENT_IF_DOWN ; 
- int /*<<< orphan*/  ULP_F_CALL_PENDING ; 
- int /*<<< orphan*/  ULP_F_START ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cnic_lock ; 
- int /*<<< orphan*/  cnic_send_nlmsg (struct cnic_local*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lockdep_is_held (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct cnic_ulp_ops* rcu_dereference_protected (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- scalar_t__ test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct cnic_ulp_ops {int (* cnic_stop ) (int ) ;} ;
+struct cnic_local {int * ulp_flags; int * ulp_handle; int * ulp_ops; } ;
+
+
+ int CNIC_ULP_ISCSI ;
+ int ISCSI_KEVENT_IF_DOWN ;
+ int ULP_F_CALL_PENDING ;
+ int ULP_F_START ;
+ int clear_bit (int ,int *) ;
+ int cnic_lock ;
+ int cnic_send_nlmsg (struct cnic_local*,int ,int *) ;
+ int lockdep_is_held (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct cnic_ulp_ops* rcu_dereference_protected (int ,int ) ;
+ int set_bit (int ,int *) ;
+ int stub1 (int ) ;
+ scalar_t__ test_and_clear_bit (int ,int *) ;
 
 __attribute__((used)) static void cnic_ulp_stop_one(struct cnic_local *cp, int if_type)
 {
-	struct cnic_ulp_ops *ulp_ops;
+ struct cnic_ulp_ops *ulp_ops;
 
-	if (if_type == CNIC_ULP_ISCSI)
-		cnic_send_nlmsg(cp, ISCSI_KEVENT_IF_DOWN, NULL);
+ if (if_type == CNIC_ULP_ISCSI)
+  cnic_send_nlmsg(cp, ISCSI_KEVENT_IF_DOWN, ((void*)0));
 
-	mutex_lock(&cnic_lock);
-	ulp_ops = rcu_dereference_protected(cp->ulp_ops[if_type],
-					    lockdep_is_held(&cnic_lock));
-	if (!ulp_ops) {
-		mutex_unlock(&cnic_lock);
-		return;
-	}
-	set_bit(ULP_F_CALL_PENDING, &cp->ulp_flags[if_type]);
-	mutex_unlock(&cnic_lock);
+ mutex_lock(&cnic_lock);
+ ulp_ops = rcu_dereference_protected(cp->ulp_ops[if_type],
+         lockdep_is_held(&cnic_lock));
+ if (!ulp_ops) {
+  mutex_unlock(&cnic_lock);
+  return;
+ }
+ set_bit(ULP_F_CALL_PENDING, &cp->ulp_flags[if_type]);
+ mutex_unlock(&cnic_lock);
 
-	if (test_and_clear_bit(ULP_F_START, &cp->ulp_flags[if_type]))
-		ulp_ops->cnic_stop(cp->ulp_handle[if_type]);
+ if (test_and_clear_bit(ULP_F_START, &cp->ulp_flags[if_type]))
+  ulp_ops->cnic_stop(cp->ulp_handle[if_type]);
 
-	clear_bit(ULP_F_CALL_PENDING, &cp->ulp_flags[if_type]);
+ clear_bit(ULP_F_CALL_PENDING, &cp->ulp_flags[if_type]);
 }

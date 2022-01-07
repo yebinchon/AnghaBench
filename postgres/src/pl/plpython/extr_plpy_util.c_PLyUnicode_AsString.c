@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PLyUnicode_Bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyBytes_AsString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- char* pstrdup (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int * PLyUnicode_Bytes (int *) ;
+ int PyBytes_AsString (int *) ;
+ int Py_XDECREF (int *) ;
+ char* pstrdup (int ) ;
 
 char *
 PLyUnicode_AsString(PyObject *unicode)
 {
-	PyObject   *o = PLyUnicode_Bytes(unicode);
-	char	   *rv = pstrdup(PyBytes_AsString(o));
+ PyObject *o = PLyUnicode_Bytes(unicode);
+ char *rv = pstrdup(PyBytes_AsString(o));
 
-	Py_XDECREF(o);
-	return rv;
+ Py_XDECREF(o);
+ return rv;
 }

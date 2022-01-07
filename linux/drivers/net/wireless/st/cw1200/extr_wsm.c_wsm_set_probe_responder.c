@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int probeResponder; } ;
 struct cw1200_common {TYPE_1__ rx_filter; } ;
 
-/* Variables and functions */
- int wsm_set_rx_filter (struct cw1200_common*,TYPE_1__*) ; 
+
+ int wsm_set_rx_filter (struct cw1200_common*,TYPE_1__*) ;
 
 int wsm_set_probe_responder(struct cw1200_common *priv, bool enable)
 {
-	priv->rx_filter.probeResponder = enable;
-	return wsm_set_rx_filter(priv, &priv->rx_filter);
+ priv->rx_filter.probeResponder = enable;
+ return wsm_set_rx_filter(priv, &priv->rx_filter);
 }

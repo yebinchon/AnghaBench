@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- char* sysdecode_signal (int) ; 
+
+
+
+typedef int tmp ;
+
+
+ int snprintf (char*,int,char*,int) ;
+ char* sysdecode_signal (int) ;
 
 __attribute__((used)) static const char *
 strsig2(int sig)
 {
-	static char tmp[32];
-	const char *signame;
+ static char tmp[32];
+ const char *signame;
 
-	signame = sysdecode_signal(sig);
-	if (signame == NULL) {
-		snprintf(tmp, sizeof(tmp), "%d", sig);
-		signame = tmp;
-	}
-	return (signame);
+ signame = sysdecode_signal(sig);
+ if (signame == ((void*)0)) {
+  snprintf(tmp, sizeof(tmp), "%d", sig);
+  signame = tmp;
+ }
+ return (signame);
 }

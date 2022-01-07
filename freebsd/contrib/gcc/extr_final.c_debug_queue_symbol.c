@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * symbol_queue ; 
- int symbol_queue_index ; 
- int symbol_queue_size ; 
- int /*<<< orphan*/ * xrealloc (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int tree ;
+
+
+ int * symbol_queue ;
+ int symbol_queue_index ;
+ int symbol_queue_size ;
+ int * xrealloc (int *,int) ;
 
 void
 debug_queue_symbol (tree decl)
@@ -25,7 +25,7 @@ debug_queue_symbol (tree decl)
     {
       symbol_queue_size += 10;
       symbol_queue = xrealloc (symbol_queue,
-			       symbol_queue_size * sizeof (tree));
+          symbol_queue_size * sizeof (tree));
     }
 
   symbol_queue[symbol_queue_index++] = decl;

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ partitionMethod; int /*<<< orphan*/ ** sortedShardIntervalArray; TYPE_1__* partitionColumn; int /*<<< orphan*/  hashFunction; } ;
-struct TYPE_5__ {int /*<<< orphan*/  varcollid; } ;
-typedef  int /*<<< orphan*/  ShardInterval ;
-typedef  TYPE_2__ DistTableCacheEntry ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- scalar_t__ DISTRIBUTE_BY_HASH ; 
- int FindShardIntervalIndex (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  FunctionCall1Coll (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int INVALID_SHARD_INDEX ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ partitionMethod; int ** sortedShardIntervalArray; TYPE_1__* partitionColumn; int hashFunction; } ;
+struct TYPE_5__ {int varcollid; } ;
+typedef int ShardInterval ;
+typedef TYPE_2__ DistTableCacheEntry ;
+typedef int Datum ;
+
+
+ scalar_t__ DISTRIBUTE_BY_HASH ;
+ int FindShardIntervalIndex (int ,TYPE_2__*) ;
+ int FunctionCall1Coll (int ,int ,int ) ;
+ int INVALID_SHARD_INDEX ;
 
 ShardInterval *
 FindShardInterval(Datum partitionColumnValue, DistTableCacheEntry *cacheEntry)
 {
-	Datum searchedValue = partitionColumnValue;
-	int shardIndex = INVALID_SHARD_INDEX;
+ Datum searchedValue = partitionColumnValue;
+ int shardIndex = INVALID_SHARD_INDEX;
 
-	if (cacheEntry->partitionMethod == DISTRIBUTE_BY_HASH)
-	{
-		searchedValue = FunctionCall1Coll(cacheEntry->hashFunction,
-										  cacheEntry->partitionColumn->varcollid,
-										  partitionColumnValue);
-	}
+ if (cacheEntry->partitionMethod == DISTRIBUTE_BY_HASH)
+ {
+  searchedValue = FunctionCall1Coll(cacheEntry->hashFunction,
+            cacheEntry->partitionColumn->varcollid,
+            partitionColumnValue);
+ }
 
-	shardIndex = FindShardIntervalIndex(searchedValue, cacheEntry);
+ shardIndex = FindShardIntervalIndex(searchedValue, cacheEntry);
 
-	if (shardIndex == INVALID_SHARD_INDEX)
-	{
-		return NULL;
-	}
+ if (shardIndex == INVALID_SHARD_INDEX)
+ {
+  return ((void*)0);
+ }
 
-	return cacheEntry->sortedShardIntervalArray[shardIndex];
+ return cacheEntry->sortedShardIntervalArray[shardIndex];
 }

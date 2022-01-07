@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_7__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_17__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_20__ {char* data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_2__ ngx_str_t ;
-struct TYPE_21__ {uintptr_t data; int /*<<< orphan*/  get_handler; } ;
-typedef  TYPE_3__ ngx_http_variable_t ;
+
+
+typedef struct TYPE_25__ TYPE_7__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_17__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef size_t ngx_uint_t ;
+struct TYPE_20__ {char* data; int len; } ;
+typedef TYPE_2__ ngx_str_t ;
+struct TYPE_21__ {uintptr_t data; int get_handler; } ;
+typedef TYPE_3__ ngx_http_variable_t ;
 struct TYPE_22__ {int percent; } ;
-typedef  TYPE_4__ ngx_http_split_clients_part_t ;
+typedef TYPE_4__ ngx_http_split_clients_part_t ;
 struct TYPE_18__ {size_t nelts; TYPE_4__* elts; } ;
-struct TYPE_23__ {TYPE_17__ parts; int /*<<< orphan*/  value; } ;
-typedef  TYPE_5__ ngx_http_split_clients_ctx_t ;
-struct TYPE_24__ {int /*<<< orphan*/ * complex_value; TYPE_2__* value; TYPE_7__* cf; } ;
-typedef  TYPE_6__ ngx_http_compile_complex_value_t ;
-struct TYPE_25__ {void* handler_conf; int /*<<< orphan*/  handler; TYPE_5__* ctx; int /*<<< orphan*/  pool; TYPE_1__* args; } ;
-typedef  TYPE_7__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+struct TYPE_23__ {TYPE_17__ parts; int value; } ;
+typedef TYPE_5__ ngx_http_split_clients_ctx_t ;
+struct TYPE_24__ {int * complex_value; TYPE_2__* value; TYPE_7__* cf; } ;
+typedef TYPE_6__ ngx_http_compile_complex_value_t ;
+struct TYPE_25__ {void* handler_conf; int handler; TYPE_5__* ctx; int pool; TYPE_1__* args; } ;
+typedef TYPE_7__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_19__ {TYPE_2__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  NGX_HTTP_VAR_CHANGEABLE ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_array_init (TYPE_17__*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_7__*,int /*<<< orphan*/ ,char*,...) ; 
- char* ngx_conf_parse (TYPE_7__*,int /*<<< orphan*/ *) ; 
- TYPE_3__* ngx_http_add_variable (TYPE_7__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_http_compile_complex_value (TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_http_split_clients ; 
- int /*<<< orphan*/  ngx_http_split_clients_variable ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_6__*,int) ; 
- TYPE_5__* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_HTTP_VAR_CHANGEABLE ;
+ int NGX_LOG_EMERG ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_array_init (TYPE_17__*,int ,int,int) ;
+ int ngx_conf_log_error (int ,TYPE_7__*,int ,char*,...) ;
+ char* ngx_conf_parse (TYPE_7__*,int *) ;
+ TYPE_3__* ngx_http_add_variable (TYPE_7__*,TYPE_2__*,int ) ;
+ scalar_t__ ngx_http_compile_complex_value (TYPE_6__*) ;
+ int ngx_http_split_clients ;
+ int ngx_http_split_clients_variable ;
+ int ngx_memzero (TYPE_6__*,int) ;
+ TYPE_5__* ngx_pcalloc (int ,int) ;
 
 __attribute__((used)) static char *
 ngx_conf_split_clients_block(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    char                                *rv;
-    uint32_t                             sum, last;
-    ngx_str_t                           *value, name;
-    ngx_uint_t                           i;
-    ngx_conf_t                           save;
-    ngx_http_variable_t                 *var;
-    ngx_http_split_clients_ctx_t        *ctx;
-    ngx_http_split_clients_part_t       *part;
-    ngx_http_compile_complex_value_t     ccv;
+    char *rv;
+    uint32_t sum, last;
+    ngx_str_t *value, name;
+    ngx_uint_t i;
+    ngx_conf_t save;
+    ngx_http_variable_t *var;
+    ngx_http_split_clients_ctx_t *ctx;
+    ngx_http_split_clients_part_t *part;
+    ngx_http_compile_complex_value_t ccv;
 
     ctx = ngx_pcalloc(cf->pool, sizeof(ngx_http_split_clients_ctx_t));
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
@@ -95,7 +95,7 @@ ngx_conf_split_clients_block(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     name.data++;
 
     var = ngx_http_add_variable(cf, &name, NGX_HTTP_VAR_CHANGEABLE);
-    if (var == NULL) {
+    if (var == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
@@ -114,7 +114,7 @@ ngx_conf_split_clients_block(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     cf->handler = ngx_http_split_clients;
     cf->handler_conf = conf;
 
-    rv = ngx_conf_parse(cf, NULL);
+    rv = ngx_conf_parse(cf, ((void*)0));
 
     *cf = save;
 

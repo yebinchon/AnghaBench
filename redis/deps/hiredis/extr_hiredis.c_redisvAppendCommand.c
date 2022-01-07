@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  redisContext ;
 
-/* Variables and functions */
- int REDIS_ERR ; 
- int /*<<< orphan*/  REDIS_ERR_OOM ; 
- int /*<<< orphan*/  REDIS_ERR_OTHER ; 
- scalar_t__ REDIS_OK ; 
- scalar_t__ __redisAppendCommand (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  __redisSetError (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int redisvFormatCommand (char**,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+typedef int redisContext ;
+
+
+ int REDIS_ERR ;
+ int REDIS_ERR_OOM ;
+ int REDIS_ERR_OTHER ;
+ scalar_t__ REDIS_OK ;
+ scalar_t__ __redisAppendCommand (int *,char*,int) ;
+ int __redisSetError (int *,int ,char*) ;
+ int free (char*) ;
+ int redisvFormatCommand (char**,char const*,int ) ;
 
 int redisvAppendCommand(redisContext *c, const char *format, va_list ap) {
     char *cmd;

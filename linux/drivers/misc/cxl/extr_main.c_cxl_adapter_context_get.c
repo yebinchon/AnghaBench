@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cxl {int /*<<< orphan*/  contexts_num; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int atomic_inc_unless_negative (int /*<<< orphan*/ *) ; 
+
+
+
+struct cxl {int contexts_num; } ;
+
+
+ int EBUSY ;
+ int atomic_inc_unless_negative (int *) ;
 
 int cxl_adapter_context_get(struct cxl *adapter)
 {
-	int rc;
+ int rc;
 
-	rc = atomic_inc_unless_negative(&adapter->contexts_num);
-	return rc ? 0 : -EBUSY;
+ rc = atomic_inc_unless_negative(&adapter->contexts_num);
+ return rc ? 0 : -EBUSY;
 }

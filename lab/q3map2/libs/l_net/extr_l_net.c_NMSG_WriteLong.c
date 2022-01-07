@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int size; int* data; } ;
-typedef  TYPE_1__ netmessage_t ;
+typedef TYPE_1__ netmessage_t ;
 
-/* Variables and functions */
- int MAX_NETMESSAGE ; 
- int /*<<< orphan*/  WinPrint (char*) ; 
+
+ int MAX_NETMESSAGE ;
+ int WinPrint (char*) ;
 
 void NMSG_WriteLong( netmessage_t *msg, int c ){
-	if ( msg->size + 4 >= MAX_NETMESSAGE ) {
-		WinPrint( "NMSG_WriteLong: overflow\n" );
-		return;
-	} //end if
-	msg->data[msg->size] = c & 0xff;
-	msg->data[msg->size + 1] = ( c >> 8 ) & 0xff;
-	msg->data[msg->size + 2] = ( c >> 16 ) & 0xff;
-	msg->data[msg->size + 3] = c >> 24;
-	msg->size += 4;
+ if ( msg->size + 4 >= MAX_NETMESSAGE ) {
+  WinPrint( "NMSG_WriteLong: overflow\n" );
+  return;
+ }
+ msg->data[msg->size] = c & 0xff;
+ msg->data[msg->size + 1] = ( c >> 8 ) & 0xff;
+ msg->data[msg->size + 2] = ( c >> 16 ) & 0xff;
+ msg->data[msg->size + 3] = c >> 24;
+ msg->size += 4;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct pollfd {int fd; scalar_t__ revents; scalar_t__ events; } ;
-typedef  size_t ssize_t ;
-struct TYPE_6__ {size_t slot; int flags; int fd; int socktype; struct TYPE_6__* next; int /*<<< orphan*/ * client_host; int /*<<< orphan*/ * client_port; int /*<<< orphan*/ * client_ip; int /*<<< orphan*/ * snd_callback; int /*<<< orphan*/ * rcv_callback; int /*<<< orphan*/  (* del_callback ) (TYPE_2__*) ;int /*<<< orphan*/ * data; TYPE_1__* p; } ;
-struct TYPE_5__ {size_t max; size_t min; TYPE_2__* first_free; int /*<<< orphan*/  used; int /*<<< orphan*/  slots; struct pollfd* fds; } ;
-typedef  TYPE_1__ POLLJOB ;
-typedef  TYPE_2__ POLLINFO ;
+typedef size_t ssize_t ;
+struct TYPE_6__ {size_t slot; int flags; int fd; int socktype; struct TYPE_6__* next; int * client_host; int * client_port; int * client_ip; int * snd_callback; int * rcv_callback; int (* del_callback ) (TYPE_2__*) ;int * data; TYPE_1__* p; } ;
+struct TYPE_5__ {size_t max; size_t min; TYPE_2__* first_free; int used; int slots; struct pollfd* fds; } ;
+typedef TYPE_1__ POLLJOB ;
+typedef TYPE_2__ POLLINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_POLLFD ; 
- int POLLINFO_FLAG_CLIENT_SOCKET ; 
- int POLLINFO_FLAG_DONT_CLOSE ; 
- int close (int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,size_t,int,size_t,...) ; 
- int /*<<< orphan*/  error (char*,int) ; 
- int /*<<< orphan*/  freez (int /*<<< orphan*/ *) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  netdata_thread_disable_cancelability () ; 
- int /*<<< orphan*/  netdata_thread_enable_cancelability () ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_POLLFD ;
+ int POLLINFO_FLAG_CLIENT_SOCKET ;
+ int POLLINFO_FLAG_DONT_CLOSE ;
+ int close (int) ;
+ int debug (int ,char*,size_t,int,size_t,...) ;
+ int error (char*,int) ;
+ int freez (int *) ;
+ scalar_t__ likely (int) ;
+ int netdata_thread_disable_cancelability () ;
+ int netdata_thread_enable_cancelability () ;
+ int stub1 (TYPE_2__*) ;
+ scalar_t__ unlikely (int) ;
 
 inline void poll_close_fd(POLLINFO *pi) {
     POLLJOB *p = pi->p;
@@ -59,20 +59,20 @@ inline void poll_close_fd(POLLINFO *pi) {
     pi->fd = -1;
     pi->socktype = -1;
     pi->flags = 0;
-    pi->data = NULL;
+    pi->data = ((void*)0);
 
-    pi->del_callback = NULL;
-    pi->rcv_callback = NULL;
-    pi->snd_callback = NULL;
+    pi->del_callback = ((void*)0);
+    pi->rcv_callback = ((void*)0);
+    pi->snd_callback = ((void*)0);
 
     freez(pi->client_ip);
-    pi->client_ip = NULL;
+    pi->client_ip = ((void*)0);
 
     freez(pi->client_port);
-    pi->client_port = NULL;
+    pi->client_port = ((void*)0);
 
     freez(pi->client_host);
-    pi->client_host = NULL;
+    pi->client_host = ((void*)0);
 
     pi->next = p->first_free;
     p->first_free = pi;

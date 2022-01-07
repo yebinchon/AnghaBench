@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  key; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * supportCollation; int /*<<< orphan*/ * fetchFn; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  OffsetNumber ;
-typedef  TYPE_1__ GISTSTATE ;
-typedef  TYPE_2__ GISTENTRY ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- scalar_t__ DatumGetPointer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FunctionCall1Coll (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PointerGetDatum (TYPE_2__*) ; 
- int /*<<< orphan*/  gistentryinit (TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int key; } ;
+struct TYPE_6__ {int * supportCollation; int * fetchFn; } ;
+typedef int Relation ;
+typedef int OffsetNumber ;
+typedef TYPE_1__ GISTSTATE ;
+typedef TYPE_2__ GISTENTRY ;
+typedef int Datum ;
+
+
+ scalar_t__ DatumGetPointer (int ) ;
+ int FunctionCall1Coll (int *,int ,int ) ;
+ int PointerGetDatum (TYPE_2__*) ;
+ int gistentryinit (TYPE_2__,int ,int ,int *,int ,int) ;
 
 __attribute__((used)) static Datum
 gistFetchAtt(GISTSTATE *giststate, int nkey, Datum k, Relation r)
 {
-	GISTENTRY	fentry;
-	GISTENTRY  *fep;
+ GISTENTRY fentry;
+ GISTENTRY *fep;
 
-	gistentryinit(fentry, k, r, NULL, (OffsetNumber) 0, false);
+ gistentryinit(fentry, k, r, ((void*)0), (OffsetNumber) 0, 0);
 
-	fep = (GISTENTRY *)
-		DatumGetPointer(FunctionCall1Coll(&giststate->fetchFn[nkey],
-										  giststate->supportCollation[nkey],
-										  PointerGetDatum(&fentry)));
+ fep = (GISTENTRY *)
+  DatumGetPointer(FunctionCall1Coll(&giststate->fetchFn[nkey],
+            giststate->supportCollation[nkey],
+            PointerGetDatum(&fentry)));
 
-	/* fetchFn set 'key', return it to the caller */
-	return fep->key;
+
+ return fep->key;
 }

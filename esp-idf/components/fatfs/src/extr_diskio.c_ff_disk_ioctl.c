@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DRESULT ;
-typedef  int BYTE ;
 
-/* Variables and functions */
-#define  DEV_MMC 130 
-#define  DEV_RAM 129 
-#define  DEV_USB 128 
- int /*<<< orphan*/  RES_PARERR ; 
+
+
+
+typedef int DRESULT ;
+typedef int BYTE ;
+
+
+
+
+
+ int RES_PARERR ;
 
 DRESULT disk_ioctl (
-	BYTE pdrv,		/* Physical drive nmuber (0..) */
-	BYTE cmd,		/* Control code */
-	void *buff		/* Buffer to send/receive control data */
+ BYTE pdrv,
+ BYTE cmd,
+ void *buff
 )
 {
-	DRESULT res;
-	int result;
+ DRESULT res;
+ int result;
 
-	switch (pdrv) {
-	case DEV_RAM :
+ switch (pdrv) {
+ case 129 :
 
-		// Process of the command for the RAM drive
 
-		return res;
 
-	case DEV_MMC :
+  return res;
 
-		// Process of the command for the MMC/SD card
+ case 130 :
 
-		return res;
 
-	case DEV_USB :
 
-		// Process of the command the USB drive
+  return res;
 
-		return res;
-	}
+ case 128 :
 
-	return RES_PARERR;
+
+
+  return res;
+ }
+
+ return RES_PARERR;
 }

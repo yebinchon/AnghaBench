@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUriBuilder ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateIUriBuilder (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUriBuilder_CreateUriSimple (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUriBuilder_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUriBuilder_RemoveProperties (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUri_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUri_HasProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Uri_HAS_FRAGMENT ; 
- int /*<<< orphan*/  Uri_PROPERTY_FRAGMENT ; 
+
+
+
+typedef int IUriBuilder ;
+typedef int IUri ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ int CreateIUriBuilder (int *,int ,int ,int **) ;
+ scalar_t__ FAILED (int ) ;
+ int IUriBuilder_CreateUriSimple (int *,int ,int ,int **) ;
+ int IUriBuilder_Release (int *) ;
+ int IUriBuilder_RemoveProperties (int *,int ) ;
+ int IUri_AddRef (int *) ;
+ int IUri_HasProperty (int *,int ,int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int Uri_HAS_FRAGMENT ;
+ int Uri_PROPERTY_FRAGMENT ;
 
 IUri *get_uri_nofrag(IUri *uri)
 {
@@ -42,14 +42,14 @@ IUri *get_uri_nofrag(IUri *uri)
 
     hres = CreateIUriBuilder(uri, 0, 0, &uri_builder);
     if(FAILED(hres))
-        return NULL;
+        return ((void*)0);
 
     hres = IUriBuilder_RemoveProperties(uri_builder, Uri_HAS_FRAGMENT);
     if(SUCCEEDED(hres))
         hres = IUriBuilder_CreateUriSimple(uri_builder, 0, 0, &ret);
     IUriBuilder_Release(uri_builder);
     if(FAILED(hres))
-        return NULL;
+        return ((void*)0);
 
     return ret;
 }

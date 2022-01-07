@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- void* AV_RN32 (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+
+
+ void* AV_RN32 (int const*) ;
 
 void ff_put_no_rnd_pixels8_xy2_8_mmi(uint8_t *block, const uint8_t *pixels,
     ptrdiff_t line_size, int h)
 {
-    /* FIXME HIGH BIT DEPTH */
+
     int j;
 
     for (j = 0; j < 2; j++) {
@@ -44,9 +44,9 @@ void ff_put_no_rnd_pixels8_xy2_8_mmi(uint8_t *block, const uint8_t *pixels,
                  ((b & 0xFCFCFCFCUL) >> 2);
             *((uint32_t *) block) = h0 + h1 + (((l0 + l1) >> 2) & 0x0F0F0F0FUL);
             pixels += line_size;
-            block  += line_size;
-            a  = AV_RN32(pixels);
-            b  = AV_RN32(pixels + 1);
+            block += line_size;
+            a = AV_RN32(pixels);
+            b = AV_RN32(pixels + 1);
             l0 = (a & 0x03030303UL) +
                  (b & 0x03030303UL) +
                       0x01010101UL;
@@ -54,9 +54,9 @@ void ff_put_no_rnd_pixels8_xy2_8_mmi(uint8_t *block, const uint8_t *pixels,
                  ((b & 0xFCFCFCFCUL) >> 2);
             *((uint32_t *) block) = h0 + h1 + (((l0 + l1) >> 2) & 0x0F0F0F0FUL);
             pixels += line_size;
-            block  += line_size;
+            block += line_size;
         }
         pixels += 4 - line_size * (h + 1);
-        block  += 4 - line_size * h;
+        block += 4 - line_size * h;
     }
 }

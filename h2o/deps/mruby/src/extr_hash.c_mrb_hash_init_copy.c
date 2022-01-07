@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct RHash {int /*<<< orphan*/  flags; int /*<<< orphan*/  ht; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_11__ {int /*<<< orphan*/  hash_class; } ;
-typedef  TYPE_1__ mrb_state ;
-typedef  int /*<<< orphan*/  htable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  MRB_HASH_DEFAULT ; 
- int /*<<< orphan*/  MRB_HASH_PROC_DEFAULT ; 
- scalar_t__ MRB_RHASH_DEFAULT_P (int /*<<< orphan*/ ) ; 
- scalar_t__ MRB_RHASH_PROCDEFAULT_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MRB_TT_HASH ; 
- int /*<<< orphan*/  RHASH_IFNONE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RHASH_TBL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ht_copy (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrb_iv_set (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_p (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_alloc (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_class (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_equal (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RHash*) ; 
- int /*<<< orphan*/  mrb_raise (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ mrb_type (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct RHash {int flags; int ht; } ;
+typedef int mrb_value ;
+struct TYPE_11__ {int hash_class; } ;
+typedef TYPE_1__ mrb_state ;
+typedef int htable ;
+
+
+ int E_TYPE_ERROR ;
+ int MRB_HASH_DEFAULT ;
+ int MRB_HASH_PROC_DEFAULT ;
+ scalar_t__ MRB_RHASH_DEFAULT_P (int ) ;
+ scalar_t__ MRB_RHASH_PROCDEFAULT_P (int ) ;
+ int MRB_TT_HASH ;
+ int RHASH_IFNONE (int ) ;
+ int * RHASH_TBL (int ) ;
+ int ht_copy (TYPE_1__*,int *) ;
+ int mrb_get_args (TYPE_1__*,char*,int *) ;
+ int mrb_intern_lit (TYPE_1__*,char*) ;
+ int mrb_iv_set (TYPE_1__*,int ,int ,int ) ;
+ int mrb_nil_p (int ) ;
+ scalar_t__ mrb_obj_alloc (TYPE_1__*,int ,int ) ;
+ scalar_t__ mrb_obj_class (TYPE_1__*,int ) ;
+ scalar_t__ mrb_obj_equal (TYPE_1__*,int ,int ) ;
+ int mrb_obj_value (struct RHash*) ;
+ int mrb_raise (TYPE_1__*,int ,char*) ;
+ scalar_t__ mrb_type (int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_hash_init_copy(mrb_state *mrb, mrb_value self)

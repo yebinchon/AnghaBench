@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_1__* o_tree; int /*<<< orphan*/  metafile_index; } ;
-typedef  TYPE_2__ list_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_1__* o_tree; int metafile_index; } ;
+typedef TYPE_2__ list_t ;
 struct TYPE_6__ {scalar_t__ delta; } ;
 
-/* Variables and functions */
- TYPE_2__ DummyList ; 
- scalar_t__ M_tot_entries ; 
- scalar_t__ metafile_mode ; 
- int /*<<< orphan*/  prepare_list_metafile_num (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unpack_metafile_pointers (TYPE_2__*) ; 
+
+ TYPE_2__ DummyList ;
+ scalar_t__ M_tot_entries ;
+ scalar_t__ metafile_mode ;
+ int prepare_list_metafile_num (int ,int) ;
+ int unpack_metafile_pointers (TYPE_2__*) ;
 
 int report_one (list_t *L) {
   if (metafile_mode) {

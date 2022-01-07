@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float* ff_aac_pow2sf_tab ; 
- float* ff_aac_pow34sf_tab ; 
+ float* ff_aac_pow2sf_tab ;
+ float* ff_aac_pow34sf_tab ;
 
 __attribute__((used)) static inline void ff_aac_tableinit(void)
 {
     int i;
 
-    /* 2^(i/16) for 0 <= i <= 15 */
+
     static const float exp2_lut[] = {
         1.00000000000000000000,
         1.04427378242741384032,
@@ -38,8 +30,8 @@ __attribute__((used)) static inline void ff_aac_tableinit(void)
         1.83400808640934246349,
         1.91520656139714729387,
     };
-    float t1 = 8.8817841970012523233890533447265625e-16; // 2^(-50)
-    float t2 = 3.63797880709171295166015625e-12; // 2^(-38)
+    float t1 = 8.8817841970012523233890533447265625e-16;
+    float t2 = 3.63797880709171295166015625e-12;
     int t1_inc_cur, t2_inc_cur;
     int t1_inc_prev = 0;
     int t2_inc_prev = 8;
@@ -51,9 +43,9 @@ __attribute__((used)) static inline void ff_aac_tableinit(void)
             t1 *= 2;
         if (t2_inc_cur < t2_inc_prev)
             t2 *= 2;
-        // A much more efficient and accurate way of doing:
-        // ff_aac_pow2sf_tab[i] = pow(2, (i - POW_SF2_ZERO) / 4.0);
-        // ff_aac_pow34sf_tab[i] = pow(ff_aac_pow2sf_tab[i], 3.0/4.0);
+
+
+
         ff_aac_pow2sf_tab[i] = t1 * exp2_lut[t1_inc_cur];
         ff_aac_pow34sf_tab[i] = t2 * exp2_lut[t2_inc_cur];
         t1_inc_prev = t1_inc_cur;

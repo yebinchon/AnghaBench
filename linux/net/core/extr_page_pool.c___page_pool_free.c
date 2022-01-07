@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int flags; int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int flags; int dev; } ;
 struct TYPE_3__ {int count; } ;
-struct page_pool {TYPE_2__ p; int /*<<< orphan*/  ring; TYPE_1__ alloc; } ;
+struct page_pool {TYPE_2__ p; int ring; TYPE_1__ alloc; } ;
 
-/* Variables and functions */
- int PP_FLAG_DMA_MAP ; 
- int /*<<< orphan*/  WARN (int,char*) ; 
- int /*<<< orphan*/  __page_pool_safe_to_destroy (struct page_pool*) ; 
- int /*<<< orphan*/  __warn_in_flight (struct page_pool*) ; 
- int /*<<< orphan*/  kfree (struct page_pool*) ; 
- int /*<<< orphan*/  page_pool_put (struct page_pool*) ; 
- int /*<<< orphan*/  ptr_ring_cleanup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ptr_ring_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ ) ; 
+
+ int PP_FLAG_DMA_MAP ;
+ int WARN (int,char*) ;
+ int __page_pool_safe_to_destroy (struct page_pool*) ;
+ int __warn_in_flight (struct page_pool*) ;
+ int kfree (struct page_pool*) ;
+ int page_pool_put (struct page_pool*) ;
+ int ptr_ring_cleanup (int *,int *) ;
+ int ptr_ring_empty (int *) ;
+ int put_device (int ) ;
 
 void __page_pool_free(struct page_pool *pool)
 {
-	/* Only last user actually free/release resources */
-	if (!page_pool_put(pool))
-		return;
 
-	WARN(pool->alloc.count, "API usage violation");
-	WARN(!ptr_ring_empty(&pool->ring), "ptr_ring is not empty");
+ if (!page_pool_put(pool))
+  return;
 
-	/* Can happen due to forced shutdown */
-	if (!__page_pool_safe_to_destroy(pool))
-		__warn_in_flight(pool);
+ WARN(pool->alloc.count, "API usage violation");
+ WARN(!ptr_ring_empty(&pool->ring), "ptr_ring is not empty");
 
-	ptr_ring_cleanup(&pool->ring, NULL);
 
-	if (pool->p.flags & PP_FLAG_DMA_MAP)
-		put_device(pool->p.dev);
+ if (!__page_pool_safe_to_destroy(pool))
+  __warn_in_flight(pool);
 
-	kfree(pool);
+ ptr_ring_cleanup(&pool->ring, ((void*)0));
+
+ if (pool->p.flags & PP_FLAG_DMA_MAP)
+  put_device(pool->p.dev);
+
+ kfree(pool);
 }

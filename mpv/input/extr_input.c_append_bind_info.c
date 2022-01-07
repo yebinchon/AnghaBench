@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mp_cmd {int /*<<< orphan*/  original; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mp_cmd {int original; } ;
 struct input_ctx {int dummy; } ;
-struct cmd_bind {scalar_t__ is_builtin; int /*<<< orphan*/  location; TYPE_1__* owner; int /*<<< orphan*/  cmd; } ;
-typedef  int /*<<< orphan*/  bstr ;
-struct TYPE_2__ {int /*<<< orphan*/  section; } ;
+struct cmd_bind {scalar_t__ is_builtin; int location; TYPE_1__* owner; int cmd; } ;
+typedef int bstr ;
+struct TYPE_2__ {int section; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bstr0 (int /*<<< orphan*/ ) ; 
- struct mp_cmd* mp_input_parse_cmd (struct input_ctx*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- char* talloc_asprintf_append (char*,char*,...) ; 
- int /*<<< orphan*/  talloc_free (struct mp_cmd*) ; 
+
+ int BSTR_P (int ) ;
+ int bstr0 (int ) ;
+ struct mp_cmd* mp_input_parse_cmd (struct input_ctx*,int ,int ) ;
+ scalar_t__ strcmp (int ,char*) ;
+ char* talloc_asprintf_append (char*,char*,...) ;
+ int talloc_free (struct mp_cmd*) ;
 
 __attribute__((used)) static void append_bind_info(struct input_ctx *ictx, char **pmsg,
                              struct cmd_bind *bind)

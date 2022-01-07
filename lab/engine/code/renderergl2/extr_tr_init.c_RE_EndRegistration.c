@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* Sys_LowPhysicalMemory ) () ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RB_ShowImages () ; 
- int /*<<< orphan*/  R_IssuePendingRenderCommands () ; 
- TYPE_1__ ri ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* Sys_LowPhysicalMemory ) () ;} ;
+
+
+ int RB_ShowImages () ;
+ int R_IssuePendingRenderCommands () ;
+ TYPE_1__ ri ;
+ int stub1 () ;
 
 void RE_EndRegistration( void ) {
-	R_IssuePendingRenderCommands();
-	if (!ri.Sys_LowPhysicalMemory()) {
-		RB_ShowImages();
-	}
+ R_IssuePendingRenderCommands();
+ if (!ri.Sys_LowPhysicalMemory()) {
+  RB_ShowImages();
+ }
 }

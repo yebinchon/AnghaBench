@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WebPInfoStatus ;
 struct TYPE_4__ {int quiet_; int show_diagnosis_; int show_summary_; int parse_bitstream_; } ;
-typedef  TYPE_1__ WebPInfo ;
-typedef  int /*<<< orphan*/  WebPData ;
-typedef  int /*<<< orphan*/  W_CHAR ;
+typedef TYPE_1__ WebPInfo ;
+typedef int WebPData ;
+typedef int W_CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AnalyzeWebP (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FREE_WARGV_AND_RETURN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GET_WARGV (char const**,int) ; 
- int /*<<< orphan*/  HelpLong () ; 
- int /*<<< orphan*/  HelpShort () ; 
- int /*<<< orphan*/  INIT_WARGV (int,char const**) ; 
- int /*<<< orphan*/  ReadFileToWebPData (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WEBP_INFO_INVALID_COMMAND ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WFPRINTF (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WPRINTF (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  WebPDataClear (int /*<<< orphan*/ *) ; 
- int WebPGetDecoderVersion () ; 
- int /*<<< orphan*/  WebPInfoInit (TYPE_1__*) ; 
- int /*<<< orphan*/  printf (char*,int const,int const,int const) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int AnalyzeWebP (TYPE_1__*,int *) ;
+ int FREE_WARGV_AND_RETURN (int ) ;
+ int * GET_WARGV (char const**,int) ;
+ int HelpLong () ;
+ int HelpShort () ;
+ int INIT_WARGV (int,char const**) ;
+ int ReadFileToWebPData (char const*,int *) ;
+ int WEBP_INFO_INVALID_COMMAND ;
+ int WEBP_INFO_OK ;
+ int WFPRINTF (int ,char*,int const*) ;
+ int WPRINTF (char*,int const*) ;
+ int WebPDataClear (int *) ;
+ int WebPGetDecoderVersion () ;
+ int WebPInfoInit (TYPE_1__*) ;
+ int printf (char*,int const,int const,int const) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
 
 int main(int argc, const char* argv[]) {
   int c, quiet = 0, show_diag = 0, show_summary = 0;
@@ -49,7 +49,7 @@ int main(int argc, const char* argv[]) {
     FREE_WARGV_AND_RETURN(WEBP_INFO_OK);
   }
 
-  // Parse command-line input.
+
   for (c = 1; c < argc; ++c) {
     if (!strcmp(argv[c], "-h") || !strcmp(argv[c], "-help")) {
       HelpShort();
@@ -70,7 +70,7 @@ int main(int argc, const char* argv[]) {
       printf("WebP Decoder version: %d.%d.%d\n",
              (version >> 16) & 0xff, (version >> 8) & 0xff, version & 0xff);
       FREE_WARGV_AND_RETURN(0);
-    } else {  // Assume the remaining are all input files.
+    } else {
       break;
     }
   }
@@ -80,17 +80,17 @@ int main(int argc, const char* argv[]) {
     FREE_WARGV_AND_RETURN(WEBP_INFO_INVALID_COMMAND);
   }
 
-  // Process input files one by one.
+
   for (; c < argc; ++c) {
     WebPData webp_data;
-    const W_CHAR* in_file = NULL;
+    const W_CHAR* in_file = ((void*)0);
     WebPInfoInit(&webp_info);
     webp_info.quiet_ = quiet;
     webp_info.show_diagnosis_ = show_diag;
     webp_info.show_summary_ = show_summary;
     webp_info.parse_bitstream_ = parse_bitstream;
     in_file = GET_WARGV(argv, c);
-    if (in_file == NULL ||
+    if (in_file == ((void*)0) ||
         !ReadFileToWebPData((const char*)in_file, &webp_data)) {
       webp_info_status = WEBP_INFO_INVALID_COMMAND;
       WFPRINTF(stderr, "Failed to open input file %s.\n", in_file);

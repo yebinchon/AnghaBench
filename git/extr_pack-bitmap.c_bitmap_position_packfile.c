@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct object_id {int /*<<< orphan*/  hash; } ;
-struct bitmap_index {int /*<<< orphan*/  pack; } ;
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  find_pack_entry_one (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int find_revindex_position (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct object_id {int hash; } ;
+struct bitmap_index {int pack; } ;
+typedef int off_t ;
+
+
+ int find_pack_entry_one (int ,int ) ;
+ int find_revindex_position (int ,int ) ;
 
 __attribute__((used)) static inline int bitmap_position_packfile(struct bitmap_index *bitmap_git,
-					   const struct object_id *oid)
+        const struct object_id *oid)
 {
-	off_t offset = find_pack_entry_one(oid->hash, bitmap_git->pack);
-	if (!offset)
-		return -1;
+ off_t offset = find_pack_entry_one(oid->hash, bitmap_git->pack);
+ if (!offset)
+  return -1;
 
-	return find_revindex_position(bitmap_git->pack, offset);
+ return find_revindex_position(bitmap_git->pack, offset);
 }

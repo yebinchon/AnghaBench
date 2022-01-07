@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ppnum_t ;
-typedef  int /*<<< orphan*/  pmap_paddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK_PVH (int) ; 
- scalar_t__ pa_index (int /*<<< orphan*/ ) ; 
- scalar_t__ pa_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phys_backup_lock ; 
- int /*<<< orphan*/  ptoa (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simple_lock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ppnum_t ;
+typedef int pmap_paddr_t ;
+
+
+ int LOCK_PVH (int) ;
+ scalar_t__ pa_index (int ) ;
+ scalar_t__ pa_valid (int ) ;
+ int phys_backup_lock ;
+ int ptoa (int ) ;
+ int simple_lock (int *) ;
 
 void
 pmap_lock_phys_page(ppnum_t pn)
 {
-	int             pai;
-	pmap_paddr_t	phys = ptoa(pn);
+ int pai;
+ pmap_paddr_t phys = ptoa(pn);
 
-	if (pa_valid(phys)) {
-		pai = (int)pa_index(phys);
-		LOCK_PVH(pai);
-	} else
-	simple_lock(&phys_backup_lock);
+ if (pa_valid(phys)) {
+  pai = (int)pa_index(phys);
+  LOCK_PVH(pai);
+ } else
+ simple_lock(&phys_backup_lock);
 }

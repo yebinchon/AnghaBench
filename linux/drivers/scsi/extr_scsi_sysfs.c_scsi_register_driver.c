@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device_driver {int /*<<< orphan*/ * bus; } ;
 
-/* Variables and functions */
- int driver_register (struct device_driver*) ; 
- int /*<<< orphan*/  scsi_bus_type ; 
+
+
+
+struct device_driver {int * bus; } ;
+
+
+ int driver_register (struct device_driver*) ;
+ int scsi_bus_type ;
 
 int scsi_register_driver(struct device_driver *drv)
 {
-	drv->bus = &scsi_bus_type;
+ drv->bus = &scsi_bus_type;
 
-	return driver_register(drv);
+ return driver_register(drv);
 }

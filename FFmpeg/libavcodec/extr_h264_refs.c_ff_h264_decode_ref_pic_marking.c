@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ type; } ;
 struct TYPE_8__ {int explicit_ref_marking; int curr_pic_num; int max_pic_num; int nb_mmco; TYPE_1__* mmco; } ;
 struct TYPE_7__ {unsigned int long_arg; int short_pic_num; scalar_t__ opcode; } ;
-typedef  scalar_t__ MMCOOpcode ;
-typedef  TYPE_1__ MMCO ;
-typedef  TYPE_2__ H264SliceContext ;
-typedef  TYPE_3__ H2645NAL ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef scalar_t__ MMCOOpcode ;
+typedef TYPE_1__ MMCO ;
+typedef TYPE_2__ H264SliceContext ;
+typedef TYPE_3__ H2645NAL ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ FIELD_PICTURE (TYPE_2__*) ; 
- scalar_t__ H264_NAL_IDR_SLICE ; 
- int MAX_MMCO_COUNT ; 
- scalar_t__ MMCO_END ; 
- scalar_t__ MMCO_LONG ; 
- scalar_t__ MMCO_LONG2UNUSED ; 
- scalar_t__ MMCO_SET_MAX_LONG ; 
- scalar_t__ MMCO_SHORT2LONG ; 
- scalar_t__ MMCO_SHORT2UNUSED ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int get_bits1 (int /*<<< orphan*/ *) ; 
- void* get_ue_golomb_31 (int /*<<< orphan*/ *) ; 
- int get_ue_golomb_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+ int AV_LOG_ERROR ;
+ scalar_t__ FIELD_PICTURE (TYPE_2__*) ;
+ scalar_t__ H264_NAL_IDR_SLICE ;
+ int MAX_MMCO_COUNT ;
+ scalar_t__ MMCO_END ;
+ scalar_t__ MMCO_LONG ;
+ scalar_t__ MMCO_LONG2UNUSED ;
+ scalar_t__ MMCO_SET_MAX_LONG ;
+ scalar_t__ MMCO_SHORT2LONG ;
+ scalar_t__ MMCO_SHORT2UNUSED ;
+ int av_log (void*,int ,char*,scalar_t__) ;
+ int get_bits1 (int *) ;
+ void* get_ue_golomb_31 (int *) ;
+ int get_ue_golomb_long (int *) ;
+ int skip_bits1 (int *) ;
 
 int ff_h264_decode_ref_pic_marking(H264SliceContext *sl, GetBitContext *gb,
                                    const H2645NAL *nal, void *logctx)
@@ -46,12 +46,12 @@ int ff_h264_decode_ref_pic_marking(H264SliceContext *sl, GetBitContext *gb,
     MMCO *mmco = sl->mmco;
     int nb_mmco = 0;
 
-    if (nal->type == H264_NAL_IDR_SLICE) { // FIXME fields
-        skip_bits1(gb); // broken_link
+    if (nal->type == H264_NAL_IDR_SLICE) {
+        skip_bits1(gb);
         if (get_bits1(gb)) {
-            mmco[0].opcode   = MMCO_LONG;
+            mmco[0].opcode = MMCO_LONG;
             mmco[0].long_arg = 0;
-            nb_mmco          = 1;
+            nb_mmco = 1;
         }
         sl->explicit_ref_marking = 1;
     } else {

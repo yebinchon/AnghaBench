@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct s5p_mfc_codec_ops {int dummy; } ;
 
-/* Variables and functions */
- struct s5p_mfc_codec_ops const decoder_codec_ops ; 
+
+ struct s5p_mfc_codec_ops const decoder_codec_ops ;
 
 const struct s5p_mfc_codec_ops *get_dec_codec_ops(void)
 {
-	return &decoder_codec_ops;
+ return &decoder_codec_ops;
 }

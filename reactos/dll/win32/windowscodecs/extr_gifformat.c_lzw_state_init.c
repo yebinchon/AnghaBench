@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lzw_state {short init_code_bits; int clear_code; int eof_code; void* user_ptr; void* user_write_data; scalar_t__ bits_count; scalar_t__ bits_buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lzw_dict_reset (struct lzw_state*) ; 
+
+ int lzw_dict_reset (struct lzw_state*) ;
 
 __attribute__((used)) static void lzw_state_init(struct lzw_state *state, short init_code_bits, void *user_write_data, void *user_ptr)
 {

@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  check_pidfile (char const*) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int pidfile (char const*) ; 
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int check_pidfile (char const*) ;
+ int errx (int ,char*,char const*) ;
+ int exit (int ) ;
+ int pidfile (char const*) ;
 
 __attribute__((used)) static void
 helper_custom_path(const char *path)
 {
 
-	if (pidfile(path) == -1)
-		errx(EXIT_FAILURE, "Failed to create pidfile '%s'", path);
-	check_pidfile(path);
-	exit(EXIT_SUCCESS);
+ if (pidfile(path) == -1)
+  errx(EXIT_FAILURE, "Failed to create pidfile '%s'", path);
+ check_pidfile(path);
+ exit(EXIT_SUCCESS);
 }

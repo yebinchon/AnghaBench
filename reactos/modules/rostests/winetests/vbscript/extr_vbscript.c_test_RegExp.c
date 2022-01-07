@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int ULONG ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ISubMatches ;
-typedef  int /*<<< orphan*/  IRegExp2 ;
-typedef  int /*<<< orphan*/  IMatchCollection2 ;
-typedef  int /*<<< orphan*/  IMatch2 ;
-typedef  int /*<<< orphan*/  IEnumVARIANT ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int CLSCTX_INPROC_HANDLER ; 
- int CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_VBScriptRegExp ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,void**) ; 
- int E_INVALIDARG ; 
- int E_NOINTERFACE ; 
- int E_POINTER ; 
- int IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int IEnumVARIANT_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IEnumVARIANT_Release (int /*<<< orphan*/ *) ; 
- int IEnumVARIANT_Skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  IID_IEnumVARIANT ; 
- int /*<<< orphan*/  IID_IMatch ; 
- int /*<<< orphan*/  IID_IMatch2 ; 
- int /*<<< orphan*/  IID_IMatchCollection ; 
- int /*<<< orphan*/  IID_IMatchCollection2 ; 
- int /*<<< orphan*/  IID_IRegExp ; 
- int /*<<< orphan*/  IID_IRegExp2 ; 
- int /*<<< orphan*/  IID_ISubMatches ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int IMatch2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMatch2_Release (int /*<<< orphan*/ *) ; 
- int IMatch2_get_FirstIndex (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IMatch2_get_Length (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IMatch2_get_SubMatches (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IMatch2_get_Value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IMatchCollection2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMatchCollection2_Release (int /*<<< orphan*/ *) ; 
- int IMatchCollection2_get_Count (int /*<<< orphan*/ *,int*) ; 
- int IMatchCollection2_get_Item (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int IMatchCollection2_get__NewEnum (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IRegExp2_Execute (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int IRegExp2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IRegExp2_Release (int /*<<< orphan*/ *) ; 
- int IRegExp2_get_Global (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IRegExp2_get_IgnoreCase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IRegExp2_get_Pattern (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ISubMatches_Release (int /*<<< orphan*/ *) ; 
- int ISubMatches_get_Count (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ISubMatches_get_Item (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int REGDB_E_CLASSNOTREG ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int VARIANT ;
+typedef int ULONG ;
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int ISubMatches ;
+typedef int IRegExp2 ;
+typedef int IMatchCollection2 ;
+typedef int IMatch2 ;
+typedef int IEnumVARIANT ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int * BSTR ;
+
+
+ int CLSCTX_INPROC_HANDLER ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_VBScriptRegExp ;
+ int CoCreateInstance (int *,int *,int,int *,void**) ;
+ int E_INVALIDARG ;
+ int E_NOINTERFACE ;
+ int E_POINTER ;
+ int IDispatch_QueryInterface (int *,int *,void**) ;
+ int IDispatch_Release (int *) ;
+ int IEnumVARIANT_Next (int *,int,int *,int*) ;
+ int IEnumVARIANT_Release (int *) ;
+ int IEnumVARIANT_Skip (int *,int) ;
+ int IID_IDispatchEx ;
+ int IID_IEnumVARIANT ;
+ int IID_IMatch ;
+ int IID_IMatch2 ;
+ int IID_IMatchCollection ;
+ int IID_IMatchCollection2 ;
+ int IID_IRegExp ;
+ int IID_IRegExp2 ;
+ int IID_ISubMatches ;
+ int IID_IUnknown ;
+ int IMatch2_QueryInterface (int *,int *,void**) ;
+ int IMatch2_Release (int *) ;
+ int IMatch2_get_FirstIndex (int *,int *) ;
+ int IMatch2_get_Length (int *,int *) ;
+ int IMatch2_get_SubMatches (int *,int **) ;
+ int IMatch2_get_Value (int *,int *) ;
+ int IMatchCollection2_QueryInterface (int *,int *,void**) ;
+ int IMatchCollection2_Release (int *) ;
+ int IMatchCollection2_get_Count (int *,int*) ;
+ int IMatchCollection2_get_Item (int *,int,int **) ;
+ int IMatchCollection2_get__NewEnum (int *,int **) ;
+ int IRegExp2_Execute (int *,int *,int **) ;
+ int IRegExp2_QueryInterface (int *,int *,void**) ;
+ int IRegExp2_Release (int *) ;
+ int IRegExp2_get_Global (int *,int *) ;
+ int IRegExp2_get_IgnoreCase (int *,int *) ;
+ int IRegExp2_get_Pattern (int *,int **) ;
+ int ISubMatches_Release (int *) ;
+ int ISubMatches_get_Count (int *,int *) ;
+ int ISubMatches_get_Item (int *,int ,int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int REGDB_E_CLASSNOTREG ;
+ int S_FALSE ;
+ int S_OK ;
+ int VariantClear (int *) ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_RegExp(void)
 {
@@ -90,7 +90,7 @@ __attribute__((used)) static void test_RegExp(void)
     VARIANT v;
     ULONG fetched;
 
-    hres = CoCreateInstance(&CLSID_VBScriptRegExp, NULL,
+    hres = CoCreateInstance(&CLSID_VBScriptRegExp, ((void*)0),
             CLSCTX_INPROC_SERVER|CLSCTX_INPROC_HANDLER,
             &IID_IUnknown, (void**)&unk);
     if(hres == REGDB_E_CLASSNOTREG) {
@@ -115,19 +115,19 @@ __attribute__((used)) static void test_RegExp(void)
     ok(hres == E_NOINTERFACE, "QueryInterface(IID_IDispatchEx) returned %x\n", hres);
 
     hres = IRegExp2_get_Pattern(regexp, &bstr);
-    ok(bstr == NULL, "bstr != NULL\n");
+    ok(bstr == ((void*)0), "bstr != NULL\n");
     ok(hres == S_OK, "get_Pattern returned %x, expected S_OK\n", hres);
 
-    hres = IRegExp2_get_Pattern(regexp, NULL);
+    hres = IRegExp2_get_Pattern(regexp, ((void*)0));
     ok(hres == E_POINTER, "get_Pattern returned %x, expected E_POINTER\n", hres);
 
-    hres = IRegExp2_get_IgnoreCase(regexp, NULL);
+    hres = IRegExp2_get_IgnoreCase(regexp, ((void*)0));
     ok(hres == E_POINTER, "get_IgnoreCase returned %x, expected E_POINTER\n", hres);
 
-    hres = IRegExp2_get_Global(regexp, NULL);
+    hres = IRegExp2_get_Global(regexp, ((void*)0));
     ok(hres == E_POINTER, "get_Global returned %x, expected E_POINTER\n", hres);
 
-    hres = IRegExp2_Execute(regexp, NULL, &disp);
+    hres = IRegExp2_Execute(regexp, ((void*)0), &disp);
     ok(hres == S_OK, "Execute returned %x, expected S_OK\n", hres);
     hres = IDispatch_QueryInterface(disp, &IID_IMatchCollection2, (void**)&mc);
     ok(hres == S_OK, "QueryInterface(IID_IMatchCollection2) returned %x\n", hres);
@@ -137,7 +137,7 @@ __attribute__((used)) static void test_RegExp(void)
     ok(hres == S_OK, "QueryInterface(IID_IMatchCollection) returned %x\n", hres);
     IUnknown_Release(unk);
 
-    hres = IMatchCollection2_get_Count(mc, NULL);
+    hres = IMatchCollection2_get_Count(mc, ((void*)0));
     ok(hres == E_POINTER, "get_Count returned %x, expected E_POINTER\n", hres);
 
     hres = IMatchCollection2_get_Count(mc, &count);
@@ -147,7 +147,7 @@ __attribute__((used)) static void test_RegExp(void)
     hres = IMatchCollection2_get_Item(mc, 1, &disp);
     ok(hres == E_INVALIDARG, "get_Item returned %x, expected E_INVALIDARG\n", hres);
 
-    hres = IMatchCollection2_get_Item(mc, 1, NULL);
+    hres = IMatchCollection2_get_Item(mc, 1, ((void*)0));
     ok(hres == E_POINTER, "get_Item returned %x, expected E_POINTER\n", hres);
 
     hres = IMatchCollection2_get_Item(mc, 0, &disp);
@@ -160,16 +160,16 @@ __attribute__((used)) static void test_RegExp(void)
     ok(hres == S_OK, "QueryInterface(IID_IMatch) returned %x\n", hres);
     IUnknown_Release(unk);
 
-    hres = IMatch2_get_Value(match, NULL);
+    hres = IMatch2_get_Value(match, ((void*)0));
     ok(hres == E_POINTER, "get_Value returned %x, expected E_POINTER\n", hres);
 
-    hres = IMatch2_get_FirstIndex(match, NULL);
+    hres = IMatch2_get_FirstIndex(match, ((void*)0));
     ok(hres == E_POINTER, "get_FirstIndex returned %x, expected E_POINTER\n", hres);
 
-    hres = IMatch2_get_Length(match, NULL);
+    hres = IMatch2_get_Length(match, ((void*)0));
     ok(hres == E_POINTER, "get_Length returned %x, expected E_POINTER\n", hres);
 
-    hres = IMatch2_get_SubMatches(match, NULL);
+    hres = IMatch2_get_SubMatches(match, ((void*)0));
     ok(hres == E_POINTER, "get_SubMatches returned %x, expected E_POINTER\n", hres);
 
     hres = IMatch2_get_SubMatches(match, &disp);
@@ -182,10 +182,10 @@ __attribute__((used)) static void test_RegExp(void)
     hres = ISubMatches_get_Item(sm, 0, &v);
     ok(hres == E_INVALIDARG, "get_Item returned %x, expected E_INVALIDARG\n", hres);
 
-    hres = ISubMatches_get_Item(sm, 0, NULL);
+    hres = ISubMatches_get_Item(sm, 0, ((void*)0));
     ok(hres == E_POINTER, "get_Item returned %x, expected E_POINTER\n", hres);
 
-    hres = ISubMatches_get_Count(sm, NULL);
+    hres = ISubMatches_get_Count(sm, ((void*)0));
     ok(hres == E_POINTER, "get_Count returned %x, expected E_POINTER\n", hres);
     ISubMatches_Release(sm);
 

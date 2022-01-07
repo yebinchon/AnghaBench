@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_t ;
-struct lev_set_privacy_long {int len; int /*<<< orphan*/  List; void* key; } ;
-struct lev_set_privacy {int /*<<< orphan*/  List; void* key; } ;
-typedef  void* privacy_key_t ;
 
-/* Variables and functions */
- scalar_t__ LEV_FR_SET_PRIVACY ; 
- scalar_t__ LEV_FR_SET_PRIVACY_LONG ; 
- int /*<<< orphan*/  Q ; 
- int QL ; 
- void* alloc_log_event (scalar_t__,int,int) ; 
- scalar_t__ conv_uid (int) ; 
- int /*<<< orphan*/ * get_user (int) ; 
- int /*<<< orphan*/ * get_user_f (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pack_privacy () ; 
- scalar_t__ parse_prepare_privacy (char const*,int,int) ; 
- int set_privacy (int /*<<< orphan*/ *,void*,int) ; 
+
+
+
+typedef int user_t ;
+struct lev_set_privacy_long {int len; int List; void* key; } ;
+struct lev_set_privacy {int List; void* key; } ;
+typedef void* privacy_key_t ;
+
+
+ scalar_t__ LEV_FR_SET_PRIVACY ;
+ scalar_t__ LEV_FR_SET_PRIVACY_LONG ;
+ int Q ;
+ int QL ;
+ void* alloc_log_event (scalar_t__,int,int) ;
+ scalar_t__ conv_uid (int) ;
+ int * get_user (int) ;
+ int * get_user_f (int) ;
+ int memcpy (int ,int ,int) ;
+ int pack_privacy () ;
+ scalar_t__ parse_prepare_privacy (char const*,int,int) ;
+ int set_privacy (int *,void*,int) ;
 
 int do_set_privacy (int user_id, privacy_key_t privacy_key, const char *text, int len, int force) {
   user_t *U;

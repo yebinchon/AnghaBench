@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hx509_query ;
-typedef  int /*<<< orphan*/  hx509_cursor ;
-typedef  int /*<<< orphan*/  hx509_context ;
-typedef  int /*<<< orphan*/  hx509_certs ;
-typedef  int /*<<< orphan*/ * hx509_cert ;
 
-/* Variables and functions */
- int HX509_CERT_NOT_FOUND ; 
- scalar_t__ _hx509_query_match_cert (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _hx509_query_statistic (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  hx509_cert_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hx509_certs_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hx509_certs_end_seq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hx509_certs_free (int /*<<< orphan*/ *) ; 
- int hx509_certs_init (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int hx509_certs_next_cert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int hx509_certs_start_seq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hx509_clear_error_string (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int hx509_query ;
+typedef int hx509_cursor ;
+typedef int hx509_context ;
+typedef int hx509_certs ;
+typedef int * hx509_cert ;
+
+
+ int HX509_CERT_NOT_FOUND ;
+ scalar_t__ _hx509_query_match_cert (int ,int const*,int *) ;
+ int _hx509_query_statistic (int ,int ,int const*) ;
+ int hx509_cert_free (int *) ;
+ int hx509_certs_add (int ,int ,int *) ;
+ int hx509_certs_end_seq (int ,int ,int ) ;
+ int hx509_certs_free (int *) ;
+ int hx509_certs_init (int ,char*,int ,int *,int *) ;
+ int hx509_certs_next_cert (int ,int ,int ,int **) ;
+ int hx509_certs_start_seq (int ,int ,int *) ;
+ int hx509_clear_error_string (int ) ;
 
 int
 hx509_certs_filter(hx509_context context,
-		   hx509_certs certs,
-		   const hx509_query *q,
-		   hx509_certs *result)
+     hx509_certs certs,
+     const hx509_query *q,
+     hx509_certs *result)
 {
     hx509_cursor cursor;
     hx509_cert c;
@@ -42,44 +42,44 @@ hx509_certs_filter(hx509_context context,
     _hx509_query_statistic(context, 0, q);
 
     ret = hx509_certs_init(context, "MEMORY:filter-certs", 0,
-			   NULL, result);
+      ((void*)0), result);
     if (ret)
-	return ret;
+ return ret;
 
     ret = hx509_certs_start_seq(context, certs, &cursor);
     if (ret) {
-	hx509_certs_free(result);
-	return ret;
+ hx509_certs_free(result);
+ return ret;
     }
 
-    c = NULL;
+    c = ((void*)0);
     while (1) {
-	ret = hx509_certs_next_cert(context, certs, cursor, &c);
-	if (ret)
-	    break;
-	if (c == NULL)
-	    break;
-	if (_hx509_query_match_cert(context, q, c)) {
-	    hx509_certs_add(context, *result, c);
-	    found = 1;
-	}
-	hx509_cert_free(c);
+ ret = hx509_certs_next_cert(context, certs, cursor, &c);
+ if (ret)
+     break;
+ if (c == ((void*)0))
+     break;
+ if (_hx509_query_match_cert(context, q, c)) {
+     hx509_certs_add(context, *result, c);
+     found = 1;
+ }
+ hx509_cert_free(c);
     }
 
     hx509_certs_end_seq(context, certs, cursor);
     if (ret) {
-	hx509_certs_free(result);
-	return ret;
+ hx509_certs_free(result);
+ return ret;
     }
 
-    /**
-     * Return HX509_CERT_NOT_FOUND if no certificate in certs matched
-     * the query.
-     */
+
+
+
+
     if (!found) {
-	hx509_certs_free(result);
-	hx509_clear_error_string(context);
-	return HX509_CERT_NOT_FOUND;
+ hx509_certs_free(result);
+ hx509_clear_error_string(context);
+ return HX509_CERT_NOT_FOUND;
     }
 
     return 0;

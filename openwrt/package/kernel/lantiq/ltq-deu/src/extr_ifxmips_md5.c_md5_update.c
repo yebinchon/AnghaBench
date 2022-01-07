@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  unsigned int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef unsigned int u32 ;
 struct shash_desc {int dummy; } ;
 struct md5_ctx {int byte_count; char* block; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  md5_transform_helper (struct md5_ctx*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/  const*,unsigned int const) ; 
- struct md5_ctx* shash_desc_ctx (struct shash_desc*) ; 
+
+ int md5_transform_helper (struct md5_ctx*) ;
+ int memcpy (char*,int const*,unsigned int const) ;
+ struct md5_ctx* shash_desc_ctx (struct shash_desc*) ;
 
 __attribute__((used)) static int md5_update(struct shash_desc *desc, const u8 *data, unsigned int len)
 {

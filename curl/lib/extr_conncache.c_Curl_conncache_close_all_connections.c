@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct connectdata {TYPE_2__* data; } ;
 struct conncache {TYPE_2__* closure_handle; } ;
-struct TYPE_6__ {int /*<<< orphan*/  hostcache; } ;
+struct TYPE_6__ {int hostcache; } ;
 struct TYPE_7__ {TYPE_1__ dns; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_close (TYPE_2__**) ; 
- int /*<<< orphan*/  Curl_disconnect (TYPE_2__*,struct connectdata*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Curl_hostcache_clean (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SIGPIPE_VARIABLE (int /*<<< orphan*/ ) ; 
- struct connectdata* conncache_find_first_connection (struct conncache*) ; 
- int /*<<< orphan*/  connclose (struct connectdata*,char*) ; 
- int /*<<< orphan*/  pipe_st ; 
- int /*<<< orphan*/  sigpipe_ignore (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigpipe_restore (int /*<<< orphan*/ *) ; 
+
+ int Curl_close (TYPE_2__**) ;
+ int Curl_disconnect (TYPE_2__*,struct connectdata*,int ) ;
+ int Curl_hostcache_clean (TYPE_2__*,int ) ;
+ int FALSE ;
+ int SIGPIPE_VARIABLE (int ) ;
+ struct connectdata* conncache_find_first_connection (struct conncache*) ;
+ int connclose (struct connectdata*,char*) ;
+ int pipe_st ;
+ int sigpipe_ignore (TYPE_2__*,int *) ;
+ int sigpipe_restore (int *) ;
 
 void Curl_conncache_close_all_connections(struct conncache *connc)
 {
@@ -39,7 +39,7 @@ void Curl_conncache_close_all_connections(struct conncache *connc)
     conn->data = connc->closure_handle;
 
     sigpipe_ignore(conn->data, &pipe_st);
-    /* This will remove the connection from the cache */
+
     connclose(conn, "kill all");
     (void)Curl_disconnect(connc->closure_handle, conn, FALSE);
     sigpipe_restore(&pipe_st);

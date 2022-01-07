@@ -1,71 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int A_BOLD ; 
- int BUTTON1_RELEASED ; 
- int BUTTON4_PRESSED ; 
- int BUTTON5_PRESSED ; 
- int /*<<< orphan*/  Black ; 
- int /*<<< orphan*/  CODESET ; 
- size_t COLORSCHEME_BROKENGRAY ; 
- size_t COLORSCHEME_DEFAULT ; 
- int CRT_colorScheme ; 
- unsigned int** CRT_colorSchemes ; 
- unsigned int* CRT_colors ; 
- int CRT_delay ; 
- int /*<<< orphan*/  CRT_handleSIGSEGV ; 
- int /*<<< orphan*/  CRT_handleSIGTERM ; 
- int CRT_hasColors ; 
- int CRT_scrollHAmount ; 
- int /*<<< orphan*/  CRT_setColors (int) ; 
- int /*<<< orphan*/  CRT_termType ; 
- int /*<<< orphan*/  CRT_treeStr ; 
- int /*<<< orphan*/  CRT_treeStrAscii ; 
- int /*<<< orphan*/  CRT_treeStrUtf8 ; 
- int CRT_utf8 ; 
- unsigned int ColorPair (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int ColorPairGrayBlack ; 
- int /*<<< orphan*/  KEY_ALT (char) ; 
- int /*<<< orphan*/  KEY_END ; 
- int /*<<< orphan*/  KEY_F (int) ; 
- int /*<<< orphan*/  KEY_HOME ; 
- int LAST_COLORELEMENT ; 
- int /*<<< orphan*/  LC_CTYPE ; 
- int SIGQUIT ; 
- int SIGTERM ; 
- scalar_t__ String_eq (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ String_startsWith (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  White ; 
- int /*<<< orphan*/  curs_set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  define_key (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getenv (char*) ; 
- int /*<<< orphan*/  halfdelay (int) ; 
- scalar_t__ has_colors () ; 
- int /*<<< orphan*/  initscr () ; 
- int /*<<< orphan*/  intrflush (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  keypad (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mouseinterval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mousemask (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nl_langinfo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  noecho () ; 
- int /*<<< orphan*/  nonl () ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  signal (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_color () ; 
- int /*<<< orphan*/  stdscr ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  use_default_colors () ; 
+ unsigned int A_BOLD ;
+ int BUTTON1_RELEASED ;
+ int BUTTON4_PRESSED ;
+ int BUTTON5_PRESSED ;
+ int Black ;
+ int CODESET ;
+ size_t COLORSCHEME_BROKENGRAY ;
+ size_t COLORSCHEME_DEFAULT ;
+ int CRT_colorScheme ;
+ unsigned int** CRT_colorSchemes ;
+ unsigned int* CRT_colors ;
+ int CRT_delay ;
+ int CRT_handleSIGSEGV ;
+ int CRT_handleSIGTERM ;
+ int CRT_hasColors ;
+ int CRT_scrollHAmount ;
+ int CRT_setColors (int) ;
+ int CRT_termType ;
+ int CRT_treeStr ;
+ int CRT_treeStrAscii ;
+ int CRT_treeStrUtf8 ;
+ int CRT_utf8 ;
+ unsigned int ColorPair (int ,int ) ;
+ unsigned int ColorPairGrayBlack ;
+ int KEY_ALT (char) ;
+ int KEY_END ;
+ int KEY_F (int) ;
+ int KEY_HOME ;
+ int LAST_COLORELEMENT ;
+ int LC_CTYPE ;
+ int SIGQUIT ;
+ int SIGTERM ;
+ scalar_t__ String_eq (int ,char*) ;
+ scalar_t__ String_startsWith (int ,char*) ;
+ int White ;
+ int curs_set (int ) ;
+ int define_key (char*,int ) ;
+ int getenv (char*) ;
+ int halfdelay (int) ;
+ scalar_t__ has_colors () ;
+ int initscr () ;
+ int intrflush (int ,int) ;
+ int keypad (int ,int) ;
+ int mouseinterval (int ) ;
+ int mousemask (int,int *) ;
+ int nl_langinfo (int ) ;
+ int noecho () ;
+ int nonl () ;
+ int setlocale (int ,char*) ;
+ int signal (int,int ) ;
+ int start_color () ;
+ int stdscr ;
+ scalar_t__ strcmp (int ,char*) ;
+ int use_default_colors () ;
 
 void CRT_init(int delay, int colorScheme) {
    initscr();
@@ -76,23 +68,23 @@ void CRT_init(int delay, int colorScheme) {
    }
    CRT_colors = CRT_colorSchemes[colorScheme];
    CRT_colorScheme = colorScheme;
-   
+
    for (int i = 0; i < LAST_COLORELEMENT; i++) {
       unsigned int color = CRT_colorSchemes[COLORSCHEME_DEFAULT][i];
       CRT_colorSchemes[COLORSCHEME_BROKENGRAY][i] = color == (A_BOLD | ColorPairGrayBlack) ? ColorPair(White,Black) : color;
    }
-   
+
    halfdelay(CRT_delay);
    nonl();
-   intrflush(stdscr, false);
-   keypad(stdscr, true);
+   intrflush(stdscr, 0);
+   keypad(stdscr, 1);
    mouseinterval(0);
    curs_set(0);
    if (has_colors()) {
       start_color();
-      CRT_hasColors = true;
+      CRT_hasColors = 1;
    } else {
-      CRT_hasColors = false;
+      CRT_hasColors = 0;
    }
    CRT_termType = getenv("TERM");
    if (String_eq(CRT_termType, "linux"))
@@ -119,9 +111,9 @@ void CRT_init(int delay, int colorScheme) {
          define_key(sequence, KEY_ALT('A' + (c - 'a')));
       }
    }
-#ifndef DEBUG
+
    signal(11, CRT_handleSIGSEGV);
-#endif
+
    signal(SIGTERM, CRT_handleSIGTERM);
    signal(SIGQUIT, CRT_handleSIGTERM);
    use_default_colors();
@@ -129,26 +121,18 @@ void CRT_init(int delay, int colorScheme) {
       CRT_colorScheme = 1;
    CRT_setColors(CRT_colorScheme);
 
-   /* initialize locale */
+
    setlocale(LC_CTYPE, "");
-
-#ifdef HAVE_LIBNCURSESW
-   if(strcmp(nl_langinfo(CODESET), "UTF-8") == 0)
-      CRT_utf8 = true;
-   else
-      CRT_utf8 = false;
-#endif
-
    CRT_treeStr =
-#ifdef HAVE_LIBNCURSESW
-      CRT_utf8 ? CRT_treeStrUtf8 :
-#endif
+
+
+
       CRT_treeStrAscii;
 
-#if NCURSES_MOUSE_VERSION > 1
-   mousemask(BUTTON1_RELEASED | BUTTON4_PRESSED | BUTTON5_PRESSED, NULL);
-#else
-   mousemask(BUTTON1_RELEASED, NULL);
-#endif
+
+
+
+   mousemask(BUTTON1_RELEASED, ((void*)0));
+
 
 }

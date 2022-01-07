@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int load; char* name; struct datalink* arg; int /*<<< orphan*/  func; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int load; char* name; struct datalink* arg; int func; } ;
 struct TYPE_4__ {TYPE_2__ timer; } ;
-struct datalink {scalar_t__ state; int /*<<< orphan*/  name; TYPE_1__ dial; } ;
+struct datalink {scalar_t__ state; int name; TYPE_1__ dial; } ;
 
-/* Variables and functions */
- scalar_t__ DATALINK_OPENING ; 
- int DIAL_TIMEOUT ; 
- int /*<<< orphan*/  LogPHASE ; 
- int SECTICKS ; 
- int /*<<< orphan*/  datalink_OpenTimeout ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int random () ; 
- int /*<<< orphan*/  timer_Start (TYPE_2__*) ; 
- int /*<<< orphan*/  timer_Stop (TYPE_2__*) ; 
+
+ scalar_t__ DATALINK_OPENING ;
+ int DIAL_TIMEOUT ;
+ int LogPHASE ;
+ int SECTICKS ;
+ int datalink_OpenTimeout ;
+ int log_Printf (int ,char*,int ,int) ;
+ int random () ;
+ int timer_Start (TYPE_2__*) ;
+ int timer_Stop (TYPE_2__*) ;
 
 __attribute__((used)) static int
 datalink_StartDialTimer(struct datalink *dl, int Timeout)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char tag; size_t len; unsigned char* p; } ;
-typedef  TYPE_1__ mbedtls_x509_buf ;
+typedef TYPE_1__ mbedtls_x509_buf ;
 
-/* Variables and functions */
- int MBEDTLS_ASN1_CONSTRUCTED ; 
- int MBEDTLS_ASN1_CONTEXT_SPECIFIC ; 
- int MBEDTLS_ASN1_SEQUENCE ; 
- int MBEDTLS_ERR_ASN1_LENGTH_MISMATCH ; 
- int MBEDTLS_ERR_X509_INVALID_EXTENSIONS ; 
- int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ; 
+
+ int MBEDTLS_ASN1_CONSTRUCTED ;
+ int MBEDTLS_ASN1_CONTEXT_SPECIFIC ;
+ int MBEDTLS_ASN1_SEQUENCE ;
+ int MBEDTLS_ERR_ASN1_LENGTH_MISMATCH ;
+ int MBEDTLS_ERR_X509_INVALID_EXTENSIONS ;
+ int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ;
 
 int mbedtls_x509_get_ext( unsigned char **p, const unsigned char *end,
                   mbedtls_x509_buf *ext, int tag )
@@ -39,15 +39,6 @@ int mbedtls_x509_get_ext( unsigned char **p, const unsigned char *end,
 
     ext->p = *p;
     end = *p + ext->len;
-
-    /*
-     * Extensions  ::=  SEQUENCE SIZE (1..MAX) OF Extension
-     *
-     * Extension  ::=  SEQUENCE  {
-     *      extnID      OBJECT IDENTIFIER,
-     *      critical    BOOLEAN DEFAULT FALSE,
-     *      extnValue   OCTET STRING  }
-     */
     if( ( ret = mbedtls_asn1_get_tag( p, end, &len,
             MBEDTLS_ASN1_CONSTRUCTED | MBEDTLS_ASN1_SEQUENCE ) ) != 0 )
         return( MBEDTLS_ERR_X509_INVALID_EXTENSIONS + ret );

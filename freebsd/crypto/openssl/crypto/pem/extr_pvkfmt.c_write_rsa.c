@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RSA ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int RSA_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_get0_crt_params (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  RSA_get0_factors (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  RSA_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int RSA_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_lebn (unsigned char**,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int RSA ;
+typedef int BIGNUM ;
+
+
+ int RSA_bits (int *) ;
+ int RSA_get0_crt_params (int *,int const**,int const**,int const**) ;
+ int RSA_get0_factors (int *,int const**,int const**) ;
+ int RSA_get0_key (int *,int const**,int const**,int const**) ;
+ int RSA_size (int *) ;
+ int write_lebn (unsigned char**,int const*,int) ;
 
 __attribute__((used)) static void write_rsa(unsigned char **out, RSA *rsa, int ispub)
 {

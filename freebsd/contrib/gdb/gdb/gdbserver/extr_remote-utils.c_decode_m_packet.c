@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CORE_ADDR ;
 
-/* Variables and functions */
- int fromhex (char) ; 
+
+
+
+typedef int CORE_ADDR ;
+
+
+ int fromhex (char) ;
 
 void
 decode_m_packet (char *from, CORE_ADDR *mem_addr_ptr, unsigned int *len_ptr)
@@ -31,7 +31,7 @@ decode_m_packet (char *from, CORE_ADDR *mem_addr_ptr, unsigned int *len_ptr)
   for (j = 0; j < 4; j++)
     {
       if ((ch = from[i++]) == 0)
-	break;
+ break;
       *len_ptr = *len_ptr << 4;
       *len_ptr |= fromhex (ch) & 0x0f;
     }

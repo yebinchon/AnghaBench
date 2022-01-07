@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void** I ; 
- scalar_t__ LEV_LI_DECR_FLAGS ; 
- scalar_t__ LEV_LI_INCR_FLAGS ; 
- int /*<<< orphan*/  adj_rec ; 
- size_t as_app_id ; 
- int as_can_access_audio ; 
- size_t as_can_notify ; 
- size_t as_user_id ; 
- scalar_t__ conv_uid (void*) ; 
- void* list_id ; 
- int /*<<< orphan*/  log_1int (scalar_t__,int) ; 
+ void** I ;
+ scalar_t__ LEV_LI_DECR_FLAGS ;
+ scalar_t__ LEV_LI_INCR_FLAGS ;
+ int adj_rec ;
+ size_t as_app_id ;
+ int as_can_access_audio ;
+ size_t as_can_notify ;
+ size_t as_user_id ;
+ scalar_t__ conv_uid (void*) ;
+ void* list_id ;
+ int log_1int (scalar_t__,int) ;
 
 void process_app_fans_settings_row (void) {
   int user_id = I[as_user_id], flags = 0, i;

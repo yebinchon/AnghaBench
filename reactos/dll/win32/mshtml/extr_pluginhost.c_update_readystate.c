@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_6__ {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/ * member_1; int /*<<< orphan*/ * member_0; } ;
-struct TYPE_5__ {int /*<<< orphan*/  plugin_unk; } ;
-typedef  TYPE_1__ PluginHost ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_2__ DISPPARAMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_PROPERTYGET ; 
- int /*<<< orphan*/  DISPID_READYSTATE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_Invoke (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  IID_NULL ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
+typedef int ULONG ;
+struct TYPE_6__ {int member_3; int member_2; int * member_1; int * member_0; } ;
+struct TYPE_5__ {int plugin_unk; } ;
+typedef TYPE_1__ PluginHost ;
+typedef int IDispatchEx ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef TYPE_2__ DISPPARAMS ;
+
+
+ int DISPATCH_PROPERTYGET ;
+ int DISPID_READYSTATE ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IDispatchEx_Release (int *) ;
+ int IDispatch_Invoke (int *,int ,int *,int ,int ,TYPE_2__*,int *,int *,int *) ;
+ int IDispatch_Release (int *) ;
+ int IID_IDispatch ;
+ int IID_IDispatchEx ;
+ int IID_NULL ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,int ) ;
+ int VariantClear (int *) ;
+ int debugstr_variant (int *) ;
 
 __attribute__((used)) static void update_readystate(PluginHost *host)
 {
-    DISPPARAMS params = {NULL,NULL,0,0};
+    DISPPARAMS params = {((void*)0),((void*)0),0,0};
     IDispatchEx *dispex;
     IDispatch *disp;
     ULONG err = 0;
@@ -58,10 +58,10 @@ __attribute__((used)) static void update_readystate(PluginHost *host)
     if(FAILED(hres))
         return;
 
-    hres = IDispatch_Invoke(disp, DISPID_READYSTATE, &IID_NULL, 0, DISPATCH_PROPERTYGET, &params, &v, NULL, &err);
+    hres = IDispatch_Invoke(disp, DISPID_READYSTATE, &IID_NULL, 0, DISPATCH_PROPERTYGET, &params, &v, ((void*)0), &err);
     IDispatch_Release(disp);
     if(SUCCEEDED(hres)) {
-        /* FIXME: make plugin readystate affect document readystate */
+
         TRACE("readystate = %s\n", debugstr_variant(&v));
         VariantClear(&v);
     }

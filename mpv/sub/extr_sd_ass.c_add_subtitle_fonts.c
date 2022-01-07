@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sd_ass_priv {int /*<<< orphan*/  ass_library; } ;
-struct sd {int /*<<< orphan*/  log; TYPE_1__* attachments; struct mp_subtitle_opts* opts; struct sd_ass_priv* priv; } ;
-struct mp_subtitle_opts {int /*<<< orphan*/  use_embedded_fonts; int /*<<< orphan*/  ass_enabled; } ;
-struct demux_attachment {int /*<<< orphan*/  data_size; int /*<<< orphan*/  data; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sd_ass_priv {int ass_library; } ;
+struct sd {int log; TYPE_1__* attachments; struct mp_subtitle_opts* opts; struct sd_ass_priv* priv; } ;
+struct mp_subtitle_opts {int use_embedded_fonts; int ass_enabled; } ;
+struct demux_attachment {int data_size; int data; int name; } ;
 struct TYPE_2__ {int num_entries; struct demux_attachment* entries; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ass_add_font (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ attachment_is_font (int /*<<< orphan*/ ,struct demux_attachment*) ; 
+
+ int ass_add_font (int ,int ,int ,int ) ;
+ scalar_t__ attachment_is_font (int ,struct demux_attachment*) ;
 
 __attribute__((used)) static void add_subtitle_fonts(struct sd *sd)
 {

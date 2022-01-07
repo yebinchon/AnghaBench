@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  features ;
 
-/* Variables and functions */
- int SK_FEATURE_SKYWALK ; 
- int /*<<< orphan*/  T_ASSERT_EQ (size_t,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  T_ASSERT_TRUE (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  T_EXPECT_POSIX_ZERO (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  T_QUIET ; 
- int /*<<< orphan*/  T_WITH_ERRNO ; 
- int /*<<< orphan*/  sysctlbyname (char*,int*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int features ;
+
+
+ int SK_FEATURE_SKYWALK ;
+ int T_ASSERT_EQ (size_t,int,int *) ;
+ int T_ASSERT_TRUE (int,int *) ;
+ int T_EXPECT_POSIX_ZERO (int ,int *) ;
+ int T_QUIET ;
+ int T_WITH_ERRNO ;
+ int sysctlbyname (char*,int*,size_t*,int *,int ) ;
 
 __attribute__((used)) static uint64_t
 get_skywalk_features(void)
 {
-	uint64_t features = 0;
-	size_t len = sizeof(features);
-	T_QUIET; T_WITH_ERRNO; T_EXPECT_POSIX_ZERO(sysctlbyname("kern.skywalk.features", &features, &len, NULL, 0), NULL);
-	T_QUIET; T_ASSERT_EQ(len, sizeof(features), NULL);
-	T_QUIET; T_ASSERT_TRUE(features & SK_FEATURE_SKYWALK, NULL);
-	return features;
+ uint64_t features = 0;
+ size_t len = sizeof(features);
+ T_QUIET; T_WITH_ERRNO; T_EXPECT_POSIX_ZERO(sysctlbyname("kern.skywalk.features", &features, &len, ((void*)0), 0), ((void*)0));
+ T_QUIET; T_ASSERT_EQ(len, sizeof(features), ((void*)0));
+ T_QUIET; T_ASSERT_TRUE(features & SK_FEATURE_SKYWALK, ((void*)0));
+ return features;
 }

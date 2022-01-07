@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rs6000_framedata {int dummy; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  skip_prologue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct rs6000_framedata*) ; 
+
+ int skip_prologue (int ,int ,struct rs6000_framedata*) ;
 
 __attribute__((used)) static CORE_ADDR
 rs6000_skip_prologue (CORE_ADDR pc)

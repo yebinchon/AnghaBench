@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_3__ {scalar_t__ length; int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ json_string_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  json_is_string (int /*<<< orphan*/ *) ; 
- TYPE_1__* json_to_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_3__ {scalar_t__ length; int value; } ;
+typedef TYPE_1__ json_string_t ;
+
+
+ int json_is_string (int *) ;
+ TYPE_1__* json_to_string (int *) ;
+ int memcmp (int ,int ,scalar_t__) ;
 
 __attribute__((used)) static int json_string_equal(json_t *string1, json_t *string2)
 {

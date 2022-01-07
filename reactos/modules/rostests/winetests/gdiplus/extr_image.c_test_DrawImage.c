@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  white_2x2 ;
-typedef  int /*<<< orphan*/  black_2x2 ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpGraphics ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipBitmapSetResolution (int /*<<< orphan*/ *,double,double) ; 
- int /*<<< orphan*/  GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDrawImageI (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GdipGetImageGraphicsContext (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipSetInterpolationMode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InterpolationModeNearestNeighbor ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+
+
+typedef int white_2x2 ;
+typedef int black_2x2 ;
+typedef size_t UINT ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpGraphics ;
+typedef int GpBitmap ;
+typedef int BYTE ;
+
+
+ int GdipBitmapSetResolution (int *,double,double) ;
+ int GdipCreateBitmapFromScan0 (int,int,int,int ,int*,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipDisposeImage (int *) ;
+ int GdipDrawImageI (int *,int *,int ,int ) ;
+ int GdipGetImageGraphicsContext (int *,int **) ;
+ int GdipSetInterpolationMode (int *,int ) ;
+ int InterpolationModeNearestNeighbor ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int expect (int ,int ) ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int ok (int,char*) ;
+ int trace (char*,...) ;
 
 __attribute__((used)) static void test_DrawImage(void)
 {

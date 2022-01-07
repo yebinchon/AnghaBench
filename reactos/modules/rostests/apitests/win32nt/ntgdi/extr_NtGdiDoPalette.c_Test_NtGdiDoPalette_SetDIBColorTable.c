@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_2__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biXPelsPerMeter; int biYPelsPerMeter; int biClrUsed; int biClrImportant; scalar_t__ biSizeImage; int /*<<< orphan*/  biCompression; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  int BYTE ;
-typedef  TYPE_1__ BITMAPINFOHEADER ;
-typedef  int /*<<< orphan*/  BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/ * CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CreateDIBSection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_PAL_COLORS ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GdiPalSetColorTable ; 
- int /*<<< orphan*/  NtGdiDoPalette (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Rectangle (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetDCBrushColor (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SetDCPenColor (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_long (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_2__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biXPelsPerMeter; int biYPelsPerMeter; int biClrUsed; int biClrImportant; scalar_t__ biSizeImage; int biCompression; } ;
+typedef int PVOID ;
+typedef int * HDC ;
+typedef int * HBITMAP ;
+typedef int BYTE ;
+typedef TYPE_1__ BITMAPINFOHEADER ;
+typedef int BITMAPINFO ;
+
+
+ int BI_RGB ;
+ int * CreateCompatibleDC (int ) ;
+ int * CreateDIBSection (int *,int *,int ,int *,int *,int ) ;
+ int DIB_PAL_COLORS ;
+ int DeleteDC (int *) ;
+ int DeleteObject (int *) ;
+ int FALSE ;
+ int GdiPalSetColorTable ;
+ int NtGdiDoPalette (int *,int ,int,int**,int ,int ) ;
+ int Rectangle (int *,int ,int ,int,int) ;
+ int SelectObject (int *,int *) ;
+ int SetDCBrushColor (int *,int) ;
+ int SetDCPenColor (int *,int) ;
+ int ok (int ,char*) ;
+ int ok_long (int ,int) ;
 
 void
 Test_NtGdiDoPalette_SetDIBColorTable(void)
@@ -51,7 +51,7 @@ Test_NtGdiDoPalette_SetDIBColorTable(void)
     } bmi;
 
     hdc = CreateCompatibleDC(0);
-    ok(hdc != NULL, "hdc was NULL.\n");
+    ok(hdc != ((void*)0), "hdc was NULL.\n");
 
     bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
     bmi.bmiHeader.biWidth = 10;
@@ -73,9 +73,9 @@ Test_NtGdiDoPalette_SetDIBColorTable(void)
     bmi.bmiColors[6] = 0xC0C0C0;
     bmi.bmiColors[7] = 0xE0E0E0;
     bmi.bmiColors[8] = 0xffffff;
-    hbmp = CreateDIBSection(hdc, (BITMAPINFO*)&bmi, DIB_PAL_COLORS, (PVOID*)&pjBits, NULL, 0);
-    ok(hbmp != NULL, "hbmp was NULL.\n");
-    ok(pjBits != NULL, "pjBits was NULL.\n");
+    hbmp = CreateDIBSection(hdc, (BITMAPINFO*)&bmi, DIB_PAL_COLORS, (PVOID*)&pjBits, ((void*)0), 0);
+    ok(hbmp != ((void*)0), "hbmp was NULL.\n");
+    ok(pjBits != ((void*)0), "pjBits was NULL.\n");
 
     SelectObject(hdc, hbmp);
 

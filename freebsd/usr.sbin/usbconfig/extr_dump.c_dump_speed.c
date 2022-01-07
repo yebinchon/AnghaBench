@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
-#define  LIBUSB20_SPEED_FULL 132 
-#define  LIBUSB20_SPEED_HIGH 131 
-#define  LIBUSB20_SPEED_LOW 130 
-#define  LIBUSB20_SPEED_SUPER 129 
-#define  LIBUSB20_SPEED_VARIABLE 128 
 
+
+
+typedef int uint8_t ;
 const char *
 dump_speed(uint8_t value)
 {
-	;				/* style fix */
-	switch (value) {
-	case LIBUSB20_SPEED_LOW:
-		return ("LOW (1.5Mbps)");
-	case LIBUSB20_SPEED_FULL:
-		return ("FULL (12Mbps)");
-	case LIBUSB20_SPEED_HIGH:
-		return ("HIGH (480Mbps)");
-	case LIBUSB20_SPEED_VARIABLE:
-		return ("VARIABLE (52-480Mbps)");
-	case LIBUSB20_SPEED_SUPER:
-		return ("SUPER (5.0Gbps)");
-	default:
-		break;
-	}
-	return ("UNKNOWN ()");
+ ;
+ switch (value) {
+ case 130:
+  return ("LOW (1.5Mbps)");
+ case 132:
+  return ("FULL (12Mbps)");
+ case 131:
+  return ("HIGH (480Mbps)");
+ case 128:
+  return ("VARIABLE (52-480Mbps)");
+ case 129:
+  return ("SUPER (5.0Gbps)");
+ default:
+  break;
+ }
+ return ("UNKNOWN ()");
 }

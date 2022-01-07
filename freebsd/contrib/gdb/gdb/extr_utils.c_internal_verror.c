@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETURN_ERROR ; 
- int /*<<< orphan*/  internal_error_problem ; 
- int /*<<< orphan*/  internal_vproblem (int /*<<< orphan*/ *,char const*,int,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  throw_exception (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int RETURN_ERROR ;
+ int internal_error_problem ;
+ int internal_vproblem (int *,char const*,int,char const*,int ) ;
+ int throw_exception (int ) ;
 
 void
 internal_verror (const char *file, int line, const char *fmt, va_list ap)

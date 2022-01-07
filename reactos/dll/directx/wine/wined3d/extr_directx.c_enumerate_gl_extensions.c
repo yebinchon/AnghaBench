@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  (* p_glGetIntegerv ) (int /*<<< orphan*/ ,unsigned int*) ;} ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int (* p_glGetIntegerv ) (int ,unsigned int*) ;} ;
 struct TYPE_4__ {TYPE_1__ gl; } ;
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; TYPE_2__ gl_ops; } ;
-struct wined3d_extension_map {size_t extension; int /*<<< orphan*/  extension_string; } ;
-typedef  unsigned int GLint ;
+struct wined3d_gl_info {int * supported; TYPE_2__ gl_ops; } ;
+struct wined3d_extension_map {size_t extension; int extension_string; } ;
+typedef unsigned int GLint ;
 
-/* Variables and functions */
- scalar_t__ GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_EXTENSIONS ; 
- int /*<<< orphan*/  GL_NUM_EXTENSIONS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- int /*<<< orphan*/  glGetStringi (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,unsigned int*) ; 
+
+ scalar_t__ GL_EXTCALL (int ) ;
+ int GL_EXTENSIONS ;
+ int GL_NUM_EXTENSIONS ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int debugstr_a (char const*) ;
+ int glGetStringi (int ,unsigned int) ;
+ int strcmp (char const*,int ) ;
+ int stub1 (int ,unsigned int*) ;
 
 __attribute__((used)) static void enumerate_gl_extensions(struct wined3d_gl_info *gl_info,
         const struct wined3d_extension_map *map, unsigned int map_entries_count)

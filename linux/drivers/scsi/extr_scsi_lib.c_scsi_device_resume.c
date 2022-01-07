@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct scsi_device {scalar_t__ sdev_state; int /*<<< orphan*/  state_mutex; int /*<<< orphan*/  request_queue; int /*<<< orphan*/ * quiesced_by; } ;
 
-/* Variables and functions */
- scalar_t__ SDEV_QUIESCE ; 
- int /*<<< orphan*/  SDEV_RUNNING ; 
- int /*<<< orphan*/  blk_clear_pm_only (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scsi_device_set_state (struct scsi_device*,int /*<<< orphan*/ ) ; 
+
+
+
+struct scsi_device {scalar_t__ sdev_state; int state_mutex; int request_queue; int * quiesced_by; } ;
+
+
+ scalar_t__ SDEV_QUIESCE ;
+ int SDEV_RUNNING ;
+ int blk_clear_pm_only (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int scsi_device_set_state (struct scsi_device*,int ) ;
 
 void scsi_device_resume(struct scsi_device *sdev)
 {
-	/* check if the device state was mutated prior to resume, and if
-	 * so assume the state is being managed elsewhere (for example
-	 * device deleted during suspend)
-	 */
-	mutex_lock(&sdev->state_mutex);
-	if (sdev->quiesced_by) {
-		sdev->quiesced_by = NULL;
-		blk_clear_pm_only(sdev->request_queue);
-	}
-	if (sdev->sdev_state == SDEV_QUIESCE)
-		scsi_device_set_state(sdev, SDEV_RUNNING);
-	mutex_unlock(&sdev->state_mutex);
+
+
+
+
+ mutex_lock(&sdev->state_mutex);
+ if (sdev->quiesced_by) {
+  sdev->quiesced_by = ((void*)0);
+  blk_clear_pm_only(sdev->request_queue);
+ }
+ if (sdev->sdev_state == SDEV_QUIESCE)
+  scsi_device_set_state(sdev, SDEV_RUNNING);
+ mutex_unlock(&sdev->state_mutex);
 }

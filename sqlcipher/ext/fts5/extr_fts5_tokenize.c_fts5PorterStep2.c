@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fts5Porter_MGt0 (char*,int) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+ int fts5Porter_MGt0 (char*,int) ;
+ int memcmp (char*,char*,int) ;
+ int memcpy (char*,char*,int) ;
 
 __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
   int ret = 0;
   int nBuf = *pnBuf;
   switch( aBuf[nBuf-2] ){
-    
-    case 'a': 
+
+    case 'a':
       if( nBuf>7 && 0==memcmp("ational", &aBuf[nBuf-7], 7) ){
         if( fts5Porter_MGt0(aBuf, nBuf-7) ){
           memcpy(&aBuf[nBuf-7], "ate", 3);
@@ -34,8 +26,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 'c': 
+
+    case 'c':
       if( nBuf>4 && 0==memcmp("enci", &aBuf[nBuf-4], 4) ){
         if( fts5Porter_MGt0(aBuf, nBuf-4) ){
           memcpy(&aBuf[nBuf-4], "ence", 4);
@@ -48,8 +40,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 'e': 
+
+    case 'e':
       if( nBuf>4 && 0==memcmp("izer", &aBuf[nBuf-4], 4) ){
         if( fts5Porter_MGt0(aBuf, nBuf-4) ){
           memcpy(&aBuf[nBuf-4], "ize", 3);
@@ -57,8 +49,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 'g': 
+
+    case 'g':
       if( nBuf>4 && 0==memcmp("logi", &aBuf[nBuf-4], 4) ){
         if( fts5Porter_MGt0(aBuf, nBuf-4) ){
           memcpy(&aBuf[nBuf-4], "log", 3);
@@ -66,8 +58,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 'l': 
+
+    case 'l':
       if( nBuf>3 && 0==memcmp("bli", &aBuf[nBuf-3], 3) ){
         if( fts5Porter_MGt0(aBuf, nBuf-3) ){
           memcpy(&aBuf[nBuf-3], "ble", 3);
@@ -95,8 +87,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 'o': 
+
+    case 'o':
       if( nBuf>7 && 0==memcmp("ization", &aBuf[nBuf-7], 7) ){
         if( fts5Porter_MGt0(aBuf, nBuf-7) ){
           memcpy(&aBuf[nBuf-7], "ize", 3);
@@ -114,8 +106,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 's': 
+
+    case 's':
       if( nBuf>5 && 0==memcmp("alism", &aBuf[nBuf-5], 5) ){
         if( fts5Porter_MGt0(aBuf, nBuf-5) ){
           memcpy(&aBuf[nBuf-5], "al", 2);
@@ -138,8 +130,8 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
-    case 't': 
+
+    case 't':
       if( nBuf>5 && 0==memcmp("aliti", &aBuf[nBuf-5], 5) ){
         if( fts5Porter_MGt0(aBuf, nBuf-5) ){
           memcpy(&aBuf[nBuf-5], "al", 2);
@@ -157,7 +149,7 @@ __attribute__((used)) static int fts5PorterStep2(char *aBuf, int *pnBuf){
         }
       }
       break;
-  
+
   }
   return ret;
 }

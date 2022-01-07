@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct item {int /*<<< orphan*/  item_id; } ;
-struct TYPE_2__ {int minr; int maxr; int /*<<< orphan*/  idx; } ;
 
-/* Variables and functions */
- scalar_t__ Q_hash_group_mode ; 
- scalar_t__ Q_limit ; 
- TYPE_1__* Q_range ; 
- struct item** R ; 
- double* RR ; 
- scalar_t__ R_cnt ; 
- int /*<<< orphan*/  R_tot ; 
- double evaluate_rating (struct item*,double) ; 
- int get_rate_item_fast (struct item*,int /*<<< orphan*/ ) ; 
- int n_ranges ; 
- int /*<<< orphan*/  store_res_group_mode (struct item*,double) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,double) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct item {int item_id; } ;
+struct TYPE_2__ {int minr; int maxr; int idx; } ;
+
+
+ scalar_t__ Q_hash_group_mode ;
+ scalar_t__ Q_limit ;
+ TYPE_1__* Q_range ;
+ struct item** R ;
+ double* RR ;
+ scalar_t__ R_cnt ;
+ int R_tot ;
+ double evaluate_rating (struct item*,double) ;
+ int get_rate_item_fast (struct item*,int ) ;
+ int n_ranges ;
+ int store_res_group_mode (struct item*,double) ;
+ int vkprintf (int,char*,int ,double) ;
 
 int store_res (struct item *I, double w) {
   vkprintf (3, "store_res (item_id = %lld, w = %.10lf\n", I->item_id, w);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ EMSCRIPTEN_RESULT ;
 
-/* Variables and functions */
- scalar_t__ EMSCRIPTEN_RESULT_NOT_SUPPORTED ; 
- scalar_t__ EMSCRIPTEN_RESULT_SUCCESS ; 
- int /*<<< orphan*/  RARCH_ERR (char*,scalar_t__) ; 
- scalar_t__ emscripten_sample_gamepad_data () ; 
- scalar_t__ emscripten_set_gamepadconnected_callback (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ emscripten_set_gamepaddisconnected_callback (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int g_rwebpad_initialized ; 
- int /*<<< orphan*/  rwebpad_gamepad_cb ; 
+
+
+
+typedef scalar_t__ EMSCRIPTEN_RESULT ;
+
+
+ scalar_t__ EMSCRIPTEN_RESULT_NOT_SUPPORTED ;
+ scalar_t__ EMSCRIPTEN_RESULT_SUCCESS ;
+ int RARCH_ERR (char*,scalar_t__) ;
+ scalar_t__ emscripten_sample_gamepad_data () ;
+ scalar_t__ emscripten_set_gamepadconnected_callback (int *,int,int ) ;
+ scalar_t__ emscripten_set_gamepaddisconnected_callback (int *,int,int ) ;
+ int g_rwebpad_initialized ;
+ int rwebpad_gamepad_cb ;
 
 __attribute__((used)) static bool rwebpad_joypad_init(void *data)
 {
@@ -29,15 +29,15 @@ __attribute__((used)) static bool rwebpad_joypad_init(void *data)
 
    supported = emscripten_sample_gamepad_data();
    if (supported == EMSCRIPTEN_RESULT_NOT_SUPPORTED)
-      return false;
+      return 0;
 
    if (!g_rwebpad_initialized)
    {
       EMSCRIPTEN_RESULT r;
-      g_rwebpad_initialized = true;
+      g_rwebpad_initialized = 1;
 
-      /* callbacks needs to be registered for gamepads to connect */
-      r = emscripten_set_gamepadconnected_callback(NULL, false,
+
+      r = emscripten_set_gamepadconnected_callback(((void*)0), 0,
          rwebpad_gamepad_cb);
       if (r != EMSCRIPTEN_RESULT_SUCCESS)
       {
@@ -45,7 +45,7 @@ __attribute__((used)) static bool rwebpad_joypad_init(void *data)
             "[EMSCRIPTEN/PAD] failed to create connect callback: %d\n", r);
       }
 
-      r = emscripten_set_gamepaddisconnected_callback(NULL, false,
+      r = emscripten_set_gamepaddisconnected_callback(((void*)0), 0,
          rwebpad_gamepad_cb);
       if (r != EMSCRIPTEN_RESULT_SUCCESS)
       {
@@ -54,5 +54,5 @@ __attribute__((used)) static bool rwebpad_joypad_init(void *data)
       }
    }
 
-   return true;
+   return 1;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {scalar_t__ pool; int /*<<< orphan*/ * swdec_surfaces; int /*<<< orphan*/  black_surface; } ;
 
-/* Variables and functions */
- int MAX_OUTPUT_SURFACES ; 
- int /*<<< orphan*/  flush_output_surfaces (struct priv*) ; 
- int /*<<< orphan*/  mp_image_pool_clear (scalar_t__) ; 
- int /*<<< orphan*/  mp_image_unrefp (int /*<<< orphan*/ *) ; 
+
+
+
+struct priv {scalar_t__ pool; int * swdec_surfaces; int black_surface; } ;
+
+
+ int MAX_OUTPUT_SURFACES ;
+ int flush_output_surfaces (struct priv*) ;
+ int mp_image_pool_clear (scalar_t__) ;
+ int mp_image_unrefp (int *) ;
 
 __attribute__((used)) static void free_video_specific(struct priv *p)
 {

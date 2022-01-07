@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct rrdengine_instance* data; } ;
-typedef  TYPE_3__ uv_work_t ;
+typedef TYPE_3__ uv_work_t ;
 struct TYPE_6__ {struct rrdengine_datafile* first; } ;
 struct rrdengine_instance {TYPE_2__ datafiles; } ;
 struct TYPE_5__ {struct extent_info* first; } ;
@@ -22,9 +22,9 @@ struct rrdengine_datafile {TYPE_1__ extents; } ;
 struct rrdeng_page_descr {int dummy; } ;
 struct extent_info {unsigned int number_of_pages; struct extent_info* next; struct rrdeng_page_descr** pages; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  freez (struct extent_info*) ; 
- int /*<<< orphan*/  pg_cache_punch_hole (struct rrdengine_instance*,struct rrdeng_page_descr*,int /*<<< orphan*/ ) ; 
+
+ int freez (struct extent_info*) ;
+ int pg_cache_punch_hole (struct rrdengine_instance*,struct rrdeng_page_descr*,int ) ;
 
 __attribute__((used)) static void delete_old_data(uv_work_t *req)
 {
@@ -34,10 +34,10 @@ __attribute__((used)) static void delete_old_data(uv_work_t *req)
     struct rrdeng_page_descr *descr;
     unsigned count, i;
 
-    /* Safe to use since it will be deleted after we are done */
+
     datafile = ctx->datafiles.first;
 
-    for (extent = datafile->extents.first ; extent != NULL ; extent = next) {
+    for (extent = datafile->extents.first ; extent != ((void*)0) ; extent = next) {
         count = extent->number_of_pages;
         for (i = 0 ; i < count ; ++i) {
             descr = extent->pages[i];

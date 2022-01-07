@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  git_reference ;
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_reference_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_reference_name_to_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  git_reference_symbolic_create (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p_snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  packall () ; 
+
+
+
+typedef int name ;
+typedef int git_reference ;
+typedef int git_oid ;
+
+
+ int cl_git_pass (int ) ;
+ int g_repo ;
+ int git_reference_create (int **,int ,char*,int *,int ,int *) ;
+ int git_reference_free (int *) ;
+ int git_reference_name_to_id (int *,int ,char*) ;
+ int git_reference_symbolic_create (int **,int ,char*,char*,int ,int *) ;
+ int p_snprintf (char*,int,char*,int) ;
+ int packall () ;
 
 void test_refs_pack__symbolic(void)
 {
-	/* create a packfile from loose refs skipping symbolic refs */
-	int i;
-	git_oid head;
-	git_reference *ref;
-	char name[128];
 
-	cl_git_pass(git_reference_name_to_id(&head, g_repo, "HEAD"));
+ int i;
+ git_oid head;
+ git_reference *ref;
+ char name[128];
 
-	/* make a bunch of references */
+ cl_git_pass(git_reference_name_to_id(&head, g_repo, "HEAD"));
 
-	for (i = 0; i < 100; ++i) {
-		p_snprintf(name, sizeof(name), "refs/heads/symbolic-%03d", i);
-		cl_git_pass(git_reference_symbolic_create(
-			&ref, g_repo, name, "refs/heads/master", 0, NULL));
-		git_reference_free(ref);
 
-		p_snprintf(name, sizeof(name), "refs/heads/direct-%03d", i);
-		cl_git_pass(git_reference_create(&ref, g_repo, name, &head, 0, NULL));
-		git_reference_free(ref);
-	}
 
-	packall();
+ for (i = 0; i < 100; ++i) {
+  p_snprintf(name, sizeof(name), "refs/heads/symbolic-%03d", i);
+  cl_git_pass(git_reference_symbolic_create(
+   &ref, g_repo, name, "refs/heads/master", 0, ((void*)0)));
+  git_reference_free(ref);
+
+  p_snprintf(name, sizeof(name), "refs/heads/direct-%03d", i);
+  cl_git_pass(git_reference_create(&ref, g_repo, name, &head, 0, ((void*)0)));
+  git_reference_free(ref);
+ }
+
+ packall();
 }

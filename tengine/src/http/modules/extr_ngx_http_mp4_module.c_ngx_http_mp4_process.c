@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_50__   TYPE_9__ ;
-typedef  struct TYPE_49__   TYPE_8__ ;
-typedef  struct TYPE_48__   TYPE_7__ ;
-typedef  struct TYPE_47__   TYPE_6__ ;
-typedef  struct TYPE_46__   TYPE_5__ ;
-typedef  struct TYPE_45__   TYPE_4__ ;
-typedef  struct TYPE_44__   TYPE_3__ ;
-typedef  struct TYPE_43__   TYPE_2__ ;
-typedef  struct TYPE_42__   TYPE_1__ ;
-typedef  struct TYPE_41__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-typedef  size_t ngx_uint_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_50__ TYPE_9__ ;
+typedef struct TYPE_49__ TYPE_8__ ;
+typedef struct TYPE_48__ TYPE_7__ ;
+typedef struct TYPE_47__ TYPE_6__ ;
+typedef struct TYPE_46__ TYPE_5__ ;
+typedef struct TYPE_45__ TYPE_4__ ;
+typedef struct TYPE_44__ TYPE_3__ ;
+typedef struct TYPE_43__ TYPE_2__ ;
+typedef struct TYPE_42__ TYPE_1__ ;
+typedef struct TYPE_41__ TYPE_10__ ;
+
+
+typedef scalar_t__ off_t ;
+typedef size_t ngx_uint_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_48__ {scalar_t__ size; scalar_t__ mdhd_size; scalar_t__ hdlr_size; scalar_t__ tkhd_size; scalar_t__ start_offset; scalar_t__ end_offset; TYPE_10__* out; } ;
-typedef  TYPE_7__ ngx_http_mp4_trak_t ;
+typedef TYPE_7__ ngx_http_mp4_trak_t ;
 struct TYPE_47__ {size_t nelts; TYPE_7__* elts; } ;
-struct TYPE_44__ {int /*<<< orphan*/  data; } ;
-struct TYPE_45__ {int /*<<< orphan*/  log; TYPE_3__ name; } ;
+struct TYPE_44__ {int data; } ;
+struct TYPE_45__ {int log; TYPE_3__ name; } ;
 struct TYPE_43__ {TYPE_1__* buf; } ;
-struct TYPE_41__ {int /*<<< orphan*/ * buf; struct TYPE_41__* next; } ;
+struct TYPE_41__ {int * buf; struct TYPE_41__* next; } ;
 struct TYPE_46__ {scalar_t__ last; scalar_t__ pos; } ;
-struct TYPE_49__ {scalar_t__ end; scalar_t__ moov_size; scalar_t__ ftyp_size; TYPE_6__ trak; TYPE_4__ file; TYPE_2__ mdat_data; TYPE_10__ mdat_atom; int /*<<< orphan*/  content_length; int /*<<< orphan*/  moov_atom_header; TYPE_10__ mvhd_atom; TYPE_5__ mvhd_atom_buf; TYPE_10__ moov_atom; TYPE_10__ ftyp_atom; TYPE_10__* out; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/  request; int /*<<< orphan*/  length; int /*<<< orphan*/  start; } ;
-typedef  TYPE_8__ ngx_http_mp4_file_t ;
-struct TYPE_50__ {int /*<<< orphan*/  buffer_size; } ;
-typedef  TYPE_9__ ngx_http_mp4_conf_t ;
-typedef  TYPE_10__ ngx_chain_t ;
-typedef  int /*<<< orphan*/  int32_t ;
+struct TYPE_49__ {scalar_t__ end; scalar_t__ moov_size; scalar_t__ ftyp_size; TYPE_6__ trak; TYPE_4__ file; TYPE_2__ mdat_data; TYPE_10__ mdat_atom; int content_length; int moov_atom_header; TYPE_10__ mvhd_atom; TYPE_5__ mvhd_atom_buf; TYPE_10__ moov_atom; TYPE_10__ ftyp_atom; TYPE_10__* out; int buffer_size; int request; int length; int start; } ;
+typedef TYPE_8__ ngx_http_mp4_file_t ;
+struct TYPE_50__ {int buffer_size; } ;
+typedef TYPE_9__ ngx_http_mp4_conf_t ;
+typedef TYPE_10__ ngx_chain_t ;
+typedef int int32_t ;
 struct TYPE_42__ {scalar_t__ file_last; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- size_t NGX_HTTP_MP4_CO64_DATA ; 
- size_t NGX_HTTP_MP4_LAST_ATOM ; 
- size_t NGX_HTTP_MP4_TRAK_ATOM ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- TYPE_9__* ngx_http_get_module_loc_conf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_mp4_adjust_co64_atom (TYPE_8__*,TYPE_7__*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_mp4_adjust_stco_atom (TYPE_8__*,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_mp4_atoms ; 
- int /*<<< orphan*/  ngx_http_mp4_module ; 
- scalar_t__ ngx_http_mp4_read_atom (TYPE_8__*,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ ngx_http_mp4_update_co64_atom (TYPE_8__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_http_mp4_update_ctts_atom (TYPE_8__*,TYPE_7__*) ; 
- scalar_t__ ngx_http_mp4_update_mdat_atom (TYPE_8__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ngx_http_mp4_update_mdia_atom (TYPE_8__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_http_mp4_update_minf_atom (TYPE_8__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_http_mp4_update_stbl_atom (TYPE_8__*,TYPE_7__*) ; 
- scalar_t__ ngx_http_mp4_update_stco_atom (TYPE_8__*,TYPE_7__*) ; 
- scalar_t__ ngx_http_mp4_update_stsc_atom (TYPE_8__*,TYPE_7__*) ; 
- scalar_t__ ngx_http_mp4_update_stss_atom (TYPE_8__*,TYPE_7__*) ; 
- scalar_t__ ngx_http_mp4_update_stsz_atom (TYPE_8__*,TYPE_7__*) ; 
- scalar_t__ ngx_http_mp4_update_stts_atom (TYPE_8__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_http_mp4_update_trak_atom (TYPE_8__*,TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_mp4_set_32value (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ngx_mp4_set_atom_name (int /*<<< orphan*/ ,char,char,char,char) ; 
+
+ scalar_t__ NGX_ERROR ;
+ size_t NGX_HTTP_MP4_CO64_DATA ;
+ size_t NGX_HTTP_MP4_LAST_ATOM ;
+ size_t NGX_HTTP_MP4_TRAK_ATOM ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ TYPE_9__* ngx_http_get_module_loc_conf (int ,int ) ;
+ int ngx_http_mp4_adjust_co64_atom (TYPE_8__*,TYPE_7__*,scalar_t__) ;
+ int ngx_http_mp4_adjust_stco_atom (TYPE_8__*,TYPE_7__*,int ) ;
+ int ngx_http_mp4_atoms ;
+ int ngx_http_mp4_module ;
+ scalar_t__ ngx_http_mp4_read_atom (TYPE_8__*,int ,scalar_t__) ;
+ scalar_t__ ngx_http_mp4_update_co64_atom (TYPE_8__*,TYPE_7__*) ;
+ int ngx_http_mp4_update_ctts_atom (TYPE_8__*,TYPE_7__*) ;
+ scalar_t__ ngx_http_mp4_update_mdat_atom (TYPE_8__*,scalar_t__,scalar_t__) ;
+ int ngx_http_mp4_update_mdia_atom (TYPE_8__*,TYPE_7__*) ;
+ int ngx_http_mp4_update_minf_atom (TYPE_8__*,TYPE_7__*) ;
+ int ngx_http_mp4_update_stbl_atom (TYPE_8__*,TYPE_7__*) ;
+ scalar_t__ ngx_http_mp4_update_stco_atom (TYPE_8__*,TYPE_7__*) ;
+ scalar_t__ ngx_http_mp4_update_stsc_atom (TYPE_8__*,TYPE_7__*) ;
+ scalar_t__ ngx_http_mp4_update_stss_atom (TYPE_8__*,TYPE_7__*) ;
+ scalar_t__ ngx_http_mp4_update_stsz_atom (TYPE_8__*,TYPE_7__*) ;
+ scalar_t__ ngx_http_mp4_update_stts_atom (TYPE_8__*,TYPE_7__*) ;
+ int ngx_http_mp4_update_trak_atom (TYPE_8__*,TYPE_7__*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,scalar_t__) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int ,int ) ;
+ int ngx_log_error (int ,int ,int ,char*,int ) ;
+ int ngx_mp4_set_32value (int ,scalar_t__) ;
+ int ngx_mp4_set_atom_name (int ,char,char,char,char) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_mp4_process(ngx_http_mp4_file_t *mp4)
 {
-    off_t                  start_offset, end_offset, adjustment;
-    ngx_int_t              rc;
-    ngx_uint_t             i, j;
-    ngx_chain_t          **prev;
-    ngx_http_mp4_trak_t   *trak;
-    ngx_http_mp4_conf_t   *conf;
+    off_t start_offset, end_offset, adjustment;
+    ngx_int_t rc;
+    ngx_uint_t i, j;
+    ngx_chain_t **prev;
+    ngx_http_mp4_trak_t *trak;
+    ngx_http_mp4_conf_t *conf;
 
     ngx_log_debug2(NGX_LOG_DEBUG_HTTP, mp4->file.log, 0,
                    "mp4 start:%ui, length:%ui", mp4->start, mp4->length);
@@ -100,7 +100,7 @@ ngx_http_mp4_process(ngx_http_mp4_file_t *mp4)
         return NGX_ERROR;
     }
 
-    if (mp4->mdat_atom.buf == NULL) {
+    if (mp4->mdat_atom.buf == ((void*)0)) {
         ngx_log_error(NGX_LOG_ERR, mp4->file.log, 0,
                       "no mp4 mdat atom was found in \"%s\"",
                       mp4->file.name.data);

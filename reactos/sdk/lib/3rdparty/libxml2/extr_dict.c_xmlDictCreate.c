@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlDictPtr ;
-typedef  int /*<<< orphan*/  xmlDictEntry ;
-typedef  int /*<<< orphan*/  xmlDict ;
-struct TYPE_4__ {int ref_counter; int size; scalar_t__ seed; void* dict; int /*<<< orphan*/ * subdict; int /*<<< orphan*/ * strings; scalar_t__ nbElems; scalar_t__ limit; } ;
 
-/* Variables and functions */
- int MIN_DICT_SIZE ; 
- int /*<<< orphan*/  __xmlInitializeDict () ; 
- scalar_t__ __xmlRandom () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  xmlDictInitialized ; 
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- void* xmlMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlDictPtr ;
+typedef int xmlDictEntry ;
+typedef int xmlDict ;
+struct TYPE_4__ {int ref_counter; int size; scalar_t__ seed; void* dict; int * subdict; int * strings; scalar_t__ nbElems; scalar_t__ limit; } ;
+
+
+ int MIN_DICT_SIZE ;
+ int __xmlInitializeDict () ;
+ scalar_t__ __xmlRandom () ;
+ int fprintf (int ,char*) ;
+ int memset (void*,int ,int) ;
+ int stderr ;
+ int xmlDictInitialized ;
+ int xmlFree (TYPE_1__*) ;
+ void* xmlMalloc (int) ;
 
 xmlDictPtr
 xmlDictCreate(void) {
@@ -33,11 +33,11 @@ xmlDictCreate(void) {
 
     if (!xmlDictInitialized)
         if (!__xmlInitializeDict())
-            return(NULL);
+            return(((void*)0));
 
-#ifdef DICT_DEBUG_PATTERNS
-    fprintf(stderr, "C");
-#endif
+
+
+
 
     dict = xmlMalloc(sizeof(xmlDict));
     if (dict) {
@@ -45,20 +45,20 @@ xmlDictCreate(void) {
         dict->limit = 0;
 
         dict->size = MIN_DICT_SIZE;
-	dict->nbElems = 0;
+ dict->nbElems = 0;
         dict->dict = xmlMalloc(MIN_DICT_SIZE * sizeof(xmlDictEntry));
-	dict->strings = NULL;
-	dict->subdict = NULL;
+ dict->strings = ((void*)0);
+ dict->subdict = ((void*)0);
         if (dict->dict) {
-	    memset(dict->dict, 0, MIN_DICT_SIZE * sizeof(xmlDictEntry));
-#ifdef DICT_RANDOMIZATION
-            dict->seed = __xmlRandom();
-#else
+     memset(dict->dict, 0, MIN_DICT_SIZE * sizeof(xmlDictEntry));
+
+
+
             dict->seed = 0;
-#endif
-	    return(dict);
+
+     return(dict);
         }
         xmlFree(dict);
     }
-    return(NULL);
+    return(((void*)0));
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
-typedef  int /*<<< orphan*/  sbuf ;
-typedef  struct in_addr const FILE ;
+typedef int sbuf ;
+typedef struct in_addr const FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int INET_ADDRSTRLEN ; 
- int /*<<< orphan*/  assert (struct in_addr const*) ; 
- int /*<<< orphan*/  fputc (char,struct in_addr const*) ; 
- int /*<<< orphan*/  fputs (int /*<<< orphan*/ ,struct in_addr const*) ; 
- int /*<<< orphan*/  inet_ntop (int /*<<< orphan*/ ,struct in_addr const*,char*,int) ; 
+
+ int AF_INET ;
+ int INET_ADDRSTRLEN ;
+ int assert (struct in_addr const*) ;
+ int fputc (char,struct in_addr const*) ;
+ int fputs (int ,struct in_addr const*) ;
+ int inet_ntop (int ,struct in_addr const*,char*,int) ;
 
 size_t serialize_in_addrs(FILE *f,
                           const struct in_addr *addresses,
@@ -43,7 +43,7 @@ size_t serialize_in_addrs(FILE *f,
                 if (with_leading_space)
                         fputc(' ', f);
                 else
-                        with_leading_space = true;
+                        with_leading_space = 1;
                 fputs(inet_ntop(AF_INET, &addresses[i], sbuf, sizeof(sbuf)), f);
                 count++;
         }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_12__ {size_t len; char* data; } ;
-typedef  TYPE_2__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_http_lua_script_copy_code_t ;
-struct TYPE_13__ {int complete_lengths; int complete_values; TYPE_5__** values; TYPE_5__** lengths; TYPE_2__* source; int /*<<< orphan*/  log; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_3__ ngx_http_lua_script_compile_t ;
-typedef  int /*<<< orphan*/  ngx_http_lua_script_capture_code_t ;
-struct TYPE_14__ {TYPE_1__* complex_value; int /*<<< orphan*/  log; int /*<<< orphan*/  pool; TYPE_2__* value; } ;
-typedef  TYPE_4__ ngx_http_lua_compile_complex_value_t ;
-struct TYPE_15__ {int /*<<< orphan*/ * elts; } ;
-typedef  TYPE_5__ ngx_array_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * values; int /*<<< orphan*/ * lengths; TYPE_2__ value; } ;
+typedef TYPE_2__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
+typedef int ngx_http_lua_script_copy_code_t ;
+struct TYPE_13__ {int complete_lengths; int complete_values; TYPE_5__** values; TYPE_5__** lengths; TYPE_2__* source; int log; int pool; } ;
+typedef TYPE_3__ ngx_http_lua_script_compile_t ;
+typedef int ngx_http_lua_script_capture_code_t ;
+struct TYPE_14__ {TYPE_1__* complex_value; int log; int pool; TYPE_2__* value; } ;
+typedef TYPE_4__ ngx_http_lua_compile_complex_value_t ;
+struct TYPE_15__ {int * elts; } ;
+typedef TYPE_5__ ngx_array_t ;
+struct TYPE_11__ {int * values; int * lengths; TYPE_2__ value; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  ngx_array_destroy (TYPE_5__*) ; 
- scalar_t__ ngx_array_init (TYPE_5__*,int /*<<< orphan*/ ,size_t,int) ; 
- scalar_t__ ngx_http_lua_script_compile (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_3__*,int) ; 
+
+ scalar_t__ NGX_ERROR ;
+ scalar_t__ NGX_OK ;
+ int ngx_array_destroy (TYPE_5__*) ;
+ scalar_t__ ngx_array_init (TYPE_5__*,int ,size_t,int) ;
+ scalar_t__ ngx_http_lua_script_compile (TYPE_3__*) ;
+ int ngx_memzero (TYPE_3__*,int) ;
 
 ngx_int_t
 ngx_http_lua_compile_complex_value(ngx_http_lua_compile_complex_value_t *ccv)
 {
-    ngx_str_t                  *v;
-    ngx_uint_t                  i, n, nv;
-    ngx_array_t                 lengths, values, *pl, *pv;
+    ngx_str_t *v;
+    ngx_uint_t i, n, nv;
+    ngx_array_t lengths, values, *pl, *pv;
 
-    ngx_http_lua_script_compile_t   sc;
+    ngx_http_lua_script_compile_t sc;
 
     v = ccv->value;
 
@@ -57,8 +57,8 @@ ngx_http_lua_compile_complex_value(ngx_http_lua_compile_complex_value_t *ccv)
     }
 
     ccv->complex_value->value = *v;
-    ccv->complex_value->lengths = NULL;
-    ccv->complex_value->values = NULL;
+    ccv->complex_value->lengths = ((void*)0);
+    ccv->complex_value->values = ((void*)0);
 
     if (nv == 0) {
         return NGX_OK;

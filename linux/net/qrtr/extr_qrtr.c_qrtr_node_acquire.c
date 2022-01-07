@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qrtr_node {int /*<<< orphan*/  ref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kref_get (int /*<<< orphan*/ *) ; 
+
+
+
+struct qrtr_node {int ref; } ;
+
+
+ int kref_get (int *) ;
 
 __attribute__((used)) static struct qrtr_node *qrtr_node_acquire(struct qrtr_node *node)
 {
-	if (node)
-		kref_get(&node->ref);
-	return node;
+ if (node)
+  kref_get(&node->ref);
+ return node;
 }

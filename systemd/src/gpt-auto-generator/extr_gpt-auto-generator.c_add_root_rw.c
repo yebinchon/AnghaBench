@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  rw; } ;
-typedef  TYPE_1__ DissectedPartition ;
 
-/* Variables and functions */
- int WRITE_STRING_FILE_CREATE ; 
- int WRITE_STRING_FILE_MKDIR_0755 ; 
- int WRITE_STRING_FILE_NOFOLLOW ; 
- int /*<<< orphan*/  arg_dest ; 
- scalar_t__ arg_root_rw ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  generator_enable_remount_fs_service (int /*<<< orphan*/ ) ; 
- scalar_t__ in_initrd () ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_error_errno (int,char*,char const*) ; 
- char* strjoina (int /*<<< orphan*/ ,char*) ; 
- int write_string_file (char const*,char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int rw; } ;
+typedef TYPE_1__ DissectedPartition ;
+
+
+ int WRITE_STRING_FILE_CREATE ;
+ int WRITE_STRING_FILE_MKDIR_0755 ;
+ int WRITE_STRING_FILE_NOFOLLOW ;
+ int arg_dest ;
+ scalar_t__ arg_root_rw ;
+ int assert (TYPE_1__*) ;
+ int generator_enable_remount_fs_service (int ) ;
+ scalar_t__ in_initrd () ;
+ int log_debug (char*) ;
+ int log_error_errno (int,char*,char const*) ;
+ char* strjoina (int ,char*) ;
+ int write_string_file (char const*,char*,int) ;
 
 __attribute__((used)) static int add_root_rw(DissectedPartition *p) {
         const char *path;

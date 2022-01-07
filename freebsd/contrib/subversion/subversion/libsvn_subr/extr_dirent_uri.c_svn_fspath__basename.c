@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- int /*<<< orphan*/  svn_fspath__is_canonical (char const*) ; 
- char* svn_relpath_basename (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int apr_pool_t ;
+
+
+ int assert (int ) ;
+ int * strchr (char const*,char) ;
+ int svn_fspath__is_canonical (char const*) ;
+ char* svn_relpath_basename (char const*,int *) ;
 
 const char *
 svn_fspath__basename(const char *fspath,
@@ -27,6 +27,6 @@ svn_fspath__basename(const char *fspath,
 
   result = svn_relpath_basename(fspath + 1, pool);
 
-  assert(strchr(result, '/') == NULL);
+  assert(strchr(result, '/') == ((void*)0));
   return result;
 }

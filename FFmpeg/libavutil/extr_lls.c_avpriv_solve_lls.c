@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double** covariance; int indep_count; double** coeff; double* variance; } ;
-typedef  TYPE_1__ LLSModel ;
+typedef TYPE_1__ LLSModel ;
 
-/* Variables and functions */
- int MAX_VARS_ALIGN ; 
- double sqrt (double) ; 
+
+ int MAX_VARS_ALIGN ;
+ double sqrt (double) ;
 
 void avpriv_solve_lls(LLSModel *m, double threshold, unsigned short min_order)
 {
     int i, j, k;
     double (*factor)[MAX_VARS_ALIGN] = (void *) &m->covariance[1][0];
     double (*covar) [MAX_VARS_ALIGN] = (void *) &m->covariance[1][1];
-    double *covar_y                = m->covariance[0];
-    int count                      = m->indep_count;
+    double *covar_y = m->covariance[0];
+    int count = m->indep_count;
 
     for (i = 0; i < count; i++) {
         for (j = i; j < count; j++) {

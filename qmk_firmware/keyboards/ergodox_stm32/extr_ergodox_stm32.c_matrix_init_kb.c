@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GPIOA ; 
- int /*<<< orphan*/  PAL_MODE_OUTPUT_PUSHPULL ; 
- int /*<<< orphan*/  ergodox_blink_all_leds () ; 
- int /*<<< orphan*/  matrix_init_user () ; 
- int /*<<< orphan*/  palSetPadMode (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+ int GPIOA ;
+ int PAL_MODE_OUTPUT_PUSHPULL ;
+ int ergodox_blink_all_leds () ;
+ int matrix_init_user () ;
+ int palSetPadMode (int ,int,int ) ;
 
 void matrix_init_kb(void)
 {
-    // Init LED Ports
-    palSetPadMode(GPIOA, 10, PAL_MODE_OUTPUT_PUSHPULL); // LED 1
-    palSetPadMode(GPIOA, 9, PAL_MODE_OUTPUT_PUSHPULL); // LED 2
-    palSetPadMode(GPIOA, 8, PAL_MODE_OUTPUT_PUSHPULL); // LED 3
+
+    palSetPadMode(GPIOA, 10, PAL_MODE_OUTPUT_PUSHPULL);
+    palSetPadMode(GPIOA, 9, PAL_MODE_OUTPUT_PUSHPULL);
+    palSetPadMode(GPIOA, 8, PAL_MODE_OUTPUT_PUSHPULL);
 
     ergodox_blink_all_leds();
 

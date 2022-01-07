@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  pCursor ;
-struct TYPE_6__ {int /*<<< orphan*/  nSnippet; int /*<<< orphan*/  zSnippet; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int pCursor ;
+struct TYPE_6__ {int nSnippet; int zSnippet; } ;
 struct TYPE_7__ {TYPE_1__ snippet; } ;
-typedef  TYPE_2__ fulltext_cursor ;
+typedef TYPE_2__ fulltext_cursor ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_BLOB ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  memcpy (TYPE_2__**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snippetAllOffsets (TYPE_2__*) ; 
- int /*<<< orphan*/  snippetText (TYPE_2__*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ SQLITE_BLOB ;
+ int SQLITE_STATIC ;
+ int memcpy (TYPE_2__**,int ,int) ;
+ int snippetAllOffsets (TYPE_2__*) ;
+ int snippetText (TYPE_2__*,char const*,char const*,char const*) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_text (int *,int ,int ,int ) ;
+ int sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void snippetFunc(
   sqlite3_context *pContext,

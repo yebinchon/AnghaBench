@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct net_bridge_vlan {int dummy; } ;
-struct net_bridge_port {int /*<<< orphan*/  br; TYPE_1__* dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev_addr; } ;
+struct net_bridge_port {int br; TYPE_1__* dev; } ;
+struct TYPE_2__ {int dev_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_RTNL () ; 
- int ENOENT ; 
- int __vlan_del (struct net_bridge_vlan*) ; 
- int /*<<< orphan*/  br_fdb_delete_by_port (int /*<<< orphan*/ ,struct net_bridge_port*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  br_fdb_find_delete_local (int /*<<< orphan*/ ,struct net_bridge_port*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct net_bridge_vlan* br_vlan_find (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nbp_vlan_group (struct net_bridge_port*) ; 
+
+ int ASSERT_RTNL () ;
+ int ENOENT ;
+ int __vlan_del (struct net_bridge_vlan*) ;
+ int br_fdb_delete_by_port (int ,struct net_bridge_port*,int ,int ) ;
+ int br_fdb_find_delete_local (int ,struct net_bridge_port*,int ,int ) ;
+ struct net_bridge_vlan* br_vlan_find (int ,int ) ;
+ int nbp_vlan_group (struct net_bridge_port*) ;
 
 int nbp_vlan_delete(struct net_bridge_port *port, u16 vid)
 {
-	struct net_bridge_vlan *v;
+ struct net_bridge_vlan *v;
 
-	ASSERT_RTNL();
+ ASSERT_RTNL();
 
-	v = br_vlan_find(nbp_vlan_group(port), vid);
-	if (!v)
-		return -ENOENT;
-	br_fdb_find_delete_local(port->br, port, port->dev->dev_addr, vid);
-	br_fdb_delete_by_port(port->br, port, vid, 0);
+ v = br_vlan_find(nbp_vlan_group(port), vid);
+ if (!v)
+  return -ENOENT;
+ br_fdb_find_delete_local(port->br, port, port->dev->dev_addr, vid);
+ br_fdb_delete_by_port(port->br, port, vid, 0);
 
-	return __vlan_del(v);
+ return __vlan_del(v);
 }

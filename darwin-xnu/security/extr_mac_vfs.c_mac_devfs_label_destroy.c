@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct devnode {int /*<<< orphan*/ * dn_label; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mac_devfs_label_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct devnode {int * dn_label; } ;
+
+
+ int mac_devfs_label_free (int *) ;
 
 void
 mac_devfs_label_destroy(struct devnode *de)
 {
-	if (de->dn_label != NULL) {
-		mac_devfs_label_free(de->dn_label);
-		de->dn_label = NULL;
-	}
+ if (de->dn_label != ((void*)0)) {
+  mac_devfs_label_free(de->dn_label);
+  de->dn_label = ((void*)0);
+ }
 }

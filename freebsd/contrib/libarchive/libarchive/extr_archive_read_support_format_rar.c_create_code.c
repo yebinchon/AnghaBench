@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct huffman_code {int numentries; int /*<<< orphan*/  maxlength; int /*<<< orphan*/  minlength; scalar_t__ numallocatedentries; } ;
-struct archive_read {int /*<<< orphan*/  archive; } ;
 
-/* Variables and functions */
- int ARCHIVE_FATAL ; 
- scalar_t__ ARCHIVE_OK ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INT_MAX ; 
- int /*<<< orphan*/  INT_MIN ; 
- scalar_t__ add_value (struct archive_read*,struct huffman_code*,int,int,int) ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ new_node (struct huffman_code*) ; 
+
+
+
+struct huffman_code {int numentries; int maxlength; int minlength; scalar_t__ numallocatedentries; } ;
+struct archive_read {int archive; } ;
+
+
+ int ARCHIVE_FATAL ;
+ scalar_t__ ARCHIVE_OK ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int INT_MIN ;
+ scalar_t__ add_value (struct archive_read*,struct huffman_code*,int,int,int) ;
+ int archive_set_error (int *,int ,char*) ;
+ scalar_t__ new_node (struct huffman_code*) ;
 
 __attribute__((used)) static int
 create_code(struct archive_read *a, struct huffman_code *code,

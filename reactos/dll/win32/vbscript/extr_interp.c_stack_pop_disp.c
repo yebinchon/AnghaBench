@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  exec_ctx_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int VT_BYREF ; 
- int VT_DISPATCH ; 
- int VT_VARIANT ; 
- int /*<<< orphan*/ * V_BYREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * V_DISPATCH (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stack_pop (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int exec_ctx_t ;
+typedef int VARIANT ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ int FIXME (char*,int ) ;
+ int IDispatch_AddRef (int *) ;
+ int S_OK ;
+ int VT_BYREF ;
+ int VT_DISPATCH ;
+ int VT_VARIANT ;
+ int * V_BYREF (int *) ;
+ int * V_DISPATCH (int *) ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int debugstr_variant (int *) ;
+ int * stack_pop (int *) ;
 
 __attribute__((used)) static HRESULT stack_pop_disp(exec_ctx_t *ctx, IDispatch **ret)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {struct TYPE_3__* prev; int /*<<< orphan*/  szPath; } ;
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  TYPE_1__* LPDIRENTRY ;
-typedef  int /*<<< orphan*/  INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConOutPuts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConOutResPuts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STRING_DIRSTACK_HELP3 ; 
- int /*<<< orphan*/  STRING_DIRSTACK_HELP4 ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tcsncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* lpStackBottom ; 
- scalar_t__ nErrorLevel ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {struct TYPE_3__* prev; int szPath; } ;
+typedef int LPTSTR ;
+typedef TYPE_1__* LPDIRENTRY ;
+typedef int INT ;
+
+
+ int ConOutPuts (int ) ;
+ int ConOutResPuts (int ) ;
+ int STRING_DIRSTACK_HELP3 ;
+ int STRING_DIRSTACK_HELP4 ;
+ int _T (char*) ;
+ int _tcsncmp (int ,int ,int) ;
+ TYPE_1__* lpStackBottom ;
+ scalar_t__ nErrorLevel ;
 
 INT CommandDirs (LPTSTR rest)
 {
@@ -40,13 +40,13 @@ INT CommandDirs (LPTSTR rest)
 
     lpDir = lpStackBottom;
 
-    if (lpDir == NULL)
+    if (lpDir == ((void*)0))
     {
         ConOutResPuts(STRING_DIRSTACK_HELP4);
         return 0;
     }
 
-    while (lpDir != NULL)
+    while (lpDir != ((void*)0))
     {
         ConOutPuts(lpDir->szPath);
         lpDir = lpDir->prev;

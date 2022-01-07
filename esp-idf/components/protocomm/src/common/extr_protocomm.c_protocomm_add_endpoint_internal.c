@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_7__ {scalar_t__ (* add_endpoint ) (char const*,int /*<<< orphan*/ *,void*) ;int /*<<< orphan*/  endpoints; } ;
-typedef  TYPE_1__ protocomm_t ;
-typedef  int /*<<< orphan*/ * protocomm_req_handler_t ;
-struct TYPE_8__ {char const* ep_name; int /*<<< orphan*/  flag; void* priv_data; int /*<<< orphan*/ * req_handler; } ;
-typedef  TYPE_2__ protocomm_ep_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_INVALID_ARG ; 
- scalar_t__ ESP_ERR_NO_MEM ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  SLIST_INSERT_HEAD (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  next ; 
- TYPE_2__* search_endpoint (TYPE_1__*,char const*) ; 
- scalar_t__ stub1 (char const*,int /*<<< orphan*/ *,void*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_7__ {scalar_t__ (* add_endpoint ) (char const*,int *,void*) ;int endpoints; } ;
+typedef TYPE_1__ protocomm_t ;
+typedef int * protocomm_req_handler_t ;
+struct TYPE_8__ {char const* ep_name; int flag; void* priv_data; int * req_handler; } ;
+typedef TYPE_2__ protocomm_ep_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_ERR_INVALID_ARG ;
+ scalar_t__ ESP_ERR_NO_MEM ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGE (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int SLIST_INSERT_HEAD (int *,TYPE_2__*,int ) ;
+ int TAG ;
+ scalar_t__ calloc (int,int) ;
+ int next ;
+ TYPE_2__* search_endpoint (TYPE_1__*,char const*) ;
+ scalar_t__ stub1 (char const*,int *,void*) ;
 
 __attribute__((used)) static esp_err_t protocomm_add_endpoint_internal(protocomm_t *pc, const char *ep_name,
                                                  protocomm_req_handler_t h, void *priv_data,
                                                  uint32_t flag)
 {
-    if ((pc == NULL) || (ep_name == NULL) || (h == NULL)) {
+    if ((pc == ((void*)0)) || (ep_name == ((void*)0)) || (h == ((void*)0))) {
         return ESP_ERR_INVALID_ARG;
     }
 
@@ -64,13 +64,13 @@ __attribute__((used)) static esp_err_t protocomm_add_endpoint_internal(protocomm
         return ESP_ERR_NO_MEM;
     }
 
-    /* Initialize ep handler */
+
     ep->ep_name = ep_name;
     ep->req_handler = h;
     ep->priv_data = priv_data;
     ep->flag = flag;
 
-    /* Add endpoint to the head of the singly linked list */
+
     SLIST_INSERT_HEAD(&pc->endpoints, ep, next);
 
     return ESP_OK;

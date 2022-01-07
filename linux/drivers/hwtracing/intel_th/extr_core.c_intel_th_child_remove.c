@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_release_driver (struct device*) ; 
+
+ int device_release_driver (struct device*) ;
 
 __attribute__((used)) static int intel_th_child_remove(struct device *dev, void *data)
 {
-	device_release_driver(dev);
+ device_release_driver(dev);
 
-	return 0;
+ return 0;
 }

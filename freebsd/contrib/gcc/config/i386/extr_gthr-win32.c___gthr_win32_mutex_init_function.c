@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int counter; int /*<<< orphan*/  sema; } ;
-typedef  TYPE_1__ __gthread_mutex_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateSemaphore (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int counter; int sema; } ;
+typedef TYPE_1__ __gthread_mutex_t ;
+
+
+ int CreateSemaphore (int *,int ,int,int *) ;
 
 void
 __gthr_win32_mutex_init_function (__gthread_mutex_t *mutex)
 {
   mutex->counter = -1;
-  mutex->sema = CreateSemaphore (NULL, 0, 65535, NULL);
+  mutex->sema = CreateSemaphore (((void*)0), 0, 65535, ((void*)0));
 }

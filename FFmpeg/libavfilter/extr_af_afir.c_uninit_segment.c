@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* priv; } ;
 struct TYPE_7__ {int nb_channels; } ;
-struct TYPE_6__ {scalar_t__ input_size; int /*<<< orphan*/  output; int /*<<< orphan*/  input; int /*<<< orphan*/  coeff; int /*<<< orphan*/  buffer; int /*<<< orphan*/  sum; int /*<<< orphan*/  block; int /*<<< orphan*/ * part_index; int /*<<< orphan*/ * output_offset; int /*<<< orphan*/ * irdft; int /*<<< orphan*/ * rdft; } ;
-typedef  TYPE_1__ AudioFIRSegment ;
-typedef  TYPE_2__ AudioFIRContext ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_6__ {scalar_t__ input_size; int output; int input; int coeff; int buffer; int sum; int block; int * part_index; int * output_offset; int * irdft; int * rdft; } ;
+typedef TYPE_1__ AudioFIRSegment ;
+typedef TYPE_2__ AudioFIRContext ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_rdft_end (int /*<<< orphan*/ ) ; 
+
+ int av_frame_free (int *) ;
+ int av_freep (int **) ;
+ int av_rdft_end (int ) ;
 
 __attribute__((used)) static void uninit_segment(AVFilterContext *ctx, AudioFIRSegment *seg)
 {

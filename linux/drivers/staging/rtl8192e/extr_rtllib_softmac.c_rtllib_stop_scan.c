@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rtllib_device {int softmac_features; int /*<<< orphan*/  dev; int /*<<< orphan*/  (* rtllib_stop_hw_scan ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int IEEE_SOFTMAC_SCAN ; 
- int /*<<< orphan*/  rtllib_softmac_stop_scan (struct rtllib_device*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct rtllib_device {int softmac_features; int dev; int (* rtllib_stop_hw_scan ) (int ) ;} ;
+
+
+ int IEEE_SOFTMAC_SCAN ;
+ int rtllib_softmac_stop_scan (struct rtllib_device*) ;
+ int stub1 (int ) ;
 
 void rtllib_stop_scan(struct rtllib_device *ieee)
 {
-	if (ieee->softmac_features & IEEE_SOFTMAC_SCAN) {
-		rtllib_softmac_stop_scan(ieee);
-	} else {
-		if (ieee->rtllib_stop_hw_scan)
-			ieee->rtllib_stop_hw_scan(ieee->dev);
-	}
+ if (ieee->softmac_features & IEEE_SOFTMAC_SCAN) {
+  rtllib_softmac_stop_scan(ieee);
+ } else {
+  if (ieee->rtllib_stop_hw_scan)
+   ieee->rtllib_stop_hw_scan(ieee->dev);
+ }
 }

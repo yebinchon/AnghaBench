@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned int rounds; size_t key_bits; int tag_late; int enc; int /*<<< orphan*/  tag_len; int /*<<< orphan*/ * tag; int /*<<< orphan*/ * aad_len; int /*<<< orphan*/ ** aad; scalar_t__ aead; int /*<<< orphan*/  ciphertext_len; int /*<<< orphan*/ * ciphertext; int /*<<< orphan*/  plaintext_len; int /*<<< orphan*/ * plaintext; int /*<<< orphan*/  iv_len; int /*<<< orphan*/ * iv; int /*<<< orphan*/  key_len; int /*<<< orphan*/ * key; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned int rounds; size_t key_bits; int tag_late; int enc; int tag_len; int * tag; int * aad_len; int ** aad; scalar_t__ aead; int ciphertext_len; int * ciphertext; int plaintext_len; int * plaintext; int iv_len; int * iv; int key_len; int * key; } ;
 struct TYPE_4__ {TYPE_2__* data; } ;
-typedef  TYPE_1__ EVP_TEST ;
-typedef  TYPE_2__ CIPHER_DATA ;
+typedef TYPE_1__ EVP_TEST ;
+typedef TYPE_2__ CIPHER_DATA ;
 
-/* Variables and functions */
- int AAD_NUM ; 
- int atoi (char const*) ; 
- int parse_bin (char const*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int AAD_NUM ;
+ int atoi (char const*) ;
+ int parse_bin (char const*,int **,int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int cipher_test_parse(EVP_TEST *t, const char *keyword,
                              const char *value)
@@ -54,7 +54,7 @@ __attribute__((used)) static int cipher_test_parse(EVP_TEST *t, const char *keyw
     if (cdat->aead) {
         if (strcmp(keyword, "AAD") == 0) {
             for (i = 0; i < AAD_NUM; i++) {
-                if (cdat->aad[i] == NULL)
+                if (cdat->aad[i] == ((void*)0))
                     return parse_bin(value, &cdat->aad[i], &cdat->aad_len[i]);
             }
             return -1;

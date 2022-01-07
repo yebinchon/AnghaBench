@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_file {int dummy; } ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  va_stream_func ; 
- int vmw_simple_resource_create_ioctl (struct drm_device*,void*,struct drm_file*,int /*<<< orphan*/ *) ; 
+
+ int va_stream_func ;
+ int vmw_simple_resource_create_ioctl (struct drm_device*,void*,struct drm_file*,int *) ;
 
 int vmw_stream_claim_ioctl(struct drm_device *dev, void *data,
-			   struct drm_file *file_priv)
+      struct drm_file *file_priv)
 {
-	return vmw_simple_resource_create_ioctl(dev, data, file_priv,
-						&va_stream_func);
+ return vmw_simple_resource_create_ioctl(dev, data, file_priv,
+      &va_stream_func);
 }

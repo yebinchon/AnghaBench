@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ api; int major; int minor; scalar_t__ profile; scalar_t__ robustness; scalar_t__ release; scalar_t__ forward; } ;
-typedef  TYPE_1__ _GLFWctxconfig ;
-typedef  int /*<<< orphan*/  GLboolean ;
+typedef TYPE_1__ _GLFWctxconfig ;
+typedef int GLboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- scalar_t__ GLFW_LOSE_CONTEXT_ON_RESET ; 
- scalar_t__ GLFW_NO_RESET_NOTIFICATION ; 
- scalar_t__ GLFW_OPENGL_API ; 
- scalar_t__ GLFW_OPENGL_COMPAT_PROFILE ; 
- scalar_t__ GLFW_OPENGL_CORE_PROFILE ; 
- scalar_t__ GLFW_OPENGL_ES_API ; 
- scalar_t__ GLFW_RELEASE_BEHAVIOR_FLUSH ; 
- scalar_t__ GLFW_RELEASE_BEHAVIOR_NONE ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
+
+ int GLFW_INVALID_ENUM ;
+ int GLFW_INVALID_VALUE ;
+ scalar_t__ GLFW_LOSE_CONTEXT_ON_RESET ;
+ scalar_t__ GLFW_NO_RESET_NOTIFICATION ;
+ scalar_t__ GLFW_OPENGL_API ;
+ scalar_t__ GLFW_OPENGL_COMPAT_PROFILE ;
+ scalar_t__ GLFW_OPENGL_CORE_PROFILE ;
+ scalar_t__ GLFW_OPENGL_ES_API ;
+ scalar_t__ GLFW_RELEASE_BEHAVIOR_FLUSH ;
+ scalar_t__ GLFW_RELEASE_BEHAVIOR_NONE ;
+ int GL_FALSE ;
+ int GL_TRUE ;
+ int _glfwInputError (int ,char*,...) ;
 
 GLboolean _glfwIsValidContextConfig(const _GLFWctxconfig* ctxconfig)
 {
@@ -46,11 +46,11 @@ GLboolean _glfwIsValidContextConfig(const _GLFWctxconfig* ctxconfig)
             (ctxconfig->major == 2 && ctxconfig->minor > 1) ||
             (ctxconfig->major == 3 && ctxconfig->minor > 3))
         {
-            // OpenGL 1.0 is the smallest valid version
-            // OpenGL 1.x series ended with version 1.5
-            // OpenGL 2.x series ended with version 2.1
-            // OpenGL 3.x series ended with version 3.3
-            // For now, let everything else through
+
+
+
+
+
 
             _glfwInputError(GLFW_INVALID_VALUE,
                             "Invalid OpenGL version %i.%i",
@@ -71,8 +71,8 @@ GLboolean _glfwIsValidContextConfig(const _GLFWctxconfig* ctxconfig)
             if (ctxconfig->major < 3 ||
                 (ctxconfig->major == 3 && ctxconfig->minor < 2))
             {
-                // Desktop OpenGL context profiles are only defined for version 3.2
-                // and above
+
+
 
                 _glfwInputError(GLFW_INVALID_VALUE,
                                 "Context profiles are only defined for OpenGL version 3.2 and above");
@@ -82,7 +82,7 @@ GLboolean _glfwIsValidContextConfig(const _GLFWctxconfig* ctxconfig)
 
         if (ctxconfig->forward && ctxconfig->major < 3)
         {
-            // Forward-compatible contexts are only defined for OpenGL version 3.0 and above
+
             _glfwInputError(GLFW_INVALID_VALUE,
                             "Forward-compatibility is only defined for OpenGL version 3.0 and above");
             return GL_FALSE;
@@ -94,10 +94,10 @@ GLboolean _glfwIsValidContextConfig(const _GLFWctxconfig* ctxconfig)
             (ctxconfig->major == 1 && ctxconfig->minor > 1) ||
             (ctxconfig->major == 2 && ctxconfig->minor > 0))
         {
-            // OpenGL ES 1.0 is the smallest valid version
-            // OpenGL ES 1.x series ended with version 1.1
-            // OpenGL ES 2.x series ended with version 2.0
-            // For now, let everything else through
+
+
+
+
 
             _glfwInputError(GLFW_INVALID_VALUE,
                             "Invalid OpenGL ES version %i.%i",

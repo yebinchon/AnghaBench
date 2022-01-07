@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_PUBKEY ;
-typedef  int /*<<< orphan*/  X509_ALGOR ;
 
-/* Variables and functions */
- int EVP_PKEY_cmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int X509_ALGOR_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_PUBKEY_get0 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_PUBKEY_get0_param (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X509_PUBKEY ;
+typedef int X509_ALGOR ;
+
+
+ int EVP_PKEY_cmp (int ,int ) ;
+ int X509_ALGOR_cmp (int *,int *) ;
+ int X509_PUBKEY_get0 (int *) ;
+ int X509_PUBKEY_get0_param (int *,int *,int *,int **,int *) ;
 
 __attribute__((used)) static int X509_PUBKEY_cmp(X509_PUBKEY *a, X509_PUBKEY *b)
 {
-    X509_ALGOR *algA = NULL, *algB = NULL;
+    X509_ALGOR *algA = ((void*)0), *algB = ((void*)0);
     int res = 0;
 
     if (a == b)
         return 0;
-    if (a == NULL || !X509_PUBKEY_get0_param(NULL, NULL, NULL, &algA, a)
-            || algA == NULL)
+    if (a == ((void*)0) || !X509_PUBKEY_get0_param(((void*)0), ((void*)0), ((void*)0), &algA, a)
+            || algA == ((void*)0))
         return -1;
-    if (b == NULL || !X509_PUBKEY_get0_param(NULL, NULL, NULL, &algB, b)
-            || algB == NULL)
+    if (b == ((void*)0) || !X509_PUBKEY_get0_param(((void*)0), ((void*)0), ((void*)0), &algB, b)
+            || algB == ((void*)0))
         return 1;
     if ((res = X509_ALGOR_cmp(algA, algB)) != 0)
         return res;

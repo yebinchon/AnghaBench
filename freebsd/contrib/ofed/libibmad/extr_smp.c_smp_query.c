@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  ib_portid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ibmp ; 
- int /*<<< orphan*/ * smp_query_via (void*,int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ib_portid_t ;
+
+
+ int ibmp ;
+ int * smp_query_via (void*,int *,unsigned int,unsigned int,unsigned int,int ) ;
 
 uint8_t *smp_query(void *rcvbuf, ib_portid_t * portid, unsigned attrid,
-		   unsigned mod, unsigned timeout)
+     unsigned mod, unsigned timeout)
 {
-	return smp_query_via(rcvbuf, portid, attrid, mod, timeout, ibmp);
+ return smp_query_via(rcvbuf, portid, attrid, mod, timeout, ibmp);
 }

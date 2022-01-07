@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USHORT ;
-typedef  int /*<<< orphan*/  ULONG64 ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  PWCHAR ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PULONG ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  pApphelpCheckRunAppEx_w10 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pApphelpCheckRunAppEx_w7 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int USHORT ;
+typedef int ULONG64 ;
+typedef int ULONG ;
+typedef int PWCHAR ;
+typedef int PVOID ;
+typedef int PULONG ;
+typedef int HANDLE ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int pApphelpCheckRunAppEx_w10 (int ,int *,int *,int ,int ,int *,int ,int ,int *,int ,int *,int ,int ,int *,int *) ;
+ int pApphelpCheckRunAppEx_w7 (int ,int *,int *,int ,int ,int ,int ,int *,int ,int *,int ,int ,int *,int *) ;
 
 __attribute__((used)) static BOOL call_ApphelpCheckRunApp(HANDLE FileHandle, PWCHAR ApplicationName, PVOID Environment, USHORT ExeType,
                                     PULONG Reason, PVOID* SdbQueryAppCompatData, PULONG SdbQueryAppCompatDataSize,
@@ -33,14 +33,14 @@ __attribute__((used)) static BOOL call_ApphelpCheckRunApp(HANDLE FileHandle, PWC
 
     if (pApphelpCheckRunAppEx_w7)
     {
-        return pApphelpCheckRunAppEx_w7(FileHandle, NULL, NULL, ApplicationName, Environment, ExeType, Reason,
+        return pApphelpCheckRunAppEx_w7(FileHandle, ((void*)0), ((void*)0), ApplicationName, Environment, ExeType, Reason,
                                         SdbQueryAppCompatData, SdbQueryAppCompatDataSize, SxsData, SxsDataSize,
                                         FusionFlags, &SomeFlag1, &SomeFlag2);
     }
 
     if (pApphelpCheckRunAppEx_w10)
     {
-        return pApphelpCheckRunAppEx_w10(FileHandle, NULL, NULL, ApplicationName, Environment, NULL, ExeType, Reason,
+        return pApphelpCheckRunAppEx_w10(FileHandle, ((void*)0), ((void*)0), ApplicationName, Environment, ((void*)0), ExeType, Reason,
                                         SdbQueryAppCompatData, SdbQueryAppCompatDataSize, SxsData, SxsDataSize,
                                         FusionFlags, &SomeFlag1, &SomeFlag2);
     }

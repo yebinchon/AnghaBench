@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  s32 ;
-struct TYPE_5__ {int /*<<< orphan*/  dirty1; int /*<<< orphan*/  CycleSup; int /*<<< orphan*/  CycleIO; int /*<<< orphan*/  CycleToDo; int /*<<< orphan*/  IRQLine; int /*<<< orphan*/  Status; int /*<<< orphan*/  USP; int /*<<< orphan*/  flag_S; int /*<<< orphan*/  flag_I; int /*<<< orphan*/  flag_X; int /*<<< orphan*/  flag_N; int /*<<< orphan*/  flag_notZ; int /*<<< orphan*/  flag_V; int /*<<< orphan*/  flag_C; int /*<<< orphan*/ * A; int /*<<< orphan*/ * D; } ;
-typedef  TYPE_1__ c68k_struc ;
-struct TYPE_6__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ IOCheck_struct ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C68K ; 
- scalar_t__ C68k_Get_PC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ywrite (TYPE_2__*,void*,int,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+typedef int s32 ;
+struct TYPE_5__ {int dirty1; int CycleSup; int CycleIO; int CycleToDo; int IRQLine; int Status; int USP; int flag_S; int flag_I; int flag_X; int flag_N; int flag_notZ; int flag_V; int flag_C; int * A; int * D; } ;
+typedef TYPE_1__ c68k_struc ;
+struct TYPE_6__ {int member_1; int member_0; } ;
+typedef TYPE_2__ IOCheck_struct ;
+typedef int FILE ;
+
+
+ int C68K ;
+ scalar_t__ C68k_Get_PC (int *) ;
+ int ywrite (TYPE_2__*,void*,int,int,int *) ;
 
 __attribute__((used)) static void C68k_Save_State(c68k_struc *mcpu, FILE * fp)
 {

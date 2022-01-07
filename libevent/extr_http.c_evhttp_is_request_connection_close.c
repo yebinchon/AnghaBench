@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evhttp_request {int /*<<< orphan*/  output_headers; int /*<<< orphan*/  flags; int /*<<< orphan*/  input_headers; } ;
 
-/* Variables and functions */
- scalar_t__ evhttp_is_connection_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct evhttp_request {int output_headers; int flags; int input_headers; } ;
+
+
+ scalar_t__ evhttp_is_connection_close (int ,int ) ;
 
 __attribute__((used)) static int
 evhttp_is_request_connection_close(struct evhttp_request *req)
 {
-	return
-		evhttp_is_connection_close(req->flags, req->input_headers) ||
-		evhttp_is_connection_close(req->flags, req->output_headers);
+ return
+  evhttp_is_connection_close(req->flags, req->input_headers) ||
+  evhttp_is_connection_close(req->flags, req->output_headers);
 }

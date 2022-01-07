@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {void* hash_table_off; } ;
-typedef  TYPE_3__ urlcache_header ;
-typedef  int /*<<< orphan*/  entry_header ;
-struct TYPE_9__ {int /*<<< orphan*/  signature; } ;
+typedef TYPE_3__ urlcache_header ;
+typedef int entry_header ;
+struct TYPE_9__ {int signature; } ;
 struct TYPE_12__ {TYPE_2__* hash_table; scalar_t__ id; void* next; TYPE_1__ header; } ;
-typedef  TYPE_4__ entry_hash_table ;
+typedef TYPE_4__ entry_hash_table ;
 struct TYPE_10__ {void* key; void* offset; } ;
-typedef  void* DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef void* DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- void* ERROR_SUCCESS ; 
- void* HASHTABLE_FREE ; 
- int HASHTABLE_SIZE ; 
- int /*<<< orphan*/  HASH_SIGNATURE ; 
- void* urlcache_entry_alloc (TYPE_3__*,int,int /*<<< orphan*/ **) ; 
+
+ void* ERROR_SUCCESS ;
+ void* HASHTABLE_FREE ;
+ int HASHTABLE_SIZE ;
+ int HASH_SIGNATURE ;
+ void* urlcache_entry_alloc (TYPE_3__*,int,int **) ;
 
 __attribute__((used)) static DWORD urlcache_create_hash_table(urlcache_header *header, entry_hash_table *hash_table_prev, entry_hash_table **hash_table)
 {

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  POKEYSND_UpdateConsol_ptr (int) ; 
- int /*<<< orphan*/  POKEYSND_console_sound_enabled ; 
- int /*<<< orphan*/  Update_synchronized_sound () ; 
+ int POKEYSND_UpdateConsol_ptr (int) ;
+ int POKEYSND_console_sound_enabled ;
+ int Update_synchronized_sound () ;
 
 void POKEYSND_UpdateConsol(int set)
 {
-	if (!POKEYSND_console_sound_enabled)
-		return;
-#ifdef SYNCHRONIZED_SOUND
-	if (set)
-		Update_synchronized_sound();
-#endif /* SYNCHRONIZED_SOUND */
-	POKEYSND_UpdateConsol_ptr(set);
+ if (!POKEYSND_console_sound_enabled)
+  return;
+
+
+
+
+ POKEYSND_UpdateConsol_ptr(set);
 }

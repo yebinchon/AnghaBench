@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tegra_pcie {int /*<<< orphan*/  ports; } ;
+
+
+
+
+struct tegra_pcie {int ports; } ;
 struct seq_file {struct tegra_pcie* private; } ;
-typedef  int /*<<< orphan*/  loff_t ;
+typedef int loff_t ;
 
-/* Variables and functions */
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- void* seq_list_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seq_printf (struct seq_file*,char*) ; 
+
+ scalar_t__ list_empty (int *) ;
+ void* seq_list_start (int *,int ) ;
+ int seq_printf (struct seq_file*,char*) ;
 
 __attribute__((used)) static void *tegra_pcie_ports_seq_start(struct seq_file *s, loff_t *pos)
 {
-	struct tegra_pcie *pcie = s->private;
+ struct tegra_pcie *pcie = s->private;
 
-	if (list_empty(&pcie->ports))
-		return NULL;
+ if (list_empty(&pcie->ports))
+  return ((void*)0);
 
-	seq_printf(s, "Index  Status\n");
+ seq_printf(s, "Index  Status\n");
 
-	return seq_list_start(&pcie->ports, *pos);
+ return seq_list_start(&pcie->ports, *pos);
 }

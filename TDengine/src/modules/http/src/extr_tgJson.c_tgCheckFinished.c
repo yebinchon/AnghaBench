@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct HttpContext {int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; TYPE_2__* multiCmds; } ;
-typedef  void* int16_t ;
-struct TYPE_7__ {scalar_t__ cmdState; scalar_t__ cmdType; int /*<<< orphan*/  tagNum; int /*<<< orphan*/  cmdReturnType; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct HttpContext {int ipstr; int fd; TYPE_2__* multiCmds; } ;
+typedef void* int16_t ;
+struct TYPE_7__ {scalar_t__ cmdState; scalar_t__ cmdType; int tagNum; int cmdReturnType; } ;
 struct TYPE_6__ {int pos; TYPE_1__* cmds; } ;
 struct TYPE_5__ {scalar_t__ cmdState; } ;
-typedef  TYPE_2__ HttpSqlCmds ;
-typedef  TYPE_3__ HttpSqlCmd ;
+typedef TYPE_2__ HttpSqlCmds ;
+typedef TYPE_3__ HttpSqlCmd ;
 
-/* Variables and functions */
- scalar_t__ HTTP_CMD_STATE_NOT_RUN_YET ; 
- void* HTTP_CMD_STATE_RUN_FINISHED ; 
- scalar_t__ HTTP_CMD_TYPE_CREATE_DB ; 
- scalar_t__ HTTP_CMD_TYPE_CREATE_STBALE ; 
- scalar_t__ HTTP_CMD_TYPE_INSERT ; 
- int TSDB_CODE_DB_NOT_SELECTED ; 
- int TSDB_CODE_INVALID_DB ; 
- int TSDB_CODE_INVALID_TABLE ; 
- int /*<<< orphan*/  httpTrace (char*,struct HttpContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
+
+ scalar_t__ HTTP_CMD_STATE_NOT_RUN_YET ;
+ void* HTTP_CMD_STATE_RUN_FINISHED ;
+ scalar_t__ HTTP_CMD_TYPE_CREATE_DB ;
+ scalar_t__ HTTP_CMD_TYPE_CREATE_STBALE ;
+ scalar_t__ HTTP_CMD_TYPE_INSERT ;
+ int TSDB_CODE_DB_NOT_SELECTED ;
+ int TSDB_CODE_INVALID_DB ;
+ int TSDB_CODE_INVALID_TABLE ;
+ int httpTrace (char*,struct HttpContext*,int ,int ,...) ;
 
 bool tgCheckFinished(struct HttpContext *pContext, HttpSqlCmd *cmd, int code) {
   HttpSqlCmds *multiCmds = pContext->multiCmds;
@@ -45,7 +45,7 @@ bool tgCheckFinished(struct HttpContext *pContext, HttpSqlCmd *cmd, int code) {
           multiCmds->pos = (int16_t)-1;
           httpTrace("context:%p, fd:%d, ip:%s, import failed, try create database", pContext, pContext->fd,
                     pContext->ipstr);
-          return false;
+          return 0;
         }
       } else if (code == TSDB_CODE_INVALID_TABLE) {
         cmd->cmdState = HTTP_CMD_STATE_RUN_FINISHED;
@@ -53,7 +53,7 @@ bool tgCheckFinished(struct HttpContext *pContext, HttpSqlCmd *cmd, int code) {
           multiCmds->pos = (int16_t)(multiCmds->pos - 2);
           httpTrace("context:%p, fd:%d, ip:%s, import failed, try create stable", pContext, pContext->fd,
                     pContext->ipstr);
-          return false;
+          return 0;
         }
       } else {
       }
@@ -69,5 +69,5 @@ bool tgCheckFinished(struct HttpContext *pContext, HttpSqlCmd *cmd, int code) {
   } else {
   }
 
-  return true;
+  return 1;
 }

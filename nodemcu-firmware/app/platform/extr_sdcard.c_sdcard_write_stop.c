@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SD_CARD_ERROR_STOP_TRAN ; 
- int /*<<< orphan*/  STOP_TRAN_TOKEN ; 
- int TRUE ; 
- int /*<<< orphan*/  m_error ; 
- int /*<<< orphan*/  m_spi_no ; 
- int /*<<< orphan*/  platform_spi_transaction (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdcard_chipselect_high () ; 
- int /*<<< orphan*/  sdcard_chipselect_low () ; 
- int /*<<< orphan*/  sdcard_wait_not_busy (int) ; 
+ int FALSE ;
+ int SD_CARD_ERROR_STOP_TRAN ;
+ int STOP_TRAN_TOKEN ;
+ int TRUE ;
+ int m_error ;
+ int m_spi_no ;
+ int platform_spi_transaction (int ,int,int ,int ,int ,int ,int ,int ) ;
+ int sdcard_chipselect_high () ;
+ int sdcard_chipselect_low () ;
+ int sdcard_wait_not_busy (int) ;
 
 __attribute__((used)) static int sdcard_write_stop( void )
 {

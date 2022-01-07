@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char SeafileCrypt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (unsigned char*) ; 
- int /*<<< orphan*/  hex_to_rawdata (char const*,unsigned char*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- unsigned char* seafile_crypt_new (int,unsigned char*,unsigned char*) ; 
- scalar_t__ seafile_decrypt (char**,int*,char*,int,unsigned char*) ; 
- int /*<<< orphan*/  seafile_derive_key (char const*,int,int,char const*,unsigned char*,unsigned char*) ; 
- int strlen (char const*) ; 
+
+
+
+typedef unsigned char SeafileCrypt ;
+
+
+ int g_free (unsigned char*) ;
+ int hex_to_rawdata (char const*,unsigned char*,int) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int seaf_warning (char*) ;
+ unsigned char* seafile_crypt_new (int,unsigned char*,unsigned char*) ;
+ scalar_t__ seafile_decrypt (char**,int*,char*,int,unsigned char*) ;
+ int seafile_derive_key (char const*,int,int,char const*,unsigned char*,unsigned char*) ;
+ int strlen (char const*) ;
 
 int
 seafile_decrypt_repo_enc_key (int enc_version,
@@ -41,7 +41,7 @@ seafile_decrypt_repo_enc_key (int enc_version,
         int outlen;
         SeafileCrypt *crypt;
 
-        if (random_key == NULL || random_key[0] == 0) {
+        if (random_key == ((void*)0) || random_key[0] == 0) {
             seaf_warning ("Empty random key.\n");
             return -1;
         }

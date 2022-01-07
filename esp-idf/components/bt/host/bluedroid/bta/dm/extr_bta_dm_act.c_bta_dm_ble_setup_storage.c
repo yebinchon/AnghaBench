@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ tBTM_STATUS ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ tBTM_STATUS ;
 struct TYPE_7__ {scalar_t__ tot_scan_results_strg; } ;
-typedef  TYPE_2__ tBTM_BLE_VSC_CB ;
-struct TYPE_6__ {int /*<<< orphan*/  ref_value; int /*<<< orphan*/  p_read_rep_cback; int /*<<< orphan*/  p_thres_cback; int /*<<< orphan*/  p_setup_cback; int /*<<< orphan*/  batch_scan_notify_threshold; int /*<<< orphan*/  batch_scan_trunc_max; int /*<<< orphan*/  batch_scan_full_max; } ;
+typedef TYPE_2__ tBTM_BLE_VSC_CB ;
+struct TYPE_6__ {int ref_value; int p_read_rep_cback; int p_thres_cback; int p_setup_cback; int batch_scan_notify_threshold; int batch_scan_trunc_max; int batch_scan_full_max; } ;
 struct TYPE_8__ {TYPE_1__ ble_set_storage; } ;
-typedef  TYPE_3__ tBTA_DM_MSG ;
+typedef TYPE_3__ tBTA_DM_MSG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTM_BLE_BATCH_SCAN_CFG_STRG_EVT ; 
- int /*<<< orphan*/  BTM_BleGetVendorCapabilities (TYPE_2__*) ; 
- scalar_t__ BTM_BleSetStorageConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BTM_CMD_STARTED ; 
- int /*<<< orphan*/  bta_ble_scan_setup_cb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int BTM_BLE_BATCH_SCAN_CFG_STRG_EVT ;
+ int BTM_BleGetVendorCapabilities (TYPE_2__*) ;
+ scalar_t__ BTM_BleSetStorageConfig (int ,int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ BTM_CMD_STARTED ;
+ int bta_ble_scan_setup_cb (int ,int ,scalar_t__) ;
 
 void bta_dm_ble_setup_storage (tBTA_DM_MSG *p_data)
 {

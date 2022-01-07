@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct abd_iter {scalar_t__ iter_mapsize; int /*<<< orphan*/ * iter_mapaddr; scalar_t__ iter_pos; int /*<<< orphan*/ * iter_abd; } ;
-typedef  int /*<<< orphan*/  abd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abd_verify (int /*<<< orphan*/ *) ; 
+
+
+
+struct abd_iter {scalar_t__ iter_mapsize; int * iter_mapaddr; scalar_t__ iter_pos; int * iter_abd; } ;
+typedef int abd_t ;
+
+
+ int abd_verify (int *) ;
 
 __attribute__((used)) static void
 abd_iter_init(struct abd_iter *aiter, abd_t *abd)
 {
-	abd_verify(abd);
-	aiter->iter_abd = abd;
-	aiter->iter_pos = 0;
-	aiter->iter_mapaddr = NULL;
-	aiter->iter_mapsize = 0;
+ abd_verify(abd);
+ aiter->iter_abd = abd;
+ aiter->iter_pos = 0;
+ aiter->iter_mapaddr = ((void*)0);
+ aiter->iter_mapsize = 0;
 }

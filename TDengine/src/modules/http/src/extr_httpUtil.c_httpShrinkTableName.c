@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_5__ {int /*<<< orphan*/ * digest; } ;
-typedef  TYPE_1__ MD5_CTX ;
-typedef  int /*<<< orphan*/  HttpContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MD5Final (TYPE_1__*) ; 
- int /*<<< orphan*/  MD5Init (TYPE_1__*) ; 
- int /*<<< orphan*/  MD5Update (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int TSDB_METER_NAME_LEN ; 
- int httpAddToSqlCmdBuffer (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* httpGetCmdsString (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_5__ {int * digest; } ;
+typedef TYPE_1__ MD5_CTX ;
+typedef int HttpContext ;
+
+
+ int MD5Final (TYPE_1__*) ;
+ int MD5Init (TYPE_1__*) ;
+ int MD5Update (TYPE_1__*,int *,int ) ;
+ int TSDB_METER_NAME_LEN ;
+ int httpAddToSqlCmdBuffer (int *,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ char* httpGetCmdsString (int *,int) ;
 
 int httpShrinkTableName(HttpContext *pContext, int pos, char *name) {
   int len = 0;

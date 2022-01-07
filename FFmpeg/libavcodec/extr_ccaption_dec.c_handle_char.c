@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct Screen {int /*<<< orphan*/  row_used; } ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_6__ {int cursor_column; scalar_t__ mode; int screen_touched; int /*<<< orphan*/  cursor_charset; int /*<<< orphan*/  cursor_row; } ;
-typedef  TYPE_1__ CCaptionSubContext ;
 
-/* Variables and functions */
- scalar_t__ CCMODE_POPON ; 
- int /*<<< orphan*/  CCSET_BASIC_AMERICAN ; 
- int /*<<< orphan*/  CCSET_EXTENDED_PORTUGUESE_GERMAN_DANISH ; 
- int /*<<< orphan*/  CCSET_EXTENDED_SPANISH_FRENCH_MISC ; 
- int /*<<< orphan*/  CCSET_SPECIAL_AMERICAN ; 
- int /*<<< orphan*/  SET_FLAG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_1__*,char*,char,...) ; 
- struct Screen* get_writing_screen (TYPE_1__*) ; 
- int /*<<< orphan*/  write_char (TYPE_1__*,struct Screen*,char) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct Screen {int row_used; } ;
+typedef int int64_t ;
+struct TYPE_6__ {int cursor_column; scalar_t__ mode; int screen_touched; int cursor_charset; int cursor_row; } ;
+typedef TYPE_1__ CCaptionSubContext ;
+
+
+ scalar_t__ CCMODE_POPON ;
+ int CCSET_BASIC_AMERICAN ;
+ int CCSET_EXTENDED_PORTUGUESE_GERMAN_DANISH ;
+ int CCSET_EXTENDED_SPANISH_FRENCH_MISC ;
+ int CCSET_SPECIAL_AMERICAN ;
+ int SET_FLAG (int ,int ) ;
+ int ff_dlog (TYPE_1__*,char*,char,...) ;
+ struct Screen* get_writing_screen (TYPE_1__*) ;
+ int write_char (TYPE_1__*,struct Screen*,char) ;
 
 __attribute__((used)) static void handle_char(CCaptionSubContext *ctx, char hi, char lo, int64_t pts)
 {

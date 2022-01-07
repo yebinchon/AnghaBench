@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uid_t ;
 struct TYPE_8__ {int in_userns; int type; } ;
-typedef  TYPE_1__ CustomMount ;
+typedef TYPE_1__ CustomMount ;
 
-/* Variables and functions */
-#define  CUSTOM_MOUNT_ARBITRARY 132 
-#define  CUSTOM_MOUNT_BIND 131 
-#define  CUSTOM_MOUNT_INACCESSIBLE 130 
-#define  CUSTOM_MOUNT_OVERLAY 129 
-#define  CUSTOM_MOUNT_TMPFS 128 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int mount_arbitrary (char const*,TYPE_1__*) ; 
- int mount_bind (char const*,TYPE_1__*) ; 
- int mount_inaccessible (char const*,TYPE_1__*) ; 
- int mount_overlay (char const*,TYPE_1__*) ; 
- int mount_tmpfs (char const*,TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+
+
+
+ int assert (char const*) ;
+ int assert_not_reached (char*) ;
+ int mount_arbitrary (char const*,TYPE_1__*) ;
+ int mount_bind (char const*,TYPE_1__*) ;
+ int mount_inaccessible (char const*,TYPE_1__*) ;
+ int mount_overlay (char const*,TYPE_1__*) ;
+ int mount_tmpfs (char const*,TYPE_1__*,int,int ,int ,char const*) ;
 
 int mount_custom(
                 const char *dest,
@@ -49,23 +49,23 @@ int mount_custom(
 
                 switch (m->type) {
 
-                case CUSTOM_MOUNT_BIND:
+                case 131:
                         r = mount_bind(dest, m);
                         break;
 
-                case CUSTOM_MOUNT_TMPFS:
+                case 128:
                         r = mount_tmpfs(dest, m, userns, uid_shift, uid_range, selinux_apifs_context);
                         break;
 
-                case CUSTOM_MOUNT_OVERLAY:
+                case 129:
                         r = mount_overlay(dest, m);
                         break;
 
-                case CUSTOM_MOUNT_INACCESSIBLE:
+                case 130:
                         r = mount_inaccessible(dest, m);
                         break;
 
-                case CUSTOM_MOUNT_ARBITRARY:
+                case 132:
                         r = mount_arbitrary(dest, m);
                         break;
 

@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GL_AMBIENT_AND_DIFFUSE ; 
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_COLOR_MATERIAL ; 
- int /*<<< orphan*/  GL_CULL_FACE ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_DIFFUSE ; 
- int /*<<< orphan*/  GL_FRONT ; 
- int /*<<< orphan*/  GL_LIGHT0 ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_POSITION ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- int /*<<< orphan*/  GL_SMOOTH ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  glBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glColorMaterial (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDepthMask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFrustum (float,float,float,float,float,float) ; 
- int /*<<< orphan*/  glLightfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glShadeModel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTranslatef (double,double,double) ; 
- int /*<<< orphan*/  lightZeroColor ; 
- int /*<<< orphan*/  lightZeroPosition ; 
+ int GL_AMBIENT_AND_DIFFUSE ;
+ int GL_BLEND ;
+ int GL_COLOR_MATERIAL ;
+ int GL_CULL_FACE ;
+ int GL_DEPTH_TEST ;
+ int GL_DIFFUSE ;
+ int GL_FRONT ;
+ int GL_LIGHT0 ;
+ int GL_LIGHTING ;
+ int GL_MODELVIEW ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_POSITION ;
+ int GL_PROJECTION ;
+ int GL_SMOOTH ;
+ int GL_SRC_ALPHA ;
+ int GL_TRUE ;
+ int glBlendFunc (int ,int ) ;
+ int glColorMaterial (int ,int ) ;
+ int glDepthMask (int ) ;
+ int glEnable (int ) ;
+ int glFrustum (float,float,float,float,float,float) ;
+ int glLightfv (int ,int ,int ) ;
+ int glMatrixMode (int ) ;
+ int glShadeModel (int ) ;
+ int glTranslatef (double,double,double) ;
+ int lightZeroColor ;
+ int lightZeroPosition ;
 
 __attribute__((used)) static void initOpenGLScene(void)
 {
@@ -52,7 +44,7 @@ __attribute__((used)) static void initOpenGLScene(void)
     glMatrixMode(GL_MODELVIEW);
     glTranslatef(0.0, -2.0, -2.0);
 
-    // Init the light.
+
     glEnable(GL_LIGHTING);
 
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);

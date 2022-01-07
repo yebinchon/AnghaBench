@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int gPanicBase ; 
- int /*<<< orphan*/ * panic_info ; 
- unsigned int panic_text_len ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int assert (int) ;
+ int gPanicBase ;
+ int * panic_info ;
+ unsigned int panic_text_len ;
 
 uint32_t
 PE_get_offset_into_panic_region(char *location)
 {
-	assert(panic_info != NULL);
-	assert(location > (char *) panic_info);
-	assert((unsigned int)(location - (char *) panic_info) < panic_text_len);
+ assert(panic_info != ((void*)0));
+ assert(location > (char *) panic_info);
+ assert((unsigned int)(location - (char *) panic_info) < panic_text_len);
 
-	return (uint32_t) (location - gPanicBase);
+ return (uint32_t) (location - gPanicBase);
 }

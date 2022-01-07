@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  callback; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_IMAGE_ENCODER ; 
- int /*<<< orphan*/  MMAL_ENCODING_BMP ; 
- int /*<<< orphan*/  MMAL_ENCODING_GIF ; 
- int /*<<< orphan*/  MMAL_ENCODING_JPEG ; 
- int /*<<< orphan*/  MMAL_ENCODING_PNG ; 
- scalar_t__ MMAL_SUCCESS ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  bcm_host_init () ; 
- TYPE_1__* encoder ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mmalCallback ; 
- int /*<<< orphan*/  mmal_encode_test (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ mmal_wrapper_create (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_wrapper_destroy (TYPE_1__*) ; 
- int /*<<< orphan*/  sem ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ vcos_semaphore_create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int callback; } ;
+
+
+ int MMAL_COMPONENT_DEFAULT_IMAGE_ENCODER ;
+ int MMAL_ENCODING_BMP ;
+ int MMAL_ENCODING_GIF ;
+ int MMAL_ENCODING_JPEG ;
+ int MMAL_ENCODING_PNG ;
+ scalar_t__ MMAL_SUCCESS ;
+ scalar_t__ VCOS_SUCCESS ;
+ int bcm_host_init () ;
+ TYPE_1__* encoder ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int mmalCallback ;
+ int mmal_encode_test (int ,char*) ;
+ scalar_t__ mmal_wrapper_create (TYPE_1__**,int ) ;
+ int mmal_wrapper_destroy (TYPE_1__*) ;
+ int sem ;
+ int stderr ;
+ scalar_t__ vcos_semaphore_create (int *,char*,int ) ;
+ int vcos_semaphore_delete (int *) ;
 
 int main(int argc, const char** argv)
 {
@@ -50,7 +50,7 @@ int main(int argc, const char** argv)
    }
    encoder->callback = mmalCallback;
 
-   // Perform test encodings in various formats
+
    mmal_encode_test(MMAL_ENCODING_PNG, "out.png");
    mmal_encode_test(MMAL_ENCODING_JPEG, "out.jpg");
    mmal_encode_test(MMAL_ENCODING_GIF, "out.gif");

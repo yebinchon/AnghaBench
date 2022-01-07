@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cuse_client_command {int /*<<< orphan*/  sx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sx_xlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct cuse_client_command {int sx; } ;
+
+
+ int sx_xlock (int *) ;
 
 __attribute__((used)) static void
 cuse_cmd_lock(struct cuse_client_command *pccmd)
 {
-	sx_xlock(&pccmd->sx);
+ sx_xlock(&pccmd->sx);
 }

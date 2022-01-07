@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sds ;
 struct TYPE_2__ {int maxlen_hint_sent; int maxlen; } ;
 
-/* Variables and functions */
- int atoi (int /*<<< orphan*/ ) ; 
- TYPE_1__ ldb ; 
- int /*<<< orphan*/  ldbLog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  sdsempty () ; 
+
+ int atoi (int ) ;
+ TYPE_1__ ldb ;
+ int ldbLog (int ) ;
+ int sdscatprintf (int ,char*,...) ;
+ int sdsempty () ;
 
 void ldbMaxlen(sds *argv, int argc) {
     if (argc == 2) {
         int newval = atoi(argv[1]);
-        ldb.maxlen_hint_sent = 1; /* User knows about this command. */
+        ldb.maxlen_hint_sent = 1;
         if (newval != 0 && newval <= 60) newval = 60;
         ldb.maxlen = newval;
     }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_dev; int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  copy_progress_path_t ;
-typedef  int /*<<< orphan*/  copy_progress_bytes_t ;
-typedef  int /*<<< orphan*/  CopyFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT_FDCWD ; 
- int /*<<< orphan*/  COPY_DEPTH_MAX ; 
- int ENOTDIR ; 
- int /*<<< orphan*/  GID_INVALID ; 
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int errno ; 
- int fd_copy_directory (int /*<<< orphan*/ ,char const*,struct stat*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ lstat (char const*,struct stat*) ; 
+
+
+
+struct stat {int st_dev; int st_mode; } ;
+typedef int copy_progress_path_t ;
+typedef int copy_progress_bytes_t ;
+typedef int CopyFlags ;
+
+
+ int AT_FDCWD ;
+ int COPY_DEPTH_MAX ;
+ int ENOTDIR ;
+ int GID_INVALID ;
+ int S_ISDIR (int ) ;
+ int UID_INVALID ;
+ int assert (char const*) ;
+ int errno ;
+ int fd_copy_directory (int ,char const*,struct stat*,int ,char const*,int ,int ,int ,int ,int ,int *,int ,int ,void*) ;
+ scalar_t__ lstat (char const*,struct stat*) ;
 
 int copy_directory_full(
                 const char *from,
@@ -46,5 +46,5 @@ int copy_directory_full(
         if (!S_ISDIR(st.st_mode))
                 return -ENOTDIR;
 
-        return fd_copy_directory(AT_FDCWD, from, &st, AT_FDCWD, to, st.st_dev, COPY_DEPTH_MAX, UID_INVALID, GID_INVALID, copy_flags, NULL, progress_path, progress_bytes, userdata);
+        return fd_copy_directory(AT_FDCWD, from, &st, AT_FDCWD, to, st.st_dev, COPY_DEPTH_MAX, UID_INVALID, GID_INVALID, copy_flags, ((void*)0), progress_path, progress_bytes, userdata);
 }

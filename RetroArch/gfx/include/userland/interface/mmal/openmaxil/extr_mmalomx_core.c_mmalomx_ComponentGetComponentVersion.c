@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ state; int /*<<< orphan*/  registry_id; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ state; int registry_id; } ;
 struct TYPE_7__ {scalar_t__ nVersion; } ;
-typedef  TYPE_1__ OMX_VERSIONTYPE ;
-typedef  scalar_t__ OMX_UUIDTYPE ;
-typedef  char* OMX_STRING ;
-typedef  scalar_t__ OMX_HANDLETYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  TYPE_2__ MMALOMX_COMPONENT_T ;
+typedef TYPE_1__ OMX_VERSIONTYPE ;
+typedef scalar_t__ OMX_UUIDTYPE ;
+typedef char* OMX_STRING ;
+typedef scalar_t__ OMX_HANDLETYPE ;
+typedef int OMX_ERRORTYPE ;
+typedef TYPE_2__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,scalar_t__,char*,TYPE_1__*,TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  OMX_ErrorBadParameter ; 
- int /*<<< orphan*/  OMX_ErrorInvalidComponent ; 
- int /*<<< orphan*/  OMX_ErrorInvalidState ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- int /*<<< orphan*/  OMX_MAX_STRINGNAME_SIZE ; 
- scalar_t__ OMX_StateInvalid ; 
- scalar_t__ OMX_VERSION ; 
- char* mmalomx_registry_component_name (int /*<<< orphan*/ ,char const**) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,...) ; 
+
+ int LOG_TRACE (char*,scalar_t__,char*,TYPE_1__*,TYPE_1__*,scalar_t__*) ;
+ int OMX_ErrorBadParameter ;
+ int OMX_ErrorInvalidComponent ;
+ int OMX_ErrorInvalidState ;
+ int OMX_ErrorNone ;
+ int OMX_MAX_STRINGNAME_SIZE ;
+ scalar_t__ OMX_StateInvalid ;
+ scalar_t__ OMX_VERSION ;
+ char* mmalomx_registry_component_name (int ,char const**) ;
+ int snprintf (char*,int,char*,char const*,...) ;
 
 __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetComponentVersion(
    OMX_HANDLETYPE hComponent,
@@ -48,7 +48,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetComponentVersion(
              hComponent, pComponentName, pComponentVersion, pSpecVersion,
              pComponentUUID);
 
-   /* Sanity checks */
+
    if (!hComponent)
       return OMX_ErrorInvalidComponent;
    if (component->state == OMX_StateInvalid)

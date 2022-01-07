@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BWRITERSPSM_ABS ; 
- int /*<<< orphan*/  BWRITERSPSM_ABSNEG ; 
- int /*<<< orphan*/  BWRITERSPSM_BIAS ; 
- int /*<<< orphan*/  BWRITERSPSM_BIASNEG ; 
- int /*<<< orphan*/  BWRITERSPSM_COMP ; 
- int /*<<< orphan*/  BWRITERSPSM_DW ; 
- int /*<<< orphan*/  BWRITERSPSM_DZ ; 
- int /*<<< orphan*/  BWRITERSPSM_NEG ; 
- int /*<<< orphan*/  BWRITERSPSM_NOT ; 
- int /*<<< orphan*/  BWRITERSPSM_SIGN ; 
- int /*<<< orphan*/  BWRITERSPSM_SIGNNEG ; 
- int /*<<< orphan*/  BWRITERSPSM_X2 ; 
- int /*<<< orphan*/  BWRITERSPSM_X2NEG ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  WINE_D3DCOMPILER_TO_STR (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int BWRITERSPSM_ABS ;
+ int BWRITERSPSM_ABSNEG ;
+ int BWRITERSPSM_BIAS ;
+ int BWRITERSPSM_BIASNEG ;
+ int BWRITERSPSM_COMP ;
+ int BWRITERSPSM_DW ;
+ int BWRITERSPSM_DZ ;
+ int BWRITERSPSM_NEG ;
+ int BWRITERSPSM_NOT ;
+ int BWRITERSPSM_SIGN ;
+ int BWRITERSPSM_SIGNNEG ;
+ int BWRITERSPSM_X2 ;
+ int BWRITERSPSM_X2NEG ;
+ int FIXME (char*,int) ;
+ int WINE_D3DCOMPILER_TO_STR (int ) ;
 
 const char *debug_print_srcmod(DWORD mod)
 {

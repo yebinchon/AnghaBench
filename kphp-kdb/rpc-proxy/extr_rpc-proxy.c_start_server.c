@@ -1,84 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int SIGUSR2 ;
+ int SIG_IGN ;
+ int active_connections ;
+ int assert (int) ;
+ int backlog ;
+ scalar_t__ binlog_mode_on ;
+ scalar_t__ change_user (char*) ;
+ int close (scalar_t__) ;
+ int create_all_outbound_connections () ;
+ int cron () ;
+ int ct_rpc_server ;
+ int ct_tcp_rpc_server ;
+ scalar_t__ daemonize ;
+ int default_udp_socket ;
+ int do_reload_config (int) ;
+ double drand48 () ;
+ scalar_t__ enable_ipv6 ;
+ int epoll_close (scalar_t__) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int flush_cbinlog (int) ;
+ int flush_index () ;
+ int fprintf (int ,char*,...) ;
+ int get_utime_monotonic () ;
+ int init_epoll () ;
+ scalar_t__ init_listening_tcpv6_connection (scalar_t__,int *,int *,scalar_t__) ;
+ int init_msg_buffers (int ) ;
+ int init_netbuffers () ;
+ int init_udp_port (scalar_t__,int,int *,int *,scalar_t__) ;
+ int kprintf (char*,scalar_t__) ;
+ int maxconn ;
+ scalar_t__ need_reload_config ;
+ int now ;
+ scalar_t__ pending_signals ;
+ int port ;
+ double precise_now ;
+ scalar_t__ quit_steps ;
+ int rpc_proxy_inbound ;
+ int rpc_proxy_tcp ;
+ int rpc_proxy_udp_server ;
+ int rpc_proxy_udp_server_methods ;
+ scalar_t__ server_socket (int,int ,int ,scalar_t__) ;
+ int setsid () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int sigusr2_handler ;
+ int stderr ;
+ int tcp_buffers ;
+ char* username ;
+ scalar_t__ usfd ;
+ scalar_t__ verbosity ;
 
-/* Forward declarations */
+void start_server (void) {
 
-/* Type definitions */
-
-/* Variables and functions */
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIGUSR2 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int active_connections ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  backlog ; 
- scalar_t__ binlog_mode_on ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  ct_rpc_server ; 
- int /*<<< orphan*/  ct_tcp_rpc_server ; 
- scalar_t__ daemonize ; 
- int default_udp_socket ; 
- int /*<<< orphan*/  do_reload_config (int) ; 
- double drand48 () ; 
- scalar_t__ enable_ipv6 ; 
- int /*<<< orphan*/  epoll_close (scalar_t__) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_cbinlog (int) ; 
- int /*<<< orphan*/  flush_index () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_utime_monotonic () ; 
- int /*<<< orphan*/  init_epoll () ; 
- scalar_t__ init_listening_tcpv6_connection (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  init_msg_buffers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int init_udp_port (scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__) ; 
- int maxconn ; 
- scalar_t__ need_reload_config ; 
- int now ; 
- scalar_t__ pending_signals ; 
- int port ; 
- double precise_now ; 
- scalar_t__ quit_steps ; 
- int /*<<< orphan*/  rpc_proxy_inbound ; 
- int /*<<< orphan*/  rpc_proxy_tcp ; 
- int /*<<< orphan*/  rpc_proxy_udp_server ; 
- int /*<<< orphan*/  rpc_proxy_udp_server_methods ; 
- scalar_t__ server_socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  sigusr2_handler ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tcp_buffers ; 
- char* username ; 
- scalar_t__ usfd ; 
- scalar_t__ verbosity ; 
-
-void start_server (void) { 
-  //  struct sigaction sa;
   int i;
   int prev_time;
   double next_create_outbound = 0;
@@ -97,7 +89,7 @@ void start_server (void) {
     fprintf (stderr, "fatal: cannot change user to %s\n", username ? username : "(none)");
     exit (1);
   }
-  
+
   if (!sfd) {
     sfd = server_socket (port, settings_addr, backlog, enable_ipv6 );
   }
@@ -121,7 +113,7 @@ void start_server (void) {
   } else {
     assert (init_listening_tcpv6_connection (sfd, &ct_tcp_rpc_server, &rpc_proxy_tcp, enable_ipv6) >= 0);
   }
- 
+
   assert ((default_udp_socket = init_udp_port (usfd, port, &rpc_proxy_udp_server, &rpc_proxy_udp_server_methods, enable_ipv6)));
 
   get_utime_monotonic ();
@@ -162,7 +154,7 @@ void start_server (void) {
     }
     if (quit_steps && !--quit_steps) break;
   }
-  
+
   epoll_close (sfd);
   close(sfd);
 

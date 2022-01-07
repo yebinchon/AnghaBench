@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EVENTHANDLER_DEREGISTER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * efi_cfgtbl ; 
- int /*<<< orphan*/  efi_destroy_1t1_map () ; 
- int /*<<< orphan*/  efi_lock ; 
- int /*<<< orphan*/ * efi_runtime ; 
- int /*<<< orphan*/ * efi_shutdown_tag ; 
- int /*<<< orphan*/ * efi_systbl ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shutdown_final ; 
+ int EVENTHANDLER_DEREGISTER (int ,int *) ;
+ int * efi_cfgtbl ;
+ int efi_destroy_1t1_map () ;
+ int efi_lock ;
+ int * efi_runtime ;
+ int * efi_shutdown_tag ;
+ int * efi_systbl ;
+ int mtx_destroy (int *) ;
+ int shutdown_final ;
 
 __attribute__((used)) static void
 efi_uninit(void)
 {
 
-	/* Most likely disabled by tunable */
-	if (efi_runtime == NULL)
-		return;
-	if (efi_shutdown_tag != NULL)
-		EVENTHANDLER_DEREGISTER(shutdown_final, efi_shutdown_tag);
-	efi_destroy_1t1_map();
 
-	efi_systbl = NULL;
-	efi_cfgtbl = NULL;
-	efi_runtime = NULL;
+ if (efi_runtime == ((void*)0))
+  return;
+ if (efi_shutdown_tag != ((void*)0))
+  EVENTHANDLER_DEREGISTER(shutdown_final, efi_shutdown_tag);
+ efi_destroy_1t1_map();
 
-	mtx_destroy(&efi_lock);
+ efi_systbl = ((void*)0);
+ efi_cfgtbl = ((void*)0);
+ efi_runtime = ((void*)0);
+
+ mtx_destroy(&efi_lock);
 }

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int flags; TYPE_1__* tty; } ;
-struct slgt_info {TYPE_2__ port; int /*<<< orphan*/  icount; scalar_t__ pending_bh; int /*<<< orphan*/  device_name; scalar_t__ tx_buf; int /*<<< orphan*/  max_frame_size; } ;
-struct TYPE_3__ {int /*<<< orphan*/  flags; } ;
+struct slgt_info {TYPE_2__ port; int icount; scalar_t__ pending_bh; int device_name; scalar_t__ tx_buf; int max_frame_size; } ;
+struct TYPE_3__ {int flags; } ;
 
-/* Variables and functions */
- int ASYNC_INITIALIZED ; 
- int /*<<< orphan*/  DBGERR (char*) ; 
- int /*<<< orphan*/  DBGINFO (char*) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  TTY_IO_ERROR ; 
- int /*<<< orphan*/  change_params (struct slgt_info*) ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ kmalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int ASYNC_INITIALIZED ;
+ int DBGERR (char*) ;
+ int DBGINFO (char*) ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int TTY_IO_ERROR ;
+ int change_params (struct slgt_info*) ;
+ int clear_bit (int ,int *) ;
+ scalar_t__ kmalloc (int ,int ) ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static int startup(struct slgt_info *info)
 {
-	DBGINFO(("%s startup\n", info->device_name));
+ DBGINFO(("%s startup\n", info->device_name));
 
-	if (info->port.flags & ASYNC_INITIALIZED)
-		return 0;
+ if (info->port.flags & ASYNC_INITIALIZED)
+  return 0;
 
-	if (!info->tx_buf) {
-		info->tx_buf = kmalloc(info->max_frame_size, GFP_KERNEL);
-		if (!info->tx_buf) {
-			DBGERR(("%s can't allocate tx buffer\n", info->device_name));
-			return -ENOMEM;
-		}
-	}
+ if (!info->tx_buf) {
+  info->tx_buf = kmalloc(info->max_frame_size, GFP_KERNEL);
+  if (!info->tx_buf) {
+   DBGERR(("%s can't allocate tx buffer\n", info->device_name));
+   return -ENOMEM;
+  }
+ }
 
-	info->pending_bh = 0;
+ info->pending_bh = 0;
 
-	memset(&info->icount, 0, sizeof(info->icount));
+ memset(&info->icount, 0, sizeof(info->icount));
 
-	/* program hardware for current parameters */
-	change_params(info);
 
-	if (info->port.tty)
-		clear_bit(TTY_IO_ERROR, &info->port.tty->flags);
+ change_params(info);
 
-	info->port.flags |= ASYNC_INITIALIZED;
+ if (info->port.tty)
+  clear_bit(TTY_IO_ERROR, &info->port.tty->flags);
 
-	return 0;
+ info->port.flags |= ASYNC_INITIALIZED;
+
+ return 0;
 }

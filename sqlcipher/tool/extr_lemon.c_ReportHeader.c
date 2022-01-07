@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct lemon {char* tokenprefix; int nterminal; TYPE_1__** symbols; } ;
 struct TYPE_2__ {int name; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int EOF ; 
- int LINESIZE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int fgetc (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * file_open (struct lemon*,char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char const*,int,int) ; 
- int /*<<< orphan*/  lemon_sprintf (char*,char*,char const*,int,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int EOF ;
+ int LINESIZE ;
+ int fclose (int *) ;
+ int fgetc (int *) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int * file_open (struct lemon*,char*,char*) ;
+ int fprintf (int *,char*,char const*,int,int) ;
+ int lemon_sprintf (char*,char*,char const*,int,int) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 void ReportHeader(struct lemon *lemp)
 {
@@ -35,7 +35,7 @@ void ReportHeader(struct lemon *lemp)
   int i;
 
   if( lemp->tokenprefix ) prefix = lemp->tokenprefix;
-  else                    prefix = "";
+  else prefix = "";
   in = file_open(lemp,".h","rb");
   if( in ){
     int nextChar;
@@ -47,7 +47,7 @@ void ReportHeader(struct lemon *lemp)
     nextChar = fgetc(in);
     fclose(in);
     if( i==lemp->nterminal && nextChar==EOF ){
-      /* No change in the file.  Don't rewrite it. */
+
       return;
     }
   }

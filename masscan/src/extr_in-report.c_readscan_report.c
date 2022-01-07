@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct CertDecode {int is_capture_issuer; int is_capture_subject; } ;
 struct BannerOutput {int dummy; } ;
 
-/* Variables and functions */
- unsigned char* MALLOC (size_t) ; 
- int /*<<< orphan*/  PROTO_SSL3 ; 
- unsigned int PROTO_VULN ; 
- unsigned int PROTO_X509_CERT ; 
- int /*<<< orphan*/  banout_init (struct BannerOutput*) ; 
- int /*<<< orphan*/  banout_release (struct BannerOutput*) ; 
- unsigned char* banout_string (struct BannerOutput*,int /*<<< orphan*/ ) ; 
- size_t banout_string_length (struct BannerOutput*,int /*<<< orphan*/ ) ; 
- size_t base64_decode (unsigned char*,size_t,unsigned char*,size_t) ; 
- int /*<<< orphan*/  cndb_add (unsigned int,unsigned char const*,size_t) ; 
- char* cndb_lookup (unsigned int) ; 
- int /*<<< orphan*/  found_type (unsigned char const*,size_t) ; 
- scalar_t__ memcmp (unsigned char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  x509_decode (struct CertDecode*,unsigned char*,size_t,struct BannerOutput*) ; 
- int /*<<< orphan*/  x509_decode_init (struct CertDecode*,size_t) ; 
+
+ unsigned char* MALLOC (size_t) ;
+ int PROTO_SSL3 ;
+ unsigned int PROTO_VULN ;
+ unsigned int PROTO_X509_CERT ;
+ int banout_init (struct BannerOutput*) ;
+ int banout_release (struct BannerOutput*) ;
+ unsigned char* banout_string (struct BannerOutput*,int ) ;
+ size_t banout_string_length (struct BannerOutput*,int ) ;
+ size_t base64_decode (unsigned char*,size_t,unsigned char*,size_t) ;
+ int cndb_add (unsigned int,unsigned char const*,size_t) ;
+ char* cndb_lookup (unsigned int) ;
+ int found_type (unsigned char const*,size_t) ;
+ scalar_t__ memcmp (unsigned char*,char*,int) ;
+ int memcpy (char*,char const*,int) ;
+ int strlen (char const*) ;
+ int x509_decode (struct CertDecode*,unsigned char*,size_t,struct BannerOutput*) ;
+ int x509_decode_init (struct CertDecode*,size_t) ;
 
 void
-readscan_report(  unsigned ip,
+readscan_report( unsigned ip,
                   unsigned app_proto,
                   unsigned char **r_data,
                   size_t *r_data_length)
@@ -53,7 +53,7 @@ readscan_report(  unsigned ip,
         banout_init(banout);
 
         der_length = base64_decode(der, data_length, data, data_length);
-        
+
         x509_decode_init(&x, data_length);
         x.is_capture_issuer = 1;
         x.is_capture_subject = 1;
@@ -68,22 +68,22 @@ readscan_report(  unsigned ip,
         }
 
         banout_release(banout);
-    /*} else if (0 && app_proto == PROTO_SSL3) {
-        cndb_add(ip, data, data_length);*/
+
+
     } else if (app_proto == PROTO_VULN) {
         const char *name = cndb_lookup(ip);
-        
+
         if (data_length == 15 && memcmp(data, "SSL[heartbeat] ", 15) == 0)
             return;
 
         if (name && strlen(name) < 300) {
-            //printf("vuln=%s\n", name);
+
             ((char*)data)[data_length] = ' ';
             memcpy((char*)data+data_length+1, name, strlen(name)+1);
             data_length += strlen(name)+1;
         }
 
-        /* kludge */
+
         if (data_length == 31 && memcmp(data, "SSL[heartbeat] SSL[HEARTBLEED] ", 31) == 0)
             return;
     }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bindopts ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {int cbStruct; scalar_t__ grfFlags; int grfMode; int /*<<< orphan*/  dwTickCountDeadline; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ BIND_OPTS ;
 
-/* Variables and functions */
- scalar_t__ BIND_MAYBOTHERUSER ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateAsyncBindCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  IBindCtx_GetBindOptions (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  IBindCtx_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IBindCtx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAsyncBindCtx ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QueryInterface_IServiceProvider ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int STGM_READWRITE ; 
- int STGM_SHARE_EXCLUSIVE ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  bsc ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int bindopts ;
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {int cbStruct; scalar_t__ grfFlags; int grfMode; int dwTickCountDeadline; } ;
+typedef int IUnknown ;
+typedef int IBindStatusCallback ;
+typedef int IBindCtx ;
+typedef int HRESULT ;
+typedef TYPE_1__ BIND_OPTS ;
+
+
+ scalar_t__ BIND_MAYBOTHERUSER ;
+ int CHECK_CALLED (int ) ;
+ int CreateAsyncBindCtx (int ,int *,int *,int **) ;
+ int E_INVALIDARG ;
+ int E_NOINTERFACE ;
+ int IBindCtx_GetBindOptions (int *,TYPE_1__*) ;
+ int IBindCtx_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IBindCtx_Release (int *) ;
+ int IID_IAsyncBindCtx ;
+ int IUnknown_Release (int *) ;
+ int QueryInterface_IServiceProvider ;
+ int SET_EXPECT (int ) ;
+ int STGM_READWRITE ;
+ int STGM_SHARE_EXCLUSIVE ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int bsc ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_CreateAsyncBindCtx(void)
 {
@@ -48,15 +48,15 @@ __attribute__((used)) static void test_CreateAsyncBindCtx(void)
     ULONG ref;
     BIND_OPTS bindopts;
 
-    hres = CreateAsyncBindCtx(0, NULL, NULL, &bctx);
+    hres = CreateAsyncBindCtx(0, ((void*)0), ((void*)0), &bctx);
     ok(hres == E_INVALIDARG, "CreateAsyncBindCtx failed. expected: E_INVALIDARG, got: %08x\n", hres);
     ok(bctx == (IBindCtx*)0x0ff00ff0, "bctx should not be changed\n");
 
-    hres = CreateAsyncBindCtx(0, NULL, NULL, NULL);
+    hres = CreateAsyncBindCtx(0, ((void*)0), ((void*)0), ((void*)0));
     ok(hres == E_INVALIDARG, "CreateAsyncBindCtx failed. expected: E_INVALIDARG, got: %08x\n", hres);
 
     SET_EXPECT(QueryInterface_IServiceProvider);
-    hres = CreateAsyncBindCtx(0, (IBindStatusCallback*)&bsc, NULL, &bctx);
+    hres = CreateAsyncBindCtx(0, (IBindStatusCallback*)&bsc, ((void*)0), &bctx);
     ok(hres == S_OK, "CreateAsyncBindCtx failed: %08x\n", hres);
     CHECK_CALLED(QueryInterface_IServiceProvider);
 

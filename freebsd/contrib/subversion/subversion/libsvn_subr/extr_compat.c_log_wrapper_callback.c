@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  changed_paths2; int /*<<< orphan*/  revprops; } ;
-typedef  TYPE_1__ svn_log_entry_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct log_wrapper_baton {int /*<<< orphan*/  baton; int /*<<< orphan*/ * (* receiver ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char const*,char const*,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_compat_log_revprops_out (char const**,char const**,char const**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int revision; int changed_paths2; int revprops; } ;
+typedef TYPE_1__ svn_log_entry_t ;
+typedef int svn_error_t ;
+struct log_wrapper_baton {int baton; int * (* receiver ) (int ,int ,int ,char const*,char const*,char const*,int *) ;} ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int * stub1 (int ,int ,int ,char const*,char const*,char const*,int *) ;
+ int svn_compat_log_revprops_out (char const**,char const**,char const**,int ) ;
 
 __attribute__((used)) static svn_error_t *
 log_wrapper_callback(void *baton,

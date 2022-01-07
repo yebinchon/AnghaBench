@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_vertex_pipe_ops {struct StateEntryTemplate* vp_states; } ;
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; } ;
+struct wined3d_gl_info {int * supported; } ;
 struct wined3d_d3d_info {int dummy; } ;
 struct fragment_pipeline {struct StateEntryTemplate* states; } ;
-struct TYPE_2__ {scalar_t__ representative; int /*<<< orphan*/  apply; } ;
+struct TYPE_2__ {scalar_t__ representative; int apply; } ;
 struct StateEntryTemplate {int state; size_t extension; TYPE_1__ content; } ;
-struct StateEntry {scalar_t__ representative; int /*<<< orphan*/  apply; } ;
-typedef  int /*<<< orphan*/  set ;
-typedef  int /*<<< orphan*/  multistate_funcs ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BOOL ;
-typedef  int /*<<< orphan*/  APPLYSTATEFUNC ;
+struct StateEntry {scalar_t__ representative; int apply; } ;
+typedef int set ;
+typedef int multistate_funcs ;
+typedef int HRESULT ;
+typedef int * BOOL ;
+typedef int APPLYSTATEFUNC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,size_t,unsigned int) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,size_t) ; 
- int STATE_HIGHEST ; 
- int /*<<< orphan*/ * TRUE ; 
- int /*<<< orphan*/  WINED3D_OK ; 
- int /*<<< orphan*/  debug_d3dstate (size_t) ; 
- int /*<<< orphan*/ * heap_calloc (int,int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  multistate_apply_2 ; 
- int /*<<< orphan*/  multistate_apply_3 ; 
- unsigned int num_handlers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  prune_invalid_states (struct StateEntry*,struct wined3d_gl_info const*,struct wined3d_d3d_info const*) ; 
- int /*<<< orphan*/  state_undefined ; 
- int /*<<< orphan*/  validate_state_table (struct StateEntry*) ; 
+
+ int ERR (char*,size_t,unsigned int) ;
+ int E_OUTOFMEMORY ;
+ int FIXME (char*,int ,size_t) ;
+ int STATE_HIGHEST ;
+ int * TRUE ;
+ int WINED3D_OK ;
+ int debug_d3dstate (size_t) ;
+ int * heap_calloc (int,int) ;
+ int heap_free (int *) ;
+ int * heap_realloc (int *,int) ;
+ int memset (int **,int ,int) ;
+ int multistate_apply_2 ;
+ int multistate_apply_3 ;
+ unsigned int num_handlers (int *) ;
+ int prune_invalid_states (struct StateEntry*,struct wined3d_gl_info const*,struct wined3d_d3d_info const*) ;
+ int state_undefined ;
+ int validate_state_table (struct StateEntry*) ;
 
 HRESULT compile_state_table(struct StateEntry *StateTable, APPLYSTATEFUNC **dev_multistate_funcs,
         const struct wined3d_gl_info *gl_info, const struct wined3d_d3d_info *d3d_info,
@@ -61,41 +61,33 @@ HRESULT compile_state_table(struct StateEntry *StateTable, APPLYSTATEFUNC **dev_
     }
 
     for(type = 0; type < 3; type++) {
-        /* This switch decides the order in which the states are applied */
+
         switch(type) {
             case 0: cur = misc; break;
             case 1: cur = fragment->states; break;
             case 2: cur = vertex->vp_states; break;
-            default: cur = NULL; /* Stupid compiler */
+            default: cur = ((void*)0);
         }
         if(!cur) continue;
 
-        /* GL extension filtering should not prevent multiple handlers being applied from different
-         * pipeline parts
-         */
+
+
+
         memset(set, 0, sizeof(set));
 
         for(i = 0; cur[i].state; i++) {
             APPLYSTATEFUNC *funcs_array;
-
-            /* Only use the first matching state with the available extension from one template.
-             * e.g.
-             * {D3DRS_FOOBAR, {D3DRS_FOOBAR, func1}, XYZ_FANCY},
-             * {D3DRS_FOOBAR, {D3DRS_FOOBAR, func2}, 0        }
-             *
-             * if GL_XYZ_fancy is supported, ignore the 2nd line
-             */
             if(set[cur[i].state]) continue;
-            /* Skip state lines depending on unsupported extensions */
+
             if (!gl_info->supported[cur[i].extension]) continue;
             set[cur[i].state] = TRUE;
-            /* In some cases having an extension means that nothing has to be
-             * done for a state, e.g. if GL_ARB_texture_non_power_of_two is
-             * supported, the texture coordinate fixup can be ignored. If the
-             * apply function is used, mark the state set(done above) to prevent
-             * applying later lines, but do not record anything in the state
-             * table
-             */
+
+
+
+
+
+
+
             if (!cur[i].content.representative) continue;
 
             handlers = num_handlers(multistate_funcs[cur[i].state]);

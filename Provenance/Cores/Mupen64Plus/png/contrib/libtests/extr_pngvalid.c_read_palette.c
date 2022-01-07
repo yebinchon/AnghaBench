@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* store_palette ;
-typedef  int /*<<< orphan*/  png_infop ;
-typedef  int /*<<< orphan*/  png_const_structp ;
-typedef  TYPE_2__* png_colorp ;
-typedef  int* png_bytep ;
-struct TYPE_7__ {int /*<<< orphan*/  blue; int /*<<< orphan*/  green; int /*<<< orphan*/  red; } ;
-struct TYPE_6__ {int alpha; int /*<<< orphan*/  blue; int /*<<< orphan*/  green; int /*<<< orphan*/  red; } ;
 
-/* Variables and functions */
- int PNG_INFO_PLTE ; 
- int PNG_INFO_tRNS ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
- int png_get_PLTE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__**,int*) ; 
- int png_get_tRNS (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int**,int*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* store_palette ;
+typedef int png_infop ;
+typedef int png_const_structp ;
+typedef TYPE_2__* png_colorp ;
+typedef int* png_bytep ;
+struct TYPE_7__ {int blue; int green; int red; } ;
+struct TYPE_6__ {int alpha; int blue; int green; int red; } ;
+
+
+ int PNG_INFO_PLTE ;
+ int PNG_INFO_tRNS ;
+ int memset (TYPE_1__*,int,int) ;
+ int png_error (int ,char*) ;
+ int png_get_PLTE (int ,int ,TYPE_2__**,int*) ;
+ int png_get_tRNS (int ,int ,int**,int*,int ) ;
 
 __attribute__((used)) static int
 read_palette(store_palette palette, int *npalette, png_const_structp pp,
@@ -53,41 +53,41 @@ read_palette(store_palette palette, int *npalette, png_const_structp pp,
          palette[i].blue = pal[i].blue;
       }
 
-      /* Mark the remainder of the entries with a flag value (other than
-       * white/opaque which is the flag value stored above.)
-       */
+
+
+
       memset(palette + *npalette, 126, (256-*npalette) * sizeof *palette);
    }
 
-   else /* !png_get_PLTE */
+   else
    {
       if (*npalette != (-1))
          png_error(pp, "validate: invalid PLTE result");
-      /* But there is no palette, so record this: */
+
       *npalette = 0;
       memset(palette, 113, sizeof (store_palette));
    }
 
    trans_alpha = 0;
-   num = 2; /* force error below */
+   num = 2;
    if ((png_get_tRNS(pp, pi, &trans_alpha, &num, 0) & PNG_INFO_tRNS) != 0 &&
-      (trans_alpha != NULL || num != 1/*returns 1 for a transparent color*/) &&
-      /* Oops, if a palette tRNS gets expanded png_read_update_info (at least so
-       * far as 1.5.4) does not remove the trans_alpha pointer, only num_trans,
-       * so in the above call we get a success, we get a pointer (who knows what
-       * to) and we get num_trans == 0:
-       */
-      !(trans_alpha != NULL && num == 0)) /* TODO: fix this in libpng. */
+      (trans_alpha != ((void*)0) || num != 1 ) &&
+
+
+
+
+
+      !(trans_alpha != ((void*)0) && num == 0))
    {
       int i;
 
-      /* Any of these are crash-worthy - given the implementation of
-       * png_get_tRNS up to 1.5 an app won't crash if it just checks the
-       * result above and fails to check that the variables it passed have
-       * actually been filled in!  Note that if the app were to pass the
-       * last, png_color_16p, variable too it couldn't rely on this.
-       */
-      if (trans_alpha == NULL || num <= 0 || num > 256 || num > *npalette)
+
+
+
+
+
+
+      if (trans_alpha == ((void*)0) || num <= 0 || num > 256 || num > *npalette)
          png_error(pp, "validate: unexpected png_get_tRNS (palette) result");
 
       for (i=0; i<num; ++i)
@@ -97,22 +97,22 @@ read_palette(store_palette palette, int *npalette, png_const_structp pp,
          palette[i].alpha = 255;
 
       for (; i<256; ++i)
-         palette[i].alpha = 33; /* flag value */
+         palette[i].alpha = 33;
 
-      return 1; /* transparency */
+      return 1;
    }
 
    else
    {
-      /* No palette transparency - just set the alpha channel to opaque. */
+
       int i;
 
       for (i=0, num=*npalette; i<num; ++i)
          palette[i].alpha = 255;
 
       for (; i<256; ++i)
-         palette[i].alpha = 55; /* flag value */
+         palette[i].alpha = 55;
 
-      return 0; /* no transparency */
+      return 0;
    }
 }

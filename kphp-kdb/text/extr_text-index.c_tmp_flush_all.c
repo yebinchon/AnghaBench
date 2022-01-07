@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct buff_file {int /*<<< orphan*/  fd; int /*<<< orphan*/  timestamp; scalar_t__ after_crc32; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int passes ; 
- struct buff_file* temp_file ; 
- int /*<<< orphan*/  tmp_adjust_global_id (struct buff_file*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tmp_flush_out (struct buff_file*) ; 
- int /*<<< orphan*/  tmp_write_crc32 (struct buff_file*,int /*<<< orphan*/ ) ; 
+
+
+
+struct buff_file {int fd; int timestamp; scalar_t__ after_crc32; } ;
+
+
+ int SEEK_SET ;
+ int assert (int) ;
+ scalar_t__ lseek (int ,int ,int ) ;
+ int passes ;
+ struct buff_file* temp_file ;
+ int tmp_adjust_global_id (struct buff_file*,int ) ;
+ int tmp_flush_out (struct buff_file*) ;
+ int tmp_write_crc32 (struct buff_file*,int ) ;
 
 int tmp_flush_all (void) {
   int i;

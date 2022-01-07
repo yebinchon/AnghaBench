@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  urlW ;
-typedef  unsigned char WCHAR ;
-typedef  unsigned char* LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- unsigned char* heap_strdupW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strchrW (int /*<<< orphan*/ ,char) ; 
- scalar_t__ strncmpW (int /*<<< orphan*/ ,unsigned char const*,int) ; 
+
+
+
+typedef int urlW ;
+typedef unsigned char WCHAR ;
+typedef unsigned char* LPWSTR ;
+typedef int LPCWSTR ;
+
+
+ unsigned char* heap_strdupW (int ) ;
+ int strchrW (int ,char) ;
+ scalar_t__ strncmpW (int ,unsigned char const*,int) ;
 
 __attribute__((used)) static LPWSTR fix_url_value(LPCWSTR val)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static LPWSTR fix_url_value(LPCWSTR val)
     static const WCHAR urlW[] = {'u','r','l','('};
 
     if(strncmpW(val, urlW, sizeof(urlW)/sizeof(WCHAR)) || !strchrW(val, '\\'))
-        return NULL;
+        return ((void*)0);
 
     ret = heap_strdupW(val);
 

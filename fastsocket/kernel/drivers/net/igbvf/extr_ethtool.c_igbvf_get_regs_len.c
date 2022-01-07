@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int IGBVF_REGS_LEN ; 
+
+ int IGBVF_REGS_LEN ;
 
 __attribute__((used)) static int igbvf_get_regs_len(struct net_device *netdev)
 {
-#define IGBVF_REGS_LEN 8
-	return IGBVF_REGS_LEN * sizeof(u32);
+
+ return 8 * sizeof(u32);
 }

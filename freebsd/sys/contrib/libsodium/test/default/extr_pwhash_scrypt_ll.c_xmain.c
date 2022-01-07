@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  N1 ; 
- int /*<<< orphan*/  N2 ; 
- int /*<<< orphan*/  N3 ; 
- int /*<<< orphan*/  p1 ; 
- int /*<<< orphan*/  p2 ; 
- int /*<<< orphan*/  p3 ; 
- int /*<<< orphan*/  passwd1 ; 
- int /*<<< orphan*/  passwd2 ; 
- int /*<<< orphan*/  passwd3 ; 
- int /*<<< orphan*/  r1 ; 
- int /*<<< orphan*/  r2 ; 
- int /*<<< orphan*/  r3 ; 
- int /*<<< orphan*/  salt1 ; 
- int /*<<< orphan*/  salt2 ; 
- int /*<<< orphan*/  salt3 ; 
- int /*<<< orphan*/  tv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int N1 ;
+ int N2 ;
+ int N3 ;
+ int p1 ;
+ int p2 ;
+ int p3 ;
+ int passwd1 ;
+ int passwd2 ;
+ int passwd3 ;
+ int r1 ;
+ int r2 ;
+ int r3 ;
+ int salt1 ;
+ int salt2 ;
+ int salt3 ;
+ int tv (int ,int ,int ,int ,int ) ;
 
 int
 main(void)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int dim_m; } ;
 struct ra_layout {scalar_t__ stride; } ;
-struct sc_uniform {TYPE_1__ input; struct ra_layout layout; scalar_t__ offset; int /*<<< orphan*/  v; } ;
+struct sc_uniform {TYPE_1__ input; struct ra_layout layout; scalar_t__ offset; int v; } ;
 struct ra {int dummy; } ;
-typedef  uintptr_t ptrdiff_t ;
+typedef uintptr_t ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (void*,void*,scalar_t__) ; 
- struct ra_layout ra_renderpass_input_layout (TYPE_1__*) ; 
+
+ int memcpy (void*,void*,scalar_t__) ;
+ struct ra_layout ra_renderpass_input_layout (TYPE_1__*) ;
 
 __attribute__((used)) static void update_pushc(struct ra *ra, void *pushc, struct sc_uniform *u)
 {

@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sec_softc {int /*<<< orphan*/  sc_dev; } ;
-struct sec_dma_mem {int /*<<< orphan*/ * dma_vaddr; int /*<<< orphan*/  dma_tag; int /*<<< orphan*/  dma_map; scalar_t__ dma_is_map; } ;
-typedef  int /*<<< orphan*/  bus_size_t ;
 
-/* Variables and functions */
- int BUS_DMA_NOWAIT ; 
- int BUS_DMA_ZERO ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR_32BIT ; 
- int EBUSY ; 
- int /*<<< orphan*/  SEC_DMA_ALIGNMENT ; 
- int bus_dma_tag_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int bus_dmamap_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sec_dma_mem*,int) ; 
- int bus_dmamem_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamem_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sec_alloc_dma_mem_cb ; 
+
+
+
+struct sec_softc {int sc_dev; } ;
+struct sec_dma_mem {int * dma_vaddr; int dma_tag; int dma_map; scalar_t__ dma_is_map; } ;
+typedef int bus_size_t ;
+
+
+ int BUS_DMA_NOWAIT ;
+ int BUS_DMA_ZERO ;
+ int BUS_SPACE_MAXADDR ;
+ int BUS_SPACE_MAXADDR_32BIT ;
+ int EBUSY ;
+ int SEC_DMA_ALIGNMENT ;
+ int bus_dma_tag_create (int *,int ,int ,int ,int ,int *,int *,int ,int,int ,int ,int *,int *,int *) ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_dmamap_load (int ,int ,int *,int ,int ,struct sec_dma_mem*,int) ;
+ int bus_dmamem_alloc (int ,int **,int,int *) ;
+ int bus_dmamem_free (int ,int *,int ) ;
+ int device_printf (int ,char*,int) ;
+ int sec_alloc_dma_mem_cb ;
 
 __attribute__((used)) static int
 sec_alloc_dma_mem(struct sec_softc *sc, struct sec_dma_mem *dma_mem,
     bus_size_t size)
 {
-	int error;
+ int error;
 
-	if (dma_mem->dma_vaddr != NULL)
-		return (EBUSY);
+ if (dma_mem->dma_vaddr != ((void*)0))
+  return (EBUSY);
 
-	error = bus_dma_tag_create(NULL,	/* parent */
-		SEC_DMA_ALIGNMENT, 0,		/* alignment, boundary */
-		BUS_SPACE_MAXADDR_32BIT,	/* lowaddr */
-		BUS_SPACE_MAXADDR,		/* highaddr */
-		NULL, NULL,			/* filtfunc, filtfuncarg */
-		size, 1,			/* maxsize, nsegments */
-		size, 0,			/* maxsegsz, flags */
-		NULL, NULL,			/* lockfunc, lockfuncarg */
-		&(dma_mem->dma_tag));		/* dmat */
+ error = bus_dma_tag_create(((void*)0),
+  SEC_DMA_ALIGNMENT, 0,
+  BUS_SPACE_MAXADDR_32BIT,
+  BUS_SPACE_MAXADDR,
+  ((void*)0), ((void*)0),
+  size, 1,
+  size, 0,
+  ((void*)0), ((void*)0),
+  &(dma_mem->dma_tag));
 
-	if (error) {
-		device_printf(sc->sc_dev, "failed to allocate busdma tag, error"
-		    " %i!\n", error);
-		goto err1;
-	}
+ if (error) {
+  device_printf(sc->sc_dev, "failed to allocate busdma tag, error"
+      " %i!\n", error);
+  goto err1;
+ }
 
-	error = bus_dmamem_alloc(dma_mem->dma_tag, &(dma_mem->dma_vaddr),
-	    BUS_DMA_NOWAIT | BUS_DMA_ZERO, &(dma_mem->dma_map));
+ error = bus_dmamem_alloc(dma_mem->dma_tag, &(dma_mem->dma_vaddr),
+     BUS_DMA_NOWAIT | BUS_DMA_ZERO, &(dma_mem->dma_map));
 
-	if (error) {
-		device_printf(sc->sc_dev, "failed to allocate DMA safe"
-		    " memory, error %i!\n", error);
-		goto err2;
-	}
+ if (error) {
+  device_printf(sc->sc_dev, "failed to allocate DMA safe"
+      " memory, error %i!\n", error);
+  goto err2;
+ }
 
-	error = bus_dmamap_load(dma_mem->dma_tag, dma_mem->dma_map,
-		    dma_mem->dma_vaddr, size, sec_alloc_dma_mem_cb, dma_mem,
-		    BUS_DMA_NOWAIT);
+ error = bus_dmamap_load(dma_mem->dma_tag, dma_mem->dma_map,
+      dma_mem->dma_vaddr, size, sec_alloc_dma_mem_cb, dma_mem,
+      BUS_DMA_NOWAIT);
 
-	if (error) {
-		device_printf(sc->sc_dev, "cannot get address of the DMA"
-		    " memory, error %i\n", error);
-		goto err3;
-	}
+ if (error) {
+  device_printf(sc->sc_dev, "cannot get address of the DMA"
+      " memory, error %i\n", error);
+  goto err3;
+ }
 
-	dma_mem->dma_is_map = 0;
-	return (0);
+ dma_mem->dma_is_map = 0;
+ return (0);
 
 err3:
-	bus_dmamem_free(dma_mem->dma_tag, dma_mem->dma_vaddr, dma_mem->dma_map);
+ bus_dmamem_free(dma_mem->dma_tag, dma_mem->dma_vaddr, dma_mem->dma_map);
 err2:
-	bus_dma_tag_destroy(dma_mem->dma_tag);
+ bus_dma_tag_destroy(dma_mem->dma_tag);
 err1:
-	dma_mem->dma_vaddr = NULL;
-	return(error);
+ dma_mem->dma_vaddr = ((void*)0);
+ return(error);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int USHORT ;
-typedef  int /*<<< orphan*/  PCONFIGURATION_COMPONENT_DATA ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- scalar_t__ BiosIsVesaDdcSupported () ; 
- int BiosIsVesaSupported () ; 
- scalar_t__ BiosVesaReadEdid () ; 
- int /*<<< orphan*/  ControllerClass ; 
- int /*<<< orphan*/  DisplayController ; 
- int /*<<< orphan*/  FldrCreateComponentKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int VOID ;
+typedef int USHORT ;
+typedef int PCONFIGURATION_COMPONENT_DATA ;
+typedef int CHAR ;
+
+
+ scalar_t__ BiosIsVesaDdcSupported () ;
+ int BiosIsVesaSupported () ;
+ scalar_t__ BiosVesaReadEdid () ;
+ int ControllerClass ;
+ int DisplayController ;
+ int FldrCreateComponentKey (int ,int ,int ,int,int,int,int *,int *,int ,int *) ;
+ int TRACE (char*,...) ;
+ int strcpy (int *,char*) ;
 
 __attribute__((used)) static VOID
 DetectDisplayController(PCONFIGURATION_COMPONENT_DATA BusKey)
@@ -32,7 +32,7 @@ DetectDisplayController(PCONFIGURATION_COMPONENT_DATA BusKey)
     PCONFIGURATION_COMPONENT_DATA ControllerKey;
     USHORT VesaVersion;
 
-    /* FIXME: Set 'ComponentInformation' value */
+
 
     VesaVersion = BiosIsVesaSupported();
     if (VesaVersion != 0)
@@ -62,12 +62,12 @@ DetectDisplayController(PCONFIGURATION_COMPONENT_DATA BusKey)
                            0x0,
                            0xFFFFFFFF,
                            Buffer,
-                           NULL,
+                           ((void*)0),
                            0,
                            &ControllerKey);
     TRACE("Created key: DisplayController\\0\n");
 
-    /* FIXME: Add display peripheral (monitor) data */
+
     if (VesaVersion != 0)
     {
         if (BiosIsVesaDdcSupported())

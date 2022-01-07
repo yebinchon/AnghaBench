@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rtwn_softc {struct r92e_softc* sc_priv; } ;
 struct r92e_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_RTWN_PRIV ; 
- int /*<<< orphan*/  free (struct r92e_softc*,int /*<<< orphan*/ ) ; 
+
+ int M_RTWN_PRIV ;
+ int free (struct r92e_softc*,int ) ;
 
 void
 r92e_detach_private(struct rtwn_softc *sc)
 {
-	struct r92e_softc *rs = sc->sc_priv;
+ struct r92e_softc *rs = sc->sc_priv;
 
-	free(rs, M_RTWN_PRIV);
+ free(rs, M_RTWN_PRIV);
 }

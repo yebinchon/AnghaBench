@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DATA_MAXLEN ; 
- int mips_receive_packet (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mips_receive_wait ; 
- int /*<<< orphan*/  mips_send_packet (char*,int) ; 
- int /*<<< orphan*/  printf_filtered (char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+ int DATA_MAXLEN ;
+ int mips_receive_packet (char*,int,int ) ;
+ int mips_receive_wait ;
+ int mips_send_packet (char*,int) ;
+ int printf_filtered (char*,char*) ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static void
 pmon_command (char *args, int from_tty)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleKey ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int REDISMODULE_OK ; 
- int REDISMODULE_OPEN_KEY_NOTOUCH ; 
- int REDISMODULE_WRITE ; 
- int /*<<< orphan*/  RedisModule_CloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_OpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithCString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_SetLRUOrLFU (int /*<<< orphan*/ *,int,long long) ; 
- int /*<<< orphan*/  RedisModule_StringToLongLong (int /*<<< orphan*/ *,long long*) ; 
- int /*<<< orphan*/  RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleKey ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_OK ;
+ int REDISMODULE_OPEN_KEY_NOTOUCH ;
+ int REDISMODULE_WRITE ;
+ int RedisModule_CloseKey (int *) ;
+ int * RedisModule_OpenKey (int *,int *,int) ;
+ int RedisModule_ReplyWithCString (int *,char*) ;
+ int RedisModule_SetLRUOrLFU (int *,int,long long) ;
+ int RedisModule_StringToLongLong (int *,long long*) ;
+ int RedisModule_WrongArity (int *) ;
 
 int test_setlru(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
 {

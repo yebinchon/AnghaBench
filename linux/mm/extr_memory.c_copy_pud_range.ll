@@ -1,0 +1,192 @@
+; ModuleID = '/home/carl/AnghaBench/linux/mm/extr_memory.c_copy_pud_range.c'
+source_filename = "/home/carl/AnghaBench/linux/mm/extr_memory.c_copy_pud_range.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.mm_struct = type { i32 }
+%struct.vm_area_struct = type { i32 }
+
+@ENOMEM = common dso_local global i32 0, align 4
+@HPAGE_PUD_SIZE = common dso_local global i64 0, align 8
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.mm_struct*, %struct.mm_struct*, i32*, i32*, %struct.vm_area_struct*, i64, i64)* @copy_pud_range to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @copy_pud_range(%struct.mm_struct* %0, %struct.mm_struct* %1, i32* %2, i32* %3, %struct.vm_area_struct* %4, i64 %5, i64 %6) #0 {
+  %8 = alloca i32, align 4
+  %9 = alloca %struct.mm_struct*, align 8
+  %10 = alloca %struct.mm_struct*, align 8
+  %11 = alloca i32*, align 8
+  %12 = alloca i32*, align 8
+  %13 = alloca %struct.vm_area_struct*, align 8
+  %14 = alloca i64, align 8
+  %15 = alloca i64, align 8
+  %16 = alloca i32*, align 8
+  %17 = alloca i32*, align 8
+  %18 = alloca i64, align 8
+  %19 = alloca i32, align 4
+  store %struct.mm_struct* %0, %struct.mm_struct** %9, align 8
+  store %struct.mm_struct* %1, %struct.mm_struct** %10, align 8
+  store i32* %2, i32** %11, align 8
+  store i32* %3, i32** %12, align 8
+  store %struct.vm_area_struct* %4, %struct.vm_area_struct** %13, align 8
+  store i64 %5, i64* %14, align 8
+  store i64 %6, i64* %15, align 8
+  %20 = load %struct.mm_struct*, %struct.mm_struct** %9, align 8
+  %21 = load i32*, i32** %11, align 8
+  %22 = load i64, i64* %14, align 8
+  %23 = call i32* @pud_alloc(%struct.mm_struct* %20, i32* %21, i64 %22)
+  store i32* %23, i32** %17, align 8
+  %24 = load i32*, i32** %17, align 8
+  %25 = icmp ne i32* %24, null
+  br i1 %25, label %29, label %26
+
+26:                                               ; preds = %7
+  %27 = load i32, i32* @ENOMEM, align 4
+  %28 = sub nsw i32 0, %27
+  store i32 %28, i32* %8, align 4
+  br label %103
+
+29:                                               ; preds = %7
+  %30 = load i32*, i32** %12, align 8
+  %31 = load i64, i64* %14, align 8
+  %32 = call i32* @pud_offset(i32* %30, i64 %31)
+  store i32* %32, i32** %16, align 8
+  br label %33
+
+33:                                               ; preds = %93, %29
+  %34 = load i64, i64* %14, align 8
+  %35 = load i64, i64* %15, align 8
+  %36 = call i64 @pud_addr_end(i64 %34, i64 %35)
+  store i64 %36, i64* %18, align 8
+  %37 = load i32*, i32** %16, align 8
+  %38 = load i32, i32* %37, align 4
+  %39 = call i64 @pud_trans_huge(i32 %38)
+  %40 = icmp ne i64 %39, 0
+  br i1 %40, label %46, label %41
+
+41:                                               ; preds = %33
+  %42 = load i32*, i32** %16, align 8
+  %43 = load i32, i32* %42, align 4
+  %44 = call i64 @pud_devmap(i32 %43)
+  %45 = icmp ne i64 %44, 0
+  br i1 %45, label %46, label %74
+
+46:                                               ; preds = %41, %33
+  %47 = load i64, i64* %18, align 8
+  %48 = load i64, i64* %14, align 8
+  %49 = sub i64 %47, %48
+  %50 = load i64, i64* @HPAGE_PUD_SIZE, align 8
+  %51 = icmp ne i64 %49, %50
+  %52 = zext i1 %51 to i32
+  %53 = load %struct.vm_area_struct*, %struct.vm_area_struct** %13, align 8
+  %54 = call i32 @VM_BUG_ON_VMA(i32 %52, %struct.vm_area_struct* %53)
+  %55 = load %struct.mm_struct*, %struct.mm_struct** %9, align 8
+  %56 = load %struct.mm_struct*, %struct.mm_struct** %10, align 8
+  %57 = load i32*, i32** %17, align 8
+  %58 = load i32*, i32** %16, align 8
+  %59 = load i64, i64* %14, align 8
+  %60 = load %struct.vm_area_struct*, %struct.vm_area_struct** %13, align 8
+  %61 = call i32 @copy_huge_pud(%struct.mm_struct* %55, %struct.mm_struct* %56, i32* %57, i32* %58, i64 %59, %struct.vm_area_struct* %60)
+  store i32 %61, i32* %19, align 4
+  %62 = load i32, i32* %19, align 4
+  %63 = load i32, i32* @ENOMEM, align 4
+  %64 = sub nsw i32 0, %63
+  %65 = icmp eq i32 %62, %64
+  br i1 %65, label %66, label %69
+
+66:                                               ; preds = %46
+  %67 = load i32, i32* @ENOMEM, align 4
+  %68 = sub nsw i32 0, %67
+  store i32 %68, i32* %8, align 4
+  br label %103
+
+69:                                               ; preds = %46
+  %70 = load i32, i32* %19, align 4
+  %71 = icmp ne i32 %70, 0
+  br i1 %71, label %73, label %72
+
+72:                                               ; preds = %69
+  br label %93
+
+73:                                               ; preds = %69
+  br label %74
+
+74:                                               ; preds = %73, %41
+  %75 = load i32*, i32** %16, align 8
+  %76 = call i64 @pud_none_or_clear_bad(i32* %75)
+  %77 = icmp ne i64 %76, 0
+  br i1 %77, label %78, label %79
+
+78:                                               ; preds = %74
+  br label %93
+
+79:                                               ; preds = %74
+  %80 = load %struct.mm_struct*, %struct.mm_struct** %9, align 8
+  %81 = load %struct.mm_struct*, %struct.mm_struct** %10, align 8
+  %82 = load i32*, i32** %17, align 8
+  %83 = load i32*, i32** %16, align 8
+  %84 = load %struct.vm_area_struct*, %struct.vm_area_struct** %13, align 8
+  %85 = load i64, i64* %14, align 8
+  %86 = load i64, i64* %18, align 8
+  %87 = call i64 @copy_pmd_range(%struct.mm_struct* %80, %struct.mm_struct* %81, i32* %82, i32* %83, %struct.vm_area_struct* %84, i64 %85, i64 %86)
+  %88 = icmp ne i64 %87, 0
+  br i1 %88, label %89, label %92
+
+89:                                               ; preds = %79
+  %90 = load i32, i32* @ENOMEM, align 4
+  %91 = sub nsw i32 0, %90
+  store i32 %91, i32* %8, align 4
+  br label %103
+
+92:                                               ; preds = %79
+  br label %93
+
+93:                                               ; preds = %92, %78, %72
+  %94 = load i32*, i32** %17, align 8
+  %95 = getelementptr inbounds i32, i32* %94, i32 1
+  store i32* %95, i32** %17, align 8
+  %96 = load i32*, i32** %16, align 8
+  %97 = getelementptr inbounds i32, i32* %96, i32 1
+  store i32* %97, i32** %16, align 8
+  %98 = load i64, i64* %18, align 8
+  store i64 %98, i64* %14, align 8
+  %99 = load i64, i64* %14, align 8
+  %100 = load i64, i64* %15, align 8
+  %101 = icmp ne i64 %99, %100
+  br i1 %101, label %33, label %102
+
+102:                                              ; preds = %93
+  store i32 0, i32* %8, align 4
+  br label %103
+
+103:                                              ; preds = %102, %89, %66, %26
+  %104 = load i32, i32* %8, align 4
+  ret i32 %104
+}
+
+declare dso_local i32* @pud_alloc(%struct.mm_struct*, i32*, i64) #1
+
+declare dso_local i32* @pud_offset(i32*, i64) #1
+
+declare dso_local i64 @pud_addr_end(i64, i64) #1
+
+declare dso_local i64 @pud_trans_huge(i32) #1
+
+declare dso_local i64 @pud_devmap(i32) #1
+
+declare dso_local i32 @VM_BUG_ON_VMA(i32, %struct.vm_area_struct*) #1
+
+declare dso_local i32 @copy_huge_pud(%struct.mm_struct*, %struct.mm_struct*, i32*, i32*, i64, %struct.vm_area_struct*) #1
+
+declare dso_local i64 @pud_none_or_clear_bad(i32*) #1
+
+declare dso_local i64 @copy_pmd_range(%struct.mm_struct*, %struct.mm_struct*, i32*, i32*, %struct.vm_area_struct*, i64, i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

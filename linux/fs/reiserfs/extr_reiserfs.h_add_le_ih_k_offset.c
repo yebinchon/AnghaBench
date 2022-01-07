@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item_head {int /*<<< orphan*/  ih_key; } ;
-typedef  int /*<<< orphan*/  loff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_le_key_k_offset (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ih_version (struct item_head*) ; 
+
+
+
+struct item_head {int ih_key; } ;
+typedef int loff_t ;
+
+
+ int add_le_key_k_offset (int ,int *,int ) ;
+ int ih_version (struct item_head*) ;
 
 __attribute__((used)) static inline void add_le_ih_k_offset(struct item_head *ih, loff_t offset)
 {
-	add_le_key_k_offset(ih_version(ih), &(ih->ih_key), offset);
+ add_le_key_k_offset(ih_version(ih), &(ih->ih_key), offset);
 }

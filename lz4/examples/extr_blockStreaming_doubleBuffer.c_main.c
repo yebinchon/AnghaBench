@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BLOCK_BYTES ; 
- int compare (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,...) ; 
- int /*<<< orphan*/  test_compress (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_decompress (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FILE ;
+
+
+ int BLOCK_BYTES ;
+ int compare (int *,int *) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int printf (char*,...) ;
+ int snprintf (char*,int,char*,char*,...) ;
+ int test_compress (int *,int *) ;
+ int test_decompress (int *,int *) ;
 
 int main(int argc, char* argv[])
 {
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
     printf("lz4 = [%s]\n", lz4Filename);
     printf("dec = [%s]\n", decFilename);
 
-    // compress
+
     {
         FILE* inpFp = fopen(inpFilename, "rb");
         FILE* outFp = fopen(lz4Filename, "wb");
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
         fclose(inpFp);
     }
 
-    // decompress
+
     {
         FILE* inpFp = fopen(lz4Filename, "rb");
         FILE* outFp = fopen(decFilename, "wb");
@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
         fclose(inpFp);
     }
 
-    // verify
+
     {
         FILE* inpFp = fopen(inpFilename, "rb");
         FILE* decFp = fopen(decFilename, "rb");

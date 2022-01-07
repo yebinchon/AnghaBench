@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  md5_hash_t ;
 
-/* Variables and functions */
- long long HASH_FILE_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  md5 (unsigned char*,long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- long long pread (int,scalar_t__,long long,long long) ; 
- scalar_t__ stats_buff ; 
+
+
+
+typedef int md5_hash_t ;
+
+
+ long long HASH_FILE_BYTES ;
+ int assert (int) ;
+ int md5 (unsigned char*,long long,int ) ;
+ int memcpy (int ,int ,int) ;
+ long long pread (int,scalar_t__,long long,long long) ;
+ scalar_t__ stats_buff ;
 
 int compute_start_end_hashes (int fd, long long file_size, md5_hash_t start_hash, md5_hash_t end_hash) {
   assert (fd > 0 && file_size >= 0);

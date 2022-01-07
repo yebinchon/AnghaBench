@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cmd_list_element {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Adp_SetLogEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Adp_SetLogfile (int /*<<< orphan*/ ) ; 
- struct cmd_list_element* add_cmd (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_setshow_boolean_cmd (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  arm_rdi_ops ; 
- int /*<<< orphan*/  class_maintenance ; 
- int /*<<< orphan*/  filename_completer ; 
- int /*<<< orphan*/  init_rdi_ops () ; 
- int /*<<< orphan*/  log_enable ; 
- int /*<<< orphan*/  log_filename ; 
- int /*<<< orphan*/  maintenancelist ; 
- int /*<<< orphan*/  no_class ; 
- int /*<<< orphan*/  rdi_heartbeat ; 
- int /*<<< orphan*/  rdilogenable_command ; 
- int /*<<< orphan*/  rdilogfile_command ; 
- int /*<<< orphan*/  rom_at_zero ; 
- int /*<<< orphan*/  set_cmd_completer (struct cmd_list_element*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setlist ; 
- int /*<<< orphan*/  showlist ; 
- int /*<<< orphan*/  xstrdup (char*) ; 
+
+ int Adp_SetLogEnable (int ) ;
+ int Adp_SetLogfile (int ) ;
+ struct cmd_list_element* add_cmd (char*,int ,int ,char*,int *) ;
+ int add_setshow_boolean_cmd (char*,int ,int *,char*,char*,int *,int *,int *,int *) ;
+ int add_target (int *) ;
+ int arm_rdi_ops ;
+ int class_maintenance ;
+ int filename_completer ;
+ int init_rdi_ops () ;
+ int log_enable ;
+ int log_filename ;
+ int maintenancelist ;
+ int no_class ;
+ int rdi_heartbeat ;
+ int rdilogenable_command ;
+ int rdilogfile_command ;
+ int rom_at_zero ;
+ int set_cmd_completer (struct cmd_list_element*,int ) ;
+ int setlist ;
+ int showlist ;
+ int xstrdup (char*) ;
 
 void
 _initialize_remote_rdi (void)
@@ -48,24 +48,24 @@ _initialize_remote_rdi (void)
   Adp_SetLogEnable (log_enable);
 
   c = add_cmd ("rdilogfile", class_maintenance,
-	       rdilogfile_command,
-	       "Set filename for ADP packet log.\n"
-	       "This file is used to log Angel Debugger Protocol packets.\n"
-	       "With a single argument, sets the logfile name to that value.\n"
-	       "Without an argument, shows the current logfile name.\n"
-	       "See also: rdilogenable\n",
-	       &maintenancelist);
+        rdilogfile_command,
+        "Set filename for ADP packet log.\n"
+        "This file is used to log Angel Debugger Protocol packets.\n"
+        "With a single argument, sets the logfile name to that value.\n"
+        "Without an argument, shows the current logfile name.\n"
+        "See also: rdilogenable\n",
+        &maintenancelist);
   set_cmd_completer (c, filename_completer);
 
   add_cmd ("rdilogenable", class_maintenance,
-	   rdilogenable_command,
-	   "Set enable logging of ADP packets.\n"
-	   "This will log ADP packets exchanged between gdb and the\n"
-	   "rdi target device.\n"
-	   "An argument of 1, t, true, y or yes will enable.\n"
-	   "An argument of 0, f, false, n or no will disabled.\n"
-	   "Withough an argument, it will display current state.\n",
-	   &maintenancelist);
+    rdilogenable_command,
+    "Set enable logging of ADP packets.\n"
+    "This will log ADP packets exchanged between gdb and the\n"
+    "rdi target device.\n"
+    "An argument of 1, t, true, y or yes will enable.\n"
+    "An argument of 0, f, false, n or no will disabled.\n"
+    "Withough an argument, it will display current state.\n",
+    &maintenancelist);
 
   add_setshow_boolean_cmd
     ("rdiromatzero", no_class, &rom_at_zero,
@@ -73,7 +73,7 @@ _initialize_remote_rdi (void)
      "A true value disables vector catching, false enables vector catching.\n"
      "This is evaluated at the time the 'target rdi' command is executed\n",
      "Show if target has ROM at addr 0.\n",
-     NULL, NULL,
+     ((void*)0), ((void*)0),
      &setlist, &showlist);
 
   add_setshow_boolean_cmd
@@ -83,6 +83,6 @@ _initialize_remote_rdi (void)
      "it will confuse ARM and EPI JTAG interface boxes as well\n"
      "as the Angel Monitor.\n",
      "Show enable for ADP heartbeat packets.\n",
-     NULL, NULL,
+     ((void*)0), ((void*)0),
      &setlist, &showlist);
 }

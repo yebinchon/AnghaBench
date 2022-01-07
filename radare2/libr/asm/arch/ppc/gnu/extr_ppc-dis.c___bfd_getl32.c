@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned long bfd_vma ;
-typedef  scalar_t__ bfd_byte ;
 
-/* Variables and functions */
+
+
+
+typedef unsigned long bfd_vma ;
+typedef scalar_t__ bfd_byte ;
+
+
 
 __attribute__((used)) static bfd_vma __bfd_getl32 (const void *p) {
   const bfd_byte *addr = p;

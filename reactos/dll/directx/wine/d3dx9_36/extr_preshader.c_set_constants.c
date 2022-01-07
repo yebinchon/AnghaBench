@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct d3dx_regstore {scalar_t__* tables; } ;
-struct d3dx_parameter {unsigned int* data; int rows; int columns; int /*<<< orphan*/  type; } ;
-struct d3dx_const_tab {unsigned int const_set_count; struct d3dx_const_param_eval_output* const_set; int /*<<< orphan*/  update_version; } ;
+struct d3dx_parameter {unsigned int* data; int rows; int columns; int type; } ;
+struct d3dx_const_tab {unsigned int const_set_count; struct d3dx_const_param_eval_output* const_set; int update_version; } ;
 struct d3dx_const_param_eval_output {int table; unsigned int register_index; unsigned int register_count; scalar_t__ constant_class; unsigned int element_count; struct d3dx_parameter* param; scalar_t__ direct_copy; } ;
 struct const_upload_info {unsigned int major_count; unsigned int minor; unsigned int major_stride; unsigned int major; unsigned int minor_remainder; scalar_t__ transpose; } ;
 struct IDirect3DDevice9 {int dummy; } ;
-typedef  enum pres_value_type { ____Placeholder_pres_value_type } pres_value_type ;
-typedef  enum pres_reg_tables { ____Placeholder_pres_reg_tables } pres_reg_tables ;
-typedef  int /*<<< orphan*/  ULONG64 ;
+typedef enum pres_value_type { ____Placeholder_pres_value_type } pres_value_type ;
+typedef enum pres_reg_tables { ____Placeholder_pres_reg_tables } pres_reg_tables ;
+typedef int ULONG64 ;
 struct TYPE_2__ {int type; } ;
-typedef  int /*<<< orphan*/  ID3DXEffectStateManager ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  D3DXPARAMETER_TYPE ;
-typedef  int BOOL ;
+typedef int ID3DXEffectStateManager ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int D3DXPARAMETER_TYPE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ D3DXPC_SCALAR ; 
- scalar_t__ D3DXPC_VECTOR ; 
- int /*<<< orphan*/  D3D_OK ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PRES_REGTAB_COUNT ; 
- int /*<<< orphan*/  get_const_upload_info (struct d3dx_const_param_eval_output*,struct const_upload_info*) ; 
- int get_offset_reg (int,unsigned int) ; 
- unsigned int get_reg_components (int) ; 
- int is_param_dirty (struct d3dx_parameter*,int /*<<< orphan*/ ) ; 
- unsigned int max (int,int) ; 
- int /*<<< orphan*/  regstore_set_data (struct d3dx_regstore*,int,unsigned int,unsigned int*,int,int) ; 
- int /*<<< orphan*/  regstore_set_values (struct d3dx_regstore*,int,unsigned int*,unsigned int,int) ; 
- int /*<<< orphan*/  set_constants_device (int /*<<< orphan*/ *,struct IDirect3DDevice9*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,unsigned int,unsigned int) ; 
- TYPE_1__* table_info ; 
- int table_type_from_param_type (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ D3DXPC_SCALAR ;
+ scalar_t__ D3DXPC_VECTOR ;
+ int D3D_OK ;
+ scalar_t__ FAILED (int ) ;
+ int PRES_REGTAB_COUNT ;
+ int get_const_upload_info (struct d3dx_const_param_eval_output*,struct const_upload_info*) ;
+ int get_offset_reg (int,unsigned int) ;
+ unsigned int get_reg_components (int) ;
+ int is_param_dirty (struct d3dx_parameter*,int ) ;
+ unsigned int max (int,int) ;
+ int regstore_set_data (struct d3dx_regstore*,int,unsigned int,unsigned int*,int,int) ;
+ int regstore_set_values (struct d3dx_regstore*,int,unsigned int*,unsigned int,int) ;
+ int set_constants_device (int *,struct IDirect3DDevice9*,int ,int,int *,unsigned int,unsigned int) ;
+ TYPE_1__* table_info ;
+ int table_type_from_param_type (int ) ;
 
 __attribute__((used)) static HRESULT set_constants(struct d3dx_regstore *rs, struct d3dx_const_tab *const_tab,
         ULONG64 new_update_version, ID3DXEffectStateManager *manager, struct IDirect3DDevice9 *device,
@@ -99,8 +99,8 @@ __attribute__((used)) static HRESULT set_constants(struct d3dx_regstore *rs, str
         {
             unsigned int *out = (unsigned int *)rs->tables[table] + start_offset;
 
-            /* Store reshaped but (possibly) not converted yet data temporarily in the same constants buffer.
-             * All the supported types of parameters and table values have the same size. */
+
+
             if (info.transpose)
             {
                 for (i = 0; i < info.major_count; ++i)

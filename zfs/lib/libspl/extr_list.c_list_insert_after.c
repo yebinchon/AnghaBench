@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  list_t ;
-typedef  int /*<<< orphan*/  list_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * list_d2l (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  list_insert_after_node (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  list_insert_head (int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int list_t ;
+typedef int list_node_t ;
+
+
+ int * list_d2l (int *,void*) ;
+ int list_insert_after_node (int *,int *,void*) ;
+ int list_insert_head (int *,void*) ;
 
 void
 list_insert_after(list_t *list, void *object, void *nobject)
 {
-	if (object == NULL) {
-		list_insert_head(list, nobject);
-	} else {
-		list_node_t *lold = list_d2l(list, object);
-		list_insert_after_node(list, lold, nobject);
-	}
+ if (object == ((void*)0)) {
+  list_insert_head(list, nobject);
+ } else {
+  list_node_t *lold = list_d2l(list, object);
+  list_insert_after_node(list, lold, nobject);
+ }
 }

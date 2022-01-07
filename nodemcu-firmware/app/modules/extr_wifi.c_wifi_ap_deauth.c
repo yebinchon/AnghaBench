@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  mac ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVALID_MAC_STR ; 
- int /*<<< orphan*/  ets_str2macaddr (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,unsigned int*) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ **,int,int) ; 
- int /*<<< orphan*/  wifi_softap_deauth (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int mac ;
+typedef int lua_State ;
+
+
+ int INVALID_MAC_STR ;
+ int ets_str2macaddr (int *,char const*) ;
+ int luaL_argcheck (int *,int,int,int ) ;
+ char* luaL_checklstring (int *,int,unsigned int*) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ int lua_pushboolean (int *,int ) ;
+ int memset (int **,int,int) ;
+ int wifi_softap_deauth (int *) ;
 
 __attribute__((used)) static int wifi_ap_deauth( lua_State* L )
 {

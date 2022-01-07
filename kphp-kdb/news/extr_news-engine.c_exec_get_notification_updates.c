@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value_buff ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int value_buff ;
 struct connection {int dummy; } ;
 struct TYPE_4__ {int random_tag; int type; int owner; int place; int user; int item; int date; } ;
 struct TYPE_3__ {int pos; int num; } ;
 
-/* Variables and functions */
- TYPE_2__* RR ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,struct connection*,char const*,int,int) ; 
- TYPE_1__* notify_groups ; 
- int prepare_notify_groups (int,int,int,int,int,int,int,int*,int*) ; 
- int return_one_key_flags (struct connection*,char const*,char*,int) ; 
- int snprintf (char*,int,char*,...) ; 
- int sscanf (char const*,char*,int*,int*,int*,int*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ TYPE_2__* RR ;
+ int assert (int) ;
+ int fprintf (int ,char*,struct connection*,char const*,int,int) ;
+ TYPE_1__* notify_groups ;
+ int prepare_notify_groups (int,int,int,int,int,int,int,int*,int*) ;
+ int return_one_key_flags (struct connection*,char const*,char*,int) ;
+ int snprintf (char*,int,char*,...) ;
+ int sscanf (char const*,char*,int*,int*,int*,int*,int*,...) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static int exec_get_notification_updates (struct connection *c, const char *key, int key_len, int dog_len) {
   int user_id;

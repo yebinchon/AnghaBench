@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INHIBIT_SHUTDOWN ; 
- int method_can_shutdown_or_sleep (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int Manager ;
+
+
+ int INHIBIT_SHUTDOWN ;
+ int method_can_shutdown_or_sleep (int *,int *,int ,char*,char*,char*,int *,int *) ;
 
 __attribute__((used)) static int method_can_reboot(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;
@@ -27,6 +27,6 @@ __attribute__((used)) static int method_can_reboot(sd_bus_message *message, void
                         "org.freedesktop.login1.reboot",
                         "org.freedesktop.login1.reboot-multiple-sessions",
                         "org.freedesktop.login1.reboot-ignore-inhibit",
-                        NULL,
+                        ((void*)0),
                         error);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct hdmi_wp_data {int /*<<< orphan*/  base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HDMI_WP_IRQENABLE_SET ; 
- int /*<<< orphan*/  hdmi_write_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct hdmi_wp_data {int base; } ;
+
+
+ int HDMI_WP_IRQENABLE_SET ;
+ int hdmi_write_reg (int ,int ,int ) ;
 
 void hdmi_wp_set_irqenable(struct hdmi_wp_data *wp, u32 mask)
 {
-	hdmi_write_reg(wp->base, HDMI_WP_IRQENABLE_SET, mask);
+ hdmi_write_reg(wp->base, HDMI_WP_IRQENABLE_SET, mask);
 }

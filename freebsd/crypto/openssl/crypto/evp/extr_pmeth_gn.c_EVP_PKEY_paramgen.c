@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ operation; TYPE_1__* pmeth; } ;
-struct TYPE_5__ {int (* paramgen ) (TYPE_2__*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
+struct TYPE_5__ {int (* paramgen ) (TYPE_2__*,int *) ;} ;
+typedef TYPE_2__ EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_F_EVP_PKEY_PARAMGEN ; 
- scalar_t__ EVP_PKEY_OP_PARAMGEN ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_new () ; 
- int /*<<< orphan*/  EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE ; 
- int /*<<< orphan*/  EVP_R_OPERATON_NOT_INITIALIZED ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_F_EVP_PKEY_PARAMGEN ;
+ scalar_t__ EVP_PKEY_OP_PARAMGEN ;
+ int EVP_PKEY_free (int *) ;
+ int * EVP_PKEY_new () ;
+ int EVP_R_OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE ;
+ int EVP_R_OPERATON_NOT_INITIALIZED ;
+ int EVPerr (int ,int ) ;
+ int stub1 (TYPE_2__*,int *) ;
 
 int EVP_PKEY_paramgen(EVP_PKEY_CTX *ctx, EVP_PKEY **ppkey)
 {
@@ -42,13 +42,13 @@ int EVP_PKEY_paramgen(EVP_PKEY_CTX *ctx, EVP_PKEY **ppkey)
         return -1;
     }
 
-    if (ppkey == NULL)
+    if (ppkey == ((void*)0))
         return -1;
 
-    if (*ppkey == NULL)
+    if (*ppkey == ((void*)0))
         *ppkey = EVP_PKEY_new();
 
-    if (*ppkey == NULL) {
+    if (*ppkey == ((void*)0)) {
         EVPerr(EVP_F_EVP_PKEY_PARAMGEN, ERR_R_MALLOC_FAILURE);
         return -1;
     }
@@ -56,7 +56,7 @@ int EVP_PKEY_paramgen(EVP_PKEY_CTX *ctx, EVP_PKEY **ppkey)
     ret = ctx->pmeth->paramgen(ctx, *ppkey);
     if (ret <= 0) {
         EVP_PKEY_free(*ppkey);
-        *ppkey = NULL;
+        *ppkey = ((void*)0);
     }
     return ret;
 }

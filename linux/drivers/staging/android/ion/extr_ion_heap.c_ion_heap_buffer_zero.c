@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sg_table {int /*<<< orphan*/  nents; int /*<<< orphan*/  sgl; } ;
+
+
+
+
+struct sg_table {int nents; int sgl; } ;
 struct ion_buffer {int flags; struct sg_table* sg_table; } ;
-typedef  int /*<<< orphan*/  pgprot_t ;
+typedef int pgprot_t ;
 
-/* Variables and functions */
- int ION_FLAG_CACHED ; 
- int /*<<< orphan*/  PAGE_KERNEL ; 
- int ion_heap_sglist_zero (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pgprot_writecombine (int /*<<< orphan*/ ) ; 
+
+ int ION_FLAG_CACHED ;
+ int PAGE_KERNEL ;
+ int ion_heap_sglist_zero (int ,int ,int ) ;
+ int pgprot_writecombine (int ) ;
 
 int ion_heap_buffer_zero(struct ion_buffer *buffer)
 {
-	struct sg_table *table = buffer->sg_table;
-	pgprot_t pgprot;
+ struct sg_table *table = buffer->sg_table;
+ pgprot_t pgprot;
 
-	if (buffer->flags & ION_FLAG_CACHED)
-		pgprot = PAGE_KERNEL;
-	else
-		pgprot = pgprot_writecombine(PAGE_KERNEL);
+ if (buffer->flags & ION_FLAG_CACHED)
+  pgprot = PAGE_KERNEL;
+ else
+  pgprot = pgprot_writecombine(PAGE_KERNEL);
 
-	return ion_heap_sglist_zero(table->sgl, table->nents, pgprot);
+ return ion_heap_sglist_zero(table->sgl, table->nents, pgprot);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct input_dev {int dummy; } ;
-struct ektf2127_ts {int /*<<< orphan*/  power_gpios; TYPE_1__* client; } ;
-struct TYPE_2__ {int /*<<< orphan*/  irq; } ;
+struct ektf2127_ts {int power_gpios; TYPE_1__* client; } ;
+struct TYPE_2__ {int irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpiod_set_value_cansleep (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct ektf2127_ts* input_get_drvdata (struct input_dev*) ; 
+
+ int disable_irq (int ) ;
+ int gpiod_set_value_cansleep (int ,int ) ;
+ struct ektf2127_ts* input_get_drvdata (struct input_dev*) ;
 
 __attribute__((used)) static void ektf2127_stop(struct input_dev *dev)
 {
-	struct ektf2127_ts *ts = input_get_drvdata(dev);
+ struct ektf2127_ts *ts = input_get_drvdata(dev);
 
-	disable_irq(ts->client->irq);
-	gpiod_set_value_cansleep(ts->power_gpios, 0);
+ disable_irq(ts->client->irq);
+ gpiod_set_value_cansleep(ts->power_gpios, 0);
 }

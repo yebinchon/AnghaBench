@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int USHORT ;
-struct TYPE_2__ {int ButtonState; int /*<<< orphan*/  Position; int /*<<< orphan*/ * LastRelease; int /*<<< orphan*/ * ReleaseCount; int /*<<< orphan*/ * LastPress; int /*<<< orphan*/ * PressCount; } ;
-typedef  int BYTE ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CallMouseUserHandlers (int) ; 
- TYPE_1__ DriverState ; 
- int NUM_MOUSE_BUTTONS ; 
 
-__attribute__((used)) static inline VOID DosUpdateButtons(BYTE ButtonState) // WORD ButtonState
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int USHORT ;
+struct TYPE_2__ {int ButtonState; int Position; int * LastRelease; int * ReleaseCount; int * LastPress; int * PressCount; } ;
+typedef int BYTE ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ int CallMouseUserHandlers (int) ;
+ TYPE_1__ DriverState ;
+ int NUM_MOUSE_BUTTONS ;
+
+__attribute__((used)) static inline VOID DosUpdateButtons(BYTE ButtonState)
 {
     USHORT i;
-    USHORT CallMask = 0x0000; // We use MS MOUSE v1.0+ format
+    USHORT CallMask = 0x0000;
 
     for (i = 0; i < NUM_MOUSE_BUTTONS; i++)
     {
@@ -34,7 +34,7 @@ __attribute__((used)) static inline VOID DosUpdateButtons(BYTE ButtonState) // W
 
         if (NewState > OldState)
         {
-            /* Mouse press */
+
             DriverState.PressCount[i]++;
             DriverState.LastPress[i] = DriverState.Position;
 
@@ -42,7 +42,7 @@ __attribute__((used)) static inline VOID DosUpdateButtons(BYTE ButtonState) // W
         }
         else if (NewState < OldState)
         {
-            /* Mouse release */
+
             DriverState.ReleaseCount[i]++;
             DriverState.LastRelease[i] = DriverState.Position;
 
@@ -52,6 +52,6 @@ __attribute__((used)) static inline VOID DosUpdateButtons(BYTE ButtonState) // W
 
     DriverState.ButtonState = ButtonState;
 
-    /* Call the mouse handlers */
+
     CallMouseUserHandlers(CallMask);
 }

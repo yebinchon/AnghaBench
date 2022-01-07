@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double fabs (double) ; 
- double log (double) ; 
+ double fabs (double) ;
+ double log (double) ;
 
 __attribute__((used)) static double inv_cdf(double u)
 {
@@ -40,14 +32,14 @@ __attribute__((used)) static double inv_cdf(double u)
     double r;
     double x = u - 0.5;
 
-    // Beasley-Springer
+
      if (fabs(x) < 0.42) {
 
         double y = x * x;
-        r        = x * (((a[3]*y+a[2])*y+a[1])*y+a[0]) /
+        r = x * (((a[3]*y+a[2])*y+a[1])*y+a[0]) /
                         ((((b[3]*y+b[2])*y+b[1])*y+b[0])*y+1.0);
     }
-    else {// Moro
+    else {
         r = u;
         if (x > 0.0)
             r = 1.0 - u;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_note_iterator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  git_iterator_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_note_iterator ;
+
+
+ int git_iterator_free (int *) ;
 
 void git_note_iterator_free(git_note_iterator *it)
 {
-	if (it == NULL)
-		return;
+ if (it == ((void*)0))
+  return;
 
-	git_iterator_free(it);
+ git_iterator_free(it);
 }

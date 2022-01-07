@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct MHD_Connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MHD_HTTP_SERVICE_UNAVAILABLE ; 
- int mhd_respond (struct MHD_Connection*,int /*<<< orphan*/ ,char*) ; 
+
+ int MHD_HTTP_SERVICE_UNAVAILABLE ;
+ int mhd_respond (struct MHD_Connection*,int ,char*) ;
 
 int mhd_respond_oom(struct MHD_Connection *connection) {
-        return mhd_respond(connection, MHD_HTTP_SERVICE_UNAVAILABLE,  "Out of memory.");
+        return mhd_respond(connection, MHD_HTTP_SERVICE_UNAVAILABLE, "Out of memory.");
 }

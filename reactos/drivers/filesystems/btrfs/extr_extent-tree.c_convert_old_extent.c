@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
 struct TYPE_21__ {TYPE_2__* item; } ;
-typedef  TYPE_3__ traverse_ptr ;
-struct TYPE_22__ {int /*<<< orphan*/  extent_root; } ;
-typedef  TYPE_4__ device_extension ;
-struct TYPE_24__ {int /*<<< orphan*/  count; int /*<<< orphan*/  root; } ;
+typedef TYPE_3__ traverse_ptr ;
+struct TYPE_22__ {int extent_root; } ;
+typedef TYPE_4__ device_extension ;
+struct TYPE_24__ {int count; int root; } ;
 struct TYPE_23__ {scalar_t__ obj_id; scalar_t__ obj_type; int offset; } ;
 struct TYPE_19__ {scalar_t__ obj_id; scalar_t__ obj_type; scalar_t__ offset; } ;
 struct TYPE_20__ {int size; TYPE_1__ key; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  LIST_ENTRY ;
-typedef  TYPE_5__ KEY ;
-typedef  TYPE_6__ EXTENT_REF_V0 ;
+typedef int PIRP ;
+typedef scalar_t__ NTSTATUS ;
+typedef int LIST_ENTRY ;
+typedef TYPE_5__ KEY ;
+typedef TYPE_6__ EXTENT_REF_V0 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int EXTENT_ITEM_DATA ; 
- int EXTENT_ITEM_SHARED_BACKREFS ; 
- int EXTENT_ITEM_TREE_BLOCK ; 
- int /*<<< orphan*/  InitializeListHead (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (scalar_t__) ; 
- scalar_t__ STATUS_INTERNAL_ERROR ; 
- scalar_t__ TYPE_EXTENT_ITEM ; 
- scalar_t__ TYPE_EXTENT_REF_V0 ; 
- scalar_t__ add_shared_block_extent_ref (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ add_shared_data_extent_ref (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ add_tree_block_extent_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ construct_extent_item (TYPE_4__*,scalar_t__,scalar_t__,int,int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ delete_tree_item (TYPE_4__*,TYPE_3__*) ; 
- scalar_t__ find_item (TYPE_4__*,int /*<<< orphan*/ ,TYPE_3__*,TYPE_5__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ find_next_item (TYPE_4__*,TYPE_3__*,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_extent_refs (int /*<<< orphan*/ *) ; 
+
+ int ERR (char*,scalar_t__) ;
+ int EXTENT_ITEM_DATA ;
+ int EXTENT_ITEM_SHARED_BACKREFS ;
+ int EXTENT_ITEM_TREE_BLOCK ;
+ int InitializeListHead (int *) ;
+ int NT_SUCCESS (scalar_t__) ;
+ scalar_t__ STATUS_INTERNAL_ERROR ;
+ scalar_t__ TYPE_EXTENT_ITEM ;
+ scalar_t__ TYPE_EXTENT_REF_V0 ;
+ scalar_t__ add_shared_block_extent_ref (int *,scalar_t__) ;
+ scalar_t__ add_shared_data_extent_ref (int *,scalar_t__,int ) ;
+ scalar_t__ add_tree_block_extent_ref (int *,int ) ;
+ scalar_t__ construct_extent_item (TYPE_4__*,scalar_t__,scalar_t__,int,int *,TYPE_5__*,int ,int ) ;
+ scalar_t__ delete_tree_item (TYPE_4__*,TYPE_3__*) ;
+ scalar_t__ find_item (TYPE_4__*,int ,TYPE_3__*,TYPE_5__*,int,int ) ;
+ scalar_t__ find_next_item (TYPE_4__*,TYPE_3__*,TYPE_3__*,int,int ) ;
+ int free_extent_refs (int *) ;
 
 __attribute__((used)) static NTSTATUS convert_old_extent(device_extension* Vcb, uint64_t address, bool tree, KEY* firstitem, uint8_t level, PIRP Irp) {
     NTSTATUS Status;
@@ -64,7 +64,7 @@ __attribute__((used)) static NTSTATUS convert_old_extent(device_extension* Vcb, 
     searchkey.obj_type = TYPE_EXTENT_ITEM;
     searchkey.offset = 0xffffffffffffffff;
 
-    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, false, Irp);
+    Status = find_item(Vcb, Vcb->extent_root, &tp, &searchkey, 0, Irp);
     if (!NT_SUCCESS(Status)) {
         ERR("find_item returned %08x\n", Status);
         return Status;
@@ -83,14 +83,14 @@ __attribute__((used)) static NTSTATUS convert_old_extent(device_extension* Vcb, 
         return Status;
     }
 
-    while (find_next_item(Vcb, &tp, &next_tp, false, Irp)) {
+    while (find_next_item(Vcb, &tp, &next_tp, 0, Irp)) {
         tp = next_tp;
 
         if (tp.item->key.obj_id == address && tp.item->key.obj_type == TYPE_EXTENT_REF_V0 && tp.item->size >= sizeof(EXTENT_REF_V0)) {
             EXTENT_REF_V0* erv0 = (EXTENT_REF_V0*)tp.item->data;
 
             if (tree) {
-                if (tp.item->key.offset == tp.item->key.obj_id) { // top of the tree
+                if (tp.item->key.offset == tp.item->key.obj_id) {
                     Status = add_tree_block_extent_ref(&extent_refs, erv0->root);
                     if (!NT_SUCCESS(Status)) {
                         ERR("add_tree_block_extent_ref returned %08x\n", Status);

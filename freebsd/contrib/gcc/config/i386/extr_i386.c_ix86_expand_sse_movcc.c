@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ CONST0_RTX (int) ; 
- int GET_MODE (scalar_t__) ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- scalar_t__ force_reg (int,scalar_t__) ; 
- scalar_t__ gen_reg_rtx (int) ; 
- scalar_t__ gen_rtx_AND (int,scalar_t__,scalar_t__) ; 
- scalar_t__ gen_rtx_IOR (int,scalar_t__,scalar_t__) ; 
- scalar_t__ gen_rtx_NOT (int,scalar_t__) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ optimize ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ CONST0_RTX (int) ;
+ int GET_MODE (scalar_t__) ;
+ int VOIDmode ;
+ int emit_insn (int ) ;
+ scalar_t__ force_reg (int,scalar_t__) ;
+ scalar_t__ gen_reg_rtx (int) ;
+ scalar_t__ gen_rtx_AND (int,scalar_t__,scalar_t__) ;
+ scalar_t__ gen_rtx_IOR (int,scalar_t__,scalar_t__) ;
+ scalar_t__ gen_rtx_NOT (int,scalar_t__) ;
+ int gen_rtx_SET (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ optimize ;
 
 __attribute__((used)) static void
 ix86_expand_sse_movcc (rtx dest, rtx cmp, rtx op_true, rtx op_false)
@@ -52,9 +52,9 @@ ix86_expand_sse_movcc (rtx dest, rtx cmp, rtx op_true, rtx op_false)
 
       t2 = gen_reg_rtx (mode);
       if (optimize)
-	t3 = gen_reg_rtx (mode);
+ t3 = gen_reg_rtx (mode);
       else
-	t3 = dest;
+ t3 = dest;
 
       x = gen_rtx_AND (mode, op_true, cmp);
       emit_insn (gen_rtx_SET (VOIDmode, t2, x));

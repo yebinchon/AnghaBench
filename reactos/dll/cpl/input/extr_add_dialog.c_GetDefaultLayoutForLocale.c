@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  scalar_t__ HINF ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (char*) ; 
- int /*<<< orphan*/  DWORDfromString (char*) ; 
- int /*<<< orphan*/  INF_STYLE_WIN4 ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_STR_LEN ; 
- int /*<<< orphan*/  SetupCloseInfFile (scalar_t__) ; 
- scalar_t__ SetupFindFirstLineW (scalar_t__,char*,char*,int /*<<< orphan*/ *) ; 
- int SetupGetFieldCount (int /*<<< orphan*/ *) ; 
- scalar_t__ SetupGetStringFieldW (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupOpenInfFileW (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StringCchPrintfW (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int wcslen (char*) ; 
- char* wcstok (char*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int INFCONTEXT ;
+typedef scalar_t__ HINF ;
+typedef int DWORD ;
+
+
+ int ARRAYSIZE (char*) ;
+ int DWORDfromString (char*) ;
+ int INF_STYLE_WIN4 ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_STR_LEN ;
+ int SetupCloseInfFile (scalar_t__) ;
+ scalar_t__ SetupFindFirstLineW (scalar_t__,char*,char*,int *) ;
+ int SetupGetFieldCount (int *) ;
+ scalar_t__ SetupGetStringFieldW (int *,int,char*,int ,int *) ;
+ scalar_t__ SetupOpenInfFileW (char*,int *,int ,int *) ;
+ int StringCchPrintfW (char*,int ,char*,int ) ;
+ int wcslen (char*) ;
+ char* wcstok (char*,char*) ;
 
 __attribute__((used)) static DWORD
 GetDefaultLayoutForLocale(DWORD dwLocaleId)
@@ -36,7 +36,7 @@ GetDefaultLayoutForLocale(DWORD dwLocaleId)
     DWORD dwResult = 0;
     HINF hIntlInf;
 
-    hIntlInf = SetupOpenInfFileW(L"intl.inf", NULL, INF_STYLE_WIN4, NULL);
+    hIntlInf = SetupOpenInfFileW(L"intl.inf", ((void*)0), INF_STYLE_WIN4, ((void*)0));
     if (hIntlInf != INVALID_HANDLE_VALUE)
     {
         WCHAR szLangID[MAX_STR_LEN];
@@ -50,18 +50,18 @@ GetDefaultLayoutForLocale(DWORD dwLocaleId)
             {
                 WCHAR szField[MAX_STR_LEN];
 
-                if (SetupGetStringFieldW(&InfContext, 5, szField, ARRAYSIZE(szField), NULL))
+                if (SetupGetStringFieldW(&InfContext, 5, szField, ARRAYSIZE(szField), ((void*)0)))
                 {
-                    if (wcslen(szField) == 13) // like 0409:00000409 (13 chars)
+                    if (wcslen(szField) == 13)
                     {
                         WCHAR *pszSeparator = L":";
                         WCHAR *pszToken;
 
                         pszToken = wcstok(szField, pszSeparator);
-                        if (pszToken != NULL)
-                            pszToken = wcstok(NULL, pszSeparator);
+                        if (pszToken != ((void*)0))
+                            pszToken = wcstok(((void*)0), pszSeparator);
 
-                        if (pszToken != NULL)
+                        if (pszToken != ((void*)0))
                         {
                             dwResult = DWORDfromString(pszToken);
                         }

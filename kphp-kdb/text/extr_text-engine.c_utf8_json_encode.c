@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* cp1251_unicode_codes ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- char* utf8_char (char*,int) ; 
- scalar_t__ utf8_mode ; 
+ int* cp1251_unicode_codes ;
+ int fprintf (int ,char*) ;
+ int sprintf (char*,char*,int) ;
+ int stderr ;
+ char* utf8_char (char*,int) ;
+ scalar_t__ utf8_mode ;
 
 int utf8_json_encode (char *to, int to_size, char *from, int from_size) {
   char *to_end = to + to_size - 8;
@@ -33,39 +25,39 @@ int utf8_json_encode (char *to, int to_size, char *from, int from_size) {
   if (utf8_mode) {
     while (from < from_end) {
       if (wptr > to_end) {
-	fprintf (stderr, "utf8_json_encode: buffer overflow\n");
-	return -1;
+ fprintf (stderr, "utf8_json_encode: buffer overflow\n");
+ return -1;
       }
       c = *from++;
       switch (c) {
       case '"': case '\\': case '/':
-	*wptr++ = '\\';
-	break;
+ *wptr++ = '\\';
+ break;
       case '\n':
-	*wptr++ = '\\';
-	c = 'n';
-	break;
+ *wptr++ = '\\';
+ c = 'n';
+ break;
       case '\r':
-	*wptr++ = '\\';
-	c = 'r';
-	break;
+ *wptr++ = '\\';
+ c = 'r';
+ break;
       case '\t':
-	*wptr++ = '\\';
-	c = 't';
-	break;
+ *wptr++ = '\\';
+ c = 't';
+ break;
       case '\b':
-	*wptr++ = '\\';
-	c = 'b';
-	break;
+ *wptr++ = '\\';
+ c = 'b';
+ break;
       case '\f':
-	*wptr++ = '\\';
-	c = 'f';
-	break;
+ *wptr++ = '\\';
+ c = 'f';
+ break;
       }
       if (!(c & -32)) {
-	wptr += sprintf (wptr, "\\u%04x", c);
+ wptr += sprintf (wptr, "\\u%04x", c);
       } else {
-	*wptr++ = c;
+ *wptr++ = c;
       }
     }
     return wptr - to;

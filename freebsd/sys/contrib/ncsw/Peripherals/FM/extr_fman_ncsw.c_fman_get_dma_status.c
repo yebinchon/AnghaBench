@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct fman_dma_regs {int /*<<< orphan*/  fmdmsr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ioread32be (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+struct fman_dma_regs {int fmdmsr; } ;
+
+
+ int ioread32be (int *) ;
 
 uint32_t fman_get_dma_status(struct fman_dma_regs *dma_rg)
 {
-	return ioread32be(&dma_rg->fmdmsr);
+ return ioread32be(&dma_rg->fmdmsr);
 }

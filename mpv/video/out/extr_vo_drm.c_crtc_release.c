@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int active; TYPE_3__* old_crtc; TYPE_2__* kms; int /*<<< orphan*/  ev; scalar_t__ waiting_for_flip; } ;
-struct TYPE_6__ {int /*<<< orphan*/  mode; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  buffer_id; int /*<<< orphan*/  crtc_id; } ;
-struct TYPE_5__ {TYPE_1__* connector; int /*<<< orphan*/  fd; } ;
-struct TYPE_4__ {int /*<<< orphan*/  connector_id; } ;
+struct priv {int active; TYPE_3__* old_crtc; TYPE_2__* kms; int ev; scalar_t__ waiting_for_flip; } ;
+struct TYPE_6__ {int mode; int y; int x; int buffer_id; int crtc_id; } ;
+struct TYPE_5__ {TYPE_1__* connector; int fd; } ;
+struct TYPE_4__ {int connector_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct vo*,char*,int) ; 
- int drmHandleEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  drmModeFreeCrtc (TYPE_3__*) ; 
- int /*<<< orphan*/  drmModeSetCrtc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+ int MP_ERR (struct vo*,char*,int) ;
+ int drmHandleEvent (int ,int *) ;
+ int drmModeFreeCrtc (TYPE_3__*) ;
+ int drmModeSetCrtc (int ,int ,int ,int ,int ,int *,int,int *) ;
 
 __attribute__((used)) static void crtc_release(struct vo *vo)
 {
@@ -31,9 +31,9 @@ __attribute__((used)) static void crtc_release(struct vo *vo)
 
     if (!p->active)
         return;
-    p->active = false;
+    p->active = 0;
 
-    // wait for current page flip
+
     while (p->waiting_for_flip) {
         int ret = drmHandleEvent(p->kms->fd, &p->ev);
         if (ret) {
@@ -49,6 +49,6 @@ __attribute__((used)) static void crtc_release(struct vo *vo)
                        &p->kms->connector->connector_id, 1,
                        &p->old_crtc->mode);
         drmModeFreeCrtc(p->old_crtc);
-        p->old_crtc = NULL;
+        p->old_crtc = ((void*)0);
     }
 }

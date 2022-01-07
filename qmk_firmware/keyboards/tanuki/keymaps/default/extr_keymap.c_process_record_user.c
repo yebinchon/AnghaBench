@@ -1,40 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_6__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_7__ {int layer_rgb; int /*<<< orphan*/  raw; } ;
-
-/* Variables and functions */
-#define  CUSTRGB 134 
-#define  RGB_HUI 133 
-#define  RGB_MOD 132 
-#define  RGB_SAD 131 
-#define  RGB_SAI 130 
-#define  RGB_VAD 129 
-#define  RGB_VAI 128 
- int /*<<< orphan*/  eeconfig_update_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  layer_state_set (int /*<<< orphan*/ ) ; 
- TYPE_3__ user_config ; 
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_7__ {int layer_rgb; int raw; } ;
+ int eeconfig_update_user (int ) ;
+ int layer_state ;
+ int layer_state_set (int ) ;
+ TYPE_3__ user_config ;
 
 bool process_record_user (uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case CUSTRGB: // if the user toggled per-layer RGB, update the config and refresh the RGB color
+        case 134:
             if(record->event.pressed) {
                 user_config.layer_rgb ^= 1;
                 eeconfig_update_user(user_config.raw);
@@ -42,18 +33,18 @@ bool process_record_user (uint16_t keycode, keyrecord_t *record) {
                     layer_state_set(layer_state);
                 }
             }
-            return false;
+            return 0;
             break;
-        case RGB_MOD:
-        case RGB_SAD:
-        case RGB_SAI:
-        case RGB_HUI:
-        case RGB_VAD:
-        case RGB_VAI:
+        case 132:
+        case 131:
+        case 130:
+        case 133:
+        case 129:
+        case 128:
             if(user_config.layer_rgb && record->event.pressed) {
-                return false; // if layer RGB is on, ignore attempts to change RGB settings
+                return 0;
             }
             break;
     }
-    return true;
+    return 1;
 }

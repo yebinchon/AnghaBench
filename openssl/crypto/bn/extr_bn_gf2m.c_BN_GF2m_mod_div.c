@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_mod_inv (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_GF2m_mod_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_GF2m_mod_inv (int const*,int const*,int const*,int *) ;
+ int BN_GF2m_mod_mul (int const*,int const*,int const*,int const*,int *) ;
+ int bn_check_top (int const*) ;
 
 int BN_GF2m_mod_div(BIGNUM *r, const BIGNUM *y, const BIGNUM *x,
                     const BIGNUM *p, BN_CTX *ctx)
 {
-    BIGNUM *xinv = NULL;
+    BIGNUM *xinv = ((void*)0);
     int ret = 0;
 
     bn_check_top(y);
@@ -33,7 +33,7 @@ int BN_GF2m_mod_div(BIGNUM *r, const BIGNUM *y, const BIGNUM *x,
 
     BN_CTX_start(ctx);
     xinv = BN_CTX_get(ctx);
-    if (xinv == NULL)
+    if (xinv == ((void*)0))
         goto err;
 
     if (!BN_GF2m_mod_inv(xinv, x, p, ctx))

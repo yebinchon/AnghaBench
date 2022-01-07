@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  marshal_data; int /*<<< orphan*/ * cached_enum; int /*<<< orphan*/ * src_data; int /*<<< orphan*/ * window; int /*<<< orphan*/ * latest_snapshot; } ;
-typedef  TYPE_1__ ole_clipbrd ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateStreamOnHGlobal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int GMEM_DDESHARE ; 
- int GMEM_MOVEABLE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GlobalAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ ) ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  register_clipboard_formats () ; 
- TYPE_1__* theOleClipboard ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int marshal_data; int * cached_enum; int * src_data; int * window; int * latest_snapshot; } ;
+typedef TYPE_1__ ole_clipbrd ;
+typedef int HGLOBAL ;
+
+
+ int CreateStreamOnHGlobal (int ,int ,int *) ;
+ scalar_t__ FAILED (int ) ;
+ int GMEM_DDESHARE ;
+ int GMEM_MOVEABLE ;
+ int GetProcessHeap () ;
+ int GlobalAlloc (int,int ) ;
+ int GlobalFree (int ) ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int register_clipboard_formats () ;
+ TYPE_1__* theOleClipboard ;
 
 void OLEClipbrd_Initialize(void)
 {
@@ -44,10 +44,10 @@ void OLEClipbrd_Initialize(void)
         clipbrd = HeapAlloc( GetProcessHeap(), 0, sizeof(*clipbrd) );
         if (!clipbrd) return;
 
-        clipbrd->latest_snapshot = NULL;
-        clipbrd->window = NULL;
-        clipbrd->src_data = NULL;
-        clipbrd->cached_enum = NULL;
+        clipbrd->latest_snapshot = ((void*)0);
+        clipbrd->window = ((void*)0);
+        clipbrd->src_data = ((void*)0);
+        clipbrd->cached_enum = ((void*)0);
 
         h = GlobalAlloc(GMEM_DDESHARE | GMEM_MOVEABLE, 0);
         if(!h)

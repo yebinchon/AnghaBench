@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_surveyor {int /*<<< orphan*/  xsurveyor; int /*<<< orphan*/  fsm; int /*<<< orphan*/  timer; int /*<<< orphan*/  tosend; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_timer_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_xsurveyor_term (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_surveyor {int xsurveyor; int fsm; int timer; int tosend; } ;
+
+
+ int nn_fsm_term (int *) ;
+ int nn_msg_term (int *) ;
+ int nn_timer_term (int *) ;
+ int nn_xsurveyor_term (int *) ;
 
 __attribute__((used)) static void nn_surveyor_term (struct nn_surveyor *self)
 {

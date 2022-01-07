@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct value_buffer {int n474; scalar_t__ wptr; scalar_t__ size_ptr; scalar_t__ s; struct connection* c; scalar_t__ w; int /*<<< orphan*/ ** output_hash; int /*<<< orphan*/ ** output_item_id; int /*<<< orphan*/ * output_char; int /*<<< orphan*/ * output_long; int /*<<< orphan*/ * output_int; } ;
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- scalar_t__ get_write_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  value_buffer_output_char_noop ; 
- int /*<<< orphan*/  value_buffer_output_char_text ; 
- int /*<<< orphan*/ * value_buffer_output_hex_long_text ; 
- int /*<<< orphan*/ * value_buffer_output_int_raw ; 
- int /*<<< orphan*/  value_buffer_output_int_text ; 
- int /*<<< orphan*/ * value_buffer_output_item_id_text ; 
- int /*<<< orphan*/ * value_buffer_output_long_raw ; 
- int /*<<< orphan*/  value_buffer_output_long_text ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+struct value_buffer {int n474; scalar_t__ wptr; scalar_t__ size_ptr; scalar_t__ s; struct connection* c; scalar_t__ w; int ** output_hash; int ** output_item_id; int * output_char; int * output_long; int * output_int; } ;
+struct connection {int Out; } ;
+
+
+ scalar_t__ get_write_ptr (int *,int) ;
+ int memcpy (scalar_t__,char*,int) ;
+ int value_buffer_output_char_noop ;
+ int value_buffer_output_char_text ;
+ int * value_buffer_output_hex_long_text ;
+ int * value_buffer_output_int_raw ;
+ int value_buffer_output_int_text ;
+ int * value_buffer_output_item_id_text ;
+ int * value_buffer_output_long_raw ;
+ int value_buffer_output_long_text ;
+ int write_out (int *,char const*,int) ;
 
 int value_buffer_init (struct value_buffer *B, struct connection *c, const char *key, int len, int mode, int flush_margin) {
   B->n474 = 512 - flush_margin;

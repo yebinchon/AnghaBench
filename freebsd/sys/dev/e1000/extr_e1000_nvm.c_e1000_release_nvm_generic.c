@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct e1000_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGFUNC (char*) ; 
- int /*<<< orphan*/  E1000_EECD ; 
- int /*<<< orphan*/  E1000_EECD_REQ ; 
- int /*<<< orphan*/  E1000_READ_REG (struct e1000_hw*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E1000_WRITE_REG (struct e1000_hw*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  e1000_stop_nvm (struct e1000_hw*) ; 
+
+ int DEBUGFUNC (char*) ;
+ int E1000_EECD ;
+ int E1000_EECD_REQ ;
+ int E1000_READ_REG (struct e1000_hw*,int ) ;
+ int E1000_WRITE_REG (struct e1000_hw*,int ,int ) ;
+ int e1000_stop_nvm (struct e1000_hw*) ;
 
 void e1000_release_nvm_generic(struct e1000_hw *hw)
 {
-	u32 eecd;
+ u32 eecd;
 
-	DEBUGFUNC("e1000_release_nvm_generic");
+ DEBUGFUNC("e1000_release_nvm_generic");
 
-	e1000_stop_nvm(hw);
+ e1000_stop_nvm(hw);
 
-	eecd = E1000_READ_REG(hw, E1000_EECD);
-	eecd &= ~E1000_EECD_REQ;
-	E1000_WRITE_REG(hw, E1000_EECD, eecd);
+ eecd = E1000_READ_REG(hw, E1000_EECD);
+ eecd &= ~E1000_EECD_REQ;
+ E1000_WRITE_REG(hw, E1000_EECD, eecd);
 }

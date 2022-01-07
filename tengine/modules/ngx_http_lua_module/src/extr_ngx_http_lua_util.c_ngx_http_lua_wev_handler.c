@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_20__ {int /*<<< orphan*/  main; TYPE_6__* connection; } ;
-typedef  TYPE_1__ ngx_http_request_t ;
-struct TYPE_21__ {int /*<<< orphan*/  (* write_event_handler ) (TYPE_1__*,TYPE_2__*) ;} ;
-typedef  TYPE_2__ ngx_http_lua_socket_tcp_upstream_t ;
+
+
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_20__ {int main; TYPE_6__* connection; } ;
+typedef TYPE_1__ ngx_http_request_t ;
+struct TYPE_21__ {int (* write_event_handler ) (TYPE_1__*,TYPE_2__*) ;} ;
+typedef TYPE_2__ ngx_http_lua_socket_tcp_upstream_t ;
 struct TYPE_22__ {scalar_t__ entered_content_phase; scalar_t__ flushing_coros; TYPE_2__* downstream; scalar_t__ writing_raw_req_socket; } ;
-typedef  TYPE_3__ ngx_http_lua_ctx_t ;
-struct TYPE_23__ {int /*<<< orphan*/  send_lowat; int /*<<< orphan*/  send_timeout; } ;
-typedef  TYPE_4__ ngx_http_core_loc_conf_t ;
-struct TYPE_24__ {scalar_t__ timedout; int /*<<< orphan*/  ready; scalar_t__ delayed; } ;
-typedef  TYPE_5__ ngx_event_t ;
-struct TYPE_25__ {int timedout; int buffered; int /*<<< orphan*/  log; int /*<<< orphan*/  error; TYPE_5__* write; } ;
-typedef  TYPE_6__ ngx_connection_t ;
+typedef TYPE_3__ ngx_http_lua_ctx_t ;
+struct TYPE_23__ {int send_lowat; int send_timeout; } ;
+typedef TYPE_4__ ngx_http_core_loc_conf_t ;
+struct TYPE_24__ {scalar_t__ timedout; int ready; scalar_t__ delayed; } ;
+typedef TYPE_5__ ngx_event_t ;
+struct TYPE_25__ {int timedout; int buffered; int log; int error; TYPE_5__* write; } ;
+typedef TYPE_6__ ngx_connection_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_DONE ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_ETIMEDOUT ; 
- int NGX_HTTP_LOWLEVEL_BUFFERED ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  dd (char*,int,...) ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_write_event (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_core_module ; 
- TYPE_3__* ngx_http_get_module_ctx (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* ngx_http_get_module_loc_conf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_finalize_request (TYPE_1__*,scalar_t__) ; 
- scalar_t__ ngx_http_lua_flush_pending_output (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
- scalar_t__ ngx_http_lua_process_flushing_coroutines (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,TYPE_2__*) ; 
+
+ scalar_t__ NGX_DONE ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_ETIMEDOUT ;
+ int NGX_HTTP_LOWLEVEL_BUFFERED ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int dd (char*,int,...) ;
+ int ngx_add_timer (TYPE_5__*,int ) ;
+ scalar_t__ ngx_handle_write_event (TYPE_5__*,int ) ;
+ int ngx_http_core_module ;
+ TYPE_3__* ngx_http_get_module_ctx (TYPE_1__*,int ) ;
+ TYPE_4__* ngx_http_get_module_loc_conf (int ,int ) ;
+ int ngx_http_lua_finalize_request (TYPE_1__*,scalar_t__) ;
+ scalar_t__ ngx_http_lua_flush_pending_output (TYPE_1__*,TYPE_3__*) ;
+ int ngx_http_lua_module ;
+ scalar_t__ ngx_http_lua_process_flushing_coroutines (TYPE_1__*,TYPE_3__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,scalar_t__,int ,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int stub1 (TYPE_1__*,TYPE_2__*) ;
 
 ngx_int_t
 ngx_http_lua_wev_handler(ngx_http_request_t *r)
 {
-    ngx_int_t                    rc;
-    ngx_event_t                 *wev;
-    ngx_connection_t            *c;
-    ngx_http_lua_ctx_t          *ctx;
-    ngx_http_core_loc_conf_t    *clcf;
+    ngx_int_t rc;
+    ngx_event_t *wev;
+    ngx_connection_t *c;
+    ngx_http_lua_ctx_t *ctx;
+    ngx_http_core_loc_conf_t *clcf;
 
     ngx_http_lua_socket_tcp_upstream_t *u;
 
@@ -68,7 +68,7 @@ ngx_http_lua_wev_handler(ngx_http_request_t *r)
     wev = c->write;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_lua_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return NGX_ERROR;
     }
 
@@ -111,7 +111,7 @@ ngx_http_lua_wev_handler(ngx_http_request_t *r)
         ctx->writing_raw_req_socket = 0;
 
         u = ctx->downstream;
-        if (u == NULL) {
+        if (u == ((void*)0)) {
             return NGX_ERROR;
         }
 
@@ -129,7 +129,7 @@ ngx_http_lua_wev_handler(ngx_http_request_t *r)
             goto useless;
         }
 
-        /* when rc == NGX_ERROR, c->error must be set */
+
     }
 
 flush_coros:
@@ -140,7 +140,7 @@ flush_coros:
         return ngx_http_lua_process_flushing_coroutines(r, ctx);
     }
 
-    /* ctx->flushing_coros == 0 */
+
 
 useless:
 

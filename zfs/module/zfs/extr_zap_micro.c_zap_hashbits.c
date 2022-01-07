@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zap_t ;
 
-/* Variables and functions */
- int ZAP_FLAG_HASH64 ; 
- int zap_getflags (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zap_t ;
+
+
+ int ZAP_FLAG_HASH64 ;
+ int zap_getflags (int *) ;
 
 int
 zap_hashbits(zap_t *zap)
 {
-	if (zap_getflags(zap) & ZAP_FLAG_HASH64)
-		return (48);
-	else
-		return (28);
+ if (zap_getflags(zap) & ZAP_FLAG_HASH64)
+  return (48);
+ else
+  return (28);
 }

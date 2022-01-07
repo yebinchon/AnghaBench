@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_operation_t ;
-typedef  scalar_t__ svn_wc_conflict_reason_t ;
-typedef  scalar_t__ svn_wc_conflict_action_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_11__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-struct TYPE_12__ {int /*<<< orphan*/  local_abspath; } ;
-typedef  TYPE_2__ svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add_resolution_option (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resolve_incoming_add_ignore ; 
- scalar_t__ svn_client_conflict_get_incoming_change (TYPE_2__*) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_new_repos_location (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_client_conflict_get_local_change (TYPE_2__*) ; 
- scalar_t__ svn_client_conflict_get_operation (TYPE_2__*) ; 
- int /*<<< orphan*/  svn_client_conflict_option_incoming_add_ignore ; 
- scalar_t__ svn_client_conflict_tree_get_victim_node_kind (TYPE_2__*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_wc__get_wcroot (char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_conflict_action_add ; 
- scalar_t__ svn_wc_conflict_reason_added ; 
- scalar_t__ svn_wc_conflict_reason_obstructed ; 
- scalar_t__ svn_wc_operation_merge ; 
- scalar_t__ svn_wc_operation_switch ; 
- scalar_t__ svn_wc_operation_update ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_operation_t ;
+typedef scalar_t__ svn_wc_conflict_reason_t ;
+typedef scalar_t__ svn_wc_conflict_action_t ;
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+struct TYPE_11__ {int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+struct TYPE_12__ {int local_abspath; } ;
+typedef TYPE_2__ svn_client_conflict_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int add_resolution_option (int *,TYPE_2__*,int ,int ,char const*,int ) ;
+ char* apr_psprintf (int *,int ,char const*,int ) ;
+ int resolve_incoming_add_ignore ;
+ scalar_t__ svn_client_conflict_get_incoming_change (TYPE_2__*) ;
+ int svn_client_conflict_get_incoming_new_repos_location (char const**,int *,int *,TYPE_2__*,int *,int *) ;
+ scalar_t__ svn_client_conflict_get_local_change (TYPE_2__*) ;
+ scalar_t__ svn_client_conflict_get_operation (TYPE_2__*) ;
+ int svn_client_conflict_option_incoming_add_ignore ;
+ scalar_t__ svn_client_conflict_tree_get_victim_node_kind (TYPE_2__*) ;
+ int * svn_error_createf (int ,int *,int ,scalar_t__) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ int svn_wc__get_wcroot (char const**,int ,int ,int *,int *) ;
+ scalar_t__ svn_wc_conflict_action_add ;
+ scalar_t__ svn_wc_conflict_reason_added ;
+ scalar_t__ svn_wc_conflict_reason_obstructed ;
+ scalar_t__ svn_wc_operation_merge ;
+ scalar_t__ svn_wc_operation_switch ;
+ scalar_t__ svn_wc_operation_update ;
 
 __attribute__((used)) static svn_error_t *
 configure_option_incoming_add_ignore(svn_client_conflict_t *conflict,
@@ -69,10 +69,10 @@ configure_option_incoming_add_ignore(svn_client_conflict_t *conflict,
   victim_node_kind = svn_client_conflict_tree_get_victim_node_kind(conflict);
   SVN_ERR(svn_client_conflict_get_incoming_new_repos_location(
             &incoming_new_repos_relpath, &incoming_new_pegrev,
-            NULL, conflict, scratch_pool,
+            ((void*)0), conflict, scratch_pool,
             scratch_pool));
 
-  /* This option is only available for directories. */
+
   if (victim_node_kind == svn_node_dir &&
       incoming_change == svn_wc_conflict_action_add &&
       (local_change == svn_wc_conflict_reason_obstructed ||
@@ -110,7 +110,7 @@ configure_option_incoming_add_ignore(svn_client_conflict_t *conflict,
                            incoming_new_repos_relpath, incoming_new_pegrev);
         }
       else
-        return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, NULL,
+        return svn_error_createf(SVN_ERR_WC_CONFLICT_RESOLVER_FAILURE, ((void*)0),
                                  _("unexpected operation code '%d'"),
                                  operation);
       add_resolution_option(

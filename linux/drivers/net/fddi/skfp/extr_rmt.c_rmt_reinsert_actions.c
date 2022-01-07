@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct s_smc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_CONNECT ; 
- int /*<<< orphan*/  EC_DISCONNECT ; 
- int /*<<< orphan*/  EVENT_ECM ; 
- int /*<<< orphan*/  queue_event (struct s_smc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int EC_CONNECT ;
+ int EC_DISCONNECT ;
+ int EVENT_ECM ;
+ int queue_event (struct s_smc*,int ,int ) ;
 
 __attribute__((used)) static void rmt_reinsert_actions(struct s_smc *smc)
 {
-	queue_event(smc,EVENT_ECM,EC_DISCONNECT) ;
-	queue_event(smc,EVENT_ECM,EC_CONNECT) ;
+ queue_event(smc,EVENT_ECM,EC_DISCONNECT) ;
+ queue_event(smc,EVENT_ECM,EC_CONNECT) ;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int running; TYPE_4__* buffers; int /*<<< orphan*/ * fifo; int /*<<< orphan*/  thread; } ;
-typedef  TYPE_1__ switch_thread_audio_t ;
-struct TYPE_6__ {int /*<<< orphan*/  sample_data; TYPE_1__* buffer; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_4__*) ; 
- int /*<<< orphan*/  compat_thread_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compat_thread_join (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fifo_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  free_pages (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  switch_audio_ipc_finalize () ; 
- int /*<<< orphan*/  switch_audio_ipc_output_stop (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int running; TYPE_4__* buffers; int * fifo; int thread; } ;
+typedef TYPE_1__ switch_thread_audio_t ;
+struct TYPE_6__ {int sample_data; TYPE_1__* buffer; } ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_4__*) ;
+ int compat_thread_close (int *) ;
+ int compat_thread_join (int *) ;
+ int fifo_free (int *) ;
+ int free (TYPE_1__*) ;
+ int free_pages (int ) ;
+ int switch_audio_ipc_finalize () ;
+ int switch_audio_ipc_output_stop (TYPE_1__*) ;
 
 __attribute__((used)) static void switch_thread_audio_free(void *data)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void switch_thread_audio_free(void *data)
 
    if (swa->running)
    {
-         swa->running = false;
+         swa->running = 0;
          compat_thread_join(&swa->thread);
          compat_thread_close(&swa->thread);
    }
@@ -47,18 +47,18 @@ __attribute__((used)) static void switch_thread_audio_free(void *data)
    if (swa->fifo)
    {
          fifo_free(swa->fifo);
-         swa->fifo = NULL;
+         swa->fifo = ((void*)0);
    }
 
    for (i = 0; i < ARRAY_SIZE(swa->buffers); i++)
    {
-#ifdef HAVE_LIBNX
-         free(swa->buffers[i].buffer);
-#else
+
+
+
          free_pages(swa->buffers[i].sample_data);
-#endif
+
    }
 
    free(swa);
-   swa = NULL;
+   swa = ((void*)0);
 }

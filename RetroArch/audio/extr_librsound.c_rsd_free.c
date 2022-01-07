@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  cond; int /*<<< orphan*/  cond_mutex; int /*<<< orphan*/  mutex; } ;
-struct TYPE_6__ {TYPE_1__ thread; int /*<<< orphan*/  cb_lock; struct TYPE_6__* port; struct TYPE_6__* host; scalar_t__ fifo_buffer; } ;
-typedef  TYPE_2__ rsound_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fifo_free (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  retro_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cond; int cond_mutex; int mutex; } ;
+struct TYPE_6__ {TYPE_1__ thread; int cb_lock; struct TYPE_6__* port; struct TYPE_6__* host; scalar_t__ fifo_buffer; } ;
+typedef TYPE_2__ rsound_t ;
+
+
+ int fifo_free (scalar_t__) ;
+ int free (TYPE_2__*) ;
+ int retro_assert (int ) ;
+ int scond_free (int ) ;
+ int slock_free (int ) ;
 
 int rsd_free(rsound_t *rsound)
 {
-   retro_assert(rsound != NULL);
+   retro_assert(rsound != ((void*)0));
    if (rsound->fifo_buffer)
       fifo_free(rsound->fifo_buffer);
    if (rsound->host)

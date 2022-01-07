@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- char* ProgramName ; 
- int /*<<< orphan*/  UTILS_UNUSED_PARAMETER (int /*<<< orphan*/ ) ; 
- scalar_t__ Verbose ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int cmsContext ;
+
+
+ char* ProgramName ;
+ int UTILS_UNUSED_PARAMETER (int ) ;
+ scalar_t__ Verbose ;
+ int fprintf (int ,char*,char*,char const*) ;
+ int stderr ;
 
 __attribute__((used)) static
 void MyErrorLogHandler(cmsContext ContextID, cmsUInt32Number ErrorCode, const char *Text)

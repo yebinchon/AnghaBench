@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  mc_ss; int /*<<< orphan*/  mc_rsp; int /*<<< orphan*/  mc_rflags; int /*<<< orphan*/  mc_cs; int /*<<< orphan*/  mc_rip; int /*<<< orphan*/  mc_r15; int /*<<< orphan*/  mc_r14; int /*<<< orphan*/  mc_r13; int /*<<< orphan*/  mc_r12; int /*<<< orphan*/  mc_r11; int /*<<< orphan*/  mc_r10; int /*<<< orphan*/  mc_rbp; int /*<<< orphan*/  mc_rbx; int /*<<< orphan*/  mc_rax; int /*<<< orphan*/  mc_r9; int /*<<< orphan*/  mc_r8; int /*<<< orphan*/  mc_rcx; int /*<<< orphan*/  mc_rdx; int /*<<< orphan*/  mc_rsi; int /*<<< orphan*/  mc_rdi; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int mc_ss; int mc_rsp; int mc_rflags; int mc_cs; int mc_rip; int mc_r15; int mc_r14; int mc_r13; int mc_r12; int mc_r11; int mc_r10; int mc_rbp; int mc_rbx; int mc_rax; int mc_r9; int mc_r8; int mc_rcx; int mc_rdx; int mc_rsi; int mc_rdi; } ;
 struct TYPE_4__ {TYPE_2__ uc_mcontext; } ;
-typedef  TYPE_1__ ucontext_t ;
-struct reg {int /*<<< orphan*/  r_ss; int /*<<< orphan*/  r_rsp; int /*<<< orphan*/  r_rflags; int /*<<< orphan*/  r_cs; int /*<<< orphan*/  r_rip; int /*<<< orphan*/  r_r15; int /*<<< orphan*/  r_r14; int /*<<< orphan*/  r_r13; int /*<<< orphan*/  r_r12; int /*<<< orphan*/  r_r11; int /*<<< orphan*/  r_r10; int /*<<< orphan*/  r_rbp; int /*<<< orphan*/  r_rbx; int /*<<< orphan*/  r_rax; int /*<<< orphan*/  r_r9; int /*<<< orphan*/  r_r8; int /*<<< orphan*/  r_rcx; int /*<<< orphan*/  r_rdx; int /*<<< orphan*/  r_rsi; int /*<<< orphan*/  r_rdi; } ;
-typedef  TYPE_2__ mcontext_t ;
+typedef TYPE_1__ ucontext_t ;
+struct reg {int r_ss; int r_rsp; int r_rflags; int r_cs; int r_rip; int r_r15; int r_r14; int r_r13; int r_r12; int r_r11; int r_r10; int r_rbp; int r_rbx; int r_rax; int r_r9; int r_r8; int r_rcx; int r_rdx; int r_rsi; int r_rdi; } ;
+typedef TYPE_2__ mcontext_t ;
 
-/* Variables and functions */
+
 
 void
 pt_reg_to_ucontext(const struct reg *r, ucontext_t *uc)
 {
-	mcontext_t *mc = &uc->uc_mcontext;
+ mcontext_t *mc = &uc->uc_mcontext;
 
-	mc->mc_rdi = r->r_rdi;
-	mc->mc_rsi = r->r_rsi;
-	mc->mc_rdx = r->r_rdx;
-	mc->mc_rcx = r->r_rcx;
-	mc->mc_r8 = r->r_r8;
-	mc->mc_r9 = r->r_r9;
-	mc->mc_rax = r->r_rax;
-	mc->mc_rbx = r->r_rbx;
-	mc->mc_rbp = r->r_rbp;
-	mc->mc_r10 = r->r_r10;
-	mc->mc_r11 = r->r_r11;
-	mc->mc_r12 = r->r_r12;
-	mc->mc_r13 = r->r_r13;
-	mc->mc_r14 = r->r_r14;
-	mc->mc_r15 = r->r_r15;
-	mc->mc_rip = r->r_rip;
-	mc->mc_cs = r->r_cs;
-	mc->mc_rflags = r->r_rflags;
-	mc->mc_rsp = r->r_rsp;
-	mc->mc_ss = r->r_ss;
+ mc->mc_rdi = r->r_rdi;
+ mc->mc_rsi = r->r_rsi;
+ mc->mc_rdx = r->r_rdx;
+ mc->mc_rcx = r->r_rcx;
+ mc->mc_r8 = r->r_r8;
+ mc->mc_r9 = r->r_r9;
+ mc->mc_rax = r->r_rax;
+ mc->mc_rbx = r->r_rbx;
+ mc->mc_rbp = r->r_rbp;
+ mc->mc_r10 = r->r_r10;
+ mc->mc_r11 = r->r_r11;
+ mc->mc_r12 = r->r_r12;
+ mc->mc_r13 = r->r_r13;
+ mc->mc_r14 = r->r_r14;
+ mc->mc_r15 = r->r_r15;
+ mc->mc_rip = r->r_rip;
+ mc->mc_cs = r->r_cs;
+ mc->mc_rflags = r->r_rflags;
+ mc->mc_rsp = r->r_rsp;
+ mc->mc_ss = r->r_ss;
 }

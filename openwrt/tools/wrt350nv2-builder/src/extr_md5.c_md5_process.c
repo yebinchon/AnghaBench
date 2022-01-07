@@ -1,264 +1,223 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int md5_word_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int md5_word_t ;
 struct TYPE_3__ {int* abcd; } ;
-typedef  TYPE_1__ md5_state_t ;
-typedef  int md5_byte_t ;
+typedef TYPE_1__ md5_state_t ;
+typedef int md5_byte_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET (int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  T1 ; 
- int /*<<< orphan*/  T10 ; 
- int /*<<< orphan*/  T11 ; 
- int /*<<< orphan*/  T12 ; 
- int /*<<< orphan*/  T13 ; 
- int /*<<< orphan*/  T14 ; 
- int /*<<< orphan*/  T15 ; 
- int /*<<< orphan*/  T16 ; 
- int /*<<< orphan*/  T17 ; 
- int /*<<< orphan*/  T18 ; 
- int /*<<< orphan*/  T19 ; 
- int /*<<< orphan*/  T2 ; 
- int /*<<< orphan*/  T20 ; 
- int /*<<< orphan*/  T21 ; 
- int /*<<< orphan*/  T22 ; 
- int /*<<< orphan*/  T23 ; 
- int /*<<< orphan*/  T24 ; 
- int /*<<< orphan*/  T25 ; 
- int /*<<< orphan*/  T26 ; 
- int /*<<< orphan*/  T27 ; 
- int /*<<< orphan*/  T28 ; 
- int /*<<< orphan*/  T29 ; 
- int /*<<< orphan*/  T3 ; 
- int /*<<< orphan*/  T30 ; 
- int /*<<< orphan*/  T31 ; 
- int /*<<< orphan*/  T32 ; 
- int /*<<< orphan*/  T33 ; 
- int /*<<< orphan*/  T34 ; 
- int /*<<< orphan*/  T35 ; 
- int /*<<< orphan*/  T36 ; 
- int /*<<< orphan*/  T37 ; 
- int /*<<< orphan*/  T38 ; 
- int /*<<< orphan*/  T39 ; 
- int /*<<< orphan*/  T4 ; 
- int /*<<< orphan*/  T40 ; 
- int /*<<< orphan*/  T41 ; 
- int /*<<< orphan*/  T42 ; 
- int /*<<< orphan*/  T43 ; 
- int /*<<< orphan*/  T44 ; 
- int /*<<< orphan*/  T45 ; 
- int /*<<< orphan*/  T46 ; 
- int /*<<< orphan*/  T47 ; 
- int /*<<< orphan*/  T48 ; 
- int /*<<< orphan*/  T49 ; 
- int /*<<< orphan*/  T5 ; 
- int /*<<< orphan*/  T50 ; 
- int /*<<< orphan*/  T51 ; 
- int /*<<< orphan*/  T52 ; 
- int /*<<< orphan*/  T53 ; 
- int /*<<< orphan*/  T54 ; 
- int /*<<< orphan*/  T55 ; 
- int /*<<< orphan*/  T56 ; 
- int /*<<< orphan*/  T57 ; 
- int /*<<< orphan*/  T58 ; 
- int /*<<< orphan*/  T59 ; 
- int /*<<< orphan*/  T6 ; 
- int /*<<< orphan*/  T60 ; 
- int /*<<< orphan*/  T61 ; 
- int /*<<< orphan*/  T62 ; 
- int /*<<< orphan*/  T63 ; 
- int /*<<< orphan*/  T64 ; 
- int /*<<< orphan*/  T7 ; 
- int /*<<< orphan*/  T8 ; 
- int /*<<< orphan*/  T9 ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+ int SET (int,int,int,int,int,int,int ) ;
+ int T1 ;
+ int T10 ;
+ int T11 ;
+ int T12 ;
+ int T13 ;
+ int T14 ;
+ int T15 ;
+ int T16 ;
+ int T17 ;
+ int T18 ;
+ int T19 ;
+ int T2 ;
+ int T20 ;
+ int T21 ;
+ int T22 ;
+ int T23 ;
+ int T24 ;
+ int T25 ;
+ int T26 ;
+ int T27 ;
+ int T28 ;
+ int T29 ;
+ int T3 ;
+ int T30 ;
+ int T31 ;
+ int T32 ;
+ int T33 ;
+ int T34 ;
+ int T35 ;
+ int T36 ;
+ int T37 ;
+ int T38 ;
+ int T39 ;
+ int T4 ;
+ int T40 ;
+ int T41 ;
+ int T42 ;
+ int T43 ;
+ int T44 ;
+ int T45 ;
+ int T46 ;
+ int T47 ;
+ int T48 ;
+ int T49 ;
+ int T5 ;
+ int T50 ;
+ int T51 ;
+ int T52 ;
+ int T53 ;
+ int T54 ;
+ int T55 ;
+ int T56 ;
+ int T57 ;
+ int T58 ;
+ int T59 ;
+ int T6 ;
+ int T60 ;
+ int T61 ;
+ int T62 ;
+ int T63 ;
+ int T64 ;
+ int T7 ;
+ int T8 ;
+ int T9 ;
+ int memcpy (int*,int const*,int) ;
 
 __attribute__((used)) static void
-md5_process(md5_state_t *pms, const md5_byte_t *data /*[64]*/)
+md5_process(md5_state_t *pms, const md5_byte_t *data )
 {
     md5_word_t
-	a = pms->abcd[0], b = pms->abcd[1],
-	c = pms->abcd[2], d = pms->abcd[3];
+ a = pms->abcd[0], b = pms->abcd[1],
+ c = pms->abcd[2], d = pms->abcd[3];
     md5_word_t t;
-#if BYTE_ORDER > 0
-    /* Define storage only for big-endian CPUs. */
-    md5_word_t X[16];
-#else
-    /* Define storage for little-endian or both types of CPUs. */
+
+
+
+
+
     md5_word_t xbuf[16];
     const md5_word_t *X;
-#endif
+
 
     {
-#if BYTE_ORDER == 0
-	/*
-	 * Determine dynamically whether this is a big-endian or
-	 * little-endian machine, since we can use a more efficient
-	 * algorithm on the latter.
-	 */
-	static const int w = 1;
 
-	if (*((const md5_byte_t *)&w)) /* dynamic little-endian */
-#endif
-#if BYTE_ORDER <= 0		/* little-endian */
-	{
-	    /*
-	     * On little-endian machines, we can process properly aligned
-	     * data without copying it.
-	     */
-	    if (!((data - (const md5_byte_t *)0) & 3)) {
-		/* data are properly aligned */
-		X = (const md5_word_t *)data;
-	    } else {
-		/* not aligned */
-		memcpy(xbuf, data, 64);
-		X = xbuf;
-	    }
-	}
-#endif
-#if BYTE_ORDER == 0
-	else			/* dynamic big-endian */
-#endif
-#if BYTE_ORDER >= 0		/* big-endian */
-	{
-	    /*
-	     * On big-endian machines, we must arrange the bytes in the
-	     * right order.
-	     */
-	    const md5_byte_t *xp = data;
-	    int i;
 
-#  if BYTE_ORDER == 0
-	    X = xbuf;		/* (dynamic only) */
-#  else
-#    define xbuf X		/* (static only) */
-#  endif
-	    for (i = 0; i < 16; ++i, xp += 4)
-		xbuf[i] = xp[0] + (xp[1] << 8) + (xp[2] << 16) + (xp[3] << 24);
-	}
-#endif
+
+
+
+
+ static const int w = 1;
+
+ if (*((const md5_byte_t *)&w))
+
+
+ {
+
+
+
+
+     if (!((data - (const md5_byte_t *)0) & 3)) {
+
+  X = (const md5_word_t *)data;
+     } else {
+
+  memcpy(xbuf, data, 64);
+  X = xbuf;
+     }
+ }
+
+
+ else
+
+
+ {
+
+
+
+
+     const md5_byte_t *xp = data;
+     int i;
+
+
+     X = xbuf;
+
+
+
+     for (i = 0; i < 16; ++i, xp += 4)
+  xbuf[i] = xp[0] + (xp[1] << 8) + (xp[2] << 16) + (xp[3] << 24);
+ }
+
     }
+    t = a + (((b) & (c)) | (~(b) & (d))) + X[0] + T1; a = (((t) << (7)) | ((t) >> (32 - (7)))) + b;
+    t = d + (((a) & (b)) | (~(a) & (c))) + X[1] + T2; d = (((t) << (12)) | ((t) >> (32 - (12)))) + a;
+    t = c + (((d) & (a)) | (~(d) & (b))) + X[2] + T3; c = (((t) << (17)) | ((t) >> (32 - (17)))) + d;
+    t = b + (((c) & (d)) | (~(c) & (a))) + X[3] + T4; b = (((t) << (22)) | ((t) >> (32 - (22)))) + c;
+    t = a + (((b) & (c)) | (~(b) & (d))) + X[4] + T5; a = (((t) << (7)) | ((t) >> (32 - (7)))) + b;
+    t = d + (((a) & (b)) | (~(a) & (c))) + X[5] + T6; d = (((t) << (12)) | ((t) >> (32 - (12)))) + a;
+    t = c + (((d) & (a)) | (~(d) & (b))) + X[6] + T7; c = (((t) << (17)) | ((t) >> (32 - (17)))) + d;
+    t = b + (((c) & (d)) | (~(c) & (a))) + X[7] + T8; b = (((t) << (22)) | ((t) >> (32 - (22)))) + c;
+    t = a + (((b) & (c)) | (~(b) & (d))) + X[8] + T9; a = (((t) << (7)) | ((t) >> (32 - (7)))) + b;
+    t = d + (((a) & (b)) | (~(a) & (c))) + X[9] + T10; d = (((t) << (12)) | ((t) >> (32 - (12)))) + a;
+    t = c + (((d) & (a)) | (~(d) & (b))) + X[10] + T11; c = (((t) << (17)) | ((t) >> (32 - (17)))) + d;
+    t = b + (((c) & (d)) | (~(c) & (a))) + X[11] + T12; b = (((t) << (22)) | ((t) >> (32 - (22)))) + c;
+    t = a + (((b) & (c)) | (~(b) & (d))) + X[12] + T13; a = (((t) << (7)) | ((t) >> (32 - (7)))) + b;
+    t = d + (((a) & (b)) | (~(a) & (c))) + X[13] + T14; d = (((t) << (12)) | ((t) >> (32 - (12)))) + a;
+    t = c + (((d) & (a)) | (~(d) & (b))) + X[14] + T15; c = (((t) << (17)) | ((t) >> (32 - (17)))) + d;
+    t = b + (((c) & (d)) | (~(c) & (a))) + X[15] + T16; b = (((t) << (22)) | ((t) >> (32 - (22)))) + c;
+    t = a + (((b) & (d)) | ((c) & ~(d))) + X[1] + T17; a = (((t) << (5)) | ((t) >> (32 - (5)))) + b;
+    t = d + (((a) & (c)) | ((b) & ~(c))) + X[6] + T18; d = (((t) << (9)) | ((t) >> (32 - (9)))) + a;
+    t = c + (((d) & (b)) | ((a) & ~(b))) + X[11] + T19; c = (((t) << (14)) | ((t) >> (32 - (14)))) + d;
+    t = b + (((c) & (a)) | ((d) & ~(a))) + X[0] + T20; b = (((t) << (20)) | ((t) >> (32 - (20)))) + c;
+    t = a + (((b) & (d)) | ((c) & ~(d))) + X[5] + T21; a = (((t) << (5)) | ((t) >> (32 - (5)))) + b;
+    t = d + (((a) & (c)) | ((b) & ~(c))) + X[10] + T22; d = (((t) << (9)) | ((t) >> (32 - (9)))) + a;
+    t = c + (((d) & (b)) | ((a) & ~(b))) + X[15] + T23; c = (((t) << (14)) | ((t) >> (32 - (14)))) + d;
+    t = b + (((c) & (a)) | ((d) & ~(a))) + X[4] + T24; b = (((t) << (20)) | ((t) >> (32 - (20)))) + c;
+    t = a + (((b) & (d)) | ((c) & ~(d))) + X[9] + T25; a = (((t) << (5)) | ((t) >> (32 - (5)))) + b;
+    t = d + (((a) & (c)) | ((b) & ~(c))) + X[14] + T26; d = (((t) << (9)) | ((t) >> (32 - (9)))) + a;
+    t = c + (((d) & (b)) | ((a) & ~(b))) + X[3] + T27; c = (((t) << (14)) | ((t) >> (32 - (14)))) + d;
+    t = b + (((c) & (a)) | ((d) & ~(a))) + X[8] + T28; b = (((t) << (20)) | ((t) >> (32 - (20)))) + c;
+    t = a + (((b) & (d)) | ((c) & ~(d))) + X[13] + T29; a = (((t) << (5)) | ((t) >> (32 - (5)))) + b;
+    t = d + (((a) & (c)) | ((b) & ~(c))) + X[2] + T30; d = (((t) << (9)) | ((t) >> (32 - (9)))) + a;
+    t = c + (((d) & (b)) | ((a) & ~(b))) + X[7] + T31; c = (((t) << (14)) | ((t) >> (32 - (14)))) + d;
+    t = b + (((c) & (a)) | ((d) & ~(a))) + X[12] + T32; b = (((t) << (20)) | ((t) >> (32 - (20)))) + c;
+    t = a + ((b) ^ (c) ^ (d)) + X[5] + T33; a = (((t) << (4)) | ((t) >> (32 - (4)))) + b;
+    t = d + ((a) ^ (b) ^ (c)) + X[8] + T34; d = (((t) << (11)) | ((t) >> (32 - (11)))) + a;
+    t = c + ((d) ^ (a) ^ (b)) + X[11] + T35; c = (((t) << (16)) | ((t) >> (32 - (16)))) + d;
+    t = b + ((c) ^ (d) ^ (a)) + X[14] + T36; b = (((t) << (23)) | ((t) >> (32 - (23)))) + c;
+    t = a + ((b) ^ (c) ^ (d)) + X[1] + T37; a = (((t) << (4)) | ((t) >> (32 - (4)))) + b;
+    t = d + ((a) ^ (b) ^ (c)) + X[4] + T38; d = (((t) << (11)) | ((t) >> (32 - (11)))) + a;
+    t = c + ((d) ^ (a) ^ (b)) + X[7] + T39; c = (((t) << (16)) | ((t) >> (32 - (16)))) + d;
+    t = b + ((c) ^ (d) ^ (a)) + X[10] + T40; b = (((t) << (23)) | ((t) >> (32 - (23)))) + c;
+    t = a + ((b) ^ (c) ^ (d)) + X[13] + T41; a = (((t) << (4)) | ((t) >> (32 - (4)))) + b;
+    t = d + ((a) ^ (b) ^ (c)) + X[0] + T42; d = (((t) << (11)) | ((t) >> (32 - (11)))) + a;
+    t = c + ((d) ^ (a) ^ (b)) + X[3] + T43; c = (((t) << (16)) | ((t) >> (32 - (16)))) + d;
+    t = b + ((c) ^ (d) ^ (a)) + X[6] + T44; b = (((t) << (23)) | ((t) >> (32 - (23)))) + c;
+    t = a + ((b) ^ (c) ^ (d)) + X[9] + T45; a = (((t) << (4)) | ((t) >> (32 - (4)))) + b;
+    t = d + ((a) ^ (b) ^ (c)) + X[12] + T46; d = (((t) << (11)) | ((t) >> (32 - (11)))) + a;
+    t = c + ((d) ^ (a) ^ (b)) + X[15] + T47; c = (((t) << (16)) | ((t) >> (32 - (16)))) + d;
+    t = b + ((c) ^ (d) ^ (a)) + X[2] + T48; b = (((t) << (23)) | ((t) >> (32 - (23)))) + c;
+    t = a + ((c) ^ ((b) | ~(d))) + X[0] + T49; a = (((t) << (6)) | ((t) >> (32 - (6)))) + b;
+    t = d + ((b) ^ ((a) | ~(c))) + X[7] + T50; d = (((t) << (10)) | ((t) >> (32 - (10)))) + a;
+    t = c + ((a) ^ ((d) | ~(b))) + X[14] + T51; c = (((t) << (15)) | ((t) >> (32 - (15)))) + d;
+    t = b + ((d) ^ ((c) | ~(a))) + X[5] + T52; b = (((t) << (21)) | ((t) >> (32 - (21)))) + c;
+    t = a + ((c) ^ ((b) | ~(d))) + X[12] + T53; a = (((t) << (6)) | ((t) >> (32 - (6)))) + b;
+    t = d + ((b) ^ ((a) | ~(c))) + X[3] + T54; d = (((t) << (10)) | ((t) >> (32 - (10)))) + a;
+    t = c + ((a) ^ ((d) | ~(b))) + X[10] + T55; c = (((t) << (15)) | ((t) >> (32 - (15)))) + d;
+    t = b + ((d) ^ ((c) | ~(a))) + X[1] + T56; b = (((t) << (21)) | ((t) >> (32 - (21)))) + c;
+    t = a + ((c) ^ ((b) | ~(d))) + X[8] + T57; a = (((t) << (6)) | ((t) >> (32 - (6)))) + b;
+    t = d + ((b) ^ ((a) | ~(c))) + X[15] + T58; d = (((t) << (10)) | ((t) >> (32 - (10)))) + a;
+    t = c + ((a) ^ ((d) | ~(b))) + X[6] + T59; c = (((t) << (15)) | ((t) >> (32 - (15)))) + d;
+    t = b + ((d) ^ ((c) | ~(a))) + X[13] + T60; b = (((t) << (21)) | ((t) >> (32 - (21)))) + c;
+    t = a + ((c) ^ ((b) | ~(d))) + X[4] + T61; a = (((t) << (6)) | ((t) >> (32 - (6)))) + b;
+    t = d + ((b) ^ ((a) | ~(c))) + X[11] + T62; d = (((t) << (10)) | ((t) >> (32 - (10)))) + a;
+    t = c + ((a) ^ ((d) | ~(b))) + X[2] + T63; c = (((t) << (15)) | ((t) >> (32 - (15)))) + d;
+    t = b + ((d) ^ ((c) | ~(a))) + X[9] + T64; b = (((t) << (21)) | ((t) >> (32 - (21)))) + c;
 
-#define ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 
-    /* Round 1. */
-    /* Let [abcd k s i] denote the operation
-       a = b + ((a + F(b,c,d) + X[k] + T[i]) <<< s). */
-#define F(x, y, z) (((x) & (y)) | (~(x) & (z)))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + F(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-    /* Do the following 16 operations. */
-    SET(a, b, c, d,  0,  7,  T1);
-    SET(d, a, b, c,  1, 12,  T2);
-    SET(c, d, a, b,  2, 17,  T3);
-    SET(b, c, d, a,  3, 22,  T4);
-    SET(a, b, c, d,  4,  7,  T5);
-    SET(d, a, b, c,  5, 12,  T6);
-    SET(c, d, a, b,  6, 17,  T7);
-    SET(b, c, d, a,  7, 22,  T8);
-    SET(a, b, c, d,  8,  7,  T9);
-    SET(d, a, b, c,  9, 12, T10);
-    SET(c, d, a, b, 10, 17, T11);
-    SET(b, c, d, a, 11, 22, T12);
-    SET(a, b, c, d, 12,  7, T13);
-    SET(d, a, b, c, 13, 12, T14);
-    SET(c, d, a, b, 14, 17, T15);
-    SET(b, c, d, a, 15, 22, T16);
-#undef SET
 
-     /* Round 2. */
-     /* Let [abcd k s i] denote the operation
-          a = b + ((a + G(b,c,d) + X[k] + T[i]) <<< s). */
-#define G(x, y, z) (((x) & (z)) | ((y) & ~(z)))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + G(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-     /* Do the following 16 operations. */
-    SET(a, b, c, d,  1,  5, T17);
-    SET(d, a, b, c,  6,  9, T18);
-    SET(c, d, a, b, 11, 14, T19);
-    SET(b, c, d, a,  0, 20, T20);
-    SET(a, b, c, d,  5,  5, T21);
-    SET(d, a, b, c, 10,  9, T22);
-    SET(c, d, a, b, 15, 14, T23);
-    SET(b, c, d, a,  4, 20, T24);
-    SET(a, b, c, d,  9,  5, T25);
-    SET(d, a, b, c, 14,  9, T26);
-    SET(c, d, a, b,  3, 14, T27);
-    SET(b, c, d, a,  8, 20, T28);
-    SET(a, b, c, d, 13,  5, T29);
-    SET(d, a, b, c,  2,  9, T30);
-    SET(c, d, a, b,  7, 14, T31);
-    SET(b, c, d, a, 12, 20, T32);
-#undef SET
 
-     /* Round 3. */
-     /* Let [abcd k s t] denote the operation
-          a = b + ((a + H(b,c,d) + X[k] + T[i]) <<< s). */
-#define H(x, y, z) ((x) ^ (y) ^ (z))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + H(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-     /* Do the following 16 operations. */
-    SET(a, b, c, d,  5,  4, T33);
-    SET(d, a, b, c,  8, 11, T34);
-    SET(c, d, a, b, 11, 16, T35);
-    SET(b, c, d, a, 14, 23, T36);
-    SET(a, b, c, d,  1,  4, T37);
-    SET(d, a, b, c,  4, 11, T38);
-    SET(c, d, a, b,  7, 16, T39);
-    SET(b, c, d, a, 10, 23, T40);
-    SET(a, b, c, d, 13,  4, T41);
-    SET(d, a, b, c,  0, 11, T42);
-    SET(c, d, a, b,  3, 16, T43);
-    SET(b, c, d, a,  6, 23, T44);
-    SET(a, b, c, d,  9,  4, T45);
-    SET(d, a, b, c, 12, 11, T46);
-    SET(c, d, a, b, 15, 16, T47);
-    SET(b, c, d, a,  2, 23, T48);
-#undef SET
 
-     /* Round 4. */
-     /* Let [abcd k s t] denote the operation
-          a = b + ((a + I(b,c,d) + X[k] + T[i]) <<< s). */
-#define I(x, y, z) ((y) ^ ((x) | ~(z)))
-#define SET(a, b, c, d, k, s, Ti)\
-  t = a + I(b,c,d) + X[k] + Ti;\
-  a = ROTATE_LEFT(t, s) + b
-     /* Do the following 16 operations. */
-    SET(a, b, c, d,  0,  6, T49);
-    SET(d, a, b, c,  7, 10, T50);
-    SET(c, d, a, b, 14, 15, T51);
-    SET(b, c, d, a,  5, 21, T52);
-    SET(a, b, c, d, 12,  6, T53);
-    SET(d, a, b, c,  3, 10, T54);
-    SET(c, d, a, b, 10, 15, T55);
-    SET(b, c, d, a,  1, 21, T56);
-    SET(a, b, c, d,  8,  6, T57);
-    SET(d, a, b, c, 15, 10, T58);
-    SET(c, d, a, b,  6, 15, T59);
-    SET(b, c, d, a, 13, 21, T60);
-    SET(a, b, c, d,  4,  6, T61);
-    SET(d, a, b, c, 11, 10, T62);
-    SET(c, d, a, b,  2, 15, T63);
-    SET(b, c, d, a,  9, 21, T64);
-#undef SET
-
-     /* Then perform the following additions. (That is increment each
-        of the four registers by the value it had before this block
-        was started.) */
     pms->abcd[0] += a;
     pms->abcd[1] += b;
     pms->abcd[2] += c;

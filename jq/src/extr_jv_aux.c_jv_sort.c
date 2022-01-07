@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sort_entry {int /*<<< orphan*/  object; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_ARRAY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jv_array () ; 
- int jv_array_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_array_set (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_mem_free (struct sort_entry*) ; 
- struct sort_entry* sort_items (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct sort_entry {int object; int key; } ;
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_ARRAY ;
+ int assert (int) ;
+ int jv_array () ;
+ int jv_array_length (int ) ;
+ int jv_array_set (int ,int,int ) ;
+ int jv_copy (int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_mem_free (struct sort_entry*) ;
+ struct sort_entry* sort_items (int ,int ) ;
 
 jv jv_sort(jv objects, jv keys) {
   assert(jv_get_kind(objects) == JV_KIND_ARRAY);

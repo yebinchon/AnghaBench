@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509V3_EXT_METHOD ;
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_INTEGER_to_BN (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  X509V3_F_I2S_ASN1_INTEGER ; 
- int /*<<< orphan*/  X509V3err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* bignum_to_string (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X509V3_EXT_METHOD ;
+typedef int BIGNUM ;
+typedef int ASN1_INTEGER ;
+
+
+ int * ASN1_INTEGER_to_BN (int const*,int *) ;
+ int BN_free (int *) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int X509V3_F_I2S_ASN1_INTEGER ;
+ int X509V3err (int ,int ) ;
+ char* bignum_to_string (int *) ;
 
 char *i2s_ASN1_INTEGER(X509V3_EXT_METHOD *method, const ASN1_INTEGER *a)
 {
-    BIGNUM *bntmp = NULL;
-    char *strtmp = NULL;
+    BIGNUM *bntmp = ((void*)0);
+    char *strtmp = ((void*)0);
 
     if (!a)
-        return NULL;
-    if ((bntmp = ASN1_INTEGER_to_BN(a, NULL)) == NULL
-        || (strtmp = bignum_to_string(bntmp)) == NULL)
+        return ((void*)0);
+    if ((bntmp = ASN1_INTEGER_to_BN(a, ((void*)0))) == ((void*)0)
+        || (strtmp = bignum_to_string(bntmp)) == ((void*)0))
         X509V3err(X509V3_F_I2S_ASN1_INTEGER, ERR_R_MALLOC_FAILURE);
     BN_free(bntmp);
     return strtmp;

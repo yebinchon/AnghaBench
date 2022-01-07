@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_ENCODE_CTX ;
 
-/* Variables and functions */
- int EVP_ENCODE_CTX_NO_NEWLINES ; 
- int EVP_ENCODE_CTX_USE_SRP_ALPHABET ; 
- int /*<<< orphan*/  EVP_ENCODE_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_ENCODE_CTX_new () ; 
- int /*<<< orphan*/  EVP_EncodeFinal (int /*<<< orphan*/ *,unsigned char*,int*) ; 
- int /*<<< orphan*/  EVP_EncodeInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_EncodeUpdate (int /*<<< orphan*/ *,unsigned char*,int*,unsigned char const*,int) ; 
- int /*<<< orphan*/  evp_encode_ctx_set_flags (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
+
+
+
+typedef int EVP_ENCODE_CTX ;
+
+
+ int EVP_ENCODE_CTX_NO_NEWLINES ;
+ int EVP_ENCODE_CTX_USE_SRP_ALPHABET ;
+ int EVP_ENCODE_CTX_free (int *) ;
+ int * EVP_ENCODE_CTX_new () ;
+ int EVP_EncodeFinal (int *,unsigned char*,int*) ;
+ int EVP_EncodeInit (int *) ;
+ int EVP_EncodeUpdate (int *,unsigned char*,int*,unsigned char const*,int) ;
+ int evp_encode_ctx_set_flags (int *,int) ;
+ int memmove (char*,char*,int) ;
 
 __attribute__((used)) static int t_tob64(char *dst, const unsigned char *src, int size)
 {
@@ -30,18 +30,18 @@ __attribute__((used)) static int t_tob64(char *dst, const unsigned char *src, in
     unsigned char pad[2] = {0, 0};
     size_t leadz = 0;
 
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
         return 0;
 
     EVP_EncodeInit(ctx);
     evp_encode_ctx_set_flags(ctx, EVP_ENCODE_CTX_NO_NEWLINES
                                   | EVP_ENCODE_CTX_USE_SRP_ALPHABET);
 
-    /*
-     * We pad at the front with zero bytes until the length is a multiple of 3
-     * so that EVP_EncodeUpdate/EVP_EncodeFinal does not add any of its own "="
-     * padding
-     */
+
+
+
+
+
     leadz = 3 - (size % 3);
     if (leadz != 3
             && !EVP_EncodeUpdate(ctx, (unsigned char *)dst, &outl, pad,
@@ -59,7 +59,7 @@ __attribute__((used)) static int t_tob64(char *dst, const unsigned char *src, in
     EVP_EncodeFinal(ctx, (unsigned char *)dst + outl, &outl2);
     outl += outl2;
 
-    /* Strip the encoded padding at the front */
+
     if (leadz != 3) {
         memmove(dst, dst + leadz, outl - leadz);
         dst[outl - leadz] = '\0';

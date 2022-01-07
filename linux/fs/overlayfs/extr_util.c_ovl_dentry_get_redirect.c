@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dentry {int dummy; } ;
 struct TYPE_2__ {char const* redirect; } ;
 
-/* Variables and functions */
- TYPE_1__* OVL_I (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d_inode (struct dentry*) ; 
+
+ TYPE_1__* OVL_I (int ) ;
+ int d_inode (struct dentry*) ;
 
 const char *ovl_dentry_get_redirect(struct dentry *dentry)
 {
-	return OVL_I(d_inode(dentry))->redirect;
+ return OVL_I(d_inode(dentry))->redirect;
 }

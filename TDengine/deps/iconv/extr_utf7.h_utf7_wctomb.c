@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int ucs4_t ;
-typedef  int state_t ;
-typedef  TYPE_1__* conv_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int ucs4_t ;
+typedef int state_t ;
+typedef TYPE_1__* conv_t ;
 struct TYPE_3__ {int ostate; } ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
- scalar_t__ UTF7_ENCODE_OPTIONAL_CHARS ; 
- int /*<<< orphan*/  abort () ; 
- scalar_t__ isdirect (unsigned int) ; 
- scalar_t__ isxbase64 (unsigned int) ; 
- scalar_t__ isxdirect (unsigned int) ; 
+
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
+ scalar_t__ UTF7_ENCODE_OPTIONAL_CHARS ;
+ int abort () ;
+ scalar_t__ isdirect (unsigned int) ;
+ scalar_t__ isxbase64 (unsigned int) ;
+ scalar_t__ isxdirect (unsigned int) ;
 
 __attribute__((used)) static int
 utf7_wctomb (conv_t conv, unsigned char *r, ucs4_t iwc, int n)
@@ -34,11 +34,11 @@ utf7_wctomb (conv_t conv, unsigned char *r, ucs4_t iwc, int n)
   if (state & 3)
     goto active;
 
-/*inactive:*/
+
   {
     if (UTF7_ENCODE_OPTIONAL_CHARS ? isdirect(wc) : isxdirect(wc)) {
       r[0] = (unsigned char) wc;
-      /*conv->ostate = state;*/
+
       return 1;
     } else {
       *r++ = '+';
@@ -46,7 +46,7 @@ utf7_wctomb (conv_t conv, unsigned char *r, ucs4_t iwc, int n)
         if (n < 2)
           return RET_TOOSMALL;
         *r = '-';
-        /*conv->ostate = state;*/
+
         return 2;
       }
       count = 1;
@@ -57,9 +57,9 @@ utf7_wctomb (conv_t conv, unsigned char *r, ucs4_t iwc, int n)
 
 active:
   {
-    /* base64 encoding active */
+
     if (UTF7_ENCODE_OPTIONAL_CHARS ? isdirect(wc) : isxdirect(wc)) {
-      /* deactivate base64 encoding */
+
       count += ((state & 3) >= 2 ? 1 : 0) + (isxbase64(wc) ? 1 : 0) + 1;
       if (n < count)
         return RET_TOOSMALL;
@@ -87,7 +87,7 @@ active:
       conv->ostate = state;
       return count;
     } else {
-      unsigned int k; /* number of payload bytes to write */
+      unsigned int k;
       if (wc < 0x10000) {
         k = 2;
         count += ((state & 3) >= 2 ? 3 : 2);
@@ -105,18 +105,18 @@ active:
         unsigned int i;
         unsigned char c;
         switch (state & 3) {
-          case 0: /* inside base64, 6 bits known for 4th byte */
+          case 0:
             c = (state & -4) >> 2; state = 1; break;
-          case 1: /* inside base64, no pending bits */
+          case 1:
             i = (wc >> (8 * --k)) & 0xff;
             c = i >> 2; state = ((i & 3) << 4) | 2; break;
-          case 2: /* inside base64, 2 bits known for 2nd byte */
+          case 2:
             i = (wc >> (8 * --k)) & 0xff;
             c = (state & -4) | (i >> 4); state = ((i & 15) << 2) | 3; break;
-          case 3: /* inside base64, 4 bits known for 3rd byte */
+          case 3:
             i = (wc >> (8 * --k)) & 0xff;
             c = (state & -4) | (i >> 6); state = ((i & 63) << 2) | 0; break;
-          default: abort(); /* stupid gcc */
+          default: abort();
         }
         if (c < 26)
           c = c+'A';

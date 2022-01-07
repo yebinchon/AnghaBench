@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct hidma_dev {int chidx; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 struct device_attribute {TYPE_1__ attr; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- struct hidma_dev* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ struct hidma_dev* dev_get_drvdata (struct device*) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static ssize_t hidma_show_values(struct device *dev,
-				 struct device_attribute *attr, char *buf)
+     struct device_attribute *attr, char *buf)
 {
-	struct hidma_dev *mdev = dev_get_drvdata(dev);
+ struct hidma_dev *mdev = dev_get_drvdata(dev);
 
-	buf[0] = 0;
+ buf[0] = 0;
 
-	if (strcmp(attr->attr.name, "chid") == 0)
-		sprintf(buf, "%d\n", mdev->chidx);
+ if (strcmp(attr->attr.name, "chid") == 0)
+  sprintf(buf, "%d\n", mdev->chidx);
 
-	return strlen(buf);
+ return strlen(buf);
 }

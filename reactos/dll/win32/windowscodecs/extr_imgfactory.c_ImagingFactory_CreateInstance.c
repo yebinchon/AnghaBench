@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * lpVtbl; } ;
+struct TYPE_6__ {int * lpVtbl; } ;
 struct TYPE_7__ {int ref; TYPE_3__ IWICImagingFactory2_iface; TYPE_1__ IWICComponentFactory_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  TYPE_2__ ImagingFactory ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int REFIID ;
+typedef TYPE_2__ ImagingFactory ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ComponentFactory_Vtbl ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IWICImagingFactory2_QueryInterface (TYPE_3__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IWICImagingFactory2_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  ImagingFactory_Vtbl ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
+
+ int ComponentFactory_Vtbl ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int IWICImagingFactory2_QueryInterface (TYPE_3__*,int ,void**) ;
+ int IWICImagingFactory2_Release (TYPE_3__*) ;
+ int ImagingFactory_Vtbl ;
+ int TRACE (char*,int ,void**) ;
+ int debugstr_guid (int ) ;
 
 HRESULT ImagingFactory_CreateInstance(REFIID iid, void** ppv)
 {
@@ -38,7 +38,7 @@ HRESULT ImagingFactory_CreateInstance(REFIID iid, void** ppv)
 
     TRACE("(%s,%p)\n", debugstr_guid(iid), ppv);
 
-    *ppv = NULL;
+    *ppv = ((void*)0);
 
     This = HeapAlloc(GetProcessHeap(), 0, sizeof(*This));
     if (!This) return E_OUTOFMEMORY;

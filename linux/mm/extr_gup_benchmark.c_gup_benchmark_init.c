@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_create_file_unsafe (char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gup_benchmark_fops ; 
+ int debugfs_create_file_unsafe (char*,int,int *,int *,int *) ;
+ int gup_benchmark_fops ;
 
 __attribute__((used)) static int gup_benchmark_init(void)
 {
-	debugfs_create_file_unsafe("gup_benchmark", 0600, NULL, NULL,
-				   &gup_benchmark_fops);
+ debugfs_create_file_unsafe("gup_benchmark", 0600, ((void*)0), ((void*)0),
+       &gup_benchmark_fops);
 
-	return 0;
+ return 0;
 }

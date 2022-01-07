@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ogg_int64_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ ogg_int64_t ;
 struct TYPE_2__ {scalar_t__ size; scalar_t__ pos; } ;
 
-/* Variables and functions */
- TYPE_1__* file ; 
- int lseek (int,int,int) ; 
+
+ TYPE_1__* file ;
+ int lseek (int,int,int) ;
 
 __attribute__((used)) static int f_seek(int *f, ogg_int64_t offset, int mode)
 {
-  if(f==NULL) return(-1);
+  if(f==((void*)0)) return(-1);
 
   int k, d;
   mode &= 3;

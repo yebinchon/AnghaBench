@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct lfs2_info {int /*<<< orphan*/  size; scalar_t__ type; struct lfs2_ctz* name; } ;
-struct lfs2_ctz {int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct lfs2_info {int size; scalar_t__ type; struct lfs2_ctz* name; } ;
+struct lfs2_ctz {int size; } ;
 struct TYPE_4__ {int name_max; } ;
-typedef  TYPE_1__ lfs2_t ;
-typedef  scalar_t__ lfs2_stag_t ;
-typedef  int /*<<< orphan*/  lfs2_mdir_t ;
-typedef  int /*<<< orphan*/  ctz ;
+typedef TYPE_1__ lfs2_t ;
+typedef scalar_t__ lfs2_stag_t ;
+typedef int lfs2_mdir_t ;
+typedef int ctz ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LFS2_MKTAG (int,int,int) ; 
- scalar_t__ LFS2_TYPE_CTZSTRUCT ; 
- scalar_t__ LFS2_TYPE_DIR ; 
- scalar_t__ LFS2_TYPE_INLINESTRUCT ; 
- int LFS2_TYPE_NAME ; 
- int LFS2_TYPE_STRUCT ; 
- int /*<<< orphan*/  lfs2_ctz_fromle32 (struct lfs2_ctz*) ; 
- scalar_t__ lfs2_dir_get (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct lfs2_ctz*) ; 
- int /*<<< orphan*/  lfs2_tag_size (scalar_t__) ; 
- scalar_t__ lfs2_tag_type3 (scalar_t__) ; 
- int /*<<< orphan*/  strcpy (struct lfs2_ctz*,char*) ; 
+
+ int LFS2_MKTAG (int,int,int) ;
+ scalar_t__ LFS2_TYPE_CTZSTRUCT ;
+ scalar_t__ LFS2_TYPE_DIR ;
+ scalar_t__ LFS2_TYPE_INLINESTRUCT ;
+ int LFS2_TYPE_NAME ;
+ int LFS2_TYPE_STRUCT ;
+ int lfs2_ctz_fromle32 (struct lfs2_ctz*) ;
+ scalar_t__ lfs2_dir_get (TYPE_1__*,int *,int ,int ,struct lfs2_ctz*) ;
+ int lfs2_tag_size (scalar_t__) ;
+ scalar_t__ lfs2_tag_type3 (scalar_t__) ;
+ int strcpy (struct lfs2_ctz*,char*) ;
 
 __attribute__((used)) static int lfs2_dir_getinfo(lfs2_t *lfs2, lfs2_mdir_t *dir,
         uint16_t id, struct lfs2_info *info) {
     if (id == 0x3ff) {
-        // special case for root
+
         strcpy(info->name, "/");
         info->type = LFS2_TYPE_DIR;
         return 0;

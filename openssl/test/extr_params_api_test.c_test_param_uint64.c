@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  in ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int out ;
+typedef int in ;
+typedef int buf ;
 struct TYPE_8__ {int len; scalar_t__* value; } ;
 struct TYPE_7__ {scalar_t__* data; } ;
-typedef  TYPE_1__ OSSL_PARAM ;
+typedef TYPE_1__ OSSL_PARAM ;
 
-/* Variables and functions */
- int MAX_LEN ; 
- int /*<<< orphan*/  OSSL_PARAM_get_uint64 (TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  OSSL_PARAM_set_uint64 (TYPE_1__*,scalar_t__) ; 
- TYPE_1__ OSSL_PARAM_uint64 (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t const,scalar_t__*,size_t const) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  le_copy (unsigned char*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- TYPE_3__* raw_values ; 
- int test_param_type_extra (TYPE_1__*,scalar_t__*,int) ; 
+
+ int MAX_LEN ;
+ int OSSL_PARAM_get_uint64 (TYPE_1__*,scalar_t__*) ;
+ int OSSL_PARAM_set_uint64 (TYPE_1__*,scalar_t__) ;
+ TYPE_1__ OSSL_PARAM_uint64 (char*,int *) ;
+ int TEST_mem_eq (unsigned char*,size_t const,scalar_t__*,size_t const) ;
+ int TEST_true (int ) ;
+ int le_copy (unsigned char*,scalar_t__*,int) ;
+ int memcpy (scalar_t__*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ TYPE_3__* raw_values ;
+ int test_param_type_extra (TYPE_1__*,scalar_t__*,int) ;
 
 __attribute__((used)) static int test_param_uint64(int n)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static int test_param_uint64(int n)
     unsigned char buf[MAX_LEN], cmp[sizeof(uint64_t)];
     const size_t len = raw_values[n].len >= sizeof(uint64_t)
                        ? sizeof(uint64_t) : raw_values[n].len;
-    OSSL_PARAM param = OSSL_PARAM_uint64("a", NULL);
+    OSSL_PARAM param = OSSL_PARAM_uint64("a", ((void*)0));
 
     memset(buf, 0, sizeof(buf));
     le_copy(buf, raw_values[n].value, sizeof(in));

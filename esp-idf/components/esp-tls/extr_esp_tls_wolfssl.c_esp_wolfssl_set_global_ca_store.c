@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_wolfssl_free_global_ca_store () ; 
- unsigned char* global_cacert ; 
- unsigned int global_cacert_pem_bytes ; 
- scalar_t__ strndup (char const*,unsigned int const) ; 
+
+
+
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_OK ;
+ int TAG ;
+ int esp_wolfssl_free_global_ca_store () ;
+ unsigned char* global_cacert ;
+ unsigned int global_cacert_pem_bytes ;
+ scalar_t__ strndup (char const*,unsigned int const) ;
 
 esp_err_t esp_wolfssl_set_global_ca_store(const unsigned char *cacert_pem_buf, const unsigned int cacert_pem_bytes)
 {
-    if (cacert_pem_buf == NULL) {
+    if (cacert_pem_buf == ((void*)0)) {
         ESP_LOGE(TAG, "cacert_pem_buf is null");
         return ESP_ERR_INVALID_ARG;
     }
-    if (global_cacert != NULL) {
+    if (global_cacert != ((void*)0)) {
         esp_wolfssl_free_global_ca_store();
     }
 
@@ -38,7 +38,7 @@ esp_err_t esp_wolfssl_set_global_ca_store(const unsigned char *cacert_pem_buf, c
         return ESP_FAIL;
     }
 
-    global_cacert_pem_bytes  = cacert_pem_bytes;
+    global_cacert_pem_bytes = cacert_pem_bytes;
 
     return ESP_OK;
 }

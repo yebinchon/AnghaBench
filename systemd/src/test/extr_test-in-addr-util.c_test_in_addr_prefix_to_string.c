@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  test_in_addr_prefix_to_string_unoptimized (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_in_addr_prefix_to_string_valid (int /*<<< orphan*/ ,char*) ; 
+ int AF_INET ;
+ int AF_INET6 ;
+ int test_in_addr_prefix_to_string_unoptimized (int ,char*) ;
+ int test_in_addr_prefix_to_string_valid (int ,char*) ;
 
 __attribute__((used)) static void test_in_addr_prefix_to_string(void) {
         test_in_addr_prefix_to_string_valid(AF_INET, "0.0.0.0/32");

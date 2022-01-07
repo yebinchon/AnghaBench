@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ip_vs_conn {int flags; int /*<<< orphan*/  lock; int /*<<< orphan*/  refcnt; int /*<<< orphan*/  c_list; } ;
 
-/* Variables and functions */
- int IP_VS_CONN_F_HASHED ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ct_write_lock (unsigned int) ; 
- int /*<<< orphan*/  ct_write_unlock (unsigned int) ; 
- unsigned int ip_vs_conn_hashkey_conn (struct ip_vs_conn*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct ip_vs_conn {int flags; int lock; int refcnt; int c_list; } ;
+
+
+ int IP_VS_CONN_F_HASHED ;
+ int atomic_dec (int *) ;
+ int ct_write_lock (unsigned int) ;
+ int ct_write_unlock (unsigned int) ;
+ unsigned int ip_vs_conn_hashkey_conn (struct ip_vs_conn*) ;
+ int list_del (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static inline int ip_vs_conn_unhash(struct ip_vs_conn *cp)
 {
-	unsigned hash;
-	int ret;
+ unsigned hash;
+ int ret;
 
-	/* unhash it and decrease its reference counter */
-	hash = ip_vs_conn_hashkey_conn(cp);
 
-	ct_write_lock(hash);
-	spin_lock(&cp->lock);
+ hash = ip_vs_conn_hashkey_conn(cp);
 
-	if (cp->flags & IP_VS_CONN_F_HASHED) {
-		list_del(&cp->c_list);
-		cp->flags &= ~IP_VS_CONN_F_HASHED;
-		atomic_dec(&cp->refcnt);
-		ret = 1;
-	} else
-		ret = 0;
+ ct_write_lock(hash);
+ spin_lock(&cp->lock);
 
-	spin_unlock(&cp->lock);
-	ct_write_unlock(hash);
+ if (cp->flags & IP_VS_CONN_F_HASHED) {
+  list_del(&cp->c_list);
+  cp->flags &= ~IP_VS_CONN_F_HASHED;
+  atomic_dec(&cp->refcnt);
+  ret = 1;
+ } else
+  ret = 0;
 
-	return ret;
+ spin_unlock(&cp->lock);
+ ct_write_unlock(hash);
+
+ return ret;
 }

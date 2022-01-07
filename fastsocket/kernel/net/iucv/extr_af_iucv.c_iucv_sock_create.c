@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct socket {int type; int /*<<< orphan*/ * ops; int /*<<< orphan*/  state; } ;
+
+
+
+
+struct socket {int type; int * ops; int state; } ;
 struct sock {int dummy; } ;
 struct net {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int EPROTONOSUPPORT ; 
- int ESOCKTNOSUPPORT ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int PF_IUCV ; 
-#define  SOCK_SEQPACKET 129 
-#define  SOCK_STREAM 128 
- int /*<<< orphan*/  SS_UNCONNECTED ; 
- struct sock* iucv_sock_alloc (struct socket*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iucv_sock_init (struct sock*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iucv_sock_ops ; 
+
+ int ENOMEM ;
+ int EPROTONOSUPPORT ;
+ int ESOCKTNOSUPPORT ;
+ int GFP_KERNEL ;
+ int PF_IUCV ;
+
+
+ int SS_UNCONNECTED ;
+ struct sock* iucv_sock_alloc (struct socket*,int,int ) ;
+ int iucv_sock_init (struct sock*,int *) ;
+ int iucv_sock_ops ;
 
 __attribute__((used)) static int iucv_sock_create(struct net *net, struct socket *sock, int protocol,
-			    int kern)
+       int kern)
 {
-	struct sock *sk;
+ struct sock *sk;
 
-	if (protocol && protocol != PF_IUCV)
-		return -EPROTONOSUPPORT;
+ if (protocol && protocol != PF_IUCV)
+  return -EPROTONOSUPPORT;
 
-	sock->state = SS_UNCONNECTED;
+ sock->state = SS_UNCONNECTED;
 
-	switch (sock->type) {
-	case SOCK_STREAM:
-		sock->ops = &iucv_sock_ops;
-		break;
-	case SOCK_SEQPACKET:
-		/* currently, proto ops can handle both sk types */
-		sock->ops = &iucv_sock_ops;
-		break;
-	default:
-		return -ESOCKTNOSUPPORT;
-	}
+ switch (sock->type) {
+ case 128:
+  sock->ops = &iucv_sock_ops;
+  break;
+ case 129:
 
-	sk = iucv_sock_alloc(sock, protocol, GFP_KERNEL);
-	if (!sk)
-		return -ENOMEM;
+  sock->ops = &iucv_sock_ops;
+  break;
+ default:
+  return -ESOCKTNOSUPPORT;
+ }
 
-	iucv_sock_init(sk, NULL);
+ sk = iucv_sock_alloc(sock, protocol, GFP_KERNEL);
+ if (!sk)
+  return -ENOMEM;
 
-	return 0;
+ iucv_sock_init(sk, ((void*)0));
+
+ return 0;
 }

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char** we_wordv; } ;
-typedef  TYPE_1__ wordexp_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  TAOS ;
+typedef TYPE_1__ wordexp_t ;
+typedef int int64_t ;
+typedef int TAOS ;
 
-/* Variables and functions */
- int REG_EXTENDED ; 
- int REG_ICASE ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ regex_match (char*,char*,int) ; 
- int shellDumpResult (int /*<<< orphan*/ *,char*,int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- char* strstr (char*,char*) ; 
- int taosGetTimestampUs () ; 
- int taos_affected_rows (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taos_error (int /*<<< orphan*/ *) ; 
- char* taos_errstr (int /*<<< orphan*/ *) ; 
- int taos_field_count (int /*<<< orphan*/ *) ; 
- scalar_t__ taos_query (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ wordexp (char*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wordfree (TYPE_1__*) ; 
+
+ int REG_EXTENDED ;
+ int REG_ICASE ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,...) ;
+ int printf (char*,...) ;
+ scalar_t__ regex_match (char*,char*,int) ;
+ int shellDumpResult (int *,char*,int*,int) ;
+ int stderr ;
+ int stdout ;
+ char* strstr (char*,char*) ;
+ int taosGetTimestampUs () ;
+ int taos_affected_rows (int *) ;
+ int taos_error (int *) ;
+ char* taos_errstr (int *) ;
+ int taos_field_count (int *) ;
+ scalar_t__ taos_query (int *,char*) ;
+ scalar_t__ wordexp (char*,TYPE_1__*,int ) ;
+ int wordfree (TYPE_1__*) ;
 
 void shellRunCommandOnServer(TAOS *con, char command[]) {
-  int64_t   st, et;
+  int64_t st, et;
   wordexp_t full_path;
-  char *    sptr = NULL;
-  char *    cptr = NULL;
-  char *    fname = NULL;
-  bool      printMode = false;
+  char * sptr = ((void*)0);
+  char * cptr = ((void*)0);
+  char * fname = ((void*)0);
+  bool printMode = 0;
 
-  if ((sptr = strstr(command, ">>")) != NULL) {
+  if ((sptr = strstr(command, ">>")) != ((void*)0)) {
     cptr = strstr(command, ";");
-    if (cptr != NULL) {
+    if (cptr != ((void*)0)) {
       *cptr = '\0';
     }
 
@@ -58,14 +58,14 @@ void shellRunCommandOnServer(TAOS *con, char command[]) {
     fname = full_path.we_wordv[0];
   }
 
-  if ((sptr = strstr(command, "\\G")) != NULL) {
+  if ((sptr = strstr(command, "\\G")) != ((void*)0)) {
     cptr = strstr(command, ";");
-    if (cptr != NULL) {
+    if (cptr != ((void*)0)) {
       *cptr = '\0';
     }
 
     *sptr = '\0';
-    printMode = true;  // When output to a file, the switch does not work.
+    printMode = 1;
   }
 
   st = taosGetTimestampUs();
@@ -82,7 +82,7 @@ void shellRunCommandOnServer(TAOS *con, char command[]) {
   }
 
   int num_fields = taos_field_count(con);
-  if (num_fields != 0) {  // select and show kinds of commands
+  if (num_fields != 0) {
     int error_no = 0;
     int numOfRows = shellDumpResult(con, fname, &error_no, printMode);
     if (numOfRows < 0) return;
@@ -101,7 +101,7 @@ void shellRunCommandOnServer(TAOS *con, char command[]) {
 
   printf("\n");
 
-  if (fname != NULL) {
+  if (fname != ((void*)0)) {
     wordfree(&full_path);
   }
   return;

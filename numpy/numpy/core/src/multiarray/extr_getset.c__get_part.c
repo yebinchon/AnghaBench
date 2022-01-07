@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_7__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int type_num; int /*<<< orphan*/  byteorder; } ;
-struct TYPE_8__ {int elsize; int /*<<< orphan*/  byteorder; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
-#define  NPY_CDOUBLE 130 
-#define  NPY_CFLOAT 129 
-#define  NPY_CLONGDOUBLE 128 
- int NPY_DOUBLE ; 
- int NPY_FLOAT ; 
- int NPY_LONGDOUBLE ; 
- scalar_t__ PyArray_BYTES (int /*<<< orphan*/ *) ; 
- TYPE_7__* PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- TYPE_1__* PyArray_DescrFromType (int) ; 
- TYPE_1__* PyArray_DescrNew (TYPE_1__*) ; 
- int /*<<< orphan*/  PyArray_FLAGS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_ISNBO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewFromDescrAndBase (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  Py_DECREF (TYPE_1__*) ; 
- int /*<<< orphan*/  Py_TYPE (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_7__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int type_num; int byteorder; } ;
+struct TYPE_8__ {int elsize; int byteorder; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+
+
+
+ int NPY_DOUBLE ;
+ int NPY_FLOAT ;
+ int NPY_LONGDOUBLE ;
+ scalar_t__ PyArray_BYTES (int *) ;
+ TYPE_7__* PyArray_DESCR (int *) ;
+ int PyArray_DIMS (int *) ;
+ TYPE_1__* PyArray_DescrFromType (int) ;
+ TYPE_1__* PyArray_DescrNew (TYPE_1__*) ;
+ int PyArray_FLAGS (int *) ;
+ int PyArray_ISNBO (int ) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_NewFromDescrAndBase (int ,TYPE_1__*,int ,int ,int ,scalar_t__,int ,int *,int *) ;
+ int PyArray_STRIDES (int *) ;
+ int PyErr_Format (int ,char*,int) ;
+ int PyExc_ValueError ;
+ int Py_DECREF (TYPE_1__*) ;
+ int Py_TYPE (int *) ;
 
 __attribute__((used)) static PyArrayObject *
 _get_part(PyArrayObject *self, int imag)
@@ -49,20 +49,20 @@ _get_part(PyArrayObject *self, int imag)
     int offset;
 
     switch (PyArray_DESCR(self)->type_num) {
-        case NPY_CFLOAT:
+        case 129:
             float_type_num = NPY_FLOAT;
             break;
-        case NPY_CDOUBLE:
+        case 130:
             float_type_num = NPY_DOUBLE;
             break;
-        case NPY_CLONGDOUBLE:
+        case 128:
             float_type_num = NPY_LONGDOUBLE;
             break;
         default:
             PyErr_Format(PyExc_ValueError,
                      "Cannot convert complex type number %d to float",
                      PyArray_DESCR(self)->type_num);
-            return NULL;
+            return ((void*)0);
 
     }
     type = PyArray_DescrFromType(float_type_num);
@@ -84,8 +84,8 @@ _get_part(PyArrayObject *self, int imag)
             PyArray_STRIDES(self),
             PyArray_BYTES(self) + offset,
             PyArray_FLAGS(self), (PyObject *)self, (PyObject *)self);
-    if (ret == NULL) {
-        return NULL;
+    if (ret == ((void*)0)) {
+        return ((void*)0);
     }
     return ret;
 }

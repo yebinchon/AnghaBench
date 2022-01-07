@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  adapter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CH_ERR (int /*<<< orphan*/ *,char*,unsigned int) ; 
- int EIO ; 
- int F_BUSY ; 
- int t3_read_reg (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  t3_write_reg (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+typedef int adapter_t ;
+
+
+ int CH_ERR (int *,char*,unsigned int) ;
+ int EIO ;
+ int F_BUSY ;
+ int t3_read_reg (int *,unsigned int) ;
+ int t3_write_reg (int *,unsigned int,int ) ;
 
 __attribute__((used)) static int wrreg_wait(adapter_t *adapter, unsigned int addr, u32 val)
 {
-	t3_write_reg(adapter,	addr, val);
-	(void) t3_read_reg(adapter, addr);                   /* flush */
-	if (!(t3_read_reg(adapter, addr) & F_BUSY))
-		return 0;
-	CH_ERR(adapter, "write to MC7 register 0x%x timed out\n", addr);
-	return -EIO;
+ t3_write_reg(adapter, addr, val);
+ (void) t3_read_reg(adapter, addr);
+ if (!(t3_read_reg(adapter, addr) & F_BUSY))
+  return 0;
+ CH_ERR(adapter, "write to MC7 register 0x%x timed out\n", addr);
+ return -EIO;
 }

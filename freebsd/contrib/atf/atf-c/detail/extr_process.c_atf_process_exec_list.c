@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_process_stream_t ;
-typedef  int /*<<< orphan*/  atf_process_status_t ;
-typedef  int /*<<< orphan*/  atf_list_t ;
-typedef  int /*<<< orphan*/  atf_fs_path_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRE (int) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_process_exec_array (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char const**,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,void (*) ()) ; 
- scalar_t__ atf_process_stream_type (int /*<<< orphan*/  const*) ; 
- scalar_t__ atf_process_stream_type_capture ; 
- int /*<<< orphan*/  free (char const**) ; 
- int /*<<< orphan*/  list_to_array (int /*<<< orphan*/  const*,char const***) ; 
+
+
+
+typedef int atf_process_stream_t ;
+typedef int atf_process_status_t ;
+typedef int atf_list_t ;
+typedef int atf_fs_path_t ;
+typedef int atf_error_t ;
+
+
+ int PRE (int) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_process_exec_array (int *,int const*,char const**,int const*,int const*,void (*) ()) ;
+ scalar_t__ atf_process_stream_type (int const*) ;
+ scalar_t__ atf_process_stream_type_capture ;
+ int free (char const**) ;
+ int list_to_array (int const*,char const***) ;
 
 atf_error_t
 atf_process_exec_list(atf_process_status_t *s,
@@ -36,12 +36,12 @@ atf_process_exec_list(atf_process_status_t *s,
     atf_error_t err;
     const char **argv2;
 
-    PRE(outsb == NULL ||
+    PRE(outsb == ((void*)0) ||
         atf_process_stream_type(outsb) != atf_process_stream_type_capture);
-    PRE(errsb == NULL ||
+    PRE(errsb == ((void*)0) ||
         atf_process_stream_type(errsb) != atf_process_stream_type_capture);
 
-    argv2 = NULL; /* Silence GCC warning. */
+    argv2 = ((void*)0);
     err = list_to_array(argv, &argv2);
     if (atf_is_error(err))
         goto out;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int color_key_flags; } ;
-struct TYPE_8__ {unsigned int format_flags; int /*<<< orphan*/  bind_count; struct wined3d_format* format; } ;
+struct TYPE_8__ {unsigned int format_flags; int bind_count; struct wined3d_format* format; } ;
 struct wined3d_texture {size_t sampler; scalar_t__ target; TYPE_5__ async; TYPE_2__ resource; } ;
 struct wined3d_gl_info {int dummy; } ;
-struct wined3d_format {int /*<<< orphan*/  color_fixup; } ;
+struct wined3d_format {int color_fixup; } ;
 struct TYPE_10__ {size_t ffp_blend_stages; } ;
 struct wined3d_d3d_info {TYPE_4__ limits; } ;
 struct wined3d_cs_set_texture {size_t stage; struct wined3d_texture* texture; } ;
@@ -28,29 +28,29 @@ struct TYPE_9__ {struct wined3d_texture** textures; } ;
 struct wined3d_cs {TYPE_6__* device; TYPE_3__ state; } ;
 struct TYPE_12__ {TYPE_1__* adapter; } ;
 struct TYPE_7__ {struct wined3d_d3d_info d3d_info; struct wined3d_gl_info gl_info; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int InterlockedIncrement (int /*<<< orphan*/ *) ; 
- unsigned int MAX_COMBINED_SAMPLERS ; 
- int /*<<< orphan*/  STATE_COLOR_KEY ; 
- int /*<<< orphan*/  STATE_RENDER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_SAMPLER (size_t) ; 
- int /*<<< orphan*/  STATE_SHADER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_TEXTURESTAGE (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- unsigned int WINED3DFMT_FLAG_SHADOW ; 
- int WINED3D_CKEY_SRC_BLT ; 
- int /*<<< orphan*/  WINED3D_RS_COLORKEYENABLE ; 
- int /*<<< orphan*/  WINED3D_SHADER_TYPE_PIXEL ; 
- int /*<<< orphan*/  WINED3D_TSS_ALPHA_OP ; 
- int /*<<< orphan*/  WINED3D_TSS_COLOR_OP ; 
- scalar_t__ can_use_texture_swizzle (struct wined3d_gl_info const*,struct wined3d_format const*) ; 
- int /*<<< orphan*/  device_invalidate_state (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_same_fixup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ InterlockedDecrement (int *) ;
+ int InterlockedIncrement (int *) ;
+ unsigned int MAX_COMBINED_SAMPLERS ;
+ int STATE_COLOR_KEY ;
+ int STATE_RENDER (int ) ;
+ int STATE_SAMPLER (size_t) ;
+ int STATE_SHADER (int ) ;
+ int STATE_TEXTURESTAGE (size_t,int ) ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ unsigned int WINED3DFMT_FLAG_SHADOW ;
+ int WINED3D_CKEY_SRC_BLT ;
+ int WINED3D_RS_COLORKEYENABLE ;
+ int WINED3D_SHADER_TYPE_PIXEL ;
+ int WINED3D_TSS_ALPHA_OP ;
+ int WINED3D_TSS_COLOR_OP ;
+ scalar_t__ can_use_texture_swizzle (struct wined3d_gl_info const*,struct wined3d_format const*) ;
+ int device_invalidate_state (TYPE_6__*,int ) ;
+ int is_same_fixup (int ,int ) ;
 
 __attribute__((used)) static void wined3d_cs_exec_set_texture(struct wined3d_cs *cs, const void *data)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static void wined3d_cs_exec_set_texture(struct wined3d_cs 
     if (op->texture)
     {
         const struct wined3d_format *new_format = op->texture->resource.format;
-        const struct wined3d_format *old_format = prev ? prev->resource.format : NULL;
+        const struct wined3d_format *old_format = prev ? prev->resource.format : ((void*)0);
         unsigned int old_fmt_flags = prev ? prev->resource.format_flags : 0;
         unsigned int new_fmt_flags = op->texture->resource.format_flags;
 
@@ -81,9 +81,9 @@ __attribute__((used)) static void wined3d_cs_exec_set_texture(struct wined3d_cs 
 
         if (!prev && op->stage < d3d_info->limits.ffp_blend_stages)
         {
-            /* The source arguments for color and alpha ops have different
-             * meanings when a NULL texture is bound, so the COLOR_OP and
-             * ALPHA_OP have to be dirtified. */
+
+
+
             device_invalidate_state(cs->device, STATE_TEXTURESTAGE(op->stage, WINED3D_TSS_COLOR_OP));
             device_invalidate_state(cs->device, STATE_TEXTURESTAGE(op->stage, WINED3D_TSS_ALPHA_OP));
         }
@@ -98,8 +98,8 @@ __attribute__((used)) static void wined3d_cs_exec_set_texture(struct wined3d_cs 
         {
             unsigned int i;
 
-            /* Search for other stages the texture is bound to. Shouldn't
-             * happen if applications bind textures to a single stage only. */
+
+
             TRACE("Searching for other stages the texture is bound to.\n");
             for (i = 0; i < MAX_COMBINED_SAMPLERS; ++i)
             {

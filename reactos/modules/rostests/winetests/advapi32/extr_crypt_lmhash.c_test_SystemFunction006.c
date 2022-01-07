@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expect ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcmp (char*,unsigned char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,char,char,char,char,char,char,char,char,char,char,char,char,char,char,char,char) ; 
- int /*<<< orphan*/  pSystemFunction006 (char*,char*) ; 
+
+
+
+typedef int expect ;
+
+
+ int memcmp (char*,unsigned char*,int) ;
+ int ok (int,char*,char,char,char,char,char,char,char,char,char,char,char,char,char,char,char,char) ;
+ int pSystemFunction006 (char*,char*) ;
 
 __attribute__((used)) static void test_SystemFunction006(void)
 {
     char lmhash[16 + 1];
 
     char passwd[] = { 's','e','c','r','e','t', 0, 0, 0, 0, 0, 0, 0, 0 };
-    unsigned char expect[] = 
+    unsigned char expect[] =
         { 0x85, 0xf5, 0x28, 0x9f, 0x09, 0xdc, 0xa7, 0xeb,
           0xaa, 0xd3, 0xb4, 0x35, 0xb5, 0x14, 0x04, 0xee };
 

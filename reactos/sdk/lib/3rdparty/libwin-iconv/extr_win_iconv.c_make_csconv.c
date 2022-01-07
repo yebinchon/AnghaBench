@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int flags; int codepage; int /*<<< orphan*/ * compat; int /*<<< orphan*/ * mblen; void* wctomb; void* mbtowc; int /*<<< orphan*/ * flush; scalar_t__ mode; } ;
-typedef  TYPE_1__ csconv_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int flags; int codepage; int * compat; int * mblen; void* wctomb; void* mbtowc; int * flush; scalar_t__ mode; } ;
+typedef TYPE_1__ csconv_t ;
 struct TYPE_6__ {int MaxCharSize; } ;
-typedef  TYPE_2__ CPINFO ;
+typedef TYPE_2__ CPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int FALSE ; 
- int FLAG_IGNORE ; 
- int FLAG_TRANSLIT ; 
- int FLAG_USE_BOM ; 
- scalar_t__ GetCPInfo (int,TYPE_2__*) ; 
- scalar_t__ IsValidCodePage (int) ; 
- int TRUE ; 
- scalar_t__ _stricmp (char*,char*) ; 
- int /*<<< orphan*/ * cp20932_compat ; 
- int /*<<< orphan*/ * cp5022x_compat ; 
- int /*<<< orphan*/ * cp51932_compat ; 
- int /*<<< orphan*/ * cp932_compat ; 
- int /*<<< orphan*/ * dbcs_mblen ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * eucjp_mblen ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * iso2022jp_flush ; 
- void* iso2022jp_mbtowc ; 
- void* iso2022jp_wctomb ; 
- void* kernel_mbtowc ; 
- void* kernel_wctomb ; 
- scalar_t__ load_mlang () ; 
- int /*<<< orphan*/ * mbcs_mblen ; 
- void* mlang_mbtowc ; 
- void* mlang_wctomb ; 
- int name_to_codepage (char*) ; 
- int /*<<< orphan*/ * sbcs_mblen ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- char* strrstr (char*,char*) ; 
- void* utf16_mbtowc ; 
- void* utf16_wctomb ; 
- void* utf32_mbtowc ; 
- void* utf32_wctomb ; 
- int /*<<< orphan*/ * utf8_mblen ; 
- char* xstrndup (char const*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int FALSE ;
+ int FLAG_IGNORE ;
+ int FLAG_TRANSLIT ;
+ int FLAG_USE_BOM ;
+ scalar_t__ GetCPInfo (int,TYPE_2__*) ;
+ scalar_t__ IsValidCodePage (int) ;
+ int TRUE ;
+ scalar_t__ _stricmp (char*,char*) ;
+ int * cp20932_compat ;
+ int * cp5022x_compat ;
+ int * cp51932_compat ;
+ int * cp932_compat ;
+ int * dbcs_mblen ;
+ int errno ;
+ int * eucjp_mblen ;
+ int free (char*) ;
+ int * iso2022jp_flush ;
+ void* iso2022jp_mbtowc ;
+ void* iso2022jp_wctomb ;
+ void* kernel_mbtowc ;
+ void* kernel_wctomb ;
+ scalar_t__ load_mlang () ;
+ int * mbcs_mblen ;
+ void* mlang_mbtowc ;
+ void* mlang_wctomb ;
+ int name_to_codepage (char*) ;
+ int * sbcs_mblen ;
+ int strlen (char const*) ;
+ char* strrstr (char*,char*) ;
+ void* utf16_mbtowc ;
+ void* utf16_wctomb ;
+ void* utf32_mbtowc ;
+ void* utf32_wctomb ;
+ int * utf8_mblen ;
+ char* xstrndup (char const*,int ) ;
 
 __attribute__((used)) static int
 make_csconv(const char *_name, csconv_t *cv)
@@ -65,11 +65,11 @@ make_csconv(const char *_name, csconv_t *cv)
     char *p;
 
     name = xstrndup(_name, strlen(_name));
-    if (name == NULL)
+    if (name == ((void*)0))
         return FALSE;
 
-    /* check for option "enc_name//opt1//opt2" */
-    while ((p = strrstr(name, "//")) != NULL)
+
+    while ((p = strrstr(name, "//")) != ((void*)0))
     {
         if (_stricmp(p + 2, "nocompat") == 0)
             use_compat = FALSE;
@@ -82,9 +82,9 @@ make_csconv(const char *_name, csconv_t *cv)
 
     cv->mode = 0;
     cv->flags = flag;
-    cv->mblen = NULL;
-    cv->flush = NULL;
-    cv->compat = NULL;
+    cv->mblen = ((void*)0);
+    cv->flush = ((void*)0);
+    cv->compat = ((void*)0);
     cv->codepage = name_to_codepage(name);
     if (cv->codepage == 1200 || cv->codepage == 1201)
     {
@@ -121,7 +121,7 @@ make_csconv(const char *_name, csconv_t *cv)
         cv->mblen = eucjp_mblen;
     }
     else if (IsValidCodePage(cv->codepage)
-	     && GetCPInfo(cv->codepage, &cpinfo) != 0)
+      && GetCPInfo(cv->codepage, &cpinfo) != 0)
     {
         cv->mbtowc = kernel_mbtowc;
         cv->wctomb = kernel_wctomb;
@@ -130,11 +130,11 @@ make_csconv(const char *_name, csconv_t *cv)
         else if (cpinfo.MaxCharSize == 2)
             cv->mblen = dbcs_mblen;
         else
-	    cv->mblen = mbcs_mblen;
+     cv->mblen = mbcs_mblen;
     }
     else
     {
-        /* not supported */
+
         free(name);
         errno = EINVAL;
         return FALSE;

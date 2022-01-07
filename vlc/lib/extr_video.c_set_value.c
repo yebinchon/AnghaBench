@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-struct TYPE_6__ {int /*<<< orphan*/  psz_string; int /*<<< orphan*/  i_int; } ;
-typedef  TYPE_1__ vlc_value_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
+struct TYPE_6__ {int psz_string; int i_int; } ;
+typedef TYPE_1__ vlc_value_t ;
 struct TYPE_7__ {int type; char* name; } ;
-typedef  TYPE_2__ opt_t ;
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
+typedef TYPE_2__ opt_t ;
+typedef int libvlc_media_player_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ ** GetVouts (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  VLC_OBJECT (int /*<<< orphan*/ *) ; 
- int VLC_SUCCESS ; 
-#define  VLC_VAR_FLOAT 130 
-#define  VLC_VAR_INTEGER 129 
-#define  VLC_VAR_STRING 128 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int get_filter_str (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_printerr (char*,char const*) ; 
- int /*<<< orphan*/  var_SetChecked (int /*<<< orphan*/ *,char const*,int,TYPE_1__) ; 
- int /*<<< orphan*/  var_TriggerCallback (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vout_Release (int /*<<< orphan*/ *) ; 
+
+ int ** GetVouts (int *,size_t*) ;
+ int VLC_OBJECT (int *) ;
+ int VLC_SUCCESS ;
+
+
+
+ int free (int ) ;
+ int get_filter_str (int ,char*,int ,char const**,int *) ;
+ int libvlc_printerr (char*,char const*) ;
+ int var_SetChecked (int *,char const*,int,TYPE_1__) ;
+ int var_TriggerCallback (int *,char*) ;
+ int vout_Release (int *) ;
 
 __attribute__((used)) static void
 set_value( libvlc_media_player_t *p_mi, const char *restrict name,
@@ -45,18 +45,18 @@ set_value( libvlc_media_player_t *p_mi, const char *restrict name,
     const char *psz_opt_name = opt->name;
     switch( i_type )
     {
-        case 0: /* the enabler */
+        case 0:
         {
             int i_ret = get_filter_str( VLC_OBJECT( p_mi ), opt->name, val->i_int,
                                         &psz_opt_name, &new_val.psz_string );
             if( i_ret != VLC_SUCCESS )
                 return;
-            i_type = VLC_VAR_STRING;
+            i_type = 128;
             break;
         }
-        case VLC_VAR_INTEGER:
-        case VLC_VAR_FLOAT:
-        case VLC_VAR_STRING:
+        case 129:
+        case 130:
+        case 128:
             if( i_expected_type != opt->type )
             {
                 libvlc_printerr( "Invalid argument to %s", name );
@@ -68,11 +68,11 @@ set_value( libvlc_media_player_t *p_mi, const char *restrict name,
             return;
     }
 
-    /* Set the new value to the media player. Next vouts created from this
-     * media player will inherit this new value */
+
+
     var_SetChecked( p_mi, psz_opt_name, i_type, new_val );
 
-    /* Set the new value to every loaded vouts */
+
     size_t i_vout_count;
     vout_thread_t **pp_vouts = GetVouts( p_mi, &i_vout_count );
     for( size_t i = 0; i < i_vout_count; ++i )

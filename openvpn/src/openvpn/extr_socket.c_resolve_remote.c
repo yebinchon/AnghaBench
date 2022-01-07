@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {TYPE_1__* lsa; int /*<<< orphan*/  af; int /*<<< orphan*/  proto; } ;
-struct link_socket {int resolve_retry_seconds; TYPE_2__ info; int /*<<< orphan*/  remote_port; scalar_t__ remote_host; int /*<<< orphan*/  dns_cache; int /*<<< orphan*/  sockflags; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {TYPE_1__* lsa; int af; int proto; } ;
+struct link_socket {int resolve_retry_seconds; TYPE_2__ info; int remote_port; scalar_t__ remote_host; int dns_cache; int sockflags; } ;
 struct gc_arena {int dummy; } ;
 struct addrinfo {int dummy; } ;
-struct TYPE_3__ {struct addrinfo* current_remote; int /*<<< orphan*/  actual; struct addrinfo* remote_list; } ;
+struct TYPE_3__ {struct addrinfo* current_remote; int actual; struct addrinfo* remote_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D_SOCKET_DEBUG ; 
- unsigned int GETADDR_DATAGRAM ; 
- unsigned int GETADDR_FATAL ; 
- unsigned int GETADDR_MENTION_RESOLVE_RETRY ; 
- int GETADDR_RESOLVE ; 
- unsigned int GETADDR_TRY_ONCE ; 
- int GETADDR_UPDATE_MANAGEMENT_STATE ; 
- int /*<<< orphan*/  M_INFO ; 
- int RESOLV_RETRY_INFINITE ; 
- int SIGUSR1 ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,unsigned int,int,int,int volatile,int) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int get_cached_dns_entry (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,struct addrinfo**) ; 
- scalar_t__ link_socket_actual_defined (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int openvpn_getaddrinfo (unsigned int,scalar_t__,int /*<<< orphan*/ ,int,int volatile*,int /*<<< orphan*/ ,struct addrinfo**) ; 
- int /*<<< orphan*/  print_link_socket_actual (int /*<<< orphan*/ *,struct gc_arena*) ; 
- scalar_t__ proto_is_dgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_actual_address (int /*<<< orphan*/ *,struct addrinfo*) ; 
- unsigned int sf2gaf (int,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int ) ;
+ int CLEAR (int ) ;
+ int D_SOCKET_DEBUG ;
+ unsigned int GETADDR_DATAGRAM ;
+ unsigned int GETADDR_FATAL ;
+ unsigned int GETADDR_MENTION_RESOLVE_RETRY ;
+ int GETADDR_RESOLVE ;
+ unsigned int GETADDR_TRY_ONCE ;
+ int GETADDR_UPDATE_MANAGEMENT_STATE ;
+ int M_INFO ;
+ int RESOLV_RETRY_INFINITE ;
+ int SIGUSR1 ;
+ int dmsg (int ,char*,unsigned int,int,int,int volatile,int) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int get_cached_dns_entry (int ,scalar_t__,int ,int ,unsigned int,struct addrinfo**) ;
+ scalar_t__ link_socket_actual_defined (int *) ;
+ int msg (int ,char*,int ) ;
+ int openvpn_getaddrinfo (unsigned int,scalar_t__,int ,int,int volatile*,int ,struct addrinfo**) ;
+ int print_link_socket_actual (int *,struct gc_arena*) ;
+ scalar_t__ proto_is_dgram (int ) ;
+ int set_actual_address (int *,struct addrinfo*) ;
+ unsigned int sf2gaf (int,int ) ;
 
 __attribute__((used)) static void
 resolve_remote(struct link_socket *sock,
@@ -51,7 +51,7 @@ resolve_remote(struct link_socket *sock,
 {
     struct gc_arena gc = gc_new();
 
-    /* resolve remote address if undefined */
+
     if (!sock->info.lsa->remote_list)
     {
         if (sock->remote_host)
@@ -144,14 +144,14 @@ resolve_remote(struct link_socket *sock,
         }
     }
 
-    /* should we re-use previous active remote address? */
+
     if (link_socket_actual_defined(&sock->info.lsa->actual))
     {
         msg(M_INFO, "TCP/UDP: Preserving recently used remote address: %s",
             print_link_socket_actual(&sock->info.lsa->actual, &gc));
         if (remote_dynamic)
         {
-            *remote_dynamic = NULL;
+            *remote_dynamic = ((void*)0);
         }
     }
     else

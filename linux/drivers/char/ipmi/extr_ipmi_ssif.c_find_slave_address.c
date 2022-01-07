@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i2c_client {int /*<<< orphan*/  addr; int /*<<< orphan*/  adapter; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SI_TYPE_INVALID ; 
- int /*<<< orphan*/  i2c_adapter_id (int /*<<< orphan*/ ) ; 
- int ipmi_dmi_get_slave_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct i2c_client {int addr; int adapter; } ;
+
+
+ int SI_TYPE_INVALID ;
+ int i2c_adapter_id (int ) ;
+ int ipmi_dmi_get_slave_addr (int ,int ,int ) ;
 
 __attribute__((used)) static int find_slave_address(struct i2c_client *client, int slave_addr)
 {
-#ifdef CONFIG_IPMI_DMI_DECODE
-	if (!slave_addr)
-		slave_addr = ipmi_dmi_get_slave_addr(
-			SI_TYPE_INVALID,
-			i2c_adapter_id(client->adapter),
-			client->addr);
-#endif
-
-	return slave_addr;
+ return slave_addr;
 }

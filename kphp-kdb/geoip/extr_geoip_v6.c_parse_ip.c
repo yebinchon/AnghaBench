@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ipv6 {int* data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- char* buff ; 
- size_t parse_pos ; 
+
+ int assert (int) ;
+ char* buff ;
+ size_t parse_pos ;
 
 struct ipv6 parse_ip (void) {
   if (buff[parse_pos] == ',') {
@@ -44,7 +44,7 @@ struct ipv6 parse_ip (void) {
     }
     parse_pos ++;
   }
-  //assert (p == 7);
+
   assert (buff[parse_pos ++] == '"');
   assert (!buff[parse_pos] || buff[parse_pos] == ',' || buff[parse_pos] == 10 || buff[parse_pos] == 13);
   return a;

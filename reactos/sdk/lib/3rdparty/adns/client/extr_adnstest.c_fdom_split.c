@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  quitnow (int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strchr (char*,char) ; 
- int strtoul (char const*,char**,int /*<<< orphan*/ ) ; 
+ int fputs (char*,int ) ;
+ int quitnow (int) ;
+ int stderr ;
+ scalar_t__ strchr (char*,char) ;
+ int strtoul (char const*,char**,int ) ;
 
 __attribute__((used)) static void fdom_split(const char *fdom, const char **dom_r, int *qf_r,
-		       char *ownflags, int ownflags_l) {
+         char *ownflags, int ownflags_l) {
   int qf;
   char *ep;
 

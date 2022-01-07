@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * Data4; int /*<<< orphan*/  Data3; int /*<<< orphan*/  Data2; int /*<<< orphan*/  Data1; } ;
-typedef  TYPE_1__ vlc_guid_t ;
-typedef  int /*<<< orphan*/  bo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bo_add_u8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bo_addle_u16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bo_addle_u32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * Data4; int Data3; int Data2; int Data1; } ;
+typedef TYPE_1__ vlc_guid_t ;
+typedef int bo_t ;
+
+
+ int bo_add_u8 (int *,int ) ;
+ int bo_addle_u16 (int *,int ) ;
+ int bo_addle_u32 (int *,int ) ;
 
 __attribute__((used)) static void bo_add_guid( bo_t *p_bo, const vlc_guid_t *id )
 {

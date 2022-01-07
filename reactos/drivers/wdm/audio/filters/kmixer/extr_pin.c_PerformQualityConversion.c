@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int* PVOID ;
-typedef  int* PUSHORT ;
-typedef  int* PULONG ;
-typedef  int* PUCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int,int) ; 
- void* ExAllocatePool (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int _byteswap_ulong (int) ; 
- int _byteswap_ushort (int) ; 
+
+
+
+typedef int USHORT ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef int* PVOID ;
+typedef int* PUSHORT ;
+typedef int* PULONG ;
+typedef int* PUCHAR ;
+typedef int NTSTATUS ;
+
+
+ int ASSERT (int) ;
+ int DPRINT1 (char*,int,int) ;
+ void* ExAllocatePool (int ,int) ;
+ int NonPagedPool ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_NOT_IMPLEMENTED ;
+ int STATUS_SUCCESS ;
+ int _byteswap_ulong (int) ;
+ int _byteswap_ushort (int) ;
 
 NTSTATUS
 PerformQualityConversion(
@@ -45,7 +45,7 @@ PerformQualityConversion(
     ASSERT(OldWidth != NewWidth);
 
     Samples = BufferLength / (OldWidth / 8);
-    //DPRINT("Samples %u BufferLength %u\n", Samples, BufferLength);
+
 
     if (OldWidth == 8 && NewWidth == 16)
     {
@@ -58,9 +58,9 @@ PerformQualityConversion(
           {
               Sample = Buffer[Index];
               Sample *= 2;
-#ifdef _X86_
-              Sample = _byteswap_ushort(Sample);
-#endif
+
+
+
               BufferOut[Index] = Sample;
           }
           *Result = BufferOut;
@@ -77,9 +77,9 @@ PerformQualityConversion(
           {
               Sample = Buffer[Index];
               Sample *= 16777216;
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               BufferOut[Index] = Sample;
           }
           *Result = BufferOut;
@@ -97,9 +97,9 @@ PerformQualityConversion(
           {
               Sample = BufferIn[Index];
               Sample *= 65536;
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               BufferOut[Index] = Sample;
           }
           *Result = BufferOut;
@@ -117,9 +117,9 @@ PerformQualityConversion(
           for(Index = 0; Index < Samples; Index++)
           {
               Sample = BufferIn[Index];
-#ifdef _X86_
-              Sample = _byteswap_ushort(Sample);
-#endif
+
+
+
               Sample /= 256;
               BufferOut[Index] = (Sample & 0xFF);
           }
@@ -137,9 +137,9 @@ PerformQualityConversion(
           for(Index = 0; Index < Samples; Index++)
           {
               Sample = BufferIn[Index];
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               Sample /= 16777216;
               BufferOut[Index] = (Sample & 0xFF);
           }
@@ -157,9 +157,9 @@ PerformQualityConversion(
           for(Index = 0; Index < Samples; Index++)
           {
               Sample = BufferIn[Index];
-#ifdef _X86_
-              Sample = _byteswap_ulong(Sample);
-#endif
+
+
+
               Sample /= 65536;
               BufferOut[Index] = (Sample & 0xFFFF);
           }

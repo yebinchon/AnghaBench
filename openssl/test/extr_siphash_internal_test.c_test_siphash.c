@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  in ;
-struct TYPE_11__ {int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int key ;
+typedef int in ;
+struct TYPE_11__ {int member_0; } ;
 struct TYPE_9__ {unsigned char* data; size_t size; } ;
 struct TYPE_10__ {size_t idx; TYPE_1__ expected; } ;
-typedef  TYPE_2__ TESTDATA ;
-typedef  TYPE_3__ SIPHASH ;
+typedef TYPE_2__ TESTDATA ;
+typedef TYPE_3__ SIPHASH ;
 
-/* Variables and functions */
- int SIPHASH_KEY_SIZE ; 
- int SIPHASH_MAX_DIGEST_SIZE ; 
- size_t SIPHASH_MIN_DIGEST_SIZE ; 
- int /*<<< orphan*/  SipHash_Final (TYPE_3__*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  SipHash_Init (TYPE_3__*,unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SipHash_Update (TYPE_3__*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  SipHash_set_hash_size (TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  TEST_info (char*,int,...) ; 
- int /*<<< orphan*/  TEST_int_le (size_t,int) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,size_t,unsigned char*,size_t) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- TYPE_2__* tests ; 
+
+ int SIPHASH_KEY_SIZE ;
+ int SIPHASH_MAX_DIGEST_SIZE ;
+ size_t SIPHASH_MIN_DIGEST_SIZE ;
+ int SipHash_Final (TYPE_3__*,unsigned char*,size_t) ;
+ int SipHash_Init (TYPE_3__*,unsigned char*,int ,int ) ;
+ int SipHash_Update (TYPE_3__*,unsigned char*,size_t) ;
+ int SipHash_set_hash_size (TYPE_3__*,size_t) ;
+ int TEST_info (char*,int,...) ;
+ int TEST_int_le (size_t,int) ;
+ int TEST_mem_eq (unsigned char*,size_t,unsigned char*,size_t) ;
+ int TEST_true (int ) ;
+ TYPE_2__* tests ;
 
 __attribute__((used)) static int test_siphash(int idx)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static int test_siphash(int idx)
     if (!TEST_int_le(inlen, sizeof(in)))
         return 0;
 
-    /* key and in data are 00 01 02 ... */
+
     for (i = 0; i < sizeof(key); i++)
         key[i] = (unsigned char)i;
 

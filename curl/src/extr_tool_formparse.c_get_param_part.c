@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct curl_slist {char* data; } ;
 struct OperationConfig {TYPE_1__* global; } ;
-struct TYPE_2__ {int /*<<< orphan*/  errors; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_2__ {int errors; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FOPEN_READTEXT ; 
- scalar_t__ ISSPACE (char) ; 
- scalar_t__ checkprefix (char*,char*) ; 
- int /*<<< orphan*/  curl_slist_free_all (struct curl_slist*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- char* get_param_word (char**,char**,char) ; 
- int read_field_headers (struct OperationConfig*,char*,int /*<<< orphan*/ *,struct curl_slist**) ; 
- scalar_t__ slist_append (struct curl_slist**,char*) ; 
- int sscanf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  warnf (TYPE_1__*,char*,...) ; 
+
+ int FOPEN_READTEXT ;
+ scalar_t__ ISSPACE (char) ;
+ scalar_t__ checkprefix (char*,char*) ;
+ int curl_slist_free_all (struct curl_slist*) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char*,int ) ;
+ int fprintf (int ,char*) ;
+ char* get_param_word (char**,char**,char) ;
+ int read_field_headers (struct OperationConfig*,char*,int *,struct curl_slist**) ;
+ scalar_t__ slist_append (struct curl_slist**,char*) ;
+ int sscanf (char*,char*,char*,char*) ;
+ int strerror (int ) ;
+ int strlen (char*) ;
+ int warnf (TYPE_1__*,char*,...) ;
 
 __attribute__((used)) static int get_param_part(struct OperationConfig *config, char endchar,
                           char **str, char **pdata, char **ptype,
@@ -39,30 +39,30 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
                           struct curl_slist **pheaders)
 {
   char *p = *str;
-  char *type = NULL;
-  char *filename = NULL;
-  char *encoder = NULL;
+  char *type = ((void*)0);
+  char *filename = ((void*)0);
+  char *encoder = ((void*)0);
   char *endpos;
   char *tp;
   char sep;
   char type_major[128] = "";
   char type_minor[128] = "";
-  char *endct = NULL;
-  struct curl_slist *headers = NULL;
+  char *endct = ((void*)0);
+  struct curl_slist *headers = ((void*)0);
 
   if(ptype)
-    *ptype = NULL;
+    *ptype = ((void*)0);
   if(pfilename)
-    *pfilename = NULL;
+    *pfilename = ((void*)0);
   if(pheaders)
-    *pheaders = NULL;
+    *pheaders = ((void*)0);
   if(pencoder)
-    *pencoder = NULL;
+    *pencoder = ((void*)0);
   while(ISSPACE(*p))
     p++;
   tp = p;
   *pdata = get_param_word(&p, &endpos, endchar);
-  /* If not quoted, strip trailing spaces. */
+
   if(*pdata == tp)
     while(endpos > *pdata && ISSPACE(endpos[-1]))
       endpos--;
@@ -75,17 +75,17 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
     if(!endct && checkprefix("type=", p)) {
       for(p += 5; ISSPACE(*p); p++)
         ;
-      /* set type pointer */
+
       type = p;
 
-      /* verify that this is a fine type specifier */
+
       if(2 != sscanf(type, "%127[^/ ]/%127[^;, \n]", type_major, type_minor)) {
         warnf(config->global, "Illegally formatted content-type field!\n");
         curl_slist_free_all(headers);
-        return -1; /* illegal content-type syntax! */
+        return -1;
       }
 
-      /* now point beyond the content-type specifier */
+
       p = type + strlen(type_major) + strlen(type_minor) + 1;
       for(endct = p; *p && *p != ';' && *p != endchar; p++)
         if(!ISSPACE(*p))
@@ -95,13 +95,13 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
     else if(checkprefix("filename=", p)) {
       if(endct) {
         *endct = '\0';
-        endct = NULL;
+        endct = ((void*)0);
       }
       for(p += 9; ISSPACE(*p); p++)
         ;
       tp = p;
       filename = get_param_word(&p, &endpos, endchar);
-      /* If not quoted, strip trailing spaces. */
+
       if(filename == tp)
         while(endpos > filename && ISSPACE(endpos[-1]))
           endpos--;
@@ -111,20 +111,20 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
     else if(checkprefix("headers=", p)) {
       if(endct) {
         *endct = '\0';
-        endct = NULL;
+        endct = ((void*)0);
       }
       p += 8;
       if(*p == '@' || *p == '<') {
         char *hdrfile;
         FILE *fp;
-        /* Read headers from a file. */
+
 
         do {
           p++;
         } while(ISSPACE(*p));
         tp = p;
         hdrfile = get_param_word(&p, &endpos, endchar);
-        /* If not quoted, strip trailing spaces. */
+
         if(hdrfile == tp)
           while(endpos > hdrfile && ISSPACE(endpos[-1]))
             endpos--;
@@ -151,7 +151,7 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
           p++;
         tp = p;
         hdr = get_param_word(&p, &endpos, endchar);
-        /* If not quoted, strip trailing spaces. */
+
         if(hdr == tp)
           while(endpos > hdr && ISSPACE(endpos[-1]))
             endpos--;
@@ -167,13 +167,13 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
     else if(checkprefix("encoder=", p)) {
       if(endct) {
         *endct = '\0';
-        endct = NULL;
+        endct = ((void*)0);
       }
       for(p += 8; ISSPACE(*p); p++)
         ;
       tp = p;
       encoder = get_param_word(&p, &endpos, endchar);
-      /* If not quoted, strip trailing spaces. */
+
       if(encoder == tp)
         while(endpos > encoder && ISSPACE(endpos[-1]))
           endpos--;
@@ -181,14 +181,14 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
       *endpos = '\0';
     }
     else if(endct) {
-      /* This is part of content type. */
+
       for(endct = p; *p && *p != ';' && *p != endchar; p++)
         if(!ISSPACE(*p))
           endct = p + 1;
       sep = *p;
     }
     else {
-      /* unknown prefix, skip to next block */
+
       char *unknown = get_param_word(&p, &endpos, endchar);
 
       sep = *p;
@@ -198,7 +198,7 @@ __attribute__((used)) static int get_param_part(struct OperationConfig *config, 
     }
   }
 
-  /* Terminate content type. */
+
   if(endct)
     *endct = '\0';
 

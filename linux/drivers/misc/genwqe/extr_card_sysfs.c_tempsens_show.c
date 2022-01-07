@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct genwqe_dev {int dummy; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IO_SLU_TEMPERATURE_SENSOR ; 
- int /*<<< orphan*/  __genwqe_readq (struct genwqe_dev*,int /*<<< orphan*/ ) ; 
- struct genwqe_dev* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int IO_SLU_TEMPERATURE_SENSOR ;
+ int __genwqe_readq (struct genwqe_dev*,int ) ;
+ struct genwqe_dev* dev_get_drvdata (struct device*) ;
+ int sprintf (char*,char*,int ) ;
 
 __attribute__((used)) static ssize_t tempsens_show(struct device *dev, struct device_attribute *attr,
-			     char *buf)
+        char *buf)
 {
-	u64 tempsens;
-	struct genwqe_dev *cd = dev_get_drvdata(dev);
+ u64 tempsens;
+ struct genwqe_dev *cd = dev_get_drvdata(dev);
 
-	tempsens = __genwqe_readq(cd, IO_SLU_TEMPERATURE_SENSOR);
-	return sprintf(buf, "%016llx\n", tempsens);
+ tempsens = __genwqe_readq(cd, IO_SLU_TEMPERATURE_SENSOR);
+ return sprintf(buf, "%016llx\n", tempsens);
 }

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct wpabuf {int dummy; } ;
 
-/* Variables and functions */
- int EAP_TLV_VENDOR_SPECIFIC_TLV ; 
- scalar_t__ EAP_VENDOR_MICROSOFT ; 
- int /*<<< orphan*/  MSG_DEBUG ; 
- int WPA_GET_BE16 (int /*<<< orphan*/  const*) ; 
- scalar_t__ WPA_GET_BE32 (int /*<<< orphan*/  const*) ; 
- struct wpabuf* tncc_build_soh (int) ; 
- int /*<<< orphan*/  wpa_hexdump (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*) ; 
+
+ int EAP_TLV_VENDOR_SPECIFIC_TLV ;
+ scalar_t__ EAP_VENDOR_MICROSOFT ;
+ int MSG_DEBUG ;
+ int WPA_GET_BE16 (int const*) ;
+ scalar_t__ WPA_GET_BE32 (int const*) ;
+ struct wpabuf* tncc_build_soh (int) ;
+ int wpa_hexdump (int ,char*,int const*,size_t) ;
+ int wpa_printf (int ,char*) ;
 
 struct wpabuf * tncc_process_soh_request(int ver, const u8 *data, size_t len)
 {
-	const u8 *pos;
+ const u8 *pos;
 
-	wpa_hexdump(MSG_DEBUG, "TNC: SoH Request", data, len);
+ wpa_hexdump(MSG_DEBUG, "TNC: SoH Request", data, len);
 
-	if (len < 12)
-		return NULL;
+ if (len < 12)
+  return ((void*)0);
 
-	/* SoH Request */
-	pos = data;
 
-	/* TLV Type */
-	if (WPA_GET_BE16(pos) != EAP_TLV_VENDOR_SPECIFIC_TLV)
-		return NULL;
-	pos += 2;
+ pos = data;
 
-	/* Length */
-	if (WPA_GET_BE16(pos) < 8)
-		return NULL;
-	pos += 2;
 
-	/* Vendor_Id */
-	if (WPA_GET_BE32(pos) != EAP_VENDOR_MICROSOFT)
-		return NULL;
-	pos += 4;
+ if (WPA_GET_BE16(pos) != EAP_TLV_VENDOR_SPECIFIC_TLV)
+  return ((void*)0);
+ pos += 2;
 
-	/* TLV Type */
-	if (WPA_GET_BE16(pos) != 0x02 /* SoH request TLV */)
-		return NULL;
 
-	wpa_printf(MSG_DEBUG, "TNC: SoH Request TLV received");
+ if (WPA_GET_BE16(pos) < 8)
+  return ((void*)0);
+ pos += 2;
 
-	return tncc_build_soh(2);
+
+ if (WPA_GET_BE32(pos) != EAP_VENDOR_MICROSOFT)
+  return ((void*)0);
+ pos += 4;
+
+
+ if (WPA_GET_BE16(pos) != 0x02 )
+  return ((void*)0);
+
+ wpa_printf(MSG_DEBUG, "TNC: SoH Request TLV received");
+
+ return tncc_build_soh(2);
 }

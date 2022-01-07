@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PNTFS_VCB ;
-typedef  int /*<<< orphan*/ * PNTFS_FCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NtfsGrabFCBFromTable (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * NtfsMakeRootFCB (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PNTFS_VCB ;
+typedef int * PNTFS_FCB ;
+
+
+ int * NtfsGrabFCBFromTable (int ,char*) ;
+ int * NtfsMakeRootFCB (int ) ;
 
 PNTFS_FCB
 NtfsOpenRootFCB(PNTFS_VCB Vcb)
@@ -23,7 +23,7 @@ NtfsOpenRootFCB(PNTFS_VCB Vcb)
     PNTFS_FCB Fcb;
 
     Fcb = NtfsGrabFCBFromTable(Vcb, L"\\");
-    if (Fcb == NULL)
+    if (Fcb == ((void*)0))
     {
         Fcb = NtfsMakeRootFCB(Vcb);
     }

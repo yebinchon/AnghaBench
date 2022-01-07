@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct run_h_tc_data {char const* member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  int /*<<< orphan*/  atf_tc_t ;
-typedef  int /*<<< orphan*/  atf_process_stream_t ;
-typedef  int /*<<< orphan*/  atf_process_status_t ;
-typedef  int /*<<< orphan*/  atf_process_child_t ;
-typedef  int /*<<< orphan*/  atf_fs_path_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_fs_path_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_init_fmt (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  atf_process_child_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_process_fork (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct run_h_tc_data*) ; 
- int /*<<< orphan*/  atf_process_status_exited (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_process_status_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_process_stream_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_process_stream_init_redirect_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  run_h_tc_child ; 
+
+
+
+struct run_h_tc_data {char const* member_1; int * member_0; } ;
+typedef int atf_tc_t ;
+typedef int atf_process_stream_t ;
+typedef int atf_process_status_t ;
+typedef int atf_process_child_t ;
+typedef int atf_fs_path_t ;
+
+
+ int ATF_CHECK (int ) ;
+ int RE (int ) ;
+ int atf_fs_path_fini (int *) ;
+ int atf_fs_path_init_fmt (int *,char const*) ;
+ int atf_process_child_wait (int *,int *) ;
+ int atf_process_fork (int *,int ,int *,int *,struct run_h_tc_data*) ;
+ int atf_process_status_exited (int *) ;
+ int atf_process_status_fini (int *) ;
+ int atf_process_stream_fini (int *) ;
+ int atf_process_stream_init_redirect_path (int *,int *) ;
+ int run_h_tc_child ;
 
 void
 run_h_tc(atf_tc_t *tc, const char *outname, const char *errname,

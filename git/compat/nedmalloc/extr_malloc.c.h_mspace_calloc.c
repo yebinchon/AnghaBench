@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mstate ;
-typedef  int /*<<< orphan*/  mspace ;
 
-/* Variables and functions */
- size_t MAX_SIZE_T ; 
- int /*<<< orphan*/  USAGE_ERROR_ACTION (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ calloc_must_clear (int /*<<< orphan*/ ) ; 
- void* internal_malloc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  mem2chunk (void*) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ok_magic (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mstate ;
+typedef int mspace ;
+
+
+ size_t MAX_SIZE_T ;
+ int USAGE_ERROR_ACTION (int ,int ) ;
+ scalar_t__ calloc_must_clear (int ) ;
+ void* internal_malloc (int ,size_t) ;
+ int mem2chunk (void*) ;
+ int memset (void*,int ,size_t) ;
+ int ok_magic (int ) ;
 
 void* mspace_calloc(mspace msp, size_t n_elements, size_t elem_size) {
   void* mem;
@@ -33,8 +33,8 @@ void* mspace_calloc(mspace msp, size_t n_elements, size_t elem_size) {
   if (n_elements != 0) {
     req = n_elements * elem_size;
     if (((n_elements | elem_size) & ~(size_t)0xffff) &&
-	(req / n_elements != elem_size))
-      req = MAX_SIZE_T; /* force downstream failure on overflow */
+ (req / n_elements != elem_size))
+      req = MAX_SIZE_T;
   }
   mem = internal_malloc(ms, req);
   if (mem != 0 && calloc_must_clear(mem2chunk(mem)))

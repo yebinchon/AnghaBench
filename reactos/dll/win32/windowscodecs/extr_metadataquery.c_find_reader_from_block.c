@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  IWICMetadataReader ;
-typedef  int /*<<< orphan*/  IWICMetadataBlockReader ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- scalar_t__ IWICMetadataBlockReader_GetCount (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IWICMetadataBlockReader_GetReaderByIndex (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- scalar_t__ IWICMetadataReader_GetMetadataFormat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICMetadataReader_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- scalar_t__ WINCODEC_ERR_PROPERTYNOTFOUND ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int IWICMetadataReader ;
+typedef int IWICMetadataBlockReader ;
+typedef scalar_t__ HRESULT ;
+typedef int GUID ;
+
+
+ scalar_t__ IWICMetadataBlockReader_GetCount (int *,scalar_t__*) ;
+ scalar_t__ IWICMetadataBlockReader_GetReaderByIndex (int *,scalar_t__,int **) ;
+ scalar_t__ IWICMetadataReader_GetMetadataFormat (int *,int *) ;
+ int IWICMetadataReader_Release (int *) ;
+ scalar_t__ IsEqualGUID (int *,int *) ;
+ scalar_t__ S_OK ;
+ scalar_t__ WINCODEC_ERR_PROPERTYNOTFOUND ;
 
 __attribute__((used)) static HRESULT find_reader_from_block(IWICMetadataBlockReader *block_reader, UINT index,
                                       GUID *guid, IWICMetadataReader **reader)
@@ -33,7 +33,7 @@ __attribute__((used)) static HRESULT find_reader_from_block(IWICMetadataBlockRea
     IWICMetadataReader *new_reader;
     UINT count, i, matched_index;
 
-    *reader = NULL;
+    *reader = ((void*)0);
 
     hr = IWICMetadataBlockReader_GetCount(block_reader, &count);
     if (hr != S_OK) return hr;

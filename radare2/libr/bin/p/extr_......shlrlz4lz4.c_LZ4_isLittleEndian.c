@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ut8 ;
-typedef  int /*<<< orphan*/  ut32 ;
 
-/* Variables and functions */
+
+
+
+typedef int ut8 ;
+typedef int ut32 ;
+
+
 
 __attribute__((used)) static unsigned LZ4_isLittleEndian(void)
 {
-	const union { ut32 u; ut8 c[4]; } one = { 1 };   /* don't use static : performance detrimental */
-	return one.c[0];
+ const union { ut32 u; ut8 c[4]; } one = { 1 };
+ return one.c[0];
 }

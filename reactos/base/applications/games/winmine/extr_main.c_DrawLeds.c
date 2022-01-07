@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hLedsBMP; } ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_1__ BOARD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BitBlt (int /*<<< orphan*/ ,unsigned int,int,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- unsigned int LED_HEIGHT ; 
- unsigned int LED_WIDTH ; 
- int /*<<< orphan*/  SRCCOPY ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hLedsBMP; } ;
+typedef int HGDIOBJ ;
+typedef int HDC ;
+typedef TYPE_1__ BOARD ;
+
+
+ int BitBlt (int ,unsigned int,int,unsigned int,unsigned int,int ,int ,unsigned int,int ) ;
+ unsigned int LED_HEIGHT ;
+ unsigned int LED_WIDTH ;
+ int SRCCOPY ;
+ int SelectObject (int ,int ) ;
 
 __attribute__((used)) static void DrawLeds( HDC hdc, HDC hMemDC, BOARD *p_board, int number, int x, int y )
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void DrawLeds( HDC hdc, HDC hMemDC, BOARD *p_board,
             count -= led[0] * 100;
         }
         else {
-            led[0] = 10; /* negative sign */
+            led[0] = 10;
             count = -count;
         }
         led[1] = count / 10;

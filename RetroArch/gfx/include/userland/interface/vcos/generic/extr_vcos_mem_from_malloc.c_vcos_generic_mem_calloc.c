@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int VCOS_UNSIGNED ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIN_ALIGN ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- void* vcos_generic_mem_alloc_aligned (int,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int uint32_t ;
+typedef int VCOS_UNSIGNED ;
+
+
+ int MIN_ALIGN ;
+ int memset (void*,int ,int) ;
+ void* vcos_generic_mem_alloc_aligned (int,int ,char const*) ;
 
 void *vcos_generic_mem_calloc(VCOS_UNSIGNED count, VCOS_UNSIGNED sz, const char *desc)
 {

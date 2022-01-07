@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* http_header_item_handle_t ;
-typedef  int /*<<< orphan*/  http_header_handle_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* http_header_item_handle_t ;
+typedef int http_header_handle_t ;
+typedef int esp_err_t ;
 struct TYPE_3__ {char* value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_OK ; 
- TYPE_1__* http_header_get_item (int /*<<< orphan*/ ,char const*) ; 
+
+ int ESP_OK ;
+ TYPE_1__* http_header_get_item (int ,char const*) ;
 
 esp_err_t http_header_get(http_header_handle_t header, const char *key, char **value)
 {
@@ -28,7 +28,7 @@ esp_err_t http_header_get(http_header_handle_t header, const char *key, char **v
     if (item) {
         *value = item->value;
     } else {
-        *value = NULL;
+        *value = ((void*)0);
     }
 
     return ESP_OK;

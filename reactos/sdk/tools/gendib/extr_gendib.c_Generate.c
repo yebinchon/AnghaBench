@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PROPINFO ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateBitBlt (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  CreatePrimitive (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateShiftTables (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CreateTable (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/ * FindRopInfo (unsigned int) ; 
- int /*<<< orphan*/  MARK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Output (int /*<<< orphan*/ *,char*) ; 
- unsigned int ROPCODE_GENERIC ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int * PROPINFO ;
+typedef int FILE ;
+
+
+ int CreateBitBlt (int *,unsigned int) ;
+ int CreatePrimitive (int *,unsigned int,int *) ;
+ int CreateShiftTables (int *) ;
+ int CreateTable (int *,unsigned int) ;
+ int * FindRopInfo (unsigned int) ;
+ int MARK (int *) ;
+ int Output (int *,char*) ;
+ unsigned int ROPCODE_GENERIC ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int perror (char*) ;
+ int sprintf (char*,char*,unsigned int) ;
+ int stderr ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 Generate(char *OutputDir, unsigned Bpp)
@@ -44,7 +44,7 @@ Generate(char *OutputDir, unsigned Bpp)
     char *FileName;
 
     FileName = malloc(strlen(OutputDir) + 12);
-    if (NULL == FileName)
+    if (((void*)0) == FileName)
     {
         fprintf(stderr, "Out of memory\n");
         exit(1);
@@ -58,7 +58,7 @@ Generate(char *OutputDir, unsigned Bpp)
 
     Out = fopen(FileName, "w");
     free(FileName);
-    if (NULL == Out)
+    if (((void*)0) == Out)
     {
         perror("Error opening output file");
         exit(1);
@@ -75,7 +75,7 @@ Generate(char *OutputDir, unsigned Bpp)
     for (RopCode = 0; RopCode < 256; RopCode++)
     {
         RopInfo = FindRopInfo(RopCode);
-        if (NULL != RopInfo)
+        if (((void*)0) != RopInfo)
         {
             CreatePrimitive(Out, Bpp, RopInfo);
         }

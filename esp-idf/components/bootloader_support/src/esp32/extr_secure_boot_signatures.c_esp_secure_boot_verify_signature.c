@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  esp_secure_boot_sig_block_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
-typedef  int /*<<< orphan*/  bootloader_sha256_handle_t ;
 
-/* Variables and functions */
- int DIGEST_LEN ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__,int) ; 
- scalar_t__ MIN (scalar_t__,scalar_t__) ; 
- scalar_t__ MMAP_ALIGNED_MASK ; 
- scalar_t__ SPI_FLASH_MMU_PAGE_SIZE ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ bootloader_mmap (scalar_t__,int) ; 
- scalar_t__ bootloader_mmap_get_free_pages () ; 
- int /*<<< orphan*/  bootloader_munmap (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  bootloader_sha256_data (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  bootloader_sha256_finish (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bootloader_sha256_start () ; 
- int /*<<< orphan*/  esp_secure_boot_verify_signature_block (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ int32_t ;
+typedef int esp_secure_boot_sig_block_t ;
+typedef int esp_err_t ;
+typedef int bootloader_sha256_handle_t ;
+
+
+ int DIGEST_LEN ;
+ int ESP_FAIL ;
+ int ESP_LOGD (int ,char*,scalar_t__,...) ;
+ int ESP_LOGE (int ,char*,scalar_t__,int) ;
+ scalar_t__ MIN (scalar_t__,scalar_t__) ;
+ scalar_t__ MMAP_ALIGNED_MASK ;
+ scalar_t__ SPI_FLASH_MMU_PAGE_SIZE ;
+ int TAG ;
+ scalar_t__ bootloader_mmap (scalar_t__,int) ;
+ scalar_t__ bootloader_mmap_get_free_pages () ;
+ int bootloader_munmap (int const*) ;
+ int bootloader_sha256_data (int ,int const*,scalar_t__) ;
+ int bootloader_sha256_finish (int ,int *) ;
+ int bootloader_sha256_start () ;
+ int esp_secure_boot_verify_signature_block (int const*,int *) ;
 
 esp_err_t esp_secure_boot_verify_signature(uint32_t src_addr, uint32_t length)
 {
@@ -51,12 +51,12 @@ esp_err_t esp_secure_boot_verify_signature(uint32_t src_addr, uint32_t length)
     uint32_t data_addr = src_addr;
     while (data_len_remain > 0) {
         uint32_t offset_page = ((data_addr & MMAP_ALIGNED_MASK) != 0) ? 1 : 0;
-        /* Data we could map in case we are not aligned to PAGE boundary is one page size lesser. */
+
         uint32_t data_len = MIN(data_len_remain, ((free_page_count - offset_page) * SPI_FLASH_MMU_PAGE_SIZE));
         data = (const uint8_t *) bootloader_mmap(data_addr, data_len);
         if(!data) {
             ESP_LOGE(TAG, "bootloader_mmap(0x%x, 0x%x) failed", data_addr, data_len);
-            bootloader_sha256_finish(handle, NULL);
+            bootloader_sha256_finish(handle, ((void*)0));
             return ESP_FAIL;
         }
         bootloader_sha256_data(handle, data, data_len);
@@ -66,18 +66,18 @@ esp_err_t esp_secure_boot_verify_signature(uint32_t src_addr, uint32_t length)
         data_len_remain -= data_len;
     }
 
-    /* Done! Get the digest */
+
     bootloader_sha256_finish(handle, digest);
 
-    // Map the signature block
+
     sigblock = (const esp_secure_boot_sig_block_t *) bootloader_mmap(src_addr + length, sizeof(esp_secure_boot_sig_block_t));
     if(!sigblock) {
         ESP_LOGE(TAG, "bootloader_mmap(0x%x, 0x%x) failed", src_addr + length, sizeof(esp_secure_boot_sig_block_t));
         return ESP_FAIL;
     }
-    // Verify the signature
+
     esp_err_t err = esp_secure_boot_verify_signature_block(sigblock, digest);
-    // Unmap
+
     bootloader_munmap(sigblock);
 
     return err;

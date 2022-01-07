@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lfw ;
-struct TYPE_7__ {int /*<<< orphan*/  lfFaceName; int /*<<< orphan*/  lfPitchAndFamily; int /*<<< orphan*/  lfQuality; int /*<<< orphan*/  lfClipPrecision; int /*<<< orphan*/  lfOutPrecision; int /*<<< orphan*/  lfCharSet; int /*<<< orphan*/  lfStrikeOut; int /*<<< orphan*/  lfUnderline; int /*<<< orphan*/  lfItalic; int /*<<< orphan*/  lfWeight; int /*<<< orphan*/  lfOrientation; int /*<<< orphan*/  lfEscapement; int /*<<< orphan*/  lfWidth; int /*<<< orphan*/  lfHeight; } ;
-struct TYPE_6__ {int /*<<< orphan*/  lfFaceName; int /*<<< orphan*/  lfPitchAndFamily; int /*<<< orphan*/  lfQuality; int /*<<< orphan*/  lfClipPrecision; int /*<<< orphan*/  lfOutPrecision; int /*<<< orphan*/  lfCharSet; int /*<<< orphan*/  lfStrikeOut; int /*<<< orphan*/  lfUnderline; int /*<<< orphan*/  lfItalic; int /*<<< orphan*/  lfWeight; int /*<<< orphan*/  lfOrientation; int /*<<< orphan*/  lfEscapement; int /*<<< orphan*/  lfWidth; int /*<<< orphan*/  lfHeight; } ;
-struct TYPE_5__ {int /*<<< orphan*/  lfFaceName; int /*<<< orphan*/  lfPitchAndFamily; int /*<<< orphan*/  lfQuality; int /*<<< orphan*/  lfClipPrecision; int /*<<< orphan*/  lfOutPrecision; int /*<<< orphan*/  lfCharSet; int /*<<< orphan*/  lfStrikeOut; int /*<<< orphan*/  lfUnderline; int /*<<< orphan*/  lfItalic; int /*<<< orphan*/  lfWeight; int /*<<< orphan*/  lfOrientation; int /*<<< orphan*/  lfEscapement; int /*<<< orphan*/  lfWidth; int /*<<< orphan*/  lfHeight; } ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  TYPE_1__ LOGFONTW ;
-typedef  TYPE_2__ LOGFONTA ;
-typedef  TYPE_3__ LOGFONT16 ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  LF_FACESIZE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegOpenKeyA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int TRUE ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,char const*,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lfw ;
+struct TYPE_7__ {int lfFaceName; int lfPitchAndFamily; int lfQuality; int lfClipPrecision; int lfOutPrecision; int lfCharSet; int lfStrikeOut; int lfUnderline; int lfItalic; int lfWeight; int lfOrientation; int lfEscapement; int lfWidth; int lfHeight; } ;
+struct TYPE_6__ {int lfFaceName; int lfPitchAndFamily; int lfQuality; int lfClipPrecision; int lfOutPrecision; int lfCharSet; int lfStrikeOut; int lfUnderline; int lfItalic; int lfWeight; int lfOrientation; int lfEscapement; int lfWidth; int lfHeight; } ;
+struct TYPE_5__ {int lfFaceName; int lfPitchAndFamily; int lfQuality; int lfClipPrecision; int lfOutPrecision; int lfCharSet; int lfStrikeOut; int lfUnderline; int lfItalic; int lfWeight; int lfOrientation; int lfEscapement; int lfWidth; int lfHeight; } ;
+typedef int LPBYTE ;
+typedef TYPE_1__ LOGFONTW ;
+typedef TYPE_2__ LOGFONTA ;
+typedef TYPE_3__ LOGFONT16 ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ int CP_ACP ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_CURRENT_USER ;
+ int LF_FACESIZE ;
+ int RegCloseKey (int ) ;
+ int RegOpenKeyA (int ,char const*,int *) ;
+ scalar_t__ RegQueryValueExA (int ,char const*,int *,scalar_t__*,int ,scalar_t__*) ;
+ int TRUE ;
+ int WideCharToMultiByte (int ,int ,int ,int,int ,int ,int *,int *) ;
+ int memcpy (int ,int ,int ) ;
+ int ok (int,char*,char const*,char const*) ;
 
 __attribute__((used)) static int lffromreg( const char *keyname, const char *valname, LOGFONTA *plf)
 {
@@ -44,12 +44,12 @@ __attribute__((used)) static int lffromreg( const char *keyname, const char *val
     LOGFONTW lfw;
     DWORD ret, size, type;
 
-    RegOpenKeyA( HKEY_CURRENT_USER, keyname, &hkey ); 
+    RegOpenKeyA( HKEY_CURRENT_USER, keyname, &hkey );
     size = sizeof( lfw);
-    ret=RegQueryValueExA( hkey, valname, NULL, &type, (LPBYTE)&lfw, &size );
+    ret=RegQueryValueExA( hkey, valname, ((void*)0), &type, (LPBYTE)&lfw, &size );
     RegCloseKey( hkey );
     ok( ret == ERROR_SUCCESS, "Key \"%s\" value \"%s\" not found\n", keyname, valname);
-    if( ret != ERROR_SUCCESS) 
+    if( ret != ERROR_SUCCESS)
         return FALSE;
     if( size <= sizeof( LOGFONT16)) {
         LOGFONT16 *plf16 = (LOGFONT16*) &lfw;
@@ -84,7 +84,7 @@ __attribute__((used)) static int lffromreg( const char *keyname, const char *val
         plf->lfQuality = lfw.lfQuality;
         plf->lfPitchAndFamily = lfw.lfPitchAndFamily;
         WideCharToMultiByte( CP_ACP, 0, lfw.lfFaceName, -1, plf->lfFaceName,
-            LF_FACESIZE, NULL, NULL);
+            LF_FACESIZE, ((void*)0), ((void*)0));
 
     }
     return TRUE;

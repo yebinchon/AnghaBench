@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct m_config_option {char* name; } ;
-struct m_config {scalar_t__ recursion_depth; scalar_t__ profile_depth; int /*<<< orphan*/  log; scalar_t__ is_toplevel; scalar_t__ use_profiles; int /*<<< orphan*/  includefunc_ctx; int /*<<< orphan*/  (* includefunc ) (int /*<<< orphan*/ ,char*,int) ;int /*<<< orphan*/  profiles; } ;
+struct m_config {scalar_t__ recursion_depth; scalar_t__ profile_depth; int log; scalar_t__ is_toplevel; scalar_t__ use_profiles; int includefunc_ctx; int (* includefunc ) (int ,char*,int) ;int profiles; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_RECURSION_DEPTH ; 
- int /*<<< orphan*/  MP_ERR (struct m_config*,char*) ; 
- int /*<<< orphan*/  MP_INFO (struct m_config*,char*) ; 
- int M_OPT_EXIT ; 
- int M_OPT_INVALID ; 
- int M_OPT_MISSING_PARAM ; 
- int M_OPT_UNKNOWN ; 
- int /*<<< orphan*/  bstr0 (char*) ; 
- int /*<<< orphan*/  list_profiles (struct m_config*) ; 
- int /*<<< orphan*/  m_config_finish_default_profile (struct m_config*,int) ; 
- int /*<<< orphan*/  m_config_print_option_list (struct m_config*,char*) ; 
- int m_config_set_profile (struct m_config*,char*,int) ; 
- int /*<<< orphan*/  mp_help_text ; 
- int /*<<< orphan*/  mp_info (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int show_profile (struct m_config*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,int) ; 
+
+ scalar_t__ MAX_RECURSION_DEPTH ;
+ int MP_ERR (struct m_config*,char*) ;
+ int MP_INFO (struct m_config*,char*) ;
+ int M_OPT_EXIT ;
+ int M_OPT_INVALID ;
+ int M_OPT_MISSING_PARAM ;
+ int M_OPT_UNKNOWN ;
+ int bstr0 (char*) ;
+ int list_profiles (struct m_config*) ;
+ int m_config_finish_default_profile (struct m_config*,int) ;
+ int m_config_print_option_list (struct m_config*,char*) ;
+ int m_config_set_profile (struct m_config*,char*,int) ;
+ int mp_help_text ;
+ int mp_info (int ,char*,int ) ;
+ int show_profile (struct m_config*,int ) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int stub1 (int ,char*,int) ;
 
 __attribute__((used)) static int m_config_handle_special_options(struct m_config *config,
                                            struct m_config_option *co,

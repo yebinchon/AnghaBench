@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  storage_number ;
-typedef  scalar_t__ RRD_MEMORY_MODE ;
-typedef  int /*<<< orphan*/  RRDDIM ;
 
-/* Variables and functions */
- long RRD_HISTORY_ENTRIES_MAX ; 
- scalar_t__ RRD_MEMORY_MODE_ALLOC ; 
- scalar_t__ RRD_MEMORY_MODE_NONE ; 
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- int /*<<< orphan*/  sysconf (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (long) ; 
+
+
+
+typedef int storage_number ;
+typedef scalar_t__ RRD_MEMORY_MODE ;
+typedef int RRDDIM ;
+
+
+ long RRD_HISTORY_ENTRIES_MAX ;
+ scalar_t__ RRD_MEMORY_MODE_ALLOC ;
+ scalar_t__ RRD_MEMORY_MODE_NONE ;
+ int _SC_PAGESIZE ;
+ int sysconf (int ) ;
+ scalar_t__ unlikely (long) ;
 
 inline long align_entries_to_pagesize(RRD_MEMORY_MODE mode, long entries) {
     if(unlikely(entries < 5)) entries = 5;

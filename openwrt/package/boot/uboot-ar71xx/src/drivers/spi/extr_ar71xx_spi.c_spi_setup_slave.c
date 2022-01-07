@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct spi_slave {unsigned int bus; unsigned int cs; } ;
 struct ar71xx_spi_slave {unsigned int mode; struct spi_slave slave; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRINTD (char*) ; 
- struct ar71xx_spi_slave* malloc (int) ; 
+
+ int PRINTD (char*) ;
+ struct ar71xx_spi_slave* malloc (int) ;
 
 struct spi_slave *spi_setup_slave(unsigned int bus, unsigned int cs,
-		unsigned int max_hz, unsigned int mode)
+  unsigned int max_hz, unsigned int mode)
 {
-	struct ar71xx_spi_slave *ss;
+ struct ar71xx_spi_slave *ss;
 
-	PRINTD("ar71xx_spi: spi_setup_slave");
-	
-	if ((bus != 0) || (cs > 2))
-		return NULL;
+ PRINTD("ar71xx_spi: spi_setup_slave");
 
-	ss = malloc(sizeof(struct ar71xx_spi_slave));
-	if (!ss)
-		return NULL;
+ if ((bus != 0) || (cs > 2))
+  return ((void*)0);
 
-	ss->slave.bus = bus;
-	ss->slave.cs = cs;
-	ss->mode = mode;
+ ss = malloc(sizeof(struct ar71xx_spi_slave));
+ if (!ss)
+  return ((void*)0);
 
-	/* TODO: Use max_hz to limit the SCK rate */
+ ss->slave.bus = bus;
+ ss->slave.cs = cs;
+ ss->mode = mode;
 
-	PRINTD(" ---> out\n");
-	
-	return &ss->slave;
+
+
+ PRINTD(" ---> out\n");
+
+ return &ss->slave;
 }

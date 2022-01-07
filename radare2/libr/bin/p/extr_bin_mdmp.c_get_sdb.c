@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct r_bin_mdmp_obj {int /*<<< orphan*/ * kv; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct r_bin_mdmp_obj {int * kv; } ;
 struct TYPE_5__ {TYPE_1__* o; } ;
 struct TYPE_4__ {scalar_t__ bin_obj; } ;
-typedef  int /*<<< orphan*/  Sdb ;
-typedef  TYPE_2__ RBinFile ;
+typedef int Sdb ;
+typedef TYPE_2__ RBinFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  r_return_val_if_fail (int,int /*<<< orphan*/ *) ; 
+
+ int r_return_val_if_fail (int,int *) ;
 
 __attribute__((used)) static Sdb *get_sdb(RBinFile *bf) {
-	r_return_val_if_fail (bf && bf->o, NULL);
-	struct r_bin_mdmp_obj *obj = (struct r_bin_mdmp_obj *)bf->o->bin_obj;
-	return (obj && obj->kv) ? obj->kv: NULL;
+ r_return_val_if_fail (bf && bf->o, ((void*)0));
+ struct r_bin_mdmp_obj *obj = (struct r_bin_mdmp_obj *)bf->o->bin_obj;
+ return (obj && obj->kv) ? obj->kv: ((void*)0);
 }

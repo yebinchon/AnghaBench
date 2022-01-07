@@ -1,37 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ColorSetId ;
 
-/* Variables and functions */
- scalar_t__ ColorSetId_Dark ; 
- scalar_t__ R_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsysExit () ; 
- int /*<<< orphan*/  setsysGetColorSetId (scalar_t__*) ; 
- int /*<<< orphan*/  setsysInitialize () ; 
+
+
+
+typedef scalar_t__ ColorSetId ;
+
+
+ scalar_t__ ColorSetId_Dark ;
+ scalar_t__ R_SUCCEEDED (int ) ;
+ int setsysExit () ;
+ int setsysGetColorSetId (scalar_t__*) ;
+ int setsysInitialize () ;
 
 unsigned ozone_get_system_theme(void)
 {
-#ifdef HAVE_LIBNX
-   unsigned ret = 0;
-   if (R_SUCCEEDED(setsysInitialize()))
-   {
-      ColorSetId theme;
-      setsysGetColorSetId(&theme);
-      ret = (theme == ColorSetId_Dark) ? 1 : 0;
-      setsysExit();
-   }
-
-   return ret;
-#endif
    return 0;
 }

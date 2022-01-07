@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
-typedef  scalar_t__ U16 ;
-typedef  int /*<<< orphan*/  SATI_TRANSLATOR_SEQUENCE_T ;
-typedef  int /*<<< orphan*/  ATA_IDENTIFY_DEVICE_DATA_T ;
 
-/* Variables and functions */
- scalar_t__ SCSI_MODE_PAGE_08_LENGTH ; 
- int /*<<< orphan*/  sati_mode_sense_10_translate_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,scalar_t__) ; 
- int /*<<< orphan*/  sati_mode_sense_caching_translate_data (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sati_mode_sense_calculate_page_header (void*,int) ; 
+
+
+
+typedef int U32 ;
+typedef scalar_t__ U16 ;
+typedef int SATI_TRANSLATOR_SEQUENCE_T ;
+typedef int ATA_IDENTIFY_DEVICE_DATA_T ;
+
+
+ scalar_t__ SCSI_MODE_PAGE_08_LENGTH ;
+ int sati_mode_sense_10_translate_data (int *,int *,void*,scalar_t__) ;
+ int sati_mode_sense_caching_translate_data (int *,void*,int *,int ) ;
+ scalar_t__ sati_mode_sense_calculate_page_header (void*,int) ;
 
 void sati_mode_sense_10_caching_translate_data(
    SATI_TRANSLATOR_SEQUENCE_T * sequence,
-   void                       * ata_input_data,
-   void                       * scsi_io
+   void * ata_input_data,
+   void * scsi_io
 )
 {
    ATA_IDENTIFY_DEVICE_DATA_T * identify = (ATA_IDENTIFY_DEVICE_DATA_T*)
                                            ata_input_data;
-   U16   data_length = sati_mode_sense_calculate_page_header(scsi_io, 10)
+   U16 data_length = sati_mode_sense_calculate_page_header(scsi_io, 10)
                        + SCSI_MODE_PAGE_08_LENGTH;
-   U32   page_offset = sati_mode_sense_10_translate_data(
+   U32 page_offset = sati_mode_sense_10_translate_data(
                           sequence, identify, scsi_io, data_length
                        );
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
 struct TYPE_7__ {int i_size; TYPE_3__** p_elems; } ;
 struct TYPE_8__ {TYPE_1__ eits; } ;
-typedef  TYPE_2__ ts_psip_context_t ;
+typedef TYPE_2__ ts_psip_context_t ;
 struct TYPE_9__ {scalar_t__ i_version; scalar_t__ i_source_id; TYPE_4__* p_first_event; } ;
-typedef  TYPE_3__ dvbpsi_atsc_eit_t ;
+typedef TYPE_3__ dvbpsi_atsc_eit_t ;
 struct TYPE_10__ {scalar_t__ i_event_id; struct TYPE_10__* p_next; } ;
-typedef  TYPE_4__ dvbpsi_atsc_eit_event_t ;
+typedef TYPE_4__ dvbpsi_atsc_eit_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fromETMId (int /*<<< orphan*/ ,scalar_t__*,scalar_t__*) ; 
+
+ int fromETMId (int ,scalar_t__*,scalar_t__*) ;
 
 __attribute__((used)) static const dvbpsi_atsc_eit_event_t * ATSC_EventFindByETMId( ts_psip_context_t *p_eitctx,
                                                               uint32_t i_etm_id, uint8_t i_version )
@@ -47,5 +47,5 @@ __attribute__((used)) static const dvbpsi_atsc_eit_event_t * ATSC_EventFindByETM
                 return p_evt;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

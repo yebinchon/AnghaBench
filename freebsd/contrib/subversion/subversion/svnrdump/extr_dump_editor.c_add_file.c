@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct file_baton {int /*<<< orphan*/  action; int /*<<< orphan*/  is_copy; int /*<<< orphan*/  copyfrom_rev; int /*<<< orphan*/  pool; int /*<<< orphan*/  copyfrom_path; } ;
-struct dir_baton {int /*<<< orphan*/  deleted_entries; int /*<<< orphan*/  eb; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ ARE_VALID_COPY_ARGS (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  dump_pending_dir (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct file_baton* make_file_baton (char const*,struct dir_baton*,int /*<<< orphan*/ *) ; 
- void* svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_action_add ; 
- int /*<<< orphan*/  svn_node_action_replace ; 
- int /*<<< orphan*/  svn_relpath_canonicalize (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+struct file_baton {int action; int is_copy; int copyfrom_rev; int pool; int copyfrom_path; } ;
+struct dir_baton {int deleted_entries; int eb; } ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ ARE_VALID_COPY_ARGS (char const*,int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int dump_pending_dir (int ,int *) ;
+ struct file_baton* make_file_baton (char const*,struct dir_baton*,int *) ;
+ void* svn_hash_gets (int ,char const*) ;
+ int svn_hash_sets (int ,char const*,int *) ;
+ int svn_node_action_add ;
+ int svn_node_action_replace ;
+ int svn_relpath_canonicalize (char const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 add_file(const char *path,
@@ -43,13 +43,13 @@ add_file(const char *path,
 
   SVN_ERR(dump_pending_dir(pb->eb, pool));
 
-  /* Make the file baton. */
+
   fb = make_file_baton(path, pb, pool);
 
-  /* This might be a replacement -- is the path already deleted? */
+
   was_deleted = svn_hash_gets(pb->deleted_entries, path);
 
-  /* Detect add-with-history. */
+
   if (ARE_VALID_COPY_ARGS(copyfrom_path, copyfrom_rev))
     {
       fb->copyfrom_path = svn_relpath_canonicalize(copyfrom_path, fb->pool);
@@ -58,9 +58,9 @@ add_file(const char *path,
     }
   fb->action = was_deleted ? svn_node_action_replace : svn_node_action_add;
 
-  /* Delete the path, it's now been dumped. */
+
   if (was_deleted)
-    svn_hash_sets(pb->deleted_entries, path, NULL);
+    svn_hash_sets(pb->deleted_entries, path, ((void*)0));
 
   *file_baton = fb;
   return SVN_NO_ERROR;

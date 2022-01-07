@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* text; } ;
-typedef  TYPE_1__ message ;
+typedef TYPE_1__ message ;
 
-/* Variables and functions */
- double BAYES_SPAM_LIMIT ; 
- double bayes_is_spam_prob (TYPE_1__*,int) ; 
- int /*<<< orphan*/  debugp (char*,...) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ msg_verify (TYPE_1__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ double BAYES_SPAM_LIMIT ;
+ double bayes_is_spam_prob (TYPE_1__*,int) ;
+ int debugp (char*,...) ;
+ int fprintf (int ,char*,char*) ;
+ scalar_t__ msg_verify (TYPE_1__*,int) ;
+ int stderr ;
+ int verbosity ;
 
 int bayes_is_spam (message *msg, int random_tag) {
   if (msg_verify (msg, random_tag) < 0) {

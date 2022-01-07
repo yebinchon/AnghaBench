@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {int /*<<< orphan*/  name_length; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ Messenger ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {int name_length; int name; } ;
+typedef TYPE_1__ Messenger ;
+
+
+ int memcpy (int *,int ,int ) ;
 
 uint16_t getself_name(const Messenger *m, uint8_t *name)
 {
-    if (name == NULL) {
+    if (name == ((void*)0)) {
         return 0;
     }
 

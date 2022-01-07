@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gl_image {int dummy; } ;
-typedef  int GLsizei ;
-typedef  scalar_t__ GLint ;
-typedef  scalar_t__ GLenum ;
-typedef  int /*<<< orphan*/  GLcontext ;
+typedef int GLsizei ;
+typedef scalar_t__ GLint ;
+typedef scalar_t__ GLenum ;
+typedef int GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
- int /*<<< orphan*/  GL_INVALID_VALUE ; 
- int /*<<< orphan*/  GL_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  GL_RGBA ; 
- scalar_t__ GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- scalar_t__ INSIDE_BEGIN_END (int /*<<< orphan*/ *) ; 
- scalar_t__ MAX_TEXTURE_LEVELS ; 
- int MAX_TEXTURE_SIZE ; 
- scalar_t__ decode_internal_format (scalar_t__) ; 
- int /*<<< orphan*/  gl_TexImage2D (int /*<<< orphan*/ *,scalar_t__,scalar_t__,scalar_t__,int,int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gl_image*) ; 
- int /*<<< orphan*/  gl_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- struct gl_image* read_color_image (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int,int,scalar_t__) ; 
+
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_OPERATION ;
+ int GL_INVALID_VALUE ;
+ int GL_OUT_OF_MEMORY ;
+ int GL_RGBA ;
+ scalar_t__ GL_TEXTURE_2D ;
+ int GL_UNSIGNED_BYTE ;
+ scalar_t__ INSIDE_BEGIN_END (int *) ;
+ scalar_t__ MAX_TEXTURE_LEVELS ;
+ int MAX_TEXTURE_SIZE ;
+ scalar_t__ decode_internal_format (scalar_t__) ;
+ int gl_TexImage2D (int *,scalar_t__,scalar_t__,scalar_t__,int,int,scalar_t__,int ,int ,struct gl_image*) ;
+ int gl_error (int *,int ,char*) ;
+ struct gl_image* read_color_image (int *,scalar_t__,scalar_t__,int,int,scalar_t__) ;
 
 void gl_CopyTexImage2D( GLcontext *ctx,
                         GLenum target, GLint level, GLenum internalformat,
@@ -79,5 +79,5 @@ void gl_CopyTexImage2D( GLcontext *ctx,
    gl_TexImage2D( ctx, target, level, internalformat, width, height,
                   border, GL_RGBA, GL_UNSIGNED_BYTE, teximage );
 
-   /* teximage was freed in gl_TexImage2D */
+
 }

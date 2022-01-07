@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rdbuf ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  TABLE_MEM_QBOT ; 
- int /*<<< orphan*/  TABLE_MEM_QBOT2 ; 
- int /*<<< orphan*/  TABLE_MEM_QBOT3 ; 
- int /*<<< orphan*/  TABLE_MEM_UPX ; 
- int /*<<< orphan*/  TABLE_MEM_ZOLLARD ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ mem_exists (char*,int,char*,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  table_lock_val (int /*<<< orphan*/ ) ; 
- char* table_retrieve_val (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  table_unlock_val (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rdbuf ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int O_RDONLY ;
+ int TABLE_MEM_QBOT ;
+ int TABLE_MEM_QBOT2 ;
+ int TABLE_MEM_QBOT3 ;
+ int TABLE_MEM_UPX ;
+ int TABLE_MEM_ZOLLARD ;
+ int TRUE ;
+ int close (int) ;
+ scalar_t__ mem_exists (char*,int,char*,int) ;
+ int open (char*,int ) ;
+ int read (int,char*,int) ;
+ int table_lock_val (int ) ;
+ char* table_retrieve_val (int ,int*) ;
+ int table_unlock_val (int ) ;
 
 __attribute__((used)) static BOOL memory_scan_match(char *path)
 {

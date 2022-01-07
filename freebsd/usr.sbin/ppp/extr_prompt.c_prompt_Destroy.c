@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  from; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int from; } ;
 struct prompt {scalar_t__ Term; scalar_t__ fd_in; scalar_t__ fd_out; TYPE_1__ src; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- int /*<<< orphan*/  free (struct prompt*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_UnRegisterPrompt (struct prompt*) ; 
- int /*<<< orphan*/  prompt_TtyOldMode (struct prompt*) ; 
- scalar_t__ stdout ; 
+
+ int LogPHASE ;
+ int close (scalar_t__) ;
+ int fclose (scalar_t__) ;
+ int free (struct prompt*) ;
+ int log_Printf (int ,char*,int ) ;
+ int log_UnRegisterPrompt (struct prompt*) ;
+ int prompt_TtyOldMode (struct prompt*) ;
+ scalar_t__ stdout ;
 
 void
 prompt_Destroy(struct prompt *p, int verbose)

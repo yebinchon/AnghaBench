@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  int u64 ;
-typedef  scalar_t__ u32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t u8 ;
+typedef int u64 ;
+typedef scalar_t__ u32 ;
 struct TYPE_3__ {int hi; int lo; } ;
-typedef  TYPE_1__ u128 ;
+typedef TYPE_1__ u128 ;
 
-/* Variables and functions */
- int BSWAP8 (int) ; 
- int /*<<< orphan*/  PUTU32 (size_t*,scalar_t__) ; 
- int* rem_4bit ; 
+
+ int BSWAP8 (int) ;
+ int PUTU32 (size_t*,scalar_t__) ;
+ int* rem_4bit ;
 
 __attribute__((used)) static void gcm_gmult_4bit(u64 Xi[2], const u128 Htable[16])
 {
@@ -71,10 +71,10 @@ __attribute__((used)) static void gcm_gmult_4bit(u64 Xi[2], const u128 Htable[16
     }
 
     if (is_endian.little) {
-#  ifdef BSWAP8
-        Xi[0] = BSWAP8(Z.hi);
-        Xi[1] = BSWAP8(Z.lo);
-#  else
+
+
+
+
         u8 *p = (u8 *)Xi;
         u32 v;
         v = (u32)(Z.hi >> 32);
@@ -85,7 +85,7 @@ __attribute__((used)) static void gcm_gmult_4bit(u64 Xi[2], const u128 Htable[16
         PUTU32(p + 8, v);
         v = (u32)(Z.lo);
         PUTU32(p + 12, v);
-#  endif
+
     } else {
         Xi[0] = Z.hi;
         Xi[1] = Z.lo;

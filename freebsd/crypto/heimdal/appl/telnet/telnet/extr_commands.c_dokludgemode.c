@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TELOPT_ECHO ; 
- int /*<<< orphan*/  TELOPT_LINEMODE ; 
- int /*<<< orphan*/  TELOPT_SGA ; 
- int kludgelinemode ; 
- int /*<<< orphan*/  send_dont (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  send_wont (int /*<<< orphan*/ ,int) ; 
+ int TELOPT_ECHO ;
+ int TELOPT_LINEMODE ;
+ int TELOPT_SGA ;
+ int kludgelinemode ;
+ int send_dont (int ,int) ;
+ int send_wont (int ,int) ;
 
 __attribute__((used)) static int
 dokludgemode(void)

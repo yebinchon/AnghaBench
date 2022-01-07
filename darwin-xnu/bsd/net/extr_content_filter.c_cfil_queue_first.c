@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cfil_queue {int /*<<< orphan*/  q_mq; } ;
-typedef  int /*<<< orphan*/  mbuf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBUFQ_FIRST (int /*<<< orphan*/ *) ; 
+
+
+
+struct cfil_queue {int q_mq; } ;
+typedef int mbuf_t ;
+
+
+ int MBUFQ_FIRST (int *) ;
 
 __attribute__((used)) static mbuf_t
 cfil_queue_first(struct cfil_queue *cfq)
 {
-	return (MBUFQ_FIRST(&cfq->q_mq));
+ return (MBUFQ_FIRST(&cfq->q_mq));
 }

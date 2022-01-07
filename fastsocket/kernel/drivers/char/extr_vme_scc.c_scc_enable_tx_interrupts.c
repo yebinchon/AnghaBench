@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scc_port {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDR_TX_INT_ENAB ; 
- int /*<<< orphan*/  INT_AND_DMA_REG ; 
- int /*<<< orphan*/  SCC_ACCESS_INIT (struct scc_port*) ; 
- int /*<<< orphan*/  SCCmod (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  scc_tx_int (int /*<<< orphan*/ ,struct scc_port*) ; 
+
+ int IDR_TX_INT_ENAB ;
+ int INT_AND_DMA_REG ;
+ int SCC_ACCESS_INIT (struct scc_port*) ;
+ int SCCmod (int ,int,int ) ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int scc_tx_int (int ,struct scc_port*) ;
 
 __attribute__((used)) static void scc_enable_tx_interrupts(void *ptr)
 {
-	struct scc_port *port = ptr;
-	unsigned long	flags;
-	SCC_ACCESS_INIT(port);
+ struct scc_port *port = ptr;
+ unsigned long flags;
+ SCC_ACCESS_INIT(port);
 
-	local_irq_save(flags);
-	SCCmod(INT_AND_DMA_REG, 0xff, IDR_TX_INT_ENAB);
-	/* restart the transmitter */
-	scc_tx_int (0, port);
-	local_irq_restore(flags);
+ local_irq_save(flags);
+ SCCmod(INT_AND_DMA_REG, 0xff, IDR_TX_INT_ENAB);
+
+ scc_tx_int (0, port);
+ local_irq_restore(flags);
 }

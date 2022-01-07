@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netsec_priv {int /*<<< orphan*/  dev; struct netsec_desc_ring* desc_ring; } ;
-struct netsec_desc_ring {int /*<<< orphan*/ * desc; int /*<<< orphan*/ * vaddr; int /*<<< orphan*/  desc_dma; } ;
 
-/* Variables and functions */
- int DESC_NUM ; 
- int DESC_SZ ; 
- int /*<<< orphan*/  dma_free_coherent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct netsec_priv {int dev; struct netsec_desc_ring* desc_ring; } ;
+struct netsec_desc_ring {int * desc; int * vaddr; int desc_dma; } ;
+
+
+ int DESC_NUM ;
+ int DESC_SZ ;
+ int dma_free_coherent (int ,int,int *,int ) ;
+ int kfree (int *) ;
 
 __attribute__((used)) static void netsec_free_dring(struct netsec_priv *priv, int id)
 {
-	struct netsec_desc_ring *dring = &priv->desc_ring[id];
+ struct netsec_desc_ring *dring = &priv->desc_ring[id];
 
-	if (dring->vaddr) {
-		dma_free_coherent(priv->dev, DESC_SZ * DESC_NUM,
-				  dring->vaddr, dring->desc_dma);
-		dring->vaddr = NULL;
-	}
+ if (dring->vaddr) {
+  dma_free_coherent(priv->dev, DESC_SZ * DESC_NUM,
+      dring->vaddr, dring->desc_dma);
+  dring->vaddr = ((void*)0);
+ }
 
-	kfree(dring->desc);
-	dring->desc = NULL;
+ kfree(dring->desc);
+ dring->desc = ((void*)0);
 }

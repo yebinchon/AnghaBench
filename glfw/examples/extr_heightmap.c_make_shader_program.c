@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int GLuint ;
-typedef  int /*<<< orphan*/  GLsizei ;
-typedef  scalar_t__ GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FRAGMENT_SHADER ; 
- int /*<<< orphan*/  GL_LINK_STATUS ; 
- scalar_t__ GL_TRUE ; 
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  glAttachShader (unsigned int,unsigned int) ; 
- unsigned int glCreateProgram () ; 
- int /*<<< orphan*/  glDeleteProgram (unsigned int) ; 
- int /*<<< orphan*/  glDeleteShader (unsigned int) ; 
- int /*<<< orphan*/  glGetProgramInfoLog (unsigned int,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  glGetProgramiv (unsigned int,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  glLinkProgram (unsigned int) ; 
- unsigned int make_shader (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef unsigned int GLuint ;
+typedef int GLsizei ;
+typedef scalar_t__ GLint ;
+
+
+ int GL_FRAGMENT_SHADER ;
+ int GL_LINK_STATUS ;
+ scalar_t__ GL_TRUE ;
+ int GL_VERTEX_SHADER ;
+ int fprintf (int ,char*,...) ;
+ int glAttachShader (unsigned int,unsigned int) ;
+ unsigned int glCreateProgram () ;
+ int glDeleteProgram (unsigned int) ;
+ int glDeleteShader (unsigned int) ;
+ int glGetProgramInfoLog (unsigned int,int,int *,char*) ;
+ int glGetProgramiv (unsigned int,int ,scalar_t__*) ;
+ int glLinkProgram (unsigned int) ;
+ unsigned int make_shader (int ,char const*) ;
+ int stderr ;
 
 __attribute__((used)) static GLuint make_shader_program(const char* vs_text, const char* fs_text)
 {
@@ -45,11 +45,11 @@ __attribute__((used)) static GLuint make_shader_program(const char* vs_text, con
         fragment_shader = make_shader(GL_FRAGMENT_SHADER, fs_text);
         if (fragment_shader != 0u)
         {
-            /* make the program that connect the two shader and link it */
+
             program = glCreateProgram();
             if (program != 0u)
             {
-                /* attach both shader and link */
+
                 glAttachShader(program, vertex_shader);
                 glAttachShader(program, fragment_shader);
                 glLinkProgram(program);

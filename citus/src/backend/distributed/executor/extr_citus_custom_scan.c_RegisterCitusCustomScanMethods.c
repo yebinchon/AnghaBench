@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AdaptiveExecutorCustomScanMethods ; 
- int /*<<< orphan*/  CoordinatorInsertSelectCustomScanMethods ; 
- int /*<<< orphan*/  DelayedErrorCustomScanMethods ; 
- int /*<<< orphan*/  RegisterCustomScanMethods (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TaskTrackerCustomScanMethods ; 
+ int AdaptiveExecutorCustomScanMethods ;
+ int CoordinatorInsertSelectCustomScanMethods ;
+ int DelayedErrorCustomScanMethods ;
+ int RegisterCustomScanMethods (int *) ;
+ int TaskTrackerCustomScanMethods ;
 
 void
 RegisterCitusCustomScanMethods(void)
 {
-	RegisterCustomScanMethods(&AdaptiveExecutorCustomScanMethods);
-	RegisterCustomScanMethods(&TaskTrackerCustomScanMethods);
-	RegisterCustomScanMethods(&CoordinatorInsertSelectCustomScanMethods);
-	RegisterCustomScanMethods(&DelayedErrorCustomScanMethods);
+ RegisterCustomScanMethods(&AdaptiveExecutorCustomScanMethods);
+ RegisterCustomScanMethods(&TaskTrackerCustomScanMethods);
+ RegisterCustomScanMethods(&CoordinatorInsertSelectCustomScanMethods);
+ RegisterCustomScanMethods(&DelayedErrorCustomScanMethods);
 }

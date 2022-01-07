@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int (* xOpen ) (TYPE_3__*,char const*,int,TYPE_2__**) ;int (* xNext ) (TYPE_2__*,char const**,int*,int*,int*,int*) ;int /*<<< orphan*/  (* xClose ) (TYPE_2__*) ;} ;
-typedef  TYPE_1__ sqlite3_tokenizer_module ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int (* xOpen ) (TYPE_3__*,char const*,int,TYPE_2__**) ;int (* xNext ) (TYPE_2__*,char const**,int*,int*,int*,int*) ;int (* xClose ) (TYPE_2__*) ;} ;
+typedef TYPE_1__ sqlite3_tokenizer_module ;
 struct TYPE_13__ {TYPE_3__* pTokenizer; } ;
-typedef  TYPE_2__ sqlite3_tokenizer_cursor ;
+typedef TYPE_2__ sqlite3_tokenizer_cursor ;
 struct TYPE_14__ {TYPE_1__* pModule; } ;
-typedef  TYPE_3__ sqlite3_tokenizer ;
+typedef TYPE_3__ sqlite3_tokenizer ;
 struct TYPE_15__ {int nColumn; TYPE_3__* pTokenizer; } ;
-typedef  TYPE_4__ fulltext_vtab ;
+typedef TYPE_4__ fulltext_vtab ;
 struct TYPE_17__ {int nTerms; TYPE_5__* pTerms; TYPE_4__* pFts; } ;
-struct TYPE_16__ {int iColumn; int nTerm; int iPhrase; int /*<<< orphan*/  pTerm; int /*<<< orphan*/  isPrefix; } ;
-typedef  int /*<<< orphan*/  Snippet ;
-typedef  TYPE_5__ QueryTerm ;
-typedef  TYPE_6__ Query ;
+struct TYPE_16__ {int iColumn; int nTerm; int iPhrase; int pTerm; int isPrefix; } ;
+typedef int Snippet ;
+typedef TYPE_5__ QueryTerm ;
+typedef TYPE_6__ Query ;
 
-/* Variables and functions */
- unsigned int FTS2_ROTOR_MASK ; 
- int FTS2_ROTOR_SZ ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  snippetAppendMatch (int /*<<< orphan*/ *,int,int,int,int) ; 
- int stub1 (TYPE_3__*,char const*,int,TYPE_2__**) ; 
- int stub2 (TYPE_2__*,char const**,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*) ; 
+
+ unsigned int FTS2_ROTOR_MASK ;
+ int FTS2_ROTOR_SZ ;
+ int assert (int) ;
+ scalar_t__ memcmp (int ,char const*,int) ;
+ int snippetAppendMatch (int *,int,int,int,int) ;
+ int stub1 (TYPE_3__*,char const*,int,TYPE_2__**) ;
+ int stub2 (TYPE_2__*,char const**,int*,int*,int*,int*) ;
+ int stub3 (TYPE_2__*) ;
 
 __attribute__((used)) static void snippetOffsetsOfColumn(
   Query *pQuery,
@@ -47,25 +47,25 @@ __attribute__((used)) static void snippetOffsetsOfColumn(
   const char *zDoc,
   int nDoc
 ){
-  const sqlite3_tokenizer_module *pTModule;  /* The tokenizer module */
-  sqlite3_tokenizer *pTokenizer;             /* The specific tokenizer */
-  sqlite3_tokenizer_cursor *pTCursor;        /* Tokenizer cursor */
-  fulltext_vtab *pVtab;                /* The full text index */
-  int nColumn;                         /* Number of columns in the index */
-  const QueryTerm *aTerm;              /* Query string terms */
-  int nTerm;                           /* Number of query string terms */  
-  int i, j;                            /* Loop counters */
-  int rc;                              /* Return code */
-  unsigned int match, prevMatch;       /* Phrase search bitmasks */
-  const char *zToken;                  /* Next token from the tokenizer */
-  int nToken;                          /* Size of zToken */
-  int iBegin, iEnd, iPos;              /* Offsets of beginning and end */
+  const sqlite3_tokenizer_module *pTModule;
+  sqlite3_tokenizer *pTokenizer;
+  sqlite3_tokenizer_cursor *pTCursor;
+  fulltext_vtab *pVtab;
+  int nColumn;
+  const QueryTerm *aTerm;
+  int nTerm;
+  int i, j;
+  int rc;
+  unsigned int match, prevMatch;
+  const char *zToken;
+  int nToken;
+  int iBegin, iEnd, iPos;
 
-  /* The following variables keep a circular buffer of the last
-  ** few tokens */
-  unsigned int iRotor = 0;             /* Index of current token */
-  int iRotorBegin[FTS2_ROTOR_SZ];      /* Beginning offset of token */
-  int iRotorLen[FTS2_ROTOR_SZ];        /* Length of token */
+
+
+  unsigned int iRotor = 0;
+  int iRotorBegin[FTS2_ROTOR_SZ];
+  int iRotorLen[FTS2_ROTOR_SZ];
 
   pVtab = pQuery->pFts;
   nColumn = pVtab->nColumn;
@@ -107,5 +107,5 @@ __attribute__((used)) static void snippetOffsetsOfColumn(
     prevMatch = match<<1;
     iRotor++;
   }
-  pTModule->xClose(pTCursor);  
+  pTModule->xClose(pTCursor);
 }

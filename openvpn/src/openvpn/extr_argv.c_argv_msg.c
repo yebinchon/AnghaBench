@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct argv {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  argv_str (struct argv const*,struct gc_arena*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int const,char*,int /*<<< orphan*/ ) ; 
+
+ int argv_str (struct argv const*,struct gc_arena*,int ) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int const,char*,int ) ;
 
 void
 argv_msg(const int msglev, const struct argv *a)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {struct ctcm_priv* ml_priv; } ;
-struct ctcm_priv {int /*<<< orphan*/  fsm; } ;
+struct ctcm_priv {int fsm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTCMY_DBF_DEV_NAME (int /*<<< orphan*/ ,struct net_device*,char*) ; 
- int /*<<< orphan*/  DEV_EVENT_START ; 
- int /*<<< orphan*/  IS_MPC (struct ctcm_priv*) ; 
- int /*<<< orphan*/  SETUP ; 
- int /*<<< orphan*/  fsm_event (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct net_device*) ; 
+
+ int CTCMY_DBF_DEV_NAME (int ,struct net_device*,char*) ;
+ int DEV_EVENT_START ;
+ int IS_MPC (struct ctcm_priv*) ;
+ int SETUP ;
+ int fsm_event (int ,int ,struct net_device*) ;
 
 int ctcm_open(struct net_device *dev)
 {
-	struct ctcm_priv *priv = dev->ml_priv;
+ struct ctcm_priv *priv = dev->ml_priv;
 
-	CTCMY_DBF_DEV_NAME(SETUP, dev, "");
-	if (!IS_MPC(priv))
-		fsm_event(priv->fsm,	DEV_EVENT_START, dev);
-	return 0;
+ CTCMY_DBF_DEV_NAME(SETUP, dev, "");
+ if (!IS_MPC(priv))
+  fsm_event(priv->fsm, DEV_EVENT_START, dev);
+ return 0;
 }

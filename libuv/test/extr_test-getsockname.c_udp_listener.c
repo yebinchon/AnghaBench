@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  alloc ; 
- int /*<<< orphan*/  check_sockname (struct sockaddr*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  getsocknamecount ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  memset (struct sockaddr*,int,int) ; 
- int /*<<< orphan*/  server_port ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  udpServer ; 
- int /*<<< orphan*/  udp_recv ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- int uv_udp_bind (int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_udp_getsockname (int /*<<< orphan*/ *,struct sockaddr*,int*) ; 
- int uv_udp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int uv_udp_recv_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int alloc ;
+ int check_sockname (struct sockaddr*,char*,int ,char*) ;
+ int fprintf (int ,char*) ;
+ int getsocknamecount ;
+ int loop ;
+ int memset (struct sockaddr*,int,int) ;
+ int server_port ;
+ int stderr ;
+ int udpServer ;
+ int udp_recv ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ int uv_udp_bind (int *,struct sockaddr const*,int ) ;
+ int uv_udp_getsockname (int *,struct sockaddr*,int*) ;
+ int uv_udp_init (int ,int *) ;
+ int uv_udp_recv_start (int *,int ,int ) ;
 
 __attribute__((used)) static int udp_listener(void) {
   struct sockaddr_in addr;

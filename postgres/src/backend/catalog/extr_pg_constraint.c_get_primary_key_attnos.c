@@ -1,136 +1,136 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int16 ;
-struct TYPE_2__ {scalar_t__ contype; int /*<<< orphan*/  oid; scalar_t__ condeferrable; } ;
-typedef  int /*<<< orphan*/  SysScanDesc ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_constraint ;
-typedef  int /*<<< orphan*/  Datum ;
-typedef  int /*<<< orphan*/  Bitmapset ;
-typedef  int /*<<< orphan*/  ArrayType ;
 
-/* Variables and functions */
- scalar_t__ ARR_DATA_PTR (int /*<<< orphan*/ *) ; 
- int* ARR_DIMS (int /*<<< orphan*/ *) ; 
- scalar_t__ ARR_ELEMTYPE (int /*<<< orphan*/ *) ; 
- scalar_t__ ARR_HASNULL (int /*<<< orphan*/ *) ; 
- int ARR_NDIM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  Anum_pg_constraint_conkey ; 
- int /*<<< orphan*/  Anum_pg_constraint_conrelid ; 
- int /*<<< orphan*/  BTEqualStrategyNumber ; 
- scalar_t__ CONSTRAINT_PRIMARY ; 
- int /*<<< orphan*/  ConstraintRelationId ; 
- int /*<<< orphan*/  ConstraintRelidTypidNameIndexId ; 
- int /*<<< orphan*/ * DatumGetArrayTypeP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  F_OIDEQ ; 
- scalar_t__ FirstLowInvalidHeapAttributeNumber ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- scalar_t__ INT2OID ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScanKeyInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * bms_add_member (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  heap_getattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  systable_beginscan (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  systable_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  systable_getnext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ int16 ;
+struct TYPE_2__ {scalar_t__ contype; int oid; scalar_t__ condeferrable; } ;
+typedef int SysScanDesc ;
+typedef int ScanKeyData ;
+typedef int Relation ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_constraint ;
+typedef int Datum ;
+typedef int Bitmapset ;
+typedef int ArrayType ;
+
+
+ scalar_t__ ARR_DATA_PTR (int *) ;
+ int* ARR_DIMS (int *) ;
+ scalar_t__ ARR_ELEMTYPE (int *) ;
+ scalar_t__ ARR_HASNULL (int *) ;
+ int ARR_NDIM (int *) ;
+ int AccessShareLock ;
+ int Anum_pg_constraint_conkey ;
+ int Anum_pg_constraint_conrelid ;
+ int BTEqualStrategyNumber ;
+ scalar_t__ CONSTRAINT_PRIMARY ;
+ int ConstraintRelationId ;
+ int ConstraintRelidTypidNameIndexId ;
+ int * DatumGetArrayTypeP (int ) ;
+ int ERROR ;
+ int F_OIDEQ ;
+ scalar_t__ FirstLowInvalidHeapAttributeNumber ;
+ scalar_t__ GETSTRUCT (int ) ;
+ scalar_t__ HeapTupleIsValid (int ) ;
+ scalar_t__ INT2OID ;
+ int InvalidOid ;
+ int ObjectIdGetDatum (int ) ;
+ int RelationGetDescr (int ) ;
+ int ScanKeyInit (int *,int ,int ,int ,int ) ;
+ int * bms_add_member (int *,scalar_t__) ;
+ int elog (int ,char*,...) ;
+ int heap_getattr (int ,int ,int ,int*) ;
+ int systable_beginscan (int ,int ,int,int *,int,int *) ;
+ int systable_endscan (int ) ;
+ int systable_getnext (int ) ;
+ int table_close (int ,int ) ;
+ int table_open (int ,int ) ;
 
 Bitmapset *
 get_primary_key_attnos(Oid relid, bool deferrableOk, Oid *constraintOid)
 {
-	Bitmapset  *pkattnos = NULL;
-	Relation	pg_constraint;
-	HeapTuple	tuple;
-	SysScanDesc scan;
-	ScanKeyData skey[1];
+ Bitmapset *pkattnos = ((void*)0);
+ Relation pg_constraint;
+ HeapTuple tuple;
+ SysScanDesc scan;
+ ScanKeyData skey[1];
 
-	/* Set *constraintOid, to avoid complaints about uninitialized vars */
-	*constraintOid = InvalidOid;
 
-	/* Scan pg_constraint for constraints of the target rel */
-	pg_constraint = table_open(ConstraintRelationId, AccessShareLock);
+ *constraintOid = InvalidOid;
 
-	ScanKeyInit(&skey[0],
-				Anum_pg_constraint_conrelid,
-				BTEqualStrategyNumber, F_OIDEQ,
-				ObjectIdGetDatum(relid));
 
-	scan = systable_beginscan(pg_constraint, ConstraintRelidTypidNameIndexId, true,
-							  NULL, 1, skey);
+ pg_constraint = table_open(ConstraintRelationId, AccessShareLock);
 
-	while (HeapTupleIsValid(tuple = systable_getnext(scan)))
-	{
-		Form_pg_constraint con = (Form_pg_constraint) GETSTRUCT(tuple);
-		Datum		adatum;
-		bool		isNull;
-		ArrayType  *arr;
-		int16	   *attnums;
-		int			numkeys;
-		int			i;
+ ScanKeyInit(&skey[0],
+    Anum_pg_constraint_conrelid,
+    BTEqualStrategyNumber, F_OIDEQ,
+    ObjectIdGetDatum(relid));
 
-		/* Skip constraints that are not PRIMARY KEYs */
-		if (con->contype != CONSTRAINT_PRIMARY)
-			continue;
+ scan = systable_beginscan(pg_constraint, ConstraintRelidTypidNameIndexId, 1,
+         ((void*)0), 1, skey);
 
-		/*
-		 * If the primary key is deferrable, but we've been instructed to
-		 * ignore deferrable constraints, then we might as well give up
-		 * searching, since there can only be a single primary key on a table.
-		 */
-		if (con->condeferrable && !deferrableOk)
-			break;
+ while (HeapTupleIsValid(tuple = systable_getnext(scan)))
+ {
+  Form_pg_constraint con = (Form_pg_constraint) GETSTRUCT(tuple);
+  Datum adatum;
+  bool isNull;
+  ArrayType *arr;
+  int16 *attnums;
+  int numkeys;
+  int i;
 
-		/* Extract the conkey array, ie, attnums of PK's columns */
-		adatum = heap_getattr(tuple, Anum_pg_constraint_conkey,
-							  RelationGetDescr(pg_constraint), &isNull);
-		if (isNull)
-			elog(ERROR, "null conkey for constraint %u",
-				 ((Form_pg_constraint) GETSTRUCT(tuple))->oid);
-		arr = DatumGetArrayTypeP(adatum);	/* ensure not toasted */
-		numkeys = ARR_DIMS(arr)[0];
-		if (ARR_NDIM(arr) != 1 ||
-			numkeys < 0 ||
-			ARR_HASNULL(arr) ||
-			ARR_ELEMTYPE(arr) != INT2OID)
-			elog(ERROR, "conkey is not a 1-D smallint array");
-		attnums = (int16 *) ARR_DATA_PTR(arr);
 
-		/* Construct the result value */
-		for (i = 0; i < numkeys; i++)
-		{
-			pkattnos = bms_add_member(pkattnos,
-									  attnums[i] - FirstLowInvalidHeapAttributeNumber);
-		}
-		*constraintOid = ((Form_pg_constraint) GETSTRUCT(tuple))->oid;
+  if (con->contype != CONSTRAINT_PRIMARY)
+   continue;
 
-		/* No need to search further */
-		break;
-	}
 
-	systable_endscan(scan);
 
-	table_close(pg_constraint, AccessShareLock);
 
-	return pkattnos;
+
+
+  if (con->condeferrable && !deferrableOk)
+   break;
+
+
+  adatum = heap_getattr(tuple, Anum_pg_constraint_conkey,
+         RelationGetDescr(pg_constraint), &isNull);
+  if (isNull)
+   elog(ERROR, "null conkey for constraint %u",
+     ((Form_pg_constraint) GETSTRUCT(tuple))->oid);
+  arr = DatumGetArrayTypeP(adatum);
+  numkeys = ARR_DIMS(arr)[0];
+  if (ARR_NDIM(arr) != 1 ||
+   numkeys < 0 ||
+   ARR_HASNULL(arr) ||
+   ARR_ELEMTYPE(arr) != INT2OID)
+   elog(ERROR, "conkey is not a 1-D smallint array");
+  attnums = (int16 *) ARR_DATA_PTR(arr);
+
+
+  for (i = 0; i < numkeys; i++)
+  {
+   pkattnos = bms_add_member(pkattnos,
+           attnums[i] - FirstLowInvalidHeapAttributeNumber);
+  }
+  *constraintOid = ((Form_pg_constraint) GETSTRUCT(tuple))->oid;
+
+
+  break;
+ }
+
+ systable_endscan(scan);
+
+ table_close(pg_constraint, AccessShareLock);
+
+ return pkattnos;
 }

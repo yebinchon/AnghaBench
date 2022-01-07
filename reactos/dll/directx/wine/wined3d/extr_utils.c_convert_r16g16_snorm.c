@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int UINT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
+
+
+
+typedef unsigned int UINT ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
 
 __attribute__((used)) static void convert_r16g16_snorm(const BYTE *src, BYTE *dst, UINT src_row_pitch, UINT src_slice_pitch,
         UINT dst_row_pitch, UINT dst_slice_pitch, UINT width, UINT height, UINT depth)
@@ -32,9 +32,9 @@ __attribute__((used)) static void convert_r16g16_snorm(const BYTE *src, BYTE *ds
             for (x = 0; x < width; x++ )
             {
                 const DWORD color = (*Source++);
-                /* B */ Dest[0] = 0xffff;
-                /* G */ Dest[1] = (color >> 16) + 32768; /* V */
-                /* R */ Dest[2] = (color & 0xffff) + 32768; /* U */
+                        Dest[0] = 0xffff;
+                        Dest[1] = (color >> 16) + 32768;
+                        Dest[2] = (color & 0xffff) + 32768;
                 Dest += 3;
             }
         }

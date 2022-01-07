@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int code; int extra_bits; } ;
-typedef  TYPE_1__ HuffmanTreeToken ;
+typedef TYPE_1__ HuffmanTreeToken ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static HuffmanTreeToken* CodeRepeatedZeros(int repetitions,
                                            HuffmanTreeToken* tokens) {
@@ -22,7 +22,7 @@ __attribute__((used)) static HuffmanTreeToken* CodeRepeatedZeros(int repetitions
     if (repetitions < 3) {
       int i;
       for (i = 0; i < repetitions; ++i) {
-        tokens->code = 0;   // 0-value
+        tokens->code = 0;
         tokens->extra_bits = 0;
         ++tokens;
       }
@@ -39,7 +39,7 @@ __attribute__((used)) static HuffmanTreeToken* CodeRepeatedZeros(int repetitions
       break;
     } else {
       tokens->code = 18;
-      tokens->extra_bits = 0x7f;  // 138 repeated 0s
+      tokens->extra_bits = 0x7f;
       ++tokens;
       repetitions -= 138;
     }

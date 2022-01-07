@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  payload; void* type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  a; TYPE_1__ s; int /*<<< orphan*/  ua; } ;
 
-/* Variables and functions */
- int BUTTONS_Read_All () ; 
- int /*<<< orphan*/  Delay (int) ; 
- size_t PANEL_NW ; 
- void* PKT_TYPE_8BIT_CAL ; 
- void* PKT_TYPE_8BIT_RAW ; 
- void* PKT_TYPE_GSVALS ; 
- int /*<<< orphan*/  UART_SendBytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  buttonTest (int) ; 
- int /*<<< orphan*/  globalSet (int,int) ; 
- int /*<<< orphan*/  globalSet8bit (int,int) ; 
- TYPE_2__* ledpackets ; 
- int /*<<< orphan*/  pack12bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * panelLEDmap ; 
- int /*<<< orphan*/  sendLEDpackets () ; 
- int* test_intensities ; 
- int /*<<< orphan*/ * usarts ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int payload; void* type; } ;
+struct TYPE_4__ {int a; TYPE_1__ s; int ua; } ;
+
+
+ int BUTTONS_Read_All () ;
+ int Delay (int) ;
+ size_t PANEL_NW ;
+ void* PKT_TYPE_8BIT_CAL ;
+ void* PKT_TYPE_8BIT_RAW ;
+ void* PKT_TYPE_GSVALS ;
+ int UART_SendBytes (int *,int ,int) ;
+ int buttonTest (int) ;
+ int globalSet (int,int) ;
+ int globalSet8bit (int,int) ;
+ TYPE_2__* ledpackets ;
+ int pack12bit (int ,int ,int) ;
+ int * panelLEDmap ;
+ int sendLEDpackets () ;
+ int* test_intensities ;
+ int * usarts ;
 
 void test_modes() {
     int i, row, col;
@@ -45,8 +45,8 @@ void test_modes() {
         row = (i >> 4) & 0xF;
         col = i & 0xF;
         switch(row) {
-            case 0: // cycle through RGBW illumination
-            case 1: // red
+            case 0:
+            case 1:
                 for(i = 0; i < 49*3; i++)
                     pack12bit(ledpackets[PANEL_NW].s.payload, panelLEDmap[i], 0);
                 for(i = 0; i < 49; i++)
@@ -57,7 +57,7 @@ void test_modes() {
                 UART_SendBytes(&usarts[0], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
                 Delay(2000);
                 if(row != 0) break;
-            case 2: // green
+            case 2:
                 for(i = 0; i < 49*3; i++)
                     pack12bit(ledpackets[PANEL_NW].s.payload, panelLEDmap[i], 0);
                 for(i = 0; i < 49; i++)
@@ -68,7 +68,7 @@ void test_modes() {
                 UART_SendBytes(&usarts[0], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
                 Delay(2000);
                 if(row != 0) break;
-            case 3: // blue
+            case 3:
                 for(i = 0; i < 49*3; i++)
                     pack12bit(ledpackets[PANEL_NW].s.payload, panelLEDmap[i], 0);
                 for(i = 0; i < 49; i++)
@@ -79,7 +79,7 @@ void test_modes() {
                 UART_SendBytes(&usarts[0], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
                 Delay(2000);
                 if(row != 0) break;
-            case 4: // white
+            case 4:
                 for(i = 0; i < 49*3; i++)
                     pack12bit(ledpackets[PANEL_NW].s.payload, panelLEDmap[i], test_intensities[col]);
                 UART_SendBytes(&usarts[3], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
@@ -88,7 +88,7 @@ void test_modes() {
                 UART_SendBytes(&usarts[0], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
                 Delay(2000);
                 break;
-            case 5: // gamma correction test
+            case 5:
                 for(i = 0; i < 196; i++) {
                     globalSet8bit(i*3, i);
                     globalSet8bit(i*3+1, 0);
@@ -107,8 +107,8 @@ void test_modes() {
                 UART_SendBytes(&usarts[0], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
                 Delay(1000);
                 break;
-            case 6: // one LED element at a time
-                // Startup sequence the lights all the LEDs one at a time
+            case 6:
+
                 ledpackets[PANEL_NW].s.type = PKT_TYPE_GSVALS;
                 for(i = 0; i < 49*3+1; i++) {
                     if(i < 49*3)
@@ -123,7 +123,7 @@ void test_modes() {
                     Delay(10);
                 }
                 break;
-            case 7: // Test ramp for burnin testing of LED boards
+            case 7:
                 rampMax = test_intensities[col];
                 rampMin = test_intensities[col]/5;
                 for(rampValue = rampMin; rampValue < rampMax; rampValue += rampStep) {
@@ -150,10 +150,10 @@ void test_modes() {
                     Delay(10);
                 }
                 break;
-            case 8: // button test
+            case 8:
                 buttonTest(test_intensities[col]);
                 break;
-            case 9: // clear
+            case 9:
                 for(i = 0; i <49*3; i++)
                     pack12bit(ledpackets[PANEL_NW].s.payload, panelLEDmap[i], 0);
                 UART_SendBytes(&usarts[3], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
@@ -162,8 +162,8 @@ void test_modes() {
                 UART_SendBytes(&usarts[0], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));
                 Delay(1000);
                 break;
-            case 10: // thermal cycle
-                if( (rampMin > 600) || (rampMin < -600))  rampMin = 600;
+            case 10:
+                if( (rampMin > 600) || (rampMin < -600)) rampMin = 600;
                 if(rampMin <= 0) {
                     for(i = 0; i < 49*3; i++)
                         pack12bit(ledpackets[PANEL_NW].s.payload, panelLEDmap[i], 4000);

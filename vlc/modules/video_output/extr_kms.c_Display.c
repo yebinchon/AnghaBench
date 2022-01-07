@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_4__* sys; } ;
-typedef  TYPE_3__ vout_display_t ;
-struct TYPE_10__ {size_t front_buf; int width; int height; scalar_t__* offsets; scalar_t__* map; TYPE_2__* picture; int /*<<< orphan*/ * fb; int /*<<< orphan*/  plane_id; int /*<<< orphan*/  crtc; int /*<<< orphan*/  drm_fd; } ;
-typedef  TYPE_4__ vout_display_sys_t ;
-typedef  int /*<<< orphan*/  picture_t ;
+typedef TYPE_3__ vout_display_t ;
+struct TYPE_10__ {size_t front_buf; int width; int height; scalar_t__* offsets; scalar_t__* map; TYPE_2__* picture; int * fb; int plane_id; int crtc; int drm_fd; } ;
+typedef TYPE_4__ vout_display_sys_t ;
+typedef int picture_t ;
 struct TYPE_8__ {TYPE_1__* p; } ;
 struct TYPE_7__ {scalar_t__ p_pixels; } ;
 
-/* Variables and functions */
- size_t MAXHWBUF ; 
- int PICTURE_PLANE_MAX ; 
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ *) ; 
- scalar_t__ drmModeSetPlane (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t MAXHWBUF ;
+ int PICTURE_PLANE_MAX ;
+ int VLC_UNUSED (int *) ;
+ scalar_t__ drmModeSetPlane (int ,int ,int ,int ,int ,int ,int ,int,int,int ,int ,int,int) ;
+ int msg_Err (TYPE_3__*,char*,int ,int ) ;
 
 __attribute__((used)) static void Display(vout_display_t *vd, picture_t *picture)
 {

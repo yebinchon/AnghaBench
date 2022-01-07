@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (int /*<<< orphan*/ *) ; 
- int fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spiffs_test_hello_str ; 
- int strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int buf ;
+typedef int FILE ;
+
+
+ int TEST_ASSERT_EQUAL (int ,int) ;
+ int TEST_ASSERT_NOT_NULL (int *) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (char*,int,int,int *) ;
+ int spiffs_test_hello_str ;
+ int strcmp (int ,char*) ;
+ int strlen (int ) ;
 
 void test_spiffs_read_file(const char* filename)
 {

@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
+ int printf (char*) ;
 
 __attribute__((used)) static void Help(void) {
   printf("Usage: dwebp in_file [options] [-o out_file]\n\n"
@@ -42,8 +34,8 @@ __attribute__((used)) static void Help(void) {
          "  -h ........... this help message\n"
          "  -v ........... verbose (e.g. print encoding/decoding times)\n"
          "  -quiet ....... quiet mode, don't print anything\n"
-#ifndef WEBP_DLL
+
          "  -noasm ....... disable all assembly optimizations\n"
-#endif
+
         );
 }

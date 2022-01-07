@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ io_object_t ;
-typedef  int /*<<< orphan*/  io_iterator_t ;
-typedef  scalar_t__ CFTypeRef ;
-typedef  int /*<<< orphan*/  CFMutableDictionaryRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFDictionarySetValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFRelease (scalar_t__) ; 
- int /*<<< orphan*/  CFSTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFStringGetCString (scalar_t__,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ IOIteratorNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOObjectRelease (scalar_t__) ; 
- scalar_t__ IORegistryEntryCreateCFProperty (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOServiceGetMatchingServices (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOServiceMatching (int /*<<< orphan*/ ) ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  _PATH_DEV ; 
- int hCDROM ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kCFBooleanTrue ; 
- int /*<<< orphan*/  kCFStringEncodingUTF8 ; 
- int /*<<< orphan*/  kIOBSDNameKey ; 
- int /*<<< orphan*/  kIOCDMediaClass ; 
- int /*<<< orphan*/  kIOMasterPortDefault ; 
- int /*<<< orphan*/  kIOMediaEjectableKey ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef scalar_t__ io_object_t ;
+typedef int io_iterator_t ;
+typedef scalar_t__ CFTypeRef ;
+typedef int CFMutableDictionaryRef ;
+
+
+ int CFDictionarySetValue (int ,int ,int ) ;
+ int CFRelease (scalar_t__) ;
+ int CFSTR (int ) ;
+ int CFStringGetCString (scalar_t__,char*,int,int ) ;
+ scalar_t__ IOIteratorNext (int ) ;
+ int IOObjectRelease (scalar_t__) ;
+ scalar_t__ IORegistryEntryCreateCFProperty (scalar_t__,int ,int ,int ) ;
+ int IOServiceGetMatchingServices (int ,int ,int *) ;
+ int IOServiceMatching (int ) ;
+ int MAXPATHLEN ;
+ int O_RDONLY ;
+ int _PATH_DEV ;
+ int hCDROM ;
+ int kCFAllocatorDefault ;
+ int kCFBooleanTrue ;
+ int kCFStringEncodingUTF8 ;
+ int kIOBSDNameKey ;
+ int kIOCDMediaClass ;
+ int kIOMasterPortDefault ;
+ int kIOMediaEjectableKey ;
+ int open (char*,int ) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,int ) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static int MacOSXCDInit(const char * useless_for_now)
 {
-	CFMutableDictionaryRef  classesToMatch;
-	io_iterator_t mediaIterator;
-	io_object_t media;
-	char cdrom_name[ MAXPATHLEN ];
+ CFMutableDictionaryRef classesToMatch;
+ io_iterator_t mediaIterator;
+ io_object_t media;
+ char cdrom_name[ MAXPATHLEN ];
 
-	classesToMatch = IOServiceMatching(kIOCDMediaClass); 
-	CFDictionarySetValue(classesToMatch, CFSTR(kIOMediaEjectableKey),
-		kCFBooleanTrue); 
-	IOServiceGetMatchingServices(kIOMasterPortDefault,
-		classesToMatch, &mediaIterator);    
+ classesToMatch = IOServiceMatching(kIOCDMediaClass);
+ CFDictionarySetValue(classesToMatch, CFSTR(kIOMediaEjectableKey),
+  kCFBooleanTrue);
+ IOServiceGetMatchingServices(kIOMasterPortDefault,
+  classesToMatch, &mediaIterator);
 
-	media = IOIteratorNext(mediaIterator);
-	
-	if(media)
-	{
-		CFTypeRef path;
+ media = IOIteratorNext(mediaIterator);
 
-		path = IORegistryEntryCreateCFProperty(media,
-			CFSTR(kIOBSDNameKey),
-			kCFAllocatorDefault, 0);
+ if(media)
+ {
+  CFTypeRef path;
 
-		if (path)
-		{
-			size_t length;
+  path = IORegistryEntryCreateCFProperty(media,
+   CFSTR(kIOBSDNameKey),
+   kCFAllocatorDefault, 0);
 
-			strcpy(cdrom_name, _PATH_DEV);
-			strcat(cdrom_name, "r");
-			length = strlen(cdrom_name);
+  if (path)
+  {
+   size_t length;
 
-			CFStringGetCString(path, cdrom_name + length,
-				MAXPATHLEN - length, kCFStringEncodingUTF8);
+   strcpy(cdrom_name, _PATH_DEV);
+   strcat(cdrom_name, "r");
+   length = strlen(cdrom_name);
 
-			CFRelease(path);
-		}
-		IOObjectRelease(media);
-	}
+   CFStringGetCString(path, cdrom_name + length,
+    MAXPATHLEN - length, kCFStringEncodingUTF8);
 
-	if ((hCDROM = open(cdrom_name, O_RDONLY)) == -1)
-	{
-		return -1;
-	}
+   CFRelease(path);
+  }
+  IOObjectRelease(media);
+ }
 
-	return 0;
+ if ((hCDROM = open(cdrom_name, O_RDONLY)) == -1)
+ {
+  return -1;
+ }
+
+ return 0;
 }

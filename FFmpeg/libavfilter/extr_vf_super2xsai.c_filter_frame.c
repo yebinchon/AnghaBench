@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_15__ {TYPE_2__** outputs; } ;
-struct TYPE_14__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_3__* dst; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
+struct TYPE_14__ {int h; int w; TYPE_3__* dst; } ;
+struct TYPE_13__ {int * linesize; int * data; int height; int width; } ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- int ff_filter_frame (TYPE_2__*,TYPE_1__*) ; 
- TYPE_1__* ff_get_video_buffer (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  super2xsai (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_frame_copy_props (TYPE_1__*,TYPE_1__*) ;
+ int av_frame_free (TYPE_1__**) ;
+ int ff_filter_frame (TYPE_2__*,TYPE_1__*) ;
+ TYPE_1__* ff_get_video_buffer (TYPE_2__*,int ,int ) ;
+ int super2xsai (TYPE_3__*,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *inpicref)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *inp
         return AVERROR(ENOMEM);
     }
     av_frame_copy_props(outpicref, inpicref);
-    outpicref->width  = outlink->w;
+    outpicref->width = outlink->w;
     outpicref->height = outlink->h;
 
     super2xsai(inlink->dst, inpicref->data[0], inpicref->linesize[0],

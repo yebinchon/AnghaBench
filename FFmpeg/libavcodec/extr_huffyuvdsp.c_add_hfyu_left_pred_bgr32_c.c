@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- size_t A ; 
- size_t B ; 
- size_t G ; 
- size_t R ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ size_t A ;
+ size_t B ;
+ size_t G ;
+ size_t R ;
 
 __attribute__((used)) static void add_hfyu_left_pred_bgr32_c(uint8_t *dst, const uint8_t *src,
                                        intptr_t w, uint8_t *left)

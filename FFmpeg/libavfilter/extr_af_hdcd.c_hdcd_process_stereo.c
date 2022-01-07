@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_8__ {int running_gain; int /*<<< orphan*/  sustain; } ;
-struct TYPE_7__ {TYPE_3__* state; int /*<<< orphan*/  val_target_gain; int /*<<< orphan*/  bits_per_sample; int /*<<< orphan*/  analyze_mode; } ;
-typedef  TYPE_1__ HDCDContext ;
 
-/* Variables and functions */
- int HDCD_TG_MISMATCH ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int hdcd_analyze (int /*<<< orphan*/ *,int,int const,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hdcd_analyze_prepare (TYPE_3__*,int /*<<< orphan*/ *,int,int const) ; 
- int hdcd_control_stereo (TYPE_1__*,int*,int*) ; 
- int hdcd_envelope (int /*<<< orphan*/ *,int,int const,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int hdcd_scan (TYPE_1__*,TYPE_3__*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_8__ {int running_gain; int sustain; } ;
+struct TYPE_7__ {TYPE_3__* state; int val_target_gain; int bits_per_sample; int analyze_mode; } ;
+typedef TYPE_1__ HDCDContext ;
+
+
+ int HDCD_TG_MISMATCH ;
+ int av_assert0 (int) ;
+ int hdcd_analyze (int *,int,int const,int,int ,int,int ,int ,int) ;
+ int hdcd_analyze_prepare (TYPE_3__*,int *,int,int const) ;
+ int hdcd_control_stereo (TYPE_1__*,int*,int*) ;
+ int hdcd_envelope (int *,int,int const,int ,int,int ,int) ;
+ int hdcd_scan (TYPE_1__*,TYPE_3__*,int,int *,int,int ) ;
 
 __attribute__((used)) static void hdcd_process_stereo(HDCDContext *ctx, int32_t *samples, int count)
 {

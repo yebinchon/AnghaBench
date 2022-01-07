@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsIDOMNodeList ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMElement ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  cpp_bool ;
-typedef  scalar_t__ UINT32 ;
-typedef  int /*<<< orphan*/  UINT16 ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ELEMENT_NODE ; 
- int /*<<< orphan*/  IID_nsIDOMElement ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMElement_GetChildNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMElement_GetTagName (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMElement_HasChildNodes (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMElement_RemoveAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNodeList_GetLength (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Item (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNodeList_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_GetNodeType (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int nsIDOMNodeList ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMElement ;
+typedef int nsAString ;
+typedef int cpp_bool ;
+typedef scalar_t__ UINT32 ;
+typedef int UINT16 ;
+typedef int PRUnichar ;
+typedef int LPCWSTR ;
+
+
+ int ELEMENT_NODE ;
+ int IID_nsIDOMElement ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMElement_GetChildNodes (int *,int **) ;
+ int nsIDOMElement_GetTagName (int *,int *) ;
+ int nsIDOMElement_HasChildNodes (int *,int *) ;
+ int nsIDOMElement_Release (int *) ;
+ int nsIDOMElement_RemoveAttribute (int *,int *) ;
+ int nsIDOMNodeList_GetLength (int *,scalar_t__*) ;
+ int nsIDOMNodeList_Item (int *,scalar_t__,int **) ;
+ int nsIDOMNodeList_Release (int *) ;
+ int nsIDOMNode_GetNodeType (int *,int *) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMNode_Release (int *) ;
+ int strcmpiW (int const*,int ) ;
 
 __attribute__((used)) static void remove_child_attr(nsIDOMElement *elem, LPCWSTR tag, nsAString *attr_str)
 {
@@ -65,12 +65,12 @@ __attribute__((used)) static void remove_child_attr(nsIDOMElement *elem, LPCWSTR
 
             nsIDOMNode_QueryInterface(child_node, &IID_nsIDOMElement, (void**)&child_elem);
 
-            nsAString_Init(&tag_str, NULL);
+            nsAString_Init(&tag_str, ((void*)0));
             nsIDOMElement_GetTagName(child_elem, &tag_str);
             nsAString_GetData(&tag_str, &ctag);
 
             if(!strcmpiW(ctag, tag))
-                /* FIXME: remove node if there are no more attributes */
+
                 nsIDOMElement_RemoveAttribute(child_elem, attr_str);
 
             nsAString_Finish(&tag_str);

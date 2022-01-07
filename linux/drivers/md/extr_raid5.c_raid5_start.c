@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct r5conf {int /*<<< orphan*/  log; } ;
+
+
+
+
+struct r5conf {int log; } ;
 struct mddev {struct r5conf* private; } ;
 
-/* Variables and functions */
- int r5l_start (int /*<<< orphan*/ ) ; 
+
+ int r5l_start (int ) ;
 
 __attribute__((used)) static int raid5_start(struct mddev *mddev)
 {
-	struct r5conf *conf = mddev->private;
+ struct r5conf *conf = mddev->private;
 
-	return r5l_start(conf->log);
+ return r5l_start(conf->log);
 }

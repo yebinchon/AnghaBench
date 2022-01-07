@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct unpcb {int dummy; } ;
 struct socket {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  socantsendmore (struct socket*) ; 
- struct unpcb* sotounpcb (struct socket*) ; 
- int /*<<< orphan*/  unp_shutdown (struct unpcb*) ; 
+
+ int EINVAL ;
+ int socantsendmore (struct socket*) ;
+ struct unpcb* sotounpcb (struct socket*) ;
+ int unp_shutdown (struct unpcb*) ;
 
 __attribute__((used)) static int
 uipc_shutdown(struct socket *so)
 {
-	struct unpcb *unp = sotounpcb(so);
+ struct unpcb *unp = sotounpcb(so);
 
-	if (unp == 0)
-		return (EINVAL);
-	socantsendmore(so);
-	unp_shutdown(unp);
-	return (0);
+ if (unp == 0)
+  return (EINVAL);
+ socantsendmore(so);
+ unp_shutdown(unp);
+ return (0);
 }

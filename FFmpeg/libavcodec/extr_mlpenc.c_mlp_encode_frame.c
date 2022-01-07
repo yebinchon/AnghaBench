@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_25__ {int channels; int frame_number; scalar_t__ frame_size; TYPE_2__* priv_data; } ;
-struct TYPE_24__ {int /*<<< orphan*/ ** data; } ;
-struct TYPE_23__ {unsigned int size; int /*<<< orphan*/  duration; int /*<<< orphan*/  pts; int /*<<< orphan*/  data; } ;
-struct TYPE_22__ {int frame_index; int max_restart_interval; scalar_t__ inout_buffer; scalar_t__ major_inout_buffer; int one_sample_buffer_size; scalar_t__ last_frame; scalar_t__ sample_buffer; scalar_t__ major_scratch_buffer; scalar_t__ write_buffer; scalar_t__* frame_size; scalar_t__ min_restart_interval; scalar_t__ next_major_frame_size; unsigned int next_major_number_of_frames; int restart_intervals; int seq_index; int starting_frame_index; unsigned int number_of_frames; unsigned int number_of_subblocks; int sequence_size; int* seq_offset; int num_substreams; unsigned int number_of_samples; unsigned int* seq_size; scalar_t__ major_frame_size; unsigned int major_number_of_frames; int /*<<< orphan*/  afq; int /*<<< orphan*/ * seq_decoding_params; TYPE_1__* avctx; int /*<<< orphan*/ * seq_channel_params; scalar_t__ decoding_params; scalar_t__ channel_params; int /*<<< orphan*/  dts; int /*<<< orphan*/  timestamp; } ;
+struct TYPE_24__ {int ** data; } ;
+struct TYPE_23__ {unsigned int size; int duration; int pts; int data; } ;
+struct TYPE_22__ {int frame_index; int max_restart_interval; scalar_t__ inout_buffer; scalar_t__ major_inout_buffer; int one_sample_buffer_size; scalar_t__ last_frame; scalar_t__ sample_buffer; scalar_t__ major_scratch_buffer; scalar_t__ write_buffer; scalar_t__* frame_size; scalar_t__ min_restart_interval; scalar_t__ next_major_frame_size; unsigned int next_major_number_of_frames; int restart_intervals; int seq_index; int starting_frame_index; unsigned int number_of_frames; unsigned int number_of_subblocks; int sequence_size; int* seq_offset; int num_substreams; unsigned int number_of_samples; unsigned int* seq_size; scalar_t__ major_frame_size; unsigned int major_number_of_frames; int afq; int * seq_decoding_params; TYPE_1__* avctx; int * seq_channel_params; scalar_t__ decoding_params; scalar_t__ channel_params; int dts; int timestamp; } ;
 struct TYPE_21__ {int frame_number; int channels; } ;
-typedef  TYPE_2__ MLPEncodeContext ;
-typedef  int /*<<< orphan*/  DecodingParams ;
-typedef  int /*<<< orphan*/  ChannelParams ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+typedef TYPE_2__ MLPEncodeContext ;
+typedef int DecodingParams ;
+typedef int ChannelParams ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ MAX_BLOCKSIZE ; 
- int /*<<< orphan*/  analyze_sample_buffer (TYPE_2__*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  clear_channel_params (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  default_decoding_params (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int ff_af_queue_add (int /*<<< orphan*/ *,TYPE_4__ const*) ; 
- int /*<<< orphan*/  ff_af_queue_remove (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ff_alloc_packet2 (TYPE_5__*,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_data (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_to_sample_buffer (TYPE_2__*) ; 
- int /*<<< orphan*/  process_major_frame (TYPE_2__*) ; 
- int /*<<< orphan*/  set_major_params (TYPE_2__*) ; 
- unsigned int write_access_unit (TYPE_2__*,int /*<<< orphan*/ ,unsigned int,int) ; 
+
+ int AV_LOG_ERROR ;
+ scalar_t__ MAX_BLOCKSIZE ;
+ int analyze_sample_buffer (TYPE_2__*) ;
+ int av_log (TYPE_5__*,int ,char*,scalar_t__,scalar_t__) ;
+ int clear_channel_params (TYPE_2__*,int *) ;
+ int default_decoding_params (TYPE_2__*,int *) ;
+ int ff_af_queue_add (int *,TYPE_4__ const*) ;
+ int ff_af_queue_remove (int *,scalar_t__,int *,int *) ;
+ int ff_alloc_packet2 (TYPE_5__*,TYPE_3__*,int,int ) ;
+ int input_data (TYPE_2__*,int *) ;
+ int input_to_sample_buffer (TYPE_2__*) ;
+ int process_major_frame (TYPE_2__*) ;
+ int set_major_params (TYPE_2__*) ;
+ unsigned int write_access_unit (TYPE_2__*,int ,unsigned int,int) ;
 
 __attribute__((used)) static int mlp_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                             const AVFrame *frame, int *got_packet)
@@ -58,7 +58,7 @@ __attribute__((used)) static int mlp_encode_frame(AVCodecContext *avctx, AVPacke
     if (!frame)
         return 1;
 
-    /* add current frame to queue */
+
     if ((ret = ff_af_queue_add(&ctx->afq, frame)) < 0)
         return ret;
 
@@ -82,9 +82,9 @@ __attribute__((used)) static int mlp_encode_frame(AVCodecContext *avctx, AVPacke
         if (data) {
             goto input_and_return;
         } else {
-            /* There are less frames than the requested major header interval.
-             * Update the context to reflect this.
-             */
+
+
+
             ctx->max_restart_interval = avctx->frame_number;
             ctx->frame_index = 0;
 
@@ -113,7 +113,7 @@ __attribute__((used)) static int mlp_encode_frame(AVCodecContext *avctx, AVPacke
     bytes_written = write_access_unit(ctx, avpkt->data, avpkt->size, restart_frame);
 
     ctx->timestamp += ctx->frame_size[ctx->frame_index];
-    ctx->dts       += ctx->frame_size[ctx->frame_index];
+    ctx->dts += ctx->frame_size[ctx->frame_index];
 
 input_and_return:
 

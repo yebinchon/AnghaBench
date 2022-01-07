@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct use_connection_context {int flags; size_t (* pre_set_accessname ) (struct use_connection_context*,char*) ;TYPE_2__* resource; } ;
-typedef  int /*<<< orphan*/  empty ;
-struct TYPE_6__ {int /*<<< orphan*/  dwNetType; scalar_t__ name; } ;
-typedef  TYPE_1__ WNetProvider ;
-typedef  char WCHAR ;
+typedef int empty ;
+struct TYPE_6__ {int dwNetType; scalar_t__ name; } ;
+typedef TYPE_1__ WNetProvider ;
+typedef char WCHAR ;
 struct TYPE_8__ {size_t numProviders; TYPE_1__* table; } ;
 struct TYPE_7__ {char* lpLocalName; scalar_t__ dwType; scalar_t__ lpRemoteName; scalar_t__ lpProvider; } ;
-typedef  TYPE_2__ NETRESOURCEW ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ NETRESOURCEW ;
+typedef int HKEY ;
+typedef size_t DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- size_t BAD_PROVIDER_INDEX ; 
- int CONNECT_INTERACTIVE ; 
- int CONNECT_REDIRECT ; 
- int CONNECT_UPDATE_PROFILE ; 
- size_t ERROR_BAD_DEV_TYPE ; 
- size_t ERROR_BAD_NET_NAME ; 
- size_t ERROR_BAD_PROVIDER ; 
- size_t ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  REG_SZ ; 
- scalar_t__ RESOURCETYPE_DISK ; 
- scalar_t__ RESOURCETYPE_PRINT ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenCurrentUser (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  TRUE ; 
- size_t WN_ALREADY_CONNECTED ; 
- size_t WN_NO_NETWORK ; 
- size_t WN_SUCCESS ; 
- size_t _findProviderIndexW (scalar_t__) ; 
- int /*<<< orphan*/  connectionType ; 
- int lstrlenW (scalar_t__) ; 
- int /*<<< orphan*/  providerName ; 
- TYPE_5__* providerTable ; 
- int /*<<< orphan*/  providerType ; 
- int /*<<< orphan*/  remotePath ; 
- size_t stub1 (struct use_connection_context*,char*) ; 
- int /*<<< orphan*/  userName ; 
- size_t wnet_use_provider (struct use_connection_context*,TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ size_t BAD_PROVIDER_INDEX ;
+ int CONNECT_INTERACTIVE ;
+ int CONNECT_REDIRECT ;
+ int CONNECT_UPDATE_PROFILE ;
+ size_t ERROR_BAD_DEV_TYPE ;
+ size_t ERROR_BAD_NET_NAME ;
+ size_t ERROR_BAD_PROVIDER ;
+ size_t ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int KEY_ALL_ACCESS ;
+ int REG_DWORD ;
+ int REG_OPTION_NON_VOLATILE ;
+ int REG_SZ ;
+ scalar_t__ RESOURCETYPE_DISK ;
+ scalar_t__ RESOURCETYPE_PRINT ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyExW (int ,char*,int ,int *,int ,int ,int *,int *,int *) ;
+ scalar_t__ RegOpenCurrentUser (int ,int *) ;
+ int RegSetValueExW (int ,int ,int ,int ,int const*,size_t) ;
+ int TRUE ;
+ size_t WN_ALREADY_CONNECTED ;
+ size_t WN_NO_NETWORK ;
+ size_t WN_SUCCESS ;
+ size_t _findProviderIndexW (scalar_t__) ;
+ int connectionType ;
+ int lstrlenW (scalar_t__) ;
+ int providerName ;
+ TYPE_5__* providerTable ;
+ int providerType ;
+ int remotePath ;
+ size_t stub1 (struct use_connection_context*,char*) ;
+ int userName ;
+ size_t wnet_use_provider (struct use_connection_context*,TYPE_2__*,TYPE_1__*,int ) ;
 
 __attribute__((used)) static DWORD wnet_use_connection( struct use_connection_context *ctxt )
 {
-    WNetProvider *provider = NULL;
+    WNetProvider *provider = ((void*)0);
     DWORD index, ret = WN_NO_NETWORK;
     BOOL redirect = FALSE;
     WCHAR letter[3] = {'Z', ':', 0};
@@ -134,8 +134,8 @@ __attribute__((used)) static DWORD wnet_use_connection( struct use_connection_co
             HKEY network;
             WCHAR subkey[10] = {'N', 'e', 't', 'w', 'o', 'r', 'k', '\\', netres.lpLocalName[0], 0};
 
-            if (RegCreateKeyExW(user_profile, subkey, 0, NULL, REG_OPTION_NON_VOLATILE,
-                                KEY_ALL_ACCESS, NULL, &network, NULL) == ERROR_SUCCESS)
+            if (RegCreateKeyExW(user_profile, subkey, 0, ((void*)0), REG_OPTION_NON_VOLATILE,
+                                KEY_ALL_ACCESS, ((void*)0), &network, ((void*)0)) == ERROR_SUCCESS)
             {
                 DWORD dword_arg = RESOURCETYPE_DISK;
                 DWORD len = (lstrlenW(provider->name) + 1) * sizeof(WCHAR);

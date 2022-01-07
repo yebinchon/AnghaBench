@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_7__ {unsigned int i_title; int i_longest_title; int /*<<< orphan*/  bluray; scalar_t__ b_menu; } ;
-typedef  TYPE_2__ demux_sys_t ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_7__ {unsigned int i_title; int i_longest_title; int bluray; scalar_t__ b_menu; } ;
+typedef TYPE_2__ demux_sys_t ;
 
-/* Variables and functions */
- int BLURAY_TITLE_FIRST_PLAY ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int bd_menu_call (int /*<<< orphan*/ ,int) ; 
- int bd_play_title (int /*<<< orphan*/ ,int) ; 
- scalar_t__ bd_select_title (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,int) ; 
+
+ int BLURAY_TITLE_FIRST_PLAY ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int bd_menu_call (int ,int) ;
+ int bd_play_title (int ,int) ;
+ scalar_t__ bd_select_title (int ,int) ;
+ int msg_Dbg (TYPE_1__*,char*,...) ;
+ int msg_Err (TYPE_1__*,char*,int) ;
 
 __attribute__((used)) static int bluraySetTitle(demux_t *p_demux, int i_title)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static int bluraySetTitle(demux_t *p_demux, int i_title)
         return VLC_SUCCESS;
     }
 
-    /* Looking for the main title, ie the longest duration */
+
     if (i_title < 0)
         i_title = p_sys->i_longest_title;
     else if ((unsigned)i_title > p_sys->i_title)

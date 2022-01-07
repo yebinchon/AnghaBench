@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  conn; } ;
-typedef  int /*<<< orphan*/  TAOS_RES ;
 
-/* Variables and functions */
- TYPE_1__* monitor ; 
- int /*<<< orphan*/  monitorError (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  monitorTrace (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int conn; } ;
+typedef int TAOS_RES ;
+
+
+ TYPE_1__* monitor ;
+ int monitorError (char*,int ,int) ;
+ int monitorTrace (char*,int ,int) ;
 
 void dnodeMontiorInsertAcctCallback(void *param, TAOS_RES *result, int code) {
   if (code < 0) {

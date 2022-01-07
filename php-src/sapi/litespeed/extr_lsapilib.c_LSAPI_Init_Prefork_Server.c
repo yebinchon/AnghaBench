@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int m_iAvoidFork; int m_iMaxChildren; int m_iExtraChildren; int m_iMaxIdleChildren; int m_iChildrenMaxIdleTime; int m_iMaxReqProcessTime; } ;
-typedef  TYPE_1__ lsapi_prefork_server ;
-typedef  int /*<<< orphan*/ * fn_select_t ;
+typedef TYPE_1__ lsapi_prefork_server ;
+typedef int * fn_select_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _SC_PHYS_PAGES ; 
- int /*<<< orphan*/ * g_fnSelect ; 
- TYPE_1__* g_prefork_server ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  getppid () ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int s_max_busy_workers ; 
- int /*<<< orphan*/  s_pid ; 
- int /*<<< orphan*/  s_ppid ; 
- int /*<<< orphan*/  s_total_pages ; 
- int /*<<< orphan*/  setpgid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sysconf (int /*<<< orphan*/ ) ; 
+
+ int _SC_PHYS_PAGES ;
+ int * g_fnSelect ;
+ TYPE_1__* g_prefork_server ;
+ int getpid () ;
+ int getppid () ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int s_max_busy_workers ;
+ int s_pid ;
+ int s_ppid ;
+ int s_total_pages ;
+ int setpgid (int ,int ) ;
+ int sysconf (int ) ;
 
 int LSAPI_Init_Prefork_Server( int max_children, fn_select_t fp, int avoidFork )
 {
@@ -47,15 +47,15 @@ int LSAPI_Init_Prefork_Server( int max_children, fn_select_t fp, int avoidFork )
         return -1;
     memset( g_prefork_server, 0, sizeof( lsapi_prefork_server ) );
 
-    if ( fp != NULL )
+    if ( fp != ((void*)0) )
         g_fnSelect = fp;
 
     s_ppid = getppid();
     s_pid = getpid();
     setpgid( s_pid, s_pid );
-#if defined(linux) || defined(__linux) || defined(__linux__) || defined(__gnu_linux__)
+
     s_total_pages = sysconf(_SC_PHYS_PAGES);
-#endif
+
     g_prefork_server->m_iAvoidFork = avoidFork;
     g_prefork_server->m_iMaxChildren = max_children;
 

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  AccountName; } ;
-typedef  TYPE_1__ RPC_CLIENT_DELETE_ACCOUNT ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackAddUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int AccountName; } ;
+typedef TYPE_1__ RPC_CLIENT_DELETE_ACCOUNT ;
+typedef int PACK ;
+
+
+ int PackAddUniStr (int *,char*,int ) ;
 
 void OutRpcClientDeleteAccount(PACK *p, RPC_CLIENT_DELETE_ACCOUNT *a)
 {
-	// Validate arguments
-	if (a == NULL || p == NULL)
-	{
-		return;
-	}
 
-	PackAddUniStr(p, "AccountName", a->AccountName);
+ if (a == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ PackAddUniStr(p, "AccountName", a->AccountName);
 }

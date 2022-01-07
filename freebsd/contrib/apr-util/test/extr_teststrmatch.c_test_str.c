@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_strmatch_pattern ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_PTR_EQUAL (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  ABTS_PTR_NOTNULL (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- char* apr_strmatch (int /*<<< orphan*/  const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_strmatch_precompile (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * p ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int apr_strmatch_pattern ;
+typedef int apr_pool_t ;
+typedef int abts_case ;
+
+
+ int ABTS_PTR_EQUAL (int *,char const*,char const*) ;
+ int ABTS_PTR_NOTNULL (int *,int const*) ;
+ char* apr_strmatch (int const*,char const*,int ) ;
+ int * apr_strmatch_precompile (int *,char*,int) ;
+ int * p ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void test_str(abts_case *tc, void *data)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static void test_str(abts_case *tc, void *data)
     const apr_strmatch_pattern *pattern_nocase;
     const apr_strmatch_pattern *pattern_onechar;
     const apr_strmatch_pattern *pattern_zero;
-    const char *match = NULL;
+    const char *match = ((void*)0);
     const char *input1 = "string that contains a patterN...";
     const char *input2 = "string that contains a pattern...";
     const char *input3 = "pattern at the start of a string";
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_str(abts_case *tc, void *data)
 
     pattern = apr_strmatch_precompile(pool, "pattern", 1);
     ABTS_PTR_NOTNULL(tc, pattern);
- 
+
     pattern_nocase = apr_strmatch_precompile(pool, "pattern", 0);
     ABTS_PTR_NOTNULL(tc, pattern_nocase);
 
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_str(abts_case *tc, void *data)
     ABTS_PTR_NOTNULL(tc, pattern_zero);
 
     match = apr_strmatch(pattern, input1, strlen(input1));
-    ABTS_PTR_EQUAL(tc, NULL, match);
+    ABTS_PTR_EQUAL(tc, ((void*)0), match);
 
     match = apr_strmatch(pattern, input2, strlen(input2));
     ABTS_PTR_EQUAL(tc, input2 + 23, match);
@@ -71,7 +71,7 @@ __attribute__((used)) static void test_str(abts_case *tc, void *data)
     ABTS_PTR_EQUAL(tc, input4 + 24, match);
 
     match = apr_strmatch(pattern, input5, strlen(input5));
-    ABTS_PTR_EQUAL(tc, NULL, match);
+    ABTS_PTR_EQUAL(tc, ((void*)0), match);
 
     match = apr_strmatch(pattern, input6, strlen(input6));
     ABTS_PTR_EQUAL(tc, input6 + 35, match);

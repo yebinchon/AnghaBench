@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  SAFEARRAY ;
-typedef  size_t LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * SafeArrayCreateVector (int,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  SafeArrayDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SafeArrayPutElement (int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ ) ; 
- int VT_ARRAY ; 
- int VT_BSTR ; 
- int /*<<< orphan*/  set_variant (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VARIANT ;
+typedef int SAFEARRAY ;
+typedef size_t LONG ;
+typedef int HRESULT ;
+typedef size_t DWORD ;
+typedef int BSTR ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int * SafeArrayCreateVector (int,int ,size_t) ;
+ int SafeArrayDestroy (int *) ;
+ int SafeArrayPutElement (int *,size_t*,int ) ;
+ int VT_ARRAY ;
+ int VT_BSTR ;
+ int set_variant (int,int ,int *,int *) ;
 
 __attribute__((used)) static HRESULT to_bstr_array( BSTR *strings, DWORD count, VARIANT *var )
 {

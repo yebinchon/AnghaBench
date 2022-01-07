@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  sdmmc_card_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SLC0TX_LINK ; 
- int /*<<< orphan*/  SLCCONF1 ; 
- int SLC_SLC0_RX_STITCH_EN ; 
- int SLC_SLC0_TXLINK_START ; 
- int SLC_SLC0_TX_STITCH_EN ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  slave_slc_reg_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  slave_slc_reg_write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int sdmmc_card_t ;
+
+
+ int SLC0TX_LINK ;
+ int SLCCONF1 ;
+ int SLC_SLC0_RX_STITCH_EN ;
+ int SLC_SLC0_TXLINK_START ;
+ int SLC_SLC0_TX_STITCH_EN ;
+ int TEST_ESP_OK (int ) ;
+ int printf (char*) ;
+ int slave_slc_reg_read (int *,int ,int*) ;
+ int slave_slc_reg_write (int *,int ,int) ;
 
 __attribute__((used)) static void esp32_slave_init_extra(sdmmc_card_t* card)
 {

@@ -1,95 +1,95 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  FD31_DATA ;
 
-/* Variables and functions */
- int CBN_SELCHANGE ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FD31_DirListDblClick (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  FD31_DiskChange (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  FD31_FileListSelect (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  FD31_FileTypeChange (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  FD31_StripEditControl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FD31_Validate (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  IDABORT 136 
-#define  IDCANCEL 135 
-#define  IDOK 134 
- int LBN_DBLCLK ; 
- int LBN_SELCHANGE ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_COMMAND ; 
-#define  chx1 133 
-#define  cmb1 132 
-#define  cmb2 131 
-#define  lst1 130 
-#define  lst2 129 
-#define  pshHelp 128 
+
+
+
+typedef int UINT ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int FD31_DATA ;
+
+
+ int CBN_SELCHANGE ;
+ int EndDialog (int ,int ) ;
+ int FALSE ;
+ int FD31_DirListDblClick (int const*) ;
+ int FD31_DiskChange (int const*) ;
+ int FD31_FileListSelect (int const*) ;
+ int FD31_FileTypeChange (int const*) ;
+ int FD31_StripEditControl (int ) ;
+ int FD31_Validate (int const*,int *,int,int ,int ) ;
+
+
+
+ int LBN_DBLCLK ;
+ int LBN_SELCHANGE ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int WM_COMMAND ;
+
+
+
+
+
+
 
 __attribute__((used)) static LRESULT FD31_WMCommand( HWND hWnd, LPARAM lParam, UINT notification,
-			       UINT control, const FD31_DATA *lfs )
+          UINT control, const FD31_DATA *lfs )
 {
     switch (control)
     {
-        case lst1: /* file list */
+        case 130:
         FD31_StripEditControl(hWnd);
         if (notification == LBN_DBLCLK)
         {
-            return SendMessageW(hWnd, WM_COMMAND, IDOK, 0);
+            return SendMessageW(hWnd, WM_COMMAND, 134, 0);
         }
         else if (notification == LBN_SELCHANGE)
             return FD31_FileListSelect( lfs );
         break;
 
-        case lst2: /* directory list */
+        case 129:
         FD31_StripEditControl(hWnd);
         if (notification == LBN_DBLCLK)
             return FD31_DirListDblClick( lfs );
         break;
 
-        case cmb1: /* file type drop list */
+        case 132:
         if (notification == CBN_SELCHANGE)
             return FD31_FileTypeChange( lfs );
         break;
 
-        case chx1:
+        case 133:
         break;
 
-        case pshHelp:
+        case 128:
         break;
 
-        case cmb2: /* disk dropdown combo */
+        case 131:
         if (notification == CBN_SELCHANGE)
             return FD31_DiskChange( lfs );
         break;
 
-        case IDOK:
+        case 134:
         TRACE("OK pressed\n");
-        if (FD31_Validate( lfs, NULL, control, 0, FALSE ))
+        if (FD31_Validate( lfs, ((void*)0), control, 0, FALSE ))
             EndDialog(hWnd, TRUE);
         return TRUE;
 
-        case IDCANCEL:
+        case 135:
         EndDialog(hWnd, FALSE);
         return TRUE;
 
-        case IDABORT: /* can be sent by the hook procedure */
+        case 136:
         EndDialog(hWnd, TRUE);
         return TRUE;
     }

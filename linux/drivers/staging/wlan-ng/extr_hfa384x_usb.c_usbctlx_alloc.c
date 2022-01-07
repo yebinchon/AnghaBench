@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hfa384x_usbctlx {int /*<<< orphan*/  done; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ in_interrupt () ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- struct hfa384x_usbctlx* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct hfa384x_usbctlx {int done; } ;
+
+
+ int GFP_ATOMIC ;
+ int GFP_KERNEL ;
+ scalar_t__ in_interrupt () ;
+ int init_completion (int *) ;
+ struct hfa384x_usbctlx* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct hfa384x_usbctlx *usbctlx_alloc(void)
 {
-	struct hfa384x_usbctlx *ctlx;
+ struct hfa384x_usbctlx *ctlx;
 
-	ctlx = kzalloc(sizeof(*ctlx),
-		       in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
-	if (ctlx)
-		init_completion(&ctlx->done);
+ ctlx = kzalloc(sizeof(*ctlx),
+         in_interrupt() ? GFP_ATOMIC : GFP_KERNEL);
+ if (ctlx)
+  init_completion(&ctlx->done);
 
-	return ctlx;
+ return ctlx;
 }

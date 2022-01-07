@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_bignum {int dummy; } ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int BN_cmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+ int BN_cmp (int const*,int const*) ;
 
 int crypto_bignum_cmp(const struct crypto_bignum *a,
-		      const struct crypto_bignum *b)
+        const struct crypto_bignum *b)
 {
-	return BN_cmp((const BIGNUM *) a, (const BIGNUM *) b);
+ return BN_cmp((const BIGNUM *) a, (const BIGNUM *) b);
 }

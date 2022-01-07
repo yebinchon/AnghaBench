@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tbuf ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tbuf ;
 struct TYPE_4__ {unsigned char* data; int length; } ;
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  TYPE_1__ ASN1_OBJECT ;
+typedef int BIGNUM ;
+typedef TYPE_1__ ASN1_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_snprintf (char*,int,char*,unsigned long) ; 
- int /*<<< orphan*/  BN_add_word (int /*<<< orphan*/ *,unsigned char) ; 
- char* BN_bn2dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_lshift (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  BN_sub_word (int /*<<< orphan*/ *,int) ; 
- scalar_t__ DECIMAL_SIZE (unsigned long) ; 
- int NID_undef ; 
- char* OBJ_nid2ln (int) ; 
- char* OBJ_nid2sn (int) ; 
- int OBJ_obj2nid (TYPE_1__ const*) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- int /*<<< orphan*/  OPENSSL_strlcpy (char*,char const*,int) ; 
- long ULONG_MAX ; 
- int strlen (char const*) ; 
+
+ int BIO_snprintf (char*,int,char*,unsigned long) ;
+ int BN_add_word (int *,unsigned char) ;
+ char* BN_bn2dec (int *) ;
+ int BN_free (int *) ;
+ int BN_lshift (int *,int *,int) ;
+ int * BN_new () ;
+ int BN_set_word (int *,unsigned long) ;
+ int BN_sub_word (int *,int) ;
+ scalar_t__ DECIMAL_SIZE (unsigned long) ;
+ int NID_undef ;
+ char* OBJ_nid2ln (int) ;
+ char* OBJ_nid2sn (int) ;
+ int OBJ_obj2nid (TYPE_1__ const*) ;
+ int OPENSSL_free (char*) ;
+ int OPENSSL_strlcpy (char*,char const*,int) ;
+ long ULONG_MAX ;
+ int strlen (char const*) ;
 
 int OBJ_obj2txt(char *buf, int buf_len, const ASN1_OBJECT *a, int no_name)
 {
@@ -43,17 +43,17 @@ int OBJ_obj2txt(char *buf, int buf_len, const ASN1_OBJECT *a, int no_name)
     const unsigned char *p;
     char tbuf[DECIMAL_SIZE(i) + DECIMAL_SIZE(l) + 2];
 
-    /* Ensure that, at every state, |buf| is NUL-terminated. */
+
     if (buf && buf_len > 0)
         buf[0] = '\0';
 
-    if ((a == NULL) || (a->data == NULL))
+    if ((a == ((void*)0)) || (a->data == ((void*)0)))
         return 0;
 
     if (!no_name && (nid = OBJ_obj2nid(a)) != NID_undef) {
         const char *s;
         s = OBJ_nid2ln(nid);
-        if (s == NULL)
+        if (s == ((void*)0))
             s = OBJ_nid2sn(nid);
         if (s) {
             if (buf)
@@ -67,7 +67,7 @@ int OBJ_obj2txt(char *buf, int buf_len, const ASN1_OBJECT *a, int no_name)
     p = a->data;
 
     first = 1;
-    bl = NULL;
+    bl = ((void*)0);
 
     while (len > 0) {
         l = 0;
@@ -85,7 +85,7 @@ int OBJ_obj2txt(char *buf, int buf_len, const ASN1_OBJECT *a, int no_name)
             if (!(c & 0x80))
                 break;
             if (!use_bn && (l > (ULONG_MAX >> 7L))) {
-                if (bl == NULL && (bl = BN_new()) == NULL)
+                if (bl == ((void*)0) && (bl = BN_new()) == ((void*)0))
                     goto err;
                 if (!BN_set_word(bl, l))
                     goto err;

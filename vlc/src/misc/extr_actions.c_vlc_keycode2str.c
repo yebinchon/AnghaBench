@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint_fast32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint_fast32_t ;
 struct TYPE_2__ {uintptr_t i_code; char* psz; } ;
 
-/* Variables and functions */
- size_t KEYS_COUNT ; 
- int KEY_MODIFIER ; 
- int KEY_MODIFIER_ALT ; 
- int KEY_MODIFIER_COMMAND ; 
- int KEY_MODIFIER_CTRL ; 
- int KEY_MODIFIER_META ; 
- int KEY_MODIFIER_SHIFT ; 
- char const* N_ (char*) ; 
- int asprintf (char**,char*,char*,char*,char*,char*,char*,char const*) ; 
- char const* nooptext (char const*) ; 
- TYPE_1__* s_keys ; 
- int /*<<< orphan*/ * utf8_cp (uintptr_t,char*) ; 
- char const* vlc_gettext (char const*) ; 
+
+ size_t KEYS_COUNT ;
+ int KEY_MODIFIER ;
+ int KEY_MODIFIER_ALT ;
+ int KEY_MODIFIER_COMMAND ;
+ int KEY_MODIFIER_CTRL ;
+ int KEY_MODIFIER_META ;
+ int KEY_MODIFIER_SHIFT ;
+ char const* N_ (char*) ;
+ int asprintf (char**,char*,char*,char*,char*,char*,char*,char const*) ;
+ char const* nooptext (char const*) ;
+ TYPE_1__* s_keys ;
+ int * utf8_cp (uintptr_t,char*) ;
+ char const* vlc_gettext (char const*) ;
 
 char *vlc_keycode2str (uint_fast32_t code, bool locale)
 {
@@ -43,8 +43,8 @@ char *vlc_keycode2str (uint_fast32_t code, bool locale)
             goto found;
         }
 
-    if (utf8_cp (key, buf) == NULL)
-        return NULL;
+    if (utf8_cp (key, buf) == ((void*)0))
+        return ((void*)0);
     name = buf;
 
 found:
@@ -55,6 +55,6 @@ found:
                   (code & KEY_MODIFIER_META) ? tr(N_("Meta+")) : "",
                   (code & KEY_MODIFIER_COMMAND) ? tr(N_("Command+")) : "",
                   tr(name)) == -1)
-        return NULL;
+        return ((void*)0);
     return str;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct metafile {struct aio_connection* aio; scalar_t__ data; } ;
 struct connection {int dummy; } ;
 struct aio_connection {scalar_t__ basic_type; scalar_t__ extra; } ;
 struct TYPE_2__ {int user_id; int offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_use (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ct_aio ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int index_large_data_offset ; 
- struct metafile* large_metafiles ; 
- TYPE_1__* large_users ; 
- int large_users_number ; 
- int /*<<< orphan*/  metafile_free (scalar_t__,int) ; 
- int /*<<< orphan*/  metafiles_load_errors ; 
- int /*<<< orphan*/  metafiles_load_success ; 
- int /*<<< orphan*/  metafiles_loaded ; 
- int /*<<< orphan*/  stderr ; 
- int tot_aio_loaded_bytes ; 
- int verbosity ; 
+
+ int add_use (int) ;
+ int assert (int) ;
+ scalar_t__ ct_aio ;
+ int fprintf (int ,char*,...) ;
+ int index_large_data_offset ;
+ struct metafile* large_metafiles ;
+ TYPE_1__* large_users ;
+ int large_users_number ;
+ int metafile_free (scalar_t__,int) ;
+ int metafiles_load_errors ;
+ int metafiles_load_success ;
+ int metafiles_loaded ;
+ int stderr ;
+ int tot_aio_loaded_bytes ;
+ int verbosity ;
 
 int onload_metafile (struct connection *c, int read_bytes) {
   if (verbosity >= 2) {
@@ -42,7 +42,7 @@ int onload_metafile (struct connection *c, int read_bytes) {
   struct metafile *meta = (struct metafile *) a->extra;
 
   assert (a->basic_type == ct_aio);
-  assert (meta != NULL);
+  assert (meta != ((void*)0));
 
   if (meta->aio != a) {
     fprintf (stderr, "assertion (meta->aio == a) will fail\n");
@@ -62,12 +62,12 @@ int onload_metafile (struct connection *c, int read_bytes) {
     if (verbosity >= 0) {
       fprintf (stderr, "ERROR reading metafile %d for large user %d at position %lld: read %d bytes out of %ld: %m\n", pos, large_users[pos].user_id, index_large_data_offset + sizeof (long long) * (long long)large_users[pos].offset, read_bytes, (long)sizeof (long long) * (large_users[pos + 1].offset - large_users[pos].offset));
     }
-    meta->aio = NULL;
+    meta->aio = ((void*)0);
     metafile_free (meta->data, sizeof (long long) * (large_users[pos + 1].offset - large_users[pos].offset));
     meta->data = 0;
     metafiles_load_errors ++;
   } else {
-    meta->aio = NULL;
+    meta->aio = ((void*)0);
     metafiles_loaded ++;
     add_use (pos);
     metafiles_load_success ++;

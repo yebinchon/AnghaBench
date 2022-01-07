@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CAN_TypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISABLE ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/  IS_CAN_ALL_PERIPH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RCC_APB1PeriphResetCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB1Periph_CAN ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int CAN_TypeDef ;
+
+
+ int DISABLE ;
+ int ENABLE ;
+ int IS_CAN_ALL_PERIPH (int *) ;
+ int RCC_APB1PeriphResetCmd (int ,int ) ;
+ int RCC_APB1Periph_CAN ;
+ int assert_param (int ) ;
 
 void CAN_DeInit(CAN_TypeDef* CANx)
 {
-  /* Check the parameters */
+
   assert_param(IS_CAN_ALL_PERIPH(CANx));
- 
-  /* Enable CAN reset state */
+
+
   RCC_APB1PeriphResetCmd(RCC_APB1Periph_CAN, ENABLE);
-  /* Release CAN from reset state */
+
   RCC_APB1PeriphResetCmd(RCC_APB1Periph_CAN, DISABLE);
 }

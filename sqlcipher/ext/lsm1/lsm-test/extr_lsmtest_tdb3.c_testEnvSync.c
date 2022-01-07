@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct timeval {int tv_sec; int tv_usec; } ;
-typedef  int /*<<< orphan*/  lsm_file ;
-struct TYPE_9__ {int (* xSync ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__ lsm_env ;
+typedef int lsm_file ;
+struct TYPE_9__ {int (* xSync ) (int ) ;} ;
+typedef TYPE_2__ lsm_env ;
 struct TYPE_12__ {int nSector; TYPE_1__* aSector; } ;
-struct TYPE_11__ {int bCrashed; scalar_t__ nAutoCrash; int /*<<< orphan*/  pWriteCtx; int /*<<< orphan*/  (* xWriteHook ) (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ;scalar_t__ bPrepareCrash; TYPE_5__* aFile; } ;
-struct TYPE_10__ {size_t bLog; int /*<<< orphan*/  pReal; TYPE_4__* pDb; } ;
+struct TYPE_11__ {int bCrashed; scalar_t__ nAutoCrash; int pWriteCtx; int (* xWriteHook ) (int ,size_t,int ,int ,int) ;scalar_t__ bPrepareCrash; TYPE_5__* aFile; } ;
+struct TYPE_10__ {size_t bLog; int pReal; TYPE_4__* pDb; } ;
 struct TYPE_8__ {scalar_t__ aOld; } ;
-typedef  TYPE_3__ LsmFile ;
-typedef  TYPE_4__ LsmDb ;
-typedef  TYPE_5__ FileData ;
+typedef TYPE_3__ LsmFile ;
+typedef TYPE_4__ LsmDb ;
+typedef TYPE_5__ FileData ;
 
-/* Variables and functions */
- int LSM_IOERR ; 
- int /*<<< orphan*/  doSystemCrash (TYPE_4__*) ; 
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int stub3 (int /*<<< orphan*/ ) ; 
- TYPE_2__* tdb_lsm_env () ; 
- int /*<<< orphan*/  testFree (scalar_t__) ; 
+
+ int LSM_IOERR ;
+ int doSystemCrash (TYPE_4__*) ;
+ int gettimeofday (struct timeval*,int ) ;
+ int stub1 (int ) ;
+ int stub2 (int ,size_t,int ,int ,int) ;
+ int stub3 (int ) ;
+ TYPE_2__* tdb_lsm_env () ;
+ int testFree (scalar_t__) ;
 
 __attribute__((used)) static int testEnvSync(lsm_file *pFile){
   lsm_env *pRealEnv = tdb_lsm_env();

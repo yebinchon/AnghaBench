@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ file; int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ hb_work_private_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ file; int ctx; } ;
+typedef TYPE_1__ hb_work_private_t ;
 struct TYPE_6__ {TYPE_1__* private_data; } ;
-typedef  TYPE_2__ hb_work_object_t ;
+typedef TYPE_2__ hb_work_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  th_encode_free (int /*<<< orphan*/ ) ; 
+
+ int fclose (scalar_t__) ;
+ int free (TYPE_1__*) ;
+ int th_encode_free (int ) ;
 
 void enctheoraClose( hb_work_object_t * w )
 {
     hb_work_private_t * pv = w->private_data;
 
-    if (pv == NULL)
+    if (pv == ((void*)0))
     {
         return;
     }
@@ -38,5 +38,5 @@ void enctheoraClose( hb_work_object_t * w )
         fclose( pv->file );
     }
     free( pv );
-    w->private_data = NULL;
+    w->private_data = ((void*)0);
 }

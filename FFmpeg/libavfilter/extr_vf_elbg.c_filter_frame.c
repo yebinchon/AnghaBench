@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
 struct TYPE_17__ {int h; int w; TYPE_2__* dst; } ;
-struct TYPE_16__ {size_t** data; int /*<<< orphan*/ * linesize; int /*<<< orphan*/  pts; } ;
-struct TYPE_15__ {size_t* rgba_map; size_t* codeword; int* codebook; int codebook_length; size_t* codeword_closest_codebook_idxs; TYPE_1__* pix_desc; scalar_t__ pal8; int /*<<< orphan*/  lfg; int /*<<< orphan*/  max_steps_nb; int /*<<< orphan*/  codeword_length; } ;
+struct TYPE_16__ {size_t** data; int * linesize; int pts; } ;
+struct TYPE_15__ {size_t* rgba_map; size_t* codeword; int* codebook; int codebook_length; size_t* codeword_closest_codebook_idxs; TYPE_1__* pix_desc; scalar_t__ pal8; int lfg; int max_steps_nb; int codeword_length; } ;
 struct TYPE_14__ {TYPE_5__** outputs; TYPE_3__* priv; } ;
-struct TYPE_13__ {int /*<<< orphan*/  nb_components; } ;
-typedef  TYPE_3__ ELBGContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVFilterLink ;
+struct TYPE_13__ {int nb_components; } ;
+typedef TYPE_3__ ELBGContext ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- size_t B ; 
- int /*<<< orphan*/  ENOMEM ; 
- size_t G ; 
- int NB_COMPONENTS ; 
- size_t R ; 
- int /*<<< orphan*/  av_frame_free (TYPE_4__**) ; 
- int /*<<< orphan*/  avpriv_do_elbg (size_t*,int,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_init_elbg (size_t*,int,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ,size_t*,int /*<<< orphan*/ *) ; 
- int ff_filter_frame (TYPE_5__*,TYPE_4__*) ; 
- TYPE_4__* ff_get_video_buffer (TYPE_5__*,int,int) ; 
+
+ int AVERROR (int ) ;
+ size_t B ;
+ int ENOMEM ;
+ size_t G ;
+ int NB_COMPONENTS ;
+ size_t R ;
+ int av_frame_free (TYPE_4__**) ;
+ int avpriv_do_elbg (size_t*,int,int ,int*,int,int ,size_t*,int *) ;
+ int avpriv_init_elbg (size_t*,int,int ,int*,int,int ,size_t*,int *) ;
+ int ff_filter_frame (TYPE_5__*,TYPE_4__*) ;
+ TYPE_4__* ff_get_video_buffer (TYPE_5__*,int,int) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
 {
@@ -45,11 +45,11 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *fra
     int i, j, k;
     uint8_t *p, *p0;
 
-    const uint8_t r_idx  = elbg->rgba_map[R];
-    const uint8_t g_idx  = elbg->rgba_map[G];
-    const uint8_t b_idx  = elbg->rgba_map[B];
+    const uint8_t r_idx = elbg->rgba_map[R];
+    const uint8_t g_idx = elbg->rgba_map[G];
+    const uint8_t b_idx = elbg->rgba_map[B];
 
-    /* build the codeword */
+
     p0 = frame->data[0];
     k = 0;
     for (i = 0; i < inlink->h; i++) {
@@ -63,7 +63,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *fra
         p0 += frame->linesize[0];
     }
 
-    /* compute the codebook */
+
     avpriv_init_elbg(elbg->codeword, NB_COMPONENTS, elbg->codeword_length,
                      elbg->codebook, elbg->codebook_length, elbg->max_steps_nb,
                      elbg->codeword_closest_codebook_idxs, &elbg->lfg);
@@ -86,9 +86,9 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *fra
         p0 = (uint8_t *)out->data[0];
 
         for (i = 0; i < elbg->codebook_length; i++) {
-            pal[i] =  0xFFU                 << 24  |
-                     (elbg->codebook[i*3  ] << 16) |
-                     (elbg->codebook[i*3+1] <<  8) |
+            pal[i] = 0xFFU << 24 |
+                     (elbg->codebook[i*3 ] << 16) |
+                     (elbg->codebook[i*3+1] << 8) |
                       elbg->codebook[i*3+2];
         }
 
@@ -104,7 +104,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *fra
         return ff_filter_frame(outlink, out);
     }
 
-    /* fill the output with the codebook values */
+
     p0 = frame->data[0];
 
     k = 0;

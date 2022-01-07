@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stdout ; 
+ int fprintf (int ,char*) ;
+ int stdout ;
 
 void help_display()
 {
-    /*             "1234567890123456789012345678901234567890123456789012345678901234567890123456789" */
+
     fprintf(stdout, "                Help for the 'mj2_to_metadata' Program\n");
     fprintf(stdout, "                ======================================\n");
     fprintf(stdout, "The -h option displays this information on screen.\n\n");
@@ -91,7 +83,7 @@ void help_display()
             "                the output file: -v \"SYSTEM mj2_to_metadata.dtd\"\n");
     fprintf(stdout,
             "                \"PUBLIC\" is used with an access protocol (e.g., http:) + URL.\n");
-    /* More to come */
+
     fprintf(stdout, "\n");
-    /*             "1234567890123456789012345678901234567890123456789012345678901234567890123456789" */
+
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int filtered_lines; int /*<<< orphan*/  refilter; int /*<<< orphan*/  text; int /*<<< orphan*/ * line_map; int /*<<< orphan*/  sw; int /*<<< orphan*/ * list_view; } ;
-typedef  TYPE_1__ RofiViewState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOVE_END ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_free (char*) ; 
- unsigned int listview_get_selected (int /*<<< orphan*/ *) ; 
- char* mode_get_completion (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  textbox_keybinding (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  textbox_text (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int filtered_lines; int refilter; int text; int * line_map; int sw; int * list_view; } ;
+typedef TYPE_1__ RofiViewState ;
+
+
+ int MOVE_END ;
+ int TRUE ;
+ int g_free (char*) ;
+ unsigned int listview_get_selected (int *) ;
+ char* mode_get_completion (int ,int ) ;
+ int textbox_keybinding (int ,int ) ;
+ int textbox_text (int ,char*) ;
 
 __attribute__((used)) inline static void rofi_view_nav_row_select ( RofiViewState *state )
 {
-    if ( state->list_view == NULL ) {
+    if ( state->list_view == ((void*)0) ) {
         return;
     }
     unsigned int selected = listview_get_selected ( state->list_view );
-    // If a valid item is selected, return that..
+
     if ( selected < state->filtered_lines ) {
         char *str = mode_get_completion ( state->sw, state->line_map[selected] );
         textbox_text ( state->text, str );

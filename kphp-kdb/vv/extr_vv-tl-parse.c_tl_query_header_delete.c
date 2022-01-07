@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tl_query_header {scalar_t__ ref_cnt; int string_forward_keys_num; scalar_t__* string_forward_keys; scalar_t__ string_forward; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  zfree (struct tl_query_header*,int) ; 
+
+ int assert (int) ;
+ int free (scalar_t__) ;
+ int zfree (struct tl_query_header*,int) ;
 
 void tl_query_header_delete (struct tl_query_header *h) {
   h->ref_cnt --;

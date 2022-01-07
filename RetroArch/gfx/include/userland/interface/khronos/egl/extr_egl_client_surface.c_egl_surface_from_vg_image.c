@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ VGImage ;
-struct TYPE_5__ {int swap_interval; int server_owned; int is_destroyed; int is_locked; int buffers; int avail_buffers_valid; int /*<<< orphan*/  alphaformat; int /*<<< orphan*/  colorspace; scalar_t__ height; scalar_t__ width; scalar_t__ serverbuffer; scalar_t__ mapped_buffer; scalar_t__ context_binding_count; scalar_t__* pixmap_server_handle; scalar_t__ pixmap; void* texture_target; void* texture_format; scalar_t__ mipmap_level; scalar_t__ mipmap_texture; scalar_t__ largest_pbuffer; scalar_t__ win; scalar_t__ config; int /*<<< orphan*/  type; int /*<<< orphan*/  name; } ;
-typedef  scalar_t__ KHRN_IMAGE_FORMAT_T ;
-typedef  scalar_t__ EGLint ;
-typedef  void* EGLenum ;
-typedef  TYPE_1__ EGL_SURFACE_T ;
-typedef  int /*<<< orphan*/  EGLSurface ;
-typedef  scalar_t__ EGLConfig ;
-typedef  scalar_t__ EGLBoolean ;
-typedef  int /*<<< orphan*/  CLIENT_THREAD_STATE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CLIENT_GET_THREAD_STATE () ; 
- int /*<<< orphan*/  EGLINTCREATEPBUFFERFROMVGIMAGE_ID ; 
- scalar_t__ EGL_BAD_ALLOC ; 
- int /*<<< orphan*/  EGL_DEPTH_SIZE ; 
- int /*<<< orphan*/  EGL_STENCIL_SIZE ; 
- scalar_t__ EGL_SUCCESS ; 
- scalar_t__ IMAGE_FORMAT_INVALID ; 
- scalar_t__ IMAGE_FORMAT_LIN ; 
- scalar_t__ IMAGE_FORMAT_PRE ; 
- int /*<<< orphan*/  LINEAR ; 
- int /*<<< orphan*/  NONPRE ; 
- int /*<<< orphan*/  PBUFFER ; 
- int /*<<< orphan*/  PRE ; 
- int /*<<< orphan*/  RPC_CALL9_OUT_CTRL (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  RPC_UINT (scalar_t__) ; 
- int /*<<< orphan*/  SRGB ; 
- int /*<<< orphan*/  eglIntCreatePbufferFromVGImage_impl ; 
- int /*<<< orphan*/  egl_config_get_attrib (int,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ egl_config_get_color_format (int) ; 
- scalar_t__ egl_config_get_depth_format (int) ; 
- scalar_t__ egl_config_get_mask_format (int) ; 
- scalar_t__ egl_config_get_multisample_format (int) ; 
- TYPE_1__* egl_surface_pool_alloc () ; 
- int /*<<< orphan*/  egl_surface_pool_free (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ VGImage ;
+struct TYPE_5__ {int swap_interval; int server_owned; int is_destroyed; int is_locked; int buffers; int avail_buffers_valid; int alphaformat; int colorspace; scalar_t__ height; scalar_t__ width; scalar_t__ serverbuffer; scalar_t__ mapped_buffer; scalar_t__ context_binding_count; scalar_t__* pixmap_server_handle; scalar_t__ pixmap; void* texture_target; void* texture_format; scalar_t__ mipmap_level; scalar_t__ mipmap_texture; scalar_t__ largest_pbuffer; scalar_t__ win; scalar_t__ config; int type; int name; } ;
+typedef scalar_t__ KHRN_IMAGE_FORMAT_T ;
+typedef scalar_t__ EGLint ;
+typedef void* EGLenum ;
+typedef TYPE_1__ EGL_SURFACE_T ;
+typedef int EGLSurface ;
+typedef scalar_t__ EGLConfig ;
+typedef scalar_t__ EGLBoolean ;
+typedef int CLIENT_THREAD_STATE_T ;
+
+
+ int * CLIENT_GET_THREAD_STATE () ;
+ int EGLINTCREATEPBUFFERFROMVGIMAGE_ID ;
+ scalar_t__ EGL_BAD_ALLOC ;
+ int EGL_DEPTH_SIZE ;
+ int EGL_STENCIL_SIZE ;
+ scalar_t__ EGL_SUCCESS ;
+ scalar_t__ IMAGE_FORMAT_INVALID ;
+ scalar_t__ IMAGE_FORMAT_LIN ;
+ scalar_t__ IMAGE_FORMAT_PRE ;
+ int LINEAR ;
+ int NONPRE ;
+ int PBUFFER ;
+ int PRE ;
+ int RPC_CALL9_OUT_CTRL (int ,int *,int ,int ,int ,int ,int ,int ,int ,int ,int ,scalar_t__*) ;
+ int RPC_UINT (scalar_t__) ;
+ int SRGB ;
+ int eglIntCreatePbufferFromVGImage_impl ;
+ int egl_config_get_attrib (int,int ,scalar_t__*) ;
+ scalar_t__ egl_config_get_color_format (int) ;
+ scalar_t__ egl_config_get_depth_format (int) ;
+ scalar_t__ egl_config_get_mask_format (int) ;
+ scalar_t__ egl_config_get_multisample_format (int) ;
+ TYPE_1__* egl_surface_pool_alloc () ;
+ int egl_surface_pool_free (TYPE_1__*) ;
+ int vcos_assert (int) ;
 
 EGL_SURFACE_T *egl_surface_from_vg_image(
    VGImage vg_handle,
@@ -64,8 +64,8 @@ EGL_SURFACE_T *egl_surface_from_vg_image(
    KHRN_IMAGE_FORMAT_T depth;
    KHRN_IMAGE_FORMAT_T mask;
    KHRN_IMAGE_FORMAT_T multi;
-   EGLint   config_depth_bits;
-   EGLint   config_stencil_bits;
+   EGLint config_depth_bits;
+   EGLint config_stencil_bits;
    uint32_t results[5];
    CLIENT_THREAD_STATE_T *thread = CLIENT_GET_THREAD_STATE();
 
@@ -76,7 +76,7 @@ EGL_SURFACE_T *egl_surface_from_vg_image(
       return 0;
    }
 
-   /* TODO: respect largest_pbuffer? */
+
 
    surface->name = name;
    surface->type = PBUFFER;
@@ -93,22 +93,22 @@ EGL_SURFACE_T *egl_surface_from_vg_image(
    surface->pixmap = 0;
    surface->pixmap_server_handle[0] = 0;
    surface->pixmap_server_handle[1] = (uint32_t)-1;
-   surface->server_owned = false;
+   surface->server_owned = 0;
 
    surface->context_binding_count = 0;
-   surface->is_destroyed = false;
+   surface->is_destroyed = 0;
 
-#if EGL_KHR_lock_surface
-   surface->is_locked = false;
-   surface->mapped_buffer = 0;
-#endif
+
+
+
+
 
    color = egl_config_get_color_format((int)(size_t)config - 1);
    depth = egl_config_get_depth_format((int)(size_t)config - 1);
    mask = egl_config_get_mask_format((int)(size_t)config - 1);
    multi = egl_config_get_multisample_format((int)(size_t)config - 1);
 
-   /* Find depth and stencil bits from chosen config (these may NOT be the same as the underlying format!) */
+
    egl_config_get_attrib((int)(size_t)config - 1, EGL_DEPTH_SIZE, &config_depth_bits);
    egl_config_get_attrib((int)(size_t)config - 1, EGL_STENCIL_SIZE, &config_stencil_bits);
 
@@ -129,7 +129,7 @@ EGL_SURFACE_T *egl_surface_from_vg_image(
                      RPC_UINT(config_stencil_bits),
                      results);
 
-   surface->avail_buffers_valid = false;
+   surface->avail_buffers_valid = 0;
 
    if (results[0]) {
       KHRN_IMAGE_FORMAT_T format = (KHRN_IMAGE_FORMAT_T)results[4];
@@ -138,7 +138,7 @@ EGL_SURFACE_T *egl_surface_from_vg_image(
       surface->width = results[2];
       surface->height = results[3];
 
-      /* TODO: picking apart image formats like this seems messy */
+
       surface->colorspace = (format & IMAGE_FORMAT_LIN) ? LINEAR : SRGB;
       surface->alphaformat = (format & IMAGE_FORMAT_PRE) ? PRE : NONPRE;
       *error = EGL_SUCCESS;

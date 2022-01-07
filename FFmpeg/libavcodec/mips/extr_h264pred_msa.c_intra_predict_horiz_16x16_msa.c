@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *,size_t) ; 
- scalar_t__ __msa_fill_b (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ v16u8 ;
+typedef int uint8_t ;
+typedef size_t int32_t ;
+
+
+ int ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int *,size_t) ;
+ scalar_t__ __msa_fill_b (int ) ;
 
 __attribute__((used)) static void intra_predict_horiz_16x16_msa(uint8_t *src, int32_t src_stride,
                                           uint8_t *dst, int32_t dst_stride)

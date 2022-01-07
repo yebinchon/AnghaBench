@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_RTC_DS1374_ADDR ; 
- int /*<<< orphan*/  RTC_CTL_ADDR ; 
- int RTC_CTL_BIT_WACE ; 
- int cvmx_twsi_read8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cvmx_twsi_write8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int CVMX_RTC_DS1374_ADDR ;
+ int RTC_CTL_ADDR ;
+ int RTC_CTL_BIT_WACE ;
+ int cvmx_twsi_read8 (int ,int ) ;
+ int cvmx_twsi_write8 (int ,int ,int) ;
 
 __attribute__((used)) static int cvmx_rtc_ds1374_alarm_set(int alarm_on)
 {

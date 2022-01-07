@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ra_ctx {struct priv* priv; } ;
-struct TYPE_2__ {int /*<<< orphan*/  num_bos; int /*<<< orphan*/ * bo_queue; } ;
+struct TYPE_2__ {int num_bos; int * bo_queue; } ;
 struct priv {TYPE_1__ gbm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_TARRAY_REMOVE_AT (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
+
+ int MP_TARRAY_REMOVE_AT (int *,int ,int ) ;
+ int talloc_free (int ) ;
 
 __attribute__((used)) static void dequeue_bo(struct ra_ctx *ctx)
 {

@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* bit32u ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DispHex (void*) ; 
- int SRLerrorout (char*,char*) ; 
- int TRUE ; 
- int /*<<< orphan*/  binRecOutByte (void*,char) ; 
- int /*<<< orphan*/  binRecOutProgramStart (void*) ; 
- int /*<<< orphan*/  checksum (char*,int) ; 
- int /*<<< orphan*/  cur_line ; 
- void* gh (char*,int) ; 
- int s1s2s3_total ; 
- int strlen (char*) ; 
+
+
+
+typedef void* bit32u ;
+
+
+ int DispHex (void*) ;
+ int SRLerrorout (char*,char*) ;
+ int TRUE ;
+ int binRecOutByte (void*,char) ;
+ int binRecOutProgramStart (void*) ;
+ int checksum (char*,int) ;
+ int cur_line ;
+ void* gh (char*,int) ;
+ int s1s2s3_total ;
+ int strlen (char*) ;
 
 int srecLine(char *pSrecLine)
 {
     char *scp,ch;
-    int  itmp,count,dat;
+    int itmp,count,dat;
     bit32u adr;
     static bit32u RecordCounter=0;
 
     cur_line++;
     scp=pSrecLine;
-  
+
     if (*pSrecLine!='S')
       return(SRLerrorout("Not an Srecord file",scp));
     pSrecLine++;
     if (strlen(pSrecLine)<4)
       return(SRLerrorout("Srecord too short",scp));
-  
+
     ch=*pSrecLine++;
-  
+
     count=gh(pSrecLine,2);
-  
+
     pSrecLine += 2;
-  
-  //  if(debug)
-  //        printf("count %d, strlen(pSrecLine) = %d, pSrecLine =[%s]\n", count, strlen(pSrecLine), pSrecLine);
+
+
+
      RecordCounter++;
      DispHex(RecordCounter);
-  
+
     if ((count*2) != strlen(pSrecLine)) return(SRLerrorout("Count field larger than record",scp));
-  
+
     if (!checksum(pSrecLine, count)) return(SRLerrorout("Bad Checksum",scp));
-  
+
     switch(ch)
     {
         case '0': if (count<3) return(SRLerrorout("Invalid Srecord count field",scp));
@@ -86,7 +86,7 @@ int srecLine(char *pSrecLine)
         break;
         case '6': return(SRLerrorout("Invalid Srecord type",scp));
         break;
-        case '7': // PROGRAM START
+        case '7':
                   if (count<5) return(SRLerrorout("Invalid Srecord count field",scp));
                   adr=gh(pSrecLine,8); pSrecLine+=8; count-=4;
                   if (count!=1) return(SRLerrorout("Invalid Srecord count field",scp));

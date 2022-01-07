@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lpszFontSearch ;
-typedef  int /*<<< orphan*/  lpszFontPath ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int lpszFontSearch ;
+typedef int lpszFontPath ;
 struct TYPE_7__ {char* cFileName; } ;
-typedef  TYPE_1__ WIN32_FIND_DATAW ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_8__ {int Length; int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_2__ UNICODE_STRING ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int INT ;
-typedef  scalar_t__ HANDLE ;
+typedef TYPE_1__ WIN32_FIND_DATAW ;
+typedef int WCHAR ;
+struct TYPE_8__ {int Length; int Buffer; } ;
+typedef TYPE_2__ UNICODE_STRING ;
+typedef int ULONG ;
+typedef int PVOID ;
+typedef int INT ;
+typedef scalar_t__ HANDLE ;
 
-/* Variables and functions */
- scalar_t__ FindFirstFileW (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  GetWindowsDirectoryW (int /*<<< orphan*/ *,int) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int NtGdiAddFontResourceW (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlDosPathNameToNtPathName_U (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlFreeUnicodeString (TYPE_2__*) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  StringCbCatW (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  StringCbCopyW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+ scalar_t__ FindFirstFileW (int *,TYPE_1__*) ;
+ int GetLastError () ;
+ int GetWindowsDirectoryW (int *,int) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int NtGdiAddFontResourceW (int ,int,int,int ,int ,int *) ;
+ int RtlDosPathNameToNtPathName_U (int *,TYPE_2__*,int *,int *) ;
+ int RtlFreeUnicodeString (TYPE_2__*) ;
+ int RtlInitUnicodeString (TYPE_2__*,int *) ;
+ int SetLastError (int) ;
+ int StringCbCatW (int *,int,char*) ;
+ int StringCbCopyW (int *,int,int *) ;
+ int ok (int,char*,int) ;
+ int skip (char*) ;
 
 void Test_NtGdiAddFontResourceW()
 {
@@ -51,11 +51,11 @@ void Test_NtGdiAddFontResourceW()
     HANDLE hFind;
     ULONG cwc;
 
-    // Create "Font" folder Path
+
     GetWindowsDirectoryW(lpszFontPath, MAX_PATH);
     StringCbCatW(lpszFontPath, sizeof(lpszFontPath), L"\\Fonts\\");
 
-    // Search first .ttf file in Fonts Path
+
     StringCbCopyW(lpszFontSearch, sizeof(lpszFontSearch), lpszFontPath);
     StringCbCatW(lpszFontSearch, sizeof(lpszFontSearch), L"*.ttf");
 
@@ -67,48 +67,48 @@ void Test_NtGdiAddFontResourceW()
         return;
     }
 
-    // File found. Create FontPath to File.
+
     StringCbCatW(lpszFontPath, sizeof(lpszFontPath), FindFileData.cFileName);
 
-    // Fail due "cwc" being zero.
+
     SetLastError(0xdeaddead);
-    RtlInitUnicodeString(&NtAbsPath, NULL);
-    RtlDosPathNameToNtPathName_U(lpszFontPath, &NtAbsPath, NULL, NULL);
+    RtlInitUnicodeString(&NtAbsPath, ((void*)0));
+    RtlDosPathNameToNtPathName_U(lpszFontPath, &NtAbsPath, ((void*)0), ((void*)0));
     cwc = 0;
-    ret =  NtGdiAddFontResourceW(NtAbsPath.Buffer, cwc, 1, 0, 0, 0);
+    ret = NtGdiAddFontResourceW(NtAbsPath.Buffer, cwc, 1, 0, 0, 0);
 
     ok(ret == 0, "Expected 0 files added. Added: %d\n", ret);
     ok(GetLastError() == 0xdeaddead, "Expected 0xdeaddead. Obtained: 0x%lx\n", GetLastError());
 
     RtlFreeUnicodeString(&NtAbsPath);
 
-    // "cwc" must count the null terminator. Otherwise fails.
+
     SetLastError(0xdeaddead);
-    RtlInitUnicodeString(&NtAbsPath, NULL);
-    RtlDosPathNameToNtPathName_U(lpszFontPath, &NtAbsPath, NULL, NULL);
+    RtlInitUnicodeString(&NtAbsPath, ((void*)0));
+    RtlDosPathNameToNtPathName_U(lpszFontPath, &NtAbsPath, ((void*)0), ((void*)0));
     cwc = NtAbsPath.Length / sizeof(WCHAR);
-    ret =  NtGdiAddFontResourceW(NtAbsPath.Buffer, cwc, 1, 0, 0, 0);
+    ret = NtGdiAddFontResourceW(NtAbsPath.Buffer, cwc, 1, 0, 0, 0);
 
     ok(ret == 0, "Expected 0 files added. Added: %d\n", ret);
     ok(GetLastError() == 0xdeaddead, "Expected 0xdeaddead. Obtained: 0x%lx\n", GetLastError());
 
     RtlFreeUnicodeString(&NtAbsPath);
 
-    // Correct "cwc" value.
+
     SetLastError(0xdeaddead);
-    RtlInitUnicodeString(&NtAbsPath, NULL);
-    RtlDosPathNameToNtPathName_U(lpszFontPath, &NtAbsPath, NULL, NULL);
+    RtlInitUnicodeString(&NtAbsPath, ((void*)0));
+    RtlDosPathNameToNtPathName_U(lpszFontPath, &NtAbsPath, ((void*)0), ((void*)0));
     cwc = NtAbsPath.Length / sizeof(WCHAR) + 1;
-    ret =  NtGdiAddFontResourceW(NtAbsPath.Buffer, cwc, 1, 0, 0, 0);
+    ret = NtGdiAddFontResourceW(NtAbsPath.Buffer, cwc, 1, 0, 0, 0);
 
     ok(ret == 1, "Expected 1 files added. Added: %d\n", ret);
     ok(GetLastError() == 0xdeaddead, "Expected 0xdeaddead. Obtained: 0x%lx\n", GetLastError());
 
     RtlFreeUnicodeString(&NtAbsPath);
 
-    // Test an invalid pointer.
+
     SetLastError(0xdeadbeef);
-    ret =  NtGdiAddFontResourceW((PVOID)-4, 123, 1, 0, 0, NULL);
+    ret = NtGdiAddFontResourceW((PVOID)-4, 123, 1, 0, 0, ((void*)0));
 
     ok(ret == 0, "Expected 0 files added. Added: %d\n", ret);
     ok(GetLastError() == 0xdeadbeef, "Expected 0xdeadbeef. Obtained: 0x%lx\n", GetLastError());

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_9__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_14__ TYPE_9__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
 struct TYPE_14__ {scalar_t__ xNext; } ;
-struct TYPE_13__ {int /*<<< orphan*/  nCol; } ;
+struct TYPE_13__ {int nCol; } ;
 struct TYPE_12__ {TYPE_9__* pRoot; } ;
-typedef  int /*<<< orphan*/  Fts5Global ;
-typedef  TYPE_1__ Fts5Expr ;
-typedef  TYPE_2__ Fts5Config ;
+typedef int Fts5Global ;
+typedef TYPE_1__ Fts5Expr ;
+typedef TYPE_2__ Fts5Config ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- char* fts5ExprPrint (TYPE_2__*,TYPE_9__*) ; 
- char* fts5ExprPrintTcl (TYPE_2__*,char const*,TYPE_9__*) ; 
- int /*<<< orphan*/  sqlite3Fts5ConfigFree (TYPE_2__*) ; 
- int sqlite3Fts5ConfigParse (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char const**,TYPE_2__**,char**) ; 
- int /*<<< orphan*/  sqlite3Fts5ExprFree (TYPE_1__*) ; 
- int sqlite3Fts5ExprNew (TYPE_2__*,int /*<<< orphan*/ ,char const*,TYPE_1__**,char**) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (void*) ; 
- scalar_t__ sqlite3_malloc64 (int) ; 
- char* sqlite3_mprintf (char*,...) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_code (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_TRANSIENT ;
+ char* fts5ExprPrint (TYPE_2__*,TYPE_9__*) ;
+ char* fts5ExprPrintTcl (TYPE_2__*,char const*,TYPE_9__*) ;
+ int sqlite3Fts5ConfigFree (TYPE_2__*) ;
+ int sqlite3Fts5ConfigParse (int *,int *,int,char const**,TYPE_2__**,char**) ;
+ int sqlite3Fts5ExprFree (TYPE_1__*) ;
+ int sqlite3Fts5ExprNew (TYPE_2__*,int ,char const*,TYPE_1__**,char**) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_free (void*) ;
+ scalar_t__ sqlite3_malloc64 (int) ;
+ char* sqlite3_mprintf (char*,...) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_error_code (int *,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void fts5ExprFunction(
-  sqlite3_context *pCtx,          /* Function call context */
-  int nArg,                       /* Number of args */
-  sqlite3_value **apVal,          /* Function arguments */
+  sqlite3_context *pCtx,
+  int nArg,
+  sqlite3_value **apVal,
   int bTcl
 ){
   Fts5Global *pGlobal = (Fts5Global*)sqlite3_user_data(pCtx);
@@ -58,9 +58,9 @@ __attribute__((used)) static void fts5ExprFunction(
   int rc;
   int i;
 
-  const char **azConfig;          /* Array of arguments for Fts5Config */
+  const char **azConfig;
   const char *zNearsetCmd = "nearset";
-  int nConfig;                    /* Size of azConfig[] */
+  int nConfig;
   Fts5Config *pConfig = 0;
   int iArg = 1;
 

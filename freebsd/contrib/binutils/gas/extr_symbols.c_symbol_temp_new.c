@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  valueT ;
-typedef  int /*<<< orphan*/  symbolS ;
-typedef  int /*<<< orphan*/  segT ;
-typedef  int /*<<< orphan*/  fragS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAKE_LABEL_NAME ; 
- int /*<<< orphan*/ * symbol_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int valueT ;
+typedef int symbolS ;
+typedef int segT ;
+typedef int fragS ;
+
+
+ int FAKE_LABEL_NAME ;
+ int * symbol_new (int ,int ,int ,int *) ;
 
 symbolS *
 symbol_temp_new (segT seg, valueT ofs, fragS *frag)

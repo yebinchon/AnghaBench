@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__id_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-struct TYPE_4__ {TYPE_2__* fsap_data; int /*<<< orphan*/ * vtable; } ;
-typedef  TYPE_1__ svn_fs_history_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct TYPE_5__ {int /*<<< orphan*/  current_id; int /*<<< orphan*/ * fs; void* next_copy; void* rev_hint; int /*<<< orphan*/ * path_hint; int /*<<< orphan*/  is_interesting; void* revision; int /*<<< orphan*/ * path; } ;
-typedef  TYPE_2__ fs_history_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- void* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  history_vtable ; 
- int /*<<< orphan*/ * svn_fs__canonicalize_abspath (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__id_reset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef void* svn_revnum_t ;
+typedef int svn_fs_x__id_t ;
+typedef int svn_fs_t ;
+struct TYPE_4__ {TYPE_2__* fsap_data; int * vtable; } ;
+typedef TYPE_1__ svn_fs_history_t ;
+typedef int svn_boolean_t ;
+struct TYPE_5__ {int current_id; int * fs; void* next_copy; void* rev_hint; int * path_hint; int is_interesting; void* revision; int * path; } ;
+typedef TYPE_2__ fs_history_data_t ;
+typedef int apr_pool_t ;
+
+
+ void* apr_pcalloc (int *,int) ;
+ int history_vtable ;
+ int * svn_fs__canonicalize_abspath (char const*,int *) ;
+ int svn_fs_x__id_reset (int *) ;
 
 __attribute__((used)) static svn_fs_history_t *
 assemble_history(svn_fs_t *fs,
@@ -46,7 +46,7 @@ assemble_history(svn_fs_t *fs,
   fhd->is_interesting = is_interesting;
   fhd->path_hint = path_hint
                  ? svn_fs__canonicalize_abspath(path_hint, result_pool)
-                 : NULL;
+                 : ((void*)0);
   fhd->rev_hint = rev_hint;
   fhd->next_copy = next_copy;
   fhd->fs = fs;

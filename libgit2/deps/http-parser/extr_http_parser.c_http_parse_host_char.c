@@ -1,88 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum http_host_state { ____Placeholder_http_host_state } http_host_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IS_HEX (char const) ; 
- int /*<<< orphan*/  IS_HOST_CHAR (char const) ; 
- int /*<<< orphan*/  IS_NUM (char const) ; 
- int /*<<< orphan*/  IS_USERINFO_CHAR (char const) ; 
-#define  s_http_host 136 
- int s_http_host_dead ; 
-#define  s_http_host_port 135 
-#define  s_http_host_port_start 134 
-#define  s_http_host_start 133 
-#define  s_http_host_v6 132 
-#define  s_http_host_v6_end 131 
-#define  s_http_host_v6_start 130 
-#define  s_http_userinfo 129 
-#define  s_http_userinfo_start 128 
 
+
+
+typedef enum http_host_state { ____Placeholder_http_host_state } http_host_state ;
+
+
+ int IS_HEX (char const) ;
+ int IS_HOST_CHAR (char const) ;
+ int IS_NUM (char const) ;
+ int IS_USERINFO_CHAR (char const) ;
+
+ int s_http_host_dead ;
 __attribute__((used)) static enum http_host_state
 http_parse_host_char(enum http_host_state s, const char ch) {
   switch(s) {
-    case s_http_userinfo:
-    case s_http_userinfo_start:
+    case 129:
+    case 128:
       if (ch == '@') {
-        return s_http_host_start;
+        return 133;
       }
 
       if (IS_USERINFO_CHAR(ch)) {
-        return s_http_userinfo;
+        return 129;
       }
       break;
 
-    case s_http_host_start:
+    case 133:
       if (ch == '[') {
-        return s_http_host_v6_start;
+        return 130;
       }
 
       if (IS_HOST_CHAR(ch)) {
-        return s_http_host;
+        return 136;
       }
 
       break;
 
-    case s_http_host:
+    case 136:
       if (IS_HOST_CHAR(ch)) {
-        return s_http_host;
+        return 136;
       }
 
-    /* FALLTHROUGH */
-    case s_http_host_v6_end:
+
+    case 131:
       if (ch == ':') {
-        return s_http_host_port_start;
+        return 134;
       }
 
       break;
 
-    case s_http_host_v6:
+    case 132:
       if (ch == ']') {
-        return s_http_host_v6_end;
+        return 131;
       }
 
-    /* FALLTHROUGH */
-    case s_http_host_v6_start:
+
+    case 130:
       if (IS_HEX(ch) || ch == ':') {
-        return s_http_host_v6;
+        return 132;
       }
 
       break;
 
-    case s_http_host_port:
-    case s_http_host_port_start:
+    case 135:
+    case 134:
       if (IS_NUM(ch)) {
-        return s_http_host_port;
+        return 135;
       }
 
       break;

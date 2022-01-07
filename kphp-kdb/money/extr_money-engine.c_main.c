@@ -1,105 +1,105 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  replica_prefix; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int replica_prefix; } ;
 struct TYPE_13__ {TYPE_2__* info; } ;
 struct TYPE_12__ {TYPE_1__* info; } ;
-struct TYPE_11__ {char* filename; int /*<<< orphan*/  file_size; } ;
+struct TYPE_11__ {char* filename; int file_size; } ;
 struct TYPE_10__ {char* filename; scalar_t__ file_size; } ;
 
-/* Variables and functions */
- void* BACKLOG ; 
- TYPE_4__* Binlog ; 
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ MAX_CONNECTIONS ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- TYPE_3__* Snapshot ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  atoll (char*) ; 
- void* backlog ; 
- int binlog_crc32_verbosity_level ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  binlog_load_time ; 
- scalar_t__ binlog_loaded_size ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- int daemonize ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_first ; 
- scalar_t__ dyn_last ; 
- long long dynamic_data_buffer_size ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_5__* engine_replica ; 
- char* engine_snapshot_name ; 
- int /*<<< orphan*/  engine_snapshot_replica ; 
- scalar_t__ engine_snapshot_size ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  get_utime (int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  index_load_time ; 
- scalar_t__ index_mode ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_log_data (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- scalar_t__ jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__,...) ; 
- int load_index (TYPE_3__*) ; 
- int log_readto_pos ; 
- scalar_t__ log_ts_interval ; 
- char* logname ; 
- int /*<<< orphan*/  master_host ; 
- int master_port ; 
- scalar_t__ master_slave_mode ; 
- long long max_binlog_size ; 
- scalar_t__ maxconn ; 
- TYPE_4__* open_binlog (TYPE_5__*,scalar_t__) ; 
- TYPE_3__* open_recent_snapshot (int /*<<< orphan*/ ) ; 
- char* optarg ; 
- int optind ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- scalar_t__ server_socket (scalar_t__,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  special_acc_id ; 
- int split_max ; 
- int split_min ; 
- int split_mod ; 
- int sscanf (char*,char*,...) ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  use_aio ; 
- char* username ; 
- int /*<<< orphan*/  verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int write_index (int /*<<< orphan*/ ) ; 
+
+ void* BACKLOG ;
+ TYPE_4__* Binlog ;
+ int CLOCK_MONOTONIC ;
+ scalar_t__ MAX_CONNECTIONS ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ TYPE_3__* Snapshot ;
+ int aes_load_pwd_file (int ) ;
+ int assert (int) ;
+ void* atoi (char*) ;
+ int atoll (char*) ;
+ void* backlog ;
+ int binlog_crc32_verbosity_level ;
+ int binlog_disabled ;
+ int binlog_load_time ;
+ scalar_t__ binlog_loaded_size ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ int daemonize ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_first ;
+ scalar_t__ dyn_last ;
+ long long dynamic_data_buffer_size ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_5__* engine_replica ;
+ char* engine_snapshot_name ;
+ int engine_snapshot_replica ;
+ scalar_t__ engine_snapshot_size ;
+ int exit (int) ;
+ int fprintf (int ,char*,int,char*) ;
+ int get_utime (int ) ;
+ int getopt (int,char**,char*) ;
+ int index_load_time ;
+ scalar_t__ index_mode ;
+ int init_dyn_data () ;
+ int init_log_data (scalar_t__,int ,int ) ;
+ int jump_log_crc32 ;
+ scalar_t__ jump_log_pos ;
+ int jump_log_ts ;
+ int kprintf (char*,scalar_t__,...) ;
+ int load_index (TYPE_3__*) ;
+ int log_readto_pos ;
+ scalar_t__ log_ts_interval ;
+ char* logname ;
+ int master_host ;
+ int master_port ;
+ scalar_t__ master_slave_mode ;
+ long long max_binlog_size ;
+ scalar_t__ maxconn ;
+ TYPE_4__* open_binlog (TYPE_5__*,scalar_t__) ;
+ TYPE_3__* open_recent_snapshot (int ) ;
+ char* optarg ;
+ int optind ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ int replay_log (int ,int) ;
+ scalar_t__ server_socket (scalar_t__,int ,void*,int ) ;
+ int set_debug_handlers () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int special_acc_id ;
+ int split_max ;
+ int split_min ;
+ int split_mod ;
+ int sscanf (char*,char*,...) ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int time (int *) ;
+ int usage () ;
+ int use_aio ;
+ char* username ;
+ int verbosity ;
+ int vkprintf (int,char*,...) ;
+ int write_index (int ) ;
 
 int main (int argc, char *argv[]) {
   int i, cutoff_time = 0;
@@ -117,21 +117,21 @@ int main (int argc, char *argv[]) {
       verbosity++;
       break;
     case 'r':
-      binlog_disabled = 1;  /* DEBUG only */
+      binlog_disabled = 1;
       break;
     case 'h':
       usage ();
       return 2;
     case 'b':
       backlog = atoi (optarg);
-      if (backlog <= 0) { 
-	backlog = BACKLOG;
+      if (backlog <= 0) {
+ backlog = BACKLOG;
       }
       break;
     case 'c':
       maxconn = atoi (optarg);
       if (maxconn <= 0 || maxconn > MAX_CONNECTIONS) {
-	maxconn = MAX_CONNECTIONS;
+ maxconn = MAX_CONNECTIONS;
       }
       break;
     case 'p':
@@ -170,16 +170,16 @@ int main (int argc, char *argv[]) {
       c = 0;
       assert (sscanf (optarg, "%lld%c", &x, &c) >= 1);
       switch (c | 0x20) {
-      case 'k':  x <<= 10; break;
-      case 'm':  x <<= 20; break;
-      case 'g':  x <<= 30; break;
-      case 't':  x <<= 40; break;
+      case 'k': x <<= 10; break;
+      case 'm': x <<= 20; break;
+      case 'g': x <<= 30; break;
+      case 't': x <<= 40; break;
       default: assert (c == 0x20);
       }
       if (i == 'B' && x >= 1024 && x < (1LL << 60)) {
         max_binlog_size = x;
       } else if (i == 'H' && x >= (1LL << 20) && x <= (sizeof(long) == 4 ? (3LL << 30) : (200LL << 30))) {
-	dynamic_data_buffer_size = x;
+ dynamic_data_buffer_size = x;
       }
       break;
     case 'd':
@@ -216,7 +216,7 @@ int main (int argc, char *argv[]) {
     kprintf ("fatal: cannot change user to %s\n", username ? username : "(none)");
     exit (1);
   }
-  
+
   init_dyn_data ();
   log_ts_interval = 0;
 
@@ -225,7 +225,7 @@ int main (int argc, char *argv[]) {
     exit (1);
   }
 
-  //Snapshot reading
+
   Snapshot = open_recent_snapshot (engine_snapshot_replica);
 
   if (Snapshot) {
@@ -244,16 +244,16 @@ int main (int argc, char *argv[]) {
       exit(1);
     }
 
-    vkprintf (1, "load index: done, jump_log_pos=%lld, alloc_mem=%ld out of %ld, time %.06lfs\n", 
-	      jump_log_pos, (long) (dyn_cur - dyn_first), (long) (dyn_last - dyn_first), index_load_time);
+    vkprintf (1, "load index: done, jump_log_pos=%lld, alloc_mem=%ld out of %ld, time %.06lfs\n",
+       jump_log_pos, (long) (dyn_cur - dyn_first), (long) (dyn_last - dyn_first), index_load_time);
 
-    //close_snapshot (Snapshot, 1);
+
   } else {
-    engine_snapshot_name = NULL;
+    engine_snapshot_name = ((void*)0);
     engine_snapshot_size = 0;
   }
 
-  // Reading Binlog
+
   vkprintf (2, "starting reading binlog\n");
 
   Binlog = open_binlog (engine_replica, jump_log_pos);
@@ -274,7 +274,7 @@ int main (int argc, char *argv[]) {
 
   vkprintf (1, "replay log events started\n");
   i = replay_log (0, 1);
- 
+
   use_aio = -use_aio;
   vkprintf (1, "replay log events finished\n");
 
@@ -286,7 +286,7 @@ int main (int argc, char *argv[]) {
   }
 
   clear_write_log ();
-  start_time = time (NULL);
+  start_time = time (((void*)0));
 
   if (index_mode) {
     return write_index (0);

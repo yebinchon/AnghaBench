@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- char* fts5ConfigSkipArgs (char const*) ; 
- char* fts5ConfigSkipBareword (char const*) ; 
- char* fts5ConfigSkipWhitespace (char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- char* sqlite3Fts5MallocZero (int*,int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ char* fts5ConfigSkipArgs (char const*) ;
+ char* fts5ConfigSkipBareword (char const*) ;
+ char* fts5ConfigSkipWhitespace (char const*) ;
+ int memcpy (char*,char const*,int) ;
+ char* sqlite3Fts5MallocZero (int*,int) ;
+ int sqlite3_free (char*) ;
 
 int sqlite3Fts5ConfigParseRank(
-  const char *zIn,                /* Input string */
-  char **pzRank,                  /* OUT: Rank function name */
-  char **pzRankArgs               /* OUT: Rank function arguments */
+  const char *zIn,
+  char **pzRank,
+  char **pzRankArgs
 ){
   const char *p = zIn;
   const char *pRank;
@@ -56,7 +48,7 @@ int sqlite3Fts5ConfigParseRank(
       p++;
     }
     if( rc==SQLITE_OK ){
-      const char *pArgs; 
+      const char *pArgs;
       p = fts5ConfigSkipWhitespace(p);
       pArgs = p;
       if( *p!=')' ){

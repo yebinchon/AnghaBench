@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* iterator_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* iterator_t ;
 struct TYPE_4__ {int pos; int (* jump_to ) (TYPE_1__*,int) ;} ;
 
-/* Variables and functions */
- int INFTY ; 
- int /*<<< orphan*/  PROFILER (int) ; 
- int /*<<< orphan*/  Qq ; 
- int R_tot ; 
- TYPE_1__* build_iterator_from_query (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  postprocess_res () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  store_res (int) ; 
- int stub1 (TYPE_1__*,int) ; 
- int verbosity ; 
+
+ int INFTY ;
+ int PROFILER (int) ;
+ int Qq ;
+ int R_tot ;
+ TYPE_1__* build_iterator_from_query (int ,int) ;
+ int fprintf (int ,char*) ;
+ int postprocess_res () ;
+ int stderr ;
+ int store_res (int) ;
+ int stub1 (TYPE_1__*,int) ;
+ int verbosity ;
 
 int perform_query_iterator (void) {
   if (verbosity > 1) {

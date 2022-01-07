@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_BAD_FUNCTION_ARGUMENT ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLINFO_RTSP_SESSION_ID ; 
- int /*<<< orphan*/  CURLOPT_HEADERDATA ; 
- int /*<<< orphan*/  CURLOPT_RTSP_REQUEST ; 
- int /*<<< orphan*/  CURLOPT_RTSP_SESSION_ID ; 
- int /*<<< orphan*/  CURLOPT_RTSP_STREAM_URI ; 
- int /*<<< orphan*/  CURLOPT_RTSP_TRANSPORT ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- char* CURL_RTSPREQ_SETUP ; 
- char* CURL_RTSPREQ_TEARDOWN ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  libtest_arg2 ; 
- int /*<<< orphan*/  stderr ; 
- char* stdout ; 
- char* suburl (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int FILE ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_BAD_FUNCTION_ARGUMENT ;
+ scalar_t__ CURLE_OK ;
+ int CURLINFO_RTSP_SESSION_ID ;
+ int CURLOPT_HEADERDATA ;
+ int CURLOPT_RTSP_REQUEST ;
+ int CURLOPT_RTSP_SESSION_ID ;
+ int CURLOPT_RTSP_STREAM_URI ;
+ int CURLOPT_RTSP_TRANSPORT ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURLOPT_WRITEDATA ;
+ int CURL_GLOBAL_ALL ;
+ char* CURL_RTSPREQ_SETUP ;
+ char* CURL_RTSPREQ_TEARDOWN ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_getinfo (int *,int ,char**) ;
+ int * curl_easy_init () ;
+ int curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fprintf (int *,char*,...) ;
+ int free (char*) ;
+ int libtest_arg2 ;
+ int stderr ;
+ char* stdout ;
+ char* suburl (char*,int ) ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
   int res;
   CURL *curl;
-  char *stream_uri = NULL;
+  char *stream_uri = ((void*)0);
   char *rtsp_session_id;
   int request = 1;
   int i;
 
   FILE *idfile = fopen(libtest_arg2, "wb");
-  if(idfile == NULL) {
+  if(idfile == ((void*)0)) {
     fprintf(stderr, "couldn't open the Session ID File\n");
     return TEST_ERR_MAJOR_BAD;
   }
@@ -89,7 +89,7 @@ int test(char *URL)
     goto test_cleanup;
   }
 
-  /* Go through the various Session IDs */
+
   for(i = 0; i < 3; i++) {
     stream_uri = suburl(URL, request++);
     if(!stream_uri) {
@@ -98,7 +98,7 @@ int test(char *URL)
     }
     test_setopt(curl, CURLOPT_RTSP_STREAM_URI, stream_uri);
     free(stream_uri);
-    stream_uri = NULL;
+    stream_uri = ((void*)0);
 
     test_setopt(curl, CURLOPT_RTSP_REQUEST, CURL_RTSPREQ_SETUP);
     test_setopt(curl, CURLOPT_RTSP_TRANSPORT,
@@ -109,7 +109,7 @@ int test(char *URL)
 
     curl_easy_getinfo(curl, CURLINFO_RTSP_SESSION_ID, &rtsp_session_id);
     fprintf(idfile, "Got Session ID: [%s]\n", rtsp_session_id);
-    rtsp_session_id = NULL;
+    rtsp_session_id = ((void*)0);
 
     stream_uri = suburl(URL, request++);
     if(!stream_uri) {
@@ -118,13 +118,13 @@ int test(char *URL)
     }
     test_setopt(curl, CURLOPT_RTSP_STREAM_URI, stream_uri);
     free(stream_uri);
-    stream_uri = NULL;
+    stream_uri = ((void*)0);
 
     test_setopt(curl, CURLOPT_RTSP_REQUEST, CURL_RTSPREQ_TEARDOWN);
     res = curl_easy_perform(curl);
 
-    /* Clear for the next go-round */
-    test_setopt(curl, CURLOPT_RTSP_SESSION_ID, NULL);
+
+    test_setopt(curl, CURLOPT_RTSP_SESSION_ID, ((void*)0));
   }
 
 test_cleanup:

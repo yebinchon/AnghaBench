@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ib_umad_device {TYPE_1__* ports; } ;
 struct ib_device {int dummy; } ;
-struct ib_client_nl_info {size_t port; int /*<<< orphan*/ * cdev; int /*<<< orphan*/  abi; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct ib_client_nl_info {size_t port; int * cdev; int abi; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  IB_USER_MAD_ABI_VERSION ; 
- int /*<<< orphan*/  rdma_is_port_valid (struct ib_device*,size_t) ; 
- size_t rdma_start_port (struct ib_device*) ; 
+
+ int EINVAL ;
+ int IB_USER_MAD_ABI_VERSION ;
+ int rdma_is_port_valid (struct ib_device*,size_t) ;
+ size_t rdma_start_port (struct ib_device*) ;
 
 __attribute__((used)) static int ib_umad_get_nl_info(struct ib_device *ibdev, void *client_data,
-			       struct ib_client_nl_info *res)
+          struct ib_client_nl_info *res)
 {
-	struct ib_umad_device *umad_dev = client_data;
+ struct ib_umad_device *umad_dev = client_data;
 
-	if (!rdma_is_port_valid(ibdev, res->port))
-		return -EINVAL;
+ if (!rdma_is_port_valid(ibdev, res->port))
+  return -EINVAL;
 
-	res->abi = IB_USER_MAD_ABI_VERSION;
-	res->cdev = &umad_dev->ports[res->port - rdma_start_port(ibdev)].dev;
+ res->abi = IB_USER_MAD_ABI_VERSION;
+ res->cdev = &umad_dev->ports[res->port - rdma_start_port(ibdev)].dev;
 
-	return 0;
+ return 0;
 }

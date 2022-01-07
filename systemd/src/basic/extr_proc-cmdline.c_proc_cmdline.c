@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  SIZE_MAX ; 
- int /*<<< orphan*/  assert (char**) ; 
- scalar_t__ detect_container () ; 
- int get_process_cmdline (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int read_one_line_file (char*,char**) ; 
- char* secure_getenv (char*) ; 
- char* strdup (char const*) ; 
+ int ENOMEM ;
+ int SIZE_MAX ;
+ int assert (char**) ;
+ scalar_t__ detect_container () ;
+ int get_process_cmdline (int,int ,int ,char**) ;
+ int read_one_line_file (char*,char**) ;
+ char* secure_getenv (char*) ;
+ char* strdup (char const*) ;
 
 int proc_cmdline(char **ret) {
         const char *e;
         assert(ret);
 
-        /* For testing purposes it is sometimes useful to be able to override what we consider /proc/cmdline to be */
+
         e = secure_getenv("SYSTEMD_PROC_CMDLINE");
         if (e) {
                 char *m;

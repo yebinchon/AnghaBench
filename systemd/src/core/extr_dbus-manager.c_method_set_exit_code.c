@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/  return_value; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- scalar_t__ MANAGER_IS_SYSTEM (TYPE_1__*) ; 
- int /*<<< orphan*/  SD_BUS_ERROR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ detect_container () ; 
- int mac_selinux_access_check (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int sd_bus_message_read_basic (TYPE_1__*,char,int /*<<< orphan*/ *) ; 
- int sd_bus_reply_method_return (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int return_value; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef TYPE_1__ Manager ;
+
+
+ scalar_t__ MANAGER_IS_SYSTEM (TYPE_1__*) ;
+ int SD_BUS_ERROR_NOT_SUPPORTED ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ detect_container () ;
+ int mac_selinux_access_check (TYPE_1__*,char*,int *) ;
+ int sd_bus_error_setf (int *,int ,char*) ;
+ int sd_bus_message_read_basic (TYPE_1__*,char,int *) ;
+ int sd_bus_reply_method_return (TYPE_1__*,int *) ;
 
 __attribute__((used)) static int method_set_exit_code(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;
@@ -48,5 +48,5 @@ __attribute__((used)) static int method_set_exit_code(sd_bus_message *message, v
 
         m->return_value = code;
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

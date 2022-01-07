@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vx_core {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA ; 
- int /*<<< orphan*/  HIFREQ ; 
- int /*<<< orphan*/  RUER ; 
- int /*<<< orphan*/  VX_DATA_CODEC_MASK ; 
- int /*<<< orphan*/  vx_inl (struct vx_core*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vx_outl (struct vx_core*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DATA ;
+ int HIFREQ ;
+ int RUER ;
+ int VX_DATA_CODEC_MASK ;
+ int vx_inl (struct vx_core*,int ) ;
+ int vx_outl (struct vx_core*,int ,int ) ;
 
 __attribute__((used)) static void vx2_write_codec_reg(struct vx_core *chip, unsigned int data)
 {
-	unsigned int i;
+ unsigned int i;
 
-	vx_inl(chip, HIFREQ);
+ vx_inl(chip, HIFREQ);
 
-	/* We have to send 24 bits (3 x 8 bits). Start with most signif. Bit */
-	for (i = 0; i < 24; i++, data <<= 1)
-		vx_outl(chip, DATA, ((data & 0x800000) ? VX_DATA_CODEC_MASK : 0));
-	/* Terminate access to codec registers */
-	vx_inl(chip, RUER);
+
+ for (i = 0; i < 24; i++, data <<= 1)
+  vx_outl(chip, DATA, ((data & 0x800000) ? VX_DATA_CODEC_MASK : 0));
+
+ vx_inl(chip, RUER);
 }

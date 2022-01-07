@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DHCP_allocated_gw ; 
- int /*<<< orphan*/  DHCP_allocated_ip ; 
- int /*<<< orphan*/  DHCP_allocated_sn ; 
- int /*<<< orphan*/  setGAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setSIPR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setSUBR (int /*<<< orphan*/ ) ; 
+ int DHCP_allocated_gw ;
+ int DHCP_allocated_ip ;
+ int DHCP_allocated_sn ;
+ int setGAR (int ) ;
+ int setSIPR (int ) ;
+ int setSUBR (int ) ;
 
 void default_ip_assign(void)
 {

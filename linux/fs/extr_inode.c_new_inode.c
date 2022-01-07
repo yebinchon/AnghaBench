@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct super_block {int /*<<< orphan*/  s_inode_list_lock; } ;
+
+
+
+
+struct super_block {int s_inode_list_lock; } ;
 struct inode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inode_sb_list_add (struct inode*) ; 
- struct inode* new_inode_pseudo (struct super_block*) ; 
- int /*<<< orphan*/  spin_lock_prefetch (int /*<<< orphan*/ *) ; 
+
+ int inode_sb_list_add (struct inode*) ;
+ struct inode* new_inode_pseudo (struct super_block*) ;
+ int spin_lock_prefetch (int *) ;
 
 struct inode *new_inode(struct super_block *sb)
 {
-	struct inode *inode;
+ struct inode *inode;
 
-	spin_lock_prefetch(&sb->s_inode_list_lock);
+ spin_lock_prefetch(&sb->s_inode_list_lock);
 
-	inode = new_inode_pseudo(sb);
-	if (inode)
-		inode_sb_list_add(inode);
-	return inode;
+ inode = new_inode_pseudo(sb);
+ if (inode)
+  inode_sb_list_add(inode);
+ return inode;
 }

@@ -1,180 +1,180 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  vals; int /*<<< orphan*/  typeName; } ;
-struct TYPE_6__ {int /*<<< orphan*/  objectId; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_1__ ObjectAddress ;
-typedef  TYPE_2__ CreateEnumStmt ;
-typedef  scalar_t__ AclResult ;
 
-/* Variables and functions */
- scalar_t__ ACLCHECK_OK ; 
- int /*<<< orphan*/  ACL_CREATE ; 
- int /*<<< orphan*/  Anum_pg_type_oid ; 
- int /*<<< orphan*/  AssignTypeArrayOid () ; 
- int /*<<< orphan*/  CStringGetDatum (char*) ; 
- int /*<<< orphan*/  DEFAULT_TYPDELIM ; 
- int /*<<< orphan*/  ERRCODE_DUPLICATE_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  EnumValuesCreate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  F_ARRAY_IN ; 
- int /*<<< orphan*/  F_ARRAY_OUT ; 
- int /*<<< orphan*/  F_ARRAY_RECV ; 
- int /*<<< orphan*/  F_ARRAY_SEND ; 
- int /*<<< orphan*/  F_ARRAY_TYPANALYZE ; 
- int /*<<< orphan*/  F_ENUM_IN ; 
- int /*<<< orphan*/  F_ENUM_OUT ; 
- int /*<<< orphan*/  F_ENUM_RECV ; 
- int /*<<< orphan*/  F_ENUM_SEND ; 
- int /*<<< orphan*/  GetSysCacheOid2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetUserId () ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  OBJECT_SCHEMA ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- scalar_t__ OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QualifiedNameGetCreationNamespace (int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  TYPCATEGORY_ARRAY ; 
- int /*<<< orphan*/  TYPCATEGORY_ENUM ; 
- int /*<<< orphan*/  TYPENAMENSP ; 
- int /*<<< orphan*/  TYPTYPE_BASE ; 
- int /*<<< orphan*/  TYPTYPE_ENUM ; 
- TYPE_1__ TypeCreate (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char,char,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aclcheck_error (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char*) ; 
- int /*<<< orphan*/  get_namespace_name (int /*<<< orphan*/ ) ; 
- char* makeArrayTypeName (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  moveArrayTypeName (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pfree (char*) ; 
- scalar_t__ pg_namespace_aclcheck (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int vals; int typeName; } ;
+struct TYPE_6__ {int objectId; } ;
+typedef int Oid ;
+typedef TYPE_1__ ObjectAddress ;
+typedef TYPE_2__ CreateEnumStmt ;
+typedef scalar_t__ AclResult ;
+
+
+ scalar_t__ ACLCHECK_OK ;
+ int ACL_CREATE ;
+ int Anum_pg_type_oid ;
+ int AssignTypeArrayOid () ;
+ int CStringGetDatum (char*) ;
+ int DEFAULT_TYPDELIM ;
+ int ERRCODE_DUPLICATE_OBJECT ;
+ int ERROR ;
+ int EnumValuesCreate (int ,int ) ;
+ int F_ARRAY_IN ;
+ int F_ARRAY_OUT ;
+ int F_ARRAY_RECV ;
+ int F_ARRAY_SEND ;
+ int F_ARRAY_TYPANALYZE ;
+ int F_ENUM_IN ;
+ int F_ENUM_OUT ;
+ int F_ENUM_RECV ;
+ int F_ENUM_SEND ;
+ int GetSysCacheOid2 (int ,int ,int ,int ) ;
+ int GetUserId () ;
+ int InvalidOid ;
+ int OBJECT_SCHEMA ;
+ int ObjectIdGetDatum (int ) ;
+ scalar_t__ OidIsValid (int ) ;
+ int QualifiedNameGetCreationNamespace (int ,char**) ;
+ int TYPCATEGORY_ARRAY ;
+ int TYPCATEGORY_ENUM ;
+ int TYPENAMENSP ;
+ int TYPTYPE_BASE ;
+ int TYPTYPE_ENUM ;
+ TYPE_1__ TypeCreate (int ,char*,int ,int ,int ,int ,int,int ,int ,int,int ,int ,int ,int ,int ,int ,int ,int ,int ,int,int ,int ,int *,int *,int,char,char,int,int ,int,int ) ;
+ int aclcheck_error (scalar_t__,int ,int ) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,char*) ;
+ int get_namespace_name (int ) ;
+ char* makeArrayTypeName (char*,int ) ;
+ int moveArrayTypeName (int ,char*,int ) ;
+ int pfree (char*) ;
+ scalar_t__ pg_namespace_aclcheck (int ,int ,int ) ;
 
 ObjectAddress
 DefineEnum(CreateEnumStmt *stmt)
 {
-	char	   *enumName;
-	char	   *enumArrayName;
-	Oid			enumNamespace;
-	AclResult	aclresult;
-	Oid			old_type_oid;
-	Oid			enumArrayOid;
-	ObjectAddress enumTypeAddr;
+ char *enumName;
+ char *enumArrayName;
+ Oid enumNamespace;
+ AclResult aclresult;
+ Oid old_type_oid;
+ Oid enumArrayOid;
+ ObjectAddress enumTypeAddr;
 
-	/* Convert list of names to a name and namespace */
-	enumNamespace = QualifiedNameGetCreationNamespace(stmt->typeName,
-													  &enumName);
 
-	/* Check we have creation rights in target namespace */
-	aclresult = pg_namespace_aclcheck(enumNamespace, GetUserId(), ACL_CREATE);
-	if (aclresult != ACLCHECK_OK)
-		aclcheck_error(aclresult, OBJECT_SCHEMA,
-					   get_namespace_name(enumNamespace));
+ enumNamespace = QualifiedNameGetCreationNamespace(stmt->typeName,
+               &enumName);
 
-	/*
-	 * Check for collision with an existing type name.  If there is one and
-	 * it's an autogenerated array, we can rename it out of the way.
-	 */
-	old_type_oid = GetSysCacheOid2(TYPENAMENSP, Anum_pg_type_oid,
-								   CStringGetDatum(enumName),
-								   ObjectIdGetDatum(enumNamespace));
-	if (OidIsValid(old_type_oid))
-	{
-		if (!moveArrayTypeName(old_type_oid, enumName, enumNamespace))
-			ereport(ERROR,
-					(errcode(ERRCODE_DUPLICATE_OBJECT),
-					 errmsg("type \"%s\" already exists", enumName)));
-	}
 
-	/* Allocate OID for array type */
-	enumArrayOid = AssignTypeArrayOid();
+ aclresult = pg_namespace_aclcheck(enumNamespace, GetUserId(), ACL_CREATE);
+ if (aclresult != ACLCHECK_OK)
+  aclcheck_error(aclresult, OBJECT_SCHEMA,
+        get_namespace_name(enumNamespace));
 
-	/* Create the pg_type entry */
-	enumTypeAddr =
-		TypeCreate(InvalidOid,	/* no predetermined type OID */
-				   enumName,	/* type name */
-				   enumNamespace,	/* namespace */
-				   InvalidOid,	/* relation oid (n/a here) */
-				   0,			/* relation kind (ditto) */
-				   GetUserId(), /* owner's ID */
-				   sizeof(Oid), /* internal size */
-				   TYPTYPE_ENUM,	/* type-type (enum type) */
-				   TYPCATEGORY_ENUM,	/* type-category (enum type) */
-				   false,		/* enum types are never preferred */
-				   DEFAULT_TYPDELIM,	/* array element delimiter */
-				   F_ENUM_IN,	/* input procedure */
-				   F_ENUM_OUT,	/* output procedure */
-				   F_ENUM_RECV, /* receive procedure */
-				   F_ENUM_SEND, /* send procedure */
-				   InvalidOid,	/* typmodin procedure - none */
-				   InvalidOid,	/* typmodout procedure - none */
-				   InvalidOid,	/* analyze procedure - default */
-				   InvalidOid,	/* element type ID */
-				   false,		/* this is not an array type */
-				   enumArrayOid,	/* array type we are about to create */
-				   InvalidOid,	/* base type ID (only for domains) */
-				   NULL,		/* never a default type value */
-				   NULL,		/* binary default isn't sent either */
-				   true,		/* always passed by value */
-				   'i',			/* int alignment */
-				   'p',			/* TOAST strategy always plain */
-				   -1,			/* typMod (Domains only) */
-				   0,			/* Array dimensions of typbasetype */
-				   false,		/* Type NOT NULL */
-				   InvalidOid); /* type's collation */
 
-	/* Enter the enum's values into pg_enum */
-	EnumValuesCreate(enumTypeAddr.objectId, stmt->vals);
 
-	/*
-	 * Create the array type that goes with it.
-	 */
-	enumArrayName = makeArrayTypeName(enumName, enumNamespace);
 
-	TypeCreate(enumArrayOid,	/* force assignment of this type OID */
-			   enumArrayName,	/* type name */
-			   enumNamespace,	/* namespace */
-			   InvalidOid,		/* relation oid (n/a here) */
-			   0,				/* relation kind (ditto) */
-			   GetUserId(),		/* owner's ID */
-			   -1,				/* internal size (always varlena) */
-			   TYPTYPE_BASE,	/* type-type (base type) */
-			   TYPCATEGORY_ARRAY,	/* type-category (array) */
-			   false,			/* array types are never preferred */
-			   DEFAULT_TYPDELIM,	/* array element delimiter */
-			   F_ARRAY_IN,		/* input procedure */
-			   F_ARRAY_OUT,		/* output procedure */
-			   F_ARRAY_RECV,	/* receive procedure */
-			   F_ARRAY_SEND,	/* send procedure */
-			   InvalidOid,		/* typmodin procedure - none */
-			   InvalidOid,		/* typmodout procedure - none */
-			   F_ARRAY_TYPANALYZE,	/* analyze procedure */
-			   enumTypeAddr.objectId,	/* element type ID */
-			   true,			/* yes this is an array type */
-			   InvalidOid,		/* no further array type */
-			   InvalidOid,		/* base type ID */
-			   NULL,			/* never a default type value */
-			   NULL,			/* binary default isn't sent either */
-			   false,			/* never passed by value */
-			   'i',				/* enums have align i, so do their arrays */
-			   'x',				/* ARRAY is always toastable */
-			   -1,				/* typMod (Domains only) */
-			   0,				/* Array dimensions of typbasetype */
-			   false,			/* Type NOT NULL */
-			   InvalidOid);		/* type's collation */
 
-	pfree(enumArrayName);
+ old_type_oid = GetSysCacheOid2(TYPENAMENSP, Anum_pg_type_oid,
+           CStringGetDatum(enumName),
+           ObjectIdGetDatum(enumNamespace));
+ if (OidIsValid(old_type_oid))
+ {
+  if (!moveArrayTypeName(old_type_oid, enumName, enumNamespace))
+   ereport(ERROR,
+     (errcode(ERRCODE_DUPLICATE_OBJECT),
+      errmsg("type \"%s\" already exists", enumName)));
+ }
 
-	return enumTypeAddr;
+
+ enumArrayOid = AssignTypeArrayOid();
+
+
+ enumTypeAddr =
+  TypeCreate(InvalidOid,
+       enumName,
+       enumNamespace,
+       InvalidOid,
+       0,
+       GetUserId(),
+       sizeof(Oid),
+       TYPTYPE_ENUM,
+       TYPCATEGORY_ENUM,
+       0,
+       DEFAULT_TYPDELIM,
+       F_ENUM_IN,
+       F_ENUM_OUT,
+       F_ENUM_RECV,
+       F_ENUM_SEND,
+       InvalidOid,
+       InvalidOid,
+       InvalidOid,
+       InvalidOid,
+       0,
+       enumArrayOid,
+       InvalidOid,
+       ((void*)0),
+       ((void*)0),
+       1,
+       'i',
+       'p',
+       -1,
+       0,
+       0,
+       InvalidOid);
+
+
+ EnumValuesCreate(enumTypeAddr.objectId, stmt->vals);
+
+
+
+
+ enumArrayName = makeArrayTypeName(enumName, enumNamespace);
+
+ TypeCreate(enumArrayOid,
+      enumArrayName,
+      enumNamespace,
+      InvalidOid,
+      0,
+      GetUserId(),
+      -1,
+      TYPTYPE_BASE,
+      TYPCATEGORY_ARRAY,
+      0,
+      DEFAULT_TYPDELIM,
+      F_ARRAY_IN,
+      F_ARRAY_OUT,
+      F_ARRAY_RECV,
+      F_ARRAY_SEND,
+      InvalidOid,
+      InvalidOid,
+      F_ARRAY_TYPANALYZE,
+      enumTypeAddr.objectId,
+      1,
+      InvalidOid,
+      InvalidOid,
+      ((void*)0),
+      ((void*)0),
+      0,
+      'i',
+      'x',
+      -1,
+      0,
+      0,
+      InvalidOid);
+
+ pfree(enumArrayName);
+
+ return enumTypeAddr;
 }

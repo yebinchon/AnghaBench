@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * fsap_data; int /*<<< orphan*/  rev; int /*<<< orphan*/  is_txn_root; } ;
-typedef  TYPE_1__ svn_fs_root_t ;
-typedef  int /*<<< orphan*/  dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- TYPE_1__* make_root (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_fs_t ;
+struct TYPE_4__ {int * fsap_data; int rev; int is_txn_root; } ;
+typedef TYPE_1__ svn_fs_root_t ;
+typedef int dag_node_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ TYPE_1__* make_root (int *,int *) ;
 
 __attribute__((used)) static svn_fs_root_t *
 make_revision_root(svn_fs_t *fs,

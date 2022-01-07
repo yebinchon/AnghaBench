@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ kind; } ;
-typedef  TYPE_1__ svn_opt_revision_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_7__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
+typedef TYPE_1__ svn_opt_revision_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+struct TYPE_7__ {int cancel_baton; int cancel_func; int wc_ctx; } ;
+typedef TYPE_2__ svn_client_ctx_t ;
+typedef int svn_boolean_t ;
 struct diff_driver_info_t {char const* anchor; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_INCORRECT_PARAMS ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- char const* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_opt_revision_base ; 
- scalar_t__ svn_opt_revision_working ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- int /*<<< orphan*/  svn_wc__diff7 (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_read_kind2 (scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * unsupported_diff_error (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_INCORRECT_PARAMS ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int _ (char*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ char const* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_error_create (int ,int *,int ) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_opt_revision_base ;
+ scalar_t__ svn_opt_revision_working ;
+ int svn_path_is_url (char const*) ;
+ int svn_wc__diff7 (char const**,int *,int ,char const*,int ,int ,int const*,int const*,int ,int ,int *,int *) ;
+ int svn_wc_read_kind2 (scalar_t__*,int ,char const*,int ,int ,int *) ;
+ int * unsupported_diff_error (int ) ;
 
 __attribute__((used)) static svn_error_t *
 diff_wc_wc(const char **root_relpath,
@@ -68,13 +68,13 @@ diff_wc_wc(const char **root_relpath,
 
   SVN_ERR(svn_dirent_get_absolute(&abspath1, path1, scratch_pool));
 
-  /* Currently we support only the case where path1 and path2 are the
-     same path. */
+
+
   if ((strcmp(path1, path2) != 0)
       || (! ((revision1->kind == svn_opt_revision_base)
              && (revision2->kind == svn_opt_revision_working))))
     return unsupported_diff_error(
-       svn_error_create(SVN_ERR_INCORRECT_PARAMS, NULL,
+       svn_error_create(SVN_ERR_INCORRECT_PARAMS, ((void*)0),
                         _("Only diffs between a path's text-base "
                           "and its working files are supported at this time"
                           )));

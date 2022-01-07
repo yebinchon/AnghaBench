@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_6__ {TYPE_3__** S; scalar_t__ outlen; TYPE_2__* R; scalar_t__ buflen; scalar_t__* buf; } ;
-typedef  TYPE_1__ blake2sp_state ;
+typedef TYPE_1__ blake2sp_state ;
 struct TYPE_8__ {int last_node; } ;
 struct TYPE_7__ {int last_node; } ;
 
-/* Variables and functions */
- int BLAKE2S_BLOCKBYTES ; 
- size_t BLAKE2S_KEYBYTES ; 
- size_t BLAKE2S_OUTBYTES ; 
- size_t PARALLELISM_DEGREE ; 
- int /*<<< orphan*/  blake2s_update (TYPE_3__*,scalar_t__*,int) ; 
- scalar_t__ blake2sp_init_leaf (TYPE_3__*,scalar_t__,scalar_t__,size_t) ; 
- scalar_t__ blake2sp_init_root (TYPE_2__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,void const*,size_t) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  secure_zero_memory (scalar_t__*,int) ; 
+
+ int BLAKE2S_BLOCKBYTES ;
+ size_t BLAKE2S_KEYBYTES ;
+ size_t BLAKE2S_OUTBYTES ;
+ size_t PARALLELISM_DEGREE ;
+ int blake2s_update (TYPE_3__*,scalar_t__*,int) ;
+ scalar_t__ blake2sp_init_leaf (TYPE_3__*,scalar_t__,scalar_t__,size_t) ;
+ scalar_t__ blake2sp_init_root (TYPE_2__*,scalar_t__,scalar_t__) ;
+ int memcpy (scalar_t__*,void const*,size_t) ;
+ int memset (scalar_t__*,int ,int) ;
+ int secure_zero_memory (scalar_t__*,int) ;
 
 int blake2sp_init_key( blake2sp_state *S, size_t outlen, const void *key, size_t keylen )
 {
@@ -58,7 +58,7 @@ int blake2sp_init_key( blake2sp_state *S, size_t outlen, const void *key, size_t
     for( size_t i = 0; i < PARALLELISM_DEGREE; ++i )
       blake2s_update( S->S[i], block, BLAKE2S_BLOCKBYTES );
 
-    secure_zero_memory( block, BLAKE2S_BLOCKBYTES ); /* Burn the key from stack */
+    secure_zero_memory( block, BLAKE2S_BLOCKBYTES );
   }
   return 0;
 }

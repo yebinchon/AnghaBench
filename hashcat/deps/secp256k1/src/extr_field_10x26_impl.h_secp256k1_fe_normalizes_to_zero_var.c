@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {int* n; } ;
-typedef  TYPE_1__ secp256k1_fe ;
+typedef TYPE_1__ secp256k1_fe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VERIFY_CHECK (int) ; 
+
+ int VERIFY_CHECK (int) ;
 
 __attribute__((used)) static int secp256k1_fe_normalizes_to_zero_var(secp256k1_fe *r) {
     uint32_t t0, t1, t2, t3, t4, t5, t6, t7, t8, t9;
@@ -26,17 +26,17 @@ __attribute__((used)) static int secp256k1_fe_normalizes_to_zero_var(secp256k1_f
     t0 = r->n[0];
     t9 = r->n[9];
 
-    /* Reduce t9 at the start so there will be at most a single carry from the first pass */
+
     x = t9 >> 22;
 
-    /* The first pass ensures the magnitude is 1, ... */
+
     t0 += x * 0x3D1UL;
 
-    /* z0 tracks a possible raw value of 0, z1 tracks a possible raw value of P */
+
     z0 = t0 & 0x3FFFFFFUL;
     z1 = z0 ^ 0x3D0UL;
 
-    /* Fast return path should catch the majority of cases */
+
     if ((z0 != 0UL) & (z1 != 0x3FFFFFFUL)) {
         return 0;
     }
@@ -64,7 +64,7 @@ __attribute__((used)) static int secp256k1_fe_normalizes_to_zero_var(secp256k1_f
     t9 += (t8 >> 26); t8 &= 0x3FFFFFFUL; z0 |= t8; z1 &= t8;
                                          z0 |= t9; z1 &= t9 ^ 0x3C00000UL;
 
-    /* ... except for a possible carry at bit 22 of t9 (i.e. bit 256 of the field element) */
+
     VERIFY_CHECK(t9 >> 23 == 0);
 
     return (z0 == 0) | (z1 == 0x3FFFFFFUL);

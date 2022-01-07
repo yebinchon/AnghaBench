@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int SSL_TICKET_STATUS ;
-typedef  int /*<<< orphan*/  SSL_TICKET_RETURN ;
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int SSL_SESSION_get0_ticket_appdata (int /*<<< orphan*/ *,void**,size_t*) ; 
- int SSL_TICKET_EMPTY ; 
-#define  SSL_TICKET_NO_DECRYPT 130 
- int /*<<< orphan*/  SSL_TICKET_RETURN_ABORT ; 
- int /*<<< orphan*/  SSL_TICKET_RETURN_IGNORE_RENEW ; 
- int /*<<< orphan*/  SSL_TICKET_RETURN_USE ; 
- int /*<<< orphan*/  SSL_TICKET_RETURN_USE_RENEW ; 
-#define  SSL_TICKET_SUCCESS 129 
-#define  SSL_TICKET_SUCCESS_RENEW 128 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_size_t_eq (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  appdata ; 
- int dec_tick_called ; 
- int /*<<< orphan*/  memcmp (void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tick_dec_ret ; 
- scalar_t__ tick_key_cb_called ; 
+
+
+
+typedef int SSL_TICKET_STATUS ;
+typedef int SSL_TICKET_RETURN ;
+typedef int SSL_SESSION ;
+typedef int SSL ;
+
+
+ int SSL_SESSION_get0_ticket_appdata (int *,void**,size_t*) ;
+ int SSL_TICKET_EMPTY ;
+
+ int SSL_TICKET_RETURN_ABORT ;
+ int SSL_TICKET_RETURN_IGNORE_RENEW ;
+ int SSL_TICKET_RETURN_USE ;
+ int SSL_TICKET_RETURN_USE_RENEW ;
+
+
+ int TEST_int_eq (int ,int ) ;
+ int TEST_size_t_eq (size_t,int ) ;
+ int TEST_true (int) ;
+ int appdata ;
+ int dec_tick_called ;
+ int memcmp (void*,int ,size_t) ;
+ int strlen (int ) ;
+ int tick_dec_ret ;
+ scalar_t__ tick_key_cb_called ;
 
 __attribute__((used)) static SSL_TICKET_RETURN dec_tick_cb(SSL *s, SSL_SESSION *ss,
                                      const unsigned char *keyname,
@@ -49,8 +49,8 @@ __attribute__((used)) static SSL_TICKET_RETURN dec_tick_cb(SSL *s, SSL_SESSION *
     if (status == SSL_TICKET_EMPTY)
         return SSL_TICKET_RETURN_IGNORE_RENEW;
 
-    if (!TEST_true(status == SSL_TICKET_SUCCESS
-                   || status == SSL_TICKET_SUCCESS_RENEW))
+    if (!TEST_true(status == 129
+                   || status == 128))
         return SSL_TICKET_RETURN_ABORT;
 
     if (!TEST_true(SSL_SESSION_get0_ticket_appdata(ss, &tickdata,
@@ -59,16 +59,16 @@ __attribute__((used)) static SSL_TICKET_RETURN dec_tick_cb(SSL *s, SSL_SESSION *
             || !TEST_int_eq(memcmp(tickdata, appdata, tickdlen), 0))
         return SSL_TICKET_RETURN_ABORT;
 
-    if (tick_key_cb_called)  {
-        /* Don't change what the ticket key callback wanted to do */
+    if (tick_key_cb_called) {
+
         switch (status) {
-        case SSL_TICKET_NO_DECRYPT:
+        case 130:
             return SSL_TICKET_RETURN_IGNORE_RENEW;
 
-        case SSL_TICKET_SUCCESS:
+        case 129:
             return SSL_TICKET_RETURN_USE;
 
-        case SSL_TICKET_SUCCESS_RENEW:
+        case 128:
             return SSL_TICKET_RETURN_USE_RENEW;
 
         default:

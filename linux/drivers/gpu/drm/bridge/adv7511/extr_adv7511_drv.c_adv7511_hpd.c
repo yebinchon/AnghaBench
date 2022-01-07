@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct adv7511 {int /*<<< orphan*/  regmap; } ;
 
-/* Variables and functions */
- unsigned int ADV7511_INT0_HPD ; 
- int /*<<< orphan*/  ADV7511_REG_INT (int /*<<< orphan*/ ) ; 
- int regmap_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  regmap_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
+
+
+
+struct adv7511 {int regmap; } ;
+
+
+ unsigned int ADV7511_INT0_HPD ;
+ int ADV7511_REG_INT (int ) ;
+ int regmap_read (int ,int ,unsigned int*) ;
+ int regmap_write (int ,int ,unsigned int) ;
 
 __attribute__((used)) static bool adv7511_hpd(struct adv7511 *adv7511)
 {
-	unsigned int irq0;
-	int ret;
+ unsigned int irq0;
+ int ret;
 
-	ret = regmap_read(adv7511->regmap, ADV7511_REG_INT(0), &irq0);
-	if (ret < 0)
-		return false;
+ ret = regmap_read(adv7511->regmap, ADV7511_REG_INT(0), &irq0);
+ if (ret < 0)
+  return 0;
 
-	if (irq0 & ADV7511_INT0_HPD) {
-		regmap_write(adv7511->regmap, ADV7511_REG_INT(0),
-			     ADV7511_INT0_HPD);
-		return true;
-	}
+ if (irq0 & ADV7511_INT0_HPD) {
+  regmap_write(adv7511->regmap, ADV7511_REG_INT(0),
+        ADV7511_INT0_HPD);
+  return 1;
+ }
 
-	return false;
+ return 0;
 }

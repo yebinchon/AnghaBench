@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_4__ {int /*<<< orphan*/  exec_context; } ;
-typedef  TYPE_1__ Mount ;
-typedef  int /*<<< orphan*/  ExecCleanMask ;
 
-/* Variables and functions */
- TYPE_1__* MOUNT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int exec_context_get_clean_mask (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_4__ {int exec_context; } ;
+typedef TYPE_1__ Mount ;
+typedef int ExecCleanMask ;
+
+
+ TYPE_1__* MOUNT (int *) ;
+ int assert (TYPE_1__*) ;
+ int exec_context_get_clean_mask (int *,int *) ;
 
 __attribute__((used)) static int mount_can_clean(Unit *u, ExecCleanMask *ret) {
         Mount *m = MOUNT(u);

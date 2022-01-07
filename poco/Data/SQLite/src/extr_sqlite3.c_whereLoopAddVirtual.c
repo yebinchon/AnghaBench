@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_33__   TYPE_9__ ;
-typedef  struct TYPE_32__   TYPE_8__ ;
-typedef  struct TYPE_31__   TYPE_7__ ;
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_21__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
-typedef  struct TYPE_23__   TYPE_11__ ;
-typedef  struct TYPE_22__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_33__ TYPE_9__ ;
+typedef struct TYPE_32__ TYPE_8__ ;
+typedef struct TYPE_31__ TYPE_7__ ;
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_21__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+typedef struct TYPE_23__ TYPE_11__ ;
+typedef struct TYPE_22__ TYPE_10__ ;
+
+
+typedef int u16 ;
 struct SrcList_item {TYPE_21__* pTab; } ;
-typedef  int /*<<< orphan*/  sqlite3_uint64 ;
-struct TYPE_30__ {int nConstraint; int /*<<< orphan*/  idxStr; scalar_t__ needToFreeIdxStr; TYPE_5__* aConstraint; } ;
-typedef  TYPE_6__ sqlite3_index_info ;
-struct TYPE_31__ {int /*<<< orphan*/  pOrderBy; TYPE_8__* pNew; TYPE_10__* pWC; TYPE_9__* pWInfo; } ;
-typedef  TYPE_7__ WhereLoopBuilder ;
+typedef int sqlite3_uint64 ;
+struct TYPE_30__ {int nConstraint; int idxStr; scalar_t__ needToFreeIdxStr; TYPE_5__* aConstraint; } ;
+typedef TYPE_6__ sqlite3_index_info ;
+struct TYPE_31__ {int pOrderBy; TYPE_8__* pNew; TYPE_10__* pWC; TYPE_9__* pWInfo; } ;
+typedef TYPE_7__ WhereLoopBuilder ;
 struct TYPE_26__ {scalar_t__ needFree; } ;
 struct TYPE_27__ {TYPE_2__ vtab; } ;
-struct TYPE_32__ {size_t iTab; scalar_t__ prereq; TYPE_3__ u; scalar_t__ nLTerm; int /*<<< orphan*/  wsFlags; scalar_t__ rSetup; } ;
-typedef  TYPE_8__ WhereLoop ;
+struct TYPE_32__ {size_t iTab; scalar_t__ prereq; TYPE_3__ u; scalar_t__ nLTerm; int wsFlags; scalar_t__ rSetup; } ;
+typedef TYPE_8__ WhereLoop ;
 struct TYPE_33__ {TYPE_1__* pTabList; TYPE_11__* pParse; } ;
-typedef  TYPE_9__ WhereInfo ;
+typedef TYPE_9__ WhereInfo ;
 struct TYPE_22__ {TYPE_4__* a; } ;
-typedef  TYPE_10__ WhereClause ;
+typedef TYPE_10__ WhereClause ;
 struct TYPE_29__ {size_t iTermOffset; } ;
 struct TYPE_28__ {scalar_t__ prereqRight; } ;
-struct TYPE_25__ {int /*<<< orphan*/  zName; } ;
+struct TYPE_25__ {int zName; } ;
 struct TYPE_24__ {struct SrcList_item* a; } ;
-struct TYPE_23__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_11__ Parse ;
-typedef  scalar_t__ Bitmask ;
+struct TYPE_23__ {int db; } ;
+typedef TYPE_11__ Parse ;
+typedef scalar_t__ Bitmask ;
 
-/* Variables and functions */
- scalar_t__ ALLBITS ; 
- int IsVirtual (TYPE_21__*) ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  WHERETRACE (int,char*) ; 
- int /*<<< orphan*/  WHERE_VIRTUALTABLE ; 
- int /*<<< orphan*/  WO_IN ; 
- TYPE_6__* allocateIndexInfo (TYPE_11__*,TYPE_10__*,scalar_t__,struct SrcList_item*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  sqlite3DbFreeNN (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
- int whereLoopAddVirtualOne (TYPE_7__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ whereLoopResize (int /*<<< orphan*/ ,TYPE_8__*,int) ; 
+
+ scalar_t__ ALLBITS ;
+ int IsVirtual (TYPE_21__*) ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int WHERETRACE (int,char*) ;
+ int WHERE_VIRTUALTABLE ;
+ int WO_IN ;
+ TYPE_6__* allocateIndexInfo (TYPE_11__*,TYPE_10__*,scalar_t__,struct SrcList_item*,int ,int *) ;
+ int assert (int) ;
+ int sqlite3DbFree (int ,TYPE_6__*) ;
+ int sqlite3DbFreeNN (int ,TYPE_6__*) ;
+ int sqlite3_free (int ) ;
+ int whereLoopAddVirtualOne (TYPE_7__*,scalar_t__,scalar_t__,int ,TYPE_6__*,int ,int*) ;
+ scalar_t__ whereLoopResize (int ,TYPE_8__*,int) ;
 
 __attribute__((used)) static int whereLoopAddVirtual(
-  WhereLoopBuilder *pBuilder,  /* WHERE clause information */
-  Bitmask mPrereq,             /* Tables that must be scanned before this one */
-  Bitmask mUnusable            /* Tables that must be scanned after this one */
+  WhereLoopBuilder *pBuilder,
+  Bitmask mPrereq,
+  Bitmask mUnusable
 ){
-  int rc = SQLITE_OK;          /* Return code */
-  WhereInfo *pWInfo;           /* WHERE analysis context */
-  Parse *pParse;               /* The parsing context */
-  WhereClause *pWC;            /* The WHERE clause */
-  struct SrcList_item *pSrc;   /* The FROM clause term to search */
-  sqlite3_index_info *p;       /* Object to pass to xBestIndex() */
-  int nConstraint;             /* Number of constraints in p */
-  int bIn;                     /* True if plan uses IN(...) operator */
+  int rc = SQLITE_OK;
+  WhereInfo *pWInfo;
+  Parse *pParse;
+  WhereClause *pWC;
+  struct SrcList_item *pSrc;
+  sqlite3_index_info *p;
+  int nConstraint;
+  int bIn;
   WhereLoop *pNew;
-  Bitmask mBest;               /* Tables used by best possible plan */
+  Bitmask mBest;
   u16 mNoOmit;
 
   assert( (mPrereq & mUnusable)==0 );
@@ -85,7 +85,7 @@ __attribute__((used)) static int whereLoopAddVirtual(
   pNew = pBuilder->pNew;
   pSrc = &pWInfo->pTabList->a[pNew->iTab];
   assert( IsVirtual(pSrc->pTab) );
-  p = allocateIndexInfo(pParse, pWC, mUnusable, pSrc, pBuilder->pOrderBy, 
+  p = allocateIndexInfo(pParse, pWC, mUnusable, pSrc, pBuilder->pOrderBy,
       &mNoOmit);
   if( p==0 ) return SQLITE_NOMEM_BKPT;
   pNew->rSetup = 0;
@@ -98,24 +98,24 @@ __attribute__((used)) static int whereLoopAddVirtual(
     return SQLITE_NOMEM_BKPT;
   }
 
-  /* First call xBestIndex() with all constraints usable. */
+
   WHERETRACE(0x800, ("BEGIN %s.addVirtual()\n", pSrc->pTab->zName));
   WHERETRACE(0x40, ("  VirtualOne: all usable\n"));
   rc = whereLoopAddVirtualOne(pBuilder, mPrereq, ALLBITS, 0, p, mNoOmit, &bIn);
 
-  /* If the call to xBestIndex() with all terms enabled produced a plan
-  ** that does not require any source tables (IOW: a plan with mBest==0)
-  ** and does not use an IN(...) operator, then there is no point in making 
-  ** any further calls to xBestIndex() since they will all return the same
-  ** result (if the xBestIndex() implementation is sane). */
+
+
+
+
+
   if( rc==SQLITE_OK && ((mBest = (pNew->prereq & ~mPrereq))!=0 || bIn) ){
-    int seenZero = 0;             /* True if a plan with no prereqs seen */
-    int seenZeroNoIN = 0;         /* Plan with no prereqs and no IN(...) seen */
+    int seenZero = 0;
+    int seenZeroNoIN = 0;
     Bitmask mPrev = 0;
     Bitmask mBestNoIn = 0;
 
-    /* If the plan produced by the earlier call uses an IN(...) term, call
-    ** xBestIndex again, this time with IN(...) terms disabled. */
+
+
     if( bIn ){
       WHERETRACE(0x40, ("  VirtualOne: all usable w/o IN\n"));
       rc = whereLoopAddVirtualOne(
@@ -128,8 +128,8 @@ __attribute__((used)) static int whereLoopAddVirtual(
       }
     }
 
-    /* Call xBestIndex once for each distinct value of (prereqRight & ~mPrereq) 
-    ** in the set of terms that apply to the current virtual table.  */
+
+
     while( rc==SQLITE_OK ){
       int i;
       Bitmask mNext = ALLBITS;
@@ -153,9 +153,9 @@ __attribute__((used)) static int whereLoopAddVirtual(
       }
     }
 
-    /* If the calls to xBestIndex() in the above loop did not find a plan
-    ** that requires no source tables at all (i.e. one guaranteed to be
-    ** usable), make a call here with all source tables disabled */
+
+
+
     if( rc==SQLITE_OK && seenZero==0 ){
       WHERETRACE(0x40, ("  VirtualOne: all disabled\n"));
       rc = whereLoopAddVirtualOne(
@@ -163,9 +163,9 @@ __attribute__((used)) static int whereLoopAddVirtual(
       if( bIn==0 ) seenZeroNoIN = 1;
     }
 
-    /* If the calls to xBestIndex() have so far failed to find a plan
-    ** that requires no source tables at all and does not use an IN(...)
-    ** operator, make a final call to obtain one here.  */
+
+
+
     if( rc==SQLITE_OK && seenZeroNoIN==0 ){
       WHERETRACE(0x40, ("  VirtualOne: all disabled and w/o IN\n"));
       rc = whereLoopAddVirtualOne(

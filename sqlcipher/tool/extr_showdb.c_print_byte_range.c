@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int perLine; } ;
 
-/* Variables and functions */
- scalar_t__ ISPRINT (unsigned char) ; 
- unsigned char* fileRead (int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char const*,...) ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  stdout ; 
+
+ scalar_t__ ISPRINT (unsigned char) ;
+ unsigned char* fileRead (int,int) ;
+ int fprintf (int ,char const*,...) ;
+ TYPE_1__ g ;
+ int stdout ;
 
 __attribute__((used)) static unsigned char *print_byte_range(
-  int ofst,          /* First byte in the range of bytes to print */
-  int nByte,         /* Number of bytes to print */
-  int printOfst      /* Add this amount to the index on the left column */
+  int ofst,
+  int nByte,
+  int printOfst
 ){
   unsigned char *aData;
   int i, j;

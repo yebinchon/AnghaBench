@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
-struct TYPE_17__ {int Attributes; int /*<<< orphan*/  KeyPath; int /*<<< orphan*/  Directory; } ;
-struct TYPE_16__ {int /*<<< orphan*/  TargetPath; } ;
-struct TYPE_15__ {int /*<<< orphan*/  db; } ;
-struct TYPE_14__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIPACKAGE ;
-typedef  TYPE_3__ MSIFILE ;
-typedef  TYPE_4__ MSICOMPONENT ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- TYPE_1__* MSI_QueryGetRecord (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int MSI_RecordGetInteger (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordGetString (TYPE_1__*,int) ; 
- int /*<<< orphan*/  deformat_string (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
- TYPE_3__* msi_get_loaded_file (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_get_target_folder (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int msidbComponentAttributesODBCDataSource ; 
- int msidbComponentAttributesRegistryKeyPath ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintfW (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/ * strdupW (int /*<<< orphan*/ ) ; 
- int strlenW (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_17__ {int Attributes; int KeyPath; int Directory; } ;
+struct TYPE_16__ {int TargetPath; } ;
+struct TYPE_15__ {int db; } ;
+struct TYPE_14__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIPACKAGE ;
+typedef TYPE_3__ MSIFILE ;
+typedef TYPE_4__ MSICOMPONENT ;
+typedef int * LPWSTR ;
+typedef int LPCWSTR ;
+
+
+ int FIXME (char*) ;
+ TYPE_1__* MSI_QueryGetRecord (int ,char const*,int ) ;
+ int MSI_RecordGetInteger (TYPE_1__*,int) ;
+ int MSI_RecordGetString (TYPE_1__*,int) ;
+ int deformat_string (TYPE_2__*,int ,int **) ;
+ int * msi_alloc (int) ;
+ int msi_free (int *) ;
+ TYPE_3__* msi_get_loaded_file (TYPE_2__*,int ) ;
+ int msi_get_target_folder (TYPE_2__*,int ) ;
+ int msidbComponentAttributesODBCDataSource ;
+ int msidbComponentAttributesRegistryKeyPath ;
+ int msiobj_release (int *) ;
+ int sprintfW (int *,char const*,int,int *,...) ;
+ int * strdupW (int ) ;
+ int strlenW (int *) ;
 
 __attribute__((used)) static LPWSTR resolve_keypath( MSIPACKAGE* package, MSICOMPONENT *cmp )
 {
@@ -65,7 +65,7 @@ __attribute__((used)) static LPWSTR resolve_keypath( MSIPACKAGE* package, MSICOM
 
         row = MSI_QueryGetRecord(package->db, query, cmp->KeyPath);
         if (!row)
-            return NULL;
+            return ((void*)0);
 
         root = MSI_RecordGetInteger(row,2);
         key = MSI_RecordGetString(row, 3);
@@ -93,7 +93,7 @@ __attribute__((used)) static LPWSTR resolve_keypath( MSIPACKAGE* package, MSICOM
     else if (cmp->Attributes & msidbComponentAttributesODBCDataSource)
     {
         FIXME("UNIMPLEMENTED keypath as ODBC Source\n");
-        return NULL;
+        return ((void*)0);
     }
     else
     {
@@ -102,5 +102,5 @@ __attribute__((used)) static LPWSTR resolve_keypath( MSIPACKAGE* package, MSICOM
         if (file)
             return strdupW( file->TargetPath );
     }
-    return NULL;
+    return ((void*)0);
 }

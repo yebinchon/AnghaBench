@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int _putenv (char*) ; 
- char* a_very_long_env_string ; 
- int /*<<< orphan*/ * getenv (char*) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char*) ; 
+ int _putenv (char*) ;
+ char* a_very_long_env_string ;
+ int * getenv (char*) ;
+ int ok (int,char*) ;
+ scalar_t__ strcmp (int *,char*) ;
 
 __attribute__((used)) static void test_environment_manipulation(void)
 {
@@ -29,5 +21,5 @@ __attribute__((used)) static void test_environment_manipulation(void)
     ok( _putenv("=dog") == -1, "should not accept '=dog' as input\n" );
     ok( _putenv(a_very_long_env_string) == 0, "_putenv failed for long environment string\n");
 
-    ok( getenv("nonexistent") == NULL, "getenv should fail with nonexistent var name\n" );
+    ok( getenv("nonexistent") == ((void*)0), "getenv should fail with nonexistent var name\n" );
 }

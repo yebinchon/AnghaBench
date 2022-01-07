@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct ifinfomsg {unsigned int ifi_type; } ;
-struct TYPE_6__ {struct TYPE_6__* hdr; int /*<<< orphan*/  nlmsg_type; } ;
-typedef  TYPE_1__ sd_netlink_message ;
+struct TYPE_6__ {struct TYPE_6__* hdr; int nlmsg_type; } ;
+typedef TYPE_1__ sd_netlink_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- struct ifinfomsg* NLMSG_DATA (TYPE_1__*) ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* rtnl_message_type_is_link (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ struct ifinfomsg* NLMSG_DATA (TYPE_1__*) ;
+ int assert_return (TYPE_1__*,int ) ;
+ TYPE_1__* rtnl_message_type_is_link (int ) ;
 
 int sd_rtnl_message_link_set_type(sd_netlink_message *m, unsigned type) {
         struct ifinfomsg *ifi;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  sync_mgr; } ;
-struct TYPE_14__ {scalar_t__ version; int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int sync_mgr; } ;
+struct TYPE_14__ {scalar_t__ version; int id; } ;
 struct TYPE_13__ {TYPE_1__* priv; } ;
-struct TYPE_12__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  repo_hash; } ;
-typedef  TYPE_2__ SeafRepoManager ;
-typedef  TYPE_3__ SeafRepo ;
+struct TYPE_12__ {int lock; int repo_hash; } ;
+typedef TYPE_2__ SeafRepoManager ;
+typedef TYPE_3__ SeafRepo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_hash_table_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  move_repo_stores (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  pthread_rwlock_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove_folder_perms (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_8__* seaf ; 
- int /*<<< orphan*/  seaf_repo_free (TYPE_3__*) ; 
- int /*<<< orphan*/  seaf_repo_manager_remove_repo_ondisk (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_sync_manager_remove_active_path_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int g_hash_table_remove (int ,int ) ;
+ int move_repo_stores (TYPE_2__*,TYPE_3__*) ;
+ int pthread_rwlock_unlock (int *) ;
+ scalar_t__ pthread_rwlock_wrlock (int *) ;
+ int remove_folder_perms (TYPE_2__*,int ) ;
+ TYPE_8__* seaf ;
+ int seaf_repo_free (TYPE_3__*) ;
+ int seaf_repo_manager_remove_repo_ondisk (TYPE_2__*,int ,int ) ;
+ int seaf_sync_manager_remove_active_path_info (int ,int ) ;
+ int seaf_warning (char*) ;
 
 int
 seaf_repo_manager_del_repo (SeafRepoManager *mgr,

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnic_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int ETIMEDOUT ; 
- int HZ ; 
- int /*<<< orphan*/  in_interrupt () ; 
- int jiffies ; 
- int /*<<< orphan*/  schedule_timeout_uninterruptible (int) ; 
- scalar_t__ time_after (unsigned long,int) ; 
+
+ int BUG_ON (int ) ;
+ int ETIMEDOUT ;
+ int HZ ;
+ int in_interrupt () ;
+ int jiffies ;
+ int schedule_timeout_uninterruptible (int) ;
+ scalar_t__ time_after (unsigned long,int) ;
 
 __attribute__((used)) static int enic_dev_wait(struct vnic_dev *vdev,
-	int (*start)(struct vnic_dev *, int),
-	int (*finished)(struct vnic_dev *, int *),
-	int arg)
+ int (*start)(struct vnic_dev *, int),
+ int (*finished)(struct vnic_dev *, int *),
+ int arg)
 {
-	unsigned long time;
-	int done;
-	int err;
+ unsigned long time;
+ int done;
+ int err;
 
-	BUG_ON(in_interrupt());
+ BUG_ON(in_interrupt());
 
-	err = start(vdev, arg);
-	if (err)
-		return err;
+ err = start(vdev, arg);
+ if (err)
+  return err;
 
-	/* Wait for func to complete...2 seconds max
-	 */
 
-	time = jiffies + (HZ * 2);
-	do {
 
-		err = finished(vdev, &done);
-		if (err)
-			return err;
 
-		if (done)
-			return 0;
+ time = jiffies + (HZ * 2);
+ do {
 
-		schedule_timeout_uninterruptible(HZ / 10);
+  err = finished(vdev, &done);
+  if (err)
+   return err;
 
-	} while (time_after(time, jiffies));
+  if (done)
+   return 0;
 
-	return -ETIMEDOUT;
+  schedule_timeout_uninterruptible(HZ / 10);
+
+ } while (time_after(time, jiffies));
+
+ return -ETIMEDOUT;
 }

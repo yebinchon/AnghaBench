@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ hw_subfmt; } ;
-struct priv {int require_filtering; int /*<<< orphan*/  queue; TYPE_1__ out_params; TYPE_1__ params; int /*<<< orphan*/  out_format; int /*<<< orphan*/  pool; } ;
+struct priv {int require_filtering; int queue; TYPE_1__ out_params; TYPE_1__ params; int out_format; int pool; } ;
 struct mp_image {TYPE_1__ params; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DXGI_FORMAT_NV12 ; 
- scalar_t__ IMGFMT_NV12 ; 
- int /*<<< orphan*/  destroy_video_proc (struct mp_filter*) ; 
- int /*<<< orphan*/  mp_filter_internal_mark_failed (struct mp_filter*) ; 
- struct mp_image* mp_image_new_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_pool_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_can_output (int /*<<< orphan*/ ) ; 
- struct mp_image* mp_refqueue_execute_reinit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_should_deint (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_write_out_pin (int /*<<< orphan*/ ,struct mp_image*) ; 
- struct mp_image* render (struct mp_filter*) ; 
+
+ int DXGI_FORMAT_NV12 ;
+ scalar_t__ IMGFMT_NV12 ;
+ int destroy_video_proc (struct mp_filter*) ;
+ int mp_filter_internal_mark_failed (struct mp_filter*) ;
+ struct mp_image* mp_image_new_ref (int ) ;
+ int mp_image_pool_clear (int ) ;
+ int mp_refqueue_can_output (int ) ;
+ struct mp_image* mp_refqueue_execute_reinit (int ) ;
+ int mp_refqueue_get (int ,int ) ;
+ int mp_refqueue_should_deint (int ) ;
+ int mp_refqueue_write_out_pin (int ,struct mp_image*) ;
+ struct mp_image* render (struct mp_filter*) ;
 
 __attribute__((used)) static void vf_d3d11vpp_process(struct mp_filter *vf)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void vf_d3d11vpp_process(struct mp_filter *vf)
         return;
 
     if (!mp_refqueue_should_deint(p->queue) && !p->require_filtering) {
-        // no filtering
+
         struct mp_image *in = mp_image_new_ref(mp_refqueue_get(p->queue, 0));
         if (!in) {
             mp_filter_internal_mark_failed(vf);

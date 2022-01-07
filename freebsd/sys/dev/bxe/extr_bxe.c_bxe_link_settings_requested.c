@@ -1,72 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_6__ {int* advertising; size_t* link_config; int* supported; } ;
-struct TYPE_5__ {int num_phys; size_t* req_flow_ctrl; void** req_duplex; void** req_line_speed; int /*<<< orphan*/ * speed_cap_mask; TYPE_1__* phy; } ;
+struct TYPE_5__ {int num_phys; size_t* req_flow_ctrl; void** req_duplex; void** req_line_speed; int * speed_cap_mask; TYPE_1__* phy; } ;
 struct bxe_softc {TYPE_3__ port; TYPE_2__ link_params; } ;
-struct TYPE_4__ {int /*<<< orphan*/  type; } ;
+struct TYPE_4__ {int type; } ;
 
-/* Variables and functions */
- int ADVERTISED_10000baseT_Full ; 
- int ADVERTISED_1000baseT_Full ; 
- int ADVERTISED_100baseT_Full ; 
- int ADVERTISED_100baseT_Half ; 
- int ADVERTISED_10baseT_Full ; 
- int ADVERTISED_10baseT_Half ; 
- int ADVERTISED_2500baseX_Full ; 
- int ADVERTISED_FIBRE ; 
- int ADVERTISED_TP ; 
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,void*,void*,size_t,int) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- void* DUPLEX_FULL ; 
- void* DUPLEX_HALF ; 
- int /*<<< orphan*/  ELINK_DEBUG_P1 (struct bxe_softc*,char*,void*) ; 
- int /*<<< orphan*/  ELINK_DEBUG_P3 (struct bxe_softc*,char*,void*,void*,int) ; 
- size_t ELINK_EXT_PHY1 ; 
- size_t ELINK_FLOW_CTRL_AUTO ; 
- size_t ELINK_FLOW_CTRL_NONE ; 
- void* ELINK_SPEED_10 ; 
- void* ELINK_SPEED_100 ; 
- void* ELINK_SPEED_1000 ; 
- void* ELINK_SPEED_10000 ; 
- void* ELINK_SPEED_20000 ; 
- void* ELINK_SPEED_2500 ; 
- void* ELINK_SPEED_AUTO_NEG ; 
- int ELINK_SUPPORTED_10000baseT_Full ; 
- int ELINK_SUPPORTED_1000baseT_Full ; 
- int ELINK_SUPPORTED_100baseT_Full ; 
- int ELINK_SUPPORTED_100baseT_Half ; 
- int ELINK_SUPPORTED_10baseT_Full ; 
- int ELINK_SUPPORTED_10baseT_Half ; 
- int ELINK_SUPPORTED_2500baseX_Full ; 
- int ELINK_SUPPORTED_Autoneg ; 
- size_t PORT_FEATURE_FLOW_CONTROL_MASK ; 
-#define  PORT_FEATURE_LINK_SPEED_100M_FULL 136 
-#define  PORT_FEATURE_LINK_SPEED_100M_HALF 135 
-#define  PORT_FEATURE_LINK_SPEED_10G_CX4 134 
-#define  PORT_FEATURE_LINK_SPEED_10M_FULL 133 
-#define  PORT_FEATURE_LINK_SPEED_10M_HALF 132 
-#define  PORT_FEATURE_LINK_SPEED_1G 131 
-#define  PORT_FEATURE_LINK_SPEED_20G 130 
-#define  PORT_FEATURE_LINK_SPEED_2_5G 129 
-#define  PORT_FEATURE_LINK_SPEED_AUTO 128 
- size_t PORT_FEATURE_LINK_SPEED_MASK ; 
- int /*<<< orphan*/  PORT_HW_CFG_XGXS_EXT_PHY_TYPE_BCM84833 ; 
- int /*<<< orphan*/  bxe_set_requested_fc (struct bxe_softc*) ; 
+
+ int ADVERTISED_10000baseT_Full ;
+ int ADVERTISED_1000baseT_Full ;
+ int ADVERTISED_100baseT_Full ;
+ int ADVERTISED_100baseT_Half ;
+ int ADVERTISED_10baseT_Full ;
+ int ADVERTISED_10baseT_Half ;
+ int ADVERTISED_2500baseX_Full ;
+ int ADVERTISED_FIBRE ;
+ int ADVERTISED_TP ;
+ int BLOGD (struct bxe_softc*,int ,char*,void*,void*,size_t,int) ;
+ int BLOGE (struct bxe_softc*,char*,size_t,int ) ;
+ int DBG_LOAD ;
+ void* DUPLEX_FULL ;
+ void* DUPLEX_HALF ;
+ int ELINK_DEBUG_P1 (struct bxe_softc*,char*,void*) ;
+ int ELINK_DEBUG_P3 (struct bxe_softc*,char*,void*,void*,int) ;
+ size_t ELINK_EXT_PHY1 ;
+ size_t ELINK_FLOW_CTRL_AUTO ;
+ size_t ELINK_FLOW_CTRL_NONE ;
+ void* ELINK_SPEED_10 ;
+ void* ELINK_SPEED_100 ;
+ void* ELINK_SPEED_1000 ;
+ void* ELINK_SPEED_10000 ;
+ void* ELINK_SPEED_20000 ;
+ void* ELINK_SPEED_2500 ;
+ void* ELINK_SPEED_AUTO_NEG ;
+ int ELINK_SUPPORTED_10000baseT_Full ;
+ int ELINK_SUPPORTED_1000baseT_Full ;
+ int ELINK_SUPPORTED_100baseT_Full ;
+ int ELINK_SUPPORTED_100baseT_Half ;
+ int ELINK_SUPPORTED_10baseT_Full ;
+ int ELINK_SUPPORTED_10baseT_Half ;
+ int ELINK_SUPPORTED_2500baseX_Full ;
+ int ELINK_SUPPORTED_Autoneg ;
+ size_t PORT_FEATURE_FLOW_CONTROL_MASK ;
+ size_t PORT_FEATURE_LINK_SPEED_MASK ;
+ int PORT_HW_CFG_XGXS_EXT_PHY_TYPE_BCM84833 ;
+ int bxe_set_requested_fc (struct bxe_softc*) ;
 
 __attribute__((used)) static void
 bxe_link_settings_requested(struct bxe_softc *sc)
@@ -93,7 +84,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
         link_config = sc->port.link_config[idx];
 
         switch (link_config & PORT_FEATURE_LINK_SPEED_MASK) {
-        case PORT_FEATURE_LINK_SPEED_AUTO:
+        case 128:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_Autoneg) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_AUTO_NEG;
                 sc->port.advertising[idx] |= sc->port.supported[idx];
@@ -103,7 +94,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
                         (ELINK_SUPPORTED_100baseT_Half |
                          ELINK_SUPPORTED_100baseT_Full);
             } else {
-                /* force 10G, no AN */
+
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_10000;
                 sc->port.advertising[idx] |=
                     (ADVERTISED_10000baseT_Full | ADVERTISED_FIBRE);
@@ -111,7 +102,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_10M_FULL:
+        case 133:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_10baseT_Full) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_10;
                 sc->port.advertising[idx] |= (ADVERTISED_10baseT_Full |
@@ -124,14 +115,14 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_10M_HALF:
+        case 132:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_10baseT_Half) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_10;
                 sc->link_params.req_duplex[idx] = DUPLEX_HALF;
                 sc->port.advertising[idx] |= (ADVERTISED_10baseT_Half |
                                               ADVERTISED_TP);
-				ELINK_DEBUG_P1(sc, "driver requesting DUPLEX_HALF req_duplex = %x!\n",
-								sc->link_params.req_duplex[idx]);
+    ELINK_DEBUG_P1(sc, "driver requesting DUPLEX_HALF req_duplex = %x!\n",
+        sc->link_params.req_duplex[idx]);
             } else {
                 BLOGE(sc, "Invalid NVRAM config link_config=0x%08x "
                           "speed_cap_mask=0x%08x\n",
@@ -140,7 +131,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_100M_FULL:
+        case 136:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_100baseT_Full) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_100;
                 sc->port.advertising[idx] |= (ADVERTISED_100baseT_Full |
@@ -153,7 +144,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_100M_HALF:
+        case 135:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_100baseT_Half) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_100;
                 sc->link_params.req_duplex[idx] = DUPLEX_HALF;
@@ -167,7 +158,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_1G:
+        case 131:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_1000baseT_Full) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_1000;
                 sc->port.advertising[idx] |= (ADVERTISED_1000baseT_Full |
@@ -180,7 +171,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_2_5G:
+        case 129:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_2500baseX_Full) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_2500;
                 sc->port.advertising[idx] |= (ADVERTISED_2500baseX_Full |
@@ -193,7 +184,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_10G_CX4:
+        case 134:
             if (sc->port.supported[idx] & ELINK_SUPPORTED_10000baseT_Full) {
                 sc->link_params.req_line_speed[idx] = ELINK_SPEED_10000;
                 sc->port.advertising[idx] |= (ADVERTISED_10000baseT_Full |
@@ -206,7 +197,7 @@ bxe_link_settings_requested(struct bxe_softc *sc)
             }
             break;
 
-        case PORT_FEATURE_LINK_SPEED_20G:
+        case 130:
             sc->link_params.req_line_speed[idx] = ELINK_SPEED_20000;
             break;
 
@@ -236,10 +227,10 @@ bxe_link_settings_requested(struct bxe_softc *sc)
               sc->link_params.req_duplex[idx],
               sc->link_params.req_flow_ctrl[idx],
               sc->port.advertising[idx]);
-		ELINK_DEBUG_P3(sc, "req_line_speed=%d req_duplex=%d "
-						"advertising=0x%x\n",
-						sc->link_params.req_line_speed[idx],
-						sc->link_params.req_duplex[idx],
-						sc->port.advertising[idx]);
+  ELINK_DEBUG_P3(sc, "req_line_speed=%d req_duplex=%d "
+      "advertising=0x%x\n",
+      sc->link_params.req_line_speed[idx],
+      sc->link_params.req_duplex[idx],
+      sc->port.advertising[idx]);
     }
 }

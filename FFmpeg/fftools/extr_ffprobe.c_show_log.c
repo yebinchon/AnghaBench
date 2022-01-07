@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WriterContext ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int WriterContext ;
 struct TYPE_2__ {int log_level; int category; int parent_category; scalar_t__ log_message; scalar_t__ parent_name; scalar_t__ context_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_log (int /*<<< orphan*/ ) ; 
- TYPE_1__* log_buffer ; 
- int log_buffer_size ; 
- int /*<<< orphan*/  log_mutex ; 
- int /*<<< orphan*/  print_int (char*,int) ; 
- int /*<<< orphan*/  print_str (char*,scalar_t__) ; 
- int /*<<< orphan*/  print_str_opt (char*,char*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writer_print_section_footer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  writer_print_section_header (int /*<<< orphan*/ *,int) ; 
+
+ int clear_log (int ) ;
+ TYPE_1__* log_buffer ;
+ int log_buffer_size ;
+ int log_mutex ;
+ int print_int (char*,int) ;
+ int print_str (char*,scalar_t__) ;
+ int print_str_opt (char*,char*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int writer_print_section_footer (int *) ;
+ int writer_print_section_header (int *,int) ;
 
 __attribute__((used)) static int show_log(WriterContext *w, int section_ids, int section_id, int log_level)
 {

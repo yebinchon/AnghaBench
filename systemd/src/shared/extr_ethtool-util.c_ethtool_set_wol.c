@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifreq {void* ifr_data; int /*<<< orphan*/  ifr_name; } ;
-struct ethtool_wolinfo {int /*<<< orphan*/  cmd; int /*<<< orphan*/  wolopts; } ;
-typedef  int WakeOnLan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETHTOOL_GWOL ; 
- int /*<<< orphan*/  ETHTOOL_SWOL ; 
- int /*<<< orphan*/  IFNAMSIZ ; 
- int /*<<< orphan*/  SIOCETHTOOL ; 
- int /*<<< orphan*/  WAKE_ARP ; 
- int /*<<< orphan*/  WAKE_BCAST ; 
- int /*<<< orphan*/  WAKE_MAGIC ; 
- int /*<<< orphan*/  WAKE_MAGICSECURE ; 
- int /*<<< orphan*/  WAKE_MCAST ; 
- int /*<<< orphan*/  WAKE_PHY ; 
- int /*<<< orphan*/  WAKE_UCAST ; 
-#define  WOL_ARP 135 
-#define  WOL_BCAST 134 
-#define  WOL_MAGIC 133 
-#define  WOL_MAGICSECURE 132 
-#define  WOL_MCAST 131 
-#define  WOL_OFF 130 
-#define  WOL_PHY 129 
-#define  WOL_UCAST 128 
- int _WOL_INVALID ; 
- int errno ; 
- int ethtool_connect_or_warn (int*,int) ; 
- int ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- int /*<<< orphan*/  strscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct ifreq {void* ifr_data; int ifr_name; } ;
+struct ethtool_wolinfo {int cmd; int wolopts; } ;
+typedef int WakeOnLan ;
+
+
+ int ETHTOOL_GWOL ;
+ int ETHTOOL_SWOL ;
+ int IFNAMSIZ ;
+ int SIOCETHTOOL ;
+ int WAKE_ARP ;
+ int WAKE_BCAST ;
+ int WAKE_MAGIC ;
+ int WAKE_MAGICSECURE ;
+ int WAKE_MCAST ;
+ int WAKE_PHY ;
+ int WAKE_UCAST ;
+ int _WOL_INVALID ;
+ int errno ;
+ int ethtool_connect_or_warn (int*,int) ;
+ int ioctl (int,int ,struct ifreq*) ;
+ int strscpy (int ,int ,char const*) ;
 
 int ethtool_set_wol(int *fd, const char *ifname, WakeOnLan wol) {
         struct ethtool_wolinfo ecmd = {
@@ -47,14 +39,14 @@ int ethtool_set_wol(int *fd, const char *ifname, WakeOnLan wol) {
         struct ifreq ifr = {
                 .ifr_data = (void*) &ecmd
         };
-        bool need_update = false;
+        bool need_update = 0;
         int r;
 
         if (wol == _WOL_INVALID)
                 return 0;
 
         if (*fd < 0) {
-                r = ethtool_connect_or_warn(fd, true);
+                r = ethtool_connect_or_warn(fd, 1);
                 if (r < 0)
                         return r;
         }
@@ -66,52 +58,52 @@ int ethtool_set_wol(int *fd, const char *ifname, WakeOnLan wol) {
                 return -errno;
 
         switch (wol) {
-        case WOL_PHY:
+        case 129:
                 if (ecmd.wolopts != WAKE_PHY) {
                         ecmd.wolopts = WAKE_PHY;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_UCAST:
+        case 128:
                 if (ecmd.wolopts != WAKE_UCAST) {
                         ecmd.wolopts = WAKE_UCAST;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_MCAST:
+        case 131:
                 if (ecmd.wolopts != WAKE_MCAST) {
                         ecmd.wolopts = WAKE_MCAST;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_BCAST:
+        case 134:
                 if (ecmd.wolopts != WAKE_BCAST) {
                         ecmd.wolopts = WAKE_BCAST;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_ARP:
+        case 135:
                 if (ecmd.wolopts != WAKE_ARP) {
                         ecmd.wolopts = WAKE_ARP;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_MAGIC:
+        case 133:
                 if (ecmd.wolopts != WAKE_MAGIC) {
                         ecmd.wolopts = WAKE_MAGIC;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_MAGICSECURE:
+        case 132:
                 if (ecmd.wolopts != WAKE_MAGICSECURE) {
                         ecmd.wolopts = WAKE_MAGICSECURE;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
-        case WOL_OFF:
+        case 130:
                 if (ecmd.wolopts != 0) {
                         ecmd.wolopts = 0;
-                        need_update = true;
+                        need_update = 1;
                 }
                 break;
         default:

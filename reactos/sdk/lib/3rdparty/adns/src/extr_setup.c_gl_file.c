@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * file; } ;
-typedef  TYPE_1__ getline_ctx ;
-typedef  int /*<<< orphan*/  adns_state ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int EOF ; 
- int /*<<< orphan*/  adns__diag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,char const*,int,...) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int getc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  saveerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * file; } ;
+typedef TYPE_1__ getline_ctx ;
+typedef int adns_state ;
+typedef int FILE ;
+
+
+ int EINVAL ;
+ int EOF ;
+ int adns__diag (int ,int,int ,char*,char const*,int,...) ;
+ int errno ;
+ scalar_t__ ferror (int *) ;
+ int getc (int *) ;
+ int saveerr (int ,int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int gl_file(adns_state ads, getline_ctx *src_io, const char *filename,
-		   int lno, char *buf, int buflen) {
+     int lno, char *buf, int buflen) {
   FILE *file= src_io->file;
   int c, i;
   char *p;
@@ -36,7 +36,7 @@ __attribute__((used)) static int gl_file(adns_state ads, getline_ctx *src_io, co
   buflen--;
   i= 0;
 
-  for (;;) { /* loop over chars */
+  for (;;) {
     if (i == buflen) {
       adns__diag(ads,-1,0,"%s:%d: line too long, ignored",filename,lno);
       goto x_badline;
@@ -49,9 +49,9 @@ __attribute__((used)) static int gl_file(adns_state ads, getline_ctx *src_io, co
       break;
     } else if (c == EOF) {
       if (ferror(file)) {
-	saveerr(ads,errno);
-	adns__diag(ads,-1,0,"%s:%d: read error: %s",filename,lno,strerror(errno));
-	return -1;
+ saveerr(ads,errno);
+ adns__diag(ads,-1,0,"%s:%d: read error: %s",filename,lno,strerror(errno));
+ return -1;
       }
       if (!i) return -1;
       break;

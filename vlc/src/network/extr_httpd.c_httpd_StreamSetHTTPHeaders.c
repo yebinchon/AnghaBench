@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {size_t i_http_headers; int /*<<< orphan*/  lock; TYPE_3__* p_http_headers; } ;
-typedef  TYPE_1__ httpd_stream_t ;
-struct TYPE_8__ {int /*<<< orphan*/  value; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ httpd_header ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {size_t i_http_headers; int lock; TYPE_3__* p_http_headers; } ;
+typedef TYPE_1__ httpd_stream_t ;
+struct TYPE_8__ {int value; int name; } ;
+typedef TYPE_2__ httpd_header ;
 struct TYPE_9__ {struct TYPE_9__* value; struct TYPE_9__* name; } ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- void* strdup (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
- TYPE_3__* vlc_alloc (size_t,int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int free (TYPE_3__*) ;
+ void* strdup (int ) ;
+ scalar_t__ unlikely (int) ;
+ TYPE_3__* vlc_alloc (size_t,int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 int httpd_StreamSetHTTPHeaders(httpd_stream_t * p_stream,
                                const httpd_header *p_headers, size_t i_headers)
@@ -43,7 +43,7 @@ int httpd_StreamSetHTTPHeaders(httpd_stream_t * p_stream,
             free(p_stream->p_http_headers[i].value);
         }
         free(p_stream->p_http_headers);
-        p_stream->p_http_headers = NULL;
+        p_stream->p_http_headers = ((void*)0);
         p_stream->i_http_headers = 0;
     }
 

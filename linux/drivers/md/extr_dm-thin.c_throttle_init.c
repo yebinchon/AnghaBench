@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct throttle {int throttle_applied; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_rwsem (int /*<<< orphan*/ *) ; 
+
+
+
+struct throttle {int throttle_applied; int lock; } ;
+
+
+ int init_rwsem (int *) ;
 
 __attribute__((used)) static void throttle_init(struct throttle *t)
 {
-	init_rwsem(&t->lock);
-	t->throttle_applied = false;
+ init_rwsem(&t->lock);
+ t->throttle_applied = 0;
 }

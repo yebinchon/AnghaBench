@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct table_info {int dummy; } ;
-struct numarray {int /*<<< orphan*/  value; } ;
+struct numarray {int value; } ;
 
-/* Variables and functions */
- struct numarray* numarray_find (struct table_info*,void*) ; 
+
+ struct numarray* numarray_find (struct table_info*,void*) ;
 
 __attribute__((used)) static int
 ta_lookup_numarray(struct table_info *ti, void *key, uint32_t keylen,
     uint32_t *val)
 {
-	struct numarray *ri;
+ struct numarray *ri;
 
-	ri = numarray_find(ti, key);
+ ri = numarray_find(ti, key);
 
-	if (ri != NULL) {
-		*val = ri->value;
-		return (1);
-	}
+ if (ri != ((void*)0)) {
+  *val = ri->value;
+  return (1);
+ }
 
-	return (0);
+ return (0);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_4__ {scalar_t__ system_id_size; scalar_t__ num_key_ids; scalar_t__ key_id_size; scalar_t__ data_size; struct TYPE_4__* next; int /*<<< orphan*/ * key_ids; int /*<<< orphan*/  data; int /*<<< orphan*/  system_id; } ;
-typedef  TYPE_1__ AVEncryptionInitInfo ;
 
-/* Variables and functions */
- scalar_t__ memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_4__ {scalar_t__ system_id_size; scalar_t__ num_key_ids; scalar_t__ key_id_size; scalar_t__ data_size; struct TYPE_4__* next; int * key_ids; int data; int system_id; } ;
+typedef TYPE_1__ AVEncryptionInitInfo ;
+
+
+ scalar_t__ memcmp (int ,int ,scalar_t__) ;
 
 __attribute__((used)) static int compare_encryption_init_info(const AVEncryptionInitInfo *a, const AVEncryptionInitInfo *b) {
     if (!a || !b || a->system_id_size != b->system_id_size ||

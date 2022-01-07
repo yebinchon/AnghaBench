@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_enctype ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- scalar_t__ KRB5_PROG_ETYPE_NOSUPP ; 
- int /*<<< orphan*/  N_ (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ krb5_enctype_to_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  krb5_set_error_message (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ krb5_error_code ;
+typedef int krb5_enctype ;
+typedef int krb5_context ;
+
+
+ scalar_t__ KRB5_PROG_ETYPE_NOSUPP ;
+ int N_ (char*,char*) ;
+ int free (char*) ;
+ scalar_t__ krb5_enctype_to_string (int ,int ,char**) ;
+ int krb5_set_error_message (int ,scalar_t__,int ,char*) ;
 
 __attribute__((used)) static krb5_error_code
 unsupported_enctype(krb5_context context, krb5_enctype etype)
@@ -29,11 +29,11 @@ unsupported_enctype(krb5_context context, krb5_enctype etype)
 
     ret = krb5_enctype_to_string(context, etype, &name);
     if (ret)
-	return ret;
+ return ret;
 
     krb5_set_error_message(context, KRB5_PROG_ETYPE_NOSUPP,
-			   N_("Encryption type %s not supported", ""),
-			   name);
+      N_("Encryption type %s not supported", ""),
+      name);
     free(name);
     return KRB5_PROG_ETYPE_NOSUPP;
 }

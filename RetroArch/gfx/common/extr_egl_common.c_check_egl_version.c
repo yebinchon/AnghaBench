@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EGL_NO_DISPLAY ; 
- int /*<<< orphan*/  EGL_VERSION ; 
- char* eglQueryString (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sscanf (char const*,char*,int*,int*) ; 
+ int EGL_NO_DISPLAY ;
+ int EGL_VERSION ;
+ char* eglQueryString (int ,int ) ;
+ int sscanf (char const*,char*,int*,int*) ;
 
 bool check_egl_version(int minMajorVersion, int minMinorVersion)
 {
@@ -24,20 +16,20 @@ bool check_egl_version(int minMajorVersion, int minMinorVersion)
    const char *str = eglQueryString(EGL_NO_DISPLAY, EGL_VERSION);
 
    if (!str)
-      return false;
+      return 0;
 
    count = sscanf(str, "%d.%d", &major, &minor);
    if (count != 2)
-      return false;
+      return 0;
 
    if (major < minMajorVersion)
-      return false;
+      return 0;
 
    if (major > minMajorVersion)
-      return true;
+      return 1;
 
    if (minor >= minMinorVersion)
-      return true;
+      return 1;
 
-   return false;
+   return 0;
 }

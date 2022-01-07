@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  ff_asf_guid ;
 
-/* Variables and functions */
- scalar_t__ AV_RL32 (int /*<<< orphan*/ *) ; 
- int AV_RL64 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AV_WL32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_asf_file_header ; 
- int /*<<< orphan*/  ff_asf_header ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int ff_asf_guid ;
+
+
+ scalar_t__ AV_RL32 (int *) ;
+ int AV_RL64 (int *) ;
+ int AV_WL32 (int *,int ) ;
+ int ff_asf_file_header ;
+ int ff_asf_header ;
+ scalar_t__ memcmp (int *,int ,int) ;
 
 __attribute__((used)) static int rtp_asf_fix_header(uint8_t *buf, int len)
 {
@@ -43,10 +43,10 @@ __attribute__((used)) static int rtp_asf_fix_header(uint8_t *buf, int len)
 
         if (end - p < 8 + skip)
             break;
-        /* skip most of the file header, to min_pktsize */
+
         p += skip;
         if (AV_RL32(p) == AV_RL32(p + 4)) {
-            /* and set that to zero */
+
             AV_WL32(p, 0);
             return 0;
         }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LPWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- char** heap_alloc (int) ; 
- int /*<<< orphan*/  strWtoU (int /*<<< orphan*/ ) ; 
- int strarraylenW (scalar_t__*) ; 
+
+
+
+typedef scalar_t__ LPWSTR ;
+typedef int DWORD ;
+
+
+ char** heap_alloc (int) ;
+ int strWtoU (int ) ;
+ int strarraylenW (scalar_t__*) ;
 
 __attribute__((used)) static inline char **strarrayWtoU( LPWSTR *strarray )
 {
-    char **strarrayU = NULL;
+    char **strarrayU = ((void*)0);
     DWORD size;
 
     if (strarray)
@@ -32,7 +32,7 @@ __attribute__((used)) static inline char **strarrayWtoU( LPWSTR *strarray )
             char **q = strarrayU;
 
             while (*p) *q++ = strWtoU( *p++ );
-            *q = NULL;
+            *q = ((void*)0);
         }
     }
     return strarrayU;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct counter {int /*<<< orphan*/  valid_until; int /*<<< orphan*/  created_at; int /*<<< orphan*/  deletes; int /*<<< orphan*/  last_week_unique_visitors; int /*<<< orphan*/  last_month_unique_visitors; int /*<<< orphan*/  visitors_sex_age; int /*<<< orphan*/  unique_visitors; int /*<<< orphan*/  views; int /*<<< orphan*/  visitors_source; int /*<<< orphan*/  visitors_countries; int /*<<< orphan*/  visitors_geoip_countries; int /*<<< orphan*/  visitors_cities; int /*<<< orphan*/  visitors_section; int /*<<< orphan*/  visitors_polit; int /*<<< orphan*/  visitors_mstatus; int /*<<< orphan*/  visitors_age; int /*<<< orphan*/  visitors_sex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_AGE ; 
- int /*<<< orphan*/  MAX_MSTATUS ; 
- int /*<<< orphan*/  MAX_POLIT ; 
- int /*<<< orphan*/  MAX_SECTION ; 
- int /*<<< orphan*/  MAX_SEX ; 
- int /*<<< orphan*/  MAX_SEX_AGE ; 
- int /*<<< orphan*/  MAX_SOURCE ; 
- int TL_STATSX_AGE ; 
- int TL_STATSX_CITY ; 
- int TL_STATSX_COUNTRY ; 
- int TL_STATSX_DELETES ; 
- int TL_STATSX_EXPIRES ; 
- int TL_STATSX_EXTRA ; 
- int TL_STATSX_GEOIP_COUNTRY ; 
- int TL_STATSX_MONTHLY ; 
- int TL_STATSX_MSTATUS ; 
- int TL_STATSX_POLIT ; 
- int TL_STATSX_SECTION ; 
- int TL_STATSX_SEX ; 
- int TL_STATSX_SEX_AGE ; 
- int TL_STATSX_SOURCE ; 
- int TL_STATSX_VERSION ; 
- int TL_STATSX_VIEWS ; 
- int TL_STATSX_VISITORS ; 
- int TL_STATSX_WEEKLY ; 
- int /*<<< orphan*/  assert (struct counter*) ; 
- int /*<<< orphan*/  tl_serialize_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_serialize_list_2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_serialize_list_2a (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_serialize_subcnt_list (struct counter*) ; 
- int /*<<< orphan*/  tl_store_int (int /*<<< orphan*/ ) ; 
+
+
+
+struct counter {int valid_until; int created_at; int deletes; int last_week_unique_visitors; int last_month_unique_visitors; int visitors_sex_age; int unique_visitors; int views; int visitors_source; int visitors_countries; int visitors_geoip_countries; int visitors_cities; int visitors_section; int visitors_polit; int visitors_mstatus; int visitors_age; int visitors_sex; } ;
+
+
+ int MAX_AGE ;
+ int MAX_MSTATUS ;
+ int MAX_POLIT ;
+ int MAX_SECTION ;
+ int MAX_SEX ;
+ int MAX_SEX_AGE ;
+ int MAX_SOURCE ;
+ int TL_STATSX_AGE ;
+ int TL_STATSX_CITY ;
+ int TL_STATSX_COUNTRY ;
+ int TL_STATSX_DELETES ;
+ int TL_STATSX_EXPIRES ;
+ int TL_STATSX_EXTRA ;
+ int TL_STATSX_GEOIP_COUNTRY ;
+ int TL_STATSX_MONTHLY ;
+ int TL_STATSX_MSTATUS ;
+ int TL_STATSX_POLIT ;
+ int TL_STATSX_SECTION ;
+ int TL_STATSX_SEX ;
+ int TL_STATSX_SEX_AGE ;
+ int TL_STATSX_SOURCE ;
+ int TL_STATSX_VERSION ;
+ int TL_STATSX_VIEWS ;
+ int TL_STATSX_VISITORS ;
+ int TL_STATSX_WEEKLY ;
+ int assert (struct counter*) ;
+ int tl_serialize_list (int ,int ) ;
+ int tl_serialize_list_2 (int ) ;
+ int tl_serialize_list_2a (int ) ;
+ int tl_serialize_subcnt_list (struct counter*) ;
+ int tl_store_int (int ) ;
 
 void tl_serialize_counter (struct counter *C, int mode) {
   assert (C);

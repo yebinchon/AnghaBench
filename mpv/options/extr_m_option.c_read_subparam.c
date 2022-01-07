@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct TYPE_15__ {int len; char* start; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ bstr ;
+struct TYPE_15__ {int len; char* start; int member_0; } ;
+typedef TYPE_1__ bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (TYPE_1__) ; 
- int M_OPT_INVALID ; 
- TYPE_1__ bstr_cut (TYPE_1__,int) ; 
- scalar_t__ bstr_eatstart0 (TYPE_1__*,char*) ; 
- TYPE_1__ bstr_splice (TYPE_1__,int,int) ; 
- int /*<<< orphan*/  bstr_startswith0 (TYPE_1__,char*) ; 
- int bstrcspn (TYPE_1__,char*) ; 
- int bstrtoll (TYPE_1__,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,int,...) ; 
+
+ int BSTR_P (TYPE_1__) ;
+ int M_OPT_INVALID ;
+ TYPE_1__ bstr_cut (TYPE_1__,int) ;
+ scalar_t__ bstr_eatstart0 (TYPE_1__*,char*) ;
+ TYPE_1__ bstr_splice (TYPE_1__,int,int) ;
+ int bstr_startswith0 (TYPE_1__,char*) ;
+ int bstrcspn (TYPE_1__,char*) ;
+ int bstrtoll (TYPE_1__,TYPE_1__*,int ) ;
+ int mp_err (struct mp_log*,char*,int,...) ;
 
 __attribute__((used)) static int read_subparam(struct mp_log *log, bstr optname, char *termset,
                          bstr *str, bstr *out_subparam)
@@ -69,8 +69,8 @@ __attribute__((used)) static int read_subparam(struct mp_log *log, bstr optname,
         subparam = bstr_splice(p, 1, optlen + 1);
         p = bstr_cut(p, optlen + 1);
     } else {
-        // Skip until the next character that could possibly be a meta
-        // character in option parsing.
+
+
         int optlen = bstrcspn(p, termset);
         subparam = bstr_splice(p, 0, optlen);
         p = bstr_cut(p, optlen);

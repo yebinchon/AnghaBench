@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gendisk {struct disk_events* ev; } ;
-struct disk_events {int /*<<< orphan*/  block_mutex; int /*<<< orphan*/  dwork; int /*<<< orphan*/  lock; int /*<<< orphan*/  block; } ;
+struct disk_events {int block_mutex; int dwork; int lock; int block; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int cancel_delayed_work_sync (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void disk_block_events(struct gendisk *disk)
 {
-	struct disk_events *ev = disk->ev;
-	unsigned long flags;
-	bool cancel;
+ struct disk_events *ev = disk->ev;
+ unsigned long flags;
+ bool cancel;
 
-	if (!ev)
-		return;
+ if (!ev)
+  return;
 
-	/*
-	 * Outer mutex ensures that the first blocker completes canceling
-	 * the event work before further blockers are allowed to finish.
-	 */
-	mutex_lock(&ev->block_mutex);
 
-	spin_lock_irqsave(&ev->lock, flags);
-	cancel = !ev->block++;
-	spin_unlock_irqrestore(&ev->lock, flags);
 
-	if (cancel)
-		cancel_delayed_work_sync(&disk->ev->dwork);
 
-	mutex_unlock(&ev->block_mutex);
+
+ mutex_lock(&ev->block_mutex);
+
+ spin_lock_irqsave(&ev->lock, flags);
+ cancel = !ev->block++;
+ spin_unlock_irqrestore(&ev->lock, flags);
+
+ if (cancel)
+  cancel_delayed_work_sync(&disk->ev->dwork);
+
+ mutex_unlock(&ev->block_mutex);
 }

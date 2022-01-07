@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  s_addr; } ;
 
-/* Variables and functions */
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- long long SIGHUP ; 
- long long SIGINT ; 
- long long SIGPIPE ; 
- long long SIGPOLL ; 
- long long SIGTERM ; 
- long long SIGUSR1 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int active_connections ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  backlog ; 
- int /*<<< orphan*/  buf ; 
- scalar_t__ change_user (char*) ; 
- scalar_t__ close (scalar_t__) ; 
- char* conv_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  ct_rpc_server ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  epoll_close (scalar_t__) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_all (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_listening_connection (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int maxconn ; 
- int now ; 
- long long pending_signals ; 
- int port ; 
- scalar_t__ quit_steps ; 
- int /*<<< orphan*/  reopen_logs () ; 
- int /*<<< orphan*/  rpc_methods ; 
- scalar_t__ server_socket (int,TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsid () ; 
- TYPE_1__ settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (long long,int /*<<< orphan*/ ) ; 
- int sigpoll_cnt ; 
- int /*<<< orphan*/  sigpoll_handler ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tl_restart_all_ready () ; 
- char* username ; 
- int verbosity ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int s_addr; } ;
+
+
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ long long SIGHUP ;
+ long long SIGINT ;
+ long long SIGPIPE ;
+ long long SIGPOLL ;
+ long long SIGTERM ;
+ long long SIGUSR1 ;
+ int SIG_IGN ;
+ int active_connections ;
+ int assert (int) ;
+ int backlog ;
+ int buf ;
+ scalar_t__ change_user (char*) ;
+ scalar_t__ close (scalar_t__) ;
+ char* conv_addr (int ,int ) ;
+ int cron () ;
+ int ct_rpc_server ;
+ scalar_t__ daemonize ;
+ int epoll_close (scalar_t__) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int flush_all (int) ;
+ int fprintf (int ,char*,...) ;
+ int init_epoll () ;
+ int init_listening_connection (scalar_t__,int *,int *) ;
+ int init_netbuffers () ;
+ int maxconn ;
+ int now ;
+ long long pending_signals ;
+ int port ;
+ scalar_t__ quit_steps ;
+ int reopen_logs () ;
+ int rpc_methods ;
+ scalar_t__ server_socket (int,TYPE_1__,int ,int ) ;
+ int setsid () ;
+ TYPE_1__ settings_addr ;
+ scalar_t__ sfd ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (long long,int ) ;
+ int sigpoll_cnt ;
+ int sigpoll_handler ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int stderr ;
+ int tl_restart_all_ready () ;
+ char* username ;
+ int verbosity ;
 
 void start_server (void) {
   int i;

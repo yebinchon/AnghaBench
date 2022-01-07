@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  S16 ;
-typedef  int /*<<< orphan*/  FSE_DTable ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FSE_buildDTable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  FSE_buildDTable_raw (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FSE_buildDTable_rle (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FSE_isError (size_t) ; 
- size_t FSE_readNCount (int /*<<< orphan*/ *,int*,int*,int const*,int) ; 
- int /*<<< orphan*/  GENERIC ; 
- int LLFSELog ; 
- int LLbits ; 
- int MEM_readLE16 (int const*) ; 
- int MLFSELog ; 
- int MLbits ; 
- int MaxLL ; 
- int MaxML ; 
- int MaxOff ; 
- int OffFSELog ; 
- int Offbits ; 
-#define  bt_raw 129 
-#define  bt_rle 128 
- int /*<<< orphan*/  corruption_detected ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+
+
+typedef int U32 ;
+typedef int S16 ;
+typedef int FSE_DTable ;
+typedef int BYTE ;
+
+
+ size_t ERROR (int ) ;
+ int FSE_buildDTable (int *,int *,int,int) ;
+ int FSE_buildDTable_raw (int *,int) ;
+ int FSE_buildDTable_rle (int *,int) ;
+ int FSE_isError (size_t) ;
+ size_t FSE_readNCount (int *,int*,int*,int const*,int) ;
+ int GENERIC ;
+ int LLFSELog ;
+ int LLbits ;
+ int MEM_readLE16 (int const*) ;
+ int MLFSELog ;
+ int MLbits ;
+ int MaxLL ;
+ int MaxML ;
+ int MaxOff ;
+ int OffFSELog ;
+ int Offbits ;
+
+
+ int corruption_detected ;
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTD_decodeSeqHeaders(int* nbSeq, const BYTE** dumpsPtr, size_t* dumpsLengthPtr,
                          FSE_DTable* DTableLL, FSE_DTable* DTableML, FSE_DTable* DTableOffb,
@@ -49,23 +49,23 @@ __attribute__((used)) static size_t ZSTD_decodeSeqHeaders(int* nbSeq, const BYTE
     U32 LLlog, Offlog, MLlog;
     size_t dumpsLength;
 
-    /* check */
+
     if (srcSize < 5) return ERROR(srcSize_wrong);
 
-    /* SeqHead */
+
     *nbSeq = MEM_readLE16(ip); ip+=2;
-    LLtype  = *ip >> 6;
+    LLtype = *ip >> 6;
     Offtype = (*ip >> 4) & 3;
-    MLtype  = (*ip >> 2) & 3;
+    MLtype = (*ip >> 2) & 3;
     if (*ip & 2)
     {
-        dumpsLength  = ip[2];
+        dumpsLength = ip[2];
         dumpsLength += ip[1] << 8;
         ip += 3;
     }
     else
     {
-        dumpsLength  = ip[1];
+        dumpsLength = ip[1];
         dumpsLength += (ip[0] & 1) << 8;
         ip += 2;
     }
@@ -73,68 +73,68 @@ __attribute__((used)) static size_t ZSTD_decodeSeqHeaders(int* nbSeq, const BYTE
     ip += dumpsLength;
     *dumpsLengthPtr = dumpsLength;
 
-    /* check */
-    if (ip > iend-3) return ERROR(srcSize_wrong); /* min : all 3 are "raw", hence no header, but at least xxLog bits per type */
 
-    /* sequences */
+    if (ip > iend-3) return ERROR(srcSize_wrong);
+
+
     {
-        S16 norm[MaxML+1];    /* assumption : MaxML >= MaxLL and MaxOff */
+        S16 norm[MaxML+1];
         size_t headerSize;
 
-        /* Build DTables */
+
         switch(LLtype)
         {
-        case bt_rle :
+        case 128 :
             LLlog = 0;
             FSE_buildDTable_rle(DTableLL, *ip++); break;
-        case bt_raw :
+        case 129 :
             LLlog = LLbits;
             FSE_buildDTable_raw(DTableLL, LLbits); break;
         default :
-            {   U32 max = MaxLL;
+            { U32 max = MaxLL;
                 headerSize = FSE_readNCount(norm, &max, &LLlog, ip, iend-ip);
                 if (FSE_isError(headerSize)) return ERROR(GENERIC);
                 if (LLlog > LLFSELog) return ERROR(corruption_detected);
                 ip += headerSize;
                 FSE_buildDTable(DTableLL, norm, max, LLlog);
-        }   }
+        } }
 
         switch(Offtype)
         {
-        case bt_rle :
+        case 128 :
             Offlog = 0;
-            if (ip > iend-2) return ERROR(srcSize_wrong);   /* min : "raw", hence no header, but at least xxLog bits */
-            FSE_buildDTable_rle(DTableOffb, *ip++ & MaxOff); /* if *ip > MaxOff, data is corrupted */
+            if (ip > iend-2) return ERROR(srcSize_wrong);
+            FSE_buildDTable_rle(DTableOffb, *ip++ & MaxOff);
             break;
-        case bt_raw :
+        case 129 :
             Offlog = Offbits;
             FSE_buildDTable_raw(DTableOffb, Offbits); break;
         default :
-            {   U32 max = MaxOff;
+            { U32 max = MaxOff;
                 headerSize = FSE_readNCount(norm, &max, &Offlog, ip, iend-ip);
                 if (FSE_isError(headerSize)) return ERROR(GENERIC);
                 if (Offlog > OffFSELog) return ERROR(corruption_detected);
                 ip += headerSize;
                 FSE_buildDTable(DTableOffb, norm, max, Offlog);
-        }   }
+        } }
 
         switch(MLtype)
         {
-        case bt_rle :
+        case 128 :
             MLlog = 0;
-            if (ip > iend-2) return ERROR(srcSize_wrong); /* min : "raw", hence no header, but at least xxLog bits */
+            if (ip > iend-2) return ERROR(srcSize_wrong);
             FSE_buildDTable_rle(DTableML, *ip++); break;
-        case bt_raw :
+        case 129 :
             MLlog = MLbits;
             FSE_buildDTable_raw(DTableML, MLbits); break;
         default :
-            {   U32 max = MaxML;
+            { U32 max = MaxML;
                 headerSize = FSE_readNCount(norm, &max, &MLlog, ip, iend-ip);
                 if (FSE_isError(headerSize)) return ERROR(GENERIC);
                 if (MLlog > MLFSELog) return ERROR(corruption_detected);
                 ip += headerSize;
                 FSE_buildDTable(DTableML, norm, max, MLlog);
-    }   }   }
+    } } }
 
     return ip-istart;
 }

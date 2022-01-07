@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct phr_header {char const* name; size_t name_len; char const* value; size_t value_len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PARSE (char*,scalar_t__,int,char*) ; 
- int bufis (char const*,size_t,char*) ; 
- int /*<<< orphan*/  ok (int) ; 
- scalar_t__ strlen (char*) ; 
+
+ int PARSE (char*,scalar_t__,int,char*) ;
+ int bufis (char const*,size_t,char*) ;
+ int ok (int) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static void test_response(void)
 {
@@ -26,24 +26,15 @@ __attribute__((used)) static void test_response(void)
     size_t msg_len;
     struct phr_header headers[4];
     size_t num_headers;
-
-#define PARSE(s, last_len, exp, comment)                                                                                           \
-    do {                                                                                                                           \
-        note(comment);                                                                                                             \
-        num_headers = sizeof(headers) / sizeof(headers[0]);                                                                        \
-        ok(phr_parse_response(s, strlen(s), &minor_version, &status, &msg, &msg_len, headers, &num_headers, last_len) ==           \
-           (exp == 0 ? strlen(s) : exp));                                                                                          \
-    } while (0)
-
-    PARSE("HTTP/1.0 200 OK\r\n\r\n", 0, 0, "simple");
+    do { note("simple"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.0 200 OK\r\n\r\n", strlen("HTTP/1.0 200 OK\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (0 == 0 ? strlen("HTTP/1.0 200 OK\r\n\r\n") : 0)); } while (0);
     ok(num_headers == 0);
     ok(status == 200);
     ok(minor_version == 0);
     ok(bufis(msg, msg_len, "OK"));
 
-    PARSE("HTTP/1.0 200 OK\r\n\r", 0, -2, "partial");
+    do { note("partial"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.0 200 OK\r\n\r", strlen("HTTP/1.0 200 OK\r\n\r"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.0 200 OK\r\n\r") : -2)); } while (0);
 
-    PARSE("HTTP/1.1 200 OK\r\nHost: example.com\r\nCookie: \r\n\r\n", 0, 0, "parse headers");
+    do { note("parse headers"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\r\nHost: example.com\r\nCookie: \r\n\r\n", strlen("HTTP/1.1 200 OK\r\nHost: example.com\r\nCookie: \r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (0 == 0 ? strlen("HTTP/1.1 200 OK\r\nHost: example.com\r\nCookie: \r\n\r\n") : 0)); } while (0);
     ok(num_headers == 2);
     ok(minor_version == 1);
     ok(status == 200);
@@ -53,7 +44,7 @@ __attribute__((used)) static void test_response(void)
     ok(bufis(headers[1].name, headers[1].name_len, "Cookie"));
     ok(bufis(headers[1].value, headers[1].value_len, ""));
 
-    PARSE("HTTP/1.0 200 OK\r\nfoo: \r\nfoo: b\r\n  \tc\r\n\r\n", 0, 0, "parse multiline");
+    do { note("parse multiline"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.0 200 OK\r\nfoo: \r\nfoo: b\r\n  \tc\r\n\r\n", strlen("HTTP/1.0 200 OK\r\nfoo: \r\nfoo: b\r\n  \tc\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (0 == 0 ? strlen("HTTP/1.0 200 OK\r\nfoo: \r\nfoo: b\r\n  \tc\r\n\r\n") : 0)); } while (0);
     ok(num_headers == 3);
     ok(minor_version == 0);
     ok(status == 200);
@@ -62,51 +53,51 @@ __attribute__((used)) static void test_response(void)
     ok(bufis(headers[0].value, headers[0].value_len, ""));
     ok(bufis(headers[1].name, headers[1].name_len, "foo"));
     ok(bufis(headers[1].value, headers[1].value_len, "b"));
-    ok(headers[2].name == NULL);
+    ok(headers[2].name == ((void*)0));
     ok(bufis(headers[2].value, headers[2].value_len, "  \tc"));
 
-    PARSE("HTTP/1.0 500 Internal Server Error\r\n\r\n", 0, 0, "internal server error");
+    do { note("internal server error"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.0 500 Internal Server Error\r\n\r\n", strlen("HTTP/1.0 500 Internal Server Error\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (0 == 0 ? strlen("HTTP/1.0 500 Internal Server Error\r\n\r\n") : 0)); } while (0);
     ok(num_headers == 0);
     ok(minor_version == 0);
     ok(status == 500);
     ok(bufis(msg, msg_len, "Internal Server Error"));
     ok(msg_len == sizeof("Internal Server Error") - 1);
 
-    PARSE("H", 0, -2, "incomplete 1");
-    PARSE("HTTP/1.", 0, -2, "incomplete 2");
-    PARSE("HTTP/1.1", 0, -2, "incomplete 3");
+    do { note("incomplete 1"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("H", strlen("H"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("H") : -2)); } while (0);
+    do { note("incomplete 2"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.", strlen("HTTP/1."), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.") : -2)); } while (0);
+    do { note("incomplete 3"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1", strlen("HTTP/1.1"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1") : -2)); } while (0);
     ok(minor_version == -1);
-    PARSE("HTTP/1.1 ", 0, -2, "incomplete 4");
+    do { note("incomplete 4"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 ", strlen("HTTP/1.1 "), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 ") : -2)); } while (0);
     ok(minor_version == 1);
-    PARSE("HTTP/1.1 2", 0, -2, "incomplete 5");
-    PARSE("HTTP/1.1 200", 0, -2, "incomplete 6");
+    do { note("incomplete 5"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 2", strlen("HTTP/1.1 2"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 2") : -2)); } while (0);
+    do { note("incomplete 6"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200", strlen("HTTP/1.1 200"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200") : -2)); } while (0);
     ok(status == 0);
-    PARSE("HTTP/1.1 200 ", 0, -2, "incomplete 7");
+    do { note("incomplete 7"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 ", strlen("HTTP/1.1 200 "), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 ") : -2)); } while (0);
     ok(status == 200);
-    PARSE("HTTP/1.1 200 O", 0, -2, "incomplete 8");
-    PARSE("HTTP/1.1 200 OK\r", 0, -2, "incomplete 9");
-    ok(msg == NULL);
-    PARSE("HTTP/1.1 200 OK\r\n", 0, -2, "incomplete 10");
+    do { note("incomplete 8"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 O", strlen("HTTP/1.1 200 O"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 O") : -2)); } while (0);
+    do { note("incomplete 9"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\r", strlen("HTTP/1.1 200 OK\r"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 OK\r") : -2)); } while (0);
+    ok(msg == ((void*)0));
+    do { note("incomplete 10"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\r\n", strlen("HTTP/1.1 200 OK\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 OK\r\n") : -2)); } while (0);
     ok(bufis(msg, msg_len, "OK"));
-    PARSE("HTTP/1.1 200 OK\n", 0, -2, "incomplete 11");
+    do { note("incomplete 11"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\n", strlen("HTTP/1.1 200 OK\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 OK\n") : -2)); } while (0);
     ok(bufis(msg, msg_len, "OK"));
 
-    PARSE("HTTP/1.1 200 OK\r\nA: 1\r", 0, -2, "incomplete 11");
+    do { note("incomplete 11"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\r\nA: 1\r", strlen("HTTP/1.1 200 OK\r\nA: 1\r"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 OK\r\nA: 1\r") : -2)); } while (0);
     ok(num_headers == 0);
-    PARSE("HTTP/1.1 200 OK\r\nA: 1\r\n", 0, -2, "incomplete 12");
+    do { note("incomplete 12"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\r\nA: 1\r\n", strlen("HTTP/1.1 200 OK\r\nA: 1\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-2 == 0 ? strlen("HTTP/1.1 200 OK\r\nA: 1\r\n") : -2)); } while (0);
     ok(num_headers == 1);
     ok(bufis(headers[0].name, headers[0].name_len, "A"));
     ok(bufis(headers[0].value, headers[0].value_len, "1"));
 
-    PARSE("HTTP/1.0 200 OK\r\n\r", strlen("HTTP/1.0 200 OK\r\n\r") - 1, -2, "slowloris (incomplete)");
-    PARSE("HTTP/1.0 200 OK\r\n\r\n", strlen("HTTP/1.0 200 OK\r\n\r\n") - 1, 0, "slowloris (complete)");
+    do { note("slowloris (incomplete)"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.0 200 OK\r\n\r", strlen("HTTP/1.0 200 OK\r\n\r"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, strlen("HTTP/1.0 200 OK\r\n\r") - 1) == (-2 == 0 ? strlen("HTTP/1.0 200 OK\r\n\r") : -2)); } while (0);
+    do { note("slowloris (complete)"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.0 200 OK\r\n\r\n", strlen("HTTP/1.0 200 OK\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, strlen("HTTP/1.0 200 OK\r\n\r\n") - 1) == (0 == 0 ? strlen("HTTP/1.0 200 OK\r\n\r\n") : 0)); } while (0);
 
-    PARSE("HTTP/1. 200 OK\r\n\r\n", 0, -1, "invalid http version");
-    PARSE("HTTP/1.2z 200 OK\r\n\r\n", 0, -1, "invalid http version 2");
-    PARSE("HTTP/1.1  OK\r\n\r\n", 0, -1, "no status code");
+    do { note("invalid http version"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1. 200 OK\r\n\r\n", strlen("HTTP/1. 200 OK\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-1 == 0 ? strlen("HTTP/1. 200 OK\r\n\r\n") : -1)); } while (0);
+    do { note("invalid http version 2"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.2z 200 OK\r\n\r\n", strlen("HTTP/1.2z 200 OK\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-1 == 0 ? strlen("HTTP/1.2z 200 OK\r\n\r\n") : -1)); } while (0);
+    do { note("no status code"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1  OK\r\n\r\n", strlen("HTTP/1.1  OK\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (-1 == 0 ? strlen("HTTP/1.1  OK\r\n\r\n") : -1)); } while (0);
 
-    PARSE("HTTP/1.1 200 OK\r\nbar: \t b\t \t\r\n\r\n", 0, 0, "exclude leading and trailing spaces in header value");
+    do { note("exclude leading and trailing spaces in header value"); num_headers = sizeof(headers) / sizeof(headers[0]); ok(phr_parse_response("HTTP/1.1 200 OK\r\nbar: \t b\t \t\r\n\r\n", strlen("HTTP/1.1 200 OK\r\nbar: \t b\t \t\r\n\r\n"), &minor_version, &status, &msg, &msg_len, headers, &num_headers, 0) == (0 == 0 ? strlen("HTTP/1.1 200 OK\r\nbar: \t b\t \t\r\n\r\n") : 0)); } while (0);
     ok(bufis(headers[0].value, headers[0].value_len, "b"));
 
-#undef PARSE
+
 }

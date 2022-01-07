@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct intel_ring {int /*<<< orphan*/  ref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_ring_free ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct intel_ring {int ref; } ;
+
+
+ int intel_ring_free ;
+ int kref_put (int *,int ) ;
 
 __attribute__((used)) static inline void intel_ring_put(struct intel_ring *ring)
 {
-	kref_put(&ring->ref, intel_ring_free);
+ kref_put(&ring->ref, intel_ring_free);
 }

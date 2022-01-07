@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PLARGE_STRING ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CW_USEDEFAULT ; 
- int /*<<< orphan*/  NtUserCreateWindowEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WS_CAPTION ; 
- int /*<<< orphan*/  WS_EX_OVERLAPPEDWINDOW ; 
+
+
+
+typedef int PLARGE_STRING ;
+typedef int HWND ;
+typedef int HINSTANCE ;
+
+
+ int CW_USEDEFAULT ;
+ int NtUserCreateWindowEx (int ,int ,int ,int ,int ,int ,int ,int,int,int *,int *,int ,int ,int ,int *) ;
+ int WS_CAPTION ;
+ int WS_EX_OVERLAPPEDWINDOW ;
 
 __attribute__((used)) static
 inline
@@ -37,10 +37,10 @@ CreateWnd(HINSTANCE hinst,
                                 CW_USEDEFAULT,
                                 100,
                                 100,
-                                NULL,
-                                NULL,
+                                ((void*)0),
+                                ((void*)0),
                                 hinst,
                                 0,
                                 0,
-                                NULL);
+                                ((void*)0));
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct scsi_qla_host {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  isp_nvram (struct scsi_qla_host*) ; 
- int /*<<< orphan*/  readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int isp_nvram (struct scsi_qla_host*) ;
+ int readl (int ) ;
+ int udelay (int) ;
+ int writel (int ,int ) ;
 
 __attribute__((used)) static inline void eeprom_cmd(uint32_t cmd, struct scsi_qla_host *ha)
 {
-	writel(cmd, isp_nvram(ha));
-	readl(isp_nvram(ha));
-	udelay(1);
+ writel(cmd, isp_nvram(ha));
+ readl(isp_nvram(ha));
+ udelay(1);
 }

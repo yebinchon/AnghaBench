@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  TYPE_RGB_8 ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransformStride (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,unsigned char*,int,int) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int INTENT_PERCEPTUAL ;
+ int TYPE_RGB_8 ;
+ int cmsCloseProfile (int ,int *) ;
+ int cmsCreateTransform (int ,int *,int ,int *,int ,int ,int ) ;
+ int * cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransformStride (int ,int ,unsigned char*,unsigned char*,int,int) ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckMatrixSimplify(void)
@@ -37,7 +37,7 @@ cmsInt32Number CheckMatrixSimplify(void)
 
        pIn = cmsCreate_sRGBProfile(DbgThread());
        pOut = cmsOpenProfileFromFile(DbgThread(), "ibm-t61.icc", "r");
-       if (pIn == NULL || pOut == NULL)
+       if (pIn == ((void*)0) || pOut == ((void*)0))
               return 0;
 
        t = cmsCreateTransform(DbgThread(), pIn, TYPE_RGB_8, pOut, TYPE_RGB_8, INTENT_PERCEPTUAL, 0);

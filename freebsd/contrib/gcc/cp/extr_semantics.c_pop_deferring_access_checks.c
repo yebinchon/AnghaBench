@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  VEC_pop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deferred_access ; 
- scalar_t__ deferred_access_no_check ; 
- int /*<<< orphan*/  deferred_access_stack ; 
+ int VEC_pop (int ,int ) ;
+ int deferred_access ;
+ scalar_t__ deferred_access_no_check ;
+ int deferred_access_stack ;
 
 void
 pop_deferring_access_checks (void)

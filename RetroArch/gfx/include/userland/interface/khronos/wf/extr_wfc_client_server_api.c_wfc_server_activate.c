@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WFCContext ;
-typedef  scalar_t__ VCOS_STATUS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_IPC_MSG_ACTIVATE ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ wfc_client_server_api_send_context (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WFCContext ;
+typedef scalar_t__ VCOS_STATUS_T ;
+
+
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_IPC_MSG_ACTIVATE ;
+ int vcos_assert (int) ;
+ int vcos_log_trace (char*,int ,int ) ;
+ scalar_t__ wfc_client_server_api_send_context (int ,int ) ;
 
 void wfc_server_activate(WFCContext context)
 {

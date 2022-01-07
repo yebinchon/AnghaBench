@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  byte ;
-struct TYPE_6__ {scalar_t__ stride; scalar_t__ height; int /*<<< orphan*/  width; int /*<<< orphan*/ * data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  int /*<<< orphan*/  Jbig2MmrCtx ;
-typedef  TYPE_2__ Jbig2Image ;
-typedef  int /*<<< orphan*/  Jbig2GenericRegionParams ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_WARNING ; 
- int /*<<< orphan*/  jbig2_decode_mmr_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/  const*,size_t) ; 
- int jbig2_decode_mmr_line (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__ const) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int byte ;
+struct TYPE_6__ {scalar_t__ stride; scalar_t__ height; int width; int * data; } ;
+struct TYPE_5__ {int number; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef int Jbig2MmrCtx ;
+typedef TYPE_2__ Jbig2Image ;
+typedef int Jbig2GenericRegionParams ;
+typedef int Jbig2Ctx ;
+
+
+ int JBIG2_SEVERITY_WARNING ;
+ int jbig2_decode_mmr_init (int *,int ,scalar_t__,int const*,size_t) ;
+ int jbig2_decode_mmr_line (int *,int *,int *,int *,int*) ;
+ int jbig2_error (int *,int ,int ,char*) ;
+ int memset (int *,int ,scalar_t__ const) ;
 
 int
 jbig2_decode_generic_mmr(Jbig2Ctx *ctx, Jbig2Segment *segment, const Jbig2GenericRegionParams *params, const byte *data, size_t size, Jbig2Image *image)
@@ -35,7 +35,7 @@ jbig2_decode_generic_mmr(Jbig2Ctx *ctx, Jbig2Segment *segment, const Jbig2Generi
     Jbig2MmrCtx mmr;
     const uint32_t rowstride = image->stride;
     byte *dst = image->data;
-    byte *ref = NULL;
+    byte *ref = ((void*)0);
     uint32_t y;
     int code = 0;
     int eofb = 0;

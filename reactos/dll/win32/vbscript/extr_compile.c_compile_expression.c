@@ -1,193 +1,158 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_4__* subexpr; } ;
-typedef  TYPE_1__ unary_expression_t ;
-struct TYPE_10__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_2__ string_expression_t ;
-typedef  int /*<<< orphan*/  member_expression_t ;
-struct TYPE_11__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_3__ int_expression_t ;
+typedef TYPE_1__ unary_expression_t ;
+struct TYPE_10__ {int value; } ;
+typedef TYPE_2__ string_expression_t ;
+typedef int member_expression_t ;
+struct TYPE_11__ {int value; } ;
+typedef TYPE_3__ int_expression_t ;
 struct TYPE_12__ {int type; } ;
-typedef  TYPE_4__ expression_t ;
-struct TYPE_13__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_5__ double_expression_t ;
-typedef  int /*<<< orphan*/  compile_ctx_t ;
-struct TYPE_14__ {int /*<<< orphan*/  value; } ;
-typedef  TYPE_6__ bool_expression_t ;
-typedef  int /*<<< orphan*/  binary_expression_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_4__ expression_t ;
+struct TYPE_13__ {int value; } ;
+typedef TYPE_5__ double_expression_t ;
+typedef int compile_ctx_t ;
+struct TYPE_14__ {int value; } ;
+typedef TYPE_6__ bool_expression_t ;
+typedef int binary_expression_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_PARAMNOTFOUND ; 
-#define  EXPR_ADD 162 
-#define  EXPR_AND 161 
-#define  EXPR_BOOL 160 
-#define  EXPR_BRACKETS 159 
-#define  EXPR_CONCAT 158 
-#define  EXPR_DIV 157 
-#define  EXPR_DOUBLE 156 
-#define  EXPR_EMPTY 155 
-#define  EXPR_EQUAL 154 
-#define  EXPR_EQV 153 
-#define  EXPR_EXP 152 
-#define  EXPR_GT 151 
-#define  EXPR_GTEQ 150 
-#define  EXPR_IDIV 149 
-#define  EXPR_IMP 148 
-#define  EXPR_IS 147 
-#define  EXPR_LT 146 
-#define  EXPR_LTEQ 145 
-#define  EXPR_ME 144 
-#define  EXPR_MEMBER 143 
-#define  EXPR_MOD 142 
-#define  EXPR_MUL 141 
-#define  EXPR_NEG 140 
-#define  EXPR_NEQUAL 139 
-#define  EXPR_NEW 138 
-#define  EXPR_NOARG 137 
-#define  EXPR_NOT 136 
-#define  EXPR_NOTHING 135 
-#define  EXPR_NULL 134 
-#define  EXPR_OR 133 
-#define  EXPR_STRING 132 
-#define  EXPR_SUB 131 
-#define  EXPR_ULONG 130 
-#define  EXPR_USHORT 129 
-#define  EXPR_XOR 128 
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  OP_add ; 
- int /*<<< orphan*/  OP_and ; 
- int /*<<< orphan*/  OP_bool ; 
- int /*<<< orphan*/  OP_concat ; 
- int /*<<< orphan*/  OP_div ; 
- int /*<<< orphan*/  OP_double ; 
- int /*<<< orphan*/  OP_empty ; 
- int /*<<< orphan*/  OP_equal ; 
- int /*<<< orphan*/  OP_eqv ; 
- int /*<<< orphan*/  OP_exp ; 
- int /*<<< orphan*/  OP_gt ; 
- int /*<<< orphan*/  OP_gteq ; 
- int /*<<< orphan*/  OP_hres ; 
- int /*<<< orphan*/  OP_idiv ; 
- int /*<<< orphan*/  OP_imp ; 
- int /*<<< orphan*/  OP_is ; 
- int /*<<< orphan*/  OP_long ; 
- int /*<<< orphan*/  OP_lt ; 
- int /*<<< orphan*/  OP_lteq ; 
- int /*<<< orphan*/  OP_me ; 
- int /*<<< orphan*/  OP_mod ; 
- int /*<<< orphan*/  OP_mul ; 
- int /*<<< orphan*/  OP_neg ; 
- int /*<<< orphan*/  OP_nequal ; 
- int /*<<< orphan*/  OP_new ; 
- int /*<<< orphan*/  OP_not ; 
- int /*<<< orphan*/  OP_nothing ; 
- int /*<<< orphan*/  OP_null ; 
- int /*<<< orphan*/  OP_or ; 
- int /*<<< orphan*/  OP_short ; 
- int /*<<< orphan*/  OP_string ; 
- int /*<<< orphan*/  OP_sub ; 
- int /*<<< orphan*/  OP_xor ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  compile_binary_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_member_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_unary_expression (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_double (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_str (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int DISP_E_PARAMNOTFOUND ;
+ int E_NOTIMPL ;
+ int E_OUTOFMEMORY ;
+ int FIXME (char*,int) ;
+ int OP_add ;
+ int OP_and ;
+ int OP_bool ;
+ int OP_concat ;
+ int OP_div ;
+ int OP_double ;
+ int OP_empty ;
+ int OP_equal ;
+ int OP_eqv ;
+ int OP_exp ;
+ int OP_gt ;
+ int OP_gteq ;
+ int OP_hres ;
+ int OP_idiv ;
+ int OP_imp ;
+ int OP_is ;
+ int OP_long ;
+ int OP_lt ;
+ int OP_lteq ;
+ int OP_me ;
+ int OP_mod ;
+ int OP_mul ;
+ int OP_neg ;
+ int OP_nequal ;
+ int OP_new ;
+ int OP_not ;
+ int OP_nothing ;
+ int OP_null ;
+ int OP_or ;
+ int OP_short ;
+ int OP_string ;
+ int OP_sub ;
+ int OP_xor ;
+ int S_OK ;
+ int TRUE ;
+ int compile_binary_expression (int *,int *,int ) ;
+ int compile_member_expression (int *,int *,int ) ;
+ int compile_unary_expression (int *,TYPE_1__*,int ) ;
+ int push_instr (int *,int ) ;
+ int push_instr_double (int *,int ,int ) ;
+ int push_instr_int (int *,int ,int ) ;
+ int push_instr_str (int *,int ,int ) ;
 
 __attribute__((used)) static HRESULT compile_expression(compile_ctx_t *ctx, expression_t *expr)
 {
     switch(expr->type) {
-    case EXPR_ADD:
+    case 162:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_add);
-    case EXPR_AND:
+    case 161:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_and);
-    case EXPR_BOOL:
+    case 160:
         return push_instr_int(ctx, OP_bool, ((bool_expression_t*)expr)->value);
-    case EXPR_BRACKETS:
+    case 159:
         return compile_expression(ctx, ((unary_expression_t*)expr)->subexpr);
-    case EXPR_CONCAT:
+    case 158:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_concat);
-    case EXPR_DIV:
+    case 157:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_div);
-    case EXPR_DOUBLE:
+    case 156:
         return push_instr_double(ctx, OP_double, ((double_expression_t*)expr)->value);
-    case EXPR_EMPTY:
+    case 155:
         return push_instr(ctx, OP_empty) ? S_OK : E_OUTOFMEMORY;
-    case EXPR_EQUAL:
+    case 154:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_equal);
-    case EXPR_EQV:
+    case 153:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_eqv);
-    case EXPR_EXP:
+    case 152:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_exp);
-    case EXPR_GT:
+    case 151:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_gt);
-    case EXPR_GTEQ:
+    case 150:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_gteq);
-    case EXPR_IDIV:
+    case 149:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_idiv);
-    case EXPR_IS:
+    case 147:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_is);
-    case EXPR_IMP:
+    case 148:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_imp);
-    case EXPR_LT:
+    case 146:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_lt);
-    case EXPR_LTEQ:
+    case 145:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_lteq);
-    case EXPR_ME:
+    case 144:
         return push_instr(ctx, OP_me) ? S_OK : E_OUTOFMEMORY;
-    case EXPR_MEMBER:
+    case 143:
         return compile_member_expression(ctx, (member_expression_t*)expr, TRUE);
-    case EXPR_MOD:
+    case 142:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_mod);
-    case EXPR_MUL:
+    case 141:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_mul);
-    case EXPR_NEG:
+    case 140:
         return compile_unary_expression(ctx, (unary_expression_t*)expr, OP_neg);
-    case EXPR_NEQUAL:
+    case 139:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_nequal);
-    case EXPR_NEW:
+    case 138:
         return push_instr_str(ctx, OP_new, ((string_expression_t*)expr)->value);
-    case EXPR_NOARG:
+    case 137:
         return push_instr_int(ctx, OP_hres, DISP_E_PARAMNOTFOUND);
-    case EXPR_NOT:
+    case 136:
         return compile_unary_expression(ctx, (unary_expression_t*)expr, OP_not);
-    case EXPR_NOTHING:
+    case 135:
         return push_instr(ctx, OP_nothing) ? S_OK : E_OUTOFMEMORY;
-    case EXPR_NULL:
+    case 134:
         return push_instr(ctx, OP_null) ? S_OK : E_OUTOFMEMORY;
-    case EXPR_OR:
+    case 133:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_or);
-    case EXPR_STRING:
+    case 132:
         return push_instr_str(ctx, OP_string, ((string_expression_t*)expr)->value);
-    case EXPR_SUB:
+    case 131:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_sub);
-    case EXPR_USHORT:
+    case 129:
         return push_instr_int(ctx, OP_short, ((int_expression_t*)expr)->value);
-    case EXPR_ULONG:
+    case 130:
         return push_instr_int(ctx, OP_long, ((int_expression_t*)expr)->value);
-    case EXPR_XOR:
+    case 128:
         return compile_binary_expression(ctx, (binary_expression_t*)expr, OP_xor);
     default:
         FIXME("Unimplemented expression type %d\n", expr->type);

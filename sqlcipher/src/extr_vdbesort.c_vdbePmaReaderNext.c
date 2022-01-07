@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u64 ;
-struct TYPE_10__ {scalar_t__ bEof; int /*<<< orphan*/  iStartOff; int /*<<< orphan*/ * aFile; int /*<<< orphan*/  pTask; } ;
-struct TYPE_9__ {scalar_t__ iReadOff; scalar_t__ iEof; int nKey; int /*<<< orphan*/  aKey; TYPE_2__* pIncr; } ;
-typedef  TYPE_1__ PmaReader ;
-typedef  TYPE_2__ IncrMerger ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  testcase (int) ; 
- int vdbeIncrSwap (TYPE_2__*) ; 
- int vdbePmaReadBlob (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int vdbePmaReadVarint (TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  vdbePmaReaderClear (TYPE_1__*) ; 
- int vdbePmaReaderSeek (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ u64 ;
+struct TYPE_10__ {scalar_t__ bEof; int iStartOff; int * aFile; int pTask; } ;
+struct TYPE_9__ {scalar_t__ iReadOff; scalar_t__ iEof; int nKey; int aKey; TYPE_2__* pIncr; } ;
+typedef TYPE_1__ PmaReader ;
+typedef TYPE_2__ IncrMerger ;
+
+
+ int SQLITE_OK ;
+ int testcase (int) ;
+ int vdbeIncrSwap (TYPE_2__*) ;
+ int vdbePmaReadBlob (TYPE_1__*,int,int *) ;
+ int vdbePmaReadVarint (TYPE_1__*,scalar_t__*) ;
+ int vdbePmaReaderClear (TYPE_1__*) ;
+ int vdbePmaReaderSeek (int ,TYPE_1__*,int *,int ) ;
 
 __attribute__((used)) static int vdbePmaReaderNext(PmaReader *pReadr){
-  int rc = SQLITE_OK;             /* Return Code */
-  u64 nRec = 0;                   /* Size of record in bytes */
+  int rc = SQLITE_OK;
+  u64 nRec = 0;
 
 
   if( pReadr->iReadOff>=pReadr->iEof ){
@@ -46,7 +46,7 @@ __attribute__((used)) static int vdbePmaReaderNext(PmaReader *pReadr){
     }
 
     if( bEof ){
-      /* This is an EOF condition */
+
       vdbePmaReaderClear(pReadr);
       testcase( rc!=SQLITE_OK );
       return rc;

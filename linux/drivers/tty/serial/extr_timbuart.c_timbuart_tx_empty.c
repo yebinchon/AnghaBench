@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct uart_port {scalar_t__ membase; } ;
 
-/* Variables and functions */
- scalar_t__ TIMBUART_ISR ; 
- unsigned int TIOCSER_TEMT ; 
- int TXBE ; 
- int ioread32 (scalar_t__) ; 
+
+ scalar_t__ TIMBUART_ISR ;
+ unsigned int TIOCSER_TEMT ;
+ int TXBE ;
+ int ioread32 (scalar_t__) ;
 
 __attribute__((used)) static unsigned int timbuart_tx_empty(struct uart_port *port)
 {
-	u32 isr = ioread32(port->membase + TIMBUART_ISR);
+ u32 isr = ioread32(port->membase + TIMBUART_ISR);
 
-	return (isr & TXBE) ? TIOCSER_TEMT : 0;
+ return (isr & TXBE) ? TIOCSER_TEMT : 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  properties; int /*<<< orphan*/  subContainers; void* contName; } ;
-typedef  TYPE_1__ IDxDiagContainerImpl_Container ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpyW (void*,int /*<<< orphan*/  const*) ; 
- int lstrlenW (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_4__ {int properties; int subContainers; void* contName; } ;
+typedef TYPE_1__ IDxDiagContainerImpl_Container ;
+
+
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int list_init (int *) ;
+ int lstrcpyW (void*,int const*) ;
+ int lstrlenW (int const*) ;
 
 __attribute__((used)) static IDxDiagContainerImpl_Container *allocate_information_node(const WCHAR *name)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static IDxDiagContainerImpl_Container *allocate_informatio
 
     ret = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*ret));
     if (!ret)
-        return NULL;
+        return ((void*)0);
 
     if (name)
     {
@@ -38,7 +38,7 @@ __attribute__((used)) static IDxDiagContainerImpl_Container *allocate_informatio
         if (!ret->contName)
         {
             HeapFree(GetProcessHeap(), 0, ret);
-            return NULL;
+            return ((void*)0);
         }
         lstrcpyW(ret->contName, name);
     }

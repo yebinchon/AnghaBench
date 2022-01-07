@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * TupleDesc ;
-typedef  int /*<<< orphan*/ * SysScanDesc ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  Anum_pg_dist_partition_logicalrelid ; 
- int /*<<< orphan*/  DatumGetObjectId (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DistPartitionRelationId () ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/ * RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_getattr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lappend_oid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * systable_beginscan (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  systable_endscan (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * systable_getnext (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * TupleDesc ;
+typedef int * SysScanDesc ;
+typedef int ScanKeyData ;
+typedef int Relation ;
+typedef int Oid ;
+typedef int List ;
+typedef int * HeapTuple ;
+typedef int Datum ;
+
+
+ int AccessShareLock ;
+ int Anum_pg_dist_partition_logicalrelid ;
+ int DatumGetObjectId (int ) ;
+ int DistPartitionRelationId () ;
+ scalar_t__ HeapTupleIsValid (int *) ;
+ int InvalidOid ;
+ int * NIL ;
+ int * RelationGetDescr (int ) ;
+ int heap_close (int ,int ) ;
+ int heap_getattr (int *,int ,int *,int*) ;
+ int heap_open (int ,int ) ;
+ int * lappend_oid (int *,int ) ;
+ int * systable_beginscan (int ,int ,int,int *,int,int *) ;
+ int systable_endscan (int *) ;
+ int * systable_getnext (int *) ;
 
 List *
 DistTableOidList(void)
 {
-	SysScanDesc scanDescriptor = NULL;
-	ScanKeyData scanKey[1];
-	int scanKeyCount = 0;
-	HeapTuple heapTuple = NULL;
-	List *distTableOidList = NIL;
-	TupleDesc tupleDescriptor = NULL;
+ SysScanDesc scanDescriptor = ((void*)0);
+ ScanKeyData scanKey[1];
+ int scanKeyCount = 0;
+ HeapTuple heapTuple = ((void*)0);
+ List *distTableOidList = NIL;
+ TupleDesc tupleDescriptor = ((void*)0);
 
-	Relation pgDistPartition = heap_open(DistPartitionRelationId(), AccessShareLock);
+ Relation pgDistPartition = heap_open(DistPartitionRelationId(), AccessShareLock);
 
-	scanDescriptor = systable_beginscan(pgDistPartition,
-										InvalidOid, false,
-										NULL, scanKeyCount, scanKey);
+ scanDescriptor = systable_beginscan(pgDistPartition,
+          InvalidOid, 0,
+          ((void*)0), scanKeyCount, scanKey);
 
-	tupleDescriptor = RelationGetDescr(pgDistPartition);
+ tupleDescriptor = RelationGetDescr(pgDistPartition);
 
-	heapTuple = systable_getnext(scanDescriptor);
-	while (HeapTupleIsValid(heapTuple))
-	{
-		bool isNull = false;
-		Oid relationId = InvalidOid;
-		Datum relationIdDatum = heap_getattr(heapTuple,
-											 Anum_pg_dist_partition_logicalrelid,
-											 tupleDescriptor, &isNull);
-		relationId = DatumGetObjectId(relationIdDatum);
-		distTableOidList = lappend_oid(distTableOidList, relationId);
+ heapTuple = systable_getnext(scanDescriptor);
+ while (HeapTupleIsValid(heapTuple))
+ {
+  bool isNull = 0;
+  Oid relationId = InvalidOid;
+  Datum relationIdDatum = heap_getattr(heapTuple,
+            Anum_pg_dist_partition_logicalrelid,
+            tupleDescriptor, &isNull);
+  relationId = DatumGetObjectId(relationIdDatum);
+  distTableOidList = lappend_oid(distTableOidList, relationId);
 
-		heapTuple = systable_getnext(scanDescriptor);
-	}
+  heapTuple = systable_getnext(scanDescriptor);
+ }
 
-	systable_endscan(scanDescriptor);
-	heap_close(pgDistPartition, AccessShareLock);
+ systable_endscan(scanDescriptor);
+ heap_close(pgDistPartition, AccessShareLock);
 
-	return distTableOidList;
+ return distTableOidList;
 }

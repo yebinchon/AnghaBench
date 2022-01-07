@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct section {char* name; struct config_option* values; } ;
-struct config_option {int /*<<< orphan*/  name; struct config_option* next; int /*<<< orphan*/  hash; } ;
+struct config_option {int name; struct config_option* next; int hash; } ;
 struct config {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_CONFIG ; 
- struct config_option* appconfig_option_index_add (struct section*,struct config_option*) ; 
- struct config_option* appconfig_option_index_del (struct section*,struct config_option*) ; 
- struct config_option* appconfig_option_index_find (struct section*,char const*,int /*<<< orphan*/ ) ; 
- struct section* appconfig_section_create (struct config*,char const*) ; 
- struct section* appconfig_section_find (struct config*,char const*) ; 
- int /*<<< orphan*/  config_section_unlock (struct section*) ; 
- int /*<<< orphan*/  config_section_wrlock (struct section*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  freez (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  simple_hash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdupz (char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_CONFIG ;
+ struct config_option* appconfig_option_index_add (struct section*,struct config_option*) ;
+ struct config_option* appconfig_option_index_del (struct section*,struct config_option*) ;
+ struct config_option* appconfig_option_index_find (struct section*,char const*,int ) ;
+ struct section* appconfig_section_create (struct config*,char const*) ;
+ struct section* appconfig_section_find (struct config*,char const*) ;
+ int config_section_unlock (struct section*) ;
+ int config_section_wrlock (struct section*) ;
+ int debug (int ,char*,char const*,char const*,char const*,char const*) ;
+ int error (char*,int ,char*) ;
+ int freez (int ) ;
+ int simple_hash (int ) ;
+ int strdupz (char const*) ;
+ scalar_t__ unlikely (int) ;
 
 int appconfig_move(struct config *root, const char *section_old, const char *name_old, const char *section_new, const char *name_new) {
     struct config_option *cv_old, *cv_new;

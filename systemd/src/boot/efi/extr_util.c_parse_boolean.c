@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EFI_STATUS ;
-typedef  int /*<<< orphan*/  CHAR8 ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFI_INVALID_PARAMETER ; 
- int /*<<< orphan*/  EFI_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strcmpa (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int EFI_STATUS ;
+typedef int CHAR8 ;
+typedef int BOOLEAN ;
+
+
+ int EFI_INVALID_PARAMETER ;
+ int EFI_SUCCESS ;
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ strcmpa (int const*,int *) ;
 
 EFI_STATUS parse_boolean(const CHAR8 *v, BOOLEAN *b) {
         if (!v)

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_conflict_reason_t ;
-typedef  scalar_t__ svn_wc_conflict_action_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int TRUE ; 
- int /*<<< orphan*/  svn_io_check_path (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_file ; 
- int /*<<< orphan*/  svn_wc__conflict_read_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int*,int*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_prop_conflict (char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_text_conflict (char const**,char const**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__conflict_read_tree_conflict (scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_op_mark_resolved (int /*<<< orphan*/ *,char const*,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_conflict (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wclock_owns_lock (int*,int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_conflict_action_edit ; 
- scalar_t__ svn_wc_conflict_reason_moved_away ; 
+
+
+
+typedef scalar_t__ svn_wc_conflict_reason_t ;
+typedef scalar_t__ svn_wc_conflict_action_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int svn_io_check_path (char const*,int *,int *) ;
+ int svn_node_file ;
+ int svn_wc__conflict_read_info (int *,int *,int*,int*,int*,int *,char const*,int *,int *,int *) ;
+ int svn_wc__conflict_read_prop_conflict (char const**,int *,int *,int *,int *,int *,char const*,int *,int *,int *) ;
+ int svn_wc__conflict_read_text_conflict (char const**,char const**,char const**,int *,char const*,int *,int *,int *) ;
+ int svn_wc__conflict_read_tree_conflict (scalar_t__*,scalar_t__*,int *,int *,char const*,int *,int *,int *) ;
+ int svn_wc__db_op_mark_resolved (int *,char const*,int,int,int,int *,int *) ;
+ int svn_wc__db_read_conflict (int **,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_wclock_owns_lock (int*,int *,char const*,int,int *) ;
+ scalar_t__ svn_wc_conflict_action_edit ;
+ scalar_t__ svn_wc_conflict_reason_moved_away ;
 
 __attribute__((used)) static svn_error_t *
 internal_conflicted_p(svn_boolean_t *text_conflicted_p,
@@ -50,7 +50,7 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
   svn_boolean_t resolved_text = FALSE;
   svn_boolean_t resolved_props = FALSE;
 
-  SVN_ERR(svn_wc__db_read_conflict(&conflicts, NULL, NULL,
+  SVN_ERR(svn_wc__db_read_conflict(&conflicts, ((void*)0), ((void*)0),
                                    db, local_abspath,
                                    scratch_pool, scratch_pool));
 
@@ -68,7 +68,7 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
       return SVN_NO_ERROR;
     }
 
-  SVN_ERR(svn_wc__conflict_read_info(NULL, NULL, text_conflicted_p,
+  SVN_ERR(svn_wc__conflict_read_info(((void*)0), ((void*)0), text_conflicted_p,
                                      prop_conflicted_p, tree_conflicted_p,
                                      db, local_abspath, conflicts,
                                      scratch_pool, scratch_pool));
@@ -79,14 +79,6 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
       const char *their_old_abspath;
       const char *their_abspath;
       svn_boolean_t done = FALSE;
-
-      /* Look for any text conflict, exercising only as much effort as
-         necessary to obtain a definitive answer.  This only applies to
-         files, but we don't have to explicitly check that entry is a
-         file, since these attributes would never be set on a directory
-         anyway.  A conflict file entry notation only counts if the
-         conflict file still exists on disk.  */
-
       SVN_ERR(svn_wc__conflict_read_text_conflict(&mine_abspath,
                                                   &their_old_abspath,
                                                   &their_abspath,
@@ -124,7 +116,7 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
         }
 
         if (!done && (mine_abspath || their_abspath || their_old_abspath))
-          resolved_text = TRUE; /* Remove in-db conflict marker */
+          resolved_text = TRUE;
     }
 
   if (prop_conflicted_p && *prop_conflicted_p)
@@ -132,7 +124,7 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
       const char *prej_abspath;
 
       SVN_ERR(svn_wc__conflict_read_prop_conflict(&prej_abspath,
-                                                  NULL, NULL, NULL, NULL,
+                                                  ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                                   db, local_abspath, conflicts,
                                                   scratch_pool, scratch_pool));
 
@@ -143,7 +135,7 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
           *prop_conflicted_p = (kind == svn_node_file);
 
           if (! *prop_conflicted_p)
-            resolved_props = TRUE; /* Remove in-db conflict marker */
+            resolved_props = TRUE;
         }
     }
 
@@ -155,7 +147,7 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
           svn_wc_conflict_reason_t reason;
           svn_wc_conflict_action_t action;
 
-          SVN_ERR(svn_wc__conflict_read_tree_conflict(&reason, &action, NULL,
+          SVN_ERR(svn_wc__conflict_read_tree_conflict(&reason, &action, ((void*)0),
                                                       db, local_abspath,
                                                       conflicts,
                                                       scratch_pool,
@@ -174,15 +166,15 @@ internal_conflicted_p(svn_boolean_t *text_conflicted_p,
     {
       svn_boolean_t own_lock;
 
-      /* The marker files are missing, so "repair" wc.db if we can */
+
       SVN_ERR(svn_wc__db_wclock_owns_lock(&own_lock, db, local_abspath, FALSE,
                                           scratch_pool));
       if (own_lock)
         SVN_ERR(svn_wc__db_op_mark_resolved(db, local_abspath,
                                             resolved_text,
                                             resolved_props,
-                                            FALSE /* resolved_tree */,
-                                            NULL /* work_items */,
+                                            FALSE ,
+                                            ((void*)0) ,
                                             scratch_pool));
     }
 

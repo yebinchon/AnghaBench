@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  socket_mode; int /*<<< orphan*/  directory_mode; int /*<<< orphan*/  transparent; int /*<<< orphan*/  free_bind; int /*<<< orphan*/  reuse_port; int /*<<< orphan*/  bind_to_device; int /*<<< orphan*/  bind_ipv6_only; int /*<<< orphan*/  backlog; } ;
-typedef  TYPE_1__ SocketAddress ;
-typedef  TYPE_1__ const Socket ;
 
-/* Variables and functions */
- int SOCK_CLOEXEC ; 
- int SOCK_NONBLOCK ; 
- int /*<<< orphan*/  assert (TYPE_1__ const*) ; 
- int socket_address_listen (TYPE_1__ const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int socket_mode; int directory_mode; int transparent; int free_bind; int reuse_port; int bind_to_device; int bind_ipv6_only; int backlog; } ;
+typedef TYPE_1__ SocketAddress ;
+typedef TYPE_1__ const Socket ;
+
+
+ int SOCK_CLOEXEC ;
+ int SOCK_NONBLOCK ;
+ int assert (TYPE_1__ const*) ;
+ int socket_address_listen (TYPE_1__ const*,int,int ,int ,int ,int ,int ,int ,int ,int ,char const*) ;
 
 __attribute__((used)) static int socket_address_listen_do(
                 Socket *s,

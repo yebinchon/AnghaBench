@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int LCDHEIGHT ; 
- int LCDWIDTH ; 
- scalar_t__* micro_oled_screen_buffer ; 
- scalar_t__* micro_oled_screen_current ; 
- int /*<<< orphan*/  send_data (scalar_t__) ; 
- int /*<<< orphan*/  set_column_address (int) ; 
- int /*<<< orphan*/  set_page_address (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int LCDHEIGHT ;
+ int LCDWIDTH ;
+ scalar_t__* micro_oled_screen_buffer ;
+ scalar_t__* micro_oled_screen_current ;
+ int send_data (scalar_t__) ;
+ int set_column_address (int) ;
+ int set_page_address (int) ;
 
 void send_buffer(void) {
     uint8_t i, j;
@@ -37,7 +37,7 @@ void send_buffer(void) {
                 }
                 send_data(micro_oled_screen_buffer[i * LCDWIDTH + j]);
                 micro_oled_screen_current[i * LCDWIDTH + j] = micro_oled_screen_buffer[i * LCDWIDTH + j];
-                col_addr                                    = j + 1;
+                col_addr = j + 1;
             }
         }
     }

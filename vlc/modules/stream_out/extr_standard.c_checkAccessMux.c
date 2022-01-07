@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sout_stream_t ;
 
-/* Variables and functions */
- scalar_t__ exactMatch (char*,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- char* var_CreateGetString (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int sout_stream_t ;
+
+
+ scalar_t__ exactMatch (char*,char*,int) ;
+ int free (char*) ;
+ int msg_Err (int *,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ char* var_CreateGetString (int *,char*) ;
 
 __attribute__((used)) static void checkAccessMux( sout_stream_t *p_stream, char *psz_access,
                             char *psz_mux )
@@ -30,7 +30,7 @@ __attribute__((used)) static void checkAccessMux( sout_stream_t *p_stream, char 
     else if( exactMatch( psz_access, "udp", 3 ) )
     {
         if( exactMatch( psz_mux, "ffmpeg", 6 ) || exactMatch( psz_mux, "avformat", 8 ) )
-        {   /* why would you use ffmpeg's ts muxer ? YOU DON'T LOVE VLC ??? */
+        {
             char *psz_ffmpeg_mux = var_CreateGetString( p_stream, "sout-avformat-mux" );
             if( !psz_ffmpeg_mux || strncmp( psz_ffmpeg_mux, "mpegts", 6 ) )
                 msg_Err( p_stream, "UDP output is only valid with TS mux" );

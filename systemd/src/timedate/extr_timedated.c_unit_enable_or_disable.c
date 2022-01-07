@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  name; int /*<<< orphan*/  unit_file_state; } ;
-typedef  TYPE_1__ sd_bus_error ;
-typedef  TYPE_1__ sd_bus ;
-typedef  TYPE_1__ UnitStatusInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  enable_disable (int) ; 
- int /*<<< orphan*/  log_unit_debug (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_unit_info (TYPE_1__*,char*,char*) ; 
- int sd_bus_call_method (TYPE_1__*,char*,char*,char*,char*,TYPE_1__*,int /*<<< orphan*/ *,char*,...) ; 
- int streq (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int name; int unit_file_state; } ;
+typedef TYPE_1__ sd_bus_error ;
+typedef TYPE_1__ sd_bus ;
+typedef TYPE_1__ UnitStatusInfo ;
+
+
+ int assert (TYPE_1__*) ;
+ int enable_disable (int) ;
+ int log_unit_debug (TYPE_1__*,char*,int ) ;
+ int log_unit_info (TYPE_1__*,char*,char*) ;
+ int sd_bus_call_method (TYPE_1__*,char*,char*,char*,char*,TYPE_1__*,int *,char*,...) ;
+ int streq (int ,char*) ;
 
 __attribute__((used)) static int unit_enable_or_disable(UnitStatusInfo *u, sd_bus *bus, sd_bus_error *error, bool enable) {
         int r;
@@ -31,7 +31,7 @@ __attribute__((used)) static int unit_enable_or_disable(UnitStatusInfo *u, sd_bu
         assert(bus);
         assert(error);
 
-        /* Call context_update_ntp_status() to update UnitStatusInfo before calling this. */
+
 
         if (streq(u->unit_file_state, "enabled") == enable) {
                 log_unit_debug(u, "already %sd.", enable_disable(enable));
@@ -48,10 +48,10 @@ __attribute__((used)) static int unit_enable_or_disable(UnitStatusInfo *u, sd_bu
                                 "org.freedesktop.systemd1.Manager",
                                 "EnableUnitFiles",
                                 error,
-                                NULL,
+                                ((void*)0),
                                 "asbb", 1,
                                 u->name,
-                                false, true);
+                                0, 1);
         else
                 r = sd_bus_call_method(
                                 bus,
@@ -60,10 +60,10 @@ __attribute__((used)) static int unit_enable_or_disable(UnitStatusInfo *u, sd_bu
                                 "org.freedesktop.systemd1.Manager",
                                 "DisableUnitFiles",
                                 error,
-                                NULL,
+                                ((void*)0),
                                 "asb", 1,
                                 u->name,
-                                false);
+                                0);
         if (r < 0)
                 return r;
 
@@ -74,8 +74,8 @@ __attribute__((used)) static int unit_enable_or_disable(UnitStatusInfo *u, sd_bu
                         "org.freedesktop.systemd1.Manager",
                         "Reload",
                         error,
-                        NULL,
-                        NULL);
+                        ((void*)0),
+                        ((void*)0));
         if (r < 0)
                 return r;
 

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ABRThandler ; 
- int /*<<< orphan*/  SIGABRT ; 
- int /*<<< orphan*/  SIGBUS ; 
- int /*<<< orphan*/  SIGFPE ; 
- int /*<<< orphan*/  SIGILL ; 
- int /*<<< orphan*/  SIGSEGV ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int ABRThandler ;
+ int SIGABRT ;
+ int SIGBUS ;
+ int SIGFPE ;
+ int SIGILL ;
+ int SIGSEGV ;
+ int signal (int ,int ) ;
 
 void FIO_addAbortHandler()
 {
-#if BACKTRACE_ENABLE
-    signal(SIGABRT, ABRThandler);
-    signal(SIGFPE, ABRThandler);
-    signal(SIGILL, ABRThandler);
-    signal(SIGSEGV, ABRThandler);
-    signal(SIGBUS, ABRThandler);
-#endif
+
+
+
+
+
+
+
 }

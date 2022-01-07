@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int failed_flush; int t; int /*<<< orphan*/  buf; int /*<<< orphan*/  sfd; scalar_t__ c; } ;
-typedef  TYPE_1__ logger_watcher ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int failed_flush; int t; int buf; int sfd; scalar_t__ c; } ;
+typedef TYPE_1__ logger_watcher ;
 struct TYPE_8__ {int (* read ) (scalar_t__,char*,int) ;int (* write ) (scalar_t__,unsigned char*,unsigned int) ;} ;
-typedef  TYPE_2__ conn ;
-struct TYPE_9__ {int events; int revents; int /*<<< orphan*/  fd; } ;
+typedef TYPE_2__ conn ;
+struct TYPE_9__ {int events; int revents; int fd; } ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EWOULDBLOCK ; 
-#define  LOGGER_WATCHER_CLIENT 129 
-#define  LOGGER_WATCHER_STDERR 128 
- int /*<<< orphan*/  L_DEBUG (char*,...) ; 
- int POLLERR ; 
- int POLLHUP ; 
- int POLLIN ; 
- int POLLOUT ; 
- int WATCHER_ALL ; 
- int WATCHER_LIMIT ; 
- unsigned char* bipbuf_peek_all (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  bipbuf_poll (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bipbuf_used (int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int fwrite (unsigned char*,int,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  logger_thread_close_watcher (TYPE_1__*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int poll (TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (scalar_t__,char*,int) ; 
- int stub2 (scalar_t__,unsigned char*,unsigned int) ; 
- TYPE_1__** watchers ; 
- TYPE_3__* watchers_pollfds ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EWOULDBLOCK ;
+
+
+ int L_DEBUG (char*,...) ;
+ int POLLERR ;
+ int POLLHUP ;
+ int POLLIN ;
+ int POLLOUT ;
+ int WATCHER_ALL ;
+ int WATCHER_LIMIT ;
+ unsigned char* bipbuf_peek_all (int ,unsigned int*) ;
+ int bipbuf_poll (int ,int) ;
+ int bipbuf_used (int ) ;
+ scalar_t__ errno ;
+ int fwrite (unsigned char*,int,unsigned int,int ) ;
+ int logger_thread_close_watcher (TYPE_1__*) ;
+ int perror (char*) ;
+ int poll (TYPE_3__*,int,int ) ;
+ int stderr ;
+ int stub1 (scalar_t__,char*,int) ;
+ int stub2 (scalar_t__,unsigned char*,unsigned int) ;
+ TYPE_1__** watchers ;
+ TYPE_3__* watchers_pollfds ;
 
 __attribute__((used)) static int logger_thread_poll_watchers(int force_poll, int watcher) {
     int x;
@@ -54,11 +54,11 @@ __attribute__((used)) static int logger_thread_poll_watchers(int force_poll, int
 
     for (x = 0; x < WATCHER_LIMIT; x++) {
         logger_watcher *w = watchers[x];
-        if (w == NULL || (watcher != WATCHER_ALL && x != watcher))
+        if (w == ((void*)0) || (watcher != WATCHER_ALL && x != watcher))
             continue;
 
         data = bipbuf_peek_all(w->buf, &data_size);
-        if (data != NULL) {
+        if (data != ((void*)0)) {
             watchers_pollfds[nfd].fd = w->sfd;
             watchers_pollfds[nfd].events = POLLOUT;
             nfd++;
@@ -67,16 +67,16 @@ __attribute__((used)) static int logger_thread_poll_watchers(int force_poll, int
             watchers_pollfds[nfd].events = POLLIN;
             nfd++;
         }
-        /* This gets set after a call to poll, and should be used to gate on
-         * calling poll again.
-         */
-        w->failed_flush = false;
+
+
+
+        w->failed_flush = 0;
     }
 
     if (nfd == 0)
         return 0;
 
-    //L_DEBUG("LOGGER: calling poll() [data_size: %d]\n", data_size);
+
     int ret = poll(watchers_pollfds, nfd, 0);
 
     if (ret < 0) {
@@ -87,13 +87,13 @@ __attribute__((used)) static int logger_thread_poll_watchers(int force_poll, int
     nfd = 0;
     for (x = 0; x < WATCHER_LIMIT; x++) {
         logger_watcher *w = watchers[x];
-        if (w == NULL)
+        if (w == ((void*)0))
             continue;
 
         data_size = 0;
-        /* Early detection of a disconnect. Otherwise we have to wait until
-         * the next write
-         */
+
+
+
         if (watchers_pollfds[nfd].revents & POLLIN) {
             char buf[1];
             int res = ((conn*)w->c)->read(w->c, buf, 1);
@@ -104,19 +104,19 @@ __attribute__((used)) static int logger_thread_poll_watchers(int force_poll, int
                 continue;
             }
         }
-        if ((data = bipbuf_peek_all(w->buf, &data_size)) != NULL) {
+        if ((data = bipbuf_peek_all(w->buf, &data_size)) != ((void*)0)) {
             if (watchers_pollfds[nfd].revents & (POLLHUP|POLLERR)) {
                 L_DEBUG("LOGGER: watcher closed during poll() call\n");
                 logger_thread_close_watcher(w);
             } else if (watchers_pollfds[nfd].revents & POLLOUT) {
                 int total = 0;
 
-                /* We can write a bit. */
+
                 switch (w->t) {
-                    case LOGGER_WATCHER_STDERR:
+                    case 128:
                         total = fwrite(data, 1, data_size, stderr);
                         break;
-                    case LOGGER_WATCHER_CLIENT:
+                    case 129:
                         total = ((conn*)w->c)->write(w->c, data, data_size);
                         break;
                 }

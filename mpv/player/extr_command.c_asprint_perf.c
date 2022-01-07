@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_pass_perf {scalar_t__ peak; scalar_t__ avg; scalar_t__ last; } ;
-struct mp_frame_perf {int count; int /*<<< orphan*/ * desc; struct mp_pass_perf* perf; } ;
+struct mp_frame_perf {int count; int * desc; struct mp_pass_perf* perf; } ;
 
-/* Variables and functions */
- char* talloc_asprintf_append (char*,char*,int /*<<< orphan*/ ,int,int,int) ; 
+
+ char* talloc_asprintf_append (char*,char*,int ,int,int,int) ;
 
 __attribute__((used)) static char *asprint_perf(char *res, struct mp_frame_perf *perf)
 {

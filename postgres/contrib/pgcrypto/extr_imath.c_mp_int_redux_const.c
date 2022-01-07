@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_result ;
-typedef  int /*<<< orphan*/ * mp_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  s_brmu (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int mp_result ;
+typedef int * mp_int ;
+
+
+ int assert (int) ;
+ int s_brmu (int *,int *) ;
 
 mp_result
 mp_int_redux_const(mp_int m, mp_int c)
 {
-	assert(m != NULL && c != NULL && m != c);
+ assert(m != ((void*)0) && c != ((void*)0) && m != c);
 
-	return s_brmu(c, m);
+ return s_brmu(c, m);
 }

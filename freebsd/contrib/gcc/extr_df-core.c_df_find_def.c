@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct df_ref {struct df_ref* next_ref; } ;
 struct df {int dummy; } ;
-typedef  int /*<<< orphan*/  rtx ;
+typedef int rtx ;
 struct TYPE_2__ {struct df_ref* defs; } ;
 
-/* Variables and functions */
- TYPE_1__* DF_INSN_UID_GET (struct df*,unsigned int) ; 
- int /*<<< orphan*/  DF_REF_REAL_REG (struct df_ref*) ; 
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- unsigned int INSN_UID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_P (int /*<<< orphan*/ ) ; 
- scalar_t__ SUBREG ; 
- int /*<<< orphan*/  SUBREG_REG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- scalar_t__ rtx_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* DF_INSN_UID_GET (struct df*,unsigned int) ;
+ int DF_REF_REAL_REG (struct df_ref*) ;
+ scalar_t__ GET_CODE (int ) ;
+ unsigned int INSN_UID (int ) ;
+ int REG_P (int ) ;
+ scalar_t__ SUBREG ;
+ int SUBREG_REG (int ) ;
+ int gcc_assert (int ) ;
+ scalar_t__ rtx_equal_p (int ,int ) ;
 
 struct df_ref *
 df_find_def (struct df *df, rtx insn, rtx reg)
@@ -42,5 +42,5 @@ df_find_def (struct df *df, rtx insn, rtx reg)
     if (rtx_equal_p (DF_REF_REAL_REG (def), reg))
       return def;
 
-  return NULL;
+  return ((void*)0);
 }

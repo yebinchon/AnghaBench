@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mmc_params {int card_rca; int card_features; int card_ocr; int io_ocr; int sdio_func_count; } ;
 
-/* Variables and functions */
- int CARD_FEATURE_MEMORY ; 
- int CARD_FEATURE_MMC ; 
- int CARD_FEATURE_SD20 ; 
- int CARD_FEATURE_SDHC ; 
- int CARD_FEATURE_SDIO ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int CARD_FEATURE_MEMORY ;
+ int CARD_FEATURE_MMC ;
+ int CARD_FEATURE_SD20 ;
+ int CARD_FEATURE_SDHC ;
+ int CARD_FEATURE_SDIO ;
+ int printf (char*,...) ;
 
 void
 mmc_print_ident(struct mmc_params *ident_data)

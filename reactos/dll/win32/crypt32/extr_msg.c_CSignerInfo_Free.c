@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_31__   TYPE_9__ ;
-typedef  struct TYPE_30__   TYPE_8__ ;
-typedef  struct TYPE_29__   TYPE_7__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_15__ ;
-typedef  struct TYPE_21__   TYPE_14__ ;
-typedef  struct TYPE_20__   TYPE_13__ ;
-typedef  struct TYPE_19__   TYPE_12__ ;
-typedef  struct TYPE_18__   TYPE_11__ ;
-typedef  struct TYPE_17__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_31__ TYPE_9__ ;
+typedef struct TYPE_30__ TYPE_8__ ;
+typedef struct TYPE_29__ TYPE_7__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_15__ ;
+typedef struct TYPE_21__ TYPE_14__ ;
+typedef struct TYPE_20__ TYPE_13__ ;
+typedef struct TYPE_19__ TYPE_12__ ;
+typedef struct TYPE_18__ TYPE_11__ ;
+typedef struct TYPE_17__ TYPE_10__ ;
+
+
 struct TYPE_31__ {TYPE_15__* pbData; } ;
 struct TYPE_29__ {TYPE_15__* pbData; } ;
 struct TYPE_30__ {TYPE_7__ Parameters; } ;
@@ -40,12 +40,12 @@ struct TYPE_19__ {size_t cAttr; TYPE_15__* rgAttr; } ;
 struct TYPE_18__ {TYPE_15__* pbData; } ;
 struct TYPE_17__ {TYPE_9__ Parameters; } ;
 struct TYPE_21__ {TYPE_13__ UnauthAttrs; TYPE_12__ AuthAttrs; TYPE_11__ EncryptedHash; TYPE_10__ HashEncryptionAlgorithm; TYPE_8__ HashAlgorithm; TYPE_6__ SignerId; } ;
-typedef  size_t DWORD ;
-typedef  TYPE_14__ CMSG_CMS_SIGNER_INFO ;
+typedef size_t DWORD ;
+typedef TYPE_14__ CMSG_CMS_SIGNER_INFO ;
 
-/* Variables and functions */
- scalar_t__ CERT_ID_ISSUER_SERIAL_NUMBER ; 
- int /*<<< orphan*/  CryptMemFree (TYPE_15__*) ; 
+
+ scalar_t__ CERT_ID_ISSUER_SERIAL_NUMBER ;
+ int CryptMemFree (TYPE_15__*) ;
 
 __attribute__((used)) static void CSignerInfo_Free(CMSG_CMS_SIGNER_INFO *info)
 {

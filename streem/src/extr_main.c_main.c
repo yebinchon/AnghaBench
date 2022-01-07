@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_array ;
-struct TYPE_8__ {int /*<<< orphan*/  lval; } ;
-typedef  TYPE_1__ parser_state ;
 
-/* Variables and functions */
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int FALSE ; 
- void* TRUE ; 
- int /*<<< orphan*/  dump_node (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const) ; 
- scalar_t__ node_parse_file (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  node_parse_free (TYPE_1__*) ; 
- int /*<<< orphan*/  node_parse_init (TYPE_1__*) ; 
- int node_parse_input (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ node_parse_string (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  node_run (TYPE_1__*) ; 
- int /*<<< orphan*/  node_stop () ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  strm_ary_new (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * strm_ary_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_ary_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_loop () ; 
- void* strm_option_verbose ; 
- int /*<<< orphan*/  strm_str_new (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_str_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int strm_value ;
+typedef int strm_array ;
+struct TYPE_8__ {int lval; } ;
+typedef TYPE_1__ parser_state ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int FALSE ;
+ void* TRUE ;
+ int dump_node (int ,int ) ;
+ int fprintf (int ,char*,char const*,char const) ;
+ scalar_t__ node_parse_file (TYPE_1__*,char const*) ;
+ int node_parse_free (TYPE_1__*) ;
+ int node_parse_init (TYPE_1__*) ;
+ int node_parse_input (TYPE_1__*,int ,char*) ;
+ scalar_t__ node_parse_string (TYPE_1__*,char const*) ;
+ int node_run (TYPE_1__*) ;
+ int node_stop () ;
+ int puts (char*) ;
+ int stderr ;
+ int stdin ;
+ int strlen (char const*) ;
+ int strm_ary_new (int *,int) ;
+ int * strm_ary_ptr (int ) ;
+ int strm_ary_value (int ) ;
+ int strm_loop () ;
+ void* strm_option_verbose ;
+ int strm_str_new (char const*,int ) ;
+ int strm_str_value (int ) ;
+ int strm_var_def (int *,char*,int ) ;
 
 int
 main(int argc, const char**argv)
 {
   const char *prog = argv[0];
-  const char *e_prog = NULL;
+  const char *e_prog = ((void*)0);
   int i, n = 0, verbose = FALSE, check = FALSE;
   parser_state state;
 
@@ -57,7 +57,7 @@ main(int argc, const char**argv)
       switch (*s) {
       case 'v':
         verbose = TRUE;
-        /* fall through */
+
       case 'w':
         strm_option_verbose = TRUE;
         break;
@@ -86,7 +86,7 @@ main(int argc, const char**argv)
   if (e_prog) {
     n += node_parse_string(&state, e_prog);
   }
-  else if (argc == 1) {              /* no args */
+  else if (argc == 1) {
     n = node_parse_input(&state, stdin, "stdin");
   }
   else {
@@ -103,14 +103,14 @@ main(int argc, const char**argv)
       puts("Syntax OK");
     }
     else {
-      strm_array av = strm_ary_new(NULL, argc);
+      strm_array av = strm_ary_new(((void*)0), argc);
       strm_value* buf = strm_ary_ptr(av);
       int i;
 
       for (i=0; i<argc; i++) {
         buf[i] = strm_str_value(strm_str_new(argv[i], strlen(argv[i])));
       }
-      strm_var_def(NULL, "ARGV", strm_ary_value(av));
+      strm_var_def(((void*)0), "ARGV", strm_ary_value(av));
       node_run(&state);
       strm_loop();
       node_stop();

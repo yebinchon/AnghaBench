@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  offset_test1 ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EM_LINELENGTH ; 
- int SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  is_lang_japanese ; 
- int /*<<< orphan*/  new_richedit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int,int,int) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int offset_test1 ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int DestroyWindow (int ) ;
+ int EM_LINELENGTH ;
+ int SendMessageA (int ,int ,int,int ) ;
+ int WM_SETTEXT ;
+ int is_lang_japanese ;
+ int new_richedit (int *) ;
+ int ok (int,char*,int,int,int) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_EM_LINELENGTH(void)
 {
-  HWND hwndRichEdit = new_richedit(NULL);
+  HWND hwndRichEdit = new_richedit(((void*)0));
   const char * text =
         "richedit1\r"
         "richedit1\n"
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_EM_LINELENGTH(void)
         offset_test[i][0], result, offset_test[i][1]);
   }
 
-  /* Test with multibyte character */
+
   if (!is_lang_japanese)
     skip("Skip multibyte character tests on non-Japanese platform\n");
   else
@@ -66,9 +66,9 @@ __attribute__((used)) static void test_EM_LINELENGTH(void)
           "richedit\x8e\xf0\n"
           "wine";
     int offset_test1[3][2] = {
-           {0, 4},  /* Line 1: |wine\n */
-           {5, 9},  /* Line 2: |richedit\x8e\xf0\n */
-           {15, 4}, /* Line 3: |wine */
+           {0, 4},
+           {5, 9},
+           {15, 4},
     };
     SendMessageA(hwndRichEdit, WM_SETTEXT, 0, (LPARAM)text1);
     for (i = 0; i < sizeof(offset_test1)/sizeof(offset_test1[0]); i++) {

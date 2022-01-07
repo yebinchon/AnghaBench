@@ -1,76 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct sd {scalar_t__ packet_nr; } ;
 struct TYPE_2__ {int width; int height; } ;
-struct gspca_dev {int /*<<< orphan*/  last_packet_type; TYPE_1__ pixfmt; } ;
+struct gspca_dev {int last_packet_type; TYPE_1__ pixfmt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISCARD_PACKET ; 
- int /*<<< orphan*/  FIRST_PACKET ; 
- int /*<<< orphan*/  INTER_PACKET ; 
- int /*<<< orphan*/  LAST_PACKET ; 
- int /*<<< orphan*/  gspca_err (struct gspca_dev*,char*,int,int,int,int) ; 
- int /*<<< orphan*/  gspca_frame_add (struct gspca_dev*,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  ov51x_handle_button (struct gspca_dev*,int) ; 
+
+ int DISCARD_PACKET ;
+ int FIRST_PACKET ;
+ int INTER_PACKET ;
+ int LAST_PACKET ;
+ int gspca_err (struct gspca_dev*,char*,int,int,int,int) ;
+ int gspca_frame_add (struct gspca_dev*,int ,int*,int) ;
+ int ov51x_handle_button (struct gspca_dev*,int) ;
 
 __attribute__((used)) static void ov511_pkt_scan(struct gspca_dev *gspca_dev,
-			u8 *in,			/* isoc packet */
-			int len)		/* iso packet length */
+   u8 *in,
+   int len)
 {
-	struct sd *sd = (struct sd *) gspca_dev;
+ struct sd *sd = (struct sd *) gspca_dev;
+ if (!(in[0] | in[1] | in[2] | in[3] | in[4] | in[5] | in[6] | in[7]) &&
+     (in[8] & 0x08)) {
+  ov51x_handle_button(gspca_dev, (in[8] >> 2) & 1);
+  if (in[8] & 0x80) {
 
-	/* SOF/EOF packets have 1st to 8th bytes zeroed and the 9th
-	 * byte non-zero. The EOF packet has image width/height in the
-	 * 10th and 11th bytes. The 9th byte is given as follows:
-	 *
-	 * bit 7: EOF
-	 *     6: compression enabled
-	 *     5: 422/420/400 modes
-	 *     4: 422/420/400 modes
-	 *     3: 1
-	 *     2: snapshot button on
-	 *     1: snapshot frame
-	 *     0: even/odd field
-	 */
-	if (!(in[0] | in[1] | in[2] | in[3] | in[4] | in[5] | in[6] | in[7]) &&
-	    (in[8] & 0x08)) {
-		ov51x_handle_button(gspca_dev, (in[8] >> 2) & 1);
-		if (in[8] & 0x80) {
-			/* Frame end */
-			if ((in[9] + 1) * 8 != gspca_dev->pixfmt.width ||
-			    (in[10] + 1) * 8 != gspca_dev->pixfmt.height) {
-				gspca_err(gspca_dev, "Invalid frame size, got: %dx%d, requested: %dx%d\n",
-					  (in[9] + 1) * 8, (in[10] + 1) * 8,
-					  gspca_dev->pixfmt.width,
-					  gspca_dev->pixfmt.height);
-				gspca_dev->last_packet_type = DISCARD_PACKET;
-				return;
-			}
-			/* Add 11 byte footer to frame, might be useful */
-			gspca_frame_add(gspca_dev, LAST_PACKET, in, 11);
-			return;
-		} else {
-			/* Frame start */
-			gspca_frame_add(gspca_dev, FIRST_PACKET, in, 0);
-			sd->packet_nr = 0;
-		}
-	}
+   if ((in[9] + 1) * 8 != gspca_dev->pixfmt.width ||
+       (in[10] + 1) * 8 != gspca_dev->pixfmt.height) {
+    gspca_err(gspca_dev, "Invalid frame size, got: %dx%d, requested: %dx%d\n",
+       (in[9] + 1) * 8, (in[10] + 1) * 8,
+       gspca_dev->pixfmt.width,
+       gspca_dev->pixfmt.height);
+    gspca_dev->last_packet_type = DISCARD_PACKET;
+    return;
+   }
 
-	/* Ignore the packet number */
-	len--;
+   gspca_frame_add(gspca_dev, LAST_PACKET, in, 11);
+   return;
+  } else {
 
-	/* intermediate packet */
-	gspca_frame_add(gspca_dev, INTER_PACKET, in, len);
+   gspca_frame_add(gspca_dev, FIRST_PACKET, in, 0);
+   sd->packet_nr = 0;
+  }
+ }
+
+
+ len--;
+
+
+ gspca_frame_add(gspca_dev, INTER_PACKET, in, len);
 }

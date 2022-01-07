@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MANDOCLEVEL_SYSERR ; 
- int /*<<< orphan*/  err (int,int /*<<< orphan*/ *) ; 
- void* recallocarray (void*,size_t,size_t,size_t) ; 
+ scalar_t__ MANDOCLEVEL_SYSERR ;
+ int err (int,int *) ;
+ void* recallocarray (void*,size_t,size_t,size_t) ;
 
 void *
 mandoc_recallocarray(void *ptr, size_t oldnum, size_t num, size_t size)
 {
-	ptr = recallocarray(ptr, oldnum, num, size);
-	if (ptr == NULL)
-		err((int)MANDOCLEVEL_SYSERR, NULL);
-	return ptr;
+ ptr = recallocarray(ptr, oldnum, num, size);
+ if (ptr == ((void*)0))
+  err((int)MANDOCLEVEL_SYSERR, ((void*)0));
+ return ptr;
 }

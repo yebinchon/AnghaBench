@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-struct TYPE_13__ {scalar_t__ kind; char* sval; int /*<<< orphan*/  hideset; } ;
-typedef  TYPE_1__ Token ;
-struct TYPE_14__ {int kind; int /*<<< orphan*/  (* fn ) (TYPE_1__*) ;} ;
-typedef  int /*<<< orphan*/  Set ;
-typedef  TYPE_2__ Macro ;
 
-/* Variables and functions */
-#define  MACRO_FUNC 130 
-#define  MACRO_OBJ 129 
-#define  MACRO_SPECIAL 128 
- scalar_t__ TIDENT ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  expect (char) ; 
- TYPE_1__* lex () ; 
- int /*<<< orphan*/  macros ; 
- TYPE_2__* map_get (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  next (char) ; 
- TYPE_1__* peek_token () ; 
- int /*<<< orphan*/  propagate_space (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * read_args (TYPE_1__*,TYPE_2__*) ; 
- TYPE_1__* read_expand () ; 
- int /*<<< orphan*/ * set_add (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ set_has (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  set_intersection (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
- int /*<<< orphan*/ * subst (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unget_all (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int Vector ;
+struct TYPE_13__ {scalar_t__ kind; char* sval; int hideset; } ;
+typedef TYPE_1__ Token ;
+struct TYPE_14__ {int kind; int (* fn ) (TYPE_1__*) ;} ;
+typedef int Set ;
+typedef TYPE_2__ Macro ;
+
+
+
+
+
+ scalar_t__ TIDENT ;
+ int error (char*) ;
+ int expect (char) ;
+ TYPE_1__* lex () ;
+ int macros ;
+ TYPE_2__* map_get (int ,char*) ;
+ int next (char) ;
+ TYPE_1__* peek_token () ;
+ int propagate_space (int *,TYPE_1__*) ;
+ int * read_args (TYPE_1__*,TYPE_2__*) ;
+ TYPE_1__* read_expand () ;
+ int * set_add (int ,char*) ;
+ scalar_t__ set_has (int ,char*) ;
+ int set_intersection (int ,int ) ;
+ int stub1 (TYPE_1__*) ;
+ int * subst (TYPE_2__*,int *,int *) ;
+ int unget_all (int *) ;
 
 __attribute__((used)) static Token *read_expand_newline() {
     Token *tok = lex();
@@ -51,14 +51,14 @@ __attribute__((used)) static Token *read_expand_newline() {
         return tok;
 
     switch (macro->kind) {
-    case MACRO_OBJ: {
+    case 129: {
         Set *hideset = set_add(tok->hideset, name);
-        Vector *tokens = subst(macro, NULL, hideset);
+        Vector *tokens = subst(macro, ((void*)0), hideset);
         propagate_space(tokens, tok);
         unget_all(tokens);
         return read_expand();
     }
-    case MACRO_FUNC: {
+    case 130: {
         if (!next('('))
             return tok;
         Vector *args = read_args(tok, macro);
@@ -70,7 +70,7 @@ __attribute__((used)) static Token *read_expand_newline() {
         unget_all(tokens);
         return read_expand();
     }
-    case MACRO_SPECIAL:
+    case 128:
         macro->fn(tok);
         return read_expand();
     default:

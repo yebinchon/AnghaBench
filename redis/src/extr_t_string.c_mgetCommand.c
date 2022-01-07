@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ type; } ;
-typedef  TYPE_1__ robj ;
-struct TYPE_10__ {int argc; int /*<<< orphan*/ * argv; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ client ;
+typedef TYPE_1__ robj ;
+struct TYPE_10__ {int argc; int * argv; int db; } ;
+typedef TYPE_2__ client ;
 
-/* Variables and functions */
- scalar_t__ OBJ_STRING ; 
- int /*<<< orphan*/  addReplyArrayLen (TYPE_2__*,int) ; 
- int /*<<< orphan*/  addReplyBulk (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  addReplyNull (TYPE_2__*) ; 
- TYPE_1__* lookupKeyRead (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ OBJ_STRING ;
+ int addReplyArrayLen (TYPE_2__*,int) ;
+ int addReplyBulk (TYPE_2__*,TYPE_1__*) ;
+ int addReplyNull (TYPE_2__*) ;
+ TYPE_1__* lookupKeyRead (int ,int ) ;
 
 void mgetCommand(client *c) {
     int j;
@@ -30,7 +30,7 @@ void mgetCommand(client *c) {
     addReplyArrayLen(c,c->argc-1);
     for (j = 1; j < c->argc; j++) {
         robj *o = lookupKeyRead(c->db,c->argv[j]);
-        if (o == NULL) {
+        if (o == ((void*)0)) {
             addReplyNull(c);
         } else {
             if (o->type != OBJ_STRING) {

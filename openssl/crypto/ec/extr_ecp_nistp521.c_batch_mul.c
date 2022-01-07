@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  nq ;
-typedef  int limb ;
-typedef  int const* felem_bytearray ;
-typedef  int /*<<< orphan*/  felem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_conditional (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ec_GFp_nistp_recode_scalar_bits (int*,int*,int) ; 
- int /*<<< orphan*/  felem_assign (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  felem_neg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int get_bit (int const* const,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  point_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  point_double (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  select_point (int,int,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+typedef int nq ;
+typedef int limb ;
+typedef int const* felem_bytearray ;
+typedef int felem ;
+
+
+ int copy_conditional (int ,int ,int) ;
+ int ec_GFp_nistp_recode_scalar_bits (int*,int*,int) ;
+ int felem_assign (int ,int ) ;
+ int felem_neg (int ,int ) ;
+ int get_bit (int const* const,int) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ int point_add (int ,int ,int ,int ,int ,int ,int const,int ,int ,int ) ;
+ int point_double (int ,int ,int ,int ,int ,int ) ;
+ int select_point (int,int,int const**,int *) ;
 
 __attribute__((used)) static void batch_mul(felem x_out, felem y_out, felem z_out,
                       const felem_bytearray scalars[],
@@ -35,27 +35,27 @@ __attribute__((used)) static void batch_mul(felem x_out, felem y_out, felem z_ou
                       const felem g_pre_comp[16][3])
 {
     int i, skip;
-    unsigned num, gen_mul = (g_scalar != NULL);
+    unsigned num, gen_mul = (g_scalar != ((void*)0));
     felem nq[3], tmp[4];
     limb bits;
     u8 sign, digit;
 
-    /* set nq to the point at infinity */
+
     memset(nq, 0, sizeof(nq));
 
-    /*
-     * Loop over all scalars msb-to-lsb, interleaving additions of multiples
-     * of the generator (last quarter of rounds) and additions of other
-     * points multiples (every 5th round).
-     */
-    skip = 1;                   /* save two point operations in the first
-                                 * round */
+
+
+
+
+
+    skip = 1;
+
     for (i = (num_points ? 520 : 130); i >= 0; --i) {
-        /* double */
+
         if (!skip)
             point_double(nq[0], nq[1], nq[2], nq[0], nq[1], nq[2]);
 
-        /* add multiples of the generator */
+
         if (gen_mul && (i <= 130)) {
             bits = get_bit(g_scalar, i + 390) << 3;
             if (i < 130) {
@@ -63,10 +63,10 @@ __attribute__((used)) static void batch_mul(felem x_out, felem y_out, felem z_ou
                 bits |= get_bit(g_scalar, i + 130) << 1;
                 bits |= get_bit(g_scalar, i);
             }
-            /* select the point to add, in constant time */
+
             select_point(bits, 16, g_pre_comp, tmp);
             if (!skip) {
-                /* The 1 argument below is for "mixed" */
+
                 point_add(nq[0], nq[1], nq[2],
                           nq[0], nq[1], nq[2], 1, tmp[0], tmp[1], tmp[2]);
             } else {
@@ -75,9 +75,9 @@ __attribute__((used)) static void batch_mul(felem x_out, felem y_out, felem z_ou
             }
         }
 
-        /* do other additions every 5 doublings */
+
         if (num_points && (i % 5 == 0)) {
-            /* loop over all scalars */
+
             for (num = 0; num < num_points; ++num) {
                 bits = get_bit(scalars[num], i + 4) << 5;
                 bits |= get_bit(scalars[num], i + 3) << 4;
@@ -87,12 +87,12 @@ __attribute__((used)) static void batch_mul(felem x_out, felem y_out, felem z_ou
                 bits |= get_bit(scalars[num], i - 1);
                 ec_GFp_nistp_recode_scalar_bits(&sign, &digit, bits);
 
-                /*
-                 * select the point to add or subtract, in constant time
-                 */
+
+
+
                 select_point(digit, 17, pre_comp[num], tmp);
-                felem_neg(tmp[3], tmp[1]); /* (X, -Y, Z) is the negative
-                                            * point */
+                felem_neg(tmp[3], tmp[1]);
+
                 copy_conditional(tmp[1], tmp[3], (-(limb) sign));
 
                 if (!skip) {

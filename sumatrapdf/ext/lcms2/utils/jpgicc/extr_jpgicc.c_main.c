@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Done () ; 
- int /*<<< orphan*/  HandleSwitches (int,char**) ; 
- int /*<<< orphan*/  Help (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitUtils (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  OpenInput (char*) ; 
- int /*<<< orphan*/  OpenOutput (char*) ; 
- int /*<<< orphan*/  TransformImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ Verbose ; 
- int /*<<< orphan*/  cInpProf ; 
- int /*<<< orphan*/  cOutProf ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stdout ; 
- int xoptind ; 
+ int Done () ;
+ int HandleSwitches (int,char**) ;
+ int Help (int ) ;
+ int InitUtils (int *,char*) ;
+ int OpenInput (char*) ;
+ int OpenOutput (char*) ;
+ int TransformImage (int ,int ) ;
+ scalar_t__ Verbose ;
+ int cInpProf ;
+ int cOutProf ;
+ int fflush (int ) ;
+ int fprintf (int ,char*) ;
+ int stdout ;
+ int xoptind ;
 
 int main(int argc, char* argv[])
 {
-    InitUtils(NULL, "jpgicc");
+    InitUtils(((void*)0), "jpgicc");
 
     HandleSwitches(argc, argv);
 

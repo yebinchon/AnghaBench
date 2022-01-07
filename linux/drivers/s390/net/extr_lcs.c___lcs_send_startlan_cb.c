@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  portno; int /*<<< orphan*/  lan_type; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int portno; int lan_type; } ;
 struct TYPE_4__ {TYPE_1__ lcs_std_cmd; } ;
 struct lcs_cmd {TYPE_2__ cmd; } ;
-struct lcs_card {int /*<<< orphan*/  portno; int /*<<< orphan*/  lan_type; } ;
+struct lcs_card {int portno; int lan_type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LCS_DBF_TEXT (int,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace ; 
+
+ int LCS_DBF_TEXT (int,int ,char*) ;
+ int trace ;
 
 __attribute__((used)) static void
 __lcs_send_startlan_cb(struct lcs_card *card, struct lcs_cmd *cmd)
 {
-	LCS_DBF_TEXT(2, trace, "srtlancb");
-	card->lan_type = cmd->cmd.lcs_std_cmd.lan_type;
-	card->portno = cmd->cmd.lcs_std_cmd.portno;
+ LCS_DBF_TEXT(2, trace, "srtlancb");
+ card->lan_type = cmd->cmd.lcs_std_cmd.lan_type;
+ card->portno = cmd->cmd.lcs_std_cmd.portno;
 }

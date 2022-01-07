@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct l2t_entry {int /*<<< orphan*/  lock; int /*<<< orphan*/ * neigh; int /*<<< orphan*/  refcnt; } ;
-struct l2t_data {int /*<<< orphan*/  nfree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  neigh_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+
+
+struct l2t_entry {int lock; int * neigh; int refcnt; } ;
+struct l2t_data {int nfree; } ;
+
+
+ int atomic_inc (int *) ;
+ scalar_t__ atomic_read (int *) ;
+ int neigh_release (int *) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 void t3_l2e_free(struct l2t_data *d, struct l2t_entry *e)
 {
-	spin_lock_bh(&e->lock);
-	if (atomic_read(&e->refcnt) == 0) {	/* hasn't been recycled */
-		if (e->neigh) {
-			neigh_release(e->neigh);
-			e->neigh = NULL;
-		}
-	}
-	spin_unlock_bh(&e->lock);
-	atomic_inc(&d->nfree);
+ spin_lock_bh(&e->lock);
+ if (atomic_read(&e->refcnt) == 0) {
+  if (e->neigh) {
+   neigh_release(e->neigh);
+   e->neigh = ((void*)0);
+  }
+ }
+ spin_unlock_bh(&e->lock);
+ atomic_inc(&d->nfree);
 }

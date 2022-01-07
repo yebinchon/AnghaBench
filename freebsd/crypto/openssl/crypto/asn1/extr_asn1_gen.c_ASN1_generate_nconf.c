@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509V3_CTX ;
-typedef  int /*<<< orphan*/  CONF ;
-typedef  int /*<<< orphan*/  ASN1_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_generate_v3 (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509V3_set_nconf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X509V3_CTX ;
+typedef int CONF ;
+typedef int ASN1_TYPE ;
+
+
+ int * ASN1_generate_v3 (char const*,int *) ;
+ int X509V3_set_nconf (int *,int *) ;
 
 ASN1_TYPE *ASN1_generate_nconf(const char *str, CONF *nconf)
 {
     X509V3_CTX cnf;
 
     if (!nconf)
-        return ASN1_generate_v3(str, NULL);
+        return ASN1_generate_v3(str, ((void*)0));
 
     X509V3_set_nconf(&cnf, nconf);
     return ASN1_generate_v3(str, &cnf);

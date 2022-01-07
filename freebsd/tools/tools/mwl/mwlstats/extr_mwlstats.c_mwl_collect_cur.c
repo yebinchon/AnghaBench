@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mwlstatfoo_p {int /*<<< orphan*/  cur; } ;
+
+
+
+
+struct mwlstatfoo_p {int cur; } ;
 struct bsdstat {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mwl_collect (struct mwlstatfoo_p*,int /*<<< orphan*/ *) ; 
+
+ int mwl_collect (struct mwlstatfoo_p*,int *) ;
 
 __attribute__((used)) static void
 mwl_collect_cur(struct bsdstat *sf)
 {
-	struct mwlstatfoo_p *wf = (struct mwlstatfoo_p *) sf;
+ struct mwlstatfoo_p *wf = (struct mwlstatfoo_p *) sf;
 
-	mwl_collect(wf, &wf->cur);
+ mwl_collect(wf, &wf->cur);
 }

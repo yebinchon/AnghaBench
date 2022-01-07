@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int dword ;
-typedef  int byte ;
 
-/* Variables and functions */
- size_t ACOMP ; 
- size_t BCOMP ; 
- size_t GCOMP ; 
- size_t RCOMP ; 
- int UP5 (int) ; 
+
+
+
+typedef int dword ;
+typedef int byte ;
+
+
+ size_t ACOMP ;
+ size_t BCOMP ;
+ size_t GCOMP ;
+ size_t RCOMP ;
+ int UP5 (int) ;
 
 __attribute__((used)) static void
 fxt1_decode_1CHROMA (const byte *code, int t, byte *rgba)
@@ -28,8 +28,8 @@ fxt1_decode_1CHROMA (const byte *code, int t, byte *rgba)
 
     cc = (const dword *)code;
     if (t & 16) {
-	cc++;
-	t &= 15;
+ cc++;
+ t &= 15;
     }
     t = (cc[0] >> (t * 2)) & 3;
 

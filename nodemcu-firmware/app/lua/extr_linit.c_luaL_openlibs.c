@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ top; } ;
-typedef  TYPE_1__ lua_State ;
+typedef TYPE_1__ lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LROT_TABLEREF (int /*<<< orphan*/ ) ; 
- scalar_t__ fvalue (scalar_t__) ; 
- int /*<<< orphan*/  lua_call (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_islightfunction (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lua_libs ; 
- scalar_t__ lua_next (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lua_pop (TYPE_1__*,int) ; 
- int /*<<< orphan*/  lua_pushnil (TYPE_1__*) ; 
- int /*<<< orphan*/  lua_pushrotable (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (TYPE_1__*,int) ; 
+
+ int LROT_TABLEREF (int ) ;
+ scalar_t__ fvalue (scalar_t__) ;
+ int lua_call (TYPE_1__*,int,int ) ;
+ scalar_t__ lua_islightfunction (TYPE_1__*,int) ;
+ int lua_libs ;
+ scalar_t__ lua_next (TYPE_1__*,int) ;
+ int lua_pop (TYPE_1__*,int) ;
+ int lua_pushnil (TYPE_1__*) ;
+ int lua_pushrotable (TYPE_1__*,int ) ;
+ int lua_pushvalue (TYPE_1__*,int) ;
 
 void luaL_openlibs (lua_State *L) {
 
   lua_pushrotable(L, LROT_TABLEREF(lua_libs));
-  lua_pushnil(L);  /* first key */
-  /* loop round and open libraries */
-#ifndef LUA_CROSS_COMPILER
-// luaL_dbgbreak();  // This is a test point for debugging library start ups
-#endif
+  lua_pushnil(L);
+
+
+
+
   while (lua_next(L, -2) != 0) {
     if (lua_islightfunction(L,-1) &&
-        fvalue(L->top-1)) { // only process function entries
+        fvalue(L->top-1)) {
       lua_pushvalue(L, -2);
-      lua_call(L, 1, 0);  // call luaopen_XXX(libname)
+      lua_call(L, 1, 0);
     } else {
       lua_pop(L, 1);
     }
   }
-  lua_pop(L, 1);  //cleanup stack
+  lua_pop(L, 1);
 }

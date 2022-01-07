@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PDC_STABLE ; 
- int /*<<< orphan*/  PDC_STABLE_READ ; 
- int /*<<< orphan*/  __pa (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_to_wide (int /*<<< orphan*/ ) ; 
- int mem_pdc_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  pdc_lock ; 
- int /*<<< orphan*/  pdc_result ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+ int PDC_STABLE ;
+ int PDC_STABLE_READ ;
+ int __pa (int ) ;
+ int convert_to_wide (int ) ;
+ int mem_pdc_call (int ,int ,unsigned long,int ,unsigned long) ;
+ int memcpy (void*,int ,unsigned long) ;
+ int pdc_lock ;
+ int pdc_result ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int pdc_stable_read(unsigned long staddr, void *memaddr, unsigned long count)
 {
        int retval;
-	unsigned long flags;
+ unsigned long flags;
 
        spin_lock_irqsave(&pdc_lock, flags);
        retval = mem_pdc_call(PDC_STABLE, PDC_STABLE_READ, staddr,

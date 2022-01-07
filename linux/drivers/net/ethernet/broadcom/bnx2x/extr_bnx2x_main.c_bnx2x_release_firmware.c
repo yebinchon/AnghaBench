@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bnx2x {int /*<<< orphan*/ * firmware; int /*<<< orphan*/  init_data; int /*<<< orphan*/  init_ops; int /*<<< orphan*/  init_ops_offsets; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_firmware (int /*<<< orphan*/ *) ; 
+
+
+
+struct bnx2x {int * firmware; int init_data; int init_ops; int init_ops_offsets; } ;
+
+
+ int kfree (int ) ;
+ int release_firmware (int *) ;
 
 __attribute__((used)) static void bnx2x_release_firmware(struct bnx2x *bp)
 {
-	kfree(bp->init_ops_offsets);
-	kfree(bp->init_ops);
-	kfree(bp->init_data);
-	release_firmware(bp->firmware);
-	bp->firmware = NULL;
+ kfree(bp->init_ops_offsets);
+ kfree(bp->init_ops);
+ kfree(bp->init_data);
+ release_firmware(bp->firmware);
+ bp->firmware = ((void*)0);
 }

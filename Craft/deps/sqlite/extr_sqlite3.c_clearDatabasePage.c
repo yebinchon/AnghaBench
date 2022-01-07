@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  mutex; } ;
-struct TYPE_12__ {int nCell; unsigned char* aData; int /*<<< orphan*/  pDbPage; int /*<<< orphan*/  intKey; int /*<<< orphan*/  leaf; } ;
-typedef  scalar_t__ Pgno ;
-typedef  TYPE_1__ MemPage ;
-typedef  TYPE_2__ BtShared ;
 
-/* Variables and functions */
- int PTF_LEAF ; 
- int SQLITE_CORRUPT_BKPT ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ btreePagecount (TYPE_2__*) ; 
- int clearCell (TYPE_1__*,unsigned char*) ; 
- unsigned char* findCell (TYPE_1__*,int) ; 
- int /*<<< orphan*/  freePage (TYPE_1__*,int*) ; 
- scalar_t__ get4byte (unsigned char*) ; 
- int getAndInitPage (TYPE_2__*,scalar_t__,TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  releasePage (TYPE_1__*) ; 
- int sqlite3PagerWrite (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zeroPage (TYPE_1__*,int) ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int mutex; } ;
+struct TYPE_12__ {int nCell; unsigned char* aData; int pDbPage; int intKey; int leaf; } ;
+typedef scalar_t__ Pgno ;
+typedef TYPE_1__ MemPage ;
+typedef TYPE_2__ BtShared ;
+
+
+ int PTF_LEAF ;
+ int SQLITE_CORRUPT_BKPT ;
+ int assert (int ) ;
+ scalar_t__ btreePagecount (TYPE_2__*) ;
+ int clearCell (TYPE_1__*,unsigned char*) ;
+ unsigned char* findCell (TYPE_1__*,int) ;
+ int freePage (TYPE_1__*,int*) ;
+ scalar_t__ get4byte (unsigned char*) ;
+ int getAndInitPage (TYPE_2__*,scalar_t__,TYPE_1__**,int ) ;
+ int releasePage (TYPE_1__*) ;
+ int sqlite3PagerWrite (int ) ;
+ int sqlite3_mutex_held (int ) ;
+ int zeroPage (TYPE_1__*,int) ;
 
 __attribute__((used)) static int clearDatabasePage(
-  BtShared *pBt,           /* The BTree that contains the table */
-  Pgno pgno,               /* Page number to clear */
-  int freePageFlag,        /* Deallocate page if true */
-  int *pnChange            /* Add number of Cells freed to this counter */
+  BtShared *pBt,
+  Pgno pgno,
+  int freePageFlag,
+  int *pnChange
 ){
   MemPage *pPage;
   int rc;

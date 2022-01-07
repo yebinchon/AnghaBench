@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cmd {char* name; struct cmd* parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static void
 print_tree(const struct cmd *f)
 {
 
-	if (f->parent != NULL)
-		print_tree(f->parent);
-	if (f->name != NULL)
-		fprintf(stderr, " %s", f->name);
+ if (f->parent != ((void*)0))
+  print_tree(f->parent);
+ if (f->name != ((void*)0))
+  fprintf(stderr, " %s", f->name);
 }

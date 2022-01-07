@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* PCSTR ;
-typedef  int KMT_OPERATION ;
-typedef  int INT ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFile (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  KMTEST_DEVICE_PATH ; 
- int KMT_DO_NOTHING ; 
-#define  KMT_LIST_ALL_TESTS 130 
-#define  KMT_LIST_TESTS 129 
-#define  KMT_RUN_TEST 128 
- int /*<<< orphan*/  KmtCloseService (int /*<<< orphan*/ *) ; 
- scalar_t__ KmtCreateAndStartService (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ KmtCreateService (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ KmtDeleteService (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KmtFreeResultBuffer (scalar_t__) ; 
- scalar_t__ KmtServiceCleanup (int /*<<< orphan*/ ) ; 
- scalar_t__ KmtServiceInit () ; 
- scalar_t__ KmtStartService (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ KmtStopService (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ KmtestHandle ; 
- int /*<<< orphan*/  KmtestServiceHandle ; 
- scalar_t__ ListTests (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  OutputError (scalar_t__) ; 
- scalar_t__ ResultBuffer ; 
- scalar_t__ RunTest (char*) ; 
- int /*<<< orphan*/  SERVICE_DESCRIPTION ; 
- int /*<<< orphan*/  SERVICE_NAME ; 
- int /*<<< orphan*/  SERVICE_PATH ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup ; 
- int /*<<< orphan*/  error_goto (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+
+
+
+typedef char* PCSTR ;
+typedef int KMT_OPERATION ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+typedef int BOOLEAN ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFile (int ,int,int ,int *,int ,int ,int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int FALSE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int KMTEST_DEVICE_PATH ;
+ int KMT_DO_NOTHING ;
+
+
+
+ int KmtCloseService (int *) ;
+ scalar_t__ KmtCreateAndStartService (int ,int ,int ,int *,int ) ;
+ scalar_t__ KmtCreateService (int ,int ,int ,int *) ;
+ scalar_t__ KmtDeleteService (int ,int *) ;
+ int KmtFreeResultBuffer (scalar_t__) ;
+ scalar_t__ KmtServiceCleanup (int ) ;
+ scalar_t__ KmtServiceInit () ;
+ scalar_t__ KmtStartService (int ,int *) ;
+ scalar_t__ KmtStopService (int ,int *) ;
+ scalar_t__ KmtestHandle ;
+ int KmtestServiceHandle ;
+ scalar_t__ ListTests (int ) ;
+ int OPEN_EXISTING ;
+ int OutputError (scalar_t__) ;
+ scalar_t__ ResultBuffer ;
+ scalar_t__ RunTest (char*) ;
+ int SERVICE_DESCRIPTION ;
+ int SERVICE_NAME ;
+ int SERVICE_PATH ;
+ int TRUE ;
+ int assert (int ) ;
+ int cleanup ;
+ int error_goto (scalar_t__,int ) ;
+ int lstrcmpA (char*,char*) ;
+ int printf (char*,char*) ;
 
 int
 main(
@@ -65,7 +65,7 @@ main(
     INT Status = EXIT_SUCCESS;
     DWORD Error = ERROR_SUCCESS;
     PCSTR AppName = "kmtest.exe";
-    PCSTR TestName = NULL;
+    PCSTR TestName = ((void*)0);
     KMT_OPERATION Operation = KMT_DO_NOTHING;
     BOOLEAN ShowHidden = FALSE;
 
@@ -82,7 +82,7 @@ main(
         printf("       %s --list                      - list available tests\n", AppName);
         printf("       %s --list-all                  - list available tests, including hidden\n", AppName);
         printf("       %s <create|delete|start|stop>  - manage the kmtest driver\n\n", AppName);
-        Operation = KMT_LIST_TESTS;
+        Operation = 129;
     }
     else
     {
@@ -97,11 +97,11 @@ main(
             Error = KmtStopService(SERVICE_NAME, &KmtestServiceHandle);
 
         else if (!lstrcmpA(TestName, "--list"))
-            Operation = KMT_LIST_TESTS;
+            Operation = 129;
         else if (!lstrcmpA(TestName, "--list-all"))
-            Operation = KMT_LIST_ALL_TESTS;
+            Operation = 130;
         else
-            Operation = KMT_RUN_TEST;
+            Operation = 128;
     }
 
     if (Operation)
@@ -110,19 +110,19 @@ main(
         if (Error)
             goto cleanup;
 
-        KmtestHandle = CreateFile(KMTEST_DEVICE_PATH, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL);
+        KmtestHandle = CreateFile(KMTEST_DEVICE_PATH, GENERIC_READ | GENERIC_WRITE, 0, ((void*)0), OPEN_EXISTING, 0, ((void*)0));
         if (KmtestHandle == INVALID_HANDLE_VALUE)
             error_goto(Error, cleanup);
 
         switch (Operation)
         {
-            case KMT_LIST_ALL_TESTS:
+            case 130:
                 ShowHidden = TRUE;
-                /* fall through */
-            case KMT_LIST_TESTS:
+
+            case 129:
                 Error = ListTests(ShowHidden);
                 break;
-            case KMT_RUN_TEST:
+            case 128:
                 Error = RunTest(TestName);
                 break;
             default:

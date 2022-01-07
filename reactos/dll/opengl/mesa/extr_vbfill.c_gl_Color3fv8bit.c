@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  ColorMaterialEnabled; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ColorMaterialEnabled; } ;
 struct TYPE_8__ {int* ByteColor; } ;
 struct TYPE_9__ {TYPE_2__* VB; TYPE_1__ Light; TYPE_3__ Current; } ;
-struct TYPE_7__ {int /*<<< orphan*/  MonoColor; } ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  TYPE_4__ GLcontext ;
+struct TYPE_7__ {int MonoColor; } ;
+typedef int GLfloat ;
+typedef TYPE_4__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  FLOAT_COLOR_TO_UBYTE_COLOR (int,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  GL_FALSE ; 
+
+ int ASSERT (int) ;
+ int FLOAT_COLOR_TO_UBYTE_COLOR (int,int const) ;
+ int GL_FALSE ;
 
 void gl_Color3fv8bit( GLcontext *ctx, const GLfloat *c )
 {

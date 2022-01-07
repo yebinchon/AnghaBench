@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ create_output_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ status_flagged ; 
- scalar_t__ verify_output_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+
+
+ int _T (char*) ;
+ int _tprintf (int ,int *) ;
+ scalar_t__ create_output_file (int *,int *,int *) ;
+ scalar_t__ status_flagged ;
+ scalar_t__ verify_output_file (int *,int *,int *) ;
 
 __attribute__((used)) static int create_test_file(TCHAR* file_name, TCHAR* write_mode, TCHAR* read_mode, TCHAR* file_data)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int create_test_file(TCHAR* file_name, TCHAR* write
                 _tprintf(_T("SUCCESS: %s verified ok\n"), file_name);
             }
         } else {
-            //_tprintf(_T("ERROR: failed to verify file %s\n"), file_name);
+
             return 2;
         }
     } else {

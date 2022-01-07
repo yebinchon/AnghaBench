@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fd {int /*<<< orphan*/ * ops; } ;
-struct dev_ops {int (* open ) (int,int,struct fd*) ;int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int _ENXIO ; 
- struct dev_ops** mem_devs ; 
- int stub1 (int,int,struct fd*) ; 
+
+
+
+struct fd {int * ops; } ;
+struct dev_ops {int (* open ) (int,int,struct fd*) ;int fd; } ;
+
+
+ int _ENXIO ;
+ struct dev_ops** mem_devs ;
+ int stub1 (int,int,struct fd*) ;
 
 __attribute__((used)) static int mem_open(int major, int minor, struct fd *fd) {
     struct dev_ops *dev = mem_devs[minor];
-    if (dev == NULL) {
+    if (dev == ((void*)0)) {
         return _ENXIO;
     }
     fd->ops = &dev->fd;

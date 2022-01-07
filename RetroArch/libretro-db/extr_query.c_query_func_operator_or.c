@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ bool_; } ;
-struct rmsgpack_dom_value {TYPE_3__ val; int /*<<< orphan*/  type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  argv; int /*<<< orphan*/  argc; int /*<<< orphan*/  (* func ) (struct rmsgpack_dom_value,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct rmsgpack_dom_value {TYPE_3__ val; int type; } ;
+struct TYPE_4__ {int argv; int argc; int (* func ) (struct rmsgpack_dom_value,int ,int ) ;} ;
 struct TYPE_5__ {TYPE_1__ invocation; } ;
 struct argument {scalar_t__ type; TYPE_2__ a; } ;
 
-/* Variables and functions */
- scalar_t__ AT_VALUE ; 
- int /*<<< orphan*/  RDT_BOOL ; 
- struct rmsgpack_dom_value func_equals (struct rmsgpack_dom_value,int,struct argument const*) ; 
- struct rmsgpack_dom_value query_func_is_true (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct rmsgpack_dom_value,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AT_VALUE ;
+ int RDT_BOOL ;
+ struct rmsgpack_dom_value func_equals (struct rmsgpack_dom_value,int,struct argument const*) ;
+ struct rmsgpack_dom_value query_func_is_true (int ,int ,int *) ;
+ int stub1 (struct rmsgpack_dom_value,int ,int ) ;
 
 __attribute__((used)) static struct rmsgpack_dom_value query_func_operator_or(
       struct rmsgpack_dom_value input,
@@ -33,7 +33,7 @@ __attribute__((used)) static struct rmsgpack_dom_value query_func_operator_or(
    unsigned i;
    struct rmsgpack_dom_value res;
 
-   res.type      = RDT_BOOL;
+   res.type = RDT_BOOL;
    res.val.bool_ = 0;
 
    for (i = 0; i < argc; i++)
@@ -46,7 +46,7 @@ __attribute__((used)) static struct rmsgpack_dom_value query_func_operator_or(
                argv[i].a.invocation.func(input,
                   argv[i].a.invocation.argc,
                   argv[i].a.invocation.argv
-                  ), 0, NULL);
+                  ), 0, ((void*)0));
       }
 
       if (res.val.bool_)

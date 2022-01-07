@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
-struct TYPE_3__ {scalar_t__ asize; int /*<<< orphan*/  array; } ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  TYPE_1__ GCtab ;
 
-/* Variables and functions */
- unsigned int LJ_MAX_ABITS ; 
- int /*<<< orphan*/  tvisnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tvref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint32_t ;
+struct TYPE_3__ {scalar_t__ asize; int array; } ;
+typedef int TValue ;
+typedef TYPE_1__ GCtab ;
+
+
+ unsigned int LJ_MAX_ABITS ;
+ int tvisnil (int *) ;
+ int * tvref (int ) ;
 
 __attribute__((used)) static uint32_t countarray(const GCtab *t, uint32_t *bins)
 {
@@ -31,12 +31,12 @@ __attribute__((used)) static uint32_t countarray(const GCtab *t, uint32_t *bins)
     if (top >= t->asize) {
       top = t->asize-1;
       if (i > top)
-	break;
+ break;
     }
     array = tvref(t->array);
     for (n = 0; i <= top; i++)
       if (!tvisnil(&array[i]))
-	n++;
+ n++;
     bins[b] += n;
     na += n;
   }

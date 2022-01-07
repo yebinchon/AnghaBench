@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ acl_ok; } ;
-typedef  TYPE_1__ VariableStatData ;
-typedef  int /*<<< orphan*/  Oid ;
+typedef TYPE_1__ VariableStatData ;
+typedef int Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG2 ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg_internal (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ get_func_leakproof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_func_name (int /*<<< orphan*/ ) ; 
+
+ int DEBUG2 ;
+ int OidIsValid (int ) ;
+ int ereport (int ,int ) ;
+ int errmsg_internal (char*,int ) ;
+ scalar_t__ get_func_leakproof (int ) ;
+ int get_func_name (int ) ;
 
 bool
 statistic_proc_security_check(VariableStatData *vardata, Oid func_oid)
 {
-	if (vardata->acl_ok)
-		return true;
+ if (vardata->acl_ok)
+  return 1;
 
-	if (!OidIsValid(func_oid))
-		return false;
+ if (!OidIsValid(func_oid))
+  return 0;
 
-	if (get_func_leakproof(func_oid))
-		return true;
+ if (get_func_leakproof(func_oid))
+  return 1;
 
-	ereport(DEBUG2,
-			(errmsg_internal("not using statistics because function \"%s\" is not leak-proof",
-							 get_func_name(func_oid))));
-	return false;
+ ereport(DEBUG2,
+   (errmsg_internal("not using statistics because function \"%s\" is not leak-proof",
+        get_func_name(func_oid))));
+ return 0;
 }

@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct ar_archive_rar_uncomp_v3 {int lastlength; int lastoffset; int* oldoffset; int numlowoffsetrepeats; int lastlowoffset; int /*<<< orphan*/  lowoffsetcode; int /*<<< orphan*/  offsetcode; int /*<<< orphan*/  lengthcode; int /*<<< orphan*/  maincode; scalar_t__ is_ppmd_block; } ;
-typedef  int /*<<< orphan*/  offsetbits ;
-typedef  int /*<<< orphan*/  offsetbases ;
-typedef  int /*<<< orphan*/  lengthbits ;
-typedef  int /*<<< orphan*/  lengthbases ;
-typedef  scalar_t__ int64_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct ar_archive_rar_uncomp_v3 {int lastlength; int lastoffset; int* oldoffset; int numlowoffsetrepeats; int lastlowoffset; int lowoffsetcode; int offsetcode; int lengthcode; int maincode; scalar_t__ is_ppmd_block; } ;
+typedef int offsetbits ;
+typedef int offsetbases ;
+typedef int lengthbits ;
+typedef int lengthbases ;
+typedef scalar_t__ int64_t ;
+typedef int int32_t ;
 struct TYPE_12__ {struct ar_archive_rar_uncomp_v3 v3; } ;
-struct TYPE_13__ {int version; int start_new_table; int /*<<< orphan*/  lzss; TYPE_1__ state; } ;
+struct TYPE_13__ {int version; int start_new_table; int lzss; TYPE_1__ state; } ;
 struct TYPE_14__ {TYPE_2__ uncomp; } ;
-typedef  TYPE_3__ ar_archive_rar ;
-typedef  int /*<<< orphan*/  LZSS ;
+typedef TYPE_3__ ar_archive_rar ;
+typedef int LZSS ;
 
-/* Variables and functions */
- scalar_t__ br_bits (TYPE_3__*,int const) ; 
- int /*<<< orphan*/  br_check (TYPE_3__*,int const) ; 
- int /*<<< orphan*/  lzss_emit_literal (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lzss_emit_match (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ lzss_position (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rar_decode_byte ; 
- scalar_t__ rar_expand_v2 (TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  rar_handle_ppmd_sequence (TYPE_3__*,scalar_t__*) ; 
- int /*<<< orphan*/  rar_parse_codes (TYPE_3__*) ; 
- int /*<<< orphan*/  rar_read_filter (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int rar_read_next_symbol (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  warn (char*) ; 
+
+ scalar_t__ br_bits (TYPE_3__*,int const) ;
+ int br_check (TYPE_3__*,int const) ;
+ int lzss_emit_literal (int *,int) ;
+ int lzss_emit_match (int *,int,int) ;
+ scalar_t__ lzss_position (int *) ;
+ int rar_decode_byte ;
+ scalar_t__ rar_expand_v2 (TYPE_3__*,scalar_t__) ;
+ int rar_handle_ppmd_sequence (TYPE_3__*,scalar_t__*) ;
+ int rar_parse_codes (TYPE_3__*) ;
+ int rar_read_filter (TYPE_3__*,int ,scalar_t__*) ;
+ int rar_read_next_symbol (TYPE_3__*,int *) ;
+ int warn (char*) ;
 
 int64_t rar_expand(ar_archive_rar *rar, int64_t end)
 {
     static const uint8_t lengthbases[] =
-        {   0,   1,   2,   3,   4,   5,   6,
-            7,   8,  10,  12,  14,  16,  20,
-           24,  28,  32,  40,  48,  56,  64,
-           80,  96, 112, 128, 160, 192, 224 };
+        { 0, 1, 2, 3, 4, 5, 6,
+            7, 8, 10, 12, 14, 16, 20,
+           24, 28, 32, 40, 48, 56, 64,
+           80, 96, 112, 128, 160, 192, 224 };
     static const uint8_t lengthbits[] =
         { 0, 0, 0, 0, 0, 0, 0,
           0, 1, 1, 1, 1, 2, 2,
           2, 2, 3, 3, 3, 3, 4,
           4, 4, 4, 5, 5, 5, 5 };
     static const int32_t offsetbases[] =
-        {       0,       1,       2,       3,       4,       6,
-                8,      12,      16,      24,      32,      48,
-               64,      96,     128,     192,     256,     384,
-              512,     768,    1024,    1536,    2048,    3072,
-             4096,    6144,    8192,   12288,   16384,   24576,
-            32768,   49152,   65536,   98304,  131072,  196608,
-           262144,  327680,  393216,  458752,  524288,  589824,
-           655360,  720896,  786432,  851968,  917504,  983040,
+        { 0, 1, 2, 3, 4, 6,
+                8, 12, 16, 24, 32, 48,
+               64, 96, 128, 192, 256, 384,
+              512, 768, 1024, 1536, 2048, 3072,
+             4096, 6144, 8192, 12288, 16384, 24576,
+            32768, 49152, 65536, 98304, 131072, 196608,
+           262144, 327680, 393216, 458752, 524288, 589824,
+           655360, 720896, 786432, 851968, 917504, 983040,
           1048576, 1310720, 1572864, 1835008, 2097152, 2359296,
           2621440, 2883584, 3145728, 3407872, 3670016, 3932160 };
     static const uint8_t offsetbits[] =
-        {  0,  0,  0,  0,  1,  1,  2,  2,  3,  3,  4,  4,
-           5,  5,  6,  6,  7,  7,  8,  8,  9,  9, 10, 10,
+        { 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4,
+           5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
           11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16,
           16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
           18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18 };

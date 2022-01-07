@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 struct ata_port {int port_no; } ;
-struct ata_host {int n_ports; struct ata_port** ports; int /*<<< orphan*/  kref; struct device* dev; int /*<<< orphan*/  eh_mutex; int /*<<< orphan*/  lock; } ;
+struct ata_host {int n_ports; struct ata_port** ports; int kref; struct device* dev; int eh_mutex; int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTK (char*) ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  ata_devres_release ; 
- struct ata_port* ata_port_alloc (struct ata_host*) ; 
- int /*<<< orphan*/  dev_set_drvdata (struct device*,struct ata_host*) ; 
- int /*<<< orphan*/  devres_add (struct device*,void*) ; 
- void* devres_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  devres_open_group (struct device*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  devres_release_group (struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  devres_remove_group (struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct ata_host*) ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct ata_host* kzalloc (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int DPRINTK (char*) ;
+ int GFP_KERNEL ;
+ int ata_devres_release ;
+ struct ata_port* ata_port_alloc (struct ata_host*) ;
+ int dev_set_drvdata (struct device*,struct ata_host*) ;
+ int devres_add (struct device*,void*) ;
+ void* devres_alloc (int ,int ,int ) ;
+ int devres_open_group (struct device*,int *,int ) ;
+ int devres_release_group (struct device*,int *) ;
+ int devres_remove_group (struct device*,int *) ;
+ int kfree (struct ata_host*) ;
+ int kref_init (int *) ;
+ struct ata_host* kzalloc (size_t,int ) ;
+ int mutex_init (int *) ;
+ int spin_lock_init (int *) ;
 
 struct ata_host *ata_host_alloc(struct device *dev, int max_ports)
 {
-	struct ata_host *host;
-	size_t sz;
-	int i;
-	void *dr;
+ struct ata_host *host;
+ size_t sz;
+ int i;
+ void *dr;
 
-	DPRINTK("ENTER\n");
+ DPRINTK("ENTER\n");
 
-	/* alloc a container for our list of ATA ports (buses) */
-	sz = sizeof(struct ata_host) + (max_ports + 1) * sizeof(void *);
-	host = kzalloc(sz, GFP_KERNEL);
-	if (!host)
-		return NULL;
 
-	if (!devres_open_group(dev, NULL, GFP_KERNEL))
-		goto err_free;
+ sz = sizeof(struct ata_host) + (max_ports + 1) * sizeof(void *);
+ host = kzalloc(sz, GFP_KERNEL);
+ if (!host)
+  return ((void*)0);
 
-	dr = devres_alloc(ata_devres_release, 0, GFP_KERNEL);
-	if (!dr)
-		goto err_out;
+ if (!devres_open_group(dev, ((void*)0), GFP_KERNEL))
+  goto err_free;
 
-	devres_add(dev, dr);
-	dev_set_drvdata(dev, host);
+ dr = devres_alloc(ata_devres_release, 0, GFP_KERNEL);
+ if (!dr)
+  goto err_out;
 
-	spin_lock_init(&host->lock);
-	mutex_init(&host->eh_mutex);
-	host->dev = dev;
-	host->n_ports = max_ports;
-	kref_init(&host->kref);
+ devres_add(dev, dr);
+ dev_set_drvdata(dev, host);
 
-	/* allocate ports bound to this host */
-	for (i = 0; i < max_ports; i++) {
-		struct ata_port *ap;
+ spin_lock_init(&host->lock);
+ mutex_init(&host->eh_mutex);
+ host->dev = dev;
+ host->n_ports = max_ports;
+ kref_init(&host->kref);
 
-		ap = ata_port_alloc(host);
-		if (!ap)
-			goto err_out;
 
-		ap->port_no = i;
-		host->ports[i] = ap;
-	}
+ for (i = 0; i < max_ports; i++) {
+  struct ata_port *ap;
 
-	devres_remove_group(dev, NULL);
-	return host;
+  ap = ata_port_alloc(host);
+  if (!ap)
+   goto err_out;
+
+  ap->port_no = i;
+  host->ports[i] = ap;
+ }
+
+ devres_remove_group(dev, ((void*)0));
+ return host;
 
  err_out:
-	devres_release_group(dev, NULL);
+ devres_release_group(dev, ((void*)0));
  err_free:
-	kfree(host);
-	return NULL;
+ kfree(host);
+ return ((void*)0);
 }

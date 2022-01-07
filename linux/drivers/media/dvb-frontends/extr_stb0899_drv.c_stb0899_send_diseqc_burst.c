@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+
+
+typedef int u8 ;
 struct stb0899_state {int dummy; } ;
 struct dvb_frontend {struct stb0899_state* demodulator_priv; } ;
-typedef  enum fe_sec_mini_cmd { ____Placeholder_fe_sec_mini_cmd } fe_sec_mini_cmd ;
+typedef enum fe_sec_mini_cmd { ____Placeholder_fe_sec_mini_cmd } fe_sec_mini_cmd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISEQCMODE ; 
- int /*<<< orphan*/  DISPRECHARGE ; 
- int ETIMEDOUT ; 
-#define  SEC_MINI_A 129 
-#define  SEC_MINI_B 128 
- int /*<<< orphan*/  STB0899_DISCNTRL1 ; 
- int /*<<< orphan*/  STB0899_DISFIFO ; 
- int /*<<< orphan*/  STB0899_SETFIELD_VAL (int /*<<< orphan*/ ,int,int) ; 
- int stb0899_read_reg (struct stb0899_state*,int /*<<< orphan*/ ) ; 
- scalar_t__ stb0899_wait_diseqc_txidle (struct stb0899_state*,int) ; 
- int /*<<< orphan*/  stb0899_write_reg (struct stb0899_state*,int /*<<< orphan*/ ,int) ; 
+
+ int DISEQCMODE ;
+ int DISPRECHARGE ;
+ int ETIMEDOUT ;
+
+
+ int STB0899_DISCNTRL1 ;
+ int STB0899_DISFIFO ;
+ int STB0899_SETFIELD_VAL (int ,int,int) ;
+ int stb0899_read_reg (struct stb0899_state*,int ) ;
+ scalar_t__ stb0899_wait_diseqc_txidle (struct stb0899_state*,int) ;
+ int stb0899_write_reg (struct stb0899_state*,int ,int) ;
 
 __attribute__((used)) static int stb0899_send_diseqc_burst(struct dvb_frontend *fe,
-				     enum fe_sec_mini_cmd burst)
+         enum fe_sec_mini_cmd burst)
 {
-	struct stb0899_state *state = fe->demodulator_priv;
-	u8 reg, old_state;
+ struct stb0899_state *state = fe->demodulator_priv;
+ u8 reg, old_state;
 
-	/* wait for diseqc idle	*/
-	if (stb0899_wait_diseqc_txidle(state, 100) < 0)
-		return -ETIMEDOUT;
 
-	reg = stb0899_read_reg(state, STB0899_DISCNTRL1);
-	old_state = reg;
-	/* set to burst mode	*/
-	STB0899_SETFIELD_VAL(DISEQCMODE, reg, 0x03);
-	STB0899_SETFIELD_VAL(DISPRECHARGE, reg, 0x01);
-	stb0899_write_reg(state, STB0899_DISCNTRL1, reg);
-	switch (burst) {
-	case SEC_MINI_A:
-		/* unmodulated	*/
-		stb0899_write_reg(state, STB0899_DISFIFO, 0x00);
-		break;
-	case SEC_MINI_B:
-		/* modulated	*/
-		stb0899_write_reg(state, STB0899_DISFIFO, 0xff);
-		break;
-	}
-	reg = stb0899_read_reg(state, STB0899_DISCNTRL1);
-	STB0899_SETFIELD_VAL(DISPRECHARGE, reg, 0x00);
-	stb0899_write_reg(state, STB0899_DISCNTRL1, reg);
-	/* wait for diseqc idle	*/
-	if (stb0899_wait_diseqc_txidle(state, 100) < 0)
-		return -ETIMEDOUT;
+ if (stb0899_wait_diseqc_txidle(state, 100) < 0)
+  return -ETIMEDOUT;
 
-	/* restore state	*/
-	stb0899_write_reg(state, STB0899_DISCNTRL1, old_state);
+ reg = stb0899_read_reg(state, STB0899_DISCNTRL1);
+ old_state = reg;
 
-	return 0;
+ STB0899_SETFIELD_VAL(DISEQCMODE, reg, 0x03);
+ STB0899_SETFIELD_VAL(DISPRECHARGE, reg, 0x01);
+ stb0899_write_reg(state, STB0899_DISCNTRL1, reg);
+ switch (burst) {
+ case 129:
+
+  stb0899_write_reg(state, STB0899_DISFIFO, 0x00);
+  break;
+ case 128:
+
+  stb0899_write_reg(state, STB0899_DISFIFO, 0xff);
+  break;
+ }
+ reg = stb0899_read_reg(state, STB0899_DISCNTRL1);
+ STB0899_SETFIELD_VAL(DISPRECHARGE, reg, 0x00);
+ stb0899_write_reg(state, STB0899_DISCNTRL1, reg);
+
+ if (stb0899_wait_diseqc_txidle(state, 100) < 0)
+  return -ETIMEDOUT;
+
+
+ stb0899_write_reg(state, STB0899_DISCNTRL1, old_state);
+
+ return 0;
 }

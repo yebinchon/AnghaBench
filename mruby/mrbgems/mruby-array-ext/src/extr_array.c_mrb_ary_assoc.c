@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- scalar_t__ RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_check_array_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ scalar_t__ RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int mrb_check_array_type (int *,int ) ;
+ scalar_t__ mrb_equal (int *,int ,int ) ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
 
 __attribute__((used)) static mrb_value
 mrb_ary_assoc(mrb_state *mrb, mrb_value ary)

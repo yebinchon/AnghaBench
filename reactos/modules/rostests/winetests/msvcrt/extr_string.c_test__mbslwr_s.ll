@@ -1,0 +1,160 @@
+; ModuleID = '/home/carl/AnghaBench/reactos/modules/rostests/winetests/msvcrt/extr_string.c_test__mbslwr_s.c'
+source_filename = "/home/carl/AnghaBench/reactos/modules/rostests/winetests/msvcrt/extr_string.c_test__mbslwr_s.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@EBADF = common dso_local global i8* null, align 8
+@errno = common dso_local global i8* null, align 8
+@.str = private unnamed_addr constant [40 x i8] c"Expected _mbslwr_s to return 0, got %d\0A\00", align 1
+@EINVAL = common dso_local global i8* null, align 8
+@.str.1 = private unnamed_addr constant [45 x i8] c"Expected _mbslwr_s to return EINVAL, got %d\0A\00", align 1
+@.str.2 = private unnamed_addr constant [37 x i8] c"Expected errno to be EINVAL, got %d\0A\00", align 1
+@.str.3 = private unnamed_addr constant [9 x i8] c"ABCDEFGH\00", align 1
+@.str.4 = private unnamed_addr constant [9 x i8] c"abcdefgh\00", align 1
+@.str.5 = private unnamed_addr constant [55 x i8] c"Expected the output buffer to be \22abcdefgh\22, got \22%s\22\0A\00", align 1
+@.str.6 = private unnamed_addr constant [18 x i8] c"ABCDEFGH\00IJKLMNOP\00", align 1
+@.str.7 = private unnamed_addr constant [18 x i8] c"abcdefgh\00IJKLMNOP\00", align 1
+@.str.8 = private unnamed_addr constant [65 x i8] c"Expected the output buffer to be \22abcdefgh\\0IJKLMNOP\22, got \22%s\22\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void ()* @test__mbslwr_s to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @test__mbslwr_s() #0 {
+  %1 = alloca i8*, align 8
+  %2 = alloca [20 x i8], align 16
+  %3 = load i8*, i8** @EBADF, align 8
+  store i8* %3, i8** @errno, align 8
+  %4 = call i8* @p_mbslwr_s(i8* null, i32 0)
+  store i8* %4, i8** %1, align 8
+  %5 = load i8*, i8** %1, align 8
+  %6 = icmp eq i8* %5, null
+  %7 = zext i1 %6 to i32
+  %8 = load i8*, i8** %1, align 8
+  %9 = call i32 @ok(i32 %7, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str, i64 0, i64 0), i8* %8)
+  %10 = load i8*, i8** @EBADF, align 8
+  store i8* %10, i8** @errno, align 8
+  %11 = call i8* @p_mbslwr_s(i8* null, i32 20)
+  store i8* %11, i8** %1, align 8
+  %12 = load i8*, i8** %1, align 8
+  %13 = load i8*, i8** @EINVAL, align 8
+  %14 = icmp eq i8* %12, %13
+  %15 = zext i1 %14 to i32
+  %16 = load i8*, i8** %1, align 8
+  %17 = call i32 @ok(i32 %15, i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.1, i64 0, i64 0), i8* %16)
+  %18 = load i8*, i8** @errno, align 8
+  %19 = load i8*, i8** @EINVAL, align 8
+  %20 = icmp eq i8* %18, %19
+  %21 = zext i1 %20 to i32
+  %22 = load i8*, i8** @errno, align 8
+  %23 = call i32 @ok(i32 %21, i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.2, i64 0, i64 0), i8* %22)
+  %24 = load i8*, i8** @EBADF, align 8
+  store i8* %24, i8** @errno, align 8
+  %25 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %26 = call i8* @p_mbslwr_s(i8* %25, i32 0)
+  store i8* %26, i8** %1, align 8
+  %27 = load i8*, i8** %1, align 8
+  %28 = load i8*, i8** @EINVAL, align 8
+  %29 = icmp eq i8* %27, %28
+  %30 = zext i1 %29 to i32
+  %31 = load i8*, i8** %1, align 8
+  %32 = call i32 @ok(i32 %30, i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.1, i64 0, i64 0), i8* %31)
+  %33 = load i8*, i8** @errno, align 8
+  %34 = load i8*, i8** @EINVAL, align 8
+  %35 = icmp eq i8* %33, %34
+  %36 = zext i1 %35 to i32
+  %37 = load i8*, i8** @errno, align 8
+  %38 = call i32 @ok(i32 %36, i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.2, i64 0, i64 0), i8* %37)
+  %39 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %40 = call i32 @memcpy(i8* %39, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.3, i64 0, i64 0), i32 9)
+  %41 = load i8*, i8** @EBADF, align 8
+  store i8* %41, i8** @errno, align 8
+  %42 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %43 = call i8* @p_mbslwr_s(i8* %42, i32 9)
+  store i8* %43, i8** %1, align 8
+  %44 = load i8*, i8** %1, align 8
+  %45 = icmp eq i8* %44, null
+  %46 = zext i1 %45 to i32
+  %47 = load i8*, i8** %1, align 8
+  %48 = call i32 @ok(i32 %46, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str, i64 0, i64 0), i8* %47)
+  %49 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %50 = call i32 @memcmp(i8* %49, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.4, i64 0, i64 0), i32 9)
+  %51 = icmp ne i32 %50, 0
+  %52 = xor i1 %51, true
+  %53 = zext i1 %52 to i32
+  %54 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %55 = call i32 @ok(i32 %53, i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.5, i64 0, i64 0), i8* %54)
+  %56 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %57 = call i32 @memcpy(i8* %56, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.3, i64 0, i64 0), i32 9)
+  %58 = load i8*, i8** @EBADF, align 8
+  store i8* %58, i8** @errno, align 8
+  %59 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %60 = call i8* @p_mbslwr_s(i8* %59, i32 20)
+  store i8* %60, i8** %1, align 8
+  %61 = load i8*, i8** %1, align 8
+  %62 = icmp eq i8* %61, null
+  %63 = zext i1 %62 to i32
+  %64 = load i8*, i8** %1, align 8
+  %65 = call i32 @ok(i32 %63, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str, i64 0, i64 0), i8* %64)
+  %66 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %67 = call i32 @memcmp(i8* %66, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.4, i64 0, i64 0), i32 9)
+  %68 = icmp ne i32 %67, 0
+  %69 = xor i1 %68, true
+  %70 = zext i1 %69 to i32
+  %71 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %72 = call i32 @ok(i32 %70, i8* getelementptr inbounds ([55 x i8], [55 x i8]* @.str.5, i64 0, i64 0), i8* %71)
+  %73 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %74 = call i32 @memcpy(i8* %73, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.3, i64 0, i64 0), i32 9)
+  %75 = load i8*, i8** @EBADF, align 8
+  store i8* %75, i8** @errno, align 8
+  %76 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %77 = call i8* @p_mbslwr_s(i8* %76, i32 4)
+  store i8* %77, i8** %1, align 8
+  %78 = load i8*, i8** %1, align 8
+  %79 = load i8*, i8** @EINVAL, align 8
+  %80 = icmp eq i8* %78, %79
+  %81 = zext i1 %80 to i32
+  %82 = load i8*, i8** %1, align 8
+  %83 = call i32 @ok(i32 %81, i8* getelementptr inbounds ([45 x i8], [45 x i8]* @.str.1, i64 0, i64 0), i8* %82)
+  %84 = load i8*, i8** @errno, align 8
+  %85 = load i8*, i8** @EINVAL, align 8
+  %86 = icmp eq i8* %84, %85
+  %87 = zext i1 %86 to i32
+  %88 = load i8*, i8** @errno, align 8
+  %89 = call i32 @ok(i32 %87, i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.2, i64 0, i64 0), i8* %88)
+  %90 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %91 = call i32 @memcpy(i8* %90, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.6, i64 0, i64 0), i32 18)
+  %92 = load i8*, i8** @EBADF, align 8
+  store i8* %92, i8** @errno, align 8
+  %93 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %94 = call i8* @p_mbslwr_s(i8* %93, i32 20)
+  store i8* %94, i8** %1, align 8
+  %95 = load i8*, i8** %1, align 8
+  %96 = icmp eq i8* %95, null
+  %97 = zext i1 %96 to i32
+  %98 = load i8*, i8** %1, align 8
+  %99 = call i32 @ok(i32 %97, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str, i64 0, i64 0), i8* %98)
+  %100 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %101 = call i32 @memcmp(i8* %100, i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.7, i64 0, i64 0), i32 18)
+  %102 = icmp ne i32 %101, 0
+  %103 = xor i1 %102, true
+  %104 = zext i1 %103 to i32
+  %105 = getelementptr inbounds [20 x i8], [20 x i8]* %2, i64 0, i64 0
+  %106 = call i32 @ok(i32 %104, i8* getelementptr inbounds ([65 x i8], [65 x i8]* @.str.8, i64 0, i64 0), i8* %105)
+  ret void
+}
+
+declare dso_local i8* @p_mbslwr_s(i8*, i32) #1
+
+declare dso_local i32 @ok(i32, i8*, i8*) #1
+
+declare dso_local i32 @memcpy(i8*, i8*, i32) #1
+
+declare dso_local i32 @memcmp(i8*, i8*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

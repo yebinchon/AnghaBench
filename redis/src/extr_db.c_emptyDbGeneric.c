@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  expires; int /*<<< orphan*/  dict; } ;
-typedef  TYPE_1__ redisDb ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int expires; int dict; } ;
+typedef TYPE_1__ redisDb ;
 struct TYPE_9__ {int dbnum; scalar_t__ cluster_enabled; } ;
-struct TYPE_8__ {int member_1; int member_2; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ RedisModuleFlushInfoV1 ;
+struct TYPE_8__ {int member_1; int member_2; int member_0; } ;
+typedef TYPE_2__ RedisModuleFlushInfoV1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int EMPTYDB_ASYNC ; 
- int /*<<< orphan*/  REDISMODULE_EVENT_FLUSHDB ; 
- int /*<<< orphan*/  REDISMODULE_FLUSHINFO_VERSION ; 
- int /*<<< orphan*/  REDISMODULE_SUBEVENT_FLUSHDB_END ; 
- int /*<<< orphan*/  REDISMODULE_SUBEVENT_FLUSHDB_START ; 
- int /*<<< orphan*/  dictEmpty (int /*<<< orphan*/ ,void (*) (void*)) ; 
- scalar_t__ dictSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emptyDbAsync (TYPE_1__*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  flushSlaveKeysWithExpireList () ; 
- int /*<<< orphan*/  moduleFireServerEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- TYPE_3__ server ; 
- int /*<<< orphan*/  signalFlushedDb (int) ; 
- int /*<<< orphan*/  slotToKeyFlush () ; 
- int /*<<< orphan*/  slotToKeyFlushAsync () ; 
+
+ int EINVAL ;
+ int EMPTYDB_ASYNC ;
+ int REDISMODULE_EVENT_FLUSHDB ;
+ int REDISMODULE_FLUSHINFO_VERSION ;
+ int REDISMODULE_SUBEVENT_FLUSHDB_END ;
+ int REDISMODULE_SUBEVENT_FLUSHDB_START ;
+ int dictEmpty (int ,void (*) (void*)) ;
+ scalar_t__ dictSize (int ) ;
+ int emptyDbAsync (TYPE_1__*) ;
+ int errno ;
+ int flushSlaveKeysWithExpireList () ;
+ int moduleFireServerEvent (int ,int ,TYPE_2__*) ;
+ TYPE_3__ server ;
+ int signalFlushedDb (int) ;
+ int slotToKeyFlush () ;
+ int slotToKeyFlushAsync () ;
 
 long long emptyDbGeneric(redisDb *dbarray, int dbnum, int flags, void(callback)(void*)) {
     int async = (flags & EMPTYDB_ASYNC);
@@ -46,15 +46,15 @@ long long emptyDbGeneric(redisDb *dbarray, int dbnum, int flags, void(callback)(
         return -1;
     }
 
-    /* Fire the flushdb modules event. */
+
     RedisModuleFlushInfoV1 fi = {REDISMODULE_FLUSHINFO_VERSION,!async,dbnum};
     moduleFireServerEvent(REDISMODULE_EVENT_FLUSHDB,
                           REDISMODULE_SUBEVENT_FLUSHDB_START,
                           &fi);
 
-    /* Make sure the WATCHed keys are affected by the FLUSH* commands.
-     * Note that we need to call the function while the keys are still
-     * there. */
+
+
+
     signalFlushedDb(dbnum);
 
     int startdb, enddb;
@@ -83,8 +83,8 @@ long long emptyDbGeneric(redisDb *dbarray, int dbnum, int flags, void(callback)(
     }
     if (dbnum == -1) flushSlaveKeysWithExpireList();
 
-    /* Also fire the end event. Note that this event will fire almost
-     * immediately after the start event if the flush is asynchronous. */
+
+
     moduleFireServerEvent(REDISMODULE_EVENT_FLUSHDB,
                           REDISMODULE_SUBEVENT_FLUSHDB_END,
                           &fi);

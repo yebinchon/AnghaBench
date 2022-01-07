@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sqlite_int64 ;
-typedef  scalar_t__ DocListType ;
 
-/* Variables and functions */
- scalar_t__ DL_DOCIDS ; 
- scalar_t__ DL_POSITIONS ; 
- int POS_COLUMN ; 
- int POS_END ; 
- int /*<<< orphan*/  assert (int) ; 
- int getVarint (char const*,scalar_t__*) ; 
- scalar_t__ getVarint32 (char const*,int*) ; 
+
+
+
+typedef scalar_t__ sqlite_int64 ;
+typedef scalar_t__ DocListType ;
+
+
+ scalar_t__ DL_DOCIDS ;
+ scalar_t__ DL_POSITIONS ;
+ int POS_COLUMN ;
+ int POS_END ;
+ int assert (int) ;
+ int getVarint (char const*,scalar_t__*) ;
+ scalar_t__ getVarint32 (char const*,int*) ;
 
 __attribute__((used)) static void docListValidate(DocListType iType, const char *pData, int nData,
                             sqlite_int64 *pLastDocid){

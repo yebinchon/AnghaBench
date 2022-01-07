@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int h; int w; } ;
 struct TYPE_4__ {void* h; void* w; void* y; void* x; } ;
 struct rawfb_context {TYPE_1__ fb; TYPE_2__ scissors; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX (float const,int /*<<< orphan*/ ) ; 
- void* MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MAX (float const,int ) ;
+ void* MIN (int ,int ) ;
 
 __attribute__((used)) static void
 nk_rawfb_scissor(struct rawfb_context *rawfb,

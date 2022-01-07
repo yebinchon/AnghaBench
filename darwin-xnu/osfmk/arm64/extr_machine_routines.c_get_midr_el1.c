@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRS (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+
+
+ int MRS (int ,char*) ;
 
 __attribute__((used)) static uint32_t get_midr_el1(void)
 {
-	uint64_t value;
+ uint64_t value;
 
-	MRS(value, "MIDR_EL1");
+ MRS(value, "MIDR_EL1");
 
-	/* This is a 32-bit register. */
-	return (uint32_t) value;
+
+ return (uint32_t) value;
 }

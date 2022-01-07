@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* elem; char* data; char* attr; } ;
-typedef  TYPE_1__ yxml_t ;
-typedef  int yxml_ret_t ;
-struct rxml_parse_buffer {char* val; TYPE_2__** stack; int /*<<< orphan*/  xml; } ;
+typedef TYPE_1__ yxml_t ;
+typedef int yxml_ret_t ;
+struct rxml_parse_buffer {char* val; TYPE_2__** stack; int xml; } ;
 struct rxml_attrib_node {void* value; void* attrib; struct rxml_attrib_node* next; } ;
 struct TYPE_9__ {struct rxml_attrib_node* attrib; void* data; void* name; struct TYPE_9__* next; struct TYPE_9__* children; } ;
-typedef  TYPE_2__ rxml_node_t ;
+typedef TYPE_2__ rxml_node_t ;
 struct TYPE_10__ {TYPE_2__* root_node; } ;
-typedef  TYPE_3__ rxml_document_t ;
+typedef TYPE_3__ rxml_document_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFSIZE ; 
-#define  YXML_ATTREND 133 
-#define  YXML_ATTRSTART 132 
-#define  YXML_ATTRVAL 131 
-#define  YXML_CONTENT 130 
-#define  YXML_ELEMEND 129 
-#define  YXML_ELEMSTART 128 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (struct rxml_parse_buffer*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  rxml_free_document (TYPE_3__*) ; 
- void* strdup (char*) ; 
- int /*<<< orphan*/  yxml_init (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int yxml_parse (TYPE_1__*,char const) ; 
+
+ int BUFSIZE ;
+
+
+
+
+
+
+ scalar_t__ calloc (int,int) ;
+ int free (struct rxml_parse_buffer*) ;
+ scalar_t__ malloc (int) ;
+ int rxml_free_document (TYPE_3__*) ;
+ void* strdup (char*) ;
+ int yxml_init (TYPE_1__*,int ,int ) ;
+ int yxml_parse (TYPE_1__*,char const) ;
 
 rxml_document_t *rxml_load_document_string(const char *str)
 {
-   rxml_document_t *doc          = NULL;
-   struct rxml_parse_buffer *buf = NULL;
-   size_t stack_i                = 0;
-   size_t level                  = 0;
-   int c                         = 0;
-   char *valptr                  = NULL;
+   rxml_document_t *doc = ((void*)0);
+   struct rxml_parse_buffer *buf = ((void*)0);
+   size_t stack_i = 0;
+   size_t level = 0;
+   int c = 0;
+   char *valptr = ((void*)0);
    yxml_t x;
 
-   rxml_node_t *node             = NULL;
-   struct rxml_attrib_node *attr = NULL;
+   rxml_node_t *node = ((void*)0);
+   struct rxml_attrib_node *attr = ((void*)0);
 
    buf = (struct rxml_parse_buffer*)malloc(sizeof(*buf));
    if (!buf)
@@ -72,7 +72,7 @@ rxml_document_t *rxml_load_document_string(const char *str)
 
       switch (r) {
 
-      case YXML_ELEMSTART:
+      case 128:
          if (node) {
             if (level > stack_i) {
                buf->stack[stack_i] = node;
@@ -91,12 +91,12 @@ rxml_document_t *rxml_load_document_string(const char *str)
          }
 
          node->name = strdup(x.elem);
-         attr = NULL;
+         attr = ((void*)0);
 
          ++level;
          break;
 
-      case YXML_ELEMEND:
+      case 129:
          --level;
 
          if (valptr > buf->val) {
@@ -111,14 +111,14 @@ rxml_document_t *rxml_load_document_string(const char *str)
          }
          break;
 
-      case YXML_CONTENT:
+      case 130:
          for (c = 0; c < sizeof(x.data) && x.data[c]; ++c) {
             *valptr = x.data[c];
             ++valptr;
          }
          break;
 
-      case YXML_ATTRSTART:
+      case 132:
          if (attr)
             attr = attr->next = (struct rxml_attrib_node*)calloc(1, sizeof(*attr));
          else
@@ -128,14 +128,14 @@ rxml_document_t *rxml_load_document_string(const char *str)
          valptr = buf->val;
          break;
 
-      case YXML_ATTRVAL:
+      case 131:
          for(c = 0; c < sizeof(x.data) && x.data[c]; ++c) {
             *valptr = x.data[c];
             ++valptr;
          }
          break;
 
-      case YXML_ATTREND:
+      case 133:
          if (valptr > buf->val) {
             *valptr = '\0';
             attr->value = strdup(buf->val);
@@ -154,5 +154,5 @@ rxml_document_t *rxml_load_document_string(const char *str)
 error:
    rxml_free_document(doc);
    free(buf);
-   return NULL;
+   return ((void*)0);
 }

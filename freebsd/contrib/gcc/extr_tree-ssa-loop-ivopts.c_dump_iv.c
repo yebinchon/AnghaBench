@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iv {scalar_t__ biv_p; scalar_t__ base_object; scalar_t__ base; scalar_t__ step; scalar_t__ ssa_name; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TDF_SLIM ; 
- scalar_t__ TREE_TYPE (scalar_t__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  print_generic_expr (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int TDF_SLIM ;
+ scalar_t__ TREE_TYPE (scalar_t__) ;
+ int fprintf (int *,char*) ;
+ int print_generic_expr (int *,scalar_t__,int ) ;
 
 void
 dump_iv (FILE *file, struct iv *iv)

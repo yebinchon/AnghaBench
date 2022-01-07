@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sway_view {TYPE_1__* impl; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* close ) (struct sway_view*) ;} ;
+struct TYPE_2__ {int (* close ) (struct sway_view*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct sway_view*) ; 
+
+ int stub1 (struct sway_view*) ;
 
 void view_close(struct sway_view *view) {
-	if (view->impl->close) {
-		view->impl->close(view);
-	}
+ if (view->impl->close) {
+  view->impl->close(view);
+ }
 }

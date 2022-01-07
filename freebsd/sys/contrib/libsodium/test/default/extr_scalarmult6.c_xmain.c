@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  alicepk_ ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bobsk_ ; 
- int crypto_scalarmult (unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_scalarmult_BYTES ; 
- int /*<<< orphan*/  crypto_scalarmult_SCALARBYTES ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (int /*<<< orphan*/ ) ; 
+ int alicepk_ ;
+ int assert (int) ;
+ int bobsk_ ;
+ int crypto_scalarmult (unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_scalarmult_BYTES ;
+ int crypto_scalarmult_SCALARBYTES ;
+ int memcpy (unsigned char*,int ,int ) ;
+ int printf (char*,...) ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (int ) ;
 
 int
 main(void)
@@ -29,13 +21,13 @@ main(void)
     unsigned char *k;
     unsigned char *bobsk;
     unsigned char *alicepk;
-    int            i;
-    int            ret;
+    int i;
+    int ret;
 
-    k       = (unsigned char *) sodium_malloc(crypto_scalarmult_BYTES);
-    bobsk   = (unsigned char *) sodium_malloc(crypto_scalarmult_SCALARBYTES);
+    k = (unsigned char *) sodium_malloc(crypto_scalarmult_BYTES);
+    bobsk = (unsigned char *) sodium_malloc(crypto_scalarmult_SCALARBYTES);
     alicepk = (unsigned char *) sodium_malloc(crypto_scalarmult_SCALARBYTES);
-    assert(k != NULL && bobsk != NULL && alicepk != NULL);
+    assert(k != ((void*)0) && bobsk != ((void*)0) && alicepk != ((void*)0));
 
     memcpy(bobsk, bobsk_, crypto_scalarmult_SCALARBYTES);
     memcpy(alicepk, alicepk_, crypto_scalarmult_SCALARBYTES);

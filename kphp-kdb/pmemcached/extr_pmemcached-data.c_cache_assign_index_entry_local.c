@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct index_entry {int data_len; int /*<<< orphan*/  delay; int /*<<< orphan*/  flags; scalar_t__ data; } ;
-struct TYPE_2__ {int data_len; int /*<<< orphan*/  delay; int /*<<< orphan*/  flags; scalar_t__ data; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct index_entry {int data_len; int delay; int flags; scalar_t__ data; } ;
+struct TYPE_2__ {int data_len; int delay; int flags; scalar_t__ data; } ;
 struct entry {int index_entry; int allocated_here; int timestamp; TYPE_1__ data; scalar_t__ key_len; } ;
 
-/* Variables and functions */
- scalar_t__ PMEMCACHED_TYPE_INDEX_DISK ; 
- int cache_size ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ index_type ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- scalar_t__ zzmalloc (int) ; 
+
+ scalar_t__ PMEMCACHED_TYPE_INDEX_DISK ;
+ int cache_size ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ index_type ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ int stderr ;
+ int verbosity ;
+ scalar_t__ zzmalloc (int) ;
 
 inline int cache_assign_index_entry_local (struct entry *entry, struct index_entry *index_entry) {
   if (!index_entry || index_entry->data_len == -1) {

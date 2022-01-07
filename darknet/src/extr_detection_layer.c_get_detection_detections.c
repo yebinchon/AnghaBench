@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {float* output; int side; int n; int classes; scalar_t__ sqrt; } ;
-typedef  TYPE_1__ layer ;
+typedef TYPE_1__ layer ;
 struct TYPE_8__ {float x; float y; int w; int h; } ;
 struct TYPE_7__ {float objectness; float* prob; TYPE_3__ bbox; } ;
-typedef  TYPE_2__ detection ;
-typedef  TYPE_3__ box ;
+typedef TYPE_2__ detection ;
+typedef TYPE_3__ box ;
 
-/* Variables and functions */
- int pow (float,int) ; 
+
+ int pow (float,int) ;
 
 void get_detection_detections(layer l, int w, int h, float thresh, detection *dets)
 {
     int i,j,n;
     float *predictions = l.output;
-    //int per_cell = 5*num+classes;
+
     for (i = 0; i < l.side*l.side; ++i){
         int row = i / l.side;
         int col = i % l.side;

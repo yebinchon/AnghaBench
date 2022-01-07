@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int t ;
 struct TYPE_4__ {int length; char* tx_buffer; char* rx_buffer; int addr; int cmd; } ;
-typedef  TYPE_1__ spi_transaction_t ;
-typedef  int /*<<< orphan*/  spi_device_handle_t ;
-typedef  scalar_t__ esp_err_t ;
+typedef TYPE_1__ spi_transaction_t ;
+typedef int spi_device_handle_t ;
+typedef scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  MALLOC_CAP_DMA ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* heap_caps_malloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand () ; 
- scalar_t__ spi_device_transmit (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  srand (int) ; 
+
+ scalar_t__ ESP_OK ;
+ int MALLOC_CAP_DMA ;
+ int TEST_ASSERT (int) ;
+ int free (char*) ;
+ char* heap_caps_malloc (int,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int printf (char*,...) ;
+ int rand () ;
+ scalar_t__ spi_device_transmit (int ,TYPE_1__*) ;
+ int srand (int) ;
 
 __attribute__((used)) static int spi_test(spi_device_handle_t handle, int num_bytes) {
     esp_err_t ret;
     int x;
-    bool success = true;
+    bool success = 1;
     srand(num_bytes);
     char *sendbuf=heap_caps_malloc((num_bytes+3)&(~3), MALLOC_CAP_DMA);
     char *recvbuf=heap_caps_malloc((num_bytes+3)&(~3), MALLOC_CAP_DMA);
@@ -64,7 +64,7 @@ __attribute__((used)) static int spi_test(spi_device_handle_t handle, int num_by
     if (x!=num_bytes) {
         int from=x-16;
         if (from<0) from=0;
-        success = false;
+        success = 0;
         printf("Error at %d! Sent vs recved: (starting from %d)\n" , x, from);
         for (int i=0; i<32; i++) {
             if (i+from<num_bytes) printf("%02X ", sendbuf[from+i]);

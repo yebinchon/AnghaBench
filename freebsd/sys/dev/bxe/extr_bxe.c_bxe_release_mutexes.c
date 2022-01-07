@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  phy_mtx; } ;
-struct bxe_softc {int /*<<< orphan*/  mcast_mtx; int /*<<< orphan*/  stats_mtx; int /*<<< orphan*/  print_mtx; int /*<<< orphan*/  fwmb_mtx; TYPE_1__ port; int /*<<< orphan*/  dmae_mtx; int /*<<< orphan*/  sp_mtx; int /*<<< orphan*/  core_mtx; int /*<<< orphan*/  core_sx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ mtx_initialized (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sx_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int phy_mtx; } ;
+struct bxe_softc {int mcast_mtx; int stats_mtx; int print_mtx; int fwmb_mtx; TYPE_1__ port; int dmae_mtx; int sp_mtx; int core_mtx; int core_sx; } ;
+
+
+ int mtx_destroy (int *) ;
+ scalar_t__ mtx_initialized (int *) ;
+ int sx_destroy (int *) ;
 
 __attribute__((used)) static void
 bxe_release_mutexes(struct bxe_softc *sc)
 {
-#ifdef BXE_CORE_LOCK_SX
-    sx_destroy(&sc->core_sx);
-#else
+
+
+
     if (mtx_initialized(&sc->core_mtx)) {
         mtx_destroy(&sc->core_mtx);
     }
-#endif
+
 
     if (mtx_initialized(&sc->sp_mtx)) {
         mtx_destroy(&sc->sp_mtx);

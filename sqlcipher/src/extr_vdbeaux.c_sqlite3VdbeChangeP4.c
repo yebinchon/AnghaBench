@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ mallocFailed; } ;
-typedef  TYPE_2__ sqlite3 ;
+typedef TYPE_2__ sqlite3 ;
 struct TYPE_11__ {scalar_t__ magic; int nOp; TYPE_4__* aOp; TYPE_2__* db; } ;
-typedef  TYPE_3__ Vdbe ;
-typedef  int /*<<< orphan*/  VTable ;
-struct TYPE_9__ {void* p; int /*<<< orphan*/  i; } ;
+typedef TYPE_3__ Vdbe ;
+typedef int VTable ;
+struct TYPE_9__ {void* p; int i; } ;
 struct TYPE_12__ {int p4type; TYPE_1__ p4; } ;
-typedef  TYPE_4__ Op ;
+typedef TYPE_4__ Op ;
 
-/* Variables and functions */
- int P4_INT32 ; 
- int P4_VTAB ; 
- int /*<<< orphan*/  SQLITE_PTR_TO_INT (char const*) ; 
- scalar_t__ VDBE_MAGIC_INIT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  freeP4 (TYPE_2__*,int,void*) ; 
- int /*<<< orphan*/  sqlite3VtabLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vdbeChangeP4Full (TYPE_3__*,TYPE_4__*,char const*,int) ; 
+
+ int P4_INT32 ;
+ int P4_VTAB ;
+ int SQLITE_PTR_TO_INT (char const*) ;
+ scalar_t__ VDBE_MAGIC_INIT ;
+ int assert (int) ;
+ int freeP4 (TYPE_2__*,int,void*) ;
+ int sqlite3VtabLock (int *) ;
+ int vdbeChangeP4Full (TYPE_3__*,TYPE_4__*,char const*,int) ;
 
 void sqlite3VdbeChangeP4(Vdbe *p, int addr, const char *zP4, int n){
   Op *pOp;
@@ -55,8 +55,8 @@ void sqlite3VdbeChangeP4(Vdbe *p, int addr, const char *zP4, int n){
     return;
   }
   if( n==P4_INT32 ){
-    /* Note: this cast is safe, because the origin data point was an int
-    ** that was cast to a (const char *). */
+
+
     pOp->p4.i = SQLITE_PTR_TO_INT(zP4);
     pOp->p4type = P4_INT32;
   }else if( zP4!=0 ){

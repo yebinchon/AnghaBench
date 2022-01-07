@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* getenv (char const*) ; 
- int /*<<< orphan*/  gomp_error (char*,char const*) ; 
- scalar_t__ isspace (unsigned char) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
+ char* getenv (char const*) ;
+ int gomp_error (char*,char const*) ;
+ scalar_t__ isspace (unsigned char) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
 
 __attribute__((used)) static void
 parse_boolean (const char *name, bool *value)
@@ -23,19 +15,19 @@ parse_boolean (const char *name, bool *value)
   const char *env;
 
   env = getenv (name);
-  if (env == NULL)
+  if (env == ((void*)0))
     return;
 
   while (isspace ((unsigned char) *env))
     ++env;
   if (strncasecmp (env, "true", 4) == 0)
     {
-      *value = true;
+      *value = 1;
       env += 4;
     }
   else if (strncasecmp (env, "false", 5) == 0)
     {
-      *value = false;
+      *value = 0;
       env += 5;
     }
   else

@@ -1,159 +1,159 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_queue_entry_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int wait_queue_entry_t ;
 struct net_device {struct airo_info* ml_priv; } ;
 struct TYPE_5__ {scalar_t__ event; } ;
-struct airo_info {int /*<<< orphan*/  sem; scalar_t__ jobs; scalar_t__ flags; TYPE_1__ power; int /*<<< orphan*/  thr_wait; scalar_t__ scan_timeout; scalar_t__ expires; } ;
-struct TYPE_6__ {int /*<<< orphan*/  state; } ;
+struct airo_info {int sem; scalar_t__ jobs; scalar_t__ flags; TYPE_1__ power; int thr_wait; scalar_t__ scan_timeout; scalar_t__ expires; } ;
+struct TYPE_6__ {int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAG_FLASHING ; 
- int /*<<< orphan*/  JOB_AUTOWEP ; 
- int /*<<< orphan*/  JOB_DIE ; 
- int /*<<< orphan*/  JOB_EVENT ; 
- int /*<<< orphan*/  JOB_MIC ; 
- int /*<<< orphan*/  JOB_PROMISC ; 
- int /*<<< orphan*/  JOB_SCAN_RESULTS ; 
- int /*<<< orphan*/  JOB_STATS ; 
- int /*<<< orphan*/  JOB_WSTATS ; 
- int /*<<< orphan*/  JOB_XMIT ; 
- int /*<<< orphan*/  JOB_XMIT11 ; 
- int /*<<< orphan*/  TASK_INTERRUPTIBLE ; 
- int /*<<< orphan*/  TASK_RUNNING ; 
- int /*<<< orphan*/  add_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  airo_end_xmit (struct net_device*) ; 
- int /*<<< orphan*/  airo_end_xmit11 (struct net_device*) ; 
- int /*<<< orphan*/  airo_process_scan_results (struct airo_info*) ; 
- int /*<<< orphan*/  airo_read_stats (struct net_device*) ; 
- int /*<<< orphan*/  airo_read_wireless_stats (struct airo_info*) ; 
- int /*<<< orphan*/  airo_send_event (struct net_device*) ; 
- int /*<<< orphan*/  airo_set_promisc (struct airo_info*) ; 
- TYPE_2__* current ; 
- int down_interruptible (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  freezing (TYPE_2__*) ; 
- int /*<<< orphan*/  init_waitqueue_entry (int /*<<< orphan*/ *,TYPE_2__*) ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  kthread_should_stop () ; 
- unsigned long max (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  micinit (struct airo_info*) ; 
- unsigned long min (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule () ; 
- int /*<<< orphan*/  schedule_timeout (scalar_t__) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_freezable () ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ time_after_eq (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  timer_func (struct net_device*) ; 
- int /*<<< orphan*/  try_to_freeze () ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ int FLAG_FLASHING ;
+ int JOB_AUTOWEP ;
+ int JOB_DIE ;
+ int JOB_EVENT ;
+ int JOB_MIC ;
+ int JOB_PROMISC ;
+ int JOB_SCAN_RESULTS ;
+ int JOB_STATS ;
+ int JOB_WSTATS ;
+ int JOB_XMIT ;
+ int JOB_XMIT11 ;
+ int TASK_INTERRUPTIBLE ;
+ int TASK_RUNNING ;
+ int add_wait_queue (int *,int *) ;
+ int airo_end_xmit (struct net_device*) ;
+ int airo_end_xmit11 (struct net_device*) ;
+ int airo_process_scan_results (struct airo_info*) ;
+ int airo_read_stats (struct net_device*) ;
+ int airo_read_wireless_stats (struct airo_info*) ;
+ int airo_send_event (struct net_device*) ;
+ int airo_set_promisc (struct airo_info*) ;
+ TYPE_2__* current ;
+ int down_interruptible (int *) ;
+ int freezing (TYPE_2__*) ;
+ int init_waitqueue_entry (int *,TYPE_2__*) ;
+ scalar_t__ jiffies ;
+ int kthread_should_stop () ;
+ unsigned long max (scalar_t__,scalar_t__) ;
+ int micinit (struct airo_info*) ;
+ unsigned long min (scalar_t__,scalar_t__) ;
+ int remove_wait_queue (int *,int *) ;
+ int schedule () ;
+ int schedule_timeout (scalar_t__) ;
+ int set_bit (int ,scalar_t__*) ;
+ int set_current_state (int ) ;
+ int set_freezable () ;
+ scalar_t__ test_bit (int ,scalar_t__*) ;
+ scalar_t__ time_after_eq (scalar_t__,scalar_t__) ;
+ int timer_func (struct net_device*) ;
+ int try_to_freeze () ;
+ int up (int *) ;
 
 __attribute__((used)) static int airo_thread(void *data) {
-	struct net_device *dev = data;
-	struct airo_info *ai = dev->ml_priv;
-	int locked;
+ struct net_device *dev = data;
+ struct airo_info *ai = dev->ml_priv;
+ int locked;
 
-	set_freezable();
-	while(1) {
-		/* make swsusp happy with our thread */
-		try_to_freeze();
+ set_freezable();
+ while(1) {
 
-		if (test_bit(JOB_DIE, &ai->jobs))
-			break;
+  try_to_freeze();
 
-		if (ai->jobs) {
-			locked = down_interruptible(&ai->sem);
-		} else {
-			wait_queue_entry_t wait;
+  if (test_bit(JOB_DIE, &ai->jobs))
+   break;
 
-			init_waitqueue_entry(&wait, current);
-			add_wait_queue(&ai->thr_wait, &wait);
-			for (;;) {
-				set_current_state(TASK_INTERRUPTIBLE);
-				if (ai->jobs)
-					break;
-				if (ai->expires || ai->scan_timeout) {
-					if (ai->scan_timeout &&
-							time_after_eq(jiffies,ai->scan_timeout)){
-						set_bit(JOB_SCAN_RESULTS, &ai->jobs);
-						break;
-					} else if (ai->expires &&
-							time_after_eq(jiffies,ai->expires)){
-						set_bit(JOB_AUTOWEP, &ai->jobs);
-						break;
-					}
-					if (!kthread_should_stop() &&
-					    !freezing(current)) {
-						unsigned long wake_at;
-						if (!ai->expires || !ai->scan_timeout) {
-							wake_at = max(ai->expires,
-								ai->scan_timeout);
-						} else {
-							wake_at = min(ai->expires,
-								ai->scan_timeout);
-						}
-						schedule_timeout(wake_at - jiffies);
-						continue;
-					}
-				} else if (!kthread_should_stop() &&
-					   !freezing(current)) {
-					schedule();
-					continue;
-				}
-				break;
-			}
-			current->state = TASK_RUNNING;
-			remove_wait_queue(&ai->thr_wait, &wait);
-			locked = 1;
-		}
+  if (ai->jobs) {
+   locked = down_interruptible(&ai->sem);
+  } else {
+   wait_queue_entry_t wait;
 
-		if (locked)
-			continue;
+   init_waitqueue_entry(&wait, current);
+   add_wait_queue(&ai->thr_wait, &wait);
+   for (;;) {
+    set_current_state(TASK_INTERRUPTIBLE);
+    if (ai->jobs)
+     break;
+    if (ai->expires || ai->scan_timeout) {
+     if (ai->scan_timeout &&
+       time_after_eq(jiffies,ai->scan_timeout)){
+      set_bit(JOB_SCAN_RESULTS, &ai->jobs);
+      break;
+     } else if (ai->expires &&
+       time_after_eq(jiffies,ai->expires)){
+      set_bit(JOB_AUTOWEP, &ai->jobs);
+      break;
+     }
+     if (!kthread_should_stop() &&
+         !freezing(current)) {
+      unsigned long wake_at;
+      if (!ai->expires || !ai->scan_timeout) {
+       wake_at = max(ai->expires,
+        ai->scan_timeout);
+      } else {
+       wake_at = min(ai->expires,
+        ai->scan_timeout);
+      }
+      schedule_timeout(wake_at - jiffies);
+      continue;
+     }
+    } else if (!kthread_should_stop() &&
+        !freezing(current)) {
+     schedule();
+     continue;
+    }
+    break;
+   }
+   current->state = TASK_RUNNING;
+   remove_wait_queue(&ai->thr_wait, &wait);
+   locked = 1;
+  }
 
-		if (test_bit(JOB_DIE, &ai->jobs)) {
-			up(&ai->sem);
-			break;
-		}
+  if (locked)
+   continue;
 
-		if (ai->power.event || test_bit(FLAG_FLASHING, &ai->flags)) {
-			up(&ai->sem);
-			continue;
-		}
+  if (test_bit(JOB_DIE, &ai->jobs)) {
+   up(&ai->sem);
+   break;
+  }
 
-		if (test_bit(JOB_XMIT, &ai->jobs))
-			airo_end_xmit(dev);
-		else if (test_bit(JOB_XMIT11, &ai->jobs))
-			airo_end_xmit11(dev);
-		else if (test_bit(JOB_STATS, &ai->jobs))
-			airo_read_stats(dev);
-		else if (test_bit(JOB_WSTATS, &ai->jobs))
-			airo_read_wireless_stats(ai);
-		else if (test_bit(JOB_PROMISC, &ai->jobs))
-			airo_set_promisc(ai);
-		else if (test_bit(JOB_MIC, &ai->jobs))
-			micinit(ai);
-		else if (test_bit(JOB_EVENT, &ai->jobs))
-			airo_send_event(dev);
-		else if (test_bit(JOB_AUTOWEP, &ai->jobs))
-			timer_func(dev);
-		else if (test_bit(JOB_SCAN_RESULTS, &ai->jobs))
-			airo_process_scan_results(ai);
-		else  /* Shouldn't get here, but we make sure to unlock */
-			up(&ai->sem);
-	}
+  if (ai->power.event || test_bit(FLAG_FLASHING, &ai->flags)) {
+   up(&ai->sem);
+   continue;
+  }
 
-	return 0;
+  if (test_bit(JOB_XMIT, &ai->jobs))
+   airo_end_xmit(dev);
+  else if (test_bit(JOB_XMIT11, &ai->jobs))
+   airo_end_xmit11(dev);
+  else if (test_bit(JOB_STATS, &ai->jobs))
+   airo_read_stats(dev);
+  else if (test_bit(JOB_WSTATS, &ai->jobs))
+   airo_read_wireless_stats(ai);
+  else if (test_bit(JOB_PROMISC, &ai->jobs))
+   airo_set_promisc(ai);
+  else if (test_bit(JOB_MIC, &ai->jobs))
+   micinit(ai);
+  else if (test_bit(JOB_EVENT, &ai->jobs))
+   airo_send_event(dev);
+  else if (test_bit(JOB_AUTOWEP, &ai->jobs))
+   timer_func(dev);
+  else if (test_bit(JOB_SCAN_RESULTS, &ai->jobs))
+   airo_process_scan_results(ai);
+  else
+   up(&ai->sem);
+ }
+
+ return 0;
 }

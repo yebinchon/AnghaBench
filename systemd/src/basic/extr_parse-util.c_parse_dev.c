@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dev_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_MAJOR_VALID (unsigned int) ; 
- int /*<<< orphan*/  DEVICE_MINOR_VALID (unsigned int) ; 
- int /*<<< orphan*/  DIGITS ; 
- int EINVAL ; 
- int ERANGE ; 
- int /*<<< orphan*/  makedev (unsigned int,unsigned int) ; 
- int safe_atou (char const*,unsigned int*) ; 
- char* strndupa (char const*,size_t) ; 
- size_t strspn (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int dev_t ;
+
+
+ int DEVICE_MAJOR_VALID (unsigned int) ;
+ int DEVICE_MINOR_VALID (unsigned int) ;
+ int DIGITS ;
+ int EINVAL ;
+ int ERANGE ;
+ int makedev (unsigned int,unsigned int) ;
+ int safe_atou (char const*,unsigned int*) ;
+ char* strndupa (char const*,size_t) ;
+ size_t strspn (char const*,int ) ;
 
 int parse_dev(const char *s, dev_t *ret) {
         const char *major;

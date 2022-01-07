@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_9__ ;
-typedef  struct TYPE_33__   TYPE_8__ ;
-typedef  struct TYPE_32__   TYPE_7__ ;
-typedef  struct TYPE_31__   TYPE_6__ ;
-typedef  struct TYPE_30__   TYPE_5__ ;
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
-typedef  struct TYPE_25__   TYPE_14__ ;
-typedef  struct TYPE_24__   TYPE_13__ ;
-typedef  struct TYPE_23__   TYPE_12__ ;
-typedef  struct TYPE_22__   TYPE_11__ ;
-typedef  struct TYPE_21__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  void* uint32_t ;
-struct TYPE_24__ {int /*<<< orphan*/  st_nlink; int /*<<< orphan*/  st_size; int /*<<< orphan*/  st_mode; int /*<<< orphan*/  st_ctime; int /*<<< orphan*/  st_mtime; int /*<<< orphan*/  st_atime; int /*<<< orphan*/  otime; } ;
-struct TYPE_29__ {int /*<<< orphan*/  Length; } ;
+
+
+typedef struct TYPE_34__ TYPE_9__ ;
+typedef struct TYPE_33__ TYPE_8__ ;
+typedef struct TYPE_32__ TYPE_7__ ;
+typedef struct TYPE_31__ TYPE_6__ ;
+typedef struct TYPE_30__ TYPE_5__ ;
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+typedef struct TYPE_25__ TYPE_14__ ;
+typedef struct TYPE_24__ TYPE_13__ ;
+typedef struct TYPE_23__ TYPE_12__ ;
+typedef struct TYPE_22__ TYPE_11__ ;
+typedef struct TYPE_21__ TYPE_10__ ;
+
+
+typedef void* uint32_t ;
+struct TYPE_24__ {int st_nlink; int st_size; int st_mode; int st_ctime; int st_mtime; int st_atime; int otime; } ;
+struct TYPE_29__ {int Length; } ;
 struct TYPE_21__ {scalar_t__ atts; scalar_t__ type; TYPE_13__ inode_item; scalar_t__ ads; TYPE_4__ adsdata; TYPE_3__* Vcb; TYPE_2__* subvol; scalar_t__ inode; } ;
-typedef  TYPE_10__ fcb ;
-struct TYPE_22__ {int /*<<< orphan*/  access; TYPE_9__* fileref; } ;
-typedef  TYPE_11__ ccb ;
+typedef TYPE_10__ fcb ;
+struct TYPE_22__ {int access; TYPE_9__* fileref; } ;
+typedef TYPE_11__ ccb ;
 struct TYPE_34__ {TYPE_8__* parent; } ;
 struct TYPE_33__ {TYPE_7__* fcb; } ;
 struct TYPE_32__ {scalar_t__ atts; TYPE_13__ inode_item; } ;
-struct TYPE_31__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_30__ {int /*<<< orphan*/  QuadPart; } ;
+struct TYPE_31__ {int QuadPart; } ;
+struct TYPE_30__ {int QuadPart; } ;
 struct TYPE_28__ {TYPE_10__* dummy_fcb; } ;
 struct TYPE_27__ {scalar_t__ id; } ;
 struct TYPE_26__ {void* HighPart; void* LowPart; } ;
 struct TYPE_23__ {void* QuadPart; } ;
-struct TYPE_25__ {int FileAttributes; int /*<<< orphan*/  EffectiveAccess; int /*<<< orphan*/  NumberOfLinks; scalar_t__ ReparseTag; TYPE_6__ EndOfFile; TYPE_5__ AllocationSize; TYPE_12__ ChangeTime; TYPE_12__ LastWriteTime; TYPE_12__ LastAccessTime; TYPE_12__ CreationTime; TYPE_1__ FileId; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int LONG ;
-typedef  TYPE_12__ LARGE_INTEGER ;
-typedef  TYPE_13__ INODE_ITEM ;
-typedef  TYPE_14__ FILE_STAT_INFORMATION ;
+struct TYPE_25__ {int FileAttributes; int EffectiveAccess; int NumberOfLinks; scalar_t__ ReparseTag; TYPE_6__ EndOfFile; TYPE_5__ AllocationSize; TYPE_12__ ChangeTime; TYPE_12__ LastWriteTime; TYPE_12__ LastAccessTime; TYPE_12__ CreationTime; TYPE_1__ FileId; } ;
+typedef int NTSTATUS ;
+typedef int LONG ;
+typedef TYPE_12__ LARGE_INTEGER ;
+typedef TYPE_13__ INODE_ITEM ;
+typedef TYPE_14__ FILE_STAT_INFORMATION ;
 
-/* Variables and functions */
- scalar_t__ BTRFS_TYPE_BLOCKDEV ; 
- scalar_t__ BTRFS_TYPE_CHARDEV ; 
- scalar_t__ BTRFS_TYPE_FIFO ; 
- scalar_t__ BTRFS_TYPE_SOCKET ; 
- void* FILE_ATTRIBUTE_NORMAL ; 
- int FILE_ATTRIBUTE_REPARSE_POINT ; 
- scalar_t__ IO_REPARSE_TAG_LXSS_BLOCKDEV ; 
- scalar_t__ IO_REPARSE_TAG_LXSS_CHARDEV ; 
- scalar_t__ IO_REPARSE_TAG_LXSS_FIFO ; 
- scalar_t__ IO_REPARSE_TAG_LXSS_SOCKET ; 
- int /*<<< orphan*/  KeQuerySystemTime (TYPE_12__*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fcb_alloc_size (TYPE_10__*) ; 
- scalar_t__ get_reparse_tag_fcb (TYPE_10__*) ; 
- void* unix_time_to_win (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ BTRFS_TYPE_BLOCKDEV ;
+ scalar_t__ BTRFS_TYPE_CHARDEV ;
+ scalar_t__ BTRFS_TYPE_FIFO ;
+ scalar_t__ BTRFS_TYPE_SOCKET ;
+ void* FILE_ATTRIBUTE_NORMAL ;
+ int FILE_ATTRIBUTE_REPARSE_POINT ;
+ scalar_t__ IO_REPARSE_TAG_LXSS_BLOCKDEV ;
+ scalar_t__ IO_REPARSE_TAG_LXSS_CHARDEV ;
+ scalar_t__ IO_REPARSE_TAG_LXSS_FIFO ;
+ scalar_t__ IO_REPARSE_TAG_LXSS_SOCKET ;
+ int KeQuerySystemTime (TYPE_12__*) ;
+ int STATUS_SUCCESS ;
+ scalar_t__ S_ISDIR (int ) ;
+ int fcb_alloc_size (TYPE_10__*) ;
+ scalar_t__ get_reparse_tag_fcb (TYPE_10__*) ;
+ void* unix_time_to_win (int *) ;
 
 __attribute__((used)) static NTSTATUS fill_in_file_stat_information(FILE_STAT_INFORMATION* fsi, fcb* fcb, ccb* ccb, LONG* length) {
     INODE_ITEM* ii;

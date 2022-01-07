@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  LocalIP; } ;
-typedef  TYPE_1__ SOCK ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- TYPE_1__* ConnectEx (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Disconnect (TYPE_1__*) ; 
- char* GetRandHostNameForGetMyPrivateIP () ; 
- scalar_t__ IsZeroIp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseSock (TYPE_1__*) ; 
- int /*<<< orphan*/  UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT ; 
- char* UDP_NAT_T_GET_PRIVATE_IP_TCP_SERVER ; 
- int /*<<< orphan*/  UDP_NAT_T_PORT_FOR_TCP_1 ; 
- int /*<<< orphan*/  UDP_NAT_T_PORT_FOR_TCP_2 ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int LocalIP; } ;
+typedef TYPE_1__ SOCK ;
+typedef int IP ;
+
+
+ TYPE_1__* ConnectEx (char*,int ,int ) ;
+ int Copy (int *,int *,int) ;
+ int Disconnect (TYPE_1__*) ;
+ char* GetRandHostNameForGetMyPrivateIP () ;
+ scalar_t__ IsZeroIp (int *) ;
+ int ReleaseSock (TYPE_1__*) ;
+ int UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT ;
+ char* UDP_NAT_T_GET_PRIVATE_IP_TCP_SERVER ;
+ int UDP_NAT_T_PORT_FOR_TCP_1 ;
+ int UDP_NAT_T_PORT_FOR_TCP_2 ;
 
 bool GetMyPrivateIP(IP *ip, bool from_vg)
 {
-	SOCK *s;
-	IP t;
-	char *hostname = UDP_NAT_T_GET_PRIVATE_IP_TCP_SERVER;
-	// Validate arguments
-	if (ip == NULL)
-	{
-		return false;
-	}
+ SOCK *s;
+ IP t;
+ char *hostname = UDP_NAT_T_GET_PRIVATE_IP_TCP_SERVER;
 
-	s = ConnectEx(hostname, UDP_NAT_T_PORT_FOR_TCP_1, UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT);
+ if (ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (s == NULL)
-	{
-		s = ConnectEx(hostname, UDP_NAT_T_PORT_FOR_TCP_2, UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT);
+ s = ConnectEx(hostname, UDP_NAT_T_PORT_FOR_TCP_1, UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT);
 
-		if (s == NULL)
-		{
-			s = ConnectEx(GetRandHostNameForGetMyPrivateIP(), UDP_NAT_T_PORT_FOR_TCP_1, UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT);
+ if (s == ((void*)0))
+ {
+  s = ConnectEx(hostname, UDP_NAT_T_PORT_FOR_TCP_2, UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT);
 
-			if (s == NULL)
-			{
-				return false;
-			}
-		}
-	}
+  if (s == ((void*)0))
+  {
+   s = ConnectEx(GetRandHostNameForGetMyPrivateIP(), UDP_NAT_T_PORT_FOR_TCP_1, UDP_NAT_T_GET_PRIVATE_IP_CONNECT_TIMEOUT);
 
-	Copy(&t, &s->LocalIP, sizeof(IP));
+   if (s == ((void*)0))
+   {
+    return 0;
+   }
+  }
+ }
 
-	Disconnect(s);
-	ReleaseSock(s);
+ Copy(&t, &s->LocalIP, sizeof(IP));
 
-	if (IsZeroIp(&t))
-	{
-		return false;
-	}
+ Disconnect(s);
+ ReleaseSock(s);
 
-	Copy(ip, &t, sizeof(IP));
+ if (IsZeroIp(&t))
+ {
+  return 0;
+ }
 
-	return true;
+ Copy(ip, &t, sizeof(IP));
+
+ return 1;
 }

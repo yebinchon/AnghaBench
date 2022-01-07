@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UNICODE_STRING ;
 struct TYPE_8__ {scalar_t__ QuadPart; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * ObjectName; int /*<<< orphan*/ * RootDirectory; } ;
-typedef  TYPE_1__ OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/ * HANDLE ;
+struct TYPE_7__ {int * ObjectName; int * RootDirectory; } ;
+typedef TYPE_1__ OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int IO_STATUS_BLOCK ;
+typedef int * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GENERIC_ALL ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  InitializeObjectAttributes (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  REG_NOTIFY_CHANGE_NAME ; 
- scalar_t__ STATUS_PENDING ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ STATUS_TIMEOUT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  pNtClose (int /*<<< orphan*/ *) ; 
- scalar_t__ pNtCreateKey (int /*<<< orphan*/ **,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtDeleteKey (int /*<<< orphan*/ *) ; 
- scalar_t__ pNtNotifyChangeKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtNotifyChangeMultipleKeys (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtOpenKey (int /*<<< orphan*/ **,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ pNtWaitForSingleObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  pRtlCreateUnicodeStringFromAsciiz (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pRtlFreeUnicodeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  winetestpath ; 
+
+ int * CreateEventW (int *,int ,int ,int *) ;
+ int FALSE ;
+ int GENERIC_ALL ;
+ scalar_t__ GetLastError () ;
+ int InitializeObjectAttributes (TYPE_1__*,int *,int ,int ,int ) ;
+ int KEY_ALL_ACCESS ;
+ int REG_NOTIFY_CHANGE_NAME ;
+ scalar_t__ STATUS_PENDING ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ STATUS_TIMEOUT ;
+ int TRUE ;
+ int ok (int,char*,scalar_t__) ;
+ int pNtClose (int *) ;
+ scalar_t__ pNtCreateKey (int **,int ,TYPE_1__*,int ,int ,int ,int ) ;
+ scalar_t__ pNtDeleteKey (int *) ;
+ scalar_t__ pNtNotifyChangeKey (int *,int *,int *,int *,int *,int ,int ,int *,int ,int ) ;
+ scalar_t__ pNtNotifyChangeMultipleKeys (int *,int ,int *,int *,int *,int *,int *,int ,int ,int *,int ,int ) ;
+ scalar_t__ pNtOpenKey (int **,int ,TYPE_1__*) ;
+ scalar_t__ pNtWaitForSingleObject (int *,int ,TYPE_2__*) ;
+ int pRtlCreateUnicodeStringFromAsciiz (int *,char*) ;
+ int pRtlFreeUnicodeString (int *) ;
+ int win_skip (char*) ;
+ int winetestpath ;
 
 __attribute__((used)) static void test_notify(void)
 {
@@ -59,14 +59,14 @@ __attribute__((used)) static void test_notify(void)
     status = pNtOpenKey(&key, KEY_ALL_ACCESS, &attr);
     ok(status == STATUS_SUCCESS, "NtOpenKey Failed: 0x%08x\n", status);
 
-    events[0] = CreateEventW(NULL, FALSE, TRUE, NULL);
-    ok(events[0] != NULL, "CreateEvent failed: %u\n", GetLastError());
-    events[1] = CreateEventW(NULL, FALSE, TRUE, NULL);
-    ok(events[1] != NULL, "CreateEvent failed: %u\n", GetLastError());
+    events[0] = CreateEventW(((void*)0), FALSE, TRUE, ((void*)0));
+    ok(events[0] != ((void*)0), "CreateEvent failed: %u\n", GetLastError());
+    events[1] = CreateEventW(((void*)0), FALSE, TRUE, ((void*)0));
+    ok(events[1] != ((void*)0), "CreateEvent failed: %u\n", GetLastError());
 
-    status = pNtNotifyChangeKey(key, events[0], NULL, NULL, &iosb, REG_NOTIFY_CHANGE_NAME, FALSE, NULL, 0, TRUE);
+    status = pNtNotifyChangeKey(key, events[0], ((void*)0), ((void*)0), &iosb, REG_NOTIFY_CHANGE_NAME, FALSE, ((void*)0), 0, TRUE);
     ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
-    status = pNtNotifyChangeKey(key, events[1], NULL, NULL, &iosb, REG_NOTIFY_CHANGE_NAME, FALSE, NULL, 0, TRUE);
+    status = pNtNotifyChangeKey(key, events[1], ((void*)0), ((void*)0), &iosb, REG_NOTIFY_CHANGE_NAME, FALSE, ((void*)0), 0, TRUE);
     ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
 
     timeout.QuadPart = 0;
@@ -88,9 +88,9 @@ __attribute__((used)) static void test_notify(void)
     status = pNtWaitForSingleObject(events[1], FALSE, &timeout);
     ok(status == STATUS_SUCCESS, "NtWaitForSingleObject returned %x\n", status);
 
-    status = pNtNotifyChangeKey(key, events[0], NULL, NULL, &iosb, 0, FALSE, NULL, 0, TRUE);
+    status = pNtNotifyChangeKey(key, events[0], ((void*)0), ((void*)0), &iosb, 0, FALSE, ((void*)0), 0, TRUE);
     ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
-    status = pNtNotifyChangeKey(key, events[1], NULL, NULL, &iosb, 0, FALSE, NULL, 0, TRUE);
+    status = pNtNotifyChangeKey(key, events[1], ((void*)0), ((void*)0), &iosb, 0, FALSE, ((void*)0), 0, TRUE);
     ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
 
     status = pNtDeleteKey(subkey);
@@ -103,9 +103,9 @@ __attribute__((used)) static void test_notify(void)
 
     pNtClose(subkey);
 
-    status = pNtNotifyChangeKey(key, events[0], NULL, NULL, &iosb, 0, FALSE, NULL, 0, TRUE);
+    status = pNtNotifyChangeKey(key, events[0], ((void*)0), ((void*)0), &iosb, 0, FALSE, ((void*)0), 0, TRUE);
     ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
-    status = pNtNotifyChangeKey(key, events[1], NULL, NULL, &iosb, 0, FALSE, NULL, 0, TRUE);
+    status = pNtNotifyChangeKey(key, events[1], ((void*)0), ((void*)0), &iosb, 0, FALSE, ((void*)0), 0, TRUE);
     ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
 
     pNtClose(key);
@@ -121,7 +121,7 @@ __attribute__((used)) static void test_notify(void)
         status = pNtOpenKey(&key, KEY_ALL_ACCESS, &attr);
         ok(status == STATUS_SUCCESS, "NtOpenKey Failed: 0x%08x\n", status);
 
-        status = pNtNotifyChangeMultipleKeys(key, 0, NULL, events[0], NULL, NULL, &iosb, REG_NOTIFY_CHANGE_NAME, FALSE, NULL, 0, TRUE);
+        status = pNtNotifyChangeMultipleKeys(key, 0, ((void*)0), events[0], ((void*)0), ((void*)0), &iosb, REG_NOTIFY_CHANGE_NAME, FALSE, ((void*)0), 0, TRUE);
         ok(status == STATUS_PENDING, "NtNotifyChangeKey returned %x\n", status);
 
         timeout.QuadPart = 0;

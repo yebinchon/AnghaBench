@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct search_path {char const* dirname; struct search_path* next; } ;
 struct TYPE_2__ {char* dir; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ **) ; 
- TYPE_1__* current_srcfile ; 
- struct search_path* search_path_head ; 
- char* try_open (char const*,char const*,int /*<<< orphan*/ **) ; 
+
+ int assert (int **) ;
+ TYPE_1__* current_srcfile ;
+ struct search_path* search_path_head ;
+ char* try_open (char const*,char const*,int **) ;
 
 __attribute__((used)) static char *fopen_any_on_path(const char *fname, FILE **fp)
 {
-	const char *cur_dir = NULL;
-	struct search_path *node;
-	char *fullname;
+ const char *cur_dir = ((void*)0);
+ struct search_path *node;
+ char *fullname;
 
-	/* Try current directory first */
-	assert(fp);
-	if (current_srcfile)
-		cur_dir = current_srcfile->dir;
-	fullname = try_open(cur_dir, fname, fp);
 
-	/* Failing that, try each search path in turn */
-	for (node = search_path_head; !*fp && node; node = node->next)
-		fullname = try_open(node->dirname, fname, fp);
+ assert(fp);
+ if (current_srcfile)
+  cur_dir = current_srcfile->dir;
+ fullname = try_open(cur_dir, fname, fp);
 
-	return fullname;
+
+ for (node = search_path_head; !*fp && node; node = node->next)
+  fullname = try_open(node->dirname, fname, fp);
+
+ return fullname;
 }

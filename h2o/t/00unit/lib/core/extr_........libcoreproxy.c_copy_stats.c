@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct rp_generator_t {TYPE_5__* client; TYPE_4__* src_req; } ;
-struct TYPE_7__ {int /*<<< orphan*/  body; int /*<<< orphan*/  header; int /*<<< orphan*/  total; } ;
-struct TYPE_10__ {TYPE_2__ bytes_written; int /*<<< orphan*/  timings; } ;
-struct TYPE_6__ {int /*<<< orphan*/  body; int /*<<< orphan*/  header; int /*<<< orphan*/  total; } ;
-struct TYPE_8__ {TYPE_1__ bytes_written; int /*<<< orphan*/  timestamps; } ;
+struct TYPE_7__ {int body; int header; int total; } ;
+struct TYPE_10__ {TYPE_2__ bytes_written; int timings; } ;
+struct TYPE_6__ {int body; int header; int total; } ;
+struct TYPE_8__ {TYPE_1__ bytes_written; int timestamps; } ;
 struct TYPE_9__ {TYPE_3__ proxy_stats; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void copy_stats(struct rp_generator_t *self)
 {

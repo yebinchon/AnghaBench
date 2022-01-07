@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct loopback_test {int device_count; int /*<<< orphan*/  test_id; TYPE_1__* devices; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sysfs_entry; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_enabled (struct loopback_test*,int) ; 
- int /*<<< orphan*/  write_sysfs_val (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct loopback_test {int device_count; int test_id; TYPE_1__* devices; } ;
+struct TYPE_2__ {int sysfs_entry; } ;
+
+
+ int device_enabled (struct loopback_test*,int) ;
+ int write_sysfs_val (int ,char*,int ) ;
 
 __attribute__((used)) static int start(struct loopback_test *t)
 {
-	int i;
+ int i;
 
-	/* the test starts by writing test_id to the type file. */
-	for (i = 0; i < t->device_count; i++) {
-		if (!device_enabled(t, i))
-			continue;
 
-		write_sysfs_val(t->devices[i].sysfs_entry, "type", t->test_id);
-	}
+ for (i = 0; i < t->device_count; i++) {
+  if (!device_enabled(t, i))
+   continue;
 
-	return 0;
+  write_sysfs_val(t->devices[i].sysfs_entry, "type", t->test_id);
+ }
+
+ return 0;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const FILE ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_PRIVATE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_WRITEDATA ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  curl_handle ; 
- int /*<<< orphan*/  curl_multi_add_handle (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef char const FILE ;
+typedef int CURL ;
+
+
+ int CURLOPT_PRIVATE ;
+ int CURLOPT_URL ;
+ int CURLOPT_WRITEDATA ;
+ int * curl_easy_init () ;
+ int curl_easy_setopt (int *,int ,char const*) ;
+ int curl_handle ;
+ int curl_multi_add_handle (int ,int *) ;
+ char* fopen (char*,char*) ;
+ int fprintf (int ,char*,char const*,...) ;
+ int snprintf (char*,int,char*,int) ;
+ int stderr ;
 
 __attribute__((used)) static void add_download(const char *url, int num)
 {

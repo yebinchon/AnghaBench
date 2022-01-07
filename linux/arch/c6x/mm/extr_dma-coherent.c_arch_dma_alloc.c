@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int gfp_t ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- size_t PAGE_SHIFT ; 
- int /*<<< orphan*/  __alloc_dma_pages (int) ; 
- int /*<<< orphan*/  dma_size ; 
- int get_count_order (size_t) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- void* phys_to_virt (int /*<<< orphan*/ ) ; 
+
+ size_t PAGE_SHIFT ;
+ int __alloc_dma_pages (int) ;
+ int dma_size ;
+ int get_count_order (size_t) ;
+ int memset (void*,int ,int) ;
+ void* phys_to_virt (int ) ;
 
 void *arch_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle,
-		gfp_t gfp, unsigned long attrs)
+  gfp_t gfp, unsigned long attrs)
 {
-	void *ret;
-	u32 paddr;
-	int order;
+ void *ret;
+ u32 paddr;
+ int order;
 
-	if (!dma_size || !size)
-		return NULL;
+ if (!dma_size || !size)
+  return ((void*)0);
 
-	order = get_count_order(((size - 1) >> PAGE_SHIFT) + 1);
+ order = get_count_order(((size - 1) >> PAGE_SHIFT) + 1);
 
-	paddr = __alloc_dma_pages(order);
+ paddr = __alloc_dma_pages(order);
 
-	if (handle)
-		*handle = paddr;
+ if (handle)
+  *handle = paddr;
 
-	if (!paddr)
-		return NULL;
+ if (!paddr)
+  return ((void*)0);
 
-	ret = phys_to_virt(paddr);
-	memset(ret, 0, 1 << order);
-	return ret;
+ ret = phys_to_virt(paddr);
+ memset(ret, 0, 1 << order);
+ return ret;
 }

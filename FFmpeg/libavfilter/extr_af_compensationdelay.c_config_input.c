@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {unsigned int nb_samples; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  format; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {unsigned int nb_samples; int channel_layout; int format; } ;
 struct TYPE_9__ {TYPE_1__* priv; } ;
-struct TYPE_8__ {int sample_rate; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  format; TYPE_3__* dst; } ;
-struct TYPE_7__ {int delay; int distance_m; int distance_cm; double distance_mm; unsigned int buf_size; TYPE_5__* delay_frame; int /*<<< orphan*/  temp; } ;
-typedef  TYPE_1__ CompensationDelayContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_8__ {int sample_rate; int channel_layout; int format; TYPE_3__* dst; } ;
+struct TYPE_7__ {int delay; int distance_m; int distance_cm; double distance_mm; unsigned int buf_size; TYPE_5__* delay_frame; int temp; } ;
+typedef TYPE_1__ CompensationDelayContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- unsigned int COMP_DELAY_MAX_DELAY ; 
- int COMP_DELAY_SOUND_FRONT_DELAY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_5__* av_frame_alloc () ; 
- int av_frame_get_buffer (TYPE_5__*,int) ; 
+
+ int AVERROR (int ) ;
+ unsigned int COMP_DELAY_MAX_DELAY ;
+ int COMP_DELAY_SOUND_FRONT_DELAY (int ) ;
+ int ENOMEM ;
+ TYPE_5__* av_frame_alloc () ;
+ int av_frame_get_buffer (TYPE_5__*,int) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -47,9 +47,9 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
     if (!s->delay_frame)
         return AVERROR(ENOMEM);
 
-    s->buf_size                    = new_size;
-    s->delay_frame->format         = inlink->format;
-    s->delay_frame->nb_samples     = new_size;
+    s->buf_size = new_size;
+    s->delay_frame->format = inlink->format;
+    s->delay_frame->nb_samples = new_size;
     s->delay_frame->channel_layout = inlink->channel_layout;
 
     return av_frame_get_buffer(s->delay_frame, 32);

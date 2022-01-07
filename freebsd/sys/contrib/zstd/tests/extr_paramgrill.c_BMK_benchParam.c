@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  paramValues_t ;
-typedef  int /*<<< orphan*/  contexts_t ;
-typedef  int /*<<< orphan*/  buffers_t ;
-typedef  int /*<<< orphan*/  BMK_benchResult_t ;
-typedef  int /*<<< orphan*/  BMK_benchOutcome_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BASE_CLEVEL ; 
- int /*<<< orphan*/  BMK_benchMemInvertible (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  BMK_both ; 
- int /*<<< orphan*/  BMK_extract_benchResult (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  BMK_isSuccessful_benchOutcome (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int paramValues_t ;
+typedef int contexts_t ;
+typedef int buffers_t ;
+typedef int BMK_benchResult_t ;
+typedef int BMK_benchOutcome_t ;
+
+
+ int BASE_CLEVEL ;
+ int BMK_benchMemInvertible (int ,int ,int ,int *,int ,int) ;
+ int BMK_both ;
+ int BMK_extract_benchResult (int const) ;
+ int BMK_isSuccessful_benchOutcome (int const) ;
 
 __attribute__((used)) static int BMK_benchParam ( BMK_benchResult_t* resultPtr,
                             buffers_t buf, contexts_t ctx,

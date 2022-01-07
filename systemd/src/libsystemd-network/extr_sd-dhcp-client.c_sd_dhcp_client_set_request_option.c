@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_5__ {size_t req_opts_size; int* req_opts; int /*<<< orphan*/  req_opts_allocated; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ sd_dhcp_client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DHCP_STATE_INIT ; 
- int /*<<< orphan*/  DHCP_STATE_STOPPED ; 
- int EBUSY ; 
- int EEXIST ; 
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GREEDY_REALLOC (int*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  SD_DHCP_OPTION_END 132 
-#define  SD_DHCP_OPTION_MESSAGE_TYPE 131 
-#define  SD_DHCP_OPTION_OVERLOAD 130 
-#define  SD_DHCP_OPTION_PAD 129 
-#define  SD_DHCP_OPTION_PARAMETER_REQUEST_LIST 128 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {size_t req_opts_size; int* req_opts; int req_opts_allocated; int state; } ;
+typedef TYPE_1__ sd_dhcp_client ;
+
+
+ int DHCP_STATE_INIT ;
+ int DHCP_STATE_STOPPED ;
+ int EBUSY ;
+ int EEXIST ;
+ int EINVAL ;
+ int ENOMEM ;
+ int GREEDY_REALLOC (int*,int ,int) ;
+ TYPE_1__* IN_SET (int ,int ,int ) ;
+
+
+
+
+
+ int assert_return (TYPE_1__*,int) ;
 
 int sd_dhcp_client_set_request_option(sd_dhcp_client *client, uint8_t option) {
         size_t i;
@@ -39,11 +39,11 @@ int sd_dhcp_client_set_request_option(sd_dhcp_client *client, uint8_t option) {
 
         switch(option) {
 
-        case SD_DHCP_OPTION_PAD:
-        case SD_DHCP_OPTION_OVERLOAD:
-        case SD_DHCP_OPTION_MESSAGE_TYPE:
-        case SD_DHCP_OPTION_PARAMETER_REQUEST_LIST:
-        case SD_DHCP_OPTION_END:
+        case 129:
+        case 130:
+        case 131:
+        case 128:
+        case 132:
                 return -EINVAL;
 
         default:

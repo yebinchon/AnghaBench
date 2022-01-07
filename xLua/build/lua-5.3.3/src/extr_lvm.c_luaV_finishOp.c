@@ -1,123 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  top; TYPE_4__* ci; } ;
-typedef  TYPE_3__ lua_State ;
-struct TYPE_9__ {int base; int /*<<< orphan*/ * savedpc; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int top; TYPE_4__* ci; } ;
+typedef TYPE_3__ lua_State ;
+struct TYPE_9__ {int base; int * savedpc; } ;
 struct TYPE_10__ {TYPE_1__ l; } ;
-struct TYPE_12__ {int callstatus; int /*<<< orphan*/  top; TYPE_2__ u; } ;
-typedef  int StkId ;
-typedef  int OpCode ;
-typedef  int /*<<< orphan*/  Instruction ;
-typedef  TYPE_4__ CallInfo ;
+struct TYPE_12__ {int callstatus; int top; TYPE_2__ u; } ;
+typedef int StkId ;
+typedef int OpCode ;
+typedef int Instruction ;
+typedef TYPE_4__ CallInfo ;
 
-/* Variables and functions */
- int CIST_LEQ ; 
- int GETARG_A (int /*<<< orphan*/ ) ; 
- int GETARG_B (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GETARG_C (int /*<<< orphan*/ ) ; 
- int GET_OPCODE (int /*<<< orphan*/ ) ; 
-#define  OP_ADD 154 
-#define  OP_BAND 153 
-#define  OP_BNOT 152 
-#define  OP_BOR 151 
-#define  OP_BXOR 150 
-#define  OP_CALL 149 
-#define  OP_CONCAT 148 
-#define  OP_DIV 147 
-#define  OP_EQ 146 
-#define  OP_GETTABLE 145 
-#define  OP_GETTABUP 144 
-#define  OP_IDIV 143 
- int OP_JMP ; 
-#define  OP_LE 142 
-#define  OP_LEN 141 
-#define  OP_LT 140 
-#define  OP_MOD 139 
-#define  OP_MUL 138 
-#define  OP_POW 137 
-#define  OP_SELF 136 
-#define  OP_SETTABLE 135 
-#define  OP_SETTABUP 134 
-#define  OP_SHL 133 
-#define  OP_SHR 132 
-#define  OP_SUB 131 
-#define  OP_TAILCALL 130 
-#define  OP_TFORCALL 129 
- int OP_TFORLOOP ; 
-#define  OP_UNM 128 
- int cast_int (scalar_t__) ; 
- int /*<<< orphan*/  l_isfalse (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaV_concat (TYPE_3__*,int) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  setobj2s (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  setobjs2s (TYPE_3__*,int,int /*<<< orphan*/ ) ; 
+
+ int CIST_LEQ ;
+ int GETARG_A (int ) ;
+ int GETARG_B (int ) ;
+ int GETARG_C (int ) ;
+ int GET_OPCODE (int ) ;
+ int OP_JMP ;
+ int OP_TFORLOOP ;
+
+ int cast_int (scalar_t__) ;
+ int l_isfalse (int ) ;
+ int luaV_concat (TYPE_3__*,int) ;
+ int lua_assert (int) ;
+ int setobj2s (TYPE_3__*,int,int) ;
+ int setobjs2s (TYPE_3__*,int,int ) ;
 
 void luaV_finishOp (lua_State *L) {
   CallInfo *ci = L->ci;
   StkId base = ci->u.l.base;
-  Instruction inst = *(ci->u.l.savedpc - 1);  /* interrupted instruction */
+  Instruction inst = *(ci->u.l.savedpc - 1);
   OpCode op = GET_OPCODE(inst);
-  switch (op) {  /* finish its execution */
-    case OP_ADD: case OP_SUB: case OP_MUL: case OP_DIV: case OP_IDIV:
-    case OP_BAND: case OP_BOR: case OP_BXOR: case OP_SHL: case OP_SHR:
-    case OP_MOD: case OP_POW:
-    case OP_UNM: case OP_BNOT: case OP_LEN:
-    case OP_GETTABUP: case OP_GETTABLE: case OP_SELF: {
+  switch (op) {
+    case 154: case 131: case 138: case 147: case 143:
+    case 153: case 151: case 150: case 133: case 132:
+    case 139: case 137:
+    case 128: case 152: case 141:
+    case 144: case 145: case 136: {
       setobjs2s(L, base + GETARG_A(inst), --L->top);
       break;
     }
-    case OP_LE: case OP_LT: case OP_EQ: {
+    case 142: case 140: case 146: {
       int res = !l_isfalse(L->top - 1);
       L->top--;
-      if (ci->callstatus & CIST_LEQ) {  /* "<=" using "<" instead? */
-        lua_assert(op == OP_LE);
-        ci->callstatus ^= CIST_LEQ;  /* clear mark */
-        res = !res;  /* negate result */
+      if (ci->callstatus & CIST_LEQ) {
+        lua_assert(op == 142);
+        ci->callstatus ^= CIST_LEQ;
+        res = !res;
       }
       lua_assert(GET_OPCODE(*ci->u.l.savedpc) == OP_JMP);
-      if (res != GETARG_A(inst))  /* condition failed? */
-        ci->u.l.savedpc++;  /* skip jump instruction */
+      if (res != GETARG_A(inst))
+        ci->u.l.savedpc++;
       break;
     }
-    case OP_CONCAT: {
-      StkId top = L->top - 1;  /* top when 'luaT_trybinTM' was called */
-      int b = GETARG_B(inst);      /* first element to concatenate */
-      int total = cast_int(top - 1 - (base + b));  /* yet to concatenate */
-      setobj2s(L, top - 2, top);  /* put TM result in proper position */
-      if (total > 1) {  /* are there elements to concat? */
-        L->top = top - 1;  /* top is one after last element (at top-2) */
-        luaV_concat(L, total);  /* concat them (may yield again) */
+    case 148: {
+      StkId top = L->top - 1;
+      int b = GETARG_B(inst);
+      int total = cast_int(top - 1 - (base + b));
+      setobj2s(L, top - 2, top);
+      if (total > 1) {
+        L->top = top - 1;
+        luaV_concat(L, total);
       }
-      /* move final result to final position */
+
       setobj2s(L, ci->u.l.base + GETARG_A(inst), L->top - 1);
-      L->top = ci->top;  /* restore top */
+      L->top = ci->top;
       break;
     }
-    case OP_TFORCALL: {
+    case 129: {
       lua_assert(GET_OPCODE(*ci->u.l.savedpc) == OP_TFORLOOP);
-      L->top = ci->top;  /* correct top */
+      L->top = ci->top;
       break;
     }
-    case OP_CALL: {
-      if (GETARG_C(inst) - 1 >= 0)  /* nresults >= 0? */
-        L->top = ci->top;  /* adjust results */
+    case 149: {
+      if (GETARG_C(inst) - 1 >= 0)
+        L->top = ci->top;
       break;
     }
-    case OP_TAILCALL: case OP_SETTABUP: case OP_SETTABLE:
+    case 130: case 134: case 135:
       break;
     default: lua_assert(0);
   }

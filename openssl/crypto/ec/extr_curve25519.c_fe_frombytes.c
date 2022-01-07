@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int64_t ;
-typedef  scalar_t__ int32_t ;
-typedef  scalar_t__* fe ;
 
-/* Variables and functions */
- int kTop38Bits ; 
- int kTop39Bits ; 
- int load_3 (int /*<<< orphan*/  const*) ; 
- int load_4 (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef scalar_t__ int32_t ;
+typedef scalar_t__* fe ;
+
+
+ int kTop38Bits ;
+ int kTop39Bits ;
+ int load_3 (int const*) ;
+ int load_4 (int const*) ;
 
 __attribute__((used)) static void fe_frombytes(fe h, const uint8_t *s)
 {
-    /* Ignores top bit of h. */
-    int64_t h0 =  load_4(s);
-    int64_t h1 =  load_3(s +  4) << 6;
-    int64_t h2 =  load_3(s +  7) << 5;
-    int64_t h3 =  load_3(s + 10) << 3;
-    int64_t h4 =  load_3(s + 13) << 2;
-    int64_t h5 =  load_4(s + 16);
-    int64_t h6 =  load_3(s + 20) << 7;
-    int64_t h7 =  load_3(s + 23) << 5;
-    int64_t h8 =  load_3(s + 26) << 4;
+
+    int64_t h0 = load_4(s);
+    int64_t h1 = load_3(s + 4) << 6;
+    int64_t h2 = load_3(s + 7) << 5;
+    int64_t h3 = load_3(s + 10) << 3;
+    int64_t h4 = load_3(s + 13) << 2;
+    int64_t h5 = load_4(s + 16);
+    int64_t h6 = load_3(s + 20) << 7;
+    int64_t h7 = load_3(s + 23) << 5;
+    int64_t h8 = load_3(s + 26) << 4;
     int64_t h9 = (load_3(s + 29) & 0x7fffff) << 2;
     int64_t carry0;
     int64_t carry1;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sds ;
 struct TYPE_6__ {int reply_bytes; int flags; } ;
-typedef  TYPE_1__ client ;
+typedef TYPE_1__ client ;
 
-/* Variables and functions */
- int CLIENT_CLOSE_ASAP ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int SIZE_MAX ; 
- int /*<<< orphan*/  catClientInfoString (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ checkClientOutputBufferLimits (TYPE_1__*) ; 
- int /*<<< orphan*/  freeClientAsync (TYPE_1__*) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverAssert (int) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int CLIENT_CLOSE_ASAP ;
+ int LL_WARNING ;
+ int SIZE_MAX ;
+ int catClientInfoString (int ,TYPE_1__*) ;
+ scalar_t__ checkClientOutputBufferLimits (TYPE_1__*) ;
+ int freeClientAsync (TYPE_1__*) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int serverAssert (int) ;
+ int serverLog (int ,char*,int ) ;
 
 void asyncCloseClientOnOutputBufferLimitReached(client *c) {
     serverAssert(c->reply_bytes < SIZE_MAX-(1024*64));

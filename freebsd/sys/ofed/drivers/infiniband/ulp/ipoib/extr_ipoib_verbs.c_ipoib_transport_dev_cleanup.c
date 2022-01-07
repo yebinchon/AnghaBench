@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ipoib_dev_priv {int /*<<< orphan*/  pd; int /*<<< orphan*/  recv_cq; int /*<<< orphan*/  send_cq; int /*<<< orphan*/  flags; int /*<<< orphan*/ * qp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPOIB_PKEY_ASSIGNED ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ib_dealloc_pd (int /*<<< orphan*/ ) ; 
- scalar_t__ ib_destroy_cq (int /*<<< orphan*/ ) ; 
- scalar_t__ ib_destroy_qp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipoib_cm_dev_cleanup (struct ipoib_dev_priv*) ; 
- int /*<<< orphan*/  ipoib_warn (struct ipoib_dev_priv*,char*) ; 
+
+
+
+struct ipoib_dev_priv {int pd; int recv_cq; int send_cq; int flags; int * qp; } ;
+
+
+ int IPOIB_PKEY_ASSIGNED ;
+ int clear_bit (int ,int *) ;
+ int ib_dealloc_pd (int ) ;
+ scalar_t__ ib_destroy_cq (int ) ;
+ scalar_t__ ib_destroy_qp (int *) ;
+ int ipoib_cm_dev_cleanup (struct ipoib_dev_priv*) ;
+ int ipoib_warn (struct ipoib_dev_priv*,char*) ;
 
 void ipoib_transport_dev_cleanup(struct ipoib_dev_priv *priv)
 {
 
-	if (priv->qp) {
-		if (ib_destroy_qp(priv->qp))
-			ipoib_warn(priv, "ib_qp_destroy failed\n");
+ if (priv->qp) {
+  if (ib_destroy_qp(priv->qp))
+   ipoib_warn(priv, "ib_qp_destroy failed\n");
 
-		priv->qp = NULL;
-		clear_bit(IPOIB_PKEY_ASSIGNED, &priv->flags);
-	}
+  priv->qp = ((void*)0);
+  clear_bit(IPOIB_PKEY_ASSIGNED, &priv->flags);
+ }
 
-	if (ib_destroy_cq(priv->send_cq))
-		ipoib_warn(priv, "ib_cq_destroy (send) failed\n");
+ if (ib_destroy_cq(priv->send_cq))
+  ipoib_warn(priv, "ib_cq_destroy (send) failed\n");
 
-	if (ib_destroy_cq(priv->recv_cq))
-		ipoib_warn(priv, "ib_cq_destroy (recv) failed\n");
+ if (ib_destroy_cq(priv->recv_cq))
+  ipoib_warn(priv, "ib_cq_destroy (recv) failed\n");
 
-	ipoib_cm_dev_cleanup(priv);
+ ipoib_cm_dev_cleanup(priv);
 
-	ib_dealloc_pd(priv->pd);
+ ib_dealloc_pd(priv->pd);
 }

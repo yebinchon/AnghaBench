@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct locfile {int length; int nlines; int refct; int* linemap; void* data; int /*<<< orphan*/  fname; int /*<<< orphan*/ * jq; } ;
-typedef  int /*<<< orphan*/  jq_state ;
 
-/* Variables and functions */
- void* jv_mem_alloc (int) ; 
- int* jv_mem_calloc (int,int) ; 
- int /*<<< orphan*/  jv_string (char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+
+
+struct locfile {int length; int nlines; int refct; int* linemap; void* data; int fname; int * jq; } ;
+typedef int jq_state ;
+
+
+ void* jv_mem_alloc (int) ;
+ int* jv_mem_calloc (int,int) ;
+ int jv_string (char const*) ;
+ int memcpy (char*,char const*,int) ;
 
 struct locfile* locfile_init(jq_state *jq, const char *fname, const char* data, int length) {
   struct locfile* l = jv_mem_alloc(sizeof(struct locfile));
@@ -36,10 +36,10 @@ struct locfile* locfile_init(jq_state *jq, const char *fname, const char* data, 
   int line = 1;
   for (int i=0; i<length; i++) {
     if (data[i] == '\n') {
-      l->linemap[line] = i+1;   // at start of line, not of \n
+      l->linemap[line] = i+1;
       line++;
     }
   }
-  l->linemap[l->nlines] = length+1;   // virtual last \n
+  l->linemap[l->nlines] = length+1;
   return l;
 }

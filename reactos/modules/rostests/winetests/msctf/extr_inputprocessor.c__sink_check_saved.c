@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ITfDocumentMgr ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FOCUS_IGNORE ; 
- int /*<<< orphan*/ * FOCUS_SAVE ; 
- int /*<<< orphan*/  _sink_check_ok (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int expected_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * test_FirstPrevFocus ; 
- int /*<<< orphan*/ * test_LastCurrentFocus ; 
- int /*<<< orphan*/  winetest_ok (int,char*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ITfDocumentMgr ;
+typedef int INT ;
+typedef int CHAR ;
+
+
+ int * FOCUS_IGNORE ;
+ int * FOCUS_SAVE ;
+ int _sink_check_ok (int *,int const*) ;
+ int expected_count (int *) ;
+ int * test_FirstPrevFocus ;
+ int * test_LastCurrentFocus ;
+ int winetest_ok (int,char*,int const*,int *,int *) ;
 
 __attribute__((used)) static inline void _sink_check_saved(INT *sink, ITfDocumentMgr *PrevFocus, ITfDocumentMgr *CurrentFocus, const CHAR* name)
 {

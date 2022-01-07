@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int outPipe; int inPipe; } ;
-typedef  TYPE_1__ Job ;
+typedef TYPE_1__ Job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JobDoOutput (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  clearfd (TYPE_1__*) ; 
- int /*<<< orphan*/  close (int) ; 
+
+ int JobDoOutput (TYPE_1__*,int ) ;
+ int TRUE ;
+ int clearfd (TYPE_1__*) ;
+ int close (int) ;
 
 __attribute__((used)) static void
 JobClose(Job *job)

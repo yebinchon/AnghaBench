@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_6__ {int /*<<< orphan*/  dwId; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dwId; } ;
-typedef  TYPE_1__ LOCALE_LIST_NODE ;
-typedef  TYPE_2__ LAYOUT_LIST_NODE ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBN_SELCHANGE ; 
- int /*<<< orphan*/  ComboBox_GetCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ComboBox_GetCurSel (int /*<<< orphan*/ ) ; 
- scalar_t__ ComboBox_GetItemData (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ComboBox_SetCurSel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EndDialog (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetDefaultLayoutForLocale (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  HIWORD (int /*<<< orphan*/ ) ; 
-#define  IDCANCEL 130 
-#define  IDC_INPUT_LANG_COMBO 129 
- int const IDC_KEYBOARD_LO_COMBO ; 
-#define  IDOK 128 
- int /*<<< orphan*/  InputList_Add (TYPE_1__*,TYPE_2__*) ; 
- int LOWORD (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int VOID ;
+struct TYPE_6__ {int dwId; } ;
+struct TYPE_5__ {int dwId; } ;
+typedef TYPE_1__ LOCALE_LIST_NODE ;
+typedef TYPE_2__ LAYOUT_LIST_NODE ;
+typedef int INT ;
+typedef int HWND ;
+typedef int DWORD ;
+
+
+ int CBN_SELCHANGE ;
+ int ComboBox_GetCount (int ) ;
+ int ComboBox_GetCurSel (int ) ;
+ scalar_t__ ComboBox_GetItemData (int ,int ) ;
+ int ComboBox_SetCurSel (int ,int ) ;
+ int EndDialog (int ,int) ;
+ int GetDefaultLayoutForLocale (int ) ;
+ int GetDlgItem (int ,int const) ;
+ int HIWORD (int ) ;
+
+
+ int const IDC_KEYBOARD_LO_COMBO ;
+
+ int InputList_Add (TYPE_1__*,TYPE_2__*) ;
+ int LOWORD (int ) ;
 
 __attribute__((used)) static VOID
 OnCommandAddDialog(HWND hwndDlg, WPARAM wParam)
 {
     switch (LOWORD(wParam))
     {
-        case IDOK:
+        case 128:
         {
-            HWND hwndLocaleCombo = GetDlgItem(hwndDlg, IDC_INPUT_LANG_COMBO);
+            HWND hwndLocaleCombo = GetDlgItem(hwndDlg, 129);
             HWND hwndLayoutCombo = GetDlgItem(hwndDlg, IDC_KEYBOARD_LO_COMBO);
             LOCALE_LIST_NODE *pCurrentLocale;
             LAYOUT_LIST_NODE *pCurrentLayout;
@@ -62,23 +62,23 @@ OnCommandAddDialog(HWND hwndDlg, WPARAM wParam)
         }
         break;
 
-        case IDCANCEL:
+        case 130:
         {
             EndDialog(hwndDlg, LOWORD(wParam));
         }
         break;
 
-        case IDC_INPUT_LANG_COMBO:
+        case 129:
         {
             if (HIWORD(wParam) == CBN_SELCHANGE)
             {
-                HWND hwndLocaleCombo = GetDlgItem(hwndDlg, IDC_INPUT_LANG_COMBO);
+                HWND hwndLocaleCombo = GetDlgItem(hwndDlg, 129);
                 HWND hwndLayoutCombo = GetDlgItem(hwndDlg, IDC_KEYBOARD_LO_COMBO);
                 LOCALE_LIST_NODE *pCurrentLocale;
 
                 pCurrentLocale = (LOCALE_LIST_NODE*)ComboBox_GetItemData(hwndLocaleCombo,
                                                                          ComboBox_GetCurSel(hwndLocaleCombo));
-                if (pCurrentLocale != NULL)
+                if (pCurrentLocale != ((void*)0))
                 {
                     DWORD dwLayoutId;
                     INT iIndex;
@@ -94,7 +94,7 @@ OnCommandAddDialog(HWND hwndDlg, WPARAM wParam)
 
                         pCurrentLayout = (LAYOUT_LIST_NODE*)ComboBox_GetItemData(hwndLayoutCombo, iIndex);
 
-                        if (pCurrentLayout != NULL && pCurrentLayout->dwId == dwLayoutId)
+                        if (pCurrentLayout != ((void*)0) && pCurrentLayout->dwId == dwLayoutId)
                         {
                             ComboBox_SetCurSel(hwndLayoutCombo, iIndex);
                             break;

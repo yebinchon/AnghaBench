@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int DDRB ;
+ int PB7 ;
+ int PORTB ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DDRB ; 
- int PB7 ; 
- int PORTB ; 
-
-inline void ergodox_board_led_off(void)   { DDRB |= (1<<PB7); PORTB &= ~(1<<PB7); }
+inline void ergodox_board_led_off(void) { DDRB |= (1<<PB7); PORTB &= ~(1<<PB7); }

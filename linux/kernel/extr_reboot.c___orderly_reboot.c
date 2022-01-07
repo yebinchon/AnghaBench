@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  emergency_sync () ; 
- int /*<<< orphan*/  kernel_restart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_warn (char*) ; 
- int /*<<< orphan*/  reboot_cmd ; 
- int run_cmd (int /*<<< orphan*/ ) ; 
+ int emergency_sync () ;
+ int kernel_restart (int *) ;
+ int pr_warn (char*) ;
+ int reboot_cmd ;
+ int run_cmd (int ) ;
 
 __attribute__((used)) static int __orderly_reboot(void)
 {
-	int ret;
+ int ret;
 
-	ret = run_cmd(reboot_cmd);
+ ret = run_cmd(reboot_cmd);
 
-	if (ret) {
-		pr_warn("Failed to start orderly reboot: forcing the issue\n");
-		emergency_sync();
-		kernel_restart(NULL);
-	}
+ if (ret) {
+  pr_warn("Failed to start orderly reboot: forcing the issue\n");
+  emergency_sync();
+  kernel_restart(((void*)0));
+ }
 
-	return ret;
+ return ret;
 }

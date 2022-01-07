@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * lpVtbl; } ;
 struct TYPE_6__ {int ref; TYPE_2__ ITaskScheduler_iface; } ;
-typedef  TYPE_1__ TaskSchedulerImpl ;
-typedef  TYPE_2__* LPVOID ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ TaskSchedulerImpl ;
+typedef TYPE_2__* LPVOID ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  InterlockedIncrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSTASK_ITaskSchedulerVtbl ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__**) ; 
- int /*<<< orphan*/  dll_ref ; 
+
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int InterlockedIncrement (int *) ;
+ int MSTASK_ITaskSchedulerVtbl ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__**) ;
+ int dll_ref ;
 
 HRESULT TaskSchedulerConstructor(LPVOID *ppObj)
 {

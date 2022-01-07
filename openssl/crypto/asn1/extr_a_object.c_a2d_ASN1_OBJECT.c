@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ftmp ;
-typedef  scalar_t__ BN_ULONG ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_A2D_ASN1_OBJECT ; 
- int /*<<< orphan*/  ASN1_R_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  ASN1_R_FIRST_NUM_TOO_LARGE ; 
- int /*<<< orphan*/  ASN1_R_INVALID_DIGIT ; 
- int /*<<< orphan*/  ASN1_R_INVALID_SEPARATOR ; 
- int /*<<< orphan*/  ASN1_R_MISSING_SECOND_NUMBER ; 
- int /*<<< orphan*/  ASN1_R_SECOND_NUMBER_TOO_LARGE ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_add_word (int /*<<< orphan*/ *,int) ; 
- scalar_t__ BN_div_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul_word (int /*<<< orphan*/ *,long) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int BN_num_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_word (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_malloc (int) ; 
- int ULONG_MAX ; 
- int /*<<< orphan*/  ossl_isdigit (int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int ftmp ;
+typedef scalar_t__ BN_ULONG ;
+typedef int BIGNUM ;
+
+
+ int ASN1_F_A2D_ASN1_OBJECT ;
+ int ASN1_R_BUFFER_TOO_SMALL ;
+ int ASN1_R_FIRST_NUM_TOO_LARGE ;
+ int ASN1_R_INVALID_DIGIT ;
+ int ASN1_R_INVALID_SEPARATOR ;
+ int ASN1_R_MISSING_SECOND_NUMBER ;
+ int ASN1_R_SECOND_NUMBER_TOO_LARGE ;
+ int ASN1err (int ,int ) ;
+ int BN_add_word (int *,int) ;
+ scalar_t__ BN_div_word (int *,int) ;
+ int BN_free (int *) ;
+ int BN_mul_word (int *,long) ;
+ int * BN_new () ;
+ int BN_num_bits (int *) ;
+ int BN_set_word (int *,unsigned long) ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_malloc (int) ;
+ int ULONG_MAX ;
+ int ossl_isdigit (int) ;
+ int strlen (char const*) ;
 
 int a2d_ASN1_OBJECT(unsigned char *out, int olen, const char *buf, int num)
 {
@@ -43,7 +43,7 @@ int a2d_ASN1_OBJECT(unsigned char *out, int olen, const char *buf, int num)
     int tmpsize = sizeof(ftmp);
     const char *p;
     unsigned long l;
-    BIGNUM *bl = NULL;
+    BIGNUM *bl = ((void*)0);
 
     if (num == 0)
         return 0;
@@ -88,9 +88,9 @@ int a2d_ASN1_OBJECT(unsigned char *out, int olen, const char *buf, int num)
             }
             if (!use_bn && l >= ((ULONG_MAX - 80) / 10L)) {
                 use_bn = 1;
-                if (bl == NULL)
+                if (bl == ((void*)0))
                     bl = BN_new();
-                if (bl == NULL || !BN_set_word(bl, l))
+                if (bl == ((void*)0) || !BN_set_word(bl, l))
                     goto err;
             }
             if (use_bn) {
@@ -122,7 +122,7 @@ int a2d_ASN1_OBJECT(unsigned char *out, int olen, const char *buf, int num)
                     OPENSSL_free(tmp);
                 tmpsize = blsize + 32;
                 tmp = OPENSSL_malloc(tmpsize);
-                if (tmp == NULL)
+                if (tmp == ((void*)0))
                     goto err;
             }
             while (blsize--) {
@@ -141,7 +141,7 @@ int a2d_ASN1_OBJECT(unsigned char *out, int olen, const char *buf, int num)
             }
 
         }
-        if (out != NULL) {
+        if (out != ((void*)0)) {
             if (len + i > olen) {
                 ASN1err(ASN1_F_A2D_ASN1_OBJECT, ASN1_R_BUFFER_TOO_SMALL);
                 goto err;

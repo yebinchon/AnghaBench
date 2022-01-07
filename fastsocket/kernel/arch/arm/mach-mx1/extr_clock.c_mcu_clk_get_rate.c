@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct clk {int /*<<< orphan*/  parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCM_MPCTL0 ; 
- int /*<<< orphan*/  __raw_readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clk_get_rate (int /*<<< orphan*/ ) ; 
- unsigned long mxc_decode_pll (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct clk {int parent; } ;
+
+
+ int CCM_MPCTL0 ;
+ int __raw_readl (int ) ;
+ int clk_get_rate (int ) ;
+ unsigned long mxc_decode_pll (int ,int ) ;
 
 __attribute__((used)) static unsigned long mcu_clk_get_rate(struct clk *clk)
 {
-	return mxc_decode_pll(__raw_readl(CCM_MPCTL0),
-			      clk_get_rate(clk->parent));
+ return mxc_decode_pll(__raw_readl(CCM_MPCTL0),
+         clk_get_rate(clk->parent));
 }

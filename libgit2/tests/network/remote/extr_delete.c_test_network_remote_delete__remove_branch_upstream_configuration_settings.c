@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _repo ; 
- int /*<<< orphan*/  assert_config_entry_existence (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_remote_delete (int /*<<< orphan*/ ,char*) ; 
+ int _repo ;
+ int assert_config_entry_existence (int ,char*,int) ;
+ int cl_git_pass (int ) ;
+ int git_remote_delete (int ,char*) ;
 
 void test_network_remote_delete__remove_branch_upstream_configuration_settings(void)
 {
-	assert_config_entry_existence(_repo, "branch.mergeless.remote", true);
-	assert_config_entry_existence(_repo, "branch.master.remote", true);
+ assert_config_entry_existence(_repo, "branch.mergeless.remote", 1);
+ assert_config_entry_existence(_repo, "branch.master.remote", 1);
 
-	cl_git_pass(git_remote_delete(_repo, "test"));
+ cl_git_pass(git_remote_delete(_repo, "test"));
 
-	assert_config_entry_existence(_repo, "branch.mergeless.remote", false);
-	assert_config_entry_existence(_repo, "branch.mergeless.merge", false);
-	assert_config_entry_existence(_repo, "branch.master.remote", false);
-	assert_config_entry_existence(_repo, "branch.master.merge", false);
+ assert_config_entry_existence(_repo, "branch.mergeless.remote", 0);
+ assert_config_entry_existence(_repo, "branch.mergeless.merge", 0);
+ assert_config_entry_existence(_repo, "branch.master.remote", 0);
+ assert_config_entry_existence(_repo, "branch.master.merge", 0);
 }

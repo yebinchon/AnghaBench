@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- int FSEv06_MIN_TABLELOG ; 
- int FSEv06_TABLELOG_ABSOLUTE_MAX ; 
- scalar_t__ FSEv06_abs (short) ; 
- int /*<<< orphan*/  GENERIC ; 
- int MEM_readLE32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  maxSymbolValue_tooSmall ; 
- int /*<<< orphan*/  srcSize_wrong ; 
- int /*<<< orphan*/  tableLog_tooLarge ; 
+
+
+
+typedef int U32 ;
+typedef int BYTE ;
+
+
+ size_t ERROR (int ) ;
+ int FSEv06_MIN_TABLELOG ;
+ int FSEv06_TABLELOG_ABSOLUTE_MAX ;
+ scalar_t__ FSEv06_abs (short) ;
+ int GENERIC ;
+ int MEM_readLE32 (int const*) ;
+ int maxSymbolValue_tooSmall ;
+ int srcSize_wrong ;
+ int tableLog_tooLarge ;
 
 size_t FSEv06_readNCount (short* normalizedCounter, unsigned* maxSVPtr, unsigned* tableLogPtr,
                  const void* headerBuffer, size_t hbSize)
@@ -40,7 +40,7 @@ size_t FSEv06_readNCount (short* normalizedCounter, unsigned* maxSVPtr, unsigned
 
     if (hbSize < 4) return ERROR(srcSize_wrong);
     bitStream = MEM_readLE32(ip);
-    nbBits = (bitStream & 0xF) + FSEv06_MIN_TABLELOG;   /* extract tableLog */
+    nbBits = (bitStream & 0xF) + FSEv06_MIN_TABLELOG;
     if (nbBits > FSEv06_TABLELOG_ABSOLUTE_MAX) return ERROR(tableLog_tooLarge);
     bitStream >>= 4;
     bitCount = 4;
@@ -60,7 +60,7 @@ size_t FSEv06_readNCount (short* normalizedCounter, unsigned* maxSVPtr, unsigned
                 } else {
                     bitStream >>= 16;
                     bitCount+=16;
-            }   }
+            } }
             while ((bitStream & 3) == 3) {
                 n0+=3;
                 bitStream>>=2;
@@ -78,19 +78,19 @@ size_t FSEv06_readNCount (short* normalizedCounter, unsigned* maxSVPtr, unsigned
             else
                 bitStream >>= 2;
         }
-        {   short const max = (short)((2*threshold-1)-remaining);
+        { short const max = (short)((2*threshold-1)-remaining);
             short count;
 
             if ((bitStream & (threshold-1)) < (U32)max) {
                 count = (short)(bitStream & (threshold-1));
-                bitCount   += nbBits-1;
+                bitCount += nbBits-1;
             } else {
                 count = (short)(bitStream & (2*threshold-1));
                 if (count >= threshold) count -= max;
-                bitCount   += nbBits;
+                bitCount += nbBits;
             }
 
-            count--;   /* extra accuracy */
+            count--;
             remaining -= FSEv06_abs(count);
             normalizedCounter[charnum++] = count;
             previous0 = !count;
@@ -107,7 +107,7 @@ size_t FSEv06_readNCount (short* normalizedCounter, unsigned* maxSVPtr, unsigned
                 ip = iend - 4;
             }
             bitStream = MEM_readLE32(ip) >> (bitCount & 31);
-    }   }   /* while ((remaining>1) && (charnum<=*maxSVPtr)) */
+    } }
     if (remaining != 1) return ERROR(GENERIC);
     *maxSVPtr = charnum-1;
 

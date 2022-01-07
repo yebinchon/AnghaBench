@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ pVtab; } ;
-typedef  TYPE_5__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  scalar_t__ i64 ;
+typedef TYPE_5__ sqlite3_vtab_cursor ;
+typedef int sqlite3_context ;
+typedef scalar_t__ i64 ;
 struct TYPE_9__ {int n; scalar_t__ p; } ;
 struct TYPE_15__ {size_t iCol; scalar_t__* aDoc; scalar_t__* aCnt; scalar_t__ iInstPos; TYPE_4__* pFts5; TYPE_2__* pIter; TYPE_1__ term; } ;
 struct TYPE_14__ {int eType; } ;
 struct TYPE_12__ {TYPE_3__* pConfig; } ;
 struct TYPE_11__ {int eDetail; char** azCol; int nCol; } ;
 struct TYPE_10__ {scalar_t__ iRowid; } ;
-typedef  TYPE_6__ Fts5VocabTable ;
-typedef  TYPE_7__ Fts5VocabCursor ;
+typedef TYPE_6__ Fts5VocabTable ;
+typedef TYPE_7__ Fts5VocabCursor ;
 
-/* Variables and functions */
- int FTS5_DETAIL_COLUMNS ; 
- int FTS5_DETAIL_FULL ; 
- int FTS5_DETAIL_NONE ; 
- int FTS5_POS2COLUMN (scalar_t__) ; 
- int FTS5_POS2OFFSET (scalar_t__) ; 
- int FTS5_VOCAB_COL ; 
- int FTS5_VOCAB_INSTANCE ; 
- int FTS5_VOCAB_ROW ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
+
+ int FTS5_DETAIL_COLUMNS ;
+ int FTS5_DETAIL_FULL ;
+ int FTS5_DETAIL_NONE ;
+ int FTS5_POS2COLUMN (scalar_t__) ;
+ int FTS5_POS2OFFSET (scalar_t__) ;
+ int FTS5_VOCAB_COL ;
+ int FTS5_VOCAB_INSTANCE ;
+ int FTS5_VOCAB_ROW ;
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ int sqlite3_result_int (int *,int) ;
+ int sqlite3_result_int64 (int *,scalar_t__) ;
+ int sqlite3_result_text (int *,char const*,int,int ) ;
 
 __attribute__((used)) static int fts5VocabColumnMethod(
-  sqlite3_vtab_cursor *pCursor,   /* Cursor to retrieve value from */
-  sqlite3_context *pCtx,          /* Context for sqlite3_result_xxx() calls */
-  int iCol                        /* Index of column to read value from */
+  sqlite3_vtab_cursor *pCursor,
+  sqlite3_context *pCtx,
+  int iCol
 ){
   Fts5VocabCursor *pCsr = (Fts5VocabCursor*)pCursor;
   int eDetail = pCsr->pFts5->pConfig->eDetail;

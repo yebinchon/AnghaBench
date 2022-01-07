@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iovec {char* iov_base; scalar_t__ iov_len; } ;
-typedef  int /*<<< orphan*/  serf_bucket_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  scalar_t__ apr_size_t ;
+typedef int serf_bucket_t ;
+typedef scalar_t__ apr_status_t ;
+typedef scalar_t__ apr_size_t ;
 
-/* Variables and functions */
- scalar_t__ APR_SUCCESS ; 
- scalar_t__ SERF_READ_ALL_AVAIL ; 
- scalar_t__ serf_headers_read (int /*<<< orphan*/ *,scalar_t__,char const**,scalar_t__*) ; 
+
+ scalar_t__ APR_SUCCESS ;
+ scalar_t__ SERF_READ_ALL_AVAIL ;
+ scalar_t__ serf_headers_read (int *,scalar_t__,char const**,scalar_t__*) ;
 
 __attribute__((used)) static apr_status_t serf_headers_read_iovec(serf_bucket_t *bucket,
                                             apr_size_t requested,
@@ -36,11 +36,11 @@ __attribute__((used)) static apr_status_t serf_headers_read_iovec(serf_bucket_t 
         apr_size_t len;
         apr_status_t status;
 
-        /* Calling read() would not be a safe opt in the general case, but it
-         * is here for the header bucket as it only frees all of the header
-         * keys and values when the entire bucket goes away - not on a
-         * per-read() basis as is normally the case.
-         */
+
+
+
+
+
         status = serf_headers_read(bucket, avail, &data, &len);
 
         if (len) {
@@ -52,7 +52,7 @@ __attribute__((used)) static apr_status_t serf_headers_read_iovec(serf_bucket_t 
             if (avail != SERF_READ_ALL_AVAIL) {
                 avail -= len;
 
-                /* If we reach 0, then read()'s status will suffice.  */
+
                 if (avail == 0) {
                     return status;
                 }

@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct timeval {int dummy; } ;
-struct sockaddr_in6 {scalar_t__ sin6_scope_id; int /*<<< orphan*/  sin6_flowinfo; int /*<<< orphan*/  sin6_family; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_family; } ;
+struct sockaddr_in6 {scalar_t__ sin6_scope_id; int sin6_flowinfo; int sin6_family; } ;
+struct sockaddr_in {int sin_family; } ;
 struct addrinfo {int ai_family; int ai_socktype; int ai_protocol; scalar_t__ ai_addrlen; TYPE_1__* ai_addr; scalar_t__ ai_flags; struct addrinfo* ai_next; } ;
-typedef  int /*<<< orphan*/  servBfr ;
-typedef  int /*<<< orphan*/  hostBfr ;
-typedef  int /*<<< orphan*/  hints ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int servBfr ;
+typedef int hostBfr ;
+typedef int hints ;
+typedef int fd_set ;
 struct TYPE_3__ {int sa_family; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  D_CONNECT_TO ; 
- scalar_t__ EALREADY ; 
- scalar_t__ EINPROGRESS ; 
- scalar_t__ FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  NI_MAXHOST ; 
- int /*<<< orphan*/  NI_MAXSERV ; 
- int NI_NUMERICHOST ; 
- int NI_NUMERICSERV ; 
-#define  PF_INET 129 
-#define  PF_INET6 128 
- int PF_UNSPEC ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_SNDTIMEO ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ connect (int,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  error (char*,char const*,char const*,...) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  getnameinfo (TYPE_1__*,scalar_t__,char*,int,char*,int,int) ; 
- int /*<<< orphan*/  info (char*,char*,char*) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int socket (int,int,int) ; 
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int D_CONNECT_TO ;
+ scalar_t__ EALREADY ;
+ scalar_t__ EINPROGRESS ;
+ scalar_t__ FD_ISSET (int,int *) ;
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int NI_MAXHOST ;
+ int NI_MAXSERV ;
+ int NI_NUMERICHOST ;
+ int NI_NUMERICSERV ;
+
+
+ int PF_UNSPEC ;
+ int SOCK_DGRAM ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SO_SNDTIMEO ;
+ int close (int) ;
+ scalar_t__ connect (int,TYPE_1__*,scalar_t__) ;
+ int debug (int ,char*,...) ;
+ scalar_t__ errno ;
+ int error (char*,char const*,char const*,...) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ;
+ int getnameinfo (TYPE_1__*,scalar_t__,char*,int,char*,int,int) ;
+ int info (char*,char*,char*) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ scalar_t__ setsockopt (int,int ,int ,char*,int) ;
+ int socket (int,int,int) ;
 
 __attribute__((used)) static inline int connect_to_this_ip46(int protocol, int socktype, const char *host, uint32_t scope_id, const char *service, struct timeval *timeout) {
     struct addrinfo hints;
-    struct addrinfo *ai_head = NULL, *ai = NULL;
+    struct addrinfo *ai_head = ((void*)0), *ai = ((void*)0);
 
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family   = PF_UNSPEC;   /* Allow IPv4 or IPv6 */
+    hints.ai_family = PF_UNSPEC;
     hints.ai_socktype = socktype;
     hints.ai_protocol = protocol;
 
@@ -75,9 +75,9 @@ __attribute__((used)) static inline int connect_to_this_ip46(int protocol, int s
     }
 
     int fd = -1;
-    for (ai = ai_head; ai != NULL && fd == -1; ai = ai->ai_next) {
+    for (ai = ai_head; ai != ((void*)0) && fd == -1; ai = ai->ai_next) {
 
-        if (ai->ai_family == PF_INET6) {
+        if (ai->ai_family == 128) {
             struct sockaddr_in6 *pSadrIn6 = (struct sockaddr_in6 *) ai->ai_addr;
             if(pSadrIn6->sin6_scope_id == 0) {
                 pSadrIn6->sin6_scope_id = scope_id;
@@ -100,8 +100,8 @@ __attribute__((used)) static inline int connect_to_this_ip46(int protocol, int s
               servBfr,
               (unsigned int)ai->ai_flags,
               ai->ai_family,
-              PF_INET,
-              PF_INET6,
+              129,
+              128,
               ai->ai_socktype,
               SOCK_STREAM,
               SOCK_DGRAM,
@@ -113,7 +113,7 @@ __attribute__((used)) static inline int connect_to_this_ip46(int protocol, int s
               (unsigned long)sizeof(struct sockaddr_in6));
 
         switch (ai->ai_addr->sa_family) {
-            case PF_INET: {
+            case 129: {
                 struct sockaddr_in *pSadrIn = (struct sockaddr_in *)ai->ai_addr;
                 (void)pSadrIn;
 
@@ -126,7 +126,7 @@ __attribute__((used)) static inline int connect_to_this_ip46(int protocol, int s
                 break;
             }
 
-            case PF_INET6: {
+            case 128: {
                 struct sockaddr_in6 *pSadrIn6 = (struct sockaddr_in6 *) ai->ai_addr;
                 (void)pSadrIn6;
 
@@ -162,7 +162,7 @@ __attribute__((used)) static inline int connect_to_this_ip46(int protocol, int s
                     fd_set fds;
                     FD_ZERO(&fds);
                     FD_SET(0, &fds);
-                    int rc = select (1, NULL, &fds, NULL, timeout);
+                    int rc = select (1, ((void*)0), &fds, ((void*)0), timeout);
 
                     if(rc > 0 && FD_ISSET(fd, &fds)) {
                         info("connect() to ip %s port %s completed successfully", hostBfr, servBfr);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ocfs2_meta_cache_item {int /*<<< orphan*/  c_node; scalar_t__ c_block; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ci_tree; } ;
-struct ocfs2_caching_info {int /*<<< orphan*/  ci_num_cached; TYPE_1__ ci_cache; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mlog (int /*<<< orphan*/ ,char*,unsigned long long) ; 
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ocfs2_meta_cache_item {int c_node; scalar_t__ c_block; } ;
+struct TYPE_2__ {int ci_tree; } ;
+struct ocfs2_caching_info {int ci_num_cached; TYPE_1__ ci_cache; } ;
+
+
+ int mlog (int ,char*,unsigned long long) ;
+ int rb_erase (int *,int *) ;
 
 __attribute__((used)) static void ocfs2_remove_metadata_tree(struct ocfs2_caching_info *ci,
-				       struct ocfs2_meta_cache_item *item)
+           struct ocfs2_meta_cache_item *item)
 {
-	mlog(0, "remove block %llu from tree\n",
-	     (unsigned long long) item->c_block);
+ mlog(0, "remove block %llu from tree\n",
+      (unsigned long long) item->c_block);
 
-	rb_erase(&item->c_node, &ci->ci_cache.ci_tree);
-	ci->ci_num_cached--;
+ rb_erase(&item->c_node, &ci->ci_cache.ci_tree);
+ ci->ci_num_cached--;
 }

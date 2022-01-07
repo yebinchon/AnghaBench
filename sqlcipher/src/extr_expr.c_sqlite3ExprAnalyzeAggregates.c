@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_3__* pNC; } ;
-struct TYPE_7__ {scalar_t__ pParse; TYPE_1__ u; scalar_t__ walkerDepth; int /*<<< orphan*/  xSelectCallback2; int /*<<< orphan*/  xSelectCallback; int /*<<< orphan*/  xExprCallback; } ;
-typedef  TYPE_2__ Walker ;
+struct TYPE_7__ {scalar_t__ pParse; TYPE_1__ u; scalar_t__ walkerDepth; int xSelectCallback2; int xSelectCallback; int xExprCallback; } ;
+typedef TYPE_2__ Walker ;
 struct TYPE_8__ {scalar_t__ pSrcList; } ;
-typedef  TYPE_3__ NameContext ;
-typedef  int /*<<< orphan*/  Expr ;
+typedef TYPE_3__ NameContext ;
+typedef int Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  analyzeAggregate ; 
- int /*<<< orphan*/  analyzeAggregatesInSelect ; 
- int /*<<< orphan*/  analyzeAggregatesInSelectEnd ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3WalkExpr (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int analyzeAggregate ;
+ int analyzeAggregatesInSelect ;
+ int analyzeAggregatesInSelectEnd ;
+ int assert (int) ;
+ int sqlite3WalkExpr (TYPE_2__*,int *) ;
 
 void sqlite3ExprAnalyzeAggregates(NameContext *pNC, Expr *pExpr){
   Walker w;

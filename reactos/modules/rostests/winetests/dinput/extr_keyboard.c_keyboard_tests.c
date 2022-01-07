@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IDirectInputA ;
-typedef  int /*<<< orphan*/ * HWND ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateWindowA (char*,char*,int,int,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ DIERR_OLDDIRECTINPUTVERSION ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetModuleHandleW (int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  LANG_FRENCH ; 
- int /*<<< orphan*/  LANG_GERMAN ; 
- int /*<<< orphan*/  LANG_JAPANESE ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int /*<<< orphan*/  SUBLANG_FRENCH ; 
- int /*<<< orphan*/  SUBLANG_GERMAN ; 
- int /*<<< orphan*/  SUBLANG_JAPANESE_JAPAN ; 
- int SUCCEEDED (scalar_t__) ; 
- int /*<<< orphan*/  SetForegroundWindow (int /*<<< orphan*/ *) ; 
- int WS_OVERLAPPEDWINDOW ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  acquire_tests (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pDirectInputCreateA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pump_messages () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_GetDeviceInfo (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_capabilities (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_dik_codes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_get_prop (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_set_coop (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int IDirectInputA ;
+typedef int * HWND ;
+typedef scalar_t__ HRESULT ;
+typedef int HINSTANCE ;
+typedef int DWORD ;
+
+
+ int * CreateWindowA (char*,char*,int,int,int,int,int,int *,int *,int *,int *) ;
+ scalar_t__ DIERR_OLDDIRECTINPUTVERSION ;
+ int DestroyWindow (int *) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ GetLastError () ;
+ int GetModuleHandleW (int *) ;
+ scalar_t__ IUnknown_Release (int *) ;
+ int LANG_ENGLISH ;
+ int LANG_FRENCH ;
+ int LANG_GERMAN ;
+ int LANG_JAPANESE ;
+ int MAKELANGID (int ,int ) ;
+ int SUBLANG_DEFAULT ;
+ int SUBLANG_FRENCH ;
+ int SUBLANG_GERMAN ;
+ int SUBLANG_JAPANESE_JAPAN ;
+ int SUCCEEDED (scalar_t__) ;
+ int SetForegroundWindow (int *) ;
+ int WS_OVERLAPPEDWINDOW ;
+ int WS_VISIBLE ;
+ int acquire_tests (int *,int *) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pDirectInputCreateA (int ,int ,int **,int *) ;
+ int pump_messages () ;
+ int skip (char*) ;
+ int test_GetDeviceInfo (int *) ;
+ int test_capabilities (int *,int *) ;
+ int test_dik_codes (int *,int *,int ) ;
+ int test_get_prop (int *,int *) ;
+ int test_set_coop (int *,int *) ;
 
 __attribute__((used)) static void keyboard_tests(DWORD version)
 {
     HRESULT hr;
-    IDirectInputA *pDI = NULL;
-    HINSTANCE hInstance = GetModuleHandleW(NULL);
+    IDirectInputA *pDI = ((void*)0);
+    HINSTANCE hInstance = GetModuleHandleW(((void*)0));
     HWND hwnd;
     ULONG ref = 0;
 
-    hr = pDirectInputCreateA(hInstance, version, &pDI, NULL);
+    hr = pDirectInputCreateA(hInstance, version, &pDI, ((void*)0));
     if (hr == DIERR_OLDDIRECTINPUTVERSION)
     {
         skip("Tests require a newer dinput version\n");
@@ -67,8 +67,8 @@ __attribute__((used)) static void keyboard_tests(DWORD version)
     if (FAILED(hr)) return;
 
     hwnd = CreateWindowA("static", "Title", WS_OVERLAPPEDWINDOW | WS_VISIBLE, 10, 10, 200, 200,
-                         NULL, NULL, NULL, NULL);
-    ok(hwnd != NULL, "err: %d\n", GetLastError());
+                         ((void*)0), ((void*)0), ((void*)0), ((void*)0));
+    ok(hwnd != ((void*)0), "err: %d\n", GetLastError());
     SetForegroundWindow( hwnd );
 
     if (hwnd)

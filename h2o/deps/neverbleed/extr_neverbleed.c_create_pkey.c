@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct st_neverbleed_rsa_exdata_t {size_t key_index; TYPE_1__* nb; } ;
-struct TYPE_3__ {int /*<<< orphan*/  engine; } ;
-typedef  TYPE_1__ neverbleed_t ;
-typedef  int /*<<< orphan*/  RSA ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+struct TYPE_3__ {int engine; } ;
+typedef TYPE_1__ neverbleed_t ;
+typedef int RSA ;
+typedef int EVP_PKEY ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- scalar_t__ BN_hex2bn (int /*<<< orphan*/ **,char const*) ; 
- int /*<<< orphan*/ * EVP_PKEY_new () ; 
- int /*<<< orphan*/  EVP_PKEY_set1_RSA (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_FLAG_EXT_PKEY ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RSA_new_method (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RSA_set0_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RSA_set_ex_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct st_neverbleed_rsa_exdata_t*) ; 
- int /*<<< orphan*/  RSA_set_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct st_neverbleed_rsa_exdata_t* malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ BN_hex2bn (int **,char const*) ;
+ int * EVP_PKEY_new () ;
+ int EVP_PKEY_set1_RSA (int *,int *) ;
+ int RSA_FLAG_EXT_PKEY ;
+ int RSA_free (int *) ;
+ int * RSA_new_method (int ) ;
+ int RSA_set0_key (int *,int *,int *,int *) ;
+ int RSA_set_ex_data (int *,int ,struct st_neverbleed_rsa_exdata_t*) ;
+ int RSA_set_flags (int *,int ) ;
+ int abort () ;
+ int fprintf (int ,char*,...) ;
+ struct st_neverbleed_rsa_exdata_t* malloc (int) ;
+ int stderr ;
 
 __attribute__((used)) static EVP_PKEY *create_pkey(neverbleed_t *nb, size_t key_index, const char *ebuf, const char *nbuf)
 {
     struct st_neverbleed_rsa_exdata_t *exdata;
     RSA *rsa;
     EVP_PKEY *pkey;
-    BIGNUM *e = NULL, *n = NULL;
+    BIGNUM *e = ((void*)0), *n = ((void*)0);
 
-    if ((exdata = malloc(sizeof(*exdata))) == NULL) {
+    if ((exdata = malloc(sizeof(*exdata))) == ((void*)0)) {
         fprintf(stderr, "no memory\n");
         abort();
     }
@@ -57,7 +57,7 @@ __attribute__((used)) static EVP_PKEY *create_pkey(neverbleed_t *nb, size_t key_
         fprintf(stderr, "failed to parse n:%s\n", nbuf);
         abort();
     }
-    RSA_set0_key(rsa, n, e, NULL);
+    RSA_set0_key(rsa, n, e, ((void*)0));
     RSA_set_flags(rsa, RSA_FLAG_EXT_PKEY);
 
     pkey = EVP_PKEY_new();

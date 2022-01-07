@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  AVRational ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_NOPTS_VALUE ; 
- double MP_NOPTS_VALUE ; 
- double av_q2d (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_def_tb (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  llrint (double) ; 
+
+
+
+typedef int int64_t ;
+typedef int AVRational ;
+
+
+ int AV_NOPTS_VALUE ;
+ double MP_NOPTS_VALUE ;
+ double av_q2d (int ) ;
+ int get_def_tb (int *) ;
+ int llrint (double) ;
 
 int64_t mp_pts_to_av(double mp_pts, AVRational *tb)
 {

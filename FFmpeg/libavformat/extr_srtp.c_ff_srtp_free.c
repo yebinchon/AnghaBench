@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct SRTPContext {int /*<<< orphan*/ * hmac; int /*<<< orphan*/  aes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_hmac_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct SRTPContext {int * hmac; int aes; } ;
+
+
+ int av_freep (int *) ;
+ int av_hmac_free (int *) ;
 
 void ff_srtp_free(struct SRTPContext *s)
 {
@@ -23,5 +23,5 @@ void ff_srtp_free(struct SRTPContext *s)
     av_freep(&s->aes);
     if (s->hmac)
         av_hmac_free(s->hmac);
-    s->hmac = NULL;
+    s->hmac = ((void*)0);
 }

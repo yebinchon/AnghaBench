@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char const* ptr; int len; } ;
-typedef  TYPE_1__ xmlstr_t ;
+typedef TYPE_1__ xmlstr_t ;
 struct TYPE_6__ {char const* ptr; char const* end; } ;
-typedef  TYPE_2__ xmlbuf_t ;
-typedef  char WCHAR ;
-typedef  int BOOL ;
+typedef TYPE_2__ xmlbuf_t ;
+typedef char WCHAR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  isxmlspace (char const) ; 
- char* memchrW (char const*,char,int) ; 
+
+ int FALSE ;
+ int isxmlspace (char const) ;
+ char* memchrW (char const*,char,int) ;
 
 __attribute__((used)) static BOOL next_xml_elem(xmlbuf_t* xmlbuf, xmlstr_t* elem)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static BOOL next_xml_elem(xmlbuf_t* xmlbuf, xmlstr_t* elem
             return FALSE;
         }
         ptr++;
-        if (ptr + 3 < xmlbuf->end && ptr[0] == '!' && ptr[1] == '-' && ptr[2] == '-') /* skip comment */
+        if (ptr + 3 < xmlbuf->end && ptr[0] == '!' && ptr[1] == '-' && ptr[2] == '-')
         {
             for (ptr += 3; ptr + 3 <= xmlbuf->end; ptr++)
                 if (ptr[0] == '-' && ptr[1] == '-' && ptr[2] == '>') break;

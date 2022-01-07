@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * opts; int /*<<< orphan*/  status; int /*<<< orphan*/  total_chunks; int /*<<< orphan*/  chunks_left; scalar_t__ shrinking; scalar_t__ removing; scalar_t__ paused; int /*<<< orphan*/  thread; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * opts; int status; int total_chunks; int chunks_left; scalar_t__ shrinking; scalar_t__ removing; scalar_t__ paused; int thread; } ;
 struct TYPE_6__ {TYPE_1__ balance; } ;
-typedef  TYPE_2__ device_extension ;
-struct TYPE_7__ {int /*<<< orphan*/  system_opts; int /*<<< orphan*/  metadata_opts; int /*<<< orphan*/  data_opts; int /*<<< orphan*/  error; int /*<<< orphan*/  total_chunks; int /*<<< orphan*/  chunks_left; int /*<<< orphan*/  status; } ;
-typedef  TYPE_3__ btrfs_query_balance ;
-typedef  int /*<<< orphan*/  btrfs_balance_opts ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_2__ device_extension ;
+struct TYPE_7__ {int system_opts; int metadata_opts; int data_opts; int error; int total_chunks; int chunks_left; int status; } ;
+typedef TYPE_3__ btrfs_query_balance ;
+typedef int btrfs_balance_opts ;
+typedef int ULONG ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- size_t BALANCE_OPTS_DATA ; 
- size_t BALANCE_OPTS_METADATA ; 
- size_t BALANCE_OPTS_SYSTEM ; 
- int /*<<< orphan*/  BTRFS_BALANCE_ERROR ; 
- int /*<<< orphan*/  BTRFS_BALANCE_PAUSED ; 
- int /*<<< orphan*/  BTRFS_BALANCE_REMOVAL ; 
- int /*<<< orphan*/  BTRFS_BALANCE_RUNNING ; 
- int /*<<< orphan*/  BTRFS_BALANCE_SHRINKING ; 
- int /*<<< orphan*/  BTRFS_BALANCE_STOPPED ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  STATUS_INVALID_PARAMETER ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+ size_t BALANCE_OPTS_DATA ;
+ size_t BALANCE_OPTS_METADATA ;
+ size_t BALANCE_OPTS_SYSTEM ;
+ int BTRFS_BALANCE_ERROR ;
+ int BTRFS_BALANCE_PAUSED ;
+ int BTRFS_BALANCE_REMOVAL ;
+ int BTRFS_BALANCE_RUNNING ;
+ int BTRFS_BALANCE_SHRINKING ;
+ int BTRFS_BALANCE_STOPPED ;
+ int NT_SUCCESS (int ) ;
+ int RtlCopyMemory (int *,int *,int) ;
+ int STATUS_INVALID_PARAMETER ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS query_balance(device_extension* Vcb, void* data, ULONG length) {
     btrfs_query_balance* bqb = (btrfs_query_balance*)data;

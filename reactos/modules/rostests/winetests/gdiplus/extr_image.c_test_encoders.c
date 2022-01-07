@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  FormatDescription; } ;
-typedef  TYPE_1__ ImageCodecInfo ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ CSTR_EQUAL ; 
- scalar_t__ CompareStringA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char const*,int) ; 
- int FALSE ; 
- TYPE_1__* GdipAlloc (int) ; 
- int /*<<< orphan*/  GdipFree (TYPE_1__*) ; 
- int /*<<< orphan*/  GdipGetImageEncoders (int,int,TYPE_1__*) ; 
- int /*<<< orphan*/  GdipGetImageEncodersSize (int*,int*) ; 
- int /*<<< orphan*/  GenericError ; 
- int /*<<< orphan*/  LOCALE_SYSTEM_DEFAULT ; 
- int /*<<< orphan*/  Ok ; 
- int TRUE ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_5__ {int FormatDescription; } ;
+typedef TYPE_1__ ImageCodecInfo ;
+typedef int GpStatus ;
+typedef char CHAR ;
+
+
+ int CP_ACP ;
+ scalar_t__ CSTR_EQUAL ;
+ scalar_t__ CompareStringA (int ,int ,char*,int,char const*,int) ;
+ int FALSE ;
+ TYPE_1__* GdipAlloc (int) ;
+ int GdipFree (TYPE_1__*) ;
+ int GdipGetImageEncoders (int,int,TYPE_1__*) ;
+ int GdipGetImageEncodersSize (int*,int*) ;
+ int GenericError ;
+ int LOCALE_SYSTEM_DEFAULT ;
+ int Ok ;
+ int TRUE ;
+ int WideCharToMultiByte (int ,int ,int ,int,char*,int,int ,int ) ;
+ int expect (int ,int ) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_encoders(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void test_encoders(void)
     if (!codecs)
         return;
 
-    stat = GdipGetImageEncoders(n, s, NULL);
+    stat = GdipGetImageEncoders(n, s, ((void*)0));
     expect(GenericError, stat);
 
     stat = GdipGetImageEncoders(0, s, codecs);

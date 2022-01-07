@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  provInfo ;
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
-struct TYPE_4__ {int cbSize; int /*<<< orphan*/  member_0; } ;
-typedef  scalar_t__ (* PFN_CERT_DLL_OPEN_STORE_PROV_FUNC ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,void const*,int /*<<< orphan*/ *,TYPE_1__*) ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/  HCRYPTPROV ;
-typedef  int /*<<< orphan*/ * HCRYPTOIDFUNCSET ;
-typedef  int /*<<< orphan*/  HCRYPTOIDFUNCADDR ;
-typedef  int /*<<< orphan*/ * HCERTSTORE ;
-typedef  int DWORD ;
-typedef  TYPE_1__ CERT_STORE_PROV_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_STORE_CREATE_NEW_FLAG ; 
- int CERT_STORE_DELETE_FLAG ; 
- int /*<<< orphan*/  CERT_STORE_PROV_MEMORY ; 
- int /*<<< orphan*/  CRYPT_OID_OPEN_STORE_PROV_FUNC ; 
- int /*<<< orphan*/ * CRYPT_ProvCreateStore (int,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  CertCloseStore (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CertOpenStore (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CryptFreeOIDFunctionAddress (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptGetOIDFunctionAddress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CryptInitOIDFunctionSet (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int provInfo ;
+typedef int WINECRYPT_CERTSTORE ;
+struct TYPE_4__ {int cbSize; int member_0; } ;
+typedef scalar_t__ (* PFN_CERT_DLL_OPEN_STORE_PROV_FUNC ) (int ,int,int ,int,void const*,int *,TYPE_1__*) ;
+typedef int LPCSTR ;
+typedef int HCRYPTPROV ;
+typedef int * HCRYPTOIDFUNCSET ;
+typedef int HCRYPTOIDFUNCADDR ;
+typedef int * HCERTSTORE ;
+typedef int DWORD ;
+typedef TYPE_1__ CERT_STORE_PROV_INFO ;
+
+
+ int CERT_STORE_CREATE_NEW_FLAG ;
+ int CERT_STORE_DELETE_FLAG ;
+ int CERT_STORE_PROV_MEMORY ;
+ int CRYPT_OID_OPEN_STORE_PROV_FUNC ;
+ int * CRYPT_ProvCreateStore (int,int *,TYPE_1__*) ;
+ int CertCloseStore (int *,int ) ;
+ int * CertOpenStore (int ,int ,int ,int ,int *) ;
+ int CryptFreeOIDFunctionAddress (int ,int ) ;
+ int CryptGetOIDFunctionAddress (int *,int,int ,int ,void**,int *) ;
+ int * CryptInitOIDFunctionSet (int ,int ) ;
+ int ERROR_FILE_NOT_FOUND ;
+ int SetLastError (int ) ;
 
 WINECRYPT_CERTSTORE *CRYPT_ProvOpenStore(LPCSTR lpszStoreProvider,
  DWORD dwEncodingType, HCRYPTPROV hCryptProv, DWORD dwFlags, const void *pvPara)
 {
-    static HCRYPTOIDFUNCSET set = NULL;
+    static HCRYPTOIDFUNCSET set = ((void*)0);
     PFN_CERT_DLL_OPEN_STORE_PROV_FUNC provOpenFunc;
     HCRYPTOIDFUNCADDR hFunc;
-    WINECRYPT_CERTSTORE *ret = NULL;
+    WINECRYPT_CERTSTORE *ret = ((void*)0);
 
     if (!set)
         set = CryptInitOIDFunctionSet(CRYPT_OID_OPEN_STORE_PROV_FUNC, 0);
@@ -56,13 +56,13 @@ WINECRYPT_CERTSTORE *CRYPT_ProvOpenStore(LPCSTR lpszStoreProvider,
         provInfo.cbSize = sizeof(provInfo);
         if (dwFlags & CERT_STORE_DELETE_FLAG)
             provOpenFunc(lpszStoreProvider, dwEncodingType, hCryptProv,
-             dwFlags, pvPara, NULL, &provInfo);
+             dwFlags, pvPara, ((void*)0), &provInfo);
         else
         {
             HCERTSTORE memStore;
 
             memStore = CertOpenStore(CERT_STORE_PROV_MEMORY, 0, 0,
-             CERT_STORE_CREATE_NEW_FLAG, NULL);
+             CERT_STORE_CREATE_NEW_FLAG, ((void*)0));
             if (memStore)
             {
                 if (provOpenFunc(lpszStoreProvider, dwEncodingType, hCryptProv,

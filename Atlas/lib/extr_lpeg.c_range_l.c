@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int byte ;
-struct TYPE_4__ {int /*<<< orphan*/  buff; } ;
-typedef  TYPE_1__ Instruction ;
 
-/* Variables and functions */
- int /*<<< orphan*/  correctset (TYPE_1__*) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- TYPE_1__* newcharset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setchar (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int byte ;
+struct TYPE_4__ {int buff; } ;
+typedef TYPE_1__ Instruction ;
+
+
+ int correctset (TYPE_1__*) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int lua_gettop (int *) ;
+ TYPE_1__* newcharset (int *) ;
+ int setchar (int ,int) ;
 
 __attribute__((used)) static int range_l (lua_State *L) {
   int arg;

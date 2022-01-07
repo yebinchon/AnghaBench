@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  pval; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int pval; } ;
 struct TYPE_5__ {int type; TYPE_1__ u; } ;
-typedef  TYPE_2__ attr_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
+typedef TYPE_2__ attr_t ;
+typedef int attr_list_t ;
 
-/* Variables and functions */
-#define  ATTR_ASYNCUUID 129 
-#define  ATTR_UUID 128 
- int /*<<< orphan*/  append_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  make_attrp (int const,int /*<<< orphan*/ ) ; 
+
+
+
+ int append_attr (int *,int ) ;
+ int make_attrp (int const,int ) ;
 
 __attribute__((used)) static int async_iface_attrs(attr_list_t *attrs, const attr_t *attr)
 {
     switch(attr->type)
     {
-    case ATTR_UUID:
+    case 128:
         return 0;
-    case ATTR_ASYNCUUID:
-        append_attr(attrs, make_attrp(ATTR_UUID, attr->u.pval));
+    case 129:
+        append_attr(attrs, make_attrp(128, attr->u.pval));
         return 0;
     default:
         return 1;

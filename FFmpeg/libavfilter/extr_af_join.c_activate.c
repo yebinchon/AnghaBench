@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_10__ {int nb_samples; } ;
-struct TYPE_9__ {int nb_inputs; int /*<<< orphan*/ * inputs; int /*<<< orphan*/ * outputs; TYPE_1__* priv; } ;
+struct TYPE_9__ {int nb_inputs; int * inputs; int * outputs; TYPE_1__* priv; } ;
 struct TYPE_8__ {TYPE_4__** input_frames; } ;
-typedef  TYPE_1__ JoinContext ;
-typedef  TYPE_2__ AVFilterContext ;
+typedef TYPE_1__ JoinContext ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK_ALL (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ ff_inlink_acknowledge_status (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ ff_inlink_check_available_samples (int /*<<< orphan*/ ,int) ; 
- int ff_inlink_consume_frame (int /*<<< orphan*/ ,TYPE_4__**) ; 
- int ff_inlink_consume_samples (int /*<<< orphan*/ ,int,int,TYPE_4__**) ; 
- int /*<<< orphan*/  ff_inlink_request_frame (int /*<<< orphan*/ ) ; 
- scalar_t__ ff_outlink_frame_wanted (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int try_push_frame (TYPE_2__*) ; 
+
+ int FF_FILTER_FORWARD_STATUS_BACK_ALL (int ,TYPE_2__*) ;
+ scalar_t__ ff_inlink_acknowledge_status (int ,int*,int *) ;
+ scalar_t__ ff_inlink_check_available_samples (int ,int) ;
+ int ff_inlink_consume_frame (int ,TYPE_4__**) ;
+ int ff_inlink_consume_samples (int ,int,int,TYPE_4__**) ;
+ int ff_inlink_request_frame (int ) ;
+ scalar_t__ ff_outlink_frame_wanted (int ) ;
+ int ff_outlink_set_status (int ,int,int ) ;
+ int try_push_frame (TYPE_2__*) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {

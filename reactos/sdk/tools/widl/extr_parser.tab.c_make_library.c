@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  importlibs; int /*<<< orphan*/  const* attrs; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ typelib_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- TYPE_1__* xmalloc (int) ; 
- int /*<<< orphan*/  xstrdup (char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int importlibs; int const* attrs; int name; } ;
+typedef TYPE_1__ typelib_t ;
+typedef int attr_list_t ;
+
+
+ int list_init (int *) ;
+ TYPE_1__* xmalloc (int) ;
+ int xstrdup (char const*) ;
 
 __attribute__((used)) static typelib_t *make_library(const char *name, const attr_list_t *attrs)
 {

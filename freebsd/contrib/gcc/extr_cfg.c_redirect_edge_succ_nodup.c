@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* edge ;
-typedef  int /*<<< orphan*/  basic_block ;
-struct TYPE_7__ {scalar_t__ probability; scalar_t__ count; int /*<<< orphan*/  flags; int /*<<< orphan*/  src; } ;
 
-/* Variables and functions */
- scalar_t__ REG_BR_PROB_BASE ; 
- TYPE_1__* find_edge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  redirect_edge_succ (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_edge (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* edge ;
+typedef int basic_block ;
+struct TYPE_7__ {scalar_t__ probability; scalar_t__ count; int flags; int src; } ;
+
+
+ scalar_t__ REG_BR_PROB_BASE ;
+ TYPE_1__* find_edge (int ,int ) ;
+ int redirect_edge_succ (TYPE_1__*,int ) ;
+ int remove_edge (TYPE_1__*) ;
 
 edge
 redirect_edge_succ_nodup (edge e, basic_block new_succ)
@@ -32,7 +32,7 @@ redirect_edge_succ_nodup (edge e, basic_block new_succ)
       s->flags |= e->flags;
       s->probability += e->probability;
       if (s->probability > REG_BR_PROB_BASE)
-	s->probability = REG_BR_PROB_BASE;
+ s->probability = REG_BR_PROB_BASE;
       s->count += e->count;
       remove_edge (e);
       e = s;

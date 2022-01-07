@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ IHTMLDocument2_get_parentWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow2_execScript (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  a2bstr (char const*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int VARIANT ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ IHTMLDocument2_get_parentWindow (int *,int **) ;
+ int IHTMLWindow2_Release (int *) ;
+ scalar_t__ IHTMLWindow2_execScript (int *,int ,int ,int *) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int VariantClear (int *) ;
+ int a2bstr (char const*) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_exec_script(IHTMLDocument2 *doc, const char *codea, const char *langa)
 {

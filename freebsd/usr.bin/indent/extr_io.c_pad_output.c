@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int tabsize; scalar_t__ use_tabs; } ;
 
-/* Variables and functions */
- TYPE_1__ opt ; 
- int /*<<< orphan*/  output ; 
- int /*<<< orphan*/  putc (char,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__ opt ;
+ int output ;
+ int putc (char,int ) ;
 
 __attribute__((used)) static int
 pad_output(int current, int target)
-			        /* writes tabs and blanks (if necessary) to
-				 * get the current output position up to the
-				 * target column */
-    /* current: the current column value */
-    /* target: position we want it at */
+
+
+
+
+
 {
-    int curr;			/* internal column pointer */
+    int curr;
 
     if (current >= target)
-	return (current);	/* line is already long enough */
+ return (current);
     curr = current;
     if (opt.use_tabs) {
-	int tcur;
+ int tcur;
 
-	while ((tcur = opt.tabsize * (1 + (curr - 1) / opt.tabsize) + 1) <= target) {
-	    putc('\t', output);
-	    curr = tcur;
-	}
+ while ((tcur = opt.tabsize * (1 + (curr - 1) / opt.tabsize) + 1) <= target) {
+     putc('\t', output);
+     curr = tcur;
+ }
     }
     while (curr++ < target)
-	putc(' ', output);	/* pad with final blanks */
+ putc(' ', output);
 
     return (target);
 }

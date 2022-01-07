@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct drm_file {TYPE_1__* master; } ;
-struct drm_device {int /*<<< orphan*/  master_mutex; int /*<<< orphan*/  master; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lessee_id; int /*<<< orphan*/ * lessor; } ;
+struct drm_device {int master_mutex; int master; } ;
+struct TYPE_2__ {int lessee_id; int * lessor; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_DEBUG_LEASE (char*,int /*<<< orphan*/ ) ; 
- int EINVAL ; 
- int /*<<< orphan*/  drm_drop_master (struct drm_device*,struct drm_file*) ; 
- int /*<<< orphan*/  drm_is_current_master (struct drm_file*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int DRM_DEBUG_LEASE (char*,int ) ;
+ int EINVAL ;
+ int drm_drop_master (struct drm_device*,struct drm_file*) ;
+ int drm_is_current_master (struct drm_file*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 int drm_dropmaster_ioctl(struct drm_device *dev, void *data,
-			 struct drm_file *file_priv)
+    struct drm_file *file_priv)
 {
-	int ret = -EINVAL;
+ int ret = -EINVAL;
 
-	mutex_lock(&dev->master_mutex);
-	if (!drm_is_current_master(file_priv))
-		goto out_unlock;
+ mutex_lock(&dev->master_mutex);
+ if (!drm_is_current_master(file_priv))
+  goto out_unlock;
 
-	if (!dev->master)
-		goto out_unlock;
+ if (!dev->master)
+  goto out_unlock;
 
-	if (file_priv->master->lessor != NULL) {
-		DRM_DEBUG_LEASE("Attempt to drop lessee %d as master\n", file_priv->master->lessee_id);
-		ret = -EINVAL;
-		goto out_unlock;
-	}
+ if (file_priv->master->lessor != ((void*)0)) {
+  DRM_DEBUG_LEASE("Attempt to drop lessee %d as master\n", file_priv->master->lessee_id);
+  ret = -EINVAL;
+  goto out_unlock;
+ }
 
-	ret = 0;
-	drm_drop_master(dev, file_priv);
+ ret = 0;
+ drm_drop_master(dev, file_priv);
 out_unlock:
-	mutex_unlock(&dev->master_mutex);
-	return ret;
+ mutex_unlock(&dev->master_mutex);
+ return ret;
 }

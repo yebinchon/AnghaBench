@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct fman_kg_scheme_regs {int /*<<< orphan*/  kgse_spc; } ;
-struct fman_kg_regs {int /*<<< orphan*/ * fmkg_indirect; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  build_ar_scheme (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int fman_kg_write_ar_wait (struct fman_kg_regs*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ioread32be (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct fman_kg_scheme_regs {int kgse_spc; } ;
+struct fman_kg_regs {int * fmkg_indirect; } ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int build_ar_scheme (int ,int ,int ,int ) ;
+ int fman_kg_write_ar_wait (struct fman_kg_regs*,int ) ;
+ int ioread32be (int *) ;
 
 int fman_kg_get_scheme_counter(struct fman_kg_regs *regs,
-				uint8_t scheme_id,
-				uint8_t hwport_id,
-				uint32_t *counter)
+    uint8_t scheme_id,
+    uint8_t hwport_id,
+    uint32_t *counter)
 {
-	struct fman_kg_scheme_regs  *kgse_regs;
-	uint32_t                    tmp_reg;
-	int                         err;
+ struct fman_kg_scheme_regs *kgse_regs;
+ uint32_t tmp_reg;
+ int err;
 
-	kgse_regs = (struct fman_kg_scheme_regs *)&(regs->fmkg_indirect[0]);
- 
-	tmp_reg = build_ar_scheme(scheme_id, hwport_id, TRUE, FALSE);
-    	err = fman_kg_write_ar_wait(regs, tmp_reg);
+ kgse_regs = (struct fman_kg_scheme_regs *)&(regs->fmkg_indirect[0]);
 
-	if (err != 0)
-		return err;
+ tmp_reg = build_ar_scheme(scheme_id, hwport_id, TRUE, FALSE);
+     err = fman_kg_write_ar_wait(regs, tmp_reg);
 
-	*counter = ioread32be(&kgse_regs->kgse_spc);
+ if (err != 0)
+  return err;
 
-	return 0;
+ *counter = ioread32be(&kgse_regs->kgse_spc);
+
+ return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int type; } ;
 struct TYPE_14__ {TYPE_1__* unicast_scope; TYPE_3__* current_dns_server; } ;
-struct TYPE_13__ {int /*<<< orphan*/  cache; } ;
-typedef  TYPE_2__ Manager ;
-typedef  TYPE_3__ DnsServer ;
+struct TYPE_13__ {int cache; } ;
+typedef TYPE_2__ Manager ;
+typedef TYPE_3__ DnsServer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  dns_cache_flush (int /*<<< orphan*/ *) ; 
- TYPE_3__* dns_server_ref (TYPE_3__*) ; 
- int /*<<< orphan*/  dns_server_string (TYPE_3__*) ; 
- int /*<<< orphan*/  dns_server_type_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dns_server_unref (TYPE_3__*) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  manager_send_changed (TYPE_2__*,char*) ; 
+
+ int assert (TYPE_2__*) ;
+ int dns_cache_flush (int *) ;
+ TYPE_3__* dns_server_ref (TYPE_3__*) ;
+ int dns_server_string (TYPE_3__*) ;
+ int dns_server_type_to_string (int ) ;
+ int dns_server_unref (TYPE_3__*) ;
+ int log_debug (char*,int ,int ) ;
+ int manager_send_changed (TYPE_2__*,char*) ;
 
 DnsServer *manager_set_dns_server(Manager *m, DnsServer *s) {
         assert(m);

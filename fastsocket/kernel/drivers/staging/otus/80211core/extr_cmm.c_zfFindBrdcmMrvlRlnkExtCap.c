@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  zbuf_t ;
-typedef  size_t u8_t ;
-typedef  int u16_t ;
 
-/* Variables and functions */
- size_t ZM_WLAN_EID_WIFI_IE ; 
- int zfwBufGetSize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int* zgElementOffsetTable ; 
- int /*<<< orphan*/  zm_assert (int /*<<< orphan*/ ) ; 
- int zmw_rx_buf_readb (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int zdev_t ;
+typedef int zbuf_t ;
+typedef size_t u8_t ;
+typedef int u16_t ;
+
+
+ size_t ZM_WLAN_EID_WIFI_IE ;
+ int zfwBufGetSize (int *,int *) ;
+ int* zgElementOffsetTable ;
+ int zm_assert (int ) ;
+ int zmw_rx_buf_readb (int *,int *,int) ;
 
 u16_t zfFindBrdcmMrvlRlnkExtCap(zdev_t* dev, zbuf_t* buf)
 {
@@ -31,7 +31,7 @@ u16_t zfFindBrdcmMrvlRlnkExtCap(zdev_t* dev, zbuf_t* buf)
     u8_t id;
     u8_t tmp;
 
-    /* Get offset of first element */
+
     subType = (zmw_rx_buf_readb(dev, buf, 0) >> 4);
 
     if ((offset = zgElementOffsetTable[subType]) == 0xff)
@@ -39,21 +39,21 @@ u16_t zfFindBrdcmMrvlRlnkExtCap(zdev_t* dev, zbuf_t* buf)
         zm_assert(0);
     }
 
-    /* Plus wlan header */
+
     offset += 24;
 
     bufLen = zfwBufGetSize(dev, buf);
 
-    /* Search loop */
-    while ((offset+2)<bufLen)                   // including element ID and length (2bytes)
+
+    while ((offset+2)<bufLen)
     {
-        /* Search target element */
+
         if ((id = zmw_rx_buf_readb(dev, buf, offset)) == ZM_WLAN_EID_WIFI_IE)
         {
-            /* Bingo */
+
             if ((elen = zmw_rx_buf_readb(dev, buf, offset+1))>(bufLen - offset))
             {
-                /* Element length error */
+
                 return 0xffff;
             }
 
@@ -79,10 +79,10 @@ u16_t zfFindBrdcmMrvlRlnkExtCap(zdev_t* dev, zbuf_t* buf)
         }
         else if ((id = zmw_rx_buf_readb(dev, buf, offset)) == 0x7F)
         {
-            /* Bingo */
+
             if ((elen = zmw_rx_buf_readb(dev, buf, offset+1))>(bufLen - offset))
             {
-                /* Element length error */
+
                 return 0xffff;
             }
 
@@ -98,7 +98,7 @@ u16_t zfFindBrdcmMrvlRlnkExtCap(zdev_t* dev, zbuf_t* buf)
             }
         }
 
-        /* Advance to next element */
+
         if ((elen = zmw_rx_buf_readb(dev, buf, offset+1)) == 0)
         {
             return 0xffff;

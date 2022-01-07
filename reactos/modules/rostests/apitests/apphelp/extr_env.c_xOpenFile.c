@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int FILE_EXECUTE ; 
- int FILE_NON_DIRECTORY_FILE ; 
- int FILE_READ_ATTRIBUTES ; 
- int FILE_READ_DATA ; 
- int FILE_SHARE_DELETE ; 
- int FILE_SHARE_READ ; 
- int FILE_SYNCHRONOUS_IO_NONALERT ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtOpenFile (int /*<<< orphan*/ **,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RtlDosPathNameToNtPathName_U (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlFreeUnicodeString (int /*<<< orphan*/ *) ; 
- int SYNCHRONIZE ; 
- int /*<<< orphan*/  skip (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+typedef int * HANDLE ;
+
+
+ int FILE_EXECUTE ;
+ int FILE_NON_DIRECTORY_FILE ;
+ int FILE_READ_ATTRIBUTES ;
+ int FILE_READ_DATA ;
+ int FILE_SHARE_DELETE ;
+ int FILE_SHARE_READ ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int NT_SUCCESS (int ) ;
+ int NtOpenFile (int **,int,int *,int *,int,int) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RtlDosPathNameToNtPathName_U (int *,int *,int *,int *) ;
+ int RtlFreeUnicodeString (int *) ;
+ int SYNCHRONIZE ;
+ int skip (char*,int ) ;
+ int wine_dbgstr_w (int *) ;
 
 HANDLE xOpenFile(WCHAR* ApplicationName)
 {
@@ -43,14 +43,14 @@ HANDLE xOpenFile(WCHAR* ApplicationName)
     NTSTATUS Status;
     HANDLE FileHandle;
 
-    if (!RtlDosPathNameToNtPathName_U(ApplicationName, &FileName, NULL, NULL))
+    if (!RtlDosPathNameToNtPathName_U(ApplicationName, &FileName, ((void*)0), ((void*)0)))
     {
         skip("Unable to translate %s to Nt path\n", wine_dbgstr_w(ApplicationName));
-        return NULL;
+        return ((void*)0);
     }
 
 
-    InitializeObjectAttributes(&ObjectAttributes, &FileName, OBJ_CASE_INSENSITIVE, NULL, NULL);
+    InitializeObjectAttributes(&ObjectAttributes, &FileName, OBJ_CASE_INSENSITIVE, ((void*)0), ((void*)0));
     Status = NtOpenFile(&FileHandle,
                         SYNCHRONIZE |
                         FILE_READ_ATTRIBUTES |
@@ -65,7 +65,7 @@ HANDLE xOpenFile(WCHAR* ApplicationName)
     RtlFreeUnicodeString(&FileName);
 
     if (!NT_SUCCESS(Status))
-        return NULL;
+        return ((void*)0);
 
     return FileHandle;
 }

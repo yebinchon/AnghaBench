@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* key; char* value; } ;
-struct TYPE_5__ {scalar_t__ numpairs; char* buff; int /*<<< orphan*/  curr; int /*<<< orphan*/  start; int /*<<< orphan*/  fp; TYPE_2__* pairs; } ;
-typedef  TYPE_1__ STANZA ;
-typedef  TYPE_2__ PAIR ;
+struct TYPE_5__ {scalar_t__ numpairs; char* buff; int curr; int start; int fp; TYPE_2__* pairs; } ;
+typedef TYPE_1__ STANZA ;
+typedef TYPE_2__ PAIR ;
 
-/* Variables and functions */
- scalar_t__ BIO_gets (int /*<<< orphan*/ ,char*,int) ; 
- char* OPENSSL_strdup (char const*) ; 
- int /*<<< orphan*/  TESTMAXPAIRS ; 
- int /*<<< orphan*/  TEST_info (char*,char const*,...) ; 
- int /*<<< orphan*/  TEST_int_lt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (char*) ; 
- int /*<<< orphan*/  read_key (TYPE_1__*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- void* strip_spaces (char*) ; 
+
+ scalar_t__ BIO_gets (int ,char*,int) ;
+ char* OPENSSL_strdup (char const*) ;
+ int TESTMAXPAIRS ;
+ int TEST_info (char*,char const*,...) ;
+ int TEST_int_lt (int ,int ) ;
+ int TEST_ptr (char*) ;
+ int read_key (TYPE_1__*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ void* strip_spaces (char*) ;
 
 int test_readstanza(STANZA *s)
 {
@@ -43,15 +43,15 @@ int test_readstanza(STANZA *s)
         }
         *p = '\0';
 
-        /* Blank line marks end of tests. */
+
         if (s->buff[0] == '\0')
             break;
 
-        /* Lines starting with a pound sign are ignored. */
+
         if (s->buff[0] == '#')
             continue;
 
-        /* Parse into key=value */
+
         if (!TEST_ptr(equals = strchr(s->buff, '='))) {
             TEST_info("Missing = at line %d\n", s->curr);
             return 0;
@@ -61,7 +61,7 @@ int test_readstanza(STANZA *s)
             TEST_info("Empty field at line %d\n", s->curr);
             return 0;
         }
-        if ((value = strip_spaces(equals)) == NULL)
+        if ((value = strip_spaces(equals)) == ((void*)0))
             value = "";
 
         if (strcmp(key, "Title") == 0) {
@@ -88,6 +88,6 @@ int test_readstanza(STANZA *s)
         pp++;
     }
 
-    /* If we read anything, return ok. */
+
     return 1;
 }

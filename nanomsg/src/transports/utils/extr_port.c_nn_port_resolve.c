@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
+ int EINVAL ;
 
 int nn_port_resolve (const char *port, size_t portlen)
 {
@@ -29,8 +21,8 @@ int nn_port_resolve (const char *port, size_t portlen)
             return -EINVAL;
     }
 
-    /*  Port 0 has special meaning (assign an ephemeral port to the socket),
-        thus it is illegal to use it in the connection string. */
+
+
     if (res == 0)
         return -EINVAL;
 

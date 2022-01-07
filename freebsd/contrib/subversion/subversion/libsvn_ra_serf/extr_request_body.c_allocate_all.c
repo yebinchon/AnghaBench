@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * collect_bucket; scalar_t__ total_bytes; } ;
-typedef  TYPE_1__ svn_ra_serf__request_body_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ APR_EOF ; 
- int /*<<< orphan*/  SERF_BUCKET_READ_ERROR (scalar_t__) ; 
- char* apr_pcalloc (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  serf_bucket_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ serf_bucket_read (int /*<<< orphan*/ *,scalar_t__,char const**,scalar_t__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * collect_bucket; scalar_t__ total_bytes; } ;
+typedef TYPE_1__ svn_ra_serf__request_body_t ;
+typedef scalar_t__ apr_status_t ;
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ APR_EOF ;
+ int SERF_BUCKET_READ_ERROR (scalar_t__) ;
+ char* apr_pcalloc (int *,scalar_t__) ;
+ int memcpy (char*,char const*,scalar_t__) ;
+ int serf_bucket_destroy (int *) ;
+ scalar_t__ serf_bucket_read (int *,scalar_t__,char const**,scalar_t__*) ;
 
 __attribute__((used)) static const char *
 allocate_all(svn_ra_serf__request_body_t *body,
@@ -52,7 +52,7 @@ allocate_all(svn_ra_serf__request_body_t *body,
     }
 
   serf_bucket_destroy(body->collect_bucket);
-  body->collect_bucket = NULL;
+  body->collect_bucket = ((void*)0);
 
-  return (s != APR_EOF) ? NULL : buffer;
+  return (s != APR_EOF) ? ((void*)0) : buffer;
 }

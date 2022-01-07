@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL_CIPHER ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SSL_CIPHER_find (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int SSL_CTX_set_ciphersuites (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SSL_CTX_set_psk_client_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_psk_find_session_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_psk_server_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_psk_use_session_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * SSL_SESSION_new () ; 
- int SSL_SESSION_set1_master_key (int /*<<< orphan*/  const*,unsigned char const*,int) ; 
- int SSL_SESSION_set_cipher (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int SSL_SESSION_set_protocol_version (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int SSL_SESSION_up_ref (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int SSL_session_reused (int /*<<< orphan*/ *) ; 
- int SSL_set1_groups_list (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  TEST_false (int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  TLS13_AES_128_GCM_SHA256_BYTES ; 
- int /*<<< orphan*/  TLS1_3_VERSION ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/ * cert ; 
- int /*<<< orphan*/  const* clientpsk ; 
- int create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  find_session_cb ; 
- int find_session_cb_cnt ; 
- int /*<<< orphan*/ * privkey ; 
- int /*<<< orphan*/  psk_client_cb ; 
- int psk_client_cb_cnt ; 
- int /*<<< orphan*/  psk_server_cb ; 
- int psk_server_cb_cnt ; 
- char* pskid ; 
- int /*<<< orphan*/  const* serverpsk ; 
- int /*<<< orphan*/  shutdown_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* srvid ; 
- int /*<<< orphan*/  use_session_cb ; 
- int use_session_cb_cnt ; 
+
+
+
+typedef int key ;
+typedef int SSL_CTX ;
+typedef int SSL_CIPHER ;
+typedef int SSL ;
+
+
+ int * SSL_CIPHER_find (int *,int ) ;
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_ciphersuites (int *,char*) ;
+ int SSL_CTX_set_psk_client_callback (int *,int ) ;
+ int SSL_CTX_set_psk_find_session_callback (int *,int ) ;
+ int SSL_CTX_set_psk_server_callback (int *,int ) ;
+ int SSL_CTX_set_psk_use_session_callback (int *,int ) ;
+ int SSL_ERROR_NONE ;
+ int SSL_SESSION_free (int const*) ;
+ int * SSL_SESSION_new () ;
+ int SSL_SESSION_set1_master_key (int const*,unsigned char const*,int) ;
+ int SSL_SESSION_set_cipher (int const*,int const*) ;
+ int SSL_SESSION_set_protocol_version (int const*,int ) ;
+ int SSL_SESSION_up_ref (int const*) ;
+ int SSL_free (int *) ;
+ int SSL_session_reused (int *) ;
+ int SSL_set1_groups_list (int *,char*) ;
+ int TEST_false (int) ;
+ int TEST_ptr (int const*) ;
+ int TEST_true (int) ;
+ int TLS13_AES_128_GCM_SHA256_BYTES ;
+ int TLS1_3_VERSION ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int * cert ;
+ int const* clientpsk ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int *,int *) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int find_session_cb ;
+ int find_session_cb_cnt ;
+ int * privkey ;
+ int psk_client_cb ;
+ int psk_client_cb_cnt ;
+ int psk_server_cb ;
+ int psk_server_cb_cnt ;
+ char* pskid ;
+ int const* serverpsk ;
+ int shutdown_ssl_connection (int *,int *) ;
+ char* srvid ;
+ int use_session_cb ;
+ int use_session_cb_cnt ;
 
 __attribute__((used)) static int test_tls13_psk(int idx)
 {
-    SSL_CTX *sctx = NULL, *cctx = NULL;
-    SSL *serverssl = NULL, *clientssl = NULL;
-    const SSL_CIPHER *cipher = NULL;
+    SSL_CTX *sctx = ((void*)0), *cctx = ((void*)0);
+    SSL *serverssl = ((void*)0), *clientssl = ((void*)0);
+    const SSL_CIPHER *cipher = ((void*)0);
     const unsigned char key[] = {
         0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b,
         0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
@@ -75,37 +75,37 @@ __attribute__((used)) static int test_tls13_psk(int idx)
 
     if (!TEST_true(create_ssl_ctx_pair(TLS_server_method(), TLS_client_method(),
                                        TLS1_VERSION, 0,
-                                       &sctx, &cctx, idx == 3 ? NULL : cert,
-                                       idx == 3 ? NULL : privkey)))
+                                       &sctx, &cctx, idx == 3 ? ((void*)0) : cert,
+                                       idx == 3 ? ((void*)0) : privkey)))
         goto end;
 
     if (idx != 3) {
-        /*
-         * We use a ciphersuite with SHA256 to ease testing old style PSK
-         * callbacks which will always default to SHA256. This should not be
-         * necessary if we have no cert/priv key. In that case the server should
-         * prefer SHA256 automatically.
-         */
+
+
+
+
+
+
         if (!TEST_true(SSL_CTX_set_ciphersuites(cctx,
                                                 "TLS_AES_128_GCM_SHA256")))
             goto end;
     }
 
-    /*
-     * Test 0: New style callbacks only
-     * Test 1: New and old style callbacks (only the new ones should be used)
-     * Test 2: Old style callbacks only
-     */
+
+
+
+
+
     if (idx == 0 || idx == 1) {
         SSL_CTX_set_psk_use_session_callback(cctx, use_session_cb);
         SSL_CTX_set_psk_find_session_callback(sctx, find_session_cb);
     }
-#ifndef OPENSSL_NO_PSK
+
     if (idx >= 1) {
         SSL_CTX_set_psk_client_callback(cctx, psk_client_cb);
         SSL_CTX_set_psk_server_callback(sctx, psk_server_cb);
     }
-#endif
+
     srvid = pskid;
     use_session_cb_cnt = 0;
     find_session_cb_cnt = 0;
@@ -113,12 +113,12 @@ __attribute__((used)) static int test_tls13_psk(int idx)
     psk_server_cb_cnt = 0;
 
     if (idx != 3) {
-        /*
-         * Check we can create a connection if callback decides not to send a
-         * PSK
-         */
+
+
+
+
         if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                                 NULL, NULL))
+                                                 ((void*)0), ((void*)0)))
                 || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                     SSL_ERROR_NONE))
                 || !TEST_false(SSL_session_reused(clientssl))
@@ -128,10 +128,10 @@ __attribute__((used)) static int test_tls13_psk(int idx)
         if (idx == 0 || idx == 1) {
             if (!TEST_true(use_session_cb_cnt == 1)
                     || !TEST_true(find_session_cb_cnt == 0)
-                       /*
-                        * If no old style callback then below should be 0
-                        * otherwise 1
-                        */
+
+
+
+
                     || !TEST_true(psk_client_cb_cnt == idx)
                     || !TEST_true(psk_server_cb_cnt == 0))
                 goto end;
@@ -144,15 +144,15 @@ __attribute__((used)) static int test_tls13_psk(int idx)
         }
 
         shutdown_ssl_connection(serverssl, clientssl);
-        serverssl = clientssl = NULL;
+        serverssl = clientssl = ((void*)0);
         use_session_cb_cnt = psk_client_cb_cnt = 0;
     }
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL)))
+                                             ((void*)0), ((void*)0))))
         goto end;
 
-    /* Create the PSK */
+
     cipher = SSL_CIPHER_find(clientssl, TLS13_AES_128_GCM_SHA256_BYTES);
     clientpsk = SSL_SESSION_new();
     if (!TEST_ptr(clientpsk)
@@ -166,7 +166,7 @@ __attribute__((used)) static int test_tls13_psk(int idx)
         goto end;
     serverpsk = clientpsk;
 
-    /* Check we can create a connection and the PSK is used */
+
     if (!TEST_true(create_ssl_connection(serverssl, clientssl, SSL_ERROR_NONE))
             || !TEST_true(SSL_session_reused(clientssl))
             || !TEST_true(SSL_session_reused(serverssl)))
@@ -187,27 +187,27 @@ __attribute__((used)) static int test_tls13_psk(int idx)
     }
 
     shutdown_ssl_connection(serverssl, clientssl);
-    serverssl = clientssl = NULL;
+    serverssl = clientssl = ((void*)0);
     use_session_cb_cnt = find_session_cb_cnt = 0;
     psk_client_cb_cnt = psk_server_cb_cnt = 0;
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL)))
+                                             ((void*)0), ((void*)0))))
         goto end;
 
-    /* Force an HRR */
-#if defined(OPENSSL_NO_EC)
-    if (!TEST_true(SSL_set1_groups_list(serverssl, "ffdhe3072")))
-        goto end;
-#else
+
+
+
+
+
     if (!TEST_true(SSL_set1_groups_list(serverssl, "P-256")))
         goto end;
-#endif
 
-    /*
-     * Check we can create a connection, the PSK is used and the callbacks are
-     * called twice.
-     */
+
+
+
+
+
     if (!TEST_true(create_ssl_connection(serverssl, clientssl, SSL_ERROR_NONE))
             || !TEST_true(SSL_session_reused(clientssl))
             || !TEST_true(SSL_session_reused(serverssl)))
@@ -228,18 +228,18 @@ __attribute__((used)) static int test_tls13_psk(int idx)
     }
 
     shutdown_ssl_connection(serverssl, clientssl);
-    serverssl = clientssl = NULL;
+    serverssl = clientssl = ((void*)0);
     use_session_cb_cnt = find_session_cb_cnt = 0;
     psk_client_cb_cnt = psk_server_cb_cnt = 0;
 
     if (idx != 3) {
-        /*
-         * Check that if the server rejects the PSK we can still connect, but with
-         * a full handshake
-         */
+
+
+
+
         srvid = "Dummy Identity";
         if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                                 NULL, NULL))
+                                                 ((void*)0), ((void*)0)))
                 || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                     SSL_ERROR_NONE))
                 || !TEST_false(SSL_session_reused(clientssl))
@@ -250,10 +250,10 @@ __attribute__((used)) static int test_tls13_psk(int idx)
             if (!TEST_true(use_session_cb_cnt == 1)
                     || !TEST_true(find_session_cb_cnt == 1)
                     || !TEST_true(psk_client_cb_cnt == 0)
-                       /*
-                        * If no old style callback then below should be 0
-                        * otherwise 1
-                        */
+
+
+
+
                     || !TEST_true(psk_server_cb_cnt == idx))
                 goto end;
         } else {
@@ -265,14 +265,14 @@ __attribute__((used)) static int test_tls13_psk(int idx)
         }
 
         shutdown_ssl_connection(serverssl, clientssl);
-        serverssl = clientssl = NULL;
+        serverssl = clientssl = ((void*)0);
     }
     testresult = 1;
 
  end:
     SSL_SESSION_free(clientpsk);
     SSL_SESSION_free(serverpsk);
-    clientpsk = serverpsk = NULL;
+    clientpsk = serverpsk = ((void*)0);
     SSL_free(serverssl);
     SSL_free(clientssl);
     SSL_CTX_free(sctx);

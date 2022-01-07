@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int ref_counter; int /*<<< orphan*/  method; } ;
-typedef  TYPE_1__ X509 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  SSL_PKEY_ERROR_LEVEL ; 
- int /*<<< orphan*/  SSL_X509_ERROR_LEVEL ; 
- int X509_METHOD_CALL (int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  X509_method () ; 
- int /*<<< orphan*/  new ; 
- int /*<<< orphan*/  ssl_mem_free (TYPE_1__*) ; 
- TYPE_1__* ssl_mem_zalloc (int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ref_counter; int method; } ;
+typedef TYPE_1__ X509 ;
+
+
+ int SSL_DEBUG (int ,char*,...) ;
+ int SSL_PKEY_ERROR_LEVEL ;
+ int SSL_X509_ERROR_LEVEL ;
+ int X509_METHOD_CALL (int ,TYPE_1__*,TYPE_1__*) ;
+ int X509_method () ;
+ int new ;
+ int ssl_mem_free (TYPE_1__*) ;
+ TYPE_1__* ssl_mem_zalloc (int) ;
 
 X509* __X509_new(X509 *ix)
 {
@@ -53,5 +53,5 @@ X509* __X509_new(X509 *ix)
 failed:
     ssl_mem_free(x);
 no_mem:
-    return NULL;
+    return ((void*)0);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- char* mrb_str_to_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
- scalar_t__ stat (char*,struct stat*) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ scalar_t__ S_ISDIR (int ) ;
+ int mrb_false_value () ;
+ int mrb_get_args (int *,char*,int *) ;
+ char* mrb_str_to_cstr (int *,int ) ;
+ int mrb_true_value () ;
+ scalar_t__ stat (char*,struct stat*) ;
 
 mrb_value
 mrb_dir_existp(mrb_state *mrb, mrb_value klass)

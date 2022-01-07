@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct index_cases_st {scalar_t__ n; int /*<<< orphan*/  v; } ;
-struct doall_st {int res; size_t num_cases; int /*<<< orphan*/  sa; struct index_cases_st* cases; } ;
-typedef  scalar_t__ ossl_uintmax_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_error (char*,scalar_t__,char*) ; 
- int /*<<< orphan*/  ossl_sa_char_set (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct index_cases_st {scalar_t__ n; int v; } ;
+struct doall_st {int res; size_t num_cases; int sa; struct index_cases_st* cases; } ;
+typedef scalar_t__ ossl_uintmax_t ;
+
+
+ int TEST_error (char*,scalar_t__,char*) ;
+ int ossl_sa_char_set (int ,scalar_t__,int *) ;
+ scalar_t__ strcmp (char*,int ) ;
 
 __attribute__((used)) static void leaf_delete(ossl_uintmax_t n, char *value, void *arg)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static void leaf_delete(ossl_uintmax_t n, char *value, voi
     for (i = 0; i < doall_data->num_cases; i++)
         if (n == cases[i].n && strcmp(value, cases[i].v) == 0) {
             doall_data->res = 1;
-            ossl_sa_char_set(doall_data->sa, n, NULL);
+            ossl_sa_char_set(doall_data->sa, n, ((void*)0));
             return;
         }
     TEST_error("Index %ju with value %s not found", n, value);

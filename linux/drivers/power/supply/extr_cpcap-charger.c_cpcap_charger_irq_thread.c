@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpcap_charger_ddata {int /*<<< orphan*/  detect_work; int /*<<< orphan*/  active; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule_delayed_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct cpcap_charger_ddata {int detect_work; int active; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int atomic_read (int *) ;
+ int schedule_delayed_work (int *,int ) ;
 
 __attribute__((used)) static irqreturn_t cpcap_charger_irq_thread(int irq, void *data)
 {
-	struct cpcap_charger_ddata *ddata = data;
+ struct cpcap_charger_ddata *ddata = data;
 
-	if (!atomic_read(&ddata->active))
-		return IRQ_NONE;
+ if (!atomic_read(&ddata->active))
+  return IRQ_NONE;
 
-	schedule_delayed_work(&ddata->detect_work, 0);
+ schedule_delayed_work(&ddata->detect_work, 0);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  ToxAV ;
-struct TYPE_3__ {int height; int width; int /*<<< orphan*/ * imageData; } ;
-typedef  TYPE_1__ IplImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RGB2U (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RGB2V (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RGB2Y (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int toxav_video_send_frame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int ToxAV ;
+struct TYPE_3__ {int height; int width; int * imageData; } ;
+typedef TYPE_1__ IplImage ;
+
+
+ int RGB2U (int ,int ,int ) ;
+ int RGB2V (int ,int ,int ) ;
+ int RGB2Y (int ,int ,int ) ;
+ int free (int *) ;
+ int * malloc (int) ;
+ int toxav_video_send_frame (int *,int ,int,int,int *,int *,int *,int *) ;
 
 int send_opencv_img(ToxAV *av, uint32_t friend_number, const IplImage *img)
 {
@@ -58,7 +58,7 @@ int send_opencv_img(ToxAV *av, uint32_t friend_number, const IplImage *img)
     }
 
     int rc = toxav_video_send_frame(av, friend_number, img->width, img->height,
-                                    planes[0], planes[1], planes[2], NULL);
+                                    planes[0], planes[1], planes[2], ((void*)0));
     free(planes[0]);
     free(planes[1]);
     free(planes[2]);

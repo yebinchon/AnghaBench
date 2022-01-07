@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int grbitEnabledProtocols; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_6__ {int grbitEnabledProtocols; int member_0; } ;
 struct TYPE_5__ {int grbitProtocol; } ;
-typedef  TYPE_1__ SecPkgCred_SupportedProtocols ;
-typedef  scalar_t__ SECURITY_STATUS ;
-typedef  TYPE_2__ SCHANNEL_CRED ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ SecPkgCred_SupportedProtocols ;
+typedef scalar_t__ SECURITY_STATUS ;
+typedef TYPE_2__ SCHANNEL_CRED ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ AcquireCredentialsHandleW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ QueryCredentialsAttributesA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  SCHANNEL_CRED_VERSION ; 
- int /*<<< orphan*/  SECPKG_ATTR_SUPPORTED_PROTOCOLS ; 
- int /*<<< orphan*/  SECPKG_CRED_OUTBOUND ; 
- scalar_t__ SEC_E_OK ; 
- int SP_PROT_TLS1_1PLUS_CLIENT ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ UNISP_NAME_W ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__) ; 
- int /*<<< orphan*/  compat_cred_handle ; 
- int /*<<< orphan*/  cred_handle ; 
- int cred_handle_initialized ; 
- int have_compat_cred_handle ; 
- int /*<<< orphan*/  init_sechandle_cs ; 
+
+ scalar_t__ AcquireCredentialsHandleW (int *,int *,int ,int *,TYPE_2__*,int *,int *,int *,int *) ;
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ int LeaveCriticalSection (int *) ;
+ scalar_t__ QueryCredentialsAttributesA (int *,int ,TYPE_1__*) ;
+ int SCHANNEL_CRED_VERSION ;
+ int SECPKG_ATTR_SUPPORTED_PROTOCOLS ;
+ int SECPKG_CRED_OUTBOUND ;
+ scalar_t__ SEC_E_OK ;
+ int SP_PROT_TLS1_1PLUS_CLIENT ;
+ int TRUE ;
+ scalar_t__ UNISP_NAME_W ;
+ int WARN (char*,scalar_t__) ;
+ int compat_cred_handle ;
+ int cred_handle ;
+ int cred_handle_initialized ;
+ int have_compat_cred_handle ;
+ int init_sechandle_cs ;
 
 __attribute__((used)) static BOOL ensure_cred_handle(void)
 {
@@ -50,14 +50,14 @@ __attribute__((used)) static BOOL ensure_cred_handle(void)
         SCHANNEL_CRED cred = {SCHANNEL_CRED_VERSION};
         SecPkgCred_SupportedProtocols prots;
 
-        res = AcquireCredentialsHandleW(NULL, (WCHAR*)UNISP_NAME_W, SECPKG_CRED_OUTBOUND, NULL, &cred,
-                NULL, NULL, &cred_handle, NULL);
+        res = AcquireCredentialsHandleW(((void*)0), (WCHAR*)UNISP_NAME_W, SECPKG_CRED_OUTBOUND, ((void*)0), &cred,
+                ((void*)0), ((void*)0), &cred_handle, ((void*)0));
         if(res == SEC_E_OK) {
             res = QueryCredentialsAttributesA(&cred_handle, SECPKG_ATTR_SUPPORTED_PROTOCOLS, &prots);
             if(res != SEC_E_OK || (prots.grbitProtocol & SP_PROT_TLS1_1PLUS_CLIENT)) {
                 cred.grbitEnabledProtocols = prots.grbitProtocol & ~SP_PROT_TLS1_1PLUS_CLIENT;
-                res = AcquireCredentialsHandleW(NULL, (WCHAR*)UNISP_NAME_W, SECPKG_CRED_OUTBOUND, NULL, &cred,
-                       NULL, NULL, &compat_cred_handle, NULL);
+                res = AcquireCredentialsHandleW(((void*)0), (WCHAR*)UNISP_NAME_W, SECPKG_CRED_OUTBOUND, ((void*)0), &cred,
+                       ((void*)0), ((void*)0), &compat_cred_handle, ((void*)0));
                 have_compat_cred_handle = res == SEC_E_OK;
             }
         }

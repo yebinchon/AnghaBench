@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iuu_private {int /*<<< orphan*/  writebuf; int /*<<< orphan*/  dbgbuf; int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct iuu_private {int writebuf; int dbgbuf; int buf; } ;
+
+
+ int kfree (int ) ;
 
 __attribute__((used)) static void iuu_free_buf(struct iuu_private *priv)
 {
-	kfree(priv->buf);
-	kfree(priv->dbgbuf);
-	kfree(priv->writebuf);
+ kfree(priv->buf);
+ kfree(priv->dbgbuf);
+ kfree(priv->writebuf);
 }

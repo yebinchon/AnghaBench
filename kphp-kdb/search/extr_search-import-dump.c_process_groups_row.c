@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_search_text_short_entry {char* text; scalar_t__ obj_id; scalar_t__ rate2; scalar_t__ rate; scalar_t__ type; } ;
-struct lev_search_text_long_entry {int text_len; char* text; scalar_t__ obj_id; scalar_t__ rate2; scalar_t__ rate; int /*<<< orphan*/  type; } ;
+struct lev_search_text_long_entry {int text_len; char* text; scalar_t__ obj_id; scalar_t__ rate2; scalar_t__ rate; int type; } ;
 
-/* Variables and functions */
- scalar_t__* I ; 
- int* L ; 
- int /*<<< orphan*/  LEV_SEARCH_TEXT_LONG ; 
- scalar_t__ LEV_SEARCH_TEXT_SHORT ; 
- char** S ; 
- int /*<<< orphan*/  adj_rec ; 
- int /*<<< orphan*/  fits (scalar_t__) ; 
- size_t gr_access ; 
- size_t gr_city_id ; 
- size_t gr_country_id ; 
- size_t gr_description ; 
- size_t gr_id ; 
- size_t gr_is_event ; 
- size_t gr_name ; 
- size_t gr_num ; 
- size_t gr_subtype ; 
- size_t gr_type ; 
- int /*<<< orphan*/  make_tag (char*,char,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  store_map (scalar_t__,scalar_t__) ; 
- void* write_alloc (int) ; 
+
+ scalar_t__* I ;
+ int* L ;
+ int LEV_SEARCH_TEXT_LONG ;
+ scalar_t__ LEV_SEARCH_TEXT_SHORT ;
+ char** S ;
+ int adj_rec ;
+ int fits (scalar_t__) ;
+ size_t gr_access ;
+ size_t gr_city_id ;
+ size_t gr_country_id ;
+ size_t gr_description ;
+ size_t gr_id ;
+ size_t gr_is_event ;
+ size_t gr_name ;
+ size_t gr_num ;
+ size_t gr_subtype ;
+ size_t gr_type ;
+ int make_tag (char*,char,scalar_t__) ;
+ int memcpy (char*,char*,int) ;
+ int store_map (scalar_t__,scalar_t__) ;
+ void* write_alloc (int) ;
 
 void process_groups_row (void) {
   char *p, *q;

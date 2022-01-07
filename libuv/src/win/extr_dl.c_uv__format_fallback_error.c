@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-struct TYPE_3__ {int /*<<< orphan*/  errmsg; } ;
-typedef  TYPE_1__ uv_lib_t ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  scalar_t__ DWORD_PTR ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_ARGUMENT_ARRAY ; 
- int FORMAT_MESSAGE_FROM_STRING ; 
- int /*<<< orphan*/  FormatMessageA (int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int va_list ;
+struct TYPE_3__ {int errmsg; } ;
+typedef TYPE_1__ uv_lib_t ;
+typedef int LPSTR ;
+typedef scalar_t__ DWORD_PTR ;
+typedef char CHAR ;
+
+
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_ARGUMENT_ARRAY ;
+ int FORMAT_MESSAGE_FROM_STRING ;
+ int FormatMessageA (int,char const*,int ,int ,int ,int ,int *) ;
 
 __attribute__((used)) static void uv__format_fallback_error(uv_lib_t* lib, int errorno){
   static const CHAR fallback_error[] = "error: %1!d!";

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct uri_test   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int XmlNodeType ;
-typedef  scalar_t__ WCHAR ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct uri_test TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int XmlNodeType ;
+typedef scalar_t__ WCHAR ;
+typedef scalar_t__ UINT ;
 struct uri_test {char const* xml; char const** uri; } ;
 struct TYPE_3__ {char* member_0; char* member_1; char* member_2; char* member_3; char* member_4; } ;
-typedef  int /*<<< orphan*/  IXmlReader ;
-typedef  unsigned int HRESULT ;
+typedef int IXmlReader ;
+typedef unsigned int HRESULT ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_2__*) ; 
- unsigned int CreateXmlReader (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IXmlReader ; 
- unsigned int IXmlReader_GetLocalName (int /*<<< orphan*/ *,scalar_t__ const**,scalar_t__*) ; 
- unsigned int IXmlReader_GetQualifiedName (int /*<<< orphan*/ *,scalar_t__ const**,scalar_t__*) ; 
- unsigned int IXmlReader_Read (int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  IXmlReader_Release (int /*<<< orphan*/ *) ; 
- unsigned int S_OK ; 
- unsigned int XmlNodeType_CDATA ; 
- unsigned int XmlNodeType_Comment ; 
- unsigned int XmlNodeType_Element ; 
- unsigned int XmlNodeType_EndElement ; 
- unsigned int XmlNodeType_None ; 
- unsigned int XmlNodeType_ProcessingInstruction ; 
- unsigned int XmlNodeType_Text ; 
- unsigned int XmlNodeType_Whitespace ; 
- unsigned int XmlNodeType_XmlDeclaration ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  reader_namespace (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  set_input_string (int /*<<< orphan*/ *,char const*) ; 
+
+ unsigned int ARRAY_SIZE (TYPE_2__*) ;
+ unsigned int CreateXmlReader (int *,void**,int *) ;
+ int IID_IXmlReader ;
+ unsigned int IXmlReader_GetLocalName (int *,scalar_t__ const**,scalar_t__*) ;
+ unsigned int IXmlReader_GetQualifiedName (int *,scalar_t__ const**,scalar_t__*) ;
+ unsigned int IXmlReader_Read (int *,unsigned int*) ;
+ int IXmlReader_Release (int *) ;
+ unsigned int S_OK ;
+ unsigned int XmlNodeType_CDATA ;
+ unsigned int XmlNodeType_Comment ;
+ unsigned int XmlNodeType_Element ;
+ unsigned int XmlNodeType_EndElement ;
+ unsigned int XmlNodeType_None ;
+ unsigned int XmlNodeType_ProcessingInstruction ;
+ unsigned int XmlNodeType_Text ;
+ unsigned int XmlNodeType_Whitespace ;
+ unsigned int XmlNodeType_XmlDeclaration ;
+ int ok (int,char*,...) ;
+ int reader_namespace (int *,char const*) ;
+ int set_input_string (int *,char const*) ;
 
 __attribute__((used)) static void test_namespaceuri(void)
 {
@@ -78,7 +78,7 @@ __attribute__((used)) static void test_namespaceuri(void)
     unsigned int i;
     HRESULT hr;
 
-    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, NULL);
+    hr = CreateXmlReader(&IID_IXmlReader, (void**)&reader, ((void*)0));
     ok(hr == S_OK, "S_OK, got %08x\n", hr);
 
     for (i = 0; i < ARRAY_SIZE(uri_tests); i++) {
@@ -100,17 +100,17 @@ __attribute__((used)) static void test_namespaceuri(void)
                     type == XmlNodeType_EndElement ||
                     type == XmlNodeType_XmlDeclaration, "Unexpected node type %d.\n", type);
 
-            local = NULL;
+            local = ((void*)0);
             length = 0;
             hr = IXmlReader_GetLocalName(reader, &local, &length);
             ok(hr == S_OK, "S_OK, got %08x\n", hr);
-            ok(local != NULL, "Unexpected NULL local name pointer\n");
+            ok(local != ((void*)0), "Unexpected NULL local name pointer\n");
 
-            qname = NULL;
+            qname = ((void*)0);
             length2 = 0;
             hr = IXmlReader_GetQualifiedName(reader, &qname, &length2);
             ok(hr == S_OK, "S_OK, got %08x\n", hr);
-            ok(qname != NULL, "Unexpected NULL qualified name pointer\n");
+            ok(qname != ((void*)0), "Unexpected NULL qualified name pointer\n");
 
             if (type == XmlNodeType_Element ||
                     type == XmlNodeType_EndElement ||

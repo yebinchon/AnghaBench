@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void* propid_to_prop; void* propid_to_name; void* name_to_propid; } ;
-typedef  TYPE_1__ PropertyStorage_impl ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ PropertyStorage_impl ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PropertyStorage_DestroyDictionaries (TYPE_1__*) ; 
- int /*<<< orphan*/  PropertyStorage_PropCompare ; 
- int /*<<< orphan*/  PropertyStorage_PropNameCompare ; 
- int /*<<< orphan*/ * PropertyStorage_PropNameDestroy ; 
- int /*<<< orphan*/ * PropertyStorage_PropertyDestroy ; 
- int /*<<< orphan*/  STG_E_INSUFFICIENTMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- void* dictionary_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int PropertyStorage_DestroyDictionaries (TYPE_1__*) ;
+ int PropertyStorage_PropCompare ;
+ int PropertyStorage_PropNameCompare ;
+ int * PropertyStorage_PropNameDestroy ;
+ int * PropertyStorage_PropertyDestroy ;
+ int STG_E_INSUFFICIENTMEMORY ;
+ int S_OK ;
+ void* dictionary_create (int ,int *,TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT PropertyStorage_CreateDictionaries(PropertyStorage_impl *This)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT PropertyStorage_CreateDictionaries(Property
         goto end;
     }
     This->propid_to_name = dictionary_create(PropertyStorage_PropCompare,
-     NULL, This);
+     ((void*)0), This);
     if (!This->propid_to_name)
     {
         hr = STG_E_INSUFFICIENTMEMORY;

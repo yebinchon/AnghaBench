@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  URLContext ;
-struct TYPE_8__ {int /*<<< orphan*/  bytes_read; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ RTMPPacket ;
-typedef  TYPE_2__ RTMPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTMP_NETWORK_CHANNEL ; 
- int /*<<< orphan*/  RTMP_PT_BYTES_READ ; 
- int /*<<< orphan*/  bytestream_put_be32 (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int ff_rtmp_packet_create (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int rtmp_send_packet (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int URLContext ;
+struct TYPE_8__ {int bytes_read; } ;
+struct TYPE_7__ {int * data; } ;
+typedef TYPE_1__ RTMPPacket ;
+typedef TYPE_2__ RTMPContext ;
+
+
+ int RTMP_NETWORK_CHANNEL ;
+ int RTMP_PT_BYTES_READ ;
+ int bytestream_put_be32 (int **,int ) ;
+ int ff_rtmp_packet_create (TYPE_1__*,int ,int ,int ,int) ;
+ int rtmp_send_packet (TYPE_2__*,TYPE_1__*,int ) ;
 
 __attribute__((used)) static int gen_bytes_read(URLContext *s, RTMPContext *rt, uint32_t ts)
 {

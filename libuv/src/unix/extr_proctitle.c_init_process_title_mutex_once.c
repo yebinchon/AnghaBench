@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  process_title_mutex ; 
- int /*<<< orphan*/  uv__set_process_title_platform_init () ; 
- int /*<<< orphan*/  uv_mutex_init (int /*<<< orphan*/ *) ; 
+ int process_title_mutex ;
+ int uv__set_process_title_platform_init () ;
+ int uv_mutex_init (int *) ;
 
 __attribute__((used)) static void init_process_title_mutex_once(void) {
   uv_mutex_init(&process_title_mutex);
-#ifdef __APPLE__
-  uv__set_process_title_platform_init();
-#endif
+
+
+
 }

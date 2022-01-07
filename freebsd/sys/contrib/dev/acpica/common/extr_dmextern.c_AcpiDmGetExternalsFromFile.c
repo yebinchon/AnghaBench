@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int ACPI_EXT_ORIGIN_FROM_FILE ; 
- int ACPI_EXT_RESOLVED_REFERENCE ; 
- int /*<<< orphan*/  ACPI_TYPE_METHOD ; 
- int /*<<< orphan*/  ASL_STRING_BUFFER_SIZE ; 
- int /*<<< orphan*/  AcpiDmAddExternalListToNamespace () ; 
- int /*<<< orphan*/  AcpiDmAddPathToExternalList (char*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,char*,int,...) ; 
- int /*<<< orphan*/  AslAbort () ; 
- char* AslGbl_ExternalRefFilename ; 
- int /*<<< orphan*/ * AslGbl_StringBuffer ; 
- int /*<<< orphan*/  METHOD_SEPARATORS ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fgets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strtok (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT32 ;
+typedef int FILE ;
+
+
+ int ACPI_EXT_ORIGIN_FROM_FILE ;
+ int ACPI_EXT_RESOLVED_REFERENCE ;
+ int ACPI_TYPE_METHOD ;
+ int ASL_STRING_BUFFER_SIZE ;
+ int AcpiDmAddExternalListToNamespace () ;
+ int AcpiDmAddPathToExternalList (char*,int ,int,int) ;
+ int AcpiOsPrintf (char*,char*,int,...) ;
+ int AslAbort () ;
+ char* AslGbl_ExternalRefFilename ;
+ int * AslGbl_StringBuffer ;
+ int METHOD_SEPARATORS ;
+ scalar_t__ errno ;
+ int fclose (int *) ;
+ scalar_t__ fgets (int *,int ,int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strtok (int *,int ) ;
+ int strtoul (char*,int *,int ) ;
 
 void
 AcpiDmGetExternalsFromFile (
     void)
 {
-    FILE                    *ExternalRefFile;
-    char                    *Token;
-    char                    *MethodName;
-    UINT32                  ArgCount;
-    UINT32                  ImportCount = 0;
+    FILE *ExternalRefFile;
+    char *Token;
+    char *MethodName;
+    UINT32 ArgCount;
+    UINT32 ImportCount = 0;
 
 
     if (!AslGbl_ExternalRefFilename)
@@ -51,7 +51,7 @@ AcpiDmGetExternalsFromFile (
         return;
     }
 
-    /* Open the file */
+
 
     ExternalRefFile = fopen (AslGbl_ExternalRefFilename, "r");
     if (!ExternalRefFile)
@@ -62,11 +62,11 @@ AcpiDmGetExternalsFromFile (
         return;
     }
 
-    /* Each line defines a method */
+
 
     while (fgets (AslGbl_StringBuffer, ASL_STRING_BUFFER_SIZE, ExternalRefFile))
     {
-        Token = strtok (AslGbl_StringBuffer, METHOD_SEPARATORS);   /* "External" */
+        Token = strtok (AslGbl_StringBuffer, METHOD_SEPARATORS);
         if (!Token)
         {
             continue;
@@ -77,13 +77,13 @@ AcpiDmGetExternalsFromFile (
             continue;
         }
 
-        MethodName = strtok (NULL, METHOD_SEPARATORS);      /* Method namepath */
+        MethodName = strtok (((void*)0), METHOD_SEPARATORS);
         if (!MethodName)
         {
             continue;
         }
 
-        Token = strtok (NULL, METHOD_SEPARATORS);           /* "MethodObj" */
+        Token = strtok (((void*)0), METHOD_SEPARATORS);
         if (!Token)
         {
             continue;
@@ -94,16 +94,16 @@ AcpiDmGetExternalsFromFile (
             continue;
         }
 
-        Token = strtok (NULL, METHOD_SEPARATORS);           /* Arg count */
+        Token = strtok (((void*)0), METHOD_SEPARATORS);
         if (!Token)
         {
             continue;
         }
 
-        /* Convert arg count string to an integer */
+
 
         errno = 0;
-        ArgCount = strtoul (Token, NULL, 0);
+        ArgCount = strtoul (Token, ((void*)0), 0);
         if (errno)
         {
             fprintf (stderr, "Invalid argument count (%s)\n", Token);
@@ -116,7 +116,7 @@ AcpiDmGetExternalsFromFile (
             continue;
         }
 
-        /* Add this external to the global list */
+
 
         AcpiOsPrintf ("%s: Importing method external (%u arguments) %s\n",
             AslGbl_ExternalRefFilename, ArgCount, MethodName);
@@ -134,7 +134,7 @@ AcpiDmGetExternalsFromFile (
     }
     else
     {
-        /* Add the external(s) to the namespace */
+
 
         AcpiDmAddExternalListToNamespace ();
 

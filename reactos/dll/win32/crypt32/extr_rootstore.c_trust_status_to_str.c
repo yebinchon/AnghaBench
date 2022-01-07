@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int CERT_TRUST_HAS_EXCLUDED_NAME_CONSTRAINT ; 
- int CERT_TRUST_HAS_NOT_DEFINED_NAME_CONSTRAINT ; 
- int CERT_TRUST_HAS_NOT_PERMITTED_NAME_CONSTRAINT ; 
- int CERT_TRUST_HAS_NOT_SUPPORTED_NAME_CONSTRAINT ; 
- int CERT_TRUST_INVALID_BASIC_CONSTRAINTS ; 
- int CERT_TRUST_INVALID_EXTENSION ; 
- int CERT_TRUST_INVALID_NAME_CONSTRAINTS ; 
- int CERT_TRUST_INVALID_POLICY_CONSTRAINTS ; 
- int CERT_TRUST_IS_CYCLIC ; 
- int CERT_TRUST_IS_NOT_SIGNATURE_VALID ; 
- int CERT_TRUST_IS_NOT_TIME_NESTED ; 
- int CERT_TRUST_IS_NOT_TIME_VALID ; 
- int CERT_TRUST_IS_NOT_VALID_FOR_USAGE ; 
- int CERT_TRUST_IS_OFFLINE_REVOCATION ; 
- int CERT_TRUST_IS_REVOKED ; 
- int CERT_TRUST_IS_UNTRUSTED_ROOT ; 
- int CERT_TRUST_NO_ISSUANCE_CHAIN_POLICY ; 
- int CERT_TRUST_REVOCATION_STATUS_UNKNOWN ; 
- scalar_t__ snprintf (char*,int,char*) ; 
+
+
+
+typedef int buf ;
+typedef int DWORD ;
+
+
+ int CERT_TRUST_HAS_EXCLUDED_NAME_CONSTRAINT ;
+ int CERT_TRUST_HAS_NOT_DEFINED_NAME_CONSTRAINT ;
+ int CERT_TRUST_HAS_NOT_PERMITTED_NAME_CONSTRAINT ;
+ int CERT_TRUST_HAS_NOT_SUPPORTED_NAME_CONSTRAINT ;
+ int CERT_TRUST_INVALID_BASIC_CONSTRAINTS ;
+ int CERT_TRUST_INVALID_EXTENSION ;
+ int CERT_TRUST_INVALID_NAME_CONSTRAINTS ;
+ int CERT_TRUST_INVALID_POLICY_CONSTRAINTS ;
+ int CERT_TRUST_IS_CYCLIC ;
+ int CERT_TRUST_IS_NOT_SIGNATURE_VALID ;
+ int CERT_TRUST_IS_NOT_TIME_NESTED ;
+ int CERT_TRUST_IS_NOT_TIME_VALID ;
+ int CERT_TRUST_IS_NOT_VALID_FOR_USAGE ;
+ int CERT_TRUST_IS_OFFLINE_REVOCATION ;
+ int CERT_TRUST_IS_REVOKED ;
+ int CERT_TRUST_IS_UNTRUSTED_ROOT ;
+ int CERT_TRUST_NO_ISSUANCE_CHAIN_POLICY ;
+ int CERT_TRUST_REVOCATION_STATUS_UNKNOWN ;
+ scalar_t__ snprintf (char*,int,char*) ;
 
 __attribute__((used)) static const char *trust_status_to_str(DWORD status)
 {

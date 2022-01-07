@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  IOleClientSite_iface; } ;
-typedef  int /*<<< orphan*/  LPOLESTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DocHost ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IBindCtx_RegisterObjectParam (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IMoniker_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMoniker_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMoniker_GetDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ SZ_HTML_CLIENTSITE_OBJECTPARAM ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_moniker (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  set_dochost_url (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ try_application_url (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_4__ {int IOleClientSite_iface; } ;
+typedef int LPOLESTR ;
+typedef int LPCWSTR ;
+typedef int IUnknown ;
+typedef int IMoniker ;
+typedef int IBindStatusCallback ;
+typedef int IBindCtx ;
+typedef int HRESULT ;
+typedef TYPE_1__ DocHost ;
+
+
+ int CoTaskMemFree (int *) ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int IBindCtx_RegisterObjectParam (int *,int ,int *) ;
+ int IID_IUnknown ;
+ int IMoniker_AddRef (int *) ;
+ int IMoniker_BindToObject (int *,int *,int *,int *,void**) ;
+ int IMoniker_GetDisplayName (int *,int ,int *,int **) ;
+ int IMoniker_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ scalar_t__ SZ_HTML_CLIENTSITE_OBJECTPARAM ;
+ int S_OK ;
+ int create_moniker (int ,int **) ;
+ int set_dochost_url (TYPE_1__*,int *) ;
+ scalar_t__ try_application_url (int ) ;
 
 __attribute__((used)) static HRESULT bind_to_object(DocHost *This, IMoniker *mon, LPCWSTR url, IBindCtx *bindctx,
                               IBindStatusCallback *callback)
 {
-    IUnknown *unk = NULL;
+    IUnknown *unk = ((void*)0);
     WCHAR *display_name;
     HRESULT hres;
 
@@ -55,7 +55,7 @@ __attribute__((used)) static HRESULT bind_to_object(DocHost *This, IMoniker *mon
             return hres;
     }
 
-    hres = IMoniker_GetDisplayName(mon, 0, NULL, &display_name);
+    hres = IMoniker_GetDisplayName(mon, 0, ((void*)0), &display_name);
     if(FAILED(hres)) {
         FIXME("GetDisplayName failed: %08x\n", hres);
         IMoniker_Release(mon);
@@ -72,7 +72,7 @@ __attribute__((used)) static HRESULT bind_to_object(DocHost *This, IMoniker *mon
     IBindCtx_RegisterObjectParam(bindctx, (LPOLESTR)SZ_HTML_CLIENTSITE_OBJECTPARAM,
                                  (IUnknown*)&This->IOleClientSite_iface);
 
-    hres = IMoniker_BindToObject(mon, bindctx, NULL, &IID_IUnknown, (void**)&unk);
+    hres = IMoniker_BindToObject(mon, bindctx, ((void*)0), &IID_IUnknown, (void**)&unk);
     if(SUCCEEDED(hres)) {
         hres = S_OK;
         if(unk)

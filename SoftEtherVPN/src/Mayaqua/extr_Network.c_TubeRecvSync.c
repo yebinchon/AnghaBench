@@ -1,100 +1,100 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT64 ;
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  Event; int /*<<< orphan*/  Queue; } ;
-typedef  int /*<<< orphan*/  TUBEDATA ;
-typedef  TYPE_1__ TUBE ;
-typedef  int /*<<< orphan*/  SOCK_EVENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetNext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GetTubeSockEvent (TYPE_1__*) ; 
- scalar_t__ INFINITE ; 
- int IsTubeConnected (TYPE_1__*) ; 
- int /*<<< orphan*/  LockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSockEvent (int /*<<< orphan*/ *) ; 
- scalar_t__ Tick64 () ; 
- int /*<<< orphan*/  UnlockQueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  WaitSockEvent (int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT64 ;
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int Event; int Queue; } ;
+typedef int TUBEDATA ;
+typedef TYPE_1__ TUBE ;
+typedef int SOCK_EVENT ;
+
+
+ int * GetNext (int ) ;
+ int * GetTubeSockEvent (TYPE_1__*) ;
+ scalar_t__ INFINITE ;
+ int IsTubeConnected (TYPE_1__*) ;
+ int LockQueue (int ) ;
+ int ReleaseSockEvent (int *) ;
+ scalar_t__ Tick64 () ;
+ int UnlockQueue (int ) ;
+ int Wait (int ,scalar_t__) ;
+ int WaitSockEvent (int *,scalar_t__) ;
 
 TUBEDATA *TubeRecvSync(TUBE *t, UINT timeout)
 {
-	UINT64 start_tick, timeout_tick;
-	TUBEDATA *d = NULL;
-	// Validate arguments
-	if (t == NULL)
-	{
-		return NULL;
-	}
+ UINT64 start_tick, timeout_tick;
+ TUBEDATA *d = ((void*)0);
 
-	if (IsTubeConnected(t) == false)
-	{
-		return NULL;
-	}
+ if (t == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	start_tick = Tick64();
-	timeout_tick = start_tick + (UINT64)timeout;
+ if (IsTubeConnected(t) == 0)
+ {
+  return ((void*)0);
+ }
 
-	while (true)
-	{
-		UINT64 now = Tick64();
-		UINT remain_time;
-		SOCK_EVENT *e;
-		UINT interval;
+ start_tick = Tick64();
+ timeout_tick = start_tick + (UINT64)timeout;
 
-		d = NULL;
+ while (1)
+ {
+  UINT64 now = Tick64();
+  UINT remain_time;
+  SOCK_EVENT *e;
+  UINT interval;
 
-		if (IsTubeConnected(t) == false)
-		{
-			break;
-		}
+  d = ((void*)0);
 
-		LockQueue(t->Queue);
-		{
-			d = GetNext(t->Queue);
-		}
-		UnlockQueue(t->Queue);
+  if (IsTubeConnected(t) == 0)
+  {
+   break;
+  }
 
-		if (d != NULL)
-		{
-			break;
-		}
+  LockQueue(t->Queue);
+  {
+   d = GetNext(t->Queue);
+  }
+  UnlockQueue(t->Queue);
 
-		if (timeout != INFINITE && now >= timeout_tick)
-		{
-			return NULL;
-		}
+  if (d != ((void*)0))
+  {
+   break;
+  }
 
-		remain_time = (UINT)(timeout_tick - now);
+  if (timeout != INFINITE && now >= timeout_tick)
+  {
+   return ((void*)0);
+  }
 
-		e = GetTubeSockEvent(t);
+  remain_time = (UINT)(timeout_tick - now);
 
-		interval = (timeout == INFINITE ? INFINITE : remain_time);
+  e = GetTubeSockEvent(t);
 
-		if (e == NULL)
-		{
-			Wait(t->Event, interval);
-		}
-		else
-		{
-			WaitSockEvent(e, interval);
+  interval = (timeout == INFINITE ? INFINITE : remain_time);
 
-			ReleaseSockEvent(e);
-		}
-	}
+  if (e == ((void*)0))
+  {
+   Wait(t->Event, interval);
+  }
+  else
+  {
+   WaitSockEvent(e, interval);
 
-	return d;
+   ReleaseSockEvent(e);
+  }
+ }
+
+ return d;
 }

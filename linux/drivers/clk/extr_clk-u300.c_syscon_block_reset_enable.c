@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct clk_syscon {int reset; int /*<<< orphan*/  res_reg; int /*<<< orphan*/  res_bit; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  readw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  syscon_resetreg_lock ; 
- int /*<<< orphan*/  writew (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u16 ;
+struct clk_syscon {int reset; int res_reg; int res_bit; } ;
+
+
+ int BIT (int ) ;
+ int readw (int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int syscon_resetreg_lock ;
+ int writew (int ,int ) ;
 
 __attribute__((used)) static void syscon_block_reset_enable(struct clk_syscon *sclk)
 {
-	unsigned long iflags;
-	u16 val;
+ unsigned long iflags;
+ u16 val;
 
-	/* Not all blocks support resetting */
-	if (!sclk->res_reg)
-		return;
-	spin_lock_irqsave(&syscon_resetreg_lock, iflags);
-	val = readw(sclk->res_reg);
-	val |= BIT(sclk->res_bit);
-	writew(val, sclk->res_reg);
-	spin_unlock_irqrestore(&syscon_resetreg_lock, iflags);
-	sclk->reset = true;
+
+ if (!sclk->res_reg)
+  return;
+ spin_lock_irqsave(&syscon_resetreg_lock, iflags);
+ val = readw(sclk->res_reg);
+ val |= BIT(sclk->res_bit);
+ writew(val, sclk->res_reg);
+ spin_unlock_irqrestore(&syscon_resetreg_lock, iflags);
+ sclk->reset = 1;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ vec3_t ;
-typedef  scalar_t__ qboolean ;
-typedef  int /*<<< orphan*/  playerState_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEEPMIND_OVERRIDE_LOOKAT ; 
- int /*<<< orphan*/  trap_DeepmindCallback (int /*<<< orphan*/ ,intptr_t,intptr_t,intptr_t,intptr_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ vec3_t ;
+typedef scalar_t__ qboolean ;
+typedef int playerState_t ;
+
+
+ int DEEPMIND_OVERRIDE_LOOKAT ;
+ int trap_DeepmindCallback (int ,intptr_t,intptr_t,intptr_t,intptr_t,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 void dmlab_trigger_lookat(int entity_id, qboolean looked_at, vec3_t position,
                           const playerState_t* ps) {

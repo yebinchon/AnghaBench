@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* name; int replica; int days; int keep; int tables; int rows; int cache; int ablocks; int tblocks; int ctime; int clog; int comp; } ;
-typedef  TYPE_1__ SDbInfo ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ SDbInfo ;
+typedef int FILE ;
 
-/* Variables and functions */
- char* buffer ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+ char* buffer ;
+ int fprintf (int *,char*,char*) ;
+ int sprintf (char*,char*,...) ;
 
 void taosDumpCreateDbClause(SDbInfo *dbInfo, bool isDumpProperty, FILE *fp) {
   char *pstr = buffer;

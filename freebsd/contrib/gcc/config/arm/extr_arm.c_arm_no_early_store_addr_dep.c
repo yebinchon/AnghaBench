@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- scalar_t__ COND_EXEC ; 
- int /*<<< orphan*/  COND_EXEC_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ PARALLEL ; 
- int /*<<< orphan*/  PATTERN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XVECEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_overlap_mentioned_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ scalar_t__ COND_EXEC ;
+ int COND_EXEC_CODE (int ) ;
+ scalar_t__ GET_CODE (int ) ;
+ scalar_t__ PARALLEL ;
+ int PATTERN (int ) ;
+ int XEXP (int ,int ) ;
+ int XVECEXP (int ,int ,int ) ;
+ int reg_overlap_mentioned_p (int ,int ) ;
 
 int
 arm_no_early_store_addr_dep (rtx producer, rtx consumer)

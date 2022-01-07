@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct user_struct {int /*<<< orphan*/  __count; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_dec_and_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_user (struct user_struct*,unsigned long) ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  uidhash_lock ; 
+
+
+
+struct user_struct {int __count; } ;
+
+
+ scalar_t__ atomic_dec_and_lock (int *,int *) ;
+ int free_user (struct user_struct*,unsigned long) ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int uidhash_lock ;
 
 void free_uid(struct user_struct *up)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (!up)
-		return;
+ if (!up)
+  return;
 
-	local_irq_save(flags);
-	if (atomic_dec_and_lock(&up->__count, &uidhash_lock))
-		free_user(up, flags);
-	else
-		local_irq_restore(flags);
+ local_irq_save(flags);
+ if (atomic_dec_and_lock(&up->__count, &uidhash_lock))
+  free_user(up, flags);
+ else
+  local_irq_restore(flags);
 }

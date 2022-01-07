@@ -1,46 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int s8 ;
-typedef  int s16 ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int s8 ;
+typedef int s16 ;
 struct TYPE_8__ {int addr; } ;
-typedef  TYPE_1__ result_struct ;
+typedef TYPE_1__ result_struct ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MappedMemoryAddMatch (int,int,int,TYPE_1__*,int*) ; 
- int MappedMemoryReadByte (int) ; 
- int MappedMemoryReadLong (int) ; 
- int MappedMemoryReadWord (int) ; 
-#define  SEARCHBYTE 139 
-#define  SEARCHEXACT 138 
-#define  SEARCHGREATERTHAN 137 
-#define  SEARCHHEX 136 
-#define  SEARCHLESSTHAN 135 
-#define  SEARCHLONG 134 
-#define  SEARCHREL16BIT 133 
-#define  SEARCHREL8BIT 132 
-#define  SEARCHSIGNED 131 
-#define  SEARCHSTRING 130 
-#define  SEARCHUNSIGNED 129 
-#define  SEARCHWORD 128 
- int /*<<< orphan*/  SearchIncrementAndCheckBounds (TYPE_1__*,int*,int,int*,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  SearchString (int,int,int,char const*,TYPE_1__*,int*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  sscanf (char const*,char*,unsigned long*) ; 
- scalar_t__ strtol (char const*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ strtoul (char const*,int /*<<< orphan*/ *,int) ; 
+
+ int MappedMemoryAddMatch (int,int,int,TYPE_1__*,int*) ;
+ int MappedMemoryReadByte (int) ;
+ int MappedMemoryReadLong (int) ;
+ int MappedMemoryReadWord (int) ;
+ int SearchIncrementAndCheckBounds (TYPE_1__*,int*,int,int*,int ,int*,int) ;
+ int SearchString (int,int,int,char const*,TYPE_1__*,int*) ;
+ int free (TYPE_1__*) ;
+ scalar_t__ malloc (int) ;
+ int sscanf (char const*,char*,unsigned long*) ;
+ scalar_t__ strtol (char const*,int *,int) ;
+ scalar_t__ strtoul (char const*,int *,int) ;
 
 result_struct *MappedMemorySearch(u32 startaddr, u32 endaddr, int searchtype,
                                   const char *searchstr,
@@ -53,35 +41,35 @@ result_struct *MappedMemorySearch(u32 startaddr, u32 endaddr, int searchtype,
    int issigned=0;
    u32 addr;
 
-   if ((results = (result_struct *)malloc(sizeof(result_struct) * maxresults[0])) == NULL)
-      return NULL;
+   if ((results = (result_struct *)malloc(sizeof(result_struct) * maxresults[0])) == ((void*)0))
+      return ((void*)0);
 
    switch (searchtype & 0x70)
    {
-      case SEARCHSTRING:
-      case SEARCHREL8BIT:
-      case SEARCHREL16BIT:
+      case 130:
+      case 132:
+      case 133:
       {
-         // String/8-bit relative/16-bit relative search(not supported, yet)
-         if (SearchString(startaddr, endaddr,  searchtype, searchstr,
+
+         if (SearchString(startaddr, endaddr, searchtype, searchstr,
                           results, maxresults) == 0)
          {
             maxresults[0] = 0;
             free(results);
-            return NULL;
+            return ((void*)0);
          }
 
          return results;
       }
-      case SEARCHHEX:
+      case 136:
          sscanf(searchstr, "%08lx", &searchval);
          break;
-      case SEARCHUNSIGNED:
-         searchval = (unsigned long)strtoul(searchstr, NULL, 10);
+      case 129:
+         searchval = (unsigned long)strtoul(searchstr, ((void*)0), 10);
          issigned = 0;
          break;
-      case SEARCHSIGNED:
-         searchval = (unsigned long)strtol(searchstr, NULL, 10);
+      case 131:
+         searchval = (unsigned long)strtol(searchstr, ((void*)0), 10);
          issigned = 1;
          break;
    }
@@ -94,34 +82,34 @@ result_struct *MappedMemorySearch(u32 startaddr, u32 endaddr, int searchtype,
    else
       addr = startaddr;
 
-   // Regular value search
+
    for (;;)
    {
        u32 val=0;
        u32 newaddr;
 
-       // Fetch byte/word/etc.
+
        switch (searchtype & 0x3)
        {
-          case SEARCHBYTE:
+          case 139:
              val = MappedMemoryReadByte(addr);
-             // sign extend if neccessary
+
              if (issigned)
                 val = (s8)val;
 
              if (SearchIncrementAndCheckBounds(prevresults, maxresults, numresults, &i, addr+1, &newaddr, endaddr))
                 return results;
              break;
-          case SEARCHWORD:
+          case 128:
              val = MappedMemoryReadWord(addr);
-             // sign extend if neccessary
+
              if (issigned)
                 val = (s16)val;
 
              if (SearchIncrementAndCheckBounds(prevresults, maxresults, numresults, &i, addr+2, &newaddr, endaddr))
                 return results;
              break;
-          case SEARCHLONG:
+          case 134:
              val = MappedMemoryReadLong(addr);
 
              if (SearchIncrementAndCheckBounds(prevresults, maxresults, numresults, &i, addr+4, &newaddr, endaddr))
@@ -131,21 +119,21 @@ result_struct *MappedMemorySearch(u32 startaddr, u32 endaddr, int searchtype,
              maxresults[0] = 0;
              if (results)
                 free(results);
-             return NULL;
+             return ((void*)0);
        }
 
-       // Do a comparison
+
        switch (searchtype & 0xC)
        {
-          case SEARCHEXACT:
+          case 138:
              if (val == searchval)
                 MappedMemoryAddMatch(addr, val, searchtype, results, &numresults);
              break;
-          case SEARCHLESSTHAN:
+          case 135:
              if ((!issigned && val < searchval) || (issigned && (signed)val < (signed)searchval))
                 MappedMemoryAddMatch(addr, val, searchtype, results, &numresults);
              break;
-          case SEARCHGREATERTHAN:
+          case 137:
              if ((!issigned && val > searchval) || (issigned && (signed)val > (signed)searchval))
                 MappedMemoryAddMatch(addr, val, searchtype, results, &numresults);
              break;
@@ -153,7 +141,7 @@ result_struct *MappedMemorySearch(u32 startaddr, u32 endaddr, int searchtype,
              maxresults[0] = 0;
              if (results)
                 free(results);
-             return NULL;
+             return ((void*)0);
        }
 
        addr = newaddr;

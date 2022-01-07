@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IDropTarget ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CoUnmarshalInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDropTarget ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_stream_from_map (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_droptarget_local_handle (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IStream ;
+typedef int IDropTarget ;
+typedef int HWND ;
+typedef int HANDLE ;
+
+
+ int CloseHandle (int ) ;
+ int CoUnmarshalInterface (int *,int *,void**) ;
+ int IID_IDropTarget ;
+ int IStream_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int create_stream_from_map (int ,int **) ;
+ int get_droptarget_local_handle (int ) ;
 
 __attribute__((used)) static IDropTarget* get_droptarget_pointer(HWND hwnd)
 {
-    IDropTarget *droptarget = NULL;
+    IDropTarget *droptarget = ((void*)0);
     HANDLE map;
     IStream *stream;
 
     map = get_droptarget_local_handle(hwnd);
-    if(!map) return NULL;
+    if(!map) return ((void*)0);
 
     if(SUCCEEDED(create_stream_from_map(map, &stream)))
     {

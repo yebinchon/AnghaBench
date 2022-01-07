@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int SYSKIND ;
-typedef  int /*<<< orphan*/  LCID ;
 
-/* Variables and functions */
-#define  SYS_WIN16 130 
-#define  SYS_WIN32 129 
-#define  SYS_WIN64 128 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  sprintfW (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int SYSKIND ;
+typedef int LCID ;
+
+
+
+
+
+ int TRACE (char*,int) ;
+ int sprintfW (char*,char const*,int ) ;
+ int strcatW (char*,char const*) ;
 
 __attribute__((used)) static WCHAR *get_lcid_subkey( LCID lcid, SYSKIND syskind, WCHAR *buffer )
 {
@@ -32,12 +32,12 @@ __attribute__((used)) static WCHAR *get_lcid_subkey( LCID lcid, SYSKIND syskind,
     sprintfW( buffer, LcidFormatW, lcid );
     switch(syskind)
     {
-    case SYS_WIN16: strcatW( buffer, win16W ); break;
-    case SYS_WIN32: strcatW( buffer, win32W ); break;
-    case SYS_WIN64: strcatW( buffer, win64W ); break;
+    case 130: strcatW( buffer, win16W ); break;
+    case 129: strcatW( buffer, win32W ); break;
+    case 128: strcatW( buffer, win64W ); break;
     default:
         TRACE("Typelib is for unsupported syskind %i\n", syskind);
-        return NULL;
+        return ((void*)0);
     }
     return buffer;
 }

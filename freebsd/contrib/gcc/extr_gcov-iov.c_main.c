@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- unsigned long strtoul (char*,char**,int) ; 
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,...) ;
+ int stderr ;
+ unsigned long strtoul (char*,char**,int) ;
 
 int
 main (int argc, char **argv)
@@ -54,10 +46,10 @@ main (int argc, char **argv)
 
   printf ("/* Generated automatically by the program `%s'\n", argv[0]);
   printf ("   from `%s (%lu %lu) and %s (%c)'.  */\n",
-	  argv[1], major, minor, argv[2], phase);
+   argv[1], major, minor, argv[2], phase);
   printf ("\n");
   printf ("#define GCOV_VERSION ((gcov_unsigned_t)%#08x)  /* %.4s */\n",
-	  version, v);
+   version, v);
 
   return 0;
 }

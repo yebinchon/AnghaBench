@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  forall; int /*<<< orphan*/  remove; } ;
-struct TYPE_3__ {int /*<<< orphan*/  expose_event; int /*<<< orphan*/  size_allocate; int /*<<< orphan*/  size_request; int /*<<< orphan*/  map; int /*<<< orphan*/  unrealize; int /*<<< orphan*/  realize; } ;
-typedef  TYPE_1__ GtkWidgetClass ;
-typedef  int /*<<< orphan*/  GtkFormClass ;
-typedef  TYPE_2__ GtkContainerClass ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gtk_container_get_type () ; 
- int /*<<< orphan*/  gtk_form_expose ; 
- int /*<<< orphan*/  gtk_form_forall ; 
- int /*<<< orphan*/  gtk_form_map ; 
- int /*<<< orphan*/  gtk_form_realize ; 
- int /*<<< orphan*/  gtk_form_remove ; 
- int /*<<< orphan*/  gtk_form_size_allocate ; 
- int /*<<< orphan*/  gtk_form_size_request ; 
- int /*<<< orphan*/  gtk_form_unrealize ; 
- int /*<<< orphan*/  gtk_type_class (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parent_class ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int forall; int remove; } ;
+struct TYPE_3__ {int expose_event; int size_allocate; int size_request; int map; int unrealize; int realize; } ;
+typedef TYPE_1__ GtkWidgetClass ;
+typedef int GtkFormClass ;
+typedef TYPE_2__ GtkContainerClass ;
+
+
+ int gtk_container_get_type () ;
+ int gtk_form_expose ;
+ int gtk_form_forall ;
+ int gtk_form_map ;
+ int gtk_form_realize ;
+ int gtk_form_remove ;
+ int gtk_form_size_allocate ;
+ int gtk_form_size_request ;
+ int gtk_form_unrealize ;
+ int gtk_type_class (int ) ;
+ int parent_class ;
 
 __attribute__((used)) static void
 gtk_form_class_init(GtkFormClass *klass)

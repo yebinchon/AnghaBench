@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  diskTimer; } ;
-typedef  TYPE_1__ MonitorConn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_INTERVAL ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* monitor ; 
- int /*<<< orphan*/  monitorCheckDiskUsage ; 
- int /*<<< orphan*/  monitorStartSystem ; 
- int /*<<< orphan*/  monitorStopSystem ; 
- int /*<<< orphan*/  startMonitor ; 
- int /*<<< orphan*/  stopMonitor ; 
- int /*<<< orphan*/  taosTmrReset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tscTmr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int diskTimer; } ;
+typedef TYPE_1__ MonitorConn ;
+
+
+ int CHECK_INTERVAL ;
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__* monitor ;
+ int monitorCheckDiskUsage ;
+ int monitorStartSystem ;
+ int monitorStopSystem ;
+ int startMonitor ;
+ int stopMonitor ;
+ int taosTmrReset (int ,int ,int *,int ,int *) ;
+ int tscTmr ;
 
 int monitorInitSystem() {
   monitor = (MonitorConn *)malloc(sizeof(MonitorConn));
   memset(monitor, 0, sizeof(MonitorConn));
-  taosTmrReset(monitorCheckDiskUsage, CHECK_INTERVAL, NULL, tscTmr, &monitor->diskTimer);
+  taosTmrReset(monitorCheckDiskUsage, CHECK_INTERVAL, ((void*)0), tscTmr, &monitor->diskTimer);
 
   startMonitor = monitorStartSystem;
-  stopMonitor  = monitorStopSystem;
+  stopMonitor = monitorStopSystem;
   return 0;
 }

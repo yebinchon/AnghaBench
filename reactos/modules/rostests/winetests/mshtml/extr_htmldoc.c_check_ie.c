@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLDocument7 ;
-typedef  int /*<<< orphan*/  IHTMLDocument5 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDocument5_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLDocument7_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLDocument5 ; 
- int /*<<< orphan*/  IID_IHTMLDocument7 ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * create_document () ; 
- int /*<<< orphan*/  is_ie9plus ; 
- int /*<<< orphan*/  release_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IHTMLDocument7 ;
+typedef int IHTMLDocument5 ;
+typedef int IHTMLDocument2 ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ int IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IHTMLDocument5_Release (int *) ;
+ int IHTMLDocument7_Release (int *) ;
+ int IID_IHTMLDocument5 ;
+ int IID_IHTMLDocument7 ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRUE ;
+ int * create_document () ;
+ int is_ie9plus ;
+ int release_document (int *) ;
+ int trace (char*,int ) ;
 
 __attribute__((used)) static BOOL check_ie(void)
 {

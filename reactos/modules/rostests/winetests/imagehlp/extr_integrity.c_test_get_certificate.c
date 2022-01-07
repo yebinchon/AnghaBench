@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WIN_CERTIFICATE ;
-struct TYPE_5__ {int /*<<< orphan*/  bCertificate; } ;
-typedef  TYPE_1__* LPWIN_CERTIFICATE ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char const*,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pImageGetCertificateData (scalar_t__,int,TYPE_1__*,scalar_t__*) ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- int /*<<< orphan*/  test_dll_path ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WIN_CERTIFICATE ;
+struct TYPE_5__ {int bCertificate; } ;
+typedef TYPE_1__* LPWIN_CERTIFICATE ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (int ,int ,int ,int *,int ,int ,int *) ;
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ scalar_t__ GetLastError () ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ scalar_t__ memcmp (int ,char const*,scalar_t__) ;
+ int ok (int,char*,...) ;
+ int pImageGetCertificateData (scalar_t__,int,TYPE_1__*,scalar_t__*) ;
+ int skip (char*,...) ;
+ int test_dll_path ;
 
 __attribute__((used)) static void test_get_certificate(const char *cert_data, int index)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static void test_get_certificate(const char *cert_data, in
     DWORD err;
     BOOL ret;
 
-    hFile = CreateFileA(test_dll_path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    hFile = CreateFileA(test_dll_path, GENERIC_READ, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
 
     if (hFile == INVALID_HANDLE_VALUE)
     {
@@ -55,7 +55,7 @@ __attribute__((used)) static void test_get_certificate(const char *cert_data, in
         return;
     }
 
-    ret = pImageGetCertificateData(hFile, index, NULL, &cert_len);
+    ret = pImageGetCertificateData(hFile, index, ((void*)0), &cert_len);
     err = GetLastError();
 
     ok ((ret == FALSE) && (err == ERROR_INSUFFICIENT_BUFFER), "ImageGetCertificateData gave unexpected result; ret=%d / err=%x\n", ret, err);

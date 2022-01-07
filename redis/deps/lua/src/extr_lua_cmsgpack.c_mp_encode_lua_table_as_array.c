@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_buf ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_gettable (int /*<<< orphan*/ *,int) ; 
- size_t lua_objlen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,size_t) ; 
- size_t lua_rawlen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mp_encode_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  mp_encode_lua_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int mp_buf ;
+typedef int lua_State ;
+
+
+ int luaL_checkstack (int *,int,char*) ;
+ int lua_gettable (int *,int) ;
+ size_t lua_objlen (int *,int) ;
+ int lua_pushnumber (int *,size_t) ;
+ size_t lua_rawlen (int *,int) ;
+ int mp_encode_array (int *,int *,size_t) ;
+ int mp_encode_lua_type (int *,int *,int) ;
 
 void mp_encode_lua_table_as_array(lua_State *L, mp_buf *buf, int level) {
-#if LUA_VERSION_NUM < 502
+
     size_t len = lua_objlen(L,-1), j;
-#else
-    size_t len = lua_rawlen(L,-1), j;
-#endif
+
+
+
 
     mp_encode_array(L,buf,len);
     luaL_checkstack(L, 1, "in function mp_encode_lua_table_as_array");

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  VARIANTARG ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EXCEPINFO ;
-typedef  int /*<<< orphan*/  DISPPARAMS ;
 
-/* Variables and functions */
- int DISPATCH_METHOD ; 
- int /*<<< orphan*/  DISP_E_MEMBERNOTFOUND ; 
- int /*<<< orphan*/  DispGetParam (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  VT_BSTR ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WORD ;
+typedef int VARIANTARG ;
+typedef int VARIANT ;
+typedef int UINT ;
+typedef int HRESULT ;
+typedef int EXCEPINFO ;
+typedef int DISPPARAMS ;
+
+
+ int DISPATCH_METHOD ;
+ int DISP_E_MEMBERNOTFOUND ;
+ int DispGetParam (int *,int ,int ,int *,int *) ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,int ) ;
+ int S_OK ;
+ int VT_BSTR ;
+ int V_BSTR (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static HRESULT InstallerImpl_OpenProduct(WORD wFlags,
                                          DISPPARAMS* pDispParams,

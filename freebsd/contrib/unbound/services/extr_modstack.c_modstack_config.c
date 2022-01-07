@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct module_stack {int num; struct module_func_block** mod; } ;
 struct module_func_block {int dummy; } ;
-typedef  int /*<<< orphan*/  md ;
+typedef int md ;
 
-/* Variables and functions */
- int MAX_MODULE ; 
- int /*<<< orphan*/  VERB_QUERY ; 
- scalar_t__ calloc (size_t,int) ; 
- int count_modules (char const*) ; 
- int /*<<< orphan*/  log_err (char*,...) ; 
- struct module_func_block* module_factory (char const**) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- scalar_t__* strchr (char*,char) ; 
- int /*<<< orphan*/  verbose (int /*<<< orphan*/ ,char*,char const*) ; 
 
-int 
+ int MAX_MODULE ;
+ int VERB_QUERY ;
+ scalar_t__ calloc (size_t,int) ;
+ int count_modules (char const*) ;
+ int log_err (char*,...) ;
+ struct module_func_block* module_factory (char const**) ;
+ int snprintf (char*,int,char*,char const*) ;
+ scalar_t__* strchr (char*,char) ;
+ int verbose (int ,char*,char const*) ;
+
+int
 modstack_config(struct module_stack* stack, const char* module_conf)
 {
         int i;
@@ -49,13 +49,13 @@ modstack_config(struct module_stack* stack, const char* module_conf)
         for(i=0; i<stack->num; i++) {
                 stack->mod[i] = module_factory(&module_conf);
                 if(!stack->mod[i]) {
-			char md[256];
-			snprintf(md, sizeof(md), "%s", module_conf);
-			if(strchr(md, ' ')) *(strchr(md, ' ')) = 0;
-			if(strchr(md, '\t')) *(strchr(md, '\t')) = 0;
+   char md[256];
+   snprintf(md, sizeof(md), "%s", module_conf);
+   if(strchr(md, ' ')) *(strchr(md, ' ')) = 0;
+   if(strchr(md, '\t')) *(strchr(md, '\t')) = 0;
                         log_err("Unknown value in module-config, module: '%s'."
-				" This module is not present (not compiled in),"
-				" See the list of linked modules with unbound -h",
+    " This module is not present (not compiled in),"
+    " See the list of linked modules with unbound -h",
                                 md);
                         return 0;
                 }

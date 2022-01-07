@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_sem_t ;
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
-typedef  int /*<<< orphan*/  libvlc_event_manager_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  libvlc_MediaPlayerEndReached ; 
- int /*<<< orphan*/  libvlc_MediaPlayerPaused ; 
- scalar_t__ libvlc_Playing ; 
- int libvlc_event_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_event_detach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_player_event_manager (int /*<<< orphan*/ *) ; 
- scalar_t__ libvlc_media_player_get_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_player_set_pause (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  on_event ; 
- int /*<<< orphan*/  test_log (char*) ; 
- int /*<<< orphan*/  vlc_sem_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_sem_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_sem_t ;
+typedef int libvlc_media_player_t ;
+typedef int libvlc_event_manager_t ;
+
+
+ int assert (int) ;
+ int libvlc_MediaPlayerEndReached ;
+ int libvlc_MediaPlayerPaused ;
+ scalar_t__ libvlc_Playing ;
+ int libvlc_event_attach (int *,int ,int ,int *) ;
+ int libvlc_event_detach (int *,int ,int ,int *) ;
+ int * libvlc_media_player_event_manager (int *) ;
+ scalar_t__ libvlc_media_player_get_state (int *) ;
+ int libvlc_media_player_set_pause (int *,int) ;
+ int on_event ;
+ int test_log (char*) ;
+ int vlc_sem_destroy (int *) ;
+ int vlc_sem_init (int *,int ) ;
+ int vlc_sem_wait (int *) ;
 
 __attribute__((used)) static void pause_and_wait(libvlc_media_player_t *mp)
 {
@@ -43,9 +43,9 @@ __attribute__((used)) static void pause_and_wait(libvlc_media_player_t *mp)
     res = libvlc_event_attach(em, libvlc_MediaPlayerEndReached, on_event, &sem);
     assert(!res);
 
-    libvlc_media_player_set_pause(mp, true);
+    libvlc_media_player_set_pause(mp, 1);
 
-    /* the end may have been already reached before attaching the event */
+
     if (libvlc_media_player_get_state(mp) == libvlc_Playing)
     {
         test_log("Waiting for pause\n");

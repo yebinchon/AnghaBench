@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int BYTE ;
-typedef  scalar_t__ ARGB ;
 
-/* Variables and functions */
- scalar_t__ GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,scalar_t__*) ; 
- scalar_t__ GdipBitmapSetPixel (int /*<<< orphan*/ *,int,int,int) ; 
- scalar_t__ GdipCreateBitmapFromScan0 (int,int,int,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ **) ; 
- scalar_t__ GdipDisposeImage (int /*<<< orphan*/ *) ; 
- scalar_t__ InvalidParameter ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  PixelFormat32bppRGB ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  expect (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+typedef int BYTE ;
+typedef scalar_t__ ARGB ;
+
+
+ scalar_t__ GdipBitmapGetPixel (int *,int,int,scalar_t__*) ;
+ scalar_t__ GdipBitmapSetPixel (int *,int,int,int) ;
+ scalar_t__ GdipCreateBitmapFromScan0 (int,int,int,int ,int*,int **) ;
+ scalar_t__ GdipDisposeImage (int *) ;
+ scalar_t__ InvalidParameter ;
+ scalar_t__ Ok ;
+ int PixelFormat32bppRGB ;
+ scalar_t__ broken (int) ;
+ int expect (scalar_t__,scalar_t__) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_getsetpixel(void)
 {
@@ -39,17 +39,17 @@ __attribute__((used)) static void test_getsetpixel(void)
     stat = GdipCreateBitmapFromScan0(2, 2, 8, PixelFormat32bppRGB, bits, &bitmap);
     expect(Ok, stat);
 
-    /* null parameters */
-    stat = GdipBitmapGetPixel(NULL, 1, 1, &color);
+
+    stat = GdipBitmapGetPixel(((void*)0), 1, 1, &color);
     expect(InvalidParameter, stat);
 
-    stat = GdipBitmapGetPixel(bitmap, 1, 1, NULL);
+    stat = GdipBitmapGetPixel(bitmap, 1, 1, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipBitmapSetPixel(NULL, 1, 1, 0);
+    stat = GdipBitmapSetPixel(((void*)0), 1, 1, 0);
     expect(InvalidParameter, stat);
 
-    /* out of bounds */
+
     stat = GdipBitmapGetPixel(bitmap, -1, 1, &color);
     expect(InvalidParameter, stat);
 
@@ -58,14 +58,14 @@ __attribute__((used)) static void test_getsetpixel(void)
 
     stat = GdipBitmapGetPixel(bitmap, 1, -1, &color);
     ok(stat == InvalidParameter ||
-       broken(stat == Ok), /* Older gdiplus */
+       broken(stat == Ok),
        "Expected InvalidParameter, got %.8x\n", stat);
 
-if (0) /* crashes some gdiplus implementations */
+if (0)
 {
     stat = GdipBitmapSetPixel(bitmap, 1, -1, 0);
     ok(stat == InvalidParameter ||
-       broken(stat == Ok), /* Older gdiplus */
+       broken(stat == Ok),
        "Expected InvalidParameter, got %.8x\n", stat);
 }
 
@@ -81,7 +81,7 @@ if (0) /* crashes some gdiplus implementations */
     stat = GdipBitmapSetPixel(bitmap, 1, 2, 0);
     expect(InvalidParameter, stat);
 
-    /* valid use */
+
     stat = GdipBitmapGetPixel(bitmap, 1, 1, &color);
     expect(Ok, stat);
     expect(0xffffffff, color);

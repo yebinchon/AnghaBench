@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_10__ {int /*<<< orphan*/  Ascii; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
+struct TYPE_10__ {int Ascii; } ;
 struct TYPE_14__ {TYPE_1__ Name; } ;
-struct TYPE_12__ {int /*<<< orphan*/  Count1; int /*<<< orphan*/  ObjectType1; int /*<<< orphan*/  Type; } ;
-struct TYPE_11__ {int ExpectedBtypes; int /*<<< orphan*/  ArgumentList; } ;
+struct TYPE_12__ {int Count1; int ObjectType1; int Type; } ;
+struct TYPE_11__ {int ExpectedBtypes; int ArgumentList; } ;
 struct TYPE_13__ {TYPE_3__ RetInfo; TYPE_2__ Info; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_4__ ACPI_PREDEFINED_INFO ;
-typedef  TYPE_5__ ACPI_NAMESPACE_NODE ;
-typedef  scalar_t__ ACPI_HANDLE ;
+typedef int ACPI_STATUS ;
+typedef TYPE_4__ ACPI_PREDEFINED_INFO ;
+typedef TYPE_5__ ACPI_NAMESPACE_NODE ;
+typedef scalar_t__ ACPI_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FREE (char*) ; 
- int ACPI_RTYPE_PACKAGE ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiNsCheckAcpiCompliance (char*,TYPE_5__*,TYPE_4__ const*) ; 
- char* AcpiNsGetNormalizedPathname (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiUtGetExpectedReturnTypes (char*,int) ; 
- TYPE_4__* AcpiUtMatchPredefinedMethod (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  METHOD_GET_ARG_COUNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int ACPI_FREE (char*) ;
+ int ACPI_RTYPE_PACKAGE ;
+ int AE_OK ;
+ int AcpiNsCheckAcpiCompliance (char*,TYPE_5__*,TYPE_4__ const*) ;
+ char* AcpiNsGetNormalizedPathname (TYPE_5__*,int ) ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiUtGetExpectedReturnTypes (char*,int) ;
+ TYPE_4__* AcpiUtMatchPredefinedMethod (int ) ;
+ int METHOD_GET_ARG_COUNT (int ) ;
+ int TRUE ;
 
 __attribute__((used)) static ACPI_STATUS
 AcpiDbWalkForPredefinedNames (
-    ACPI_HANDLE             ObjHandle,
-    UINT32                  NestingLevel,
-    void                    *Context,
-    void                    **ReturnValue)
+    ACPI_HANDLE ObjHandle,
+    UINT32 NestingLevel,
+    void *Context,
+    void **ReturnValue)
 {
-    ACPI_NAMESPACE_NODE         *Node = (ACPI_NAMESPACE_NODE *) ObjHandle;
-    UINT32                      *Count = (UINT32 *) Context;
-    const ACPI_PREDEFINED_INFO  *Predefined;
-    const ACPI_PREDEFINED_INFO  *Package = NULL;
-    char                        *Pathname;
-    char                        StringBuffer[48];
+    ACPI_NAMESPACE_NODE *Node = (ACPI_NAMESPACE_NODE *) ObjHandle;
+    UINT32 *Count = (UINT32 *) Context;
+    const ACPI_PREDEFINED_INFO *Predefined;
+    const ACPI_PREDEFINED_INFO *Package = ((void*)0);
+    char *Pathname;
+    char StringBuffer[48];
 
 
     Predefined = AcpiUtMatchPredefinedMethod (Node->Name.Ascii);
@@ -65,7 +65,7 @@ AcpiDbWalkForPredefinedNames (
         return (AE_OK);
     }
 
-    /* If method returns a package, the info is in the next table entry */
+
 
     if (Predefined->Info.ExpectedBtypes & ACPI_RTYPE_PACKAGE)
     {
@@ -88,7 +88,7 @@ AcpiDbWalkForPredefinedNames (
 
     AcpiOsPrintf("\n");
 
-    /* Check that the declared argument count matches the ACPI spec */
+
 
     AcpiNsCheckAcpiCompliance (Pathname, Node, Predefined);
 

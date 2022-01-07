@@ -1,0 +1,107 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/media/v4l2-core/extr_v4l2-clk.c_v4l2_clk_get_rate.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/media/v4l2-core/extr_v4l2-clk.c_v4l2_clk_get_rate.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.v4l2_clk = type { i32, %struct.TYPE_2__*, i64 }
+%struct.TYPE_2__ = type { i32 (%struct.v4l2_clk*)* }
+
+@ENOSYS = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i64 @v4l2_clk_get_rate(%struct.v4l2_clk* %0) #0 {
+  %2 = alloca i64, align 8
+  %3 = alloca %struct.v4l2_clk*, align 8
+  %4 = alloca i32, align 4
+  store %struct.v4l2_clk* %0, %struct.v4l2_clk** %3, align 8
+  %5 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %6 = getelementptr inbounds %struct.v4l2_clk, %struct.v4l2_clk* %5, i32 0, i32 2
+  %7 = load i64, i64* %6, align 8
+  %8 = icmp ne i64 %7, 0
+  br i1 %8, label %9, label %14
+
+9:                                                ; preds = %1
+  %10 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %11 = getelementptr inbounds %struct.v4l2_clk, %struct.v4l2_clk* %10, i32 0, i32 2
+  %12 = load i64, i64* %11, align 8
+  %13 = call i64 @clk_get_rate(i64 %12)
+  store i64 %13, i64* %2, align 8
+  br label %51
+
+14:                                               ; preds = %1
+  %15 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %16 = call i32 @v4l2_clk_lock_driver(%struct.v4l2_clk* %15)
+  store i32 %16, i32* %4, align 4
+  %17 = load i32, i32* %4, align 4
+  %18 = icmp slt i32 %17, 0
+  br i1 %18, label %19, label %22
+
+19:                                               ; preds = %14
+  %20 = load i32, i32* %4, align 4
+  %21 = sext i32 %20 to i64
+  store i64 %21, i64* %2, align 8
+  br label %51
+
+22:                                               ; preds = %14
+  %23 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %24 = getelementptr inbounds %struct.v4l2_clk, %struct.v4l2_clk* %23, i32 0, i32 0
+  %25 = call i32 @mutex_lock(i32* %24)
+  %26 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %27 = getelementptr inbounds %struct.v4l2_clk, %struct.v4l2_clk* %26, i32 0, i32 1
+  %28 = load %struct.TYPE_2__*, %struct.TYPE_2__** %27, align 8
+  %29 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %28, i32 0, i32 0
+  %30 = load i32 (%struct.v4l2_clk*)*, i32 (%struct.v4l2_clk*)** %29, align 8
+  %31 = icmp ne i32 (%struct.v4l2_clk*)* %30, null
+  br i1 %31, label %35, label %32
+
+32:                                               ; preds = %22
+  %33 = load i32, i32* @ENOSYS, align 4
+  %34 = sub nsw i32 0, %33
+  store i32 %34, i32* %4, align 4
+  br label %43
+
+35:                                               ; preds = %22
+  %36 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %37 = getelementptr inbounds %struct.v4l2_clk, %struct.v4l2_clk* %36, i32 0, i32 1
+  %38 = load %struct.TYPE_2__*, %struct.TYPE_2__** %37, align 8
+  %39 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %38, i32 0, i32 0
+  %40 = load i32 (%struct.v4l2_clk*)*, i32 (%struct.v4l2_clk*)** %39, align 8
+  %41 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %42 = call i32 %40(%struct.v4l2_clk* %41)
+  store i32 %42, i32* %4, align 4
+  br label %43
+
+43:                                               ; preds = %35, %32
+  %44 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %45 = getelementptr inbounds %struct.v4l2_clk, %struct.v4l2_clk* %44, i32 0, i32 0
+  %46 = call i32 @mutex_unlock(i32* %45)
+  %47 = load %struct.v4l2_clk*, %struct.v4l2_clk** %3, align 8
+  %48 = call i32 @v4l2_clk_unlock_driver(%struct.v4l2_clk* %47)
+  %49 = load i32, i32* %4, align 4
+  %50 = sext i32 %49 to i64
+  store i64 %50, i64* %2, align 8
+  br label %51
+
+51:                                               ; preds = %43, %19, %9
+  %52 = load i64, i64* %2, align 8
+  ret i64 %52
+}
+
+declare dso_local i64 @clk_get_rate(i64) #1
+
+declare dso_local i32 @v4l2_clk_lock_driver(%struct.v4l2_clk*) #1
+
+declare dso_local i32 @mutex_lock(i32*) #1
+
+declare dso_local i32 @mutex_unlock(i32*) #1
+
+declare dso_local i32 @v4l2_clk_unlock_driver(%struct.v4l2_clk*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

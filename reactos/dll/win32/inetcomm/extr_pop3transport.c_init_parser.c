@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  command; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ POP3Transport ;
-typedef  int /*<<< orphan*/  POP3COMMAND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATE_NONE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int command; int state; } ;
+typedef TYPE_1__ POP3Transport ;
+typedef int POP3COMMAND ;
+
+
+ int STATE_NONE ;
 
 __attribute__((used)) static void init_parser(POP3Transport *This, POP3COMMAND command)
 {

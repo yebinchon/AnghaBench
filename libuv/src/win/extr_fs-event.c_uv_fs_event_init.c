@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uv_loop_t ;
+typedef int uv_handle_t ;
 struct TYPE_5__ {TYPE_1__* data; } ;
-struct TYPE_4__ {TYPE_3__ req; int /*<<< orphan*/ * dirw; int /*<<< orphan*/ * short_filew; int /*<<< orphan*/ * filew; scalar_t__ req_pending; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  dir_handle; } ;
-typedef  TYPE_1__ uv_fs_event_t ;
+struct TYPE_4__ {TYPE_3__ req; int * dirw; int * short_filew; int * filew; scalar_t__ req_pending; int * buffer; int dir_handle; } ;
+typedef TYPE_1__ uv_fs_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  UV_FS_EVENT ; 
- int /*<<< orphan*/  UV_FS_EVENT_REQ ; 
- int /*<<< orphan*/  UV_REQ_INIT (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv__handle_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int INVALID_HANDLE_VALUE ;
+ int UV_FS_EVENT ;
+ int UV_FS_EVENT_REQ ;
+ int UV_REQ_INIT (TYPE_3__*,int ) ;
+ int uv__handle_init (int *,int *,int ) ;
 
 int uv_fs_event_init(uv_loop_t* loop, uv_fs_event_t* handle) {
   uv__handle_init(loop, (uv_handle_t*) handle, UV_FS_EVENT);
   handle->dir_handle = INVALID_HANDLE_VALUE;
-  handle->buffer = NULL;
+  handle->buffer = ((void*)0);
   handle->req_pending = 0;
-  handle->filew = NULL;
-  handle->short_filew = NULL;
-  handle->dirw = NULL;
+  handle->filew = ((void*)0);
+  handle->short_filew = ((void*)0);
+  handle->dirw = ((void*)0);
 
   UV_REQ_INIT(&handle->req, UV_FS_EVENT_REQ);
   handle->req.data = handle;

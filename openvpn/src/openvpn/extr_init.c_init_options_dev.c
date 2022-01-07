@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct options {int /*<<< orphan*/  dev; int /*<<< orphan*/  dev_node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  basename (char*) ; 
- char* string_alloc (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct options {int dev; int dev_node; } ;
+
+
+ int basename (char*) ;
+ char* string_alloc (int ,int *) ;
 
 void
 init_options_dev(struct options *options)
 {
     if (!options->dev && options->dev_node)
     {
-        char *dev_node = string_alloc(options->dev_node, NULL); /* POSIX basename() implementations may modify its arguments */
+        char *dev_node = string_alloc(options->dev_node, ((void*)0));
         options->dev = basename(dev_node);
     }
 }

@@ -1,16 +1,7 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
-__attribute__((used)) static inline void set_4in6 (unsigned char ipv6[16], unsigned ip) {  *(long long *) ipv6 = 0; ((int *) ipv6)[2] = -0x10000; ((int *) ipv6)[3] = ip; }
+__attribute__((used)) static inline void set_4in6 (unsigned char ipv6[16], unsigned ip) { *(long long *) ipv6 = 0; ((int *) ipv6)[2] = -0x10000; ((int *) ipv6)[3] = ip; }

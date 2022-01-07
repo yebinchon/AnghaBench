@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int i_choices; int /*<<< orphan*/ * ppsz_choices; int /*<<< orphan*/ * psz_bottom; int /*<<< orphan*/ * psz_subtitle; int /*<<< orphan*/ * psz_title; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * psz_answ; int /*<<< orphan*/  b_ok; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * psz_text; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int i_choices; int * ppsz_choices; int * psz_bottom; int * psz_subtitle; int * psz_title; } ;
+struct TYPE_8__ {int * psz_answ; int b_ok; } ;
+struct TYPE_7__ {int * psz_text; } ;
 struct TYPE_10__ {TYPE_3__ menu; TYPE_2__ answ; TYPE_1__ enq; } ;
 struct TYPE_11__ {int i_object_type; TYPE_4__ u; } ;
-typedef  TYPE_5__ mmi_t ;
+typedef TYPE_5__ mmi_t ;
 
-/* Variables and functions */
-#define  EN50221_MMI_ANSW 131 
-#define  EN50221_MMI_ENQ 130 
-#define  EN50221_MMI_LIST 129 
-#define  EN50221_MMI_MENU 128 
- int /*<<< orphan*/  FREENULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int FREENULL (int *) ;
+ int free (int ) ;
 
 __attribute__((used)) static void MMIFree( mmi_t *p_object )
 {
     switch ( p_object->i_object_type )
     {
-    case EN50221_MMI_ENQ:
+    case 130:
         FREENULL( p_object->u.enq.psz_text );
         break;
 
-    case EN50221_MMI_ANSW:
+    case 131:
         if ( p_object->u.answ.b_ok )
         {
             FREENULL( p_object->u.answ.psz_answ );
         }
         break;
 
-    case EN50221_MMI_MENU:
-    case EN50221_MMI_LIST:
+    case 128:
+    case 129:
         FREENULL( p_object->u.menu.psz_title );
         FREENULL( p_object->u.menu.psz_subtitle );
         FREENULL( p_object->u.menu.psz_bottom );

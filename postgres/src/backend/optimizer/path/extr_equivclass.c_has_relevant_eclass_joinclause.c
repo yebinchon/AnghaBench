@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  ec_relids; int /*<<< orphan*/  ec_members; } ;
-struct TYPE_8__ {int /*<<< orphan*/  eq_classes; } ;
-struct TYPE_7__ {int /*<<< orphan*/  relids; } ;
-typedef  TYPE_1__ RelOptInfo ;
-typedef  TYPE_2__ PlannerInfo ;
-typedef  TYPE_3__ EquivalenceClass ;
-typedef  int /*<<< orphan*/  Bitmapset ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bms_is_subset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int bms_next_member (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * get_eclass_indexes_for_relids (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int list_length (int /*<<< orphan*/ ) ; 
- scalar_t__ list_nth (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int ec_relids; int ec_members; } ;
+struct TYPE_8__ {int eq_classes; } ;
+struct TYPE_7__ {int relids; } ;
+typedef TYPE_1__ RelOptInfo ;
+typedef TYPE_2__ PlannerInfo ;
+typedef TYPE_3__ EquivalenceClass ;
+typedef int Bitmapset ;
+
+
+ int bms_is_subset (int ,int ) ;
+ int bms_next_member (int *,int) ;
+ int * get_eclass_indexes_for_relids (TYPE_2__*,int ) ;
+ int list_length (int ) ;
+ scalar_t__ list_nth (int ,int) ;
 
 bool
 has_relevant_eclass_joinclause(PlannerInfo *root, RelOptInfo *rel1)
 {
-	Bitmapset  *matched_ecs;
-	int			i;
+ Bitmapset *matched_ecs;
+ int i;
 
-	/* Examine only eclasses mentioning rel1 */
-	matched_ecs = get_eclass_indexes_for_relids(root, rel1->relids);
 
-	i = -1;
-	while ((i = bms_next_member(matched_ecs, i)) >= 0)
-	{
-		EquivalenceClass *ec = (EquivalenceClass *) list_nth(root->eq_classes,
-															 i);
+ matched_ecs = get_eclass_indexes_for_relids(root, rel1->relids);
 
-		/*
-		 * Won't generate joinclauses if single-member (this test covers the
-		 * volatile case too)
-		 */
-		if (list_length(ec->ec_members) <= 1)
-			continue;
+ i = -1;
+ while ((i = bms_next_member(matched_ecs, i)) >= 0)
+ {
+  EquivalenceClass *ec = (EquivalenceClass *) list_nth(root->eq_classes,
+                i);
 
-		/*
-		 * Per the comment in have_relevant_eclass_joinclause, it's sufficient
-		 * to find an EC that mentions both this rel and some other rel.
-		 */
-		if (!bms_is_subset(ec->ec_relids, rel1->relids))
-			return true;
-	}
 
-	return false;
+
+
+
+  if (list_length(ec->ec_members) <= 1)
+   continue;
+
+
+
+
+
+  if (!bms_is_subset(ec->ec_relids, rel1->relids))
+   return 1;
+ }
+
+ return 0;
 }

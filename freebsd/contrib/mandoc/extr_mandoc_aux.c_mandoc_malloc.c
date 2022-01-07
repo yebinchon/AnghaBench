@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ MANDOCLEVEL_SYSERR ; 
- int /*<<< orphan*/  err (int,int /*<<< orphan*/ *) ; 
- void* malloc (size_t) ; 
+ scalar_t__ MANDOCLEVEL_SYSERR ;
+ int err (int,int *) ;
+ void* malloc (size_t) ;
 
 void *
 mandoc_malloc(size_t size)
 {
-	void	*ptr;
+ void *ptr;
 
-	ptr = malloc(size);
-	if (ptr == NULL)
-		err((int)MANDOCLEVEL_SYSERR, NULL);
-	return ptr;
+ ptr = malloc(size);
+ if (ptr == ((void*)0))
+  err((int)MANDOCLEVEL_SYSERR, ((void*)0));
+ return ptr;
 }

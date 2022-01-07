@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ESS_SIGNING_CERT ;
-typedef  int /*<<< orphan*/  CMS_SignerInfo ;
-typedef  int /*<<< orphan*/  ASN1_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STRING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_STRING_new () ; 
- int /*<<< orphan*/  ASN1_STRING_set (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  CMS_F_CMS_ADD1_SIGNING_CERT ; 
- int /*<<< orphan*/  CMS_signed_add1_attr_by_NID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  CMSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  NID_id_smime_aa_signingCertificate ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  V_ASN1_SEQUENCE ; 
- int i2d_ESS_SIGNING_CERT (int /*<<< orphan*/ *,unsigned char**) ; 
+
+
+
+typedef int ESS_SIGNING_CERT ;
+typedef int CMS_SignerInfo ;
+typedef int ASN1_STRING ;
+
+
+ int ASN1_STRING_free (int *) ;
+ int * ASN1_STRING_new () ;
+ int ASN1_STRING_set (int *,unsigned char*,int) ;
+ int CMS_F_CMS_ADD1_SIGNING_CERT ;
+ int CMS_signed_add1_attr_by_NID (int *,int ,int ,int *,int) ;
+ int CMSerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int NID_id_smime_aa_signingCertificate ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int V_ASN1_SEQUENCE ;
+ int i2d_ESS_SIGNING_CERT (int *,unsigned char**) ;
 
 int cms_add1_signing_cert(CMS_SignerInfo *si, ESS_SIGNING_CERT *sc)
 {
-    ASN1_STRING *seq = NULL;
+    ASN1_STRING *seq = ((void*)0);
     unsigned char *p, *pp;
     int len;
 
-    /* Add SigningCertificate signed attribute to the signer info. */
-    len = i2d_ESS_SIGNING_CERT(sc, NULL);
-    if ((pp = OPENSSL_malloc(len)) == NULL)
+
+    len = i2d_ESS_SIGNING_CERT(sc, ((void*)0));
+    if ((pp = OPENSSL_malloc(len)) == ((void*)0))
         goto err;
     p = pp;
     i2d_ESS_SIGNING_CERT(sc, &p);
     if (!(seq = ASN1_STRING_new()) || !ASN1_STRING_set(seq, pp, len))
         goto err;
     OPENSSL_free(pp);
-    pp = NULL;
+    pp = ((void*)0);
     if (!CMS_signed_add1_attr_by_NID(si, NID_id_smime_aa_signingCertificate,
                                      V_ASN1_SEQUENCE, seq, -1))
         goto err;

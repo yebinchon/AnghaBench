@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RString {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
 
-/* Variables and functions */
- struct RString* RSTRING (int /*<<< orphan*/ ) ; 
- int RSTR_LEN (struct RString*) ; 
- char* RSTR_PTR (struct RString*) ; 
- int /*<<< orphan*/  RSTR_SET_LEN (struct RString*,int) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  mrb_str_modify (int /*<<< orphan*/ *,struct RString*) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char*,int) ; 
+
+ struct RString* RSTRING (int ) ;
+ int RSTR_LEN (struct RString*) ;
+ char* RSTR_PTR (struct RString*) ;
+ int RSTR_SET_LEN (struct RString*,int) ;
+ int memmove (char*,char*,int) ;
+ int mrb_get_args (int *,char*,int *,int*) ;
+ int mrb_str_modify (int *,struct RString*) ;
+ int mrb_str_new (int *,char*,int) ;
 
 __attribute__((used)) static mrb_value
 io_bufread(mrb_state *mrb, mrb_value self)

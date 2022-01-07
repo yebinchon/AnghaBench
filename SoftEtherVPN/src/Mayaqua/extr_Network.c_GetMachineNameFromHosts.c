@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_4__ {int NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- char* CfgReadNextLine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- TYPE_1__* ParseToken (char*,char*) ; 
- int /*<<< orphan*/ * ReadDump (char*) ; 
- int StartWith (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_4__ {int NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int BUF ;
+
+
+ char* CfgReadNextLine (int *) ;
+ int Free (char*) ;
+ int FreeBuf (int *) ;
+ int FreeToken (TYPE_1__*) ;
+ TYPE_1__* ParseToken (char*,char*) ;
+ int * ReadDump (char*) ;
+ int StartWith (int ,char*) ;
+ scalar_t__ StrCmpi (int ,char*) ;
+ int StrCpy (char*,size_t,int ) ;
 
 bool GetMachineNameFromHosts(char *name, UINT size)
 {
-	bool ret = false;
-	char *s;
-	BUF *b;
-	// Validate arguments
-	if (name == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ char *s;
+ BUF *b;
 
-	b = ReadDump("/etc/hosts");
-	if (b == NULL)
-	{
-		return false;
-	}
+ if (name == ((void*)0))
+ {
+  return 0;
+ }
 
-	while (true)
-	{
-		s = CfgReadNextLine(b);
-		if (s == NULL)
-		{
-			break;
-		}
-		else
-		{
-			TOKEN_LIST *t = ParseToken(s, " \t");
+ b = ReadDump("/etc/hosts");
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-			if (t != NULL)
-			{
-				if (t->NumTokens >= 2)
-				{
-					if (StrCmpi(t->Token[0], "127.0.0.1") == 0)
-					{
-						UINT i;
+ while (1)
+ {
+  s = CfgReadNextLine(b);
+  if (s == ((void*)0))
+  {
+   break;
+  }
+  else
+  {
+   TOKEN_LIST *t = ParseToken(s, " \t");
 
-						for (i = 1;i < t->NumTokens;i++)
-						{
-							if (StartWith(t->Token[i], "localhost") == false)
-							{
-								StrCpy(name, size, t->Token[i]);
-								ret = true;
-							}
-						}
-					}
-				}
-			}
-			FreeToken(t);
-		}
+   if (t != ((void*)0))
+   {
+    if (t->NumTokens >= 2)
+    {
+     if (StrCmpi(t->Token[0], "127.0.0.1") == 0)
+     {
+      UINT i;
 
-		Free(s);
-	}
+      for (i = 1;i < t->NumTokens;i++)
+      {
+       if (StartWith(t->Token[i], "localhost") == 0)
+       {
+        StrCpy(name, size, t->Token[i]);
+        ret = 1;
+       }
+      }
+     }
+    }
+   }
+   FreeToken(t);
+  }
 
-	FreeBuf(b);
+  Free(s);
+ }
 
-	return ret;
+ FreeBuf(b);
+
+ return ret;
 }

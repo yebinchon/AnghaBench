@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct list_itemid_entry {struct list_itemid_entry* next; int /*<<< orphan*/  item_id; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct list_itemid_entry {struct list_itemid_entry* next; int item_id; } ;
 struct hashset_int {int dummy; } ;
 struct TYPE_6__ {TYPE_4__* cur; } ;
-typedef  TYPE_1__ iheap_en_t ;
-struct TYPE_7__ {int /*<<< orphan*/  item_id; } ;
+typedef TYPE_1__ iheap_en_t ;
+struct TYPE_7__ {int item_id; } ;
 
-/* Variables and functions */
- TYPE_1__* IHE ; 
- scalar_t__ Q_order ; 
- int /*<<< orphan*/  clear_res () ; 
- int do_delete_items_list (struct list_itemid_entry*) ; 
- int get_rate_item (TYPE_4__*,int) ; 
- scalar_t__ hashset_int_get (struct hashset_int*,int) ; 
- int /*<<< orphan*/  ihe_advance (TYPE_1__*) ; 
- int /*<<< orphan*/  ihe_init (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  universal_tag_hash ; 
- struct list_itemid_entry* zmalloc (int) ; 
+
+ TYPE_1__* IHE ;
+ scalar_t__ Q_order ;
+ int clear_res () ;
+ int do_delete_items_list (struct list_itemid_entry*) ;
+ int get_rate_item (TYPE_4__*,int) ;
+ scalar_t__ hashset_int_get (struct hashset_int*,int) ;
+ int ihe_advance (TYPE_1__*) ;
+ int ihe_init (TYPE_1__*,int ,int,int ) ;
+ int universal_tag_hash ;
+ struct list_itemid_entry* zmalloc (int) ;
 
 int do_delete_items_with_rate_using_hashset (struct hashset_int *HS, int rate_id) {
-  struct list_itemid_entry *head = NULL, *tail = NULL, *p;
+  struct list_itemid_entry *head = ((void*)0), *tail = ((void*)0), *p;
   Q_order = 0;
   clear_res ();
 
@@ -45,7 +45,7 @@ int do_delete_items_with_rate_using_hashset (struct hashset_int *HS, int rate_id
     if (rate && hashset_int_get (HS, rate)) {
       p = zmalloc (sizeof (struct list_itemid_entry));
       p->item_id = H->cur->item_id;
-      p->next = NULL;
+      p->next = ((void*)0);
       if (head) {
         tail->next = p;
         tail = p;

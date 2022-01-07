@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_ZMALLOC_MEM ; 
- int /*<<< orphan*/  PTRSIZE ; 
- int /*<<< orphan*/  assert (void*) ; 
- void* dyn_alloc (int,int /*<<< orphan*/ ) ; 
- scalar_t__ free_LRU () ; 
- scalar_t__ get_memory_used () ; 
- void* malloc (int) ; 
- int malloc_mem ; 
- scalar_t__ max_memory ; 
+ int MAX_ZMALLOC_MEM ;
+ int PTRSIZE ;
+ int assert (void*) ;
+ void* dyn_alloc (int,int ) ;
+ scalar_t__ free_LRU () ;
+ scalar_t__ get_memory_used () ;
+ void* malloc (int) ;
+ int malloc_mem ;
+ scalar_t__ max_memory ;
 
 void *zzmalloc (int size) {
   void *res;

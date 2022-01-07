@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct regmap {int dummy; } ;
-struct platform_device {int /*<<< orphan*/  dev; } ;
+struct platform_device {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_pll_configure_sr_hpm_lp (int /*<<< orphan*/ *,struct regmap*,int /*<<< orphan*/ *,int) ; 
- struct regmap* dev_get_regmap (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmcc_apq8084_desc ; 
- int /*<<< orphan*/  mmpll1 ; 
- int /*<<< orphan*/  mmpll1_config ; 
- int /*<<< orphan*/  mmpll3 ; 
- int /*<<< orphan*/  mmpll3_config ; 
- int qcom_cc_probe (struct platform_device*,int /*<<< orphan*/ *) ; 
+
+ int clk_pll_configure_sr_hpm_lp (int *,struct regmap*,int *,int) ;
+ struct regmap* dev_get_regmap (int *,int *) ;
+ int mmcc_apq8084_desc ;
+ int mmpll1 ;
+ int mmpll1_config ;
+ int mmpll3 ;
+ int mmpll3_config ;
+ int qcom_cc_probe (struct platform_device*,int *) ;
 
 __attribute__((used)) static int mmcc_apq8084_probe(struct platform_device *pdev)
 {
-	int ret;
-	struct regmap *regmap;
+ int ret;
+ struct regmap *regmap;
 
-	ret = qcom_cc_probe(pdev, &mmcc_apq8084_desc);
-	if (ret)
-		return ret;
+ ret = qcom_cc_probe(pdev, &mmcc_apq8084_desc);
+ if (ret)
+  return ret;
 
-	regmap = dev_get_regmap(&pdev->dev, NULL);
-	clk_pll_configure_sr_hpm_lp(&mmpll1, regmap, &mmpll1_config, true);
-	clk_pll_configure_sr_hpm_lp(&mmpll3, regmap, &mmpll3_config, false);
+ regmap = dev_get_regmap(&pdev->dev, ((void*)0));
+ clk_pll_configure_sr_hpm_lp(&mmpll1, regmap, &mmpll1_config, 1);
+ clk_pll_configure_sr_hpm_lp(&mmpll3, regmap, &mmpll3_config, 0);
 
-	return 0;
+ return 0;
 }

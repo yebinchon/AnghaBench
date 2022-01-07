@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  root; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int root; } ;
 struct TYPE_12__ {TYPE_1__ sugg; } ;
-typedef  TYPE_2__ user ;
-struct TYPE_13__ {int y; int x; int /*<<< orphan*/  r; int /*<<< orphan*/  l; } ;
-typedef  TYPE_3__ trp_node ;
+typedef TYPE_2__ user ;
+struct TYPE_13__ {int y; int x; int r; int l; } ;
+typedef TYPE_3__ trp_node ;
 
-/* Variables and functions */
- int MAX_CNT ; 
- int /*<<< orphan*/  NOAIO ; 
- int /*<<< orphan*/  add_user_used (TYPE_2__*) ; 
- TYPE_2__* conv_uid (int) ; 
- int /*<<< orphan*/  del_user_used (TYPE_2__*) ; 
- int /*<<< orphan*/  heap_add (int /*<<< orphan*/ ) ; 
- TYPE_3__* heap_get () ; 
- int /*<<< orphan*/  heap_init () ; 
- scalar_t__ heap_size ; 
- int /*<<< orphan*/  load_user_metafile (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int local_uid (int) ; 
- int /*<<< orphan*/  user_has_exception (TYPE_2__*,int) ; 
- int /*<<< orphan*/  user_loaded (TYPE_2__*) ; 
+
+ int MAX_CNT ;
+ int NOAIO ;
+ int add_user_used (TYPE_2__*) ;
+ TYPE_2__* conv_uid (int) ;
+ int del_user_used (TYPE_2__*) ;
+ int heap_add (int ) ;
+ TYPE_3__* heap_get () ;
+ int heap_init () ;
+ scalar_t__ heap_size ;
+ int load_user_metafile (TYPE_2__*,int,int ) ;
+ int local_uid (int) ;
+ int user_has_exception (TYPE_2__*,int) ;
+ int user_loaded (TYPE_2__*) ;
 
 int get_suggestions (int uid, int mx_cnt, int min_common, int *res) {
   user *u = conv_uid (uid);
@@ -42,7 +42,7 @@ int get_suggestions (int uid, int mx_cnt, int min_common, int *res) {
     mx_cnt = MAX_CNT;
   }
 
-  if (u == NULL) {
+  if (u == ((void*)0)) {
     res[0] = 0;
     return 0;
   }
@@ -54,7 +54,7 @@ int get_suggestions (int uid, int mx_cnt, int min_common, int *res) {
 
   load_user_metafile (u, local_id, NOAIO);
 
-//  fprintf (stderr, "after load_user_metafile. u->metafile_len = %d\n", u->metafile_len);
+
 
   if (!user_loaded (u)) {
     return -2;
@@ -71,7 +71,7 @@ int get_suggestions (int uid, int mx_cnt, int min_common, int *res) {
     trp_node *v = heap_get();
 
     if ((v->y >> 16) < min_common) {
-      //TODO: comment for testing
+
       break;
     }
 

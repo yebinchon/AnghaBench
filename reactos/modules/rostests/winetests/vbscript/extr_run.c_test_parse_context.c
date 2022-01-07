@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  a2bstr (char*) ; 
- int /*<<< orphan*/  close_script (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_and_init_script (int /*<<< orphan*/ ) ; 
- int global_ref ; 
- int /*<<< orphan*/  global_success_d ; 
- int /*<<< orphan*/  global_success_i ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- char const* testW ; 
+
+
+
+typedef char WCHAR ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ int CHECK_CALLED (int ) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ IActiveScriptParse_ParseScriptText (int *,int ,char const*,int *,int *,int ,int ,int ,int *,int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IID_IActiveScriptParse ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int a2bstr (char*) ;
+ int close_script (int *) ;
+ int * create_and_init_script (int ) ;
+ int global_ref ;
+ int global_success_d ;
+ int global_success_i ;
+ int ok (int,char*,int) ;
+ char const* testW ;
 
 __attribute__((used)) static void test_parse_context(void)
 {
@@ -53,9 +53,9 @@ __attribute__((used)) static void test_parse_context(void)
     hres = IActiveScript_QueryInterface(engine, &IID_IActiveScriptParse, (void**)&parser);
     ok(hres == S_OK, "Could not get IActiveScriptParse: %08x\n", hres);
 
-    /* unknown identifier context is not a valid argument */
+
     str = a2bstr("Call reportSuccess()\n");
-    hres = IActiveScriptParse_ParseScriptText(parser, str, yW, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, str, yW, ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == E_INVALIDARG, "ParseScriptText failed: %08x\n", hres);
     SysFreeString(str);
 
@@ -66,20 +66,20 @@ __attribute__((used)) static void test_parse_context(void)
                  "End Class\n"
                  "Dim x\n"
                  "set x = new Cl\n");
-    hres = IActiveScriptParse_ParseScriptText(parser, str, NULL, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, str, ((void*)0), ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == S_OK, "ParseScriptText failed: %08x\n", hres);
     SysFreeString(str);
 
-    /* known global variable is not a valid context */
+
     str = a2bstr("Call reportSuccess()\n");
-    hres = IActiveScriptParse_ParseScriptText(parser, str, xW, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, str, xW, ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == E_INVALIDARG, "ParseScriptText failed: %08x\n", hres);
     SysFreeString(str);
 
     SET_EXPECT(global_success_d);
     SET_EXPECT(global_success_i);
     str = a2bstr("Call reportSuccess()\n");
-    hres = IActiveScriptParse_ParseScriptText(parser, str, testW, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, str, testW, ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     ok(hres == S_OK, "ParseScriptText failed: %08x\n", hres);
     SysFreeString(str);
     CHECK_CALLED(global_success_d);

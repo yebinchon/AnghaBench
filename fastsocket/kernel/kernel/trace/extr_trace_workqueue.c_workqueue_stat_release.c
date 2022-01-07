@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpu_workqueue_stats {int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_workqueue_stat_free ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct cpu_workqueue_stats {int kref; } ;
+
+
+ int cpu_workqueue_stat_free ;
+ int kref_put (int *,int ) ;
 
 __attribute__((used)) static void workqueue_stat_release(void *stat)
 {
-	struct cpu_workqueue_stats *node = stat;
+ struct cpu_workqueue_stats *node = stat;
 
-	kref_put(&node->kref, cpu_workqueue_stat_free);
+ kref_put(&node->kref, cpu_workqueue_stat_free);
 }

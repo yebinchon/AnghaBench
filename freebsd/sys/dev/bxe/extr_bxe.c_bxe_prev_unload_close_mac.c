@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 struct bxe_mac_vals {int bmac_addr; int umac_addr; int xmac_addr; int emac_addr; int* bmac_val; void* umac_val; void* xmac_val; void* emac_val; } ;
 
-/* Variables and functions */
- int BIGMAC2_REGISTER_BMAC_CONTROL ; 
- int BIGMAC_REGISTER_BMAC_CONTROL ; 
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ CHIP_IS_E2 (struct bxe_softc*) ; 
- int /*<<< orphan*/  CHIP_IS_E3 (struct bxe_softc*) ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int /*<<< orphan*/  DELAY (int) ; 
- int ELINK_BMAC_CONTROL_RX_ENABLE ; 
- int FALSE ; 
- int GRCBASE_UMAC0 ; 
- int GRCBASE_UMAC1 ; 
- int GRCBASE_XMAC0 ; 
- int GRCBASE_XMAC1 ; 
- int MISC_REGISTERS_RESET_REG_2_RST_BMAC0 ; 
- int MISC_REGISTERS_RESET_REG_2_UMAC0 ; 
- int MISC_REGISTERS_RESET_REG_2_XMAC ; 
- int MISC_REG_RESET_REG_2 ; 
- int NIG_REG_BMAC0_REGS_OUT_EN ; 
- int NIG_REG_INGRESS_BMAC0_MEM ; 
- int NIG_REG_INGRESS_BMAC1_MEM ; 
- int NIG_REG_NIG_EMAC0_EN ; 
- void* REG_RD (struct bxe_softc*,int) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int,int) ; 
- int SC_PORT (struct bxe_softc*) ; 
- int TRUE ; 
- int UMAC_REG_COMMAND_CONFIG ; 
- int XMAC_REG_CTRL ; 
- int XMAC_REG_PFC_CTRL_HI ; 
+
+ int BIGMAC2_REGISTER_BMAC_CONTROL ;
+ int BIGMAC_REGISTER_BMAC_CONTROL ;
+ int BLOGD (struct bxe_softc*,int ,char*) ;
+ scalar_t__ CHIP_IS_E2 (struct bxe_softc*) ;
+ int CHIP_IS_E3 (struct bxe_softc*) ;
+ int DBG_LOAD ;
+ int DELAY (int) ;
+ int ELINK_BMAC_CONTROL_RX_ENABLE ;
+ int FALSE ;
+ int GRCBASE_UMAC0 ;
+ int GRCBASE_UMAC1 ;
+ int GRCBASE_XMAC0 ;
+ int GRCBASE_XMAC1 ;
+ int MISC_REGISTERS_RESET_REG_2_RST_BMAC0 ;
+ int MISC_REGISTERS_RESET_REG_2_UMAC0 ;
+ int MISC_REGISTERS_RESET_REG_2_XMAC ;
+ int MISC_REG_RESET_REG_2 ;
+ int NIG_REG_BMAC0_REGS_OUT_EN ;
+ int NIG_REG_INGRESS_BMAC0_MEM ;
+ int NIG_REG_INGRESS_BMAC1_MEM ;
+ int NIG_REG_NIG_EMAC0_EN ;
+ void* REG_RD (struct bxe_softc*,int) ;
+ int REG_WR (struct bxe_softc*,int,int) ;
+ int SC_PORT (struct bxe_softc*) ;
+ int TRUE ;
+ int UMAC_REG_COMMAND_CONFIG ;
+ int XMAC_REG_CTRL ;
+ int XMAC_REG_PFC_CTRL_HI ;
 
 __attribute__((used)) static void
 bxe_prev_unload_close_mac(struct bxe_softc *sc,
@@ -54,7 +54,7 @@ bxe_prev_unload_close_mac(struct bxe_softc *sc,
     uint8_t port = SC_PORT(sc);
     uint32_t wb_data[2];
 
-    /* reset addresses as they also mark which values were changed */
+
     vals->bmac_addr = 0;
     vals->umac_addr = 0;
     vals->xmac_addr = 0;
@@ -72,12 +72,12 @@ bxe_prev_unload_close_mac(struct bxe_softc *sc,
             offset = CHIP_IS_E2(sc) ? BIGMAC2_REGISTER_BMAC_CONTROL
                                     : BIGMAC_REGISTER_BMAC_CONTROL;
 
-            /*
-             * use rd/wr since we cannot use dmae. This is safe
-             * since MCP won't access the bus due to the request
-             * to unload, and no function on the path can be
-             * loaded at this time.
-             */
+
+
+
+
+
+
             wb_data[0] = REG_RD(sc, base_addr + offset);
             wb_data[1] = REG_RD(sc, base_addr + offset + 0x4);
             vals->bmac_addr = base_addr + offset;

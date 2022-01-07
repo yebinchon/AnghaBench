@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
 
-/* Variables and functions */
- int ERROR_OUTOFMEMORY ; 
- size_t UV__LOOPS_CHUNK_SIZE ; 
- int /*<<< orphan*/ ** uv__loops ; 
- size_t uv__loops_capacity ; 
- int /*<<< orphan*/  uv__loops_lock ; 
- size_t uv__loops_size ; 
- int /*<<< orphan*/ ** uv__realloc (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  uv_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uv_loop_t ;
+
+
+ int ERROR_OUTOFMEMORY ;
+ size_t UV__LOOPS_CHUNK_SIZE ;
+ int ** uv__loops ;
+ size_t uv__loops_capacity ;
+ int uv__loops_lock ;
+ size_t uv__loops_size ;
+ int ** uv__realloc (int **,int) ;
+ int uv_mutex_lock (int *) ;
+ int uv_mutex_unlock (int *) ;
 
 __attribute__((used)) static int uv__loops_add(uv_loop_t* loop) {
   uv_loop_t** new_loops;
@@ -36,7 +36,7 @@ __attribute__((used)) static int uv__loops_add(uv_loop_t* loop) {
       goto failed_loops_realloc;
     uv__loops = new_loops;
     for (i = uv__loops_capacity; i < new_capacity; ++i)
-      uv__loops[i] = NULL;
+      uv__loops[i] = ((void*)0);
     uv__loops_capacity = new_capacity;
   }
   uv__loops[uv__loops_size] = loop;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIWebBrowserSetup ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIWebBrowserSetup ;
 struct TYPE_7__ {scalar_t__ scriptmode; TYPE_2__* doc_obj; } ;
 struct TYPE_6__ {TYPE_1__* nscontainer; } ;
-struct TYPE_5__ {int /*<<< orphan*/  webbrowser; } ;
-typedef  scalar_t__ SCRIPTMODE ;
-typedef  TYPE_3__ HTMLOuterWindow ;
+struct TYPE_5__ {int webbrowser; } ;
+typedef scalar_t__ SCRIPTMODE ;
+typedef TYPE_3__ HTMLOuterWindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIWebBrowserSetup ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ SCRIPTMODE_ACTIVESCRIPT ; 
- scalar_t__ SCRIPTMODE_GECKO ; 
- int /*<<< orphan*/  SETUP_ALLOW_JAVASCRIPT ; 
- int /*<<< orphan*/  SETUP_DISABLE_NOSCRIPT ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int TRUE ; 
- int /*<<< orphan*/  is_jscript_available () ; 
- int /*<<< orphan*/  nsIWebBrowserSetup_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIWebBrowserSetup_SetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nsIWebBrowser_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
+
+ int ERR (char*,int ) ;
+ int IID_nsIWebBrowserSetup ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ scalar_t__ SCRIPTMODE_ACTIVESCRIPT ;
+ scalar_t__ SCRIPTMODE_GECKO ;
+ int SETUP_ALLOW_JAVASCRIPT ;
+ int SETUP_DISABLE_NOSCRIPT ;
+ int TRACE (char*) ;
+ int TRUE ;
+ int is_jscript_available () ;
+ int nsIWebBrowserSetup_Release (int *) ;
+ int nsIWebBrowserSetup_SetProperty (int *,int ,int) ;
+ int nsIWebBrowser_QueryInterface (int ,int *,void**) ;
 
 void set_script_mode(HTMLOuterWindow *window, SCRIPTMODE mode)
 {

@@ -1,61 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HELPLIST_CHOICE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  FT_cipher ; 
- int /*<<< orphan*/  FT_general ; 
- int /*<<< orphan*/  FT_md ; 
-#define  OPT_CIPHER_ALGORITHMS 146 
-#define  OPT_CIPHER_COMMANDS 145 
-#define  OPT_COMMANDS 144 
-#define  OPT_DIGEST_ALGORITHMS 143 
-#define  OPT_DIGEST_COMMANDS 142 
-#define  OPT_DISABLED 141 
-#define  OPT_ENGINES 140 
-#define  OPT_EOF 139 
-#define  OPT_ERR 138 
-#define  OPT_HELP 137 
-#define  OPT_KDF_ALGORITHMS 136 
-#define  OPT_MAC_ALGORITHMS 135 
-#define  OPT_MISSING_HELP 134 
-#define  OPT_OBJECTS 133 
-#define  OPT_ONE 132 
-#define  OPT_OPTIONS 131 
-#define  OPT_PK_ALGORITHMS 130 
-#define  OPT_PK_METHOD 129 
-#define  OPT_VERBOSE 128 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  list_ciphers () ; 
- int /*<<< orphan*/  list_digests () ; 
- int /*<<< orphan*/  list_disabled () ; 
- int /*<<< orphan*/  list_engines () ; 
- int /*<<< orphan*/  list_kdfs () ; 
- int /*<<< orphan*/  list_macs () ; 
- int /*<<< orphan*/  list_missing_help () ; 
- int /*<<< orphan*/  list_objects () ; 
- int /*<<< orphan*/  list_options ; 
- int /*<<< orphan*/  list_options_for_command (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_pkey () ; 
- int /*<<< orphan*/  list_pkey_meth () ; 
- int /*<<< orphan*/  list_type (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- scalar_t__ opt_num_rest () ; 
- int verbose ; 
+
+
+
+typedef int HELPLIST_CHOICE ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int FT_cipher ;
+ int FT_general ;
+ int FT_md ;
+ int bio_err ;
+ int list_ciphers () ;
+ int list_digests () ;
+ int list_disabled () ;
+ int list_engines () ;
+ int list_kdfs () ;
+ int list_macs () ;
+ int list_missing_help () ;
+ int list_objects () ;
+ int list_options ;
+ int list_options_for_command (int ) ;
+ int list_pkey () ;
+ int list_pkey_meth () ;
+ int list_type (int ,int) ;
+ int opt_arg () ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ scalar_t__ opt_num_rest () ;
+ int verbose ;
 
 int list_main(int argc, char **argv)
 {
@@ -79,65 +60,65 @@ int list_main(int argc, char **argv)
         unsigned int options:1;
     } todo = { 0, };
 
-    verbose = 0;                 /* Clear a possible previous call */
+    verbose = 0;
 
     prog = opt_init(argc, argv, list_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 139) {
         switch (o) {
-        case OPT_EOF:  /* Never hit, but suppresses warning */
-        case OPT_ERR:
+        case 139:
+        case 138:
 opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             return 1;
-        case OPT_HELP:
+        case 137:
             opt_help(list_options);
             break;
-        case OPT_ONE:
+        case 132:
             one = 1;
             break;
-        case OPT_COMMANDS:
+        case 144:
             todo.commands = 1;
             break;
-        case OPT_DIGEST_COMMANDS:
+        case 142:
             todo.digest_commands = 1;
             break;
-        case OPT_DIGEST_ALGORITHMS:
+        case 143:
             todo.digest_algorithms = 1;
             break;
-        case OPT_KDF_ALGORITHMS:
+        case 136:
             todo.kdf_algorithms = 1;
             break;
-        case OPT_MAC_ALGORITHMS:
+        case 135:
             todo.mac_algorithms = 1;
             break;
-        case OPT_CIPHER_COMMANDS:
+        case 145:
             todo.cipher_commands = 1;
             break;
-        case OPT_CIPHER_ALGORITHMS:
+        case 146:
             todo.cipher_algorithms = 1;
             break;
-        case OPT_PK_ALGORITHMS:
+        case 130:
             todo.pk_algorithms = 1;
             break;
-        case OPT_PK_METHOD:
+        case 129:
             todo.pk_method = 1;
             break;
-        case OPT_ENGINES:
+        case 140:
             todo.engines = 1;
             break;
-        case OPT_DISABLED:
+        case 141:
             todo.disabled = 1;
             break;
-        case OPT_MISSING_HELP:
+        case 134:
             todo.missing_help = 1;
             break;
-        case OPT_OBJECTS:
+        case 133:
             todo.objects = 1;
             break;
-        case OPT_OPTIONS:
+        case 131:
             list_options_for_command(opt_arg());
             break;
-        case OPT_VERBOSE:
+        case 128:
             verbose = 1;
             break;
         }

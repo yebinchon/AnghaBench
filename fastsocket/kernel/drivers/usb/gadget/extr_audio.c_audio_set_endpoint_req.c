@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct usb_ctrlrequest {int /*<<< orphan*/  bRequest; int /*<<< orphan*/  wValue; int /*<<< orphan*/  wLength; int /*<<< orphan*/  wIndex; } ;
+
+
+
+
+typedef int u16 ;
+struct usb_ctrlrequest {int bRequest; int wValue; int wLength; int wIndex; } ;
 struct usb_configuration {struct usb_composite_dev* cdev; } ;
 struct usb_composite_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG (struct usb_composite_dev*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int EOPNOTSUPP ; 
-#define  UAC_SET_CUR 132 
-#define  UAC_SET_MAX 131 
-#define  UAC_SET_MEM 130 
-#define  UAC_SET_MIN 129 
-#define  UAC_SET_RES 128 
- int /*<<< orphan*/  le16_to_cpu (int /*<<< orphan*/ ) ; 
+
+ int DBG (struct usb_composite_dev*,char*,int ,int ,int ,int ) ;
+ int EOPNOTSUPP ;
+
+
+
+
+
+ int le16_to_cpu (int ) ;
 
 __attribute__((used)) static int audio_set_endpoint_req(struct usb_configuration *c,
-		const struct usb_ctrlrequest *ctrl)
+  const struct usb_ctrlrequest *ctrl)
 {
-	struct usb_composite_dev *cdev = c->cdev;
-	int			value = -EOPNOTSUPP;
-	u16			ep = le16_to_cpu(ctrl->wIndex);
-	u16			len = le16_to_cpu(ctrl->wLength);
-	u16			w_value = le16_to_cpu(ctrl->wValue);
+ struct usb_composite_dev *cdev = c->cdev;
+ int value = -EOPNOTSUPP;
+ u16 ep = le16_to_cpu(ctrl->wIndex);
+ u16 len = le16_to_cpu(ctrl->wLength);
+ u16 w_value = le16_to_cpu(ctrl->wValue);
 
-	DBG(cdev, "bRequest 0x%x, w_value 0x%04x, len %d, endpoint %d\n",
-			ctrl->bRequest, w_value, len, ep);
+ DBG(cdev, "bRequest 0x%x, w_value 0x%04x, len %d, endpoint %d\n",
+   ctrl->bRequest, w_value, len, ep);
 
-	switch (ctrl->bRequest) {
-	case UAC_SET_CUR:
-		value = 0;
-		break;
+ switch (ctrl->bRequest) {
+ case 132:
+  value = 0;
+  break;
 
-	case UAC_SET_MIN:
-		break;
+ case 129:
+  break;
 
-	case UAC_SET_MAX:
-		break;
+ case 131:
+  break;
 
-	case UAC_SET_RES:
-		break;
+ case 128:
+  break;
 
-	case UAC_SET_MEM:
-		break;
+ case 130:
+  break;
 
-	default:
-		break;
-	}
+ default:
+  break;
+ }
 
-	return value;
+ return value;
 }

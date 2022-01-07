@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  pretty_printer ;
-typedef  int /*<<< orphan*/  block_stmt_iterator ;
-typedef  int /*<<< orphan*/  basic_block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INDENT (int) ; 
- scalar_t__ LABEL_EXPR ; 
- int TDF_BLOCKS ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsi_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_bb_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  dump_bb_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  dump_generic_node (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  dump_implicit_edges (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  dump_phi_nodes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  pp_newline (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+typedef int pretty_printer ;
+typedef int block_stmt_iterator ;
+typedef int basic_block ;
+
+
+ int INDENT (int) ;
+ scalar_t__ LABEL_EXPR ;
+ int TDF_BLOCKS ;
+ scalar_t__ TREE_CODE (int ) ;
+ int bsi_end_p (int ) ;
+ int bsi_next (int *) ;
+ int bsi_start (int ) ;
+ int bsi_stmt (int ) ;
+ int dump_bb_end (int *,int ,int,int) ;
+ int dump_bb_header (int *,int ,int,int) ;
+ int dump_generic_node (int *,int ,int,int,int) ;
+ int dump_implicit_edges (int *,int ,int,int) ;
+ int dump_phi_nodes (int *,int ,int,int) ;
+ int pp_newline (int *) ;
 
 __attribute__((used)) static void
 dump_generic_bb_buff (pretty_printer *buffer, basic_block bb,
-		      int indent, int flags)
+        int indent, int flags)
 {
   block_stmt_iterator bsi;
   tree stmt;
@@ -55,7 +55,7 @@ dump_generic_bb_buff (pretty_printer *buffer, basic_block bb,
       curr_indent = TREE_CODE (stmt) == LABEL_EXPR ? label_indent : indent;
 
       INDENT (curr_indent);
-      dump_generic_node (buffer, stmt, curr_indent, flags, true);
+      dump_generic_node (buffer, stmt, curr_indent, flags, 1);
       pp_newline (buffer);
     }
 

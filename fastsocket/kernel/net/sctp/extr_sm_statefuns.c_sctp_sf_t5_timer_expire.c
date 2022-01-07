@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sctp_endpoint {int dummy; } ;
 struct sctp_chunk {int dummy; } ;
 struct sctp_association {int dummy; } ;
-typedef  int /*<<< orphan*/  sctp_subtype_t ;
-typedef  int /*<<< orphan*/  sctp_disposition_t ;
-typedef  int /*<<< orphan*/  sctp_cmd_seq_t ;
+typedef int sctp_subtype_t ;
+typedef int sctp_disposition_t ;
+typedef int sctp_cmd_seq_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  SCTP_CHUNK (struct sctp_chunk*) ; 
- int /*<<< orphan*/  SCTP_CMD_ASSOC_FAILED ; 
- int /*<<< orphan*/  SCTP_CMD_REPLY ; 
- int /*<<< orphan*/  SCTP_CMD_SET_SK_ERR ; 
- int /*<<< orphan*/  SCTP_DEBUG_PRINTK (char*) ; 
- int /*<<< orphan*/  SCTP_DEC_STATS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_DISPOSITION_DELETE_TCB ; 
- int /*<<< orphan*/  SCTP_DISPOSITION_NOMEM ; 
- int /*<<< orphan*/  SCTP_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_ERROR_NO_ERROR ; 
- int /*<<< orphan*/  SCTP_INC_STATS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCTP_MIB_ABORTEDS ; 
- int /*<<< orphan*/  SCTP_MIB_CURRESTAB ; 
- int /*<<< orphan*/  SCTP_MIB_T5_SHUTDOWN_GUARD_EXPIREDS ; 
- int /*<<< orphan*/  SCTP_PERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sctp_add_cmd_sf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct sctp_chunk* sctp_make_abort (struct sctp_association const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ETIMEDOUT ;
+ int SCTP_CHUNK (struct sctp_chunk*) ;
+ int SCTP_CMD_ASSOC_FAILED ;
+ int SCTP_CMD_REPLY ;
+ int SCTP_CMD_SET_SK_ERR ;
+ int SCTP_DEBUG_PRINTK (char*) ;
+ int SCTP_DEC_STATS (int ) ;
+ int SCTP_DISPOSITION_DELETE_TCB ;
+ int SCTP_DISPOSITION_NOMEM ;
+ int SCTP_ERROR (int ) ;
+ int SCTP_ERROR_NO_ERROR ;
+ int SCTP_INC_STATS (int ) ;
+ int SCTP_MIB_ABORTEDS ;
+ int SCTP_MIB_CURRESTAB ;
+ int SCTP_MIB_T5_SHUTDOWN_GUARD_EXPIREDS ;
+ int SCTP_PERR (int ) ;
+ int sctp_add_cmd_sf (int *,int ,int ) ;
+ struct sctp_chunk* sctp_make_abort (struct sctp_association const*,int *,int ) ;
 
 sctp_disposition_t sctp_sf_t5_timer_expire(const struct sctp_endpoint *ep,
-					   const struct sctp_association *asoc,
-					   const sctp_subtype_t type,
-					   void *arg,
-					   sctp_cmd_seq_t *commands)
+        const struct sctp_association *asoc,
+        const sctp_subtype_t type,
+        void *arg,
+        sctp_cmd_seq_t *commands)
 {
-	struct sctp_chunk *reply = NULL;
+ struct sctp_chunk *reply = ((void*)0);
 
-	SCTP_DEBUG_PRINTK("Timer T5 expired.\n");
-	SCTP_INC_STATS(SCTP_MIB_T5_SHUTDOWN_GUARD_EXPIREDS);
+ SCTP_DEBUG_PRINTK("Timer T5 expired.\n");
+ SCTP_INC_STATS(SCTP_MIB_T5_SHUTDOWN_GUARD_EXPIREDS);
 
-	reply = sctp_make_abort(asoc, NULL, 0);
-	if (!reply)
-		goto nomem;
+ reply = sctp_make_abort(asoc, ((void*)0), 0);
+ if (!reply)
+  goto nomem;
 
-	sctp_add_cmd_sf(commands, SCTP_CMD_REPLY, SCTP_CHUNK(reply));
-	sctp_add_cmd_sf(commands, SCTP_CMD_SET_SK_ERR,
-			SCTP_ERROR(ETIMEDOUT));
-	sctp_add_cmd_sf(commands, SCTP_CMD_ASSOC_FAILED,
-			SCTP_PERR(SCTP_ERROR_NO_ERROR));
+ sctp_add_cmd_sf(commands, SCTP_CMD_REPLY, SCTP_CHUNK(reply));
+ sctp_add_cmd_sf(commands, SCTP_CMD_SET_SK_ERR,
+   SCTP_ERROR(ETIMEDOUT));
+ sctp_add_cmd_sf(commands, SCTP_CMD_ASSOC_FAILED,
+   SCTP_PERR(SCTP_ERROR_NO_ERROR));
 
-	SCTP_INC_STATS(SCTP_MIB_ABORTEDS);
-	SCTP_DEC_STATS(SCTP_MIB_CURRESTAB);
+ SCTP_INC_STATS(SCTP_MIB_ABORTEDS);
+ SCTP_DEC_STATS(SCTP_MIB_CURRESTAB);
 
-	return SCTP_DISPOSITION_DELETE_TCB;
+ return SCTP_DISPOSITION_DELETE_TCB;
 nomem:
-	return SCTP_DISPOSITION_NOMEM;
+ return SCTP_DISPOSITION_NOMEM;
 }

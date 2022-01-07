@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  of_node; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int of_node; } ;
 struct platform_device {TYPE_3__ dev; } ;
-struct TYPE_5__ {int /*<<< orphan*/  device_node; } ;
-struct TYPE_6__ {int /*<<< orphan*/  task; TYPE_1__ chan; } ;
+struct TYPE_5__ {int device_node; } ;
+struct TYPE_6__ {int task; TYPE_1__ chan; } ;
 struct mtk_cqdma_vchan {TYPE_2__ vc; } ;
-struct mtk_cqdma_device {int dma_requests; int dma_channels; int /*<<< orphan*/  ddev; TYPE_4__** pc; struct mtk_cqdma_vchan* vc; } ;
-struct TYPE_8__ {int /*<<< orphan*/  tasklet; int /*<<< orphan*/  irq; int /*<<< orphan*/  lock; } ;
+struct mtk_cqdma_device {int dma_requests; int dma_channels; int ddev; TYPE_4__** pc; struct mtk_cqdma_vchan* vc; } ;
+struct TYPE_8__ {int tasklet; int irq; int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MTK_CQDMA_INT_EN ; 
- int /*<<< orphan*/  MTK_CQDMA_INT_EN_BIT ; 
- int /*<<< orphan*/  dma_async_device_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtk_cqdma_hw_deinit (struct mtk_cqdma_device*) ; 
- int /*<<< orphan*/  mtk_dma_clr (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  of_dma_controller_free (int /*<<< orphan*/ ) ; 
- struct mtk_cqdma_device* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  synchronize_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasklet_kill (int /*<<< orphan*/ *) ; 
+
+ int MTK_CQDMA_INT_EN ;
+ int MTK_CQDMA_INT_EN_BIT ;
+ int dma_async_device_unregister (int *) ;
+ int list_del (int *) ;
+ int mtk_cqdma_hw_deinit (struct mtk_cqdma_device*) ;
+ int mtk_dma_clr (TYPE_4__*,int ,int ) ;
+ int of_dma_controller_free (int ) ;
+ struct mtk_cqdma_device* platform_get_drvdata (struct platform_device*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int synchronize_irq (int ) ;
+ int tasklet_kill (int *) ;
 
 __attribute__((used)) static int mtk_cqdma_remove(struct platform_device *pdev)
 {
-	struct mtk_cqdma_device *cqdma = platform_get_drvdata(pdev);
-	struct mtk_cqdma_vchan *vc;
-	unsigned long flags;
-	int i;
+ struct mtk_cqdma_device *cqdma = platform_get_drvdata(pdev);
+ struct mtk_cqdma_vchan *vc;
+ unsigned long flags;
+ int i;
 
-	/* kill VC task */
-	for (i = 0; i < cqdma->dma_requests; i++) {
-		vc = &cqdma->vc[i];
 
-		list_del(&vc->vc.chan.device_node);
-		tasklet_kill(&vc->vc.task);
-	}
+ for (i = 0; i < cqdma->dma_requests; i++) {
+  vc = &cqdma->vc[i];
 
-	/* disable interrupt */
-	for (i = 0; i < cqdma->dma_channels; i++) {
-		spin_lock_irqsave(&cqdma->pc[i]->lock, flags);
-		mtk_dma_clr(cqdma->pc[i], MTK_CQDMA_INT_EN,
-			    MTK_CQDMA_INT_EN_BIT);
-		spin_unlock_irqrestore(&cqdma->pc[i]->lock, flags);
+  list_del(&vc->vc.chan.device_node);
+  tasklet_kill(&vc->vc.task);
+ }
 
-		/* Waits for any pending IRQ handlers to complete */
-		synchronize_irq(cqdma->pc[i]->irq);
 
-		tasklet_kill(&cqdma->pc[i]->tasklet);
-	}
+ for (i = 0; i < cqdma->dma_channels; i++) {
+  spin_lock_irqsave(&cqdma->pc[i]->lock, flags);
+  mtk_dma_clr(cqdma->pc[i], MTK_CQDMA_INT_EN,
+       MTK_CQDMA_INT_EN_BIT);
+  spin_unlock_irqrestore(&cqdma->pc[i]->lock, flags);
 
-	/* disable hardware */
-	mtk_cqdma_hw_deinit(cqdma);
 
-	dma_async_device_unregister(&cqdma->ddev);
-	of_dma_controller_free(pdev->dev.of_node);
+  synchronize_irq(cqdma->pc[i]->irq);
 
-	return 0;
+  tasklet_kill(&cqdma->pc[i]->tasklet);
+ }
+
+
+ mtk_cqdma_hw_deinit(cqdma);
+
+ dma_async_device_unregister(&cqdma->ddev);
+ of_dma_controller_free(pdev->dev.of_node);
+
+ return 0;
 }

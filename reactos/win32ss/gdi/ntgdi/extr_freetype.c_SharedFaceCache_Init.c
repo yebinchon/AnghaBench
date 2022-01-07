@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  FullName; int /*<<< orphan*/  FontFamily; scalar_t__ OutlineRequiredSize; } ;
-typedef  TYPE_1__* PSHARED_FACE_CACHE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int FullName; int FontFamily; scalar_t__ OutlineRequiredSize; } ;
+typedef TYPE_1__* PSHARED_FACE_CACHE ;
+
+
+ int RtlInitUnicodeString (int *,int *) ;
 
 __attribute__((used)) static void
 SharedFaceCache_Init(PSHARED_FACE_CACHE Cache)
 {
     Cache->OutlineRequiredSize = 0;
-    RtlInitUnicodeString(&Cache->FontFamily, NULL);
-    RtlInitUnicodeString(&Cache->FullName, NULL);
+    RtlInitUnicodeString(&Cache->FontFamily, ((void*)0));
+    RtlInitUnicodeString(&Cache->FullName, ((void*)0));
 }

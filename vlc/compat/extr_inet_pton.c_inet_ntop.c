@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  socklen_t ;
 
-/* Variables and functions */
-#define  AF_INET 128 
- int /*<<< orphan*/  EAFNOSUPPORT ; 
- int /*<<< orphan*/  ENOSPC ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,unsigned char const,unsigned char const,unsigned char const,unsigned char const) ; 
+
+
+
+typedef int socklen_t ;
+
+
+
+ int EAFNOSUPPORT ;
+ int ENOSPC ;
+ int errno ;
+ int snprintf (char*,int ,char*,unsigned char const,unsigned char const,unsigned char const,unsigned char const) ;
 
 const char *inet_ntop (int af, const void *src, char *dst, socklen_t len)
 {
@@ -25,15 +25,15 @@ const char *inet_ntop (int af, const void *src, char *dst, socklen_t len)
 
     switch (af)
     {
-        case AF_INET:
+        case 128:
             if (snprintf (dst, len, "%hhu.%hhu.%hhu.%hhu",
                           b[0], b[1], b[2], b[3]) >= len)
             {
                 errno = ENOSPC;
-                return NULL;
+                return ((void*)0);
             }
             return dst;
     }
     errno = EAFNOSUPPORT;
-    return NULL;
+    return ((void*)0);
 }

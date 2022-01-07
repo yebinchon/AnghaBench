@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC_MEM_ADDR_T ;
-typedef  int /*<<< orphan*/  VC_MEM_ACCESS_HANDLE_T ;
 
-/* Variables and functions */
- int AccessVideoCoreMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  READ_MEM ; 
+
+
+
+typedef int VC_MEM_ADDR_T ;
+typedef int VC_MEM_ACCESS_HANDLE_T ;
+
+
+ int AccessVideoCoreMemory (int ,int ,void*,int ,size_t) ;
+ int READ_MEM ;
 
 int ReadVideoCoreMemory( VC_MEM_ACCESS_HANDLE_T vcHandle, void *buf, VC_MEM_ADDR_T vcMemAddr, size_t numBytes )
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int MAXLOOPS ; 
- int SSL_ERROR_NONE ; 
- int SSL_ERROR_WANT_READ ; 
- int SSL_ERROR_WANT_WRITE ; 
- int SSL_ERROR_WANT_X509_LOOKUP ; 
- int SSL_accept (int /*<<< orphan*/ *) ; 
- int SSL_connect (int /*<<< orphan*/ *) ; 
- int SSL_get_error (int /*<<< orphan*/ *,int) ; 
- int SSL_is_dtls (int /*<<< orphan*/ *) ; 
- scalar_t__ SSL_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  TEST_info (char*,...) ; 
- int /*<<< orphan*/  ossl_sleep (int) ; 
+
+
+
+typedef int buf ;
+typedef int SSL ;
+
+
+ int MAXLOOPS ;
+ int SSL_ERROR_NONE ;
+ int SSL_ERROR_WANT_READ ;
+ int SSL_ERROR_WANT_WRITE ;
+ int SSL_ERROR_WANT_X509_LOOKUP ;
+ int SSL_accept (int *) ;
+ int SSL_connect (int *) ;
+ int SSL_get_error (int *,int) ;
+ int SSL_is_dtls (int *) ;
+ scalar_t__ SSL_read (int *,unsigned char*,int) ;
+ int TEST_info (char*,...) ;
+ int ossl_sleep (int) ;
 
 int create_bare_ssl_connection(SSL *serverssl, SSL *clientssl, int want,
                                int read)
@@ -69,17 +69,17 @@ int create_bare_ssl_connection(SSL *serverssl, SSL *clientssl, int want,
         if (isdtls && read) {
             unsigned char buf[20];
 
-            /* Trigger any retransmits that may be appropriate */
+
             if (rets > 0 && retc <= 0) {
                 if (SSL_read(serverssl, buf, sizeof(buf)) > 0) {
-                    /* We don't expect this to succeed! */
+
                     TEST_info("Unexpected SSL_read() success!");
                     return 0;
                 }
             }
             if (retc > 0 && rets <= 0) {
                 if (SSL_read(clientssl, buf, sizeof(buf)) > 0) {
-                    /* We don't expect this to succeed! */
+
                     TEST_info("Unexpected SSL_read() success!");
                     return 0;
                 }
@@ -90,11 +90,11 @@ int create_bare_ssl_connection(SSL *serverssl, SSL *clientssl, int want,
             return 0;
         }
         if (isdtls && abortctr <= 50 && (abortctr % 10) == 0) {
-            /*
-             * It looks like we're just spinning. Pause for a short period to
-             * give the DTLS timer a chance to do something. We only do this for
-             * the first few times to prevent hangs.
-             */
+
+
+
+
+
             ossl_sleep(50);
         }
     } while (retc <=0 || rets <= 0);

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  relowner; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_class ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_UNDEFINED_TABLE ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RELOID ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int relowner; } ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_class ;
+
+
+ int ERRCODE_UNDEFINED_TABLE ;
+ int ERROR ;
+ scalar_t__ GETSTRUCT (int ) ;
+ int HeapTupleIsValid (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int OidIsValid (int ) ;
+ int RELOID ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache1 (int ,int ) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
 
 Oid
 ts_rel_get_owner(Oid relid)
 {
-	HeapTuple tuple;
-	Oid ownerid;
+ HeapTuple tuple;
+ Oid ownerid;
 
-	if (!OidIsValid(relid))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_TABLE),
-				 errmsg("unable to get owner for relation with OID %u: invalid OID", relid)));
+ if (!OidIsValid(relid))
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_TABLE),
+     errmsg("unable to get owner for relation with OID %u: invalid OID", relid)));
 
-	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
+ tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
 
-	if (!HeapTupleIsValid(tuple))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_TABLE),
-				 errmsg("unable to get owner for relation with OID %u: does not exist", relid)));
+ if (!HeapTupleIsValid(tuple))
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_TABLE),
+     errmsg("unable to get owner for relation with OID %u: does not exist", relid)));
 
-	ownerid = ((Form_pg_class) GETSTRUCT(tuple))->relowner;
+ ownerid = ((Form_pg_class) GETSTRUCT(tuple))->relowner;
 
-	ReleaseSysCache(tuple);
+ ReleaseSysCache(tuple);
 
-	return ownerid;
+ return ownerid;
 }

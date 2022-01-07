@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* desc; } ;
-typedef  TYPE_2__ vbdisp_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_4__ {int /*<<< orphan*/  ctx; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
+typedef TYPE_2__ vbdisp_t ;
+typedef int VARIANT ;
+struct TYPE_4__ {int ctx; } ;
+typedef int HRESULT ;
+typedef int * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,unsigned int) ; 
- int MB_OK ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  show_msgbox (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_int (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  to_string (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,unsigned int) ;
+ int MB_OK ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int SysFreeString (int *) ;
+ int TRACE (char*) ;
+ int assert (int) ;
+ int show_msgbox (int ,int *,int,int *,int *) ;
+ int to_int (int *,int*) ;
+ int to_string (int *,int **) ;
 
 __attribute__((used)) static HRESULT Global_MsgBox(vbdisp_t *This, VARIANT *args, unsigned args_cnt, VARIANT *res)
 {
-    BSTR prompt, title = NULL;
+    BSTR prompt, title = ((void*)0);
     int type = MB_OK;
     HRESULT hres;
 

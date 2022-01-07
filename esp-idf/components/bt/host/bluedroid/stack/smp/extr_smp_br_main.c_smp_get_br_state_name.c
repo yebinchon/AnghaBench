@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t tSMP_BR_STATE ;
 
-/* Variables and functions */
- size_t SMP_BR_STATE_MAX ; 
- char** smp_br_state_name ; 
+
+
+
+typedef size_t tSMP_BR_STATE ;
+
+
+ size_t SMP_BR_STATE_MAX ;
+ char** smp_br_state_name ;
 
 const char *smp_get_br_state_name(tSMP_BR_STATE br_state)
 {

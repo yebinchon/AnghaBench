@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  bottom; int /*<<< orphan*/  right; } ;
-struct TYPE_11__ {int RedVal; int BlueVal; int GreenVal; void* hPreviewBitmap; TYPE_6__ ImageRect; TYPE_2__* Info; void* hBitmap; int /*<<< orphan*/  hPicPrev; } ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int bottom; int right; } ;
+struct TYPE_11__ {int RedVal; int BlueVal; int GreenVal; void* hPreviewBitmap; TYPE_6__ ImageRect; TYPE_2__* Info; void* hBitmap; int hPicPrev; } ;
 struct TYPE_10__ {TYPE_1__* ImageEditors; } ;
-struct TYPE_9__ {int /*<<< orphan*/  hBitmap; } ;
-typedef  TYPE_2__* PMAIN_WND_INFO ;
-typedef  TYPE_3__* PIMAGEADJUST ;
-typedef  scalar_t__ LPARAM ;
-typedef  TYPE_3__ IMAGEADJUST ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  void* HBITMAP ;
+struct TYPE_9__ {int hBitmap; } ;
+typedef TYPE_2__* PMAIN_WND_INFO ;
+typedef TYPE_3__* PIMAGEADJUST ;
+typedef scalar_t__ LPARAM ;
+typedef TYPE_3__ IMAGEADJUST ;
+typedef int HWND ;
+typedef void* HBITMAP ;
 
-/* Variables and functions */
- scalar_t__ BASECOLOUR ; 
- int /*<<< orphan*/  BM_SETCHECK ; 
- int /*<<< orphan*/  BST_CHECKED ; 
- scalar_t__ CopyImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  IDC_BRI_EDIT ; 
- int /*<<< orphan*/  IDC_BRI_FULL ; 
- int /*<<< orphan*/  IDC_BRI_TRACKBAR ; 
- int /*<<< orphan*/  IDC_PICPREVIEW ; 
- int /*<<< orphan*/  IMAGE_BITMAP ; 
- int /*<<< orphan*/  LR_CREATEDIBSECTION ; 
- scalar_t__ MAKELONG (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ProcessHeap ; 
- int /*<<< orphan*/  SendDlgItemMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetDlgItemText (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TBM_SETPOS ; 
- int /*<<< orphan*/  TBM_SETRANGE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
+
+ scalar_t__ BASECOLOUR ;
+ int BM_SETCHECK ;
+ int BST_CHECKED ;
+ scalar_t__ CopyImage (int ,int ,int ,int ,int ) ;
+ int GetClientRect (int ,TYPE_6__*) ;
+ int GetDlgItem (int ,int ) ;
+ scalar_t__ HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_3__*) ;
+ int IDC_BRI_EDIT ;
+ int IDC_BRI_FULL ;
+ int IDC_BRI_TRACKBAR ;
+ int IDC_PICPREVIEW ;
+ int IMAGE_BITMAP ;
+ int LR_CREATEDIBSECTION ;
+ scalar_t__ MAKELONG (int ,int) ;
+ int ProcessHeap ;
+ int SendDlgItemMessage (int ,int ,int ,int ,scalar_t__) ;
+ int SetDlgItemText (int ,int ,int ) ;
+ int TBM_SETPOS ;
+ int TBM_SETRANGE ;
+ int TRUE ;
+ int _T (char*) ;
 
 __attribute__((used)) static PIMAGEADJUST
 Cont_OnInitDialog(PIMAGEADJUST pImgAdj,
@@ -58,7 +58,7 @@ Cont_OnInitDialog(PIMAGEADJUST pImgAdj,
                         0,
                         sizeof(IMAGEADJUST));
     if (!pImgAdj)
-        return NULL;
+        return ((void*)0);
 
 
     pImgAdj->Info = (PMAIN_WND_INFO)lParam;
@@ -70,7 +70,7 @@ Cont_OnInitDialog(PIMAGEADJUST pImgAdj,
     GetClientRect(pImgAdj->hPicPrev,
                   &pImgAdj->ImageRect);
 
-    /* Make a static copy of the main image */
+
     pImgAdj->hBitmap = (HBITMAP) CopyImage(pImgAdj->Info->ImageEditors->hBitmap,
                                  IMAGE_BITMAP,
                                  pImgAdj->ImageRect.right,
@@ -79,7 +79,7 @@ Cont_OnInitDialog(PIMAGEADJUST pImgAdj,
     if (!pImgAdj->hBitmap)
         goto fail;
 
-    /* Make a copy which will be updated */
+
     pImgAdj->hPreviewBitmap = (HBITMAP) CopyImage(pImgAdj->Info->ImageEditors->hBitmap,
                                         IMAGE_BITMAP,
                                         pImgAdj->ImageRect.right,
@@ -91,7 +91,7 @@ Cont_OnInitDialog(PIMAGEADJUST pImgAdj,
 
     pImgAdj->RedVal = pImgAdj->BlueVal = pImgAdj->GreenVal = 100;
 
-    /* setup dialog */
+
     SendDlgItemMessage(hDlg,
                        IDC_BRI_FULL,
                        BM_SETCHECK,
@@ -117,5 +117,5 @@ fail:
     HeapFree(ProcessHeap,
              0,
              pImgAdj);
-    return NULL;
+    return ((void*)0);
 }

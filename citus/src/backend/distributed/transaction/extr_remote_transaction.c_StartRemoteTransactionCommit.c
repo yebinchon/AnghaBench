@@ -1,101 +1,101 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {scalar_t__ transactionState; int /*<<< orphan*/  preparedName; scalar_t__ transactionFailed; } ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {scalar_t__ transactionState; int preparedName; scalar_t__ transactionFailed; } ;
 struct TYPE_13__ {TYPE_2__ remoteTransaction; } ;
 struct TYPE_11__ {char* data; } ;
-typedef  TYPE_1__ StringInfoData ;
-typedef  TYPE_2__ RemoteTransaction ;
-typedef  TYPE_3__ MultiConnection ;
+typedef TYPE_1__ StringInfoData ;
+typedef TYPE_2__ RemoteTransaction ;
+typedef TYPE_3__ MultiConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  ForgetResults (TYPE_3__*) ; 
- int /*<<< orphan*/  HandleRemoteTransactionConnectionError (TYPE_3__*,int const) ; 
- scalar_t__ REMOTE_TRANS_1PC_ABORTING ; 
- scalar_t__ REMOTE_TRANS_1PC_COMMITTING ; 
- scalar_t__ REMOTE_TRANS_2PC_COMMITTING ; 
- scalar_t__ REMOTE_TRANS_INVALID ; 
- scalar_t__ REMOTE_TRANS_PREPARED ; 
- int /*<<< orphan*/  SendRemoteCommand (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  WarnAboutLeakedPreparedTransaction (TYPE_3__*,int const) ; 
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  initStringInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  quote_literal_cstr (int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ int ForgetResults (TYPE_3__*) ;
+ int HandleRemoteTransactionConnectionError (TYPE_3__*,int const) ;
+ scalar_t__ REMOTE_TRANS_1PC_ABORTING ;
+ scalar_t__ REMOTE_TRANS_1PC_COMMITTING ;
+ scalar_t__ REMOTE_TRANS_2PC_COMMITTING ;
+ scalar_t__ REMOTE_TRANS_INVALID ;
+ scalar_t__ REMOTE_TRANS_PREPARED ;
+ int SendRemoteCommand (TYPE_3__*,char*) ;
+ int WarnAboutLeakedPreparedTransaction (TYPE_3__*,int const) ;
+ int appendStringInfo (TYPE_1__*,char*,int ) ;
+ int initStringInfo (TYPE_1__*) ;
+ int quote_literal_cstr (int ) ;
 
 void
 StartRemoteTransactionCommit(MultiConnection *connection)
 {
-	RemoteTransaction *transaction = &connection->remoteTransaction;
-	const bool raiseErrors = false;
-	const bool isCommit = true;
+ RemoteTransaction *transaction = &connection->remoteTransaction;
+ const bool raiseErrors = 0;
+ const bool isCommit = 1;
 
-	/* can only commit if transaction is in progress */
-	Assert(transaction->transactionState != REMOTE_TRANS_INVALID);
 
-	/* can't commit if we already started to commit or abort */
-	Assert(transaction->transactionState < REMOTE_TRANS_1PC_ABORTING);
+ Assert(transaction->transactionState != REMOTE_TRANS_INVALID);
 
-	if (transaction->transactionFailed)
-	{
-		/* abort the transaction if it failed */
-		transaction->transactionState = REMOTE_TRANS_1PC_ABORTING;
 
-		/*
-		 * Try sending an ROLLBACK; Depending on the state that won't
-		 * succeed, but let's try.  Have to clear previous results
-		 * first.
-		 */
-		ForgetResults(connection); /* try to clear pending stuff */
-		if (!SendRemoteCommand(connection, "ROLLBACK"))
-		{
-			/* no point in reporting a likely redundant message */
-		}
-	}
-	else if (transaction->transactionState == REMOTE_TRANS_PREPARED)
-	{
-		/* commit the prepared transaction */
-		StringInfoData command;
+ Assert(transaction->transactionState < REMOTE_TRANS_1PC_ABORTING);
 
-		initStringInfo(&command);
-		appendStringInfo(&command, "COMMIT PREPARED %s",
-						 quote_literal_cstr(transaction->preparedName));
+ if (transaction->transactionFailed)
+ {
 
-		transaction->transactionState = REMOTE_TRANS_2PC_COMMITTING;
+  transaction->transactionState = REMOTE_TRANS_1PC_ABORTING;
 
-		if (!SendRemoteCommand(connection, command.data))
-		{
-			HandleRemoteTransactionConnectionError(connection, raiseErrors);
 
-			WarnAboutLeakedPreparedTransaction(connection, isCommit);
-		}
-	}
-	else
-	{
-		/* initiate remote transaction commit */
-		transaction->transactionState = REMOTE_TRANS_1PC_COMMITTING;
 
-		if (!SendRemoteCommand(connection, "COMMIT"))
-		{
-			/*
-			 * For a moment there I thought we were in trouble.
-			 *
-			 * Failing in this state means that we don't know whether the the
-			 * commit has succeeded.
-			 */
-			HandleRemoteTransactionConnectionError(connection, raiseErrors);
-		}
-	}
+
+
+
+  ForgetResults(connection);
+  if (!SendRemoteCommand(connection, "ROLLBACK"))
+  {
+
+  }
+ }
+ else if (transaction->transactionState == REMOTE_TRANS_PREPARED)
+ {
+
+  StringInfoData command;
+
+  initStringInfo(&command);
+  appendStringInfo(&command, "COMMIT PREPARED %s",
+       quote_literal_cstr(transaction->preparedName));
+
+  transaction->transactionState = REMOTE_TRANS_2PC_COMMITTING;
+
+  if (!SendRemoteCommand(connection, command.data))
+  {
+   HandleRemoteTransactionConnectionError(connection, raiseErrors);
+
+   WarnAboutLeakedPreparedTransaction(connection, isCommit);
+  }
+ }
+ else
+ {
+
+  transaction->transactionState = REMOTE_TRANS_1PC_COMMITTING;
+
+  if (!SendRemoteCommand(connection, "COMMIT"))
+  {
+
+
+
+
+
+
+   HandleRemoteTransactionConnectionError(connection, raiseErrors);
+  }
+ }
 }

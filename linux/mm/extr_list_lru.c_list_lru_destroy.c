@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct list_lru {int shrinker_id; int /*<<< orphan*/ * node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_lru_unregister (struct list_lru*) ; 
- int /*<<< orphan*/  memcg_destroy_list_lru (struct list_lru*) ; 
- int /*<<< orphan*/  memcg_get_cache_ids () ; 
- int /*<<< orphan*/  memcg_put_cache_ids () ; 
+
+
+
+struct list_lru {int shrinker_id; int * node; } ;
+
+
+ int kfree (int *) ;
+ int list_lru_unregister (struct list_lru*) ;
+ int memcg_destroy_list_lru (struct list_lru*) ;
+ int memcg_get_cache_ids () ;
+ int memcg_put_cache_ids () ;
 
 void list_lru_destroy(struct list_lru *lru)
 {
-	/* Already destroyed or not yet initialized? */
-	if (!lru->node)
-		return;
 
-	memcg_get_cache_ids();
+ if (!lru->node)
+  return;
 
-	list_lru_unregister(lru);
+ memcg_get_cache_ids();
 
-	memcg_destroy_list_lru(lru);
-	kfree(lru->node);
-	lru->node = NULL;
+ list_lru_unregister(lru);
 
-#ifdef CONFIG_MEMCG_KMEM
-	lru->shrinker_id = -1;
-#endif
-	memcg_put_cache_ids();
+ memcg_destroy_list_lru(lru);
+ kfree(lru->node);
+ lru->node = ((void*)0);
+
+
+
+
+ memcg_put_cache_ids();
 }

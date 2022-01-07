@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TDIEntityID ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PDWORD ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENTITY_LIST_ID ; 
- int /*<<< orphan*/  GENERIC_ENTITY ; 
- int /*<<< orphan*/  INFO_CLASS_GENERIC ; 
- int /*<<< orphan*/  INFO_TYPE_PROVIDER ; 
- int /*<<< orphan*/  tdiGetSetOfThings (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int TDIEntityID ;
+typedef int PVOID ;
+typedef int PDWORD ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+
+
+ int ENTITY_LIST_ID ;
+ int GENERIC_ENTITY ;
+ int INFO_CLASS_GENERIC ;
+ int INFO_TYPE_PROVIDER ;
+ int tdiGetSetOfThings (int ,int ,int ,int ,int ,int ,int ,int,int *,int ) ;
 
 NTSTATUS tdiGetEntityIDSet( HANDLE tcpFile,
                             TDIEntityID **entitySet,

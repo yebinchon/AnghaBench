@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int nFlags; int len; int /*<<< orphan*/  para; scalar_t__ nCharOfs; int /*<<< orphan*/  style; } ;
-struct TYPE_18__ {int nOffset; int /*<<< orphan*/  pPara; TYPE_4__* pRun; } ;
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int nFlags; int len; int para; scalar_t__ nCharOfs; int style; } ;
+struct TYPE_18__ {int nOffset; int pPara; TYPE_4__* pRun; } ;
 struct TYPE_14__ {TYPE_8__ run; } ;
-struct TYPE_17__ {TYPE_1__ member; int /*<<< orphan*/  next; } ;
+struct TYPE_17__ {TYPE_1__ member; int next; } ;
 struct TYPE_16__ {int nCursors; TYPE_2__* pCursors; } ;
 struct TYPE_15__ {int nOffset; TYPE_4__* pRun; } ;
-typedef  TYPE_3__ ME_TextEditor ;
-typedef  TYPE_4__ ME_DisplayItem ;
-typedef  TYPE_5__ ME_Cursor ;
+typedef TYPE_3__ ME_TextEditor ;
+typedef TYPE_4__ ME_DisplayItem ;
+typedef TYPE_5__ ME_Cursor ;
 
-/* Variables and functions */
- int MERF_NONTEXT ; 
- int MERF_SPLITMASK ; 
- int /*<<< orphan*/  ME_InsertBefore (int /*<<< orphan*/ ,TYPE_4__*) ; 
- TYPE_4__* ME_MakeRun (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ME_UpdateRunFlags (TYPE_3__*,TYPE_8__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mark_para_rewrap (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int MERF_NONTEXT ;
+ int MERF_SPLITMASK ;
+ int ME_InsertBefore (int ,TYPE_4__*) ;
+ TYPE_4__* ME_MakeRun (int ,int) ;
+ int ME_UpdateRunFlags (TYPE_3__*,TYPE_8__*) ;
+ int assert (int) ;
+ int mark_para_rewrap (TYPE_3__*,int ) ;
 
 ME_DisplayItem *ME_SplitRunSimple(ME_TextEditor *editor, ME_Cursor *cursor)
 {

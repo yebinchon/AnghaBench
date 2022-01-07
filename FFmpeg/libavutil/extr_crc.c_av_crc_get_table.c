@@ -1,45 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int AVCRCId ;
-typedef  int /*<<< orphan*/  AVCRC ;
 
-/* Variables and functions */
-#define  AV_CRC_16_ANSI 135 
-#define  AV_CRC_16_ANSI_LE 134 
-#define  AV_CRC_16_CCITT 133 
-#define  AV_CRC_24_IEEE 132 
-#define  AV_CRC_32_IEEE 131 
-#define  AV_CRC_32_IEEE_LE 130 
-#define  AV_CRC_8_ATM 129 
-#define  AV_CRC_8_EBU 128 
- int /*<<< orphan*/  CRC_INIT_TABLE_ONCE (int const) ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const** av_crc_table ; 
+
+
+
+typedef int AVCRCId ;
+typedef int AVCRC ;
+ int CRC_INIT_TABLE_ONCE (int const) ;
+ int av_assert0 (int ) ;
+ int const** av_crc_table ;
 
 const AVCRC *av_crc_get_table(AVCRCId crc_id)
 {
-#if !CONFIG_HARDCODED_TABLES
+
     switch (crc_id) {
-    case AV_CRC_8_ATM:      CRC_INIT_TABLE_ONCE(AV_CRC_8_ATM); break;
-    case AV_CRC_8_EBU:      CRC_INIT_TABLE_ONCE(AV_CRC_8_EBU); break;
-    case AV_CRC_16_ANSI:    CRC_INIT_TABLE_ONCE(AV_CRC_16_ANSI); break;
-    case AV_CRC_16_CCITT:   CRC_INIT_TABLE_ONCE(AV_CRC_16_CCITT); break;
-    case AV_CRC_24_IEEE:    CRC_INIT_TABLE_ONCE(AV_CRC_24_IEEE); break;
-    case AV_CRC_32_IEEE:    CRC_INIT_TABLE_ONCE(AV_CRC_32_IEEE); break;
-    case AV_CRC_32_IEEE_LE: CRC_INIT_TABLE_ONCE(AV_CRC_32_IEEE_LE); break;
-    case AV_CRC_16_ANSI_LE: CRC_INIT_TABLE_ONCE(AV_CRC_16_ANSI_LE); break;
+    case 129: CRC_INIT_TABLE_ONCE(129); break;
+    case 128: CRC_INIT_TABLE_ONCE(128); break;
+    case 135: CRC_INIT_TABLE_ONCE(135); break;
+    case 133: CRC_INIT_TABLE_ONCE(133); break;
+    case 132: CRC_INIT_TABLE_ONCE(132); break;
+    case 131: CRC_INIT_TABLE_ONCE(131); break;
+    case 130: CRC_INIT_TABLE_ONCE(130); break;
+    case 134: CRC_INIT_TABLE_ONCE(134); break;
     default: av_assert0(0);
     }
-#endif
+
     return av_crc_table[crc_id];
 }

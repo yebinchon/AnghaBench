@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* u16 ;
-struct request_context {int /*<<< orphan*/  timer; int /*<<< orphan*/  done; int /*<<< orphan*/  refcount; void* in_rid; void* out_rid; int /*<<< orphan*/  state; struct ezusb_priv* upriv; struct request_context* buf; int /*<<< orphan*/  outurb; } ;
+
+
+
+
+typedef void* u16 ;
+struct request_context {int timer; int done; int refcount; void* in_rid; void* out_rid; int state; struct ezusb_priv* upriv; struct request_context* buf; int outurb; } ;
 struct ezusb_priv {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BULK_BUF_SIZE ; 
- int /*<<< orphan*/  EZUSB_CTX_START ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  ezusb_request_timerfn ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct request_context*) ; 
- struct request_context* kmalloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct request_context* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  refcount_set (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  timer_setup (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_alloc_urb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BULK_BUF_SIZE ;
+ int EZUSB_CTX_START ;
+ int GFP_ATOMIC ;
+ int ezusb_request_timerfn ;
+ int init_completion (int *) ;
+ int kfree (struct request_context*) ;
+ struct request_context* kmalloc (int ,int ) ;
+ struct request_context* kzalloc (int,int ) ;
+ int refcount_set (int *,int) ;
+ int timer_setup (int *,int ,int ) ;
+ int usb_alloc_urb (int ,int ) ;
 
 __attribute__((used)) static struct request_context *ezusb_alloc_ctx(struct ezusb_priv *upriv,
-					       u16 out_rid, u16 in_rid)
+            u16 out_rid, u16 in_rid)
 {
-	struct request_context *ctx;
+ struct request_context *ctx;
 
-	ctx = kzalloc(sizeof(*ctx), GFP_ATOMIC);
-	if (!ctx)
-		return NULL;
+ ctx = kzalloc(sizeof(*ctx), GFP_ATOMIC);
+ if (!ctx)
+  return ((void*)0);
 
-	ctx->buf = kmalloc(BULK_BUF_SIZE, GFP_ATOMIC);
-	if (!ctx->buf) {
-		kfree(ctx);
-		return NULL;
-	}
-	ctx->outurb = usb_alloc_urb(0, GFP_ATOMIC);
-	if (!ctx->outurb) {
-		kfree(ctx->buf);
-		kfree(ctx);
-		return NULL;
-	}
+ ctx->buf = kmalloc(BULK_BUF_SIZE, GFP_ATOMIC);
+ if (!ctx->buf) {
+  kfree(ctx);
+  return ((void*)0);
+ }
+ ctx->outurb = usb_alloc_urb(0, GFP_ATOMIC);
+ if (!ctx->outurb) {
+  kfree(ctx->buf);
+  kfree(ctx);
+  return ((void*)0);
+ }
 
-	ctx->upriv = upriv;
-	ctx->state = EZUSB_CTX_START;
-	ctx->out_rid = out_rid;
-	ctx->in_rid = in_rid;
+ ctx->upriv = upriv;
+ ctx->state = EZUSB_CTX_START;
+ ctx->out_rid = out_rid;
+ ctx->in_rid = in_rid;
 
-	refcount_set(&ctx->refcount, 1);
-	init_completion(&ctx->done);
+ refcount_set(&ctx->refcount, 1);
+ init_completion(&ctx->done);
 
-	timer_setup(&ctx->timer, ezusb_request_timerfn, 0);
-	return ctx;
+ timer_setup(&ctx->timer, ezusb_request_timerfn, 0);
+ return ctx;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int* pbData; int cbData; } ;
-struct TYPE_9__ {int type; int /*<<< orphan*/  properties; } ;
-typedef  TYPE_1__* HCRYPTMSG ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_2__ CRYPT_DATA_BLOB ;
-typedef  TYPE_1__ CDecodeMsg ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_9__ {int type; int properties; } ;
+typedef TYPE_1__* HCRYPTMSG ;
+typedef int DWORD ;
+typedef TYPE_2__ CRYPT_DATA_BLOB ;
+typedef TYPE_1__ CDecodeMsg ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDecodeEnvelopedMsg_GetParam (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CDecodeHashMsg_GetParam (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CDecodeSignedMsg_GetParam (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
-#define  CMSG_ENVELOPED 131 
-#define  CMSG_HASHED 130 
-#define  CMSG_SIGNED 129 
-#define  CMSG_TYPE_PARAM 128 
- int /*<<< orphan*/  CRYPT_CopyParam (void*,int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  CRYPT_E_INVALID_MSG_TYPE ; 
- int /*<<< orphan*/  ContextPropertyList_FindProperty (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
+
+ int CDecodeEnvelopedMsg_GetParam (TYPE_1__*,int ,int ,void*,int *) ;
+ int CDecodeHashMsg_GetParam (TYPE_1__*,int ,int ,void*,int *) ;
+ int CDecodeSignedMsg_GetParam (TYPE_1__*,int ,int ,void*,int *) ;
+
+
+
+
+ int CRYPT_CopyParam (void*,int *,int*,int) ;
+ int CRYPT_E_INVALID_MSG_TYPE ;
+ int ContextPropertyList_FindProperty (int ,int ,TYPE_2__*) ;
+ int FALSE ;
+ int SetLastError (int ) ;
 
 __attribute__((used)) static BOOL CDecodeMsg_GetParam(HCRYPTMSG hCryptMsg, DWORD dwParamType,
  DWORD dwIndex, void *pvData, DWORD *pcbData)
@@ -42,22 +42,22 @@ __attribute__((used)) static BOOL CDecodeMsg_GetParam(HCRYPTMSG hCryptMsg, DWORD
 
     switch (msg->type)
     {
-    case CMSG_HASHED:
+    case 130:
         ret = CDecodeHashMsg_GetParam(msg, dwParamType, dwIndex, pvData,
          pcbData);
         break;
-    case CMSG_ENVELOPED:
+    case 131:
         ret = CDecodeEnvelopedMsg_GetParam(msg, dwParamType, dwIndex, pvData,
          pcbData);
         break;
-    case CMSG_SIGNED:
+    case 129:
         ret = CDecodeSignedMsg_GetParam(msg, dwParamType, dwIndex, pvData,
          pcbData);
         break;
     default:
         switch (dwParamType)
         {
-        case CMSG_TYPE_PARAM:
+        case 128:
             ret = CRYPT_CopyParam(pvData, pcbData, &msg->type,
              sizeof(msg->type));
             break;

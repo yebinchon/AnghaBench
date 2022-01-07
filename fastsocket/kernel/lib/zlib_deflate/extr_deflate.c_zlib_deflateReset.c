@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* z_streamp ;
-struct TYPE_7__ {scalar_t__ noheader; int /*<<< orphan*/  last_flush; int /*<<< orphan*/  status; int /*<<< orphan*/  pending_buf; int /*<<< orphan*/  pending_out; scalar_t__ pending; } ;
-typedef  TYPE_2__ deflate_state ;
-struct TYPE_6__ {int adler; int /*<<< orphan*/ * state; int /*<<< orphan*/  data_type; int /*<<< orphan*/ * msg; scalar_t__ total_out; scalar_t__ total_in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUSY_STATE ; 
- int /*<<< orphan*/  INIT_STATE ; 
- int /*<<< orphan*/  Z_NO_FLUSH ; 
- int Z_OK ; 
- int Z_STREAM_ERROR ; 
- int /*<<< orphan*/  Z_UNKNOWN ; 
- int /*<<< orphan*/  lm_init (TYPE_2__*) ; 
- int /*<<< orphan*/  zlib_tr_init (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* z_streamp ;
+struct TYPE_7__ {scalar_t__ noheader; int last_flush; int status; int pending_buf; int pending_out; scalar_t__ pending; } ;
+typedef TYPE_2__ deflate_state ;
+struct TYPE_6__ {int adler; int * state; int data_type; int * msg; scalar_t__ total_out; scalar_t__ total_in; } ;
+
+
+ int BUSY_STATE ;
+ int INIT_STATE ;
+ int Z_NO_FLUSH ;
+ int Z_OK ;
+ int Z_STREAM_ERROR ;
+ int Z_UNKNOWN ;
+ int lm_init (TYPE_2__*) ;
+ int zlib_tr_init (TYPE_2__*) ;
 
 int zlib_deflateReset(
-	z_streamp strm
+ z_streamp strm
 )
 {
     deflate_state *s;
-    
-    if (strm == NULL || strm->state == NULL)
+
+    if (strm == ((void*)0) || strm->state == ((void*)0))
         return Z_STREAM_ERROR;
 
     strm->total_in = strm->total_out = 0;
-    strm->msg = NULL;
+    strm->msg = ((void*)0);
     strm->data_type = Z_UNKNOWN;
 
     s = (deflate_state *)strm->state;
@@ -45,7 +45,7 @@ int zlib_deflateReset(
     s->pending_out = s->pending_buf;
 
     if (s->noheader < 0) {
-        s->noheader = 0; /* was set to -1 by deflate(..., Z_FINISH); */
+        s->noheader = 0;
     }
     s->status = s->noheader ? BUSY_STATE : INIT_STATE;
     strm->adler = 1;

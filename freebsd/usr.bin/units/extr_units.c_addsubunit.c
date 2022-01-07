@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int MAXSUBUNITS ;
+ char* NULLUNIT ;
+ char* dupstr (char*) ;
+ int warnx (char*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAXSUBUNITS ; 
- char* NULLUNIT ; 
- char* dupstr (char*) ; 
- int /*<<< orphan*/  warnx (char*) ; 
-
-__attribute__((used)) static int 
+__attribute__((used)) static int
 addsubunit(char *product[], char *toadd)
 {
-	char **ptr;
+ char **ptr;
 
-	for (ptr = product; *ptr && *ptr != NULLUNIT; ptr++);
-	if (ptr >= product + MAXSUBUNITS) {
-		warnx("memory overflow in unit reduction");
-		return 1;
-	}
-	if (!*ptr)
-		*(ptr + 1) = NULL;
-	*ptr = dupstr(toadd);
-	return 0;
+ for (ptr = product; *ptr && *ptr != NULLUNIT; ptr++);
+ if (ptr >= product + MAXSUBUNITS) {
+  warnx("memory overflow in unit reduction");
+  return 1;
+ }
+ if (!*ptr)
+  *(ptr + 1) = ((void*)0);
+ *ptr = dupstr(toadd);
+ return 0;
 }

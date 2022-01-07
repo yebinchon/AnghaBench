@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_6__ ;
-typedef  struct TYPE_29__   TYPE_5__ ;
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_20__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
-typedef  struct TYPE_23__   TYPE_18__ ;
-typedef  struct TYPE_22__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_30__ TYPE_6__ ;
+typedef struct TYPE_29__ TYPE_5__ ;
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_20__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+typedef struct TYPE_23__ TYPE_18__ ;
+typedef struct TYPE_22__ TYPE_13__ ;
+
+
 struct TYPE_26__ {scalar_t__ date; } ;
-typedef  TYPE_2__ picture_t ;
-typedef  scalar_t__ mfxStatus ;
-typedef  int /*<<< orphan*/  mfxFrameSurface1 ;
+typedef TYPE_2__ picture_t ;
+typedef scalar_t__ mfxStatus ;
+typedef int mfxFrameSurface1 ;
 struct TYPE_27__ {TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ encoder_t ;
+typedef TYPE_3__ encoder_t ;
 struct TYPE_24__ {int BufferSizeInKB; } ;
 struct TYPE_25__ {TYPE_1__ mfx; } ;
-struct TYPE_28__ {TYPE_20__ params; int /*<<< orphan*/  session; int /*<<< orphan*/  busy_warn_counter; scalar_t__ offset_pts; } ;
-typedef  TYPE_4__ encoder_sys_t ;
-struct TYPE_22__ {int /*<<< orphan*/  Data; int /*<<< orphan*/  MaxLength; } ;
+struct TYPE_28__ {TYPE_20__ params; int session; int busy_warn_counter; scalar_t__ offset_pts; } ;
+typedef TYPE_4__ encoder_sys_t ;
+struct TYPE_22__ {int Data; int MaxLength; } ;
 struct TYPE_29__ {TYPE_18__* block; void* syncp; TYPE_13__ bs; } ;
-typedef  TYPE_5__ async_task_t ;
-struct TYPE_30__ {int /*<<< orphan*/  surface; } ;
-struct TYPE_23__ {int /*<<< orphan*/  p_buffer; int /*<<< orphan*/  i_buffer; } ;
-typedef  TYPE_6__ QSVFrame ;
+typedef TYPE_5__ async_task_t ;
+struct TYPE_30__ {int surface; } ;
+struct TYPE_23__ {int p_buffer; int i_buffer; } ;
+typedef TYPE_6__ QSVFrame ;
 
-/* Variables and functions */
- scalar_t__ MFXVideoENCODE_EncodeFrameAsync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_13__*,void*) ; 
- int /*<<< orphan*/  MFXVideoENCODE_Reset (int /*<<< orphan*/ ,TYPE_20__*) ; 
- scalar_t__ MFX_ERR_MEMORY_ALLOC ; 
- scalar_t__ MFX_ERR_MORE_DATA ; 
- scalar_t__ MFX_ERR_NONE ; 
- scalar_t__ MFX_WRN_DEVICE_BUSY ; 
- scalar_t__ MFX_WRN_IN_EXECUTION ; 
- int /*<<< orphan*/  QSV_BUSYWAIT_TIME ; 
- scalar_t__ VLC_SUCCESS ; 
- TYPE_18__* block_Alloc (int) ; 
- int /*<<< orphan*/  block_Release (TYPE_18__*) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_5__*) ; 
- int /*<<< orphan*/  memset (TYPE_13__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_3__*,char*,...) ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*,...) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_3__*,char*) ; 
- scalar_t__ submit_frame (TYPE_3__*,TYPE_2__*,TYPE_6__**) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_tick_sleep (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ MFXVideoENCODE_EncodeFrameAsync (int ,int ,int *,TYPE_13__*,void*) ;
+ int MFXVideoENCODE_Reset (int ,TYPE_20__*) ;
+ scalar_t__ MFX_ERR_MEMORY_ALLOC ;
+ scalar_t__ MFX_ERR_MORE_DATA ;
+ scalar_t__ MFX_ERR_NONE ;
+ scalar_t__ MFX_WRN_DEVICE_BUSY ;
+ scalar_t__ MFX_WRN_IN_EXECUTION ;
+ int QSV_BUSYWAIT_TIME ;
+ scalar_t__ VLC_SUCCESS ;
+ TYPE_18__* block_Alloc (int) ;
+ int block_Release (TYPE_18__*) ;
+ void* calloc (int,int) ;
+ int free (TYPE_5__*) ;
+ int memset (TYPE_13__*,int ,int) ;
+ int msg_Dbg (TYPE_3__*,char*,...) ;
+ int msg_Err (TYPE_3__*,char*,...) ;
+ int msg_Warn (TYPE_3__*,char*) ;
+ scalar_t__ submit_frame (TYPE_3__*,TYPE_2__*,TYPE_6__**) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_tick_sleep (int ) ;
 
 __attribute__((used)) static async_task_t *encode_frame(encoder_t *enc, picture_t *pic)
 {
     encoder_sys_t *sys = enc->p_sys;
     mfxStatus sts = MFX_ERR_MEMORY_ALLOC;
-    QSVFrame *qsv_frame = NULL;
-    mfxFrameSurface1 *surf = NULL;
+    QSVFrame *qsv_frame = ((void*)0);
+    mfxFrameSurface1 *surf = ((void*)0);
     async_task_t *task = calloc(1, sizeof(*task));
-    if (unlikely(task == NULL))
+    if (unlikely(task == ((void*)0)))
         goto done;
 
     if (pic) {
-        /* To avoid qsv -> vlc timestamp conversion overflow, we use timestamp relative
-           to the first picture received. That way, vlc will overflow before us.
-           (Thanks to funman for the idea) */
-        if (!sys->offset_pts) // First frame
+
+
+
+        if (!sys->offset_pts)
             sys->offset_pts = pic->date;
 
         if (submit_frame(enc, pic, &qsv_frame) != VLC_SUCCESS)
@@ -87,7 +87,7 @@ __attribute__((used)) static async_task_t *encode_frame(encoder_t *enc, picture_
         goto done;
     }
 
-    /* Allocate block_t and prepare mfxBitstream for encoder */
+
     if (!(task->block = block_Alloc(sys->params.mfx.BufferSizeInKB * 1000))) {
         msg_Err(enc, "Unable to allocate block for encoder output");
         goto done;
@@ -110,7 +110,7 @@ __attribute__((used)) static async_task_t *encode_frame(encoder_t *enc, picture_
             vlc_tick_sleep(QSV_BUSYWAIT_TIME);
     }
 
-    // msg_Dbg(enc, "Encode async status: %d, Syncpoint = %tx", sts, (ptrdiff_t)task->syncp);
+
 
     if (sts == MFX_ERR_MORE_DATA)
         if (pic)
@@ -123,11 +123,11 @@ __attribute__((used)) static async_task_t *encode_frame(encoder_t *enc, picture_
     }
 
 done:
-    if (sts < MFX_ERR_NONE || (task != NULL && !task->syncp)) {
-        if (task->block != NULL)
+    if (sts < MFX_ERR_NONE || (task != ((void*)0) && !task->syncp)) {
+        if (task->block != ((void*)0))
             block_Release(task->block);
         free(task);
-        task = NULL;
+        task = ((void*)0);
     }
     return task;
 }

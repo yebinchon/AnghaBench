@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int timacnt; int timasd; int scipd; int mcipd; int timbcnt; int timbsd; int timccnt; int timcsd; } ;
 
-/* Variables and functions */
- TYPE_1__ scsp ; 
- int /*<<< orphan*/  scsp_main_interrupt (int) ; 
- int /*<<< orphan*/  scsp_sound_interrupt (int) ; 
+
+ TYPE_1__ scsp ;
+ int scsp_main_interrupt (int) ;
+ int scsp_sound_interrupt (int) ;
 
 void
 scsp_update_timer (u32 len)
@@ -55,7 +55,7 @@ scsp_update_timer (u32 len)
       scsp.timccnt -= 0xFF00;
    }
 
-   // 1F interrupt can't be accurate here...
+
    if (len)
    {
       if (!(scsp.scipd & 0x400))

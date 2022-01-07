@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  evutil_socket_t ;
-struct TYPE_3__ {int /*<<< orphan*/  result; int /*<<< orphan*/  (* done_func ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/ * pipefd; } ;
-typedef  TYPE_1__ SeafJob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  seaf_job_free (TYPE_1__*) ; 
- int /*<<< orphan*/  seaf_pipe_close (int /*<<< orphan*/ ) ; 
- int seaf_pipe_readn (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int evutil_socket_t ;
+struct TYPE_3__ {int result; int (* done_func ) (int ) ;int * pipefd; } ;
+typedef TYPE_1__ SeafJob ;
+
+
+ int errno ;
+ int seaf_job_free (TYPE_1__*) ;
+ int seaf_pipe_close (int ) ;
+ int seaf_pipe_readn (int ,char*,int) ;
+ int seaf_warning (char*,int ) ;
+ int strerror (int ) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void
 job_done_cb (evutil_socket_t fd, short event, void *vdata)

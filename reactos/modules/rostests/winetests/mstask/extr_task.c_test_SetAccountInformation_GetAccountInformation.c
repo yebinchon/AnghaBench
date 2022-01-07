@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char const* LPWSTR ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (char const*) ; 
- int /*<<< orphan*/  ERROR_FILE_NOT_FOUND ; 
- int HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int ITask_GetAccountInformation (int /*<<< orphan*/ ,char const**) ; 
- int ITask_SetAccountInformation (int /*<<< orphan*/ ,char const*,char const*) ; 
- int SCHED_E_CANNOT_OPEN_TASK ; 
- int SCHED_E_NO_SECURITY_SERVICES ; 
- int SCHED_E_SERVICE_NOT_RUNNING ; 
- int S_OK ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  cleanup_task () ; 
- char const* empty ; 
- int /*<<< orphan*/  lstrcmpW (char const*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  setup_task () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  test_task ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int wine_dbgstr_w (char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef char const* LPWSTR ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ int CoTaskMemFree (char const*) ;
+ int ERROR_FILE_NOT_FOUND ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int ITask_GetAccountInformation (int ,char const**) ;
+ int ITask_SetAccountInformation (int ,char const*,char const*) ;
+ int SCHED_E_CANNOT_OPEN_TASK ;
+ int SCHED_E_NO_SECURITY_SERVICES ;
+ int SCHED_E_SERVICE_NOT_RUNNING ;
+ int S_OK ;
+ scalar_t__ broken (int) ;
+ int cleanup_task () ;
+ char const* empty ;
+ int lstrcmpW (char const*,char const*) ;
+ int ok (int,char*,...) ;
+ int setup_task () ;
+ int skip (char*) ;
+ int test_task ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (char const*) ;
 
 __attribute__((used)) static void test_SetAccountInformation_GetAccountInformation(void)
 {
@@ -54,11 +54,11 @@ __attribute__((used)) static void test_SetAccountInformation_GetAccountInformati
         return;
     }
 
-    /* Get account information before it is set */
+
     hres = ITask_GetAccountInformation(test_task, &account_name);
-    /* WinXP returns HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND): 0x80070002 but
-     * Win2K returns SCHED_E_CANNOT_OPEN_TASK: 0x8004130d
-     * Win9x doesn't support security services */
+
+
+
     if (hres == SCHED_E_NO_SECURITY_SERVICES || hres == SCHED_E_SERVICE_NOT_RUNNING)
     {
         win_skip("Security services are not supported\n");
@@ -69,16 +69,16 @@ __attribute__((used)) static void test_SetAccountInformation_GetAccountInformati
             hres == SCHED_E_CANNOT_OPEN_TASK,
             "Unset account name generated: 0x%08x\n", hres);
 
-    /* Attempt to set to a dummy account without a password */
-    /* This test passes on WinXP but fails on Win2K */
-    hres = ITask_SetAccountInformation(test_task, dummy_account_name, NULL);
+
+
+    hres = ITask_SetAccountInformation(test_task, dummy_account_name, ((void*)0));
     ok(hres == S_OK,
             "Failed setting dummy account with no password: %08x\n", hres);
     hres = ITask_GetAccountInformation(test_task, &account_name);
     ok(hres == S_OK ||
        broken(hres == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND) ||
               hres == SCHED_E_CANNOT_OPEN_TASK ||
-              hres == 0x200),  /* win2k */
+              hres == 0x200),
        "GetAccountInformation failed: %08x\n", hres);
     if (hres == S_OK)
     {
@@ -88,8 +88,8 @@ __attribute__((used)) static void test_SetAccountInformation_GetAccountInformati
         CoTaskMemFree(account_name);
     }
 
-    /* Attempt to set to a dummy account with a (invalid) password */
-    /* This test passes on WinXP but fails on Win2K */
+
+
     hres = ITask_SetAccountInformation(test_task, dummy_account_name_b,
             dummy_account_name_b);
     ok(hres == S_OK,
@@ -98,7 +98,7 @@ __attribute__((used)) static void test_SetAccountInformation_GetAccountInformati
     ok(hres == S_OK ||
        broken(hres == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND) ||
               hres == SCHED_E_CANNOT_OPEN_TASK ||
-              hres == 0x200),  /* win2k */
+              hres == 0x200),
        "GetAccountInformation failed: %08x\n", hres);
     if (hres == S_OK)
     {
@@ -108,14 +108,14 @@ __attribute__((used)) static void test_SetAccountInformation_GetAccountInformati
         CoTaskMemFree(account_name);
     }
 
-    /* Attempt to set to the local system account */
-    hres = ITask_SetAccountInformation(test_task, empty, NULL);
+
+    hres = ITask_SetAccountInformation(test_task, empty, ((void*)0));
     ok(hres == S_OK, "Failed setting system account: %08x\n", hres);
     hres = ITask_GetAccountInformation(test_task, &account_name);
     ok(hres == S_OK ||
        broken(hres == HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND) ||
               hres == SCHED_E_CANNOT_OPEN_TASK ||
-              hres == 0x200),  /* win2k */
+              hres == 0x200),
        "GetAccountInformation failed: %08x\n", hres);
     if (hres == S_OK)
     {

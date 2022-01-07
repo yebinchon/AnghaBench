@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int setpgid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int setpgid (int ,int ) ;
 
 int
 setpgrp(pid_t pid, pid_t pgid)
 {
-	return(setpgid(pid, pgid));
+ return(setpgid(pid, pgid));
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_ENVIRONINDEX ; 
- int /*<<< orphan*/  fileerror (int /*<<< orphan*/ *,int,char const*) ; 
- int /*<<< orphan*/ * fopen (char const*,char const*) ; 
- int /*<<< orphan*/  lua_isnoneornil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ ** newfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tofile (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int FILE ;
+
+
+ int LUA_ENVIRONINDEX ;
+ int fileerror (int *,int,char const*) ;
+ int * fopen (char const*,char const*) ;
+ int lua_isnoneornil (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawgeti (int *,int ,int) ;
+ int lua_rawseti (int *,int ,int) ;
+ char* lua_tostring (int *,int) ;
+ int ** newfile (int *) ;
+ int tofile (int *) ;
 
 __attribute__((used)) static int g_iofile (lua_State *L, int f, const char *mode) {
   if (!lua_isnoneornil(L, 1)) {
@@ -31,16 +31,16 @@ __attribute__((used)) static int g_iofile (lua_State *L, int f, const char *mode
     if (filename) {
       FILE **pf = newfile(L);
       *pf = fopen(filename, mode);
-      if (*pf == NULL)
+      if (*pf == ((void*)0))
         fileerror(L, 1, filename);
     }
     else {
-      tofile(L);  /* check that it's a valid file handle */
+      tofile(L);
       lua_pushvalue(L, 1);
     }
     lua_rawseti(L, LUA_ENVIRONINDEX, f);
   }
-  /* return current value */
+
   lua_rawgeti(L, LUA_ENVIRONINDEX, f);
   return 1;
 }

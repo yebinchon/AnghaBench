@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct super_block {int dummy; } ;
 struct dentry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  count_fops ; 
- int oprofilefs_create_file (struct super_block*,struct dentry*,char*,int /*<<< orphan*/ *) ; 
+
+ int count_fops ;
+ int oprofilefs_create_file (struct super_block*,struct dentry*,char*,int *) ;
 
 __attribute__((used)) static int sh7750_ppc_create_files(struct super_block *sb, struct dentry *dir)
 {
-	return oprofilefs_create_file(sb, dir, "count", &count_fops);
+ return oprofilefs_create_file(sb, dir, "count", &count_fops);
 }

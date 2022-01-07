@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int dwImageRunCount; int /*<<< orphan*/  dwProcessId; int /*<<< orphan*/  hProcess; int /*<<< orphan*/  pszImagePath; int /*<<< orphan*/ * hToken; } ;
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_18__ {int dwImageRunCount; int dwProcessId; int hProcess; int pszImagePath; int * hToken; } ;
 struct TYPE_15__ {int dwServiceType; } ;
-struct TYPE_17__ {TYPE_9__* lpImage; int /*<<< orphan*/  lpServiceName; TYPE_1__ Status; } ;
-struct TYPE_16__ {int cb; char* lpDesktop; int /*<<< orphan*/  hThread; int /*<<< orphan*/  dwProcessId; int /*<<< orphan*/  hProcess; int /*<<< orphan*/  dwThreadId; int /*<<< orphan*/  dwFlags; } ;
-typedef  int /*<<< orphan*/  StartupInfo ;
-typedef  TYPE_2__ STARTUPINFOW ;
-typedef  int /*<<< orphan*/  ProcessInformation ;
-typedef  TYPE_3__* PSERVICE ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_17__ {TYPE_9__* lpImage; int lpServiceName; TYPE_1__ Status; } ;
+struct TYPE_16__ {int cb; char* lpDesktop; int hThread; int dwProcessId; int hProcess; int dwThreadId; int dwFlags; } ;
+typedef int StartupInfo ;
+typedef TYPE_2__ STARTUPINFOW ;
+typedef int ProcessInformation ;
+typedef TYPE_3__* PSERVICE ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int LPWSTR ;
+typedef int * LPVOID ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int CREATE_SUSPENDED ; 
- int CREATE_UNICODE_ENVIRONMENT ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEnvironmentBlock (int /*<<< orphan*/ **,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ CreateProcessAsUserW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ CreateProcessW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int DETACHED_PROCESS ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_3__*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  DestroyEnvironmentBlock (int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ ImpersonateLoggedOnUser (int /*<<< orphan*/ *) ; 
- scalar_t__ NoInteractiveServices ; 
- int /*<<< orphan*/  ResumeThread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RevertToSelf () ; 
- int SERVICE_INTERACTIVE_PROCESS ; 
- int /*<<< orphan*/  STARTF_INHERITDESKTOP ; 
- int /*<<< orphan*/  ScmIsSecurityService (TYPE_9__*) ; 
- scalar_t__ ScmSendStartCommand (TYPE_3__*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ ScmWaitForServiceConnect (TYPE_3__*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
+
+ int CREATE_SUSPENDED ;
+ int CREATE_UNICODE_ENVIRONMENT ;
+ int CloseHandle (int ) ;
+ int CreateEnvironmentBlock (int **,int *,scalar_t__) ;
+ scalar_t__ CreateProcessAsUserW (int *,int *,int ,int *,int *,scalar_t__,int,int *,int *,TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ CreateProcessW (int *,int ,int *,int *,scalar_t__,int,int *,int *,TYPE_2__*,TYPE_2__*) ;
+ int DETACHED_PROCESS ;
+ int DPRINT (char*,TYPE_3__*,...) ;
+ int DPRINT1 (char*,scalar_t__,...) ;
+ int DestroyEnvironmentBlock (int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ ImpersonateLoggedOnUser (int *) ;
+ scalar_t__ NoInteractiveServices ;
+ int ResumeThread (int ) ;
+ int RevertToSelf () ;
+ int SERVICE_INTERACTIVE_PROCESS ;
+ int STARTF_INHERITDESKTOP ;
+ int ScmIsSecurityService (TYPE_9__*) ;
+ scalar_t__ ScmSendStartCommand (TYPE_3__*,scalar_t__,int *) ;
+ scalar_t__ ScmWaitForServiceConnect (TYPE_3__*) ;
+ scalar_t__ TRUE ;
+ int ZeroMemory (TYPE_2__*,int) ;
 
 __attribute__((used)) static DWORD
 ScmStartUserModeService(PSERVICE Service,
@@ -67,50 +67,50 @@ ScmStartUserModeService(PSERVICE Service,
 
     DPRINT("ScmStartUserModeService(%p)\n", Service);
 
-    /* If the image is already running ... */
+
     if (Service->lpImage->dwImageRunCount > 1)
     {
-        /* ... just send a start command */
+
         return ScmSendStartCommand(Service, argc, argv);
     }
 
-    /* Otherwise start its process */
+
     ZeroMemory(&StartupInfo, sizeof(StartupInfo));
     StartupInfo.cb = sizeof(StartupInfo);
     ZeroMemory(&ProcessInformation, sizeof(ProcessInformation));
 
     if (Service->lpImage->hToken)
     {
-        /* User token: Run the service under the user account */
+
 
         if (!CreateEnvironmentBlock(&lpEnvironment, Service->lpImage->hToken, FALSE))
         {
-            /* We failed, run the service with the current environment */
+
             DPRINT1("CreateEnvironmentBlock() failed with error %d; service '%S' will run with the current environment.\n",
                     GetLastError(), Service->lpServiceName);
-            lpEnvironment = NULL;
+            lpEnvironment = ((void*)0);
         }
 
-        /* Impersonate the new user */
+
         Result = ImpersonateLoggedOnUser(Service->lpImage->hToken);
         if (Result)
         {
-            /* Launch the process in the user's logon session */
+
             Result = CreateProcessAsUserW(Service->lpImage->hToken,
-                                          NULL,
+                                          ((void*)0),
                                           Service->lpImage->pszImagePath,
-                                          NULL,
-                                          NULL,
+                                          ((void*)0),
+                                          ((void*)0),
                                           FALSE,
                                           CREATE_UNICODE_ENVIRONMENT | DETACHED_PROCESS | CREATE_SUSPENDED,
                                           lpEnvironment,
-                                          NULL,
+                                          ((void*)0),
                                           &StartupInfo,
                                           &ProcessInformation);
             if (!Result)
                 dwError = GetLastError();
 
-            /* Revert the impersonation */
+
             RevertToSelf();
         }
         else
@@ -121,17 +121,17 @@ ScmStartUserModeService(PSERVICE Service,
     }
     else
     {
-        /* No user token: Run the service under the LocalSystem account */
 
-        if (!CreateEnvironmentBlock(&lpEnvironment, NULL, TRUE))
+
+        if (!CreateEnvironmentBlock(&lpEnvironment, ((void*)0), TRUE))
         {
-            /* We failed, run the service with the current environment */
+
             DPRINT1("CreateEnvironmentBlock() failed with error %d; service '%S' will run with the current environment.\n",
                     GetLastError(), Service->lpServiceName);
-            lpEnvironment = NULL;
+            lpEnvironment = ((void*)0);
         }
 
-        /* Use the interactive desktop if the service is interactive */
+
         if ((NoInteractiveServices == 0) &&
             (Service->Status.dwServiceType & SERVICE_INTERACTIVE_PROCESS))
         {
@@ -141,14 +141,14 @@ ScmStartUserModeService(PSERVICE Service,
 
         if (!ScmIsSecurityService(Service->lpImage))
         {
-            Result = CreateProcessW(NULL,
+            Result = CreateProcessW(((void*)0),
                                     Service->lpImage->pszImagePath,
-                                    NULL,
-                                    NULL,
+                                    ((void*)0),
+                                    ((void*)0),
                                     FALSE,
                                     CREATE_UNICODE_ENVIRONMENT | DETACHED_PROCESS | CREATE_SUSPENDED,
                                     lpEnvironment,
-                                    NULL,
+                                    ((void*)0),
                                     &StartupInfo,
                                     &ProcessInformation);
             if (!Result)
@@ -178,15 +178,15 @@ ScmStartUserModeService(PSERVICE Service,
            ProcessInformation.dwThreadId,
            ProcessInformation.hThread);
 
-    /* Get the process handle and ID */
+
     Service->lpImage->hProcess = ProcessInformation.hProcess;
     Service->lpImage->dwProcessId = ProcessInformation.dwProcessId;
 
-    /* Resume the main thread and close its handle */
+
     ResumeThread(ProcessInformation.hThread);
     CloseHandle(ProcessInformation.hThread);
 
-    /* Connect control pipe */
+
     dwError = ScmWaitForServiceConnect(Service);
     if (dwError != ERROR_SUCCESS)
     {
@@ -195,6 +195,6 @@ ScmStartUserModeService(PSERVICE Service,
         return dwError;
     }
 
-    /* Send the start command */
+
     return ScmSendStartCommand(Service, argc, argv);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_frame_info_t ;
-typedef  int /*<<< orphan*/  gl1_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gl1_gfx_set_viewport (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int,unsigned int,int,int) ; 
- int /*<<< orphan*/  video_driver_build_info (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int video_frame_info_t ;
+typedef int gl1_t ;
+
+
+ int gl1_gfx_set_viewport (int *,int *,unsigned int,unsigned int,int,int) ;
+ int video_driver_build_info (int *) ;
 
 __attribute__((used)) static void gl1_gfx_set_viewport_wrapper(void *data, unsigned viewport_width,
       unsigned viewport_height, bool force_full, bool allow_rotate)
 {
    video_frame_info_t video_info;
-   gl1_t               *gl1 = (gl1_t*)data;
+   gl1_t *gl1 = (gl1_t*)data;
 
    video_driver_build_info(&video_info);
 

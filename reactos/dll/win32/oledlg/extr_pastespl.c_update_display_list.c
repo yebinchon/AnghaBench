@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int LPARAM ;
-typedef  int LONG ;
-typedef  scalar_t__ HWND ;
 
-/* Variables and functions */
- scalar_t__ GetDlgItem (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetForegroundWindow () ; 
- int /*<<< orphan*/  IDC_PS_DISPLAYLIST ; 
- int /*<<< orphan*/  LB_GETCOUNT ; 
- int /*<<< orphan*/  LB_GETCURSEL ; 
- int /*<<< orphan*/  LB_GETITEMDATA ; 
- int /*<<< orphan*/  LB_GETTEXT ; 
- int /*<<< orphan*/  LB_INSERTSTRING ; 
- int /*<<< orphan*/  LB_RESETCONTENT ; 
- int /*<<< orphan*/  LB_SETCURSEL ; 
- int /*<<< orphan*/  LB_SETITEMDATA ; 
- int SendMessageW (scalar_t__,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SetFocus (scalar_t__) ; 
- int /*<<< orphan*/  WM_SETREDRAW ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int LPARAM ;
+typedef int LONG ;
+typedef scalar_t__ HWND ;
+
+
+ scalar_t__ GetDlgItem (scalar_t__,int ) ;
+ scalar_t__ GetForegroundWindow () ;
+ int IDC_PS_DISPLAYLIST ;
+ int LB_GETCOUNT ;
+ int LB_GETCURSEL ;
+ int LB_GETITEMDATA ;
+ int LB_GETTEXT ;
+ int LB_INSERTSTRING ;
+ int LB_RESETCONTENT ;
+ int LB_SETCURSEL ;
+ int LB_SETITEMDATA ;
+ int SendMessageW (scalar_t__,int ,int,int) ;
+ int SetFocus (scalar_t__) ;
+ int WM_SETREDRAW ;
 
 __attribute__((used)) static void update_display_list(HWND hdlg, UINT src_list_id)
 {

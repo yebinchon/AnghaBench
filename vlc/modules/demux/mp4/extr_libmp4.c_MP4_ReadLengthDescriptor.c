@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char uint8_t ;
-typedef  scalar_t__ uint64_t ;
 
-/* Variables and functions */
- int UINT64_MAX ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef unsigned char uint8_t ;
+typedef scalar_t__ uint64_t ;
+
+
+ int UINT64_MAX ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static uint64_t MP4_ReadLengthDescriptor( uint8_t **restrict bufp,
                                           uint64_t *restrict lenp )
@@ -28,9 +28,9 @@ __attribute__((used)) static uint64_t MP4_ReadLengthDescriptor( uint8_t **restri
     do
     {
         if (unlikely(len == 0))
-            return -1; /* end of bit stream */
+            return -1;
         if (unlikely(value > (UINT64_MAX >> 7)))
-            return -1; /* integer overflow */
+            return -1;
 
         b = *(buf++);
         len--;

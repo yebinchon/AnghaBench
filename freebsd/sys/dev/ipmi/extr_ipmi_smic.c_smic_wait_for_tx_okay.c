@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ipmi_softc {int dummy; } ;
 
-/* Variables and functions */
- int INB (struct ipmi_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SMIC_FLAGS ; 
- int SMIC_STATUS_TX_RDY ; 
+
+ int INB (struct ipmi_softc*,int ) ;
+ int SMIC_FLAGS ;
+ int SMIC_STATUS_TX_RDY ;
 
 __attribute__((used)) static void
 smic_wait_for_tx_okay(struct ipmi_softc *sc)
 {
-	int flags;
+ int flags;
 
-	do {
-		flags = INB(sc, SMIC_FLAGS);
-	} while (!(flags & SMIC_STATUS_TX_RDY));
+ do {
+  flags = INB(sc, SMIC_FLAGS);
+ } while (!(flags & SMIC_STATUS_TX_RDY));
 }

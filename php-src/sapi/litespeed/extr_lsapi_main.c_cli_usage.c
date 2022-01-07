@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  php_end_ob_buffers (int) ; 
- int /*<<< orphan*/  php_output_activate () ; 
- int /*<<< orphan*/  php_output_end_all () ; 
- int /*<<< orphan*/  php_output_startup () ; 
- int /*<<< orphan*/  php_printf (char*,char const*) ; 
+ int php_end_ob_buffers (int) ;
+ int php_output_activate () ;
+ int php_output_end_all () ;
+ int php_output_startup () ;
+ int php_printf (char*,char const*) ;
 
 __attribute__((used)) static void cli_usage(void)
 {
@@ -41,9 +33,9 @@ __attribute__((used)) static void cli_usage(void)
     php_output_startup();
     php_output_activate();
     php_printf( "%s", usage );
-#ifdef PHP_OUTPUT_NEWAPI
-    php_output_end_all();
-#else
+
+
+
     php_end_ob_buffers(1);
-#endif
+
 }

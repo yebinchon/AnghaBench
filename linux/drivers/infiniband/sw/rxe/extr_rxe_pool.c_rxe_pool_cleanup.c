@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rxe_pool {int /*<<< orphan*/  pool_lock; int /*<<< orphan*/  num_elem; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RXE_POOL_STATE_INVALID ; 
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pool_name (struct rxe_pool*) ; 
- int /*<<< orphan*/  pr_warn (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rxe_pool_put (struct rxe_pool*) ; 
- int /*<<< orphan*/  write_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct rxe_pool {int pool_lock; int num_elem; int state; } ;
+
+
+ int RXE_POOL_STATE_INVALID ;
+ scalar_t__ atomic_read (int *) ;
+ int pool_name (struct rxe_pool*) ;
+ int pr_warn (char*,int ) ;
+ int rxe_pool_put (struct rxe_pool*) ;
+ int write_lock_irqsave (int *,unsigned long) ;
+ int write_unlock_irqrestore (int *,unsigned long) ;
 
 void rxe_pool_cleanup(struct rxe_pool *pool)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	write_lock_irqsave(&pool->pool_lock, flags);
-	pool->state = RXE_POOL_STATE_INVALID;
-	if (atomic_read(&pool->num_elem) > 0)
-		pr_warn("%s pool destroyed with unfree'd elem\n",
-			pool_name(pool));
-	write_unlock_irqrestore(&pool->pool_lock, flags);
+ write_lock_irqsave(&pool->pool_lock, flags);
+ pool->state = RXE_POOL_STATE_INVALID;
+ if (atomic_read(&pool->num_elem) > 0)
+  pr_warn("%s pool destroyed with unfree'd elem\n",
+   pool_name(pool));
+ write_unlock_irqrestore(&pool->pool_lock, flags);
 
-	rxe_pool_put(pool);
+ rxe_pool_put(pool);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snd_rawmidi_substream {size_t number; TYPE_1__* rmidi; } ;
-struct snd_ff {int /*<<< orphan*/  lock; int /*<<< orphan*/ * tx_midi_substreams; } ;
+struct snd_ff {int lock; int * tx_midi_substreams; } ;
 struct TYPE_2__ {struct snd_ff* private_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE_ONCE (int /*<<< orphan*/ ,struct snd_rawmidi_substream*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int WRITE_ONCE (int ,struct snd_rawmidi_substream*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void midi_capture_trigger(struct snd_rawmidi_substream *substream,
-				 int up)
+     int up)
 {
-	struct snd_ff *ff = substream->rmidi->private_data;
-	unsigned long flags;
+ struct snd_ff *ff = substream->rmidi->private_data;
+ unsigned long flags;
 
-	spin_lock_irqsave(&ff->lock, flags);
+ spin_lock_irqsave(&ff->lock, flags);
 
-	if (up)
-		WRITE_ONCE(ff->tx_midi_substreams[substream->number],
-			   substream);
-	else
-		WRITE_ONCE(ff->tx_midi_substreams[substream->number], NULL);
+ if (up)
+  WRITE_ONCE(ff->tx_midi_substreams[substream->number],
+      substream);
+ else
+  WRITE_ONCE(ff->tx_midi_substreams[substream->number], ((void*)0));
 
-	spin_unlock_irqrestore(&ff->lock, flags);
+ spin_unlock_irqrestore(&ff->lock, flags);
 }

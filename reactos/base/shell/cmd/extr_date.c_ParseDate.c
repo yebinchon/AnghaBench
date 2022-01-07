@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int wYear; int wDay; int wMonth; } ;
-typedef  TYPE_1__ SYSTEMTIME ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ SYSTEMTIME ;
+typedef int * LPTSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLocalTime (TYPE_1__*) ; 
- int /*<<< orphan*/  ReadNumber (int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  ReadSeparator (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SetLocalTime (TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int** awMonths ; 
- int nDateFormat ; 
+
+ int FALSE ;
+ int GetLocalTime (TYPE_1__*) ;
+ int ReadNumber (int **,int*) ;
+ int ReadSeparator (int **) ;
+ int SetLocalTime (TYPE_1__*) ;
+ int TRUE ;
+ int** awMonths ;
+ int nDateFormat ;
 
 __attribute__((used)) static BOOL
 ParseDate (LPTSTR s)
@@ -44,7 +44,7 @@ ParseDate (LPTSTR s)
 
     switch (nDateFormat)
     {
-        case 0: /* mmddyy */
+        case 0:
         default:
             if (!ReadNumber (&p, &d.wMonth))
                 return FALSE;
@@ -58,7 +58,7 @@ ParseDate (LPTSTR s)
                 return FALSE;
             break;
 
-        case 1: /* ddmmyy */
+        case 1:
             if (!ReadNumber (&p, &d.wDay))
                 return FALSE;
             if (!ReadSeparator (&p))
@@ -71,7 +71,7 @@ ParseDate (LPTSTR s)
                 return FALSE;
             break;
 
-        case 2: /* yymmdd */
+        case 2:
             if (!ReadNumber (&p, &d.wYear))
                 return FALSE;
             if (!ReadSeparator (&p))
@@ -85,9 +85,9 @@ ParseDate (LPTSTR s)
             break;
     }
 
-    /* if only entered two digits: */
-    /*   assume 2000's if value less than 80 */
-    /*   assume 1900's if value greater or equal 80 */
+
+
+
     if (d.wYear <= 99)
     {
         if (d.wYear >= 80)

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int top; int* d; } ;
-typedef  int BN_ULONG ;
-typedef  TYPE_1__ BIGNUM ;
+typedef int BN_ULONG ;
+typedef TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int BN_BITS2 ; 
- int BN_TBIT ; 
- scalar_t__ BN_is_zero (TYPE_1__ const*) ; 
+
+ int BN_BITS2 ;
+ int BN_TBIT ;
+ scalar_t__ BN_is_zero (TYPE_1__ const*) ;
 
 int BN_GF2m_poly2arr(const BIGNUM *a, int p[], int max)
 {
@@ -30,7 +30,7 @@ int BN_GF2m_poly2arr(const BIGNUM *a, int p[], int max)
 
     for (i = a->top - 1; i >= 0; i--) {
         if (!a->d[i])
-            /* skip word if a->d[i] == 0 */
+
             continue;
         mask = BN_TBIT;
         for (j = BN_BITS2 - 1; j >= 0; j--) {

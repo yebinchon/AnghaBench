@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct wined3d_shader {struct glsl_shader_private* backend_data; } ;
 struct TYPE_3__ {int use_map; } ;
 struct wined3d_context {TYPE_1__ stream_info; } ;
 struct vs_compile_args {int dummy; } ;
-struct shader_glsl_priv {int /*<<< orphan*/  shader_buffer; } ;
-struct glsl_vs_compiled_shader {int /*<<< orphan*/  id; struct vs_compile_args args; } ;
+struct shader_glsl_priv {int shader_buffer; } ;
+struct glsl_vs_compiled_shader {int id; struct vs_compile_args args; } ;
 struct TYPE_4__ {struct glsl_vs_compiled_shader* vs; } ;
 struct glsl_shader_private {size_t num_gl_shaders; size_t shader_array_size; TYPE_2__ gl_shaders; } ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int DWORD ;
+typedef size_t UINT ;
+typedef int GLuint ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_shader*) ; 
- struct glsl_vs_compiled_shader* heap_alloc (int) ; 
- struct glsl_shader_private* heap_alloc_zero (int) ; 
- struct glsl_vs_compiled_shader* heap_realloc (struct glsl_vs_compiled_shader*,int) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  shader_glsl_generate_vshader (struct wined3d_context const*,struct shader_glsl_priv*,struct wined3d_shader*,struct vs_compile_args const*) ; 
- int /*<<< orphan*/  string_buffer_clear (int /*<<< orphan*/ *) ; 
- scalar_t__ vs_args_equal (struct vs_compile_args*,struct vs_compile_args const*,int) ; 
+
+ int ERR (char*) ;
+ int TRACE (char*,struct wined3d_shader*) ;
+ struct glsl_vs_compiled_shader* heap_alloc (int) ;
+ struct glsl_shader_private* heap_alloc_zero (int) ;
+ struct glsl_vs_compiled_shader* heap_realloc (struct glsl_vs_compiled_shader*,int) ;
+ int max (int,int) ;
+ int shader_glsl_generate_vshader (struct wined3d_context const*,struct shader_glsl_priv*,struct wined3d_shader*,struct vs_compile_args const*) ;
+ int string_buffer_clear (int *) ;
+ scalar_t__ vs_args_equal (struct vs_compile_args*,struct vs_compile_args const*,int) ;
 
 __attribute__((used)) static GLuint find_glsl_vshader(const struct wined3d_context *context, struct shader_glsl_priv *priv,
         struct wined3d_shader *shader, const struct vs_compile_args *args)
@@ -56,10 +56,10 @@ __attribute__((used)) static GLuint find_glsl_vshader(const struct wined3d_conte
     shader_data = shader->backend_data;
     gl_shaders = shader_data->gl_shaders.vs;
 
-    /* Usually we have very few GL shaders for each d3d shader(just 1 or maybe 2),
-     * so a linear search is more performant than a hashmap or a binary search
-     * (cache coherency etc)
-     */
+
+
+
+
     for (i = 0; i < shader_data->num_gl_shaders; ++i)
     {
         if (vs_args_equal(&gl_shaders[i].args, args, use_map))

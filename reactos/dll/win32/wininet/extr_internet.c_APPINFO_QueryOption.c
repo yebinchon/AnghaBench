@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  object_header_t ;
-struct TYPE_4__ {int /*<<< orphan*/  connect_timeout; int /*<<< orphan*/  proxyBypass; int /*<<< orphan*/  proxy; int /*<<< orphan*/  accessType; int /*<<< orphan*/  agent; } ;
-typedef  TYPE_1__ appinfo_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_6__ {int /*<<< orphan*/ * lpszProxyBypass; int /*<<< orphan*/ * lpszProxy; int /*<<< orphan*/  dwAccessType; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpszProxyBypass; int /*<<< orphan*/ * lpszProxy; int /*<<< orphan*/  dwAccessType; } ;
-typedef  void* LPWSTR ;
-typedef  void* LPSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  TYPE_2__ INTERNET_PROXY_INFOW ;
-typedef  TYPE_3__ INTERNET_PROXY_INFOA ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int ERROR_INSUFFICIENT_BUFFER ; 
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_SUCCESS ; 
- int INET_QueryOption (int /*<<< orphan*/ *,int,void*,int*,int /*<<< orphan*/ ) ; 
- int INTERNET_HANDLE_TYPE_INTERNET ; 
-#define  INTERNET_OPTION_CONNECT_TIMEOUT 131 
-#define  INTERNET_OPTION_HANDLE_TYPE 130 
-#define  INTERNET_OPTION_PROXY 129 
-#define  INTERNET_OPTION_USER_AGENT 128 
- int /*<<< orphan*/  TRACE (char*) ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,void*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpyW (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrlenW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (void*,int /*<<< orphan*/ ) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int object_header_t ;
+struct TYPE_4__ {int connect_timeout; int proxyBypass; int proxy; int accessType; int agent; } ;
+typedef TYPE_1__ appinfo_t ;
+typedef int WCHAR ;
+typedef int ULONG ;
+struct TYPE_6__ {int * lpszProxyBypass; int * lpszProxy; int dwAccessType; } ;
+struct TYPE_5__ {int * lpszProxyBypass; int * lpszProxy; int dwAccessType; } ;
+typedef void* LPWSTR ;
+typedef void* LPSTR ;
+typedef int LPBYTE ;
+typedef TYPE_2__ INTERNET_PROXY_INFOW ;
+typedef TYPE_3__ INTERNET_PROXY_INFOA ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CP_ACP ;
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_SUCCESS ;
+ int INET_QueryOption (int *,int,void*,int*,int ) ;
+ int INTERNET_HANDLE_TYPE_INTERNET ;
+
+
+
+
+ int TRACE (char*) ;
+ int WideCharToMultiByte (int ,int ,int ,int,void*,int,int *,int *) ;
+ int lstrcpyW (void*,int ) ;
+ int lstrlenW (int ) ;
+ int strcpyW (void*,int ) ;
+ int strlenW (int ) ;
 
 __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWORD option, void *buffer, DWORD *size, BOOL unicode)
 {
     appinfo_t *ai = (appinfo_t*)hdr;
 
     switch(option) {
-    case INTERNET_OPTION_HANDLE_TYPE:
+    case 130:
         TRACE("INTERNET_OPTION_HANDLE_TYPE\n");
 
         if (*size < sizeof(ULONG))
@@ -61,7 +61,7 @@ __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWO
         *(DWORD*)buffer = INTERNET_HANDLE_TYPE_INTERNET;
         return ERROR_SUCCESS;
 
-    case INTERNET_OPTION_USER_AGENT: {
+    case 128: {
         DWORD bufsize;
 
         TRACE("INTERNET_OPTION_USER_AGENT\n");
@@ -79,32 +79,32 @@ __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWO
                 strcpyW(buffer, ai->agent);
             else
                 *(WCHAR *)buffer = 0;
-            /* If the buffer is copied, the returned length doesn't include
-             * the NULL terminator.
-             */
+
+
+
             *size = len;
         }else {
             if (ai->agent)
-                *size = WideCharToMultiByte(CP_ACP, 0, ai->agent, -1, NULL, 0, NULL, NULL);
+                *size = WideCharToMultiByte(CP_ACP, 0, ai->agent, -1, ((void*)0), 0, ((void*)0), ((void*)0));
             else
                 *size = 1;
             if(!buffer || bufsize < *size)
                 return ERROR_INSUFFICIENT_BUFFER;
 
             if (ai->agent)
-                WideCharToMultiByte(CP_ACP, 0, ai->agent, -1, buffer, *size, NULL, NULL);
+                WideCharToMultiByte(CP_ACP, 0, ai->agent, -1, buffer, *size, ((void*)0), ((void*)0));
             else
                 *(char *)buffer = 0;
-            /* If the buffer is copied, the returned length doesn't include
-             * the NULL terminator.
-             */
+
+
+
             *size -= 1;
         }
 
         return ERROR_SUCCESS;
     }
 
-    case INTERNET_OPTION_PROXY:
+    case 129:
         if(!size) return ERROR_INVALID_PARAMETER;
         if (unicode) {
             INTERNET_PROXY_INFOW *pi = (INTERNET_PROXY_INFOW *)buffer;
@@ -124,8 +124,8 @@ __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWO
             proxy_bypass = (LPWSTR)((LPBYTE)buffer + sizeof(INTERNET_PROXY_INFOW) + proxyBytesRequired);
 
             pi->dwAccessType = ai->accessType;
-            pi->lpszProxy = NULL;
-            pi->lpszProxyBypass = NULL;
+            pi->lpszProxy = ((void*)0);
+            pi->lpszProxyBypass = ((void*)0);
             if (ai->proxy) {
                 lstrcpyW(proxy, ai->proxy);
                 pi->lpszProxy = proxy;
@@ -144,10 +144,10 @@ __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWO
             LPSTR proxy, proxy_bypass;
 
             if (ai->proxy)
-                proxyBytesRequired = WideCharToMultiByte(CP_ACP, 0, ai->proxy, -1, NULL, 0, NULL, NULL);
+                proxyBytesRequired = WideCharToMultiByte(CP_ACP, 0, ai->proxy, -1, ((void*)0), 0, ((void*)0), ((void*)0));
             if (ai->proxyBypass)
                 proxyBypassBytesRequired = WideCharToMultiByte(CP_ACP, 0, ai->proxyBypass, -1,
-                        NULL, 0, NULL, NULL);
+                        ((void*)0), 0, ((void*)0), ((void*)0));
             if (!pi || *size < sizeof(INTERNET_PROXY_INFOA) + proxyBytesRequired + proxyBypassBytesRequired)
             {
                 *size = sizeof(INTERNET_PROXY_INFOA) + proxyBytesRequired + proxyBypassBytesRequired;
@@ -157,16 +157,16 @@ __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWO
             proxy_bypass = (LPSTR)((LPBYTE)buffer + sizeof(INTERNET_PROXY_INFOA) + proxyBytesRequired);
 
             pi->dwAccessType = ai->accessType;
-            pi->lpszProxy = NULL;
-            pi->lpszProxyBypass = NULL;
+            pi->lpszProxy = ((void*)0);
+            pi->lpszProxyBypass = ((void*)0);
             if (ai->proxy) {
-                WideCharToMultiByte(CP_ACP, 0, ai->proxy, -1, proxy, proxyBytesRequired, NULL, NULL);
+                WideCharToMultiByte(CP_ACP, 0, ai->proxy, -1, proxy, proxyBytesRequired, ((void*)0), ((void*)0));
                 pi->lpszProxy = proxy;
             }
 
             if (ai->proxyBypass) {
                 WideCharToMultiByte(CP_ACP, 0, ai->proxyBypass, -1, proxy_bypass,
-                        proxyBypassBytesRequired, NULL, NULL);
+                        proxyBypassBytesRequired, ((void*)0), ((void*)0));
                 pi->lpszProxyBypass = proxy_bypass;
             }
 
@@ -174,7 +174,7 @@ __attribute__((used)) static DWORD APPINFO_QueryOption(object_header_t *hdr, DWO
             return ERROR_SUCCESS;
         }
 
-    case INTERNET_OPTION_CONNECT_TIMEOUT:
+    case 131:
         TRACE("INTERNET_OPTION_CONNECT_TIMEOUT\n");
 
         if (*size < sizeof(ULONG))

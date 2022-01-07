@@ -1,75 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_8__ {int menu_show_advanced_settings; } ;
 struct TYPE_9__ {TYPE_1__ bools; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_10__ {int flags; char* short_description; char* name; } ;
-typedef  TYPE_3__ rarch_setting_t ;
-typedef  int /*<<< orphan*/  file_list_t ;
-typedef  enum setting_type { ____Placeholder_setting_type } setting_type ;
-typedef  enum msg_hash_enums { ____Placeholder_msg_hash_enums } msg_hash_enums ;
-typedef  enum menu_displaylist_parse_type { ____Placeholder_menu_displaylist_parse_type } menu_displaylist_parse_type ;
+typedef TYPE_3__ rarch_setting_t ;
+typedef int file_list_t ;
+typedef enum setting_type { ____Placeholder_setting_type } setting_type ;
+typedef enum msg_hash_enums { ____Placeholder_msg_hash_enums } msg_hash_enums ;
+typedef enum menu_displaylist_parse_type { ____Placeholder_menu_displaylist_parse_type } menu_displaylist_parse_type ;
 
-/* Variables and functions */
- int MENU_ENUM_LABEL_NO_SETTINGS_FOUND ; 
- int MENU_ENUM_LABEL_VALUE_NO_SETTINGS_FOUND ; 
- unsigned int MENU_SETTINGS_INPUT_BEGIN ; 
- unsigned int MENU_SETTINGS_INPUT_END ; 
-#define  PARSE_ACTION 160 
-#define  PARSE_GROUP 159 
-#define  PARSE_NONE 158 
-#define  PARSE_ONLY_BIND 157 
-#define  PARSE_ONLY_BOOL 156 
-#define  PARSE_ONLY_DIR 155 
-#define  PARSE_ONLY_FLOAT 154 
-#define  PARSE_ONLY_GROUP 153 
-#define  PARSE_ONLY_HEX 152 
-#define  PARSE_ONLY_INT 151 
-#define  PARSE_ONLY_PATH 150 
-#define  PARSE_ONLY_SIZE 149 
-#define  PARSE_ONLY_STRING 148 
-#define  PARSE_ONLY_STRING_OPTIONS 147 
-#define  PARSE_ONLY_UINT 146 
-#define  PARSE_SUB_GROUP 145 
- int SD_FLAG_ADVANCED ; 
- int SD_FLAG_LAKKA_ADVANCED ; 
-#define  ST_ACTION 144 
-#define  ST_BIND 143 
-#define  ST_BOOL 142 
-#define  ST_DIR 141 
-#define  ST_END_GROUP 140 
-#define  ST_END_SUB_GROUP 139 
-#define  ST_FLOAT 138 
-#define  ST_GROUP 137 
-#define  ST_HEX 136 
-#define  ST_INT 135 
-#define  ST_NONE 134 
-#define  ST_PATH 133 
-#define  ST_SIZE 132 
-#define  ST_STRING 131 
-#define  ST_STRING_OPTIONS 130 
-#define  ST_SUB_GROUP 129 
-#define  ST_UINT 128 
- TYPE_2__* config_get_ptr () ; 
- int /*<<< orphan*/  menu_entries_append (int /*<<< orphan*/ *,char const*,char const*,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  menu_entries_append_enum (int /*<<< orphan*/ *,char const*,char const*,int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int menu_setting_set_flags (TYPE_3__*) ; 
- char const* msg_hash_to_str (int) ; 
- int setting_get_type (TYPE_3__*) ; 
+
+ int MENU_ENUM_LABEL_NO_SETTINGS_FOUND ;
+ int MENU_ENUM_LABEL_VALUE_NO_SETTINGS_FOUND ;
+ unsigned int MENU_SETTINGS_INPUT_BEGIN ;
+ unsigned int MENU_SETTINGS_INPUT_END ;
+ int SD_FLAG_ADVANCED ;
+ int SD_FLAG_LAKKA_ADVANCED ;
+ TYPE_2__* config_get_ptr () ;
+ int menu_entries_append (int *,char const*,char const*,unsigned int,int ,int ) ;
+ int menu_entries_append_enum (int *,char const*,char const*,int,unsigned int,int ,int ) ;
+ unsigned int menu_setting_set_flags (TYPE_3__*) ;
+ char const* msg_hash_to_str (int) ;
+ int setting_get_type (TYPE_3__*) ;
 
 __attribute__((used)) static int menu_displaylist_parse_settings_internal_enum(
       file_list_t *info_list,
@@ -82,26 +49,26 @@ __attribute__((used)) static int menu_displaylist_parse_settings_internal_enum(
 {
    static enum setting_type precond_lut[] =
    {
-      ST_END_GROUP,              /* PARSE_NONE                */
-      ST_NONE,                   /* PARSE_GROUP               */
-      ST_ACTION,                 /* PARSE_ACTION              */
-      ST_INT,                    /* PARSE_ONLY_INT            */
-      ST_UINT,                   /* PARSE_ONLY_UINT           */
-      ST_BOOL,                   /* PARSE_ONLY_BOOL           */
-      ST_FLOAT,                  /* PARSE_ONLY_FLOAT          */
-      ST_BIND,                   /* PARSE_ONLY_BIND           */
-      ST_END_GROUP,              /* PARSE_ONLY_GROUP          */
-      ST_STRING,                 /* PARSE_ONLY_STRING         */
-      ST_PATH,                   /* PARSE_ONLY_PATH           */
-      ST_STRING_OPTIONS,         /* PARSE_ONLY_STRING_OPTIONS */
-      ST_HEX,                    /* PARSE_ONLY_HEX            */
-      ST_DIR,                    /* PARSE_ONLY_DIR            */
-      ST_NONE,                   /* PARSE_SUB_GROUP           */
-      ST_SIZE,                   /* PARSE_ONLY_SIZE           */
+      140,
+      134,
+      144,
+      135,
+      128,
+      142,
+      138,
+      143,
+      140,
+      131,
+      133,
+      130,
+      136,
+      141,
+      134,
+      132,
    };
-   enum setting_type precond   = precond_lut[parse_type];
-   size_t             count    = 0;
-   settings_t *settings        = config_get_ptr();
+   enum setting_type precond = precond_lut[parse_type];
+   size_t count = 0;
+   settings_t *settings = config_get_ptr();
    bool show_advanced_settings = settings->bools.menu_show_advanced_settings;
 
    if (!setting)
@@ -112,53 +79,53 @@ __attribute__((used)) static int menu_displaylist_parse_settings_internal_enum(
       uint64_t flags = setting->flags;
       if (flags & SD_FLAG_ADVANCED)
          goto end;
-#ifdef HAVE_LAKKA
-      if (flags & SD_FLAG_LAKKA_ADVANCED)
-         goto end;
-#endif
+
+
+
+
    }
 
    for (;;)
    {
-      bool time_to_exit             = false;
+      bool time_to_exit = 0;
       const char *short_description = setting->short_description;
-      const char *name              = setting->name;
-      enum setting_type type        = setting_get_type(setting);
-      rarch_setting_t **list        = &setting;
+      const char *name = setting->name;
+      enum setting_type type = setting_get_type(setting);
+      rarch_setting_t **list = &setting;
 
       switch (parse_type)
       {
-         case PARSE_NONE:
+         case 158:
             switch (type)
             {
-               case ST_GROUP:
-               case ST_END_GROUP:
-               case ST_SUB_GROUP:
-               case ST_END_SUB_GROUP:
+               case 137:
+               case 140:
+               case 129:
+               case 139:
                   goto loop;
                default:
                   break;
             }
             break;
-         case PARSE_GROUP:
-         case PARSE_ONLY_GROUP:
-            if (type == ST_GROUP)
+         case 159:
+         case 153:
+            if (type == 137)
                break;
             goto loop;
-         case PARSE_SUB_GROUP:
+         case 145:
             break;
-         case PARSE_ACTION:
-         case PARSE_ONLY_INT:
-         case PARSE_ONLY_UINT:
-         case PARSE_ONLY_SIZE:
-         case PARSE_ONLY_BIND:
-         case PARSE_ONLY_BOOL:
-         case PARSE_ONLY_FLOAT:
-         case PARSE_ONLY_HEX:
-         case PARSE_ONLY_STRING:
-         case PARSE_ONLY_PATH:
-         case PARSE_ONLY_DIR:
-         case PARSE_ONLY_STRING_OPTIONS:
+         case 160:
+         case 151:
+         case 146:
+         case 149:
+         case 157:
+         case 156:
+         case 154:
+         case 152:
+         case 148:
+         case 150:
+         case 155:
+         case 147:
             if (type == precond)
                break;
             goto loop;
@@ -187,26 +154,26 @@ __attribute__((used)) static int menu_displaylist_parse_settings_internal_enum(
 loop:
       switch (parse_type)
       {
-         case PARSE_NONE:
-         case PARSE_GROUP:
-         case PARSE_ONLY_GROUP:
-         case PARSE_SUB_GROUP:
+         case 158:
+         case 159:
+         case 153:
+         case 145:
             if (setting_get_type(setting) == precond)
-               time_to_exit = true;
+               time_to_exit = 1;
             break;
-         case PARSE_ONLY_BIND:
-         case PARSE_ONLY_FLOAT:
-         case PARSE_ONLY_HEX:
-         case PARSE_ONLY_BOOL:
-         case PARSE_ONLY_INT:
-         case PARSE_ONLY_UINT:
-         case PARSE_ONLY_SIZE:
-         case PARSE_ONLY_PATH:
-         case PARSE_ONLY_DIR:
-         case PARSE_ONLY_STRING:
-         case PARSE_ONLY_STRING_OPTIONS:
-         case PARSE_ACTION:
-            time_to_exit = true;
+         case 157:
+         case 154:
+         case 152:
+         case 156:
+         case 151:
+         case 146:
+         case 149:
+         case 150:
+         case 155:
+         case 148:
+         case 147:
+         case 160:
+            time_to_exit = 1;
             break;
       }
 

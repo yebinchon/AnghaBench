@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  cts; } ;
-struct TYPE_11__ {int /*<<< orphan*/  id; } ;
-struct TYPE_10__ {int /*<<< orphan*/  info; } ;
-typedef  TYPE_1__ CType ;
-typedef  TYPE_2__ CPValue ;
-typedef  TYPE_3__ CPState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_ERR_BADVAL ; 
- int /*<<< orphan*/  cp_err (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cp_expr_sub (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctype_isinteger (int /*<<< orphan*/ ) ; 
- TYPE_1__* ctype_raw (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int cts; } ;
+struct TYPE_11__ {int id; } ;
+struct TYPE_10__ {int info; } ;
+typedef TYPE_1__ CType ;
+typedef TYPE_2__ CPValue ;
+typedef TYPE_3__ CPState ;
+
+
+ int LJ_ERR_BADVAL ;
+ int cp_err (TYPE_3__*,int ) ;
+ int cp_expr_sub (TYPE_3__*,TYPE_2__*,int ) ;
+ int ctype_isinteger (int ) ;
+ TYPE_1__* ctype_raw (int ,int ) ;
 
 __attribute__((used)) static void cp_expr_kint(CPState *cp, CPValue *k)
 {

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_rtmp_session_t ;
-struct TYPE_9__ {int /*<<< orphan*/ * args; int /*<<< orphan*/ * type; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ ngx_rtmp_publish_t ;
-typedef  int /*<<< orphan*/  ngx_pool_t ;
-struct TYPE_10__ {int /*<<< orphan*/ * next; TYPE_3__* buf; } ;
-typedef  TYPE_2__ ngx_chain_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * last; } ;
-typedef  TYPE_3__ ngx_buf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ESCAPE_ARGS ; 
- int /*<<< orphan*/  NGX_RTMP_NOTIFY_PUBLISH ; 
- TYPE_2__* ngx_alloc_chain_link (int /*<<< orphan*/ *) ; 
- void* ngx_cpymem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- TYPE_3__* ngx_create_temp_buf (int /*<<< orphan*/ *,int) ; 
- scalar_t__ ngx_escape_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ ) ; 
- TYPE_2__* ngx_rtmp_notify_create_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- size_t ngx_strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_rtmp_session_t ;
+struct TYPE_9__ {int * args; int * type; int * name; } ;
+typedef TYPE_1__ ngx_rtmp_publish_t ;
+typedef int ngx_pool_t ;
+struct TYPE_10__ {int * next; TYPE_3__* buf; } ;
+typedef TYPE_2__ ngx_chain_t ;
+struct TYPE_11__ {int * last; } ;
+typedef TYPE_3__ ngx_buf_t ;
+
+
+ int NGX_ESCAPE_ARGS ;
+ int NGX_RTMP_NOTIFY_PUBLISH ;
+ TYPE_2__* ngx_alloc_chain_link (int *) ;
+ void* ngx_cpymem (int *,int *,size_t) ;
+ TYPE_3__* ngx_create_temp_buf (int *,int) ;
+ scalar_t__ ngx_escape_uri (int *,int *,size_t,int ) ;
+ TYPE_2__* ngx_rtmp_notify_create_request (int *,int *,int ,TYPE_2__*) ;
+ size_t ngx_strlen (int *) ;
 
 __attribute__((used)) static ngx_chain_t *
 ngx_rtmp_notify_publish_create(ngx_rtmp_session_t *s, void *arg,
         ngx_pool_t *pool)
 {
-    ngx_rtmp_publish_t             *v = arg;
+    ngx_rtmp_publish_t *v = arg;
 
-    ngx_chain_t                    *pl;
-    ngx_buf_t                      *b;
-    size_t                          name_len, type_len, args_len;
+    ngx_chain_t *pl;
+    ngx_buf_t *b;
+    size_t name_len, type_len, args_len;
 
     pl = ngx_alloc_chain_link(pool);
-    if (pl == NULL) {
-        return NULL;
+    if (pl == ((void*)0)) {
+        return ((void*)0);
     }
 
     name_len = ngx_strlen(v->name);
@@ -57,12 +57,12 @@ ngx_rtmp_notify_publish_create(ngx_rtmp_session_t *s, void *arg,
                             sizeof("&name=") + name_len * 3 +
                             sizeof("&type=") + type_len * 3 +
                             1 + args_len);
-    if (b == NULL) {
-        return NULL;
+    if (b == ((void*)0)) {
+        return ((void*)0);
     }
 
     pl->buf = b;
-    pl->next = NULL;
+    pl->next = ((void*)0);
 
     b->last = ngx_cpymem(b->last, (u_char*) "&call=publish",
                          sizeof("&call=publish") - 1);

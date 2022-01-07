@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t bottom; size_t top; int /*<<< orphan*/ * err_flags; } ;
-typedef  TYPE_1__ ERR_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_FLAG_MARK ; 
- TYPE_1__* err_get_state_int () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t bottom; size_t top; int * err_flags; } ;
+typedef TYPE_1__ ERR_STATE ;
+
+
+ int ERR_FLAG_MARK ;
+ TYPE_1__* err_get_state_int () ;
 
 int ERR_set_mark(void)
 {
     ERR_STATE *es;
 
     es = err_get_state_int();
-    if (es == NULL)
+    if (es == ((void*)0))
         return 0;
 
     if (es->bottom == es->top)

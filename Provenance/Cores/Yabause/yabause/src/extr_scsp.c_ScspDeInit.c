@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* DeInit ) () ;} ;
-struct TYPE_3__ {int /*<<< orphan*/ * data32; } ;
 
-/* Variables and functions */
- TYPE_2__* SNDCore ; 
- int /*<<< orphan*/ * SoundRam ; 
- int /*<<< orphan*/  T2MemoryDeInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scsp_shutdown () ; 
- TYPE_1__* scspchannel ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* DeInit ) () ;} ;
+struct TYPE_3__ {int * data32; } ;
+
+
+ TYPE_2__* SNDCore ;
+ int * SoundRam ;
+ int T2MemoryDeInit (int *) ;
+ int free (int *) ;
+ int scsp_shutdown () ;
+ TYPE_1__* scspchannel ;
+ int stub1 () ;
 
 void
 ScspDeInit (void)
 {
   if (scspchannel[0].data32)
     free(scspchannel[0].data32);
-  scspchannel[0].data32 = NULL;
+  scspchannel[0].data32 = ((void*)0);
 
   if (scspchannel[1].data32)
     free(scspchannel[1].data32);
-  scspchannel[1].data32 = NULL;
+  scspchannel[1].data32 = ((void*)0);
 
   if (SNDCore)
     SNDCore->DeInit();
-  SNDCore = NULL;
+  SNDCore = ((void*)0);
 
   scsp_shutdown();
 
   if (SoundRam)
     T2MemoryDeInit (SoundRam);
-  SoundRam = NULL;
+  SoundRam = ((void*)0);
 }

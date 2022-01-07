@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hpfs_dirent {int /*<<< orphan*/  length; int /*<<< orphan*/  down; } ;
-typedef  int /*<<< orphan*/  dnode_secno ;
-typedef  int /*<<< orphan*/  __le32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHKCOND (int /*<<< orphan*/ ,char*) ; 
- int le16_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  le32_to_cpu (int /*<<< orphan*/ ) ; 
+
+
+
+struct hpfs_dirent {int length; int down; } ;
+typedef int dnode_secno ;
+typedef int __le32 ;
+
+
+ int CHKCOND (int ,char*) ;
+ int le16_to_cpu (int ) ;
+ int le32_to_cpu (int ) ;
 
 __attribute__((used)) static inline dnode_secno de_down_pointer (struct hpfs_dirent *de)
 {

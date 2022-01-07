@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zNum ;
-struct TYPE_2__ {int szTest; int /*<<< orphan*/  pStmt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_STATIC ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  speedtest1_begin_test (int,char*) ; 
- int /*<<< orphan*/  speedtest1_end_test () ; 
- int /*<<< orphan*/  speedtest1_exec (char*) ; 
- int /*<<< orphan*/  speedtest1_numbername (int,char*,int) ; 
- int /*<<< orphan*/  speedtest1_prepare (char*,...) ; 
- int const speedtest1_random () ; 
- int /*<<< orphan*/  speedtest1_run () ; 
- int /*<<< orphan*/  sqlite3_bind_int (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ ,int,char*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zNum ;
+struct TYPE_2__ {int szTest; int pStmt; } ;
+
+
+ int SQLITE_STATIC ;
+ TYPE_1__ g ;
+ int speedtest1_begin_test (int,char*) ;
+ int speedtest1_end_test () ;
+ int speedtest1_exec (char*) ;
+ int speedtest1_numbername (int,char*,int) ;
+ int speedtest1_prepare (char*,...) ;
+ int const speedtest1_random () ;
+ int speedtest1_run () ;
+ int sqlite3_bind_int (int ,int,int) ;
+ int sqlite3_bind_text (int ,int,char*,int,int ) ;
 
 void testset_trigger(void){
   int jj, ii;
-  char zNum[2000];              /* A number name */
+  char zNum[2000];
 
-  const int NROW  = 500*g.szTest;
+  const int NROW = 500*g.szTest;
   const int NROW2 = 100*g.szTest;
 
   speedtest1_exec(
@@ -156,11 +156,11 @@ void testset_trigger(void){
   }
   speedtest1_end_test();
 
-  /*
-  ** Note: Of the queries, only half actually update a row. This property
-  ** was copied over from speed4p.test, where it was probably introduced
-  ** inadvertantly.
-  */
+
+
+
+
+
   speedtest1_begin_test(190, "speed4p-trigger2");
   speedtest1_prepare("UPDATE t4 SET i = ?1, t = ?2 WHERE rowid = ?3");
   for(jj=1; jj<=NROW2*2; jj+=2){
@@ -172,9 +172,9 @@ void testset_trigger(void){
   }
   speedtest1_end_test();
 
-  /*
-  ** Note: Same again.
-  */
+
+
+
   speedtest1_begin_test(200, "speed4p-trigger3");
   speedtest1_prepare("DELETE FROM t4 WHERE rowid = ?1");
   for(jj=1; jj<=NROW2*2; jj+=2){
@@ -184,12 +184,12 @@ void testset_trigger(void){
   speedtest1_end_test();
   speedtest1_exec("COMMIT");
 
-  /*
-  ** The following block contains the same tests as the above block that
-  ** tests triggers, with one crucial difference: no triggers are defined.
-  ** So the difference in speed between these tests and the preceding ones
-  ** is the amount of time taken to compile and execute the trigger programs.
-  */
+
+
+
+
+
+
   speedtest1_exec(
       "DROP TABLE t4;"
       "DROP TABLE log;"

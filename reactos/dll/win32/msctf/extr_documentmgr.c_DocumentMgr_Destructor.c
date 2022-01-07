@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  CompartmentMgr; int /*<<< orphan*/  TransitoryExtensionSink; scalar_t__* contextStack; int /*<<< orphan*/  ITfDocumentMgr_iface; } ;
-typedef  int /*<<< orphan*/  ITfThreadMgr ;
-typedef  TYPE_1__ DocumentMgr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CompartmentMgr_Destructor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ITfContext_Release (scalar_t__) ; 
- int /*<<< orphan*/  ITfThreadMgr_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TF_GetThreadMgr (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  ThreadMgr_OnDocumentMgrDestruction (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_sinks (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int CompartmentMgr; int TransitoryExtensionSink; scalar_t__* contextStack; int ITfDocumentMgr_iface; } ;
+typedef int ITfThreadMgr ;
+typedef TYPE_1__ DocumentMgr ;
+
+
+ int CompartmentMgr_Destructor (int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int ITfContext_Release (scalar_t__) ;
+ int ITfThreadMgr_Release (int *) ;
+ int TF_GetThreadMgr (int **) ;
+ int TRACE (char*,TYPE_1__*) ;
+ int ThreadMgr_OnDocumentMgrDestruction (int *,int *) ;
+ int free_sinks (int *) ;
 
 __attribute__((used)) static void DocumentMgr_Destructor(DocumentMgr *This)
 {
-    ITfThreadMgr *tm = NULL;
+    ITfThreadMgr *tm = ((void*)0);
     TRACE("destroying %p\n", This);
 
     TF_GetThreadMgr(&tm);

@@ -1,51 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ char processor ;
+ int uart_init () ;
+ char uart_recv () ;
+ int uart_send (char) ;
+ int uart_send_string (char*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char processor ; 
- int /*<<< orphan*/  uart_init () ; 
- char uart_recv () ; 
- int /*<<< orphan*/  uart_send (char) ; 
- int /*<<< orphan*/  uart_send_string (char*) ; 
-
-void kernel_main(char proc_id)		// get processor id as 'char' from 'x0'
+void kernel_main(char proc_id)
 {
 
-	while (processor != proc_id) {}	// wait to execute
+ while (processor != proc_id) {}
 
-	if (proc_id == 0) {				// only the master (processor id = 0) initialize uart
+ if (proc_id == 0) {
 
-		uart_init();
+  uart_init();
 
-	}
+ }
 
-	uart_send_string("Hello, world! I am the Core ");
-	uart_send(proc_id + '0');		// add '0' (0x30) to converte to ascii
-	uart_send_string("\r\n");
-	processor++;					// increment 'processor' to enable the next core to execute
+ uart_send_string("Hello, world! I am the Core ");
+ uart_send(proc_id + '0');
+ uart_send_string("\r\n");
+ processor++;
 
-	if (proc_id == 0) {
+ if (proc_id == 0) {
 
-		while (1) {
+  while (1) {
 
-			uart_send(uart_recv());	// only the master echos the typed character through uart
+   uart_send(uart_recv());
 
-		}
+  }
 
-	} else {
+ } else {
 
-		while (1) {}				// all the other cores in loop here
+  while (1) {}
 
-	}
+ }
 
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
-struct TYPE_5__ {scalar_t__ delay; scalar_t__ min_delay; scalar_t__ default_delay; int total_iter; int /*<<< orphan*/  max_delay; } ;
-typedef  TYPE_1__ GIFDemuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_FATAL ; 
- int AV_RL16 (int*) ; 
- scalar_t__ FFMIN (scalar_t__,int /*<<< orphan*/ ) ; 
- int GIF_APP_EXT_LABEL ; 
- int GIF_GCE_EXT_LABEL ; 
- int /*<<< orphan*/  NETSCAPE_EXT_STR ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,int*,int) ; 
- scalar_t__ avio_rl16 (int /*<<< orphan*/ *) ; 
- int avio_skip (int /*<<< orphan*/ *,int) ; 
- int gif_skip_subblocks (int /*<<< orphan*/ *) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int * pb; TYPE_1__* priv_data; } ;
+struct TYPE_5__ {scalar_t__ delay; scalar_t__ min_delay; scalar_t__ default_delay; int total_iter; int max_delay; } ;
+typedef TYPE_1__ GIFDemuxContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_FATAL ;
+ int AV_RL16 (int*) ;
+ scalar_t__ FFMIN (scalar_t__,int ) ;
+ int GIF_APP_EXT_LABEL ;
+ int GIF_GCE_EXT_LABEL ;
+ int NETSCAPE_EXT_STR ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int avio_r8 (int *) ;
+ int avio_read (int *,int*,int) ;
+ scalar_t__ avio_rl16 (int *) ;
+ int avio_skip (int *,int) ;
+ int gif_skip_subblocks (int *) ;
+ int strlen (int ) ;
 
 __attribute__((used)) static int gif_read_ext(AVFormatContext *s)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int gif_read_ext(AVFormatContext *s)
             return AVERROR_INVALIDDATA;
         }
 
-        /* skip packed fields */
+
         if ((ret = avio_skip(pb, 1)) < 0)
             return ret;
 
@@ -58,7 +58,7 @@ __attribute__((used)) static int gif_read_ext(AVFormatContext *s)
             gdc->delay = gdc->default_delay;
         gdc->delay = FFMIN(gdc->delay, gdc->max_delay);
 
-        /* skip the rest of the Graphic Control Extension block */
+
         if ((ret = avio_skip(pb, sb_size - 3)) < 0 )
             return ret;
     } else if (ext_label == GIF_APP_EXT_LABEL) {

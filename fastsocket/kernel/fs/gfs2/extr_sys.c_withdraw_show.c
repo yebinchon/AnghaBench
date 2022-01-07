@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gfs2_sbd {int /*<<< orphan*/  sd_flags; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  SDF_SHUTDOWN ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,unsigned int) ; 
- unsigned int test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct gfs2_sbd {int sd_flags; } ;
+typedef int ssize_t ;
+
+
+ int PAGE_SIZE ;
+ int SDF_SHUTDOWN ;
+ int snprintf (char*,int ,char*,unsigned int) ;
+ unsigned int test_bit (int ,int *) ;
 
 __attribute__((used)) static ssize_t withdraw_show(struct gfs2_sbd *sdp, char *buf)
 {
-	unsigned int b = test_bit(SDF_SHUTDOWN, &sdp->sd_flags);
-	return snprintf(buf, PAGE_SIZE, "%u\n", b);
+ unsigned int b = test_bit(SDF_SHUTDOWN, &sdp->sd_flags);
+ return snprintf(buf, PAGE_SIZE, "%u\n", b);
 }

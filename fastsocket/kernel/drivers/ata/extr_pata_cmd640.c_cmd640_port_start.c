@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pci_dev {int dev; } ;
 struct cmd640_reg {int last; } ;
 struct ata_port {struct cmd640_reg* private_data; TYPE_1__* host; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int ata_sff_port_start (struct ata_port*) ; 
- struct cmd640_reg* devm_kzalloc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- struct pci_dev* to_pci_dev (int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int ata_sff_port_start (struct ata_port*) ;
+ struct cmd640_reg* devm_kzalloc (int *,int,int ) ;
+ struct pci_dev* to_pci_dev (int ) ;
 
 __attribute__((used)) static int cmd640_port_start(struct ata_port *ap)
 {
-	struct pci_dev *pdev = to_pci_dev(ap->host->dev);
-	struct cmd640_reg *timing;
+ struct pci_dev *pdev = to_pci_dev(ap->host->dev);
+ struct cmd640_reg *timing;
 
-	int ret = ata_sff_port_start(ap);
-	if (ret < 0)
-		return ret;
+ int ret = ata_sff_port_start(ap);
+ if (ret < 0)
+  return ret;
 
-	timing = devm_kzalloc(&pdev->dev, sizeof(struct cmd640_reg), GFP_KERNEL);
-	if (timing == NULL)
-		return -ENOMEM;
-	timing->last = -1;	/* Force a load */
-	ap->private_data = timing;
-	return ret;
+ timing = devm_kzalloc(&pdev->dev, sizeof(struct cmd640_reg), GFP_KERNEL);
+ if (timing == ((void*)0))
+  return -ENOMEM;
+ timing->last = -1;
+ ap->private_data = timing;
+ return ret;
 }

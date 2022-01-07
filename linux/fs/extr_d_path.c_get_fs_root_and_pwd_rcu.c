@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct path {int dummy; } ;
-struct fs_struct {struct path pwd; struct path root; int /*<<< orphan*/  seq; } ;
+struct fs_struct {struct path pwd; struct path root; int seq; } ;
 
-/* Variables and functions */
- unsigned int read_seqcount_begin (int /*<<< orphan*/ *) ; 
- scalar_t__ read_seqcount_retry (int /*<<< orphan*/ *,unsigned int) ; 
+
+ unsigned int read_seqcount_begin (int *) ;
+ scalar_t__ read_seqcount_retry (int *,unsigned int) ;
 
 __attribute__((used)) static void get_fs_root_and_pwd_rcu(struct fs_struct *fs, struct path *root,
-				    struct path *pwd)
+        struct path *pwd)
 {
-	unsigned seq;
+ unsigned seq;
 
-	do {
-		seq = read_seqcount_begin(&fs->seq);
-		*root = fs->root;
-		*pwd = fs->pwd;
-	} while (read_seqcount_retry(&fs->seq, seq));
+ do {
+  seq = read_seqcount_begin(&fs->seq);
+  *root = fs->root;
+  *pwd = fs->pwd;
+ } while (read_seqcount_retry(&fs->seq, seq));
 }

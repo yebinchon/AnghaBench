@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wine_prefixW ;
-typedef  char WCHAR ;
-typedef  char* LPCWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  char* BSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- char* SysAllocString (char const*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  strncmpW (char*,char const*,int) ; 
+
+
+
+typedef int wine_prefixW ;
+typedef char WCHAR ;
+typedef char* LPCWSTR ;
+typedef int HRESULT ;
+typedef char* BSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ char* SysAllocString (char const*) ;
+ int TRACE (char*,int ,int ) ;
+ int debugstr_w (char*) ;
+ int strncmpW (char*,char const*,int) ;
 
 HRESULT nsuri_to_url(LPCWSTR nsuri, BOOL ret_empty, BSTR *ret)
 {
@@ -39,7 +39,7 @@ HRESULT nsuri_to_url(LPCWSTR nsuri, BOOL ret_empty, BSTR *ret)
         if(!*ret)
             return E_OUTOFMEMORY;
     }else {
-        *ret = NULL;
+        *ret = ((void*)0);
     }
 
     TRACE("%s -> %s\n", debugstr_w(nsuri), debugstr_w(*ret));

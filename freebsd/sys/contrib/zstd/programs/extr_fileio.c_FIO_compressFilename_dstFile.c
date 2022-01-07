@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stat_t ;
-struct TYPE_4__ {int /*<<< orphan*/ * dstFile; int /*<<< orphan*/ * srcFile; } ;
-typedef  TYPE_1__ cRess_t ;
-typedef  int /*<<< orphan*/  FIO_prefs_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,char const*,...) ; 
- int FIO_compressFilename_internal (int /*<<< orphan*/ * const,TYPE_1__,char const*,char const*,int) ; 
- int /*<<< orphan*/ * FIO_openDstFile (int /*<<< orphan*/ * const,char const*,char const*) ; 
- int /*<<< orphan*/  FIO_remove (char const*) ; 
- scalar_t__ UTIL_getFileStat (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UTIL_setFileStat (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addHandler (char const*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clearHandler () ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  nulmark ; 
- int /*<<< orphan*/  stdinmark ; 
- int /*<<< orphan*/  stdoutmark ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int stat_t ;
+struct TYPE_4__ {int * dstFile; int * srcFile; } ;
+typedef TYPE_1__ cRess_t ;
+typedef int FIO_prefs_t ;
+typedef int FILE ;
+
+
+ int DISPLAYLEVEL (int,char*,char const*,...) ;
+ int FIO_compressFilename_internal (int * const,TYPE_1__,char const*,char const*,int) ;
+ int * FIO_openDstFile (int * const,char const*,char const*) ;
+ int FIO_remove (char const*) ;
+ scalar_t__ UTIL_getFileStat (char const*,int *) ;
+ int UTIL_setFileStat (char const*,int *) ;
+ int addHandler (char const*) ;
+ int assert (int ) ;
+ int clearHandler () ;
+ int errno ;
+ scalar_t__ fclose (int * const) ;
+ int nulmark ;
+ int stdinmark ;
+ int stdoutmark ;
+ scalar_t__ strcmp (char const*,int ) ;
+ int strerror (int ) ;
 
 __attribute__((used)) static int FIO_compressFilename_dstFile(FIO_prefs_t* const prefs,
                                         cRess_t ress,
@@ -45,16 +45,16 @@ __attribute__((used)) static int FIO_compressFilename_dstFile(FIO_prefs_t* const
     int result;
     stat_t statbuf;
     int transfer_permissions = 0;
-    assert(ress.srcFile != NULL);
-    if (ress.dstFile == NULL) {
+    assert(ress.srcFile != ((void*)0));
+    if (ress.dstFile == ((void*)0)) {
         closeDstFile = 1;
         DISPLAYLEVEL(6, "FIO_compressFilename_dstFile: opening dst: %s", dstFileName);
         ress.dstFile = FIO_openDstFile(prefs, srcFileName, dstFileName);
-        if (ress.dstFile==NULL) return 1;  /* could not open dstFileName */
-        /* Must only be added after FIO_openDstFile() succeeds.
-         * Otherwise we may delete the destination file if it already exists,
-         * and the user presses Ctrl-C when asked if they wish to overwrite.
-         */
+        if (ress.dstFile==((void*)0)) return 1;
+
+
+
+
         addHandler(dstFileName);
 
         if ( strcmp (srcFileName, stdinmark)
@@ -66,19 +66,19 @@ __attribute__((used)) static int FIO_compressFilename_dstFile(FIO_prefs_t* const
 
     if (closeDstFile) {
         FILE* const dstFile = ress.dstFile;
-        ress.dstFile = NULL;
+        ress.dstFile = ((void*)0);
 
         clearHandler();
 
-        if (fclose(dstFile)) { /* error closing dstFile */
+        if (fclose(dstFile)) {
             DISPLAYLEVEL(1, "zstd: %s: %s \n", dstFileName, strerror(errno));
             result=1;
         }
-        if ( (result != 0)  /* operation failure */
-          && strcmp(dstFileName, nulmark)     /* special case : don't remove() /dev/null */
-          && strcmp(dstFileName, stdoutmark)  /* special case : don't remove() stdout */
+        if ( (result != 0)
+          && strcmp(dstFileName, nulmark)
+          && strcmp(dstFileName, stdoutmark)
           ) {
-            FIO_remove(dstFileName); /* remove compression artefact; note don't do anything special if remove() fails */
+            FIO_remove(dstFileName);
         } else if ( strcmp(dstFileName, stdoutmark)
                  && strcmp(dstFileName, nulmark)
                  && transfer_permissions) {

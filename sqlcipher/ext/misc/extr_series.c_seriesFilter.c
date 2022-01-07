@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
 struct TYPE_2__ {int mnValue; int mxValue; int iStep; int isDesc; int iValue; int iRowid; } ;
-typedef  TYPE_1__ series_cursor ;
+typedef TYPE_1__ series_cursor ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NULL ; 
- int SQLITE_OK ; 
- void* sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ SQLITE_NULL ;
+ int SQLITE_OK ;
+ void* sqlite3_value_int64 (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static int seriesFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -47,8 +47,8 @@ __attribute__((used)) static int seriesFilter(
   }
   for(i=0; i<argc; i++){
     if( sqlite3_value_type(argv[i])==SQLITE_NULL ){
-      /* If any of the constraints have a NULL value, then return no rows.
-      ** See ticket https://www.sqlite.org/src/info/fac496b61722daf2 */
+
+
       pCur->mnValue = 1;
       pCur->mxValue = 0;
       break;

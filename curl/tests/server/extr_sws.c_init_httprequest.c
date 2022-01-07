@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct httprequest {scalar_t__ upgrade_request; scalar_t__ upgrade; scalar_t__ done_processing; scalar_t__ connect_port; scalar_t__ callcount; scalar_t__ prot_version; int /*<<< orphan*/  rcmd; scalar_t__ writedelay; scalar_t__ skip; void* ntlm; void* digest; scalar_t__ cl; void* auth; void* auth_req; int /*<<< orphan*/  open; void* connect_request; scalar_t__ partno; int /*<<< orphan*/  testno; scalar_t__ offset; scalar_t__ checkindex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOCNUMBER_NOTHING ; 
- void* FALSE ; 
- int /*<<< orphan*/  RCMD_NORMALREQ ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+struct httprequest {scalar_t__ upgrade_request; scalar_t__ upgrade; scalar_t__ done_processing; scalar_t__ connect_port; scalar_t__ callcount; scalar_t__ prot_version; int rcmd; scalar_t__ writedelay; scalar_t__ skip; void* ntlm; void* digest; scalar_t__ cl; void* auth; void* auth_req; int open; void* connect_request; scalar_t__ partno; int testno; scalar_t__ offset; scalar_t__ checkindex; } ;
+
+
+ int DOCNUMBER_NOTHING ;
+ void* FALSE ;
+ int RCMD_NORMALREQ ;
+ int TRUE ;
 
 __attribute__((used)) static void init_httprequest(struct httprequest *req)
 {

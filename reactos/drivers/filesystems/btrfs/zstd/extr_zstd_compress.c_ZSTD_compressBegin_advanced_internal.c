@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_dictTableLoadMethod_e ;
-typedef  int /*<<< orphan*/  ZSTD_dictContentType_e ;
-typedef  int /*<<< orphan*/  ZSTD_CDict ;
-struct TYPE_6__ {int /*<<< orphan*/  windowLog; } ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ZSTD_dictTableLoadMethod_e ;
+typedef int ZSTD_dictContentType_e ;
+typedef int ZSTD_CDict ;
+struct TYPE_6__ {int windowLog; } ;
 struct TYPE_5__ {TYPE_4__ cParams; } ;
-typedef  TYPE_1__ ZSTD_CCtx_params ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
+typedef TYPE_1__ ZSTD_CCtx_params ;
+typedef int ZSTD_CCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_F (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBUGLOG (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_checkCParams (TYPE_4__) ; 
- size_t ZSTD_compressBegin_internal (int /*<<< orphan*/ *,void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_1__,unsigned long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTDb_not_buffered ; 
+
+ int CHECK_F (int ) ;
+ int DEBUGLOG (int,char*,int ) ;
+ int ZSTD_checkCParams (TYPE_4__) ;
+ size_t ZSTD_compressBegin_internal (int *,void const*,size_t,int ,int ,int const*,TYPE_1__,unsigned long long,int ) ;
+ int ZSTDb_not_buffered ;
 
 size_t ZSTD_compressBegin_advanced_internal(ZSTD_CCtx* cctx,
                                     const void* dict, size_t dictSize,
@@ -36,7 +36,7 @@ size_t ZSTD_compressBegin_advanced_internal(ZSTD_CCtx* cctx,
                                     unsigned long long pledgedSrcSize)
 {
     DEBUGLOG(4, "ZSTD_compressBegin_advanced_internal: wlog=%u", params.cParams.windowLog);
-    /* compression parameters verification and optimization */
+
     CHECK_F( ZSTD_checkCParams(params.cParams) );
     return ZSTD_compressBegin_internal(cctx,
                                        dict, dictSize, dictContentType, dtlm,

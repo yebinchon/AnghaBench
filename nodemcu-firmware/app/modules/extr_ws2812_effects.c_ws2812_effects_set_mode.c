@@ -1,105 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int lua_State ;
 struct TYPE_4__ {int effect_type; int mode_delay; int effect_int_param1; int* color; TYPE_1__* buffer; scalar_t__ counter_mode_step; } ;
 struct TYPE_3__ {size_t colorsPerLed; } ;
 
-/* Variables and functions */
- int EFFECT_PARAM_INVALID ; 
- int /*<<< orphan*/  LIBRARY_NOT_INITIALIZED_ERROR_MSG ; 
- int LUA_TNIL ; 
- int LUA_TNONE ; 
- int LUA_TNUMBER ; 
- int LUA_TSTRING ; 
-#define  WS2812_EFFECT_BLINK 144 
-#define  WS2812_EFFECT_CIRCUS_COMBUSTUS 143 
-#define  WS2812_EFFECT_COLOR_WIPE 142 
-#define  WS2812_EFFECT_CYCLE 141 
-#define  WS2812_EFFECT_FIRE_FLICKER 140 
-#define  WS2812_EFFECT_FIRE_FLICKER_INTENSE 139 
-#define  WS2812_EFFECT_FIRE_FLICKER_SOFT 138 
-#define  WS2812_EFFECT_FLICKER 137 
-#define  WS2812_EFFECT_GRADIENT 136 
-#define  WS2812_EFFECT_GRADIENT_RGB 135 
-#define  WS2812_EFFECT_HALLOWEEN 134 
-#define  WS2812_EFFECT_LARSON_SCANNER 133 
-#define  WS2812_EFFECT_RAINBOW 132 
-#define  WS2812_EFFECT_RAINBOW_CYCLE 131 
-#define  WS2812_EFFECT_RANDOM_COLOR 130 
-#define  WS2812_EFFECT_RANDOM_DOT 129 
-#define  WS2812_EFFECT_STATIC 128 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_checkoption (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char const* const*) ; 
- int luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
- TYPE_2__* state ; 
- int /*<<< orphan*/  ws2812_effects_fill_buffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ws2812_effects_fill_color () ; 
- int /*<<< orphan*/  ws2812_effects_gradient (char const*,size_t) ; 
- int /*<<< orphan*/  ws2812_effects_gradient_rgb (char const*,size_t) ; 
- int /*<<< orphan*/  ws2812_effects_mode_blink () ; 
- int /*<<< orphan*/  ws2812_effects_mode_circus_combustus () ; 
- int /*<<< orphan*/  ws2812_effects_mode_color_wipe () ; 
- int /*<<< orphan*/  ws2812_effects_mode_halloween () ; 
- int /*<<< orphan*/  ws2812_effects_mode_larson_scanner () ; 
- int /*<<< orphan*/  ws2812_effects_mode_rainbow () ; 
- int /*<<< orphan*/  ws2812_effects_mode_rainbow_cycle (int) ; 
- int /*<<< orphan*/  ws2812_effects_mode_random_color () ; 
- int /*<<< orphan*/  ws2812_write (TYPE_1__*) ; 
+
+ int EFFECT_PARAM_INVALID ;
+ int LIBRARY_NOT_INITIALIZED_ERROR_MSG ;
+ int LUA_TNIL ;
+ int LUA_TNONE ;
+ int LUA_TNUMBER ;
+ int LUA_TSTRING ;
+ int luaL_argcheck (int *,int ,int,int ) ;
+ int luaL_argerror (int *,int,char*) ;
+ int luaL_checkoption (int *,int,int *,char const* const*) ;
+ int luaL_optinteger (int *,int,int) ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ int lua_type (int *,int) ;
+ TYPE_2__* state ;
+ int ws2812_effects_fill_buffer (int ) ;
+ int ws2812_effects_fill_color () ;
+ int ws2812_effects_gradient (char const*,size_t) ;
+ int ws2812_effects_gradient_rgb (char const*,size_t) ;
+ int ws2812_effects_mode_blink () ;
+ int ws2812_effects_mode_circus_combustus () ;
+ int ws2812_effects_mode_color_wipe () ;
+ int ws2812_effects_mode_halloween () ;
+ int ws2812_effects_mode_larson_scanner () ;
+ int ws2812_effects_mode_rainbow () ;
+ int ws2812_effects_mode_rainbow_cycle (int) ;
+ int ws2812_effects_mode_random_color () ;
+ int ws2812_write (TYPE_1__*) ;
 
 __attribute__((used)) static int ws2812_effects_set_mode(lua_State* L) {
 
-  luaL_argcheck(L, state != NULL, 1, LIBRARY_NOT_INITIALIZED_ERROR_MSG);
+  luaL_argcheck(L, state != ((void*)0), 1, LIBRARY_NOT_INITIALIZED_ERROR_MSG);
 
-  // opts must be same order as effect type enum
+
   static const char * const opts[] = {"static", "blink", "gradient", "gradient_rgb", "random_color", "rainbow",
     "rainbow_cycle", "flicker", "fire", "fire_soft", "fire_intense", "halloween", "circus_combustus",
-    "larson_scanner", "cycle", "color_wipe", "random_dot", NULL};
+    "larson_scanner", "cycle", "color_wipe", "random_dot", ((void*)0)};
 
-  int type = luaL_checkoption(L, 1, NULL, opts);
+  int type = luaL_checkoption(L, 1, ((void*)0), opts);
 
   state->effect_type = type;
   int effect_param = EFFECT_PARAM_INVALID;
-  // check additional int parameter
-  // First mandatory parameter
+
+
   int arg_type = lua_type(L, 2);
   if (arg_type == LUA_TNONE || arg_type == LUA_TNIL)
   {
-    // we don't have a second parameter
+
   }
   else if(arg_type == LUA_TNUMBER)
   {
     effect_param = luaL_optinteger( L, 2, EFFECT_PARAM_INVALID );
   }
 
-  // initialize the effect
+
   state->counter_mode_step = 0;
 
   switch (state->effect_type) {
-    case WS2812_EFFECT_STATIC:
-    // fill with currently set color
+    case 128:
+
     ws2812_effects_fill_color();
     state->mode_delay = 250;
     break;
-    case WS2812_EFFECT_BLINK:
+    case 144:
     ws2812_effects_mode_blink();
     break;
-    case WS2812_EFFECT_GRADIENT:
+    case 136:
     if(arg_type == LUA_TSTRING)
     {
       size_t length1;
@@ -119,7 +102,7 @@ __attribute__((used)) static int ws2812_effects_set_mode(lua_State* L) {
     }
 
     break;
-    case WS2812_EFFECT_GRADIENT_RGB:
+    case 135:
     if(arg_type == LUA_TSTRING)
     {
       size_t length1;
@@ -139,22 +122,22 @@ __attribute__((used)) static int ws2812_effects_set_mode(lua_State* L) {
     }
 
     break;
-    case WS2812_EFFECT_RANDOM_COLOR:
+    case 130:
     ws2812_effects_mode_random_color();
     break;
-    case WS2812_EFFECT_RAINBOW:
+    case 132:
     ws2812_effects_mode_rainbow();
     break;
-    case WS2812_EFFECT_RAINBOW_CYCLE:
+    case 131:
     ws2812_effects_mode_rainbow_cycle(effect_param != EFFECT_PARAM_INVALID ? effect_param : 1);
     break;
-    // flicker
-    case WS2812_EFFECT_FLICKER:
+
+    case 137:
     state->effect_int_param1 = effect_param;
     break;
-    case WS2812_EFFECT_FIRE_FLICKER:
-    case WS2812_EFFECT_FIRE_FLICKER_SOFT:
-    case WS2812_EFFECT_FIRE_FLICKER_INTENSE:
+    case 140:
+    case 138:
+    case 139:
     {
       state->color[0] = 255-40;
       state->color[1] = 255;
@@ -162,30 +145,30 @@ __attribute__((used)) static int ws2812_effects_set_mode(lua_State* L) {
       state->color[3] = 0;
     }
     break;
-    case WS2812_EFFECT_HALLOWEEN:
+    case 134:
     ws2812_effects_mode_halloween();
     break;
-    case WS2812_EFFECT_CIRCUS_COMBUSTUS:
+    case 143:
     ws2812_effects_mode_circus_combustus();
     break;
-    case WS2812_EFFECT_LARSON_SCANNER:
+    case 133:
     ws2812_effects_mode_larson_scanner();
     break;
-    case WS2812_EFFECT_CYCLE:
+    case 141:
     if (effect_param != EFFECT_PARAM_INVALID) {
       state->effect_int_param1 = effect_param;
     }
     break;
-    case WS2812_EFFECT_COLOR_WIPE:
+    case 142:
     {
       uint32_t black = 0;
       ws2812_effects_fill_buffer(black);
       ws2812_effects_mode_color_wipe();
       break;
     }
-    case WS2812_EFFECT_RANDOM_DOT:
+    case 129:
     {
-      // check if more than 1 dot shall be set
+
       state->effect_int_param1 = effect_param;
       uint32_t black = 0;
       ws2812_effects_fill_buffer(black);

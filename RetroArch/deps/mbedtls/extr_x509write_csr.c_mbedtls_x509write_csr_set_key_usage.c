@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_x509write_csr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBEDTLS_OID_KEY_USAGE ; 
- int /*<<< orphan*/  MBEDTLS_OID_SIZE (int /*<<< orphan*/ ) ; 
- int mbedtls_asn1_write_bitstring (unsigned char**,unsigned char*,unsigned char*,int) ; 
- int mbedtls_x509write_csr_set_extension (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int) ; 
+
+
+
+typedef int mbedtls_x509write_csr ;
+
+
+ int MBEDTLS_OID_KEY_USAGE ;
+ int MBEDTLS_OID_SIZE (int ) ;
+ int mbedtls_asn1_write_bitstring (unsigned char**,unsigned char*,unsigned char*,int) ;
+ int mbedtls_x509write_csr_set_extension (int *,int ,int ,unsigned char*,int) ;
 
 int mbedtls_x509write_csr_set_key_usage( mbedtls_x509write_csr *ctx, unsigned char key_usage )
 {

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RProc {int dummy; } ;
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_method_t ;
-typedef  size_t mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+typedef int mrb_method_t ;
+typedef size_t mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_METHOD_FROM_PROC (int /*<<< orphan*/ ,struct RProc*) ; 
- size_t RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_method_raw (int /*<<< orphan*/ *,struct RClass*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (size_t) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_id_attrset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct RProc* mrb_proc_new_cfunc_with_env (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_struct_ref ; 
- int /*<<< orphan*/  mrb_struct_set_m ; 
- int /*<<< orphan*/  mrb_symbol (int /*<<< orphan*/  const) ; 
+
+ int MRB_METHOD_FROM_PROC (int ,struct RProc*) ;
+ size_t RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int mrb_define_method_raw (int *,struct RClass*,int ,int ) ;
+ int mrb_fixnum_value (size_t) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ int mrb_id_attrset (int *,int ) ;
+ struct RProc* mrb_proc_new_cfunc_with_env (int *,int ,int,int *) ;
+ int mrb_struct_ref ;
+ int mrb_struct_set_m ;
+ int mrb_symbol (int const) ;
 
 __attribute__((used)) static void
 make_struct_define_accessors(mrb_state *mrb, mrb_value members, struct RClass *c)

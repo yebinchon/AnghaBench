@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  params ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int params ;
 struct TYPE_5__ {int contentSizeFlag; } ;
-struct TYPE_6__ {TYPE_1__ fParams; int /*<<< orphan*/  cParams; } ;
-typedef  TYPE_2__ ZSTD_parameters ;
-typedef  int /*<<< orphan*/  ZSTD_compressionParameters ;
+struct TYPE_6__ {TYPE_1__ fParams; int cParams; } ;
+typedef TYPE_2__ ZSTD_parameters ;
+typedef int ZSTD_compressionParameters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGLOG (int,char*,int) ; 
- int /*<<< orphan*/  ZSTD_getCParams_internal (int,unsigned long long,size_t) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int DEBUGLOG (int,char*,int) ;
+ int ZSTD_getCParams_internal (int,unsigned long long,size_t) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static ZSTD_parameters ZSTD_getParams_internal(int compressionLevel, unsigned long long srcSizeHint, size_t dictSize) {
     ZSTD_parameters params;

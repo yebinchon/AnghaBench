@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int iItem; scalar_t__ lParam; scalar_t__ iSubItem; int /*<<< orphan*/  mask; } ;
-typedef  int /*<<< orphan*/  PCCERT_CONTEXT ;
-typedef  TYPE_1__ LVITEMW ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CertFreeCertificateContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LVIF_PARAM ; 
- int /*<<< orphan*/  LVM_GETITEMCOUNT ; 
- int /*<<< orphan*/  LVM_GETITEMW ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int iItem; scalar_t__ lParam; scalar_t__ iSubItem; int mask; } ;
+typedef int PCCERT_CONTEXT ;
+typedef TYPE_1__ LVITEMW ;
+typedef int LPARAM ;
+typedef int HWND ;
+
+
+ int CertFreeCertificateContext (int ) ;
+ int LVIF_PARAM ;
+ int LVM_GETITEMCOUNT ;
+ int LVM_GETITEMW ;
+ int SendMessageW (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void free_certs(HWND lv)
 {

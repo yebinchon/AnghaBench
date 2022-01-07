@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_keytab ;
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEIMDAL_MUTEX_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEIMDAL_MUTEX_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _gsskrb5_keytab ; 
- int /*<<< orphan*/  gssapi_keytab_mutex ; 
- scalar_t__ krb5_kt_default (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ krb5_kt_get_full_name (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char**) ; 
- scalar_t__ krb5_kt_resolve (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_xfree (char*) ; 
+
+
+
+typedef int krb5_keytab ;
+typedef scalar_t__ krb5_error_code ;
+typedef int krb5_context ;
+
+
+ int HEIMDAL_MUTEX_lock (int *) ;
+ int HEIMDAL_MUTEX_unlock (int *) ;
+ int * _gsskrb5_keytab ;
+ int gssapi_keytab_mutex ;
+ scalar_t__ krb5_kt_default (int ,int *) ;
+ scalar_t__ krb5_kt_get_full_name (int ,int *,char**) ;
+ scalar_t__ krb5_kt_resolve (int ,char*,int *) ;
+ int krb5_xfree (char*) ;
 
 __attribute__((used)) static krb5_error_code
 get_keytab(krb5_context context, krb5_keytab *keytab)
@@ -31,16 +31,16 @@ get_keytab(krb5_context context, krb5_keytab *keytab)
 
     HEIMDAL_MUTEX_lock(&gssapi_keytab_mutex);
 
-    if (_gsskrb5_keytab != NULL) {
-	char *name = NULL;
+    if (_gsskrb5_keytab != ((void*)0)) {
+ char *name = ((void*)0);
 
-	kret = krb5_kt_get_full_name(context, _gsskrb5_keytab, &name);
-	if (kret == 0) {
-	    kret = krb5_kt_resolve(context, name, keytab);
-	    krb5_xfree(name);
-	}
+ kret = krb5_kt_get_full_name(context, _gsskrb5_keytab, &name);
+ if (kret == 0) {
+     kret = krb5_kt_resolve(context, name, keytab);
+     krb5_xfree(name);
+ }
     } else
-	kret = krb5_kt_default(context, keytab);
+ kret = krb5_kt_default(context, keytab);
 
     HEIMDAL_MUTEX_unlock(&gssapi_keytab_mutex);
 

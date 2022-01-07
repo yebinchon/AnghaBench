@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x ;
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  RtlGenRandom (scalar_t__*,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ UINT_MAX ; 
- int /*<<< orphan*/  jsval_number (double) ; 
+
+
+
+typedef int x ;
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int WORD ;
+typedef scalar_t__ UINT ;
+typedef int HRESULT ;
+
+
+ int E_UNEXPECTED ;
+ int RtlGenRandom (scalar_t__*,int) ;
+ int S_OK ;
+ int TRACE (char*) ;
+ scalar_t__ UINT_MAX ;
+ int jsval_number (double) ;
 
 __attribute__((used)) static HRESULT Math_random(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

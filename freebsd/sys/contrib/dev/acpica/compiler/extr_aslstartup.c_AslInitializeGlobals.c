@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT32 ;
-struct TYPE_2__ {int CommentType; int /*<<< orphan*/  CaptureComments; int /*<<< orphan*/ * ParsingParenBraceNode; int /*<<< orphan*/ * LatestParseOp; scalar_t__ SpacesBefore; } ;
 
-/* Variables and functions */
- size_t ASL_NUM_REPORT_LEVELS ; 
- scalar_t__ AcpiGbl_CaptureComments ; 
- TYPE_1__ AslGbl_CommentState ; 
- scalar_t__ AslGbl_CurrentColumn ; 
- int /*<<< orphan*/  AslGbl_CurrentLineBuffer ; 
- int AslGbl_CurrentLineNumber ; 
- scalar_t__ AslGbl_CurrentLineOffset ; 
- int /*<<< orphan*/ * AslGbl_ErrorLog ; 
- scalar_t__* AslGbl_ExceptionCount ; 
- scalar_t__ AslGbl_FileType ; 
- scalar_t__ AslGbl_InputByteCount ; 
- scalar_t__ AslGbl_InputFieldCount ; 
- int /*<<< orphan*/  AslGbl_LineBufPtr ; 
- int AslGbl_LogicalLineNumber ; 
- int /*<<< orphan*/ * AslGbl_NextError ; 
- scalar_t__ AslGbl_NextEvent ; 
- scalar_t__ AslGbl_NsLookupCount ; 
- int /*<<< orphan*/ * AslGbl_Signature ; 
- scalar_t__ AslGbl_SyntaxError ; 
- scalar_t__ AslGbl_TotalAllocated ; 
- scalar_t__ AslGbl_TotalAllocations ; 
- scalar_t__ AslGbl_TotalExecutableOpcodes ; 
- scalar_t__ AslGbl_TotalFolds ; 
- scalar_t__ AslGbl_TotalKeywords ; 
- scalar_t__ AslGbl_TotalMethods ; 
- scalar_t__ AslGbl_TotalNamedObjects ; 
- scalar_t__ AslGbl_TotalParseNodes ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t UINT32 ;
+struct TYPE_2__ {int CommentType; int CaptureComments; int * ParsingParenBraceNode; int * LatestParseOp; scalar_t__ SpacesBefore; } ;
+
+
+ size_t ASL_NUM_REPORT_LEVELS ;
+ scalar_t__ AcpiGbl_CaptureComments ;
+ TYPE_1__ AslGbl_CommentState ;
+ scalar_t__ AslGbl_CurrentColumn ;
+ int AslGbl_CurrentLineBuffer ;
+ int AslGbl_CurrentLineNumber ;
+ scalar_t__ AslGbl_CurrentLineOffset ;
+ int * AslGbl_ErrorLog ;
+ scalar_t__* AslGbl_ExceptionCount ;
+ scalar_t__ AslGbl_FileType ;
+ scalar_t__ AslGbl_InputByteCount ;
+ scalar_t__ AslGbl_InputFieldCount ;
+ int AslGbl_LineBufPtr ;
+ int AslGbl_LogicalLineNumber ;
+ int * AslGbl_NextError ;
+ scalar_t__ AslGbl_NextEvent ;
+ scalar_t__ AslGbl_NsLookupCount ;
+ int * AslGbl_Signature ;
+ scalar_t__ AslGbl_SyntaxError ;
+ scalar_t__ AslGbl_TotalAllocated ;
+ scalar_t__ AslGbl_TotalAllocations ;
+ scalar_t__ AslGbl_TotalExecutableOpcodes ;
+ scalar_t__ AslGbl_TotalFolds ;
+ scalar_t__ AslGbl_TotalKeywords ;
+ scalar_t__ AslGbl_TotalMethods ;
+ scalar_t__ AslGbl_TotalNamedObjects ;
+ scalar_t__ AslGbl_TotalParseNodes ;
+ int TRUE ;
 
 void
 AslInitializeGlobals (
     void)
 {
-    UINT32                  i;
+    UINT32 i;
 
 
-    /* Init compiler globals */
+
 
     AslGbl_SyntaxError = 0;
     AslGbl_CurrentColumn = 0;
@@ -63,9 +63,9 @@ AslInitializeGlobals (
     AslGbl_NsLookupCount = 0;
     AslGbl_LineBufPtr = AslGbl_CurrentLineBuffer;
 
-    AslGbl_ErrorLog = NULL;
-    AslGbl_NextError = NULL;
-    AslGbl_Signature = NULL;
+    AslGbl_ErrorLog = ((void*)0);
+    AslGbl_NextError = ((void*)0);
+    AslGbl_Signature = ((void*)0);
     AslGbl_FileType = 0;
 
     AslGbl_TotalExecutableOpcodes = 0;
@@ -85,10 +85,10 @@ AslInitializeGlobals (
 
     if (AcpiGbl_CaptureComments)
     {
-        AslGbl_CommentState.SpacesBefore          = 0;
-        AslGbl_CommentState.CommentType           = 1;
-        AslGbl_CommentState.LatestParseOp         = NULL;
-        AslGbl_CommentState.ParsingParenBraceNode = NULL;
-        AslGbl_CommentState.CaptureComments       = TRUE;
+        AslGbl_CommentState.SpacesBefore = 0;
+        AslGbl_CommentState.CommentType = 1;
+        AslGbl_CommentState.LatestParseOp = ((void*)0);
+        AslGbl_CommentState.ParsingParenBraceNode = ((void*)0);
+        AslGbl_CommentState.CaptureComments = TRUE;
     }
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_14__ {int nb_inputs; TYPE_3__** inputs; TYPE_1__* priv; } ;
 struct TYPE_13__ {int channel_layout; TYPE_4__* src; } ;
-struct TYPE_12__ {size_t input; int in_channel; int out_channel; int /*<<< orphan*/  in_channel_idx; } ;
+struct TYPE_12__ {size_t input; int in_channel; int out_channel; int in_channel_idx; } ;
 struct TYPE_11__ {int nb_channels; TYPE_2__* channels; } ;
-typedef  TYPE_1__ JoinContext ;
-typedef  TYPE_2__ ChannelMap ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ JoinContext ;
+typedef TYPE_2__ ChannelMap ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int av_channel_layout_extract_channel (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int /*<<< orphan*/  av_get_channel_layout_channel_index (int,int) ; 
- int av_get_channel_name (int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,...) ; 
- int* av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  guess_map_any (TYPE_4__*,TYPE_2__*,int*) ; 
- int /*<<< orphan*/  guess_map_matching (TYPE_4__*,TYPE_2__*,int*) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ int AV_LOG_WARNING ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_channel_layout_extract_channel (int,int ) ;
+ int av_freep (int**) ;
+ int av_get_channel_layout_channel_index (int,int) ;
+ int av_get_channel_name (int) ;
+ int av_log (TYPE_4__*,int ,char*,...) ;
+ int* av_mallocz_array (int,int) ;
+ int guess_map_any (TYPE_4__*,TYPE_2__*,int*) ;
+ int guess_map_matching (TYPE_4__*,TYPE_2__*,int*) ;
 
 __attribute__((used)) static int join_config_output(AVFilterLink *outlink)
 {
     AVFilterContext *ctx = outlink->src;
-    JoinContext       *s = ctx->priv;
-    uint64_t *inputs;   // nth element tracks which channels are used from nth input
+    JoinContext *s = ctx->priv;
+    uint64_t *inputs;
     int i, ret = 0;
 
-    /* initialize inputs to user-specified mappings */
+
     if (!(inputs = av_mallocz_array(ctx->nb_inputs, sizeof(*inputs))))
         return AVERROR(ENOMEM);
     for (i = 0; i < s->nb_channels; i++) {
@@ -74,8 +74,8 @@ __attribute__((used)) static int join_config_output(AVFilterLink *outlink)
         inputs[ch->input] |= ch->in_channel;
     }
 
-    /* guess channel maps when not explicitly defined */
-    /* first try unused matching channels */
+
+
     for (i = 0; i < s->nb_channels; i++) {
         ChannelMap *ch = &s->channels[i];
 
@@ -83,7 +83,7 @@ __attribute__((used)) static int join_config_output(AVFilterLink *outlink)
             guess_map_matching(ctx, ch, inputs);
     }
 
-    /* if the above failed, try to find _any_ unused input channel */
+
     for (i = 0; i < s->nb_channels; i++) {
         ChannelMap *ch = &s->channels[i];
 
@@ -101,7 +101,7 @@ __attribute__((used)) static int join_config_output(AVFilterLink *outlink)
                                                                  ch->in_channel);
     }
 
-    /* print mappings */
+
     av_log(ctx, AV_LOG_VERBOSE, "mappings: ");
     for (i = 0; i < s->nb_channels; i++) {
         ChannelMap *ch = &s->channels[i];

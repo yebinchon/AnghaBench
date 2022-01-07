@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dentry {int /*<<< orphan*/  d_inode; } ;
 
-/* Variables and functions */
- int IS_ROOT (struct dentry*) ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  __d_move (struct dentry*,struct dentry*,int) ; 
- int /*<<< orphan*/  rename_lock ; 
- int /*<<< orphan*/  write_seqlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  write_sequnlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct dentry {int d_inode; } ;
+
+
+ int IS_ROOT (struct dentry*) ;
+ int WARN_ON (int) ;
+ int __d_move (struct dentry*,struct dentry*,int) ;
+ int rename_lock ;
+ int write_seqlock (int *) ;
+ int write_sequnlock (int *) ;
 
 void d_exchange(struct dentry *dentry1, struct dentry *dentry2)
 {
-	write_seqlock(&rename_lock);
+ write_seqlock(&rename_lock);
 
-	WARN_ON(!dentry1->d_inode);
-	WARN_ON(!dentry2->d_inode);
-	WARN_ON(IS_ROOT(dentry1));
-	WARN_ON(IS_ROOT(dentry2));
+ WARN_ON(!dentry1->d_inode);
+ WARN_ON(!dentry2->d_inode);
+ WARN_ON(IS_ROOT(dentry1));
+ WARN_ON(IS_ROOT(dentry2));
 
-	__d_move(dentry1, dentry2, true);
+ __d_move(dentry1, dentry2, 1);
 
-	write_sequnlock(&rename_lock);
+ write_sequnlock(&rename_lock);
 }

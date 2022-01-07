@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_shader_instruction {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  data_type; } ;
+struct TYPE_2__ {int data_type; } ;
 struct wined3d_shader_dst_param {TYPE_1__ reg; } ;
 struct glsl_dst_param {char* mask_str; char* reg_name; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  shader_glsl_get_register_name (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,struct wined3d_shader_instruction const*) ; 
- int /*<<< orphan*/  shader_glsl_get_write_mask (struct wined3d_shader_dst_param const*,char*) ; 
+
+ int FALSE ;
+ int shader_glsl_get_register_name (TYPE_1__*,int ,char*,int *,struct wined3d_shader_instruction const*) ;
+ int shader_glsl_get_write_mask (struct wined3d_shader_dst_param const*,char*) ;
 
 __attribute__((used)) static DWORD shader_glsl_add_dst_param(const struct wined3d_shader_instruction *ins,
         const struct wined3d_shader_dst_param *wined3d_dst, struct glsl_dst_param *glsl_dst)

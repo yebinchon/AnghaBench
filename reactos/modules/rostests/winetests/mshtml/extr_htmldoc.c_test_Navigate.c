@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHlinkTarget ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActivateMe ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IHlinkTarget_Navigate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHlinkTarget_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHlinkTarget ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int IHlinkTarget ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ActivateMe ;
+ int CHECK_CALLED (int ) ;
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IHlinkTarget_Navigate (int *,int ,int *) ;
+ int IHlinkTarget_Release (int *) ;
+ int IID_IHlinkTarget ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void test_Navigate(IHTMLDocument2 *doc)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void test_Navigate(IHTMLDocument2 *doc)
     ok(hres == S_OK, "QueryInterface(IID_IHlinkTarget) failed: %08x\n", hres);
 
     SET_EXPECT(ActivateMe);
-    hres = IHlinkTarget_Navigate(hlink, 0, NULL);
+    hres = IHlinkTarget_Navigate(hlink, 0, ((void*)0));
     ok(hres == S_OK, "Navigate failed: %08x\n", hres);
     CHECK_CALLED(ActivateMe);
 

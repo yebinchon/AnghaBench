@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* freectx ) (int /*<<< orphan*/ *) ;} ;
-struct TYPE_5__ {TYPE_3__* meth; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ EVP_KDF_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_KDF_free (TYPE_3__*) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* freectx ) (int *) ;} ;
+struct TYPE_5__ {TYPE_3__* meth; int * data; } ;
+typedef TYPE_1__ EVP_KDF_CTX ;
+
+
+ int EVP_KDF_free (TYPE_3__*) ;
+ int OPENSSL_free (TYPE_1__*) ;
+ int stub1 (int *) ;
 
 void EVP_KDF_CTX_free(EVP_KDF_CTX *ctx)
 {
-    if (ctx != NULL) {
+    if (ctx != ((void*)0)) {
         ctx->meth->freectx(ctx->data);
-        ctx->data = NULL;
+        ctx->data = ((void*)0);
         EVP_KDF_free(ctx->meth);
         OPENSSL_free(ctx);
     }

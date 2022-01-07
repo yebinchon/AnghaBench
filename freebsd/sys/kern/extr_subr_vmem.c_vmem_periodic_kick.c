@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  taskqueue_enqueue (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_thread ; 
- int /*<<< orphan*/  vmem_periodic_wk ; 
+ int taskqueue_enqueue (int ,int *) ;
+ int taskqueue_thread ;
+ int vmem_periodic_wk ;
 
 __attribute__((used)) static void
 vmem_periodic_kick(void *dummy)
 {
 
-	taskqueue_enqueue(taskqueue_thread, &vmem_periodic_wk);
+ taskqueue_enqueue(taskqueue_thread, &vmem_periodic_wk);
 }

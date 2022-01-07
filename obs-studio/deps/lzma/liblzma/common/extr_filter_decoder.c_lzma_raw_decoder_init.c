@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lzma_ret ;
-typedef  int /*<<< orphan*/  lzma_next_coder ;
-typedef  int /*<<< orphan*/  lzma_filter_find ;
-typedef  int /*<<< orphan*/  lzma_filter ;
-typedef  int /*<<< orphan*/  lzma_allocator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  decoder_find ; 
- int /*<<< orphan*/  lzma_raw_coder_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int lzma_ret ;
+typedef int lzma_next_coder ;
+typedef int lzma_filter_find ;
+typedef int lzma_filter ;
+typedef int lzma_allocator ;
+
+
+ int decoder_find ;
+ int lzma_raw_coder_init (int *,int *,int const*,int ,int) ;
 
 extern lzma_ret
 lzma_raw_decoder_init(lzma_next_coder *next, lzma_allocator *allocator,
-		const lzma_filter *options)
+  const lzma_filter *options)
 {
-	return lzma_raw_coder_init(next, allocator,
-			options, (lzma_filter_find)(&decoder_find), false);
+ return lzma_raw_coder_init(next, allocator,
+   options, (lzma_filter_find)(&decoder_find), 0);
 }

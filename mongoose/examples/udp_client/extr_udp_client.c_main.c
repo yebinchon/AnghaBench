@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_mgr {int dummy; } ;
 struct mg_connection {int dummy; } ;
-typedef  int /*<<< orphan*/  addr ;
+typedef int addr ;
 
-/* Variables and functions */
- int ADDR_BUF_SIZE ; 
- int EXIT_FAILURE ; 
- int /*<<< orphan*/  ev_handler ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- struct mg_connection* mg_connect (struct mg_mgr*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mgr_free (struct mg_mgr*) ; 
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mgr_poll (struct mg_mgr*,int) ; 
- int /*<<< orphan*/  mg_send (struct mg_connection*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int ADDR_BUF_SIZE ;
+ int EXIT_FAILURE ;
+ int ev_handler ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ struct mg_connection* mg_connect (struct mg_mgr*,char*,int ) ;
+ int mg_mgr_free (struct mg_mgr*) ;
+ int mg_mgr_init (struct mg_mgr*,int *) ;
+ int mg_mgr_poll (struct mg_mgr*,int) ;
+ int mg_send (struct mg_connection*,char*,int ) ;
+ int snprintf (char*,int,char*,char*) ;
+ int stderr ;
+ int strlen (char*) ;
 
 int main(int argc, char *argv[]) {
   struct mg_mgr mgr;
   char addr[ADDR_BUF_SIZE];
 
-  mg_mgr_init(&mgr, NULL);
+  mg_mgr_init(&mgr, ((void*)0));
 
   if (argc != 3) {
     fprintf(stderr, "Usage: %s <server:port> <data>\n", argv[0]);
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
 
   struct mg_connection *nc = mg_connect(&mgr, addr, ev_handler);
 
-  if (nc == NULL) {
+  if (nc == ((void*)0)) {
     fprintf(stderr, "Failed to connect");
     exit(1);
   }

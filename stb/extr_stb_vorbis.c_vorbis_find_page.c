@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int uint32 ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8 ;
+typedef int uint32 ;
 struct TYPE_6__ {unsigned int stream_len; scalar_t__ eof; } ;
-typedef  TYPE_1__ stb_vorbis ;
+typedef TYPE_1__ stb_vorbis ;
 
-/* Variables and functions */
- int crc32_update (int,int) ; 
- int get8 (TYPE_1__*) ; 
- int* ogg_page_header ; 
- int /*<<< orphan*/  set_file_offset (TYPE_1__*,unsigned int) ; 
- void* stb_vorbis_get_file_offset (TYPE_1__*) ; 
+
+ int crc32_update (int,int) ;
+ int get8 (TYPE_1__*) ;
+ int* ogg_page_header ;
+ int set_file_offset (TYPE_1__*,unsigned int) ;
+ void* stb_vorbis_get_file_offset (TYPE_1__*) ;
 
 __attribute__((used)) static uint32 vorbis_find_page(stb_vorbis *f, uint32 *end, uint32 *last)
 {
@@ -29,13 +29,13 @@ __attribute__((used)) static uint32 vorbis_find_page(stb_vorbis *f, uint32 *end,
       int n;
       if (f->eof) return 0;
       n = get8(f);
-      if (n == 0x4f) { // page header candidate
+      if (n == 0x4f) {
          unsigned int retry_loc = stb_vorbis_get_file_offset(f);
          int i;
-         // check if we're off the end of a file_section stream
+
          if (retry_loc - 25 > f->stream_len)
             return 0;
-         // check the rest of the header
+
          for (i=1; i < 4; ++i)
             if (get8(f) != ogg_page_header[i])
                break;
@@ -64,16 +64,8 @@ __attribute__((used)) static uint32 vorbis_find_page(stb_vorbis *f, uint32 *end,
             if (len && f->eof) return 0;
             for (i=0; i < len; ++i)
                crc = crc32_update(crc, get8(f));
-            // finished parsing probable page
+
             if (crc == goal) {
-               // we could now check that it's either got the last
-               // page flag set, OR it's followed by the capture
-               // pattern, but I guess TECHNICALLY you could have
-               // a file with garbage between each ogg page and recover
-               // from it automatically? So even though that paranoia
-               // might decrease the chance of an invalid decode by
-               // another 2^32, not worth it since it would hose those
-               // invalid-but-useful files?
                if (end)
                   *end = stb_vorbis_get_file_offset(f);
                if (last) {
@@ -87,7 +79,7 @@ __attribute__((used)) static uint32 vorbis_find_page(stb_vorbis *f, uint32 *end,
             }
          }
         invalid:
-         // not a valid page, so rewind and look for next one
+
          set_file_offset(f, retry_loc);
       }
    }

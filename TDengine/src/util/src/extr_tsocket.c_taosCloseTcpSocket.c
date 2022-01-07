@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct linger {int l_onoff; scalar_t__ l_linger; } ;
-typedef  int /*<<< orphan*/  linger ;
+typedef int linger ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_LINGER ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  pError (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosCloseSocket (int) ; 
- scalar_t__ taosSetSockOpt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int) ; 
+
+ int SOL_SOCKET ;
+ int SO_LINGER ;
+ int errno ;
+ int pError (char*,int ,int ) ;
+ int strerror (int ) ;
+ int taosCloseSocket (int) ;
+ scalar_t__ taosSetSockOpt (int,int ,int ,void*,int) ;
 
 void taosCloseTcpSocket(int sockFd) {
   struct linger linger;

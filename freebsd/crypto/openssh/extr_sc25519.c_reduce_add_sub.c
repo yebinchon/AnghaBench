@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* v; } ;
-typedef  TYPE_1__ sc25519 ;
-typedef  int crypto_uint32 ;
+typedef TYPE_1__ sc25519 ;
+typedef int crypto_uint32 ;
 
-/* Variables and functions */
- int lt (int,int) ; 
- scalar_t__* m ; 
+
+ int lt (int,int) ;
+ scalar_t__* m ;
 
 __attribute__((used)) static void reduce_add_sub(sc25519 *r)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static void reduce_add_sub(sc25519 *r)
   int i;
   unsigned char t[32];
 
-  for(i=0;i<32;i++) 
+  for(i=0;i<32;i++)
   {
     pb += m[i];
     b = lt(r->v[i],pb);
@@ -35,6 +35,6 @@ __attribute__((used)) static void reduce_add_sub(sc25519 *r)
     pb = b;
   }
   mask = b - 1;
-  for(i=0;i<32;i++) 
+  for(i=0;i<32;i++)
     r->v[i] ^= mask & (r->v[i] ^ t[i]);
 }

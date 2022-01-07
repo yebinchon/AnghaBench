@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ * shpool; } ;
-typedef  TYPE_3__ ngx_stream_upstream_rr_peers_t ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int * shpool; } ;
+typedef TYPE_3__ ngx_stream_upstream_rr_peers_t ;
 struct TYPE_13__ {int len; TYPE_4__* data; } ;
 struct TYPE_12__ {int len; TYPE_4__* data; } ;
 struct TYPE_15__ {int socklen; struct TYPE_15__* sockaddr; TYPE_2__ name; TYPE_1__ server; } ;
-typedef  TYPE_4__ ngx_stream_upstream_rr_peer_t ;
-typedef  int /*<<< orphan*/  ngx_sockaddr_t ;
-typedef  int /*<<< orphan*/  ngx_slab_pool_t ;
+typedef TYPE_4__ ngx_stream_upstream_rr_peer_t ;
+typedef int ngx_sockaddr_t ;
+typedef int ngx_slab_pool_t ;
 
-/* Variables and functions */
- int NGX_SOCKADDR_STRLEN ; 
- int /*<<< orphan*/  ngx_memcpy (TYPE_4__*,TYPE_4__*,int) ; 
- TYPE_4__* ngx_slab_alloc_locked (int /*<<< orphan*/ *,int) ; 
- void* ngx_slab_calloc_locked (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_slab_free_locked (int /*<<< orphan*/ *,TYPE_4__*) ; 
+
+ int NGX_SOCKADDR_STRLEN ;
+ int ngx_memcpy (TYPE_4__*,TYPE_4__*,int) ;
+ TYPE_4__* ngx_slab_alloc_locked (int *,int) ;
+ void* ngx_slab_calloc_locked (int *,int) ;
+ int ngx_slab_free_locked (int *,TYPE_4__*) ;
 
 __attribute__((used)) static ngx_stream_upstream_rr_peer_t *
 ngx_stream_upstream_zone_copy_peer(ngx_stream_upstream_rr_peers_t *peers,
     ngx_stream_upstream_rr_peer_t *src)
 {
-    ngx_slab_pool_t                *pool;
-    ngx_stream_upstream_rr_peer_t  *dst;
+    ngx_slab_pool_t *pool;
+    ngx_stream_upstream_rr_peer_t *dst;
 
     pool = peers->shpool;
 
     dst = ngx_slab_calloc_locked(pool, sizeof(ngx_stream_upstream_rr_peer_t));
-    if (dst == NULL) {
-        return NULL;
+    if (dst == ((void*)0)) {
+        return ((void*)0);
     }
 
     if (src) {
         ngx_memcpy(dst, src, sizeof(ngx_stream_upstream_rr_peer_t));
-        dst->sockaddr = NULL;
-        dst->name.data = NULL;
-        dst->server.data = NULL;
+        dst->sockaddr = ((void*)0);
+        dst->name.data = ((void*)0);
+        dst->server.data = ((void*)0);
     }
 
     dst->sockaddr = ngx_slab_calloc_locked(pool, sizeof(ngx_sockaddr_t));
-    if (dst->sockaddr == NULL) {
+    if (dst->sockaddr == ((void*)0)) {
         goto failed;
     }
 
     dst->name.data = ngx_slab_calloc_locked(pool, NGX_SOCKADDR_STRLEN);
-    if (dst->name.data == NULL) {
+    if (dst->name.data == ((void*)0)) {
         goto failed;
     }
 
@@ -66,7 +66,7 @@ ngx_stream_upstream_zone_copy_peer(ngx_stream_upstream_rr_peers_t *peers,
         ngx_memcpy(dst->name.data, src->name.data, src->name.len);
 
         dst->server.data = ngx_slab_alloc_locked(pool, src->server.len);
-        if (dst->server.data == NULL) {
+        if (dst->server.data == ((void*)0)) {
             goto failed;
         }
 
@@ -91,5 +91,5 @@ failed:
 
     ngx_slab_free_locked(pool, dst);
 
-    return NULL;
+    return ((void*)0);
 }

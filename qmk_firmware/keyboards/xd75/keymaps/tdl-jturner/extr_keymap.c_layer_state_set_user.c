@@ -1,61 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
-#define  _LYFK 135 
-#define  _LYLT 134 
-#define  _LYMD 133 
-#define  _LYMED 132 
-#define  _LYMOS 131 
-#define  _LYNAV 130 
-#define  _LYNUM 129 
-#define  _LYSYS 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYFK () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYLT () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYMD () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYMED () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYMOS () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYNAV () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYNUM () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_LYSYS () ; 
- int /*<<< orphan*/  rgblight_setrgb_user_base () ; 
+
+
+
+typedef int uint32_t ;
+ int biton32 (int ) ;
+ int rgblight_setrgb_user_LYFK () ;
+ int rgblight_setrgb_user_LYLT () ;
+ int rgblight_setrgb_user_LYMD () ;
+ int rgblight_setrgb_user_LYMED () ;
+ int rgblight_setrgb_user_LYMOS () ;
+ int rgblight_setrgb_user_LYNAV () ;
+ int rgblight_setrgb_user_LYNUM () ;
+ int rgblight_setrgb_user_LYSYS () ;
+ int rgblight_setrgb_user_base () ;
 
 uint32_t layer_state_set_user(uint32_t state) {
   switch(biton32(state)) {
-    case _LYFK:
+    case 135:
       rgblight_setrgb_user_LYFK();
       break;
-    case _LYMED:
+    case 132:
       rgblight_setrgb_user_LYMED();
       break;
-    case _LYNUM:
+    case 129:
       rgblight_setrgb_user_LYNUM();
       break;
-    case _LYNAV:
+    case 130:
       rgblight_setrgb_user_LYNAV();
       break;
-    case _LYMOS:
+    case 131:
       rgblight_setrgb_user_LYMOS();
       break;
-    case _LYSYS:
+    case 128:
       rgblight_setrgb_user_LYSYS();
       break;
-    case _LYLT:
+    case 134:
       rgblight_setrgb_user_LYLT();
       break;
-    case _LYMD:
+    case 133:
       rgblight_setrgb_user_LYMD();
       break;
     default:

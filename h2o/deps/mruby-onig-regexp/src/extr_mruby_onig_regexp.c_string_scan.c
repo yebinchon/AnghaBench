@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int const mrb_value ;
+typedef int mrb_state ;
 struct TYPE_2__ {int num_regs; int* beg; int* end; } ;
-typedef  TYPE_1__ OnigRegion ;
-typedef  int /*<<< orphan*/  OnigRegex ;
+typedef TYPE_1__ OnigRegion ;
+typedef int OnigRegex ;
 
-/* Variables and functions */
- scalar_t__ DATA_PTR (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  Data_Get_Struct (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ONIG_MISMATCH ; 
- int /*<<< orphan*/  ONIG_REGEXP_P (int /*<<< orphan*/  const) ; 
- int RSTRING_LEN (int /*<<< orphan*/  const) ; 
- char* RSTRING_PTR (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  const create_onig_region (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mrb_array_p (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  const mrb_ary_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mrb_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const mrb_funcall_with_block (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mrb_onig_regexp_type ; 
- int /*<<< orphan*/  mrb_string_p (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  mrb_yield (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- scalar_t__ onig_match_common (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  const str_substr (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int,int) ; 
- int utf8len (char*,char*) ; 
+
+ scalar_t__ DATA_PTR (int const) ;
+ int Data_Get_Struct (int *,int const,int *,int ) ;
+ scalar_t__ ONIG_MISMATCH ;
+ int ONIG_REGEXP_P (int const) ;
+ int RSTRING_LEN (int const) ;
+ char* RSTRING_PTR (int const) ;
+ int const create_onig_region (int *,int const,int const) ;
+ int mrb_array_p (int const) ;
+ int const mrb_ary_new (int *) ;
+ int const mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int const,int const) ;
+ int mrb_assert (int ) ;
+ int const mrb_funcall_with_block (int *,int const,int ,int,int const*,int const) ;
+ int mrb_get_args (int *,char*,int const*,int const*) ;
+ int mrb_intern_lit (int *,char*) ;
+ scalar_t__ mrb_nil_p (int const) ;
+ int mrb_onig_regexp_type ;
+ int mrb_string_p (int const) ;
+ int mrb_yield (int *,int const,int const) ;
+ scalar_t__ onig_match_common (int *,int ,int const,int const,int) ;
+ int const str_substr (int *,int const,int,int) ;
+ int utf8len (char*,char*) ;
 
 __attribute__((used)) static mrb_value
 string_scan(mrb_state* mrb, mrb_value self) {
@@ -73,7 +73,7 @@ string_scan(mrb_state* mrb, mrb_value self) {
         }
         mrb_ary_push(mrb, result, elem);
       }
-    } else { // call block
+    } else {
       mrb_assert(mrb_string_p(result));
       if(m->num_regs == 1) {
         mrb_yield(mrb, blk, str_substr(mrb, self, m->beg[0], m->end[0] - m->beg[0]));
@@ -87,9 +87,9 @@ string_scan(mrb_state* mrb, mrb_value self) {
     }
 
     if (m->beg[0] == m->end[0]) {
-      /*
-      * Always consume at least one character of the input string
-      */
+
+
+
       if (RSTRING_LEN(self) > m->end[0]) {
         char* p = RSTRING_PTR(self) + last_end_pos;
         char* e = p + RSTRING_LEN(self);

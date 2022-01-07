@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ACCESS_MASK ;
 
-/* Variables and functions */
- int ACCESS_SYSTEM_SECURITY ; 
- int DELETE ; 
- int FILE_ADD_FILE ; 
- int FILE_ADD_SUBDIRECTORY ; 
- int FILE_ALL_ACCESS ; 
- int FILE_APPEND_DATA ; 
- int FILE_CREATE_PIPE_INSTANCE ; 
- int FILE_DELETE_CHILD ; 
- int FILE_EXECUTE ; 
- int FILE_GENERIC_EXECUTE ; 
- int FILE_GENERIC_READ ; 
- int FILE_GENERIC_WRITE ; 
- int FILE_LIST_DIRECTORY ; 
- int FILE_READ_ATTRIBUTES ; 
- int FILE_READ_DATA ; 
- int FILE_READ_EA ; 
- int FILE_TRAVERSE ; 
- int FILE_WRITE_ATTRIBUTES ; 
- int FILE_WRITE_DATA ; 
- int FILE_WRITE_EA ; 
- int GENERIC_ALL ; 
- int GENERIC_EXECUTE ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int MAXIMUM_ALLOWED ; 
- int READ_CONTROL ; 
- int SPECIFIC_RIGHTS_ALL ; 
- int STANDARD_RIGHTS_ALL ; 
- int STANDARD_RIGHTS_REQUIRED ; 
- int SYNCHRONIZE ; 
- int WRITE_DAC ; 
- int WRITE_OWNER ; 
- int /*<<< orphan*/  dprintf (int,char*,...) ; 
+
+
+
+typedef int ACCESS_MASK ;
+
+
+ int ACCESS_SYSTEM_SECURITY ;
+ int DELETE ;
+ int FILE_ADD_FILE ;
+ int FILE_ADD_SUBDIRECTORY ;
+ int FILE_ALL_ACCESS ;
+ int FILE_APPEND_DATA ;
+ int FILE_CREATE_PIPE_INSTANCE ;
+ int FILE_DELETE_CHILD ;
+ int FILE_EXECUTE ;
+ int FILE_GENERIC_EXECUTE ;
+ int FILE_GENERIC_READ ;
+ int FILE_GENERIC_WRITE ;
+ int FILE_LIST_DIRECTORY ;
+ int FILE_READ_ATTRIBUTES ;
+ int FILE_READ_DATA ;
+ int FILE_READ_EA ;
+ int FILE_TRAVERSE ;
+ int FILE_WRITE_ATTRIBUTES ;
+ int FILE_WRITE_DATA ;
+ int FILE_WRITE_EA ;
+ int GENERIC_ALL ;
+ int GENERIC_EXECUTE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int MAXIMUM_ALLOWED ;
+ int READ_CONTROL ;
+ int SPECIFIC_RIGHTS_ALL ;
+ int STANDARD_RIGHTS_ALL ;
+ int STANDARD_RIGHTS_REQUIRED ;
+ int SYNCHRONIZE ;
+ int WRITE_DAC ;
+ int WRITE_OWNER ;
+ int dprintf (int,char*,...) ;
 
 void print_windows_access_mask(int on, ACCESS_MASK m)
 {

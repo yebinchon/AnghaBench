@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLX5_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  miss_address_31_6 ; 
- int /*<<< orphan*/  miss_address_39_32 ; 
- int /*<<< orphan*/  ste_rx_steering_mult ; 
+
+
+
+typedef int u8 ;
+typedef int u64 ;
+
+
+ int MLX5_SET (int ,int *,int ,int) ;
+ int miss_address_31_6 ;
+ int miss_address_39_32 ;
+ int ste_rx_steering_mult ;
 
 void mlx5dr_ste_set_miss_addr(u8 *hw_ste_p, u64 miss_addr)
 {
-	u64 index = miss_addr >> 6;
+ u64 index = miss_addr >> 6;
 
-	/* Miss address for TX and RX STEs located in the same offsets */
-	MLX5_SET(ste_rx_steering_mult, hw_ste_p, miss_address_39_32, index >> 26);
-	MLX5_SET(ste_rx_steering_mult, hw_ste_p, miss_address_31_6, index);
+
+ MLX5_SET(ste_rx_steering_mult, hw_ste_p, miss_address_39_32, index >> 26);
+ MLX5_SET(ste_rx_steering_mult, hw_ste_p, miss_address_31_6, index);
 }

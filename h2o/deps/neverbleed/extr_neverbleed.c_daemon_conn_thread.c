@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct expbuf_t {int /*<<< orphan*/ * member_0; } ;
-typedef  int /*<<< orphan*/  auth_token ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct expbuf_t {int * member_0; } ;
+typedef int auth_token ;
 struct TYPE_4__ {TYPE_1__* nb; } ;
-struct TYPE_3__ {int /*<<< orphan*/  auth_token; } ;
+struct TYPE_3__ {int auth_token; } ;
 
-/* Variables and functions */
- int NEVERBLEED_AUTH_TOKEN_SIZE ; 
- int /*<<< orphan*/  close (int) ; 
- TYPE_2__ daemon_vars ; 
- scalar_t__ del_ecdsa_key_stub (struct expbuf_t*) ; 
- scalar_t__ del_rsa_key_stub (struct expbuf_t*) ; 
- scalar_t__ ecdsa_sign_stub (struct expbuf_t*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  expbuf_dispose (struct expbuf_t*) ; 
- scalar_t__ expbuf_read (struct expbuf_t*,int) ; 
- char* expbuf_shift_str (struct expbuf_t*) ; 
- scalar_t__ expbuf_write (struct expbuf_t*,int) ; 
- scalar_t__ load_key_stub (struct expbuf_t*) ; 
- scalar_t__ memcmp (unsigned char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ priv_dec_stub (struct expbuf_t*) ; 
- scalar_t__ priv_enc_stub (struct expbuf_t*) ; 
- scalar_t__ read_nbytes (int,unsigned char**,int) ; 
- scalar_t__ setuidgid_stub (struct expbuf_t*) ; 
- scalar_t__ sign_stub (struct expbuf_t*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  warnf (char*,...) ; 
+
+ int NEVERBLEED_AUTH_TOKEN_SIZE ;
+ int close (int) ;
+ TYPE_2__ daemon_vars ;
+ scalar_t__ del_ecdsa_key_stub (struct expbuf_t*) ;
+ scalar_t__ del_rsa_key_stub (struct expbuf_t*) ;
+ scalar_t__ ecdsa_sign_stub (struct expbuf_t*) ;
+ scalar_t__ errno ;
+ int expbuf_dispose (struct expbuf_t*) ;
+ scalar_t__ expbuf_read (struct expbuf_t*,int) ;
+ char* expbuf_shift_str (struct expbuf_t*) ;
+ scalar_t__ expbuf_write (struct expbuf_t*,int) ;
+ scalar_t__ load_key_stub (struct expbuf_t*) ;
+ scalar_t__ memcmp (unsigned char*,int ,int) ;
+ scalar_t__ priv_dec_stub (struct expbuf_t*) ;
+ scalar_t__ priv_enc_stub (struct expbuf_t*) ;
+ scalar_t__ read_nbytes (int,unsigned char**,int) ;
+ scalar_t__ setuidgid_stub (struct expbuf_t*) ;
+ scalar_t__ sign_stub (struct expbuf_t*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int warnf (char*,...) ;
 
 __attribute__((used)) static void *daemon_conn_thread(void *_sock_fd)
 {
-    int sock_fd = (int)((char *)_sock_fd - (char *)NULL);
-    struct expbuf_t buf = {NULL};
+    int sock_fd = (int)((char *)_sock_fd - (char *)((void*)0));
+    struct expbuf_t buf = {((void*)0)};
     unsigned char auth_token[NEVERBLEED_AUTH_TOKEN_SIZE];
 
-    /* authenticate */
+
     if (read_nbytes(sock_fd, &auth_token, sizeof(auth_token)) != 0) {
         warnf("failed to receive authencication token from client");
         goto Exit;
@@ -62,7 +62,7 @@ __attribute__((used)) static void *daemon_conn_thread(void *_sock_fd)
                 warnf("read error");
             break;
         }
-        if ((cmd = expbuf_shift_str(&buf)) == NULL) {
+        if ((cmd = expbuf_shift_str(&buf)) == ((void*)0)) {
             errno = 0;
             warnf("failed to parse request");
             break;
@@ -76,14 +76,6 @@ __attribute__((used)) static void *daemon_conn_thread(void *_sock_fd)
         } else if (strcmp(cmd, "sign") == 0) {
             if (sign_stub(&buf) != 0)
                 break;
-#if OPENSSL_1_1_API
-        } else if (strcmp(cmd, "ecdsa_sign") == 0) {
-            if (ecdsa_sign_stub(&buf) != 0)
-                break;
-        } else if (strcmp(cmd, "del_ecdsa_key") == 0) {
-            if (del_ecdsa_key_stub(&buf) != 0)
-                break;
-#endif
         } else if (strcmp(cmd, "load_key") == 0) {
             if (load_key_stub(&buf) != 0)
                 break;
@@ -108,5 +100,5 @@ Exit:
     expbuf_dispose(&buf);
     close(sock_fd);
 
-    return NULL;
+    return ((void*)0);
 }

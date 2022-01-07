@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long long* global_data ; 
- int global_rcid ; 
- int global_sort_direction ; 
- int global_sort_field ; 
- scalar_t__ global_sort_type ; 
- scalar_t__ t_double ; 
+ long long* global_data ;
+ int global_rcid ;
+ int global_sort_direction ;
+ int global_sort_field ;
+ scalar_t__ global_sort_type ;
+ scalar_t__ t_double ;
 
 int cmp_event (const void *a, const void *b) {
   int i1 = *(int *)a, i2 = *(int *)b;

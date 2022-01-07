@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct wl_surface {int dummy; } ;
 struct wl_keyboard {int dummy; } ;
-typedef  int /*<<< orphan*/  _GLFWwindow ;
-struct TYPE_3__ {int /*<<< orphan*/ * keyboardFocus; int /*<<< orphan*/  serial; } ;
+typedef int _GLFWwindow ;
+struct TYPE_3__ {int * keyboardFocus; int serial; } ;
 struct TYPE_4__ {TYPE_1__ wl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_FALSE ; 
- TYPE_2__ _glfw ; 
- int /*<<< orphan*/  _glfwInputWindowFocus (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int GLFW_FALSE ;
+ TYPE_2__ _glfw ;
+ int _glfwInputWindowFocus (int *,int ) ;
 
 __attribute__((used)) static void keyboardHandleLeave(void* data,
                                 struct wl_keyboard* keyboard,
@@ -35,6 +35,6 @@ __attribute__((used)) static void keyboardHandleLeave(void* data,
         return;
 
     _glfw.wl.serial = serial;
-    _glfw.wl.keyboardFocus = NULL;
+    _glfw.wl.keyboardFocus = ((void*)0);
     _glfwInputWindowFocus(window, GLFW_FALSE);
 }

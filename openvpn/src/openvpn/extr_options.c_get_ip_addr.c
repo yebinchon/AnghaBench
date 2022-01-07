@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  in_addr_t ;
 
-/* Variables and functions */
- unsigned int GETADDR_FATAL ; 
- unsigned int GETADDR_HOST_ORDER ; 
- int M_FATAL ; 
- int /*<<< orphan*/  getaddr (unsigned int,char const*,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int in_addr_t ;
+
+
+ unsigned int GETADDR_FATAL ;
+ unsigned int GETADDR_HOST_ORDER ;
+ int M_FATAL ;
+ int getaddr (unsigned int,char const*,int ,int*,int *) ;
 
 __attribute__((used)) static in_addr_t
 get_ip_addr(const char *ip_string, int msglevel, bool *error)
 {
     unsigned int flags = GETADDR_HOST_ORDER;
-    bool succeeded = false;
+    bool succeeded = 0;
     in_addr_t ret;
 
     if (msglevel & M_FATAL)
@@ -30,10 +30,10 @@ get_ip_addr(const char *ip_string, int msglevel, bool *error)
         flags |= GETADDR_FATAL;
     }
 
-    ret = getaddr(flags, ip_string, 0, &succeeded, NULL);
+    ret = getaddr(flags, ip_string, 0, &succeeded, ((void*)0));
     if (!succeeded && error)
     {
-        *error = true;
+        *error = 1;
     }
     return ret;
 }

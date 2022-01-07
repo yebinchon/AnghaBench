@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct blkio {scalar_t__ enabled; scalar_t__ delay_counter; int updated; scalar_t__ Write; scalar_t__ Read; int /*<<< orphan*/  filename; } ;
-typedef  int /*<<< orphan*/  procfile ;
 
-/* Variables and functions */
- scalar_t__ CONFIG_BOOLEAN_AUTO ; 
- scalar_t__ CONFIG_BOOLEAN_YES ; 
- int /*<<< orphan*/  PROCFILE_FLAG_DEFAULT ; 
- scalar_t__ cgroup_recheck_zero_blkio_every_iterations ; 
- int cgroups_check ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- scalar_t__ netdata_zero_metrics_enabled ; 
- unsigned long procfile_lines (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  procfile_lineword (int /*<<< orphan*/ *,unsigned long,int) ; 
- int /*<<< orphan*/ * procfile_readall (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * procfile_reopen (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ str2ull (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct blkio {scalar_t__ enabled; scalar_t__ delay_counter; int updated; scalar_t__ Write; scalar_t__ Read; int filename; } ;
+typedef int procfile ;
+
+
+ scalar_t__ CONFIG_BOOLEAN_AUTO ;
+ scalar_t__ CONFIG_BOOLEAN_YES ;
+ int PROCFILE_FLAG_DEFAULT ;
+ scalar_t__ cgroup_recheck_zero_blkio_every_iterations ;
+ int cgroups_check ;
+ int error (char*,int ) ;
+ scalar_t__ likely (int ) ;
+ scalar_t__ netdata_zero_metrics_enabled ;
+ unsigned long procfile_lines (int *) ;
+ int procfile_lineword (int *,unsigned long,int) ;
+ int * procfile_readall (int *) ;
+ int * procfile_reopen (int *,int ,int *,int ) ;
+ scalar_t__ str2ull (int ) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void cgroup2_read_blkio(struct blkio *io, unsigned int word_offset) {
     if(unlikely(io->enabled == CONFIG_BOOLEAN_AUTO && io->delay_counter > 0)) {
@@ -36,9 +36,9 @@ __attribute__((used)) static inline void cgroup2_read_blkio(struct blkio *io, un
         }
 
         if(likely(io->filename)) {
-            static procfile *ff = NULL;
+            static procfile *ff = ((void*)0);
 
-            ff = procfile_reopen(ff, io->filename, NULL, PROCFILE_FLAG_DEFAULT);
+            ff = procfile_reopen(ff, io->filename, ((void*)0), PROCFILE_FLAG_DEFAULT);
             if(unlikely(!ff)) {
                 io->updated = 0;
                 cgroups_check = 1;

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct memstream {int /*<<< orphan*/  IStream_iface; int /*<<< orphan*/  stream; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct memstream {int IStream_iface; int stream; } ;
 struct TYPE_8__ {scalar_t__ QuadPart; } ;
 struct TYPE_6__ {int LowPart; } ;
 struct TYPE_7__ {TYPE_1__ cbSize; } ;
-typedef  TYPE_2__ STATSTG ;
-typedef  int /*<<< orphan*/  SIZE ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  ILHEAD ;
-typedef  char const* HRESULT ;
-typedef  int /*<<< orphan*/ * HIMAGELIST ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int BOOL ;
+typedef TYPE_2__ STATSTG ;
+typedef int SIZE ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef scalar_t__ INT ;
+typedef int ILHEAD ;
+typedef char const* HRESULT ;
+typedef int * HIMAGELIST ;
+typedef int HGLOBAL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- char* GetHGlobalFromStream (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- scalar_t__ ILC_MASK ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ ,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* IStream_Stat (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATFLAG_NONAME ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- char const* S_OK ; 
- scalar_t__ check_bitmap_data (int /*<<< orphan*/  const*,char*,int,int /*<<< orphan*/ *,int,char const*) ; 
- int /*<<< orphan*/  check_ilhead_data (int /*<<< orphan*/  const*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  cleanup_memstream (struct memstream*) ; 
- int /*<<< orphan*/  imagelist_get_bitmap_size (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_memstream (struct memstream*) ; 
- int /*<<< orphan*/  is_v6_header (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pImageList_Destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pImageList_GetIconSize (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ pImageList_GetImageCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pImageList_Read (int /*<<< orphan*/ *) ; 
- int pImageList_Write (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ char* GetHGlobalFromStream (int ,int *) ;
+ char* GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ scalar_t__ ILC_MASK ;
+ int IStream_Seek (int ,TYPE_3__,int ,int *) ;
+ char* IStream_Stat (int ,TYPE_2__*,int ) ;
+ int STATFLAG_NONAME ;
+ int STREAM_SEEK_SET ;
+ char const* S_OK ;
+ scalar_t__ check_bitmap_data (int const*,char*,int,int *,int,char const*) ;
+ int check_ilhead_data (int const*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int cleanup_memstream (struct memstream*) ;
+ int imagelist_get_bitmap_size (int const*,int *) ;
+ int init_memstream (struct memstream*) ;
+ int is_v6_header (int const*) ;
+ int ok (int,char*,...) ;
+ int pImageList_Destroy (int *) ;
+ scalar_t__ pImageList_GetIconSize (int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ pImageList_GetImageCount (int *) ;
+ int * pImageList_Read (int *) ;
+ int pImageList_Write (int *,int *) ;
 
 __attribute__((used)) static void check_iml_data(HIMAGELIST himl, INT cx, INT cy, INT cur, INT max, INT grow,
         INT flags, const char *comment)
@@ -93,18 +93,18 @@ __attribute__((used)) static void check_iml_data(HIMAGELIST himl, INT cx, INT cy
     imagelist_get_bitmap_size(header, &bmpsize);
     size = check_bitmap_data(header, data + sizeof(ILHEAD), stat.cbSize.LowPart - sizeof(ILHEAD),
             &bmpsize, flags & 0xfe, comment);
-    if (!is_v6_header(header) && size < stat.cbSize.LowPart - sizeof(ILHEAD))  /* mask is present */
+    if (!is_v6_header(header) && size < stat.cbSize.LowPart - sizeof(ILHEAD))
     {
         ok( flags & ILC_MASK, "%s: extra data %u/%u but mask not expected\n", comment, stat.cbSize.LowPart, size );
         check_bitmap_data(header, data + sizeof(ILHEAD) + size, stat.cbSize.LowPart - sizeof(ILHEAD) - size,
             &bmpsize, 1, comment);
     }
 
-    /* rewind and reconstruct from stream */
+
     mv.QuadPart = 0;
-    IStream_Seek(stream.stream, mv, STREAM_SEEK_SET, NULL);
+    IStream_Seek(stream.stream, mv, STREAM_SEEK_SET, ((void*)0));
     himl2 = pImageList_Read(&stream.IStream_iface);
-    ok(himl2 != NULL, "%s: Failed to deserialize imagelist\n", comment);
+    ok(himl2 != ((void*)0), "%s: Failed to deserialize imagelist\n", comment);
     pImageList_Destroy(himl2);
 
     GlobalUnlock(hglobal);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_type {int /*<<< orphan*/  digest; int /*<<< orphan*/  cipher; } ;
+
+
+
+
+struct key_type {int digest; int cipher; } ;
 struct key_ctx {int dummy; } ;
 struct key {int dummy; } ;
 struct buffer {int dummy; } ;
-typedef  int /*<<< orphan*/  srv_key ;
+typedef int srv_key ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_FATAL ; 
- int /*<<< orphan*/  buf_set_write (struct buffer*,void*,int) ; 
- int /*<<< orphan*/  init_key_ctx (struct key_ctx*,struct key*,struct key_type*,int,char*) ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  read_pem_key_file (struct buffer*,int /*<<< orphan*/ ,char const*,char const*) ; 
- int /*<<< orphan*/  secure_memzero (struct key*,int) ; 
- struct key_type tls_crypt_kt () ; 
- int /*<<< orphan*/  tls_crypt_v2_srv_pem_name ; 
+
+ int M_FATAL ;
+ int buf_set_write (struct buffer*,void*,int) ;
+ int init_key_ctx (struct key_ctx*,struct key*,struct key_type*,int,char*) ;
+ int msg (int ,char*) ;
+ int read_pem_key_file (struct buffer*,int ,char const*,char const*) ;
+ int secure_memzero (struct key*,int) ;
+ struct key_type tls_crypt_kt () ;
+ int tls_crypt_v2_srv_pem_name ;
 
 void
 tls_crypt_v2_init_server_key(struct key_ctx *key_ctx, bool encrypt,

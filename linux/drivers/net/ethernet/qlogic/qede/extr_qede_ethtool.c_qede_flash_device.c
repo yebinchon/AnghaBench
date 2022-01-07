@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct qede_dev {int /*<<< orphan*/  cdev; TYPE_2__* ops; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct qede_dev {int cdev; TYPE_2__* ops; } ;
 struct net_device {int dummy; } ;
-struct ethtool_flash {int /*<<< orphan*/  data; } ;
+struct ethtool_flash {int data; } ;
 struct TYPE_4__ {TYPE_1__* common; } ;
-struct TYPE_3__ {int (* nvm_flash ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_3__ {int (* nvm_flash ) (int ,int ) ;} ;
 
-/* Variables and functions */
- struct qede_dev* netdev_priv (struct net_device*) ; 
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct qede_dev* netdev_priv (struct net_device*) ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static int qede_flash_device(struct net_device *dev,
-			     struct ethtool_flash *flash)
+        struct ethtool_flash *flash)
 {
-	struct qede_dev *edev = netdev_priv(dev);
+ struct qede_dev *edev = netdev_priv(dev);
 
-	return edev->ops->common->nvm_flash(edev->cdev, flash->data);
+ return edev->ops->common->nvm_flash(edev->cdev, flash->data);
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SERVER ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  FARM_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * SiCallTask (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int SERVER ;
+typedef int PACK ;
+typedef int FARM_MEMBER ;
+
+
+ int FreePack (int *) ;
+ int * NewPack () ;
+ int PackAddStr (int *,char*,char*) ;
+ int * SiCallTask (int *,int *,char*) ;
 
 void SiCallDeleteSession(SERVER *s, FARM_MEMBER *f, char *hubname, char *session_name)
 {
-	PACK *p;
-	// Validate arguments
-	if (s == NULL || f == NULL || hubname == NULL || session_name == NULL)
-	{
-		return;
-	}
+ PACK *p;
 
-	p = NewPack();
-	PackAddStr(p, "HubName", hubname);
-	PackAddStr(p, "SessionName", session_name);
+ if (s == ((void*)0) || f == ((void*)0) || hubname == ((void*)0) || session_name == ((void*)0))
+ {
+  return;
+ }
 
-	p = SiCallTask(f, p, "deletesession");
+ p = NewPack();
+ PackAddStr(p, "HubName", hubname);
+ PackAddStr(p, "SessionName", session_name);
 
-	FreePack(p);
+ p = SiCallTask(f, p, "deletesession");
+
+ FreePack(p);
 }

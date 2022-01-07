@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ax25_linkfail {int /*<<< orphan*/  lf_node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ax25_linkfail_list ; 
- int /*<<< orphan*/  hlist_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  linkfail_lock ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+
+
+struct ax25_linkfail {int lf_node; } ;
+
+
+ int ax25_linkfail_list ;
+ int hlist_add_head (int *,int *) ;
+ int linkfail_lock ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 void ax25_linkfail_register(struct ax25_linkfail *lf)
 {
-	spin_lock_bh(&linkfail_lock);
-	hlist_add_head(&lf->lf_node, &ax25_linkfail_list);
-	spin_unlock_bh(&linkfail_lock);
+ spin_lock_bh(&linkfail_lock);
+ hlist_add_head(&lf->lf_node, &ax25_linkfail_list);
+ spin_unlock_bh(&linkfail_lock);
 }

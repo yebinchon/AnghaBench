@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int ntypes; int nin; int nout; int /*<<< orphan*/ * types; } ;
-typedef  TYPE_1__ PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArray_free (char*) ; 
- char* PyArray_malloc (int) ; 
- int /*<<< orphan*/ * PyList_New (int) ; 
- int /*<<< orphan*/  PyList_SET_ITEM (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyUString_FromStringAndSize (char*,int) ; 
- char _typecharfromnum (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ntypes; int nin; int nout; int * types; } ;
+typedef TYPE_1__ PyUFuncObject ;
+typedef int PyObject ;
+
+
+ int PyArray_free (char*) ;
+ char* PyArray_malloc (int) ;
+ int * PyList_New (int) ;
+ int PyList_SET_ITEM (int *,int,int *) ;
+ int * PyUString_FromStringAndSize (char*,int) ;
+ char _typecharfromnum (int ) ;
 
 __attribute__((used)) static PyObject *
 ufunc_get_types(PyUFuncObject *ufunc)
 {
-    /* return a list with types grouped input->output */
+
     PyObject *list;
     PyObject *str;
     int k, j, n, nt = ufunc->ntypes;
@@ -34,8 +34,8 @@ ufunc_get_types(PyUFuncObject *ufunc)
     int no = ufunc->nout;
     char *t;
     list = PyList_New(nt);
-    if (list == NULL) {
-        return NULL;
+    if (list == ((void*)0)) {
+        return ((void*)0);
     }
     t = PyArray_malloc(no+ni+2);
     n = 0;

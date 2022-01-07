@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_signature_element {unsigned int register_idx; char* semantic_name; unsigned int semantic_idx; scalar_t__ sysval_semantic; int /*<<< orphan*/  mask; scalar_t__ stream_idx; } ;
+struct wined3d_shader_signature_element {unsigned int register_idx; char* semantic_name; unsigned int semantic_idx; scalar_t__ sysval_semantic; int mask; scalar_t__ stream_idx; } ;
 struct wined3d_shader_signature {unsigned int element_count; struct wined3d_shader_signature_element* elements; } ;
 struct TYPE_2__ {int major; } ;
-struct wined3d_shader_reg_maps {unsigned int output_registers; TYPE_1__ shader_version; int /*<<< orphan*/  cull_distance_mask; int /*<<< orphan*/  clip_distance_mask; } ;
+struct wined3d_shader_reg_maps {unsigned int output_registers; TYPE_1__ shader_version; int cull_distance_mask; int clip_distance_mask; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct shader_glsl_priv {struct wined3d_string_buffer shader_buffer; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WINED3D_DECL_USAGE_PSIZE ; 
- scalar_t__ WINED3D_SV_CLIP_DISTANCE ; 
- scalar_t__ WINED3D_SV_CULL_DISTANCE ; 
- scalar_t__ WINED3D_SV_POSITION ; 
- scalar_t__ WINED3D_SV_RENDER_TARGET_ARRAY_INDEX ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_glsl_generate_clip_or_cull_distances (struct wined3d_string_buffer*,struct wined3d_shader_signature_element const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_setup_sm4_shader_output (struct shader_glsl_priv*,unsigned int,struct wined3d_shader_signature const*,struct wined3d_shader_reg_maps const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_setup_vs3_output (struct shader_glsl_priv*,struct wined3d_gl_info const*,int /*<<< orphan*/  const*,struct wined3d_shader_signature const*,struct wined3d_shader_reg_maps const*,struct wined3d_shader_signature const*,struct wined3d_shader_reg_maps const*) ; 
- int /*<<< orphan*/  shader_glsl_write_mask_to_str (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ shader_match_semantic (char const*,int /*<<< orphan*/ ) ; 
+
+ int FIXME (char*,scalar_t__) ;
+ int TRUE ;
+ int WINED3D_DECL_USAGE_PSIZE ;
+ scalar_t__ WINED3D_SV_CLIP_DISTANCE ;
+ scalar_t__ WINED3D_SV_CULL_DISTANCE ;
+ scalar_t__ WINED3D_SV_POSITION ;
+ scalar_t__ WINED3D_SV_RENDER_TARGET_ARRAY_INDEX ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_glsl_generate_clip_or_cull_distances (struct wined3d_string_buffer*,struct wined3d_shader_signature_element const*,int ) ;
+ int shader_glsl_setup_sm4_shader_output (struct shader_glsl_priv*,unsigned int,struct wined3d_shader_signature const*,struct wined3d_shader_reg_maps const*,char*,int ) ;
+ int shader_glsl_setup_vs3_output (struct shader_glsl_priv*,struct wined3d_gl_info const*,int const*,struct wined3d_shader_signature const*,struct wined3d_shader_reg_maps const*,struct wined3d_shader_signature const*,struct wined3d_shader_reg_maps const*) ;
+ int shader_glsl_write_mask_to_str (int ,char*) ;
+ scalar_t__ shader_match_semantic (char const*,int ) ;
 
 __attribute__((used)) static void shader_glsl_setup_sm3_rasterizer_input(struct shader_glsl_priv *priv,
         const struct wined3d_gl_info *gl_info, const DWORD *map,
@@ -49,7 +49,7 @@ __attribute__((used)) static void shader_glsl_setup_sm3_rasterizer_input(struct 
     char reg_mask[6];
     unsigned int i;
 
-    /* First, sort out position and point size system values. */
+
     for (i = 0; i < output_signature->element_count; ++i)
     {
         const struct wined3d_shader_signature_element *output = &output_signature->elements[i];
@@ -93,7 +93,7 @@ __attribute__((used)) static void shader_glsl_setup_sm3_rasterizer_input(struct 
         }
     }
 
-    /* Then, setup the pixel shader input. */
+
     if (reg_maps_out->shader_version.major < 4)
         shader_glsl_setup_vs3_output(priv, gl_info, map, input_signature, reg_maps_in,
                 output_signature, reg_maps_out);

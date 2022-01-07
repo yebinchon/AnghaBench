@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct amdgpu_device {int dummy; } ;
-typedef  enum amd_clockgating_state { ____Placeholder_amd_clockgating_state } amd_clockgating_state ;
+typedef enum amd_clockgating_state { ____Placeholder_amd_clockgating_state } amd_clockgating_state ;
 
-/* Variables and functions */
- int AMD_CG_STATE_GATE ; 
- int /*<<< orphan*/  vce_v2_0_enable_mgcg (struct amdgpu_device*,int,int) ; 
+
+ int AMD_CG_STATE_GATE ;
+ int vce_v2_0_enable_mgcg (struct amdgpu_device*,int,int) ;
 
 __attribute__((used)) static int vce_v2_0_set_clockgating_state(void *handle,
-					  enum amd_clockgating_state state)
+       enum amd_clockgating_state state)
 {
-	bool gate = false;
-	bool sw_cg = false;
+ bool gate = 0;
+ bool sw_cg = 0;
 
-	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
+ struct amdgpu_device *adev = (struct amdgpu_device *)handle;
 
-	if (state == AMD_CG_STATE_GATE) {
-		gate = true;
-		sw_cg = true;
-	}
+ if (state == AMD_CG_STATE_GATE) {
+  gate = 1;
+  sw_cg = 1;
+ }
 
-	vce_v2_0_enable_mgcg(adev, gate, sw_cg);
+ vce_v2_0_enable_mgcg(adev, gate, sw_cg);
 
-	return 0;
+ return 0;
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int max_page_index; TYPE_1__* pages; } ;
-struct TYPE_6__ {int /*<<< orphan*/  number; int /*<<< orphan*/  state; int /*<<< orphan*/ * image; } ;
-typedef  int /*<<< orphan*/  Jbig2Image ;
-typedef  TYPE_2__ Jbig2Ctx ;
+struct TYPE_6__ {int number; int state; int * image; } ;
+typedef int Jbig2Image ;
+typedef TYPE_2__ Jbig2Ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_PAGE_RELEASED ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_DEBUG ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_WARNING ; 
- int /*<<< orphan*/  jbig2_error (TYPE_2__*,int /*<<< orphan*/ ,int,char*,...) ; 
- int /*<<< orphan*/  jbig2_image_release (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int JBIG2_PAGE_RELEASED ;
+ int JBIG2_SEVERITY_DEBUG ;
+ int JBIG2_SEVERITY_WARNING ;
+ int jbig2_error (TYPE_2__*,int ,int,char*,...) ;
+ int jbig2_image_release (TYPE_2__*,int *) ;
 
 void
 jbig2_release_page(Jbig2Ctx *ctx, Jbig2Image *image)
 {
     int index;
 
-    if (image == NULL)
+    if (image == ((void*)0))
         return;
 
-    /* find the matching page struct and mark it released */
+
     for (index = 0; index < ctx->max_page_index; index++) {
         if (ctx->pages[index].image == image) {
             jbig2_image_release(ctx, image);
@@ -42,6 +42,6 @@ jbig2_release_page(Jbig2Ctx *ctx, Jbig2Image *image)
         }
     }
 
-    /* no matching pages */
+
     jbig2_error(ctx, JBIG2_SEVERITY_WARNING, -1, "failed to release unknown page");
 }

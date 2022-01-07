@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const WCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ConcatenatedIndex (char*,char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FONT_DIR_NT ; 
- char* FromWide (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumValue (int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strchr (char*,char) ; 
+
+
+
+typedef int const WCHAR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int ConcatenatedIndex (char*,char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FONT_DIR_NT ;
+ char* FromWide (int const*) ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumValue (int ,int,int const*,int*,int *,int *,int ,int*) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ int free (char*) ;
+ char* strchr (char*,char) ;
 
 __attribute__((used)) static int GetFileFontByName( const WCHAR * font_name, char **psz_filename, int *i_index )
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int GetFileFontByName( const WCHAR * font_name, cha
         DWORD dbuflen = 255;
 
         LONG i_result = RegEnumValue( hKey, index, vbuffer, &vbuflen,
-                                      NULL, NULL, (LPBYTE)dbuffer, &dbuflen);
+                                      ((void*)0), ((void*)0), (LPBYTE)dbuffer, &dbuflen);
         if( i_result != ERROR_SUCCESS )
         {
             free( font_name_temp );
@@ -59,7 +59,7 @@ __attribute__((used)) static int GetFileFontByName( const WCHAR * font_name, cha
         char *psz_value = FromWide( vbuffer );
 
         char *s = strchr( psz_value,'(' );
-        if( s != NULL && s != psz_value ) s[-1] = '\0';
+        if( s != ((void*)0) && s != psz_value ) s[-1] = '\0';
 
         int i_concat_idx = 0;
         if( ( i_concat_idx = ConcatenatedIndex( psz_value, font_name_temp ) ) != -1 )

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ OPTION_PARM_SIZE ; 
- struct buffer alloc_buf_gc (scalar_t__,struct gc_arena*) ; 
- int /*<<< orphan*/  buf_printf (struct buffer*,char*,char const*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  options_warning_safe_scan1 (int const,char,int,struct buffer*,struct buffer*,char*,char*) ; 
+
+ scalar_t__ OPTION_PARM_SIZE ;
+ struct buffer alloc_buf_gc (scalar_t__,struct gc_arena*) ;
+ int buf_printf (struct buffer*,char*,char const*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int options_warning_safe_scan1 (int const,char,int,struct buffer*,struct buffer*,char*,char*) ;
 
 __attribute__((used)) static void
 options_warning_safe_ml(const int msglevel, char *actual, const char *expected, size_t actual_n)
@@ -35,11 +35,11 @@ options_warning_safe_ml(const int msglevel, char *actual, const char *expected, 
         buf_printf(&local, "version %s", expected);
         buf_printf(&remote, "version %s", actual);
 
-        options_warning_safe_scan1(msglevel, ',', true,
+        options_warning_safe_scan1(msglevel, ',', 1,
                                    &local, &remote,
                                    "local", "remote");
 
-        options_warning_safe_scan1(msglevel, ',', false,
+        options_warning_safe_scan1(msglevel, ',', 0,
                                    &remote, &local,
                                    "remote", "local");
     }

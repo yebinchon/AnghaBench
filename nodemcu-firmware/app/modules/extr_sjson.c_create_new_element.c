@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct jsonsl_state_st {int level; int type; void* lua_object_ref; int /*<<< orphan*/  pos_begin; int /*<<< orphan*/  used_count; } ;
-typedef  TYPE_1__* jsonsl_t ;
-typedef  int /*<<< orphan*/  jsonsl_action_t ;
-struct TYPE_7__ {void* hkey_ref; void* pos_ref; void* metatable; int /*<<< orphan*/  min_needed; int /*<<< orphan*/  L; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct jsonsl_state_st {int level; int type; void* lua_object_ref; int pos_begin; int used_count; } ;
+typedef TYPE_1__* jsonsl_t ;
+typedef int jsonsl_action_t ;
+struct TYPE_7__ {void* hkey_ref; void* pos_ref; void* metatable; int min_needed; int L; } ;
 struct TYPE_6__ {TYPE_2__* data; } ;
-typedef  TYPE_2__ JSN_DATA ;
+typedef TYPE_2__ JSN_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG_PRINTF (char*,...) ; 
-#define  JSONSL_T_HKEY 132 
-#define  JSONSL_T_LIST 131 
-#define  JSONSL_T_OBJECT 130 
-#define  JSONSL_T_SPECIAL 129 
-#define  JSONSL_T_STRING 128 
- void* LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  LUA_TNIL ; 
- int /*<<< orphan*/  create_table (TYPE_2__*) ; 
- void* get_parent_object_ref () ; 
- int /*<<< orphan*/  get_parent_object_used_count_pre_inc () ; 
- int /*<<< orphan*/  get_state_buffer (TYPE_2__*,struct jsonsl_state_st*) ; 
- int /*<<< orphan*/  jsonsl_strtype (int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- void* lua_ref (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ ,int) ; 
- int lua_toboolean (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_type (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_unref (int /*<<< orphan*/ ,void*) ; 
+
+ int DBG_PRINTF (char*,...) ;
+
+
+
+
+
+ void* LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int LUA_TNIL ;
+ int create_table (TYPE_2__*) ;
+ void* get_parent_object_ref () ;
+ int get_parent_object_used_count_pre_inc () ;
+ int get_state_buffer (TYPE_2__*,struct jsonsl_state_st*) ;
+ int jsonsl_strtype (int) ;
+ int luaL_error (int ,char*) ;
+ int lua_call (int ,int,int) ;
+ int lua_getfield (int ,int,char*) ;
+ int lua_pop (int ,int) ;
+ int lua_pushnumber (int ,int ) ;
+ int lua_pushvalue (int ,int) ;
+ int lua_rawgeti (int ,int ,void*) ;
+ void* lua_ref (int ,int) ;
+ int lua_settable (int ,int) ;
+ int lua_toboolean (int ,int) ;
+ int lua_type (int ,int) ;
+ int lua_unref (int ,void*) ;
 
 __attribute__((used)) static void
 create_new_element(jsonsl_t jsn,
@@ -61,24 +61,24 @@ create_new_element(jsonsl_t jsn,
   state->lua_object_ref = LUA_NOREF;
 
   switch(state->type) {
-    case JSONSL_T_SPECIAL:
-    case JSONSL_T_STRING:
-    case JSONSL_T_HKEY:
+    case 129:
+    case 128:
+    case 132:
       break;
 
-    case JSONSL_T_LIST:
-    case JSONSL_T_OBJECT:
+    case 131:
+    case 130:
       create_table(data);
       state->lua_object_ref = lua_ref(data->L, 1);
       state->used_count = 0;
 
       lua_rawgeti(data->L, LUA_REGISTRYINDEX, get_parent_object_ref());
       if (data->hkey_ref == LUA_NOREF) {
-        // list, so append
+
         lua_pushnumber(data->L, get_parent_object_used_count_pre_inc());
         DBG_PRINTF("Adding array element\n");
       } else {
-        // object, so
+
         lua_rawgeti(data->L, LUA_REGISTRYINDEX, data->hkey_ref);
         lua_unref(data->L, data->hkey_ref);
         data->hkey_ref = LUA_NOREF;
@@ -87,35 +87,35 @@ create_new_element(jsonsl_t jsn,
       if (data->pos_ref != LUA_NOREF && state->level > 1) {
         lua_rawgeti(data->L, LUA_REGISTRYINDEX, data->pos_ref);
         lua_pushnumber(data->L, state->level - 1);
-        lua_pushvalue(data->L, -3);     // get the key
+        lua_pushvalue(data->L, -3);
         lua_settable(data->L, -3);
         lua_pop(data->L, 1);
       }
-      // At this point, the stack:
-      // top: index/hash key
-      //    : table
+
+
+
 
       int want_value = 1;
-      // Invoke the checkpath method if possible
+
       if (data->pos_ref != LUA_NOREF) {
         lua_rawgeti(data->L, LUA_REGISTRYINDEX, data->metatable);
         lua_getfield(data->L, -1, "checkpath");
         if (lua_type(data->L, -1) != LUA_TNIL) {
-          // Call with the new table and the path as arguments
+
           lua_rawgeti(data->L, LUA_REGISTRYINDEX, state->lua_object_ref);
           lua_rawgeti(data->L, LUA_REGISTRYINDEX, data->pos_ref);
           lua_call(data->L, 2, 1);
           want_value = lua_toboolean(data->L, -1);
         }
-        lua_pop(data->L, 2);    // Discard the metatable and either the getfield result or retval
+        lua_pop(data->L, 2);
       }
 
       if (want_value) {
         lua_rawgeti(data->L, LUA_REGISTRYINDEX, state->lua_object_ref);
         lua_settable(data->L, -3);
-        lua_pop(data->L, 1);    // the table
+        lua_pop(data->L, 1);
       } else {
-        lua_pop(data->L, 2);    // the index and table
+        lua_pop(data->L, 2);
       }
 
       break;

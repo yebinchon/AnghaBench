@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int SPIF_SENDCHANGE ; 
- int SPIF_UPDATEINIFILE ; 
- int /*<<< orphan*/  SPI_GETDESKWALLPAPER ; 
- int /*<<< orphan*/  SPI_SETDESKWALLPAPER ; 
- int /*<<< orphan*/  SPI_SETDESKWALLPAPER_REGKEY ; 
- int /*<<< orphan*/  SPI_SETDESKWALLPAPER_VALNAME ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SystemParametersInfoA (int /*<<< orphan*/ ,int,char*,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  test_change_message (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_error_msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_reg_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*) ; 
 
-__attribute__((used)) static void test_SPI_SETWALLPAPER( void )              /*   115 */
+
+
+typedef int BOOL ;
+
+
+ int GetLastError () ;
+ int SPIF_SENDCHANGE ;
+ int SPIF_UPDATEINIFILE ;
+ int SPI_GETDESKWALLPAPER ;
+ int SPI_SETDESKWALLPAPER ;
+ int SPI_SETDESKWALLPAPER_REGKEY ;
+ int SPI_SETDESKWALLPAPER_VALNAME ;
+ int SetLastError (int) ;
+ int SystemParametersInfoA (int ,int,char*,int) ;
+ int ok (int ,char*,int ,int ) ;
+ int strcpy (char*,char*) ;
+ int test_change_message (int ,int ) ;
+ int test_error_msg (int ,char*) ;
+ int test_reg_key (int ,int ,char*) ;
+ int trace (char*) ;
+
+__attribute__((used)) static void test_SPI_SETWALLPAPER( void )
 {
     BOOL rc;
     char oldval[260];
@@ -38,9 +38,9 @@ __attribute__((used)) static void test_SPI_SETWALLPAPER( void )              /* 
     trace("testing SPI_{GET,SET}DESKWALLPAPER\n");
     SetLastError(0xdeadbeef);
     rc=SystemParametersInfoA(SPI_GETDESKWALLPAPER, 260, oldval, 0);
-    /* SPI_{GET,SET}DESKWALLPAPER is completely broken on Win9x and
-     * unimplemented on NT4
-     */
+
+
+
     if (!test_error_msg(rc,"SPI_{GET,SET}DESKWALLPAPER"))
         return;
 

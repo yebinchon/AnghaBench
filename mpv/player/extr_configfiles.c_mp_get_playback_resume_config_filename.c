@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct MPOpts {char* watch_later_directory; scalar_t__ ignore_path_in_watch_later_config; } ;
-struct MPContext {char* cached_watch_later_configdir; int /*<<< orphan*/  global; struct MPOpts* opts; } ;
-typedef  int /*<<< orphan*/  bstr ;
+struct MPContext {char* cached_watch_later_configdir; int global; struct MPOpts* opts; } ;
+typedef int bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_WATCH_LATER_CONF ; 
- int /*<<< orphan*/  av_md5_sum (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bstr0 (char const*) ; 
- char* mp_basename (char const*) ; 
- char* mp_find_user_config_file (struct MPContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* mp_get_user_path (struct MPContext*,int /*<<< orphan*/ ,char*) ; 
- char* mp_getcwd (void*) ; 
- int /*<<< orphan*/  mp_is_url (int /*<<< orphan*/ ) ; 
- void* mp_path_join (void*,char*,char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- char* talloc_asprintf_append (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- void* talloc_new (int /*<<< orphan*/ *) ; 
- char* talloc_strdup (void*,char*) ; 
+
+ int MP_WATCH_LATER_CONF ;
+ int av_md5_sum (int *,char const*,int ) ;
+ int bstr0 (char const*) ;
+ char* mp_basename (char const*) ;
+ char* mp_find_user_config_file (struct MPContext*,int ,int ) ;
+ char* mp_get_user_path (struct MPContext*,int ,char*) ;
+ char* mp_getcwd (void*) ;
+ int mp_is_url (int ) ;
+ void* mp_path_join (void*,char*,char const*) ;
+ int strlen (char const*) ;
+ char* talloc_asprintf_append (char*,char*,int ) ;
+ int talloc_free (void*) ;
+ void* talloc_new (int *) ;
+ char* talloc_strdup (void*,char*) ;
 
 __attribute__((used)) static char *mp_get_playback_resume_config_filename(struct MPContext *mpctx,
                                                     const char *fname)
 {
     struct MPOpts *opts = mpctx->opts;
-    char *res = NULL;
-    void *tmp = talloc_new(NULL);
+    char *res = ((void*)0);
+    void *tmp = talloc_new(((void*)0));
     const char *realpath = fname;
     bstr bfname = bstr0(fname);
     if (!mp_is_url(bfname)) {
@@ -69,7 +69,7 @@ __attribute__((used)) static char *mp_get_playback_resume_config_filename(struct
     }
 
     if (mpctx->cached_watch_later_configdir)
-        res = mp_path_join(NULL, mpctx->cached_watch_later_configdir, conf);
+        res = mp_path_join(((void*)0), mpctx->cached_watch_later_configdir, conf);
 
 exit:
     talloc_free(tmp);

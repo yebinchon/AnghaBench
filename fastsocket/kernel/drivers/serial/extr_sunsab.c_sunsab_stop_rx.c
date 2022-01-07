@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct uart_sunsab_port {TYPE_2__* regs; int /*<<< orphan*/  interrupt_mask1; int /*<<< orphan*/  interrupt_mask0; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct uart_sunsab_port {TYPE_2__* regs; int interrupt_mask1; int interrupt_mask0; } ;
 struct uart_port {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  imr0; } ;
+struct TYPE_3__ {int imr0; } ;
 struct TYPE_4__ {TYPE_1__ w; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SAB82532_ISR0_TCD ; 
- int /*<<< orphan*/  writeb (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int SAB82532_ISR0_TCD ;
+ int writeb (int ,int *) ;
 
 __attribute__((used)) static void sunsab_stop_rx(struct uart_port *port)
 {
-	struct uart_sunsab_port *up = (struct uart_sunsab_port *) port;
+ struct uart_sunsab_port *up = (struct uart_sunsab_port *) port;
 
-	up->interrupt_mask0 |= SAB82532_ISR0_TCD;
-	writeb(up->interrupt_mask1, &up->regs->w.imr0);
+ up->interrupt_mask0 |= SAB82532_ISR0_TCD;
+ writeb(up->interrupt_mask1, &up->regs->w.imr0);
 }

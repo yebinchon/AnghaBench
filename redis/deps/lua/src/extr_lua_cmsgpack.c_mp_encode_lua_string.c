@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_buf ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  mp_encode_bytes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
+
+
+
+typedef int mp_buf ;
+typedef int lua_State ;
+
+
+ char* lua_tolstring (int *,int,size_t*) ;
+ int mp_encode_bytes (int *,int *,unsigned char const*,size_t) ;
 
 void mp_encode_lua_string(lua_State *L, mp_buf *buf) {
     size_t len;

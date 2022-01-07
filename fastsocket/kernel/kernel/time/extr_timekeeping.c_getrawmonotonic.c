@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {int dummy; } ;
-typedef  int /*<<< orphan*/  s64 ;
-struct TYPE_2__ {struct timespec raw_time; int /*<<< orphan*/  lock; } ;
+typedef int s64 ;
+struct TYPE_2__ {struct timespec raw_time; int lock; } ;
 
-/* Variables and functions */
- unsigned long read_seqbegin (int /*<<< orphan*/ *) ; 
- scalar_t__ read_seqretry (int /*<<< orphan*/ *,unsigned long) ; 
- TYPE_1__ timekeeper ; 
- int /*<<< orphan*/  timekeeping_get_ns_raw () ; 
- int /*<<< orphan*/  timespec_add_ns (struct timespec*,int /*<<< orphan*/ ) ; 
+
+ unsigned long read_seqbegin (int *) ;
+ scalar_t__ read_seqretry (int *,unsigned long) ;
+ TYPE_1__ timekeeper ;
+ int timekeeping_get_ns_raw () ;
+ int timespec_add_ns (struct timespec*,int ) ;
 
 void getrawmonotonic(struct timespec *ts)
 {
-	unsigned long seq;
-	s64 nsecs;
+ unsigned long seq;
+ s64 nsecs;
 
-	do {
-		seq = read_seqbegin(&timekeeper.lock);
-		nsecs = timekeeping_get_ns_raw();
-		*ts = timekeeper.raw_time;
+ do {
+  seq = read_seqbegin(&timekeeper.lock);
+  nsecs = timekeeping_get_ns_raw();
+  *ts = timekeeper.raw_time;
 
-	} while (read_seqretry(&timekeeper.lock, seq));
+ } while (read_seqretry(&timekeeper.lock, seq));
 
-	timespec_add_ns(ts, nsecs);
+ timespec_add_ns(ts, nsecs);
 }

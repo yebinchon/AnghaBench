@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int BIO_snprintf (char*,unsigned int,char*,int /*<<< orphan*/ ) ; 
- unsigned int INT_MAX ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_hexstr2buf (int /*<<< orphan*/ ,long*) ; 
- int /*<<< orphan*/  bio_c_out ; 
- int /*<<< orphan*/  bio_err ; 
- scalar_t__ c_debug ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,long) ; 
- int /*<<< orphan*/  psk_identity ; 
- int /*<<< orphan*/  psk_key ; 
+
+
+
+typedef int SSL ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int BIO_snprintf (char*,unsigned int,char*,int ) ;
+ unsigned int INT_MAX ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_hexstr2buf (int ,long*) ;
+ int bio_c_out ;
+ int bio_err ;
+ scalar_t__ c_debug ;
+ int memcpy (unsigned char*,unsigned char*,long) ;
+ int psk_identity ;
+ int psk_key ;
 
 __attribute__((used)) static unsigned int psk_client_cb(SSL *ssl, const char *hint, char *identity,
                                   unsigned int max_identity_len,
@@ -37,7 +37,7 @@ __attribute__((used)) static unsigned int psk_client_cb(SSL *ssl, const char *hi
     if (c_debug)
         BIO_printf(bio_c_out, "psk_client_cb\n");
     if (!hint) {
-        /* no ServerKeyExchange message */
+
         if (c_debug)
             BIO_printf(bio_c_out,
                        "NULL received PSK identity hint, continuing anyway\n");
@@ -45,9 +45,9 @@ __attribute__((used)) static unsigned int psk_client_cb(SSL *ssl, const char *hi
         BIO_printf(bio_c_out, "Received PSK identity hint '%s'\n", hint);
     }
 
-    /*
-     * lookup PSK identity and PSK key based on the given identity hint here
-     */
+
+
+
     ret = BIO_snprintf(identity, max_identity_len, "%s", psk_identity);
     if (ret < 0 || (unsigned int)ret > max_identity_len)
         goto out_err;
@@ -55,9 +55,9 @@ __attribute__((used)) static unsigned int psk_client_cb(SSL *ssl, const char *hi
         BIO_printf(bio_c_out, "created identity '%s' len=%d\n", identity,
                    ret);
 
-    /* convert the PSK key to binary */
+
     key = OPENSSL_hexstr2buf(psk_key, &key_len);
-    if (key == NULL) {
+    if (key == ((void*)0)) {
         BIO_printf(bio_err, "Could not convert PSK key '%s' to buffer\n",
                    psk_key);
         return 0;

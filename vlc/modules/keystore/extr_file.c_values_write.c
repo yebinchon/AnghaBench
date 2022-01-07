@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- unsigned int KEY_MAX ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ fprintf (int /*<<< orphan*/ *,char*,char*,char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char** ppsz_keys ; 
- char* vlc_b64_encode (char const* const) ; 
+
+
+
+typedef int FILE ;
+
+
+ unsigned int KEY_MAX ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ fprintf (int *,char*,char*,char*,char const*) ;
+ int free (char*) ;
+ char** ppsz_keys ;
+ char* vlc_b64_encode (char const* const) ;
 
 __attribute__((used)) static int
 values_write(FILE *p_file, const char *const ppsz_values[KEY_MAX])

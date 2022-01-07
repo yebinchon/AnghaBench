@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct ExprList_item {int /*<<< orphan*/  sortOrder; int /*<<< orphan*/  pExpr; } ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct ExprList_item {int sortOrder; int pExpr; } ;
+typedef int sqlite3 ;
 struct TYPE_12__ {int nExpr; struct ExprList_item* a; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * aSortOrder; int /*<<< orphan*/ * aColl; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ Parse ;
-typedef  TYPE_2__ KeyInfo ;
-typedef  TYPE_3__ ExprList ;
+struct TYPE_11__ {int * aSortOrder; int * aColl; } ;
+struct TYPE_10__ {int * db; } ;
+typedef TYPE_1__ Parse ;
+typedef TYPE_2__ KeyInfo ;
+typedef TYPE_3__ ExprList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3ExprNNCollSeq (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* sqlite3KeyInfoAlloc (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  sqlite3KeyInfoIsWriteable (TYPE_2__*) ; 
+
+ int assert (int ) ;
+ int sqlite3ExprNNCollSeq (TYPE_1__*,int ) ;
+ TYPE_2__* sqlite3KeyInfoAlloc (int *,int,int) ;
+ int sqlite3KeyInfoIsWriteable (TYPE_2__*) ;
 
 KeyInfo *sqlite3KeyInfoFromExprList(
-  Parse *pParse,       /* Parsing context */
-  ExprList *pList,     /* Form the KeyInfo object from this ExprList */
-  int iStart,          /* Begin with this column of pList */
-  int nExtra           /* Add this many extra columns to the end */
+  Parse *pParse,
+  ExprList *pList,
+  int iStart,
+  int nExtra
 ){
   int nExpr;
   KeyInfo *pInfo;

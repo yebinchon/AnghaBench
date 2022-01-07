@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int status; } ;
 struct TYPE_6__ {TYPE_1__ enable; } ;
-typedef  TYPE_2__ tBTA_DM_SEC ;
-typedef  int /*<<< orphan*/  UINT8 ;
-struct TYPE_7__ {int /*<<< orphan*/  (* p_sec_cback ) (int /*<<< orphan*/ ,TYPE_2__*) ;} ;
+typedef TYPE_2__ tBTA_DM_SEC ;
+typedef int UINT8 ;
+struct TYPE_7__ {int (* p_sec_cback ) (int ,TYPE_2__*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTA_DM_ENABLE_EVT ; 
- int /*<<< orphan*/  BTA_SUCCESS ; 
- int /*<<< orphan*/  UNUSED (int /*<<< orphan*/ *) ; 
- TYPE_4__ bta_dm_cb ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int BTA_DM_ENABLE_EVT ;
+ int BTA_SUCCESS ;
+ int UNUSED (int *) ;
+ TYPE_4__ bta_dm_cb ;
+ int stub1 (int ,TYPE_2__*) ;
 
 __attribute__((used)) static void bta_dm_local_name_cback(UINT8 *p_name)
 {

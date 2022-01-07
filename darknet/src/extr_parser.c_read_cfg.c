@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* type; void* options; } ;
-typedef  TYPE_1__ section ;
-typedef  int /*<<< orphan*/  list ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ section ;
+typedef int list ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- char* fgetl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  file_error (char*) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  list_insert (int /*<<< orphan*/ *,TYPE_1__*) ; 
- void* make_list () ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  read_option (char*,void*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strip (char*) ; 
+
+ int fclose (int *) ;
+ char* fgetl (int *) ;
+ int file_error (char*) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,int,char*) ;
+ int free (char*) ;
+ int list_insert (int *,TYPE_1__*) ;
+ void* make_list () ;
+ TYPE_1__* malloc (int) ;
+ int read_option (char*,void*) ;
+ int stderr ;
+ int strip (char*) ;
 
 list *read_cfg(char *filename)
 {

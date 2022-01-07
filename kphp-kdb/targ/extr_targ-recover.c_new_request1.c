@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_connection_output (struct connection*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- scalar_t__ max_ad_id ; 
- scalar_t__ next_ad_id ; 
- int sprintf (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int exit (int ) ;
+ int flush_connection_output (struct connection*) ;
+ int fprintf (int ,char*,scalar_t__) ;
+ scalar_t__ max_ad_id ;
+ scalar_t__ next_ad_id ;
+ int sprintf (char*,char*,scalar_t__) ;
+ int stderr ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 void new_request1 (struct connection *c) {
   if (next_ad_id > max_ad_id) {

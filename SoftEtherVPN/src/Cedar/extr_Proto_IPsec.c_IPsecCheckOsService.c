@@ -1,105 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int Check_LastEnabledStatus; int HostIPAddressListChanged; int OsServiceStoped; int /*<<< orphan*/ * Win7; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Check_LastEnabledStatus; int HostIPAddressListChanged; int OsServiceStoped; int * Win7; } ;
 struct TYPE_6__ {scalar_t__ L2TP_IPsec; scalar_t__ EtherIP_IPsec; } ;
-typedef  TYPE_1__ IPSEC_SERVICES ;
-typedef  TYPE_2__ IPSEC_SERVER ;
+typedef TYPE_1__ IPSEC_SERVICES ;
+typedef TYPE_2__ IPSEC_SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPsecServerGetServices (TYPE_2__*,TYPE_1__*) ; 
- int /*<<< orphan*/  IPsecWin7Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IPsecWin7Init () ; 
- int /*<<< orphan*/  IPsecWin7UpdateHostIPAddressList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MsStartIPsecService () ; 
- scalar_t__ MsStopIPsecService () ; 
- int /*<<< orphan*/  UnixSetEnableKernelEspProcessing (int) ; 
+
+ int IPsecServerGetServices (TYPE_2__*,TYPE_1__*) ;
+ int IPsecWin7Free (int *) ;
+ int * IPsecWin7Init () ;
+ int IPsecWin7UpdateHostIPAddressList (int *) ;
+ int MsStartIPsecService () ;
+ scalar_t__ MsStopIPsecService () ;
+ int UnixSetEnableKernelEspProcessing (int) ;
 
 bool IPsecCheckOsService(IPSEC_SERVER *s)
 {
-	bool b_ipsec;
-	IPSEC_SERVICES sl;
-	bool ret = false;
-	// Validate arguments
-	if (s == NULL)
-	{
-		return false;
-	}
+ bool b_ipsec;
+ IPSEC_SERVICES sl;
+ bool ret = 0;
 
-	IPsecServerGetServices(s, &sl);
+ if (s == ((void*)0))
+ {
+  return 0;
+ }
 
-	b_ipsec = (sl.EtherIP_IPsec || sl.L2TP_IPsec);
+ IPsecServerGetServices(s, &sl);
 
-	if (b_ipsec != s->Check_LastEnabledStatus)
-	{
-		s->Check_LastEnabledStatus = b_ipsec;
+ b_ipsec = (sl.EtherIP_IPsec || sl.L2TP_IPsec);
 
-		if (b_ipsec)
-		{
-			// Use of IPsec has been started
-#ifdef	OS_WIN32
-			if (s->Win7 == NULL)
-			{
-				s->Win7 = IPsecWin7Init();
-				s->HostIPAddressListChanged = true;
-			}
+ if (b_ipsec != s->Check_LastEnabledStatus)
+ {
+  s->Check_LastEnabledStatus = b_ipsec;
 
-			s->OsServiceStoped = false;
-#else	// OS_WIN32
-#endif	// OS_WIN32
-		}
-		else
-		{
-			// Use of IPsec is stopped
-#ifdef	OS_WIN32
-			if (s->Win7 != NULL)
-			{
-				IPsecWin7Free(s->Win7);
-				s->Win7 = NULL;
-			}
+  if (b_ipsec)
+  {
+  }
+  else
+  {
+   UnixSetEnableKernelEspProcessing(1);
 
-			if (s->OsServiceStoped)
-			{
-				MsStartIPsecService();
-				s->OsServiceStoped = false;
-			}
-#else	// OS_WIN32
-			UnixSetEnableKernelEspProcessing(true);
-#endif	// OS_WIN32
-		}
-	}
+  }
+ }
 
-	if (b_ipsec)
-	{
-#ifdef	OS_WIN32
-		if (MsStopIPsecService())
-		{
-			s->OsServiceStoped = true;
-			ret = true;
-		}
-#else	// OS_WIN32
-		UnixSetEnableKernelEspProcessing(false);
-#endif	// OS_WIN32
-	}
+ if (b_ipsec)
+ {
 
-#ifdef	OS_WIN32
-	if (s->Win7 != NULL)
-	{
-		IPsecWin7UpdateHostIPAddressList(s->Win7);
-		s->HostIPAddressListChanged = false;
-	}
-#endif	// OS_WIN32
 
-	return ret;
+
+
+
+
+
+  UnixSetEnableKernelEspProcessing(0);
+
+ }
+ return ret;
 }

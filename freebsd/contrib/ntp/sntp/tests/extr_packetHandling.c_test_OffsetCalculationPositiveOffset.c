@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct timeval {int /*<<< orphan*/  tv_sec; } ;
-struct pkt {int precision; int /*<<< orphan*/  xmt; int /*<<< orphan*/  rec; int /*<<< orphan*/  org; int /*<<< orphan*/  reftime; void* rootdisp; void* rootdelay; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct timeval {int tv_sec; } ;
+struct pkt {int precision; int xmt; int rec; int org; int reftime; void* rootdisp; void* rootdelay; } ;
 struct TYPE_5__ {unsigned long l_ui; unsigned long l_uf; } ;
-typedef  TYPE_1__ l_fp ;
+typedef TYPE_1__ l_fp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DTOUFP (double) ; 
- int /*<<< orphan*/  HTONL_FP (TYPE_1__*,int /*<<< orphan*/ *) ; 
- void* HTONS_FP (int /*<<< orphan*/ ) ; 
- scalar_t__ JAN_1970 ; 
- int /*<<< orphan*/  LEN_PKT_NOMAC ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_DOUBLE (double,double) ; 
- int /*<<< orphan*/  TSTOTV (TYPE_1__*,struct timeval*) ; 
- int ULOGTOD (int) ; 
- int /*<<< orphan*/  get_systime (TYPE_1__*) ; 
- int /*<<< orphan*/  offset_calculation (struct pkt*,int /*<<< orphan*/ ,struct timeval*,double*,double*,double*) ; 
+
+ int DTOUFP (double) ;
+ int HTONL_FP (TYPE_1__*,int *) ;
+ void* HTONS_FP (int ) ;
+ scalar_t__ JAN_1970 ;
+ int LEN_PKT_NOMAC ;
+ int TEST_ASSERT_EQUAL_DOUBLE (double,double) ;
+ int TSTOTV (TYPE_1__*,struct timeval*) ;
+ int ULOGTOD (int) ;
+ int get_systime (TYPE_1__*) ;
+ int offset_calculation (struct pkt*,int ,struct timeval*,double*,double*,double*) ;
 
 void
 test_OffsetCalculationPositiveOffset(void)
 {
-	struct pkt	rpkt;
-	l_fp		reftime, tmp;
-	struct timeval	dst;
-	double		offset, precision, synch_distance;
+ struct pkt rpkt;
+ l_fp reftime, tmp;
+ struct timeval dst;
+ double offset, precision, synch_distance;
 
-	rpkt.precision = -16; /* 0,000015259 */
-	rpkt.rootdelay = HTONS_FP(DTOUFP(0.125));
-	rpkt.rootdisp = HTONS_FP(DTOUFP(0.25));
+ rpkt.precision = -16;
+ rpkt.rootdelay = HTONS_FP(DTOUFP(0.125));
+ rpkt.rootdisp = HTONS_FP(DTOUFP(0.25));
 
-	/* Synch Distance: (0.125+0.25)/2.0 == 0.1875 */
-	get_systime(&reftime);
-	HTONL_FP(&reftime, &rpkt.reftime);
 
-	/* T1 - Originate timestamp */
-	tmp.l_ui = 1000000000UL;
-	tmp.l_uf = 0UL;
-	HTONL_FP(&tmp, &rpkt.org);
+ get_systime(&reftime);
+ HTONL_FP(&reftime, &rpkt.reftime);
 
-	/* T2 - Receive timestamp */
-	tmp.l_ui = 1000000001UL;
-	tmp.l_uf = 2147483648UL;
-	HTONL_FP(&tmp, &rpkt.rec);
 
-	/* T3 - Transmit timestamp */
-	tmp.l_ui = 1000000002UL;
-	tmp.l_uf = 0UL;
-	HTONL_FP(&tmp, &rpkt.xmt);
+ tmp.l_ui = 1000000000UL;
+ tmp.l_uf = 0UL;
+ HTONL_FP(&tmp, &rpkt.org);
 
-	/* T4 - Destination timestamp as standard timeval */
-	tmp.l_ui = 1000000001UL;
-	tmp.l_uf = 0UL;
-	TSTOTV(&tmp, &dst);
-	dst.tv_sec -= JAN_1970;
 
-	offset_calculation(&rpkt, LEN_PKT_NOMAC, &dst, &offset, &precision, &synch_distance);
+ tmp.l_ui = 1000000001UL;
+ tmp.l_uf = 2147483648UL;
+ HTONL_FP(&tmp, &rpkt.rec);
 
-	TEST_ASSERT_EQUAL_DOUBLE(1.25, offset);
-	TEST_ASSERT_EQUAL_DOUBLE(1. / ULOGTOD(16), precision);
-	/* 1.1250150000000001 ? */
-	TEST_ASSERT_EQUAL_DOUBLE(1.125015, synch_distance);
+
+ tmp.l_ui = 1000000002UL;
+ tmp.l_uf = 0UL;
+ HTONL_FP(&tmp, &rpkt.xmt);
+
+
+ tmp.l_ui = 1000000001UL;
+ tmp.l_uf = 0UL;
+ TSTOTV(&tmp, &dst);
+ dst.tv_sec -= JAN_1970;
+
+ offset_calculation(&rpkt, LEN_PKT_NOMAC, &dst, &offset, &precision, &synch_distance);
+
+ TEST_ASSERT_EQUAL_DOUBLE(1.25, offset);
+ TEST_ASSERT_EQUAL_DOUBLE(1. / ULOGTOD(16), precision);
+
+ TEST_ASSERT_EQUAL_DOUBLE(1.125015, synch_distance);
 }

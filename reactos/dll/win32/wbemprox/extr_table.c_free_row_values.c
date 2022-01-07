@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct table {size_t num_cols; TYPE_1__* columns; } ;
-typedef  size_t UINT ;
+typedef size_t UINT ;
 struct TYPE_2__ {int type; } ;
-typedef  scalar_t__ LONGLONG ;
-typedef  scalar_t__ INT_PTR ;
+typedef scalar_t__ LONGLONG ;
+typedef scalar_t__ INT_PTR ;
 
-/* Variables and functions */
- size_t CIM_DATETIME ; 
- size_t CIM_FLAG_ARRAY ; 
- size_t CIM_STRING ; 
- size_t CIM_TYPE_MASK ; 
- int COL_FLAG_DYNAMIC ; 
- size_t COL_TYPE_MASK ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  destroy_array (void*,size_t) ; 
- scalar_t__ get_value (struct table const*,size_t,size_t,scalar_t__*) ; 
- int /*<<< orphan*/  heap_free (void*) ; 
+
+ size_t CIM_DATETIME ;
+ size_t CIM_FLAG_ARRAY ;
+ size_t CIM_STRING ;
+ size_t CIM_TYPE_MASK ;
+ int COL_FLAG_DYNAMIC ;
+ size_t COL_TYPE_MASK ;
+ scalar_t__ S_OK ;
+ int destroy_array (void*,size_t) ;
+ scalar_t__ get_value (struct table const*,size_t,size_t,scalar_t__*) ;
+ int heap_free (void*) ;
 
 void free_row_values( const struct table *table, UINT row )
 {

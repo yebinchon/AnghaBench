@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-struct TYPE_7__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  pCmd; int /*<<< orphan*/  pClient; } ;
-typedef  TYPE_1__ sd_fat_private_t ;
-struct TYPE_8__ {int flags; int read; int write; int append; int fd; int /*<<< orphan*/  len; scalar_t__ pos; TYPE_1__* dev; } ;
-typedef  TYPE_2__ sd_fat_file_state_t ;
-struct TYPE_9__ {int /*<<< orphan*/  size; } ;
-typedef  TYPE_3__ FSStat ;
-typedef  int /*<<< orphan*/  FSFileHandle ;
+struct TYPE_7__ {int pMutex; int pCmd; int pClient; } ;
+typedef TYPE_1__ sd_fat_private_t ;
+struct TYPE_8__ {int flags; int read; int write; int append; int fd; int len; scalar_t__ pos; TYPE_1__* dev; } ;
+typedef TYPE_2__ sd_fat_file_state_t ;
+struct TYPE_9__ {int size; } ;
+typedef TYPE_3__ FSStat ;
+typedef int FSFileHandle ;
 
-/* Variables and functions */
- int EACCES ; 
- int ENODEV ; 
- int ENOMEM ; 
- int /*<<< orphan*/  FSCloseFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int FSGetStatFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_3__*,int) ; 
- int FSOpenFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
- int O_APPEND ; 
- int O_RDONLY ; 
- int O_RDWR ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* sd_fat_get_device_data (char const*) ; 
- char* sd_fat_real_path (char const*,TYPE_1__*) ; 
+
+ int EACCES ;
+ int ENODEV ;
+ int ENOMEM ;
+ int FSCloseFile (int ,int ,int,int) ;
+ int FSGetStatFile (int ,int ,int,TYPE_3__*,int) ;
+ int FSOpenFile (int ,int ,char*,char const*,int *,int) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
+ int O_APPEND ;
+ int O_RDONLY ;
+ int O_RDWR ;
+ int O_WRONLY ;
+ int free (char*) ;
+ TYPE_1__* sd_fat_get_device_data (char const*) ;
+ char* sd_fat_real_path (char const*,TYPE_1__*) ;
 
 __attribute__((used)) static int sd_fat_open_r (struct _reent *r, void *fileStruct, const char *path, int flags, int mode)
 {
@@ -50,24 +50,24 @@ __attribute__((used)) static int sd_fat_open_r (struct _reent *r, void *fileStru
     sd_fat_file_state_t *file = (sd_fat_file_state_t *)fileStruct;
 
     file->dev = dev;
-    /* Determine which mode the file is opened for */
+
     file->flags = flags;
 
     const char *mode_str;
 
     if ((flags & 0x03) == O_RDONLY) {
-        file->read = true;
-        file->write = false;
-        file->append = false;
+        file->read = 1;
+        file->write = 0;
+        file->append = 0;
         mode_str = "r";
     } else if ((flags & 0x03) == O_WRONLY) {
-        file->read = false;
-        file->write = true;
+        file->read = 0;
+        file->write = 1;
         file->append = (flags & O_APPEND);
         mode_str = file->append ? "a" : "w";
     } else if ((flags & 0x03) == O_RDWR) {
-        file->read = true;
-        file->write = true;
+        file->read = 1;
+        file->write = 1;
         file->append = (flags & O_APPEND);
         mode_str = file->append ? "a+" : "r+";
     } else {

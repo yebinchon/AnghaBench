@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bits ;
-struct TYPE_7__ {int Width; int Height; int Stride; int* Scan0; int Reserved; int /*<<< orphan*/  PixelFormat; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int bits ;
+struct TYPE_7__ {int Width; int Height; int Stride; int* Scan0; int Reserved; int PixelFormat; } ;
 struct TYPE_6__ {int X; int Y; int Width; int Height; } ;
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  TYPE_1__ GpRect ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
-typedef  int DWORD ;
-typedef  TYPE_2__ BitmapData ;
-typedef  int ARGB ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpRect ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+typedef int DWORD ;
+typedef TYPE_2__ BitmapData ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int GdipBitmapGetPixel (int /*<<< orphan*/ *,int,int,int*) ; 
- int GdipBitmapLockBits (int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int GdipBitmapUnlockBits (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int GdipCreateBitmapFromScan0 (int const,int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int ImageLockModeRead ; 
- int ImageLockModeUserInputBuf ; 
- int ImageLockModeWrite ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat32bppARGB ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
+
+ int GdipBitmapGetPixel (int *,int,int,int*) ;
+ int GdipBitmapLockBits (int *,TYPE_1__*,int,int ,TYPE_2__*) ;
+ int GdipBitmapUnlockBits (int *,TYPE_2__*) ;
+ int GdipCreateBitmapFromScan0 (int const,int const,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int ImageLockModeRead ;
+ int ImageLockModeUserInputBuf ;
+ int ImageLockModeWrite ;
+ int Ok ;
+ int PixelFormat32bppARGB ;
+ int expect (int,int) ;
+ int memset (int*,int,int) ;
 
 __attribute__((used)) static void test_LockBits_UserBuf(void)
 {
@@ -48,8 +48,8 @@ __attribute__((used)) static void test_LockBits_UserBuf(void)
     DWORD bits[200];
     ARGB color;
 
-    bm = NULL;
-    stat = GdipCreateBitmapFromScan0(WIDTH, HEIGHT, 0, PixelFormat32bppARGB, NULL, &bm);
+    bm = ((void*)0);
+    stat = GdipCreateBitmapFromScan0(WIDTH, HEIGHT, 0, PixelFormat32bppARGB, ((void*)0), &bm);
     expect(Ok, stat);
 
     memset(bits, 0xaa, sizeof(bits));
@@ -66,7 +66,7 @@ __attribute__((used)) static void test_LockBits_UserBuf(void)
     bd.Scan0 = &bits[2+3*WIDTH];
     bd.Reserved = 0xaaaaaaaa;
 
-    /* read-only */
+
     stat = GdipBitmapLockBits(bm, &rect, ImageLockModeRead|ImageLockModeUserInputBuf, PixelFormat32bppARGB, &bd);
     expect(Ok, stat);
 
@@ -84,7 +84,7 @@ __attribute__((used)) static void test_LockBits_UserBuf(void)
     expect(Ok, stat);
     expect(0, color);
 
-    /* write-only */
+
     stat = GdipBitmapLockBits(bm, &rect, ImageLockModeWrite|ImageLockModeUserInputBuf, PixelFormat32bppARGB, &bd);
     expect(Ok, stat);
 
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_LockBits_UserBuf(void)
 
     bits[2+3*WIDTH] = 0;
 
-    /* read/write */
+
     stat = GdipBitmapLockBits(bm, &rect, ImageLockModeRead|ImageLockModeWrite|ImageLockModeUserInputBuf, PixelFormat32bppARGB, &bd);
     expect(Ok, stat);
 

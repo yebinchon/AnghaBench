@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t blacklist_num_servers ; 
- size_t blacklist_num_sites ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fscanf (int /*<<< orphan*/ *,char*,...) ; 
- size_t num_handles ; 
- int /*<<< orphan*/ ** server_blacklist ; 
- int /*<<< orphan*/ ** site_blacklist ; 
- void* strdup (char*) ; 
- void** urlstring ; 
- int* urltime ; 
+
+
+
+typedef int FILE ;
+
+
+ size_t blacklist_num_servers ;
+ size_t blacklist_num_sites ;
+ int fclose (int *) ;
+ int feof (int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fscanf (int *,char*,...) ;
+ size_t num_handles ;
+ int ** server_blacklist ;
+ int ** site_blacklist ;
+ void* strdup (char*) ;
+ void** urlstring ;
+ int* urltime ;
 
 __attribute__((used)) static int parse_url_file(const char *filename)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int parse_url_file(const char *filename)
   }
   fclose(f);
 
-  site_blacklist[blacklist_num_sites] = NULL;
-  server_blacklist[blacklist_num_servers] = NULL;
+  site_blacklist[blacklist_num_sites] = ((void*)0);
+  server_blacklist[blacklist_num_servers] = ((void*)0);
   return num_handles;
 }

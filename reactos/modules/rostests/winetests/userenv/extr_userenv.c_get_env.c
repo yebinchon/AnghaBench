@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ CSTR_EQUAL ; 
- scalar_t__ CompareStringA (int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetThreadLocale () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int LOCALE_USE_CP_ACP ; 
- int NORM_IGNORECASE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__ const*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  min (int,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int buf ;
+typedef scalar_t__ WCHAR ;
+typedef int BOOL ;
+
+
+ int CP_ACP ;
+ scalar_t__ CSTR_EQUAL ;
+ scalar_t__ CompareStringA (int ,int,char*,int ,char const*,int) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int GetThreadLocale () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int LOCALE_USE_CP_ACP ;
+ int NORM_IGNORECASE ;
+ int TRUE ;
+ int WideCharToMultiByte (int ,int ,scalar_t__ const*,int,char*,int,int *,int *) ;
+ int memcpy (char*,char*,int) ;
+ int min (int,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static BOOL get_env(const WCHAR * env, const char * var, char ** result)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static BOOL get_env(const WCHAR * env, const char * var, c
     varlen = strlen(var);
     do
     {
-        if (!WideCharToMultiByte( CP_ACP, 0, p, -1, buf, sizeof(buf), NULL, NULL )) buf[sizeof(buf)-1] = 0;
+        if (!WideCharToMultiByte( CP_ACP, 0, p, -1, buf, sizeof(buf), ((void*)0), ((void*)0) )) buf[sizeof(buf)-1] = 0;
         envlen = strlen(buf);
         if (CompareStringA(GetThreadLocale(), NORM_IGNORECASE|LOCALE_USE_CP_ACP, buf, min(envlen, varlen), var, varlen) == CSTR_EQUAL)
         {

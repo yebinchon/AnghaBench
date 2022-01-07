@@ -1,141 +1,133 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int GS_FINALE ;
+ int S_ChangeMusic (int ,int) ;
+ int automapactive ;
+ int c1text ;
+ int c2text ;
+ int c3text ;
+ int c4text ;
+ int c5text ;
+ int c6text ;
 
-/* Forward declarations */
+ int e1text ;
+ int e2text ;
+ int e3text ;
+ int e4text ;
+ scalar_t__ finalecount ;
+ char* finaleflat ;
+ scalar_t__ finalestage ;
+ int finaletext ;
+ int ga_nothing ;
+ int gameaction ;
+ int gameepisode ;
+ int gamemap ;
+ int gamemode ;
+ int gamestate ;
+ int mus_read_m ;
+ int mus_victor ;
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  GS_FINALE ; 
- int /*<<< orphan*/  S_ChangeMusic (int /*<<< orphan*/ ,int) ; 
- int automapactive ; 
- int /*<<< orphan*/  c1text ; 
- int /*<<< orphan*/  c2text ; 
- int /*<<< orphan*/  c3text ; 
- int /*<<< orphan*/  c4text ; 
- int /*<<< orphan*/  c5text ; 
- int /*<<< orphan*/  c6text ; 
-#define  commercial 131 
- int /*<<< orphan*/  e1text ; 
- int /*<<< orphan*/  e2text ; 
- int /*<<< orphan*/  e3text ; 
- int /*<<< orphan*/  e4text ; 
- scalar_t__ finalecount ; 
- char* finaleflat ; 
- scalar_t__ finalestage ; 
- int /*<<< orphan*/  finaletext ; 
- int /*<<< orphan*/  ga_nothing ; 
- int /*<<< orphan*/  gameaction ; 
- int /*<<< orphan*/  gameepisode ; 
- int /*<<< orphan*/  gamemap ; 
- int gamemode ; 
- int /*<<< orphan*/  gamestate ; 
- int /*<<< orphan*/  mus_read_m ; 
- int /*<<< orphan*/  mus_victor ; 
-#define  registered 130 
-#define  retail 129 
-#define  shareware 128 
- int viewactive ; 
+
+ int viewactive ;
 
 void F_StartFinale (void)
 {
     gameaction = ga_nothing;
     gamestate = GS_FINALE;
-    viewactive = false;
-    automapactive = false;
+    viewactive = 0;
+    automapactive = 0;
 
-    // Okay - IWAD dependend stuff.
-    // This has been changed severly, and
-    //  some stuff might have changed in the process.
+
+
+
     switch ( gamemode )
     {
 
-      // DOOM 1 - E1, E3 or E4, but each nine missions
-      case shareware:
-      case registered:
-      case retail:
+
+      case 128:
+      case 130:
+      case 129:
       {
-	S_ChangeMusic(mus_victor, true);
-	
-	switch (gameepisode)
-	{
-	  case 1:
-	    finaleflat = "FLOOR4_8";
-	    finaletext = e1text;
-	    break;
-	  case 2:
-	    finaleflat = "SFLR6_1";
-	    finaletext = e2text;
-	    break;
-	  case 3:
-	    finaleflat = "MFLR8_4";
-	    finaletext = e3text;
-	    break;
-	  case 4:
-	    finaleflat = "MFLR8_3";
-	    finaletext = e4text;
-	    break;
-	  default:
-	    // Ouch.
-	    break;
-	}
-	break;
+ S_ChangeMusic(mus_victor, 1);
+
+ switch (gameepisode)
+ {
+   case 1:
+     finaleflat = "FLOOR4_8";
+     finaletext = e1text;
+     break;
+   case 2:
+     finaleflat = "SFLR6_1";
+     finaletext = e2text;
+     break;
+   case 3:
+     finaleflat = "MFLR8_4";
+     finaletext = e3text;
+     break;
+   case 4:
+     finaleflat = "MFLR8_3";
+     finaletext = e4text;
+     break;
+   default:
+
+     break;
+ }
+ break;
       }
-      
-      // DOOM II and missions packs with E1, M34
-      case commercial:
+
+
+      case 131:
       {
-	  S_ChangeMusic(mus_read_m, true);
+   S_ChangeMusic(mus_read_m, 1);
 
-	  switch (gamemap)
-	  {
-	    case 6:
-	      finaleflat = "SLIME16";
-	      finaletext = c1text;
-	      break;
-	    case 11:
-	      finaleflat = "RROCK14";
-	      finaletext = c2text;
-	      break;
-	    case 20:
-	      finaleflat = "RROCK07";
-	      finaletext = c3text;
-	      break;
-	    case 30:
-	      finaleflat = "RROCK17";
-	      finaletext = c4text;
-	      break;
-	    case 15:
-	      finaleflat = "RROCK13";
-	      finaletext = c5text;
-	      break;
-	    case 31:
-	      finaleflat = "RROCK19";
-	      finaletext = c6text;
-	      break;
-	    default:
-	      // Ouch.
-	      break;
-	  }
-	  break;
-      }	
+   switch (gamemap)
+   {
+     case 6:
+       finaleflat = "SLIME16";
+       finaletext = c1text;
+       break;
+     case 11:
+       finaleflat = "RROCK14";
+       finaletext = c2text;
+       break;
+     case 20:
+       finaleflat = "RROCK07";
+       finaletext = c3text;
+       break;
+     case 30:
+       finaleflat = "RROCK17";
+       finaletext = c4text;
+       break;
+     case 15:
+       finaleflat = "RROCK13";
+       finaletext = c5text;
+       break;
+     case 31:
+       finaleflat = "RROCK19";
+       finaletext = c6text;
+       break;
+     default:
 
-   
-      // Indeterminate.
+       break;
+   }
+   break;
+      }
+
+
+
       default:
-	S_ChangeMusic(mus_read_m, true);
-	finaleflat = "F_SKY1"; // Not used anywhere else.
-	finaletext = c1text;  // FIXME - other text, music?
-	break;
+ S_ChangeMusic(mus_read_m, 1);
+ finaleflat = "F_SKY1";
+ finaletext = c1text;
+ break;
     }
-    
+
     finalestage = 0;
     finalecount = 0;
-	
+
 }

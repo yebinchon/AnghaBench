@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {float* lfe_data; float lfe_scale; int /*<<< orphan*/  gb; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ DCALbrDecoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_ARRAY_ELEMS (float*) ; 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__* ff_dca_lfe_delta_index_16 ; 
- float* ff_dca_lfe_step_size_16 ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {float* lfe_data; float lfe_scale; int gb; int avctx; } ;
+typedef TYPE_1__ DCALbrDecoder ;
+
+
+ int AV_LOG_ERROR ;
+ int FF_ARRAY_ELEMS (float*) ;
+ int av_clip (int,int ,int) ;
+ int av_log (int ,int ,char*) ;
+ scalar_t__* ff_dca_lfe_delta_index_16 ;
+ float* ff_dca_lfe_step_size_16 ;
+ int get_bits (int *,int) ;
 
 __attribute__((used)) static int parse_lfe_16(DCALbrDecoder *s)
 {

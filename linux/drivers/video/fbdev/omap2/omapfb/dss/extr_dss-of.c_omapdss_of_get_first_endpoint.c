@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_node {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  of_node_put (struct device_node*) ; 
- struct device_node* omapdss_of_get_next_endpoint (struct device_node*,int /*<<< orphan*/ *) ; 
- struct device_node* omapdss_of_get_next_port (struct device_node const*,int /*<<< orphan*/ *) ; 
+
+ int of_node_put (struct device_node*) ;
+ struct device_node* omapdss_of_get_next_endpoint (struct device_node*,int *) ;
+ struct device_node* omapdss_of_get_next_port (struct device_node const*,int *) ;
 
 struct device_node *
 omapdss_of_get_first_endpoint(const struct device_node *parent)
 {
-	struct device_node *port, *ep;
+ struct device_node *port, *ep;
 
-	port = omapdss_of_get_next_port(parent, NULL);
+ port = omapdss_of_get_next_port(parent, ((void*)0));
 
-	if (!port)
-		return NULL;
+ if (!port)
+  return ((void*)0);
 
-	ep = omapdss_of_get_next_endpoint(port, NULL);
+ ep = omapdss_of_get_next_endpoint(port, ((void*)0));
 
-	of_node_put(port);
+ of_node_put(port);
 
-	return ep;
+ return ep;
 }

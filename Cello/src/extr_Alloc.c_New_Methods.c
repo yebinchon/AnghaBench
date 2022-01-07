@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Method {char* member_0; char* member_1; char* member_2; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct Method* New_Methods(void) {
-  
+
   static struct Method methods[] = {
     {
-      "new", 
+      "new",
       "#define new(T, ...)\n"
       "#define new_raw(T, ...)\n"
       "#define new_root(T, ...)\n"
@@ -47,8 +47,8 @@ __attribute__((used)) static struct Method* New_Methods(void) {
       "var destruct(var self);",
       "Call the destructor on object `self` without deallocating the memory "
       "for it."
-    }, {NULL, NULL, NULL}
+    }, {((void*)0), ((void*)0), ((void*)0)}
   };
-  
+
   return methods;
 }

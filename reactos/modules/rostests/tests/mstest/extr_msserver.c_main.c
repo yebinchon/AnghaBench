@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPTSTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  char CHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateMailslot (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  MAILSLOT_WAIT_FOREVER ; 
- scalar_t__ ReadFile (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef char* LPTSTR ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef char CHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ int CloseHandle (int ) ;
+ int CreateMailslot (char*,int,int ,int *) ;
+ scalar_t__ FALSE ;
+ int MAILSLOT_WAIT_FOREVER ;
+ scalar_t__ ReadFile (int ,char*,int,int *,int *) ;
+ int printf (char*,...) ;
 
 int main(int argc, char *argv[])
 {
@@ -33,21 +33,21 @@ int main(int argc, char *argv[])
    LPTSTR lpszMailslotName = "\\\\.\\mailslot\\mymailslot";
 
    hMailslot = CreateMailslot(lpszMailslotName,
-			      512,
-			      MAILSLOT_WAIT_FOREVER,
-			      NULL);
+         512,
+         MAILSLOT_WAIT_FOREVER,
+         ((void*)0));
 for (;;)
 {
    fResult = ReadFile(hMailslot,
-		      chBuf,
-		      512,
-		      &cbRead,
-		      NULL);
+        chBuf,
+        512,
+        &cbRead,
+        ((void*)0));
    if (fResult == FALSE)
      {
-	printf("ReadFile() failed!\n");
-	CloseHandle(hMailslot);
-	return 0;
+ printf("ReadFile() failed!\n");
+ CloseHandle(hMailslot);
+ return 0;
      }
 
    printf("Data read: %s\n", chBuf);

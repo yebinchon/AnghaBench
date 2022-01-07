@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- scalar_t__ json_array_get (int /*<<< orphan*/ *,size_t) ; 
- size_t json_array_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_copy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loads (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ scalar_t__ json_array_get (int *,size_t) ;
+ size_t json_array_size (int *) ;
+ int * json_copy (int *) ;
+ int json_decref (int *) ;
+ int json_equal (int *,int *) ;
+ int * json_loads (char const*,int ,int *) ;
 
 __attribute__((used)) static void test_copy_array(void)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static void test_copy_array(void)
     json_t *array, *copy;
     size_t i;
 
-    array = json_loads(json_array_text, 0, NULL);
+    array = json_loads(json_array_text, 0, ((void*)0));
     if(!array)
         fail("unable to parse an array");
 

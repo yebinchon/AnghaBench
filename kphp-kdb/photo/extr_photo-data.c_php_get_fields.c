@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* fields; } ;
-typedef  TYPE_2__ type_desc ;
+typedef TYPE_2__ type_desc ;
 struct TYPE_8__ {int v_fid; int type; char* v_string; int v_string_len; int v_int; int v_long; int v_double; } ;
 struct TYPE_6__ {int type; } ;
 
-/* Variables and functions */
- int MAX_EVENT_SIZE ; 
- int MAX_FIELDS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_5__* field_changes ; 
- int field_changes_n ; 
- int get_field_id_len (TYPE_2__*,char*,int) ; 
- int sscanf (char*,char*,int*,int*) ; 
- int strlen (char*) ; 
-#define  t_double 130 
-#define  t_int 129 
-#define  t_long 128 
- int t_raw ; 
- int t_string ; 
- TYPE_2__* types ; 
+
+ int MAX_EVENT_SIZE ;
+ int MAX_FIELDS ;
+ int assert (int ) ;
+ TYPE_5__* field_changes ;
+ int field_changes_n ;
+ int get_field_id_len (TYPE_2__*,char*,int) ;
+ int sscanf (char*,char*,int*,int*) ;
+ int strlen (char*) ;
+
+
+
+ int t_raw ;
+ int t_string ;
+ TYPE_2__* types ;
 
 int php_get_fields (int type_id, char *l) {
   type_desc *t = &types[type_id];
@@ -65,7 +65,7 @@ int php_get_fields (int type_id, char *l) {
     field_changes[i].v_fid = id;
     int f_type = field_changes[i].type = t->fields[id].type;
 
-    // we can't change raw fields from php
+
     if (f_type == t_raw) {
       return -1;
     }
@@ -125,17 +125,17 @@ int php_get_fields (int type_id, char *l) {
       field_end = clen;
     } else {
       switch (f_type) {
-        case t_int:
+        case 129:
           if (sscanf (l + j, "%d%n", &field_changes[i].v_int, &field_end) != 1) {
             return -1;
           }
           break;
-        case t_long:
+        case 128:
           if (sscanf (l + j, "%lld%n", &field_changes[i].v_long, &field_end) != 1) {
             return -1;
           }
           break;
-        case t_double:
+        case 130:
           if (sscanf (l + j, "%lf%n", &field_changes[i].v_double, &field_end) != 1) {
             return -1;
           }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct cs_blob {int dummy; } ;
-typedef  TYPE_1__* proc_t ;
-struct TYPE_3__ {int p_csflags; int /*<<< orphan*/  p_textoff; int /*<<< orphan*/ * p_textvp; } ;
+typedef TYPE_1__* proc_t ;
+struct TYPE_3__ {int p_csflags; int p_textoff; int * p_textvp; } ;
 
-/* Variables and functions */
- int CS_SIGNED ; 
- char const* csblob_get_identity (struct cs_blob*) ; 
- struct cs_blob* ubc_cs_blob_get (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ int CS_SIGNED ;
+ char const* csblob_get_identity (struct cs_blob*) ;
+ struct cs_blob* ubc_cs_blob_get (int *,int,int ) ;
 
 const char *
 cs_identity_get(proc_t p)
 {
-	struct cs_blob *csblob;
+ struct cs_blob *csblob;
 
-	if ((p->p_csflags & CS_SIGNED) == 0) {
-		return NULL;
-	}
+ if ((p->p_csflags & CS_SIGNED) == 0) {
+  return ((void*)0);
+ }
 
-	if (NULL == p->p_textvp)
-		return NULL;
+ if (((void*)0) == p->p_textvp)
+  return ((void*)0);
 
-	if ((csblob = ubc_cs_blob_get(p->p_textvp, -1, p->p_textoff)) == NULL)
-		return NULL;
+ if ((csblob = ubc_cs_blob_get(p->p_textvp, -1, p->p_textoff)) == ((void*)0))
+  return ((void*)0);
 
-	return csblob_get_identity(csblob);
+ return csblob_get_identity(csblob);
 }

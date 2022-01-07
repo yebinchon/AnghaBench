@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lua_State {int dummy; } ;
 struct Banner1 {struct lua_State* L; } ;
-typedef  int lua_Integer ;
+typedef int lua_Integer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int luaL_len (struct lua_State*,int) ; 
- int /*<<< orphan*/  lua_getglobal (struct lua_State*,char*) ; 
- int /*<<< orphan*/  lua_geti (struct lua_State*,int,int) ; 
- scalar_t__ lua_isinteger (struct lua_State*,int) ; 
- scalar_t__ lua_isstring (struct lua_State*,int) ; 
- scalar_t__ lua_istable (struct lua_State*,int) ; 
- scalar_t__ lua_tointeger (struct lua_State*,int) ; 
- int /*<<< orphan*/  lua_tostring (struct lua_State*,int) ; 
- int /*<<< orphan*/  register_script_for_port (struct Banner1*,int) ; 
- int /*<<< orphan*/  register_script_for_ports (struct Banner1*,int /*<<< orphan*/ ) ; 
+
+ int LOG (int ,char*) ;
+ int luaL_len (struct lua_State*,int) ;
+ int lua_getglobal (struct lua_State*,char*) ;
+ int lua_geti (struct lua_State*,int,int) ;
+ scalar_t__ lua_isinteger (struct lua_State*,int) ;
+ scalar_t__ lua_isstring (struct lua_State*,int) ;
+ scalar_t__ lua_istable (struct lua_State*,int) ;
+ scalar_t__ lua_tointeger (struct lua_State*,int) ;
+ int lua_tostring (struct lua_State*,int) ;
+ int register_script_for_port (struct Banner1*,int) ;
+ int register_script_for_ports (struct Banner1*,int ) ;
 
 __attribute__((used)) static void *
 scripting_banner_init(struct Banner1 *b)
 {
     struct lua_State *L = b->L;
-    
-    /* Kludge: this gets called prematurely, without scripting, so
-     * just return */
-    if (L == NULL)
+
+
+
+    if (L == ((void*)0))
         return 0;
-    
+
     LOG(0, "SCRIPTING: banner init          \n");
-    
-    /*
-     * Register TCP ports to run on
-     */
+
+
+
+
     lua_getglobal(L, "setTcpPorts");
     if (lua_isstring(L, -1)) {
         register_script_for_ports(b, lua_tostring(L, -1));
@@ -59,6 +59,6 @@ scripting_banner_init(struct Banner1 *b)
             }
         }
     }
-    
+
     return 0;
 }

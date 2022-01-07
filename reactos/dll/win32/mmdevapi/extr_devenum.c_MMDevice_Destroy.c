@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_7__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_7__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* DebugInfo; } ;
 struct TYPE_9__ {struct TYPE_9__* drv_id; TYPE_7__ crst; } ;
 struct TYPE_8__ {scalar_t__* Spare; } ;
-typedef  TYPE_2__ MMDevice ;
-typedef  size_t DWORD ;
+typedef TYPE_2__ MMDevice ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteCriticalSection (TYPE_7__*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- size_t MMDevice_count ; 
- TYPE_2__** MMDevice_head ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (TYPE_2__*) ; 
+
+ int DeleteCriticalSection (TYPE_7__*) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ size_t MMDevice_count ;
+ TYPE_2__** MMDevice_head ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (TYPE_2__*) ;
 
 __attribute__((used)) static void MMDevice_Destroy(MMDevice *This)
 {
     DWORD i;
     TRACE("Freeing %s\n", debugstr_w(This->drv_id));
-    /* Since this function is called at destruction time, reordering of the list is unimportant */
+
     for (i = 0; i < MMDevice_count; ++i)
     {
         if (MMDevice_head[i] == This)

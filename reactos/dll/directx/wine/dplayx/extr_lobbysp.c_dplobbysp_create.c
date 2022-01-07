@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int ref; TYPE_2__ IDPLobbySP_iface; int /*<<< orphan*/ * dplay; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IDirectPlayImpl ;
-typedef  TYPE_1__ IDPLobbySPImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDPLobbySP_QueryInterface (TYPE_2__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IDPLobbySP_Release (TYPE_2__*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dpLobbySPVT ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_5__ {int ref; TYPE_2__ IDPLobbySP_iface; int * dplay; } ;
+typedef int REFIID ;
+typedef int IDirectPlayImpl ;
+typedef TYPE_1__ IDPLobbySPImpl ;
+typedef int HRESULT ;
+
+
+ int DPERR_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int IDPLobbySP_QueryInterface (TYPE_2__*,int ,void**) ;
+ int IDPLobbySP_Release (TYPE_2__*) ;
+ int TRACE (char*,int ,void**) ;
+ int debugstr_guid (int ) ;
+ int dpLobbySPVT ;
 
 HRESULT dplobbysp_create( REFIID riid, void **ppv, IDirectPlayImpl *dp )
 {
@@ -36,7 +36,7 @@ HRESULT dplobbysp_create( REFIID riid, void **ppv, IDirectPlayImpl *dp )
 
   TRACE( "(%s, %p)\n", debugstr_guid( riid ), ppv );
 
-  *ppv = NULL;
+  *ppv = ((void*)0);
   obj = HeapAlloc( GetProcessHeap(), 0, sizeof( *obj ) );
   if ( !obj )
     return DPERR_OUTOFMEMORY;

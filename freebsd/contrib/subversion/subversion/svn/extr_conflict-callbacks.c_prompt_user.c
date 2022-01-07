@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  client_option_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * find_option (int /*<<< orphan*/  const*,char const*) ; 
- int /*<<< orphan*/  help_string (char const**,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- char* prompt_string (int /*<<< orphan*/  const*,char const* const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_cmdline_fprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  svn_cmdline_prompt_user2 (char const**,char const*,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int client_option_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * find_option (int const*,char const*) ;
+ int help_string (char const**,int const*,int *) ;
+ char* prompt_string (int const*,char const* const*,int *) ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int svn_cmdline_fprintf (int ,int *,char*,...) ;
+ int svn_cmdline_prompt_user2 (char const**,char const*,void*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 prompt_user(const client_option_t **opt,
@@ -49,7 +49,7 @@ prompt_user(const client_option_t **opt,
                                     conflict_description));
       SVN_ERR(help_string(&helpstr, conflict_options, scratch_pool));
       SVN_ERR(svn_cmdline_fprintf(stderr, scratch_pool, "\n%s\n", helpstr));
-      *opt = NULL;
+      *opt = ((void*)0);
     }
   else
     {

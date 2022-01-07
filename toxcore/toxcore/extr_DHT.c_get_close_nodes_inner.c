@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t uint32_t ;
-typedef  scalar_t__ sa_family_t ;
-struct TYPE_12__ {int /*<<< orphan*/  ip; } ;
-struct TYPE_10__ {scalar_t__ timestamp; TYPE_8__ ip_port; int /*<<< orphan*/  hardening; } ;
-struct TYPE_11__ {int /*<<< orphan*/  public_key; TYPE_2__ assoc6; TYPE_2__ assoc4; } ;
-struct TYPE_9__ {TYPE_8__ ip_port; int /*<<< orphan*/  public_key; } ;
-typedef  TYPE_1__ Node_format ;
-typedef  TYPE_2__ IPPTsPng ;
-typedef  TYPE_3__ Client_data ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int /*<<< orphan*/  BAD_NODE_TIMEOUT ; 
- scalar_t__ HARDENING_ALL_OK ; 
- scalar_t__ LAN_ip (int /*<<< orphan*/ ) ; 
- size_t MAX_SENT_NODES ; 
- int /*<<< orphan*/  add_to_list (TYPE_1__*,size_t,int /*<<< orphan*/ ,TYPE_8__,scalar_t__ const*) ; 
- scalar_t__ client_in_nodelist (TYPE_1__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- scalar_t__ hardening_correct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  id_equal (scalar_t__ const*,int /*<<< orphan*/ ) ; 
- scalar_t__ is_timeout (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t uint32_t ;
+typedef scalar_t__ sa_family_t ;
+struct TYPE_12__ {int ip; } ;
+struct TYPE_10__ {scalar_t__ timestamp; TYPE_8__ ip_port; int hardening; } ;
+struct TYPE_11__ {int public_key; TYPE_2__ assoc6; TYPE_2__ assoc4; } ;
+struct TYPE_9__ {TYPE_8__ ip_port; int public_key; } ;
+typedef TYPE_1__ Node_format ;
+typedef TYPE_2__ IPPTsPng ;
+typedef TYPE_3__ Client_data ;
+
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int BAD_NODE_TIMEOUT ;
+ scalar_t__ HARDENING_ALL_OK ;
+ scalar_t__ LAN_ip (int ) ;
+ size_t MAX_SENT_NODES ;
+ int add_to_list (TYPE_1__*,size_t,int ,TYPE_8__,scalar_t__ const*) ;
+ scalar_t__ client_in_nodelist (TYPE_1__*,size_t,int ) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ scalar_t__ hardening_correct (int *) ;
+ int id_equal (scalar_t__ const*,int ) ;
+ scalar_t__ is_timeout (scalar_t__,int ) ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static void get_close_nodes_inner(const uint8_t *public_key, Node_format *nodes_list,
                                   sa_family_t sa_family, const Client_data *client_list, uint32_t client_list_length,
@@ -53,11 +53,11 @@ __attribute__((used)) static void get_close_nodes_inner(const uint8_t *public_ke
     for (i = 0; i < client_list_length; i++) {
         const Client_data *client = &client_list[i];
 
-        /* node already in list? */
+
         if (client_in_nodelist(nodes_list, MAX_SENT_NODES, client->public_key))
             continue;
 
-        const IPPTsPng *ipptp = NULL;
+        const IPPTsPng *ipptp = ((void*)0);
 
         if (sa_family == AF_INET) {
             ipptp = &client->assoc4;
@@ -71,11 +71,11 @@ __attribute__((used)) static void get_close_nodes_inner(const uint8_t *public_ke
             }
         }
 
-        /* node not in a good condition? */
+
         if (is_timeout(ipptp->timestamp, BAD_NODE_TIMEOUT))
             continue;
 
-        /* don't send LAN ips to non LAN peers */
+
         if (LAN_ip(ipptp->ip_port.ip) == 0 && !is_LAN)
             continue;
 

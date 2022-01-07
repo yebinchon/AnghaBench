@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct csrctl_args {scalar_t__ useraddr; int usersize; } ;
-typedef  int /*<<< orphan*/  mask ;
-typedef  int /*<<< orphan*/  csr_config_t ;
+typedef int mask ;
+typedef int csr_config_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int copyin (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int csr_check (int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int copyin (scalar_t__,int *,int) ;
+ int csr_check (int ) ;
 
 int
 syscall_csr_check(struct csrctl_args *args)
 {
-	csr_config_t mask = 0;
-	int error = 0;
+ csr_config_t mask = 0;
+ int error = 0;
 
-	if (args->useraddr == 0 || args->usersize != sizeof(mask))
-		return EINVAL;
+ if (args->useraddr == 0 || args->usersize != sizeof(mask))
+  return EINVAL;
 
-	error = copyin(args->useraddr, &mask, sizeof(mask));
-	if (error)
-		return error;
+ error = copyin(args->useraddr, &mask, sizeof(mask));
+ if (error)
+  return error;
 
-	return csr_check(mask);
+ return csr_check(mask);
 }

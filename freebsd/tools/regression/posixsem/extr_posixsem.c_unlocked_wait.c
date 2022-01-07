@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  semid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ELAPSED (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ checkvalue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fail_err (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fail_errno (char*) ; 
- scalar_t__ ksem_destroy (int /*<<< orphan*/ ) ; 
- scalar_t__ ksem_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  pass () ; 
- scalar_t__ testwait (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u_int ;
+typedef int semid_t ;
+
+
+ int ELAPSED (int ,int ) ;
+ scalar_t__ checkvalue (int ,int ) ;
+ int fail_err (char*,int ) ;
+ int fail_errno (char*) ;
+ scalar_t__ ksem_destroy (int ) ;
+ scalar_t__ ksem_init (int *,int) ;
+ int pass () ;
+ scalar_t__ testwait (int ,int *) ;
 
 __attribute__((used)) static void
 unlocked_wait(void)
 {
-	semid_t id;
-	u_int elapsed;
+ semid_t id;
+ u_int elapsed;
 
-	if (ksem_init(&id, 1) < 0) {
-		fail_errno("ksem_init");
-		return;
-	}
+ if (ksem_init(&id, 1) < 0) {
+  fail_errno("ksem_init");
+  return;
+ }
 
-	/* This should succeed right away and set the value to 0. */
-	if (testwait(id, &elapsed) < 0) {
-		ksem_destroy(id);
-		return;
-	}
-	if (!ELAPSED(elapsed, 0)) {
-		fail_err("ksem_wait() of unlocked sem took %ums", elapsed);
-		ksem_destroy(id);
-		return;
-	}
-	if (checkvalue(id, 0) < 0) {
-		ksem_destroy(id);
-		return;
-	}
 
-	if (ksem_destroy(id) < 0) {
-		fail_errno("ksem_destroy");
-		return;
-	}
-	pass();
+ if (testwait(id, &elapsed) < 0) {
+  ksem_destroy(id);
+  return;
+ }
+ if (!ELAPSED(elapsed, 0)) {
+  fail_err("ksem_wait() of unlocked sem took %ums", elapsed);
+  ksem_destroy(id);
+  return;
+ }
+ if (checkvalue(id, 0) < 0) {
+  ksem_destroy(id);
+  return;
+ }
+
+ if (ksem_destroy(id) < 0) {
+  fail_errno("ksem_destroy");
+  return;
+ }
+ pass();
 }

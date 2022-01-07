@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cw1200_platform_data_sdio {int /*<<< orphan*/  (* clk_ctrl ) (struct cw1200_platform_data_sdio const*,int) ;int /*<<< orphan*/  (* power_ctrl ) (struct cw1200_platform_data_sdio const*,int) ;scalar_t__ reset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpio_free (scalar_t__) ; 
- int /*<<< orphan*/  gpio_set_value (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  stub1 (struct cw1200_platform_data_sdio const*,int) ; 
- int /*<<< orphan*/  stub2 (struct cw1200_platform_data_sdio const*,int) ; 
+
+
+
+struct cw1200_platform_data_sdio {int (* clk_ctrl ) (struct cw1200_platform_data_sdio const*,int) ;int (* power_ctrl ) (struct cw1200_platform_data_sdio const*,int) ;scalar_t__ reset; } ;
+
+
+ int gpio_free (scalar_t__) ;
+ int gpio_set_value (scalar_t__,int ) ;
+ int msleep (int) ;
+ int stub1 (struct cw1200_platform_data_sdio const*,int) ;
+ int stub2 (struct cw1200_platform_data_sdio const*,int) ;
 
 __attribute__((used)) static int cw1200_sdio_off(const struct cw1200_platform_data_sdio *pdata)
 {
-	if (pdata->reset) {
-		gpio_set_value(pdata->reset, 0);
-		msleep(30); /* Min is 2 * CLK32K cycles */
-		gpio_free(pdata->reset);
-	}
+ if (pdata->reset) {
+  gpio_set_value(pdata->reset, 0);
+  msleep(30);
+  gpio_free(pdata->reset);
+ }
 
-	if (pdata->power_ctrl)
-		pdata->power_ctrl(pdata, false);
-	if (pdata->clk_ctrl)
-		pdata->clk_ctrl(pdata, false);
+ if (pdata->power_ctrl)
+  pdata->power_ctrl(pdata, 0);
+ if (pdata->clk_ctrl)
+  pdata->clk_ctrl(pdata, 0);
 
-	return 0;
+ return 0;
 }

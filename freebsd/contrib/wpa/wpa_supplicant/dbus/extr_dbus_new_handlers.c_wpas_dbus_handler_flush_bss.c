@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpa_supplicant {int dummy; } ;
-typedef  int /*<<< orphan*/  dbus_uint32_t ;
-typedef  int /*<<< orphan*/  DBusMessage ;
+typedef int dbus_uint32_t ;
+typedef int DBusMessage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBUS_TYPE_INVALID ; 
- int /*<<< orphan*/  DBUS_TYPE_UINT32 ; 
- int /*<<< orphan*/  dbus_message_get_args (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpa_bss_flush (struct wpa_supplicant*) ; 
- int /*<<< orphan*/  wpa_bss_flush_by_age (struct wpa_supplicant*,int /*<<< orphan*/ ) ; 
+
+ int DBUS_TYPE_INVALID ;
+ int DBUS_TYPE_UINT32 ;
+ int dbus_message_get_args (int *,int *,int ,int *,int ) ;
+ int wpa_bss_flush (struct wpa_supplicant*) ;
+ int wpa_bss_flush_by_age (struct wpa_supplicant*,int ) ;
 
 DBusMessage * wpas_dbus_handler_flush_bss(DBusMessage *message,
-					  struct wpa_supplicant *wpa_s)
+       struct wpa_supplicant *wpa_s)
 {
-	dbus_uint32_t age;
+ dbus_uint32_t age;
 
-	dbus_message_get_args(message, NULL, DBUS_TYPE_UINT32, &age,
-			      DBUS_TYPE_INVALID);
+ dbus_message_get_args(message, ((void*)0), DBUS_TYPE_UINT32, &age,
+         DBUS_TYPE_INVALID);
 
-	if (age == 0)
-		wpa_bss_flush(wpa_s);
-	else
-		wpa_bss_flush_by_age(wpa_s, age);
+ if (age == 0)
+  wpa_bss_flush(wpa_s);
+ else
+  wpa_bss_flush_by_age(wpa_s, age);
 
-	return NULL;
+ return ((void*)0);
 }

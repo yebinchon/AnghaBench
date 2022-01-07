@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_2__* pdxf; scalar_t__ value; } ;
-typedef  TYPE_3__ parse_buffer ;
+typedef TYPE_3__ parse_buffer ;
 struct TYPE_11__ {scalar_t__ type; int idx_template; char* name; int* dim_value; int nb_dims; void** dim_fixed; } ;
-typedef  TYPE_4__ member ;
+typedef TYPE_4__ member ;
 struct TYPE_9__ {size_t nb_xtemplates; TYPE_1__* xtemplates; } ;
-struct TYPE_8__ {int nb_members; TYPE_4__* members; int /*<<< orphan*/  name; } ;
-typedef  int DWORD ;
-typedef  void* BOOL ;
+struct TYPE_8__ {int nb_members; TYPE_4__* members; int name; } ;
+typedef int DWORD ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,...) ; 
- void* FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int MAX_ARRAY_DIM ; 
- scalar_t__ TOKEN_ARRAY ; 
- scalar_t__ TOKEN_CBRACKET ; 
- scalar_t__ TOKEN_DWORD ; 
- scalar_t__ TOKEN_INTEGER ; 
- scalar_t__ TOKEN_NAME ; 
- scalar_t__ TOKEN_OBRACKET ; 
- scalar_t__ TOKEN_SEMICOLON ; 
- void* TRUE ; 
- int /*<<< orphan*/  WARN (char*,char*) ; 
- int /*<<< orphan*/  _strnicmp (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ check_TOKEN (TYPE_3__*) ; 
- scalar_t__ get_TOKEN (TYPE_3__*) ; 
- scalar_t__ is_primitive_type (scalar_t__) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+ int ERR (char*,...) ;
+ void* FALSE ;
+ int FIXME (char*,...) ;
+ int MAX_ARRAY_DIM ;
+ scalar_t__ TOKEN_ARRAY ;
+ scalar_t__ TOKEN_CBRACKET ;
+ scalar_t__ TOKEN_DWORD ;
+ scalar_t__ TOKEN_INTEGER ;
+ scalar_t__ TOKEN_NAME ;
+ scalar_t__ TOKEN_OBRACKET ;
+ scalar_t__ TOKEN_SEMICOLON ;
+ void* TRUE ;
+ int WARN (char*,char*) ;
+ int _strnicmp (char*,int ,int) ;
+ scalar_t__ check_TOKEN (TYPE_3__*) ;
+ scalar_t__ get_TOKEN (TYPE_3__*) ;
+ scalar_t__ is_primitive_type (scalar_t__) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static BOOL parse_template_members_list(parse_buffer * buf)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static BOOL parse_template_members_list(parse_buffer * buf
       cur_member->type = get_TOKEN(buf);
       if (!strcmp((char*)buf->value, "indexColor"))
       {
-        /* Case sensitive legacy type indexColor is described in the first template */
+
         cur_member->idx_template = 0;
       }
       else

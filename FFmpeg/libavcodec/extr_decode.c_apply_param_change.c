@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_7__ {int err_recognition; scalar_t__ height; scalar_t__ width; scalar_t__ sample_rate; int /*<<< orphan*/  channel_layout; scalar_t__ channels; TYPE_1__* codec; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_7__ {int err_recognition; scalar_t__ height; scalar_t__ width; scalar_t__ sample_rate; int channel_layout; scalar_t__ channels; TYPE_1__* codec; } ;
 struct TYPE_6__ {int capabilities; } ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef int AVPacket ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AV_CODEC_CAP_PARAM_CHANGE ; 
- int AV_EF_EXPLODE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PKT_DATA_PARAM_CHANGE ; 
- int AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_COUNT ; 
- int AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_LAYOUT ; 
- int AV_SIDE_DATA_PARAM_CHANGE_DIMENSIONS ; 
- int AV_SIDE_DATA_PARAM_CHANGE_SAMPLE_RATE ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ INT_MAX ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_packet_get_side_data (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ bytestream_get_le32 (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  bytestream_get_le64 (int /*<<< orphan*/  const**) ; 
- int ff_set_dimensions (TYPE_2__*,scalar_t__,scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_CODEC_CAP_PARAM_CHANGE ;
+ int AV_EF_EXPLODE ;
+ int AV_LOG_ERROR ;
+ int AV_PKT_DATA_PARAM_CHANGE ;
+ int AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_COUNT ;
+ int AV_SIDE_DATA_PARAM_CHANGE_CHANNEL_LAYOUT ;
+ int AV_SIDE_DATA_PARAM_CHANGE_DIMENSIONS ;
+ int AV_SIDE_DATA_PARAM_CHANGE_SAMPLE_RATE ;
+ int EINVAL ;
+ scalar_t__ INT_MAX ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int * av_packet_get_side_data (int const*,int ,int*) ;
+ scalar_t__ bytestream_get_le32 (int const**) ;
+ int bytestream_get_le64 (int const**) ;
+ int ff_set_dimensions (TYPE_2__*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int apply_param_change(AVCodecContext *avctx, const AVPacket *avpkt)
 {
@@ -96,7 +96,7 @@ __attribute__((used)) static int apply_param_change(AVCodecContext *avctx, const
     if (flags & AV_SIDE_DATA_PARAM_CHANGE_DIMENSIONS) {
         if (size < 8)
             goto fail;
-        avctx->width  = bytestream_get_le32(&data);
+        avctx->width = bytestream_get_le32(&data);
         avctx->height = bytestream_get_le32(&data);
         size -= 8;
         ret = ff_set_dimensions(avctx, avctx->width, avctx->height);

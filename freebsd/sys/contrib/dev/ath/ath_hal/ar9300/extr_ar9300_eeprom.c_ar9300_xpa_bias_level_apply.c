@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ath_hal {int dummy; } ;
-typedef  int /*<<< orphan*/  HAL_BOOL ;
+typedef int HAL_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_HORNET_CH0_TOP2 ; 
- int /*<<< orphan*/  AR_HORNET_CH0_TOP2_XPABIASLVL ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_THERM ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_THERM_XPABIASLVL_MSB ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_THERM_XPASHORT2GND ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_TOP ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_TOP_JUPITER ; 
- int /*<<< orphan*/  AR_PHY_65NM_CH0_TOP_XPABIASLVL ; 
- int /*<<< orphan*/  AR_SCORPION_CH0_TOP ; 
- int /*<<< orphan*/  AR_SCORPION_CH0_TOP_XPABIASLVL ; 
- scalar_t__ AR_SREV_APHRODITE (struct ath_hal*) ; 
- scalar_t__ AR_SREV_HORNET (struct ath_hal*) ; 
- scalar_t__ AR_SREV_JUPITER (struct ath_hal*) ; 
- scalar_t__ AR_SREV_POSEIDON (struct ath_hal*) ; 
- scalar_t__ AR_SREV_SCORPION (struct ath_hal*) ; 
- scalar_t__ AR_SREV_WASP (struct ath_hal*) ; 
- int /*<<< orphan*/  OS_REG_RMW_FIELD (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int ar9300_xpa_bias_level_get (struct ath_hal*,int /*<<< orphan*/ ) ; 
+
+ int AR_HORNET_CH0_TOP2 ;
+ int AR_HORNET_CH0_TOP2_XPABIASLVL ;
+ int AR_PHY_65NM_CH0_THERM ;
+ int AR_PHY_65NM_CH0_THERM_XPABIASLVL_MSB ;
+ int AR_PHY_65NM_CH0_THERM_XPASHORT2GND ;
+ int AR_PHY_65NM_CH0_TOP ;
+ int AR_PHY_65NM_CH0_TOP_JUPITER ;
+ int AR_PHY_65NM_CH0_TOP_XPABIASLVL ;
+ int AR_SCORPION_CH0_TOP ;
+ int AR_SCORPION_CH0_TOP_XPABIASLVL ;
+ scalar_t__ AR_SREV_APHRODITE (struct ath_hal*) ;
+ scalar_t__ AR_SREV_HORNET (struct ath_hal*) ;
+ scalar_t__ AR_SREV_JUPITER (struct ath_hal*) ;
+ scalar_t__ AR_SREV_POSEIDON (struct ath_hal*) ;
+ scalar_t__ AR_SREV_SCORPION (struct ath_hal*) ;
+ scalar_t__ AR_SREV_WASP (struct ath_hal*) ;
+ int OS_REG_RMW_FIELD (struct ath_hal*,int ,int ,int) ;
+ int ar9300_xpa_bias_level_get (struct ath_hal*,int ) ;
 
 HAL_BOOL ar9300_xpa_bias_level_apply(struct ath_hal *ah, HAL_BOOL is_2ghz)
 {
-    /*
-     * In ar9330 emu, we can't access radio registers, 
-     * merlin is used for radio part.
-     */
+
+
+
+
     int bias;
     bias = ar9300_xpa_bias_level_get(ah, is_2ghz);
 

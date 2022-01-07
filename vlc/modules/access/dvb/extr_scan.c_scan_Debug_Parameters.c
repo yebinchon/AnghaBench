@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_6__ {int /*<<< orphan*/  i_max; int /*<<< orphan*/  i_min; } ;
-struct TYPE_5__ {int /*<<< orphan*/  i_max; int /*<<< orphan*/  i_min; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_6__ {int i_max; int i_min; } ;
+struct TYPE_5__ {int i_max; int i_min; } ;
 struct TYPE_7__ {int type; char* psz_scanlist_file; scalar_t__ b_free_only; scalar_t__ b_use_nit; scalar_t__ b_modulation_set; scalar_t__ b_exhaustive; TYPE_2__ bandwidth; TYPE_1__ frequency; } ;
-typedef  TYPE_3__ scan_parameter_t ;
+typedef TYPE_3__ scan_parameter_t ;
 
-/* Variables and functions */
- int SCAN_DVB_C ; 
- int SCAN_DVB_S ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
+
+ int SCAN_DVB_C ;
+ int SCAN_DVB_S ;
+ int msg_Dbg (int *,char*,...) ;
 
 __attribute__((used)) static void scan_Debug_Parameters( vlc_object_t *p_obj, const scan_parameter_t *p_parameter )
 {

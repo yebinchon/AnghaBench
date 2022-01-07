@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * cmd_entry; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- TYPE_1__ cmd_globals ; 
- int /*<<< orphan*/  vcos_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * cmd_entry; int lock; } ;
+
+
+ TYPE_1__ cmd_globals ;
+ int vcos_free (int *) ;
+ int vcos_mutex_delete (int *) ;
 
 void vcos_cmd_shutdown( void )
 {
     vcos_mutex_delete( &cmd_globals.lock );
 
     vcos_free( cmd_globals.cmd_entry );
-    cmd_globals.cmd_entry = NULL;
+    cmd_globals.cmd_entry = ((void*)0);
 }

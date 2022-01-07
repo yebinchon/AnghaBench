@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpio_num_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  GPIO_CHECK (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ GPIO_ISR_CORE_ID_UNINIT ; 
- int /*<<< orphan*/  GPIO_IS_VALID_GPIO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_intr_enable_on_core (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  gpio_spinlock ; 
- scalar_t__ isr_core_id ; 
- int /*<<< orphan*/  portENTER_CRITICAL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  portEXIT_CRITICAL (int /*<<< orphan*/ *) ; 
- scalar_t__ xPortGetCoreID () ; 
+
+
+
+typedef int gpio_num_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int GPIO_CHECK (int ,char*,int ) ;
+ scalar_t__ GPIO_ISR_CORE_ID_UNINIT ;
+ int GPIO_IS_VALID_GPIO (int ) ;
+ int gpio_intr_enable_on_core (int ,scalar_t__) ;
+ int gpio_spinlock ;
+ scalar_t__ isr_core_id ;
+ int portENTER_CRITICAL (int *) ;
+ int portEXIT_CRITICAL (int *) ;
+ scalar_t__ xPortGetCoreID () ;
 
 esp_err_t gpio_intr_enable(gpio_num_t gpio_num)
 {

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  array; } ;
-struct flv_output {int got_first_video; int sent_headers; TYPE_1__ path; int /*<<< orphan*/  output; int /*<<< orphan*/  active; int /*<<< orphan*/  file; int /*<<< orphan*/  stopping; } ;
-typedef  int /*<<< orphan*/  obs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dstr_copy (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  info (char*,int /*<<< orphan*/ ) ; 
- char* obs_data_get_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  obs_data_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obs_output_begin_data_capture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obs_output_can_begin_data_capture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * obs_output_get_settings (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obs_output_initialize_encoders (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  os_atomic_set_bool (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  os_fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  warn (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int array; } ;
+struct flv_output {int got_first_video; int sent_headers; TYPE_1__ path; int output; int active; int file; int stopping; } ;
+typedef int obs_data_t ;
+
+
+ int dstr_copy (TYPE_1__*,char const*) ;
+ int info (char*,int ) ;
+ char* obs_data_get_string (int *,char*) ;
+ int obs_data_release (int *) ;
+ int obs_output_begin_data_capture (int ,int ) ;
+ int obs_output_can_begin_data_capture (int ,int ) ;
+ int * obs_output_get_settings (int ) ;
+ int obs_output_initialize_encoders (int ,int ) ;
+ int os_atomic_set_bool (int *,int) ;
+ int os_fopen (int ,char*) ;
+ int warn (char*,int ) ;
 
 __attribute__((used)) static bool flv_output_start(void *data)
 {
-	struct flv_output *stream = data;
-	obs_data_t *settings;
-	const char *path;
+ struct flv_output *stream = data;
+ obs_data_t *settings;
+ const char *path;
 
-	if (!obs_output_can_begin_data_capture(stream->output, 0))
-		return false;
-	if (!obs_output_initialize_encoders(stream->output, 0))
-		return false;
+ if (!obs_output_can_begin_data_capture(stream->output, 0))
+  return 0;
+ if (!obs_output_initialize_encoders(stream->output, 0))
+  return 0;
 
-	stream->got_first_video = false;
-	stream->sent_headers = false;
-	os_atomic_set_bool(&stream->stopping, false);
+ stream->got_first_video = 0;
+ stream->sent_headers = 0;
+ os_atomic_set_bool(&stream->stopping, 0);
 
-	/* get path */
-	settings = obs_output_get_settings(stream->output);
-	path = obs_data_get_string(settings, "path");
-	dstr_copy(&stream->path, path);
-	obs_data_release(settings);
 
-	stream->file = os_fopen(stream->path.array, "wb");
-	if (!stream->file) {
-		warn("Unable to open FLV file '%s'", stream->path.array);
-		return false;
-	}
+ settings = obs_output_get_settings(stream->output);
+ path = obs_data_get_string(settings, "path");
+ dstr_copy(&stream->path, path);
+ obs_data_release(settings);
 
-	/* write headers and start capture */
-	os_atomic_set_bool(&stream->active, true);
-	obs_output_begin_data_capture(stream->output, 0);
+ stream->file = os_fopen(stream->path.array, "wb");
+ if (!stream->file) {
+  warn("Unable to open FLV file '%s'", stream->path.array);
+  return 0;
+ }
 
-	info("Writing FLV file '%s'...", stream->path.array);
-	return true;
+
+ os_atomic_set_bool(&stream->active, 1);
+ obs_output_begin_data_capture(stream->output, 0);
+
+ info("Writing FLV file '%s'...", stream->path.array);
+ return 1;
 }

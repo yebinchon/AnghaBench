@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  elfhdr ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int elfhdr ;
+typedef scalar_t__ ULONG ;
 struct TYPE_16__ {scalar_t__ e_magic; long e_lfanew; } ;
 struct TYPE_15__ {int SizeOfOptionalHeader; } ;
 struct TYPE_14__ {scalar_t__ ImageBase; } ;
 struct TYPE_13__ {int SymbolsOffset; int StringsOffset; scalar_t__ StringsLength; scalar_t__ SymbolsLength; } ;
-typedef  int /*<<< orphan*/  SYMBOLFILE_HEADER ;
-typedef  int /*<<< orphan*/  ROSSYM_ENTRY ;
-typedef  TYPE_1__* PSYMBOLFILE_HEADER ;
-typedef  void* PROSSYM_ENTRY ;
-typedef  scalar_t__ PIMAGE_SECTION_HEADER ;
-typedef  TYPE_2__* PIMAGE_OPTIONAL_HEADER ;
-typedef  TYPE_3__* PIMAGE_FILE_HEADER ;
-typedef  TYPE_4__* PIMAGE_DOS_HEADER ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int SYMBOLFILE_HEADER ;
+typedef int ROSSYM_ENTRY ;
+typedef TYPE_1__* PSYMBOLFILE_HEADER ;
+typedef void* PROSSYM_ENTRY ;
+typedef scalar_t__ PIMAGE_SECTION_HEADER ;
+typedef TYPE_2__* PIMAGE_OPTIONAL_HEADER ;
+typedef TYPE_3__* PIMAGE_FILE_HEADER ;
+typedef TYPE_4__* PIMAGE_DOS_HEADER ;
+typedef int FILE ;
+typedef int DWORD ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ ConvertCoffs (scalar_t__*,void**,scalar_t__*,void*,scalar_t__,void*,scalar_t__,void*,scalar_t__,TYPE_3__*,scalar_t__) ; 
- scalar_t__ ConvertDbgHelp (void*,int,char*,scalar_t__*,void**,scalar_t__*,void**) ; 
- scalar_t__ ConvertStabs (scalar_t__*,void**,scalar_t__*,void*,scalar_t__,void*,scalar_t__,void*,scalar_t__,TYPE_3__*,scalar_t__) ; 
- scalar_t__ CreateOutputFile (int /*<<< orphan*/ *,void*,TYPE_4__*,TYPE_3__*,TYPE_2__*,scalar_t__,scalar_t__,void*) ; 
- int E_SYMNMLEN ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetCoffInfo (void*,TYPE_3__*,scalar_t__,scalar_t__*,void**,scalar_t__*,void**) ; 
- scalar_t__ GetStabInfo (void*,TYPE_3__*,scalar_t__,scalar_t__*,void**,scalar_t__*,void**) ; 
- scalar_t__ IMAGE_DOS_MAGIC ; 
- scalar_t__ MergeStabsAndCoffs (scalar_t__*,void**,scalar_t__,void*,scalar_t__,void*) ; 
- int /*<<< orphan*/  SymCleanup (void*) ; 
- int /*<<< orphan*/  SymInitialize (void*,char*,int /*<<< orphan*/ ) ; 
- int SymLoadModule (void*,void*,char*,char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  SymSetOptions (int) ; 
- int /*<<< orphan*/  SymUnloadModule (void*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- char* convert_path (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- void* fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (void*) ; 
- void* load_file (char*,size_t*) ; 
- void* malloc (scalar_t__) ; 
- int /*<<< orphan*/  memcmp (TYPE_4__*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,void*,scalar_t__) ; 
- int /*<<< orphan*/  memset (void*,char,scalar_t__) ; 
- int /*<<< orphan*/  perror (char*) ; 
- void* realloc (void*,scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strdup (char*) ; 
+
+ scalar_t__ ConvertCoffs (scalar_t__*,void**,scalar_t__*,void*,scalar_t__,void*,scalar_t__,void*,scalar_t__,TYPE_3__*,scalar_t__) ;
+ scalar_t__ ConvertDbgHelp (void*,int,char*,scalar_t__*,void**,scalar_t__*,void**) ;
+ scalar_t__ ConvertStabs (scalar_t__*,void**,scalar_t__*,void*,scalar_t__,void*,scalar_t__,void*,scalar_t__,TYPE_3__*,scalar_t__) ;
+ scalar_t__ CreateOutputFile (int *,void*,TYPE_4__*,TYPE_3__*,TYPE_2__*,scalar_t__,scalar_t__,void*) ;
+ int E_SYMNMLEN ;
+ int FALSE ;
+ scalar_t__ GetCoffInfo (void*,TYPE_3__*,scalar_t__,scalar_t__*,void**,scalar_t__*,void**) ;
+ scalar_t__ GetStabInfo (void*,TYPE_3__*,scalar_t__,scalar_t__*,void**,scalar_t__*,void**) ;
+ scalar_t__ IMAGE_DOS_MAGIC ;
+ scalar_t__ MergeStabsAndCoffs (scalar_t__*,void**,scalar_t__,void*,scalar_t__,void*) ;
+ int SymCleanup (void*) ;
+ int SymInitialize (void*,char*,int ) ;
+ int SymLoadModule (void*,void*,char*,char*,int ,size_t) ;
+ int SymSetOptions (int) ;
+ int SymUnloadModule (void*,int) ;
+ int TRUE ;
+ int assert (int) ;
+ char* convert_path (char*) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ void* fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (void*) ;
+ void* load_file (char*,size_t*) ;
+ void* malloc (scalar_t__) ;
+ int memcmp (TYPE_4__*,char*,int) ;
+ int memcpy (char*,void*,scalar_t__) ;
+ int memset (void*,char,scalar_t__) ;
+ int perror (char*) ;
+ void* realloc (void*,scalar_t__) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ char* strdup (char*) ;
 
 int main(int argc, char* argv[])
 {
@@ -79,21 +79,21 @@ int main(int argc, char* argv[])
     ULONG StabsLength;
     void *StabStringBase;
     ULONG StabStringsLength;
-    void *CoffBase = NULL;
+    void *CoffBase = ((void*)0);
     ULONG CoffsLength;
-    void *CoffStringBase = NULL;
+    void *CoffStringBase = ((void*)0);
     ULONG CoffStringsLength;
     char* path1;
     char* path2;
     FILE* out;
-    void *StringBase = NULL;
+    void *StringBase = ((void*)0);
     ULONG StringsLength = 0;
     ULONG StabSymbolsCount = 0;
-    PROSSYM_ENTRY StabSymbols = NULL;
+    PROSSYM_ENTRY StabSymbols = ((void*)0);
     ULONG CoffSymbolsCount = 0;
-    PROSSYM_ENTRY CoffSymbols = NULL;
+    PROSSYM_ENTRY CoffSymbols = ((void*)0);
     ULONG MergedSymbolsCount = 0;
-    PROSSYM_ENTRY MergedSymbols = NULL;
+    PROSSYM_ENTRY MergedSymbols = ((void*)0);
     size_t FileSize;
     void *FileData;
     ULONG RosSymLength;
@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
     char elfhdr[4] = { '\177', 'E', 'L', 'F' };
     BOOLEAN UseDbgHelp = FALSE;
     int arg, argstate = 0;
-    char *SourcePath = NULL;
+    char *SourcePath = ((void*)0);
 
     for (arg = 1; arg < argc; arg++)
     {
@@ -153,12 +153,12 @@ int main(int argc, char* argv[])
 
     file = fopen(path1, "rb");
 
-    /* Check if MZ header exists  */
+
     PEDosHeader = (PIMAGE_DOS_HEADER) FileData;
     if (PEDosHeader->e_magic != IMAGE_DOS_MAGIC ||
         PEDosHeader->e_lfanew == 0L)
     {
-        /* Ignore elf */
+
         if (!memcmp(PEDosHeader, elfhdr, sizeof(elfhdr)))
             exit(0);
         perror("Input file is not a PE image.\n");
@@ -166,16 +166,16 @@ int main(int argc, char* argv[])
         exit(1);
     }
 
-    /* Locate PE file header  */
-    /* sizeof(ULONG) = sizeof(MAGIC) */
+
+
     PEFileHeader = (PIMAGE_FILE_HEADER)((char *) FileData + PEDosHeader->e_lfanew + sizeof(ULONG));
 
-    /* Locate optional header */
+
     assert(sizeof(ULONG) == 4);
     PEOptHeader = (PIMAGE_OPTIONAL_HEADER)(PEFileHeader + 1);
     ImageBase = PEOptHeader->ImageBase;
 
-    /* Locate PE section headers  */
+
     PESectionHeaders = (PIMAGE_SECTION_HEADER)((char *) PEOptHeader + PEFileHeader->SizeOfOptionalHeader);
 
     if (GetStabInfo(FileData,
@@ -192,10 +192,10 @@ int main(int argc, char* argv[])
 
     if (StabsLength == 0)
     {
-        // SYMOPT_AUTO_PUBLICS
-        // SYMOPT_FAVOR_COMPRESSED
-        // SYMOPT_LOAD_ANYTHING
-        // SYMOPT_LOAD_LINES
+
+
+
+
         SymSetOptions(0x10000 | 0x800000 | 0x40 | 0x10);
         SymInitialize(FileData, ".", 0);
 
@@ -234,13 +234,13 @@ int main(int argc, char* argv[])
     {
         StringBase = malloc(1 + StringsLength + CoffStringsLength +
                             (CoffsLength / sizeof(ROSSYM_ENTRY)) * (E_SYMNMLEN + 1));
-        if (StringBase == NULL)
+        if (StringBase == ((void*)0))
         {
             free(FileData);
             fprintf(stderr, "Failed to allocate memory for strings table\n");
             exit(1);
         }
-        /* Make offset 0 into an empty string */
+
         *((char *) StringBase) = '\0';
         StringsLength = 1;
 
@@ -325,7 +325,7 @@ int main(int argc, char* argv[])
     if (MergedSymbolsCount == 0)
     {
         RosSymLength = 0;
-        RosSymSection = NULL;
+        RosSymSection = ((void*)0);
     }
     else
     {
@@ -334,7 +334,7 @@ int main(int argc, char* argv[])
                        StringsLength;
 
         RosSymSection = malloc(RosSymLength);
-        if (RosSymSection == NULL)
+        if (RosSymSection == ((void*)0))
         {
             free(MergedSymbols);
             free(StringBase);
@@ -364,7 +364,7 @@ int main(int argc, char* argv[])
 
     free(StringBase);
     out = fopen(path2, "wb");
-    if (out == NULL)
+    if (out == ((void*)0))
     {
         perror("Cannot open output file");
         free(RosSymSection);

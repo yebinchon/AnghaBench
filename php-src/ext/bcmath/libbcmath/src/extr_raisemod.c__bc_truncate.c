@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* bc_num ;
-struct TYPE_5__ {int /*<<< orphan*/  n_len; int /*<<< orphan*/  n_value; int /*<<< orphan*/  n_sign; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bc_free_num (TYPE_1__**) ; 
- TYPE_1__* bc_new_num (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* bc_num ;
+struct TYPE_5__ {int n_len; int n_value; int n_sign; } ;
+
+
+ int bc_free_num (TYPE_1__**) ;
+ TYPE_1__* bc_new_num (int ,int ) ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static void
 _bc_truncate (bc_num *num)

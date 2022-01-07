@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int32_t ;
-typedef  int VGfloat ;
-typedef  int /*<<< orphan*/  VGPath ;
-typedef  int /*<<< orphan*/  VGPaint ;
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
-typedef  int /*<<< orphan*/  GX_PAINT_T ;
-typedef  int /*<<< orphan*/  GX_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VCOS_EINVAL ; 
- int /*<<< orphan*/  VCOS_ENOMEM ; 
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- int /*<<< orphan*/  VG_FILL_PATH ; 
- int /*<<< orphan*/  VG_PAINT_LINEAR_GRADIENT ; 
- int /*<<< orphan*/  VG_PATH_CAPABILITY_ALL ; 
- int /*<<< orphan*/  VG_PATH_DATATYPE_S_32 ; 
- int /*<<< orphan*/  VG_PATH_FORMAT_STANDARD ; 
- int /*<<< orphan*/  gx_priv_restore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gx_priv_save (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vgCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double,double,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgDestroyPath (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgDrawPath (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ vgGetError () ; 
- int /*<<< orphan*/  vgSetPaint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vgSetParameterfv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  vguPolygon (int /*<<< orphan*/ ,int*,int,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int VGfloat ;
+typedef int VGPath ;
+typedef int VGPaint ;
+typedef int VCOS_STATUS_T ;
+typedef int GX_PAINT_T ;
+typedef int GX_CLIENT_STATE_T ;
+typedef int GRAPHICS_RESOURCE_HANDLE ;
+
+
+ int VCOS_EINVAL ;
+ int VCOS_ENOMEM ;
+ int VCOS_SUCCESS ;
+ int VG_FILL_PATH ;
+ int VG_PAINT_LINEAR_GRADIENT ;
+ int VG_PATH_CAPABILITY_ALL ;
+ int VG_PATH_DATATYPE_S_32 ;
+ int VG_PATH_FORMAT_STANDARD ;
+ int gx_priv_restore (int *) ;
+ int gx_priv_save (int *,int ) ;
+ int vcos_assert (int) ;
+ int vgCreatePath (int ,int ,double,double,int,int,int ) ;
+ int vgDestroyPath (int ) ;
+ int vgDrawPath (int ,int ) ;
+ scalar_t__ vgGetError () ;
+ int vgSetPaint (int ,int ) ;
+ int vgSetParameterfv (int ,int ,int,int*) ;
+ int vguPolygon (int ,int*,int,int) ;
 
 VCOS_STATUS_T gx_render_arrowhead(GRAPHICS_RESOURCE_HANDLE res,
                                   uint32_t tip_x, uint32_t tip_y,

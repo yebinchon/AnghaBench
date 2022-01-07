@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  m_databaseid; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * functions; int /*<<< orphan*/ * tables; } ;
-typedef  TYPE_1__ PgStat_StatDBEntry ;
-typedef  TYPE_2__ PgStat_MsgDropdb ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG2 ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HASH_REMOVE ; 
- int MAXPGPATH ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- int /*<<< orphan*/  get_dbstat_filename (int,int,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  hash_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hash_search (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pgStatDBHash ; 
- TYPE_1__* pgstat_get_db_entry (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int m_databaseid; } ;
+struct TYPE_5__ {int * functions; int * tables; } ;
+typedef TYPE_1__ PgStat_StatDBEntry ;
+typedef TYPE_2__ PgStat_MsgDropdb ;
+typedef int Oid ;
+
+
+ int DEBUG2 ;
+ int ERROR ;
+ int HASH_REMOVE ;
+ int MAXPGPATH ;
+ int elog (int ,char*,char*) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
+ int get_dbstat_filename (int,int,int ,char*,int) ;
+ int hash_destroy (int *) ;
+ int * hash_search (int ,void*,int ,int *) ;
+ int pgStatDBHash ;
+ TYPE_1__* pgstat_get_db_entry (int ,int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void
 pgstat_recv_dropdb(PgStat_MsgDropdb *msg, int len)
 {
-	Oid			dbid = msg->m_databaseid;
-	PgStat_StatDBEntry *dbentry;
+ Oid dbid = msg->m_databaseid;
+ PgStat_StatDBEntry *dbentry;
 
-	/*
-	 * Lookup the database in the hashtable.
-	 */
-	dbentry = pgstat_get_db_entry(dbid, false);
 
-	/*
-	 * If found, remove it (along with the db statfile).
-	 */
-	if (dbentry)
-	{
-		char		statfile[MAXPGPATH];
 
-		get_dbstat_filename(false, false, dbid, statfile, MAXPGPATH);
 
-		elog(DEBUG2, "removing stats file \"%s\"", statfile);
-		unlink(statfile);
+ dbentry = pgstat_get_db_entry(dbid, 0);
 
-		if (dbentry->tables != NULL)
-			hash_destroy(dbentry->tables);
-		if (dbentry->functions != NULL)
-			hash_destroy(dbentry->functions);
 
-		if (hash_search(pgStatDBHash,
-						(void *) &dbid,
-						HASH_REMOVE, NULL) == NULL)
-			ereport(ERROR,
-					(errmsg("database hash table corrupted during cleanup --- abort")));
-	}
+
+
+ if (dbentry)
+ {
+  char statfile[MAXPGPATH];
+
+  get_dbstat_filename(0, 0, dbid, statfile, MAXPGPATH);
+
+  elog(DEBUG2, "removing stats file \"%s\"", statfile);
+  unlink(statfile);
+
+  if (dbentry->tables != ((void*)0))
+   hash_destroy(dbentry->tables);
+  if (dbentry->functions != ((void*)0))
+   hash_destroy(dbentry->functions);
+
+  if (hash_search(pgStatDBHash,
+      (void *) &dbid,
+      HASH_REMOVE, ((void*)0)) == ((void*)0))
+   ereport(ERROR,
+     (errmsg("database hash table corrupted during cleanup --- abort")));
+ }
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  zName; } ;
-typedef  TYPE_1__ Table ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int zName; } ;
+typedef TYPE_1__ Table ;
 struct TYPE_11__ {char* zName; } ;
-struct TYPE_10__ {int explain; int /*<<< orphan*/  iSelectId; int /*<<< orphan*/  pVdbe; int /*<<< orphan*/  db; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ Index ;
+struct TYPE_10__ {int explain; int iSelectId; int pVdbe; int db; } ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ Index ;
 
-/* Variables and functions */
- scalar_t__ HasRowid (TYPE_1__*) ; 
- int /*<<< orphan*/  IsPrimaryKeyIndex (TYPE_3__*) ; 
- int /*<<< orphan*/  OP_Explain ; 
- int /*<<< orphan*/  P4_DYNAMIC ; 
- char* sqlite3MPrintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ HasRowid (TYPE_1__*) ;
+ int IsPrimaryKeyIndex (TYPE_3__*) ;
+ int OP_Explain ;
+ int P4_DYNAMIC ;
+ char* sqlite3MPrintf (int ,char*,int ,char*,char*) ;
+ int sqlite3VdbeAddOp4 (int ,int ,int ,int ,int ,char*,int ) ;
 
 __attribute__((used)) static void explainSimpleCount(
-  Parse *pParse,                  /* Parse context */
-  Table *pTab,                    /* Table being queried */
-  Index *pIdx                     /* Index used to optimize scan, or NULL */
+  Parse *pParse,
+  Table *pTab,
+  Index *pIdx
 ){
   if( pParse->explain==2 ){
     int bCover = (pIdx!=0 && (HasRowid(pTab) || !IsPrimaryKeyIndex(pIdx)));

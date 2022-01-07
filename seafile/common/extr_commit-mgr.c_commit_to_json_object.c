@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int gint64 ;
-struct TYPE_3__ {char* commit_id; char* root_id; char* repo_id; char* creator_name; char* creator_id; char* desc; char* repo_name; char* repo_desc; char* device_name; char* client_version; int enc_version; char* magic; char* random_key; char* salt; int version; scalar_t__ repaired; scalar_t__ new_merge; scalar_t__ conflict; scalar_t__ no_local_history; scalar_t__ encrypted; int /*<<< orphan*/  repo_category; int /*<<< orphan*/  second_parent_id; int /*<<< orphan*/  parent_id; scalar_t__ ctime; } ;
-typedef  TYPE_1__ SeafCommit ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_int_member (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  json_object_set_string_member (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  json_object_set_string_or_null_member (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
+typedef int gint64 ;
+struct TYPE_3__ {char* commit_id; char* root_id; char* repo_id; char* creator_name; char* creator_id; char* desc; char* repo_name; char* repo_desc; char* device_name; char* client_version; int enc_version; char* magic; char* random_key; char* salt; int version; scalar_t__ repaired; scalar_t__ new_merge; scalar_t__ conflict; scalar_t__ no_local_history; scalar_t__ encrypted; int repo_category; int second_parent_id; int parent_id; scalar_t__ ctime; } ;
+typedef TYPE_1__ SeafCommit ;
+
+
+ int * json_object () ;
+ int json_object_set_int_member (int *,char*,int) ;
+ int json_object_set_string_member (int *,char*,char*) ;
+ int json_object_set_string_or_null_member (int *,char*,int ) ;
 
 __attribute__((used)) static json_t *
 commit_to_json_object (SeafCommit *commit)
 {
     json_t *object;
-    
+
     object = json_object ();
- 
+
     json_object_set_string_member (object, "commit_id", commit->commit_id);
     json_object_set_string_member (object, "root_id", commit->root_id);
     json_object_set_string_member (object, "repo_id", commit->repo_id);
@@ -40,10 +40,10 @@ commit_to_json_object (SeafCommit *commit)
     json_object_set_string_or_null_member (object, "parent_id", commit->parent_id);
     json_object_set_string_or_null_member (object, "second_parent_id",
                                            commit->second_parent_id);
-    /*
-     * also save repo's properties to commit file, for easy sharing of
-     * repo info 
-     */
+
+
+
+
     json_object_set_string_member (object, "repo_name", commit->repo_name);
     json_object_set_string_member (object, "repo_desc",
                                    commit->repo_desc);

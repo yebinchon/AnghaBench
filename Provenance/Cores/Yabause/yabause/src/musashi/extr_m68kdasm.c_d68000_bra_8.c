@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_cpu_ir ; 
- int g_cpu_pc ; 
- int /*<<< orphan*/  g_dasm_str ; 
- int make_int_8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int uint ;
+
+
+ int g_cpu_ir ;
+ int g_cpu_pc ;
+ int g_dasm_str ;
+ int make_int_8 (int ) ;
+ int sprintf (int ,char*,int) ;
 
 __attribute__((used)) static void d68000_bra_8(void)
 {
-	uint temp_pc = g_cpu_pc;
-	sprintf(g_dasm_str, "bra     %x", temp_pc + make_int_8(g_cpu_ir));
+ uint temp_pc = g_cpu_pc;
+ sprintf(g_dasm_str, "bra     %x", temp_pc + make_int_8(g_cpu_ir));
 }

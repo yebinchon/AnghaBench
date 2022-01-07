@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_3__* codecpar; } ;
 struct TYPE_9__ {scalar_t__ codec_id; int extradata_size; int sample_rate; scalar_t__ extradata; } ;
 struct TYPE_8__ {int nb_streams; TYPE_5__** streams; TYPE_1__* priv_data; } ;
 struct TYPE_7__ {int frame_size; } ;
-typedef  TYPE_1__ TTAMuxContext ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ AVCodecParameters ;
+typedef TYPE_1__ TTAMuxContext ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_CODEC_ID_TTA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_5__*,int,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_CODEC_ID_TTA ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int avpriv_set_pts_info (TYPE_5__*,int,int,int) ;
 
 __attribute__((used)) static int tta_init(AVFormatContext *s)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int tta_init(AVFormatContext *s)
         return AVERROR_INVALIDDATA;
     }
 
-    /* Prevent overflow */
+
     if (par->sample_rate > 0x7FFFFFu) {
         av_log(s, AV_LOG_ERROR, "Sample rate too large\n");
         return AVERROR(EINVAL);

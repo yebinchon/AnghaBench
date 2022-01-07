@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fb_var_screeninfo {int dummy; } ;
-struct fb_info {int /*<<< orphan*/  par; } ;
+struct fb_info {int par; } ;
 
-/* Variables and functions */
- int platinum_var_to_par (struct fb_var_screeninfo*,int /*<<< orphan*/ ,int) ; 
+
+ int platinum_var_to_par (struct fb_var_screeninfo*,int ,int) ;
 
 __attribute__((used)) static int platinumfb_check_var (struct fb_var_screeninfo *var, struct fb_info *info)
 {
-	return platinum_var_to_par(var, info->par, 1);
+ return platinum_var_to_par(var, info->par, 1);
 }

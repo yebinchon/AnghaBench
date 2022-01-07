@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct smc_link_group {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __smc_lgr_terminate (struct smc_link_group*) ; 
- TYPE_1__ smc_lgr_list ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int __smc_lgr_terminate (struct smc_link_group*) ;
+ TYPE_1__ smc_lgr_list ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 void smc_lgr_terminate(struct smc_link_group *lgr)
 {
-	spin_lock_bh(&smc_lgr_list.lock);
-	__smc_lgr_terminate(lgr);
-	spin_unlock_bh(&smc_lgr_list.lock);
+ spin_lock_bh(&smc_lgr_list.lock);
+ __smc_lgr_terminate(lgr);
+ spin_unlock_bh(&smc_lgr_list.lock);
 }

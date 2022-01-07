@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  lossy_1x1_bytes ;
-typedef  int /*<<< orphan*/  lossless_1x1_bytes ;
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int lossy_1x1_bytes ;
+typedef int lossless_1x1_bytes ;
 struct TYPE_17__ {int const* member_0; int member_1; } ;
-typedef  TYPE_5__ WebPData ;
-struct TYPE_19__ {int member_2; int member_3; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+typedef TYPE_5__ WebPData ;
+struct TYPE_19__ {int member_2; int member_3; int member_1; int member_0; } ;
 struct TYPE_14__ {scalar_t__ allow_mixed; } ;
 struct TYPE_13__ {scalar_t__ lossless; } ;
-struct TYPE_18__ {int count_; int flush_count_; TYPE_7__ prev_rect_; scalar_t__ prev_candidate_undecided_; int /*<<< orphan*/  count_since_key_frame_; TYPE_2__ options_; TYPE_1__ last_config_; } ;
-typedef  TYPE_6__ WebPAnimEncoder ;
+struct TYPE_18__ {int count_; int flush_count_; TYPE_7__ prev_rect_; scalar_t__ prev_candidate_undecided_; int count_since_key_frame_; TYPE_2__ options_; TYPE_1__ last_config_; } ;
+typedef TYPE_6__ WebPAnimEncoder ;
 struct TYPE_16__ {int duration; } ;
-struct TYPE_15__ {int duration; int /*<<< orphan*/  bitstream; int /*<<< orphan*/  blend_method; int /*<<< orphan*/  dispose_method; scalar_t__ y_offset; scalar_t__ x_offset; int /*<<< orphan*/  id; } ;
+struct TYPE_15__ {int duration; int bitstream; int blend_method; int dispose_method; scalar_t__ y_offset; scalar_t__ x_offset; int id; } ;
 struct TYPE_20__ {TYPE_4__ key_frame_; TYPE_3__ sub_frame_; scalar_t__ is_key_frame_; } ;
-typedef  TYPE_7__ FrameRectangle ;
-typedef  TYPE_8__ EncodedFrame ;
+typedef TYPE_7__ FrameRectangle ;
+typedef TYPE_8__ EncodedFrame ;
 
-/* Variables and functions */
- TYPE_8__* GetFrame (TYPE_6__* const,size_t const) ; 
- int MAX_DURATION ; 
- int /*<<< orphan*/  WEBP_CHUNK_ANMF ; 
- int /*<<< orphan*/  WEBP_MUX_BLEND ; 
- int /*<<< orphan*/  WEBP_MUX_DISPOSE_NONE ; 
- int /*<<< orphan*/  WebPDataCopy (TYPE_5__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ TYPE_8__* GetFrame (TYPE_6__* const,size_t const) ;
+ int MAX_DURATION ;
+ int WEBP_CHUNK_ANMF ;
+ int WEBP_MUX_BLEND ;
+ int WEBP_MUX_DISPOSE_NONE ;
+ int WebPDataCopy (TYPE_5__ const*,int *) ;
+ int assert (int) ;
 
 __attribute__((used)) static int IncreasePreviousDuration(WebPAnimEncoder* const enc, int duration) {
   const size_t position = enc->count_ - 1;
@@ -56,9 +56,9 @@ __attribute__((used)) static int IncreasePreviousDuration(WebPAnimEncoder* const
   assert(duration == (duration & (MAX_DURATION - 1)));
 
   new_duration = prev_enc_frame->sub_frame_.duration + duration;
-  if (new_duration >= MAX_DURATION) {  // Special case.
-    // Separate out previous frame from earlier merged frames to avoid overflow.
-    // We add a 1x1 transparent frame for the previous frame, with blending on.
+  if (new_duration >= MAX_DURATION) {
+
+
     const FrameRectangle rect = { 0, 0, 1, 1 };
     const uint8_t lossless_1x1_bytes[] = {
       0x52, 0x49, 0x46, 0x46, 0x14, 0x00, 0x00, 0x00, 0x57, 0x45, 0x42, 0x50,
@@ -96,8 +96,8 @@ __attribute__((used)) static int IncreasePreviousDuration(WebPAnimEncoder* const
     enc->flush_count_ = enc->count_ - 1;
     enc->prev_candidate_undecided_ = 0;
     enc->prev_rect_ = rect;
-  } else {                           // Regular case.
-    // Increase duration of the previous frame by 'duration'.
+  } else {
+
     prev_enc_frame->sub_frame_.duration = new_duration;
     prev_enc_frame->key_frame_.duration = new_duration;
   }

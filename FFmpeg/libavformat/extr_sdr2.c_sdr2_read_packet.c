@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_10__ {int /*<<< orphan*/  pb; } ;
-struct TYPE_9__ {int stream_index; int /*<<< orphan*/  flags; scalar_t__ pos; scalar_t__ data; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ FIRST ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_1__*,unsigned int) ; 
- scalar_t__ av_new_packet (TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_1__*) ; 
- int /*<<< orphan*/  av_shrink_packet (TYPE_1__*,int) ; 
- int avio_read (int /*<<< orphan*/ ,scalar_t__,unsigned int) ; 
- void* avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  header ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_10__ {int pb; } ;
+struct TYPE_9__ {int stream_index; int flags; scalar_t__ pos; scalar_t__ data; } ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_PKT_FLAG_KEY ;
+ int ENOMEM ;
+ scalar_t__ FIRST ;
+ int av_get_packet (int ,TYPE_1__*,unsigned int) ;
+ scalar_t__ av_new_packet (TYPE_1__*,unsigned int) ;
+ int av_packet_unref (TYPE_1__*) ;
+ int av_shrink_packet (TYPE_1__*,int) ;
+ int avio_read (int ,scalar_t__,unsigned int) ;
+ void* avio_rl32 (int ) ;
+ int avio_skip (int ,int) ;
+ scalar_t__ avio_tell (int ) ;
+ int header ;
+ int memcpy (scalar_t__,int ,int) ;
 
 __attribute__((used)) static int sdr2_read_packet(AVFormatContext *s, AVPacket *pkt)
 {

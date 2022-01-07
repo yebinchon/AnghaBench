@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsBool ;
-typedef  int /*<<< orphan*/  _cmsTransformFn ;
-typedef  int /*<<< orphan*/  _cmsFreeUserDataFn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ TYPE_GRAY_8 ; 
- int /*<<< orphan*/  TrancendentalTransform ; 
 
-cmsBool  TransformFactory(cmsContext ContextID, _cmsTransformFn* xformPtr,
+
+
+typedef scalar_t__ cmsUInt32Number ;
+typedef int cmsPipeline ;
+typedef int cmsContext ;
+typedef int cmsBool ;
+typedef int _cmsTransformFn ;
+typedef int _cmsFreeUserDataFn ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ TYPE_GRAY_8 ;
+ int TrancendentalTransform ;
+
+cmsBool TransformFactory(cmsContext ContextID, _cmsTransformFn* xformPtr,
                           void** UserData,
                            _cmsFreeUserDataFn* FreePrivateDataFn,
                            cmsPipeline** Lut,
@@ -34,7 +34,7 @@ cmsBool  TransformFactory(cmsContext ContextID, _cmsTransformFn* xformPtr,
 {
     if (*OutputFormat == TYPE_GRAY_8)
     {
-        // *Lut holds the pipeline to be applied
+
         *xformPtr = TrancendentalTransform;
         return TRUE;
     }

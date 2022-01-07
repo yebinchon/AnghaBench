@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EVENT_INSERTCHARPRE ; 
- int /*<<< orphan*/ ** first_autopat ; 
+ scalar_t__ EVENT_INSERTCHARPRE ;
+ int ** first_autopat ;
 
 int
 has_insertcharpre()
 {
-    return (first_autopat[(int)EVENT_INSERTCHARPRE] != NULL);
+    return (first_autopat[(int)EVENT_INSERTCHARPRE] != ((void*)0));
 }

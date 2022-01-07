@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct kms {int /*<<< orphan*/  fd; } ;
-struct TYPE_7__ {int count_connectors; int /*<<< orphan*/ * connectors; } ;
-typedef  TYPE_1__ drmModeRes ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct kms {int fd; } ;
+struct TYPE_7__ {int count_connectors; int * connectors; } ;
+typedef TYPE_1__ drmModeRes ;
 struct TYPE_8__ {scalar_t__ connection; scalar_t__ count_modes; } ;
-typedef  TYPE_2__ drmModeConnector ;
+typedef TYPE_2__ drmModeConnector ;
 
-/* Variables and functions */
- scalar_t__ DRM_MODE_CONNECTED ; 
- int /*<<< orphan*/  drmModeFreeConnector (TYPE_2__*) ; 
- TYPE_2__* drmModeGetConnector (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DRM_MODE_CONNECTED ;
+ int drmModeFreeConnector (TYPE_2__*) ;
+ TYPE_2__* drmModeGetConnector (int ,int ) ;
 
 __attribute__((used)) static drmModeConnector *get_first_connected_connector(const struct kms *kms,
                                                        const drmModeRes *res)
@@ -37,5 +37,5 @@ __attribute__((used)) static drmModeConnector *get_first_connected_connector(con
         }
         drmModeFreeConnector(connector);
     }
-    return NULL;
+    return ((void*)0);
 }

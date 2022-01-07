@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {TYPE_1__* vtable; int /*<<< orphan*/ * pool; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  TYPE_2__ svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_11__ {int /*<<< orphan*/  (* set_svn_ra_open ) (TYPE_2__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* dup_session ) (TYPE_2__*,TYPE_2__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_2__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,TYPE_2__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_get_path_relative_to_root (TYPE_2__*,char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_session_url (TYPE_2__*,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_open4 ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {TYPE_1__* vtable; int * pool; int cancel_baton; int cancel_func; } ;
+typedef TYPE_2__ svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+struct TYPE_11__ {int (* set_svn_ra_open ) (TYPE_2__*,int ) ;int (* dup_session ) (TYPE_2__*,TYPE_2__*,char const*,int *,int *) ;} ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ TYPE_2__* apr_pcalloc (int *,int) ;
+ int stub1 (TYPE_2__*,TYPE_2__*,char const*,int *,int *) ;
+ int stub2 (TYPE_2__*,int ) ;
+ int svn_ra_get_path_relative_to_root (TYPE_2__*,char const**,char const*,int *) ;
+ int svn_ra_get_session_url (TYPE_2__*,char const**,int *) ;
+ int svn_ra_open4 ;
 
 svn_error_t *
 svn_ra__dup_session(svn_ra_session_t **new_session,
@@ -41,7 +41,7 @@ svn_ra__dup_session(svn_ra_session_t **new_session,
     {
       const char *dummy;
 
-      /* This verifies in new_session_url is in the repository */
+
       SVN_ERR(svn_ra_get_path_relative_to_root(old_session,
                                                &dummy,
                                                session_url,
@@ -50,7 +50,7 @@ svn_ra__dup_session(svn_ra_session_t **new_session,
   else
     SVN_ERR(svn_ra_get_session_url(old_session, &session_url, scratch_pool));
 
-  /* Create the session object. */
+
   session = apr_pcalloc(result_pool, sizeof(*session));
   session->cancel_func = old_session->cancel_func;
   session->cancel_baton = old_session->cancel_baton;

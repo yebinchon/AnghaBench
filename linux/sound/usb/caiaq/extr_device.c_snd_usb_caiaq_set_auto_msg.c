@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+
+
+typedef int tmp ;
 struct snd_usb_caiaqdev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EP1_CMD_AUTO_MSG ; 
- int snd_usb_caiaq_send_command (struct snd_usb_caiaqdev*,int /*<<< orphan*/ ,char*,int) ; 
+
+ int EP1_CMD_AUTO_MSG ;
+ int snd_usb_caiaq_send_command (struct snd_usb_caiaqdev*,int ,char*,int) ;
 
 int snd_usb_caiaq_set_auto_msg(struct snd_usb_caiaqdev *cdev,
-			       int digital, int analog, int erp)
+          int digital, int analog, int erp)
 {
-	char tmp[3] = { digital, analog, erp };
-	return snd_usb_caiaq_send_command(cdev, EP1_CMD_AUTO_MSG,
-					  tmp, sizeof(tmp));
+ char tmp[3] = { digital, analog, erp };
+ return snd_usb_caiaq_send_command(cdev, EP1_CMD_AUTO_MSG,
+       tmp, sizeof(tmp));
 }

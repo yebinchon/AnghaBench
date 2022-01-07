@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {int id_; TYPE_2__* f_info_; } ;
-typedef  TYPE_1__ VP8ThreadContext ;
+typedef TYPE_1__ VP8ThreadContext ;
 struct TYPE_6__ {int f_ilevel_; int f_limit_; int hev_thresh_; scalar_t__ f_inner_; } ;
-typedef  TYPE_2__ VP8FInfo ;
-struct TYPE_7__ {int cache_y_stride_; int filter_type_; int cache_uv_stride_; int /*<<< orphan*/ * cache_v_; int /*<<< orphan*/ * cache_u_; int /*<<< orphan*/ * cache_y_; TYPE_1__ thread_ctx_; } ;
-typedef  TYPE_3__ VP8Decoder ;
+typedef TYPE_2__ VP8FInfo ;
+struct TYPE_7__ {int cache_y_stride_; int filter_type_; int cache_uv_stride_; int * cache_v_; int * cache_u_; int * cache_y_; TYPE_1__ thread_ctx_; } ;
+typedef TYPE_3__ VP8Decoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VP8HFilter16 (int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8HFilter16i (int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8HFilter8 (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8HFilter8i (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8SimpleHFilter16 (int /*<<< orphan*/ * const,int const,int const) ; 
- int /*<<< orphan*/  VP8SimpleHFilter16i (int /*<<< orphan*/ * const,int const,int const) ; 
- int /*<<< orphan*/  VP8SimpleVFilter16 (int /*<<< orphan*/ * const,int const,int const) ; 
- int /*<<< orphan*/  VP8SimpleVFilter16i (int /*<<< orphan*/ * const,int const,int const) ; 
- int /*<<< orphan*/  VP8VFilter16 (int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8VFilter16i (int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8VFilter8 (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  VP8VFilter8i (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ int VP8HFilter16 (int * const,int const,int const,int const,int const) ;
+ int VP8HFilter16i (int * const,int const,int const,int const,int const) ;
+ int VP8HFilter8 (int * const,int * const,int const,int const,int const,int const) ;
+ int VP8HFilter8i (int * const,int * const,int const,int const,int const,int const) ;
+ int VP8SimpleHFilter16 (int * const,int const,int const) ;
+ int VP8SimpleHFilter16i (int * const,int const,int const) ;
+ int VP8SimpleVFilter16 (int * const,int const,int const) ;
+ int VP8SimpleVFilter16i (int * const,int const,int const) ;
+ int VP8VFilter16 (int * const,int const,int const,int const,int const) ;
+ int VP8VFilter16i (int * const,int const,int const,int const,int const) ;
+ int VP8VFilter8 (int * const,int * const,int const,int const,int const,int const) ;
+ int VP8VFilter8i (int * const,int * const,int const,int const,int const,int const) ;
+ int assert (int) ;
 
 __attribute__((used)) static void DoFilter(const VP8Decoder* const dec, int mb_x, int mb_y) {
   const VP8ThreadContext* const ctx = &dec->thread_ctx_;
@@ -48,7 +48,7 @@ __attribute__((used)) static void DoFilter(const VP8Decoder* const dec, int mb_x
     return;
   }
   assert(limit >= 3);
-  if (dec->filter_type_ == 1) {   // simple
+  if (dec->filter_type_ == 1) {
     if (mb_x > 0) {
       VP8SimpleHFilter16(y_dst, y_bps, limit + 4);
     }
@@ -61,7 +61,7 @@ __attribute__((used)) static void DoFilter(const VP8Decoder* const dec, int mb_x
     if (f_info->f_inner_) {
       VP8SimpleVFilter16i(y_dst, y_bps, limit);
     }
-  } else {    // complex
+  } else {
     const int uv_bps = dec->cache_uv_stride_;
     uint8_t* const u_dst = dec->cache_u_ + cache_id * 8 * uv_bps + mb_x * 8;
     uint8_t* const v_dst = dec->cache_v_ + cache_id * 8 * uv_bps + mb_x * 8;

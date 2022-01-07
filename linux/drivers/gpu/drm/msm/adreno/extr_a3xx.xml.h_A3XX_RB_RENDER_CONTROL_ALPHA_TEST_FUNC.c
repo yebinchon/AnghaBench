@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  enum adreno_compare_func { ____Placeholder_adreno_compare_func } adreno_compare_func ;
 
-/* Variables and functions */
- int A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__MASK ; 
- int A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__SHIFT ; 
+
+
+
+typedef int uint32_t ;
+typedef enum adreno_compare_func { ____Placeholder_adreno_compare_func } adreno_compare_func ;
+
+
+ int A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__MASK ;
+ int A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__SHIFT ;
 
 __attribute__((used)) static inline uint32_t A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC(enum adreno_compare_func val)
 {
-	return ((val) << A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__SHIFT) & A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__MASK;
+ return ((val) << A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__SHIFT) & A3XX_RB_RENDER_CONTROL_ALPHA_TEST_FUNC__MASK;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {int* state; } ;
-typedef  TYPE_1__ _picohash_sha256_ctx_t ;
+typedef TYPE_1__ _picohash_sha256_ctx_t ;
 
-/* Variables and functions */
- int _picohash_sha256_gamma0 (int) ; 
- int _picohash_sha256_gamma1 (int) ; 
- int /*<<< orphan*/  _picohash_sha256_rnd (int,int,int,int,int,int,int,int,int) ; 
+
+ int _picohash_sha256_gamma0 (int) ;
+ int _picohash_sha256_gamma1 (int) ;
+ int _picohash_sha256_rnd (int,int,int,int,int,int,int,int,int) ;
 
 __attribute__((used)) static inline void _picohash_sha256_compress(_picohash_sha256_ctx_t *ctx, unsigned char *buf)
 {
@@ -34,20 +34,20 @@ __attribute__((used)) static inline void _picohash_sha256_compress(_picohash_sha
     uint32_t S[8], W[64], t, t0, t1;
     int i;
 
-    /* copy state into S */
+
     for (i = 0; i < 8; i++)
         S[i] = ctx->state[i];
 
-    /* copy the state into 512-bits into W[0..15] */
+
     for (i = 0; i < 16; i++)
         W[i] =
             (uint32_t)buf[4 * i] << 24 | (uint32_t)buf[4 * i + 1] << 16 | (uint32_t)buf[4 * i + 2] << 8 | (uint32_t)buf[4 * i + 3];
 
-    /* fill W[16..63] */
+
     for (i = 16; i < 64; i++)
         W[i] = _picohash_sha256_gamma1(W[i - 2]) + W[i - 7] + _picohash_sha256_gamma0(W[i - 15]) + W[i - 16];
 
-    /* Compress */
+
     for (i = 0; i < 64; ++i) {
         _picohash_sha256_rnd(S[0], S[1], S[2], S[3], S[4], S[5], S[6], S[7], i);
         t = S[7];
@@ -61,7 +61,7 @@ __attribute__((used)) static inline void _picohash_sha256_compress(_picohash_sha
         S[0] = t;
     }
 
-    /* feedback */
+
     for (i = 0; i < 8; i++)
         ctx->state[i] = ctx->state[i] + S[i];
 }

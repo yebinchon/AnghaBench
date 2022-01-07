@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GLAD_GL_IS_SOME_NEW_VERSION ; 
- int GLAD_VERSION_MAJOR (int) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int strlen (char const*) ; 
- char* strstr (char const*,char const*) ; 
+ int GLAD_GL_IS_SOME_NEW_VERSION ;
+ int GLAD_VERSION_MAJOR (int) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int strlen (char const*) ;
+ char* strstr (char const*,char const*) ;
 
 __attribute__((used)) static int glad_gl_has_extension(int version, const char *exts, unsigned int num_exts_i, char **exts_i, const char *ext) {
     if(GLAD_VERSION_MAJOR(version) < 3 || !GLAD_GL_IS_SOME_NEW_VERSION) {
@@ -24,12 +16,12 @@ __attribute__((used)) static int glad_gl_has_extension(int version, const char *
         const char *loc;
         const char *terminator;
         extensions = exts;
-        if(extensions == NULL || ext == NULL) {
+        if(extensions == ((void*)0) || ext == ((void*)0)) {
             return 0;
         }
         while(1) {
             loc = strstr(extensions, ext);
-            if(loc == NULL) {
+            if(loc == ((void*)0)) {
                 return 0;
             }
             terminator = loc + strlen(ext);

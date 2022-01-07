@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sigcontext_ {scalar_t__ trapno; int oldmask; int /*<<< orphan*/  cr2; int /*<<< orphan*/  flags; int /*<<< orphan*/  ip; int /*<<< orphan*/  sp_at_signal; int /*<<< orphan*/  sp; int /*<<< orphan*/  bp; int /*<<< orphan*/  si; int /*<<< orphan*/  di; int /*<<< orphan*/  dx; int /*<<< orphan*/  cx; int /*<<< orphan*/  bx; int /*<<< orphan*/  ax; } ;
-struct cpu_state {scalar_t__ trapno; int /*<<< orphan*/  segfault_addr; int /*<<< orphan*/  eflags; int /*<<< orphan*/  eip; int /*<<< orphan*/  esp; int /*<<< orphan*/  ebp; int /*<<< orphan*/  esi; int /*<<< orphan*/  edi; int /*<<< orphan*/  edx; int /*<<< orphan*/  ecx; int /*<<< orphan*/  ebx; int /*<<< orphan*/  eax; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sigcontext_ {scalar_t__ trapno; int oldmask; int cr2; int flags; int ip; int sp_at_signal; int sp; int bp; int si; int di; int dx; int cx; int bx; int ax; } ;
+struct cpu_state {scalar_t__ trapno; int segfault_addr; int eflags; int eip; int esp; int ebp; int esi; int edi; int edx; int ecx; int ebx; int eax; } ;
 struct TYPE_2__ {int blocked; } ;
 
-/* Variables and functions */
- scalar_t__ INT_GPF ; 
- int /*<<< orphan*/  collapse_flags (struct cpu_state*) ; 
- TYPE_1__* current ; 
+
+ scalar_t__ INT_GPF ;
+ int collapse_flags (struct cpu_state*) ;
+ TYPE_1__* current ;
 
 __attribute__((used)) static void setup_sigcontext(struct sigcontext_ *sc, struct cpu_state *cpu) {
     sc->ax = cpu->eax;
@@ -35,6 +35,6 @@ __attribute__((used)) static void setup_sigcontext(struct sigcontext_ *sc, struc
     sc->trapno = cpu->trapno;
     if (cpu->trapno == INT_GPF)
         sc->cr2 = cpu->segfault_addr;
-    // TODO more shit
+
     sc->oldmask = current->blocked & 0xffffffff;
 }

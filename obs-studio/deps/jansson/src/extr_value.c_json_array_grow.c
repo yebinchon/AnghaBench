@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_3__ {size_t entries; size_t size; int /*<<< orphan*/ ** table; } ;
-typedef  TYPE_1__ json_array_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  array_copy (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  jsonp_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** jsonp_malloc (size_t) ; 
- size_t max (size_t,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_3__ {size_t entries; size_t size; int ** table; } ;
+typedef TYPE_1__ json_array_t ;
+
+
+ int array_copy (int **,int ,int **,int ,size_t) ;
+ int jsonp_free (int **) ;
+ int ** jsonp_malloc (size_t) ;
+ size_t max (size_t,int) ;
 
 __attribute__((used)) static json_t **json_array_grow(json_array_t *array,
                                 size_t amount,
@@ -36,7 +36,7 @@ __attribute__((used)) static json_t **json_array_grow(json_array_t *array,
     new_size = max(array->size + amount, array->size * 2);
     new_table = jsonp_malloc(new_size * sizeof(json_t *));
     if(!new_table)
-        return NULL;
+        return ((void*)0);
 
     array->size = new_size;
     array->table = new_table;

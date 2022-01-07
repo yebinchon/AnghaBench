@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lang_output_section_statement_type ;
-struct TYPE_5__ {int /*<<< orphan*/  head; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lang_output_section_statement_type ;
+struct TYPE_5__ {int head; } ;
 struct TYPE_6__ {TYPE_1__ children; } ;
-typedef  TYPE_2__ lang_group_statement_type ;
-struct TYPE_7__ {int /*<<< orphan*/  map_file; } ;
+typedef TYPE_2__ lang_group_statement_type ;
+struct TYPE_7__ {int map_file; } ;
 
-/* Variables and functions */
- TYPE_4__ config ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  print_statement_list (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ TYPE_4__ config ;
+ int fprintf (int ,char*) ;
+ int print_statement_list (int ,int *) ;
 
 __attribute__((used)) static void
 print_group (lang_group_statement_type *s,
-	     lang_output_section_statement_type *os)
+      lang_output_section_statement_type *os)
 {
   fprintf (config.map_file, "START GROUP\n");
   print_statement_list (s->children.head, os);

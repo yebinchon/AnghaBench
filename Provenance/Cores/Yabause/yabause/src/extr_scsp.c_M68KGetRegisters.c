@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  PC; int /*<<< orphan*/  SR; int /*<<< orphan*/ * A; int /*<<< orphan*/ * D; } ;
-typedef  TYPE_1__ m68kregs_struct ;
-struct TYPE_5__ {int /*<<< orphan*/  (* GetPC ) () ;int /*<<< orphan*/  (* GetSR ) () ;int /*<<< orphan*/  (* GetAReg ) (int) ;int /*<<< orphan*/  (* GetDReg ) (int) ;} ;
 
-/* Variables and functions */
- TYPE_3__* M68K ; 
- int /*<<< orphan*/  stub1 (int) ; 
- int /*<<< orphan*/  stub2 (int) ; 
- int /*<<< orphan*/  stub3 () ; 
- int /*<<< orphan*/  stub4 () ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int PC; int SR; int * A; int * D; } ;
+typedef TYPE_1__ m68kregs_struct ;
+struct TYPE_5__ {int (* GetPC ) () ;int (* GetSR ) () ;int (* GetAReg ) (int) ;int (* GetDReg ) (int) ;} ;
+
+
+ TYPE_3__* M68K ;
+ int stub1 (int) ;
+ int stub2 (int) ;
+ int stub3 () ;
+ int stub4 () ;
 
 void
 M68KGetRegisters (m68kregs_struct *regs)
 {
   int i;
 
-  if (regs != NULL)
+  if (regs != ((void*)0))
     {
       for (i = 0; i < 8; i++)
         {

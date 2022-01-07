@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ mb_y; scalar_t__ mb_height; int /*<<< orphan*/  gb; int /*<<< orphan*/  mb_num_left; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ mb_y; scalar_t__ mb_height; int gb; int mb_num_left; } ;
 struct TYPE_6__ {int mb_skip_run; } ;
 struct TYPE_7__ {TYPE_1__ s; } ;
-typedef  TYPE_2__ RV34DecContext ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_2__ RV34DecContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  show_bits (int /*<<< orphan*/ *,int) ; 
+
+ int get_bits_left (int *) ;
+ int show_bits (int *,int) ;
 
 __attribute__((used)) static int check_slice_end(RV34DecContext *r, MpegEncContext *s)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EOVERFLOW ; 
- size_t INT_MAX ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- char* libintl_vasnprintf (char*,size_t*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- int vsprintf (char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int EOVERFLOW ;
+ size_t INT_MAX ;
+ int errno ;
+ int free (char*) ;
+ char* libintl_vasnprintf (char*,size_t*,char const*,int ) ;
+ int * strchr (char const*,char) ;
+ int vsprintf (char*,char const*,int ) ;
 
 int
 libintl_vsprintf (char *resultbuf, const char *format, va_list args)
 {
-  if (strchr (format, '$') == NULL)
+  if (strchr (format, '$') == ((void*)0))
     return vsprintf (resultbuf, format, args);
   else
     {

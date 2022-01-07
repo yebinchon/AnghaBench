@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int jsval_t ;
 struct TYPE_3__ {unsigned int cArgs; unsigned int cNamedArgs; unsigned int rgvarg; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DISPPARAMS ;
+typedef int HRESULT ;
+typedef TYPE_1__ DISPPARAMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * heap_alloc (unsigned int) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  variant_to_jsval (unsigned int,int /*<<< orphan*/ *) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int S_OK ;
+ int * heap_alloc (unsigned int) ;
+ int heap_free (int *) ;
+ int jsval_release (int ) ;
+ int variant_to_jsval (unsigned int,int *) ;
 
 __attribute__((used)) static HRESULT convert_params(const DISPPARAMS *dp, jsval_t *buf, unsigned *argc, jsval_t **ret)
 {

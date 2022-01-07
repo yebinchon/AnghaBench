@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_3__* instr; } ;
-typedef  TYPE_4__ exec_ctx_t ;
-struct TYPE_10__ {int /*<<< orphan*/  bstr; } ;
+typedef TYPE_4__ exec_ctx_t ;
+struct TYPE_10__ {int bstr; } ;
 struct TYPE_11__ {unsigned int uint; } ;
 struct TYPE_12__ {TYPE_1__ arg1; TYPE_2__ arg2; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DISPPARAMS ;
-typedef  int /*<<< orphan*/  BSTR ;
+typedef int HRESULT ;
+typedef int DISPPARAMS ;
+typedef int BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_PROPERTYPUTREF ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assign_ident (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  stack_assume_disp (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_popn (TYPE_4__*,int) ; 
- int /*<<< orphan*/  vbstack_to_dp (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int DISPATCH_PROPERTYPUTREF ;
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int assign_ident (TYPE_4__*,int ,int ,int *) ;
+ int debugstr_w (int const) ;
+ int stack_assume_disp (TYPE_4__*,int ,int *) ;
+ int stack_popn (TYPE_4__*,int) ;
+ int vbstack_to_dp (TYPE_4__*,int ,int ,int *) ;
 
 __attribute__((used)) static HRESULT interp_set_ident(exec_ctx_t *ctx)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static HRESULT interp_set_ident(exec_ctx_t *ctx)
         return E_NOTIMPL;
     }
 
-    hres = stack_assume_disp(ctx, 0, NULL);
+    hres = stack_assume_disp(ctx, 0, ((void*)0));
     if(FAILED(hres))
         return hres;
 

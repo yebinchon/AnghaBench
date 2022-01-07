@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ X; scalar_t__* offset; int flags; struct TYPE_4__* link; int /*<<< orphan*/  height; } ;
-typedef  TYPE_1__** PProfileList ;
-typedef  TYPE_1__* PProfile ;
 
-/* Variables and functions */
- int Flow_Up ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ X; scalar_t__* offset; int flags; struct TYPE_4__* link; int height; } ;
+typedef TYPE_1__** PProfileList ;
+typedef TYPE_1__* PProfile ;
+
+
+ int Flow_Up ;
 
 __attribute__((used)) static void
-  Sort( PProfileList  list )
+  Sort( PProfileList list )
   {
-    PProfile  *old, current, next;
+    PProfile *old, current, next;
 
 
-    /* First, set the new X coordinate of each profile */
+
     current = *list;
     while ( current )
     {
-      current->X       = *current->offset;
+      current->X = *current->offset;
       current->offset += ( current->flags & Flow_Up ) ? 1 : -1;
       current->height--;
       current = current->link;
     }
 
-    /* Then sort them */
-    old     = list;
+
+    old = list;
     current = *old;
 
     if ( !current )
@@ -47,7 +47,7 @@ __attribute__((used)) static void
     {
       if ( current->X <= next->X )
       {
-        old     = &current->link;
+        old = &current->link;
         current = *old;
 
         if ( !current )
@@ -55,11 +55,11 @@ __attribute__((used)) static void
       }
       else
       {
-        *old          = next;
+        *old = next;
         current->link = next->link;
-        next->link    = current;
+        next->link = current;
 
-        old     = list;
+        old = list;
         current = *old;
       }
 

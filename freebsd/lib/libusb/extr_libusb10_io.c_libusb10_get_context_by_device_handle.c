@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libusb_device_handle ;
-typedef  int /*<<< orphan*/  libusb_context ;
-struct TYPE_2__ {int /*<<< orphan*/ * ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GET_CONTEXT (int /*<<< orphan*/ *) ; 
- TYPE_1__* libusb_get_device (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int libusb_device_handle ;
+typedef int libusb_context ;
+struct TYPE_2__ {int * ctx; } ;
+
+
+ int * GET_CONTEXT (int *) ;
+ TYPE_1__* libusb_get_device (int *) ;
 
 __attribute__((used)) static libusb_context *
 libusb10_get_context_by_device_handle(libusb_device_handle *devh)
 {
-	libusb_context *ctx;
+ libusb_context *ctx;
 
-	if (devh != NULL)
-		ctx = libusb_get_device(devh)->ctx;
-	else
-		ctx = NULL;
+ if (devh != ((void*)0))
+  ctx = libusb_get_device(devh)->ctx;
+ else
+  ctx = ((void*)0);
 
-	return (GET_CONTEXT(ctx));
+ return (GET_CONTEXT(ctx));
 }

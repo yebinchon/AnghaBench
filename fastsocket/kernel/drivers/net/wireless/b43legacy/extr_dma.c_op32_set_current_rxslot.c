@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct b43legacy_dmaring {int dummy; } ;
 struct b43legacy_dmadesc32 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B43legacy_DMA32_RXINDEX ; 
- int /*<<< orphan*/  b43legacy_dma_write (struct b43legacy_dmaring*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int B43legacy_DMA32_RXINDEX ;
+ int b43legacy_dma_write (struct b43legacy_dmaring*,int ,int ) ;
 
 __attribute__((used)) static void op32_set_current_rxslot(struct b43legacy_dmaring *ring,
-				    int slot)
+        int slot)
 {
-	b43legacy_dma_write(ring, B43legacy_DMA32_RXINDEX,
-			    (u32)(slot * sizeof(struct b43legacy_dmadesc32)));
+ b43legacy_dma_write(ring, B43legacy_DMA32_RXINDEX,
+       (u32)(slot * sizeof(struct b43legacy_dmadesc32)));
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ucred {int dummy; } ;
-struct shmid_kernel {int /*<<< orphan*/  label; } ;
+struct shmid_kernel {int label; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC_PERFORM (int /*<<< orphan*/ ,struct ucred*,struct shmid_kernel*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sysvshm_label_associate ; 
+
+ int MAC_PERFORM (int ,struct ucred*,struct shmid_kernel*,int ) ;
+ int sysvshm_label_associate ;
 
 void
 mac_sysvshm_label_associate(struct ucred *cred, struct shmid_kernel *shmsegptr)
 {
 
-	MAC_PERFORM(sysvshm_label_associate, cred, shmsegptr, shmsegptr->label);
+ MAC_PERFORM(sysvshm_label_associate, cred, shmsegptr, shmsegptr->label);
 }

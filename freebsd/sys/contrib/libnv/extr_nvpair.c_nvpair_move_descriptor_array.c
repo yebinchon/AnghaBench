@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  nvpair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EBADF ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERRNO_RESTORE () ; 
- int /*<<< orphan*/  ERRNO_SAVE () ; 
- int /*<<< orphan*/  ERRNO_SET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NV_TYPE_DESCRIPTOR_ARRAY ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ fd_is_valid (int) ; 
- int /*<<< orphan*/  nv_free (int*) ; 
- int /*<<< orphan*/ * nvpair_allocv (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,size_t) ; 
+
+
+
+typedef int value ;
+typedef int uint64_t ;
+typedef int nvpair_t ;
+
+
+ int EBADF ;
+ int EINVAL ;
+ int ERRNO_RESTORE () ;
+ int ERRNO_SAVE () ;
+ int ERRNO_SET (int ) ;
+ int NV_TYPE_DESCRIPTOR_ARRAY ;
+ int close (int) ;
+ scalar_t__ fd_is_valid (int) ;
+ int nv_free (int*) ;
+ int * nvpair_allocv (char const*,int ,int ,int,size_t) ;
 
 nvpair_t *
 nvpair_move_descriptor_array(const char *name, int *value, size_t nitems)
 {
-	nvpair_t *nvp;
-	size_t i;
+ nvpair_t *nvp;
+ size_t i;
 
-	if (value == NULL || nitems == 0) {
-		ERRNO_SET(EINVAL);
-		return (NULL);
-	}
+ if (value == ((void*)0) || nitems == 0) {
+  ERRNO_SET(EINVAL);
+  return (((void*)0));
+ }
 
-	for (i = 0; i < nitems; i++) {
-		if (value[i] != -1 && !fd_is_valid(value[i])) {
-			ERRNO_SET(EBADF);
-			goto fail;
-		}
-	}
+ for (i = 0; i < nitems; i++) {
+  if (value[i] != -1 && !fd_is_valid(value[i])) {
+   ERRNO_SET(EBADF);
+   goto fail;
+  }
+ }
 
-	nvp = nvpair_allocv(name, NV_TYPE_DESCRIPTOR_ARRAY,
-	    (uint64_t)(uintptr_t)value, sizeof(value[0]) * nitems, nitems);
-	if (nvp == NULL)
-		goto fail;
+ nvp = nvpair_allocv(name, NV_TYPE_DESCRIPTOR_ARRAY,
+     (uint64_t)(uintptr_t)value, sizeof(value[0]) * nitems, nitems);
+ if (nvp == ((void*)0))
+  goto fail;
 
-	return (nvp);
+ return (nvp);
 fail:
-	ERRNO_SAVE();
-	for (i = 0; i < nitems; i++) {
-		if (fd_is_valid(value[i]))
-			close(value[i]);
-	}
-	nv_free(value);
-	ERRNO_RESTORE();
+ ERRNO_SAVE();
+ for (i = 0; i < nitems; i++) {
+  if (fd_is_valid(value[i]))
+   close(value[i]);
+ }
+ nv_free(value);
+ ERRNO_RESTORE();
 
-	return (NULL);
+ return (((void*)0));
 }

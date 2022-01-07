@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int* Bytes; int ByteCount; } ;
 struct TYPE_4__ {int ExtensionBlockCount; TYPE_2__* ExtensionBlocks; } ;
-typedef  TYPE_1__ Extensions ;
-typedef  TYPE_2__ ExtensionBlock ;
+typedef TYPE_1__ Extensions ;
+typedef TYPE_2__ ExtensionBlock ;
 
-/* Variables and functions */
- int GIF_ERROR ; 
- int GIF_OK ; 
- int /*<<< orphan*/  memcpy (int*,unsigned char const*,int) ; 
- int* ungif_realloc (int*,int) ; 
+
+ int GIF_ERROR ;
+ int GIF_OK ;
+ int memcpy (int*,unsigned char const*,int) ;
+ int* ungif_realloc (int*,int) ;
 
 __attribute__((used)) static int
 AppendExtensionBlock(Extensions *New,
@@ -30,13 +30,13 @@ AppendExtensionBlock(Extensions *New,
 {
     ExtensionBlock *ep;
 
-    if (New->ExtensionBlocks == NULL)
+    if (New->ExtensionBlocks == ((void*)0))
         return (GIF_ERROR);
 
     ep = &New->ExtensionBlocks[New->ExtensionBlockCount - 1];
 
     ep->Bytes = ungif_realloc(ep->Bytes, ep->ByteCount + Len + 1);
-    if (ep->Bytes == NULL)
+    if (ep->Bytes == ((void*)0))
         return (GIF_ERROR);
 
     ep->Bytes[ep->ByteCount] = Len;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsISupports ;
-typedef  int /*<<< orphan*/  nsIPluginInstance ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-typedef  int /*<<< orphan*/  nsIDOMElement ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsISupports ;
+typedef int nsIPluginInstance ;
+typedef int nsIDOMHTMLElement ;
+typedef int nsIDOMElement ;
 struct TYPE_3__ {scalar_t__ ndata; } ;
-typedef  TYPE_1__* NPP ;
+typedef TYPE_1__* NPP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLElement ; 
- int /*<<< orphan*/  IID_nsIPluginInstance ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIDOMElement_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIPluginInstance_GetDOMElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIPluginInstance_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsISupports_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+ int ERR (char*,int ) ;
+ int IID_nsIDOMHTMLElement ;
+ int IID_nsIPluginInstance ;
+ scalar_t__ NS_FAILED (int ) ;
+ int nsIDOMElement_QueryInterface (int *,int *,void**) ;
+ int nsIDOMElement_Release (int *) ;
+ int nsIPluginInstance_GetDOMElement (int *,int **) ;
+ int nsIPluginInstance_Release (int *) ;
+ int nsISupports_QueryInterface (int *,int *,void**) ;
 
 __attribute__((used)) static nsIDOMHTMLElement *get_dom_element(NPP instance)
 {
@@ -41,21 +41,21 @@ __attribute__((used)) static nsIDOMHTMLElement *get_dom_element(NPP instance)
     nsres = nsISupports_QueryInterface(instance_unk, &IID_nsIPluginInstance, (void**)&plugin_instance);
     if(NS_FAILED(nsres)) {
         ERR("Could not get nsIPluginInstance interface: %08x\n", nsres);
-        return NULL;
+        return ((void*)0);
     }
 
     nsres = nsIPluginInstance_GetDOMElement(plugin_instance, &elem);
     nsIPluginInstance_Release(plugin_instance);
     if(NS_FAILED(nsres)) {
         ERR("GetDOMElement failed: %08x\n", nsres);
-        return NULL;
+        return ((void*)0);
     }
 
     nsres = nsIDOMElement_QueryInterface(elem, &IID_nsIDOMHTMLElement, (void**)&html_elem);
     nsIDOMElement_Release(elem);
     if(NS_FAILED(nsres)) {
         ERR("Could not get nsIDOMHTMLElement iface: %08x\n", nsres);
-        return NULL;
+        return ((void*)0);
     }
 
     return html_elem;

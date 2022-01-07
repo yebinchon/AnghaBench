@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pvr2_hdw {int /*<<< orphan*/  big_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK_GIVE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOCK_TAKE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pvr2_hdw_state_sched (struct pvr2_hdw*) ; 
- int pvr2_hdw_untrip_unlocked (struct pvr2_hdw*) ; 
+
+
+
+struct pvr2_hdw {int big_lock; } ;
+
+
+ int LOCK_GIVE (int ) ;
+ int LOCK_TAKE (int ) ;
+ int pvr2_hdw_state_sched (struct pvr2_hdw*) ;
+ int pvr2_hdw_untrip_unlocked (struct pvr2_hdw*) ;
 
 int pvr2_hdw_untrip(struct pvr2_hdw *hdw)
 {
-	int fl;
-	LOCK_TAKE(hdw->big_lock); do {
-		fl = pvr2_hdw_untrip_unlocked(hdw);
-	} while (0); LOCK_GIVE(hdw->big_lock);
-	if (fl) pvr2_hdw_state_sched(hdw);
-	return 0;
+ int fl;
+ LOCK_TAKE(hdw->big_lock); do {
+  fl = pvr2_hdw_untrip_unlocked(hdw);
+ } while (0); LOCK_GIVE(hdw->big_lock);
+ if (fl) pvr2_hdw_state_sched(hdw);
+ return 0;
 }

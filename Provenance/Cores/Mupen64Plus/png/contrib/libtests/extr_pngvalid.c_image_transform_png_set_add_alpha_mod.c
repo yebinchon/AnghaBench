@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  transform_display ;
-typedef  int /*<<< orphan*/  png_const_structp ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int transform_display ;
+typedef int png_const_structp ;
 struct TYPE_8__ {TYPE_3__* next; } ;
-typedef  TYPE_1__ image_transform ;
+typedef TYPE_1__ image_transform ;
 struct TYPE_9__ {int bit_depth; int colour_type; unsigned int alpha; double alphaf; int alpha_first; scalar_t__ alphae; } ;
-typedef  TYPE_2__ image_pixel ;
+typedef TYPE_2__ image_pixel ;
 struct TYPE_11__ {unsigned int const filler; scalar_t__ flags; } ;
-struct TYPE_10__ {int /*<<< orphan*/  (* mod ) (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ;} ;
+struct TYPE_10__ {int (* mod ) (TYPE_3__*,TYPE_2__*,int ,int const*) ;} ;
 
-/* Variables and functions */
- int PNG_COLOR_TYPE_GRAY ; 
- int PNG_COLOR_TYPE_RGB ; 
- scalar_t__ PNG_FILLER_BEFORE ; 
- TYPE_7__ data ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int PNG_COLOR_TYPE_GRAY ;
+ int PNG_COLOR_TYPE_RGB ;
+ scalar_t__ PNG_FILLER_BEFORE ;
+ TYPE_7__ data ;
+ int stub1 (TYPE_3__*,TYPE_2__*,int ,int const*) ;
 
 __attribute__((used)) static void
 image_transform_png_set_add_alpha_mod(const image_transform *this,
@@ -44,7 +44,7 @@ image_transform_png_set_add_alpha_mod(const image_transform *this,
       that->alphaf = ((double)that->alpha) / max;
       that->alphae = 0;
 
-      that->colour_type |= 4; /* alpha added */
+      that->colour_type |= 4;
       that->alpha_first = data.flags == PNG_FILLER_BEFORE;
    }
 

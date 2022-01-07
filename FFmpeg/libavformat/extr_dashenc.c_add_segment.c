@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* int64_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* int64_t ;
 struct TYPE_7__ {int nb_segments; int segments_size; int segment_index; TYPE_1__** segments; } ;
-struct TYPE_6__ {scalar_t__ time; void* index_length; void* range_length; void* start_pos; void* duration; int /*<<< orphan*/  file; } ;
-typedef  TYPE_1__ Segment ;
-typedef  TYPE_2__ OutputStream ;
+struct TYPE_6__ {scalar_t__ time; void* index_length; void* range_length; void* start_pos; void* duration; int file; } ;
+typedef TYPE_1__ Segment ;
+typedef TYPE_2__ OutputStream ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,int,int) ; 
- TYPE_1__* av_mallocz (int) ; 
- int av_reallocp (TYPE_1__***,int) ; 
- int /*<<< orphan*/  av_strlcpy (int /*<<< orphan*/ ,char const*,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ int av_log (int *,int ,char*,char const*,int,int) ;
+ TYPE_1__* av_mallocz (int) ;
+ int av_reallocp (TYPE_1__***,int) ;
+ int av_strlcpy (int ,char const*,int) ;
 
 __attribute__((used)) static int add_segment(OutputStream *os, const char *file,
                        int64_t time, int64_t duration,
@@ -49,7 +49,7 @@ __attribute__((used)) static int add_segment(OutputStream *os, const char *file,
     av_strlcpy(seg->file, file, sizeof(seg->file));
     seg->time = time;
     seg->duration = duration;
-    if (seg->time < 0) { // If pts<0, it is expected to be cut away with an edit list
+    if (seg->time < 0) {
         seg->duration += seg->time;
         seg->time = 0;
     }
@@ -58,9 +58,9 @@ __attribute__((used)) static int add_segment(OutputStream *os, const char *file,
     seg->index_length = index_length;
     os->segments[os->nb_segments++] = seg;
     os->segment_index++;
-    //correcting the segment index if it has fallen behind the expected value
+
     if (os->segment_index < next_exp_index) {
-        av_log(NULL, AV_LOG_WARNING, "Correcting the segment index after file %s: current=%d corrected=%d\n",
+        av_log(((void*)0), AV_LOG_WARNING, "Correcting the segment index after file %s: current=%d corrected=%d\n",
                file, os->segment_index, next_exp_index);
         os->segment_index = next_exp_index;
     }

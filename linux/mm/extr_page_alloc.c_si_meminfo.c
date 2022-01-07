@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sysinfo {int /*<<< orphan*/  mem_unit; int /*<<< orphan*/  freehigh; int /*<<< orphan*/  totalhigh; int /*<<< orphan*/  bufferram; int /*<<< orphan*/  freeram; int /*<<< orphan*/  sharedram; int /*<<< orphan*/  totalram; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NR_FREE_PAGES ; 
- int /*<<< orphan*/  NR_SHMEM ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  global_node_page_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  global_zone_page_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nr_blockdev_pages () ; 
- int /*<<< orphan*/  nr_free_highpages () ; 
- int /*<<< orphan*/  totalhigh_pages () ; 
- int /*<<< orphan*/  totalram_pages () ; 
+
+
+
+struct sysinfo {int mem_unit; int freehigh; int totalhigh; int bufferram; int freeram; int sharedram; int totalram; } ;
+
+
+ int NR_FREE_PAGES ;
+ int NR_SHMEM ;
+ int PAGE_SIZE ;
+ int global_node_page_state (int ) ;
+ int global_zone_page_state (int ) ;
+ int nr_blockdev_pages () ;
+ int nr_free_highpages () ;
+ int totalhigh_pages () ;
+ int totalram_pages () ;
 
 void si_meminfo(struct sysinfo *val)
 {
-	val->totalram = totalram_pages();
-	val->sharedram = global_node_page_state(NR_SHMEM);
-	val->freeram = global_zone_page_state(NR_FREE_PAGES);
-	val->bufferram = nr_blockdev_pages();
-	val->totalhigh = totalhigh_pages();
-	val->freehigh = nr_free_highpages();
-	val->mem_unit = PAGE_SIZE;
+ val->totalram = totalram_pages();
+ val->sharedram = global_node_page_state(NR_SHMEM);
+ val->freeram = global_zone_page_state(NR_FREE_PAGES);
+ val->bufferram = nr_blockdev_pages();
+ val->totalhigh = totalhigh_pages();
+ val->freehigh = nr_free_highpages();
+ val->mem_unit = PAGE_SIZE;
 }

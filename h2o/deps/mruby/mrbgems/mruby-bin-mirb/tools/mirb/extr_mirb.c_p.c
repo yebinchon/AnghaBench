@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_5__ {int /*<<< orphan*/  exc; } ;
-typedef  TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_locale_free (char*) ; 
- char* mrb_locale_from_utf8 (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_obj_as_string (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  putc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
+struct TYPE_5__ {int exc; } ;
+typedef TYPE_1__ mrb_state ;
+
+
+ scalar_t__ RSTRING_LEN (int ) ;
+ int RSTRING_PTR (int ) ;
+ int fputs (char*,int ) ;
+ int fwrite (char*,int ,int,int ) ;
+ int mrb_funcall (TYPE_1__*,int ,char*,int ) ;
+ int mrb_locale_free (char*) ;
+ char* mrb_locale_from_utf8 (int ,int) ;
+ int mrb_obj_as_string (TYPE_1__*,int ) ;
+ int mrb_obj_value (int ) ;
+ int mrb_string_p (int ) ;
+ int putc (char,int ) ;
+ int stdout ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 p(mrb_state *mrb, mrb_value obj, int prompt)

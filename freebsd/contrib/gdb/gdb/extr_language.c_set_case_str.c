@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ scalar_t__ case_mode ;
+ scalar_t__ case_mode_auto ;
+ int case_sensitive ;
 
-/* Forward declarations */
 
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ case_mode ; 
- scalar_t__ case_mode_auto ; 
- int /*<<< orphan*/  case_sensitive ; 
-#define  case_sensitive_off 129 
-#define  case_sensitive_on 128 
- int case_sensitivity ; 
- int /*<<< orphan*/  concat (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  xfree (int /*<<< orphan*/ ) ; 
+ int case_sensitivity ;
+ int concat (char*,char*,int *) ;
+ int error (char*) ;
+ int xfree (int ) ;
 
 __attribute__((used)) static void
 set_case_str (void)
 {
-   char *tmp = NULL, *prefix = "";
+   char *tmp = ((void*)0), *prefix = "";
 
    if (case_mode==case_mode_auto)
       prefix = "auto; currently ";
 
    switch (case_sensitivity)
    {
-   case case_sensitive_on:
+   case 128:
      tmp = "on";
      break;
-   case case_sensitive_off:
+   case 129:
      tmp = "off";
      break;
    default:
@@ -43,5 +35,5 @@ set_case_str (void)
    }
 
    xfree (case_sensitive);
-   case_sensitive = concat (prefix, tmp, NULL);
+   case_sensitive = concat (prefix, tmp, ((void*)0));
 }

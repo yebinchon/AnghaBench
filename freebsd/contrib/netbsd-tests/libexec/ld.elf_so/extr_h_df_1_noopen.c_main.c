@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RTLD_NOLOAD ; 
- int /*<<< orphan*/  dlerror () ; 
- void* dlopen (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errx (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
+ int RTLD_NOLOAD ;
+ int dlerror () ;
+ void* dlopen (char*,int ) ;
+ int errx (int,char*,int ) ;
+ int printf (char*) ;
 
 int
 main(void)
 {
-	void *handle;
+ void *handle;
 
-	handle = dlopen("libpthread.so", RTLD_NOLOAD);
-	if (handle == NULL)
-		errx(1, "%s", dlerror());
+ handle = dlopen("libpthread.so", RTLD_NOLOAD);
+ if (handle == ((void*)0))
+  errx(1, "%s", dlerror());
 
-	printf("libpthread loaded successfully\n");
-	return 0;
+ printf("libpthread loaded successfully\n");
+ return 0;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- char* format_procedure_internal (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int Oid ;
+
+
+ char* format_procedure_internal (int ,int) ;
 
 char *
 format_procedure_qualified(Oid procedure_oid)
 {
-	return format_procedure_internal(procedure_oid, true);
+ return format_procedure_internal(procedure_oid, 1);
 }

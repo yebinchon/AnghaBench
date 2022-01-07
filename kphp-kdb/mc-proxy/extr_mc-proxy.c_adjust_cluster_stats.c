@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mc_cluster {int /*<<< orphan*/  a_timeouts; int /*<<< orphan*/  a_sbytes; int /*<<< orphan*/  a_rbytes; int /*<<< orphan*/  a_req; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mc_cluster {int a_timeouts; int a_sbytes; int a_rbytes; int a_req; } ;
 struct TYPE_2__ {int clusters_num; struct mc_cluster* Clusters; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMORT_FACTOR ; 
- TYPE_1__* CurConf ; 
+
+ int AMORT_FACTOR ;
+ TYPE_1__* CurConf ;
 
 void adjust_cluster_stats (void) {
   int i;

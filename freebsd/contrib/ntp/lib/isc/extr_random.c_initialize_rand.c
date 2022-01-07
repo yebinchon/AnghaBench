@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int getpid () ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- unsigned int time (int /*<<< orphan*/ *) ; 
+ unsigned int getpid () ;
+ int srand (unsigned int) ;
+ unsigned int time (int *) ;
 
 __attribute__((used)) static void
 initialize_rand(void)
 {
-#ifndef HAVE_ARC4RANDOM
-	unsigned int pid = getpid();
 
-	/*
-	 * The low bits of pid generally change faster.
-	 * Xor them with the high bits of time which change slowly.
-	 */
-	pid = ((pid << 16) & 0xffff0000) | ((pid >> 16) & 0xffff);
+ unsigned int pid = getpid();
 
-	srand(time(NULL) ^ pid);
-#endif
+
+
+
+
+ pid = ((pid << 16) & 0xffff0000) | ((pid >> 16) & 0xffff);
+
+ srand(time(((void*)0)) ^ pid);
+
 }

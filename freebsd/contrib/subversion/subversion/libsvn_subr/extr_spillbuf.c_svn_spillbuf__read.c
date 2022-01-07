@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {struct memblock_t* out_for_reading; } ;
-typedef  TYPE_1__ svn_spillbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct memblock_t {char* data; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_spillbuf_t ;
+typedef int svn_error_t ;
+struct memblock_t {char* data; int size; } ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  maybe_seek (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_data (struct memblock_t**,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  return_buffer (TYPE_1__*,struct memblock_t*) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int maybe_seek (int *,TYPE_1__*,int *) ;
+ int read_data (struct memblock_t**,TYPE_1__*,int *) ;
+ int return_buffer (TYPE_1__*,struct memblock_t*) ;
 
 svn_error_t *
 svn_spillbuf__read(const char **data,
@@ -33,13 +33,13 @@ svn_spillbuf__read(const char **data,
 {
   struct memblock_t *mem;
 
-  /* Possibly seek... */
-  SVN_ERR(maybe_seek(NULL, buf, scratch_pool));
+
+  SVN_ERR(maybe_seek(((void*)0), buf, scratch_pool));
 
   SVN_ERR(read_data(&mem, buf, scratch_pool));
-  if (mem == NULL)
+  if (mem == ((void*)0))
     {
-      *data = NULL;
+      *data = ((void*)0);
       *len = 0;
     }
   else
@@ -47,11 +47,11 @@ svn_spillbuf__read(const char **data,
       *data = mem->data;
       *len = mem->size;
 
-      /* If a block was out for reading, then return it.  */
-      if (buf->out_for_reading != NULL)
+
+      if (buf->out_for_reading != ((void*)0))
         return_buffer(buf, buf->out_for_reading);
 
-      /* Remember that we've passed this block out for reading.  */
+
       buf->out_for_reading = mem;
     }
 

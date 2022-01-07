@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  queue_flags; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUEUE_FLAG_POLL ; 
- int /*<<< orphan*/  queue_var_show (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct request_queue {int queue_flags; } ;
+typedef int ssize_t ;
+
+
+ int QUEUE_FLAG_POLL ;
+ int queue_var_show (int ,char*) ;
+ int test_bit (int ,int *) ;
 
 __attribute__((used)) static ssize_t queue_poll_show(struct request_queue *q, char *page)
 {
-	return queue_var_show(test_bit(QUEUE_FLAG_POLL, &q->queue_flags), page);
+ return queue_var_show(test_bit(QUEUE_FLAG_POLL, &q->queue_flags), page);
 }

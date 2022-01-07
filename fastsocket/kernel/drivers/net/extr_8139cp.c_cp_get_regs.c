@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct ethtool_regs {scalar_t__ len; int /*<<< orphan*/  version; } ;
-struct cp_private {int /*<<< orphan*/  lock; int /*<<< orphan*/  regs; } ;
+struct ethtool_regs {scalar_t__ len; int version; } ;
+struct cp_private {int lock; int regs; } ;
 
-/* Variables and functions */
- scalar_t__ CP_REGS_SIZE ; 
- int /*<<< orphan*/  CP_REGS_VER ; 
- int /*<<< orphan*/  memcpy_fromio (void*,int /*<<< orphan*/ ,scalar_t__) ; 
- struct cp_private* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ scalar_t__ CP_REGS_SIZE ;
+ int CP_REGS_VER ;
+ int memcpy_fromio (void*,int ,scalar_t__) ;
+ struct cp_private* netdev_priv (struct net_device*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void cp_get_regs(struct net_device *dev, struct ethtool_regs *regs,
-		        void *p)
+          void *p)
 {
-	struct cp_private *cp = netdev_priv(dev);
-	unsigned long flags;
+ struct cp_private *cp = netdev_priv(dev);
+ unsigned long flags;
 
-	if (regs->len < CP_REGS_SIZE)
-		return /* -EINVAL */;
+ if (regs->len < CP_REGS_SIZE)
+  return ;
 
-	regs->version = CP_REGS_VER;
+ regs->version = CP_REGS_VER;
 
-	spin_lock_irqsave(&cp->lock, flags);
-	memcpy_fromio(p, cp->regs, CP_REGS_SIZE);
-	spin_unlock_irqrestore(&cp->lock, flags);
+ spin_lock_irqsave(&cp->lock, flags);
+ memcpy_fromio(p, cp->regs, CP_REGS_SIZE);
+ spin_unlock_irqrestore(&cp->lock, flags);
 }

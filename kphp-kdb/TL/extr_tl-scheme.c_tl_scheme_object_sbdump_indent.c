@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct tl_scheme_object* car; struct tl_scheme_object* cdr; } ;
 struct TYPE_4__ {TYPE_1__ p; } ;
 struct tl_scheme_object {scalar_t__ type; TYPE_2__ u; } ;
 struct tl_buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  indent (struct tl_buffer*,int) ; 
- struct tl_scheme_object obj_empty_list ; 
- int /*<<< orphan*/  tl_scheme_object_contain_list (struct tl_scheme_object*) ; 
- scalar_t__ tl_scheme_object_is_colon_terminated_function (struct tl_scheme_object*) ; 
- int /*<<< orphan*/  tl_scheme_object_sbdump (struct tl_buffer*,struct tl_scheme_object*) ; 
- int /*<<< orphan*/  tl_string_buffer_append_char (struct tl_buffer*,char) ; 
- scalar_t__ tlso_list ; 
- scalar_t__ tlso_open_square_bracket ; 
+
+ int assert (int) ;
+ int indent (struct tl_buffer*,int) ;
+ struct tl_scheme_object obj_empty_list ;
+ int tl_scheme_object_contain_list (struct tl_scheme_object*) ;
+ scalar_t__ tl_scheme_object_is_colon_terminated_function (struct tl_scheme_object*) ;
+ int tl_scheme_object_sbdump (struct tl_buffer*,struct tl_scheme_object*) ;
+ int tl_string_buffer_append_char (struct tl_buffer*,char) ;
+ scalar_t__ tlso_list ;
+ scalar_t__ tlso_open_square_bracket ;
 
 void tl_scheme_object_sbdump_indent (struct tl_buffer *b, struct tl_scheme_object *O, int depth) {
   char ch, obrace, cbrace;
@@ -35,7 +35,7 @@ void tl_scheme_object_sbdump_indent (struct tl_buffer *b, struct tl_scheme_objec
     tl_scheme_object_sbdump (b, O);
     return;
   }
-  if (O->u.p.cdr != NULL && O->u.p.car->type == tlso_open_square_bracket) {
+  if (O->u.p.cdr != ((void*)0) && O->u.p.car->type == tlso_open_square_bracket) {
     obrace = '[';
     cbrace = ']';
     O = O->u.p.cdr;

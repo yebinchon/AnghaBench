@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  time_t ;
-struct stb__stat {int /*<<< orphan*/  st_mtime; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _wstat (int /*<<< orphan*/  const*,struct stb__stat*) ; 
- int /*<<< orphan*/  stat (char*,struct stb__stat*) ; 
- scalar_t__ stb__from_utf8 (char*) ; 
- scalar_t__ stb__windows (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wchar_t ;
+typedef int time_t ;
+struct stb__stat {int st_mtime; } ;
+
+
+ int _wstat (int const*,struct stb__stat*) ;
+ int stat (char*,struct stb__stat*) ;
+ scalar_t__ stb__from_utf8 (char*) ;
+ scalar_t__ stb__windows (int ,int ) ;
 
 time_t stb_ftimestamp(char *filename)
 {

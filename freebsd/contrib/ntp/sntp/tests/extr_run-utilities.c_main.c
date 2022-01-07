@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RUN_TEST (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UnityBegin (char*) ; 
- int UnityEnd () ; 
- char* progname ; 
- int /*<<< orphan*/  suite_setup () ; 
- int /*<<< orphan*/  test_IPv4Address ; 
- int /*<<< orphan*/  test_IPv6Address ; 
- int /*<<< orphan*/  test_LfpOutputBinaryFormat ; 
- int /*<<< orphan*/  test_LfpOutputDecimalFormat ; 
- int /*<<< orphan*/  test_PktOutput ; 
- int /*<<< orphan*/  test_SetLiVnMode1 ; 
- int /*<<< orphan*/  test_SetLiVnMode2 ; 
+ int RUN_TEST (int ,int) ;
+ int UnityBegin (char*) ;
+ int UnityEnd () ;
+ char* progname ;
+ int suite_setup () ;
+ int test_IPv4Address ;
+ int test_IPv6Address ;
+ int test_LfpOutputBinaryFormat ;
+ int test_LfpOutputDecimalFormat ;
+ int test_PktOutput ;
+ int test_SetLiVnMode1 ;
+ int test_SetLiVnMode2 ;
 
 int main(int argc, char *argv[])
 {

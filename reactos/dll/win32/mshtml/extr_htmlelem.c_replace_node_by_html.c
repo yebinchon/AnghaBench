@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMRange ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLDocument ;
-typedef  int /*<<< orphan*/  nsIDOMDocumentFragment ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsIDOMDocumentFragment_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_CreateRange (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_GetParentNode (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMNode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_ReplaceChild (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMRange_CreateContextualFragment (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nsIDOMRange_Release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsIDOMRange ;
+typedef int nsIDOMNode ;
+typedef int nsIDOMHTMLDocument ;
+typedef int nsIDOMDocumentFragment ;
+typedef int nsAString ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int S_OK ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
+ int nsIDOMDocumentFragment_Release (int *) ;
+ int nsIDOMHTMLDocument_CreateRange (int *,int **) ;
+ int nsIDOMNode_GetParentNode (int *,int **) ;
+ int nsIDOMNode_Release (int *) ;
+ int nsIDOMNode_ReplaceChild (int *,int *,int *,int **) ;
+ int nsIDOMRange_CreateContextualFragment (int *,int *,int **) ;
+ int nsIDOMRange_Release (int *) ;
 
 HRESULT replace_node_by_html(nsIDOMHTMLDocument *nsdoc, nsIDOMNode *nsnode, const WCHAR *html)
 {

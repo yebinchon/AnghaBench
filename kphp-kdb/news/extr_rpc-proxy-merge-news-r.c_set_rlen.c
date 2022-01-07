@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int tot_buckets; } ;
 
-/* Variables and functions */
- TYPE_1__* CC ; 
- void** Q ; 
- int* QN ; 
- int Q_size ; 
- void** R ; 
- scalar_t__ R_common_len ; 
- int* Rfirst ; 
- scalar_t__* Rlen ; 
+
+ TYPE_1__* CC ;
+ void** Q ;
+ int* QN ;
+ int Q_size ;
+ void** R ;
+ scalar_t__ R_common_len ;
+ int* Rfirst ;
+ scalar_t__* Rlen ;
 
 __attribute__((used)) static void set_rlen (void) {
   int i, x;
@@ -30,7 +30,7 @@ __attribute__((used)) static void set_rlen (void) {
     Rlen[i] = 0;
     Rfirst[i] = -1;
   }
-  
+
   int split_factor = CC->tot_buckets;
   R_common_len = 0;
   for (i = Q_size - 1; i >= 0; i--) {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct apple_gmux_data {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GMUX_INTERRUPT_DISABLE ; 
- int /*<<< orphan*/  GMUX_PORT_INTERRUPT_ENABLE ; 
- int /*<<< orphan*/  gmux_write8 (struct apple_gmux_data*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GMUX_INTERRUPT_DISABLE ;
+ int GMUX_PORT_INTERRUPT_ENABLE ;
+ int gmux_write8 (struct apple_gmux_data*,int ,int ) ;
 
 __attribute__((used)) static inline void gmux_disable_interrupts(struct apple_gmux_data *gmux_data)
 {
-	gmux_write8(gmux_data, GMUX_PORT_INTERRUPT_ENABLE,
-		    GMUX_INTERRUPT_DISABLE);
+ gmux_write8(gmux_data, GMUX_PORT_INTERRUPT_ENABLE,
+      GMUX_INTERRUPT_DISABLE);
 }

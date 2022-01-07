@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int svn_diff_datasource_e ;
 
-/* Variables and functions */
-#define  svn_diff_datasource_ancestor 131 
-#define  svn_diff_datasource_latest 130 
-#define  svn_diff_datasource_modified 129 
-#define  svn_diff_datasource_original 128 
+
+
+
+typedef int svn_diff_datasource_e ;
+
+
+
+
+
+
 
 __attribute__((used)) static int
 datasource_to_index(svn_diff_datasource_e datasource)
 {
   switch (datasource)
     {
-    case svn_diff_datasource_original:
+    case 128:
       return 0;
 
-    case svn_diff_datasource_modified:
+    case 129:
       return 1;
 
-    case svn_diff_datasource_latest:
+    case 130:
       return 2;
 
-    case svn_diff_datasource_ancestor:
+    case 131:
       return 3;
     }
 

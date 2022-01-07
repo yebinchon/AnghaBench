@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  br_dec16be (unsigned char const*) ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int br_dec16be (unsigned char const*) ;
 
 void
 br_range_dec16be(uint16_t *v, size_t num, const void *src)
 {
-	const unsigned char *buf;
+ const unsigned char *buf;
 
-	buf = src;
-	while (num -- > 0) {
-		*v ++ = br_dec16be(buf);
-		buf += 2;
-	}
+ buf = src;
+ while (num -- > 0) {
+  *v ++ = br_dec16be(buf);
+  buf += 2;
+ }
 }

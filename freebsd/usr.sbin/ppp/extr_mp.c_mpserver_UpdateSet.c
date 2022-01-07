@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_3__* dl; } ;
-struct mpserver {int fd; TYPE_2__ send; int /*<<< orphan*/  socket; } ;
+struct mpserver {int fd; TYPE_2__ send; int socket; } ;
 struct fdescriptor {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 struct TYPE_7__ {TYPE_1__* physical; } ;
-struct TYPE_5__ {int /*<<< orphan*/  out; int /*<<< orphan*/  link; } ;
+struct TYPE_5__ {int out; int link; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogTIMER ; 
- int /*<<< orphan*/  bundle_SendDatalink (TYPE_3__*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ datalink_RemoveFromSet (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct mpserver* descriptor2mpserver (struct fdescriptor*) ; 
- int /*<<< orphan*/  link_QueueLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int) ; 
+
+ int FD_SET (int,int *) ;
+ int LogTIMER ;
+ int bundle_SendDatalink (TYPE_3__*,int,int *) ;
+ scalar_t__ datalink_RemoveFromSet (TYPE_3__*,int *,int *,int *) ;
+ struct mpserver* descriptor2mpserver (struct fdescriptor*) ;
+ int link_QueueLen (int *) ;
+ int log_Printf (int ,char*,int) ;
 
 __attribute__((used)) static int
 mpserver_UpdateSet(struct fdescriptor *d, fd_set *r, fd_set *w, fd_set *e,
@@ -37,18 +37,18 @@ mpserver_UpdateSet(struct fdescriptor *d, fd_set *r, fd_set *w, fd_set *e,
   int result;
 
   result = 0;
-  if (s->send.dl != NULL) {
-    /* We've connect()ed */
+  if (s->send.dl != ((void*)0)) {
+
     if (!link_QueueLen(&s->send.dl->physical->link) &&
         !s->send.dl->physical->out) {
-      /* Only send if we've transmitted all our data (i.e. the ConfigAck) */
+
       result -= datalink_RemoveFromSet(s->send.dl, r, w, e);
       bundle_SendDatalink(s->send.dl, s->fd, &s->socket);
-      s->send.dl = NULL;
+      s->send.dl = ((void*)0);
       s->fd = -1;
     } else
-      /* Never read from a datalink that's on death row ! */
-      result -= datalink_RemoveFromSet(s->send.dl, r, NULL, NULL);
+
+      result -= datalink_RemoveFromSet(s->send.dl, r, ((void*)0), ((void*)0));
   } else if (r && s->fd >= 0) {
     if (*n < s->fd + 1)
       *n = s->fd + 1;

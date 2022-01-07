@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum smallchoices { ____Placeholder_smallchoices } smallchoices ;
-typedef  enum medchoices { ____Placeholder_medchoices } medchoices ;
-typedef  enum largechoices { ____Placeholder_largechoices } largechoices ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_size_t_eq (int,int) ; 
+
+
+
+typedef enum smallchoices { ____Placeholder_smallchoices } smallchoices ;
+typedef enum medchoices { ____Placeholder_medchoices } medchoices ;
+typedef enum largechoices { ____Placeholder_largechoices } largechoices ;
+
+
+ int TEST_size_t_eq (int,int) ;
 
 __attribute__((used)) static int test_sanity_enum_size(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static int test_sanity_enum_size(void)
         a10, b10, c10, d10, e10, f10, g10, h10, i10, j10,
         xxx };
 
-    /* Enum size */
+
     if (!TEST_size_t_eq(sizeof(enum smallchoices), sizeof(int))
         || !TEST_size_t_eq(sizeof(enum medchoices), sizeof(int))
         || !TEST_size_t_eq(sizeof(enum largechoices), sizeof(int)))

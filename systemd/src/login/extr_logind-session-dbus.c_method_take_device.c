@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_16__ {int /*<<< orphan*/  devices; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  dev_t ;
-struct TYPE_17__ {int /*<<< orphan*/  active; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ SessionDevice ;
-typedef  TYPE_1__ Session ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_DEVICE_IS_TAKEN ; 
- int /*<<< orphan*/  BUS_ERROR_NOT_IN_CONTROL ; 
- int /*<<< orphan*/  DEVICE_MAJOR_VALID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEVICE_MINOR_VALID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- TYPE_2__* hashmap_get (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  makedev (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sd_bus_message_get_sender (TYPE_1__*) ; 
- int sd_bus_message_read (TYPE_1__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int sd_bus_reply_method_return (TYPE_1__*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  session_device_free (TYPE_2__*) ; 
- int session_device_new (TYPE_1__*,int /*<<< orphan*/ ,int,TYPE_2__**) ; 
- int session_device_save (TYPE_2__*) ; 
- int /*<<< orphan*/  session_is_controller (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  session_save (TYPE_1__*) ; 
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_16__ {int devices; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int dev_t ;
+struct TYPE_17__ {int active; int fd; } ;
+typedef TYPE_2__ SessionDevice ;
+typedef TYPE_1__ Session ;
+
+
+ int BUS_ERROR_DEVICE_IS_TAKEN ;
+ int BUS_ERROR_NOT_IN_CONTROL ;
+ int DEVICE_MAJOR_VALID (int ) ;
+ int DEVICE_MINOR_VALID (int ) ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int assert (TYPE_1__*) ;
+ TYPE_2__* hashmap_get (int ,int *) ;
+ int makedev (int ,int ) ;
+ int sd_bus_error_setf (int *,int ,char*) ;
+ int sd_bus_message_get_sender (TYPE_1__*) ;
+ int sd_bus_message_read (TYPE_1__*,char*,int *,int *) ;
+ int sd_bus_reply_method_return (TYPE_1__*,char*,int ,int) ;
+ int session_device_free (TYPE_2__*) ;
+ int session_device_new (TYPE_1__*,int ,int,TYPE_2__**) ;
+ int session_device_save (TYPE_2__*) ;
+ int session_is_controller (TYPE_1__*,int ) ;
+ int session_save (TYPE_1__*) ;
 
 __attribute__((used)) static int method_take_device(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Session *s = userdata;
@@ -63,14 +63,14 @@ __attribute__((used)) static int method_take_device(sd_bus_message *message, voi
         dev = makedev(major, minor);
         sd = hashmap_get(s->devices, &dev);
         if (sd)
-                /* We don't allow retrieving a device multiple times.
-                 * The related ReleaseDevice call is not ref-counted.
-                 * The caller should use dup() if it requires more
-                 * than one fd (it would be functionally
-                 * equivalent). */
+
+
+
+
+
                 return sd_bus_error_setf(error, BUS_ERROR_DEVICE_IS_TAKEN, "Device already taken");
 
-        r = session_device_new(s, dev, true, &sd);
+        r = session_device_new(s, dev, 1, &sd);
         if (r < 0)
                 return r;
 

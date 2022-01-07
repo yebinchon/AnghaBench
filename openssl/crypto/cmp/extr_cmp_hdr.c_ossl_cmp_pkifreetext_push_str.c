@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_CMP_PKIFREETEXT ;
-typedef  int /*<<< orphan*/  ASN1_UTF8STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STRING_set (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  ASN1_UTF8STRING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_UTF8STRING_new () ; 
- int /*<<< orphan*/  ossl_assert (int) ; 
- int /*<<< orphan*/  sk_ASN1_UTF8STRING_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int OSSL_CMP_PKIFREETEXT ;
+typedef int ASN1_UTF8STRING ;
+
+
+ int ASN1_STRING_set (int *,char const*,int) ;
+ int ASN1_UTF8STRING_free (int *) ;
+ int * ASN1_UTF8STRING_new () ;
+ int ossl_assert (int) ;
+ int sk_ASN1_UTF8STRING_push (int *,int *) ;
 
 int ossl_cmp_pkifreetext_push_str(OSSL_CMP_PKIFREETEXT *ft, const char *text)
 {
     ASN1_UTF8STRING *utf8string;
 
-    if (!ossl_assert(ft != NULL && text != NULL))
+    if (!ossl_assert(ft != ((void*)0) && text != ((void*)0)))
         return 0;
-    if ((utf8string = ASN1_UTF8STRING_new()) == NULL)
+    if ((utf8string = ASN1_UTF8STRING_new()) == ((void*)0))
         return 0;
     if (!ASN1_STRING_set(utf8string, text, -1))
         goto err;

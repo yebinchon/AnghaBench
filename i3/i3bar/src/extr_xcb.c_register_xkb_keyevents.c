@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  first_event; int /*<<< orphan*/  present; } ;
-typedef  TYPE_1__ xcb_query_extension_reply_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*) ; 
- int /*<<< orphan*/  ELOG (char*) ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  XCB_XKB_EVENT_TYPE_STATE_NOTIFY ; 
- int /*<<< orphan*/  XCB_XKB_ID_USE_CORE_KBD ; 
- int /*<<< orphan*/  XCB_XKB_MAJOR_VERSION ; 
- int /*<<< orphan*/  XCB_XKB_MINOR_VERSION ; 
- int /*<<< orphan*/  conn ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- TYPE_1__* xcb_get_extension_data (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_xkb_id ; 
- int /*<<< orphan*/  xcb_xkb_select_events (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_xkb_use_extension (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xkb_base ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int first_event; int present; } ;
+typedef TYPE_1__ xcb_query_extension_reply_t ;
+
+
+ int DLOG (char*) ;
+ int ELOG (char*) ;
+ int EXIT_FAILURE ;
+ int XCB_XKB_EVENT_TYPE_STATE_NOTIFY ;
+ int XCB_XKB_ID_USE_CORE_KBD ;
+ int XCB_XKB_MAJOR_VERSION ;
+ int XCB_XKB_MINOR_VERSION ;
+ int conn ;
+ int exit (int ) ;
+ TYPE_1__* xcb_get_extension_data (int ,int *) ;
+ int xcb_xkb_id ;
+ int xcb_xkb_select_events (int ,int ,int ,int ,int ,int,int,int *) ;
+ int xcb_xkb_use_extension (int ,int ,int ) ;
+ int xkb_base ;
 
 __attribute__((used)) static void register_xkb_keyevents(void) {
     const xcb_query_extension_reply_t *extreply;
@@ -46,6 +46,6 @@ __attribute__((used)) static void register_xkb_keyevents(void) {
                           XCB_XKB_EVENT_TYPE_STATE_NOTIFY,
                           0xff,
                           0xff,
-                          NULL);
+                          ((void*)0));
     xkb_base = extreply->first_event;
 }

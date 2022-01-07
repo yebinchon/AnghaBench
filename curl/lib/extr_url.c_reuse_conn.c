@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/ * rawalloc; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * passwd; int /*<<< orphan*/ * user; TYPE_4__ host; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * passwd; int /*<<< orphan*/ * user; TYPE_4__ host; } ;
-struct TYPE_5__ {int /*<<< orphan*/  reuse; scalar_t__ proxy_user_passwd; scalar_t__ user_passwd; } ;
-struct connectdata {int /*<<< orphan*/ * unix_domain_socket; int /*<<< orphan*/  easyq; int /*<<< orphan*/ * localdev; TYPE_3__ socks_proxy; TYPE_2__ http_proxy; int /*<<< orphan*/ * options; int /*<<< orphan*/ * passwd; int /*<<< orphan*/ * user; TYPE_1__ bits; int /*<<< orphan*/ * hostname_resolve; int /*<<< orphan*/  remote_port; int /*<<< orphan*/  conn_to_port; TYPE_4__ conn_to_host; TYPE_4__ host; int /*<<< orphan*/  data; int /*<<< orphan*/  proxy_ssl_config; int /*<<< orphan*/  ssl_config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Curl_free_primary_ssl_config (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Curl_llist_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Curl_persistconninfo (struct connectdata*) ; 
- int /*<<< orphan*/  Curl_safefree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  conn_reset_all_postponed_data (struct connectdata*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_idnconverted_hostname (TYPE_4__*) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int * rawalloc; } ;
+struct TYPE_7__ {int * passwd; int * user; TYPE_4__ host; } ;
+struct TYPE_6__ {int * passwd; int * user; TYPE_4__ host; } ;
+struct TYPE_5__ {int reuse; scalar_t__ proxy_user_passwd; scalar_t__ user_passwd; } ;
+struct connectdata {int * unix_domain_socket; int easyq; int * localdev; TYPE_3__ socks_proxy; TYPE_2__ http_proxy; int * options; int * passwd; int * user; TYPE_1__ bits; int * hostname_resolve; int remote_port; int conn_to_port; TYPE_4__ conn_to_host; TYPE_4__ host; int data; int proxy_ssl_config; int ssl_config; } ;
+
+
+ int Curl_free_primary_ssl_config (int *) ;
+ int Curl_llist_destroy (int *,int *) ;
+ int Curl_persistconninfo (struct connectdata*) ;
+ int Curl_safefree (int *) ;
+ int TRUE ;
+ int conn_reset_all_postponed_data (struct connectdata*) ;
+ int free (int *) ;
+ int free_idnconverted_hostname (TYPE_4__*) ;
 
 __attribute__((used)) static void reuse_conn(struct connectdata *old_conn,
                        struct connectdata *conn)
@@ -39,29 +39,29 @@ __attribute__((used)) static void reuse_conn(struct connectdata *old_conn,
   free(old_conn->http_proxy.host.rawalloc);
   free(old_conn->socks_proxy.host.rawalloc);
 
-  /* free the SSL config struct from this connection struct as this was
-     allocated in vain and is targeted for destruction */
+
+
   Curl_free_primary_ssl_config(&old_conn->ssl_config);
   Curl_free_primary_ssl_config(&old_conn->proxy_ssl_config);
 
   conn->data = old_conn->data;
 
-  /* get the user+password information from the old_conn struct since it may
-   * be new for this request even when we re-use an existing connection */
+
+
   conn->bits.user_passwd = old_conn->bits.user_passwd;
   if(conn->bits.user_passwd) {
-    /* use the new user name and password though */
+
     Curl_safefree(conn->user);
     Curl_safefree(conn->passwd);
     conn->user = old_conn->user;
     conn->passwd = old_conn->passwd;
-    old_conn->user = NULL;
-    old_conn->passwd = NULL;
+    old_conn->user = ((void*)0);
+    old_conn->passwd = ((void*)0);
   }
 
   conn->bits.proxy_user_passwd = old_conn->bits.proxy_user_passwd;
   if(conn->bits.proxy_user_passwd) {
-    /* use the new proxy user name and proxy password though */
+
     Curl_safefree(conn->http_proxy.user);
     Curl_safefree(conn->socks_proxy.user);
     Curl_safefree(conn->http_proxy.passwd);
@@ -70,14 +70,14 @@ __attribute__((used)) static void reuse_conn(struct connectdata *old_conn,
     conn->socks_proxy.user = old_conn->socks_proxy.user;
     conn->http_proxy.passwd = old_conn->http_proxy.passwd;
     conn->socks_proxy.passwd = old_conn->socks_proxy.passwd;
-    old_conn->http_proxy.user = NULL;
-    old_conn->socks_proxy.user = NULL;
-    old_conn->http_proxy.passwd = NULL;
-    old_conn->socks_proxy.passwd = NULL;
+    old_conn->http_proxy.user = ((void*)0);
+    old_conn->socks_proxy.user = ((void*)0);
+    old_conn->http_proxy.passwd = ((void*)0);
+    old_conn->socks_proxy.passwd = ((void*)0);
   }
 
-  /* host can change, when doing keepalive with a proxy or if the case is
-     different this time etc */
+
+
   free_idnconverted_hostname(&conn->host);
   free_idnconverted_hostname(&conn->conn_to_host);
   Curl_safefree(conn->host.rawalloc);
@@ -89,15 +89,15 @@ __attribute__((used)) static void reuse_conn(struct connectdata *old_conn,
   Curl_safefree(conn->hostname_resolve);
 
   conn->hostname_resolve = old_conn->hostname_resolve;
-  old_conn->hostname_resolve = NULL;
+  old_conn->hostname_resolve = ((void*)0);
 
-  /* persist connection info in session handle */
+
   Curl_persistconninfo(conn);
 
-  conn_reset_all_postponed_data(old_conn); /* free buffers */
+  conn_reset_all_postponed_data(old_conn);
 
-  /* re-use init */
-  conn->bits.reuse = TRUE; /* yes, we're re-using here */
+
+  conn->bits.reuse = TRUE;
 
   Curl_safefree(old_conn->user);
   Curl_safefree(old_conn->passwd);
@@ -107,9 +107,9 @@ __attribute__((used)) static void reuse_conn(struct connectdata *old_conn,
   Curl_safefree(old_conn->http_proxy.passwd);
   Curl_safefree(old_conn->socks_proxy.passwd);
   Curl_safefree(old_conn->localdev);
-  Curl_llist_destroy(&old_conn->easyq, NULL);
+  Curl_llist_destroy(&old_conn->easyq, ((void*)0));
 
-#ifdef USE_UNIX_SOCKETS
-  Curl_safefree(old_conn->unix_domain_socket);
-#endif
+
+
+
 }

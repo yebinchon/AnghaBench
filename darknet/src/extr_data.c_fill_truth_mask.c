@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int w; int h; float* data; } ;
-typedef  TYPE_1__ image ;
+typedef TYPE_1__ image ;
 struct TYPE_18__ {int w; int x; int y; int h; } ;
-typedef  TYPE_2__ box ;
-struct TYPE_19__ {int /*<<< orphan*/  aspect; int /*<<< orphan*/  dy; int /*<<< orphan*/  dx; int /*<<< orphan*/  h; int /*<<< orphan*/  w; int /*<<< orphan*/  scale; int /*<<< orphan*/  rad; } ;
-typedef  TYPE_3__ augment_args ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ box ;
+struct TYPE_19__ {int aspect; int dy; int dx; int h; int w; int scale; int rad; } ;
+typedef TYPE_3__ augment_args ;
+typedef int FILE ;
 
-/* Variables and functions */
- TYPE_2__ bound_image (TYPE_1__) ; 
- TYPE_1__ crop_image (TYPE_1__,int,int,int,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  file_error (char*) ; 
- int /*<<< orphan*/  find_replace (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  flip_image (TYPE_1__) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  free_image (TYPE_1__) ; 
- int fscanf (int /*<<< orphan*/ *,char*,int*,char*) ; 
- int /*<<< orphan*/  load_rle (TYPE_1__,int*,int) ; 
- TYPE_1__ make_image (int,int,int) ; 
- int* read_intlist (char*,int*,int /*<<< orphan*/ ) ; 
- TYPE_1__ resize_image (TYPE_1__,int,int) ; 
- TYPE_1__ rotate_crop_image (TYPE_1__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ TYPE_2__ bound_image (TYPE_1__) ;
+ TYPE_1__ crop_image (TYPE_1__,int,int,int,int) ;
+ int fclose (int *) ;
+ int file_error (char*) ;
+ int find_replace (char*,char*,char*,char*) ;
+ int flip_image (TYPE_1__) ;
+ int * fopen (char*,char*) ;
+ int free (int*) ;
+ int free_image (TYPE_1__) ;
+ int fscanf (int *,char*,int*,char*) ;
+ int load_rle (TYPE_1__,int*,int) ;
+ TYPE_1__ make_image (int,int,int) ;
+ int* read_intlist (char*,int*,int ) ;
+ TYPE_1__ resize_image (TYPE_1__,int,int) ;
+ TYPE_1__ rotate_crop_image (TYPE_1__,int ,int ,int ,int ,int ,int ,int ) ;
 
 void fill_truth_mask(char *path, int num_boxes, float *truth, int classes, int w, int h, augment_args aug, int flip, int mw, int mh)
 {

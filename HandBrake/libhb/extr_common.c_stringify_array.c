@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
-typedef  int /*<<< orphan*/  hb_value_array_t ;
 
-/* Variables and functions */
- scalar_t__ HB_VALUE_TYPE_ARRAY ; 
- scalar_t__ HB_VALUE_TYPE_DICT ; 
- char* append_string (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* hb_filter_settings_string (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_array_get (int /*<<< orphan*/ *,int) ; 
- int hb_value_array_len (int /*<<< orphan*/ *) ; 
- scalar_t__ hb_value_type (int /*<<< orphan*/ *) ; 
- char* strdup (char*) ; 
+
+
+
+typedef int hb_value_t ;
+typedef int hb_value_array_t ;
+
+
+ scalar_t__ HB_VALUE_TYPE_ARRAY ;
+ scalar_t__ HB_VALUE_TYPE_DICT ;
+ char* append_string (char*,char*) ;
+ int free (char*) ;
+ char* hb_filter_settings_string (int,int *) ;
+ int * hb_value_array_get (int *,int) ;
+ int hb_value_array_len (int *) ;
+ scalar_t__ hb_value_type (int *) ;
+ char* strdup (char*) ;
 
 __attribute__((used)) static char * stringify_array(int filter_id, hb_value_array_t * array)
 {
     char * result = strdup("");
-    int    ii;
-    int    len = hb_value_array_len(array);
-    int    first = 1;
+    int ii;
+    int len = hb_value_array_len(array);
+    int first = 1;
 
     if (hb_value_array_len(array) == 0)
     {
@@ -38,8 +38,8 @@ __attribute__((used)) static char * stringify_array(int filter_id, hb_value_arra
     for (ii = 0; ii < len; ii++)
     {
         hb_value_t * val = hb_value_array_get(array, ii);
-        char       * str = hb_filter_settings_string(filter_id, val);
-        if (str != NULL)
+        char * str = hb_filter_settings_string(filter_id, val);
+        if (str != ((void*)0))
         {
             if (!first)
             {

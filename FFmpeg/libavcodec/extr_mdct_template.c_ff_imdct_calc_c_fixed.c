@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int mdct_bits; } ;
-typedef  int /*<<< orphan*/  FFTSample ;
-typedef  TYPE_1__ FFTContext ;
+typedef int FFTSample ;
+typedef TYPE_1__ FFTContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_imdct_half_c (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+ int ff_imdct_half_c (TYPE_1__*,int *,int const*) ;
 
 void ff_imdct_calc_c(FFTContext *s, FFTSample *output, const FFTSample *input)
 {

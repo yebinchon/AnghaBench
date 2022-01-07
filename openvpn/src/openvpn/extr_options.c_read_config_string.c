@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct options {int /*<<< orphan*/  gc; } ;
+
+
+
+
+typedef int uint8_t ;
+struct options {int gc; } ;
 struct env_set {int dummy; } ;
 struct buffer {int dummy; } ;
-typedef  int /*<<< orphan*/  line ;
+typedef int line ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (char**) ; 
- int /*<<< orphan*/  MAX_PARMS ; 
- int OPTION_LINE_SIZE ; 
- scalar_t__ SIZE (char**) ; 
- int /*<<< orphan*/  add_option (struct options*,char**,char const*,int,int /*<<< orphan*/ ,int const,unsigned int const,unsigned int*,struct env_set*) ; 
- scalar_t__ buf_parse (struct buffer*,char,char*,int) ; 
- int /*<<< orphan*/  buf_set_read (struct buffer*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bypass_doubledash (char**) ; 
- int /*<<< orphan*/  check_inline_file_via_buf (struct buffer*,char**,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_line (char*,char**,scalar_t__,char const*,int,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secure_memzero (char*,int) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ int CLEAR (char**) ;
+ int MAX_PARMS ;
+ int OPTION_LINE_SIZE ;
+ scalar_t__ SIZE (char**) ;
+ int add_option (struct options*,char**,char const*,int,int ,int const,unsigned int const,unsigned int*,struct env_set*) ;
+ scalar_t__ buf_parse (struct buffer*,char,char*,int) ;
+ int buf_set_read (struct buffer*,int *,int ) ;
+ int bypass_doubledash (char**) ;
+ int check_inline_file_via_buf (struct buffer*,char**,int *) ;
+ scalar_t__ parse_line (char*,char**,scalar_t__,char const*,int,int const,int *) ;
+ int secure_memzero (char*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void
 read_config_string(const char *prefix,

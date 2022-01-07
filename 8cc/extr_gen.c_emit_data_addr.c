@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int kind; char* glabel; TYPE_1__* ty; int /*<<< orphan*/  lvarinit; } ;
-struct TYPE_4__ {int /*<<< orphan*/  size; } ;
-typedef  TYPE_2__ Node ;
 
-/* Variables and functions */
-#define  AST_GVAR 129 
-#define  AST_LVAR 128 
- int /*<<< orphan*/  do_emit_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  emit (char*,...) ; 
- int /*<<< orphan*/  emit_label (char*) ; 
- int /*<<< orphan*/  error (char*) ; 
- char* make_label () ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int kind; char* glabel; TYPE_1__* ty; int lvarinit; } ;
+struct TYPE_4__ {int size; } ;
+typedef TYPE_2__ Node ;
+
+
+
+
+ int do_emit_data (int ,int ,int ,int) ;
+ int emit (char*,...) ;
+ int emit_label (char*) ;
+ int error (char*) ;
+ char* make_label () ;
 
 __attribute__((used)) static void emit_data_addr(Node *operand, int depth) {
     switch (operand->kind) {
-    case AST_LVAR: {
+    case 128: {
         char *label = make_label();
         emit(".data %d", depth + 1);
         emit_label(label);
@@ -36,7 +36,7 @@ __attribute__((used)) static void emit_data_addr(Node *operand, int depth) {
         emit(".quad %s", label);
         return;
     }
-    case AST_GVAR:
+    case 129:
         emit(".quad %s", operand->glabel);
         return;
     default:

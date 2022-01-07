@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ GetProcAddress (scalar_t__,char*) ; 
- scalar_t__ LoadLibraryA (char*) ; 
- scalar_t__ hLibrary ; 
- void* pCancelIPChangeNotify ; 
- void* pConvertInterfaceGuidToLuid ; 
- void* pConvertInterfaceIndexToLuid ; 
- void* pConvertInterfaceLuidToGuid ; 
- void* pConvertInterfaceLuidToIndex ; 
- void* pConvertInterfaceLuidToNameA ; 
- void* pConvertInterfaceLuidToNameW ; 
- void* pConvertInterfaceNameToLuidA ; 
- void* pConvertInterfaceNameToLuidW ; 
- void* pCreateSortedAddressPairs ; 
- void* pFreeMibTable ; 
- void* pGetAdaptersAddresses ; 
- void* pGetAdaptersInfo ; 
- void* pGetExtendedTcpTable ; 
- void* pGetExtendedUdpTable ; 
- void* pGetFriendlyIfIndex ; 
- void* pGetIcmpStatistics ; 
- void* pGetIcmpStatisticsEx ; 
- void* pGetIfEntry ; 
- void* pGetIfEntry2 ; 
- void* pGetIfTable ; 
- void* pGetIfTable2 ; 
- void* pGetInterfaceInfo ; 
- void* pGetIpAddrTable ; 
- void* pGetIpForwardTable ; 
- void* pGetIpNetTable ; 
- void* pGetIpStatistics ; 
- void* pGetIpStatisticsEx ; 
- void* pGetNetworkParams ; 
- void* pGetNumberOfInterfaces ; 
- void* pGetPerAdapterInfo ; 
- void* pGetTcpStatistics ; 
- void* pGetTcpStatisticsEx ; 
- void* pGetTcpTable ; 
- void* pGetUdpStatistics ; 
- void* pGetUdpStatisticsEx ; 
- void* pGetUdpTable ; 
- void* pIcmpCreateFile ; 
- void* pIcmpSendEcho ; 
- void* pNotifyAddrChange ; 
- void* pSetTcpEntry ; 
+ scalar_t__ GetProcAddress (scalar_t__,char*) ;
+ scalar_t__ LoadLibraryA (char*) ;
+ scalar_t__ hLibrary ;
+ void* pCancelIPChangeNotify ;
+ void* pConvertInterfaceGuidToLuid ;
+ void* pConvertInterfaceIndexToLuid ;
+ void* pConvertInterfaceLuidToGuid ;
+ void* pConvertInterfaceLuidToIndex ;
+ void* pConvertInterfaceLuidToNameA ;
+ void* pConvertInterfaceLuidToNameW ;
+ void* pConvertInterfaceNameToLuidA ;
+ void* pConvertInterfaceNameToLuidW ;
+ void* pCreateSortedAddressPairs ;
+ void* pFreeMibTable ;
+ void* pGetAdaptersAddresses ;
+ void* pGetAdaptersInfo ;
+ void* pGetExtendedTcpTable ;
+ void* pGetExtendedUdpTable ;
+ void* pGetFriendlyIfIndex ;
+ void* pGetIcmpStatistics ;
+ void* pGetIcmpStatisticsEx ;
+ void* pGetIfEntry ;
+ void* pGetIfEntry2 ;
+ void* pGetIfTable ;
+ void* pGetIfTable2 ;
+ void* pGetInterfaceInfo ;
+ void* pGetIpAddrTable ;
+ void* pGetIpForwardTable ;
+ void* pGetIpNetTable ;
+ void* pGetIpStatistics ;
+ void* pGetIpStatisticsEx ;
+ void* pGetNetworkParams ;
+ void* pGetNumberOfInterfaces ;
+ void* pGetPerAdapterInfo ;
+ void* pGetTcpStatistics ;
+ void* pGetTcpStatisticsEx ;
+ void* pGetTcpTable ;
+ void* pGetUdpStatistics ;
+ void* pGetUdpStatisticsEx ;
+ void* pGetUdpTable ;
+ void* pIcmpCreateFile ;
+ void* pIcmpSendEcho ;
+ void* pNotifyAddrChange ;
+ void* pSetTcpEntry ;
 
 __attribute__((used)) static void loadIPHlpApi(void)
 {

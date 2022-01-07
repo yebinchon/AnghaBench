@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int json_t ;
 struct TYPE_6__ {char const* text; } ;
-typedef  TYPE_1__ json_error_t ;
-struct TYPE_8__ {int /*<<< orphan*/  seaf_dir; } ;
-struct TYPE_7__ {void* http_proxy_password; void* http_proxy_username; int /*<<< orphan*/  http_proxy_port; void* http_proxy_addr; void* http_proxy_type; } ;
-typedef  TYPE_2__ SeafileSession ;
+typedef TYPE_1__ json_error_t ;
+struct TYPE_8__ {int seaf_dir; } ;
+struct TYPE_7__ {void* http_proxy_password; void* http_proxy_username; int http_proxy_port; void* http_proxy_addr; void* http_proxy_type; } ;
+typedef TYPE_2__ SeafileSession ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_FILE_TEST_EXISTS ; 
- char* g_build_filename (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_file_test (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- scalar_t__ g_strcmp0 (char const*,char*) ; 
- void* g_strdup (char const*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_load_file (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  json_object_get_int_member (int /*<<< orphan*/ *,char*) ; 
- char const* json_object_get_string_member (int /*<<< orphan*/ *,char*) ; 
- TYPE_3__* seaf ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int G_FILE_TEST_EXISTS ;
+ char* g_build_filename (int ,char*,int *) ;
+ int g_file_test (char*,int ) ;
+ int g_free (char*) ;
+ scalar_t__ g_strcmp0 (char const*,char*) ;
+ void* g_strdup (char const*) ;
+ int json_decref (int *) ;
+ int * json_load_file (char*,int ,TYPE_1__*) ;
+ int json_object_get_int_member (int *,char*) ;
+ char const* json_object_get_string_member (int *,char*) ;
+ TYPE_3__* seaf ;
+ int seaf_warning (char*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void
 load_system_proxy (SeafileSession *session)
 {
-    char *system_proxy_txt = g_build_filename (seaf->seaf_dir, "system-proxy.txt", NULL);
-    json_t *json = NULL;
+    char *system_proxy_txt = g_build_filename (seaf->seaf_dir, "system-proxy.txt", ((void*)0));
+    json_t *json = ((void*)0);
     if (!g_file_test (system_proxy_txt, G_FILE_TEST_EXISTS)) {
         seaf_warning ("Can't load system proxy: file %s doesn't exist\n", system_proxy_txt);
         goto out;

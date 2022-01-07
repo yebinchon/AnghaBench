@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct ExprList_item {int /*<<< orphan*/  u; int /*<<< orphan*/  bSorterRef; int /*<<< orphan*/  bSpanIsTab; scalar_t__ done; int /*<<< orphan*/  sortOrder; void* zSpan; void* zName; TYPE_2__* pExpr; } ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct ExprList_item {int u; int bSorterRef; int bSpanIsTab; scalar_t__ done; int sortOrder; void* zSpan; void* zName; TYPE_2__* pExpr; } ;
+typedef int sqlite3 ;
 struct TYPE_10__ {scalar_t__ op; scalar_t__ iColumn; scalar_t__ pLeft; scalar_t__ pRight; } ;
 struct TYPE_9__ {int nExpr; struct ExprList_item* a; } ;
-typedef  TYPE_1__ ExprList ;
-typedef  TYPE_2__ Expr ;
+typedef TYPE_1__ ExprList ;
+typedef TYPE_2__ Expr ;
 
-/* Variables and functions */
- scalar_t__ TK_SELECT_COLUMN ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* sqlite3DbMallocRawNN (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3DbMallocSize (int /*<<< orphan*/ *,TYPE_1__*) ; 
- void* sqlite3DbStrDup (int /*<<< orphan*/ *,void*) ; 
- TYPE_2__* sqlite3ExprDup (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
+
+ scalar_t__ TK_SELECT_COLUMN ;
+ int assert (int) ;
+ TYPE_1__* sqlite3DbMallocRawNN (int *,int ) ;
+ int sqlite3DbMallocSize (int *,TYPE_1__*) ;
+ void* sqlite3DbStrDup (int *,void*) ;
+ TYPE_2__* sqlite3ExprDup (int *,TYPE_2__*,int) ;
 
 ExprList *sqlite3ExprListDup(sqlite3 *db, ExprList *p, int flags){
   ExprList *pNew;
@@ -43,9 +43,9 @@ ExprList *sqlite3ExprListDup(sqlite3 *db, ExprList *p, int flags){
     Expr *pOldExpr = pOldItem->pExpr;
     Expr *pNewExpr;
     pItem->pExpr = sqlite3ExprDup(db, pOldExpr, flags);
-    if( pOldExpr 
+    if( pOldExpr
      && pOldExpr->op==TK_SELECT_COLUMN
-     && (pNewExpr = pItem->pExpr)!=0 
+     && (pNewExpr = pItem->pExpr)!=0
     ){
       assert( pNewExpr->iColumn==0 || i>0 );
       if( pNewExpr->iColumn==0 ){

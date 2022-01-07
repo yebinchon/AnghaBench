@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {unsigned char* data; size_t size; } ;
-typedef  TYPE_1__ ucvector ;
-typedef  int /*<<< orphan*/  LodePNGCompressSettings ;
+typedef TYPE_1__ ucvector ;
+typedef int LodePNGCompressSettings ;
 
-/* Variables and functions */
- unsigned int addChunk (TYPE_1__*,char*,unsigned char*,size_t) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  ucvector_cleanup (TYPE_1__*) ; 
- int /*<<< orphan*/  ucvector_init (TYPE_1__*) ; 
- int /*<<< orphan*/  ucvector_push_back (TYPE_1__*,unsigned char) ; 
- unsigned int zlib_compress (unsigned char**,size_t*,unsigned char*,size_t,int /*<<< orphan*/ *) ; 
+
+ unsigned int addChunk (TYPE_1__*,char*,unsigned char*,size_t) ;
+ size_t strlen (char const*) ;
+ int ucvector_cleanup (TYPE_1__*) ;
+ int ucvector_init (TYPE_1__*) ;
+ int ucvector_push_back (TYPE_1__*,unsigned char) ;
+ unsigned int zlib_compress (unsigned char**,size_t*,unsigned char*,size_t,int *) ;
 
 __attribute__((used)) static unsigned addChunk_iTXt(ucvector* out, unsigned compressed, const char* keyword, const char* langtag,
                               const char* transkey, const char* textstring, LodePNGCompressSettings* zlibsettings)
@@ -33,14 +33,14 @@ __attribute__((used)) static unsigned addChunk_iTXt(ucvector* out, unsigned comp
   ucvector_init(&data);
 
   for(i = 0; keyword[i] != 0; i++) ucvector_push_back(&data, (unsigned char)keyword[i]);
-  if(i < 1 || i > 79) return 89; /*error: invalid keyword size*/
-  ucvector_push_back(&data, 0); /*null termination char*/
-  ucvector_push_back(&data, compressed ? 1 : 0); /*compression flag*/
-  ucvector_push_back(&data, 0); /*compression method*/
+  if(i < 1 || i > 79) return 89;
+  ucvector_push_back(&data, 0);
+  ucvector_push_back(&data, compressed ? 1 : 0);
+  ucvector_push_back(&data, 0);
   for(i = 0; langtag[i] != 0; i++) ucvector_push_back(&data, (unsigned char)langtag[i]);
-  ucvector_push_back(&data, 0); /*null termination char*/
+  ucvector_push_back(&data, 0);
   for(i = 0; transkey[i] != 0; i++) ucvector_push_back(&data, (unsigned char)transkey[i]);
-  ucvector_push_back(&data, 0); /*null termination char*/
+  ucvector_push_back(&data, 0);
 
   if(compressed)
   {
@@ -54,7 +54,7 @@ __attribute__((used)) static unsigned addChunk_iTXt(ucvector* out, unsigned comp
     }
     ucvector_cleanup(&compressed_data);
   }
-  else /*not compressed*/
+  else
   {
     for(i = 0; textstring[i] != 0; i++) ucvector_push_back(&data, (unsigned char)textstring[i]);
   }

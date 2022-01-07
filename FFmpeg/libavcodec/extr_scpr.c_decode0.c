@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int range; int code1; int code; } ;
-typedef  TYPE_1__ RangeCoder ;
-typedef  int /*<<< orphan*/  GetByteContext ;
+typedef TYPE_1__ RangeCoder ;
+typedef int GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int TOP ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int TOP ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
 
 __attribute__((used)) static int decode0(GetByteContext *gb, RangeCoder *rc, uint32_t cumFreq, uint32_t freq, uint32_t total_freq)
 {

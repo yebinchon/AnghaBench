@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char* name; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ type_t ;
-typedef  int /*<<< orphan*/  UUID ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/ * get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* uuid_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write_guid (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  write_uuid_decl (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char* name; int attrs; } ;
+typedef TYPE_1__ type_t ;
+typedef int UUID ;
+typedef int FILE ;
+
+
+ int ATTR_UUID ;
+ int fprintf (int *,char*,...) ;
+ int * get_attrp (int ,int ) ;
+ char* uuid_string (int const*) ;
+ int write_guid (int *,char*,char*,int const*) ;
+ int write_uuid_decl (int *,TYPE_1__*,int const*) ;
 
 __attribute__((used)) static void write_coclass(FILE *header, type_t *cocl)
 {

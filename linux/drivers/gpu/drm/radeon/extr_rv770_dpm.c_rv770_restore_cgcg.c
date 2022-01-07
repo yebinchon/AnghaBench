@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct radeon_device {int dummy; } ;
 
-/* Variables and functions */
- int DYN_GFX_CLK_OFF_EN ; 
- int /*<<< orphan*/  GENERAL_PWRMGT ; 
- int GLOBAL_PWRMGT_EN ; 
- int RREG32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCLK_PWRMGT_CNTL ; 
- int /*<<< orphan*/  WREG32_P (int /*<<< orphan*/ ,int,int) ; 
+
+ int DYN_GFX_CLK_OFF_EN ;
+ int GENERAL_PWRMGT ;
+ int GLOBAL_PWRMGT_EN ;
+ int RREG32 (int ) ;
+ int SCLK_PWRMGT_CNTL ;
+ int WREG32_P (int ,int,int) ;
 
 void rv770_restore_cgcg(struct radeon_device *rdev)
 {
-	bool dpm_en = false, cg_en = false;
+ bool dpm_en = 0, cg_en = 0;
 
-	if (RREG32(GENERAL_PWRMGT) & GLOBAL_PWRMGT_EN)
-		dpm_en = true;
-	if (RREG32(SCLK_PWRMGT_CNTL) & DYN_GFX_CLK_OFF_EN)
-		cg_en = true;
+ if (RREG32(GENERAL_PWRMGT) & GLOBAL_PWRMGT_EN)
+  dpm_en = 1;
+ if (RREG32(SCLK_PWRMGT_CNTL) & DYN_GFX_CLK_OFF_EN)
+  cg_en = 1;
 
-	if (dpm_en && !cg_en)
-		WREG32_P(SCLK_PWRMGT_CNTL, DYN_GFX_CLK_OFF_EN, ~DYN_GFX_CLK_OFF_EN);
+ if (dpm_en && !cg_en)
+  WREG32_P(SCLK_PWRMGT_CNTL, DYN_GFX_CLK_OFF_EN, ~DYN_GFX_CLK_OFF_EN);
 }

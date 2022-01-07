@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_t ;
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int stream_t ;
 struct TYPE_9__ {int len; char* buf; } ;
-typedef  TYPE_1__ strbuf_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ strbuf_t ;
+typedef char WCHAR ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int BLOCK_SIZE ; 
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_OpenStream (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int) ; 
- int /*<<< orphan*/  STGM_READ ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _strnicmp (char*,char*,int) ; 
- int /*<<< orphan*/  debugstr_w (char const*) ; 
- int /*<<< orphan*/  get_node_name (TYPE_1__*,TYPE_1__*) ; 
- char* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_realloc (char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- scalar_t__ next_content (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ next_node (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_zero (TYPE_1__*) ; 
- int /*<<< orphan*/  stream_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strstr (char*,char const*) ; 
- char tolower (char) ; 
+
+ int BLOCK_SIZE ;
+ int CP_ACP ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FIXME (char*,int ,int ) ;
+ int IStorage_OpenStream (int *,char const*,int *,int ,int ,int **) ;
+ int IStream_Release (int *) ;
+ int MultiByteToWideChar (int ,int ,char*,int,char*,int) ;
+ int STGM_READ ;
+ int TRUE ;
+ int _strnicmp (char*,char*,int) ;
+ int debugstr_w (char const*) ;
+ int get_node_name (TYPE_1__*,TYPE_1__*) ;
+ char* heap_alloc (int) ;
+ int heap_free (char*) ;
+ char* heap_realloc (char*,int) ;
+ int memcpy (char*,char*,int) ;
+ scalar_t__ next_content (int *,TYPE_1__*) ;
+ scalar_t__ next_node (int *,TYPE_1__*) ;
+ int strbuf_free (TYPE_1__*) ;
+ int strbuf_init (TYPE_1__*) ;
+ int strbuf_zero (TYPE_1__*) ;
+ int stream_init (int *,int *) ;
+ scalar_t__ strstr (char*,char const*) ;
+ char tolower (char) ;
 
 __attribute__((used)) static WCHAR *SearchCHM_File(IStorage *pStorage, const WCHAR *file, const char *needle)
 {
     char *buffer = heap_alloc(BLOCK_SIZE);
     strbuf_t content, node, node_name;
-    IStream *temp_stream = NULL;
+    IStream *temp_stream = ((void*)0);
     DWORD i, buffer_size = 0;
-    WCHAR *title = NULL;
+    WCHAR *title = ((void*)0);
     BOOL found = FALSE;
     stream_t stream;
     HRESULT hres;
 
-    hres = IStorage_OpenStream(pStorage, file, NULL, STGM_READ, 0, &temp_stream);
+    hres = IStorage_OpenStream(pStorage, file, ((void*)0), STGM_READ, 0, &temp_stream);
     if(FAILED(hres)) {
         FIXME("Could not open '%s' stream: %08x\n", debugstr_w(file), hres);
         goto cleanup;
@@ -71,7 +71,7 @@ __attribute__((used)) static WCHAR *SearchCHM_File(IStorage *pStorage, const WCH
 
     stream_init(&stream, temp_stream);
 
-    /* Remove all HTML formatting and record the title */
+
     while(next_node(&stream, &node)) {
         get_node_name(&node, &node_name);
 
@@ -82,7 +82,7 @@ __attribute__((used)) static WCHAR *SearchCHM_File(IStorage *pStorage, const WCH
 
             if(!_strnicmp(node_name.buf, "title", -1))
             {
-                int wlen = MultiByteToWideChar(CP_ACP, 0, text, textlen, NULL, 0);
+                int wlen = MultiByteToWideChar(CP_ACP, 0, text, textlen, ((void*)0), 0);
                 title = heap_alloc((wlen+1)*sizeof(WCHAR));
                 MultiByteToWideChar(CP_ACP, 0, text, textlen, title, wlen);
                 title[wlen] = 0;
@@ -98,13 +98,13 @@ __attribute__((used)) static WCHAR *SearchCHM_File(IStorage *pStorage, const WCH
         strbuf_zero(&content);
     }
 
-    /* Convert the buffer to lower case for comparison against the
-     * requested text (already in lower case).
-     */
+
+
+
     for(i=0;i<buffer_size;i++)
         buffer[i] = tolower(buffer[i]);
 
-    /* Search the decoded buffer for the requested text */
+
     if(strstr(buffer, needle))
         found = TRUE;
 
@@ -119,7 +119,7 @@ cleanup:
     if(!found)
     {
         heap_free(title);
-        return NULL;
+        return ((void*)0);
     }
     return title;
 }

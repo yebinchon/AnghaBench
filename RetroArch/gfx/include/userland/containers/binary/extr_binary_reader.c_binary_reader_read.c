@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_11__ {TYPE_1__* priv; } ;
-typedef  TYPE_2__ VC_CONTAINER_T ;
-typedef  scalar_t__ VC_CONTAINER_STATUS_T ;
-struct TYPE_12__ {unsigned int size; int /*<<< orphan*/  data; int /*<<< orphan*/  buffer_size; scalar_t__ flags; scalar_t__ track; scalar_t__ pts; scalar_t__ dts; } ;
-typedef  TYPE_3__ VC_CONTAINER_PACKET_T ;
+typedef TYPE_2__ VC_CONTAINER_T ;
+typedef scalar_t__ VC_CONTAINER_STATUS_T ;
+struct TYPE_12__ {unsigned int size; int data; int buffer_size; scalar_t__ flags; scalar_t__ track; scalar_t__ pts; scalar_t__ dts; } ;
+typedef TYPE_3__ VC_CONTAINER_PACKET_T ;
 struct TYPE_13__ {scalar_t__ status; unsigned int block_size; unsigned int default_block_size; scalar_t__ init; } ;
-typedef  TYPE_4__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_4__ VC_CONTAINER_MODULE_T ;
 struct TYPE_10__ {TYPE_4__* module; } ;
 
-/* Variables and functions */
- unsigned int MIN (unsigned int,int /*<<< orphan*/ ) ; 
- unsigned int READ_BYTES (TYPE_2__*,int /*<<< orphan*/ ,unsigned int) ; 
- unsigned int SKIP_BYTES (TYPE_2__*,unsigned int) ; 
- scalar_t__ STREAM_STATUS (TYPE_2__*) ; 
- int VC_CONTAINER_READ_FLAG_INFO ; 
- int VC_CONTAINER_READ_FLAG_SKIP ; 
- scalar_t__ VC_CONTAINER_SUCCESS ; 
- scalar_t__ VC_CONTAINER_TIME_UNKNOWN ; 
+
+ unsigned int MIN (unsigned int,int ) ;
+ unsigned int READ_BYTES (TYPE_2__*,int ,unsigned int) ;
+ unsigned int SKIP_BYTES (TYPE_2__*,unsigned int) ;
+ scalar_t__ STREAM_STATUS (TYPE_2__*) ;
+ int VC_CONTAINER_READ_FLAG_INFO ;
+ int VC_CONTAINER_READ_FLAG_SKIP ;
+ scalar_t__ VC_CONTAINER_SUCCESS ;
+ scalar_t__ VC_CONTAINER_TIME_UNKNOWN ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T binary_reader_read( VC_CONTAINER_T *p_ctx,
    VC_CONTAINER_PACKET_T *packet, uint32_t flags )

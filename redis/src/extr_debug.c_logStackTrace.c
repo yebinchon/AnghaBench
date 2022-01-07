@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ucontext_t ;
 
-/* Variables and functions */
- int backtrace (void**,int) ; 
- int /*<<< orphan*/  backtrace_symbols_fd (void**,int,int) ; 
- int /*<<< orphan*/  closeDirectLogFiledes (int) ; 
- int /*<<< orphan*/ * getMcontextEip (int /*<<< orphan*/ *) ; 
- int openDirectLogFiledes () ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int write (int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ucontext_t ;
+
+
+ int backtrace (void**,int) ;
+ int backtrace_symbols_fd (void**,int,int) ;
+ int closeDirectLogFiledes (int) ;
+ int * getMcontextEip (int *) ;
+ int openDirectLogFiledes () ;
+ int strlen (char*) ;
+ int write (int,char*,int ) ;
 
 void logStackTrace(ucontext_t *uc) {
     void *trace[101];
     int trace_size = 0, fd = openDirectLogFiledes();
 
-    if (fd == -1) return; /* If we can't log there is anything to do. */
+    if (fd == -1) return;
 
-    /* Generate the stack trace */
+
     trace_size = backtrace(trace+1, 100);
 
-    if (getMcontextEip(uc) != NULL) {
+    if (getMcontextEip(uc) != ((void*)0)) {
         char *msg1 = "EIP:\n";
         char *msg2 = "\nBacktrace:\n";
-        if (write(fd,msg1,strlen(msg1)) == -1) {/* Avoid warning. */};
+        if (write(fd,msg1,strlen(msg1)) == -1) { };
         trace[0] = getMcontextEip(uc);
         backtrace_symbols_fd(trace, 1, fd);
-        if (write(fd,msg2,strlen(msg2)) == -1) {/* Avoid warning. */};
+        if (write(fd,msg2,strlen(msg2)) == -1) { };
     }
 
-    /* Write symbols to log file */
+
     backtrace_symbols_fd(trace+1, trace_size, fd);
 
-    /* Cleanup */
+
     closeDirectLogFiledes(fd);
 }

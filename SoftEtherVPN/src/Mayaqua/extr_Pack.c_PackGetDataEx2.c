@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  int /*<<< orphan*/  ELEMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (void*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  GetDataValue (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ GetDataValueSize (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * GetElement (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALUE_DATA ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int PACK ;
+typedef int ELEMENT ;
+
+
+ int Copy (void*,int ,scalar_t__) ;
+ int GetDataValue (int *,scalar_t__) ;
+ scalar_t__ GetDataValueSize (int *,scalar_t__) ;
+ int * GetElement (int *,char*,int ) ;
+ int VALUE_DATA ;
 
 bool PackGetDataEx2(PACK *p, char *name, void *data, UINT size, UINT index)
 {
-	ELEMENT *e;
-	// Validate arguments
-	if (p == NULL || name == NULL)
-	{
-		return false;
-	}
+ ELEMENT *e;
 
-	e = GetElement(p, name, VALUE_DATA);
-	if (e == NULL)
-	{
-		return false;
-	}
-	if (GetDataValueSize(e, index) != size)
-	{
-		return false;
-	}
-	Copy(data, GetDataValue(e, index), GetDataValueSize(e, index));
-	return true;
+ if (p == ((void*)0) || name == ((void*)0))
+ {
+  return 0;
+ }
+
+ e = GetElement(p, name, VALUE_DATA);
+ if (e == ((void*)0))
+ {
+  return 0;
+ }
+ if (GetDataValueSize(e, index) != size)
+ {
+  return 0;
+ }
+ Copy(data, GetDataValue(e, index), GetDataValueSize(e, index));
+ return 1;
 }

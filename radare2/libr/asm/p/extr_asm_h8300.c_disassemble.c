@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut8 ;
-struct h8300_cmd {int /*<<< orphan*/  operands; int /*<<< orphan*/  instr; } ;
-struct TYPE_3__ {int size; int /*<<< orphan*/  buf_asm; } ;
-typedef  TYPE_1__ RAsmOp ;
-typedef  int /*<<< orphan*/  RAsm ;
 
-/* Variables and functions */
- int h8300_decode_command (int /*<<< orphan*/  const*,struct h8300_cmd*) ; 
- int /*<<< orphan*/  r_strbuf_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdb_fmt (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ut8 ;
+struct h8300_cmd {int operands; int instr; } ;
+struct TYPE_3__ {int size; int buf_asm; } ;
+typedef TYPE_1__ RAsmOp ;
+typedef int RAsm ;
+
+
+ int h8300_decode_command (int const*,struct h8300_cmd*) ;
+ int r_strbuf_set (int *,int ) ;
+ int sdb_fmt (char*,int ,int ) ;
 
 __attribute__((used)) static int disassemble(RAsm *a, RAsmOp *op, const ut8 *buf, int len) {
-	struct h8300_cmd cmd;
-	int ret = h8300_decode_command(buf, &cmd);
-	r_strbuf_set (&op->buf_asm, sdb_fmt ("%s %s", cmd.instr, cmd.operands));
-	return op->size = ret;
+ struct h8300_cmd cmd;
+ int ret = h8300_decode_command(buf, &cmd);
+ r_strbuf_set (&op->buf_asm, sdb_fmt ("%s %s", cmd.instr, cmd.operands));
+ return op->size = ret;
 }

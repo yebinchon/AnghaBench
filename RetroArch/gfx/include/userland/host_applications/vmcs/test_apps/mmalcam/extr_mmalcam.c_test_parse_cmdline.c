@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_5__ {int den; int /*<<< orphan*/  num; } ;
-struct TYPE_7__ {char const* uri; char const* vformat; int tunneling; int zero_copy; int opaque; int /*<<< orphan*/  camera_num; int /*<<< orphan*/  focus_test; int /*<<< orphan*/  bit_rate; TYPE_1__ frame_rate; int /*<<< orphan*/  change; int /*<<< orphan*/  seconds_per_change; int /*<<< orphan*/  display_area; } ;
-struct TYPE_6__ {int /*<<< orphan*/  value; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_PARAM_FOCUS_EDOF ; 
- TYPE_4__ camcorder_behaviour ; 
- size_t countof (TYPE_2__*) ; 
- TYPE_2__* mmalcam_change_table ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sleepy_time ; 
- int sscanf (char const*,char*,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- char* strrchr (char const*,char) ; 
- int /*<<< orphan*/  test_mmalcam_parse_rect (char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_5__ {int den; int num; } ;
+struct TYPE_7__ {char const* uri; char const* vformat; int tunneling; int zero_copy; int opaque; int camera_num; int focus_test; int bit_rate; TYPE_1__ frame_rate; int change; int seconds_per_change; int display_area; } ;
+struct TYPE_6__ {int value; int name; } ;
+
+
+ int MMAL_PARAM_FOCUS_EDOF ;
+ TYPE_4__ camcorder_behaviour ;
+ size_t countof (TYPE_2__*) ;
+ TYPE_2__* mmalcam_change_table ;
+ int printf (char*,...) ;
+ int sleepy_time ;
+ int sscanf (char const*,char*,int *,...) ;
+ int strcmp (int ,char const*) ;
+ char* strrchr (char const*,char) ;
+ int test_mmalcam_parse_rect (char const*,int *) ;
 
 __attribute__((used)) static int test_parse_cmdline(int argc, const char **argv)
 {
    int i;
    int passed_options = 0;
 
-   /* Parse the command line arguments */
+
    for(i = 1; i < argc; i++)
    {
       if (!argv[i]) continue;
 
       if (passed_options || argv[i][0] != '-')
       {
-         /* Non-option argument */
+
          continue;
       }
 
-      /* We are now dealing with command line options */
+
       switch(argv[i][1])
       {
       case '-': passed_options = 1; break;

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {scalar_t__ base_addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  outw (unsigned short,scalar_t__) ; 
+
+ int outw (unsigned short,scalar_t__) ;
 
 __attribute__((used)) static inline void scb_wrrfa(struct net_device *dev, unsigned short val)
 {
-	outw(val, dev->base_addr + 0xc00e);
+ outw(val, dev->base_addr + 0xc00e);
 }

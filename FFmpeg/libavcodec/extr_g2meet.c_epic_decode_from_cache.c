@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_7__ {struct TYPE_7__* next; int /*<<< orphan*/  pixel; int /*<<< orphan*/  rung; } ;
-typedef  TYPE_1__ ePICPixListElem ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_7__ {struct TYPE_7__* next; int pixel; int rung; } ;
+typedef TYPE_1__ ePICPixListElem ;
 struct TYPE_8__ {TYPE_1__* list; } ;
-typedef  TYPE_2__ ePICPixHashElem ;
-struct TYPE_9__ {int /*<<< orphan*/  stack_pos; int /*<<< orphan*/ * stack; int /*<<< orphan*/  els_ctx; int /*<<< orphan*/  hash; } ;
-typedef  TYPE_3__ ePICContext ;
+typedef TYPE_2__ ePICPixHashElem ;
+struct TYPE_9__ {int stack_pos; int * stack; int els_ctx; int hash; } ;
+typedef TYPE_3__ ePICContext ;
 
-/* Variables and functions */
- size_t EPIC_PIX_STACK_MAX ; 
- TYPE_2__* epic_hash_find (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_els_decode_bit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_pixel_on_stack (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ size_t EPIC_PIX_STACK_MAX ;
+ TYPE_2__* epic_hash_find (int *,int ) ;
+ scalar_t__ ff_els_decode_bit (int *,int *) ;
+ int is_pixel_on_stack (TYPE_3__*,int ) ;
 
 __attribute__((used)) static int epic_decode_from_cache(ePICContext *dc, uint32_t W, uint32_t *pPix)
 {
-    ePICPixListElem *list, *prev = NULL;
+    ePICPixListElem *list, *prev = ((void*)0);
     ePICPixHashElem *hash_elem = epic_hash_find(&dc->hash, W);
 
     if (!hash_elem || !hash_elem->list)
@@ -41,8 +41,8 @@ __attribute__((used)) static int epic_decode_from_cache(ePICContext *dc, uint32_
             if (ff_els_decode_bit(&dc->els_ctx, &list->rung)) {
                 *pPix = list->pixel;
                 if (list != hash_elem->list) {
-                    prev->next      = list->next;
-                    list->next      = hash_elem->list;
+                    prev->next = list->next;
+                    list->next = hash_elem->list;
                     hash_elem->list = list;
                 }
                 return 1;

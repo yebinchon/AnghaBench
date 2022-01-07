@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int wParam; int /*<<< orphan*/  message; } ;
-typedef  TYPE_1__ MSG ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int DLGC_HASSETSEL ; 
- int DLGC_WANTALLKEYS ; 
- int DLGC_WANTARROWS ; 
- int DLGC_WANTCHARS ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ ) ; 
- int ES_AUTOHSCROLL ; 
- int ES_AUTOVSCROLL ; 
- int ES_MULTILINE ; 
- int ES_WANTRETURN ; 
- int SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_GETDLGCODE ; 
- int /*<<< orphan*/  WM_KEYDOWN ; 
- int WS_VSCROLL ; 
- int /*<<< orphan*/  create_editcontrol (int,int /*<<< orphan*/ ) ; 
- int get_edit_style (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int wParam; int message; } ;
+typedef TYPE_1__ MSG ;
+typedef int LPARAM ;
+typedef int LONG ;
+typedef int HWND ;
+
+
+ int DLGC_HASSETSEL ;
+ int DLGC_WANTALLKEYS ;
+ int DLGC_WANTARROWS ;
+ int DLGC_WANTCHARS ;
+ int DestroyWindow (int ) ;
+ int ES_AUTOHSCROLL ;
+ int ES_AUTOVSCROLL ;
+ int ES_MULTILINE ;
+ int ES_WANTRETURN ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int WM_GETDLGCODE ;
+ int WM_KEYDOWN ;
+ int WS_VSCROLL ;
+ int create_editcontrol (int,int ) ;
+ int get_edit_style (int ) ;
+ int ok (int,char*,int) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_edit_control_1(void)
 {

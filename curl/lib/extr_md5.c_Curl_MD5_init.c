@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {void* md5_hashctx; TYPE_1__ const* md5_hash; } ;
-struct TYPE_6__ {int md5_ctxtsize; int /*<<< orphan*/  (* md5_init_func ) (void*) ;} ;
-typedef  TYPE_1__ MD5_params ;
-typedef  TYPE_2__ MD5_context ;
+struct TYPE_6__ {int md5_ctxtsize; int (* md5_init_func ) (void*) ;} ;
+typedef TYPE_1__ MD5_params ;
+typedef TYPE_2__ MD5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  stub1 (void*) ; 
+
+ int free (TYPE_2__*) ;
+ void* malloc (int) ;
+ int stub1 (void*) ;
 
 MD5_context *Curl_MD5_init(const MD5_params *md5params)
 {
   MD5_context *ctxt;
 
-  /* Create MD5 context */
+
   ctxt = malloc(sizeof(*ctxt));
 
   if(!ctxt)
@@ -36,7 +36,7 @@ MD5_context *Curl_MD5_init(const MD5_params *md5params)
 
   if(!ctxt->md5_hashctx) {
     free(ctxt);
-    return NULL;
+    return ((void*)0);
   }
 
   ctxt->md5_hash = md5params;

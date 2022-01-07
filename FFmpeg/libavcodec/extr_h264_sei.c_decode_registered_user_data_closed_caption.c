@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_5__ {int size; void** data; } ;
 struct TYPE_4__ {TYPE_3__* buf_ref; } ;
-typedef  TYPE_1__ H264SEIA53Caption ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ H264SEIA53Caption ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ const INT_MAX ; 
- int UINT64_C (int) ; 
- int av_buffer_realloc (TYPE_3__**,scalar_t__ const) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ scalar_t__ const INT_MAX ;
+ int UINT64_C (int) ;
+ int av_buffer_realloc (TYPE_3__**,scalar_t__ const) ;
+ void* get_bits (int *,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int decode_registered_user_data_closed_caption(H264SEIA53Caption *h,
                                                      GetBitContext *gb, void *logctx,
@@ -40,13 +40,13 @@ __attribute__((used)) static int decode_registered_user_data_closed_caption(H264
 
     user_data_type_code = get_bits(gb, 8);
     if (user_data_type_code == 0x3) {
-        skip_bits(gb, 1);           // reserved
+        skip_bits(gb, 1);
 
-        flag = get_bits(gb, 1);     // process_cc_data_flag
+        flag = get_bits(gb, 1);
         if (flag) {
-            skip_bits(gb, 1);       // zero bit
+            skip_bits(gb, 1);
             cc_count = get_bits(gb, 5);
-            skip_bits(gb, 8);       // reserved
+            skip_bits(gb, 8);
             size -= 2;
 
             if (cc_count && size >= cc_count * 3) {
@@ -58,19 +58,19 @@ __attribute__((used)) static int decode_registered_user_data_closed_caption(H264
                 if (new_size > INT_MAX)
                     return AVERROR(EINVAL);
 
-                /* Allow merging of the cc data from two fields. */
+
                 ret = av_buffer_realloc(&h->buf_ref, new_size);
                 if (ret < 0)
                     return ret;
 
-                /* Use of av_buffer_realloc assumes buffer is writeable */
+
                 for (i = 0; i < cc_count; i++) {
                     h->buf_ref->data[old_size++] = get_bits(gb, 8);
                     h->buf_ref->data[old_size++] = get_bits(gb, 8);
                     h->buf_ref->data[old_size++] = get_bits(gb, 8);
                 }
 
-                skip_bits(gb, 8);   // marker_bits
+                skip_bits(gb, 8);
             }
         }
     } else {

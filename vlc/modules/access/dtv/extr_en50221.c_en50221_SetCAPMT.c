@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ i_program_number; } ;
-typedef  TYPE_2__ en50221_capmt_info_t ;
+typedef TYPE_2__ en50221_capmt_info_t ;
 struct TYPE_16__ {TYPE_1__* p_sessions; TYPE_2__** pp_selected_programs; } ;
-typedef  TYPE_3__ cam_t ;
+typedef TYPE_3__ cam_t ;
 struct TYPE_14__ {scalar_t__ i_resource_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAPMTAdd (TYPE_3__*,unsigned int,TYPE_2__*) ; 
- int /*<<< orphan*/  CAPMTDelete (TYPE_3__*,unsigned int,TYPE_2__*) ; 
- int CAPMTNeedsDescrambling (TYPE_2__*) ; 
- int /*<<< orphan*/  CAPMTUpdate (TYPE_3__*,unsigned int,TYPE_2__*) ; 
- unsigned int MAX_PROGRAMS ; 
- unsigned int MAX_SESSIONS ; 
- scalar_t__ RI_CONDITIONAL_ACCESS_SUPPORT ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  en50221_capmt_Delete (TYPE_2__*) ; 
+
+ int CAPMTAdd (TYPE_3__*,unsigned int,TYPE_2__*) ;
+ int CAPMTDelete (TYPE_3__*,unsigned int,TYPE_2__*) ;
+ int CAPMTNeedsDescrambling (TYPE_2__*) ;
+ int CAPMTUpdate (TYPE_3__*,unsigned int,TYPE_2__*) ;
+ unsigned int MAX_PROGRAMS ;
+ unsigned int MAX_SESSIONS ;
+ scalar_t__ RI_CONDITIONAL_ACCESS_SUPPORT ;
+ int VLC_SUCCESS ;
+ int en50221_capmt_Delete (TYPE_2__*) ;
 
 int en50221_SetCAPMT( cam_t * p_cam, en50221_capmt_info_t *p_info )
 {
-    bool b_update = false;
+    bool b_update = 0;
     bool b_needs_descrambling = CAPMTNeedsDescrambling( p_info );
 
     for ( unsigned i = 0; i < MAX_PROGRAMS; i++ )
     {
-        if ( p_cam->pp_selected_programs[i] != NULL
+        if ( p_cam->pp_selected_programs[i] != ((void*)0)
               && p_cam->pp_selected_programs[i]->i_program_number
                   == p_info->i_program_number )
         {
-            b_update = true;
+            b_update = 1;
 
             if ( !b_needs_descrambling )
             {
                 en50221_capmt_Delete( p_info );
                 p_info = p_cam->pp_selected_programs[i];
-                p_cam->pp_selected_programs[i] = NULL;
+                p_cam->pp_selected_programs[i] = ((void*)0);
             }
             else if( p_info != p_cam->pp_selected_programs[i] )
             {
@@ -63,7 +63,7 @@ int en50221_SetCAPMT( cam_t * p_cam, en50221_capmt_info_t *p_info )
     {
         for ( unsigned i = 0; i < MAX_PROGRAMS; i++ )
         {
-            if ( p_cam->pp_selected_programs[i] == NULL )
+            if ( p_cam->pp_selected_programs[i] == ((void*)0) )
             {
                 p_cam->pp_selected_programs[i] = p_info;
                 break;

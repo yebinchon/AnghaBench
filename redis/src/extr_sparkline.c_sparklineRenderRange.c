@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sequence {double max; double min; scalar_t__ labels; struct sample* samples; } ;
 struct sample {double value; char* label; } ;
-typedef  int /*<<< orphan*/  sds ;
+typedef int sds ;
 
-/* Variables and functions */
- int SPARKLINE_FILL ; 
- int SPARKLINE_LOG_SCALE ; 
- char* charset ; 
- char* charset_fill ; 
- int charset_len ; 
- int label_margin_top ; 
- double log (double) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  zfree (char*) ; 
- char* zmalloc (int) ; 
+
+ int SPARKLINE_FILL ;
+ int SPARKLINE_LOG_SCALE ;
+ char* charset ;
+ char* charset_fill ;
+ int charset_len ;
+ int label_margin_top ;
+ double log (double) ;
+ int memset (char*,char,int) ;
+ int sdscatlen (int ,char*,int) ;
+ int strlen (char*) ;
+ int zfree (char*) ;
+ char* zmalloc (int) ;
 
 sds sparklineRenderRange(sds output, struct sequence *seq, int rows, int offset, int len, int flags) {
     int j;
@@ -58,7 +58,7 @@ sds sparklineRenderRange(sds output, struct sequence *seq, int rows, int offset,
             if (step >= steps) step = steps-1;
 
             if (row < rows) {
-                /* Print the character needed to create the sparkline */
+
                 int charidx = step-((rows-row-1)*charset_len);
                 loop = 1;
                 if (charidx >= 0 && charidx < charset_len) {
@@ -68,12 +68,12 @@ sds sparklineRenderRange(sds output, struct sequence *seq, int rows, int offset,
                     chars[j] = '|';
                 }
             } else {
-                /* Labels spacing */
+
                 if (seq->labels && row-rows < label_margin_top) {
                     loop = 1;
                     break;
                 }
-                /* Print the label if needed. */
+
                 if (s->label) {
                     int label_len = strlen(s->label);
                     int label_char = row - rows - label_margin_top;

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_6__ {int b_stereo; int i_sample_rate; int i_max_frame_size; int /*<<< orphan*/  psz_device; } ;
-typedef  TYPE_2__ demux_sys_t ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_6__ {int b_stereo; int i_sample_rate; int i_max_frame_size; int psz_device; } ;
+typedef TYPE_2__ demux_sys_t ;
 
-/* Variables and functions */
- int AFMT_S16_LE ; 
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  SNDCTL_DSP_SETFMT ; 
- int /*<<< orphan*/  SNDCTL_DSP_SPEED ; 
- int /*<<< orphan*/  SNDCTL_DSP_STEREO ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_close (int) ; 
- int vlc_open (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+ int AFMT_S16_LE ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int SNDCTL_DSP_SETFMT ;
+ int SNDCTL_DSP_SPEED ;
+ int SNDCTL_DSP_STEREO ;
+ int errno ;
+ scalar_t__ ioctl (int,int ,int*) ;
+ int msg_Err (TYPE_1__*,char*,int ) ;
+ int vlc_close (int) ;
+ int vlc_open (int ,int) ;
+ int vlc_strerror_c (int ) ;
 
 __attribute__((used)) static int OpenAudioDevOss( demux_t *p_demux )
 {

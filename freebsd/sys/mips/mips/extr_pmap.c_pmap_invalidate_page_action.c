@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pmap_invalidate_page_arg {int /*<<< orphan*/  va; int /*<<< orphan*/  pmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  tlb_invalidate_address (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct pmap_invalidate_page_arg {int va; int pmap; } ;
+
+
+ int tlb_invalidate_address (int ,int ) ;
 
 __attribute__((used)) static void
 pmap_invalidate_page_action(void *arg)
 {
-	struct pmap_invalidate_page_arg *p = arg;
+ struct pmap_invalidate_page_arg *p = arg;
 
-	tlb_invalidate_address(p->pmap, p->va);
+ tlb_invalidate_address(p->pmap, p->va);
 }

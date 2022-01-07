@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  avctx; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int avctx; } ;
 struct TYPE_5__ {int* k; int* kx; int sample_rate; int num_patches; int* m; int* f_master; int n_master; int* patch_num_subbands; int* patch_start_subband; } ;
-typedef  TYPE_1__ SpectralBandReplication ;
-typedef  TYPE_2__ AACContext ;
+typedef TYPE_1__ SpectralBandReplication ;
+typedef TYPE_2__ AACContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FFMAX (int,int ) ;
+ int av_log (int ,int ,char*,...) ;
 
 __attribute__((used)) static int sbr_hf_calc_npatches(AACContext *ac, SpectralBandReplication *sbr)
 {
@@ -50,16 +50,16 @@ __attribute__((used)) static int sbr_hf_calc_npatches(AACContext *ac, SpectralBa
             odd = (sb + sbr->k[0]) & 1;
         }
 
-        // Requirements (14496-3 sp04 p205) sets the maximum number of patches to 5.
-        // After this check the final number of patches can still be six which is
-        // illegal however the Coding Technologies decoder check stream has a final
-        // count of 6 patches
+
+
+
+
         if (sbr->num_patches > 5) {
             av_log(ac->avctx, AV_LOG_ERROR, "Too many patches: %d\n", sbr->num_patches);
             return -1;
         }
 
-        sbr->patch_num_subbands[sbr->num_patches]  = FFMAX(sb - usb, 0);
+        sbr->patch_num_subbands[sbr->num_patches] = FFMAX(sb - usb, 0);
         sbr->patch_start_subband[sbr->num_patches] = sbr->k[0] - odd - sbr->patch_num_subbands[sbr->num_patches];
 
         if (sbr->patch_num_subbands[sbr->num_patches] > 0) {

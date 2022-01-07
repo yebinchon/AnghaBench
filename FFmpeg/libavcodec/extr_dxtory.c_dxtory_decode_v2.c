@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  (* setup_lru_func ) (int /*<<< orphan*/ **) ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  scalar_t__ (* decode_slice_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **) ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int (* setup_lru_func ) (int **) ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef scalar_t__ (* decode_slice_func ) (int *,int *,int,int,int **) ;
 struct TYPE_7__ {int height; int width; int discard_damaged_percentage; int pix_fmt; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_1__ AVCodecContext ;
+typedef int GetByteContext ;
+typedef int GetBitContext ;
+typedef int AVFrame ;
+typedef TYPE_1__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_1__*,char*) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int check_slice_size (TYPE_1__*,int /*<<< orphan*/  const*,int,int,int) ; 
- int ff_get_buffer (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int load_buffer (TYPE_1__*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int*,int*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int avpriv_request_sample (TYPE_1__*,char*) ;
+ int bytestream2_get_le32 (int *) ;
+ int check_slice_size (TYPE_1__*,int const*,int,int,int) ;
+ int ff_get_buffer (TYPE_1__*,int *,int ) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int load_buffer (TYPE_1__*,int const*,int,int *,int*,int*) ;
 
 __attribute__((used)) static int dxtory_decode_v2(AVCodecContext *avctx, AVFrame *pic,
                             const uint8_t *src, int src_size,
@@ -39,7 +39,7 @@ __attribute__((used)) static int dxtory_decode_v2(AVCodecContext *avctx, AVFrame
                             enum AVPixelFormat fmt)
 {
     GetByteContext gb, gb_check;
-    GetBitContext  gb2;
+    GetBitContext gb2;
     int nslices, slice, line = 0;
     uint32_t off, slice_size;
     uint64_t off_check;

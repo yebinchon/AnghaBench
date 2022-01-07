@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lzo_ctx {int /*<<< orphan*/  lzo_comp_mem; } ;
+
+
+
+
+struct lzo_ctx {int lzo_comp_mem; } ;
 struct crypto_tfm {int dummy; } ;
 
-/* Variables and functions */
- struct lzo_ctx* crypto_tfm_ctx (struct crypto_tfm*) ; 
- int /*<<< orphan*/  lzo_free_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ struct lzo_ctx* crypto_tfm_ctx (struct crypto_tfm*) ;
+ int lzo_free_ctx (int *,int ) ;
 
 __attribute__((used)) static void lzo_exit(struct crypto_tfm *tfm)
 {
-	struct lzo_ctx *ctx = crypto_tfm_ctx(tfm);
+ struct lzo_ctx *ctx = crypto_tfm_ctx(tfm);
 
-	lzo_free_ctx(NULL, ctx->lzo_comp_mem);
+ lzo_free_ctx(((void*)0), ctx->lzo_comp_mem);
 }

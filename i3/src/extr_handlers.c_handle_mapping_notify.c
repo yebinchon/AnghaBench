@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ request; } ;
-typedef  TYPE_1__ xcb_mapping_notify_event_t ;
+typedef TYPE_1__ xcb_mapping_notify_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*) ; 
- scalar_t__ XCB_MAPPING_KEYBOARD ; 
- scalar_t__ XCB_MAPPING_MODIFIER ; 
- int /*<<< orphan*/  XCB_NUM_LOCK ; 
- int /*<<< orphan*/  aio_get_mod_mask_for (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn ; 
- int /*<<< orphan*/  grab_all_keys (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keysyms ; 
- int /*<<< orphan*/  translate_keysyms () ; 
- int /*<<< orphan*/  ungrab_all_keys (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xcb_numlock_mask ; 
- int /*<<< orphan*/  xcb_refresh_keyboard_mapping (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int DLOG (char*) ;
+ scalar_t__ XCB_MAPPING_KEYBOARD ;
+ scalar_t__ XCB_MAPPING_MODIFIER ;
+ int XCB_NUM_LOCK ;
+ int aio_get_mod_mask_for (int ,int ) ;
+ int conn ;
+ int grab_all_keys (int ) ;
+ int keysyms ;
+ int translate_keysyms () ;
+ int ungrab_all_keys (int ) ;
+ int xcb_numlock_mask ;
+ int xcb_refresh_keyboard_mapping (int ,TYPE_1__*) ;
 
 __attribute__((used)) static void handle_mapping_notify(xcb_mapping_notify_event_t *event) {
     if (event->request != XCB_MAPPING_KEYBOARD &&

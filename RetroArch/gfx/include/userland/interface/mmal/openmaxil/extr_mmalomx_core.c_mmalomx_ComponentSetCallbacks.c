@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ state; int /*<<< orphan*/  callbacks_data; int /*<<< orphan*/  callbacks; } ;
-typedef  int /*<<< orphan*/  OMX_PTR ;
-typedef  scalar_t__ OMX_HANDLETYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  int /*<<< orphan*/  OMX_CALLBACKTYPE ;
-typedef  TYPE_1__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MMAL_PARAM_UNUSED (TYPE_1__*) ; 
- int /*<<< orphan*/  OMX_ErrorBadParameter ; 
- int /*<<< orphan*/  OMX_ErrorInvalidComponent ; 
- int /*<<< orphan*/  OMX_ErrorInvalidState ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- scalar_t__ OMX_StateInvalid ; 
- scalar_t__ OMX_StateLoaded ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ state; int callbacks_data; int callbacks; } ;
+typedef int OMX_PTR ;
+typedef scalar_t__ OMX_HANDLETYPE ;
+typedef int OMX_ERRORTYPE ;
+typedef int OMX_CALLBACKTYPE ;
+typedef TYPE_1__ MMALOMX_COMPONENT_T ;
+
+
+ int LOG_TRACE (char*,scalar_t__,int *,int ) ;
+ int MMAL_PARAM_UNUSED (TYPE_1__*) ;
+ int OMX_ErrorBadParameter ;
+ int OMX_ErrorInvalidComponent ;
+ int OMX_ErrorInvalidState ;
+ int OMX_ErrorNone ;
+ scalar_t__ OMX_StateInvalid ;
+ scalar_t__ OMX_StateLoaded ;
 
 __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentSetCallbacks(
    OMX_HANDLETYPE hComponent,
@@ -39,7 +39,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentSetCallbacks(
    LOG_TRACE("hComponent %p, pCallbacks %p, pAppData %p",
               hComponent, pCallbacks, pAppData);
 
-   /* Sanity checks */
+
    if (!hComponent)
       return OMX_ErrorInvalidComponent;
    if (!pCallbacks)

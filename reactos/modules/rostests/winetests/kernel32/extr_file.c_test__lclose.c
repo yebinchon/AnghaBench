@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HFILE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ DeleteFileA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ HFILE_ERROR ; 
- scalar_t__ _hwrite (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _lclose (scalar_t__) ; 
- scalar_t__ _lcreat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  sillytext ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ HFILE ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ DeleteFileA (int ) ;
+ int GetLastError () ;
+ scalar_t__ HFILE_ERROR ;
+ scalar_t__ _hwrite (scalar_t__,int ,int ) ;
+ scalar_t__ _lclose (scalar_t__) ;
+ scalar_t__ _lcreat (int ,int ) ;
+ int filename ;
+ int ok (int,char*,...) ;
+ int sillytext ;
+ int strlen (int ) ;
 
 __attribute__((used)) static void test__lclose( void )
 {
@@ -42,5 +42,5 @@ __attribute__((used)) static void test__lclose( void )
     ok( HFILE_ERROR != _lclose(filehandle), "_lclose complains\n" );
 
     ret = DeleteFileA( filename );
-    ok( ret != 0, "DeleteFile failed (%d)\n", GetLastError(  ) );
+    ok( ret != 0, "DeleteFile failed (%d)\n", GetLastError( ) );
 }

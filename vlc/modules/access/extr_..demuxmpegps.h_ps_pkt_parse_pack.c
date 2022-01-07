@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  stime_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExtractPESTimestamp (int const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExtractPackHeaderTimestamp (int const*) ; 
- int /*<<< orphan*/  FROM_SCALE (int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
+
+
+
+typedef int vlc_tick_t ;
+typedef int uint8_t ;
+typedef int stime_t ;
+
+
+ int ExtractPESTimestamp (int const*,int,int *) ;
+ int ExtractPackHeaderTimestamp (int const*) ;
+ int FROM_SCALE (int ) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
 
 __attribute__((used)) static inline int ps_pkt_parse_pack( const uint8_t *p_pkt, size_t i_pkt,
                                      vlc_tick_t *pi_scr, int *pi_mux_rate )
@@ -30,7 +30,7 @@ __attribute__((used)) static inline int ps_pkt_parse_pack( const uint8_t *p_pkt,
         *pi_scr = FROM_SCALE( ExtractPackHeaderTimestamp( &p[4] ) );
         *pi_mux_rate = ( p[10] << 14 )|( p[11] << 6 )|( p[12] >> 2);
     }
-    else if( i_pkt >= 12 && (p[4] >> 4) == 0x02 ) /* MPEG-1 Pack SCR, same bits as PES/PTS */
+    else if( i_pkt >= 12 && (p[4] >> 4) == 0x02 )
     {
         stime_t i_scr;
         if(!ExtractPESTimestamp( &p[4], 0x02, &i_scr ))

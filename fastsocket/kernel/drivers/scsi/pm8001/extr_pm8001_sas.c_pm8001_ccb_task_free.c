@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  smp_req; int /*<<< orphan*/  smp_resp; } ;
-struct sas_task {int task_proto; int num_scatter; int /*<<< orphan*/ * lldd_task; TYPE_1__ smp_task; int /*<<< orphan*/  data_dir; int /*<<< orphan*/ * scatter; } ;
-struct pm8001_hba_info {int /*<<< orphan*/  dev; } ;
-struct pm8001_ccb_info {int ccb_tag; scalar_t__ open_retry; int /*<<< orphan*/ * task; scalar_t__ n_elem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCI_DMA_FROMDEVICE ; 
- int /*<<< orphan*/  PCI_DMA_TODEVICE ; 
-#define  SAS_PROTOCOL_SATA 131 
-#define  SAS_PROTOCOL_SMP 130 
-#define  SAS_PROTOCOL_SSP 129 
-#define  SAS_PROTOCOL_STP 128 
- int /*<<< orphan*/  dma_unmap_sg (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm8001_ccb_free (struct pm8001_hba_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sas_protocol_ata (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int smp_req; int smp_resp; } ;
+struct sas_task {int task_proto; int num_scatter; int * lldd_task; TYPE_1__ smp_task; int data_dir; int * scatter; } ;
+struct pm8001_hba_info {int dev; } ;
+struct pm8001_ccb_info {int ccb_tag; scalar_t__ open_retry; int * task; scalar_t__ n_elem; } ;
+
+
+ int PCI_DMA_FROMDEVICE ;
+ int PCI_DMA_TODEVICE ;
+
+
+
+
+ int dma_unmap_sg (int ,int *,int,int ) ;
+ int pm8001_ccb_free (struct pm8001_hba_info*,int ) ;
+ int sas_protocol_ata (int) ;
 
 void pm8001_ccb_task_free(struct pm8001_hba_info *pm8001_ha,
-	struct sas_task *task, struct pm8001_ccb_info *ccb, u32 ccb_idx)
+ struct sas_task *task, struct pm8001_ccb_info *ccb, u32 ccb_idx)
 {
-	if (!ccb->task)
-		return;
-	if (!sas_protocol_ata(task->task_proto))
-		if (ccb->n_elem)
-			dma_unmap_sg(pm8001_ha->dev, task->scatter,
-				task->num_scatter, task->data_dir);
+ if (!ccb->task)
+  return;
+ if (!sas_protocol_ata(task->task_proto))
+  if (ccb->n_elem)
+   dma_unmap_sg(pm8001_ha->dev, task->scatter,
+    task->num_scatter, task->data_dir);
 
-	switch (task->task_proto) {
-	case SAS_PROTOCOL_SMP:
-		dma_unmap_sg(pm8001_ha->dev, &task->smp_task.smp_resp, 1,
-			PCI_DMA_FROMDEVICE);
-		dma_unmap_sg(pm8001_ha->dev, &task->smp_task.smp_req, 1,
-			PCI_DMA_TODEVICE);
-		break;
+ switch (task->task_proto) {
+ case 130:
+  dma_unmap_sg(pm8001_ha->dev, &task->smp_task.smp_resp, 1,
+   PCI_DMA_FROMDEVICE);
+  dma_unmap_sg(pm8001_ha->dev, &task->smp_task.smp_req, 1,
+   PCI_DMA_TODEVICE);
+  break;
 
-	case SAS_PROTOCOL_SATA:
-	case SAS_PROTOCOL_STP:
-	case SAS_PROTOCOL_SSP:
-	default:
-		/* do nothing */
-		break;
-	}
-	task->lldd_task = NULL;
-	ccb->task = NULL;
-	ccb->ccb_tag = 0xFFFFFFFF;
-	ccb->open_retry = 0;
-	pm8001_ccb_free(pm8001_ha, ccb_idx);
+ case 131:
+ case 128:
+ case 129:
+ default:
+
+  break;
+ }
+ task->lldd_task = ((void*)0);
+ ccb->task = ((void*)0);
+ ccb->ccb_tag = 0xFFFFFFFF;
+ ccb->open_retry = 0;
+ pm8001_ccb_free(pm8001_ha, ccb_idx);
 }

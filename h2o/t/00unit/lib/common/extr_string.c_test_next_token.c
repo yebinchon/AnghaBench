@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  h2o_iovec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_STRLIT (char*) ; 
- int /*<<< orphan*/  NEXT () ; 
- int /*<<< orphan*/  h2o_iovec_init (int /*<<< orphan*/ ) ; 
- int h2o_memis (char const*,size_t,int /*<<< orphan*/ ) ; 
- char* h2o_next_token (int /*<<< orphan*/ *,char,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int) ; 
+
+
+
+typedef int h2o_iovec_t ;
+
+
+ int H2O_STRLIT (char*) ;
+ int NEXT () ;
+ int h2o_iovec_init (int ) ;
+ int h2o_memis (char const*,size_t,int ) ;
+ char* h2o_next_token (int *,char,size_t*,int *) ;
+ int ok (int) ;
 
 __attribute__((used)) static void test_next_token(void)
 {
@@ -26,43 +26,43 @@ __attribute__((used)) static void test_next_token(void)
     const char *token;
     size_t token_len;
 
-#define NEXT()                                                                                                                     \
-    if ((token = h2o_next_token(&iter, ',', &token_len, NULL)) == NULL) {                                                          \
-        ok(0);                                                                                                                     \
-        return;                                                                                                                    \
-    }
+
+
+
+
+
 
     iter = h2o_iovec_init(H2O_STRLIT("public, max-age=86400, must-revalidate"));
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(h2o_memis(token, token_len, H2O_STRLIT("public")));
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(h2o_memis(token, token_len, H2O_STRLIT("max-age=86400")));
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(h2o_memis(token, token_len, H2O_STRLIT("must-revalidate")));
-    token = h2o_next_token(&iter, ',', &token_len, NULL);
-    ok(token == NULL);
+    token = h2o_next_token(&iter, ',', &token_len, ((void*)0));
+    ok(token == ((void*)0));
 
     iter = h2o_iovec_init(H2O_STRLIT("  public  ,max-age=86400  ,"));
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(h2o_memis(token, token_len, H2O_STRLIT("public")));
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(h2o_memis(token, token_len, H2O_STRLIT("max-age=86400")));
-    token = h2o_next_token(&iter, ',', &token_len, NULL);
-    ok(token == NULL);
+    token = h2o_next_token(&iter, ',', &token_len, ((void*)0));
+    ok(token == ((void*)0));
 
     iter = h2o_iovec_init(H2O_STRLIT(""));
-    token = h2o_next_token(&iter, ',', &token_len, NULL);
-    ok(token == NULL);
+    token = h2o_next_token(&iter, ',', &token_len, ((void*)0));
+    ok(token == ((void*)0));
 
     iter = h2o_iovec_init(H2O_STRLIT(", ,a, "));
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(token_len == 0);
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(token_len == 0);
-    NEXT();
+    if ((token = h2o_next_token(&iter, ',', &token_len, ((void*)0))) == ((void*)0)) { ok(0); return; };
     ok(h2o_memis(token, token_len, H2O_STRLIT("a")));
-    token = h2o_next_token(&iter, ',', &token_len, NULL);
-    ok(token == NULL);
+    token = h2o_next_token(&iter, ',', &token_len, ((void*)0));
+    ok(token == ((void*)0));
 
-#undef NEXT
+
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wifi_sta_config_t ;
-struct TYPE_3__ {int /*<<< orphan*/  sta; } ;
-typedef  TYPE_1__ wifi_config_t ;
-struct wps_sm {int discover_ssid_cnt; scalar_t__ scan_cnt; int ignore_sel_reg; int /*<<< orphan*/  wps_scan_timer; int /*<<< orphan*/  config; } ;
-typedef  int /*<<< orphan*/  STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  MSG_INFO ; 
- int /*<<< orphan*/  WIFI_EVENT ; 
- int /*<<< orphan*/  WIFI_EVENT_STA_WPS_ER_PBC_OVERLAP ; 
- scalar_t__ WPS_IGNORE_SEL_REG_MAX_CNT ; 
- scalar_t__ WPS_STATUS_DISABLE ; 
- scalar_t__ WPS_STATUS_PENDING ; 
- scalar_t__ WPS_STATUS_SCANNING ; 
- scalar_t__ WPS_TYPE_DISABLE ; 
- int /*<<< orphan*/  esp_event_send_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_wifi_connect () ; 
- int /*<<< orphan*/  esp_wifi_disconnect () ; 
- int /*<<< orphan*/  esp_wifi_set_config (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ets_timer_arm (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- struct wps_sm* gWpsSm ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ wps_get_status () ; 
- scalar_t__ wps_get_type () ; 
- int /*<<< orphan*/  wps_set_status (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wifi_sta_config_t ;
+struct TYPE_3__ {int sta; } ;
+typedef TYPE_1__ wifi_config_t ;
+struct wps_sm {int discover_ssid_cnt; scalar_t__ scan_cnt; int ignore_sel_reg; int wps_scan_timer; int config; } ;
+typedef int STATUS ;
+
+
+ int MSG_DEBUG ;
+ int MSG_INFO ;
+ int WIFI_EVENT ;
+ int WIFI_EVENT_STA_WPS_ER_PBC_OVERLAP ;
+ scalar_t__ WPS_IGNORE_SEL_REG_MAX_CNT ;
+ scalar_t__ WPS_STATUS_DISABLE ;
+ scalar_t__ WPS_STATUS_PENDING ;
+ scalar_t__ WPS_STATUS_SCANNING ;
+ scalar_t__ WPS_TYPE_DISABLE ;
+ int esp_event_send_internal (int ,int ,int ,int ,int ) ;
+ int esp_wifi_connect () ;
+ int esp_wifi_disconnect () ;
+ int esp_wifi_set_config (int ,TYPE_1__*) ;
+ int ets_timer_arm (int *,int,int ) ;
+ struct wps_sm* gWpsSm ;
+ int memcpy (int *,int *,int) ;
+ int portMAX_DELAY ;
+ int wpa_printf (int ,char*,...) ;
+ scalar_t__ wps_get_status () ;
+ scalar_t__ wps_get_type () ;
+ int wps_set_status (scalar_t__) ;
 
 void
 wifi_wps_scan_done(void *arg, STATUS status)
@@ -56,7 +56,7 @@ wifi_wps_scan_done(void *arg, STATUS status)
 
     if (sm->discover_ssid_cnt == 1) {
         wps_set_status(WPS_STATUS_PENDING);
-    } else if (sm->discover_ssid_cnt == 0)  {
+    } else if (sm->discover_ssid_cnt == 0) {
         wps_set_status(WPS_STATUS_SCANNING);
     } else {
         wpa_printf(MSG_INFO, "PBC session overlap!");
@@ -78,7 +78,7 @@ wifi_wps_scan_done(void *arg, STATUS status)
         esp_wifi_connect();
     } else if (wps_get_status() == WPS_STATUS_SCANNING) {
         if (sm->scan_cnt < WPS_IGNORE_SEL_REG_MAX_CNT) {
-            sm->ignore_sel_reg = true;
+            sm->ignore_sel_reg = 1;
         }
         ets_timer_arm(&sm->wps_scan_timer, 100, 0);
     } else {

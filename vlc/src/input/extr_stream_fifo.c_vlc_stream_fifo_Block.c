@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fifo_t ;
-struct vlc_stream_fifo {scalar_t__ eof; int /*<<< orphan*/ * fifo; } ;
-typedef  int /*<<< orphan*/  stream_t ;
-typedef  int /*<<< orphan*/  block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * vlc_fifo_DequeueUnlocked (int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_fifo_IsEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_fifo_Lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_fifo_Unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_fifo_Wait (int /*<<< orphan*/ *) ; 
- struct vlc_stream_fifo* vlc_stream_fifo_Writer (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_fifo_t ;
+struct vlc_stream_fifo {scalar_t__ eof; int * fifo; } ;
+typedef int stream_t ;
+typedef int block_t ;
+
+
+ int * vlc_fifo_DequeueUnlocked (int *) ;
+ scalar_t__ vlc_fifo_IsEmpty (int *) ;
+ int vlc_fifo_Lock (int *) ;
+ int vlc_fifo_Unlock (int *) ;
+ int vlc_fifo_Wait (int *) ;
+ struct vlc_stream_fifo* vlc_stream_fifo_Writer (int *) ;
 
 __attribute__((used)) static block_t *vlc_stream_fifo_Block(stream_t *s, bool *restrict eof)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static block_t *vlc_stream_fifo_Block(stream_t *s, bool *r
     {
         if (sys->eof)
         {
-            *eof = true;
+            *eof = 1;
             break;
         }
         vlc_fifo_Wait(fifo);

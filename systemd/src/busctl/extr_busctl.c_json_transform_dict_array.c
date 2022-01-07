@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  JsonVariant ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GREEDY_REALLOC (int /*<<< orphan*/ **,size_t,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bus_log_parse_error (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ **) ; 
- int json_transform_one (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int json_variant_new_object (int /*<<< orphan*/ **,int /*<<< orphan*/ **,size_t) ; 
- int /*<<< orphan*/  json_variant_unref_many (int /*<<< orphan*/ **,size_t) ; 
- int log_oom () ; 
- int sd_bus_message_at_end (int /*<<< orphan*/ *,int) ; 
- int sd_bus_message_enter_container (int /*<<< orphan*/ *,char,char const*) ; 
- int sd_bus_message_exit_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_peek_type (int /*<<< orphan*/ *,char*,char const**) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int JsonVariant ;
+
+
+ int GREEDY_REALLOC (int **,size_t,size_t) ;
+ int assert (int) ;
+ int bus_log_parse_error (int) ;
+ int free (int **) ;
+ int json_transform_one (int *,int **) ;
+ int json_variant_new_object (int **,int **,size_t) ;
+ int json_variant_unref_many (int **,size_t) ;
+ int log_oom () ;
+ int sd_bus_message_at_end (int *,int) ;
+ int sd_bus_message_enter_container (int *,char,char const*) ;
+ int sd_bus_message_exit_container (int *) ;
+ int sd_bus_message_peek_type (int *,char*,char const**) ;
 
 __attribute__((used)) static int json_transform_dict_array(sd_bus_message *m, JsonVariant **ret) {
         size_t n_elements = 0, n_allocated = 0;
-        JsonVariant **elements = NULL;
+        JsonVariant **elements = ((void*)0);
         int r;
 
         assert(m);
@@ -39,7 +39,7 @@ __attribute__((used)) static int json_transform_dict_array(sd_bus_message *m, Js
                 const char *contents;
                 char type;
 
-                r = sd_bus_message_at_end(m, false);
+                r = sd_bus_message_at_end(m, 0);
                 if (r < 0) {
                         bus_log_parse_error(r);
                         goto finish;

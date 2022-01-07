@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct run {int some_bytes_length; int notes_length; int other_numbers_length; int /*<<< orphan*/ * other_numbers_data; scalar_t__ other_numbers_set; int /*<<< orphan*/  large_number_data; scalar_t__ large_number_set; int /*<<< orphan*/ * notes_data; scalar_t__ notes_set; int /*<<< orphan*/  fixed_bytes_data; int /*<<< orphan*/  some_bytes_data; scalar_t__ some_bytes_set; int /*<<< orphan*/  how_data; } ;
+
+
+
+
+struct run {int some_bytes_length; int notes_length; int other_numbers_length; int * other_numbers_data; scalar_t__ other_numbers_set; int large_number_data; scalar_t__ large_number_set; int * notes_data; scalar_t__ notes_set; int fixed_bytes_data; int some_bytes_data; scalar_t__ some_bytes_set; int how_data; } ;
 struct evbuffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RUN_FIXED_BYTES ; 
- int /*<<< orphan*/  RUN_HOW ; 
- int /*<<< orphan*/  RUN_LARGE_NUMBER ; 
- int /*<<< orphan*/  RUN_NOTES ; 
- int /*<<< orphan*/  RUN_OTHER_NUMBERS ; 
- int /*<<< orphan*/  RUN_SOME_BYTES ; 
- int /*<<< orphan*/  evtag_marshal (struct evbuffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  evtag_marshal_int (struct evbuffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  evtag_marshal_int64 (struct evbuffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  evtag_marshal_string (struct evbuffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int RUN_FIXED_BYTES ;
+ int RUN_HOW ;
+ int RUN_LARGE_NUMBER ;
+ int RUN_NOTES ;
+ int RUN_OTHER_NUMBERS ;
+ int RUN_SOME_BYTES ;
+ int evtag_marshal (struct evbuffer*,int ,int ,int) ;
+ int evtag_marshal_int (struct evbuffer*,int ,int ) ;
+ int evtag_marshal_int64 (struct evbuffer*,int ,int ) ;
+ int evtag_marshal_string (struct evbuffer*,int ,int ) ;
 
 void
 run_marshal(struct evbuffer *evbuf, const struct run *tmp){

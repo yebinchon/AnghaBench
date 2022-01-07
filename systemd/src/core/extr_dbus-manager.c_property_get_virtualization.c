@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
 
-/* Variables and functions */
- int VIRTUALIZATION_NONE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int detect_virtualization () ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * virtualization_to_string (int) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+
+
+ int VIRTUALIZATION_NONE ;
+ int assert (int *) ;
+ int detect_virtualization () ;
+ int sd_bus_message_append (int *,char*,int *) ;
+ int * virtualization_to_string (int) ;
 
 __attribute__((used)) static int property_get_virtualization(
                 sd_bus *bus,
@@ -37,12 +37,12 @@ __attribute__((used)) static int property_get_virtualization(
 
         v = detect_virtualization();
 
-        /* Make sure to return the empty string when we detect no virtualization, as that is the API.
-         *
-         * https://github.com/systemd/systemd/issues/1423
-         */
+
+
+
+
 
         return sd_bus_message_append(
                         reply, "s",
-                        v == VIRTUALIZATION_NONE ? NULL : virtualization_to_string(v));
+                        v == VIRTUALIZATION_NONE ? ((void*)0) : virtualization_to_string(v));
 }

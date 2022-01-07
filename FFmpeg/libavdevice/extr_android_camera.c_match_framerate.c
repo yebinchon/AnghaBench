@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_8__ {int* i32; } ;
 struct TYPE_11__ {int count; TYPE_1__ data; } ;
 struct TYPE_10__ {TYPE_2__* priv_data; } ;
-struct TYPE_9__ {int* framerate_range; int /*<<< orphan*/  camera_metadata; int /*<<< orphan*/  framerate; } ;
-typedef  TYPE_2__ AndroidCameraCtx ;
-typedef  TYPE_3__ AVFormatContext ;
-typedef  TYPE_4__ ACameraMetadata_const_entry ;
+struct TYPE_9__ {int* framerate_range; int camera_metadata; int framerate; } ;
+typedef TYPE_2__ AndroidCameraCtx ;
+typedef TYPE_3__ AVFormatContext ;
+typedef TYPE_4__ ACameraMetadata_const_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACAMERA_CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES ; 
- int /*<<< orphan*/  ACameraMetadata_getConstEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int,int,int) ; 
- int av_q2d (int /*<<< orphan*/ ) ; 
+
+ int ACAMERA_CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES ;
+ int ACameraMetadata_getConstEntry (int ,int ,TYPE_4__*) ;
+ int AV_LOG_WARNING ;
+ int av_log (TYPE_3__*,int ,char*,int,int,int) ;
+ int av_q2d (int ) ;
 
 __attribute__((used)) static void match_framerate(AVFormatContext *avctx)
 {

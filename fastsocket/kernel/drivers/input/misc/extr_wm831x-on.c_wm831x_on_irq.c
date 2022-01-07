@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wm831x_on {int /*<<< orphan*/  work; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  schedule_delayed_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct wm831x_on {int work; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int schedule_delayed_work (int *,int ) ;
 
 __attribute__((used)) static irqreturn_t wm831x_on_irq(int irq, void *data)
 {
-	struct wm831x_on *wm831x_on = data;
+ struct wm831x_on *wm831x_on = data;
 
-	schedule_delayed_work(&wm831x_on->work, 0);
+ schedule_delayed_work(&wm831x_on->work, 0);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

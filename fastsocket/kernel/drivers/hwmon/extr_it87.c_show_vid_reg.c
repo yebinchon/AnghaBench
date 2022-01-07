@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct it87_data {int /*<<< orphan*/  vrm; int /*<<< orphan*/  vid; } ;
+
+
+
+
+struct it87_data {int vrm; int vid; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- struct it87_data* it87_update_device (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,long) ; 
- scalar_t__ vid_from_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct it87_data* it87_update_device (struct device*) ;
+ int sprintf (char*,char*,long) ;
+ scalar_t__ vid_from_reg (int ,int ) ;
 
 __attribute__((used)) static ssize_t
 show_vid_reg(struct device *dev, struct device_attribute *attr, char *buf)
 {
-	struct it87_data *data = it87_update_device(dev);
-	return sprintf(buf, "%ld\n", (long) vid_from_reg(data->vid, data->vrm));
+ struct it87_data *data = it87_update_device(dev);
+ return sprintf(buf, "%ld\n", (long) vid_from_reg(data->vid, data->vrm));
 }

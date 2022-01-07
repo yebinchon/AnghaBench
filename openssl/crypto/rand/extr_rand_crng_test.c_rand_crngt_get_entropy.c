@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_6__ {int /*<<< orphan*/  crngt_prev; int /*<<< orphan*/  crngt_pool; } ;
-struct TYPE_5__ {int /*<<< orphan*/  libctx; } ;
-typedef  int /*<<< orphan*/  RAND_POOL ;
-typedef  TYPE_1__ RAND_DRBG ;
-typedef  TYPE_2__ CRNG_TEST_GLOBAL ;
 
-/* Variables and functions */
- int CRNGT_BUFSIZ ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  OPENSSL_CTX_RAND_CRNGT_INDEX ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  crngt_get_entropy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,unsigned char*,unsigned int*) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,unsigned char*,unsigned int) ; 
- TYPE_2__* openssl_ctx_get_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rand_crng_ossl_ctx_method ; 
- int /*<<< orphan*/  rand_pool_add (int /*<<< orphan*/ *,unsigned char*,size_t,size_t) ; 
- size_t rand_pool_bytes_needed (int /*<<< orphan*/ *,int) ; 
- unsigned char* rand_pool_detach (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rand_pool_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rand_pool_new (int,int,size_t,size_t) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int buf ;
+struct TYPE_6__ {int crngt_prev; int crngt_pool; } ;
+struct TYPE_5__ {int libctx; } ;
+typedef int RAND_POOL ;
+typedef TYPE_1__ RAND_DRBG ;
+typedef TYPE_2__ CRNG_TEST_GLOBAL ;
+
+
+ int CRNGT_BUFSIZ ;
+ int EVP_MAX_MD_SIZE ;
+ int OPENSSL_CTX_RAND_CRNGT_INDEX ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int crngt_get_entropy (int ,int ,unsigned char*,unsigned char*,unsigned int*) ;
+ scalar_t__ memcmp (int ,unsigned char*,unsigned int) ;
+ int memcpy (int ,unsigned char*,unsigned int) ;
+ TYPE_2__* openssl_ctx_get_data (int ,int ,int *) ;
+ int rand_crng_ossl_ctx_method ;
+ int rand_pool_add (int *,unsigned char*,size_t,size_t) ;
+ size_t rand_pool_bytes_needed (int *,int) ;
+ unsigned char* rand_pool_detach (int *) ;
+ int rand_pool_free (int *) ;
+ int * rand_pool_new (int,int,size_t,size_t) ;
 
 size_t rand_crngt_get_entropy(RAND_DRBG *drbg,
                               unsigned char **pout,
@@ -49,10 +49,10 @@ size_t rand_crngt_get_entropy(RAND_DRBG *drbg,
         = openssl_ctx_get_data(drbg->libctx, OPENSSL_CTX_RAND_CRNGT_INDEX,
                                &rand_crng_ossl_ctx_method);
 
-    if (crngt_glob == NULL)
+    if (crngt_glob == ((void*)0))
         return 0;
 
-    if ((pool = rand_pool_new(entropy, 1, min_len, max_len)) == NULL)
+    if ((pool = rand_pool_new(entropy, 1, min_len, max_len)) == ((void*)0))
         return 0;
 
     while ((q = rand_pool_bytes_needed(pool, 1)) > 0 && attempts-- > 0) {

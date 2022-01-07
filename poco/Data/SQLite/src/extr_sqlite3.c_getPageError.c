@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ errCode; } ;
-typedef  int Pgno ;
-typedef  TYPE_1__ Pager ;
-typedef  int /*<<< orphan*/  DbPage ;
+typedef int Pgno ;
+typedef TYPE_1__ Pager ;
+typedef int DbPage ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ SQLITE_OK ;
+ int UNUSED_PARAMETER (int) ;
+ int assert (int) ;
 
 __attribute__((used)) static int getPageError(
-  Pager *pPager,      /* The pager open on the database file */
-  Pgno pgno,          /* Page number to fetch */
-  DbPage **ppPage,    /* Write a pointer to the page here */
-  int flags           /* PAGER_GET_XXX flags */
+  Pager *pPager,
+  Pgno pgno,
+  DbPage **ppPage,
+  int flags
 ){
   UNUSED_PARAMETER(pgno);
   UNUSED_PARAMETER(flags);

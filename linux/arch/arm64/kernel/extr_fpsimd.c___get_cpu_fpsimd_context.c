@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int __this_cpu_xchg (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fpsimd_context_busy ; 
+ int WARN_ON (int) ;
+ int __this_cpu_xchg (int ,int) ;
+ int fpsimd_context_busy ;
 
 __attribute__((used)) static void __get_cpu_fpsimd_context(void)
 {
-	bool busy = __this_cpu_xchg(fpsimd_context_busy, true);
+ bool busy = __this_cpu_xchg(fpsimd_context_busy, 1);
 
-	WARN_ON(busy);
+ WARN_ON(busy);
 }

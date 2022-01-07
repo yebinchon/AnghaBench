@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
 
-/* Variables and functions */
- int dsl_dataset_snapshot (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fnvlist_add_boolean (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * fnvlist_alloc () ; 
- int /*<<< orphan*/  fnvlist_free (int /*<<< orphan*/ *) ; 
- char* kmem_asprintf (char*,char const*,char const*) ; 
- int /*<<< orphan*/  kmem_strfree (char*) ; 
+
+
+
+typedef int nvlist_t ;
+
+
+ int dsl_dataset_snapshot (int *,int *,int *) ;
+ int fnvlist_add_boolean (int *,char*) ;
+ int * fnvlist_alloc () ;
+ int fnvlist_free (int *) ;
+ char* kmem_asprintf (char*,char const*,char const*) ;
+ int kmem_strfree (char*) ;
 
 int
 dmu_objset_snapshot_one(const char *fsname, const char *snapname)
 {
-	int err;
-	char *longsnap = kmem_asprintf("%s@%s", fsname, snapname);
-	nvlist_t *snaps = fnvlist_alloc();
+ int err;
+ char *longsnap = kmem_asprintf("%s@%s", fsname, snapname);
+ nvlist_t *snaps = fnvlist_alloc();
 
-	fnvlist_add_boolean(snaps, longsnap);
-	kmem_strfree(longsnap);
-	err = dsl_dataset_snapshot(snaps, NULL, NULL);
-	fnvlist_free(snaps);
-	return (err);
+ fnvlist_add_boolean(snaps, longsnap);
+ kmem_strfree(longsnap);
+ err = dsl_dataset_snapshot(snaps, ((void*)0), ((void*)0));
+ fnvlist_free(snaps);
+ return (err);
 }

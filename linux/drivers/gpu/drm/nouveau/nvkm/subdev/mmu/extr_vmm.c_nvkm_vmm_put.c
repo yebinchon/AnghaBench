@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvkm_vmm {int /*<<< orphan*/  mutex; } ;
+
+
+
+
+struct nvkm_vmm {int mutex; } ;
 struct nvkm_vma {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nvkm_vmm_put_locked (struct nvkm_vmm*,struct nvkm_vma*) ; 
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int nvkm_vmm_put_locked (struct nvkm_vmm*,struct nvkm_vma*) ;
 
 void
 nvkm_vmm_put(struct nvkm_vmm *vmm, struct nvkm_vma **pvma)
 {
-	struct nvkm_vma *vma = *pvma;
-	if (vma) {
-		mutex_lock(&vmm->mutex);
-		nvkm_vmm_put_locked(vmm, vma);
-		mutex_unlock(&vmm->mutex);
-		*pvma = NULL;
-	}
+ struct nvkm_vma *vma = *pvma;
+ if (vma) {
+  mutex_lock(&vmm->mutex);
+  nvkm_vmm_put_locked(vmm, vma);
+  mutex_unlock(&vmm->mutex);
+  *pvma = ((void*)0);
+ }
 }

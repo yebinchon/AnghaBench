@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  Fts5Index ;
-typedef  int /*<<< orphan*/  Fts5Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert_nc (int) ; 
- int /*<<< orphan*/  fts5BufferSafeAppendBlob (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int u8 ;
+typedef int Fts5Index ;
+typedef int Fts5Buffer ;
+
+
+ int UNUSED_PARAM (int *) ;
+ int assert_nc (int) ;
+ int fts5BufferSafeAppendBlob (int *,int const*,int) ;
 
 __attribute__((used)) static void fts5PoslistCallback(
-  Fts5Index *pUnused, 
-  void *pContext, 
+  Fts5Index *pUnused,
+  void *pContext,
   const u8 *pChunk, int nChunk
 ){
   UNUSED_PARAM(pUnused);

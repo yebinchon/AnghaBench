@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VdbeCursor ;
-struct TYPE_5__ {void* pVal; struct TYPE_5__* pNext; int /*<<< orphan*/  nVal; } ;
-typedef  TYPE_1__ SorterRecord ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vdbeSorterCompare (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VdbeCursor ;
+struct TYPE_5__ {void* pVal; struct TYPE_5__* pNext; int nVal; } ;
+typedef TYPE_1__ SorterRecord ;
+
+
+ int vdbeSorterCompare (int const*,int ,void*,int ,void*,int ,int*) ;
 
 __attribute__((used)) static void vdbeSorterMerge(
-  const VdbeCursor *pCsr,         /* For pKeyInfo */
-  SorterRecord *p1,               /* First list to merge */
-  SorterRecord *p2,               /* Second list to merge */
-  SorterRecord **ppOut            /* OUT: Head of merged list */
+  const VdbeCursor *pCsr,
+  SorterRecord *p1,
+  SorterRecord *p2,
+  SorterRecord **ppOut
 ){
   SorterRecord *pFinal = 0;
   SorterRecord **pp = &pFinal;

@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  blkfree (char**) ; 
- int /*<<< orphan*/  doglob ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- char** glob (char const*) ; 
- char* globerr ; 
- int /*<<< orphan*/  printf (char*,char const*,char*) ; 
- int /*<<< orphan*/  stdout ; 
+ int blkfree (char**) ;
+ int doglob ;
+ int fflush (int ) ;
+ int free (char*) ;
+ char** glob (char const*) ;
+ char* globerr ;
+ int printf (char*,char const*,char*) ;
+ int stdout ;
 
 int globulize(const char **cpp)
 {
-	char **globbed;
+ char **globbed;
 
-	if (!doglob)
-		return (1);
-	globbed = glob(*cpp);
-	if (globerr != NULL) {
-		printf("%s: %s\n", *cpp, globerr);
-		(void) fflush(stdout);
-		if (globbed) {
-			blkfree(globbed);
-			free((char *)globbed);
-		}
-		return (0);
-	}
-	if (globbed) {
-		*cpp = *globbed++;
-		/* don't waste too much memory */
-		if (*globbed) {
-			blkfree(globbed);
-			free((char *)globbed);
-		}
-	}
-	return (1);
+ if (!doglob)
+  return (1);
+ globbed = glob(*cpp);
+ if (globerr != ((void*)0)) {
+  printf("%s: %s\n", *cpp, globerr);
+  (void) fflush(stdout);
+  if (globbed) {
+   blkfree(globbed);
+   free((char *)globbed);
+  }
+  return (0);
+ }
+ if (globbed) {
+  *cpp = *globbed++;
+
+  if (*globbed) {
+   blkfree(globbed);
+   free((char *)globbed);
+  }
+ }
+ return (1);
 }

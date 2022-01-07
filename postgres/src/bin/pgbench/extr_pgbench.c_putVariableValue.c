@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  value; int /*<<< orphan*/ * svalue; } ;
-typedef  TYPE_1__ Variable ;
-typedef  int /*<<< orphan*/  PgBenchValue ;
-typedef  int /*<<< orphan*/  CState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- TYPE_1__* lookupCreateVariable (int /*<<< orphan*/ *,char const*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int value; int * svalue; } ;
+typedef TYPE_1__ Variable ;
+typedef int PgBenchValue ;
+typedef int CState ;
+
+
+ int free (int *) ;
+ TYPE_1__* lookupCreateVariable (int *,char const*,char*) ;
 
 __attribute__((used)) static bool
 putVariableValue(CState *st, const char *context, char *name,
-				 const PgBenchValue *value)
+     const PgBenchValue *value)
 {
-	Variable   *var;
+ Variable *var;
 
-	var = lookupCreateVariable(st, context, name);
-	if (!var)
-		return false;
+ var = lookupCreateVariable(st, context, name);
+ if (!var)
+  return 0;
 
-	if (var->svalue)
-		free(var->svalue);
-	var->svalue = NULL;
-	var->value = *value;
+ if (var->svalue)
+  free(var->svalue);
+ var->svalue = ((void*)0);
+ var->value = *value;
 
-	return true;
+ return 1;
 }

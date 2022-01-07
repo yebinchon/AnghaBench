@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* app_malloc (size_t,char const*) ; 
- size_t strlen (char const*) ; 
+ char* app_malloc (size_t,char const*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static const char *newline_escape_filename(const char *file, int * backslash)
 {
     size_t i, e = 0, length = strlen(file), newline_count = 0, mem_len = 0;
-    char *file_cpy = NULL;
+    char *file_cpy = ((void*)0);
 
     for (i = 0; i < length; i++)
         if (file[i] == '\n')

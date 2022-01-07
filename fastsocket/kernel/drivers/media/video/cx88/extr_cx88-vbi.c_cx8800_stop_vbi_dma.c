@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cx88_core {int dummy; } ;
 struct cx8800_dev {struct cx88_core* core; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MO_PCI_INTMSK ; 
- int /*<<< orphan*/  MO_VID_DMACNTRL ; 
- int /*<<< orphan*/  MO_VID_INTMSK ; 
- int PCI_INT_VIDINT ; 
- int /*<<< orphan*/  VID_CAPTURE_CONTROL ; 
- int /*<<< orphan*/  cx_clear (int /*<<< orphan*/ ,int) ; 
+
+ int MO_PCI_INTMSK ;
+ int MO_VID_DMACNTRL ;
+ int MO_VID_INTMSK ;
+ int PCI_INT_VIDINT ;
+ int VID_CAPTURE_CONTROL ;
+ int cx_clear (int ,int) ;
 
 int cx8800_stop_vbi_dma(struct cx8800_dev *dev)
 {
-	struct cx88_core *core = dev->core;
+ struct cx88_core *core = dev->core;
 
-	/* stop dma */
-	cx_clear(MO_VID_DMACNTRL, 0x88);
 
-	/* disable capture */
-	cx_clear(VID_CAPTURE_CONTROL,0x18);
+ cx_clear(MO_VID_DMACNTRL, 0x88);
 
-	/* disable irqs */
-	cx_clear(MO_PCI_INTMSK, PCI_INT_VIDINT);
-	cx_clear(MO_VID_INTMSK, 0x0f0088);
-	return 0;
+
+ cx_clear(VID_CAPTURE_CONTROL,0x18);
+
+
+ cx_clear(MO_PCI_INTMSK, PCI_INT_VIDINT);
+ cx_clear(MO_VID_INTMSK, 0x0f0088);
+ return 0;
 }

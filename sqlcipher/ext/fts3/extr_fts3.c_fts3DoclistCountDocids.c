@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fts3PoslistCopy (int /*<<< orphan*/ ,char**) ; 
+ int fts3PoslistCopy (int ,char**) ;
 
 __attribute__((used)) static int fts3DoclistCountDocids(char *aList, int nList){
-  int nDoc = 0;                   /* Return value */
+  int nDoc = 0;
   if( aList ){
-    char *aEnd = &aList[nList];   /* Pointer to one byte after EOF */
-    char *p = aList;              /* Cursor */
+    char *aEnd = &aList[nList];
+    char *p = aList;
     while( p<aEnd ){
       nDoc++;
-      while( (*p++)&0x80 );     /* Skip docid varint */
-      fts3PoslistCopy(0, &p);   /* Skip over position list */
+      while( (*p++)&0x80 );
+      fts3PoslistCopy(0, &p);
     }
   }
 

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * EnvColor; int /*<<< orphan*/  EnvMode; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * EnvColor; int EnvMode; } ;
 struct TYPE_6__ {TYPE_1__ Texture; } ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  scalar_t__ GLenum ;
-typedef  TYPE_2__ GLcontext ;
+typedef int GLint ;
+typedef scalar_t__ GLenum ;
+typedef TYPE_2__ GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLOAT_TO_INT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- scalar_t__ GL_TEXTURE_ENV ; 
-#define  GL_TEXTURE_ENV_COLOR 129 
-#define  GL_TEXTURE_ENV_MODE 128 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
+
+ int FLOAT_TO_INT (int ) ;
+ int GL_INVALID_ENUM ;
+ scalar_t__ GL_TEXTURE_ENV ;
+
+
+ int gl_error (TYPE_2__*,int ,char*) ;
 
 void gl_GetTexEnviv( GLcontext *ctx,
                      GLenum target, GLenum pname, GLint *params )
@@ -34,15 +34,15 @@ void gl_GetTexEnviv( GLcontext *ctx,
       return;
    }
    switch (pname) {
-      case GL_TEXTURE_ENV_MODE:
+      case 128:
          *params = (GLint) ctx->Texture.EnvMode;
-	 break;
-      case GL_TEXTURE_ENV_COLOR:
-	 params[0] = FLOAT_TO_INT( ctx->Texture.EnvColor[0] );
-	 params[1] = FLOAT_TO_INT( ctx->Texture.EnvColor[1] );
-	 params[2] = FLOAT_TO_INT( ctx->Texture.EnvColor[2] );
-	 params[3] = FLOAT_TO_INT( ctx->Texture.EnvColor[3] );
-	 break;
+  break;
+      case 129:
+  params[0] = FLOAT_TO_INT( ctx->Texture.EnvColor[0] );
+  params[1] = FLOAT_TO_INT( ctx->Texture.EnvColor[1] );
+  params[2] = FLOAT_TO_INT( ctx->Texture.EnvColor[2] );
+  params[3] = FLOAT_TO_INT( ctx->Texture.EnvColor[3] );
+  break;
       default:
          gl_error( ctx, GL_INVALID_ENUM, "glGetTexEnvfv(pname)" );
    }

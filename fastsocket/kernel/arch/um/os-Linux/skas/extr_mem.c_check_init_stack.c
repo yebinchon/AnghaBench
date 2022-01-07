@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mm_id {scalar_t__ stack; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline unsigned long *check_init_stack(struct mm_id * mm_idp,
-					      unsigned long *stack)
+           unsigned long *stack)
 {
-	if (stack == NULL) {
-		stack = (unsigned long *) mm_idp->stack + 2;
-		*stack = 0;
-	}
-	return stack;
+ if (stack == ((void*)0)) {
+  stack = (unsigned long *) mm_idp->stack + 2;
+  *stack = 0;
+ }
+ return stack;
 }

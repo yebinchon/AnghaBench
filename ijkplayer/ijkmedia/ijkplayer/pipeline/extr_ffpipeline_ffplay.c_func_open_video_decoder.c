@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IJKFF_Pipenode ;
-typedef  int /*<<< orphan*/  IJKFF_Pipeline ;
-typedef  int /*<<< orphan*/  FFPlayer ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ffpipenode_create_video_decoder_from_ffplay (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IJKFF_Pipenode ;
+typedef int IJKFF_Pipeline ;
+typedef int FFPlayer ;
+
+
+ int * ffpipenode_create_video_decoder_from_ffplay (int *) ;
 
 __attribute__((used)) static IJKFF_Pipenode *func_open_video_decoder(IJKFF_Pipeline *pipeline, FFPlayer *ffp)
 {

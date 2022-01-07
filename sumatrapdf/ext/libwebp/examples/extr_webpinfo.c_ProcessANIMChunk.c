@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
-struct TYPE_5__ {int bgcolor_; int loop_count_; int /*<<< orphan*/  quiet_; int /*<<< orphan*/ * chunk_counts_; } ;
-typedef  TYPE_1__ WebPInfo ;
-struct TYPE_6__ {scalar_t__ size_; int /*<<< orphan*/ * payload_; } ;
-typedef  TYPE_2__ ChunkData ;
 
-/* Variables and functions */
- scalar_t__ ANIM_CHUNK_SIZE ; 
- size_t CHUNK_ANIM ; 
- scalar_t__ CHUNK_HEADER_SIZE ; 
- size_t CHUNK_VP8X ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- int MAX_LOOP_COUNT ; 
- int ReadLE16 (int /*<<< orphan*/  const**) ; 
- int ReadLE32 (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int WebPInfoStatus ;
+struct TYPE_5__ {int bgcolor_; int loop_count_; int quiet_; int * chunk_counts_; } ;
+typedef TYPE_1__ WebPInfo ;
+struct TYPE_6__ {scalar_t__ size_; int * payload_; } ;
+typedef TYPE_2__ ChunkData ;
+
+
+ scalar_t__ ANIM_CHUNK_SIZE ;
+ size_t CHUNK_ANIM ;
+ scalar_t__ CHUNK_HEADER_SIZE ;
+ size_t CHUNK_VP8X ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ int MAX_LOOP_COUNT ;
+ int ReadLE16 (int const**) ;
+ int ReadLE32 (int const**) ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int printf (char*,int,...) ;
 
 __attribute__((used)) static WebPInfoStatus ProcessANIMChunk(const ChunkData* const chunk_data,
                                        WebPInfo* const webp_info) {

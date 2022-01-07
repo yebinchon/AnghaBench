@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32 ;
-typedef  scalar_t__ uint ;
-typedef  int sint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFLAG_CLEAR ; 
- scalar_t__ DX ; 
- int /*<<< orphan*/  EXCEPTION_ZERO_DIVIDE ; 
- int /*<<< orphan*/  FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- int FLAG_Z ; 
- int MAKE_INT_16 (int) ; 
- int MAKE_INT_32 (scalar_t__) ; 
- int MASK_OUT_ABOVE_16 (int) ; 
- scalar_t__ MASK_OUT_ABOVE_32 (int) ; 
- int /*<<< orphan*/  NFLAG_16 (int) ; 
- int /*<<< orphan*/  NFLAG_CLEAR ; 
- int /*<<< orphan*/  NFLAG_SET ; 
- int OPER_AY_DI_16 () ; 
- int /*<<< orphan*/  UseDivsCycles (scalar_t__,int) ; 
- int /*<<< orphan*/  VFLAG_CLEAR ; 
- int /*<<< orphan*/  VFLAG_SET ; 
- int /*<<< orphan*/  m68ki_exception_trap (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32 ;
+typedef scalar_t__ uint ;
+typedef int sint ;
+
+
+ int CFLAG_CLEAR ;
+ scalar_t__ DX ;
+ int EXCEPTION_ZERO_DIVIDE ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_Z ;
+ int MAKE_INT_16 (int) ;
+ int MAKE_INT_32 (scalar_t__) ;
+ int MASK_OUT_ABOVE_16 (int) ;
+ scalar_t__ MASK_OUT_ABOVE_32 (int) ;
+ int NFLAG_16 (int) ;
+ int NFLAG_CLEAR ;
+ int NFLAG_SET ;
+ int OPER_AY_DI_16 () ;
+ int UseDivsCycles (scalar_t__,int) ;
+ int VFLAG_CLEAR ;
+ int VFLAG_SET ;
+ int m68ki_exception_trap (int ) ;
 
 __attribute__((used)) static void m68k_op_divs_16_di(void)
 {
@@ -69,7 +69,7 @@ __attribute__((used)) static void m68k_op_divs_16_di(void)
       return;
     }
     FLAG_V = VFLAG_SET;
-    FLAG_N = NFLAG_SET; /* undocumented behavior (fixes Blood Shot on Genesis) */
+    FLAG_N = NFLAG_SET;
     FLAG_C = CFLAG_CLEAR;
     return;
   }

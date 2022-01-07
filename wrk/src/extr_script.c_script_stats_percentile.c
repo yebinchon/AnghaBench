@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stats ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * checkstats (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stats_percentile (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int stats ;
+typedef int lua_State ;
+typedef int lua_Number ;
+
+
+ int * checkstats (int *) ;
+ int luaL_checknumber (int *,int) ;
+ int lua_pushnumber (int *,int ) ;
+ int stats_percentile (int *,int ) ;
 
 __attribute__((used)) static int script_stats_percentile(lua_State *L) {
     stats *s = checkstats(L);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void guint8 ;
-struct TYPE_3__ {int /*<<< orphan*/  obj_store; } ;
-typedef  TYPE_1__ SeafFSManager ;
-typedef  int /*<<< orphan*/  CDCFileDescriptor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- void* create_seafile_json (int,int /*<<< orphan*/ *,int*,char*) ; 
- void* create_seafile_v0 (int /*<<< orphan*/ *,int*,char*) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  g_free (void*) ; 
- int /*<<< orphan*/  hex_to_rawdata (char*,unsigned char*,int) ; 
- scalar_t__ seaf_compress (void*,int,void**,int*) ; 
- scalar_t__ seaf_obj_store_write_obj (int /*<<< orphan*/ ,char const*,int,char*,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void guint8 ;
+struct TYPE_3__ {int obj_store; } ;
+typedef TYPE_1__ SeafFSManager ;
+typedef int CDCFileDescriptor ;
+
+
+ int FALSE ;
+ void* create_seafile_json (int,int *,int*,char*) ;
+ void* create_seafile_v0 (int *,int*,char*) ;
+ int free (void*) ;
+ int g_free (void*) ;
+ int hex_to_rawdata (char*,unsigned char*,int) ;
+ scalar_t__ seaf_compress (void*,int,void**,int*) ;
+ scalar_t__ seaf_obj_store_write_obj (int ,char const*,int,char*,void*,int,int ) ;
+ int seaf_warning (char*,char const*,char*) ;
 
 __attribute__((used)) static int
 write_seafile (SeafFSManager *fs_mgr,

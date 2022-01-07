@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REAL ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpMatrix ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GdipCreateMatrix2 (double,double,double,double,int,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetMatrixElements (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipInvertMatrix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipIsMatrixEqual (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  compare_float (int /*<<< orphan*/ ,double,int) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REAL ;
+typedef int GpStatus ;
+typedef int GpMatrix ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GdipCreateMatrix2 (double,double,double,double,int,int,int **) ;
+ int GdipDeleteMatrix (int *) ;
+ int GdipGetMatrixElements (int *,int *) ;
+ int GdipInvertMatrix (int *) ;
+ int GdipIsMatrixEqual (int *,int *,int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int TRUE ;
+ int compare_float (int ,double,int) ;
+ int expect (int ,int ) ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static void test_invert(void)
 {
     GpStatus status;
-    GpMatrix *matrix = NULL;
-    GpMatrix *inverted = NULL;
+    GpMatrix *matrix = ((void*)0);
+    GpMatrix *inverted = ((void*)0);
     BOOL equal = FALSE;
     REAL elems[6];
 
-    /* NULL */
-    status = GdipInvertMatrix(NULL);
+
+    status = GdipInvertMatrix(((void*)0));
     expect(InvalidParameter, status);
 
-    /* noninvertible */
+
     GdipCreateMatrix2(2.0, -1.0, 6.0, -3.0, 2.2, 3.0, &matrix);
     status = GdipInvertMatrix(matrix);
     expect(InvalidParameter, status);
     GdipDeleteMatrix(matrix);
 
-    /* invertible */
+
     GdipCreateMatrix2(3.0, -2.0, 5.0, 2.0, 6.0, 3.0, &matrix);
     status = GdipInvertMatrix(matrix);
     expect(Ok, status);

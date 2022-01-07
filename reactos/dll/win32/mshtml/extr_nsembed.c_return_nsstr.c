@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  scalar_t__ PRUnichar ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * SysAllocString (scalar_t__ const*) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__ const*) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,scalar_t__ const**) ; 
+
+
+
+typedef int nsresult ;
+typedef int nsAString ;
+typedef scalar_t__ PRUnichar ;
+typedef int HRESULT ;
+typedef int * BSTR ;
+
+
+ int ERR (char*,int ) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int * SysAllocString (scalar_t__ const*) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (scalar_t__ const*) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,scalar_t__ const**) ;
 
 HRESULT return_nsstr(nsresult nsres, nsAString *nsstr, BSTR *p)
 {
@@ -45,7 +45,7 @@ HRESULT return_nsstr(nsresult nsres, nsAString *nsstr, BSTR *p)
         if(!*p)
             return E_OUTOFMEMORY;
     }else {
-        *p = NULL;
+        *p = ((void*)0);
     }
 
     nsAString_Finish(nsstr);

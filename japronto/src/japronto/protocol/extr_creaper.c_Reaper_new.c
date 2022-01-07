@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ (* tp_alloc ) (TYPE_2__*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/ * check_interval; int /*<<< orphan*/ * check_idle_handle; int /*<<< orphan*/ * check_idle; int /*<<< orphan*/ * call_later; int /*<<< orphan*/ * connections; } ;
-typedef  TYPE_1__ Reaper ;
-typedef  TYPE_2__ PyTypeObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- scalar_t__ stub1 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ (* tp_alloc ) (TYPE_2__*,int ) ;} ;
+struct TYPE_5__ {int * check_interval; int * check_idle_handle; int * check_idle; int * call_later; int * connections; } ;
+typedef TYPE_1__ Reaper ;
+typedef TYPE_2__ PyTypeObject ;
+typedef int PyObject ;
+
+
+ scalar_t__ stub1 (TYPE_2__*,int ) ;
 
 __attribute__((used)) static PyObject*
 Reaper_new(PyTypeObject* type, PyObject* args, PyObject* kwds)
 {
-  Reaper* self = NULL;
+  Reaper* self = ((void*)0);
 
   self = (Reaper*)type->tp_alloc(type, 0);
   if(!self)
     goto finally;
 
-  self->connections = NULL;
-  self->call_later = NULL;
-  self->check_idle = NULL;
-  self->check_idle_handle = NULL;
-  self->check_interval = NULL;
+  self->connections = ((void*)0);
+  self->call_later = ((void*)0);
+  self->check_idle = ((void*)0);
+  self->check_idle_handle = ((void*)0);
+  self->check_interval = ((void*)0);
 
   finally:
   return (PyObject*)self;

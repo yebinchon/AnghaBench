@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  timeout_entry; int /*<<< orphan*/ * buf_in_flight; } ;
-struct TYPE_6__ {TYPE_1__ _write; int /*<<< orphan*/  state; } ;
-typedef  TYPE_2__ h2o_http2_conn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_HTTP2_CONN_STATE_IS_CLOSING ; 
- int /*<<< orphan*/  close_connection_now (TYPE_2__*) ; 
- scalar_t__ h2o_timer_is_linked (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int timeout_entry; int * buf_in_flight; } ;
+struct TYPE_6__ {TYPE_1__ _write; int state; } ;
+typedef TYPE_2__ h2o_http2_conn_t ;
+
+
+ int H2O_HTTP2_CONN_STATE_IS_CLOSING ;
+ int close_connection_now (TYPE_2__*) ;
+ scalar_t__ h2o_timer_is_linked (int *) ;
 
 int close_connection(h2o_http2_conn_t *conn)
 {
     conn->state = H2O_HTTP2_CONN_STATE_IS_CLOSING;
 
-    if (conn->_write.buf_in_flight != NULL || h2o_timer_is_linked(&conn->_write.timeout_entry)) {
-        /* there is a pending write, let on_write_complete actually close the connection */
+    if (conn->_write.buf_in_flight != ((void*)0) || h2o_timer_is_linked(&conn->_write.timeout_entry)) {
+
     } else {
         close_connection_now(conn);
         return -1;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int int64; } ;
 struct mpv_node {TYPE_1__ u; } ;
 struct mp_pass_perf {int last; int avg; int peak; int count; int* samples; } ;
-struct mp_frame_perf {int count; int /*<<< orphan*/ * desc; struct mp_pass_perf* perf; } ;
+struct mp_frame_perf {int count; int * desc; struct mp_pass_perf* perf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPV_FORMAT_INT64 ; 
- int /*<<< orphan*/  MPV_FORMAT_NODE_ARRAY ; 
- int /*<<< orphan*/  MPV_FORMAT_NODE_MAP ; 
- struct mpv_node* node_array_add (struct mpv_node*,int /*<<< orphan*/ ) ; 
- struct mpv_node* node_map_add (struct mpv_node*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_map_add_string (struct mpv_node*,char*,int /*<<< orphan*/ ) ; 
+
+ int MPV_FORMAT_INT64 ;
+ int MPV_FORMAT_NODE_ARRAY ;
+ int MPV_FORMAT_NODE_MAP ;
+ struct mpv_node* node_array_add (struct mpv_node*,int ) ;
+ struct mpv_node* node_map_add (struct mpv_node*,char*,int ) ;
+ int node_map_add_string (struct mpv_node*,char*,int ) ;
 
 __attribute__((used)) static void get_frame_perf(struct mpv_node *node, struct mp_frame_perf *perf)
 {

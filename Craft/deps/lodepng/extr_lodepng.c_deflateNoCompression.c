@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ucvector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ucvector_push_back (int /*<<< orphan*/ *,unsigned char const) ; 
+
+
+
+typedef int ucvector ;
+
+
+ int ucvector_push_back (int *,unsigned char const) ;
 
 __attribute__((used)) static unsigned deflateNoCompression(ucvector* out, const unsigned char* data, size_t datasize)
 {
-  /*non compressed deflate block data: 1 bit BFINAL,2 bits BTYPE,(5 bits): it jumps to start of next byte,
-  2 bytes LEN, 2 bytes NLEN, LEN bytes literal DATA*/
+
+
 
   size_t i, j, numdeflateblocks = (datasize + 65534) / 65535;
   unsigned datapos = 0;
@@ -42,7 +42,7 @@ __attribute__((used)) static unsigned deflateNoCompression(ucvector* out, const 
     ucvector_push_back(out, (unsigned char)(NLEN % 256));
     ucvector_push_back(out, (unsigned char)(NLEN / 256));
 
-    /*Decompressed data*/
+
     for(j = 0; j < 65535 && datapos < datasize; j++)
     {
       ucvector_push_back(out, data[datapos++]);

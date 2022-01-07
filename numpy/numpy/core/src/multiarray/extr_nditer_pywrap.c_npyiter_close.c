@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * nested_child; int /*<<< orphan*/ * iter; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  NpyIter ;
-typedef  TYPE_1__ NewNpyArrayIterObject ;
 
-/* Variables and functions */
- int NpyIter_Deallocate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_RETURN_NONE ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * nested_child; int * iter; } ;
+typedef int PyObject ;
+typedef int NpyIter ;
+typedef TYPE_1__ NewNpyArrayIterObject ;
+
+
+ int NpyIter_Deallocate (int *) ;
+ int Py_RETURN_NONE ;
+ int Py_XDECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 npyiter_close(NewNpyArrayIterObject *self)
 {
     NpyIter *iter = self->iter;
     int ret;
-    if (self->iter == NULL) {
+    if (self->iter == ((void*)0)) {
         Py_RETURN_NONE;
     }
     ret = NpyIter_Deallocate(iter);
-    self->iter = NULL;
+    self->iter = ((void*)0);
     Py_XDECREF(self->nested_child);
-    self->nested_child = NULL;
+    self->nested_child = ((void*)0);
     if (ret < 0) {
-        return NULL;
+        return ((void*)0);
     }
     Py_RETURN_NONE;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__CALL_WITH_WRITE_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove_external2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
-#define  svn_node_dir 129 
-#define  svn_node_file 128 
+
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__CALL_WITH_WRITE_LOCK (int ,int *,char const*,int ,int *) ;
+ int remove_external2 (int *,int *,char const*,char const*,int,int ,void*,int *) ;
+
+
 
 __attribute__((used)) static svn_error_t *
 remove_external(svn_boolean_t *removed,
@@ -39,7 +39,7 @@ remove_external(svn_boolean_t *removed,
   *removed = FALSE;
   switch (external_kind)
     {
-      case svn_node_dir:
+      case 129:
         SVN_WC__CALL_WITH_WRITE_LOCK(
             remove_external2(removed,
                              wc_ctx, wri_abspath,
@@ -48,7 +48,7 @@ remove_external(svn_boolean_t *removed,
                              scratch_pool),
             wc_ctx, local_abspath, FALSE, scratch_pool);
         break;
-      case svn_node_file:
+      case 128:
       default:
         SVN_ERR(remove_external2(removed,
                                  wc_ctx, wri_abspath,

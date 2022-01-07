@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpcx_data {int /*<<< orphan*/  out_packet_num; } ;
-struct connection {int flags; int /*<<< orphan*/  Out; scalar_t__ custom_data; int /*<<< orphan*/  fd; } ;
 
-/* Variables and functions */
- int C_RAWMSG ; 
- int RPC_PING ; 
- int compute_crc32 (int*,int) ; 
- int /*<<< orphan*/  flush_later (struct connection*) ; 
- int /*<<< orphan*/  tcp_rpc_conn_send_data (struct connection*,int,int*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,long long) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,int*,int) ; 
+
+
+
+struct rpcx_data {int out_packet_num; } ;
+struct connection {int flags; int Out; scalar_t__ custom_data; int fd; } ;
+
+
+ int C_RAWMSG ;
+ int RPC_PING ;
+ int compute_crc32 (int*,int) ;
+ int flush_later (struct connection*) ;
+ int tcp_rpc_conn_send_data (struct connection*,int,int*) ;
+ int vkprintf (int,char*,int ,long long) ;
+ int write_out (int *,int*,int) ;
 
 void net_rpc_send_ping (struct connection *c, long long ping_id) {
   if (!(c->flags & C_RAWMSG)) {

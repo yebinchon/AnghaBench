@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  REFGUID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IServiceProvider ; 
- int /*<<< orphan*/  IServiceProvider_QueryService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IServiceProvider_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+
+
+typedef int REFIID ;
+typedef int REFGUID ;
+typedef int IUnknown ;
+typedef int IServiceProvider ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IID_IServiceProvider ;
+ int IServiceProvider_QueryService (int *,int ,int ,void**) ;
+ int IServiceProvider_Release (int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
 
 HRESULT do_query_service(IUnknown *unk, REFGUID guid_service, REFIID riid, void **ppv)
 {

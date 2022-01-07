@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IOleInPlaceActiveObject ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HWND ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ E_FAIL ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  IID_IOleInPlaceActiveObject ; 
- scalar_t__ IOleDocumentView_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IOleInPlaceActiveObject_GetWindow (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IOleInPlaceActiveObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsWindow (scalar_t__) ; 
- scalar_t__ S_OK ; 
- scalar_t__ doc_hwnd ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  view ; 
+
+
+
+typedef int IOleInPlaceActiveObject ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HWND ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ E_FAIL ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int IID_IOleInPlaceActiveObject ;
+ scalar_t__ IOleDocumentView_QueryInterface (int ,int *,void**) ;
+ scalar_t__ IOleInPlaceActiveObject_GetWindow (int *,scalar_t__*) ;
+ int IOleInPlaceActiveObject_Release (int *) ;
+ int IsWindow (scalar_t__) ;
+ scalar_t__ S_OK ;
+ scalar_t__ doc_hwnd ;
+ int ok (int,char*,...) ;
+ int view ;
 
 __attribute__((used)) static void test_Window(IHTMLDocument2 *doc, BOOL expect_success)
 {
-    IOleInPlaceActiveObject *activeobject = NULL;
+    IOleInPlaceActiveObject *activeobject = ((void*)0);
     HWND tmp_hwnd;
     HRESULT hres;
 

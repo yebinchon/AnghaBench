@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_5__ {scalar_t__ next; } ;
 struct TYPE_6__ {int dcode_insert_length; int length; TYPE_1__ u; } ;
-typedef  TYPE_2__ ZopfliNode ;
+typedef TYPE_2__ ZopfliNode ;
 
-/* Variables and functions */
- scalar_t__ BROTLI_UINT32_MAX ; 
- size_t ZopfliNodeCommandLength (TYPE_2__*) ; 
+
+ scalar_t__ BROTLI_UINT32_MAX ;
+ size_t ZopfliNodeCommandLength (TYPE_2__*) ;
 
 __attribute__((used)) static size_t ComputeShortestPathFromNodes(size_t num_bytes,
     ZopfliNode* nodes) {

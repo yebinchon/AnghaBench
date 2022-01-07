@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct of_device {int dummy; } ;
 struct bbc_i2c_client {struct of_device* op; struct bbc_i2c_bus* bp; } ;
 struct bbc_i2c_bus {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct bbc_i2c_client*) ; 
- int /*<<< orphan*/  release_device (struct bbc_i2c_bus*,struct of_device*) ; 
+
+ int kfree (struct bbc_i2c_client*) ;
+ int release_device (struct bbc_i2c_bus*,struct of_device*) ;
 
 void bbc_i2c_detach(struct bbc_i2c_client *client)
 {
-	struct bbc_i2c_bus *bp = client->bp;
-	struct of_device *op = client->op;
+ struct bbc_i2c_bus *bp = client->bp;
+ struct of_device *op = client->op;
 
-	release_device(bp, op);
-	kfree(client);
+ release_device(bp, op);
+ kfree(client);
 }

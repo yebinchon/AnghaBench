@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (int) ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ,char*) ; 
+ int UNUSEDPARM (int) ;
+ int printf (char*,int ,char*) ;
 
 __attribute__((used)) static void *my_null(int x, ...)
 {
-	UNUSEDPARM(x);
-    printf("%.*s", 0, "a"); /* Remove warnings about no effects */
+ UNUSEDPARM(x);
+    printf("%.*s", 0, "a");
     return 0;
 }

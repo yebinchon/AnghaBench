@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int pci_pins ; 
- scalar_t__ xh_vm_ioapic_pincount (int*) ; 
+ int pci_pins ;
+ scalar_t__ xh_vm_ioapic_pincount (int*) ;
 
 void
 ioapic_init(void)
 {
 
-	if (xh_vm_ioapic_pincount(&pci_pins) < 0) {
-		pci_pins = 0;
-		return;
-	}
+ if (xh_vm_ioapic_pincount(&pci_pins) < 0) {
+  pci_pins = 0;
+  return;
+ }
 
-	/* Ignore the first 16 pins. */
-	if (pci_pins <= 16) {
-		pci_pins = 0;
-		return;
-	}
-	pci_pins -= 16;
+
+ if (pci_pins <= 16) {
+  pci_pins = 0;
+  return;
+ }
+ pci_pins -= 16;
 }

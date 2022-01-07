@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- char* av_asprintf (char*,char*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_malloc (int) ; 
- char* av_strdup (char*) ; 
- char* av_stristr (char*,char*) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char*,int) ; 
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int ENOMEM ;
+ char* av_asprintf (char*,char*) ;
+ int av_freep (char**) ;
+ char* av_malloc (int) ;
+ char* av_strdup (char*) ;
+ char* av_stristr (char*,char*) ;
+ int av_strlcpy (char*,char*,int) ;
 
 __attribute__((used)) static int parse_filename(char *filename, char **representation_id,
                           char **initialization_pattern, char **media_pattern) {
-    char *underscore_pos = NULL;
-    char *period_pos = NULL;
-    char *temp_pos = NULL;
+    char *underscore_pos = ((void*)0);
+    char *period_pos = ((void*)0);
+    char *temp_pos = ((void*)0);
     char *filename_str = av_strdup(filename);
     int ret = 0;
 

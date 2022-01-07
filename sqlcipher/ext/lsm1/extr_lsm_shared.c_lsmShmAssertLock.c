@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
 
-/* Variables and functions */
-#define  LSM_LOCK_EXCL 130 
- scalar_t__ LSM_LOCK_NREADER ; 
- int LSM_LOCK_READER (scalar_t__) ; 
-#define  LSM_LOCK_SHARED 129 
-#define  LSM_LOCK_UNLOCK 128 
- int /*<<< orphan*/  assert (int) ; 
- int shmLockType (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lsm_db ;
+
+
+
+ scalar_t__ LSM_LOCK_NREADER ;
+ int LSM_LOCK_READER (scalar_t__) ;
+
+
+ int assert (int) ;
+ int shmLockType (int *,int) ;
 
 int lsmShmAssertLock(lsm_db *db, int iLock, int eOp){
   int ret = 0;
@@ -27,19 +27,19 @@ int lsmShmAssertLock(lsm_db *db, int iLock, int eOp){
 
   assert( iLock>=1 && iLock<=LSM_LOCK_READER(LSM_LOCK_NREADER-1) );
   assert( iLock<=16 );
-  assert( eOp==LSM_LOCK_UNLOCK || eOp==LSM_LOCK_SHARED || eOp==LSM_LOCK_EXCL );
+  assert( eOp==128 || eOp==129 || eOp==130 );
 
   eHave = shmLockType(db, iLock);
 
   switch( eOp ){
-    case LSM_LOCK_UNLOCK:
-      ret = (eHave==LSM_LOCK_UNLOCK);
+    case 128:
+      ret = (eHave==128);
       break;
-    case LSM_LOCK_SHARED:
-      ret = (eHave!=LSM_LOCK_UNLOCK);
+    case 129:
+      ret = (eHave!=128);
       break;
-    case LSM_LOCK_EXCL:
-      ret = (eHave==LSM_LOCK_EXCL);
+    case 130:
+      ret = (eHave==130);
       break;
     default:
       assert( !"bad eOp value passed to lsmShmAssertLock()" );

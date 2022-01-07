@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IAVIStream ;
-typedef  int /*<<< orphan*/  IAVIEditStream ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int CreateEditableStream (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int IAVIEditStream_AddRef (int /*<<< orphan*/ *) ; 
- int IAVIEditStream_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IAVIEditStream_Release (int /*<<< orphan*/ *) ; 
- int IAVIStream_AddRef (int /*<<< orphan*/ *) ; 
- int IAVIStream_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IAVIEditStream ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int ULONG ;
+typedef int IUnknown ;
+typedef int IAVIStream ;
+typedef int IAVIEditStream ;
+typedef int HRESULT ;
+
+
+ int CreateEditableStream (int **,int *) ;
+ int IAVIEditStream_AddRef (int *) ;
+ int IAVIEditStream_QueryInterface (int *,int *,void**) ;
+ int IAVIEditStream_Release (int *) ;
+ int IAVIStream_AddRef (int *) ;
+ int IAVIStream_QueryInterface (int *,int *,void**) ;
+ int IID_IAVIEditStream ;
+ int IID_IUnknown ;
+ int IUnknown_AddRef (int *) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_COM_editstream(void)
 {
@@ -38,8 +38,8 @@ __attribute__((used)) static void test_COM_editstream(void)
     ULONG refcount;
     HRESULT hr;
 
-    /* Same refcount for all AVIEditStream interfaces */
-    hr = CreateEditableStream(&stream, NULL);
+
+    hr = CreateEditableStream(&stream, ((void*)0));
     ok(hr == S_OK, "AVIEditStream create failed: %08x, expected S_OK\n", hr);
     refcount = IAVIStream_AddRef(stream);
     ok(refcount == 2, "refcount == %u, expected 2\n", refcount);

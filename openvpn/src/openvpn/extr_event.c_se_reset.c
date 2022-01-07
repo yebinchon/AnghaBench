@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct se_set {int maxfd; int /*<<< orphan*/ ** args; int /*<<< orphan*/  writefds; int /*<<< orphan*/  readfds; int /*<<< orphan*/  fast; } ;
+
+
+
+
+struct se_set {int maxfd; int ** args; int writefds; int readfds; int fast; } ;
 struct event_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  D_EVENT_WAIT ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*) ; 
+
+ int ASSERT (int ) ;
+ int D_EVENT_WAIT ;
+ int FD_ZERO (int *) ;
+ int dmsg (int ,char*) ;
 
 __attribute__((used)) static void
 se_reset(struct event_set *es)
@@ -32,7 +32,7 @@ se_reset(struct event_set *es)
     FD_ZERO(&ses->writefds);
     for (i = 0; i <= ses->maxfd; ++i)
     {
-        ses->args[i] = NULL;
+        ses->args[i] = ((void*)0);
     }
     ses->maxfd = -1;
 }

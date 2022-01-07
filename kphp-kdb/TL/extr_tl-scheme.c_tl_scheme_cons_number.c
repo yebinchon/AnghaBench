@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int i; long long l; } ;
 struct tl_scheme_object {TYPE_1__ u; } ;
 
-/* Variables and functions */
- long long INT_MAX ; 
- long long INT_MIN ; 
- int /*<<< orphan*/  assert (struct tl_scheme_object*) ; 
- struct tl_scheme_object* tl_scheme_cons (struct tl_scheme_object*,struct tl_scheme_object*) ; 
- struct tl_scheme_object* tl_scheme_object_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tlso_int ; 
- int /*<<< orphan*/  tlso_long ; 
+
+ long long INT_MAX ;
+ long long INT_MIN ;
+ int assert (struct tl_scheme_object*) ;
+ struct tl_scheme_object* tl_scheme_cons (struct tl_scheme_object*,struct tl_scheme_object*) ;
+ struct tl_scheme_object* tl_scheme_object_new (int ) ;
+ int tlso_int ;
+ int tlso_long ;
 
 __attribute__((used)) static struct tl_scheme_object *tl_scheme_cons_number (long long r, struct tl_scheme_object *stack) {
   struct tl_scheme_object *O;

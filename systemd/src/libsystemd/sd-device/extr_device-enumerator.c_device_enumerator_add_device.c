@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ n_devices; int /*<<< orphan*/ * devices; int /*<<< orphan*/  n_allocated; } ;
-typedef  TYPE_1__ sd_device_enumerator ;
-typedef  TYPE_1__ sd_device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GREEDY_REALLOC (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_device_ref (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ n_devices; int * devices; int n_allocated; } ;
+typedef TYPE_1__ sd_device_enumerator ;
+typedef TYPE_1__ sd_device ;
+
+
+ int EINVAL ;
+ int ENOMEM ;
+ int GREEDY_REALLOC (int *,int ,scalar_t__) ;
+ int assert_return (TYPE_1__*,int ) ;
+ int sd_device_ref (TYPE_1__*) ;
 
 int device_enumerator_add_device(sd_device_enumerator *enumerator, sd_device *device) {
         assert_return(enumerator, -EINVAL);

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct getdrivename_test {int /*<<< orphan*/ * drive; scalar_t__* path; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_POINTER ; 
- int /*<<< orphan*/  IFileSystem3_GetDriveName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * SysAllocString (scalar_t__*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fs3 ; 
- struct getdrivename_test* getdrivenametestdata ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+struct getdrivename_test {int * drive; scalar_t__* path; } ;
+typedef int HRESULT ;
+typedef int * BSTR ;
+
+
+ int E_POINTER ;
+ int IFileSystem3_GetDriveName (int ,int *,int **) ;
+ int S_OK ;
+ int * SysAllocString (scalar_t__*) ;
+ int SysFreeString (int *) ;
+ int fs3 ;
+ struct getdrivename_test* getdrivenametestdata ;
+ int lstrcmpW (int *,int *) ;
+ int ok (int,char*,int ,...) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_GetDriveName(void)
 {
@@ -32,13 +32,13 @@ __attribute__((used)) static void test_GetDriveName(void)
     HRESULT hr;
     BSTR name;
 
-    hr = IFileSystem3_GetDriveName(fs3, NULL, NULL);
+    hr = IFileSystem3_GetDriveName(fs3, ((void*)0), ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x\n", hr);
 
     name = (void*)0xdeadbeef;
-    hr = IFileSystem3_GetDriveName(fs3, NULL, &name);
+    hr = IFileSystem3_GetDriveName(fs3, ((void*)0), &name);
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    ok(name == NULL, "got %p\n", name);
+    ok(name == ((void*)0), "got %p\n", name);
 
     while (*ptr->path) {
         BSTR path = SysAllocString(ptr->path);

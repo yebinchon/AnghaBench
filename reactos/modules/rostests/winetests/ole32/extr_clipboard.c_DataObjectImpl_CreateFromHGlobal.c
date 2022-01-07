@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int ref; int fmtetc_cnt; TYPE_1__ IDataObject_iface; int /*<<< orphan*/ * fmtetc; int /*<<< orphan*/ * hmfp; int /*<<< orphan*/ * stg; int /*<<< orphan*/ * stm; int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__* LPDATAOBJECT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  FORMATETC ;
-typedef  TYPE_2__ DataObjectImpl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_TEXT ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  InitFormatEtc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TYMED_HGLOBAL ; 
- int /*<<< orphan*/  VT_DataObjectImpl ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * lpVtbl; } ;
+struct TYPE_5__ {int ref; int fmtetc_cnt; TYPE_1__ IDataObject_iface; int * fmtetc; int * hmfp; int * stg; int * stm; int text; } ;
+typedef TYPE_1__* LPDATAOBJECT ;
+typedef int HRESULT ;
+typedef int HGLOBAL ;
+typedef int FORMATETC ;
+typedef TYPE_2__ DataObjectImpl ;
+
+
+ int CF_TEXT ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int InitFormatEtc (int ,int ,int ) ;
+ int S_OK ;
+ int TYMED_HGLOBAL ;
+ int VT_DataObjectImpl ;
 
 __attribute__((used)) static HRESULT DataObjectImpl_CreateFromHGlobal(HGLOBAL text, LPDATAOBJECT *dataobj)
 {
@@ -37,9 +37,9 @@ __attribute__((used)) static HRESULT DataObjectImpl_CreateFromHGlobal(HGLOBAL te
     obj->IDataObject_iface.lpVtbl = &VT_DataObjectImpl;
     obj->ref = 1;
     obj->text = text;
-    obj->stm = NULL;
-    obj->stg = NULL;
-    obj->hmfp = NULL;
+    obj->stm = ((void*)0);
+    obj->stg = ((void*)0);
+    obj->hmfp = ((void*)0);
 
     obj->fmtetc_cnt = 1;
     obj->fmtetc = HeapAlloc(GetProcessHeap(), 0, obj->fmtetc_cnt*sizeof(FORMATETC));

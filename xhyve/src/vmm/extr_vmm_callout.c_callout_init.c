@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct callout {int /*<<< orphan*/  wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  memset (struct callout*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct callout {int wait; } ;
+
+
+ int abort () ;
+ int memset (struct callout*,int ,int) ;
+ scalar_t__ pthread_cond_init (int *,int *) ;
 
 void callout_init(struct callout *c, int mpsafe) {
   if (!mpsafe) {
@@ -24,7 +24,7 @@ void callout_init(struct callout *c, int mpsafe) {
 
   memset(c, 0, sizeof(struct callout));
 
-  if (pthread_cond_init(&c->wait, NULL)) {
+  if (pthread_cond_init(&c->wait, ((void*)0))) {
     abort();
   }
 }

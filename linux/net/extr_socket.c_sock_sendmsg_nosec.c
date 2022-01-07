@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct socket {TYPE_1__* ops; } ;
 struct msghdr {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sendmsg; } ;
+struct TYPE_2__ {int sendmsg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int EIOCBQUEUED ; 
- int INDIRECT_CALL_INET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct socket*,struct msghdr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  inet6_sendmsg ; 
- int /*<<< orphan*/  inet_sendmsg ; 
- int /*<<< orphan*/  msg_data_left (struct msghdr*) ; 
+
+ int BUG_ON (int) ;
+ int EIOCBQUEUED ;
+ int INDIRECT_CALL_INET (int ,int ,int ,struct socket*,struct msghdr*,int ) ;
+ int inet6_sendmsg ;
+ int inet_sendmsg ;
+ int msg_data_left (struct msghdr*) ;
 
 __attribute__((used)) static inline int sock_sendmsg_nosec(struct socket *sock, struct msghdr *msg)
 {
-	int ret = INDIRECT_CALL_INET(sock->ops->sendmsg, inet6_sendmsg,
-				     inet_sendmsg, sock, msg,
-				     msg_data_left(msg));
-	BUG_ON(ret == -EIOCBQUEUED);
-	return ret;
+ int ret = INDIRECT_CALL_INET(sock->ops->sendmsg, inet6_sendmsg,
+         inet_sendmsg, sock, msg,
+         msg_data_left(msg));
+ BUG_ON(ret == -EIOCBQUEUED);
+ return ret;
 }

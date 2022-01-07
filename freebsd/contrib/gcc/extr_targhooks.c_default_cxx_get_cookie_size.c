@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- scalar_t__ INT_CST_LT_UNSIGNED (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_ALIGN_UNIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  size_in_bytes (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  size_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sizetype ; 
+
+
+
+typedef int tree ;
+
+
+ scalar_t__ INT_CST_LT_UNSIGNED (int ,int ) ;
+ int TYPE_ALIGN_UNIT (int ) ;
+ int size_in_bytes (int ) ;
+ int size_int (int ) ;
+ int sizetype ;
 
 tree
 default_cxx_get_cookie_size (tree type)
 {
   tree cookie_size;
 
-  /* We need to allocate an additional max (sizeof (size_t), alignof
-     (true_type)) bytes.  */
+
+
   tree sizetype_size;
   tree type_align;
 

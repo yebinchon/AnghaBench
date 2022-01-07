@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bot_state_t ;
 
-/* Variables and functions */
- int BotTeam (int /*<<< orphan*/ *) ; 
-#define  TEAM_BLUE 129 
- int TEAM_FREE ; 
-#define  TEAM_RED 128 
+
+
+
+typedef int bot_state_t ;
+
+
+ int BotTeam (int *) ;
+
+ int TEAM_FREE ;
+
 
 int BotOppositeTeam(bot_state_t *bs) {
-	switch(BotTeam(bs)) {
-		case TEAM_RED: return TEAM_BLUE;
-		case TEAM_BLUE: return TEAM_RED;
-		default: return TEAM_FREE;
-	}
+ switch(BotTeam(bs)) {
+  case 128: return 129;
+  case 129: return 128;
+  default: return TEAM_FREE;
+ }
 }

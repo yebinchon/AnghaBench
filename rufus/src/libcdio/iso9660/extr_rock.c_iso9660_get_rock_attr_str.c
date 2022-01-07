@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int posix_mode_t ;
 
-/* Variables and functions */
- int ISO_ROCK_IRGRP ; 
- int ISO_ROCK_IROTH ; 
- int ISO_ROCK_IRUSR ; 
- int ISO_ROCK_ISGID ; 
- int ISO_ROCK_ISUID ; 
- int ISO_ROCK_IWGRP ; 
- int ISO_ROCK_IWOTH ; 
- int ISO_ROCK_IWUSR ; 
- int ISO_ROCK_IXGRP ; 
- int ISO_ROCK_IXOTH ; 
- int ISO_ROCK_IXUSR ; 
- scalar_t__ S_ISBLK (int) ; 
- scalar_t__ S_ISCHR (int) ; 
- scalar_t__ S_ISDIR (int) ; 
- scalar_t__ S_ISFIFO (int) ; 
- scalar_t__ S_ISLNK (int) ; 
- scalar_t__ S_ISSOCK (int) ; 
- char* _getbuf () ; 
+
+
+
+typedef int posix_mode_t ;
+
+
+ int ISO_ROCK_IRGRP ;
+ int ISO_ROCK_IROTH ;
+ int ISO_ROCK_IRUSR ;
+ int ISO_ROCK_ISGID ;
+ int ISO_ROCK_ISUID ;
+ int ISO_ROCK_IWGRP ;
+ int ISO_ROCK_IWOTH ;
+ int ISO_ROCK_IWUSR ;
+ int ISO_ROCK_IXGRP ;
+ int ISO_ROCK_IXOTH ;
+ int ISO_ROCK_IXUSR ;
+ scalar_t__ S_ISBLK (int) ;
+ scalar_t__ S_ISCHR (int) ;
+ scalar_t__ S_ISDIR (int) ;
+ scalar_t__ S_ISFIFO (int) ;
+ scalar_t__ S_ISLNK (int) ;
+ scalar_t__ S_ISSOCK (int) ;
+ char* _getbuf () ;
 
 const char *
 iso9660_get_rock_attr_str(posix_mode_t st_mode)
@@ -49,7 +49,7 @@ iso9660_get_rock_attr_str(posix_mode_t st_mode)
     result[ 0] = 'p';
   else if (S_ISSOCK(st_mode))
     result[ 0] = 's';
-  /* May eventually fill in others.. */
+
   else
     result[ 0] = '-';
 

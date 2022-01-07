@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct vdp_functions {int /*<<< orphan*/  (* output_surface_create ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct TYPE_10__ {int hw_subfmt; int imgfmt; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct ra_hwdec_mapper {int vdpau_fields; int /*<<< orphan*/  log; TYPE_2__ dst_params; TYPE_2__ src_params; int /*<<< orphan*/  ra; struct priv* priv; TYPE_1__* owner; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct vdp_functions {int (* output_surface_create ) (int ,int ,int ,int ,int *) ;} ;
+struct TYPE_10__ {int hw_subfmt; int imgfmt; int h; int w; } ;
+struct ra_hwdec_mapper {int vdpau_fields; int log; TYPE_2__ dst_params; TYPE_2__ src_params; int ra; struct priv* priv; TYPE_1__* owner; } ;
 struct priv_owner {TYPE_6__* ctx; } ;
 struct TYPE_12__ {int chroma_w; } ;
-struct priv {int vdpgl_initialized; int direct_mode; int /*<<< orphan*/  vdpgl_surface; int /*<<< orphan*/ * gl_textures; int /*<<< orphan*/  vdp_surface; TYPE_6__* ctx; TYPE_5__ direct_desc; int /*<<< orphan*/  preemption_counter; int /*<<< orphan*/  mixer; TYPE_3__* gl; } ;
-typedef  int /*<<< orphan*/  VdpStatus ;
-struct TYPE_13__ {int /*<<< orphan*/  vdp_device; int /*<<< orphan*/  get_proc_address; struct vdp_functions vdp; } ;
-struct TYPE_11__ {int /*<<< orphan*/  (* VDPAUSurfaceAccessNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* VDPAURegisterOutputSurfaceNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* TexParameteri ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* GenTextures ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* VDPAUInitNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct priv {int vdpgl_initialized; int direct_mode; int vdpgl_surface; int * gl_textures; int vdp_surface; TYPE_6__* ctx; TYPE_5__ direct_desc; int preemption_counter; int mixer; TYPE_3__* gl; } ;
+typedef int VdpStatus ;
+struct TYPE_13__ {int vdp_device; int get_proc_address; struct vdp_functions vdp; } ;
+struct TYPE_11__ {int (* VDPAUSurfaceAccessNV ) (int ,int ) ;int (* VDPAURegisterOutputSurfaceNV ) (int ,int ,int,int *) ;int (* BindTexture ) (int ,int ) ;int (* TexParameteri ) (int ,int ,int ) ;int (* GenTextures ) (int,int *) ;int (* VDPAUInitNV ) (int ,int ) ;} ;
 struct TYPE_9__ {struct priv_owner* priv; } ;
-typedef  TYPE_3__ GL ;
+typedef TYPE_3__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BRAINDEATH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHECK_VDP_ERROR (struct ra_hwdec_mapper*,char*) ; 
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_NEAREST ; 
- int /*<<< orphan*/  GL_READ_ONLY ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int IMGFMT_420P ; 
- int IMGFMT_444P ; 
- int IMGFMT_NV12 ; 
- int IMGFMT_NV24 ; 
- int IMGFMT_RGB0 ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VDP_INVALID_HANDLE ; 
- int /*<<< orphan*/  VDP_RGBA_FORMAT_B8G8R8A8 ; 
- int /*<<< orphan*/  gl_check_error (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mp_imgfmt_to_name (int) ; 
- scalar_t__ mp_vdpau_handle_preemption (TYPE_6__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_vdpau_mixer_create (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_get_imgfmt_desc (int /*<<< orphan*/ ,int,TYPE_5__*) ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub13 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub14 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub17 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BRAINDEATH (int ) ;
+ int CHECK_VDP_ERROR (struct ra_hwdec_mapper*,char*) ;
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR ;
+ int GL_NEAREST ;
+ int GL_READ_ONLY ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int IMGFMT_420P ;
+ int IMGFMT_444P ;
+ int IMGFMT_NV12 ;
+ int IMGFMT_NV24 ;
+ int IMGFMT_RGB0 ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,int ) ;
+ int VDP_INVALID_HANDLE ;
+ int VDP_RGBA_FORMAT_B8G8R8A8 ;
+ int gl_check_error (TYPE_3__*,int ,char*) ;
+ int mp_imgfmt_to_name (int) ;
+ scalar_t__ mp_vdpau_handle_preemption (TYPE_6__*,int *) ;
+ int mp_vdpau_mixer_create (TYPE_6__*,int ) ;
+ int ra_get_imgfmt_desc (int ,int,TYPE_5__*) ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int stub1 (int ,int ) ;
+ int stub10 (int ,int ,int ) ;
+ int stub11 (int ,int ,int ) ;
+ int stub12 (int ,int ,int ) ;
+ int stub13 (int ,int ,int ) ;
+ int stub14 (int ,int ) ;
+ int stub15 (int ,int ,int ,int ,int *) ;
+ int stub16 (int ,int ,int,int *) ;
+ int stub17 (int ,int ) ;
+ int stub2 (int,int *) ;
+ int stub3 (int ,int ) ;
+ int stub4 (int ,int ,int ) ;
+ int stub5 (int ,int ,int ) ;
+ int stub6 (int ,int ,int ) ;
+ int stub7 (int ,int ,int ) ;
+ int stub8 (int ,int ) ;
+ int stub9 (int ,int ) ;
 
 __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
 {
@@ -95,7 +95,7 @@ __attribute__((used)) static int mapper_init(struct ra_hwdec_mapper *mapper)
 
     gl->VDPAUInitNV(BRAINDEATH(p->ctx->vdp_device), p->ctx->get_proc_address);
 
-    p->vdpgl_initialized = true;
+    p->vdpgl_initialized = 1;
 
     p->direct_mode = mapper->dst_params.hw_subfmt == IMGFMT_NV12 ||
                      mapper->dst_params.hw_subfmt == IMGFMT_NV24 ||

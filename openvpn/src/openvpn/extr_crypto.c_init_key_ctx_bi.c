@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct key_type {int dummy; } ;
 struct key_direction_state {size_t out_key; size_t in_key; } ;
-struct key_ctx_bi {int initialized; int /*<<< orphan*/  decrypt; int /*<<< orphan*/  encrypt; } ;
-struct key2 {int /*<<< orphan*/ * keys; } ;
-typedef  int /*<<< orphan*/  log_prefix ;
+struct key_ctx_bi {int initialized; int decrypt; int encrypt; } ;
+struct key2 {int * keys; } ;
+typedef int log_prefix ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENVPN_OP_DECRYPT ; 
- int /*<<< orphan*/  OPENVPN_OP_ENCRYPT ; 
- int /*<<< orphan*/  init_key_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct key_type const*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  key_direction_state_init (struct key_direction_state*,int) ; 
- int /*<<< orphan*/  openvpn_snprintf (char*,int,char*,char const*) ; 
+
+ int OPENVPN_OP_DECRYPT ;
+ int OPENVPN_OP_ENCRYPT ;
+ int init_key_ctx (int *,int *,struct key_type const*,int ,char*) ;
+ int key_direction_state_init (struct key_direction_state*,int) ;
+ int openvpn_snprintf (char*,int,char*,char const*) ;
 
 void
 init_key_ctx_bi(struct key_ctx_bi *ctx, const struct key2 *key2,
@@ -40,5 +40,5 @@ init_key_ctx_bi(struct key_ctx_bi *ctx, const struct key2 *key2,
     init_key_ctx(&ctx->decrypt, &key2->keys[kds.in_key], kt,
                  OPENVPN_OP_DECRYPT, log_prefix);
 
-    ctx->initialized = true;
+    ctx->initialized = 1;
 }

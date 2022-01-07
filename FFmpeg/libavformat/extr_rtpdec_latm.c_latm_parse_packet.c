@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_10__ {int /*<<< orphan*/  stream_index; int /*<<< orphan*/  data; } ;
-struct TYPE_9__ {int /*<<< orphan*/  index; } ;
-struct TYPE_8__ {scalar_t__ timestamp; int* buf; scalar_t__ len; scalar_t__ pos; int /*<<< orphan*/ * dyn_buf; } ;
-typedef  TYPE_1__ PayloadContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EIO ; 
- int RTP_FLAG_MARKER ; 
- int /*<<< orphan*/  av_freep (int**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int av_new_packet (TYPE_3__*,int) ; 
- scalar_t__ avio_close_dyn_buf (int /*<<< orphan*/ *,int**) ; 
- int avio_open_dyn_buf (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  ffio_free_dyn_buf (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int*,int) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_10__ {int stream_index; int data; } ;
+struct TYPE_9__ {int index; } ;
+struct TYPE_8__ {scalar_t__ timestamp; int* buf; scalar_t__ len; scalar_t__ pos; int * dyn_buf; } ;
+typedef TYPE_1__ PayloadContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ int EIO ;
+ int RTP_FLAG_MARKER ;
+ int av_freep (int**) ;
+ int av_log (int *,int ,char*) ;
+ int av_new_packet (TYPE_3__*,int) ;
+ scalar_t__ avio_close_dyn_buf (int *,int**) ;
+ int avio_open_dyn_buf (int **) ;
+ int avio_write (int *,int const*,int) ;
+ int ffio_free_dyn_buf (int **) ;
+ int memcpy (int ,int*,int) ;
 
 __attribute__((used)) static int latm_parse_packet(AVFormatContext *ctx, PayloadContext *data,
                              AVStream *st, AVPacket *pkt, uint32_t *timestamp,
@@ -61,7 +61,7 @@ __attribute__((used)) static int latm_parse_packet(AVFormatContext *ctx, Payload
             return AVERROR(EAGAIN);
         av_freep(&data->buf);
         data->len = avio_close_dyn_buf(data->dyn_buf, &data->buf);
-        data->dyn_buf = NULL;
+        data->dyn_buf = ((void*)0);
         data->pos = 0;
     }
 

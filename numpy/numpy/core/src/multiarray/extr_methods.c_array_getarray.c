@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * PyArray_CastToType (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_CheckExact (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DATA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DIMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_DescrConverter ; 
- scalar_t__ PyArray_EquivTypes (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_FLAGS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_NDIM (int /*<<< orphan*/ *) ; 
- scalar_t__ PyArray_NewFromDescrAndBase (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_STRIDES (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_Type ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int PyArg_ParseTuple (int *,char*,int ,int **) ;
+ int * PyArray_CastToType (int *,int *,int ) ;
+ int PyArray_CheckExact (int *) ;
+ int PyArray_DATA (int *) ;
+ int * PyArray_DESCR (int *) ;
+ int PyArray_DIMS (int *) ;
+ int PyArray_DescrConverter ;
+ scalar_t__ PyArray_EquivTypes (int *,int *) ;
+ int PyArray_FLAGS (int *) ;
+ int PyArray_NDIM (int *) ;
+ scalar_t__ PyArray_NewFromDescrAndBase (int *,int *,int ,int ,int ,int ,int ,int *,int *) ;
+ int PyArray_STRIDES (int *) ;
+ int PyArray_Type ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int Py_XDECREF (int *) ;
 
 __attribute__((used)) static PyObject *
 array_getarray(PyArrayObject *self, PyObject *args)
 {
-    PyArray_Descr *newtype = NULL;
+    PyArray_Descr *newtype = ((void*)0);
     PyObject *ret;
 
     if (!PyArg_ParseTuple(args, "|O&:__array__",
                             PyArray_DescrConverter, &newtype)) {
         Py_XDECREF(newtype);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* convert to PyArray_Type */
+
     if (!PyArray_CheckExact(self)) {
         PyArrayObject *new;
 
@@ -57,11 +57,11 @@ array_getarray(PyArrayObject *self, PyObject *args)
                 PyArray_STRIDES(self),
                 PyArray_DATA(self),
                 PyArray_FLAGS(self),
-                NULL,
+                ((void*)0),
                 (PyObject *)self
         );
-        if (new == NULL) {
-            return NULL;
+        if (new == ((void*)0)) {
+            return ((void*)0);
         }
         self = new;
     }
@@ -69,7 +69,7 @@ array_getarray(PyArrayObject *self, PyObject *args)
         Py_INCREF(self);
     }
 
-    if ((newtype == NULL) || PyArray_EquivTypes(PyArray_DESCR(self), newtype)) {
+    if ((newtype == ((void*)0)) || PyArray_EquivTypes(PyArray_DESCR(self), newtype)) {
         return (PyObject *)self;
     }
     else {

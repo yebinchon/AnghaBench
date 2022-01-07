@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * kd ; 
- int /*<<< orphan*/  ttymode_kvm () ; 
- int /*<<< orphan*/  ttymode_sysctl () ; 
+ int * kd ;
+ int ttymode_kvm () ;
+ int ttymode_sysctl () ;
 
 __attribute__((used)) static void
 ttymode(void)
 {
 
-	if (kd != NULL)
-		ttymode_kvm();
-	else
-		ttymode_sysctl();
+ if (kd != ((void*)0))
+  ttymode_kvm();
+ else
+  ttymode_sysctl();
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_MAX_NAME ; 
- int /*<<< orphan*/  CONFIG_SECTION_PLUGIN_PROC_DISKSTATS ; 
- scalar_t__ config_get_boolean (int /*<<< orphan*/ ,char*,int) ; 
- int* reallocz (int*,size_t) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int int8_t ;
+
+
+ int CONFIG_MAX_NAME ;
+ int CONFIG_SECTION_PLUGIN_PROC_DISKSTATS ;
+ scalar_t__ config_get_boolean (int ,char*,int) ;
+ int* reallocz (int*,size_t) ;
+ int snprintfz (char*,int ,char*,int) ;
 
 __attribute__((used)) static inline int is_major_enabled(int major) {
-    static int8_t *major_configs = NULL;
+    static int8_t *major_configs = ((void*)0);
     static size_t major_size = 0;
 
     if(major < 0) return 1;

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bcm2835_host {int irq_block; int irq_busy; int irq_data; int /*<<< orphan*/  mutex; int /*<<< orphan*/  lock; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  bcm2835_block_irq (struct bcm2835_host*) ; 
- int /*<<< orphan*/  bcm2835_busy_irq (struct bcm2835_host*) ; 
- int /*<<< orphan*/  bcm2835_data_threaded_irq (struct bcm2835_host*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct bcm2835_host {int irq_block; int irq_busy; int irq_data; int mutex; int lock; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int bcm2835_block_irq (struct bcm2835_host*) ;
+ int bcm2835_busy_irq (struct bcm2835_host*) ;
+ int bcm2835_data_threaded_irq (struct bcm2835_host*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static irqreturn_t bcm2835_threaded_irq(int irq, void *dev_id)
 {
-	struct bcm2835_host *host = dev_id;
-	unsigned long flags;
-	bool block, busy, data;
+ struct bcm2835_host *host = dev_id;
+ unsigned long flags;
+ bool block, busy, data;
 
-	spin_lock_irqsave(&host->lock, flags);
+ spin_lock_irqsave(&host->lock, flags);
 
-	block = host->irq_block;
-	busy  = host->irq_busy;
-	data  = host->irq_data;
-	host->irq_block = false;
-	host->irq_busy  = false;
-	host->irq_data  = false;
+ block = host->irq_block;
+ busy = host->irq_busy;
+ data = host->irq_data;
+ host->irq_block = 0;
+ host->irq_busy = 0;
+ host->irq_data = 0;
 
-	spin_unlock_irqrestore(&host->lock, flags);
+ spin_unlock_irqrestore(&host->lock, flags);
 
-	mutex_lock(&host->mutex);
+ mutex_lock(&host->mutex);
 
-	if (block)
-		bcm2835_block_irq(host);
-	if (busy)
-		bcm2835_busy_irq(host);
-	if (data)
-		bcm2835_data_threaded_irq(host);
+ if (block)
+  bcm2835_block_irq(host);
+ if (busy)
+  bcm2835_busy_irq(host);
+ if (data)
+  bcm2835_data_threaded_irq(host);
 
-	mutex_unlock(&host->mutex);
+ mutex_unlock(&host->mutex);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

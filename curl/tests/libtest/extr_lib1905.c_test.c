@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {long tv_sec; long tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  char CURLSH ;
-typedef  int /*<<< orphan*/  CURLM ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int fd_set ;
+typedef char CURLSH ;
+typedef int CURLM ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLOPT_COOKIEFILE ; 
- int /*<<< orphan*/  CURLOPT_COOKIEJAR ; 
- int /*<<< orphan*/  CURLOPT_COOKIELIST ; 
- int /*<<< orphan*/  CURLOPT_SHARE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLSHOPT_SHARE ; 
- int /*<<< orphan*/  CURL_LOCK_DATA_COOKIE ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_fdset (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * curl_multi_init () ; 
- int /*<<< orphan*/  curl_multi_perform (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  curl_multi_remove_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_multi_timeout (int /*<<< orphan*/ *,long*) ; 
- int /*<<< orphan*/  curl_share_cleanup (char*) ; 
- char* curl_share_init () ; 
- int /*<<< orphan*/  curl_share_setopt (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int CURLOPT_COOKIEFILE ;
+ int CURLOPT_COOKIEJAR ;
+ int CURLOPT_COOKIELIST ;
+ int CURLOPT_SHARE ;
+ int CURLOPT_URL ;
+ int CURLSHOPT_SHARE ;
+ int CURL_LOCK_DATA_COOKIE ;
+ int FD_ZERO (int *) ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ int curl_easy_setopt (int *,int ,char*) ;
+ int curl_global_cleanup () ;
+ int curl_multi_add_handle (int *,int *) ;
+ int curl_multi_cleanup (int *) ;
+ int curl_multi_fdset (int *,int *,int *,int *,int*) ;
+ int * curl_multi_init () ;
+ int curl_multi_perform (int *,int*) ;
+ int curl_multi_remove_handle (int *,int *) ;
+ int curl_multi_timeout (int *,long*) ;
+ int curl_share_cleanup (char*) ;
+ char* curl_share_init () ;
+ int curl_share_setopt (char*,int ,int ) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
 
 int test(char *URL)
 {
-  CURLSH *sh = NULL;
-  CURL *ch = NULL;
+  CURLSH *sh = ((void*)0);
+  CURL *ch = ((void*)0);
   int unfinished;
 
   CURLM *cm = curl_multi_init();
@@ -96,7 +96,7 @@ int test(char *URL)
   }
 
   curl_easy_setopt(ch, CURLOPT_COOKIELIST, "FLUSH");
-  curl_easy_setopt(ch, CURLOPT_SHARE, NULL);
+  curl_easy_setopt(ch, CURLOPT_SHARE, ((void*)0));
 
   curl_multi_remove_handle(cm, ch);
   cleanup:

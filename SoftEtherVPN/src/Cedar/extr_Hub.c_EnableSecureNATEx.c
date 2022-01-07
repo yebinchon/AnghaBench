@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ Type; int EnableSecureNAT; int Offline; int /*<<< orphan*/  lock_online; int /*<<< orphan*/  SecureNATOption; int /*<<< orphan*/ * SecureNAT; int /*<<< orphan*/  SessionList; TYPE_2__* Cedar; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ Type; int EnableSecureNAT; int Offline; int lock_online; int SecureNATOption; int * SecureNAT; int SessionList; TYPE_2__* Cedar; } ;
 struct TYPE_7__ {TYPE_1__* Server; } ;
 struct TYPE_6__ {scalar_t__ ServerType; } ;
-typedef  TYPE_3__ HUB ;
+typedef TYPE_3__ HUB ;
 
-/* Variables and functions */
- scalar_t__ HUB_TYPE_FARM_DYNAMIC ; 
- int LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- scalar_t__ SERVER_TYPE_FARM_CONTROLLER ; 
- int /*<<< orphan*/  SnFreeSecureNAT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SnNewSecureNAT (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ HUB_TYPE_FARM_DYNAMIC ;
+ int LIST_NUM (int ) ;
+ int Lock (int ) ;
+ scalar_t__ SERVER_TYPE_FARM_CONTROLLER ;
+ int SnFreeSecureNAT (int *) ;
+ int * SnNewSecureNAT (TYPE_3__*,int ) ;
+ int Unlock (int ) ;
 
 void EnableSecureNATEx(HUB *h, bool enable, bool no_change)
 {
-	bool for_cluster = false;
-	// Validate arguments
-	if (h == NULL)
-	{
-		return;
-	}
+ bool for_cluster = 0;
 
-	if (h->Cedar->Server != NULL && h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
-	{
-		if (h->Type == HUB_TYPE_FARM_DYNAMIC)
-		{
-			for_cluster = true;
-		}
-	}
+ if (h == ((void*)0))
+ {
+  return;
+ }
 
-	Lock(h->lock_online);
-	{
-		if (no_change == false)
-		{
-			h->EnableSecureNAT = enable;
-		}
+ if (h->Cedar->Server != ((void*)0) && h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
+ {
+  if (h->Type == HUB_TYPE_FARM_DYNAMIC)
+  {
+   for_cluster = 1;
+  }
+ }
 
-		if (h->EnableSecureNAT == false)
-		{
+ Lock(h->lock_online);
+ {
+  if (no_change == 0)
+  {
+   h->EnableSecureNAT = enable;
+  }
+
+  if (h->EnableSecureNAT == 0)
+  {
 STOP:
-			// Stop if it's already started
-			if (h->SecureNAT != NULL)
-			{
-				SnFreeSecureNAT(h->SecureNAT);
-				h->SecureNAT = NULL;
-			}
-		}
-		else
-		{
-			if (for_cluster)
-			{
-				if ((h->SecureNAT != NULL && LIST_NUM(h->SessionList) <= 1) ||
-					(h->SecureNAT == NULL && LIST_NUM(h->SessionList) == 0))
-				{
-					// It is in a start mode, but stop when there is no other sessions
-					// in the case of dynamic Virtual HUB
-					goto STOP;
-				}
-			}
 
-			// Start if the HUB is online and not started
-			if (h->SecureNAT == NULL && h->Offline == false)
-			{
-				h->SecureNAT = SnNewSecureNAT(h, h->SecureNATOption);
-			}
-		}
-	}
-	Unlock(h->lock_online);
+   if (h->SecureNAT != ((void*)0))
+   {
+    SnFreeSecureNAT(h->SecureNAT);
+    h->SecureNAT = ((void*)0);
+   }
+  }
+  else
+  {
+   if (for_cluster)
+   {
+    if ((h->SecureNAT != ((void*)0) && LIST_NUM(h->SessionList) <= 1) ||
+     (h->SecureNAT == ((void*)0) && LIST_NUM(h->SessionList) == 0))
+    {
+
+
+     goto STOP;
+    }
+   }
+
+
+   if (h->SecureNAT == ((void*)0) && h->Offline == 0)
+   {
+    h->SecureNAT = SnNewSecureNAT(h, h->SecureNATOption);
+   }
+  }
+ }
+ Unlock(h->lock_online);
 }

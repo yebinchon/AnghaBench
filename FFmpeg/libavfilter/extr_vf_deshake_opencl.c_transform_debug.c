@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- double M_PI ; 
- size_t RingbufRot ; 
- size_t RingbufScaleX ; 
- size_t RingbufScaleY ; 
- size_t RingbufX ; 
- size_t RingbufY ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float) ; 
+
+
+
+typedef int AVFilterContext ;
+
+
+ int AV_LOG_VERBOSE ;
+ double M_PI ;
+ size_t RingbufRot ;
+ size_t RingbufScaleX ;
+ size_t RingbufScaleY ;
+ size_t RingbufX ;
+ size_t RingbufY ;
+ int av_log (int *,int ,char*,int,float,float,float,float,float,float,float,float,float,float,float,float,float,float,float) ;
 
 __attribute__((used)) static void transform_debug(AVFilterContext *avctx, float *new_vals, float *old_vals, int curr_frame) {
     av_log(avctx, AV_LOG_VERBOSE,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CACHE_SCHEMA_NAME ; 
- int /*<<< orphan*/  EXTENSION_PROXY_TABLE ; 
- int OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_namespace_oid (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_relname_relid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Oid ;
+
+
+ int CACHE_SCHEMA_NAME ;
+ int EXTENSION_PROXY_TABLE ;
+ int OidIsValid (int ) ;
+ int get_namespace_oid (int ,int) ;
+ int get_relname_relid (int ,int ) ;
 
 __attribute__((used)) static bool inline proxy_table_exists()
 {
-	Oid nsid = get_namespace_oid(CACHE_SCHEMA_NAME, true);
+ Oid nsid = get_namespace_oid(CACHE_SCHEMA_NAME, 1);
 
-	if (!OidIsValid(nsid))
-		return false;
+ if (!OidIsValid(nsid))
+  return 0;
 
-	return OidIsValid(get_relname_relid(EXTENSION_PROXY_TABLE, nsid));
+ return OidIsValid(get_relname_relid(EXTENSION_PROXY_TABLE, nsid));
 }

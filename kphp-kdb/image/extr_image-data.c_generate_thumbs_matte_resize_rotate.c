@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct forth_stack {int /*<<< orphan*/  thread_id; } ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct forth_stack {int thread_id; } ;
 struct TYPE_10__ {int columns; int rows; scalar_t__ colorspace; scalar_t__ matte; } ;
-typedef  TYPE_1__ Image ;
-typedef  int /*<<< orphan*/  FilterTypes ;
+typedef TYPE_1__ Image ;
+typedef int FilterTypes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyImage (TYPE_1__*) ; 
- void* FORTH_FAIL ; 
- void* FORTH_PASS ; 
- scalar_t__ RGBColorspace ; 
- TYPE_1__* gm_replace_transparent_color_by_white (struct forth_stack*,TYPE_1__*) ; 
- TYPE_1__* gm_resize_image (struct forth_stack*,TYPE_1__*,int,int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* gm_rotate_image (struct forth_stack*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ) ; 
+
+ int DestroyImage (TYPE_1__*) ;
+ void* FORTH_FAIL ;
+ void* FORTH_PASS ;
+ scalar_t__ RGBColorspace ;
+ TYPE_1__* gm_replace_transparent_color_by_white (struct forth_stack*,TYPE_1__*) ;
+ TYPE_1__* gm_resize_image (struct forth_stack*,TYPE_1__*,int,int,int,int ) ;
+ TYPE_1__* gm_rotate_image (struct forth_stack*,TYPE_1__*,int) ;
+ int vkprintf (int,char*,int ) ;
 
 __attribute__((used)) static void *generate_thumbs_matte_resize_rotate (struct forth_stack *st, Image **I, int angle, int *width, int *height, int max_width, int max_height, FilterTypes resize_filter, int *trans_flags) {
   if (trans_flags) {
@@ -38,13 +38,13 @@ __attribute__((used)) static void *generate_thumbs_matte_resize_rotate (struct f
     int tmp = *width; *width = *height; *height = tmp;
   }
 
-  /******************* resizeAndRotate ************************/
+
   if (*width > max_width || *height > max_height) {
     if (trans_flags) {
       (*trans_flags) |= 1;
     }
     w = gm_resize_image (st, r, max_width, max_height, 1, resize_filter);
-    if (w == NULL) {
+    if (w == ((void*)0)) {
       DestroyImage (r);
       return FORTH_FAIL;
     }
@@ -62,7 +62,7 @@ __attribute__((used)) static void *generate_thumbs_matte_resize_rotate (struct f
       (*trans_flags) |= 2;
     }
     w = gm_rotate_image (st, r, 90 * angle);
-    if (w == NULL) {
+    if (w == ((void*)0)) {
       DestroyImage (r);
       return FORTH_FAIL;
     }
@@ -77,7 +77,7 @@ __attribute__((used)) static void *generate_thumbs_matte_resize_rotate (struct f
       (*trans_flags) |= 4;
     }
     w = gm_replace_transparent_color_by_white (st, r);
-    if (w == NULL) {
+    if (w == ((void*)0)) {
       DestroyImage (r);
       return FORTH_FAIL;
     }

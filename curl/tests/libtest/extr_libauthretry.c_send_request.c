@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_HTTPAUTH ; 
- int /*<<< orphan*/  CURLOPT_HTTPGET ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_USERPWD ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  msnprintf (char*,size_t,char*,char const*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+
+
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ int CURLE_OUT_OF_MEMORY ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_HTTPAUTH ;
+ int CURLOPT_HTTPGET ;
+ int CURLOPT_URL ;
+ int CURLOPT_USERPWD ;
+ int CURLOPT_VERBOSE ;
+ int curl_easy_perform (int *) ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ char* malloc (size_t) ;
+ int msnprintf (char*,size_t,char*,char const*,int) ;
+ int stderr ;
+ int strlen (char const*) ;
+ int test_setopt (int *,int ,...) ;
 
 __attribute__((used)) static CURLcode send_request(CURL *curl, const char *url, int seq,
                              long auth_scheme, const char *userpwd)

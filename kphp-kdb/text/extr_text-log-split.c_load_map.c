@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_MAP_USERS ; 
- long long Map ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int* UMap ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long long malloc (long) ; 
- char* map_filename ; 
- long map_fsize ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,long long,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+ int MAX_MAP_USERS ;
+ long long Map ;
+ int O_RDONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int* UMap ;
+ int assert (int) ;
+ int close (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*,...) ;
+ scalar_t__ lseek (int,int ,int ) ;
+ long long malloc (long) ;
+ char* map_filename ;
+ long map_fsize ;
+ int open (char*,int ) ;
+ int read (int,long long,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int load_map (void) {
   int map_fd = open (map_filename, O_RDONLY);

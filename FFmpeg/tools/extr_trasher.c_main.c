@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int UINT32_MAX ; 
- int abs (int) ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  checked_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (int*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- unsigned long long ran () ; 
- void* state ; 
+
+
+
+typedef int uint64_t ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int UINT32_MAX ;
+ int abs (int) ;
+ void* atoi (char*) ;
+ int checked_seek (int *,int,int ) ;
+ int * fopen (char*,char*) ;
+ int ftell (int *) ;
+ int fwrite (int*,int,int,int *) ;
+ int perror (char*) ;
+ int printf (char*) ;
+ unsigned long long ran () ;
+ void* state ;
 
 int main(int argc, char **argv)
 {
@@ -43,9 +43,9 @@ int main(int argc, char **argv)
         perror(argv[1]);
         return 2;
     }
-    count    = atoi(argv[2]);
+    count = atoi(argv[2]);
     maxburst = atoi(argv[3]);
-    state    = atoi(argv[4]);
+    state = atoi(argv[4]);
 
     checked_seek(f, 0, SEEK_END);
     length = ftell(f);
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
     while (count--) {
         int burst = 1 + ran() * (uint64_t) (abs(maxburst) - 1) / UINT32_MAX;
-        int pos   = ran() * (uint64_t) length / UINT32_MAX;
+        int pos = ran() * (uint64_t) length / UINT32_MAX;
         checked_seek(f, pos, SEEK_SET);
 
         if (maxburst < 0)

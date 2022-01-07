@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct heap_layout {int flags; int pattern; int force_flags; } ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int buffer ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int FLG_HEAP_PAGE_ALLOCS ; 
- struct heap_layout* GetProcessHeap () ; 
- int HEAP_GROWABLE ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int REG_DWORD ; 
- int REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegOpenKeyA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int*) ; 
- int heap_flags_from_global_flag (int) ; 
- int /*<<< orphan*/  ok (int,char*,char const*,...) ; 
- int pRtlGetNtGlobalFlags () ; 
- int strtoul (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  test_heap_checks (int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int FLG_HEAP_PAGE_ALLOCS ;
+ struct heap_layout* GetProcessHeap () ;
+ int HEAP_GROWABLE ;
+ int HKEY_LOCAL_MACHINE ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ int RegOpenKeyA (int ,char*,int *) ;
+ int RegQueryValueExA (int ,char*,int ,int*,int *,int*) ;
+ int heap_flags_from_global_flag (int) ;
+ int ok (int,char*,char const*,...) ;
+ int pRtlGetNtGlobalFlags () ;
+ int strtoul (char const*,int ,int) ;
+ int test_heap_checks (int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_child_heap( const char *arg )
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_child_heap( const char *arg )
     DWORD expected = strtoul( arg, 0, 16 );
     DWORD expect_heap;
 
-    if (expected == 0xdeadbeef)  /* expected value comes from Session Manager global flags */
+    if (expected == 0xdeadbeef)
     {
         HKEY hkey;
         expected = 0;
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_child_heap( const char *arg )
             RegCloseKey( hkey );
         }
     }
-    if (expected && !pRtlGetNtGlobalFlags())  /* not working on NT4 */
+    if (expected && !pRtlGetNtGlobalFlags())
     {
         win_skip( "global flags not set\n" );
         return;
@@ -67,7 +67,7 @@ __attribute__((used)) static void test_child_heap( const char *arg )
 
     expect_heap = heap_flags_from_global_flag( expected );
 
-    if (!(heap->flags & HEAP_GROWABLE) || heap->pattern == 0xffeeffee)  /* vista layout */
+    if (!(heap->flags & HEAP_GROWABLE) || heap->pattern == 0xffeeffee)
     {
         ok( (heap->flags & ~HEAP_GROWABLE) == 0, "%s: got heap flags %08x\n", arg, heap->flags );
     }

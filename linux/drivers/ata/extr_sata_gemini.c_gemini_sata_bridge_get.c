@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sata_gemini {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPROBE_DEFER ; 
- struct sata_gemini* ERR_PTR (int /*<<< orphan*/ ) ; 
- struct sata_gemini* sg_singleton ; 
+
+ int EPROBE_DEFER ;
+ struct sata_gemini* ERR_PTR (int ) ;
+ struct sata_gemini* sg_singleton ;
 
 struct sata_gemini *gemini_sata_bridge_get(void)
 {
-	if (sg_singleton)
-		return sg_singleton;
-	return ERR_PTR(-EPROBE_DEFER);
+ if (sg_singleton)
+  return sg_singleton;
+ return ERR_PTR(-EPROBE_DEFER);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_struct {int dummy; } ;
 struct dev_cgroup {int dummy; } ;
 
-/* Variables and functions */
- struct dev_cgroup* css_to_devcgroup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  devices_cgrp_id ; 
- int /*<<< orphan*/  task_css (struct task_struct*,int /*<<< orphan*/ ) ; 
+
+ struct dev_cgroup* css_to_devcgroup (int ) ;
+ int devices_cgrp_id ;
+ int task_css (struct task_struct*,int ) ;
 
 __attribute__((used)) static inline struct dev_cgroup *task_devcgroup(struct task_struct *task)
 {
-	return css_to_devcgroup(task_css(task, devices_cgrp_id));
+ return css_to_devcgroup(task_css(task, devices_cgrp_id));
 }

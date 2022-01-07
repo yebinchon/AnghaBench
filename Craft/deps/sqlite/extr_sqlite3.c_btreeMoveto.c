@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ i64 ;
-typedef  int /*<<< orphan*/  aSpace ;
-typedef  int /*<<< orphan*/  UnpackedRecord ;
-struct TYPE_7__ {int /*<<< orphan*/  db; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ i64 ;
+typedef int aSpace ;
+typedef int UnpackedRecord ;
+struct TYPE_7__ {int db; } ;
 struct TYPE_6__ {TYPE_2__* pKeyInfo; } ;
-typedef  TYPE_1__ BtCursor ;
+typedef TYPE_1__ BtCursor ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3BtreeMovetoUnpacked (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__,int,int*) ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * sqlite3VdbeAllocUnpackedRecord (TYPE_2__*,char*,int,char**) ; 
- int /*<<< orphan*/  sqlite3VdbeRecordUnpack (TYPE_2__*,int,void const*,int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM ;
+ int assert (int) ;
+ int sqlite3BtreeMovetoUnpacked (TYPE_1__*,int *,scalar_t__,int,int*) ;
+ int sqlite3DbFree (int ,char*) ;
+ int * sqlite3VdbeAllocUnpackedRecord (TYPE_2__*,char*,int,char**) ;
+ int sqlite3VdbeRecordUnpack (TYPE_2__*,int,void const*,int *) ;
 
 __attribute__((used)) static int btreeMoveto(
-  BtCursor *pCur,     /* Cursor open on the btree to be searched */
-  const void *pKey,   /* Packed key if the btree is an index */
-  i64 nKey,           /* Integer key for tables.  Size of pKey for indices */
-  int bias,           /* Bias search to the high end */
-  int *pRes           /* Write search results here */
+  BtCursor *pCur,
+  const void *pKey,
+  i64 nKey,
+  int bias,
+  int *pRes
 ){
-  int rc;                    /* Status code */
-  UnpackedRecord *pIdxKey;   /* Unpacked index key */
-  char aSpace[150];          /* Temp space for pIdxKey - to avoid a malloc */
+  int rc;
+  UnpackedRecord *pIdxKey;
+  char aSpace[150];
   char *pFree = 0;
 
   if( pKey ){

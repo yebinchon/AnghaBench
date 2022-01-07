@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct evlist {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  evlist__init (struct evlist*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct evlist* zalloc (int) ; 
+
+ int evlist__init (struct evlist*,int *,int *) ;
+ struct evlist* zalloc (int) ;
 
 struct evlist *evlist__new(void)
 {
-	struct evlist *evlist = zalloc(sizeof(*evlist));
+ struct evlist *evlist = zalloc(sizeof(*evlist));
 
-	if (evlist != NULL)
-		evlist__init(evlist, NULL, NULL);
+ if (evlist != ((void*)0))
+  evlist__init(evlist, ((void*)0), ((void*)0));
 
-	return evlist;
+ return evlist;
 }

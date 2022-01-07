@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HINSTANCE ;
-typedef  int /*<<< orphan*/  HICON ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GWLP_HINSTANCE ; 
- scalar_t__ GetWindowLongPtr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDI_STARFIELD ; 
- int /*<<< orphan*/  IDS_AUTHOR ; 
- int /*<<< orphan*/  IDS_DESCRIPTION ; 
- int /*<<< orphan*/  IDS_LICENSE ; 
- int /*<<< orphan*/  LoadIcon (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadString (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIZEOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ShellAbout (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * _T (char*) ; 
- int /*<<< orphan*/  _tcscat (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+typedef int HWND ;
+typedef scalar_t__ HINSTANCE ;
+typedef int HICON ;
+typedef int BOOL ;
+
+
+ int GWLP_HINSTANCE ;
+ scalar_t__ GetWindowLongPtr (int ,int ) ;
+ int IDI_STARFIELD ;
+ int IDS_AUTHOR ;
+ int IDS_DESCRIPTION ;
+ int IDS_LICENSE ;
+ int LoadIcon (scalar_t__,int ) ;
+ int LoadString (scalar_t__,int ,int *,int ) ;
+ int MAKEINTRESOURCE (int ) ;
+ int SIZEOF (int *) ;
+ int ShellAbout (int ,int *,int *,int ) ;
+ int TRUE ;
+ int * _T (char*) ;
+ int _tcscat (int *,int *) ;
 
 __attribute__((used)) static BOOL OnCommandAbout(HWND hWnd)
 {
     HINSTANCE hInstance;
-    HICON     hIcon;
-    TCHAR     szAppName[256];
-    TCHAR     szAuthor[256];
-    TCHAR     szLicense[1024];
+    HICON hIcon;
+    TCHAR szAppName[256];
+    TCHAR szAuthor[256];
+    TCHAR szLicense[1024];
 
     hInstance = (HINSTANCE)GetWindowLongPtr(hWnd, GWLP_HINSTANCE);
 
     hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_STARFIELD));
 
     LoadString(hInstance, IDS_DESCRIPTION, szAppName, SIZEOF(szAppName));
-    LoadString(hInstance, IDS_AUTHOR,      szAuthor,  SIZEOF(szAuthor));
-    LoadString(hInstance, IDS_LICENSE,     szLicense, SIZEOF(szLicense));
+    LoadString(hInstance, IDS_AUTHOR, szAuthor, SIZEOF(szAuthor));
+    LoadString(hInstance, IDS_LICENSE, szLicense, SIZEOF(szLicense));
 
     _tcscat(szAppName, _T("#"));
     _tcscat(szAppName, szAuthor);

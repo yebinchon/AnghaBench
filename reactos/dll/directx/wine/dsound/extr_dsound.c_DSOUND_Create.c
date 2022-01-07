@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  LPDIRECTSOUND8 ;
-typedef  scalar_t__ LPDIRECTSOUND ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ DS_OK ; 
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  IDirectSound8_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ IDirectSoundImpl_Create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectSound_IDirectSound_AddRef (scalar_t__) ; 
- scalar_t__ IDirectSound_IDirectSound_Create (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IID_IDirectSound ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IsEqualIID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setup_dsound_options () ; 
+
+
+
+typedef int REFIID ;
+typedef int LPDIRECTSOUND8 ;
+typedef scalar_t__ LPDIRECTSOUND ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ DS_OK ;
+ scalar_t__ E_NOINTERFACE ;
+ int IDirectSound8_Release (int ) ;
+ scalar_t__ IDirectSoundImpl_Create (int *) ;
+ int IDirectSound_IDirectSound_AddRef (scalar_t__) ;
+ scalar_t__ IDirectSound_IDirectSound_Create (int ,scalar_t__*) ;
+ int IID_IDirectSound ;
+ int IID_IUnknown ;
+ int IsEqualIID (int ,int *) ;
+ int TRACE (char*,int ,scalar_t__*) ;
+ int WARN (char*) ;
+ int debugstr_guid (int ) ;
+ int setup_dsound_options () ;
 
 HRESULT DSOUND_Create(
     REFIID riid,
@@ -44,7 +44,7 @@ HRESULT DSOUND_Create(
         return E_NOINTERFACE;
     }
 
-    /* Get dsound configuration */
+
     setup_dsound_options();
 
     hr = IDirectSoundImpl_Create(&pDS);

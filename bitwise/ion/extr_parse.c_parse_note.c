@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pos; } ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  int /*<<< orphan*/  NoteArg ;
-typedef  int /*<<< orphan*/  Note ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOKEN_COMMA ; 
- int /*<<< orphan*/  TOKEN_LPAREN ; 
- int /*<<< orphan*/  TOKEN_RPAREN ; 
- int /*<<< orphan*/  buf_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expect_token (int /*<<< orphan*/ ) ; 
- scalar_t__ match_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  new_note (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* parse_name () ; 
- int /*<<< orphan*/  parse_note_arg () ; 
- TYPE_1__ token ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pos; } ;
+typedef int SrcPos ;
+typedef int NoteArg ;
+typedef int Note ;
+
+
+ int TOKEN_COMMA ;
+ int TOKEN_LPAREN ;
+ int TOKEN_RPAREN ;
+ int buf_len (int *) ;
+ int buf_push (int *,int ) ;
+ int expect_token (int ) ;
+ scalar_t__ match_token (int ) ;
+ int new_note (int ,char const*,int *,int ) ;
+ char* parse_name () ;
+ int parse_note_arg () ;
+ TYPE_1__ token ;
 
 Note parse_note(void) {
     SrcPos pos = token.pos;
     const char *name = parse_name();
-    NoteArg *args = NULL;
+    NoteArg *args = ((void*)0);
     if (match_token(TOKEN_LPAREN)) {
         buf_push(args, parse_note_arg());
         while (match_token(TOKEN_COMMA)) {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const OrderedSet ;
 
-/* Variables and functions */
- int EEXIST ; 
- int ENOMEM ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int ordered_set_consume (char const*,char*) ; 
- char* strdup (char const*) ; 
+
+
+
+typedef char const OrderedSet ;
+
+
+ int EEXIST ;
+ int ENOMEM ;
+ int assert (char const*) ;
+ int ordered_set_consume (char const*,char*) ;
+ char* strdup (char const*) ;
 
 int ordered_set_put_strdup(OrderedSet *s, const char *p) {
         char *c;

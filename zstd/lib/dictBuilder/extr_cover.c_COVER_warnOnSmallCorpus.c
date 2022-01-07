@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCALDISPLAYLEVEL (int,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,double const) ; 
+
+
+
+typedef int U32 ;
+
+
+ int LOCALDISPLAYLEVEL (int,int,char*,int ,int ,double const) ;
 
 void COVER_warnOnSmallCorpus(size_t maxDictSize, size_t nbDmers, int displayLevel)
 {

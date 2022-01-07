@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ offset; } ;
-typedef  TYPE_2__ rc_parse_state_t ;
-struct TYPE_7__ {int /*<<< orphan*/  memref; } ;
+typedef TYPE_2__ rc_parse_state_t ;
+struct TYPE_7__ {int memref; } ;
 struct TYPE_9__ {TYPE_1__ value; void* type; } ;
-typedef  TYPE_3__ rc_operand_t ;
+typedef TYPE_3__ rc_operand_t ;
 
-/* Variables and functions */
- int RC_INVALID_MEMORY_OPERAND ; 
- char RC_MEMSIZE_16_BITS ; 
- char RC_MEMSIZE_24_BITS ; 
- char RC_MEMSIZE_32_BITS ; 
- char RC_MEMSIZE_8_BITS ; 
- char RC_MEMSIZE_BIT_0 ; 
- char RC_MEMSIZE_BIT_1 ; 
- char RC_MEMSIZE_BIT_2 ; 
- char RC_MEMSIZE_BIT_3 ; 
- char RC_MEMSIZE_BIT_4 ; 
- char RC_MEMSIZE_BIT_5 ; 
- char RC_MEMSIZE_BIT_6 ; 
- char RC_MEMSIZE_BIT_7 ; 
- char RC_MEMSIZE_HIGH ; 
- char RC_MEMSIZE_LOW ; 
- int RC_OK ; 
- void* RC_OPERAND_ADDRESS ; 
- void* RC_OPERAND_DELTA ; 
- void* RC_OPERAND_PRIOR ; 
- int /*<<< orphan*/  rc_alloc_memref_value (TYPE_2__*,unsigned int,char,char) ; 
- unsigned long strtoul (char const*,char**,int) ; 
+
+ int RC_INVALID_MEMORY_OPERAND ;
+ char RC_MEMSIZE_16_BITS ;
+ char RC_MEMSIZE_24_BITS ;
+ char RC_MEMSIZE_32_BITS ;
+ char RC_MEMSIZE_8_BITS ;
+ char RC_MEMSIZE_BIT_0 ;
+ char RC_MEMSIZE_BIT_1 ;
+ char RC_MEMSIZE_BIT_2 ;
+ char RC_MEMSIZE_BIT_3 ;
+ char RC_MEMSIZE_BIT_4 ;
+ char RC_MEMSIZE_BIT_5 ;
+ char RC_MEMSIZE_BIT_6 ;
+ char RC_MEMSIZE_BIT_7 ;
+ char RC_MEMSIZE_HIGH ;
+ char RC_MEMSIZE_LOW ;
+ int RC_OK ;
+ void* RC_OPERAND_ADDRESS ;
+ void* RC_OPERAND_DELTA ;
+ void* RC_OPERAND_PRIOR ;
+ int rc_alloc_memref_value (TYPE_2__*,unsigned int,char,char) ;
+ unsigned long strtoul (char const*,char**,int) ;
 
 __attribute__((used)) static int rc_parse_operand_memory(rc_operand_t* self, const char** memaddr, rc_parse_state_t* parse) {
   const char* aux = *memaddr;
@@ -94,7 +94,7 @@ __attribute__((used)) static int rc_parse_operand_memory(rc_operand_t* self, con
     case 'w': case 'W': size = RC_MEMSIZE_24_BITS; break;
     case 'x': case 'X': size = RC_MEMSIZE_32_BITS; break;
 
-    default: /* fall through */
+    default:
       aux--;
     case ' ':
       size = RC_MEMSIZE_16_BITS;

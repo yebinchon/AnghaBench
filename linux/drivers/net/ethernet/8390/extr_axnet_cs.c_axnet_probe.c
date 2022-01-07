@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcmcia_device {int /*<<< orphan*/  config_flags; struct net_device* priv; int /*<<< orphan*/  dev; } ;
-struct net_device {int /*<<< orphan*/  watchdog_timeo; int /*<<< orphan*/ * netdev_ops; } ;
-struct ei_device {int /*<<< orphan*/  page_lock; } ;
+
+
+
+
+struct pcmcia_device {int config_flags; struct net_device* priv; int dev; } ;
+struct net_device {int watchdog_timeo; int * netdev_ops; } ;
+struct ei_device {int page_lock; } ;
 struct axnet_dev {struct pcmcia_device* p_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_ENABLE_IRQ ; 
- int ENOMEM ; 
- struct axnet_dev* PRIV (struct net_device*) ; 
- int /*<<< orphan*/  TX_TIMEOUT ; 
- struct net_device* alloc_etherdev (int) ; 
- int axnet_config (struct pcmcia_device*) ; 
- int /*<<< orphan*/  axnet_netdev_ops ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ *,char*) ; 
- struct ei_device* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ int CONF_ENABLE_IRQ ;
+ int ENOMEM ;
+ struct axnet_dev* PRIV (struct net_device*) ;
+ int TX_TIMEOUT ;
+ struct net_device* alloc_etherdev (int) ;
+ int axnet_config (struct pcmcia_device*) ;
+ int axnet_netdev_ops ;
+ int dev_dbg (int *,char*) ;
+ struct ei_device* netdev_priv (struct net_device*) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static int axnet_probe(struct pcmcia_device *link)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int axnet_probe(struct pcmcia_device *link)
 
     dev = alloc_etherdev(sizeof(struct ei_device) + sizeof(struct axnet_dev));
     if (!dev)
-	return -ENOMEM;
+ return -ENOMEM;
 
     ei_local = netdev_priv(dev);
     spin_lock_init(&ei_local->page_lock);

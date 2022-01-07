@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GREEDY_REALLOC (char*,size_t,size_t) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- char* mfree (char*) ; 
- int /*<<< orphan*/  startswith (char const*,char const*) ; 
- char* stpcpy (char*,char const*) ; 
- size_t strlen (char const*) ; 
+ int GREEDY_REALLOC (char*,size_t,size_t) ;
+ int assert (char const*) ;
+ char* mfree (char*) ;
+ int startswith (char const*,char const*) ;
+ char* stpcpy (char*,char const*) ;
+ size_t strlen (char const*) ;
 
 char *strreplace(const char *text, const char *old_string, const char *new_string) {
         size_t l, old_len, new_len, allocated = 0;
-        char *t, *ret = NULL;
+        char *t, *ret = ((void*)0);
         const char *f;
 
         assert(old_string);
         assert(new_string);
 
         if (!text)
-                return NULL;
+                return ((void*)0);
 
         old_len = strlen(old_string);
         new_len = strlen(new_string);
 
         l = strlen(text);
         if (!GREEDY_REALLOC(ret, allocated, l+1))
-                return NULL;
+                return ((void*)0);
 
         f = text;
         t = ret;

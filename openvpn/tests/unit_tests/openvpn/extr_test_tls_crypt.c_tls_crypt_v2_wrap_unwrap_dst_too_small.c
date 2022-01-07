@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zero ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_2__ {int /*<<< orphan*/  decrypt; int /*<<< orphan*/  encrypt; } ;
-struct test_tls_crypt_v2_context {int /*<<< orphan*/  unwrapped_metadata; TYPE_1__ server_keys; int /*<<< orphan*/  wkc; int /*<<< orphan*/  gc; int /*<<< orphan*/  metadata; int /*<<< orphan*/  client_key2; } ;
-struct key2 {int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zero ;
+typedef int uint8_t ;
+struct TYPE_2__ {int decrypt; int encrypt; } ;
+struct test_tls_crypt_v2_context {int unwrapped_metadata; TYPE_1__ server_keys; int wkc; int gc; int metadata; int client_key2; } ;
+struct key2 {int member_0; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ BLEN (int /*<<< orphan*/ *) ; 
- scalar_t__ TLS_CRYPT_V2_MAX_METADATA_LEN ; 
- struct buffer alloc_buf_gc (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_true (int) ; 
- int /*<<< orphan*/ * buf_write_alloc (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ memcmp (struct key2*,struct key2 const*,int) ; 
- int rand_bytes (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  tls_crypt_v2_unwrap_client_key (struct key2*,struct buffer*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int tls_crypt_v2_wrap_client_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ BLEN (int *) ;
+ scalar_t__ TLS_CRYPT_V2_MAX_METADATA_LEN ;
+ struct buffer alloc_buf_gc (scalar_t__,int *) ;
+ int assert_false (int ) ;
+ int assert_true (int) ;
+ int * buf_write_alloc (int *,scalar_t__) ;
+ scalar_t__ memcmp (struct key2*,struct key2 const*,int) ;
+ int rand_bytes (int *,scalar_t__) ;
+ int tls_crypt_v2_unwrap_client_key (struct key2*,struct buffer*,int ,int *) ;
+ int tls_crypt_v2_wrap_client_key (int *,int *,int *,int *,int *) ;
 
 __attribute__((used)) static void
 tls_crypt_v2_wrap_unwrap_dst_too_small(void **state) {

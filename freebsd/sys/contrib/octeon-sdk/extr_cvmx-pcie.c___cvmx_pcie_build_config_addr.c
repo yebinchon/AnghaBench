@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_5__ {int pbnum; } ;
-struct TYPE_7__ {TYPE_1__ s; int /*<<< orphan*/  u32; } ;
-typedef  TYPE_3__ cvmx_pciercx_cfg006_t ;
+struct TYPE_7__ {TYPE_1__ s; int u32; } ;
+typedef TYPE_3__ cvmx_pciercx_cfg006_t ;
 struct TYPE_6__ {int upper; int io; int did; int subdid; int es; int port; int ty; int bus; int dev; int func; int reg; } ;
 struct TYPE_8__ {scalar_t__ u64; TYPE_2__ config; } ;
-typedef  TYPE_4__ cvmx_pcie_address_t ;
+typedef TYPE_4__ cvmx_pcie_address_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_PCIERCX_CFG006 (int) ; 
- int /*<<< orphan*/  cvmx_pcie_cfgx_read (int,int /*<<< orphan*/ ) ; 
+
+ int CVMX_PCIERCX_CFG006 (int) ;
+ int cvmx_pcie_cfgx_read (int,int ) ;
 
 __attribute__((used)) static inline uint64_t __cvmx_pcie_build_config_addr(int pcie_port, int bus, int dev, int fn, int reg)
 {

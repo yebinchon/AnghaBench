@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
-struct hfsplus_readdir_data {int /*<<< orphan*/  list; } ;
+struct hfsplus_readdir_data {int list; } ;
 struct file {struct hfsplus_readdir_data* private_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  open_dir_lock; } ;
+struct TYPE_2__ {int open_dir_lock; } ;
 
-/* Variables and functions */
- TYPE_1__* HFSPLUS_I (struct inode*) ; 
- int /*<<< orphan*/  kfree (struct hfsplus_readdir_data*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* HFSPLUS_I (struct inode*) ;
+ int kfree (struct hfsplus_readdir_data*) ;
+ int list_del (int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int hfsplus_dir_release(struct inode *inode, struct file *file)
 {
-	struct hfsplus_readdir_data *rd = file->private_data;
-	if (rd) {
-		spin_lock(&HFSPLUS_I(inode)->open_dir_lock);
-		list_del(&rd->list);
-		spin_unlock(&HFSPLUS_I(inode)->open_dir_lock);
-		kfree(rd);
-	}
-	return 0;
+ struct hfsplus_readdir_data *rd = file->private_data;
+ if (rd) {
+  spin_lock(&HFSPLUS_I(inode)->open_dir_lock);
+  list_del(&rd->list);
+  spin_unlock(&HFSPLUS_I(inode)->open_dir_lock);
+  kfree(rd);
+ }
+ return 0;
 }

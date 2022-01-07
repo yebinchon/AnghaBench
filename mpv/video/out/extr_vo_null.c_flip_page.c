@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
 struct priv {int cfg_fps; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_sleep_us (int) ; 
- int mp_time_us () ; 
+
+ int mp_sleep_us (int) ;
+ int mp_time_us () ;
 
 __attribute__((used)) static void flip_page(struct vo *vo)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlx5_pd {int dummy; } ;
 struct ibv_pd {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pd ; 
- struct mlx5_pd* to_mxxx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int pd ;
+ struct mlx5_pd* to_mxxx (int ,int ) ;
 
 __attribute__((used)) static inline struct mlx5_pd *to_mpd(struct ibv_pd *ibpd)
 {
-	return to_mxxx(pd, pd);
+ return to_mxxx(pd, pd);
 }

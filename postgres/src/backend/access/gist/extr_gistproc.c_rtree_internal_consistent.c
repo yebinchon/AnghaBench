@@ -1,118 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int StrategyNumber ;
-typedef  int /*<<< orphan*/  BOX ;
 
-/* Variables and functions */
- int DatumGetBool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DirectFunctionCall2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  PointerGetDatum (int /*<<< orphan*/ *) ; 
-#define  RTAboveStrategyNumber 141 
-#define  RTBelowStrategyNumber 140 
-#define  RTContainedByStrategyNumber 139 
-#define  RTContainsStrategyNumber 138 
-#define  RTLeftStrategyNumber 137 
-#define  RTOldContainedByStrategyNumber 136 
-#define  RTOldContainsStrategyNumber 135 
-#define  RTOverAboveStrategyNumber 134 
-#define  RTOverBelowStrategyNumber 133 
-#define  RTOverLeftStrategyNumber 132 
-#define  RTOverRightStrategyNumber 131 
-#define  RTOverlapStrategyNumber 130 
-#define  RTRightStrategyNumber 129 
-#define  RTSameStrategyNumber 128 
- int /*<<< orphan*/  box_above ; 
- int /*<<< orphan*/  box_below ; 
- int /*<<< orphan*/  box_contain ; 
- int /*<<< orphan*/  box_left ; 
- int /*<<< orphan*/  box_overabove ; 
- int /*<<< orphan*/  box_overbelow ; 
- int /*<<< orphan*/  box_overlap ; 
- int /*<<< orphan*/  box_overleft ; 
- int /*<<< orphan*/  box_overright ; 
- int /*<<< orphan*/  box_right ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int StrategyNumber ;
+typedef int BOX ;
+
+
+ int DatumGetBool (int ) ;
+ int DirectFunctionCall2 (int ,int ,int ) ;
+ int ERROR ;
+ int PointerGetDatum (int *) ;
+ int box_above ;
+ int box_below ;
+ int box_contain ;
+ int box_left ;
+ int box_overabove ;
+ int box_overbelow ;
+ int box_overlap ;
+ int box_overleft ;
+ int box_overright ;
+ int box_right ;
+ int elog (int ,char*,int) ;
 
 __attribute__((used)) static bool
 rtree_internal_consistent(BOX *key, BOX *query, StrategyNumber strategy)
 {
-	bool		retval;
+ bool retval;
 
-	switch (strategy)
-	{
-		case RTLeftStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_overright,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTOverLeftStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_right,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTOverlapStrategyNumber:
-			retval = DatumGetBool(DirectFunctionCall2(box_overlap,
-													  PointerGetDatum(key),
-													  PointerGetDatum(query)));
-			break;
-		case RTOverRightStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_left,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTRightStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_overleft,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTSameStrategyNumber:
-		case RTContainsStrategyNumber:
-		case RTOldContainsStrategyNumber:
-			retval = DatumGetBool(DirectFunctionCall2(box_contain,
-													  PointerGetDatum(key),
-													  PointerGetDatum(query)));
-			break;
-		case RTContainedByStrategyNumber:
-		case RTOldContainedByStrategyNumber:
-			retval = DatumGetBool(DirectFunctionCall2(box_overlap,
-													  PointerGetDatum(key),
-													  PointerGetDatum(query)));
-			break;
-		case RTOverBelowStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_above,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTBelowStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_overabove,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTAboveStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_overbelow,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		case RTOverAboveStrategyNumber:
-			retval = !DatumGetBool(DirectFunctionCall2(box_below,
-													   PointerGetDatum(key),
-													   PointerGetDatum(query)));
-			break;
-		default:
-			elog(ERROR, "unrecognized strategy number: %d", strategy);
-			retval = false;		/* keep compiler quiet */
-			break;
-	}
-	return retval;
+ switch (strategy)
+ {
+  case 137:
+   retval = !DatumGetBool(DirectFunctionCall2(box_overright,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 132:
+   retval = !DatumGetBool(DirectFunctionCall2(box_right,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 130:
+   retval = DatumGetBool(DirectFunctionCall2(box_overlap,
+               PointerGetDatum(key),
+               PointerGetDatum(query)));
+   break;
+  case 131:
+   retval = !DatumGetBool(DirectFunctionCall2(box_left,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 129:
+   retval = !DatumGetBool(DirectFunctionCall2(box_overleft,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 128:
+  case 138:
+  case 135:
+   retval = DatumGetBool(DirectFunctionCall2(box_contain,
+               PointerGetDatum(key),
+               PointerGetDatum(query)));
+   break;
+  case 139:
+  case 136:
+   retval = DatumGetBool(DirectFunctionCall2(box_overlap,
+               PointerGetDatum(key),
+               PointerGetDatum(query)));
+   break;
+  case 133:
+   retval = !DatumGetBool(DirectFunctionCall2(box_above,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 140:
+   retval = !DatumGetBool(DirectFunctionCall2(box_overabove,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 141:
+   retval = !DatumGetBool(DirectFunctionCall2(box_overbelow,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  case 134:
+   retval = !DatumGetBool(DirectFunctionCall2(box_below,
+                PointerGetDatum(key),
+                PointerGetDatum(query)));
+   break;
+  default:
+   elog(ERROR, "unrecognized strategy number: %d", strategy);
+   retval = 0;
+   break;
+ }
+ return retval;
 }

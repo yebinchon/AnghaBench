@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PQExpBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendBinaryPQExpBuffer (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int PQExpBuffer ;
+
+
+ int appendBinaryPQExpBuffer (int ,char const*,int ) ;
+ int strlen (char const*) ;
 
 void
 appendPQExpBufferStr(PQExpBuffer str, const char *data)
 {
-	appendBinaryPQExpBuffer(str, data, strlen(data));
+ appendBinaryPQExpBuffer(str, data, strlen(data));
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int dirty; scalar_t__ count; scalar_t__ capacity; int /*<<< orphan*/ * elements; } ;
-typedef  TYPE_1__ rcheevos_fixups_t ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dirty; scalar_t__ count; scalar_t__ capacity; int * elements; } ;
+typedef TYPE_1__ rcheevos_fixups_t ;
+
+
 
 void rcheevos_fixup_init(rcheevos_fixups_t* fixups)
 {
-   fixups->elements = NULL;
+   fixups->elements = ((void*)0);
    fixups->capacity = fixups->count = 0;
-   fixups->dirty = false;
+   fixups->dirty = 0;
 }

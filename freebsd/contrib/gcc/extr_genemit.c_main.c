@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * rtx ;
 
-/* Variables and functions */
-#define  DEFINE_EXPAND 131 
-#define  DEFINE_INSN 130 
-#define  DEFINE_PEEPHOLE2 129 
-#define  DEFINE_SPLIT 128 
- int FATAL_EXIT_CODE ; 
- int GET_CODE (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCESS_EXIT_CODE ; 
- scalar_t__ ferror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_expand (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_insn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  gen_split (int /*<<< orphan*/ *) ; 
- scalar_t__ init_md_reader_args (int,char**) ; 
- scalar_t__ insn_code_number ; 
- scalar_t__ insn_index_number ; 
- int /*<<< orphan*/  output_add_clobbers () ; 
- int /*<<< orphan*/  output_added_clobbers_hard_reg_p () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* progname ; 
- int /*<<< orphan*/ * read_md_rtx (int*,scalar_t__*) ; 
- char* read_rtx_filename ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int * rtx ;
+
+
+
+
+
+
+ int FATAL_EXIT_CODE ;
+ int GET_CODE (int *) ;
+ scalar_t__ SUCCESS_EXIT_CODE ;
+ scalar_t__ ferror (int ) ;
+ int fflush (int ) ;
+ int gen_expand (int *) ;
+ int gen_insn (int *,int) ;
+ int gen_split (int *) ;
+ scalar_t__ init_md_reader_args (int,char**) ;
+ scalar_t__ insn_code_number ;
+ scalar_t__ insn_index_number ;
+ int output_add_clobbers () ;
+ int output_added_clobbers_hard_reg_p () ;
+ int printf (char*,...) ;
+ char* progname ;
+ int * read_md_rtx (int*,scalar_t__*) ;
+ char* read_rtx_filename ;
+ int stdout ;
 
 int
 main (int argc, char **argv)
@@ -46,14 +46,14 @@ main (int argc, char **argv)
   if (init_md_reader_args (argc, argv) != SUCCESS_EXIT_CODE)
     return (FATAL_EXIT_CODE);
 
-  /* Assign sequential codes to all entries in the machine description
-     in parallel with the tables in insn-output.c.  */
+
+
 
   insn_code_number = 0;
   insn_index_number = 0;
 
-  printf ("/* Generated automatically by the program `genemit'\n\
-from the machine description file `md'.  */\n\n");
+  printf ("/* Generated automatically by the program `genemit'\nfrom the machine description file `md'.  */\n\n");
+
 
   printf ("#include \"config.h\"\n");
   printf ("#include \"system.h\"\n");
@@ -79,45 +79,45 @@ from the machine description file `md'.  */\n\n");
   printf ("#define FAIL return (end_sequence (), _val)\n");
   printf ("#define DONE return (_val = get_insns (), end_sequence (), _val)\n\n");
 
-  /* Read the machine description.  */
+
 
   while (1)
     {
       int line_no;
 
       desc = read_md_rtx (&line_no, &insn_code_number);
-      if (desc == NULL)
-	break;
+      if (desc == ((void*)0))
+ break;
 
       switch (GET_CODE (desc))
-	{
-	case DEFINE_INSN:
-	  gen_insn (desc, line_no);
-	  break;
+ {
+ case 130:
+   gen_insn (desc, line_no);
+   break;
 
-	case DEFINE_EXPAND:
-	  printf ("/* %s:%d */\n", read_rtx_filename, line_no);
-	  gen_expand (desc);
-	  break;
+ case 131:
+   printf ("/* %s:%d */\n", read_rtx_filename, line_no);
+   gen_expand (desc);
+   break;
 
-	case DEFINE_SPLIT:
-	  printf ("/* %s:%d */\n", read_rtx_filename, line_no);
-	  gen_split (desc);
-	  break;
+ case 128:
+   printf ("/* %s:%d */\n", read_rtx_filename, line_no);
+   gen_split (desc);
+   break;
 
-	case DEFINE_PEEPHOLE2:
-	  printf ("/* %s:%d */\n", read_rtx_filename, line_no);
-	  gen_split (desc);
-	  break;
+ case 129:
+   printf ("/* %s:%d */\n", read_rtx_filename, line_no);
+   gen_split (desc);
+   break;
 
-	default:
-	  break;
-	}
+ default:
+   break;
+ }
       ++insn_index_number;
     }
 
-  /* Write out the routines to add CLOBBERs to a pattern and say whether they
-     clobber a hard reg.  */
+
+
   output_add_clobbers ();
   output_added_clobbers_hard_reg_p ();
 

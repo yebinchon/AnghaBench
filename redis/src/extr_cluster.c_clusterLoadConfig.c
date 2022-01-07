@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct stat {scalar_t__ st_size; } ;
-typedef  char* sds ;
-struct TYPE_12__ {void* port; int /*<<< orphan*/  name; void* configEpoch; void* pong_received; void* ping_sent; struct TYPE_12__* slaveof; int /*<<< orphan*/  flags; void* fail_time; void* cport; int /*<<< orphan*/  ip; } ;
-typedef  TYPE_2__ clusterNode ;
+typedef char* sds ;
+struct TYPE_12__ {void* port; int name; void* configEpoch; void* pong_received; void* ping_sent; struct TYPE_12__* slaveof; int flags; void* fail_time; void* cport; int ip; } ;
+typedef TYPE_2__ clusterNode ;
 struct TYPE_13__ {TYPE_1__* cluster; } ;
 struct TYPE_11__ {scalar_t__ currentEpoch; TYPE_2__* myself; TYPE_2__** importing_slots_from; TYPE_2__** migrating_slots_to; void* lastVoteEpoch; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLUSTER_NODE_FAIL ; 
- int /*<<< orphan*/  CLUSTER_NODE_HANDSHAKE ; 
- int /*<<< orphan*/  CLUSTER_NODE_MASTER ; 
- int /*<<< orphan*/  CLUSTER_NODE_MYSELF ; 
- int /*<<< orphan*/  CLUSTER_NODE_NOADDR ; 
- int /*<<< orphan*/  CLUSTER_NODE_NOFAILOVER ; 
- int /*<<< orphan*/  CLUSTER_NODE_PFAIL ; 
- int /*<<< orphan*/  CLUSTER_NODE_SLAVE ; 
- int CLUSTER_PORT_INCR ; 
- int CLUSTER_SLOTS ; 
- int C_ERR ; 
- int C_OK ; 
- scalar_t__ ENOENT ; 
- int /*<<< orphan*/  LL_NOTICE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  clusterAddNode (TYPE_2__*) ; 
- int /*<<< orphan*/  clusterAddSlot (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ clusterGetMaxEpoch () ; 
- TYPE_2__* clusterLookupNode (char*) ; 
- int /*<<< orphan*/  clusterNodeAddSlave (TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* createClusterNode (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int fstat (int /*<<< orphan*/ ,struct stat*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- void* mstime () ; 
- TYPE_2__* myself ; 
- int /*<<< orphan*/  sdsfreesplitres (char**,int) ; 
- char** sdssplitargs (char*,int*) ; 
- TYPE_3__ server ; 
- int /*<<< orphan*/  serverAssert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  serverPanic (char*) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strerror (scalar_t__) ; 
- scalar_t__ strlen (char*) ; 
- char* strrchr (char*,char) ; 
- void* strtoull (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zfree (char*) ; 
- char* zmalloc (int) ; 
+
+ int CLUSTER_NODE_FAIL ;
+ int CLUSTER_NODE_HANDSHAKE ;
+ int CLUSTER_NODE_MASTER ;
+ int CLUSTER_NODE_MYSELF ;
+ int CLUSTER_NODE_NOADDR ;
+ int CLUSTER_NODE_NOFAILOVER ;
+ int CLUSTER_NODE_PFAIL ;
+ int CLUSTER_NODE_SLAVE ;
+ int CLUSTER_PORT_INCR ;
+ int CLUSTER_SLOTS ;
+ int C_ERR ;
+ int C_OK ;
+ scalar_t__ ENOENT ;
+ int LL_NOTICE ;
+ int LL_WARNING ;
+ void* atoi (char*) ;
+ int clusterAddNode (TYPE_2__*) ;
+ int clusterAddSlot (TYPE_2__*,int ) ;
+ scalar_t__ clusterGetMaxEpoch () ;
+ TYPE_2__* clusterLookupNode (char*) ;
+ int clusterNodeAddSlave (TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* createClusterNode (char*,int ) ;
+ scalar_t__ errno ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int fileno (int *) ;
+ int * fopen (char*,char*) ;
+ int fstat (int ,struct stat*) ;
+ int memcpy (int ,char*,scalar_t__) ;
+ void* mstime () ;
+ TYPE_2__* myself ;
+ int sdsfreesplitres (char**,int) ;
+ char** sdssplitargs (char*,int*) ;
+ TYPE_3__ server ;
+ int serverAssert (int ) ;
+ int serverLog (int ,char*,...) ;
+ int serverPanic (char*) ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ char* strchr (char*,char) ;
+ int strerror (scalar_t__) ;
+ scalar_t__ strlen (char*) ;
+ char* strrchr (char*,char) ;
+ void* strtoull (char*,int *,int) ;
+ int zfree (char*) ;
+ char* zmalloc (int) ;
 
 int clusterLoadConfig(char *filename) {
     FILE *fp = fopen(filename,"r");
@@ -75,7 +75,7 @@ int clusterLoadConfig(char *filename) {
     char *line;
     int maxline, j;
 
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         if (errno == ENOENT) {
             return C_ERR;
         } else {
@@ -86,48 +86,40 @@ int clusterLoadConfig(char *filename) {
         }
     }
 
-    /* Check if the file is zero-length: if so return C_ERR to signal
-     * we have to write the config. */
+
+
     if (fstat(fileno(fp),&sb) != -1 && sb.st_size == 0) {
         fclose(fp);
         return C_ERR;
     }
-
-    /* Parse the file. Note that single lines of the cluster config file can
-     * be really long as they include all the hash slots of the node.
-     * This means in the worst possible case, half of the Redis slots will be
-     * present in a single line, possibly in importing or migrating state, so
-     * together with the node ID of the sender/receiver.
-     *
-     * To simplify we allocate 1024+CLUSTER_SLOTS*128 bytes per line. */
     maxline = 1024+CLUSTER_SLOTS*128;
     line = zmalloc(maxline);
-    while(fgets(line,maxline,fp) != NULL) {
+    while(fgets(line,maxline,fp) != ((void*)0)) {
         int argc;
         sds *argv;
         clusterNode *n, *master;
         char *p, *s;
 
-        /* Skip blank lines, they can be created either by users manually
-         * editing nodes.conf or by the config writing process if stopped
-         * before the truncate() call. */
+
+
+
         if (line[0] == '\n' || line[0] == '\0') continue;
 
-        /* Split the line into arguments for processing. */
-        argv = sdssplitargs(line,&argc);
-        if (argv == NULL) goto fmterr;
 
-        /* Handle the special "vars" line. Don't pretend it is the last
-         * line even if it actually is when generated by Redis. */
+        argv = sdssplitargs(line,&argc);
+        if (argv == ((void*)0)) goto fmterr;
+
+
+
         if (strcasecmp(argv[0],"vars") == 0) {
             if (!(argc % 2)) goto fmterr;
             for (j = 1; j < argc; j += 2) {
                 if (strcasecmp(argv[j],"currentEpoch") == 0) {
                     server.cluster->currentEpoch =
-                            strtoull(argv[j+1],NULL,10);
+                            strtoull(argv[j+1],((void*)0),10);
                 } else if (strcasecmp(argv[j],"lastVoteEpoch") == 0) {
                     server.cluster->lastVoteEpoch =
-                            strtoull(argv[j+1],NULL,10);
+                            strtoull(argv[j+1],((void*)0),10);
                 } else {
                     serverLog(LL_WARNING,
                         "Skipping unknown cluster config variable '%s'",
@@ -138,17 +130,17 @@ int clusterLoadConfig(char *filename) {
             continue;
         }
 
-        /* Regular config lines have at least eight fields */
+
         if (argc < 8) goto fmterr;
 
-        /* Create this node if it does not exist */
+
         n = clusterLookupNode(argv[0]);
         if (!n) {
             n = createClusterNode(argv[0],0);
             clusterAddNode(n);
         }
-        /* Address and port */
-        if ((p = strrchr(argv[1],':')) == NULL) goto fmterr;
+
+        if ((p = strrchr(argv[1],':')) == ((void*)0)) goto fmterr;
         *p = '\0';
         memcpy(n->ip,argv[1],strlen(argv[1])+1);
         char *port = p+1;
@@ -158,18 +150,18 @@ int clusterLoadConfig(char *filename) {
             busp++;
         }
         n->port = atoi(port);
-        /* In older versions of nodes.conf the "@busport" part is missing.
-         * In this case we set it to the default offset of 10000 from the
-         * base port. */
+
+
+
         n->cport = busp ? atoi(busp) : n->port + CLUSTER_PORT_INCR;
 
-        /* Parse flags */
+
         p = s = argv[2];
         while(p) {
             p = strchr(s,',');
             if (p) *p = '\0';
             if (!strcasecmp(s,"myself")) {
-                serverAssert(server.cluster->myself == NULL);
+                serverAssert(server.cluster->myself == ((void*)0));
                 myself = server.cluster->myself = n;
                 n->flags |= CLUSTER_NODE_MYSELF;
             } else if (!strcasecmp(s,"master")) {
@@ -188,15 +180,15 @@ int clusterLoadConfig(char *filename) {
             } else if (!strcasecmp(s,"nofailover")) {
                 n->flags |= CLUSTER_NODE_NOFAILOVER;
             } else if (!strcasecmp(s,"noflags")) {
-                /* nothing to do */
+
             } else {
                 serverPanic("Unknown flag in redis cluster config file");
             }
             if (p) s = p+1;
         }
 
-        /* Get master if any. Set the master and populate master's
-         * slave list. */
+
+
         if (argv[3][0] != '-') {
             master = clusterLookupNode(argv[3]);
             if (!master) {
@@ -207,27 +199,27 @@ int clusterLoadConfig(char *filename) {
             clusterNodeAddSlave(master,n);
         }
 
-        /* Set ping sent / pong received timestamps */
+
         if (atoi(argv[4])) n->ping_sent = mstime();
         if (atoi(argv[5])) n->pong_received = mstime();
 
-        /* Set configEpoch for this node. */
-        n->configEpoch = strtoull(argv[6],NULL,10);
 
-        /* Populate hash slots served by this instance. */
+        n->configEpoch = strtoull(argv[6],((void*)0),10);
+
+
         for (j = 8; j < argc; j++) {
             int start, stop;
 
             if (argv[j][0] == '[') {
-                /* Here we handle migrating / importing slots */
+
                 int slot;
                 char direction;
                 clusterNode *cn;
 
                 p = strchr(argv[j],'-');
-                serverAssert(p != NULL);
+                serverAssert(p != ((void*)0));
                 *p = '\0';
-                direction = p[1]; /* Either '>' or '<' */
+                direction = p[1];
                 slot = atoi(argv[j]+1);
                 if (slot < 0 || slot >= CLUSTER_SLOTS) goto fmterr;
                 p += 3;
@@ -242,7 +234,7 @@ int clusterLoadConfig(char *filename) {
                     server.cluster->importing_slots_from[slot] = cn;
                 }
                 continue;
-            } else if ((p = strchr(argv[j],'-')) != NULL) {
+            } else if ((p = strchr(argv[j],'-')) != ((void*)0)) {
                 *p = '\0';
                 start = atoi(argv[j]);
                 stop = atoi(p+1);
@@ -256,17 +248,17 @@ int clusterLoadConfig(char *filename) {
 
         sdsfreesplitres(argv,argc);
     }
-    /* Config sanity check */
-    if (server.cluster->myself == NULL) goto fmterr;
+
+    if (server.cluster->myself == ((void*)0)) goto fmterr;
 
     zfree(line);
     fclose(fp);
 
     serverLog(LL_NOTICE,"Node configuration loaded, I'm %.40s", myself->name);
 
-    /* Something that should never happen: currentEpoch smaller than
-     * the max epoch found in the nodes configuration. However we handle this
-     * as some form of protection against manual editing of critical files. */
+
+
+
     if (clusterGetMaxEpoch() > server.cluster->currentEpoch) {
         server.cluster->currentEpoch = clusterGetMaxEpoch();
     }

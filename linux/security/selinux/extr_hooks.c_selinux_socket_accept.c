@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct socket {int /*<<< orphan*/  sk; } ;
-struct inode_security_struct {int /*<<< orphan*/  initialized; int /*<<< orphan*/  sid; int /*<<< orphan*/  sclass; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LABEL_INITIALIZED ; 
- int /*<<< orphan*/  SOCKET__ACCEPT ; 
- int /*<<< orphan*/  SOCK_INODE (struct socket*) ; 
- struct inode_security_struct* inode_security_novalidate (int /*<<< orphan*/ ) ; 
- int sock_has_perm (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+struct socket {int sk; } ;
+struct inode_security_struct {int initialized; int sid; int sclass; int lock; } ;
+
+
+ int LABEL_INITIALIZED ;
+ int SOCKET__ACCEPT ;
+ int SOCK_INODE (struct socket*) ;
+ struct inode_security_struct* inode_security_novalidate (int ) ;
+ int sock_has_perm (int ,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int selinux_socket_accept(struct socket *sock, struct socket *newsock)
 {
-	int err;
-	struct inode_security_struct *isec;
-	struct inode_security_struct *newisec;
-	u16 sclass;
-	u32 sid;
+ int err;
+ struct inode_security_struct *isec;
+ struct inode_security_struct *newisec;
+ u16 sclass;
+ u32 sid;
 
-	err = sock_has_perm(sock->sk, SOCKET__ACCEPT);
-	if (err)
-		return err;
+ err = sock_has_perm(sock->sk, SOCKET__ACCEPT);
+ if (err)
+  return err;
 
-	isec = inode_security_novalidate(SOCK_INODE(sock));
-	spin_lock(&isec->lock);
-	sclass = isec->sclass;
-	sid = isec->sid;
-	spin_unlock(&isec->lock);
+ isec = inode_security_novalidate(SOCK_INODE(sock));
+ spin_lock(&isec->lock);
+ sclass = isec->sclass;
+ sid = isec->sid;
+ spin_unlock(&isec->lock);
 
-	newisec = inode_security_novalidate(SOCK_INODE(newsock));
-	newisec->sclass = sclass;
-	newisec->sid = sid;
-	newisec->initialized = LABEL_INITIALIZED;
+ newisec = inode_security_novalidate(SOCK_INODE(newsock));
+ newisec->sclass = sclass;
+ newisec->sid = sid;
+ newisec->initialized = LABEL_INITIALIZED;
 
-	return 0;
+ return 0;
 }

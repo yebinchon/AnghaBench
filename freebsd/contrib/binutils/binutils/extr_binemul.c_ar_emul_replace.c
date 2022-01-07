@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_2__ {int /*<<< orphan*/  (* ar_replace ) (int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- TYPE_1__ bin_dummy_emulation ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int bfd_boolean ;
+typedef int bfd ;
+struct TYPE_2__ {int (* ar_replace ) (int **,char*,int ) ;} ;
+
+
+ int FALSE ;
+ TYPE_1__ bin_dummy_emulation ;
+ int stub1 (int **,char*,int ) ;
 
 bfd_boolean
 ar_emul_replace (bfd **after_bfd, char *file_name, bfd_boolean verbose)

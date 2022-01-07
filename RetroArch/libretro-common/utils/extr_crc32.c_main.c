@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int encoding_crc32 (int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fread (void*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int buffer ;
+typedef int FILE ;
+
+
+ int encoding_crc32 (int,int *,int) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fread (void*,int,int,int *) ;
+ int printf (char*,int) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 int main(int argc, const char* argv[])
 {
@@ -38,7 +38,7 @@ int main(int argc, const char* argv[])
 
    if (file)
    {
-      uint32_t crc = encoding_crc32(0L, NULL, 0 );
+      uint32_t crc = encoding_crc32(0L, ((void*)0), 0 );
 
       for (;;)
       {

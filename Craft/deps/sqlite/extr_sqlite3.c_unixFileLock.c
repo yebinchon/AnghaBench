@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int bProcessLock; scalar_t__ nLock; } ;
-typedef  TYPE_1__ unixInodeInfo ;
-struct TYPE_5__ {int ctrlFlags; int /*<<< orphan*/  h; TYPE_1__* pInode; } ;
-typedef  TYPE_2__ unixFile ;
-struct flock {int /*<<< orphan*/  l_type; int /*<<< orphan*/  l_len; int /*<<< orphan*/  l_start; int /*<<< orphan*/  l_whence; } ;
+typedef TYPE_1__ unixInodeInfo ;
+struct TYPE_5__ {int ctrlFlags; int h; TYPE_1__* pInode; } ;
+typedef TYPE_2__ unixFile ;
+struct flock {int l_type; int l_len; int l_start; int l_whence; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_SETLK ; 
- int /*<<< orphan*/  F_WRLCK ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  SHARED_FIRST ; 
- int /*<<< orphan*/  SHARED_SIZE ; 
- int UNIXFILE_EXCL ; 
- int UNIXFILE_RDONLY ; 
- int /*<<< orphan*/  assert (int) ; 
- int osFcntl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct flock*) ; 
- int unixMutexHeld () ; 
+
+ int F_SETLK ;
+ int F_WRLCK ;
+ int SEEK_SET ;
+ int SHARED_FIRST ;
+ int SHARED_SIZE ;
+ int UNIXFILE_EXCL ;
+ int UNIXFILE_RDONLY ;
+ int assert (int) ;
+ int osFcntl (int ,int ,struct flock*) ;
+ int unixMutexHeld () ;
 
 __attribute__((used)) static int unixFileLock(unixFile *pFile, struct flock *pLock){
   int rc;

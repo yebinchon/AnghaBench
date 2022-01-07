@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  min_16_digit; scalar_t__* bd_name; int /*<<< orphan*/  dev_class; int /*<<< orphan*/  bd_addr; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int min_16_digit; scalar_t__* bd_name; int dev_class; int bd_addr; } ;
 struct TYPE_6__ {TYPE_1__ pin_req; } ;
-typedef  TYPE_2__ tBTA_DM_SEC ;
-typedef  int /*<<< orphan*/  UINT8 ;
-struct TYPE_7__ {int /*<<< orphan*/  (* p_sec_cback ) (int /*<<< orphan*/ ,TYPE_2__*) ;} ;
-typedef  int /*<<< orphan*/  DEV_CLASS ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  scalar_t__ BD_NAME ;
-typedef  int /*<<< orphan*/  BD_ADDR ;
+typedef TYPE_2__ tBTA_DM_SEC ;
+typedef int UINT8 ;
+struct TYPE_7__ {int (* p_sec_cback ) (int ,TYPE_2__*) ;} ;
+typedef int DEV_CLASS ;
+typedef int BOOLEAN ;
+typedef scalar_t__ BD_NAME ;
+typedef int BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCM_STRNCPY_S (char*,int,char*,int) ; 
- int BD_NAME_LEN ; 
- int /*<<< orphan*/  BTA_COPY_DEVICE_CLASS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BTA_DM_PIN_REQ_EVT ; 
- int /*<<< orphan*/  BTM_CMD_STARTED ; 
- int /*<<< orphan*/  BTM_NOT_AUTHORIZED ; 
- int /*<<< orphan*/  bdcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_4__ bta_dm_cb ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int BCM_STRNCPY_S (char*,int,char*,int) ;
+ int BD_NAME_LEN ;
+ int BTA_COPY_DEVICE_CLASS (int ,int ) ;
+ int BTA_DM_PIN_REQ_EVT ;
+ int BTM_CMD_STARTED ;
+ int BTM_NOT_AUTHORIZED ;
+ int bdcpy (int ,int ) ;
+ TYPE_4__ bta_dm_cb ;
+ int stub1 (int ,TYPE_2__*) ;
 
 __attribute__((used)) static UINT8 bta_dm_pin_cback (BD_ADDR bd_addr, DEV_CLASS dev_class, BD_NAME bd_name,
                                BOOLEAN min_16_digit)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void aeEventLoop ;
-struct TYPE_2__ {int /*<<< orphan*/  unixsocket; int /*<<< orphan*/  neterr; } ;
 
-/* Variables and functions */
- int ANET_ERR ; 
- int /*<<< orphan*/  CLIENT_UNIX_SOCKET ; 
- scalar_t__ EWOULDBLOCK ; 
- int /*<<< orphan*/  LL_VERBOSE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int MAX_ACCEPTS_PER_CALL ; 
- int /*<<< orphan*/  UNUSED (void*) ; 
- int /*<<< orphan*/  acceptCommonHandler (int,int /*<<< orphan*/ ) ; 
- int anetUnixAccept (int /*<<< orphan*/ ,int) ; 
- scalar_t__ errno ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void aeEventLoop ;
+struct TYPE_2__ {int unixsocket; int neterr; } ;
+
+
+ int ANET_ERR ;
+ int CLIENT_UNIX_SOCKET ;
+ scalar_t__ EWOULDBLOCK ;
+ int LL_VERBOSE ;
+ int LL_WARNING ;
+ int MAX_ACCEPTS_PER_CALL ;
+ int UNUSED (void*) ;
+ int acceptCommonHandler (int,int ) ;
+ int anetUnixAccept (int ,int) ;
+ scalar_t__ errno ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,int ) ;
 
 void acceptUnixHandler(aeEventLoop *el, int fd, void *privdata, int mask) {
     int cfd, max = MAX_ACCEPTS_PER_CALL;

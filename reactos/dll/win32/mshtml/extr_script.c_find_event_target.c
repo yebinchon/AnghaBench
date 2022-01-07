@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsAString ;
-struct TYPE_16__ {int /*<<< orphan*/  IDispatchEx_iface; } ;
+
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsAString ;
+struct TYPE_16__ {int IDispatchEx_iface; } ;
 struct TYPE_21__ {TYPE_3__ dispex; } ;
 struct TYPE_14__ {TYPE_8__ event_target; } ;
-struct TYPE_20__ {TYPE_2__* window; int /*<<< orphan*/  basedoc; TYPE_1__ node; } ;
+struct TYPE_20__ {TYPE_2__* window; int basedoc; TYPE_1__ node; } ;
 struct TYPE_17__ {TYPE_8__ event_target; } ;
 struct TYPE_19__ {TYPE_4__ node; } ;
-struct TYPE_18__ {int /*<<< orphan*/  nsscript; } ;
+struct TYPE_18__ {int nsscript; } ;
 struct TYPE_15__ {TYPE_8__ event_target; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  TYPE_5__ HTMLScriptElement ;
-typedef  TYPE_6__ HTMLElement ;
-typedef  TYPE_7__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_8__ EventTarget ;
+typedef int PRUnichar ;
+typedef TYPE_5__ HTMLScriptElement ;
+typedef TYPE_6__ HTMLElement ;
+typedef TYPE_7__ HTMLDocumentNode ;
+typedef int HRESULT ;
+typedef TYPE_8__ EventTarget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDispatchEx_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  documentW ; 
- int /*<<< orphan*/  get_doc_elem_by_id (TYPE_7__*,int /*<<< orphan*/  const*,TYPE_6__**) ; 
- int /*<<< orphan*/  htmldoc_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLScriptElement_GetHtmlFor (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  windowW ; 
+
+ int ERR (char*,int ) ;
+ int FIXME (char*) ;
+ int IDispatchEx_AddRef (int *) ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int documentW ;
+ int get_doc_elem_by_id (TYPE_7__*,int const*,TYPE_6__**) ;
+ int htmldoc_addref (int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMHTMLScriptElement_GetHtmlFor (int ,int *) ;
+ int strcmpW (int const*,int ) ;
+ int windowW ;
 
 __attribute__((used)) static EventTarget *find_event_target(HTMLDocumentNode *doc, HTMLScriptElement *script_elem)
 {
-    EventTarget *event_target = NULL;
+    EventTarget *event_target = ((void*)0);
     const PRUnichar *target_id;
     nsAString target_id_str;
     nsresult nsres;
     HRESULT hres;
 
-    nsAString_Init(&target_id_str, NULL);
+    nsAString_Init(&target_id_str, ((void*)0));
     nsres = nsIDOMHTMLScriptElement_GetHtmlFor(script_elem->nsscript, &target_id_str);
     if(NS_FAILED(nsres)) {
         ERR("GetScriptFor failed: %08x\n", nsres);
         nsAString_Finish(&target_id_str);
-        return NULL;
+        return ((void*)0);
     }
 
     nsAString_GetData(&target_id_str, &target_id);

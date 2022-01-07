@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  global_State ;
-struct TYPE_3__ {int /*<<< orphan*/  sb; int /*<<< orphan*/  sizevstack; int /*<<< orphan*/  vstack; int /*<<< orphan*/  sizebcstack; int /*<<< orphan*/  bcstack; } ;
-typedef  TYPE_1__ LexState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCInsLine ; 
- int /*<<< orphan*/ * G (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VarInfo ; 
- int /*<<< orphan*/  lj_buf_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lj_mem_freevec (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int global_State ;
+struct TYPE_3__ {int sb; int sizevstack; int vstack; int sizebcstack; int bcstack; } ;
+typedef TYPE_1__ LexState ;
+
+
+ int BCInsLine ;
+ int * G (int *) ;
+ int VarInfo ;
+ int lj_buf_free (int *,int *) ;
+ int lj_mem_freevec (int *,int ,int ,int ) ;
 
 void lj_lex_cleanup(lua_State *L, LexState *ls)
 {

@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IInternetSession ;
-typedef  int /*<<< orphan*/  IInternetProtocolEx ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Abort ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ClassFactory ; 
- int /*<<< orphan*/  Continue ; 
- int /*<<< orphan*/  CreateInstance ; 
- int /*<<< orphan*/  E_ABORT ; 
- int HTTPS_TEST ; 
- int HTTP_TEST ; 
- int /*<<< orphan*/  IID_IInternetBindInfo ; 
- int /*<<< orphan*/  IID_IInternetProtocolEx ; 
- int /*<<< orphan*/  IID_IInternetProtocolSink ; 
- int /*<<< orphan*/  IID_NULL ; 
- int /*<<< orphan*/  IInternetBindInfo_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolEx_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetProtocolEx_StartEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolSink_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_Abort (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocol_Continue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_LockRequest (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IInternetProtocol_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetProtocol_Start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_Terminate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_UnlockRequest (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetSession_CreateBinding (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetSession_RegisterNameSpace (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetSession_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetSession_UnregisterNameSpace (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockRequest ; 
- int /*<<< orphan*/  MimeFilter_LockRequest ; 
- int /*<<< orphan*/  MimeFilter_Terminate ; 
- int /*<<< orphan*/  MimeFilter_UnlockRequest ; 
- int /*<<< orphan*/  Protocol_destructor ; 
- int /*<<< orphan*/  QueryService_InternetProtocol ; 
- int /*<<< orphan*/  ReportData ; 
- int /*<<< orphan*/  ReportProgress_PROTOCOLCLASSID ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetPriority ; 
- int /*<<< orphan*/  Start ; 
- int /*<<< orphan*/  StartEx ; 
- int TEST_BINDING ; 
- int TEST_EMULATEPROT ; 
- int TEST_USEIURI ; 
- int /*<<< orphan*/  Terminate ; 
- int /*<<< orphan*/  UnlockRequest ; 
- int /*<<< orphan*/  Uri_CREATE_FILE_USE_DOS_PATH ; 
- scalar_t__ WAIT_OBJECT_0 ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bind_info ; 
- int /*<<< orphan*/ * binding_protocol ; 
- int /*<<< orphan*/  binding_sink ; 
- int /*<<< orphan*/ * binding_urls ; 
- scalar_t__ direct_read ; 
- int /*<<< orphan*/  event_complete ; 
- int /*<<< orphan*/  event_complete2 ; 
- scalar_t__ ex_priority ; 
- scalar_t__ expect_hrResult ; 
- int /*<<< orphan*/ * filtered_protocol ; 
- scalar_t__ impl_protex ; 
- int /*<<< orphan*/  init_test (int,int) ; 
- scalar_t__ mimefilter_test ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pCoInternetGetSession (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ pCreateUri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  pdata ; 
- int pi ; 
- int /*<<< orphan*/  prot_bind_info ; 
- int prot_state ; 
- int /*<<< orphan*/ * protocol_names ; 
- int /*<<< orphan*/  protocol_sink ; 
- scalar_t__ test_abort ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int IUri ;
+typedef int IInternetSession ;
+typedef int IInternetProtocolEx ;
+typedef int IInternetProtocol ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
+
+
+ int Abort ;
+ int CHECK_CALLED (int ) ;
+ int CLEAR_CALLED (int ) ;
+ int ClassFactory ;
+ int Continue ;
+ int CreateInstance ;
+ int E_ABORT ;
+ int HTTPS_TEST ;
+ int HTTP_TEST ;
+ int IID_IInternetBindInfo ;
+ int IID_IInternetProtocolEx ;
+ int IID_IInternetProtocolSink ;
+ int IID_NULL ;
+ int IInternetBindInfo_Release (int ) ;
+ int IInternetProtocolEx_Release (int *) ;
+ scalar_t__ IInternetProtocolEx_StartEx (int *,int *,int *,int *,int,int ) ;
+ int IInternetProtocolSink_Release (int ) ;
+ scalar_t__ IInternetProtocol_Abort (int *,int ,int ) ;
+ int IInternetProtocol_Continue (int *,int ) ;
+ scalar_t__ IInternetProtocol_LockRequest (int *,int ) ;
+ scalar_t__ IInternetProtocol_QueryInterface (int *,int *,void**) ;
+ scalar_t__ IInternetProtocol_Release (int *) ;
+ scalar_t__ IInternetProtocol_Start (int *,int ,int *,int *,int,int ) ;
+ scalar_t__ IInternetProtocol_Terminate (int *,int ) ;
+ scalar_t__ IInternetProtocol_UnlockRequest (int *) ;
+ scalar_t__ IInternetSession_CreateBinding (int *,int *,int ,int *,int *,int **,int ) ;
+ scalar_t__ IInternetSession_RegisterNameSpace (int *,int *,int *,int ,int ,int *,int ) ;
+ int IInternetSession_Release (int *) ;
+ scalar_t__ IInternetSession_UnregisterNameSpace (int *,int *,int ) ;
+ int IUri_Release (int *) ;
+ int LockRequest ;
+ int MimeFilter_LockRequest ;
+ int MimeFilter_Terminate ;
+ int MimeFilter_UnlockRequest ;
+ int Protocol_destructor ;
+ int QueryService_InternetProtocol ;
+ int ReportData ;
+ int ReportProgress_PROTOCOLCLASSID ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ int SetEvent (int ) ;
+ int SetPriority ;
+ int Start ;
+ int StartEx ;
+ int TEST_BINDING ;
+ int TEST_EMULATEPROT ;
+ int TEST_USEIURI ;
+ int Terminate ;
+ int UnlockRequest ;
+ int Uri_CREATE_FILE_USE_DOS_PATH ;
+ scalar_t__ WAIT_OBJECT_0 ;
+ scalar_t__ WaitForSingleObject (int ,int) ;
+ int bind_info ;
+ int * binding_protocol ;
+ int binding_sink ;
+ int * binding_urls ;
+ scalar_t__ direct_read ;
+ int event_complete ;
+ int event_complete2 ;
+ scalar_t__ ex_priority ;
+ scalar_t__ expect_hrResult ;
+ int * filtered_protocol ;
+ scalar_t__ impl_protex ;
+ int init_test (int,int) ;
+ scalar_t__ mimefilter_test ;
+ int ok (int,char*,...) ;
+ scalar_t__ pCoInternetGetSession (int ,int **,int ) ;
+ scalar_t__ pCreateUri (int ,int ,int ,int **) ;
+ int pdata ;
+ int pi ;
+ int prot_bind_info ;
+ int prot_state ;
+ int * protocol_names ;
+ int protocol_sink ;
+ scalar_t__ test_abort ;
 
 __attribute__((used)) static void test_binding(int prot, DWORD grf_pi, DWORD test_flags)
 {
-    IInternetProtocolEx *protocolex = NULL;
+    IInternetProtocolEx *protocolex = ((void*)0);
     IInternetProtocol *protocol;
     IInternetSession *session;
-    IUri *uri = NULL;
+    IUri *uri = ((void*)0);
     ULONG ref;
     HRESULT hres;
 
@@ -112,14 +112,14 @@ __attribute__((used)) static void test_binding(int prot, DWORD grf_pi, DWORD tes
     ok(hres == S_OK, "CoInternetGetSession failed: %08x\n", hres);
 
     if(test_flags & TEST_EMULATEPROT) {
-        hres = IInternetSession_RegisterNameSpace(session, &ClassFactory, &IID_NULL, protocol_names[prot], 0, NULL, 0);
+        hres = IInternetSession_RegisterNameSpace(session, &ClassFactory, &IID_NULL, protocol_names[prot], 0, ((void*)0), 0);
         ok(hres == S_OK, "RegisterNameSpace failed: %08x\n", hres);
     }
 
-    hres = IInternetSession_CreateBinding(session, NULL, binding_urls[prot], NULL, NULL, &protocol, 0);
+    hres = IInternetSession_CreateBinding(session, ((void*)0), binding_urls[prot], ((void*)0), ((void*)0), &protocol, 0);
     binding_protocol = protocol;
     ok(hres == S_OK, "CreateBinding failed: %08x\n", hres);
-    ok(protocol != NULL, "protocol == NULL\n");
+    ok(protocol != ((void*)0), "protocol == NULL\n");
 
     hres = IInternetProtocol_QueryInterface(protocol, &IID_IInternetBindInfo, (void**)&prot_bind_info);
     ok(hres == S_OK, "QueryInterface(IID_IInternetBindInfo) failed: %08x\n", hres);
@@ -158,7 +158,7 @@ __attribute__((used)) static void test_binding(int prot, DWORD grf_pi, DWORD tes
     CHECK_CALLED(QueryService_InternetProtocol);
     CHECK_CALLED(CreateInstance);
     CHECK_CALLED(ReportProgress_PROTOCOLCLASSID);
-    CLEAR_CALLED(SetPriority); /* IE11 does not call it. */
+    CLEAR_CALLED(SetPriority);
     if(impl_protex)
         CHECK_CALLED(StartEx);
     else
@@ -195,7 +195,7 @@ __attribute__((used)) static void test_binding(int prot, DWORD grf_pi, DWORD tes
             SetEvent(event_complete2);
         }
         if(direct_read)
-            CHECK_CALLED(ReportData); /* Set in ReportResult */
+            CHECK_CALLED(ReportData);
         ok( WaitForSingleObject(event_complete, 90000) == WAIT_OBJECT_0, "wait timed out\n" );
     }else {
         if(mimefilter_test)

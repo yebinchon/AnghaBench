@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xsltStyleExtShutdownFunction ;
-typedef  int /*<<< orphan*/  xsltStyleExtInitFunction ;
-typedef  int /*<<< orphan*/  xsltExtShutdownFunction ;
-typedef  TYPE_1__* xsltExtModulePtr ;
-typedef  int /*<<< orphan*/  xsltExtModule ;
-typedef  int /*<<< orphan*/  xsltExtInitFunction ;
-struct TYPE_3__ {int /*<<< orphan*/  styleShutdownFunc; int /*<<< orphan*/  styleInitFunc; int /*<<< orphan*/  shutdownFunc; int /*<<< orphan*/  initFunc; } ;
 
-/* Variables and functions */
- scalar_t__ xmlMalloc (int) ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int xsltStyleExtShutdownFunction ;
+typedef int xsltStyleExtInitFunction ;
+typedef int xsltExtShutdownFunction ;
+typedef TYPE_1__* xsltExtModulePtr ;
+typedef int xsltExtModule ;
+typedef int xsltExtInitFunction ;
+struct TYPE_3__ {int styleShutdownFunc; int styleInitFunc; int shutdownFunc; int initFunc; } ;
+
+
+ scalar_t__ xmlMalloc (int) ;
+ int xsltTransformError (int *,int *,int *,char*) ;
 
 __attribute__((used)) static xsltExtModulePtr
 xsltNewExtModule(xsltExtInitFunction initFunc,
@@ -32,10 +32,10 @@ xsltNewExtModule(xsltExtInitFunction initFunc,
     xsltExtModulePtr cur;
 
     cur = (xsltExtModulePtr) xmlMalloc(sizeof(xsltExtModule));
-    if (cur == NULL) {
-        xsltTransformError(NULL, NULL, NULL,
+    if (cur == ((void*)0)) {
+        xsltTransformError(((void*)0), ((void*)0), ((void*)0),
                            "xsltNewExtModule : malloc failed\n");
-        return (NULL);
+        return (((void*)0));
     }
     cur->initFunc = initFunc;
     cur->shutdownFunc = shutdownFunc;

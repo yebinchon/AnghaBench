@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ A1 ; 
- scalar_t__ A2 ; 
- scalar_t__ B1 ; 
- scalar_t__ B1a ; 
- scalar_t__ B1b ; 
- scalar_t__ B2 ; 
- scalar_t__ B2a ; 
- scalar_t__ B2b ; 
- int my_read1 () ; 
- int my_read2 () ; 
- int /*<<< orphan*/  my_write (scalar_t__*,int) ; 
+ scalar_t__ A1 ;
+ scalar_t__ A2 ;
+ scalar_t__ B1 ;
+ scalar_t__ B1a ;
+ scalar_t__ B1b ;
+ scalar_t__ B2 ;
+ scalar_t__ B2a ;
+ scalar_t__ B2b ;
+ int my_read1 () ;
+ int my_read2 () ;
+ int my_write (scalar_t__*,int) ;
 
 void run (void) {
   int f1 = 1, f2 = 1;

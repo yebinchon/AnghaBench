@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nlattr {int dummy; } ;
 struct genl_info {struct nlattr** attrs; } ;
 struct devlink_trap_item {int dummy; } ;
 struct devlink {int dummy; } ;
 
-/* Variables and functions */
- size_t DEVLINK_ATTR_TRAP_NAME ; 
- struct devlink_trap_item* devlink_trap_item_lookup (struct devlink*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nla_data (struct nlattr*) ; 
+
+ size_t DEVLINK_ATTR_TRAP_NAME ;
+ struct devlink_trap_item* devlink_trap_item_lookup (struct devlink*,int ) ;
+ int nla_data (struct nlattr*) ;
 
 __attribute__((used)) static struct devlink_trap_item *
 devlink_trap_item_get_from_info(struct devlink *devlink,
-				struct genl_info *info)
+    struct genl_info *info)
 {
-	struct nlattr *attr;
+ struct nlattr *attr;
 
-	if (!info->attrs[DEVLINK_ATTR_TRAP_NAME])
-		return NULL;
-	attr = info->attrs[DEVLINK_ATTR_TRAP_NAME];
+ if (!info->attrs[DEVLINK_ATTR_TRAP_NAME])
+  return ((void*)0);
+ attr = info->attrs[DEVLINK_ATTR_TRAP_NAME];
 
-	return devlink_trap_item_lookup(devlink, nla_data(attr));
+ return devlink_trap_item_lookup(devlink, nla_data(attr));
 }

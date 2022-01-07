@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcf8591_data {int /*<<< orphan*/  update_lock; int /*<<< orphan*/  control; } ;
+
+
+
+
+struct pcf8591_data {int update_lock; int control; } ;
 struct i2c_client {int dummy; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCF8591_CONTROL_AOEF ; 
- struct pcf8591_data* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  i2c_smbus_write_byte (struct i2c_client*,int /*<<< orphan*/ ) ; 
- int kstrtoul (char const*,int,unsigned long*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct i2c_client* to_i2c_client (struct device*) ; 
+
+ int PCF8591_CONTROL_AOEF ;
+ struct pcf8591_data* i2c_get_clientdata (struct i2c_client*) ;
+ int i2c_smbus_write_byte (struct i2c_client*,int ) ;
+ int kstrtoul (char const*,int,unsigned long*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct i2c_client* to_i2c_client (struct device*) ;
 
 __attribute__((used)) static ssize_t out0_enable_store(struct device *dev,
-				 struct device_attribute *attr,
-				 const char *buf, size_t count)
+     struct device_attribute *attr,
+     const char *buf, size_t count)
 {
-	struct i2c_client *client = to_i2c_client(dev);
-	struct pcf8591_data *data = i2c_get_clientdata(client);
-	unsigned long val;
-	int err;
+ struct i2c_client *client = to_i2c_client(dev);
+ struct pcf8591_data *data = i2c_get_clientdata(client);
+ unsigned long val;
+ int err;
 
-	err = kstrtoul(buf, 10, &val);
-	if (err)
-		return err;
+ err = kstrtoul(buf, 10, &val);
+ if (err)
+  return err;
 
-	mutex_lock(&data->update_lock);
-	if (val)
-		data->control |= PCF8591_CONTROL_AOEF;
-	else
-		data->control &= ~PCF8591_CONTROL_AOEF;
-	i2c_smbus_write_byte(client, data->control);
-	mutex_unlock(&data->update_lock);
-	return count;
+ mutex_lock(&data->update_lock);
+ if (val)
+  data->control |= PCF8591_CONTROL_AOEF;
+ else
+  data->control &= ~PCF8591_CONTROL_AOEF;
+ i2c_smbus_write_byte(client, data->control);
+ mutex_unlock(&data->update_lock);
+ return count;
 }

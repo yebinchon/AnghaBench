@@ -1,51 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sec; int /*<<< orphan*/  usec; int /*<<< orphan*/  fmt24; } ;
 
-/* Variables and functions */
-#define  AWSELB 137 
-#define  AWSS3 136 
-#define  CLOUDFRONT 135 
-#define  CLOUDSTORAGE 134 
-#define  COMBINED 133 
-#define  COMMON 132 
-#define  SQUID 131 
-#define  VCOMBINED 130 
-#define  VCOMMON 129 
-#define  W3C 128 
- char* alloc_string (int /*<<< orphan*/ ) ; 
- TYPE_1__ times ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sec; int usec; int fmt24; } ;
+ char* alloc_string (int ) ;
+ TYPE_1__ times ;
 
 char *
 get_selected_time_str (size_t idx)
 {
-  char *fmt = NULL;
+  char *fmt = ((void*)0);
   switch (idx) {
-  case AWSELB:
-  case CLOUDFRONT:
-  case COMBINED:
-  case COMMON:
-  case VCOMBINED:
-  case VCOMMON:
-  case W3C:
-  case AWSS3:
+  case 137:
+  case 135:
+  case 133:
+  case 132:
+  case 130:
+  case 129:
+  case 128:
+  case 136:
     fmt = alloc_string (times.fmt24);
     break;
-  case CLOUDSTORAGE:
+  case 134:
     fmt = alloc_string (times.usec);
     break;
-  case SQUID:
+  case 131:
     fmt = alloc_string (times.sec);
     break;
   }

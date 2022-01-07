@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ ULONG_PTR ;
-struct TYPE_9__ {int dwType; char* lpLocalName; char* lpProvider; char* lpRemoteName; int /*<<< orphan*/ * lpComment; int /*<<< orphan*/  dwUsage; int /*<<< orphan*/  dwDisplayType; int /*<<< orphan*/  dwScope; } ;
-struct TYPE_6__ {int index; int /*<<< orphan*/  registry; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef scalar_t__ ULONG_PTR ;
+struct TYPE_9__ {int dwType; char* lpLocalName; char* lpProvider; char* lpRemoteName; int * lpComment; int dwUsage; int dwDisplayType; int dwScope; } ;
+struct TYPE_6__ {int index; int registry; } ;
 struct TYPE_7__ {TYPE_1__ remembered; } ;
 struct TYPE_8__ {int dwType; TYPE_2__ specific; } ;
-typedef  TYPE_3__* PWNetEnumerator ;
-typedef  TYPE_4__ NETRESOURCEW ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_3__* PWNetEnumerator ;
+typedef TYPE_4__ NETRESOURCEW ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RESOURCEDISPLAYTYPE_GENERIC ; 
- int RESOURCETYPE_ANY ; 
- int /*<<< orphan*/  RESOURCEUSAGE_CONNECTABLE ; 
- int /*<<< orphan*/  RESOURCE_REMEMBERED ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int RegEnumKeyExW (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int WN_MORE_DATA ; 
- int WN_NO_MORE_ENTRIES ; 
- int WN_SUCCESS ; 
- int /*<<< orphan*/  connectionType ; 
- char* get_reg_str (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int /*<<< orphan*/  providerName ; 
- int /*<<< orphan*/  remotePath ; 
+
+ int ARRAY_SIZE (char*) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,char*) ;
+ int KEY_READ ;
+ int RESOURCEDISPLAYTYPE_GENERIC ;
+ int RESOURCETYPE_ANY ;
+ int RESOURCEUSAGE_CONNECTABLE ;
+ int RESOURCE_REMEMBERED ;
+ int RegCloseKey (int ) ;
+ int RegEnumKeyExW (int ,int,char*,int*,int *,int *,int *,int *) ;
+ int RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ int RegQueryValueExW (int ,int ,int *,int *,int *,int*) ;
+ int WN_MORE_DATA ;
+ int WN_NO_MORE_ENTRIES ;
+ int WN_SUCCESS ;
+ int connectionType ;
+ char* get_reg_str (int ,int ,int*) ;
+ int lstrcpyW (char*,char*) ;
+ int providerName ;
+ int remotePath ;
 
 __attribute__((used)) static DWORD _enumeratorRememberedW(PWNetEnumerator enumerator, DWORD* user_count,
                                     void* user_buffer, DWORD* user_size)
@@ -61,10 +61,10 @@ __attribute__((used)) static DWORD _enumeratorRememberedW(PWNetEnumerator enumer
     NETRESOURCEW * net_buffer = user_buffer;
     WCHAR * str, * registry_string;
 
-    /* we will do the work in a single loop, so here is some things:
-     * we write netresource at the begin of the user buffer
-     * we write strings at the end of the user buffer
-     */
+
+
+
+
     size_left = *user_size;
     total_count = 0;
     type = enumerator->dwType;
@@ -81,7 +81,7 @@ __attribute__((used)) static DWORD _enumeratorRememberedW(PWNetEnumerator enumer
         }
 
         len = ARRAY_SIZE(buffer);
-        ret = RegEnumKeyExW(registry, index, buffer, &len, NULL, NULL, NULL, NULL);
+        ret = RegEnumKeyExW(registry, index, buffer, &len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         if (ret != ERROR_SUCCESS)
         {
             if (ret == ERROR_NO_MORE_ITEMS) ret = WN_SUCCESS;
@@ -99,7 +99,7 @@ __attribute__((used)) static DWORD _enumeratorRememberedW(PWNetEnumerator enumer
         if (size_left > 0)
         {
             size = sizeof(DWORD);
-            RegQueryValueExW(connection, connectionType, NULL, NULL, (BYTE *)&net_buffer->dwType, &size);
+            RegQueryValueExW(connection, connectionType, ((void*)0), ((void*)0), (BYTE *)&net_buffer->dwType, &size);
             if (type != RESOURCETYPE_ANY && net_buffer->dwType != type)
             {
                 size_left += sizeof(NETRESOURCEW);
@@ -114,7 +114,7 @@ __attribute__((used)) static DWORD _enumeratorRememberedW(PWNetEnumerator enumer
         else
             ret = WN_MORE_DATA;
 
-        /* FIXME: this only supports drive letters */
+
         full_size += 3 * sizeof(WCHAR);
         size_left -= 3 * sizeof(WCHAR);
         if (size_left > 0)
@@ -166,7 +166,7 @@ __attribute__((used)) static DWORD _enumeratorRememberedW(PWNetEnumerator enumer
 
         RegCloseKey(connection);
 
-        net_buffer->lpComment = NULL;
+        net_buffer->lpComment = ((void*)0);
 
         if (size_left < 0)
             break;

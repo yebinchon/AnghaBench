@@ -1,0 +1,128 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/sound/isa/gus/extr_gus_reset.c_snd_gf1_free_voice.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/sound/isa/gus/extr_gus_reset.c_snd_gf1_free_voice.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.snd_gus_card = type { i32, %struct.TYPE_2__ }
+%struct.TYPE_2__ = type { i32 }
+%struct.snd_gus_voice = type { i32, void (%struct.snd_gus_voice*)*, i32*, i64, i64, i32* }
+
+@SNDRV_GF1_HANDLER_VOICE = common dso_local global i32 0, align 4
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @snd_gf1_free_voice(%struct.snd_gus_card* %0, %struct.snd_gus_voice* %1) #0 {
+  %3 = alloca %struct.snd_gus_card*, align 8
+  %4 = alloca %struct.snd_gus_voice*, align 8
+  %5 = alloca i64, align 8
+  %6 = alloca void (%struct.snd_gus_voice*)*, align 8
+  %7 = alloca i8*, align 8
+  store %struct.snd_gus_card* %0, %struct.snd_gus_card** %3, align 8
+  store %struct.snd_gus_voice* %1, %struct.snd_gus_voice** %4, align 8
+  %8 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %9 = icmp eq %struct.snd_gus_voice* %8, null
+  br i1 %9, label %15, label %10
+
+10:                                               ; preds = %2
+  %11 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %12 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %11, i32 0, i32 4
+  %13 = load i64, i64* %12, align 8
+  %14 = icmp ne i64 %13, 0
+  br i1 %14, label %16, label %15
+
+15:                                               ; preds = %10, %2
+  br label %73
+
+16:                                               ; preds = %10
+  %17 = load %struct.snd_gus_card*, %struct.snd_gus_card** %3, align 8
+  %18 = load i32, i32* @SNDRV_GF1_HANDLER_VOICE, align 4
+  %19 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %20 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %19, i32 0, i32 0
+  %21 = load i32, i32* %20, align 8
+  %22 = or i32 %18, %21
+  %23 = call i32 @snd_gf1_set_default_handlers(%struct.snd_gus_card* %17, i32 %22)
+  %24 = load %struct.snd_gus_card*, %struct.snd_gus_card** %3, align 8
+  %25 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %26 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %25, i32 0, i32 0
+  %27 = load i32, i32* %26, align 8
+  %28 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %29 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %28, i32 0, i32 0
+  %30 = load i32, i32* %29, align 8
+  %31 = call i32 @snd_gf1_clear_voices(%struct.snd_gus_card* %24, i32 %27, i32 %30)
+  %32 = load %struct.snd_gus_card*, %struct.snd_gus_card** %3, align 8
+  %33 = getelementptr inbounds %struct.snd_gus_card, %struct.snd_gus_card* %32, i32 0, i32 0
+  %34 = load i64, i64* %5, align 8
+  %35 = call i32 @spin_lock_irqsave(i32* %33, i64 %34)
+  %36 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %37 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %36, i32 0, i32 1
+  %38 = load void (%struct.snd_gus_voice*)*, void (%struct.snd_gus_voice*)** %37, align 8
+  store void (%struct.snd_gus_voice*)* %38, void (%struct.snd_gus_voice*)** %6, align 8
+  %39 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %40 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %39, i32 0, i32 5
+  %41 = load i32*, i32** %40, align 8
+  %42 = bitcast i32* %41 to i8*
+  store i8* %42, i8** %7, align 8
+  %43 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %44 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %43, i32 0, i32 1
+  store void (%struct.snd_gus_voice*)* null, void (%struct.snd_gus_voice*)** %44, align 8
+  %45 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %46 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %45, i32 0, i32 5
+  store i32* null, i32** %46, align 8
+  %47 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %48 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %47, i32 0, i32 3
+  %49 = load i64, i64* %48, align 8
+  %50 = icmp ne i64 %49, 0
+  br i1 %50, label %51, label %57
+
+51:                                               ; preds = %16
+  %52 = load %struct.snd_gus_card*, %struct.snd_gus_card** %3, align 8
+  %53 = getelementptr inbounds %struct.snd_gus_card, %struct.snd_gus_card* %52, i32 0, i32 1
+  %54 = getelementptr inbounds %struct.TYPE_2__, %struct.TYPE_2__* %53, i32 0, i32 0
+  %55 = load i32, i32* %54, align 4
+  %56 = add nsw i32 %55, -1
+  store i32 %56, i32* %54, align 4
+  br label %57
+
+57:                                               ; preds = %51, %16
+  %58 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %59 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %58, i32 0, i32 3
+  store i64 0, i64* %59, align 8
+  %60 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %61 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %60, i32 0, i32 4
+  store i64 0, i64* %61, align 8
+  %62 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  %63 = getelementptr inbounds %struct.snd_gus_voice, %struct.snd_gus_voice* %62, i32 0, i32 2
+  store i32* null, i32** %63, align 8
+  %64 = load %struct.snd_gus_card*, %struct.snd_gus_card** %3, align 8
+  %65 = getelementptr inbounds %struct.snd_gus_card, %struct.snd_gus_card* %64, i32 0, i32 0
+  %66 = load i64, i64* %5, align 8
+  %67 = call i32 @spin_unlock_irqrestore(i32* %65, i64 %66)
+  %68 = load void (%struct.snd_gus_voice*)*, void (%struct.snd_gus_voice*)** %6, align 8
+  %69 = icmp ne void (%struct.snd_gus_voice*)* %68, null
+  br i1 %69, label %70, label %73
+
+70:                                               ; preds = %57
+  %71 = load void (%struct.snd_gus_voice*)*, void (%struct.snd_gus_voice*)** %6, align 8
+  %72 = load %struct.snd_gus_voice*, %struct.snd_gus_voice** %4, align 8
+  call void %71(%struct.snd_gus_voice* %72)
+  br label %73
+
+73:                                               ; preds = %15, %70, %57
+  ret void
+}
+
+declare dso_local i32 @snd_gf1_set_default_handlers(%struct.snd_gus_card*, i32) #1
+
+declare dso_local i32 @snd_gf1_clear_voices(%struct.snd_gus_card*, i32, i32) #1
+
+declare dso_local i32 @spin_lock_irqsave(i32*, i64) #1
+
+declare dso_local i32 @spin_unlock_irqrestore(i32*, i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

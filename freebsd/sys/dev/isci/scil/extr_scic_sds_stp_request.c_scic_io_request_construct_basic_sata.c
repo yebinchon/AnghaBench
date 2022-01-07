@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  user_request; } ;
-typedef  int /*<<< orphan*/  SCI_STATUS ;
-typedef  scalar_t__ SCI_IO_REQUEST_HANDLE_T ;
-typedef  TYPE_1__ SCIC_SDS_REQUEST_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_LOG_OBJECT_STP_IO_REQUEST ; 
- int /*<<< orphan*/  SCIC_LOG_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  sci_base_object_get_logger (scalar_t__) ; 
- int /*<<< orphan*/  scic_cb_io_request_do_copy_rx_frames (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_io_request_get_data_direction (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_io_request_get_transfer_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_request_get_sat_protocol (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_sds_io_request_construct_sata (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int user_request; } ;
+typedef int SCI_STATUS ;
+typedef scalar_t__ SCI_IO_REQUEST_HANDLE_T ;
+typedef TYPE_1__ SCIC_SDS_REQUEST_T ;
+
+
+ int SCIC_LOG_OBJECT_STP_IO_REQUEST ;
+ int SCIC_LOG_TRACE (int ) ;
+ int TRUE ;
+ int sci_base_object_get_logger (scalar_t__) ;
+ int scic_cb_io_request_do_copy_rx_frames (int ) ;
+ int scic_cb_io_request_get_data_direction (int ) ;
+ int scic_cb_io_request_get_transfer_length (int ) ;
+ int scic_cb_request_get_sat_protocol (int ) ;
+ int scic_sds_io_request_construct_sata (TYPE_1__*,int ,int ,int ,int ,int ) ;
 
 SCI_STATUS scic_io_request_construct_basic_sata(
-   SCI_IO_REQUEST_HANDLE_T  scic_io_request
+   SCI_IO_REQUEST_HANDLE_T scic_io_request
 )
 {
-   SCI_STATUS           status;
+   SCI_STATUS status;
    SCIC_SDS_REQUEST_T * request = (SCIC_SDS_REQUEST_T *)scic_io_request;
 
    SCIC_LOG_TRACE((

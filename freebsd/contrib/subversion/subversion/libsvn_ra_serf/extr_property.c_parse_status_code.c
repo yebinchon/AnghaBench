@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  apr_strtoi64 (char const*,char**,int) ; 
+
+
+
+typedef int apr_int64_t ;
+
+
+ int apr_strtoi64 (char const*,char**,int) ;
 
 __attribute__((used)) static apr_int64_t parse_status_code(const char *status_line)
 {
-  /* STATUS_LINE should be of form: "HTTP/1.1 200 OK" */
+
   if (status_line[0] == 'H' &&
       status_line[1] == 'T' &&
       status_line[2] == 'T' &&

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fe_modulation_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APSK_16 ; 
- int /*<<< orphan*/  APSK_32 ; 
- int /*<<< orphan*/  DQPSK ; 
- int /*<<< orphan*/  PSK_8 ; 
- int /*<<< orphan*/  QAM_128 ; 
- int /*<<< orphan*/  QAM_16 ; 
- int /*<<< orphan*/  QAM_256 ; 
- int /*<<< orphan*/  QAM_32 ; 
- int /*<<< orphan*/  QAM_64 ; 
- int /*<<< orphan*/  QAM_AUTO ; 
- int /*<<< orphan*/  QPSK ; 
- int /*<<< orphan*/  VSB_16 ; 
- int /*<<< orphan*/  VSB_8 ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+
+
+typedef int fe_modulation_t ;
+
+
+ int APSK_16 ;
+ int APSK_32 ;
+ int DQPSK ;
+ int PSK_8 ;
+ int QAM_128 ;
+ int QAM_16 ;
+ int QAM_256 ;
+ int QAM_32 ;
+ int QAM_64 ;
+ int QAM_AUTO ;
+ int QPSK ;
+ int VSB_16 ;
+ int VSB_8 ;
+ int strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static fe_modulation_t parse_vdr_modulation(const char** modstring) {
     if (!strncmp(*modstring, "16", 2)) {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int phrases_cnt; TYPE_2__* phrases; } ;
-typedef  TYPE_1__ watchcat_query_t ;
+typedef TYPE_1__ watchcat_query_t ;
 struct TYPE_5__ {int words; scalar_t__* H; scalar_t__ minus_flag; } ;
-typedef  TYPE_2__ watchcat_query_phrase_t ;
+typedef TYPE_2__ watchcat_query_phrase_t ;
 
-/* Variables and functions */
+
 
 long long watchcat_query_hash_impl (watchcat_query_t *query) {
   long long query_hash = 0x1234123412341234LL;
@@ -43,8 +43,8 @@ long long watchcat_query_hash_impl (watchcat_query_t *query) {
   }
 
   if (!was_plus) {
-    //bad query
-    /*printf ("Bad query\n");*/
+
+
     return -1;
   }
 

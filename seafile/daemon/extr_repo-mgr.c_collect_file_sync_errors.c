@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  gint64 ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  SeafileFileSyncError ;
-typedef  int /*<<< orphan*/  GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEAFILE_TYPE_FILE_SYNC_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * g_list_prepend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_object_new (int /*<<< orphan*/ ,char*,int,char*,char const*,char*,char const*,char*,char const*,char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int gint64 ;
+typedef int gboolean ;
+typedef int SeafileFileSyncError ;
+typedef int GList ;
+
+
+ int SEAFILE_TYPE_FILE_SYNC_ERROR ;
+ int TRUE ;
+ int * g_list_prepend (int *,int *) ;
+ int * g_object_new (int ,char*,int,char*,char const*,char*,char const*,char*,char const*,char*,int,char*,int ,int *) ;
+ int sqlite3_column_int (int *,int) ;
+ int sqlite3_column_int64 (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
 
 __attribute__((used)) static gboolean
 collect_file_sync_errors (sqlite3_stmt *stmt, void *data)
@@ -48,7 +48,7 @@ collect_file_sync_errors (sqlite3_stmt *stmt, void *data)
                           "path", path,
                           "err_id", err_id,
                           "timestamp", timestamp,
-                          NULL);
+                          ((void*)0));
     *pret = g_list_prepend (*pret, error);
 
     return TRUE;

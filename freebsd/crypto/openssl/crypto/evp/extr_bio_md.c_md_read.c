@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_copy_next_retry (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_get_data (int /*<<< orphan*/ *) ; 
- scalar_t__ BIO_get_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_next (int /*<<< orphan*/ *) ; 
- int BIO_read (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
+
+
+
+typedef int EVP_MD_CTX ;
+typedef int BIO ;
+
+
+ int BIO_clear_retry_flags (int *) ;
+ int BIO_copy_next_retry (int *) ;
+ int * BIO_get_data (int *) ;
+ scalar_t__ BIO_get_init (int *) ;
+ int * BIO_next (int *) ;
+ int BIO_read (int *,char*,int) ;
+ scalar_t__ EVP_DigestUpdate (int *,unsigned char*,unsigned int) ;
 
 __attribute__((used)) static int md_read(BIO *b, char *out, int outl)
 {
@@ -28,13 +28,13 @@ __attribute__((used)) static int md_read(BIO *b, char *out, int outl)
     EVP_MD_CTX *ctx;
     BIO *next;
 
-    if (out == NULL)
+    if (out == ((void*)0))
         return 0;
 
     ctx = BIO_get_data(b);
     next = BIO_next(b);
 
-    if ((ctx == NULL) || (next == NULL))
+    if ((ctx == ((void*)0)) || (next == ((void*)0)))
         return 0;
 
     ret = BIO_read(next, out, outl);

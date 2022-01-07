@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {unsigned int n_ref; } ;
-typedef  TYPE_1__ DnsResourceKey ;
+typedef TYPE_1__ DnsResourceKey ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__**) ; 
- scalar_t__ dns_resource_key_equal (TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* dns_resource_key_ref (TYPE_1__*) ; 
- int /*<<< orphan*/  dns_resource_key_unref (TYPE_1__*) ; 
+
+ int assert (TYPE_1__**) ;
+ scalar_t__ dns_resource_key_equal (TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* dns_resource_key_ref (TYPE_1__*) ;
+ int dns_resource_key_unref (TYPE_1__*) ;
 
 bool dns_resource_key_reduce(DnsResourceKey **a, DnsResourceKey **b) {
         assert(a);
         assert(b);
 
-        /* Try to replace one RR key by another if they are identical, thus saving a bit of memory. Note that we do
-         * this only for RR keys, not for RRs themselves, as they carry a lot of additional metadata (where they come
-         * from, validity data, and suchlike), and cannot be replaced so easily by other RRs that have the same
-         * superficial data. */
+
+
+
+
 
         if (!*a)
-                return false;
+                return 0;
         if (!*b)
-                return false;
+                return 0;
 
-        /* We refuse merging const keys */
+
         if ((*a)->n_ref == (unsigned) -1)
-                return false;
+                return 0;
         if ((*b)->n_ref == (unsigned) -1)
-                return false;
+                return 0;
 
-        /* Already the same? */
+
         if (*a == *b)
-                return true;
+                return 1;
 
-        /* Are they really identical? */
+
         if (dns_resource_key_equal(*a, *b) <= 0)
-                return false;
+                return 0;
 
-        /* Keep the one which already has more references. */
+
         if ((*a)->n_ref > (*b)->n_ref) {
                 dns_resource_key_unref(*b);
                 *b = dns_resource_key_ref(*a);
@@ -57,5 +57,5 @@ bool dns_resource_key_reduce(DnsResourceKey **a, DnsResourceKey **b) {
                 *a = dns_resource_key_ref(*b);
         }
 
-        return true;
+        return 1;
 }

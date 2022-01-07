@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ C_OK ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sleep (int) ; 
- scalar_t__ startAppendOnly () ; 
+ scalar_t__ C_OK ;
+ int LL_WARNING ;
+ int exit (int) ;
+ int serverLog (int ,char*) ;
+ int sleep (int) ;
+ scalar_t__ startAppendOnly () ;
 
 void restartAOFAfterSYNC() {
     unsigned int tries, max_tries = 10;

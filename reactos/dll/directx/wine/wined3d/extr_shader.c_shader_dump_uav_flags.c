@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_string_buffer {int dummy; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int WINED3DSUF_GLOBALLY_COHERENT ; 
- int WINED3DSUF_ORDER_PRESERVING_COUNTER ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
+
+ int WINED3DSUF_GLOBALLY_COHERENT ;
+ int WINED3DSUF_ORDER_PRESERVING_COUNTER ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
 
 __attribute__((used)) static void shader_dump_uav_flags(struct wined3d_string_buffer *buffer, DWORD uav_flags)
 {

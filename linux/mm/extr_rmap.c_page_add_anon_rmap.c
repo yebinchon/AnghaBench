@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vm_area_struct {int dummy; } ;
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RMAP_COMPOUND ; 
- int /*<<< orphan*/  do_page_add_anon_rmap (struct page*,struct vm_area_struct*,unsigned long,int /*<<< orphan*/ ) ; 
+
+ int RMAP_COMPOUND ;
+ int do_page_add_anon_rmap (struct page*,struct vm_area_struct*,unsigned long,int ) ;
 
 void page_add_anon_rmap(struct page *page,
-	struct vm_area_struct *vma, unsigned long address, bool compound)
+ struct vm_area_struct *vma, unsigned long address, bool compound)
 {
-	do_page_add_anon_rmap(page, vma, address, compound ? RMAP_COMPOUND : 0);
+ do_page_add_anon_rmap(page, vma, address, compound ? RMAP_COMPOUND : 0);
 }

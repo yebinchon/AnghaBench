@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  fields; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Descr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyBytes_AsString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyDict_GetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyExc_KeyError ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyUnicode_AsUnicodeEscapeString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int fields; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Descr ;
+
+
+ int PyBytes_AsString (int *) ;
+ int * PyDict_GetItem (int ,int *) ;
+ int PyErr_Format (int ,char*,int ) ;
+ int PyExc_KeyError ;
+ int * PyTuple_GET_ITEM (int *,int ) ;
+ int * PyUnicode_AsUnicodeEscapeString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
 
 __attribute__((used)) static PyObject *
 _subscript_by_name(PyArray_Descr *self, PyObject *op)
@@ -33,7 +33,7 @@ _subscript_by_name(PyArray_Descr *self, PyObject *op)
     PyObject *descr;
     PyObject *s;
 
-    if (obj == NULL) {
+    if (obj == ((void*)0)) {
         if (PyUnicode_Check(op)) {
             s = PyUnicode_AsUnicodeEscapeString(op);
         }
@@ -46,7 +46,7 @@ _subscript_by_name(PyArray_Descr *self, PyObject *op)
         if (s != op) {
             Py_DECREF(s);
         }
-        return NULL;
+        return ((void*)0);
     }
     descr = PyTuple_GET_ITEM(obj, 0);
     Py_INCREF(descr);

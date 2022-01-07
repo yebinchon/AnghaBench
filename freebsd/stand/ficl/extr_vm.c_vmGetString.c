@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* text; scalar_t__ count; } ;
-typedef  int /*<<< orphan*/  STRINGINFO ;
-typedef  int /*<<< orphan*/  FICL_VM ;
-typedef  TYPE_1__ FICL_STRING ;
-typedef  scalar_t__ FICL_COUNT ;
+typedef int STRINGINFO ;
+typedef int FICL_VM ;
+typedef TYPE_1__ FICL_STRING ;
+typedef scalar_t__ FICL_COUNT ;
 
-/* Variables and functions */
- int FICL_STRING_MAX ; 
- int SI_COUNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SI_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SI_SETLEN (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vmParseStringEx (int /*<<< orphan*/ *,char,int /*<<< orphan*/ ) ; 
+
+ int FICL_STRING_MAX ;
+ int SI_COUNT (int ) ;
+ int SI_PTR (int ) ;
+ int SI_SETLEN (int ,int) ;
+ int strncpy (char*,int ,int) ;
+ int vmParseStringEx (int *,char,int ) ;
 
 char *vmGetString(FICL_VM *pVM, FICL_STRING *spDest, char delimiter)
 {

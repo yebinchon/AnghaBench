@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ULONG_MAX ; 
- scalar_t__ isspace (char const) ; 
- scalar_t__ isxdigit (char const) ; 
+ int ULONG_MAX ;
+ scalar_t__ isspace (char const) ;
+ scalar_t__ isxdigit (char const) ;
 
 unsigned long int strtoul( const char* ptr, char** endptr, int base ) {
     int neg = 0, overflow = 0;
@@ -64,7 +56,7 @@ skip0x:
 
         c = ( c >= 'a' ? c - 'a' + 10 : c >= 'A' ? c - 'A' + 10 : c <= '9' ? c - '0' : 0xFF );
 
-        if ( c >= base ) break; /* out of base */
+        if ( c >= base ) break;
 
         {
             register unsigned long x=(v&0xff)*base+c;
@@ -80,12 +72,12 @@ skip0x:
         ++nptr;
     }
 
-    if ( nptr == orig ) {     /* no conversion done */
+    if ( nptr == orig ) {
         nptr = ptr;
         v = 0;
     }
 
-    if ( endptr != NULL ) {
+    if ( endptr != ((void*)0) ) {
         *endptr = ( char* )nptr;
     }
 

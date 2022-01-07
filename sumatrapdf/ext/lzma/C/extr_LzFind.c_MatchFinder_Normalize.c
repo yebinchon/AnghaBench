@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt32 ;
-struct TYPE_5__ {scalar_t__ numSons; scalar_t__ hashSizeSum; int /*<<< orphan*/  hash; } ;
-typedef  TYPE_1__ CMatchFinder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MatchFinder_GetSubValue (TYPE_1__*) ; 
- int /*<<< orphan*/  MatchFinder_Normalize3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  MatchFinder_ReduceOffsets (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
+struct TYPE_5__ {scalar_t__ numSons; scalar_t__ hashSizeSum; int hash; } ;
+typedef TYPE_1__ CMatchFinder ;
+
+
+ int MatchFinder_GetSubValue (TYPE_1__*) ;
+ int MatchFinder_Normalize3 (int ,int ,scalar_t__) ;
+ int MatchFinder_ReduceOffsets (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void MatchFinder_Normalize(CMatchFinder *p)
 {

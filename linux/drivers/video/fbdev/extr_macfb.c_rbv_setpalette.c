@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bits_per_pixel; } ;
 struct fb_info {TYPE_1__ var; } ;
-struct TYPE_4__ {int /*<<< orphan*/  lut; int /*<<< orphan*/  addr; int /*<<< orphan*/  cntl; } ;
+struct TYPE_4__ {int lut; int addr; int cntl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  nop () ; 
- int /*<<< orphan*/  nubus_writeb (unsigned int,int /*<<< orphan*/ *) ; 
- TYPE_2__* rbv_cmap_regs ; 
+
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int nop () ;
+ int nubus_writeb (unsigned int,int *) ;
+ TYPE_2__* rbv_cmap_regs ;
 
 __attribute__((used)) static int rbv_setpalette(unsigned int regno, unsigned int red,
-			  unsigned int green, unsigned int blue,
-			  struct fb_info *info)
+     unsigned int green, unsigned int blue,
+     struct fb_info *info)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	local_irq_save(flags);
+ local_irq_save(flags);
 
-	/* From the VideoToolbox driver.  Seems to be saying that
-	 * regno #254 and #255 are the important ones for 1-bit color,
-	 * regno #252-255 are the important ones for 2-bit color, etc.
-	 */
-	regno += 256 - (1 << info->var.bits_per_pixel);
 
-	/* reset clut? (VideoToolbox sez "not necessary") */
-	nubus_writeb(0xFF, &rbv_cmap_regs->cntl);
-	nop();
 
-	/* tell clut which address to use. */
-	nubus_writeb(regno, &rbv_cmap_regs->addr);
-	nop();
 
-	/* send one color channel at a time. */
-	nubus_writeb(red, &rbv_cmap_regs->lut);
-	nop();
-	nubus_writeb(green, &rbv_cmap_regs->lut);
-	nop();
-	nubus_writeb(blue, &rbv_cmap_regs->lut);
 
-	local_irq_restore(flags);
-	return 0;
+ regno += 256 - (1 << info->var.bits_per_pixel);
+
+
+ nubus_writeb(0xFF, &rbv_cmap_regs->cntl);
+ nop();
+
+
+ nubus_writeb(regno, &rbv_cmap_regs->addr);
+ nop();
+
+
+ nubus_writeb(red, &rbv_cmap_regs->lut);
+ nop();
+ nubus_writeb(green, &rbv_cmap_regs->lut);
+ nop();
+ nubus_writeb(blue, &rbv_cmap_regs->lut);
+
+ local_irq_restore(flags);
+ return 0;
 }

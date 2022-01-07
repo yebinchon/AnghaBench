@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {int packet_fed; int preroll_discard; TYPE_1__* decoder; void* end; void* start; int /*<<< orphan*/ * new_segment; int /*<<< orphan*/  packet; scalar_t__ packets_without_output; scalar_t__ has_broken_decoded_pts; scalar_t__ num_codec_dts_problems; scalar_t__ num_codec_pts_problems; void* codec_dts; void* codec_pts; void* start_pts; void* first_packet_pdts; } ;
-struct TYPE_2__ {int /*<<< orphan*/  f; } ;
 
-/* Variables and functions */
- void* MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  mp_filter_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_frame_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct priv {int packet_fed; int preroll_discard; TYPE_1__* decoder; void* end; void* start; int * new_segment; int packet; scalar_t__ packets_without_output; scalar_t__ has_broken_decoded_pts; scalar_t__ num_codec_dts_problems; scalar_t__ num_codec_pts_problems; void* codec_dts; void* codec_pts; void* start_pts; void* first_packet_pdts; } ;
+struct TYPE_2__ {int f; } ;
+
+
+ void* MP_NOPTS_VALUE ;
+ int mp_filter_reset (int ) ;
+ int mp_frame_unref (int *) ;
+ int talloc_free (int *) ;
 
 __attribute__((used)) static void reset_decoder(struct priv *p)
 {
@@ -31,10 +31,10 @@ __attribute__((used)) static void reset_decoder(struct priv *p)
     p->has_broken_decoded_pts = 0;
     p->packets_without_output = 0;
     mp_frame_unref(&p->packet);
-    p->packet_fed = false;
-    p->preroll_discard = false;
+    p->packet_fed = 0;
+    p->preroll_discard = 0;
     talloc_free(p->new_segment);
-    p->new_segment = NULL;
+    p->new_segment = ((void*)0);
     p->start = p->end = MP_NOPTS_VALUE;
 
     if (p->decoder)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_compressionParameters ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ZSTD_compressionParameters ;
 struct TYPE_4__ {int compressionLevel; } ;
-typedef  TYPE_1__ ZSTD_CDict ;
+typedef TYPE_1__ ZSTD_CDict ;
 
-/* Variables and functions */
- int ZSTD_CLEVEL_DEFAULT ; 
- int /*<<< orphan*/  ZSTD_CONTENTSIZE_UNKNOWN ; 
- TYPE_1__* ZSTD_createCDict_advanced (void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_dct_auto ; 
- int /*<<< orphan*/  ZSTD_defaultCMem ; 
- int /*<<< orphan*/  ZSTD_dlm_byCopy ; 
- int /*<<< orphan*/  ZSTD_getCParams_internal (int,int /*<<< orphan*/ ,size_t) ; 
+
+ int ZSTD_CLEVEL_DEFAULT ;
+ int ZSTD_CONTENTSIZE_UNKNOWN ;
+ TYPE_1__* ZSTD_createCDict_advanced (void const*,size_t,int ,int ,int ,int ) ;
+ int ZSTD_dct_auto ;
+ int ZSTD_defaultCMem ;
+ int ZSTD_dlm_byCopy ;
+ int ZSTD_getCParams_internal (int,int ,size_t) ;
 
 ZSTD_CDict* ZSTD_createCDict(const void* dict, size_t dictSize, int compressionLevel)
 {

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ EOF ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  xmlIOErr (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ EOF ;
+ scalar_t__ fclose (int *) ;
+ int fflush (int *) ;
+ int * stderr ;
+ int * stdin ;
+ int * stdout ;
+ int xmlIOErr (int ,char*) ;
 
 int
 xmlFileClose (void * context) {
     FILE *fil;
     int ret;
 
-    if (context == NULL)
+    if (context == ((void*)0))
         return(-1);
     fil = (FILE *) context;
     if ((fil == stdout) || (fil == stderr)) {
         ret = fflush(fil);
-	if (ret < 0)
-	    xmlIOErr(0, "fflush()");
-	return(0);
+ if (ret < 0)
+     xmlIOErr(0, "fflush()");
+ return(0);
     }
     if (fil == stdin)
-	return(0);
+ return(0);
     ret = ( fclose((FILE *) context) == EOF ) ? -1 : 0;
     if (ret < 0)
         xmlIOErr(0, "fclose()");

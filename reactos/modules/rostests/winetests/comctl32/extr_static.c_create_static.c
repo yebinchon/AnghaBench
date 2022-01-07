@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ CTRL_ID ; 
- int /*<<< orphan*/  CreateWindowA (int /*<<< orphan*/ ,char*,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WC_STATICA ; 
- int WS_CHILD ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  hMainWnd ; 
+
+
+
+typedef int HWND ;
+typedef int HMENU ;
+typedef int DWORD ;
+
+
+ scalar_t__ CTRL_ID ;
+ int CreateWindowA (int ,char*,int,int,int,int,int,int ,int ,int *,int ) ;
+ int WC_STATICA ;
+ int WS_CHILD ;
+ int WS_VISIBLE ;
+ int hMainWnd ;
 
 __attribute__((used)) static HWND create_static(DWORD style)
 {
-    return CreateWindowA(WC_STATICA, "Test", WS_VISIBLE|WS_CHILD|style, 5, 5, 100, 100, hMainWnd, (HMENU)CTRL_ID, NULL, 0);
+    return CreateWindowA(WC_STATICA, "Test", WS_VISIBLE|WS_CHILD|style, 5, 5, 100, 100, hMainWnd, (HMENU)CTRL_ID, ((void*)0), 0);
 }

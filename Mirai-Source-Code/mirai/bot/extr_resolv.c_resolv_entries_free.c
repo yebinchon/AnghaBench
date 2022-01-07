@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct resolv_entries {struct resolv_entries* addrs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct resolv_entries*) ; 
+
+ int free (struct resolv_entries*) ;
 
 void resolv_entries_free(struct resolv_entries *entries)
 {
-    if (entries == NULL)
+    if (entries == ((void*)0))
         return;
-    if (entries->addrs != NULL)
+    if (entries->addrs != ((void*)0))
         free(entries->addrs);
     free(entries);
 }

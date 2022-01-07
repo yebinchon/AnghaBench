@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_7__ {int /*<<< orphan*/  pAndInfo; int /*<<< orphan*/  pOrInfo; } ;
-struct TYPE_9__ {int wtFlags; TYPE_1__ u; int /*<<< orphan*/  pExpr; } ;
-typedef  TYPE_3__ WhereTerm ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_7__ {int pAndInfo; int pOrInfo; } ;
+struct TYPE_9__ {int wtFlags; TYPE_1__ u; int pExpr; } ;
+typedef TYPE_3__ WhereTerm ;
 struct TYPE_10__ {int nTerm; TYPE_3__* a; TYPE_3__* aStatic; TYPE_2__* pParse; } ;
-typedef  TYPE_4__ WhereClause ;
-struct TYPE_8__ {int /*<<< orphan*/ * db; } ;
+typedef TYPE_4__ WhereClause ;
+struct TYPE_8__ {int * db; } ;
 
-/* Variables and functions */
- int TERM_ANDINFO ; 
- int TERM_DYNAMIC ; 
- int TERM_ORINFO ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3ExprDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  whereAndInfoDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  whereOrInfoDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int TERM_ANDINFO ;
+ int TERM_DYNAMIC ;
+ int TERM_ORINFO ;
+ int sqlite3DbFree (int *,TYPE_3__*) ;
+ int sqlite3ExprDelete (int *,int ) ;
+ int whereAndInfoDelete (int *,int ) ;
+ int whereOrInfoDelete (int *,int ) ;
 
 __attribute__((used)) static void whereClauseClear(WhereClause *pWC){
   int i;

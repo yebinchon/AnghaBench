@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_NoMemory () ; 
- scalar_t__ isspace (char const) ; 
- char* malloc (scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
+ int PyErr_NoMemory () ;
+ scalar_t__ isspace (char const) ;
+ char* malloc (scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static char *
 swab_separator(const char *sep)
@@ -24,11 +16,11 @@ swab_separator(const char *sep)
     char *s, *start;
 
     s = start = malloc(strlen(sep)+3);
-    if (s == NULL) {
+    if (s == ((void*)0)) {
         PyErr_NoMemory();
-        return NULL;
+        return ((void*)0);
     }
-    /* add space to front if there isn't one */
+
     if (*sep != '\0' && !isspace(*sep)) {
         *s = ' '; s++;
     }
@@ -51,7 +43,7 @@ swab_separator(const char *sep)
             skip_space = 0;
         }
     }
-    /* add space to end if there isn't one */
+
     if (s != start && s[-1] == ' ') {
         *s = ' ';
         s++;

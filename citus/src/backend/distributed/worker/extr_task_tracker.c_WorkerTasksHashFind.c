@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-typedef  int /*<<< orphan*/  uint32 ;
-struct TYPE_3__ {int /*<<< orphan*/  taskId; int /*<<< orphan*/  jobId; } ;
-typedef  TYPE_1__ WorkerTask ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASH_FIND ; 
- int /*<<< orphan*/  TaskTrackerTaskHash ; 
- scalar_t__ hash_search (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64 ;
+typedef int uint32 ;
+struct TYPE_3__ {int taskId; int jobId; } ;
+typedef TYPE_1__ WorkerTask ;
+
+
+ int HASH_FIND ;
+ int TaskTrackerTaskHash ;
+ scalar_t__ hash_search (int ,void*,int ,int *) ;
 
 WorkerTask *
 WorkerTasksHashFind(uint64 jobId, uint32 taskId)
 {
-	WorkerTask *workerTask = NULL;
-	void *hashKey = NULL;
+ WorkerTask *workerTask = ((void*)0);
+ void *hashKey = ((void*)0);
 
-	WorkerTask searchTask;
-	searchTask.jobId = jobId;
-	searchTask.taskId = taskId;
+ WorkerTask searchTask;
+ searchTask.jobId = jobId;
+ searchTask.taskId = taskId;
 
-	hashKey = (void *) &searchTask;
-	workerTask = (WorkerTask *) hash_search(TaskTrackerTaskHash, hashKey,
-											HASH_FIND, NULL);
+ hashKey = (void *) &searchTask;
+ workerTask = (WorkerTask *) hash_search(TaskTrackerTaskHash, hashKey,
+           HASH_FIND, ((void*)0));
 
-	return workerTask;
+ return workerTask;
 }

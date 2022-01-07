@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IOleInPlaceSite ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IOleDocumentView_CloseView (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IOleDocumentView_GetInPlaceSite (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IOleDocumentView_SetInPlaceSite (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ IOleDocumentView_Show (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  view ; 
+
+
+
+typedef int IOleInPlaceSite ;
+typedef scalar_t__ HRESULT ;
+
+
+ int FALSE ;
+ scalar_t__ IOleDocumentView_CloseView (int ,int ) ;
+ scalar_t__ IOleDocumentView_GetInPlaceSite (int ,int **) ;
+ scalar_t__ IOleDocumentView_SetInPlaceSite (int ,int *) ;
+ scalar_t__ IOleDocumentView_Show (int ,int ) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ int view ;
 
 __attribute__((used)) static void test_CloseView(void)
 {
@@ -37,10 +37,10 @@ __attribute__((used)) static void test_CloseView(void)
     hres = IOleDocumentView_CloseView(view, 0);
     ok(hres == S_OK, "CloseView failed: %08x\n", hres);
 
-    hres = IOleDocumentView_SetInPlaceSite(view, NULL);
+    hres = IOleDocumentView_SetInPlaceSite(view, ((void*)0));
     ok(hres == S_OK, "SetInPlaceSite failed: %08x\n", hres);
 
     hres = IOleDocumentView_GetInPlaceSite(view, &inplacesite);
     ok(hres == S_OK, "SetInPlaceSite failed: %08x\n", hres);
-    ok(inplacesite == NULL, "inplacesite=%p, expected NULL\n", inplacesite);
+    ok(inplacesite == ((void*)0), "inplacesite=%p, expected NULL\n", inplacesite);
 }

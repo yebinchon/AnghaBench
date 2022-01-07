@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
-struct tm {int tm_hour; int tm_min; int tm_sec; int tm_isdst; int /*<<< orphan*/  member_0; } ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int AVERROR (scalar_t__) ; 
- scalar_t__ EINVAL ; 
- scalar_t__ ERANGE ; 
- int FF_ARRAY_ELEMS (char const* const*) ; 
- int INT64_MAX ; 
- int INT64_MIN ; 
- int av_gettime () ; 
- scalar_t__ av_isdigit (char const) ; 
- scalar_t__ av_isspace (char const) ; 
- char* av_small_strptime (char const*,char const* const,struct tm*) ; 
- int /*<<< orphan*/  av_strcasecmp (char const*,char*) ; 
- int av_timegm (struct tm*) ; 
- scalar_t__ errno ; 
- struct tm* gmtime_r (int*,struct tm*) ; 
- struct tm* localtime_r (int*,struct tm*) ; 
- int mktime (struct tm*) ; 
- int strtoll (char const*,char**,int) ; 
+
+
+
+typedef int time_t ;
+struct tm {int tm_hour; int tm_min; int tm_sec; int tm_isdst; int member_0; } ;
+typedef int int64_t ;
+
+
+ int AVERROR (scalar_t__) ;
+ scalar_t__ EINVAL ;
+ scalar_t__ ERANGE ;
+ int FF_ARRAY_ELEMS (char const* const*) ;
+ int INT64_MAX ;
+ int INT64_MIN ;
+ int av_gettime () ;
+ scalar_t__ av_isdigit (char const) ;
+ scalar_t__ av_isspace (char const) ;
+ char* av_small_strptime (char const*,char const* const,struct tm*) ;
+ int av_strcasecmp (char const*,char*) ;
+ int av_timegm (struct tm*) ;
+ scalar_t__ errno ;
+ struct tm* gmtime_r (int*,struct tm*) ;
+ struct tm* localtime_r (int*,struct tm*) ;
+ int mktime (struct tm*) ;
+ int strtoll (char const*,char**,int) ;
 
 int av_parse_time(int64_t *timeval, const char *timestr, int duration)
 {
@@ -56,7 +56,7 @@ int av_parse_time(int64_t *timeval, const char *timestr, int duration)
     };
 
     p = timestr;
-    q = NULL;
+    q = ((void*)0);
     *timeval = INT64_MIN;
     if (!duration) {
         now64 = av_gettime();
@@ -67,15 +67,15 @@ int av_parse_time(int64_t *timeval, const char *timestr, int duration)
             return 0;
         }
 
-        /* parse the year-month-day part */
+
         for (i = 0; i < FF_ARRAY_ELEMS(date_fmt); i++) {
             q = av_small_strptime(p, date_fmt[i], &dt);
             if (q)
                 break;
         }
 
-        /* if the year-month-day part is missing, then take the
-         * current year-month-day time */
+
+
         if (!q) {
             today = 1;
             q = p;
@@ -88,31 +88,31 @@ int av_parse_time(int64_t *timeval, const char *timestr, int duration)
             while (av_isspace(*p))
                 p++;
 
-        /* parse the hour-minute-second part */
+
         for (i = 0; i < FF_ARRAY_ELEMS(time_fmt); i++) {
             q = av_small_strptime(p, time_fmt[i], &dt);
             if (q)
                 break;
         }
     } else {
-        /* parse timestr as a duration */
+
         if (p[0] == '-') {
             negative = 1;
             ++p;
         }
-        /* parse timestr as HH:MM:SS */
+
         q = av_small_strptime(p, "%J:%M:%S", &dt);
         if (!q) {
-            /* parse timestr as MM:SS */
+
             q = av_small_strptime(p, "%M:%S", &dt);
             dt.tm_hour = 0;
         }
         if (!q) {
             char *o;
-            /* parse timestr as S+ */
+
             errno = 0;
             t = strtoll(p, &o, 10);
-            if (o == p) /* the parsing didn't succeed */
+            if (o == p)
                 return AVERROR(EINVAL);
             if (errno == ERANGE)
                 return AVERROR(ERANGE);
@@ -122,11 +122,11 @@ int av_parse_time(int64_t *timeval, const char *timestr, int duration)
         }
     }
 
-    /* Now we have all the fields that we can get */
+
     if (!q)
         return AVERROR(EINVAL);
 
-    /* parse the .m... part */
+
     if (*q == '.') {
         int n;
         q++;
@@ -169,11 +169,11 @@ int av_parse_time(int64_t *timeval, const char *timestr, int duration)
             tzoffset = sign * (tz.tm_hour * 60 + tz.tm_min) * 60;
             is_utc = 1;
         }
-        if (today) { /* fill in today's date */
+        if (today) {
             struct tm dt2 = is_utc ? *gmtime_r(&now, &tmbuf) : *localtime_r(&now, &tmbuf);
             dt2.tm_hour = dt.tm_hour;
-            dt2.tm_min  = dt.tm_min;
-            dt2.tm_sec  = dt.tm_sec;
+            dt2.tm_min = dt.tm_min;
+            dt2.tm_sec = dt.tm_sec;
             dt = dt2;
         }
         dt.tm_isdst = is_utc ? 0 : -1;
@@ -181,7 +181,7 @@ int av_parse_time(int64_t *timeval, const char *timestr, int duration)
         t += tzoffset;
     }
 
-    /* Check that we are at the end of the string */
+
     if (*q)
         return AVERROR(EINVAL);
 

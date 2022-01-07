@@ -1,82 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int (* rc_peek_t ) (int /*<<< orphan*/ ,int,void*) ;
-struct TYPE_3__ {int size; int /*<<< orphan*/  is_bcd; int /*<<< orphan*/  address; } ;
-typedef  TYPE_1__ rc_memref_t ;
 
-/* Variables and functions */
-#define  RC_MEMSIZE_16_BITS 141 
-#define  RC_MEMSIZE_24_BITS 140 
-#define  RC_MEMSIZE_32_BITS 139 
-#define  RC_MEMSIZE_8_BITS 138 
-#define  RC_MEMSIZE_BIT_0 137 
-#define  RC_MEMSIZE_BIT_1 136 
-#define  RC_MEMSIZE_BIT_2 135 
-#define  RC_MEMSIZE_BIT_3 134 
-#define  RC_MEMSIZE_BIT_4 133 
-#define  RC_MEMSIZE_BIT_5 132 
-#define  RC_MEMSIZE_BIT_6 131 
-#define  RC_MEMSIZE_BIT_7 130 
-#define  RC_MEMSIZE_HIGH 129 
-#define  RC_MEMSIZE_LOW 128 
 
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int (* rc_peek_t ) (int ,int,void*) ;
+struct TYPE_3__ {int size; int is_bcd; int address; } ;
+typedef TYPE_1__ rc_memref_t ;
 __attribute__((used)) static unsigned rc_memref_get_value(rc_memref_t* self, rc_peek_t peek, void* ud) {
   unsigned value;
 
   switch (self->size)
   {
-    case RC_MEMSIZE_BIT_0:
+    case 137:
       value = (peek(self->address, 1, ud) >> 0) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_1:
+    case 136:
       value = (peek(self->address, 1, ud) >> 1) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_2:
+    case 135:
       value = (peek(self->address, 1, ud) >> 2) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_3:
+    case 134:
       value = (peek(self->address, 1, ud) >> 3) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_4:
+    case 133:
       value = (peek(self->address, 1, ud) >> 4) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_5:
+    case 132:
       value = (peek(self->address, 1, ud) >> 5) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_6:
+    case 131:
       value = (peek(self->address, 1, ud) >> 6) & 1;
       break;
 
-    case RC_MEMSIZE_BIT_7:
+    case 130:
       value = (peek(self->address, 1, ud) >> 7) & 1;
       break;
 
-    case RC_MEMSIZE_LOW:
+    case 128:
       value = peek(self->address, 1, ud) & 0x0f;
       break;
 
-    case RC_MEMSIZE_HIGH:
+    case 129:
       value = (peek(self->address, 1, ud) >> 4) & 0x0f;
       break;
 
-    case RC_MEMSIZE_8_BITS:
+    case 138:
       value = peek(self->address, 1, ud);
 
       if (self->is_bcd) {
@@ -85,7 +68,7 @@ __attribute__((used)) static unsigned rc_memref_get_value(rc_memref_t* self, rc_
 
       break;
 
-    case RC_MEMSIZE_16_BITS:
+    case 141:
       value = peek(self->address, 2, ud);
 
       if (self->is_bcd) {
@@ -97,7 +80,7 @@ __attribute__((used)) static unsigned rc_memref_get_value(rc_memref_t* self, rc_
 
       break;
 
-    case RC_MEMSIZE_24_BITS:
+    case 140:
       value = peek(self->address, 4, ud);
 
       if (self->is_bcd) {
@@ -111,7 +94,7 @@ __attribute__((used)) static unsigned rc_memref_get_value(rc_memref_t* self, rc_
 
       break;
 
-    case RC_MEMSIZE_32_BITS:
+    case 139:
       value = peek(self->address, 4, ud);
 
       if (self->is_bcd) {

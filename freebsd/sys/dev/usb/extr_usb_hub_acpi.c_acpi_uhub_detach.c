@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct acpi_uhub_softc {int /*<<< orphan*/  port; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_USBDEV ; 
- struct acpi_uhub_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uhub_detach (int /*<<< orphan*/ ) ; 
+
+
+
+struct acpi_uhub_softc {int port; } ;
+typedef int device_t ;
+
+
+ int M_USBDEV ;
+ struct acpi_uhub_softc* device_get_softc (int ) ;
+ int free (int ,int ) ;
+ int uhub_detach (int ) ;
 
 __attribute__((used)) static int
 acpi_uhub_detach(device_t dev)
 {
-	struct acpi_uhub_softc *sc = device_get_softc(dev);
+ struct acpi_uhub_softc *sc = device_get_softc(dev);
 
-	free(sc->port, M_USBDEV);
+ free(sc->port, M_USBDEV);
 
-	return (uhub_detach(dev));
+ return (uhub_detach(dev));
 }

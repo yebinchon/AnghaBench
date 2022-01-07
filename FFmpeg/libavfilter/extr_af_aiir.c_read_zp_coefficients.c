@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char*) ; 
- char* av_strdup (char*) ; 
- char* av_strtok (char*,char*,char**) ; 
- int sscanf (char*,char const*,double*,double*) ; 
+
+
+
+typedef int AVFilterContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_freep (char**) ;
+ int av_log (int *,int ,char*,char*) ;
+ char* av_strdup (char*) ;
+ char* av_strtok (char*,char*,char**) ;
+ int sscanf (char*,char const*,double*,double*) ;
 
 __attribute__((used)) static int read_zp_coefficients(AVFilterContext *ctx, char *item_str, int nb_items, double *dst, const char *format)
 {
-    char *p, *arg, *old_str, *saveptr = NULL;
+    char *p, *arg, *old_str, *saveptr = ((void*)0);
     int i;
 
     p = old_str = av_strdup(item_str);
@@ -35,7 +35,7 @@ __attribute__((used)) static int read_zp_coefficients(AVFilterContext *ctx, char
         if (!(arg = av_strtok(p, " ", &saveptr)))
             break;
 
-        p = NULL;
+        p = ((void*)0);
         if (sscanf(arg, format, &dst[i*2], &dst[i*2+1]) != 2) {
             av_log(ctx, AV_LOG_ERROR, "Invalid coefficients supplied: %s\n", arg);
             av_freep(&old_str);

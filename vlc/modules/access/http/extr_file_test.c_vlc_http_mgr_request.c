@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+
+
+typedef int time_t ;
 struct vlc_http_msg {int dummy; } ;
 struct vlc_http_mgr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ etags ; 
- scalar_t__ lang ; 
- scalar_t__ offset ; 
- int secure ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  stream ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/ * strstr (char const*,char*) ; 
- scalar_t__ strtoul (char const*,char**,int) ; 
- char* ua ; 
- char* vlc_http_msg_get_agent (struct vlc_http_msg const*) ; 
- char* vlc_http_msg_get_authority (struct vlc_http_msg const*) ; 
- char* vlc_http_msg_get_header (struct vlc_http_msg const*,char*) ; 
- struct vlc_http_msg* vlc_http_msg_get_initial (int /*<<< orphan*/ *) ; 
- char* vlc_http_msg_get_method (struct vlc_http_msg const*) ; 
- char* vlc_http_msg_get_path (struct vlc_http_msg const*) ; 
- char* vlc_http_msg_get_scheme (struct vlc_http_msg const*) ; 
- int vlc_http_msg_get_time (struct vlc_http_msg const*,char*) ; 
+
+ int assert (int) ;
+ scalar_t__ etags ;
+ scalar_t__ lang ;
+ scalar_t__ offset ;
+ int secure ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int stream ;
+ scalar_t__ strncmp (char const*,char*,int) ;
+ int * strstr (char const*,char*) ;
+ scalar_t__ strtoul (char const*,char**,int) ;
+ char* ua ;
+ char* vlc_http_msg_get_agent (struct vlc_http_msg const*) ;
+ char* vlc_http_msg_get_authority (struct vlc_http_msg const*) ;
+ char* vlc_http_msg_get_header (struct vlc_http_msg const*,char*) ;
+ struct vlc_http_msg* vlc_http_msg_get_initial (int *) ;
+ char* vlc_http_msg_get_method (struct vlc_http_msg const*) ;
+ char* vlc_http_msg_get_path (struct vlc_http_msg const*) ;
+ char* vlc_http_msg_get_scheme (struct vlc_http_msg const*) ;
+ int vlc_http_msg_get_time (struct vlc_http_msg const*,char*) ;
 
 struct vlc_http_msg *vlc_http_mgr_request(struct vlc_http_mgr *mgr, bool https,
                                           const char *host, unsigned port,
@@ -43,7 +43,7 @@ struct vlc_http_msg *vlc_http_mgr_request(struct vlc_http_mgr *mgr, bool https,
     char *end;
 
     assert(https == secure);
-    assert(mgr == NULL);
+    assert(mgr == ((void*)0));
     assert(!strcmp(host, "www.example.com"));
     assert(port == 8443);
 
@@ -58,23 +58,23 @@ struct vlc_http_msg *vlc_http_mgr_request(struct vlc_http_mgr *mgr, bool https,
     str = vlc_http_msg_get_agent(req);
     assert(!strcmp(str, ua));
     str = vlc_http_msg_get_header(req, "Referer");
-    assert(str == NULL);
+    assert(str == ((void*)0));
     str = vlc_http_msg_get_header(req, "Accept");
-    assert(str == NULL || strstr(str, "*/*") != NULL);
+    assert(str == ((void*)0) || strstr(str, "*/*") != ((void*)0));
 
     str = vlc_http_msg_get_header(req, "Accept-Language");
-    /* This test case does not call setlocale(), so en_US can be assumed. */
+
     if (lang != 0)
     {
-        assert(str != NULL && strncmp(str, "en_US", 5) == 0);
+        assert(str != ((void*)0) && strncmp(str, "en_US", 5) == 0);
         if (lang > 0)
             lang--;
     }
     else
-        assert(str == NULL);
+        assert(str == ((void*)0));
 
     str = vlc_http_msg_get_header(req, "Range");
-    assert(str != NULL && !strncmp(str, "bytes=", 6)
+    assert(str != ((void*)0) && !strncmp(str, "bytes=", 6)
         && strtoul(str + 6, &end, 10) == offset && *end == '-');
 
     time_t mtime = vlc_http_msg_get_time(req, "If-Unmodified-Since");
@@ -83,9 +83,9 @@ struct vlc_http_msg *vlc_http_mgr_request(struct vlc_http_mgr *mgr, bool https,
     if (etags)
     {
         if (offset != 0)
-            assert(str != NULL && !strcmp(str, "\"foobar42\""));
+            assert(str != ((void*)0) && !strcmp(str, "\"foobar42\""));
         else
-        if (str != NULL)
+        if (str != ((void*)0))
             assert(strcmp(str, "*") || strcmp(str, "\"foobar42\""));
     }
     else

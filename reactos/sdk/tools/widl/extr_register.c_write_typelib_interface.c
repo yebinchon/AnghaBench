@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_1__ typelib_t ;
-struct TYPE_7__ {int /*<<< orphan*/  name; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_2__ type_t ;
-typedef  int /*<<< orphan*/  UUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_DISPINTERFACE ; 
- int /*<<< orphan*/  ATTR_OLEAUTOMATION ; 
- int /*<<< orphan*/  ATTR_UUID ; 
- int /*<<< orphan*/  ATTR_VERSION ; 
- int /*<<< orphan*/  MAJORVERSION (unsigned int) ; 
- int /*<<< orphan*/  MINORVERSION (unsigned int) ; 
- int /*<<< orphan*/  format_uuid (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int get_attrv (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  indent ; 
- int /*<<< orphan*/  is_attr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object (TYPE_2__ const*) ; 
- int /*<<< orphan*/  put_str (int /*<<< orphan*/ ,char*,...) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int attrs; } ;
+typedef TYPE_1__ typelib_t ;
+struct TYPE_7__ {int name; int attrs; } ;
+typedef TYPE_2__ type_t ;
+typedef int UUID ;
+
+
+ int ATTR_DISPINTERFACE ;
+ int ATTR_OLEAUTOMATION ;
+ int ATTR_UUID ;
+ int ATTR_VERSION ;
+ int MAJORVERSION (unsigned int) ;
+ int MINORVERSION (unsigned int) ;
+ int format_uuid (int const*) ;
+ int * get_attrp (int ,int ) ;
+ unsigned int get_attrv (int ,int ) ;
+ int indent ;
+ int is_attr (int ,int ) ;
+ int is_object (TYPE_2__ const*) ;
+ int put_str (int ,char*,...) ;
 
 __attribute__((used)) static void write_typelib_interface( const type_t *iface, const typelib_t *typelib )
 {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int atomic_inc_return (int /*<<< orphan*/ *) ; 
- int stream_open (struct inode*,struct file*) ; 
- int /*<<< orphan*/  wdrtas_miscdev_open ; 
- int /*<<< orphan*/  wdrtas_timer_keepalive () ; 
- int /*<<< orphan*/  wdrtas_timer_start () ; 
+
+ int EBUSY ;
+ int atomic_dec (int *) ;
+ int atomic_inc_return (int *) ;
+ int stream_open (struct inode*,struct file*) ;
+ int wdrtas_miscdev_open ;
+ int wdrtas_timer_keepalive () ;
+ int wdrtas_timer_start () ;
 
 __attribute__((used)) static int wdrtas_open(struct inode *inode, struct file *file)
 {
-	/* only open once */
-	if (atomic_inc_return(&wdrtas_miscdev_open) > 1) {
-		atomic_dec(&wdrtas_miscdev_open);
-		return -EBUSY;
-	}
 
-	wdrtas_timer_start();
-	wdrtas_timer_keepalive();
+ if (atomic_inc_return(&wdrtas_miscdev_open) > 1) {
+  atomic_dec(&wdrtas_miscdev_open);
+  return -EBUSY;
+ }
 
-	return stream_open(inode, file);
+ wdrtas_timer_start();
+ wdrtas_timer_keepalive();
+
+ return stream_open(inode, file);
 }

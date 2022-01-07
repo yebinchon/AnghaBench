@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int cursorMode; int stickyKeys; scalar_t__* keys; int stickyMouseButtons; scalar_t__* mouseButtons; int rawMouseMotion; void* lockKeyMods; int /*<<< orphan*/  virtualCursorPosY; int /*<<< orphan*/  virtualCursorPosX; } ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int GLFW_CURSOR ; 
- int GLFW_CURSOR_DISABLED ; 
- int GLFW_CURSOR_HIDDEN ; 
- int GLFW_CURSOR_NORMAL ; 
- void* GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
- int GLFW_KEY_LAST ; 
- int GLFW_LOCK_KEY_MODS ; 
- int GLFW_MOUSE_BUTTON_LAST ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int GLFW_RAW_MOUSE_MOTION ; 
- void* GLFW_RELEASE ; 
- int GLFW_STICKY_KEYS ; 
- int GLFW_STICKY_MOUSE_BUTTONS ; 
- void* GLFW_TRUE ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT () ; 
- scalar_t__ _GLFW_STICK ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  _glfwPlatformGetCursorPos (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _glfwPlatformRawMouseMotionSupported () ; 
- int /*<<< orphan*/  _glfwPlatformSetCursorMode (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _glfwPlatformSetRawMouseMotion (TYPE_1__*,int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int cursorMode; int stickyKeys; scalar_t__* keys; int stickyMouseButtons; scalar_t__* mouseButtons; int rawMouseMotion; void* lockKeyMods; int virtualCursorPosY; int virtualCursorPosX; } ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int GLFWwindow ;
+
+
+ int GLFW_CURSOR ;
+ int GLFW_CURSOR_DISABLED ;
+ int GLFW_CURSOR_HIDDEN ;
+ int GLFW_CURSOR_NORMAL ;
+ void* GLFW_FALSE ;
+ int GLFW_INVALID_ENUM ;
+ int GLFW_KEY_LAST ;
+ int GLFW_LOCK_KEY_MODS ;
+ int GLFW_MOUSE_BUTTON_LAST ;
+ int GLFW_PLATFORM_ERROR ;
+ int GLFW_RAW_MOUSE_MOTION ;
+ void* GLFW_RELEASE ;
+ int GLFW_STICKY_KEYS ;
+ int GLFW_STICKY_MOUSE_BUTTONS ;
+ void* GLFW_TRUE ;
+ int _GLFW_REQUIRE_INIT () ;
+ scalar_t__ _GLFW_STICK ;
+ int _glfwInputError (int ,char*,...) ;
+ int _glfwPlatformGetCursorPos (TYPE_1__*,int *,int *) ;
+ int _glfwPlatformRawMouseMotionSupported () ;
+ int _glfwPlatformSetCursorMode (TYPE_1__*,int) ;
+ int _glfwPlatformSetRawMouseMotion (TYPE_1__*,int) ;
+ int assert (int ) ;
 
 void glfwSetInputMode(GLFWwindow* handle, int mode, int value)
 {
     _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
+    assert(window != ((void*)0));
 
     _GLFW_REQUIRE_INIT();
 
@@ -79,8 +79,8 @@ void glfwSetInputMode(GLFWwindow* handle, int mode, int value)
         {
             int i;
 
-            // Release all sticky keys
-            for (i = 0;  i <= GLFW_KEY_LAST;  i++)
+
+            for (i = 0; i <= GLFW_KEY_LAST; i++)
             {
                 if (window->keys[i] == _GLFW_STICK)
                     window->keys[i] = GLFW_RELEASE;
@@ -99,8 +99,8 @@ void glfwSetInputMode(GLFWwindow* handle, int mode, int value)
         {
             int i;
 
-            // Release all sticky mouse buttons
-            for (i = 0;  i <= GLFW_MOUSE_BUTTON_LAST;  i++)
+
+            for (i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++)
             {
                 if (window->mouseButtons[i] == _GLFW_STICK)
                     window->mouseButtons[i] = GLFW_RELEASE;

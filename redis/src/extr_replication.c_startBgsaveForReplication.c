@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rdbSaveInfo ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int rdbSaveInfo ;
 struct TYPE_8__ {TYPE_2__* value; } ;
-typedef  TYPE_1__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-struct TYPE_9__ {scalar_t__ replstate; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_2__ client ;
-struct TYPE_10__ {int /*<<< orphan*/  slaves; int /*<<< orphan*/  rdb_filename; scalar_t__ repl_diskless_sync; } ;
+typedef TYPE_1__ listNode ;
+typedef int listIter ;
+struct TYPE_9__ {scalar_t__ replstate; int flags; } ;
+typedef TYPE_2__ client ;
+struct TYPE_10__ {int slaves; int rdb_filename; scalar_t__ repl_diskless_sync; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENT_CLOSE_AFTER_REPLY ; 
- int /*<<< orphan*/  CLIENT_SLAVE ; 
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  LL_NOTICE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- scalar_t__ REPL_STATE_NONE ; 
- int SLAVE_CAPA_EOF ; 
- scalar_t__ SLAVE_STATE_WAIT_BGSAVE_START ; 
- int /*<<< orphan*/  addReplyError (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  getPsyncInitialOffset () ; 
- int /*<<< orphan*/  listDelNode (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_1__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rdbPopulateSaveInfo (int /*<<< orphan*/ *) ; 
- int rdbSaveBackground (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int rdbSaveToSlavesSockets (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  replicationScriptCacheFlush () ; 
- int /*<<< orphan*/  replicationSetupSlaveForFullResync (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_3__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,...) ; 
+
+ int CLIENT_CLOSE_AFTER_REPLY ;
+ int CLIENT_SLAVE ;
+ int C_ERR ;
+ int C_OK ;
+ int LL_NOTICE ;
+ int LL_WARNING ;
+ scalar_t__ REPL_STATE_NONE ;
+ int SLAVE_CAPA_EOF ;
+ scalar_t__ SLAVE_STATE_WAIT_BGSAVE_START ;
+ int addReplyError (TYPE_2__*,char*) ;
+ int getPsyncInitialOffset () ;
+ int listDelNode (int ,TYPE_1__*) ;
+ TYPE_1__* listNext (int *) ;
+ int listRewind (int ,int *) ;
+ int * rdbPopulateSaveInfo (int *) ;
+ int rdbSaveBackground (int ,int *) ;
+ int rdbSaveToSlavesSockets (int *) ;
+ int replicationScriptCacheFlush () ;
+ int replicationSetupSlaveForFullResync (TYPE_2__*,int ) ;
+ TYPE_3__ server ;
+ int serverLog (int ,char*,...) ;
 
 int startBgsaveForReplication(int mincapa) {
     int retval;
@@ -55,8 +55,8 @@ int startBgsaveForReplication(int mincapa) {
 
     rdbSaveInfo rsi, *rsiptr;
     rsiptr = rdbPopulateSaveInfo(&rsi);
-    /* Only do rdbSave* when rsiptr is not NULL,
-     * otherwise slave will miss repl-stream-db. */
+
+
     if (rsiptr) {
         if (socket_target)
             retval = rdbSaveToSlavesSockets(rsiptr);
@@ -67,9 +67,9 @@ int startBgsaveForReplication(int mincapa) {
         retval = C_ERR;
     }
 
-    /* If we failed to BGSAVE, remove the slaves waiting for a full
-     * resynchronization from the list of slaves, inform them with
-     * an error about what happened, close the connection ASAP. */
+
+
+
     if (retval == C_ERR) {
         serverLog(LL_WARNING,"BGSAVE for replication failed");
         listRewind(server.slaves,&li);
@@ -88,8 +88,8 @@ int startBgsaveForReplication(int mincapa) {
         return retval;
     }
 
-    /* If the target is socket, rdbSaveToSlavesSockets() already setup
-     * the slaves for a full resync. Otherwise for disk target do it now.*/
+
+
     if (!socket_target) {
         listRewind(server.slaves,&li);
         while((ln = listNext(&li))) {
@@ -102,8 +102,8 @@ int startBgsaveForReplication(int mincapa) {
         }
     }
 
-    /* Flush the script cache, since we need that slave differences are
-     * accumulated without requiring slaves to match our cached scripts. */
+
+
     if (retval == C_OK) replicationScriptCacheFlush();
     return retval;
 }

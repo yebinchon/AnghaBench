@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int rounds; int* key; } ;
-typedef  TYPE_1__ AVTEA ;
+typedef TYPE_1__ AVTEA ;
 
-/* Variables and functions */
- int AV_RB32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AV_WB32 (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
+
+ int AV_RB32 (int const*) ;
+ int AV_WB32 (int const*,int) ;
+ int memcpy (int const*,int const*,int) ;
 
 __attribute__((used)) static void tea_crypt_ecb(AVTEA *ctx, uint8_t *dst, const uint8_t *src,
                           int decrypt, uint8_t *iv)

@@ -1,0 +1,113 @@
+; ModuleID = '/home/carl/AnghaBench/reactos/modules/rostests/winetests/urlmon/extr_generated.c_test_pack.c'
+source_filename = "/home/carl/AnghaBench/reactos/modules/rostests/winetests/urlmon/extr_generated.c_test_pack.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void ()* @test_pack to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @test_pack() #0 {
+  %1 = call i32 (...) @test_pack_BINDINFO()
+  %2 = call i32 (...) @test_pack_IBindHost()
+  %3 = call i32 (...) @test_pack_IBindHostVtbl()
+  %4 = call i32 (...) @test_pack_IBindStatusCallback()
+  %5 = call i32 (...) @test_pack_IBindStatusCallbackVtbl()
+  %6 = call i32 (...) @test_pack_IBinding()
+  %7 = call i32 (...) @test_pack_IBindingVtbl()
+  %8 = call i32 (...) @test_pack_IInternetProtocolInfo()
+  %9 = call i32 (...) @test_pack_IInternetProtocolInfoVtbl()
+  %10 = call i32 (...) @test_pack_IInternetSession()
+  %11 = call i32 (...) @test_pack_IInternetSessionVtbl()
+  %12 = call i32 (...) @test_pack_IPersistMoniker()
+  %13 = call i32 (...) @test_pack_IPersistMonikerVtbl()
+  %14 = call i32 (...) @test_pack_IWinInetHttpInfo()
+  %15 = call i32 (...) @test_pack_IWinInetHttpInfoVtbl()
+  %16 = call i32 (...) @test_pack_IWinInetInfo()
+  %17 = call i32 (...) @test_pack_IWinInetInfoVtbl()
+  %18 = call i32 (...) @test_pack_LPBINDHOST()
+  %19 = call i32 (...) @test_pack_LPBINDING()
+  %20 = call i32 (...) @test_pack_LPBINDSTATUSCALLBACK()
+  %21 = call i32 (...) @test_pack_LPIINTERNETPROTOCOLINFO()
+  %22 = call i32 (...) @test_pack_LPIINTERNETSESSION()
+  %23 = call i32 (...) @test_pack_LPPERSISTMONIKER()
+  %24 = call i32 (...) @test_pack_LPREMFORMATETC()
+  %25 = call i32 (...) @test_pack_LPREMSECURITY_ATTRIBUTES()
+  %26 = call i32 (...) @test_pack_LPWININETHTTPINFO()
+  %27 = call i32 (...) @test_pack_LPWININETINFO()
+  %28 = call i32 (...) @test_pack_PREMSECURITY_ATTRIBUTES()
+  %29 = call i32 (...) @test_pack_REMSECURITY_ATTRIBUTES()
+  %30 = call i32 (...) @test_pack_RemBINDINFO()
+  %31 = call i32 (...) @test_pack_RemFORMATETC()
+  ret void
+}
+
+declare dso_local i32 @test_pack_BINDINFO(...) #1
+
+declare dso_local i32 @test_pack_IBindHost(...) #1
+
+declare dso_local i32 @test_pack_IBindHostVtbl(...) #1
+
+declare dso_local i32 @test_pack_IBindStatusCallback(...) #1
+
+declare dso_local i32 @test_pack_IBindStatusCallbackVtbl(...) #1
+
+declare dso_local i32 @test_pack_IBinding(...) #1
+
+declare dso_local i32 @test_pack_IBindingVtbl(...) #1
+
+declare dso_local i32 @test_pack_IInternetProtocolInfo(...) #1
+
+declare dso_local i32 @test_pack_IInternetProtocolInfoVtbl(...) #1
+
+declare dso_local i32 @test_pack_IInternetSession(...) #1
+
+declare dso_local i32 @test_pack_IInternetSessionVtbl(...) #1
+
+declare dso_local i32 @test_pack_IPersistMoniker(...) #1
+
+declare dso_local i32 @test_pack_IPersistMonikerVtbl(...) #1
+
+declare dso_local i32 @test_pack_IWinInetHttpInfo(...) #1
+
+declare dso_local i32 @test_pack_IWinInetHttpInfoVtbl(...) #1
+
+declare dso_local i32 @test_pack_IWinInetInfo(...) #1
+
+declare dso_local i32 @test_pack_IWinInetInfoVtbl(...) #1
+
+declare dso_local i32 @test_pack_LPBINDHOST(...) #1
+
+declare dso_local i32 @test_pack_LPBINDING(...) #1
+
+declare dso_local i32 @test_pack_LPBINDSTATUSCALLBACK(...) #1
+
+declare dso_local i32 @test_pack_LPIINTERNETPROTOCOLINFO(...) #1
+
+declare dso_local i32 @test_pack_LPIINTERNETSESSION(...) #1
+
+declare dso_local i32 @test_pack_LPPERSISTMONIKER(...) #1
+
+declare dso_local i32 @test_pack_LPREMFORMATETC(...) #1
+
+declare dso_local i32 @test_pack_LPREMSECURITY_ATTRIBUTES(...) #1
+
+declare dso_local i32 @test_pack_LPWININETHTTPINFO(...) #1
+
+declare dso_local i32 @test_pack_LPWININETINFO(...) #1
+
+declare dso_local i32 @test_pack_PREMSECURITY_ATTRIBUTES(...) #1
+
+declare dso_local i32 @test_pack_REMSECURITY_ATTRIBUTES(...) #1
+
+declare dso_local i32 @test_pack_RemBINDINFO(...) #1
+
+declare dso_local i32 @test_pack_RemFORMATETC(...) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

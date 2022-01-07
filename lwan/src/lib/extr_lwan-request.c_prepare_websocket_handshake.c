@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  websocket_uuid ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int websocket_uuid ;
 struct lwan_request {int flags; TYPE_1__* conn; } ;
-typedef  int /*<<< orphan*/  sha1_context ;
-typedef  enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
-typedef  int /*<<< orphan*/  digest ;
-struct TYPE_2__ {int flags; int /*<<< orphan*/  coro; } ;
+typedef int sha1_context ;
+typedef enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
+typedef int digest ;
+struct TYPE_2__ {int flags; int coro; } ;
 
-/* Variables and functions */
- int CONN_IS_UPGRADE ; 
- int HTTP_BAD_REQUEST ; 
- int HTTP_INTERNAL_ERROR ; 
- int HTTP_SWITCHING_PROTOCOLS ; 
- int RESPONSE_SENT_HEADERS ; 
- scalar_t__ UNLIKELY (int) ; 
- scalar_t__ base64_encode (unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  base64_validate (void*,size_t const) ; 
- int /*<<< orphan*/  coro_defer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free ; 
- char* lwan_request_get_header (struct lwan_request*,char*) ; 
- int /*<<< orphan*/  sha1_finalize (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  sha1_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sha1_update (int /*<<< orphan*/ *,unsigned char const*,size_t const) ; 
- int /*<<< orphan*/  streq (char const*,char*) ; 
- size_t strlen (char const*) ; 
+
+ int CONN_IS_UPGRADE ;
+ int HTTP_BAD_REQUEST ;
+ int HTTP_INTERNAL_ERROR ;
+ int HTTP_SWITCHING_PROTOCOLS ;
+ int RESPONSE_SENT_HEADERS ;
+ scalar_t__ UNLIKELY (int) ;
+ scalar_t__ base64_encode (unsigned char*,int,int *) ;
+ int base64_validate (void*,size_t const) ;
+ int coro_defer (int ,int ,char*) ;
+ int free ;
+ char* lwan_request_get_header (struct lwan_request*,char*) ;
+ int sha1_finalize (int *,unsigned char*) ;
+ int sha1_init (int *) ;
+ int sha1_update (int *,unsigned char const*,size_t const) ;
+ int streq (char const*,char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static enum lwan_http_status
 prepare_websocket_handshake(struct lwan_request *request, char **encoded)
@@ -67,7 +67,7 @@ prepare_websocket_handshake(struct lwan_request *request, char **encoded)
     sha1_update(&ctx, websocket_uuid, sizeof(websocket_uuid) - 1);
     sha1_finalize(&ctx, digest);
 
-    *encoded = (char *)base64_encode(digest, sizeof(digest), NULL);
+    *encoded = (char *)base64_encode(digest, sizeof(digest), ((void*)0));
     if (UNLIKELY(!*encoded))
         return HTTP_INTERNAL_ERROR;
     coro_defer(request->conn->coro, free, *encoded);

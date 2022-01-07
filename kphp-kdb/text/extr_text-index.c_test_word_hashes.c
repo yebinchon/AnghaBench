@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  len; int /*<<< orphan*/  str; struct TYPE_3__* next; } ;
-typedef  TYPE_1__ word_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int len; int str; struct TYPE_3__* next; } ;
+typedef TYPE_1__ word_t ;
 struct TYPE_4__ {TYPE_1__** A; } ;
 
-/* Variables and functions */
- int PRIME ; 
- TYPE_2__ Words ; 
- int __builtin_clzll (unsigned long long) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  crc64 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ dyn_cur ; 
- char* dyn_top ; 
- long long estimate_opt_pfx_size (unsigned long long*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long long,double,long long,...) ; 
- int hash_conflicts ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  ull_sort (unsigned long long*,int) ; 
+
+ int PRIME ;
+ TYPE_2__ Words ;
+ int __builtin_clzll (unsigned long long) ;
+ int assert (int) ;
+ int crc64 (int ,int ) ;
+ scalar_t__ dyn_cur ;
+ char* dyn_top ;
+ long long estimate_opt_pfx_size (unsigned long long*,int) ;
+ int fprintf (int ,char*,long long,double,long long,...) ;
+ int hash_conflicts ;
+ int stderr ;
+ int ull_sort (unsigned long long*,int) ;
 
 void test_word_hashes (void) {
   int i, j, N;

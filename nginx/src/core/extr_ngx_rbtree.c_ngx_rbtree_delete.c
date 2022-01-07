@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ngx_uint_t ;
+
+
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef scalar_t__ ngx_uint_t ;
 struct TYPE_20__ {TYPE_2__* sentinel; TYPE_2__* root; } ;
-typedef  TYPE_1__ ngx_rbtree_t ;
+typedef TYPE_1__ ngx_rbtree_t ;
 struct TYPE_21__ {struct TYPE_21__* parent; struct TYPE_21__* left; struct TYPE_21__* right; scalar_t__ key; } ;
-typedef  TYPE_2__ ngx_rbtree_node_t ;
+typedef TYPE_2__ ngx_rbtree_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ngx_rbt_black (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_rbt_copy_color (TYPE_2__*,TYPE_2__*) ; 
- scalar_t__ ngx_rbt_is_black (TYPE_2__*) ; 
- scalar_t__ ngx_rbt_is_red (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_rbt_red (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_rbtree_left_rotate (TYPE_2__**,TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* ngx_rbtree_min (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_rbtree_right_rotate (TYPE_2__**,TYPE_2__*,TYPE_2__*) ; 
+
+ int ngx_rbt_black (TYPE_2__*) ;
+ int ngx_rbt_copy_color (TYPE_2__*,TYPE_2__*) ;
+ scalar_t__ ngx_rbt_is_black (TYPE_2__*) ;
+ scalar_t__ ngx_rbt_is_red (TYPE_2__*) ;
+ int ngx_rbt_red (TYPE_2__*) ;
+ int ngx_rbtree_left_rotate (TYPE_2__**,TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* ngx_rbtree_min (TYPE_2__*,TYPE_2__*) ;
+ int ngx_rbtree_right_rotate (TYPE_2__**,TYPE_2__*,TYPE_2__*) ;
 
 void
 ngx_rbtree_delete(ngx_rbtree_t *tree, ngx_rbtree_node_t *node)
 {
-    ngx_uint_t           red;
-    ngx_rbtree_node_t  **root, *sentinel, *subst, *temp, *w;
+    ngx_uint_t red;
+    ngx_rbtree_node_t **root, *sentinel, *subst, *temp, *w;
 
-    /* a binary tree delete */
+
 
     root = &tree->root;
     sentinel = tree->sentinel;
@@ -56,10 +56,10 @@ ngx_rbtree_delete(ngx_rbtree_t *tree, ngx_rbtree_node_t *node)
         *root = temp;
         ngx_rbt_black(temp);
 
-        /* DEBUG stuff */
-        node->left = NULL;
-        node->right = NULL;
-        node->parent = NULL;
+
+        node->left = ((void*)0);
+        node->right = ((void*)0);
+        node->parent = ((void*)0);
         node->key = 0;
 
         return;
@@ -112,17 +112,17 @@ ngx_rbtree_delete(ngx_rbtree_t *tree, ngx_rbtree_node_t *node)
         }
     }
 
-    /* DEBUG stuff */
-    node->left = NULL;
-    node->right = NULL;
-    node->parent = NULL;
+
+    node->left = ((void*)0);
+    node->right = ((void*)0);
+    node->parent = ((void*)0);
     node->key = 0;
 
     if (red) {
         return;
     }
 
-    /* a delete fixup */
+
 
     while (temp != *root && ngx_rbt_is_black(temp)) {
 

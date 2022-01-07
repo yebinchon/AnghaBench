@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  wMilliseconds; int /*<<< orphan*/  wSecond; int /*<<< orphan*/  wMinute; int /*<<< orphan*/  wHour; int /*<<< orphan*/  wDay; int /*<<< orphan*/  wDayOfWeek; scalar_t__ wMonth; int /*<<< orphan*/  wYear; } ;
-typedef  TYPE_1__ SYSTEMTIME ;
-typedef  int /*<<< orphan*/  DOUBLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  date_from_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hour_from_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  min_from_time (int /*<<< orphan*/ ) ; 
- scalar_t__ month_from_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ms_from_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sec_from_time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  week_day (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  year_from_time (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int wMilliseconds; int wSecond; int wMinute; int wHour; int wDay; int wDayOfWeek; scalar_t__ wMonth; int wYear; } ;
+typedef TYPE_1__ SYSTEMTIME ;
+typedef int DOUBLE ;
+
+
+ int date_from_time (int ) ;
+ int hour_from_time (int ) ;
+ int min_from_time (int ) ;
+ scalar_t__ month_from_time (int ) ;
+ int ms_from_time (int ) ;
+ int sec_from_time (int ) ;
+ int week_day (int ) ;
+ int year_from_time (int ) ;
 
 __attribute__((used)) static SYSTEMTIME create_systemtime(DOUBLE time)
 {

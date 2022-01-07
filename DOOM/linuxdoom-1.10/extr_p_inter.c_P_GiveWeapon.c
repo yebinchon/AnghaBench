@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t weapontype_t ;
-struct TYPE_6__ {int* weaponowned; size_t pendingweapon; int /*<<< orphan*/  bonuscount; } ;
-typedef  TYPE_1__ player_t ;
-typedef  int boolean ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t weapontype_t ;
+struct TYPE_6__ {int* weaponowned; size_t pendingweapon; int bonuscount; } ;
+typedef TYPE_1__ player_t ;
+typedef int boolean ;
 struct TYPE_7__ {scalar_t__ ammo; } ;
 
-/* Variables and functions */
- scalar_t__ BONUSADD ; 
- int P_GiveAmmo (TYPE_1__*,scalar_t__,int) ; 
- int /*<<< orphan*/  S_StartSound (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ am_noammo ; 
- size_t consoleplayer ; 
- int deathmatch ; 
- scalar_t__ netgame ; 
- TYPE_1__* players ; 
- int /*<<< orphan*/  sfx_wpnup ; 
- TYPE_2__* weaponinfo ; 
+
+ scalar_t__ BONUSADD ;
+ int P_GiveAmmo (TYPE_1__*,scalar_t__,int) ;
+ int S_StartSound (int *,int ) ;
+ scalar_t__ am_noammo ;
+ size_t consoleplayer ;
+ int deathmatch ;
+ scalar_t__ netgame ;
+ TYPE_1__* players ;
+ int sfx_wpnup ;
+ TYPE_2__* weaponinfo ;
 
 boolean
 P_GiveWeapon
-( player_t*	player,
-  weapontype_t	weapon,
-  boolean	dropped )
+( player_t* player,
+  weapontype_t weapon,
+  boolean dropped )
 {
-    boolean	gaveammo;
-    boolean	gaveweapon;
-	
+    boolean gaveammo;
+    boolean gaveweapon;
+
     if (netgame
-	&& (deathmatch!=2)
-	 && !dropped )
+ && (deathmatch!=2)
+  && !dropped )
     {
-	// leave placed weapons forever on net games
-	if (player->weaponowned[weapon])
-	    return false;
 
-	player->bonuscount += BONUSADD;
-	player->weaponowned[weapon] = true;
+ if (player->weaponowned[weapon])
+     return 0;
 
-	if (deathmatch)
-	    P_GiveAmmo (player, weaponinfo[weapon].ammo, 5);
-	else
-	    P_GiveAmmo (player, weaponinfo[weapon].ammo, 2);
-	player->pendingweapon = weapon;
+ player->bonuscount += BONUSADD;
+ player->weaponowned[weapon] = 1;
 
-	if (player == &players[consoleplayer])
-	    S_StartSound (NULL, sfx_wpnup);
-	return false;
+ if (deathmatch)
+     P_GiveAmmo (player, weaponinfo[weapon].ammo, 5);
+ else
+     P_GiveAmmo (player, weaponinfo[weapon].ammo, 2);
+ player->pendingweapon = weapon;
+
+ if (player == &players[consoleplayer])
+     S_StartSound (((void*)0), sfx_wpnup);
+ return 0;
     }
-	
+
     if (weaponinfo[weapon].ammo != am_noammo)
     {
-	// give one clip with a dropped weapon,
-	// two clips with a found weapon
-	if (dropped)
-	    gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 1);
-	else
-	    gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 2);
+
+
+ if (dropped)
+     gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 1);
+ else
+     gaveammo = P_GiveAmmo (player, weaponinfo[weapon].ammo, 2);
     }
     else
-	gaveammo = false;
-	
+ gaveammo = 0;
+
     if (player->weaponowned[weapon])
-	gaveweapon = false;
+ gaveweapon = 0;
     else
     {
-	gaveweapon = true;
-	player->weaponowned[weapon] = true;
-	player->pendingweapon = weapon;
+ gaveweapon = 1;
+ player->weaponowned[weapon] = 1;
+ player->pendingweapon = weapon;
     }
-	
+
     return (gaveweapon || gaveammo);
 }

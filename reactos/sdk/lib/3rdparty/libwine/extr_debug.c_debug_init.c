@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dbg_vlog; } ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetEnvironmentVariableA (char*,char*,scalar_t__) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  SetLastError (scalar_t__) ; 
- int /*<<< orphan*/  extfmt_default_dbg_vlog ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__ funcs ; 
- char* malloc (scalar_t__) ; 
- int nb_debug_options ; 
- int /*<<< orphan*/  parse_options (char*) ; 
- int /*<<< orphan*/  rosfmt_default_dbg_vlog ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  winefmt_default_dbg_vlog ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dbg_vlog; } ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ GetEnvironmentVariableA (char*,char*,scalar_t__) ;
+ scalar_t__ GetLastError () ;
+ int SetLastError (scalar_t__) ;
+ int extfmt_default_dbg_vlog ;
+ int free (char*) ;
+ TYPE_1__ funcs ;
+ char* malloc (scalar_t__) ;
+ int nb_debug_options ;
+ int parse_options (char*) ;
+ int rosfmt_default_dbg_vlog ;
+ scalar_t__ strcmp (char*,char*) ;
+ int winefmt_default_dbg_vlog ;
 
 __attribute__((used)) static void debug_init(void)
 {
     char *wine_debug;
     DWORD dwLength;
-    /* GetEnvironmentVariableA will change LastError! */
+
     DWORD LastError = GetLastError();
 
-    if (nb_debug_options != -1) return;  /* already initialized */
+    if (nb_debug_options != -1) return;
     nb_debug_options = 0;
 
-    dwLength = GetEnvironmentVariableA("DEBUGCHANNEL", NULL, 0);
+    dwLength = GetEnvironmentVariableA("DEBUGCHANNEL", ((void*)0), 0);
     if (dwLength)
     {
         wine_debug = malloc(dwLength);
@@ -50,7 +50,7 @@ __attribute__((used)) static void debug_init(void)
         }
     }
 
-    dwLength = GetEnvironmentVariableA("DEBUGFORMAT", NULL, 0);
+    dwLength = GetEnvironmentVariableA("DEBUGFORMAT", ((void*)0), 0);
     if (dwLength)
     {
         wine_debug = malloc(dwLength);

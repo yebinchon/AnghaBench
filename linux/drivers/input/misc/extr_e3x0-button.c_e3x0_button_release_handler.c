@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct input_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  KEY_POWER ; 
- int /*<<< orphan*/  input_report_key (struct input_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_sync (struct input_dev*) ; 
+
+ int IRQ_HANDLED ;
+ int KEY_POWER ;
+ int input_report_key (struct input_dev*,int ,int ) ;
+ int input_sync (struct input_dev*) ;
 
 __attribute__((used)) static irqreturn_t e3x0_button_release_handler(int irq, void *data)
 {
-	struct input_dev *idev = data;
+ struct input_dev *idev = data;
 
-	input_report_key(idev, KEY_POWER, 0);
-	input_sync(idev);
+ input_report_key(idev, KEY_POWER, 0);
+ input_sync(idev);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

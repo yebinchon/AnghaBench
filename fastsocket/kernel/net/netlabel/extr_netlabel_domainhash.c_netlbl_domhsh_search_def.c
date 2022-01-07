@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct netlbl_dom_map {int /*<<< orphan*/  valid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  netlbl_domhsh_def ; 
- struct netlbl_dom_map* netlbl_domhsh_search (char const*) ; 
- struct netlbl_dom_map* rcu_dereference (int /*<<< orphan*/ ) ; 
+
+
+
+struct netlbl_dom_map {int valid; } ;
+
+
+ int netlbl_domhsh_def ;
+ struct netlbl_dom_map* netlbl_domhsh_search (char const*) ;
+ struct netlbl_dom_map* rcu_dereference (int ) ;
 
 __attribute__((used)) static struct netlbl_dom_map *netlbl_domhsh_search_def(const char *domain)
 {
-	struct netlbl_dom_map *entry;
+ struct netlbl_dom_map *entry;
 
-	entry = netlbl_domhsh_search(domain);
-	if (entry == NULL) {
-		entry = rcu_dereference(netlbl_domhsh_def);
-		if (entry != NULL && !entry->valid)
-			entry = NULL;
-	}
+ entry = netlbl_domhsh_search(domain);
+ if (entry == ((void*)0)) {
+  entry = rcu_dereference(netlbl_domhsh_def);
+  if (entry != ((void*)0) && !entry->valid)
+   entry = ((void*)0);
+ }
 
-	return entry;
+ return entry;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  print_all_attributes (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sd_device_get_devpath (int /*<<< orphan*/ *,char const**) ; 
- scalar_t__ sd_device_get_driver (int /*<<< orphan*/ *,char const**) ; 
- scalar_t__ sd_device_get_parent (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ sd_device_get_subsystem (int /*<<< orphan*/ *,char const**) ; 
- int /*<<< orphan*/  sd_device_get_sysname (int /*<<< orphan*/ *,char const**) ; 
+
+
+
+typedef int sd_device ;
+
+
+ int print_all_attributes (int *,char*) ;
+ int printf (char*,...) ;
+ int sd_device_get_devpath (int *,char const**) ;
+ scalar_t__ sd_device_get_driver (int *,char const**) ;
+ scalar_t__ sd_device_get_parent (int *,int **) ;
+ scalar_t__ sd_device_get_subsystem (int *,char const**) ;
+ int sd_device_get_sysname (int *,char const**) ;
 
 __attribute__((used)) static int print_device_chain(sd_device *device) {
         sd_device *child, *parent;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int /*<<< orphan*/  ngx_mail_session_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_mail_session_t ;
 struct TYPE_5__ {int state; int* header_end; int* header_name_start; int* header_name_end; int* header_start; TYPE_1__* response; } ;
-typedef  TYPE_2__ ngx_mail_auth_http_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+typedef TYPE_2__ ngx_mail_auth_http_ctx_t ;
+typedef int ngx_int_t ;
 struct TYPE_4__ {int* pos; int* last; } ;
 
-/* Variables and functions */
-#define  CR 129 
-#define  LF 128 
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_DONE ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_OK ; 
+
+
+
+ int NGX_AGAIN ;
+ int NGX_DONE ;
+ int NGX_ERROR ;
+ int NGX_OK ;
 
 __attribute__((used)) static ngx_int_t
 ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
     ngx_mail_auth_http_ctx_t *ctx)
 {
-    u_char      c, ch, *p;
+    u_char c, ch, *p;
     enum {
         sw_start = 0,
         sw_name,
@@ -49,15 +49,15 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
 
         switch (state) {
 
-        /* first char */
+
         case sw_start:
 
             switch (ch) {
-            case CR:
+            case 129:
                 ctx->header_end = p;
                 state = sw_header_almost_done;
                 break;
-            case LF:
+            case 128:
                 ctx->header_end = p;
                 goto header_done;
             default:
@@ -77,7 +77,7 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
             }
             break;
 
-        /* header name */
+
         case sw_name:
             c = (u_char) (ch | 0x20);
             if (c >= 'a' && c <= 'z') {
@@ -98,7 +98,7 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
                 break;
             }
 
-            if (ch == CR) {
+            if (ch == 129) {
                 ctx->header_name_end = p;
                 ctx->header_start = p;
                 ctx->header_end = p;
@@ -106,7 +106,7 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
                 break;
             }
 
-            if (ch == LF) {
+            if (ch == 128) {
                 ctx->header_name_end = p;
                 ctx->header_start = p;
                 ctx->header_end = p;
@@ -115,17 +115,17 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
 
             return NGX_ERROR;
 
-        /* space* before header value */
+
         case sw_space_before_value:
             switch (ch) {
             case ' ':
                 break;
-            case CR:
+            case 129:
                 ctx->header_start = p;
                 ctx->header_end = p;
                 state = sw_almost_done;
                 break;
-            case LF:
+            case 128:
                 ctx->header_start = p;
                 ctx->header_end = p;
                 goto done;
@@ -136,32 +136,32 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
             }
             break;
 
-        /* header value */
+
         case sw_value:
             switch (ch) {
             case ' ':
                 ctx->header_end = p;
                 state = sw_space_after_value;
                 break;
-            case CR:
+            case 129:
                 ctx->header_end = p;
                 state = sw_almost_done;
                 break;
-            case LF:
+            case 128:
                 ctx->header_end = p;
                 goto done;
             }
             break;
 
-        /* space* before end of header line */
+
         case sw_space_after_value:
             switch (ch) {
             case ' ':
                 break;
-            case CR:
+            case 129:
                 state = sw_almost_done;
                 break;
-            case LF:
+            case 128:
                 goto done;
             default:
                 state = sw_value;
@@ -169,19 +169,19 @@ ngx_mail_auth_http_parse_header_line(ngx_mail_session_t *s,
             }
             break;
 
-        /* end of header line */
+
         case sw_almost_done:
             switch (ch) {
-            case LF:
+            case 128:
                 goto done;
             default:
                 return NGX_ERROR;
             }
 
-        /* end of header */
+
         case sw_header_almost_done:
             switch (ch) {
-            case LF:
+            case 128:
                 goto header_done;
             default:
                 return NGX_ERROR;

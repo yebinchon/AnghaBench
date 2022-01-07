@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pkey_id; } ;
-typedef  TYPE_1__ EVP_PKEY_ASN1_METHOD ;
-typedef  int /*<<< orphan*/  ENGINE ;
+typedef TYPE_1__ EVP_PKEY_ASN1_METHOD ;
+typedef int ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ *) ; 
- TYPE_1__* EVP_PKEY_asn1_find (int /*<<< orphan*/ **,int) ; 
- int NID_undef ; 
+
+ int ENGINE_finish (int *) ;
+ TYPE_1__* EVP_PKEY_asn1_find (int **,int) ;
+ int NID_undef ;
 
 int EVP_PKEY_type(int type)
 {
@@ -30,8 +30,8 @@ int EVP_PKEY_type(int type)
         ret = ameth->pkey_id;
     else
         ret = NID_undef;
-#ifndef OPENSSL_NO_ENGINE
+
     ENGINE_finish(e);
-#endif
+
     return ret;
 }

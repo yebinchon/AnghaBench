@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static unsigned int checksum(const char *zIn, size_t N){
   const unsigned char *z = (const unsigned char *)zIn;
   unsigned sum0 = 0;
@@ -37,10 +28,10 @@ __attribute__((used)) static unsigned int checksum(const char *zIn, size_t N){
   }
   sum3 += (sum2 << 8) + (sum1 << 16) + (sum0 << 24);
   switch(N){
-    case 3:   sum3 += (z[2] << 8);
-    case 2:   sum3 += (z[1] << 16);
-    case 1:   sum3 += (z[0] << 24);
-    default:  ;
+    case 3: sum3 += (z[2] << 8);
+    case 2: sum3 += (z[1] << 16);
+    case 1: sum3 += (z[0] << 24);
+    default: ;
   }
   return sum3;
 }

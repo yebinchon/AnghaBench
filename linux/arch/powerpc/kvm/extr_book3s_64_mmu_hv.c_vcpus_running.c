@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  vcpus_running; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int vcpus_running; } ;
 struct kvm {TYPE_1__ arch; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_read (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ atomic_read (int *) ;
 
 __attribute__((used)) static int vcpus_running(struct kvm *kvm)
 {
-	return atomic_read(&kvm->arch.vcpus_running) != 0;
+ return atomic_read(&kvm->arch.vcpus_running) != 0;
 }

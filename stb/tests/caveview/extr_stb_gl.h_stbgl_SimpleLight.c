@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_AMBIENT ; 
- int /*<<< orphan*/  GL_AMBIENT_AND_DIFFUSE ; 
- scalar_t__ GL_COLOR_MATERIAL ; 
- int /*<<< orphan*/  GL_DIFFUSE ; 
- int /*<<< orphan*/  GL_FRONT ; 
- scalar_t__ GL_LIGHT0 ; 
- int /*<<< orphan*/  GL_POSITION ; 
- int /*<<< orphan*/  GL_SPECULAR ; 
- int /*<<< orphan*/  glColorMaterial (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (scalar_t__) ; 
- int /*<<< orphan*/  glLightfv (scalar_t__,int /*<<< orphan*/ ,float*) ; 
- float sqrt (float) ; 
+
+
+
+typedef scalar_t__ GLuint ;
+
+
+ int GL_AMBIENT ;
+ int GL_AMBIENT_AND_DIFFUSE ;
+ scalar_t__ GL_COLOR_MATERIAL ;
+ int GL_DIFFUSE ;
+ int GL_FRONT ;
+ scalar_t__ GL_LIGHT0 ;
+ int GL_POSITION ;
+ int GL_SPECULAR ;
+ int glColorMaterial (int ,int ) ;
+ int glEnable (scalar_t__) ;
+ int glLightfv (scalar_t__,int ,float*) ;
+ float sqrt (float) ;
 
 void stbgl_SimpleLight(int index, float bright, float x, float y, float z)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int EDID_AudioFormat_eMaxCount ; 
- int EDID_AudioFormat_ePCM ; 
- int EDID_AudioSampleRate_e192KHz ; 
- int EDID_AudioSampleRate_e32KHz ; 
- int EDID_AudioSampleRate_e44KHz ; 
- int EDID_AudioSampleSize_16bit ; 
- int EDID_AudioSampleSize_24bit ; 
- int /*<<< orphan*/  LOG_STD (char*,char const*,int,int,int) ; 
- scalar_t__ vc_tv_hdmi_audio_supported (int,int,int,int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int EDID_AudioFormat_eMaxCount ;
+ int EDID_AudioFormat_ePCM ;
+ int EDID_AudioSampleRate_e192KHz ;
+ int EDID_AudioSampleRate_e32KHz ;
+ int EDID_AudioSampleRate_e44KHz ;
+ int EDID_AudioSampleSize_16bit ;
+ int EDID_AudioSampleSize_24bit ;
+ int LOG_STD (char*,char const*,int,int,int) ;
+ scalar_t__ vc_tv_hdmi_audio_supported (int,int,int,int) ;
 
 __attribute__((used)) static int get_audiosup( void )
 {

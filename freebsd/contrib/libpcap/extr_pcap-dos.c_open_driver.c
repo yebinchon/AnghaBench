@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct device {int flags; int /*<<< orphan*/  (* set_multicast_list ) (struct device*) ;int /*<<< orphan*/  (* name ) (struct device*) ;int /*<<< orphan*/  (* open ) (struct device*) ;int /*<<< orphan*/  (* probe ) (struct device*) ;struct device* next; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct device {int flags; int (* set_multicast_list ) (struct device*) ;int (* name ) (struct device*) ;int (* open ) (struct device*) ;int (* probe ) (struct device*) ;struct device* next; } ;
 struct TYPE_2__ {char* error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLUSHK () ; 
- int IFF_ALLMULTI ; 
- int IFF_PROMISC ; 
- int /*<<< orphan*/  PCAP_ASSERT (int /*<<< orphan*/  (*) (struct device*)) ; 
- int /*<<< orphan*/  PCAP_ERRBUF_SIZE ; 
- struct device* active_dev ; 
- scalar_t__ dev_base ; 
- int /*<<< orphan*/  pcap_snprintf (char*,int /*<<< orphan*/ ,char*,char const*) ; 
- TYPE_1__ pktInfo ; 
- struct device* probed_dev ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strcmp (char const*,int /*<<< orphan*/  (*) (struct device*)) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/  (*) (struct device*),char*,int) ; 
- int /*<<< orphan*/  stub1 (struct device*) ; 
- int /*<<< orphan*/  stub2 (struct device*) ; 
- int /*<<< orphan*/  stub3 (struct device*) ; 
+
+ int FLUSHK () ;
+ int IFF_ALLMULTI ;
+ int IFF_PROMISC ;
+ int PCAP_ASSERT (int (*) (struct device*)) ;
+ int PCAP_ERRBUF_SIZE ;
+ struct device* active_dev ;
+ scalar_t__ dev_base ;
+ int pcap_snprintf (char*,int ,char*,char const*) ;
+ TYPE_1__ pktInfo ;
+ struct device* probed_dev ;
+ int strcat (char*,char*) ;
+ scalar_t__ strcmp (char const*,int (*) (struct device*)) ;
+ int strncmp (int (*) (struct device*),char*,int) ;
+ int stub1 (struct device*) ;
+ int stub2 (struct device*) ;
+ int stub3 (struct device*) ;
 
 __attribute__((used)) static struct device *
 open_driver (const char *dev_name, char *ebuf, int promisc)
@@ -44,16 +44,16 @@ open_driver (const char *dev_name, char *ebuf, int promisc)
     if (strcmp (dev_name,dev->name))
        continue;
 
-    if (!probed_dev)   /* user didn't call pcap_lookupdev() first */
+    if (!probed_dev)
     {
       PCAP_ASSERT (dev->probe);
 
-      if (!(*dev->probe)(dev))    /* call the xx_probe() function */
+      if (!(*dev->probe)(dev))
       {
         pcap_snprintf (ebuf, PCAP_ERRBUF_SIZE, "failed to detect device `%s'", dev_name);
-        return (NULL);
+        return (((void*)0));
       }
-      probed_dev = dev;  /* device is probed okay and may be used */
+      probed_dev = dev;
     }
     else if (dev != probed_dev)
     {
@@ -62,10 +62,10 @@ open_driver (const char *dev_name, char *ebuf, int promisc)
 
     FLUSHK();
 
-    /* Select what traffic to receive
-     */
+
+
     if (promisc)
-         dev->flags |=  (IFF_ALLMULTI | IFF_PROMISC);
+         dev->flags |= (IFF_ALLMULTI | IFF_PROMISC);
     else dev->flags &= ~(IFF_ALLMULTI | IFF_PROMISC);
 
     PCAP_ASSERT (dev->open);
@@ -78,31 +78,31 @@ open_driver (const char *dev_name, char *ebuf, int promisc)
         strcat (ebuf, ": ");
         strcat (ebuf, pktInfo.error);
       }
-      return (NULL);
+      return (((void*)0));
     }
 
-    /* Some devices need this to operate in promiscous mode
-     */
+
+
     if (promisc && dev->set_multicast_list)
        (*dev->set_multicast_list) (dev);
 
-    active_dev = dev;   /* remember our active device */
+    active_dev = dev;
     break;
   }
 
-  /* 'dev_name' not matched in 'dev_base' list.
-   */
+
+
   if (!dev)
   {
     pcap_snprintf (ebuf, PCAP_ERRBUF_SIZE, "device `%s' not supported", dev_name);
-    return (NULL);
+    return (((void*)0));
   }
 
 not_probed:
   if (!probed_dev)
   {
     pcap_snprintf (ebuf, PCAP_ERRBUF_SIZE, "device `%s' not probed", dev_name);
-    return (NULL);
+    return (((void*)0));
   }
   return (dev);
 }

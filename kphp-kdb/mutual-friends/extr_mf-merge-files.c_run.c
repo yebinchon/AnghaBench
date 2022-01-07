@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int A1 ; 
- int A2 ; 
- int B1 ; 
- int B2 ; 
- int MAX_ANS ; 
- int* a ; 
- int an ; 
- int /*<<< orphan*/  assert (int) ; 
- int* b ; 
- size_t* c ; 
- int* cnt ; 
- int* d ; 
- size_t dn ; 
- int engineN ; 
- scalar_t__* fd ; 
- int h_add (int,int) ; 
- int* h_key ; 
- int /*<<< orphan*/  h_rem (int) ; 
- int* h_val ; 
- scalar_t__ load (int,int,int*) ; 
- int maxn ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  my_read1 () ; 
- int /*<<< orphan*/  my_read2 () ; 
- int /*<<< orphan*/  my_write (int*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ test_mode ; 
- int this_mod ; 
- int un ; 
- int userN ; 
+ int A1 ;
+ int A2 ;
+ int B1 ;
+ int B2 ;
+ int MAX_ANS ;
+ int* a ;
+ int an ;
+ int assert (int) ;
+ int* b ;
+ size_t* c ;
+ int* cnt ;
+ int* d ;
+ size_t dn ;
+ int engineN ;
+ scalar_t__* fd ;
+ int h_add (int,int) ;
+ int* h_key ;
+ int h_rem (int) ;
+ int* h_val ;
+ scalar_t__ load (int,int,int*) ;
+ int maxn ;
+ int memset (int*,int ,int) ;
+ int my_read1 () ;
+ int my_read2 () ;
+ int my_write (int*,int) ;
+ int printf (char*,...) ;
+ scalar_t__ test_mode ;
+ int this_mod ;
+ int un ;
+ int userN ;
 
 void run (void) {
   int i, j;
@@ -75,7 +67,7 @@ void run (void) {
         }
       }
       if (!my_read1()) {
-        break;    	
+        break;
       }
     }
 

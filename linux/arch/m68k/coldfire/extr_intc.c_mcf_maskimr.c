@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MCFSIM_IMR ; 
- unsigned int __raw_readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __raw_writel (unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef unsigned int u32 ;
+
+
+ int MCFSIM_IMR ;
+ unsigned int __raw_readl (int ) ;
+ int __raw_writel (unsigned int,int ) ;
 
 void mcf_maskimr(unsigned int mask)
 {
-	u32 imr;
-	imr = __raw_readl(MCFSIM_IMR);
-	imr |= mask;
-	__raw_writel(imr, MCFSIM_IMR);
+ u32 imr;
+ imr = __raw_readl(MCFSIM_IMR);
+ imr |= mask;
+ __raw_writel(imr, MCFSIM_IMR);
 }

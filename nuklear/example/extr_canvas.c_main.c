@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nk_font_atlas {int dummy; } ;
-struct nk_font {int /*<<< orphan*/  handle; } ;
+struct nk_font {int handle; } ;
 struct nk_context {int dummy; } ;
-struct nk_canvas {int /*<<< orphan*/  painter; } ;
-struct device {int /*<<< orphan*/  null; scalar_t__ font_tex; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+struct nk_canvas {int painter; } ;
+struct device {int null; scalar_t__ font_tex; } ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
- scalar_t__ GLEW_OK ; 
- int /*<<< orphan*/  GLFW_CONTEXT_VERSION_MAJOR ; 
- int /*<<< orphan*/  GLFW_CONTEXT_VERSION_MINOR ; 
- int GLFW_OPENGL_CORE_PROFILE ; 
- int /*<<< orphan*/  GLFW_OPENGL_FORWARD_COMPAT ; 
- int /*<<< orphan*/  GLFW_OPENGL_PROFILE ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int GL_TRUE ; 
- int /*<<< orphan*/  NK_ANTI_ALIASING_ON ; 
- int /*<<< orphan*/  NK_FONT_ATLAS_RGBA32 ; 
- int WINDOW_HEIGHT ; 
- int WINDOW_WIDTH ; 
- int /*<<< orphan*/  canvas_begin (struct nk_context*,struct nk_canvas*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  canvas_end (struct nk_context*,struct nk_canvas*) ; 
- int /*<<< orphan*/  device_draw (struct device*,struct nk_context*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_init (struct device*) ; 
- int /*<<< orphan*/  device_shutdown (struct device*) ; 
- int /*<<< orphan*/  device_upload_atlas (struct device*,void const*,int,int) ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (float,float,float,float) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int glewExperimental ; 
- scalar_t__ glewInit () ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetWindowSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetCharCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetScrollCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowUserPointer (int /*<<< orphan*/ *,struct nk_context*) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nk_draw_text (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_fill_arc (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_fill_circle (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_fill_polygon (int /*<<< orphan*/ ,float*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_fill_rect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_fill_triangle (int /*<<< orphan*/ ,int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- struct nk_font* nk_font_atlas_add_default (struct nk_font_atlas*,int,int /*<<< orphan*/ ) ; 
- void* nk_font_atlas_bake (struct nk_font_atlas*,int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_font_atlas_begin (struct nk_font_atlas*) ; 
- int /*<<< orphan*/  nk_font_atlas_clear (struct nk_font_atlas*) ; 
- int /*<<< orphan*/  nk_font_atlas_end (struct nk_font_atlas*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nk_font_atlas_init_default (struct nk_font_atlas*) ; 
- int /*<<< orphan*/  nk_free (struct nk_context*) ; 
- int /*<<< orphan*/  nk_handle_id (int) ; 
- int /*<<< orphan*/  nk_init_default (struct nk_context*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nk_rect (int,int,int,int) ; 
- int /*<<< orphan*/  nk_rgb (int,int,int) ; 
- int /*<<< orphan*/  nk_stroke_circle (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_stroke_curve (int /*<<< orphan*/ ,int,int,int,int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_stroke_line (int /*<<< orphan*/ ,int,int,int,int,float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_stroke_rect (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nk_stroke_triangle (int /*<<< orphan*/ ,int,int,int,int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pump_input (struct nk_context*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scroll_input ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  text_input ; 
+
+ scalar_t__ GLEW_OK ;
+ int GLFW_CONTEXT_VERSION_MAJOR ;
+ int GLFW_CONTEXT_VERSION_MINOR ;
+ int GLFW_OPENGL_CORE_PROFILE ;
+ int GLFW_OPENGL_FORWARD_COMPAT ;
+ int GLFW_OPENGL_PROFILE ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_TEXTURE_2D ;
+ int GL_TRUE ;
+ int NK_ANTI_ALIASING_ON ;
+ int NK_FONT_ATLAS_RGBA32 ;
+ int WINDOW_HEIGHT ;
+ int WINDOW_WIDTH ;
+ int canvas_begin (struct nk_context*,struct nk_canvas*,int ,int ,int ,int,int,int ) ;
+ int canvas_end (struct nk_context*,struct nk_canvas*) ;
+ int device_draw (struct device*,struct nk_context*,int,int,int ) ;
+ int device_init (struct device*) ;
+ int device_shutdown (struct device*) ;
+ int device_upload_atlas (struct device*,void const*,int,int) ;
+ int error_callback ;
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int glClear (int ) ;
+ int glClearColor (float,float,float,float) ;
+ int glEnable (int ) ;
+ int glViewport (int ,int ,int,int) ;
+ int glewExperimental ;
+ scalar_t__ glewInit () ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwGetWindowSize (int *,int*,int*) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetCharCallback (int *,int ) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetScrollCallback (int *,int ) ;
+ int glfwSetWindowUserPointer (int *,struct nk_context*) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,int) ;
+ int glfwWindowShouldClose (int *) ;
+ int nk_draw_text (int ,int ,char*,int,int *,int ,int ) ;
+ int nk_fill_arc (int ,int,int,int,int ,float,int ) ;
+ int nk_fill_circle (int ,int ,int ) ;
+ int nk_fill_polygon (int ,float*,int,int ) ;
+ int nk_fill_rect (int ,int ,int,int ) ;
+ int nk_fill_triangle (int ,int,int,int,int,int,int,int ) ;
+ struct nk_font* nk_font_atlas_add_default (struct nk_font_atlas*,int,int ) ;
+ void* nk_font_atlas_bake (struct nk_font_atlas*,int*,int*,int ) ;
+ int nk_font_atlas_begin (struct nk_font_atlas*) ;
+ int nk_font_atlas_clear (struct nk_font_atlas*) ;
+ int nk_font_atlas_end (struct nk_font_atlas*,int ,int *) ;
+ int nk_font_atlas_init_default (struct nk_font_atlas*) ;
+ int nk_free (struct nk_context*) ;
+ int nk_handle_id (int) ;
+ int nk_init_default (struct nk_context*,int *) ;
+ int nk_rect (int,int,int,int) ;
+ int nk_rgb (int,int,int) ;
+ int nk_stroke_circle (int ,int ,int,int ) ;
+ int nk_stroke_curve (int ,int,int,int,int,int,int,int,int,int,int ) ;
+ int nk_stroke_line (int ,int,int,int,int,float,int ) ;
+ int nk_stroke_rect (int ,int ,int,int,int ) ;
+ int nk_stroke_triangle (int ,int,int,int,int,int,int,int,int ) ;
+ int pump_input (struct nk_context*,int *) ;
+ int scroll_input ;
+ int stderr ;
+ int stdout ;
+ int text_input ;
 
 int main(int argc, char *argv[])
 {
-    /* Platform */
+
     static GLFWwindow *win;
     int width = 0, height = 0;
 
-    /* GUI */
+
     struct device device;
     struct nk_font_atlas atlas;
     struct nk_context ctx;
 
-    /* GLFW */
+
     glfwSetErrorCallback(error_callback);
     if (!glfwInit()) {
         fprintf(stdout, "[GFLW] failed to init!\n");
@@ -107,14 +107,14 @@ int main(int argc, char *argv[])
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    win = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Demo", NULL, NULL);
+    win = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Demo", ((void*)0), ((void*)0));
     glfwMakeContextCurrent(win);
     glfwSetWindowUserPointer(win, &ctx);
     glfwSetCharCallback(win, text_input);
     glfwSetScrollCallback(win, scroll_input);
     glfwGetWindowSize(win, &width, &height);
 
-    /* OpenGL */
+
     glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glewExperimental = 1;
     if (glewInit() != GLEW_OK) {
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    /* GUI */
+
     {device_init(&device);
     {const void *image; int w, h;
     struct nk_font *font;
@@ -137,10 +137,10 @@ int main(int argc, char *argv[])
     glEnable(GL_TEXTURE_2D);
     while (!glfwWindowShouldClose(win))
     {
-        /* input */
+
         pump_input(&ctx, win);
 
-        /* draw */
+
         {struct nk_canvas canvas;
         canvas_begin(&ctx, &canvas, 0, 0, 0, width, height, nk_rgb(250,250,250));
         {
@@ -169,7 +169,7 @@ int main(int argc, char *argv[])
         }
         canvas_end(&ctx, &canvas);}
 
-        /* Draw */
+
         glfwGetWindowSize(win, &width, &height);
         glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT);

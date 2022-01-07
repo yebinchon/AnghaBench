@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmpBuf ;
-typedef  int /*<<< orphan*/  LZ4_stream_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int BLOCK_BYTES ; 
- int LZ4_COMPRESSBOUND (int) ; 
- int LZ4_compress_fast_continue (int /*<<< orphan*/ *,char* const,char*,int const,int,int) ; 
- int /*<<< orphan*/  LZ4_initStream (int /*<<< orphan*/ *,int) ; 
- scalar_t__ read_bin (int /*<<< orphan*/ *,char* const,int) ; 
- int /*<<< orphan*/  write_bin (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  write_int (int /*<<< orphan*/ *,int const) ; 
+
+
+
+typedef int cmpBuf ;
+typedef int LZ4_stream_t ;
+typedef int FILE ;
+
+
+ int BLOCK_BYTES ;
+ int LZ4_COMPRESSBOUND (int) ;
+ int LZ4_compress_fast_continue (int *,char* const,char*,int const,int,int) ;
+ int LZ4_initStream (int *,int) ;
+ scalar_t__ read_bin (int *,char* const,int) ;
+ int write_bin (int *,char*,size_t) ;
+ int write_int (int *,int const) ;
 
 void test_compress(FILE* outFp, FILE* inpFp)
 {
@@ -29,7 +29,7 @@ void test_compress(FILE* outFp, FILE* inpFp)
     LZ4_stream_t* lz4Stream = &lz4Stream_body;
 
     char inpBuf[2][BLOCK_BYTES];
-    int  inpBufIndex = 0;
+    int inpBufIndex = 0;
 
     LZ4_initStream(lz4Stream, sizeof (*lz4Stream));
 

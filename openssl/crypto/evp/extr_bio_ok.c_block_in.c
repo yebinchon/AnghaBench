@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tl ;
-struct TYPE_3__ {unsigned long* buf; unsigned long buf_len; unsigned long buf_off_save; unsigned long buf_len_save; int buf_off; int blockout; scalar_t__ cont; int /*<<< orphan*/ * md; } ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  TYPE_1__ BIO_OK_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- TYPE_1__* BIO_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char*,unsigned long) ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_md (int /*<<< orphan*/ *) ; 
- int EVP_MD_size (int /*<<< orphan*/ ) ; 
- int OK_BLOCK_BLOCK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ memcmp (unsigned long*,unsigned char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int tl ;
+struct TYPE_3__ {unsigned long* buf; unsigned long buf_len; unsigned long buf_off_save; unsigned long buf_len_save; int buf_off; int blockout; scalar_t__ cont; int * md; } ;
+typedef int EVP_MD_CTX ;
+typedef TYPE_1__ BIO_OK_CTX ;
+typedef int BIO ;
+
+
+ int BIO_clear_retry_flags (int *) ;
+ TYPE_1__* BIO_get_data (int *) ;
+ int EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ int EVP_DigestUpdate (int *,unsigned char*,unsigned long) ;
+ int EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_md (int *) ;
+ int EVP_MD_size (int ) ;
+ int OK_BLOCK_BLOCK ;
+ int assert (int) ;
+ scalar_t__ memcmp (unsigned long*,unsigned char*,int) ;
 
 __attribute__((used)) static int block_in(BIO *b)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int block_in(BIO *b)
     md = ctx->md;
     md_size = EVP_MD_size(EVP_MD_CTX_md(md));
 
-    assert(sizeof(tl) >= OK_BLOCK_BLOCK); /* always true */
+    assert(sizeof(tl) >= OK_BLOCK_BLOCK);
     tl = ctx->buf[0];
     tl <<= 8;
     tl |= ctx->buf[1];
@@ -56,10 +56,10 @@ __attribute__((used)) static int block_in(BIO *b)
     if (!EVP_DigestUpdate(md,
                           (unsigned char *)&(ctx->buf[OK_BLOCK_BLOCK]), tl))
         goto berr;
-    if (!EVP_DigestFinal_ex(md, tmp, NULL))
+    if (!EVP_DigestFinal_ex(md, tmp, ((void*)0)))
         goto berr;
     if (memcmp(&(ctx->buf[tl + OK_BLOCK_BLOCK]), tmp, md_size) == 0) {
-        /* there might be parts from next block lurking around ! */
+
         ctx->buf_off_save = tl + OK_BLOCK_BLOCK + md_size;
         ctx->buf_len_save = ctx->buf_len;
         ctx->buf_off = OK_BLOCK_BLOCK;

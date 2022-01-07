@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct m_property {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_AUDIO ; 
- int property_switch_track (struct m_property*,int,void*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int STREAM_AUDIO ;
+ int property_switch_track (struct m_property*,int,void*,void*,int ,int ) ;
 
 __attribute__((used)) static int mp_property_audio(void *ctx, struct m_property *prop,
                              int action, void *arg)

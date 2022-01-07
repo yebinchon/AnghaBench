@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct domain {int dom_flags; TYPE_1__* dom_old; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* dom_init ) () ;} ;
+struct TYPE_2__ {int (* dom_init ) () ;} ;
 
-/* Variables and functions */
- int DOM_OLD ; 
- int /*<<< orphan*/  VERIFY (int) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+ int DOM_OLD ;
+ int VERIFY (int) ;
+ int stub1 () ;
 
 __attribute__((used)) static void
 dom_init_old(struct domain *dp)
 {
-	VERIFY(dp->dom_flags & DOM_OLD);
-	VERIFY(dp->dom_old != NULL);
+ VERIFY(dp->dom_flags & DOM_OLD);
+ VERIFY(dp->dom_old != ((void*)0));
 
-	if (dp->dom_old->dom_init != NULL)
-		dp->dom_old->dom_init();
+ if (dp->dom_old->dom_init != ((void*)0))
+  dp->dom_old->dom_init();
 }

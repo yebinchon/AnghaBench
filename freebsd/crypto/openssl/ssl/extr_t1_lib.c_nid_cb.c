@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {size_t nidcnt; int* nid_arr; } ;
-typedef  TYPE_1__ nid_cb_st ;
-typedef  int /*<<< orphan*/  etmp ;
+typedef TYPE_1__ nid_cb_st ;
+typedef int etmp ;
 
-/* Variables and functions */
- int EC_curve_nist2nid (char*) ; 
- size_t MAX_CURVELIST ; 
- int NID_undef ; 
- int OBJ_ln2nid (char*) ; 
- int OBJ_sn2nid (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
+
+ int EC_curve_nist2nid (char*) ;
+ size_t MAX_CURVELIST ;
+ int NID_undef ;
+ int OBJ_ln2nid (char*) ;
+ int OBJ_sn2nid (char*) ;
+ int memcpy (char*,char const*,int) ;
 
 __attribute__((used)) static int nid_cb(const char *elem, int len, void *arg)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static int nid_cb(const char *elem, int len, void *arg)
     size_t i;
     int nid;
     char etmp[20];
-    if (elem == NULL)
+    if (elem == ((void*)0))
         return 0;
     if (narg->nidcnt == MAX_CURVELIST)
         return 0;

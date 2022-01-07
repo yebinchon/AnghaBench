@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* usr_data; } ;
-typedef  TYPE_1__ X509V3_EXT_METHOD ;
+typedef TYPE_1__ X509V3_EXT_METHOD ;
 struct TYPE_6__ {long bitnum; scalar_t__ lname; } ;
-typedef  TYPE_2__ ENUMERATED_NAMES ;
-typedef  int /*<<< orphan*/  ASN1_ENUMERATED ;
+typedef TYPE_2__ ENUMERATED_NAMES ;
+typedef int ASN1_ENUMERATED ;
 
-/* Variables and functions */
- long ASN1_ENUMERATED_get (int /*<<< orphan*/  const*) ; 
- char* OPENSSL_strdup (scalar_t__) ; 
- char* i2s_ASN1_ENUMERATED (TYPE_1__*,int /*<<< orphan*/  const*) ; 
+
+ long ASN1_ENUMERATED_get (int const*) ;
+ char* OPENSSL_strdup (scalar_t__) ;
+ char* i2s_ASN1_ENUMERATED (TYPE_1__*,int const*) ;
 
 char *i2s_ASN1_ENUMERATED_TABLE(X509V3_EXT_METHOD *method,
                                 const ASN1_ENUMERATED *e)

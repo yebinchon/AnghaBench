@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  M_KENV ; 
- scalar_t__ dynamic_kenv ; 
- int /*<<< orphan*/  explicit_bzero (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int M_KENV ;
+ scalar_t__ dynamic_kenv ;
+ int explicit_bzero (char*,int ) ;
+ int free (char*,int ) ;
+ int strlen (char*) ;
 
 void
 freeenv(char *env)
 {
 
-	if (dynamic_kenv && env != NULL) {
-		explicit_bzero(env, strlen(env));
-		free(env, M_KENV);
-	}
+ if (dynamic_kenv && env != ((void*)0)) {
+  explicit_bzero(env, strlen(env));
+  free(env, M_KENV);
+ }
 }

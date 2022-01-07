@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net {int dummy; } ;
-typedef  int /*<<< orphan*/  __be32 ;
+typedef int __be32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RT_TABLE_LOCAL ; 
- unsigned int __inet_dev_addr_type (struct net*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int RT_TABLE_LOCAL ;
+ unsigned int __inet_dev_addr_type (struct net*,int *,int ,int ) ;
 
 unsigned int inet_addr_type(struct net *net, __be32 addr)
 {
-	return __inet_dev_addr_type(net, NULL, addr, RT_TABLE_LOCAL);
+ return __inet_dev_addr_type(net, ((void*)0), addr, RT_TABLE_LOCAL);
 }

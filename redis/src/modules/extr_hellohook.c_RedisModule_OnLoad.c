@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_APIVER_1 ; 
- scalar_t__ REDISMODULE_ERR ; 
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  RedisModuleEvent_ClientChange ; 
- int /*<<< orphan*/  RedisModuleEvent_FlushDB ; 
- scalar_t__ RedisModule_Init (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_SubscribeToServerEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clientChangeCallback ; 
- int /*<<< orphan*/  flushdbCallback ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_APIVER_1 ;
+ scalar_t__ REDISMODULE_ERR ;
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ int RedisModuleEvent_ClientChange ;
+ int RedisModuleEvent_FlushDB ;
+ scalar_t__ RedisModule_Init (int *,char*,int,int ) ;
+ int RedisModule_SubscribeToServerEvent (int *,int ,int ) ;
+ int clientChangeCallback ;
+ int flushdbCallback ;
 
 int RedisModule_OnLoad(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     REDISMODULE_NOT_USED(argv);

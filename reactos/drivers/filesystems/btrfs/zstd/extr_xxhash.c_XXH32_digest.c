@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ XXH_endianess ;
-typedef  int /*<<< orphan*/  XXH32_state_t ;
 
-/* Variables and functions */
- unsigned int XXH32_digest_endian (int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  XXH_CPU_LITTLE_ENDIAN ; 
- scalar_t__ XXH_FORCE_NATIVE_FORMAT ; 
- scalar_t__ XXH_bigEndian ; 
- scalar_t__ XXH_littleEndian ; 
+
+
+
+typedef scalar_t__ XXH_endianess ;
+typedef int XXH32_state_t ;
+
+
+ unsigned int XXH32_digest_endian (int const*,scalar_t__) ;
+ int XXH_CPU_LITTLE_ENDIAN ;
+ scalar_t__ XXH_FORCE_NATIVE_FORMAT ;
+ scalar_t__ XXH_bigEndian ;
+ scalar_t__ XXH_littleEndian ;
 
 unsigned int XXH32_digest (const XXH32_state_t* state_in)
 {

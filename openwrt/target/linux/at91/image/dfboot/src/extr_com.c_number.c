@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LEFT ; 
- int SIGN ; 
- int ZEROPAD ; 
- size_t do_div (int,int) ; 
- int /*<<< orphan*/  putc (char) ; 
+ int LEFT ;
+ int SIGN ;
+ int ZEROPAD ;
+ size_t do_div (int,int) ;
+ int putc (char) ;
 
 __attribute__((used)) static int number(int num, int base, int size,
                   int precision, int type)
@@ -38,7 +30,7 @@ __attribute__((used)) static int number(int num, int base, int size,
       num = -num;
       size--;
     }
-  
+
   i = 0;
   if(num == 0)
     tmp[i++] = digits[0];
@@ -48,11 +40,11 @@ __attribute__((used)) static int number(int num, int base, int size,
   if(i > precision)
     precision = i;
   size -= precision;
-  
+
   if(!(type&(ZEROPAD+LEFT)))
     while(size-->0)
       putc(' ');
-  
+
   if(sign)
     putc(sign);
 
@@ -62,7 +54,7 @@ __attribute__((used)) static int number(int num, int base, int size,
 
   while (i < precision--)
     putc('0');
-  
+
   while (i-- > 0)
     putc(tmp[i]);
 

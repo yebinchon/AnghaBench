@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  NVIC_IRQChannelCmd; scalar_t__ NVIC_IRQChannelPriority; int /*<<< orphan*/  NVIC_IRQChannel; } ;
-struct TYPE_12__ {int TIM_ICFilter; int /*<<< orphan*/  TIM_ICPrescaler; int /*<<< orphan*/  TIM_ICSelection; int /*<<< orphan*/  TIM_ICPolarity; int /*<<< orphan*/  TIM_Channel; } ;
-struct TYPE_11__ {int TIM_Pulse; int /*<<< orphan*/  TIM_OCNIdleState; int /*<<< orphan*/  TIM_OCIdleState; int /*<<< orphan*/  TIM_OCNPolarity; int /*<<< orphan*/  TIM_OCPolarity; int /*<<< orphan*/  TIM_OutputNState; int /*<<< orphan*/  TIM_OutputState; int /*<<< orphan*/  TIM_OCMode; } ;
-struct TYPE_10__ {int TIM_Prescaler; int TIM_Period; scalar_t__ TIM_RepetitionCounter; void* TIM_CounterMode; int /*<<< orphan*/  TIM_ClockDivision; } ;
-typedef  TYPE_1__ TIM_TimeBaseInitTypeDef ;
-typedef  TYPE_2__ TIM_OCInitTypeDef ;
-typedef  TYPE_3__ TIM_ICInitTypeDef ;
-typedef  TYPE_4__ NVIC_InitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_pins (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/  FAN_POWER_AHB ; 
- int /*<<< orphan*/  FAN_POWER_APB1 ; 
- int /*<<< orphan*/  FAN_POWER_APB2 ; 
- int /*<<< orphan*/  NVIC_Init (TYPE_4__*) ; 
- int /*<<< orphan*/  PWM_PINS_NUM ; 
- int /*<<< orphan*/  RCC_AHBPeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB1PeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RCC_APB2PeriphClockCmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM16 ; 
- int /*<<< orphan*/  TIM3 ; 
- int /*<<< orphan*/  TIM3_IRQn ; 
- int /*<<< orphan*/  TIM_CKD_DIV1 ; 
- int /*<<< orphan*/  TIM_CKD_DIV4 ; 
- int /*<<< orphan*/  TIM_Channel_1 ; 
- int /*<<< orphan*/  TIM_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* TIM_CounterMode_Up ; 
- int /*<<< orphan*/  TIM_CtrlPWMOutputs (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM_ICInit (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  TIM_ICPSC_DIV1 ; 
- int /*<<< orphan*/  TIM_ICPolarity_Rising ; 
- int /*<<< orphan*/  TIM_ICSelection_DirectTI ; 
- int /*<<< orphan*/  TIM_ITConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIM_IT_CC1 ; 
- int /*<<< orphan*/  TIM_OC1Init (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  TIM_OCIdleState_Set ; 
- int /*<<< orphan*/  TIM_OCMode_PWM1 ; 
- int /*<<< orphan*/  TIM_OCNIdleState_Reset ; 
- int /*<<< orphan*/  TIM_OCNPolarity_High ; 
- int /*<<< orphan*/  TIM_OCPolarity_High ; 
- int /*<<< orphan*/  TIM_OutputNState_Disable ; 
- int /*<<< orphan*/  TIM_OutputState_Enable ; 
- int /*<<< orphan*/  TIM_TimeBaseInit (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TIM_TimeBaseStructInit (TYPE_1__*) ; 
- int /*<<< orphan*/  pins_pwm ; 
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int NVIC_IRQChannelCmd; scalar_t__ NVIC_IRQChannelPriority; int NVIC_IRQChannel; } ;
+struct TYPE_12__ {int TIM_ICFilter; int TIM_ICPrescaler; int TIM_ICSelection; int TIM_ICPolarity; int TIM_Channel; } ;
+struct TYPE_11__ {int TIM_Pulse; int TIM_OCNIdleState; int TIM_OCIdleState; int TIM_OCNPolarity; int TIM_OCPolarity; int TIM_OutputNState; int TIM_OutputState; int TIM_OCMode; } ;
+struct TYPE_10__ {int TIM_Prescaler; int TIM_Period; scalar_t__ TIM_RepetitionCounter; void* TIM_CounterMode; int TIM_ClockDivision; } ;
+typedef TYPE_1__ TIM_TimeBaseInitTypeDef ;
+typedef TYPE_2__ TIM_OCInitTypeDef ;
+typedef TYPE_3__ TIM_ICInitTypeDef ;
+typedef TYPE_4__ NVIC_InitTypeDef ;
+
+
+ int CONFIG_pins (int ,int ) ;
+ int ENABLE ;
+ int FAN_POWER_AHB ;
+ int FAN_POWER_APB1 ;
+ int FAN_POWER_APB2 ;
+ int NVIC_Init (TYPE_4__*) ;
+ int PWM_PINS_NUM ;
+ int RCC_AHBPeriphClockCmd (int ,int ) ;
+ int RCC_APB1PeriphClockCmd (int ,int ) ;
+ int RCC_APB2PeriphClockCmd (int ,int ) ;
+ int TIM16 ;
+ int TIM3 ;
+ int TIM3_IRQn ;
+ int TIM_CKD_DIV1 ;
+ int TIM_CKD_DIV4 ;
+ int TIM_Channel_1 ;
+ int TIM_Cmd (int ,int ) ;
+ void* TIM_CounterMode_Up ;
+ int TIM_CtrlPWMOutputs (int ,int ) ;
+ int TIM_ICInit (int ,TYPE_3__*) ;
+ int TIM_ICPSC_DIV1 ;
+ int TIM_ICPolarity_Rising ;
+ int TIM_ICSelection_DirectTI ;
+ int TIM_ITConfig (int ,int ,int ) ;
+ int TIM_IT_CC1 ;
+ int TIM_OC1Init (int ,TYPE_2__*) ;
+ int TIM_OCIdleState_Set ;
+ int TIM_OCMode_PWM1 ;
+ int TIM_OCNIdleState_Reset ;
+ int TIM_OCNPolarity_High ;
+ int TIM_OCPolarity_High ;
+ int TIM_OutputNState_Disable ;
+ int TIM_OutputState_Enable ;
+ int TIM_TimeBaseInit (int ,TYPE_1__*) ;
+ int TIM_TimeBaseStructInit (TYPE_1__*) ;
+ int pins_pwm ;
 
 void fan_setup() {
     TIM_TimeBaseInitTypeDef tbis;
@@ -67,14 +67,14 @@ void fan_setup() {
     NVIC_InitTypeDef nvis;
     TIM_ICInitTypeDef icis;
 
-    // Turn on peripherals
+
     RCC_AHBPeriphClockCmd(FAN_POWER_AHB, ENABLE);
     RCC_APB1PeriphClockCmd(FAN_POWER_APB1, ENABLE);
-	RCC_APB2PeriphClockCmd(FAN_POWER_APB2, ENABLE);
+ RCC_APB2PeriphClockCmd(FAN_POWER_APB2, ENABLE);
 
     CONFIG_pins(pins_pwm, PWM_PINS_NUM);
 
-    // First configure the PWM output
+
     tbis.TIM_Prescaler = 0;
     tbis.TIM_ClockDivision = TIM_CKD_DIV1;
     tbis.TIM_CounterMode = TIM_CounterMode_Up;
@@ -95,7 +95,7 @@ void fan_setup() {
     TIM_Cmd(TIM16, ENABLE);
     TIM_CtrlPWMOutputs(TIM16, ENABLE);
 
-    // Now configure the Tach PWM input to measure rising edge to rising edge time
+
     icis.TIM_Channel = TIM_Channel_1;
     icis.TIM_ICPolarity = TIM_ICPolarity_Rising;
     icis.TIM_ICSelection = TIM_ICSelection_DirectTI;

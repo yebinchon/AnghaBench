@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_preset_index_t ;
-typedef  int /*<<< orphan*/  gint ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_warning (char*) ; 
- int /*<<< orphan*/  ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * hb_preset_get (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int hb_preset_index_t ;
+typedef int gint ;
+typedef int GhbValue ;
+
+
+ int g_warning (char*) ;
+ int ghb_dict_get_int (int *,char*) ;
+ int * hb_preset_get (int *) ;
 
 __attribute__((used)) static gint
 preset_get_type(hb_preset_index_t *path)

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct option {char* member_0; char member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/  const member_1; } ;
 
-/* Variables and functions */
- int attach_device (char*,char*) ; 
- int getopt_long (int,char**,char*,struct option const*,int /*<<< orphan*/ *) ; 
- char* optarg ; 
-#define  required_argument 128 
- int /*<<< orphan*/  usbip_attach_usage () ; 
+
+
+
+struct option {char* member_0; char member_3; int * member_2; int const member_1; } ;
+
+
+ int attach_device (char*,char*) ;
+ int getopt_long (int,char**,char*,struct option const*,int *) ;
+ char* optarg ;
+
+ int usbip_attach_usage () ;
 
 int usbip_attach(int argc, char *argv[])
 {
-	static const struct option opts[] = {
-		{ "remote", required_argument, NULL, 'r' },
-		{ "busid",  required_argument, NULL, 'b' },
-		{ "device",  required_argument, NULL, 'd' },
-		{ NULL, 0,  NULL, 0 }
-	};
-	char *host = NULL;
-	char *busid = NULL;
-	int opt;
-	int ret = -1;
+ static const struct option opts[] = {
+  { "remote", 128, ((void*)0), 'r' },
+  { "busid", 128, ((void*)0), 'b' },
+  { "device", 128, ((void*)0), 'd' },
+  { ((void*)0), 0, ((void*)0), 0 }
+ };
+ char *host = ((void*)0);
+ char *busid = ((void*)0);
+ int opt;
+ int ret = -1;
 
-	for (;;) {
-		opt = getopt_long(argc, argv, "d:r:b:", opts, NULL);
+ for (;;) {
+  opt = getopt_long(argc, argv, "d:r:b:", opts, ((void*)0));
 
-		if (opt == -1)
-			break;
+  if (opt == -1)
+   break;
 
-		switch (opt) {
-		case 'r':
-			host = optarg;
-			break;
-		case 'd':
-		case 'b':
-			busid = optarg;
-			break;
-		default:
-			goto err_out;
-		}
-	}
+  switch (opt) {
+  case 'r':
+   host = optarg;
+   break;
+  case 'd':
+  case 'b':
+   busid = optarg;
+   break;
+  default:
+   goto err_out;
+  }
+ }
 
-	if (!host || !busid)
-		goto err_out;
+ if (!host || !busid)
+  goto err_out;
 
-	ret = attach_device(host, busid);
-	goto out;
+ ret = attach_device(host, busid);
+ goto out;
 
 err_out:
-	usbip_attach_usage();
+ usbip_attach_usage();
 out:
-	return ret;
+ return ret;
 }

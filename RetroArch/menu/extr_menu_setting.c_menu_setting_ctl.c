@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_5__ {int flags; int (* action_right ) (TYPE_1__*,int) ;int /*<<< orphan*/  action_select; int /*<<< orphan*/  action_left; int /*<<< orphan*/  change_handler; } ;
-typedef  TYPE_1__ rarch_setting_t ;
-typedef  enum menu_setting_ctl_state { ____Placeholder_menu_setting_ctl_state } menu_setting_ctl_state ;
 
-/* Variables and functions */
-#define  MENU_SETTING_CTL_ACTION_RIGHT 131 
-#define  MENU_SETTING_CTL_IS_OF_PATH_TYPE 130 
-#define  MENU_SETTING_CTL_NEW 129 
-#define  MENU_SETTING_CTL_NONE 128 
- int /*<<< orphan*/  RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_IMAGE ; 
- int /*<<< orphan*/  RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_PATH ; 
- int SD_FLAG_BROWSER_ACTION ; 
- int /*<<< orphan*/  ST_ACTION ; 
- int /*<<< orphan*/  menu_driver_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* menu_setting_new () ; 
- int /*<<< orphan*/  setting_get_type (TYPE_1__*) ; 
- int stub1 (TYPE_1__*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_5__ {int flags; int (* action_right ) (TYPE_1__*,int) ;int action_select; int action_left; int change_handler; } ;
+typedef TYPE_1__ rarch_setting_t ;
+typedef enum menu_setting_ctl_state { ____Placeholder_menu_setting_ctl_state } menu_setting_ctl_state ;
+
+
+
+
+
+
+ int RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_IMAGE ;
+ int RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_PATH ;
+ int SD_FLAG_BROWSER_ACTION ;
+ int ST_ACTION ;
+ int menu_driver_ctl (int ,int *) ;
+ TYPE_1__* menu_setting_new () ;
+ int setting_get_type (TYPE_1__*) ;
+ int stub1 (TYPE_1__*,int) ;
 
 bool menu_setting_ctl(enum menu_setting_ctl_state state, void *data)
 {
@@ -36,65 +36,65 @@ bool menu_setting_ctl(enum menu_setting_ctl_state state, void *data)
 
    switch (state)
    {
-      case MENU_SETTING_CTL_IS_OF_PATH_TYPE:
+      case 130:
          {
-            bool cbs_bound           = false;
+            bool cbs_bound = 0;
             rarch_setting_t *setting = (rarch_setting_t*)data;
 
             if (!setting)
-               return false;
+               return 0;
 
-            flags                    = setting->flags;
+            flags = setting->flags;
 
             if (setting_get_type(setting) != ST_ACTION)
-               return false;
+               return 0;
 
             if (!setting->change_handler)
-               return false;
+               return 0;
 
-            cbs_bound = (setting->action_right != NULL);
+            cbs_bound = (setting->action_right != ((void*)0));
             cbs_bound = cbs_bound || setting->action_left;
             cbs_bound = cbs_bound || setting->action_select;
 
             if (!cbs_bound)
-               return false;
+               return 0;
 
             if (!(flags & SD_FLAG_BROWSER_ACTION))
-               return false;
+               return 0;
          }
          break;
-      case MENU_SETTING_CTL_NEW:
+      case 129:
          {
             rarch_setting_t **setting = (rarch_setting_t**)data;
             if (!setting)
-               return false;
+               return 0;
             *setting = menu_setting_new();
          }
          break;
-      case MENU_SETTING_CTL_ACTION_RIGHT:
+      case 131:
          {
             rarch_setting_t *setting = (rarch_setting_t*)data;
             if (!setting)
-               return false;
+               return 0;
 
             if (setting->action_right)
             {
-               int ret = setting->action_right(setting, false);
+               int ret = setting->action_right(setting, 0);
                menu_driver_ctl(
-                     RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_PATH, NULL);
+                     RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_PATH, ((void*)0));
                menu_driver_ctl(
-                     RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_IMAGE, NULL);
+                     RARCH_MENU_CTL_UPDATE_SAVESTATE_THUMBNAIL_IMAGE, ((void*)0));
                if (ret == -1)
-                  return false;
+                  return 0;
             }
             else
-               return false;
+               return 0;
          }
          break;
-      case MENU_SETTING_CTL_NONE:
+      case 128:
       default:
          break;
    }
 
-   return true;
+   return 1;
 }

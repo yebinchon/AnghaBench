@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  Size; int /*<<< orphan*/  Buf; } ;
-struct TYPE_6__ {int /*<<< orphan*/  TubeSend; int /*<<< orphan*/  FlushList; } ;
-typedef  TYPE_1__ PPP_SESSION ;
-typedef  int /*<<< orphan*/  PPP_PACKET ;
-typedef  TYPE_2__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddTubeToFlushList (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* BuildPPPPacketData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_2__*) ; 
- int TubeSendEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Size; int Buf; } ;
+struct TYPE_6__ {int TubeSend; int FlushList; } ;
+typedef TYPE_1__ PPP_SESSION ;
+typedef int PPP_PACKET ;
+typedef TYPE_2__ BUF ;
+
+
+ int AddTubeToFlushList (int ,int ) ;
+ TYPE_2__* BuildPPPPacketData (int *) ;
+ int FreeBuf (TYPE_2__*) ;
+ int TubeSendEx (int ,int ,int ,int *,int) ;
 
 bool PPPSendPacketEx(PPP_SESSION *p, PPP_PACKET *pp, bool no_flush)
 {
-	bool ret = false;
-	BUF *b;
-	// Validate arguments
-	if (p == NULL || pp == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ BUF *b;
 
-	b = BuildPPPPacketData(pp);
-	if (b == NULL)
-	{
-		return false;
-	}
+ if (p == ((void*)0) || pp == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = TubeSendEx(p->TubeSend, b->Buf, b->Size, NULL, no_flush);
+ b = BuildPPPPacketData(pp);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (no_flush)
-	{
-		AddTubeToFlushList(p->FlushList, p->TubeSend);
-	}
+ ret = TubeSendEx(p->TubeSend, b->Buf, b->Size, ((void*)0), no_flush);
 
-	FreeBuf(b);
+ if (no_flush)
+ {
+  AddTubeToFlushList(p->FlushList, p->TubeSend);
+ }
 
-	return ret;
+ FreeBuf(b);
+
+ return ret;
 }

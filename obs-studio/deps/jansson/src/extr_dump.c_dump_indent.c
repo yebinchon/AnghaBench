@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int (* json_dump_callback_t ) (char*,int,void*) ;
 
-/* Variables and functions */
- unsigned int FLAGS_TO_INDENT (size_t) ; 
- size_t JSON_COMPACT ; 
- char* whitespace ; 
+
+
+
+typedef int (* json_dump_callback_t ) (char*,int,void*) ;
+
+
+ unsigned int FLAGS_TO_INDENT (size_t) ;
+ size_t JSON_COMPACT ;
+ char* whitespace ;
 
 __attribute__((used)) static int dump_indent(size_t flags, int depth, int space, json_dump_callback_t dump, void *data)
 {

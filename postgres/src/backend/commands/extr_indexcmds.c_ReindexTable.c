@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  relname; } ;
-typedef  TYPE_1__ RangeVar ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOTICE ; 
- int REINDEXOPT_REPORT_PROGRESS ; 
- int REINDEX_REL_CHECK_CONSTRAINTS ; 
- int REINDEX_REL_PROCESS_TOAST ; 
- int /*<<< orphan*/  RangeVarCallbackOwnsTable ; 
- int /*<<< orphan*/  RangeVarGetRelidExtended (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ReindexRelationConcurrently (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ShareLock ; 
- int /*<<< orphan*/  ShareUpdateExclusiveLock ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int reindex_relation (int /*<<< orphan*/ ,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int relname; } ;
+typedef TYPE_1__ RangeVar ;
+typedef int Oid ;
+
+
+ int NOTICE ;
+ int REINDEXOPT_REPORT_PROGRESS ;
+ int REINDEX_REL_CHECK_CONSTRAINTS ;
+ int REINDEX_REL_PROCESS_TOAST ;
+ int RangeVarCallbackOwnsTable ;
+ int RangeVarGetRelidExtended (TYPE_1__*,int ,int ,int ,int *) ;
+ int ReindexRelationConcurrently (int ,int) ;
+ int ShareLock ;
+ int ShareUpdateExclusiveLock ;
+ int ereport (int ,int ) ;
+ int errmsg (char*,int ) ;
+ int reindex_relation (int ,int,int) ;
 
 Oid
 ReindexTable(RangeVar *relation, int options, bool concurrent)
 {
-	Oid			heapOid;
-	bool		result;
+ Oid heapOid;
+ bool result;
 
-	/* The lock level used here should match reindex_relation(). */
-	heapOid = RangeVarGetRelidExtended(relation,
-									   concurrent ? ShareUpdateExclusiveLock : ShareLock,
-									   0,
-									   RangeVarCallbackOwnsTable, NULL);
 
-	if (concurrent)
-	{
-		result = ReindexRelationConcurrently(heapOid, options);
+ heapOid = RangeVarGetRelidExtended(relation,
+            concurrent ? ShareUpdateExclusiveLock : ShareLock,
+            0,
+            RangeVarCallbackOwnsTable, ((void*)0));
 
-		if (!result)
-			ereport(NOTICE,
-					(errmsg("table \"%s\" has no indexes that can be reindexed concurrently",
-							relation->relname)));
-	}
-	else
-	{
-		result = reindex_relation(heapOid,
-								  REINDEX_REL_PROCESS_TOAST |
-								  REINDEX_REL_CHECK_CONSTRAINTS,
-								  options | REINDEXOPT_REPORT_PROGRESS);
-		if (!result)
-			ereport(NOTICE,
-					(errmsg("table \"%s\" has no indexes to reindex",
-							relation->relname)));
-	}
+ if (concurrent)
+ {
+  result = ReindexRelationConcurrently(heapOid, options);
 
-	return heapOid;
+  if (!result)
+   ereport(NOTICE,
+     (errmsg("table \"%s\" has no indexes that can be reindexed concurrently",
+       relation->relname)));
+ }
+ else
+ {
+  result = reindex_relation(heapOid,
+          REINDEX_REL_PROCESS_TOAST |
+          REINDEX_REL_CHECK_CONSTRAINTS,
+          options | REINDEXOPT_REPORT_PROGRESS);
+  if (!result)
+   ereport(NOTICE,
+     (errmsg("table \"%s\" has no indexes to reindex",
+       relation->relname)));
+ }
+
+ return heapOid;
 }

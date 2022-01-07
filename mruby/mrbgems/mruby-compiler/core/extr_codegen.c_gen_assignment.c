@@ -1,62 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
 struct TYPE_21__ {struct TYPE_21__* car; struct TYPE_21__* cdr; } ;
-typedef  TYPE_1__ node ;
+typedef TYPE_1__ node ;
 struct TYPE_22__ {struct TYPE_22__* prev; } ;
-typedef  TYPE_2__ codegen_scope ;
-
-/* Variables and functions */
-#define  NODE_ARG 138 
-#define  NODE_CALL 137 
-#define  NODE_COLON2 136 
-#define  NODE_CONST 135 
-#define  NODE_CVAR 134 
-#define  NODE_GVAR 133 
-#define  NODE_IVAR 132 
-#define  NODE_LVAR 131 
-#define  NODE_MASGN 130 
-#define  NODE_NIL 129 
-#define  NODE_SCALL 128 
- int /*<<< orphan*/  NOVAL ; 
- int /*<<< orphan*/  OP_NOP ; 
- int /*<<< orphan*/  OP_SETCONST ; 
- int /*<<< orphan*/  OP_SETCV ; 
- int /*<<< orphan*/  OP_SETGV ; 
- int /*<<< orphan*/  OP_SETIV ; 
- int /*<<< orphan*/  OP_SETMCNST ; 
- int /*<<< orphan*/  OP_SETUPVAR ; 
- int /*<<< orphan*/  VAL ; 
- int /*<<< orphan*/  attrsym (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  codegen (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int cursp () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  gen_call (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gen_move (TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  gen_vmassignment (TYPE_2__*,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  genop_0 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  genop_2 (TYPE_2__*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  genop_3 (TYPE_2__*,int /*<<< orphan*/ ,int,int,int) ; 
- int lv_idx (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int new_sym (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int nint (TYPE_1__*) ; 
- int /*<<< orphan*/  nsym (TYPE_1__*) ; 
- int /*<<< orphan*/  on_eval (TYPE_2__*) ; 
- int /*<<< orphan*/  pop () ; 
- int /*<<< orphan*/  pop_n (int) ; 
- int /*<<< orphan*/  push () ; 
- int /*<<< orphan*/  stderr ; 
+typedef TYPE_2__ codegen_scope ;
+ int NOVAL ;
+ int OP_NOP ;
+ int OP_SETCONST ;
+ int OP_SETCV ;
+ int OP_SETGV ;
+ int OP_SETIV ;
+ int OP_SETMCNST ;
+ int OP_SETUPVAR ;
+ int VAL ;
+ int attrsym (TYPE_2__*,int ) ;
+ int codegen (TYPE_2__*,TYPE_1__*,int ) ;
+ int cursp () ;
+ int fprintf (int ,char*,int) ;
+ int gen_call (TYPE_2__*,TYPE_1__*,int ,int,int ,int) ;
+ int gen_move (TYPE_2__*,int,int,int) ;
+ int gen_vmassignment (TYPE_2__*,TYPE_1__*,int,int) ;
+ int genop_0 (TYPE_2__*,int ) ;
+ int genop_2 (TYPE_2__*,int ,int,int) ;
+ int genop_3 (TYPE_2__*,int ,int,int,int) ;
+ int lv_idx (TYPE_2__*,int ) ;
+ int new_sym (TYPE_2__*,int ) ;
+ int nint (TYPE_1__*) ;
+ int nsym (TYPE_1__*) ;
+ int on_eval (TYPE_2__*) ;
+ int pop () ;
+ int pop_n (int) ;
+ int push () ;
+ int stderr ;
 
 __attribute__((used)) static void
 gen_assignment(codegen_scope *s, node *tree, int sp, int val)
@@ -66,12 +53,12 @@ gen_assignment(codegen_scope *s, node *tree, int sp, int val)
 
   tree = tree->cdr;
   switch (type) {
-  case NODE_GVAR:
+  case 133:
     idx = new_sym(s, nsym(tree));
     genop_2(s, OP_SETGV, sp, idx);
     break;
-  case NODE_ARG:
-  case NODE_LVAR:
+  case 138:
+  case 131:
     idx = lv_idx(s, nsym(tree));
     if (idx > 0) {
       if (idx != sp) {
@@ -80,7 +67,7 @@ gen_assignment(codegen_scope *s, node *tree, int sp, int val)
       }
       break;
     }
-    else {                      /* upvar */
+    else {
       int lv = 0;
       codegen_scope *up = s->prev;
 
@@ -95,19 +82,19 @@ gen_assignment(codegen_scope *s, node *tree, int sp, int val)
       }
     }
     break;
-  case NODE_IVAR:
+  case 132:
     idx = new_sym(s, nsym(tree));
     genop_2(s, OP_SETIV, sp, idx);
     break;
-  case NODE_CVAR:
+  case 134:
     idx = new_sym(s, nsym(tree));
     genop_2(s, OP_SETCV, sp, idx);
     break;
-  case NODE_CONST:
+  case 135:
     idx = new_sym(s, nsym(tree));
     genop_2(s, OP_SETCONST, sp, idx);
     break;
-  case NODE_COLON2:
+  case 136:
     gen_move(s, cursp(), sp, 0);
     push();
     codegen(s, tree->car, VAL);
@@ -116,29 +103,29 @@ gen_assignment(codegen_scope *s, node *tree, int sp, int val)
     genop_2(s, OP_SETMCNST, sp, idx);
     break;
 
-  case NODE_CALL:
-  case NODE_SCALL:
+  case 137:
+  case 128:
     push();
     gen_call(s, tree, attrsym(s, nsym(tree->cdr->car)), sp, NOVAL,
-             type == NODE_SCALL);
+             type == 128);
     pop();
     if (val) {
       gen_move(s, cursp(), sp, 0);
     }
     break;
 
-  case NODE_MASGN:
+  case 130:
     gen_vmassignment(s, tree->car, sp, val);
     break;
 
-  /* splat without assignment */
-  case NODE_NIL:
+
+  case 129:
     break;
 
   default:
-#ifndef MRB_DISABLE_STDIO
+
     fprintf(stderr, "unknown lhs %d\n", type);
-#endif
+
     break;
   }
   if (val) push();

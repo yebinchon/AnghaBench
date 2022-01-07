@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_size; int /*<<< orphan*/  st_mode; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct stat {int st_size; int st_mode; } ;
 struct fontlist {int dummy; } ;
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_5__ {int /*<<< orphan*/ * name; int /*<<< orphan*/  len; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int buffer ;
+struct TYPE_5__ {int * name; int len; } ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ extmatch (char*,char**) ; 
- unsigned int fcnt ; 
- int /*<<< orphan*/  figurefiletype (TYPE_1__*) ; 
- TYPE_1__* fontlist ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * opendir (char*) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
- TYPE_1__* realloc (TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- int stat (char*,struct stat*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * strdup (char*) ; 
+
+ scalar_t__ S_ISDIR (int ) ;
+ int closedir (int *) ;
+ int exit (int) ;
+ scalar_t__ extmatch (char*,char**) ;
+ unsigned int fcnt ;
+ int figurefiletype (TYPE_1__*) ;
+ TYPE_1__* fontlist ;
+ int fprintf (int ,char*,...) ;
+ int * opendir (char*) ;
+ struct dirent* readdir (int *) ;
+ TYPE_1__* realloc (TYPE_1__*,unsigned int) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ int stat (char*,struct stat*) ;
+ int stderr ;
+ int * strdup (char*) ;
 
 __attribute__((used)) static void
-  FindFonts( char**  fontdirs,
-             char**  extensions )
+  FindFonts( char** fontdirs,
+             char** extensions )
   {
-    int           i;
-    unsigned int  max;
-    char          buffer[1025];
-    struct stat   statb;
+    int i;
+    unsigned int max;
+    char buffer[1025];
+    struct stat statb;
 
 
-    max  = 0;
+    max = 0;
     fcnt = 0;
 
-    for ( i = 0; fontdirs[i] != NULL; i++ )
+    for ( i = 0; fontdirs[i] != ((void*)0); i++ )
     {
-      DIR*            examples;
-      struct dirent*  ent;
+      DIR* examples;
+      struct dirent* ent;
 
 
       examples = opendir( fontdirs[i] );
@@ -63,7 +63,7 @@ __attribute__((used)) static void
         exit( 1 );
       }
 
-      while ( ( ent = readdir( examples ) ) != NULL )
+      while ( ( ent = readdir( examples ) ) != ((void*)0) )
       {
         snprintf( buffer, sizeof ( buffer ),
                   "%s/%s", fontdirs[i], ent->d_name );
@@ -83,7 +83,7 @@ __attribute__((used)) static void
           }
 
           fontlist[fcnt].name = strdup( buffer );
-          fontlist[fcnt].len  = statb.st_size;
+          fontlist[fcnt].len = statb.st_size;
 
           figurefiletype( &fontlist[fcnt] );
           fcnt++;
@@ -99,5 +99,5 @@ __attribute__((used)) static void
       exit( 1 );
     }
 
-    fontlist[fcnt].name = NULL;
+    fontlist[fcnt].name = ((void*)0);
   }

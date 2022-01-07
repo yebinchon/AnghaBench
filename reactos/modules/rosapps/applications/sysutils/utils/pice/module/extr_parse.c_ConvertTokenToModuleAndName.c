@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__* PULONG ;
-typedef  char* LPSTR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- char* PICE_strchr (char*,char) ; 
- int /*<<< orphan*/  PICE_strcpy (char*,char*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef scalar_t__* PULONG ;
+typedef char* LPSTR ;
+typedef int BOOLEAN ;
+
+
+ int DPRINT (int ) ;
+ int FALSE ;
+ char* PICE_strchr (char*,char) ;
+ int PICE_strcpy (char*,char*) ;
+ int TRUE ;
 
 BOOLEAN ConvertTokenToModuleAndName(LPSTR pToken,PULONG pulModuleName,PULONG pulFunctionName)
 {
@@ -30,7 +30,7 @@ BOOLEAN ConvertTokenToModuleAndName(LPSTR pToken,PULONG pulModuleName,PULONG pul
     static char module_name[128];
     static char function_name[128];
 
-    // test for module!symbol string
+
     PICE_strcpy(temp,pToken);
     p = temp;
 
@@ -40,9 +40,9 @@ BOOLEAN ConvertTokenToModuleAndName(LPSTR pToken,PULONG pulModuleName,PULONG pul
     if(pEx)
     {
         DPRINT((0,"ConvertTokenToModuleAndName(): module!symbol syntax detected\n"));
-        // terminate module name
+
         *pEx = 0;
-        // now we have two pointers
+
         pEx++;
         DPRINT((0,"ConvertTokenToModuleAndName(): module = %s symbol = %s\n",p,pEx));
         PICE_strcpy(module_name,p);

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_5__ {int flags; scalar_t__ rw_timeout; int /*<<< orphan*/  interrupt_callback; } ;
-typedef  TYPE_1__ URLContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_EXIT ; 
- int AVIO_FLAG_NONBLOCK ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EINTR ; 
- int /*<<< orphan*/  EIO ; 
- int FFMAX (int,int) ; 
- scalar_t__ av_gettime_relative () ; 
- int /*<<< orphan*/  av_usleep (int) ; 
- scalar_t__ ff_check_interrupt (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_5__ {int flags; scalar_t__ rw_timeout; int interrupt_callback; } ;
+typedef TYPE_1__ URLContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_EXIT ;
+ int AVIO_FLAG_NONBLOCK ;
+ int EAGAIN ;
+ int EINTR ;
+ int EIO ;
+ int FFMAX (int,int) ;
+ scalar_t__ av_gettime_relative () ;
+ int av_usleep (int) ;
+ scalar_t__ ff_check_interrupt (int *) ;
 
 __attribute__((used)) static inline int retry_transfer_wrapper(URLContext *h, uint8_t *buf,
                                          int size, int size_min,

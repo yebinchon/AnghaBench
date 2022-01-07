@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_subst_eol_style_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR_IO_UNKNOWN_EOL ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* SVN_SUBST_NATIVE_EOL_STR ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_subst_eol_style_fixed ; 
- scalar_t__ svn_subst_eol_style_native ; 
- scalar_t__ svn_subst_eol_style_none ; 
- int /*<<< orphan*/ * svn_subst_stream_translated (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ svn_subst_eol_style_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int FALSE ;
+ int SVN_ERR_IO_UNKNOWN_EOL ;
+ int * SVN_NO_ERROR ;
+ char* SVN_SUBST_NATIVE_EOL_STR ;
+ int * svn_error_create (int ,int *,int *) ;
+ scalar_t__ svn_subst_eol_style_fixed ;
+ scalar_t__ svn_subst_eol_style_native ;
+ scalar_t__ svn_subst_eol_style_none ;
+ int * svn_subst_stream_translated (int *,char const*,int,int *,int ,int *) ;
 
 svn_error_t *
 svn_subst_stream_translated_to_normal_form(svn_stream_t **stream,
@@ -41,7 +41,7 @@ svn_subst_stream_translated_to_normal_form(svn_stream_t **stream,
     eol_str = SVN_SUBST_NATIVE_EOL_STR;
   else if (! (eol_style == svn_subst_eol_style_fixed
               || eol_style == svn_subst_eol_style_none))
-    return svn_error_create(SVN_ERR_IO_UNKNOWN_EOL, NULL, NULL);
+    return svn_error_create(SVN_ERR_IO_UNKNOWN_EOL, ((void*)0), ((void*)0));
 
  *stream = svn_subst_stream_translated(source, eol_str,
                                        eol_style == svn_subst_eol_style_fixed

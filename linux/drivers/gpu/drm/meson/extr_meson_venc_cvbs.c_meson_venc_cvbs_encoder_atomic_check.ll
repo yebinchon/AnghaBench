@@ -1,0 +1,83 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/gpu/drm/meson/extr_meson_venc_cvbs.c_meson_venc_cvbs_encoder_atomic_check.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/gpu/drm/meson/extr_meson_venc_cvbs.c_meson_venc_cvbs_encoder_atomic_check.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.meson_cvbs_mode = type { i32 }
+%struct.drm_encoder = type { i32 }
+%struct.drm_crtc_state = type { i32 }
+%struct.drm_connector_state = type { i32 }
+
+@MESON_CVBS_MODES_COUNT = common dso_local global i32 0, align 4
+@meson_cvbs_modes = common dso_local global %struct.meson_cvbs_mode* null, align 8
+@EINVAL = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.drm_encoder*, %struct.drm_crtc_state*, %struct.drm_connector_state*)* @meson_venc_cvbs_encoder_atomic_check to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @meson_venc_cvbs_encoder_atomic_check(%struct.drm_encoder* %0, %struct.drm_crtc_state* %1, %struct.drm_connector_state* %2) #0 {
+  %4 = alloca i32, align 4
+  %5 = alloca %struct.drm_encoder*, align 8
+  %6 = alloca %struct.drm_crtc_state*, align 8
+  %7 = alloca %struct.drm_connector_state*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca %struct.meson_cvbs_mode*, align 8
+  store %struct.drm_encoder* %0, %struct.drm_encoder** %5, align 8
+  store %struct.drm_crtc_state* %1, %struct.drm_crtc_state** %6, align 8
+  store %struct.drm_connector_state* %2, %struct.drm_connector_state** %7, align 8
+  store i32 0, i32* %8, align 4
+  br label %10
+
+10:                                               ; preds = %27, %3
+  %11 = load i32, i32* %8, align 4
+  %12 = load i32, i32* @MESON_CVBS_MODES_COUNT, align 4
+  %13 = icmp slt i32 %11, %12
+  br i1 %13, label %14, label %30
+
+14:                                               ; preds = %10
+  %15 = load %struct.meson_cvbs_mode*, %struct.meson_cvbs_mode** @meson_cvbs_modes, align 8
+  %16 = load i32, i32* %8, align 4
+  %17 = sext i32 %16 to i64
+  %18 = getelementptr inbounds %struct.meson_cvbs_mode, %struct.meson_cvbs_mode* %15, i64 %17
+  store %struct.meson_cvbs_mode* %18, %struct.meson_cvbs_mode** %9, align 8
+  %19 = load %struct.drm_crtc_state*, %struct.drm_crtc_state** %6, align 8
+  %20 = getelementptr inbounds %struct.drm_crtc_state, %struct.drm_crtc_state* %19, i32 0, i32 0
+  %21 = load %struct.meson_cvbs_mode*, %struct.meson_cvbs_mode** %9, align 8
+  %22 = getelementptr inbounds %struct.meson_cvbs_mode, %struct.meson_cvbs_mode* %21, i32 0, i32 0
+  %23 = call i64 @drm_mode_equal(i32* %20, i32* %22)
+  %24 = icmp ne i64 %23, 0
+  br i1 %24, label %25, label %26
+
+25:                                               ; preds = %14
+  store i32 0, i32* %4, align 4
+  br label %33
+
+26:                                               ; preds = %14
+  br label %27
+
+27:                                               ; preds = %26
+  %28 = load i32, i32* %8, align 4
+  %29 = add nsw i32 %28, 1
+  store i32 %29, i32* %8, align 4
+  br label %10
+
+30:                                               ; preds = %10
+  %31 = load i32, i32* @EINVAL, align 4
+  %32 = sub nsw i32 0, %31
+  store i32 %32, i32* %4, align 4
+  br label %33
+
+33:                                               ; preds = %30, %25
+  %34 = load i32, i32* %4, align 4
+  ret i32 %34
+}
+
+declare dso_local i64 @drm_mode_equal(i32*, i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

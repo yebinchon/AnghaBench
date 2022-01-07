@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* ptr; int len; } ;
-typedef  TYPE_3__ xmlstr_t ;
-struct TYPE_6__ {int /*<<< orphan*/  flags; } ;
+typedef TYPE_3__ xmlstr_t ;
+struct TYPE_6__ {int flags; } ;
 struct TYPE_7__ {TYPE_1__ typelib; } ;
 struct entity {TYPE_2__ u; } ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int WORD ;
+typedef char WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LIBFLAG_FCONTROL ; 
- int /*<<< orphan*/  LIBFLAG_FHASDISKIMAGE ; 
- int /*<<< orphan*/  LIBFLAG_FHIDDEN ; 
- int /*<<< orphan*/  LIBFLAG_FRESTRICTED ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  controlW ; 
- int /*<<< orphan*/  hasdiskimageW ; 
- int /*<<< orphan*/  hiddenW ; 
- int /*<<< orphan*/  restrictedW ; 
- int /*<<< orphan*/  strncmpiW (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xmlstr2unicode (TYPE_3__ const*) ; 
+
+ int DPRINT1 (char*,int *) ;
+ int FALSE ;
+ int LIBFLAG_FCONTROL ;
+ int LIBFLAG_FHASDISKIMAGE ;
+ int LIBFLAG_FHIDDEN ;
+ int LIBFLAG_FRESTRICTED ;
+ int TRUE ;
+ int controlW ;
+ int hasdiskimageW ;
+ int hiddenW ;
+ int restrictedW ;
+ int strncmpiW (char const*,int ,int) ;
+ int xmlstr2unicode (TYPE_3__ const*) ;
 
 __attribute__((used)) static BOOL parse_typelib_flags(const xmlstr_t *value, struct entity *entity)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static BOOL parse_typelib_flags(const xmlstr_t *value, str
 
     *flags = 0;
 
-    /* it's comma separated list of flags */
+
     while (i < value->len)
     {
         start = str;
@@ -67,7 +67,7 @@ __attribute__((used)) static BOOL parse_typelib_flags(const xmlstr_t *value, str
             return FALSE;
         }
 
-        /* skip separator */
+
         str++;
         i++;
     }

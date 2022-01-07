@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hns_mac_cb {scalar_t__ media_type; int /*<<< orphan*/  mac_id; } ;
 
-/* Variables and functions */
- scalar_t__ HNAE_MEDIA_TYPE_FIBER ; 
- int /*<<< orphan*/  HNS_OP_LED_SET_FUNC ; 
- int /*<<< orphan*/  hns_dsaf_acpi_ledctrl_by_port (struct hns_mac_cb*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_err (char*) ; 
+
+
+
+struct hns_mac_cb {scalar_t__ media_type; int mac_id; } ;
+
+
+ scalar_t__ HNAE_MEDIA_TYPE_FIBER ;
+ int HNS_OP_LED_SET_FUNC ;
+ int hns_dsaf_acpi_ledctrl_by_port (struct hns_mac_cb*,int ,int ,int ,int ) ;
+ int pr_err (char*) ;
 
 __attribute__((used)) static void cpld_led_reset_acpi(struct hns_mac_cb *mac_cb)
 {

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  xq; } ;
-struct ppp {int /*<<< orphan*/  dev; TYPE_1__ file; int /*<<< orphan*/  xmit_pending; int /*<<< orphan*/  closing; } ;
+struct TYPE_2__ {int xq; } ;
+struct ppp {int dev; TYPE_1__ file; int xmit_pending; int closing; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  netif_wake_queue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ppp_push (struct ppp*) ; 
- int /*<<< orphan*/  ppp_send_frame (struct ppp*,struct sk_buff*) ; 
- int /*<<< orphan*/  ppp_xmit_lock (struct ppp*) ; 
- int /*<<< orphan*/  ppp_xmit_unlock (struct ppp*) ; 
- struct sk_buff* skb_dequeue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_peek (int /*<<< orphan*/ *) ; 
+
+ int netif_wake_queue (int ) ;
+ int ppp_push (struct ppp*) ;
+ int ppp_send_frame (struct ppp*,struct sk_buff*) ;
+ int ppp_xmit_lock (struct ppp*) ;
+ int ppp_xmit_unlock (struct ppp*) ;
+ struct sk_buff* skb_dequeue (int *) ;
+ int skb_peek (int *) ;
 
 __attribute__((used)) static void
 ppp_xmit_process(struct ppp *ppp)
 {
-	struct sk_buff *skb;
+ struct sk_buff *skb;
 
-	ppp_xmit_lock(ppp);
-	if (!ppp->closing) {
-		ppp_push(ppp);
-		while (!ppp->xmit_pending
-		       && (skb = skb_dequeue(&ppp->file.xq)))
-			ppp_send_frame(ppp, skb);
-		/* If there's no work left to do, tell the core net
-		   code that we can accept some more. */
-		if (!ppp->xmit_pending && !skb_peek(&ppp->file.xq))
-			netif_wake_queue(ppp->dev);
-	}
-	ppp_xmit_unlock(ppp);
+ ppp_xmit_lock(ppp);
+ if (!ppp->closing) {
+  ppp_push(ppp);
+  while (!ppp->xmit_pending
+         && (skb = skb_dequeue(&ppp->file.xq)))
+   ppp_send_frame(ppp, skb);
+
+
+  if (!ppp->xmit_pending && !skb_peek(&ppp->file.xq))
+   netif_wake_queue(ppp->dev);
+ }
+ ppp_xmit_unlock(ppp);
 }

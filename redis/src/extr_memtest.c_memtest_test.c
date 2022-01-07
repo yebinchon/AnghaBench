@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ULONG_ONEZERO ; 
- unsigned long ULONG_ZEROONE ; 
- scalar_t__ memtest_addressing (unsigned long*,size_t,int) ; 
- scalar_t__ memtest_compare_times (unsigned long*,size_t,int,int,int) ; 
- int /*<<< orphan*/  memtest_fill_random (unsigned long*,size_t,int) ; 
- int /*<<< orphan*/  memtest_fill_value (unsigned long*,size_t,int /*<<< orphan*/ ,unsigned long,char,int) ; 
- int /*<<< orphan*/  memtest_progress_end () ; 
- int /*<<< orphan*/  memtest_progress_start (char*,int) ; 
+ int ULONG_ONEZERO ;
+ unsigned long ULONG_ZEROONE ;
+ scalar_t__ memtest_addressing (unsigned long*,size_t,int) ;
+ scalar_t__ memtest_compare_times (unsigned long*,size_t,int,int,int) ;
+ int memtest_fill_random (unsigned long*,size_t,int) ;
+ int memtest_fill_value (unsigned long*,size_t,int ,unsigned long,char,int) ;
+ int memtest_progress_end () ;
+ int memtest_progress_start (char*,int) ;
 
 int memtest_test(unsigned long *m, size_t bytes, int passes, int interactive) {
     int pass = 0;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  char* BSTR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
-#define  DRIVE_CDROM 134 
-#define  DRIVE_FIXED 133 
-#define  DRIVE_NO_ROOT_DIR 132 
-#define  DRIVE_RAMDISK 131 
-#define  DRIVE_REMOTE 130 
-#define  DRIVE_REMOVABLE 129 
-#define  DRIVE_UNKNOWN 128 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int GetDriveTypeW (char*) ; 
- scalar_t__ IUri_GetPath (int /*<<< orphan*/ *,char**) ; 
- scalar_t__ IUri_GetSchemeName (int /*<<< orphan*/ *,char**) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (char*) ; 
- scalar_t__ URLZONE_INTERNET ; 
- scalar_t__ URLZONE_INVALID ; 
- scalar_t__ URLZONE_LOCAL_MACHINE ; 
- int /*<<< orphan*/  fileW ; 
- scalar_t__ get_zone_from_domains (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ get_zone_from_reg (char*,scalar_t__*) ; 
- scalar_t__ is_drive_path (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- char* strchrW (char*,char) ; 
- int /*<<< orphan*/  strcmpiW (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int IUri ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef char* BSTR ;
+
+
+ int ARRAY_SIZE (char*) ;
+
+
+
+
+
+
+
+ scalar_t__ FAILED (scalar_t__) ;
+ int FIXME (char*,int) ;
+ int GetDriveTypeW (char*) ;
+ scalar_t__ IUri_GetPath (int *,char**) ;
+ scalar_t__ IUri_GetSchemeName (int *,char**) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int SysFreeString (char*) ;
+ scalar_t__ URLZONE_INTERNET ;
+ scalar_t__ URLZONE_INVALID ;
+ scalar_t__ URLZONE_LOCAL_MACHINE ;
+ int fileW ;
+ scalar_t__ get_zone_from_domains (int *,scalar_t__*) ;
+ scalar_t__ get_zone_from_reg (char*,scalar_t__*) ;
+ scalar_t__ is_drive_path (char*) ;
+ int memcpy (char*,char*,int) ;
+ char* strchrW (char*,char) ;
+ int strcmpiW (char*,int ) ;
 
 __attribute__((used)) static HRESULT map_security_uri_to_zone(IUri *uri, DWORD *zone)
 {
@@ -80,17 +80,17 @@ __attribute__((used)) static HRESULT map_security_uri_to_zone(IUri *uri, DWORD *
             type = GetDriveTypeW(root);
 
             switch(type) {
-            case DRIVE_UNKNOWN:
-            case DRIVE_NO_ROOT_DIR:
+            case 128:
+            case 132:
                 break;
-            case DRIVE_REMOVABLE:
-            case DRIVE_FIXED:
-            case DRIVE_CDROM:
-            case DRIVE_RAMDISK:
+            case 129:
+            case 133:
+            case 134:
+            case 131:
                 *zone = URLZONE_LOCAL_MACHINE;
                 hres = S_OK;
                 break;
-            case DRIVE_REMOTE:
+            case 130:
                 *zone = URLZONE_INTERNET;
                 hres = S_OK;
                 break;

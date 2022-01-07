@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  pkt; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ AVPacketList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int pkt; struct TYPE_5__* next; } ;
+typedef TYPE_1__ AVPacketList ;
+
+
+ int av_freep (TYPE_1__**) ;
+ int av_packet_unref (int *) ;
 
 void ff_packet_list_free(AVPacketList **pkt_buf, AVPacketList **pkt_buf_end)
 {
@@ -28,6 +28,6 @@ void ff_packet_list_free(AVPacketList **pkt_buf, AVPacketList **pkt_buf_end)
         av_packet_unref(&pktl->pkt);
         av_freep(&pktl);
     }
-    *pkt_buf     = NULL;
-    *pkt_buf_end = NULL;
+    *pkt_buf = ((void*)0);
+    *pkt_buf_end = ((void*)0);
 }

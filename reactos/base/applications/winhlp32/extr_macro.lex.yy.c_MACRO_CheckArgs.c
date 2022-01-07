@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  proto; int /*<<< orphan*/  function; int /*<<< orphan*/  integer; scalar_t__ string; } ;
 
-/* Variables and functions */
- int BOOL_FUNCTION ; 
- int INTEGER ; 
- void* LongToPtr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MACRO_CallBoolFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ; 
- int STRING ; 
- int /*<<< orphan*/  WINE_FIXME (char*,unsigned int) ; 
- int /*<<< orphan*/  WINE_TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  WINE_WARN (char*,...) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- unsigned int strlen (char const*) ; 
- char const* ts (int) ; 
- char yylex () ; 
- TYPE_1__ yylval ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int proto; int function; int integer; scalar_t__ string; } ;
+
+
+ int BOOL_FUNCTION ;
+ int INTEGER ;
+ void* LongToPtr (int ) ;
+ int MACRO_CallBoolFunc (int ,int ,void**) ;
+ int STRING ;
+ int WINE_FIXME (char*,unsigned int) ;
+ int WINE_TRACE (char*,int ,...) ;
+ int WINE_WARN (char*,...) ;
+ int debugstr_a (char const*) ;
+ unsigned int strlen (char const*) ;
+ char const* ts (int) ;
+ char yylex () ;
+ TYPE_1__ yylval ;
 
 __attribute__((used)) static int MACRO_CheckArgs(void* pa[], unsigned max, const char* args)
 {
@@ -47,24 +47,24 @@ __attribute__((used)) static int MACRO_CheckArgs(void* pa[], unsigned max, const
 
             switch (*args)
             {
-            case 'S': 
+            case 'S':
                 if (t != STRING)
                 {WINE_WARN("missing S\n");return -1;}
-                pa[idx] = (void*)yylval.string;  
+                pa[idx] = (void*)yylval.string;
                 break;
             case 'U':
             case 'I':
                 if (t != INTEGER)
-                {WINE_WARN("missing U\n");return -1;}   
+                {WINE_WARN("missing U\n");return -1;}
                 pa[idx] = LongToPtr(yylval.integer);
                 break;
             case 'B':
-                if (t != BOOL_FUNCTION) 
-                {WINE_WARN("missing B\n");return -1;}   
+                if (t != BOOL_FUNCTION)
+                {WINE_WARN("missing B\n");return -1;}
                 if (MACRO_CallBoolFunc(yylval.function, yylval.proto, &pa[idx]) == 0)
                     return -1;
                 break;
-            default: 
+            default:
                 WINE_WARN("unexpected %s while args is %c\n", debugstr_a(ts(t)), *args);
                 return -1;
             }
@@ -79,6 +79,6 @@ __attribute__((used)) static int MACRO_CheckArgs(void* pa[], unsigned max, const
     if (yylex() != ')') {WINE_WARN("missing )\n");return -1;}
 
 CheckArgs_end:
-    while (len > idx) pa[--len] = NULL;
+    while (len > idx) pa[--len] = ((void*)0);
     return idx;
 }

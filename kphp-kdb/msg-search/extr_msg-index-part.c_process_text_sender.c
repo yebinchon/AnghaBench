@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int order; int message_id; int /*<<< orphan*/  hash; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int order; int message_id; int hash; } ;
 struct TYPE_3__ {int users; int* offset; } ;
 
-/* Variables and functions */
- TYPE_2__* P ; 
- size_t Pc ; 
- TYPE_1__ UserIndex ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tot_bad_senders ; 
- int /*<<< orphan*/  tot_known_senders ; 
- int tot_sender_hashes ; 
- int ui_size ; 
- int /*<<< orphan*/ * ui_start ; 
+
+ TYPE_2__* P ;
+ size_t Pc ;
+ TYPE_1__ UserIndex ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,int,int,int) ;
+ int stderr ;
+ int tot_bad_senders ;
+ int tot_known_senders ;
+ int tot_sender_hashes ;
+ int ui_size ;
+ int * ui_start ;
 
 void process_text_sender (int user_id, int msg_id, int order) {
   int a, b;
@@ -52,7 +52,7 @@ void process_text_sender (int user_id, int msg_id, int order) {
 
   while (a < b) {
     P[Pc].hash = ui_start[a++];
-    // fprintf (stderr, "import hash %llu for user %d\n", P[Pc].hash, user_id);
+
     P[Pc].order = order;
     P[Pc].message_id = msg_id;
     Pc++;

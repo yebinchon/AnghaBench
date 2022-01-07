@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {void* fout; int /*<<< orphan*/ * output_buffer; int /*<<< orphan*/  decoder; void* fin; int /*<<< orphan*/ * input_buffer; } ;
-typedef  TYPE_1__ Context ;
-typedef  scalar_t__ BrotliDecoderResult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_DECODER_PARAM_LARGE_WINDOW ; 
- scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_INPUT ; 
- scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_OUTPUT ; 
- scalar_t__ BROTLI_DECODER_RESULT_SUCCESS ; 
- int BUFFER_SIZE ; 
- int /*<<< orphan*/  BrotliDecoderCreateInstance (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BrotliDecoderDecompressStream (int /*<<< orphan*/ ,size_t*,int /*<<< orphan*/  const**,size_t*,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BrotliDecoderSetParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  STDIN_FILENO ; 
- int /*<<< orphan*/  STDOUT_FILENO ; 
- int /*<<< orphan*/  cleanup (TYPE_1__*) ; 
- int /*<<< orphan*/  fail (TYPE_1__*,char*) ; 
- void* fdopen (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ feof (void*) ; 
- scalar_t__ ferror (void*) ; 
- size_t fread (int /*<<< orphan*/ *,int,int,void*) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ *,int,int,void*) ; 
- int /*<<< orphan*/  init (TYPE_1__*) ; 
- scalar_t__ malloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {void* fout; int * output_buffer; int decoder; void* fin; int * input_buffer; } ;
+typedef TYPE_1__ Context ;
+typedef scalar_t__ BrotliDecoderResult ;
+
+
+ int BROTLI_DECODER_PARAM_LARGE_WINDOW ;
+ scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_INPUT ;
+ scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_OUTPUT ;
+ scalar_t__ BROTLI_DECODER_RESULT_SUCCESS ;
+ int BUFFER_SIZE ;
+ int BrotliDecoderCreateInstance (int ,int ,int ) ;
+ scalar_t__ BrotliDecoderDecompressStream (int ,size_t*,int const**,size_t*,int **,int ) ;
+ int BrotliDecoderSetParameter (int ,int ,int) ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int cleanup (TYPE_1__*) ;
+ int fail (TYPE_1__*,char*) ;
+ void* fdopen (int ,char*) ;
+ scalar_t__ feof (void*) ;
+ scalar_t__ ferror (void*) ;
+ size_t fread (int *,int,int,void*) ;
+ int fwrite (int *,int,int,void*) ;
+ int init (TYPE_1__*) ;
+ scalar_t__ malloc (int) ;
 
 int main(int argc, char** argv) {
   Context ctx;

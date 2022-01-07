@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct snddev_info {int /*<<< orphan*/  status; int /*<<< orphan*/  dev; } ;
-struct TYPE_3__ {scalar_t__ ack_count; scalar_t__ intr_count; int /*<<< orphan*/  hw_info; int /*<<< orphan*/  longname; int /*<<< orphan*/  shortname; int /*<<< orphan*/  card; } ;
-typedef  TYPE_1__ oss_card_info ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  PCM_LOCK (struct snddev_info*) ; 
- int /*<<< orphan*/  PCM_REGISTERED (struct snddev_info*) ; 
- int /*<<< orphan*/  PCM_UNLOCK (struct snddev_info*) ; 
- int /*<<< orphan*/  PCM_UNLOCKASSERT (struct snddev_info*) ; 
- int devclass_get_maxunit (int /*<<< orphan*/ *) ; 
- struct snddev_info* devclass_get_softc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  device_get_desc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_nameunit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pcm_devclass ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct snddev_info {int status; int dev; } ;
+struct TYPE_3__ {scalar_t__ ack_count; scalar_t__ intr_count; int hw_info; int longname; int shortname; int card; } ;
+typedef TYPE_1__ oss_card_info ;
+
+
+ int ENXIO ;
+ int PCM_LOCK (struct snddev_info*) ;
+ int PCM_REGISTERED (struct snddev_info*) ;
+ int PCM_UNLOCK (struct snddev_info*) ;
+ int PCM_UNLOCKASSERT (struct snddev_info*) ;
+ int devclass_get_maxunit (int *) ;
+ struct snddev_info* devclass_get_softc (int *,int) ;
+ int device_get_desc (int ) ;
+ int device_get_nameunit (int ) ;
+ int * pcm_devclass ;
+ int strlcpy (int ,int ,int) ;
 
 int
 sound_oss_card_info(oss_card_info *si)
 {
-	struct snddev_info *d;
-	int i, ncards;
-	
-	ncards = 0;
+ struct snddev_info *d;
+ int i, ncards;
 
-	for (i = 0; pcm_devclass != NULL &&
-	    i < devclass_get_maxunit(pcm_devclass); i++) {
-		d = devclass_get_softc(pcm_devclass, i);
-		if (!PCM_REGISTERED(d))
-			continue;
+ ncards = 0;
 
-		if (ncards++ != si->card)
-			continue;
+ for (i = 0; pcm_devclass != ((void*)0) &&
+     i < devclass_get_maxunit(pcm_devclass); i++) {
+  d = devclass_get_softc(pcm_devclass, i);
+  if (!PCM_REGISTERED(d))
+   continue;
 
-		PCM_UNLOCKASSERT(d);
-		PCM_LOCK(d);
-		
-		strlcpy(si->shortname, device_get_nameunit(d->dev),
-		    sizeof(si->shortname));
-		strlcpy(si->longname, device_get_desc(d->dev),
-		    sizeof(si->longname));
-		strlcpy(si->hw_info, d->status, sizeof(si->hw_info));
-		si->intr_count = si->ack_count = 0;
+  if (ncards++ != si->card)
+   continue;
 
-		PCM_UNLOCK(d);
+  PCM_UNLOCKASSERT(d);
+  PCM_LOCK(d);
 
-		return (0);
-	}
-	return (ENXIO);
+  strlcpy(si->shortname, device_get_nameunit(d->dev),
+      sizeof(si->shortname));
+  strlcpy(si->longname, device_get_desc(d->dev),
+      sizeof(si->longname));
+  strlcpy(si->hw_info, d->status, sizeof(si->hw_info));
+  si->intr_count = si->ack_count = 0;
+
+  PCM_UNLOCK(d);
+
+  return (0);
+ }
+ return (ENXIO);
 }

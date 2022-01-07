@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct metafile {scalar_t__ data; TYPE_1__* header; scalar_t__ local_offsets; scalar_t__ aio; } ;
 struct TYPE_2__ {scalar_t__ metafile_size; } ;
 
-/* Variables and functions */
- int MAX_METAFILES ; 
- int /*<<< orphan*/  allocated_metafile_bytes ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  del_use (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- struct metafile* metafiles ; 
- int /*<<< orphan*/  metafiles_loaded ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  zzfree (scalar_t__,scalar_t__) ; 
+
+ int MAX_METAFILES ;
+ int allocated_metafile_bytes ;
+ int assert (int) ;
+ int del_use (int) ;
+ int fprintf (int ,char*,int) ;
+ struct metafile* metafiles ;
+ int metafiles_loaded ;
+ int stderr ;
+ int verbosity ;
+ int zzfree (scalar_t__,scalar_t__) ;
 
 int metafile_unload (int metafile_number) {
   assert (0 <= metafile_number && metafile_number < MAX_METAFILES);

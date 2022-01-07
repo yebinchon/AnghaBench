@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int info ;
+typedef int WCHAR ;
 struct TYPE_4__ {int cbAssemblyInfo; scalar_t__ dwAssemblyFlags; } ;
-typedef  int /*<<< orphan*/  IAssemblyCache ;
-typedef  scalar_t__ HRESULT ;
-typedef  int BOOL ;
-typedef  TYPE_1__ ASSEMBLY_INFO ;
+typedef int IAssemblyCache ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+typedef TYPE_1__ ASSEMBLY_INFO ;
 
-/* Variables and functions */
- scalar_t__ ASSEMBLYINFO_FLAG_INSTALLED ; 
- scalar_t__ E_NOT_SUFFICIENT_BUFFER ; 
- int FALSE ; 
- scalar_t__ IAssemblyCache_QueryAssemblyInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_1__*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ ASSEMBLYINFO_FLAG_INSTALLED ;
+ scalar_t__ E_NOT_SUFFICIENT_BUFFER ;
+ int FALSE ;
+ scalar_t__ IAssemblyCache_QueryAssemblyInfo (int *,int ,int const*,TYPE_1__*) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,scalar_t__) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static BOOL is_assembly_installed( IAssemblyCache *cache, const WCHAR *display_name )
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static BOOL is_assembly_installed( IAssemblyCache *cache, 
     memset( &info, 0, sizeof(info) );
     info.cbAssemblyInfo = sizeof(info);
     hr = IAssemblyCache_QueryAssemblyInfo( cache, 0, display_name, &info );
-    if (hr == S_OK /* sxs version */ || hr == E_NOT_SUFFICIENT_BUFFER)
+    if (hr == S_OK || hr == E_NOT_SUFFICIENT_BUFFER)
     {
         return (info.dwAssemblyFlags == ASSEMBLYINFO_FLAG_INSTALLED);
     }

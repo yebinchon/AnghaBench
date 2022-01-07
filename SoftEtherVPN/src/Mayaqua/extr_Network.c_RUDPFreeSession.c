@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  BulkRecvKey; int /*<<< orphan*/  BulkSendKey; int /*<<< orphan*/  SendFifo; int /*<<< orphan*/  RecvFifo; int /*<<< orphan*/  ReplyAckList; int /*<<< orphan*/ * TcpSock; int /*<<< orphan*/  RecvSegmentList; int /*<<< orphan*/  SendSegmentList; } ;
-typedef  TYPE_1__ RUDP_SESSION ;
-typedef  TYPE_1__ RUDP_SEGMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Debug (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (TYPE_1__*) ; 
- TYPE_1__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseFifo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseInt64List (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSharedBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_7__ {int BulkRecvKey; int BulkSendKey; int SendFifo; int RecvFifo; int ReplyAckList; int * TcpSock; int RecvSegmentList; int SendSegmentList; } ;
+typedef TYPE_1__ RUDP_SESSION ;
+typedef TYPE_1__ RUDP_SEGMENT ;
+
+
+ int Debug (char*,TYPE_1__*) ;
+ int Disconnect (int *) ;
+ int Free (TYPE_1__*) ;
+ TYPE_1__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int ReleaseFifo (int ) ;
+ int ReleaseInt64List (int ) ;
+ int ReleaseList (int ) ;
+ int ReleaseSharedBuffer (int ) ;
+ int ReleaseSock (int *) ;
 
 void RUDPFreeSession(RUDP_SESSION *se)
 {
-	UINT i;
-	// Validate arguments
-	if (se == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	Debug("RUDPFreeSession %X\n", se);
+ if (se == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < LIST_NUM(se->SendSegmentList);i++)
-	{
-		RUDP_SEGMENT *s = LIST_DATA(se->SendSegmentList, i);
+ Debug("RUDPFreeSession %X\n", se);
 
-		Free(s);
-	}
+ for (i = 0;i < LIST_NUM(se->SendSegmentList);i++)
+ {
+  RUDP_SEGMENT *s = LIST_DATA(se->SendSegmentList, i);
 
-	ReleaseList(se->SendSegmentList);
+  Free(s);
+ }
 
-	for (i = 0;i < LIST_NUM(se->RecvSegmentList);i++)
-	{
-		RUDP_SEGMENT *s = LIST_DATA(se->RecvSegmentList, i);
+ ReleaseList(se->SendSegmentList);
 
-		Free(s);
-	}
+ for (i = 0;i < LIST_NUM(se->RecvSegmentList);i++)
+ {
+  RUDP_SEGMENT *s = LIST_DATA(se->RecvSegmentList, i);
 
-	ReleaseList(se->RecvSegmentList);
+  Free(s);
+ }
 
-	if (se->TcpSock != NULL)
-	{
-		Disconnect(se->TcpSock);
-		ReleaseSock(se->TcpSock);
-	}
+ ReleaseList(se->RecvSegmentList);
 
-	ReleaseInt64List(se->ReplyAckList);
+ if (se->TcpSock != ((void*)0))
+ {
+  Disconnect(se->TcpSock);
+  ReleaseSock(se->TcpSock);
+ }
 
-	ReleaseFifo(se->RecvFifo);
-	ReleaseFifo(se->SendFifo);
+ ReleaseInt64List(se->ReplyAckList);
 
-	ReleaseSharedBuffer(se->BulkSendKey);
-	ReleaseSharedBuffer(se->BulkRecvKey);
+ ReleaseFifo(se->RecvFifo);
+ ReleaseFifo(se->SendFifo);
 
-	Free(se);
+ ReleaseSharedBuffer(se->BulkSendKey);
+ ReleaseSharedBuffer(se->BulkRecvKey);
+
+ Free(se);
 }

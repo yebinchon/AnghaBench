@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int subtype; } ;
-typedef  TYPE_1__ esp_partition_t ;
-typedef  int esp_ota_img_states_t ;
+typedef TYPE_1__ esp_partition_t ;
+typedef int esp_ota_img_states_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_NOT_SUPPORTED ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_OTA_IMG_INVALID ; 
- int /*<<< orphan*/  ESP_PARTITION_SUBTYPE_APP_FACTORY ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL_PTR (TYPE_1__ const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (TYPE_1__ const*) ; 
- int /*<<< orphan*/  TEST_ESP_ERR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int boot_count ; 
- int /*<<< orphan*/  erase_ota_data () ; 
- TYPE_1__* esp_ota_get_last_invalid_partition () ; 
- TYPE_1__* esp_ota_get_next_update_partition (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_ota_get_state_partition (TYPE_1__ const*,int*) ; 
- TYPE_1__* get_running_firmware () ; 
+
+ int ESP_ERR_NOT_SUPPORTED ;
+ int ESP_LOGI (int ,char*,...) ;
+ int ESP_OTA_IMG_INVALID ;
+ int ESP_PARTITION_SUBTYPE_APP_FACTORY ;
+ int TAG ;
+ int TEST_ASSERT_EQUAL (int ,int) ;
+ int TEST_ASSERT_EQUAL_PTR (TYPE_1__ const*,TYPE_1__ const*) ;
+ int TEST_ASSERT_NOT_NULL (TYPE_1__ const*) ;
+ int TEST_ESP_ERR (int ,int ) ;
+ int TEST_ESP_OK (int ) ;
+ int boot_count ;
+ int erase_ota_data () ;
+ TYPE_1__* esp_ota_get_last_invalid_partition () ;
+ TYPE_1__* esp_ota_get_next_update_partition (int *) ;
+ int esp_ota_get_state_partition (TYPE_1__ const*,int*) ;
+ TYPE_1__* get_running_firmware () ;
 
 __attribute__((used)) static void test_rollback1_1(void)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_rollback1_1(void)
     TEST_ASSERT_EQUAL(ESP_PARTITION_SUBTYPE_APP_FACTORY, cur_app->subtype);
 
     const esp_partition_t *invalid_partition = esp_ota_get_last_invalid_partition();
-    const esp_partition_t* next_update_partition = esp_ota_get_next_update_partition(NULL);
+    const esp_partition_t* next_update_partition = esp_ota_get_next_update_partition(((void*)0));
     TEST_ASSERT_NOT_NULL(invalid_partition);
     TEST_ASSERT_NOT_NULL(next_update_partition);
     TEST_ASSERT_EQUAL_PTR(invalid_partition, next_update_partition);

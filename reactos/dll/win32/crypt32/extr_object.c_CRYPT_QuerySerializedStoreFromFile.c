@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HCRYPTMSG ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_QUERY_CONTENT_SERIALIZED_STORE ; 
- int /*<<< orphan*/  CERT_STORE_CREATE_NEW_FLAG ; 
- int /*<<< orphan*/  CERT_STORE_PROV_MEMORY ; 
- int /*<<< orphan*/  CRYPT_ReadSerializedStoreFromFile (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CertCloseStore (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CertDuplicateStore (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CertOpenStore (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_ASN_ENCODING ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LPCWSTR ;
+typedef int HCRYPTMSG ;
+typedef int HCERTSTORE ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CERT_QUERY_CONTENT_SERIALIZED_STORE ;
+ int CERT_STORE_CREATE_NEW_FLAG ;
+ int CERT_STORE_PROV_MEMORY ;
+ int CRYPT_ReadSerializedStoreFromFile (scalar_t__,int ) ;
+ int CertCloseStore (int ,int ) ;
+ int CertDuplicateStore (int ) ;
+ int CertOpenStore (int ,int ,int ,int ,int *) ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (int ,int ,int ,int *,int ,int ,int *) ;
+ int FALSE ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int TRACE (char*,int ) ;
+ int X509_ASN_ENCODING ;
+ int debugstr_w (int ) ;
 
 __attribute__((used)) static BOOL CRYPT_QuerySerializedStoreFromFile(LPCWSTR fileName,
  DWORD *pdwMsgAndCertEncodingType, DWORD *pdwContentType,
@@ -44,12 +44,12 @@ __attribute__((used)) static BOOL CRYPT_QuerySerializedStoreFromFile(LPCWSTR fil
     BOOL ret = FALSE;
 
     TRACE("%s\n", debugstr_w(fileName));
-    file = CreateFileW(fileName, GENERIC_READ, FILE_SHARE_READ, NULL,
-     OPEN_EXISTING, 0, NULL);
+    file = CreateFileW(fileName, GENERIC_READ, FILE_SHARE_READ, ((void*)0),
+     OPEN_EXISTING, 0, ((void*)0));
     if (file != INVALID_HANDLE_VALUE)
     {
         HCERTSTORE store = CertOpenStore(CERT_STORE_PROV_MEMORY, 0, 0,
-         CERT_STORE_CREATE_NEW_FLAG, NULL);
+         CERT_STORE_CREATE_NEW_FLAG, ((void*)0));
 
         ret = CRYPT_ReadSerializedStoreFromFile(file, store);
         if (ret)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ddRVal; int /*<<< orphan*/  dwFlags; } ;
-typedef  int /*<<< orphan*/ * PDD_WAITFORVERTICALBLANKDATA ;
-typedef  int /*<<< orphan*/ * HANDLE ;
-typedef  TYPE_1__ DDHAL_WAITFORVERTICALBLANKDATA ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDHAL_DRIVER_HANDLED ; 
- int /*<<< orphan*/  DDHAL_DRIVER_NOTHANDLED ; 
- int /*<<< orphan*/  DDWAITVB_I_TESTVB ; 
- int /*<<< orphan*/  DD_OK ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  OsThunkDdWaitForVerticalBlank (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  show_status (int,char*) ; 
- int /*<<< orphan*/  testing_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  testing_noteq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ddRVal; int dwFlags; } ;
+typedef int * PDD_WAITFORVERTICALBLANKDATA ;
+typedef int * HANDLE ;
+typedef TYPE_1__ DDHAL_WAITFORVERTICALBLANKDATA ;
+typedef int BOOL ;
+
+
+ int DDHAL_DRIVER_HANDLED ;
+ int DDHAL_DRIVER_NOTHANDLED ;
+ int DDWAITVB_I_TESTVB ;
+ int DD_OK ;
+ int FALSE ;
+ int OsThunkDdWaitForVerticalBlank (int *,int *) ;
+ int RtlZeroMemory (TYPE_1__*,int) ;
+ int show_status (int,char*) ;
+ int testing_eq (int ,int ,int,char*) ;
+ int testing_noteq (int ,int ,int,char*) ;
 
 void
 test_NtGdiDdWaitForVerticalBlank(HANDLE hDirectDrawLocal)
@@ -38,10 +38,10 @@ test_NtGdiDdWaitForVerticalBlank(HANDLE hDirectDrawLocal)
 
     RtlZeroMemory(&pDdWaitForVerticalBlankData,sizeof(DDHAL_WAITFORVERTICALBLANKDATA));
 
-    retValue = OsThunkDdWaitForVerticalBlank(NULL,NULL);
+    retValue = OsThunkDdWaitForVerticalBlank(((void*)0),((void*)0));
     testing_eq(retValue, DDHAL_DRIVER_HANDLED,fails,"1. NtGdiDdWaitForVerticalBlank(NULL,NULL);\0");
 
-    retValue = OsThunkDdWaitForVerticalBlank(hDirectDrawLocal,NULL);
+    retValue = OsThunkDdWaitForVerticalBlank(hDirectDrawLocal,((void*)0));
     testing_eq(retValue, DDHAL_DRIVER_HANDLED,fails,"2. NtGdiDdWaitForVerticalBlank(hDirectDrawLocal,NULL);\0");
 
     retValue = OsThunkDdWaitForVerticalBlank(hDirectDrawLocal,(PDD_WAITFORVERTICALBLANKDATA)&pDdWaitForVerticalBlankData);

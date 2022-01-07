@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8u16 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOTP_UB4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int,int,int) ; 
- int /*<<< orphan*/  LD_SB (int /*<<< orphan*/ *) ; 
- scalar_t__ LD_UB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LD_UB4 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  MUL4 (int,int,int,int,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  PCKEV_B2_UB (int,int,int,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SAT_UH4_UH (int,int,int,int,int) ; 
- int /*<<< orphan*/  SRARI_H4_UH (int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_D4 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VSHF_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int __msa_dotp_u_h (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  __msa_fill_b (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __msa_fill_h (int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_ilvr_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_vshf_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * chroma_mask_arr ; 
+
+
+
+typedef int v8u16 ;
+typedef scalar_t__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int32_t ;
+
+
+ int DOTP_UB4_UH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int,int,int) ;
+ int LD_SB (int *) ;
+ scalar_t__ LD_UB (int *) ;
+ int LD_UB4 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int MUL4 (int,int,int,int,int,int,int,int,int,int,int,int) ;
+ int PCKEV_B2_UB (int,int,int,int,scalar_t__,scalar_t__) ;
+ int SAT_UH4_UH (int,int,int,int,int) ;
+ int SRARI_H4_UH (int,int,int,int,int) ;
+ int ST_D4 (scalar_t__,scalar_t__,int ,int,int ,int,int *,int) ;
+ int VSHF_B2_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ,int ,scalar_t__,scalar_t__) ;
+ int __msa_dotp_u_h (scalar_t__,scalar_t__) ;
+ int __msa_fill_b (int ) ;
+ int __msa_fill_h (int ) ;
+ scalar_t__ __msa_ilvr_b (int ,int ) ;
+ scalar_t__ __msa_vshf_b (int ,int ,int ) ;
+ int * chroma_mask_arr ;
 
 __attribute__((used)) static void avc_chroma_hv_8x4_msa(uint8_t *src, uint8_t *dst, int32_t stride,
                                   uint32_t coef_hor0, uint32_t coef_hor1,

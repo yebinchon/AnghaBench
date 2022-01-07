@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tegra_bpmp_channel {int /*<<< orphan*/  ivc; } ;
 
-/* Variables and functions */
- int tegra_ivc_read_advance (int /*<<< orphan*/ ) ; 
+
+
+
+struct tegra_bpmp_channel {int ivc; } ;
+
+
+ int tegra_ivc_read_advance (int ) ;
 
 __attribute__((used)) static int tegra186_bpmp_ack_message(struct tegra_bpmp_channel *channel)
 {
-	return tegra_ivc_read_advance(channel->ivc);
+ return tegra_ivc_read_advance(channel->ivc);
 }

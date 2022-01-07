@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 void ProcessEQ( const float *src, float *dest, float *state,
                 unsigned channels, unsigned samples, const float *coeffs,
                 unsigned eqCount )
 {
     unsigned i, chn, eq;
-    float   b0, b1, b2, a1, a2;
-    float   x, y = 0;
+    float b0, b1, b2, a1, a2;
+    float x, y = 0;
     const float *src1 = src;
     float *dest1 = dest;
 
@@ -30,7 +21,7 @@ void ProcessEQ( const float *src, float *dest, float *state,
         {
             const float *coeffs1 = coeffs;
             x = *src1++;
-            /* Direct form 1 IIRs */
+
             for (eq = 0; eq < eqCount; eq++)
             {
                 b0 = coeffs1[0];

@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  issuer_url; scalar_t__ root_cert; } ;
-typedef  TYPE_1__ X ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ CheckXEx (TYPE_1__*,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  CloneX (TYPE_1__*) ; 
- int CompareX (TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* DownloadCert (int /*<<< orphan*/ ) ; 
- scalar_t__ FIND_CERT_CHAIN_MAX_DEPTH ; 
- TYPE_1__* FindCertIssuerFromCertList (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  FreeX (TYPE_1__*) ; 
- int IsEmptyStr (int /*<<< orphan*/ ) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int issuer_url; scalar_t__ root_cert; } ;
+typedef TYPE_1__ X ;
+typedef int LIST ;
+
+
+ int Add (int *,int ) ;
+ scalar_t__ CheckXEx (TYPE_1__*,TYPE_1__*,int,int) ;
+ int CloneX (TYPE_1__*) ;
+ int CompareX (TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* DownloadCert (int ) ;
+ scalar_t__ FIND_CERT_CHAIN_MAX_DEPTH ;
+ TYPE_1__* FindCertIssuerFromCertList (int *,TYPE_1__*) ;
+ int FreeX (TYPE_1__*) ;
+ int IsEmptyStr (int ) ;
+ scalar_t__ LIST_NUM (int *) ;
 
 bool TryGetParentCertFromCertList(LIST *o, X *x, LIST *found_chain)
 {
-	bool ret = false;
-	X *r;
-	bool do_free = false;
-	// Validate arguments
-	if (o == NULL || x == NULL || found_chain == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
+ X *r;
+ bool do_free = 0;
 
-	if (LIST_NUM(found_chain) >= FIND_CERT_CHAIN_MAX_DEPTH)
-	{
-		return false;
-	}
+ if (o == ((void*)0) || x == ((void*)0) || found_chain == ((void*)0))
+ {
+  return 0;
+ }
 
-	Add(found_chain, CloneX(x));
+ if (LIST_NUM(found_chain) >= FIND_CERT_CHAIN_MAX_DEPTH)
+ {
+  return 0;
+ }
 
-	if (x->root_cert)
-	{
-		return true;
-	}
+ Add(found_chain, CloneX(x));
 
-	r = FindCertIssuerFromCertList(o, x);
+ if (x->root_cert)
+ {
+  return 1;
+ }
 
-	if (r == NULL)
-	{
-		if (IsEmptyStr(x->issuer_url) == false)
-		{
-			r = DownloadCert(x->issuer_url);
+ r = FindCertIssuerFromCertList(o, x);
 
-			if (CheckXEx(x, r, true, true) && CompareX(x, r) == false)
-			{
-				// found
-				do_free = true;
-			}
-			else
-			{
-				// invalid
-				FreeX(r);
-				r = NULL;
-			}
-		}
-	}
+ if (r == ((void*)0))
+ {
+  if (IsEmptyStr(x->issuer_url) == 0)
+  {
+   r = DownloadCert(x->issuer_url);
 
-	if (r != NULL)
-	{
-		ret = TryGetParentCertFromCertList(o, r, found_chain);
-	}
+   if (CheckXEx(x, r, 1, 1) && CompareX(x, r) == 0)
+   {
 
-	if (do_free)
-	{
-		FreeX(r);
-	}
+    do_free = 1;
+   }
+   else
+   {
 
-	return ret;
+    FreeX(r);
+    r = ((void*)0);
+   }
+  }
+ }
+
+ if (r != ((void*)0))
+ {
+  ret = TryGetParentCertFromCertList(o, r, found_chain);
+ }
+
+ if (do_free)
+ {
+  FreeX(r);
+ }
+
+ return ret;
 }

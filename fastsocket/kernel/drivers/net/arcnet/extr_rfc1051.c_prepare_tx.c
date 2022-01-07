@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct net_device {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* copy_to_card ) (struct net_device*,int,int,struct arc_hardware*,int) ;} ;
-struct arcnet_local {int /*<<< orphan*/  lastload_dest; TYPE_1__ hw; int /*<<< orphan*/  cur_tx; int /*<<< orphan*/  next_tx; } ;
-struct arc_hardware {int* offset; int /*<<< orphan*/  dest; } ;
+struct TYPE_2__ {int (* copy_to_card ) (struct net_device*,int,int,struct arc_hardware*,int) ;} ;
+struct arcnet_local {int lastload_dest; TYPE_1__ hw; int cur_tx; int next_tx; } ;
+struct arc_hardware {int* offset; int dest; } ;
 struct archdr {struct arc_hardware soft; struct arc_hardware hard; } ;
 
-/* Variables and functions */
- int ARC_HDR_SIZE ; 
- int /*<<< orphan*/  BUGMSG (int /*<<< orphan*/ ,char*,int,int,...) ; 
- int /*<<< orphan*/  D_DURING ; 
- int /*<<< orphan*/  D_NORMAL ; 
- int MTU ; 
- int MinTU ; 
- int XMTU ; 
- struct arcnet_local* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  stub1 (struct net_device*,int,int,struct arc_hardware*,int) ; 
- int /*<<< orphan*/  stub2 (struct net_device*,int,int,struct arc_hardware*,int) ; 
+
+ int ARC_HDR_SIZE ;
+ int BUGMSG (int ,char*,int,int,...) ;
+ int D_DURING ;
+ int D_NORMAL ;
+ int MTU ;
+ int MinTU ;
+ int XMTU ;
+ struct arcnet_local* netdev_priv (struct net_device*) ;
+ int stub1 (struct net_device*,int,int,struct arc_hardware*,int) ;
+ int stub2 (struct net_device*,int,int,struct arc_hardware*,int) ;
 
 __attribute__((used)) static int prepare_tx(struct net_device *dev, struct archdr *pkt, int length,
-		      int bufnum)
+        int bufnum)
 {
-	struct arcnet_local *lp = netdev_priv(dev);
-	struct arc_hardware *hard = &pkt->hard;
-	int ofs;
+ struct arcnet_local *lp = netdev_priv(dev);
+ struct arc_hardware *hard = &pkt->hard;
+ int ofs;
 
-	BUGMSG(D_DURING, "prepare_tx: txbufs=%d/%d/%d\n",
-	       lp->next_tx, lp->cur_tx, bufnum);
+ BUGMSG(D_DURING, "prepare_tx: txbufs=%d/%d/%d\n",
+        lp->next_tx, lp->cur_tx, bufnum);
 
-	length -= ARC_HDR_SIZE;	/* hard header is not included in packet length */
+ length -= ARC_HDR_SIZE;
 
-	if (length > XMTU) {
-		/* should never happen! other people already check for this. */
-		BUGMSG(D_NORMAL, "Bug!  prepare_tx with size %d (> %d)\n",
-		       length, XMTU);
-		length = XMTU;
-	}
-	if (length > MinTU) {
-		hard->offset[0] = 0;
-		hard->offset[1] = ofs = 512 - length;
-	} else if (length > MTU) {
-		hard->offset[0] = 0;
-		hard->offset[1] = ofs = 512 - length - 3;
-	} else
-		hard->offset[0] = ofs = 256 - length;
+ if (length > XMTU) {
 
-	lp->hw.copy_to_card(dev, bufnum, 0, hard, ARC_HDR_SIZE);
-	lp->hw.copy_to_card(dev, bufnum, ofs, &pkt->soft, length);
+  BUGMSG(D_NORMAL, "Bug!  prepare_tx with size %d (> %d)\n",
+         length, XMTU);
+  length = XMTU;
+ }
+ if (length > MinTU) {
+  hard->offset[0] = 0;
+  hard->offset[1] = ofs = 512 - length;
+ } else if (length > MTU) {
+  hard->offset[0] = 0;
+  hard->offset[1] = ofs = 512 - length - 3;
+ } else
+  hard->offset[0] = ofs = 256 - length;
 
-	lp->lastload_dest = hard->dest;
+ lp->hw.copy_to_card(dev, bufnum, 0, hard, ARC_HDR_SIZE);
+ lp->hw.copy_to_card(dev, bufnum, ofs, &pkt->soft, length);
 
-	return 1;		/* done */
+ lp->lastload_dest = hard->dest;
+
+ return 1;
 }

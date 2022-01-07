@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  decode_utf16 (unsigned short const**) ; 
- unsigned short* get_decomp_record (int /*<<< orphan*/ ) ; 
- scalar_t__ hangul_pair_decompose (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int decode_utf16 (unsigned short const**) ;
+ unsigned short* get_decomp_record (int ) ;
+ scalar_t__ hangul_pair_decompose (int ,int *,int *) ;
 
 int ucdn_decompose(uint32_t code, uint32_t *a, uint32_t *b)
 {

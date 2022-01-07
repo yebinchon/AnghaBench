@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WP_GPIO ; 
- int of_mmc_spi_read_gpio (struct device*,int /*<<< orphan*/ ) ; 
+
+ int WP_GPIO ;
+ int of_mmc_spi_read_gpio (struct device*,int ) ;
 
 __attribute__((used)) static int of_mmc_spi_get_ro(struct device *dev)
 {
-	return of_mmc_spi_read_gpio(dev, WP_GPIO);
+ return of_mmc_spi_read_gpio(dev, WP_GPIO);
 }

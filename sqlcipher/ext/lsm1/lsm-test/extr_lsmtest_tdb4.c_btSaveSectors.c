@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int sqlite4_int64 ;
-struct TYPE_7__ {int nSectorSize; int nSector; int /*<<< orphan*/ ** apSector; int /*<<< orphan*/  pFile; TYPE_2__* pBt; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int sqlite4_int64 ;
+struct TYPE_7__ {int nSectorSize; int nSector; int ** apSector; int pFile; TYPE_2__* pBt; } ;
 struct TYPE_6__ {TYPE_1__* pVfs; } ;
-struct TYPE_5__ {int (* xSectorSize ) (int /*<<< orphan*/ ) ;int (* xSize ) (int /*<<< orphan*/ ,int*) ;int (* xRead ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_3__ BtFile ;
+struct TYPE_5__ {int (* xSectorSize ) (int ) ;int (* xSize ) (int ,int*) ;int (* xRead ) (int ,int,int *,int) ;} ;
+typedef TYPE_3__ BtFile ;
 
-/* Variables and functions */
- int MIN (int,int) ; 
- int SQLITE4_OK ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
- int stub1 (int /*<<< orphan*/ ) ; 
- int stub2 (int /*<<< orphan*/ ,int*) ; 
- int stub3 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  testFree (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * testMalloc (int) ; 
+
+ int MIN (int,int) ;
+ int SQLITE4_OK ;
+ int memcpy (int **,int **,int) ;
+ int stub1 (int ) ;
+ int stub2 (int ,int*) ;
+ int stub3 (int ,int,int *,int) ;
+ int testFree (int **) ;
+ int * testMalloc (int) ;
 
 __attribute__((used)) static int btSaveSectors(BtFile *p, sqlite4_int64 iOff, int nBuf){
   int rc;
-  sqlite4_int64 iSz;              /* Size of file on disk */
-  int iFirst;                     /* First sector affected */
-  int iSector;                    /* Current sector */
-  int iLast;                      /* Last sector affected */
+  sqlite4_int64 iSz;
+  int iFirst;
+  int iSector;
+  int iLast;
 
   if( p->nSectorSize==0 ){
     p->nSectorSize = p->pBt->pVfs->xSectorSize(p->pFile);

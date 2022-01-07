@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int fb_queue_len; int swapchain_depth; TYPE_1__** fb_queue; scalar_t__ waiting_for_flip; int /*<<< orphan*/  active; scalar_t__ still; scalar_t__ paused; } ;
-struct TYPE_2__ {int /*<<< orphan*/  fb; } ;
+struct priv {int fb_queue_len; int swapchain_depth; TYPE_1__** fb_queue; scalar_t__ waiting_for_flip; int active; scalar_t__ still; scalar_t__ paused; } ;
+struct TYPE_2__ {int fb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct vo*,char*) ; 
- int /*<<< orphan*/  queue_flip (struct vo*,TYPE_1__*) ; 
- int /*<<< orphan*/  swapchain_step (struct vo*) ; 
- int /*<<< orphan*/  wait_on_flip (struct vo*) ; 
+
+ int MP_ERR (struct vo*,char*) ;
+ int queue_flip (struct vo*,TYPE_1__*) ;
+ int swapchain_step (struct vo*) ;
+ int wait_on_flip (struct vo*) ;
 
 __attribute__((used)) static void flip_page(struct vo *vo)
 {

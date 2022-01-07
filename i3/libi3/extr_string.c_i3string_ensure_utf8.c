@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * utf8; int /*<<< orphan*/  num_bytes; int /*<<< orphan*/  num_glyphs; int /*<<< orphan*/  ucs2; } ;
-typedef  TYPE_1__ i3String ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * convert_ucs2_to_utf8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * utf8; int num_bytes; int num_glyphs; int ucs2; } ;
+typedef TYPE_1__ i3String ;
+
+
+ int * convert_ucs2_to_utf8 (int ,int ) ;
+ int strlen (int *) ;
 
 __attribute__((used)) static void i3string_ensure_utf8(i3String *str) {
-    if (str->utf8 != NULL)
+    if (str->utf8 != ((void*)0))
         return;
-    if ((str->utf8 = convert_ucs2_to_utf8(str->ucs2, str->num_glyphs)) != NULL)
+    if ((str->utf8 = convert_ucs2_to_utf8(str->ucs2, str->num_glyphs)) != ((void*)0))
         str->num_bytes = strlen(str->utf8);
 }

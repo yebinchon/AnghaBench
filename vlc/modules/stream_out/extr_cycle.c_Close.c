@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_5__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ sout_stream_t ;
-struct TYPE_6__ {struct TYPE_6__* next; struct TYPE_6__* start; int /*<<< orphan*/ * stream; int /*<<< orphan*/ * last; int /*<<< orphan*/ * first; } ;
-typedef  TYPE_2__ sout_stream_sys_t ;
-typedef  TYPE_2__ sout_cycle_t ;
+typedef TYPE_1__ sout_stream_t ;
+struct TYPE_6__ {struct TYPE_6__* next; struct TYPE_6__* start; int * stream; int * last; int * first; } ;
+typedef TYPE_2__ sout_stream_sys_t ;
+typedef TYPE_2__ sout_cycle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  sout_StreamChainDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int free (TYPE_2__*) ;
+ int sout_StreamChainDelete (int *,int *) ;
 
 __attribute__((used)) static void Close(vlc_object_t *obj)
 {
     sout_stream_t *stream = (sout_stream_t *)obj;
     sout_stream_sys_t *sys = stream->p_sys;
 
-    assert(sys->first == NULL && sys->last == NULL);
+    assert(sys->first == ((void*)0) && sys->last == ((void*)0));
 
-    if (sys->stream != NULL)
-        sout_StreamChainDelete(sys->stream, NULL);
+    if (sys->stream != ((void*)0))
+        sout_StreamChainDelete(sys->stream, ((void*)0));
 
-    for (sout_cycle_t *cycle = sys->start, *next; cycle != NULL; cycle = next)
+    for (sout_cycle_t *cycle = sys->start, *next; cycle != ((void*)0); cycle = next)
     {
         next = cycle->next;
         free(cycle);

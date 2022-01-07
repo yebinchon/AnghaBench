@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UBYTE ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UBYTE ;
 struct TYPE_2__ {scalar_t__ name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIRST_X ; 
- scalar_t__ FIRST_Y ; 
- scalar_t__ TITLE_Y ; 
- int /*<<< orphan*/  UNSIGNED ; 
- int /*<<< orphan*/  VAL_X ; 
- int /*<<< orphan*/  cls () ; 
- int /*<<< orphan*/  current_value (int,int) ; 
- int /*<<< orphan*/  gotoxy (int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_1__* params ; 
- int /*<<< orphan*/  print (scalar_t__) ; 
- int /*<<< orphan*/  println (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int FIRST_X ;
+ scalar_t__ FIRST_Y ;
+ scalar_t__ TITLE_Y ;
+ int UNSIGNED ;
+ int VAL_X ;
+ int cls () ;
+ int current_value (int,int) ;
+ int gotoxy (int ,scalar_t__) ;
+ TYPE_1__* params ;
+ int print (scalar_t__) ;
+ int println (int ,int,int ) ;
 
 UBYTE draw_screen(UBYTE mode)
 {

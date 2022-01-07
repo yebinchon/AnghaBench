@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ APR_EABOVEROOT ; 
- int APR_FILEPATH_NOTABOVEROOT ; 
- int APR_FILEPATH_SECUREROOTTEST ; 
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ apr_filepath_merge (char**,char const*,char const*,int,int /*<<< orphan*/ *) ; 
- char* svn_dirent_canonicalize (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ APR_EABOVEROOT ;
+ int APR_FILEPATH_NOTABOVEROOT ;
+ int APR_FILEPATH_SECUREROOTTEST ;
+ scalar_t__ APR_SUCCESS ;
+ int FALSE ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ scalar_t__ apr_filepath_merge (char**,char const*,char const*,int,int *) ;
+ char* svn_dirent_canonicalize (char*,int *) ;
+ int * svn_error_wrap_apr (scalar_t__,int *) ;
 
 svn_error_t *
 svn_dirent_is_under_root(svn_boolean_t *under_root,
@@ -39,7 +39,7 @@ svn_dirent_is_under_root(svn_boolean_t *under_root,
 
   *under_root = FALSE;
   if (result_path)
-    *result_path = NULL;
+    *result_path = ((void*)0);
 
   status = apr_filepath_merge(&full_path,
                               base_path,
@@ -61,5 +61,5 @@ svn_dirent_is_under_root(svn_boolean_t *under_root,
       return SVN_NO_ERROR;
     }
 
-  return svn_error_wrap_apr(status, NULL);
+  return svn_error_wrap_apr(status, ((void*)0));
 }

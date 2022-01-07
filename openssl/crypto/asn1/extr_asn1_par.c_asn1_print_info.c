@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  str ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- char* ASN1_tag2str (int) ; 
- int /*<<< orphan*/  BIO_indent (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  BIO_snprintf (char*,int,char*,int) ; 
- int BIO_write (int /*<<< orphan*/ *,char const*,int) ; 
- int V_ASN1_APPLICATION ; 
- int V_ASN1_CONSTRUCTED ; 
- int V_ASN1_CONTEXT_SPECIFIC ; 
- int V_ASN1_PRIVATE ; 
+
+
+
+typedef int str ;
+typedef int BIO ;
+
+
+ char* ASN1_tag2str (int) ;
+ int BIO_indent (int *,int,int) ;
+ scalar_t__ BIO_printf (int *,char const*,char const*) ;
+ int BIO_snprintf (char*,int,char*,int) ;
+ int BIO_write (int *,char const*,int) ;
+ int V_ASN1_APPLICATION ;
+ int V_ASN1_CONSTRUCTED ;
+ int V_ASN1_CONTEXT_SPECIFIC ;
+ int V_ASN1_PRIVATE ;
 
 __attribute__((used)) static int asn1_print_info(BIO *bp, int tag, int xclass, int constructed,
                            int indent)

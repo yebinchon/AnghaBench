@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  self; scalar_t__ hWndLBox; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_1__* LPHEADCOMBO ;
 
-/* Variables and functions */
- scalar_t__ CBS_SIMPLE ; 
- scalar_t__ CB_GETTYPE (TYPE_1__*) ; 
- int /*<<< orphan*/  DestroyWindow (scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int self; scalar_t__ hWndLBox; } ;
+typedef int LRESULT ;
+typedef TYPE_1__* LPHEADCOMBO ;
+
+
+ scalar_t__ CBS_SIMPLE ;
+ scalar_t__ CB_GETTYPE (TYPE_1__*) ;
+ int DestroyWindow (scalar_t__) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int TRACE (char*,int ) ;
 
 __attribute__((used)) static LRESULT COMBO_NCDestroy( LPHEADCOMBO lphc )
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static LRESULT COMBO_NCDestroy( LPHEADCOMBO lphc )
        TRACE("[%p]: freeing storage\n", lphc->self);
 
        if( (CB_GETTYPE(lphc) != CBS_SIMPLE) && lphc->hWndLBox )
-   	   DestroyWindow( lphc->hWndLBox );
+       DestroyWindow( lphc->hWndLBox );
 
        SetWindowLongPtrW( lphc->self, 0, 0 );
        HeapFree( GetProcessHeap(), 0, lphc );

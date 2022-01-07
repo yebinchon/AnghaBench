@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int NGX_HTTP_ACCEPTED ; 
- int NGX_HTTP_BAD_GATEWAY ; 
- int NGX_HTTP_BAD_REQUEST ; 
- int NGX_HTTP_CLOSE ; 
- int NGX_HTTP_CONFLICT ; 
- int NGX_HTTP_CONTINUE ; 
- int NGX_HTTP_COPY ; 
- int NGX_HTTP_CREATED ; 
- int NGX_HTTP_DELETE ; 
- int NGX_HTTP_FORBIDDEN ; 
- int NGX_HTTP_GATEWAY_TIME_OUT ; 
- int NGX_HTTP_GET ; 
- int NGX_HTTP_HEAD ; 
- int NGX_HTTP_INSUFFICIENT_STORAGE ; 
- int NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- int NGX_HTTP_LOCK ; 
- int NGX_HTTP_MKCOL ; 
- int NGX_HTTP_MOVE ; 
- int NGX_HTTP_MOVED_PERMANENTLY ; 
- int NGX_HTTP_MOVED_TEMPORARILY ; 
- int NGX_HTTP_NOT_ALLOWED ; 
- int NGX_HTTP_NOT_FOUND ; 
- int NGX_HTTP_NOT_IMPLEMENTED ; 
- int NGX_HTTP_NOT_MODIFIED ; 
- int NGX_HTTP_NO_CONTENT ; 
- int NGX_HTTP_OK ; 
- int NGX_HTTP_OPTIONS ; 
- int NGX_HTTP_PARTIAL_CONTENT ; 
- int NGX_HTTP_PATCH ; 
- int NGX_HTTP_PERMANENT_REDIRECT ; 
- int NGX_HTTP_POST ; 
- int NGX_HTTP_PROPFIND ; 
- int NGX_HTTP_PROPPATCH ; 
- int NGX_HTTP_PUT ; 
- int NGX_HTTP_REQUEST_TIME_OUT ; 
- int NGX_HTTP_SEE_OTHER ; 
- int NGX_HTTP_SERVICE_UNAVAILABLE ; 
- int NGX_HTTP_SPECIAL_RESPONSE ; 
- int NGX_HTTP_SWITCHING_PROTOCOLS ; 
- int NGX_HTTP_TEMPORARY_REDIRECT ; 
- int NGX_HTTP_TRACE ; 
- int NGX_HTTP_UNAUTHORIZED ; 
- int NGX_HTTP_UNLOCK ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int NGX_HTTP_ACCEPTED ;
+ int NGX_HTTP_BAD_GATEWAY ;
+ int NGX_HTTP_BAD_REQUEST ;
+ int NGX_HTTP_CLOSE ;
+ int NGX_HTTP_CONFLICT ;
+ int NGX_HTTP_CONTINUE ;
+ int NGX_HTTP_COPY ;
+ int NGX_HTTP_CREATED ;
+ int NGX_HTTP_DELETE ;
+ int NGX_HTTP_FORBIDDEN ;
+ int NGX_HTTP_GATEWAY_TIME_OUT ;
+ int NGX_HTTP_GET ;
+ int NGX_HTTP_HEAD ;
+ int NGX_HTTP_INSUFFICIENT_STORAGE ;
+ int NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ int NGX_HTTP_LOCK ;
+ int NGX_HTTP_MKCOL ;
+ int NGX_HTTP_MOVE ;
+ int NGX_HTTP_MOVED_PERMANENTLY ;
+ int NGX_HTTP_MOVED_TEMPORARILY ;
+ int NGX_HTTP_NOT_ALLOWED ;
+ int NGX_HTTP_NOT_FOUND ;
+ int NGX_HTTP_NOT_IMPLEMENTED ;
+ int NGX_HTTP_NOT_MODIFIED ;
+ int NGX_HTTP_NO_CONTENT ;
+ int NGX_HTTP_OK ;
+ int NGX_HTTP_OPTIONS ;
+ int NGX_HTTP_PARTIAL_CONTENT ;
+ int NGX_HTTP_PATCH ;
+ int NGX_HTTP_PERMANENT_REDIRECT ;
+ int NGX_HTTP_POST ;
+ int NGX_HTTP_PROPFIND ;
+ int NGX_HTTP_PROPPATCH ;
+ int NGX_HTTP_PUT ;
+ int NGX_HTTP_REQUEST_TIME_OUT ;
+ int NGX_HTTP_SEE_OTHER ;
+ int NGX_HTTP_SERVICE_UNAVAILABLE ;
+ int NGX_HTTP_SPECIAL_RESPONSE ;
+ int NGX_HTTP_SWITCHING_PROTOCOLS ;
+ int NGX_HTTP_TEMPORARY_REDIRECT ;
+ int NGX_HTTP_TRACE ;
+ int NGX_HTTP_UNAUTHORIZED ;
+ int NGX_HTTP_UNLOCK ;
+ int lua_pushinteger (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
 
 void
 ngx_http_lua_inject_http_consts(lua_State *L)
 {
-    /* {{{ HTTP status constants */
+
     lua_pushinteger(L, NGX_HTTP_GET);
     lua_setfield(L, -2, "HTTP_GET");
 
@@ -107,7 +107,7 @@ ngx_http_lua_inject_http_consts(lua_State *L)
 
     lua_pushinteger(L, NGX_HTTP_TRACE);
     lua_setfield(L, -2, "HTTP_TRACE");
-    /* }}} */
+
 
     lua_pushinteger(L, NGX_HTTP_CONTINUE);
     lua_setfield(L, -2, "HTTP_CONTINUE");
@@ -139,10 +139,10 @@ ngx_http_lua_inject_http_consts(lua_State *L)
     lua_pushinteger(L, NGX_HTTP_MOVED_TEMPORARILY);
     lua_setfield(L, -2, "HTTP_MOVED_TEMPORARILY");
 
-#if defined(nginx_version) && nginx_version >= 8042
-    lua_pushinteger(L, NGX_HTTP_SEE_OTHER);
-    lua_setfield(L, -2, "HTTP_SEE_OTHER");
-#endif
+
+
+
+
 
     lua_pushinteger(L, NGX_HTTP_PERMANENT_REDIRECT);
     lua_setfield(L, -2, "HTTP_PERMANENT_REDIRECT");
@@ -216,5 +216,5 @@ ngx_http_lua_inject_http_consts(lua_State *L)
     lua_pushinteger(L, NGX_HTTP_INSUFFICIENT_STORAGE);
     lua_setfield(L, -2, "HTTP_INSUFFICIENT_STORAGE");
 
-    /* }}} */
+
 }

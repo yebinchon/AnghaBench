@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * client_cert_engine; } ;
-typedef  TYPE_1__ SSL_CTX ;
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENGINE_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENGINE_get_ssl_client_cert_function (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENGINE_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_ENGINE_LIB ; 
- int /*<<< orphan*/  SSL_F_SSL_CTX_SET_CLIENT_CERT_ENGINE ; 
- int /*<<< orphan*/  SSL_R_NO_CLIENT_CERT_METHOD ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * client_cert_engine; } ;
+typedef TYPE_1__ SSL_CTX ;
+typedef int ENGINE ;
+
+
+ int ENGINE_finish (int *) ;
+ int ENGINE_get_ssl_client_cert_function (int *) ;
+ int ENGINE_init (int *) ;
+ int ERR_R_ENGINE_LIB ;
+ int SSL_F_SSL_CTX_SET_CLIENT_CERT_ENGINE ;
+ int SSL_R_NO_CLIENT_CERT_METHOD ;
+ int SSLerr (int ,int ) ;
 
 int SSL_CTX_set_client_cert_engine(SSL_CTX *ctx, ENGINE *e)
 {

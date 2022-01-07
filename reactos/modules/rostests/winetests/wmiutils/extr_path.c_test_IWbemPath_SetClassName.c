@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  char WCHAR ;
-typedef  int ULONGLONG ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IWbemPath ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IWbemPath_GetClassName (int /*<<< orphan*/ *,int*,char*) ; 
- scalar_t__ IWbemPath_GetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  IWbemPath_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemPath_SetClassName (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ S_OK ; 
- int WBEMPATH_INFO_ANON_LOCAL_MACHINE ; 
- int WBEMPATH_INFO_CIM_COMPLIANT ; 
- int WBEMPATH_INFO_HAS_SUBSCOPES ; 
- int WBEMPATH_INFO_IS_CLASS_REF ; 
- int WBEMPATH_INFO_V2_COMPLIANT ; 
- scalar_t__ WBEM_E_INVALID_PARAMETER ; 
- int /*<<< orphan*/ * create_path () ; 
- int /*<<< orphan*/  lstrcmpW (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ wine_dbgstr_longlong (int) ; 
- scalar_t__ wine_dbgstr_w (char*) ; 
+
+
+
+typedef int buf ;
+typedef char WCHAR ;
+typedef int ULONGLONG ;
+typedef int ULONG ;
+typedef int IWbemPath ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IWbemPath_GetClassName (int *,int*,char*) ;
+ scalar_t__ IWbemPath_GetInfo (int *,int ,int*) ;
+ int IWbemPath_Release (int *) ;
+ scalar_t__ IWbemPath_SetClassName (int *,char const*) ;
+ scalar_t__ S_OK ;
+ int WBEMPATH_INFO_ANON_LOCAL_MACHINE ;
+ int WBEMPATH_INFO_CIM_COMPLIANT ;
+ int WBEMPATH_INFO_HAS_SUBSCOPES ;
+ int WBEMPATH_INFO_IS_CLASS_REF ;
+ int WBEMPATH_INFO_V2_COMPLIANT ;
+ scalar_t__ WBEM_E_INVALID_PARAMETER ;
+ int * create_path () ;
+ int lstrcmpW (char*,char const*) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ wine_dbgstr_longlong (int) ;
+ scalar_t__ wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_IWbemPath_SetClassName(void)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static void test_IWbemPath_SetClassName(void)
 
     if (!(path = create_path())) return;
 
-    hr = IWbemPath_SetClassName( path, NULL );
+    hr = IWbemPath_SetClassName( path, ((void*)0) );
     ok( hr == WBEM_E_INVALID_PARAMETER, "got %08x\n", hr );
 
     hr = IWbemPath_SetClassName( path, emptyW );

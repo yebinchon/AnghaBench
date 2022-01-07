@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_t ;
-typedef  int /*<<< orphan*/  svn_diff_fns_t ;
-typedef  int /*<<< orphan*/  svn_diff_fns2_t ;
+
+
+
+
+typedef int svn_error_t ;
+typedef int svn_diff_t ;
+typedef int svn_diff_fns_t ;
+typedef int svn_diff_fns2_t ;
 struct fns_wrapper_baton {int dummy; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_diff_diff4_2 (int /*<<< orphan*/ **,struct fns_wrapper_baton*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wrap_diff_fns (int /*<<< orphan*/ **,struct fns_wrapper_baton**,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ; 
+
+ int * svn_diff_diff4_2 (int **,struct fns_wrapper_baton*,int *,int *) ;
+ int wrap_diff_fns (int **,struct fns_wrapper_baton**,int const*,void*,int *) ;
 
 svn_error_t *
 svn_diff_diff4(svn_diff_t **diff,

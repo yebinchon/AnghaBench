@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  sugg; } ;
-typedef  TYPE_1__ user ;
 
-/* Variables and functions */
- int MAX_INIT ; 
- int MAX_SUGGESTIONS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ close (int) ; 
- TYPE_1__* conv_uid (int) ; 
- int* fd ; 
- long long* fsize ; 
- scalar_t__ open_file (int,char*,int) ; 
- int read (int,...) ; 
- int /*<<< orphan*/  trp_incr (int /*<<< orphan*/ *,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int sugg; } ;
+typedef TYPE_1__ user ;
+
+
+ int MAX_INIT ;
+ int MAX_SUGGESTIONS ;
+ int assert (int) ;
+ scalar_t__ close (int) ;
+ TYPE_1__* conv_uid (int) ;
+ int* fd ;
+ long long* fsize ;
+ scalar_t__ open_file (int,char*,int) ;
+ int read (int,...) ;
+ int trp_incr (int *,int,int) ;
 
 void load_suggestions (char *suggname) {
   assert (open_file (3, suggname, -1) >= 0);
-#define MAX_INIT 30000
-  static int buff[MAX_INIT];
+
+  static int buff[30000];
 
   int id, n;
   user *u;
@@ -40,12 +40,12 @@ void load_suggestions (char *suggname) {
 
   while (read (fd[3], &id, sizeof (int)) == sizeof (int)) {
     assert (read (fd[3], &n, sizeof (int)) == sizeof (int));
-    assert (0 <= n && n * 2 < MAX_INIT);
+    assert (0 <= n && n * 2 < 30000);
     int len = sizeof (int) * 2 * n;
     assert (read (fd[3], buff, len) == len);
 
     u = conv_uid (id);
-    if (u == NULL) {
+    if (u == ((void*)0)) {
       continue;
     }
 
@@ -61,5 +61,5 @@ void load_suggestions (char *suggname) {
 
   assert (close (fd[3]) >= 0);
   fd[3] = -1;
-#undef MAX_INIT
+
 }

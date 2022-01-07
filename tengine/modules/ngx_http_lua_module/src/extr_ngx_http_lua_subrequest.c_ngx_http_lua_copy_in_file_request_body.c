@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  fd; } ;
-struct TYPE_11__ {TYPE_2__ file; struct TYPE_11__* temp_file; int /*<<< orphan*/  clean; int /*<<< orphan*/  persistent; } ;
-typedef  TYPE_3__ ngx_temp_file_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_12__ {TYPE_3__* request_body; int /*<<< orphan*/  pool; TYPE_1__* connection; } ;
-typedef  TYPE_4__ ngx_http_request_t ;
-typedef  TYPE_3__ ngx_http_request_body_t ;
-struct TYPE_9__ {int /*<<< orphan*/  log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  dd (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_memcpy (TYPE_3__*,TYPE_3__*,int) ; 
- void* ngx_palloc (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int fd; } ;
+struct TYPE_11__ {TYPE_2__ file; struct TYPE_11__* temp_file; int clean; int persistent; } ;
+typedef TYPE_3__ ngx_temp_file_t ;
+typedef int ngx_int_t ;
+struct TYPE_12__ {TYPE_3__* request_body; int pool; TYPE_1__* connection; } ;
+typedef TYPE_4__ ngx_http_request_t ;
+typedef TYPE_3__ ngx_http_request_body_t ;
+struct TYPE_9__ {int log; } ;
+
+
+ int NGX_ERROR ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int dd (char*,int ) ;
+ int ngx_log_error (int ,int ,int ,char*) ;
+ int ngx_memcpy (TYPE_3__*,TYPE_3__*,int) ;
+ void* ngx_palloc (int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_lua_copy_in_file_request_body(ngx_http_request_t *r)
 {
-    ngx_temp_file_t     *tf;
+    ngx_temp_file_t *tf;
 
-    ngx_http_request_body_t   *body;
+    ngx_http_request_body_t *body;
 
     tf = r->request_body->temp_file;
 
@@ -49,14 +49,14 @@ ngx_http_lua_copy_in_file_request_body(ngx_http_request_t *r)
     }
 
     body = ngx_palloc(r->pool, sizeof(ngx_http_request_body_t));
-    if (body == NULL) {
+    if (body == ((void*)0)) {
         return NGX_ERROR;
     }
 
     ngx_memcpy(body, r->request_body, sizeof(ngx_http_request_body_t));
 
     body->temp_file = ngx_palloc(r->pool, sizeof(ngx_temp_file_t));
-    if (body->temp_file == NULL) {
+    if (body->temp_file == ((void*)0)) {
         return NGX_ERROR;
     }
 

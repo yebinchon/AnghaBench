@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  fetch_baton; int /*<<< orphan*/  (* fetch_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ wrap_fetch_baton_t ;
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_dir ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int fetch_baton; int (* fetch_func ) (int *,int **,int **,int **,int ,char const*,int ,int *,int *) ;} ;
+typedef TYPE_1__ wrap_fetch_baton_t ;
+typedef int svn_stringbuf_t ;
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_make (int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int stub1 (int *,int **,int **,int **,int ,char const*,int ,int *,int *) ;
+ int svn_node_dir ;
 
 __attribute__((used)) static svn_error_t *
 wrap_fetch_func(svn_node_kind_t *kind,
@@ -48,7 +48,7 @@ wrap_fetch_func(svn_node_kind_t *kind,
       if (props)
         *props = apr_hash_make(result_pool);
       if (file_text)
-        *file_text = NULL;
+        *file_text = ((void*)0);
       if (children_names)
         *children_names = apr_hash_make(result_pool);
     }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct mrb_locals {scalar_t__ r; scalar_t__ name; } ;
 struct TYPE_13__ {struct TYPE_13__* cdr; } ;
-typedef  TYPE_1__ node ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_pool ;
-typedef  int /*<<< orphan*/  mrb_irep ;
-typedef  int /*<<< orphan*/  mrb_code ;
-struct TYPE_14__ {int ainfo; int rcapa; int icapa; int pcapa; int scapa; int sp; int nlocals; scalar_t__ rlev; int /*<<< orphan*/  filename_index; int /*<<< orphan*/  parser; TYPE_7__* irep; scalar_t__ filename; scalar_t__ debug_start_pos; int /*<<< orphan*/  lineno; int /*<<< orphan*/ * lines; int /*<<< orphan*/  ai; TYPE_1__* lv; int /*<<< orphan*/ * iseq; scalar_t__ mscope; struct TYPE_14__* prev; int /*<<< orphan*/ * mpool; int /*<<< orphan*/ * mrb; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ codegen_scope ;
-struct TYPE_15__ {int /*<<< orphan*/ * debug_info; struct mrb_locals* lv; scalar_t__ slen; int /*<<< orphan*/ * syms; scalar_t__ plen; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * iseq; int /*<<< orphan*/ ** reps; } ;
+typedef TYPE_1__ node ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+typedef int mrb_pool ;
+typedef int mrb_irep ;
+typedef int mrb_code ;
+struct TYPE_14__ {int ainfo; int rcapa; int icapa; int pcapa; int scapa; int sp; int nlocals; scalar_t__ rlev; int filename_index; int parser; TYPE_7__* irep; scalar_t__ filename; scalar_t__ debug_start_pos; int lineno; int * lines; int ai; TYPE_1__* lv; int * iseq; scalar_t__ mscope; struct TYPE_14__* prev; int * mpool; int * mrb; int member_0; } ;
+typedef TYPE_2__ codegen_scope ;
+struct TYPE_15__ {int * debug_info; struct mrb_locals* lv; scalar_t__ slen; int * syms; scalar_t__ plen; int * pool; int * iseq; int ** reps; } ;
 
-/* Variables and functions */
- scalar_t__ lv_idx (TYPE_2__*,scalar_t__) ; 
- scalar_t__ lv_name (TYPE_1__*) ; 
- TYPE_7__* mrb_add_irep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_assert (int) ; 
- int /*<<< orphan*/  mrb_debug_info_alloc (int /*<<< orphan*/ *,TYPE_7__*) ; 
- int /*<<< orphan*/  mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_malloc (int /*<<< orphan*/ *,int) ; 
- scalar_t__ mrb_pool_alloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * mrb_pool_open (int /*<<< orphan*/ *) ; 
- scalar_t__ node_len (TYPE_1__*) ; 
- int /*<<< orphan*/  scope_add_irep (TYPE_2__*,TYPE_7__*) ; 
+
+ scalar_t__ lv_idx (TYPE_2__*,scalar_t__) ;
+ scalar_t__ lv_name (TYPE_1__*) ;
+ TYPE_7__* mrb_add_irep (int *) ;
+ int mrb_assert (int) ;
+ int mrb_debug_info_alloc (int *,TYPE_7__*) ;
+ int mrb_gc_arena_save (int *) ;
+ scalar_t__ mrb_malloc (int *,int) ;
+ scalar_t__ mrb_pool_alloc (int *,int) ;
+ int * mrb_pool_open (int *) ;
+ scalar_t__ node_len (TYPE_1__*) ;
+ int scope_add_irep (TYPE_2__*,TYPE_7__*) ;
 
 __attribute__((used)) static codegen_scope*
 scope_new(mrb_state *mrb, codegen_scope *prev, node *lv)
@@ -47,7 +47,7 @@ scope_new(mrb_state *mrb, codegen_scope *prev, node *lv)
   mrb_pool *pool = mrb_pool_open(mrb);
   codegen_scope *p = (codegen_scope *)mrb_pool_alloc(pool, sizeof(codegen_scope));
 
-  if (!p) return NULL;
+  if (!p) return ((void*)0);
   *p = codegen_scope_zero;
   p->mrb = mrb;
   p->mpool = pool;
@@ -64,7 +64,7 @@ scope_new(mrb_state *mrb, codegen_scope *prev, node *lv)
 
   p->icapa = 1024;
   p->iseq = (mrb_code*)mrb_malloc(mrb, sizeof(mrb_code)*p->icapa);
-  p->irep->iseq = NULL;
+  p->irep->iseq = ((void*)0);
 
   p->pcapa = 32;
   p->irep->pool = (mrb_value*)mrb_malloc(mrb, sizeof(mrb_value)*p->pcapa);
@@ -75,7 +75,7 @@ scope_new(mrb_state *mrb, codegen_scope *prev, node *lv)
   p->irep->slen = 0;
 
   p->lv = lv;
-  p->sp += node_len(lv)+1;        /* add self */
+  p->sp += node_len(lv)+1;
   p->nlocals = p->sp;
   if (lv) {
     node *n = lv;
@@ -101,13 +101,13 @@ scope_new(mrb_state *mrb, codegen_scope *prev, node *lv)
   }
   p->lineno = prev->lineno;
 
-  /* debug setting */
+
   p->debug_start_pos = 0;
   if (p->filename) {
     mrb_debug_info_alloc(mrb, p->irep);
   }
   else {
-    p->irep->debug_info = NULL;
+    p->irep->debug_info = ((void*)0);
   }
   p->parser = prev->parser;
   p->filename_index = prev->filename_index;

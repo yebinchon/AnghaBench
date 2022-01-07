@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct qlnx_fastpath {int /*<<< orphan*/ * fp_taskqueue; int /*<<< orphan*/  fp_task; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct qlnx_fastpath {int * fp_taskqueue; int fp_task; } ;
 struct TYPE_3__ {int num_rss; struct qlnx_fastpath* fp_array; } ;
-typedef  TYPE_1__ qlnx_host_t ;
+typedef TYPE_1__ qlnx_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  taskqueue_drain (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_free (int /*<<< orphan*/ *) ; 
+
+ int taskqueue_drain (int *,int *) ;
+ int taskqueue_free (int *) ;
 
 __attribute__((used)) static void
 qlnx_destroy_fp_taskqueues(qlnx_host_t *ha)
 {
-	int			i;
-	struct qlnx_fastpath	*fp;
+ int i;
+ struct qlnx_fastpath *fp;
 
-	for (i = 0; i < ha->num_rss; i++) {
+ for (i = 0; i < ha->num_rss; i++) {
 
                 fp = &ha->fp_array[i];
 
-		if (fp->fp_taskqueue != NULL) {
+  if (fp->fp_taskqueue != ((void*)0)) {
 
-			taskqueue_drain(fp->fp_taskqueue, &fp->fp_task);
-			taskqueue_free(fp->fp_taskqueue);
-			fp->fp_taskqueue = NULL;
-		}
-	}
-	return;
+   taskqueue_drain(fp->fp_taskqueue, &fp->fp_task);
+   taskqueue_free(fp->fp_taskqueue);
+   fp->fp_taskqueue = ((void*)0);
+  }
+ }
+ return;
 }

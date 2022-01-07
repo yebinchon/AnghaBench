@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- long ossl_tolower (char const) ; 
+ long ossl_tolower (char const) ;
 
 unsigned long openssl_lh_strcasehash(const char *c)
 {
@@ -21,7 +13,7 @@ unsigned long openssl_lh_strcasehash(const char *c)
     unsigned long v;
     int r;
 
-    if (c == NULL || *c == '\0')
+    if (c == ((void*)0) || *c == '\0')
         return ret;
 
     for (n = 0x100; *c != '\0'; n += 0x100) {

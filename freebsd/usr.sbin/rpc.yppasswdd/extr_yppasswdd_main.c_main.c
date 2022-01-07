@@ -1,310 +1,310 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in {scalar_t__ sin_family; } ;
 struct sockaddr {int dummy; } ;
-struct sigaction {int /*<<< orphan*/  sa_flags; } ;
+struct sigaction {int sa_flags; } ;
 struct rlimit {scalar_t__ rlim_max; scalar_t__ rlim_cur; } ;
-struct netconfig {int /*<<< orphan*/ * nc_protofmly; } ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  saddr ;
-typedef  int /*<<< orphan*/  sa ;
-typedef  int /*<<< orphan*/  myname ;
-typedef  int /*<<< orphan*/  SVCXPRT ;
-typedef  int /*<<< orphan*/  SIG_PF ;
+struct netconfig {int * nc_protofmly; } ;
+typedef int socklen_t ;
+typedef int saddr ;
+typedef int sa ;
+typedef int myname ;
+typedef int SVCXPRT ;
+typedef int SIG_PF ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  LOG_DAEMON ; 
- int /*<<< orphan*/  LOG_PID ; 
- int /*<<< orphan*/  MASTER_YPPASSWDPROG ; 
- int /*<<< orphan*/  MASTER_YPPASSWDVERS ; 
- int /*<<< orphan*/  MAXHOSTNAMELEN ; 
- int /*<<< orphan*/  NC_LOOPBACK ; 
- int /*<<< orphan*/  RLIMIT_CORE ; 
- int /*<<< orphan*/  RLIMIT_CPU ; 
- int /*<<< orphan*/  RLIMIT_DATA ; 
- int /*<<< orphan*/  RLIMIT_FSIZE ; 
- int /*<<< orphan*/  RLIMIT_RSS ; 
- int /*<<< orphan*/  RLIMIT_STACK ; 
- scalar_t__ RLIM_INFINITY ; 
- int /*<<< orphan*/  RPC_ANYSOCK ; 
- int RPC_MAXDATASIZE ; 
- int /*<<< orphan*/  RPC_SVC_CONNMAXREC_SET ; 
- int /*<<< orphan*/  SA_NOCLDWAIT ; 
- int /*<<< orphan*/  SIGALRM ; 
- int /*<<< orphan*/  SIGCHLD ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGQUIT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_TYPE ; 
- int /*<<< orphan*/  YPPASSWDPROG ; 
- int /*<<< orphan*/  YPPASSWDVERS ; 
- int /*<<< orphan*/  YPPROG ; 
- int /*<<< orphan*/  YPVERS ; 
- int _RPCSVC_CLOSEDOWN ; 
- int /*<<< orphan*/  _localhost ; 
- int /*<<< orphan*/  _passwd_byname ; 
- int /*<<< orphan*/  _rpcfdtype ; 
- int _rpcpmstart ; 
- int /*<<< orphan*/  alarm (int) ; 
- int /*<<< orphan*/  allow_additions ; 
- scalar_t__ chmod (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ closedown ; 
- scalar_t__ daemon (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  endnetconfig (void*) ; 
- int /*<<< orphan*/  err (int,char*,...) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int gethostname (char*,int) ; 
- struct netconfig* getnetconfig (void*) ; 
- int getopt (int,char**,char*) ; 
- scalar_t__ getrpcport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ getsockname (int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
- int getsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int*) ; 
- int /*<<< orphan*/  inplace ; 
- int /*<<< orphan*/  load_securenets () ; 
- int /*<<< orphan*/  master_yppasswdprog_1 ; 
- int /*<<< orphan*/  memset (struct sigaction*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  multidomain ; 
- int /*<<< orphan*/  nc_sperror () ; 
- int /*<<< orphan*/  no_chfn ; 
- int /*<<< orphan*/  no_chsh ; 
- int /*<<< orphan*/  openlog (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* optarg ; 
- void* passfile_default ; 
- scalar_t__ reload ; 
- int /*<<< orphan*/  resvport ; 
- int /*<<< orphan*/  rpc_control (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  rpcb_unset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* setnetconfig () ; 
- int /*<<< orphan*/  setrlimit (int /*<<< orphan*/ ,struct rlimit*) ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sockname ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
- scalar_t__ svc_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  svc_reg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct netconfig*) ; 
- int /*<<< orphan*/  svc_run () ; 
- int /*<<< orphan*/ * svcunix_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ terminate ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  verbose ; 
- void* yp_dir ; 
- int /*<<< orphan*/  yp_error (char*,...) ; 
- scalar_t__ yp_get_default_domain (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * yppasswd_domain ; 
- int /*<<< orphan*/  yppasswdprog_1 ; 
- char* ypxfr_get_master (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ int IPPROTO_UDP ;
+ int LOG_DAEMON ;
+ int LOG_PID ;
+ int MASTER_YPPASSWDPROG ;
+ int MASTER_YPPASSWDVERS ;
+ int MAXHOSTNAMELEN ;
+ int NC_LOOPBACK ;
+ int RLIMIT_CORE ;
+ int RLIMIT_CPU ;
+ int RLIMIT_DATA ;
+ int RLIMIT_FSIZE ;
+ int RLIMIT_RSS ;
+ int RLIMIT_STACK ;
+ scalar_t__ RLIM_INFINITY ;
+ int RPC_ANYSOCK ;
+ int RPC_MAXDATASIZE ;
+ int RPC_SVC_CONNMAXREC_SET ;
+ int SA_NOCLDWAIT ;
+ int SIGALRM ;
+ int SIGCHLD ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGQUIT ;
+ int SIGTERM ;
+ int SIG_IGN ;
+ int SOL_SOCKET ;
+ int SO_TYPE ;
+ int YPPASSWDPROG ;
+ int YPPASSWDVERS ;
+ int YPPROG ;
+ int YPVERS ;
+ int _RPCSVC_CLOSEDOWN ;
+ int _localhost ;
+ int _passwd_byname ;
+ int _rpcfdtype ;
+ int _rpcpmstart ;
+ int alarm (int) ;
+ int allow_additions ;
+ scalar_t__ chmod (int ,int ) ;
+ scalar_t__ closedown ;
+ scalar_t__ daemon (int ,int ) ;
+ int endnetconfig (void*) ;
+ int err (int,char*,...) ;
+ int errno ;
+ int exit (int) ;
+ int gethostname (char*,int) ;
+ struct netconfig* getnetconfig (void*) ;
+ int getopt (int,char**,char*) ;
+ scalar_t__ getrpcport (int ,int ,int ,int ) ;
+ scalar_t__ getsockname (int ,struct sockaddr*,int*) ;
+ int getsockopt (int ,int ,int ,char*,int*) ;
+ int inplace ;
+ int load_securenets () ;
+ int master_yppasswdprog_1 ;
+ int memset (struct sigaction*,int ,int) ;
+ int multidomain ;
+ int nc_sperror () ;
+ int no_chfn ;
+ int no_chsh ;
+ int openlog (char*,int ,int ) ;
+ void* optarg ;
+ void* passfile_default ;
+ scalar_t__ reload ;
+ int resvport ;
+ int rpc_control (int ,int*) ;
+ int rpcb_unset (int ,int ,int *) ;
+ void* setnetconfig () ;
+ int setrlimit (int ,struct rlimit*) ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int signal (int ,int ) ;
+ int sockname ;
+ scalar_t__ strcmp (int *,int ) ;
+ int strerror (int ) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
+ scalar_t__ svc_create (int ,int ,int ,char*) ;
+ int svc_reg (int *,int ,int ,int ,struct netconfig*) ;
+ int svc_run () ;
+ int * svcunix_create (int ,int ,int ,int ) ;
+ scalar_t__ terminate ;
+ int unlink (int ) ;
+ int usage () ;
+ int verbose ;
+ void* yp_dir ;
+ int yp_error (char*,...) ;
+ scalar_t__ yp_get_default_domain (int **) ;
+ int * yppasswd_domain ;
+ int yppasswdprog_1 ;
+ char* ypxfr_get_master (int *,int ,int ,int ) ;
 
 int
 main(int argc, char *argv[])
 {
-	struct rlimit rlim;
-	SVCXPRT *transp = NULL;
-	struct sockaddr_in saddr;
-	socklen_t asize = sizeof (saddr);
-	struct netconfig *nconf;
-	struct sigaction sa;
-	void *localhandle;
-	int ch;
-	char *mastername;
-	char myname[MAXHOSTNAMELEN + 2];
-	int maxrec = RPC_MAXDATASIZE;
+ struct rlimit rlim;
+ SVCXPRT *transp = ((void*)0);
+ struct sockaddr_in saddr;
+ socklen_t asize = sizeof (saddr);
+ struct netconfig *nconf;
+ struct sigaction sa;
+ void *localhandle;
+ int ch;
+ char *mastername;
+ char myname[MAXHOSTNAMELEN + 2];
+ int maxrec = RPC_MAXDATASIZE;
 
-	extern int debug;
+ extern int debug;
 
-	debug = 1;
+ debug = 1;
 
-	while ((ch = getopt(argc, argv, "t:d:p:sfamuivh")) != -1) {
-		switch (ch) {
-		case 't':
-			passfile_default = optarg;
-			break;
-		case 'd':
-			yppasswd_domain = optarg;
-			break;
-		case 's':
-			no_chsh++;
-			break;
-		case 'f':
-			no_chfn++;
-			break;
-		case 'p':
-			yp_dir = optarg;
-			break;
-		case 'a':
-			allow_additions++;
-			break;
-		case 'm':
-			multidomain++;
-			break;
-		case 'i':
-			inplace++;
-			break;
-		case 'v':
-			verbose++;
-			break;
-		case 'u':
-			resvport = 0;
-			break;
-		default:
-		case 'h':
-			usage();
-			break;
-		}
-	}
+ while ((ch = getopt(argc, argv, "t:d:p:sfamuivh")) != -1) {
+  switch (ch) {
+  case 't':
+   passfile_default = optarg;
+   break;
+  case 'd':
+   yppasswd_domain = optarg;
+   break;
+  case 's':
+   no_chsh++;
+   break;
+  case 'f':
+   no_chfn++;
+   break;
+  case 'p':
+   yp_dir = optarg;
+   break;
+  case 'a':
+   allow_additions++;
+   break;
+  case 'm':
+   multidomain++;
+   break;
+  case 'i':
+   inplace++;
+   break;
+  case 'v':
+   verbose++;
+   break;
+  case 'u':
+   resvport = 0;
+   break;
+  default:
+  case 'h':
+   usage();
+   break;
+  }
+ }
 
-	if (yppasswd_domain == NULL) {
-		if (yp_get_default_domain(&yppasswd_domain)) {
-			yp_error("no domain specified and system domain \
-name isn't set -- aborting");
-		usage();
-		}
-	}
+ if (yppasswd_domain == ((void*)0)) {
+  if (yp_get_default_domain(&yppasswd_domain)) {
+   yp_error("no domain specified and system domain name isn't set -- aborting");
 
-	load_securenets();
+  usage();
+  }
+ }
 
-	if (getrpcport(_localhost, YPPROG, YPVERS, IPPROTO_UDP) <= 0) {
-		yp_error("no ypserv processes registered with local portmap");
-		yp_error("this host is not an NIS server -- aborting");
-		exit(1);
-	}
+ load_securenets();
 
-	if ((mastername = ypxfr_get_master(yppasswd_domain,
-		 _passwd_byname, _localhost, 0)) == NULL) {
-		yp_error("can't get name of NIS master server for domain %s",
-			 				yppasswd_domain);
-		exit(1);
-	}
+ if (getrpcport(_localhost, YPPROG, YPVERS, IPPROTO_UDP) <= 0) {
+  yp_error("no ypserv processes registered with local portmap");
+  yp_error("this host is not an NIS server -- aborting");
+  exit(1);
+ }
 
-	if (gethostname((char *)&myname, sizeof(myname)) == -1) {
-		yp_error("can't get local hostname: %s", strerror(errno));
-		exit(1);
-	}
+ if ((mastername = ypxfr_get_master(yppasswd_domain,
+   _passwd_byname, _localhost, 0)) == ((void*)0)) {
+  yp_error("can't get name of NIS master server for domain %s",
+        yppasswd_domain);
+  exit(1);
+ }
 
-	if (strncasecmp(mastername, (char *)&myname, sizeof(myname))) {
-		yp_error("master of %s is %s, but we are %s",
-			"passwd.byname", mastername, myname);
-		yp_error("this host is not the NIS master server for \
-the %s domain -- aborting", yppasswd_domain);
-		exit(1);
-	}
+ if (gethostname((char *)&myname, sizeof(myname)) == -1) {
+  yp_error("can't get local hostname: %s", strerror(errno));
+  exit(1);
+ }
 
-	debug = 0;
+ if (strncasecmp(mastername, (char *)&myname, sizeof(myname))) {
+  yp_error("master of %s is %s, but we are %s",
+   "passwd.byname", mastername, myname);
+  yp_error("this host is not the NIS master server for the %s domain -- aborting", yppasswd_domain);
 
-	if (getsockname(0, (struct sockaddr *)&saddr, &asize) == 0) {
-		socklen_t ssize = sizeof (int);
-		if (saddr.sin_family != AF_INET)
-			exit(1);
-		if (getsockopt(0, SOL_SOCKET, SO_TYPE,
-		    (char *)&_rpcfdtype, &ssize) == -1)
-			exit(1);
-		_rpcpmstart = 1;
-	}
+  exit(1);
+ }
 
-	if (!debug && _rpcpmstart == 0) {
-		if (daemon(0,0)) {
-			err(1,"cannot fork");
-		}
-	}
-	openlog("rpc.yppasswdd", LOG_PID, LOG_DAEMON);
-	memset(&sa, 0, sizeof(sa));
-	sa.sa_flags = SA_NOCLDWAIT;
-	sigaction(SIGCHLD, &sa, NULL);
+ debug = 0;
 
-	rpcb_unset(YPPASSWDPROG, YPPASSWDVERS, NULL);
-	rpcb_unset(MASTER_YPPASSWDPROG, MASTER_YPPASSWDVERS, NULL);
+ if (getsockname(0, (struct sockaddr *)&saddr, &asize) == 0) {
+  socklen_t ssize = sizeof (int);
+  if (saddr.sin_family != AF_INET)
+   exit(1);
+  if (getsockopt(0, SOL_SOCKET, SO_TYPE,
+      (char *)&_rpcfdtype, &ssize) == -1)
+   exit(1);
+  _rpcpmstart = 1;
+ }
 
-	rpc_control(RPC_SVC_CONNMAXREC_SET, &maxrec);
+ if (!debug && _rpcpmstart == 0) {
+  if (daemon(0,0)) {
+   err(1,"cannot fork");
+  }
+ }
+ openlog("rpc.yppasswdd", LOG_PID, LOG_DAEMON);
+ memset(&sa, 0, sizeof(sa));
+ sa.sa_flags = SA_NOCLDWAIT;
+ sigaction(SIGCHLD, &sa, ((void*)0));
 
-	if (svc_create(yppasswdprog_1, YPPASSWDPROG, YPPASSWDVERS, "netpath") == 0) {
-		yp_error("cannot create yppasswd service.");
-		exit(1);
-	}
-	if (svc_create(master_yppasswdprog_1, MASTER_YPPASSWDPROG,
-	    MASTER_YPPASSWDVERS, "netpath") == 0) {
-		yp_error("cannot create master_yppasswd service.");
-		exit(1);
-	}
+ rpcb_unset(YPPASSWDPROG, YPPASSWDVERS, ((void*)0));
+ rpcb_unset(MASTER_YPPASSWDPROG, MASTER_YPPASSWDVERS, ((void*)0));
 
-	nconf = NULL;
-	localhandle = setnetconfig();
-	while ((nconf = getnetconfig(localhandle)) != NULL) {
-		if (nconf->nc_protofmly != NULL &&
-		    strcmp(nconf->nc_protofmly, NC_LOOPBACK) == 0)
-			break;
-	}
-	if (nconf == NULL) {
-		yp_error("getnetconfigent unix: %s", nc_sperror());
-		exit(1);
-	}
-	unlink(sockname);
-	transp = svcunix_create(RPC_ANYSOCK, 0, 0, sockname);
-	if (transp == NULL) {
-		yp_error("cannot create AF_LOCAL service.");
-		exit(1);
-	}
-	if (!svc_reg(transp, MASTER_YPPASSWDPROG, MASTER_YPPASSWDVERS,
-	    master_yppasswdprog_1, nconf)) {
-		yp_error("unable to register (MASTER_YPPASSWDPROG, \
-		    MASTER_YPPASSWDVERS, unix).");
-		exit(1);
-	}
-	endnetconfig(localhandle);
+ rpc_control(RPC_SVC_CONNMAXREC_SET, &maxrec);
 
-	/* Only root may connect() to the AF_UNIX link. */
-	if (chmod(sockname, 0))
-		err(1, "chmod of %s failed", sockname);
+ if (svc_create(yppasswdprog_1, YPPASSWDPROG, YPPASSWDVERS, "netpath") == 0) {
+  yp_error("cannot create yppasswd service.");
+  exit(1);
+ }
+ if (svc_create(master_yppasswdprog_1, MASTER_YPPASSWDPROG,
+     MASTER_YPPASSWDVERS, "netpath") == 0) {
+  yp_error("cannot create master_yppasswd service.");
+  exit(1);
+ }
 
-	if (transp == (SVCXPRT *)NULL) {
-		yp_error("could not create a handle");
-		exit(1);
-	}
-	if (_rpcpmstart) {
-		(void) signal(SIGALRM, (SIG_PF) closedown);
-		(void) alarm(_RPCSVC_CLOSEDOWN/2);
-	}
+ nconf = ((void*)0);
+ localhandle = setnetconfig();
+ while ((nconf = getnetconfig(localhandle)) != ((void*)0)) {
+  if (nconf->nc_protofmly != ((void*)0) &&
+      strcmp(nconf->nc_protofmly, NC_LOOPBACK) == 0)
+   break;
+ }
+ if (nconf == ((void*)0)) {
+  yp_error("getnetconfigent unix: %s", nc_sperror());
+  exit(1);
+ }
+ unlink(sockname);
+ transp = svcunix_create(RPC_ANYSOCK, 0, 0, sockname);
+ if (transp == ((void*)0)) {
+  yp_error("cannot create AF_LOCAL service.");
+  exit(1);
+ }
+ if (!svc_reg(transp, MASTER_YPPASSWDPROG, MASTER_YPPASSWDVERS,
+     master_yppasswdprog_1, nconf)) {
+  yp_error("unable to register (MASTER_YPPASSWDPROG, 		    MASTER_YPPASSWDVERS, unix).");
 
-	/* Unlimited resource limits. */
-	rlim.rlim_cur = rlim.rlim_max = RLIM_INFINITY;
-	(void)setrlimit(RLIMIT_CPU, &rlim);
-	(void)setrlimit(RLIMIT_FSIZE, &rlim);
-	(void)setrlimit(RLIMIT_STACK, &rlim);
-	(void)setrlimit(RLIMIT_DATA, &rlim);
-	(void)setrlimit(RLIMIT_RSS, &rlim);
+  exit(1);
+ }
+ endnetconfig(localhandle);
 
-	/* Don't drop core (not really necessary, but GP's). */
-	rlim.rlim_cur = rlim.rlim_max = 0;
-	(void)setrlimit(RLIMIT_CORE, &rlim);
 
-	/* Turn off signals. */
-	(void)signal(SIGALRM, SIG_IGN);
-	(void)signal(SIGHUP, (SIG_PF) reload);
-	(void)signal(SIGINT, SIG_IGN);
-	(void)signal(SIGPIPE, SIG_IGN);
-	(void)signal(SIGQUIT, SIG_IGN);
-	(void)signal(SIGTERM, (SIG_PF) terminate);
+ if (chmod(sockname, 0))
+  err(1, "chmod of %s failed", sockname);
 
-	svc_run();
-	yp_error("svc_run returned");
-	exit(1);
-	/* NOTREACHED */
+ if (transp == (SVCXPRT *)((void*)0)) {
+  yp_error("could not create a handle");
+  exit(1);
+ }
+ if (_rpcpmstart) {
+  (void) signal(SIGALRM, (SIG_PF) closedown);
+  (void) alarm(_RPCSVC_CLOSEDOWN/2);
+ }
+
+
+ rlim.rlim_cur = rlim.rlim_max = RLIM_INFINITY;
+ (void)setrlimit(RLIMIT_CPU, &rlim);
+ (void)setrlimit(RLIMIT_FSIZE, &rlim);
+ (void)setrlimit(RLIMIT_STACK, &rlim);
+ (void)setrlimit(RLIMIT_DATA, &rlim);
+ (void)setrlimit(RLIMIT_RSS, &rlim);
+
+
+ rlim.rlim_cur = rlim.rlim_max = 0;
+ (void)setrlimit(RLIMIT_CORE, &rlim);
+
+
+ (void)signal(SIGALRM, SIG_IGN);
+ (void)signal(SIGHUP, (SIG_PF) reload);
+ (void)signal(SIGINT, SIG_IGN);
+ (void)signal(SIGPIPE, SIG_IGN);
+ (void)signal(SIGQUIT, SIG_IGN);
+ (void)signal(SIGTERM, (SIG_PF) terminate);
+
+ svc_run();
+ yp_error("svc_run returned");
+ exit(1);
+
 }

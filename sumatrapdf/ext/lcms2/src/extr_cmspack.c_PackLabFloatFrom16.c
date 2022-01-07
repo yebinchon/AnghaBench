@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  size_t cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  scalar_t__ cmsFloat32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_5__ {int /*<<< orphan*/  b; int /*<<< orphan*/  a; int /*<<< orphan*/  L; } ;
-typedef  TYPE_1__ cmsCIELab ;
-struct TYPE_6__ {int /*<<< orphan*/  OutputFormat; } ;
-typedef  TYPE_2__ _cmsTRANSFORM ;
 
-/* Variables and functions */
- size_t PixelSize (int /*<<< orphan*/ ) ; 
- int T_EXTRA (int /*<<< orphan*/ ) ; 
- scalar_t__ T_PLANAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsLabEncoded2Float (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef size_t cmsUInt32Number ;
+typedef int cmsUInt16Number ;
+typedef scalar_t__ cmsFloat32Number ;
+typedef int cmsContext ;
+struct TYPE_5__ {int b; int a; int L; } ;
+typedef TYPE_1__ cmsCIELab ;
+struct TYPE_6__ {int OutputFormat; } ;
+typedef TYPE_2__ _cmsTRANSFORM ;
+
+
+ size_t PixelSize (int ) ;
+ int T_EXTRA (int ) ;
+ scalar_t__ T_PLANAR (int ) ;
+ int cmsLabEncoded2Float (int ,TYPE_1__*,int *) ;
 
 __attribute__((used)) static
 cmsUInt8Number* PackLabFloatFrom16(cmsContext ContextID, register _cmsTRANSFORM* info,
@@ -34,7 +34,7 @@ cmsUInt8Number* PackLabFloatFrom16(cmsContext ContextID, register _cmsTRANSFORM*
                                     register cmsUInt8Number* output,
                                     register cmsUInt32Number Stride)
 {
-    cmsCIELab  Lab;
+    cmsCIELab Lab;
     cmsLabEncoded2Float(ContextID, &Lab, wOut);
 
     if (T_PLANAR(info -> OutputFormat)) {
@@ -43,8 +43,8 @@ cmsUInt8Number* PackLabFloatFrom16(cmsContext ContextID, register _cmsTRANSFORM*
 
         Stride /= PixelSize(info->OutputFormat);
 
-        Out[0]        = (cmsFloat32Number)Lab.L;
-        Out[Stride]   = (cmsFloat32Number)Lab.a;
+        Out[0] = (cmsFloat32Number)Lab.L;
+        Out[Stride] = (cmsFloat32Number)Lab.a;
         Out[Stride*2] = (cmsFloat32Number)Lab.b;
 
         return output + sizeof(cmsFloat32Number);

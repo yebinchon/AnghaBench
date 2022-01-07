@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nfs_seqid_counter {int dummy; } ;
-struct nfs_seqid {int /*<<< orphan*/ * task; int /*<<< orphan*/  list; struct nfs_seqid_counter* sequence; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+struct nfs_seqid {int * task; int list; struct nfs_seqid_counter* sequence; } ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- struct nfs_seqid* ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct nfs_seqid* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ struct nfs_seqid* ERR_PTR (int ) ;
+ int INIT_LIST_HEAD (int *) ;
+ struct nfs_seqid* kmalloc (int,int ) ;
 
 struct nfs_seqid *nfs_alloc_seqid(struct nfs_seqid_counter *counter, gfp_t gfp_mask)
 {
-	struct nfs_seqid *new;
+ struct nfs_seqid *new;
 
-	new = kmalloc(sizeof(*new), gfp_mask);
-	if (new == NULL)
-		return ERR_PTR(-ENOMEM);
-	new->sequence = counter;
-	INIT_LIST_HEAD(&new->list);
-	new->task = NULL;
-	return new;
+ new = kmalloc(sizeof(*new), gfp_mask);
+ if (new == ((void*)0))
+  return ERR_PTR(-ENOMEM);
+ new->sequence = counter;
+ INIT_LIST_HEAD(&new->list);
+ new->task = ((void*)0);
+ return new;
 }

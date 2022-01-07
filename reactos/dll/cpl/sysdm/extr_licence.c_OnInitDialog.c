@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ hIcon; } ;
-typedef  TYPE_1__* PLIC_CONTEXT ;
-typedef  int /*<<< orphan*/  PCSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HRSRC ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PLIC_CONTEXT ;
+typedef int PCSTR ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int HRSRC ;
+typedef int HGLOBAL ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EM_SETSEL ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FindResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ICON_SMALL ; 
- int /*<<< orphan*/  IDC_LICENCEEDIT ; 
- int /*<<< orphan*/  IDI_CPLSYSTEM ; 
- int /*<<< orphan*/  IMAGE_ICON ; 
- scalar_t__ LoadImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockResource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PostMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RC_LICENSE ; 
- int /*<<< orphan*/  RTDATA ; 
- int SB_TOP ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetDlgItemTextA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowLastWin32Error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WM_SETICON ; 
- int /*<<< orphan*/  WM_VSCROLL ; 
- int /*<<< orphan*/  hApplet ; 
+
+ int EM_SETSEL ;
+ int FALSE ;
+ int FindResource (int ,int ,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int ICON_SMALL ;
+ int IDC_LICENCEEDIT ;
+ int IDI_CPLSYSTEM ;
+ int IMAGE_ICON ;
+ scalar_t__ LoadImage (int ,int ,int ,int,int,int ) ;
+ int LoadResource (int ,int ) ;
+ int LockResource (int ) ;
+ int MAKEINTRESOURCE (int ) ;
+ int PostMessage (int ,int ,int,int ) ;
+ int RC_LICENSE ;
+ int RTDATA ;
+ int SB_TOP ;
+ int SendMessage (int ,int ,int ,int ) ;
+ int SetDlgItemTextA (int ,int ,int ) ;
+ int ShowLastWin32Error (int ) ;
+ int TRUE ;
+ int WM_SETICON ;
+ int WM_VSCROLL ;
+ int hApplet ;
 
 __attribute__((used)) static BOOL
 OnInitDialog(HWND hDlg, PLIC_CONTEXT pLicInfo)
@@ -64,7 +64,7 @@ OnInitDialog(HWND hDlg, PLIC_CONTEXT pLicInfo)
                 ICON_SMALL,
                 (LPARAM)pLicInfo->hIcon);
 
-    /* Load license from resource */
+
     if (!(hResInfo = FindResource(hApplet,
                                   MAKEINTRESOURCE(RC_LICENSE),
                                   MAKEINTRESOURCE(RTDATA))) ||
@@ -75,7 +75,7 @@ OnInitDialog(HWND hDlg, PLIC_CONTEXT pLicInfo)
         return FALSE;
     }
 
-    /* Insert the license into the edit control */
+
     SetDlgItemTextA(hDlg,
                     IDC_LICENCEEDIT,
                     LicenseText);

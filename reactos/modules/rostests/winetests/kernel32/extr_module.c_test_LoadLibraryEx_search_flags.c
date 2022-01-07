@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tests ;
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tests ;
+typedef int path ;
+typedef int WCHAR ;
 struct TYPE_2__ {int member_0; int member_1; int member_2; } ;
-typedef  int /*<<< orphan*/ * HMODULE ;
-typedef  int /*<<< orphan*/ * DLL_DIRECTORY_COOKIE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int * HMODULE ;
+typedef int * DLL_DIRECTORY_COOKIE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  ERROR_MOD_NOT_FOUND ; 
- int /*<<< orphan*/  ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetModuleFileNameA (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  GetTempFileNameA (char*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- int LOAD_LIBRARY_SEARCH_APPLICATION_DIR ; 
- int LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR ; 
- int LOAD_LIBRARY_SEARCH_SYSTEM32 ; 
- int LOAD_LIBRARY_SEARCH_USER_DIRS ; 
- int /*<<< orphan*/ * LoadLibraryExA (char*,int /*<<< orphan*/ ,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RemoveDirectoryA (char*) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  create_test_dll (char*) ; 
- int /*<<< orphan*/  lstrcmpiA (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * pAddDllDirectory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pRemoveDllDirectory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pSetDllDirectoryA (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
- int strlen (char*) ; 
+
+ int CP_ACP ;
+ int CreateDirectoryA (char*,int *) ;
+ int DeleteFileA (char*) ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_MOD_NOT_FOUND ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int FreeLibrary (int *) ;
+ int GetLastError () ;
+ int GetModuleFileNameA (int *,char*,int) ;
+ int GetTempFileNameA (char*,char*,int ,char*) ;
+ int GetTempPathA (int,char*) ;
+ int LOAD_LIBRARY_SEARCH_APPLICATION_DIR ;
+ int LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR ;
+ int LOAD_LIBRARY_SEARCH_SYSTEM32 ;
+ int LOAD_LIBRARY_SEARCH_USER_DIRS ;
+ int * LoadLibraryExA (char*,int ,int) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char*,int,int *,int) ;
+ int RemoveDirectoryA (char*) ;
+ int SetLastError (int) ;
+ scalar_t__ broken (int) ;
+ int create_test_dll (char*) ;
+ int lstrcmpiA (char*,char*) ;
+ int ok (int,char*,...) ;
+ int * pAddDllDirectory (int *) ;
+ int pRemoveDllDirectory (int *) ;
+ int pSetDllDirectoryA (char*) ;
+ int sprintf (char*,char*,unsigned int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test_LoadLibraryEx_search_flags(void)
 {
@@ -59,14 +59,14 @@ __attribute__((used)) static void test_LoadLibraryEx_search_flags(void)
         int expect;
     } tests[] =
     {
-        { { 1, 2, 3 }, 4, 3 }, /* 0 */
+        { { 1, 2, 3 }, 4, 3 },
         { { 1, 3, 2 }, 4, 2 },
-        { { 3, 1 },    4, 1 },
-        { { 5, 6 },    4, 4 },
-        { { 5, 2 },    4, 2 },
-        { { 0 },       4, 4 }, /* 5 */
-        { { 0 },       0, 0 },
-        { { 6, 5 },    5, 0 },
+        { { 3, 1 }, 4, 1 },
+        { { 5, 6 }, 4, 4 },
+        { { 5, 2 }, 4, 2 },
+        { { 0 }, 4, 4 },
+        { { 0 }, 0, 0 },
+        { { 6, 5 }, 5, 0 },
         { { 1, 1, 2 }, 0, 2 },
     };
     char *p, path[MAX_PATH], buf[MAX_PATH];
@@ -81,15 +81,15 @@ __attribute__((used)) static void test_LoadLibraryEx_search_flags(void)
     GetTempPathA( sizeof(path), path );
     GetTempFileNameA( path, "tmp", 0, buf );
     DeleteFileA( buf );
-    ret = CreateDirectoryA( buf, NULL );
+    ret = CreateDirectoryA( buf, ((void*)0) );
     ok( ret, "CreateDirectory failed err %u\n", GetLastError() );
     p = buf + strlen( buf );
     for (i = 1; i <= 6; i++)
     {
         sprintf( p, "\\%u", i );
-        ret = CreateDirectoryA( buf, NULL );
+        ret = CreateDirectoryA( buf, ((void*)0) );
         ok( ret, "CreateDirectory failed err %u\n", GetLastError() );
-        if (i >= 5) continue;  /* dirs 5 and 6 are left empty */
+        if (i >= 5) continue;
         sprintf( p, "\\%u\\winetestdll.dll", i );
         create_test_dll( buf );
     }
@@ -136,20 +136,20 @@ __attribute__((used)) static void test_LoadLibraryEx_search_flags(void)
             sprintf( p, "\\%u", tests[j].add_dirs[k] );
             MultiByteToWideChar( CP_ACP, 0, buf, -1, bufW, MAX_PATH );
             cookies[k] = pAddDllDirectory( bufW );
-            ok( cookies[k] != NULL, "failed to add %s\n", buf );
+            ok( cookies[k] != ((void*)0), "failed to add %s\n", buf );
         }
         if (tests[j].dll_dir)
         {
             sprintf( p, "\\%u", tests[j].dll_dir );
             pSetDllDirectoryA( buf );
         }
-        else pSetDllDirectoryA( NULL );
+        else pSetDllDirectoryA( ((void*)0) );
 
         SetLastError( 0xdeadbeef );
         mod = LoadLibraryExA( "winetestdll.dll", 0, LOAD_LIBRARY_SEARCH_USER_DIRS );
         if (tests[j].expect)
         {
-            ok( mod != NULL, "%u: LoadLibrary failed err %u\n", j, GetLastError() );
+            ok( mod != ((void*)0), "%u: LoadLibrary failed err %u\n", j, GetLastError() );
             GetModuleFileNameA( mod, path, MAX_PATH );
             sprintf( p, "\\%u\\winetestdll.dll", tests[j].expect );
             ok( !lstrcmpiA( path, buf ), "%u: wrong module %s expected %s\n", j, path, buf );

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CommandPtr ;
-typedef  int /*<<< orphan*/  ArgvInfoPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARGSUSED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTPPerror (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,char*,char const*) ; 
- int FTPRename (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  FlushLsCache () ; 
- int /*<<< orphan*/  gConn ; 
- int /*<<< orphan*/  gUnusedArg ; 
- int /*<<< orphan*/  kErrRenameFailed ; 
+
+
+
+typedef int CommandPtr ;
+typedef int ArgvInfoPtr ;
+
+
+ int ARGSUSED (int ) ;
+ int FTPPerror (int *,int,int ,char*,char const*) ;
+ int FTPRename (int *,char const*,char const*) ;
+ int FlushLsCache () ;
+ int gConn ;
+ int gUnusedArg ;
+ int kErrRenameFailed ;
 
 void
 RenameCmd(const int argc, const char **const argv, const CommandPtr cmdp, const ArgvInfoPtr aip)
 {
-	int result;
+ int result;
 
-	ARGSUSED(gUnusedArg);
-	result = FTPRename(&gConn, argv[1], argv[2]);
-	if (result < 0)
-		FTPPerror(&gConn, result, kErrRenameFailed, "rename", argv[1]);
-	else {
-		/* Really should just flush only the modified directories... */
-		FlushLsCache();
-	}
+ ARGSUSED(gUnusedArg);
+ result = FTPRename(&gConn, argv[1], argv[2]);
+ if (result < 0)
+  FTPPerror(&gConn, result, kErrRenameFailed, "rename", argv[1]);
+ else {
+
+  FlushLsCache();
+ }
 }

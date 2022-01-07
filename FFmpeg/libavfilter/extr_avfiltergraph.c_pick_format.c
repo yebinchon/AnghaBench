@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-struct TYPE_14__ {int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+struct TYPE_14__ {int name; } ;
 struct TYPE_13__ {int nb_components; } ;
-struct TYPE_12__ {int nb_channel_layouts; scalar_t__* channel_layouts; int /*<<< orphan*/  all_counts; scalar_t__ all_layouts; } ;
+struct TYPE_12__ {int nb_channel_layouts; scalar_t__* channel_layouts; int all_counts; scalar_t__ all_layouts; } ;
 struct TYPE_11__ {int nb_formats; int* formats; } ;
-struct TYPE_10__ {scalar_t__ type; int format; int sample_rate; TYPE_6__* out_channel_layouts; TYPE_6__* in_channel_layouts; TYPE_5__* out_samplerates; TYPE_5__* in_samplerates; TYPE_5__* out_formats; TYPE_5__* in_formats; scalar_t__ channel_layout; int /*<<< orphan*/  channels; TYPE_8__* src; TYPE_1__* dst; } ;
-struct TYPE_9__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ AVFilterLink ;
+struct TYPE_10__ {scalar_t__ type; int format; int sample_rate; TYPE_6__* out_channel_layouts; TYPE_6__* in_channel_layouts; TYPE_5__* out_samplerates; TYPE_5__* in_samplerates; TYPE_5__* out_formats; TYPE_5__* in_formats; scalar_t__ channel_layout; int channels; TYPE_8__* src; TYPE_1__* dst; } ;
+struct TYPE_9__ {int name; } ;
+typedef TYPE_2__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_PIX_FMT_NONE ; 
- int AV_SAMPLE_FMT_NONE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  FF_LAYOUT2COUNT (scalar_t__) ; 
- int av_find_best_pix_fmt_of_2 (int,int,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_get_channel_layout_nb_channels (scalar_t__) ; 
- int /*<<< orphan*/  av_get_pix_fmt_name (int) ; 
- int /*<<< orphan*/  av_get_sample_fmt_name (int) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_7__* av_pix_fmt_desc_get (int) ; 
- int /*<<< orphan*/  ff_channel_layouts_unref (TYPE_6__**) ; 
- int /*<<< orphan*/  ff_formats_unref (TYPE_5__**) ; 
- int find_best_sample_fmt_of_2 (int,int,int) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_NONE ;
+ int AV_SAMPLE_FMT_NONE ;
+ int EINVAL ;
+ int FF_LAYOUT2COUNT (scalar_t__) ;
+ int av_find_best_pix_fmt_of_2 (int,int,int,int,int *) ;
+ int av_get_channel_layout_nb_channels (scalar_t__) ;
+ int av_get_pix_fmt_name (int) ;
+ int av_get_sample_fmt_name (int) ;
+ int av_log (TYPE_8__*,int ,char*,...) ;
+ TYPE_7__* av_pix_fmt_desc_get (int) ;
+ int ff_channel_layouts_unref (TYPE_6__**) ;
+ int ff_formats_unref (TYPE_5__**) ;
+ int find_best_sample_fmt_of_2 (int,int,int) ;
 
 __attribute__((used)) static int pick_format(AVFilterLink *link, AVFilterLink *ref)
 {
@@ -53,13 +53,13 @@ __attribute__((used)) static int pick_format(AVFilterLink *link, AVFilterLink *r
 
     if (link->type == AVMEDIA_TYPE_VIDEO) {
         if(ref && ref->type == AVMEDIA_TYPE_VIDEO){
-            //FIXME: This should check for AV_PIX_FMT_FLAG_ALPHA after PAL8 pixel format without alpha is implemented
+
             int has_alpha= av_pix_fmt_desc_get(ref->format)->nb_components % 2 == 0;
             enum AVPixelFormat best= AV_PIX_FMT_NONE;
             int i;
             for (i=0; i<link->in_formats->nb_formats; i++) {
                 enum AVPixelFormat p = link->in_formats->formats[i];
-                best= av_find_best_pix_fmt_of_2(best, p, ref->format, has_alpha, NULL);
+                best= av_find_best_pix_fmt_of_2(best, p, ref->format, has_alpha, ((void*)0));
             }
             av_log(link->src,AV_LOG_DEBUG, "picking %s out of %d ref:%s alpha:%d\n",
                    av_get_pix_fmt_name(best), link->in_formats->nb_formats,

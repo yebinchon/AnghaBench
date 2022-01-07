@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union exp_element {int dummy; } exp_element ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef union exp_element {int dummy; } exp_element ;
 struct ui_file {int dummy; } ;
 struct expression {int nelts; TYPE_2__* elts; TYPE_1__* language_defn; } ;
-struct TYPE_4__ {int /*<<< orphan*/  longconst; int /*<<< orphan*/  opcode; } ;
-struct TYPE_3__ {int /*<<< orphan*/  la_name; } ;
+struct TYPE_4__ {int longconst; int opcode; } ;
+struct TYPE_3__ {int la_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf_filtered (struct ui_file*,char*,...) ; 
- int /*<<< orphan*/  gdb_print_host_address (struct expression*,struct ui_file*) ; 
- scalar_t__ isprint (char) ; 
- char* op_name (struct expression*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_longest (struct ui_file*,char,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int fprintf_filtered (struct ui_file*,char*,...) ;
+ int gdb_print_host_address (struct expression*,struct ui_file*) ;
+ scalar_t__ isprint (char) ;
+ char* op_name (struct expression*,int ) ;
+ int print_longest (struct ui_file*,char,int ,int ) ;
 
 void
 dump_raw_expression (struct expression *exp, struct ui_file *stream,
-		     char *note)
+       char *note)
 {
   int elt;
   char *opcode_name;
@@ -37,10 +37,10 @@ dump_raw_expression (struct expression *exp, struct ui_file *stream,
   fprintf_filtered (stream, "Dump of expression @ ");
   gdb_print_host_address (exp, stream);
   fprintf_filtered (stream, "'\n\tLanguage %s, %d elements, %ld bytes each.\n",
-		    exp->language_defn->la_name, exp->nelts,
-		    (long) sizeof (union exp_element));
+      exp->language_defn->la_name, exp->nelts,
+      (long) sizeof (union exp_element));
   fprintf_filtered (stream, "\t%5s  %20s  %16s  %s\n", "Index", "Opcode",
-		    "Hex Value", "String Value");
+      "Hex Value", "String Value");
   for (elt = 0; elt < exp->nelts; elt++)
     {
       fprintf_filtered (stream, "\t%5d  ", elt);
@@ -51,13 +51,13 @@ dump_raw_expression (struct expression *exp, struct ui_file *stream,
       fprintf_filtered (stream, "  ");
 
       for (eltscan = (char *) &exp->elts[elt],
-	   eltsize = sizeof (union exp_element);
-	   eltsize-- > 0;
-	   eltscan++)
-	{
-	  fprintf_filtered (stream, "%c",
-			    isprint (*eltscan) ? (*eltscan & 0xFF) : '.');
-	}
+    eltsize = sizeof (union exp_element);
+    eltsize-- > 0;
+    eltscan++)
+ {
+   fprintf_filtered (stream, "%c",
+       isprint (*eltscan) ? (*eltscan & 0xFF) : '.');
+ }
       fprintf_filtered (stream, "\n");
     }
 }

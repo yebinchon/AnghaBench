@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char* lafe_progname ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  vfprintf (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int fprintf (int ,char*,...) ;
+ char* lafe_progname ;
+ int stderr ;
+ char* strerror (int) ;
+ int vfprintf (int ,char const*,int ) ;
 
 __attribute__((used)) static void
 lafe_vwarnc(int code, const char *fmt, va_list ap)
 {
-	fprintf(stderr, "%s: ", lafe_progname);
-	vfprintf(stderr, fmt, ap);
-	if (code != 0)
-		fprintf(stderr, ": %s", strerror(code));
-	fprintf(stderr, "\n");
+ fprintf(stderr, "%s: ", lafe_progname);
+ vfprintf(stderr, fmt, ap);
+ if (code != 0)
+  fprintf(stderr, ": %s", strerror(code));
+ fprintf(stderr, "\n");
 }

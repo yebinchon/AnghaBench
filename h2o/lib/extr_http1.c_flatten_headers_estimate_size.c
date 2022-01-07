@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int size; TYPE_6__* entries; } ;
-struct TYPE_11__ {TYPE_1__ headers; int /*<<< orphan*/  reason; } ;
+struct TYPE_11__ {TYPE_1__ headers; int reason; } ;
 struct TYPE_12__ {TYPE_4__ res; } ;
-typedef  TYPE_5__ h2o_req_t ;
+typedef TYPE_5__ h2o_req_t ;
 struct TYPE_10__ {scalar_t__ len; } ;
 struct TYPE_13__ {TYPE_3__ value; TYPE_2__* name; } ;
-typedef  TYPE_6__ h2o_header_t ;
+typedef TYPE_6__ h2o_header_t ;
 struct TYPE_9__ {scalar_t__ len; } ;
-typedef  int /*<<< orphan*/  H2O_UINT64_LONGEST_STR ;
+typedef int H2O_UINT64_LONGEST_STR ;
 
-/* Variables and functions */
- int strlen (int /*<<< orphan*/ ) ; 
+
+ int strlen (int ) ;
 
 __attribute__((used)) static size_t flatten_headers_estimate_size(h2o_req_t *req, size_t server_name_and_connection_len)
 {

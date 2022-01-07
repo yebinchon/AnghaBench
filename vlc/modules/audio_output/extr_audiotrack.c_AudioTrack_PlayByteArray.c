@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_11__ {TYPE_4__* sys; } ;
-typedef  TYPE_3__ audio_output_t ;
-struct TYPE_9__ {int /*<<< orphan*/  p_bytearray; } ;
+typedef TYPE_3__ audio_output_t ;
+struct TYPE_9__ {int p_bytearray; } ;
 struct TYPE_10__ {TYPE_1__ u; } ;
 struct TYPE_12__ {scalar_t__ i_samples_written; int b_error; scalar_t__ i_max_audiotrack_samples; TYPE_2__ circular; } ;
-typedef  TYPE_4__ aout_sys_t ;
-typedef  int /*<<< orphan*/  JNIEnv ;
+typedef TYPE_4__ aout_sys_t ;
+typedef int JNIEnv ;
 
-/* Variables and functions */
- scalar_t__ AudioTrack_getPlaybackHeadPosition (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  BYTES_TO_FRAMES (size_t) ; 
- size_t FRAMES_TO_BYTES (scalar_t__) ; 
- int JNI_AT_CALL_INT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,size_t) ; 
- scalar_t__ __MIN (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  write ; 
+
+ scalar_t__ AudioTrack_getPlaybackHeadPosition (int *,TYPE_3__*) ;
+ int BYTES_TO_FRAMES (size_t) ;
+ size_t FRAMES_TO_BYTES (scalar_t__) ;
+ int JNI_AT_CALL_INT (int ,int ,size_t,size_t) ;
+ scalar_t__ __MIN (scalar_t__,int ) ;
+ int assert (int) ;
+ int msg_Err (TYPE_3__*,char*) ;
+ int msg_Warn (TYPE_3__*,char*) ;
+ int write ;
 
 __attribute__((used)) static int
 AudioTrack_PlayByteArray( JNIEnv *env, audio_output_t *p_aout,
@@ -51,12 +51,12 @@ AudioTrack_PlayByteArray( JNIEnv *env, audio_output_t *p_aout,
     {
         msg_Err( p_aout, "audiotrack position is ahead. Should NOT happen" );
         p_sys->i_samples_written = 0;
-        p_sys->b_error = true;
+        p_sys->b_error = 1;
         return 0;
     }
     i_samples_pending = p_sys->i_samples_written - i_audiotrack_pos;
 
-    /* check if audiotrack buffer is not full before writing on it. */
+
     if( b_force )
     {
         msg_Warn( p_aout, "Force write. It may block..." );

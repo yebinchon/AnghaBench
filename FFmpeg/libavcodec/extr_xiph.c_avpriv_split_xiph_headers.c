@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int AV_RB16 (int const*) ; 
- int INT_MAX ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int AV_RB16 (int const*) ;
+ int INT_MAX ;
 
 int avpriv_split_xiph_headers(const uint8_t *extradata, int extradata_size,
                           int first_header_size, const uint8_t *header_start[3],
@@ -40,10 +40,10 @@ int avpriv_split_xiph_headers(const uint8_t *extradata, int extradata_size,
             header_len[i] = 0;
             for (; overall_len < extradata_size && *extradata==0xff; extradata++) {
                 header_len[i] += 0xff;
-                overall_len   += 0xff + 1;
+                overall_len += 0xff + 1;
             }
             header_len[i] += *extradata;
-            overall_len   += *extradata;
+            overall_len += *extradata;
             if (overall_len > extradata_size)
                 return -1;
         }

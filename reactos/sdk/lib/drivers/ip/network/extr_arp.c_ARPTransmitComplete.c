@@ -1,38 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PNDIS_PACKET ;
-typedef  int /*<<< orphan*/  NDIS_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_ARP ; 
- int /*<<< orphan*/  FreeNdisPacket (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int VOID ;
+typedef int PVOID ;
+typedef int PNDIS_PACKET ;
+typedef int NDIS_STATUS ;
+
+
+ int DEBUG_ARP ;
+ int FreeNdisPacket (int ) ;
+ int TI_DbgPrint (int ,char*) ;
 
 VOID ARPTransmitComplete(
     PVOID Context,
     PNDIS_PACKET NdisPacket,
     NDIS_STATUS NdisStatus)
-/*
- * FUNCTION: ARP request transmit completion handler
- * ARGUMENTS:
- *     Context    = Pointer to context information (IP_INTERFACE)
- *     Packet     = Pointer to NDIS packet that was sent
- *     NdisStatus = NDIS status of operation
- * NOTES:
- *    This routine is called when an ARP request has been sent
- */
 {
     TI_DbgPrint(DEBUG_ARP, ("Called.\n"));
     FreeNdisPacket(NdisPacket);

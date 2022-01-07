@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct knote {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fs_knlist ; 
- int /*<<< orphan*/  knlist_remove (int /*<<< orphan*/ *,struct knote*,int /*<<< orphan*/ ) ; 
+
+ int fs_knlist ;
+ int knlist_remove (int *,struct knote*,int ) ;
 
 __attribute__((used)) static void
 filt_fsdetach(struct knote *kn)
 {
 
-	knlist_remove(&fs_knlist, kn, 0);
+ knlist_remove(&fs_knlist, kn, 0);
 }

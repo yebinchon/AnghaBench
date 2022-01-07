@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct web_client {scalar_t__ mode; scalar_t__ pollinfo_filecopy_slot; int ifd; int ofd; int /*<<< orphan*/  id; } ;
-struct TYPE_6__ {int /*<<< orphan*/  receptions; } ;
-struct TYPE_5__ {int fd; scalar_t__ slot; int /*<<< orphan*/  port_acl; int /*<<< orphan*/  p; scalar_t__ data; } ;
-typedef  TYPE_1__ POLLINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_WEB_CLIENT ; 
- short POLLIN ; 
- int /*<<< orphan*/  POLLINFO_FLAG_CLIENT_SOCKET ; 
- short POLLOUT ; 
- scalar_t__ WEB_CLIENT_MODE_FILECOPY ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  error (char*) ; 
- TYPE_1__* poll_add_fd (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ unlikely (int) ; 
- scalar_t__ web_client_has_wait_receive (struct web_client*) ; 
- scalar_t__ web_client_has_wait_send (struct web_client*) ; 
- int /*<<< orphan*/  web_client_process_request (struct web_client*) ; 
- scalar_t__ web_client_receive (struct web_client*) ; 
- int web_server_check_client_status (struct web_client*) ; 
- int /*<<< orphan*/  web_server_file_add_callback ; 
- int /*<<< orphan*/  web_server_file_del_callback ; 
- int /*<<< orphan*/  web_server_file_read_callback ; 
- int /*<<< orphan*/  web_server_file_write_callback ; 
- TYPE_2__* worker_private ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct web_client {scalar_t__ mode; scalar_t__ pollinfo_filecopy_slot; int ifd; int ofd; int id; } ;
+struct TYPE_6__ {int receptions; } ;
+struct TYPE_5__ {int fd; scalar_t__ slot; int port_acl; int p; scalar_t__ data; } ;
+typedef TYPE_1__ POLLINFO ;
+
+
+ int D_WEB_CLIENT ;
+ short POLLIN ;
+ int POLLINFO_FLAG_CLIENT_SOCKET ;
+ short POLLOUT ;
+ scalar_t__ WEB_CLIENT_MODE_FILECOPY ;
+ int debug (int ,char*,int ,int) ;
+ int error (char*) ;
+ TYPE_1__* poll_add_fd (int ,int,int ,int ,int ,char*,char*,char*,int ,int ,int ,int ,void*) ;
+ scalar_t__ unlikely (int) ;
+ scalar_t__ web_client_has_wait_receive (struct web_client*) ;
+ scalar_t__ web_client_has_wait_send (struct web_client*) ;
+ int web_client_process_request (struct web_client*) ;
+ scalar_t__ web_client_receive (struct web_client*) ;
+ int web_server_check_client_status (struct web_client*) ;
+ int web_server_file_add_callback ;
+ int web_server_file_del_callback ;
+ int web_server_file_read_callback ;
+ int web_server_file_write_callback ;
+ TYPE_2__* worker_private ;
 
 __attribute__((used)) static int web_server_rcv_callback(POLLINFO *pi, short int *events) {
     worker_private->receptions++;
@@ -44,7 +44,7 @@ __attribute__((used)) static int web_server_rcv_callback(POLLINFO *pi, short int
     struct web_client *w = (struct web_client *)pi->data;
     int fd = pi->fd;
 
-    //BRING IT TO HERE
+
 
     if(unlikely(web_client_receive(w) < 0))
         return -1;
@@ -57,7 +57,7 @@ __attribute__((used)) static int web_server_rcv_callback(POLLINFO *pi, short int
             debug(D_WEB_CLIENT, "%llu: FILECOPY DETECTED ON FD %d", w->id, pi->fd);
 
             if (unlikely(w->ifd != -1 && w->ifd != w->ofd && w->ifd != fd)) {
-                // add a new socket to poll_events, with the same
+
                 debug(D_WEB_CLIENT, "%llu: CREATING FILECOPY SLOT ON FD %d", w->id, pi->fd);
 
                 POLLINFO *fpi = poll_add_fd(

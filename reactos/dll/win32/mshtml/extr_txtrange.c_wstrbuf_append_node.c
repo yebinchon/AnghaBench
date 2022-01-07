@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wstrbuf_t ;
-typedef  int /*<<< orphan*/  nsIDOMText ;
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
-#define  ELEMENT_NODE 129 
- int /*<<< orphan*/  IID_nsIDOMText ; 
-#define  TEXT_NODE 128 
- int /*<<< orphan*/  brW ; 
- int get_node_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hrW ; 
- int /*<<< orphan*/  is_elem_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMNode_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMText_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMText_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlenW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  wstrbuf_append_len (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  wstrbuf_append_nodetxt (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wstrbuf_t ;
+typedef int nsIDOMText ;
+typedef int nsIDOMNode ;
+typedef int nsAString ;
+typedef char WCHAR ;
+typedef int PRUnichar ;
+typedef int BOOL ;
+
+
+
+ int IID_nsIDOMText ;
+
+ int brW ;
+ int get_node_type (int *) ;
+ int hrW ;
+ int is_elem_tag (int *,int ) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ int nsIDOMNode_QueryInterface (int *,int *,void**) ;
+ int nsIDOMText_GetData (int *,int *) ;
+ int nsIDOMText_Release (int *) ;
+ int strlenW (int const*) ;
+ int wstrbuf_append_len (int *,char const*,int) ;
+ int wstrbuf_append_nodetxt (int *,int const*,int ) ;
 
 __attribute__((used)) static void wstrbuf_append_node(wstrbuf_t *buf, nsIDOMNode *node, BOOL ignore_text)
 {
 
     switch(get_node_type(node)) {
-    case TEXT_NODE: {
+    case 128: {
         nsIDOMText *nstext;
         nsAString data_str;
         const PRUnichar *data;
@@ -50,7 +50,7 @@ __attribute__((used)) static void wstrbuf_append_node(wstrbuf_t *buf, nsIDOMNode
 
         nsIDOMNode_QueryInterface(node, &IID_nsIDOMText, (void**)&nstext);
 
-        nsAString_Init(&data_str, NULL);
+        nsAString_Init(&data_str, ((void*)0));
         nsIDOMText_GetData(nstext, &data_str);
         nsAString_GetData(&data_str, &data);
         wstrbuf_append_nodetxt(buf, data, strlenW(data));
@@ -60,7 +60,7 @@ __attribute__((used)) static void wstrbuf_append_node(wstrbuf_t *buf, nsIDOMNode
 
         break;
     }
-    case ELEMENT_NODE:
+    case 129:
         if(is_elem_tag(node, brW)) {
             static const WCHAR endlW[] = {'\r','\n'};
             wstrbuf_append_len(buf, endlW, 2);

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTDv07_DCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTDv07_checkContinuity (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  ZSTDv07_decompressBegin_usingDict (int /*<<< orphan*/ *,void const*,size_t) ; 
- size_t ZSTDv07_decompressFrame (int /*<<< orphan*/ *,void*,size_t,void const*,size_t) ; 
+
+
+
+typedef int ZSTDv07_DCtx ;
+
+
+ int ZSTDv07_checkContinuity (int *,void*) ;
+ int ZSTDv07_decompressBegin_usingDict (int *,void const*,size_t) ;
+ size_t ZSTDv07_decompressFrame (int *,void*,size_t,void const*,size_t) ;
 
 size_t ZSTDv07_decompress_usingDict(ZSTDv07_DCtx* dctx,
                                  void* dst, size_t dstCapacity,

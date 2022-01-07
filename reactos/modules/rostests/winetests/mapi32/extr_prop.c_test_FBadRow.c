@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pFBadRow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+
+
+ int ok (int,char*) ;
+ scalar_t__ pFBadRow (int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_FBadRow(void)
 {
@@ -27,8 +27,8 @@ __attribute__((used)) static void test_FBadRow(void)
         return;
     }
 
-    ulRet = pFBadRow(NULL);
+    ulRet = pFBadRow(((void*)0));
     ok(ulRet != 0, "FBadRow(null): Expected non-zero, got 0\n");
 
-    /* FIXME */
+
 }

@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* pg_strdup (char*) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
- int strlen (char const*) ; 
- char* strstr (char*,char const*) ; 
+ int free (char*) ;
+ char* pg_strdup (char*) ;
+ int strcat (char*,char const*) ;
+ int strlcpy (char*,char*,int) ;
+ int strlen (char const*) ;
+ char* strstr (char*,char const*) ;
 
 void
 replace_string(char *string, const char *replace, const char *replacement)
 {
-	char	   *ptr;
+ char *ptr;
 
-	while ((ptr = strstr(string, replace)) != NULL)
-	{
-		char	   *dup = pg_strdup(string);
+ while ((ptr = strstr(string, replace)) != ((void*)0))
+ {
+  char *dup = pg_strdup(string);
 
-		strlcpy(string, dup, ptr - string + 1);
-		strcat(string, replacement);
-		strcat(string, dup + (ptr - string) + strlen(replace));
-		free(dup);
-	}
+  strlcpy(string, dup, ptr - string + 1);
+  strcat(string, replacement);
+  strcat(string, dup + (ptr - string) + strlen(replace));
+  free(dup);
+ }
 }

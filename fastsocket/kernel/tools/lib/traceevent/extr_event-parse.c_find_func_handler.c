@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pevent_function_handler {int /*<<< orphan*/  name; struct pevent_function_handler* next; } ;
+
+
+
+
+struct pevent_function_handler {int name; struct pevent_function_handler* next; } ;
 struct pevent {struct pevent_function_handler* func_handlers; } ;
 
-/* Variables and functions */
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static struct pevent_function_handler *
 find_func_handler(struct pevent *pevent, char *func_name)
 {
-	struct pevent_function_handler *func;
+ struct pevent_function_handler *func;
 
-	if (!pevent)
-		return NULL;
+ if (!pevent)
+  return ((void*)0);
 
-	for (func = pevent->func_handlers; func; func = func->next) {
-		if (strcmp(func->name, func_name) == 0)
-			break;
-	}
+ for (func = pevent->func_handlers; func; func = func->next) {
+  if (strcmp(func->name, func_name) == 0)
+   break;
+ }
 
-	return func;
+ return func;
 }

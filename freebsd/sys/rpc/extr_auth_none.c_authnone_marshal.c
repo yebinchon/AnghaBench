@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct mbuf {int dummy; } ;
-struct authnone_private {int /*<<< orphan*/  mcnt; int /*<<< orphan*/  mclient; } ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
-typedef  int /*<<< orphan*/  AUTH ;
+struct authnone_private {int mcnt; int mclient; } ;
+typedef int bool_t ;
+typedef int XDR ;
+typedef int AUTH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XDR_PUTBYTES (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct authnone_private authnone_private ; 
- int /*<<< orphan*/  xdrmbuf_append (int /*<<< orphan*/ *,struct mbuf*) ; 
+
+ int FALSE ;
+ int KASSERT (int ,char*) ;
+ int TRUE ;
+ int XDR_PUTBYTES (int *,int ,int ) ;
+ struct authnone_private authnone_private ;
+ int xdrmbuf_append (int *,struct mbuf*) ;
 
 __attribute__((used)) static bool_t
 authnone_marshal(AUTH *client, uint32_t xid, XDR *xdrs, struct mbuf *args)
 {
-	struct authnone_private *ap = &authnone_private;
+ struct authnone_private *ap = &authnone_private;
 
-	KASSERT(xdrs != NULL, ("authnone_marshal: xdrs is null"));
+ KASSERT(xdrs != ((void*)0), ("authnone_marshal: xdrs is null"));
 
-	if (!XDR_PUTBYTES(xdrs, ap->mclient, ap->mcnt))
-		return (FALSE);
+ if (!XDR_PUTBYTES(xdrs, ap->mclient, ap->mcnt))
+  return (FALSE);
 
-	xdrmbuf_append(xdrs, args);
+ xdrmbuf_append(xdrs, args);
 
-	return (TRUE);
+ return (TRUE);
 }

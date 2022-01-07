@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_cursor ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_2__ {int /*<<< orphan*/ * pCsr; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ LsmDb ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  LSM_SEEK_GE ; 
- int /*<<< orphan*/  LSM_SEEK_LE ; 
- int /*<<< orphan*/  MIN (int,int) ; 
- int /*<<< orphan*/  lsm_csr_close (int /*<<< orphan*/ *) ; 
- int lsm_csr_first (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsm_csr_key (int /*<<< orphan*/ *,void const**,int*) ; 
- int lsm_csr_last (int /*<<< orphan*/ *) ; 
- int lsm_csr_next (int /*<<< orphan*/ *) ; 
- int lsm_csr_open (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int lsm_csr_prev (int /*<<< orphan*/ *) ; 
- int lsm_csr_seek (int /*<<< orphan*/ *,void*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ lsm_csr_valid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsm_csr_value (int /*<<< orphan*/ *,void const**,int*) ; 
- int memcmp (void*,void const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int lsm_cursor ;
+typedef int TestDb ;
+struct TYPE_2__ {int * pCsr; int db; } ;
+typedef TYPE_1__ LsmDb ;
+
+
+ int LSM_OK ;
+ int LSM_SEEK_GE ;
+ int LSM_SEEK_LE ;
+ int MIN (int,int) ;
+ int lsm_csr_close (int *) ;
+ int lsm_csr_first (int *) ;
+ int lsm_csr_key (int *,void const**,int*) ;
+ int lsm_csr_last (int *) ;
+ int lsm_csr_next (int *) ;
+ int lsm_csr_open (int ,int **) ;
+ int lsm_csr_prev (int *) ;
+ int lsm_csr_seek (int *,void*,int,int ) ;
+ scalar_t__ lsm_csr_valid (int *) ;
+ int lsm_csr_value (int *,void const**,int*) ;
+ int memcmp (void*,void const*,int ) ;
 
 __attribute__((used)) static int test_lsm_scan(
   TestDb *pTestDb,
@@ -54,10 +54,10 @@ __attribute__((used)) static int test_lsm_scan(
     csr = pDb->pCsr;
   }
 
-  /* To enhance testing, if both pLast and pFirst are defined, seek the
-  ** cursor to the "end" boundary here. Then the next block seeks it to
-  ** the "start" ready for the scan. The point is to test that cursors
-  ** can be reused.  */
+
+
+
+
   if( pLast && pFirst ){
     if( bReverse ){
       rc = lsm_csr_seek(csr, pFirst, nFirst, LSM_SEEK_LE);

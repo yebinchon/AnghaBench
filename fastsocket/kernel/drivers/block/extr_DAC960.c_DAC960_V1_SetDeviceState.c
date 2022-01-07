@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {unsigned char Channel; unsigned char TargetID; scalar_t__ Modifier; int /*<<< orphan*/  DeviceState; int /*<<< orphan*/  CommandOpcode; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {unsigned char Channel; unsigned char TargetID; scalar_t__ Modifier; int DeviceState; int CommandOpcode; } ;
 struct TYPE_9__ {TYPE_1__ Type3D; } ;
 struct TYPE_8__ {int CommandStatus; TYPE_3__ CommandMailbox; } ;
 struct TYPE_10__ {TYPE_2__ V1; } ;
-typedef  int /*<<< orphan*/  DAC960_V1_PhysicalDeviceState_T ;
-typedef  TYPE_3__ DAC960_V1_CommandMailbox_T ;
-typedef  int /*<<< orphan*/  DAC960_Controller_T ;
-typedef  TYPE_4__ DAC960_Command_T ;
+typedef int DAC960_V1_PhysicalDeviceState_T ;
+typedef TYPE_3__ DAC960_V1_CommandMailbox_T ;
+typedef int DAC960_Controller_T ;
+typedef TYPE_4__ DAC960_Command_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DAC960_ExecuteCommand (TYPE_4__*) ; 
- int /*<<< orphan*/  DAC960_UserCritical (char*,int /*<<< orphan*/ *,unsigned char const*,unsigned char,unsigned char,...) ; 
-#define  DAC960_V1_ChannelBusy 132 
-#define  DAC960_V1_InvalidChannelOrTargetOrModifier 131 
-#define  DAC960_V1_NoDeviceAtAddress 130 
-#define  DAC960_V1_NormalCompletion 129 
- int /*<<< orphan*/  DAC960_V1_StartDevice ; 
-#define  DAC960_V1_UnableToStartDevice 128 
+
+ int DAC960_ExecuteCommand (TYPE_4__*) ;
+ int DAC960_UserCritical (char*,int *,unsigned char const*,unsigned char,unsigned char,...) ;
+
+
+
+
+ int DAC960_V1_StartDevice ;
+
 
 __attribute__((used)) static void DAC960_V1_SetDeviceState(DAC960_Controller_T *Controller,
-				     DAC960_Command_T *Command,
-				     unsigned char Channel,
-				     unsigned char TargetID,
-				     DAC960_V1_PhysicalDeviceState_T
-				       DeviceState,
-				     const unsigned char *DeviceStateString)
+         DAC960_Command_T *Command,
+         unsigned char Channel,
+         unsigned char TargetID,
+         DAC960_V1_PhysicalDeviceState_T
+           DeviceState,
+         const unsigned char *DeviceStateString)
 {
   DAC960_V1_CommandMailbox_T *CommandMailbox = &Command->V1.CommandMailbox;
   CommandMailbox->Type3D.CommandOpcode = DAC960_V1_StartDevice;
@@ -50,35 +50,35 @@ __attribute__((used)) static void DAC960_V1_SetDeviceState(DAC960_Controller_T *
   DAC960_ExecuteCommand(Command);
   switch (Command->V1.CommandStatus)
     {
-    case DAC960_V1_NormalCompletion:
+    case 129:
       DAC960_UserCritical("%s of Physical Device %d:%d Succeeded\n", Controller,
-			  DeviceStateString, Channel, TargetID);
+     DeviceStateString, Channel, TargetID);
       break;
-    case DAC960_V1_UnableToStartDevice:
+    case 128:
       DAC960_UserCritical("%s of Physical Device %d:%d Failed - "
-			  "Unable to Start Device\n", Controller,
-			  DeviceStateString, Channel, TargetID);
+     "Unable to Start Device\n", Controller,
+     DeviceStateString, Channel, TargetID);
       break;
-    case DAC960_V1_NoDeviceAtAddress:
+    case 130:
       DAC960_UserCritical("%s of Physical Device %d:%d Failed - "
-			  "No Device at Address\n", Controller,
-			  DeviceStateString, Channel, TargetID);
+     "No Device at Address\n", Controller,
+     DeviceStateString, Channel, TargetID);
       break;
-    case DAC960_V1_InvalidChannelOrTargetOrModifier:
+    case 131:
       DAC960_UserCritical("%s of Physical Device %d:%d Failed - "
-			  "Invalid Channel or Target or Modifier\n",
-			  Controller, DeviceStateString, Channel, TargetID);
+     "Invalid Channel or Target or Modifier\n",
+     Controller, DeviceStateString, Channel, TargetID);
       break;
-    case DAC960_V1_ChannelBusy:
+    case 132:
       DAC960_UserCritical("%s of Physical Device %d:%d Failed - "
-			  "Channel Busy\n", Controller,
-			  DeviceStateString, Channel, TargetID);
+     "Channel Busy\n", Controller,
+     DeviceStateString, Channel, TargetID);
       break;
     default:
       DAC960_UserCritical("%s of Physical Device %d:%d Failed - "
-			  "Unexpected Status %04X\n", Controller,
-			  DeviceStateString, Channel, TargetID,
-			  Command->V1.CommandStatus);
+     "Unexpected Status %04X\n", Controller,
+     DeviceStateString, Channel, TargetID,
+     Command->V1.CommandStatus);
       break;
     }
 }

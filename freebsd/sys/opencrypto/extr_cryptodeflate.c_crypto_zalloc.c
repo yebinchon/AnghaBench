@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_CRYPTO_DATA ; 
- int /*<<< orphan*/  M_NOWAIT ; 
- void* malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+
+
+ int M_CRYPTO_DATA ;
+ int M_NOWAIT ;
+ void* malloc (int,int ,int ) ;
 
 __attribute__((used)) static void *
 crypto_zalloc(void *nil, u_int type, u_int size)
 {
-	void *ptr;
+ void *ptr;
 
-	ptr = malloc(type *size, M_CRYPTO_DATA, M_NOWAIT);
-	return ptr;
+ ptr = malloc(type *size, M_CRYPTO_DATA, M_NOWAIT);
+ return ptr;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  encoding; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int encoding; } ;
 struct TYPE_7__ {TYPE_1__ b; } ;
 struct object {TYPE_2__ s; } ;
-struct TYPE_8__ {int /*<<< orphan*/  pc_begin; } ;
-typedef  TYPE_3__ fde ;
-typedef  scalar_t__ _Unwind_Ptr ;
+struct TYPE_8__ {int pc_begin; } ;
+typedef TYPE_3__ fde ;
+typedef scalar_t__ _Unwind_Ptr ;
 
-/* Variables and functions */
- scalar_t__ base_from_object (int /*<<< orphan*/ ,struct object*) ; 
- int /*<<< orphan*/  read_encoded_value_with_base (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__*) ; 
+
+ scalar_t__ base_from_object (int ,struct object*) ;
+ int read_encoded_value_with_base (int ,scalar_t__,int ,scalar_t__*) ;
 
 __attribute__((used)) static int
 fde_single_encoding_compare (struct object *ob, const fde *x, const fde *y)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ hInformOnAppStart; scalar_t__ hInformOnAppDeath; scalar_t__ hInformOnSettingRead; } ;
-typedef  scalar_t__* LPHANDLE ;
-typedef  TYPE_1__* LPDPLAYX_LOBBYDATA ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__* LPHANDLE ;
+typedef TYPE_1__* LPDPLAYX_LOBBYDATA ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  DPLAYX_AcquireSemaphore () ; 
- int /*<<< orphan*/  DPLAYX_IsAppIdLobbied (int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  DPLAYX_ReleaseSemaphore () ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
+
+ int CloseHandle (scalar_t__) ;
+ int DPLAYX_AcquireSemaphore () ;
+ int DPLAYX_IsAppIdLobbied (int ,TYPE_1__**) ;
+ int DPLAYX_ReleaseSemaphore () ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
 
 __attribute__((used)) static BOOL DPLAYX_GetThisLobbyHandles( LPHANDLE lphStart,
                                         LPHANDLE lphDeath,
                                         LPHANDLE lphConnRead,
-                                        BOOL     bClearSetHandles )
+                                        BOOL bClearSetHandles )
 {
   LPDPLAYX_LOBBYDATA lpLData;
 
@@ -39,7 +39,7 @@ __attribute__((used)) static BOOL DPLAYX_GetThisLobbyHandles( LPHANDLE lphStart,
     return FALSE;
   }
 
-  if( lphStart != NULL )
+  if( lphStart != ((void*)0) )
   {
     if( lpLData->hInformOnAppStart == 0 )
     {
@@ -56,7 +56,7 @@ __attribute__((used)) static BOOL DPLAYX_GetThisLobbyHandles( LPHANDLE lphStart,
     }
   }
 
-  if( lphDeath != NULL )
+  if( lphDeath != ((void*)0) )
   {
     if( lpLData->hInformOnAppDeath == 0 )
     {
@@ -73,7 +73,7 @@ __attribute__((used)) static BOOL DPLAYX_GetThisLobbyHandles( LPHANDLE lphStart,
     }
   }
 
-  if( lphConnRead != NULL )
+  if( lphConnRead != ((void*)0) )
   {
     if( lpLData->hInformOnSettingRead == 0 )
     {

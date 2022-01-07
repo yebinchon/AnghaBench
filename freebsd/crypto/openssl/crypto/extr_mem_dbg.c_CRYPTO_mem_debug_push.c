@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {char const* file; int line; char const* info; int references; struct TYPE_4__* next; int /*<<< orphan*/  threadid; } ;
-typedef  TYPE_1__ APP_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_MEM_CHECK_DISABLE ; 
- int /*<<< orphan*/  CRYPTO_MEM_CHECK_ENABLE ; 
- int /*<<< orphan*/  CRYPTO_THREAD_get_current_id () ; 
- scalar_t__ CRYPTO_THREAD_get_local (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_set_local (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  CRYPTO_mem_ctrl (int /*<<< orphan*/ ) ; 
- TYPE_1__* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  RUN_ONCE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appinfokey ; 
- int /*<<< orphan*/  do_memdbg_init ; 
- scalar_t__ mem_check_on () ; 
- int /*<<< orphan*/  memdbg_init ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {char const* file; int line; char const* info; int references; struct TYPE_4__* next; int threadid; } ;
+typedef TYPE_1__ APP_INFO ;
+
+
+ int CRYPTO_MEM_CHECK_DISABLE ;
+ int CRYPTO_MEM_CHECK_ENABLE ;
+ int CRYPTO_THREAD_get_current_id () ;
+ scalar_t__ CRYPTO_THREAD_get_local (int *) ;
+ int CRYPTO_THREAD_set_local (int *,TYPE_1__*) ;
+ int CRYPTO_mem_ctrl (int ) ;
+ TYPE_1__* OPENSSL_malloc (int) ;
+ int RUN_ONCE (int *,int ) ;
+ int appinfokey ;
+ int do_memdbg_init ;
+ scalar_t__ mem_check_on () ;
+ int memdbg_init ;
 
 int CRYPTO_mem_debug_push(const char *info, const char *file, int line)
 {
@@ -37,7 +37,7 @@ int CRYPTO_mem_debug_push(const char *info, const char *file, int line)
         CRYPTO_mem_ctrl(CRYPTO_MEM_CHECK_DISABLE);
 
         if (!RUN_ONCE(&memdbg_init, do_memdbg_init)
-            || (ami = OPENSSL_malloc(sizeof(*ami))) == NULL)
+            || (ami = OPENSSL_malloc(sizeof(*ami))) == ((void*)0))
             goto err;
 
         ami->threadid = CRYPTO_THREAD_get_current_id();
@@ -45,12 +45,12 @@ int CRYPTO_mem_debug_push(const char *info, const char *file, int line)
         ami->line = line;
         ami->info = info;
         ami->references = 1;
-        ami->next = NULL;
+        ami->next = ((void*)0);
 
         amim = (APP_INFO *)CRYPTO_THREAD_get_local(&appinfokey);
         CRYPTO_THREAD_set_local(&appinfokey, ami);
 
-        if (amim != NULL)
+        if (amim != ((void*)0))
             ami->next = amim;
         ret = 1;
  err:

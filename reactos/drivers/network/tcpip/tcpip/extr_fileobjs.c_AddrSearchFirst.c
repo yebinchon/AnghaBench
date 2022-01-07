@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* USHORT ;
-struct TYPE_7__ {int /*<<< orphan*/  Flink; } ;
-struct TYPE_6__ {int /*<<< orphan*/  Next; void* Protocol; void* Port; int /*<<< orphan*/  Address; } ;
-typedef  int /*<<< orphan*/  PIP_ADDRESS ;
-typedef  TYPE_1__* PAF_SEARCH ;
-typedef  int /*<<< orphan*/  PADDRESS_FILE ;
-typedef  int /*<<< orphan*/  KIRQL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDRESS_FILE ; 
- int /*<<< orphan*/  AddrSearchNext (TYPE_1__*) ; 
- TYPE_2__ AddressFileListHead ; 
- int /*<<< orphan*/  AddressFileListLock ; 
- int /*<<< orphan*/  CONTAINING_RECORD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsListEmpty (TYPE_2__*) ; 
- int /*<<< orphan*/  ListEntry ; 
- int /*<<< orphan*/  ReferenceObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TcpipAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TcpipReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef void* USHORT ;
+struct TYPE_7__ {int Flink; } ;
+struct TYPE_6__ {int Next; void* Protocol; void* Port; int Address; } ;
+typedef int PIP_ADDRESS ;
+typedef TYPE_1__* PAF_SEARCH ;
+typedef int PADDRESS_FILE ;
+typedef int KIRQL ;
+
+
+ int ADDRESS_FILE ;
+ int AddrSearchNext (TYPE_1__*) ;
+ TYPE_2__ AddressFileListHead ;
+ int AddressFileListLock ;
+ int CONTAINING_RECORD (int ,int ,int ) ;
+ int IsListEmpty (TYPE_2__*) ;
+ int ListEntry ;
+ int ReferenceObject (int ) ;
+ int TcpipAcquireSpinLock (int *,int *) ;
+ int TcpipReleaseSpinLock (int *,int ) ;
 
 PADDRESS_FILE AddrSearchFirst(
     PIP_ADDRESS Address,
@@ -39,9 +39,9 @@ PADDRESS_FILE AddrSearchFirst(
     PAF_SEARCH SearchContext)
 {
     KIRQL OldIrql;
-    
-    SearchContext->Address  = Address;
-    SearchContext->Port     = Port;
+
+    SearchContext->Address = Address;
+    SearchContext->Port = Port;
     SearchContext->Protocol = Protocol;
 
     TcpipAcquireSpinLock(&AddressFileListLock, &OldIrql);

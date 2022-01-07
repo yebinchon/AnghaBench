@@ -1,0 +1,169 @@
+; ModuleID = '/home/carl/AnghaBench/RetroArch/menu/widgets/extr_menu_widgets.c_menu_widgets_msg_queue_move.c'
+source_filename = "/home/carl/AnghaBench/RetroArch/menu/widgets/extr_menu_widgets.c_menu_widgets_msg_queue_move.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_8__ = type { i32 }
+%struct.TYPE_6__ = type { float, i32, i64, i64 }
+%struct.TYPE_7__ = type { float*, i64, float, %struct.TYPE_6__*, i32, i32, i32* }
+
+@current_msgs = common dso_local global %struct.TYPE_8__* null, align 8
+@msg_queue_height = common dso_local global i32 0, align 4
+@msg_queue_spacing = common dso_local global i64 0, align 8
+@menu_widgets_move_end = common dso_local global i32* null, align 8
+@MSG_QUEUE_ANIMATION_DURATION = common dso_local global i32 0, align 4
+@EASING_OUT_QUAD = common dso_local global i32 0, align 4
+@widgets_moving = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void ()* @menu_widgets_msg_queue_move to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @menu_widgets_msg_queue_move() #0 {
+  %1 = alloca i32, align 4
+  %2 = alloca float, align 4
+  %3 = alloca %struct.TYPE_6__*, align 8
+  %4 = alloca %struct.TYPE_6__*, align 8
+  %5 = alloca %struct.TYPE_7__, align 8
+  store float 0.000000e+00, float* %2, align 4
+  store %struct.TYPE_6__* null, %struct.TYPE_6__** %3, align 8
+  %6 = load %struct.TYPE_8__*, %struct.TYPE_8__** @current_msgs, align 8
+  %7 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %6, i32 0, i32 0
+  %8 = load i32, i32* %7, align 4
+  %9 = icmp eq i32 %8, 0
+  br i1 %9, label %10, label %11
+
+10:                                               ; preds = %0
+  br label %87
+
+11:                                               ; preds = %0
+  %12 = load %struct.TYPE_8__*, %struct.TYPE_8__** @current_msgs, align 8
+  %13 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %12, i32 0, i32 0
+  %14 = load i32, i32* %13, align 4
+  %15 = sub nsw i32 %14, 1
+  store i32 %15, i32* %1, align 4
+  br label %16
+
+16:                                               ; preds = %84, %11
+  %17 = load i32, i32* %1, align 4
+  %18 = icmp sge i32 %17, 0
+  br i1 %18, label %19, label %87
+
+19:                                               ; preds = %16
+  %20 = load %struct.TYPE_8__*, %struct.TYPE_8__** @current_msgs, align 8
+  %21 = load i32, i32* %1, align 4
+  %22 = call i64 @file_list_get_userdata_at_offset(%struct.TYPE_8__* %20, i32 %21)
+  %23 = inttoptr i64 %22 to %struct.TYPE_6__*
+  store %struct.TYPE_6__* %23, %struct.TYPE_6__** %4, align 8
+  %24 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %25 = icmp ne %struct.TYPE_6__* %24, null
+  br i1 %25, label %26, label %31
+
+26:                                               ; preds = %19
+  %27 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %28 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %27, i32 0, i32 3
+  %29 = load i64, i64* %28, align 8
+  %30 = icmp ne i64 %29, 0
+  br i1 %30, label %31, label %32
+
+31:                                               ; preds = %26, %19
+  br label %84
+
+32:                                               ; preds = %26
+  %33 = load i32, i32* @msg_queue_height, align 4
+  %34 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %35 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %34, i32 0, i32 2
+  %36 = load i64, i64* %35, align 8
+  %37 = icmp ne i64 %36, 0
+  %38 = zext i1 %37 to i64
+  %39 = select i1 %37, i32 2, i32 1
+  %40 = sdiv i32 %33, %39
+  %41 = sext i32 %40 to i64
+  %42 = load i64, i64* @msg_queue_spacing, align 8
+  %43 = add nsw i64 %41, %42
+  %44 = sitofp i64 %43 to float
+  %45 = load float, float* %2, align 4
+  %46 = fadd float %45, %44
+  store float %46, float* %2, align 4
+  %47 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %48 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %47, i32 0, i32 1
+  %49 = load i32, i32* %48, align 4
+  %50 = icmp ne i32 %49, 0
+  br i1 %50, label %53, label %51
+
+51:                                               ; preds = %32
+  %52 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  store %struct.TYPE_6__* %52, %struct.TYPE_6__** %3, align 8
+  br label %53
+
+53:                                               ; preds = %51, %32
+  %54 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %55 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %54, i32 0, i32 0
+  %56 = load float, float* %55, align 8
+  %57 = load float, float* %2, align 4
+  %58 = fcmp une float %56, %57
+  br i1 %58, label %59, label %83
+
+59:                                               ; preds = %53
+  %60 = load i32, i32* %1, align 4
+  %61 = icmp eq i32 %60, 0
+  br i1 %61, label %62, label %64
+
+62:                                               ; preds = %59
+  %63 = load i32*, i32** @menu_widgets_move_end, align 8
+  br label %65
+
+64:                                               ; preds = %59
+  br label %65
+
+65:                                               ; preds = %64, %62
+  %66 = phi i32* [ %63, %62 ], [ null, %64 ]
+  %67 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 6
+  store i32* %66, i32** %67, align 8
+  %68 = load i32, i32* @MSG_QUEUE_ANIMATION_DURATION, align 4
+  %69 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 5
+  store i32 %68, i32* %69, align 4
+  %70 = load i32, i32* @EASING_OUT_QUAD, align 4
+  %71 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 4
+  store i32 %70, i32* %71, align 8
+  %72 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %73 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %72, i32 0, i32 0
+  %74 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 0
+  store float* %73, float** %74, align 8
+  %75 = load %struct.TYPE_6__*, %struct.TYPE_6__** %4, align 8
+  %76 = ptrtoint %struct.TYPE_6__* %75 to i64
+  %77 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 1
+  store i64 %76, i64* %77, align 8
+  %78 = load float, float* %2, align 4
+  %79 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 2
+  store float %78, float* %79, align 8
+  %80 = load %struct.TYPE_6__*, %struct.TYPE_6__** %3, align 8
+  %81 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %5, i32 0, i32 3
+  store %struct.TYPE_6__* %80, %struct.TYPE_6__** %81, align 8
+  %82 = call i32 @menu_animation_push(%struct.TYPE_7__* %5)
+  store i32 1, i32* @widgets_moving, align 4
+  br label %83
+
+83:                                               ; preds = %65, %53
+  br label %84
+
+84:                                               ; preds = %83, %31
+  %85 = load i32, i32* %1, align 4
+  %86 = add nsw i32 %85, -1
+  store i32 %86, i32* %1, align 4
+  br label %16
+
+87:                                               ; preds = %10, %16
+  ret void
+}
+
+declare dso_local i64 @file_list_get_userdata_at_offset(%struct.TYPE_8__*, i32) #1
+
+declare dso_local i32 @menu_animation_push(%struct.TYPE_7__*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

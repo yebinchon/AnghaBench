@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  ref; } ;
-struct TYPE_7__ {int /*<<< orphan*/  ThreadList; int /*<<< orphan*/  Engine; void* ClientList; void* IPsecSaList; void* IkeSaList; void* SendPacketList; int /*<<< orphan*/  Now; int /*<<< orphan*/ * IPsec; TYPE_2__* Cedar; } ;
-typedef  int /*<<< orphan*/  IPSEC_SERVER ;
-typedef  TYPE_1__ IKE_SERVER ;
-typedef  TYPE_2__ CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CmpIPsecSa ; 
- int /*<<< orphan*/ * CmpIkeClient ; 
- int /*<<< orphan*/ * CmpIkeSa ; 
- int /*<<< orphan*/  IPsecLog (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  NewIkeEngine () ; 
- void* NewList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NewThreadList () ; 
- int /*<<< orphan*/  Tick64 () ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ref; } ;
+struct TYPE_7__ {int ThreadList; int Engine; void* ClientList; void* IPsecSaList; void* IkeSaList; void* SendPacketList; int Now; int * IPsec; TYPE_2__* Cedar; } ;
+typedef int IPSEC_SERVER ;
+typedef TYPE_1__ IKE_SERVER ;
+typedef TYPE_2__ CEDAR ;
+
+
+ int AddRef (int ) ;
+ int * CmpIPsecSa ;
+ int * CmpIkeClient ;
+ int * CmpIkeSa ;
+ int IPsecLog (TYPE_1__*,int *,int *,int *,char*) ;
+ int NewIkeEngine () ;
+ void* NewList (int *) ;
+ int NewThreadList () ;
+ int Tick64 () ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 IKE_SERVER *NewIKEServer(CEDAR *cedar, IPSEC_SERVER *ipsec)
 {
-	IKE_SERVER *ike;
-	// Validate arguments
-	if (cedar == NULL)
-	{
-		return NULL;
-	}
+ IKE_SERVER *ike;
 
-	ike = ZeroMalloc(sizeof(IKE_SERVER));
+ if (cedar == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	ike->Cedar = cedar;
-	AddRef(cedar->ref);
+ ike = ZeroMalloc(sizeof(IKE_SERVER));
 
-	ike->IPsec = ipsec;
+ ike->Cedar = cedar;
+ AddRef(cedar->ref);
 
-	ike->Now = Tick64();
+ ike->IPsec = ipsec;
 
-	ike->SendPacketList = NewList(NULL);
+ ike->Now = Tick64();
 
-	ike->IkeSaList = NewList(CmpIkeSa);
+ ike->SendPacketList = NewList(((void*)0));
 
-	ike->IPsecSaList = NewList(CmpIPsecSa);
+ ike->IkeSaList = NewList(CmpIkeSa);
 
-	ike->ClientList = NewList(CmpIkeClient);
+ ike->IPsecSaList = NewList(CmpIPsecSa);
 
-	ike->Engine = NewIkeEngine();
+ ike->ClientList = NewList(CmpIkeClient);
 
-	ike->ThreadList = NewThreadList();
+ ike->Engine = NewIkeEngine();
 
-	IPsecLog(ike, NULL, NULL, NULL, "LI_START");
+ ike->ThreadList = NewThreadList();
 
-	return ike;
+ IPsecLog(ike, ((void*)0), ((void*)0), ((void*)0), "LI_START");
+
+ return ike;
 }

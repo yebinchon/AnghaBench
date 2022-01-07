@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  hEvent; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_IO_PENDING ; 
- int /*<<< orphan*/  EXCEPTION_INT_OVERFLOW ; 
- int /*<<< orphan*/  ExitProcess (int) ; 
- scalar_t__ FALSE ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int FormatMessageW (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ GetOverlappedResult (int /*<<< orphan*/ ,TYPE_1__*,int*,scalar_t__) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int LOG_ERROR ; 
- int LOG_EVENTLOG ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogToEventLog (char*,scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MAXDWORD ; 
- int /*<<< orphan*/  RaiseException (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
-#define  WAIT_OBJECT_0 128 
- int WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ WriteFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,TYPE_1__*) ; 
- int /*<<< orphan*/  _snwprintf (int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  hLogFile ; 
- TYPE_1__ olWrite ; 
- int wcslen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+typedef int UINT ;
+struct TYPE_4__ {int hEvent; } ;
+typedef int TCHAR ;
+typedef int SIZE_T ;
+typedef int * LPWSTR ;
+typedef int * LPCWSTR ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ERROR_IO_PENDING ;
+ int EXCEPTION_INT_OVERFLOW ;
+ int ExitProcess (int) ;
+ scalar_t__ FALSE ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FormatMessageW (int,int *,int,int ,int *,int ,int *) ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ GetOverlappedResult (int ,TYPE_1__*,int*,scalar_t__) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int INFINITE ;
+ int LANG_NEUTRAL ;
+ int LOG_ERROR ;
+ int LOG_EVENTLOG ;
+ int LocalFree (int *) ;
+ int LogToEventLog (char*,scalar_t__,int ,int) ;
+ int MAKELANGID (int ,int ) ;
+ int MAXDWORD ;
+ int RaiseException (int ,int ,int ,int *) ;
+ int SUBLANG_DEFAULT ;
+
+ int WaitForSingleObject (int ,int ) ;
+ scalar_t__ WriteFile (int ,int *,int,int*,TYPE_1__*) ;
+ int _snwprintf (int *,int,char*,int *,...) ;
+ int hLogFile ;
+ TYPE_1__ olWrite ;
+ int wcslen (int *) ;
 
 __attribute__((used)) static VOID
 LogToFile(LPCWSTR lpMsg,
@@ -59,7 +59,7 @@ LogToFile(LPCWSTR lpMsg,
           DWORD exitCode,
           UINT flags)
 {
-    LPWSTR lpFullMsg = NULL;
+    LPWSTR lpFullMsg = ((void*)0);
     SIZE_T msgLen;
 
     msgLen = wcslen(lpMsg) + 1;
@@ -70,12 +70,12 @@ LogToFile(LPCWSTR lpMsg,
         DWORD eMsgLen;
 
         eMsgLen = FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-                                 NULL,
+                                 ((void*)0),
                                  errNum,
                                  MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
                                  (LPWSTR)&lpSysMsg,
                                  0,
-                                 NULL);
+                                 ((void*)0));
 
         msgLen = msgLen + eMsgLen + 40;
 
@@ -112,11 +112,11 @@ LogToFile(LPCWSTR lpMsg,
         }
     }
 
-    /* Make sure the length in bytes doesn't overflow a DWORD */
+
     msgLen = wcslen(lpFullMsg);
     if (msgLen > (MAXDWORD / sizeof(WCHAR)))
     {
-        RaiseException(EXCEPTION_INT_OVERFLOW, 0, 0, NULL);
+        RaiseException(EXCEPTION_INT_OVERFLOW, 0, 0, ((void*)0));
     }
 
     if (lpFullMsg)
@@ -138,13 +138,13 @@ LogToFile(LPCWSTR lpMsg,
             }
             else
             {
-                // Write is pending
+
                 dwRet = WaitForSingleObject(olWrite.hEvent, INFINITE);
 
                  switch (dwRet)
                  {
-                    // event has been signaled
-                    case WAIT_OBJECT_0:
+
+                    case 128:
                     {
                          bRet = GetOverlappedResult(hLogFile,
                                                     &olWrite,
@@ -154,9 +154,9 @@ LogToFile(LPCWSTR lpMsg,
                     }
 
                     default:
-                         // An error has occurred in WaitForSingleObject.
-                         // This usually indicates a problem with the
-                         // OVERLAPPED structure's event handle.
+
+
+
                          bRet = FALSE;
                          break;
                  }

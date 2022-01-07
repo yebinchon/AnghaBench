@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  info; } ;
-typedef  int /*<<< orphan*/  CTypeID ;
-typedef  TYPE_1__ CType ;
-typedef  int /*<<< orphan*/  CTState ;
 
-/* Variables and functions */
- TYPE_1__* ctype_child (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* ctype_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ctype_isattrib (int /*<<< orphan*/ ) ; 
- scalar_t__ ctype_isref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int info; } ;
+typedef int CTypeID ;
+typedef TYPE_1__ CType ;
+typedef int CTState ;
+
+
+ TYPE_1__* ctype_child (int *,TYPE_1__*) ;
+ TYPE_1__* ctype_get (int *,int ) ;
+ scalar_t__ ctype_isattrib (int ) ;
+ scalar_t__ ctype_isref (int ) ;
 
 CType *lj_ctype_rawref(CTState *cts, CTypeID id)
 {

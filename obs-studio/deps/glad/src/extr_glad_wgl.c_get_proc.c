@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ GetProcAddress (int /*<<< orphan*/ *,char const*) ; 
- void* dlsym (int /*<<< orphan*/ *,char const*) ; 
- void* gladGetProcAddressPtr (char const*) ; 
- int /*<<< orphan*/ * libGL ; 
+ scalar_t__ GetProcAddress (int *,char const*) ;
+ void* dlsym (int *,char const*) ;
+ void* gladGetProcAddressPtr (char const*) ;
+ int * libGL ;
 
 __attribute__((used)) static
 void* get_proc(const char *namez) {
-    void* result = NULL;
-    if(libGL == NULL) return NULL;
+    void* result = ((void*)0);
+    if(libGL == ((void*)0)) return ((void*)0);
 
-#ifndef __APPLE__
-    if(gladGetProcAddressPtr != NULL) {
+
+    if(gladGetProcAddressPtr != ((void*)0)) {
         result = gladGetProcAddressPtr(namez);
     }
-#endif
-    if(result == NULL) {
-#ifdef _WIN32
-        result = (void*)GetProcAddress(libGL, namez);
-#else
+
+    if(result == ((void*)0)) {
+
+
+
         result = dlsym(libGL, namez);
-#endif
+
     }
 
     return result;

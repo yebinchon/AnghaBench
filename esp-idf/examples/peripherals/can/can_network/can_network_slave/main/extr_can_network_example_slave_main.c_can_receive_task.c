@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ rx_task_action_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ rx_task_action_t ;
 struct TYPE_3__ {scalar_t__ identifier; } ;
-typedef  TYPE_1__ can_message_t ;
+typedef TYPE_1__ can_message_t ;
 
-/* Variables and functions */
- scalar_t__ ID_MASTER_PING ; 
- scalar_t__ ID_MASTER_START_CMD ; 
- scalar_t__ ID_MASTER_STOP_CMD ; 
- scalar_t__ RX_RECEIVE_PING ; 
- scalar_t__ RX_RECEIVE_START_CMD ; 
- scalar_t__ RX_RECEIVE_STOP_CMD ; 
- scalar_t__ RX_TASK_EXIT ; 
- int /*<<< orphan*/  can_receive (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctrl_task_sem ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  rx_task_queue ; 
- int /*<<< orphan*/  stop_data_sem ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xQueueReceive (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ID_MASTER_PING ;
+ scalar_t__ ID_MASTER_START_CMD ;
+ scalar_t__ ID_MASTER_STOP_CMD ;
+ scalar_t__ RX_RECEIVE_PING ;
+ scalar_t__ RX_RECEIVE_START_CMD ;
+ scalar_t__ RX_RECEIVE_STOP_CMD ;
+ scalar_t__ RX_TASK_EXIT ;
+ int can_receive (TYPE_1__*,int ) ;
+ int ctrl_task_sem ;
+ int portMAX_DELAY ;
+ int rx_task_queue ;
+ int stop_data_sem ;
+ int vTaskDelete (int *) ;
+ int xQueueReceive (int ,scalar_t__*,int ) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void can_receive_task(void *arg)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void can_receive_task(void *arg)
         rx_task_action_t action;
         xQueueReceive(rx_task_queue, &action, portMAX_DELAY);
         if (action == RX_RECEIVE_PING) {
-            //Listen for pings from master
+
             can_message_t rx_msg;
             while (1) {
                 can_receive(&rx_msg, portMAX_DELAY);
@@ -48,7 +48,7 @@ __attribute__((used)) static void can_receive_task(void *arg)
                 }
             }
         } else if (action == RX_RECEIVE_START_CMD) {
-            //Listen for start command from master
+
             can_message_t rx_msg;
             while (1) {
                 can_receive(&rx_msg, portMAX_DELAY);
@@ -58,7 +58,7 @@ __attribute__((used)) static void can_receive_task(void *arg)
                 }
             }
         } else if (action == RX_RECEIVE_STOP_CMD) {
-            //Listen for stop command from master
+
             can_message_t rx_msg;
             while (1) {
                 can_receive(&rx_msg, portMAX_DELAY);
@@ -72,5 +72,5 @@ __attribute__((used)) static void can_receive_task(void *arg)
             break;
         }
     }
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

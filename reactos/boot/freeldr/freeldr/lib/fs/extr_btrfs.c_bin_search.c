@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int (* cmp_func ) (void*,void*) ;
-typedef  int /*<<< orphan*/  UCHAR ;
 
-/* Variables and functions */
+
+
+
+typedef int (* cmp_func ) (void*,void*) ;
+typedef int UCHAR ;
+
+
 
 __attribute__((used)) static int bin_search(void *ptr, int item_size, void *cmp_item, cmp_func func,
                       int min, int max, int *slot)

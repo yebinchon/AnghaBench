@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cvmx_nand_status_t ;
-struct TYPE_2__ {int tim_mult; int* tim_par; int* clen; int* alen; int* rdn; int* wrn; int /*<<< orphan*/  page_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVMX_NAND_INVALID_PARAM ; 
- int /*<<< orphan*/  CVMX_NAND_LOG_CALLED () ; 
- int /*<<< orphan*/  CVMX_NAND_RETURN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CVMX_NAND_SUCCESS ; 
- TYPE_1__* cvmx_nand_state ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int cvmx_nand_status_t ;
+struct TYPE_2__ {int tim_mult; int* tim_par; int* clen; int* alen; int* rdn; int* wrn; int page_size; } ;
+
+
+ int CVMX_NAND_INVALID_PARAM ;
+ int CVMX_NAND_LOG_CALLED () ;
+ int CVMX_NAND_RETURN (int ) ;
+ int CVMX_NAND_SUCCESS ;
+ TYPE_1__* cvmx_nand_state ;
 
 cvmx_nand_status_t cvmx_nand_set_timing(int chip, int tim_mult, int tim_par[8], int clen[4], int alen[4], int rdn[4], int wrn[2])
 {

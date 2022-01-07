@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct niter_desc {int simple_p; TYPE_1__* in_edge; TYPE_1__* out_edge; } ;
-struct loop {int /*<<< orphan*/  latch; } ;
-typedef  int /*<<< orphan*/  rtx ;
-typedef  TYPE_1__* edge ;
-typedef  TYPE_2__* basic_block ;
+struct loop {int latch; } ;
+typedef int rtx ;
+typedef TYPE_1__* edge ;
+typedef TYPE_2__* basic_block ;
 struct TYPE_9__ {struct loop* loop_father; } ;
 struct TYPE_8__ {int flags; TYPE_2__* src; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BB_END (TYPE_2__*) ; 
- int /*<<< orphan*/  CDI_DOMINATORS ; 
- int EDGE_FALLTHRU ; 
- TYPE_1__* EDGE_SUCC (TYPE_2__*,int) ; 
- int /*<<< orphan*/  any_condjump_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dominated_by_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  get_condition (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  iv_number_of_iterations (struct loop*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct niter_desc*) ; 
- int /*<<< orphan*/  reversed_condition (int /*<<< orphan*/ ) ; 
+
+ int BB_END (TYPE_2__*) ;
+ int CDI_DOMINATORS ;
+ int EDGE_FALLTHRU ;
+ TYPE_1__* EDGE_SUCC (TYPE_2__*,int) ;
+ int any_condjump_p (int ) ;
+ int dominated_by_p (int ,int ,TYPE_2__*) ;
+ int get_condition (int ,int *,int,int) ;
+ int iv_number_of_iterations (struct loop*,int ,int ,struct niter_desc*) ;
+ int reversed_condition (int ) ;
 
 __attribute__((used)) static void
 check_simple_exit (struct loop *loop, edge e, struct niter_desc *desc)
@@ -39,17 +39,17 @@ check_simple_exit (struct loop *loop, edge e, struct niter_desc *desc)
   edge ein;
 
   exit_bb = e->src;
-  desc->simple_p = false;
+  desc->simple_p = 0;
 
-  /* It must belong directly to the loop.  */
+
   if (exit_bb->loop_father != loop)
     return;
 
-  /* It must be tested (at least) once during any iteration.  */
+
   if (!dominated_by_p (CDI_DOMINATORS, loop->latch, exit_bb))
     return;
 
-  /* It must end in a simple conditional jump.  */
+
   if (!any_condjump_p (BB_END (exit_bb)))
     return;
 
@@ -60,18 +60,18 @@ check_simple_exit (struct loop *loop, edge e, struct niter_desc *desc)
   desc->out_edge = e;
   desc->in_edge = ein;
 
-  /* Test whether the condition is suitable.  */
-  if (!(condition = get_condition (BB_END (ein->src), &at, false, false)))
+
+  if (!(condition = get_condition (BB_END (ein->src), &at, 0, 0)))
     return;
 
   if (ein->flags & EDGE_FALLTHRU)
     {
       condition = reversed_condition (condition);
       if (!condition)
-	return;
+ return;
     }
 
-  /* Check that we are able to determine number of iterations and fill
-     in information about it.  */
+
+
   iv_number_of_iterations (loop, at, condition, desc);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_disk_bitset {int current_index_set; int dirty; int /*<<< orphan*/  current_index; int /*<<< orphan*/  array_info; int /*<<< orphan*/  current_bits; } ;
-typedef  int /*<<< orphan*/  dm_block_t ;
-typedef  int /*<<< orphan*/  __le64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __dm_bless_for_disk (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cpu_to_le64 (int /*<<< orphan*/ ) ; 
- int dm_array_set_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct dm_disk_bitset {int current_index_set; int dirty; int current_index; int array_info; int current_bits; } ;
+typedef int dm_block_t ;
+typedef int __le64 ;
+
+
+ int __dm_bless_for_disk (int *) ;
+ int cpu_to_le64 (int ) ;
+ int dm_array_set_value (int *,int ,int ,int *,int *) ;
 
 int dm_bitset_flush(struct dm_disk_bitset *info, dm_block_t root,
-		    dm_block_t *new_root)
+      dm_block_t *new_root)
 {
-	int r;
-	__le64 value;
+ int r;
+ __le64 value;
 
-	if (!info->current_index_set || !info->dirty)
-		return 0;
+ if (!info->current_index_set || !info->dirty)
+  return 0;
 
-	value = cpu_to_le64(info->current_bits);
+ value = cpu_to_le64(info->current_bits);
 
-	__dm_bless_for_disk(&value);
-	r = dm_array_set_value(&info->array_info, root, info->current_index,
-			       &value, new_root);
-	if (r)
-		return r;
+ __dm_bless_for_disk(&value);
+ r = dm_array_set_value(&info->array_info, root, info->current_index,
+          &value, new_root);
+ if (r)
+  return r;
 
-	info->current_index_set = false;
-	info->dirty = false;
+ info->current_index_set = 0;
+ info->dirty = 0;
 
-	return 0;
+ return 0;
 }

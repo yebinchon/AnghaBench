@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* cFileName; } ;
-typedef  TYPE_1__ WIN32_FIND_DATAA ;
-typedef  scalar_t__ HANDLE ;
-typedef  size_t DWORD ;
+typedef TYPE_1__ WIN32_FIND_DATAA ;
+typedef scalar_t__ HANDLE ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFileA (char*,TYPE_1__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  lstrcpynA (char*,char const*,size_t) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char const*) ; 
+
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFileA (char*,TYPE_1__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int lstrcpynA (char*,char const*,size_t) ;
+ int strcpy (char*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static DWORD get_long_path_name(const char* shortpath, char* longpath, DWORD longlen)
 {
@@ -46,15 +46,15 @@ __attribute__((used)) static DWORD get_long_path_name(const char* shortpath, cha
 
     while (shortpath[sp])
     {
-        /* check for path delimiters and reproduce them */
+
         if (shortpath[sp] == '\\' || shortpath[sp] == '/')
         {
             if (!lp || tmplongpath[lp-1] != '\\')
             {
-                /* strip double "\\" */
+
                 tmplongpath[lp++] = '\\';
             }
-            tmplongpath[lp] = 0; /* terminate string */
+            tmplongpath[lp] = 0;
             sp++;
             continue;
         }
@@ -68,7 +68,7 @@ __attribute__((used)) static DWORD get_long_path_name(const char* shortpath, cha
         for (; *p && *p != '/' && *p != '\\'; p++);
         tmplen = p - (shortpath + sp);
         lstrcpynA(tmplongpath + lp, shortpath + sp, tmplen + 1);
-        /* Check if the file exists and use the existing file name */
+
         goit = FindFirstFileA(tmplongpath, &wfd);
         if (goit == INVALID_HANDLE_VALUE)
             return 0;
@@ -87,7 +87,7 @@ __attribute__((used)) static DWORD get_long_path_name(const char* shortpath, cha
     if (tmplen <= longlen)
     {
         strcpy(longpath, tmplongpath);
-        tmplen--; /* length without 0 */
+        tmplen--;
     }
 
     return tmplen;

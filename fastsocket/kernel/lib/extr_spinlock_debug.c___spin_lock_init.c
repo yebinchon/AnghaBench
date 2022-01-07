@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct lock_class_key {int dummy; } ;
-struct TYPE_3__ {int owner_cpu; int /*<<< orphan*/  owner; int /*<<< orphan*/  magic; scalar_t__ raw_lock; int /*<<< orphan*/  dep_map; } ;
-typedef  TYPE_1__ spinlock_t ;
-typedef  scalar_t__ raw_spinlock_t ;
+struct TYPE_3__ {int owner_cpu; int owner; int magic; scalar_t__ raw_lock; int dep_map; } ;
+typedef TYPE_1__ spinlock_t ;
+typedef scalar_t__ raw_spinlock_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPINLOCK_MAGIC ; 
- int /*<<< orphan*/  SPINLOCK_OWNER_INIT ; 
- scalar_t__ __RAW_SPIN_LOCK_UNLOCKED ; 
- int /*<<< orphan*/  debug_check_no_locks_freed (void*,int) ; 
- int /*<<< orphan*/  lockdep_init_map (int /*<<< orphan*/ *,char const*,struct lock_class_key*,int /*<<< orphan*/ ) ; 
+
+ int SPINLOCK_MAGIC ;
+ int SPINLOCK_OWNER_INIT ;
+ scalar_t__ __RAW_SPIN_LOCK_UNLOCKED ;
+ int debug_check_no_locks_freed (void*,int) ;
+ int lockdep_init_map (int *,char const*,struct lock_class_key*,int ) ;
 
 void __spin_lock_init(spinlock_t *lock, const char *name,
-		      struct lock_class_key *key)
+        struct lock_class_key *key)
 {
-#ifdef CONFIG_DEBUG_LOCK_ALLOC
-	/*
-	 * Make sure we are not reinitializing a held lock:
-	 */
-	debug_check_no_locks_freed((void *)lock, sizeof(*lock));
-	lockdep_init_map(&lock->dep_map, name, key, 0);
-#endif
-	lock->raw_lock = (raw_spinlock_t)__RAW_SPIN_LOCK_UNLOCKED;
-	lock->magic = SPINLOCK_MAGIC;
-	lock->owner = SPINLOCK_OWNER_INIT;
-	lock->owner_cpu = -1;
+
+
+
+
+
+
+
+ lock->raw_lock = (raw_spinlock_t)__RAW_SPIN_LOCK_UNLOCKED;
+ lock->magic = SPINLOCK_MAGIC;
+ lock->owner = SPINLOCK_OWNER_INIT;
+ lock->owner_cpu = -1;
 }

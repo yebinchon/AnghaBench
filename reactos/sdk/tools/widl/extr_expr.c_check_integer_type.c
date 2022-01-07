@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int type_t ;
 struct expr_loc {char* attr; TYPE_1__* v; } ;
-struct TYPE_2__ {int /*<<< orphan*/  loc_info; } ;
+struct TYPE_2__ {int loc_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error_loc_info (int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/  is_integer_type (int /*<<< orphan*/  const*) ; 
+
+ int error_loc_info (int *,char*,char*,char*) ;
+ int is_integer_type (int const*) ;
 
 __attribute__((used)) static void check_integer_type(const struct expr_loc *expr_loc,
                                const type_t *cont_type, const type_t *type)

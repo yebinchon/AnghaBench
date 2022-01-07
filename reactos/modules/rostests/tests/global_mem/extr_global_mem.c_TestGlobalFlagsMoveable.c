@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  TEST_STATUS ;
-typedef  scalar_t__ HGLOBAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILED ; 
- int GMEM_DISCARDED ; 
- int GMEM_LOCKCOUNT ; 
- int /*<<< orphan*/  GMEM_MOVEABLE ; 
- scalar_t__ GlobalAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GlobalFlags (scalar_t__) ; 
- int /*<<< orphan*/  GlobalFree (scalar_t__) ; 
- scalar_t__ GlobalLock (scalar_t__) ; 
- int /*<<< orphan*/  GlobalUnlock (scalar_t__) ; 
- int /*<<< orphan*/  MEM_BLOCK_SIZE ; 
- int /*<<< orphan*/  OUTPUT_Handle (scalar_t__) ; 
- int /*<<< orphan*/  OUTPUT_HexDword (int) ; 
- int /*<<< orphan*/  OUTPUT_Line (char*) ; 
- int /*<<< orphan*/  OUTPUT_Result (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PASSED ; 
- int /*<<< orphan*/  SKIPPED ; 
- int /*<<< orphan*/  TEST_CombineStatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int TEST_STATUS ;
+typedef scalar_t__ HGLOBAL ;
+
+
+ int FAILED ;
+ int GMEM_DISCARDED ;
+ int GMEM_LOCKCOUNT ;
+ int GMEM_MOVEABLE ;
+ scalar_t__ GlobalAlloc (int ,int ) ;
+ int GlobalFlags (scalar_t__) ;
+ int GlobalFree (scalar_t__) ;
+ scalar_t__ GlobalLock (scalar_t__) ;
+ int GlobalUnlock (scalar_t__) ;
+ int MEM_BLOCK_SIZE ;
+ int OUTPUT_Handle (scalar_t__) ;
+ int OUTPUT_HexDword (int) ;
+ int OUTPUT_Line (char*) ;
+ int OUTPUT_Result (int ) ;
+ int PASSED ;
+ int SKIPPED ;
+ int TEST_CombineStatus (int ,int ) ;
 
 TEST_STATUS TestGlobalFlagsMoveable()
 {
-    HGLOBAL     hMem   = 0;
-    UINT        uFlags = 0;
+    HGLOBAL hMem = 0;
+    UINT uFlags = 0;
     TEST_STATUS result = SKIPPED;
 
     OUTPUT_Line("Test for the proper lock count");
@@ -49,7 +49,7 @@ TEST_STATUS TestGlobalFlagsMoveable()
 
         OUTPUT_Line("Testing for a lock of 0");
         uFlags = GlobalFlags(hMem);
-        if (((GMEM_LOCKCOUNT & uFlags) == 0)) /*no locks*/
+        if (((GMEM_LOCKCOUNT & uFlags) == 0))
         {
             result = TEST_CombineStatus(result, PASSED);
         }
@@ -65,7 +65,7 @@ TEST_STATUS TestGlobalFlagsMoveable()
         OUTPUT_Line("Testing after a lock");
         OUTPUT_Line("Testing for a lock of 1");
         uFlags = GlobalFlags(hMem);
-        if (((GMEM_LOCKCOUNT & uFlags) == 1)) /*no locks*/
+        if (((GMEM_LOCKCOUNT & uFlags) == 1))
         {
             result = TEST_CombineStatus(result, PASSED);
         }
@@ -79,7 +79,7 @@ TEST_STATUS TestGlobalFlagsMoveable()
         OUTPUT_Line("Testing after an unlock");
         OUTPUT_Line("Testing for a lock of 0");
         uFlags = GlobalFlags(hMem);
-        if (((GMEM_LOCKCOUNT & uFlags) == 0)) /*no locks*/
+        if (((GMEM_LOCKCOUNT & uFlags) == 0))
         {
             result = TEST_CombineStatus(result, PASSED);
         }
@@ -97,14 +97,14 @@ TEST_STATUS TestGlobalFlagsMoveable()
 
     OUTPUT_Line("Test for discarded memory");
     OUTPUT_Line("Allocating an empty moveable block---automatically marked as discarded");
-    hMem = GlobalAlloc(GMEM_MOVEABLE, 0); /*allocate a discarded block*/
+    hMem = GlobalAlloc(GMEM_MOVEABLE, 0);
     if (0 != hMem)
     {
         OUTPUT_Line("Allocation handle: ");
         OUTPUT_Handle(hMem);
         OUTPUT_Line("Testing for a discarded flag");
         uFlags = GlobalFlags(hMem);
-        if (0 != (uFlags & GMEM_DISCARDED)) /*discarded*/
+        if (0 != (uFlags & GMEM_DISCARDED))
         {
             result = TEST_CombineStatus(result, PASSED);
         }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct parsed_param {char* val; int /*<<< orphan*/  key; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct parsed_param {char* val; int key; } ;
 struct TYPE_3__ {int latency; char* passphrase; int key_length; int payload_size; int bandwidth_overhead_limit; } ;
-typedef  TYPE_1__ srt_params_t ;
-typedef  int /*<<< orphan*/  local_params ;
+typedef TYPE_1__ srt_params_t ;
+typedef int local_params ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SRT_PARAM_BANDWIDTH_OVERHEAD_LIMIT ; 
- int /*<<< orphan*/  SRT_PARAM_KEY_LENGTH ; 
- int /*<<< orphan*/  SRT_PARAM_LATENCY ; 
- int /*<<< orphan*/  SRT_PARAM_PASSPHRASE ; 
- int /*<<< orphan*/  SRT_PARAM_PAYLOAD_SIZE ; 
- int atoi (char*) ; 
- char* find (char*,char) ; 
- int* srt_key_lengths ; 
- int srt_url_parse_query (char*,char*,struct parsed_param*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SRT_PARAM_BANDWIDTH_OVERHEAD_LIMIT ;
+ int SRT_PARAM_KEY_LENGTH ;
+ int SRT_PARAM_LATENCY ;
+ int SRT_PARAM_PASSPHRASE ;
+ int SRT_PARAM_PAYLOAD_SIZE ;
+ int atoi (char*) ;
+ char* find (char*,char) ;
+ int* srt_key_lengths ;
+ int srt_url_parse_query (char*,char*,struct parsed_param*,int) ;
+ scalar_t__ strcmp (int ,int ) ;
 
 bool srt_parse_url(char* url, srt_params_t* params)
 {
-    char* query = NULL;
+    char* query = ((void*)0);
     struct parsed_param local_params[32];
     int num_params = 0;
     int i = 0;
-    bool rc = false;
+    bool rc = 0;
 
     if (!url || !url[0] || !params)
-        return false;
+        return 0;
 
-    /* initialize params */
+
     params->latency = -1;
-    params->passphrase = NULL;
+    params->passphrase = ((void*)0);
     params->key_length = -1;
     params->payload_size = -1;
     params->bandwidth_overhead_limit = -1;
 
-    /* Parse URL parameters */
+
     query = find( url, '?' );
     if (query) {
         num_params = srt_url_parse_query( query, "&", local_params,
                 sizeof(local_params) / sizeof(struct parsed_param) );
         if (num_params > 0) {
-            rc = true;
+            rc = 1;
             for (i = 0; i < num_params; ++i) {
                 char* val = local_params[i].val;
                 if (!val)

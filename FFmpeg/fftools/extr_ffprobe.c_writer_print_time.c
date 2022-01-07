@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {double d; } ;
-struct unit_value {int /*<<< orphan*/  unit; TYPE_1__ val; } ;
-typedef  double int64_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  WriterContext ;
-typedef  int /*<<< orphan*/  AVRational ;
+struct unit_value {int unit; TYPE_1__ val; } ;
+typedef double int64_t ;
+typedef int buf ;
+typedef int WriterContext ;
+typedef int AVRational ;
 
-/* Variables and functions */
- double AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  PRINT_STRING_OPT ; 
- double av_q2d (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  unit_second_str ; 
- int /*<<< orphan*/  value_string (char*,int,struct unit_value) ; 
- int /*<<< orphan*/  writer_print_string (int /*<<< orphan*/ *,char const*,char*,int /*<<< orphan*/ ) ; 
+
+ double AV_NOPTS_VALUE ;
+ int PRINT_STRING_OPT ;
+ double av_q2d (int const) ;
+ int unit_second_str ;
+ int value_string (char*,int,struct unit_value) ;
+ int writer_print_string (int *,char const*,char*,int ) ;
 
 __attribute__((used)) static void writer_print_time(WriterContext *wctx, const char *key,
                               int64_t ts, const AVRational *time_base, int is_duration)

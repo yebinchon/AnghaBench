@@ -1,22 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  PANEL_NE 131 
-#define  PANEL_NW 130 
-#define  PANEL_SE 129 
-#define  PANEL_SW 128 
- int* buttonpacket ; 
+ int* buttonpacket ;
 
 void globalButtonSet(int boardButtonIndex, int value, int panel) {
     int col = boardButtonIndex % 7;
@@ -24,16 +12,16 @@ void globalButtonSet(int boardButtonIndex, int value, int panel) {
     int bitAddr;
 
     switch(panel) {
-        case PANEL_NW:
+        case 130:
             bitAddr = row * 14 + col;
             break;
-        case PANEL_NE:
+        case 131:
             bitAddr = row * 14 + col + 7;
             break;
-        case PANEL_SW:
+        case 128:
             bitAddr = (row + 7) * 14 + col;
             break;
-        case PANEL_SE:
+        case 129:
             bitAddr = (row + 7) * 14 + col + 7;
             break;
     }

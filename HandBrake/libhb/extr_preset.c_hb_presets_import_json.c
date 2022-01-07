@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
 
-/* Variables and functions */
- int hb_presets_import (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
- char* hb_value_get_json (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_json (char const*) ; 
+
+
+
+typedef int hb_value_t ;
+
+
+ int hb_presets_import (int *,int **) ;
+ int hb_value_free (int **) ;
+ char* hb_value_get_json (int *) ;
+ int * hb_value_json (char const*) ;
 
 int hb_presets_import_json(const char *in, char **out)
 {
     int result;
 
-    if (out != NULL)
+    if (out != ((void*)0))
     {
-        *out = NULL;
+        *out = ((void*)0);
     }
     hb_value_t * dict = hb_value_json(in);
-    if (dict == NULL)
+    if (dict == ((void*)0))
         return 0;
 
     hb_value_t * imported;
     result = hb_presets_import(dict, &imported);
-    if (out != NULL)
+    if (out != ((void*)0))
     {
         *out = hb_value_get_json(imported);
     }

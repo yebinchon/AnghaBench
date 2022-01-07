@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inno_hdmi_i2c {int /*<<< orphan*/  lock; } ;
-struct inno_hdmi {int /*<<< orphan*/  dev; struct inno_hdmi_i2c* i2c; } ;
-struct i2c_msg {int flags; int /*<<< orphan*/  len; } ;
+
+
+
+
+struct inno_hdmi_i2c {int lock; } ;
+struct inno_hdmi {int dev; struct inno_hdmi_i2c* i2c; } ;
+struct i2c_msg {int flags; int len; } ;
 struct i2c_adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRM_DEV_DEBUG (int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HDMI_INTERRUPT_MASK1 ; 
- int /*<<< orphan*/  HDMI_INTERRUPT_STATUS1 ; 
- int I2C_M_RD ; 
- int /*<<< orphan*/  hdmi_writeb (struct inno_hdmi*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct inno_hdmi* i2c_get_adapdata (struct i2c_adapter*) ; 
- int inno_hdmi_i2c_read (struct inno_hdmi*,struct i2c_msg*) ; 
- int inno_hdmi_i2c_write (struct inno_hdmi*,struct i2c_msg*) ; 
- int /*<<< orphan*/  m_INT_EDID_READY ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int DRM_DEV_DEBUG (int ,char*,int,int,int ,int) ;
+ int HDMI_INTERRUPT_MASK1 ;
+ int HDMI_INTERRUPT_STATUS1 ;
+ int I2C_M_RD ;
+ int hdmi_writeb (struct inno_hdmi*,int ,int ) ;
+ struct inno_hdmi* i2c_get_adapdata (struct i2c_adapter*) ;
+ int inno_hdmi_i2c_read (struct inno_hdmi*,struct i2c_msg*) ;
+ int inno_hdmi_i2c_write (struct inno_hdmi*,struct i2c_msg*) ;
+ int m_INT_EDID_READY ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int inno_hdmi_i2c_xfer(struct i2c_adapter *adap,
-			      struct i2c_msg *msgs, int num)
+         struct i2c_msg *msgs, int num)
 {
-	struct inno_hdmi *hdmi = i2c_get_adapdata(adap);
-	struct inno_hdmi_i2c *i2c = hdmi->i2c;
-	int i, ret = 0;
+ struct inno_hdmi *hdmi = i2c_get_adapdata(adap);
+ struct inno_hdmi_i2c *i2c = hdmi->i2c;
+ int i, ret = 0;
 
-	mutex_lock(&i2c->lock);
+ mutex_lock(&i2c->lock);
 
-	/* Clear the EDID interrupt flag and unmute the interrupt */
-	hdmi_writeb(hdmi, HDMI_INTERRUPT_MASK1, m_INT_EDID_READY);
-	hdmi_writeb(hdmi, HDMI_INTERRUPT_STATUS1, m_INT_EDID_READY);
 
-	for (i = 0; i < num; i++) {
-		DRM_DEV_DEBUG(hdmi->dev,
-			      "xfer: num: %d/%d, len: %d, flags: %#x\n",
-			      i + 1, num, msgs[i].len, msgs[i].flags);
+ hdmi_writeb(hdmi, HDMI_INTERRUPT_MASK1, m_INT_EDID_READY);
+ hdmi_writeb(hdmi, HDMI_INTERRUPT_STATUS1, m_INT_EDID_READY);
 
-		if (msgs[i].flags & I2C_M_RD)
-			ret = inno_hdmi_i2c_read(hdmi, &msgs[i]);
-		else
-			ret = inno_hdmi_i2c_write(hdmi, &msgs[i]);
+ for (i = 0; i < num; i++) {
+  DRM_DEV_DEBUG(hdmi->dev,
+         "xfer: num: %d/%d, len: %d, flags: %#x\n",
+         i + 1, num, msgs[i].len, msgs[i].flags);
 
-		if (ret < 0)
-			break;
-	}
+  if (msgs[i].flags & I2C_M_RD)
+   ret = inno_hdmi_i2c_read(hdmi, &msgs[i]);
+  else
+   ret = inno_hdmi_i2c_write(hdmi, &msgs[i]);
 
-	if (!ret)
-		ret = num;
+  if (ret < 0)
+   break;
+ }
 
-	/* Mute HDMI EDID interrupt */
-	hdmi_writeb(hdmi, HDMI_INTERRUPT_MASK1, 0);
+ if (!ret)
+  ret = num;
 
-	mutex_unlock(&i2c->lock);
 
-	return ret;
+ hdmi_writeb(hdmi, HDMI_INTERRUPT_MASK1, 0);
+
+ mutex_unlock(&i2c->lock);
+
+ return ret;
 }

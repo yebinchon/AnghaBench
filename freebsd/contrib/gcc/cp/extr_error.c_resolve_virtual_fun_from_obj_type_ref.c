@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  scalar_t__ HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINFO_VIRTUALS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BV_FN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_TYPE_REF_OBJECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_TYPE_REF_TOKEN (int /*<<< orphan*/ ) ; 
- int TARGET_VTABLE_USES_DESCRIPTORS ; 
- int /*<<< orphan*/  TREE_CHAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_BINFO (int /*<<< orphan*/ ) ; 
- scalar_t__ tree_low_cst (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int tree ;
+typedef scalar_t__ HOST_WIDE_INT ;
+
+
+ int BINFO_VIRTUALS (int ) ;
+ int BV_FN (int ) ;
+ int OBJ_TYPE_REF_OBJECT (int ) ;
+ int OBJ_TYPE_REF_TOKEN (int ) ;
+ int TARGET_VTABLE_USES_DESCRIPTORS ;
+ int TREE_CHAIN (int ) ;
+ int TREE_TYPE (int ) ;
+ int TYPE_BINFO (int ) ;
+ scalar_t__ tree_low_cst (int ,int) ;
 
 __attribute__((used)) static tree
 resolve_virtual_fun_from_obj_type_ref (tree ref)
@@ -34,7 +34,7 @@ resolve_virtual_fun_from_obj_type_ref (tree ref)
     {
       fun = TREE_CHAIN (fun);
       index -= (TARGET_VTABLE_USES_DESCRIPTORS
-		? TARGET_VTABLE_USES_DESCRIPTORS : 1);
+  ? TARGET_VTABLE_USES_DESCRIPTORS : 1);
     }
 
   return BV_FN (fun);

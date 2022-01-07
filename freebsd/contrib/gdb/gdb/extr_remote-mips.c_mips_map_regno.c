@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int fp0; int pc; int cause; int hi; int lo; int fp_control_status; int fp_implementation_revision; } ;
 
-/* Variables and functions */
- int REGNO_OFFSET ; 
- int /*<<< orphan*/  current_gdbarch ; 
- TYPE_1__* mips_regnum (int /*<<< orphan*/ ) ; 
+
+ int REGNO_OFFSET ;
+ int current_gdbarch ;
+ TYPE_1__* mips_regnum (int ) ;
 
 __attribute__((used)) static int
 mips_map_regno (int regno)
@@ -39,6 +39,6 @@ mips_map_regno (int regno)
   else if (regno == mips_regnum (current_gdbarch)->fp_implementation_revision)
     return REGNO_OFFSET + 5;
   else
-    /* FIXME: Is there a way to get the status register?  */
+
     return 0;
 }

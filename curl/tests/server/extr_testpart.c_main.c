@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int getpart (char**,size_t*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdin ; 
+ int free (char*) ;
+ int getpart (char**,size_t*,char*,char*,int ) ;
+ int printf (char*,...) ;
+ int stdin ;
 
 int main(int argc, char **argv)
 {
-  char  *part;
+  char *part;
   size_t partlen;
 
   if(argc< 3) {

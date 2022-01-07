@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct libusb_device {struct libusb20_device* os_priv; int /*<<< orphan*/ * ctx; int /*<<< orphan*/  tr_head; } ;
+
+
+
+
+struct libusb_device {struct libusb20_device* os_priv; int * ctx; int tr_head; } ;
 struct libusb20_device {struct libusb_device* privLuData; } ;
 struct libusb20_backend {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  libusb_device ;
-typedef  int /*<<< orphan*/  libusb_context ;
+typedef int ssize_t ;
+typedef int libusb_device ;
+typedef int libusb_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GET_CONTEXT (int /*<<< orphan*/ *) ; 
- int LIBUSB_ERROR_INVALID_PARAM ; 
- int LIBUSB_ERROR_NO_MEM ; 
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ **) ; 
- struct libusb20_backend* libusb20_be_alloc_default () ; 
- int /*<<< orphan*/  libusb20_be_dequeue_device (struct libusb20_backend*,struct libusb20_device*) ; 
- struct libusb20_device* libusb20_be_device_foreach (struct libusb20_backend*,struct libusb20_device*) ; 
- int /*<<< orphan*/  libusb20_be_free (struct libusb20_backend*) ; 
- int /*<<< orphan*/ * libusb_ref_device (struct libusb_device*) ; 
- int /*<<< orphan*/  libusb_unref_device (int /*<<< orphan*/ *) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  memset (struct libusb_device*,int /*<<< orphan*/ ,int) ; 
+
+ int * GET_CONTEXT (int *) ;
+ int LIBUSB_ERROR_INVALID_PARAM ;
+ int LIBUSB_ERROR_NO_MEM ;
+ int TAILQ_INIT (int *) ;
+ int free (int **) ;
+ struct libusb20_backend* libusb20_be_alloc_default () ;
+ int libusb20_be_dequeue_device (struct libusb20_backend*,struct libusb20_device*) ;
+ struct libusb20_device* libusb20_be_device_foreach (struct libusb20_backend*,struct libusb20_device*) ;
+ int libusb20_be_free (struct libusb20_backend*) ;
+ int * libusb_ref_device (struct libusb_device*) ;
+ int libusb_unref_device (int *) ;
+ void* malloc (int) ;
+ int memset (struct libusb_device*,int ,int) ;
 
 ssize_t
 libusb_get_device_list(libusb_context *ctx, libusb_device ***list)
 {
-	struct libusb20_backend *usb_backend;
-	struct libusb20_device *pdev;
-	struct libusb_device *dev;
-	int i;
+ struct libusb20_backend *usb_backend;
+ struct libusb20_device *pdev;
+ struct libusb_device *dev;
+ int i;
 
-	ctx = GET_CONTEXT(ctx);
+ ctx = GET_CONTEXT(ctx);
 
-	if (ctx == NULL)
-		return (LIBUSB_ERROR_INVALID_PARAM);
+ if (ctx == ((void*)0))
+  return (LIBUSB_ERROR_INVALID_PARAM);
 
-	if (list == NULL)
-		return (LIBUSB_ERROR_INVALID_PARAM);
+ if (list == ((void*)0))
+  return (LIBUSB_ERROR_INVALID_PARAM);
 
-	usb_backend = libusb20_be_alloc_default();
-	if (usb_backend == NULL)
-		return (LIBUSB_ERROR_NO_MEM);
+ usb_backend = libusb20_be_alloc_default();
+ if (usb_backend == ((void*)0))
+  return (LIBUSB_ERROR_NO_MEM);
 
-	/* figure out how many USB devices are present */
-	pdev = NULL;
-	i = 0;
-	while ((pdev = libusb20_be_device_foreach(usb_backend, pdev)))
-		i++;
 
-	/* allocate device pointer list */
-	*list = malloc((i + 1) * sizeof(void *));
-	if (*list == NULL) {
-		libusb20_be_free(usb_backend);
-		return (LIBUSB_ERROR_NO_MEM);
-	}
-	/* create libusb v1.0 compliant devices */
-	i = 0;
-	while ((pdev = libusb20_be_device_foreach(usb_backend, NULL))) {
+ pdev = ((void*)0);
+ i = 0;
+ while ((pdev = libusb20_be_device_foreach(usb_backend, pdev)))
+  i++;
 
-		dev = malloc(sizeof(*dev));
-		if (dev == NULL) {
-			while (i != 0) {
-				libusb_unref_device((*list)[i - 1]);
-				i--;
-			}
-			free(*list);
-			*list = NULL;
-			libusb20_be_free(usb_backend);
-			return (LIBUSB_ERROR_NO_MEM);
-		}
-		/* get device into libUSB v1.0 list */
-		libusb20_be_dequeue_device(usb_backend, pdev);
 
-		memset(dev, 0, sizeof(*dev));
+ *list = malloc((i + 1) * sizeof(void *));
+ if (*list == ((void*)0)) {
+  libusb20_be_free(usb_backend);
+  return (LIBUSB_ERROR_NO_MEM);
+ }
 
-		/* init transfer queues */
-		TAILQ_INIT(&dev->tr_head);
+ i = 0;
+ while ((pdev = libusb20_be_device_foreach(usb_backend, ((void*)0)))) {
 
-		/* set context we belong to */
-		dev->ctx = ctx;
+  dev = malloc(sizeof(*dev));
+  if (dev == ((void*)0)) {
+   while (i != 0) {
+    libusb_unref_device((*list)[i - 1]);
+    i--;
+   }
+   free(*list);
+   *list = ((void*)0);
+   libusb20_be_free(usb_backend);
+   return (LIBUSB_ERROR_NO_MEM);
+  }
 
-		/* link together the two structures */
-		dev->os_priv = pdev;
-		pdev->privLuData = dev;
+  libusb20_be_dequeue_device(usb_backend, pdev);
 
-		(*list)[i] = libusb_ref_device(dev);
-		i++;
-	}
-	(*list)[i] = NULL;
+  memset(dev, 0, sizeof(*dev));
 
-	libusb20_be_free(usb_backend);
-	return (i);
+
+  TAILQ_INIT(&dev->tr_head);
+
+
+  dev->ctx = ctx;
+
+
+  dev->os_priv = pdev;
+  pdev->privLuData = dev;
+
+  (*list)[i] = libusb_ref_device(dev);
+  i++;
+ }
+ (*list)[i] = ((void*)0);
+
+ libusb20_be_free(usb_backend);
+ return (i);
 }

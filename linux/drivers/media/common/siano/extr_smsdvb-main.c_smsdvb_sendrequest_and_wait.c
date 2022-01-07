@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct smsdvb_client_t {int /*<<< orphan*/  smsclient; } ;
+
+
+
+
+struct smsdvb_client_t {int smsclient; } ;
 struct completion {int dummy; } ;
 
-/* Variables and functions */
- int ETIME ; 
- int /*<<< orphan*/  msecs_to_jiffies (int) ; 
- int smsclient_sendrequest (int /*<<< orphan*/ ,void*,size_t) ; 
- scalar_t__ wait_for_completion_timeout (struct completion*,int /*<<< orphan*/ ) ; 
+
+ int ETIME ;
+ int msecs_to_jiffies (int) ;
+ int smsclient_sendrequest (int ,void*,size_t) ;
+ scalar_t__ wait_for_completion_timeout (struct completion*,int ) ;
 
 __attribute__((used)) static int smsdvb_sendrequest_and_wait(struct smsdvb_client_t *client,
-					void *buffer, size_t size,
-					struct completion *completion)
+     void *buffer, size_t size,
+     struct completion *completion)
 {
-	int rc;
+ int rc;
 
-	rc = smsclient_sendrequest(client->smsclient, buffer, size);
-	if (rc < 0)
-		return rc;
+ rc = smsclient_sendrequest(client->smsclient, buffer, size);
+ if (rc < 0)
+  return rc;
 
-	return wait_for_completion_timeout(completion,
-					   msecs_to_jiffies(2000)) ?
-						0 : -ETIME;
+ return wait_for_completion_timeout(completion,
+        msecs_to_jiffies(2000)) ?
+      0 : -ETIME;
 }

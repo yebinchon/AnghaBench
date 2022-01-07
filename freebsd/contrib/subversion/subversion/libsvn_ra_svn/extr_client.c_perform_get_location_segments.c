@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-struct TYPE_14__ {int /*<<< orphan*/ * conn; } ;
-typedef  TYPE_2__ svn_ra_svn__session_baton_t ;
-struct TYPE_13__ {int /*<<< orphan*/  list; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef void* svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+struct TYPE_14__ {int * conn; } ;
+typedef TYPE_2__ svn_ra_svn__session_baton_t ;
+struct TYPE_13__ {int list; } ;
 struct TYPE_15__ {scalar_t__ kind; TYPE_1__ u; } ;
-typedef  TYPE_3__ svn_ra_svn__item_t ;
+typedef TYPE_3__ svn_ra_svn__item_t ;
 struct TYPE_16__ {TYPE_2__* priv; } ;
-typedef  TYPE_4__ svn_ra_session_t ;
+typedef TYPE_4__ svn_ra_session_t ;
 struct TYPE_17__ {char const* path; void* range_end; void* range_start; } ;
-typedef  TYPE_5__ svn_location_segment_t ;
-typedef  int /*<<< orphan*/  (* svn_location_segment_receiver_t ) (TYPE_5__*,void*,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_5__ svn_location_segment_t ;
+typedef int (* svn_location_segment_receiver_t ) (TYPE_5__*,void*,int *) ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  N_ (char*) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_CEASE_INVOCATION ; 
- int /*<<< orphan*/  SVN_ERR_RA_SVN_MALFORMED_DATA ; 
- scalar_t__ SVN_IS_VALID_REVNUM (void*) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ SVN_RA_SVN_LIST ; 
- int /*<<< orphan*/  _ (char*) ; 
- TYPE_5__* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  handle_auth_request (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * handle_unsupported_cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_done_response (TYPE_3__*) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_error_find_cause (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,void**,void**,char const**) ; 
- int /*<<< orphan*/ * svn_ra_svn__read_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * svn_ra_svn__read_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__**) ; 
- int /*<<< orphan*/ * svn_ra_svn__write_tuple (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,char const*,void*,void*,void*) ; 
- char* svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int N_ (char*) ;
+ int SVN_ERR (int *) ;
+ int SVN_ERR_CEASE_INVOCATION ;
+ int SVN_ERR_RA_SVN_MALFORMED_DATA ;
+ scalar_t__ SVN_IS_VALID_REVNUM (void*) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ SVN_RA_SVN_LIST ;
+ int _ (char*) ;
+ TYPE_5__* apr_pcalloc (int *,int) ;
+ int handle_auth_request (TYPE_2__*,int *) ;
+ int * handle_unsupported_cmd (int ,int ) ;
+ scalar_t__ is_done_response (TYPE_3__*) ;
+ int * svn_error_create (int ,int *,int ) ;
+ scalar_t__ svn_error_find_cause (int *,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_ra_svn__parse_tuple (int *,char*,void**,void**,char const**) ;
+ int * svn_ra_svn__read_cmd_response (int *,int *,char*) ;
+ int * svn_ra_svn__read_item (int *,int *,TYPE_3__**) ;
+ int * svn_ra_svn__write_tuple (int *,int *,char*,char*,char const*,void*,void*,void*) ;
+ char* svn_relpath_canonicalize (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 perform_get_location_segments(svn_error_t **outer_error,
@@ -73,17 +73,17 @@ perform_get_location_segments(svn_error_t **outer_error,
   svn_boolean_t is_done;
   apr_pool_t *iterpool = svn_pool_create(pool);
 
-  /* Transmit the parameters. */
+
   SVN_ERR(svn_ra_svn__write_tuple(conn, pool, "w(c(?r)(?r)(?r))",
                                   "get-location-segments",
                                   path, peg_revision, start_rev, end_rev));
 
-  /* Servers before 1.5 don't support this command. Check for this here. */
+
   SVN_ERR(handle_unsupported_cmd(handle_auth_request(sess_baton, pool),
                                  N_("'get-location-segments'"
                                     " not implemented")));
 
-  /* Parse the response. */
+
   is_done = FALSE;
   while (!is_done)
     {
@@ -96,7 +96,7 @@ perform_get_location_segments(svn_error_t **outer_error,
       if (is_done_response(item))
         is_done = 1;
       else if (item->kind != SVN_RA_SVN_LIST)
-        return svn_error_create(SVN_ERR_RA_SVN_MALFORMED_DATA, NULL,
+        return svn_error_create(SVN_ERR_RA_SVN_MALFORMED_DATA, ((void*)0),
                                 _("Location segment entry not a list"));
       else
         {
@@ -106,7 +106,7 @@ perform_get_location_segments(svn_error_t **outer_error,
                                           &range_start, &range_end, &ret_path));
           if (! (SVN_IS_VALID_REVNUM(range_start)
                  && SVN_IS_VALID_REVNUM(range_end)))
-            return svn_error_create(SVN_ERR_RA_SVN_MALFORMED_DATA, NULL,
+            return svn_error_create(SVN_ERR_RA_SVN_MALFORMED_DATA, ((void*)0),
                                     _("Expected valid revision range"));
           if (ret_path)
             ret_path = svn_relpath_canonicalize(ret_path, iterpool);
@@ -128,8 +128,8 @@ perform_get_location_segments(svn_error_t **outer_error,
     }
   svn_pool_destroy(iterpool);
 
-  /* Read the response. This is so the server would have a chance to
-   * report an error. */
+
+
   SVN_ERR(svn_ra_svn__read_cmd_response(conn, pool, ""));
 
   return SVN_NO_ERROR;

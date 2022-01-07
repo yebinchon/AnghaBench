@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ STRING_CST ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_STRING_LENGTH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  int_size_in_bytes (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int HOST_WIDE_INT ;
+
+
+ int MAX (int ,int ) ;
+ scalar_t__ STRING_CST ;
+ scalar_t__ TREE_CODE (int ) ;
+ int TREE_STRING_LENGTH (int ) ;
+ int TREE_TYPE (int ) ;
+ int int_size_in_bytes (int ) ;
 
 __attribute__((used)) static HOST_WIDE_INT
 get_constant_size (tree exp)

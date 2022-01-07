@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_9__ ;
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_9__ ;
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct pollfd {int dp_nfds; size_t fd; scalar_t__ revents; scalar_t__ events; scalar_t__ dp_timeout; TYPE_9__* dp_fds; } ;
 struct dvpoll {int dp_nfds; size_t fd; scalar_t__ revents; scalar_t__ events; scalar_t__ dp_timeout; TYPE_9__* dp_fds; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int ngx_uint_t ;
-typedef  int /*<<< orphan*/  ngx_queue_t ;
-typedef  scalar_t__ ngx_msec_t ;
-typedef  int ngx_int_t ;
-typedef  size_t ngx_fd_t ;
-struct TYPE_10__ {int ready; int available; int instance; int /*<<< orphan*/  (* handler ) (TYPE_1__*) ;scalar_t__ active; scalar_t__ accept; } ;
-typedef  TYPE_1__ ngx_event_t ;
-typedef  int ngx_err_t ;
-struct TYPE_11__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_2__ ngx_cycle_t ;
+typedef scalar_t__ ssize_t ;
+typedef int ngx_uint_t ;
+typedef int ngx_queue_t ;
+typedef scalar_t__ ngx_msec_t ;
+typedef int ngx_int_t ;
+typedef size_t ngx_fd_t ;
+struct TYPE_10__ {int ready; int available; int instance; int (* handler ) (TYPE_1__*) ;scalar_t__ active; scalar_t__ accept; } ;
+typedef TYPE_1__ ngx_event_t ;
+typedef int ngx_err_t ;
+struct TYPE_11__ {int log; } ;
+typedef TYPE_2__ ngx_cycle_t ;
 struct TYPE_12__ {int fd; TYPE_1__* write; TYPE_1__* read; } ;
-typedef  TYPE_3__ ngx_connection_t ;
-struct TYPE_14__ {size_t fd; int revents; int /*<<< orphan*/  events; } ;
+typedef TYPE_3__ ngx_connection_t ;
+struct TYPE_14__ {size_t fd; int revents; int events; } ;
 struct TYPE_13__ {TYPE_3__** files; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DP_ISPOLLED ; 
- int /*<<< orphan*/  DP_POLL ; 
- int NGX_EINTR ; 
- int NGX_ERROR ; 
- int NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int NGX_LOG_INFO ; 
- int NGX_OK ; 
- int NGX_POST_EVENTS ; 
- scalar_t__ NGX_TIMER_INFINITE ; 
- int NGX_UPDATE_TIME ; 
- int POLLERR ; 
- int POLLHUP ; 
- int POLLIN ; 
- int POLLNVAL ; 
- int POLLOUT ; 
- scalar_t__ POLLREMOVE ; 
- struct pollfd* change_list ; 
- int close (size_t) ; 
- int /*<<< orphan*/  dp ; 
- TYPE_9__* event_list ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct pollfd*) ; 
- int nchanges ; 
- scalar_t__ nevents ; 
- TYPE_8__* ngx_cycle ; 
- int ngx_errno ; 
- scalar_t__ ngx_event_timer_alarm ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_log_error (int,int /*<<< orphan*/ ,int,char*,...) ; 
- int /*<<< orphan*/  ngx_post_event (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_posted_accept_events ; 
- int /*<<< orphan*/  ngx_posted_events ; 
- int /*<<< orphan*/  ngx_time_update () ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_1__*) ; 
- scalar_t__ write (int /*<<< orphan*/ ,struct pollfd*,int) ; 
+
+ int DP_ISPOLLED ;
+ int DP_POLL ;
+ int NGX_EINTR ;
+ int NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_EVENT ;
+ int NGX_LOG_INFO ;
+ int NGX_OK ;
+ int NGX_POST_EVENTS ;
+ scalar_t__ NGX_TIMER_INFINITE ;
+ int NGX_UPDATE_TIME ;
+ int POLLERR ;
+ int POLLHUP ;
+ int POLLIN ;
+ int POLLNVAL ;
+ int POLLOUT ;
+ scalar_t__ POLLREMOVE ;
+ struct pollfd* change_list ;
+ int close (size_t) ;
+ int dp ;
+ TYPE_9__* event_list ;
+ int ioctl (int ,int ,struct pollfd*) ;
+ int nchanges ;
+ scalar_t__ nevents ;
+ TYPE_8__* ngx_cycle ;
+ int ngx_errno ;
+ scalar_t__ ngx_event_timer_alarm ;
+ int ngx_log_debug1 (int ,int ,int ,char*,scalar_t__) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,size_t,int ,int) ;
+ int ngx_log_error (int,int ,int,char*,...) ;
+ int ngx_post_event (TYPE_1__*,int *) ;
+ int ngx_posted_accept_events ;
+ int ngx_posted_events ;
+ int ngx_time_update () ;
+ int stub1 (TYPE_1__*) ;
+ int stub2 (TYPE_1__*) ;
+ scalar_t__ write (int ,struct pollfd*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_devpoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer,
     ngx_uint_t flags)
 {
-    int                 events, revents, rc;
-    size_t              n;
-    ngx_fd_t            fd;
-    ngx_err_t           err;
-    ngx_int_t           i;
-    ngx_uint_t          level, instance;
-    ngx_event_t        *rev, *wev;
-    ngx_queue_t        *queue;
-    ngx_connection_t   *c;
-    struct pollfd       pfd;
-    struct dvpoll       dvp;
+    int events, revents, rc;
+    size_t n;
+    ngx_fd_t fd;
+    ngx_err_t err;
+    ngx_int_t i;
+    ngx_uint_t level, instance;
+    ngx_event_t *rev, *wev;
+    ngx_queue_t *queue;
+    ngx_connection_t *c;
+    struct pollfd pfd;
+    struct dvpoll dvp;
 
-    /* NGX_TIMER_INFINITE == INFTIM */
+
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
                    "devpoll timer: %M", timer);
@@ -150,7 +150,7 @@ ngx_devpoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer,
 
         c = ngx_cycle->files[fd];
 
-        if (c == NULL || c->fd == -1) {
+        if (c == ((void*)0) || c->fd == -1) {
 
             pfd.fd = fd;
             pfd.events = 0;
@@ -219,10 +219,10 @@ ngx_devpoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer,
 
         if (revents & (POLLERR|POLLHUP|POLLNVAL)) {
 
-            /*
-             * if the error events were returned, add POLLIN and POLLOUT
-             * to handle the events at least in one active handler
-             */
+
+
+
+
 
             revents |= POLLIN|POLLOUT;
         }

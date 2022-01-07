@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct item {int rates_len; int /*<<< orphan*/  extra; scalar_t__ mask; scalar_t__ rates; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLAG_DELETED ; 
- int /*<<< orphan*/  zfree (scalar_t__,int) ; 
+
+
+
+struct item {int rates_len; int extra; scalar_t__ mask; scalar_t__ rates; } ;
+
+
+ int FLAG_DELETED ;
+ int zfree (scalar_t__,int) ;
 
 __attribute__((used)) static void delete_item_rates (struct item *I) {
   zfree (I->rates, I->rates_len * 4);

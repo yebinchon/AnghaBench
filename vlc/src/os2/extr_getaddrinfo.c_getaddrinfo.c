@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_short ;
-typedef  int /*<<< orphan*/  u_long ;
+
+
+
+
+typedef scalar_t__ u_short ;
+typedef int u_long ;
 struct hostent {int h_length; scalar_t__ h_addrtype; char* h_name; scalar_t__ h_addr; } ;
 struct addrinfo {int ai_flags; scalar_t__ ai_family; int ai_socktype; int ai_protocol; struct addrinfo* ai_next; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int AI_CANONNAME ; 
- int AI_NUMERICHOST ; 
- int AI_PASSIVE ; 
- int EAI_BADFLAGS ; 
- int EAI_FAMILY ; 
- int EAI_SERVICE ; 
- int EAI_SOCKTYPE ; 
- int EAI_SYSTEM ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  INADDR_LOOPBACK ; 
- int /*<<< orphan*/  INADDR_NONE ; 
- int IPPROTO_TCP ; 
- int IPPROTO_UDP ; 
-#define  SOCK_DGRAM 130 
-#define  SOCK_RAW 129 
-#define  SOCK_STREAM 128 
- int _AI_MASK ; 
- int /*<<< orphan*/  errno ; 
- int gai_error_from_herrno () ; 
- struct hostent* gethostbyname (char const*) ; 
- int /*<<< orphan*/  htonl (int /*<<< orphan*/ ) ; 
- scalar_t__ htons (scalar_t__) ; 
- int /*<<< orphan*/  inet_addr (char const*) ; 
- struct addrinfo* makeipv4info (int const,int,int /*<<< orphan*/ ,scalar_t__,char const*) ; 
- unsigned long strtoul (char const*,char**,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ int AI_CANONNAME ;
+ int AI_NUMERICHOST ;
+ int AI_PASSIVE ;
+ int EAI_BADFLAGS ;
+ int EAI_FAMILY ;
+ int EAI_SERVICE ;
+ int EAI_SOCKTYPE ;
+ int EAI_SYSTEM ;
+ int ENOMEM ;
+ int INADDR_ANY ;
+ int INADDR_LOOPBACK ;
+ int INADDR_NONE ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+
+
+
+ int _AI_MASK ;
+ int errno ;
+ int gai_error_from_herrno () ;
+ struct hostent* gethostbyname (char const*) ;
+ int htonl (int ) ;
+ scalar_t__ htons (scalar_t__) ;
+ int inet_addr (char const*) ;
+ struct addrinfo* makeipv4info (int const,int,int ,scalar_t__,char const*) ;
+ unsigned long strtoul (char const*,char**,int ) ;
 
 int
 getaddrinfo (const char *node, const char *service,
@@ -52,32 +52,32 @@ getaddrinfo (const char *node, const char *service,
     u_long ip;
     u_short port;
     int protocol = 0, flags = 0;
-    const char *name = NULL;
+    const char *name = ((void*)0);
 
-    if (hints != NULL)
+    if (hints != ((void*)0))
     {
         flags = hints->ai_flags;
 
         if (flags & ~_AI_MASK)
             return EAI_BADFLAGS;
-        /* only accept AF_INET and AF_UNSPEC */
+
         if (hints->ai_family && (hints->ai_family != AF_INET))
             return EAI_FAMILY;
 
-        /* protocol sanity check */
+
         switch (hints->ai_socktype)
         {
-            case SOCK_STREAM:
+            case 128:
                 protocol = IPPROTO_TCP;
                 break;
 
-            case SOCK_DGRAM:
+            case 130:
                 protocol = IPPROTO_UDP;
                 break;
 
-#ifdef SOCK_RAW
-            case SOCK_RAW:
-#endif
+
+            case 129:
+
             case 0:
                 break;
 
@@ -89,10 +89,10 @@ getaddrinfo (const char *node, const char *service,
             return EAI_SERVICE;
     }
 
-    *res = NULL;
+    *res = ((void*)0);
 
-    /* default values */
-    if (node == NULL)
+
+    if (node == ((void*)0))
     {
         if (flags & AI_PASSIVE)
             ip = htonl (INADDR_ANY);
@@ -102,13 +102,13 @@ getaddrinfo (const char *node, const char *service,
     else
     if ((ip = inet_addr (node)) == INADDR_NONE)
     {
-        struct hostent *entry = NULL;
+        struct hostent *entry = ((void*)0);
 
-        /* hostname resolution */
+
         if (!(flags & AI_NUMERICHOST))
             entry = gethostbyname (node);
 
-        if (entry == NULL)
+        if (entry == ((void*)0))
             return gai_error_from_herrno ();
 
         if ((entry->h_length != 4) || (entry->h_addrtype != AF_INET))
@@ -119,11 +119,11 @@ getaddrinfo (const char *node, const char *service,
             name = entry->h_name;
     }
 
-    if ((flags & AI_CANONNAME) && (name == NULL))
+    if ((flags & AI_CANONNAME) && (name == ((void*)0)))
         name = node;
 
-    /* service resolution */
-    if (service == NULL)
+
+    if (service == ((void*)0))
         port = 0;
     else
     {
@@ -137,11 +137,11 @@ getaddrinfo (const char *node, const char *service,
         port = htons ((u_short)d);
     }
 
-    /* building results... */
+
     if ((!protocol) || (protocol == IPPROTO_UDP))
     {
-        info = makeipv4info (SOCK_DGRAM, IPPROTO_UDP, ip, port, name);
-        if (info == NULL)
+        info = makeipv4info (130, IPPROTO_UDP, ip, port, name);
+        if (info == ((void*)0))
         {
             errno = ENOMEM;
             return EAI_SYSTEM;
@@ -152,8 +152,8 @@ getaddrinfo (const char *node, const char *service,
     }
     if ((!protocol) || (protocol == IPPROTO_TCP))
     {
-        info = makeipv4info (SOCK_STREAM, IPPROTO_TCP, ip, port, name);
-        if (info == NULL)
+        info = makeipv4info (128, IPPROTO_TCP, ip, port, name);
+        if (info == ((void*)0))
         {
             errno = ENOMEM;
             return EAI_SYSTEM;

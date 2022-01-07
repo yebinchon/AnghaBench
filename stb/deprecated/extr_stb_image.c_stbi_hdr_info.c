@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi ;
 
-/* Variables and functions */
- int HDR_BUFLEN ; 
- char* hdr_gettoken (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  stbi_rewind (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- scalar_t__ strtol (char*,char**,int) ; 
+
+
+
+typedef int stbi ;
+
+
+ int HDR_BUFLEN ;
+ char* hdr_gettoken (int *,char*) ;
+ int stbi_rewind (int *) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ scalar_t__ strtol (char*,char**,int) ;
 
 __attribute__((used)) static int stbi_hdr_info(stbi *s, int *x, int *y, int *comp)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static int stbi_hdr_info(stbi *s, int *x, int *y, int *com
        return 0;
    }
    token += 3;
-   *x = (int) strtol(token, NULL, 10);
+   *x = (int) strtol(token, ((void*)0), 10);
    *comp = 3;
    return 1;
 }

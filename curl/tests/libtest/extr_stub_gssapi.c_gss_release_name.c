@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gss_name_t ;
-typedef  scalar_t__ OM_uint32 ;
 
-/* Variables and functions */
- scalar_t__ GSS_S_COMPLETE ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gss_name_t ;
+typedef scalar_t__ OM_uint32 ;
+
+
+ scalar_t__ GSS_S_COMPLETE ;
+ int free (int ) ;
 
 OM_uint32 gss_release_name(OM_uint32 *min,
                            gss_name_t *input_name)

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int id; } ;
-typedef  TYPE_1__ menucommon_s ;
+typedef TYPE_1__ menucommon_s ;
 
-/* Variables and functions */
-#define  ID_BACK 132 
-#define  ID_DISPLAY 131 
-#define  ID_GRAPHICS 130 
-#define  ID_NETWORK 129 
-#define  ID_SOUND 128 
- int QM_ACTIVATED ; 
- int /*<<< orphan*/  UI_DisplayOptionsMenu () ; 
- int /*<<< orphan*/  UI_GraphicsOptionsMenu () ; 
- int /*<<< orphan*/  UI_NetworkOptionsMenu () ; 
- int /*<<< orphan*/  UI_PopMenu () ; 
- int /*<<< orphan*/  UI_SoundOptionsMenu () ; 
+
+
+
+
+
+
+ int QM_ACTIVATED ;
+ int UI_DisplayOptionsMenu () ;
+ int UI_GraphicsOptionsMenu () ;
+ int UI_NetworkOptionsMenu () ;
+ int UI_PopMenu () ;
+ int UI_SoundOptionsMenu () ;
 
 __attribute__((used)) static void Options_Event( void* ptr, int event ) {
-	if( event != QM_ACTIVATED ) {
-		return;
-	}
+ if( event != QM_ACTIVATED ) {
+  return;
+ }
 
-	switch( ((menucommon_s*)ptr)->id ) {
-	case ID_GRAPHICS:
-		UI_GraphicsOptionsMenu();
-		break;
+ switch( ((menucommon_s*)ptr)->id ) {
+ case 130:
+  UI_GraphicsOptionsMenu();
+  break;
 
-	case ID_DISPLAY:
-		UI_DisplayOptionsMenu();
-		break;
+ case 131:
+  UI_DisplayOptionsMenu();
+  break;
 
-	case ID_SOUND:
-		UI_SoundOptionsMenu();
-		break;
+ case 128:
+  UI_SoundOptionsMenu();
+  break;
 
-	case ID_NETWORK:
-		UI_NetworkOptionsMenu();
-		break;
+ case 129:
+  UI_NetworkOptionsMenu();
+  break;
 
-	case ID_BACK:
-		UI_PopMenu();
-		break;
-	}
+ case 132:
+  UI_PopMenu();
+  break;
+ }
 }

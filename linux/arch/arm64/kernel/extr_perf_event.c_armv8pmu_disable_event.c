@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pmu_hw_events {int /*<<< orphan*/  pmu_lock; } ;
-struct perf_event {int /*<<< orphan*/  pmu; } ;
-struct arm_pmu {int /*<<< orphan*/  hw_events; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  armv8pmu_disable_event_counter (struct perf_event*) ; 
- int /*<<< orphan*/  armv8pmu_disable_event_irq (struct perf_event*) ; 
- int /*<<< orphan*/  raw_spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  raw_spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- struct pmu_hw_events* this_cpu_ptr (int /*<<< orphan*/ ) ; 
- struct arm_pmu* to_arm_pmu (int /*<<< orphan*/ ) ; 
+
+
+
+struct pmu_hw_events {int pmu_lock; } ;
+struct perf_event {int pmu; } ;
+struct arm_pmu {int hw_events; } ;
+
+
+ int armv8pmu_disable_event_counter (struct perf_event*) ;
+ int armv8pmu_disable_event_irq (struct perf_event*) ;
+ int raw_spin_lock_irqsave (int *,unsigned long) ;
+ int raw_spin_unlock_irqrestore (int *,unsigned long) ;
+ struct pmu_hw_events* this_cpu_ptr (int ) ;
+ struct arm_pmu* to_arm_pmu (int ) ;
 
 __attribute__((used)) static void armv8pmu_disable_event(struct perf_event *event)
 {
-	unsigned long flags;
-	struct arm_pmu *cpu_pmu = to_arm_pmu(event->pmu);
-	struct pmu_hw_events *events = this_cpu_ptr(cpu_pmu->hw_events);
+ unsigned long flags;
+ struct arm_pmu *cpu_pmu = to_arm_pmu(event->pmu);
+ struct pmu_hw_events *events = this_cpu_ptr(cpu_pmu->hw_events);
 
-	/*
-	 * Disable counter and interrupt
-	 */
-	raw_spin_lock_irqsave(&events->pmu_lock, flags);
 
-	/*
-	 * Disable counter
-	 */
-	armv8pmu_disable_event_counter(event);
 
-	/*
-	 * Disable interrupt for this counter
-	 */
-	armv8pmu_disable_event_irq(event);
 
-	raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
+ raw_spin_lock_irqsave(&events->pmu_lock, flags);
+
+
+
+
+ armv8pmu_disable_event_counter(event);
+
+
+
+
+ armv8pmu_disable_event_irq(event);
+
+ raw_spin_unlock_irqrestore(&events->pmu_lock, flags);
 }

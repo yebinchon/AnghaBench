@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sink_cb_ctx {struct ao_device_list* member_1; struct ao* member_0; } ;
-struct priv {int /*<<< orphan*/  context; int /*<<< orphan*/  mainloop; } ;
+struct priv {int context; int mainloop; } ;
 struct ao_device_list {int dummy; } ;
 struct ao {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pa_context_get_sink_info_list (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sink_cb_ctx*) ; 
- int /*<<< orphan*/  pa_threaded_mainloop_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sink_info_cb ; 
- int /*<<< orphan*/  waitop (struct priv*,int /*<<< orphan*/ ) ; 
+
+ int pa_context_get_sink_info_list (int ,int ,struct sink_cb_ctx*) ;
+ int pa_threaded_mainloop_lock (int ) ;
+ int sink_info_cb ;
+ int waitop (struct priv*,int ) ;
 
 __attribute__((used)) static void list_devs(struct ao *ao, struct ao_device_list *list)
 {

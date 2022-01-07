@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct see_pre_extension_expr {int /*<<< orphan*/  se_insn; } ;
-typedef  scalar_t__ rtx ;
 
-/* Variables and functions */
- scalar_t__ SET_SRC (scalar_t__) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int rtx_equal_p (scalar_t__,scalar_t__) ; 
- scalar_t__ single_set (int /*<<< orphan*/ ) ; 
+
+
+
+struct see_pre_extension_expr {int se_insn; } ;
+typedef scalar_t__ rtx ;
+
+
+ scalar_t__ SET_SRC (scalar_t__) ;
+ int gcc_assert (int) ;
+ int rtx_equal_p (scalar_t__,scalar_t__) ;
+ scalar_t__ single_set (int ) ;
 
 __attribute__((used)) static int
 eq_descriptor_pre_extension (const void *p1, const void *p2)

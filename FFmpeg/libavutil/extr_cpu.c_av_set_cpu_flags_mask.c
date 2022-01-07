@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atomic_store_explicit (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_flags ; 
- int get_cpu_flags () ; 
- int /*<<< orphan*/  memory_order_relaxed ; 
+ int atomic_store_explicit (int *,int,int ) ;
+ int cpu_flags ;
+ int get_cpu_flags () ;
+ int memory_order_relaxed ;
 
 void av_set_cpu_flags_mask(int mask)
 {

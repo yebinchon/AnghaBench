@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ * outputs; TYPE_1__* priv; } ;
-struct TYPE_13__ {int channels; int /*<<< orphan*/  time_base; int /*<<< orphan*/  sample_rate; TYPE_4__* dst; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int * outputs; TYPE_1__* priv; } ;
+struct TYPE_13__ {int channels; int time_base; int sample_rate; TYPE_4__* dst; } ;
 struct TYPE_12__ {int nb_samples; scalar_t__ pts; scalar_t__* extended_data; } ;
-struct TYPE_11__ {int rdft_len; scalar_t__ next_pts; int fir_len; int /*<<< orphan*/  frame_nsamples_max; int /*<<< orphan*/  min_phase; scalar_t__ zero_phase; scalar_t__ conv_idx; scalar_t__ conv_buf; scalar_t__ multi; scalar_t__ kernel_buf; scalar_t__ fft_ctx; } ;
-typedef  TYPE_1__ FIREqualizerContext ;
-typedef  int /*<<< orphan*/  FFTComplex ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_11__ {int rdft_len; scalar_t__ next_pts; int fir_len; int frame_nsamples_max; int min_phase; scalar_t__ zero_phase; scalar_t__ conv_idx; scalar_t__ conv_buf; scalar_t__ multi; scalar_t__ kernel_buf; scalar_t__ fft_ctx; } ;
+typedef TYPE_1__ FIREqualizerContext ;
+typedef int FFTComplex ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  FFMAX (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_make_q (int,int /*<<< orphan*/ ) ; 
- scalar_t__ av_rescale_q (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fast_convolute (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__,float*,int) ; 
- int /*<<< orphan*/  fast_convolute2 (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *,scalar_t__,float*,float*,int) ; 
- int /*<<< orphan*/  fast_convolute_nonlinear (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__,float*,int) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ int FFMAX (int ,int) ;
+ int av_make_q (int,int ) ;
+ scalar_t__ av_rescale_q (int,int ,int ) ;
+ int fast_convolute (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__,float*,int) ;
+ int fast_convolute2 (TYPE_1__*,scalar_t__,int *,scalar_t__,float*,float*,int) ;
+ int fast_convolute_nonlinear (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__,float*,int) ;
+ int ff_filter_frame (int ,TYPE_2__*) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
 {

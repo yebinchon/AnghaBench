@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  carr; } ;
-struct TYPE_4__ {int /*<<< orphan*/  carr; } ;
-struct TYPE_6__ {int /*<<< orphan*/  bg_file_path; int /*<<< orphan*/  left_thumbnail_file_path; int /*<<< orphan*/  thumbnail_file_path; int /*<<< orphan*/  savestate_thumbnail_file_path; int /*<<< orphan*/  thumbnail_content; int /*<<< orphan*/  thumbnail_system; int /*<<< orphan*/  box_message; TYPE_2__ raster_block2; TYPE_1__ raster_block; int /*<<< orphan*/ * horizontal_list; int /*<<< orphan*/ * selection_buf_old; } ;
-typedef  TYPE_3__ stripes_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  file_list_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  font_driver_bind_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_is_empty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stripes_free_list_nodes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  video_coord_array_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int carr; } ;
+struct TYPE_4__ {int carr; } ;
+struct TYPE_6__ {int bg_file_path; int left_thumbnail_file_path; int thumbnail_file_path; int savestate_thumbnail_file_path; int thumbnail_content; int thumbnail_system; int box_message; TYPE_2__ raster_block2; TYPE_1__ raster_block; int * horizontal_list; int * selection_buf_old; } ;
+typedef TYPE_3__ stripes_handle_t ;
+
+
+ int file_list_free (int *) ;
+ int font_driver_bind_block (int *,int *) ;
+ int free (int ) ;
+ int string_is_empty (int ) ;
+ int stripes_free_list_nodes (int *,int) ;
+ int video_coord_array_free (int *) ;
 
 __attribute__((used)) static void stripes_free(void *data)
 {
@@ -34,18 +34,18 @@ __attribute__((used)) static void stripes_free(void *data)
    {
       if (stripes->selection_buf_old)
       {
-         stripes_free_list_nodes(stripes->selection_buf_old, false);
+         stripes_free_list_nodes(stripes->selection_buf_old, 0);
          file_list_free(stripes->selection_buf_old);
       }
 
       if (stripes->horizontal_list)
       {
-         stripes_free_list_nodes(stripes->horizontal_list, false);
+         stripes_free_list_nodes(stripes->horizontal_list, 0);
          file_list_free(stripes->horizontal_list);
       }
 
-      stripes->selection_buf_old = NULL;
-      stripes->horizontal_list   = NULL;
+      stripes->selection_buf_old = ((void*)0);
+      stripes->horizontal_list = ((void*)0);
 
       video_coord_array_free(&stripes->raster_block.carr);
       video_coord_array_free(&stripes->raster_block2.carr);
@@ -66,5 +66,5 @@ __attribute__((used)) static void stripes_free(void *data)
          free(stripes->bg_file_path);
    }
 
-   font_driver_bind_block(NULL, NULL);
+   font_driver_bind_block(((void*)0), ((void*)0));
 }

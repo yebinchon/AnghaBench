@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lua_getstate () ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  run_input ; 
- scalar_t__ uart_receive_rf ; 
+
+
+
+typedef int lua_State ;
+
+
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int lua_call (int *,int,int ) ;
+ int * lua_getstate () ;
+ int lua_pushlstring (int *,char const*,size_t) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ int run_input ;
+ scalar_t__ uart_receive_rf ;
 
 bool uart_on_data_cb(const char *buf, size_t len){
   if(!buf || len==0)
-    return false;
+    return 0;
   if(uart_receive_rf == LUA_NOREF)
-    return false;
+    return 0;
   lua_State *L = lua_getstate();
   if(!L)
-    return false;
+    return 0;
   lua_rawgeti(L, LUA_REGISTRYINDEX, uart_receive_rf);
   lua_pushlstring(L, buf, len);
   lua_call(L, 1, 0);

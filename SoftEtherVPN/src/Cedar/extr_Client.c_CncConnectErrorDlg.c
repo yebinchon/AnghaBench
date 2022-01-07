@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {char* ServerName; void* HideWindow; int /*<<< orphan*/  RetryIntervalSec; int /*<<< orphan*/  RetryLimit; int /*<<< orphan*/  CurrentRetryCount; int /*<<< orphan*/  Err; int /*<<< orphan*/  AccountName; } ;
-typedef  TYPE_1__ UI_CONNECTERROR_DLG ;
-struct TYPE_11__ {int HaltThread; int /*<<< orphan*/  Event; int /*<<< orphan*/ * Sock; TYPE_2__* Session; } ;
-struct TYPE_10__ {int /*<<< orphan*/  RetryInterval; int /*<<< orphan*/  HaltEvent; } ;
-typedef  int /*<<< orphan*/  THREAD ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  TYPE_2__ SESSION ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_3__ CNC_CONNECT_ERROR_DLG_THREAD_PARAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CncConnect () ; 
- int /*<<< orphan*/  CncConnectErrorDlgHaltThread ; 
- int /*<<< orphan*/  Disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (TYPE_3__*) ; 
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  NewEvent () ; 
- int /*<<< orphan*/ * NewPack () ; 
- int /*<<< orphan*/ * NewThread (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  PackAddBool (int /*<<< orphan*/ *,char*,void*) ; 
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  PackAddUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- void* PackGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * RecvPack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseThread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendPack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThread (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_3__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {char* ServerName; void* HideWindow; int RetryIntervalSec; int RetryLimit; int CurrentRetryCount; int Err; int AccountName; } ;
+typedef TYPE_1__ UI_CONNECTERROR_DLG ;
+struct TYPE_11__ {int HaltThread; int Event; int * Sock; TYPE_2__* Session; } ;
+struct TYPE_10__ {int RetryInterval; int HaltEvent; } ;
+typedef int THREAD ;
+typedef int SOCK ;
+typedef TYPE_2__ SESSION ;
+typedef int PACK ;
+typedef TYPE_3__ CNC_CONNECT_ERROR_DLG_THREAD_PARAM ;
+
+
+ int * CncConnect () ;
+ int CncConnectErrorDlgHaltThread ;
+ int Disconnect (int *) ;
+ int Free (TYPE_3__*) ;
+ int FreePack (int *) ;
+ int INFINITE ;
+ int NewEvent () ;
+ int * NewPack () ;
+ int * NewThread (int ,TYPE_3__*) ;
+ int PackAddBool (int *,char*,void*) ;
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddStr (int *,char*,char*) ;
+ int PackAddUniStr (int *,char*,int ) ;
+ void* PackGetBool (int *,char*) ;
+ int * RecvPack (int *) ;
+ int ReleaseEvent (int ) ;
+ int ReleaseSock (int *) ;
+ int ReleaseThread (int *) ;
+ int SendPack (int *,int *) ;
+ int Set (int ) ;
+ int Wait (int ,int ) ;
+ int WaitThread (int *,int ) ;
+ TYPE_3__* ZeroMalloc (int) ;
 
 bool CncConnectErrorDlg(SESSION *session, UI_CONNECTERROR_DLG *dlg)
 {
-	SOCK *s;
-	PACK *p;
-	CNC_CONNECT_ERROR_DLG_THREAD_PARAM *dp;
-	THREAD *t;
-	bool ret = false;
-	// Validate arguments
-	if (dlg == NULL || session == NULL)
-	{
-		return false;
-	}
+ SOCK *s;
+ PACK *p;
+ CNC_CONNECT_ERROR_DLG_THREAD_PARAM *dp;
+ THREAD *t;
+ bool ret = 0;
 
-	s = CncConnect();
-	if (s == NULL)
-	{
-		Wait(session->HaltEvent, session->RetryInterval);
-		return true;
-	}
+ if (dlg == ((void*)0) || session == ((void*)0))
+ {
+  return 0;
+ }
 
-	p = NewPack();
-	PackAddStr(p, "function", "connecterror_dialog");
-	PackAddUniStr(p, "AccountName", dlg->AccountName);
-	PackAddStr(p, "ServerName", dlg->ServerName);
-	PackAddInt(p, "Err", dlg->Err);
-	PackAddInt(p, "CurrentRetryCount", dlg->CurrentRetryCount);
-	PackAddInt(p, "RetryLimit", dlg->RetryLimit);
-	PackAddInt(p, "RetryIntervalSec", dlg->RetryIntervalSec);
-	PackAddBool(p, "HideWindow", dlg->HideWindow);
+ s = CncConnect();
+ if (s == ((void*)0))
+ {
+  Wait(session->HaltEvent, session->RetryInterval);
+  return 1;
+ }
 
-	SendPack(s, p);
-	FreePack(p);
+ p = NewPack();
+ PackAddStr(p, "function", "connecterror_dialog");
+ PackAddUniStr(p, "AccountName", dlg->AccountName);
+ PackAddStr(p, "ServerName", dlg->ServerName);
+ PackAddInt(p, "Err", dlg->Err);
+ PackAddInt(p, "CurrentRetryCount", dlg->CurrentRetryCount);
+ PackAddInt(p, "RetryLimit", dlg->RetryLimit);
+ PackAddInt(p, "RetryIntervalSec", dlg->RetryIntervalSec);
+ PackAddBool(p, "HideWindow", dlg->HideWindow);
 
-	dp = ZeroMalloc(sizeof(CNC_CONNECT_ERROR_DLG_THREAD_PARAM));
-	dp->Session = session;
-	dp->Sock = s;
-	dp->Event = NewEvent();
+ SendPack(s, p);
+ FreePack(p);
 
-	t = NewThread(CncConnectErrorDlgHaltThread, dp);
+ dp = ZeroMalloc(sizeof(CNC_CONNECT_ERROR_DLG_THREAD_PARAM));
+ dp->Session = session;
+ dp->Sock = s;
+ dp->Event = NewEvent();
 
-	p = RecvPack(s);
-	if (p != NULL)
-	{
-		ret = PackGetBool(p, "ok");
-		dlg->HideWindow = PackGetBool(p, "HideWindow");
+ t = NewThread(CncConnectErrorDlgHaltThread, dp);
 
-		FreePack(p);
-	}
+ p = RecvPack(s);
+ if (p != ((void*)0))
+ {
+  ret = PackGetBool(p, "ok");
+  dlg->HideWindow = PackGetBool(p, "HideWindow");
 
-	dp->HaltThread = true;
-	Set(dp->Event);
+  FreePack(p);
+ }
 
-	WaitThread(t, INFINITE);
+ dp->HaltThread = 1;
+ Set(dp->Event);
 
-	ReleaseEvent(dp->Event);
-	Free(dp);
-	ReleaseThread(t);
+ WaitThread(t, INFINITE);
 
-	Disconnect(s);
-	ReleaseSock(s);
+ ReleaseEvent(dp->Event);
+ Free(dp);
+ ReleaseThread(t);
 
-	return ret;
+ Disconnect(s);
+ ReleaseSock(s);
+
+ return ret;
 }

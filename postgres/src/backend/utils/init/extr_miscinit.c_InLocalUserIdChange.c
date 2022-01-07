@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SECURITY_LOCAL_USERID_CHANGE ; 
- int SecurityRestrictionContext ; 
+ int SECURITY_LOCAL_USERID_CHANGE ;
+ int SecurityRestrictionContext ;
 
 bool
 InLocalUserIdChange(void)
 {
-	return (SecurityRestrictionContext & SECURITY_LOCAL_USERID_CHANGE) != 0;
+ return (SecurityRestrictionContext & SECURITY_LOCAL_USERID_CHANGE) != 0;
 }

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_10__ {int substate_context_map; int context_index; int max_run_length_prefix; int code; int /*<<< orphan*/  context_map_table; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_10__ {int substate_context_map; int context_index; int max_run_length_prefix; int code; int context_map_table; } ;
 struct TYPE_9__ {TYPE_2__ header; } ;
-struct TYPE_11__ {TYPE_1__ arena; int /*<<< orphan*/  br; } ;
-typedef  TYPE_2__ BrotliMetablockHeaderArena ;
-typedef  TYPE_3__ BrotliDecoderState ;
-typedef  int /*<<< orphan*/  BrotliDecoderErrorCode ;
-typedef  int /*<<< orphan*/  BrotliBitReader ;
-typedef  int BROTLI_BOOL ;
+struct TYPE_11__ {TYPE_1__ arena; int br; } ;
+typedef TYPE_2__ BrotliMetablockHeaderArena ;
+typedef TYPE_3__ BrotliDecoderState ;
+typedef int BrotliDecoderErrorCode ;
+typedef int BrotliBitReader ;
+typedef int BROTLI_BOOL ;
 
-/* Variables and functions */
- scalar_t__ BROTLI_DECODER_ALLOC (TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  BROTLI_DECODER_ERROR_ALLOC_CONTEXT_MAP ; 
- int /*<<< orphan*/  BROTLI_DECODER_ERROR_FORMAT_CONTEXT_MAP_REPEAT ; 
- int /*<<< orphan*/  BROTLI_DECODER_ERROR_UNREACHABLE ; 
- int /*<<< orphan*/  BROTLI_DECODER_NEEDS_MORE_INPUT ; 
- int /*<<< orphan*/  BROTLI_DECODER_SUCCESS ; 
- int /*<<< orphan*/  BROTLI_FAILURE (int /*<<< orphan*/ ) ; 
- int BROTLI_FALSE ; 
- int /*<<< orphan*/  BROTLI_LOG_UINT (int) ; 
-#define  BROTLI_STATE_CONTEXT_MAP_DECODE 132 
-#define  BROTLI_STATE_CONTEXT_MAP_HUFFMAN 131 
-#define  BROTLI_STATE_CONTEXT_MAP_NONE 130 
-#define  BROTLI_STATE_CONTEXT_MAP_READ_PREFIX 129 
-#define  BROTLI_STATE_CONTEXT_MAP_TRANSFORM 128 
- int /*<<< orphan*/  BrotliDropBits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BrotliSafeGetBits (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  BrotliSafeReadBits (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  DecodeVarLenUint8 (TYPE_3__*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  InverseMoveToFrontTransform (int /*<<< orphan*/ *,int,TYPE_3__*) ; 
- int /*<<< orphan*/  ReadHuffmanCode (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  SafeReadSymbol (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
+
+ scalar_t__ BROTLI_DECODER_ALLOC (TYPE_3__*,size_t) ;
+ int BROTLI_DECODER_ERROR_ALLOC_CONTEXT_MAP ;
+ int BROTLI_DECODER_ERROR_FORMAT_CONTEXT_MAP_REPEAT ;
+ int BROTLI_DECODER_ERROR_UNREACHABLE ;
+ int BROTLI_DECODER_NEEDS_MORE_INPUT ;
+ int BROTLI_DECODER_SUCCESS ;
+ int BROTLI_FAILURE (int ) ;
+ int BROTLI_FALSE ;
+ int BROTLI_LOG_UINT (int) ;
+
+
+
+
+
+ int BrotliDropBits (int *,int) ;
+ int BrotliSafeGetBits (int *,int,int*) ;
+ int BrotliSafeReadBits (int *,int,int*) ;
+ int DecodeVarLenUint8 (TYPE_3__*,int *,int*) ;
+ int InverseMoveToFrontTransform (int *,int,TYPE_3__*) ;
+ int ReadHuffmanCode (int,int,int ,int *,TYPE_3__*) ;
+ int SafeReadSymbol (int ,int *,int*) ;
+ int memset (int *,int ,size_t) ;
 
 __attribute__((used)) static BrotliDecoderErrorCode DecodeContextMap(uint32_t context_map_size,
                                                uint32_t* num_htrees,
@@ -57,7 +57,7 @@ __attribute__((used)) static BrotliDecoderErrorCode DecodeContextMap(uint32_t co
   BrotliMetablockHeaderArena* h = &s->arena.header;
 
   switch ((int)h->substate_context_map) {
-    case BROTLI_STATE_CONTEXT_MAP_NONE:
+    case 130:
       result = DecodeVarLenUint8(s, br, num_htrees);
       if (result != BROTLI_DECODER_SUCCESS) {
         return result;
@@ -75,17 +75,17 @@ __attribute__((used)) static BrotliDecoderErrorCode DecodeContextMap(uint32_t co
         memset(*context_map_arg, 0, (size_t)context_map_size);
         return BROTLI_DECODER_SUCCESS;
       }
-      h->substate_context_map = BROTLI_STATE_CONTEXT_MAP_READ_PREFIX;
-    /* Fall through. */
+      h->substate_context_map = 129;
 
-    case BROTLI_STATE_CONTEXT_MAP_READ_PREFIX: {
+
+    case 129: {
       uint32_t bits;
-      /* In next stage ReadHuffmanCode uses at least 4 bits, so it is safe
-         to peek 4 bits ahead. */
+
+
       if (!BrotliSafeGetBits(br, 5, &bits)) {
         return BROTLI_DECODER_NEEDS_MORE_INPUT;
       }
-      if ((bits & 1) != 0) { /* Use RLE for zeros. */
+      if ((bits & 1) != 0) {
         h->max_run_length_prefix = (bits >> 1) + 1;
         BrotliDropBits(br, 5);
       } else {
@@ -93,21 +93,21 @@ __attribute__((used)) static BrotliDecoderErrorCode DecodeContextMap(uint32_t co
         BrotliDropBits(br, 1);
       }
       BROTLI_LOG_UINT(h->max_run_length_prefix);
-      h->substate_context_map = BROTLI_STATE_CONTEXT_MAP_HUFFMAN;
+      h->substate_context_map = 131;
     }
-    /* Fall through. */
 
-    case BROTLI_STATE_CONTEXT_MAP_HUFFMAN: {
+
+    case 131: {
       uint32_t alphabet_size = *num_htrees + h->max_run_length_prefix;
       result = ReadHuffmanCode(alphabet_size, alphabet_size,
-                               h->context_map_table, NULL, s);
+                               h->context_map_table, ((void*)0), s);
       if (result != BROTLI_DECODER_SUCCESS) return result;
       h->code = 0xFFFF;
-      h->substate_context_map = BROTLI_STATE_CONTEXT_MAP_DECODE;
+      h->substate_context_map = 132;
     }
-    /* Fall through. */
 
-    case BROTLI_STATE_CONTEXT_MAP_DECODE: {
+
+    case 132: {
       uint32_t context_index = h->context_index;
       uint32_t max_run_length_prefix = h->max_run_length_prefix;
       uint8_t* context_map = *context_map_arg;
@@ -134,7 +134,7 @@ __attribute__((used)) static BrotliDecoderErrorCode DecodeContextMap(uint32_t co
         } else {
           skip_preamble = BROTLI_FALSE;
         }
-        /* RLE sub-stage. */
+
         {
           uint32_t reps;
           if (!BrotliSafeReadBits(br, code, &reps)) {
@@ -154,18 +154,18 @@ __attribute__((used)) static BrotliDecoderErrorCode DecodeContextMap(uint32_t co
         }
       }
     }
-    /* Fall through. */
 
-    case BROTLI_STATE_CONTEXT_MAP_TRANSFORM: {
+
+    case 128: {
       uint32_t bits;
       if (!BrotliSafeReadBits(br, 1, &bits)) {
-        h->substate_context_map = BROTLI_STATE_CONTEXT_MAP_TRANSFORM;
+        h->substate_context_map = 128;
         return BROTLI_DECODER_NEEDS_MORE_INPUT;
       }
       if (bits != 0) {
         InverseMoveToFrontTransform(*context_map_arg, context_map_size, s);
       }
-      h->substate_context_map = BROTLI_STATE_CONTEXT_MAP_NONE;
+      h->substate_context_map = 130;
       return BROTLI_DECODER_SUCCESS;
     }
 

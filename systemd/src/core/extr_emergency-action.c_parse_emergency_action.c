@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ EmergencyAction ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ EMERGENCY_ACTION_NONE ; 
- int EOPNOTSUPP ; 
- scalar_t__ _EMERGENCY_ACTION_FIRST_USER_ACTION ; 
- scalar_t__ emergency_action_from_string (char const*) ; 
+
+
+
+typedef scalar_t__ EmergencyAction ;
+
+
+ int EINVAL ;
+ scalar_t__ EMERGENCY_ACTION_NONE ;
+ int EOPNOTSUPP ;
+ scalar_t__ _EMERGENCY_ACTION_FIRST_USER_ACTION ;
+ scalar_t__ emergency_action_from_string (char const*) ;
 
 int parse_emergency_action(
                 const char *value,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_5__ {int /*<<< orphan*/  val; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  TYPE_1__ Node ;
-typedef  int /*<<< orphan*/  GCtab ;
-typedef  int /*<<< orphan*/  GCstr ;
 
-/* Variables and functions */
- TYPE_1__* hashstr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lj_tab_newkey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* nextnode (TYPE_1__*) ; 
- int /*<<< orphan*/  setstrV (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * strV (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisstr (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_5__ {int val; int key; } ;
+typedef int TValue ;
+typedef TYPE_1__ Node ;
+typedef int GCtab ;
+typedef int GCstr ;
+
+
+ TYPE_1__* hashstr (int *,int *) ;
+ int * lj_tab_newkey (int *,int *,int *) ;
+ TYPE_1__* nextnode (TYPE_1__*) ;
+ int setstrV (int *,int *,int *) ;
+ int * strV (int *) ;
+ scalar_t__ tvisstr (int *) ;
 
 TValue *lj_tab_setstr(lua_State *L, GCtab *t, GCstr *key)
 {

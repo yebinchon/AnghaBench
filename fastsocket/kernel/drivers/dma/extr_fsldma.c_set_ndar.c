@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct fsl_dma_chan {TYPE_1__* reg_base; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
-struct TYPE_2__ {int /*<<< orphan*/  ndar; } ;
+typedef int dma_addr_t ;
+struct TYPE_2__ {int ndar; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMA_OUT (struct fsl_dma_chan*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int DMA_OUT (struct fsl_dma_chan*,int *,int ,int) ;
 
 __attribute__((used)) static void set_ndar(struct fsl_dma_chan *fsl_chan, dma_addr_t addr)
 {
-	DMA_OUT(fsl_chan, &fsl_chan->reg_base->ndar, addr, 64);
+ DMA_OUT(fsl_chan, &fsl_chan->reg_base->ndar, addr, 64);
 }

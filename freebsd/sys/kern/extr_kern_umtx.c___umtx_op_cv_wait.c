@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {int dummy; } ;
 struct thread {int dummy; } ;
-struct _umtx_op_args {int /*<<< orphan*/  val; int /*<<< orphan*/  uaddr1; int /*<<< orphan*/  obj; int /*<<< orphan*/ * uaddr2; } ;
+struct _umtx_op_args {int val; int uaddr1; int obj; int * uaddr2; } ;
 
-/* Variables and functions */
- int do_cv_wait (struct thread*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct timespec*,int /*<<< orphan*/ ) ; 
- int umtx_copyin_timeout (int /*<<< orphan*/ *,struct timespec*) ; 
+
+ int do_cv_wait (struct thread*,int ,int ,struct timespec*,int ) ;
+ int umtx_copyin_timeout (int *,struct timespec*) ;
 
 __attribute__((used)) static int
 __umtx_op_cv_wait(struct thread *td, struct _umtx_op_args *uap)
 {
-	struct timespec *ts, timeout;
-	int error;
+ struct timespec *ts, timeout;
+ int error;
 
-	/* Allow a null timespec (wait forever). */
-	if (uap->uaddr2 == NULL)
-		ts = NULL;
-	else {
-		error = umtx_copyin_timeout(uap->uaddr2, &timeout);
-		if (error != 0)
-			return (error);
-		ts = &timeout;
-	}
-	return (do_cv_wait(td, uap->obj, uap->uaddr1, ts, uap->val));
+
+ if (uap->uaddr2 == ((void*)0))
+  ts = ((void*)0);
+ else {
+  error = umtx_copyin_timeout(uap->uaddr2, &timeout);
+  if (error != 0)
+   return (error);
+  ts = &timeout;
+ }
+ return (do_cv_wait(td, uap->obj, uap->uaddr1, ts, uap->val));
 }

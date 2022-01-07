@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int cid; int** mvs; } ;
 struct TYPE_8__ {int nb; int* sum; } ;
 struct TYPE_7__ {int b_height; int b_width; int log2_mb_size; TYPE_3__* int_blocks; TYPE_2__* clusters; } ;
-typedef  TYPE_1__ MIContext ;
-typedef  TYPE_2__ Cluster ;
-typedef  TYPE_3__ Block ;
+typedef TYPE_1__ MIContext ;
+typedef TYPE_2__ Cluster ;
+typedef TYPE_3__ Block ;
 
-/* Variables and functions */
- scalar_t__ CLUSTER_THRESHOLD ; 
- scalar_t__ FFABS (int) ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int NB_CLUSTERS ; 
- int var_size_bme (TYPE_1__*,TYPE_3__*,int,int,int) ; 
+
+ scalar_t__ CLUSTER_THRESHOLD ;
+ scalar_t__ FFABS (int) ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int NB_CLUSTERS ;
+ int var_size_bme (TYPE_1__*,TYPE_3__*,int,int,int) ;
 
 __attribute__((used)) static int cluster_mvs(MIContext *mi_ctx)
 {
@@ -90,7 +90,7 @@ __attribute__((used)) static int cluster_mvs(MIContext *mi_ctx)
             }
     } while (changed);
 
-    /* find boundaries */
+
     for (mb_y = 0; mb_y < mi_ctx->b_height; mb_y++)
         for (mb_x = 0; mb_x < mi_ctx->b_width; mb_x++) {
             block = &mi_ctx->int_blocks[mb_x + mb_y * mi_ctx->b_width];

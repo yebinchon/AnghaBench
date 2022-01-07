@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_x11_state {int screensaver_enabled; int dpms_touched; int /*<<< orphan*/ * display; } ;
-typedef  int /*<<< orphan*/  Display ;
-typedef  int /*<<< orphan*/  CARD16 ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPMSDisable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPMSEnable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPMSInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ DPMSQueryExtension (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct vo_x11_state*,char*,char*) ; 
- int /*<<< orphan*/  MP_WARN (struct vo_x11_state*,char*) ; 
- scalar_t__ xss_suspend (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct vo_x11_state {int screensaver_enabled; int dpms_touched; int * display; } ;
+typedef int Display ;
+typedef int CARD16 ;
+typedef scalar_t__ BOOL ;
+
+
+ int DPMSDisable (int *) ;
+ int DPMSEnable (int *) ;
+ int DPMSInfo (int *,int *,scalar_t__*) ;
+ scalar_t__ DPMSQueryExtension (int *,int*,int*) ;
+ int MP_VERBOSE (struct vo_x11_state*,char*,char*) ;
+ int MP_WARN (struct vo_x11_state*,char*) ;
+ scalar_t__ xss_suspend (int *,int) ;
 
 __attribute__((used)) static void set_screensaver(struct vo_x11_state *x11, bool enabled)
 {
@@ -39,14 +39,14 @@ __attribute__((used)) static void set_screensaver(struct vo_x11_state *x11, bool
         CARD16 state;
         DPMSInfo(mDisplay, &state, &onoff);
         if (!x11->dpms_touched && enabled)
-            return; // enable DPMS only we we disabled it before
+            return;
         if (enabled != !!onoff) {
             MP_VERBOSE(x11, "Setting DMPS: %s.\n", enabled ? "on" : "off");
             if (enabled) {
                 DPMSEnable(mDisplay);
             } else {
                 DPMSDisable(mDisplay);
-                x11->dpms_touched = true;
+                x11->dpms_touched = 1;
             }
             DPMSInfo(mDisplay, &state, &onoff);
             if (enabled != !!onoff)

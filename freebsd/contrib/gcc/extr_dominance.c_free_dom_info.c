@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dom_info {int /*<<< orphan*/  fake_exit_edge; int /*<<< orphan*/  dfs_to_bb; int /*<<< orphan*/  dfs_order; int /*<<< orphan*/  set_child; int /*<<< orphan*/  set_size; int /*<<< orphan*/  set_chain; int /*<<< orphan*/  next_bucket; int /*<<< orphan*/  bucket; int /*<<< orphan*/  dom; int /*<<< orphan*/  key; int /*<<< orphan*/  path_min; int /*<<< orphan*/  dfs_parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITMAP_FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
+
+
+
+struct dom_info {int fake_exit_edge; int dfs_to_bb; int dfs_order; int set_child; int set_size; int set_chain; int next_bucket; int bucket; int dom; int key; int path_min; int dfs_parent; } ;
+
+
+ int BITMAP_FREE (int ) ;
+ int free (int ) ;
 
 __attribute__((used)) static void
 free_dom_info (struct dom_info *di)

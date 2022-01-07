@@ -1,56 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wpa_group {struct wpa_group* next; struct wpa_group* group; struct wpa_group* wpa_ie; int /*<<< orphan*/  ip_pool; int /*<<< orphan*/ * ft_pmk_cache; int /*<<< orphan*/  pmksa; } ;
-struct wpa_authenticator {struct wpa_authenticator* next; struct wpa_authenticator* group; struct wpa_authenticator* wpa_ie; int /*<<< orphan*/  ip_pool; int /*<<< orphan*/ * ft_pmk_cache; int /*<<< orphan*/  pmksa; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bitfield_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eloop_cancel_timeout (int /*<<< orphan*/ ,struct wpa_group*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  os_free (struct wpa_group*) ; 
- int /*<<< orphan*/  pmksa_cache_auth_deinit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpa_ft_deinit (struct wpa_group*) ; 
- int /*<<< orphan*/  wpa_ft_pmk_cache_deinit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wpa_rekey_gmk ; 
- int /*<<< orphan*/  wpa_rekey_gtk ; 
+
+
+
+struct wpa_group {struct wpa_group* next; struct wpa_group* group; struct wpa_group* wpa_ie; int ip_pool; int * ft_pmk_cache; int pmksa; } ;
+struct wpa_authenticator {struct wpa_authenticator* next; struct wpa_authenticator* group; struct wpa_authenticator* wpa_ie; int ip_pool; int * ft_pmk_cache; int pmksa; } ;
+
+
+ int bitfield_free (int ) ;
+ int eloop_cancel_timeout (int ,struct wpa_group*,int *) ;
+ int os_free (struct wpa_group*) ;
+ int pmksa_cache_auth_deinit (int ) ;
+ int wpa_ft_deinit (struct wpa_group*) ;
+ int wpa_ft_pmk_cache_deinit (int *) ;
+ int wpa_rekey_gmk ;
+ int wpa_rekey_gtk ;
 
 void wpa_deinit(struct wpa_authenticator *wpa_auth)
 {
-	struct wpa_group *group, *prev;
+ struct wpa_group *group, *prev;
 
-	eloop_cancel_timeout(wpa_rekey_gmk, wpa_auth, NULL);
-	eloop_cancel_timeout(wpa_rekey_gtk, wpa_auth, NULL);
+ eloop_cancel_timeout(wpa_rekey_gmk, wpa_auth, ((void*)0));
+ eloop_cancel_timeout(wpa_rekey_gtk, wpa_auth, ((void*)0));
 
-	pmksa_cache_auth_deinit(wpa_auth->pmksa);
+ pmksa_cache_auth_deinit(wpa_auth->pmksa);
+ os_free(wpa_auth->wpa_ie);
 
-#ifdef CONFIG_IEEE80211R_AP
-	wpa_ft_pmk_cache_deinit(wpa_auth->ft_pmk_cache);
-	wpa_auth->ft_pmk_cache = NULL;
-	wpa_ft_deinit(wpa_auth);
-#endif /* CONFIG_IEEE80211R_AP */
+ group = wpa_auth->group;
+ while (group) {
+  prev = group;
+  group = group->next;
+  os_free(prev);
+ }
 
-#ifdef CONFIG_P2P
-	bitfield_free(wpa_auth->ip_pool);
-#endif /* CONFIG_P2P */
-
-
-	os_free(wpa_auth->wpa_ie);
-
-	group = wpa_auth->group;
-	while (group) {
-		prev = group;
-		group = group->next;
-		os_free(prev);
-	}
-
-	os_free(wpa_auth);
+ os_free(wpa_auth);
 }

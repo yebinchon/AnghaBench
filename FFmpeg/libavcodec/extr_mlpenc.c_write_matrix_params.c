@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_5__ {int count; int* outch; int* fbits; int** coeff; } ;
 struct TYPE_7__ {TYPE_1__ matrix_params; } ;
 struct TYPE_6__ {unsigned int num_channels; TYPE_3__* cur_decoding_params; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ MatrixParams ;
-typedef  TYPE_2__ MLPEncodeContext ;
-typedef  TYPE_3__ DecodingParams ;
+typedef int PutBitContext ;
+typedef TYPE_1__ MatrixParams ;
+typedef TYPE_2__ MLPEncodeContext ;
+typedef TYPE_3__ DecodingParams ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_sbits (int /*<<< orphan*/ *,int,int) ; 
+
+ int put_bits (int *,int,int) ;
+ int put_sbits (int *,int,int) ;
 
 __attribute__((used)) static void write_matrix_params(MLPEncodeContext *ctx, PutBitContext *pb)
 {
@@ -37,9 +37,9 @@ __attribute__((used)) static void write_matrix_params(MLPEncodeContext *ctx, Put
     for (mat = 0; mat < mp->count; mat++) {
         unsigned int channel;
 
-        put_bits(pb, 4, mp->outch[mat]); /* matrix_out_ch */
+        put_bits(pb, 4, mp->outch[mat]);
         put_bits(pb, 4, mp->fbits[mat]);
-        put_bits(pb, 1, 0             ); /* lsb_bypass */
+        put_bits(pb, 1, 0 );
 
         for (channel = 0; channel < ctx->num_channels; channel++) {
             int32_t coeff = mp->coeff[mat][channel];

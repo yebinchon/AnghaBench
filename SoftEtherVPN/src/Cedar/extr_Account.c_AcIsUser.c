@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USER ;
-typedef  int /*<<< orphan*/  HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AcGetUser (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ NO_ACCOUNT_DB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseUser (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int USER ;
+typedef int HUB ;
+
+
+ int * AcGetUser (int *,char*) ;
+ scalar_t__ NO_ACCOUNT_DB (int *) ;
+ int ReleaseUser (int *) ;
 
 bool AcIsUser(HUB *h, char *name)
 {
-	USER *u;
-	// Validate arguments
-	if (h == NULL || name == NULL || NO_ACCOUNT_DB(h))
-	{
-		return false;
-	}
+ USER *u;
 
-	u = AcGetUser(h, name);
-	if (u == NULL)
-	{
-		return false;
-	}
-	ReleaseUser(u);
+ if (h == ((void*)0) || name == ((void*)0) || NO_ACCOUNT_DB(h))
+ {
+  return 0;
+ }
 
-	return true;
+ u = AcGetUser(h, name);
+ if (u == ((void*)0))
+ {
+  return 0;
+ }
+ ReleaseUser(u);
+
+ return 1;
 }

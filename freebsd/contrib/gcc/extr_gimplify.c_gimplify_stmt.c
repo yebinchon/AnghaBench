@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fb_none ; 
- int /*<<< orphan*/  gimplify_expr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_gimple_stmt ; 
+
+
+
+typedef int tree ;
+
+
+ int fb_none ;
+ int gimplify_expr (int *,int *,int *,int ,int ) ;
+ int is_gimple_stmt ;
 
 void
 gimplify_stmt (tree *stmt_p)
 {
-  gimplify_expr (stmt_p, NULL, NULL, is_gimple_stmt, fb_none);
+  gimplify_expr (stmt_p, ((void*)0), ((void*)0), is_gimple_stmt, fb_none);
 }

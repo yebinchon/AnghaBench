@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int sqlite3_column_int (int *,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int getIntFromStmt(sqlite3 *db, const char *zSql, int *piVal){
   int rc = SQLITE_NOMEM;

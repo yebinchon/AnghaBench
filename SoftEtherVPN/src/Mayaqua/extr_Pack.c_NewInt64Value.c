@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int Size; int /*<<< orphan*/  Int64Value; } ;
-typedef  TYPE_1__ VALUE ;
-typedef  int /*<<< orphan*/  UINT64 ;
 
-/* Variables and functions */
- TYPE_1__* Malloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Size; int Int64Value; } ;
+typedef TYPE_1__ VALUE ;
+typedef int UINT64 ;
+
+
+ TYPE_1__* Malloc (int) ;
 
 VALUE *NewInt64Value(UINT64 i)
 {
-	VALUE *v;
+ VALUE *v;
 
-	v = Malloc(sizeof(VALUE));
-	v->Int64Value = i;
-	v->Size = sizeof(UINT64);
+ v = Malloc(sizeof(VALUE));
+ v->Int64Value = i;
+ v->Size = sizeof(UINT64);
 
-	return v;
+ return v;
 }

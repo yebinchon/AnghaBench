@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int DC_SERIALIZED_MAGIC ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int /*<<< orphan*/  TGL_MK_USER (int) ; 
- int /*<<< orphan*/  TLS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_enabled ; 
- int /*<<< orphan*/  bl_do_set_our_id (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bl_do_set_working_dc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  empty_auth_file () ; 
- int /*<<< orphan*/  get_auth_key_filename () ; 
- int open (int /*<<< orphan*/ ,int,int) ; 
- int read (int,...) ; 
- int /*<<< orphan*/  read_dc (int,int,unsigned int) ; 
+ unsigned int DC_SERIALIZED_MAGIC ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int TGL_MK_USER (int) ;
+ int TLS ;
+ int assert (int) ;
+ scalar_t__ binlog_enabled ;
+ int bl_do_set_our_id (int ,int ) ;
+ int bl_do_set_working_dc (int ,int) ;
+ int close (int) ;
+ int empty_auth_file () ;
+ int get_auth_key_filename () ;
+ int open (int ,int,int) ;
+ int read (int,...) ;
+ int read_dc (int,int,unsigned int) ;
 
 void read_auth_file (void) {
   if (binlog_enabled) { return; }
@@ -47,7 +39,7 @@ void read_auth_file (void) {
   assert (x > 0);
   int dc_working_num;
   assert (read (auth_file_fd, &dc_working_num, 4) == 4);
-  
+
   int i;
   for (i = 0; i <= (int)x; i++) {
     int y;

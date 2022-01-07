@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_mergeinfo_t ;
-struct TYPE_10__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_MERGEINFO_PARSE_ERROR ; 
- TYPE_2__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_error_createf (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,char const*) ; 
- TYPE_2__* svn_mergeinfo_parse (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ len; int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_mergeinfo_t ;
+struct TYPE_10__ {int apr_err; } ;
+typedef TYPE_2__ svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR_MERGEINFO_PARSE_ERROR ;
+ TYPE_2__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ strlen (int ) ;
+ TYPE_2__* svn_error_createf (int ,TYPE_2__*,int ,char const*) ;
+ TYPE_2__* svn_mergeinfo_parse (int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 verify_mergeinfo(const svn_string_t *value,
@@ -35,14 +35,14 @@ verify_mergeinfo(const svn_string_t *value,
   svn_error_t *err;
   svn_mergeinfo_t mergeinfo;
 
-  /* It's okay to delete svn:mergeinfo. */
-  if (value == NULL)
+
+  if (value == ((void*)0))
     return SVN_NO_ERROR;
 
-  /* Mergeinfo is UTF-8 encoded so the number of bytes returned by strlen()
-   * should match VALUE->LEN. Prevents trailing garbage in the property. */
+
+
   if (strlen(value->data) != value->len)
-    return svn_error_createf(SVN_ERR_MERGEINFO_PARSE_ERROR, NULL,
+    return svn_error_createf(SVN_ERR_MERGEINFO_PARSE_ERROR, ((void*)0),
                              _("Commit rejected because mergeinfo on '%s' "
                                "contains unexpected string terminator"),
                              path);

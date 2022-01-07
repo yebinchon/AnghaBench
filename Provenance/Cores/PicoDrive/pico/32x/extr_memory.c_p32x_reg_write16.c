@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int u16 ;
 struct TYPE_6__ {int* regs; int comm_dirty_68k; } ;
 struct TYPE_5__ {scalar_t__ cnt; } ;
 struct TYPE_4__ {scalar_t__ m68krcycles_done; } ;
 
-/* Variables and functions */
- int P32XS_ADEN ; 
- int P32XS_FM ; 
- int P32XS_nRES ; 
- TYPE_3__ Pico32x ; 
- int /*<<< orphan*/  SH2_STATE_CPOLL ; 
- int SekCyclesDone () ; 
- int /*<<< orphan*/  dreq0_write (int*,int) ; 
- TYPE_2__ m68k_poll ; 
- TYPE_1__ msh2 ; 
- int /*<<< orphan*/  p32x_pwm_write16 (int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  p32x_reg_write8 (int,int) ; 
- int /*<<< orphan*/  p32x_reset_sh2s () ; 
- int /*<<< orphan*/  p32x_sh2_poll_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  p32x_sync_sh2s (int) ; 
- int /*<<< orphan*/ * sh2s ; 
+
+ int P32XS_ADEN ;
+ int P32XS_FM ;
+ int P32XS_nRES ;
+ TYPE_3__ Pico32x ;
+ int SH2_STATE_CPOLL ;
+ int SekCyclesDone () ;
+ int dreq0_write (int*,int) ;
+ TYPE_2__ m68k_poll ;
+ TYPE_1__ msh2 ;
+ int p32x_pwm_write16 (int,int,int *,int) ;
+ int p32x_reg_write8 (int,int) ;
+ int p32x_reset_sh2s () ;
+ int p32x_sh2_poll_event (int *,int ,int) ;
+ int p32x_sync_sh2s (int) ;
+ int * sh2s ;
 
 __attribute__((used)) static void p32x_reg_write16(u32 a, u32 d)
 {
   u16 *r = Pico32x.regs;
   a &= 0x3e;
 
-  // for things like bset on comm port
+
   m68k_poll.cnt = 0;
 
   switch (a) {
-    case 0x00: // adapter ctl
+    case 0x00:
       if ((d ^ r[0]) & d & P32XS_nRES)
         p32x_reset_sh2s();
       r[0] &= ~(P32XS_FM|P32XS_nRES|P32XS_ADEN);
       r[0] |= d & (P32XS_FM|P32XS_nRES|P32XS_ADEN);
       return;
-    case 0x08: // DREQ src
+    case 0x08:
       r[a / 2] = d & 0xff;
       return;
     case 0x0a:
       r[a / 2] = d & ~1;
       return;
-    case 0x0c: // DREQ dest
+    case 0x0c:
       r[a / 2] = d & 0xff;
       return;
     case 0x0e:
       r[a / 2] = d;
       return;
-    case 0x10: // DREQ len
+    case 0x10:
       r[a / 2] = d & ~3;
       return;
-    case 0x12: // FIFO reg
+    case 0x12:
       dreq0_write(r, d);
       return;
-    case 0x1a: // TV + mystery bit
+    case 0x1a:
       r[a / 2] = d & 0x0101;
       return;
-    case 0x30: // PWM control
+    case 0x30:
       d = (r[a / 2] & ~0x0f) | (d & 0x0f);
       r[a / 2] = d;
-      p32x_pwm_write16(a, d, NULL, SekCyclesDone());
+      p32x_pwm_write16(a, d, ((void*)0), SekCyclesDone());
       return;
   }
 
-  // comm port
+
   if ((a & 0x30) == 0x20) {
     int cycles = SekCyclesDone();
     int comreg;
-    
+
     if (r[a / 2] == d)
       return;
 
@@ -100,9 +100,9 @@ __attribute__((used)) static void p32x_reg_write16(u32 a, u32 d)
       p32x_sync_sh2s(cycles);
     return;
   }
-  // PWM
+
   else if ((a & 0x30) == 0x30) {
-    p32x_pwm_write16(a, d, NULL, SekCyclesDone());
+    p32x_pwm_write16(a, d, ((void*)0), SekCyclesDone());
     return;
   }
 

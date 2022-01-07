@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  NumberOfSections; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int NumberOfSections; } ;
 struct TYPE_10__ {TYPE_2__ FileHeader; } ;
-struct TYPE_7__ {int /*<<< orphan*/  VirtualSize; } ;
-struct TYPE_9__ {int /*<<< orphan*/  PointerToRawData; int /*<<< orphan*/  VirtualAddress; TYPE_1__ Misc; } ;
-typedef  TYPE_3__* PIMAGE_SECTION_HEADER ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_7__ {int VirtualSize; } ;
+struct TYPE_9__ {int PointerToRawData; int VirtualAddress; TYPE_1__ Misc; } ;
+typedef TYPE_3__* PIMAGE_SECTION_HEADER ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- TYPE_3__* IMAGE_FIRST_SECTION (TYPE_4__*) ; 
- scalar_t__ buffer ; 
- scalar_t__ dtohl (int /*<<< orphan*/ ) ; 
- TYPE_4__* nt_header ; 
+
+ TYPE_3__* IMAGE_FIRST_SECTION (TYPE_4__*) ;
+ scalar_t__ buffer ;
+ scalar_t__ dtohl (int ) ;
+ TYPE_4__* nt_header ;
 
 void *rva_to_ptr(DWORD rva)
 {
@@ -45,5 +45,5 @@ void *rva_to_ptr(DWORD rva)
       }
    }
 
-   return NULL;
+   return ((void*)0);
 }

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct platform_device {int dev; } ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR (struct drm_device*) ; 
- int PTR_ERR (struct drm_device*) ; 
- int /*<<< orphan*/  aspeed_gfx_driver ; 
- int aspeed_gfx_load (struct drm_device*) ; 
- int /*<<< orphan*/  aspeed_gfx_unload (struct drm_device*) ; 
- struct drm_device* drm_dev_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  drm_dev_put (struct drm_device*) ; 
- int drm_dev_register (struct drm_device*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ IS_ERR (struct drm_device*) ;
+ int PTR_ERR (struct drm_device*) ;
+ int aspeed_gfx_driver ;
+ int aspeed_gfx_load (struct drm_device*) ;
+ int aspeed_gfx_unload (struct drm_device*) ;
+ struct drm_device* drm_dev_alloc (int *,int *) ;
+ int drm_dev_put (struct drm_device*) ;
+ int drm_dev_register (struct drm_device*,int ) ;
 
 __attribute__((used)) static int aspeed_gfx_probe(struct platform_device *pdev)
 {
-	struct drm_device *drm;
-	int ret;
+ struct drm_device *drm;
+ int ret;
 
-	drm = drm_dev_alloc(&aspeed_gfx_driver, &pdev->dev);
-	if (IS_ERR(drm))
-		return PTR_ERR(drm);
+ drm = drm_dev_alloc(&aspeed_gfx_driver, &pdev->dev);
+ if (IS_ERR(drm))
+  return PTR_ERR(drm);
 
-	ret = aspeed_gfx_load(drm);
-	if (ret)
-		goto err_free;
+ ret = aspeed_gfx_load(drm);
+ if (ret)
+  goto err_free;
 
-	ret = drm_dev_register(drm, 0);
-	if (ret)
-		goto err_unload;
+ ret = drm_dev_register(drm, 0);
+ if (ret)
+  goto err_unload;
 
-	return 0;
+ return 0;
 
 err_unload:
-	aspeed_gfx_unload(drm);
+ aspeed_gfx_unload(drm);
 err_free:
-	drm_dev_put(drm);
+ drm_dev_put(drm);
 
-	return ret;
+ return ret;
 }

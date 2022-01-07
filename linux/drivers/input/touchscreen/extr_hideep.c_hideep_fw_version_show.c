@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct i2c_client {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  release_ver; } ;
-struct hideep_ts {int /*<<< orphan*/  dev_mutex; TYPE_1__ dwz_info; } ;
+struct TYPE_2__ {int release_ver; } ;
+struct hideep_ts {int dev_mutex; TYPE_1__ dwz_info; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  be16_to_cpu (int /*<<< orphan*/ ) ; 
- struct hideep_ts* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scnprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- struct i2c_client* to_i2c_client (struct device*) ; 
+
+ int PAGE_SIZE ;
+ int be16_to_cpu (int ) ;
+ struct hideep_ts* i2c_get_clientdata (struct i2c_client*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int scnprintf (char*,int ,char*,int ) ;
+ struct i2c_client* to_i2c_client (struct device*) ;
 
 __attribute__((used)) static ssize_t hideep_fw_version_show(struct device *dev,
-				      struct device_attribute *attr, char *buf)
+          struct device_attribute *attr, char *buf)
 {
-	struct i2c_client *client = to_i2c_client(dev);
-	struct hideep_ts *ts = i2c_get_clientdata(client);
-	ssize_t len;
+ struct i2c_client *client = to_i2c_client(dev);
+ struct hideep_ts *ts = i2c_get_clientdata(client);
+ ssize_t len;
 
-	mutex_lock(&ts->dev_mutex);
-	len = scnprintf(buf, PAGE_SIZE, "%04x\n",
-			be16_to_cpu(ts->dwz_info.release_ver));
-	mutex_unlock(&ts->dev_mutex);
+ mutex_lock(&ts->dev_mutex);
+ len = scnprintf(buf, PAGE_SIZE, "%04x\n",
+   be16_to_cpu(ts->dwz_info.release_ver));
+ mutex_unlock(&ts->dev_mutex);
 
-	return len;
+ return len;
 }

@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* message; } ;
 struct TYPE_9__ {int counter; int msgindex; } ;
-typedef  TYPE_1__ MATRIX_MESSAGE ;
-typedef  TYPE_2__ MATRIX ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_1__ MATRIX_MESSAGE ;
+typedef TYPE_2__ MATRIX ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearMatrixMessage (TYPE_1__*) ; 
- int /*<<< orphan*/  DrawMatrixMessage (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int MSGSPEED_MAX ; 
- int MSGSPEED_MIN ; 
- int MessageSpeed () ; 
- int /*<<< orphan*/  RevealMatrixMessage (TYPE_1__*,int) ; 
- int /*<<< orphan*/  SetMatrixMessage (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int crc_rand () ; 
- scalar_t__ g_fRandomizeMessages ; 
- int g_nMessageSpeed ; 
- int g_nNumMessages ; 
- int /*<<< orphan*/ * g_szMessages ; 
+
+ int ClearMatrixMessage (TYPE_1__*) ;
+ int DrawMatrixMessage (TYPE_2__*,TYPE_1__*,int ) ;
+ int MSGSPEED_MAX ;
+ int MSGSPEED_MIN ;
+ int MessageSpeed () ;
+ int RevealMatrixMessage (TYPE_1__*,int) ;
+ int SetMatrixMessage (TYPE_1__*,int ,int ) ;
+ int crc_rand () ;
+ scalar_t__ g_fRandomizeMessages ;
+ int g_nMessageSpeed ;
+ int g_nNumMessages ;
+ int * g_szMessages ;
 
 void DoMatrixMessage(HDC hdc, MATRIX *matrix)
 {
-	MATRIX_MESSAGE *msg = matrix->message;
+ MATRIX_MESSAGE *msg = matrix->message;
 
-	int RealSpeed = MessageSpeed();
+ int RealSpeed = MessageSpeed();
 
-	if(g_nNumMessages > 0)
-	{
-		// nothing to do yet..
-		if(msg->counter++ < 0)
-			return;
+ if(g_nNumMessages > 0)
+ {
 
-		// has counter reached limit..clear the message
-		if(msg->counter++ == RealSpeed / 2 + (RealSpeed/4))
-			ClearMatrixMessage(msg);
+  if(msg->counter++ < 0)
+   return;
 
-		// reset counter + display a new message
-		if(msg->counter >= RealSpeed)
-		{
-			// mark all message-cells as being "invisible" so the
-			// message gets cleared by the matrix decoding naturally
 
-			if(g_fRandomizeMessages)
-				msg->msgindex = crc_rand() % g_nNumMessages;
-			else
-				msg->msgindex = (msg->msgindex + 1) % g_nNumMessages;
+  if(msg->counter++ == RealSpeed / 2 + (RealSpeed/4))
+   ClearMatrixMessage(msg);
 
-			// make a new message..initially invisible
-			SetMatrixMessage(msg, 0, g_szMessages[msg->msgindex]);
 
-			msg->counter = -(int)(crc_rand() % MSGSPEED_MAX);
-		}
-		// reveal the next part of the message
-		else if(msg->counter < RealSpeed / 2)
-		{
-			int w = (g_nMessageSpeed - MSGSPEED_MIN);
-			w = (1 << 16) + ((w<<16) / MSGSPEED_MAX);
-			w = (w * 3 * g_nMessageSpeed) >> 16;
+  if(msg->counter >= RealSpeed)
+  {
 
-			RevealMatrixMessage(msg, w + 100);
-		}
 
-		//
-		// draw whatever part of the message is visible at this time
-		//
-		DrawMatrixMessage(matrix, msg, hdc);
-	}
+
+   if(g_fRandomizeMessages)
+    msg->msgindex = crc_rand() % g_nNumMessages;
+   else
+    msg->msgindex = (msg->msgindex + 1) % g_nNumMessages;
+
+
+   SetMatrixMessage(msg, 0, g_szMessages[msg->msgindex]);
+
+   msg->counter = -(int)(crc_rand() % MSGSPEED_MAX);
+  }
+
+  else if(msg->counter < RealSpeed / 2)
+  {
+   int w = (g_nMessageSpeed - MSGSPEED_MIN);
+   w = (1 << 16) + ((w<<16) / MSGSPEED_MAX);
+   w = (w * 3 * g_nMessageSpeed) >> 16;
+
+   RevealMatrixMessage(msg, w + 100);
+  }
+
+
+
+
+  DrawMatrixMessage(matrix, msg, hdc);
+ }
 }

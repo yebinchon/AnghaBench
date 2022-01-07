@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct RObject {int dummy; } ;
-struct RClass {scalar_t__ tt; int flags; struct RClass* super; struct RClass* c; scalar_t__ iv; int /*<<< orphan*/  mt; } ;
+struct RClass {scalar_t__ tt; int flags; struct RClass* super; struct RClass* c; scalar_t__ iv; int mt; } ;
 struct RBasic {scalar_t__ tt; int flags; struct RClass* c; } ;
 struct TYPE_9__ {struct RClass* class_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int MRB_FL_CLASS_IS_INHERITED ; 
- int MRB_FL_OBJ_IS_FROZEN ; 
- scalar_t__ MRB_TT_CLASS ; 
- scalar_t__ MRB_TT_ICLASS ; 
- scalar_t__ MRB_TT_SCLASS ; 
- int /*<<< orphan*/  kh_init (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  make_metaclass (TYPE_1__*,struct RClass*) ; 
- int /*<<< orphan*/  mrb_field_write_barrier (TYPE_1__*,struct RBasic*,struct RBasic*) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_1__*,char*) ; 
- scalar_t__ mrb_obj_alloc (TYPE_1__*,scalar_t__,struct RClass*) ; 
- int /*<<< orphan*/  mrb_obj_iv_set (TYPE_1__*,struct RObject*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RBasic*) ; 
- int /*<<< orphan*/  mt ; 
+
+ int MRB_FL_CLASS_IS_INHERITED ;
+ int MRB_FL_OBJ_IS_FROZEN ;
+ scalar_t__ MRB_TT_CLASS ;
+ scalar_t__ MRB_TT_ICLASS ;
+ scalar_t__ MRB_TT_SCLASS ;
+ int kh_init (int ,TYPE_1__*) ;
+ int make_metaclass (TYPE_1__*,struct RClass*) ;
+ int mrb_field_write_barrier (TYPE_1__*,struct RBasic*,struct RBasic*) ;
+ int mrb_intern_lit (TYPE_1__*,char*) ;
+ scalar_t__ mrb_obj_alloc (TYPE_1__*,scalar_t__,struct RClass*) ;
+ int mrb_obj_iv_set (TYPE_1__*,struct RObject*,int ,int ) ;
+ int mrb_obj_value (struct RBasic*) ;
+ int mt ;
 
 __attribute__((used)) static void
 prepare_singleton_class(mrb_state *mrb, struct RBasic *o)

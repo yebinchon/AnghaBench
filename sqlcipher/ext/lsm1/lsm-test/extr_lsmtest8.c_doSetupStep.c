@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_3__ {int /*<<< orphan*/  nDel; int /*<<< orphan*/  iDelStart; int /*<<< orphan*/  nIns; int /*<<< orphan*/  iInsStart; } ;
-typedef  TYPE_1__ SetupStep ;
-typedef  int /*<<< orphan*/  Datasource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_CONFIG_AUTOFLUSH ; 
- int /*<<< orphan*/  lsm_begin (int /*<<< orphan*/ *,int) ; 
- int lsm_checkpoint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsm_commit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsm_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int lsm_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * tdb_lsm (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testDeleteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  testWriteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lsm_db ;
+typedef int TestDb ;
+struct TYPE_3__ {int nDel; int iDelStart; int nIns; int iInsStart; } ;
+typedef TYPE_1__ SetupStep ;
+typedef int Datasource ;
+
+
+ int LSM_CONFIG_AUTOFLUSH ;
+ int lsm_begin (int *,int) ;
+ int lsm_checkpoint (int *,int ) ;
+ int lsm_commit (int *,int ) ;
+ int lsm_config (int *,int ,int*) ;
+ int lsm_work (int *,int ,int ,int ) ;
+ int * tdb_lsm (int *) ;
+ int testDeleteDatasourceRange (int *,int *,int ,int ,int*) ;
+ int testWriteDatasourceRange (int *,int *,int ,int ,int*) ;
 
 __attribute__((used)) static void doSetupStep(
-  TestDb *pDb, 
-  Datasource *pData, 
-  const SetupStep *pStep, 
+  TestDb *pDb,
+  Datasource *pData,
+  const SetupStep *pStep,
   int *pRc
 ){
   testWriteDatasourceRange(pDb, pData, pStep->iInsStart, pStep->nIns, pRc);

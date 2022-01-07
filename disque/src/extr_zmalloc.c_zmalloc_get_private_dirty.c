@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int strtol (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int line ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int * fgets (char*,int,int *) ;
+ int * fopen (char*,char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int strtol (char*,int *,int) ;
 
 size_t zmalloc_get_private_dirty(void) {
     char line[1024];
@@ -27,12 +27,12 @@ size_t zmalloc_get_private_dirty(void) {
     FILE *fp = fopen("/proc/self/smaps","r");
 
     if (!fp) return 0;
-    while(fgets(line,sizeof(line),fp) != NULL) {
+    while(fgets(line,sizeof(line),fp) != ((void*)0)) {
         if (strncmp(line,"Private_Dirty:",14) == 0) {
             char *p = strchr(line,'k');
             if (p) {
                 *p = '\0';
-                pd += strtol(line+14,NULL,10) * 1024;
+                pd += strtol(line+14,((void*)0),10) * 1024;
             }
         }
     }

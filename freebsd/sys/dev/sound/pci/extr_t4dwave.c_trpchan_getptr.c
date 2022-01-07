@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int32_t ;
-struct tr_chinfo {int cso; int /*<<< orphan*/  buffer; } ;
-typedef  int /*<<< orphan*/  kobj_t ;
 
-/* Variables and functions */
- int sndbuf_getalign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tr_rdch (struct tr_chinfo*) ; 
+
+
+
+typedef int u_int32_t ;
+struct tr_chinfo {int cso; int buffer; } ;
+typedef int kobj_t ;
+
+
+ int sndbuf_getalign (int ) ;
+ int tr_rdch (struct tr_chinfo*) ;
 
 __attribute__((used)) static u_int32_t
 trpchan_getptr(kobj_t obj, void *data)
 {
-	struct tr_chinfo *ch = data;
+ struct tr_chinfo *ch = data;
 
-	tr_rdch(ch);
-	return ch->cso * sndbuf_getalign(ch->buffer);
+ tr_rdch(ch);
+ return ch->cso * sndbuf_getalign(ch->buffer);
 }

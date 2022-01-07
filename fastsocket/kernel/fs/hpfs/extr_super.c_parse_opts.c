@@ -1,160 +1,138 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int umode_t ;
-typedef  int uid_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int umode_t ;
+typedef int uid_t ;
 struct TYPE_5__ {char* from; } ;
-typedef  TYPE_1__ substring_t ;
-typedef  int gid_t ;
+typedef TYPE_1__ substring_t ;
+typedef int gid_t ;
 
-/* Variables and functions */
- int CONV_AUTO ; 
- int CONV_BINARY ; 
- int CONV_TEXT ; 
- int MAX_OPT_ARGS ; 
-#define  Opt_case_asis 149 
-#define  Opt_case_lower 148 
-#define  Opt_check_none 147 
-#define  Opt_check_normal 146 
-#define  Opt_check_strict 145 
-#define  Opt_chkdsk_always 144 
-#define  Opt_chkdsk_errors 143 
-#define  Opt_chkdsk_no 142 
-#define  Opt_conv_auto 141 
-#define  Opt_conv_binary 140 
-#define  Opt_conv_text 139 
-#define  Opt_eas_no 138 
-#define  Opt_eas_ro 137 
-#define  Opt_eas_rw 136 
-#define  Opt_err_cont 135 
-#define  Opt_err_panic 134 
-#define  Opt_err_ro 133 
-#define  Opt_gid 132 
-#define  Opt_help 131 
-#define  Opt_timeshift 130 
-#define  Opt_uid 129 
-#define  Opt_umask 128 
- int /*<<< orphan*/  match_int (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  match_octal (TYPE_1__*,int*) ; 
- int match_token (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int simple_strtoul (char*,char**,int /*<<< orphan*/ ) ; 
- char* strsep (char**,char*) ; 
- int /*<<< orphan*/  tokens ; 
+
+ int CONV_AUTO ;
+ int CONV_BINARY ;
+ int CONV_TEXT ;
+ int MAX_OPT_ARGS ;
+ int match_int (TYPE_1__*,int*) ;
+ int match_octal (TYPE_1__*,int*) ;
+ int match_token (char*,int ,TYPE_1__*) ;
+ int simple_strtoul (char*,char**,int ) ;
+ char* strsep (char**,char*) ;
+ int tokens ;
 
 __attribute__((used)) static int parse_opts(char *opts, uid_t *uid, gid_t *gid, umode_t *umask,
-		      int *lowercase, int *conv, int *eas, int *chk, int *errs,
-		      int *chkdsk, int *timeshift)
+        int *lowercase, int *conv, int *eas, int *chk, int *errs,
+        int *chkdsk, int *timeshift)
 {
-	char *p;
-	int option;
+ char *p;
+ int option;
 
-	if (!opts)
-		return 1;
+ if (!opts)
+  return 1;
 
-	/*printk("Parsing opts: '%s'\n",opts);*/
 
-	while ((p = strsep(&opts, ",")) != NULL) {
-		substring_t args[MAX_OPT_ARGS];
-		int token;
-		if (!*p)
-			continue;
 
-		token = match_token(p, tokens, args);
-		switch (token) {
-		case Opt_help:
-			return 2;
-		case Opt_uid:
-			if (match_int(args, &option))
-				return 0;
-			*uid = option;
-			break;
-		case Opt_gid:
-			if (match_int(args, &option))
-				return 0;
-			*gid = option;
-			break;
-		case Opt_umask:
-			if (match_octal(args, &option))
-				return 0;
-			*umask = option;
-			break;
-		case Opt_case_lower:
-			*lowercase = 1;
-			break;
-		case Opt_case_asis:
-			*lowercase = 0;
-			break;
-		case Opt_conv_binary:
-			*conv = CONV_BINARY;
-			break;
-		case Opt_conv_text:
-			*conv = CONV_TEXT;
-			break;
-		case Opt_conv_auto:
-			*conv = CONV_AUTO;
-			break;
-		case Opt_check_none:
-			*chk = 0;
-			break;
-		case Opt_check_normal:
-			*chk = 1;
-			break;
-		case Opt_check_strict:
-			*chk = 2;
-			break;
-		case Opt_err_cont:
-			*errs = 0;
-			break;
-		case Opt_err_ro:
-			*errs = 1;
-			break;
-		case Opt_err_panic:
-			*errs = 2;
-			break;
-		case Opt_eas_no:
-			*eas = 0;
-			break;
-		case Opt_eas_ro:
-			*eas = 1;
-			break;
-		case Opt_eas_rw:
-			*eas = 2;
-			break;
-		case Opt_chkdsk_no:
-			*chkdsk = 0;
-			break;
-		case Opt_chkdsk_errors:
-			*chkdsk = 1;
-			break;
-		case Opt_chkdsk_always:
-			*chkdsk = 2;
-			break;
-		case Opt_timeshift:
-		{
-			int m = 1;
-			char *rhs = args[0].from;
-			if (!rhs || !*rhs)
-				return 0;
-			if (*rhs == '-') m = -1;
-			if (*rhs == '+' || *rhs == '-') rhs++;
-			*timeshift = simple_strtoul(rhs, &rhs, 0) * m;
-			if (*rhs)
-				return 0;
-			break;
-		}
-		default:
-			return 0;
-		}
-	}
-	return 1;
+ while ((p = strsep(&opts, ",")) != ((void*)0)) {
+  substring_t args[MAX_OPT_ARGS];
+  int token;
+  if (!*p)
+   continue;
+
+  token = match_token(p, tokens, args);
+  switch (token) {
+  case 131:
+   return 2;
+  case 129:
+   if (match_int(args, &option))
+    return 0;
+   *uid = option;
+   break;
+  case 132:
+   if (match_int(args, &option))
+    return 0;
+   *gid = option;
+   break;
+  case 128:
+   if (match_octal(args, &option))
+    return 0;
+   *umask = option;
+   break;
+  case 148:
+   *lowercase = 1;
+   break;
+  case 149:
+   *lowercase = 0;
+   break;
+  case 140:
+   *conv = CONV_BINARY;
+   break;
+  case 139:
+   *conv = CONV_TEXT;
+   break;
+  case 141:
+   *conv = CONV_AUTO;
+   break;
+  case 147:
+   *chk = 0;
+   break;
+  case 146:
+   *chk = 1;
+   break;
+  case 145:
+   *chk = 2;
+   break;
+  case 135:
+   *errs = 0;
+   break;
+  case 133:
+   *errs = 1;
+   break;
+  case 134:
+   *errs = 2;
+   break;
+  case 138:
+   *eas = 0;
+   break;
+  case 137:
+   *eas = 1;
+   break;
+  case 136:
+   *eas = 2;
+   break;
+  case 142:
+   *chkdsk = 0;
+   break;
+  case 143:
+   *chkdsk = 1;
+   break;
+  case 144:
+   *chkdsk = 2;
+   break;
+  case 130:
+  {
+   int m = 1;
+   char *rhs = args[0].from;
+   if (!rhs || !*rhs)
+    return 0;
+   if (*rhs == '-') m = -1;
+   if (*rhs == '+' || *rhs == '-') rhs++;
+   *timeshift = simple_strtoul(rhs, &rhs, 0) * m;
+   if (*rhs)
+    return 0;
+   break;
+  }
+  default:
+   return 0;
+  }
+ }
+ return 1;
 }

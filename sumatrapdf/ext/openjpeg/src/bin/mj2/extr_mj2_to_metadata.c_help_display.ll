@@ -1,0 +1,160 @@
+; ModuleID = '/home/carl/AnghaBench/sumatrapdf/ext/openjpeg/src/bin/mj2/extr_mj2_to_metadata.c_help_display.c'
+source_filename = "/home/carl/AnghaBench/sumatrapdf/ext/openjpeg/src/bin/mj2/extr_mj2_to_metadata.c_help_display.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@stdout = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [56 x i8] c"                Help for the 'mj2_to_metadata' Program\0A\00", align 1
+@.str.1 = private unnamed_addr constant [56 x i8] c"                ======================================\0A\00", align 1
+@.str.2 = private unnamed_addr constant [53 x i8] c"The -h option displays this information on screen.\0A\0A\00", align 1
+@.str.3 = private unnamed_addr constant [69 x i8] c"mj2_to_metadata generates an XML file from a Motion JPEG 2000 file.\0A\00", align 1
+@.str.4 = private unnamed_addr constant [67 x i8] c"The generated XML shows the structural, but not (yet) curatorial,\0A\00", align 1
+@.str.5 = private unnamed_addr constant [70 x i8] c"metadata from the movie header and from the JPEG 2000 image and tile\0A\00", align 1
+@.str.6 = private unnamed_addr constant [74 x i8] c"headers of a sample frame.  Excluded: low-level packed-bits image data.\0A\0A\00", align 1
+@.str.7 = private unnamed_addr constant [12 x i8] c"By Default\0A\00", align 1
+@.str.8 = private unnamed_addr constant [12 x i8] c"----------\0A\00", align 1
+@.str.9 = private unnamed_addr constant [74 x i8] c"The metadata includes the jp2 image and tile headers of the first frame.\0A\00", align 1
+@.str.10 = private unnamed_addr constant [2 x i8] c"\0A\00", align 1
+@.str.11 = private unnamed_addr constant [78 x i8] c"Metadata values are shown in 'raw' form (e.g., hexadecimal) as stored in the\0A\00", align 1
+@.str.12 = private unnamed_addr constant [70 x i8] c"file, and, if apt, in a 'derived' form that is more quickly grasped.\0A\00", align 1
+@.str.13 = private unnamed_addr constant [73 x i8] c"Notes explaining the XML are embedded as terse comments.  These include\0A\00", align 1
+@.str.14 = private unnamed_addr constant [46 x i8] c"   meaning of non-obvious tag abbreviations;\0A\00", align 1
+@.str.15 = private unnamed_addr constant [41 x i8] c"   range and precision of valid values;\0A\00", align 1
+@.str.16 = private unnamed_addr constant [57 x i8] c"   interpretations of values, such as enumerations; and\0A\00", align 1
+@.str.17 = private unnamed_addr constant [40 x i8] c"   current implementation limitations.\0A\00", align 1
+@.str.18 = private unnamed_addr constant [87 x i8] c"The sample-size and chunk-offset tables, each with 1 row per frame, are not reported.\0A\00", align 1
+@.str.19 = private unnamed_addr constant [84 x i8] c"The file is self-contained and no verification (e.g., against a DTD) is requested.\0A\00", align 1
+@.str.20 = private unnamed_addr constant [38 x i8] c"Required Parameters (except with -h)\0A\00", align 1
+@.str.21 = private unnamed_addr constant [38 x i8] c"------------------------------------\0A\00", align 1
+@.str.22 = private unnamed_addr constant [76 x i8] c"[Caution: file strings that contain spaces should be wrapped with quotes.]\0A\00", align 1
+@.str.23 = private unnamed_addr constant [64 x i8] c"-i input.mj2  : where 'input' is any source file name or path.\0A\00", align 1
+@.str.24 = private unnamed_addr constant [78 x i8] c"                MJ2 files created with 'frames_to_mj2' are supported so far.\0A\00", align 1
+@.str.25 = private unnamed_addr constant [78 x i8] c"                These are silent, single-track, 'MJ2 Simple Profile' videos.\0A\00", align 1
+@.str.26 = private unnamed_addr constant [70 x i8] c"-o output.xml : where 'output' is any destination file name or path.\0A\00", align 1
+@.str.27 = private unnamed_addr constant [21 x i8] c"Optional Parameters\0A\00", align 1
+@.str.28 = private unnamed_addr constant [21 x i8] c"-------------------\0A\00", align 1
+@.str.29 = private unnamed_addr constant [48 x i8] c"-h            : Display this help information.\0A\00", align 1
+@.str.30 = private unnamed_addr constant [53 x i8] c"-n            : Suppress all mj2_to_metadata notes.\0A\00", align 1
+@.str.31 = private unnamed_addr constant [62 x i8] c"-t            : Include sample-size and chunk-offset tables.\0A\00", align 1
+@.str.32 = private unnamed_addr constant [80 x i8] c"-f n          : where n > 0.  Include jp2 header info for frame n [default=1].\0A\00", align 1
+@.str.33 = private unnamed_addr constant [37 x i8] c"-f 0          : No jp2 header info.\0A\00", align 1
+@.str.34 = private unnamed_addr constant [76 x i8] c"-r            : Suppress all 'raw' data for which a 'derived' form exists.\0A\00", align 1
+@.str.35 = private unnamed_addr constant [46 x i8] c"-d            : Suppress all 'derived' data.\0A\00", align 1
+@.str.36 = private unnamed_addr constant [64 x i8] c"                (If both -r and -d given, -r will be ignored.)\0A\00", align 1
+@.str.37 = private unnamed_addr constant [68 x i8] c"-v string     : Verify against the DTD file located by the string.\0A\00", align 1
+@.str.38 = private unnamed_addr constant [79 x i8] c"                Prepend quoted 'string' with either SYSTEM or PUBLIC keyword.\0A\00", align 1
+@.str.39 = private unnamed_addr constant [79 x i8] c"                Thus, for the distributed DTD placed in the same directory as\0A\00", align 1
+@.str.40 = private unnamed_addr constant [66 x i8] c"                the output file: -v \22SYSTEM mj2_to_metadata.dtd\22\0A\00", align 1
+@.str.41 = private unnamed_addr constant [79 x i8] c"                \22PUBLIC\22 is used with an access protocol (e.g., http:) + URL.\0A\00", align 1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @help_display() #0 {
+  %1 = load i32, i32* @stdout, align 4
+  %2 = call i32 @fprintf(i32 %1, i8* getelementptr inbounds ([56 x i8], [56 x i8]* @.str, i64 0, i64 0))
+  %3 = load i32, i32* @stdout, align 4
+  %4 = call i32 @fprintf(i32 %3, i8* getelementptr inbounds ([56 x i8], [56 x i8]* @.str.1, i64 0, i64 0))
+  %5 = load i32, i32* @stdout, align 4
+  %6 = call i32 @fprintf(i32 %5, i8* getelementptr inbounds ([53 x i8], [53 x i8]* @.str.2, i64 0, i64 0))
+  %7 = load i32, i32* @stdout, align 4
+  %8 = call i32 @fprintf(i32 %7, i8* getelementptr inbounds ([69 x i8], [69 x i8]* @.str.3, i64 0, i64 0))
+  %9 = load i32, i32* @stdout, align 4
+  %10 = call i32 @fprintf(i32 %9, i8* getelementptr inbounds ([67 x i8], [67 x i8]* @.str.4, i64 0, i64 0))
+  %11 = load i32, i32* @stdout, align 4
+  %12 = call i32 @fprintf(i32 %11, i8* getelementptr inbounds ([70 x i8], [70 x i8]* @.str.5, i64 0, i64 0))
+  %13 = load i32, i32* @stdout, align 4
+  %14 = call i32 @fprintf(i32 %13, i8* getelementptr inbounds ([74 x i8], [74 x i8]* @.str.6, i64 0, i64 0))
+  %15 = load i32, i32* @stdout, align 4
+  %16 = call i32 @fprintf(i32 %15, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.7, i64 0, i64 0))
+  %17 = load i32, i32* @stdout, align 4
+  %18 = call i32 @fprintf(i32 %17, i8* getelementptr inbounds ([12 x i8], [12 x i8]* @.str.8, i64 0, i64 0))
+  %19 = load i32, i32* @stdout, align 4
+  %20 = call i32 @fprintf(i32 %19, i8* getelementptr inbounds ([74 x i8], [74 x i8]* @.str.9, i64 0, i64 0))
+  %21 = load i32, i32* @stdout, align 4
+  %22 = call i32 @fprintf(i32 %21, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  %23 = load i32, i32* @stdout, align 4
+  %24 = call i32 @fprintf(i32 %23, i8* getelementptr inbounds ([78 x i8], [78 x i8]* @.str.11, i64 0, i64 0))
+  %25 = load i32, i32* @stdout, align 4
+  %26 = call i32 @fprintf(i32 %25, i8* getelementptr inbounds ([70 x i8], [70 x i8]* @.str.12, i64 0, i64 0))
+  %27 = load i32, i32* @stdout, align 4
+  %28 = call i32 @fprintf(i32 %27, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  %29 = load i32, i32* @stdout, align 4
+  %30 = call i32 @fprintf(i32 %29, i8* getelementptr inbounds ([73 x i8], [73 x i8]* @.str.13, i64 0, i64 0))
+  %31 = load i32, i32* @stdout, align 4
+  %32 = call i32 @fprintf(i32 %31, i8* getelementptr inbounds ([46 x i8], [46 x i8]* @.str.14, i64 0, i64 0))
+  %33 = load i32, i32* @stdout, align 4
+  %34 = call i32 @fprintf(i32 %33, i8* getelementptr inbounds ([41 x i8], [41 x i8]* @.str.15, i64 0, i64 0))
+  %35 = load i32, i32* @stdout, align 4
+  %36 = call i32 @fprintf(i32 %35, i8* getelementptr inbounds ([57 x i8], [57 x i8]* @.str.16, i64 0, i64 0))
+  %37 = load i32, i32* @stdout, align 4
+  %38 = call i32 @fprintf(i32 %37, i8* getelementptr inbounds ([40 x i8], [40 x i8]* @.str.17, i64 0, i64 0))
+  %39 = load i32, i32* @stdout, align 4
+  %40 = call i32 @fprintf(i32 %39, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  %41 = load i32, i32* @stdout, align 4
+  %42 = call i32 @fprintf(i32 %41, i8* getelementptr inbounds ([87 x i8], [87 x i8]* @.str.18, i64 0, i64 0))
+  %43 = load i32, i32* @stdout, align 4
+  %44 = call i32 @fprintf(i32 %43, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  %45 = load i32, i32* @stdout, align 4
+  %46 = call i32 @fprintf(i32 %45, i8* getelementptr inbounds ([84 x i8], [84 x i8]* @.str.19, i64 0, i64 0))
+  %47 = load i32, i32* @stdout, align 4
+  %48 = call i32 @fprintf(i32 %47, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  %49 = load i32, i32* @stdout, align 4
+  %50 = call i32 @fprintf(i32 %49, i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.20, i64 0, i64 0))
+  %51 = load i32, i32* @stdout, align 4
+  %52 = call i32 @fprintf(i32 %51, i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.21, i64 0, i64 0))
+  %53 = load i32, i32* @stdout, align 4
+  %54 = call i32 @fprintf(i32 %53, i8* getelementptr inbounds ([76 x i8], [76 x i8]* @.str.22, i64 0, i64 0))
+  %55 = load i32, i32* @stdout, align 4
+  %56 = call i32 @fprintf(i32 %55, i8* getelementptr inbounds ([64 x i8], [64 x i8]* @.str.23, i64 0, i64 0))
+  %57 = load i32, i32* @stdout, align 4
+  %58 = call i32 @fprintf(i32 %57, i8* getelementptr inbounds ([78 x i8], [78 x i8]* @.str.24, i64 0, i64 0))
+  %59 = load i32, i32* @stdout, align 4
+  %60 = call i32 @fprintf(i32 %59, i8* getelementptr inbounds ([78 x i8], [78 x i8]* @.str.25, i64 0, i64 0))
+  %61 = load i32, i32* @stdout, align 4
+  %62 = call i32 @fprintf(i32 %61, i8* getelementptr inbounds ([70 x i8], [70 x i8]* @.str.26, i64 0, i64 0))
+  %63 = load i32, i32* @stdout, align 4
+  %64 = call i32 @fprintf(i32 %63, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  %65 = load i32, i32* @stdout, align 4
+  %66 = call i32 @fprintf(i32 %65, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.27, i64 0, i64 0))
+  %67 = load i32, i32* @stdout, align 4
+  %68 = call i32 @fprintf(i32 %67, i8* getelementptr inbounds ([21 x i8], [21 x i8]* @.str.28, i64 0, i64 0))
+  %69 = load i32, i32* @stdout, align 4
+  %70 = call i32 @fprintf(i32 %69, i8* getelementptr inbounds ([48 x i8], [48 x i8]* @.str.29, i64 0, i64 0))
+  %71 = load i32, i32* @stdout, align 4
+  %72 = call i32 @fprintf(i32 %71, i8* getelementptr inbounds ([53 x i8], [53 x i8]* @.str.30, i64 0, i64 0))
+  %73 = load i32, i32* @stdout, align 4
+  %74 = call i32 @fprintf(i32 %73, i8* getelementptr inbounds ([62 x i8], [62 x i8]* @.str.31, i64 0, i64 0))
+  %75 = load i32, i32* @stdout, align 4
+  %76 = call i32 @fprintf(i32 %75, i8* getelementptr inbounds ([80 x i8], [80 x i8]* @.str.32, i64 0, i64 0))
+  %77 = load i32, i32* @stdout, align 4
+  %78 = call i32 @fprintf(i32 %77, i8* getelementptr inbounds ([37 x i8], [37 x i8]* @.str.33, i64 0, i64 0))
+  %79 = load i32, i32* @stdout, align 4
+  %80 = call i32 @fprintf(i32 %79, i8* getelementptr inbounds ([76 x i8], [76 x i8]* @.str.34, i64 0, i64 0))
+  %81 = load i32, i32* @stdout, align 4
+  %82 = call i32 @fprintf(i32 %81, i8* getelementptr inbounds ([46 x i8], [46 x i8]* @.str.35, i64 0, i64 0))
+  %83 = load i32, i32* @stdout, align 4
+  %84 = call i32 @fprintf(i32 %83, i8* getelementptr inbounds ([64 x i8], [64 x i8]* @.str.36, i64 0, i64 0))
+  %85 = load i32, i32* @stdout, align 4
+  %86 = call i32 @fprintf(i32 %85, i8* getelementptr inbounds ([68 x i8], [68 x i8]* @.str.37, i64 0, i64 0))
+  %87 = load i32, i32* @stdout, align 4
+  %88 = call i32 @fprintf(i32 %87, i8* getelementptr inbounds ([79 x i8], [79 x i8]* @.str.38, i64 0, i64 0))
+  %89 = load i32, i32* @stdout, align 4
+  %90 = call i32 @fprintf(i32 %89, i8* getelementptr inbounds ([79 x i8], [79 x i8]* @.str.39, i64 0, i64 0))
+  %91 = load i32, i32* @stdout, align 4
+  %92 = call i32 @fprintf(i32 %91, i8* getelementptr inbounds ([66 x i8], [66 x i8]* @.str.40, i64 0, i64 0))
+  %93 = load i32, i32* @stdout, align 4
+  %94 = call i32 @fprintf(i32 %93, i8* getelementptr inbounds ([79 x i8], [79 x i8]* @.str.41, i64 0, i64 0))
+  %95 = load i32, i32* @stdout, align 4
+  %96 = call i32 @fprintf(i32 %95, i8* getelementptr inbounds ([2 x i8], [2 x i8]* @.str.10, i64 0, i64 0))
+  ret void
+}
+
+declare dso_local i32 @fprintf(i32, i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

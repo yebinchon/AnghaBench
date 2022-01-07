@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_13__ {int /*<<< orphan*/  pb; TYPE_3__** streams; TYPE_2__* priv_data; } ;
-struct TYPE_12__ {int dts; int size; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_13__ {int pb; TYPE_3__** streams; TYPE_2__* priv_data; } ;
+struct TYPE_12__ {int dts; int size; int flags; } ;
 struct TYPE_11__ {TYPE_1__* codecpar; } ;
 struct TYPE_10__ {scalar_t__ leading; } ;
 struct TYPE_9__ {int width; int height; } ;
-typedef  TYPE_2__ FilmstripDemuxContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVPacket ;
-typedef  TYPE_5__ AVFormatContext ;
+typedef TYPE_2__ FilmstripDemuxContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVPacket ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  EIO ; 
- int av_get_packet (int /*<<< orphan*/ ,TYPE_4__*,int) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AV_PKT_FLAG_KEY ;
+ int EIO ;
+ int av_get_packet (int ,TYPE_4__*,int) ;
+ scalar_t__ avio_feof (int ) ;
+ int avio_skip (int ,int) ;
+ int avio_tell (int ) ;
 
 __attribute__((used)) static int read_packet(AVFormatContext *s,
                        AVPacket *pkt)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  metadata_reader_func ;
-typedef  int /*<<< orphan*/  REFGUID ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoder ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ Ok ; 
- scalar_t__ decode_frame_wic (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ initialize_decoder_wic (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int metadata_reader_func ;
+typedef int REFGUID ;
+typedef int IWICBitmapDecoder ;
+typedef int IStream ;
+typedef scalar_t__ GpStatus ;
+typedef int GpImage ;
+
+
+ int FALSE ;
+ int IWICBitmapDecoder_Release (int *) ;
+ scalar_t__ Ok ;
+ scalar_t__ decode_frame_wic (int *,int ,int ,int ,int **) ;
+ scalar_t__ initialize_decoder_wic (int *,int ,int **) ;
 
 __attribute__((used)) static GpStatus decode_image_wic(IStream *stream, REFGUID container,
         metadata_reader_func metadata_reader, GpImage **image)

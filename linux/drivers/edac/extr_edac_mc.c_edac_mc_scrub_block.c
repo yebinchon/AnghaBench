@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct page {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ PageHighMem (struct page*) ; 
- int /*<<< orphan*/  edac_atomic_scrub (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  edac_dbg (int,char*) ; 
- void* kmap_atomic (struct page*) ; 
- int /*<<< orphan*/  kunmap_atomic (void*) ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- struct page* pfn_to_page (unsigned long) ; 
- int /*<<< orphan*/  pfn_valid (unsigned long) ; 
+
+ scalar_t__ PageHighMem (struct page*) ;
+ int edac_atomic_scrub (void*,int ) ;
+ int edac_dbg (int,char*) ;
+ void* kmap_atomic (struct page*) ;
+ int kunmap_atomic (void*) ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ struct page* pfn_to_page (unsigned long) ;
+ int pfn_valid (unsigned long) ;
 
 __attribute__((used)) static void edac_mc_scrub_block(unsigned long page, unsigned long offset,
-				u32 size)
+    u32 size)
 {
-	struct page *pg;
-	void *virt_addr;
-	unsigned long flags = 0;
+ struct page *pg;
+ void *virt_addr;
+ unsigned long flags = 0;
 
-	edac_dbg(3, "\n");
+ edac_dbg(3, "\n");
 
-	/* ECC error page was not in our memory. Ignore it. */
-	if (!pfn_valid(page))
-		return;
 
-	/* Find the actual page structure then map it and fix */
-	pg = pfn_to_page(page);
+ if (!pfn_valid(page))
+  return;
 
-	if (PageHighMem(pg))
-		local_irq_save(flags);
 
-	virt_addr = kmap_atomic(pg);
+ pg = pfn_to_page(page);
 
-	/* Perform architecture specific atomic scrub operation */
-	edac_atomic_scrub(virt_addr + offset, size);
+ if (PageHighMem(pg))
+  local_irq_save(flags);
 
-	/* Unmap and complete */
-	kunmap_atomic(virt_addr);
+ virt_addr = kmap_atomic(pg);
 
-	if (PageHighMem(pg))
-		local_irq_restore(flags);
+
+ edac_atomic_scrub(virt_addr + offset, size);
+
+
+ kunmap_atomic(virt_addr);
+
+ if (PageHighMem(pg))
+  local_irq_restore(flags);
 }

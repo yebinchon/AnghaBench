@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-struct TYPE_6__ {struct poll_ctx* poll_ctx; int /*<<< orphan*/ * loop; } ;
-typedef  TYPE_1__ uv_fs_poll_t ;
-typedef  int /*<<< orphan*/  uv_fs_poll_cb ;
-struct TYPE_7__ {int /*<<< orphan*/  flags; } ;
-struct poll_ctx {unsigned int interval; struct poll_ctx* previous; int /*<<< orphan*/  path; int /*<<< orphan*/  fs_req; TYPE_2__ timer_handle; TYPE_1__* parent_handle; int /*<<< orphan*/  start_time; int /*<<< orphan*/  poll_cb; int /*<<< orphan*/ * loop; } ;
 
-/* Variables and functions */
- int UV_ENOMEM ; 
- int /*<<< orphan*/  UV_HANDLE_INTERNAL ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const*,size_t) ; 
- int /*<<< orphan*/  poll_cb ; 
- size_t strlen (char const*) ; 
- struct poll_ctx* uv__calloc (int,int) ; 
- int /*<<< orphan*/  uv__free (struct poll_ctx*) ; 
- int /*<<< orphan*/  uv__handle_start (TYPE_1__*) ; 
- int /*<<< orphan*/  uv__handle_unref (TYPE_2__*) ; 
- int uv_fs_stat (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_is_active (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_now (int /*<<< orphan*/ *) ; 
- int uv_timer_init (int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uv_loop_t ;
+typedef int uv_handle_t ;
+struct TYPE_6__ {struct poll_ctx* poll_ctx; int * loop; } ;
+typedef TYPE_1__ uv_fs_poll_t ;
+typedef int uv_fs_poll_cb ;
+struct TYPE_7__ {int flags; } ;
+struct poll_ctx {unsigned int interval; struct poll_ctx* previous; int path; int fs_req; TYPE_2__ timer_handle; TYPE_1__* parent_handle; int start_time; int poll_cb; int * loop; } ;
+
+
+ int UV_ENOMEM ;
+ int UV_HANDLE_INTERNAL ;
+ int memcpy (int ,char const*,size_t) ;
+ int poll_cb ;
+ size_t strlen (char const*) ;
+ struct poll_ctx* uv__calloc (int,int) ;
+ int uv__free (struct poll_ctx*) ;
+ int uv__handle_start (TYPE_1__*) ;
+ int uv__handle_unref (TYPE_2__*) ;
+ int uv_fs_stat (int *,int *,int ,int ) ;
+ scalar_t__ uv_is_active (int *) ;
+ int uv_now (int *) ;
+ int uv_timer_init (int *,TYPE_2__*) ;
 
 int uv_fs_poll_start(uv_fs_poll_t* handle,
                      uv_fs_poll_cb cb,
@@ -51,7 +51,7 @@ int uv_fs_poll_start(uv_fs_poll_t* handle,
   len = strlen(path);
   ctx = uv__calloc(1, sizeof(*ctx) + len);
 
-  if (ctx == NULL)
+  if (ctx == ((void*)0))
     return UV_ENOMEM;
 
   ctx->loop = loop;
@@ -72,7 +72,7 @@ int uv_fs_poll_start(uv_fs_poll_t* handle,
   if (err < 0)
     goto error;
 
-  if (handle->poll_ctx != NULL)
+  if (handle->poll_ctx != ((void*)0))
     ctx->previous = handle->poll_ctx;
   handle->poll_ctx = ctx;
   uv__handle_start(handle);

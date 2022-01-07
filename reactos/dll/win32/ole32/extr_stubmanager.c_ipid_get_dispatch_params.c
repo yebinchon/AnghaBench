@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stub_manager {int dummy; } ;
-struct ifstub {int /*<<< orphan*/ * iface; int /*<<< orphan*/  iid; int /*<<< orphan*/ * chan; int /*<<< orphan*/ * stubbuffer; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IRpcStubBuffer ;
-typedef  int /*<<< orphan*/  IRpcChannelBuffer ;
-typedef  int /*<<< orphan*/  IPID ;
-typedef  int /*<<< orphan*/  IID ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  APARTMENT ;
+struct ifstub {int * iface; int iid; int * chan; int * stubbuffer; } ;
+typedef int IUnknown ;
+typedef int IRpcStubBuffer ;
+typedef int IRpcChannelBuffer ;
+typedef int IPID ;
+typedef int IID ;
+typedef scalar_t__ HRESULT ;
+typedef int APARTMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRpcChannelBuffer_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IRpcStubBuffer_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ RPC_E_DISCONNECTED ; 
- scalar_t__ S_OK ; 
- scalar_t__ ipid_to_ifstub (int /*<<< orphan*/  const*,int /*<<< orphan*/ **,struct stub_manager**,struct ifstub**) ; 
- int /*<<< orphan*/  stub_manager_int_release (struct stub_manager*) ; 
+
+ int IRpcChannelBuffer_AddRef (int *) ;
+ int IRpcStubBuffer_AddRef (int *) ;
+ scalar_t__ RPC_E_DISCONNECTED ;
+ scalar_t__ S_OK ;
+ scalar_t__ ipid_to_ifstub (int const*,int **,struct stub_manager**,struct ifstub**) ;
+ int stub_manager_int_release (struct stub_manager*) ;
 
 HRESULT ipid_get_dispatch_params(const IPID *ipid, APARTMENT **stub_apt,
                                  struct stub_manager **manager,

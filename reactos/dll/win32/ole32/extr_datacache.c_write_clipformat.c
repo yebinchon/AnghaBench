@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  length ;
-typedef  int /*<<< orphan*/  format_name ;
-typedef  int /*<<< orphan*/  cf ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  scalar_t__ CLIPFORMAT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int GetClipboardFormatNameA (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ *,...) ; 
+
+
+
+typedef int length ;
+typedef int format_name ;
+typedef int cf ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef scalar_t__ CLIPFORMAT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int GetClipboardFormatNameA (scalar_t__,char*,int) ;
+ int IStream_Write (int *,...) ;
 
 __attribute__((used)) static HRESULT write_clipformat(IStream *stream, CLIPFORMAT clipformat)
 {
@@ -36,21 +36,21 @@ __attribute__((used)) static HRESULT write_clipformat(IStream *stream, CLIPFORMA
     else
     {
         length = GetClipboardFormatNameA(clipformat, format_name, sizeof(format_name));
-        /* If there is a clipboard format name, we need to include its terminating \0 */
+
         if (length) length++;
     }
-    hr = IStream_Write(stream, &length, sizeof(length), NULL);
+    hr = IStream_Write(stream, &length, sizeof(length), ((void*)0));
     if (FAILED(hr) || clipformat == 0)
         return hr;
 
     if (clipformat < 0xc000)
     {
         DWORD cf = clipformat;
-        hr = IStream_Write(stream, &cf, sizeof(cf), NULL);
+        hr = IStream_Write(stream, &cf, sizeof(cf), ((void*)0));
     }
     else
     {
-        hr = IStream_Write(stream, format_name, length, NULL);
+        hr = IStream_Write(stream, format_name, length, ((void*)0));
     }
     return hr;
 }

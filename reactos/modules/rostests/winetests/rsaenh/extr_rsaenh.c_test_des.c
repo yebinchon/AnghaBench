@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pbData ;
-typedef  int /*<<< orphan*/  des ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int pbData ;
+typedef int des ;
 struct TYPE_2__ {unsigned char* origstr; scalar_t__ strlen; scalar_t__ enclen; int buflen; int const* decstr; } ;
-typedef  int /*<<< orphan*/  HCRYPTKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int BYTE ;
-typedef  int BOOL ;
+typedef int HCRYPTKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALG_DES ; 
- scalar_t__ CRYPT_MODE_ECB ; 
- int CryptDecrypt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,scalar_t__*) ; 
- int CryptDestroyKey (int /*<<< orphan*/ ) ; 
- int CryptEncrypt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,scalar_t__*,int) ; 
- int CryptGetKeyParam (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,scalar_t__*,int /*<<< orphan*/ ) ; 
- int CryptSetKeyParam (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetLastError () ; 
- int /*<<< orphan*/  KP_MODE ; 
- int NTE_BAD_ALGID ; 
- int NTE_BAD_DATA ; 
- scalar_t__ STRONG_PROV ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ broken (int) ; 
- TYPE_1__* cTestData ; 
- int derive_key (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- scalar_t__ memcmp (unsigned char*,int const*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  printBytes (char*,unsigned char*,scalar_t__) ; 
 
-__attribute__((used)) static void test_des(void) 
+ int CALG_DES ;
+ scalar_t__ CRYPT_MODE_ECB ;
+ int CryptDecrypt (int ,int ,int ,int ,unsigned char*,scalar_t__*) ;
+ int CryptDestroyKey (int ) ;
+ int CryptEncrypt (int ,int ,int ,int ,unsigned char*,scalar_t__*,int) ;
+ int CryptGetKeyParam (int ,int ,int*,scalar_t__*,int ) ;
+ int CryptSetKeyParam (int ,int ,int*,int ) ;
+ int FALSE ;
+ int GetLastError () ;
+ int KP_MODE ;
+ int NTE_BAD_ALGID ;
+ int NTE_BAD_DATA ;
+ scalar_t__ STRONG_PROV ;
+ int SetLastError (int) ;
+ int TRUE ;
+ scalar_t__ broken (int) ;
+ TYPE_1__* cTestData ;
+ int derive_key (int ,int *,int) ;
+ scalar_t__ memcmp (unsigned char*,int const*,int) ;
+ int memcpy (unsigned char*,unsigned char*,scalar_t__) ;
+ int ok (int,char*,...) ;
+ int printBytes (char*,unsigned char*,scalar_t__) ;
+
+__attribute__((used)) static void test_des(void)
 {
     HCRYPTKEY hKey;
     BOOL result;
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_des(void)
 
     result = derive_key(CALG_DES, &hKey, 0);
     if (!result) {
-        /* rsaenh compiled without OpenSSL */
+
         ok(GetLastError()==NTE_BAD_ALGID, "%08x\n", GetLastError());
         return;
     }
@@ -70,18 +70,18 @@ __attribute__((used)) static void test_des(void)
     dwMode = CRYPT_MODE_ECB;
     result = CryptSetKeyParam(hKey, KP_MODE, (BYTE*)&dwMode, 0);
     ok(result, "%08x\n", GetLastError());
-    
+
     dwLen = sizeof(DWORD);
     result = CryptGetKeyParam(hKey, KP_MODE, (BYTE*)&dwMode, &dwLen, 0);
     ok(result, "%08x\n", GetLastError());
     ok(dwMode == CRYPT_MODE_ECB, "Expected CRYPT_MODE_ECB, got %d\n", dwMode);
-    
+
     for (i=0; i<sizeof(pbData); i++) pbData[i] = (unsigned char)i;
-    
+
     dwLen = 13;
     result = CryptEncrypt(hKey, 0, TRUE, 0, pbData, &dwLen, 16);
     ok(result, "%08x\n", GetLastError());
-    
+
     ok(!memcmp(pbData, des, sizeof(des)), "DES encryption failed!\n");
 
     result = CryptDecrypt(hKey, 0, TRUE, 0, pbData, &dwLen);
@@ -108,18 +108,18 @@ __attribute__((used)) static void test_des(void)
           printBytes("got",pbData,dwLen);
       }
 
-      /* Test bad data:
-         Decrypting a block of bad data with Final = TRUE should restore the
-         initial state of the key as well as decrypting a block of good data.
-       */
 
-      /* Changing key state by setting Final = FALSE */
+
+
+
+
+
       dwLen = cTestData[i].buflen;
       memcpy(pbData, enc_data, cTestData[i].buflen);
       result = CryptDecrypt(hKey, 0, FALSE, 0, pbData, &dwLen);
       ok(result, "%08x\n", GetLastError());
 
-      /* Restoring key state by decrypting bad_data with Final = TRUE */
+
       memcpy(bad_data, enc_data, cTestData[i].buflen);
       bad_data[cTestData[i].buflen - 1] = ~bad_data[cTestData[i].buflen - 1];
       SetLastError(0xdeadbeef);
@@ -129,7 +129,7 @@ __attribute__((used)) static void test_des(void)
       ok(dwLen==cTestData[i].buflen,"length incorrect, got %d, expected %d\n",dwLen,cTestData[i].buflen);
       ok(memcmp(pbData,cTestData[i].decstr,cTestData[1].enclen)==0,"decryption incorrect %d\n",i);
 
-      /* Checking key state */
+
       dwLen = cTestData[i].buflen;
       memcpy(pbData, enc_data, cTestData[i].buflen);
       result = CryptDecrypt(hKey, 0, TRUE, 0, pbData, &dwLen);
@@ -147,7 +147,7 @@ __attribute__((used)) static void test_des(void)
     result = CryptDestroyKey(hKey);
     ok(result, "%08x\n", GetLastError());
 
-    /* Windows >= XP changed the way DES keys are derived, this test ensures we don't break that */
+
     derive_key(CALG_DES, &hKey, 56);
 
     dwMode = CRYPT_MODE_ECB;
@@ -161,7 +161,7 @@ __attribute__((used)) static void test_des(void)
     ok(result, "%08x\n", GetLastError());
     ok(!memcmp(pbData, des, sizeof(des)) || broken(
     !memcmp(pbData, des_old_behavior, sizeof(des)) ||
-    (STRONG_PROV && !memcmp(pbData, des_old_strong, sizeof(des)))) /* <= 2000 */,
+    (STRONG_PROV && !memcmp(pbData, des_old_strong, sizeof(des)))) ,
        "DES encryption failed!\n");
 
     result = CryptDestroyKey(hKey);

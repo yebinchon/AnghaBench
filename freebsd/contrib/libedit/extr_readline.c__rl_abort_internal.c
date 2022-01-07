@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  e ; 
- int /*<<< orphan*/  el_beep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  longjmp (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  topbuf ; 
+ int e ;
+ int el_beep (int ) ;
+ int longjmp (int ,int) ;
+ int topbuf ;
 
 int
 _rl_abort_internal(void)
 {
-	el_beep(e);
-	longjmp(topbuf, 1);
-	/*NOTREACHED*/
+ el_beep(e);
+ longjmp(topbuf, 1);
+
 }

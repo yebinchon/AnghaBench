@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t size; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  TYPE_1__ CBuf ;
-typedef  int /*<<< orphan*/  Byte ;
 
-/* Variables and functions */
- scalar_t__ ISzAlloc_Alloc (int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t size; int * data; } ;
+typedef int ISzAllocPtr ;
+typedef TYPE_1__ CBuf ;
+typedef int Byte ;
+
+
+ scalar_t__ ISzAlloc_Alloc (int ,size_t) ;
 
 int Buf_Create(CBuf *p, size_t size, ISzAllocPtr alloc)
 {

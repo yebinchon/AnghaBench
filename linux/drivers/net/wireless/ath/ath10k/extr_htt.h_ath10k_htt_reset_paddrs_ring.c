@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ath10k_htt {TYPE_1__* rx_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* htt_reset_paddrs_ring ) (struct ath10k_htt*,int) ;} ;
+struct TYPE_2__ {int (* htt_reset_paddrs_ring ) (struct ath10k_htt*,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct ath10k_htt*,int) ; 
+
+ int stub1 (struct ath10k_htt*,int) ;
 
 __attribute__((used)) static inline void ath10k_htt_reset_paddrs_ring(struct ath10k_htt *htt, int idx)
 {
-	if (htt->rx_ops->htt_reset_paddrs_ring)
-		htt->rx_ops->htt_reset_paddrs_ring(htt, idx);
+ if (htt->rx_ops->htt_reset_paddrs_ring)
+  htt->rx_ops->htt_reset_paddrs_ring(htt, idx);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef int ULONG ;
 struct TYPE_7__ {scalar_t__ Address; scalar_t__ FileOffset; scalar_t__ FunctionOffset; scalar_t__ SourceLine; } ;
-typedef  int /*<<< orphan*/  ROSSYM_ENTRY ;
-typedef  TYPE_1__* PROSSYM_ENTRY ;
+typedef int ROSSYM_ENTRY ;
+typedef TYPE_1__* PROSSYM_ENTRY ;
 
-/* Variables and functions */
- scalar_t__ CompareSymEntry ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  qsort (TYPE_1__*,int,int,int (*) (void const*,void const*)) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ CompareSymEntry ;
+ int fprintf (int ,char*) ;
+ TYPE_1__* malloc (int) ;
+ int qsort (TYPE_1__*,int,int,int (*) (void const*,void const*)) ;
+ int stderr ;
 
 __attribute__((used)) static int
 MergeStabsAndCoffs(ULONG *MergedSymbolCount, PROSSYM_ENTRY *MergedSymbols,
@@ -38,11 +38,11 @@ MergeStabsAndCoffs(ULONG *MergedSymbolCount, PROSSYM_ENTRY *MergedSymbols,
     *MergedSymbolCount = 0;
     if (StabSymbolsCount == 0)
     {
-        *MergedSymbols = NULL;
+        *MergedSymbols = ((void*)0);
         return 0;
     }
     *MergedSymbols = malloc((StabSymbolsCount + CoffSymbolsCount) * sizeof(ROSSYM_ENTRY));
-    if (*MergedSymbols == NULL)
+    if (*MergedSymbols == ((void*)0))
     {
         fprintf(stderr, "Unable to allocate memory for merged symbols\n");
         return 1;
@@ -51,7 +51,7 @@ MergeStabsAndCoffs(ULONG *MergedSymbolCount, PROSSYM_ENTRY *MergedSymbols,
     StabFunctionStartAddress = 0;
     StabFunctionStringOffset = 0;
     CoffFunctionStringOffset = 0;
-    CoffFunctionSymbol = NULL;
+    CoffFunctionSymbol = ((void*)0);
     CoffIndex = 0;
     for (StabIndex = 0; StabIndex < StabSymbolsCount; StabIndex++)
     {
@@ -100,7 +100,7 @@ MergeStabsAndCoffs(ULONG *MergedSymbolCount, PROSSYM_ENTRY *MergedSymbols,
         StabFunctionStringOffset = NewStabFunctionStringOffset;
         (*MergedSymbolCount)++;
     }
-    /* Handle functions that have no analog in the upstream data */
+
     for (CoffIndex = 0; CoffIndex < CoffSymbolsCount; CoffIndex++)
     {
         if (CoffSymbols[CoffIndex].Address &&

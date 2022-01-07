@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * mbuf_t ;
-typedef  scalar_t__ mbuf_how_t ;
-typedef  int /*<<< orphan*/  errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  EWOULDBLOCK ; 
- scalar_t__ MBUF_WAITOK ; 
- int /*<<< orphan*/ * m_getpacket_how (scalar_t__) ; 
+
+
+
+typedef int * mbuf_t ;
+typedef scalar_t__ mbuf_how_t ;
+typedef int errno_t ;
+
+
+ int ENOMEM ;
+ int EWOULDBLOCK ;
+ scalar_t__ MBUF_WAITOK ;
+ int * m_getpacket_how (scalar_t__) ;
 
 errno_t
 mbuf_getpacket(mbuf_how_t how, mbuf_t *mbuf)
 {
-	/* Must set *mbuf to NULL in failure case */
-	errno_t	error = 0;
 
-	*mbuf = m_getpacket_how(how);
+ errno_t error = 0;
 
-	if (*mbuf == NULL) {
-		if (how == MBUF_WAITOK)
-			error = ENOMEM;
-		else
-			error = EWOULDBLOCK;
-	}
+ *mbuf = m_getpacket_how(how);
 
-	return (error);
+ if (*mbuf == ((void*)0)) {
+  if (how == MBUF_WAITOK)
+   error = ENOMEM;
+  else
+   error = EWOULDBLOCK;
+ }
+
+ return (error);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  REAL_VALUE_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- scalar_t__ REAL_EXP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REAL_TYPE ; 
- int /*<<< orphan*/  SET_REAL_EXP (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TYPE_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VOID_TYPE ; 
- int /*<<< orphan*/  build_real (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dconstpi ; 
- int /*<<< orphan*/  real_convert (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ real_onep (int /*<<< orphan*/ ) ; 
- scalar_t__ real_zerop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  validate_arglist (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int REAL_VALUE_TYPE ;
+
+
+ int NULL_TREE ;
+ scalar_t__ REAL_EXP (int *) ;
+ int REAL_TYPE ;
+ int SET_REAL_EXP (int *,scalar_t__) ;
+ int TREE_VALUE (int ) ;
+ int TYPE_MODE (int ) ;
+ int VOID_TYPE ;
+ int build_real (int ,int ) ;
+ int dconstpi ;
+ int real_convert (int *,int ,int *) ;
+ scalar_t__ real_onep (int ) ;
+ scalar_t__ real_zerop (int ) ;
+ int validate_arglist (int ,int ,int ) ;
 
 __attribute__((used)) static tree
 fold_builtin_atan (tree arglist, tree type)
@@ -37,11 +37,11 @@ fold_builtin_atan (tree arglist, tree type)
   if (!validate_arglist (arglist, REAL_TYPE, VOID_TYPE))
     return NULL_TREE;
 
-  /* Optimize atan(0.0) = 0.0.  */
+
   if (real_zerop (arg))
     return arg;
 
-  /* Optimize atan(1.0) = pi/4.  */
+
   if (real_onep (arg))
     {
       REAL_VALUE_TYPE cst;

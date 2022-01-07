@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int /*<<< orphan*/  SHA_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChallengeHash (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  HashNtPasswordHash (char*,char*) ; 
- int /*<<< orphan*/  NtPasswordHash (char*,int,char*) ; 
- int /*<<< orphan*/  SHA1_End (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SHA1_Final (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA1_Update (int /*<<< orphan*/ *,char*,int) ; 
- int SHA_DIGEST_LENGTH ; 
- char toupper (char) ; 
+
+
+
+typedef char u_char ;
+typedef int SHA_CTX ;
+
+
+ int ChallengeHash (char*,char*,char*,char*) ;
+ int HashNtPasswordHash (char*,char*) ;
+ int NtPasswordHash (char*,int,char*) ;
+ int SHA1_End (int *,char*) ;
+ int SHA1_Final (char*,int *) ;
+ int SHA1_Init (int *) ;
+ int SHA1_Update (int *,char*,int) ;
+ int SHA_DIGEST_LENGTH ;
+ char toupper (char) ;
 
 void
 GenerateAuthenticatorResponse(char *Password, int PasswordLen,
@@ -37,9 +37,9 @@ GenerateAuthenticatorResponse(char *Password, int PasswordLen,
   u_char Digest[SHA_DIGEST_LENGTH];
   int i;
 
-      /*
-       * "Magic" constants used in response generation
-       */
+
+
+
   char Magic1[39] =
          {0x4D, 0x61, 0x67, 0x69, 0x63, 0x20, 0x73, 0x65, 0x72, 0x76,
           0x65, 0x72, 0x20, 0x74, 0x6F, 0x20, 0x63, 0x6C, 0x69, 0x65,
@@ -53,13 +53,13 @@ GenerateAuthenticatorResponse(char *Password, int PasswordLen,
           0x72, 0x65, 0x20, 0x74, 0x68, 0x61, 0x6E, 0x20, 0x6F, 0x6E,
           0x65, 0x20, 0x69, 0x74, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6F,
           0x6E};
-      /*
-       * Hash the password with MD4
-       */
+
+
+
   NtPasswordHash(Password, PasswordLen, PasswordHash);
-      /*
-       * Now hash the hash
-       */
+
+
+
   HashNtPasswordHash(PasswordHash, PasswordHashHash);
 
   SHA1_Init(&Context);
@@ -72,14 +72,6 @@ GenerateAuthenticatorResponse(char *Password, int PasswordLen,
   SHA1_Update(&Context, Digest, 20);
   SHA1_Update(&Context, Challenge, 8);
   SHA1_Update(&Context, Magic2, 41);
-
-      /*
-       * Encode the value of 'Digest' as "S=" followed by
-       * 40 ASCII hexadecimal digits and return it in
-       * AuthenticatorResponse.
-       * For example,
-       *   "S=0123456789ABCDEF0123456789ABCDEF01234567"
-       */
   AuthenticatorResponse[0] = 'S';
   AuthenticatorResponse[1] = '=';
   SHA1_End(&Context, AuthenticatorResponse + 2);

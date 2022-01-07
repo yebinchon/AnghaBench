@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* bitmap; } ;
-typedef  TYPE_1__* PEXT2_GENERIC_BITMAP ;
+typedef TYPE_1__* PEXT2_GENERIC_BITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
+
+ int RtlFreeHeap (int ,int ,TYPE_1__*) ;
+ int RtlGetProcessHeap () ;
 
 void ext2_free_generic_bitmap(PEXT2_GENERIC_BITMAP bitmap)
 {

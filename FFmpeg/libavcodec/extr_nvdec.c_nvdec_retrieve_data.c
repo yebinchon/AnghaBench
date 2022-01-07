@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_9__ ;
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
-typedef  struct TYPE_17__   TYPE_15__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_26__ {int /*<<< orphan*/  sw_format; } ;
-struct TYPE_25__ {int progressive_frame; int /*<<< orphan*/  output_stream; int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_26__ TYPE_9__ ;
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+typedef struct TYPE_17__ TYPE_15__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_26__ {int sw_format; } ;
+struct TYPE_25__ {int progressive_frame; int output_stream; int member_0; } ;
 struct TYPE_24__ {scalar_t__ hwaccel_priv; } ;
-struct TYPE_23__ {TYPE_4__* cudl; int /*<<< orphan*/  decoder; TYPE_3__* cvdl; int /*<<< orphan*/  cuda_ctx; int /*<<< orphan*/  stream; } ;
-struct TYPE_22__ {TYPE_15__* decoder_ref; TYPE_15__* idx_ref; int /*<<< orphan*/  idx; } ;
-struct TYPE_21__ {int /*<<< orphan*/  (* cuCtxPopCurrent ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* cuCtxPushCurrent ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_20__ {int /*<<< orphan*/  (* cuvidUnmapVideoFrame ) (int /*<<< orphan*/ ,scalar_t__) ;int /*<<< orphan*/  (* cuvidMapVideoFrame ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,unsigned int*,TYPE_8__*) ;} ;
+struct TYPE_23__ {TYPE_4__* cudl; int decoder; TYPE_3__* cvdl; int cuda_ctx; int stream; } ;
+struct TYPE_22__ {TYPE_15__* decoder_ref; TYPE_15__* idx_ref; int idx; } ;
+struct TYPE_21__ {int (* cuCtxPopCurrent ) (int *) ;int (* cuCtxPushCurrent ) (int ) ;} ;
+struct TYPE_20__ {int (* cuvidUnmapVideoFrame ) (int ,scalar_t__) ;int (* cuvidMapVideoFrame ) (int ,int ,scalar_t__*,unsigned int*,TYPE_8__*) ;} ;
 struct TYPE_19__ {scalar_t__ data; } ;
 struct TYPE_18__ {scalar_t__ data; } ;
 struct TYPE_17__ {scalar_t__ data; } ;
-struct TYPE_16__ {int* linesize; int height; int /*<<< orphan*/ * buf; int /*<<< orphan*/ ** data; TYPE_2__* hw_frames_ctx; TYPE_1__* private_ref; } ;
-typedef  TYPE_5__ NVDECFrame ;
-typedef  TYPE_6__ NVDECDecoder ;
-typedef  TYPE_7__ FrameDecodeData ;
-typedef  scalar_t__ CUdeviceptr ;
-typedef  int /*<<< orphan*/  CUcontext ;
-typedef  TYPE_8__ CUVIDPROCPARAMS ;
-typedef  TYPE_9__ AVHWFramesContext ;
-typedef  TYPE_10__ AVFrame ;
+struct TYPE_16__ {int* linesize; int height; int * buf; int ** data; TYPE_2__* hw_frames_ctx; TYPE_1__* private_ref; } ;
+typedef TYPE_5__ NVDECFrame ;
+typedef TYPE_6__ NVDECDecoder ;
+typedef TYPE_7__ FrameDecodeData ;
+typedef scalar_t__ CUdeviceptr ;
+typedef int CUcontext ;
+typedef TYPE_8__ CUVIDPROCPARAMS ;
+typedef TYPE_9__ AVHWFramesContext ;
+typedef TYPE_10__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_BUFFER_FLAG_READONLY ; 
- int CHECK_CU (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_buffer_create (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- void* av_buffer_ref (TYPE_15__*) ; 
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (TYPE_5__**) ; 
- TYPE_5__* av_mallocz (int) ; 
- int /*<<< orphan*/  av_pix_fmt_get_chroma_sub_sample (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  nvdec_unmap_mapped_frame ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,unsigned int*,TYPE_8__*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AV_BUFFER_FLAG_READONLY ;
+ int CHECK_CU (int ) ;
+ int ENOMEM ;
+ int av_buffer_create (int *,int,int ,void*,int ) ;
+ void* av_buffer_ref (TYPE_15__*) ;
+ int av_buffer_unref (int *) ;
+ int av_freep (TYPE_5__**) ;
+ TYPE_5__* av_mallocz (int) ;
+ int av_pix_fmt_get_chroma_sub_sample (int ,int*,int*) ;
+ int nvdec_unmap_mapped_frame ;
+ int stub1 (int ) ;
+ int stub2 (int ,int ,scalar_t__*,unsigned int*,TYPE_8__*) ;
+ int stub3 (int ,scalar_t__) ;
+ int stub4 (int *) ;
 
 __attribute__((used)) static int nvdec_retrieve_data(void *logctx, AVFrame *frame)
 {
-    FrameDecodeData  *fdd = (FrameDecodeData*)frame->private_ref->data;
-    NVDECFrame        *cf = (NVDECFrame*)fdd->hwaccel_priv;
+    FrameDecodeData *fdd = (FrameDecodeData*)frame->private_ref->data;
+    NVDECFrame *cf = (NVDECFrame*)fdd->hwaccel_priv;
     NVDECDecoder *decoder = (NVDECDecoder*)cf->decoder_ref->data;
 
     AVHWFramesContext *hwctx = (AVHWFramesContext *)frame->hw_frames_ctx->data;
 
     CUVIDPROCPARAMS vpp = { 0 };
-    NVDECFrame *unmap_data = NULL;
+    NVDECFrame *unmap_data = ((void*)0);
 
     CUcontext dummy;
     CUdeviceptr devptr;

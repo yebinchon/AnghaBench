@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_DEFAULT_PRECIS ; 
- int /*<<< orphan*/  CreateFontA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  DEFAULT_CHARSET ; 
- int /*<<< orphan*/  DEFAULT_PITCH ; 
- int /*<<< orphan*/  DEFAULT_QUALITY ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  FW_DONTCARE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int GetTextFaceA (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  OUT_DEFAULT_PRECIS ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  _strcmpi (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int name ;
+typedef int HGDIOBJ ;
+typedef int HFONT ;
+typedef int HDC ;
+typedef int BOOL ;
+
+
+ int CLIP_DEFAULT_PRECIS ;
+ int CreateFontA (int ,int ,int ,int ,int ,int,int,int,int ,int ,int ,int ,int ,char const*) ;
+ int DEFAULT_CHARSET ;
+ int DEFAULT_PITCH ;
+ int DEFAULT_QUALITY ;
+ int DeleteObject (int ) ;
+ int FALSE ;
+ int FW_DONTCARE ;
+ int GetLastError () ;
+ int GetTextFaceA (int ,int,char*) ;
+ int OUT_DEFAULT_PRECIS ;
+ int SelectObject (int ,int ) ;
+ int SetLastError (int) ;
+ int _strcmpi (char*,char const*) ;
+ int ok (int,char*,int ,char const*) ;
 
 __attribute__((used)) static BOOL is_font_available(HDC hdc, const char* fontName)
 {

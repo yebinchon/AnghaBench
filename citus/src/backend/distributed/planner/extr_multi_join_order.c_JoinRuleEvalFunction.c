@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * RuleEvalFunction ;
-typedef  size_t JoinRuleType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- size_t CARTESIAN_PRODUCT ; 
- int /*<<< orphan*/  CartesianProduct ; 
- size_t DUAL_PARTITION_JOIN ; 
- int /*<<< orphan*/  DualPartitionJoin ; 
- size_t LOCAL_PARTITION_JOIN ; 
- int /*<<< orphan*/  LocalJoin ; 
- size_t REFERENCE_JOIN ; 
- int /*<<< orphan*/  ReferenceJoin ; 
- int /*<<< orphan*/ ** RuleEvalFunctionArray ; 
- size_t SINGLE_HASH_PARTITION_JOIN ; 
- size_t SINGLE_RANGE_PARTITION_JOIN ; 
- int /*<<< orphan*/  SinglePartitionJoin ; 
+
+
+
+typedef int * RuleEvalFunction ;
+typedef size_t JoinRuleType ;
+
+
+ int Assert (int ) ;
+ size_t CARTESIAN_PRODUCT ;
+ int CartesianProduct ;
+ size_t DUAL_PARTITION_JOIN ;
+ int DualPartitionJoin ;
+ size_t LOCAL_PARTITION_JOIN ;
+ int LocalJoin ;
+ size_t REFERENCE_JOIN ;
+ int ReferenceJoin ;
+ int ** RuleEvalFunctionArray ;
+ size_t SINGLE_HASH_PARTITION_JOIN ;
+ size_t SINGLE_RANGE_PARTITION_JOIN ;
+ int SinglePartitionJoin ;
 
 __attribute__((used)) static RuleEvalFunction
 JoinRuleEvalFunction(JoinRuleType ruleType)
 {
-	static bool ruleEvalFunctionsInitialized = false;
-	RuleEvalFunction ruleEvalFunction = NULL;
+ static bool ruleEvalFunctionsInitialized = 0;
+ RuleEvalFunction ruleEvalFunction = ((void*)0);
 
-	if (!ruleEvalFunctionsInitialized)
-	{
-		RuleEvalFunctionArray[REFERENCE_JOIN] = &ReferenceJoin;
-		RuleEvalFunctionArray[LOCAL_PARTITION_JOIN] = &LocalJoin;
-		RuleEvalFunctionArray[SINGLE_RANGE_PARTITION_JOIN] = &SinglePartitionJoin;
-		RuleEvalFunctionArray[SINGLE_HASH_PARTITION_JOIN] = &SinglePartitionJoin;
-		RuleEvalFunctionArray[DUAL_PARTITION_JOIN] = &DualPartitionJoin;
-		RuleEvalFunctionArray[CARTESIAN_PRODUCT] = &CartesianProduct;
+ if (!ruleEvalFunctionsInitialized)
+ {
+  RuleEvalFunctionArray[REFERENCE_JOIN] = &ReferenceJoin;
+  RuleEvalFunctionArray[LOCAL_PARTITION_JOIN] = &LocalJoin;
+  RuleEvalFunctionArray[SINGLE_RANGE_PARTITION_JOIN] = &SinglePartitionJoin;
+  RuleEvalFunctionArray[SINGLE_HASH_PARTITION_JOIN] = &SinglePartitionJoin;
+  RuleEvalFunctionArray[DUAL_PARTITION_JOIN] = &DualPartitionJoin;
+  RuleEvalFunctionArray[CARTESIAN_PRODUCT] = &CartesianProduct;
 
-		ruleEvalFunctionsInitialized = true;
-	}
+  ruleEvalFunctionsInitialized = 1;
+ }
 
-	ruleEvalFunction = RuleEvalFunctionArray[ruleType];
-	Assert(ruleEvalFunction != NULL);
+ ruleEvalFunction = RuleEvalFunctionArray[ruleType];
+ Assert(ruleEvalFunction != ((void*)0));
 
-	return ruleEvalFunction;
+ return ruleEvalFunction;
 }

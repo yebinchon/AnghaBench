@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_NONREDUCEDSCALARBYTES ; 
- int /*<<< orphan*/  crypto_core_ristretto255_SCALARBYTES ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_add (unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_complement (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_invert (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_mul (unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_negate (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_random (unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_reduce (unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_ristretto255_scalar_sub (unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  randombytes_buf (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- int /*<<< orphan*/  sodium_is_zero (unsigned char*,int /*<<< orphan*/ ) ; 
- scalar_t__ sodium_malloc (int /*<<< orphan*/ ) ; 
+ int assert (int ) ;
+ int crypto_core_ristretto255_NONREDUCEDSCALARBYTES ;
+ int crypto_core_ristretto255_SCALARBYTES ;
+ int crypto_core_ristretto255_scalar_add (unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_core_ristretto255_scalar_complement (unsigned char*,unsigned char*) ;
+ int crypto_core_ristretto255_scalar_invert (unsigned char*,unsigned char*) ;
+ int crypto_core_ristretto255_scalar_mul (unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_core_ristretto255_scalar_negate (unsigned char*,unsigned char*) ;
+ int crypto_core_ristretto255_scalar_random (unsigned char*) ;
+ int crypto_core_ristretto255_scalar_reduce (unsigned char*,unsigned char*) ;
+ int crypto_core_ristretto255_scalar_sub (unsigned char*,unsigned char*,unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char*,int ) ;
+ int randombytes_buf (unsigned char*,int ) ;
+ int sodium_free (unsigned char*) ;
+ int sodium_is_zero (unsigned char*,int ) ;
+ scalar_t__ sodium_malloc (int ) ;
 
 __attribute__((used)) static void
 tv4(void)

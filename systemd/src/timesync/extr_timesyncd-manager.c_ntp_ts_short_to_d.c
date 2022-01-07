@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ntp_ts_short {int /*<<< orphan*/  frac; int /*<<< orphan*/  sec; } ;
 
-/* Variables and functions */
- double be16toh (int /*<<< orphan*/ ) ; 
+
+
+
+struct ntp_ts_short {int frac; int sec; } ;
+
+
+ double be16toh (int ) ;
 
 __attribute__((used)) static double ntp_ts_short_to_d(const struct ntp_ts_short *ts) {
         return be16toh(ts->sec) + (be16toh(ts->frac) / 65536.0);

@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  tuplesSent; } ;
-struct TYPE_6__ {int /*<<< orphan*/  es_processed; int /*<<< orphan*/  es_param_list_info; } ;
-typedef  int /*<<< orphan*/  Query ;
-typedef  int /*<<< orphan*/  ParamListInfo ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__ EState ;
-typedef  int /*<<< orphan*/  DestReceiver ;
-typedef  TYPE_2__ CitusCopyDestReceiver ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BuildColumnNameListFromTargetList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* CreateCitusCopyDestReceiver (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- char DISTRIBUTE_BY_NONE ; 
- int /*<<< orphan*/  ExecuteQueryIntoDestReceiver (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NIL ; 
- int PartitionColumnIndexFromColumnList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char PartitionMethod (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XACT_MODIFICATION_DATA ; 
- int /*<<< orphan*/  XactModificationLevel ; 
- int /*<<< orphan*/ * copyObject (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int tuplesSent; } ;
+struct TYPE_6__ {int es_processed; int es_param_list_info; } ;
+typedef int Query ;
+typedef int ParamListInfo ;
+typedef int Oid ;
+typedef int List ;
+typedef TYPE_1__ EState ;
+typedef int DestReceiver ;
+typedef TYPE_2__ CitusCopyDestReceiver ;
+
+
+ int * BuildColumnNameListFromTargetList (int ,int *) ;
+ TYPE_2__* CreateCitusCopyDestReceiver (int ,int *,int,TYPE_1__*,int,int *) ;
+ char DISTRIBUTE_BY_NONE ;
+ int ExecuteQueryIntoDestReceiver (int *,int ,int *) ;
+ int * NIL ;
+ int PartitionColumnIndexFromColumnList (int ,int *) ;
+ char PartitionMethod (int ) ;
+ int XACT_MODIFICATION_DATA ;
+ int XactModificationLevel ;
+ int * copyObject (int *) ;
 
 __attribute__((used)) static void
 ExecuteSelectIntoRelation(Oid targetRelationId, List *insertTargetList,
-						  Query *selectQuery, EState *executorState)
+        Query *selectQuery, EState *executorState)
 {
-	ParamListInfo paramListInfo = executorState->es_param_list_info;
-	int partitionColumnIndex = -1;
-	List *columnNameList = NIL;
-	bool stopOnFailure = false;
-	char partitionMethod = 0;
-	CitusCopyDestReceiver *copyDest = NULL;
-	Query *queryCopy = NULL;
+ ParamListInfo paramListInfo = executorState->es_param_list_info;
+ int partitionColumnIndex = -1;
+ List *columnNameList = NIL;
+ bool stopOnFailure = 0;
+ char partitionMethod = 0;
+ CitusCopyDestReceiver *copyDest = ((void*)0);
+ Query *queryCopy = ((void*)0);
 
-	partitionMethod = PartitionMethod(targetRelationId);
-	if (partitionMethod == DISTRIBUTE_BY_NONE)
-	{
-		stopOnFailure = true;
-	}
+ partitionMethod = PartitionMethod(targetRelationId);
+ if (partitionMethod == DISTRIBUTE_BY_NONE)
+ {
+  stopOnFailure = 1;
+ }
 
-	/* Get column name list and partition column index for the target table */
-	columnNameList = BuildColumnNameListFromTargetList(targetRelationId,
-													   insertTargetList);
-	partitionColumnIndex = PartitionColumnIndexFromColumnList(targetRelationId,
-															  columnNameList);
 
-	/* set up a DestReceiver that copies into the distributed table */
-	copyDest = CreateCitusCopyDestReceiver(targetRelationId, columnNameList,
-										   partitionColumnIndex, executorState,
-										   stopOnFailure, NULL);
+ columnNameList = BuildColumnNameListFromTargetList(targetRelationId,
+                insertTargetList);
+ partitionColumnIndex = PartitionColumnIndexFromColumnList(targetRelationId,
+                 columnNameList);
 
-	/*
-	 * Make a copy of the query, since ExecuteQueryIntoDestReceiver may scribble on it
-	 * and we want it to be replanned every time if it is stored in a prepared
-	 * statement.
-	 */
-	queryCopy = copyObject(selectQuery);
 
-	ExecuteQueryIntoDestReceiver(queryCopy, paramListInfo, (DestReceiver *) copyDest);
+ copyDest = CreateCitusCopyDestReceiver(targetRelationId, columnNameList,
+             partitionColumnIndex, executorState,
+             stopOnFailure, ((void*)0));
 
-	executorState->es_processed = copyDest->tuplesSent;
 
-	XactModificationLevel = XACT_MODIFICATION_DATA;
+
+
+
+
+ queryCopy = copyObject(selectQuery);
+
+ ExecuteQueryIntoDestReceiver(queryCopy, paramListInfo, (DestReceiver *) copyDest);
+
+ executorState->es_processed = copyDest->tuplesSent;
+
+ XactModificationLevel = XACT_MODIFICATION_DATA;
 }

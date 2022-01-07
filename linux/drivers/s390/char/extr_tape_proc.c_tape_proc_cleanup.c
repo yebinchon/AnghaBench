@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  remove_proc_entry (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * tape_proc_devices ; 
+ int remove_proc_entry (char*,int *) ;
+ int * tape_proc_devices ;
 
 void
 tape_proc_cleanup(void)
 {
-	if (tape_proc_devices != NULL)
-		remove_proc_entry ("tapedevices", NULL);
+ if (tape_proc_devices != ((void*)0))
+  remove_proc_entry ("tapedevices", ((void*)0));
 }

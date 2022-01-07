@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int current_line; int /*<<< orphan*/  write_baton; int /*<<< orphan*/  write; TYPE_2__* read_baton; int /*<<< orphan*/  seek; int /*<<< orphan*/  tell; int /*<<< orphan*/  readline; int /*<<< orphan*/  existed; int /*<<< orphan*/  keywords; void* hunks; void* lines; int /*<<< orphan*/  eol_style; } ;
-typedef  TYPE_1__ target_content_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_operation_kind_t ;
-struct TYPE_8__ {scalar_t__ offset; int /*<<< orphan*/  const* value; } ;
-typedef  TYPE_2__ prop_read_baton_t ;
-struct TYPE_9__ {int /*<<< orphan*/  patched_value; int /*<<< orphan*/  const* value; TYPE_1__* content; int /*<<< orphan*/  operation; int /*<<< orphan*/  name; } ;
-typedef  TYPE_3__ prop_patch_target_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int current_line; int write_baton; int write; TYPE_2__* read_baton; int seek; int tell; int readline; int existed; int keywords; void* hunks; void* lines; int eol_style; } ;
+typedef TYPE_1__ target_content_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_string_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_operation_kind_t ;
+struct TYPE_8__ {scalar_t__ offset; int const* value; } ;
+typedef TYPE_2__ prop_read_baton_t ;
+struct TYPE_9__ {int patched_value; int const* value; TYPE_1__* content; int operation; int name; } ;
+typedef TYPE_3__ prop_patch_target_t ;
 struct TYPE_10__ {scalar_t__ db_kind; scalar_t__ deleted; } ;
-typedef  TYPE_4__ patch_target_t ;
-typedef  int /*<<< orphan*/  hunk_info_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_off_t ;
+typedef TYPE_4__ patch_target_t ;
+typedef int hunk_info_t ;
+typedef int apr_pool_t ;
+typedef int apr_off_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* apr_array_make (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  apr_hash_make (int /*<<< orphan*/ *) ; 
- void* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  readline_prop ; 
- int /*<<< orphan*/  seek_prop ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_stringbuf_create_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_none ; 
- int /*<<< orphan*/  svn_wc_prop_get2 (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tell_prop ; 
- int /*<<< orphan*/  write_prop ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* apr_array_make (int *,int ,int) ;
+ int apr_hash_make (int *) ;
+ void* apr_pcalloc (int *,int) ;
+ int apr_pstrdup (int *,char const*) ;
+ int readline_prop ;
+ int seek_prop ;
+ scalar_t__ svn_node_none ;
+ int svn_stringbuf_create_empty (int *) ;
+ int svn_subst_eol_style_none ;
+ int svn_wc_prop_get2 (int const**,int *,char const*,char const*,int *,int *) ;
+ int tell_prop ;
+ int write_prop ;
 
 __attribute__((used)) static svn_error_t *
 init_prop_target(prop_patch_target_t **prop_target,
@@ -62,7 +62,7 @@ init_prop_target(prop_patch_target_t **prop_target,
 
   content = apr_pcalloc(result_pool, sizeof(*content));
 
-  /* All other fields are FALSE or NULL due to apr_pcalloc(). */
+
   content->current_line = 1;
   content->eol_style = svn_subst_eol_style_none;
   content->lines = apr_array_make(result_pool, 0, sizeof(apr_off_t));
@@ -78,14 +78,14 @@ init_prop_target(prop_patch_target_t **prop_target,
     SVN_ERR(svn_wc_prop_get2(&value, wc_ctx, local_abspath, prop_name,
                              result_pool, scratch_pool));
   else
-    value = NULL;
+    value = ((void*)0);
 
-  content->existed = (value != NULL);
+  content->existed = (value != ((void*)0));
   new_prop_target->value = value;
   new_prop_target->patched_value = svn_stringbuf_create_empty(result_pool);
 
 
-  /* Wire up the read and write callbacks. */
+
   prop_read_baton = apr_pcalloc(result_pool, sizeof(*prop_read_baton));
   prop_read_baton->value = value;
   prop_read_baton->offset = 0;

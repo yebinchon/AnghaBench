@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  signal; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  esp_gdbstub_send_char (char) ; 
- int /*<<< orphan*/  esp_gdbstub_send_end () ; 
- int /*<<< orphan*/  esp_gdbstub_send_hex (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  esp_gdbstub_send_start () ; 
- TYPE_1__ s_scratch ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int signal; } ;
+
+
+ int esp_gdbstub_send_char (char) ;
+ int esp_gdbstub_send_end () ;
+ int esp_gdbstub_send_hex (int ,int) ;
+ int esp_gdbstub_send_start () ;
+ TYPE_1__ s_scratch ;
 
 __attribute__((used)) static void send_reason(void)
 {

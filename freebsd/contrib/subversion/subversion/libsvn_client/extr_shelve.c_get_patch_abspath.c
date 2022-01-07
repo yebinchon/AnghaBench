@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- char* apr_pstrcat (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shelf_name_encode (char**,char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__get_shelves_dir (char**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_3__ {int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_VA_NULL ;
+ char* apr_pstrcat (int *,char*,char*,int ) ;
+ int shelf_name_encode (char**,char const*,int *) ;
+ char* svn_dirent_join (char*,char*,int *) ;
+ int svn_wc__get_shelves_dir (char**,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_patch_abspath(char **patch_abspath,

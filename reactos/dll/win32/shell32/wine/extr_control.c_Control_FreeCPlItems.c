@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {unsigned int total_subprogs; } ;
-struct TYPE_5__ {int cbSize; scalar_t__ dwItemData; int /*<<< orphan*/  fMask; } ;
-typedef  TYPE_1__ MENUITEMINFOW ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  TYPE_2__ CPanel ;
+struct TYPE_5__ {int cbSize; scalar_t__ dwItemData; int fMask; } ;
+typedef TYPE_1__ MENUITEMINFOW ;
+typedef int LPVOID ;
+typedef int HWND ;
+typedef int HMENU ;
+typedef TYPE_2__ CPanel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetMenuItemInfoW (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetSubMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int IDM_CPANEL_APPLET_BASE ; 
- int /*<<< orphan*/  MIIM_DATA ; 
+
+ int FALSE ;
+ int GetMenu (int ) ;
+ int GetMenuItemInfoW (int ,unsigned int,int ,TYPE_1__*) ;
+ int GetProcessHeap () ;
+ int GetSubMenu (int ,int ) ;
+ int HeapFree (int ,int ,int ) ;
+ unsigned int IDM_CPANEL_APPLET_BASE ;
+ int MIIM_DATA ;
 
 __attribute__((used)) static void Control_FreeCPlItems(HWND hWnd, CPanel *panel)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void Control_FreeCPlItems(HWND hWnd, CPanel *panel)
     MENUITEMINFOW mii;
     unsigned int i;
 
-    /* get the File menu */
+
     hMenu = GetMenu(hWnd);
 
     if (!hMenu)
@@ -47,7 +47,7 @@ __attribute__((used)) static void Control_FreeCPlItems(HWND hWnd, CPanel *panel)
     if (!hSubMenu)
         return;
 
-    /* loop and free the item data */
+
     for (i = IDM_CPANEL_APPLET_BASE; i <= IDM_CPANEL_APPLET_BASE + panel->total_subprogs; i++)
     {
         mii.cbSize = sizeof(MENUITEMINFOW);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_num_bits (int /*<<< orphan*/  const*) ; 
- int bn_is_prime_int (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int bn_mr_min_checks (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BN_GENCB ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_num_bits (int const*) ;
+ int bn_is_prime_int (int const*,int,int *,int,int *) ;
+ int bn_mr_min_checks (int ) ;
 
 int bn_check_prime_int(const BIGNUM *w, int checks, BN_CTX *ctx,
                        int do_trial_division, BN_GENCB *cb)

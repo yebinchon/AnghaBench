@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  reset_queue; } ;
-typedef  TYPE_1__ local_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int reset_queue; } ;
+typedef TYPE_1__ local_info_t ;
+
+
+ int schedule_work (int *) ;
 
 __attribute__((used)) static void prism2_schedule_reset(local_info_t *local)
 {
-	schedule_work(&local->reset_queue);
+ schedule_work(&local->reset_queue);
 }

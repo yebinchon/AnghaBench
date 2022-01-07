@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gpio_mockup_chip {int /*<<< orphan*/  lock; TYPE_1__* lines; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gpio_mockup_chip {int lock; TYPE_1__* lines; } ;
 struct gpio_chip {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dir; } ;
+struct TYPE_2__ {int dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_MOCKUP_DIR_IN ; 
- struct gpio_mockup_chip* gpiochip_get_data (struct gpio_chip*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int GPIO_MOCKUP_DIR_IN ;
+ struct gpio_mockup_chip* gpiochip_get_data (struct gpio_chip*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int gpio_mockup_dirin(struct gpio_chip *gc, unsigned int offset)
 {
-	struct gpio_mockup_chip *chip = gpiochip_get_data(gc);
+ struct gpio_mockup_chip *chip = gpiochip_get_data(gc);
 
-	mutex_lock(&chip->lock);
-	chip->lines[offset].dir = GPIO_MOCKUP_DIR_IN;
-	mutex_unlock(&chip->lock);
+ mutex_lock(&chip->lock);
+ chip->lines[offset].dir = GPIO_MOCKUP_DIR_IN;
+ mutex_unlock(&chip->lock);
 
-	return 0;
+ return 0;
 }

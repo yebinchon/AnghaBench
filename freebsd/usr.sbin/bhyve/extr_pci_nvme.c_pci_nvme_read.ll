@@ -1,0 +1,109 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/usr.sbin/bhyve/extr_pci_nvme.c_pci_nvme_read.c'
+source_filename = "/home/carl/AnghaBench/freebsd/usr.sbin/bhyve/extr_pci_nvme.c_pci_nvme_read.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.vmctx = type { i32 }
+%struct.pci_devinst = type { %struct.pci_nvme_softc* }
+%struct.pci_nvme_softc = type { i32 }
+
+@.str = private unnamed_addr constant [49 x i8] c"nvme-read bar: %d, msix: regoff 0x%lx, size %d\0D\0A\00", align 1
+@.str.1 = private unnamed_addr constant [24 x i8] c"unknown bar %d, 0x%lx\0D\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.vmctx*, i32, %struct.pci_devinst*, i32, i32, i32)* @pci_nvme_read to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @pci_nvme_read(%struct.vmctx* %0, i32 %1, %struct.pci_devinst* %2, i32 %3, i32 %4, i32 %5) #0 {
+  %7 = alloca i32, align 4
+  %8 = alloca %struct.vmctx*, align 8
+  %9 = alloca i32, align 4
+  %10 = alloca %struct.pci_devinst*, align 8
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca %struct.pci_nvme_softc*, align 8
+  store %struct.vmctx* %0, %struct.vmctx** %8, align 8
+  store i32 %1, i32* %9, align 4
+  store %struct.pci_devinst* %2, %struct.pci_devinst** %10, align 8
+  store i32 %3, i32* %11, align 4
+  store i32 %4, i32* %12, align 4
+  store i32 %5, i32* %13, align 4
+  %15 = load %struct.pci_devinst*, %struct.pci_devinst** %10, align 8
+  %16 = getelementptr inbounds %struct.pci_devinst, %struct.pci_devinst* %15, i32 0, i32 0
+  %17 = load %struct.pci_nvme_softc*, %struct.pci_nvme_softc** %16, align 8
+  store %struct.pci_nvme_softc* %17, %struct.pci_nvme_softc** %14, align 8
+  %18 = load i32, i32* %11, align 4
+  %19 = load %struct.pci_devinst*, %struct.pci_devinst** %10, align 8
+  %20 = call i32 @pci_msix_table_bar(%struct.pci_devinst* %19)
+  %21 = icmp eq i32 %18, %20
+  br i1 %21, label %27, label %22
+
+22:                                               ; preds = %6
+  %23 = load i32, i32* %11, align 4
+  %24 = load %struct.pci_devinst*, %struct.pci_devinst** %10, align 8
+  %25 = call i32 @pci_msix_pba_bar(%struct.pci_devinst* %24)
+  %26 = icmp eq i32 %23, %25
+  br i1 %26, label %27, label %38
+
+27:                                               ; preds = %22, %6
+  %28 = load i32, i32* %11, align 4
+  %29 = load i32, i32* %12, align 4
+  %30 = load i32, i32* %13, align 4
+  %31 = sext i32 %30 to i64
+  %32 = inttoptr i64 %31 to i8*
+  %33 = call i32 @DPRINTF(i8* %32)
+  %34 = load %struct.pci_devinst*, %struct.pci_devinst** %10, align 8
+  %35 = load i32, i32* %12, align 4
+  %36 = load i32, i32* %13, align 4
+  %37 = call i32 @pci_emul_msix_tread(%struct.pci_devinst* %34, i32 %35, i32 %36)
+  store i32 %37, i32* %7, align 4
+  br label %52
+
+38:                                               ; preds = %22
+  %39 = load i32, i32* %11, align 4
+  switch i32 %39, label %45 [
+    i32 0, label %40
+  ]
+
+40:                                               ; preds = %38
+  %41 = load %struct.pci_nvme_softc*, %struct.pci_nvme_softc** %14, align 8
+  %42 = load i32, i32* %12, align 4
+  %43 = load i32, i32* %13, align 4
+  %44 = call i32 @pci_nvme_read_bar_0(%struct.pci_nvme_softc* %41, i32 %42, i32 %43)
+  store i32 %44, i32* %7, align 4
+  br label %52
+
+45:                                               ; preds = %38
+  %46 = load i32, i32* %11, align 4
+  %47 = load i32, i32* %12, align 4
+  %48 = sext i32 %47 to i64
+  %49 = inttoptr i64 %48 to i8*
+  %50 = call i32 @DPRINTF(i8* %49)
+  br label %51
+
+51:                                               ; preds = %45
+  store i32 0, i32* %7, align 4
+  br label %52
+
+52:                                               ; preds = %51, %40, %27
+  %53 = load i32, i32* %7, align 4
+  ret i32 %53
+}
+
+declare dso_local i32 @pci_msix_table_bar(%struct.pci_devinst*) #1
+
+declare dso_local i32 @pci_msix_pba_bar(%struct.pci_devinst*) #1
+
+declare dso_local i32 @DPRINTF(i8*) #1
+
+declare dso_local i32 @pci_emul_msix_tread(%struct.pci_devinst*, i32, i32) #1
+
+declare dso_local i32 @pci_nvme_read_bar_0(%struct.pci_nvme_softc*, i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

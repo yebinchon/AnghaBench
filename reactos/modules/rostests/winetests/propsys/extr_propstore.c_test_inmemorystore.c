@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  propvar ;
-typedef  int /*<<< orphan*/  pkey ;
+
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int propvar ;
+typedef int pkey ;
 struct TYPE_16__ {int lVal; } ;
 struct TYPE_17__ {int pid; void* vt; TYPE_1__ u; void* fmtid; } ;
-typedef  int PSC_STATE ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  TYPE_2__ PROPERTYKEY ;
-typedef  int /*<<< orphan*/  IPropertyStoreCache ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
+typedef int PSC_STATE ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef TYPE_2__ PROPERTYKEY ;
+typedef int IPropertyStoreCache ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_InMemoryPropertyStore ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int E_INVALIDARG ; 
- int E_POINTER ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  IID_IPropertyStoreCache ; 
- int IPropertyStoreCache_Commit (int /*<<< orphan*/ *) ; 
- int IPropertyStoreCache_GetAt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int IPropertyStoreCache_GetCount (int /*<<< orphan*/ *,int*) ; 
- int IPropertyStoreCache_GetState (int /*<<< orphan*/ *,TYPE_2__*,int*) ; 
- int IPropertyStoreCache_GetValue (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int IPropertyStoreCache_GetValueAndState (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int*) ; 
- int /*<<< orphan*/  IPropertyStoreCache_Release (int /*<<< orphan*/ *) ; 
- int IPropertyStoreCache_SetState (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int IPropertyStoreCache_SetValue (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*) ; 
- int IPropertyStoreCache_SetValueAndState (int /*<<< orphan*/ *,TYPE_2__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  IsEqualGUID (void**,void**) ; 
- void* PKEY_WineTest ; 
- int PSC_DIRTY ; 
- int PSC_NORMAL ; 
- int S_OK ; 
- int TYPE_E_ELEMENTNOTFOUND ; 
- int VT_EMPTY ; 
- void* VT_I2 ; 
- void* VT_I4 ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_InMemoryPropertyStore ;
+ int CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int E_INVALIDARG ;
+ int E_POINTER ;
+ scalar_t__ FAILED (int) ;
+ int IID_IPropertyStoreCache ;
+ int IPropertyStoreCache_Commit (int *) ;
+ int IPropertyStoreCache_GetAt (int *,int ,TYPE_2__*) ;
+ int IPropertyStoreCache_GetCount (int *,int*) ;
+ int IPropertyStoreCache_GetState (int *,TYPE_2__*,int*) ;
+ int IPropertyStoreCache_GetValue (int *,TYPE_2__*,TYPE_2__*) ;
+ int IPropertyStoreCache_GetValueAndState (int *,TYPE_2__*,TYPE_2__*,int*) ;
+ int IPropertyStoreCache_Release (int *) ;
+ int IPropertyStoreCache_SetState (int *,TYPE_2__*,int) ;
+ int IPropertyStoreCache_SetValue (int *,TYPE_2__*,TYPE_2__*) ;
+ int IPropertyStoreCache_SetValueAndState (int *,TYPE_2__*,TYPE_2__*,int) ;
+ int IsEqualGUID (void**,void**) ;
+ void* PKEY_WineTest ;
+ int PSC_DIRTY ;
+ int PSC_NORMAL ;
+ int S_OK ;
+ int TYPE_E_ELEMENTNOTFOUND ;
+ int VT_EMPTY ;
+ void* VT_I2 ;
+ void* VT_I4 ;
+ int memset (TYPE_2__*,int ,int) ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_inmemorystore(void)
 {
@@ -63,7 +63,7 @@ __attribute__((used)) static void test_inmemorystore(void)
     DWORD count;
     PSC_STATE state;
 
-    hr = CoCreateInstance(&CLSID_InMemoryPropertyStore, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&CLSID_InMemoryPropertyStore, ((void*)0), CLSCTX_INPROC_SERVER,
         &IID_IPropertyStoreCache, (void**)&propcache);
     ok(hr == S_OK, "CoCreateInstance failed, hr=%x\n", hr);
 
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_inmemorystore(void)
         return;
     }
 
-    hr = IPropertyStoreCache_GetCount(propcache, NULL);
+    hr = IPropertyStoreCache_GetCount(propcache, ((void*)0));
     ok(hr == E_POINTER, "GetCount failed, hr=%x\n", hr);
 
     hr = IPropertyStoreCache_GetCount(propcache, &count);
@@ -98,11 +98,11 @@ __attribute__((used)) static void test_inmemorystore(void)
 
     if (0)
     {
-        /* Crashes on Windows 7 */
-        hr = IPropertyStoreCache_SetValue(propcache, NULL, &propvar);
+
+        hr = IPropertyStoreCache_SetValue(propcache, ((void*)0), &propvar);
         ok(hr == E_POINTER, "SetValue failed, hr=%x\n", hr);
 
-        hr = IPropertyStoreCache_SetValue(propcache, &pkey, NULL);
+        hr = IPropertyStoreCache_SetValue(propcache, &pkey, ((void*)0));
         ok(hr == E_POINTER, "SetValue failed, hr=%x\n", hr);
     }
 
@@ -127,12 +127,12 @@ __attribute__((used)) static void test_inmemorystore(void)
 
     if (0)
     {
-        /* Crashes on Windows 7 */
-        hr = IPropertyStoreCache_GetValue(propcache, NULL, &propvar);
+
+        hr = IPropertyStoreCache_GetValue(propcache, ((void*)0), &propvar);
         ok(hr == E_POINTER, "GetValue failed, hr=%x\n", hr);
     }
 
-    hr = IPropertyStoreCache_GetValue(propcache, &pkey, NULL);
+    hr = IPropertyStoreCache_GetValue(propcache, &pkey, ((void*)0));
     ok(hr == E_POINTER, "GetValue failed, hr=%x\n", hr);
 
     hr = IPropertyStoreCache_GetValue(propcache, &pkey, &propvar);
@@ -143,7 +143,7 @@ __attribute__((used)) static void test_inmemorystore(void)
     pkey.fmtid = PKEY_WineTest;
     pkey.pid = 10;
 
-    /* Get information for field that isn't set yet */
+
     propvar.vt = VT_I2;
     hr = IPropertyStoreCache_GetValue(propcache, &pkey, &propvar);
     ok(hr == S_OK, "GetValue failed, hr=%x\n", hr);
@@ -161,11 +161,11 @@ __attribute__((used)) static void test_inmemorystore(void)
     ok(propvar.vt == VT_EMPTY, "expected VT_EMPTY, got %d\n", propvar.vt);
     ok(state == PSC_NORMAL, "expected PSC_NORMAL, got %d\n", state);
 
-    /* Set state on an unset field */
+
     hr = IPropertyStoreCache_SetState(propcache, &pkey, PSC_NORMAL);
     ok(hr == TYPE_E_ELEMENTNOTFOUND, "SetState failed, hr=%x\n", hr);
 
-    /* Manipulate state on already set field */
+
     pkey.fmtid = PKEY_WineTest;
     pkey.pid = 4;
 
@@ -195,7 +195,7 @@ __attribute__((used)) static void test_inmemorystore(void)
     ok(propvar.u.lVal == 12346, "expected 12346, got %d\n", propvar.vt);
     ok(state == 5, "expected 5, got %d\n", state);
 
-    /* Set new field with state */
+
     pkey.fmtid = PKEY_WineTest;
     pkey.pid = 8;
 

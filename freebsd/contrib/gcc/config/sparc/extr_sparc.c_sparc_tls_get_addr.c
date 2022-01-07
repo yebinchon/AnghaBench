@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Pmode ; 
- scalar_t__ gen_rtx_SYMBOL_REF (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ sparc_tls_symbol ; 
+
+
+
+typedef scalar_t__ rtx ;
+
+
+ int Pmode ;
+ scalar_t__ gen_rtx_SYMBOL_REF (int ,char*) ;
+ scalar_t__ sparc_tls_symbol ;
 
 __attribute__((used)) static rtx
 sparc_tls_get_addr (void)

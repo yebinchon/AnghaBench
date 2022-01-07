@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {struct TYPE_8__* pNext; struct TYPE_8__** ppPrev; TYPE_3__* pAux; int /*<<< orphan*/  pChild; } ;
-typedef  TYPE_2__ vtshim_vtab ;
-struct TYPE_9__ {TYPE_2__* pAllVtab; int /*<<< orphan*/  pChildAux; TYPE_1__* pMod; int /*<<< orphan*/  zName; scalar_t__ bDisposed; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_3__ vtshim_aux ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_7__ {int (* xCreate ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char const* const*,int /*<<< orphan*/ *,char**) ;} ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_2__*) ; 
- TYPE_2__* sqlite3_malloc (int) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char const* const*,int /*<<< orphan*/ *,char**) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {struct TYPE_8__* pNext; struct TYPE_8__** ppPrev; TYPE_3__* pAux; int pChild; } ;
+typedef TYPE_2__ vtshim_vtab ;
+struct TYPE_9__ {TYPE_2__* pAllVtab; int pChildAux; TYPE_1__* pMod; int zName; scalar_t__ bDisposed; int * db; } ;
+typedef TYPE_3__ vtshim_aux ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3 ;
+struct TYPE_7__ {int (* xCreate ) (int *,int ,int,char const* const*,int *,char**) ;} ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int assert (int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sqlite3_free (TYPE_2__*) ;
+ TYPE_2__* sqlite3_malloc (int) ;
+ char* sqlite3_mprintf (char*,int ) ;
+ int stub1 (int *,int ,int,char const* const*,int *,char**) ;
 
 __attribute__((used)) static int vtshimCreate(
   sqlite3 *db,

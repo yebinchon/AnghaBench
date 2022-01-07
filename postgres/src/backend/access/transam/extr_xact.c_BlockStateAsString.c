@@ -1,84 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int TBlockState ;
 
-/* Variables and functions */
-#define  TBLOCK_ABORT 147 
-#define  TBLOCK_ABORT_END 146 
-#define  TBLOCK_ABORT_PENDING 145 
-#define  TBLOCK_BEGIN 144 
-#define  TBLOCK_DEFAULT 143 
-#define  TBLOCK_END 142 
-#define  TBLOCK_IMPLICIT_INPROGRESS 141 
-#define  TBLOCK_INPROGRESS 140 
-#define  TBLOCK_PARALLEL_INPROGRESS 139 
-#define  TBLOCK_PREPARE 138 
-#define  TBLOCK_STARTED 137 
-#define  TBLOCK_SUBABORT 136 
-#define  TBLOCK_SUBABORT_END 135 
-#define  TBLOCK_SUBABORT_PENDING 134 
-#define  TBLOCK_SUBABORT_RESTART 133 
-#define  TBLOCK_SUBBEGIN 132 
-#define  TBLOCK_SUBCOMMIT 131 
-#define  TBLOCK_SUBINPROGRESS 130 
-#define  TBLOCK_SUBRELEASE 129 
-#define  TBLOCK_SUBRESTART 128 
 
+
+
+typedef int TBlockState ;
 __attribute__((used)) static const char *
 BlockStateAsString(TBlockState blockState)
 {
-	switch (blockState)
-	{
-		case TBLOCK_DEFAULT:
-			return "DEFAULT";
-		case TBLOCK_STARTED:
-			return "STARTED";
-		case TBLOCK_BEGIN:
-			return "BEGIN";
-		case TBLOCK_INPROGRESS:
-			return "INPROGRESS";
-		case TBLOCK_IMPLICIT_INPROGRESS:
-			return "IMPLICIT_INPROGRESS";
-		case TBLOCK_PARALLEL_INPROGRESS:
-			return "PARALLEL_INPROGRESS";
-		case TBLOCK_END:
-			return "END";
-		case TBLOCK_ABORT:
-			return "ABORT";
-		case TBLOCK_ABORT_END:
-			return "ABORT_END";
-		case TBLOCK_ABORT_PENDING:
-			return "ABORT_PENDING";
-		case TBLOCK_PREPARE:
-			return "PREPARE";
-		case TBLOCK_SUBBEGIN:
-			return "SUBBEGIN";
-		case TBLOCK_SUBINPROGRESS:
-			return "SUBINPROGRESS";
-		case TBLOCK_SUBRELEASE:
-			return "SUBRELEASE";
-		case TBLOCK_SUBCOMMIT:
-			return "SUBCOMMIT";
-		case TBLOCK_SUBABORT:
-			return "SUBABORT";
-		case TBLOCK_SUBABORT_END:
-			return "SUBABORT_END";
-		case TBLOCK_SUBABORT_PENDING:
-			return "SUBABORT_PENDING";
-		case TBLOCK_SUBRESTART:
-			return "SUBRESTART";
-		case TBLOCK_SUBABORT_RESTART:
-			return "SUBABORT_RESTART";
-	}
-	return "UNRECOGNIZED";
+ switch (blockState)
+ {
+  case 143:
+   return "DEFAULT";
+  case 137:
+   return "STARTED";
+  case 144:
+   return "BEGIN";
+  case 140:
+   return "INPROGRESS";
+  case 141:
+   return "IMPLICIT_INPROGRESS";
+  case 139:
+   return "PARALLEL_INPROGRESS";
+  case 142:
+   return "END";
+  case 147:
+   return "ABORT";
+  case 146:
+   return "ABORT_END";
+  case 145:
+   return "ABORT_PENDING";
+  case 138:
+   return "PREPARE";
+  case 132:
+   return "SUBBEGIN";
+  case 130:
+   return "SUBINPROGRESS";
+  case 129:
+   return "SUBRELEASE";
+  case 131:
+   return "SUBCOMMIT";
+  case 136:
+   return "SUBABORT";
+  case 135:
+   return "SUBABORT_END";
+  case 134:
+   return "SUBABORT_PENDING";
+  case 128:
+   return "SUBRESTART";
+  case 133:
+   return "SUBABORT_RESTART";
+ }
+ return "UNRECOGNIZED";
 }

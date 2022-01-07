@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3dcompiler_blob {int refcount; int /*<<< orphan*/  data; int /*<<< orphan*/  size; TYPE_1__ ID3DBlob_iface; } ;
-typedef  int /*<<< orphan*/  SIZE_T ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/  HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  d3dcompiler_blob_vtbl ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * lpVtbl; } ;
+struct d3dcompiler_blob {int refcount; int data; int size; TYPE_1__ ID3DBlob_iface; } ;
+typedef int SIZE_T ;
+typedef int HRESULT ;
+
+
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ int HeapAlloc (int ,int ,int ) ;
+ int S_OK ;
+ int d3dcompiler_blob_vtbl ;
 
 __attribute__((used)) static HRESULT d3dcompiler_blob_init(struct d3dcompiler_blob *blob, SIZE_T data_size)
 {

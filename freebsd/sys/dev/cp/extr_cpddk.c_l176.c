@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  s ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l (int /*<<< orphan*/ *,int,unsigned char) ; 
+
+
+
+typedef int s ;
+
+
+ int l (int *,int,unsigned char) ;
 
 __attribute__((used)) static void l176(
 s*b,unsigned char r,unsigned char l27){int c;l(b,40,l27);{c=0;l553:if

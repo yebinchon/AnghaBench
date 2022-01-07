@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * d3dregion; scalar_t__ d3dregion_count; int /*<<< orphan*/ * sceneTexture; int /*<<< orphan*/ * sceneVertexBuffer; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_6__ {int * d3dregion; scalar_t__ d3dregion_count; int * sceneTexture; int * sceneVertexBuffer; } ;
+typedef TYPE_2__ vout_display_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Direct3D9DeleteRegions (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DTexture9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DVertexBuffer9_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*) ; 
+
+ int Direct3D9DeleteRegions (scalar_t__,int *) ;
+ int IDirect3DTexture9_Release (int *) ;
+ int IDirect3DVertexBuffer9_Release (int *) ;
+ int msg_Dbg (TYPE_1__*,char*) ;
 
 __attribute__((used)) static void Direct3D9DestroyScene(vout_display_t *vd)
 {
@@ -32,17 +32,17 @@ __attribute__((used)) static void Direct3D9DestroyScene(vout_display_t *vd)
     if (sys->sceneVertexBuffer)
     {
         IDirect3DVertexBuffer9_Release(sys->sceneVertexBuffer);
-        sys->sceneVertexBuffer = NULL;
+        sys->sceneVertexBuffer = ((void*)0);
     }
 
     if (sys->sceneTexture)
     {
         IDirect3DTexture9_Release(sys->sceneTexture);
-        sys->sceneTexture = NULL;
+        sys->sceneTexture = ((void*)0);
     }
 
     sys->d3dregion_count = 0;
-    sys->d3dregion       = NULL;
+    sys->d3dregion = ((void*)0);
 
     msg_Dbg(vd, "Direct3D9 scene released successfully");
 }

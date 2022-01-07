@@ -1,129 +1,129 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int IsWindows; int IsNT; int VerMajor; int VerMinor; int ServicePack; scalar_t__ IsBeta; } ;
-typedef  TYPE_1__ RPC_WINVER ;
+typedef TYPE_1__ RPC_WINVER ;
 
-/* Variables and functions */
+
 
 bool IsSupportedWinVer(RPC_WINVER *v)
 {
-	// Validate arguments
-	if (v == NULL)
-	{
-		return false;
-	}
 
-	if (v->IsWindows == false)
-	{
-		return true;
-	}
+ if (v == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (v->IsNT == false)
-	{
-		return true;
-	}
+ if (v->IsWindows == 0)
+ {
+  return 1;
+ }
 
-	if (v->IsBeta)
-	{
-		return true;
-	}
+ if (v->IsNT == 0)
+ {
+  return 1;
+ }
 
-	if (v->VerMajor <= 4)
-	{
-		// Windows NT
-		return true;
-	}
+ if (v->IsBeta)
+ {
+  return 1;
+ }
 
-	if (v->VerMajor == 5 && v->VerMinor == 0)
-	{
-		// Windows 2000
-		if (v->ServicePack <= 4)
-		{
-			// SP4 or earlier
-			return true;
-		}
-	}
+ if (v->VerMajor <= 4)
+ {
 
-	if (v->VerMajor == 5 && v->VerMinor == 1)
-	{
-		// Windows XP x86
-		if (v->ServicePack <= 3)
-		{
-			// SP3 or earlier
-			return true;
-		}
-	}
+  return 1;
+ }
 
-	if (v->VerMajor == 5 && v->VerMinor == 2)
-	{
-		// Windows XP x64, Windows Server 2003
-		if (v->ServicePack <= 2)
-		{
-			// SP2 or earlier
-			return true;
-		}
-	}
+ if (v->VerMajor == 5 && v->VerMinor == 0)
+ {
 
-	if (v->VerMajor == 6 && v->VerMinor == 0)
-	{
-		// Windows Vista, Server 2008
-		if (v->ServicePack <= 2)
-		{
-			// SP2 or earlier
-			return true;
-		}
-	}
+  if (v->ServicePack <= 4)
+  {
 
-	if (v->VerMajor == 6 && v->VerMinor == 1)
-	{
-		// Windows 7, Server 2008 R2
-		if (v->ServicePack <= 1)
-		{
-			// SP1 or earlier
-			return true;
-		}
-	}
+   return 1;
+  }
+ }
 
-	if (v->VerMajor == 6 && v->VerMinor == 2)
-	{
-		// Windows 8, Server 2012
-		if (v->ServicePack <= 0)
-		{
-			// SP0 only
-			return true;
-		}
-	}
+ if (v->VerMajor == 5 && v->VerMinor == 1)
+ {
 
-	if (v->VerMajor == 6 && v->VerMinor == 3)
-	{
-		// Windows 8.1, Server 2012 R2
-		if (v->ServicePack <= 0)
-		{
-			// SP0 only
-			return true;
-		}
-	}
+  if (v->ServicePack <= 3)
+  {
 
-	if ((v->VerMajor == 6 && v->VerMinor == 4) || (v->VerMajor == 10 && v->VerMinor == 0))
-	{
-		// Windows 10 or Windows Server 2016
-		if (v->ServicePack <= 0)
-		{
-			// SP0 only
-			return true;
-		}
-	}
+   return 1;
+  }
+ }
 
-	return false;
+ if (v->VerMajor == 5 && v->VerMinor == 2)
+ {
+
+  if (v->ServicePack <= 2)
+  {
+
+   return 1;
+  }
+ }
+
+ if (v->VerMajor == 6 && v->VerMinor == 0)
+ {
+
+  if (v->ServicePack <= 2)
+  {
+
+   return 1;
+  }
+ }
+
+ if (v->VerMajor == 6 && v->VerMinor == 1)
+ {
+
+  if (v->ServicePack <= 1)
+  {
+
+   return 1;
+  }
+ }
+
+ if (v->VerMajor == 6 && v->VerMinor == 2)
+ {
+
+  if (v->ServicePack <= 0)
+  {
+
+   return 1;
+  }
+ }
+
+ if (v->VerMajor == 6 && v->VerMinor == 3)
+ {
+
+  if (v->ServicePack <= 0)
+  {
+
+   return 1;
+  }
+ }
+
+ if ((v->VerMajor == 6 && v->VerMinor == 4) || (v->VerMajor == 10 && v->VerMinor == 0))
+ {
+
+  if (v->ServicePack <= 0)
+  {
+
+   return 1;
+  }
+ }
+
+ return 0;
 }

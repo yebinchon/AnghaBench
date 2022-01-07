@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct komeda_kms_dev {int n_crtcs; int /*<<< orphan*/ * crtcs; } ;
+
+
+
+
+struct komeda_kms_dev {int n_crtcs; int * crtcs; } ;
 struct komeda_dev {int dummy; } ;
 
-/* Variables and functions */
- int komeda_wb_connector_add (struct komeda_kms_dev*,int /*<<< orphan*/ *) ; 
+
+ int komeda_wb_connector_add (struct komeda_kms_dev*,int *) ;
 
 int komeda_kms_add_wb_connectors(struct komeda_kms_dev *kms,
-				 struct komeda_dev *mdev)
+     struct komeda_dev *mdev)
 {
-	int i, err;
+ int i, err;
 
-	for (i = 0; i < kms->n_crtcs; i++) {
-		err = komeda_wb_connector_add(kms, &kms->crtcs[i]);
-		if (err)
-			return err;
-	}
+ for (i = 0; i < kms->n_crtcs; i++) {
+  err = komeda_wb_connector_add(kms, &kms->crtcs[i]);
+  if (err)
+   return err;
+ }
 
-	return 0;
+ return 0;
 }

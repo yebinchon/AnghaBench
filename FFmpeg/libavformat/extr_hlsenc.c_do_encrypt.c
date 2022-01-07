@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  iv ;
-struct TYPE_8__ {int /*<<< orphan*/  sequence; } ;
-typedef  TYPE_1__ VariantStream ;
-struct TYPE_9__ {char* iv; char* key_string; char* key; int (* io_open ) (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * key_file; int /*<<< orphan*/ * key_uri; int /*<<< orphan*/ * iv_string; int /*<<< orphan*/ * key_basename; int /*<<< orphan*/ * key_url; int /*<<< orphan*/ * url; struct TYPE_9__* priv_data; } ;
-typedef  TYPE_2__ HLSContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_WB64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int KEYSIZE ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_mallocz (int) ; 
- int /*<<< orphan*/  av_strlcat (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  av_strlcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_data_to_hex (char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char*,int) ; 
- int randomize (int /*<<< orphan*/ *,int) ; 
- int strlen (int /*<<< orphan*/ *) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int key ;
+typedef int iv ;
+struct TYPE_8__ {int sequence; } ;
+typedef TYPE_1__ VariantStream ;
+struct TYPE_9__ {char* iv; char* key_string; char* key; int (* io_open ) (TYPE_2__*,int **,int *,int ,int *) ;int * key_file; int * key_uri; int * iv_string; int * key_basename; int * key_url; int * url; struct TYPE_9__* priv_data; } ;
+typedef TYPE_2__ HLSContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_WRITE ;
+ int AV_LOG_ERROR ;
+ int AV_WB64 (int *,int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int KEYSIZE ;
+ int SEEK_CUR ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int * av_mallocz (int) ;
+ int av_strlcat (int *,char*,int) ;
+ int av_strlcpy (int *,int *,int) ;
+ int avio_close (int *) ;
+ int avio_seek (int *,int ,int ) ;
+ int avio_write (int *,int *,int) ;
+ int ff_data_to_hex (char*,int *,int,int ) ;
+ int memcpy (int *,char*,int) ;
+ int randomize (int *,int) ;
+ int strlen (int *) ;
+ int stub1 (TYPE_2__*,int **,int *,int ,int *) ;
 
 __attribute__((used)) static int do_encrypt(AVFormatContext *s, VariantStream *vs)
 {
@@ -103,7 +103,7 @@ __attribute__((used)) static int do_encrypt(AVFormatContext *s, VariantStream *v
         }
 
         ff_data_to_hex(hls->key_string, key, sizeof(key), 0);
-        if ((ret = s->io_open(s, &pb, hls->key_file, AVIO_FLAG_WRITE, NULL)) < 0)
+        if ((ret = s->io_open(s, &pb, hls->key_file, AVIO_FLAG_WRITE, ((void*)0))) < 0)
             return ret;
         avio_seek(pb, 0, SEEK_CUR);
         avio_write(pb, key, KEYSIZE);

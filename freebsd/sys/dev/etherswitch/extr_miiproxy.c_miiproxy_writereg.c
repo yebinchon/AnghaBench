@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct miiproxy_softc {int /*<<< orphan*/ * mdio; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int MDIO_WRITEREG (int /*<<< orphan*/ *,int,int,int) ; 
- struct miiproxy_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+struct miiproxy_softc {int * mdio; } ;
+typedef int device_t ;
+
+
+ int MDIO_WRITEREG (int *,int,int,int) ;
+ struct miiproxy_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 miiproxy_writereg(device_t dev, int phy, int reg, int val)
 {
-	struct miiproxy_softc *sc = device_get_softc(dev);
+ struct miiproxy_softc *sc = device_get_softc(dev);
 
-	if (sc->mdio != NULL)
-		return (MDIO_WRITEREG(sc->mdio, phy, reg, val));
-	return (-1);
+ if (sc->mdio != ((void*)0))
+  return (MDIO_WRITEREG(sc->mdio, phy, reg, val));
+ return (-1);
 }

@@ -1,62 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct obs_source_frame {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; int /*<<< orphan*/  full_range; int /*<<< orphan*/  format; } ;
-typedef  int /*<<< orphan*/  gs_texture_t ;
 
-/* Variables and functions */
-#define  CONVERT_420 140 
-#define  CONVERT_420_A 139 
-#define  CONVERT_422 138 
-#define  CONVERT_422_A 137 
-#define  CONVERT_422_PACK 136 
-#define  CONVERT_444 135 
-#define  CONVERT_444_A 134 
-#define  CONVERT_444_A_PACK 133 
-#define  CONVERT_800 132 
-#define  CONVERT_BGR3 131 
-#define  CONVERT_NONE 130 
-#define  CONVERT_NV12 129 
-#define  CONVERT_RGB_LIMITED 128 
- size_t MAX_AV_PLANES ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int get_convert_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gs_texture_set_image (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct obs_source_frame {int * linesize; int * data; int full_range; int format; } ;
+typedef int gs_texture_t ;
+ size_t MAX_AV_PLANES ;
+ int assert (int ) ;
+ int get_convert_type (int ,int ) ;
+ int gs_texture_set_image (int *,int ,int ,int) ;
 
 __attribute__((used)) static void upload_raw_frame(gs_texture_t *tex[MAX_AV_PLANES],
-			     const struct obs_source_frame *frame)
+        const struct obs_source_frame *frame)
 {
-	switch (get_convert_type(frame->format, frame->full_range)) {
-	case CONVERT_422_PACK:
-	case CONVERT_800:
-	case CONVERT_RGB_LIMITED:
-	case CONVERT_BGR3:
-	case CONVERT_420:
-	case CONVERT_422:
-	case CONVERT_NV12:
-	case CONVERT_444:
-	case CONVERT_420_A:
-	case CONVERT_422_A:
-	case CONVERT_444_A:
-	case CONVERT_444_A_PACK:
-		for (size_t c = 0; c < MAX_AV_PLANES; c++) {
-			if (tex[c])
-				gs_texture_set_image(tex[c], frame->data[c],
-						     frame->linesize[c], false);
-		}
-		break;
+ switch (get_convert_type(frame->format, frame->full_range)) {
+ case 136:
+ case 132:
+ case 128:
+ case 131:
+ case 140:
+ case 138:
+ case 129:
+ case 135:
+ case 139:
+ case 137:
+ case 134:
+ case 133:
+  for (size_t c = 0; c < MAX_AV_PLANES; c++) {
+   if (tex[c])
+    gs_texture_set_image(tex[c], frame->data[c],
+           frame->linesize[c], 0);
+  }
+  break;
 
-	case CONVERT_NONE:
-		assert(false && "No conversion requested");
-		break;
-	}
+ case 130:
+  assert(0 && "No conversion requested");
+  break;
+ }
 }

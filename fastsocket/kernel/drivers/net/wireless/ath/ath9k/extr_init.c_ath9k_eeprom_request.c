@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ath_softc {int /*<<< orphan*/  dev; struct ath_hw* sc_ah; } ;
-struct ath_hw {int /*<<< orphan*/  eeprom_blob; } ;
-struct ath9k_eeprom_ctx {int /*<<< orphan*/  complete; struct ath_hw* ah; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  THIS_MODULE ; 
- struct ath_hw* ah ; 
- int /*<<< orphan*/  ath9k_eeprom_request_cb ; 
- int /*<<< orphan*/  ath9k_hw_common (struct ath_hw*) ; 
- int /*<<< orphan*/  ath_err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- int request_firmware_nowait (int /*<<< orphan*/ ,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ath9k_eeprom_ctx*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
+
+
+
+struct ath_softc {int dev; struct ath_hw* sc_ah; } ;
+struct ath_hw {int eeprom_blob; } ;
+struct ath9k_eeprom_ctx {int complete; struct ath_hw* ah; } ;
+
+
+ int EINVAL ;
+ int GFP_KERNEL ;
+ int THIS_MODULE ;
+ struct ath_hw* ah ;
+ int ath9k_eeprom_request_cb ;
+ int ath9k_hw_common (struct ath_hw*) ;
+ int ath_err (int ,char*,...) ;
+ int init_completion (int *) ;
+ int request_firmware_nowait (int ,int,char const*,int ,int ,struct ath9k_eeprom_ctx*,int ) ;
+ int wait_for_completion (int *) ;
 
 __attribute__((used)) static int ath9k_eeprom_request(struct ath_softc *sc, const char *name)
 {
-	struct ath9k_eeprom_ctx ec;
-	struct ath_hw *ah = ah = sc->sc_ah;
-	int err;
+ struct ath9k_eeprom_ctx ec;
+ struct ath_hw *ah = ah = sc->sc_ah;
+ int err;
 
-	/* try to load the EEPROM content asynchronously */
-	init_completion(&ec.complete);
-	ec.ah = sc->sc_ah;
 
-	err = request_firmware_nowait(THIS_MODULE, 1, name, sc->dev, GFP_KERNEL,
-				      &ec, ath9k_eeprom_request_cb);
-	if (err < 0) {
-		ath_err(ath9k_hw_common(ah),
-			"EEPROM request failed\n");
-		return err;
-	}
+ init_completion(&ec.complete);
+ ec.ah = sc->sc_ah;
 
-	wait_for_completion(&ec.complete);
+ err = request_firmware_nowait(THIS_MODULE, 1, name, sc->dev, GFP_KERNEL,
+          &ec, ath9k_eeprom_request_cb);
+ if (err < 0) {
+  ath_err(ath9k_hw_common(ah),
+   "EEPROM request failed\n");
+  return err;
+ }
 
-	if (!ah->eeprom_blob) {
-		ath_err(ath9k_hw_common(ah),
-			"Unable to load EEPROM file %s\n", name);
-		return -EINVAL;
-	}
+ wait_for_completion(&ec.complete);
 
-	return 0;
+ if (!ah->eeprom_blob) {
+  ath_err(ath9k_hw_common(ah),
+   "Unable to load EEPROM file %s\n", name);
+  return -EINVAL;
+ }
+
+ return 0;
 }

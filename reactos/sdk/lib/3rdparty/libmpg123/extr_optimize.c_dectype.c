@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum optdec { ____Placeholder_optdec } optdec ;
 
-/* Variables and functions */
- int autodec ; 
- int /*<<< orphan*/ * decname ; 
- int nodec ; 
- int /*<<< orphan*/  strcasecmp (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef enum optdec { ____Placeholder_optdec } optdec ;
+
+
+ int autodec ;
+ int * decname ;
+ int nodec ;
+ int strcasecmp (char const*,int ) ;
 
 enum optdec dectype(const char* decoder)
 {
-	enum optdec dt;
-	if(   (decoder == NULL)
-	   || (decoder[0] == 0) )
-	return autodec;
+ enum optdec dt;
+ if( (decoder == ((void*)0))
+    || (decoder[0] == 0) )
+ return autodec;
 
-	for(dt=autodec; dt<nodec; ++dt)
-	if(!strcasecmp(decoder, decname[dt])) return dt;
+ for(dt=autodec; dt<nodec; ++dt)
+ if(!strcasecmp(decoder, decname[dt])) return dt;
 
-	return nodec; /* If we found nothing... */
+ return nodec;
 }

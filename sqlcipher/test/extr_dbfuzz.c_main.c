@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  azDb ;
-typedef  int /*<<< orphan*/  Str ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGALRM ; 
- int /*<<< orphan*/  SQLITE_CONFIG_HEAP ; 
- int /*<<< orphan*/  SQLITE_CONFIG_LOG ; 
- int /*<<< orphan*/  SQLITE_CONFIG_LOOKASIDE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_OPEN_READWRITE ; 
- scalar_t__ SQLITE_ROW ; 
- unsigned int SQL_OUTPUT ; 
- unsigned int SQL_TRACE ; 
- int /*<<< orphan*/  StrAppend (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  StrFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StrInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StrStr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  createVFile (char*,char*) ; 
- int /*<<< orphan*/  fatalError (char*,...) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  formatVfs () ; 
- int /*<<< orphan*/  free (char**) ; 
- int /*<<< orphan*/  inmemVfsRegister () ; 
- int integerValue (char*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  progressHandler ; 
- char** realloc (char**,int) ; 
- int /*<<< orphan*/  reformatVfs () ; 
- int /*<<< orphan*/  runSql (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  setAlarm (int) ; 
- int /*<<< orphan*/  showHelp (char*) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlLog ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3_config (int /*<<< orphan*/ ,void*,...) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_memory_used () ; 
- int sqlite3_open_v2 (char*,int /*<<< orphan*/ **,int /*<<< orphan*/ ,char*) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_progress_handler (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  timeoutHandler ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+typedef int azDb ;
+typedef int Str ;
+
+
+ int SIGALRM ;
+ int SQLITE_CONFIG_HEAP ;
+ int SQLITE_CONFIG_LOG ;
+ int SQLITE_CONFIG_LOOKASIDE ;
+ int SQLITE_OK ;
+ int SQLITE_OPEN_READWRITE ;
+ scalar_t__ SQLITE_ROW ;
+ unsigned int SQL_OUTPUT ;
+ unsigned int SQL_TRACE ;
+ int StrAppend (int *,char const*) ;
+ int StrFree (int *) ;
+ int StrInit (int *) ;
+ int StrStr (int *) ;
+ int createVFile (char*,char*) ;
+ int fatalError (char*,...) ;
+ int fflush (int ) ;
+ int formatVfs () ;
+ int free (char**) ;
+ int inmemVfsRegister () ;
+ int integerValue (char*) ;
+ void* malloc (int) ;
+ int printf (char*,char*) ;
+ int progressHandler ;
+ char** realloc (char**,int) ;
+ int reformatVfs () ;
+ int runSql (int *,int ,unsigned int) ;
+ int setAlarm (int) ;
+ int showHelp (char*) ;
+ int signal (int ,int ) ;
+ int sqlLog ;
+ int sqlite3_close (int *) ;
+ scalar_t__ sqlite3_column_text (int *,int ) ;
+ int sqlite3_config (int ,void*,...) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_memory_used () ;
+ int sqlite3_open_v2 (char*,int **,int ,char*) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ int sqlite3_progress_handler (int *,int,int ,int*) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int timeoutHandler ;
 
 int main(int argc, char **argv){
-  int i;                 /* Loop counter */
-  int nDb = 0;           /* Number of databases to fuzz */
-  char **azDb = 0;       /* Names of the databases (limit: 20) */
-  int verboseFlag = 0;   /* True for extra output */
-  int noLookaside = 0;   /* Disable lookaside if true */
-  int vdbeLimitFlag = 0; /* Stop after 100,000 VDBE ops */
-  int nHeap = 0;         /* True for fixed heap size */
-  int iTimeout = 0;      /* Timeout delay in seconds */
-  int rc;                /* Result code from SQLite3 API calls */
-  sqlite3 *db;           /* The database connection */
-  sqlite3_stmt *pStmt;   /* A single SQL statement */
-  Str sql;               /* SQL to run */
-  unsigned runFlags = 0; /* Flags passed to runSql */
+  int i;
+  int nDb = 0;
+  char **azDb = 0;
+  int verboseFlag = 0;
+  int noLookaside = 0;
+  int vdbeLimitFlag = 0;
+  int nHeap = 0;
+  int iTimeout = 0;
+  int rc;
+  sqlite3 *db;
+  sqlite3_stmt *pStmt;
+  Str sql;
+  unsigned runFlags = 0;
 
   for(i=1; i<argc; i++){
     char *z = argv[i];
@@ -123,9 +123,9 @@ int main(int argc, char **argv){
   inmemVfsRegister();
   formatVfs();
   StrInit(&sql);
-#ifdef __unix__
+
   signal(SIGALRM, timeoutHandler);
-#endif
+
   for(i=0; i<nDb; i++){
     if( verboseFlag && nDb>1 ){
       printf("DATABASE-FILE: %s\n", azDb[i]);
@@ -139,11 +139,11 @@ int main(int argc, char **argv){
       reformatVfs();
       continue;
     }
-#ifndef SQLITE_OMIT_PROGRESS_CALLBACK
+
     if( vdbeLimitFlag ){
       sqlite3_progress_handler(db, 100000, progressHandler, &vdbeLimitFlag);
     }
-#endif
+
     rc = sqlite3_prepare_v2(db, "SELECT sql FROM autoexec", -1, &pStmt, 0);
     if( rc==SQLITE_OK ){
       while( SQLITE_ROW==sqlite3_step(pStmt) ){

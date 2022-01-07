@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT8 ;
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_4__ {char* InlineComment; char* EndNodeComment; char* NameComment; char* CloseBraceComment; int /*<<< orphan*/ * EndBlkComment; int /*<<< orphan*/ * CommentList; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+typedef int UINT32 ;
+struct TYPE_4__ {char* InlineComment; char* EndNodeComment; char* NameComment; char* CloseBraceComment; int * EndBlkComment; int * CommentList; } ;
 struct TYPE_5__ {TYPE_1__ Common; } ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  TYPE_2__ ACPI_PARSE_OBJECT ;
-
-/* Variables and functions */
-#define  AMLCOMMENT_INLINE 133 
-#define  AML_COMMENT_CLOSE_BRACE 132 
-#define  AML_COMMENT_ENDBLK 131 
-#define  AML_COMMENT_END_NODE 130 
-#define  AML_COMMENT_STANDARD 129 
-#define  AML_NAMECOMMENT 128 
- int /*<<< orphan*/  AcpiDmIndent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  CvListIsSingleton (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CvPrintOneCommentList (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
+typedef scalar_t__ BOOLEAN ;
+typedef TYPE_2__ ACPI_PARSE_OBJECT ;
+ int AcpiDmIndent (int ) ;
+ int AcpiOsPrintf (char*,...) ;
+ int CvListIsSingleton (int *) ;
+ int CvPrintOneCommentList (int *,int ) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
 
 void
 CvPrintOneCommentType (
-    ACPI_PARSE_OBJECT       *Op,
-    UINT8                   CommentType,
-    char*                   EndStr,
-    UINT32                  Level)
+    ACPI_PARSE_OBJECT *Op,
+    UINT8 CommentType,
+    char* EndStr,
+    UINT32 Level)
 {
-    BOOLEAN                 CommentExists = FALSE;
-    char                    **CommentToPrint = NULL;
+    BOOLEAN CommentExists = FALSE;
+    char **CommentToPrint = ((void*)0);
 
 
     switch (CommentType)
     {
-    case AML_COMMENT_STANDARD:
+    case 129:
 
         if (CvListIsSingleton (Op->Common.CommentList))
         {
@@ -58,35 +50,35 @@ CvPrintOneCommentType (
             CvPrintOneCommentList (Op->Common.CommentList, Level);
         }
 
-        Op->Common.CommentList = NULL;
+        Op->Common.CommentList = ((void*)0);
         return;
 
-    case AML_COMMENT_ENDBLK:
+    case 131:
 
         if (Op->Common.EndBlkComment)
         {
             CvPrintOneCommentList (Op->Common.EndBlkComment, Level);
-            Op->Common.EndBlkComment = NULL;
+            Op->Common.EndBlkComment = ((void*)0);
             AcpiDmIndent(Level);
         }
         return;
 
-    case AMLCOMMENT_INLINE:
+    case 133:
 
         CommentToPrint = &Op->Common.InlineComment;
         break;
 
-    case AML_COMMENT_END_NODE:
+    case 130:
 
         CommentToPrint = &Op->Common.EndNodeComment;
         break;
 
-    case AML_NAMECOMMENT:
+    case 128:
 
         CommentToPrint = &Op->Common.NameComment;
         break;
 
-    case AML_COMMENT_CLOSE_BRACE:
+    case 132:
 
         CommentToPrint = &Op->Common.CloseBraceComment;
         break;
@@ -99,7 +91,7 @@ CvPrintOneCommentType (
     {
         CommentExists = TRUE;
         AcpiOsPrintf ("%s", *CommentToPrint);
-        *CommentToPrint = NULL;
+        *CommentToPrint = ((void*)0);
     }
 
     if (CommentExists && EndStr)

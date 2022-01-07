@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ pptr; scalar_t__ wptr; int total_bytes; int unprocessed_bytes; struct TYPE_4__* next; struct TYPE_4__* prev; } ;
-typedef  TYPE_1__ netbuffer_t ;
+typedef TYPE_1__ netbuffer_t ;
 struct TYPE_5__ {scalar_t__ ptr0; int len0; int len1; scalar_t__ ptr1; TYPE_1__* cur; TYPE_1__* head; } ;
-typedef  TYPE_2__ nb_processor_t ;
+typedef TYPE_2__ nb_processor_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 int nb_advance_process (nb_processor_t *P, int offset) {
   netbuffer_t *H = P->head, *X = P->cur;
@@ -36,10 +36,10 @@ int nb_advance_process (nb_processor_t *P, int offset) {
     }
     if (X->pptr == X->wptr) {
       X = X->next;
-      if (X == H) { 
+      if (X == H) {
         assert (!offset);
         X = 0;
-        break; 
+        break;
       }
     }
   }
@@ -63,7 +63,7 @@ int nb_advance_process (nb_processor_t *P, int offset) {
     P->len1 = 0;
     return 0;
   }
-  
+
   P->cur = X;
 
   P->ptr0 = X->pptr;

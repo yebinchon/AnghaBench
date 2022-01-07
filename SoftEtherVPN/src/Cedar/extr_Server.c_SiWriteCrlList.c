@@ -1,122 +1,122 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  name ;
-typedef  scalar_t__ UINT ;
-struct TYPE_7__ {TYPE_1__* Serial; int /*<<< orphan*/  DigestSHA1; int /*<<< orphan*/  DigestMD5; TYPE_2__* Name; } ;
-struct TYPE_6__ {int /*<<< orphan*/  Local; int /*<<< orphan*/  State; int /*<<< orphan*/  Country; int /*<<< orphan*/  Unit; int /*<<< orphan*/  Organization; int /*<<< orphan*/  CommonName; } ;
-struct TYPE_5__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ NAME ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  TYPE_3__ CRL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BinToStr (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CfgAddStr (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  CfgAddUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CfgCreateFolder (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Format (char*,int,char*,scalar_t__) ; 
- int IsZero (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  MD5_SIZE ; 
- int /*<<< orphan*/  SHA1_SIZE ; 
- int UniIsEmptyStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef int name ;
+typedef scalar_t__ UINT ;
+struct TYPE_7__ {TYPE_1__* Serial; int DigestSHA1; int DigestMD5; TYPE_2__* Name; } ;
+struct TYPE_6__ {int Local; int State; int Country; int Unit; int Organization; int CommonName; } ;
+struct TYPE_5__ {int size; int data; } ;
+typedef TYPE_2__ NAME ;
+typedef int LIST ;
+typedef int FOLDER ;
+typedef TYPE_3__ CRL ;
+
+
+ int BinToStr (char*,int,int ,int ) ;
+ int CfgAddStr (int *,char*,char*) ;
+ int CfgAddUniStr (int *,char*,int ) ;
+ int * CfgCreateFolder (int *,char*) ;
+ int Format (char*,int,char*,scalar_t__) ;
+ int IsZero (int ,int ) ;
+ TYPE_3__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int LockList (int *) ;
+ int MAX_SIZE ;
+ int MD5_SIZE ;
+ int SHA1_SIZE ;
+ int UniIsEmptyStr (int ) ;
+ int UnlockList (int *) ;
 
 void SiWriteCrlList(FOLDER *f, LIST *o)
 {
-	// Validate arguments
-	if (f == NULL || o == NULL)
-	{
-		return;
-	}
 
-	LockList(o);
-	{
-		UINT i;
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			char name[MAX_SIZE];
-			CRL *crl = LIST_DATA(o, i);
-			FOLDER *ff;
-			NAME *n;
+ if (f == ((void*)0) || o == ((void*)0))
+ {
+  return;
+ }
 
-			Format(name, sizeof(name), "Crl%u", i);
+ LockList(o);
+ {
+  UINT i;
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   char name[MAX_SIZE];
+   CRL *crl = LIST_DATA(o, i);
+   FOLDER *ff;
+   NAME *n;
 
-			ff = CfgCreateFolder(f, name);
-			n = crl->Name;
+   Format(name, sizeof(name), "Crl%u", i);
 
-			if (UniIsEmptyStr(n->CommonName) == false)
-			{
-				CfgAddUniStr(ff, "CommonName", n->CommonName);
-			}
+   ff = CfgCreateFolder(f, name);
+   n = crl->Name;
 
-			if (UniIsEmptyStr(n->Organization) == false)
-			{
-				CfgAddUniStr(ff, "Organization", n->Organization);
-			}
+   if (UniIsEmptyStr(n->CommonName) == 0)
+   {
+    CfgAddUniStr(ff, "CommonName", n->CommonName);
+   }
 
-			if (UniIsEmptyStr(n->Unit) == false)
-			{
-				CfgAddUniStr(ff, "Unit", n->Unit);
-			}
+   if (UniIsEmptyStr(n->Organization) == 0)
+   {
+    CfgAddUniStr(ff, "Organization", n->Organization);
+   }
 
-			if (UniIsEmptyStr(n->Country) == false)
-			{
-				CfgAddUniStr(ff, "Country", n->Country);
-			}
+   if (UniIsEmptyStr(n->Unit) == 0)
+   {
+    CfgAddUniStr(ff, "Unit", n->Unit);
+   }
 
-			if (UniIsEmptyStr(n->State) == false)
-			{
-				CfgAddUniStr(ff, "State", n->State);
-			}
+   if (UniIsEmptyStr(n->Country) == 0)
+   {
+    CfgAddUniStr(ff, "Country", n->Country);
+   }
 
-			if (UniIsEmptyStr(n->Local) == false)
-			{
-				CfgAddUniStr(ff, "Local", n->Local);
-			}
+   if (UniIsEmptyStr(n->State) == 0)
+   {
+    CfgAddUniStr(ff, "State", n->State);
+   }
 
-			if (IsZero(crl->DigestMD5, MD5_SIZE) == false)
-			{
-				char tmp[MAX_SIZE];
+   if (UniIsEmptyStr(n->Local) == 0)
+   {
+    CfgAddUniStr(ff, "Local", n->Local);
+   }
 
-				BinToStr(tmp, sizeof(tmp), crl->DigestMD5, MD5_SIZE);
-				CfgAddStr(ff, "DigestMD5", tmp);
-			}
+   if (IsZero(crl->DigestMD5, MD5_SIZE) == 0)
+   {
+    char tmp[MAX_SIZE];
 
-			if (IsZero(crl->DigestSHA1, SHA1_SIZE) == false)
-			{
-				char tmp[MAX_SIZE];
+    BinToStr(tmp, sizeof(tmp), crl->DigestMD5, MD5_SIZE);
+    CfgAddStr(ff, "DigestMD5", tmp);
+   }
 
-				BinToStr(tmp, sizeof(tmp), crl->DigestSHA1, SHA1_SIZE);
-				CfgAddStr(ff, "DigestSHA1", tmp);
-			}
+   if (IsZero(crl->DigestSHA1, SHA1_SIZE) == 0)
+   {
+    char tmp[MAX_SIZE];
 
-			if (crl->Serial != NULL)
-			{
-				char tmp[MAX_SIZE];
+    BinToStr(tmp, sizeof(tmp), crl->DigestSHA1, SHA1_SIZE);
+    CfgAddStr(ff, "DigestSHA1", tmp);
+   }
 
-				BinToStr(tmp, sizeof(tmp), crl->Serial->data, crl->Serial->size);
-				CfgAddStr(ff, "Serial", tmp);
-			}
-		}
-	}
-	UnlockList(o);
+   if (crl->Serial != ((void*)0))
+   {
+    char tmp[MAX_SIZE];
+
+    BinToStr(tmp, sizeof(tmp), crl->Serial->data, crl->Serial->size);
+    CfgAddStr(ff, "Serial", tmp);
+   }
+  }
+ }
+ UnlockList(o);
 }

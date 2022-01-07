@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RSA_F_RSA_PADDING_CHECK_X931 ; 
- int /*<<< orphan*/  RSA_R_INVALID_HEADER ; 
- int /*<<< orphan*/  RSA_R_INVALID_PADDING ; 
- int /*<<< orphan*/  RSA_R_INVALID_TRAILER ; 
- int /*<<< orphan*/  RSAerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,unsigned int) ; 
+ int RSA_F_RSA_PADDING_CHECK_X931 ;
+ int RSA_R_INVALID_HEADER ;
+ int RSA_R_INVALID_PADDING ;
+ int RSA_R_INVALID_TRAILER ;
+ int RSAerr (int ,int ) ;
+ int memcpy (unsigned char*,unsigned char const*,unsigned int) ;
 
 int RSA_padding_check_X931(unsigned char *to, int tlen,
                            const unsigned char *from, int flen, int num)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  ITextRange_GetEnd (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ITextRange_GetStart (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ITextRange_GetStoryLength (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ITextRange_SetEnd (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ITextRange_SetStart (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  S_OK ; 
-#define  tomStory 128 
+
+
+
+typedef int LONG ;
+typedef int ITextRange ;
+typedef int HRESULT ;
+
+
+ int E_NOTIMPL ;
+ int FIXME (char*,int) ;
+ int ITextRange_GetEnd (int *,int*) ;
+ int ITextRange_GetStart (int *,int*) ;
+ int ITextRange_GetStoryLength (int *,int*) ;
+ int ITextRange_SetEnd (int *,int) ;
+ int ITextRange_SetStart (int *,int) ;
+ int S_OK ;
+
 
 __attribute__((used)) static HRESULT textrange_expand(ITextRange *range, LONG unit, LONG *delta)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static HRESULT textrange_expand(ITextRange *range, LONG un
 
     switch (unit)
     {
-    case tomStory:
+    case 128:
         expand_start = 0;
         ITextRange_GetStoryLength(range, &expand_end);
         break;

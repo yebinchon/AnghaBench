@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bufW ;
-typedef  int /*<<< orphan*/  bufA ;
-typedef  char WCHAR ;
 
-/* Variables and functions */
- scalar_t__ GetModuleFileNameA (void*,char*,int) ; 
- scalar_t__ GetModuleFileNameW (void*,char*,int) ; 
- int MAX_PATH ; 
- scalar_t__ is_unicode_enabled ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int bufW ;
+typedef int bufA ;
+typedef char WCHAR ;
+
+
+ scalar_t__ GetModuleFileNameA (void*,char*,int) ;
+ scalar_t__ GetModuleFileNameW (void*,char*,int) ;
+ int MAX_PATH ;
+ scalar_t__ is_unicode_enabled ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void testGetModuleFileName_Wrong(void)
 {
-    char        bufA[MAX_PATH];
-    WCHAR       bufW[MAX_PATH];
+    char bufA[MAX_PATH];
+    WCHAR bufW[MAX_PATH];
 
-    /* test wrong handle */
+
     if (is_unicode_enabled)
     {
         bufW[0] = '*';

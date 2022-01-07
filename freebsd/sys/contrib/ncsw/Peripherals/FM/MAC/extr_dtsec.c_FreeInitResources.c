@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  h_Fm; } ;
-struct TYPE_5__ {scalar_t__ mdioIrq; int /*<<< orphan*/ * p_UnicastAddrHash; int /*<<< orphan*/ * p_MulticastAddrHash; int /*<<< orphan*/  macId; TYPE_1__ fmMacControllerDriver; } ;
-typedef  TYPE_2__ t_Dtsec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FmUnregisterIntr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeHashTable (int /*<<< orphan*/ *) ; 
- scalar_t__ NO_IRQ ; 
- int /*<<< orphan*/  XX_DisableIntr (scalar_t__) ; 
- int /*<<< orphan*/  XX_FreeIntr (scalar_t__) ; 
- int /*<<< orphan*/  e_FM_INTR_TYPE_ERR ; 
- int /*<<< orphan*/  e_FM_INTR_TYPE_NORMAL ; 
- int /*<<< orphan*/  e_FM_MOD_1G_MAC ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int h_Fm; } ;
+struct TYPE_5__ {scalar_t__ mdioIrq; int * p_UnicastAddrHash; int * p_MulticastAddrHash; int macId; TYPE_1__ fmMacControllerDriver; } ;
+typedef TYPE_2__ t_Dtsec ;
+
+
+ int FmUnregisterIntr (int ,int ,int ,int ) ;
+ int FreeHashTable (int *) ;
+ scalar_t__ NO_IRQ ;
+ int XX_DisableIntr (scalar_t__) ;
+ int XX_FreeIntr (scalar_t__) ;
+ int e_FM_INTR_TYPE_ERR ;
+ int e_FM_INTR_TYPE_NORMAL ;
+ int e_FM_MOD_1G_MAC ;
 
 __attribute__((used)) static void FreeInitResources(t_Dtsec *p_Dtsec)
 {
@@ -36,11 +36,11 @@ __attribute__((used)) static void FreeInitResources(t_Dtsec *p_Dtsec)
     FmUnregisterIntr(p_Dtsec->fmMacControllerDriver.h_Fm, e_FM_MOD_1G_MAC, p_Dtsec->macId, e_FM_INTR_TYPE_ERR);
     FmUnregisterIntr(p_Dtsec->fmMacControllerDriver.h_Fm, e_FM_MOD_1G_MAC, p_Dtsec->macId, e_FM_INTR_TYPE_NORMAL);
 
-    /* release the driver's group hash table */
-    FreeHashTable(p_Dtsec->p_MulticastAddrHash);
-    p_Dtsec->p_MulticastAddrHash =   NULL;
 
-    /* release the driver's individual hash table */
+    FreeHashTable(p_Dtsec->p_MulticastAddrHash);
+    p_Dtsec->p_MulticastAddrHash = ((void*)0);
+
+
     FreeHashTable(p_Dtsec->p_UnicastAddrHash);
-    p_Dtsec->p_UnicastAddrHash =     NULL;
+    p_Dtsec->p_UnicastAddrHash = ((void*)0);
 }

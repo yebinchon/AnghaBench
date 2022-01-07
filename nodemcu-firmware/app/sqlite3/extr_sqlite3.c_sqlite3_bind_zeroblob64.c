@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u64 ;
-typedef  int sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef int sqlite3_uint64 ;
+typedef int sqlite3_stmt ;
 struct TYPE_3__ {TYPE_2__* db; } ;
-typedef  TYPE_1__ Vdbe ;
-struct TYPE_4__ {int /*<<< orphan*/  mutex; scalar_t__* aLimit; } ;
+typedef TYPE_1__ Vdbe ;
+struct TYPE_4__ {int mutex; scalar_t__* aLimit; } ;
 
-/* Variables and functions */
- size_t SQLITE_LIMIT_LENGTH ; 
- int SQLITE_TOOBIG ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3ApiExit (TYPE_2__*,int) ; 
- int sqlite3_bind_zeroblob (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+ size_t SQLITE_LIMIT_LENGTH ;
+ int SQLITE_TOOBIG ;
+ int assert (int) ;
+ int sqlite3ApiExit (TYPE_2__*,int) ;
+ int sqlite3_bind_zeroblob (int *,int,int) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 int sqlite3_bind_zeroblob64(sqlite3_stmt *pStmt, int i, sqlite3_uint64 n){
   int rc;

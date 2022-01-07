@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_NewMenu ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IContextMenu ; 
- int /*<<< orphan*/  IID_IContextMenu2 ; 
- int /*<<< orphan*/  IID_IContextMenu3 ; 
- int /*<<< orphan*/  IID_IObjectWithSite ; 
- int /*<<< orphan*/  IID_IShellExtInit ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int IUnknown ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_NewMenu ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int IID_IContextMenu ;
+ int IID_IContextMenu2 ;
+ int IID_IContextMenu3 ;
+ int IID_IObjectWithSite ;
+ int IID_IShellExtInit ;
+ int IID_IUnknown ;
+ scalar_t__ IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_newmenu(void)
 {
     IUnknown *unk, *unk2;
     HRESULT hr;
 
-    hr = CoCreateInstance(&CLSID_NewMenu, NULL, CLSCTX_INPROC_SERVER, &IID_IUnknown, (void **)&unk);
+    hr = CoCreateInstance(&CLSID_NewMenu, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IUnknown, (void **)&unk);
     ok(hr == S_OK, "Failed to create NewMenu object, hr %#x.\n", hr);
     if (hr != S_OK)
     {

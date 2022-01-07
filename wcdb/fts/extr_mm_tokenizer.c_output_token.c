@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* out_buffer; int out_length; int* in_offset; int /*<<< orphan*/  token_count; int /*<<< orphan*/ * in_buffer; } ;
-typedef  TYPE_1__ mm_cursor_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  buf2 ;
-typedef  int /*<<< orphan*/  buf1 ;
-typedef  int /*<<< orphan*/  UErrorCode ;
-typedef  int /*<<< orphan*/  UChar ;
 
-/* Variables and functions */
- int MINIMAL_OUT_BUFFER_LENGTH ; 
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNORM_NFKD ; 
- scalar_t__ U_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  U_FOLD_CASE_DEFAULT ; 
- int /*<<< orphan*/  U_ZERO_ERROR ; 
- int /*<<< orphan*/  free (char*) ; 
- char* generate_token_printable_code (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_malloc (int) ; 
- int /*<<< orphan*/  sqlite3_mm_set_last_error (char*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ sqlite3_realloc (char*,int) ; 
- int u_strFoldCase (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  u_strToUTF8 (char*,int,int*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int unorm_normalize (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* out_buffer; int out_length; int* in_offset; int token_count; int * in_buffer; } ;
+typedef TYPE_1__ mm_cursor_t ;
+typedef int int32_t ;
+typedef int buf2 ;
+typedef int buf1 ;
+typedef int UErrorCode ;
+typedef int UChar ;
+
+
+ int MINIMAL_OUT_BUFFER_LENGTH ;
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNORM_NFKD ;
+ scalar_t__ U_FAILURE (int ) ;
+ int U_FOLD_CASE_DEFAULT ;
+ int U_ZERO_ERROR ;
+ int free (char*) ;
+ char* generate_token_printable_code (int *,int) ;
+ scalar_t__ sqlite3_malloc (int) ;
+ int sqlite3_mm_set_last_error (char*,int ,char*) ;
+ scalar_t__ sqlite3_realloc (char*,int) ;
+ int u_strFoldCase (int *,int,int *,int,int ,int *) ;
+ int u_strToUTF8 (char*,int,int*,int *,int,int *) ;
+ int unorm_normalize (int *,int,int ,int ,int *,int,int *) ;
 
 __attribute__((used)) static int output_token(mm_cursor_t *cur,
                         int32_t start,
@@ -57,7 +57,7 @@ __attribute__((used)) static int output_token(mm_cursor_t *cur,
         length = 256;
     result = unorm_normalize(cur->in_buffer + start, length, UNORM_NFKD, 0,
                              buf1, sizeof(buf1) / sizeof(UChar), &status);
-    // currently, only try fixed length buffer, failed if overflowed.
+
     if (U_FAILURE(status) || result > sizeof(buf1) / sizeof(UChar)) {
         char *seq =
             generate_token_printable_code(cur->in_buffer + start, length);
@@ -70,7 +70,7 @@ __attribute__((used)) static int output_token(mm_cursor_t *cur,
     length = result;
     result = u_strFoldCase(buf2, sizeof(buf2) / sizeof(UChar), buf1, length,
                            U_FOLD_CASE_DEFAULT, &status);
-    // currently, only try fixed length buffer, failed if overflowed.
+
     if (U_FAILURE(status) || result > sizeof(buf2) / sizeof(UChar)) {
         char *seq = generate_token_printable_code(buf1, length);
         sqlite3_mm_set_last_error(
@@ -79,7 +79,7 @@ __attribute__((used)) static int output_token(mm_cursor_t *cur,
         return SQLITE_ERROR;
     }
 
-    if (cur->out_buffer == NULL) {
+    if (cur->out_buffer == ((void*)0)) {
         cur->out_buffer =
             (char *) sqlite3_malloc(MINIMAL_OUT_BUFFER_LENGTH * sizeof(char));
         if (!cur->out_buffer)

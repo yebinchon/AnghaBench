@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct instr_info {int dummy; } ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int D3DDECLUSAGE_COLOR ; 
- int D3DSP_DCL_USAGEINDEX_MASK ; 
- int D3DSP_DCL_USAGEINDEX_SHIFT ; 
- int D3DSP_DCL_USAGE_MASK ; 
- int D3DSP_DCL_USAGE_SHIFT ; 
- int D3DSP_TEXTURETYPE_MASK ; 
- int D3DSP_TEXTURETYPE_SHIFT ; 
- int D3DSTT_VOLUME ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  add_modifier (char*,int) ; 
- int /*<<< orphan*/  add_register (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char** decl_usage ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- char** tex_type ; 
+
+ int D3DDECLUSAGE_COLOR ;
+ int D3DSP_DCL_USAGEINDEX_MASK ;
+ int D3DSP_DCL_USAGEINDEX_SHIFT ;
+ int D3DSP_DCL_USAGE_MASK ;
+ int D3DSP_DCL_USAGE_SHIFT ;
+ int D3DSP_TEXTURETYPE_MASK ;
+ int D3DSP_TEXTURETYPE_SHIFT ;
+ int D3DSTT_VOLUME ;
+ int TRUE ;
+ int add_modifier (char*,int) ;
+ int add_register (char*,int,int ,int ) ;
+ char** decl_usage ;
+ int sprintf (char*,char*,...) ;
+ char** tex_type ;
 
 __attribute__((used)) static int instr_dcl(const struct instr_info *info, DWORD **ptr, char *buffer, BOOL ps)
 {

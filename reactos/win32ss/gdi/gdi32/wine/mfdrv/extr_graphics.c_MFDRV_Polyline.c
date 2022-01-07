@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-struct TYPE_7__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ POINTS ;
-typedef  TYPE_2__ POINT ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  META_POLYLINE ; 
- int /*<<< orphan*/  MFDRV_MetaPoly (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int y; int x; } ;
+struct TYPE_7__ {int y; int x; } ;
+typedef TYPE_1__ POINTS ;
+typedef TYPE_2__ POINT ;
+typedef int PHYSDEV ;
+typedef int INT ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_1__*) ;
+ int META_POLYLINE ;
+ int MFDRV_MetaPoly (int ,int ,TYPE_1__*,int) ;
 
 BOOL MFDRV_Polyline( PHYSDEV dev, const POINT* pt, INT count )
 {

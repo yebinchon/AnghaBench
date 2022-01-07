@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct InetContext {int /*<<< orphan*/  error; int /*<<< orphan*/  timeout; int /*<<< orphan*/  event; } ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct InetContext* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (struct InetContext*) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
+
+
+
+struct InetContext {int error; int timeout; int event; } ;
+typedef int DWORD ;
+
+
+ int CreateEventW (int *,int ,int ,int *) ;
+ struct InetContext* CryptMemAlloc (int) ;
+ int CryptMemFree (struct InetContext*) ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
 
 __attribute__((used)) static struct InetContext *CRYPT_MakeInetContext(DWORD dwTimeout)
 {
@@ -26,11 +26,11 @@ __attribute__((used)) static struct InetContext *CRYPT_MakeInetContext(DWORD dwT
 
     if (context)
     {
-        context->event = CreateEventW(NULL, FALSE, FALSE, NULL);
+        context->event = CreateEventW(((void*)0), FALSE, FALSE, ((void*)0));
         if (!context->event)
         {
             CryptMemFree(context);
-            context = NULL;
+            context = ((void*)0);
         }
         else
         {

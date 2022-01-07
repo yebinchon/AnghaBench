@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mbuf {int dummy; } ;
 struct cs_base64_ctx {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs_base64_finish (struct cs_base64_ctx*) ; 
- int /*<<< orphan*/  cs_base64_init (struct cs_base64_ctx*,int /*<<< orphan*/ ,struct mbuf*) ; 
- int /*<<< orphan*/  cs_base64_update (struct cs_base64_ctx*,char const*,size_t) ; 
- int /*<<< orphan*/  mg_mbuf_append_base64_putc ; 
+
+ int cs_base64_finish (struct cs_base64_ctx*) ;
+ int cs_base64_init (struct cs_base64_ctx*,int ,struct mbuf*) ;
+ int cs_base64_update (struct cs_base64_ctx*,char const*,size_t) ;
+ int mg_mbuf_append_base64_putc ;
 
 void mg_mbuf_append_base64(struct mbuf *mbuf, const void *data, size_t len) {
   struct cs_base64_ctx ctx;

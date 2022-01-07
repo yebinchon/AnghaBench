@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int RTYPE_GP ; 
- int RTYPE_NUM ; 
- int RWARN ; 
- int /*<<< orphan*/  SKIP_WHITESPACE () ; 
- unsigned int SP ; 
- int /*<<< orphan*/  input_line_pointer ; 
- scalar_t__ mips_cprestore_valid ; 
- unsigned int mips_frame_reg ; 
- int mips_frame_reg_valid ; 
- int /*<<< orphan*/  reg_lookup (int /*<<< orphan*/ *,int,unsigned int*) ; 
+ int RTYPE_GP ;
+ int RTYPE_NUM ;
+ int RWARN ;
+ int SKIP_WHITESPACE () ;
+ unsigned int SP ;
+ int input_line_pointer ;
+ scalar_t__ mips_cprestore_valid ;
+ unsigned int mips_frame_reg ;
+ int mips_frame_reg_valid ;
+ int reg_lookup (int *,int,unsigned int*) ;
 
 int
 tc_get_register (int frame)

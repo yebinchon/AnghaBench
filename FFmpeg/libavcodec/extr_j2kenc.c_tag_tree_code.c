@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int val; struct TYPE_3__* parent; scalar_t__ vis; } ;
-typedef  TYPE_1__ Jpeg2000TgtNode ;
-typedef  int /*<<< orphan*/  Jpeg2000EncoderContext ;
+typedef TYPE_1__ Jpeg2000TgtNode ;
+typedef int Jpeg2000EncoderContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+ int put_bits (int *,int,int) ;
 
 __attribute__((used)) static void tag_tree_code(Jpeg2000EncoderContext *s, Jpeg2000TgtNode *node, int threshold)
 {

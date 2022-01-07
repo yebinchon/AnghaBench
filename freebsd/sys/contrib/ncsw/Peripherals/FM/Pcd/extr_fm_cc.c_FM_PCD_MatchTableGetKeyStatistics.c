@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/ * t_Handle ;
-struct TYPE_3__ {scalar_t__ numOfKeys; int /*<<< orphan*/  h_Spinlock; } ;
-typedef  TYPE_1__ t_FmPcdCcNode ;
-typedef  int /*<<< orphan*/  t_FmPcdCcKeyStatistics ;
-typedef  scalar_t__ t_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- scalar_t__ E_INVALID_STATE ; 
- int /*<<< orphan*/  E_NULL_POINTER ; 
- scalar_t__ E_OK ; 
- int /*<<< orphan*/  MAJOR ; 
- scalar_t__ MatchTableGetKeyStatistics (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_LockIntrSpinlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_UnlockIntrSpinlock (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int * t_Handle ;
+struct TYPE_3__ {scalar_t__ numOfKeys; int h_Spinlock; } ;
+typedef TYPE_1__ t_FmPcdCcNode ;
+typedef int t_FmPcdCcKeyStatistics ;
+typedef scalar_t__ t_Error ;
+
+
+ int E_INVALID_HANDLE ;
+ scalar_t__ E_INVALID_STATE ;
+ int E_NULL_POINTER ;
+ scalar_t__ E_OK ;
+ int MAJOR ;
+ scalar_t__ MatchTableGetKeyStatistics (TYPE_1__*,scalar_t__,int *) ;
+ char* NO_MSG ;
+ int RETURN_ERROR (int ,scalar_t__,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (int *,int ) ;
+ int XX_LockIntrSpinlock (int ) ;
+ int XX_UnlockIntrSpinlock (int ,int ) ;
 
 t_Error FM_PCD_MatchTableGetKeyStatistics(
         t_Handle h_CcNode, uint16_t keyIndex,

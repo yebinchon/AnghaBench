@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t sigmadelta_channel_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t sigmadelta_channel_t ;
+typedef int esp_err_t ;
 struct TYPE_4__ {TYPE_1__* channel; } ;
-struct TYPE_3__ {int /*<<< orphan*/  prescale; } ;
+struct TYPE_3__ {int prescale; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_OK ; 
- TYPE_2__ SIGMADELTA ; 
- int /*<<< orphan*/  SIGMADELTA_CHANNEL_ERR_STR ; 
- size_t SIGMADELTA_CHANNEL_MAX ; 
- int /*<<< orphan*/  SIGMADELTA_CHECK (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_OK ;
+ TYPE_2__ SIGMADELTA ;
+ int SIGMADELTA_CHANNEL_ERR_STR ;
+ size_t SIGMADELTA_CHANNEL_MAX ;
+ int SIGMADELTA_CHECK (int,int ,int ) ;
 
 esp_err_t sigmadelta_set_prescale(sigmadelta_channel_t channel, uint8_t prescale)
 {

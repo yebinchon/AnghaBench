@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float M_PI ; 
- scalar_t__ fabs (int) ; 
- scalar_t__ fmax (float,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fmin (float,float const) ; 
- scalar_t__ sin (float) ; 
- scalar_t__ sqrt (int) ; 
+ float M_PI ;
+ scalar_t__ fabs (int) ;
+ scalar_t__ fmax (float,int ) ;
+ int fmin (float,float const) ;
+ scalar_t__ sin (float) ;
+ scalar_t__ sqrt (int) ;
 
 __attribute__((used)) static float star(int x, int y, float t)
 {

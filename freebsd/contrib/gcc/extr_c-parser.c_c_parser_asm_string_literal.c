@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  c_parser ;
-struct TYPE_2__ {int /*<<< orphan*/  value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPP_STRING ; 
- int /*<<< orphan*/  CPP_WSTRING ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  build_string (int,char*) ; 
- int /*<<< orphan*/  c_parser_consume_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  c_parser_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ c_parser_next_token_is (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* c_parser_peek_token (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef int c_parser ;
+struct TYPE_2__ {int value; } ;
+
+
+ int CPP_STRING ;
+ int CPP_WSTRING ;
+ int NULL_TREE ;
+ int build_string (int,char*) ;
+ int c_parser_consume_token (int *) ;
+ int c_parser_error (int *,char*) ;
+ scalar_t__ c_parser_next_token_is (int *,int ) ;
+ TYPE_1__* c_parser_peek_token (int *) ;
+ int error (char*) ;
 
 __attribute__((used)) static tree
 c_parser_asm_string_literal (c_parser *parser)

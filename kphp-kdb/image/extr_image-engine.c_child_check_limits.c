@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- scalar_t__ am_get_memory_usage (scalar_t__,long long*,int) ; 
- long long rss_memory_limit ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
- long long vmsize_limit ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ scalar_t__ am_get_memory_usage (scalar_t__,long long*,int) ;
+ long long rss_memory_limit ;
+ int vkprintf (int,char*,int) ;
+ long long vmsize_limit ;
 
 __attribute__((used)) static int child_check_limits (pid_t pid) {
   long long a[2];

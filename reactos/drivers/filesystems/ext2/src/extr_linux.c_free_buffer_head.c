@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct buffer_head {scalar_t__ b_bcb; TYPE_2__* b_mdl; } ;
-struct TYPE_5__ {int /*<<< orphan*/  MappedSystemVa; int /*<<< orphan*/  MdlFlags; } ;
-struct TYPE_4__ {int /*<<< orphan*/  bh_count; int /*<<< orphan*/  bh_cache; } ;
-typedef  int ERESOURCE_THREAD ;
+struct TYPE_5__ {int MappedSystemVa; int MdlFlags; } ;
+struct TYPE_4__ {int bh_count; int bh_cache; } ;
+typedef int ERESOURCE_THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CcUnpinDataForThread (scalar_t__,int) ; 
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DEC_MEM_COUNT (int /*<<< orphan*/ ,struct buffer_head*,int) ; 
- int /*<<< orphan*/  DL_BH ; 
- int /*<<< orphan*/  Ext2DestroyMdl (TYPE_2__*) ; 
- scalar_t__ IsFlagOn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MDL_MAPPED_TO_SYSTEM_VA ; 
- int /*<<< orphan*/  MmUnmapLockedPages (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  PS_BUFF_HEAD ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- TYPE_1__ g_jbh ; 
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,struct buffer_head*) ; 
+
+ int CcUnpinDataForThread (scalar_t__,int) ;
+ int DEBUG (int ,char*) ;
+ int DEC_MEM_COUNT (int ,struct buffer_head*,int) ;
+ int DL_BH ;
+ int Ext2DestroyMdl (TYPE_2__*) ;
+ scalar_t__ IsFlagOn (int ,int ) ;
+ int MDL_MAPPED_TO_SYSTEM_VA ;
+ int MmUnmapLockedPages (int ,TYPE_2__*) ;
+ int PS_BUFF_HEAD ;
+ int atomic_dec (int *) ;
+ TYPE_1__ g_jbh ;
+ int kmem_cache_free (int ,struct buffer_head*) ;
 
 void
 free_buffer_head(struct buffer_head * bh)

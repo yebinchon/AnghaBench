@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NB_alloc ; 
- int /*<<< orphan*/  NB_max ; 
- int /*<<< orphan*/  NB_used ; 
- int /*<<< orphan*/  PASSWORD_LENGTH ; 
- int /*<<< orphan*/  active_connections ; 
- int /*<<< orphan*/  ct_rpc_server ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  maxconn ; 
- int /*<<< orphan*/  password_filename ; 
- int /*<<< orphan*/  process_signals () ; 
- int /*<<< orphan*/  random_engine ; 
- int /*<<< orphan*/  random_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  random_functions ; 
- int /*<<< orphan*/  random_parse_function ; 
- int /*<<< orphan*/  random_stats ; 
- int /*<<< orphan*/  random_work (int) ; 
- int /*<<< orphan*/  rpc_methods ; 
- int /*<<< orphan*/  server_exit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  server_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- double tl_aio_timeout ; 
- int /*<<< orphan*/  tl_parse_function ; 
- int /*<<< orphan*/  tl_stat_function ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int PASSWORD_LENGTH ;
+ int active_connections ;
+ int ct_rpc_server ;
+ int epoll_work (int) ;
+ int maxconn ;
+ int password_filename ;
+ int process_signals () ;
+ int random_engine ;
+ int random_free (int ,int ) ;
+ int random_functions ;
+ int random_parse_function ;
+ int random_stats ;
+ int random_work (int) ;
+ int rpc_methods ;
+ int server_exit (int *) ;
+ int server_init (int *,int *,int *,int *) ;
+ double tl_aio_timeout ;
+ int tl_parse_function ;
+ int tl_stat_function ;
+ int vkprintf (int,char*,int ,int ,int ,int ,int ) ;
 
 void start_server (void) {
   int i;
@@ -50,7 +42,7 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (!(i & 255)) {
       vkprintf (1, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
     epoll_work (7);
     random_work (80000 / (1000 / 11));

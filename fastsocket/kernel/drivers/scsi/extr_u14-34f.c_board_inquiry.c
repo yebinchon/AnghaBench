@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct mscp {int cp_dma_addr; int cdb_len; scalar_t__ adapter_status; int /*<<< orphan*/ * cdb; void* data_len; void* data_address; int /*<<< orphan*/  xdir; int /*<<< orphan*/  opcode; } ;
-typedef  int dma_addr_t ;
-struct TYPE_4__ {scalar_t__* cp_stat; int /*<<< orphan*/  pdev; struct mscp* cp; struct mscp* board_id; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct mscp {int cp_dma_addr; int cdb_len; scalar_t__ adapter_status; int * cdb; void* data_len; void* data_address; int xdir; int opcode; } ;
+typedef int dma_addr_t ;
+struct TYPE_4__ {scalar_t__* cp_stat; int pdev; struct mscp* cp; struct mscp* board_id; } ;
 struct TYPE_3__ {scalar_t__ io_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN (unsigned int) ; 
- int /*<<< orphan*/  CMD_CLR_INTR ; 
- int /*<<< orphan*/  CMD_OGM_INTR ; 
- scalar_t__ CP_TAIL_SIZE ; 
- int /*<<< orphan*/  DTD_IN ; 
- int FALSE ; 
- scalar_t__ FREE ; 
- void* H2DEV (int) ; 
- int /*<<< orphan*/  HA_CMD_INQUIRY ; 
- TYPE_2__* HD (unsigned int) ; 
- unsigned long HZ ; 
- scalar_t__ IGNORE ; 
- int /*<<< orphan*/  MAXLOOP ; 
- int /*<<< orphan*/  OP_HOST_ADAPTER ; 
- int /*<<< orphan*/  PCI_DMA_BIDIRECTIONAL ; 
- scalar_t__ REG_LCL_INTR ; 
- scalar_t__ REG_OGM ; 
- scalar_t__ REG_SYS_INTR ; 
- int TRUE ; 
- int /*<<< orphan*/  driver_lock ; 
- unsigned long jiffies ; 
- int /*<<< orphan*/  memset (struct mscp*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  outl (void*,scalar_t__) ; 
- void* pci_map_single (int /*<<< orphan*/ ,struct mscp*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_unmap_single (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,...) ; 
- TYPE_1__** sh ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udelay (long) ; 
- scalar_t__ wait_on_busy (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int BN (unsigned int) ;
+ int CMD_CLR_INTR ;
+ int CMD_OGM_INTR ;
+ scalar_t__ CP_TAIL_SIZE ;
+ int DTD_IN ;
+ int FALSE ;
+ scalar_t__ FREE ;
+ void* H2DEV (int) ;
+ int HA_CMD_INQUIRY ;
+ TYPE_2__* HD (unsigned int) ;
+ unsigned long HZ ;
+ scalar_t__ IGNORE ;
+ int MAXLOOP ;
+ int OP_HOST_ADAPTER ;
+ int PCI_DMA_BIDIRECTIONAL ;
+ scalar_t__ REG_LCL_INTR ;
+ scalar_t__ REG_OGM ;
+ scalar_t__ REG_SYS_INTR ;
+ int TRUE ;
+ int driver_lock ;
+ unsigned long jiffies ;
+ int memset (struct mscp*,int ,scalar_t__) ;
+ int outb (int ,scalar_t__) ;
+ int outl (void*,scalar_t__) ;
+ void* pci_map_single (int ,struct mscp*,int,int ) ;
+ int pci_unmap_single (int ,int,int,int ) ;
+ int printk (char*,int ,...) ;
+ TYPE_1__** sh ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int udelay (long) ;
+ scalar_t__ wait_on_busy (scalar_t__,int ) ;
 
 __attribute__((used)) static int board_inquiry(unsigned int j) {
    struct mscp *cpp;
@@ -77,13 +77,13 @@ __attribute__((used)) static int board_inquiry(unsigned int j) {
 
    HD(j)->cp_stat[0] = IGNORE;
 
-   /* Clear the interrupt indication */
+
    outb(CMD_CLR_INTR, sh[j]->io_port + REG_SYS_INTR);
 
-   /* Store pointer in OGM address bytes */
+
    outl(H2DEV(cpp->cp_dma_addr), sh[j]->io_port + REG_OGM);
 
-   /* Issue OGM interrupt */
+
    outb(CMD_OGM_INTR, sh[j]->io_port + REG_LCL_INTR);
 
    spin_unlock_irq(&driver_lock);

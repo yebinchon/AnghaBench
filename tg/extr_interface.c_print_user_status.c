@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tgl_user_status {int online; int /*<<< orphan*/  when; } ;
+
+
+
+
+struct tgl_user_status {int online; int when; } ;
 struct in_ev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  enable_json ; 
- int /*<<< orphan*/  mprintf (struct in_ev*,char*) ; 
- int /*<<< orphan*/  print_date_full (struct in_ev*,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ int enable_json ;
+ int mprintf (struct in_ev*,char*) ;
+ int print_date_full (struct in_ev*,int ) ;
 
 void print_user_status (struct tgl_user_status *S, struct in_ev *ev) {
-  assert(!enable_json); //calling functions print_user_info_gw() and user_status_upd() already check.
+  assert(!enable_json);
   if (S->online > 0) {
     mprintf (ev, "online (was online ");
     print_date_full (ev, S->when);

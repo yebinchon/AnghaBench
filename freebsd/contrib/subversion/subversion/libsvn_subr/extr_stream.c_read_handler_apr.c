@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-struct baton_apr {int /*<<< orphan*/  pool; int /*<<< orphan*/  file; } ;
-typedef  int apr_size_t ;
 
-/* Variables and functions */
- scalar_t__ APR_STATUS_IS_EOF (int /*<<< orphan*/ ) ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (TYPE_1__*) ; 
- TYPE_1__* svn_io_file_getc (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_io_file_read (int /*<<< orphan*/ ,char*,int*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int apr_err; } ;
+typedef TYPE_1__ svn_error_t ;
+struct baton_apr {int pool; int file; } ;
+typedef int apr_size_t ;
+
+
+ scalar_t__ APR_STATUS_IS_EOF (int ) ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (TYPE_1__*) ;
+ TYPE_1__* svn_io_file_getc (char*,int ,int ) ;
+ TYPE_1__* svn_io_file_read (int ,char*,int*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 read_handler_apr(void *baton, char *buffer, apr_size_t *len)
@@ -49,7 +49,7 @@ read_handler_apr(void *baton, char *buffer, apr_size_t *len)
       if (err && APR_STATUS_IS_EOF(err->apr_err))
         {
           svn_error_clear(err);
-          err = NULL;
+          err = ((void*)0);
         }
     }
 

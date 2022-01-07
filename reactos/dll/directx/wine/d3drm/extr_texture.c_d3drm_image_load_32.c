@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int depth; int rgb; int bytes_per_line; unsigned char* buffer1; int red_mask; int green_mask; int blue_mask; int /*<<< orphan*/ * palette; scalar_t__ palette_size; } ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/  LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ D3DRMIMAGE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DRMERR_BADALLOC ; 
- int /*<<< orphan*/  D3DRM_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ d3drm_image_palettise (TYPE_1__*,unsigned char*,int,int,scalar_t__) ; 
- unsigned char* heap_alloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int depth; int rgb; int bytes_per_line; unsigned char* buffer1; int red_mask; int green_mask; int blue_mask; int * palette; scalar_t__ palette_size; } ;
+typedef int SIZE_T ;
+typedef int LONGLONG ;
+typedef int HRESULT ;
+typedef TYPE_1__ D3DRMIMAGE ;
+typedef scalar_t__ BOOL ;
+
+
+ int D3DRMERR_BADALLOC ;
+ int D3DRM_OK ;
+ int WARN (char*) ;
+ scalar_t__ d3drm_image_palettise (TYPE_1__*,unsigned char*,int,int,scalar_t__) ;
+ unsigned char* heap_alloc (int) ;
 
 __attribute__((used)) static HRESULT d3drm_image_load_32(D3DRMIMAGE *image, unsigned char *src_data,
         LONGLONG src_data_size, SIZE_T w, SIZE_T h, BOOL flip)
@@ -71,7 +71,7 @@ __attribute__((used)) static HRESULT d3drm_image_load_32(D3DRMIMAGE *image, unsi
     image->green_mask = 0x00ff00;
     image->blue_mask = 0x0000ff;
     image->palette_size = 0;
-    image->palette = NULL;
+    image->palette = ((void*)0);
 
     return D3DRM_OK;
 }

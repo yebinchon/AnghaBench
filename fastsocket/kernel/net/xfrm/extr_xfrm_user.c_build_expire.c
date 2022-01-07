@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct xfrm_user_expire {int hard; int /*<<< orphan*/  state; } ;
-struct xfrm_state {int /*<<< orphan*/  mark; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct xfrm_user_expire {int hard; int state; } ;
+struct xfrm_state {int mark; } ;
 struct sk_buff {int dummy; } ;
 struct nlmsghdr {int dummy; } ;
 struct TYPE_2__ {scalar_t__ hard; } ;
-struct km_event {TYPE_1__ data; int /*<<< orphan*/  pid; } ;
+struct km_event {TYPE_1__ data; int pid; } ;
 
-/* Variables and functions */
- int EMSGSIZE ; 
- int /*<<< orphan*/  XFRM_MSG_EXPIRE ; 
- int /*<<< orphan*/  copy_to_user_state (struct xfrm_state*,int /*<<< orphan*/ *) ; 
- struct xfrm_user_expire* nlmsg_data (struct nlmsghdr*) ; 
- int nlmsg_end (struct sk_buff*,struct nlmsghdr*) ; 
- struct nlmsghdr* nlmsg_put (struct sk_buff*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ xfrm_mark_put (struct sk_buff*,int /*<<< orphan*/ *) ; 
+
+ int EMSGSIZE ;
+ int XFRM_MSG_EXPIRE ;
+ int copy_to_user_state (struct xfrm_state*,int *) ;
+ struct xfrm_user_expire* nlmsg_data (struct nlmsghdr*) ;
+ int nlmsg_end (struct sk_buff*,struct nlmsghdr*) ;
+ struct nlmsghdr* nlmsg_put (struct sk_buff*,int ,int ,int ,int,int ) ;
+ scalar_t__ xfrm_mark_put (struct sk_buff*,int *) ;
 
 __attribute__((used)) static int build_expire(struct sk_buff *skb, struct xfrm_state *x, struct km_event *c)
 {
-	struct xfrm_user_expire *ue;
-	struct nlmsghdr *nlh;
+ struct xfrm_user_expire *ue;
+ struct nlmsghdr *nlh;
 
-	nlh = nlmsg_put(skb, c->pid, 0, XFRM_MSG_EXPIRE, sizeof(*ue), 0);
-	if (nlh == NULL)
-		return -EMSGSIZE;
+ nlh = nlmsg_put(skb, c->pid, 0, XFRM_MSG_EXPIRE, sizeof(*ue), 0);
+ if (nlh == ((void*)0))
+  return -EMSGSIZE;
 
-	ue = nlmsg_data(nlh);
-	copy_to_user_state(x, &ue->state);
-	ue->hard = (c->data.hard != 0) ? 1 : 0;
+ ue = nlmsg_data(nlh);
+ copy_to_user_state(x, &ue->state);
+ ue->hard = (c->data.hard != 0) ? 1 : 0;
 
-	if (xfrm_mark_put(skb, &x->mark))
-		goto nla_put_failure;
+ if (xfrm_mark_put(skb, &x->mark))
+  goto nla_put_failure;
 
-	return nlmsg_end(skb, nlh);
+ return nlmsg_end(skb, nlh);
 
 nla_put_failure:
-	return -EMSGSIZE;
+ return -EMSGSIZE;
 }

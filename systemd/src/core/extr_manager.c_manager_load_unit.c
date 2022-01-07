@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  Unit ;
-typedef  int /*<<< orphan*/ * Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  manager_dispatch_load_queue (int /*<<< orphan*/ **) ; 
- int manager_load_unit_prepare (int /*<<< orphan*/ **,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * unit_follow_merge (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_bus_error ;
+typedef int Unit ;
+typedef int * Manager ;
+
+
+ int assert (int **) ;
+ int manager_dispatch_load_queue (int **) ;
+ int manager_load_unit_prepare (int **,char const*,char const*,int *,int **) ;
+ int * unit_follow_merge (int *) ;
 
 int manager_load_unit(
                 Manager *m,
@@ -32,8 +32,8 @@ int manager_load_unit(
         assert(m);
         assert(_ret);
 
-        /* This will load the service information files, but not actually
-         * start any services or anything. */
+
+
 
         r = manager_load_unit_prepare(m, name, path, e, _ret);
         if (r != 0)

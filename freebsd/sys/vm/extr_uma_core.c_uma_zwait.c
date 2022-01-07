@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uma_zone_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_WAITOK ; 
- void* uma_zalloc_arg (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uma_zfree (int /*<<< orphan*/ ,void*) ; 
+
+
+
+typedef int uma_zone_t ;
+
+
+ int M_WAITOK ;
+ void* uma_zalloc_arg (int ,int *,int ) ;
+ int uma_zfree (int ,void*) ;
 
 void
 uma_zwait(uma_zone_t zone)
 {
-	void *item;
+ void *item;
 
-	item = uma_zalloc_arg(zone, NULL, M_WAITOK);
-	uma_zfree(zone, item);
+ item = uma_zalloc_arg(zone, ((void*)0), M_WAITOK);
+ uma_zfree(zone, item);
 }

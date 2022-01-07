@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct chmItsfHeader {unsigned int version; unsigned int header_len; unsigned int unknown_000c; scalar_t__ dir_len; scalar_t__ dir_offset; scalar_t__ data_offset; int /*<<< orphan*/  signature; scalar_t__ unknown_len; scalar_t__ unknown_offset; int /*<<< orphan*/  stream_uuid; int /*<<< orphan*/  dir_uuid; int /*<<< orphan*/  lang_id; int /*<<< orphan*/  last_modified; } ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- unsigned int _CHM_ITSF_V2_LEN ; 
- unsigned int _CHM_ITSF_V3_LEN ; 
- int /*<<< orphan*/  _unmarshal_char_array (unsigned char**,unsigned int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  _unmarshal_int32 (unsigned char**,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  _unmarshal_uint32 (unsigned char**,unsigned int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _unmarshal_uint64 (unsigned char**,unsigned int*,scalar_t__*) ; 
- int /*<<< orphan*/  _unmarshal_uuid (unsigned char**,unsigned int*,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+struct chmItsfHeader {unsigned int version; unsigned int header_len; unsigned int unknown_000c; scalar_t__ dir_len; scalar_t__ dir_offset; scalar_t__ data_offset; int signature; scalar_t__ unknown_len; scalar_t__ unknown_offset; int stream_uuid; int dir_uuid; int lang_id; int last_modified; } ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ unsigned int _CHM_ITSF_V2_LEN ;
+ unsigned int _CHM_ITSF_V3_LEN ;
+ int _unmarshal_char_array (unsigned char**,unsigned int*,int ,int) ;
+ int _unmarshal_int32 (unsigned char**,unsigned int*,unsigned int*) ;
+ int _unmarshal_uint32 (unsigned char**,unsigned int*,int *) ;
+ int _unmarshal_uint64 (unsigned char**,unsigned int*,scalar_t__*) ;
+ int _unmarshal_uuid (unsigned char**,unsigned int*,int ) ;
+ scalar_t__ memcmp (int ,char*,int) ;
 
 __attribute__((used)) static BOOL _unmarshal_itsf_header(unsigned char **pData,
                                    unsigned int *pDataLen,
                                    struct chmItsfHeader *dest)
 {
-    /* we only know how to deal with the 0x58 and 0x60 byte structures */
-    if (*pDataLen != _CHM_ITSF_V2_LEN  &&  *pDataLen != _CHM_ITSF_V3_LEN)
+
+    if (*pDataLen != _CHM_ITSF_V2_LEN && *pDataLen != _CHM_ITSF_V3_LEN)
         return FALSE;
 
-    /* unmarshal common fields */
-    _unmarshal_char_array(pData, pDataLen,  dest->signature, 4);
-    _unmarshal_int32     (pData, pDataLen, &dest->version);
-    _unmarshal_int32     (pData, pDataLen, &dest->header_len);
-    _unmarshal_int32     (pData, pDataLen, &dest->unknown_000c);
-    _unmarshal_uint32    (pData, pDataLen, &dest->last_modified);
-    _unmarshal_uint32    (pData, pDataLen, &dest->lang_id);
-    _unmarshal_uuid      (pData, pDataLen,  dest->dir_uuid);
-    _unmarshal_uuid      (pData, pDataLen,  dest->stream_uuid);
-    _unmarshal_uint64    (pData, pDataLen, &dest->unknown_offset);
-    _unmarshal_uint64    (pData, pDataLen, &dest->unknown_len);
-    _unmarshal_uint64    (pData, pDataLen, &dest->dir_offset);
-    _unmarshal_uint64    (pData, pDataLen, &dest->dir_len);
 
-    /* error check the data */
-    /* XXX: should also check UUIDs, probably, though with a version 3 file,
-     * current MS tools do not seem to use them.
-     */
+    _unmarshal_char_array(pData, pDataLen, dest->signature, 4);
+    _unmarshal_int32 (pData, pDataLen, &dest->version);
+    _unmarshal_int32 (pData, pDataLen, &dest->header_len);
+    _unmarshal_int32 (pData, pDataLen, &dest->unknown_000c);
+    _unmarshal_uint32 (pData, pDataLen, &dest->last_modified);
+    _unmarshal_uint32 (pData, pDataLen, &dest->lang_id);
+    _unmarshal_uuid (pData, pDataLen, dest->dir_uuid);
+    _unmarshal_uuid (pData, pDataLen, dest->stream_uuid);
+    _unmarshal_uint64 (pData, pDataLen, &dest->unknown_offset);
+    _unmarshal_uint64 (pData, pDataLen, &dest->unknown_len);
+    _unmarshal_uint64 (pData, pDataLen, &dest->dir_offset);
+    _unmarshal_uint64 (pData, pDataLen, &dest->dir_len);
+
+
+
+
+
     if (memcmp(dest->signature, "ITSF", 4) != 0)
         return FALSE;
     if (dest->version == 2)
@@ -66,9 +66,9 @@ __attribute__((used)) static BOOL _unmarshal_itsf_header(unsigned char **pData,
     else
         return FALSE;
 
-    /* now, if we have a V3 structure, unmarshal the rest.
-     * otherwise, compute it
-     */
+
+
+
     if (dest->version == 3)
     {
         if (*pDataLen != 0)

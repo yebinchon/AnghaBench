@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int /*<<< orphan*/  IPPROTO_IPV6 ; 
- int /*<<< orphan*/  IPV6_V6ONLY ; 
- int O_NONBLOCK ; 
- int SM_IPV6 ; 
- int SM_IPV6_ONLY ; 
- int SM_UDP ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  close (int) ; 
- int fcntl (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int AF_INET ;
+ int AF_INET6 ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int IPPROTO_IPV6 ;
+ int IPV6_V6ONLY ;
+ int O_NONBLOCK ;
+ int SM_IPV6 ;
+ int SM_IPV6_ONLY ;
+ int SM_UDP ;
+ int SOCK_DGRAM ;
+ int SOCK_STREAM ;
+ int close (int) ;
+ int fcntl (int,int ,int) ;
+ int perror (char*) ;
+ scalar_t__ setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
 
 int new_socket (int mode, int nonblock) {
   int sfd;

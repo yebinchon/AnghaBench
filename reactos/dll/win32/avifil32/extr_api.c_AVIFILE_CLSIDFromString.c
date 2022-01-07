@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LPCSTR ;
-typedef  int* LPCLSID ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  CLSID ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CO_E_CLASSSTRING ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int const*,int*) ; 
- int lstrlenA (scalar_t__) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ LPCSTR ;
+typedef int* LPCLSID ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int CLSID ;
+typedef int BYTE ;
+
+
+ int CO_E_CLASSSTRING ;
+ int S_OK ;
+ int TRACE (char*,int const*,int*) ;
+ int lstrlenA (scalar_t__) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static HRESULT AVIFILE_CLSIDFromString(LPCSTR idstr, LPCLSID id)
 {
   BYTE const *s;
   BYTE *p;
-  INT   i;
+  INT i;
   BYTE table[256];
 
   if (!idstr) {
@@ -36,7 +36,7 @@ __attribute__((used)) static HRESULT AVIFILE_CLSIDFromString(LPCSTR idstr, LPCLS
     return S_OK;
   }
 
-  /* validate the CLSID string */
+
   if (lstrlenA(idstr) != 38)
     return CO_E_CLASSSTRING;
 
@@ -48,8 +48,8 @@ __attribute__((used)) static HRESULT AVIFILE_CLSIDFromString(LPCSTR idstr, LPCLS
   for (i = 1; i < 37; i++) {
     if ((i == 9) || (i == 14) || (i == 19) || (i == 24))
       continue;
-    if (!(((s[i] >= '0') && (s[i] <= '9'))  ||
-        ((s[i] >= 'a') && (s[i] <= 'f'))  ||
+    if (!(((s[i] >= '0') && (s[i] <= '9')) ||
+        ((s[i] >= 'a') && (s[i] <= 'f')) ||
         ((s[i] >= 'A') && (s[i] <= 'F')))
        )
       return CO_E_CLASSSTRING;
@@ -57,7 +57,7 @@ __attribute__((used)) static HRESULT AVIFILE_CLSIDFromString(LPCSTR idstr, LPCLS
 
   TRACE("%s -> %p\n", s, id);
 
-  /* quick lookup table */
+
   memset(table, 0, 256);
 
   for (i = 0; i < 10; i++)
@@ -68,37 +68,37 @@ __attribute__((used)) static HRESULT AVIFILE_CLSIDFromString(LPCSTR idstr, LPCLS
     table['a' + i] = i+10;
   }
 
-  /* in form {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX} */
+
   p = (BYTE *) id;
 
-  s++;	/* skip leading brace  */
+  s++;
   for (i = 0; i < 4; i++) {
     p[3 - i] = table[*s]<<4 | table[*(s+1)];
     s += 2;
   }
   p += 4;
-  s++;	/* skip - */
+  s++;
 
   for (i = 0; i < 2; i++) {
     p[1-i] = table[*s]<<4 | table[*(s+1)];
     s += 2;
   }
   p += 2;
-  s++;	/* skip - */
+  s++;
 
   for (i = 0; i < 2; i++) {
     p[1-i] = table[*s]<<4 | table[*(s+1)];
     s += 2;
   }
   p += 2;
-  s++;	/* skip - */
+  s++;
 
-  /* these are just sequential bytes */
+
   for (i = 0; i < 2; i++) {
     *p++ = table[*s]<<4 | table[*(s+1)];
     s += 2;
   }
-  s++;	/* skip - */
+  s++;
 
   for (i = 0; i < 6; i++) {
     *p++ = table[*s]<<4 | table[*(s+1)];

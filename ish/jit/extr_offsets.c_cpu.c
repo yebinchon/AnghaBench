@@ -1,81 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_FLAG ; 
- int /*<<< orphan*/  AF_OPS ; 
- int /*<<< orphan*/  CPU ; 
- int /*<<< orphan*/  DF_FLAG ; 
- int /*<<< orphan*/  JIT_BLOCK ; 
- int /*<<< orphan*/  LOCAL ; 
- int /*<<< orphan*/  MACRO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MEM_READ ; 
- int /*<<< orphan*/  MEM_WRITE ; 
- int /*<<< orphan*/  OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PF_FLAG ; 
- int /*<<< orphan*/  PF_RES ; 
- int /*<<< orphan*/  SF_FLAG ; 
- int /*<<< orphan*/  SF_RES ; 
- int /*<<< orphan*/  TLB ; 
- int /*<<< orphan*/  TLB_ENTRY ; 
- int /*<<< orphan*/  ZF_FLAG ; 
- int /*<<< orphan*/  ZF_RES ; 
- int /*<<< orphan*/  ax ; 
- int /*<<< orphan*/  bp ; 
- int /*<<< orphan*/  bx ; 
- int /*<<< orphan*/  cf ; 
- int /*<<< orphan*/  code ; 
- int /*<<< orphan*/  cpu_state ; 
- int /*<<< orphan*/  cx ; 
- int /*<<< orphan*/  data_minus_addr ; 
- int /*<<< orphan*/  df_offset ; 
- int /*<<< orphan*/  di ; 
- int /*<<< orphan*/  dirty_page ; 
- int /*<<< orphan*/  dx ; 
- int /*<<< orphan*/  eax ; 
- int /*<<< orphan*/  ebp ; 
- int /*<<< orphan*/  ebx ; 
- int /*<<< orphan*/  ecx ; 
- int /*<<< orphan*/  edi ; 
- int /*<<< orphan*/  edx ; 
- int /*<<< orphan*/  eflags ; 
- int /*<<< orphan*/  eip ; 
- int /*<<< orphan*/  entries ; 
- int /*<<< orphan*/  esi ; 
- int /*<<< orphan*/  esp ; 
- int /*<<< orphan*/  flags_res ; 
- int /*<<< orphan*/  fsw ; 
- int /*<<< orphan*/  gs ; 
- int /*<<< orphan*/  jit_block ; 
- int /*<<< orphan*/  jit_frame ; 
- int /*<<< orphan*/  last_block ; 
- int /*<<< orphan*/  of ; 
- int /*<<< orphan*/  op1 ; 
- int /*<<< orphan*/  op2 ; 
- int /*<<< orphan*/  page ; 
- int /*<<< orphan*/  page_if_writable ; 
- int /*<<< orphan*/  res ; 
- int /*<<< orphan*/  ret_cache ; 
- int /*<<< orphan*/  segfault_addr ; 
- int /*<<< orphan*/  segfault_type ; 
- int /*<<< orphan*/  si ; 
- int /*<<< orphan*/  sp ; 
- int /*<<< orphan*/  tlb ; 
- int /*<<< orphan*/  tlb_entry ; 
- int /*<<< orphan*/  tls_ptr ; 
- int /*<<< orphan*/  value ; 
- int /*<<< orphan*/  value_addr ; 
- int /*<<< orphan*/  xmm ; 
+ int AF_FLAG ;
+ int AF_OPS ;
+ int CPU ;
+ int DF_FLAG ;
+ int JIT_BLOCK ;
+ int LOCAL ;
+ int MACRO (int ) ;
+ int MEM_READ ;
+ int MEM_WRITE ;
+ int OFFSET (int ,int ,int ) ;
+ int PF_FLAG ;
+ int PF_RES ;
+ int SF_FLAG ;
+ int SF_RES ;
+ int TLB ;
+ int TLB_ENTRY ;
+ int ZF_FLAG ;
+ int ZF_RES ;
+ int ax ;
+ int bp ;
+ int bx ;
+ int cf ;
+ int code ;
+ int cpu_state ;
+ int cx ;
+ int data_minus_addr ;
+ int df_offset ;
+ int di ;
+ int dirty_page ;
+ int dx ;
+ int eax ;
+ int ebp ;
+ int ebx ;
+ int ecx ;
+ int edi ;
+ int edx ;
+ int eflags ;
+ int eip ;
+ int entries ;
+ int esi ;
+ int esp ;
+ int flags_res ;
+ int fsw ;
+ int gs ;
+ int jit_block ;
+ int jit_frame ;
+ int last_block ;
+ int of ;
+ int op1 ;
+ int op2 ;
+ int page ;
+ int page_if_writable ;
+ int res ;
+ int ret_cache ;
+ int segfault_addr ;
+ int segfault_type ;
+ int si ;
+ int sp ;
+ int tlb ;
+ int tlb_entry ;
+ int tls_ptr ;
+ int value ;
+ int value_addr ;
+ int xmm ;
 
 void cpu() {
     OFFSET(CPU, cpu_state, eax);

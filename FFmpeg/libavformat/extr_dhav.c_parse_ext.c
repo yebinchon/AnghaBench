@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int pb; TYPE_1__* priv_data; } ;
 struct TYPE_5__ {int width; int height; int video_codec; int frame_rate; int audio_channels; int audio_codec; int sample_rate; } ;
-typedef  TYPE_1__ DHAVContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ DHAVContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int FF_ARRAY_ELEMS (void**) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int) ; 
- int avio_r8 (int /*<<< orphan*/ ) ; 
- void* avio_rl16 (int /*<<< orphan*/ ) ; 
- int avio_skip (int /*<<< orphan*/ ,int) ; 
- void** sample_rates ; 
+
+ int AV_LOG_INFO ;
+ int FF_ARRAY_ELEMS (void**) ;
+ int av_log (TYPE_2__*,int ,char*,int) ;
+ int avio_r8 (int ) ;
+ void* avio_rl16 (int ) ;
+ int avio_skip (int ,int) ;
+ void** sample_rates ;
 
 __attribute__((used)) static int parse_ext(AVFormatContext *s, int length)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static int parse_ext(AVFormatContext *s, int length)
         switch (type) {
         case 0x80:
             ret = avio_skip(s->pb, 1);
-            dhav->width  = 8 * avio_r8(s->pb);
+            dhav->width = 8 * avio_r8(s->pb);
             dhav->height = 8 * avio_r8(s->pb);
             length -= 4;
             break;
@@ -49,7 +49,7 @@ __attribute__((used)) static int parse_ext(AVFormatContext *s, int length)
             break;
         case 0x82:
             ret = avio_skip(s->pb, 3);
-            dhav->width  = avio_rl16(s->pb);
+            dhav->width = avio_rl16(s->pb);
             dhav->height = avio_rl16(s->pb);
             length -= 8;
             break;
@@ -86,7 +86,7 @@ __attribute__((used)) static int parse_ext(AVFormatContext *s, int length)
         case 0x93:
         case 0x95:
         case 0x9a:
-        case 0x9b: // sample aspect ratio
+        case 0x9b:
         case 0xb3:
             ret = avio_skip(s->pb, 7);
             length -= 8;

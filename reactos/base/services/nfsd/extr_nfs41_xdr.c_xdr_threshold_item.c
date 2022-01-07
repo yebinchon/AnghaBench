@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * hints; scalar_t__ type; } ;
-typedef  TYPE_1__ threshold_item4 ;
-typedef  int /*<<< orphan*/  bool_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * hints; scalar_t__ type; } ;
+typedef TYPE_1__ threshold_item4 ;
+typedef int bool_t ;
 struct TYPE_6__ {int* arr; scalar_t__ count; } ;
-typedef  TYPE_2__ bitmap4 ;
-typedef  int /*<<< orphan*/  XDR ;
+typedef TYPE_2__ bitmap4 ;
+typedef int XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  xdr_bitmap4 (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  xdr_u_hyper (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,scalar_t__*) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int xdr_bitmap4 (int *,TYPE_2__*) ;
+ int xdr_u_hyper (int *,int *) ;
+ int xdr_u_int32_t (int *,scalar_t__*) ;
 
 __attribute__((used)) static bool_t xdr_threshold_item(
     XDR *xdr,

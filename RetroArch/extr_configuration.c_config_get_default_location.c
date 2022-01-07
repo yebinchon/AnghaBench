@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum location_driver_enum { ____Placeholder_location_driver_enum } location_driver_enum ;
 
-/* Variables and functions */
-#define  LOCATION_ANDROID 130 
-#define  LOCATION_CORELOCATION 129 
- int LOCATION_DEFAULT_DRIVER ; 
-#define  LOCATION_NULL 128 
+
+
+
+typedef enum location_driver_enum { ____Placeholder_location_driver_enum } location_driver_enum ;
+
+
+
+
+ int LOCATION_DEFAULT_DRIVER ;
+
 
 const char *config_get_default_location(void)
 {
@@ -24,11 +24,11 @@ const char *config_get_default_location(void)
 
    switch (default_driver)
    {
-      case LOCATION_ANDROID:
+      case 130:
          return "android";
-      case LOCATION_CORELOCATION:
+      case 129:
          return "corelocation";
-      case LOCATION_NULL:
+      case 128:
          break;
    }
 

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct TYPE_4__ {int /*<<< orphan*/  tsi; } ;
-typedef  TYPE_1__ block_stmt_iterator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bsi_stmt (TYPE_1__) ; 
- int /*<<< orphan*/  delink_stmt_imm_use (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mark_stmt_modified (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_stmt_from_eh_region (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_bb_for_stmt (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_delink (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tree ;
+struct TYPE_4__ {int tsi; } ;
+typedef TYPE_1__ block_stmt_iterator ;
+
+
+ int bsi_stmt (TYPE_1__) ;
+ int delink_stmt_imm_use (int ) ;
+ int mark_stmt_modified (int ) ;
+ int remove_stmt_from_eh_region (int ) ;
+ int set_bb_for_stmt (int ,int *) ;
+ int tsi_delink (int *) ;
 
 void
 bsi_remove (block_stmt_iterator *i, bool remove_eh_info)
 {
   tree t = bsi_stmt (*i);
-  set_bb_for_stmt (t, NULL);
+  set_bb_for_stmt (t, ((void*)0));
   delink_stmt_imm_use (t);
   tsi_delink (&i->tsi);
   mark_stmt_modified (t);

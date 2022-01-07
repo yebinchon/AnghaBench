@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  (* callback ) (TYPE_3__*) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  queue; } ;
-struct TYPE_5__ {TYPE_3__ wrapper; int /*<<< orphan*/  sema; } ;
-typedef  TYPE_1__ MMAL_WRAPPER_PRIVATE_T ;
-typedef  TYPE_2__ MMAL_POOL_T ;
-typedef  int /*<<< orphan*/  MMAL_BUFFER_HEADER_T ;
-typedef  int /*<<< orphan*/  MMAL_BOOL_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mmal_queue_put (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*) ; 
- int /*<<< orphan*/  vcos_semaphore_post (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int (* callback ) (TYPE_3__*) ;} ;
+struct TYPE_6__ {int queue; } ;
+struct TYPE_5__ {TYPE_3__ wrapper; int sema; } ;
+typedef TYPE_1__ MMAL_WRAPPER_PRIVATE_T ;
+typedef TYPE_2__ MMAL_POOL_T ;
+typedef int MMAL_BUFFER_HEADER_T ;
+typedef int MMAL_BOOL_T ;
+
+
+ int mmal_queue_put (int ,int *) ;
+ int stub1 (TYPE_3__*) ;
+ int vcos_semaphore_post (int *) ;
 
 __attribute__((used)) static MMAL_BOOL_T mmal_wrapper_bh_release_cb(MMAL_POOL_T *pool, MMAL_BUFFER_HEADER_T *buffer,
    void *userdata)

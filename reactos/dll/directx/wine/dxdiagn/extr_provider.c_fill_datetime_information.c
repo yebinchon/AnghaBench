@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  int /*<<< orphan*/  IDxDiagContainerImpl_Container ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  DATE_LONGDATE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDateFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLocalTime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetTimeFormatW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOCALE_NEUTRAL ; 
- int /*<<< orphan*/  LOCALE_USER_DEFAULT ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  add_bstr_property (int /*<<< orphan*/ *,char const*,char*) ; 
- int /*<<< orphan*/  swprintf (char*,char const*,char*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int SYSTEMTIME ;
+typedef int IDxDiagContainerImpl_Container ;
+typedef int HRESULT ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int DATE_LONGDATE ;
+ scalar_t__ FAILED (int ) ;
+ int GetDateFormatW (int ,int ,int *,char const*,char*,int ) ;
+ int GetLocalTime (int *) ;
+ int GetTimeFormatW (int ,int ,int *,char const*,char*,int ) ;
+ int LOCALE_NEUTRAL ;
+ int LOCALE_USER_DEFAULT ;
+ int S_OK ;
+ int add_bstr_property (int *,char const*,char*) ;
+ int swprintf (char*,char const*,char*,char*) ;
 
 __attribute__((used)) static HRESULT fill_datetime_information(IDxDiagContainerImpl_Container *node)
 {
@@ -44,8 +44,8 @@ __attribute__((used)) static HRESULT fill_datetime_information(IDxDiagContainerI
 
     GetTimeFormatW(LOCALE_NEUTRAL, 0, &curtime, time_fmtW, time_str, ARRAY_SIZE(time_str));
 
-    /* szTimeLocalized */
-    GetDateFormatW(LOCALE_USER_DEFAULT, DATE_LONGDATE, &curtime, NULL, date_str, ARRAY_SIZE(date_str));
+
+    GetDateFormatW(LOCALE_USER_DEFAULT, DATE_LONGDATE, &curtime, ((void*)0), date_str, ARRAY_SIZE(date_str));
 
     swprintf(datetime_str, datetime_fmtW, date_str, time_str);
 
@@ -53,7 +53,7 @@ __attribute__((used)) static HRESULT fill_datetime_information(IDxDiagContainerI
     if (FAILED(hr))
         return hr;
 
-    /* szTimeEnglish */
+
     GetDateFormatW(LOCALE_NEUTRAL, 0, &curtime, date_fmtW, date_str, ARRAY_SIZE(date_str));
 
     swprintf(datetime_str, datetime_fmtW, date_str, time_str);

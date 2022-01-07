@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct timeval {int member_0; int member_1; } ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
 struct fd_set {int dummy; } ;
-typedef  int /*<<< orphan*/  fromaddr ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_5__ {int member_0; int /*<<< orphan*/ * member_1; } ;
-typedef  TYPE_1__ WSABUF ;
-typedef  scalar_t__ WORD ;
-typedef  scalar_t__ UCHAR ;
+typedef int fromaddr ;
+typedef int buffer ;
+struct TYPE_5__ {int member_0; int * member_1; } ;
+typedef TYPE_1__ WSABUF ;
+typedef scalar_t__ WORD ;
+typedef scalar_t__ UCHAR ;
 struct TYPE_6__ {scalar_t__ nameQueryXID; } ;
-typedef  scalar_t__ SOCKET ;
-typedef  scalar_t__* PUCHAR ;
-typedef  scalar_t__ (* NetBTAnswerCallback ) (void*,scalar_t__,scalar_t__,scalar_t__*,scalar_t__) ;
-typedef  TYPE_2__ NetBTAdapter ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ SOCKET ;
+typedef scalar_t__* PUCHAR ;
+typedef scalar_t__ (* NetBTAnswerCallback ) (void*,scalar_t__,scalar_t__,scalar_t__*,scalar_t__) ;
+typedef TYPE_2__ NetBTAdapter ;
+typedef int DWORD ;
+typedef int CHAR ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FD_SET (scalar_t__,struct fd_set*) ; 
- int /*<<< orphan*/  FD_ZERO (struct fd_set*) ; 
- int GetTickCount () ; 
- scalar_t__ INVALID_SOCKET ; 
- scalar_t__ NBNS_CLASS_INTERNET ; 
- int NBNS_HEADER_SIZE ; 
- scalar_t__ NBNS_REPLYCODE ; 
- scalar_t__ NBNS_RESPONSE_AND_OPCODE ; 
- scalar_t__ NBNS_RESPONSE_AND_QUERY ; 
- scalar_t__ NBR_GETWORD (scalar_t__*) ; 
- scalar_t__ NRC_BADDR ; 
- scalar_t__ NRC_GOODRET ; 
- scalar_t__ NRC_NAMERR ; 
- scalar_t__ NRC_SYSTEM ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- scalar_t__ TRUE ; 
- int WSARecvFrom (scalar_t__,TYPE_1__*,int,int*,int*,struct sockaddr*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ min (scalar_t__,int) ; 
- int select (scalar_t__,struct fd_set*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ scalar_t__ FALSE ;
+ int FD_SET (scalar_t__,struct fd_set*) ;
+ int FD_ZERO (struct fd_set*) ;
+ int GetTickCount () ;
+ scalar_t__ INVALID_SOCKET ;
+ scalar_t__ NBNS_CLASS_INTERNET ;
+ int NBNS_HEADER_SIZE ;
+ scalar_t__ NBNS_REPLYCODE ;
+ scalar_t__ NBNS_RESPONSE_AND_OPCODE ;
+ scalar_t__ NBNS_RESPONSE_AND_QUERY ;
+ scalar_t__ NBR_GETWORD (scalar_t__*) ;
+ scalar_t__ NRC_BADDR ;
+ scalar_t__ NRC_GOODRET ;
+ scalar_t__ NRC_NAMERR ;
+ scalar_t__ NRC_SYSTEM ;
+ int TRACE (char*,scalar_t__) ;
+ scalar_t__ TRUE ;
+ int WSARecvFrom (scalar_t__,TYPE_1__*,int,int*,int*,struct sockaddr*,int*,int *,int *) ;
+ scalar_t__ min (scalar_t__,int) ;
+ int select (scalar_t__,struct fd_set*,int *,int *,struct timeval*) ;
 
 __attribute__((used)) static UCHAR NetBTWaitForNameResponse(const NetBTAdapter *adapter, SOCKET fd,
  DWORD waitUntil, NetBTAnswerCallback answerCallback, void *data)
@@ -73,12 +73,12 @@ __attribute__((used)) static UCHAR NetBTWaitForNameResponse(const NetBTAdapter *
 
         FD_ZERO(&fds);
         FD_SET(fd, &fds);
-        r = select(fd + 1, &fds, NULL, NULL, &timeout);
+        r = select(fd + 1, &fds, ((void*)0), ((void*)0), &timeout);
         if (r < 0)
             ret = NRC_SYSTEM;
         else if (r == 1)
         {
-            /* FIXME: magic #, is this always enough? */
+
             UCHAR buffer[256];
             int fromsize;
             struct sockaddr_in fromaddr;
@@ -88,7 +88,7 @@ __attribute__((used)) static UCHAR NetBTWaitForNameResponse(const NetBTAdapter *
 
             fromsize = sizeof(fromaddr);
             r = WSARecvFrom(fd, &wsaBuf, 1, &bytesReceived, &recvFlags,
-             (struct sockaddr*)&fromaddr, &fromsize, NULL, NULL);
+             (struct sockaddr*)&fromaddr, &fromsize, ((void*)0), ((void*)0));
             if(r < 0)
             {
                 ret = NRC_SYSTEM;
@@ -106,7 +106,7 @@ __attribute__((used)) static UCHAR NetBTWaitForNameResponse(const NetBTAdapter *
             queryCount = NBR_GETWORD(buffer + 4);
             answerCount = NBR_GETWORD(buffer + 6);
 
-            /* a reply shouldn't contain a query, ignore bad packet */
+
             if (queryCount > 0)
                 continue;
 
@@ -121,23 +121,23 @@ __attribute__((used)) static UCHAR NetBTWaitForNameResponse(const NetBTAdapter *
                     WORD answerIndex = 0;
 
                     found = TRUE;
-                    /* decode one answer at a time */
+
                     while (ret == NRC_GOODRET && answerIndex < answerCount &&
                      ptr - buffer < bytesReceived && shouldContinue)
                     {
                         WORD rLen;
 
-                        /* scan past name */
+
                         for (; ptr[0] && ptr - buffer < bytesReceived; )
                             ptr += ptr[0] + 1;
                         ptr++;
-                        ptr += 2; /* scan past type */
+                        ptr += 2;
                         if (ptr - buffer < bytesReceived && ret == NRC_GOODRET
                          && NBR_GETWORD(ptr) == NBNS_CLASS_INTERNET)
                             ptr += sizeof(WORD);
                         else
-                            ret = NRC_SYSTEM; /* parse error */
-                        ptr += sizeof(DWORD); /* TTL */
+                            ret = NRC_SYSTEM;
+                        ptr += sizeof(DWORD);
                         rLen = NBR_GETWORD(ptr);
                         rLen = min(rLen, bytesReceived - (ptr - buffer));
                         ptr += sizeof(WORD);

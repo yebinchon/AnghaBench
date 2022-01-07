@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__* params; scalar_t__ data; } ;
 struct TYPE_6__ {TYPE_2__ fileserv_msg; } ;
 struct TYPE_4__ {scalar_t__ data; } ;
-typedef  TYPE_1__ FILESERV_MSG_T ;
+typedef TYPE_1__ FILESERV_MSG_T ;
 
-/* Variables and functions */
- int FILESERV_MAX_DATA ; 
- scalar_t__ FILESERV_RESP_OK ; 
- int VCHI_BULK_GRANULARITY ; 
- int /*<<< orphan*/  VC_FILESYS_MOUNT ; 
- scalar_t__ lock_obtain () ; 
- int /*<<< orphan*/  lock_release () ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int strlen (char const*) ; 
- TYPE_3__ vc_filesys_client ; 
- scalar_t__ vchi_msg_stub (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int FILESERV_MAX_DATA ;
+ scalar_t__ FILESERV_RESP_OK ;
+ int VCHI_BULK_GRANULARITY ;
+ int VC_FILESYS_MOUNT ;
+ scalar_t__ lock_obtain () ;
+ int lock_release () ;
+ int memcpy (char*,char const*,int) ;
+ int strlen (char const*) ;
+ TYPE_3__ vc_filesys_client ;
+ scalar_t__ vchi_msg_stub (TYPE_2__*,int ,int) ;
 
 int vc_filesys_mount(const char *device, const char *mountpoint, const char *options)
 {

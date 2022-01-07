@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wrap_name_buf ;
-typedef  int /*<<< orphan*/  wrap_mode ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int wrap_name_buf ;
+typedef int wrap_mode ;
 struct gfx_fbo_scale {int srgb_fbo; int fp_fbo; int valid; scalar_t__ type_x; scalar_t__ type_y; double scale_x; double scale_y; int abs_x; int abs_y; } ;
-struct TYPE_9__ {int /*<<< orphan*/  path; } ;
-struct video_shader_pass {unsigned int frame_count_mod; int mipmap; char* alias; struct gfx_fbo_scale fbo; int /*<<< orphan*/  wrap; int /*<<< orphan*/  filter; TYPE_1__ source; } ;
-typedef  int /*<<< orphan*/  srgb_output_buf ;
-typedef  int /*<<< orphan*/  shader_name ;
-typedef  int /*<<< orphan*/  scale_type_y ;
-typedef  int /*<<< orphan*/  scale_type_x ;
-typedef  int /*<<< orphan*/  scale_type ;
-typedef  int /*<<< orphan*/  scale_name_buf ;
-typedef  int /*<<< orphan*/  mipmap_buf ;
-typedef  int /*<<< orphan*/  frame_count_mod_buf ;
-typedef  int /*<<< orphan*/  frame_count_mod ;
-typedef  int /*<<< orphan*/  fp_fbo_buf ;
-typedef  int /*<<< orphan*/  filter_name_buf ;
-struct TYPE_10__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_2__ config_file_t ;
-typedef  int /*<<< orphan*/  attr_name_buf ;
-typedef  int /*<<< orphan*/  alias_buf ;
+struct TYPE_9__ {int path; } ;
+struct video_shader_pass {unsigned int frame_count_mod; int mipmap; char* alias; struct gfx_fbo_scale fbo; int wrap; int filter; TYPE_1__ source; } ;
+typedef int srgb_output_buf ;
+typedef int shader_name ;
+typedef int scale_type_y ;
+typedef int scale_type_x ;
+typedef int scale_type ;
+typedef int scale_name_buf ;
+typedef int mipmap_buf ;
+typedef int frame_count_mod_buf ;
+typedef int frame_count_mod ;
+typedef int fp_fbo_buf ;
+typedef int filter_name_buf ;
+struct TYPE_10__ {int path; } ;
+typedef TYPE_2__ config_file_t ;
+typedef int attr_name_buf ;
+typedef int alias_buf ;
 
-/* Variables and functions */
- size_t PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_FILTER_LINEAR ; 
- int /*<<< orphan*/  RARCH_FILTER_NEAREST ; 
- int /*<<< orphan*/  RARCH_FILTER_UNSPEC ; 
- scalar_t__ RARCH_SCALE_ABSOLUTE ; 
- void* RARCH_SCALE_INPUT ; 
- void* RARCH_SCALE_VIEWPORT ; 
- scalar_t__ config_get_array (TYPE_2__*,char*,char*,int) ; 
- scalar_t__ config_get_bool (TYPE_2__*,char*,int*) ; 
- scalar_t__ config_get_float (TYPE_2__*,char*,float*) ; 
- scalar_t__ config_get_int (TYPE_2__*,char*,int*) ; 
- int /*<<< orphan*/  config_get_path (TYPE_2__*,char*,char*,size_t) ; 
- int /*<<< orphan*/  fill_pathname_resolve_relative (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int) ; 
- scalar_t__ string_is_equal (char*,char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int) ; 
- scalar_t__ strtoul (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrap_str_to_mode (char*) ; 
+
+ size_t PATH_MAX_LENGTH ;
+ int RARCH_ERR (char*,...) ;
+ int RARCH_FILTER_LINEAR ;
+ int RARCH_FILTER_NEAREST ;
+ int RARCH_FILTER_UNSPEC ;
+ scalar_t__ RARCH_SCALE_ABSOLUTE ;
+ void* RARCH_SCALE_INPUT ;
+ void* RARCH_SCALE_VIEWPORT ;
+ scalar_t__ config_get_array (TYPE_2__*,char*,char*,int) ;
+ scalar_t__ config_get_bool (TYPE_2__*,char*,int*) ;
+ scalar_t__ config_get_float (TYPE_2__*,char*,float*) ;
+ scalar_t__ config_get_int (TYPE_2__*,char*,int*) ;
+ int config_get_path (TYPE_2__*,char*,char*,size_t) ;
+ int fill_pathname_resolve_relative (int ,int ,char*,int) ;
+ int free (char*) ;
+ scalar_t__ malloc (size_t) ;
+ int snprintf (char*,int,char*,unsigned int) ;
+ scalar_t__ string_is_equal (char*,char*) ;
+ int strlcpy (char*,char*,int) ;
+ scalar_t__ strtoul (char*,int *,int ) ;
+ int wrap_str_to_mode (char*) ;
 
 __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
       struct video_shader_pass *pass, unsigned i)
@@ -74,36 +74,36 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
    char scale_type_x[64];
    char scale_type_y[64];
    char frame_count_mod[64];
-   size_t path_size             = PATH_MAX_LENGTH;
-   char *tmp_path               = (char*)malloc(path_size);
-   struct gfx_fbo_scale *scale  = NULL;
-   bool tmp_bool                = false;
-   float fattr                  = 0.0f;
-   int iattr                    = 0;
+   size_t path_size = PATH_MAX_LENGTH;
+   char *tmp_path = (char*)malloc(path_size);
+   struct gfx_fbo_scale *scale = ((void*)0);
+   bool tmp_bool = 0;
+   float fattr = 0.0f;
+   int iattr = 0;
 
    if (!tmp_path)
-      return false;
+      return 0;
 
-   fp_fbo_buf[0]      = mipmap_buf[0]          = alias_buf[0]       =
-   scale_name_buf[0]  = attr_name_buf[0]       = scale_type[0]      =
-   scale_type_x[0]    = scale_type_y[0]        = frame_count_mod[0] =
-   shader_name[0]     = filter_name_buf[0]     = wrap_name_buf[0]   = 
-   wrap_mode[0]       = frame_count_mod_buf[0] = srgb_output_buf[0] = '\0';
+   fp_fbo_buf[0] = mipmap_buf[0] = alias_buf[0] =
+   scale_name_buf[0] = attr_name_buf[0] = scale_type[0] =
+   scale_type_x[0] = scale_type_y[0] = frame_count_mod[0] =
+   shader_name[0] = filter_name_buf[0] = wrap_name_buf[0] =
+   wrap_mode[0] = frame_count_mod_buf[0] = srgb_output_buf[0] = '\0';
 
-   /* Source */
+
    snprintf(shader_name, sizeof(shader_name), "shader%u", i);
    if (!config_get_path(conf, shader_name, tmp_path, path_size))
    {
       RARCH_ERR("Couldn't parse shader source (%s).\n", shader_name);
       free(tmp_path);
-      return false;
+      return 0;
    }
 
    fill_pathname_resolve_relative(pass->source.path,
          conf->path, tmp_path, sizeof(pass->source.path));
    free(tmp_path);
 
-   /* Smooth */
+
    snprintf(filter_name_buf, sizeof(filter_name_buf), "filter_linear%u", i);
 
    if (config_get_bool(conf, filter_name_buf, &tmp_bool))
@@ -114,18 +114,18 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
    else
       pass->filter = RARCH_FILTER_UNSPEC;
 
-   /* Wrapping mode */
+
    snprintf(wrap_name_buf, sizeof(wrap_name_buf), "wrap_mode%u", i);
    if (config_get_array(conf, wrap_name_buf, wrap_mode, sizeof(wrap_mode)))
       pass->wrap = wrap_str_to_mode(wrap_mode);
 
-   /* Frame count mod */
+
    snprintf(frame_count_mod_buf, sizeof(frame_count_mod_buf), "frame_count_mod%u", i);
    if (config_get_array(conf, frame_count_mod_buf,
             frame_count_mod, sizeof(frame_count_mod)))
-      pass->frame_count_mod = (unsigned)strtoul(frame_count_mod, NULL, 0);
+      pass->frame_count_mod = (unsigned)strtoul(frame_count_mod, ((void*)0), 0);
 
-   /* FBO types and mipmapping */
+
    snprintf(srgb_output_buf, sizeof(srgb_output_buf), "srgb_framebuffer%u", i);
    if (config_get_bool(conf, srgb_output_buf, &tmp_bool))
       pass->fbo.srgb_fbo = tmp_bool;
@@ -142,7 +142,7 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
    if (!config_get_array(conf, alias_buf, pass->alias, sizeof(pass->alias)))
       *pass->alias = '\0';
 
-   /* Scale */
+
    scale = &pass->fbo;
    snprintf(scale_name_buf, sizeof(scale_name_buf), "scale_type%u", i);
    config_get_array(conf, scale_name_buf, scale_type, sizeof(scale_type));
@@ -154,7 +154,7 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
    config_get_array(conf, scale_name_buf, scale_type_y, sizeof(scale_type_y));
 
    if (!*scale_type && !*scale_type_x && !*scale_type_y)
-      return true;
+      return 1;
 
    if (*scale_type)
    {
@@ -162,9 +162,9 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
       strlcpy(scale_type_y, scale_type, sizeof(scale_type_y));
    }
 
-   scale->valid   = true;
-   scale->type_x  = RARCH_SCALE_INPUT;
-   scale->type_y  = RARCH_SCALE_INPUT;
+   scale->valid = 1;
+   scale->type_x = RARCH_SCALE_INPUT;
+   scale->type_y = RARCH_SCALE_INPUT;
    scale->scale_x = 1.0;
    scale->scale_y = 1.0;
 
@@ -179,7 +179,7 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
       else
       {
          RARCH_ERR("Invalid attribute.\n");
-         return false;
+         return 0;
       }
    }
 
@@ -194,7 +194,7 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
       else
       {
          RARCH_ERR("Invalid attribute.\n");
-         return false;
+         return 0;
       }
    }
 
@@ -248,5 +248,5 @@ __attribute__((used)) static bool video_shader_parse_pass(config_file_t *conf,
       }
    }
 
-   return true;
+   return 1;
 }

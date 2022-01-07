@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  delay () ; 
- int /*<<< orphan*/  microdev_outw (unsigned short,unsigned long) ; 
+ int delay () ;
+ int microdev_outw (unsigned short,unsigned long) ;
 
 void microdev_outw_p(unsigned short b, unsigned long port)
 {
-	microdev_outw(b, port);
-	delay();
+ microdev_outw(b, port);
+ delay();
 }

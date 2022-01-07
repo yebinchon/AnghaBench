@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_8__ {TYPE_2__* pRule; int /*<<< orphan*/  zCostTab; int /*<<< orphan*/  zClassName; int /*<<< orphan*/  zDb; } ;
-typedef  TYPE_1__ amatch_vtab ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_8__ {TYPE_2__* pRule; int zCostTab; int zClassName; int zDb; } ;
+typedef TYPE_1__ amatch_vtab ;
 struct TYPE_9__ {struct TYPE_9__* pNext; } ;
-typedef  TYPE_2__ amatch_rule ;
-typedef  int /*<<< orphan*/  a ;
+typedef TYPE_2__ amatch_rule ;
+typedef int a ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int amatchLoadOneRule (TYPE_1__*,int /*<<< orphan*/ *,TYPE_2__**,char**) ; 
- void* amatchMergeRules (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3_column_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int amatchLoadOneRule (TYPE_1__*,int *,TYPE_2__**,char**) ;
+ void* amatchMergeRules (TYPE_2__*,TYPE_2__*) ;
+ int assert (int) ;
+ int sqlite3_column_count (int *) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ,int ,...) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int amatchLoadRules(
-  sqlite3 *db,                    /* Database handle */
-  amatch_vtab *p,                 /* Virtual amatch table to configure */
-  char **pzErr                    /* OUT: Error message */
+  sqlite3 *db,
+  amatch_vtab *p,
+  char **pzErr
 ){
-  int rc = SQLITE_OK;             /* Return code */
-  char *zSql;                     /* SELECT used to read from rules table */
+  int rc = SQLITE_OK;
+  char *zSql;
   amatch_rule *pHead = 0;
 
   zSql = sqlite3_mprintf("SELECT * FROM %Q.%Q", p->zDb, p->zCostTab);
   if( zSql==0 ){
     rc = SQLITE_NOMEM;
   }else{
-    int rc2;                      /* finalize() return code */
+    int rc2;
     sqlite3_stmt *pStmt = 0;
     rc = sqlite3_prepare_v2(db, zSql, -1, &pStmt, 0);
     if( rc!=SQLITE_OK ){
@@ -74,10 +74,10 @@ __attribute__((used)) static int amatchLoadRules(
   }
   sqlite3_free(zSql);
 
-  /* All rules are now in a singly linked list starting at pHead. This
-  ** block sorts them by cost and then sets amatch_vtab.pRule to point to 
-  ** point to the head of the sorted list.
-  */
+
+
+
+
   if( rc==SQLITE_OK ){
     unsigned int i;
     amatch_rule *pX;
@@ -97,9 +97,9 @@ __attribute__((used)) static int amatchLoadRules(
     }
     p->pRule = amatchMergeRules(p->pRule, pX);
   }else{
-    /* An error has occurred. Setting p->pRule to point to the head of the
-    ** allocated list ensures that the list will be cleaned up in this case.
-    */
+
+
+
     assert( p->pRule==0 );
     p->pRule = pHead;
   }

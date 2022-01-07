@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct mp_cmd_ctx {int /*<<< orphan*/  success; TYPE_3__* args; TYPE_1__* cmd; int /*<<< orphan*/  priv; struct MPContext* mpctx; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct mp_cmd_ctx {int success; TYPE_3__* args; TYPE_1__* cmd; int priv; struct MPContext* mpctx; } ;
 struct m_property_switch_arg {double inc; int wrap; } ;
 struct MPContext {int dummy; } ;
 struct TYPE_5__ {char* s; double d; } ;
 struct TYPE_6__ {TYPE_2__ v; } ;
-struct TYPE_4__ {int scale_units; double scale; int /*<<< orphan*/  original; scalar_t__ repeated; } ;
+struct TYPE_4__ {int scale_units; double scale; int original; scalar_t__ repeated; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct MPContext*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_PROPERTY_SWITCH ; 
- int /*<<< orphan*/  change_property_cmd (struct mp_cmd_ctx*,char*,int /*<<< orphan*/ ,struct m_property_switch_arg*) ; 
- int /*<<< orphan*/  check_property_autorepeat (char*,struct MPContext*) ; 
- scalar_t__ check_property_scalable (char*,struct MPContext*) ; 
+
+ int BSTR_P (int ) ;
+ int MP_VERBOSE (struct MPContext*,char*,int ) ;
+ int M_PROPERTY_SWITCH ;
+ int change_property_cmd (struct mp_cmd_ctx*,char*,int ,struct m_property_switch_arg*) ;
+ int check_property_autorepeat (char*,struct MPContext*) ;
+ scalar_t__ check_property_scalable (char*,struct MPContext*) ;
 
 __attribute__((used)) static void cmd_add_cycle(void *p)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lexret {int /*<<< orphan*/  function; int /*<<< orphan*/  proto; } ;
-struct MacroDesc {scalar_t__ isBool; int /*<<< orphan*/  fn; int /*<<< orphan*/  arguments; int /*<<< orphan*/ * alias; int /*<<< orphan*/ * name; } ;
 
-/* Variables and functions */
- int BOOL_FUNCTION ; 
- int EMPTY ; 
- int VOID_FUNCTION ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+struct lexret {int function; int proto; } ;
+struct MacroDesc {scalar_t__ isBool; int fn; int arguments; int * alias; int * name; } ;
+
+
+ int BOOL_FUNCTION ;
+ int EMPTY ;
+ int VOID_FUNCTION ;
+ scalar_t__ strcasecmp (int *,char const*) ;
 
 __attribute__((used)) static int MACRO_DoLookUp(struct MacroDesc* start, const char* name, struct lexret* lr, unsigned len)
 {
-    struct MacroDesc*   md;
+    struct MacroDesc* md;
 
     for (md = start; md->name && len != 0; md++, len--)
     {
-        if (strcasecmp(md->name, name) == 0 || (md->alias != NULL && strcasecmp(md->alias, name) == 0))
+        if (strcasecmp(md->name, name) == 0 || (md->alias != ((void*)0) && strcasecmp(md->alias, name) == 0))
         {
             lr->proto = md->arguments;
             lr->function = md->fn;

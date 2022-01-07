@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BACKGROUND ; 
- size_t JOYSTICKTYPES ; 
- int SelectItem (char*,int*,int /*<<< orphan*/ ,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,int /*<<< orphan*/ *) ; 
- char** joysticks ; 
- size_t* joytypes ; 
- int /*<<< orphan*/  setupkeyset (int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,char*) ; 
- int /*<<< orphan*/  testcollisions () ; 
+ int BACKGROUND ;
+ size_t JOYSTICKTYPES ;
+ int SelectItem (char*,int*,int ,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,char*,int *) ;
+ char** joysticks ;
+ size_t* joytypes ;
+ int setupkeyset (int) ;
+ int sprintf (char*,char*,int,char*) ;
+ int testcollisions () ;
 
 int mainmenu(void)
 {
@@ -35,24 +27,24 @@ int mainmenu(void)
                joytext[2],joytext[3],"-",
                "Configure keyset 0","Configure keyset 1",
                "Configure keyset 2","Configure keyset 3","-","Test keyboard collisions",
-                "-","Save and exit","Exit without saving",NULL);
+                "-","Save and exit","Exit without saving",((void*)0));
     switch(key)
     {
-      case 0x14d: /*right*/
+      case 0x14d:
         if (select<4)
         {
           joytypes[select]++;
           if (joytypes[select]==JOYSTICKTYPES) joytypes[select]=0;
         }
         break;
-      case 0x14b: /*left*/
+      case 0x14b:
         if (select<4)
         {
           joytypes[select]--;
           if (joytypes[select]==-1) joytypes[select]=JOYSTICKTYPES-1;
         }
         break;
-      case 13: /*enter*/
+      case 13:
         if (select<4)
         {
           joytypes[select]++;
@@ -69,5 +61,5 @@ int mainmenu(void)
         break;
     }
   }while(key!=27 && !(key==13 && select>=12));
-  return (key==13 && select==12); /*Save only when user pressed ENTER on 'Save&Exit' */
+  return (key==13 && select==12);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  exit; int /*<<< orphan*/  enter; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int exit; int enter; } ;
 struct st_h2o_file_configurator_t {TYPE_2__ super; TYPE_1__* vars; TYPE_1__* _vars_stack; } ;
-typedef  int /*<<< orphan*/  h2o_globalconf_t ;
-struct TYPE_3__ {int /*<<< orphan*/  index_files; } ;
+typedef int h2o_globalconf_t ;
+struct TYPE_3__ {int index_files; } ;
 
-/* Variables and functions */
- int H2O_CONFIGURATOR_FLAG_ALL_LEVELS ; 
- int H2O_CONFIGURATOR_FLAG_DEFERRED ; 
- int H2O_CONFIGURATOR_FLAG_EXPECT_SCALAR ; 
- int H2O_CONFIGURATOR_FLAG_EXPECT_SEQUENCE ; 
- int H2O_CONFIGURATOR_FLAG_EXTENSION ; 
- int H2O_CONFIGURATOR_FLAG_PATH ; 
- scalar_t__ h2o_configurator_create (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  h2o_configurator_define_command (TYPE_2__*,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_file_default_index_files ; 
- int /*<<< orphan*/  on_config_dir ; 
- int /*<<< orphan*/  on_config_dir_listing ; 
- int /*<<< orphan*/  on_config_enter ; 
- int /*<<< orphan*/  on_config_etag ; 
- int /*<<< orphan*/  on_config_exit ; 
- int /*<<< orphan*/  on_config_file ; 
- int /*<<< orphan*/  on_config_index ; 
- int /*<<< orphan*/  on_config_send_compressed ; 
+
+ int H2O_CONFIGURATOR_FLAG_ALL_LEVELS ;
+ int H2O_CONFIGURATOR_FLAG_DEFERRED ;
+ int H2O_CONFIGURATOR_FLAG_EXPECT_SCALAR ;
+ int H2O_CONFIGURATOR_FLAG_EXPECT_SEQUENCE ;
+ int H2O_CONFIGURATOR_FLAG_EXTENSION ;
+ int H2O_CONFIGURATOR_FLAG_PATH ;
+ scalar_t__ h2o_configurator_create (int *,int) ;
+ int h2o_configurator_define_command (TYPE_2__*,char*,int,int ) ;
+ int h2o_file_default_index_files ;
+ int on_config_dir ;
+ int on_config_dir_listing ;
+ int on_config_enter ;
+ int on_config_etag ;
+ int on_config_exit ;
+ int on_config_file ;
+ int on_config_index ;
+ int on_config_send_compressed ;
 
 void h2o_file_register_configurator(h2o_globalconf_t *globalconf)
 {

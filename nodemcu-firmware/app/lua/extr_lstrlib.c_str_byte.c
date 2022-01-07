@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  luaL_checkstack (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int posrelat (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  uchar (char const) ; 
+
+
+
+typedef int ptrdiff_t ;
+typedef int lua_State ;
+
+
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_checkstack (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int luaL_optinteger (int *,int,int) ;
+ int lua_pushinteger (int *,int ) ;
+ int posrelat (int ,size_t) ;
+ int uchar (char const) ;
 
 __attribute__((used)) static int str_byte (lua_State *L) {
   size_t l;
@@ -30,9 +30,9 @@ __attribute__((used)) static int str_byte (lua_State *L) {
   int n, i;
   if (posi <= 0) posi = 1;
   if ((size_t)pose > l) pose = l;
-  if (posi > pose) return 0;  /* empty interval; return no values */
-  n = (int)(pose -  posi + 1);
-  if (posi + n <= pose)  /* overflow? */
+  if (posi > pose) return 0;
+  n = (int)(pose - posi + 1);
+  if (posi + n <= pose)
     luaL_error(L, "string slice too long");
   luaL_checkstack(L, n, "string slice too long");
   for (i=0; i<n; i++)

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  seed ;
-typedef  int /*<<< orphan*/  byte ;
 
-/* Variables and functions */
- scalar_t__ Sys_RandomBytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- unsigned int time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int seed ;
+typedef int byte ;
+
+
+ scalar_t__ Sys_RandomBytes (int *,int) ;
+ int srand (unsigned int) ;
+ unsigned int time (int *) ;
 
 __attribute__((used)) static void Com_InitRand(void)
 {
-	unsigned int seed;
+ unsigned int seed;
 
-	if(Sys_RandomBytes((byte *) &seed, sizeof(seed)))
-		srand(seed);
-	else
-		srand(time(NULL));
+ if(Sys_RandomBytes((byte *) &seed, sizeof(seed)))
+  srand(seed);
+ else
+  srand(time(((void*)0)));
 }

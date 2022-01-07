@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PSDevice ;
-typedef  int /*<<< orphan*/ * PBYTE ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTROLnsRequestOut (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAC_REG_BSSID0 ; 
- int /*<<< orphan*/  MESSAGE_REQUEST_MACREG ; 
- int /*<<< orphan*/  MESSAGE_TYPE_WRITE ; 
+
+
+
+typedef int PSDevice ;
+typedef int * PBYTE ;
+typedef int BYTE ;
+
+
+ int CONTROLnsRequestOut (int ,int ,int ,int ,int,int *) ;
+ int MAC_REG_BSSID0 ;
+ int MESSAGE_REQUEST_MACREG ;
+ int MESSAGE_TYPE_WRITE ;
 
 void MACvWriteBSSIDAddress(PSDevice pDevice, PBYTE pbyEtherAddr)
 {
-BYTE            pbyData[6];
+BYTE pbyData[6];
 
 
     pbyData[0] = *((PBYTE)pbyEtherAddr);

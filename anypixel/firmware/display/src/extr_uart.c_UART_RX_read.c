@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {int configured; int /*<<< orphan*/  rx_fifo; } ;
-typedef  TYPE_1__ CONFIG_USART_ConfigState ;
 
-/* Variables and functions */
- int FIFO_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {int configured; int rx_fifo; } ;
+typedef TYPE_1__ CONFIG_USART_ConfigState ;
+
+
+ int FIFO_read (int ,int *,int ) ;
+ int assert (int) ;
 
 bool UART_RX_read(CONFIG_USART_ConfigState *cfg, char *outBuffer, uint16_t count) {
-	assert(cfg->configured == true);
+ assert(cfg->configured == 1);
 
-	return FIFO_read(cfg->rx_fifo, (uint8_t*)outBuffer, count);
+ return FIFO_read(cfg->rx_fifo, (uint8_t*)outBuffer, count);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ async_op_t ;
-typedef  int /*<<< orphan*/  OVERLAPPED ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__* LPHANDLE ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CancelIo (scalar_t__) ; 
- int /*<<< orphan*/  CloseHandleEx (scalar_t__*) ; 
- scalar_t__ ERROR_IO_PENDING ; 
- scalar_t__ ERROR_MORE_DATA ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetOverlappedResult (scalar_t__,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  IO_TIMEOUT ; 
- scalar_t__ InitOverlapped (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PeekNamedPipe (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReadFile (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int WAIT_OBJECT_0 ; 
- int WaitForMultipleObjects (int,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteFile (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__* malloc (int) ; 
- scalar_t__ peek ; 
- scalar_t__ write ; 
+
+
+
+typedef scalar_t__ async_op_t ;
+typedef int OVERLAPPED ;
+typedef int LPVOID ;
+typedef scalar_t__* LPHANDLE ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CancelIo (scalar_t__) ;
+ int CloseHandleEx (scalar_t__*) ;
+ scalar_t__ ERROR_IO_PENDING ;
+ scalar_t__ ERROR_MORE_DATA ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetOverlappedResult (scalar_t__,int *,int*,int ) ;
+ int INFINITE ;
+ int IO_TIMEOUT ;
+ scalar_t__ InitOverlapped (int *) ;
+ int PeekNamedPipe (scalar_t__,int *,int ,int *,int*,int *) ;
+ int ReadFile (scalar_t__,int ,int,int *,int *) ;
+ int TRUE ;
+ int WAIT_OBJECT_0 ;
+ int WaitForMultipleObjects (int,scalar_t__*,int ,int ) ;
+ int WriteFile (scalar_t__,int ,int,int *,int *) ;
+ int free (scalar_t__*) ;
+ scalar_t__* malloc (int) ;
+ scalar_t__ peek ;
+ scalar_t__ write ;
 
 __attribute__((used)) static DWORD
 AsyncPipeOp(async_op_t op, HANDLE pipe, LPVOID buffer, DWORD size, DWORD count, LPHANDLE events)
@@ -48,7 +48,7 @@ AsyncPipeOp(async_op_t op, HANDLE pipe, LPVOID buffer, DWORD size, DWORD count, 
     HANDLE io_event;
     DWORD res, bytes = 0;
     OVERLAPPED overlapped;
-    LPHANDLE handles = NULL;
+    LPHANDLE handles = ((void*)0);
 
     io_event = InitOverlapped(&overlapped);
     if (!io_event)
@@ -64,11 +64,11 @@ AsyncPipeOp(async_op_t op, HANDLE pipe, LPVOID buffer, DWORD size, DWORD count, 
 
     if (op == write)
     {
-        success = WriteFile(pipe, buffer, size, NULL, &overlapped);
+        success = WriteFile(pipe, buffer, size, ((void*)0), &overlapped);
     }
     else
     {
-        success = ReadFile(pipe, buffer, size, NULL, &overlapped);
+        success = ReadFile(pipe, buffer, size, ((void*)0), &overlapped);
     }
     if (!success && GetLastError() != ERROR_IO_PENDING && GetLastError() != ERROR_MORE_DATA)
     {
@@ -91,7 +91,7 @@ AsyncPipeOp(async_op_t op, HANDLE pipe, LPVOID buffer, DWORD size, DWORD count, 
 
     if (op == peek)
     {
-        PeekNamedPipe(pipe, NULL, 0, NULL, &bytes, NULL);
+        PeekNamedPipe(pipe, ((void*)0), 0, ((void*)0), &bytes, ((void*)0));
     }
     else
     {

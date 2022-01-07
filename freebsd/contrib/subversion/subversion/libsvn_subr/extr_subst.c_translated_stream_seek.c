@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_mark_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct translated_stream_baton {scalar_t__ readbuf_off; int /*<<< orphan*/  readbuf; scalar_t__ written; TYPE_5__* out_baton; TYPE_3__* in_baton; int /*<<< orphan*/  stream; int /*<<< orphan*/  buf; int /*<<< orphan*/  iterpool; } ;
-struct TYPE_7__ {int /*<<< orphan*/  buf; scalar_t__ readbuf_off; TYPE_1__* readbuf; scalar_t__ written; TYPE_5__* out_baton; TYPE_3__* in_baton; } ;
-struct TYPE_9__ {TYPE_2__ saved_baton; int /*<<< orphan*/  mark; } ;
-typedef  TYPE_4__ mark_translated_t ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_stream_mark_t ;
+typedef int svn_error_t ;
+struct translated_stream_baton {scalar_t__ readbuf_off; int readbuf; scalar_t__ written; TYPE_5__* out_baton; TYPE_3__* in_baton; int stream; int buf; int iterpool; } ;
+struct TYPE_7__ {int buf; scalar_t__ readbuf_off; TYPE_1__* readbuf; scalar_t__ written; TYPE_5__* out_baton; TYPE_3__* in_baton; } ;
+struct TYPE_9__ {TYPE_2__ saved_baton; int mark; } ;
+typedef TYPE_4__ mark_translated_t ;
 struct TYPE_10__ {scalar_t__ src_format_len; scalar_t__ keyword_off; scalar_t__ newline_off; } ;
 struct TYPE_8__ {scalar_t__ src_format_len; scalar_t__ keyword_off; scalar_t__ newline_off; } ;
-struct TYPE_6__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
+struct TYPE_6__ {int len; int data; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN__TRANSLATION_BUF_SIZE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stringbuf_appendbytes (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stringbuf_setempty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  translate_chunk (int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN__TRANSLATION_BUF_SIZE ;
+ int memcpy (int ,int ,int ) ;
+ int svn_stream_reset (int ) ;
+ int svn_stream_seek (int ,int ) ;
+ int svn_stringbuf_appendbytes (int ,int ,int ) ;
+ int svn_stringbuf_setempty (int ) ;
+ int translate_chunk (int ,TYPE_5__*,int *,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 translated_stream_seek(void *baton, const svn_stream_mark_t *mark)
 {
   struct translated_stream_baton *b = baton;
 
-  if (mark != NULL)
+  if (mark != ((void*)0))
     {
       const mark_translated_t *mt = (const mark_translated_t *)mark;
 
-      /* Flush output buffer if necessary. */
+
       if (b->written)
-        SVN_ERR(translate_chunk(b->stream, b->out_baton, NULL, 0,
+        SVN_ERR(translate_chunk(b->stream, b->out_baton, ((void*)0), 0,
                                 b->iterpool));
 
       SVN_ERR(svn_stream_seek(b->stream, mt->mark));
 
-      /* Restore translation state, avoiding new allocations. */
+
       *b->in_baton = *mt->saved_baton.in_baton;
       *b->out_baton = *mt->saved_baton.out_baton;
       b->written = mt->saved_baton.written;

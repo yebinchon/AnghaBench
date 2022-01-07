@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  generalInfo; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int generalInfo; } ;
 struct TYPE_4__ {TYPE_2__* hdr; } ;
-typedef  int /*<<< orphan*/  OSSL_CMP_ITAV ;
-typedef  TYPE_1__ CMP_HDR_TEST_FIXTURE ;
+typedef int OSSL_CMP_ITAV ;
+typedef TYPE_1__ CMP_HDR_TEST_FIXTURE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * OSSL_CMP_ITAV_new () ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  ossl_cmp_hdr_generalInfo_push0_item (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sk_OSSL_CMP_ITAV_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int * OSSL_CMP_ITAV_new () ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int) ;
+ int ossl_cmp_hdr_generalInfo_push0_item (TYPE_2__*,int *) ;
+ int * sk_OSSL_CMP_ITAV_value (int ,int ) ;
 
 __attribute__((used)) static int
 execute_HDR_generalInfo_push0_item_test(CMP_HDR_TEST_FIXTURE *fixture)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dictType ;
-typedef  int /*<<< orphan*/  dict ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _dictInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/ * zmalloc (int) ; 
+
+
+
+typedef int dictType ;
+typedef int dict ;
+
+
+ int _dictInit (int *,int *,void*) ;
+ int * zmalloc (int) ;
 
 dict *dictCreate(dictType *type,
         void *privDataPtr)

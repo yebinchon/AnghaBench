@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_1__* md_info; int /*<<< orphan*/  md_ctx; int /*<<< orphan*/ * hmac_ctx; } ;
-typedef  TYPE_2__ mbedtls_md_context_t ;
-struct TYPE_4__ {int /*<<< orphan*/  block_size; int /*<<< orphan*/  (* update_func ) (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* starts_func ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_MD_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_1__* md_info; int md_ctx; int * hmac_ctx; } ;
+typedef TYPE_2__ mbedtls_md_context_t ;
+struct TYPE_4__ {int block_size; int (* update_func ) (int ,unsigned char*,int ) ;int (* starts_func ) (int ) ;} ;
+
+
+ int MBEDTLS_ERR_MD_BAD_INPUT_DATA ;
+ int stub1 (int ) ;
+ int stub2 (int ,unsigned char*,int ) ;
 
 int mbedtls_md_hmac_reset( mbedtls_md_context_t *ctx )
 {
     unsigned char *ipad;
 
-    if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+    if( ctx == ((void*)0) || ctx->md_info == ((void*)0) || ctx->hmac_ctx == ((void*)0) )
         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
 
     ipad = (unsigned char *) ctx->hmac_ctx;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GA_PARENT ; 
- int /*<<< orphan*/  GA_ROOT ; 
- int /*<<< orphan*/  GA_ROOTOWNER ; 
- int /*<<< orphan*/  GWLP_HWNDPARENT ; 
- int /*<<< orphan*/  GW_OWNER ; 
- scalar_t__ GetParent (scalar_t__) ; 
- scalar_t__ GetWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetWindowLongPtrA (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,scalar_t__) ; 
- scalar_t__ pGetAncestor (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ HWND ;
+
+
+ int GA_PARENT ;
+ int GA_ROOT ;
+ int GA_ROOTOWNER ;
+ int GWLP_HWNDPARENT ;
+ int GW_OWNER ;
+ scalar_t__ GetParent (scalar_t__) ;
+ scalar_t__ GetWindow (scalar_t__,int ) ;
+ scalar_t__ GetWindowLongPtrA (scalar_t__,int ) ;
+ int ok (int,char*,scalar_t__,scalar_t__) ;
+ scalar_t__ pGetAncestor (scalar_t__,int ) ;
 
 __attribute__((used)) static void check_parents( HWND hwnd, HWND ga_parent, HWND gwl_parent, HWND get_parent,
                            HWND gw_owner, HWND ga_root, HWND ga_root_owner )

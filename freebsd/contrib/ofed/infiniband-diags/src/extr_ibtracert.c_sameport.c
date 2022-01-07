@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ portguid; scalar_t__ lid; } ;
-typedef  TYPE_1__ Port ;
+typedef TYPE_1__ Port ;
 
-/* Variables and functions */
- scalar_t__ force ; 
+
+ scalar_t__ force ;
 
 __attribute__((used)) static int sameport(Port * a, Port * b)
 {
-	return a->portguid == b->portguid || (force && a->lid == b->lid);
+ return a->portguid == b->portguid || (force && a->lid == b->lid);
 }

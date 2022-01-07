@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * data; void* meth_data; int /*<<< orphan*/ * meth; } ;
-typedef  TYPE_1__ CONF ;
 
-/* Variables and functions */
- scalar_t__ CONF_type_default ; 
- int /*<<< orphan*/  default_method ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * data; void* meth_data; int * meth; } ;
+typedef TYPE_1__ CONF ;
+
+
+ scalar_t__ CONF_type_default ;
+ int default_method ;
 
 __attribute__((used)) static int def_init_default(CONF *conf)
 {
-    if (conf == NULL)
+    if (conf == ((void*)0))
         return 0;
 
     conf->meth = &default_method;
     conf->meth_data = (void *)CONF_type_default;
-    conf->data = NULL;
+    conf->data = ((void*)0);
 
     return 1;
 }

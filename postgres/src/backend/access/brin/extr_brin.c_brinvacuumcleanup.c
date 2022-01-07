@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  num_index_tuples; int /*<<< orphan*/  num_pages; } ;
-struct TYPE_6__ {int /*<<< orphan*/  index; int /*<<< orphan*/  strategy; scalar_t__ analyze_only; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  TYPE_1__ IndexVacuumInfo ;
-typedef  TYPE_2__ IndexBulkDeleteResult ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  BRIN_ALL_BLOCKRANGES ; 
- int /*<<< orphan*/  IndexGetRelation (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RelationGetNumberOfBlocks (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetRelid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  brin_vacuum_scan (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  brinsummarize (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ palloc0 (int) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int num_index_tuples; int num_pages; } ;
+struct TYPE_6__ {int index; int strategy; scalar_t__ analyze_only; } ;
+typedef int Relation ;
+typedef TYPE_1__ IndexVacuumInfo ;
+typedef TYPE_2__ IndexBulkDeleteResult ;
+
+
+ int AccessShareLock ;
+ int BRIN_ALL_BLOCKRANGES ;
+ int IndexGetRelation (int ,int) ;
+ int RelationGetNumberOfBlocks (int ) ;
+ int RelationGetRelid (int ) ;
+ int brin_vacuum_scan (int ,int ) ;
+ int brinsummarize (int ,int ,int ,int,int *,int *) ;
+ scalar_t__ palloc0 (int) ;
+ int table_close (int ,int ) ;
+ int table_open (int ,int ) ;
 
 IndexBulkDeleteResult *
 brinvacuumcleanup(IndexVacuumInfo *info, IndexBulkDeleteResult *stats)
 {
-	Relation	heapRel;
+ Relation heapRel;
 
-	/* No-op in ANALYZE ONLY mode */
-	if (info->analyze_only)
-		return stats;
 
-	if (!stats)
-		stats = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
-	stats->num_pages = RelationGetNumberOfBlocks(info->index);
-	/* rest of stats is initialized by zeroing */
+ if (info->analyze_only)
+  return stats;
 
-	heapRel = table_open(IndexGetRelation(RelationGetRelid(info->index), false),
-						 AccessShareLock);
+ if (!stats)
+  stats = (IndexBulkDeleteResult *) palloc0(sizeof(IndexBulkDeleteResult));
+ stats->num_pages = RelationGetNumberOfBlocks(info->index);
 
-	brin_vacuum_scan(info->index, info->strategy);
 
-	brinsummarize(info->index, heapRel, BRIN_ALL_BLOCKRANGES, false,
-				  &stats->num_index_tuples, &stats->num_index_tuples);
+ heapRel = table_open(IndexGetRelation(RelationGetRelid(info->index), 0),
+       AccessShareLock);
 
-	table_close(heapRel, AccessShareLock);
+ brin_vacuum_scan(info->index, info->strategy);
 
-	return stats;
+ brinsummarize(info->index, heapRel, BRIN_ALL_BLOCKRANGES, 0,
+      &stats->num_index_tuples, &stats->num_index_tuples);
+
+ table_close(heapRel, AccessShareLock);
+
+ return stats;
 }

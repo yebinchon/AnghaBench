@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * pCurFrame; int /*<<< orphan*/ * pPrevFrame; } ;
-typedef  int LRESULT ;
-typedef  TYPE_1__ CodecInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CompressEnd (TYPE_1__*) ; 
- int /*<<< orphan*/  LocalFree (TYPE_1__*) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * pCurFrame; int * pPrevFrame; } ;
+typedef int LRESULT ;
+typedef TYPE_1__ CodecInfo ;
+
+
+ int CompressEnd (TYPE_1__*) ;
+ int LocalFree (TYPE_1__*) ;
+ int TRACE (char*,TYPE_1__*) ;
+ int assert (int ) ;
 
 __attribute__((used)) static LRESULT Close(CodecInfo *pi)
 {
   TRACE("(%p)\n", pi);
 
-  /* pre-condition */
-  assert(pi != NULL);
 
-  if (pi->pPrevFrame != NULL || pi->pCurFrame != NULL)
+  assert(pi != ((void*)0));
+
+  if (pi->pPrevFrame != ((void*)0) || pi->pCurFrame != ((void*)0))
     CompressEnd(pi);
 
   LocalFree(pi);

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  Data; } ;
-typedef  TYPE_1__ HTTP_VALUE ;
-typedef  int /*<<< orphan*/  HTTP_HEADER ;
 
-/* Variables and functions */
- TYPE_1__* GetHttpValue (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ToInt (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int Data; } ;
+typedef TYPE_1__ HTTP_VALUE ;
+typedef int HTTP_HEADER ;
+
+
+ TYPE_1__* GetHttpValue (int *,char*) ;
+ int ToInt (int ) ;
 
 UINT GetContentLength(HTTP_HEADER *header)
 {
-	UINT ret;
-	HTTP_VALUE *v;
-	// Validate arguments
-	if (header == NULL)
-	{
-		return 0;
-	}
+ UINT ret;
+ HTTP_VALUE *v;
 
-	v = GetHttpValue(header, "Content-Length");
-	if (v == NULL)
-	{
-		return 0;
-	}
+ if (header == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = ToInt(v->Data);
+ v = GetHttpValue(header, "Content-Length");
+ if (v == ((void*)0))
+ {
+  return 0;
+ }
 
-	return ret;
+ ret = ToInt(v->Data);
+
+ return ret;
 }

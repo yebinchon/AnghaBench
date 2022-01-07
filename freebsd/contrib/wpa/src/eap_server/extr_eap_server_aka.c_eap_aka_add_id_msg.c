@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wpabuf {int dummy; } ;
-struct eap_aka_data {int /*<<< orphan*/ * id_msgs; } ;
+struct eap_aka_data {int * id_msgs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * wpabuf_dup (struct wpabuf const*) ; 
- int /*<<< orphan*/  wpabuf_len (struct wpabuf const*) ; 
- int /*<<< orphan*/  wpabuf_put_buf (int /*<<< orphan*/ *,struct wpabuf const*) ; 
- scalar_t__ wpabuf_resize (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+ int * wpabuf_dup (struct wpabuf const*) ;
+ int wpabuf_len (struct wpabuf const*) ;
+ int wpabuf_put_buf (int *,struct wpabuf const*) ;
+ scalar_t__ wpabuf_resize (int **,int ) ;
 
 __attribute__((used)) static int eap_aka_add_id_msg(struct eap_aka_data *data,
-			      const struct wpabuf *msg)
+         const struct wpabuf *msg)
 {
-	if (msg == NULL)
-		return -1;
+ if (msg == ((void*)0))
+  return -1;
 
-	if (data->id_msgs == NULL) {
-		data->id_msgs = wpabuf_dup(msg);
-		return data->id_msgs == NULL ? -1 : 0;
-	}
+ if (data->id_msgs == ((void*)0)) {
+  data->id_msgs = wpabuf_dup(msg);
+  return data->id_msgs == ((void*)0) ? -1 : 0;
+ }
 
-	if (wpabuf_resize(&data->id_msgs, wpabuf_len(msg)) < 0)
-		return -1;
-	wpabuf_put_buf(data->id_msgs, msg);
+ if (wpabuf_resize(&data->id_msgs, wpabuf_len(msg)) < 0)
+  return -1;
+ wpabuf_put_buf(data->id_msgs, msg);
 
-	return 0;
+ return 0;
 }

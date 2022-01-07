@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  find_mime_from_ext (char*,char**) ; 
- char* heap_alloc (unsigned int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int find_mime_from_ext (char*,char**) ;
+ char* heap_alloc (unsigned int) ;
+ int heap_free (char*) ;
+ int memcpy (char*,char const*,unsigned int) ;
 
 __attribute__((used)) static HRESULT find_mime_from_url(const WCHAR *url, WCHAR **ret)
 {
     const WCHAR *ptr, *end_ptr;
-    WCHAR *ext = NULL;
+    WCHAR *ext = ((void*)0);
     HRESULT hres;
 
     for(end_ptr = url; *end_ptr; end_ptr++) {

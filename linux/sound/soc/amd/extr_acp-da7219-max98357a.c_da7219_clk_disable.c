@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  da7219_dai_bclk ; 
+ int clk_disable_unprepare (int ) ;
+ int da7219_dai_bclk ;
 
 __attribute__((used)) static void da7219_clk_disable(void)
 {
-	clk_disable_unprepare(da7219_dai_bclk);
+ clk_disable_unprepare(da7219_dai_bclk);
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bman_affine_portal ; 
- int /*<<< orphan*/  put_cpu_var (int /*<<< orphan*/ ) ; 
+ int bman_affine_portal ;
+ int put_cpu_var (int ) ;
 
 __attribute__((used)) static inline void put_affine_portal(void)
 {
-	put_cpu_var(bman_affine_portal);
+ put_cpu_var(bman_affine_portal);
 }

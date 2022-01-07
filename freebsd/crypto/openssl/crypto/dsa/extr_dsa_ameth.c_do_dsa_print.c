@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* g; int /*<<< orphan*/  const* q; int /*<<< orphan*/  const* p; int /*<<< orphan*/ * pub_key; int /*<<< orphan*/ * priv_key; } ;
-typedef  TYPE_1__ DSA ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_bn_print (int /*<<< orphan*/ *,char*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIO_indent (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_num_bits (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* g; int const* q; int const* p; int * pub_key; int * priv_key; } ;
+typedef TYPE_1__ DSA ;
+typedef int BIO ;
+typedef int BIGNUM ;
+
+
+ int ASN1_bn_print (int *,char*,int const*,int *,int) ;
+ int BIO_indent (int *,int,int) ;
+ scalar_t__ BIO_printf (int *,char*,char const*,int ) ;
+ int BN_num_bits (int const*) ;
 
 __attribute__((used)) static int do_dsa_print(BIO *bp, const DSA *x, int off, int ptype)
 {
     int ret = 0;
-    const char *ktype = NULL;
+    const char *ktype = ((void*)0);
     const BIGNUM *priv_key, *pub_key;
 
     if (ptype == 2)
         priv_key = x->priv_key;
     else
-        priv_key = NULL;
+        priv_key = ((void*)0);
 
     if (ptype > 0)
         pub_key = x->pub_key;
     else
-        pub_key = NULL;
+        pub_key = ((void*)0);
 
     if (ptype == 2)
         ktype = "Private-Key";
@@ -53,15 +53,15 @@ __attribute__((used)) static int do_dsa_print(BIO *bp, const DSA *x, int off, in
             goto err;
     }
 
-    if (!ASN1_bn_print(bp, "priv:", priv_key, NULL, off))
+    if (!ASN1_bn_print(bp, "priv:", priv_key, ((void*)0), off))
         goto err;
-    if (!ASN1_bn_print(bp, "pub: ", pub_key, NULL, off))
+    if (!ASN1_bn_print(bp, "pub: ", pub_key, ((void*)0), off))
         goto err;
-    if (!ASN1_bn_print(bp, "P:   ", x->p, NULL, off))
+    if (!ASN1_bn_print(bp, "P:   ", x->p, ((void*)0), off))
         goto err;
-    if (!ASN1_bn_print(bp, "Q:   ", x->q, NULL, off))
+    if (!ASN1_bn_print(bp, "Q:   ", x->q, ((void*)0), off))
         goto err;
-    if (!ASN1_bn_print(bp, "G:   ", x->g, NULL, off))
+    if (!ASN1_bn_print(bp, "G:   ", x->g, ((void*)0), off))
         goto err;
     ret = 1;
  err:

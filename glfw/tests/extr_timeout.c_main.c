@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClearColor (float,float,float,float) ; 
- int /*<<< orphan*/  glViewport (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  gladLoadGL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwDestroyWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetFramebufferSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetProcAddress ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWaitEventsTimeout (double) ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- float nrand () ; 
- scalar_t__ sqrt (float) ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GL_COLOR_BUFFER_BIT ;
+ int error_callback ;
+ int exit (int ) ;
+ int glClear (int ) ;
+ int glClearColor (float,float,float,float) ;
+ int glViewport (int ,int ,int,int) ;
+ int gladLoadGL (int ) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwDestroyWindow (int *) ;
+ int glfwGetFramebufferSize (int *,int*,int*) ;
+ int glfwGetProcAddress ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWaitEventsTimeout (double) ;
+ int glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ float nrand () ;
+ scalar_t__ sqrt (float) ;
+ int srand (unsigned int) ;
+ scalar_t__ time (int *) ;
 
 int main(void)
 {
     GLFWwindow* window;
 
-    srand((unsigned int) time(NULL));
+    srand((unsigned int) time(((void*)0)));
 
     glfwSetErrorCallback(error_callback);
 
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    window = glfwCreateWindow(640, 480, "Event Wait Timeout Test", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Event Wait Timeout Test", ((void*)0), ((void*)0));
     if (!window)
     {
         glfwTerminate();

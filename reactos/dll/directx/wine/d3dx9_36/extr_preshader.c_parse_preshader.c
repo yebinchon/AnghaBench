@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_9__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_21__ TYPE_9__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
 struct TYPE_20__ {unsigned int* table_sizes; } ;
-struct TYPE_19__ {int /*<<< orphan*/  regset2table; } ;
+struct TYPE_19__ {int regset2table; } ;
 struct d3dx_preshader {int ins_count; TYPE_7__ regs; TYPE_10__* ins; TYPE_6__ inputs; } ;
 struct d3dx9_base_effect {int dummy; } ;
-typedef  enum pres_reg_tables { ____Placeholder_pres_reg_tables } pres_reg_tables ;
+typedef enum pres_reg_tables { ____Placeholder_pres_reg_tables } pres_reg_tables ;
 struct TYPE_21__ {unsigned int input_count; } ;
 struct TYPE_17__ {int table; unsigned int offset; } ;
 struct TYPE_18__ {TYPE_4__ reg; } ;
@@ -31,35 +31,35 @@ struct TYPE_15__ {scalar_t__ table; unsigned int offset; } ;
 struct TYPE_14__ {int table; unsigned int offset; } ;
 struct TYPE_16__ {TYPE_2__ index_reg; TYPE_1__ reg; } ;
 struct TYPE_13__ {size_t op; int component_count; TYPE_5__ output; TYPE_3__* inputs; scalar_t__ scalar_op; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DXERR_INVALIDDATA ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,unsigned int,unsigned int,...) ; 
- int /*<<< orphan*/  FOURCC_CLIT ; 
- int /*<<< orphan*/  FOURCC_FXLC ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_10__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ PRES_REGTAB_COUNT ; 
- size_t PRES_REGTAB_IMMED ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int) ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- unsigned int* find_bytecode_comment (unsigned int*,unsigned int,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  get_constants_desc (unsigned int*,TYPE_6__*,struct d3dx9_base_effect*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- unsigned int get_reg_components (size_t) ; 
- void* get_reg_offset (int,unsigned int) ; 
- unsigned int* parse_pres_ins (unsigned int*,unsigned int,TYPE_10__*) ; 
- TYPE_9__* pres_op_info ; 
- int /*<<< orphan*/  pres_regset2table ; 
- int /*<<< orphan*/  regstore_alloc_table (TYPE_7__*,size_t) ; 
- int /*<<< orphan*/  regstore_set_values (TYPE_7__*,size_t,double*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  update_table_size (unsigned int*,int,void*) ; 
- int /*<<< orphan*/  update_table_sizes_consts (unsigned int*,TYPE_6__*) ; 
+
+ int D3DXERR_INVALIDDATA ;
+ int D3D_OK ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,unsigned int,unsigned int,...) ;
+ int FOURCC_CLIT ;
+ int FOURCC_FXLC ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_10__* HeapAlloc (int ,int ,int) ;
+ scalar_t__ PRES_REGTAB_COUNT ;
+ size_t PRES_REGTAB_IMMED ;
+ int TRACE (char*,unsigned int) ;
+ int UINT_MAX ;
+ int WARN (char*,...) ;
+ unsigned int* find_bytecode_comment (unsigned int*,unsigned int,int ,unsigned int*) ;
+ int get_constants_desc (unsigned int*,TYPE_6__*,struct d3dx9_base_effect*,int *,int ,int *) ;
+ unsigned int get_reg_components (size_t) ;
+ void* get_reg_offset (int,unsigned int) ;
+ unsigned int* parse_pres_ins (unsigned int*,unsigned int,TYPE_10__*) ;
+ TYPE_9__* pres_op_info ;
+ int pres_regset2table ;
+ int regstore_alloc_table (TYPE_7__*,size_t) ;
+ int regstore_set_values (TYPE_7__*,size_t,double*,int ,unsigned int) ;
+ int update_table_size (unsigned int*,int,void*) ;
+ int update_table_sizes_consts (unsigned int*,TYPE_6__*) ;
 
 __attribute__((used)) static HRESULT parse_preshader(struct d3dx_preshader *pres, unsigned int *ptr, unsigned int count, struct d3dx9_base_effect *base)
 {
@@ -92,7 +92,7 @@ __attribute__((used)) static HRESULT parse_preshader(struct d3dx_preshader *pres
     else
     {
         const_count = 0;
-        dconst = NULL;
+        dconst = ((void*)0);
     }
     TRACE("%u double constants.\n", const_count);
 
@@ -128,7 +128,7 @@ __attribute__((used)) static HRESULT parse_preshader(struct d3dx_preshader *pres
 
     saved_word = *ptr;
     *ptr = 0xfffe0000;
-    hr = get_constants_desc(ptr, &pres->inputs, base, NULL, 0, NULL);
+    hr = get_constants_desc(ptr, &pres->inputs, base, ((void*)0), 0, ((void*)0));
     *ptr = saved_word;
     if (FAILED(hr))
         return hr;
@@ -165,7 +165,7 @@ __attribute__((used)) static HRESULT parse_preshader(struct d3dx_preshader *pres
             }
             if (reg_idx >= pres->regs.table_sizes[table])
             {
-                /* Native accepts these broken preshaders. */
+
                 FIXME("Out of bounds register index, i %u, j %u, table %u, reg_idx %u, preshader parsing failed.\n",
                         i, j, table, reg_idx);
                 return D3DXERR_INVALIDDATA;

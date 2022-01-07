@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int status; int /*<<< orphan*/  lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int status; int lock; } ;
 struct stub_device {TYPE_1__ ud; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENODEV ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  dev_err (struct device*,char*) ; 
- struct stub_device* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ int PAGE_SIZE ;
+ int dev_err (struct device*,char*) ;
+ struct stub_device* dev_get_drvdata (struct device*) ;
+ int snprintf (char*,int ,char*,int) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static ssize_t usbip_status_show(struct device *dev,
-				 struct device_attribute *attr, char *buf)
+     struct device_attribute *attr, char *buf)
 {
-	struct stub_device *sdev = dev_get_drvdata(dev);
-	int status;
+ struct stub_device *sdev = dev_get_drvdata(dev);
+ int status;
 
-	if (!sdev) {
-		dev_err(dev, "sdev is null\n");
-		return -ENODEV;
-	}
+ if (!sdev) {
+  dev_err(dev, "sdev is null\n");
+  return -ENODEV;
+ }
 
-	spin_lock_irq(&sdev->ud.lock);
-	status = sdev->ud.status;
-	spin_unlock_irq(&sdev->ud.lock);
+ spin_lock_irq(&sdev->ud.lock);
+ status = sdev->ud.status;
+ spin_unlock_irq(&sdev->ud.lock);
 
-	return snprintf(buf, PAGE_SIZE, "%d\n", status);
+ return snprintf(buf, PAGE_SIZE, "%d\n", status);
 }

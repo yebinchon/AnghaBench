@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdf_obj ;
-struct TYPE_9__ {int /*<<< orphan*/  obj; int /*<<< orphan*/  page; } ;
-typedef  TYPE_1__ pdf_annot ;
-struct TYPE_10__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_2__ fz_point ;
-typedef  int /*<<< orphan*/  fz_matrix ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InkList ; 
- int /*<<< orphan*/  PDF_NAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_allowed_subtypes (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fz_invert_matrix (int /*<<< orphan*/ ) ; 
- TYPE_2__ fz_transform_point (TYPE_2__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ink_list_subtypes ; 
- int /*<<< orphan*/ * pdf_array_push_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  pdf_array_push_real (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pdf_dict_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * pdf_dict_put_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pdf_dirty_annot (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  pdf_is_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pdf_page_transform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int pdf_obj ;
+struct TYPE_9__ {int obj; int page; } ;
+typedef TYPE_1__ pdf_annot ;
+struct TYPE_10__ {int y; int x; } ;
+typedef TYPE_2__ fz_point ;
+typedef int fz_matrix ;
+typedef int fz_context ;
+
+
+ int InkList ;
+ int PDF_NAME (int ) ;
+ int check_allowed_subtypes (int *,TYPE_1__*,int ,int ) ;
+ int fz_invert_matrix (int ) ;
+ TYPE_2__ fz_transform_point (TYPE_2__,int ) ;
+ int ink_list_subtypes ;
+ int * pdf_array_push_array (int *,int *,int) ;
+ int pdf_array_push_real (int *,int *,int ) ;
+ int * pdf_dict_get (int *,int ,int ) ;
+ int * pdf_dict_put_array (int *,int ,int ,int) ;
+ int pdf_dirty_annot (int *,TYPE_1__*) ;
+ int pdf_is_array (int *,int *) ;
+ int pdf_page_transform (int *,int ,int *,int *) ;
 
 void
 pdf_add_annot_ink_list(fz_context *ctx, pdf_annot *annot, int n, fz_point p[])
 {
-	fz_matrix page_ctm, inv_page_ctm;
-	pdf_obj *ink_list, *stroke;
-	int i;
+ fz_matrix page_ctm, inv_page_ctm;
+ pdf_obj *ink_list, *stroke;
+ int i;
 
-	check_allowed_subtypes(ctx, annot, PDF_NAME(InkList), ink_list_subtypes);
+ check_allowed_subtypes(ctx, annot, PDF_NAME(InkList), ink_list_subtypes);
 
-	pdf_page_transform(ctx, annot->page, NULL, &page_ctm);
-	inv_page_ctm = fz_invert_matrix(page_ctm);
+ pdf_page_transform(ctx, annot->page, ((void*)0), &page_ctm);
+ inv_page_ctm = fz_invert_matrix(page_ctm);
 
-	ink_list = pdf_dict_get(ctx, annot->obj, PDF_NAME(InkList));
-	if (!pdf_is_array(ctx, ink_list))
-		ink_list = pdf_dict_put_array(ctx, annot->obj, PDF_NAME(InkList), 10);
+ ink_list = pdf_dict_get(ctx, annot->obj, PDF_NAME(InkList));
+ if (!pdf_is_array(ctx, ink_list))
+  ink_list = pdf_dict_put_array(ctx, annot->obj, PDF_NAME(InkList), 10);
 
-	stroke = pdf_array_push_array(ctx, ink_list, n * 2);
-	for (i = 0; i < n; ++i)
-	{
-		fz_point tp = fz_transform_point(p[i], inv_page_ctm);
-		pdf_array_push_real(ctx, stroke, tp.x);
-		pdf_array_push_real(ctx, stroke, tp.y);
-	}
+ stroke = pdf_array_push_array(ctx, ink_list, n * 2);
+ for (i = 0; i < n; ++i)
+ {
+  fz_point tp = fz_transform_point(p[i], inv_page_ctm);
+  pdf_array_push_real(ctx, stroke, tp.x);
+  pdf_array_push_real(ctx, stroke, tp.y);
+ }
 
-	pdf_dirty_annot(ctx, annot);
+ pdf_dirty_annot(ctx, annot);
 }

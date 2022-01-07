@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct edit_baton {int /*<<< orphan*/  txn; scalar_t__ txn_root; scalar_t__ txn_aborted; int /*<<< orphan*/  txn_owner; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_abort_txn (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_close_root (scalar_t__) ; 
+
+
+
+typedef int svn_error_t ;
+struct edit_baton {int txn; scalar_t__ txn_root; scalar_t__ txn_aborted; int txn_owner; } ;
+typedef int apr_pool_t ;
+
+
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int * svn_error_trace (int ) ;
+ int svn_fs_abort_txn (int ,int *) ;
+ int svn_fs_close_root (scalar_t__) ;
 
 __attribute__((used)) static svn_error_t *
 abort_edit(void *edit_baton,
@@ -31,7 +31,7 @@ abort_edit(void *edit_baton,
 
   eb->txn_aborted = TRUE;
 
-  /* Since abort_edit is supposed to release resources, do it now. */
+
   if (eb->txn_root)
     svn_fs_close_root(eb->txn_root);
 

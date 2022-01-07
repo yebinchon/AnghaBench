@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct port100 {int cmd_type; TYPE_1__* interface; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int dev; } ;
 
-/* Variables and functions */
-#define  PORT100_CMD_TYPE_0 129 
-#define  PORT100_CMD_TYPE_1 128 
- int PORT100_MDAA_TGT_HAS_BEEN_ACTIVATED_MASK ; 
- int PORT100_MDAA_TGT_WAS_ACTIVATED_MASK ; 
- int /*<<< orphan*/  nfc_err (int /*<<< orphan*/ *,char*) ; 
+
+
+
+ int PORT100_MDAA_TGT_HAS_BEEN_ACTIVATED_MASK ;
+ int PORT100_MDAA_TGT_WAS_ACTIVATED_MASK ;
+ int nfc_err (int *,char*) ;
 
 __attribute__((used)) static bool port100_tg_target_activated(struct port100 *dev, u8 tgt_activated)
 {
-	u8 mask;
+ u8 mask;
 
-	switch (dev->cmd_type) {
-	case PORT100_CMD_TYPE_0:
-		mask = PORT100_MDAA_TGT_HAS_BEEN_ACTIVATED_MASK;
-		break;
-	case PORT100_CMD_TYPE_1:
-		mask = PORT100_MDAA_TGT_HAS_BEEN_ACTIVATED_MASK |
-		       PORT100_MDAA_TGT_WAS_ACTIVATED_MASK;
-		break;
-	default:
-		nfc_err(&dev->interface->dev, "Unknown command type\n");
-		return false;
-	}
+ switch (dev->cmd_type) {
+ case 129:
+  mask = PORT100_MDAA_TGT_HAS_BEEN_ACTIVATED_MASK;
+  break;
+ case 128:
+  mask = PORT100_MDAA_TGT_HAS_BEEN_ACTIVATED_MASK |
+         PORT100_MDAA_TGT_WAS_ACTIVATED_MASK;
+  break;
+ default:
+  nfc_err(&dev->interface->dev, "Unknown command type\n");
+  return 0;
+ }
 
-	return ((tgt_activated & mask) == mask);
+ return ((tgt_activated & mask) == mask);
 }

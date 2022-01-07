@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  subtype; } ;
-typedef  TYPE_1__ esp_partition_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CORR_CRC_1_SECTOR_OTA_DATA ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_PARTITION_SUBTYPE_APP_FACTORY ; 
- int /*<<< orphan*/  ESP_PARTITION_SUBTYPE_APP_OTA_0 ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_FAIL_MESSAGE (char*) ; 
- int boot_count ; 
- int /*<<< orphan*/  copy_current_app_to_next_part (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_current_app_to_next_part_and_reboot () ; 
- int /*<<< orphan*/  corrupt_ota_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  erase_ota_data () ; 
- int /*<<< orphan*/  get_next_update_partition () ; 
- TYPE_1__* get_running_firmware () ; 
- int /*<<< orphan*/  mark_app_valid () ; 
- int /*<<< orphan*/  reboot_as_deep_sleep () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int subtype; } ;
+typedef TYPE_1__ esp_partition_t ;
+
+
+ int CORR_CRC_1_SECTOR_OTA_DATA ;
+ int ESP_LOGI (int ,char*,...) ;
+ int ESP_PARTITION_SUBTYPE_APP_FACTORY ;
+ int ESP_PARTITION_SUBTYPE_APP_OTA_0 ;
+ int TAG ;
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_FAIL_MESSAGE (char*) ;
+ int boot_count ;
+ int copy_current_app_to_next_part (TYPE_1__ const*,int ) ;
+ int copy_current_app_to_next_part_and_reboot () ;
+ int corrupt_ota_data (int ) ;
+ int erase_ota_data () ;
+ int get_next_update_partition () ;
+ TYPE_1__* get_running_firmware () ;
+ int mark_app_valid () ;
+ int reboot_as_deep_sleep () ;
 
 __attribute__((used)) static void test_flow2(void)
 {

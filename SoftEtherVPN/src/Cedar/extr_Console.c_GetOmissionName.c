@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  StrCat (char*,size_t,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,size_t,char*) ; 
- size_t StrLen (char*) ; 
+
+
+
+typedef size_t UINT ;
+
+
+ int StrCat (char*,size_t,char*) ;
+ int StrCpy (char*,size_t,char*) ;
+ size_t StrLen (char*) ;
 
 void GetOmissionName(char *dst, UINT size, char *src)
 {
-	UINT i, len;
-	// Validate arguments
-	if (dst == NULL || src == NULL)
-	{
-		return;
-	}
+ UINT i, len;
 
-	StrCpy(dst, size, "");
-	len = StrLen(src);
+ if (dst == ((void*)0) || src == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < len;i++)
-	{
-		char c = src[i];
+ StrCpy(dst, size, "");
+ len = StrLen(src);
 
-		if ((c >= '0' && c <= '9') ||
-			(c >= 'A' && c <= 'Z'))
-		{
-			char tmp[2];
-			tmp[0] = c;
-			tmp[1] = 0;
+ for (i = 0;i < len;i++)
+ {
+  char c = src[i];
 
-			StrCat(dst, size, tmp);
-		}
-	}
+  if ((c >= '0' && c <= '9') ||
+   (c >= 'A' && c <= 'Z'))
+  {
+   char tmp[2];
+   tmp[0] = c;
+   tmp[1] = 0;
+
+   StrCat(dst, size, tmp);
+  }
+ }
 }

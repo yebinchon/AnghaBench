@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BlackWhiteCompensation ; 
- int EOF ; 
- void* EmbedProfile ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- void* GamutCheck ; 
- int /*<<< orphan*/  Help (int) ; 
- void* IgnoreEmbedded ; 
- double InkLimit ; 
- void* Intent ; 
- double ObserverAdaptationState ; 
- int PrecalcMode ; 
- void* ProofingIntent ; 
- void* SaveEmbedded ; 
- void* StoreAsAlpha ; 
- void* TRUE ; 
- void* Verbose ; 
- int /*<<< orphan*/  Warning (char*) ; 
- int Width ; 
- double atof (void*) ; 
- void* atoi (void*) ; 
- int /*<<< orphan*/ * cInpProf ; 
- int /*<<< orphan*/ * cOutProf ; 
- void* cProofing ; 
- void* lIsDeviceLink ; 
- int xgetopt (int,char**,char*) ; 
- void* xoptarg ; 
+ void* BlackWhiteCompensation ;
+ int EOF ;
+ void* EmbedProfile ;
+ int FatalError (char*,...) ;
+ void* GamutCheck ;
+ int Help (int) ;
+ void* IgnoreEmbedded ;
+ double InkLimit ;
+ void* Intent ;
+ double ObserverAdaptationState ;
+ int PrecalcMode ;
+ void* ProofingIntent ;
+ void* SaveEmbedded ;
+ void* StoreAsAlpha ;
+ void* TRUE ;
+ void* Verbose ;
+ int Warning (char*) ;
+ int Width ;
+ double atof (void*) ;
+ void* atoi (void*) ;
+ int * cInpProf ;
+ int * cOutProf ;
+ void* cProofing ;
+ void* lIsDeviceLink ;
+ int xgetopt (int,char**,char*) ;
+ void* xoptarg ;
 
 __attribute__((used)) static
 void HandleSwitches(int argc, char *argv[])
@@ -104,7 +96,7 @@ void HandleSwitches(int argc, char *argv[])
 
         case 'l':
         case 'L':
-            if (cInpProf != NULL || cOutProf != NULL)
+            if (cInpProf != ((void*)0) || cOutProf != ((void*)0))
                 FatalError("input/output profiles already specified");
 
             cInpProf = xoptarg;
@@ -151,9 +143,9 @@ void HandleSwitches(int argc, char *argv[])
             break;
 
         case 'H':
-        case 'h':  {
+        case 'h': {
 
-            int a =  atoi(xoptarg);
+            int a = atoi(xoptarg);
             Help(a);
             }
             break;

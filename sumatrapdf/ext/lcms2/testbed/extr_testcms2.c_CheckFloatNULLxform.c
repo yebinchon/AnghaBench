@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*) ; 
- int /*<<< orphan*/  INTENT_PERCEPTUAL ; 
- int /*<<< orphan*/  IsGoodVal (char*,int,int,double) ; 
- int /*<<< orphan*/  TYPE_GRAY_FLT ; 
- int /*<<< orphan*/ * cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int*,int) ; 
- int /*<<< orphan*/  cmsFLAGS_NULLTRANSFORM ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int * cmsHTRANSFORM ;
+typedef int cmsFloat32Number ;
+
+
+ int DbgThread () ;
+ int Fail (char*) ;
+ int INTENT_PERCEPTUAL ;
+ int IsGoodVal (char*,int,int,double) ;
+ int TYPE_GRAY_FLT ;
+ int * cmsCreateTransform (int ,int *,int ,int *,int ,int ,int ) ;
+ int cmsDeleteTransform (int ,int *) ;
+ int cmsDoTransform (int ,int *,int*,int*,int) ;
+ int cmsFLAGS_NULLTRANSFORM ;
 
 __attribute__((used)) static
 cmsInt32Number CheckFloatNULLxform(void)
@@ -32,9 +32,9 @@ cmsInt32Number CheckFloatNULLxform(void)
     cmsFloat32Number in[10] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     cmsFloat32Number out[10];
 
-    cmsHTRANSFORM xform = cmsCreateTransform(DbgThread(), NULL, TYPE_GRAY_FLT, NULL, TYPE_GRAY_FLT, INTENT_PERCEPTUAL, cmsFLAGS_NULLTRANSFORM);
+    cmsHTRANSFORM xform = cmsCreateTransform(DbgThread(), ((void*)0), TYPE_GRAY_FLT, ((void*)0), TYPE_GRAY_FLT, INTENT_PERCEPTUAL, cmsFLAGS_NULLTRANSFORM);
 
-    if (xform == NULL) {
+    if (xform == ((void*)0)) {
         Fail("Unable to create float null transform");
         return 0;
     }

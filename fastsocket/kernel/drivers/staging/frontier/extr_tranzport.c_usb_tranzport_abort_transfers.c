@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_tranzport {int /*<<< orphan*/  interrupt_out_urb; scalar_t__ intf; scalar_t__ interrupt_out_busy; int /*<<< orphan*/  interrupt_in_urb; scalar_t__ interrupt_in_running; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  usb_kill_urb (int /*<<< orphan*/ ) ; 
+
+
+
+struct usb_tranzport {int interrupt_out_urb; scalar_t__ intf; scalar_t__ interrupt_out_busy; int interrupt_in_urb; scalar_t__ interrupt_in_running; } ;
+
+
+ int usb_kill_urb (int ) ;
 
 __attribute__((used)) static void usb_tranzport_abort_transfers(struct usb_tranzport *dev)
 {
-	/* shutdown transfer */
-	if (dev->interrupt_in_running) {
-		dev->interrupt_in_running = 0;
-		if (dev->intf)
-			usb_kill_urb(dev->interrupt_in_urb);
-	}
-	if (dev->interrupt_out_busy)
-		if (dev->intf)
-			usb_kill_urb(dev->interrupt_out_urb);
+
+ if (dev->interrupt_in_running) {
+  dev->interrupt_in_running = 0;
+  if (dev->intf)
+   usb_kill_urb(dev->interrupt_in_urb);
+ }
+ if (dev->interrupt_out_busy)
+  if (dev->intf)
+   usb_kill_urb(dev->interrupt_out_urb);
 }

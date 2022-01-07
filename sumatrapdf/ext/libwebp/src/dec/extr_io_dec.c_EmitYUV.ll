@@ -1,0 +1,208 @@
+; ModuleID = '/home/carl/AnghaBench/sumatrapdf/ext/libwebp/src/dec/extr_io_dec.c_EmitYUV.c'
+source_filename = "/home/carl/AnghaBench/sumatrapdf/ext/libwebp/src/dec/extr_io_dec.c_EmitYUV.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_12__ = type { i32, i32, i32, i32, i32, i64, i64, i64 }
+%struct.TYPE_10__ = type { %struct.TYPE_11__* }
+%struct.TYPE_11__ = type { %struct.TYPE_8__ }
+%struct.TYPE_8__ = type { %struct.TYPE_9__ }
+%struct.TYPE_9__ = type { i32, i32, i32, i32*, i32*, i32* }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_12__*, %struct.TYPE_10__*)* @EmitYUV to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @EmitYUV(%struct.TYPE_12__* %0, %struct.TYPE_10__* %1) #0 {
+  %3 = alloca %struct.TYPE_12__*, align 8
+  %4 = alloca %struct.TYPE_10__*, align 8
+  %5 = alloca %struct.TYPE_11__*, align 8
+  %6 = alloca %struct.TYPE_9__*, align 8
+  %7 = alloca i32*, align 8
+  %8 = alloca i32*, align 8
+  %9 = alloca i32*, align 8
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  store %struct.TYPE_12__* %0, %struct.TYPE_12__** %3, align 8
+  store %struct.TYPE_10__* %1, %struct.TYPE_10__** %4, align 8
+  %15 = load %struct.TYPE_10__*, %struct.TYPE_10__** %4, align 8
+  %16 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %15, i32 0, i32 0
+  %17 = load %struct.TYPE_11__*, %struct.TYPE_11__** %16, align 8
+  store %struct.TYPE_11__* %17, %struct.TYPE_11__** %5, align 8
+  %18 = load %struct.TYPE_11__*, %struct.TYPE_11__** %5, align 8
+  %19 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %18, i32 0, i32 0
+  %20 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %19, i32 0, i32 0
+  store %struct.TYPE_9__* %20, %struct.TYPE_9__** %6, align 8
+  %21 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %22 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %21, i32 0, i32 5
+  %23 = load i32*, i32** %22, align 8
+  %24 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %25 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %24, i32 0, i32 0
+  %26 = load i32, i32* %25, align 8
+  %27 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %28 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %27, i32 0, i32 0
+  %29 = load i32, i32* %28, align 8
+  %30 = mul nsw i32 %26, %29
+  %31 = sext i32 %30 to i64
+  %32 = getelementptr inbounds i32, i32* %23, i64 %31
+  store i32* %32, i32** %7, align 8
+  %33 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %34 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %33, i32 0, i32 4
+  %35 = load i32*, i32** %34, align 8
+  %36 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %37 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %36, i32 0, i32 0
+  %38 = load i32, i32* %37, align 8
+  %39 = ashr i32 %38, 1
+  %40 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %41 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %40, i32 0, i32 1
+  %42 = load i32, i32* %41, align 4
+  %43 = mul nsw i32 %39, %42
+  %44 = sext i32 %43 to i64
+  %45 = getelementptr inbounds i32, i32* %35, i64 %44
+  store i32* %45, i32** %8, align 8
+  %46 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %47 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %46, i32 0, i32 3
+  %48 = load i32*, i32** %47, align 8
+  %49 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %50 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %49, i32 0, i32 0
+  %51 = load i32, i32* %50, align 8
+  %52 = ashr i32 %51, 1
+  %53 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %54 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %53, i32 0, i32 2
+  %55 = load i32, i32* %54, align 8
+  %56 = mul nsw i32 %52, %55
+  %57 = sext i32 %56 to i64
+  %58 = getelementptr inbounds i32, i32* %48, i64 %57
+  store i32* %58, i32** %9, align 8
+  %59 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %60 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %59, i32 0, i32 1
+  %61 = load i32, i32* %60, align 4
+  store i32 %61, i32* %10, align 4
+  %62 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %63 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %62, i32 0, i32 2
+  %64 = load i32, i32* %63, align 8
+  store i32 %64, i32* %11, align 4
+  %65 = load i32, i32* %10, align 4
+  %66 = add nsw i32 %65, 1
+  %67 = sdiv i32 %66, 2
+  store i32 %67, i32* %12, align 4
+  %68 = load i32, i32* %11, align 4
+  %69 = add nsw i32 %68, 1
+  %70 = sdiv i32 %69, 2
+  store i32 %70, i32* %13, align 4
+  store i32 0, i32* %14, align 4
+  br label %71
+
+71:                                               ; preds = %96, %2
+  %72 = load i32, i32* %14, align 4
+  %73 = load i32, i32* %11, align 4
+  %74 = icmp slt i32 %72, %73
+  br i1 %74, label %75, label %99
+
+75:                                               ; preds = %71
+  %76 = load i32*, i32** %7, align 8
+  %77 = load i32, i32* %14, align 4
+  %78 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %79 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %78, i32 0, i32 0
+  %80 = load i32, i32* %79, align 8
+  %81 = mul nsw i32 %77, %80
+  %82 = sext i32 %81 to i64
+  %83 = getelementptr inbounds i32, i32* %76, i64 %82
+  %84 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %85 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %84, i32 0, i32 7
+  %86 = load i64, i64* %85, align 8
+  %87 = load i32, i32* %14, align 4
+  %88 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %89 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %88, i32 0, i32 3
+  %90 = load i32, i32* %89, align 4
+  %91 = mul nsw i32 %87, %90
+  %92 = sext i32 %91 to i64
+  %93 = add nsw i64 %86, %92
+  %94 = load i32, i32* %10, align 4
+  %95 = call i32 @memcpy(i32* %83, i64 %93, i32 %94)
+  br label %96
+
+96:                                               ; preds = %75
+  %97 = load i32, i32* %14, align 4
+  %98 = add nsw i32 %97, 1
+  store i32 %98, i32* %14, align 4
+  br label %71
+
+99:                                               ; preds = %71
+  store i32 0, i32* %14, align 4
+  br label %100
+
+100:                                              ; preds = %145, %99
+  %101 = load i32, i32* %14, align 4
+  %102 = load i32, i32* %13, align 4
+  %103 = icmp slt i32 %101, %102
+  br i1 %103, label %104, label %148
+
+104:                                              ; preds = %100
+  %105 = load i32*, i32** %8, align 8
+  %106 = load i32, i32* %14, align 4
+  %107 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %108 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %107, i32 0, i32 1
+  %109 = load i32, i32* %108, align 4
+  %110 = mul nsw i32 %106, %109
+  %111 = sext i32 %110 to i64
+  %112 = getelementptr inbounds i32, i32* %105, i64 %111
+  %113 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %114 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %113, i32 0, i32 6
+  %115 = load i64, i64* %114, align 8
+  %116 = load i32, i32* %14, align 4
+  %117 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %118 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %117, i32 0, i32 4
+  %119 = load i32, i32* %118, align 8
+  %120 = mul nsw i32 %116, %119
+  %121 = sext i32 %120 to i64
+  %122 = add nsw i64 %115, %121
+  %123 = load i32, i32* %12, align 4
+  %124 = call i32 @memcpy(i32* %112, i64 %122, i32 %123)
+  %125 = load i32*, i32** %9, align 8
+  %126 = load i32, i32* %14, align 4
+  %127 = load %struct.TYPE_9__*, %struct.TYPE_9__** %6, align 8
+  %128 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %127, i32 0, i32 2
+  %129 = load i32, i32* %128, align 8
+  %130 = mul nsw i32 %126, %129
+  %131 = sext i32 %130 to i64
+  %132 = getelementptr inbounds i32, i32* %125, i64 %131
+  %133 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %134 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %133, i32 0, i32 5
+  %135 = load i64, i64* %134, align 8
+  %136 = load i32, i32* %14, align 4
+  %137 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %138 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %137, i32 0, i32 4
+  %139 = load i32, i32* %138, align 8
+  %140 = mul nsw i32 %136, %139
+  %141 = sext i32 %140 to i64
+  %142 = add nsw i64 %135, %141
+  %143 = load i32, i32* %12, align 4
+  %144 = call i32 @memcpy(i32* %132, i64 %142, i32 %143)
+  br label %145
+
+145:                                              ; preds = %104
+  %146 = load i32, i32* %14, align 4
+  %147 = add nsw i32 %146, 1
+  store i32 %147, i32* %14, align 4
+  br label %100
+
+148:                                              ; preds = %100
+  %149 = load %struct.TYPE_12__*, %struct.TYPE_12__** %3, align 8
+  %150 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %149, i32 0, i32 2
+  %151 = load i32, i32* %150, align 8
+  ret i32 %151
+}
+
+declare dso_local i32 @memcpy(i32*, i64, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

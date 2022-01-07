@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_data {int hwirq; } ;
-struct combiner_reg {int /*<<< orphan*/  enabled; } ;
+struct combiner_reg {int enabled; } ;
 struct combiner {struct combiner_reg* regs; } ;
 
-/* Variables and functions */
- int REG_SIZE ; 
- int /*<<< orphan*/  clear_bit (int,int /*<<< orphan*/ *) ; 
- struct combiner* irq_data_get_irq_chip_data (struct irq_data*) ; 
+
+ int REG_SIZE ;
+ int clear_bit (int,int *) ;
+ struct combiner* irq_data_get_irq_chip_data (struct irq_data*) ;
 
 __attribute__((used)) static void combiner_irq_chip_mask_irq(struct irq_data *data)
 {
-	struct combiner *combiner = irq_data_get_irq_chip_data(data);
-	struct combiner_reg *reg = combiner->regs + data->hwirq / REG_SIZE;
+ struct combiner *combiner = irq_data_get_irq_chip_data(data);
+ struct combiner_reg *reg = combiner->regs + data->hwirq / REG_SIZE;
 
-	clear_bit(data->hwirq % REG_SIZE, &reg->enabled);
+ clear_bit(data->hwirq % REG_SIZE, &reg->enabled);
 }

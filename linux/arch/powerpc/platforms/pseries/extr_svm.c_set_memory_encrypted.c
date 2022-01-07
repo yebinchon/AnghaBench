@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  PAGE_ALIGNED (unsigned long) ; 
- int /*<<< orphan*/  PHYS_PFN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __pa (unsigned long) ; 
- int /*<<< orphan*/  uv_unshare_page (int /*<<< orphan*/ ,int) ; 
+ int EINVAL ;
+ int PAGE_ALIGNED (unsigned long) ;
+ int PHYS_PFN (int ) ;
+ int __pa (unsigned long) ;
+ int uv_unshare_page (int ,int) ;
 
 int set_memory_encrypted(unsigned long addr, int numpages)
 {
-	if (!PAGE_ALIGNED(addr))
-		return -EINVAL;
+ if (!PAGE_ALIGNED(addr))
+  return -EINVAL;
 
-	uv_unshare_page(PHYS_PFN(__pa(addr)), numpages);
+ uv_unshare_page(PHYS_PFN(__pa(addr)), numpages);
 
-	return 0;
+ return 0;
 }

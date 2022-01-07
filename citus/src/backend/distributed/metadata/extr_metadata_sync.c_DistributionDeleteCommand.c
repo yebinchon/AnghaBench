@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* data; } ;
-typedef  TYPE_1__* StringInfo ;
+typedef TYPE_1__* StringInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* makeStringInfo () ; 
- int /*<<< orphan*/  quote_literal_cstr (char*) ; 
- char* quote_qualified_identifier (char*,char*) ; 
+
+ int appendStringInfo (TYPE_1__*,char*,int ) ;
+ TYPE_1__* makeStringInfo () ;
+ int quote_literal_cstr (char*) ;
+ char* quote_qualified_identifier (char*,char*) ;
 
 char *
 DistributionDeleteCommand(char *schemaName, char *tableName)
 {
-	char *distributedRelationName = NULL;
-	StringInfo deleteDistributionCommand = makeStringInfo();
+ char *distributedRelationName = ((void*)0);
+ StringInfo deleteDistributionCommand = makeStringInfo();
 
-	distributedRelationName = quote_qualified_identifier(schemaName, tableName);
+ distributedRelationName = quote_qualified_identifier(schemaName, tableName);
 
-	appendStringInfo(deleteDistributionCommand,
-					 "SELECT worker_drop_distributed_table(%s)",
-					 quote_literal_cstr(distributedRelationName));
+ appendStringInfo(deleteDistributionCommand,
+      "SELECT worker_drop_distributed_table(%s)",
+      quote_literal_cstr(distributedRelationName));
 
-	return deleteDistributionCommand->data;
+ return deleteDistributionCommand->data;
 }

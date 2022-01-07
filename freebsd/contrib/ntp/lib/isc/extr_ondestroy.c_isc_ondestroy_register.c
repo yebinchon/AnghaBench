@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_task_t ;
-typedef  int /*<<< orphan*/  isc_result_t ;
-struct TYPE_7__ {int /*<<< orphan*/  events; } ;
-typedef  TYPE_1__ isc_ondestroy_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * ev_sender; } ;
-typedef  TYPE_2__ isc_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISC_LIST_APPEND (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISC_R_SUCCESS ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VALID_ONDESTROY (TYPE_1__*) ; 
- int /*<<< orphan*/  ev_link ; 
- int /*<<< orphan*/  isc_task_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int isc_task_t ;
+typedef int isc_result_t ;
+struct TYPE_7__ {int events; } ;
+typedef TYPE_1__ isc_ondestroy_t ;
+struct TYPE_8__ {int * ev_sender; } ;
+typedef TYPE_2__ isc_event_t ;
+
+
+ int ISC_LIST_APPEND (int ,TYPE_2__*,int ) ;
+ int ISC_R_SUCCESS ;
+ int REQUIRE (int ) ;
+ int VALID_ONDESTROY (TYPE_1__*) ;
+ int ev_link ;
+ int isc_task_attach (int *,int **) ;
 
 isc_result_t
 isc_ondestroy_register(isc_ondestroy_t *ondest, isc_task_t *task,
-		       isc_event_t **eventp)
+         isc_event_t **eventp)
 {
-	isc_event_t *theevent;
-	isc_task_t *thetask = NULL;
+ isc_event_t *theevent;
+ isc_task_t *thetask = ((void*)0);
 
-	REQUIRE(VALID_ONDESTROY(ondest));
-	REQUIRE(task != NULL);
-	REQUIRE(eventp != NULL);
+ REQUIRE(VALID_ONDESTROY(ondest));
+ REQUIRE(task != ((void*)0));
+ REQUIRE(eventp != ((void*)0));
 
-	theevent = *eventp;
+ theevent = *eventp;
 
-	REQUIRE(theevent != NULL);
+ REQUIRE(theevent != ((void*)0));
 
-	isc_task_attach(task, &thetask);
+ isc_task_attach(task, &thetask);
 
-	theevent->ev_sender = thetask;
+ theevent->ev_sender = thetask;
 
-	ISC_LIST_APPEND(ondest->events, theevent, ev_link);
+ ISC_LIST_APPEND(ondest->events, theevent, ev_link);
 
-	return (ISC_R_SUCCESS);
+ return (ISC_R_SUCCESS);
 }

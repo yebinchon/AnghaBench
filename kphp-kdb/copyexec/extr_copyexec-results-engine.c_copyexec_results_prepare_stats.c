@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_5__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
+typedef TYPE_1__ stats_buffer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AM_GET_MEMORY_USAGE_SELF ; 
- int /*<<< orphan*/  FullVersionStr ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  alloc_tree_nodes ; 
- int /*<<< orphan*/  binlog_load_time ; 
- int /*<<< orphan*/  binlog_loaded_size ; 
- char* binlogname ; 
- int /*<<< orphan*/  cmd_get ; 
- int /*<<< orphan*/  cmd_stats ; 
- int compute_uncommitted_log_bytes () ; 
- int /*<<< orphan*/  dyn_update_stats () ; 
- int /*<<< orphan*/  free_tree_nodes ; 
- int /*<<< orphan*/  get_memory_usage (long long*,int) ; 
- int /*<<< orphan*/  hosts ; 
- int /*<<< orphan*/  log_first_ts ; 
- int /*<<< orphan*/  log_last_ts ; 
- int /*<<< orphan*/  log_pos ; 
- int /*<<< orphan*/  log_read_until ; 
- int /*<<< orphan*/  log_readto_pos ; 
- int /*<<< orphan*/  max_lru_size ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stats_buff ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  tot_memory_transactions ; 
+
+ int AM_GET_MEMORY_USAGE_SELF ;
+ int FullVersionStr ;
+ int STATS_BUFF_SIZE ;
+ int alloc_tree_nodes ;
+ int binlog_load_time ;
+ int binlog_loaded_size ;
+ char* binlogname ;
+ int cmd_get ;
+ int cmd_stats ;
+ int compute_uncommitted_log_bytes () ;
+ int dyn_update_stats () ;
+ int free_tree_nodes ;
+ int get_memory_usage (long long*,int) ;
+ int hosts ;
+ int log_first_ts ;
+ int log_last_ts ;
+ int log_pos ;
+ int log_read_until ;
+ int log_readto_pos ;
+ int max_lru_size ;
+ int sb_memory (TYPE_1__*,int ) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_printf (TYPE_1__*,char*,int ,int ,int ,int ,int,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int stats_buff ;
+ int strlen (char*) ;
+ int tot_memory_transactions ;
 
 int copyexec_results_prepare_stats (struct connection *c) {
   int log_uncommitted = compute_uncommitted_log_bytes();

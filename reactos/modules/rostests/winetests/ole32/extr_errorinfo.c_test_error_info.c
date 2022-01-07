@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float WCHAR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IErrorInfo ;
-typedef  int /*<<< orphan*/  ICreateErrorInfo ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_WineTest ; 
- scalar_t__ CreateErrorInfo (int /*<<< orphan*/ **) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ GetErrorInfo (int,int /*<<< orphan*/ **) ; 
- scalar_t__ ICreateErrorInfo_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  ICreateErrorInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateErrorInfo_SetDescription (int /*<<< orphan*/ *,float*) ; 
- scalar_t__ ICreateErrorInfo_SetGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateErrorInfo_SetHelpContext (int /*<<< orphan*/ *,int) ; 
- scalar_t__ ICreateErrorInfo_SetHelpFile (int /*<<< orphan*/ *,float*) ; 
- scalar_t__ ICreateErrorInfo_SetSource (int /*<<< orphan*/ *,float*) ; 
- scalar_t__ IErrorInfo_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IErrorInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IErrorInfo ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ SetErrorInfo (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_ole_success (scalar_t__,char*) ; 
+
+
+
+typedef float WCHAR ;
+typedef int IUnknown ;
+typedef int IErrorInfo ;
+typedef int ICreateErrorInfo ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSID_WineTest ;
+ scalar_t__ CreateErrorInfo (int **) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ GetErrorInfo (int,int **) ;
+ scalar_t__ ICreateErrorInfo_QueryInterface (int *,int *,void**) ;
+ int ICreateErrorInfo_Release (int *) ;
+ scalar_t__ ICreateErrorInfo_SetDescription (int *,float*) ;
+ scalar_t__ ICreateErrorInfo_SetGUID (int *,int *) ;
+ scalar_t__ ICreateErrorInfo_SetHelpContext (int *,int) ;
+ scalar_t__ ICreateErrorInfo_SetHelpFile (int *,float*) ;
+ scalar_t__ ICreateErrorInfo_SetSource (int *,float*) ;
+ scalar_t__ IErrorInfo_QueryInterface (int *,int *,void**) ;
+ int IErrorInfo_Release (int *) ;
+ int IID_IErrorInfo ;
+ int IID_IUnknown ;
+ int IUnknown_Release (int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ SetErrorInfo (int,int *) ;
+ int ok (int,char*,...) ;
+ int ok_ole_success (scalar_t__,char*) ;
 
 __attribute__((used)) static void test_error_info(void)
 {
@@ -55,7 +55,7 @@ __attribute__((used)) static void test_error_info(void)
     ok_ole_success(hr, "QI");
     IUnknown_Release(unk);
 
-    hr = ICreateErrorInfo_SetDescription(pCreateErrorInfo, NULL);
+    hr = ICreateErrorInfo_SetDescription(pCreateErrorInfo, ((void*)0));
     ok_ole_success(hr, "ICreateErrorInfo_SetDescription");
 
     hr = ICreateErrorInfo_SetDescription(pCreateErrorInfo, wszDescription);
@@ -67,13 +67,13 @@ __attribute__((used)) static void test_error_info(void)
     hr = ICreateErrorInfo_SetHelpContext(pCreateErrorInfo, 0xdeadbeef);
     ok_ole_success(hr, "ICreateErrorInfo_SetHelpContext");
 
-    hr = ICreateErrorInfo_SetHelpFile(pCreateErrorInfo, NULL);
+    hr = ICreateErrorInfo_SetHelpFile(pCreateErrorInfo, ((void*)0));
     ok_ole_success(hr, "ICreateErrorInfo_SetHelpFile");
 
     hr = ICreateErrorInfo_SetHelpFile(pCreateErrorInfo, wszHelpFile);
     ok_ole_success(hr, "ICreateErrorInfo_SetHelpFile");
 
-    hr = ICreateErrorInfo_SetSource(pCreateErrorInfo, NULL);
+    hr = ICreateErrorInfo_SetSource(pCreateErrorInfo, ((void*)0));
     ok_ole_success(hr, "ICreateErrorInfo_SetSource");
 
     hr = ICreateErrorInfo_SetSource(pCreateErrorInfo, wszSource);
@@ -92,7 +92,7 @@ __attribute__((used)) static void test_error_info(void)
     ok_ole_success(hr, "SetErrorInfo");
 
     IErrorInfo_Release(pErrorInfo);
-    pErrorInfo = NULL;
+    pErrorInfo = ((void*)0);
 
     hr = GetErrorInfo(0, &pErrorInfo);
     ok_ole_success(hr, "GetErrorInfo");
@@ -103,12 +103,12 @@ __attribute__((used)) static void test_error_info(void)
     ok(hr == S_FALSE, "GetErrorInfo should have returned S_FALSE instead of 0x%08x\n", hr);
     ok(!pErrorInfo, "pErrorInfo should be set to NULL\n");
 
-    hr = SetErrorInfo(0, NULL);
+    hr = SetErrorInfo(0, ((void*)0));
     ok_ole_success(hr, "SetErrorInfo");
 
     hr = GetErrorInfo(0xdeadbeef, &pErrorInfo);
     ok(hr == E_INVALIDARG, "GetErrorInfo should have returned E_INVALIDARG instead of 0x%08x\n", hr);
 
-    hr = SetErrorInfo(0xdeadbeef, NULL);
+    hr = SetErrorInfo(0xdeadbeef, ((void*)0));
     ok(hr == E_INVALIDARG, "SetErrorInfo should have returned E_INVALIDARG instead of 0x%08x\n", hr);
 }

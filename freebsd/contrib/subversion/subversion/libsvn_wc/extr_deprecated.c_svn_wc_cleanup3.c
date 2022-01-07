@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc_cleanup4 (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+
+
+ int TRUE ;
+ int * svn_error_trace (int ) ;
+ int svn_wc_cleanup4 (int *,char const*,int ,int ,int ,int ,int ,void*,int *,int *,int *) ;
 
 svn_error_t *
 svn_wc_cleanup3(svn_wc_context_t *wc_ctx,
@@ -30,11 +30,11 @@ svn_wc_cleanup3(svn_wc_context_t *wc_ctx,
   return svn_error_trace(
             svn_wc_cleanup4(wc_ctx,
                             local_abspath,
-                            TRUE /* break_locks */,
-                            TRUE /* fix_recorded_timestamps */,
-                            TRUE /* clear_dav_cache */,
-                            TRUE /* clean_pristines */,
+                            TRUE ,
+                            TRUE ,
+                            TRUE ,
+                            TRUE ,
                             cancel_func, cancel_baton,
-                            NULL, NULL /* notify */,
+                            ((void*)0), ((void*)0) ,
                             scratch_pool));
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int tm_trigger; int /*<<< orphan*/  txpower_tracking; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tm_trigger; int txpower_tracking; } ;
 struct rtl_priv {TYPE_1__ dm; } ;
 struct ieee80211_hw {int dummy; } ;
 
-/* Variables and functions */
- int BIT (int) ; 
- int /*<<< orphan*/  COMP_POWER_TRACKING ; 
- int /*<<< orphan*/  DBG_LOUD ; 
- int /*<<< orphan*/  RF90_PATH_A ; 
- int /*<<< orphan*/  RF_T_METER ; 
- int /*<<< orphan*/  RT_TRACE (struct rtl_priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  rtl8723be_dm_txpower_tracking_callback_thermalmeter (struct ieee80211_hw*) ; 
- struct rtl_priv* rtl_priv (struct ieee80211_hw*) ; 
- int /*<<< orphan*/  rtl_set_rfreg (struct ieee80211_hw*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+ int BIT (int) ;
+ int COMP_POWER_TRACKING ;
+ int DBG_LOUD ;
+ int RF90_PATH_A ;
+ int RF_T_METER ;
+ int RT_TRACE (struct rtl_priv*,int ,int ,char*) ;
+ int rtl8723be_dm_txpower_tracking_callback_thermalmeter (struct ieee80211_hw*) ;
+ struct rtl_priv* rtl_priv (struct ieee80211_hw*) ;
+ int rtl_set_rfreg (struct ieee80211_hw*,int ,int ,int,int) ;
 
 void rtl8723be_dm_check_txpower_tracking(struct ieee80211_hw *hw)
 {
-	struct rtl_priv *rtlpriv = rtl_priv(hw);
+ struct rtl_priv *rtlpriv = rtl_priv(hw);
 
-	if (!rtlpriv->dm.txpower_tracking)
-		return;
+ if (!rtlpriv->dm.txpower_tracking)
+  return;
 
-	if (!rtlpriv->dm.tm_trigger) {
-		rtl_set_rfreg(hw, RF90_PATH_A, RF_T_METER, BIT(17) | BIT(16),
-			      0x03);
-		RT_TRACE(rtlpriv, COMP_POWER_TRACKING, DBG_LOUD,
-			 "Trigger 8723be Thermal Meter!!\n");
-		rtlpriv->dm.tm_trigger = 1;
-		return;
-	} else {
-		RT_TRACE(rtlpriv, COMP_POWER_TRACKING, DBG_LOUD,
-			 "Schedule TxPowerTracking !!\n");
-		rtl8723be_dm_txpower_tracking_callback_thermalmeter(hw);
-		rtlpriv->dm.tm_trigger = 0;
-	}
+ if (!rtlpriv->dm.tm_trigger) {
+  rtl_set_rfreg(hw, RF90_PATH_A, RF_T_METER, BIT(17) | BIT(16),
+         0x03);
+  RT_TRACE(rtlpriv, COMP_POWER_TRACKING, DBG_LOUD,
+    "Trigger 8723be Thermal Meter!!\n");
+  rtlpriv->dm.tm_trigger = 1;
+  return;
+ } else {
+  RT_TRACE(rtlpriv, COMP_POWER_TRACKING, DBG_LOUD,
+    "Schedule TxPowerTracking !!\n");
+  rtl8723be_dm_txpower_tracking_callback_thermalmeter(hw);
+  rtlpriv->dm.tm_trigger = 0;
+ }
 }

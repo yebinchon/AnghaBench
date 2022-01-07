@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct meson_vrtc_data {int /*<<< orphan*/  io_alarm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  writel_relaxed (unsigned long,int /*<<< orphan*/ ) ; 
+
+
+
+struct meson_vrtc_data {int io_alarm; } ;
+
+
+ int writel_relaxed (unsigned long,int ) ;
 
 __attribute__((used)) static void meson_vrtc_set_wakeup_time(struct meson_vrtc_data *vrtc,
-				       unsigned long time)
+           unsigned long time)
 {
-	writel_relaxed(time, vrtc->io_alarm);
+ writel_relaxed(time, vrtc->io_alarm);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct RedisModule {int options; int /*<<< orphan*/  types; } ;
-typedef  int /*<<< orphan*/  dictIterator ;
-typedef  int /*<<< orphan*/  dictEntry ;
 
-/* Variables and functions */
- int REDISMODULE_OPTIONS_HANDLE_IO_ERRORS ; 
- int /*<<< orphan*/ * dictGetIterator (int /*<<< orphan*/ ) ; 
- struct RedisModule* dictGetVal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictReleaseIterator (int /*<<< orphan*/ *) ; 
- scalar_t__ listLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  modules ; 
+
+
+
+struct RedisModule {int options; int types; } ;
+typedef int dictIterator ;
+typedef int dictEntry ;
+
+
+ int REDISMODULE_OPTIONS_HANDLE_IO_ERRORS ;
+ int * dictGetIterator (int ) ;
+ struct RedisModule* dictGetVal (int *) ;
+ int * dictNext (int *) ;
+ int dictReleaseIterator (int *) ;
+ scalar_t__ listLength (int ) ;
+ int modules ;
 
 int moduleAllDatatypesHandleErrors() {
     dictIterator *di = dictGetIterator(modules);
     dictEntry *de;
 
-    while ((de = dictNext(di)) != NULL) {
+    while ((de = dictNext(di)) != ((void*)0)) {
         struct RedisModule *module = dictGetVal(de);
         if (listLength(module->types) &&
             !(module->options & REDISMODULE_OPTIONS_HANDLE_IO_ERRORS))

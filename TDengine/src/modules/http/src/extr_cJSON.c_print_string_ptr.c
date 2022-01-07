@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  printbuffer ;
-typedef  int cJSON_bool ;
 
-/* Variables and functions */
- unsigned char* ensure (int /*<<< orphan*/ * const,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const* const,size_t) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned char const) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int printbuffer ;
+typedef int cJSON_bool ;
+
+
+ unsigned char* ensure (int * const,int) ;
+ int memcpy (unsigned char*,unsigned char const* const,size_t) ;
+ int sprintf (char*,char*,unsigned char const) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static cJSON_bool print_string_ptr(const unsigned char * const input, printbuffer * const output_buffer)
 {
-    const unsigned char *input_pointer = NULL;
-    unsigned char *output = NULL;
-    unsigned char *output_pointer = NULL;
+    const unsigned char *input_pointer = ((void*)0);
+    unsigned char *output = ((void*)0);
+    unsigned char *output_pointer = ((void*)0);
     size_t output_length = 0;
-    /* numbers of additional characters needed for escaping */
+
     size_t escape_characters = 0;
 
-    if (output_buffer == NULL)
+    if (output_buffer == ((void*)0))
     {
-        return false;
+        return 0;
     }
 
-    /* empty string */
-    if (input == NULL)
+
+    if (input == ((void*)0))
     {
         output = ensure(output_buffer, sizeof("\"\""));
-        if (output == NULL)
+        if (output == ((void*)0))
         {
-            return false;
+            return 0;
         }
         strcpy((char*)output, "\"\"");
 
-        return true;
+        return 1;
     }
 
-    /* set "flag" to 1 if something needs to be escaped */
+
     for (input_pointer = input; *input_pointer; input_pointer++)
     {
         switch (*input_pointer)
@@ -58,13 +58,13 @@ __attribute__((used)) static cJSON_bool print_string_ptr(const unsigned char * c
             case '\n':
             case '\r':
             case '\t':
-                /* one character escape sequence */
+
                 escape_characters++;
                 break;
             default:
                 if (*input_pointer < 32)
                 {
-                    /* UTF-16 escape sequence uXXXX */
+
                     escape_characters += 5;
                 }
                 break;
@@ -73,12 +73,12 @@ __attribute__((used)) static cJSON_bool print_string_ptr(const unsigned char * c
     output_length = (size_t)(input_pointer - input) + escape_characters;
 
     output = ensure(output_buffer, output_length + sizeof("\"\""));
-    if (output == NULL)
+    if (output == ((void*)0))
     {
-        return false;
+        return 0;
     }
 
-    /* no characters have to be escaped */
+
     if (escape_characters == 0)
     {
         output[0] = '\"';
@@ -86,22 +86,22 @@ __attribute__((used)) static cJSON_bool print_string_ptr(const unsigned char * c
         output[output_length + 1] = '\"';
         output[output_length + 2] = '\0';
 
-        return true;
+        return 1;
     }
 
     output[0] = '\"';
     output_pointer = output + 1;
-    /* copy the string */
+
     for (input_pointer = input; *input_pointer != '\0'; (void)input_pointer++, output_pointer++)
     {
         if ((*input_pointer > 31) && (*input_pointer != '\"') && (*input_pointer != '\\'))
         {
-            /* normal character, copy */
+
             *output_pointer = *input_pointer;
         }
         else
         {
-            /* character needs to be escaped */
+
             *output_pointer++ = '\\';
             switch (*input_pointer)
             {
@@ -127,7 +127,7 @@ __attribute__((used)) static cJSON_bool print_string_ptr(const unsigned char * c
                     *output_pointer = 't';
                     break;
                 default:
-                    /* escape and print as unicode codepoint */
+
                     sprintf((char*)output_pointer, "u%04x", *input_pointer);
                     output_pointer += 4;
                     break;
@@ -137,5 +137,5 @@ __attribute__((used)) static cJSON_bool print_string_ptr(const unsigned char * c
     output[output_length + 1] = '\"';
     output[output_length + 2] = '\0';
 
-    return true;
+    return 1;
 }

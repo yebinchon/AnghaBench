@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct nfs_context {int dummy; } ;
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 struct TYPE_5__ {void* p_nfsfh; struct nfs_context* p_nfs; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- scalar_t__ NFS_CHECK_STATUS (TYPE_1__*,int,void*) ; 
- int /*<<< orphan*/  VLC_UNUSED (struct nfs_context*) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ NFS_CHECK_STATUS (TYPE_1__*,int,void*) ;
+ int VLC_UNUSED (struct nfs_context*) ;
+ int assert (int) ;
 
 __attribute__((used)) static void
 nfs_open_cb(int i_status, struct nfs_context *p_nfs, void *p_data,

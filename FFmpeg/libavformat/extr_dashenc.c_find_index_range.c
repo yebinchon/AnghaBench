@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_5__ {int (* io_open ) (TYPE_1__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int AV_RB32 (int /*<<< orphan*/ *) ; 
- scalar_t__ AV_RL32 (int /*<<< orphan*/ *) ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int stub1 (TYPE_1__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+struct TYPE_5__ {int (* io_open ) (TYPE_1__*,int **,char const*,int ,int *) ;} ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int AVIO_FLAG_READ ;
+ int AV_RB32 (int *) ;
+ scalar_t__ AV_RL32 (int *) ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ int SEEK_SET ;
+ int avio_read (int *,int *,int) ;
+ int avio_seek (int *,int ,int ) ;
+ int ff_format_io_close (TYPE_1__*,int **) ;
+ int stub1 (TYPE_1__*,int **,char const*,int ,int *) ;
 
 __attribute__((used)) static void find_index_range(AVFormatContext *s, const char *full_path,
                              int64_t pos, int *index_length)
@@ -35,7 +35,7 @@ __attribute__((used)) static void find_index_range(AVFormatContext *s, const cha
     AVIOContext *pb;
     int ret;
 
-    ret = s->io_open(s, &pb, full_path, AVIO_FLAG_READ, NULL);
+    ret = s->io_open(s, &pb, full_path, AVIO_FLAG_READ, ((void*)0));
     if (ret < 0)
         return;
     if (avio_seek(pb, pos, SEEK_SET) != pos) {

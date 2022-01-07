@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ucs4_t ;
-typedef  scalar_t__ state_t ;
-typedef  TYPE_1__* conv_t ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ucs4_t ;
+typedef scalar_t__ state_t ;
+typedef TYPE_1__* conv_t ;
 struct TYPE_7__ {scalar_t__ ostate; } ;
 
-/* Variables and functions */
- unsigned char ESC ; 
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
- scalar_t__ STATE_ASCII ; 
- scalar_t__ STATE_JISX0201ROMAN ; 
- scalar_t__ STATE_JISX0208 ; 
- scalar_t__ STATE_JISX0212 ; 
- int /*<<< orphan*/  abort () ; 
- int ascii_wctomb (TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int jisx0201_wctomb (TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int jisx0208_wctomb (TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int jisx0212_wctomb (TYPE_1__*,unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+ unsigned char ESC ;
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
+ scalar_t__ STATE_ASCII ;
+ scalar_t__ STATE_JISX0201ROMAN ;
+ scalar_t__ STATE_JISX0208 ;
+ scalar_t__ STATE_JISX0212 ;
+ int abort () ;
+ int ascii_wctomb (TYPE_1__*,unsigned char*,int ,int) ;
+ int jisx0201_wctomb (TYPE_1__*,unsigned char*,int ,int) ;
+ int jisx0208_wctomb (TYPE_1__*,unsigned char*,int ,int) ;
+ int jisx0212_wctomb (TYPE_1__*,unsigned char*,int ,int) ;
 
 __attribute__((used)) static int
 iso2022_jp1_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
@@ -37,7 +37,7 @@ iso2022_jp1_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
   unsigned char buf[2];
   int ret;
 
-  /* Try ASCII. */
+
   ret = ascii_wctomb(conv,buf,wc,1);
   if (ret != RET_ILUNI) {
     if (ret != 1) abort();
@@ -58,7 +58,7 @@ iso2022_jp1_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     }
   }
 
-  /* Try JIS X 0201-1976 Roman. */
+
   ret = jisx0201_wctomb(conv,buf,wc,1);
   if (ret != RET_ILUNI) {
     if (ret != 1) abort();
@@ -79,7 +79,7 @@ iso2022_jp1_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     }
   }
 
-  /* Try JIS X 0208-1990 in place of JIS X 0208-1978 and JIS X 0208-1983. */
+
   ret = jisx0208_wctomb(conv,buf,wc,2);
   if (ret != RET_ILUNI) {
     if (ret != 2) abort();
@@ -101,7 +101,7 @@ iso2022_jp1_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
     }
   }
 
-  /* Try JIS X 0212-1990. */
+
   ret = jisx0212_wctomb(conv,buf,wc,2);
   if (ret != RET_ILUNI) {
     if (ret != 2) abort();

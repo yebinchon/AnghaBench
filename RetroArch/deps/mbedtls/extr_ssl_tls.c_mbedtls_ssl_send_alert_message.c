@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int out_msglen; unsigned char* out_msg; int /*<<< orphan*/  out_msgtype; int /*<<< orphan*/ * conf; } ;
-typedef  TYPE_1__ mbedtls_ssl_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_SSL_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_MSG (int,char*) ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_RET (int,char*,int) ; 
- int /*<<< orphan*/  MBEDTLS_SSL_MSG_ALERT ; 
- int mbedtls_ssl_write_record (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int out_msglen; unsigned char* out_msg; int out_msgtype; int * conf; } ;
+typedef TYPE_1__ mbedtls_ssl_context ;
+
+
+ int MBEDTLS_ERR_SSL_BAD_INPUT_DATA ;
+ int MBEDTLS_SSL_DEBUG_MSG (int,char*) ;
+ int MBEDTLS_SSL_DEBUG_RET (int,char*,int) ;
+ int MBEDTLS_SSL_MSG_ALERT ;
+ int mbedtls_ssl_write_record (TYPE_1__*) ;
 
 int mbedtls_ssl_send_alert_message( mbedtls_ssl_context *ssl,
                             unsigned char level,
@@ -27,7 +27,7 @@ int mbedtls_ssl_send_alert_message( mbedtls_ssl_context *ssl,
 {
     int ret;
 
-    if( ssl == NULL || ssl->conf == NULL )
+    if( ssl == ((void*)0) || ssl->conf == ((void*)0) )
         return( MBEDTLS_ERR_SSL_BAD_INPUT_DATA );
 
     MBEDTLS_SSL_DEBUG_MSG( 2, ( "=> send alert message" ) );

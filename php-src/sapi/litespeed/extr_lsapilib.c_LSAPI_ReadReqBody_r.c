@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ off_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ off_t ;
 struct TYPE_3__ {int m_fd; scalar_t__ m_reqBodyLen; scalar_t__ m_reqBodyRead; scalar_t__ m_bufRead; scalar_t__ m_bufProcessed; scalar_t__ m_pReqBuf; } ;
-typedef  TYPE_1__ LSAPI_Request ;
+typedef TYPE_1__ LSAPI_Request ;
 
-/* Variables and functions */
- scalar_t__ lsapi_read (int,char*,size_t) ; 
- int /*<<< orphan*/  memmove (char*,scalar_t__,scalar_t__) ; 
+
+ scalar_t__ lsapi_read (int,char*,size_t) ;
+ int memmove (char*,scalar_t__,scalar_t__) ;
 
 ssize_t LSAPI_ReadReqBody_r( LSAPI_Request * pReq, char * pBuf, size_t bufLen )
 {
     ssize_t len;
     off_t total;
-    /* char *pOldBuf = pBuf; */
+
     if (!pReq || pReq->m_fd == -1 || !pBuf || (ssize_t)bufLen < 0)
         return -1;
 

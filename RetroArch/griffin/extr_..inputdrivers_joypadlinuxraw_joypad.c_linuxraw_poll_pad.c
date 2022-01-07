@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct linuxraw_joypad {int /*<<< orphan*/ * axes; int /*<<< orphan*/  buttons; int /*<<< orphan*/  fd; } ;
-struct js_event {unsigned int type; size_t number; int /*<<< orphan*/  value; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  event ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT32_CLEAR (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  BIT32_SET (int /*<<< orphan*/ ,size_t) ; 
-#define  JS_EVENT_AXIS 129 
-#define  JS_EVENT_BUTTON 128 
- unsigned int JS_EVENT_INIT ; 
- size_t NUM_AXES ; 
- size_t NUM_BUTTONS ; 
- scalar_t__ read (int /*<<< orphan*/ ,struct js_event*,int) ; 
+
+
+
+struct linuxraw_joypad {int * axes; int buttons; int fd; } ;
+struct js_event {unsigned int type; size_t number; int value; } ;
+typedef scalar_t__ ssize_t ;
+typedef int event ;
+
+
+ int BIT32_CLEAR (int ,size_t) ;
+ int BIT32_SET (int ,size_t) ;
+
+
+ unsigned int JS_EVENT_INIT ;
+ size_t NUM_AXES ;
+ size_t NUM_BUTTONS ;
+ scalar_t__ read (int ,struct js_event*,int) ;
 
 __attribute__((used)) static void linuxraw_poll_pad(struct linuxraw_joypad *pad)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void linuxraw_poll_pad(struct linuxraw_joypad *pad)
 
       switch (type)
       {
-         case JS_EVENT_BUTTON:
+         case 128:
             if (event.number < NUM_BUTTONS)
             {
                if (event.value)
@@ -45,7 +45,7 @@ __attribute__((used)) static void linuxraw_poll_pad(struct linuxraw_joypad *pad)
             }
             break;
 
-         case JS_EVENT_AXIS:
+         case 129:
             if (event.number < NUM_AXES)
                pad->axes[event.number] = event.value;
             break;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  serverMutex; int /*<<< orphan*/  pSessionHash; } ;
-struct TYPE_5__ {int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ HttpSession ;
-typedef  TYPE_2__ HttpServer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  httpResetSession (char*) ; 
- int /*<<< orphan*/  httpSessionExpired ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taosDeleteStrHashNode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ taosVisitStrHashWithFp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int serverMutex; int pSessionHash; } ;
+struct TYPE_5__ {int id; } ;
+typedef TYPE_1__ HttpSession ;
+typedef TYPE_2__ HttpServer ;
+
+
+ int httpResetSession (char*) ;
+ int httpSessionExpired ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int taosDeleteStrHashNode (int ,int ,TYPE_1__*) ;
+ scalar_t__ taosVisitStrHashWithFp (int ,int ) ;
 
 void httpRemoveExpireSessions(HttpServer *pServer) {
   int expiredNum = 0;
@@ -31,7 +31,7 @@ void httpRemoveExpireSessions(HttpServer *pServer) {
     pthread_mutex_lock(&pServer->serverMutex);
 
     HttpSession *pSession = (HttpSession *)taosVisitStrHashWithFp(pServer->pSessionHash, httpSessionExpired);
-    if (pSession == NULL) {
+    if (pSession == ((void*)0)) {
       pthread_mutex_unlock(&pServer->serverMutex);
       break;
     }
@@ -44,5 +44,5 @@ void httpRemoveExpireSessions(HttpServer *pServer) {
     if (++expiredNum > 10) {
       break;
     }
-  } while (true);
+  } while (1);
 }

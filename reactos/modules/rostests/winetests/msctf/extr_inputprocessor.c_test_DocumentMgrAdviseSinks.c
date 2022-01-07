@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITfSource ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_ITfSource ; 
- int /*<<< orphan*/  IID_ITfTransitoryExtensionSink ; 
- scalar_t__ ITfDocumentMgr_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ ITfSource_AdviseSink (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  ITfSource_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TfTransitoryExtensionSink ; 
- scalar_t__ dmSinkCookie ; 
- int /*<<< orphan*/  g_dm ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int IUnknown ;
+typedef int ITfSource ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IID_ITfSource ;
+ int IID_ITfTransitoryExtensionSink ;
+ scalar_t__ ITfDocumentMgr_QueryInterface (int ,int *,void**) ;
+ scalar_t__ ITfSource_AdviseSink (int *,int *,int *,scalar_t__*) ;
+ int ITfSource_Release (int *) ;
+ scalar_t__ S_OK ;
+ int TfTransitoryExtensionSink ;
+ scalar_t__ dmSinkCookie ;
+ int g_dm ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_DocumentMgrAdviseSinks(void)
 {

@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  APPL_LOG (char*) ; 
- int /*<<< orphan*/  JOINING_MODE_TIMER_STOP_RESET ; 
- int /*<<< orphan*/  LEDS_OFF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LEDS_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED_ONE ; 
- int /*<<< orphan*/  LED_TWO ; 
- int /*<<< orphan*/  TCP_STATE_REQUEST_CONNECTION ; 
- int /*<<< orphan*/  commissioning_joining_mode_timer_ctrl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_tcp_state ; 
- int /*<<< orphan*/  sys_check_timeouts () ; 
+ int APPL_LOG (char*) ;
+ int JOINING_MODE_TIMER_STOP_RESET ;
+ int LEDS_OFF (int ) ;
+ int LEDS_ON (int ) ;
+ int LED_ONE ;
+ int LED_TWO ;
+ int TCP_STATE_REQUEST_CONNECTION ;
+ int commissioning_joining_mode_timer_ctrl (int ) ;
+ int m_tcp_state ;
+ int sys_check_timeouts () ;
 
 void nrf_driver_interface_up(void)
 {
-#ifdef COMMISSIONING_ENABLED
-  commissioning_joining_mode_timer_ctrl(JOINING_MODE_TIMER_STOP_RESET);
-#endif // COMMISSIONING_ENABLED
+
+
+
 
   APPL_LOG ("[APPL]: IPv6 interface up.\r\n");
 

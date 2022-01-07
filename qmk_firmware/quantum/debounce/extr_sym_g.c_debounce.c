@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  matrix_row_t ;
 
-/* Variables and functions */
- scalar_t__ DEBOUNCE ; 
- int debouncing ; 
- int /*<<< orphan*/  debouncing_time ; 
- scalar_t__ timer_elapsed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read () ; 
 
-void            debounce(matrix_row_t raw[], matrix_row_t cooked[], uint8_t num_rows, bool changed) {
+
+
+typedef int uint8_t ;
+typedef int matrix_row_t ;
+
+
+ scalar_t__ DEBOUNCE ;
+ int debouncing ;
+ int debouncing_time ;
+ scalar_t__ timer_elapsed (int ) ;
+ int timer_read () ;
+
+void debounce(matrix_row_t raw[], matrix_row_t cooked[], uint8_t num_rows, bool changed) {
     if (changed) {
-        debouncing      = true;
+        debouncing = 1;
         debouncing_time = timer_read();
     }
 
@@ -30,6 +30,6 @@ void            debounce(matrix_row_t raw[], matrix_row_t cooked[], uint8_t num_
         for (int i = 0; i < num_rows; i++) {
             cooked[i] = raw[i];
         }
-        debouncing = false;
+        debouncing = 0;
     }
 }

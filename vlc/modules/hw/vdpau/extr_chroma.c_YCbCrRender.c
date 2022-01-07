@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  filter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * Render (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * VideoImport (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int picture_t ;
+typedef int filter_t ;
+
+
+ int * Render (int *,int *,int) ;
+ int * VideoImport (int *,int *) ;
 
 __attribute__((used)) static picture_t *YCbCrRender(filter_t *filter, picture_t *src)
 {
     src = VideoImport(filter, src);
-    return (src != NULL) ? Render(filter, src, true) : NULL;
+    return (src != ((void*)0)) ? Render(filter, src, 1) : ((void*)0);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_6__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_6__ {int length; int data; } ;
 struct TYPE_7__ {int send_interval; int recv_timeout; TYPE_1__ data_to_send; } ;
-typedef  TYPE_2__ nn_options_t ;
-typedef  int int64_t ;
+typedef TYPE_2__ nn_options_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EFSM ; 
- scalar_t__ ETIMEDOUT ; 
- int /*<<< orphan*/  NN_MSG ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  nn_assert_errno (int,char*) ; 
- int nn_clock_ms () ; 
- int /*<<< orphan*/  nn_freemsg (void*) ; 
- int /*<<< orphan*/  nn_print_message (TYPE_2__*,void*,int) ; 
- int nn_recv (int,void**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_recv_loop (TYPE_2__*,int) ; 
- int nn_send (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_set_recv_timeout (int,int) ; 
- int /*<<< orphan*/  nn_sleep (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EFSM ;
+ scalar_t__ ETIMEDOUT ;
+ int NN_MSG ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*) ;
+ int nn_assert_errno (int,char*) ;
+ int nn_clock_ms () ;
+ int nn_freemsg (void*) ;
+ int nn_print_message (TYPE_2__*,void*,int) ;
+ int nn_recv (int,void**,int ,int ) ;
+ int nn_recv_loop (TYPE_2__*,int) ;
+ int nn_send (int,int ,int ,int ) ;
+ int nn_set_recv_timeout (int,int) ;
+ int nn_sleep (int) ;
+ int stderr ;
 
 void nn_rw_loop (nn_options_t *options, int sock)
 {
@@ -56,7 +56,7 @@ void nn_rw_loop (nn_options_t *options, int sock)
         } else {
             nn_assert_errno (rc >= 0, "Can't send");
         }
-        if (options->send_interval < 0) {  /*  Never send any more  */
+        if (options->send_interval < 0) {
             nn_recv_loop (options, sock);
             return;
         }

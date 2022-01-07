@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
-struct insn_label_list {int /*<<< orphan*/ * label; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int symbolS ;
+struct insn_label_list {int * label; } ;
 struct TYPE_3__ {struct insn_label_list* label_list; } ;
-typedef  TYPE_1__ segment_info_type ;
+typedef TYPE_1__ segment_info_type ;
 
-/* Variables and functions */
- scalar_t__ auto_align ; 
- int /*<<< orphan*/  float_cons (int) ; 
- int /*<<< orphan*/  mips_align (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mips_clear_insn_labels () ; 
- int /*<<< orphan*/  mips_emit_delays () ; 
- int /*<<< orphan*/  now_seg ; 
- TYPE_1__* seg_info (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ auto_align ;
+ int float_cons (int) ;
+ int mips_align (int,int ,int *) ;
+ int mips_clear_insn_labels () ;
+ int mips_emit_delays () ;
+ int now_seg ;
+ TYPE_1__* seg_info (int ) ;
 
 __attribute__((used)) static void
 s_float_cons (int type)
@@ -32,16 +32,16 @@ s_float_cons (int type)
   struct insn_label_list *l = si->label_list;
   symbolS *label;
 
-  label = l != NULL ? l->label : NULL;
+  label = l != ((void*)0) ? l->label : ((void*)0);
 
   mips_emit_delays ();
 
   if (auto_align)
     {
       if (type == 'd')
-	mips_align (3, 0, label);
+ mips_align (3, 0, label);
       else
-	mips_align (2, 0, label);
+ mips_align (2, 0, label);
     }
 
   mips_clear_insn_labels ();

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int BN_bn2bin (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int BN_hex2bn (int /*<<< orphan*/ **,char const*) ; 
- int BN_num_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int BN_bn2bin (int *,unsigned char*) ;
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,char const*) ;
+ int BN_num_bytes (int *) ;
+ int bio_err ;
 
 __attribute__((used)) static int psk_key2bn(const char *pskkey, unsigned char *psk,
                       unsigned int max_psk_len)
 {
     int ret;
-    BIGNUM *bn = NULL;
+    BIGNUM *bn = ((void*)0);
 
     ret = BN_hex2bn(&bn, pskkey);
     if (!ret) {

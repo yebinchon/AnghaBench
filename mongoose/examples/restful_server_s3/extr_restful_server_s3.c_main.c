@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mg_mgr {char* hexdump_file; } ;
 struct mg_connection {int dummy; } ;
 struct TYPE_2__ {char* document_root; char* enable_directory_listing; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ev_handler ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- struct mg_connection* mg_bind (struct mg_mgr*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mg_mgr_free (struct mg_mgr*) ; 
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mgr_poll (struct mg_mgr*,int) ; 
- int /*<<< orphan*/  mg_set_protocol_http_websocket (struct mg_connection*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* s_access_key_id ; 
- char* s_http_port ; 
- TYPE_1__ s_http_server_opts ; 
- char* s_secret_access_key ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strrchr (char*,char) ; 
+
+ int ev_handler ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ struct mg_connection* mg_bind (struct mg_mgr*,char*,int ) ;
+ int mg_mgr_free (struct mg_mgr*) ;
+ int mg_mgr_init (struct mg_mgr*,int *) ;
+ int mg_mgr_poll (struct mg_mgr*,int) ;
+ int mg_set_protocol_http_websocket (struct mg_connection*) ;
+ int printf (char*,char*) ;
+ char* s_access_key_id ;
+ char* s_http_port ;
+ TYPE_1__ s_http_server_opts ;
+ char* s_secret_access_key ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strrchr (char*,char) ;
 
 int main(int argc, char *argv[]) {
   struct mg_mgr mgr;
@@ -39,20 +39,20 @@ int main(int argc, char *argv[]) {
   int i;
   char *cp;
 
-  mg_mgr_init(&mgr, NULL);
+  mg_mgr_init(&mgr, ((void*)0));
   nc = mg_bind(&mgr, s_http_port, ev_handler);
   mg_set_protocol_http_websocket(nc);
   s_http_server_opts.document_root = ".";
   s_http_server_opts.enable_directory_listing = "yes";
 
-  /* Use current binary directory as document root */
-  if (argc > 0 && ((cp = strrchr(argv[0], '/')) != NULL ||
-                   (cp = strrchr(argv[0], '/')) != NULL)) {
+
+  if (argc > 0 && ((cp = strrchr(argv[0], '/')) != ((void*)0) ||
+                   (cp = strrchr(argv[0], '/')) != ((void*)0))) {
     *cp = '\0';
     s_http_server_opts.document_root = argv[0];
   }
 
-  /* Process command line options to customize HTTP server */
+
   for (i = 1; i < argc; i++) {
     if (strcmp(argv[i], "-D") == 0 && i + 1 < argc) {
       mgr.hexdump_file = argv[++i];
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if (s_access_key_id == NULL || s_secret_access_key == NULL) {
+  if (s_access_key_id == ((void*)0) || s_secret_access_key == ((void*)0)) {
     fprintf(stderr,
             "Usage: %s -a access_key_id -s s_secret_access_key "
             "[-p port] [-D hexdump_file]\n",

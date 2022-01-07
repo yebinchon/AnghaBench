@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  realname ;
-typedef  int /*<<< orphan*/  note ;
-typedef  int /*<<< orphan*/  USERGROUP ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int realname ;
+typedef int note ;
+typedef int USERGROUP ;
 struct TYPE_8__ {char* Name; } ;
-typedef  int /*<<< orphan*/  TRAFFIC ;
-typedef  int /*<<< orphan*/  POLICY ;
-typedef  int /*<<< orphan*/  HUB ;
-typedef  TYPE_1__ FOLDER ;
+typedef int TRAFFIC ;
+typedef int POLICY ;
+typedef int HUB ;
+typedef TYPE_1__ FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AcAddGroup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcUnlock (int /*<<< orphan*/ *) ; 
- TYPE_1__* CfgGetFolder (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  CfgGetUniStr (TYPE_1__*,char*,int /*<<< orphan*/ *,int) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * NewGroup (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseGroup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetGroupPolicy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetGroupTraffic (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadPolicyCfg (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  SiLoadTraffic (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
+
+ int AcAddGroup (int *,int *) ;
+ int AcLock (int *) ;
+ int AcUnlock (int *) ;
+ TYPE_1__* CfgGetFolder (TYPE_1__*,char*) ;
+ int CfgGetUniStr (TYPE_1__*,char*,int *,int) ;
+ int MAX_SIZE ;
+ int * NewGroup (char*,int *,int *) ;
+ int ReleaseGroup (int *) ;
+ int SetGroupPolicy (int *,int *) ;
+ int SetGroupTraffic (int *,int *) ;
+ int SiLoadPolicyCfg (int *,TYPE_1__*) ;
+ int SiLoadTraffic (TYPE_1__*,char*,int *) ;
 
 void SiLoadGroupCfg(HUB *h, FOLDER *f)
 {
-	wchar_t realname[MAX_SIZE];
-	wchar_t note[MAX_SIZE];
-	char *name;
-	FOLDER *pf;
-	POLICY p;
-	TRAFFIC t;
-	USERGROUP *g;
-	// Validate arguments
-	if (h == NULL || f == NULL)
-	{
-		return;
-	}
+ wchar_t realname[MAX_SIZE];
+ wchar_t note[MAX_SIZE];
+ char *name;
+ FOLDER *pf;
+ POLICY p;
+ TRAFFIC t;
+ USERGROUP *g;
 
-	name = f->Name;
+ if (h == ((void*)0) || f == ((void*)0))
+ {
+  return;
+ }
 
-	CfgGetUniStr(f, "RealName", realname, sizeof(realname));
-	CfgGetUniStr(f, "Note", note, sizeof(note));
+ name = f->Name;
 
-	pf = CfgGetFolder(f, "Policy");
-	if (pf != NULL)
-	{
-		SiLoadPolicyCfg(&p, pf);
-	}
+ CfgGetUniStr(f, "RealName", realname, sizeof(realname));
+ CfgGetUniStr(f, "Note", note, sizeof(note));
 
-	SiLoadTraffic(f, "Traffic", &t);
+ pf = CfgGetFolder(f, "Policy");
+ if (pf != ((void*)0))
+ {
+  SiLoadPolicyCfg(&p, pf);
+ }
 
-	g = NewGroup(name, realname, note);
-	if (g == NULL)
-	{
-		return;
-	}
+ SiLoadTraffic(f, "Traffic", &t);
 
-	if (pf != NULL)
-	{
-		SetGroupPolicy(g, &p);
-	}
+ g = NewGroup(name, realname, note);
+ if (g == ((void*)0))
+ {
+  return;
+ }
 
-	SetGroupTraffic(g, &t);
+ if (pf != ((void*)0))
+ {
+  SetGroupPolicy(g, &p);
+ }
 
-	AcLock(h);
-	{
-		AcAddGroup(h, g);
-	}
-	AcUnlock(h);
+ SetGroupTraffic(g, &t);
 
-	ReleaseGroup(g);
+ AcLock(h);
+ {
+  AcAddGroup(h, g);
+ }
+ AcUnlock(h);
+
+ ReleaseGroup(g);
 }

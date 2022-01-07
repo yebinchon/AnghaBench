@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_41__   TYPE_8__ ;
-typedef  struct TYPE_40__   TYPE_7__ ;
-typedef  struct TYPE_39__   TYPE_6__ ;
-typedef  struct TYPE_38__   TYPE_5__ ;
-typedef  struct TYPE_37__   TYPE_4__ ;
-typedef  struct TYPE_36__   TYPE_3__ ;
-typedef  struct TYPE_35__   TYPE_2__ ;
-typedef  struct TYPE_34__   TYPE_1__ ;
-typedef  struct TYPE_33__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_41__ TYPE_8__ ;
+typedef struct TYPE_40__ TYPE_7__ ;
+typedef struct TYPE_39__ TYPE_6__ ;
+typedef struct TYPE_38__ TYPE_5__ ;
+typedef struct TYPE_37__ TYPE_4__ ;
+typedef struct TYPE_36__ TYPE_3__ ;
+typedef struct TYPE_35__ TYPE_2__ ;
+typedef struct TYPE_34__ TYPE_1__ ;
+typedef struct TYPE_33__ TYPE_13__ ;
+
+
 struct TYPE_41__ {int nOffset; TYPE_13__* pRun; TYPE_7__* pPara; } ;
-struct TYPE_34__ {int nCharOfs; int nFlags; int /*<<< orphan*/  fmt; TYPE_7__* prev_para; } ;
+struct TYPE_34__ {int nCharOfs; int nFlags; int fmt; TYPE_7__* prev_para; } ;
 struct TYPE_35__ {TYPE_1__ para; } ;
 struct TYPE_40__ {TYPE_2__ member; } ;
-struct TYPE_39__ {int nCharOfs; int len; int nFlags; TYPE_3__* para; int /*<<< orphan*/  style; } ;
-struct TYPE_38__ {int nCursors; TYPE_8__* pCursors; int /*<<< orphan*/  bEmulateVersion10; } ;
+struct TYPE_39__ {int nCharOfs; int len; int nFlags; TYPE_3__* para; int style; } ;
+struct TYPE_38__ {int nCursors; TYPE_8__* pCursors; int bEmulateVersion10; } ;
 struct TYPE_37__ {TYPE_6__ run; } ;
-struct TYPE_36__ {int /*<<< orphan*/  text; } ;
+struct TYPE_36__ {int text; } ;
 struct TYPE_33__ {scalar_t__ type; TYPE_4__ member; } ;
-typedef  TYPE_5__ ME_TextEditor ;
-typedef  TYPE_6__ ME_Run ;
-typedef  TYPE_7__ ME_DisplayItem ;
-typedef  TYPE_8__ ME_Cursor ;
-typedef  int BOOL ;
+typedef TYPE_5__ ME_TextEditor ;
+typedef TYPE_6__ ME_Run ;
+typedef TYPE_7__ ME_DisplayItem ;
+typedef TYPE_8__ ME_Cursor ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int MEPF_ROWSTART ; 
- int MERF_ENDPARA ; 
- int /*<<< orphan*/  ME_CheckCharOffsets (TYPE_5__*) ; 
- int /*<<< orphan*/  ME_CursorFromCharOfs (TYPE_5__*,int,TYPE_8__*) ; 
- int /*<<< orphan*/  ME_DestroyDisplayItem (TYPE_13__*) ; 
- int /*<<< orphan*/  ME_FindItemBack (TYPE_13__*,int /*<<< orphan*/ ) ; 
- void* ME_FindItemFwd (TYPE_13__*,int /*<<< orphan*/ ) ; 
- int ME_GetCursorOfs (TYPE_8__*) ; 
- int ME_GetTextLength (TYPE_5__*) ; 
- int /*<<< orphan*/  ME_JoinParagraphs (TYPE_5__*,TYPE_7__*,int) ; 
- int /*<<< orphan*/  ME_PrevRun (TYPE_7__**,TYPE_13__**,int) ; 
- int /*<<< orphan*/  ME_PropagateCharOffset (TYPE_13__*,int) ; 
- int /*<<< orphan*/  ME_ProtectPartialTableDeletion (TYPE_5__*,TYPE_8__*,int*) ; 
- int /*<<< orphan*/  ME_Remove (TYPE_13__*) ; 
- int /*<<< orphan*/  ME_SetDefaultParaFormat (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ME_SkipAndPropagateCharOffset (TYPE_13__*,int) ; 
- int /*<<< orphan*/  ME_StrDeleteV (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int TRUE ; 
- int /*<<< orphan*/  add_undo_insert_run (TYPE_5__*,int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  debugstr_run (TYPE_6__*) ; 
- int /*<<< orphan*/  diParagraph ; 
- int /*<<< orphan*/  diParagraphOrEnd ; 
- scalar_t__ diRun ; 
- int /*<<< orphan*/  diRunOrParagraphOrEnd ; 
- int /*<<< orphan*/  get_text (TYPE_6__*,int) ; 
- int /*<<< orphan*/  mark_para_rewrap (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int min (int,int) ; 
+
+ int FALSE ;
+ int MEPF_ROWSTART ;
+ int MERF_ENDPARA ;
+ int ME_CheckCharOffsets (TYPE_5__*) ;
+ int ME_CursorFromCharOfs (TYPE_5__*,int,TYPE_8__*) ;
+ int ME_DestroyDisplayItem (TYPE_13__*) ;
+ int ME_FindItemBack (TYPE_13__*,int ) ;
+ void* ME_FindItemFwd (TYPE_13__*,int ) ;
+ int ME_GetCursorOfs (TYPE_8__*) ;
+ int ME_GetTextLength (TYPE_5__*) ;
+ int ME_JoinParagraphs (TYPE_5__*,TYPE_7__*,int) ;
+ int ME_PrevRun (TYPE_7__**,TYPE_13__**,int) ;
+ int ME_PropagateCharOffset (TYPE_13__*,int) ;
+ int ME_ProtectPartialTableDeletion (TYPE_5__*,TYPE_8__*,int*) ;
+ int ME_Remove (TYPE_13__*) ;
+ int ME_SetDefaultParaFormat (TYPE_5__*,int *) ;
+ int ME_SkipAndPropagateCharOffset (TYPE_13__*,int) ;
+ int ME_StrDeleteV (int ,int,int) ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ int add_undo_insert_run (TYPE_5__*,int,int ,int,int,int ) ;
+ int assert (int) ;
+ int debugstr_run (TYPE_6__*) ;
+ int diParagraph ;
+ int diParagraphOrEnd ;
+ scalar_t__ diRun ;
+ int diRunOrParagraphOrEnd ;
+ int get_text (TYPE_6__*,int) ;
+ int mark_para_rewrap (TYPE_5__*,int ) ;
+ int min (int,int) ;
 
 BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
                            int nChars, BOOL bForce)
@@ -76,7 +76,7 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
   ME_DisplayItem *start_para;
   BOOL delete_all = FALSE;
 
-  /* Prevent deletion past last end of paragraph run. */
+
   nChars = min(nChars, text_len - nOfs);
   if (nChars == text_len) delete_all = TRUE;
   start_para = c.pPara;
@@ -96,8 +96,8 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
         nOfs+nChars == (c.pRun->member.run.nCharOfs
                         + c.pPara->member.para.nCharOfs))
     {
-      /* We aren't deleting anything in this run, so we will go back to the
-       * last run we are deleting text in. */
+
+
       ME_PrevRun(&c.pPara, &c.pRun, TRUE);
       c.nOffset = c.pRun->member.run.len;
     }
@@ -112,22 +112,22 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
       }
       keepFirstParaFormat = (totalChars == nChars && nChars <= eollen &&
                              run->nCharOfs);
-      if (!editor->bEmulateVersion10) /* v4.1 */
+      if (!editor->bEmulateVersion10)
       {
         ME_DisplayItem *next_para = ME_FindItemFwd(c.pRun, diParagraphOrEnd);
         ME_DisplayItem *this_para = next_para->member.para.prev_para;
 
-        /* The end of paragraph before a table row is only deleted if there
-         * is nothing else on the line before it. */
+
+
         if (this_para == start_para &&
             next_para->member.para.nFlags & MEPF_ROWSTART)
         {
-          /* If the paragraph will be empty, then it should be deleted, however
-           * it still might have text right now which would inherit the
-           * MEPF_STARTROW property if we joined it right now.
-           * Instead we will delete it after the preceding text is deleted. */
+
+
+
+
           if (nOfs > this_para->member.para.nCharOfs) {
-            /* Skip this end of line. */
+
             nChars -= (eollen < nChars) ? eollen : nChars;
             continue;
           }
@@ -135,7 +135,7 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
         }
       }
       ME_JoinParagraphs(editor, c.pPara, keepFirstParaFormat);
-      /* ME_SkipAndPropagateCharOffset(p->pRun, shift); */
+
       ME_CheckCharOffsets(editor);
       nChars -= (eollen < nChars) ? eollen : nChars;
       continue;
@@ -151,17 +151,17 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
       mark_para_rewrap(editor, ME_FindItemBack(c.pRun, diParagraph));
 
       cursor = c;
-      /* nChars is the number of characters that should be deleted from the
-         PRECEDING runs (these BEFORE cursor.pRun)
-         nCharsToDelete is a number of chars to delete from THIS run */
+
+
+
       nChars -= nCharsToDelete;
       shift -= nCharsToDelete;
       TRACE("Deleting %d (remaining %d) chars at %d in %s (%d)\n",
         nCharsToDelete, nChars, c.nOffset,
         debugstr_run( run ), run->len);
 
-      /* nOfs is a character offset (from the start of the document
-         to the current (deleted) run */
+
+
       add_undo_insert_run( editor, nOfs + nChars, get_text( run, c.nOffset ), nCharsToDelete, run->nFlags, run->style );
 
       ME_StrDeleteV(run->para->text, run->nCharOfs + c.nOffset, nCharsToDelete);
@@ -169,7 +169,7 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
       TRACE("Post deletion string: %s (%d)\n", debugstr_run( run ), run->len);
       TRACE("Shift value: %d\n", shift);
 
-      /* update cursors (including c) */
+
       for (i=-1; i<editor->nCursors; i++) {
         ME_Cursor *pThisCur = editor->pCursors + i;
         if (i == -1) pThisCur = &c;
@@ -191,7 +191,7 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
         }
       }
 
-      /* c = updated data now */
+
 
       if (c.pRun == cursor.pRun)
         ME_SkipAndPropagateCharOffset(c.pRun, shift);
@@ -206,9 +206,9 @@ BOOL ME_InternalDeleteText(ME_TextEditor *editor, ME_Cursor *start,
       }
 
       shift = 0;
-      /*
-      ME_CheckCharOffsets(editor);
-      */
+
+
+
       continue;
     }
   }

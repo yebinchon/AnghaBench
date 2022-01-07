@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  PRAND ;
 
-/* Variables and functions */
- int PRandInt (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int PRAND ;
+
+
+ int PRandInt (int *) ;
 
 UINT GenerateDummyMark(PRAND *p)
 {
-	UINT i;
-	if (p == NULL)
-	{
-		return 0;
-	}
+ UINT i;
+ if (p == ((void*)0))
+ {
+  return 0;
+ }
 
-	while (true)
-	{
-		i = PRandInt(p);
+ while (1)
+ {
+  i = PRandInt(p);
 
-		if (i >= 1000000000 && i <= 0x7FFFFFFE)
-		{
-			return i;
-		}
-	}
+  if (i >= 1000000000 && i <= 0x7FFFFFFE)
+  {
+   return i;
+  }
+ }
 
-	return 0;
+ return 0;
 }

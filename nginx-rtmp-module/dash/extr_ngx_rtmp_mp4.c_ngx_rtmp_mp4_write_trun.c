@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int u_char ;
+typedef int ngx_uint_t ;
 struct TYPE_3__ {int duration; int size; int delay; scalar_t__ key; } ;
-typedef  TYPE_1__ ngx_rtmp_mp4_sample_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  int /*<<< orphan*/  ngx_buf_t ;
+typedef TYPE_1__ ngx_rtmp_mp4_sample_t ;
+typedef int ngx_int_t ;
+typedef int ngx_buf_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_OK ; 
- int NGX_RTMP_MP4_SAMPLE_DELAY ; 
- int NGX_RTMP_MP4_SAMPLE_DURATION ; 
- int NGX_RTMP_MP4_SAMPLE_KEY ; 
- int NGX_RTMP_MP4_SAMPLE_SIZE ; 
- int /*<<< orphan*/  ngx_rtmp_mp4_field_32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ngx_rtmp_mp4_start_box (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ngx_rtmp_mp4_update_box_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int NGX_OK ;
+ int NGX_RTMP_MP4_SAMPLE_DELAY ;
+ int NGX_RTMP_MP4_SAMPLE_DURATION ;
+ int NGX_RTMP_MP4_SAMPLE_KEY ;
+ int NGX_RTMP_MP4_SAMPLE_SIZE ;
+ int ngx_rtmp_mp4_field_32 (int *,int) ;
+ int * ngx_rtmp_mp4_start_box (int *,char*) ;
+ int ngx_rtmp_mp4_update_box_size (int *,int *) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_mp4_write_trun(ngx_buf_t *b, uint32_t sample_count,
     ngx_rtmp_mp4_sample_t *samples, ngx_uint_t sample_mask, u_char *moof_pos)
 {
-    u_char    *pos;
-    uint32_t   i, offset, nitems, flags;
+    u_char *pos;
+    uint32_t i, offset, nitems, flags;
 
     pos = ngx_rtmp_mp4_start_box(b, "trun");
 
     nitems = 0;
 
-    /* data offset present */
+
     flags = 0x01;
 
     if (sample_mask & NGX_RTMP_MP4_SAMPLE_DURATION) {

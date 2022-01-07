@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SIGALRM ; 
- int SIGCHLD ; 
- int SIGHUP ; 
- int SIGTERM ; 
- int /*<<< orphan*/  sigalrms ; 
- int /*<<< orphan*/  sigchlds ; 
- int /*<<< orphan*/  sighups ; 
- int /*<<< orphan*/  sigterms ; 
+ int SIGALRM ;
+ int SIGCHLD ;
+ int SIGHUP ;
+ int SIGTERM ;
+ int sigalrms ;
+ int sigchlds ;
+ int sighups ;
+ int sigterms ;
 
 void
 auditd_relay_signal(int signal)
@@ -30,6 +22,6 @@ auditd_relay_signal(int signal)
                 sigterms++;
         if (signal == SIGCHLD)
                 sigchlds++;
-	if (signal == SIGALRM)
-		sigalrms++;
+ if (signal == SIGALRM)
+  sigalrms++;
 }

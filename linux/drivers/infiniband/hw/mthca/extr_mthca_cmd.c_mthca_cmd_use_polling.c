@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int max_cmds; int /*<<< orphan*/  poll_sem; int /*<<< orphan*/  context; int /*<<< orphan*/  event_sem; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int max_cmds; int poll_sem; int context; int event_sem; int flags; } ;
 struct mthca_dev {TYPE_1__ cmd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MTHCA_CMD_USE_EVENTS ; 
- int /*<<< orphan*/  down (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ int MTHCA_CMD_USE_EVENTS ;
+ int down (int *) ;
+ int kfree (int ) ;
+ int up (int *) ;
 
 void mthca_cmd_use_polling(struct mthca_dev *dev)
 {
-	int i;
+ int i;
 
-	dev->cmd.flags &= ~MTHCA_CMD_USE_EVENTS;
+ dev->cmd.flags &= ~MTHCA_CMD_USE_EVENTS;
 
-	for (i = 0; i < dev->cmd.max_cmds; ++i)
-		down(&dev->cmd.event_sem);
+ for (i = 0; i < dev->cmd.max_cmds; ++i)
+  down(&dev->cmd.event_sem);
 
-	kfree(dev->cmd.context);
+ kfree(dev->cmd.context);
 
-	up(&dev->cmd.poll_sem);
+ up(&dev->cmd.poll_sem);
 }

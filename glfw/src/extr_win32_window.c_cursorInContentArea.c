@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ handle; } ;
 struct TYPE_8__ {TYPE_1__ win32; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-struct TYPE_9__ {int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
-typedef  TYPE_3__ RECT ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int /*<<< orphan*/  GLFWbool ;
+typedef TYPE_2__ _GLFWwindow ;
+struct TYPE_9__ {int right; int left; } ;
+typedef TYPE_3__ RECT ;
+typedef int POINT ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClientToScreen (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GLFW_FALSE ; 
- int /*<<< orphan*/  GetClientRect (scalar_t__,TYPE_3__*) ; 
- int /*<<< orphan*/  GetCursorPos (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PtInRect (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ WindowFromPoint (int /*<<< orphan*/ ) ; 
+
+ int ClientToScreen (scalar_t__,int *) ;
+ int GLFW_FALSE ;
+ int GetClientRect (scalar_t__,TYPE_3__*) ;
+ int GetCursorPos (int *) ;
+ int PtInRect (TYPE_3__*,int ) ;
+ scalar_t__ WindowFromPoint (int ) ;
 
 __attribute__((used)) static GLFWbool cursorInContentArea(_GLFWwindow* window)
 {

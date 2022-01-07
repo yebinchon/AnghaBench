@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PortData_struct ;
-typedef  int /*<<< orphan*/  PerMouse_struct ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PERMOUSE ; 
- int /*<<< orphan*/ * PerAddPeripheral (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PortData_struct ;
+typedef int PerMouse_struct ;
+
+
+ int PERMOUSE ;
+ int * PerAddPeripheral (int *,int ) ;
 
 PerMouse_struct * PerMouseAdd(PortData_struct * port)
 {

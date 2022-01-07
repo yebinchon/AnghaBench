@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct task_struct {scalar_t__ state; int counter; int priority; } ;
 
-/* Variables and functions */
- int NR_TASKS ; 
- scalar_t__ TASK_RUNNING ; 
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  preempt_enable () ; 
- int /*<<< orphan*/  switch_to (struct task_struct*) ; 
- struct task_struct** task ; 
+
+ int NR_TASKS ;
+ scalar_t__ TASK_RUNNING ;
+ int preempt_disable () ;
+ int preempt_enable () ;
+ int switch_to (struct task_struct*) ;
+ struct task_struct** task ;
 
 void _schedule(void) {
   preempt_disable();

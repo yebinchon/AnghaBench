@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ERROR_INSUFFICIENT_BUFFER ; 
- int ERROR_INVALID_PARAMETER ; 
- int GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MUI_FULL_LANGUAGE ; 
- int MUI_LANGUAGE_ID ; 
- int MUI_LANGUAGE_NAME ; 
- int MUI_MACHINE_LANGUAGE_SETTINGS ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int max (int,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pGetUserPreferredUILanguages (int,int*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef int BOOL ;
+
+
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_INVALID_PARAMETER ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int MUI_FULL_LANGUAGE ;
+ int MUI_LANGUAGE_ID ;
+ int MUI_LANGUAGE_NAME ;
+ int MUI_MACHINE_LANGUAGE_SETTINGS ;
+ int SetLastError (int) ;
+ int max (int,int) ;
+ int memset (int *,int,int) ;
+ int ok (int,char*,...) ;
+ int pGetUserPreferredUILanguages (int,int*,int *,int*) ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetUserPreferredUILanguages(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_GetUserPreferredUILanguages(void)
     count = 0xdeadbeef;
     size = 0;
     SetLastError(0xdeadbeef);
-    ret = pGetUserPreferredUILanguages(MUI_FULL_LANGUAGE, &count, NULL, &size);
+    ret = pGetUserPreferredUILanguages(MUI_FULL_LANGUAGE, &count, ((void*)0), &size);
     ok(!ret, "Expected GetUserPreferredUILanguages to fail\n");
     ok(ERROR_INVALID_PARAMETER == GetLastError(),
        "Expected error ERROR_INVALID_PARAMETER, got %d\n", GetLastError());
@@ -57,7 +57,7 @@ __attribute__((used)) static void test_GetUserPreferredUILanguages(void)
     count = 0xdeadbeef;
     size = 0;
     SetLastError(0xdeadbeef);
-    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID | MUI_FULL_LANGUAGE, &count, NULL, &size);
+    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID | MUI_FULL_LANGUAGE, &count, ((void*)0), &size);
     ok(!ret, "Expected GetUserPreferredUILanguages to fail\n");
     ok(ERROR_INVALID_PARAMETER == GetLastError(),
        "Expected error ERROR_INVALID_PARAMETER, got %d\n", GetLastError());
@@ -65,7 +65,7 @@ __attribute__((used)) static void test_GetUserPreferredUILanguages(void)
     count = 0xdeadbeef;
     size = 0;
     SetLastError(0xdeadbeef);
-    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID | MUI_MACHINE_LANGUAGE_SETTINGS, &count, NULL, &size);
+    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID | MUI_MACHINE_LANGUAGE_SETTINGS, &count, ((void*)0), &size);
     ok(!ret, "Expected GetUserPreferredUILanguages to fail\n");
     ok(ERROR_INVALID_PARAMETER == GetLastError(),
        "Expected error ERROR_INVALID_PARAMETER, got %d\n", GetLastError());
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_GetUserPreferredUILanguages(void)
     count = 0xdeadbeef;
     size = 1;
     SetLastError(0xdeadbeef);
-    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID, &count, NULL, &size);
+    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID, &count, ((void*)0), &size);
     ok(!ret, "Expected GetUserPreferredUILanguages to fail\n");
     ok(ERROR_INVALID_PARAMETER == GetLastError(),
        "Expected error ERROR_INVALID_PARAMETER, got %d\n", GetLastError());
@@ -81,15 +81,15 @@ __attribute__((used)) static void test_GetUserPreferredUILanguages(void)
     count = 0xdeadbeef;
     size_id = 0;
     SetLastError(0xdeadbeef);
-    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID, &count, NULL, &size_id);
+    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_ID, &count, ((void*)0), &size_id);
     ok(ret, "Expected GetUserPreferredUILanguages to succeed\n");
     ok(count, "Expected count > 0\n");
-    ok(size_id  % 5 == 1, "Expected size (%d) %% 5 == 1\n", size_id);
+    ok(size_id % 5 == 1, "Expected size (%d) %% 5 == 1\n", size_id);
 
     count = 0xdeadbeef;
     size_name = 0;
     SetLastError(0xdeadbeef);
-    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &count, NULL, &size_name);
+    ret = pGetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &count, ((void*)0), &size_name);
     ok(ret, "Expected GetUserPreferredUILanguages to succeed\n");
     ok(count, "Expected count > 0\n");
     ok(size_name % 6 == 1, "Expected size (%d) %% 6 == 1\n", size_name);

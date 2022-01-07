@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LogFile ; 
- int /*<<< orphan*/ * LogTag ; 
- int /*<<< orphan*/  NOCONN ; 
- int /*<<< orphan*/  THREAD_LOCK () ; 
- int /*<<< orphan*/  THREAD_UNLOCK () ; 
- int /*<<< orphan*/  _close (int) ; 
- int /*<<< orphan*/  status ; 
+ int LogFile ;
+ int * LogTag ;
+ int NOCONN ;
+ int THREAD_LOCK () ;
+ int THREAD_UNLOCK () ;
+ int _close (int) ;
+ int status ;
 
 void
 closelog(void)
 {
-	THREAD_LOCK();
-	if (LogFile != -1) {
-		(void)_close(LogFile);
-		LogFile = -1;
-	}
-	LogTag = NULL;
-	status = NOCONN;
-	THREAD_UNLOCK();
+ THREAD_LOCK();
+ if (LogFile != -1) {
+  (void)_close(LogFile);
+  LogFile = -1;
+ }
+ LogTag = ((void*)0);
+ status = NOCONN;
+ THREAD_UNLOCK();
 }

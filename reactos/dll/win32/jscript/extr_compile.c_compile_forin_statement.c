@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int member_0; void* break_label; void* continue_label; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-typedef  TYPE_1__ statement_ctx_t ;
-struct TYPE_8__ {int /*<<< orphan*/  statement; TYPE_5__* expr; TYPE_3__* variable; int /*<<< orphan*/  in_expr; } ;
-typedef  TYPE_2__ forin_statement_t ;
-typedef  int /*<<< orphan*/  compiler_ctx_t ;
-struct TYPE_10__ {int /*<<< orphan*/  type; } ;
-struct TYPE_9__ {int /*<<< orphan*/  identifier; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPID_STARTENUM ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- void* JS_E_ILLEGAL_ASSIGN ; 
- int /*<<< orphan*/  OP_forin ; 
- int /*<<< orphan*/  OP_int ; 
- int /*<<< orphan*/  OP_jmp ; 
- int /*<<< orphan*/  OP_throw_ref ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- void* alloc_label (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_memberid_expression (int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_statement (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_variable_list (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  emit_identifier_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fdexNameEnsure ; 
- scalar_t__ is_memberid_expr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  label_set_addr (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  push_instr_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int member_0; void* break_label; void* continue_label; int member_2; int member_1; } ;
+typedef TYPE_1__ statement_ctx_t ;
+struct TYPE_8__ {int statement; TYPE_5__* expr; TYPE_3__* variable; int in_expr; } ;
+typedef TYPE_2__ forin_statement_t ;
+typedef int compiler_ctx_t ;
+struct TYPE_10__ {int type; } ;
+struct TYPE_9__ {int identifier; } ;
+typedef int HRESULT ;
+
+
+ int DISPID_STARTENUM ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ void* JS_E_ILLEGAL_ASSIGN ;
+ int OP_forin ;
+ int OP_int ;
+ int OP_jmp ;
+ int OP_throw_ref ;
+ int S_OK ;
+ int TRUE ;
+ void* alloc_label (int *) ;
+ int compile_expression (int *,int ,int ) ;
+ int compile_memberid_expression (int *,TYPE_5__*,int ) ;
+ int compile_statement (int *,TYPE_1__*,int ) ;
+ int compile_variable_list (int *,TYPE_3__*) ;
+ int emit_identifier_ref (int *,int ,int ) ;
+ int fdexNameEnsure ;
+ scalar_t__ is_memberid_expr (int ) ;
+ int label_set_addr (int *,void*) ;
+ int push_instr_int (int *,int ,int ) ;
+ int push_instr_uint (int *,int ,void*) ;
 
 __attribute__((used)) static HRESULT compile_forin_statement(compiler_ctx_t *ctx, forin_statement_t *stat)
 {
@@ -83,7 +83,7 @@ __attribute__((used)) static HRESULT compile_forin_statement(compiler_ctx_t *ctx
         if(FAILED(hres))
             return hres;
 
-        /* FIXME: compile statement anyways when we depend on compiler to check errors */
+
         return S_OK;
     }
 

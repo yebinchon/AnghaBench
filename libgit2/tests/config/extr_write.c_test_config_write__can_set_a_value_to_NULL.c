@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_config ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cl_git_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_sandbox_cleanup () ; 
- int /*<<< orphan*/ * cl_git_sandbox_init (char*) ; 
- int /*<<< orphan*/  git_config_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_config_set_string (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_config (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_config ;
+
+
+ int cl_git_fail (int ) ;
+ int cl_git_pass (int ) ;
+ int cl_git_sandbox_cleanup () ;
+ int * cl_git_sandbox_init (char*) ;
+ int git_config_free (int *) ;
+ int git_config_set_string (int *,char*,int *) ;
+ int git_repository_config (int **,int *) ;
 
 void test_config_write__can_set_a_value_to_NULL(void)
 {
@@ -30,7 +30,7 @@ void test_config_write__can_set_a_value_to_NULL(void)
     repository = cl_git_sandbox_init("testrepo.git");
 
     cl_git_pass(git_repository_config(&config, repository));
-    cl_git_fail(git_config_set_string(config, "a.b.c", NULL));
+    cl_git_fail(git_config_set_string(config, "a.b.c", ((void*)0)));
     git_config_free(config);
 
     cl_git_sandbox_cleanup();

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_11__ {int frame_bit_len; int remaining_bits; } ;
-typedef  TYPE_4__ VqfContext ;
-struct TYPE_13__ {TYPE_3__* internal; int /*<<< orphan*/  pb; TYPE_5__** streams; TYPE_4__* priv_data; } ;
+typedef TYPE_4__ VqfContext ;
+struct TYPE_13__ {TYPE_3__* internal; int pb; TYPE_5__** streams; TYPE_4__* priv_data; } ;
 struct TYPE_9__ {int den; scalar_t__ num; } ;
-struct TYPE_12__ {TYPE_2__ time_base; TYPE_1__* codecpar; int /*<<< orphan*/  cur_dts; } ;
+struct TYPE_12__ {TYPE_2__ time_base; TYPE_1__* codecpar; int cur_dts; } ;
 struct TYPE_10__ {scalar_t__ data_offset; } ;
 struct TYPE_8__ {int bit_rate; } ;
-typedef  TYPE_5__ AVStream ;
-typedef  TYPE_6__ AVFormatContext ;
+typedef TYPE_5__ AVStream ;
+typedef TYPE_6__ AVFormatContext ;
 
-/* Variables and functions */
- int AVSEEK_FLAG_BACKWARD ; 
- int /*<<< orphan*/  AV_ROUND_DOWN ; 
- int /*<<< orphan*/  AV_ROUND_UP ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_rescale (int,int,int) ; 
- int av_rescale_rnd (int,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int avio_seek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int AVSEEK_FLAG_BACKWARD ;
+ int AV_ROUND_DOWN ;
+ int AV_ROUND_UP ;
+ int SEEK_SET ;
+ int av_rescale (int,int,int) ;
+ int av_rescale_rnd (int,scalar_t__,int,int ) ;
+ int avio_seek (int ,scalar_t__,int ) ;
 
 __attribute__((used)) static int vqf_read_seek(AVFormatContext *s,
                          int stream_index, int64_t timestamp, int flags)

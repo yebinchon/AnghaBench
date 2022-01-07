@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RRange {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int /*<<< orphan*/  mrb_bool ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RANGE_BEG (struct RRange*) ; 
- int /*<<< orphan*/  RANGE_END (struct RRange*) ; 
- scalar_t__ RANGE_EXCL (struct RRange*) ; 
- int /*<<< orphan*/  mrb_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_obj_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_is_instance_of (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RRange* mrb_range_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
+
+ int RANGE_BEG (struct RRange*) ;
+ int RANGE_END (struct RRange*) ;
+ scalar_t__ RANGE_EXCL (struct RRange*) ;
+ int mrb_equal (int *,int ,int ) ;
+ int mrb_false_value () ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_obj_class (int *,int ) ;
+ scalar_t__ mrb_obj_equal (int *,int ,int ) ;
+ int mrb_obj_is_instance_of (int *,int ,int ) ;
+ struct RRange* mrb_range_ptr (int *,int ) ;
+ int mrb_true_value () ;
 
 __attribute__((used)) static mrb_value
 range_eq(mrb_state *mrb, mrb_value range)
@@ -39,7 +39,7 @@ range_eq(mrb_state *mrb, mrb_value range)
   mrb_get_args(mrb, "o", &obj);
 
   if (mrb_obj_equal(mrb, range, obj)) return mrb_true_value();
-  if (!mrb_obj_is_instance_of(mrb, obj, mrb_obj_class(mrb, range))) { /* same class? */
+  if (!mrb_obj_is_instance_of(mrb, obj, mrb_obj_class(mrb, range))) {
     return mrb_false_value();
   }
 

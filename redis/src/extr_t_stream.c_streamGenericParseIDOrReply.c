@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long long uint64_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef unsigned long long uint64_t ;
 struct TYPE_5__ {unsigned long long ms; unsigned long long seq; } ;
-typedef  TYPE_1__ streamID ;
-struct TYPE_6__ {int /*<<< orphan*/  ptr; } ;
-typedef  TYPE_2__ robj ;
-typedef  int /*<<< orphan*/  client ;
-typedef  int /*<<< orphan*/  buf ;
+typedef TYPE_1__ streamID ;
+struct TYPE_6__ {int ptr; } ;
+typedef TYPE_2__ robj ;
+typedef int client ;
+typedef int buf ;
 
-/* Variables and functions */
- int C_ERR ; 
- int C_OK ; 
- void* UINT64_MAX ; 
- int /*<<< orphan*/  addReplyError (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int sdslen (int /*<<< orphan*/ ) ; 
- char* strchr (char*,char) ; 
- scalar_t__ string2ull (char*,unsigned long long*) ; 
+
+ int C_ERR ;
+ int C_OK ;
+ void* UINT64_MAX ;
+ int addReplyError (int *,char*) ;
+ int memcpy (char*,int ,int) ;
+ int sdslen (int ) ;
+ char* strchr (char*,char) ;
+ scalar_t__ string2ull (char*,unsigned long long*) ;
 
 int streamGenericParseIDOrReply(client *c, robj *o, streamID *id, uint64_t missing_seq, int strict) {
     char buf[128];
@@ -38,7 +38,7 @@ int streamGenericParseIDOrReply(client *c, robj *o, streamID *id, uint64_t missi
     if (strict && (buf[0] == '-' || buf[0] == '+') && buf[1] == '\0')
         goto invalid;
 
-    /* Handle the "-" and "+" special cases. */
+
     if (buf[0] == '-' && buf[1] == '\0') {
         id->ms = 0;
         id->seq = 0;
@@ -49,7 +49,7 @@ int streamGenericParseIDOrReply(client *c, robj *o, streamID *id, uint64_t missi
         return C_OK;
     }
 
-    /* Parse <ms>-<seq> form. */
+
     char *dot = strchr(buf,'-');
     if (dot) *dot = '\0';
     unsigned long long ms, seq;

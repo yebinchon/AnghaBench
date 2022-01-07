@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_opt_revision_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-struct TYPE_8__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  notify_baton2; int /*<<< orphan*/  notify_func2; int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_1__ svn_client_ctx_t ;
-struct TYPE_9__ {int /*<<< orphan*/  rev; } ;
-typedef  TYPE_2__ svn_client__pathrev_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ENTRY_EXISTS ; 
- int /*<<< orphan*/  SVN_ERR_ENTRY_NOT_FOUND ; 
- int /*<<< orphan*/  SVN_ERR_ILLEGAL_TARGET ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_MERGEINFO ; 
- int /*<<< orphan*/  SVN_WC__CALL_WITH_WRITE_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  copy_foreign_dir (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_client__make_local_parents (char const*,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client__ra_session_from_path2 (int /*<<< orphan*/ **,TYPE_2__**,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- char const* svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_path_is_url (char const*) ; 
- scalar_t__ svn_prop_regular_kind ; 
- scalar_t__ svn_property_kind2 (char const*) ; 
- int /*<<< orphan*/  svn_ra_check_path (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_get_file (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_writable (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_add_from_disk3 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_read_kind2 (scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_opt_revision_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+struct TYPE_8__ {int cancel_baton; int cancel_func; int notify_baton2; int notify_func2; int wc_ctx; } ;
+typedef TYPE_1__ svn_client_ctx_t ;
+struct TYPE_9__ {int rev; } ;
+typedef TYPE_2__ svn_client__pathrev_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_ENTRY_EXISTS ;
+ int SVN_ERR_ENTRY_NOT_FOUND ;
+ int SVN_ERR_ILLEGAL_TARGET ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_MERGEINFO ;
+ int SVN_WC__CALL_WITH_WRITE_LOCK (int ,int ,char const*,int ,int *) ;
+ int TRUE ;
+ int _ (char*) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int copy_foreign_dir (int *,TYPE_2__*,int ,char const*,int ,int ,int ,int ,int ,int *) ;
+ int strcmp (char const*,int ) ;
+ int svn_client__make_local_parents (char const*,int ,TYPE_1__*,int *) ;
+ int svn_client__ra_session_from_path2 (int **,TYPE_2__**,char const*,int *,int *,int *,TYPE_1__*,int *) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ char const* svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ int svn_path_is_url (char const*) ;
+ scalar_t__ svn_prop_regular_kind ;
+ scalar_t__ svn_property_kind2 (char const*) ;
+ int svn_ra_check_path (int *,char*,int ,scalar_t__*,int *) ;
+ int svn_ra_get_file (int *,char*,int ,int *,int *,int **,int *) ;
+ int svn_stream_open_writable (int **,char const*,int *,int *) ;
+ int svn_wc_add_from_disk3 (int ,char const*,int *,int ,int ,int ,int *) ;
+ int svn_wc_read_kind2 (scalar_t__*,int ,char const*,int ,int ,int *) ;
 
 svn_error_t *
 svn_client__copy_foreign(const char *url,
@@ -83,10 +83,10 @@ svn_client__copy_foreign(const char *url,
   SVN_ERR_ASSERT(svn_path_is_url(url));
   SVN_ERR_ASSERT(svn_dirent_is_absolute(dst_abspath));
 
-  /* Do we need to validate/update revisions? */
+
 
   SVN_ERR(svn_client__ra_session_from_path2(&ra_session, &loc,
-                                            url, NULL,
+                                            url, ((void*)0),
                                             peg_revision,
                                             revision, ctx,
                                             scratch_pool));
@@ -95,7 +95,7 @@ svn_client__copy_foreign(const char *url,
 
   if (kind != svn_node_file && kind != svn_node_dir)
     return svn_error_createf(
-                SVN_ERR_ILLEGAL_TARGET, NULL,
+                SVN_ERR_ILLEGAL_TARGET, ((void*)0),
                 _("'%s' is not a valid location inside a repository"),
                 url);
 
@@ -105,7 +105,7 @@ svn_client__copy_foreign(const char *url,
   if (wc_kind != svn_node_none)
     {
       return svn_error_createf(
-                SVN_ERR_ENTRY_EXISTS, NULL,
+                SVN_ERR_ENTRY_EXISTS, ((void*)0),
                 _("'%s' is already under version control"),
                 svn_dirent_local_style(dst_abspath, scratch_pool));
     }
@@ -126,7 +126,7 @@ svn_client__copy_foreign(const char *url,
 
   if (wc_kind != svn_node_dir)
     return svn_error_createf(
-                SVN_ERR_ENTRY_NOT_FOUND, NULL,
+                SVN_ERR_ENTRY_NOT_FOUND, ((void*)0),
                 _("Can't add '%s', because no parent directory is found"),
                 svn_dirent_local_style(dst_abspath, scratch_pool));
 
@@ -139,10 +139,10 @@ svn_client__copy_foreign(const char *url,
       SVN_ERR(svn_stream_open_writable(&target, dst_abspath, scratch_pool,
                                        scratch_pool));
 
-      SVN_ERR(svn_ra_get_file(ra_session, "", loc->rev, target, NULL, &props,
+      SVN_ERR(svn_ra_get_file(ra_session, "", loc->rev, target, ((void*)0), &props,
                               scratch_pool));
 
-      if (props != NULL)
+      if (props != ((void*)0))
         for (hi = apr_hash_first(scratch_pool, props); hi;
              hi = apr_hash_next(hi))
           {
@@ -151,21 +151,21 @@ svn_client__copy_foreign(const char *url,
             if (svn_property_kind2(name) != svn_prop_regular_kind
                 || ! strcmp(name, SVN_PROP_MERGEINFO))
               {
-                /* We can't handle DAV, ENTRY and merge specific props here */
-                svn_hash_sets(props, name, NULL);
+
+                svn_hash_sets(props, name, ((void*)0));
               }
           }
 
       if (!already_locked)
         SVN_WC__CALL_WITH_WRITE_LOCK(
               svn_wc_add_from_disk3(ctx->wc_ctx, dst_abspath, props,
-                                    TRUE /* skip checks */,
+                                    TRUE ,
                                     ctx->notify_func2, ctx->notify_baton2,
                                     scratch_pool),
               ctx->wc_ctx, dir_abspath, FALSE, scratch_pool);
       else
         SVN_ERR(svn_wc_add_from_disk3(ctx->wc_ctx, dst_abspath, props,
-                                      TRUE /* skip checks */,
+                                      TRUE ,
                                       ctx->notify_func2, ctx->notify_baton2,
                                       scratch_pool));
     }

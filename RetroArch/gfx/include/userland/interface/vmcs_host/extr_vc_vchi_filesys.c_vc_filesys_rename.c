@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * data; } ;
 struct TYPE_4__ {TYPE_1__ fileserv_msg; } ;
 
-/* Variables and functions */
- scalar_t__ FILESERV_RESP_OK ; 
- int FS_MAX_PATH ; 
- int /*<<< orphan*/  VC_FILESYS_RENAME ; 
- scalar_t__ lock_obtain () ; 
- int /*<<< orphan*/  lock_release () ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- TYPE_2__ vc_filesys_client ; 
- scalar_t__ vchi_msg_stub (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ FILESERV_RESP_OK ;
+ int FS_MAX_PATH ;
+ int VC_FILESYS_RENAME ;
+ scalar_t__ lock_obtain () ;
+ int lock_release () ;
+ int strlen (char const*) ;
+ int strncpy (char*,char const*,int) ;
+ TYPE_2__ vc_filesys_client ;
+ scalar_t__ vchi_msg_stub (TYPE_1__*,int ,int) ;
 
 int vc_filesys_rename(const char *oldfile, const char *newfile)
 {
    int a, b, success = -1;
 
-   // Ensure the pathnames aren't too long
+
    if ((a = strlen(oldfile)) < FS_MAX_PATH && (b = strlen(newfile)) < FS_MAX_PATH && lock_obtain() == 0)
    {
       strncpy((char *)vc_filesys_client.fileserv_msg.data, oldfile, FS_MAX_PATH);

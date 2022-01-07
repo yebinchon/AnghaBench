@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int cursor_row; int /*<<< orphan*/  con_cols; int /*<<< orphan*/  con_rows; int /*<<< orphan*/  cursor_col; } ;
-typedef  TYPE_1__ console_data_s ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __console_clear_line (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* curr_con ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cursor_row; int con_cols; int con_rows; int cursor_col; } ;
+typedef TYPE_1__ console_data_s ;
+
+
+ int __console_clear_line (int,int ,int ) ;
+ TYPE_1__* curr_con ;
 
 __attribute__((used)) static void __console_clear_from_cursor() {
-	console_data_s *con;
-	int cur_row;
+ console_data_s *con;
+ int cur_row;
 
   if( !(con = curr_con) ) return;
-	cur_row = con->cursor_row;
+ cur_row = con->cursor_row;
 
   __console_clear_line( cur_row, con->cursor_col, con->con_cols );
 

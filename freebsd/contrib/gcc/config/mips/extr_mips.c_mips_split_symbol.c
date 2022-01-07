@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Pmode ; 
- scalar_t__ TARGET_MIPS16 ; 
- int /*<<< orphan*/  copy_rtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_HIGH (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_LO_SUM (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mips16_gp_pseudo_reg () ; 
- int /*<<< orphan*/  mips_force_temporary (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int Pmode ;
+ scalar_t__ TARGET_MIPS16 ;
+ int copy_rtx (int ) ;
+ int gen_rtx_HIGH (int ,int ) ;
+ int gen_rtx_LO_SUM (int ,int ,int ) ;
+ int mips16_gp_pseudo_reg () ;
+ int mips_force_temporary (int ,int ) ;
 
 rtx
 mips_split_symbol (rtx temp, rtx addr)

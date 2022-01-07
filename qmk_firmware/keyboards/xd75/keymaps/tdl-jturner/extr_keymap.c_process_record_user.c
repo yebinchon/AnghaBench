@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_6__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 struct TYPE_7__ {int mods; } ;
 
-/* Variables and functions */
-#define  COLEMAK 134 
-#define  KC_BSDEL 133 
- int /*<<< orphan*/  KC_BSLASH ; 
- int /*<<< orphan*/  KC_BSLS ; 
- int /*<<< orphan*/  KC_BSPC ; 
- int /*<<< orphan*/  KC_COMM ; 
-#define  KC_CPIPE 132 
- int /*<<< orphan*/  KC_DEL ; 
- int /*<<< orphan*/  KC_DOT ; 
-#define  KC_DOTQ 131 
-#define  KC_FBSLH 130 
- int /*<<< orphan*/  KC_LSFT ; 
- int /*<<< orphan*/  KC_LSHIFT ; 
-#define  KC_LYDEF 129 
- int /*<<< orphan*/  KC_RSHIFT ; 
- int /*<<< orphan*/  KC_SLSH ; 
- int MOD_BIT (int /*<<< orphan*/ ) ; 
-#define  QWERTY 128 
- int /*<<< orphan*/  _COLEMAK ; 
- int /*<<< orphan*/  _QWERTY ; 
- TYPE_4__* keyboard_report ; 
- int /*<<< orphan*/  layer_clear () ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int shift ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+
+
+ int KC_BSLASH ;
+ int KC_BSLS ;
+ int KC_BSPC ;
+ int KC_COMM ;
+
+ int KC_DEL ;
+ int KC_DOT ;
+
+
+ int KC_LSFT ;
+ int KC_LSHIFT ;
+
+ int KC_RSHIFT ;
+ int KC_SLSH ;
+ int MOD_BIT (int ) ;
+
+ int _COLEMAK ;
+ int _QWERTY ;
+ TYPE_4__* keyboard_report ;
+ int layer_clear () ;
+ int register_code (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int shift ;
+ int unregister_code (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch(keycode) {
-    case KC_LYDEF:
+    case 129:
       layer_clear();
-      return false;
+      return 0;
       break;
-    case QWERTY:
+    case 128:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case COLEMAK:
+    case 134:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
       }
-      return false;
+      return 0;
       break;
-    case KC_BSDEL:
+    case 133:
       if (record->event.pressed) {
         if (keyboard_report->mods & shift) {
           if (keyboard_report->mods & MOD_BIT(KC_LSFT)) {
@@ -85,9 +85,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_DEL);
         unregister_code (KC_BSPC);
       }
-      return false;
+      return 0;
       break;
-    case KC_FBSLH:
+    case 130:
       if (record->event.pressed) {
         if (keyboard_report->mods & shift) {
             if (keyboard_report->mods & MOD_BIT(KC_LSFT)) {
@@ -106,24 +106,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_BSLASH);
         unregister_code (KC_SLSH);
       }
-      return false;
+      return 0;
       break;
-    case KC_DOTQ:
+    case 131:
       if (record->event.pressed) {
         if (keyboard_report->mods & shift) {
-          register_code(KC_SLSH); // shifted slash = ?
+          register_code(KC_SLSH);
         }
         else {
           register_code(KC_DOT);
         }
       }
       else {
-        unregister_code(KC_SLSH); // shifted slash = ?
+        unregister_code(KC_SLSH);
         unregister_code (KC_DOT);
       }
-      return false;
+      return 0;
       break;
-    case KC_CPIPE:
+    case 132:
       if (record->event.pressed) {
         if (keyboard_report->mods & shift) {
           register_code(KC_BSLS);
@@ -136,8 +136,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_BSLS);
         unregister_code (KC_COMM);
       }
-      return false;
+      return 0;
       break;
     }
-    return true;
+    return 1;
 }

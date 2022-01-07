@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct isc_device {struct isc_clk* isc_clks; TYPE_1__* dev; } ;
-struct isc_clk {int /*<<< orphan*/  clk; } ;
-struct TYPE_2__ {int /*<<< orphan*/  of_node; } ;
+struct isc_clk {int clk; } ;
+struct TYPE_2__ {int of_node; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (struct isc_clk*) ; 
- int /*<<< orphan*/  IS_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clk_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  of_clk_del_provider (int /*<<< orphan*/ ) ; 
+
+ unsigned int ARRAY_SIZE (struct isc_clk*) ;
+ int IS_ERR (int ) ;
+ int clk_unregister (int ) ;
+ int of_clk_del_provider (int ) ;
 
 void isc_clk_cleanup(struct isc_device *isc)
 {
-	unsigned int i;
+ unsigned int i;
 
-	of_clk_del_provider(isc->dev->of_node);
+ of_clk_del_provider(isc->dev->of_node);
 
-	for (i = 0; i < ARRAY_SIZE(isc->isc_clks); i++) {
-		struct isc_clk *isc_clk = &isc->isc_clks[i];
+ for (i = 0; i < ARRAY_SIZE(isc->isc_clks); i++) {
+  struct isc_clk *isc_clk = &isc->isc_clks[i];
 
-		if (!IS_ERR(isc_clk->clk))
-			clk_unregister(isc_clk->clk);
-	}
+  if (!IS_ERR(isc_clk->clk))
+   clk_unregister(isc_clk->clk);
+ }
 }

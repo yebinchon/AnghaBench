@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hlsl_ir_var {scalar_t__ semantic; int /*<<< orphan*/  name; int /*<<< orphan*/  data_type; scalar_t__ modifiers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  debug_hlsl_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_modifiers (scalar_t__) ; 
- int /*<<< orphan*/  debugstr_a (scalar_t__) ; 
+
+
+
+struct hlsl_ir_var {scalar_t__ semantic; int name; int data_type; scalar_t__ modifiers; } ;
+
+
+ int TRACE (char*,int ,...) ;
+ int debug_hlsl_type (int ) ;
+ int debug_modifiers (scalar_t__) ;
+ int debugstr_a (scalar_t__) ;
 
 __attribute__((used)) static void debug_dump_ir_var(const struct hlsl_ir_var *var)
 {

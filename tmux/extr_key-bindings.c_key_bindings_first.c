@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_table {int /*<<< orphan*/  key_bindings; } ;
+
+
+
+
+struct key_table {int key_bindings; } ;
 struct key_binding {int dummy; } ;
 
-/* Variables and functions */
- struct key_binding* RB_MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_bindings ; 
+
+ struct key_binding* RB_MIN (int ,int *) ;
+ int key_bindings ;
 
 struct key_binding *
 key_bindings_first(struct key_table *table)
 {
-	return (RB_MIN(key_bindings, &table->key_bindings));
+ return (RB_MIN(key_bindings, &table->key_bindings));
 }

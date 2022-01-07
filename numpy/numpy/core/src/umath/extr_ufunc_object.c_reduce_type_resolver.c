@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int (* type_resolver ) (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ;} ;
-typedef  TYPE_1__ PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_UNSAFE_CASTING ; 
- int /*<<< orphan*/  PyArray_EquivTypes (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  PyExc_RuntimeError ; 
- int /*<<< orphan*/ * PyTuple_Pack (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_None ; 
- int stub1 (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- char* ufunc_get_name_cstr (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int (* type_resolver ) (TYPE_1__*,int ,int **,int *,int **) ;} ;
+typedef TYPE_1__ PyUFuncObject ;
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+
+
+ int NPY_UNSAFE_CASTING ;
+ int PyArray_EquivTypes (int *,int *) ;
+ int PyErr_Format (int ,char*,char const*) ;
+ int PyExc_RuntimeError ;
+ int * PyTuple_Pack (int,int *,int *,int ) ;
+ int Py_DECREF (int *) ;
+ int Py_None ;
+ int stub1 (TYPE_1__*,int ,int **,int *,int **) ;
+ char* ufunc_get_name_cstr (TYPE_1__*) ;
 
 __attribute__((used)) static int
 reduce_type_resolver(PyUFuncObject *ufunc, PyArrayObject *arr,
                         PyArray_Descr *odtype, PyArray_Descr **out_dtype)
 {
     int i, retcode;
-    PyArrayObject *op[3] = {arr, arr, NULL};
-    PyArray_Descr *dtypes[3] = {NULL, NULL, NULL};
+    PyArrayObject *op[3] = {arr, arr, ((void*)0)};
+    PyArray_Descr *dtypes[3] = {((void*)0), ((void*)0), ((void*)0)};
     const char *ufunc_name = ufunc_get_name_cstr(ufunc);
-    PyObject *type_tup = NULL;
+    PyObject *type_tup = ((void*)0);
 
-    *out_dtype = NULL;
+    *out_dtype = ((void*)0);
 
-    /*
-     * If odtype is specified, make a type tuple for the type
-     * resolution.
-     */
-    if (odtype != NULL) {
+
+
+
+
+    if (odtype != ((void*)0)) {
         type_tup = PyTuple_Pack(3, odtype, odtype, Py_None);
-        if (type_tup == NULL) {
+        if (type_tup == ((void*)0)) {
             return -1;
         }
     }
 
-    /* Use the type resolution function to find our loop */
+
     retcode = ufunc->type_resolver(
                         ufunc, NPY_UNSAFE_CASTING,
                         op, type_tup, dtypes);
@@ -66,12 +66,12 @@ reduce_type_resolver(PyUFuncObject *ufunc, PyArrayObject *arr,
         return -1;
     }
 
-    /*
-     * The first two type should be equivalent. Because of how
-     * reduce has historically behaved in NumPy, the return type
-     * could be different, and it is the return type on which the
-     * reduction occurs.
-     */
+
+
+
+
+
+
     if (!PyArray_EquivTypes(dtypes[0], dtypes[1])) {
         for (i = 0; i < 3; ++i) {
             Py_DECREF(dtypes[i]);

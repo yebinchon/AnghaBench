@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_t ;
-struct lev_add_message {int text_len; long long legacy_id; int type; int ua_hash; int /*<<< orphan*/  user_id; scalar_t__ text; } ;
-struct TYPE_3__ {int /*<<< orphan*/  user_id; } ;
 
-/* Variables and functions */
- int LEV_TX_ADD_MESSAGE_EXT ; 
- int LEV_TX_ADD_MESSAGE_EXT_LL ; 
- int LEV_TX_ADD_MESSAGE_EXT_ZF ; 
- int MAX_EXTRA_MASK ; 
- TYPE_1__** User ; 
- int* UserMsgBytes ; 
- int /*<<< orphan*/ * UserMsgCnt ; 
- scalar_t__* UserSearchWords ; 
- int /*<<< orphan*/  assert (int) ; 
- int compute_message_distinct_words (scalar_t__,int) ; 
- int conv_uid (int /*<<< orphan*/ ) ; 
- int current_extra_mask ; 
- int /*<<< orphan*/  discarded_rec ; 
- int /*<<< orphan*/  last_global_id ; 
- long long max_legacy_id ; 
- int max_uid ; 
- int /*<<< orphan*/  max_user_search_id ; 
- scalar_t__ max_user_search_words ; 
- long long min_legacy_id ; 
- int msgs_bytes ; 
- int /*<<< orphan*/  msgs_read ; 
- int /*<<< orphan*/  preprocess_text (scalar_t__,int) ; 
- scalar_t__ search_enabled ; 
- int tot_search_words ; 
- int /*<<< orphan*/  tot_users ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int user_t ;
+struct lev_add_message {int text_len; long long legacy_id; int type; int ua_hash; int user_id; scalar_t__ text; } ;
+struct TYPE_3__ {int user_id; } ;
+
+
+ int LEV_TX_ADD_MESSAGE_EXT ;
+ int LEV_TX_ADD_MESSAGE_EXT_LL ;
+ int LEV_TX_ADD_MESSAGE_EXT_ZF ;
+ int MAX_EXTRA_MASK ;
+ TYPE_1__** User ;
+ int* UserMsgBytes ;
+ int * UserMsgCnt ;
+ scalar_t__* UserSearchWords ;
+ int assert (int) ;
+ int compute_message_distinct_words (scalar_t__,int) ;
+ int conv_uid (int ) ;
+ int current_extra_mask ;
+ int discarded_rec ;
+ int last_global_id ;
+ long long max_legacy_id ;
+ int max_uid ;
+ int max_user_search_id ;
+ scalar_t__ max_user_search_words ;
+ long long min_legacy_id ;
+ int msgs_bytes ;
+ int msgs_read ;
+ int preprocess_text (scalar_t__,int) ;
+ scalar_t__ search_enabled ;
+ int tot_search_words ;
+ int tot_users ;
+ TYPE_1__* zmalloc0 (int) ;
 
 void process_message0 (struct lev_add_message *E, int extra_bytes) {
   int uid = conv_uid (E->user_id);
@@ -69,7 +69,7 @@ void process_message0 (struct lev_add_message *E, int extra_bytes) {
   if (extra_bytes) {
     assert (!(E->type & MAX_EXTRA_MASK & ~current_extra_mask));
   } else {
-    assert ((E->type & ~MAX_EXTRA_MASK) != LEV_TX_ADD_MESSAGE_EXT && (E->type & ~MAX_EXTRA_MASK) != LEV_TX_ADD_MESSAGE_EXT_ZF); // LL is allowed
+    assert ((E->type & ~MAX_EXTRA_MASK) != LEV_TX_ADD_MESSAGE_EXT && (E->type & ~MAX_EXTRA_MASK) != LEV_TX_ADD_MESSAGE_EXT_ZF);
   }
   preprocess_text (E->text + extra_bytes, bytes);
 

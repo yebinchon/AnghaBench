@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* wkey_ptr ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* wkey_ptr ;
 struct TYPE_5__ {int x; struct TYPE_5__* l; struct TYPE_5__* r; } ;
 
-/* Variables and functions */
+
 
 void trp_split (wkey_ptr v, int x, wkey_ptr *a, wkey_ptr *b) {
-  while (v != NULL) {
+  while (v != ((void*)0)) {
     if (v->x > x) {
       *a = v;
       a = &v->r;
@@ -28,5 +28,5 @@ void trp_split (wkey_ptr v, int x, wkey_ptr *a, wkey_ptr *b) {
       v = v->l;
     }
   }
-  *a = *b = NULL;
+  *a = *b = ((void*)0);
 }

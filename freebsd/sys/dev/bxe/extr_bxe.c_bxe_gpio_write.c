@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  BLOGE (struct bxe_softc*,char*,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  DBG_PHY ; 
- int /*<<< orphan*/  HW_LOCK_RESOURCE_GPIO ; 
- int MISC_REGISTERS_GPIO_3 ; 
- int MISC_REGISTERS_GPIO_CLR_POS ; 
- int MISC_REGISTERS_GPIO_FLOAT ; 
- int MISC_REGISTERS_GPIO_FLOAT_POS ; 
-#define  MISC_REGISTERS_GPIO_INPUT_HI_Z 130 
-#define  MISC_REGISTERS_GPIO_OUTPUT_HIGH 129 
-#define  MISC_REGISTERS_GPIO_OUTPUT_LOW 128 
- int MISC_REGISTERS_GPIO_PORT_SHIFT ; 
- int MISC_REGISTERS_GPIO_SET_POS ; 
- int /*<<< orphan*/  MISC_REG_GPIO ; 
- int /*<<< orphan*/  NIG_REG_PORT_SWAP ; 
- int /*<<< orphan*/  NIG_REG_STRAP_OVERRIDE ; 
- int REG_RD (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_WR (struct bxe_softc*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bxe_acquire_hw_lock (struct bxe_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bxe_release_hw_lock (struct bxe_softc*,int /*<<< orphan*/ ) ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int,int) ;
+ int BLOGE (struct bxe_softc*,char*,int,int,int,int,int,int) ;
+ int DBG_PHY ;
+ int HW_LOCK_RESOURCE_GPIO ;
+ int MISC_REGISTERS_GPIO_3 ;
+ int MISC_REGISTERS_GPIO_CLR_POS ;
+ int MISC_REGISTERS_GPIO_FLOAT ;
+ int MISC_REGISTERS_GPIO_FLOAT_POS ;
+
+
+
+ int MISC_REGISTERS_GPIO_PORT_SHIFT ;
+ int MISC_REGISTERS_GPIO_SET_POS ;
+ int MISC_REG_GPIO ;
+ int NIG_REG_PORT_SWAP ;
+ int NIG_REG_STRAP_OVERRIDE ;
+ int REG_RD (struct bxe_softc*,int ) ;
+ int REG_WR (struct bxe_softc*,int ,int) ;
+ int bxe_acquire_hw_lock (struct bxe_softc*,int ) ;
+ int bxe_release_hw_lock (struct bxe_softc*,int ) ;
 
 __attribute__((used)) static int
 bxe_gpio_write(struct bxe_softc *sc,
-               int              gpio_num,
-               uint32_t         mode,
-               uint8_t          port)
+               int gpio_num,
+               uint32_t mode,
+               uint8_t port)
 {
-    /* The GPIO should be swapped if swap register is set and active */
+
     int gpio_port = ((REG_RD(sc, NIG_REG_PORT_SWAP) &&
                       REG_RD(sc, NIG_REG_STRAP_OVERRIDE)) ^ port);
     int gpio_shift = (gpio_num +
@@ -59,33 +59,33 @@ bxe_gpio_write(struct bxe_softc *sc,
 
     bxe_acquire_hw_lock(sc, HW_LOCK_RESOURCE_GPIO);
 
-    /* read GPIO and mask except the float bits */
+
     gpio_reg = (REG_RD(sc, MISC_REG_GPIO) & MISC_REGISTERS_GPIO_FLOAT);
 
     switch (mode) {
-    case MISC_REGISTERS_GPIO_OUTPUT_LOW:
+    case 128:
         BLOGD(sc, DBG_PHY,
               "Set GPIO %d (shift %d) -> output low\n",
               gpio_num, gpio_shift);
-        /* clear FLOAT and set CLR */
+
         gpio_reg &= ~(gpio_mask << MISC_REGISTERS_GPIO_FLOAT_POS);
-        gpio_reg |=  (gpio_mask << MISC_REGISTERS_GPIO_CLR_POS);
+        gpio_reg |= (gpio_mask << MISC_REGISTERS_GPIO_CLR_POS);
         break;
 
-    case MISC_REGISTERS_GPIO_OUTPUT_HIGH:
+    case 129:
         BLOGD(sc, DBG_PHY,
               "Set GPIO %d (shift %d) -> output high\n",
               gpio_num, gpio_shift);
-        /* clear FLOAT and set SET */
+
         gpio_reg &= ~(gpio_mask << MISC_REGISTERS_GPIO_FLOAT_POS);
-        gpio_reg |=  (gpio_mask << MISC_REGISTERS_GPIO_SET_POS);
+        gpio_reg |= (gpio_mask << MISC_REGISTERS_GPIO_SET_POS);
         break;
 
-    case MISC_REGISTERS_GPIO_INPUT_HI_Z:
+    case 130:
         BLOGD(sc, DBG_PHY,
               "Set GPIO %d (shift %d) -> input\n",
               gpio_num, gpio_shift);
-        /* set FLOAT */
+
         gpio_reg |= (gpio_mask << MISC_REGISTERS_GPIO_FLOAT_POS);
         break;
 

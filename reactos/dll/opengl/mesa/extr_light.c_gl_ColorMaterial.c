@@ -1,36 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int ColorMaterialFace; int ColorMaterialMode; int /*<<< orphan*/  ColorMaterialBitmask; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ColorMaterialFace; int ColorMaterialMode; int ColorMaterialBitmask; } ;
 struct TYPE_7__ {TYPE_1__ Light; } ;
-typedef  int GLenum ;
-typedef  TYPE_2__ GLcontext ;
+typedef int GLenum ;
+typedef TYPE_2__ GLcontext ;
+ int GL_INVALID_ENUM ;
+ int GL_INVALID_OPERATION ;
 
-/* Variables and functions */
-#define  GL_AMBIENT 135 
-#define  GL_AMBIENT_AND_DIFFUSE 134 
-#define  GL_BACK 133 
-#define  GL_DIFFUSE 132 
-#define  GL_EMISSION 131 
-#define  GL_FRONT 130 
-#define  GL_FRONT_AND_BACK 129 
- int /*<<< orphan*/  GL_INVALID_ENUM ; 
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
-#define  GL_SPECULAR 128 
- scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ; 
- int /*<<< orphan*/  gl_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gl_material_bitmask (int,int) ; 
+ scalar_t__ INSIDE_BEGIN_END (TYPE_2__*) ;
+ int gl_error (TYPE_2__*,int ,char*) ;
+ int gl_material_bitmask (int,int) ;
 
 void gl_ColorMaterial( GLcontext *ctx, GLenum face, GLenum mode )
 {
@@ -39,9 +30,9 @@ void gl_ColorMaterial( GLcontext *ctx, GLenum face, GLenum mode )
       return;
    }
    switch (face) {
-      case GL_FRONT:
-      case GL_BACK:
-      case GL_FRONT_AND_BACK:
+      case 130:
+      case 133:
+      case 129:
          ctx->Light.ColorMaterialFace = face;
          break;
       default:
@@ -49,11 +40,11 @@ void gl_ColorMaterial( GLcontext *ctx, GLenum face, GLenum mode )
          return;
    }
    switch (mode) {
-      case GL_EMISSION:
-      case GL_AMBIENT:
-      case GL_DIFFUSE:
-      case GL_SPECULAR:
-      case GL_AMBIENT_AND_DIFFUSE:
+      case 131:
+      case 135:
+      case 132:
+      case 128:
+      case 134:
          ctx->Light.ColorMaterialMode = mode;
          break;
       default:

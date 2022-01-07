@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- scalar_t__ isalnumW (char) ; 
- scalar_t__ isspaceW (char) ; 
+
+
+
+typedef char WCHAR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int debugstr_w (char*) ;
+ scalar_t__ isalnumW (char) ;
+ scalar_t__ isspaceW (char) ;
 
 __attribute__((used)) static BOOL parse_event_str(WCHAR *event, const WCHAR **args)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static BOOL parse_event_str(WCHAR *event, const WCHAR **ar
 
     for(ptr = event; isalnumW(*ptr); ptr++);
     if(!*ptr) {
-        *args = NULL;
+        *args = ((void*)0);
         return TRUE;
     }
 

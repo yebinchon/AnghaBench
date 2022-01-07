@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  valid_utf8_string_1 ;
-typedef  int lit_utf8_size_t ;
-typedef  int const lit_utf8_byte_t ;
-typedef  int /*<<< orphan*/  invalid_cesu8_string_3 ;
-typedef  int /*<<< orphan*/  invalid_cesu8_string_2 ;
-typedef  int /*<<< orphan*/  invalid_cesu8_string_1 ;
-typedef  int /*<<< orphan*/  ecma_string_t ;
-typedef  size_t ecma_length_t ;
-typedef  scalar_t__ ecma_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- int /*<<< orphan*/  ecma_deref_ecma_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ecma_finalize () ; 
- int /*<<< orphan*/  ecma_init () ; 
- int /*<<< orphan*/ * ecma_new_ecma_string_from_utf8 (int const*,int) ; 
- size_t ecma_string_get_length (int /*<<< orphan*/ *) ; 
- size_t generate_cesu8_string (int const*,int) ; 
- int /*<<< orphan*/  jmem_finalize () ; 
- int /*<<< orphan*/  jmem_init () ; 
- int lit_code_unit_to_utf8 (int,int const*) ; 
- int lit_is_valid_cesu8_string (int const*,int) ; 
- int /*<<< orphan*/  lit_utf8_decr (int const**) ; 
- int /*<<< orphan*/  lit_utf8_incr (int const**) ; 
- scalar_t__ lit_utf8_peek_next (int const*) ; 
- scalar_t__ lit_utf8_peek_prev (int const*) ; 
- scalar_t__ lit_utf8_read_next (int const**) ; 
- scalar_t__ lit_utf8_read_prev (int const**) ; 
- size_t lit_utf8_string_length (int const*,int) ; 
- int max_bytes_in_string ; 
- int max_code_units_in_string ; 
- int rand () ; 
- int test_iters ; 
- int test_subiters ; 
+
+
+
+typedef int valid_utf8_string_1 ;
+typedef int lit_utf8_size_t ;
+typedef int const lit_utf8_byte_t ;
+typedef int invalid_cesu8_string_3 ;
+typedef int invalid_cesu8_string_2 ;
+typedef int invalid_cesu8_string_1 ;
+typedef int ecma_string_t ;
+typedef size_t ecma_length_t ;
+typedef scalar_t__ ecma_char_t ;
+
+
+ int TEST_ASSERT (int) ;
+ int TEST_INIT () ;
+ int ecma_deref_ecma_string (int *) ;
+ int ecma_finalize () ;
+ int ecma_init () ;
+ int * ecma_new_ecma_string_from_utf8 (int const*,int) ;
+ size_t ecma_string_get_length (int *) ;
+ size_t generate_cesu8_string (int const*,int) ;
+ int jmem_finalize () ;
+ int jmem_init () ;
+ int lit_code_unit_to_utf8 (int,int const*) ;
+ int lit_is_valid_cesu8_string (int const*,int) ;
+ int lit_utf8_decr (int const**) ;
+ int lit_utf8_incr (int const**) ;
+ scalar_t__ lit_utf8_peek_next (int const*) ;
+ scalar_t__ lit_utf8_peek_prev (int const*) ;
+ scalar_t__ lit_utf8_read_next (int const**) ;
+ scalar_t__ lit_utf8_read_prev (int const**) ;
+ size_t lit_utf8_string_length (int const*,int) ;
+ int max_bytes_in_string ;
+ int max_code_units_in_string ;
+ int rand () ;
+ int test_iters ;
+ int test_subiters ;
 
 int
 main (void)
@@ -128,19 +128,19 @@ main (void)
     TEST_ASSERT (calculated_length == 0);
   }
 
-  /* Overlong-encoded code point */
+
   lit_utf8_byte_t invalid_cesu8_string_1[] = {0xC0, 0x82};
   TEST_ASSERT (!lit_is_valid_cesu8_string (invalid_cesu8_string_1, sizeof (invalid_cesu8_string_1)));
 
-  /* Overlong-encoded code point */
+
   lit_utf8_byte_t invalid_cesu8_string_2[] = {0xE0, 0x80, 0x81};
   TEST_ASSERT (!lit_is_valid_cesu8_string (invalid_cesu8_string_2, sizeof (invalid_cesu8_string_2)));
 
-  /* Pair of surrogates: 0xD901 0xDFF0 which encode Unicode character 0x507F0 */
+
   lit_utf8_byte_t invalid_cesu8_string_3[] = {0xED, 0xA4, 0x81, 0xED, 0xBF, 0xB0};
   TEST_ASSERT (lit_is_valid_cesu8_string (invalid_cesu8_string_3, sizeof (invalid_cesu8_string_3)));
 
-  /* Isolated high surrogate 0xD901 */
+
   lit_utf8_byte_t valid_utf8_string_1[] = {0xED, 0xA4, 0x81};
   TEST_ASSERT (lit_is_valid_cesu8_string (valid_utf8_string_1, sizeof (valid_utf8_string_1)));
 

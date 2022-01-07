@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct tty_driver {int /*<<< orphan*/ ** ttys; TYPE_1__* ops; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct tty_driver {int ** ttys; TYPE_1__* ops; } ;
 struct TYPE_4__ {struct tty* other; } ;
-struct tty {scalar_t__ refcount; size_t num; int /*<<< orphan*/  lock; TYPE_2__ pty; struct tty_driver* driver; int /*<<< orphan*/  produced; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* cleanup ) (struct tty*) ;} ;
+struct tty {scalar_t__ refcount; size_t num; int lock; TYPE_2__ pty; struct tty_driver* driver; int produced; } ;
+struct TYPE_3__ {int (* cleanup ) (struct tty*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cond_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct tty*) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- struct tty_driver pty_slave ; 
- int /*<<< orphan*/  stub1 (struct tty*) ; 
- int /*<<< orphan*/  tty_poll_wakeup (struct tty*) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
+
+ int cond_destroy (int *) ;
+ int free (struct tty*) ;
+ int lock (int *) ;
+ struct tty_driver pty_slave ;
+ int stub1 (struct tty*) ;
+ int tty_poll_wakeup (struct tty*) ;
+ int unlock (int *) ;
 
 void tty_release(struct tty *tty) {
     lock(&tty->lock);
@@ -32,17 +32,17 @@ void tty_release(struct tty *tty) {
         struct tty_driver *driver = tty->driver;
         if (driver->ops->cleanup)
             driver->ops->cleanup(tty);
-        driver->ttys[tty->num] = NULL;
+        driver->ttys[tty->num] = ((void*)0);
         unlock(&tty->lock);
         cond_destroy(&tty->produced);
         free(tty);
     } else {
-        // bit of a hack
-        struct tty *master = NULL;
+
+        struct tty *master = ((void*)0);
         if (tty->driver == &pty_slave && tty->refcount == 1)
             master = tty->pty.other;
         unlock(&tty->lock);
-        if (master != NULL) {
+        if (master != ((void*)0)) {
             lock(&master->lock);
             tty_poll_wakeup(master);
             unlock(&master->lock);

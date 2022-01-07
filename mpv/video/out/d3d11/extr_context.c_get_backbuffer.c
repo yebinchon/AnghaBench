@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra_tex {int dummy; } ;
-struct ra_ctx {int /*<<< orphan*/  ra; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  swapchain; } ;
-typedef  int /*<<< orphan*/  ID3D11Texture2D ;
-typedef  int /*<<< orphan*/  ID3D11Resource ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct ra_ctx {int ra; struct priv* priv; } ;
+struct priv {int swapchain; } ;
+typedef int ID3D11Texture2D ;
+typedef int ID3D11Resource ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDXGISwapChain_GetBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_ID3D11Texture2D ; 
- int /*<<< orphan*/  MP_ERR (struct ra_ctx*,char*) ; 
- int /*<<< orphan*/  SAFE_RELEASE (int /*<<< orphan*/ *) ; 
- struct ra_tex* ra_d3d11_wrap_tex (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IDXGISwapChain_GetBuffer (int ,int ,int *,void**) ;
+ int IID_ID3D11Texture2D ;
+ int MP_ERR (struct ra_ctx*,char*) ;
+ int SAFE_RELEASE (int *) ;
+ struct ra_tex* ra_d3d11_wrap_tex (int ,int *) ;
 
 __attribute__((used)) static struct ra_tex *get_backbuffer(struct ra_ctx *ctx)
 {
     struct priv *p = ctx->priv;
-    ID3D11Texture2D *backbuffer = NULL;
-    struct ra_tex *tex = NULL;
+    ID3D11Texture2D *backbuffer = ((void*)0);
+    struct ra_tex *tex = ((void*)0);
     HRESULT hr;
 
     hr = IDXGISwapChain_GetBuffer(p->swapchain, 0, &IID_ID3D11Texture2D,

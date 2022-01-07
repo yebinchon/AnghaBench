@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_2__* opaque; } ;
 struct TYPE_11__ {scalar_t__ channels; scalar_t__ format; } ;
-struct TYPE_12__ {scalar_t__ buffer_size; int pause_on; int /*<<< orphan*/ * atrack; int /*<<< orphan*/  audio_tid; int /*<<< orphan*/  _audio_tid; scalar_t__ abort_request; int /*<<< orphan*/  audio_session_id; int /*<<< orphan*/  buffer; TYPE_1__ spec; } ;
-typedef  TYPE_1__ SDL_AudioSpec ;
-typedef  TYPE_2__ SDL_Aout_Opaque ;
-typedef  TYPE_3__ SDL_Aout ;
-typedef  int /*<<< orphan*/  JNIEnv ;
+struct TYPE_12__ {scalar_t__ buffer_size; int pause_on; int * atrack; int audio_tid; int _audio_tid; scalar_t__ abort_request; int audio_session_id; int buffer; TYPE_1__ spec; } ;
+typedef TYPE_1__ SDL_AudioSpec ;
+typedef TYPE_2__ SDL_Aout_Opaque ;
+typedef TYPE_3__ SDL_Aout ;
+typedef int JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGE (char*) ; 
- int /*<<< orphan*/  ALOGI (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDLTRACE (char*,int,int) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_getAudioSessionId (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SDL_Android_AudioTrack_get_min_buffer_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_get_target_spec (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * SDL_Android_AudioTrack_new_from_sdl_spec (int /*<<< orphan*/ *,TYPE_1__ const*) ; 
- int /*<<< orphan*/  SDL_CreateThreadEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*,char*) ; 
- int /*<<< orphan*/  aout_thread ; 
- int /*<<< orphan*/  assert (TYPE_1__ const*) ; 
- int /*<<< orphan*/  malloc (scalar_t__) ; 
+
+ int ALOGE (char*) ;
+ int ALOGI (char*,int ) ;
+ int SDLTRACE (char*,int,int) ;
+ int SDL_Android_AudioTrack_free (int *,int *) ;
+ int SDL_Android_AudioTrack_getAudioSessionId (int *,int *) ;
+ scalar_t__ SDL_Android_AudioTrack_get_min_buffer_size (int *) ;
+ int SDL_Android_AudioTrack_get_target_spec (int *,TYPE_1__*) ;
+ int * SDL_Android_AudioTrack_new_from_sdl_spec (int *,TYPE_1__ const*) ;
+ int SDL_CreateThreadEx (int *,int ,TYPE_3__*,char*) ;
+ int aout_thread ;
+ int assert (TYPE_1__ const*) ;
+ int malloc (scalar_t__) ;
 
 __attribute__((used)) static int aout_open_audio_n(JNIEnv *env, SDL_Aout *aout, const SDL_AudioSpec *desired, SDL_AudioSpec *obtained)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int aout_open_audio_n(JNIEnv *env, SDL_Aout *aout, 
     if (opaque->buffer_size <= 0) {
         ALOGE("aout_open_audio_n: failed to getMinBufferSize()");
         SDL_Android_AudioTrack_free(env, opaque->atrack);
-        opaque->atrack = NULL;
+        opaque->atrack = ((void*)0);
         return -1;
     }
 
@@ -59,7 +59,7 @@ __attribute__((used)) static int aout_open_audio_n(JNIEnv *env, SDL_Aout *aout, 
     if (!opaque->buffer) {
         ALOGE("aout_open_audio_n: failed to allocate buffer");
         SDL_Android_AudioTrack_free(env, opaque->atrack);
-        opaque->atrack = NULL;
+        opaque->atrack = ((void*)0);
         return -1;
     }
 
@@ -77,7 +77,7 @@ __attribute__((used)) static int aout_open_audio_n(JNIEnv *env, SDL_Aout *aout, 
     if (!opaque->audio_tid) {
         ALOGE("aout_open_audio_n: failed to create audio thread");
         SDL_Android_AudioTrack_free(env, opaque->atrack);
-        opaque->atrack = NULL;
+        opaque->atrack = ((void*)0);
         return -1;
     }
 

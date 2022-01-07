@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct controller {TYPE_1__* slot; } ;
-struct TYPE_2__ {int /*<<< orphan*/  hotplug_slot; } ;
+struct TYPE_2__ {int hotplug_slot; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pci_hp_deregister (int /*<<< orphan*/ ) ; 
+
+ int pci_hp_deregister (int ) ;
 
 __attribute__((used)) static void cleanup_slot(struct controller *ctrl)
 {
-	pci_hp_deregister(ctrl->slot->hotplug_slot);
+ pci_hp_deregister(ctrl->slot->hotplug_slot);
 }

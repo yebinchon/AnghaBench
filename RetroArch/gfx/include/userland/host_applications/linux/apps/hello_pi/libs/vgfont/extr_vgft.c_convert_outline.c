@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FT_Vector ;
 
-/* Variables and functions */
- scalar_t__ COORDS_COUNT_MAX ; 
- scalar_t__ SEGMENTS_COUNT_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  convert_contour (int /*<<< orphan*/  const*,char const*,short) ; 
- scalar_t__ coords_count ; 
- scalar_t__ segments_count ; 
+
+
+
+typedef int FT_Vector ;
+
+
+ scalar_t__ COORDS_COUNT_MAX ;
+ scalar_t__ SEGMENTS_COUNT_MAX ;
+ int assert (int) ;
+ int convert_contour (int const*,char const*,short) ;
+ scalar_t__ coords_count ;
+ scalar_t__ segments_count ;
 
 __attribute__((used)) static void convert_outline(const FT_Vector *points, const char *tags, const short *contours, short contours_count, short points_count)
 {
@@ -33,6 +33,6 @@ __attribute__((used)) static void convert_outline(const FT_Vector *points, const
    }
    assert(last_contour == points_count);
 
-   assert(segments_count <= SEGMENTS_COUNT_MAX); /* oops... we overwrote some memory */
+   assert(segments_count <= SEGMENTS_COUNT_MAX);
    assert(coords_count <= COORDS_COUNT_MAX);
 }

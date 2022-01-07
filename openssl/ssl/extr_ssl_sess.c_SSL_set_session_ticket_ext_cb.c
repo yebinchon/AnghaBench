@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tls_session_ticket_ext_cb_fn ;
-struct TYPE_4__ {void* session_ticket_cb_arg; int /*<<< orphan*/  session_ticket_cb; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tls_session_ticket_ext_cb_fn ;
+struct TYPE_4__ {void* session_ticket_cb_arg; int session_ticket_cb; } ;
 struct TYPE_5__ {TYPE_1__ ext; } ;
-typedef  TYPE_2__ SSL ;
+typedef TYPE_2__ SSL ;
 
-/* Variables and functions */
+
 
 int SSL_set_session_ticket_ext_cb(SSL *s, tls_session_ticket_ext_cb_fn cb,
                                   void *arg)
 {
-    if (s == NULL)
+    if (s == ((void*)0))
         return 0;
     s->ext.session_ticket_cb = cb;
     s->ext.session_ticket_cb_arg = arg;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ iType; } ;
-typedef  int /*<<< orphan*/  PLWriter ;
-typedef  int /*<<< orphan*/  PLReader ;
-typedef  TYPE_1__ DLWriter ;
-typedef  int /*<<< orphan*/  DLReader ;
+typedef int PLWriter ;
+typedef int PLReader ;
+typedef TYPE_1__ DLWriter ;
+typedef int DLReader ;
 
-/* Variables and functions */
- scalar_t__ DL_POSITIONS_OFFSETS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ dlrDocid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrAtEnd (int /*<<< orphan*/ *) ; 
- scalar_t__ plrColumn (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ plrPosition (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrStep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwAdd (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plwDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwInit (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  plwTerminate (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DL_POSITIONS_OFFSETS ;
+ int assert (int) ;
+ scalar_t__ dlrDocid (int *) ;
+ int plrAtEnd (int *) ;
+ scalar_t__ plrColumn (int *) ;
+ int plrDestroy (int *) ;
+ int plrInit (int *,int *) ;
+ scalar_t__ plrPosition (int *) ;
+ int plrStep (int *) ;
+ int plwAdd (int *,scalar_t__,scalar_t__,int ,int ) ;
+ int plwDestroy (int *) ;
+ int plwInit (int *,TYPE_1__*,scalar_t__) ;
+ int plwTerminate (int *) ;
 
 __attribute__((used)) static void posListPhraseMerge(DLReader *pLeft, DLReader *pRight,
                                DLWriter *pOut){

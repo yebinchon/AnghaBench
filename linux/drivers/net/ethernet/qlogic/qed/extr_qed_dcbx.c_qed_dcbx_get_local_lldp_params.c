@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct qed_hwfn {TYPE_1__* p_dcbx_info; } ;
-struct TYPE_4__ {int /*<<< orphan*/  local_port_id; int /*<<< orphan*/  local_chassis_id; } ;
+struct TYPE_4__ {int local_port_id; int local_chassis_id; } ;
 struct qed_dcbx_get {TYPE_2__ lldp_local; } ;
-struct lldp_config_params_s {int /*<<< orphan*/  local_port_id; int /*<<< orphan*/  local_chassis_id; } ;
+struct lldp_config_params_s {int local_port_id; int local_chassis_id; } ;
 struct TYPE_3__ {struct lldp_config_params_s* lldp_local; } ;
 
-/* Variables and functions */
- size_t LLDP_NEAREST_BRIDGE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ size_t LLDP_NEAREST_BRIDGE ;
+ int memcpy (int ,int ,int) ;
 
 __attribute__((used)) static void
 qed_dcbx_get_local_lldp_params(struct qed_hwfn *p_hwfn,
-			       struct qed_dcbx_get *params)
+          struct qed_dcbx_get *params)
 {
-	struct lldp_config_params_s *p_local;
+ struct lldp_config_params_s *p_local;
 
-	p_local = &p_hwfn->p_dcbx_info->lldp_local[LLDP_NEAREST_BRIDGE];
+ p_local = &p_hwfn->p_dcbx_info->lldp_local[LLDP_NEAREST_BRIDGE];
 
-	memcpy(params->lldp_local.local_chassis_id, p_local->local_chassis_id,
-	       sizeof(p_local->local_chassis_id));
-	memcpy(params->lldp_local.local_port_id, p_local->local_port_id,
-	       sizeof(p_local->local_port_id));
+ memcpy(params->lldp_local.local_chassis_id, p_local->local_chassis_id,
+        sizeof(p_local->local_chassis_id));
+ memcpy(params->lldp_local.local_port_id, p_local->local_port_id,
+        sizeof(p_local->local_port_id));
 }

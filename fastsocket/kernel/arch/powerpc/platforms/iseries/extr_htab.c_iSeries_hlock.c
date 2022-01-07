@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * iSeries_hlocks ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
+ int * iSeries_hlocks ;
+ int spin_lock (int *) ;
 
 __attribute__((used)) static inline void iSeries_hlock(unsigned long slot)
 {
-	if (slot & 0x8)
-		slot = ~slot;
-	spin_lock(&iSeries_hlocks[(slot >> 4) & 0x3f]);
+ if (slot & 0x8)
+  slot = ~slot;
+ spin_lock(&iSeries_hlocks[(slot >> 4) & 0x3f]);
 }

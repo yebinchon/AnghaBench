@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int EVP_MD_CTX ;
+
+
+ int EVP_MD_CTX_free (int *) ;
 
 void ssl_clear_hash_ctx(EVP_MD_CTX **hash)
 {
 
     EVP_MD_CTX_free(*hash);
-    *hash = NULL;
+    *hash = ((void*)0);
 }

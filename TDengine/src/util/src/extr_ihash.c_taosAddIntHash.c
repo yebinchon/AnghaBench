@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  size_t int32_t ;
-struct TYPE_5__ {scalar_t__ data; struct TYPE_5__* prev; struct TYPE_5__* next; int /*<<< orphan*/  key; } ;
-struct TYPE_4__ {scalar_t__ maxSessions; size_t (* hashFp ) (TYPE_1__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  mutex; TYPE_2__** hashList; scalar_t__ dataSize; } ;
-typedef  TYPE_1__ IHashObj ;
-typedef  TYPE_2__ IHashNode ;
 
-/* Variables and functions */
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char*,size_t) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- size_t stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef size_t int32_t ;
+struct TYPE_5__ {scalar_t__ data; struct TYPE_5__* prev; struct TYPE_5__* next; int key; } ;
+struct TYPE_4__ {scalar_t__ maxSessions; size_t (* hashFp ) (TYPE_1__*,int ) ;int mutex; TYPE_2__** hashList; scalar_t__ dataSize; } ;
+typedef TYPE_1__ IHashObj ;
+typedef TYPE_2__ IHashNode ;
+
+
+ scalar_t__ malloc (int) ;
+ int memcpy (scalar_t__,char*,size_t) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ size_t stub1 (TYPE_1__*,int ) ;
 
 char *taosAddIntHash(void *handle, uint64_t key, char *pData) {
-  int32_t    hash;
+  int32_t hash;
   IHashNode *pNode;
   IHashObj * pObj;
 
   pObj = (IHashObj *)handle;
-  if (pObj == NULL || pObj->maxSessions == 0) return NULL;
+  if (pObj == ((void*)0) || pObj->maxSessions == 0) return ((void*)0);
 
   hash = (*pObj->hashFp)(pObj, key);
 
   pNode = (IHashNode *)malloc(sizeof(IHashNode) + (size_t)pObj->dataSize);
-  if (pNode == NULL)
-    return NULL;
-  
+  if (pNode == ((void*)0))
+    return ((void*)0);
+
   pthread_mutex_lock(&pObj->mutex);
 
   pNode->key = key;
-  if (pData != NULL) {
+  if (pData != ((void*)0)) {
     memcpy(pNode->data, pData, (size_t)pObj->dataSize);
   }
   pNode->prev = 0;

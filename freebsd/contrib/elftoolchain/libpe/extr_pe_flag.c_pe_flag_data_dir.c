@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pe_flags; } ;
-typedef  scalar_t__ PE_Cmd ;
-typedef  TYPE_1__ PE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  LIBPE_F_DIRTY_OPT_HEADER ; 
- scalar_t__ PE_C_CLR ; 
- scalar_t__ PE_C_SET ; 
- unsigned int PE_F_DIRTY ; 
- int /*<<< orphan*/  errno ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pe_flags; } ;
+typedef scalar_t__ PE_Cmd ;
+typedef TYPE_1__ PE ;
+
+
+ int EINVAL ;
+ int LIBPE_F_DIRTY_OPT_HEADER ;
+ scalar_t__ PE_C_CLR ;
+ scalar_t__ PE_C_SET ;
+ unsigned int PE_F_DIRTY ;
+ int errno ;
 
 int
 pe_flag_data_dir(PE *pe, PE_Cmd c, unsigned int flags)
 {
 
-	if (pe == NULL || (c != PE_C_SET && c != PE_C_CLR) ||
-	    (flags & ~PE_F_DIRTY) != 0) {
-		errno = EINVAL;
-		return (-1);
-	}
+ if (pe == ((void*)0) || (c != PE_C_SET && c != PE_C_CLR) ||
+     (flags & ~PE_F_DIRTY) != 0) {
+  errno = EINVAL;
+  return (-1);
+ }
 
-	if (c == PE_C_SET)
-		pe->pe_flags |= LIBPE_F_DIRTY_OPT_HEADER;
-	else
-		pe->pe_flags &= ~LIBPE_F_DIRTY_OPT_HEADER;
+ if (c == PE_C_SET)
+  pe->pe_flags |= LIBPE_F_DIRTY_OPT_HEADER;
+ else
+  pe->pe_flags &= ~LIBPE_F_DIRTY_OPT_HEADER;
 
-	return (0);
+ return (0);
 }

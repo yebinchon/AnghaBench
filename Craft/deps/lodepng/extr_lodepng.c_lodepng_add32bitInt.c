@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ ucvector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lodepng_set32bitInt (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  ucvector_resize (TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int size; int * data; } ;
+typedef TYPE_1__ ucvector ;
+
+
+ int lodepng_set32bitInt (int *,unsigned int) ;
+ int ucvector_resize (TYPE_1__*,int) ;
 
 __attribute__((used)) static void lodepng_add32bitInt(ucvector* buffer, unsigned value)
 {
-  ucvector_resize(buffer, buffer->size + 4); /*todo: give error if resize failed*/
+  ucvector_resize(buffer, buffer->size + 4);
   lodepng_set32bitInt(&buffer->data[buffer->size - 4], value);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  quarter_sample; int /*<<< orphan*/  mb_stride; int /*<<< orphan*/  mb_height; int /*<<< orphan*/  mb_width; int /*<<< orphan*/  low_delay; int /*<<< orphan*/  mbskip_table; int /*<<< orphan*/  avctx; } ;
-struct TYPE_5__ {int /*<<< orphan*/  motion_val; int /*<<< orphan*/  qscale_table; int /*<<< orphan*/  mb_type; } ;
-typedef  TYPE_1__ Picture ;
-typedef  TYPE_2__ MpegEncContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_print_debug_info2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int quarter_sample; int mb_stride; int mb_height; int mb_width; int low_delay; int mbskip_table; int avctx; } ;
+struct TYPE_5__ {int motion_val; int qscale_table; int mb_type; } ;
+typedef TYPE_1__ Picture ;
+typedef TYPE_2__ MpegEncContext ;
+typedef int AVFrame ;
+
+
+ int ff_print_debug_info2 (int ,int *,int ,int ,int ,int ,int *,int ,int ,int ,int ) ;
 
 void ff_print_debug_info(MpegEncContext *s, Picture *p, AVFrame *pict)
 {

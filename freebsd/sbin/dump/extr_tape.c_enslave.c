@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ pid; int fd; scalar_t__ sent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNIX ; 
- int /*<<< orphan*/  Exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIGUSR2 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int SLAVES ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  X_FINOK ; 
- int /*<<< orphan*/  atomic (int /*<<< orphan*/ ,int,char*,int) ; 
- int caught ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  doslave (int,int) ; 
- int /*<<< orphan*/  dumpabort ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fork () ; 
- scalar_t__ getpid () ; 
- scalar_t__ master ; 
- int /*<<< orphan*/  proceed ; 
- int /*<<< orphan*/  quit (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigpipe ; 
- TYPE_1__* slaves ; 
- TYPE_1__* slp ; 
- scalar_t__ socketpair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tperror ; 
- int /*<<< orphan*/  write ; 
+
+ int AF_UNIX ;
+ int Exit (int ) ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int SIGUSR2 ;
+ int SIG_IGN ;
+ int SLAVES ;
+ int SOCK_STREAM ;
+ int X_FINOK ;
+ int atomic (int ,int,char*,int) ;
+ int caught ;
+ int close (int) ;
+ int doslave (int,int) ;
+ int dumpabort ;
+ int errno ;
+ scalar_t__ fork () ;
+ scalar_t__ getpid () ;
+ scalar_t__ master ;
+ int proceed ;
+ int quit (char*,int,int ) ;
+ int signal (int ,int ) ;
+ int sigpipe ;
+ TYPE_1__* slaves ;
+ TYPE_1__* slp ;
+ scalar_t__ socketpair (int ,int ,int ,int*) ;
+ int strerror (int ) ;
+ int tperror ;
+ int write ;
 
 void
 enslave(void)
 {
-	int cmd[2];
-	int i, j;
+ int cmd[2];
+ int i, j;
 
-	master = getpid();
+ master = getpid();
 
-	signal(SIGTERM, dumpabort);  /* Slave sends SIGTERM on dumpabort() */
-	signal(SIGPIPE, sigpipe);
-	signal(SIGUSR1, tperror);    /* Slave sends SIGUSR1 on tape errors */
-	signal(SIGUSR2, proceed);    /* Slave sends SIGUSR2 to next slave */
+ signal(SIGTERM, dumpabort);
+ signal(SIGPIPE, sigpipe);
+ signal(SIGUSR1, tperror);
+ signal(SIGUSR2, proceed);
 
-	for (i = 0; i < SLAVES; i++) {
-		if (i == slp - &slaves[0]) {
-			caught = 1;
-		} else {
-			caught = 0;
-		}
+ for (i = 0; i < SLAVES; i++) {
+  if (i == slp - &slaves[0]) {
+   caught = 1;
+  } else {
+   caught = 0;
+  }
 
-		if (socketpair(AF_UNIX, SOCK_STREAM, 0, cmd) < 0 ||
-		    (slaves[i].pid = fork()) < 0)
-			quit("too many slaves, %d (recompile smaller): %s\n",
-			    i, strerror(errno));
+  if (socketpair(AF_UNIX, SOCK_STREAM, 0, cmd) < 0 ||
+      (slaves[i].pid = fork()) < 0)
+   quit("too many slaves, %d (recompile smaller): %s\n",
+       i, strerror(errno));
 
-		slaves[i].fd = cmd[1];
-		slaves[i].sent = 0;
-		if (slaves[i].pid == 0) { 	    /* Slave starts up here */
-			for (j = 0; j <= i; j++)
-			        (void) close(slaves[j].fd);
-			signal(SIGINT, SIG_IGN);    /* Master handles this */
-			doslave(cmd[0], i);
-			Exit(X_FINOK);
-		}
-	}
+  slaves[i].fd = cmd[1];
+  slaves[i].sent = 0;
+  if (slaves[i].pid == 0) {
+   for (j = 0; j <= i; j++)
+           (void) close(slaves[j].fd);
+   signal(SIGINT, SIG_IGN);
+   doslave(cmd[0], i);
+   Exit(X_FINOK);
+  }
+ }
 
-	for (i = 0; i < SLAVES; i++)
-		(void) atomic(write, slaves[i].fd,
-			      (char *) &slaves[(i + 1) % SLAVES].pid,
-		              sizeof slaves[0].pid);
+ for (i = 0; i < SLAVES; i++)
+  (void) atomic(write, slaves[i].fd,
+         (char *) &slaves[(i + 1) % SLAVES].pid,
+                sizeof slaves[0].pid);
 
-	master = 0;
+ master = 0;
 }

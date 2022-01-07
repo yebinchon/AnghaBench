@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tdesc_t ;
-typedef  int /*<<< orphan*/  dwarf_t ;
-typedef  int /*<<< orphan*/  Dwarf_Off ;
-typedef  int /*<<< orphan*/  Dwarf_Die ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNION ; 
- int /*<<< orphan*/  die_sou_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int tdesc_t ;
+typedef int dwarf_t ;
+typedef int Dwarf_Off ;
+typedef int Dwarf_Die ;
+
+
+ int UNION ;
+ int die_sou_create (int *,int ,int ,int *,int ,char*) ;
 
 __attribute__((used)) static void
 die_union_create(dwarf_t *dw, Dwarf_Die die, Dwarf_Off off, tdesc_t *tdp)
 {
-	die_sou_create(dw, die, off, tdp, UNION, "union");
+ die_sou_create(dw, die, off, tdp, UNION, "union");
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct hts_data {TYPE_1__* extra; } ;
 struct connection {scalar_t__ status; scalar_t__ pending_queries; } ;
 struct TYPE_4__ {scalar_t__ finish_time; } ;
-typedef  TYPE_1__ php_worker ;
+typedef TYPE_1__ php_worker ;
 
-/* Variables and functions */
- struct hts_data* HTS_DATA (struct connection*) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conn_expect_query ; 
- scalar_t__ conn_wait_net ; 
- int /*<<< orphan*/  hts_at_query_end (struct connection*,int) ; 
- int php_worker_main (TYPE_1__*) ; 
- int /*<<< orphan*/  php_worker_terminate (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ precise_now ; 
+
+ struct hts_data* HTS_DATA (struct connection*) ;
+ int assert (int) ;
+ scalar_t__ conn_expect_query ;
+ scalar_t__ conn_wait_net ;
+ int hts_at_query_end (struct connection*,int) ;
+ int php_worker_main (TYPE_1__*) ;
+ int php_worker_terminate (TYPE_1__*,int ,char*) ;
+ scalar_t__ precise_now ;
 
 int hts_func_wakeup (struct connection *c) {
   struct hts_data *D = HTS_DATA(c);

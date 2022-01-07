@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_6__ {int /*<<< orphan*/ * dither; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-typedef  int /*<<< orphan*/  va_list ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_6__ {int * dither; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+typedef int va_list ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
-#define  VOUT_DISPLAY_CHANGE_DISPLAY_FILLED 132 
-#define  VOUT_DISPLAY_CHANGE_DISPLAY_SIZE 131 
-#define  VOUT_DISPLAY_CHANGE_SOURCE_ASPECT 130 
-#define  VOUT_DISPLAY_CHANGE_SOURCE_CROP 129 
-#define  VOUT_DISPLAY_CHANGE_ZOOM 128 
- int /*<<< orphan*/  cucul_free_dither (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+
+
+
+
+
+ int cucul_free_dither (int *) ;
+ int msg_Err (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int Control(vout_display_t *vd, int query, va_list args)
 {
@@ -36,15 +36,15 @@ __attribute__((used)) static int Control(vout_display_t *vd, int query, va_list 
     (void) args;
 
     switch (query) {
-    case VOUT_DISPLAY_CHANGE_SOURCE_CROP:
+    case 129:
         if (sys->dither)
             cucul_free_dither(sys->dither);
-        sys->dither = NULL;
-        /* fall through */
-    case VOUT_DISPLAY_CHANGE_DISPLAY_SIZE:
-    case VOUT_DISPLAY_CHANGE_ZOOM:
-    case VOUT_DISPLAY_CHANGE_DISPLAY_FILLED:
-    case VOUT_DISPLAY_CHANGE_SOURCE_ASPECT:
+        sys->dither = ((void*)0);
+
+    case 131:
+    case 128:
+    case 132:
+    case 130:
         return VLC_SUCCESS;
 
     default:

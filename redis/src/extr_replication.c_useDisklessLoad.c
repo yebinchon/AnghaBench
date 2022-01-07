@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ repl_diskless_load; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- scalar_t__ REPL_DISKLESS_LOAD_SWAPDB ; 
- scalar_t__ REPL_DISKLESS_LOAD_WHEN_DB_EMPTY ; 
- scalar_t__ dbTotalServerKeyCount () ; 
- int /*<<< orphan*/  moduleAllDatatypesHandleErrors () ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*) ; 
+
+ int LL_WARNING ;
+ scalar_t__ REPL_DISKLESS_LOAD_SWAPDB ;
+ scalar_t__ REPL_DISKLESS_LOAD_WHEN_DB_EMPTY ;
+ scalar_t__ dbTotalServerKeyCount () ;
+ int moduleAllDatatypesHandleErrors () ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*) ;
 
 __attribute__((used)) static int useDisklessLoad() {
-    /* compute boolean decision to use diskless load */
+
     int enabled = server.repl_diskless_load == REPL_DISKLESS_LOAD_SWAPDB ||
            (server.repl_diskless_load == REPL_DISKLESS_LOAD_WHEN_DB_EMPTY && dbTotalServerKeyCount()==0);
-    /* Check all modules handle read errors, otherwise it's not safe to use diskless load. */
+
     if (enabled && !moduleAllDatatypesHandleErrors()) {
         serverLog(LL_WARNING,
             "Skipping diskless-load because there are modules that don't handle read errors.");

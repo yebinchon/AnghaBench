@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pdf_obj ;
-typedef  int /*<<< orphan*/  fz_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDF_FALSE ; 
- int /*<<< orphan*/  PDF_TRUE ; 
- int /*<<< orphan*/  pdf_array_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pdf_obj ;
+typedef int fz_context ;
+
+
+ int PDF_FALSE ;
+ int PDF_TRUE ;
+ int pdf_array_push (int *,int *,int ) ;
 
 void pdf_array_push_bool(fz_context *ctx, pdf_obj *array, int x)
 {
-	pdf_array_push(ctx, array, x ? PDF_TRUE : PDF_FALSE);
+ pdf_array_push(ctx, array, x ? PDF_TRUE : PDF_FALSE);
 }

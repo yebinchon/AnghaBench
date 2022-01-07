@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  top_tcp_ports ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int top_tcp_ports ;
 struct RangeList {int dummy; } ;
 struct TYPE_2__ {scalar_t__ udp; scalar_t__ tcp; } ;
 struct Masscan {TYPE_1__ scan_type; struct RangeList ports; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rangelist_add_range (struct RangeList*,unsigned short const,unsigned short const) ; 
- int /*<<< orphan*/  rangelist_sort (struct RangeList*) ; 
+
+ int rangelist_add_range (struct RangeList*,unsigned short const,unsigned short const) ;
+ int rangelist_sort (struct RangeList*) ;
 
 __attribute__((used)) static void
 config_top_ports(struct Masscan *masscan, unsigned n)
@@ -113,6 +113,6 @@ config_top_ports(struct Masscan *masscan, unsigned n)
             rangelist_add_range(ports, top_tcp_ports[i], top_tcp_ports[i]);
     }
 
-    /* Targets must be sorted after every change, before being used */
+
     rangelist_sort(ports);
 }

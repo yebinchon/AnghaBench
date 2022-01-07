@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sdio_func {int dummy; } ;
 struct hci_dev {int dummy; } ;
-struct btmtksdio_dev {struct hci_dev* hdev; int /*<<< orphan*/  dev; } ;
+struct btmtksdio_dev {struct hci_dev* hdev; int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hci_free_dev (struct hci_dev*) ; 
- int /*<<< orphan*/  hci_unregister_dev (struct hci_dev*) ; 
- int /*<<< orphan*/  pm_runtime_get_noresume (int /*<<< orphan*/ ) ; 
- struct btmtksdio_dev* sdio_get_drvdata (struct sdio_func*) ; 
- int /*<<< orphan*/  sdio_set_drvdata (struct sdio_func*,int /*<<< orphan*/ *) ; 
+
+ int hci_free_dev (struct hci_dev*) ;
+ int hci_unregister_dev (struct hci_dev*) ;
+ int pm_runtime_get_noresume (int ) ;
+ struct btmtksdio_dev* sdio_get_drvdata (struct sdio_func*) ;
+ int sdio_set_drvdata (struct sdio_func*,int *) ;
 
 __attribute__((used)) static void btmtksdio_remove(struct sdio_func *func)
 {
-	struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
-	struct hci_dev *hdev;
+ struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
+ struct hci_dev *hdev;
 
-	if (!bdev)
-		return;
+ if (!bdev)
+  return;
 
-	/* Be consistent the state in btmtksdio_probe */
-	pm_runtime_get_noresume(bdev->dev);
 
-	hdev = bdev->hdev;
+ pm_runtime_get_noresume(bdev->dev);
 
-	sdio_set_drvdata(func, NULL);
-	hci_unregister_dev(hdev);
-	hci_free_dev(hdev);
+ hdev = bdev->hdev;
+
+ sdio_set_drvdata(func, ((void*)0));
+ hci_unregister_dev(hdev);
+ hci_free_dev(hdev);
 }

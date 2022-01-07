@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  char WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  dispex; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ EnumeratorInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnumeratorConstr_info ; 
- int /*<<< orphan*/  EnumeratorConstr_value ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PROPF_CONSTR ; 
- int /*<<< orphan*/  alloc_enumerator (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  create_builtin_constructor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int script_ctx_t ;
+typedef int jsdisp_t ;
+typedef char WCHAR ;
+struct TYPE_3__ {int dispex; } ;
+typedef int HRESULT ;
+typedef TYPE_1__ EnumeratorInstance ;
+
+
+ int EnumeratorConstr_info ;
+ int EnumeratorConstr_value ;
+ scalar_t__ FAILED (int ) ;
+ int PROPF_CONSTR ;
+ int alloc_enumerator (int *,int *,TYPE_1__**) ;
+ int create_builtin_constructor (int *,int ,char const*,int *,int,int *,int **) ;
+ int jsdisp_release (int *) ;
 
 HRESULT create_enumerator_constr(script_ctx_t *ctx, jsdisp_t *object_prototype, jsdisp_t **ret)
 {

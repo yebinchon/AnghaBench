@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pevent {TYPE_1__* func_map; scalar_t__ func_count; } ;
-struct TYPE_2__ {char* mod; int /*<<< orphan*/  func; int /*<<< orphan*/  addr; } ;
+struct TYPE_2__ {char* mod; int func; int addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  func_map_init (struct pevent*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int func_map_init (struct pevent*) ;
+ int printf (char*,...) ;
 
 void pevent_print_funcs(struct pevent *pevent)
 {
-	int i;
+ int i;
 
-	if (!pevent->func_map)
-		func_map_init(pevent);
+ if (!pevent->func_map)
+  func_map_init(pevent);
 
-	for (i = 0; i < (int)pevent->func_count; i++) {
-		printf("%016llx %s",
-		       pevent->func_map[i].addr,
-		       pevent->func_map[i].func);
-		if (pevent->func_map[i].mod)
-			printf(" [%s]\n", pevent->func_map[i].mod);
-		else
-			printf("\n");
-	}
+ for (i = 0; i < (int)pevent->func_count; i++) {
+  printf("%016llx %s",
+         pevent->func_map[i].addr,
+         pevent->func_map[i].func);
+  if (pevent->func_map[i].mod)
+   printf(" [%s]\n", pevent->func_map[i].mod);
+  else
+   printf("\n");
+ }
 }

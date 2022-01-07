@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ pae_mode ; 
- int /*<<< orphan*/  vm86_initialize_nopae () ; 
- int /*<<< orphan*/  vm86_initialize_pae () ; 
+ scalar_t__ pae_mode ;
+ int vm86_initialize_nopae () ;
+ int vm86_initialize_pae () ;
 
 void
 vm86_initialize(void)
 {
 
-	if (pae_mode)
-		vm86_initialize_pae();
-	else
-		vm86_initialize_nopae();
+ if (pae_mode)
+  vm86_initialize_pae();
+ else
+  vm86_initialize_nopae();
 }

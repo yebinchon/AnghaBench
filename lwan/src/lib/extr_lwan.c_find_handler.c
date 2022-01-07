@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwan_handler_info {void* handler; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  lwan_handler ;
 
-/* Variables and functions */
- struct lwan_handler_info* __start_lwan_handler ; 
- struct lwan_handler_info const* __stop_lwan_handler ; 
- scalar_t__ streq (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct lwan_handler_info {void* handler; int name; } ;
+typedef int lwan_handler ;
+
+
+ struct lwan_handler_info* __start_lwan_handler ;
+ struct lwan_handler_info const* __stop_lwan_handler ;
+ scalar_t__ streq (int ,char const*) ;
 
 __attribute__((used)) __attribute__((no_sanitize_address))
 static void *find_handler(const char *name)
@@ -31,5 +31,5 @@ static void *find_handler(const char *name)
             return handler->handler;
     }
 
-    return NULL;
+    return ((void*)0);
 }

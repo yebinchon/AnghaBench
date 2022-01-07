@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
+
+
+
+
+typedef int u_int32_t ;
 struct ath_hal {int dummy; } ;
-typedef  scalar_t__ HAL_RX_QUEUE ;
+typedef scalar_t__ HAL_RX_QUEUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_HP_RXDP ; 
- int /*<<< orphan*/  AR_LP_RXDP ; 
- int /*<<< orphan*/  HALASSERT (int) ; 
- scalar_t__ HAL_RX_QUEUE_HP ; 
- scalar_t__ HAL_RX_QUEUE_LP ; 
- int /*<<< orphan*/  OS_REG_WRITE (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AR_HP_RXDP ;
+ int AR_LP_RXDP ;
+ int HALASSERT (int) ;
+ scalar_t__ HAL_RX_QUEUE_HP ;
+ scalar_t__ HAL_RX_QUEUE_LP ;
+ int OS_REG_WRITE (struct ath_hal*,int ,int ) ;
 
 void
 ar9300_set_rx_dp(struct ath_hal *ah, u_int32_t rxdp, HAL_RX_QUEUE qtype)

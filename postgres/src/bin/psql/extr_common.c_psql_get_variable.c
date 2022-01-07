@@ -1,126 +1,126 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  db; int /*<<< orphan*/  vars; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int db; int vars; } ;
 struct TYPE_5__ {char* data; } ;
-typedef  int PsqlScanQuoteType ;
-typedef  TYPE_1__ PQExpBufferData ;
-typedef  int /*<<< orphan*/  ConditionalStack ;
+typedef int PsqlScanQuoteType ;
+typedef TYPE_1__ PQExpBufferData ;
+typedef int ConditionalStack ;
 
-/* Variables and functions */
- char* GetVariable (int /*<<< orphan*/ ,char const*) ; 
-#define  PQUOTE_PLAIN 131 
-#define  PQUOTE_SHELL_ARG 130 
-#define  PQUOTE_SQL_IDENT 129 
-#define  PQUOTE_SQL_LITERAL 128 
- char* PQerrorMessage (int /*<<< orphan*/ ) ; 
- char* PQescapeIdentifier (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- char* PQescapeLiteral (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PQfreemem (char*) ; 
- int /*<<< orphan*/  appendShellStringNoError (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  conditional_active (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  initPQExpBuffer (TYPE_1__*) ; 
- int /*<<< orphan*/  pg_log_error (char*,...) ; 
- int /*<<< orphan*/  pg_log_info (char*,char const*) ; 
- char* pg_strdup (char const*) ; 
- TYPE_2__ pset ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ char* GetVariable (int ,char const*) ;
+
+
+
+
+ char* PQerrorMessage (int ) ;
+ char* PQescapeIdentifier (int ,char const*,int ) ;
+ char* PQescapeLiteral (int ,char const*,int ) ;
+ int PQfreemem (char*) ;
+ int appendShellStringNoError (TYPE_1__*,char const*) ;
+ int conditional_active (int ) ;
+ int free (char*) ;
+ int initPQExpBuffer (TYPE_1__*) ;
+ int pg_log_error (char*,...) ;
+ int pg_log_info (char*,char const*) ;
+ char* pg_strdup (char const*) ;
+ TYPE_2__ pset ;
+ int strlen (char const*) ;
 
 char *
 psql_get_variable(const char *varname, PsqlScanQuoteType quote,
-				  void *passthrough)
+      void *passthrough)
 {
-	char	   *result = NULL;
-	const char *value;
+ char *result = ((void*)0);
+ const char *value;
 
-	/* In an inactive \if branch, suppress all variable substitutions */
-	if (passthrough && !conditional_active((ConditionalStack) passthrough))
-		return NULL;
 
-	value = GetVariable(pset.vars, varname);
-	if (!value)
-		return NULL;
+ if (passthrough && !conditional_active((ConditionalStack) passthrough))
+  return ((void*)0);
 
-	switch (quote)
-	{
-		case PQUOTE_PLAIN:
-			result = pg_strdup(value);
-			break;
-		case PQUOTE_SQL_LITERAL:
-		case PQUOTE_SQL_IDENT:
-			{
-				/*
-				 * For these cases, we use libpq's quoting functions, which
-				 * assume the string is in the connection's client encoding.
-				 */
-				char	   *escaped_value;
+ value = GetVariable(pset.vars, varname);
+ if (!value)
+  return ((void*)0);
 
-				if (!pset.db)
-				{
-					pg_log_error("cannot escape without active connection");
-					return NULL;
-				}
+ switch (quote)
+ {
+  case 131:
+   result = pg_strdup(value);
+   break;
+  case 128:
+  case 129:
+   {
 
-				if (quote == PQUOTE_SQL_LITERAL)
-					escaped_value =
-						PQescapeLiteral(pset.db, value, strlen(value));
-				else
-					escaped_value =
-						PQescapeIdentifier(pset.db, value, strlen(value));
 
-				if (escaped_value == NULL)
-				{
-					const char *error = PQerrorMessage(pset.db);
 
-					pg_log_info("%s", error);
-					return NULL;
-				}
 
-				/*
-				 * Rather than complicate the lexer's API with a notion of
-				 * which free() routine to use, just pay the price of an extra
-				 * strdup().
-				 */
-				result = pg_strdup(escaped_value);
-				PQfreemem(escaped_value);
-				break;
-			}
-		case PQUOTE_SHELL_ARG:
-			{
-				/*
-				 * For this we use appendShellStringNoError, which is
-				 * encoding-agnostic, which is fine since the shell probably
-				 * is too.  In any case, the only special character is "'",
-				 * which is not known to appear in valid multibyte characters.
-				 */
-				PQExpBufferData buf;
+    char *escaped_value;
 
-				initPQExpBuffer(&buf);
-				if (!appendShellStringNoError(&buf, value))
-				{
-					pg_log_error("shell command argument contains a newline or carriage return: \"%s\"",
-								 value);
-					free(buf.data);
-					return NULL;
-				}
-				result = buf.data;
-				break;
-			}
+    if (!pset.db)
+    {
+     pg_log_error("cannot escape without active connection");
+     return ((void*)0);
+    }
 
-			/* No default: we want a compiler warning for missing cases */
-	}
+    if (quote == 128)
+     escaped_value =
+      PQescapeLiteral(pset.db, value, strlen(value));
+    else
+     escaped_value =
+      PQescapeIdentifier(pset.db, value, strlen(value));
 
-	return result;
+    if (escaped_value == ((void*)0))
+    {
+     const char *error = PQerrorMessage(pset.db);
+
+     pg_log_info("%s", error);
+     return ((void*)0);
+    }
+
+
+
+
+
+
+    result = pg_strdup(escaped_value);
+    PQfreemem(escaped_value);
+    break;
+   }
+  case 130:
+   {
+
+
+
+
+
+
+    PQExpBufferData buf;
+
+    initPQExpBuffer(&buf);
+    if (!appendShellStringNoError(&buf, value))
+    {
+     pg_log_error("shell command argument contains a newline or carriage return: \"%s\"",
+         value);
+     free(buf.data);
+     return ((void*)0);
+    }
+    result = buf.data;
+    break;
+   }
+
+
+ }
+
+ return result;
 }

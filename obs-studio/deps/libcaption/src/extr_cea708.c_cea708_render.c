@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int em_data; int cc_count; TYPE_1__* cc_data; scalar_t__ additional_data_flag; scalar_t__ process_cc_data_flag; scalar_t__ process_em_data_flag; } ;
 struct TYPE_7__ {int country; int provider; int user_identifier; int user_data_type_code; int directv_user_data_length; TYPE_2__ user_data; } ;
-typedef  TYPE_3__ cea708_t ;
+typedef TYPE_3__ cea708_t ;
 struct TYPE_5__ {int marker_bits; int cc_valid; int cc_type; int cc_data; } ;
 
-/* Variables and functions */
- int t35_provider_atsc ; 
- int t35_provider_direct_tv ; 
+
+ int t35_provider_atsc ;
+ int t35_provider_direct_tv ;
 
 int cea708_render(cea708_t* cea708, uint8_t* data, size_t size)
 {
@@ -78,6 +78,6 @@ int cea708_render(cea708_t* cea708, uint8_t* data, size_t size)
         size -= 3;
     }
 
-    data[0] = 0xFF; //marker bits
+    data[0] = 0xFF;
     return (int)(total + 1);
 }

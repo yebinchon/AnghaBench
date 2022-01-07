@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
-struct msm8916_wcd_digital_priv {int /*<<< orphan*/  ahbclk; int /*<<< orphan*/  mclk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- struct msm8916_wcd_digital_priv* dev_get_drvdata (int /*<<< orphan*/ *) ; 
+
+
+
+struct platform_device {int dev; } ;
+struct msm8916_wcd_digital_priv {int ahbclk; int mclk; } ;
+
+
+ int clk_disable_unprepare (int ) ;
+ struct msm8916_wcd_digital_priv* dev_get_drvdata (int *) ;
 
 __attribute__((used)) static int msm8916_wcd_digital_remove(struct platform_device *pdev)
 {
-	struct msm8916_wcd_digital_priv *priv = dev_get_drvdata(&pdev->dev);
+ struct msm8916_wcd_digital_priv *priv = dev_get_drvdata(&pdev->dev);
 
-	clk_disable_unprepare(priv->mclk);
-	clk_disable_unprepare(priv->ahbclk);
+ clk_disable_unprepare(priv->mclk);
+ clk_disable_unprepare(priv->ahbclk);
 
-	return 0;
+ return 0;
 }

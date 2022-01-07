@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tree_balance {int /*<<< orphan*/ ** CFR; int /*<<< orphan*/ ** CFL; int /*<<< orphan*/ ** FR; int /*<<< orphan*/ ** FL; int /*<<< orphan*/ ** R; int /*<<< orphan*/ ** L; int /*<<< orphan*/  tb_path; } ;
 
-/* Variables and functions */
- int MAX_HEIGHT ; 
- int /*<<< orphan*/  brelse (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pathrelse (int /*<<< orphan*/ ) ; 
+
+
+
+struct tree_balance {int ** CFR; int ** CFL; int ** FR; int ** FL; int ** R; int ** L; int tb_path; } ;
+
+
+ int MAX_HEIGHT ;
+ int brelse (int *) ;
+ int pathrelse (int ) ;
 
 __attribute__((used)) static void free_buffers_in_tb(struct tree_balance *tb)
 {
-	int i;
+ int i;
 
-	pathrelse(tb->tb_path);
+ pathrelse(tb->tb_path);
 
-	for (i = 0; i < MAX_HEIGHT; i++) {
-		brelse(tb->L[i]);
-		brelse(tb->R[i]);
-		brelse(tb->FL[i]);
-		brelse(tb->FR[i]);
-		brelse(tb->CFL[i]);
-		brelse(tb->CFR[i]);
+ for (i = 0; i < MAX_HEIGHT; i++) {
+  brelse(tb->L[i]);
+  brelse(tb->R[i]);
+  brelse(tb->FL[i]);
+  brelse(tb->FR[i]);
+  brelse(tb->CFL[i]);
+  brelse(tb->CFR[i]);
 
-		tb->L[i] = NULL;
-		tb->R[i] = NULL;
-		tb->FL[i] = NULL;
-		tb->FR[i] = NULL;
-		tb->CFL[i] = NULL;
-		tb->CFR[i] = NULL;
-	}
+  tb->L[i] = ((void*)0);
+  tb->R[i] = ((void*)0);
+  tb->FL[i] = ((void*)0);
+  tb->FR[i] = ((void*)0);
+  tb->CFL[i] = ((void*)0);
+  tb->CFR[i] = ((void*)0);
+ }
 }

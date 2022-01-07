@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_gadget {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHIP ; 
- int EISNAM ; 
+
+
+
+struct usb_gadget {int name; } ;
+
+
+ int CHIP ;
+ int EISNAM ;
 
 __attribute__((used)) static int gadgetfs_probe (struct usb_gadget *gadget)
 {
-	CHIP = gadget->name;
-	return -EISNAM;
+ CHIP = gadget->name;
+ return -EISNAM;
 }

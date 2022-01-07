@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_AUTOMATIC ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  ENOMEM ; 
- int ERR_CODE (int) ; 
- int /*<<< orphan*/  HEX_DIGIT_TEST (int) ; 
- unsigned int HEX_DIGIT_VAL (int) ; 
- int /*<<< orphan*/  av_bprint_chars (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_is_complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_utf8 (int /*<<< orphan*/ *,unsigned int) ; 
- int expect_byte (int /*<<< orphan*/ *,int*,char) ; 
- int /*<<< orphan*/  next_byte (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int AVIOContext ;
+typedef int AVBPrint ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_BPRINT_SIZE_AUTOMATIC ;
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int ENOMEM ;
+ int ERR_CODE (int) ;
+ int HEX_DIGIT_TEST (int) ;
+ unsigned int HEX_DIGIT_VAL (int) ;
+ int av_bprint_chars (int *,int,int) ;
+ int av_bprint_finalize (int *,int *) ;
+ int av_bprint_init (int *,int ,int ) ;
+ int av_bprint_is_complete (int *) ;
+ int av_bprint_utf8 (int *,unsigned int) ;
+ int expect_byte (int *,int*,char) ;
+ int next_byte (int *,int*) ;
 
 __attribute__((used)) static int parse_string(AVIOContext *pb, int *cur_byte, AVBPrint *bp, int full)
 {
@@ -74,6 +74,6 @@ __attribute__((used)) static int parse_string(AVIOContext *pb, int *cur_byte, AV
     return 0;
 
 fail:
-    av_bprint_finalize(bp, NULL);
+    av_bprint_finalize(bp, ((void*)0));
     return ret;
 }

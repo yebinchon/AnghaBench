@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lock; int /*<<< orphan*/ * default_domain; } ;
-typedef  TYPE_1__ RuntimeHost ;
-typedef  int /*<<< orphan*/  MonoDomain ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RuntimeHost_AddDomain (TYPE_1__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  S_OK ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lock; int * default_domain; } ;
+typedef TYPE_1__ RuntimeHost ;
+typedef int MonoDomain ;
+typedef int HRESULT ;
+
+
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int RuntimeHost_AddDomain (TYPE_1__*,int **) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT RuntimeHost_GetDefaultDomain(RuntimeHost *This, MonoDomain **result)
 {

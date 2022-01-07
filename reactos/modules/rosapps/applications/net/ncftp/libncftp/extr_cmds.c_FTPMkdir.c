@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FTPCIPtr ;
 
-/* Variables and functions */
- int FTPMkdir2 (int /*<<< orphan*/  const,char const* const,int const,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FTPCIPtr ;
+
+
+ int FTPMkdir2 (int const,char const* const,int const,int *) ;
 
 int
 FTPMkdir(const FTPCIPtr cip, const char *const newDir, const int recurse)
 {
-	return (FTPMkdir2(cip, newDir, recurse, NULL));
+ return (FTPMkdir2(cip, newDir, recurse, ((void*)0)));
 }

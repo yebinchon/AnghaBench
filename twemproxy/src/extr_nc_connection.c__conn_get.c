@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct conn {int sd; scalar_t__ authenticated; scalar_t__ redis; scalar_t__ done; scalar_t__ eof; scalar_t__ connected; scalar_t__ connecting; scalar_t__ proxy; scalar_t__ client; scalar_t__ send_ready; scalar_t__ send_active; scalar_t__ recv_ready; scalar_t__ recv_active; scalar_t__ err; scalar_t__ events; scalar_t__ recv_bytes; scalar_t__ send_bytes; int /*<<< orphan*/ * smsg; int /*<<< orphan*/ * rmsg; int /*<<< orphan*/  omsg_q; int /*<<< orphan*/  imsg_q; int /*<<< orphan*/ * owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- struct conn* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct conn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn_tqe ; 
- int /*<<< orphan*/  free_connq ; 
- struct conn* nc_alloc (int) ; 
- int /*<<< orphan*/  ncurr_conn ; 
- scalar_t__ nfree_connq ; 
- int /*<<< orphan*/  ntotal_conn ; 
+
+
+
+struct conn {int sd; scalar_t__ authenticated; scalar_t__ redis; scalar_t__ done; scalar_t__ eof; scalar_t__ connected; scalar_t__ connecting; scalar_t__ proxy; scalar_t__ client; scalar_t__ send_ready; scalar_t__ send_active; scalar_t__ recv_ready; scalar_t__ recv_active; scalar_t__ err; scalar_t__ events; scalar_t__ recv_bytes; scalar_t__ send_bytes; int * smsg; int * rmsg; int omsg_q; int imsg_q; int * owner; } ;
+
+
+ int ASSERT (int) ;
+ int TAILQ_EMPTY (int *) ;
+ struct conn* TAILQ_FIRST (int *) ;
+ int TAILQ_INIT (int *) ;
+ int TAILQ_REMOVE (int *,struct conn*,int ) ;
+ int conn_tqe ;
+ int free_connq ;
+ struct conn* nc_alloc (int) ;
+ int ncurr_conn ;
+ scalar_t__ nfree_connq ;
+ int ntotal_conn ;
 
 __attribute__((used)) static struct conn *
 _conn_get(void)
@@ -38,26 +38,26 @@ _conn_get(void)
         TAILQ_REMOVE(&free_connq, conn, conn_tqe);
     } else {
         conn = nc_alloc(sizeof(*conn));
-        if (conn == NULL) {
-            return NULL;
+        if (conn == ((void*)0)) {
+            return ((void*)0);
         }
     }
 
-    conn->owner = NULL;
+    conn->owner = ((void*)0);
 
     conn->sd = -1;
-    /* {family, addrlen, addr} are initialized in enqueue handler */
+
 
     TAILQ_INIT(&conn->imsg_q);
     TAILQ_INIT(&conn->omsg_q);
-    conn->rmsg = NULL;
-    conn->smsg = NULL;
+    conn->rmsg = ((void*)0);
+    conn->smsg = ((void*)0);
 
-    /*
-     * Callbacks {recv, recv_next, recv_done}, {send, send_next, send_done},
-     * {close, active}, parse, {ref, unref}, {enqueue_inq, dequeue_inq} and
-     * {enqueue_outq, dequeue_outq} are initialized by the wrapper.
-     */
+
+
+
+
+
 
     conn->send_bytes = 0;
     conn->recv_bytes = 0;

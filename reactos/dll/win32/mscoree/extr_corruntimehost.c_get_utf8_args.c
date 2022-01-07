@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/ ** CommandLineToArgvW (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  GetCommandLineW () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char** HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int CP_UTF8 ;
+ int ** CommandLineToArgvW (int ,int*) ;
+ int GetCommandLineW () ;
+ int GetProcessHeap () ;
+ char** HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int **) ;
+ scalar_t__ WideCharToMultiByte (int ,int ,int *,int,char*,int,int *,int *) ;
 
 __attribute__((used)) static void get_utf8_args(int *argc, char ***argv)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static void get_utf8_args(int *argc, char ***argv)
     for (i=0; i<*argc; i++)
     {
         size += sizeof(char*);
-        size += WideCharToMultiByte(CP_UTF8, 0, argvw[i], -1, NULL, 0, NULL, NULL);
+        size += WideCharToMultiByte(CP_UTF8, 0, argvw[i], -1, ((void*)0), 0, ((void*)0), ((void*)0));
     }
     size += sizeof(char*);
 
@@ -42,10 +42,10 @@ __attribute__((used)) static void get_utf8_args(int *argc, char ***argv)
     for (i=0; i<*argc; i++)
     {
         (*argv)[i] = current_arg;
-        current_arg += WideCharToMultiByte(CP_UTF8, 0, argvw[i], -1, current_arg, size, NULL, NULL);
+        current_arg += WideCharToMultiByte(CP_UTF8, 0, argvw[i], -1, current_arg, size, ((void*)0), ((void*)0));
     }
 
-    (*argv)[*argc] = NULL;
+    (*argv)[*argc] = ((void*)0);
 
     HeapFree(GetProcessHeap(), 0, argvw);
 }

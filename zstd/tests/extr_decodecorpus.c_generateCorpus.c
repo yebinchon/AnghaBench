@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ genType_e ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ genType_e ;
 struct TYPE_4__ {scalar_t__ srcStart; scalar_t__ src; scalar_t__ dataStart; scalar_t__ data; } ;
-typedef  TYPE_1__ frame_t ;
-typedef  int /*<<< orphan*/  dictInfo ;
-typedef  scalar_t__ U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_1__ frame_t ;
+typedef int dictInfo ;
+typedef scalar_t__ U32 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- int /*<<< orphan*/  DISPLAYUPDATE (char*,unsigned int,unsigned int) ; 
- int MAX_PATH ; 
- scalar_t__ generateCompressedBlock (scalar_t__,TYPE_1__*,int /*<<< orphan*/  const) ; 
- scalar_t__ generateFrame (scalar_t__,TYPE_1__*,int /*<<< orphan*/  const) ; 
- scalar_t__ gt_frame ; 
- int /*<<< orphan*/  initDictInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  outputBuffer (scalar_t__,int,char*) ; 
- int snprintf (char*,int,char*,char const* const,unsigned int) ; 
+
+ int DISPLAY (char*,...) ;
+ int DISPLAYUPDATE (char*,unsigned int,unsigned int) ;
+ int MAX_PATH ;
+ scalar_t__ generateCompressedBlock (scalar_t__,TYPE_1__*,int const) ;
+ scalar_t__ generateFrame (scalar_t__,TYPE_1__*,int const) ;
+ scalar_t__ gt_frame ;
+ int initDictInfo (int ,int ,int *,int ) ;
+ int outputBuffer (scalar_t__,int,char*) ;
+ int snprintf (char*,int,char*,char const* const,unsigned int) ;
 
 __attribute__((used)) static int generateCorpus(U32 seed, unsigned numFiles, const char* const path,
                           const char* const origPath, genType_e genType)
@@ -42,7 +42,7 @@ __attribute__((used)) static int generateCorpus(U32 seed, unsigned numFiles, con
 
         DISPLAYUPDATE("\r%u/%u        ", fnum, numFiles);
 
-        {   dictInfo const info = initDictInfo(0, 0, NULL, 0);
+        { dictInfo const info = initDictInfo(0, 0, ((void*)0), 0);
             if (genType == gt_frame) {
                 seed = generateFrame(seed, &fr, info);
             } else {

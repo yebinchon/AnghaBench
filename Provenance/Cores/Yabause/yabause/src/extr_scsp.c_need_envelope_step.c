@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_2__ {size_t step_count; int /*<<< orphan*/  envelope_steps_taken; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {size_t step_count; int envelope_steps_taken; } ;
 struct Slot {TYPE_1__ state; } ;
 
-/* Variables and functions */
- int EFFECTIVE_RATE_END ; 
- int** envelope_table ; 
+
+ int EFFECTIVE_RATE_END ;
+ int** envelope_table ;
 
 int need_envelope_step(int effective_rate, u32 sample_counter, struct Slot* slot)
 {
@@ -26,7 +26,7 @@ int need_envelope_step(int effective_rate, u32 sample_counter, struct Slot* slot
 
    if (effective_rate == 0 || effective_rate == 1)
    {
-      return 0;//never step
+      return 0;
    }
    else if (effective_rate >= 0x30)
    {
@@ -54,7 +54,7 @@ int need_envelope_step(int effective_rate, u32 sample_counter, struct Slot* slot
          slot->state.step_count++;
 
          if (envelope_table[pos][slot->state.step_count] == EFFECTIVE_RATE_END)
-            slot->state.step_count = 0;//reached the end of the array
+            slot->state.step_count = 0;
       }
 
       return result;

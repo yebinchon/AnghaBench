@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bcm2835_host {int /*<<< orphan*/  dma_chan; int /*<<< orphan*/  dma_desc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_async_issue_pending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dmaengine_submit (int /*<<< orphan*/ ) ; 
+
+
+
+struct bcm2835_host {int dma_chan; int dma_desc; } ;
+
+
+ int dma_async_issue_pending (int ) ;
+ int dmaengine_submit (int ) ;
 
 __attribute__((used)) static void bcm2835_start_dma(struct bcm2835_host *host)
 {
-	dmaengine_submit(host->dma_desc);
-	dma_async_issue_pending(host->dma_chan);
+ dmaengine_submit(host->dma_desc);
+ dma_async_issue_pending(host->dma_chan);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_5__ {TYPE_1__* callbacks; } ;
-struct TYPE_4__ {int /*<<< orphan*/  lossy_data_callback_id; int /*<<< orphan*/  lossy_data_callback_object; int /*<<< orphan*/  (* lossy_data_callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  Friend_Connections ;
-typedef  TYPE_2__ Friend_Conn ;
+struct TYPE_4__ {int lossy_data_callback_id; int lossy_data_callback_object; int (* lossy_data_callback ) (int ,int ,int const*,int ) ;} ;
+typedef int Friend_Connections ;
+typedef TYPE_2__ Friend_Conn ;
 
-/* Variables and functions */
- unsigned int MAX_FRIEND_CONNECTION_CALLBACKS ; 
- TYPE_2__* get_conn (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ unsigned int MAX_FRIEND_CONNECTION_CALLBACKS ;
+ TYPE_2__* get_conn (int *,int) ;
+ int stub1 (int ,int ,int const*,int ) ;
 
 __attribute__((used)) static int handle_lossy_packet(void *object, int number, const uint8_t *data, uint16_t length)
 {

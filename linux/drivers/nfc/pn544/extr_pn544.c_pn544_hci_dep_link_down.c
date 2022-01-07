@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nfc_hci_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NFC_HCI_EVT_END_OPERATION ; 
- int /*<<< orphan*/  PN544_RF_READER_NFCIP1_INITIATOR_GATE ; 
- int nfc_hci_send_event (struct nfc_hci_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int NFC_HCI_EVT_END_OPERATION ;
+ int PN544_RF_READER_NFCIP1_INITIATOR_GATE ;
+ int nfc_hci_send_event (struct nfc_hci_dev*,int ,int ,int *,int ) ;
 
 __attribute__((used)) static int pn544_hci_dep_link_down(struct nfc_hci_dev *hdev)
 {
 
-	return nfc_hci_send_event(hdev, PN544_RF_READER_NFCIP1_INITIATOR_GATE,
-					NFC_HCI_EVT_END_OPERATION, NULL, 0);
+ return nfc_hci_send_event(hdev, PN544_RF_READER_NFCIP1_INITIATOR_GATE,
+     NFC_HCI_EVT_END_OPERATION, ((void*)0), 0);
 }

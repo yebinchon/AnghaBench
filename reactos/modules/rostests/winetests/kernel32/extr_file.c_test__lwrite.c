@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  scalar_t__ UINT ;
-typedef  size_t INT ;
-typedef  scalar_t__ HLOCAL ;
-typedef  scalar_t__ HFILE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ HFILE_ERROR ; 
- int /*<<< orphan*/  LPTR ; 
- scalar_t__ LocalAlloc (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  LocalFree (char*) ; 
- char* LocalLock (scalar_t__) ; 
- int /*<<< orphan*/  OF_READ ; 
- int /*<<< orphan*/  OF_READWRITE ; 
- scalar_t__ _hread (scalar_t__,char*,scalar_t__) ; 
- scalar_t__ _lclose (scalar_t__) ; 
- scalar_t__ _lcreat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _lopen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ _lwrite (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  filename ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- char rand () ; 
- int /*<<< orphan*/  srand (unsigned int) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int buffer ;
+typedef scalar_t__ UINT ;
+typedef size_t INT ;
+typedef scalar_t__ HLOCAL ;
+typedef scalar_t__ HFILE ;
+typedef int BOOL ;
+
+
+ int DeleteFileA (int ) ;
+ int GetLastError () ;
+ scalar_t__ HFILE_ERROR ;
+ int LPTR ;
+ scalar_t__ LocalAlloc (int ,scalar_t__) ;
+ int LocalFree (char*) ;
+ char* LocalLock (scalar_t__) ;
+ int OF_READ ;
+ int OF_READWRITE ;
+ scalar_t__ _hread (scalar_t__,char*,scalar_t__) ;
+ scalar_t__ _lclose (scalar_t__) ;
+ scalar_t__ _lcreat (int ,int ) ;
+ scalar_t__ _lopen (int ,int ) ;
+ scalar_t__ _lwrite (scalar_t__,char*,int) ;
+ int filename ;
+ int ok (int,char*,...) ;
+ char rand () ;
+ int srand (unsigned int) ;
+ scalar_t__ time (int *) ;
 
 __attribute__((used)) static void test__lwrite( void )
 {
@@ -74,12 +74,12 @@ __attribute__((used)) static void test__lwrite( void )
 
     bytes_written = 0;
     checksum[0] = '\0';
-    srand( (unsigned)time( NULL ) );
+    srand( (unsigned)time( ((void*)0) ) );
     for (blocks = 0; blocks < 100; blocks++)
     {
         for (i = 0; i < (INT)sizeof( buffer ); i++)
         {
-            buffer[i] = rand(  );
+            buffer[i] = rand( );
             checksum[0] = checksum[0] + buffer[i];
         }
         ok( HFILE_ERROR != _lwrite( filehandle, buffer, sizeof( buffer ) ), "_hwrite complains\n" );
@@ -96,12 +96,12 @@ __attribute__((used)) static void test__lwrite( void )
     ok( 0 != memory_object, "LocalAlloc fails, could be out of memory\n" );
 
     contents = LocalLock( memory_object );
-    ok( NULL != contents, "LocalLock whines\n" );
+    ok( ((void*)0) != contents, "LocalLock whines\n" );
 
     filehandle = _lopen( filename, OF_READ );
 
     contents = LocalLock( memory_object );
-    ok( NULL != contents, "LocalLock whines\n" );
+    ok( ((void*)0) != contents, "LocalLock whines\n" );
 
     ok( bytes_written == _hread( filehandle, contents, bytes_written), "read length differ from write length\n" );
 
@@ -119,7 +119,7 @@ __attribute__((used)) static void test__lwrite( void )
     ok( HFILE_ERROR != _lclose( filehandle ), "_lclose complains\n" );
 
     ret = DeleteFileA( filename );
-    ok( ret, "DeleteFile failed (%d)\n", GetLastError(  ) );
+    ok( ret, "DeleteFile failed (%d)\n", GetLastError( ) );
 
     LocalFree( contents );
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdtab {char* name; char* alias; int lauth; char* helpmes; scalar_t__ func; int /*<<< orphan*/  syntax; } ;
-struct cmdargs {size_t argc; size_t argn; TYPE_1__* prompt; struct cmdtab* cmdtab; int /*<<< orphan*/ * argv; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cmdtab {char* name; char* alias; int lauth; char* helpmes; scalar_t__ func; int syntax; } ;
+struct cmdargs {size_t argc; size_t argn; TYPE_1__* prompt; struct cmdtab* cmdtab; int * argv; } ;
 struct TYPE_2__ {int auth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  prompt_Printf (TYPE_1__*,char*,...) ; 
- char* showcx (struct cmdtab const*) ; 
- int /*<<< orphan*/  strcasecmp (char*,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
+
+ int LogWARN ;
+ int log_Printf (int ,char*) ;
+ int prompt_Printf (TYPE_1__*,char*,...) ;
+ char* showcx (struct cmdtab const*) ;
+ int strcasecmp (char*,int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 HelpCommand(struct cmdargs const *arg)
@@ -40,8 +40,8 @@ HelpCommand(struct cmdargs const *arg)
       if ((cmd->lauth & arg->prompt->auth) &&
           ((cmd->name && !strcasecmp(cmd->name, arg->argv[arg->argn])) ||
            (cmd->alias && !strcasecmp(cmd->alias, arg->argv[arg->argn])))) {
-	prompt_Printf(arg->prompt, "%s %s\n", cmd->syntax, showcx(cmd));
-	return 0;
+ prompt_Printf(arg->prompt, "%s %s\n", cmd->syntax, showcx(cmd));
+ return 0;
       }
     return -1;
   }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/ * json_array () ; 
- scalar_t__ json_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_array_get (int /*<<< orphan*/ *,int) ; 
- scalar_t__ json_array_set (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ json_array_set_new (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int json_array_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_integer (int) ; 
- int json_integer_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_is_integer (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ int * json_array () ;
+ scalar_t__ json_array_append (int *,int *) ;
+ scalar_t__ json_array_append_new (int *,int *) ;
+ int * json_array_get (int *,int) ;
+ scalar_t__ json_array_set (int *,int,int *) ;
+ scalar_t__ json_array_set_new (int *,int,int *) ;
+ int json_array_size (int *) ;
+ int json_decref (int *) ;
+ int * json_integer (int) ;
+ int json_integer_value (int *) ;
+ int json_is_integer (int *) ;
 
 __attribute__((used)) static void test_misc(void)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_misc(void)
     if(json_array_size(array) != 0)
         fail("empty array has nonzero size");
 
-    if(!json_array_append(array, NULL))
+    if(!json_array_append(array, ((void*)0)))
         fail("able to append NULL");
 
     if(json_array_append(array, five))
@@ -73,7 +73,7 @@ __attribute__((used)) static void test_misc(void)
     if(json_array_set(array, 0, seven))
         fail("unable to set value");
 
-    if(!json_array_set(array, 0, NULL))
+    if(!json_array_set(array, 0, ((void*)0)))
         fail("able to set NULL");
 
     if(json_array_size(array) != 2)
@@ -85,7 +85,7 @@ __attribute__((used)) static void test_misc(void)
     if(value != seven)
         fail("got wrong value");
 
-    if(json_array_get(array, 2) != NULL)
+    if(json_array_get(array, 2) != ((void*)0))
         fail("able to get value out of bounds");
 
     if(!json_array_set(array, 2, seven))
@@ -114,7 +114,7 @@ __attribute__((used)) static void test_misc(void)
     if(!json_is_integer(value) || json_integer_value(value) != 123)
         fail("json_array_set_new works incorrectly");
 
-    if(!json_array_set_new(array, 15, NULL))
+    if(!json_array_set_new(array, 15, ((void*)0)))
         fail("able to set_new NULL value");
 
     if(json_array_append_new(array, json_integer(321)))
@@ -124,7 +124,7 @@ __attribute__((used)) static void test_misc(void)
     if(!json_is_integer(value) || json_integer_value(value) != 321)
         fail("json_array_append_new works incorrectly");
 
-    if(!json_array_append_new(array, NULL))
+    if(!json_array_append_new(array, ((void*)0)))
         fail("able to append_new NULL value");
 
     json_decref(five);

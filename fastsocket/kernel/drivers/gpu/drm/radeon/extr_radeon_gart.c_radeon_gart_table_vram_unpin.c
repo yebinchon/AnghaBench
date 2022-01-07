@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * ptr; int /*<<< orphan*/ * robj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * ptr; int * robj; } ;
 struct radeon_device {TYPE_1__ gart; } ;
 
-/* Variables and functions */
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  radeon_bo_kunmap (int /*<<< orphan*/ *) ; 
- int radeon_bo_reserve (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  radeon_bo_unpin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  radeon_bo_unreserve (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ likely (int) ;
+ int radeon_bo_kunmap (int *) ;
+ int radeon_bo_reserve (int *,int) ;
+ int radeon_bo_unpin (int *) ;
+ int radeon_bo_unreserve (int *) ;
 
 void radeon_gart_table_vram_unpin(struct radeon_device *rdev)
 {
-	int r;
+ int r;
 
-	if (rdev->gart.robj == NULL) {
-		return;
-	}
-	r = radeon_bo_reserve(rdev->gart.robj, false);
-	if (likely(r == 0)) {
-		radeon_bo_kunmap(rdev->gart.robj);
-		radeon_bo_unpin(rdev->gart.robj);
-		radeon_bo_unreserve(rdev->gart.robj);
-		rdev->gart.ptr = NULL;
-	}
+ if (rdev->gart.robj == ((void*)0)) {
+  return;
+ }
+ r = radeon_bo_reserve(rdev->gart.robj, 0);
+ if (likely(r == 0)) {
+  radeon_bo_kunmap(rdev->gart.robj);
+  radeon_bo_unpin(rdev->gart.robj);
+  radeon_bo_unreserve(rdev->gart.robj);
+  rdev->gart.ptr = ((void*)0);
+ }
 }

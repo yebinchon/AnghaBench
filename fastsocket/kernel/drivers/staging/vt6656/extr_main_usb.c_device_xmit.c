@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct net_device_stats {int /*<<< orphan*/  tx_dropped; } ;
+struct net_device_stats {int tx_dropped; } ;
 struct net_device {int dummy; } ;
-struct TYPE_4__ {scalar_t__ bLinkPass; scalar_t__ bStopDataPkt; int /*<<< orphan*/  lock; int /*<<< orphan*/  dev; struct net_device_stats stats; } ;
-typedef  TYPE_1__* PSDevice ;
+struct TYPE_4__ {scalar_t__ bLinkPass; scalar_t__ bStopDataPkt; int lock; int dev; struct net_device_stats stats; } ;
+typedef TYPE_1__* PSDevice ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TYPE_AC0DMA ; 
- int /*<<< orphan*/  dev_kfree_skb_irq (struct sk_buff*) ; 
- TYPE_1__* netdev_priv (struct net_device*) ; 
- scalar_t__ netif_queue_stopped (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_stop_queue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netif_wake_queue (int /*<<< orphan*/ ) ; 
- scalar_t__ nsDMA_tx_packet (TYPE_1__*,int /*<<< orphan*/ ,struct sk_buff*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static int  device_xmit(struct sk_buff *skb, struct net_device *dev) {
-    PSDevice    pDevice=netdev_priv(dev);
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int TYPE_AC0DMA ;
+ int dev_kfree_skb_irq (struct sk_buff*) ;
+ TYPE_1__* netdev_priv (struct net_device*) ;
+ scalar_t__ netif_queue_stopped (int ) ;
+ int netif_stop_queue (int ) ;
+ int netif_wake_queue (int ) ;
+ scalar_t__ nsDMA_tx_packet (TYPE_1__*,int ,struct sk_buff*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+
+__attribute__((used)) static int device_xmit(struct sk_buff *skb, struct net_device *dev) {
+    PSDevice pDevice=netdev_priv(dev);
     struct net_device_stats* pStats = &pDevice->stats;
 
 
@@ -51,7 +51,7 @@ __attribute__((used)) static int  device_xmit(struct sk_buff *skb, struct net_de
         return 0;
     }
 
-    if(nsDMA_tx_packet(pDevice, TYPE_AC0DMA, skb) !=0) {  //mike add:xmit fail!
+    if(nsDMA_tx_packet(pDevice, TYPE_AC0DMA, skb) !=0) {
          if (netif_queue_stopped(pDevice->dev))
               netif_wake_queue(pDevice->dev);
     }

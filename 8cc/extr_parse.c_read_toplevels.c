@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_2__ {scalar_t__ kind; } ;
 
-/* Variables and functions */
- scalar_t__ TEOF ; 
- scalar_t__ is_funcdef () ; 
- int /*<<< orphan*/ * make_vector () ; 
- TYPE_1__* peek () ; 
- int /*<<< orphan*/  read_decl (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  read_funcdef () ; 
- int /*<<< orphan*/ * toplevels ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ TEOF ;
+ scalar_t__ is_funcdef () ;
+ int * make_vector () ;
+ TYPE_1__* peek () ;
+ int read_decl (int *,int) ;
+ int read_funcdef () ;
+ int * toplevels ;
+ int vec_push (int *,int ) ;
 
 Vector *read_toplevels() {
     toplevels = make_vector();
@@ -32,6 +32,6 @@ Vector *read_toplevels() {
         if (is_funcdef())
             vec_push(toplevels, read_funcdef());
         else
-            read_decl(toplevels, true);
+            read_decl(toplevels, 1);
     }
 }

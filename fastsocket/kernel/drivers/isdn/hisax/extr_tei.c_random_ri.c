@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  x ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_random_bytes (unsigned int*,int) ; 
+
+
+
+typedef int x ;
+
+
+ int get_random_bytes (unsigned int*,int) ;
 
 __attribute__((used)) static unsigned int
 random_ri(void)
 {
-	unsigned int x;
+ unsigned int x;
 
-	get_random_bytes(&x, sizeof(x));
-	return (x & 0xffff);
+ get_random_bytes(&x, sizeof(x));
+ return (x & 0xffff);
 }

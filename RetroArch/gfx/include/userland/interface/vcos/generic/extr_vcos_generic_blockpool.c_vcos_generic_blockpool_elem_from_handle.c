@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-struct TYPE_9__ {size_t num_subpools; size_t block_size; int /*<<< orphan*/  mutex; TYPE_3__* subpools; } ;
-typedef  TYPE_2__ VCOS_BLOCKPOOL_T ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+struct TYPE_9__ {size_t num_subpools; size_t block_size; int mutex; TYPE_3__* subpools; } ;
+typedef TYPE_2__ VCOS_BLOCKPOOL_T ;
 struct TYPE_10__ {scalar_t__ magic; size_t num_blocks; scalar_t__ start; scalar_t__ mem; } ;
-typedef  TYPE_3__ VCOS_BLOCKPOOL_SUBPOOL_T ;
+typedef TYPE_3__ VCOS_BLOCKPOOL_SUBPOOL_T ;
 struct TYPE_8__ {TYPE_3__* subpool; } ;
 struct TYPE_11__ {TYPE_1__ owner; } ;
-typedef  TYPE_4__ VCOS_BLOCKPOOL_HEADER_T ;
+typedef TYPE_4__ VCOS_BLOCKPOOL_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_POOL (TYPE_2__*) ; 
- size_t VCOS_BLOCKPOOL_HANDLE_GET_INDEX (size_t) ; 
- size_t VCOS_BLOCKPOOL_HANDLE_GET_SUBPOOL (size_t) ; 
- scalar_t__ VCOS_BLOCKPOOL_SUBPOOL_MAGIC ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ,TYPE_2__*,size_t,void*) ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int ASSERT_POOL (TYPE_2__*) ;
+ size_t VCOS_BLOCKPOOL_HANDLE_GET_INDEX (size_t) ;
+ size_t VCOS_BLOCKPOOL_HANDLE_GET_SUBPOOL (size_t) ;
+ scalar_t__ VCOS_BLOCKPOOL_SUBPOOL_MAGIC ;
+ int VCOS_FUNCTION ;
+ int vcos_log_trace (char*,int ,TYPE_2__*,size_t,void*) ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
 
 void *vcos_generic_blockpool_elem_from_handle(
       VCOS_BLOCKPOOL_T *pool, uint32_t handle)
@@ -39,7 +39,7 @@ void *vcos_generic_blockpool_elem_from_handle(
    VCOS_BLOCKPOOL_SUBPOOL_T *subpool;
    uint32_t subpool_id;
    uint32_t index;
-   void *ret = NULL;
+   void *ret = ((void*)0);
 
    ASSERT_POOL(pool);
    vcos_mutex_lock(&pool->mutex);
@@ -55,7 +55,7 @@ void *vcos_generic_blockpool_elem_from_handle(
          VCOS_BLOCKPOOL_HEADER_T *hdr = (VCOS_BLOCKPOOL_HEADER_T*)
             ((size_t) subpool->start + (index * pool->block_size));
 
-         if (hdr->owner.subpool == subpool) /* Check block is allocated */
+         if (hdr->owner.subpool == subpool)
             ret = hdr + 1;
       }
    }

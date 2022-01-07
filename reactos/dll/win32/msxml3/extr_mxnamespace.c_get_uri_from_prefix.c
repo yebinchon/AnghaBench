@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nscontext {int count; TYPE_1__* ns; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/ * uri; int /*<<< orphan*/  prefix; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
+typedef int WCHAR ;
+struct TYPE_2__ {int * uri; int prefix; } ;
+typedef int HRESULT ;
+typedef int * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int S_FALSE ;
+ int S_OK ;
+ int strcmpW (int ,int const*) ;
 
 __attribute__((used)) static HRESULT get_uri_from_prefix(const struct nscontext *ctxt, const WCHAR *prefix, BSTR *uri)
 {
@@ -33,6 +33,6 @@ __attribute__((used)) static HRESULT get_uri_from_prefix(const struct nscontext 
             return S_OK;
         }
 
-    *uri = NULL;
+    *uri = ((void*)0);
     return S_FALSE;
 }

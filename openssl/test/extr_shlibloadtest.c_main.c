@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_FIRST ; 
- int /*<<< orphan*/  DSO_REFTEST ; 
- int /*<<< orphan*/  JUST_CRYPTO ; 
- int /*<<< orphan*/  NO_ATEXIT ; 
- int /*<<< orphan*/  SSL_FIRST ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- char* path_atexit ; 
- char* path_crypto ; 
- char* path_ssl ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  test_lib () ; 
- int /*<<< orphan*/  test_type ; 
+ int CRYPTO_FIRST ;
+ int DSO_REFTEST ;
+ int JUST_CRYPTO ;
+ int NO_ATEXIT ;
+ int SSL_FIRST ;
+ int fprintf (int ,char*) ;
+ char* path_atexit ;
+ char* path_crypto ;
+ char* path_ssl ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int test_lib () ;
+ int test_type ;
 
 int main(int argc, char *argv[])
 {
@@ -54,14 +46,14 @@ int main(int argc, char *argv[])
     path_crypto = argv[2];
     path_ssl = argv[3];
     path_atexit = argv[4];
-    if (path_crypto == NULL || path_ssl == NULL) {
+    if (path_crypto == ((void*)0) || path_ssl == ((void*)0)) {
         fprintf(stderr, "Invalid libcrypto/libssl path\n");
         return 1;
     }
 
-#if defined(DSO_DLFCN) || defined(DSO_WIN32)
-    if (!test_lib())
-        return 1;
-#endif
+
+
+
+
     return 0;
 }

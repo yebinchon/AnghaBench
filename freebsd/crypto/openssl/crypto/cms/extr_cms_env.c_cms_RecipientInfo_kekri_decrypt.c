@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_9__ ;
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  actx ;
+
+
+typedef struct TYPE_20__ TYPE_9__ ;
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int actx ;
 struct TYPE_13__ {TYPE_1__* envelopedData; } ;
 struct TYPE_20__ {TYPE_2__ d; } ;
 struct TYPE_19__ {unsigned char* key; int keylen; } ;
-struct TYPE_18__ {int keylen; TYPE_5__* encryptedKey; int /*<<< orphan*/  key; TYPE_4__* keyEncryptionAlgorithm; } ;
+struct TYPE_18__ {int keylen; TYPE_5__* encryptedKey; int key; TYPE_4__* keyEncryptionAlgorithm; } ;
 struct TYPE_14__ {TYPE_7__* kekri; } ;
 struct TYPE_17__ {TYPE_3__ d; } ;
-struct TYPE_16__ {int length; int /*<<< orphan*/  data; } ;
-struct TYPE_15__ {int /*<<< orphan*/  algorithm; } ;
+struct TYPE_16__ {int length; int data; } ;
+struct TYPE_15__ {int algorithm; } ;
 struct TYPE_12__ {TYPE_8__* encryptedContentInfo; } ;
-typedef  TYPE_6__ CMS_RecipientInfo ;
-typedef  TYPE_7__ CMS_KEKRecipientInfo ;
-typedef  TYPE_8__ CMS_EncryptedContentInfo ;
-typedef  TYPE_9__ CMS_ContentInfo ;
-typedef  int /*<<< orphan*/  AES_KEY ;
+typedef TYPE_6__ CMS_RecipientInfo ;
+typedef TYPE_7__ CMS_KEKRecipientInfo ;
+typedef TYPE_8__ CMS_EncryptedContentInfo ;
+typedef TYPE_9__ CMS_ContentInfo ;
+typedef int AES_KEY ;
 
-/* Variables and functions */
- scalar_t__ AES_set_decrypt_key (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int AES_unwrap_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CMS_F_CMS_RECIPIENTINFO_KEKRI_DECRYPT ; 
- int /*<<< orphan*/  CMS_R_ERROR_SETTING_KEY ; 
- int /*<<< orphan*/  CMS_R_INVALID_ENCRYPTED_KEY_LENGTH ; 
- int /*<<< orphan*/  CMS_R_INVALID_KEY_LENGTH ; 
- int /*<<< orphan*/  CMS_R_NO_KEY ; 
- int /*<<< orphan*/  CMS_R_UNWRAP_ERROR ; 
- int /*<<< orphan*/  CMSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int OBJ_obj2nid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int aes_wrap_keylen (int) ; 
+
+ scalar_t__ AES_set_decrypt_key (int ,int,int *) ;
+ int AES_unwrap_key (int *,int *,unsigned char*,int ,int) ;
+ int CMS_F_CMS_RECIPIENTINFO_KEKRI_DECRYPT ;
+ int CMS_R_ERROR_SETTING_KEY ;
+ int CMS_R_INVALID_ENCRYPTED_KEY_LENGTH ;
+ int CMS_R_INVALID_KEY_LENGTH ;
+ int CMS_R_NO_KEY ;
+ int CMS_R_UNWRAP_ERROR ;
+ int CMSerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OBJ_obj2nid (int ) ;
+ int OPENSSL_cleanse (int *,int) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int aes_wrap_keylen (int) ;
 
 __attribute__((used)) static int cms_RecipientInfo_kekri_decrypt(CMS_ContentInfo *cms,
                                            CMS_RecipientInfo *ri)
@@ -58,7 +58,7 @@ __attribute__((used)) static int cms_RecipientInfo_kekri_decrypt(CMS_ContentInfo
     CMS_EncryptedContentInfo *ec;
     CMS_KEKRecipientInfo *kekri;
     AES_KEY actx;
-    unsigned char *ukey = NULL;
+    unsigned char *ukey = ((void*)0);
     int ukeylen;
     int r = 0, wrap_nid;
 
@@ -78,7 +78,7 @@ __attribute__((used)) static int cms_RecipientInfo_kekri_decrypt(CMS_ContentInfo
         return 0;
     }
 
-    /* If encrypted key length is invalid don't bother */
+
 
     if (kekri->encryptedKey->length < 16) {
         CMSerr(CMS_F_CMS_RECIPIENTINFO_KEKRI_DECRYPT,
@@ -94,12 +94,12 @@ __attribute__((used)) static int cms_RecipientInfo_kekri_decrypt(CMS_ContentInfo
 
     ukey = OPENSSL_malloc(kekri->encryptedKey->length - 8);
 
-    if (ukey == NULL) {
+    if (ukey == ((void*)0)) {
         CMSerr(CMS_F_CMS_RECIPIENTINFO_KEKRI_DECRYPT, ERR_R_MALLOC_FAILURE);
         goto err;
     }
 
-    ukeylen = AES_unwrap_key(&actx, NULL, ukey,
+    ukeylen = AES_unwrap_key(&actx, ((void*)0), ukey,
                              kekri->encryptedKey->data,
                              kekri->encryptedKey->length);
 

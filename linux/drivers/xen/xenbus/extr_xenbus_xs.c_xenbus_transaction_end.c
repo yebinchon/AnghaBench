@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xenbus_transaction {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XS_TRANSACTION_END ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int xs_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xs_single (struct xenbus_transaction,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
+
+ int XS_TRANSACTION_END ;
+ int strcpy (char*,char*) ;
+ int xs_error (int ) ;
+ int xs_single (struct xenbus_transaction,int ,char*,int *) ;
 
 int xenbus_transaction_end(struct xenbus_transaction t, int abort)
 {
-	char abortstr[2];
+ char abortstr[2];
 
-	if (abort)
-		strcpy(abortstr, "F");
-	else
-		strcpy(abortstr, "T");
+ if (abort)
+  strcpy(abortstr, "F");
+ else
+  strcpy(abortstr, "T");
 
-	return xs_error(xs_single(t, XS_TRANSACTION_END, abortstr, NULL));
+ return xs_error(xs_single(t, XS_TRANSACTION_END, abortstr, ((void*)0)));
 }

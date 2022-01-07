@@ -1,0 +1,236 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/isp/extr_isp_library.c_isp_put_els.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/isp/extr_isp_library.c_isp_put_els.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_4__ = type { i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @isp_put_els(i32* %0, %struct.TYPE_4__* %1, %struct.TYPE_4__* %2) #0 {
+  %4 = alloca i32*, align 8
+  %5 = alloca %struct.TYPE_4__*, align 8
+  %6 = alloca %struct.TYPE_4__*, align 8
+  store i32* %0, i32** %4, align 8
+  store %struct.TYPE_4__* %1, %struct.TYPE_4__** %5, align 8
+  store %struct.TYPE_4__* %2, %struct.TYPE_4__** %6, align 8
+  %7 = load i32*, i32** %4, align 8
+  %8 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %9 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %8, i32 0, i32 28
+  %10 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %11 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %10, i32 0, i32 28
+  %12 = call i32 @isp_put_hdr(i32* %7, i32* %9, i32* %11)
+  %13 = load i32*, i32** %4, align 8
+  %14 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %15 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %14, i32 0, i32 27
+  %16 = load i32, i32* %15, align 4
+  %17 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %18 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %17, i32 0, i32 27
+  %19 = call i32 @ISP_IOXPUT_32(i32* %13, i32 %16, i32* %18)
+  %20 = load i32*, i32** %4, align 8
+  %21 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %22 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %21, i32 0, i32 26
+  %23 = load i32, i32* %22, align 4
+  %24 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %25 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %24, i32 0, i32 26
+  %26 = call i32 @ISP_IOXPUT_16(i32* %20, i32 %23, i32* %25)
+  %27 = load i32*, i32** %4, align 8
+  %28 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %29 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %28, i32 0, i32 25
+  %30 = load i32, i32* %29, align 4
+  %31 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %32 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %31, i32 0, i32 25
+  %33 = call i32 @ISP_IOXPUT_16(i32* %27, i32 %30, i32* %32)
+  %34 = load i32*, i32** %4, align 8
+  %35 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %36 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %35, i32 0, i32 24
+  %37 = load i32, i32* %36, align 4
+  %38 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %39 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %38, i32 0, i32 24
+  %40 = call i32 @ISP_IOXPUT_16(i32* %34, i32 %37, i32* %39)
+  %41 = load i32*, i32** %4, align 8
+  %42 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %43 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %42, i32 0, i32 23
+  %44 = load i32, i32* %43, align 4
+  %45 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %46 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %45, i32 0, i32 23
+  %47 = call i32 @ISP_IOXPUT_8(i32* %41, i32 %44, i32* %46)
+  %48 = load i32*, i32** %4, align 8
+  %49 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %50 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %49, i32 0, i32 22
+  %51 = load i32, i32* %50, align 4
+  %52 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %53 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %52, i32 0, i32 22
+  %54 = call i32 @ISP_IOXPUT_8(i32* %48, i32 %51, i32* %53)
+  %55 = load i32*, i32** %4, align 8
+  %56 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %57 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %56, i32 0, i32 21
+  %58 = load i32, i32* %57, align 4
+  %59 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %60 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %59, i32 0, i32 21
+  %61 = call i32 @ISP_IOXPUT_32(i32* %55, i32 %58, i32* %60)
+  %62 = load i32*, i32** %4, align 8
+  %63 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %64 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %63, i32 0, i32 20
+  %65 = load i32, i32* %64, align 4
+  %66 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %67 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %66, i32 0, i32 20
+  %68 = call i32 @ISP_IOXPUT_16(i32* %62, i32 %65, i32* %67)
+  %69 = load i32*, i32** %4, align 8
+  %70 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %71 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %70, i32 0, i32 19
+  %72 = load i32, i32* %71, align 4
+  %73 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %74 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %73, i32 0, i32 19
+  %75 = call i32 @ISP_IOXPUT_8(i32* %69, i32 %72, i32* %74)
+  %76 = load i32*, i32** %4, align 8
+  %77 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %78 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %77, i32 0, i32 14
+  %79 = load i32, i32* %78, align 4
+  %80 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %81 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %80, i32 0, i32 18
+  %82 = call i32 @ISP_IOXPUT_8(i32* %76, i32 %79, i32* %81)
+  %83 = load i32*, i32** %4, align 8
+  %84 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %85 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %84, i32 0, i32 17
+  %86 = load i32, i32* %85, align 4
+  %87 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %88 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %87, i32 0, i32 17
+  %89 = call i32 @ISP_IOXPUT_8(i32* %83, i32 %86, i32* %88)
+  %90 = load i32*, i32** %4, align 8
+  %91 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %92 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %91, i32 0, i32 16
+  %93 = load i32, i32* %92, align 4
+  %94 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %95 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %94, i32 0, i32 16
+  %96 = call i32 @ISP_IOXPUT_8(i32* %90, i32 %93, i32* %95)
+  %97 = load i32*, i32** %4, align 8
+  %98 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %99 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %98, i32 0, i32 15
+  %100 = load i32, i32* %99, align 4
+  %101 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %102 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %101, i32 0, i32 15
+  %103 = call i32 @ISP_IOXPUT_8(i32* %97, i32 %100, i32* %102)
+  %104 = load i32*, i32** %4, align 8
+  %105 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %106 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %105, i32 0, i32 14
+  %107 = load i32, i32* %106, align 4
+  %108 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %109 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %108, i32 0, i32 14
+  %110 = call i32 @ISP_IOXPUT_8(i32* %104, i32 %107, i32* %109)
+  %111 = load i32*, i32** %4, align 8
+  %112 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %113 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %112, i32 0, i32 13
+  %114 = load i32, i32* %113, align 4
+  %115 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %116 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %115, i32 0, i32 13
+  %117 = call i32 @ISP_IOXPUT_16(i32* %111, i32 %114, i32* %116)
+  %118 = load i32*, i32** %4, align 8
+  %119 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %120 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %119, i32 0, i32 12
+  %121 = load i32, i32* %120, align 4
+  %122 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %123 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %122, i32 0, i32 12
+  %124 = call i32 @ISP_IOXPUT_16(i32* %118, i32 %121, i32* %123)
+  %125 = load i32*, i32** %4, align 8
+  %126 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %127 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %126, i32 0, i32 11
+  %128 = load i32, i32* %127, align 4
+  %129 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %130 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %129, i32 0, i32 11
+  %131 = call i32 @ISP_IOXPUT_32(i32* %125, i32 %128, i32* %130)
+  %132 = load i32*, i32** %4, align 8
+  %133 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %134 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %133, i32 0, i32 10
+  %135 = load i32, i32* %134, align 4
+  %136 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %137 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %136, i32 0, i32 10
+  %138 = call i32 @ISP_IOXPUT_32(i32* %132, i32 %135, i32* %137)
+  %139 = load i32*, i32** %4, align 8
+  %140 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %141 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %140, i32 0, i32 9
+  %142 = load i32, i32* %141, align 4
+  %143 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %144 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %143, i32 0, i32 9
+  %145 = call i32 @ISP_IOXPUT_32(i32* %139, i32 %142, i32* %144)
+  %146 = load i32*, i32** %4, align 8
+  %147 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %148 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %147, i32 0, i32 8
+  %149 = load i32, i32* %148, align 4
+  %150 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %151 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %150, i32 0, i32 8
+  %152 = call i32 @ISP_IOXPUT_16(i32* %146, i32 %149, i32* %151)
+  %153 = load i32*, i32** %4, align 8
+  %154 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %155 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %154, i32 0, i32 7
+  %156 = load i32, i32* %155, align 4
+  %157 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %158 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %157, i32 0, i32 7
+  %159 = call i32 @ISP_IOXPUT_16(i32* %153, i32 %156, i32* %158)
+  %160 = load i32*, i32** %4, align 8
+  %161 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %162 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %161, i32 0, i32 6
+  %163 = load i32, i32* %162, align 4
+  %164 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %165 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %164, i32 0, i32 6
+  %166 = call i32 @ISP_IOXPUT_16(i32* %160, i32 %163, i32* %165)
+  %167 = load i32*, i32** %4, align 8
+  %168 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %169 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %168, i32 0, i32 5
+  %170 = load i32, i32* %169, align 4
+  %171 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %172 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %171, i32 0, i32 5
+  %173 = call i32 @ISP_IOXPUT_16(i32* %167, i32 %170, i32* %172)
+  %174 = load i32*, i32** %4, align 8
+  %175 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %176 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %175, i32 0, i32 4
+  %177 = load i32, i32* %176, align 4
+  %178 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %179 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %178, i32 0, i32 4
+  %180 = call i32 @ISP_IOXPUT_32(i32* %174, i32 %177, i32* %179)
+  %181 = load i32*, i32** %4, align 8
+  %182 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %183 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %182, i32 0, i32 3
+  %184 = load i32, i32* %183, align 4
+  %185 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %186 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %185, i32 0, i32 3
+  %187 = call i32 @ISP_IOXPUT_16(i32* %181, i32 %184, i32* %186)
+  %188 = load i32*, i32** %4, align 8
+  %189 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %190 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %189, i32 0, i32 2
+  %191 = load i32, i32* %190, align 4
+  %192 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %193 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %192, i32 0, i32 2
+  %194 = call i32 @ISP_IOXPUT_16(i32* %188, i32 %191, i32* %193)
+  %195 = load i32*, i32** %4, align 8
+  %196 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %197 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %196, i32 0, i32 1
+  %198 = load i32, i32* %197, align 4
+  %199 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %200 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %199, i32 0, i32 1
+  %201 = call i32 @ISP_IOXPUT_16(i32* %195, i32 %198, i32* %200)
+  %202 = load i32*, i32** %4, align 8
+  %203 = load %struct.TYPE_4__*, %struct.TYPE_4__** %5, align 8
+  %204 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %203, i32 0, i32 0
+  %205 = load i32, i32* %204, align 4
+  %206 = load %struct.TYPE_4__*, %struct.TYPE_4__** %6, align 8
+  %207 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %206, i32 0, i32 0
+  %208 = call i32 @ISP_IOXPUT_16(i32* %202, i32 %205, i32* %207)
+  ret void
+}
+
+declare dso_local i32 @isp_put_hdr(i32*, i32*, i32*) #1
+
+declare dso_local i32 @ISP_IOXPUT_32(i32*, i32, i32*) #1
+
+declare dso_local i32 @ISP_IOXPUT_16(i32*, i32, i32*) #1
+
+declare dso_local i32 @ISP_IOXPUT_8(i32*, i32, i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct AVFormatContext {int nb_streams; TYPE_3__** streams; int /*<<< orphan*/  pb; } ;
-struct TYPE_4__ {int /*<<< orphan*/  den; int /*<<< orphan*/  num; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct AVFormatContext {int nb_streams; TYPE_3__** streams; int pb; } ;
+struct TYPE_4__ {int den; int num; } ;
 struct TYPE_6__ {TYPE_1__ avg_frame_rate; TYPE_2__* codecpar; } ;
 struct TYPE_5__ {scalar_t__ codec_id; char* extradata; int extradata_size; } ;
-typedef  TYPE_1__ AVRational ;
-typedef  TYPE_2__ AVCodecParameters ;
+typedef TYPE_1__ AVRational ;
+typedef TYPE_2__ AVCodecParameters ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_MICRODVD ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (struct AVFormatContext*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_CODEC_ID_MICRODVD ;
+ int AV_LOG_ERROR ;
+ int av_log (struct AVFormatContext*,int ,char*) ;
+ int avio_flush (int ) ;
+ int avio_write (int ,char*,int) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int ,int ) ;
 
 __attribute__((used)) static int microdvd_write_header(struct AVFormatContext *s)
 {

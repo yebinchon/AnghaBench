@@ -1,85 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_add_client_custom_ext (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SSL_CTX_add_custom_ext (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SSL_CTX_add_server_custom_ext (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_options (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_tlsext_servername_arg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_tlsext_servername_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- unsigned int SSL_EXT_CLIENT_HELLO ; 
- unsigned int SSL_EXT_TLS1_2_SERVER_HELLO ; 
- unsigned int SSL_EXT_TLS1_3_CERTIFICATE ; 
- unsigned int SSL_EXT_TLS1_3_ENCRYPTED_EXTENSIONS ; 
- unsigned int SSL_EXT_TLS1_3_NEW_SESSION_TICKET ; 
- unsigned int SSL_EXT_TLS1_3_SERVER_HELLO ; 
- int /*<<< orphan*/  SSL_OP_NO_TLSv1_3 ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_get1_session (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_session (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_shutdown (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_EXT_TYPE1 ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/ * TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int clntaddnewcb ; 
- int clntaddoldcb ; 
- int clntparsenewcb ; 
- int clntparseoldcb ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  new_add_cb ; 
- int /*<<< orphan*/  new_free_cb ; 
- int /*<<< orphan*/  new_parse_cb ; 
- int /*<<< orphan*/  old_add_cb ; 
- int /*<<< orphan*/  old_free_cb ; 
- int /*<<< orphan*/  old_parse_cb ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  sni_cb ; 
- int snicb ; 
- int srvaddnewcb ; 
- int srvaddoldcb ; 
- int srvparsenewcb ; 
- int srvparseoldcb ; 
+
+
+
+typedef int SSL_SESSION ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_add_client_custom_ext (int *,int ,int ,int ,int*,int ,int*) ;
+ int SSL_CTX_add_custom_ext (int *,int ,unsigned int,int ,int ,int*,int ,int*) ;
+ int SSL_CTX_add_server_custom_ext (int *,int ,int ,int ,int*,int ,int*) ;
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_options (int *,int ) ;
+ int SSL_CTX_set_tlsext_servername_arg (int *,int *) ;
+ int SSL_CTX_set_tlsext_servername_callback (int *,int ) ;
+ int SSL_ERROR_NONE ;
+ unsigned int SSL_EXT_CLIENT_HELLO ;
+ unsigned int SSL_EXT_TLS1_2_SERVER_HELLO ;
+ unsigned int SSL_EXT_TLS1_3_CERTIFICATE ;
+ unsigned int SSL_EXT_TLS1_3_ENCRYPTED_EXTENSIONS ;
+ unsigned int SSL_EXT_TLS1_3_NEW_SESSION_TICKET ;
+ unsigned int SSL_EXT_TLS1_3_SERVER_HELLO ;
+ int SSL_OP_NO_TLSv1_3 ;
+ int SSL_SESSION_free (int *) ;
+ int SSL_free (int *) ;
+ int * SSL_get1_session (int *) ;
+ int SSL_set_session (int *,int *) ;
+ int SSL_shutdown (int *) ;
+ int TEST_EXT_TYPE1 ;
+ int TEST_false (int ) ;
+ int TEST_true (int ) ;
+ int TLS1_VERSION ;
+ int * TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int clntaddnewcb ;
+ int clntaddoldcb ;
+ int clntparsenewcb ;
+ int clntparseoldcb ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int *,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int new_add_cb ;
+ int new_free_cb ;
+ int new_parse_cb ;
+ int old_add_cb ;
+ int old_free_cb ;
+ int old_parse_cb ;
+ int privkey ;
+ int sni_cb ;
+ int snicb ;
+ int srvaddnewcb ;
+ int srvaddoldcb ;
+ int srvparsenewcb ;
+ int srvparseoldcb ;
 
 __attribute__((used)) static int test_custom_exts(int tst)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL, *sctx2 = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0), *sctx2 = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
     static int server = 1;
     static int client = 0;
-    SSL_SESSION *sess = NULL;
+    SSL_SESSION *sess = ((void*)0);
     unsigned int context;
-
-#if defined(OPENSSL_NO_TLS1_2) && !defined(OPENSSL_NO_TLS1_3)
-    /* Skip tests for TLSv1.2 and below in this case */
-    if (tst < 3)
-        return 1;
-#endif
-
-    /* Reset callback counters */
     clntaddoldcb = clntparseoldcb = srvaddoldcb = srvparseoldcb = 0;
     clntaddnewcb = clntparsenewcb = srvaddnewcb = srvparsenewcb = 0;
     snicb = 0;
@@ -90,16 +82,16 @@ __attribute__((used)) static int test_custom_exts(int tst)
         goto end;
 
     if (tst == 2
-            && !TEST_true(create_ssl_ctx_pair(TLS_server_method(), NULL,
+            && !TEST_true(create_ssl_ctx_pair(TLS_server_method(), ((void*)0),
                                               TLS1_VERSION, 0,
-                                              &sctx2, NULL, cert, privkey)))
+                                              &sctx2, ((void*)0), cert, privkey)))
         goto end;
 
 
     if (tst < 3) {
         SSL_CTX_set_options(cctx, SSL_OP_NO_TLSv1_3);
         SSL_CTX_set_options(sctx, SSL_OP_NO_TLSv1_3);
-        if (sctx2 != NULL)
+        if (sctx2 != ((void*)0))
             SSL_CTX_set_options(sctx2, SSL_OP_NO_TLSv1_3);
     }
 
@@ -116,7 +108,7 @@ __attribute__((used)) static int test_custom_exts(int tst)
                   | SSL_EXT_TLS1_3_ENCRYPTED_EXTENSIONS;
     }
 
-    /* Create a client side custom extension */
+
     if (tst == 0) {
         if (!TEST_true(SSL_CTX_add_client_custom_ext(cctx, TEST_EXT_TYPE1,
                                                      old_add_cb, old_free_cb,
@@ -130,7 +122,7 @@ __attribute__((used)) static int test_custom_exts(int tst)
             goto end;
     }
 
-    /* Should not be able to add duplicates */
+
     if (!TEST_false(SSL_CTX_add_client_custom_ext(cctx, TEST_EXT_TYPE1,
                                                   old_add_cb, old_free_cb,
                                                   &client, old_parse_cb,
@@ -141,7 +133,7 @@ __attribute__((used)) static int test_custom_exts(int tst)
                                                   new_parse_cb, &client)))
         goto end;
 
-    /* Create a server side custom extension */
+
     if (tst == 0) {
         if (!TEST_true(SSL_CTX_add_server_custom_ext(sctx, TEST_EXT_TYPE1,
                                                      old_add_cb, old_free_cb,
@@ -153,7 +145,7 @@ __attribute__((used)) static int test_custom_exts(int tst)
                                               new_add_cb, new_free_cb,
                                               &server, new_parse_cb, &server)))
             goto end;
-        if (sctx2 != NULL
+        if (sctx2 != ((void*)0)
                 && !TEST_true(SSL_CTX_add_custom_ext(sctx2, TEST_EXT_TYPE1,
                                                      context, new_add_cb,
                                                      new_free_cb, &server,
@@ -161,7 +153,7 @@ __attribute__((used)) static int test_custom_exts(int tst)
             goto end;
     }
 
-    /* Should not be able to add duplicates */
+
     if (!TEST_false(SSL_CTX_add_server_custom_ext(sctx, TEST_EXT_TYPE1,
                                                   old_add_cb, old_free_cb,
                                                   &server, old_parse_cb,
@@ -173,14 +165,14 @@ __attribute__((used)) static int test_custom_exts(int tst)
         goto end;
 
     if (tst == 2) {
-        /* Set up SNI */
+
         if (!TEST_true(SSL_CTX_set_tlsext_servername_callback(sctx, sni_cb))
                 || !TEST_true(SSL_CTX_set_tlsext_servername_arg(sctx, sctx2)))
             goto end;
     }
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl,
-                                      &clientssl, NULL, NULL))
+                                      &clientssl, ((void*)0), ((void*)0)))
             || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                 SSL_ERROR_NONE)))
         goto end;
@@ -200,7 +192,7 @@ __attribute__((used)) static int test_custom_exts(int tst)
                 || (tst == 2 && snicb != 1))
             goto end;
     } else {
-        /* In this case there 2 NewSessionTicket messages created */
+
         if (clntaddnewcb != 1
                 || clntparsenewcb != 5
                 || srvaddnewcb != 5
@@ -213,27 +205,27 @@ __attribute__((used)) static int test_custom_exts(int tst)
     SSL_shutdown(serverssl);
     SSL_free(serverssl);
     SSL_free(clientssl);
-    serverssl = clientssl = NULL;
+    serverssl = clientssl = ((void*)0);
 
     if (tst == 3) {
-        /* We don't bother with the resumption aspects for this test */
+
         testresult = 1;
         goto end;
     }
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                      NULL, NULL))
+                                      ((void*)0), ((void*)0)))
             || !TEST_true(SSL_set_session(clientssl, sess))
             || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                SSL_ERROR_NONE)))
         goto end;
 
-    /*
-     * For a resumed session we expect to add the ClientHello extension. For the
-     * old style callbacks we ignore it on the server side because they set
-     * SSL_EXT_IGNORE_ON_RESUMPTION. The new style callbacks do not ignore
-     * them.
-     */
+
+
+
+
+
+
     if (tst == 0) {
         if (clntaddoldcb != 2
                 || clntparseoldcb != 1
@@ -247,10 +239,10 @@ __attribute__((used)) static int test_custom_exts(int tst)
                 || srvparsenewcb != 2)
             goto end;
     } else {
-        /*
-         * No Certificate message extensions in the resumption handshake,
-         * 2 NewSessionTickets in the initial handshake, 1 in the resumption
-         */
+
+
+
+
         if (clntaddnewcb != 2
                 || clntparsenewcb != 8
                 || srvaddnewcb != 8

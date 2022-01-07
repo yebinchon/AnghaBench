@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_aframe {double pts; TYPE_1__* av_frame; } ;
 struct TYPE_2__ {void* nb_samples; } ;
 
-/* Variables and functions */
- void* MPCLAMP (int,int /*<<< orphan*/ ,void*) ; 
- double MP_NOPTS_VALUE ; 
- scalar_t__ af_fmt_is_spdif (int /*<<< orphan*/ ) ; 
- double mp_aframe_end_pts (struct mp_aframe*) ; 
- double mp_aframe_get_effective_rate (struct mp_aframe*) ; 
- int /*<<< orphan*/  mp_aframe_get_format (struct mp_aframe*) ; 
- int /*<<< orphan*/  mp_aframe_skip_samples (struct mp_aframe*,int) ; 
+
+ void* MPCLAMP (int,int ,void*) ;
+ double MP_NOPTS_VALUE ;
+ scalar_t__ af_fmt_is_spdif (int ) ;
+ double mp_aframe_end_pts (struct mp_aframe*) ;
+ double mp_aframe_get_effective_rate (struct mp_aframe*) ;
+ int mp_aframe_get_format (struct mp_aframe*) ;
+ int mp_aframe_skip_samples (struct mp_aframe*,int) ;
 
 void mp_aframe_clip_timestamps(struct mp_aframe *f, double start, double end)
 {

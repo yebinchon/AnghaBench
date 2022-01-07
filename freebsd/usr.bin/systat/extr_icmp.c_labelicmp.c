@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  B (int,char*) ; 
- int /*<<< orphan*/  L (int,char*) ; 
- int /*<<< orphan*/  R (int,char*) ; 
- int /*<<< orphan*/  wclrtoeol (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wnd ; 
+ int B (int,char*) ;
+ int L (int,char*) ;
+ int R (int,char*) ;
+ int wclrtoeol (int ) ;
+ int wmove (int ,int ,int ) ;
+ int wnd ;
 
 void
 labelicmp(void)
 {
-	wmove(wnd, 0, 0); wclrtoeol(wnd);
-#define L(row, str) mvwprintw(wnd, row, 10, str)
-#define R(row, str) mvwprintw(wnd, row, 45, str);
-	L(0, "ICMP Input");		R(0, "ICMP Output");
-	L(1, "total messages");		R(1, "total messages");
-	L(2, "with bad code");		R(2, "errors generated");
-	L(3, "with bad length");	R(3, "suppressed - original too short");
-	L(4, "with bad checksum");	R(4, "suppressed - original was ICMP");
-	L(5, "with insufficient data");	R(5, "responses sent");
-					R(6, "suppressed - multicast echo");
-					R(7, "suppressed - multicast tstamp");
-	L(9, "Input Histogram");	R(9, "Output Histogram");
-#define B(row, str) L(row, str); R(row, str)
-	B(10, "echo response");
-	B(11, "echo request");
-	B(12, "destination unreachable");
-	B(13, "redirect");
-	B(14, "time-to-live exceeded");
-	B(15, "parameter problem");
-	L(16, "router advertisement");	R(16, "router solicitation");
-#undef L
-#undef R
-#undef B
+ wmove(wnd, 0, 0); wclrtoeol(wnd);
+
+
+ mvwprintw(wnd, 0, 10, "ICMP Input"); mvwprintw(wnd, 0, 45, "ICMP Output");;
+ mvwprintw(wnd, 1, 10, "total messages"); mvwprintw(wnd, 1, 45, "total messages");;
+ mvwprintw(wnd, 2, 10, "with bad code"); mvwprintw(wnd, 2, 45, "errors generated");;
+ mvwprintw(wnd, 3, 10, "with bad length"); mvwprintw(wnd, 3, 45, "suppressed - original too short");;
+ mvwprintw(wnd, 4, 10, "with bad checksum"); mvwprintw(wnd, 4, 45, "suppressed - original was ICMP");;
+ mvwprintw(wnd, 5, 10, "with insufficient data"); mvwprintw(wnd, 5, 45, "responses sent");;
+     mvwprintw(wnd, 6, 45, "suppressed - multicast echo");;
+     mvwprintw(wnd, 7, 45, "suppressed - multicast tstamp");;
+ mvwprintw(wnd, 9, 10, "Input Histogram"); mvwprintw(wnd, 9, 45, "Output Histogram");;
+
+ mvwprintw(wnd, 10, 10, "echo response"); mvwprintw(wnd, 10, 45, "echo response");;
+ mvwprintw(wnd, 11, 10, "echo request"); mvwprintw(wnd, 11, 45, "echo request");;
+ mvwprintw(wnd, 12, 10, "destination unreachable"); mvwprintw(wnd, 12, 45, "destination unreachable");;
+ mvwprintw(wnd, 13, 10, "redirect"); mvwprintw(wnd, 13, 45, "redirect");;
+ mvwprintw(wnd, 14, 10, "time-to-live exceeded"); mvwprintw(wnd, 14, 45, "time-to-live exceeded");;
+ mvwprintw(wnd, 15, 10, "parameter problem"); mvwprintw(wnd, 15, 45, "parameter problem");;
+ mvwprintw(wnd, 16, 10, "router advertisement"); mvwprintw(wnd, 16, 45, "router solicitation");;
+
+
+
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rds_sock {int /*<<< orphan*/  rs_bound_addr; int /*<<< orphan*/  rs_bound_node; int /*<<< orphan*/  rs_bound_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bind_hash_table ; 
- int /*<<< orphan*/  ht_parms ; 
- int /*<<< orphan*/  in6addr_any ; 
- scalar_t__ ipv6_addr_any (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ntohs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rds_sock_put (struct rds_sock*) ; 
- int /*<<< orphan*/  rdsdebug (char*,struct rds_sock*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rhashtable_remove_fast (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct rds_sock {int rs_bound_addr; int rs_bound_node; int rs_bound_port; } ;
+
+
+ int bind_hash_table ;
+ int ht_parms ;
+ int in6addr_any ;
+ scalar_t__ ipv6_addr_any (int *) ;
+ int ntohs (int ) ;
+ int rds_sock_put (struct rds_sock*) ;
+ int rdsdebug (char*,struct rds_sock*,int *,int ) ;
+ int rhashtable_remove_fast (int *,int *,int ) ;
 
 void rds_remove_bound(struct rds_sock *rs)
 {
 
-	if (ipv6_addr_any(&rs->rs_bound_addr))
-		return;
+ if (ipv6_addr_any(&rs->rs_bound_addr))
+  return;
 
-	rdsdebug("rs %p unbinding from %pI6c:%d\n",
-		 rs, &rs->rs_bound_addr,
-		 ntohs(rs->rs_bound_port));
+ rdsdebug("rs %p unbinding from %pI6c:%d\n",
+   rs, &rs->rs_bound_addr,
+   ntohs(rs->rs_bound_port));
 
-	rhashtable_remove_fast(&bind_hash_table, &rs->rs_bound_node, ht_parms);
-	rds_sock_put(rs);
-	rs->rs_bound_addr = in6addr_any;
+ rhashtable_remove_fast(&bind_hash_table, &rs->rs_bound_node, ht_parms);
+ rds_sock_put(rs);
+ rs->rs_bound_addr = in6addr_any;
 }

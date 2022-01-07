@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CMS_SignerInfo ;
-typedef  int /*<<< orphan*/  CMS_ReceiptRequest ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CMS_F_CMS_ADD1_RECEIPTREQUEST ; 
- int /*<<< orphan*/  CMS_signed_add1_attr_by_NID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  CMSerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  NID_id_smime_aa_receiptRequest ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  V_ASN1_SEQUENCE ; 
- int i2d_CMS_ReceiptRequest (int /*<<< orphan*/ *,unsigned char**) ; 
+
+
+
+typedef int CMS_SignerInfo ;
+typedef int CMS_ReceiptRequest ;
+
+
+ int CMS_F_CMS_ADD1_RECEIPTREQUEST ;
+ int CMS_signed_add1_attr_by_NID (int *,int ,int ,unsigned char*,int) ;
+ int CMSerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int NID_id_smime_aa_receiptRequest ;
+ int OPENSSL_free (unsigned char*) ;
+ int V_ASN1_SEQUENCE ;
+ int i2d_CMS_ReceiptRequest (int *,unsigned char**) ;
 
 int CMS_add1_ReceiptRequest(CMS_SignerInfo *si, CMS_ReceiptRequest *rr)
 {
-    unsigned char *rrder = NULL;
+    unsigned char *rrder = ((void*)0);
     int rrderlen, r = 0;
 
     rrderlen = i2d_CMS_ReceiptRequest(rr, &rrder);

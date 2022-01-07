@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IFX_REG_W32 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PDMA_CFG ; 
- int /*<<< orphan*/  PDMA_RX_CTX_CFG ; 
- int /*<<< orphan*/  PDMA_RX_DELAY_CFG ; 
- int /*<<< orphan*/  PDMA_RX_MAX_LEN_REG ; 
- int /*<<< orphan*/  PDMA_TX_CTX_CFG ; 
- int /*<<< orphan*/  SAR_CRC_SIZE_CFG ; 
- int /*<<< orphan*/  SAR_MODE_CFG ; 
- int /*<<< orphan*/  SAR_PDMA_RX_CMDBUF_CFG ; 
- int /*<<< orphan*/  SAR_PDMA_TX_CMDBUF_CFG ; 
- int /*<<< orphan*/  SAR_POLY_CFG_SET0 ; 
- int /*<<< orphan*/  SAR_POLY_CFG_SET1 ; 
- int /*<<< orphan*/  SAR_POLY_CFG_SET2 ; 
- int /*<<< orphan*/  SAR_RX_CTX_CFG ; 
- int /*<<< orphan*/  SAR_TX_CTX_CFG ; 
+ int IFX_REG_W32 (int,int ) ;
+ int PDMA_CFG ;
+ int PDMA_RX_CTX_CFG ;
+ int PDMA_RX_DELAY_CFG ;
+ int PDMA_RX_MAX_LEN_REG ;
+ int PDMA_TX_CTX_CFG ;
+ int SAR_CRC_SIZE_CFG ;
+ int SAR_MODE_CFG ;
+ int SAR_PDMA_RX_CMDBUF_CFG ;
+ int SAR_PDMA_TX_CMDBUF_CFG ;
+ int SAR_POLY_CFG_SET0 ;
+ int SAR_POLY_CFG_SET1 ;
+ int SAR_POLY_CFG_SET2 ;
+ int SAR_RX_CTX_CFG ;
+ int SAR_TX_CTX_CFG ;
 
 __attribute__((used)) static inline void init_pdma(void)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int dummy; } ;
-typedef  int /*<<< orphan*/  ASN1_GENERALIZEDTIME ;
+typedef int ASN1_GENERALIZEDTIME ;
 
-/* Variables and functions */
- struct tm* OPENSSL_gmtime (int /*<<< orphan*/ *,struct tm*) ; 
- int /*<<< orphan*/  OPENSSL_gmtime_adj (struct tm*,int,long) ; 
- int /*<<< orphan*/  V_ASN1_GENERALIZEDTIME ; 
- int /*<<< orphan*/ * asn1_time_from_tm (int /*<<< orphan*/ *,struct tm*,int /*<<< orphan*/ ) ; 
+
+ struct tm* OPENSSL_gmtime (int *,struct tm*) ;
+ int OPENSSL_gmtime_adj (struct tm*,int,long) ;
+ int V_ASN1_GENERALIZEDTIME ;
+ int * asn1_time_from_tm (int *,struct tm*,int ) ;
 
 ASN1_GENERALIZEDTIME *ASN1_GENERALIZEDTIME_adj(ASN1_GENERALIZEDTIME *s,
                                                time_t t, int offset_day,
@@ -28,12 +28,12 @@ ASN1_GENERALIZEDTIME *ASN1_GENERALIZEDTIME_adj(ASN1_GENERALIZEDTIME *s,
     struct tm data;
 
     ts = OPENSSL_gmtime(&t, &data);
-    if (ts == NULL)
-        return NULL;
+    if (ts == ((void*)0))
+        return ((void*)0);
 
     if (offset_day || offset_sec) {
         if (!OPENSSL_gmtime_adj(ts, offset_day, offset_sec))
-            return NULL;
+            return ((void*)0);
     }
 
     return asn1_time_from_tm(s, ts, V_ASN1_GENERALIZEDTIME);

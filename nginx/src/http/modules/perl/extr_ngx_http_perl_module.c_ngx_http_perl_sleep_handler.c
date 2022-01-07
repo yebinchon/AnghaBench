@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_http_request_t ;
+typedef TYPE_2__ ngx_http_request_t ;
 struct TYPE_10__ {scalar_t__ delayed; } ;
-typedef  TYPE_3__ ngx_event_t ;
-struct TYPE_8__ {TYPE_3__* write; int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_event_t ;
+struct TYPE_8__ {TYPE_3__* write; int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_HTTP_INTERNAL_SERVER_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_handle_write_event (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_finalize_request (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_perl_handle_request (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+ int NGX_HTTP_INTERNAL_SERVER_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_handle_write_event (TYPE_3__*,int ) ;
+ int ngx_http_finalize_request (TYPE_2__*,int ) ;
+ int ngx_http_perl_handle_request (TYPE_2__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
 
 void
 ngx_http_perl_sleep_handler(ngx_http_request_t *r)
 {
-    ngx_event_t  *wev;
+    ngx_event_t *wev;
 
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                    "perl sleep handler");

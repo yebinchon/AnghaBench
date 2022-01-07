@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t typekind; int /*<<< orphan*/  cImplTypes; int /*<<< orphan*/  cVars; int /*<<< orphan*/  cFuncs; int /*<<< orphan*/  wTypeFlags; } ;
-struct TYPE_6__ {TYPE_1__ typeattr; int /*<<< orphan*/  impltypes; int /*<<< orphan*/  vardescs; int /*<<< orphan*/  funcdescs; int /*<<< orphan*/  DllName; int /*<<< orphan*/  index; int /*<<< orphan*/  pTypeLib; int /*<<< orphan*/  guid; int /*<<< orphan*/  DocString; int /*<<< orphan*/  Name; int /*<<< orphan*/  ref; } ;
-typedef  TYPE_2__ ITypeInfoImpl ;
 
-/* Variables and functions */
- size_t TKIND_MODULE ; 
- int /*<<< orphan*/  TLB_get_bstr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLB_get_guidref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__ const*,...) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_TLBFuncDesc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_TLBImplType (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_TLBVarDesc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ole ; 
- int /*<<< orphan*/ * typekind_desc ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t typekind; int cImplTypes; int cVars; int cFuncs; int wTypeFlags; } ;
+struct TYPE_6__ {TYPE_1__ typeattr; int impltypes; int vardescs; int funcdescs; int DllName; int index; int pTypeLib; int guid; int DocString; int Name; int ref; } ;
+typedef TYPE_2__ ITypeInfoImpl ;
+
+
+ size_t TKIND_MODULE ;
+ int TLB_get_bstr (int ) ;
+ int TLB_get_guidref (int ) ;
+ int TRACE (char*,TYPE_2__ const*,...) ;
+ scalar_t__ TRACE_ON (int ) ;
+ int debugstr_guid (int ) ;
+ int debugstr_w (int ) ;
+ int dump_TLBFuncDesc (int ,int ) ;
+ int dump_TLBImplType (int ,int ) ;
+ int dump_TLBVarDesc (int ,int ) ;
+ int ole ;
+ int * typekind_desc ;
 
 __attribute__((used)) static void dump_TypeInfo(const ITypeInfoImpl * pty)
 {

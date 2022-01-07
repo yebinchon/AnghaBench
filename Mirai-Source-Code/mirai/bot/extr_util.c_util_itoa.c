@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  util_strcpy (char*,char*) ; 
+ int util_strcpy (char*,char*) ;
 
 char *util_itoa(int value, int radix, char *string)
 {
-    if (string == NULL)
-        return NULL;
+    if (string == ((void*)0))
+        return ((void*)0);
 
     if (value != 0)
     {
@@ -53,7 +45,7 @@ char *util_itoa(int value, int radix, char *string)
             accum /= radix;
             offset--;
         }
-        
+
         if (neg)
             scratch[offset] = '-';
         else

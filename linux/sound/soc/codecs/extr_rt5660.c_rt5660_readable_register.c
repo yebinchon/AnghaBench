@@ -1,236 +1,137 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct device {int dummy; } ;
 struct TYPE_3__ {unsigned int window_start; unsigned int window_len; unsigned int range_min; unsigned int range_max; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (TYPE_1__*) ; 
-#define  RT5660_ADC_BST_VOL1 226 
-#define  RT5660_ADDA_CLK1 225 
-#define  RT5660_ADDA_CLK2 224 
-#define  RT5660_AD_DA_MIXER 223 
-#define  RT5660_ALC_PGA_CTRL1 222 
-#define  RT5660_ALC_PGA_CTRL2 221 
-#define  RT5660_ALC_PGA_CTRL3 220 
-#define  RT5660_ALC_PGA_CTRL4 219 
-#define  RT5660_ALC_PGA_CTRL5 218 
-#define  RT5660_ALC_PGA_CTRL6 217 
-#define  RT5660_ALC_PGA_CTRL7 216 
-#define  RT5660_CLSD_AMP_CTRL 215 
-#define  RT5660_CLSD_AMP_OC_CTRL 214 
-#define  RT5660_CLSD_OUT_CTRL1 213 
-#define  RT5660_CLSD_OUT_CTRL2 212 
-#define  RT5660_DAC1_DIG_VOL 211 
-#define  RT5660_DIG_INF1_DATA 210 
-#define  RT5660_DIPOLE_MIC_CTRL1 209 
-#define  RT5660_DIPOLE_MIC_CTRL10 208 
-#define  RT5660_DIPOLE_MIC_CTRL11 207 
-#define  RT5660_DIPOLE_MIC_CTRL12 206 
-#define  RT5660_DIPOLE_MIC_CTRL2 205 
-#define  RT5660_DIPOLE_MIC_CTRL3 204 
-#define  RT5660_DIPOLE_MIC_CTRL4 203 
-#define  RT5660_DIPOLE_MIC_CTRL5 202 
-#define  RT5660_DIPOLE_MIC_CTRL6 201 
-#define  RT5660_DIPOLE_MIC_CTRL7 200 
-#define  RT5660_DIPOLE_MIC_CTRL8 199 
-#define  RT5660_DIPOLE_MIC_CTRL9 198 
-#define  RT5660_DMIC_CTRL1 197 
-#define  RT5660_DRC1_LM_CTRL1 196 
-#define  RT5660_DRC1_LM_CTRL2 195 
-#define  RT5660_DRC2_CTRL1 194 
-#define  RT5660_DRC2_CTRL2 193 
-#define  RT5660_DRC2_CTRL3 192 
-#define  RT5660_DRC2_CTRL4 191 
-#define  RT5660_DRC2_CTRL5 190 
-#define  RT5660_DRC2_LM_CTRL1 189 
-#define  RT5660_DRC2_LM_CTRL2 188 
-#define  RT5660_DRC_AGC_CTRL1 187 
-#define  RT5660_DRC_AGC_CTRL2 186 
-#define  RT5660_DRC_AGC_CTRL3 185 
-#define  RT5660_DRC_AGC_CTRL4 184 
-#define  RT5660_DRC_AGC_CTRL5 183 
-#define  RT5660_EQ_CTRL1 182 
-#define  RT5660_EQ_CTRL2 181 
-#define  RT5660_GEN_CTRL1 180 
-#define  RT5660_GEN_CTRL2 179 
-#define  RT5660_GEN_CTRL3 178 
-#define  RT5660_GLB_CLK 177 
-#define  RT5660_GPIO_CTRL1 176 
-#define  RT5660_GPIO_CTRL2 175 
-#define  RT5660_I2S1_SDP 174 
-#define  RT5660_IN1_IN2 173 
-#define  RT5660_IN3_IN4 172 
-#define  RT5660_INT_IRQ_ST 171 
-#define  RT5660_IRQ_CTRL1 170 
-#define  RT5660_IRQ_CTRL2 169 
-#define  RT5660_JD_CTRL 168 
-#define  RT5660_LOUT_AMP_CTRL 167 
-#define  RT5660_LOUT_MIXER 166 
-#define  RT5660_LOUT_VOL 165 
-#define  RT5660_MICBIAS 164 
-#define  RT5660_MULTI_DRC_CTRL 163 
-#define  RT5660_OUT_L1_MIXER 162 
-#define  RT5660_OUT_L_GAIN1 161 
-#define  RT5660_OUT_L_GAIN2 160 
-#define  RT5660_OUT_R1_MIXER 159 
-#define  RT5660_OUT_R_GAIN1 158 
-#define  RT5660_OUT_R_GAIN2 157 
-#define  RT5660_PLL_CTRL1 156 
-#define  RT5660_PLL_CTRL2 155 
-#define  RT5660_PRIV_DATA 154 
-#define  RT5660_PRIV_INDEX 153 
-#define  RT5660_PWR_ANLG1 152 
-#define  RT5660_PWR_ANLG2 151 
-#define  RT5660_PWR_DIG1 150 
-#define  RT5660_PWR_DIG2 149 
-#define  RT5660_PWR_MIXER 148 
-#define  RT5660_PWR_VOL 147 
-#define  RT5660_REC_L1_MIXER 146 
-#define  RT5660_REC_L2_MIXER 145 
-#define  RT5660_REC_R1_MIXER 144 
-#define  RT5660_REC_R2_MIXER 143 
-#define  RT5660_RESET 142 
-#define  RT5660_SPK_AMP_SPKVDD 141 
-#define  RT5660_SPK_MIXER 140 
-#define  RT5660_SPK_VOL 139 
-#define  RT5660_SPO_CLSD_RATIO 138 
-#define  RT5660_SPO_MIXER 137 
-#define  RT5660_STO1_ADC_DIG_VOL 136 
-#define  RT5660_STO1_ADC_MIXER 135 
-#define  RT5660_STO_DAC_MIXER 134 
-#define  RT5660_SV_ZCD1 133 
-#define  RT5660_SV_ZCD2 132 
-#define  RT5660_VENDOR_ID 131 
-#define  RT5660_VENDOR_ID1 130 
-#define  RT5660_VENDOR_ID2 129 
-#define  RT5660_WIND_FILTER_CTRL1 128 
- TYPE_1__* rt5660_ranges ; 
+
+ int ARRAY_SIZE (TYPE_1__*) ;
+ TYPE_1__* rt5660_ranges ;
 
 __attribute__((used)) static bool rt5660_readable_register(struct device *dev, unsigned int reg)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < ARRAY_SIZE(rt5660_ranges); i++)
-		if ((reg >= rt5660_ranges[i].window_start &&
-		     reg <= rt5660_ranges[i].window_start +
-		     rt5660_ranges[i].window_len) ||
-		    (reg >= rt5660_ranges[i].range_min &&
-		     reg <= rt5660_ranges[i].range_max))
-			return true;
+ for (i = 0; i < ARRAY_SIZE(rt5660_ranges); i++)
+  if ((reg >= rt5660_ranges[i].window_start &&
+       reg <= rt5660_ranges[i].window_start +
+       rt5660_ranges[i].window_len) ||
+      (reg >= rt5660_ranges[i].range_min &&
+       reg <= rt5660_ranges[i].range_max))
+   return 1;
 
-	switch (reg) {
-	case RT5660_RESET:
-	case RT5660_SPK_VOL:
-	case RT5660_LOUT_VOL:
-	case RT5660_IN1_IN2:
-	case RT5660_IN3_IN4:
-	case RT5660_DAC1_DIG_VOL:
-	case RT5660_STO1_ADC_DIG_VOL:
-	case RT5660_ADC_BST_VOL1:
-	case RT5660_STO1_ADC_MIXER:
-	case RT5660_AD_DA_MIXER:
-	case RT5660_STO_DAC_MIXER:
-	case RT5660_DIG_INF1_DATA:
-	case RT5660_REC_L1_MIXER:
-	case RT5660_REC_L2_MIXER:
-	case RT5660_REC_R1_MIXER:
-	case RT5660_REC_R2_MIXER:
-	case RT5660_LOUT_MIXER:
-	case RT5660_SPK_MIXER:
-	case RT5660_SPO_MIXER:
-	case RT5660_SPO_CLSD_RATIO:
-	case RT5660_OUT_L_GAIN1:
-	case RT5660_OUT_L_GAIN2:
-	case RT5660_OUT_L1_MIXER:
-	case RT5660_OUT_R_GAIN1:
-	case RT5660_OUT_R_GAIN2:
-	case RT5660_OUT_R1_MIXER:
-	case RT5660_PWR_DIG1:
-	case RT5660_PWR_DIG2:
-	case RT5660_PWR_ANLG1:
-	case RT5660_PWR_ANLG2:
-	case RT5660_PWR_MIXER:
-	case RT5660_PWR_VOL:
-	case RT5660_PRIV_INDEX:
-	case RT5660_PRIV_DATA:
-	case RT5660_I2S1_SDP:
-	case RT5660_ADDA_CLK1:
-	case RT5660_ADDA_CLK2:
-	case RT5660_DMIC_CTRL1:
-	case RT5660_GLB_CLK:
-	case RT5660_PLL_CTRL1:
-	case RT5660_PLL_CTRL2:
-	case RT5660_CLSD_AMP_OC_CTRL:
-	case RT5660_CLSD_AMP_CTRL:
-	case RT5660_LOUT_AMP_CTRL:
-	case RT5660_SPK_AMP_SPKVDD:
-	case RT5660_MICBIAS:
-	case RT5660_CLSD_OUT_CTRL1:
-	case RT5660_CLSD_OUT_CTRL2:
-	case RT5660_DIPOLE_MIC_CTRL1:
-	case RT5660_DIPOLE_MIC_CTRL2:
-	case RT5660_DIPOLE_MIC_CTRL3:
-	case RT5660_DIPOLE_MIC_CTRL4:
-	case RT5660_DIPOLE_MIC_CTRL5:
-	case RT5660_DIPOLE_MIC_CTRL6:
-	case RT5660_DIPOLE_MIC_CTRL7:
-	case RT5660_DIPOLE_MIC_CTRL8:
-	case RT5660_DIPOLE_MIC_CTRL9:
-	case RT5660_DIPOLE_MIC_CTRL10:
-	case RT5660_DIPOLE_MIC_CTRL11:
-	case RT5660_DIPOLE_MIC_CTRL12:
-	case RT5660_EQ_CTRL1:
-	case RT5660_EQ_CTRL2:
-	case RT5660_DRC_AGC_CTRL1:
-	case RT5660_DRC_AGC_CTRL2:
-	case RT5660_DRC_AGC_CTRL3:
-	case RT5660_DRC_AGC_CTRL4:
-	case RT5660_DRC_AGC_CTRL5:
-	case RT5660_JD_CTRL:
-	case RT5660_IRQ_CTRL1:
-	case RT5660_IRQ_CTRL2:
-	case RT5660_INT_IRQ_ST:
-	case RT5660_GPIO_CTRL1:
-	case RT5660_GPIO_CTRL2:
-	case RT5660_WIND_FILTER_CTRL1:
-	case RT5660_SV_ZCD1:
-	case RT5660_SV_ZCD2:
-	case RT5660_DRC1_LM_CTRL1:
-	case RT5660_DRC1_LM_CTRL2:
-	case RT5660_DRC2_LM_CTRL1:
-	case RT5660_DRC2_LM_CTRL2:
-	case RT5660_MULTI_DRC_CTRL:
-	case RT5660_DRC2_CTRL1:
-	case RT5660_DRC2_CTRL2:
-	case RT5660_DRC2_CTRL3:
-	case RT5660_DRC2_CTRL4:
-	case RT5660_DRC2_CTRL5:
-	case RT5660_ALC_PGA_CTRL1:
-	case RT5660_ALC_PGA_CTRL2:
-	case RT5660_ALC_PGA_CTRL3:
-	case RT5660_ALC_PGA_CTRL4:
-	case RT5660_ALC_PGA_CTRL5:
-	case RT5660_ALC_PGA_CTRL6:
-	case RT5660_ALC_PGA_CTRL7:
-	case RT5660_GEN_CTRL1:
-	case RT5660_GEN_CTRL2:
-	case RT5660_GEN_CTRL3:
-	case RT5660_VENDOR_ID:
-	case RT5660_VENDOR_ID1:
-	case RT5660_VENDOR_ID2:
-		return true;
-	default:
-		return false;
-	}
+ switch (reg) {
+ case 142:
+ case 139:
+ case 165:
+ case 173:
+ case 172:
+ case 211:
+ case 136:
+ case 226:
+ case 135:
+ case 223:
+ case 134:
+ case 210:
+ case 146:
+ case 145:
+ case 144:
+ case 143:
+ case 166:
+ case 140:
+ case 137:
+ case 138:
+ case 161:
+ case 160:
+ case 162:
+ case 158:
+ case 157:
+ case 159:
+ case 150:
+ case 149:
+ case 152:
+ case 151:
+ case 148:
+ case 147:
+ case 153:
+ case 154:
+ case 174:
+ case 225:
+ case 224:
+ case 197:
+ case 177:
+ case 156:
+ case 155:
+ case 214:
+ case 215:
+ case 167:
+ case 141:
+ case 164:
+ case 213:
+ case 212:
+ case 209:
+ case 205:
+ case 204:
+ case 203:
+ case 202:
+ case 201:
+ case 200:
+ case 199:
+ case 198:
+ case 208:
+ case 207:
+ case 206:
+ case 182:
+ case 181:
+ case 187:
+ case 186:
+ case 185:
+ case 184:
+ case 183:
+ case 168:
+ case 170:
+ case 169:
+ case 171:
+ case 176:
+ case 175:
+ case 128:
+ case 133:
+ case 132:
+ case 196:
+ case 195:
+ case 189:
+ case 188:
+ case 163:
+ case 194:
+ case 193:
+ case 192:
+ case 191:
+ case 190:
+ case 222:
+ case 221:
+ case 220:
+ case 219:
+ case 218:
+ case 217:
+ case 216:
+ case 180:
+ case 179:
+ case 178:
+ case 131:
+ case 130:
+ case 129:
+  return 1;
+ default:
+  return 0;
+ }
 }

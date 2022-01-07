@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fatal_expected_char (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  fatal_with_file_and_line (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  obstack_1grow (int /*<<< orphan*/ *,char) ; 
- char* read_braced_string (int /*<<< orphan*/ *) ; 
- char* read_quoted_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  read_rtx_filename ; 
- int read_rtx_lineno ; 
- int read_skip_spaces (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_rtx_ptr_loc (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  string_obstack ; 
+
+
+
+typedef int FILE ;
+
+
+ int fatal_expected_char (int *,char,int) ;
+ int fatal_with_file_and_line (int *,char*,int) ;
+ int obstack_1grow (int *,char) ;
+ char* read_braced_string (int *) ;
+ char* read_quoted_string (int *) ;
+ int read_rtx_filename ;
+ int read_rtx_lineno ;
+ int read_skip_spaces (int *) ;
+ int set_rtx_ptr_loc (char*,int ,int) ;
+ int string_obstack ;
 
 __attribute__((used)) static char *
 read_string (FILE *infile, int star_if_braced)
@@ -44,7 +44,7 @@ read_string (FILE *infile, int star_if_braced)
   else if (c == '{')
     {
       if (star_if_braced)
-	obstack_1grow (&string_obstack, '*');
+ obstack_1grow (&string_obstack, '*');
       stringbuf = read_braced_string (infile);
     }
   else
@@ -54,7 +54,7 @@ read_string (FILE *infile, int star_if_braced)
     {
       c = read_skip_spaces (infile);
       if (c != ')')
-	fatal_expected_char (infile, ')', c);
+ fatal_expected_char (infile, ')', c);
     }
 
   set_rtx_ptr_loc (stringbuf, read_rtx_filename, old_lineno);

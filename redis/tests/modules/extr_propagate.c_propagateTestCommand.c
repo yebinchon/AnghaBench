@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pthread_t ;
-typedef  int RedisModuleTimerID ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- int RedisModule_CreateTimer (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithSimpleString (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ pthread_create (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  threadMain ; 
- int /*<<< orphan*/  timerHandler ; 
+
+
+
+typedef int pthread_t ;
+typedef int RedisModuleTimerID ;
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ int RedisModule_CreateTimer (int *,int,int ,int *) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithSimpleString (int *,char*) ;
+ scalar_t__ pthread_create (int*,int *,int ,int *) ;
+ int threadMain ;
+ int timerHandler ;
 
 int propagateTestCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc)
 {
@@ -31,11 +31,11 @@ int propagateTestCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc
     REDISMODULE_NOT_USED(argc);
 
     RedisModuleTimerID timer_id =
-        RedisModule_CreateTimer(ctx,100,timerHandler,NULL);
+        RedisModule_CreateTimer(ctx,100,timerHandler,((void*)0));
     REDISMODULE_NOT_USED(timer_id);
 
     pthread_t tid;
-    if (pthread_create(&tid,NULL,threadMain,NULL) != 0)
+    if (pthread_create(&tid,((void*)0),threadMain,((void*)0)) != 0)
         return RedisModule_ReplyWithError(ctx,"-ERR Can't start thread");
     REDISMODULE_NOT_USED(tid);
 

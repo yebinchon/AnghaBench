@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  src ;
-typedef  int /*<<< orphan*/  dest ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ERANGE ; 
- int /*<<< orphan*/  memcmp (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int p__mbscpy_s (unsigned char*,int,unsigned char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int src ;
+typedef int dest ;
+
+
+ int EINVAL ;
+ int ERANGE ;
+ int memcmp (unsigned char*,unsigned char const*,int) ;
+ int memset (unsigned char*,char,int) ;
+ int ok (int,char*,...) ;
+ int p__mbscpy_s (unsigned char*,int,unsigned char const*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__mbscpy_s(void)
 {
@@ -34,14 +34,14 @@ __attribute__((used)) static void test__mbscpy_s(void)
         return;
     }
 
-    ret = p__mbscpy_s(NULL, 0, src);
+    ret = p__mbscpy_s(((void*)0), 0, src);
     ok(ret == EINVAL, "got %d\n", ret);
-    ret = p__mbscpy_s(NULL, sizeof(dest), src);
+    ret = p__mbscpy_s(((void*)0), sizeof(dest), src);
     ok(ret == EINVAL, "got %d\n", ret);
     ret = p__mbscpy_s(dest, 0, src);
     ok(ret == EINVAL, "got %d\n", ret);
     dest[0] = 'x';
-    ret = p__mbscpy_s(dest, sizeof(dest), NULL);
+    ret = p__mbscpy_s(dest, sizeof(dest), ((void*)0));
     ok(ret == EINVAL, "got %d\n", ret);
     ok(!dest[0], "dest buffer was not modified on invalid argument\n");
 

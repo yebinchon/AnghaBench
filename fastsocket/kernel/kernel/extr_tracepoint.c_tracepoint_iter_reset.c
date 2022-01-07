@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tracepoint_iter {int /*<<< orphan*/ * tracepoint; int /*<<< orphan*/ * module; } ;
 
-/* Variables and functions */
+
+
+
+struct tracepoint_iter {int * tracepoint; int * module; } ;
+
+
 
 void tracepoint_iter_reset(struct tracepoint_iter *iter)
 {
-	iter->module = NULL;
-	iter->tracepoint = NULL;
+ iter->module = ((void*)0);
+ iter->tracepoint = ((void*)0);
 }

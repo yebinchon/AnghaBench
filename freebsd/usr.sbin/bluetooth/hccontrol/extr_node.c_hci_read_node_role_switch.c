@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ng_btsocket_hci_raw_node_role_switch {int role_switch; } ;
-typedef  int /*<<< orphan*/  r ;
+typedef int r ;
 
-/* Variables and functions */
- int ERROR ; 
- int OK ; 
- int /*<<< orphan*/  SIOC_HCI_RAW_NODE_GET_ROLE_SWITCH ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct ng_btsocket_hci_raw_node_role_switch*,int) ; 
- int /*<<< orphan*/  memset (struct ng_btsocket_hci_raw_node_role_switch*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stdout ; 
+
+ int ERROR ;
+ int OK ;
+ int SIOC_HCI_RAW_NODE_GET_ROLE_SWITCH ;
+ int fprintf (int ,char*,int) ;
+ scalar_t__ ioctl (int,int ,struct ng_btsocket_hci_raw_node_role_switch*,int) ;
+ int memset (struct ng_btsocket_hci_raw_node_role_switch*,int ,int) ;
+ int stdout ;
 
 int
 hci_read_node_role_switch(int s, int argc, char **argv)
 {
-	struct ng_btsocket_hci_raw_node_role_switch	r;
+ struct ng_btsocket_hci_raw_node_role_switch r;
 
-	memset(&r, 0, sizeof(r));
-	if (ioctl(s, SIOC_HCI_RAW_NODE_GET_ROLE_SWITCH, &r, sizeof(r)) < 0)
-		return (ERROR);
+ memset(&r, 0, sizeof(r));
+ if (ioctl(s, SIOC_HCI_RAW_NODE_GET_ROLE_SWITCH, &r, sizeof(r)) < 0)
+  return (ERROR);
 
-	fprintf(stdout, "Role switch: %d\n", r.role_switch);
+ fprintf(stdout, "Role switch: %d\n", r.role_switch);
 
-	return (OK);
+ return (OK);
 }

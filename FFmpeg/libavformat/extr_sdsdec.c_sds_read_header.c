@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/ * pb; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int * pb; TYPE_2__* priv_data; } ;
 struct TYPE_11__ {int duration; TYPE_1__* codecpar; } ;
-struct TYPE_10__ {int bit_depth; int size; int /*<<< orphan*/  read_block; } ;
-struct TYPE_9__ {int channels; int sample_rate; int /*<<< orphan*/  codec_type; int /*<<< orphan*/  codec_id; } ;
-typedef  TYPE_2__ SDSContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_10__ {int bit_depth; int size; int read_block; } ;
+struct TYPE_9__ {int channels; int sample_rate; int codec_type; int codec_id; } ;
+typedef TYPE_2__ SDSContext ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_U32LE ; 
- int /*<<< orphan*/  ENOMEM ; 
- unsigned int SDS_3BYTE_TO_INT_DECODE (unsigned int) ; 
- TYPE_3__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- unsigned int avio_rl24 (int /*<<< orphan*/ *) ; 
- int avio_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
- int /*<<< orphan*/  byte2_read ; 
- int /*<<< orphan*/  byte3_read ; 
- int /*<<< orphan*/  byte4_read ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CODEC_ID_PCM_U32LE ;
+ int ENOMEM ;
+ unsigned int SDS_3BYTE_TO_INT_DECODE (unsigned int) ;
+ TYPE_3__* avformat_new_stream (TYPE_4__*,int *) ;
+ int avio_r8 (int *) ;
+ unsigned int avio_rl24 (int *) ;
+ int avio_size (int *) ;
+ int avio_skip (int *,int) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
+ int byte2_read ;
+ int byte3_read ;
+ int byte4_read ;
 
 __attribute__((used)) static int sds_read_header(AVFormatContext *ctx)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int sds_read_header(AVFormatContext *ctx)
     AVIOContext *pb = ctx->pb;
     AVStream *st;
 
-    st = avformat_new_stream(ctx, NULL);
+    st = avformat_new_stream(ctx, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 

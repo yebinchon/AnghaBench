@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vtnet_txq {int vtntx_id; int /*<<< orphan*/  vtntx_mtx; int /*<<< orphan*/ * vtntx_br; int /*<<< orphan*/ * vtntx_sg; int /*<<< orphan*/ * vtntx_sc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  buf_ring_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mtx_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ mtx_initialized (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sglist_free (int /*<<< orphan*/ *) ; 
+
+
+
+struct vtnet_txq {int vtntx_id; int vtntx_mtx; int * vtntx_br; int * vtntx_sg; int * vtntx_sc; } ;
+
+
+ int M_DEVBUF ;
+ int buf_ring_free (int *,int ) ;
+ int mtx_destroy (int *) ;
+ scalar_t__ mtx_initialized (int *) ;
+ int sglist_free (int *) ;
 
 __attribute__((used)) static void
 vtnet_destroy_txq(struct vtnet_txq *txq)
 {
 
-	txq->vtntx_sc = NULL;
-	txq->vtntx_id = -1;
+ txq->vtntx_sc = ((void*)0);
+ txq->vtntx_id = -1;
 
-	if (txq->vtntx_sg != NULL) {
-		sglist_free(txq->vtntx_sg);
-		txq->vtntx_sg = NULL;
-	}
+ if (txq->vtntx_sg != ((void*)0)) {
+  sglist_free(txq->vtntx_sg);
+  txq->vtntx_sg = ((void*)0);
+ }
 
-#ifndef VTNET_LEGACY_TX
-	if (txq->vtntx_br != NULL) {
-		buf_ring_free(txq->vtntx_br, M_DEVBUF);
-		txq->vtntx_br = NULL;
-	}
-#endif
 
-	if (mtx_initialized(&txq->vtntx_mtx) != 0)
-		mtx_destroy(&txq->vtntx_mtx);
+ if (txq->vtntx_br != ((void*)0)) {
+  buf_ring_free(txq->vtntx_br, M_DEVBUF);
+  txq->vtntx_br = ((void*)0);
+ }
+
+
+ if (mtx_initialized(&txq->vtntx_mtx) != 0)
+  mtx_destroy(&txq->vtntx_mtx);
 }

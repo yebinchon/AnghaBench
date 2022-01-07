@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  religion_hashes; int /*<<< orphan*/  uid; int /*<<< orphan*/  religion; } ;
-typedef  TYPE_1__ user_t ;
-struct lev_religion {char* str; int type; int /*<<< orphan*/  user_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_user_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  delete_user_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exact_stralloc (int) ; 
- int /*<<< orphan*/  exact_strfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_simple_text (int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__* get_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  q_religion ; 
- int /*<<< orphan*/  save_words_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int religion_hashes; int uid; int religion; } ;
+typedef TYPE_1__ user_t ;
+struct lev_religion {char* str; int type; int user_id; } ;
+
+
+ int add_user_hashlist (int ,int ) ;
+ int assert (int) ;
+ int delete_user_hashlist (int ,int ) ;
+ int exact_stralloc (int) ;
+ int exact_strfree (int ) ;
+ int filter_simple_text (int ,char*,int) ;
+ TYPE_1__* get_user (int ) ;
+ int q_religion ;
+ int save_words_hashlist (int ,int ,int ) ;
 
 __attribute__((used)) static int store_religion (struct lev_religion *E, int sz) {
   char *ptr = E->str;
@@ -34,7 +34,7 @@ __attribute__((used)) static int store_religion (struct lev_religion *E, int sz)
   if (sz < len+9) { return -2; }
 
   assert (!ptr[len]);
-//  fprintf (stderr, "%d: '%s'\n", E->user_id, E->str);
+
 
   U = get_user (E->user_id);
 

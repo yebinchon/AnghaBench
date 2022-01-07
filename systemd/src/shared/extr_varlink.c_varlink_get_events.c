@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ state; scalar_t__ input_buffer_unscanned; scalar_t__ output_buffer_size; int /*<<< orphan*/  write_disconnected; int /*<<< orphan*/  current; int /*<<< orphan*/  read_disconnected; scalar_t__ connecting; } ;
-typedef  TYPE_1__ Varlink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int ENOTCONN ; 
- int EPOLLIN ; 
- int EPOLLOUT ; 
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VARLINK_AWAITING_REPLY ; 
- int /*<<< orphan*/  VARLINK_CALLING ; 
- scalar_t__ VARLINK_DISCONNECTED ; 
- int /*<<< orphan*/  VARLINK_IDLE_SERVER ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ state; scalar_t__ input_buffer_unscanned; scalar_t__ output_buffer_size; int write_disconnected; int current; int read_disconnected; scalar_t__ connecting; } ;
+typedef TYPE_1__ Varlink ;
+
+
+ int EINVAL ;
+ int ENOTCONN ;
+ int EPOLLIN ;
+ int EPOLLOUT ;
+ scalar_t__ IN_SET (scalar_t__,int ,int ,int ) ;
+ int VARLINK_AWAITING_REPLY ;
+ int VARLINK_CALLING ;
+ scalar_t__ VARLINK_DISCONNECTED ;
+ int VARLINK_IDLE_SERVER ;
+ int assert_return (TYPE_1__*,int ) ;
 
 int varlink_get_events(Varlink *v) {
         int ret = 0;
@@ -34,9 +34,9 @@ int varlink_get_events(Varlink *v) {
         if (v->state == VARLINK_DISCONNECTED)
                 return -ENOTCONN;
 
-        if (v->connecting) /* When processing an asynchronous connect(), we only wait for EPOLLOUT, which
-                            * tells us that the connection is now complete. Before that we should neither
-                            * write() or read() from the fd. */
+        if (v->connecting)
+
+
                 return EPOLLOUT;
 
         if (!v->read_disconnected &&

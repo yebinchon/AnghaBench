@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct dvb_frontend {struct as102_state* demodulator_priv; } ;
-struct as102_state {int /*<<< orphan*/  ber; } ;
+struct as102_state {int ber; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int as102_fe_read_ber(struct dvb_frontend *fe, u32 *ber)
 {
-	struct as102_state *state = fe->demodulator_priv;
+ struct as102_state *state = fe->demodulator_priv;
 
-	*ber = state->ber;
+ *ber = state->ber;
 
-	return 0;
+ return 0;
 }

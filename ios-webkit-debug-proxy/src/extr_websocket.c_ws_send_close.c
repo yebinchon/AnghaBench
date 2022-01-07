@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* ws_t ;
-typedef  int /*<<< orphan*/  ws_status ;
-typedef  int ws_close ;
-struct TYPE_4__ {int /*<<< orphan*/  (* send_frame ) (TYPE_1__*,int,int /*<<< orphan*/ ,int,char*,size_t) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPCODE_CLOSE ; 
- int /*<<< orphan*/  WS_ERROR ; 
- scalar_t__ calloc (size_t,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int,int /*<<< orphan*/ ,int,char*,size_t) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* ws_t ;
+typedef int ws_status ;
+typedef int ws_close ;
+struct TYPE_4__ {int (* send_frame ) (TYPE_1__*,int,int ,int,char*,size_t) ;} ;
+
+
+ int OPCODE_CLOSE ;
+ int WS_ERROR ;
+ scalar_t__ calloc (size_t,int) ;
+ int free (char*) ;
+ int strcpy (char*,char const*) ;
+ int strlen (char const*) ;
+ int stub1 (TYPE_1__*,int,int ,int,char*,size_t) ;
 
 ws_status ws_send_close(ws_t self, ws_close close_code, const char *reason) {
   size_t length = 2 + (reason ? strlen(reason) : 0);
@@ -37,7 +37,7 @@ ws_status ws_send_close(ws_t self, ws_close close_code, const char *reason) {
     strcpy(data+2, reason);
   }
   ws_status ret = self->send_frame(self,
-      true, OPCODE_CLOSE, false,
+      1, OPCODE_CLOSE, 0,
       data, length);
   free(data);
   return ret;

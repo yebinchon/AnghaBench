@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_4__ ;
-typedef  struct TYPE_33__   TYPE_3__ ;
-typedef  struct TYPE_32__   TYPE_2__ ;
-typedef  struct TYPE_31__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int word ;
-typedef  int dword ;
-typedef  int byte ;
-struct TYPE_34__ {int /*<<< orphan*/ * info; scalar_t__ length; } ;
+
+
+typedef struct TYPE_34__ TYPE_4__ ;
+typedef struct TYPE_33__ TYPE_3__ ;
+typedef struct TYPE_32__ TYPE_2__ ;
+typedef struct TYPE_31__ TYPE_1__ ;
+
+
+typedef int word ;
+typedef int dword ;
+typedef int byte ;
+struct TYPE_34__ {int * info; scalar_t__ length; } ;
 struct TYPE_33__ {int Id; } ;
 struct TYPE_32__ {int* Info_Mask; scalar_t__ AdvCodecPLCI; } ;
-struct TYPE_31__ {scalar_t__ State; scalar_t__ tel; scalar_t__ spoofed_msg; int /*<<< orphan*/  B1_facilities; scalar_t__ command; int /*<<< orphan*/  internal_command; int /*<<< orphan*/  saved_msg; scalar_t__ adv_nl; TYPE_3__* appl; } ;
-typedef  TYPE_1__ PLCI ;
-typedef  TYPE_2__ DIVA_CAPI_ADAPTER ;
-typedef  TYPE_3__ APPL ;
-typedef  TYPE_4__ API_PARSE ;
+struct TYPE_31__ {scalar_t__ State; scalar_t__ tel; scalar_t__ spoofed_msg; int B1_facilities; scalar_t__ command; int internal_command; int saved_msg; scalar_t__ adv_nl; TYPE_3__* appl; } ;
+typedef TYPE_1__ PLCI ;
+typedef TYPE_2__ DIVA_CAPI_ADAPTER ;
+typedef TYPE_3__ APPL ;
+typedef TYPE_4__ API_PARSE ;
 
-/* Variables and functions */
- scalar_t__ ADV_VOICE ; 
- int /*<<< orphan*/  ASSIGN ; 
- scalar_t__ AdvCodecSupport (TYPE_2__*,TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BLOCK_PLCI ; 
- scalar_t__ CALL_RES ; 
- int /*<<< orphan*/  CONN_NR ; 
- int /*<<< orphan*/  ESC ; 
- int EXT_CONTROLLER ; 
- int GET_WORD (int /*<<< orphan*/ *) ; 
- scalar_t__ HANGUP ; 
- void* INC_CON_ACCEPT ; 
- scalar_t__ INC_CON_ALERT ; 
- scalar_t__ INC_CON_CONNECTED_ALERT ; 
- scalar_t__ INC_CON_PENDING ; 
- int /*<<< orphan*/  LLC ; 
- int /*<<< orphan*/  LLI ; 
- scalar_t__ REJECT ; 
- scalar_t__ SPOOFING_REQUIRED ; 
- int /*<<< orphan*/  _DISCONNECT_I ; 
- int /*<<< orphan*/  _OTHER_APPL_CONNECTED ; 
- int /*<<< orphan*/  add_ai (TYPE_1__*,TYPE_4__*) ; 
- int /*<<< orphan*/  add_b1 (TYPE_1__*,TYPE_4__*,int,int /*<<< orphan*/ ) ; 
- int add_b23 (TYPE_1__*,TYPE_4__*) ; 
- int /*<<< orphan*/  add_p (TYPE_1__*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  add_s (TYPE_1__*,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  api_parse (int /*<<< orphan*/ *,int,char*,TYPE_4__*) ; 
- int /*<<< orphan*/  api_save_msg (TYPE_4__*,char*,int /*<<< orphan*/ *) ; 
- TYPE_3__* application ; 
- scalar_t__ c_ind_mask_empty (TYPE_1__*) ; 
- int /*<<< orphan*/  clear_c_ind_mask_bit (TYPE_1__*,int) ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,...) ; 
- int /*<<< orphan*/  dump_c_ind_mask (TYPE_1__*) ; 
- int max_appl ; 
- int /*<<< orphan*/  nl_req_ncci (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sendf (TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sig_req (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ test_c_ind_mask_bit (TYPE_1__*,int) ; 
+
+ scalar_t__ ADV_VOICE ;
+ int ASSIGN ;
+ scalar_t__ AdvCodecSupport (TYPE_2__*,TYPE_1__*,TYPE_3__*,int ) ;
+ int BLOCK_PLCI ;
+ scalar_t__ CALL_RES ;
+ int CONN_NR ;
+ int ESC ;
+ int EXT_CONTROLLER ;
+ int GET_WORD (int *) ;
+ scalar_t__ HANGUP ;
+ void* INC_CON_ACCEPT ;
+ scalar_t__ INC_CON_ALERT ;
+ scalar_t__ INC_CON_CONNECTED_ALERT ;
+ scalar_t__ INC_CON_PENDING ;
+ int LLC ;
+ int LLI ;
+ scalar_t__ REJECT ;
+ scalar_t__ SPOOFING_REQUIRED ;
+ int _DISCONNECT_I ;
+ int _OTHER_APPL_CONNECTED ;
+ int add_ai (TYPE_1__*,TYPE_4__*) ;
+ int add_b1 (TYPE_1__*,TYPE_4__*,int,int ) ;
+ int add_b23 (TYPE_1__*,TYPE_4__*) ;
+ int add_p (TYPE_1__*,int ,...) ;
+ int add_s (TYPE_1__*,int ,TYPE_4__*) ;
+ int api_parse (int *,int,char*,TYPE_4__*) ;
+ int api_save_msg (TYPE_4__*,char*,int *) ;
+ TYPE_3__* application ;
+ scalar_t__ c_ind_mask_empty (TYPE_1__*) ;
+ int clear_c_ind_mask_bit (TYPE_1__*,int) ;
+ int dbug (int,int ) ;
+ int dprintf (char*,...) ;
+ int dump_c_ind_mask (TYPE_1__*) ;
+ int max_appl ;
+ int nl_req_ncci (TYPE_1__*,int ,int ) ;
+ int sendf (TYPE_3__*,int ,int,int ,char*,int ) ;
+ int sig_req (TYPE_1__*,scalar_t__,int ) ;
+ scalar_t__ test_c_ind_mask_bit (TYPE_1__*,int) ;
 
 __attribute__((used)) static byte connect_res(dword Id, word Number, DIVA_CAPI_ADAPTER *a,
-			PLCI *plci, APPL *appl, API_PARSE *parms)
+   PLCI *plci, APPL *appl, API_PARSE *parms)
 {
   word i, Info;
   word Reject;
@@ -79,7 +79,7 @@ __attribute__((used)) static byte connect_res(dword Id, word Number, DIVA_CAPI_A
 
   if(!plci) {
     dbug(1,dprintf("connect_res(no plci)"));
-    return 0;  /* no plci, no send */
+    return 0;
   }
 
   dbug(1,dprintf("connect_res(State=0x%x)",plci->State));
@@ -106,7 +106,7 @@ __attribute__((used)) static byte connect_res(dword Id, word Number, DIVA_CAPI_A
     dbug(1,dprintf("Connected Alert Call_Res"));
     if (a->Info_Mask[appl->Id-1] & 0x200)
     {
-    /* early B3 connect (CIP mask bit 9) no release after a disc */
+
       add_p(plci,LLI,"\x01\x01");
     }
     add_s(plci, CONN_NR, &parms[2]);
@@ -121,23 +121,23 @@ __attribute__((used)) static byte connect_res(dword Id, word Number, DIVA_CAPI_A
     dump_c_ind_mask (plci);
     Reject = GET_WORD(parms[0].info);
     dbug(1,dprintf("Reject=0x%x",Reject));
-    if(Reject) 
+    if(Reject)
     {
-      if(c_ind_mask_empty (plci)) 
+      if(c_ind_mask_empty (plci))
       {
-        if((Reject&0xff00)==0x3400) 
+        if((Reject&0xff00)==0x3400)
         {
           esc_t[2] = ((byte)(Reject&0x00ff)) | 0x80;
           add_p(plci,ESC,esc_t);
           add_ai(plci, &parms[5]);
           sig_req(plci,REJECT,0);
-        }      
-        else if(Reject==1 || Reject>9) 
+        }
+        else if(Reject==1 || Reject>9)
         {
           add_ai(plci, &parms[5]);
           sig_req(plci,HANGUP,0);
         }
-        else 
+        else
         {
           esc_t[2] = cau_t[(Reject&0x000f)];
           add_p(plci,ESC,esc_t);
@@ -146,7 +146,7 @@ __attribute__((used)) static byte connect_res(dword Id, word Number, DIVA_CAPI_A
         }
         plci->appl = appl;
       }
-      else 
+      else
       {
         sendf(appl, _DISCONNECT_I, Id, 0, "w", _OTHER_APPL_CONNECTED);
       }
@@ -203,7 +203,7 @@ __attribute__((used)) static byte connect_res(dword Id, word Number, DIVA_CAPI_A
         add_b1 (plci, &parms[1], ch, plci->B1_facilities);
         if (a->Info_Mask[appl->Id-1] & 0x200)
         {
-          /* early B3 connect (CIP mask bit 9) no release after a disc */
+
           add_p(plci,LLI,"\x01\x01");
         }
         add_s(plci, CONN_NR, &parms[2]);

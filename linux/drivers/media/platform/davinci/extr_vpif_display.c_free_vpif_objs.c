@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * dev; } ;
 
-/* Variables and functions */
- int VPIF_DISPLAY_MAX_DEVICES ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- TYPE_1__ vpif_obj ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * dev; } ;
+
+
+ int VPIF_DISPLAY_MAX_DEVICES ;
+ int kfree (int ) ;
+ TYPE_1__ vpif_obj ;
 
 __attribute__((used)) static void free_vpif_objs(void)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < VPIF_DISPLAY_MAX_DEVICES; i++)
-		kfree(vpif_obj.dev[i]);
+ for (i = 0; i < VPIF_DISPLAY_MAX_DEVICES; i++)
+  kfree(vpif_obj.dev[i]);
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct v3_ext_method {int dummy; } ;
-typedef  int /*<<< orphan*/  objbuf ;
-struct TYPE_2__ {int /*<<< orphan*/ * namingAuthorityUrl; int /*<<< orphan*/ * namingAuthorityText; int /*<<< orphan*/ * namingAuthorityId; } ;
-typedef  TYPE_1__ NAMING_AUTHORITY ;
-typedef  int /*<<< orphan*/  BIO ;
+typedef int objbuf ;
+struct TYPE_2__ {int * namingAuthorityUrl; int * namingAuthorityText; int * namingAuthorityId; } ;
+typedef TYPE_1__ NAMING_AUTHORITY ;
+typedef int BIO ;
 
-/* Variables and functions */
- scalar_t__ ASN1_STRING_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- char* OBJ_nid2ln (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_obj2nid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_obj2txt (char*,int,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ ASN1_STRING_print (int *,int *) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ char* OBJ_nid2ln (int ) ;
+ int OBJ_obj2nid (int *) ;
+ int OBJ_obj2txt (char*,int,int *,int) ;
 
 __attribute__((used)) static int i2r_NAMING_AUTHORITY(const struct v3_ext_method *method, void *in,
                                 BIO *bp, int ind)
 {
     NAMING_AUTHORITY * namingAuthority = (NAMING_AUTHORITY*) in;
 
-    if (namingAuthority == NULL)
+    if (namingAuthority == ((void*)0))
         return 0;
 
-    if (namingAuthority->namingAuthorityId == NULL
-        && namingAuthority->namingAuthorityText == NULL
-        && namingAuthority->namingAuthorityUrl == NULL)
+    if (namingAuthority->namingAuthorityId == ((void*)0)
+        && namingAuthority->namingAuthorityText == ((void*)0)
+        && namingAuthority->namingAuthorityUrl == ((void*)0))
         return 0;
 
     if (BIO_printf(bp, "%*snamingAuthority: ", ind, "") <= 0)
         goto err;
 
-    if (namingAuthority->namingAuthorityId != NULL) {
+    if (namingAuthority->namingAuthorityId != ((void*)0)) {
         char objbuf[128];
         const char *ln = OBJ_nid2ln(OBJ_obj2nid(namingAuthority->namingAuthorityId));
 
@@ -53,13 +53,13 @@ __attribute__((used)) static int i2r_NAMING_AUTHORITY(const struct v3_ext_method
                        ln ? " (" : "", objbuf, ln ? ")" : "") <= 0)
             goto err;
     }
-    if (namingAuthority->namingAuthorityText != NULL) {
+    if (namingAuthority->namingAuthorityText != ((void*)0)) {
         if (BIO_printf(bp, "%*s  namingAuthorityText: ", ind, "") <= 0
             || ASN1_STRING_print(bp, namingAuthority->namingAuthorityText) <= 0
             || BIO_printf(bp, "\n") <= 0)
             goto err;
     }
-    if (namingAuthority->namingAuthorityUrl != NULL ) {
+    if (namingAuthority->namingAuthorityUrl != ((void*)0) ) {
         if (BIO_printf(bp, "%*s  namingAuthorityUrl: ", ind, "") <= 0
             || ASN1_STRING_print(bp, namingAuthority->namingAuthorityUrl) <= 0
             || BIO_printf(bp, "\n") <= 0)

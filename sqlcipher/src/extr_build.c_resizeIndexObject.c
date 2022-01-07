@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char const* u8 ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  char const* i16 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char const* u8 ;
+typedef int sqlite3 ;
+typedef char const* i16 ;
 struct TYPE_3__ {int nColumn; int isResized; char const** azColl; char const** aiColumn; char const** aSortOrder; } ;
-typedef  TYPE_1__ Index ;
+typedef TYPE_1__ Index ;
 
-/* Variables and functions */
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const**,int) ; 
- char* sqlite3DbMallocZero (int /*<<< orphan*/ *,int) ; 
+
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int memcpy (char*,char const**,int) ;
+ char* sqlite3DbMallocZero (int *,int) ;
 
 __attribute__((used)) static int resizeIndexObject(sqlite3 *db, Index *pIdx, int N){
   char *zExtra;

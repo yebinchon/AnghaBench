@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int crypto_pwhash_str_verify (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,unsigned int) ; 
- int /*<<< orphan*/  sodium_free (char*) ; 
- scalar_t__ sodium_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int assert (int ) ;
+ int crypto_pwhash_str_verify (char*,char*,int ) ;
+ int memcpy (char*,char*,int ) ;
+ int printf (char*,unsigned int) ;
+ int sodium_free (char*) ;
+ scalar_t__ sodium_malloc (int ) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 tv3(void)
@@ -40,17 +32,17 @@ tv3(void)
           "$argon2i$v=19$m=4096,t=3,p=1$X1NhbHQAAAAAAAAAAAAAAA$fu2Wsecyt+"
           "yPnBvSvYN16oP5ozRmkp0ixJ1YL19V3Uo" }
     };
-    char   *out;
-    char   *passwd;
-    size_t  i = 0U;
-    int     ret;
+    char *out;
+    char *passwd;
+    size_t i = 0U;
+    int ret;
 
     do {
         out = (char *) sodium_malloc(strlen(tests[i].out) + 1U);
-        assert(out != NULL);
+        assert(out != ((void*)0));
         memcpy(out, tests[i].out, strlen(tests[i].out) + 1U);
         passwd = (char *) sodium_malloc(strlen(tests[i].passwd) + 1U);
-        assert(passwd != NULL);
+        assert(passwd != ((void*)0));
         memcpy(passwd, tests[i].passwd, strlen(tests[i].passwd) + 1U);
         ret = crypto_pwhash_str_verify(out, passwd, strlen(passwd));
         sodium_free(out);

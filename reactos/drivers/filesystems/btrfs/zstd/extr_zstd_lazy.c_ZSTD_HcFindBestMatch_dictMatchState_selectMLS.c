@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int searchLength; } ;
 struct TYPE_6__ {TYPE_1__ cParams; } ;
-typedef  TYPE_2__ ZSTD_matchState_t ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_2__ ZSTD_matchState_t ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ZSTD_HcFindBestMatch_generic (TYPE_2__*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const* const,size_t*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZSTD_dictMatchState ; 
+
+ size_t ZSTD_HcFindBestMatch_generic (TYPE_2__*,int const*,int const* const,size_t*,int,int ) ;
+ int ZSTD_dictMatchState ;
 
 __attribute__((used)) static size_t ZSTD_HcFindBestMatch_dictMatchState_selectMLS (
                         ZSTD_matchState_t* ms,
@@ -28,7 +28,7 @@ __attribute__((used)) static size_t ZSTD_HcFindBestMatch_dictMatchState_selectML
 {
     switch(ms->cParams.searchLength)
     {
-    default : /* includes case 3 */
+    default :
     case 4 : return ZSTD_HcFindBestMatch_generic(ms, ip, iLimit, offsetPtr, 4, ZSTD_dictMatchState);
     case 5 : return ZSTD_HcFindBestMatch_generic(ms, ip, iLimit, offsetPtr, 5, ZSTD_dictMatchState);
     case 7 :

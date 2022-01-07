@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_malloc (size_t) ; 
- int avio_get_str16be (int /*<<< orphan*/ *,int,char*,size_t) ; 
- int avio_get_str16le (int /*<<< orphan*/ *,int,char*,size_t) ; 
+
+
+
+typedef int AVIOContext ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int INT_MAX ;
+ int av_freep (char**) ;
+ char* av_malloc (size_t) ;
+ int avio_get_str16be (int *,int,char*,size_t) ;
+ int avio_get_str16le (int *,int,char*,size_t) ;
 
 __attribute__((used)) static inline int mxf_read_utf16_string(AVIOContext *pb, int size, char** str, int be)
 {

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  map ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int map ;
 struct TYPE_11__ {int i_rate; scalar_t__ i_channels; } ;
 struct TYPE_12__ {int* p_extra; int i_extra; TYPE_1__ audio; } ;
-typedef  TYPE_2__ es_format_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+typedef TYPE_2__ es_format_t ;
+typedef int demux_t ;
 struct TYPE_13__ {int i_left; } ;
-typedef  TYPE_3__ bs_t ;
+typedef TYPE_3__ bs_t ;
 struct TYPE_14__ {unsigned char* stream_map; int input_sample_rate; int nb_coupled; int nb_streams; int channel_mapping; scalar_t__ channels; scalar_t__ preskip; } ;
-typedef  TYPE_4__ OpusHeader ;
+typedef TYPE_4__ OpusHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUDIO_ES ; 
- int /*<<< orphan*/  VLC_CODEC_OPUS ; 
- int /*<<< orphan*/  bs_init (TYPE_3__*,int*,size_t) ; 
- int bs_read (TYPE_3__*,int) ; 
- int /*<<< orphan*/  es_format_Change (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,...) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  opus_prepare_header (int,int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  opus_write_header (int**,int*,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int vlc_ceil_log2 (int) ; 
+
+ int AUDIO_ES ;
+ int VLC_CODEC_OPUS ;
+ int bs_init (TYPE_3__*,int*,size_t) ;
+ int bs_read (TYPE_3__*,int) ;
+ int es_format_Change (TYPE_2__*,int ,int ) ;
+ int memcpy (unsigned char*,...) ;
+ int msg_Err (int *,char*,...) ;
+ int opus_prepare_header (int,int ,TYPE_4__*) ;
+ int opus_write_header (int**,int*,TYPE_4__*,int *) ;
+ int vlc_ceil_log2 (int) ;
 
 __attribute__((used)) static void OpusSetup(demux_t *demux, uint8_t *p, size_t len, es_format_t *p_fmt)
 {
     OpusHeader h;
 
-    /* default mapping */
+
     static const unsigned char map[8] = { 0, 1, 2, 3, 4, 5, 6, 7 };
     memcpy(h.stream_map, map, sizeof(map));
 
@@ -49,14 +49,14 @@ __attribute__((used)) static void OpusSetup(demux_t *demux, uint8_t *p, size_t l
     int csc;
     int channels = 0;
     int stream_count = 0;
-    int ccc = p[1]; // channel_config_code
+    int ccc = p[1];
     if (ccc <= 8) {
         channels = ccc;
         if (channels)
             mapping = channels > 2;
         else {
             mapping = 255;
-            channels = 2; // dual mono
+            channels = 2;
         }
         static const uint8_t p_csc[8] = { 0, 1, 1, 2, 2, 2, 3, 3 };
         csc = p_csc[channels - 1];
@@ -111,7 +111,7 @@ __attribute__((used)) static void OpusSetup(demux_t *demux, uint8_t *p, size_t l
             mapping = 1;
         else {
             mapping = 255;
-            channels = 2; // dual mono
+            channels = 2;
         }
         csc = 0;
         stream_count = channels;
@@ -132,9 +132,9 @@ __attribute__((used)) static void OpusSetup(demux_t *demux, uint8_t *p, size_t l
     h.channel_mapping = mapping;
 
     if (h.channels) {
-        uint8_t *p_extra = NULL;
+        uint8_t *p_extra = ((void*)0);
         int i_extra = 0;
-        opus_write_header(&p_extra, &i_extra, &h, NULL /* FIXME */);
+        opus_write_header(&p_extra, &i_extra, &h, ((void*)0) );
         if (p_extra) {
             es_format_Change(p_fmt, AUDIO_ES, VLC_CODEC_OPUS);
             p_fmt->p_extra = p_extra;

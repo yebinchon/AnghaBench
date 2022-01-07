@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dio_dev {char* name; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- struct dio_dev* to_dio_dev (struct device*) ; 
+
+ int sprintf (char*,char*,char*) ;
+ struct dio_dev* to_dio_dev (struct device*) ;
 
 __attribute__((used)) static ssize_t dio_show_name(struct device *dev, struct device_attribute *attr, char *buf)
 {
-	struct dio_dev *d;
+ struct dio_dev *d;
 
-	d = to_dio_dev(dev);
-	return sprintf(buf, "%s\n", d->name);
+ d = to_dio_dev(dev);
+ return sprintf(buf, "%s\n", d->name);
 }

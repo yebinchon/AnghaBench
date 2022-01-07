@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; scalar_t__ tv_usec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EINTR ; 
- int /*<<< orphan*/  ETIMEDOUT ; 
- int /*<<< orphan*/  FD_SET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  pError (char*,int,...) ; 
- int select (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- scalar_t__ send (int,char*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosSetNonblocking (int,int) ; 
+
+ int EAGAIN ;
+ int EINTR ;
+ int ETIMEDOUT ;
+ int FD_SET (int,int *) ;
+ int FD_ZERO (int *) ;
+ int MSG_NOSIGNAL ;
+ int errno ;
+ int pError (char*,int,...) ;
+ int select (int,int *,int *,int *,struct timeval*) ;
+ scalar_t__ send (int,char*,size_t,int ) ;
+ int strerror (int ) ;
+ int taosSetNonblocking (int,int) ;
 
 int taosNonblockwrite(int fd, char *ptr, int nbytes) {
   taosSetNonblocking(fd, 1);
 
-  int            nleft, nwritten, nready;
-  fd_set         fset;
+  int nleft, nwritten, nready;
+  fd_set fset;
   struct timeval tv;
 
   nleft = nbytes;
@@ -40,7 +40,7 @@ int taosNonblockwrite(int fd, char *ptr, int nbytes) {
     tv.tv_usec = 0;
     FD_ZERO(&fset);
     FD_SET(fd, &fset);
-    if ((nready = select(fd + 1, NULL, &fset, NULL, &tv)) == 0) {
+    if ((nready = select(fd + 1, ((void*)0), &fset, ((void*)0), &tv)) == 0) {
       errno = ETIMEDOUT;
       pError("fd %d timeout, no enough space to write", fd);
       break;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct counter {struct counter* prev; int /*<<< orphan*/  counter_id; struct counter* prev_use; int /*<<< orphan*/  next_use; } ;
 
-/* Variables and functions */
- struct counter** Counters ; 
- int /*<<< orphan*/  assert (int) ; 
- size_t counters_prime ; 
- int /*<<< orphan*/  deleted_by_lru ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free_counter (struct counter*,int) ; 
- struct counter* get_counter_f (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+
+
+struct counter {struct counter* prev; int counter_id; struct counter* prev_use; int next_use; } ;
+
+
+ struct counter** Counters ;
+ int assert (int) ;
+ size_t counters_prime ;
+ int deleted_by_lru ;
+ int fprintf (int ,char*,...) ;
+ int free_counter (struct counter*,int) ;
+ struct counter* get_counter_f (int ,int ) ;
+ int stderr ;
+ int verbosity ;
 
 int free_LRU () {
   if (verbosity >= 3) { fprintf (stderr, "free_LRU\n"); }
@@ -29,7 +29,7 @@ int free_LRU () {
     return 0;
   }
   if (verbosity >= 3) { fprintf (stderr, "first and last are %p and %p\n", Counters[counters_prime]->prev_use, Counters[counters_prime]->next_use); }
-  
+
   if (Counters[counters_prime]->prev_use == Counters[counters_prime]) {
     if (verbosity >= 3) {
       fprintf (stderr, "No elements can be deleted by LRU. Failed to free mem.\n");

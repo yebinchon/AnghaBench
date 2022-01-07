@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiTableValue ;
-typedef  int /*<<< orphan*/  uiTableModel ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uiFreeTableValue (int /*<<< orphan*/ *) ; 
-#define  uiTableModelColumnAlwaysEditable 129 
-#define  uiTableModelColumnNeverEditable 128 
- int uiTableValueInt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * uiprivTableModelCellValue (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int uiTableValue ;
+typedef int uiTableModel ;
+
+
+ int uiFreeTableValue (int *) ;
+
+
+ int uiTableValueInt (int *) ;
+ int * uiprivTableModelCellValue (int *,int,int) ;
 
 int uiprivTableModelCellEditable(uiTableModel *m, int row, int column)
 {
-	uiTableValue *value;
-	int editable;
+ uiTableValue *value;
+ int editable;
 
-	switch (column) {
-	case uiTableModelColumnNeverEditable:
-		return 0;
-	case uiTableModelColumnAlwaysEditable:
-		return 1;
-	}
-	value = uiprivTableModelCellValue(m, row, column);
-	editable = uiTableValueInt(value);
-	uiFreeTableValue(value);
-	return editable;
+ switch (column) {
+ case 128:
+  return 0;
+ case 129:
+  return 1;
+ }
+ value = uiprivTableModelCellValue(m, row, column);
+ editable = uiTableValueInt(value);
+ uiFreeTableValue(value);
+ return editable;
 }

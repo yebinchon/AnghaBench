@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* opt_rfs; char* opt_fs; } ;
-typedef  TYPE_1__ am_opts ;
+typedef TYPE_1__ am_opts ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XLOG_USER ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
- char* xstrdup (char*) ; 
+
+ int XLOG_USER ;
+ int plog (int ,char*) ;
+ char* xstrdup (char*) ;
 
 char *
 amfs_generic_match(am_opts *fo)
@@ -33,16 +33,16 @@ amfs_generic_match(am_opts *fo)
     return 0;
   }
 
-  /*
-   * Swap round fs:= and rfs:= options
-   * ... historical (jsp)
-   */
+
+
+
+
   p = fo->opt_rfs;
   fo->opt_rfs = fo->opt_fs;
   fo->opt_fs = p;
 
-  /*
-   * mtab entry turns out to be the name of the mount map
-   */
+
+
+
   return xstrdup(fo->opt_rfs ? fo->opt_rfs : ".");
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ib_smp {int /*<<< orphan*/  data; int /*<<< orphan*/  status; scalar_t__ attr_mod; } ;
-struct ib_device {int /*<<< orphan*/  node_desc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IB_SMP_INVALID_FIELD ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int reply (struct ib_smp*) ; 
+
+
+
+struct ib_smp {int data; int status; scalar_t__ attr_mod; } ;
+struct ib_device {int node_desc; } ;
+
+
+ int IB_SMP_INVALID_FIELD ;
+ int memcpy (int ,int ,int) ;
+ int reply (struct ib_smp*) ;
 
 __attribute__((used)) static int subn_get_nodedescription(struct ib_smp *smp,
-				    struct ib_device *ibdev)
+        struct ib_device *ibdev)
 {
-	if (smp->attr_mod)
-		smp->status |= IB_SMP_INVALID_FIELD;
+ if (smp->attr_mod)
+  smp->status |= IB_SMP_INVALID_FIELD;
 
-	memcpy(smp->data, ibdev->node_desc, sizeof(smp->data));
+ memcpy(smp->data, ibdev->node_desc, sizeof(smp->data));
 
-	return reply(smp);
+ return reply(smp);
 }

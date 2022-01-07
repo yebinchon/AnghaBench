@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct mtd_info {scalar_t__ size; int /*<<< orphan*/ * priv; } ;
-typedef  scalar_t__ loff_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int u_char ;
+struct mtd_info {scalar_t__ size; int * priv; } ;
+typedef scalar_t__ loff_t ;
+
+
+ int EINVAL ;
+ int memcpy (int *,int *,size_t) ;
 
 __attribute__((used)) static int phram_read(struct mtd_info *mtd, loff_t from, size_t len,
-		size_t *retlen, u_char *buf)
+  size_t *retlen, u_char *buf)
 {
-	u_char *start = mtd->priv;
+ u_char *start = mtd->priv;
 
-	if (from >= mtd->size)
-		return -EINVAL;
+ if (from >= mtd->size)
+  return -EINVAL;
 
-	if (len > mtd->size - from)
-		len = mtd->size - from;
+ if (len > mtd->size - from)
+  len = mtd->size - from;
 
-	memcpy(buf, start + from, len);
+ memcpy(buf, start + from, len);
 
-	*retlen = len;
-	return 0;
+ *retlen = len;
+ return 0;
 }

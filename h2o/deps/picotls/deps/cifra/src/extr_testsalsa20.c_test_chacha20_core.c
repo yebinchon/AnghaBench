@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- int /*<<< orphan*/  cf_chacha20_core (int*,int*,int*,int const*,int*) ; 
- scalar_t__ memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unhex (int*,int,char*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int TEST_CHECK (int) ;
+ int cf_chacha20_core (int*,int*,int*,int const*,int*) ;
+ scalar_t__ memcmp (int*,int*,int) ;
+ int memset (int*,int ,int) ;
+ int unhex (int*,int,char*) ;
 
 __attribute__((used)) static void test_chacha20_core(void)
 {
   uint8_t k0[16], k1[16], nonce[16], out[64], expect[64];
 
-  /* From draft-agl-tls-chacha20poly1305-04 section 7. */
+
 
   memset(k0, 0, sizeof k0);
   memset(k1, 0, sizeof k1);
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_chacha20_core(void)
 
   memset(nonce, 0, sizeof nonce);
   nonce[8] = 0x01;
-  
+
   cf_chacha20_core(k0, k1, nonce, (const uint8_t *) "expand 32-byte k", out);
 
   unhex(expect, 64, "ef3fdfd6c61578fbf5cf35bd3dd33b8009631634d21e42ac33960bd138e50d32111e4caf237ee53ca8ad6426194a88545ddc497a0b466e7d6bbdb0041b2f586b");
@@ -64,16 +64,16 @@ __attribute__((used)) static void test_chacha20_core(void)
 
   unhex(expect, 64, "f798a189f195e66982105ffb640bb7757f579da31602fc93ec01ac56f85ac3c134a4547b733b46413042c9440049176905d3be59ea1c53f15916155c2be8241a");
   TEST_CHECK(memcmp(expect, out, 64) == 0);
-  
+
   nonce[0]++;
   cf_chacha20_core(k0, k1, nonce, (const uint8_t *) "expand 32-byte k", out);
-  
+
   unhex(expect, 64, "38008b9a26bc35941e2444177c8ade6689de95264986d95889fb60e84629c9bd9a5acb1cc118be563eb9b3a4a472f82e09a7e778492b562ef7130e88dfe031c7");
   TEST_CHECK(memcmp(expect, out, 64) == 0);
 
   nonce[0]++;
   cf_chacha20_core(k0, k1, nonce, (const uint8_t *) "expand 32-byte k", out);
-  
+
   unhex(expect, 64, "9db9d4f7c7a899151b9a475032b63fc385245fe054e3dd5a97a5f576fe064025d3ce042c566ab2c507b138db853e3d6959660996546cc9c4a6eafdc777c040d7");
   TEST_CHECK(memcmp(expect, out, 64) == 0);
 

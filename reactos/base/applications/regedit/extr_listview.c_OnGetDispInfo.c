@@ -1,50 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  dwValType; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_7__ {int dwValType; } ;
 struct TYPE_5__ {char* pszText; int iSubItem; scalar_t__ lParam; scalar_t__ cchTextMax; } ;
 struct TYPE_6__ {TYPE_1__ item; } ;
-typedef  TYPE_2__ NMLVDISPINFO ;
-typedef  TYPE_3__ LINE_INFO ;
+typedef TYPE_2__ NMLVDISPINFO ;
+typedef TYPE_3__ LINE_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNT_OF (char*) ; 
- int /*<<< orphan*/  IDS_DEFAULT_VALUE_NAME ; 
- int /*<<< orphan*/  IDS_UNKNOWN_TYPE ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
-#define  REG_BINARY 139 
-#define  REG_DWORD 138 
-#define  REG_DWORD_BIG_ENDIAN 137 
-#define  REG_EXPAND_SZ 136 
-#define  REG_FULL_RESOURCE_DESCRIPTOR 135 
-#define  REG_LINK 134 
-#define  REG_MULTI_SZ 133 
-#define  REG_NONE 132 
-#define  REG_QWORD 131 
-#define  REG_RESOURCE_LIST 130 
-#define  REG_RESOURCE_REQUIREMENTS_LIST 129 
-#define  REG_SZ 128 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  wsprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+ int COUNT_OF (char*) ;
+ int IDS_DEFAULT_VALUE_NAME ;
+ int IDS_UNKNOWN_TYPE ;
+ int LoadStringW (int ,int ,char*,int ) ;
+ int hInst ;
+ int wsprintf (char*,char*,int ) ;
 
 __attribute__((used)) static void OnGetDispInfo(NMLVDISPINFO* plvdi)
 {
     static WCHAR buffer[200];
 
-    plvdi->item.pszText = NULL;
+    plvdi->item.pszText = ((void*)0);
     plvdi->item.cchTextMax = 0;
 
     switch (plvdi->item.iSubItem)
@@ -56,40 +44,40 @@ __attribute__((used)) static void OnGetDispInfo(NMLVDISPINFO* plvdi)
     case 1:
         switch (((LINE_INFO*)plvdi->item.lParam)->dwValType)
         {
-            case REG_NONE:
+            case 132:
                 plvdi->item.pszText = L"REG_NONE";
                 break;
-            case REG_SZ:
+            case 128:
                 plvdi->item.pszText = L"REG_SZ";
                 break;
-            case REG_EXPAND_SZ:
+            case 136:
                 plvdi->item.pszText = L"REG_EXPAND_SZ";
                 break;
-            case REG_BINARY:
+            case 139:
                 plvdi->item.pszText = L"REG_BINARY";
                 break;
-            case REG_DWORD: /* REG_DWORD_LITTLE_ENDIAN */
+            case 138:
                 plvdi->item.pszText = L"REG_DWORD";
                 break;
-            case REG_DWORD_BIG_ENDIAN:
+            case 137:
                 plvdi->item.pszText = L"REG_DWORD_BIG_ENDIAN";
                 break;
-            case REG_LINK:
+            case 134:
                 plvdi->item.pszText = L"REG_LINK";
                 break;
-            case REG_MULTI_SZ:
+            case 133:
                 plvdi->item.pszText = L"REG_MULTI_SZ";
                 break;
-            case REG_RESOURCE_LIST:
+            case 130:
                 plvdi->item.pszText = L"REG_RESOURCE_LIST";
                 break;
-            case REG_FULL_RESOURCE_DESCRIPTOR:
+            case 135:
                 plvdi->item.pszText = L"REG_FULL_RESOURCE_DESCRIPTOR";
                 break;
-            case REG_RESOURCE_REQUIREMENTS_LIST:
+            case 129:
                 plvdi->item.pszText = L"REG_RESOURCE_REQUIREMENTS_LIST";
                 break;
-            case REG_QWORD: /* REG_QWORD_LITTLE_ENDIAN */
+            case 131:
                 plvdi->item.pszText = L"REG_QWORD";
                 break;
             default:

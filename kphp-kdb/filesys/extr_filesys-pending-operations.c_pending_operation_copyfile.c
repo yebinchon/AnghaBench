@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct static_pending_operation {int dummy; } ;
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  enum pending_operation_tp { ____Placeholder_pending_operation_tp } pending_operation_tp ;
-typedef  scalar_t__ dyn_mark_t ;
+struct stat {int st_mode; } ;
+typedef enum pending_operation_tp { ____Placeholder_pending_operation_tp } pending_operation_tp ;
+typedef scalar_t__ dyn_mark_t ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int PATH_MAX ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISLNK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  compute_temporary_filename (int,int*,char const* const,char*) ; 
- int /*<<< orphan*/  dyn_release (scalar_t__) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  pending_operation_create (int,char*,char const* const,struct stat*) ; 
- int /*<<< orphan*/  pending_operation_fill (struct static_pending_operation*,int,char*,char const* const,struct stat*) ; 
- int /*<<< orphan*/  pending_operation_push (int /*<<< orphan*/ ) ; 
- int po_olddir_length ; 
- int pot_mkdir ; 
- int pot_rename ; 
- int pot_symlink ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
- int write (int,void*,int) ; 
+
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int PATH_MAX ;
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISLNK (int ) ;
+ int assert (int) ;
+ int close (int) ;
+ int compute_temporary_filename (int,int*,char const* const,char*) ;
+ int dyn_release (scalar_t__) ;
+ int exit (int) ;
+ int kprintf (char*,char*) ;
+ int open (char*,int,int) ;
+ int pending_operation_create (int,char*,char const* const,struct stat*) ;
+ int pending_operation_fill (struct static_pending_operation*,int,char*,char const* const,struct stat*) ;
+ int pending_operation_push (int ) ;
+ int po_olddir_length ;
+ int pot_mkdir ;
+ int pot_rename ;
+ int pot_symlink ;
+ int vkprintf (int,char*,char*) ;
+ int write (int,void*,int) ;
 
 void pending_operation_copyfile (int transaction_id, int *transaction_file_no, const char *const name, void *data, int data_size, struct stat *S, struct static_pending_operation *P, dyn_mark_t release_mark) {
   enum pending_operation_tp type;
@@ -48,7 +48,7 @@ void pending_operation_copyfile (int transaction_id, int *transaction_file_no, c
     oldpath = (char *) data;
   } else if (S_ISDIR (S->st_mode)) {
     type = pot_mkdir;
-    oldpath = NULL;
+    oldpath = ((void*)0);
   } else {
     char full_tmp_filename[PATH_MAX];
     compute_temporary_filename (transaction_id, transaction_file_no, name, full_tmp_filename);

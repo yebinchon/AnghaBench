@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fw_xferq {int /*<<< orphan*/  rsel; int /*<<< orphan*/  q; } ;
+
+
+
+
+struct fw_xferq {int rsel; int q; } ;
 struct fw_drv1 {struct fw_xferq* ir; } ;
 struct cdev {scalar_t__ si_drv1; } ;
-typedef  int /*<<< orphan*/  fw_proc ;
+typedef int fw_proc ;
 
-/* Variables and functions */
- scalar_t__ DEV_FWMEM (struct cdev*) ; 
- int POLLIN ; 
- int POLLOUT ; 
- int POLLRDNORM ; 
- int POLLWRNORM ; 
- int /*<<< orphan*/ * STAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int fwmem_poll (struct cdev*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  selrecord (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DEV_FWMEM (struct cdev*) ;
+ int POLLIN ;
+ int POLLOUT ;
+ int POLLRDNORM ;
+ int POLLWRNORM ;
+ int * STAILQ_FIRST (int *) ;
+ int fwmem_poll (struct cdev*,int,int *) ;
+ int selrecord (int *,int *) ;
 
 int
 fw_poll(struct cdev *dev, int events, fw_proc *td)
 {
-	struct fw_xferq *ir;
-	int revents;
-	int tmp;
+ struct fw_xferq *ir;
+ int revents;
+ int tmp;
 
-	if (DEV_FWMEM(dev))
-		return fwmem_poll(dev, events, td);
+ if (DEV_FWMEM(dev))
+  return fwmem_poll(dev, events, td);
 
-	ir = ((struct fw_drv1 *)dev->si_drv1)->ir;
-	revents = 0;
-	tmp = POLLIN | POLLRDNORM;
-	if (events & tmp) {
-		if (STAILQ_FIRST(&ir->q) != NULL)
-			revents |= tmp;
-		else
-			selrecord(td, &ir->rsel);
-	}
-	tmp = POLLOUT | POLLWRNORM;
-	if (events & tmp) {
-		/* XXX should be fixed */
-		revents |= tmp;
-	}
+ ir = ((struct fw_drv1 *)dev->si_drv1)->ir;
+ revents = 0;
+ tmp = POLLIN | POLLRDNORM;
+ if (events & tmp) {
+  if (STAILQ_FIRST(&ir->q) != ((void*)0))
+   revents |= tmp;
+  else
+   selrecord(td, &ir->rsel);
+ }
+ tmp = POLLOUT | POLLWRNORM;
+ if (events & tmp) {
 
-	return revents;
+  revents |= tmp;
+ }
+
+ return revents;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iwl_mvm {int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
+
+
+
+struct iwl_mvm {int mutex; } ;
+
+
+ int mutex_lock (int *) ;
 
 __attribute__((used)) static int iwl_mvm_fwrt_dump_start(void *ctx)
 {
-	struct iwl_mvm *mvm = ctx;
+ struct iwl_mvm *mvm = ctx;
 
-	mutex_lock(&mvm->mutex);
+ mutex_lock(&mvm->mutex);
 
-	return 0;
+ return 0;
 }

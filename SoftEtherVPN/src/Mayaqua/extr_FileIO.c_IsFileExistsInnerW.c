@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  IO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileOpenInnerW (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int wchar_t ;
+typedef int IO ;
+
+
+ int FileClose (int *) ;
+ int * FileOpenInnerW (int *,int,int) ;
 
 bool IsFileExistsInnerW(wchar_t *name)
 {
-	IO *o;
-	// Validate arguments
-	if (name == NULL)
-	{
-		return false;
-	}
+ IO *o;
 
-	o = FileOpenInnerW(name, false, false);
-	if (o == NULL)
-	{
-		return false;
-	}
+ if (name == ((void*)0))
+ {
+  return 0;
+ }
 
-	FileClose(o);
+ o = FileOpenInnerW(name, 0, 0);
+ if (o == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ FileClose(o);
+
+ return 1;
 }

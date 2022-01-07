@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int UINT ;
-typedef  scalar_t__ UCHAR ;
 
-/* Variables and functions */
- int Endian16 (int) ; 
- int MAC_PROTO_TAGVLAN ; 
- int READ_USHORT (scalar_t__*) ; 
+
+
+
+typedef int USHORT ;
+typedef int UINT ;
+typedef scalar_t__ UCHAR ;
+
+
+ int Endian16 (int) ;
+ int MAC_PROTO_TAGVLAN ;
+ int READ_USHORT (scalar_t__*) ;
 
 bool VLanRemoveTag(void **packet_data, UINT *packet_size, UINT vlan_id, UINT vlan_tpid)
 {
-	UCHAR *src_data;
-	UINT src_size;
-	USHORT vlan_tpid_ushort;
-	UCHAR *vlan_tpid_uchar;
-	// Validate arguments
-	if (packet_data == NULL || *packet_data == NULL || packet_size == NULL ||
-		*packet_size < 14)
-	{
-		return false;
-	}
+ UCHAR *src_data;
+ UINT src_size;
+ USHORT vlan_tpid_ushort;
+ UCHAR *vlan_tpid_uchar;
 
-	if (vlan_tpid == 0)
-	{
-		vlan_tpid = MAC_PROTO_TAGVLAN;
-	}
+ if (packet_data == ((void*)0) || *packet_data == ((void*)0) || packet_size == ((void*)0) ||
+  *packet_size < 14)
+ {
+  return 0;
+ }
 
-	vlan_tpid_ushort = Endian16((USHORT)vlan_tpid);
-	vlan_tpid_uchar = (UCHAR *)(&vlan_tpid_ushort);
+ if (vlan_tpid == 0)
+ {
+  vlan_tpid = MAC_PROTO_TAGVLAN;
+ }
 
-	src_data = (UCHAR *)(*packet_data);
-	src_size = *packet_size;
+ vlan_tpid_ushort = Endian16((USHORT)vlan_tpid);
+ vlan_tpid_uchar = (UCHAR *)(&vlan_tpid_ushort);
 
-	if (src_data[12] == vlan_tpid_uchar[0] && src_data[13] == vlan_tpid_uchar[1])
-	{
-		if (src_size >= 18)
-		{
-			USHORT vlan_ushort;
+ src_data = (UCHAR *)(*packet_data);
+ src_size = *packet_size;
 
-			vlan_ushort = READ_USHORT(&src_data[14]);
-			vlan_ushort = vlan_ushort & 0xFFF;
+ if (src_data[12] == vlan_tpid_uchar[0] && src_data[13] == vlan_tpid_uchar[1])
+ {
+  if (src_size >= 18)
+  {
+   USHORT vlan_ushort;
 
-			if (vlan_id == 0 || (vlan_ushort == vlan_id))
-			{
-				UINT dest_size = src_size - 4;
-				UINT i;
+   vlan_ushort = READ_USHORT(&src_data[14]);
+   vlan_ushort = vlan_ushort & 0xFFF;
 
-				for (i = 12;i < dest_size;i++)
-				{
-					src_data[i] = src_data[i + 4];
-				}
+   if (vlan_id == 0 || (vlan_ushort == vlan_id))
+   {
+    UINT dest_size = src_size - 4;
+    UINT i;
 
-				*packet_size = dest_size;
+    for (i = 12;i < dest_size;i++)
+    {
+     src_data[i] = src_data[i + 4];
+    }
 
-				return true;
-			}
-		}
-	}
+    *packet_size = dest_size;
 
-	return false;
+    return 1;
+   }
+  }
+ }
+
+ return 0;
 }

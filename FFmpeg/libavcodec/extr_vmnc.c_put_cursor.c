@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_3__ {int cur_w; scalar_t__ width; scalar_t__ cur_x; int cur_h; scalar_t__ height; scalar_t__ cur_y; int bpp2; int* curbits; int* curmask; } ;
-typedef  TYPE_1__ VmncContext ;
+typedef TYPE_1__ VmncContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void put_cursor(uint8_t *dst, int stride, VmncContext *c, int dx, int dy)
 {
@@ -33,11 +33,11 @@ __attribute__((used)) static void put_cursor(uint8_t *dst, int stride, VmncConte
     y = c->cur_y;
     if (x < 0) {
         w += x;
-        x  = 0;
+        x = 0;
     }
     if (y < 0) {
         h += y;
-        y  = 0;
+        y = 0;
     }
 
     if ((w < 1) || (h < 1))
@@ -50,7 +50,7 @@ __attribute__((used)) static void put_cursor(uint8_t *dst, int stride, VmncConte
             for (i = 0; i < w; i++)
                 dst[i] = (dst[i] & cd[i]) ^ msk[i];
             msk += c->cur_w;
-            cd  += c->cur_w;
+            cd += c->cur_w;
             dst += stride;
         }
     } else if (c->bpp2 == 2) {
@@ -61,7 +61,7 @@ __attribute__((used)) static void put_cursor(uint8_t *dst, int stride, VmncConte
             for (i = 0; i < w; i++)
                 dst2[i] = (dst2[i] & cd[i]) ^ msk[i];
             msk += c->cur_w;
-            cd  += c->cur_w;
+            cd += c->cur_w;
             dst += stride;
         }
     } else if (c->bpp2 == 4) {
@@ -72,7 +72,7 @@ __attribute__((used)) static void put_cursor(uint8_t *dst, int stride, VmncConte
             for (i = 0; i < w; i++)
                 dst2[i] = (dst2[i] & cd[i]) ^ msk[i];
             msk += c->cur_w;
-            cd  += c->cur_w;
+            cd += c->cur_w;
             dst += stride;
         }
     }

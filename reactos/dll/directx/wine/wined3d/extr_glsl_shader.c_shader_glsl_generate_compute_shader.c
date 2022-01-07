@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer_list {int dummy; } ;
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
-struct wined3d_shader_thread_group_size {int /*<<< orphan*/  z; int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
+struct wined3d_string_buffer {int buffer; } ;
+struct wined3d_shader_thread_group_size {int z; int y; int x; } ;
 struct wined3d_shader_reg_maps {unsigned int tgsm_count; TYPE_3__* tgsm; } ;
 struct TYPE_4__ {struct wined3d_shader_thread_group_size thread_group_size; } ;
 struct TYPE_5__ {TYPE_1__ cs; } ;
@@ -23,22 +23,22 @@ struct wined3d_shader {struct wined3d_shader_reg_maps reg_maps; TYPE_2__ u; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
 struct shader_glsl_ctx_priv {struct wined3d_string_buffer_list* string_buffers; } ;
-typedef  int /*<<< orphan*/  priv_ctx ;
+typedef int priv_ctx ;
 struct TYPE_6__ {scalar_t__ size; } ;
-typedef  int /*<<< orphan*/  GLuint ;
+typedef int GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COMPUTE_SHADER ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glCreateShader (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct shader_glsl_ctx_priv*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ; 
- int /*<<< orphan*/  shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
- int /*<<< orphan*/  shader_glsl_compile (struct wined3d_gl_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ; 
+
+ int GL_COMPUTE_SHADER ;
+ int GL_EXTCALL (int ) ;
+ int TRACE (char*,int ) ;
+ int glCreateShader (int ) ;
+ int memset (struct shader_glsl_ctx_priv*,int ,int) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_generate_code (struct wined3d_shader const*,struct wined3d_string_buffer*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*,int *,int *) ;
+ int shader_generate_glsl_declarations (struct wined3d_context const*,struct wined3d_string_buffer*,struct wined3d_shader const*,struct wined3d_shader_reg_maps const*,struct shader_glsl_ctx_priv*) ;
+ int shader_glsl_add_version_declaration (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
+ int shader_glsl_compile (struct wined3d_gl_info const*,int ,int ) ;
+ int shader_glsl_enable_extensions (struct wined3d_string_buffer*,struct wined3d_gl_info const*) ;
 
 __attribute__((used)) static GLuint shader_glsl_generate_compute_shader(const struct wined3d_context *context,
         struct wined3d_string_buffer *buffer, struct wined3d_string_buffer_list *string_buffers,
@@ -71,7 +71,7 @@ __attribute__((used)) static GLuint shader_glsl_generate_compute_shader(const st
             thread_group_size->x, thread_group_size->y, thread_group_size->z);
 
     shader_addline(buffer, "void main()\n{\n");
-    shader_generate_code(shader, buffer, reg_maps, &priv_ctx, NULL, NULL);
+    shader_generate_code(shader, buffer, reg_maps, &priv_ctx, ((void*)0), ((void*)0));
     shader_addline(buffer, "}\n");
 
     shader_id = GL_EXTCALL(glCreateShader(GL_COMPUTE_SHADER));

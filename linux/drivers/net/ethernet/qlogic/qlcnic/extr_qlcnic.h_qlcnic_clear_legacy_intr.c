@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct qlcnic_adapter {TYPE_1__* nic_ops; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* clear_legacy_intr ) (struct qlcnic_adapter*) ;} ;
+typedef int irqreturn_t ;
+struct TYPE_2__ {int (* clear_legacy_intr ) (struct qlcnic_adapter*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct qlcnic_adapter*) ; 
+
+ int stub1 (struct qlcnic_adapter*) ;
 
 __attribute__((used)) static inline irqreturn_t
 qlcnic_clear_legacy_intr(struct qlcnic_adapter *adapter)
 {
-	return adapter->nic_ops->clear_legacy_intr(adapter);
+ return adapter->nic_ops->clear_legacy_intr(adapter);
 }

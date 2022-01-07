@@ -1,138 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
-#define  PARSER_COMMENT 165 
-#define  PARSER_GLOBAL_LENGTH 164 
-#define  PARSER_GLOBAL_ZERO 163 
-#define  PARSER_HASH_ENCODING 162 
-#define  PARSER_HASH_FILE 161 
-#define  PARSER_HASH_LENGTH 160 
-#define  PARSER_HASH_VALUE 159 
-#define  PARSER_HCCAPX_EAPOL_LEN 158 
-#define  PARSER_HCCAPX_FILE_SIZE 157 
-#define  PARSER_HCCAPX_MESSAGE_PAIR 156 
-#define  PARSER_HCCAPX_SIGNATURE 155 
-#define  PARSER_HCCAPX_VERSION 154 
-#define  PARSER_INSUFFICIENT_ENTROPY 153 
-#define  PARSER_LUKS_CIPHER_MODE 152 
-#define  PARSER_LUKS_CIPHER_TYPE 151 
-#define  PARSER_LUKS_FILE_SIZE 150 
-#define  PARSER_LUKS_HASH_CIPHER 149 
-#define  PARSER_LUKS_HASH_TYPE 148 
-#define  PARSER_LUKS_KEY_DISABLED 147 
-#define  PARSER_LUKS_KEY_SIZE 146 
-#define  PARSER_LUKS_KEY_STRIPES 145 
-#define  PARSER_LUKS_MAGIC 144 
-#define  PARSER_LUKS_VERSION 143 
-#define  PARSER_OK 142 
-#define  PARSER_PKZIP_CT_UNMATCHED 141 
-#define  PARSER_PSAFE2_FILE_SIZE 140 
-#define  PARSER_PSAFE3_FILE_SIZE 139 
-#define  PARSER_SALT_ENCODING 138 
-#define  PARSER_SALT_ITERATION 137 
-#define  PARSER_SALT_LENGTH 136 
-#define  PARSER_SALT_VALUE 135 
-#define  PARSER_SEPARATOR_UNMATCHED 134 
-#define  PARSER_SIGNATURE_UNMATCHED 133 
-#define  PARSER_SIP_AUTH_DIRECTIVE 132 
-#define  PARSER_TC_FILE_SIZE 131 
-#define  PARSER_TOKEN_ENCODING 130 
-#define  PARSER_TOKEN_LENGTH 129 
-#define  PARSER_VC_FILE_SIZE 128 
- char const* PA_000 ; 
- char const* PA_001 ; 
- char const* PA_002 ; 
- char const* PA_003 ; 
- char const* PA_004 ; 
- char const* PA_005 ; 
- char const* PA_006 ; 
- char const* PA_007 ; 
- char const* PA_008 ; 
- char const* PA_009 ; 
- char const* PA_010 ; 
- char const* PA_011 ; 
- char const* PA_012 ; 
- char const* PA_013 ; 
- char const* PA_014 ; 
- char const* PA_015 ; 
- char const* PA_016 ; 
- char const* PA_017 ; 
- char const* PA_018 ; 
- char const* PA_019 ; 
- char const* PA_020 ; 
- char const* PA_021 ; 
- char const* PA_022 ; 
- char const* PA_023 ; 
- char const* PA_024 ; 
- char const* PA_025 ; 
- char const* PA_026 ; 
- char const* PA_027 ; 
- char const* PA_028 ; 
- char const* PA_029 ; 
- char const* PA_030 ; 
- char const* PA_031 ; 
- char const* PA_032 ; 
- char const* PA_033 ; 
- char const* PA_034 ; 
- char const* PA_035 ; 
- char const* PA_036 ; 
- char const* PA_037 ; 
- char const* PA_255 ; 
+
+
+
+typedef int u32 ;
+ char const* PA_000 ;
+ char const* PA_001 ;
+ char const* PA_002 ;
+ char const* PA_003 ;
+ char const* PA_004 ;
+ char const* PA_005 ;
+ char const* PA_006 ;
+ char const* PA_007 ;
+ char const* PA_008 ;
+ char const* PA_009 ;
+ char const* PA_010 ;
+ char const* PA_011 ;
+ char const* PA_012 ;
+ char const* PA_013 ;
+ char const* PA_014 ;
+ char const* PA_015 ;
+ char const* PA_016 ;
+ char const* PA_017 ;
+ char const* PA_018 ;
+ char const* PA_019 ;
+ char const* PA_020 ;
+ char const* PA_021 ;
+ char const* PA_022 ;
+ char const* PA_023 ;
+ char const* PA_024 ;
+ char const* PA_025 ;
+ char const* PA_026 ;
+ char const* PA_027 ;
+ char const* PA_028 ;
+ char const* PA_029 ;
+ char const* PA_030 ;
+ char const* PA_031 ;
+ char const* PA_032 ;
+ char const* PA_033 ;
+ char const* PA_034 ;
+ char const* PA_035 ;
+ char const* PA_036 ;
+ char const* PA_037 ;
+ char const* PA_255 ;
 
 const char *strparser (const u32 parser_status)
 {
   switch (parser_status)
   {
-    case PARSER_OK:                   return PA_000;
-    case PARSER_COMMENT:              return PA_001;
-    case PARSER_GLOBAL_ZERO:          return PA_002;
-    case PARSER_GLOBAL_LENGTH:        return PA_003;
-    case PARSER_HASH_LENGTH:          return PA_004;
-    case PARSER_HASH_VALUE:           return PA_005;
-    case PARSER_SALT_LENGTH:          return PA_006;
-    case PARSER_SALT_VALUE:           return PA_007;
-    case PARSER_SALT_ITERATION:       return PA_008;
-    case PARSER_SEPARATOR_UNMATCHED:  return PA_009;
-    case PARSER_SIGNATURE_UNMATCHED:  return PA_010;
-    case PARSER_HCCAPX_FILE_SIZE:     return PA_011;
-    case PARSER_HCCAPX_EAPOL_LEN:     return PA_012;
-    case PARSER_PSAFE2_FILE_SIZE:     return PA_013;
-    case PARSER_PSAFE3_FILE_SIZE:     return PA_014;
-    case PARSER_TC_FILE_SIZE:         return PA_015;
-    case PARSER_VC_FILE_SIZE:         return PA_016;
-    case PARSER_SIP_AUTH_DIRECTIVE:   return PA_017;
-    case PARSER_HASH_FILE:            return PA_018;
-    case PARSER_HASH_ENCODING:        return PA_019;
-    case PARSER_SALT_ENCODING:        return PA_020;
-    case PARSER_LUKS_FILE_SIZE:       return PA_021;
-    case PARSER_LUKS_MAGIC:           return PA_022;
-    case PARSER_LUKS_VERSION:         return PA_023;
-    case PARSER_LUKS_CIPHER_TYPE:     return PA_024;
-    case PARSER_LUKS_CIPHER_MODE:     return PA_025;
-    case PARSER_LUKS_HASH_TYPE:       return PA_026;
-    case PARSER_LUKS_KEY_SIZE:        return PA_027;
-    case PARSER_LUKS_KEY_DISABLED:    return PA_028;
-    case PARSER_LUKS_KEY_STRIPES:     return PA_029;
-    case PARSER_LUKS_HASH_CIPHER:     return PA_030;
-    case PARSER_HCCAPX_SIGNATURE:     return PA_031;
-    case PARSER_HCCAPX_VERSION:       return PA_032;
-    case PARSER_HCCAPX_MESSAGE_PAIR:  return PA_033;
-    case PARSER_TOKEN_ENCODING:       return PA_034;
-    case PARSER_TOKEN_LENGTH:         return PA_035;
-    case PARSER_INSUFFICIENT_ENTROPY: return PA_036;
-    case PARSER_PKZIP_CT_UNMATCHED:   return PA_037;
+    case 142: return PA_000;
+    case 165: return PA_001;
+    case 163: return PA_002;
+    case 164: return PA_003;
+    case 160: return PA_004;
+    case 159: return PA_005;
+    case 136: return PA_006;
+    case 135: return PA_007;
+    case 137: return PA_008;
+    case 134: return PA_009;
+    case 133: return PA_010;
+    case 157: return PA_011;
+    case 158: return PA_012;
+    case 140: return PA_013;
+    case 139: return PA_014;
+    case 131: return PA_015;
+    case 128: return PA_016;
+    case 132: return PA_017;
+    case 161: return PA_018;
+    case 162: return PA_019;
+    case 138: return PA_020;
+    case 150: return PA_021;
+    case 144: return PA_022;
+    case 143: return PA_023;
+    case 151: return PA_024;
+    case 152: return PA_025;
+    case 148: return PA_026;
+    case 146: return PA_027;
+    case 147: return PA_028;
+    case 145: return PA_029;
+    case 149: return PA_030;
+    case 155: return PA_031;
+    case 154: return PA_032;
+    case 156: return PA_033;
+    case 130: return PA_034;
+    case 129: return PA_035;
+    case 153: return PA_036;
+    case 141: return PA_037;
   }
 
   return PA_255;

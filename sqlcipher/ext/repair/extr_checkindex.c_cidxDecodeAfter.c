@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CidxCursor ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  cidxCursorError (int /*<<< orphan*/ *,char*,char*) ; 
- char** cidxMalloc (int*,int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  sqlite3_free (char**) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int CidxCursor ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int cidxCursorError (int *,char*,char*) ;
+ char** cidxMalloc (int*,int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int memcpy (char*,char const*,int) ;
+ int sqlite3_free (char**) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static int cidxDecodeAfter(
-  CidxCursor *pCsr, 
-  int nCol, 
-  const char *zAfterKey, 
+  CidxCursor *pCsr,
+  int nCol,
+  const char *zAfterKey,
   char ***pazAfter
 ){
   char **azAfter;
@@ -41,13 +41,13 @@ __attribute__((used)) static int cidxDecodeAfter(
     for(i=0; i<nCol; i++){
       while( *p==' ' ) p++;
 
-      /* Check NULL values */
+
       if( *p=='N' ){
         if( memcmp(p, "NULL", 4) ) goto parse_error;
         p += 4;
       }
 
-      /* Check strings and blob literals */
+
       else if( *p=='X' || *p=='\'' ){
         azAfter[i] = p;
         if( *p=='X' ) p++;
@@ -63,10 +63,10 @@ __attribute__((used)) static int cidxDecodeAfter(
         }
       }
 
-      /* Check numbers */
+
       else{
         azAfter[i] = p;
-        while( (*p>='0' && *p<='9') 
+        while( (*p>='0' && *p<='9')
             || *p=='.' || *p=='+' || *p=='-' || *p=='e' || *p=='E'
         ){
           p++;

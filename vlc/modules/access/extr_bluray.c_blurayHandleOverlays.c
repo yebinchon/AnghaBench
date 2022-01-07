@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_8__ {int /*<<< orphan*/  lock; TYPE_4__** p_overlays; } ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_8__ {int lock; TYPE_4__** p_overlays; } ;
 struct TYPE_10__ {TYPE_1__ bdj; } ;
-typedef  TYPE_3__ demux_sys_t ;
-struct TYPE_11__ {scalar_t__ status; int /*<<< orphan*/  b_on_vout; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_4__ bluray_overlay_t ;
+typedef TYPE_3__ demux_sys_t ;
+struct TYPE_11__ {scalar_t__ status; int b_on_vout; int lock; } ;
+typedef TYPE_4__ bluray_overlay_t ;
 
-/* Variables and functions */
- int MAX_OVERLAY ; 
- scalar_t__ ToDisplay ; 
- int /*<<< orphan*/  bluraySendOverlayToVout (TYPE_2__*,int,TYPE_4__*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int MAX_OVERLAY ;
+ scalar_t__ ToDisplay ;
+ int bluraySendOverlayToVout (TYPE_2__*,int,TYPE_4__*) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void blurayHandleOverlays(demux_t *p_demux)
 {
@@ -44,11 +44,11 @@ __attribute__((used)) static void blurayHandleOverlays(demux_t *p_demux)
         vlc_mutex_unlock(&ov->lock);
         if (display && !ov->b_on_vout)
         {
-            /* NOTE: we might want to enable background video always when there's no video stream playing.
-               Now, with some discs, there are perioids (even seconds) during which the video window
-               disappears and just playlist is shown.
-               (sometimes BD-J runs slowly ...)
-            */
+
+
+
+
+
             bluraySendOverlayToVout(p_demux, i, ov);
         }
     }

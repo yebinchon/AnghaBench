@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npy_uint32 ;
-typedef  scalar_t__ npy_int32 ;
-typedef  int /*<<< orphan*/  npy_bool ;
-typedef  scalar_t__ TrimMode ;
-typedef  scalar_t__ DigitMode ;
-typedef  int /*<<< orphan*/  BigInt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CutoffMode_TotalLength ; 
- int /*<<< orphan*/  DEBUG_ASSERT (int) ; 
- scalar_t__ DigitMode_Unique ; 
- scalar_t__ Dragon4 (int /*<<< orphan*/ *,scalar_t__,int,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__,char*,int,scalar_t__*) ; 
- scalar_t__ TrimMode_DptZeros ; 
- scalar_t__ TrimMode_LeaveOneZero ; 
- scalar_t__ TrimMode_None ; 
- int /*<<< orphan*/  memcpy (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  memmove (char*,char*,scalar_t__) ; 
+
+
+
+typedef int npy_uint32 ;
+typedef scalar_t__ npy_int32 ;
+typedef int npy_bool ;
+typedef scalar_t__ TrimMode ;
+typedef scalar_t__ DigitMode ;
+typedef int BigInt ;
+
+
+ int CutoffMode_TotalLength ;
+ int DEBUG_ASSERT (int) ;
+ scalar_t__ DigitMode_Unique ;
+ scalar_t__ Dragon4 (int *,scalar_t__,int,int ,scalar_t__,int ,scalar_t__,char*,int,scalar_t__*) ;
+ scalar_t__ TrimMode_DptZeros ;
+ scalar_t__ TrimMode_LeaveOneZero ;
+ scalar_t__ TrimMode_None ;
+ int memcpy (char*,char*,scalar_t__) ;
+ int memmove (char*,char*,scalar_t__) ;
 
 __attribute__((used)) static npy_uint32
 FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
@@ -50,7 +50,7 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
 
     pCurOut = buffer;
 
-    /* add any whitespace padding to left side */
+
     leftchars = 1 + (signbit == '-' || signbit == '+');
     if (digits_left > leftchars) {
         int i;
@@ -66,7 +66,7 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
         pCurOut++;
         --bufferSize;
     }
-    else if (signbit == '-'  && bufferSize > 1) {
+    else if (signbit == '-' && bufferSize > 1) {
         *pCurOut = '-';
         pCurOut++;
         --bufferSize;
@@ -79,19 +79,19 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
     DEBUG_ASSERT(numDigits > 0);
     DEBUG_ASSERT(numDigits <= bufferSize);
 
-    /* keep the whole number as the first digit */
+
     if (bufferSize > 1) {
         pCurOut += 1;
         bufferSize -= 1;
     }
 
-    /* insert the decimal point prior to the fractional number */
+
     numFractionDigits = numDigits-1;
     if (numFractionDigits > 0 && bufferSize > 1) {
         npy_int32 maxFractionDigits = (npy_int32)bufferSize - 2;
 
         if (numFractionDigits > maxFractionDigits) {
-            numFractionDigits =  maxFractionDigits;
+            numFractionDigits = maxFractionDigits;
         }
 
         memmove(pCurOut + 1, pCurOut, numFractionDigits);
@@ -100,7 +100,7 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
         bufferSize -= (1 + numFractionDigits);
     }
 
-    /* always add decimal point, except for DprZeros mode */
+
     if (trim_mode != TrimMode_DptZeros && numFractionDigits == 0 &&
             bufferSize > 1) {
         *pCurOut = '.';
@@ -109,7 +109,7 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
     }
 
     if (trim_mode == TrimMode_LeaveOneZero) {
-        /* if we didn't print any fractional digits, add the 0 */
+
         if (numFractionDigits == 0 && bufferSize > 1) {
             *pCurOut = '0';
             ++pCurOut;
@@ -119,10 +119,10 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
     }
     else if (trim_mode == TrimMode_None &&
             digit_mode != DigitMode_Unique) {
-        /* add trailing zeros up to precision length */
+
         if (precision > (npy_int32)numFractionDigits) {
             char *pEnd;
-            /* compute the number of trailing zeros needed */
+
             npy_int32 numZeros = (precision - numFractionDigits);
 
             if (numZeros > (npy_int32)bufferSize - 1) {
@@ -135,12 +135,12 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
             }
         }
     }
-    /* else, for trim_mode Zeros or DptZeros, there is nothing more to add */
 
-    /*
-     * when rounding, we may still end up with trailing zeros. Remove them
-     * depending on trim settings.
-     */
+
+
+
+
+
     if (precision >= 0 && trim_mode != TrimMode_None && numFractionDigits > 0) {
         --pCurOut;
         while (*pCurOut == '0') {
@@ -157,7 +157,7 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
         ++pCurOut;
     }
 
-    /* print the exponent into a local buffer and copy into output buffer */
+
     if (bufferSize > 1) {
         char exponentBuffer[7];
         npy_int32 digits[5];
@@ -181,21 +181,21 @@ FormatScientific (char *buffer, npy_uint32 bufferSize, BigInt *mantissa,
 
         DEBUG_ASSERT(printExponent < 100000);
 
-        /* get exp digits */
+
         for (i = 0; i < 5; i++) {
             digits[i] = printExponent % 10;
             printExponent /= 10;
         }
-        /* count back over leading zeros */
+
         for (i = 5; i > exp_digits && digits[i-1] == 0; i--) {
         }
         exp_size = i;
-        /* write remaining digits to tmp buf */
+
         for (i = exp_size; i > 0; i--) {
             exponentBuffer[2 + (exp_size-i)] = (char)('0' + digits[i-1]);
         }
 
-        /* copy the exponent buffer into the output */
+
         count = exp_size + 2;
         if (count > (npy_int32)bufferSize - 1) {
             count = (npy_int32)bufferSize - 1;

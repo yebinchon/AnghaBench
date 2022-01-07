@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t* PolygonStipple; } ;
-typedef  size_t GLuint ;
-typedef  scalar_t__ GLubyte ;
-typedef  int GLint ;
-typedef  TYPE_1__ GLcontext ;
+typedef size_t GLuint ;
+typedef scalar_t__ GLubyte ;
+typedef int GLint ;
+typedef TYPE_1__ GLcontext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void stipple_polygon_span( GLcontext *ctx,
                                   GLuint n, GLint x, GLint y, GLubyte mask[] )
@@ -29,11 +29,11 @@ __attribute__((used)) static void stipple_polygon_span( GLcontext *ctx,
 
    for (i=0;i<n;i++) {
       if ((m & stipple)==0) {
-	 mask[i] = 0;
+  mask[i] = 0;
       }
       m = m >> 1;
       if (m==0) {
-	 m = 0x80000000;
+  m = 0x80000000;
       }
    }
 }

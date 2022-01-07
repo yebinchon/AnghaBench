@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ddsBuffer_t ;
 
-/* Variables and functions */
- int DDSDecompressDXT5 (int /*<<< orphan*/ *,int,int,unsigned char*) ; 
+
+
+
+typedef int ddsBuffer_t ;
+
+
+ int DDSDecompressDXT5 (int *,int,int,unsigned char*) ;
 
 __attribute__((used)) static int DDSDecompressDXT4( ddsBuffer_t *dds, int width, int height, unsigned char *pixels ){
-	int r;
+ int r;
 
 
-	/* decompress dxt5 first */
-	r = DDSDecompressDXT5( dds, width, height, pixels );
 
-	/* return to sender */
-	return r;
+ r = DDSDecompressDXT5( dds, width, height, pixels );
+
+
+ return r;
 }

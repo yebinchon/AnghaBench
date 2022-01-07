@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int len; int /*<<< orphan*/ ** val; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int len; int ** val; } ;
 struct TYPE_5__ {TYPE_1__ name_string; } ;
-typedef  int /*<<< orphan*/ * Realm ;
-typedef  TYPE_2__ PrincipalName ;
+typedef int * Realm ;
+typedef TYPE_2__ PrincipalName ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KRB5_TGS_NAME ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int KRB5_TGS_NAME ;
+ scalar_t__ strcmp (int *,int ) ;
 
 __attribute__((used)) static Realm
 get_krbtgt_realm(const PrincipalName *p)
 {
     if(p->name_string.len == 2
        && strcmp(p->name_string.val[0], KRB5_TGS_NAME) == 0)
-	return p->name_string.val[1];
+ return p->name_string.val[1];
     else
-	return NULL;
+ return ((void*)0);
 }

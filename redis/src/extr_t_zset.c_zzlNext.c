@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  serverAssert (int) ; 
- unsigned char* ziplistNext (unsigned char*,unsigned char*) ; 
+ int serverAssert (int) ;
+ unsigned char* ziplistNext (unsigned char*,unsigned char*) ;
 
 void zzlNext(unsigned char *zl, unsigned char **eptr, unsigned char **sptr) {
     unsigned char *_eptr, *_sptr;
-    serverAssert(*eptr != NULL && *sptr != NULL);
+    serverAssert(*eptr != ((void*)0) && *sptr != ((void*)0));
 
     _eptr = ziplistNext(zl,*sptr);
-    if (_eptr != NULL) {
+    if (_eptr != ((void*)0)) {
         _sptr = ziplistNext(zl,_eptr);
-        serverAssert(_sptr != NULL);
+        serverAssert(_sptr != ((void*)0));
     } else {
-        /* No next entry. */
-        _sptr = NULL;
+
+        _sptr = ((void*)0);
     }
 
     *eptr = _eptr;

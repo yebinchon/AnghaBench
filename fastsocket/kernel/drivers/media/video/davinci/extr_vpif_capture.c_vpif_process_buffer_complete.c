@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct common_obj {TYPE_1__* next_frm; TYPE_1__* cur_frm; } ;
-struct TYPE_2__ {int /*<<< orphan*/  done; int /*<<< orphan*/  state; int /*<<< orphan*/  ts; } ;
+struct TYPE_2__ {int done; int state; int ts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDEOBUF_DONE ; 
- int /*<<< orphan*/  do_gettimeofday (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+ int VIDEOBUF_DONE ;
+ int do_gettimeofday (int *) ;
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void vpif_process_buffer_complete(struct common_obj *common)
 {
-	do_gettimeofday(&common->cur_frm->ts);
-	common->cur_frm->state = VIDEOBUF_DONE;
-	wake_up_interruptible(&common->cur_frm->done);
-	/* Make curFrm pointing to nextFrm */
-	common->cur_frm = common->next_frm;
+ do_gettimeofday(&common->cur_frm->ts);
+ common->cur_frm->state = VIDEOBUF_DONE;
+ wake_up_interruptible(&common->cur_frm->done);
+
+ common->cur_frm = common->next_frm;
 }

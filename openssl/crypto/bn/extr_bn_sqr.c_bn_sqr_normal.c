@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ BN_ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bn_add_words (scalar_t__*,scalar_t__*,scalar_t__*,int) ; 
- scalar_t__ bn_mul_add_words (scalar_t__*,scalar_t__ const*,int,scalar_t__ const) ; 
- scalar_t__ bn_mul_words (scalar_t__*,scalar_t__ const*,int,scalar_t__ const) ; 
- int /*<<< orphan*/  bn_sqr_words (scalar_t__*,scalar_t__ const*,int) ; 
+
+
+
+typedef scalar_t__ BN_ULONG ;
+
+
+ int bn_add_words (scalar_t__*,scalar_t__*,scalar_t__*,int) ;
+ scalar_t__ bn_mul_add_words (scalar_t__*,scalar_t__ const*,int,scalar_t__ const) ;
+ scalar_t__ bn_mul_words (scalar_t__*,scalar_t__ const*,int,scalar_t__ const) ;
+ int bn_sqr_words (scalar_t__*,scalar_t__ const*,int) ;
 
 void bn_sqr_normal(BN_ULONG *r, const BN_ULONG *a, int n, BN_ULONG *tmp)
 {
@@ -46,7 +46,7 @@ void bn_sqr_normal(BN_ULONG *r, const BN_ULONG *a, int n, BN_ULONG *tmp)
 
     bn_add_words(r, r, r, max);
 
-    /* There will not be a carry */
+
 
     bn_sqr_words(tmp, a, n);
 

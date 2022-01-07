@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  operation; int /*<<< orphan*/  new_version; TYPE_3__* old_version; int /*<<< orphan*/  db; int /*<<< orphan*/  dst_op_depth; int /*<<< orphan*/  wcroot; } ;
-typedef  TYPE_1__ update_move_baton_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_reason_t ;
-typedef  int /*<<< orphan*/  svn_wc_conflict_action_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int operation; int new_version; TYPE_3__* old_version; int db; int dst_op_depth; int wcroot; } ;
+typedef TYPE_1__ update_move_baton_t ;
+typedef int svn_wc_conflict_reason_t ;
+typedef int svn_wc_conflict_action_t ;
+typedef int svn_skel_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
 struct TYPE_6__ {char const* dst_relpath; TYPE_1__* umb; } ;
-typedef  TYPE_2__ node_move_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_7__ {int /*<<< orphan*/  path_in_repos; } ;
+typedef TYPE_2__ node_move_baton_t ;
+typedef int apr_pool_t ;
+struct TYPE_7__ {int path_in_repos; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  create_tree_conflict (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,char*,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- char* svn_relpath_join (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_relpath_prefix (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_relpath_skip_ancestor (char const*,char const*) ; 
+
+ int create_tree_conflict (int **,int ,char const*,char*,int ,TYPE_3__*,int ,int ,int ,int ,char const*,int ,int ,char const*,int *,int *) ;
+ int * svn_error_trace (int ) ;
+ char* svn_relpath_join (int ,int ,int *) ;
+ char* svn_relpath_prefix (char const*,int ,int *) ;
+ int svn_relpath_skip_ancestor (char const*,char const*) ;
 
 __attribute__((used)) static svn_error_t *
 create_node_tree_conflict(svn_skel_t **conflict_p,

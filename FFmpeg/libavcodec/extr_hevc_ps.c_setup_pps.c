@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int* col_bd; int num_tile_columns; int* row_bd; int num_tile_rows; int* col_idxX; int* column_width; int* row_height; int* ctb_addr_rs_to_ts; int* ctb_addr_ts_to_rs; int* tile_id; int* min_tb_addr_zs_tab; int* tile_pos_rs; int* min_tb_addr_zs; scalar_t__ uniform_spacing_flag; } ;
 struct TYPE_5__ {int ctb_width; int ctb_height; int tb_mask; int log2_ctb_size; int log2_min_tb_size; } ;
-typedef  TYPE_1__ HEVCSPS ;
-typedef  TYPE_2__ HEVCPPS ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+typedef TYPE_1__ HEVCSPS ;
+typedef TYPE_2__ HEVCPPS ;
+typedef int GetBitContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* av_malloc_array (int,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ void* av_malloc_array (int,int) ;
 
 __attribute__((used)) static inline int setup_pps(AVCodecContext *avctx, GetBitContext *gb,
                             HEVCPPS *pps, HEVCSPS *sps)
@@ -31,17 +31,17 @@ __attribute__((used)) static inline int setup_pps(AVCodecContext *avctx, GetBitC
     int pic_area_in_ctbs;
     int i, j, x, y, ctb_addr_rs, tile_id;
 
-    // Inferred parameters
-    pps->col_bd   = av_malloc_array(pps->num_tile_columns + 1, sizeof(*pps->col_bd));
-    pps->row_bd   = av_malloc_array(pps->num_tile_rows + 1,    sizeof(*pps->row_bd));
-    pps->col_idxX = av_malloc_array(sps->ctb_width,    sizeof(*pps->col_idxX));
+
+    pps->col_bd = av_malloc_array(pps->num_tile_columns + 1, sizeof(*pps->col_bd));
+    pps->row_bd = av_malloc_array(pps->num_tile_rows + 1, sizeof(*pps->row_bd));
+    pps->col_idxX = av_malloc_array(sps->ctb_width, sizeof(*pps->col_idxX));
     if (!pps->col_bd || !pps->row_bd || !pps->col_idxX)
         return AVERROR(ENOMEM);
 
     if (pps->uniform_spacing_flag) {
         if (!pps->column_width) {
             pps->column_width = av_malloc_array(pps->num_tile_columns, sizeof(*pps->column_width));
-            pps->row_height   = av_malloc_array(pps->num_tile_rows,    sizeof(*pps->row_height));
+            pps->row_height = av_malloc_array(pps->num_tile_rows, sizeof(*pps->row_height));
         }
         if (!pps->column_width || !pps->row_height)
             return AVERROR(ENOMEM);
@@ -71,14 +71,14 @@ __attribute__((used)) static inline int setup_pps(AVCodecContext *avctx, GetBitC
         pps->col_idxX[i] = j;
     }
 
-    /**
-     * 6.5
-     */
-    pic_area_in_ctbs     = sps->ctb_width    * sps->ctb_height;
 
-    pps->ctb_addr_rs_to_ts = av_malloc_array(pic_area_in_ctbs,    sizeof(*pps->ctb_addr_rs_to_ts));
-    pps->ctb_addr_ts_to_rs = av_malloc_array(pic_area_in_ctbs,    sizeof(*pps->ctb_addr_ts_to_rs));
-    pps->tile_id           = av_malloc_array(pic_area_in_ctbs,    sizeof(*pps->tile_id));
+
+
+    pic_area_in_ctbs = sps->ctb_width * sps->ctb_height;
+
+    pps->ctb_addr_rs_to_ts = av_malloc_array(pic_area_in_ctbs, sizeof(*pps->ctb_addr_rs_to_ts));
+    pps->ctb_addr_ts_to_rs = av_malloc_array(pic_area_in_ctbs, sizeof(*pps->ctb_addr_ts_to_rs));
+    pps->tile_id = av_malloc_array(pic_area_in_ctbs, sizeof(*pps->tile_id));
     pps->min_tb_addr_zs_tab = av_malloc_array((sps->tb_mask+2) * (sps->tb_mask+2), sizeof(*pps->min_tb_addr_zs_tab));
     if (!pps->ctb_addr_rs_to_ts || !pps->ctb_addr_ts_to_rs ||
         !pps->tile_id || !pps->min_tb_addr_zs_tab) {
@@ -86,11 +86,11 @@ __attribute__((used)) static inline int setup_pps(AVCodecContext *avctx, GetBitC
     }
 
     for (ctb_addr_rs = 0; ctb_addr_rs < pic_area_in_ctbs; ctb_addr_rs++) {
-        int tb_x   = ctb_addr_rs % sps->ctb_width;
-        int tb_y   = ctb_addr_rs / sps->ctb_width;
+        int tb_x = ctb_addr_rs % sps->ctb_width;
+        int tb_y = ctb_addr_rs / sps->ctb_width;
         int tile_x = 0;
         int tile_y = 0;
-        int val    = 0;
+        int val = 0;
 
         for (i = 0; i < pps->num_tile_columns; i++) {
             if (tb_x < pps->col_bd[i + 1]) {
@@ -115,7 +115,7 @@ __attribute__((used)) static inline int setup_pps(AVCodecContext *avctx, GetBitC
                tb_x - pps->col_bd[tile_x];
 
         pps->ctb_addr_rs_to_ts[ctb_addr_rs] = val;
-        pps->ctb_addr_ts_to_rs[val]         = ctb_addr_rs;
+        pps->ctb_addr_ts_to_rs[val] = ctb_addr_rs;
     }
 
     for (j = 0, tile_id = 0; j < pps->num_tile_rows; j++)
@@ -137,14 +137,14 @@ __attribute__((used)) static inline int setup_pps(AVCodecContext *avctx, GetBitC
     pps->min_tb_addr_zs = &pps->min_tb_addr_zs_tab[1*(sps->tb_mask+2)+1];
     for (y = 0; y < sps->tb_mask+2; y++) {
         pps->min_tb_addr_zs_tab[y*(sps->tb_mask+2)] = -1;
-        pps->min_tb_addr_zs_tab[y]    = -1;
+        pps->min_tb_addr_zs_tab[y] = -1;
     }
     for (y = 0; y < sps->tb_mask+1; y++) {
         for (x = 0; x < sps->tb_mask+1; x++) {
             int tb_x = x >> log2_diff;
             int tb_y = y >> log2_diff;
-            int rs   = sps->ctb_width * tb_y + tb_x;
-            int val  = pps->ctb_addr_rs_to_ts[rs] << (log2_diff * 2);
+            int rs = sps->ctb_width * tb_y + tb_x;
+            int val = pps->ctb_addr_rs_to_ts[rs] << (log2_diff * 2);
             for (i = 0; i < log2_diff; i++) {
                 int m = 1 << i;
                 val += (m & x ? m * m : 0) + (m & y ? 2 * m * m : 0);

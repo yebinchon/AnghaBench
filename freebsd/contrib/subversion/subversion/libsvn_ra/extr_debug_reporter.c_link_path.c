@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct report_baton {int /*<<< orphan*/  wrapped_report_baton; TYPE_1__* wrapped_reporter; int /*<<< orphan*/  out; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* link_path ) (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOOLEAN_TO_WORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_to_word (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_printf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_boolean_t ;
+struct report_baton {int wrapped_report_baton; TYPE_1__* wrapped_reporter; int out; } ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int (* link_path ) (int ,char const*,char const*,int ,int ,int ,char const*,int *) ;} ;
+
+
+ int BOOLEAN_TO_WORD (int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int stub1 (int ,char const*,char const*,int ,int ,int ,char const*,int *) ;
+ int svn_depth_to_word (int ) ;
+ int svn_stream_printf (int ,int *,char*,char const*,char const*,int ,int ,int ,char const*) ;
 
 __attribute__((used)) static svn_error_t *
 link_path(void *report_baton,

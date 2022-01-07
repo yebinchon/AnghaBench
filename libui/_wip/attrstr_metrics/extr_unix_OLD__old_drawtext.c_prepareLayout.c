@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  attrs; int /*<<< orphan*/  defaultFont; } ;
-typedef  TYPE_1__ uiDrawTextLayout ;
-typedef  int /*<<< orphan*/  PangoLayout ;
 
-/* Variables and functions */
- int /*<<< orphan*/  desc ; 
- int /*<<< orphan*/  pango_font_describe (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pango_layout_set_attributes (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int attrs; int defaultFont; } ;
+typedef TYPE_1__ uiDrawTextLayout ;
+typedef int PangoLayout ;
+
+
+ int desc ;
+ int pango_font_describe (int ) ;
+ int pango_layout_set_attributes (int *,int ) ;
 
 __attribute__((used)) static void prepareLayout(uiDrawTextLayout *layout, PangoLayout *pl)
 {
-	// again, this makes a copy
-	desc = pango_font_describe(layout->defaultFont);
 
-	pango_layout_set_attributes(pl, layout->attrs);
+ desc = pango_font_describe(layout->defaultFont);
+
+ pango_layout_set_attributes(pl, layout->attrs);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ av_get_extended_channel_layout (char const*,scalar_t__*,int*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+typedef scalar_t__ int64_t ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ scalar_t__ av_get_extended_channel_layout (char const*,scalar_t__*,int*) ;
+ int av_log (void*,int ,char*,char const*) ;
 
 int ff_parse_channel_layout(int64_t *ret, int *nret, const char *arg,
                             void *log_ctx)

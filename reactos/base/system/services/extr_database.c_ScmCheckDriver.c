@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int ULONG ;
-struct TYPE_12__ {int /*<<< orphan*/  Buffer; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int ULONG ;
+struct TYPE_12__ {int Buffer; } ;
 struct TYPE_14__ {TYPE_3__ Name; } ;
-struct TYPE_10__ {scalar_t__ dwServiceType; scalar_t__ dwWaitHint; scalar_t__ dwCheckPoint; scalar_t__ dwServiceSpecificExitCode; int /*<<< orphan*/  dwWin32ExitCode; int /*<<< orphan*/  dwControlsAccepted; int /*<<< orphan*/  dwCurrentState; } ;
-struct TYPE_13__ {TYPE_2__* lpGroup; TYPE_1__ Status; int /*<<< orphan*/  lpServiceName; } ;
+struct TYPE_10__ {scalar_t__ dwServiceType; scalar_t__ dwWaitHint; scalar_t__ dwCheckPoint; scalar_t__ dwServiceSpecificExitCode; int dwWin32ExitCode; int dwControlsAccepted; int dwCurrentState; } ;
+struct TYPE_13__ {TYPE_2__* lpGroup; TYPE_1__ Status; int lpServiceName; } ;
 struct TYPE_11__ {scalar_t__ ServicesRunning; } ;
-typedef  TYPE_4__* PSERVICE ;
-typedef  TYPE_5__* POBJECT_DIRECTORY_INFORMATION ;
-typedef  int /*<<< orphan*/  OBJECT_DIRECTORY_INFORMATION ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
+typedef TYPE_4__* PSERVICE ;
+typedef TYPE_5__* POBJECT_DIRECTORY_INFORMATION ;
+typedef int OBJECT_DIRECTORY_INFORMATION ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef int HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int DIRECTORY_QUERY ; 
- int DIRECTORY_TRAVERSE ; 
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_5__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  NT_SUCCESS (scalar_t__) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- scalar_t__ NtOpenDirectoryObject (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ NtQueryDirectoryObject (int /*<<< orphan*/ ,TYPE_5__*,int,scalar_t__,int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SERVICE_ACCEPT_STOP ; 
- scalar_t__ SERVICE_FILE_SYSTEM_DRIVER ; 
- scalar_t__ SERVICE_KERNEL_DRIVER ; 
- int /*<<< orphan*/  SERVICE_RUNNING ; 
- scalar_t__ STATUS_NO_MORE_ENTRIES ; 
- scalar_t__ STATUS_SUCCESS ; 
- scalar_t__ TRUE ; 
- scalar_t__ _wcsicmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int DIRECTORY_QUERY ;
+ int DIRECTORY_TRAVERSE ;
+ int DPRINT (char*,int ,...) ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_5__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_5__*) ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int MAX_PATH ;
+ int NT_SUCCESS (scalar_t__) ;
+ int NtClose (int ) ;
+ scalar_t__ NtOpenDirectoryObject (int *,int,int *) ;
+ scalar_t__ NtQueryDirectoryObject (int ,TYPE_5__*,int,scalar_t__,int ,int*,int*) ;
+ int RtlInitUnicodeString (int *,char*) ;
+ int SERVICE_ACCEPT_STOP ;
+ scalar_t__ SERVICE_FILE_SYSTEM_DRIVER ;
+ scalar_t__ SERVICE_KERNEL_DRIVER ;
+ int SERVICE_RUNNING ;
+ scalar_t__ STATUS_NO_MORE_ENTRIES ;
+ scalar_t__ STATUS_SUCCESS ;
+ scalar_t__ TRUE ;
+ scalar_t__ _wcsicmp (int ,int ) ;
 
 __attribute__((used)) static NTSTATUS
 ScmCheckDriver(PSERVICE Service)
@@ -75,7 +75,7 @@ ScmCheckDriver(PSERVICE Service)
     {
         RtlInitUnicodeString(&DirName, L"\\Driver");
     }
-    else // if (Service->Status.dwServiceType == SERVICE_FILE_SYSTEM_DRIVER)
+    else
     {
         ASSERT(Service->Status.dwServiceType == SERVICE_FILE_SYSTEM_DRIVER);
         RtlInitUnicodeString(&DirName, L"\\FileSystem");
@@ -84,8 +84,8 @@ ScmCheckDriver(PSERVICE Service)
     InitializeObjectAttributes(&ObjectAttributes,
                                &DirName,
                                0,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0));
 
     Status = NtOpenDirectoryObject(&DirHandle,
                                    DIRECTORY_QUERY | DIRECTORY_TRAVERSE,
@@ -113,7 +113,7 @@ ScmCheckDriver(PSERVICE Service)
                                         &DataLength);
         if (Status == STATUS_NO_MORE_ENTRIES)
         {
-            /* FIXME: Add current service to 'failed service' list */
+
             DPRINT("Service '%S' failed\n", Service->lpServiceName);
             break;
         }
@@ -128,7 +128,7 @@ ScmCheckDriver(PSERVICE Service)
             DPRINT("Found: '%S'  '%wZ'\n",
                    Service->lpServiceName, &DirInfo->Name);
 
-            /* Mark service as 'running' */
+
             Service->Status.dwCurrentState = SERVICE_RUNNING;
             Service->Status.dwControlsAccepted = SERVICE_ACCEPT_STOP;
             Service->Status.dwWin32ExitCode = ERROR_SUCCESS;
@@ -136,8 +136,8 @@ ScmCheckDriver(PSERVICE Service)
             Service->Status.dwCheckPoint = 0;
             Service->Status.dwWaitHint = 0;
 
-            /* Mark the service group as 'running' */
-            if (Service->lpGroup != NULL)
+
+            if (Service->lpGroup != ((void*)0))
             {
                 Service->lpGroup->ServicesRunning = TRUE;
             }

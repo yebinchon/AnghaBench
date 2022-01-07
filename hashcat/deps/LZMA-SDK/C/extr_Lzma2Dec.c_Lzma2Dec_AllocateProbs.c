@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  decoder; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  TYPE_1__ CLzma2Dec ;
-typedef  int /*<<< orphan*/  Byte ;
 
-/* Variables and functions */
- int LZMA_PROPS_SIZE ; 
- int /*<<< orphan*/  Lzma2Dec_GetOldProps (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaDec_AllocateProbs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int decoder; } ;
+typedef int SRes ;
+typedef int ISzAllocPtr ;
+typedef TYPE_1__ CLzma2Dec ;
+typedef int Byte ;
+
+
+ int LZMA_PROPS_SIZE ;
+ int Lzma2Dec_GetOldProps (int ,int *) ;
+ int LzmaDec_AllocateProbs (int *,int *,int,int ) ;
+ int RINOK (int ) ;
 
 SRes Lzma2Dec_AllocateProbs(CLzma2Dec *p, Byte prop, ISzAllocPtr alloc)
 {

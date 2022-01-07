@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int MIN (size_t,int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+ unsigned int MIN (size_t,int) ;
+ int fflush (int ) ;
+ int printf (char*,...) ;
+ int stdout ;
 
 __attribute__((used)) static void cdrom_print_sense_data(const unsigned char *sense, size_t len)
 {
    unsigned i;
-   const char *sense_key_text = NULL;
+   const char *sense_key_text = ((void*)0);
    unsigned char key;
    unsigned char asc;
    unsigned char ascq;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ldns_status ;
-typedef  int /*<<< orphan*/  ldns_resolver ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
-typedef  scalar_t__ ldns_pkt_rcode ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- scalar_t__ LDNS_RCODE_NOERROR ; 
- scalar_t__ LDNS_RCODE_SERVFAIL ; 
- int /*<<< orphan*/  LDNS_RD ; 
- scalar_t__ LDNS_STATUS_OK ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ ldns_pkt_get_rcode (int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_pkt_tc (int /*<<< orphan*/ *) ; 
- int ldns_resolver_nameserver_count (int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_resolver_send_to (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ldns_resolver_set_usevc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_resolver_usevc (int /*<<< orphan*/ *) ; 
- scalar_t__ o_ignore_servfail ; 
- int /*<<< orphan*/  o_ixfr_serial ; 
- scalar_t__ o_recursive ; 
- int /*<<< orphan*/  o_rrclass ; 
- int /*<<< orphan*/  o_rrtype ; 
- scalar_t__ o_verbose ; 
- int /*<<< orphan*/  print_rdf_nodot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef scalar_t__ ldns_status ;
+typedef int ldns_resolver ;
+typedef int ldns_rdf ;
+typedef scalar_t__ ldns_pkt_rcode ;
+typedef int ldns_pkt ;
+
+
+ scalar_t__ LDNS_RCODE_NOERROR ;
+ scalar_t__ LDNS_RCODE_SERVFAIL ;
+ int LDNS_RD ;
+ scalar_t__ LDNS_STATUS_OK ;
+ int exit (int) ;
+ scalar_t__ ldns_pkt_get_rcode (int *) ;
+ scalar_t__ ldns_pkt_tc (int *) ;
+ int ldns_resolver_nameserver_count (int *) ;
+ scalar_t__ ldns_resolver_send_to (int **,int *,int *,int ,int ,int ,int ,int,int) ;
+ int ldns_resolver_set_usevc (int *,int) ;
+ int ldns_resolver_usevc (int *) ;
+ scalar_t__ o_ignore_servfail ;
+ int o_ixfr_serial ;
+ scalar_t__ o_recursive ;
+ int o_rrclass ;
+ int o_rrtype ;
+ scalar_t__ o_verbose ;
+ int print_rdf_nodot (int *) ;
+ int printf (char*) ;
 
 __attribute__((used)) static bool
 query(ldns_resolver *res, ldns_rdf *domain, ldns_pkt **pkt, bool close_tcp) {
@@ -53,17 +53,17 @@ query(ldns_resolver *res, ldns_rdf *domain, ldns_pkt **pkt, bool close_tcp) {
             o_rrclass, o_recursive ? LDNS_RD : 0, o_ixfr_serial, i,
             close_tcp);
         if (status != LDNS_STATUS_OK) {
-            *pkt = NULL;
+            *pkt = ((void*)0);
             continue;
         }
         if (ldns_pkt_tc(*pkt) && !ldns_resolver_usevc(res)) {
             if (o_verbose)
                 printf(";; Truncated, retrying in TCP mode.\n");
-            ldns_resolver_set_usevc(res, true);
+            ldns_resolver_set_usevc(res, 1);
             status = ldns_resolver_send_to(pkt, res, domain, o_rrtype,
                 o_rrclass, o_recursive ? LDNS_RD : 0, o_ixfr_serial, i,
                 close_tcp);
-            ldns_resolver_set_usevc(res, false);
+            ldns_resolver_set_usevc(res, 0);
             if (status != LDNS_STATUS_OK)
                 continue;
         }
@@ -72,9 +72,9 @@ query(ldns_resolver *res, ldns_rdf *domain, ldns_pkt **pkt, bool close_tcp) {
             continue;
         return rcode == LDNS_RCODE_NOERROR;
     }
-    if (*pkt == NULL) {
+    if (*pkt == ((void*)0)) {
         printf(";; connection timed out; no servers could be reached\n");
         exit(1);
     }
-    return false;
+    return 0;
 }

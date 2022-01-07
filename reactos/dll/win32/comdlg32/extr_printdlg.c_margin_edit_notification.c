@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pagesetup_data ;
-typedef  int WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
-#define  EN_CHANGE 129 
-#define  EN_KILLFOCUS 128 
- int /*<<< orphan*/  GetDlgItemTextW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int* element_from_margin_id (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  get_decimal_sep () ; 
- int /*<<< orphan*/  is_metric (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  iswdigit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pagesetup_get_margin_rect (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  update_margin_edits (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- int wcstol (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
+
+
+
+typedef int pagesetup_data ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef int LONG ;
+typedef int HWND ;
+
+
+ int ARRAY_SIZE (int *) ;
+
+
+ int GetDlgItemTextW (int ,int,int *,int ) ;
+ int* element_from_margin_id (int ,int) ;
+ int get_decimal_sep () ;
+ int is_metric (int const*) ;
+ int iswdigit (int ) ;
+ int pagesetup_get_margin_rect (int const*) ;
+ int update_margin_edits (int ,int const*,int) ;
+ int wcstol (int *,int **,int) ;
 
 __attribute__((used)) static void margin_edit_notification(HWND hDlg, const pagesetup_data *data, WORD msg, WORD id)
 {
     switch (msg)
     {
-    case EN_CHANGE:
+    case 129:
       {
         WCHAR buf[10];
         LONG val = 0;
@@ -67,7 +67,7 @@ __attribute__((used)) static void margin_edit_notification(HWND hDlg, const page
         return;
       }
 
-    case EN_KILLFOCUS:
+    case 128:
         update_margin_edits(hDlg, data, id);
         return;
     }

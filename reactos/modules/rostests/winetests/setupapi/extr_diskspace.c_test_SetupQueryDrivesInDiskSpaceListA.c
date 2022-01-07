@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/ * HDSKSPC ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  FILEOP_COPY ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SPDSL_IGNORE_DISK ; 
- int SetupAddToDiskSpaceListA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SetupCreateDiskSpaceListA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SetupDestroyDiskSpaceList (int /*<<< orphan*/ *) ; 
- int SetupQueryDrivesInDiskSpaceListA (int /*<<< orphan*/ *,char*,int,int*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int buffer ;
+typedef int * HDSKSPC ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int FILEOP_COPY ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int SPDSL_IGNORE_DISK ;
+ int SetupAddToDiskSpaceListA (int *,char*,int ,int ,int ,int ) ;
+ int * SetupCreateDiskSpaceListA (int *,int ,int ) ;
+ int SetupDestroyDiskSpaceList (int *) ;
+ int SetupQueryDrivesInDiskSpaceListA (int *,char*,int,int*) ;
+ int memcmp (char*,char*,int) ;
+ int memset (char*,int,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_SetupQueryDrivesInDiskSpaceListA(void)
 {
@@ -36,14 +36,14 @@ __attribute__((used)) static void test_SetupQueryDrivesInDiskSpaceListA(void)
     DWORD size;
     BOOL ret;
 
-    handle = SetupCreateDiskSpaceListA(NULL, 0, SPDSL_IGNORE_DISK);
-    ok(handle != NULL,"Expected SetupCreateDiskSpaceListA to return a valid handle\n");
+    handle = SetupCreateDiskSpaceListA(((void*)0), 0, SPDSL_IGNORE_DISK);
+    ok(handle != ((void*)0),"Expected SetupCreateDiskSpaceListA to return a valid handle\n");
 
-    ret = SetupQueryDrivesInDiskSpaceListA(handle, NULL, 0, NULL);
+    ret = SetupQueryDrivesInDiskSpaceListA(handle, ((void*)0), 0, ((void*)0));
     ok(ret, "Expected SetupQueryDrivesInDiskSpaceListA to succeed\n");
 
     size = 0;
-    ret = SetupQueryDrivesInDiskSpaceListA(handle, NULL, 0, &size);
+    ret = SetupQueryDrivesInDiskSpaceListA(handle, ((void*)0), 0, &size);
     ok(ret, "Expected SetupQueryDrivesInDiskSpaceListA to succeed\n");
     ok(size == 1, "Expected size 1, got %u\n", size);
 
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_SetupQueryDrivesInDiskSpaceListA(void)
     ok(ret, "Expected SetupAddToDiskSpaceListA to succeed\n");
 
     size = 0;
-    ret = SetupQueryDrivesInDiskSpaceListA(handle, NULL, 0, &size);
+    ret = SetupQueryDrivesInDiskSpaceListA(handle, ((void*)0), 0, &size);
     ok(ret, "Expected SetupQueryDrivesInDiskSpaceListA to succeed\n");
     ok(size == 10, "Expected size 10, got %u\n", size);
 
@@ -93,7 +93,7 @@ __attribute__((used)) static void test_SetupQueryDrivesInDiskSpaceListA(void)
     ok(!memcmp("f:\0g:\0x:\0\0", buffer, 10), "Device list does not match\n");
 
     memset(buffer, 0xff, sizeof(buffer));
-    ret = SetupQueryDrivesInDiskSpaceListA(handle, buffer, sizeof(buffer), NULL);
+    ret = SetupQueryDrivesInDiskSpaceListA(handle, buffer, sizeof(buffer), ((void*)0));
     ok(ret, "Expected SetupQueryDrivesInDiskSpaceListA to succeed\n");
     ok(!memcmp("f:\0g:\0x:\0\0", buffer, 10), "Device list does not match\n");
 

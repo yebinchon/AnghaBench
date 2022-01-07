@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_int_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * p_libvlc_int; } ;
-typedef  TYPE_1__ libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_address (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_booleans (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_callbacks (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_change (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_choices (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_creation_and_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_floats (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_fracts (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_integer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_limits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_log (char*) ; 
- int /*<<< orphan*/  test_strings (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int libvlc_int_t ;
+struct TYPE_3__ {int * p_libvlc_int; } ;
+typedef TYPE_1__ libvlc_instance_t ;
+
+
+ int srand (int ) ;
+ int test_address (int *) ;
+ int test_booleans (int *) ;
+ int test_callbacks (int *) ;
+ int test_change (int *) ;
+ int test_choices (int *) ;
+ int test_creation_and_type (int *) ;
+ int test_floats (int *) ;
+ int test_fracts (int *) ;
+ int test_integer (int *) ;
+ int test_limits (int *) ;
+ int test_log (char*) ;
+ int test_strings (int *) ;
+ int time (int *) ;
 
 __attribute__((used)) static void test_variables( libvlc_instance_t *p_vlc )
 {
     libvlc_int_t *p_libvlc = p_vlc->p_libvlc_int;
-    srand( time( NULL ) );
+    srand( time( ((void*)0) ) );
 
     test_log( "Testing for integers\n" );
     test_integer( p_libvlc );

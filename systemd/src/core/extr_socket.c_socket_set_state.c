@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ state; int /*<<< orphan*/  control_command_id; int /*<<< orphan*/ * control_command; int /*<<< orphan*/  timer_event_source; } ;
-typedef  scalar_t__ SocketState ;
-typedef  TYPE_1__ Socket ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  SOCKET_CLEANING ; 
- int /*<<< orphan*/  SOCKET_FINAL_SIGKILL ; 
- int /*<<< orphan*/  SOCKET_FINAL_SIGTERM ; 
- scalar_t__ SOCKET_LISTENING ; 
- int /*<<< orphan*/  SOCKET_RUNNING ; 
- int /*<<< orphan*/  SOCKET_START_CHOWN ; 
- int /*<<< orphan*/  SOCKET_START_POST ; 
- int /*<<< orphan*/  SOCKET_START_PRE ; 
- int /*<<< orphan*/  SOCKET_STOP_POST ; 
- int /*<<< orphan*/  SOCKET_STOP_PRE ; 
- int /*<<< orphan*/  SOCKET_STOP_PRE_SIGKILL ; 
- int /*<<< orphan*/  SOCKET_STOP_PRE_SIGTERM ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  _SOCKET_EXEC_COMMAND_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_unit_send_pending_change_signal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_unit_debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  socket_close_fds (TYPE_1__*) ; 
- int /*<<< orphan*/  socket_state_to_string (scalar_t__) ; 
- int /*<<< orphan*/  socket_unwatch_control_pid (TYPE_1__*) ; 
- int /*<<< orphan*/  socket_unwatch_fds (TYPE_1__*) ; 
- int /*<<< orphan*/ * state_translation_table ; 
- int /*<<< orphan*/  unit_notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ state; int control_command_id; int * control_command; int timer_event_source; } ;
+typedef scalar_t__ SocketState ;
+typedef TYPE_1__ Socket ;
+
+
+ int IN_SET (scalar_t__,int ,int ,scalar_t__,int ,int ,int ,int ,int ,...) ;
+ int SOCKET_CLEANING ;
+ int SOCKET_FINAL_SIGKILL ;
+ int SOCKET_FINAL_SIGTERM ;
+ scalar_t__ SOCKET_LISTENING ;
+ int SOCKET_RUNNING ;
+ int SOCKET_START_CHOWN ;
+ int SOCKET_START_POST ;
+ int SOCKET_START_PRE ;
+ int SOCKET_STOP_POST ;
+ int SOCKET_STOP_PRE ;
+ int SOCKET_STOP_PRE_SIGKILL ;
+ int SOCKET_STOP_PRE_SIGTERM ;
+ int UNIT (TYPE_1__*) ;
+ int _SOCKET_EXEC_COMMAND_INVALID ;
+ int assert (TYPE_1__*) ;
+ int bus_unit_send_pending_change_signal (int ,int) ;
+ int log_unit_debug (int ,char*,int ,int ) ;
+ int sd_event_source_unref (int ) ;
+ int socket_close_fds (TYPE_1__*) ;
+ int socket_state_to_string (scalar_t__) ;
+ int socket_unwatch_control_pid (TYPE_1__*) ;
+ int socket_unwatch_fds (TYPE_1__*) ;
+ int * state_translation_table ;
+ int unit_notify (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void socket_set_state(Socket *s, SocketState state) {
         SocketState old_state;
         assert(s);
 
         if (s->state != state)
-                bus_unit_send_pending_change_signal(UNIT(s), false);
+                bus_unit_send_pending_change_signal(UNIT(s), 0);
 
         old_state = s->state;
         s->state = state;
@@ -66,7 +66,7 @@ __attribute__((used)) static void socket_set_state(Socket *s, SocketState state)
 
                 s->timer_event_source = sd_event_source_unref(s->timer_event_source);
                 socket_unwatch_control_pid(s);
-                s->control_command = NULL;
+                s->control_command = ((void*)0);
                 s->control_command_id = _SOCKET_EXEC_COMMAND_INVALID;
         }
 

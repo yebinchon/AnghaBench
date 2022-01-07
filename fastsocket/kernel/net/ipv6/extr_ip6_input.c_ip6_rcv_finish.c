@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
 
-/* Variables and functions */
- int dst_input (struct sk_buff*) ; 
- int /*<<< orphan*/  ip6_route_input (struct sk_buff*) ; 
- int /*<<< orphan*/ * skb_dst (struct sk_buff*) ; 
+
+ int dst_input (struct sk_buff*) ;
+ int ip6_route_input (struct sk_buff*) ;
+ int * skb_dst (struct sk_buff*) ;
 
 inline int ip6_rcv_finish( struct sk_buff *skb)
 {
-	if (skb_dst(skb) == NULL)
-		ip6_route_input(skb);
+ if (skb_dst(skb) == ((void*)0))
+  ip6_route_input(skb);
 
-	return dst_input(skb);
+ return dst_input(skb);
 }

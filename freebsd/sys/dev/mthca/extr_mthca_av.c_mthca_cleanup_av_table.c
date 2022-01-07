@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  alloc; int /*<<< orphan*/  pool; scalar_t__ av_map; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int alloc; int pool; scalar_t__ av_map; } ;
 struct mthca_dev {TYPE_1__ av_table; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iounmap (scalar_t__) ; 
- int /*<<< orphan*/  mthca_alloc_cleanup (int /*<<< orphan*/ *) ; 
- scalar_t__ mthca_is_memfree (struct mthca_dev*) ; 
- int /*<<< orphan*/  pci_pool_destroy (int /*<<< orphan*/ ) ; 
+
+ int iounmap (scalar_t__) ;
+ int mthca_alloc_cleanup (int *) ;
+ scalar_t__ mthca_is_memfree (struct mthca_dev*) ;
+ int pci_pool_destroy (int ) ;
 
 void mthca_cleanup_av_table(struct mthca_dev *dev)
 {
-	if (mthca_is_memfree(dev))
-		return;
+ if (mthca_is_memfree(dev))
+  return;
 
-	if (dev->av_table.av_map)
-		iounmap(dev->av_table.av_map);
-	pci_pool_destroy(dev->av_table.pool);
-	mthca_alloc_cleanup(&dev->av_table.alloc);
+ if (dev->av_table.av_map)
+  iounmap(dev->av_table.av_map);
+ pci_pool_destroy(dev->av_table.pool);
+ mthca_alloc_cleanup(&dev->av_table.alloc);
 }

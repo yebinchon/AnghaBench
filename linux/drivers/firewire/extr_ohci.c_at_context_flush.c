@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct context {int flushing; int /*<<< orphan*/  tasklet; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  context_tasklet (unsigned long) ; 
- int /*<<< orphan*/  tasklet_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_enable (int /*<<< orphan*/ *) ; 
+
+
+
+struct context {int flushing; int tasklet; } ;
+
+
+ int context_tasklet (unsigned long) ;
+ int tasklet_disable (int *) ;
+ int tasklet_enable (int *) ;
 
 __attribute__((used)) static void at_context_flush(struct context *ctx)
 {
-	tasklet_disable(&ctx->tasklet);
+ tasklet_disable(&ctx->tasklet);
 
-	ctx->flushing = true;
-	context_tasklet((unsigned long)ctx);
-	ctx->flushing = false;
+ ctx->flushing = 1;
+ context_tasklet((unsigned long)ctx);
+ ctx->flushing = 0;
 
-	tasklet_enable(&ctx->tasklet);
+ tasklet_enable(&ctx->tasklet);
 }

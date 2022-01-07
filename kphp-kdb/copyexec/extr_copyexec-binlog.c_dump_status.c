@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_copyexec_main_transaction_status {int type; int transaction_id; int /*<<< orphan*/  st_ino; int /*<<< orphan*/  st_dev; int /*<<< orphan*/  result; int /*<<< orphan*/  creation_time; int /*<<< orphan*/  pid; int /*<<< orphan*/  mask; int /*<<< orphan*/  binlog_pos; } ;
 
-/* Variables and functions */
- scalar_t__ dump_line_header (char*) ; 
- int /*<<< orphan*/  dump_result (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_ts (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  out ; 
+
+
+
+struct lev_copyexec_main_transaction_status {int type; int transaction_id; int st_ino; int st_dev; int result; int creation_time; int pid; int mask; int binlog_pos; } ;
+
+
+ scalar_t__ dump_line_header (char*) ;
+ int dump_result (int,int ) ;
+ int dump_ts (int) ;
+ int fprintf (int ,char*,int,int ,...) ;
+ int out ;
 
 void dump_status (struct lev_copyexec_main_transaction_status *E) {
   int status = E->type & 255;

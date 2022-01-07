@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_video_context ;
-struct TYPE_5__ {scalar_t__ type; int /*<<< orphan*/ * opaque; } ;
-typedef  TYPE_1__ vlc_decoder_device ;
-typedef  int /*<<< orphan*/  d3d11_decoder_device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetD3D11OpaqueDevice (TYPE_1__*) ; 
- scalar_t__ VLC_DECODER_DEVICE_D3D11VA ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_decoder_device_Release (TYPE_1__*) ; 
- TYPE_1__* vlc_video_context_HoldDevice (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_video_context ;
+struct TYPE_5__ {scalar_t__ type; int * opaque; } ;
+typedef TYPE_1__ vlc_decoder_device ;
+typedef int d3d11_decoder_device_t ;
+
+
+ int * GetD3D11OpaqueDevice (TYPE_1__*) ;
+ scalar_t__ VLC_DECODER_DEVICE_D3D11VA ;
+ int assert (int ) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_decoder_device_Release (TYPE_1__*) ;
+ TYPE_1__* vlc_video_context_HoldDevice (int *) ;
 
 __attribute__((used)) static inline d3d11_decoder_device_t *GetD3D11OpaqueContext(vlc_video_context *vctx)
 {
-    vlc_decoder_device *device = vctx ? vlc_video_context_HoldDevice(vctx) : NULL;
-    if (unlikely(device == NULL))
-        return NULL;
-    d3d11_decoder_device_t *res = NULL;
+    vlc_decoder_device *device = vctx ? vlc_video_context_HoldDevice(vctx) : ((void*)0);
+    if (unlikely(device == ((void*)0)))
+        return ((void*)0);
+    d3d11_decoder_device_t *res = ((void*)0);
     if (device->type == VLC_DECODER_DEVICE_D3D11VA)
     {
-        assert(device->opaque != NULL);
+        assert(device->opaque != ((void*)0));
         res = GetD3D11OpaqueDevice(device);
     }
     vlc_decoder_device_Release(device);

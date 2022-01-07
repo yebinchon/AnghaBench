@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct arch_hw_breakpoint {int /*<<< orphan*/  address; } ;
 
-/* Variables and functions */
- int is_kernel_addr (int /*<<< orphan*/ ) ; 
+
+
+
+struct arch_hw_breakpoint {int address; } ;
+
+
+ int is_kernel_addr (int ) ;
 
 int arch_check_bp_in_kernelspace(struct arch_hw_breakpoint *hw)
 {
-	return is_kernel_addr(hw->address);
+ return is_kernel_addr(hw->address);
 }

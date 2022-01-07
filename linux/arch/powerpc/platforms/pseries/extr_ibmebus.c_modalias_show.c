@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  of_device_modalias (struct device*,char*,int /*<<< orphan*/ ) ; 
+
+ int PAGE_SIZE ;
+ int of_device_modalias (struct device*,char*,int ) ;
 
 __attribute__((used)) static ssize_t modalias_show(struct device *dev,
-				struct device_attribute *attr, char *buf)
+    struct device_attribute *attr, char *buf)
 {
-	return of_device_modalias(dev, buf, PAGE_SIZE);
+ return of_device_modalias(dev, buf, PAGE_SIZE);
 }

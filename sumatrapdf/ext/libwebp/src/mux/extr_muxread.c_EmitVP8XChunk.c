@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-typedef  size_t uint32_t ;
 
-/* Variables and functions */
- size_t CHUNK_HEADER_SIZE ; 
- int MAX_CANVAS_SIZE ; 
- int MAX_IMAGE_AREA ; 
- size_t MKFOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  PutLE24 (int /*<<< orphan*/ * const,int) ; 
- int /*<<< orphan*/  PutLE32 (int /*<<< orphan*/ * const,size_t) ; 
- int TAG_SIZE ; 
- size_t VP8X_CHUNK_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef size_t uint32_t ;
+
+
+ size_t CHUNK_HEADER_SIZE ;
+ int MAX_CANVAS_SIZE ;
+ int MAX_IMAGE_AREA ;
+ size_t MKFOURCC (char,char,char,char) ;
+ int PutLE24 (int * const,int) ;
+ int PutLE32 (int * const,size_t) ;
+ int TAG_SIZE ;
+ size_t VP8X_CHUNK_SIZE ;
+ int assert (int) ;
 
 __attribute__((used)) static uint8_t* EmitVP8XChunk(uint8_t* const dst, int width,
                               int height, uint32_t flags) {

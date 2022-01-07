@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  CMS_ContentInfo ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (char*,char*) ; 
- int /*<<< orphan*/  BIO_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMS_ContentInfo_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMS_decrypt (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_load_crypto_strings () ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenSSL_add_all_algorithms () ; 
- int /*<<< orphan*/ * PEM_read_bio_CMS (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PEM_read_bio_PrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int X509 ;
+typedef int EVP_PKEY ;
+typedef int CMS_ContentInfo ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new_file (char*,char*) ;
+ int BIO_reset (int *) ;
+ int CMS_ContentInfo_free (int *) ;
+ int CMS_decrypt (int *,int *,int *,int *,int *,int ) ;
+ int ERR_load_crypto_strings () ;
+ int ERR_print_errors_fp (int ) ;
+ int EVP_PKEY_free (int *) ;
+ int OpenSSL_add_all_algorithms () ;
+ int * PEM_read_bio_CMS (int *,int *,int ,int *) ;
+ int * PEM_read_bio_PrivateKey (int *,int *,int ,int *) ;
+ int * PEM_read_bio_X509 (int *,int *,int ,int *) ;
+ int X509_free (int *) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
-    BIO *in = NULL, *out = NULL, *tbio = NULL, *dcont = NULL;
-    X509 *rcert = NULL;
-    EVP_PKEY *rkey = NULL;
-    CMS_ContentInfo *cms = NULL;
+    BIO *in = ((void*)0), *out = ((void*)0), *tbio = ((void*)0), *dcont = ((void*)0);
+    X509 *rcert = ((void*)0);
+    EVP_PKEY *rkey = ((void*)0);
+    CMS_ContentInfo *cms = ((void*)0);
     int ret = 1;
 
     OpenSSL_add_all_algorithms();
     ERR_load_crypto_strings();
 
-    /* Read in recipient certificate and private key */
+
     tbio = BIO_new_file("signer.pem", "r");
 
     if (!tbio)
         goto err;
 
-    rcert = PEM_read_bio_X509(tbio, NULL, 0, NULL);
+    rcert = PEM_read_bio_X509(tbio, ((void*)0), 0, ((void*)0));
 
     BIO_reset(tbio);
 
-    rkey = PEM_read_bio_PrivateKey(tbio, NULL, 0, NULL);
+    rkey = PEM_read_bio_PrivateKey(tbio, ((void*)0), 0, ((void*)0));
 
     if (!rcert || !rkey)
         goto err;
 
-    /* Open PEM file containing enveloped data */
+
 
     in = BIO_new_file("smencr.pem", "r");
 
     if (!in)
         goto err;
 
-    /* Parse PEM content */
-    cms = PEM_read_bio_CMS(in, NULL, 0, NULL);
+
+    cms = PEM_read_bio_CMS(in, ((void*)0), 0, ((void*)0));
 
     if (!cms)
         goto err;
 
-    /* Open file containing detached content */
+
     dcont = BIO_new_file("smencr.out", "rb");
 
     if (!in)
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
     if (!out)
         goto err;
 
-    /* Decrypt S/MIME message */
+
     if (!CMS_decrypt(cms, rkey, rcert, dcont, out, 0))
         goto err;
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ z; scalar_t__ x; int /*<<< orphan*/  ry; int /*<<< orphan*/  rx; int /*<<< orphan*/  y; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ z; scalar_t__ x; int ry; int rx; int y; } ;
 struct TYPE_5__ {TYPE_1__ state; } ;
-typedef  TYPE_1__ State ;
-typedef  TYPE_2__ Player ;
+typedef TYPE_1__ State ;
+typedef TYPE_2__ Player ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEGREES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atan2f (scalar_t__,scalar_t__) ; 
- int hit_test (int,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int*) ; 
- scalar_t__ is_obstacle (int) ; 
- int roundf (int /*<<< orphan*/ ) ; 
+
+ int DEGREES (int ) ;
+ int atan2f (scalar_t__,scalar_t__) ;
+ int hit_test (int,scalar_t__,int ,scalar_t__,int ,int ,int*,int*,int*) ;
+ scalar_t__ is_obstacle (int) ;
+ int roundf (int ) ;
 
 int hit_test_face(Player *player, int *x, int *y, int *z, int *face) {
     State *s = &player->state;

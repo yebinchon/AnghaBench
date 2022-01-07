@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  object_id_t ;
-struct TYPE_2__ {long cur_pos; int /*<<< orphan*/  RData; int /*<<< orphan*/  eof; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CUR_REVLIST_OBJECT_ID ; 
- scalar_t__ advance_revlist_iterator () ; 
- int /*<<< orphan*/  init_revlist_iterator (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  object_id_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ revlist_iterator ; 
- scalar_t__ revlist_metafile_mode ; 
- int /*<<< orphan*/  sort_revlist_part (int /*<<< orphan*/ ,long,int) ; 
- int tot_revlist_metafiles ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int object_id_t ;
+struct TYPE_2__ {long cur_pos; int RData; int eof; } ;
+
+
+ int CUR_REVLIST_OBJECT_ID ;
+ scalar_t__ advance_revlist_iterator () ;
+ int init_revlist_iterator (int,int ) ;
+ int object_id_equal (int ,int ) ;
+ TYPE_1__ revlist_iterator ;
+ scalar_t__ revlist_metafile_mode ;
+ int sort_revlist_part (int ,long,int) ;
+ int tot_revlist_metafiles ;
 
 void resort_revlist (void) {
   int cur_metafile;
@@ -47,9 +47,9 @@ void resort_revlist (void) {
     }
     cur_metafile ++;
   }
-/*  for (i = 0; i < 1980 && i < idx_list_entries; i++) { 
-    fprintf (stderr, "old revlist: entry(%d)=" idout "#" idout "\n",
-      i, out_object_id (REVLIST_OBJECT_ID(i)), out_list_id (REVLIST_LIST_ID(i)));
-  }*/
+
+
+
+
 
 }

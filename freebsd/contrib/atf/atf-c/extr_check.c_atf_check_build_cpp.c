@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atf_build_cpp (char const*,char const*,char const* const*,char***) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_utils_free_charpp (char**) ; 
- int /*<<< orphan*/  check_build_run (char const* const*,int*) ; 
+
+
+
+typedef int atf_error_t ;
+
+
+ int atf_build_cpp (char const*,char const*,char const* const*,char***) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_utils_free_charpp (char**) ;
+ int check_build_run (char const* const*,int*) ;
 
 atf_error_t
 atf_check_build_cpp(const char *sfile,

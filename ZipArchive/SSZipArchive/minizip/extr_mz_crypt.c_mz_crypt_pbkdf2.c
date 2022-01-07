@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ux ;
-typedef  int /*<<< orphan*/  uu ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MZ_HASH_SHA1 ; 
- int MZ_HASH_SHA1_SIZE ; 
- scalar_t__ MZ_OK ; 
- scalar_t__ MZ_PARAM_ERROR ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mz_crypt_hmac_copy (void*,void*) ; 
- int /*<<< orphan*/  mz_crypt_hmac_create (void**) ; 
- int /*<<< orphan*/  mz_crypt_hmac_delete (void**) ; 
- scalar_t__ mz_crypt_hmac_end (void*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ mz_crypt_hmac_init (void*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mz_crypt_hmac_set_algorithm (void*,int /*<<< orphan*/ ) ; 
- scalar_t__ mz_crypt_hmac_update (void*,int /*<<< orphan*/ *,int) ; 
 
-int32_t  mz_crypt_pbkdf2(uint8_t *password, int32_t password_length, uint8_t *salt,
+
+
+typedef int ux ;
+typedef int uu ;
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef scalar_t__ int32_t ;
+
+
+ int MZ_HASH_SHA1 ;
+ int MZ_HASH_SHA1_SIZE ;
+ scalar_t__ MZ_OK ;
+ scalar_t__ MZ_PARAM_ERROR ;
+ int memset (int *,int ,int) ;
+ scalar_t__ mz_crypt_hmac_copy (void*,void*) ;
+ int mz_crypt_hmac_create (void**) ;
+ int mz_crypt_hmac_delete (void**) ;
+ scalar_t__ mz_crypt_hmac_end (void*,int *,int) ;
+ scalar_t__ mz_crypt_hmac_init (void*,int *,scalar_t__) ;
+ int mz_crypt_hmac_set_algorithm (void*,int ) ;
+ scalar_t__ mz_crypt_hmac_update (void*,int *,int) ;
+
+int32_t mz_crypt_pbkdf2(uint8_t *password, int32_t password_length, uint8_t *salt,
     int32_t salt_length, int32_t iteration_count, uint8_t *key, int32_t key_length)
 {
-    void *hmac1 = NULL;
-    void *hmac2 = NULL;
-    void *hmac3 = NULL;
+    void *hmac1 = ((void*)0);
+    void *hmac2 = ((void*)0);
+    void *hmac3 = ((void*)0);
     int32_t err = MZ_OK;
     uint16_t i = 0;
     uint16_t j = 0;
@@ -44,7 +44,7 @@ int32_t  mz_crypt_pbkdf2(uint8_t *password, int32_t password_length, uint8_t *sa
     uint8_t uu[MZ_HASH_SHA1_SIZE];
     uint8_t ux[MZ_HASH_SHA1_SIZE];
 
-    if (password == NULL || salt == NULL || key == NULL)
+    if (password == ((void*)0) || salt == ((void*)0) || key == ((void*)0))
         return MZ_PARAM_ERROR;
 
     memset(key, 0, key_length);
@@ -104,8 +104,8 @@ int32_t  mz_crypt_pbkdf2(uint8_t *password, int32_t password_length, uint8_t *sa
             key[k++] = ux[j++];
     }
 
-    /* hmac3 uses the same provider as hmac2, so it must be deleted
-       before the context is destroyed. */
+
+
     mz_crypt_hmac_delete(&hmac3);
     mz_crypt_hmac_delete(&hmac1);
     mz_crypt_hmac_delete(&hmac2);

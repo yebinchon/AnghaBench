@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct sqlite3_index_constraint {int iColumn; scalar_t__ op; scalar_t__ usable; } ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
+typedef int sqlite3_vtab ;
 struct TYPE_7__ {int nConstraint; int idxNum; int nOrderBy; int orderByConsumed; double estimatedCost; TYPE_2__* aOrderBy; TYPE_1__* aConstraintUsage; struct sqlite3_index_constraint* aConstraint; } ;
-typedef  TYPE_3__ sqlite3_index_info ;
+typedef TYPE_3__ sqlite3_index_info ;
 struct TYPE_6__ {int iColumn; scalar_t__ desc; } ;
 struct TYPE_5__ {int argvIndex; int omit; } ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_INDEX_CONSTRAINT_EQ ; 
- scalar_t__ SQLITE_INDEX_CONSTRAINT_LE ; 
- scalar_t__ SQLITE_INDEX_CONSTRAINT_LT ; 
- scalar_t__ SQLITE_INDEX_CONSTRAINT_MATCH ; 
- int SQLITE_OK ; 
+
+ scalar_t__ SQLITE_INDEX_CONSTRAINT_EQ ;
+ scalar_t__ SQLITE_INDEX_CONSTRAINT_LE ;
+ scalar_t__ SQLITE_INDEX_CONSTRAINT_LT ;
+ scalar_t__ SQLITE_INDEX_CONSTRAINT_MATCH ;
+ int SQLITE_OK ;
 
 __attribute__((used)) static int fuzzerBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo){
   int iPlan = 0;
@@ -43,7 +43,7 @@ __attribute__((used)) static int fuzzerBestIndex(sqlite3_vtab *tab, sqlite3_inde
       seenMatch = 1;
     }
     if( pConstraint->usable==0 ) continue;
-    if( (iPlan & 1)==0 
+    if( (iPlan & 1)==0
      && pConstraint->iColumn==0
      && pConstraint->op==SQLITE_INDEX_CONSTRAINT_MATCH
     ){
@@ -89,6 +89,6 @@ __attribute__((used)) static int fuzzerBestIndex(sqlite3_vtab *tab, sqlite3_inde
   }
   if( seenMatch && (iPlan&1)==0 ) rCost = 1e99;
   pIdxInfo->estimatedCost = rCost;
-   
+
   return SQLITE_OK;
 }

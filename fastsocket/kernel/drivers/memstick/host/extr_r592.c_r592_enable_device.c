@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct r592_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R592_IO ; 
- int /*<<< orphan*/  R592_IO_RESET ; 
- int /*<<< orphan*/  R592_POWER ; 
- int R592_POWER_0 ; 
- int R592_POWER_1 ; 
- int /*<<< orphan*/  dbg (char*,char*) ; 
- int /*<<< orphan*/  msleep (int) ; 
- int /*<<< orphan*/  r592_set_reg_mask (struct r592_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  r592_write_reg (struct r592_device*,int /*<<< orphan*/ ,int) ; 
+
+ int R592_IO ;
+ int R592_IO_RESET ;
+ int R592_POWER ;
+ int R592_POWER_0 ;
+ int R592_POWER_1 ;
+ int dbg (char*,char*) ;
+ int msleep (int) ;
+ int r592_set_reg_mask (struct r592_device*,int ,int ) ;
+ int r592_write_reg (struct r592_device*,int ,int) ;
 
 __attribute__((used)) static int r592_enable_device(struct r592_device *dev, bool enable)
 {
-	dbg("%sabling the device", enable ? "en" : "dis");
+ dbg("%sabling the device", enable ? "en" : "dis");
 
-	if (enable) {
+ if (enable) {
 
-		/* Power up the card */
-		r592_write_reg(dev, R592_POWER, R592_POWER_0 | R592_POWER_1);
 
-		/* Perform a reset */
-		r592_set_reg_mask(dev, R592_IO, R592_IO_RESET);
+  r592_write_reg(dev, R592_POWER, R592_POWER_0 | R592_POWER_1);
 
-		msleep(100);
-	} else
-		/* Power down the card */
-		r592_write_reg(dev, R592_POWER, 0);
 
-	return 0;
+  r592_set_reg_mask(dev, R592_IO, R592_IO_RESET);
+
+  msleep(100);
+ } else
+
+  r592_write_reg(dev, R592_POWER, 0);
+
+ return 0;
 }

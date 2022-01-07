@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct keep_mc_store {int magic; scalar_t__ len; scalar_t__ tag; } ;
-struct connection {int /*<<< orphan*/  Tmp; } ;
-typedef  int /*<<< orphan*/  nb_iterator_t ;
+struct connection {int Tmp; } ;
+typedef int nb_iterator_t ;
 
-/* Variables and functions */
- scalar_t__ MAX_QUERY ; 
- int NEWSR_STORE_MAGIC ; 
- int QLsave ; 
- struct keep_mc_store* Qsave ; 
- int /*<<< orphan*/  assert (int) ; 
- struct keep_mc_store mc_store ; 
- int nbit_read_in (int /*<<< orphan*/ *,struct keep_mc_store*,int) ; 
- int /*<<< orphan*/  nbit_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ tagsave ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ scalar_t__ MAX_QUERY ;
+ int NEWSR_STORE_MAGIC ;
+ int QLsave ;
+ struct keep_mc_store* Qsave ;
+ int assert (int) ;
+ struct keep_mc_store mc_store ;
+ int nbit_read_in (int *,struct keep_mc_store*,int) ;
+ int nbit_set (int *,int ) ;
+ scalar_t__ tagsave ;
+ int vkprintf (int,char*,...) ;
 
 void newsr_load_saved_data (struct connection *c) {
   struct keep_mc_store *Data = 0;
-  
+
   if (!c->Tmp) {
     tagsave = 0;
     vkprintf (4, "newsr_load_saved_data: !c->Tmp\n");

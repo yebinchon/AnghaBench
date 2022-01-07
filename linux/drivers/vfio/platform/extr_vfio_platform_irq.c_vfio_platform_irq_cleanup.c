@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vfio_platform_device {int num_irqs; int /*<<< orphan*/  irqs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vfio_set_trigger (struct vfio_platform_device*,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+struct vfio_platform_device {int num_irqs; int irqs; } ;
+
+
+ int kfree (int ) ;
+ int vfio_set_trigger (struct vfio_platform_device*,int,int,int *) ;
 
 void vfio_platform_irq_cleanup(struct vfio_platform_device *vdev)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < vdev->num_irqs; i++)
-		vfio_set_trigger(vdev, i, -1, NULL);
+ for (i = 0; i < vdev->num_irqs; i++)
+  vfio_set_trigger(vdev, i, -1, ((void*)0));
 
-	vdev->num_irqs = 0;
-	kfree(vdev->irqs);
+ vdev->num_irqs = 0;
+ kfree(vdev->irqs);
 }

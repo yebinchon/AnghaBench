@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
 struct TYPE_5__ {char* buffer; char* cursor; } ;
-typedef  TYPE_1__ buffer ;
+typedef TYPE_1__ buffer ;
 
-/* Variables and functions */
- char* buffer_pushlstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  buffer_reset (TYPE_1__*) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int) ; 
+
+ char* buffer_pushlstring (int *,char*) ;
+ int buffer_reset (TYPE_1__*) ;
+ int lua_call (int *,int,int ) ;
+ int lua_getglobal (int *,char*) ;
+ int lua_newtable (int *) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_pushlstring (int *,char*,char*) ;
+ int lua_rawset (int *,int) ;
 
 void script_response(lua_State *L, int status, buffer *headers, buffer *body) {
     lua_getglobal(L, "response");

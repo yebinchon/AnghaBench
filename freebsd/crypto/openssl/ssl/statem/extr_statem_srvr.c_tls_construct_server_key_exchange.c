@@ -1,135 +1,135 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_9__ ;
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPACKET ;
-struct TYPE_28__ {int /*<<< orphan*/ * psk_identity_hint; int /*<<< orphan*/ * (* dh_tmp_cb ) (TYPE_7__*,int /*<<< orphan*/ ,int) ;int /*<<< orphan*/ * dh_tmp; scalar_t__ dh_tmp_auto; } ;
-struct TYPE_27__ {scalar_t__ sig; int /*<<< orphan*/  sigalg; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * B; int /*<<< orphan*/ * s; int /*<<< orphan*/ * g; int /*<<< orphan*/ * N; } ;
+
+
+typedef struct TYPE_28__ TYPE_9__ ;
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef int WPACKET ;
+struct TYPE_28__ {int * psk_identity_hint; int * (* dh_tmp_cb ) (TYPE_7__*,int ,int) ;int * dh_tmp; scalar_t__ dh_tmp_auto; } ;
+struct TYPE_27__ {scalar_t__ sig; int sigalg; } ;
+struct TYPE_20__ {int * B; int * s; int * g; int * N; } ;
 struct TYPE_26__ {TYPE_3__* init_buf; TYPE_6__* s3; TYPE_9__* cert; TYPE_1__ srp_ctx; } ;
-struct TYPE_24__ {TYPE_2__* cert; TYPE_4__* new_cipher; int /*<<< orphan*/ * pkey; TYPE_8__* sigalg; } ;
+struct TYPE_24__ {TYPE_2__* cert; TYPE_4__* new_cipher; int * pkey; TYPE_8__* sigalg; } ;
 struct TYPE_25__ {TYPE_5__ tmp; } ;
 struct TYPE_23__ {unsigned long algorithm_mkey; int algorithm_auth; } ;
 struct TYPE_22__ {scalar_t__ data; } ;
-struct TYPE_21__ {int /*<<< orphan*/ * privatekey; } ;
-typedef  TYPE_7__ SSL ;
-typedef  TYPE_8__ SIGALG_LOOKUP ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  DH ;
-typedef  TYPE_9__ CERT ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+struct TYPE_21__ {int * privatekey; } ;
+typedef TYPE_7__ SSL ;
+typedef TYPE_8__ SIGALG_LOOKUP ;
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+typedef int DH ;
+typedef TYPE_9__ CERT ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_bn2bin (int /*<<< orphan*/  const*,unsigned char*) ; 
- size_t BN_num_bytes (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  DH_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_get0_key (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DH_get0_pqg (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  ERR_R_EC_LIB ; 
- int /*<<< orphan*/  ERR_R_EVP_LIB ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int EVP_DigestSign (int /*<<< orphan*/ *,unsigned char*,size_t*,unsigned char*,size_t) ; 
- scalar_t__ EVP_DigestSignInit (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- scalar_t__ EVP_PKEY_CTX_set_rsa_padding (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ EVP_PKEY_CTX_set_rsa_pss_saltlen (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ EVP_PKEY_RSA_PSS ; 
- int /*<<< orphan*/  EVP_PKEY_assign_DH (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_get0_DH (int /*<<< orphan*/ *) ; 
- size_t EVP_PKEY_get1_tls_encodedpoint (int /*<<< orphan*/ *,unsigned char**) ; 
- int /*<<< orphan*/ * EVP_PKEY_new () ; 
- int /*<<< orphan*/  EVP_PKEY_security_bits (int /*<<< orphan*/ *) ; 
- size_t EVP_PKEY_size (int /*<<< orphan*/ *) ; 
- int NAMED_CURVE_TYPE ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- size_t PSK_MAX_IDENTITY_LEN ; 
- int /*<<< orphan*/  RSA_PKCS1_PSS_PADDING ; 
- int /*<<< orphan*/  RSA_PSS_SALTLEN_DIGEST ; 
- int /*<<< orphan*/  SSL_AD_DECODE_ERROR ; 
- int /*<<< orphan*/  SSL_AD_HANDSHAKE_FAILURE ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE ; 
- unsigned long SSL_PSK ; 
- int /*<<< orphan*/  SSL_R_DH_KEY_TOO_SMALL ; 
- int /*<<< orphan*/  SSL_R_MISSING_SRP_PARAM ; 
- int /*<<< orphan*/  SSL_R_MISSING_TMP_DH_KEY ; 
- int /*<<< orphan*/  SSL_R_UNKNOWN_KEY_EXCHANGE_TYPE ; 
- int /*<<< orphan*/  SSL_R_UNSUPPORTED_ELLIPTIC_CURVE ; 
- int /*<<< orphan*/  SSL_SECOP_TMP_DH ; 
- scalar_t__ SSL_USE_SIGALGS (TYPE_7__*) ; 
- int SSL_aNULL ; 
- int SSL_aSRP ; 
- unsigned long SSL_kDHE ; 
- unsigned long SSL_kDHEPSK ; 
- unsigned long SSL_kECDHE ; 
- unsigned long SSL_kECDHEPSK ; 
- unsigned long SSL_kPSK ; 
- unsigned long SSL_kRSAPSK ; 
- unsigned long SSL_kSRP ; 
- int /*<<< orphan*/  SSLfatal (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WPACKET_allocate_bytes (int /*<<< orphan*/ *,size_t,unsigned char**) ; 
- int /*<<< orphan*/  WPACKET_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WPACKET_get_length (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  WPACKET_get_total_written (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  WPACKET_put_bytes_u16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WPACKET_put_bytes_u8 (int /*<<< orphan*/ *,int) ; 
- int WPACKET_start_sub_packet_u16 (int /*<<< orphan*/ *) ; 
- int WPACKET_start_sub_packet_u8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WPACKET_sub_allocate_bytes_u16 (int /*<<< orphan*/ *,size_t,unsigned char**) ; 
- int /*<<< orphan*/  WPACKET_sub_memcpy_u16 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  WPACKET_sub_memcpy_u8 (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int /*<<< orphan*/  WPACKET_sub_reserve_bytes_u16 (int /*<<< orphan*/ *,size_t,unsigned char**) ; 
- size_t construct_key_exchange_tbs (TYPE_7__*,unsigned char**,scalar_t__,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/ * ssl_dh_to_pkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ssl_generate_pkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ssl_generate_pkey_group (TYPE_7__*,int) ; 
- int /*<<< orphan*/ * ssl_get_auto_dh (TYPE_7__*) ; 
- int /*<<< orphan*/  ssl_security (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- size_t strlen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub1 (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tls1_lookup_md (TYPE_8__ const*,int /*<<< orphan*/  const**) ; 
- int tls1_shared_group (TYPE_7__*,int) ; 
+
+ int BN_bn2bin (int const*,unsigned char*) ;
+ size_t BN_num_bytes (int const*) ;
+ int DH_free (int *) ;
+ int DH_get0_key (int *,int const**,int *) ;
+ int DH_get0_pqg (int *,int const**,int *,int const**) ;
+ int ERR_R_EC_LIB ;
+ int ERR_R_EVP_LIB ;
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_DigestSign (int *,unsigned char*,size_t*,unsigned char*,size_t) ;
+ scalar_t__ EVP_DigestSignInit (int *,int **,int const*,int *,int *) ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ scalar_t__ EVP_PKEY_CTX_set_rsa_padding (int *,int ) ;
+ scalar_t__ EVP_PKEY_CTX_set_rsa_pss_saltlen (int *,int ) ;
+ scalar_t__ EVP_PKEY_RSA_PSS ;
+ int EVP_PKEY_assign_DH (int *,int *) ;
+ int EVP_PKEY_free (int *) ;
+ int * EVP_PKEY_get0_DH (int *) ;
+ size_t EVP_PKEY_get1_tls_encodedpoint (int *,unsigned char**) ;
+ int * EVP_PKEY_new () ;
+ int EVP_PKEY_security_bits (int *) ;
+ size_t EVP_PKEY_size (int *) ;
+ int NAMED_CURVE_TYPE ;
+ int OPENSSL_free (unsigned char*) ;
+ size_t PSK_MAX_IDENTITY_LEN ;
+ int RSA_PKCS1_PSS_PADDING ;
+ int RSA_PSS_SALTLEN_DIGEST ;
+ int SSL_AD_DECODE_ERROR ;
+ int SSL_AD_HANDSHAKE_FAILURE ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE ;
+ unsigned long SSL_PSK ;
+ int SSL_R_DH_KEY_TOO_SMALL ;
+ int SSL_R_MISSING_SRP_PARAM ;
+ int SSL_R_MISSING_TMP_DH_KEY ;
+ int SSL_R_UNKNOWN_KEY_EXCHANGE_TYPE ;
+ int SSL_R_UNSUPPORTED_ELLIPTIC_CURVE ;
+ int SSL_SECOP_TMP_DH ;
+ scalar_t__ SSL_USE_SIGALGS (TYPE_7__*) ;
+ int SSL_aNULL ;
+ int SSL_aSRP ;
+ unsigned long SSL_kDHE ;
+ unsigned long SSL_kDHEPSK ;
+ unsigned long SSL_kECDHE ;
+ unsigned long SSL_kECDHEPSK ;
+ unsigned long SSL_kPSK ;
+ unsigned long SSL_kRSAPSK ;
+ unsigned long SSL_kSRP ;
+ int SSLfatal (TYPE_7__*,int ,int ,int ) ;
+ int WPACKET_allocate_bytes (int *,size_t,unsigned char**) ;
+ int WPACKET_close (int *) ;
+ int WPACKET_get_length (int *,size_t*) ;
+ int WPACKET_get_total_written (int *,size_t*) ;
+ int WPACKET_put_bytes_u16 (int *,int ) ;
+ int WPACKET_put_bytes_u8 (int *,int) ;
+ int WPACKET_start_sub_packet_u16 (int *) ;
+ int WPACKET_start_sub_packet_u8 (int *) ;
+ int WPACKET_sub_allocate_bytes_u16 (int *,size_t,unsigned char**) ;
+ int WPACKET_sub_memcpy_u16 (int *,int *,size_t) ;
+ int WPACKET_sub_memcpy_u8 (int *,unsigned char*,size_t) ;
+ int WPACKET_sub_reserve_bytes_u16 (int *,size_t,unsigned char**) ;
+ size_t construct_key_exchange_tbs (TYPE_7__*,unsigned char**,scalar_t__,size_t) ;
+ int memset (unsigned char*,int ,size_t) ;
+ int * ssl_dh_to_pkey (int *) ;
+ int * ssl_generate_pkey (int *) ;
+ int * ssl_generate_pkey_group (TYPE_7__*,int) ;
+ int * ssl_get_auto_dh (TYPE_7__*) ;
+ int ssl_security (TYPE_7__*,int ,int ,int ,int *) ;
+ size_t strlen (int *) ;
+ int * stub1 (TYPE_7__*,int ,int) ;
+ int tls1_lookup_md (TYPE_8__ const*,int const**) ;
+ int tls1_shared_group (TYPE_7__*,int) ;
 
 int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
 {
-#ifndef OPENSSL_NO_DH
-    EVP_PKEY *pkdh = NULL;
-#endif
-#ifndef OPENSSL_NO_EC
-    unsigned char *encodedPoint = NULL;
+
+    EVP_PKEY *pkdh = ((void*)0);
+
+
+    unsigned char *encodedPoint = ((void*)0);
     size_t encodedlen = 0;
     int curve_id = 0;
-#endif
+
     const SIGALG_LOOKUP *lu = s->s3->tmp.sigalg;
     int i;
     unsigned long type;
     const BIGNUM *r[4];
     EVP_MD_CTX *md_ctx = EVP_MD_CTX_new();
-    EVP_PKEY_CTX *pctx = NULL;
+    EVP_PKEY_CTX *pctx = ((void*)0);
     size_t paramlen, paramoffset;
 
     if (!WPACKET_get_total_written(pkt, &paramoffset)) {
@@ -138,7 +138,7 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
         goto err;
     }
 
-    if (md_ctx == NULL) {
+    if (md_ctx == ((void*)0)) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                  SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE, ERR_R_MALLOC_FAILURE);
         goto err;
@@ -146,23 +146,23 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
 
     type = s->s3->tmp.new_cipher->algorithm_mkey;
 
-    r[0] = r[1] = r[2] = r[3] = NULL;
-#ifndef OPENSSL_NO_PSK
-    /* Plain PSK or RSAPSK nothing to do */
+    r[0] = r[1] = r[2] = r[3] = ((void*)0);
+
+
     if (type & (SSL_kPSK | SSL_kRSAPSK)) {
     } else
-#endif                          /* !OPENSSL_NO_PSK */
-#ifndef OPENSSL_NO_DH
+
+
     if (type & (SSL_kDHE | SSL_kDHEPSK)) {
         CERT *cert = s->cert;
 
-        EVP_PKEY *pkdhp = NULL;
+        EVP_PKEY *pkdhp = ((void*)0);
         DH *dh;
 
         if (s->cert->dh_tmp_auto) {
             DH *dhp = ssl_get_auto_dh(s);
             pkdh = EVP_PKEY_new();
-            if (pkdh == NULL || dhp == NULL) {
+            if (pkdh == ((void*)0) || dhp == ((void*)0)) {
                 DH_free(dhp);
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                          SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
@@ -174,10 +174,10 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
         } else {
             pkdhp = cert->dh_tmp;
         }
-        if ((pkdhp == NULL) && (s->cert->dh_tmp_cb != NULL)) {
+        if ((pkdhp == ((void*)0)) && (s->cert->dh_tmp_cb != ((void*)0))) {
             DH *dhp = s->cert->dh_tmp_cb(s, 0, 1024);
             pkdh = ssl_dh_to_pkey(dhp);
-            if (pkdh == NULL) {
+            if (pkdh == ((void*)0)) {
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                          SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                          ERR_R_INTERNAL_ERROR);
@@ -185,7 +185,7 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
             }
             pkdhp = pkdh;
         }
-        if (pkdhp == NULL) {
+        if (pkdhp == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      SSL_R_MISSING_TMP_DH_KEY);
@@ -198,7 +198,7 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
                      SSL_R_DH_KEY_TOO_SMALL);
             goto err;
         }
-        if (s->s3->tmp.pkey != NULL) {
+        if (s->s3->tmp.pkey != ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
@@ -206,13 +206,13 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
         }
 
         s->s3->tmp.pkey = ssl_generate_pkey(pkdhp);
-        if (s->s3->tmp.pkey == NULL) {
-            /* SSLfatal() already called */
+        if (s->s3->tmp.pkey == ((void*)0)) {
+
             goto err;
         }
 
         dh = EVP_PKEY_get0_DH(s->s3->tmp.pkey);
-        if (dh == NULL) {
+        if (dh == ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
@@ -220,23 +220,23 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
         }
 
         EVP_PKEY_free(pkdh);
-        pkdh = NULL;
+        pkdh = ((void*)0);
 
-        DH_get0_pqg(dh, &r[0], NULL, &r[1]);
-        DH_get0_key(dh, &r[2], NULL);
+        DH_get0_pqg(dh, &r[0], ((void*)0), &r[1]);
+        DH_get0_key(dh, &r[2], ((void*)0));
     } else
-#endif
-#ifndef OPENSSL_NO_EC
+
+
     if (type & (SSL_kECDHE | SSL_kECDHEPSK)) {
 
-        if (s->s3->tmp.pkey != NULL) {
+        if (s->s3->tmp.pkey != ((void*)0)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
             goto err;
         }
 
-        /* Get NID of appropriate shared curve */
+
         curve_id = tls1_shared_group(s, -2);
         if (curve_id == 0) {
             SSLfatal(s, SSL_AD_HANDSHAKE_FAILURE,
@@ -245,13 +245,13 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
             goto err;
         }
         s->s3->tmp.pkey = ssl_generate_pkey_group(s, curve_id);
-        /* Generate a new key for this curve */
-        if (s->s3->tmp.pkey == NULL) {
-            /* SSLfatal() already called */
+
+        if (s->s3->tmp.pkey == ((void*)0)) {
+
             goto err;
         }
 
-        /* Encode the public key. */
+
         encodedlen = EVP_PKEY_get1_tls_encodedpoint(s->s3->tmp.pkey,
                                                     &encodedPoint);
         if (encodedlen == 0) {
@@ -260,21 +260,21 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
             goto err;
         }
 
-        /*
-         * We'll generate the serverKeyExchange message explicitly so we
-         * can set these to NULLs
-         */
-        r[0] = NULL;
-        r[1] = NULL;
-        r[2] = NULL;
-        r[3] = NULL;
+
+
+
+
+        r[0] = ((void*)0);
+        r[1] = ((void*)0);
+        r[2] = ((void*)0);
+        r[3] = ((void*)0);
     } else
-#endif                          /* !OPENSSL_NO_EC */
-#ifndef OPENSSL_NO_SRP
+
+
     if (type & SSL_kSRP) {
-        if ((s->srp_ctx.N == NULL) ||
-            (s->srp_ctx.g == NULL) ||
-            (s->srp_ctx.s == NULL) || (s->srp_ctx.B == NULL)) {
+        if ((s->srp_ctx.N == ((void*)0)) ||
+            (s->srp_ctx.g == ((void*)0)) ||
+            (s->srp_ctx.s == ((void*)0)) || (s->srp_ctx.B == ((void*)0))) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      SSL_R_MISSING_SRP_PARAM);
@@ -285,7 +285,7 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
         r[2] = s->srp_ctx.s;
         r[3] = s->srp_ctx.B;
     } else
-#endif
+
     {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                  SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
@@ -295,22 +295,22 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
 
     if (((s->s3->tmp.new_cipher->algorithm_auth & (SSL_aNULL | SSL_aSRP)) != 0)
         || ((s->s3->tmp.new_cipher->algorithm_mkey & SSL_PSK)) != 0) {
-        lu = NULL;
-    } else if (lu == NULL) {
+        lu = ((void*)0);
+    } else if (lu == ((void*)0)) {
         SSLfatal(s, SSL_AD_DECODE_ERROR,
                  SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE, ERR_R_INTERNAL_ERROR);
         goto err;
     }
 
-#ifndef OPENSSL_NO_PSK
+
     if (type & SSL_PSK) {
-        size_t len = (s->cert->psk_identity_hint == NULL)
+        size_t len = (s->cert->psk_identity_hint == ((void*)0))
                         ? 0 : strlen(s->cert->psk_identity_hint);
 
-        /*
-         * It should not happen that len > PSK_MAX_IDENTITY_LEN - we already
-         * checked this when we set the identity hint - but just in case
-         */
+
+
+
+
         if (len > PSK_MAX_IDENTITY_LEN
                 || !WPACKET_sub_memcpy_u16(pkt, s->cert->psk_identity_hint,
                                            len)) {
@@ -320,17 +320,17 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
             goto err;
         }
     }
-#endif
 
-    for (i = 0; i < 4 && r[i] != NULL; i++) {
+
+    for (i = 0; i < 4 && r[i] != ((void*)0); i++) {
         unsigned char *binval;
         int res;
 
-#ifndef OPENSSL_NO_SRP
+
         if ((i == 2) && (type & SSL_kSRP)) {
             res = WPACKET_start_sub_packet_u8(pkt);
         } else
-#endif
+
             res = WPACKET_start_sub_packet_u16(pkt);
 
         if (!res) {
@@ -340,12 +340,12 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
             goto err;
         }
 
-#ifndef OPENSSL_NO_DH
-        /*-
-         * for interoperability with some versions of the Microsoft TLS
-         * stack, we need to zero pad the DHE pub key to the same length
-         * as the prime
-         */
+
+
+
+
+
+
         if ((i == 2) && (type & (SSL_kDHE | SSL_kDHEPSK))) {
             size_t len = BN_num_bytes(r[0]) - BN_num_bytes(r[2]);
 
@@ -359,7 +359,7 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
                 memset(binval, 0, len);
             }
         }
-#endif
+
         if (!WPACKET_allocate_bytes(pkt, BN_num_bytes(r[i]), &binval)
                 || !WPACKET_close(pkt)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
@@ -371,14 +371,14 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
         BN_bn2bin(r[i], binval);
     }
 
-#ifndef OPENSSL_NO_EC
+
     if (type & (SSL_kECDHE | SSL_kECDHEPSK)) {
-        /*
-         * We only support named (not generic) curves. In this situation, the
-         * ServerKeyExchange message has: [1 byte CurveType], [2 byte CurveName]
-         * [1 byte length of encoded point], followed by the actual encoded
-         * point itself
-         */
+
+
+
+
+
+
         if (!WPACKET_put_bytes_u8(pkt, NAMED_CURVE_TYPE)
                 || !WPACKET_put_bytes_u8(pkt, 0)
                 || !WPACKET_put_bytes_u8(pkt, curve_id)
@@ -389,48 +389,48 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
             goto err;
         }
         OPENSSL_free(encodedPoint);
-        encodedPoint = NULL;
+        encodedPoint = ((void*)0);
     }
-#endif
 
-    /* not anonymous */
-    if (lu != NULL) {
+
+
+    if (lu != ((void*)0)) {
         EVP_PKEY *pkey = s->s3->tmp.cert->privatekey;
         const EVP_MD *md;
         unsigned char *sigbytes1, *sigbytes2, *tbs;
         size_t siglen, tbslen;
         int rv;
 
-        if (pkey == NULL || !tls1_lookup_md(lu, &md)) {
-            /* Should never happen */
+        if (pkey == ((void*)0) || !tls1_lookup_md(lu, &md)) {
+
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
             goto err;
         }
-        /* Get length of the parameters we have written above */
+
         if (!WPACKET_get_length(pkt, &paramlen)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
             goto err;
         }
-        /* send signature algorithm */
+
         if (SSL_USE_SIGALGS(s) && !WPACKET_put_bytes_u16(pkt, lu->sigalg)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
             goto err;
         }
-        /*
-         * Create the signature. We don't know the actual length of the sig
-         * until after we've created it, so we reserve enough bytes for it
-         * up front, and then properly allocate them in the WPACKET
-         * afterwards.
-         */
+
+
+
+
+
+
         siglen = EVP_PKEY_size(pkey);
         if (!WPACKET_sub_reserve_bytes_u16(pkt, siglen, &sigbytes1)
-            || EVP_DigestSignInit(md_ctx, &pctx, md, NULL, pkey) <= 0) {
+            || EVP_DigestSignInit(md_ctx, &pctx, md, ((void*)0), pkey) <= 0) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_SERVER_KEY_EXCHANGE,
                      ERR_R_INTERNAL_ERROR);
@@ -449,7 +449,7 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
                                             s->init_buf->data + paramoffset,
                                             paramlen);
         if (tbslen == 0) {
-            /* SSLfatal() already called */
+
             goto err;
         }
         rv = EVP_DigestSign(md_ctx, sigbytes1, &siglen, tbs, tbslen);
@@ -466,12 +466,12 @@ int tls_construct_server_key_exchange(SSL *s, WPACKET *pkt)
     EVP_MD_CTX_free(md_ctx);
     return 1;
  err:
-#ifndef OPENSSL_NO_DH
+
     EVP_PKEY_free(pkdh);
-#endif
-#ifndef OPENSSL_NO_EC
+
+
     OPENSSL_free(encodedPoint);
-#endif
+
     EVP_MD_CTX_free(md_ctx);
     return 0;
 }

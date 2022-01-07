@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- char* thr_getspecific (int /*<<< orphan*/ ) ; 
- scalar_t__ thr_main () ; 
- scalar_t__ thr_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ thr_setspecific (int /*<<< orphan*/ ,char*) ; 
- char* ttyname_buf ; 
- int /*<<< orphan*/  ttyname_init_once ; 
- int /*<<< orphan*/  ttyname_key ; 
- int /*<<< orphan*/  ttyname_keycreate ; 
- int /*<<< orphan*/  ttyname_keycreated ; 
- scalar_t__ ttyname_r (int,char*,int) ; 
+ int free (char*) ;
+ char* malloc (int) ;
+ char* thr_getspecific (int ) ;
+ scalar_t__ thr_main () ;
+ scalar_t__ thr_once (int *,int ) ;
+ scalar_t__ thr_setspecific (int ,char*) ;
+ char* ttyname_buf ;
+ int ttyname_init_once ;
+ int ttyname_key ;
+ int ttyname_keycreate ;
+ int ttyname_keycreated ;
+ scalar_t__ ttyname_r (int,char*,int) ;
 
 char *
 ttyname(int fd)
 {
-	char	*buf;
+ char *buf;
 
-	if (thr_main() != 0)
-		buf = ttyname_buf;
-	else {
-		if (thr_once(&ttyname_init_once, ttyname_keycreate) != 0 ||
-		    !ttyname_keycreated)
-			return (NULL);
-		if ((buf = thr_getspecific(ttyname_key)) == NULL) {
-			if ((buf = malloc(sizeof ttyname_buf)) == NULL)
-				return (NULL);
-			if (thr_setspecific(ttyname_key, buf) != 0) {
-				free(buf);
-				return (NULL);
-			}
-		}
-	}
+ if (thr_main() != 0)
+  buf = ttyname_buf;
+ else {
+  if (thr_once(&ttyname_init_once, ttyname_keycreate) != 0 ||
+      !ttyname_keycreated)
+   return (((void*)0));
+  if ((buf = thr_getspecific(ttyname_key)) == ((void*)0)) {
+   if ((buf = malloc(sizeof ttyname_buf)) == ((void*)0))
+    return (((void*)0));
+   if (thr_setspecific(ttyname_key, buf) != 0) {
+    free(buf);
+    return (((void*)0));
+   }
+  }
+ }
 
-	if (ttyname_r(fd, buf, sizeof ttyname_buf) != 0)
-		return (NULL);
-	return (buf);
+ if (ttyname_r(fd, buf, sizeof ttyname_buf) != 0)
+  return (((void*)0));
+ return (buf);
 }

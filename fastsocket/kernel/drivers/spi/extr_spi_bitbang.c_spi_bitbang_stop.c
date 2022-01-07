@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_bitbang {int /*<<< orphan*/  workqueue; int /*<<< orphan*/  queue; int /*<<< orphan*/  master; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spi_unregister_master (int /*<<< orphan*/ ) ; 
+
+
+
+struct spi_bitbang {int workqueue; int queue; int master; } ;
+
+
+ int WARN_ON (int) ;
+ int destroy_workqueue (int ) ;
+ int list_empty (int *) ;
+ int spi_unregister_master (int ) ;
 
 int spi_bitbang_stop(struct spi_bitbang *bitbang)
 {
-	spi_unregister_master(bitbang->master);
+ spi_unregister_master(bitbang->master);
 
-	WARN_ON(!list_empty(&bitbang->queue));
+ WARN_ON(!list_empty(&bitbang->queue));
 
-	destroy_workqueue(bitbang->workqueue);
+ destroy_workqueue(bitbang->workqueue);
 
-	return 0;
+ return 0;
 }

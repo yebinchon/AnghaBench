@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
-struct TYPE_2__ {int pos; long srcitem; struct in_addr ip; scalar_t__ nItems; scalar_t__ lstart; int /*<<< orphan*/ * srcptr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct in_addr {int s_addr; } ;
+struct TYPE_2__ {int pos; long srcitem; struct in_addr ip; scalar_t__ nItems; scalar_t__ lstart; int * srcptr; } ;
 struct iplist {unsigned int nItems; TYPE_1__ cur; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  htonl (scalar_t__) ; 
- int /*<<< orphan*/  iplist_nextrange (struct iplist*) ; 
+
+ int INADDR_ANY ;
+ int htonl (scalar_t__) ;
+ int iplist_nextrange (struct iplist*) ;
 
 struct in_addr
 iplist_setcurpos(struct iplist *list, long pos)
@@ -29,7 +29,7 @@ iplist_setcurpos(struct iplist *list, long pos)
     return list->cur.ip;
   }
 
-  list->cur.srcptr = NULL;
+  list->cur.srcptr = ((void*)0);
   list->cur.pos = 0;
   while (1) {
     iplist_nextrange(list);

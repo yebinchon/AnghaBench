@@ -1,111 +1,100 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {size_t ridx; TYPE_2__* rstack; } ;
-typedef  TYPE_1__ redisReader ;
+typedef TYPE_1__ redisReader ;
 struct TYPE_10__ {int type; } ;
-typedef  TYPE_2__ redisReadTask ;
+typedef TYPE_2__ redisReadTask ;
 
-/* Variables and functions */
- int REDIS_ERR ; 
-#define  REDIS_REPLY_ARRAY 138 
-#define  REDIS_REPLY_BOOL 137 
-#define  REDIS_REPLY_DOUBLE 136 
-#define  REDIS_REPLY_ERROR 135 
-#define  REDIS_REPLY_INTEGER 134 
-#define  REDIS_REPLY_MAP 133 
-#define  REDIS_REPLY_NIL 132 
-#define  REDIS_REPLY_SET 131 
-#define  REDIS_REPLY_STATUS 130 
-#define  REDIS_REPLY_STRING 129 
-#define  REDIS_REPLY_VERB 128 
- int /*<<< orphan*/  __redisReaderSetErrorProtocolByte (TYPE_1__*,char) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int processAggregateItem (TYPE_1__*) ; 
- int processBulkItem (TYPE_1__*) ; 
- int processLineItem (TYPE_1__*) ; 
- char* readBytes (TYPE_1__*,int) ; 
+
+ int REDIS_ERR ;
+ int __redisReaderSetErrorProtocolByte (TYPE_1__*,char) ;
+ int assert (int *) ;
+ int processAggregateItem (TYPE_1__*) ;
+ int processBulkItem (TYPE_1__*) ;
+ int processLineItem (TYPE_1__*) ;
+ char* readBytes (TYPE_1__*,int) ;
 
 __attribute__((used)) static int processItem(redisReader *r) {
     redisReadTask *cur = &(r->rstack[r->ridx]);
     char *p;
 
-    /* check if we need to read type */
+
     if (cur->type < 0) {
-        if ((p = readBytes(r,1)) != NULL) {
+        if ((p = readBytes(r,1)) != ((void*)0)) {
             switch (p[0]) {
             case '-':
-                cur->type = REDIS_REPLY_ERROR;
+                cur->type = 135;
                 break;
             case '+':
-                cur->type = REDIS_REPLY_STATUS;
+                cur->type = 130;
                 break;
             case ':':
-                cur->type = REDIS_REPLY_INTEGER;
+                cur->type = 134;
                 break;
             case ',':
-                cur->type = REDIS_REPLY_DOUBLE;
+                cur->type = 136;
                 break;
             case '_':
-                cur->type = REDIS_REPLY_NIL;
+                cur->type = 132;
                 break;
             case '$':
-                cur->type = REDIS_REPLY_STRING;
+                cur->type = 129;
                 break;
             case '*':
-                cur->type = REDIS_REPLY_ARRAY;
+                cur->type = 138;
                 break;
             case '%':
-                cur->type = REDIS_REPLY_MAP;
+                cur->type = 133;
                 break;
             case '~':
-                cur->type = REDIS_REPLY_SET;
+                cur->type = 131;
                 break;
             case '#':
-                cur->type = REDIS_REPLY_BOOL;
+                cur->type = 137;
                 break;
             case '=':
-                cur->type = REDIS_REPLY_VERB;
+                cur->type = 128;
                 break;
             default:
                 __redisReaderSetErrorProtocolByte(r,*p);
                 return REDIS_ERR;
             }
         } else {
-            /* could not consume 1 byte */
+
             return REDIS_ERR;
         }
     }
 
-    /* process typed item */
+
     switch(cur->type) {
-    case REDIS_REPLY_ERROR:
-    case REDIS_REPLY_STATUS:
-    case REDIS_REPLY_INTEGER:
-    case REDIS_REPLY_DOUBLE:
-    case REDIS_REPLY_NIL:
-    case REDIS_REPLY_BOOL:
+    case 135:
+    case 130:
+    case 134:
+    case 136:
+    case 132:
+    case 137:
         return processLineItem(r);
-    case REDIS_REPLY_STRING:
-    case REDIS_REPLY_VERB:
+    case 129:
+    case 128:
         return processBulkItem(r);
-    case REDIS_REPLY_ARRAY:
-    case REDIS_REPLY_MAP:
-    case REDIS_REPLY_SET:
+    case 138:
+    case 133:
+    case 131:
         return processAggregateItem(r);
     default:
-        assert(NULL);
-        return REDIS_ERR; /* Avoid warning. */
+        assert(((void*)0));
+        return REDIS_ERR;
     }
 }

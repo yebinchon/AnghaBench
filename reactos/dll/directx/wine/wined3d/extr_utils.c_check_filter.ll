@@ -1,0 +1,492 @@
+; ModuleID = '/home/carl/AnghaBench/reactos/dll/directx/wine/wined3d/extr_utils.c_check_filter.c'
+source_filename = "/home/carl/AnghaBench/reactos/dll/directx/wine/wined3d/extr_utils.c_check_filter.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.wined3d_gl_info = type { %struct.TYPE_6__, %struct.TYPE_4__ }
+%struct.TYPE_6__ = type { %struct.TYPE_5__ }
+%struct.TYPE_5__ = type { i64 (...)*, i32 (i32)*, i32 (i32, i32*)*, i32 (i32, i32, i32, i32, i32*)*, i32 (i32, i32)*, i32 (...)*, i32 (float, float)*, i32 (double, double)*, i32 (i32)*, i32 (i32)*, i32 (i32, i32, i32, i32)*, i32 (...)*, i32 (i32)*, i32 (i32, i32, i32, i32)*, i32 (i32)*, i32 (i32)*, i32 (i32, i32, i32)*, i32 (i32, i32, i32, i32, i32, i32, i32, i32, i32*)*, i32 (i32, i32*)* }
+%struct.TYPE_4__ = type { i32 (i32, i32*)*, i32 (i32, i32)*, i32 (i32, i32, i32, i32, i32)*, i32 (i32, i32*)* }
+
+@check_filter.data = internal constant [2 x i32] [i32 0, i32 -1], align 4
+@FALSE = common dso_local global i32 0, align 4
+@GL_TEXTURE_2D = common dso_local global i32 0, align 4
+@GL_RGBA8 = common dso_local global i32 0, align 4
+@GL_RGBA = common dso_local global i32 0, align 4
+@GL_UNSIGNED_INT_8_8_8_8 = common dso_local global i32 0, align 4
+@GL_TEXTURE_MIN_FILTER = common dso_local global i32 0, align 4
+@GL_NEAREST = common dso_local global i32 0, align 4
+@GL_TEXTURE_MAG_FILTER = common dso_local global i32 0, align 4
+@GL_TEXTURE_WRAP_S = common dso_local global i32 0, align 4
+@GL_CLAMP_TO_EDGE = common dso_local global i32 0, align 4
+@GL_TEXTURE_WRAP_T = common dso_local global i32 0, align 4
+@GL_TEXTURE_WRAP_R = common dso_local global i32 0, align 4
+@GL_BGRA = common dso_local global i32 0, align 4
+@GL_UNSIGNED_INT_8_8_8_8_REV = common dso_local global i32 0, align 4
+@GL_LINEAR = common dso_local global i32 0, align 4
+@GL_FRAMEBUFFER = common dso_local global i32 0, align 4
+@GL_COLOR_ATTACHMENT0 = common dso_local global i32 0, align 4
+@GL_LIGHTING = common dso_local global i32 0, align 4
+@GL_MODELVIEW = common dso_local global i32 0, align 4
+@GL_PROJECTION = common dso_local global i32 0, align 4
+@GL_COLOR_BUFFER_BIT = common dso_local global i32 0, align 4
+@GL_TRIANGLE_STRIP = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [85 x i8] c"Read back colors 0x%08x and 0x%08x close to unfiltered color, assuming no filtering\0A\00", align 1
+@.str.1 = private unnamed_addr constant [70 x i8] c"Read back colors are 0x%08x and 0x%08x, assuming texture is filtered\0A\00", align 1
+@TRUE = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [67 x i8] c"Error during filtering test for format %x, returning no filtering\0A\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.wined3d_gl_info*, i32)* @check_filter to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @check_filter(%struct.wined3d_gl_info* %0, i32 %1) #0 {
+  %3 = alloca %struct.wined3d_gl_info*, align 8
+  %4 = alloca i32, align 4
+  %5 = alloca i32, align 4
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca [16 x i32], align 16
+  %9 = alloca i32, align 4
+  store %struct.wined3d_gl_info* %0, %struct.wined3d_gl_info** %3, align 8
+  store i32 %1, i32* %4, align 4
+  %10 = load i32, i32* @FALSE, align 4
+  store i32 %10, i32* %9, align 4
+  br label %11
+
+11:                                               ; preds = %19, %2
+  %12 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %13 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %12, i32 0, i32 0
+  %14 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %13, i32 0, i32 0
+  %15 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %14, i32 0, i32 0
+  %16 = load i64 (...)*, i64 (...)** %15, align 8
+  %17 = call i64 (...) %16()
+  %18 = icmp ne i64 %17, 0
+  br i1 %18, label %19, label %20
+
+19:                                               ; preds = %11
+  br label %11
+
+20:                                               ; preds = %11
+  %21 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %22 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %21, i32 0, i32 0
+  %23 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %22, i32 0, i32 0
+  %24 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %23, i32 0, i32 18
+  %25 = load i32 (i32, i32*)*, i32 (i32, i32*)** %24, align 8
+  %26 = call i32 %25(i32 1, i32* %7)
+  %27 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %28 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %27, i32 0, i32 0
+  %29 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %28, i32 0, i32 0
+  %30 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %29, i32 0, i32 4
+  %31 = load i32 (i32, i32)*, i32 (i32, i32)** %30, align 8
+  %32 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %33 = load i32, i32* %7, align 4
+  %34 = call i32 %31(i32 %32, i32 %33)
+  %35 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 0
+  %36 = call i32 @memset(i32* %35, i32 126, i32 64)
+  %37 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %38 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %37, i32 0, i32 0
+  %39 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %38, i32 0, i32 0
+  %40 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %39, i32 0, i32 17
+  %41 = load i32 (i32, i32, i32, i32, i32, i32, i32, i32, i32*)*, i32 (i32, i32, i32, i32, i32, i32, i32, i32, i32*)** %40, align 8
+  %42 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %43 = load i32, i32* @GL_RGBA8, align 4
+  %44 = load i32, i32* @GL_RGBA, align 4
+  %45 = load i32, i32* @GL_UNSIGNED_INT_8_8_8_8, align 4
+  %46 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 0
+  %47 = call i32 %41(i32 %42, i32 0, i32 %43, i32 16, i32 1, i32 0, i32 %44, i32 %45, i32* %46)
+  %48 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %49 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %48, i32 0, i32 0
+  %50 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %49, i32 0, i32 0
+  %51 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %50, i32 0, i32 16
+  %52 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %51, align 8
+  %53 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %54 = load i32, i32* @GL_TEXTURE_MIN_FILTER, align 4
+  %55 = load i32, i32* @GL_NEAREST, align 4
+  %56 = call i32 %52(i32 %53, i32 %54, i32 %55)
+  %57 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %58 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %57, i32 0, i32 0
+  %59 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %58, i32 0, i32 0
+  %60 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %59, i32 0, i32 16
+  %61 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %60, align 8
+  %62 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %63 = load i32, i32* @GL_TEXTURE_MAG_FILTER, align 4
+  %64 = load i32, i32* @GL_NEAREST, align 4
+  %65 = call i32 %61(i32 %62, i32 %63, i32 %64)
+  %66 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %67 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %66, i32 0, i32 0
+  %68 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %67, i32 0, i32 0
+  %69 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %68, i32 0, i32 16
+  %70 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %69, align 8
+  %71 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %72 = load i32, i32* @GL_TEXTURE_WRAP_S, align 4
+  %73 = load i32, i32* @GL_CLAMP_TO_EDGE, align 4
+  %74 = call i32 %70(i32 %71, i32 %72, i32 %73)
+  %75 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %76 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %75, i32 0, i32 0
+  %77 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %76, i32 0, i32 0
+  %78 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %77, i32 0, i32 16
+  %79 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %78, align 8
+  %80 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %81 = load i32, i32* @GL_TEXTURE_WRAP_T, align 4
+  %82 = load i32, i32* @GL_CLAMP_TO_EDGE, align 4
+  %83 = call i32 %79(i32 %80, i32 %81, i32 %82)
+  %84 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %85 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %84, i32 0, i32 0
+  %86 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %85, i32 0, i32 0
+  %87 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %86, i32 0, i32 16
+  %88 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %87, align 8
+  %89 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %90 = load i32, i32* @GL_TEXTURE_WRAP_R, align 4
+  %91 = load i32, i32* @GL_CLAMP_TO_EDGE, align 4
+  %92 = call i32 %88(i32 %89, i32 %90, i32 %91)
+  %93 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %94 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %93, i32 0, i32 0
+  %95 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %94, i32 0, i32 0
+  %96 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %95, i32 0, i32 18
+  %97 = load i32 (i32, i32*)*, i32 (i32, i32*)** %96, align 8
+  %98 = call i32 %97(i32 1, i32* %5)
+  %99 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %100 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %99, i32 0, i32 0
+  %101 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %100, i32 0, i32 0
+  %102 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %101, i32 0, i32 4
+  %103 = load i32 (i32, i32)*, i32 (i32, i32)** %102, align 8
+  %104 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %105 = load i32, i32* %5, align 4
+  %106 = call i32 %103(i32 %104, i32 %105)
+  %107 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %108 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %107, i32 0, i32 0
+  %109 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %108, i32 0, i32 0
+  %110 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %109, i32 0, i32 17
+  %111 = load i32 (i32, i32, i32, i32, i32, i32, i32, i32, i32*)*, i32 (i32, i32, i32, i32, i32, i32, i32, i32, i32*)** %110, align 8
+  %112 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %113 = load i32, i32* %4, align 4
+  %114 = load i32, i32* @GL_BGRA, align 4
+  %115 = load i32, i32* @GL_UNSIGNED_INT_8_8_8_8_REV, align 4
+  %116 = call i32 %111(i32 %112, i32 0, i32 %113, i32 2, i32 1, i32 0, i32 %114, i32 %115, i32* getelementptr inbounds ([2 x i32], [2 x i32]* @check_filter.data, i64 0, i64 0))
+  %117 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %118 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %117, i32 0, i32 0
+  %119 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %118, i32 0, i32 0
+  %120 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %119, i32 0, i32 16
+  %121 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %120, align 8
+  %122 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %123 = load i32, i32* @GL_TEXTURE_MIN_FILTER, align 4
+  %124 = load i32, i32* @GL_LINEAR, align 4
+  %125 = call i32 %121(i32 %122, i32 %123, i32 %124)
+  %126 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %127 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %126, i32 0, i32 0
+  %128 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %127, i32 0, i32 0
+  %129 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %128, i32 0, i32 16
+  %130 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %129, align 8
+  %131 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %132 = load i32, i32* @GL_TEXTURE_MAG_FILTER, align 4
+  %133 = load i32, i32* @GL_LINEAR, align 4
+  %134 = call i32 %130(i32 %131, i32 %132, i32 %133)
+  %135 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %136 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %135, i32 0, i32 0
+  %137 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %136, i32 0, i32 0
+  %138 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %137, i32 0, i32 16
+  %139 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %138, align 8
+  %140 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %141 = load i32, i32* @GL_TEXTURE_WRAP_S, align 4
+  %142 = load i32, i32* @GL_CLAMP_TO_EDGE, align 4
+  %143 = call i32 %139(i32 %140, i32 %141, i32 %142)
+  %144 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %145 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %144, i32 0, i32 0
+  %146 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %145, i32 0, i32 0
+  %147 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %146, i32 0, i32 16
+  %148 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %147, align 8
+  %149 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %150 = load i32, i32* @GL_TEXTURE_WRAP_T, align 4
+  %151 = load i32, i32* @GL_CLAMP_TO_EDGE, align 4
+  %152 = call i32 %148(i32 %149, i32 %150, i32 %151)
+  %153 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %154 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %153, i32 0, i32 0
+  %155 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %154, i32 0, i32 0
+  %156 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %155, i32 0, i32 16
+  %157 = load i32 (i32, i32, i32)*, i32 (i32, i32, i32)** %156, align 8
+  %158 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %159 = load i32, i32* @GL_TEXTURE_WRAP_R, align 4
+  %160 = load i32, i32* @GL_CLAMP_TO_EDGE, align 4
+  %161 = call i32 %157(i32 %158, i32 %159, i32 %160)
+  %162 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %163 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %162, i32 0, i32 0
+  %164 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %163, i32 0, i32 0
+  %165 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %164, i32 0, i32 15
+  %166 = load i32 (i32)*, i32 (i32)** %165, align 8
+  %167 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %168 = call i32 %166(i32 %167)
+  %169 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %170 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %169, i32 0, i32 1
+  %171 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %170, i32 0, i32 3
+  %172 = load i32 (i32, i32*)*, i32 (i32, i32*)** %171, align 8
+  %173 = call i32 %172(i32 1, i32* %6)
+  %174 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %175 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %174, i32 0, i32 1
+  %176 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %175, i32 0, i32 1
+  %177 = load i32 (i32, i32)*, i32 (i32, i32)** %176, align 8
+  %178 = load i32, i32* @GL_FRAMEBUFFER, align 4
+  %179 = load i32, i32* %6, align 4
+  %180 = call i32 %177(i32 %178, i32 %179)
+  %181 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %182 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %181, i32 0, i32 1
+  %183 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %182, i32 0, i32 2
+  %184 = load i32 (i32, i32, i32, i32, i32)*, i32 (i32, i32, i32, i32, i32)** %183, align 8
+  %185 = load i32, i32* @GL_FRAMEBUFFER, align 4
+  %186 = load i32, i32* @GL_COLOR_ATTACHMENT0, align 4
+  %187 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %188 = load i32, i32* %7, align 4
+  %189 = call i32 %184(i32 %185, i32 %186, i32 %187, i32 %188, i32 0)
+  %190 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %191 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %190, i32 0, i32 0
+  %192 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %191, i32 0, i32 0
+  %193 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %192, i32 0, i32 14
+  %194 = load i32 (i32)*, i32 (i32)** %193, align 8
+  %195 = load i32, i32* @GL_COLOR_ATTACHMENT0, align 4
+  %196 = call i32 %194(i32 %195)
+  %197 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %198 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %197, i32 0, i32 0
+  %199 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %198, i32 0, i32 0
+  %200 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %199, i32 0, i32 13
+  %201 = load i32 (i32, i32, i32, i32)*, i32 (i32, i32, i32, i32)** %200, align 8
+  %202 = call i32 %201(i32 0, i32 0, i32 16, i32 1)
+  %203 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %204 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %203, i32 0, i32 0
+  %205 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %204, i32 0, i32 0
+  %206 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %205, i32 0, i32 1
+  %207 = load i32 (i32)*, i32 (i32)** %206, align 8
+  %208 = load i32, i32* @GL_LIGHTING, align 4
+  %209 = call i32 %207(i32 %208)
+  %210 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %211 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %210, i32 0, i32 0
+  %212 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %211, i32 0, i32 0
+  %213 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %212, i32 0, i32 12
+  %214 = load i32 (i32)*, i32 (i32)** %213, align 8
+  %215 = load i32, i32* @GL_MODELVIEW, align 4
+  %216 = call i32 %214(i32 %215)
+  %217 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %218 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %217, i32 0, i32 0
+  %219 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %218, i32 0, i32 0
+  %220 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %219, i32 0, i32 11
+  %221 = load i32 (...)*, i32 (...)** %220, align 8
+  %222 = call i32 (...) %221()
+  %223 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %224 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %223, i32 0, i32 0
+  %225 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %224, i32 0, i32 0
+  %226 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %225, i32 0, i32 12
+  %227 = load i32 (i32)*, i32 (i32)** %226, align 8
+  %228 = load i32, i32* @GL_PROJECTION, align 4
+  %229 = call i32 %227(i32 %228)
+  %230 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %231 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %230, i32 0, i32 0
+  %232 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %231, i32 0, i32 0
+  %233 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %232, i32 0, i32 11
+  %234 = load i32 (...)*, i32 (...)** %233, align 8
+  %235 = call i32 (...) %234()
+  %236 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %237 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %236, i32 0, i32 0
+  %238 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %237, i32 0, i32 0
+  %239 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %238, i32 0, i32 10
+  %240 = load i32 (i32, i32, i32, i32)*, i32 (i32, i32, i32, i32)** %239, align 8
+  %241 = call i32 %240(i32 0, i32 1, i32 0, i32 0)
+  %242 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %243 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %242, i32 0, i32 0
+  %244 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %243, i32 0, i32 0
+  %245 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %244, i32 0, i32 9
+  %246 = load i32 (i32)*, i32 (i32)** %245, align 8
+  %247 = load i32, i32* @GL_COLOR_BUFFER_BIT, align 4
+  %248 = call i32 %246(i32 %247)
+  %249 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %250 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %249, i32 0, i32 0
+  %251 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %250, i32 0, i32 0
+  %252 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %251, i32 0, i32 8
+  %253 = load i32 (i32)*, i32 (i32)** %252, align 8
+  %254 = load i32, i32* @GL_TRIANGLE_STRIP, align 4
+  %255 = call i32 %253(i32 %254)
+  %256 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %257 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %256, i32 0, i32 0
+  %258 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %257, i32 0, i32 0
+  %259 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %258, i32 0, i32 7
+  %260 = load i32 (double, double)*, i32 (double, double)** %259, align 8
+  %261 = call i32 %260(double 0.000000e+00, double 0.000000e+00)
+  %262 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %263 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %262, i32 0, i32 0
+  %264 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %263, i32 0, i32 0
+  %265 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %264, i32 0, i32 6
+  %266 = load i32 (float, float)*, i32 (float, float)** %265, align 8
+  %267 = call i32 %266(float -1.000000e+00, float -1.000000e+00)
+  %268 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %269 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %268, i32 0, i32 0
+  %270 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %269, i32 0, i32 0
+  %271 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %270, i32 0, i32 7
+  %272 = load i32 (double, double)*, i32 (double, double)** %271, align 8
+  %273 = call i32 %272(double 1.000000e+00, double 0.000000e+00)
+  %274 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %275 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %274, i32 0, i32 0
+  %276 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %275, i32 0, i32 0
+  %277 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %276, i32 0, i32 6
+  %278 = load i32 (float, float)*, i32 (float, float)** %277, align 8
+  %279 = call i32 %278(float 1.000000e+00, float -1.000000e+00)
+  %280 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %281 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %280, i32 0, i32 0
+  %282 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %281, i32 0, i32 0
+  %283 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %282, i32 0, i32 7
+  %284 = load i32 (double, double)*, i32 (double, double)** %283, align 8
+  %285 = call i32 %284(double 0.000000e+00, double 1.000000e+00)
+  %286 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %287 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %286, i32 0, i32 0
+  %288 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %287, i32 0, i32 0
+  %289 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %288, i32 0, i32 6
+  %290 = load i32 (float, float)*, i32 (float, float)** %289, align 8
+  %291 = call i32 %290(float -1.000000e+00, float 1.000000e+00)
+  %292 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %293 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %292, i32 0, i32 0
+  %294 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %293, i32 0, i32 0
+  %295 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %294, i32 0, i32 7
+  %296 = load i32 (double, double)*, i32 (double, double)** %295, align 8
+  %297 = call i32 %296(double 1.000000e+00, double 1.000000e+00)
+  %298 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %299 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %298, i32 0, i32 0
+  %300 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %299, i32 0, i32 0
+  %301 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %300, i32 0, i32 6
+  %302 = load i32 (float, float)*, i32 (float, float)** %301, align 8
+  %303 = call i32 %302(float 1.000000e+00, float 1.000000e+00)
+  %304 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %305 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %304, i32 0, i32 0
+  %306 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %305, i32 0, i32 0
+  %307 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %306, i32 0, i32 5
+  %308 = load i32 (...)*, i32 (...)** %307, align 8
+  %309 = call i32 (...) %308()
+  %310 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %311 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %310, i32 0, i32 0
+  %312 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %311, i32 0, i32 0
+  %313 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %312, i32 0, i32 4
+  %314 = load i32 (i32, i32)*, i32 (i32, i32)** %313, align 8
+  %315 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %316 = load i32, i32* %7, align 4
+  %317 = call i32 %314(i32 %315, i32 %316)
+  %318 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 0
+  %319 = call i32 @memset(i32* %318, i32 127, i32 64)
+  %320 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %321 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %320, i32 0, i32 0
+  %322 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %321, i32 0, i32 0
+  %323 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %322, i32 0, i32 3
+  %324 = load i32 (i32, i32, i32, i32, i32*)*, i32 (i32, i32, i32, i32, i32*)** %323, align 8
+  %325 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %326 = load i32, i32* @GL_BGRA, align 4
+  %327 = load i32, i32* @GL_UNSIGNED_INT_8_8_8_8_REV, align 4
+  %328 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 0
+  %329 = call i32 %324(i32 %325, i32 0, i32 %326, i32 %327, i32* %328)
+  %330 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 6
+  %331 = load i32, i32* %330, align 8
+  %332 = call i64 @color_match(i32 %331, i32 -1, i32 5)
+  %333 = icmp ne i64 %332, 0
+  br i1 %333, label %349, label %334
+
+334:                                              ; preds = %20
+  %335 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 6
+  %336 = load i32, i32* %335, align 8
+  %337 = call i64 @color_match(i32 %336, i32 0, i32 5)
+  %338 = icmp ne i64 %337, 0
+  br i1 %338, label %349, label %339
+
+339:                                              ; preds = %334
+  %340 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 9
+  %341 = load i32, i32* %340, align 4
+  %342 = call i64 @color_match(i32 %341, i32 -1, i32 5)
+  %343 = icmp ne i64 %342, 0
+  br i1 %343, label %349, label %344
+
+344:                                              ; preds = %339
+  %345 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 9
+  %346 = load i32, i32* %345, align 4
+  %347 = call i64 @color_match(i32 %346, i32 0, i32 5)
+  %348 = icmp ne i64 %347, 0
+  br i1 %348, label %349, label %356
+
+349:                                              ; preds = %344, %339, %334, %20
+  %350 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 6
+  %351 = load i32, i32* %350, align 8
+  %352 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 9
+  %353 = load i32, i32* %352, align 4
+  %354 = call i32 @TRACE(i8* getelementptr inbounds ([85 x i8], [85 x i8]* @.str, i64 0, i64 0), i32 %351, i32 %353)
+  %355 = load i32, i32* @FALSE, align 4
+  store i32 %355, i32* %9, align 4
+  br label %363
+
+356:                                              ; preds = %344
+  %357 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 6
+  %358 = load i32, i32* %357, align 8
+  %359 = getelementptr inbounds [16 x i32], [16 x i32]* %8, i64 0, i64 9
+  %360 = load i32, i32* %359, align 4
+  %361 = call i32 @TRACE(i8* getelementptr inbounds ([70 x i8], [70 x i8]* @.str.1, i64 0, i64 0), i32 %358, i32 %360)
+  %362 = load i32, i32* @TRUE, align 4
+  store i32 %362, i32* %9, align 4
+  br label %363
+
+363:                                              ; preds = %356, %349
+  %364 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %365 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %364, i32 0, i32 1
+  %366 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %365, i32 0, i32 1
+  %367 = load i32 (i32, i32)*, i32 (i32, i32)** %366, align 8
+  %368 = load i32, i32* @GL_FRAMEBUFFER, align 4
+  %369 = call i32 %367(i32 %368, i32 0)
+  %370 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %371 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %370, i32 0, i32 1
+  %372 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %371, i32 0, i32 0
+  %373 = load i32 (i32, i32*)*, i32 (i32, i32*)** %372, align 8
+  %374 = call i32 %373(i32 1, i32* %6)
+  %375 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %376 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %375, i32 0, i32 0
+  %377 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %376, i32 0, i32 0
+  %378 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %377, i32 0, i32 2
+  %379 = load i32 (i32, i32*)*, i32 (i32, i32*)** %378, align 8
+  %380 = call i32 %379(i32 1, i32* %5)
+  %381 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %382 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %381, i32 0, i32 0
+  %383 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %382, i32 0, i32 0
+  %384 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %383, i32 0, i32 2
+  %385 = load i32 (i32, i32*)*, i32 (i32, i32*)** %384, align 8
+  %386 = call i32 %385(i32 1, i32* %7)
+  %387 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %388 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %387, i32 0, i32 0
+  %389 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %388, i32 0, i32 0
+  %390 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %389, i32 0, i32 1
+  %391 = load i32 (i32)*, i32 (i32)** %390, align 8
+  %392 = load i32, i32* @GL_TEXTURE_2D, align 4
+  %393 = call i32 %391(i32 %392)
+  %394 = load %struct.wined3d_gl_info*, %struct.wined3d_gl_info** %3, align 8
+  %395 = getelementptr inbounds %struct.wined3d_gl_info, %struct.wined3d_gl_info* %394, i32 0, i32 0
+  %396 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %395, i32 0, i32 0
+  %397 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %396, i32 0, i32 0
+  %398 = load i64 (...)*, i64 (...)** %397, align 8
+  %399 = call i64 (...) %398()
+  %400 = icmp ne i64 %399, 0
+  br i1 %400, label %401, label %405
+
+401:                                              ; preds = %363
+  %402 = load i32, i32* %4, align 4
+  %403 = call i32 @FIXME(i8* getelementptr inbounds ([67 x i8], [67 x i8]* @.str.2, i64 0, i64 0), i32 %402)
+  %404 = load i32, i32* @FALSE, align 4
+  store i32 %404, i32* %9, align 4
+  br label %405
+
+405:                                              ; preds = %401, %363
+  %406 = load i32, i32* %9, align 4
+  ret i32 %406
+}
+
+declare dso_local i32 @memset(i32*, i32, i32) #1
+
+declare dso_local i64 @color_match(i32, i32, i32) #1
+
+declare dso_local i32 @TRACE(i8*, i32, i32) #1
+
+declare dso_local i32 @FIXME(i8*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

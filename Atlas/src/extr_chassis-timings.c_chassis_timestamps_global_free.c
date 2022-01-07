@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  chassis_timestamps_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * chassis_timestamps_global ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int chassis_timestamps_t ;
+
+
+ int * chassis_timestamps_global ;
+ int g_free (int *) ;
 
 void chassis_timestamps_global_free(chassis_timestamps_t *gl) {
-	if (NULL == gl) {
-		g_free(chassis_timestamps_global);
-	} else {
-		g_free(gl);
-	}
+ if (((void*)0) == gl) {
+  g_free(chassis_timestamps_global);
+ } else {
+  g_free(gl);
+ }
 }

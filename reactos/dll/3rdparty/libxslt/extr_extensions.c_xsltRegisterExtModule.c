@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xsltExtShutdownFunction ;
-typedef  int /*<<< orphan*/  xsltExtInitFunction ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- int xsltRegisterExtModuleFull (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int xsltExtShutdownFunction ;
+typedef int xsltExtInitFunction ;
+typedef int xmlChar ;
+
+
+ int xsltRegisterExtModuleFull (int const*,int ,int ,int *,int *) ;
 
 int
 xsltRegisterExtModule(const xmlChar * URI,
@@ -23,5 +23,5 @@ xsltRegisterExtModule(const xmlChar * URI,
                       xsltExtShutdownFunction shutdownFunc)
 {
     return xsltRegisterExtModuleFull(URI, initFunc, shutdownFunc,
-                                     NULL, NULL);
+                                     ((void*)0), ((void*)0));
 }

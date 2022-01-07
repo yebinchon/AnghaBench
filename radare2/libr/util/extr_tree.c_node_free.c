@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RTreeVisitor ;
-typedef  int /*<<< orphan*/  RTreeNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  r_tree_node_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RTreeVisitor ;
+typedef int RTreeNode ;
+
+
+ int r_tree_node_free (int *) ;
 
 __attribute__((used)) static void node_free (RTreeNode *n, RTreeVisitor *vis) {
-	r_tree_node_free (n);
+ r_tree_node_free (n);
 }

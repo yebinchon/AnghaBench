@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_3__ {char* name; } ;
-typedef  TYPE_1__ AVPixFmtDescriptor ;
+typedef TYPE_1__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int AV_PIX_FMT_NB ; 
- int AV_PIX_FMT_NONE ; 
- int const SWS_AREA ; 
- int const SWS_BICUBIC ; 
- int const SWS_BILINEAR ; 
- int const SWS_FAST_BILINEAR ; 
- int const SWS_POINT ; 
- int const SWS_X ; 
- TYPE_1__* av_pix_fmt_desc_get (int) ; 
- int doTest (int /*<<< orphan*/  const* const*,int*,int,int,int,int,int const,int const,int const,int const,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  sws_isSupportedInput (int) ; 
- int /*<<< orphan*/  sws_isSupportedOutput (int) ; 
+
+ int AV_PIX_FMT_NB ;
+ int AV_PIX_FMT_NONE ;
+ int const SWS_AREA ;
+ int const SWS_BICUBIC ;
+ int const SWS_BILINEAR ;
+ int const SWS_FAST_BILINEAR ;
+ int const SWS_POINT ;
+ int const SWS_X ;
+ TYPE_1__* av_pix_fmt_desc_get (int) ;
+ int doTest (int const* const*,int*,int,int,int,int,int const,int const,int const,int const,int const,int *) ;
+ int fflush (int ) ;
+ int printf (char*,char*,char*) ;
+ int stdout ;
+ int sws_isSupportedInput (int) ;
+ int sws_isSupportedOutput (int) ;
 
 __attribute__((used)) static void selfTest(const uint8_t * const ref[4], int refStride[4],
                      int w, int h,
@@ -40,8 +40,8 @@ __attribute__((used)) static void selfTest(const uint8_t * const ref[4], int ref
 {
     const int flags[] = { SWS_FAST_BILINEAR, SWS_BILINEAR, SWS_BICUBIC,
                           SWS_X, SWS_POINT, SWS_AREA, 0 };
-    const int srcW   = w;
-    const int srcH   = h;
+    const int srcW = w;
+    const int srcH = h;
     const int dstW[] = { srcW - srcW / 3, srcW, srcW + srcW / 3, 0 };
     const int dstH[] = { srcH - srcH / 3, srcH, srcH + srcH / 3, 0 };
     enum AVPixelFormat srcFormat, dstFormat;
@@ -75,7 +75,7 @@ __attribute__((used)) static void selfTest(const uint8_t * const ref[4], int ref
                         res = doTest(ref, refStride, w, h,
                                      srcFormat, dstFormat,
                                      srcW, srcH, dstW[i], dstH[j], flags[k],
-                                     NULL);
+                                     ((void*)0));
             if (dstFormat_in != AV_PIX_FMT_NONE)
                 break;
         }

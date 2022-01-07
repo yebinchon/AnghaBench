@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stringbuf_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_stringbuf_t ;
 struct TYPE_8__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-struct fs_type_defn {struct fs_type_defn* next; int /*<<< orphan*/  fsap_name; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* get_description ) () ;} ;
-typedef  TYPE_2__ fs_library_vtable_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+struct fs_type_defn {struct fs_type_defn* next; int fsap_name; } ;
+struct TYPE_9__ {int (* get_description ) () ;} ;
+typedef TYPE_2__ fs_library_vtable_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ SVN_ERR_FS_UNKNOWN_FS_TYPE ; 
- TYPE_1__* SVN_NO_ERROR ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct fs_type_defn* fs_modules ; 
- TYPE_1__* get_library_vtable_direct (TYPE_2__**,struct fs_type_defn*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 () ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stringbuf_appendcstr (int /*<<< orphan*/ *,char*) ; 
+
+ scalar_t__ SVN_ERR_FS_UNKNOWN_FS_TYPE ;
+ TYPE_1__* SVN_NO_ERROR ;
+ char* apr_psprintf (int *,char*,int ,int ) ;
+ struct fs_type_defn* fs_modules ;
+ TYPE_1__* get_library_vtable_direct (TYPE_2__**,struct fs_type_defn*,int *) ;
+ int stub1 () ;
+ int svn_error_clear (TYPE_1__*) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_stringbuf_appendcstr (int *,char*) ;
 
 svn_error_t *
 svn_fs_print_modules(svn_stringbuf_t *output,

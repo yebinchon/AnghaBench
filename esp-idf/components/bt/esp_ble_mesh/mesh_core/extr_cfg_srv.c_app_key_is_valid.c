@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u16_t ;
 struct bt_mesh_app_key {scalar_t__ net_idx; scalar_t__ app_idx; } ;
 struct TYPE_2__ {struct bt_mesh_app_key* app_keys; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct bt_mesh_app_key*) ; 
- scalar_t__ BLE_MESH_KEY_UNUSED ; 
- TYPE_1__ bt_mesh ; 
+
+ int ARRAY_SIZE (struct bt_mesh_app_key*) ;
+ scalar_t__ BLE_MESH_KEY_UNUSED ;
+ TYPE_1__ bt_mesh ;
 
 __attribute__((used)) static bool app_key_is_valid(u16_t app_idx)
 {
@@ -29,9 +29,9 @@ __attribute__((used)) static bool app_key_is_valid(u16_t app_idx)
 
         if (key->net_idx != BLE_MESH_KEY_UNUSED &&
                 key->app_idx == app_idx) {
-            return true;
+            return 1;
         }
     }
 
-    return false;
+    return 0;
 }

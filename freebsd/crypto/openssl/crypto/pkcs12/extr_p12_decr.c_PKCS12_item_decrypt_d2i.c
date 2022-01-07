@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_ALGOR ;
-struct TYPE_3__ {int /*<<< orphan*/  length; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ ASN1_OCTET_STRING ;
-typedef  int /*<<< orphan*/  ASN1_ITEM ;
 
-/* Variables and functions */
- void* ASN1_item_d2i (int /*<<< orphan*/ *,unsigned char const**,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/  PKCS12_F_PKCS12_ITEM_DECRYPT_D2I ; 
- int /*<<< orphan*/  PKCS12_R_DECODE_ERROR ; 
- int /*<<< orphan*/  PKCS12_R_PKCS12_PBE_CRYPT_ERROR ; 
- int /*<<< orphan*/  PKCS12_pbe_crypt (int /*<<< orphan*/  const*,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char**,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PKCS12err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fwrite (unsigned char const*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int X509_ALGOR ;
+struct TYPE_3__ {int length; int data; } ;
+typedef int FILE ;
+typedef TYPE_1__ ASN1_OCTET_STRING ;
+typedef int ASN1_ITEM ;
+
+
+ void* ASN1_item_d2i (int *,unsigned char const**,int,int const*) ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int OPENSSL_free (unsigned char*) ;
+ int PKCS12_F_PKCS12_ITEM_DECRYPT_D2I ;
+ int PKCS12_R_DECODE_ERROR ;
+ int PKCS12_R_PKCS12_PBE_CRYPT_ERROR ;
+ int PKCS12_pbe_crypt (int const*,char const*,int,int ,int ,unsigned char**,int*,int ) ;
+ int PKCS12err (int ,int ) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fwrite (unsigned char const*,int,int,int *) ;
+ int sprintf (char*,char*,int ) ;
 
 void *PKCS12_item_decrypt_d2i(const X509_ALGOR *algor, const ASN1_ITEM *it,
                               const char *pass, int passlen,
@@ -44,22 +44,10 @@ void *PKCS12_item_decrypt_d2i(const X509_ALGOR *algor, const ASN1_ITEM *it,
                           &out, &outlen, 0)) {
         PKCS12err(PKCS12_F_PKCS12_ITEM_DECRYPT_D2I,
                   PKCS12_R_PKCS12_PBE_CRYPT_ERROR);
-        return NULL;
+        return ((void*)0);
     }
     p = out;
-#ifdef OPENSSL_DEBUG_DECRYPT
-    {
-        FILE *op;
-
-        char fname[30];
-        static int fnm = 1;
-        sprintf(fname, "DER%d", fnm++);
-        op = fopen(fname, "wb");
-        fwrite(p, 1, outlen, op);
-        fclose(op);
-    }
-#endif
-    ret = ASN1_item_d2i(NULL, &p, outlen, it);
+    ret = ASN1_item_d2i(((void*)0), &p, outlen, it);
     if (zbuf)
         OPENSSL_cleanse(out, outlen);
     if (!ret)

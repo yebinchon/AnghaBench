@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  double int64_t ;
-typedef  scalar_t__ int32_t ;
-struct TYPE_2__ {int /*<<< orphan*/  nSize; } ;
 
-/* Variables and functions */
- int MAX (scalar_t__,scalar_t__) ; 
- size_t TSDB_DATA_TYPE_DOUBLE ; 
- int /*<<< orphan*/  TSDB_DATA_TYPE_INT ; 
- scalar_t__ TSQL_SO_ASC ; 
- scalar_t__ isNull (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setNull (char*,size_t,int /*<<< orphan*/ ) ; 
- TYPE_1__* tDataTypeDesc ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef double int64_t ;
+typedef scalar_t__ int32_t ;
+struct TYPE_2__ {int nSize; } ;
+
+
+ int MAX (scalar_t__,scalar_t__) ;
+ size_t TSDB_DATA_TYPE_DOUBLE ;
+ int TSDB_DATA_TYPE_INT ;
+ scalar_t__ TSQL_SO_ASC ;
+ scalar_t__ isNull (char*,int ) ;
+ int setNull (char*,size_t,int ) ;
+ TYPE_1__* tDataTypeDesc ;
 
 void calc_fn_i32_d_rem(void *left, void *right, int32_t numLeft, int32_t numRight, void *output, int32_t order) {
   int32_t *pLeft = (int32_t *)left;

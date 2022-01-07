@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 const uint8_t *ff_avc_mp4_find_startcode(const uint8_t *start,
                                          const uint8_t *end,
@@ -21,12 +21,12 @@ const uint8_t *ff_avc_mp4_find_startcode(const uint8_t *start,
     unsigned int res = 0;
 
     if (end - start < nal_length_size)
-        return NULL;
+        return ((void*)0);
     while (nal_length_size--)
         res = (res << 8) | *start++;
 
     if (res > end - start)
-        return NULL;
+        return ((void*)0);
 
     return start + res;
 }

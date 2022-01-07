@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
 
-/* Variables and functions */
-#define  XLOG_XACT_ABORT 133 
-#define  XLOG_XACT_ABORT_PREPARED 132 
-#define  XLOG_XACT_ASSIGNMENT 131 
-#define  XLOG_XACT_COMMIT 130 
-#define  XLOG_XACT_COMMIT_PREPARED 129 
- int XLOG_XACT_OPMASK ; 
-#define  XLOG_XACT_PREPARE 128 
+
+
+
+typedef int uint8 ;
+
+
+
+
+
+
+
+ int XLOG_XACT_OPMASK ;
+
 
 const char *
 xact_identify(uint8 info)
 {
-	const char *id = NULL;
+ const char *id = ((void*)0);
 
-	switch (info & XLOG_XACT_OPMASK)
-	{
-		case XLOG_XACT_COMMIT:
-			id = "COMMIT";
-			break;
-		case XLOG_XACT_PREPARE:
-			id = "PREPARE";
-			break;
-		case XLOG_XACT_ABORT:
-			id = "ABORT";
-			break;
-		case XLOG_XACT_COMMIT_PREPARED:
-			id = "COMMIT_PREPARED";
-			break;
-		case XLOG_XACT_ABORT_PREPARED:
-			id = "ABORT_PREPARED";
-			break;
-		case XLOG_XACT_ASSIGNMENT:
-			id = "ASSIGNMENT";
-			break;
-	}
+ switch (info & XLOG_XACT_OPMASK)
+ {
+  case 130:
+   id = "COMMIT";
+   break;
+  case 128:
+   id = "PREPARE";
+   break;
+  case 133:
+   id = "ABORT";
+   break;
+  case 129:
+   id = "COMMIT_PREPARED";
+   break;
+  case 132:
+   id = "ABORT_PREPARED";
+   break;
+  case 131:
+   id = "ASSIGNMENT";
+   break;
+ }
 
-	return id;
+ return id;
 }

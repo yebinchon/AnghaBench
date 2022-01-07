@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct KeyInfo {int dummy; } ;
-typedef  int /*<<< orphan*/  Btree ;
-typedef  int /*<<< orphan*/  BtCursor ;
+typedef int Btree ;
+typedef int BtCursor ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT_BKPT ; 
- int btreeCursor (int /*<<< orphan*/ *,int,int,struct KeyInfo*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3BtreeEnter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3BtreeLeave (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_CORRUPT_BKPT ;
+ int btreeCursor (int *,int,int,struct KeyInfo*,int *) ;
+ int sqlite3BtreeEnter (int *) ;
+ int sqlite3BtreeLeave (int *) ;
 
 int sqlite3BtreeCursor(
-  Btree *p,                                   /* The btree */
-  int iTable,                                 /* Root page of table to open */
-  int wrFlag,                                 /* 1 to write. 0 read-only */
-  struct KeyInfo *pKeyInfo,                   /* First arg to xCompare() */
-  BtCursor *pCur                              /* Write new cursor here */
+  Btree *p,
+  int iTable,
+  int wrFlag,
+  struct KeyInfo *pKeyInfo,
+  BtCursor *pCur
 ){
   int rc;
   if( iTable<1 ){

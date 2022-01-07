@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterFormats ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_COMMON_FORMATS (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_formats_ref ; 
- int /*<<< orphan*/  ff_formats_unref ; 
- int /*<<< orphan*/  formats ; 
- int /*<<< orphan*/  in_samplerates ; 
- int /*<<< orphan*/  out_samplerates ; 
+
+
+
+typedef int AVFilterFormats ;
+typedef int AVFilterContext ;
+
+
+ int SET_COMMON_FORMATS (int *,int *,int ,int ,int ,int ,int ) ;
+ int ff_formats_ref ;
+ int ff_formats_unref ;
+ int formats ;
+ int in_samplerates ;
+ int out_samplerates ;
 
 int ff_set_common_samplerates(AVFilterContext *ctx,
                               AVFilterFormats *samplerates)

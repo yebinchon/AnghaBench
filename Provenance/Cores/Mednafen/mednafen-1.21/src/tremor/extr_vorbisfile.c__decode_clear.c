@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ready_state; int /*<<< orphan*/  vb; int /*<<< orphan*/  vd; } ;
-typedef  TYPE_1__ OggVorbis_File ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENED ; 
- int /*<<< orphan*/  vorbis_block_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_dsp_clear (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ready_state; int vb; int vd; } ;
+typedef TYPE_1__ OggVorbis_File ;
+
+
+ int OPENED ;
+ int vorbis_block_clear (int *) ;
+ int vorbis_dsp_clear (int *) ;
 
 __attribute__((used)) static void _decode_clear(OggVorbis_File *vf){
   vorbis_dsp_clear(&vf->vd);

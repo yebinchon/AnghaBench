@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-struct sbc_frame {int frequency; int blocks; int mode; int allocation; int subbands; int bitpool; int channels; int** scale_factor; int*** sb_sample_f; int /*<<< orphan*/  crc_ctx; } ;
-struct TYPE_3__ {int* data; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ AVPacket ;
 
-/* Variables and functions */
- int JOINT_STEREO ; 
- int MSBC_SYNCWORD ; 
- int SBC_SYNCWORD ; 
- int SCALE_OUT_BITS ; 
- int STEREO ; 
- int /*<<< orphan*/  ff_sbc_calculate_bits (struct sbc_frame*,int**) ; 
- int ff_sbc_crc8 (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct sbc_frame {int frequency; int blocks; int mode; int allocation; int subbands; int bitpool; int channels; int** scale_factor; int*** sb_sample_f; int crc_ctx; } ;
+struct TYPE_3__ {int* data; int size; } ;
+typedef int PutBitContext ;
+typedef TYPE_1__ AVPacket ;
+
+
+ int JOINT_STEREO ;
+ int MSBC_SYNCWORD ;
+ int SBC_SYNCWORD ;
+ int SCALE_OUT_BITS ;
+ int STEREO ;
+ int ff_sbc_calculate_bits (struct sbc_frame*,int**) ;
+ int ff_sbc_crc8 (int ,int*,int) ;
+ int flush_put_bits (int *) ;
+ int init_put_bits (int *,int*,int ) ;
+ int put_bits (int *,int,int) ;
+ int put_bits_count (int *) ;
 
 __attribute__((used)) static size_t sbc_pack_frame(AVPacket *avpkt, struct sbc_frame *frame,
                              int joint, bool msbc)
 {
     PutBitContext pb;
 
-    /* Will copy the header parts for CRC-8 calculation here */
+
     uint8_t crc_header[11] = { 0 };
     int crc_pos;
 
     uint32_t audio_sample;
 
-    int ch, sb, blk;        /* channel, subband, block and bit counters */
-    int bits[2][8];         /* bits distribution */
-    uint32_t levels[2][8];  /* levels are derived from that */
+    int ch, sb, blk;
+    int bits[2][8];
+    uint32_t levels[2][8];
     uint32_t sb_sample_delta[2][8];
 
     if (msbc) {
@@ -55,11 +55,11 @@ __attribute__((used)) static size_t sbc_pack_frame(AVPacket *avpkt, struct sbc_f
     } else {
         avpkt->data[0] = SBC_SYNCWORD;
 
-        avpkt->data[1]  = (frame->frequency           & 0x03) << 6;
+        avpkt->data[1] = (frame->frequency & 0x03) << 6;
         avpkt->data[1] |= (((frame->blocks >> 2) - 1) & 0x03) << 4;
-        avpkt->data[1] |= (frame->mode                & 0x03) << 2;
-        avpkt->data[1] |= (frame->allocation          & 0x01) << 1;
-        avpkt->data[1] |= ((frame->subbands == 8)     & 0x01) << 0;
+        avpkt->data[1] |= (frame->mode & 0x03) << 2;
+        avpkt->data[1] |= (frame->allocation & 0x01) << 1;
+        avpkt->data[1] |= ((frame->subbands == 8) & 0x01) << 0;
 
         avpkt->data[2] = frame->bitpool;
 
@@ -68,7 +68,7 @@ __attribute__((used)) static size_t sbc_pack_frame(AVPacket *avpkt, struct sbc_f
             return -5;
     }
 
-    /* Can't fill in crc yet */
+
     crc_header[0] = avpkt->data[1];
     crc_header[1] = avpkt->data[2];
     crc_pos = 16;
@@ -90,7 +90,7 @@ __attribute__((used)) static size_t sbc_pack_frame(AVPacket *avpkt, struct sbc_f
         }
     }
 
-    /* align the last crc byte */
+
     if (crc_pos % 8)
         crc_header[crc_pos >> 3] <<= 8 - (crc_pos % 8);
 

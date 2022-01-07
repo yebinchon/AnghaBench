@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  idct_col (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  idct_col2 (int /*<<< orphan*/ *) ; 
- int idct_row (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stq (int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint16_t ;
+typedef int int16_t ;
+
+
+ int idct_col (int *) ;
+ int idct_col2 (int *) ;
+ int idct_row (int *) ;
+ int stq (int,int *) ;
 
 void ff_simple_idct_axp(int16_t *block)
 {
 
     int i;
-    int rowsZero = 1;           /* all rows except row 0 zero */
-    int rowsConstant = 1;       /* all rows consist of a constant value */
+    int rowsZero = 1;
+    int rowsConstant = 1;
 
     for (i = 0; i < 8; i++) {
         int sparseness = idct_row(block + 8 * i);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int length; unsigned char* data; int /*<<< orphan*/  type; } ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  TYPE_1__ ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_A2I_ASN1_INTEGER ; 
- int /*<<< orphan*/  ASN1_R_NON_HEX_CHARACTERS ; 
- int /*<<< orphan*/  ASN1_R_ODD_NUMBER_OF_CHARS ; 
- int /*<<< orphan*/  ASN1_R_SHORT_LINE ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int BIO_gets (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- unsigned char* OPENSSL_clear_realloc (unsigned char*,int,int) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int OPENSSL_hexchar2int (unsigned char) ; 
- int /*<<< orphan*/  V_ASN1_INTEGER ; 
- int /*<<< orphan*/  ossl_isxdigit (char) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int length; unsigned char* data; int type; } ;
+typedef int BIO ;
+typedef TYPE_1__ ASN1_INTEGER ;
+
+
+ int ASN1_F_A2I_ASN1_INTEGER ;
+ int ASN1_R_NON_HEX_CHARACTERS ;
+ int ASN1_R_ODD_NUMBER_OF_CHARS ;
+ int ASN1_R_SHORT_LINE ;
+ int ASN1err (int ,int ) ;
+ int BIO_gets (int *,char*,int) ;
+ int ERR_R_MALLOC_FAILURE ;
+ unsigned char* OPENSSL_clear_realloc (unsigned char*,int,int) ;
+ int OPENSSL_free (unsigned char*) ;
+ int OPENSSL_hexchar2int (unsigned char) ;
+ int V_ASN1_INTEGER ;
+ int ossl_isxdigit (char) ;
 
 int a2i_ASN1_INTEGER(BIO *bp, ASN1_INTEGER *bs, char *buf, int size)
 {
     int i, j, k, m, n, again, bufsize;
-    unsigned char *s = NULL, *sp;
+    unsigned char *s = ((void*)0), *sp;
     unsigned char *bufp;
     int num = 0, slen = 0, first = 1;
 
@@ -61,9 +61,9 @@ int a2i_ASN1_INTEGER(BIO *bp, ASN1_INTEGER *bs, char *buf, int size)
             }
         }
         buf[i] = '\0';
-        /*
-         * We have now cleared all the crap off the end of the line
-         */
+
+
+
         if (i < 2)
             goto err;
 
@@ -85,7 +85,7 @@ int a2i_ASN1_INTEGER(BIO *bp, ASN1_INTEGER *bs, char *buf, int size)
         i /= 2;
         if (num + i > slen) {
             sp = OPENSSL_clear_realloc(s, slen, num + i * 2);
-            if (sp == NULL) {
+            if (sp == ((void*)0)) {
                 ASN1err(ASN1_F_A2I_ASN1_INTEGER, ERR_R_MALLOC_FAILURE);
                 OPENSSL_free(s);
                 return 0;

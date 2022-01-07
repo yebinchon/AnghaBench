@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ObjectAddress ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- char* GenerateBackupNameForProcCollision (int /*<<< orphan*/  const*) ; 
- char* GenerateBackupNameForTypeCollision (int /*<<< orphan*/  const*) ; 
-#define  OCLASS_PROC 129 
-#define  OCLASS_TYPE 128 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- int getObjectClass (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int ObjectAddress ;
+
+
+ int ERROR ;
+ char* GenerateBackupNameForProcCollision (int const*) ;
+ char* GenerateBackupNameForTypeCollision (int const*) ;
+
+
+ int ereport (int ,int ) ;
+ int errdetail (char*) ;
+ int errmsg (char*) ;
+ int getObjectClass (int const*) ;
 
 __attribute__((used)) static char *
 GenerateBackupNameForCollision(const ObjectAddress *address)
 {
-	switch (getObjectClass(address))
-	{
-		case OCLASS_PROC:
-		{
-			return GenerateBackupNameForProcCollision(address);
-		}
+ switch (getObjectClass(address))
+ {
+  case 129:
+  {
+   return GenerateBackupNameForProcCollision(address);
+  }
 
-		case OCLASS_TYPE:
-		{
-			return GenerateBackupNameForTypeCollision(address);
-		}
+  case 128:
+  {
+   return GenerateBackupNameForTypeCollision(address);
+  }
 
-		default:
-		{
-			ereport(ERROR, (errmsg("unsupported object to construct a rename statement"),
-							errdetail(
-								"unable to generate a backup name for the old type")));
-		}
-	}
+  default:
+  {
+   ereport(ERROR, (errmsg("unsupported object to construct a rename statement"),
+       errdetail(
+        "unable to generate a backup name for the old type")));
+  }
+ }
 }

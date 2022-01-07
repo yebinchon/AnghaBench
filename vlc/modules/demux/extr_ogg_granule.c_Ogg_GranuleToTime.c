@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-typedef  int /*<<< orphan*/  logical_stream_t ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Ogg_GranuleIsValid (int /*<<< orphan*/  const*,int) ; 
- int Ogg_GranuleToSample (int /*<<< orphan*/  const*,int) ; 
- int Ogg_GranuleToSampleDelta (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  Ogg_SampleToTime (int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  VLC_TICK_INVALID ; 
+
+
+
+typedef int vlc_tick_t ;
+typedef int logical_stream_t ;
+typedef int int64_t ;
+
+
+ int Ogg_GranuleIsValid (int const*,int) ;
+ int Ogg_GranuleToSample (int const*,int) ;
+ int Ogg_GranuleToSampleDelta (int const*,int) ;
+ int Ogg_SampleToTime (int const*,int,int) ;
+ int VLC_TICK_INVALID ;
 
 vlc_tick_t Ogg_GranuleToTime( const logical_stream_t *p_stream, int64_t i_granule,
                            bool b_start, bool b_pts )

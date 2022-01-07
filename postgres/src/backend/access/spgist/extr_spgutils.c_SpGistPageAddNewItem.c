@@ -1,130 +1,130 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ tupstate; } ;
 struct TYPE_4__ {scalar_t__ nPlaceholder; } ;
-typedef  int /*<<< orphan*/  SpGistState ;
-typedef  TYPE_1__* SpGistPageOpaque ;
-typedef  TYPE_2__* SpGistDeadTuple ;
-typedef  scalar_t__ Size ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  scalar_t__ OffsetNumber ;
-typedef  int /*<<< orphan*/  Item ;
+typedef int SpGistState ;
+typedef TYPE_1__* SpGistPageOpaque ;
+typedef TYPE_2__* SpGistDeadTuple ;
+typedef scalar_t__ Size ;
+typedef int Page ;
+typedef scalar_t__ OffsetNumber ;
+typedef int Item ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ FirstOffsetNumber ; 
- scalar_t__ InvalidOffsetNumber ; 
- scalar_t__ MAXALIGN (scalar_t__) ; 
- int /*<<< orphan*/  PANIC ; 
- scalar_t__ PageAddItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int,int) ; 
- scalar_t__ PageGetExactFreeSpace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItemId (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ PageGetMaxOffsetNumber (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageIndexTupleDelete (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ SGDTSIZE ; 
- scalar_t__ SPGIST_PLACEHOLDER ; 
- TYPE_1__* SpGistPageGetOpaque (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
+
+ int Assert (int) ;
+ int ERROR ;
+ scalar_t__ FirstOffsetNumber ;
+ scalar_t__ InvalidOffsetNumber ;
+ scalar_t__ MAXALIGN (scalar_t__) ;
+ int PANIC ;
+ scalar_t__ PageAddItem (int ,int ,scalar_t__,scalar_t__,int,int) ;
+ scalar_t__ PageGetExactFreeSpace (int ) ;
+ int PageGetItem (int ,int ) ;
+ int PageGetItemId (int ,scalar_t__) ;
+ scalar_t__ PageGetMaxOffsetNumber (int ) ;
+ int PageIndexTupleDelete (int ,scalar_t__) ;
+ scalar_t__ SGDTSIZE ;
+ scalar_t__ SPGIST_PLACEHOLDER ;
+ TYPE_1__* SpGistPageGetOpaque (int ) ;
+ int elog (int ,char*,int) ;
 
 OffsetNumber
 SpGistPageAddNewItem(SpGistState *state, Page page, Item item, Size size,
-					 OffsetNumber *startOffset, bool errorOK)
+      OffsetNumber *startOffset, bool errorOK)
 {
-	SpGistPageOpaque opaque = SpGistPageGetOpaque(page);
-	OffsetNumber i,
-				maxoff,
-				offnum;
+ SpGistPageOpaque opaque = SpGistPageGetOpaque(page);
+ OffsetNumber i,
+    maxoff,
+    offnum;
 
-	if (opaque->nPlaceholder > 0 &&
-		PageGetExactFreeSpace(page) + SGDTSIZE >= MAXALIGN(size))
-	{
-		/* Try to replace a placeholder */
-		maxoff = PageGetMaxOffsetNumber(page);
-		offnum = InvalidOffsetNumber;
+ if (opaque->nPlaceholder > 0 &&
+  PageGetExactFreeSpace(page) + SGDTSIZE >= MAXALIGN(size))
+ {
 
-		for (;;)
-		{
-			if (startOffset && *startOffset != InvalidOffsetNumber)
-				i = *startOffset;
-			else
-				i = FirstOffsetNumber;
-			for (; i <= maxoff; i++)
-			{
-				SpGistDeadTuple it = (SpGistDeadTuple) PageGetItem(page,
-																   PageGetItemId(page, i));
+  maxoff = PageGetMaxOffsetNumber(page);
+  offnum = InvalidOffsetNumber;
 
-				if (it->tupstate == SPGIST_PLACEHOLDER)
-				{
-					offnum = i;
-					break;
-				}
-			}
+  for (;;)
+  {
+   if (startOffset && *startOffset != InvalidOffsetNumber)
+    i = *startOffset;
+   else
+    i = FirstOffsetNumber;
+   for (; i <= maxoff; i++)
+   {
+    SpGistDeadTuple it = (SpGistDeadTuple) PageGetItem(page,
+                   PageGetItemId(page, i));
 
-			/* Done if we found a placeholder */
-			if (offnum != InvalidOffsetNumber)
-				break;
+    if (it->tupstate == SPGIST_PLACEHOLDER)
+    {
+     offnum = i;
+     break;
+    }
+   }
 
-			if (startOffset && *startOffset != InvalidOffsetNumber)
-			{
-				/* Hint was no good, re-search from beginning */
-				*startOffset = InvalidOffsetNumber;
-				continue;
-			}
 
-			/* Hmm, no placeholder found? */
-			opaque->nPlaceholder = 0;
-			break;
-		}
+   if (offnum != InvalidOffsetNumber)
+    break;
 
-		if (offnum != InvalidOffsetNumber)
-		{
-			/* Replace the placeholder tuple */
-			PageIndexTupleDelete(page, offnum);
+   if (startOffset && *startOffset != InvalidOffsetNumber)
+   {
 
-			offnum = PageAddItem(page, item, size, offnum, false, false);
+    *startOffset = InvalidOffsetNumber;
+    continue;
+   }
 
-			/*
-			 * We should not have failed given the size check at the top of
-			 * the function, but test anyway.  If we did fail, we must PANIC
-			 * because we've already deleted the placeholder tuple, and
-			 * there's no other way to keep the damage from getting to disk.
-			 */
-			if (offnum != InvalidOffsetNumber)
-			{
-				Assert(opaque->nPlaceholder > 0);
-				opaque->nPlaceholder--;
-				if (startOffset)
-					*startOffset = offnum + 1;
-			}
-			else
-				elog(PANIC, "failed to add item of size %u to SPGiST index page",
-					 (int) size);
 
-			return offnum;
-		}
-	}
+   opaque->nPlaceholder = 0;
+   break;
+  }
 
-	/* No luck in replacing a placeholder, so just add it to the page */
-	offnum = PageAddItem(page, item, size,
-						 InvalidOffsetNumber, false, false);
+  if (offnum != InvalidOffsetNumber)
+  {
 
-	if (offnum == InvalidOffsetNumber && !errorOK)
-		elog(ERROR, "failed to add item of size %u to SPGiST index page",
-			 (int) size);
+   PageIndexTupleDelete(page, offnum);
 
-	return offnum;
+   offnum = PageAddItem(page, item, size, offnum, 0, 0);
+
+
+
+
+
+
+
+   if (offnum != InvalidOffsetNumber)
+   {
+    Assert(opaque->nPlaceholder > 0);
+    opaque->nPlaceholder--;
+    if (startOffset)
+     *startOffset = offnum + 1;
+   }
+   else
+    elog(PANIC, "failed to add item of size %u to SPGiST index page",
+      (int) size);
+
+   return offnum;
+  }
+ }
+
+
+ offnum = PageAddItem(page, item, size,
+       InvalidOffsetNumber, 0, 0);
+
+ if (offnum == InvalidOffsetNumber && !errorOK)
+  elog(ERROR, "failed to add item of size %u to SPGiST index page",
+    (int) size);
+
+ return offnum;
 }

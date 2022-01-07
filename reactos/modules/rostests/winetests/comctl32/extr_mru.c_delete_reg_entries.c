@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  REG_TEST_BASEKEYA ; 
- int /*<<< orphan*/  REG_TEST_BASESUBKEYA ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mru_RegDeleteTreeA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HKEY ;
+
+
+ int HKEY_CURRENT_USER ;
+ int KEY_ALL_ACCESS ;
+ int REG_TEST_BASEKEYA ;
+ int REG_TEST_BASESUBKEYA ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExA (int ,int ,int ,int ,int *) ;
+ int mru_RegDeleteTreeA (int ,int ) ;
 
 __attribute__((used)) static void delete_reg_entries(void)
 {

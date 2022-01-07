@@ -1,148 +1,135 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LexerState ;
-typedef  char Codepoint ;
 
-/* Variables and functions */
- char EOF_CODEPOINT ; 
- int LEXER_ERROR ; 
-#define  LEXING_NUMBER_AFTER_DOT 139 
-#define  LEXING_NUMBER_AFTER_E 138 
-#define  LEXING_NUMBER_AFTER_EXPONENT_SIGN 137 
-#define  LEXING_NUMBER_AFTER_LEADING_NEGATIVE_ZERO 136 
-#define  LEXING_NUMBER_AFTER_LEADING_ZERO 135 
-#define  LEXING_NUMBER_AFTER_MINUS 134 
-#define  LEXING_NUMBER_AFTER_X 133 
-#define  LEXING_NUMBER_DECIMAL_DIGITS 132 
-#define  LEXING_NUMBER_EXPONENT_DIGITS 131 
-#define  LEXING_NUMBER_FRACTIONAL_DIGITS 130 
-#define  LEXING_NUMBER_HEX_DIGITS 129 
-#define  LEXING_WHITESPACE 128 
 
+
+
+typedef int LexerState ;
+typedef char Codepoint ;
+
+
+ char EOF_CODEPOINT ;
+ int LEXER_ERROR ;
 __attribute__((used)) static LexerState LexNumberCharacter(LexerState state, Codepoint c)
 {
    switch (state)
    {
-      case LEXING_WHITESPACE:
+      case 128:
          if (c == '-')
-            state = LEXING_NUMBER_AFTER_MINUS;
+            state = 134;
          else if (c == '0')
-            state = LEXING_NUMBER_AFTER_LEADING_ZERO;
+            state = 135;
          else if (c >= '1' && c <= '9')
-            state = LEXING_NUMBER_DECIMAL_DIGITS;
+            state = 132;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_AFTER_MINUS:
+      case 134:
          if (c == '0')
-            state = LEXING_NUMBER_AFTER_LEADING_NEGATIVE_ZERO;
+            state = 136;
          else if (c >= '1' && c <= '9')
-            state = LEXING_NUMBER_DECIMAL_DIGITS;
+            state = 132;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_AFTER_LEADING_ZERO:
-      case LEXING_NUMBER_AFTER_LEADING_NEGATIVE_ZERO:
+      case 135:
+      case 136:
          if (c == '.')
-            state = LEXING_NUMBER_AFTER_DOT;
+            state = 139;
          else if (c == 'e' || c == 'E')
-            state = LEXING_NUMBER_AFTER_E;
-         else if ((c == 'x' || c == 'X') && state == LEXING_NUMBER_AFTER_LEADING_ZERO)
-            state = LEXING_NUMBER_AFTER_X;
+            state = 138;
+         else if ((c == 'x' || c == 'X') && state == 135)
+            state = 133;
          else if (c == EOF_CODEPOINT)
-            state = LEXING_WHITESPACE;
+            state = 128;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_AFTER_X:
+      case 133:
          if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'))
-            state = LEXING_NUMBER_HEX_DIGITS;
+            state = 129;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_HEX_DIGITS:
+      case 129:
          if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'))
          {
-            /* Still LEXING_NUMBER_HEX_DIGITS. */
+
          }
          else if (c == EOF_CODEPOINT)
-            state = LEXING_WHITESPACE;
+            state = 128;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_DECIMAL_DIGITS:
+      case 132:
          if (c >= '0' && c <= '9')
          {
-            /* Still LEXING_NUMBER_DECIMAL_DIGITS. */
+
          }
          else if (c == '.')
-            state = LEXING_NUMBER_AFTER_DOT;
+            state = 139;
          else if (c == 'e' || c == 'E')
-            state = LEXING_NUMBER_AFTER_E;
+            state = 138;
          else if (c == EOF_CODEPOINT)
-            state = LEXING_WHITESPACE;
+            state = 128;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_AFTER_DOT:
+      case 139:
          if (c >= '0' && c <= '9')
-            state = LEXING_NUMBER_FRACTIONAL_DIGITS;
+            state = 130;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_FRACTIONAL_DIGITS:
+      case 130:
          if (c >= '0' && c <= '9')
          {
-            /* Still LEXING_NUMBER_FRACTIONAL_DIGITS. */
+
          }
          else if (c == 'e' || c == 'E')
-            state = LEXING_NUMBER_AFTER_E;
+            state = 138;
          else if (c == EOF_CODEPOINT)
-            state = LEXING_WHITESPACE;
+            state = 128;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_AFTER_E:
+      case 138:
          if (c == '+' || c == '-')
-            state = LEXING_NUMBER_AFTER_EXPONENT_SIGN;
+            state = 137;
          else if (c >= '0' && c <= '9')
-            state = LEXING_NUMBER_EXPONENT_DIGITS;
+            state = 131;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_AFTER_EXPONENT_SIGN:
+      case 137:
          if (c >= '0' && c <= '9')
-            state = LEXING_NUMBER_EXPONENT_DIGITS;
+            state = 131;
          else
             state = LEXER_ERROR;
          break;
 
-      case LEXING_NUMBER_EXPONENT_DIGITS:
+      case 131:
          if (c >= '0' && c <= '9')
          {
-            /* Still LEXING_NUMBER_EXPONENT_DIGITS. */
+
          }
          else if (c == EOF_CODEPOINT)
-            state = LEXING_WHITESPACE;
+            state = 128;
          else
             state = LEXER_ERROR;
          break;

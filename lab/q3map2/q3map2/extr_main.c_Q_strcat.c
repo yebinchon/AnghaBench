@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* Q_strncpyz (char*,char const*,size_t) ; 
- int /*<<< orphan*/  abort () ; 
- size_t strlen (char*) ; 
+ char* Q_strncpyz (char*,char const*,size_t) ;
+ int abort () ;
+ size_t strlen (char*) ;
 
 char *Q_strcat( char *dst, size_t dlen, const char *src ) {
-	size_t n = strlen( dst  );
+ size_t n = strlen( dst );
 
-	if ( n > dlen ) {
-		abort(); /* buffer overflow */
-	}
+ if ( n > dlen ) {
+  abort();
+ }
 
-	return Q_strncpyz( dst + n, src, dlen - n );
+ return Q_strncpyz( dst + n, src, dlen - n );
 }

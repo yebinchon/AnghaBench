@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
+
+
+
+
+typedef size_t u8 ;
 struct odm_ra_info {size_t DecisionRate; int NscUp; int NscDown; } ;
 
-/* Variables and functions */
- int* N_THRESHOLD_HIGH ; 
- int* N_THRESHOLD_LOW ; 
+
+ int* N_THRESHOLD_HIGH ;
+ int* N_THRESHOLD_LOW ;
 
 __attribute__((used)) static void odm_ResetRaCounter_8188E(struct odm_ra_info *pRaInfo)
 {
-	u8 RateID;
+ u8 RateID;
 
-	RateID = pRaInfo->DecisionRate;
-	pRaInfo->NscUp = (N_THRESHOLD_HIGH[RateID] +
-			  N_THRESHOLD_LOW[RateID]) >> 1;
-	pRaInfo->NscDown = (N_THRESHOLD_HIGH[RateID] +
-			    N_THRESHOLD_LOW[RateID]) >> 1;
+ RateID = pRaInfo->DecisionRate;
+ pRaInfo->NscUp = (N_THRESHOLD_HIGH[RateID] +
+     N_THRESHOLD_LOW[RateID]) >> 1;
+ pRaInfo->NscDown = (N_THRESHOLD_HIGH[RateID] +
+       N_THRESHOLD_LOW[RateID]) >> 1;
 }

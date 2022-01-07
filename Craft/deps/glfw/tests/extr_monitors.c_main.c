@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int LIST_MODE ; 
- int TEST_MODE ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/ ** glfwGetMonitors (int*) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  list_modes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_modes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
+
+
+
+typedef int GLFWmonitor ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int LIST_MODE ;
+ int TEST_MODE ;
+ int error_callback ;
+ int exit (int ) ;
+ int getopt (int,char**,char*) ;
+ int ** glfwGetMonitors (int*) ;
+ int glfwInit () ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwTerminate () ;
+ int list_modes (int *) ;
+ int test_modes (int *) ;
+ int usage () ;
 
 int main(int argc, char** argv)
 {
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 
     monitors = glfwGetMonitors(&count);
 
-    for (i = 0;  i < count;  i++)
+    for (i = 0; i < count; i++)
     {
         if (mode == LIST_MODE)
             list_modes(monitors[i]);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* nschannel; } ;
-typedef  TYPE_2__ nsChannelBSC ;
-typedef  int /*<<< orphan*/  nsACString ;
-typedef  int /*<<< orphan*/  charsetW ;
-typedef  char WCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  nsIHttpChannel_iface; } ;
+typedef TYPE_2__ nsChannelBSC ;
+typedef int nsACString ;
+typedef int charsetW ;
+typedef char WCHAR ;
+struct TYPE_4__ {int nsIHttpChannel_iface; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- size_t WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,size_t,char*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_wn (char const*,size_t) ; 
- char* heap_alloc (size_t) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- scalar_t__ isspaceW (char const) ; 
- int /*<<< orphan*/  memicmpW (char const*,char const*,int) ; 
- int /*<<< orphan*/  nsACString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsACString_InitDepend (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  nsIHttpChannel_SetContentCharset (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* strchrW (char const*,char) ; 
- size_t strlenW (char const*) ; 
+
+ int CP_ACP ;
+ int FIXME (char*,...) ;
+ size_t WideCharToMultiByte (int ,int ,char const*,size_t,char*,size_t,int *,int *) ;
+ int debugstr_wn (char const*,size_t) ;
+ char* heap_alloc (size_t) ;
+ int heap_free (char*) ;
+ scalar_t__ isspaceW (char const) ;
+ int memicmpW (char const*,char const*,int) ;
+ int nsACString_Finish (int *) ;
+ int nsACString_InitDepend (int *,char*) ;
+ int nsIHttpChannel_SetContentCharset (int *,int *) ;
+ char* strchrW (char const*,char) ;
+ size_t strlenW (char const*) ;
 
 __attribute__((used)) static void parse_content_type(nsChannelBSC *This, const WCHAR *value)
 {
@@ -68,12 +68,12 @@ __attribute__((used)) static void parse_content_type(nsChannelBSC *This, const W
             charset_len = ptr-charset;
         }
 
-        lena = WideCharToMultiByte(CP_ACP, 0, charset, charset_len, NULL, 0, NULL, NULL);
+        lena = WideCharToMultiByte(CP_ACP, 0, charset, charset_len, ((void*)0), 0, ((void*)0), ((void*)0));
         charseta = heap_alloc(lena+1);
         if(!charseta)
             return;
 
-        WideCharToMultiByte(CP_ACP, 0, charset, charset_len, charseta, lena, NULL, NULL);
+        WideCharToMultiByte(CP_ACP, 0, charset, charset_len, charseta, lena, ((void*)0), ((void*)0));
         charseta[lena] = 0;
 
         nsACString_InitDepend(&charset_str, charseta);

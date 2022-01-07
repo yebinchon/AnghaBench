@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdargs {scalar_t__ argc; scalar_t__ argn; TYPE_1__* cx; int /*<<< orphan*/  bundle; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cmdargs {scalar_t__ argc; scalar_t__ argn; TYPE_1__* cx; int bundle; } ;
 struct TYPE_2__ {scalar_t__ state; } ;
 
-/* Variables and functions */
- scalar_t__ DATALINK_CLOSED ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  bundle_DatalinkRemove (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ DATALINK_CLOSED ;
+ int LogWARN ;
+ int bundle_DatalinkRemove (int ,TYPE_1__*) ;
+ int log_Printf (int ,char*) ;
 
 __attribute__((used)) static int
 RemoveCommand(struct cmdargs const *arg)

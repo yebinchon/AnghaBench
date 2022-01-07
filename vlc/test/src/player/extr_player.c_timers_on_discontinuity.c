@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tick_t ;
-struct timer_state {int /*<<< orphan*/  vec; } ;
-struct report_timer {int /*<<< orphan*/  discontinuity_date; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REPORT_TIMER_DISCONTINUITY ; 
- int /*<<< orphan*/  assert (int) ; 
- int vlc_vector_push (int /*<<< orphan*/ *,struct report_timer) ; 
+
+
+
+typedef int vlc_tick_t ;
+struct timer_state {int vec; } ;
+struct report_timer {int discontinuity_date; int type; } ;
+
+
+ int REPORT_TIMER_DISCONTINUITY ;
+ int assert (int) ;
+ int vlc_vector_push (int *,struct report_timer) ;
 
 __attribute__((used)) static void
 timers_on_discontinuity(vlc_tick_t system_date, void *data)

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_uint_t ;
-typedef  int ngx_msec_t ;
-struct TYPE_6__ {int /*<<< orphan*/  log; } ;
-typedef  TYPE_1__ ngx_cycle_t ;
 
-/* Variables and functions */
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_EVENT ; 
- int /*<<< orphan*/  NGX_POST_EVENTS ; 
- int NGX_TIMER_INFINITE ; 
- int /*<<< orphan*/  NGX_UPDATE_TIME ; 
- scalar_t__ ngx_accept_disabled ; 
- int /*<<< orphan*/  ngx_accept_mutex ; 
- int ngx_accept_mutex_delay ; 
- scalar_t__ ngx_accept_mutex_held ; 
- int ngx_current_msec ; 
- int /*<<< orphan*/  ngx_event_expire_timers () ; 
- int ngx_event_find_timer () ; 
- int /*<<< orphan*/  ngx_event_process_posted (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_posted_accept_events ; 
- int /*<<< orphan*/  ngx_posted_events ; 
- int /*<<< orphan*/  ngx_posted_next_events ; 
- int /*<<< orphan*/  ngx_process_events (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_queue_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_queue_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_queue_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_timer_resolution ; 
- scalar_t__ ngx_trylock_accept_mutex (TYPE_1__*) ; 
- scalar_t__ ngx_use_accept_mutex ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ngx_uint_t ;
+typedef int ngx_msec_t ;
+struct TYPE_6__ {int log; } ;
+typedef TYPE_1__ ngx_cycle_t ;
+
+
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_DEBUG_EVENT ;
+ int NGX_POST_EVENTS ;
+ int NGX_TIMER_INFINITE ;
+ int NGX_UPDATE_TIME ;
+ scalar_t__ ngx_accept_disabled ;
+ int ngx_accept_mutex ;
+ int ngx_accept_mutex_delay ;
+ scalar_t__ ngx_accept_mutex_held ;
+ int ngx_current_msec ;
+ int ngx_event_expire_timers () ;
+ int ngx_event_find_timer () ;
+ int ngx_event_process_posted (TYPE_1__*,int *) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_posted_accept_events ;
+ int ngx_posted_events ;
+ int ngx_posted_next_events ;
+ int ngx_process_events (TYPE_1__*,int,int ) ;
+ int ngx_queue_add (int *,int *) ;
+ int ngx_queue_empty (int *) ;
+ int ngx_queue_init (int *) ;
+ int ngx_shmtx_unlock (int *) ;
+ scalar_t__ ngx_timer_resolution ;
+ scalar_t__ ngx_trylock_accept_mutex (TYPE_1__*) ;
+ scalar_t__ ngx_use_accept_mutex ;
 
 void
 ngx_process_events_and_timers(ngx_cycle_t *cycle)
 {
-    ngx_uint_t  flags;
-    ngx_msec_t  timer, delta;
+    ngx_uint_t flags;
+    ngx_msec_t timer, delta;
 
     if (ngx_timer_resolution) {
         timer = NGX_TIMER_INFINITE;
@@ -56,16 +56,6 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
     } else {
         timer = ngx_event_find_timer();
         flags = NGX_UPDATE_TIME;
-
-#if (NGX_WIN32)
-
-        /* handle signals from master in case of network inactivity */
-
-        if (timer == NGX_TIMER_INFINITE || timer > 500) {
-            timer = 500;
-        }
-
-#endif
     }
 
     if (ngx_use_accept_mutex) {

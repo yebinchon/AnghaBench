@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_8__ {int /*<<< orphan*/  pf_decode; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_9__ {scalar_t__ is_async; int /*<<< orphan*/  output_sample; int /*<<< orphan*/  mf_handle; } ;
-typedef  TYPE_2__ decoder_sys_t ;
 
-/* Variables and functions */
- scalar_t__ AllocateOutputSample (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  COINIT_MULTITHREADED ; 
- int /*<<< orphan*/  Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoInitializeEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DecodeAsync ; 
- int /*<<< orphan*/  DecodeSync ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FindMFT (TYPE_1__*) ; 
- scalar_t__ LoadMFTLibrary (int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- TYPE_2__* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_8__ {int pf_decode; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_9__ {scalar_t__ is_async; int output_sample; int mf_handle; } ;
+typedef TYPE_2__ decoder_sys_t ;
+
+
+ scalar_t__ AllocateOutputSample (TYPE_1__*,int ,int *) ;
+ int COINIT_MULTITHREADED ;
+ int Close (int *) ;
+ int CoInitializeEx (int *,int ) ;
+ int DecodeAsync ;
+ int DecodeSync ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FindMFT (TYPE_1__*) ;
+ scalar_t__ LoadMFTLibrary (int *) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ TYPE_2__* calloc (int,int) ;
+ int free (TYPE_2__*) ;
+ int msg_Err (TYPE_1__*,char*) ;
 
 __attribute__((used)) static int Open(vlc_object_t *p_this)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int Open(vlc_object_t *p_this)
     if (!p_sys)
         return VLC_ENOMEM;
 
-    if( FAILED(CoInitializeEx(NULL, COINIT_MULTITHREADED)) )
+    if( FAILED(CoInitializeEx(((void*)0), COINIT_MULTITHREADED)) )
     {
         free(p_sys);
         return VLC_EGENERIC;
@@ -62,7 +62,7 @@ __attribute__((used)) static int Open(vlc_object_t *p_this)
         goto error;
     }
 
-    /* Only one output sample is needed, we can allocate one and reuse it. */
+
     if (AllocateOutputSample(p_dec, 0, &p_sys->output_sample))
         goto error;
 

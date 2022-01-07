@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  int16 ;
-typedef  int /*<<< orphan*/ * StringInfo ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  FmgrInfo ;
-typedef  int /*<<< orphan*/  Datum ;
-typedef  int /*<<< orphan*/  ArrayType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_OUT_FUNC_ID ; 
- char* DatumGetCString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FunctionCall1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PointerGetDatum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  appendStringInfo (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/ * construct_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char) ; 
- int /*<<< orphan*/  fmgr_info (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_typlenbyvalalign (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,char*) ; 
- int /*<<< orphan*/ * makeStringInfo () ; 
- scalar_t__ palloc0 (int) ; 
+
+
+
+typedef int uint32 ;
+typedef int int16 ;
+typedef int * StringInfo ;
+typedef int Oid ;
+typedef int FmgrInfo ;
+typedef int Datum ;
+typedef int ArrayType ;
+
+
+ int ARRAY_OUT_FUNC_ID ;
+ char* DatumGetCString (int ) ;
+ int FunctionCall1 (int *,int ) ;
+ int PointerGetDatum (int *) ;
+ int appendStringInfo (int *,char*,char*) ;
+ int * construct_array (int *,int ,int ,int ,int,char) ;
+ int fmgr_info (int ,int *) ;
+ int get_typlenbyvalalign (int ,int *,int*,char*) ;
+ int * makeStringInfo () ;
+ scalar_t__ palloc0 (int) ;
 
 __attribute__((used)) static StringInfo
 DatumArrayString(Datum *datumArray, uint32 datumCount, Oid datumTypeId)
 {
-	StringInfo arrayStringInfo = NULL;
-	FmgrInfo *arrayOutFunction = NULL;
-	ArrayType *arrayObject = NULL;
-	Datum arrayObjectDatum = 0;
-	Datum arrayStringDatum = 0;
-	char *arrayString = NULL;
-	int16 typeLength = 0;
-	bool typeByValue = false;
-	char typeAlignment = 0;
+ StringInfo arrayStringInfo = ((void*)0);
+ FmgrInfo *arrayOutFunction = ((void*)0);
+ ArrayType *arrayObject = ((void*)0);
+ Datum arrayObjectDatum = 0;
+ Datum arrayStringDatum = 0;
+ char *arrayString = ((void*)0);
+ int16 typeLength = 0;
+ bool typeByValue = 0;
+ char typeAlignment = 0;
 
-	/* construct the array object from the given array */
-	get_typlenbyvalalign(datumTypeId, &typeLength, &typeByValue, &typeAlignment);
-	arrayObject = construct_array(datumArray, datumCount, datumTypeId,
-								  typeLength, typeByValue, typeAlignment);
-	arrayObjectDatum = PointerGetDatum(arrayObject);
 
-	/* convert the array object to its string representation */
-	arrayOutFunction = (FmgrInfo *) palloc0(sizeof(FmgrInfo));
-	fmgr_info(ARRAY_OUT_FUNC_ID, arrayOutFunction);
+ get_typlenbyvalalign(datumTypeId, &typeLength, &typeByValue, &typeAlignment);
+ arrayObject = construct_array(datumArray, datumCount, datumTypeId,
+          typeLength, typeByValue, typeAlignment);
+ arrayObjectDatum = PointerGetDatum(arrayObject);
 
-	arrayStringDatum = FunctionCall1(arrayOutFunction, arrayObjectDatum);
-	arrayString = DatumGetCString(arrayStringDatum);
 
-	arrayStringInfo = makeStringInfo();
-	appendStringInfo(arrayStringInfo, "%s", arrayString);
+ arrayOutFunction = (FmgrInfo *) palloc0(sizeof(FmgrInfo));
+ fmgr_info(ARRAY_OUT_FUNC_ID, arrayOutFunction);
 
-	return arrayStringInfo;
+ arrayStringDatum = FunctionCall1(arrayOutFunction, arrayObjectDatum);
+ arrayString = DatumGetCString(arrayStringDatum);
+
+ arrayStringInfo = makeStringInfo();
+ appendStringInfo(arrayStringInfo, "%s", arrayString);
+
+ return arrayStringInfo;
 }

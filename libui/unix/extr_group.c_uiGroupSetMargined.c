@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int margined; int /*<<< orphan*/ * child; } ;
-typedef  TYPE_1__ uiGroup ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uiprivChildSetMargined (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int margined; int * child; } ;
+typedef TYPE_1__ uiGroup ;
+
+
+ int uiprivChildSetMargined (int *,int) ;
 
 void uiGroupSetMargined(uiGroup *g, int margined)
 {
-	g->margined = margined;
-	if (g->child != NULL)
-		uiprivChildSetMargined(g->child, g->margined);
+ g->margined = margined;
+ if (g->child != ((void*)0))
+  uiprivChildSetMargined(g->child, g->margined);
 }

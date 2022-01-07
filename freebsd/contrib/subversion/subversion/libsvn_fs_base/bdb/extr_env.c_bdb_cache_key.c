@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_6__ {int /*<<< orphan*/  inode; int /*<<< orphan*/  device; } ;
-typedef  TYPE_1__ bdb_env_key_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_7__ {int /*<<< orphan*/  inode; int /*<<< orphan*/  device; } ;
-typedef  TYPE_2__ apr_finfo_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int APR_FINFO_DEV ; 
- int APR_FINFO_INODE ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int /*<<< orphan*/  APR_READ ; 
- int /*<<< orphan*/  BDB_CONFIG_FILE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_file_close (int /*<<< orphan*/ *) ; 
- scalar_t__ apr_file_info_get (TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- char* svn_dirent_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,char*) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct TYPE_6__ {int inode; int device; } ;
+typedef TYPE_1__ bdb_env_key_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+struct TYPE_7__ {int inode; int device; } ;
+typedef TYPE_2__ apr_finfo_t ;
+typedef int apr_file_t ;
+
+
+ int APR_FINFO_DEV ;
+ int APR_FINFO_INODE ;
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ int BDB_CONFIG_FILE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int apr_file_close (int *) ;
+ scalar_t__ apr_file_info_get (TYPE_2__*,int,int *) ;
+ int memset (TYPE_1__*,int ,int) ;
+ char* svn_dirent_join (char const*,int ,int *) ;
+ int * svn_error_wrap_apr (scalar_t__,char*) ;
+ int svn_io_file_open (int **,char const*,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 bdb_cache_key(bdb_env_key_t *keyp, apr_file_t **dbconfig_file,
@@ -54,8 +54,8 @@ bdb_cache_key(bdb_env_key_t *keyp, apr_file_t **dbconfig_file,
     return svn_error_wrap_apr
       (apr_err, "Can't create BDB environment cache key");
 
-  /* Make sure that any padding in the key is always cleared, so that
-     the key's hash deterministic. */
+
+
   memset(keyp, 0, sizeof *keyp);
   keyp->device = finfo.device;
   keyp->inode = finfo.inode;

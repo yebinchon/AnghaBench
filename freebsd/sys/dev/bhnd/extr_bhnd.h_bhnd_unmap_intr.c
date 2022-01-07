@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rman_res_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- void BHND_BUS_UNMAP_INTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rman_res_t ;
+typedef int device_t ;
+
+
+ void BHND_BUS_UNMAP_INTR (int ,int ,int ) ;
+ int device_get_parent (int ) ;
 
 __attribute__((used)) static inline void
 bhnd_unmap_intr(device_t dev, rman_res_t irq)
 {
-	return (BHND_BUS_UNMAP_INTR(device_get_parent(dev), dev, irq));
+ return (BHND_BUS_UNMAP_INTR(device_get_parent(dev), dev, irq));
 }

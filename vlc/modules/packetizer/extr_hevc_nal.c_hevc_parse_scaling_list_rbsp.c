@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bs_t ;
 
-/* Variables and functions */
- unsigned int __MIN (int,int) ; 
- scalar_t__ bs_read1 (int /*<<< orphan*/ *) ; 
- unsigned int bs_read_se (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bs_read_ue (int /*<<< orphan*/ *) ; 
- int bs_remain (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bs_t ;
+
+
+ unsigned int __MIN (int,int) ;
+ scalar_t__ bs_read1 (int *) ;
+ unsigned int bs_read_se (int *) ;
+ int bs_read_ue (int *) ;
+ int bs_remain (int *) ;
 
 __attribute__((used)) static bool hevc_parse_scaling_list_rbsp( bs_t *p_bs )
 {
     if( bs_remain( p_bs ) < 16 )
-        return false;
+        return 0;
 
     for( int i=0; i<4; i++ )
     {
@@ -46,5 +46,5 @@ __attribute__((used)) static bool hevc_parse_scaling_list_rbsp( bs_t *p_bs )
         }
     }
 
-    return true;
+    return 1;
 }

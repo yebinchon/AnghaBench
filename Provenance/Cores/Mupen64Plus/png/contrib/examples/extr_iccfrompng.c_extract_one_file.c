@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_uint_32 ;
-typedef  char* png_bytep ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* extract (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ fflush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int fwrite (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- char* no_profile ; 
- int /*<<< orphan*/  printf (char*,char const*,...) ; 
- scalar_t__ remove (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char const*) ; 
- char* strrchr (char const*,char) ; 
- scalar_t__ verbose ; 
+
+
+
+typedef int png_uint_32 ;
+typedef char* png_bytep ;
+typedef int FILE ;
+
+
+ char* extract (int *,int *) ;
+ scalar_t__ fclose (int *) ;
+ scalar_t__ fflush (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char const*) ;
+ int free (char*) ;
+ int fwrite (char*,int ,int,int *) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ char* no_profile ;
+ int printf (char*,char const*,...) ;
+ scalar_t__ remove (char*) ;
+ int stderr ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char const*) ;
+ char* strrchr (char const*,char) ;
+ scalar_t__ verbose ;
 
 __attribute__((used)) static int
 extract_one_file(const char *filename)
@@ -39,12 +39,12 @@ extract_one_file(const char *filename)
    int result = 0;
    FILE *fp = fopen(filename, "rb");
 
-   if (fp != NULL)
+   if (fp != ((void*)0))
    {
       png_uint_32 proflen = 0;
       png_bytep profile = extract(fp, &proflen);
 
-      if (profile != NULL && profile != no_profile)
+      if (profile != ((void*)0) && profile != no_profile)
       {
          size_t len;
          char *output;
@@ -52,7 +52,7 @@ extract_one_file(const char *filename)
          {
             const char *ep = strrchr(filename, '.');
 
-            if (ep != NULL)
+            if (ep != ((void*)0))
                len = ep-filename;
 
             else
@@ -60,7 +60,7 @@ extract_one_file(const char *filename)
          }
 
          output = malloc(len + 5);
-         if (output != NULL)
+         if (output != ((void*)0))
          {
             FILE *of;
 
@@ -68,7 +68,7 @@ extract_one_file(const char *filename)
             strcpy(output+len, ".icc");
 
             of = fopen(output, "wb");
-            if (of != NULL)
+            if (of != ((void*)0))
             {
                if (fwrite(profile, proflen, 1, of) == 1 &&
                   fflush(of) == 0 &&
@@ -76,7 +76,7 @@ extract_one_file(const char *filename)
                {
                   if (verbose)
                      printf("%s -> %s\n", filename, output);
-                  /* Success return */
+
                   result = 1;
                }
 
@@ -101,7 +101,7 @@ extract_one_file(const char *filename)
       }
 
       else if (verbose && profile == no_profile)
-	printf("%s has no profile\n", filename);
+ printf("%s has no profile\n", filename);
    }
 
    else

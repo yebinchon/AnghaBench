@@ -1,42 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  ADDON_EXTENSION 134 
-#define  ADDON_INTERFACE 133 
-#define  ADDON_META 132 
-#define  ADDON_PLAYLIST_PARSER 131 
-#define  ADDON_SERVICE_DISCOVERY 130 
-#define  ADDON_SKIN2 129 
-#define  ADDON_UNKNOWN 128 
-
 __attribute__((used)) static inline const char * getTypePsz( int i_type )
 {
     switch( i_type )
     {
-    case ADDON_PLAYLIST_PARSER:
+    case 131:
         return "playlist";
-    case ADDON_SKIN2:
+    case 129:
         return "skin";
-    case ADDON_SERVICE_DISCOVERY:
+    case 130:
         return "discovery";
-    case ADDON_EXTENSION:
+    case 134:
         return "extension";
-    case ADDON_INTERFACE:
+    case 133:
         return "interface";
-    case ADDON_META:
+    case 132:
         return "meta";
-    case ADDON_UNKNOWN:
+    case 128:
     default:
         return "unknown";
     }

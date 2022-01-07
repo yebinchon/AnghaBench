@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* addr; } ;
-typedef  TYPE_1__ thread ;
+typedef TYPE_1__ thread ;
 struct addrinfo {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_7__ {int /*<<< orphan*/  ai_addr; } ;
+typedef int lua_State ;
+struct TYPE_7__ {int ai_addr; } ;
 
-/* Variables and functions */
- struct addrinfo* checkaddr (int /*<<< orphan*/ *) ; 
- TYPE_1__* checkthread (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_typename (int /*<<< orphan*/ *,int) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  script_addr_copy (struct addrinfo*,TYPE_2__*) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ ) ; 
- TYPE_2__* zrealloc (TYPE_2__*,int) ; 
+
+ struct addrinfo* checkaddr (int *) ;
+ TYPE_1__* checkthread (int *) ;
+ int luaL_error (int *,char*,int ) ;
+ int luaL_typename (int *,int) ;
+ char* lua_tostring (int *,int) ;
+ int script_addr_copy (struct addrinfo*,TYPE_2__*) ;
+ int strcmp (char*,char const*) ;
+ int zfree (int ) ;
+ TYPE_2__* zrealloc (TYPE_2__*,int) ;
 
 __attribute__((used)) static int script_thread_newindex(lua_State *L) {
     thread *t = checkthread(L);

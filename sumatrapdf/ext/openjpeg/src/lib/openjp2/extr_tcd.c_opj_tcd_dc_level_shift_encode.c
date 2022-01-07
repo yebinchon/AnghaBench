@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int* data; scalar_t__ y0; scalar_t__ y1; scalar_t__ x0; scalar_t__ x1; } ;
-typedef  TYPE_4__ opj_tcd_tilecomp_t ;
+typedef TYPE_4__ opj_tcd_tilecomp_t ;
 struct TYPE_13__ {scalar_t__ numcomps; TYPE_4__* comps; } ;
-typedef  TYPE_5__ opj_tcd_tile_t ;
+typedef TYPE_5__ opj_tcd_tile_t ;
 struct TYPE_14__ {TYPE_3__* image; TYPE_2__* tcp; TYPE_1__* tcd_image; } ;
-typedef  TYPE_6__ opj_tcd_t ;
+typedef TYPE_6__ opj_tcd_t ;
 struct TYPE_15__ {int qmfbid; int m_dc_level_shift; } ;
-typedef  TYPE_7__ opj_tccp_t ;
-typedef  int /*<<< orphan*/  opj_image_comp_t ;
-struct TYPE_11__ {int /*<<< orphan*/ * comps; } ;
+typedef TYPE_7__ opj_tccp_t ;
+typedef int opj_image_comp_t ;
+struct TYPE_11__ {int * comps; } ;
 struct TYPE_10__ {TYPE_7__* tccps; } ;
 struct TYPE_9__ {TYPE_5__* tiles; } ;
-typedef  scalar_t__ OPJ_UINT32 ;
-typedef  int OPJ_SIZE_T ;
-typedef  int OPJ_INT32 ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
+typedef scalar_t__ OPJ_UINT32 ;
+typedef int OPJ_SIZE_T ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_TRUE ; 
+
+ int OPJ_TRUE ;
 
 __attribute__((used)) static OPJ_BOOL opj_tcd_dc_level_shift_encode(opj_tcd_t *p_tcd)
 {

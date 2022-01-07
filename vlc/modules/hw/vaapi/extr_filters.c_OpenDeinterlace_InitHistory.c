@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {unsigned int sz; scalar_t__ surfaces; } ;
 struct TYPE_7__ {unsigned int sz; scalar_t__ surfaces; } ;
 struct TYPE_6__ {unsigned int sz; scalar_t__ num_pics; scalar_t__ pp_pics; scalar_t__ pp_cur_pic; } ;
 struct deint_data {TYPE_3__ forward_refs; TYPE_2__ backward_refs; TYPE_1__ history; } ;
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  VASurfaceID ;
+typedef int picture_t ;
+typedef int VASurfaceID ;
 struct TYPE_9__ {unsigned int num_backward_references; unsigned int num_forward_references; } ;
-typedef  TYPE_4__ VAProcPipelineCaps ;
+typedef TYPE_4__ VAProcPipelineCaps ;
 
-/* Variables and functions */
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- scalar_t__ calloc (unsigned int const,int) ; 
- scalar_t__ vlc_alloc (unsigned int const,int) ; 
+
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ scalar_t__ calloc (unsigned int const,int) ;
+ scalar_t__ vlc_alloc (unsigned int const,int) ;
 
 __attribute__((used)) static int
 OpenDeinterlace_InitHistory(void * p_data, VAProcPipelineCaps const * pipeline_caps)
 {
-    struct deint_data *const    p_deint_data = p_data;
-    unsigned int const          sz_backward_refs =
+    struct deint_data *const p_deint_data = p_data;
+    unsigned int const sz_backward_refs =
         pipeline_caps->num_backward_references;
-    unsigned int const          sz_forward_refs =
+    unsigned int const sz_forward_refs =
         pipeline_caps->num_forward_references;
-    unsigned int const          history_sz =
+    unsigned int const history_sz =
         sz_backward_refs + 1 + sz_forward_refs;
 
     p_deint_data->history.pp_pics = calloc(history_sz, sizeof(picture_t *));

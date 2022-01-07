@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct randomizer {scalar_t__ history; scalar_t__ next; scalar_t__ head; int /*<<< orphan*/  items; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_vector_clear (int /*<<< orphan*/ *) ; 
+
+
+
+struct randomizer {scalar_t__ history; scalar_t__ next; scalar_t__ head; int items; } ;
+
+
+ int vlc_vector_clear (int *) ;
 
 void
 randomizer_Clear(struct randomizer *r)

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
-struct TYPE_4__ {int nmaps; int /*<<< orphan*/ ** mapp; int /*<<< orphan*/ * BITMAPS; int /*<<< orphan*/  BSIZE; } ;
-typedef  TYPE_1__ HTAB ;
 
-/* Variables and functions */
- scalar_t__ __get_page (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u_int32_t ;
+struct TYPE_4__ {int nmaps; int ** mapp; int * BITMAPS; int BSIZE; } ;
+typedef TYPE_1__ HTAB ;
+
+
+ scalar_t__ __get_page (TYPE_1__*,char*,int ,int ,int,int) ;
+ int free (int *) ;
+ scalar_t__ malloc (int ) ;
 
 __attribute__((used)) static u_int32_t *
 fetch_bitmap(HTAB *hashp, int ndx)
 {
-	if (ndx >= hashp->nmaps)
-		return (NULL);
-	if ((hashp->mapp[ndx] = (u_int32_t *)malloc(hashp->BSIZE)) == NULL)
-		return (NULL);
-	if (__get_page(hashp,
-	    (char *)hashp->mapp[ndx], hashp->BITMAPS[ndx], 0, 1, 1)) {
-		free(hashp->mapp[ndx]);
-		return (NULL);
-	}
-	return (hashp->mapp[ndx]);
+ if (ndx >= hashp->nmaps)
+  return (((void*)0));
+ if ((hashp->mapp[ndx] = (u_int32_t *)malloc(hashp->BSIZE)) == ((void*)0))
+  return (((void*)0));
+ if (__get_page(hashp,
+     (char *)hashp->mapp[ndx], hashp->BITMAPS[ndx], 0, 1, 1)) {
+  free(hashp->mapp[ndx]);
+  return (((void*)0));
+ }
+ return (hashp->mapp[ndx]);
 }

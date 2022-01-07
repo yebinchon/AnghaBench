@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct iommu_param {int /*<<< orphan*/  lock; TYPE_1__* fault_param; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct iommu_param {int lock; TYPE_1__* fault_param; } ;
 struct device {struct iommu_param* iommu_param; } ;
-struct TYPE_2__ {int /*<<< orphan*/  faults; } ;
+struct TYPE_2__ {int faults; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int EINVAL ; 
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
+
+ int EBUSY ;
+ int EINVAL ;
+ int kfree (TYPE_1__*) ;
+ int list_empty (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int put_device (struct device*) ;
 
 int iommu_unregister_device_fault_handler(struct device *dev)
 {
-	struct iommu_param *param = dev->iommu_param;
-	int ret = 0;
+ struct iommu_param *param = dev->iommu_param;
+ int ret = 0;
 
-	if (!param)
-		return -EINVAL;
+ if (!param)
+  return -EINVAL;
 
-	mutex_lock(&param->lock);
+ mutex_lock(&param->lock);
 
-	if (!param->fault_param)
-		goto unlock;
+ if (!param->fault_param)
+  goto unlock;
 
-	/* we cannot unregister handler if there are pending faults */
-	if (!list_empty(&param->fault_param->faults)) {
-		ret = -EBUSY;
-		goto unlock;
-	}
 
-	kfree(param->fault_param);
-	param->fault_param = NULL;
-	put_device(dev);
+ if (!list_empty(&param->fault_param->faults)) {
+  ret = -EBUSY;
+  goto unlock;
+ }
+
+ kfree(param->fault_param);
+ param->fault_param = ((void*)0);
+ put_device(dev);
 unlock:
-	mutex_unlock(&param->lock);
+ mutex_unlock(&param->lock);
 
-	return ret;
+ return ret;
 }

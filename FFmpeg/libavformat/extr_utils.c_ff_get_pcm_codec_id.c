@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
 
-/* Variables and functions */
- int AV_CODEC_ID_NONE ; 
- int AV_CODEC_ID_PCM_F32BE ; 
- int AV_CODEC_ID_PCM_F32LE ; 
- int AV_CODEC_ID_PCM_F64BE ; 
- int AV_CODEC_ID_PCM_F64LE ; 
- int AV_CODEC_ID_PCM_S16BE ; 
- int AV_CODEC_ID_PCM_S16LE ; 
- int AV_CODEC_ID_PCM_S24BE ; 
- int AV_CODEC_ID_PCM_S24LE ; 
- int AV_CODEC_ID_PCM_S32BE ; 
- int AV_CODEC_ID_PCM_S32LE ; 
- int AV_CODEC_ID_PCM_S64BE ; 
- int AV_CODEC_ID_PCM_S64LE ; 
- int AV_CODEC_ID_PCM_S8 ; 
- int AV_CODEC_ID_PCM_U16BE ; 
- int AV_CODEC_ID_PCM_U16LE ; 
- int AV_CODEC_ID_PCM_U24BE ; 
- int AV_CODEC_ID_PCM_U24LE ; 
- int AV_CODEC_ID_PCM_U32BE ; 
- int AV_CODEC_ID_PCM_U32LE ; 
- int AV_CODEC_ID_PCM_U8 ; 
+
+
+
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+
+
+ int AV_CODEC_ID_NONE ;
+ int AV_CODEC_ID_PCM_F32BE ;
+ int AV_CODEC_ID_PCM_F32LE ;
+ int AV_CODEC_ID_PCM_F64BE ;
+ int AV_CODEC_ID_PCM_F64LE ;
+ int AV_CODEC_ID_PCM_S16BE ;
+ int AV_CODEC_ID_PCM_S16LE ;
+ int AV_CODEC_ID_PCM_S24BE ;
+ int AV_CODEC_ID_PCM_S24LE ;
+ int AV_CODEC_ID_PCM_S32BE ;
+ int AV_CODEC_ID_PCM_S32LE ;
+ int AV_CODEC_ID_PCM_S64BE ;
+ int AV_CODEC_ID_PCM_S64LE ;
+ int AV_CODEC_ID_PCM_S8 ;
+ int AV_CODEC_ID_PCM_U16BE ;
+ int AV_CODEC_ID_PCM_U16LE ;
+ int AV_CODEC_ID_PCM_U24BE ;
+ int AV_CODEC_ID_PCM_U24LE ;
+ int AV_CODEC_ID_PCM_U32BE ;
+ int AV_CODEC_ID_PCM_U32LE ;
+ int AV_CODEC_ID_PCM_U8 ;
 
 enum AVCodecID ff_get_pcm_codec_id(int bps, int flt, int be, int sflags)
 {
@@ -50,7 +50,7 @@ enum AVCodecID ff_get_pcm_codec_id(int bps, int flt, int be, int sflags)
             return AV_CODEC_ID_NONE;
         }
     } else {
-        bps  += 7;
+        bps += 7;
         bps >>= 3;
         if (sflags & (1 << (bps - 1))) {
             switch (bps) {

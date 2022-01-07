@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct vtcon_softc {int /*<<< orphan*/  vtcon_features; int /*<<< orphan*/  vtcon_dev; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VTCON_FEATURES ; 
- int /*<<< orphan*/  virtio_negotiate_features (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+struct vtcon_softc {int vtcon_features; int vtcon_dev; } ;
+typedef int device_t ;
+
+
+ int VTCON_FEATURES ;
+ int virtio_negotiate_features (int ,int ) ;
 
 __attribute__((used)) static void
 vtcon_negotiate_features(struct vtcon_softc *sc)
 {
-	device_t dev;
-	uint64_t features;
+ device_t dev;
+ uint64_t features;
 
-	dev = sc->vtcon_dev;
-	features = VTCON_FEATURES;
+ dev = sc->vtcon_dev;
+ features = VTCON_FEATURES;
 
-	sc->vtcon_features = virtio_negotiate_features(dev, features);
+ sc->vtcon_features = virtio_negotiate_features(dev, features);
 }

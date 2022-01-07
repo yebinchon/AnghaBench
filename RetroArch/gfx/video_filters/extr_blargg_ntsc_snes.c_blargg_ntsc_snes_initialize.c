@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct softfilter_config {int /*<<< orphan*/  (* free ) (char*) ;scalar_t__ (* get_string ) (void*,char*,char**,char*) ;} ;
-struct filter_data {int burst_toggle; scalar_t__ burst; int /*<<< orphan*/ * ntsc; } ;
-typedef  int /*<<< orphan*/  snes_ntsc_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct softfilter_config {int (* free ) (char*) ;scalar_t__ (* get_string ) (void*,char*,char**,char*) ;} ;
+struct filter_data {int burst_toggle; scalar_t__ burst; int * ntsc; } ;
+typedef int snes_ntsc_t ;
 struct TYPE_6__ {int merge_fields; } ;
-typedef  TYPE_1__ snes_ntsc_setup_t ;
+typedef TYPE_1__ snes_ntsc_setup_t ;
 
-/* Variables and functions */
- scalar_t__ calloc (int,int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- TYPE_1__ retroarch_snes_ntsc_composite ; 
- int /*<<< orphan*/  retroarch_snes_ntsc_init (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__ retroarch_snes_ntsc_rgb ; 
- TYPE_1__ retroarch_snes_ntsc_svideo ; 
- scalar_t__ stub1 (void*,char*,char**,char*) ; 
- int /*<<< orphan*/  stub2 (char*) ; 
+
+ scalar_t__ calloc (int,int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ TYPE_1__ retroarch_snes_ntsc_composite ;
+ int retroarch_snes_ntsc_init (int *,TYPE_1__*) ;
+ TYPE_1__ retroarch_snes_ntsc_rgb ;
+ TYPE_1__ retroarch_snes_ntsc_svideo ;
+ scalar_t__ stub1 (void*,char*,char**,char*) ;
+ int stub2 (char*) ;
 
 __attribute__((used)) static void blargg_ntsc_snes_initialize(void *data,
       const struct softfilter_config *config,
       void *userdata)
 {
-   char *tvtype = NULL;
+   char *tvtype = ((void*)0);
    snes_ntsc_setup_t setup;
    struct filter_data *filt = (struct filter_data*)data;
 
@@ -67,7 +67,7 @@ __attribute__((used)) static void blargg_ntsc_snes_initialize(void *data,
    }
 
    config->free(tvtype);
-   tvtype = NULL;
+   tvtype = ((void*)0);
 
    retroarch_snes_ntsc_init(filt->ntsc, &setup);
 

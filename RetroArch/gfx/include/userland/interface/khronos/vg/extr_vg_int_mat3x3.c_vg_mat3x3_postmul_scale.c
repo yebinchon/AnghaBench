@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {float** m; } ;
-typedef  TYPE_1__ VG_MAT3X3_T ;
+typedef TYPE_1__ VG_MAT3X3_T ;
 
-/* Variables and functions */
+
 
 void vg_mat3x3_postmul_scale(VG_MAT3X3_T *a, float x, float y)
 {

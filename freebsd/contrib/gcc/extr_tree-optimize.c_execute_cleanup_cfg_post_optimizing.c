@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cleanup_dead_labels () ; 
- int /*<<< orphan*/  cleanup_tree_cfg () ; 
- int /*<<< orphan*/  fold_cond_expr_cond () ; 
- int /*<<< orphan*/  group_case_labels () ; 
+ int cleanup_dead_labels () ;
+ int cleanup_tree_cfg () ;
+ int fold_cond_expr_cond () ;
+ int group_case_labels () ;
 
 __attribute__((used)) static unsigned int
 execute_cleanup_cfg_post_optimizing (void)

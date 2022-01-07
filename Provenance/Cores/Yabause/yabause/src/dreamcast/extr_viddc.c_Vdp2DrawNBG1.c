@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int enable; int transparencyenable; int specialprimode; int colornumber; int isbitmap; int cellw; int cellh; int x; int y; int charaddr; int paladdr; int mapwh; int planew; int planeh; int patterndatasize; int patternwh; int pagewh; int supplementdata; int auxmode; int alpha; int coloroffset; int cor; int cog; int cob; float coordincx; float coordincy; void (* PlaneAddr ) (void*,int) ;int /*<<< orphan*/  priority; int /*<<< orphan*/ * PostPixelFetchCalc; scalar_t__ specialfunction; scalar_t__ flipfunction; } ;
-typedef  TYPE_2__ vdp2draw_struct ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int enable; int transparencyenable; int specialprimode; int colornumber; int isbitmap; int cellw; int cellh; int x; int y; int charaddr; int paladdr; int mapwh; int planew; int planeh; int patterndatasize; int patternwh; int pagewh; int supplementdata; int auxmode; int alpha; int coloroffset; int cor; int cog; int cob; float coordincx; float coordincy; void (* PlaneAddr ) (void*,int) ;int priority; int * PostPixelFetchCalc; scalar_t__ specialfunction; scalar_t__ flipfunction; } ;
+typedef TYPE_2__ vdp2draw_struct ;
 struct TYPE_10__ {int disptoggle; } ;
 struct TYPE_7__ {int all; } ;
 struct TYPE_9__ {int BGON; int SFPRMD; int CHCTLA; int SCXIN1; int SCYIN1; int MPOFN; int BMPNA; int PLSZ; int PNCN1; int CCCTL; int CCRNA; int CRAOFA; int CLOFEN; int CLOFSL; int COBR; int COBG; int COBB; int COAR; int COAG; int COAB; TYPE_1__ ZMXN1; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoColorCalc ; 
- int /*<<< orphan*/  DoColorCalcWithColorOffset ; 
- int /*<<< orphan*/  DoColorOffset ; 
- int /*<<< orphan*/  DoNothing ; 
- int /*<<< orphan*/  Vdp2DrawMap (TYPE_2__*) ; 
- int /*<<< orphan*/  Vdp2DrawScrollBitmap (TYPE_2__*) ; 
- TYPE_4__ Vdp2External ; 
- int /*<<< orphan*/  Vdp2NBG1PlaneAddr ; 
- TYPE_3__* Vdp2Regs ; 
- int /*<<< orphan*/  nbg1priority ; 
+
+ int DoColorCalc ;
+ int DoColorCalcWithColorOffset ;
+ int DoColorOffset ;
+ int DoNothing ;
+ int Vdp2DrawMap (TYPE_2__*) ;
+ int Vdp2DrawScrollBitmap (TYPE_2__*) ;
+ TYPE_4__ Vdp2External ;
+ int Vdp2NBG1PlaneAddr ;
+ TYPE_3__* Vdp2Regs ;
+ int nbg1priority ;
 
 __attribute__((used)) static int Vdp2DrawNBG1(void)
 {
@@ -88,7 +88,7 @@ __attribute__((used)) static int Vdp2DrawNBG1(void)
          case 3:
             info.planew = info.planeh = 2;
             break;
-         default: // Not sure what 0x2 does
+         default:
             info.planew = info.planeh = 1;
             break;
       }
@@ -121,10 +121,10 @@ __attribute__((used)) static int Vdp2DrawNBG1(void)
 
    if (Vdp2Regs->CLOFEN & 0x2)
    {
-      // color offset enable
+
       if (Vdp2Regs->CLOFSL & 0x2)
       {
-         // color offset B
+
          info.cor = Vdp2Regs->COBR & 0xFF;
          if (Vdp2Regs->COBR & 0x100)
             info.cor |= 0xFFFFFF00;
@@ -139,7 +139,7 @@ __attribute__((used)) static int Vdp2DrawNBG1(void)
       }
       else
       {
-         // color offset A
+
          info.cor = Vdp2Regs->COAR & 0xFF;
          if (Vdp2Regs->COAR & 0x100)
             info.cor |= 0xFFFFFF00;
@@ -158,7 +158,7 @@ __attribute__((used)) static int Vdp2DrawNBG1(void)
       else
          info.PostPixelFetchCalc = &DoColorOffset;
    }
-   else // color offset disable
+   else
    {
       if (Vdp2Regs->CCCTL & 0x2)
          info.PostPixelFetchCalc = &DoColorCalc;
@@ -175,38 +175,6 @@ __attribute__((used)) static int Vdp2DrawNBG1(void)
    if (info.isbitmap)
    {
       Vdp2DrawScrollBitmap(&info);
-/*
-      // Handle Scroll Wrapping(Let's see if we even need do to it to begin
-      // with)
-      if (info.x < (vdp2width - info.cellw))
-      {
-         info.vertices[0] = (info.x+info.cellw) * info.coordincx;
-         info.vertices[2] = (info.x + (info.cellw<<1)) * info.coordincx;
-         info.vertices[4] = (info.x + (info.cellw<<1)) * info.coordincx;
-         info.vertices[6] = (info.x+info.cellw) * info.coordincx;
-
-         YglCachedQuad((YglSprite *)&info, tmp);
-
-         if (info.y < (vdp2height - info.cellh))
-         {
-            info.vertices[1] = (info.y+info.cellh) * info.coordincy;
-            info.vertices[3] = (info.y + (info.cellh<<1)) * info.coordincy;
-            info.vertices[5] = (info.y + (info.cellh<<1)) * info.coordincy;
-            info.vertices[7] = (info.y+info.cellh) * info.coordincy;
-
-            YglCachedQuad((YglSprite *)&info, tmp);
-         }
-      }
-      else if (info.y < (vdp2height - info.cellh))
-      {
-         info.vertices[1] = (info.y+info.cellh) * info.coordincy;
-         info.vertices[3] = (info.y + (info.cellh<<1)) * info.coordincy;
-         info.vertices[5] = (info.y + (info.cellh<<1)) * info.coordincy;
-         info.vertices[7] = (info.y+info.cellh) * info.coordincy;
-
-         YglCachedQuad((YglSprite *)&info, tmp);
-      }
-*/
    }
    else
       Vdp2DrawMap(&info);

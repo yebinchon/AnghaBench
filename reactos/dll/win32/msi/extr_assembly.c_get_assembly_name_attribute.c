@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct assembly_name {size_t index; int /*<<< orphan*/ * attrs; } ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  struct assembly_name* LPVOID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- char* MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msi_alloc (int) ; 
- int /*<<< orphan*/  sprintfW (int /*<<< orphan*/ ,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  strcmpiW (char const*,char const*) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,char const*) ; 
- int strlenW (char const*) ; 
+
+
+
+struct assembly_name {size_t index; int * attrs; } ;
+typedef char WCHAR ;
+typedef int UINT ;
+typedef int MSIRECORD ;
+typedef struct assembly_name* LPVOID ;
+
+
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ char* MSI_RecordGetString (int *,int) ;
+ int msi_alloc (int) ;
+ int sprintfW (int ,char const*,char const*,char const*) ;
+ int strcmpiW (char const*,char const*) ;
+ int strcpyW (int ,char const*) ;
+ int strlenW (char const*) ;
 
 __attribute__((used)) static UINT get_assembly_name_attribute( MSIRECORD *rec, LPVOID param )
 {

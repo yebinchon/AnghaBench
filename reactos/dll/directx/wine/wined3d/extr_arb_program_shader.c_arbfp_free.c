@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_device {struct shader_arb_priv* fragment_priv; int /*<<< orphan*/ * shader_backend; TYPE_1__* adapter; } ;
-struct shader_arb_priv {int /*<<< orphan*/  use_arbfp_fixed_func; int /*<<< orphan*/  fragment_shaders; } ;
-struct TYPE_2__ {int /*<<< orphan*/  gl_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  arb_program_shader_backend ; 
- int /*<<< orphan*/  arbfp_free_ffpshader ; 
- int /*<<< orphan*/  heap_free (struct shader_arb_priv*) ; 
- int /*<<< orphan*/  wine_rb_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_device {struct shader_arb_priv* fragment_priv; int * shader_backend; TYPE_1__* adapter; } ;
+struct shader_arb_priv {int use_arbfp_fixed_func; int fragment_shaders; } ;
+struct TYPE_2__ {int gl_info; } ;
+
+
+ int FALSE ;
+ int arb_program_shader_backend ;
+ int arbfp_free_ffpshader ;
+ int heap_free (struct shader_arb_priv*) ;
+ int wine_rb_destroy (int *,int ,int *) ;
 
 __attribute__((used)) static void arbfp_free(struct wined3d_device *device)
 {

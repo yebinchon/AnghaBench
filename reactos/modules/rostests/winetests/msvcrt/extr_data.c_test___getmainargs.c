@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ GetTempPathA (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  __getmainargs (int*,char***,char***,int,int*) ; 
- int /*<<< orphan*/  _unlink (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int* p___p___argc () ; 
- char*** p___p___argv () ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ GetTempPathA (int,char*) ;
+ int MAX_PATH ;
+ int __getmainargs (int*,char***,char***,int,int*) ;
+ int _unlink (char*) ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int ok (int,char*,...) ;
+ int* p___p___argc () ;
+ char*** p___p___argv () ;
+ int skip (char*) ;
+ int sprintf (char*,char*,char*) ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test___getmainargs(void)
 {
@@ -82,7 +82,7 @@ __attribute__((used)) static void test___getmainargs(void)
 
     sprintf(filepath, "%swine_test/b", tmppath);
     f = fopen(filepath, "w");
-    ok(f != NULL, "fopen(%s) failed: %d\n", filepath, errno);
+    ok(f != ((void*)0), "fopen(%s) failed: %d\n", filepath, errno);
     fclose(f);
     mode = 0;
     __getmainargs(&new_argc, &new_argv, &envp, 1, &mode);

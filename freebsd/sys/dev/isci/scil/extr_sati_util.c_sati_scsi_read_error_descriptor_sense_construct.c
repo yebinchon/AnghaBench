@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  U8 ;
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  SATI_TRANSLATOR_SEQUENCE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCSI_DESCRIPTOR_CURRENT_RESPONSE_CODE ; 
- int /*<<< orphan*/ * sati_cb_get_d2h_register_fis_address (void*) ; 
- int /*<<< orphan*/  sati_get_ata_lba_high (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_lba_high_ext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_lba_low (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_lba_low_ext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_lba_mid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_get_ata_lba_mid_ext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_scsi_common_descriptor_sense_construct (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_scsi_get_sense_data_buffer (int /*<<< orphan*/ *,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sati_set_sense_data_byte (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int U8 ;
+typedef int U32 ;
+typedef int SATI_TRANSLATOR_SEQUENCE_T ;
+
+
+ int SCSI_DESCRIPTOR_CURRENT_RESPONSE_CODE ;
+ int * sati_cb_get_d2h_register_fis_address (void*) ;
+ int sati_get_ata_lba_high (int *) ;
+ int sati_get_ata_lba_high_ext (int *) ;
+ int sati_get_ata_lba_low (int *) ;
+ int sati_get_ata_lba_low_ext (int *) ;
+ int sati_get_ata_lba_mid (int *) ;
+ int sati_get_ata_lba_mid_ext (int *) ;
+ int sati_scsi_common_descriptor_sense_construct (int *,void*,int *,int ,int ,int ,int ,int *) ;
+ int sati_scsi_get_sense_data_buffer (int *,void*,int ,int **,int *) ;
+ int sati_set_sense_data_byte (int *,int ,int ,int ) ;
 
 __attribute__((used)) static
 void sati_scsi_read_error_descriptor_sense_construct(
    SATI_TRANSLATOR_SEQUENCE_T * sequence,
-   void                       * scsi_io,
-   void                       * ata_io,
-   U8                           scsi_status,
-   U8                           response_code,
-   U8                           sense_key,
-   U8                           additional_sense_code,
-   U8                           additional_sense_code_qualifier
+   void * scsi_io,
+   void * ata_io,
+   U8 scsi_status,
+   U8 response_code,
+   U8 sense_key,
+   U8 additional_sense_code,
+   U8 additional_sense_code_qualifier
 )
 {
    U8 * sense_data;
-   U32  sense_len;
+   U32 sense_len;
    U8 information_buff[8] = {0};
 
    U8 * register_fis = sati_cb_get_d2h_register_fis_address(ata_io);

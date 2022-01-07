@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* fmt; } ;
-typedef  TYPE_1__ hexagon_operand ;
-typedef  int /*<<< orphan*/  hexagon_opcode ;
-typedef  int /*<<< orphan*/  hexagon_insn ;
+typedef TYPE_1__ hexagon_operand ;
+typedef int hexagon_opcode ;
+typedef int hexagon_insn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int HEXAGON_OPERAND_IS_REGISTER ; 
- scalar_t__ hexagon_encode_operand (TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  hexagon_gp_regs ; 
- int /*<<< orphan*/  hexagon_gp_regs_count ; 
- int hexagon_reg_num (TYPE_1__ const*,char**,char,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char) ; 
+
+ int FALSE ;
+ int HEXAGON_OPERAND_IS_REGISTER ;
+ scalar_t__ hexagon_encode_operand (TYPE_1__ const*,int *,int const*,int,int *,int ,int ,char**) ;
+ int hexagon_gp_regs ;
+ int hexagon_gp_regs_count ;
+ int hexagon_reg_num (TYPE_1__ const*,char**,char,int ,int ,int *,char) ;
 
 char *
 hexagon_parse_splr
@@ -32,14 +32,14 @@ hexagon_parse_splr
   int reg;
 
   reg = hexagon_reg_num
-          (operand, &input, 'r', hexagon_gp_regs, hexagon_gp_regs_count, NULL, '\0');
+          (operand, &input, 'r', hexagon_gp_regs, hexagon_gp_regs_count, ((void*)0), '\0');
   if (reg < 0
       || (operand->fmt [0] == 'S' && operand->fmt [1] == 'p' && reg != 29)
       || (operand->fmt [0] == 'L' && operand->fmt [1] == 'r' && reg != 31))
-    return (NULL);
+    return (((void*)0));
 
   if (hexagon_encode_operand
-        (operand, insn, opcode, reg, NULL, FALSE, FALSE, errmsg))
+        (operand, insn, opcode, reg, ((void*)0), FALSE, FALSE, errmsg))
     {
       if (flag)
         *flag = HEXAGON_OPERAND_IS_REGISTER;
@@ -48,5 +48,5 @@ hexagon_parse_splr
       return (input);
     }
 
-  return (NULL);
+  return (((void*)0));
 }

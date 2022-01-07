@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {struct TYPE_9__* next; scalar_t__ priority; int /*<<< orphan*/  ssltunnel; scalar_t__ writing_started; int /*<<< orphan*/ * req_bkt; } ;
-typedef  TYPE_2__ serf_request_t ;
-typedef  int /*<<< orphan*/  serf_request_setup_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {struct TYPE_9__* next; scalar_t__ priority; int ssltunnel; scalar_t__ writing_started; int * req_bkt; } ;
+typedef TYPE_2__ serf_request_t ;
+typedef int serf_request_setup_t ;
 struct TYPE_10__ {int dirty_conn; TYPE_1__* ctx; TYPE_2__* requests; } ;
-typedef  TYPE_3__ serf_connection_t ;
+typedef TYPE_3__ serf_connection_t ;
 struct TYPE_8__ {int dirty_pollset; } ;
 
-/* Variables and functions */
- TYPE_2__* create_request (TYPE_3__*,int /*<<< orphan*/ ,void*,int,int) ; 
+
+ TYPE_2__* create_request (TYPE_3__*,int ,void*,int,int) ;
 
 __attribute__((used)) static serf_request_t *
 priority_request_create(serf_connection_t *conn,
@@ -33,27 +33,27 @@ priority_request_create(serf_connection_t *conn,
     serf_request_t *iter, *prev;
 
     request = create_request(conn, setup, setup_baton,
-                             1, /* priority */
+                             1,
                              ssltunnelreq);
 
-    /* Link the new request after the last written request. */
-    iter = conn->requests;
-    prev = NULL;
 
-    /* Find a request that has data which needs to be delivered. */
-    while (iter != NULL && iter->req_bkt == NULL && iter->writing_started) {
+    iter = conn->requests;
+    prev = ((void*)0);
+
+
+    while (iter != ((void*)0) && iter->req_bkt == ((void*)0) && iter->writing_started) {
         prev = iter;
         iter = iter->next;
     }
 
-    /* A CONNECT request to setup an ssltunnel has absolute priority over all
-       other requests on the connection, so:
-       a. add it first to the queue 
-       b. ensure that other priority requests are added after the CONNECT
-          request */
+
+
+
+
+
     if (!request->ssltunnel) {
-        /* Advance to next non priority request */
-        while (iter != NULL && iter->priority) {
+
+        while (iter != ((void*)0) && iter->priority) {
             prev = iter;
             iter = iter->next;
         }
@@ -67,7 +67,7 @@ priority_request_create(serf_connection_t *conn,
         conn->requests = request;
     }
 
-    /* Ensure our pollset becomes writable in context run */
+
     conn->ctx->dirty_pollset = 1;
     conn->dirty_conn = 1;
 

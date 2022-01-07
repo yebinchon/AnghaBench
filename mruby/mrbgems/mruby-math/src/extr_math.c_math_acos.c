@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  double mrb_float ;
 
-/* Variables and functions */
- double acos (double) ; 
- int /*<<< orphan*/  domain_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_float_value (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,double*) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef double mrb_float ;
+
+
+ double acos (double) ;
+ int domain_error (int *,char*) ;
+ int mrb_float_value (int *,double) ;
+ int mrb_get_args (int *,char*,double*) ;
 
 __attribute__((used)) static mrb_value
 math_acos(mrb_state *mrb, mrb_value obj)

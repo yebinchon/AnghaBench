@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_7__ {int ref; TYPE_2__ ICorDebug_iface; int /*<<< orphan*/ * runtimehost; int /*<<< orphan*/  processes; int /*<<< orphan*/ * pCallback2; int /*<<< orphan*/ * pCallback; TYPE_1__ ICorDebugProcessEnum_iface; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ICLRRuntimeHost ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_3__ CorDebug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_3__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ICLRRuntimeHost_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  cordebug_vtbl ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  processenum_vtbl ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_5__ {int * lpVtbl; } ;
+struct TYPE_7__ {int ref; TYPE_2__ ICorDebug_iface; int * runtimehost; int processes; int * pCallback2; int * pCallback; TYPE_1__ ICorDebugProcessEnum_iface; } ;
+typedef int IUnknown ;
+typedef int ICLRRuntimeHost ;
+typedef int HRESULT ;
+typedef TYPE_3__ CorDebug ;
+
+
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_3__* HeapAlloc (int ,int ,int) ;
+ int ICLRRuntimeHost_AddRef (int *) ;
+ int S_OK ;
+ int cordebug_vtbl ;
+ int list_init (int *) ;
+ int processenum_vtbl ;
 
 HRESULT CorDebug_Create(ICLRRuntimeHost *runtimehost, IUnknown** ppUnk)
 {
@@ -42,8 +42,8 @@ HRESULT CorDebug_Create(ICLRRuntimeHost *runtimehost, IUnknown** ppUnk)
     This->ICorDebug_iface.lpVtbl = &cordebug_vtbl;
     This->ICorDebugProcessEnum_iface.lpVtbl = &processenum_vtbl;
     This->ref = 1;
-    This->pCallback = NULL;
-    This->pCallback2 = NULL;
+    This->pCallback = ((void*)0);
+    This->pCallback2 = ((void*)0);
     This->runtimehost = runtimehost;
 
     list_init(&This->processes);

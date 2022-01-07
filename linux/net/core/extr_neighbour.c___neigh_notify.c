@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct sk_buff {int dummy; } ;
 struct net {int dummy; } ;
-struct neighbour {int /*<<< orphan*/  dev; } ;
+struct neighbour {int dev; } ;
 
-/* Variables and functions */
- int EMSGSIZE ; 
- int ENOBUFS ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  RTNLGRP_NEIGH ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- struct net* dev_net (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- int neigh_fill_info (struct sk_buff*,struct neighbour*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  neigh_nlmsg_size () ; 
- struct sk_buff* nlmsg_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtnl_notify (struct sk_buff*,struct net*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtnl_set_sk_err (struct net*,int /*<<< orphan*/ ,int) ; 
+
+ int EMSGSIZE ;
+ int ENOBUFS ;
+ int GFP_ATOMIC ;
+ int RTNLGRP_NEIGH ;
+ int WARN_ON (int) ;
+ struct net* dev_net (int ) ;
+ int kfree_skb (struct sk_buff*) ;
+ int neigh_fill_info (struct sk_buff*,struct neighbour*,int ,int ,int,int) ;
+ int neigh_nlmsg_size () ;
+ struct sk_buff* nlmsg_new (int ,int ) ;
+ int rtnl_notify (struct sk_buff*,struct net*,int ,int ,int *,int ) ;
+ int rtnl_set_sk_err (struct net*,int ,int) ;
 
 __attribute__((used)) static void __neigh_notify(struct neighbour *n, int type, int flags,
-			   u32 pid)
+      u32 pid)
 {
-	struct net *net = dev_net(n->dev);
-	struct sk_buff *skb;
-	int err = -ENOBUFS;
+ struct net *net = dev_net(n->dev);
+ struct sk_buff *skb;
+ int err = -ENOBUFS;
 
-	skb = nlmsg_new(neigh_nlmsg_size(), GFP_ATOMIC);
-	if (skb == NULL)
-		goto errout;
+ skb = nlmsg_new(neigh_nlmsg_size(), GFP_ATOMIC);
+ if (skb == ((void*)0))
+  goto errout;
 
-	err = neigh_fill_info(skb, n, pid, 0, type, flags);
-	if (err < 0) {
-		/* -EMSGSIZE implies BUG in neigh_nlmsg_size() */
-		WARN_ON(err == -EMSGSIZE);
-		kfree_skb(skb);
-		goto errout;
-	}
-	rtnl_notify(skb, net, 0, RTNLGRP_NEIGH, NULL, GFP_ATOMIC);
-	return;
+ err = neigh_fill_info(skb, n, pid, 0, type, flags);
+ if (err < 0) {
+
+  WARN_ON(err == -EMSGSIZE);
+  kfree_skb(skb);
+  goto errout;
+ }
+ rtnl_notify(skb, net, 0, RTNLGRP_NEIGH, ((void*)0), GFP_ATOMIC);
+ return;
 errout:
-	if (err < 0)
-		rtnl_set_sk_err(net, RTNLGRP_NEIGH, err);
+ if (err < 0)
+  rtnl_set_sk_err(net, RTNLGRP_NEIGH, err);
 }

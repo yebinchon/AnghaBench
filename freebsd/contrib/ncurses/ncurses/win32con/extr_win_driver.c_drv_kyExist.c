@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  keylist ;
-typedef  int WORD ;
-struct TYPE_2__ {int /*<<< orphan*/  rmap; } ;
-typedef  int /*<<< orphan*/  TERMINAL_CONTROL_BLOCK ;
-typedef  int /*<<< orphan*/  SCREEN ;
-typedef  int /*<<< orphan*/  LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssertTCB () ; 
- int FALSE ; 
- scalar_t__ FKEYS ; 
- int /*<<< orphan*/  GenMap (int /*<<< orphan*/ ,int) ; 
- int LOWORD (int /*<<< orphan*/ ) ; 
- scalar_t__ N_INI ; 
- TYPE_1__* PropOf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetSP () ; 
- int /*<<< orphan*/  T (int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int /*<<< orphan*/  T_CALLED (char*) ; 
- void* bsearch (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  returnCode (int) ; 
- int /*<<< orphan*/  rkeycompare ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int keylist ;
+typedef int WORD ;
+struct TYPE_2__ {int rmap; } ;
+typedef int TERMINAL_CONTROL_BLOCK ;
+typedef int SCREEN ;
+typedef int LONG ;
+
+
+ int AssertTCB () ;
+ int FALSE ;
+ scalar_t__ FKEYS ;
+ int GenMap (int ,int) ;
+ int LOWORD (int ) ;
+ scalar_t__ N_INI ;
+ TYPE_1__* PropOf (int *) ;
+ int SetSP () ;
+ int T (int ) ;
+ int TRUE ;
+ int T_CALLED (char*) ;
+ void* bsearch (int *,int ,size_t,int,int ) ;
+ int returnCode (int) ;
+ int rkeycompare ;
 
 __attribute__((used)) static bool
 drv_kyExist(TERMINAL_CONTROL_BLOCK * TCB, int keycode)
@@ -50,15 +50,15 @@ drv_kyExist(TERMINAL_CONTROL_BLOCK * TCB, int keycode)
 
     T((T_CALLED("win32con::drv_kyExist(%p, %d)"), TCB, keycode));
     res = bsearch(&key,
-		  PropOf(TCB)->rmap,
-		  (size_t) (N_INI + FKEYS),
-		  sizeof(keylist[0]),
-		  rkeycompare);
+    PropOf(TCB)->rmap,
+    (size_t) (N_INI + FKEYS),
+    sizeof(keylist[0]),
+    rkeycompare);
     if (res) {
-	key = *((LONG *) res);
-	nKey = LOWORD(key);
-	if (!(nKey & 0x8000))
-	    found = TRUE;
+ key = *((LONG *) res);
+ nKey = LOWORD(key);
+ if (!(nKey & 0x8000))
+     found = TRUE;
     }
     returnCode(found);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  val ;
 
-/* Variables and functions */
- size_t FFMAX (size_t,size_t) ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (void*) ; 
- void* av_malloc (size_t) ; 
- void* av_mallocz (size_t) ; 
- int /*<<< orphan*/  memcpy (void*,void**,int) ; 
+
+
+
+typedef int val ;
+
+
+ size_t FFMAX (size_t,size_t) ;
+ int av_assert0 (int ) ;
+ int av_freep (void*) ;
+ void* av_malloc (size_t) ;
+ void* av_mallocz (size_t) ;
+ int memcpy (void*,void**,int) ;
 
 __attribute__((used)) static inline int ff_fast_malloc(void *ptr, unsigned int *size, size_t min_size, int zero_realloc)
 {

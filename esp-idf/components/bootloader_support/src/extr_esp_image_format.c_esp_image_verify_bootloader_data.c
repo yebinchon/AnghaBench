@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ size; scalar_t__ offset; } ;
-typedef  TYPE_1__ esp_partition_pos_t ;
-typedef  int /*<<< orphan*/  esp_image_metadata_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+typedef TYPE_1__ esp_partition_pos_t ;
+typedef int esp_image_metadata_t ;
+typedef int esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_BOOTLOADER_OFFSET ; 
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_IMAGE_VERIFY ; 
- scalar_t__ ESP_PARTITION_TABLE_OFFSET ; 
- int /*<<< orphan*/  esp_image_verify (int /*<<< orphan*/ ,TYPE_1__ const*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ESP_BOOTLOADER_OFFSET ;
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_IMAGE_VERIFY ;
+ scalar_t__ ESP_PARTITION_TABLE_OFFSET ;
+ int esp_image_verify (int ,TYPE_1__ const*,int *) ;
 
 esp_err_t esp_image_verify_bootloader_data(esp_image_metadata_t *data)
 {
-    if (data == NULL) {
+    if (data == ((void*)0)) {
         return ESP_ERR_INVALID_ARG;
     }
     const esp_partition_pos_t bootloader_part = {

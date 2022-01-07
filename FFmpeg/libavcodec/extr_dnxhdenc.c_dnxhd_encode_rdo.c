@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_11__ {int qmax; int /*<<< orphan*/  (* execute2 ) (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;} ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_11__ {int qmax; int (* execute2 ) (TYPE_4__*,int ,int *,int *,int) ;} ;
 struct TYPE_8__ {int mb_height; int mb_width; int mb_num; } ;
 struct TYPE_10__ {int qscale; int lambda; int* mb_qscale; int* mb_bits; int frame_bits; TYPE_2__* mb_rc; TYPE_1__ m; } ;
 struct TYPE_9__ {int bits; scalar_t__ ssd; } ;
-typedef  TYPE_3__ DNXHDEncContext ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_3__ DNXHDEncContext ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int INT_MAX ; 
- int LAMBDA_FRAC_BITS ; 
- unsigned int UINT_MAX ; 
- int /*<<< orphan*/  dnxhd_calc_bits_thread ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int INT_MAX ;
+ int LAMBDA_FRAC_BITS ;
+ unsigned int UINT_MAX ;
+ int dnxhd_calc_bits_thread ;
+ int stub1 (TYPE_4__*,int ,int *,int *,int) ;
 
 __attribute__((used)) static int dnxhd_encode_rdo(AVCodecContext *avctx, DNXHDEncContext *ctx)
 {
@@ -42,39 +42,39 @@ __attribute__((used)) static int dnxhd_encode_rdo(AVCodecContext *avctx, DNXHDEn
     for (q = 1; q < avctx->qmax; q++) {
         ctx->qscale = q;
         avctx->execute2(avctx, dnxhd_calc_bits_thread,
-                        NULL, NULL, ctx->m.mb_height);
+                        ((void*)0), ((void*)0), ctx->m.mb_height);
     }
     up_step = down_step = 2 << LAMBDA_FRAC_BITS;
-    lambda  = ctx->lambda;
+    lambda = ctx->lambda;
 
     for (;;) {
         int bits = 0;
-        int end  = 0;
+        int end = 0;
         if (lambda == last_higher) {
             lambda++;
-            end = 1; // need to set final qscales/bits
+            end = 1;
         }
         for (y = 0; y < ctx->m.mb_height; y++) {
             for (x = 0; x < ctx->m.mb_width; x++) {
                 unsigned min = UINT_MAX;
                 int qscale = 1;
-                int mb     = y * ctx->m.mb_width + x;
+                int mb = y * ctx->m.mb_width + x;
                 int rc = 0;
                 for (q = 1; q < avctx->qmax; q++) {
                     int i = (q*ctx->m.mb_num) + mb;
                     unsigned score = ctx->mb_rc[i].bits * lambda +
                                      ((unsigned) ctx->mb_rc[i].ssd << LAMBDA_FRAC_BITS);
                     if (score < min) {
-                        min    = score;
+                        min = score;
                         qscale = q;
                         rc = i;
                     }
                 }
                 bits += ctx->mb_rc[rc].bits;
                 ctx->mb_qscale[mb] = qscale;
-                ctx->mb_bits[mb]   = ctx->mb_rc[rc].bits;
+                ctx->mb_bits[mb] = ctx->mb_rc[rc].bits;
             }
-            bits = (bits + 31) & ~31; // padding
+            bits = (bits + 31) & ~31;
             if (bits > ctx->frame_bits)
                 break;
         }

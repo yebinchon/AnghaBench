@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOAD32_LE (unsigned char const*) ; 
- int /*<<< orphan*/  ROTL32 (int /*<<< orphan*/ ,int) ; 
- int ROUNDS ; 
- int /*<<< orphan*/  STORE32_LE (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  U32C (int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int LOAD32_LE (unsigned char const*) ;
+ int ROTL32 (int ,int) ;
+ int ROUNDS ;
+ int STORE32_LE (unsigned char*,int ) ;
+ int U32C (int) ;
 
 int
 crypto_core_hsalsa20(unsigned char *out,
@@ -26,10 +26,10 @@ crypto_core_hsalsa20(unsigned char *out,
                      const unsigned char *c)
 {
     uint32_t x0, x1, x2, x3, x4, x5, x6, x7, x8,
-             x9, x10, x11, x12, x13, x14,  x15;
-    int      i;
+             x9, x10, x11, x12, x13, x14, x15;
+    int i;
 
-    if (c == NULL) {
+    if (c == ((void*)0)) {
         x0 = U32C(0x61707865);
         x5 = U32C(0x3320646e);
         x10 = U32C(0x79622d32);

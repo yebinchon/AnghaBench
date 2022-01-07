@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ecoff_symbol_type ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  int /*<<< orphan*/  asymbol ;
-struct TYPE_2__ {int /*<<< orphan*/ * canonical_symbols; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _bfd_ecoff_slurp_symbol_table (int /*<<< orphan*/ *) ; 
- long bfd_get_symcount (int /*<<< orphan*/ *) ; 
- TYPE_1__* ecoff_data (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ecoff_symbol_type ;
+typedef int bfd ;
+typedef int asymbol ;
+struct TYPE_2__ {int * canonical_symbols; } ;
+
+
+ int _bfd_ecoff_slurp_symbol_table (int *) ;
+ long bfd_get_symcount (int *) ;
+ TYPE_1__* ecoff_data (int *) ;
 
 long
 _bfd_ecoff_canonicalize_symtab (bfd *abfd, asymbol **alocation)
@@ -39,6 +39,6 @@ _bfd_ecoff_canonicalize_symtab (bfd *abfd, asymbol **alocation)
       *(location++) = symbase++;
       counter++;
     }
-  *location++ = NULL;
+  *location++ = ((void*)0);
   return bfd_get_symcount (abfd);
 }

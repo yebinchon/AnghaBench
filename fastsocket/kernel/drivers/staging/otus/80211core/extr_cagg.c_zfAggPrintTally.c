@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  u16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u16_t ;
 struct aggTally {int got_packets_sum; int time; int avg_got_packets; int avg_got_bytes; int got_bytes_sum; int avg_sent_packets; int sent_packets_sum; int avg_sent_bytes; int sent_bytes_sum; } ;
 struct TYPE_3__ {int BA_Fail; int Hw_Tx_MPDU; } ;
 struct TYPE_4__ {TYPE_1__ commTally; struct aggTally agg_tal; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZM_LV_0 ; 
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfAggTallyReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zm_msg1_agg (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
 
-u16_t   zfAggPrintTally(zdev_t* dev)
+ int ZM_LV_0 ;
+ TYPE_2__* wd ;
+ int zfAggTallyReset (int *) ;
+ int zm_msg1_agg (int ,char*,int) ;
+ int zmw_get_wlan_dev (int *) ;
+
+u16_t zfAggPrintTally(zdev_t* dev)
 {
     struct aggTally* agg_tal;
 
     zmw_get_wlan_dev(dev);
 
-    //zmw_declare_for_critical_section();
+
 
     agg_tal = &wd->agg_tal;
 

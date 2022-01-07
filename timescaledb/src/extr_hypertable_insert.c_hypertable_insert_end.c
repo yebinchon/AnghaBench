@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  custom_ps; } ;
-typedef  TYPE_1__ CustomScanState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExecEndNode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  linitial (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int custom_ps; } ;
+typedef TYPE_1__ CustomScanState ;
+
+
+ int ExecEndNode (int ) ;
+ int linitial (int ) ;
 
 __attribute__((used)) static void
 hypertable_insert_end(CustomScanState *node)
 {
-	ExecEndNode(linitial(node->custom_ps));
+ ExecEndNode(linitial(node->custom_ps));
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct lm78_data {int /*<<< orphan*/  hwmon_dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct lm78_data {int hwmon_dev; } ;
+struct TYPE_2__ {int kobj; } ;
 struct i2c_client {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hwmon_device_unregister (int /*<<< orphan*/ ) ; 
- struct lm78_data* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  kfree (struct lm78_data*) ; 
- int /*<<< orphan*/  lm78_group ; 
- int /*<<< orphan*/  sysfs_remove_group (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int hwmon_device_unregister (int ) ;
+ struct lm78_data* i2c_get_clientdata (struct i2c_client*) ;
+ int kfree (struct lm78_data*) ;
+ int lm78_group ;
+ int sysfs_remove_group (int *,int *) ;
 
 __attribute__((used)) static int lm78_i2c_remove(struct i2c_client *client)
 {
-	struct lm78_data *data = i2c_get_clientdata(client);
+ struct lm78_data *data = i2c_get_clientdata(client);
 
-	hwmon_device_unregister(data->hwmon_dev);
-	sysfs_remove_group(&client->dev.kobj, &lm78_group);
-	kfree(data);
+ hwmon_device_unregister(data->hwmon_dev);
+ sysfs_remove_group(&client->dev.kobj, &lm78_group);
+ kfree(data);
 
-	return 0;
+ return 0;
 }

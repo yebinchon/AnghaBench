@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {void (* xCollNeeded16 ) (void*,TYPE_1__*,int,void const*) ;int /*<<< orphan*/  mutex; void* pCollNeededArg; scalar_t__ xCollNeeded; } ;
-typedef  TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {void (* xCollNeeded16 ) (void*,TYPE_1__*,int,void const*) ;int mutex; void* pCollNeededArg; scalar_t__ xCollNeeded; } ;
+typedef TYPE_1__ sqlite3 ;
+
+
+ int SQLITE_OK ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 int sqlite3_collation_needed16(
-  sqlite3 *db, 
-  void *pCollNeededArg, 
+  sqlite3 *db,
+  void *pCollNeededArg,
   void(*xCollNeeded16)(void*,sqlite3*,int eTextRep,const void*)
 ){
   sqlite3_mutex_enter(db->mutex);

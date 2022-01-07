@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sc_info {int /*<<< orphan*/  lock; scalar_t__ mpu_reg; int /*<<< orphan*/  mpu_regid; scalar_t__ reg; int /*<<< orphan*/  regid; scalar_t__ mpu; scalar_t__ irq; int /*<<< orphan*/  irqid; int /*<<< orphan*/  ih; int /*<<< orphan*/  parent_dmat; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  SYS_RES_IOPORT ; 
- int /*<<< orphan*/  SYS_RES_IRQ ; 
- int /*<<< orphan*/  bus_dma_tag_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  bus_teardown_intr (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmi_power (struct sc_info*,int) ; 
- int /*<<< orphan*/  cmi_uninit (struct sc_info*) ; 
- int /*<<< orphan*/  free (struct sc_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpu401_uninit (scalar_t__) ; 
- struct sc_info* pcm_getdevinfo (int /*<<< orphan*/ ) ; 
- int pcm_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snd_mtxfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct sc_info {int lock; scalar_t__ mpu_reg; int mpu_regid; scalar_t__ reg; int regid; scalar_t__ mpu; scalar_t__ irq; int irqid; int ih; int parent_dmat; } ;
+typedef int device_t ;
+
+
+ int M_DEVBUF ;
+ int SYS_RES_IOPORT ;
+ int SYS_RES_IRQ ;
+ int bus_dma_tag_destroy (int ) ;
+ int bus_release_resource (int ,int ,int ,scalar_t__) ;
+ int bus_teardown_intr (int ,scalar_t__,int ) ;
+ int cmi_power (struct sc_info*,int) ;
+ int cmi_uninit (struct sc_info*) ;
+ int free (struct sc_info*,int ) ;
+ int mpu401_uninit (scalar_t__) ;
+ struct sc_info* pcm_getdevinfo (int ) ;
+ int pcm_unregister (int ) ;
+ int snd_mtxfree (int ) ;
 
 __attribute__((used)) static int
 cmi_detach(device_t dev)
 {
-	struct sc_info *sc;
-	int r;
+ struct sc_info *sc;
+ int r;
 
-	r = pcm_unregister(dev);
-	if (r) return r;
+ r = pcm_unregister(dev);
+ if (r) return r;
 
-	sc = pcm_getdevinfo(dev);
-	cmi_uninit(sc);
-	cmi_power(sc, 3);
+ sc = pcm_getdevinfo(dev);
+ cmi_uninit(sc);
+ cmi_power(sc, 3);
 
-	bus_dma_tag_destroy(sc->parent_dmat);
-	bus_teardown_intr(dev, sc->irq, sc->ih);
-	bus_release_resource(dev, SYS_RES_IRQ, sc->irqid, sc->irq);
-	if(sc->mpu)
-		mpu401_uninit(sc->mpu);
-	bus_release_resource(dev, SYS_RES_IOPORT, sc->regid, sc->reg);
-	if (sc->mpu_reg)
-	    bus_release_resource(dev, SYS_RES_IOPORT, sc->mpu_regid, sc->mpu_reg);
+ bus_dma_tag_destroy(sc->parent_dmat);
+ bus_teardown_intr(dev, sc->irq, sc->ih);
+ bus_release_resource(dev, SYS_RES_IRQ, sc->irqid, sc->irq);
+ if(sc->mpu)
+  mpu401_uninit(sc->mpu);
+ bus_release_resource(dev, SYS_RES_IOPORT, sc->regid, sc->reg);
+ if (sc->mpu_reg)
+     bus_release_resource(dev, SYS_RES_IOPORT, sc->mpu_regid, sc->mpu_reg);
 
-	snd_mtxfree(sc->lock);
-	free(sc, M_DEVBUF);
+ snd_mtxfree(sc->lock);
+ free(sc, M_DEVBUF);
 
-	return 0;
+ return 0;
 }

@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  lfFaceName; int /*<<< orphan*/  lfCharSet; int /*<<< orphan*/  lfWeight; scalar_t__ lfWidth; scalar_t__ lfHeight; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_8__ {int lfFaceName; int lfCharSet; int lfWeight; scalar_t__ lfWidth; scalar_t__ lfHeight; } ;
 struct TYPE_7__ {int right; scalar_t__ top; scalar_t__ left; scalar_t__ bottom; } ;
-typedef  char TCHAR ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  LPRECT ;
-typedef  TYPE_2__ LOGFONTW ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef char TCHAR ;
+typedef TYPE_1__ RECT ;
+typedef int LPRECT ;
+typedef TYPE_2__ LOGFONTW ;
+typedef int INT ;
+typedef int HFONT ;
+typedef int HDC ;
+typedef int COLORREF ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int BF_MIDDLE ; 
- int BF_RECT ; 
- int BF_SOFT ; 
- int /*<<< orphan*/  COLOR_BTNHIGHLIGHT ; 
- int /*<<< orphan*/  COLOR_BTNSHADOW ; 
- int /*<<< orphan*/  COLOR_BTNTEXT ; 
- int /*<<< orphan*/  CreateFontIndirect (TYPE_2__*) ; 
- int /*<<< orphan*/  DEFAULT_CHARSET ; 
-#define  DFCS_CAPTIONCLOSE 132 
-#define  DFCS_CAPTIONHELP 131 
-#define  DFCS_CAPTIONMAX 130 
-#define  DFCS_CAPTIONMIN 129 
-#define  DFCS_CAPTIONRESTORE 128 
- int DFCS_INACTIVE ; 
- int DFCS_PUSHED ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EDGE_RAISED ; 
- int /*<<< orphan*/  EDGE_SUNKEN ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FW_NORMAL ; 
- int /*<<< orphan*/  GetBkMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSysColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTextColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IntDrawRectEdge (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  OffsetRect (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetBkMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTextColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int /*<<< orphan*/  TRANSPARENT ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TextOut (int /*<<< orphan*/ ,scalar_t__,scalar_t__,char*,int) ; 
- int /*<<< orphan*/  UITOOLS_MakeSquareRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  WARN (char*,int) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_2__*,int) ; 
- int /*<<< orphan*/  lstrcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BF_MIDDLE ;
+ int BF_RECT ;
+ int BF_SOFT ;
+ int COLOR_BTNHIGHLIGHT ;
+ int COLOR_BTNSHADOW ;
+ int COLOR_BTNTEXT ;
+ int CreateFontIndirect (TYPE_2__*) ;
+ int DEFAULT_CHARSET ;
+
+
+
+
+
+ int DFCS_INACTIVE ;
+ int DFCS_PUSHED ;
+ int DeleteObject (int ) ;
+ int EDGE_RAISED ;
+ int EDGE_SUNKEN ;
+ int FALSE ;
+ int FW_NORMAL ;
+ int GetBkMode (int ) ;
+ int GetSysColor (int ) ;
+ int GetTextColor (int ) ;
+ int IntDrawRectEdge (int ,int ,int ,int,int) ;
+ int OffsetRect (TYPE_1__*,int,int) ;
+ int SelectObject (int ,int ) ;
+ int SetBkMode (int ,int ) ;
+ int SetTextColor (int ,int ) ;
+ int TEXT (char*) ;
+ int TRANSPARENT ;
+ int TRUE ;
+ int TextOut (int ,scalar_t__,scalar_t__,char*,int) ;
+ int UITOOLS_MakeSquareRect (int ,TYPE_1__*) ;
+ int WARN (char*,int) ;
+ int ZeroMemory (TYPE_2__*,int) ;
+ int lstrcpy (int ,int ) ;
 
 __attribute__((used)) static BOOL UITOOLS95_DrawFrameCaption(HDC dc, LPRECT r, UINT uFlags)
 {
@@ -73,21 +73,21 @@ __attribute__((used)) static BOOL UITOOLS95_DrawFrameCaption(HDC dc, LPRECT r, U
     TCHAR Symbol;
     switch(uFlags & 0xff)
     {
-        case DFCS_CAPTIONCLOSE:
-		Symbol = 'r';
-		break;
-        case DFCS_CAPTIONHELP:
-		Symbol = 's';
-		break;
-        case DFCS_CAPTIONMIN:
-		Symbol = '0';
-		break;
-        case DFCS_CAPTIONMAX:
-		Symbol = '1';
-		break;
-        case DFCS_CAPTIONRESTORE:
-		Symbol = '2';
-		break;
+        case 132:
+  Symbol = 'r';
+  break;
+        case 131:
+  Symbol = 's';
+  break;
+        case 129:
+  Symbol = '0';
+  break;
+        case 130:
+  Symbol = '1';
+  break;
+        case 128:
+  Symbol = '2';
+  break;
         default:
              WARN("Invalid caption; flags=0x%04x\n", uFlags);
              return FALSE;
@@ -107,22 +107,22 @@ __attribute__((used)) static BOOL UITOOLS95_DrawFrameCaption(HDC dc, LPRECT r, U
     lf.lfCharSet = DEFAULT_CHARSET;
     lstrcpy(lf.lfFaceName, TEXT("Marlett"));
     hFont = CreateFontIndirect(&lf);
-    /* save font and text color */
+
     hOldFont = SelectObject(dc, hFont);
     clrsave = GetTextColor(dc);
     bkmode = GetBkMode(dc);
-    /* set color and drawing mode */
+
     SetBkMode(dc, TRANSPARENT);
     if(uFlags & DFCS_INACTIVE)
     {
-        /* draw shadow */
+
         SetTextColor(dc, GetSysColor(COLOR_BTNHIGHLIGHT));
         TextOut(dc, myr.left + 1, myr.top + 1, &Symbol, 1);
     }
     SetTextColor(dc, GetSysColor((uFlags & DFCS_INACTIVE) ? COLOR_BTNSHADOW : COLOR_BTNTEXT));
-    /* draw selected symbol */
+
     TextOut(dc, myr.left, myr.top, &Symbol, 1);
-    /* restore previous settings */
+
     SetTextColor(dc, clrsave);
     SelectObject(dc, hOldFont);
     SetBkMode(dc, bkmode);

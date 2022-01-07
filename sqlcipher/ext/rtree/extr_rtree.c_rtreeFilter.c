@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_30__   TYPE_8__ ;
-typedef  struct TYPE_29__   TYPE_6__ ;
-typedef  struct TYPE_28__   TYPE_5__ ;
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u8 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_30__ TYPE_8__ ;
+typedef struct TYPE_29__ TYPE_6__ ;
+typedef struct TYPE_28__ TYPE_5__ ;
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef scalar_t__ u8 ;
+typedef int u32 ;
 struct TYPE_27__ {scalar_t__ pVtab; } ;
-typedef  TYPE_4__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_vtab ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int i64 ;
-struct TYPE_30__ {int iDepth; int /*<<< orphan*/  nDim2; } ;
+typedef TYPE_4__ sqlite3_vtab_cursor ;
+typedef int sqlite3_vtab ;
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
+typedef int i64 ;
+struct TYPE_30__ {int iDepth; int nDim2; } ;
 struct TYPE_26__ {void* rValue; } ;
-struct TYPE_24__ {int /*<<< orphan*/ * pVtab; } ;
-struct TYPE_29__ {int iStrategy; int atEOF; int nConstraint; char op; char iCoord; int bPoint; int /*<<< orphan*/ ** aNode; TYPE_3__ u; TYPE_2__* pInfo; struct TYPE_29__* anQueue; struct TYPE_29__* aConstraint; int /*<<< orphan*/ * pReadAux; TYPE_1__ base; int /*<<< orphan*/  aPoint; } ;
+struct TYPE_24__ {int * pVtab; } ;
+struct TYPE_29__ {int iStrategy; int atEOF; int nConstraint; char op; char iCoord; int bPoint; int ** aNode; TYPE_3__ u; TYPE_2__* pInfo; struct TYPE_29__* anQueue; struct TYPE_29__* aConstraint; int * pReadAux; TYPE_1__ base; int aPoint; } ;
 struct TYPE_28__ {int id; void* eWithin; scalar_t__ iCell; } ;
-struct TYPE_25__ {int mxLevel; TYPE_6__* anQueue; int /*<<< orphan*/  nCoord; } ;
-typedef  TYPE_5__ RtreeSearchPoint ;
-typedef  int /*<<< orphan*/  RtreeNode ;
-typedef  TYPE_6__ RtreeCursor ;
-typedef  TYPE_6__ RtreeConstraint ;
-typedef  TYPE_8__ Rtree ;
+struct TYPE_25__ {int mxLevel; TYPE_6__* anQueue; int nCoord; } ;
+typedef TYPE_5__ RtreeSearchPoint ;
+typedef int RtreeNode ;
+typedef TYPE_6__ RtreeCursor ;
+typedef TYPE_6__ RtreeConstraint ;
+typedef TYPE_8__ Rtree ;
 
-/* Variables and functions */
- void* PARTLY_WITHIN ; 
- char RTREE_MATCH ; 
- int /*<<< orphan*/  RTREE_QUEUE_TRACE (TYPE_6__*,char*) ; 
- int /*<<< orphan*/  RTREE_ZERO ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int deserializeGeometry (int /*<<< orphan*/ *,TYPE_6__*) ; 
- int findLeafNode (TYPE_8__*,int,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  freeCursorConstraints (TYPE_6__*) ; 
- int /*<<< orphan*/  memset (TYPE_6__*,int /*<<< orphan*/ ,int) ; 
- int nodeAcquire (TYPE_8__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  nodeRelease (TYPE_8__*,int /*<<< orphan*/ *) ; 
- int nodeRowidIndex (TYPE_8__*,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  rtreeReference (TYPE_8__*) ; 
- int /*<<< orphan*/  rtreeRelease (TYPE_8__*) ; 
- TYPE_5__* rtreeSearchPointNew (TYPE_6__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int rtreeStepToLeaf (TYPE_6__*) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
- TYPE_6__* sqlite3_malloc64 (int) ; 
- void* sqlite3_value_double (int /*<<< orphan*/ *) ; 
- void* sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
+
+ void* PARTLY_WITHIN ;
+ char RTREE_MATCH ;
+ int RTREE_QUEUE_TRACE (TYPE_6__*,char*) ;
+ int RTREE_ZERO ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int deserializeGeometry (int *,TYPE_6__*) ;
+ int findLeafNode (TYPE_8__*,int,int **,int*) ;
+ int freeCursorConstraints (TYPE_6__*) ;
+ int memset (TYPE_6__*,int ,int) ;
+ int nodeAcquire (TYPE_8__*,int,int ,int **) ;
+ int nodeRelease (TYPE_8__*,int *) ;
+ int nodeRowidIndex (TYPE_8__*,int *,int,int*) ;
+ int rtreeReference (TYPE_8__*) ;
+ int rtreeRelease (TYPE_8__*) ;
+ TYPE_5__* rtreeSearchPointNew (TYPE_6__*,int ,scalar_t__) ;
+ int rtreeStepToLeaf (TYPE_6__*) ;
+ int sqlite3_free (int ) ;
+ TYPE_6__* sqlite3_malloc64 (int) ;
+ void* sqlite3_value_double (int *) ;
+ void* sqlite3_value_int64 (int *) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static int rtreeFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -77,7 +77,7 @@ __attribute__((used)) static int rtreeFilter(
 
   rtreeReference(pRtree);
 
-  /* Reset the cursor to the same state as rtreeOpen() leaves it in. */
+
   freeCursorConstraints(pCsr);
   sqlite3_free(pCsr->aPoint);
   pStmt = pCsr->pReadAux;
@@ -87,15 +87,15 @@ __attribute__((used)) static int rtreeFilter(
 
   pCsr->iStrategy = idxNum;
   if( idxNum==1 ){
-    /* Special case - lookup by rowid. */
-    RtreeNode *pLeaf;        /* Leaf on which the required cell resides */
-    RtreeSearchPoint *p;     /* Search point for the leaf */
+
+    RtreeNode *pLeaf;
+    RtreeSearchPoint *p;
     i64 iRowid = sqlite3_value_int64(argv[0]);
     i64 iNode = 0;
     rc = findLeafNode(pRtree, iRowid, &pLeaf, &iNode);
     if( rc==SQLITE_OK && pLeaf!=0 ){
       p = rtreeSearchPointNew(pCsr, RTREE_ZERO, 0);
-      assert( p!=0 );  /* Always returns pCsr->sPoint */
+      assert( p!=0 );
       pCsr->aNode[0] = pLeaf;
       p->id = iNode;
       p->eWithin = PARTLY_WITHIN;
@@ -106,9 +106,9 @@ __attribute__((used)) static int rtreeFilter(
       pCsr->atEOF = 1;
     }
   }else{
-    /* Normal case - r-tree scan. Set up the RtreeCursor.aConstraint array 
-    ** with the configured constraints. 
-    */
+
+
+
     rc = nodeAcquire(pRtree, 1, 0, &pRoot);
     if( rc==SQLITE_OK && argc>0 ){
       pCsr->aConstraint = sqlite3_malloc64(sizeof(RtreeConstraint)*argc);
@@ -125,10 +125,10 @@ __attribute__((used)) static int rtreeFilter(
           p->op = idxStr[ii*2];
           p->iCoord = idxStr[ii*2+1]-'0';
           if( p->op>=RTREE_MATCH ){
-            /* A MATCH operator. The right-hand-side must be a blob that
-            ** can be cast into an RtreeMatchArg object. One created using
-            ** an sqlite3_rtree_geometry_callback() SQL user function.
-            */
+
+
+
+
             rc = deserializeGeometry(argv[ii], p);
             if( rc!=SQLITE_OK ){
               break;
@@ -137,11 +137,11 @@ __attribute__((used)) static int rtreeFilter(
             p->pInfo->anQueue = pCsr->anQueue;
             p->pInfo->mxLevel = pRtree->iDepth + 1;
           }else{
-#ifdef SQLITE_RTREE_INT_ONLY
-            p->u.rValue = sqlite3_value_int64(argv[ii]);
-#else
+
+
+
             p->u.rValue = sqlite3_value_double(argv[ii]);
-#endif
+
           }
         }
       }

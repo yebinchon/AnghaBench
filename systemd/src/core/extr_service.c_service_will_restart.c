@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int Unit ;
 struct TYPE_4__ {scalar_t__ state; scalar_t__ will_auto_restart; } ;
-typedef  TYPE_1__ Service ;
+typedef TYPE_1__ Service ;
 
-/* Variables and functions */
- TYPE_1__* SERVICE (int /*<<< orphan*/ *) ; 
- scalar_t__ SERVICE_AUTO_RESTART ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int unit_will_restart_default (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* SERVICE (int *) ;
+ scalar_t__ SERVICE_AUTO_RESTART ;
+ int assert (TYPE_1__*) ;
+ int unit_will_restart_default (int *) ;
 
 __attribute__((used)) static bool service_will_restart(Unit *u) {
         Service *s = SERVICE(u);
@@ -27,9 +27,9 @@ __attribute__((used)) static bool service_will_restart(Unit *u) {
         assert(s);
 
         if (s->will_auto_restart)
-                return true;
+                return 1;
         if (s->state == SERVICE_AUTO_RESTART)
-                return true;
+                return 1;
 
         return unit_will_restart_default(u);
 }

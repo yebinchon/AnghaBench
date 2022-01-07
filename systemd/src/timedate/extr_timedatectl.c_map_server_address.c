@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- int AF_UNSPEC ; 
- int /*<<< orphan*/  EINVAL ; 
- size_t FAMILY_ADDRESS_SIZE (int) ; 
- int /*<<< orphan*/  IN_SET (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (char**) ; 
- int in_addr_to_string (int,void const*,char**) ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,...) ; 
- char* mfree (char*) ; 
- int sd_bus_message_enter_container (int /*<<< orphan*/ *,char,char*) ; 
- int sd_bus_message_exit_container (int /*<<< orphan*/ *) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,int*) ; 
- int sd_bus_message_read_array (int /*<<< orphan*/ *,char,void const**,size_t*) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+
+
+ int AF_INET ;
+ int AF_INET6 ;
+ int AF_UNSPEC ;
+ int EINVAL ;
+ size_t FAMILY_ADDRESS_SIZE (int) ;
+ int IN_SET (int,int ,int ) ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int assert (char**) ;
+ int in_addr_to_string (int,void const*,char**) ;
+ int log_error_errno (int ,char*,...) ;
+ char* mfree (char*) ;
+ int sd_bus_message_enter_container (int *,char,char*) ;
+ int sd_bus_message_exit_container (int *) ;
+ int sd_bus_message_read (int *,char*,int*) ;
+ int sd_bus_message_read_array (int *,char,void const**,size_t*) ;
 
 __attribute__((used)) static int map_server_address(sd_bus *bus, const char *member, sd_bus_message *m, sd_bus_error *error, void *userdata) {
         char **p = (char **) userdata;

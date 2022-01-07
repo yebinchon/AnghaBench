@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
 struct TYPE_5__ {scalar_t__ trace_enable; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ CodedBitstreamContext ;
+typedef int PutBitContext ;
+typedef TYPE_1__ CodedBitstreamContext ;
 
-/* Variables and functions */
- int av_log2 (int) ; 
- int /*<<< orphan*/  ff_cbs_trace_syntax_element (TYPE_1__*,int,char const*,int /*<<< orphan*/ *,char*,int) ; 
- int ff_cbs_write_unsigned (TYPE_1__*,int /*<<< orphan*/ *,int,char*,int*,int,int,int) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
+
+ int av_log2 (int) ;
+ int ff_cbs_trace_syntax_element (TYPE_1__*,int,char const*,int *,char*,int) ;
+ int ff_cbs_write_unsigned (TYPE_1__*,int *,int,char*,int*,int,int,int) ;
+ int put_bits_count (int *) ;
 
 __attribute__((used)) static int cbs_av1_write_leb128(CodedBitstreamContext *ctx, PutBitContext *pbc,
                                 const char *name, uint64_t value)
@@ -48,7 +48,7 @@ __attribute__((used)) static int cbs_av1_write_leb128(CodedBitstreamContext *ctx
     }
 
     if (ctx->trace_enable)
-        ff_cbs_trace_syntax_element(ctx, position, name, NULL, "", value);
+        ff_cbs_trace_syntax_element(ctx, position, name, ((void*)0), "", value);
 
     return 0;
 }

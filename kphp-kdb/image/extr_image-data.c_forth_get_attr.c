@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct forth_stack {int top; int /*<<< orphan*/ * x; } ;
-struct TYPE_3__ {int length; int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ ImageAttribute ;
-typedef  int /*<<< orphan*/  Image ;
 
-/* Variables and functions */
- void* FORTH_FAIL ; 
- TYPE_1__* GetImageAttribute (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  NEXT ; 
- int /*<<< orphan*/  assert (char*) ; 
- int /*<<< orphan*/  free_stack (struct forth_stack*,int,int) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  new_str (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pop_image (struct forth_stack*,int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  pop_str (struct forth_stack*,char**,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct forth_stack {int top; int * x; } ;
+struct TYPE_3__ {int length; int value; } ;
+typedef TYPE_1__ ImageAttribute ;
+typedef int Image ;
+
+
+ void* FORTH_FAIL ;
+ TYPE_1__* GetImageAttribute (int *,char*) ;
+ int NEXT ;
+ int assert (char*) ;
+ int free_stack (struct forth_stack*,int,int) ;
+ char* malloc (int) ;
+ int memcpy (char*,int ,int) ;
+ int new_str (int *,char*,int ) ;
+ int pop_image (struct forth_stack*,int **,char*) ;
+ int pop_str (struct forth_stack*,char**,char*) ;
 
 __attribute__((used)) static void *forth_get_attr (void **IP, struct forth_stack *st) {
   char *attr;
@@ -46,7 +46,7 @@ __attribute__((used)) static void *forth_get_attr (void **IP, struct forth_stack
   free_stack (st, st->top + 1, old_stack_top);
 
   const ImageAttribute *a = GetImageAttribute (image, attr);
-  if (a == NULL) {
+  if (a == ((void*)0)) {
     st->top++;
     new_str (&st->x[st->top], "NULL", 0);
   } else {

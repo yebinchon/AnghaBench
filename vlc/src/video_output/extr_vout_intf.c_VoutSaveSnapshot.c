@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
-struct TYPE_4__ {char* path; char* format; char* prefix_fmt; scalar_t__ is_sequential; int /*<<< orphan*/  sequence; } ;
-typedef  TYPE_1__ vout_snapshot_save_cfg_t ;
-typedef  int /*<<< orphan*/  picture_t ;
-typedef  int /*<<< orphan*/  cfg ;
-typedef  int /*<<< orphan*/  block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_TICK_FROM_MS (int) ; 
- int /*<<< orphan*/  VoutOsdSnapshot (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  block_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  picture_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  var_GetInteger (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ var_InheritBool (int /*<<< orphan*/ *,char*) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  var_SetInteger (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  vlc_object_instance (int /*<<< orphan*/ *) ; 
- scalar_t__ vout_GetSnapshot (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* vout_snapshot_GetDirectory () ; 
- scalar_t__ vout_snapshot_SaveImage (char**,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
+struct TYPE_4__ {char* path; char* format; char* prefix_fmt; scalar_t__ is_sequential; int sequence; } ;
+typedef TYPE_1__ vout_snapshot_save_cfg_t ;
+typedef int picture_t ;
+typedef int cfg ;
+typedef int block_t ;
+
+
+ int VLC_TICK_FROM_MS (int) ;
+ int VoutOsdSnapshot (int *,int *,char*) ;
+ int block_Release (int *) ;
+ int free (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int msg_Err (int *,char*) ;
+ int picture_Release (int *) ;
+ int var_GetInteger (int *,char*) ;
+ scalar_t__ var_InheritBool (int *,char*) ;
+ char* var_InheritString (int *,char*) ;
+ int var_SetInteger (int *,char*,int) ;
+ int var_SetString (int ,char*,char*) ;
+ int vlc_object_instance (int *) ;
+ scalar_t__ vout_GetSnapshot (int *,int **,int **,int *,char*,int ) ;
+ char* vout_snapshot_GetDirectory () ;
+ scalar_t__ vout_snapshot_SaveImage (char**,int*,int *,int *,TYPE_1__*) ;
 
 __attribute__((used)) static void VoutSaveSnapshot( vout_thread_t *p_vout )
 {
@@ -42,16 +42,16 @@ __attribute__((used)) static void VoutSaveSnapshot( vout_thread_t *p_vout )
     char *psz_format = var_InheritString( p_vout, "snapshot-format" );
     char *psz_prefix = var_InheritString( p_vout, "snapshot-prefix" );
 
-    /* */
+
     picture_t *p_picture;
     block_t *p_image;
 
-    /* 500ms timeout
-     * XXX it will cause trouble with low fps video (< 2fps) */
-    if( vout_GetSnapshot( p_vout, &p_image, &p_picture, NULL, psz_format, VLC_TICK_FROM_MS(500) ) )
+
+
+    if( vout_GetSnapshot( p_vout, &p_image, &p_picture, ((void*)0), psz_format, VLC_TICK_FROM_MS(500) ) )
     {
-        p_picture = NULL;
-        p_image = NULL;
+        p_picture = ((void*)0);
+        p_image = ((void*)0);
         goto exit;
     }
 
@@ -74,7 +74,7 @@ __attribute__((used)) static void VoutSaveSnapshot( vout_thread_t *p_vout )
     cfg.prefix_fmt = psz_prefix;
 
     char *psz_filename;
-    int  i_sequence;
+    int i_sequence;
     if (vout_snapshot_SaveImage( &psz_filename, &i_sequence,
                                  p_image, p_vout, &cfg ) )
         goto exit;
@@ -83,7 +83,7 @@ __attribute__((used)) static void VoutSaveSnapshot( vout_thread_t *p_vout )
 
     VoutOsdSnapshot( p_vout, p_picture, psz_filename );
 
-    /* signal creation of a new snapshot file */
+
     var_SetString( vlc_object_instance(p_vout), "snapshot-file", psz_filename );
 
     free( psz_filename );

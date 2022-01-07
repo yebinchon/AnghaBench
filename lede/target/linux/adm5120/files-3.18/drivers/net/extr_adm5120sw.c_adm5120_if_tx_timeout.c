@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SW_INFO (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct net_device {int name; } ;
+
+
+ int SW_INFO (char*,int ) ;
 
 __attribute__((used)) static void adm5120_if_tx_timeout(struct net_device *dev)
 {
-	SW_INFO("TX timeout on %s\n", dev->name);
+ SW_INFO("TX timeout on %s\n", dev->name);
 }

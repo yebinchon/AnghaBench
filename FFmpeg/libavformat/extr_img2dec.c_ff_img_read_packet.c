@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_18__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_18__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_20__ {int tv_nsec; } ;
 struct stat {TYPE_1__ st_mtim; scalar_t__ st_mtime; } ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  header ;
-typedef  int /*<<< orphan*/  filename_bytes ;
+typedef int int64_t ;
+typedef int header ;
+typedef int filename_bytes ;
 struct TYPE_21__ {char** gl_pathv; } ;
-struct TYPE_22__ {size_t img_number; size_t img_last; size_t img_first; scalar_t__ pattern_type; int frame_size; int ts_from_file; int pts; scalar_t__ is_pipe; int /*<<< orphan*/  img_count; scalar_t__ loop; int /*<<< orphan*/  split_planes; int /*<<< orphan*/  path; TYPE_2__ globstate; scalar_t__ use_glob; } ;
-typedef  TYPE_3__ VideoDemuxData ;
-struct TYPE_27__ {scalar_t__ codec_id; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_26__ {scalar_t__ (* io_open ) (TYPE_7__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * pb; TYPE_18__** streams; TYPE_3__* priv_data; } ;
+struct TYPE_22__ {size_t img_number; size_t img_last; size_t img_first; scalar_t__ pattern_type; int frame_size; int ts_from_file; int pts; scalar_t__ is_pipe; int img_count; scalar_t__ loop; int split_planes; int path; TYPE_2__ globstate; scalar_t__ use_glob; } ;
+typedef TYPE_3__ VideoDemuxData ;
+struct TYPE_27__ {scalar_t__ codec_id; int height; int width; } ;
+struct TYPE_26__ {scalar_t__ (* io_open ) (TYPE_7__*,int **,char*,int ,int *) ;int * pb; TYPE_18__** streams; TYPE_3__* priv_data; } ;
 struct TYPE_25__ {scalar_t__ read_packet; scalar_t__ raw_codec_id; } ;
-struct TYPE_24__ {int pts; int size; int /*<<< orphan*/ * data; int /*<<< orphan*/  pos; int /*<<< orphan*/  flags; scalar_t__ stream_index; } ;
-struct TYPE_23__ {int buf_size; char* filename; int /*<<< orphan*/ * buf; int /*<<< orphan*/  member_0; } ;
-struct TYPE_19__ {int /*<<< orphan*/  parser; TYPE_8__* codecpar; } ;
-typedef  TYPE_4__ AVProbeData ;
-typedef  TYPE_5__ AVPacket ;
-typedef  TYPE_6__ AVInputFormat ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_7__ AVFormatContext ;
-typedef  TYPE_8__ AVCodecParameters ;
+struct TYPE_24__ {int pts; int size; int * data; int pos; int flags; scalar_t__ stream_index; } ;
+struct TYPE_23__ {int buf_size; char* filename; int * buf; int member_0; } ;
+struct TYPE_19__ {int parser; TYPE_8__* codecpar; } ;
+typedef TYPE_4__ AVProbeData ;
+typedef TYPE_5__ AVPacket ;
+typedef TYPE_6__ AVInputFormat ;
+typedef int AVIOContext ;
+typedef TYPE_7__ AVFormatContext ;
+typedef TYPE_8__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AVINDEX_KEYFRAME ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int AVPROBE_PADDING_SIZE ; 
- scalar_t__ AV_CODEC_ID_NONE ; 
- scalar_t__ AV_CODEC_ID_RAWVIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  EIO ; 
- int PROBE_BUF_MIN ; 
- scalar_t__ PT_NONE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  av_add_index_entry (TYPE_18__*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ av_get_frame_filename (char*,int,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  av_log (TYPE_7__*,int /*<<< orphan*/ ,char*,char*) ; 
- int av_new_packet (TYPE_5__*,int) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_5__*) ; 
- TYPE_6__* av_probe_input_format3 (TYPE_4__*,int,int*) ; 
- int /*<<< orphan*/  av_strlcpy (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ avio_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int avio_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_format_io_close (TYPE_7__*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  infer_size (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- scalar_t__ stub1 (TYPE_7__*,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVINDEX_KEYFRAME ;
+ int AVIO_FLAG_READ ;
+ int AVPROBE_PADDING_SIZE ;
+ scalar_t__ AV_CODEC_ID_NONE ;
+ scalar_t__ AV_CODEC_ID_RAWVIDEO ;
+ int AV_LOG_ERROR ;
+ int AV_PKT_FLAG_KEY ;
+ int EIO ;
+ int PROBE_BUF_MIN ;
+ scalar_t__ PT_NONE ;
+ int SEEK_SET ;
+ int av_add_index_entry (TYPE_18__*,int,int,int ,int ,int ) ;
+ scalar_t__ av_get_frame_filename (char*,int,int ,size_t) ;
+ int av_log (TYPE_7__*,int ,char*,char*) ;
+ int av_new_packet (TYPE_5__*,int) ;
+ int av_packet_unref (TYPE_5__*) ;
+ TYPE_6__* av_probe_input_format3 (TYPE_4__*,int,int*) ;
+ int av_strlcpy (char*,int ,int) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_read (int *,int *,int) ;
+ scalar_t__ avio_seek (int *,int ,int ) ;
+ int avio_size (int *) ;
+ int avio_skip (int *,int) ;
+ int avio_tell (int *) ;
+ int ff_format_io_close (TYPE_7__*,int **) ;
+ int infer_size (int *,int *,int) ;
+ int memset (int *,int ,int) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int strcmp (char*,int ) ;
+ int strlen (char*) ;
+ scalar_t__ stub1 (TYPE_7__*,int **,char*,int ,int *) ;
 
 int ff_img_read_packet(AVFormatContext *s1, AVPacket *pkt)
 {
@@ -82,12 +82,12 @@ int ff_img_read_packet(AVFormatContext *s1, AVPacket *pkt)
     char filename_bytes[1024];
     char *filename = filename_bytes;
     int i, res;
-    int size[3]           = { 0 }, ret[3] = { 0 };
-    AVIOContext *f[3]     = { NULL };
+    int size[3] = { 0 }, ret[3] = { 0 };
+    AVIOContext *f[3] = { ((void*)0) };
     AVCodecParameters *par = s1->streams[0]->codecpar;
 
     if (!s->is_pipe) {
-        /* loop over input */
+
         if (s->loop && s->img_number > s->img_last) {
             s->img_number = s->img_first;
         }
@@ -96,9 +96,9 @@ int ff_img_read_packet(AVFormatContext *s1, AVPacket *pkt)
         if (s->pattern_type == PT_NONE) {
             av_strlcpy(filename_bytes, s->path, sizeof(filename_bytes));
         } else if (s->use_glob) {
-#if HAVE_GLOB
-            filename = s->globstate.gl_pathv[s->img_number];
-#endif
+
+
+
         } else {
         if (av_get_frame_filename(filename_bytes, sizeof(filename_bytes),
                                   s->path,
@@ -111,7 +111,7 @@ int ff_img_read_packet(AVFormatContext *s1, AVPacket *pkt)
                 !s->loop &&
                 !s->split_planes) {
                 f[i] = s1->pb;
-            } else if (s1->io_open(s1, &f[i], filename, AVIO_FLAG_READ, NULL) < 0) {
+            } else if (s1->io_open(s1, &f[i], filename, AVIO_FLAG_READ, ((void*)0)) < 0) {
                 if (i >= 1)
                     break;
                 av_log(s1, AV_LOG_ERROR, "Could not open file : %s\n",
@@ -168,7 +168,7 @@ int ff_img_read_packet(AVFormatContext *s1, AVPacket *pkt)
         goto fail;
     }
     pkt->stream_index = 0;
-    pkt->flags       |= AV_PKT_FLAG_KEY;
+    pkt->flags |= AV_PKT_FLAG_KEY;
     if (s->ts_from_file) {
         struct stat img_stat;
         if (stat(filename, &img_stat)) {
@@ -176,13 +176,13 @@ int ff_img_read_packet(AVFormatContext *s1, AVPacket *pkt)
             goto fail;
         }
         pkt->pts = (int64_t)img_stat.st_mtime;
-#if HAVE_STRUCT_STAT_ST_MTIM_TV_NSEC
-        if (s->ts_from_file == 2)
-            pkt->pts = 1000000000*pkt->pts + img_stat.st_mtim.tv_nsec;
-#endif
+
+
+
+
         av_add_index_entry(s1->streams[0], s->img_number, pkt->pts, 0, 0, AVINDEX_KEYFRAME);
     } else if (!s->is_pipe) {
-        pkt->pts      = s->pts;
+        pkt->pts = s->pts;
     }
 
     if (s->is_pipe)

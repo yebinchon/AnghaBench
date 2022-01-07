@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int field_i; int field_n; int shifts_len; TYPE_2__* fields; } ;
-typedef  TYPE_1__ type_desc ;
-typedef  int /*<<< orphan*/  field_desc ;
-struct TYPE_6__ {int max_len; int type; int shift; int /*<<< orphan*/  name; } ;
+typedef TYPE_1__ type_desc ;
+typedef int field_desc ;
+struct TYPE_6__ {int max_len; int type; int shift; int name; } ;
 
-/* Variables and functions */
- int FN ; 
- int MAX_EVENT_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* dl_realloc0 (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  dl_strdup (char*) ; 
- int t_string ; 
+
+ int FN ;
+ int MAX_EVENT_SIZE ;
+ int assert (int) ;
+ TYPE_2__* dl_realloc0 (TYPE_2__*,int,int) ;
+ int dl_strdup (char*) ;
+ int t_string ;
 
 void add_field (type_desc *desc, char *name, int type) {
   assert (type >= 0);

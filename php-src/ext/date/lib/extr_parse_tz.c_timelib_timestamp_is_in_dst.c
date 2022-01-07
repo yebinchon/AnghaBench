@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int isdst; } ;
-typedef  TYPE_1__ ttinfo ;
-typedef  int /*<<< orphan*/  timelib_tzinfo ;
-typedef  int /*<<< orphan*/  timelib_sll ;
+typedef TYPE_1__ ttinfo ;
+typedef int timelib_tzinfo ;
+typedef int timelib_sll ;
 
-/* Variables and functions */
- TYPE_1__* fetch_timezone_offset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* fetch_timezone_offset (int *,int ,int *) ;
 
 int timelib_timestamp_is_in_dst(timelib_sll ts, timelib_tzinfo *tz)
 {
-	ttinfo *to;
-	timelib_sll dummy;
+ ttinfo *to;
+ timelib_sll dummy;
 
-	if ((to = fetch_timezone_offset(tz, ts, &dummy))) {
-		return to->isdst;
-	}
-	return -1;
+ if ((to = fetch_timezone_offset(tz, ts, &dummy))) {
+  return to->isdst;
+ }
+ return -1;
 }

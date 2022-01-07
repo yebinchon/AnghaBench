@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* parent; int /*<<< orphan*/  enabled; } ;
-typedef  TYPE_1__ widget ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  widget_queue_redraw (TYPE_1__*) ; 
- int /*<<< orphan*/  widget_update (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* parent; int enabled; } ;
+typedef TYPE_1__ widget ;
+
+
+ int TRUE ;
+ int widget_queue_redraw (TYPE_1__*) ;
+ int widget_update (TYPE_1__*) ;
 
 void widget_enable ( widget *widget )
 {

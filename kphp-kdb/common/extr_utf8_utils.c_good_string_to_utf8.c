@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  string_to_utf8 (unsigned char const*,int*) ; 
+ int string_to_utf8 (unsigned char const*,int*) ;
 
 void good_string_to_utf8 (const unsigned char *s, int *v) {
   string_to_utf8 (s, v);
@@ -65,10 +57,10 @@ void good_string_to_utf8 (const unsigned char *s, int *v) {
   v[j++] = 0;
 
   for (i = j = 0; v[i]; i++) {
-    if (v[i] !=   173 && (v[i] < 65024 || v[i] > 65062) && (v[i] < 7627 || v[i] > 7654) &&
-        v[i] !=  8288 && (v[i] <  8202 || v[i] >  8207) && (v[i] < 8400 || v[i] > 8433) &&
-        v[i] !=  8228 && (v[i] <  8298 || v[i] >  8303) &&
-        v[i] != 65279 && (v[i] <   768 || v[i] >   879)) {
+    if (v[i] != 173 && (v[i] < 65024 || v[i] > 65062) && (v[i] < 7627 || v[i] > 7654) &&
+        v[i] != 8288 && (v[i] < 8202 || v[i] > 8207) && (v[i] < 8400 || v[i] > 8433) &&
+        v[i] != 8228 && (v[i] < 8298 || v[i] > 8303) &&
+        v[i] != 65279 && (v[i] < 768 || v[i] > 879)) {
       v[j++] = v[i];
     }
   }

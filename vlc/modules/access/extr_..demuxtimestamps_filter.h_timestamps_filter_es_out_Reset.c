@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int i_size; scalar_t__* p_elems; } ;
-struct tf_es_out_s {int b_discontinuity; int /*<<< orphan*/  pcrtf; TYPE_1__ es_list; } ;
-struct tf_es_out_id_s {int /*<<< orphan*/  tf; } ;
+struct tf_es_out_s {int b_discontinuity; int pcrtf; TYPE_1__ es_list; } ;
+struct tf_es_out_id_s {int tf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  timestamps_filter_init (int /*<<< orphan*/ *) ; 
+
+ int timestamps_filter_init (int *) ;
 
 __attribute__((used)) static void timestamps_filter_es_out_Reset(struct tf_es_out_s *out)
 {
@@ -26,5 +26,5 @@ __attribute__((used)) static void timestamps_filter_es_out_Reset(struct tf_es_ou
         timestamps_filter_init(&cur->tf);
     }
     timestamps_filter_init(&out->pcrtf);
-    out->b_discontinuity = false;
+    out->b_discontinuity = 0;
 }

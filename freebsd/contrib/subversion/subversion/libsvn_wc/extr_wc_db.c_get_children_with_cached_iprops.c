@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  abspath; int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_depth_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_IPROPS_CHILDREN ; 
- int /*<<< orphan*/  STMT_SELECT_IPROPS_NODE ; 
- int /*<<< orphan*/  STMT_SELECT_IPROPS_RECURSIVE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- scalar_t__ svn_depth_empty ; 
- scalar_t__ svn_depth_files ; 
- scalar_t__ svn_depth_immediates ; 
- char* svn_dirent_is_child (char const*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,char*) ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info_internal (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int abspath; int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_depth_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int STMT_SELECT_IPROPS_CHILDREN ;
+ int STMT_SELECT_IPROPS_NODE ;
+ int STMT_SELECT_IPROPS_RECURSIVE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ scalar_t__ svn_depth_empty ;
+ scalar_t__ svn_depth_files ;
+ scalar_t__ svn_depth_immediates ;
+ char* svn_dirent_is_child (char const*,char const*,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int svn_hash_sets (int *,char const*,char*) ;
+ scalar_t__ svn_node_file ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc__db_base_get_info_internal (int *,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,TYPE_1__*,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 get_children_with_cached_iprops(apr_hash_t **iprop_paths,
@@ -62,7 +62,7 @@ get_children_with_cached_iprops(apr_hash_t **iprop_paths,
 
   *iprop_paths = apr_hash_make(result_pool);
 
-  /* First check if LOCAL_RELPATH itself has iprops */
+
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                     STMT_SELECT_IPROPS_NODE));
   SVN_ERR(svn_sqlite__bindf(stmt, "is", wcroot->wc_id, local_relpath));
@@ -71,7 +71,7 @@ get_children_with_cached_iprops(apr_hash_t **iprop_paths,
   if (have_row)
    {
       const char *relpath_with_cache = svn_sqlite__column_text(stmt, 0,
-                                                               NULL);
+                                                               ((void*)0));
       const char *abspath_with_cache = svn_dirent_join(wcroot->abspath,
                                                        relpath_with_cache,
                                                        result_pool);
@@ -83,14 +83,14 @@ get_children_with_cached_iprops(apr_hash_t **iprop_paths,
   if (depth == svn_depth_empty)
     return SVN_NO_ERROR;
 
-  /* Now fetch information for children or all descendants */
+
   if (depth == svn_depth_files
       || depth == svn_depth_immediates)
     {
       SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                         STMT_SELECT_IPROPS_CHILDREN));
     }
-  else /* Default to svn_depth_infinity. */
+  else
     {
       SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                         STMT_SELECT_IPROPS_RECURSIVE));
@@ -102,7 +102,7 @@ get_children_with_cached_iprops(apr_hash_t **iprop_paths,
   while (have_row)
     {
       const char *relpath_with_cache = svn_sqlite__column_text(stmt, 0,
-                                                               NULL);
+                                                               ((void*)0));
       const char *abspath_with_cache = svn_dirent_join(wcroot->abspath,
                                                        relpath_with_cache,
                                                        result_pool);
@@ -113,7 +113,7 @@ get_children_with_cached_iprops(apr_hash_t **iprop_paths,
 
   SVN_ERR(svn_sqlite__reset(stmt));
 
-  /* For depth files we should filter non files */
+
   if (depth == svn_depth_files)
     {
       apr_hash_index_t *hi;
@@ -130,25 +130,25 @@ get_children_with_cached_iprops(apr_hash_t **iprop_paths,
           svn_pool_clear(iterpool);
 
           child_relpath = svn_dirent_is_child(local_relpath, child_abspath,
-                                              NULL);
+                                              ((void*)0));
 
           if (! child_relpath)
             {
-              continue; /* local_relpath itself */
+              continue;
             }
 
-          SVN_ERR(svn_wc__db_base_get_info_internal(NULL, &child_kind, NULL,
-                                                    NULL, NULL, NULL, NULL,
-                                                    NULL, NULL, NULL, NULL,
-                                                    NULL, NULL, NULL, NULL,
+          SVN_ERR(svn_wc__db_base_get_info_internal(((void*)0), &child_kind, ((void*)0),
+                                                    ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                                    ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                                    ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                                     wcroot, child_relpath,
                                                     scratch_pool,
                                                     scratch_pool));
 
-          /* Filter if not a file */
+
           if (child_kind != svn_node_file)
             {
-              svn_hash_sets(*iprop_paths, child_abspath, NULL);
+              svn_hash_sets(*iprop_paths, child_abspath, ((void*)0));
             }
         }
 

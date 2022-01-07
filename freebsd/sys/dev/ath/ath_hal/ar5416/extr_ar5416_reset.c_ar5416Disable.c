@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ath_hal {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* ah_initPLL ) (struct ath_hal*,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  HAL_BOOL ;
+struct TYPE_2__ {int (* ah_initPLL ) (struct ath_hal*,int ) ;} ;
+typedef int HAL_BOOL ;
 
-/* Variables and functions */
- TYPE_1__* AH5416 (struct ath_hal*) ; 
- int /*<<< orphan*/  AH_FALSE ; 
- int /*<<< orphan*/  AH_NULL ; 
- int /*<<< orphan*/  AH_TRUE ; 
- int /*<<< orphan*/  HAL_PM_AWAKE ; 
- int /*<<< orphan*/  HAL_RESET_COLD ; 
- int /*<<< orphan*/  ar5416SetPowerMode (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ar5416SetResetReg (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct ath_hal*,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* AH5416 (struct ath_hal*) ;
+ int AH_FALSE ;
+ int AH_NULL ;
+ int AH_TRUE ;
+ int HAL_PM_AWAKE ;
+ int HAL_RESET_COLD ;
+ int ar5416SetPowerMode (struct ath_hal*,int ,int ) ;
+ int ar5416SetResetReg (struct ath_hal*,int ) ;
+ int stub1 (struct ath_hal*,int ) ;
 
 HAL_BOOL
 ar5416Disable(struct ath_hal *ah)
 {
 
-	if (!ar5416SetPowerMode(ah, HAL_PM_AWAKE, AH_TRUE))
-		return AH_FALSE;
-	if (! ar5416SetResetReg(ah, HAL_RESET_COLD))
-		return AH_FALSE;
+ if (!ar5416SetPowerMode(ah, HAL_PM_AWAKE, AH_TRUE))
+  return AH_FALSE;
+ if (! ar5416SetResetReg(ah, HAL_RESET_COLD))
+  return AH_FALSE;
 
-	AH5416(ah)->ah_initPLL(ah, AH_NULL);
-	return (AH_TRUE);
+ AH5416(ah)->ah_initPLL(ah, AH_NULL);
+ return (AH_TRUE);
 }

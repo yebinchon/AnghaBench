@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bytestream2_get_buffer (int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_peek_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int fill_ltable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int get_opcodes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,size_t,int) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int uint32_t ;
+typedef int GetByteContext ;
+
+
+ int bytestream2_get_buffer (int *,void*,size_t) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_peek_byte (int *) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
+ int fill_ltable (int *,int *,int*) ;
+ int get_opcodes (int *,int *,void*,size_t,int) ;
+ int memset (void*,int ,size_t) ;
 
 __attribute__((used)) static int dxv_decompress_opcodes(GetByteContext *gb, void *dstp, size_t op_size)
 {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  netconn; TYPE_2__* connect; } ;
-typedef  TYPE_1__ request_t ;
-struct TYPE_7__ {int /*<<< orphan*/  hostport; int /*<<< orphan*/  hostname; } ;
-typedef  TYPE_2__ connect_t ;
-typedef  char WCHAR ;
-typedef  scalar_t__ LPWSTR ;
-typedef  scalar_t__ LPSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ build_header_request_string (TYPE_1__*,char const*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (scalar_t__) ; 
- int /*<<< orphan*/  http1_1 ; 
- int /*<<< orphan*/  netconn_send (int /*<<< orphan*/ ,scalar_t__,int,int*) ; 
- int /*<<< orphan*/  read_reply (TYPE_1__*) ; 
- int /*<<< orphan*/  sprintfW (scalar_t__,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strdupWA (scalar_t__) ; 
- int strlen (scalar_t__) ; 
- int strlenW (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int netconn; TYPE_2__* connect; } ;
+typedef TYPE_1__ request_t ;
+struct TYPE_7__ {int hostport; int hostname; } ;
+typedef TYPE_2__ connect_t ;
+typedef char WCHAR ;
+typedef scalar_t__ LPWSTR ;
+typedef scalar_t__ LPSTR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ scalar_t__ build_header_request_string (TYPE_1__*,char const*,scalar_t__,int ) ;
+ scalar_t__ heap_alloc (int) ;
+ int heap_free (scalar_t__) ;
+ int http1_1 ;
+ int netconn_send (int ,scalar_t__,int,int*) ;
+ int read_reply (TYPE_1__*) ;
+ int sprintfW (scalar_t__,char const*,int ,int ) ;
+ scalar_t__ strdupWA (scalar_t__) ;
+ int strlen (scalar_t__) ;
+ int strlenW (int ) ;
 
 __attribute__((used)) static BOOL secure_proxy_connect( request_t *request )
 {

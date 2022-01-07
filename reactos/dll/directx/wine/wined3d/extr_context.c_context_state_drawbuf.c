@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_state {int dummy; } ;
 struct wined3d_context {scalar_t__ draw_buffers_mask; TYPE_1__* current_fbo; } ;
 struct TYPE_2__ {scalar_t__ rt_mask; } ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STATE_FRAMEBUFFER ; 
- int /*<<< orphan*/  context_apply_draw_buffers (struct wined3d_context*,scalar_t__) ; 
- scalar_t__ find_draw_buffers_mask (struct wined3d_context*,struct wined3d_state const*) ; 
- scalar_t__ isStateDirty (struct wined3d_context*,int /*<<< orphan*/ ) ; 
+
+ int STATE_FRAMEBUFFER ;
+ int context_apply_draw_buffers (struct wined3d_context*,scalar_t__) ;
+ scalar_t__ find_draw_buffers_mask (struct wined3d_context*,struct wined3d_state const*) ;
+ scalar_t__ isStateDirty (struct wined3d_context*,int ) ;
 
 void context_state_drawbuf(struct wined3d_context *context, const struct wined3d_state *state, DWORD state_id)
 {

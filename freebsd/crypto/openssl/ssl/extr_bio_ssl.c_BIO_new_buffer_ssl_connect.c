@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_f_buffer () ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BIO_new_ssl_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int BIO ;
+
+
+ int BIO_f_buffer () ;
+ int BIO_free (int *) ;
+ int * BIO_new (int ) ;
+ int * BIO_new_ssl_connect (int *) ;
+ int * BIO_push (int *,int *) ;
 
 BIO *BIO_new_buffer_ssl_connect(SSL_CTX *ctx)
 {
-#ifndef OPENSSL_NO_SOCK
-    BIO *ret = NULL, *buf = NULL, *ssl = NULL;
 
-    if ((buf = BIO_new(BIO_f_buffer())) == NULL)
-        return NULL;
-    if ((ssl = BIO_new_ssl_connect(ctx)) == NULL)
+    BIO *ret = ((void*)0), *buf = ((void*)0), *ssl = ((void*)0);
+
+    if ((buf = BIO_new(BIO_f_buffer())) == ((void*)0))
+        return ((void*)0);
+    if ((ssl = BIO_new_ssl_connect(ctx)) == ((void*)0))
         goto err;
-    if ((ret = BIO_push(buf, ssl)) == NULL)
+    if ((ret = BIO_push(buf, ssl)) == ((void*)0))
         goto err;
     return ret;
  err:
     BIO_free(buf);
     BIO_free(ssl);
-#endif
-    return NULL;
+
+    return ((void*)0);
 }

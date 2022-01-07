@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_37__   TYPE_9__ ;
-typedef  struct TYPE_36__   TYPE_8__ ;
-typedef  struct TYPE_35__   TYPE_7__ ;
-typedef  struct TYPE_34__   TYPE_6__ ;
-typedef  struct TYPE_33__   TYPE_5__ ;
-typedef  struct TYPE_32__   TYPE_4__ ;
-typedef  struct TYPE_31__   TYPE_3__ ;
-typedef  struct TYPE_30__   TYPE_2__ ;
-typedef  struct TYPE_29__   TYPE_1__ ;
-typedef  struct TYPE_28__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_37__ TYPE_9__ ;
+typedef struct TYPE_36__ TYPE_8__ ;
+typedef struct TYPE_35__ TYPE_7__ ;
+typedef struct TYPE_34__ TYPE_6__ ;
+typedef struct TYPE_33__ TYPE_5__ ;
+typedef struct TYPE_32__ TYPE_4__ ;
+typedef struct TYPE_31__ TYPE_3__ ;
+typedef struct TYPE_30__ TYPE_2__ ;
+typedef struct TYPE_29__ TYPE_1__ ;
+typedef struct TYPE_28__ TYPE_10__ ;
+
+
 struct TYPE_37__ {double* pf_gain; int* pb_gain; double* pf_peak; int* pb_peak; } ;
 struct TYPE_32__ {scalar_t__ i_frame_rate_base; scalar_t__ i_frame_rate; } ;
 struct TYPE_33__ {int i_cat; TYPE_9__ audio_replay_gain; TYPE_4__ video; } ;
-struct TYPE_34__ {scalar_t__ i_chunk_count; char* i_track_ID; TYPE_5__ fmt; TYPE_10__* p_sample; int /*<<< orphan*/  p_stsd; TYPE_1__* chunk; } ;
-typedef  TYPE_6__ mp4_track_t ;
-typedef  int /*<<< orphan*/  es_out_id_t ;
-struct TYPE_35__ {int /*<<< orphan*/  out; TYPE_8__* p_sys; } ;
-typedef  TYPE_7__ demux_t ;
-struct TYPE_36__ {float f_fps; int /*<<< orphan*/  p_meta; scalar_t__ b_fragmented; } ;
-typedef  TYPE_8__ demux_sys_t ;
-typedef  TYPE_9__ audio_replay_gain_t ;
-struct TYPE_31__ {TYPE_2__* p_frma; int /*<<< orphan*/  p_payload; } ;
+struct TYPE_34__ {scalar_t__ i_chunk_count; char* i_track_ID; TYPE_5__ fmt; TYPE_10__* p_sample; int p_stsd; TYPE_1__* chunk; } ;
+typedef TYPE_6__ mp4_track_t ;
+typedef int es_out_id_t ;
+struct TYPE_35__ {int out; TYPE_8__* p_sys; } ;
+typedef TYPE_7__ demux_t ;
+struct TYPE_36__ {float f_fps; int p_meta; scalar_t__ b_fragmented; } ;
+typedef TYPE_8__ demux_sys_t ;
+typedef TYPE_9__ audio_replay_gain_t ;
+struct TYPE_31__ {TYPE_2__* p_frma; int p_payload; } ;
 struct TYPE_30__ {scalar_t__ i_type; } ;
 struct TYPE_29__ {unsigned int i_sample_description_index; } ;
-struct TYPE_28__ {int /*<<< orphan*/  i_handler; TYPE_3__ data; scalar_t__ i_type; } ;
-typedef  TYPE_10__ MP4_Box_t ;
+struct TYPE_28__ {int i_handler; TYPE_3__ data; scalar_t__ i_type; } ;
+typedef TYPE_10__ MP4_Box_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATOM_clcp ; 
- int /*<<< orphan*/  ATOM_sbtl ; 
- int /*<<< orphan*/  ATOM_soun ; 
- int /*<<< orphan*/  ATOM_subt ; 
- int /*<<< orphan*/  ATOM_text ; 
- int /*<<< orphan*/  ATOM_vide ; 
-#define  AUDIO_ES 130 
- size_t AUDIO_REPLAY_GAIN_TRACK ; 
- int /*<<< orphan*/ * MP4_AddTrackES (int /*<<< orphan*/ ,TYPE_6__*) ; 
- TYPE_10__* MP4_BoxGet (TYPE_10__*,char*,...) ; 
-#define  SPU_ES 129 
- int /*<<< orphan*/  SetupAudioES (TYPE_7__*,TYPE_6__*,TYPE_10__*) ; 
- int /*<<< orphan*/  SetupSpuES (TYPE_7__*,TYPE_6__*,TYPE_10__*) ; 
- int /*<<< orphan*/  SetupVideoES (TYPE_7__*,TYPE_6__*,TYPE_10__*) ; 
- int /*<<< orphan*/  TrackGetESSampleRate (TYPE_7__*,scalar_t__*,scalar_t__*,TYPE_6__*,unsigned int,unsigned int) ; 
-#define  VIDEO_ES 128 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  msg_Warn (TYPE_7__*,char*,char*) ; 
- double us_atof (char const*) ; 
- char* vlc_meta_GetExtra (int /*<<< orphan*/ ,char*) ; 
+
+ int ATOM_clcp ;
+ int ATOM_sbtl ;
+ int ATOM_soun ;
+ int ATOM_subt ;
+ int ATOM_text ;
+ int ATOM_vide ;
+
+ size_t AUDIO_REPLAY_GAIN_TRACK ;
+ int * MP4_AddTrackES (int ,TYPE_6__*) ;
+ TYPE_10__* MP4_BoxGet (TYPE_10__*,char*,...) ;
+
+ int SetupAudioES (TYPE_7__*,TYPE_6__*,TYPE_10__*) ;
+ int SetupSpuES (TYPE_7__*,TYPE_6__*,TYPE_10__*) ;
+ int SetupVideoES (TYPE_7__*,TYPE_6__*,TYPE_10__*) ;
+ int TrackGetESSampleRate (TYPE_7__*,scalar_t__*,scalar_t__*,TYPE_6__*,unsigned int,unsigned int) ;
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int msg_Warn (TYPE_7__*,char*,char*) ;
+ double us_atof (char const*) ;
+ char* vlc_meta_GetExtra (int ,char*) ;
 
 __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p_track,
                           unsigned int i_chunk, es_out_id_t **pp_es )
@@ -67,13 +67,13 @@ __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p
     unsigned int i_sample_description_index;
 
     if( p_sys->b_fragmented || p_track->i_chunk_count == 0 )
-        i_sample_description_index = 1; /* XXX */
+        i_sample_description_index = 1;
     else
         i_sample_description_index =
                 p_track->chunk[i_chunk].i_sample_description_index;
 
     if( pp_es )
-        *pp_es = NULL;
+        *pp_es = ((void*)0);
 
     if( !i_sample_description_index )
     {
@@ -82,11 +82,11 @@ __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p
         return VLC_EGENERIC;
     }
 
-    MP4_Box_t *p_sample = MP4_BoxGet(  p_track->p_stsd, "[%d]",
+    MP4_Box_t *p_sample = MP4_BoxGet( p_track->p_stsd, "[%d]",
                             i_sample_description_index - 1 );
 
     if( !p_sample ||
-        ( !p_sample->data.p_payload && p_track->fmt.i_cat != SPU_ES ) )
+        ( !p_sample->data.p_payload && p_track->fmt.i_cat != 129 ) )
     {
         msg_Warn( p_demux, "cannot find SampleEntry (track[Id 0x%x])",
                   p_track->i_track_ID );
@@ -95,7 +95,7 @@ __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p
 
     p_track->p_sample = p_sample;
 
-    MP4_Box_t   *p_frma;
+    MP4_Box_t *p_frma;
     if( ( p_frma = MP4_BoxGet( p_track->p_sample, "sinf/frma" ) ) && p_frma->data.p_frma )
     {
         msg_Warn( p_demux, "Original Format Box: %4.4s", (char *)&p_frma->data.p_frma->i_type );
@@ -103,15 +103,15 @@ __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p
         p_sample->i_type = p_frma->data.p_frma->i_type;
     }
 
-    /* */
+
     switch( p_track->fmt.i_cat )
     {
-    case VIDEO_ES:
+    case 128:
         if ( p_sample->i_handler != ATOM_vide ||
              !SetupVideoES( p_demux, p_track, p_sample ) )
             return VLC_EGENERIC;
 
-        /* Set frame rate */
+
         TrackGetESSampleRate( p_demux,
                               &p_track->fmt.video.i_frame_rate,
                               &p_track->fmt.video.i_frame_rate_base,
@@ -122,7 +122,7 @@ __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p
 
         break;
 
-    case AUDIO_ES:
+    case 130:
         if ( p_sample->i_handler != ATOM_soun ||
              !SetupAudioES( p_demux, p_track, p_sample ) )
             return VLC_EGENERIC;
@@ -146,7 +146,7 @@ __attribute__((used)) static int TrackCreateES( demux_t *p_demux, mp4_track_t *p
         }
         break;
 
-    case SPU_ES:
+    case 129:
         if ( ( p_sample->i_handler != ATOM_text &&
                p_sample->i_handler != ATOM_subt &&
                p_sample->i_handler != ATOM_sbtl &&

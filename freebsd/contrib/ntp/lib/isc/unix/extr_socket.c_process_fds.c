@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* pipe_fds; scalar_t__ maxsocks; } ;
-typedef  TYPE_1__ isc__socketmgr_t ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef TYPE_1__ isc__socketmgr_t ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_ISSET (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  REQUIRE (int) ; 
- int /*<<< orphan*/  process_fd (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FD_ISSET (int,int *) ;
+ int REQUIRE (int) ;
+ int process_fd (TYPE_1__*,int,int ,int ) ;
 
 __attribute__((used)) static void
 process_fds(isc__socketmgr_t *manager, int maxfd, fd_set *readfds,
-	    fd_set *writefds)
+     fd_set *writefds)
 {
-	int i;
+ int i;
 
-	REQUIRE(maxfd <= (int)manager->maxsocks);
+ REQUIRE(maxfd <= (int)manager->maxsocks);
 
-	for (i = 0; i < maxfd; i++) {
-#ifdef USE_WATCHER_THREAD
-		if (i == manager->pipe_fds[0] || i == manager->pipe_fds[1])
-			continue;
-#endif /* USE_WATCHER_THREAD */
-		process_fd(manager, i, FD_ISSET(i, readfds),
-			   FD_ISSET(i, writefds));
-	}
+ for (i = 0; i < maxfd; i++) {
+
+
+
+
+  process_fd(manager, i, FD_ISSET(i, readfds),
+      FD_ISSET(i, writefds));
+ }
 }

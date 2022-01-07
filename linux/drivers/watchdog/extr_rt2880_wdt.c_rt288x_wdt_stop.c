@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct watchdog_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIMER_REG_TMR1CTL ; 
- int /*<<< orphan*/  TMR1CTL_ENABLE ; 
- int /*<<< orphan*/  rt288x_wdt_ping (struct watchdog_device*) ; 
- int /*<<< orphan*/  rt_wdt_r32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rt_wdt_w32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int TIMER_REG_TMR1CTL ;
+ int TMR1CTL_ENABLE ;
+ int rt288x_wdt_ping (struct watchdog_device*) ;
+ int rt_wdt_r32 (int ) ;
+ int rt_wdt_w32 (int ,int ) ;
 
 __attribute__((used)) static int rt288x_wdt_stop(struct watchdog_device *w)
 {
-	u32 t;
+ u32 t;
 
-	rt288x_wdt_ping(w);
+ rt288x_wdt_ping(w);
 
-	t = rt_wdt_r32(TIMER_REG_TMR1CTL);
-	t &= ~TMR1CTL_ENABLE;
-	rt_wdt_w32(TIMER_REG_TMR1CTL, t);
+ t = rt_wdt_r32(TIMER_REG_TMR1CTL);
+ t &= ~TMR1CTL_ENABLE;
+ rt_wdt_w32(TIMER_REG_TMR1CTL, t);
 
-	return 0;
+ return 0;
 }

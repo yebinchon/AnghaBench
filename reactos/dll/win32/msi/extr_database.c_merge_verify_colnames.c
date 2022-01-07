@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_5__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIQUERY ;
 
-/* Variables and functions */
- scalar_t__ ERROR_DATATYPE_MISMATCH ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSICOLINFO_NAMES ; 
- int /*<<< orphan*/  MSICOLINFO_TYPES ; 
- scalar_t__ MSI_RecordGetFieldCount (TYPE_1__*) ; 
- int /*<<< orphan*/  MSI_RecordGetString (TYPE_1__*,scalar_t__) ; 
- scalar_t__ MSI_ViewGetColumnInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  merge_type_match (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_5__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIQUERY ;
+
+
+ scalar_t__ ERROR_DATATYPE_MISMATCH ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MSICOLINFO_NAMES ;
+ int MSICOLINFO_TYPES ;
+ scalar_t__ MSI_RecordGetFieldCount (TYPE_1__*) ;
+ int MSI_RecordGetString (TYPE_1__*,scalar_t__) ;
+ scalar_t__ MSI_ViewGetColumnInfo (int *,int ,TYPE_1__**) ;
+ int merge_type_match (int ,int ) ;
+ int msiobj_release (int *) ;
+ scalar_t__ strcmpW (int ,int ) ;
 
 __attribute__((used)) static UINT merge_verify_colnames(MSIQUERY *dbview, MSIQUERY *mergeview)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static UINT merge_verify_colnames(MSIQUERY *dbview, MSIQUE
 
     msiobj_release(&dbrec->hdr);
     msiobj_release(&mergerec->hdr);
-    dbrec = mergerec = NULL;
+    dbrec = mergerec = ((void*)0);
 
     r = MSI_ViewGetColumnInfo(dbview, MSICOLINFO_TYPES, &dbrec);
     if (r != ERROR_SUCCESS)

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xshm_data {int /*<<< orphan*/ * server; int /*<<< orphan*/ * xcb; int /*<<< orphan*/ * xshm; int /*<<< orphan*/ * cursor; int /*<<< orphan*/ * texture; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gs_texture_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obs_enter_graphics () ; 
- int /*<<< orphan*/  obs_leave_graphics () ; 
- int /*<<< orphan*/  xcb_disconnect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xcb_xcursor_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xshm_xcb_detach (int /*<<< orphan*/ *) ; 
+
+
+
+struct xshm_data {int * server; int * xcb; int * xshm; int * cursor; int * texture; } ;
+
+
+ int bfree (int *) ;
+ int gs_texture_destroy (int *) ;
+ int obs_enter_graphics () ;
+ int obs_leave_graphics () ;
+ int xcb_disconnect (int *) ;
+ int xcb_xcursor_destroy (int *) ;
+ int xshm_xcb_detach (int *) ;
 
 __attribute__((used)) static void xshm_capture_stop(struct xshm_data *data)
 {
-	obs_enter_graphics();
+ obs_enter_graphics();
 
-	if (data->texture) {
-		gs_texture_destroy(data->texture);
-		data->texture = NULL;
-	}
-	if (data->cursor) {
-		xcb_xcursor_destroy(data->cursor);
-		data->cursor = NULL;
-	}
+ if (data->texture) {
+  gs_texture_destroy(data->texture);
+  data->texture = ((void*)0);
+ }
+ if (data->cursor) {
+  xcb_xcursor_destroy(data->cursor);
+  data->cursor = ((void*)0);
+ }
 
-	obs_leave_graphics();
+ obs_leave_graphics();
 
-	if (data->xshm) {
-		xshm_xcb_detach(data->xshm);
-		data->xshm = NULL;
-	}
+ if (data->xshm) {
+  xshm_xcb_detach(data->xshm);
+  data->xshm = ((void*)0);
+ }
 
-	if (data->xcb) {
-		xcb_disconnect(data->xcb);
-		data->xcb = NULL;
-	}
+ if (data->xcb) {
+  xcb_disconnect(data->xcb);
+  data->xcb = ((void*)0);
+ }
 
-	if (data->server) {
-		bfree(data->server);
-		data->server = NULL;
-	}
+ if (data->server) {
+  bfree(data->server);
+  data->server = ((void*)0);
+ }
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* walk_band_t ) (TYPE_1__*,int,int,int,int,int,int,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int (* walk_band_t ) (TYPE_1__*,int,int,int,int,int,int,int *) ;
+typedef int int32_t ;
 struct TYPE_5__ {int* band_spectrum; } ;
-typedef  TYPE_1__ DCAEncContext ;
+typedef TYPE_1__ DCAEncContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void walk_band_low(DCAEncContext *c, int band, int channel,
                           walk_band_t walk, int32_t *arg)

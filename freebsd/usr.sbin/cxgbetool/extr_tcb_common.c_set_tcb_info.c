@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  g_fcb_info ; 
- int /*<<< orphan*/  g_fcb_info4 ; 
- int /*<<< orphan*/  g_fcb_info5 ; 
- int /*<<< orphan*/  g_fcb_info6 ; 
- int /*<<< orphan*/  g_scb_info ; 
- int /*<<< orphan*/  g_scb_info4 ; 
- int /*<<< orphan*/  g_scb_info5 ; 
- int /*<<< orphan*/  g_scb_info6 ; 
- int g_tN ; 
- int /*<<< orphan*/  g_tcb_info ; 
- int /*<<< orphan*/  g_tcb_info4 ; 
- int /*<<< orphan*/  g_tcb_info5 ; 
- int /*<<< orphan*/  g_tcb_info6 ; 
- int /*<<< orphan*/  set_tidtype (unsigned int) ; 
+ int g_fcb_info ;
+ int g_fcb_info4 ;
+ int g_fcb_info5 ;
+ int g_fcb_info6 ;
+ int g_scb_info ;
+ int g_scb_info4 ;
+ int g_scb_info5 ;
+ int g_scb_info6 ;
+ int g_tN ;
+ int g_tcb_info ;
+ int g_tcb_info4 ;
+ int g_tcb_info5 ;
+ int g_tcb_info6 ;
+ int set_tidtype (unsigned int) ;
 
 void
 set_tcb_info(unsigned int tidtype, unsigned int cardtype)

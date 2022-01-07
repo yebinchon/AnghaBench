@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {float* output; int batch; int outputs; int h; int w; int n; int classes; int coords; int /*<<< orphan*/  softmax_tree; scalar_t__ background; int /*<<< orphan*/  biases; } ;
-typedef  TYPE_1__ layer ;
-struct TYPE_8__ {float* prob; float objectness; float* mask; int /*<<< orphan*/  bbox; } ;
-typedef  TYPE_2__ detection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  correct_region_boxes (TYPE_2__*,int,int,int,int,int,int) ; 
- int entry_index (TYPE_1__,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  get_region_box (float*,int /*<<< orphan*/ ,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  hierarchy_predictions (float*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int hierarchy_top_prediction (float*,int /*<<< orphan*/ ,float,int) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {float* output; int batch; int outputs; int h; int w; int n; int classes; int coords; int softmax_tree; scalar_t__ background; int biases; } ;
+typedef TYPE_1__ layer ;
+struct TYPE_8__ {float* prob; float objectness; float* mask; int bbox; } ;
+typedef TYPE_2__ detection ;
+
+
+ int correct_region_boxes (TYPE_2__*,int,int,int,int,int,int) ;
+ int entry_index (TYPE_1__,int ,int,int) ;
+ int get_region_box (float*,int ,int,int,int,int,int,int,int) ;
+ int hierarchy_predictions (float*,int,int ,int ,int) ;
+ int hierarchy_top_prediction (float*,int ,float,int) ;
 
 void get_region_detections(layer l, int w, int h, int netw, int neth, float thresh, int *map, float tree_thresh, int relative, detection *dets)
 {
@@ -59,8 +59,8 @@ void get_region_detections(layer l, int w, int h, int netw, int neth, float thre
             for(j = 0; j < l.classes; ++j){
                 dets[index].prob[j] = 0;
             }
-            int obj_index  = entry_index(l, 0, n*l.w*l.h + i, l.coords);
-            int box_index  = entry_index(l, 0, n*l.w*l.h + i, 0);
+            int obj_index = entry_index(l, 0, n*l.w*l.h + i, l.coords);
+            int box_index = entry_index(l, 0, n*l.w*l.h + i, 0);
             int mask_index = entry_index(l, 0, n*l.w*l.h + i, 4);
             float scale = l.background ? 1 : predictions[obj_index];
             dets[index].bbox = get_region_box(predictions, l.biases, n, box_index, col, row, l.w, l.h, l.w*l.h);
@@ -82,7 +82,7 @@ void get_region_detections(layer l, int w, int h, int netw, int neth, float thre
                         dets[index].prob[j] = (prob > thresh) ? prob : 0;
                     }
                 } else {
-                    int j =  hierarchy_top_prediction(predictions + class_index, l.softmax_tree, tree_thresh, l.w*l.h);
+                    int j = hierarchy_top_prediction(predictions + class_index, l.softmax_tree, tree_thresh, l.w*l.h);
                     dets[index].prob[j] = (scale > thresh) ? scale : 0;
                 }
             } else {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
 struct client_nat_option_list {int n; struct client_nat_entry* entries; } ;
-struct client_nat_entry {int /*<<< orphan*/  foreign_network; int /*<<< orphan*/  netmask; int /*<<< orphan*/  network; int /*<<< orphan*/  type; } ;
+struct client_nat_entry {int foreign_network; int netmask; int network; int type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IA_NET_ORDER ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int,char*,...) ; 
- int /*<<< orphan*/  print_in_addr_t (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gc_arena*) ; 
+
+ int IA_NET_ORDER ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int,char*,...) ;
+ int print_in_addr_t (int ,int ,struct gc_arena*) ;
 
 void
 print_client_nat_list(const struct client_nat_option_list *list, int msglevel)

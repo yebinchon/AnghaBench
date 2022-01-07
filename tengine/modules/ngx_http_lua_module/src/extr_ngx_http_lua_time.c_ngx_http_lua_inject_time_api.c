@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_cookie_time ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_http_time ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_localtime ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_now ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_parse_http_time ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_time ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_today ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_update_time ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_utctime ; 
+
+
+
+typedef int lua_State ;
+
+
+ int lua_pushcfunction (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int ngx_http_lua_ngx_cookie_time ;
+ int ngx_http_lua_ngx_http_time ;
+ int ngx_http_lua_ngx_localtime ;
+ int ngx_http_lua_ngx_now ;
+ int ngx_http_lua_ngx_parse_http_time ;
+ int ngx_http_lua_ngx_time ;
+ int ngx_http_lua_ngx_today ;
+ int ngx_http_lua_ngx_update_time ;
+ int ngx_http_lua_ngx_utctime ;
 
 void
 ngx_http_lua_inject_time_api(lua_State *L)
@@ -32,10 +32,10 @@ ngx_http_lua_inject_time_api(lua_State *L)
     lua_setfield(L, -2, "utctime");
 
     lua_pushcfunction(L, ngx_http_lua_ngx_time);
-    lua_setfield(L, -2, "get_now_ts"); /* deprecated */
+    lua_setfield(L, -2, "get_now_ts");
 
     lua_pushcfunction(L, ngx_http_lua_ngx_localtime);
-    lua_setfield(L, -2, "get_now"); /* deprecated */
+    lua_setfield(L, -2, "get_now");
 
     lua_pushcfunction(L, ngx_http_lua_ngx_localtime);
     lua_setfield(L, -2, "localtime");
@@ -50,7 +50,7 @@ ngx_http_lua_inject_time_api(lua_State *L)
     lua_setfield(L, -2, "update_time");
 
     lua_pushcfunction(L, ngx_http_lua_ngx_today);
-    lua_setfield(L, -2, "get_today"); /* deprecated */
+    lua_setfield(L, -2, "get_today");
 
     lua_pushcfunction(L, ngx_http_lua_ngx_today);
     lua_setfield(L, -2, "today");

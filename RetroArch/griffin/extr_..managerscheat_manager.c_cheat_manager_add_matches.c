@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_2__ {unsigned char* curr_memory_buf; int num_matches; int size; unsigned int total_memory_size; unsigned int* matches; int /*<<< orphan*/  big_endian; int /*<<< orphan*/  search_bit_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENTRIES_CTL_SET_REFRESH ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_CATEGORY_INFO ; 
- int /*<<< orphan*/  MESSAGE_QUEUE_ICON_DEFAULT ; 
- int /*<<< orphan*/  MSG_CHEAT_SEARCH_ADDED_MATCHES_FAIL ; 
- int /*<<< orphan*/  MSG_CHEAT_SEARCH_ADDED_MATCHES_SUCCESS ; 
- int /*<<< orphan*/  MSG_CHEAT_SEARCH_ADDED_MATCHES_TOO_MANY ; 
- int /*<<< orphan*/  RARCH_MENU_CTL_SET_PREVENT_POPULATE ; 
- int /*<<< orphan*/  cheat_manager_add_new_code (int /*<<< orphan*/ ,unsigned int,int,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  cheat_manager_setup_search_meta (int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*) ; 
- TYPE_1__ cheat_manager_state ; 
- int /*<<< orphan*/  menu_driver_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  menu_entries_ctl (int /*<<< orphan*/ ,int*) ; 
- char* msg_hash_to_str (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  runloop_msg_queue_push (char*,int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- unsigned int translate_address (unsigned int,unsigned char**) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int msg ;
+struct TYPE_2__ {unsigned char* curr_memory_buf; int num_matches; int size; unsigned int total_memory_size; unsigned int* matches; int big_endian; int search_bit_size; } ;
+
+
+ int MENU_ENTRIES_CTL_SET_REFRESH ;
+ int MESSAGE_QUEUE_CATEGORY_INFO ;
+ int MESSAGE_QUEUE_ICON_DEFAULT ;
+ int MSG_CHEAT_SEARCH_ADDED_MATCHES_FAIL ;
+ int MSG_CHEAT_SEARCH_ADDED_MATCHES_SUCCESS ;
+ int MSG_CHEAT_SEARCH_ADDED_MATCHES_TOO_MANY ;
+ int RARCH_MENU_CTL_SET_PREVENT_POPULATE ;
+ int cheat_manager_add_new_code (int ,unsigned int,int,int ,unsigned int) ;
+ int cheat_manager_setup_search_meta (int ,unsigned int*,unsigned int*,unsigned int*) ;
+ TYPE_1__ cheat_manager_state ;
+ int menu_driver_ctl (int ,int *) ;
+ int menu_entries_ctl (int ,int*) ;
+ char* msg_hash_to_str (int ) ;
+ int runloop_msg_queue_push (char*,int,int,int,int *,int ,int ) ;
+ int snprintf (char*,int,char*,int) ;
+ unsigned int translate_address (unsigned int,unsigned char**) ;
 
 int cheat_manager_add_matches(const char *path,
       const char *label, unsigned type, size_t menuidx, size_t entry_idx)
 {
    char msg[100];
-   bool refresh = false;
+   bool refresh = 0;
    unsigned byte_part = 0;
    unsigned int idx = 0;
    unsigned int mask = 0;
@@ -49,7 +49,7 @@ int cheat_manager_add_matches(const char *path,
 
    if (cheat_manager_state.num_matches + cheat_manager_state.size > 100)
    {
-      runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_TOO_MANY), 1, 180, true, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+      runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_TOO_MANY), 1, 180, 1, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
       return 0;
    }
    cheat_manager_setup_search_meta(cheat_manager_state.search_bit_size, &bytes_per_item, &mask, &bits);
@@ -87,7 +87,7 @@ int cheat_manager_add_matches(const char *path,
                if (!cheat_manager_add_new_code(cheat_manager_state.search_bit_size, idx, (mask << (byte_part * bits)),
                      cheat_manager_state.big_endian, curr_val))
                {
-                  runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_FAIL), 1, 180, true, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+                  runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_FAIL), 1, 180, 1, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
                   return 0;
                }
                num_added++;
@@ -101,7 +101,7 @@ int cheat_manager_add_matches(const char *path,
                if (!cheat_manager_add_new_code(cheat_manager_state.search_bit_size, idx, 0xFF,
                      cheat_manager_state.big_endian, curr_val))
                {
-                  runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_FAIL), 1, 180, true, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+                  runloop_msg_queue_push(msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_FAIL), 1, 180, 1, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
                   return 0;
                }
                num_added++;
@@ -114,12 +114,12 @@ int cheat_manager_add_matches(const char *path,
    snprintf(msg, sizeof(msg), msg_hash_to_str(MSG_CHEAT_SEARCH_ADDED_MATCHES_SUCCESS), cheat_manager_state.num_matches);
    msg[sizeof(msg) - 1] = 0;
 
-   runloop_msg_queue_push(msg, 1, 180, true, NULL, MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
+   runloop_msg_queue_push(msg, 1, 180, 1, ((void*)0), MESSAGE_QUEUE_ICON_DEFAULT, MESSAGE_QUEUE_CATEGORY_INFO);
 
-#ifdef HAVE_MENU
-   menu_entries_ctl(MENU_ENTRIES_CTL_SET_REFRESH, &refresh);
-   menu_driver_ctl(RARCH_MENU_CTL_SET_PREVENT_POPULATE, NULL);
-#endif
+
+
+
+
 
    return 0;
 }

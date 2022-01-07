@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ext2_filsys ;
-typedef  int /*<<< orphan*/  errcode_t ;
-typedef  int /*<<< orphan*/  blk64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ext2fs_read_ext_attr3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ext2_filsys ;
+typedef int errcode_t ;
+typedef int blk64_t ;
+
+
+ int ext2fs_read_ext_attr3 (int ,int ,void*,int ) ;
 
 errcode_t ext2fs_read_ext_attr2(ext2_filsys fs, blk64_t block, void *buf)
 {
-	return ext2fs_read_ext_attr3(fs, block, buf, 0);
+ return ext2fs_read_ext_attr3(fs, block, buf, 0);
 }

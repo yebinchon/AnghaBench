@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * last_error; } ;
 
-/* Variables and functions */
- TYPE_1__* GIT_GLOBAL ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  set_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * last_error; } ;
+
+
+ TYPE_1__* GIT_GLOBAL ;
+ int SetLastError (int ) ;
+ scalar_t__ errno ;
+ int set_error (int ,int *) ;
 
 void git_error_clear(void)
 {
-	if (GIT_GLOBAL->last_error != NULL) {
-		set_error(0, NULL);
-		GIT_GLOBAL->last_error = NULL;
-	}
+ if (GIT_GLOBAL->last_error != ((void*)0)) {
+  set_error(0, ((void*)0));
+  GIT_GLOBAL->last_error = ((void*)0);
+ }
 
-	errno = 0;
-#ifdef GIT_WIN32
-	SetLastError(0);
-#endif
+ errno = 0;
+
+
+
 }

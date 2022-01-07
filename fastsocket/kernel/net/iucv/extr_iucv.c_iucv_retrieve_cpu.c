@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union iucv_param {int dummy; } iucv_param ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IUCV_RETRIEVE_BUFFER ; 
- int /*<<< orphan*/  cpu_clear (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cpu_isset (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iucv_block_cpu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iucv_buffer_cpumask ; 
- int /*<<< orphan*/  iucv_call_b2f0 (int /*<<< orphan*/ ,union iucv_param*) ; 
- union iucv_param** iucv_param_irq ; 
- int smp_processor_id () ; 
+
+
+
+typedef union iucv_param {int dummy; } iucv_param ;
+
+
+ int IUCV_RETRIEVE_BUFFER ;
+ int cpu_clear (int,int ) ;
+ int cpu_isset (int,int ) ;
+ int iucv_block_cpu (int *) ;
+ int iucv_buffer_cpumask ;
+ int iucv_call_b2f0 (int ,union iucv_param*) ;
+ union iucv_param** iucv_param_irq ;
+ int smp_processor_id () ;
 
 __attribute__((used)) static void iucv_retrieve_cpu(void *data)
 {
-	int cpu = smp_processor_id();
-	union iucv_param *parm;
+ int cpu = smp_processor_id();
+ union iucv_param *parm;
 
-	if (!cpu_isset(cpu, iucv_buffer_cpumask))
-		return;
+ if (!cpu_isset(cpu, iucv_buffer_cpumask))
+  return;
 
-	/* Block iucv interrupts. */
-	iucv_block_cpu(NULL);
 
-	/* Retrieve interrupt buffer. */
-	parm = iucv_param_irq[cpu];
-	iucv_call_b2f0(IUCV_RETRIEVE_BUFFER, parm);
+ iucv_block_cpu(((void*)0));
 
-	/* Clear indication that an iucv buffer exists for this cpu. */
-	cpu_clear(cpu, iucv_buffer_cpumask);
+
+ parm = iucv_param_irq[cpu];
+ iucv_call_b2f0(IUCV_RETRIEVE_BUFFER, parm);
+
+
+ cpu_clear(cpu, iucv_buffer_cpumask);
 }

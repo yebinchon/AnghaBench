@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iovec {char* member_0; int /*<<< orphan*/  member_1; } ;
-typedef  int /*<<< orphan*/  huge ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOENT ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  LOG_NOTICE ; 
- int /*<<< orphan*/  STRLEN (char*) ; 
- int /*<<< orphan*/  _SC_NPROCESSORS_ONLN ; 
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  char_array_0 (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  getenv (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- scalar_t__ sd_journal_perror (char*) ; 
- scalar_t__ sd_journal_print (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ sd_journal_send (char*,char*,...) ; 
- scalar_t__ sd_journal_sendv (struct iovec*,int) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  sysconf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*) ; 
+
+
+
+struct iovec {char* member_0; int member_1; } ;
+typedef int huge ;
+
+
+ int ENOENT ;
+ int LOG_INFO ;
+ int LOG_NOTICE ;
+ int STRLEN (char*) ;
+ int _SC_NPROCESSORS_ONLN ;
+ int _SC_PAGESIZE ;
+ int assert_se (int) ;
+ int char_array_0 (char*) ;
+ int errno ;
+ int getenv (char*) ;
+ int memcpy (char*,char*,int) ;
+ int memset (char*,char,int) ;
+ scalar_t__ sd_journal_perror (char*) ;
+ scalar_t__ sd_journal_print (int ,char*) ;
+ scalar_t__ sd_journal_send (char*,char*,...) ;
+ scalar_t__ sd_journal_sendv (struct iovec*,int) ;
+ int sleep (int) ;
+ int sysconf (int ) ;
+ int syslog (int ,char*) ;
 
 int main(int argc, char *argv[]) {
         char huge[4096*1024];
 
-        /* utf-8 and non-utf-8, message-less and message-ful iovecs */
+
         struct iovec graph1[] = {
                 {(char*) "GRAPH=graph", STRLEN("GRAPH=graph")}
         };
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
 
         assert_se(sd_journal_send("MESSAGE=foobar",
                                   "VALUE=%i", 7,
-                                  NULL) == 0);
+                                  ((void*)0)) == 0);
 
         errno = ENOENT;
         assert_se(sd_journal_perror("Foobar") == 0);
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 
         assert_se(sd_journal_send("MESSAGE=Huge field attached",
                                   huge,
-                                  NULL) == 0);
+                                  ((void*)0)) == 0);
 
         assert_se(sd_journal_send("MESSAGE=uiui",
                                   "VALUE=A",
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
                                   "OTHERVALUE=X",
                                   "OTHERVALUE=Y",
                                   "WITH_BINARY=this is a binary value \a",
-                                  NULL) == 0);
+                                  ((void*)0)) == 0);
 
         syslog(LOG_NOTICE, "Hello World!");
 
@@ -91,15 +91,15 @@ int main(int argc, char *argv[]) {
                                   "TERM=%s", getenv("TERM"),
                                   "PAGE_SIZE=%li", sysconf(_SC_PAGESIZE),
                                   "N_CPUS=%li", sysconf(_SC_NPROCESSORS_ONLN),
-                                  NULL) == 0);
+                                  ((void*)0)) == 0);
 
         assert_se(sd_journal_sendv(graph1, 1) == 0);
         assert_se(sd_journal_sendv(graph2, 1) == 0);
         assert_se(sd_journal_sendv(message1, 1) == 0);
         assert_se(sd_journal_sendv(message2, 1) == 0);
 
-        /* test without location fields */
-#undef sd_journal_sendv
+
+
         assert_se(sd_journal_sendv(graph1, 1) == 0);
         assert_se(sd_journal_sendv(graph2, 1) == 0);
         assert_se(sd_journal_sendv(message1, 1) == 0);

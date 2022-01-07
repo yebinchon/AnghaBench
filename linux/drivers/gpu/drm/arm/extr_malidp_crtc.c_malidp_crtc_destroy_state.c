@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct malidp_crtc_state {int dummy; } ;
 struct drm_crtc_state {int dummy; } ;
 struct drm_crtc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __drm_atomic_helper_crtc_destroy_state (struct drm_crtc_state*) ; 
- int /*<<< orphan*/  kfree (struct malidp_crtc_state*) ; 
- struct malidp_crtc_state* to_malidp_crtc_state (struct drm_crtc_state*) ; 
+
+ int __drm_atomic_helper_crtc_destroy_state (struct drm_crtc_state*) ;
+ int kfree (struct malidp_crtc_state*) ;
+ struct malidp_crtc_state* to_malidp_crtc_state (struct drm_crtc_state*) ;
 
 __attribute__((used)) static void malidp_crtc_destroy_state(struct drm_crtc *crtc,
-				      struct drm_crtc_state *state)
+          struct drm_crtc_state *state)
 {
-	struct malidp_crtc_state *mali_state = NULL;
+ struct malidp_crtc_state *mali_state = ((void*)0);
 
-	if (state) {
-		mali_state = to_malidp_crtc_state(state);
-		__drm_atomic_helper_crtc_destroy_state(state);
-	}
+ if (state) {
+  mali_state = to_malidp_crtc_state(state);
+  __drm_atomic_helper_crtc_destroy_state(state);
+ }
 
-	kfree(mali_state);
+ kfree(mali_state);
 }

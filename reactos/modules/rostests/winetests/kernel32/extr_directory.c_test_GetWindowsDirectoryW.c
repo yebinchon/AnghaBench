@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float WCHAR ;
-typedef  int UINT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ GetLastError () ; 
- int GetWindowsDirectoryW (float*,int) ; 
- int MAX_PATH ; 
- scalar_t__ lstrcmpW (float*,float const*) ; 
- int /*<<< orphan*/  lstrcpyW (float*,float const*) ; 
- int lstrlenW (float*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef float WCHAR ;
+typedef int UINT ;
+
+
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ GetLastError () ;
+ int GetWindowsDirectoryW (float*,int) ;
+ int MAX_PATH ;
+ scalar_t__ lstrcmpW (float*,float const*) ;
+ int lstrcpyW (float*,float const*) ;
+ int lstrlenW (float*) ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetWindowsDirectoryW(void)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void test_GetWindowsDirectoryW(void)
     WCHAR buf[MAX_PATH];
     static const WCHAR fooW[] = {'f','o','o',0};
 
-    len_with_null = GetWindowsDirectoryW(NULL, 0);
+    len_with_null = GetWindowsDirectoryW(((void*)0), 0);
     if (len_with_null == 0 && GetLastError() == ERROR_CALL_NOT_IMPLEMENTED)
     {
         win_skip("GetWindowsDirectoryW is not implemented\n");

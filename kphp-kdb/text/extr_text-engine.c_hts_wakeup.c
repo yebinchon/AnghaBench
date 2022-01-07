@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hts_data {int extra_int3; int query_flags; int /*<<< orphan*/  extra_int2; int /*<<< orphan*/  extra_int; } ;
+
+
+
+
+struct hts_data {int extra_int3; int query_flags; int extra_int2; int extra_int; } ;
 struct connection {scalar_t__ status; int parse_state; } ;
 
-/* Variables and functions */
- struct hts_data* HTS_DATA (struct connection*) ; 
- int QF_KEEPALIVE ; 
- int /*<<< orphan*/  R ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear_connection_timeout (struct connection*) ; 
- scalar_t__ conn_expect_query ; 
- scalar_t__ conn_wait_net ; 
- scalar_t__ conn_write_close ; 
- int get_history (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int get_persistent_history (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int get_persistent_timestamp (int /*<<< orphan*/ ) ; 
- int get_timestamp (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * http_failed ; 
- int /*<<< orphan*/  http_return (struct connection*,char*,int) ; 
- int http_return_history (struct connection*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  key_user_id ; 
- int req_mode ; 
- int /*<<< orphan*/  req_ts ; 
- int sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  write_http_error (struct connection*,int) ; 
+
+ struct hts_data* HTS_DATA (struct connection*) ;
+ int QF_KEEPALIVE ;
+ int R ;
+ int assert (int) ;
+ int clear_connection_timeout (struct connection*) ;
+ scalar_t__ conn_expect_query ;
+ scalar_t__ conn_wait_net ;
+ scalar_t__ conn_write_close ;
+ int get_history (int ,int ,int ,int ) ;
+ int get_persistent_history (int ,int ,int ,int ) ;
+ int get_persistent_timestamp (int ) ;
+ int get_timestamp (int ,int) ;
+ int * http_failed ;
+ int http_return (struct connection*,char*,int) ;
+ int http_return_history (struct connection*,int ,int,int) ;
+ int key_user_id ;
+ int req_mode ;
+ int req_ts ;
+ int sprintf (char*,char*,int) ;
+ int write_http_error (struct connection*,int) ;
 
 int hts_wakeup (struct connection *c) {
   struct hts_data *D = HTS_DATA(c);

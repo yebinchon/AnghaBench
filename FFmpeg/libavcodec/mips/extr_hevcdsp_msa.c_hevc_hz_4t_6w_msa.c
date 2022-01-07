@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  int /*<<< orphan*/  v2i64 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPADD_SB2_SH (scalar_t__,scalar_t__,int,int,int,int) ; 
- scalar_t__ LD_SB (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SD (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SPLATI_H2_SH (int,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  SW (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  __msa_copy_u_d (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int __msa_copy_u_w (int /*<<< orphan*/ ,int) ; 
- int __msa_ldi_h (int) ; 
- int /*<<< orphan*/  ff_hevc_mask_arr ; 
+
+
+
+typedef int v8i16 ;
+typedef int v4i32 ;
+typedef int v2i64 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int DPADD_SB2_SH (scalar_t__,scalar_t__,int,int,int,int) ;
+ scalar_t__ LD_SB (int ) ;
+ int LD_SB4 (int *,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SH (int const*) ;
+ int SD (int ,int *) ;
+ int SPLATI_H2_SH (int,int ,int,int,int) ;
+ int SW (int,int *) ;
+ int VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_copy_u_d (int ,int ) ;
+ int __msa_copy_u_w (int ,int) ;
+ int __msa_ldi_h (int) ;
+ int ff_hevc_mask_arr ;
 
 __attribute__((used)) static void hevc_hz_4t_6w_msa(uint8_t *src,
                               int32_t src_stride,

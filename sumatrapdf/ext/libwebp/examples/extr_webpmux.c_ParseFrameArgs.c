@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  blend_method; int /*<<< orphan*/  dispose_method; int /*<<< orphan*/  y_offset; int /*<<< orphan*/  x_offset; int /*<<< orphan*/  duration; } ;
-typedef  TYPE_1__ WebPMuxFrameInfo ;
-typedef  int /*<<< orphan*/  WebPMuxAnimDispose ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WEBP_MUX_BLEND ; 
- int /*<<< orphan*/  WEBP_MUX_NO_BLEND ; 
- int /*<<< orphan*/  WarnAboutOddOffset (TYPE_1__* const) ; 
- int sscanf (char const*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,char*,char*,int*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int blend_method; int dispose_method; int y_offset; int x_offset; int duration; } ;
+typedef TYPE_1__ WebPMuxFrameInfo ;
+typedef int WebPMuxAnimDispose ;
+
+
+ int WEBP_MUX_BLEND ;
+ int WEBP_MUX_NO_BLEND ;
+ int WarnAboutOddOffset (TYPE_1__* const) ;
+ int sscanf (char const*,char*,int *,int *,int *,int*,char*,char*,int*) ;
 
 __attribute__((used)) static int ParseFrameArgs(const char* args, WebPMuxFrameInfo* const info) {
   int dispose_method, dummy;
@@ -29,12 +29,12 @@ __attribute__((used)) static int ParseFrameArgs(const char* args, WebPMuxFrameIn
                               &plus_minus, &blend_method, &dummy);
   switch (num_args) {
     case 1:
-      info->x_offset = info->y_offset = 0;  // fall through
+      info->x_offset = info->y_offset = 0;
     case 3:
-      dispose_method = 0;  // fall through
+      dispose_method = 0;
     case 4:
       plus_minus = '+';
-      blend_method = 'b';  // fall through
+      blend_method = 'b';
     case 6:
       break;
     case 2:
@@ -45,8 +45,8 @@ __attribute__((used)) static int ParseFrameArgs(const char* args, WebPMuxFrameIn
 
   WarnAboutOddOffset(info);
 
-  // Note: The sanity of the following conversion is checked by
-  // WebPMuxPushFrame().
+
+
   info->dispose_method = (WebPMuxAnimDispose)dispose_method;
 
   if (blend_method != 'b') return 0;

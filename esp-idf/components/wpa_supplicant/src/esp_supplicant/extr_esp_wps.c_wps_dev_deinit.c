@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wps_device_data {int /*<<< orphan*/ * serial_number; int /*<<< orphan*/ * device_name; int /*<<< orphan*/ * model_number; int /*<<< orphan*/ * model_name; int /*<<< orphan*/ * manufacturer; } ;
 
-/* Variables and functions */
- int ESP_FAIL ; 
- int /*<<< orphan*/  os_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * s_factory_info ; 
+
+
+
+struct wps_device_data {int * serial_number; int * device_name; int * model_number; int * model_name; int * manufacturer; } ;
+
+
+ int ESP_FAIL ;
+ int os_free (int *) ;
+ int * s_factory_info ;
 
 int wps_dev_deinit(struct wps_device_data *dev)
 {
@@ -43,7 +43,7 @@ int wps_dev_deinit(struct wps_device_data *dev)
 
     if (s_factory_info) {
         os_free(s_factory_info);
-        s_factory_info = NULL;
+        s_factory_info = ((void*)0);
     }
 
     return ret;

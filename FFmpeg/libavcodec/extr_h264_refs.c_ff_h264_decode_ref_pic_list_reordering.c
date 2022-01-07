@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int list_count; int* ref_count; scalar_t__* nb_ref_modifications; TYPE_1__** ref_modifications; int /*<<< orphan*/  gb; } ;
-struct TYPE_4__ {unsigned int op; int /*<<< orphan*/  val; } ;
-typedef  TYPE_2__ H264SliceContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- unsigned int get_ue_golomb_31 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_ue_golomb_long (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int list_count; int* ref_count; scalar_t__* nb_ref_modifications; TYPE_1__** ref_modifications; int gb; } ;
+struct TYPE_4__ {unsigned int op; int val; } ;
+typedef TYPE_2__ H264SliceContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (void*,int ,char*,...) ;
+ int get_bits1 (int *) ;
+ unsigned int get_ue_golomb_31 (int *) ;
+ int get_ue_golomb_long (int *) ;
 
 int ff_h264_decode_ref_pic_list_reordering(H264SliceContext *sl, void *logctx)
 {
@@ -32,7 +32,7 @@ int ff_h264_decode_ref_pic_list_reordering(H264SliceContext *sl, void *logctx)
     sl->nb_ref_modifications[1] = 0;
 
     for (list = 0; list < sl->list_count; list++) {
-        if (!get_bits1(&sl->gb))    // ref_pic_list_modification_flag_l[01]
+        if (!get_bits1(&sl->gb))
             continue;
 
         for (index = 0; ; index++) {
@@ -51,7 +51,7 @@ int ff_h264_decode_ref_pic_list_reordering(H264SliceContext *sl, void *logctx)
                 return AVERROR_INVALIDDATA;
             }
             sl->ref_modifications[list][index].val = get_ue_golomb_long(&sl->gb);
-            sl->ref_modifications[list][index].op  = op;
+            sl->ref_modifications[list][index].op = op;
             sl->nb_ref_modifications[list]++;
         }
     }

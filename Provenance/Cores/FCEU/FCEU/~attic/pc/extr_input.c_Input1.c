@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * UsrInputType ; 
- int /*<<< orphan*/ * cortab ; 
- int /*<<< orphan*/ * cortabi ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+ int * UsrInputType ;
+ int * cortab ;
+ int * cortabi ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static void Input1(char *text)
 {
-	int y;
+ int y;
 
-	for(y=0;y<6;y++)
-	 if(!strcmp(cortab[y],text))
-	  UsrInputType[0]=cortabi[y];
+ for(y=0;y<6;y++)
+  if(!strcmp(cortab[y],text))
+   UsrInputType[0]=cortabi[y];
 }

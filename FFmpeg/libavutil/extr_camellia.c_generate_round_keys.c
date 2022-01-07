@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* uint64_t ;
 struct TYPE_3__ {int key_bits; void** Kw; void** Ke; void** K; } ;
-typedef  TYPE_1__ AVCAMELLIA ;
+typedef TYPE_1__ AVCAMELLIA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LR128 (void**,void**,int) ; 
- int** shifts ; 
- size_t** vars ; 
+
+ int LR128 (void**,void**,int) ;
+ int** shifts ;
+ size_t** vars ;
 
 __attribute__((used)) static void generate_round_keys(AVCAMELLIA *cs, uint64_t Kl[2], uint64_t Kr[2], uint64_t Ka[2], uint64_t Kb[2])
 {

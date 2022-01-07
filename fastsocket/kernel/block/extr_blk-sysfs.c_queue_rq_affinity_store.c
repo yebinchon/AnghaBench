@@ -1,48 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  queue_lock; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  QUEUE_FLAG_SAME_COMP ; 
- int /*<<< orphan*/  QUEUE_FLAG_SAME_FORCE ; 
- int /*<<< orphan*/  queue_flag_clear (int /*<<< orphan*/ ,struct request_queue*) ; 
- int /*<<< orphan*/  queue_flag_set (int /*<<< orphan*/ ,struct request_queue*) ; 
- int /*<<< orphan*/  queue_var_store (unsigned long*,char const*,size_t) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ ) ; 
+
+
+
+struct request_queue {int queue_lock; } ;
+typedef int ssize_t ;
+
+
+ int EINVAL ;
+ int QUEUE_FLAG_SAME_COMP ;
+ int QUEUE_FLAG_SAME_FORCE ;
+ int queue_flag_clear (int ,struct request_queue*) ;
+ int queue_flag_set (int ,struct request_queue*) ;
+ int queue_var_store (unsigned long*,char const*,size_t) ;
+ int spin_lock_irq (int ) ;
+ int spin_unlock_irq (int ) ;
 
 __attribute__((used)) static ssize_t
 queue_rq_affinity_store(struct request_queue *q, const char *page, size_t count)
 {
-	ssize_t ret = -EINVAL;
-#if defined(CONFIG_USE_GENERIC_SMP_HELPERS)
-	unsigned long val;
-
-	ret = queue_var_store(&val, page, count);
-	spin_lock_irq(q->queue_lock);
-	if (val == 2) {
-		queue_flag_set(QUEUE_FLAG_SAME_COMP, q);
-		queue_flag_set(QUEUE_FLAG_SAME_FORCE, q);
-	} else if (val == 1) {
-		queue_flag_set(QUEUE_FLAG_SAME_COMP, q);
-		queue_flag_clear(QUEUE_FLAG_SAME_FORCE, q);
-	} else if (val == 0) {
-		queue_flag_clear(QUEUE_FLAG_SAME_COMP, q);
-		queue_flag_clear(QUEUE_FLAG_SAME_FORCE, q);
-	}
-	spin_unlock_irq(q->queue_lock);
-#endif
-	return ret;
+ ssize_t ret = -EINVAL;
+ return ret;
 }

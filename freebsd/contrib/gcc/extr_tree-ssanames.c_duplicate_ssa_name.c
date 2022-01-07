@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+
+
+typedef int tree ;
 struct ptr_info_def {int dummy; } ;
 
-/* Variables and functions */
- struct ptr_info_def* SSA_NAME_PTR_INFO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSA_NAME_VAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  duplicate_ssa_name_ptr_info (int /*<<< orphan*/ ,struct ptr_info_def*) ; 
- int /*<<< orphan*/  make_ssa_name (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct ptr_info_def* SSA_NAME_PTR_INFO (int ) ;
+ int SSA_NAME_VAR (int ) ;
+ int duplicate_ssa_name_ptr_info (int ,struct ptr_info_def*) ;
+ int make_ssa_name (int ,int ) ;
 
 tree
 duplicate_ssa_name (tree name, tree stmt)

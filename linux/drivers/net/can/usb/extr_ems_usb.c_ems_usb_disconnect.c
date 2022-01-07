@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int dummy; } ;
-struct ems_usb {int /*<<< orphan*/  tx_msg_buffer; int /*<<< orphan*/  intr_in_buffer; int /*<<< orphan*/  intr_urb; int /*<<< orphan*/  netdev; } ;
+struct ems_usb {int tx_msg_buffer; int intr_in_buffer; int intr_urb; int netdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_candev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink_all_urbs (struct ems_usb*) ; 
- int /*<<< orphan*/  unregister_netdev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_free_urb (int /*<<< orphan*/ ) ; 
- struct ems_usb* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
+
+ int free_candev (int ) ;
+ int kfree (int ) ;
+ int unlink_all_urbs (struct ems_usb*) ;
+ int unregister_netdev (int ) ;
+ int usb_free_urb (int ) ;
+ struct ems_usb* usb_get_intfdata (struct usb_interface*) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
 
 __attribute__((used)) static void ems_usb_disconnect(struct usb_interface *intf)
 {
-	struct ems_usb *dev = usb_get_intfdata(intf);
+ struct ems_usb *dev = usb_get_intfdata(intf);
 
-	usb_set_intfdata(intf, NULL);
+ usb_set_intfdata(intf, ((void*)0));
 
-	if (dev) {
-		unregister_netdev(dev->netdev);
-		free_candev(dev->netdev);
+ if (dev) {
+  unregister_netdev(dev->netdev);
+  free_candev(dev->netdev);
 
-		unlink_all_urbs(dev);
+  unlink_all_urbs(dev);
 
-		usb_free_urb(dev->intr_urb);
+  usb_free_urb(dev->intr_urb);
 
-		kfree(dev->intr_in_buffer);
-		kfree(dev->tx_msg_buffer);
-	}
+  kfree(dev->intr_in_buffer);
+  kfree(dev->tx_msg_buffer);
+ }
 }

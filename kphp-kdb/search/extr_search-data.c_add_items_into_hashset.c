@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ filled; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_RES ; 
- scalar_t__ Q_hash_rating ; 
- int /*<<< orphan*/ * R ; 
- int R_cnt ; 
- scalar_t__ R_tot_undef_hash ; 
- int /*<<< orphan*/  get_hash_item_unsafe (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_rate_item_fast (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  hashset_ll_insert (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__ hs ; 
+
+ scalar_t__ MAX_RES ;
+ scalar_t__ Q_hash_rating ;
+ int * R ;
+ int R_cnt ;
+ scalar_t__ R_tot_undef_hash ;
+ int get_hash_item_unsafe (int ) ;
+ int get_rate_item_fast (int ,scalar_t__) ;
+ int hashset_ll_insert (TYPE_1__*,int ) ;
+ TYPE_1__ hs ;
 
 __attribute__((used)) static void add_items_into_hashset (void) {
   int i;

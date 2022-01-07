@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_subdev_fh {int dummy; } ;
-struct v4l2_subdev {int /*<<< orphan*/  dev; } ;
+struct v4l2_subdev {int dev; } ;
 
-/* Variables and functions */
- int pm_runtime_get_sync (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm_runtime_put_noidle (int /*<<< orphan*/ ) ; 
+
+ int pm_runtime_get_sync (int ) ;
+ int pm_runtime_put_noidle (int ) ;
 
 __attribute__((used)) static int ak7375_open(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
 {
-	int ret;
+ int ret;
 
-	ret = pm_runtime_get_sync(sd->dev);
-	if (ret < 0) {
-		pm_runtime_put_noidle(sd->dev);
-		return ret;
-	}
+ ret = pm_runtime_get_sync(sd->dev);
+ if (ret < 0) {
+  pm_runtime_put_noidle(sd->dev);
+  return ret;
+ }
 
-	return 0;
+ return 0;
 }

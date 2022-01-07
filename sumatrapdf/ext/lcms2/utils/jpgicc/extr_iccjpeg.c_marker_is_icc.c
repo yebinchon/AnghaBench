@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* jpeg_saved_marker_ptr ;
-typedef  int boolean ;
-struct TYPE_3__ {scalar_t__ marker; scalar_t__ data_length; int /*<<< orphan*/ * data; } ;
 
-/* Variables and functions */
- int GETJOCTET (int /*<<< orphan*/ ) ; 
- scalar_t__ ICC_MARKER ; 
- scalar_t__ ICC_OVERHEAD_LEN ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* jpeg_saved_marker_ptr ;
+typedef int boolean ;
+struct TYPE_3__ {scalar_t__ marker; scalar_t__ data_length; int * data; } ;
+
+
+ int GETJOCTET (int ) ;
+ scalar_t__ ICC_MARKER ;
+ scalar_t__ ICC_OVERHEAD_LEN ;
 
 __attribute__((used)) static boolean
 marker_is_icc (jpeg_saved_marker_ptr marker)
@@ -26,7 +26,7 @@ marker_is_icc (jpeg_saved_marker_ptr marker)
   return
     marker->marker == ICC_MARKER &&
     marker->data_length >= ICC_OVERHEAD_LEN &&
-    /* verify the identifying string */
+
     GETJOCTET(marker->data[0]) == 0x49 &&
     GETJOCTET(marker->data[1]) == 0x43 &&
     GETJOCTET(marker->data[2]) == 0x43 &&

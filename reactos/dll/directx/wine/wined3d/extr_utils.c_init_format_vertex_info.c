@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; } ;
-struct wined3d_format {int /*<<< orphan*/  component_count; int /*<<< orphan*/  gl_vtx_type; int /*<<< orphan*/  attribute_size; int /*<<< orphan*/  gl_normalized; int /*<<< orphan*/  gl_vtx_format; int /*<<< orphan*/  emit_idx; } ;
-struct TYPE_3__ {size_t extension; int /*<<< orphan*/  id; int /*<<< orphan*/  gl_normalized; int /*<<< orphan*/  component_count; int /*<<< orphan*/  gl_vtx_type; int /*<<< orphan*/  emit_idx; } ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  calculate_vertex_attribute_size (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_d3dformat (int /*<<< orphan*/ ) ; 
- TYPE_1__* format_vertex_info ; 
- struct wined3d_format* get_format_internal (struct wined3d_gl_info*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct wined3d_gl_info {int * supported; } ;
+struct wined3d_format {int component_count; int gl_vtx_type; int attribute_size; int gl_normalized; int gl_vtx_format; int emit_idx; } ;
+struct TYPE_3__ {size_t extension; int id; int gl_normalized; int component_count; int gl_vtx_type; int emit_idx; } ;
+typedef int BOOL ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_1__*) ;
+ int ERR (char*,int ,int ) ;
+ int FALSE ;
+ int TRUE ;
+ int calculate_vertex_attribute_size (int ,int ) ;
+ int debug_d3dformat (int ) ;
+ TYPE_1__* format_vertex_info ;
+ struct wined3d_format* get_format_internal (struct wined3d_gl_info*,int ) ;
 
 __attribute__((used)) static BOOL init_format_vertex_info(struct wined3d_gl_info *gl_info)
 {

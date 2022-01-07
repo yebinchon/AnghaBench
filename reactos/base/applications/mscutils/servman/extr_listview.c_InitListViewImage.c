@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_3__ {int /*<<< orphan*/  hListView; } ;
-typedef  TYPE_1__* PMAIN_WND_INFO ;
-typedef  scalar_t__ HIMAGELIST ;
-typedef  scalar_t__ HICON ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyIcon (scalar_t__) ; 
- int /*<<< orphan*/  GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDI_SM_ICON ; 
- int ILC_COLOR32 ; 
- int ILC_MASK ; 
- int /*<<< orphan*/  IMAGE_ICON ; 
- int /*<<< orphan*/  ImageList_AddIcon (scalar_t__,scalar_t__) ; 
- scalar_t__ ImageList_Create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  LVSIL_NORMAL ; 
- int /*<<< orphan*/  LVSIL_SMALL ; 
- int /*<<< orphan*/  ListView_SetImageList (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ LoadImageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SM_CXICON ; 
- int /*<<< orphan*/  SM_CXSMICON ; 
- int /*<<< orphan*/  SM_CYICON ; 
- int /*<<< orphan*/  SM_CYSMICON ; 
- int /*<<< orphan*/  hInstance ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_3__ {int hListView; } ;
+typedef TYPE_1__* PMAIN_WND_INFO ;
+typedef scalar_t__ HIMAGELIST ;
+typedef scalar_t__ HICON ;
+
+
+ int DestroyIcon (scalar_t__) ;
+ int GetSystemMetrics (int ) ;
+ int IDI_SM_ICON ;
+ int ILC_COLOR32 ;
+ int ILC_MASK ;
+ int IMAGE_ICON ;
+ int ImageList_AddIcon (scalar_t__,scalar_t__) ;
+ scalar_t__ ImageList_Create (int ,int ,int,int,int) ;
+ int LVSIL_NORMAL ;
+ int LVSIL_SMALL ;
+ int ListView_SetImageList (int ,scalar_t__,int ) ;
+ scalar_t__ LoadImageW (int ,int ,int ,int,int,int ) ;
+ int MAKEINTRESOURCE (int ) ;
+ int SM_CXICON ;
+ int SM_CXSMICON ;
+ int SM_CYICON ;
+ int SM_CYSMICON ;
+ int hInstance ;
 
 __attribute__((used)) static VOID
 InitListViewImage(PMAIN_WND_INFO Info)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ieee80211com {int dummy; } ;
-struct urtw_softc {int /*<<< orphan*/  sc_led_task; struct ieee80211com sc_ic; } ;
+struct urtw_softc {int sc_led_task; struct ieee80211com sc_ic; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee80211_runtask (struct ieee80211com*,int /*<<< orphan*/ *) ; 
+
+ int ieee80211_runtask (struct ieee80211com*,int *) ;
 
 __attribute__((used)) static void
 urtw_led_ch(void *arg)
 {
-	struct urtw_softc *sc = arg;
-	struct ieee80211com *ic = &sc->sc_ic;
+ struct urtw_softc *sc = arg;
+ struct ieee80211com *ic = &sc->sc_ic;
 
-	ieee80211_runtask(ic, &sc->sc_led_task);
+ ieee80211_runtask(ic, &sc->sc_led_task);
 }

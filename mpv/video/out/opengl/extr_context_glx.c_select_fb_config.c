@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo {TYPE_1__* x11; } ;
-typedef  int /*<<< orphan*/ * XVisualInfo ;
-struct TYPE_2__ {int /*<<< orphan*/  display; int /*<<< orphan*/  screen; } ;
-typedef  int /*<<< orphan*/ * GLXFBConfig ;
+typedef int * XVisualInfo ;
+struct TYPE_2__ {int display; int screen; } ;
+typedef int * GLXFBConfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XFree (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** glXChooseFBConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int const*,int*) ; 
- int /*<<< orphan*/ ** glXGetVisualFromFBConfig (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int vo_x11_is_rgba_visual (int /*<<< orphan*/ **) ; 
+
+ int XFree (int **) ;
+ int ** glXChooseFBConfig (int ,int ,int const*,int*) ;
+ int ** glXGetVisualFromFBConfig (int ,int *) ;
+ int vo_x11_is_rgba_visual (int **) ;
 
 __attribute__((used)) static GLXFBConfig select_fb_config(struct vo *vo, const int *attribs, bool alpha)
 {
@@ -28,10 +28,10 @@ __attribute__((used)) static GLXFBConfig select_fb_config(struct vo *vo, const i
     GLXFBConfig *fbc = glXChooseFBConfig(vo->x11->display, vo->x11->screen,
                                          attribs, &fbcount);
     if (!fbc)
-        return NULL;
+        return ((void*)0);
 
-    // The list in fbc is sorted (so that the first element is the best).
-    GLXFBConfig fbconfig = fbcount > 0 ? fbc[0] : NULL;
+
+    GLXFBConfig fbconfig = fbcount > 0 ? fbc[0] : ((void*)0);
 
     if (alpha) {
         for (int n = 0; n < fbcount; n++) {

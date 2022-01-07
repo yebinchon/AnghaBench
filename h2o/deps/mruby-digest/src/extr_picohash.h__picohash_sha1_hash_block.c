@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {int* state; int* buffer; } ;
-typedef  TYPE_1__ _picohash_sha1_ctx_t ;
+typedef TYPE_1__ _picohash_sha1_ctx_t ;
 
-/* Variables and functions */
- int _PICOHASH_SHA1_K0 ; 
- int _PICOHASH_SHA1_K20 ; 
- int _PICOHASH_SHA1_K40 ; 
- int _PICOHASH_SHA1_K60 ; 
- int _picohash_sha1_rol32 (int,int) ; 
+
+ int _PICOHASH_SHA1_K0 ;
+ int _PICOHASH_SHA1_K20 ;
+ int _PICOHASH_SHA1_K40 ;
+ int _PICOHASH_SHA1_K60 ;
+ int _picohash_sha1_rol32 (int,int) ;
 
 __attribute__((used)) static inline void _picohash_sha1_hash_block(_picohash_sha1_ctx_t *s)
 {

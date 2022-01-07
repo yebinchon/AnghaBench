@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- scalar_t__ EA_ADDRESS_REG ; 
- scalar_t__ EA_DATA_REG ; 
- scalar_t__ EA_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_GET_OP2_IMMEDIATE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SBCD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SIZE_B ; 
- int /*<<< orphan*/  current_entry ; 
- int /*<<< orphan*/  ea_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,int) ; 
- int /*<<< orphan*/  ea_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int op_ill (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ scalar_t__ EA_ADDRESS_REG ;
+ scalar_t__ EA_DATA_REG ;
+ scalar_t__ EA_MODE (int ) ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_GET_OP2_IMMEDIATE (int ,int ) ;
+ int JIT_EMIT_SBCD (int ) ;
+ int SIZE_B ;
+ int current_entry ;
+ int ea_get (int *,int ,int ,int,int*,int) ;
+ int ea_set (int *,int ,int ) ;
+ int op_ill (int *,int ) ;
 
 __attribute__((used)) static int opNBCD(Q68State *state, uint32_t opcode)
 {
-    if (EA_MODE(opcode) == EA_ADDRESS_REG) {  // Address registers not allowed
+    if (EA_MODE(opcode) == EA_ADDRESS_REG) {
         return op_ill(state, opcode);
     }
 
@@ -38,7 +38,7 @@ __attribute__((used)) static int opNBCD(Q68State *state, uint32_t opcode)
         return 1;
     }
 
-    /* Treat it as something like SBCD <ea>,#0 for simplicity */
+
     JIT_EMIT_GET_OP2_IMMEDIATE(current_entry, 0);
     JIT_EMIT_SBCD(current_entry);
 

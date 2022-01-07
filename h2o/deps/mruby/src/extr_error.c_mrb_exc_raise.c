@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-struct TYPE_7__ {int /*<<< orphan*/  jmp; int /*<<< orphan*/  eException_class; } ;
-typedef  TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  MRB_THROW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  mrb_exc_set (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_is_kind_of (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_p (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
+struct TYPE_7__ {int jmp; int eException_class; } ;
+typedef TYPE_1__ mrb_state ;
+
+
+ int E_TYPE_ERROR ;
+ int MRB_THROW (int ) ;
+ int abort () ;
+ int mrb_exc_set (TYPE_1__*,int ) ;
+ int mrb_obj_is_kind_of (TYPE_1__*,int ,int ) ;
+ int mrb_p (TYPE_1__*,int ) ;
+ int mrb_raise (TYPE_1__*,int ,char*) ;
 
 void
 mrb_exc_raise(mrb_state *mrb, mrb_value exc)

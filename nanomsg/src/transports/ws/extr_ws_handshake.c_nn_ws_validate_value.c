@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NN_WS_HANDSHAKE_MATCH ; 
- int NN_WS_HANDSHAKE_NOMATCH ; 
- size_t strlen (char const*) ; 
- scalar_t__ tolower (char const) ; 
+ int NN_WS_HANDSHAKE_MATCH ;
+ int NN_WS_HANDSHAKE_NOMATCH ;
+ size_t strlen (char const*) ;
+ scalar_t__ tolower (char const) ;
 
 __attribute__((used)) static int nn_ws_validate_value (const char* expected, const char *subj,
     size_t subj_len, int case_insensitive)

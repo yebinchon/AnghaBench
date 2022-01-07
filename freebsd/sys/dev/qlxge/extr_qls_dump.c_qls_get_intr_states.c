@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  qla_host_t ;
 
-/* Variables and functions */
- int MAX_RX_RINGS ; 
- int /*<<< orphan*/  Q81_CTL_INTR_ENABLE ; 
- int /*<<< orphan*/  READ_REG32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WRITE_REG32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int qla_host_t ;
+
+
+ int MAX_RX_RINGS ;
+ int Q81_CTL_INTR_ENABLE ;
+ int READ_REG32 (int *,int ) ;
+ int WRITE_REG32 (int *,int ,int) ;
 
 __attribute__((used)) static void
 qls_get_intr_states(qla_host_t *ha, uint32_t *buf)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < MAX_RX_RINGS; i++, buf++) {
+ for (i = 0; i < MAX_RX_RINGS; i++, buf++) {
 
-		WRITE_REG32(ha, Q81_CTL_INTR_ENABLE, (0x037f0300 + i));
+  WRITE_REG32(ha, Q81_CTL_INTR_ENABLE, (0x037f0300 + i));
 
-		*buf = READ_REG32(ha, Q81_CTL_INTR_ENABLE);
-	}
+  *buf = READ_REG32(ha, Q81_CTL_INTR_ENABLE);
+ }
 }

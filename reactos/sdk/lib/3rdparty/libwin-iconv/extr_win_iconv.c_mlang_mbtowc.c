@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  ushort ;
-typedef  int /*<<< orphan*/  uchar ;
-struct TYPE_4__ {int (* mblen ) (TYPE_1__*,int /*<<< orphan*/  const*,int) ;int /*<<< orphan*/  codepage; int /*<<< orphan*/  mode; } ;
-typedef  TYPE_1__ csconv_t ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ ConvertINetMultiByteToUnicode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  EILSEQ ; 
- scalar_t__ S_OK ; 
- int seterror (int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int ushort ;
+typedef int uchar ;
+struct TYPE_4__ {int (* mblen ) (TYPE_1__*,int const*,int) ;int codepage; int mode; } ;
+typedef TYPE_1__ csconv_t ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ ConvertINetMultiByteToUnicode (int *,int ,char const*,int*,int *,int*) ;
+ int EILSEQ ;
+ scalar_t__ S_OK ;
+ int seterror (int ) ;
+ int stub1 (TYPE_1__*,int const*,int) ;
 
 __attribute__((used)) static int
 mlang_mbtowc(csconv_t *cv, const uchar *buf, int bufsize, ushort *wbuf, int *wbufsize)

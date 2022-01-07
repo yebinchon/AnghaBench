@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int options; int renegotiate; int new_session; TYPE_1__* method; } ;
 struct TYPE_6__ {int (* ssl_renegotiate ) (TYPE_2__*) ;} ;
-typedef  TYPE_2__ SSL ;
+typedef TYPE_2__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_F_SSL_RENEGOTIATE ; 
- scalar_t__ SSL_IS_TLS13 (TYPE_2__*) ; 
- int SSL_OP_NO_RENEGOTIATION ; 
- int /*<<< orphan*/  SSL_R_NO_RENEGOTIATION ; 
- int /*<<< orphan*/  SSL_R_WRONG_SSL_VERSION ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub1 (TYPE_2__*) ; 
+
+ int SSL_F_SSL_RENEGOTIATE ;
+ scalar_t__ SSL_IS_TLS13 (TYPE_2__*) ;
+ int SSL_OP_NO_RENEGOTIATION ;
+ int SSL_R_NO_RENEGOTIATION ;
+ int SSL_R_WRONG_SSL_VERSION ;
+ int SSLerr (int ,int ) ;
+ int stub1 (TYPE_2__*) ;
 
 int SSL_renegotiate(SSL *s)
 {

@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  weare ;
+
+
+
+
+typedef int weare ;
 struct httprequest {int rcmd; int open; int testno; int writedelay; scalar_t__ partno; scalar_t__ close; scalar_t__ connect_request; } ;
-typedef  size_t ssize_t ;
-typedef  int /*<<< orphan*/  partbuf ;
-typedef  int /*<<< orphan*/  msgbuf ;
-typedef  int /*<<< orphan*/  curl_socket_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef size_t ssize_t ;
+typedef int partbuf ;
+typedef int msgbuf ;
+typedef int curl_socket_t ;
+typedef int FILE ;
 
-/* Variables and functions */
-#define  DOCNUMBER_404 133 
-#define  DOCNUMBER_QUIT 132 
-#define  DOCNUMBER_WERULEZ 131 
- scalar_t__ EAGAIN ; 
- int EINTR ; 
- scalar_t__ EWOULDBLOCK ; 
- int FALSE ; 
-#define  RCMD_IDLE 130 
-#define  RCMD_NORMALREQ 129 
-#define  RCMD_STREAM 128 
- char* RESPONSE_DUMP ; 
- char* RESPONSE_PROXY_DUMP ; 
- scalar_t__ SOCKERRNO ; 
- char const* STREAMTHIS ; 
- void* TRUE ; 
- char* doc404 ; 
- char* docquit ; 
- int errno ; 
- int fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fwrite (char const*,int,size_t,int /*<<< orphan*/ *) ; 
- int getpart (char**,size_t*,char*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ getpid () ; 
- scalar_t__ got_exit_signal ; 
- scalar_t__ is_proxy ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,...) ; 
- int prevbounce ; 
- scalar_t__ prevpartno ; 
- int prevtestno ; 
- int sscanf (char*,char*,char*,int*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strerror (int) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strstr (char const*,char*) ; 
- size_t swrite (int /*<<< orphan*/ ,char const*,size_t) ; 
- char* test2file (int) ; 
- scalar_t__ use_gopher ; 
- int wait_ms (int) ; 
+
+
+
+
+ scalar_t__ EAGAIN ;
+ int EINTR ;
+ scalar_t__ EWOULDBLOCK ;
+ int FALSE ;
+
+
+
+ char* RESPONSE_DUMP ;
+ char* RESPONSE_PROXY_DUMP ;
+ scalar_t__ SOCKERRNO ;
+ char const* STREAMTHIS ;
+ void* TRUE ;
+ char* doc404 ;
+ char* docquit ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int free (char*) ;
+ int fwrite (char const*,int,size_t,int *) ;
+ int getpart (char**,size_t*,char*,char*,int *) ;
+ scalar_t__ getpid () ;
+ scalar_t__ got_exit_signal ;
+ scalar_t__ is_proxy ;
+ int logmsg (char*,...) ;
+ int msnprintf (char*,int,char*,...) ;
+ int prevbounce ;
+ scalar_t__ prevpartno ;
+ int prevtestno ;
+ int sscanf (char*,char*,char*,int*) ;
+ char* strchr (char*,char) ;
+ int strcmp (char*,char*) ;
+ int strerror (int) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strstr (char const*,char*) ;
+ size_t swrite (int ,char const*,size_t) ;
+ char* test2file (int) ;
+ scalar_t__ use_gopher ;
+ int wait_ms (int) ;
 
 __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest *req)
 {
   ssize_t written;
   size_t count;
   const char *buffer;
-  char *ptr = NULL;
+  char *ptr = ((void*)0);
   FILE *stream;
-  char *cmd = NULL;
+  char *cmd = ((void*)0);
   size_t cmdsize = 0;
   FILE *dump;
   bool persistent = TRUE;
@@ -81,13 +81,13 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
 
   switch(req->rcmd) {
   default:
-  case RCMD_NORMALREQ:
-    break; /* continue with business as usual */
-  case RCMD_STREAM:
-#define STREAMTHIS "a string to stream 01234567890\n"
-    count = strlen(STREAMTHIS);
+  case 129:
+    break;
+  case 128:
+
+    count = strlen("a string to stream 01234567890\n");
     for(;;) {
-      written = swrite(sock, STREAMTHIS, count);
+      written = swrite(sock, "a string to stream 01234567890\n", count);
       if(got_exit_signal)
         return -1;
       if(written != (ssize_t)count) {
@@ -96,8 +96,8 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
       }
     }
     return -1;
-  case RCMD_IDLE:
-    /* Do nothing. Sit idle. Pretend it rains. */
+  case 130:
+
     return 0;
   }
 
@@ -108,12 +108,12 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
     char msgbuf[64];
 
     switch(req->testno) {
-    case DOCNUMBER_QUIT:
+    case 132:
       logmsg("Replying to QUIT");
       buffer = docquit;
       break;
-    case DOCNUMBER_WERULEZ:
-      /* we got a "friends?" question, reply back that we sure are */
+    case 131:
+
       logmsg("Identifying ourselves as friends");
       msnprintf(msgbuf, sizeof(msgbuf), "WE ROOLZ: %ld\r\n", (long)getpid());
       msglen = strlen(msgbuf);
@@ -125,7 +125,7 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
                   msglen, msgbuf);
       buffer = weare;
       break;
-    case DOCNUMBER_404:
+    case 133:
     default:
       logmsg("Replying to with a 404");
       buffer = doc404;
@@ -138,8 +138,8 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
     char partbuf[80];
     char *filename = test2file(req->testno);
 
-    /* select the <data> tag for "normal" requests and the <connect> one
-       for CONNECT requests (within the <reply> section) */
+
+
     const char *section = req->connect_request?"connect":"data";
 
     if(req->partno)
@@ -171,7 +171,7 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
       return -1;
     }
 
-    /* re-open the same file again */
+
     stream = fopen(filename, "rb");
     if(!stream) {
       error = errno;
@@ -181,7 +181,7 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
       return 0;
     }
     else {
-      /* get the custom server control "commands" */
+
       error = getpart(&cmd, &cmdsize, "reply", "postcmd", stream);
       fclose(stream);
       if(error) {
@@ -198,9 +198,9 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
     return -1;
   }
 
-  /* If the word 'swsclose' is present anywhere in the reply chunk, the
-     connection will be closed after the data has been sent to the requesting
-     client... */
+
+
+
   if(strstr(buffer, "swsclose") || !count || req->close) {
     persistent = FALSE;
     logmsg("connection close instruction \"swsclose\" found in response");
@@ -224,9 +224,9 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
 
   responsesize = count;
   do {
-    /* Ok, we send no more than N bytes at a time, just to make sure that
-       larger chunks are split up so that the client will need to do multiple
-       recv() calls to get it and thus we exercise that code better */
+
+
+
     size_t num = count;
     if(num > 20)
       num = 20;
@@ -242,7 +242,7 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
       break;
     }
 
-    /* write to file as well */
+
     fwrite(buffer, 1, (size_t)written, dump);
 
     count -= written;
@@ -298,7 +298,7 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
             quarters--;
             res = wait_ms(250);
             if(res) {
-              /* should not happen */
+
               error = errno;
               logmsg("wait_ms() failed with error: (%d) %s",
                      error, strerror(error));
@@ -315,7 +315,7 @@ __attribute__((used)) static int send_doc(curl_socket_t sock, struct httprequest
       if(ptr)
         ptr++;
       else
-        ptr = NULL;
+        ptr = ((void*)0);
     } while(ptr && *ptr);
   }
   free(cmd);

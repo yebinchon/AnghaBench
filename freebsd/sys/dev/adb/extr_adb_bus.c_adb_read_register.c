@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct adb_softc {int /*<<< orphan*/  sc_dev; } ;
-struct adb_devinfo {int /*<<< orphan*/  address; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADB_COMMAND_TALK ; 
- size_t adb_send_raw_packet_sync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void*) ; 
- struct adb_devinfo* device_get_ivars (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
- struct adb_softc* device_get_softc (int /*<<< orphan*/ ) ; 
 
-size_t 
-adb_read_register(device_t dev, u_char reg, void *data) 
+
+
+typedef int u_char ;
+struct adb_softc {int sc_dev; } ;
+struct adb_devinfo {int address; } ;
+typedef int device_t ;
+
+
+ int ADB_COMMAND_TALK ;
+ size_t adb_send_raw_packet_sync (int ,int ,int ,int ,int ,int *,void*) ;
+ struct adb_devinfo* device_get_ivars (int ) ;
+ int device_get_parent (int ) ;
+ struct adb_softc* device_get_softc (int ) ;
+
+size_t
+adb_read_register(device_t dev, u_char reg, void *data)
 {
-	struct adb_softc *sc;
-	struct adb_devinfo *dinfo;
-	size_t result;
+ struct adb_softc *sc;
+ struct adb_devinfo *dinfo;
+ size_t result;
 
-	dinfo = device_get_ivars(dev);
-	sc = device_get_softc(device_get_parent(dev));
+ dinfo = device_get_ivars(dev);
+ sc = device_get_softc(device_get_parent(dev));
 
-	result = adb_send_raw_packet_sync(sc->sc_dev,dinfo->address,
-	           ADB_COMMAND_TALK, reg, 0, NULL, data);
+ result = adb_send_raw_packet_sync(sc->sc_dev,dinfo->address,
+            ADB_COMMAND_TALK, reg, 0, ((void*)0), data);
 
-	return (result);
+ return (result);
 }

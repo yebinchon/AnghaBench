@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_12__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_12__ ;
+
+
 struct TYPE_17__ {scalar_t__ height; scalar_t__ width; } ;
-struct TYPE_24__ {scalar_t__ opaque; TYPE_1__ display_area; int /*<<< orphan*/  layer; } ;
-struct TYPE_23__ {TYPE_4__** input; int /*<<< orphan*/  input_num; } ;
-struct TYPE_16__ {int size; int /*<<< orphan*/  id; } ;
-struct TYPE_22__ {int set; TYPE_12__ hdr; TYPE_1__ dest_rect; scalar_t__ fullscreen; int /*<<< orphan*/  layer; } ;
-struct TYPE_18__ {int member_1; int /*<<< orphan*/  member_0; } ;
+struct TYPE_24__ {scalar_t__ opaque; TYPE_1__ display_area; int layer; } ;
+struct TYPE_23__ {TYPE_4__** input; int input_num; } ;
+struct TYPE_16__ {int size; int id; } ;
+struct TYPE_22__ {int set; TYPE_12__ hdr; TYPE_1__ dest_rect; scalar_t__ fullscreen; int layer; } ;
+struct TYPE_18__ {int member_1; int member_0; } ;
 struct TYPE_21__ {int member_1; TYPE_12__ hdr; TYPE_2__ member_0; } ;
 struct TYPE_20__ {TYPE_3__* format; } ;
-struct TYPE_19__ {int /*<<< orphan*/  encoding; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_4__ MMAL_PORT_T ;
-typedef  TYPE_5__ MMAL_PARAMETER_BOOLEAN_T ;
-typedef  TYPE_6__ MMAL_DISPLAYREGION_T ;
-typedef  TYPE_7__ MMAL_COMPONENT_T ;
-typedef  TYPE_8__ MMALCAM_BEHAVIOUR_T ;
+struct TYPE_19__ {int encoding; } ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_4__ MMAL_PORT_T ;
+typedef TYPE_5__ MMAL_PARAMETER_BOOLEAN_T ;
+typedef TYPE_6__ MMAL_DISPLAYREGION_T ;
+typedef TYPE_7__ MMAL_COMPONENT_T ;
+typedef TYPE_8__ MMALCAM_BEHAVIOUR_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERROR (char*,...) ; 
- int /*<<< orphan*/  LOG_INFO (char*) ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER ; 
- int MMAL_DISPLAY_SET_DEST_RECT ; 
- int MMAL_DISPLAY_SET_FULLSCREEN ; 
- int MMAL_DISPLAY_SET_LAYER ; 
- int /*<<< orphan*/  MMAL_EINVAL ; 
- int /*<<< orphan*/  MMAL_ENCODING_OPAQUE ; 
- int /*<<< orphan*/  MMAL_ENOSYS ; 
- int /*<<< orphan*/  MMAL_PARAMETER_DISPLAYREGION ; 
- int /*<<< orphan*/  MMAL_PARAMETER_ZERO_COPY ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- scalar_t__ enable_zero_copy () ; 
- int /*<<< orphan*/  mmal_component_create (int /*<<< orphan*/ ,TYPE_7__**) ; 
- int /*<<< orphan*/  mmal_component_destroy (TYPE_7__*) ; 
- int /*<<< orphan*/  mmal_component_enable (TYPE_7__*) ; 
- int /*<<< orphan*/  mmal_port_parameter_set (TYPE_4__*,TYPE_12__*) ; 
+
+ int LOG_ERROR (char*,...) ;
+ int LOG_INFO (char*) ;
+ int MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER ;
+ int MMAL_DISPLAY_SET_DEST_RECT ;
+ int MMAL_DISPLAY_SET_FULLSCREEN ;
+ int MMAL_DISPLAY_SET_LAYER ;
+ int MMAL_EINVAL ;
+ int MMAL_ENCODING_OPAQUE ;
+ int MMAL_ENOSYS ;
+ int MMAL_PARAMETER_DISPLAYREGION ;
+ int MMAL_PARAMETER_ZERO_COPY ;
+ int MMAL_SUCCESS ;
+ scalar_t__ enable_zero_copy () ;
+ int mmal_component_create (int ,TYPE_7__**) ;
+ int mmal_component_destroy (TYPE_7__*) ;
+ int mmal_component_enable (TYPE_7__*) ;
+ int mmal_port_parameter_set (TYPE_4__*,TYPE_12__*) ;
 
 __attribute__((used)) static MMAL_COMPONENT_T *test_video_render_create(MMALCAM_BEHAVIOUR_T *behaviour, MMAL_STATUS_T *status)
 {
    MMAL_COMPONENT_T *render = 0;
-   MMAL_PORT_T *render_port = NULL;
+   MMAL_PORT_T *render_port = ((void*)0);
 
    *status = mmal_component_create(MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER, &render);
    if(*status != MMAL_SUCCESS)
@@ -74,7 +74,7 @@ __attribute__((used)) static MMAL_COMPONENT_T *test_video_render_create(MMALCAM_
 
    render_port = render->input[0];
 
-   /* Give higher priority to the overlay layer */
+
    MMAL_DISPLAYREGION_T param;
    param.hdr.id = MMAL_PARAMETER_DISPLAYREGION;
    param.hdr.size = sizeof(MMAL_DISPLAYREGION_T);
@@ -111,7 +111,7 @@ __attribute__((used)) static MMAL_COMPONENT_T *test_video_render_create(MMALCAM_
       render_port->format->encoding = MMAL_ENCODING_OPAQUE;
    }
 
-   /* Enable component */
+
    *status = mmal_component_enable(render);
    if(*status)
    {

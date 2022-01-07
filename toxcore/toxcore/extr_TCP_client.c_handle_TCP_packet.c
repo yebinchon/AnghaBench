@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint16_t ;
-struct TYPE_6__ {TYPE_1__* connections; int /*<<< orphan*/  data_callback_object; int /*<<< orphan*/  (* data_callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int const*,int) ;int /*<<< orphan*/  onion_callback_object; int /*<<< orphan*/  (* onion_callback ) (int /*<<< orphan*/ ,int const*,int) ;int /*<<< orphan*/  oob_data_callback_object; int /*<<< orphan*/  (* oob_data_callback ) (int /*<<< orphan*/ ,int const*,int const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  ping_id; int /*<<< orphan*/  ping_response_id; int /*<<< orphan*/  status_callback_object; int /*<<< orphan*/  (* status_callback ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ;int /*<<< orphan*/  response_callback_object; int /*<<< orphan*/  (* response_callback ) (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;} ;
-struct TYPE_5__ {int status; int /*<<< orphan*/  number; int /*<<< orphan*/ * public_key; } ;
-typedef  TYPE_2__ TCP_Client_Connection ;
 
-/* Variables and functions */
- int const NUM_RESERVED_PORTS ; 
-#define  TCP_PACKET_CONNECTION_NOTIFICATION 134 
-#define  TCP_PACKET_DISCONNECT_NOTIFICATION 133 
-#define  TCP_PACKET_ONION_RESPONSE 132 
-#define  TCP_PACKET_OOB_RECV 131 
-#define  TCP_PACKET_PING 130 
-#define  TCP_PACKET_PONG 129 
-#define  TCP_PACKET_ROUTING_RESPONSE 128 
- int crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  send_ping_response (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,int const*,int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int const*,int) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int const*,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint16_t ;
+struct TYPE_6__ {TYPE_1__* connections; int data_callback_object; int (* data_callback ) (int ,int ,int,int const*,int) ;int onion_callback_object; int (* onion_callback ) (int ,int const*,int) ;int oob_data_callback_object; int (* oob_data_callback ) (int ,int const*,int const*,int ) ;int ping_id; int ping_response_id; int status_callback_object; int (* status_callback ) (int ,int ,int,int) ;int response_callback_object; int (* response_callback ) (int ,int,int *) ;} ;
+struct TYPE_5__ {int status; int number; int * public_key; } ;
+typedef TYPE_2__ TCP_Client_Connection ;
+
+
+ int const NUM_RESERVED_PORTS ;
+
+
+
+
+
+
+
+ int crypto_box_PUBLICKEYBYTES ;
+ int memcpy (int *,int const*,int) ;
+ int send_ping_response (TYPE_2__*) ;
+ int stub1 (int ,int,int *) ;
+ int stub2 (int ,int ,int,int) ;
+ int stub3 (int ,int ,int,int) ;
+ int stub4 (int ,int const*,int const*,int ) ;
+ int stub5 (int ,int const*,int) ;
+ int stub6 (int ,int ,int,int const*,int) ;
 
 __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, const uint8_t *data, uint16_t length)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
         return -1;
 
     switch (data[0]) {
-        case TCP_PACKET_ROUTING_RESPONSE: {
+        case 128: {
             if (length != 1 + 1 + crypto_box_PUBLICKEYBYTES)
                 return -1;
 
@@ -66,7 +66,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
             return 0;
         }
 
-        case TCP_PACKET_CONNECTION_NOTIFICATION: {
+        case 134: {
             if (length != 1 + 1)
                 return -1;
 
@@ -87,7 +87,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
             return 0;
         }
 
-        case TCP_PACKET_DISCONNECT_NOTIFICATION: {
+        case 133: {
             if (length != 1 + 1)
                 return -1;
 
@@ -111,7 +111,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
             return 0;
         }
 
-        case TCP_PACKET_PING: {
+        case 130: {
             if (length != 1 + sizeof(uint64_t))
                 return -1;
 
@@ -122,7 +122,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
             return 0;
         }
 
-        case TCP_PACKET_PONG: {
+        case 129: {
             if (length != 1 + sizeof(uint64_t))
                 return -1;
 
@@ -140,7 +140,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
             }
         }
 
-        case TCP_PACKET_OOB_RECV: {
+        case 131: {
             if (length <= 1 + crypto_box_PUBLICKEYBYTES)
                 return -1;
 
@@ -151,7 +151,7 @@ __attribute__((used)) static int handle_TCP_packet(TCP_Client_Connection *conn, 
             return 0;
         }
 
-        case TCP_PACKET_ONION_RESPONSE: {
+        case 132: {
             conn->onion_callback(conn->onion_callback_object, data + 1, length - 1);
             return 0;
         }

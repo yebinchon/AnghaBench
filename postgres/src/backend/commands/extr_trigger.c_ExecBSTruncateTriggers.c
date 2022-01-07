@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int numtriggers; TYPE_3__* triggers; int /*<<< orphan*/  trig_truncate_before_statement; } ;
-typedef  TYPE_1__ TriggerDesc ;
-struct TYPE_10__ {int tg_event; TYPE_3__* tg_trigger; int /*<<< orphan*/ * tg_newtable; int /*<<< orphan*/ * tg_oldtable; int /*<<< orphan*/ * tg_newslot; int /*<<< orphan*/ * tg_trigslot; int /*<<< orphan*/ * tg_newtuple; int /*<<< orphan*/ * tg_trigtuple; int /*<<< orphan*/  tg_relation; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ TriggerData ;
-struct TYPE_11__ {int /*<<< orphan*/  tgtype; } ;
-typedef  TYPE_3__ Trigger ;
-struct TYPE_12__ {int /*<<< orphan*/  ri_TrigInstrument; int /*<<< orphan*/  ri_TrigFunctions; int /*<<< orphan*/  ri_RelationDesc; TYPE_1__* ri_TrigDesc; } ;
-typedef  TYPE_4__ ResultRelInfo ;
-typedef  scalar_t__ HeapTuple ;
-typedef  int /*<<< orphan*/  EState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_E_R_I_E_TRIGGER_PROTOCOL_VIOLATED ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ ExecCallTriggerFunc (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetPerTupleMemoryContext (int /*<<< orphan*/ *) ; 
- int TRIGGER_EVENT_BEFORE ; 
- int TRIGGER_EVENT_TRUNCATE ; 
- int /*<<< orphan*/  TRIGGER_TYPE_BEFORE ; 
- int /*<<< orphan*/  TRIGGER_TYPE_MATCHES (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRIGGER_TYPE_STATEMENT ; 
- int /*<<< orphan*/  TRIGGER_TYPE_TRUNCATE ; 
- int /*<<< orphan*/  T_TriggerData ; 
- int /*<<< orphan*/  TriggerEnabled (int /*<<< orphan*/ *,TYPE_4__*,TYPE_3__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int numtriggers; TYPE_3__* triggers; int trig_truncate_before_statement; } ;
+typedef TYPE_1__ TriggerDesc ;
+struct TYPE_10__ {int tg_event; TYPE_3__* tg_trigger; int * tg_newtable; int * tg_oldtable; int * tg_newslot; int * tg_trigslot; int * tg_newtuple; int * tg_trigtuple; int tg_relation; int type; } ;
+typedef TYPE_2__ TriggerData ;
+struct TYPE_11__ {int tgtype; } ;
+typedef TYPE_3__ Trigger ;
+struct TYPE_12__ {int ri_TrigInstrument; int ri_TrigFunctions; int ri_RelationDesc; TYPE_1__* ri_TrigDesc; } ;
+typedef TYPE_4__ ResultRelInfo ;
+typedef scalar_t__ HeapTuple ;
+typedef int EState ;
+
+
+ int ERRCODE_E_R_I_E_TRIGGER_PROTOCOL_VIOLATED ;
+ int ERROR ;
+ scalar_t__ ExecCallTriggerFunc (TYPE_2__*,int,int ,int ,int ) ;
+ int GetPerTupleMemoryContext (int *) ;
+ int TRIGGER_EVENT_BEFORE ;
+ int TRIGGER_EVENT_TRUNCATE ;
+ int TRIGGER_TYPE_BEFORE ;
+ int TRIGGER_TYPE_MATCHES (int ,int ,int ,int ) ;
+ int TRIGGER_TYPE_STATEMENT ;
+ int TRIGGER_TYPE_TRUNCATE ;
+ int T_TriggerData ;
+ int TriggerEnabled (int *,TYPE_4__*,TYPE_3__*,int,int *,int *,int *) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*) ;
 
 void
 ExecBSTruncateTriggers(EState *estate, ResultRelInfo *relinfo)
 {
-	TriggerDesc *trigdesc;
-	int			i;
-	TriggerData LocTriggerData;
+ TriggerDesc *trigdesc;
+ int i;
+ TriggerData LocTriggerData;
 
-	trigdesc = relinfo->ri_TrigDesc;
+ trigdesc = relinfo->ri_TrigDesc;
 
-	if (trigdesc == NULL)
-		return;
-	if (!trigdesc->trig_truncate_before_statement)
-		return;
+ if (trigdesc == ((void*)0))
+  return;
+ if (!trigdesc->trig_truncate_before_statement)
+  return;
 
-	LocTriggerData.type = T_TriggerData;
-	LocTriggerData.tg_event = TRIGGER_EVENT_TRUNCATE |
-		TRIGGER_EVENT_BEFORE;
-	LocTriggerData.tg_relation = relinfo->ri_RelationDesc;
-	LocTriggerData.tg_trigtuple = NULL;
-	LocTriggerData.tg_newtuple = NULL;
-	LocTriggerData.tg_trigslot = NULL;
-	LocTriggerData.tg_newslot = NULL;
-	LocTriggerData.tg_oldtable = NULL;
-	LocTriggerData.tg_newtable = NULL;
+ LocTriggerData.type = T_TriggerData;
+ LocTriggerData.tg_event = TRIGGER_EVENT_TRUNCATE |
+  TRIGGER_EVENT_BEFORE;
+ LocTriggerData.tg_relation = relinfo->ri_RelationDesc;
+ LocTriggerData.tg_trigtuple = ((void*)0);
+ LocTriggerData.tg_newtuple = ((void*)0);
+ LocTriggerData.tg_trigslot = ((void*)0);
+ LocTriggerData.tg_newslot = ((void*)0);
+ LocTriggerData.tg_oldtable = ((void*)0);
+ LocTriggerData.tg_newtable = ((void*)0);
 
-	for (i = 0; i < trigdesc->numtriggers; i++)
-	{
-		Trigger    *trigger = &trigdesc->triggers[i];
-		HeapTuple	newtuple;
+ for (i = 0; i < trigdesc->numtriggers; i++)
+ {
+  Trigger *trigger = &trigdesc->triggers[i];
+  HeapTuple newtuple;
 
-		if (!TRIGGER_TYPE_MATCHES(trigger->tgtype,
-								  TRIGGER_TYPE_STATEMENT,
-								  TRIGGER_TYPE_BEFORE,
-								  TRIGGER_TYPE_TRUNCATE))
-			continue;
-		if (!TriggerEnabled(estate, relinfo, trigger, LocTriggerData.tg_event,
-							NULL, NULL, NULL))
-			continue;
+  if (!TRIGGER_TYPE_MATCHES(trigger->tgtype,
+          TRIGGER_TYPE_STATEMENT,
+          TRIGGER_TYPE_BEFORE,
+          TRIGGER_TYPE_TRUNCATE))
+   continue;
+  if (!TriggerEnabled(estate, relinfo, trigger, LocTriggerData.tg_event,
+       ((void*)0), ((void*)0), ((void*)0)))
+   continue;
 
-		LocTriggerData.tg_trigger = trigger;
-		newtuple = ExecCallTriggerFunc(&LocTriggerData,
-									   i,
-									   relinfo->ri_TrigFunctions,
-									   relinfo->ri_TrigInstrument,
-									   GetPerTupleMemoryContext(estate));
+  LocTriggerData.tg_trigger = trigger;
+  newtuple = ExecCallTriggerFunc(&LocTriggerData,
+            i,
+            relinfo->ri_TrigFunctions,
+            relinfo->ri_TrigInstrument,
+            GetPerTupleMemoryContext(estate));
 
-		if (newtuple)
-			ereport(ERROR,
-					(errcode(ERRCODE_E_R_I_E_TRIGGER_PROTOCOL_VIOLATED),
-					 errmsg("BEFORE STATEMENT trigger cannot return a value")));
-	}
+  if (newtuple)
+   ereport(ERROR,
+     (errcode(ERRCODE_E_R_I_E_TRIGGER_PROTOCOL_VIOLATED),
+      errmsg("BEFORE STATEMENT trigger cannot return a value")));
+ }
 }

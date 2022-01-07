@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ RegisterEventSourceA (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ ms_eventlog ; 
- int /*<<< orphan*/  warning (char*,int /*<<< orphan*/ ) ; 
+ int GetLastError () ;
+ scalar_t__ RegisterEventSourceA (int *,char const*) ;
+ scalar_t__ ms_eventlog ;
+ int warning (char*,int ) ;
 
 void openlog(const char *ident, int logopt, int facility)
 {
-	if (ms_eventlog)
-		return;
+ if (ms_eventlog)
+  return;
 
-	ms_eventlog = RegisterEventSourceA(NULL, ident);
+ ms_eventlog = RegisterEventSourceA(((void*)0), ident);
 
-	if (!ms_eventlog)
-		warning("RegisterEventSource() failed: %lu", GetLastError());
+ if (!ms_eventlog)
+  warning("RegisterEventSource() failed: %lu", GetLastError());
 }

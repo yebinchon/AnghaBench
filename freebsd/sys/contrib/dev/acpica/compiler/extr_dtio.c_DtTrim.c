@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ACPI_SIZE ;
 
-/* Variables and functions */
- int ACPI_PTR_DIFF (char*,char*) ; 
- char* UtLocalCacheCalloc (int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+
+
+typedef int ACPI_SIZE ;
+
+
+ int ACPI_PTR_DIFF (char*,char*) ;
+ char* UtLocalCacheCalloc (int) ;
+ int strcmp (char*,char*) ;
+ int strlen (char*) ;
+ int strncpy (char*,char*,int) ;
 
 __attribute__((used)) static char *
 DtTrim (
-    char                    *String)
+    char *String)
 {
-    char                    *Start;
-    char                    *End;
-    char                    *ReturnString;
-    ACPI_SIZE               Length;
+    char *Start;
+    char *End;
+    char *ReturnString;
+    ACPI_SIZE Length;
 
 
-    /* Skip lines that start with a space */
+
 
     if (*String == 0 || !strcmp (String, " "))
     {
@@ -37,19 +37,19 @@ DtTrim (
         return (ReturnString);
     }
 
-    /* Setup pointers to start and end of input string */
+
 
     Start = String;
     End = String + strlen (String) - 1;
 
-    /* Find first non-whitespace character */
+
 
     while ((Start <= End) && ((*Start == ' ') || (*Start == '\t')))
     {
         Start++;
     }
 
-    /* Find last non-space character */
+
 
     while (End >= Start)
     {
@@ -67,7 +67,7 @@ DtTrim (
         End--;
     }
 
-    /* Remove any quotes around the string */
+
 
     if (*Start == '\"')
     {
@@ -78,7 +78,7 @@ DtTrim (
         End--;
     }
 
-    /* Create the trimmed return string */
+
 
     Length = ACPI_PTR_DIFF (End, Start) + 1;
     ReturnString = UtLocalCacheCalloc (Length + 1);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned int ngamma_tests; int* gammas; int /*<<< orphan*/  use_input_precision; int /*<<< orphan*/  interlace_type; int /*<<< orphan*/  test_tRNS; int /*<<< orphan*/  test_lbg_gamma_transform; } ;
-typedef  TYPE_1__ png_modifier ;
-typedef  int /*<<< orphan*/  png_byte ;
 
-/* Variables and functions */
- scalar_t__ fail (TYPE_1__*) ; 
- int /*<<< orphan*/  gamma_transform_test (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ next_format (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned int ngamma_tests; int* gammas; int use_input_precision; int interlace_type; int test_tRNS; int test_lbg_gamma_transform; } ;
+typedef TYPE_1__ png_modifier ;
+typedef int png_byte ;
+
+
+ scalar_t__ fail (TYPE_1__*) ;
+ int gamma_transform_test (TYPE_1__*,int ,int ,unsigned int,int ,int,int,int ,int ,int ) ;
+ scalar_t__ next_format (int *,int *,unsigned int*,int ,int ) ;
 
 __attribute__((used)) static void perform_gamma_transform_tests(png_modifier *pm)
 {
@@ -35,8 +35,8 @@ __attribute__((used)) static void perform_gamma_transform_tests(png_modifier *pm
          if (i != j)
          {
             gamma_transform_test(pm, colour_type, bit_depth, palette_number,
-               pm->interlace_type, 1/pm->gammas[i], pm->gammas[j], 0/*sBIT*/,
-               pm->use_input_precision, 0 /*do not scale16*/);
+               pm->interlace_type, 1/pm->gammas[i], pm->gammas[j], 0 ,
+               pm->use_input_precision, 0 );
 
             if (fail(pm))
                return;

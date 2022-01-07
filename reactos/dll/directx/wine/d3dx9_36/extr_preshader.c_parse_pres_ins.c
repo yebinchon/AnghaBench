@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int offset; int /*<<< orphan*/  table; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int offset; int table; } ;
 struct TYPE_6__ {scalar_t__ table; } ;
-struct TYPE_8__ {unsigned int opcode; unsigned int input_count; TYPE_2__ reg; scalar_t__ func_all_comps; TYPE_1__ index_reg; int /*<<< orphan*/  mnem; } ;
+struct TYPE_8__ {unsigned int opcode; unsigned int input_count; TYPE_2__ reg; scalar_t__ func_all_comps; TYPE_1__ index_reg; int mnem; } ;
 struct d3dx_pres_ins {unsigned int component_count; int scalar_op; unsigned int op; TYPE_3__ output; TYPE_3__* inputs; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_3__*) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- unsigned int PRES_NCOMP_MASK ; 
- unsigned int PRES_OPCODE_MASK ; 
- unsigned int PRES_OPCODE_SHIFT ; 
- scalar_t__ PRES_REGTAB_COUNT ; 
- unsigned int PRES_SCALAR_FLAG ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ get_reg_offset (int /*<<< orphan*/ ,int) ; 
- unsigned int* parse_pres_arg (unsigned int*,unsigned int,TYPE_3__*) ; 
- TYPE_3__* pres_op_info ; 
+
+ unsigned int ARRAY_SIZE (TYPE_3__*) ;
+ int FIXME (char*,...) ;
+ unsigned int PRES_NCOMP_MASK ;
+ unsigned int PRES_OPCODE_MASK ;
+ unsigned int PRES_OPCODE_SHIFT ;
+ scalar_t__ PRES_REGTAB_COUNT ;
+ unsigned int PRES_SCALAR_FLAG ;
+ int WARN (char*) ;
+ scalar_t__ get_reg_offset (int ,int) ;
+ unsigned int* parse_pres_arg (unsigned int*,unsigned int,TYPE_3__*) ;
+ TYPE_3__* pres_op_info ;
 
 __attribute__((used)) static unsigned int *parse_pres_ins(unsigned int *ptr, unsigned int count, struct d3dx_pres_ins *ins)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static unsigned int *parse_pres_ins(unsigned int *ptr, uns
     if (count < 2)
     {
         WARN("Byte code buffer ends unexpectedly.\n");
-        return NULL;
+        return ((void*)0);
     }
 
     ins_raw = *ptr++;
@@ -51,7 +51,7 @@ __attribute__((used)) static unsigned int *parse_pres_ins(unsigned int *ptr, uns
     if (ins->component_count < 1 || ins->component_count > 4)
     {
         FIXME("Unsupported number of components %u.\n", ins->component_count);
-        return NULL;
+        return ((void*)0);
     }
     input_count = *ptr++;
     count -= 2;
@@ -61,14 +61,14 @@ __attribute__((used)) static unsigned int *parse_pres_ins(unsigned int *ptr, uns
     if (i == ARRAY_SIZE(pres_op_info))
     {
         FIXME("Unknown opcode %#x, input_count %u, raw %#x.\n", ins_code, input_count, ins_raw);
-        return NULL;
+        return ((void*)0);
     }
     ins->op = i;
     if (input_count > ARRAY_SIZE(ins->inputs))
     {
         FIXME("Actual input args count %u exceeds inputs array size, instruction %s.\n", input_count,
                 pres_op_info[i].mnem);
-        return NULL;
+        return ((void*)0);
     }
     for (i = 0; i < input_count; ++i)
     {
@@ -76,7 +76,7 @@ __attribute__((used)) static unsigned int *parse_pres_ins(unsigned int *ptr, uns
 
         p = parse_pres_arg(ptr, count, &ins->inputs[i]);
         if (!p)
-            return NULL;
+            return ((void*)0);
         count -= p - ptr;
         ptr = p;
     }
@@ -84,14 +84,14 @@ __attribute__((used)) static unsigned int *parse_pres_ins(unsigned int *ptr, uns
     if (ins->output.index_reg.table != PRES_REGTAB_COUNT)
     {
         FIXME("Relative addressing in output register not supported.\n");
-        return NULL;
+        return ((void*)0);
     }
     if (get_reg_offset(ins->output.reg.table, ins->output.reg.offset
             + (pres_op_info[ins->op].func_all_comps ? 0 : ins->component_count - 1))
             != get_reg_offset(ins->output.reg.table, ins->output.reg.offset))
     {
         FIXME("Instructions outputting multiple registers are not supported.\n");
-        return NULL;
+        return ((void*)0);
     }
     return ptr;
 }

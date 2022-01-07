@@ -1,122 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum audio_driver_enum { ____Placeholder_audio_driver_enum } audio_driver_enum ;
 
-/* Variables and functions */
-#define  AUDIO_AL 156 
-#define  AUDIO_ALSA 155 
-#define  AUDIO_ALSATHREAD 154 
-#define  AUDIO_AUDIOIO 153 
-#define  AUDIO_COREAUDIO 152 
-#define  AUDIO_COREAUDIO3 151 
-#define  AUDIO_CTR 150 
- int AUDIO_DEFAULT_DRIVER ; 
-#define  AUDIO_DSOUND 149 
-#define  AUDIO_EXT 148 
-#define  AUDIO_JACK 147 
-#define  AUDIO_NULL 146 
-#define  AUDIO_OSS 145 
-#define  AUDIO_PS2 144 
-#define  AUDIO_PS3 143 
-#define  AUDIO_PSP 142 
-#define  AUDIO_PULSE 141 
-#define  AUDIO_ROAR 140 
-#define  AUDIO_RSOUND 139 
-#define  AUDIO_RWEBAUDIO 138 
-#define  AUDIO_SDL 137 
-#define  AUDIO_SDL2 136 
-#define  AUDIO_SL 135 
-#define  AUDIO_SWITCH 134 
-#define  AUDIO_TINYALSA 133 
-#define  AUDIO_WASAPI 132 
-#define  AUDIO_WII 131 
-#define  AUDIO_WIIU 130 
-#define  AUDIO_XAUDIO 129 
-#define  AUDIO_XENON360 128 
 
+
+
+typedef enum audio_driver_enum { ____Placeholder_audio_driver_enum } audio_driver_enum ;
+ int AUDIO_DEFAULT_DRIVER ;
 const char *config_get_default_audio(void)
 {
    enum audio_driver_enum default_driver = AUDIO_DEFAULT_DRIVER;
 
    switch (default_driver)
    {
-      case AUDIO_RSOUND:
+      case 139:
          return "rsound";
-      case AUDIO_AUDIOIO:
+      case 153:
          return "audioio";
-      case AUDIO_OSS:
+      case 145:
          return "oss";
-      case AUDIO_ALSA:
+      case 155:
          return "alsa";
-      case AUDIO_ALSATHREAD:
+      case 154:
          return "alsathread";
-      case AUDIO_TINYALSA:
+      case 133:
          return "tinyalsa";
-      case AUDIO_ROAR:
+      case 140:
          return "roar";
-      case AUDIO_COREAUDIO:
+      case 152:
          return "coreaudio";
-      case AUDIO_COREAUDIO3:
+      case 151:
          return "coreaudio3";
-      case AUDIO_AL:
+      case 156:
          return "openal";
-      case AUDIO_SL:
+      case 135:
          return "opensl";
-      case AUDIO_SDL:
+      case 137:
          return "sdl";
-      case AUDIO_SDL2:
+      case 136:
          return "sdl2";
-      case AUDIO_DSOUND:
+      case 149:
          return "dsound";
-      case AUDIO_WASAPI:
+      case 132:
          return "wasapi";
-      case AUDIO_XAUDIO:
+      case 129:
          return "xaudio";
-      case AUDIO_PULSE:
+      case 141:
          return "pulse";
-      case AUDIO_EXT:
+      case 148:
          return "ext";
-      case AUDIO_XENON360:
+      case 128:
          return "xenon360";
-      case AUDIO_PS3:
+      case 143:
          return "ps3";
-      case AUDIO_WII:
+      case 131:
          return "gx";
-      case AUDIO_WIIU:
+      case 130:
          return "AX";
-      case AUDIO_PSP:
-#if defined(VITA)
-         return "vita";
-#elif defined(ORBIS)
-         return "orbis";
-#else
+      case 142:
+
+
+
+
+
          return "psp";
-#endif
-      case AUDIO_PS2:
+
+      case 144:
          return "ps2";
-      case AUDIO_CTR:
+      case 150:
          return "dsp";
-      case AUDIO_SWITCH:
-#if defined(HAVE_LIBNX)
-         return "switch_audren_thread";
-#else
+      case 134:
+
+
+
          return "switch";
-#endif
-      case AUDIO_RWEBAUDIO:
+
+      case 138:
          return "rwebaudio";
-      case AUDIO_JACK:
+      case 147:
          return "jack";
-      case AUDIO_NULL:
+      case 146:
          break;
    }
 

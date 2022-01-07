@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_2__* priv_data; } ;
-struct TYPE_8__ {int width; int height; int /*<<< orphan*/  tilebuffer; TYPE_1__* refframe; int /*<<< orphan*/  gbc; } ;
+struct TYPE_8__ {int width; int height; int tilebuffer; TYPE_1__* refframe; int gbc; } ;
 struct TYPE_7__ {int* linesize; scalar_t__* data; } ;
-typedef  TYPE_2__ TDSCContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_2__ TDSCContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int MKTAG (char,char,char,char) ; 
- int TDSB_HEADER_SIZE ; 
- int /*<<< orphan*/  av_image_copy_plane (scalar_t__,int,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_reallocp (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_get_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int tdsc_decode_jpeg_tile (TYPE_3__*,int,int,int,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int MKTAG (char,char,char,char) ;
+ int TDSB_HEADER_SIZE ;
+ int av_image_copy_plane (scalar_t__,int,int ,int,int,int) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int av_reallocp (int *,int) ;
+ int bytestream2_get_buffer (int *,int ,int) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_skip (int *,int) ;
+ int tdsc_decode_jpeg_tile (TYPE_3__*,int,int,int,int,int) ;
 
 __attribute__((used)) static int tdsc_decode_tiles(AVCodecContext *avctx, int number_tiles)
 {
     TDSCContext *ctx = avctx->priv_data;
     int i;
 
-    /* Iterate over the number of tiles */
+
     for (i = 0; i < number_tiles; i++) {
         int tile_size;
         int tile_mode;
@@ -58,7 +58,7 @@ __attribute__((used)) static int tdsc_decode_tiles(AVCodecContext *avctx, int nu
             return AVERROR_INVALIDDATA;
 
         tile_mode = bytestream2_get_le32(&ctx->gbc);
-        bytestream2_skip(&ctx->gbc, 4); // unknown
+        bytestream2_skip(&ctx->gbc, 4);
         x = bytestream2_get_le32(&ctx->gbc);
         y = bytestream2_get_le32(&ctx->gbc);
         w = bytestream2_get_le32(&ctx->gbc) - x;
@@ -83,12 +83,12 @@ __attribute__((used)) static int tdsc_decode_tiles(AVCodecContext *avctx, int nu
         bytestream2_get_buffer(&ctx->gbc, ctx->tilebuffer, tile_size);
 
         if (tile_mode == MKTAG('G','E','P','J')) {
-            /* Decode JPEG tile and copy it in the reference frame */
+
             ret = tdsc_decode_jpeg_tile(avctx, tile_size, x, y, w, h);
             if (ret < 0)
                 return ret;
         } else if (tile_mode == MKTAG(' ','W','A','R')) {
-            /* Just copy the buffer to output */
+
             av_image_copy_plane(ctx->refframe->data[0] + x * 3 +
                                 ctx->refframe->linesize[0] * y,
                                 ctx->refframe->linesize[0], ctx->tilebuffer,

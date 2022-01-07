@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned char* buf; } ;
-typedef  TYPE_1__ loopargs_t ;
+typedef TYPE_1__ loopargs_t ;
 
-/* Variables and functions */
- scalar_t__ COND (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DES_ENCRYPT ; 
- int /*<<< orphan*/  DES_ede3_cbc_encrypt (unsigned char*,unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DES_iv ; 
- size_t D_EDE3_DES ; 
- int /*<<< orphan*/ ** c ; 
- int /*<<< orphan*/ * lengths ; 
- int /*<<< orphan*/  sch ; 
- int /*<<< orphan*/  sch2 ; 
- int /*<<< orphan*/  sch3 ; 
- size_t testnum ; 
+
+ scalar_t__ COND (int ) ;
+ int DES_ENCRYPT ;
+ int DES_ede3_cbc_encrypt (unsigned char*,unsigned char*,int ,int *,int *,int *,int *,int ) ;
+ int DES_iv ;
+ size_t D_EDE3_DES ;
+ int ** c ;
+ int * lengths ;
+ int sch ;
+ int sch2 ;
+ int sch3 ;
+ size_t testnum ;
 
 __attribute__((used)) static int DES_ede3_cbc_encrypt_loop(void *args)
 {

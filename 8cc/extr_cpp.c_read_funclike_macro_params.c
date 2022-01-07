@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ kind; char* sval; } ;
-typedef  TYPE_1__ Token ;
-typedef  int /*<<< orphan*/  Map ;
+typedef TYPE_1__ Token ;
+typedef int Map ;
 
-/* Variables and functions */
- char KELLIPSIS ; 
- scalar_t__ TIDENT ; 
- scalar_t__ TNEWLINE ; 
- int /*<<< orphan*/  errort (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  expect (char) ; 
- scalar_t__ is_keyword (TYPE_1__*,char) ; 
- TYPE_1__* lex () ; 
- int /*<<< orphan*/  make_macro_token (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  map_put (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ next (char) ; 
- int /*<<< orphan*/  tok2s (TYPE_1__*) ; 
+
+ char KELLIPSIS ;
+ scalar_t__ TIDENT ;
+ scalar_t__ TNEWLINE ;
+ int errort (TYPE_1__*,char*,...) ;
+ int expect (char) ;
+ scalar_t__ is_keyword (TYPE_1__*,char) ;
+ TYPE_1__* lex () ;
+ int make_macro_token (int ,int) ;
+ int map_put (int *,char*,int ) ;
+ scalar_t__ next (char) ;
+ int tok2s (TYPE_1__*) ;
 
 __attribute__((used)) static bool read_funclike_macro_params(Token *name, Map *param) {
     int pos = 0;
     for (;;) {
         Token *tok = lex();
         if (is_keyword(tok, ')'))
-            return false;
+            return 0;
         if (pos) {
             if (!is_keyword(tok, ','))
                 errort(tok, ", expected, but got %s", tok2s(tok));
@@ -42,18 +42,18 @@ __attribute__((used)) static bool read_funclike_macro_params(Token *name, Map *p
         if (tok->kind == TNEWLINE)
             errort(name, "missing ')' in macro parameter list");
         if (is_keyword(tok, KELLIPSIS)) {
-            map_put(param, "__VA_ARGS__", make_macro_token(pos++, true));
+            map_put(param, "__VA_ARGS__", make_macro_token(pos++, 1));
             expect(')');
-            return true;
+            return 1;
         }
         if (tok->kind != TIDENT)
             errort(tok, "identifier expected, but got %s", tok2s(tok));
         char *arg = tok->sval;
         if (next(KELLIPSIS)) {
             expect(')');
-            map_put(param, arg, make_macro_token(pos++, true));
-            return true;
+            map_put(param, arg, make_macro_token(pos++, 1));
+            return 1;
         }
-        map_put(param, arg, make_macro_token(pos++, false));
+        map_put(param, arg, make_macro_token(pos++, 0));
     }
 }

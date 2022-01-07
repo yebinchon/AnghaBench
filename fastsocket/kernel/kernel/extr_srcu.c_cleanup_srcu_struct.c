@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct srcu_struct {int /*<<< orphan*/ * per_cpu_ref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  free_percpu (int /*<<< orphan*/ *) ; 
- int srcu_readers_active (struct srcu_struct*) ; 
+
+
+
+struct srcu_struct {int * per_cpu_ref; } ;
+
+
+ int WARN_ON (int) ;
+ int free_percpu (int *) ;
+ int srcu_readers_active (struct srcu_struct*) ;
 
 void cleanup_srcu_struct(struct srcu_struct *sp)
 {
-	int sum;
+ int sum;
 
-	sum = srcu_readers_active(sp);
-	WARN_ON(sum);  /* Leakage unless caller handles error. */
-	if (sum != 0)
-		return;
-	free_percpu(sp->per_cpu_ref);
-	sp->per_cpu_ref = NULL;
+ sum = srcu_readers_active(sp);
+ WARN_ON(sum);
+ if (sum != 0)
+  return;
+ free_percpu(sp->per_cpu_ref);
+ sp->per_cpu_ref = ((void*)0);
 }

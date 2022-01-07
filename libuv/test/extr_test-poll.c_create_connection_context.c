@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_os_sock_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uv_os_sock_t ;
 struct TYPE_6__ {TYPE_1__* data; } ;
 struct TYPE_7__ {TYPE_1__* data; } ;
-struct TYPE_5__ {int is_server_connection; TYPE_2__ timer_handle; scalar_t__ open_handles; TYPE_3__ poll_handle; scalar_t__ got_disconnect; scalar_t__ sent_fin; scalar_t__ got_fin; scalar_t__ delayed_events; scalar_t__ events; scalar_t__ sent; scalar_t__ read; int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ connection_context_t ;
+struct TYPE_5__ {int is_server_connection; TYPE_2__ timer_handle; scalar_t__ open_handles; TYPE_3__ poll_handle; scalar_t__ got_disconnect; scalar_t__ sent_fin; scalar_t__ got_fin; scalar_t__ delayed_events; scalar_t__ events; scalar_t__ sent; scalar_t__ read; int sock; } ;
+typedef TYPE_1__ connection_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int uv_poll_init_socket (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int uv_timer_init (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ malloc (int) ;
+ int uv_default_loop () ;
+ int uv_poll_init_socket (int ,TYPE_3__*,int ) ;
+ int uv_timer_init (int ,TYPE_2__*) ;
 
 __attribute__((used)) static connection_context_t* create_connection_context(
     uv_os_sock_t sock, int is_server_connection) {
@@ -32,7 +32,7 @@ __attribute__((used)) static connection_context_t* create_connection_context(
   connection_context_t* context;
 
   context = (connection_context_t*) malloc(sizeof *context);
-  ASSERT(context != NULL);
+  ASSERT(context != ((void*)0));
 
   context->sock = sock;
   context->is_server_connection = is_server_connection;

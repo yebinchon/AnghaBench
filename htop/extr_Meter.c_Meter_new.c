@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct ProcessList_ {int dummy; } ;
-struct TYPE_11__ {int h; int param; int /*<<< orphan*/  caption; int /*<<< orphan*/  total; void* values; struct ProcessList_* pl; } ;
-struct TYPE_10__ {int curItems; int maxItems; int /*<<< orphan*/  defaultMode; int /*<<< orphan*/  caption; int /*<<< orphan*/  total; } ;
-typedef  TYPE_1__ MeterClass ;
-typedef  TYPE_2__ Meter ;
+struct TYPE_11__ {int h; int param; int caption; int total; void* values; struct ProcessList_* pl; } ;
+struct TYPE_10__ {int curItems; int maxItems; int defaultMode; int caption; int total; } ;
+typedef TYPE_1__ MeterClass ;
+typedef TYPE_2__ Meter ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Meter_init (TYPE_2__*) ; 
- scalar_t__ Meter_initFn (TYPE_2__*) ; 
- int /*<<< orphan*/  Meter_setMode (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Object_setClass (TYPE_2__*,TYPE_1__*) ; 
- void* xCalloc (int,int) ; 
- int /*<<< orphan*/  xStrdup (int /*<<< orphan*/ ) ; 
+
+ int Meter_init (TYPE_2__*) ;
+ scalar_t__ Meter_initFn (TYPE_2__*) ;
+ int Meter_setMode (TYPE_2__*,int ) ;
+ int Object_setClass (TYPE_2__*,TYPE_1__*) ;
+ void* xCalloc (int,int) ;
+ int xStrdup (int ) ;
 
 Meter* Meter_new(struct ProcessList_* pl, int param, MeterClass* type) {
    Meter* this = xCalloc(1, sizeof(Meter));

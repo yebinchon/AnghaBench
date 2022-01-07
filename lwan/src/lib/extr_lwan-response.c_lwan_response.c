@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int (* callback ) (struct lwan_request*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  data; } ;
-struct lwan_response {int /*<<< orphan*/  buffer; TYPE_1__ stream; int /*<<< orphan*/  mime_type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* callback ) (struct lwan_request*,int ) ;int data; } ;
+struct lwan_response {int buffer; TYPE_1__ stream; int mime_type; } ;
 struct lwan_request {int flags; struct lwan_response response; } ;
 struct iovec {char* iov_base; size_t iov_len; } ;
-typedef  int /*<<< orphan*/  headers ;
-typedef  enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
+typedef int headers ;
+typedef enum lwan_http_status { ____Placeholder_lwan_http_status } lwan_http_status ;
 
-/* Variables and functions */
- int DEFAULT_HEADERS_SIZE ; 
- int HTTP_CLASS__CLIENT_ERROR ; 
- int HTTP_INTERNAL_ERROR ; 
- scalar_t__ LIKELY (int (*) (struct lwan_request*,int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  N_ELEMENTS (struct iovec*) ; 
- int RESPONSE_CHUNKED_ENCODING ; 
- int RESPONSE_SENT_HEADERS ; 
- int RESPONSE_STREAM ; 
- scalar_t__ UNLIKELY (int) ; 
- int /*<<< orphan*/  has_response_body (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_request (struct lwan_request*,int) ; 
- int /*<<< orphan*/  lwan_default_response (struct lwan_request*,int) ; 
- size_t lwan_prepare_response_header (struct lwan_request*,int,char*,int) ; 
- int /*<<< orphan*/  lwan_request_get_method (struct lwan_request*) ; 
- int /*<<< orphan*/  lwan_response_send_chunk (struct lwan_request*) ; 
- int /*<<< orphan*/  lwan_send (struct lwan_request*,char*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_status_debug (char*) ; 
- char* lwan_strbuf_get_buffer (int /*<<< orphan*/ ) ; 
- size_t lwan_strbuf_get_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_strbuf_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lwan_writev (struct lwan_request*,struct iovec*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t const) ; 
- int stub1 (struct lwan_request*,int /*<<< orphan*/ ) ; 
+
+ int DEFAULT_HEADERS_SIZE ;
+ int HTTP_CLASS__CLIENT_ERROR ;
+ int HTTP_INTERNAL_ERROR ;
+ scalar_t__ LIKELY (int (*) (struct lwan_request*,int )) ;
+ int N_ELEMENTS (struct iovec*) ;
+ int RESPONSE_CHUNKED_ENCODING ;
+ int RESPONSE_SENT_HEADERS ;
+ int RESPONSE_STREAM ;
+ scalar_t__ UNLIKELY (int) ;
+ int has_response_body (int ,int) ;
+ int log_request (struct lwan_request*,int) ;
+ int lwan_default_response (struct lwan_request*,int) ;
+ size_t lwan_prepare_response_header (struct lwan_request*,int,char*,int) ;
+ int lwan_request_get_method (struct lwan_request*) ;
+ int lwan_response_send_chunk (struct lwan_request*) ;
+ int lwan_send (struct lwan_request*,char*,size_t,int ) ;
+ int lwan_status_debug (char*) ;
+ char* lwan_strbuf_get_buffer (int ) ;
+ size_t lwan_strbuf_get_length (int ) ;
+ int lwan_strbuf_reset (int ) ;
+ int lwan_writev (struct lwan_request*,struct iovec*,int ) ;
+ int memcpy (char*,char*,size_t const) ;
+ int stub1 (struct lwan_request*,int ) ;
 
 void lwan_response(struct lwan_request *request, enum lwan_http_status status)
 {
@@ -49,7 +49,7 @@ void lwan_response(struct lwan_request *request, enum lwan_http_status status)
     char headers[DEFAULT_HEADERS_SIZE];
 
     if (UNLIKELY(request->flags & RESPONSE_CHUNKED_ENCODING)) {
-        /* Send last, 0-sized chunk */
+
         lwan_strbuf_reset(response->buffer);
         lwan_response_send_chunk(request);
         log_request(request, status);
@@ -62,8 +62,8 @@ void lwan_response(struct lwan_request *request, enum lwan_http_status status)
     }
 
     if (UNLIKELY(!response->mime_type)) {
-        /* Requests without a MIME Type are errors from handlers that should
-           just be handled by lwan_default_response().  */
+
+
         lwan_default_response(request, status);
         return;
     }
@@ -100,9 +100,9 @@ void lwan_response(struct lwan_request *request, enum lwan_http_status status)
     char *resp_buf = lwan_strbuf_get_buffer(response->buffer);
     const size_t resp_len = lwan_strbuf_get_length(response->buffer);
     if (sizeof(headers) - header_len > resp_len) {
-        /* writev() has to allocate, copy, and validate the response vector,
-         * so use send() for responses small enough to fit the headers
-         * buffer.  On Linux, this is ~10% faster.  */
+
+
+
         memcpy(headers + header_len, resp_buf, resp_len);
         lwan_send(request, headers, header_len + resp_len, 0);
     } else {

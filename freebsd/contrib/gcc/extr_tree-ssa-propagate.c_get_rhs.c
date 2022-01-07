@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
 
-/* Variables and functions */
-#define  COND_EXPR 133 
- int /*<<< orphan*/  COND_EXPR_COND (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GOTO_DESTINATION (int /*<<< orphan*/ ) ; 
-#define  GOTO_EXPR 132 
-#define  LABEL_EXPR 131 
- int /*<<< orphan*/  LABEL_EXPR_LABEL (int /*<<< orphan*/ ) ; 
-#define  MODIFY_EXPR 130 
-#define  RETURN_EXPR 129 
- int /*<<< orphan*/  SWITCH_COND (int /*<<< orphan*/ ) ; 
-#define  SWITCH_EXPR 128 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int WITH_SIZE_EXPR ; 
+
+
+
+typedef int tree ;
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+
+
+
+ int COND_EXPR_COND (int ) ;
+ int GOTO_DESTINATION (int ) ;
+
+
+ int LABEL_EXPR_LABEL (int ) ;
+
+
+ int SWITCH_COND (int ) ;
+
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int WITH_SIZE_EXPR ;
 
 tree
 get_rhs (tree stmt)
@@ -35,26 +35,26 @@ get_rhs (tree stmt)
 
   switch (code)
     {
-    case RETURN_EXPR:
+    case 129:
       stmt = TREE_OPERAND (stmt, 0);
-      if (!stmt || TREE_CODE (stmt) != MODIFY_EXPR)
-	return stmt;
-      /* FALLTHRU */
+      if (!stmt || TREE_CODE (stmt) != 130)
+ return stmt;
 
-    case MODIFY_EXPR:
+
+    case 130:
       stmt = TREE_OPERAND (stmt, 1);
       if (TREE_CODE (stmt) == WITH_SIZE_EXPR)
-	return TREE_OPERAND (stmt, 0);
+ return TREE_OPERAND (stmt, 0);
       else
-	return stmt;
+ return stmt;
 
-    case COND_EXPR:
+    case 133:
       return COND_EXPR_COND (stmt);
-    case SWITCH_EXPR:
+    case 128:
       return SWITCH_COND (stmt);
-    case GOTO_EXPR:
+    case 132:
       return GOTO_DESTINATION (stmt);
-    case LABEL_EXPR:
+    case 131:
       return LABEL_EXPR_LABEL (stmt);
 
     default:

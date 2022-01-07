@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int flags; scalar_t__ db; } ;
-typedef  TYPE_1__ sqlite3_value ;
+typedef TYPE_1__ sqlite3_value ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMCELLSIZE ; 
- int MEM_Blob ; 
- int MEM_Dyn ; 
- int MEM_Ephem ; 
- int MEM_Static ; 
- int MEM_Str ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3ValueFree (TYPE_1__*) ; 
- scalar_t__ sqlite3VdbeMemMakeWriteable (TYPE_1__*) ; 
- TYPE_1__* sqlite3_malloc (int) ; 
+
+ int MEMCELLSIZE ;
+ int MEM_Blob ;
+ int MEM_Dyn ;
+ int MEM_Ephem ;
+ int MEM_Static ;
+ int MEM_Str ;
+ scalar_t__ SQLITE_OK ;
+ int memcpy (TYPE_1__*,TYPE_1__ const*,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3ValueFree (TYPE_1__*) ;
+ scalar_t__ sqlite3VdbeMemMakeWriteable (TYPE_1__*) ;
+ TYPE_1__* sqlite3_malloc (int) ;
 
 sqlite3_value *sqlite3_value_dup(const sqlite3_value *pOrig){
   sqlite3_value *pNew;

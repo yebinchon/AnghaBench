@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct thread_data {int dummy; } ;
 struct pkg_data {int dummy; } ;
 struct core_data {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  packages; int /*<<< orphan*/  cores; int /*<<< orphan*/  threads; } ;
+struct TYPE_2__ {int packages; int cores; int threads; } ;
 
-/* Variables and functions */
- TYPE_1__ average ; 
- int /*<<< orphan*/  for_all_cpus (int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *),struct thread_data*,struct core_data*,struct pkg_data*) ; 
- int /*<<< orphan*/  format_counters (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_header (char*) ; 
- scalar_t__ summary_only ; 
+
+ TYPE_1__ average ;
+ int for_all_cpus (int (*) (int *,int *,int *),struct thread_data*,struct core_data*,struct pkg_data*) ;
+ int format_counters (int *,int *,int *) ;
+ int print_header (char*) ;
+ scalar_t__ summary_only ;
 
 void format_all_counters(struct thread_data *t, struct core_data *c, struct pkg_data *p)
 {
-	static int printed;
+ static int printed;
 
-	if (!printed || !summary_only)
-		print_header("\t");
+ if (!printed || !summary_only)
+  print_header("\t");
 
-	format_counters(&average.threads, &average.cores, &average.packages);
+ format_counters(&average.threads, &average.cores, &average.packages);
 
-	printed = 1;
+ printed = 1;
 
-	if (summary_only)
-		return;
+ if (summary_only)
+  return;
 
-	for_all_cpus(format_counters, t, c, p);
+ for_all_cpus(format_counters, t, c, p);
 }

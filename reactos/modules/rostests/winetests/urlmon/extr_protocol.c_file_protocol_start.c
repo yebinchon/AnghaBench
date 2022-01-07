@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IInternetProtocolEx ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int BINDF_FROMURLMON ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLEAR_CALLED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetBindInfo ; 
- scalar_t__ IInternetProtocolEx_StartEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IInternetProtocol_Start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ INET_E_RESOURCE_NOT_FOUND ; 
- int /*<<< orphan*/  ReportData ; 
- int /*<<< orphan*/  ReportProgress_CACHEFILENAMEAVAILABLE ; 
- int /*<<< orphan*/  ReportProgress_DIRECTBIND ; 
- int /*<<< orphan*/  ReportProgress_MIMETYPEAVAILABLE ; 
- int /*<<< orphan*/  ReportProgress_SENDINGREQUEST ; 
- int /*<<< orphan*/  ReportProgress_VERIFIEDMIMETYPEAVAILABLE ; 
- int /*<<< orphan*/  ReportResult ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  bind_info ; 
- int bindf ; 
- scalar_t__ expect_hrResult ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  protocol_sink ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int LPCWSTR ;
+typedef int IUri ;
+typedef int IInternetProtocolEx ;
+typedef int IInternetProtocol ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ int BINDF_FROMURLMON ;
+ int CHECK_CALLED (int ) ;
+ int CLEAR_CALLED (int ) ;
+ scalar_t__ FALSE ;
+ int GetBindInfo ;
+ scalar_t__ IInternetProtocolEx_StartEx (int *,int *,int *,int *,int ,int ) ;
+ scalar_t__ IInternetProtocol_Start (int *,int ,int *,int *,int ,int ) ;
+ scalar_t__ INET_E_RESOURCE_NOT_FOUND ;
+ int ReportData ;
+ int ReportProgress_CACHEFILENAMEAVAILABLE ;
+ int ReportProgress_DIRECTBIND ;
+ int ReportProgress_MIMETYPEAVAILABLE ;
+ int ReportProgress_SENDINGREQUEST ;
+ int ReportProgress_VERIFIEDMIMETYPEAVAILABLE ;
+ int ReportResult ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_OK ;
+ scalar_t__ TRUE ;
+ int bind_info ;
+ int bindf ;
+ scalar_t__ expect_hrResult ;
+ int ok (int,char*,scalar_t__) ;
+ int protocol_sink ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static BOOL file_protocol_start(IInternetProtocol *protocol, LPCWSTR url,
         IInternetProtocolEx *protocolex, IUri *uri, BOOL is_first)
@@ -79,7 +79,7 @@ __attribute__((used)) static BOOL file_protocol_start(IInternetProtocol *protoco
 
     CHECK_CALLED(GetBindInfo);
     if(!(bindf & BINDF_FROMURLMON))
-        CLEAR_CALLED(ReportProgress_DIRECTBIND); /* Not called by IE10 */
+        CLEAR_CALLED(ReportProgress_DIRECTBIND);
     if(is_first) {
         CHECK_CALLED(ReportProgress_SENDINGREQUEST);
         CHECK_CALLED(ReportProgress_CACHEFILENAMEAVAILABLE);

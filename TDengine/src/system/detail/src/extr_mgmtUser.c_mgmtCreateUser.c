@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_10__ {char* user; } ;
-struct TYPE_9__ {char* user; char* acct; int superAuth; int writeAuth; int /*<<< orphan*/  createdTime; int /*<<< orphan*/  pass; } ;
-typedef  TYPE_1__ SUserObj ;
-typedef  TYPE_2__ SAcctObj ;
+struct TYPE_9__ {char* user; char* acct; int superAuth; int writeAuth; int createdTime; int pass; } ;
+typedef TYPE_1__ SUserObj ;
+typedef TYPE_2__ SAcctObj ;
 
-/* Variables and functions */
- int TSDB_CODE_SDB_ERROR ; 
- int TSDB_CODE_SUCCESS ; 
- int TSDB_CODE_USER_ALREADY_EXIST ; 
- int /*<<< orphan*/  mWarn (char*,char*) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int mgmtCheckUserGrant () ; 
- int mgmtCheckUserLimit (TYPE_2__*) ; 
- scalar_t__ sdbGetRow (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ sdbInsertRow (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  taosEncryptPass (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosGetTimestampMs () ; 
- int /*<<< orphan*/  tfree (TYPE_1__*) ; 
- int /*<<< orphan*/  userSdb ; 
+
+ int TSDB_CODE_SDB_ERROR ;
+ int TSDB_CODE_SUCCESS ;
+ int TSDB_CODE_USER_ALREADY_EXIST ;
+ int mWarn (char*,char*) ;
+ TYPE_1__* malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int mgmtCheckUserGrant () ;
+ int mgmtCheckUserLimit (TYPE_2__*) ;
+ scalar_t__ sdbGetRow (int ,char*) ;
+ scalar_t__ sdbInsertRow (int ,TYPE_1__*,int ) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int taosEncryptPass (int *,int ,int ) ;
+ int taosGetTimestampMs () ;
+ int tfree (TYPE_1__*) ;
+ int userSdb ;
 
 int mgmtCreateUser(SAcctObj *pAcct, char *name, char *pass) {
   SUserObj *pUser;
@@ -47,7 +47,7 @@ int mgmtCreateUser(SAcctObj *pAcct, char *name, char *pass) {
   }
 
   pUser = (SUserObj *)sdbGetRow(userSdb, name);
-  if (pUser != NULL) {
+  if (pUser != ((void*)0)) {
     mWarn("user:%s is already there", name);
     return TSDB_CODE_USER_ALREADY_EXIST;
   }
@@ -75,7 +75,7 @@ int mgmtCreateUser(SAcctObj *pAcct, char *name, char *pass) {
     code = TSDB_CODE_SDB_ERROR;
   }
 
-  //  mgmtAddUserIntoAcct(pAcct, pUser);
+
 
   return code;
 }

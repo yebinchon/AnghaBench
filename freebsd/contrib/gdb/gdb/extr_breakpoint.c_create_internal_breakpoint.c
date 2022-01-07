@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct symtab_and_line {int /*<<< orphan*/  pc; int /*<<< orphan*/  section; } ;
-struct breakpoint {int /*<<< orphan*/  disposition; int /*<<< orphan*/  number; } ;
-typedef  enum bptype { ____Placeholder_bptype } bptype ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  disp_donttouch ; 
- int /*<<< orphan*/  find_pc_overlay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_sal (struct symtab_and_line*) ; 
- struct breakpoint* set_raw_breakpoint (struct symtab_and_line,int) ; 
+
+
+
+struct symtab_and_line {int pc; int section; } ;
+struct breakpoint {int disposition; int number; } ;
+typedef enum bptype { ____Placeholder_bptype } bptype ;
+typedef int CORE_ADDR ;
+
+
+ int disp_donttouch ;
+ int find_pc_overlay (int ) ;
+ int init_sal (struct symtab_and_line*) ;
+ struct breakpoint* set_raw_breakpoint (struct symtab_and_line,int) ;
 
 __attribute__((used)) static struct breakpoint *
 create_internal_breakpoint (CORE_ADDR address, enum bptype type)
@@ -28,7 +28,7 @@ create_internal_breakpoint (CORE_ADDR address, enum bptype type)
   struct symtab_and_line sal;
   struct breakpoint *b;
 
-  init_sal (&sal);		/* initialize to zeroes */
+  init_sal (&sal);
 
   sal.pc = address;
   sal.section = find_pc_overlay (sal.pc);

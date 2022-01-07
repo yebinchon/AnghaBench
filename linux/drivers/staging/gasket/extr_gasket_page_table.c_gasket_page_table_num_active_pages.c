@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint ;
-struct gasket_page_table {int /*<<< orphan*/  num_active_pages; } ;
 
-/* Variables and functions */
+
+
+
+typedef int uint ;
+struct gasket_page_table {int num_active_pages; } ;
+
+
 
 uint gasket_page_table_num_active_pages(struct gasket_page_table *pg_tbl)
 {
-	if (!pg_tbl)
-		return 0;
-	return pg_tbl->num_active_pages;
+ if (!pg_tbl)
+  return 0;
+ return pg_tbl->num_active_pages;
 }

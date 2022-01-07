@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  u_char ;
-struct TYPE_5__ {int /*<<< orphan*/  dest; int /*<<< orphan*/  src; int /*<<< orphan*/  chksm; int /*<<< orphan*/  prot; int /*<<< orphan*/  ttl; int /*<<< orphan*/  offset; int /*<<< orphan*/  id; int /*<<< orphan*/  len; int /*<<< orphan*/  tos; int /*<<< orphan*/  version; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int u_char ;
+struct TYPE_5__ {int dest; int src; int chksm; int prot; int ttl; int offset; int id; int len; int tos; int version; } ;
 struct TYPE_6__ {TYPE_1__ ip; } ;
-struct TYPE_7__ {int /*<<< orphan*/  len; TYPE_2__ tt; } ;
-typedef  TYPE_3__ tokenstr_t ;
+struct TYPE_7__ {int len; TYPE_2__ tt; } ;
+typedef TYPE_3__ tokenstr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  READ_TOKEN_BYTES (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  READ_TOKEN_U_CHAR (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int READ_TOKEN_BYTES (int *,int,int *,int,int ,int) ;
+ int READ_TOKEN_U_CHAR (int *,int,int ,int ,int) ;
 
 __attribute__((used)) static int
 fetch_ip_tok(tokenstr_t *tok, u_char *buf, int len)
 {
-	int err = 0;
+ int err = 0;
 
-	READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.version, tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.version, tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.tos, tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.tos, tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_BYTES(buf, len, &tok->tt.ip.len, sizeof(uint16_t),
-	    tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_BYTES(buf, len, &tok->tt.ip.len, sizeof(uint16_t),
+     tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_BYTES(buf, len, &tok->tt.ip.id, sizeof(uint16_t),
-	    tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_BYTES(buf, len, &tok->tt.ip.id, sizeof(uint16_t),
+     tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_BYTES(buf, len, &tok->tt.ip.offset, sizeof(uint16_t),
-	    tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_BYTES(buf, len, &tok->tt.ip.offset, sizeof(uint16_t),
+     tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.ttl, tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.ttl, tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.prot, tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_U_CHAR(buf, len, tok->tt.ip.prot, tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_BYTES(buf, len, &tok->tt.ip.chksm, sizeof(uint16_t),
-	    tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_BYTES(buf, len, &tok->tt.ip.chksm, sizeof(uint16_t),
+     tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_BYTES(buf, len, &tok->tt.ip.src, sizeof(tok->tt.ip.src),
-	    tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_BYTES(buf, len, &tok->tt.ip.src, sizeof(tok->tt.ip.src),
+     tok->len, err);
+ if (err)
+  return (-1);
 
-	READ_TOKEN_BYTES(buf, len, &tok->tt.ip.dest, sizeof(tok->tt.ip.dest),
-	    tok->len, err);
-	if (err)
-		return (-1);
+ READ_TOKEN_BYTES(buf, len, &tok->tt.ip.dest, sizeof(tok->tt.ip.dest),
+     tok->len, err);
+ if (err)
+  return (-1);
 
-	return (0);
+ return (0);
 }

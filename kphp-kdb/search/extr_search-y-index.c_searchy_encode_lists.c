@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct searchy_index_word {int dummy; } ;
-typedef  scalar_t__ hash_t ;
-struct TYPE_11__ {int /*<<< orphan*/  crc32_data; } ;
+typedef scalar_t__ hash_t ;
+struct TYPE_11__ {int crc32_data; } ;
 struct TYPE_10__ {int words; } ;
 struct TYPE_9__ {scalar_t__ word; scalar_t__ file_offset; } ;
 struct TYPE_8__ {scalar_t__ word; } ;
 
-/* Variables and functions */
- TYPE_7__ CRC32_Header ; 
- TYPE_6__ Header ; 
- TYPE_1__* P ; 
- int PC ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_2__* W ; 
- int /*<<< orphan*/  assert (int) ; 
- double coordinate_bits ; 
- scalar_t__ cur_offs ; 
- int /*<<< orphan*/  encode_lists_reset () ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  flushout () ; 
- int /*<<< orphan*/  idx_crc32_complement ; 
- int /*<<< orphan*/  item_positions ; 
- int /*<<< orphan*/  lists_encoded ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  searchy_encode_list (TYPE_1__*,int,TYPE_2__*) ; 
- long long tag_bits ; 
- long long terms_bits ; 
- long long tot_items ; 
- int /*<<< orphan*/  tot_tags ; 
- int /*<<< orphan*/  tot_terms ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,...) ; 
- scalar_t__ word_index_offset ; 
- int /*<<< orphan*/  writeout (int /*<<< orphan*/ ,long long) ; 
+
+ TYPE_7__ CRC32_Header ;
+ TYPE_6__ Header ;
+ TYPE_1__* P ;
+ int PC ;
+ int SEEK_SET ;
+ TYPE_2__* W ;
+ int assert (int) ;
+ double coordinate_bits ;
+ scalar_t__ cur_offs ;
+ int encode_lists_reset () ;
+ int * fd ;
+ int flushout () ;
+ int idx_crc32_complement ;
+ int item_positions ;
+ int lists_encoded ;
+ int lseek (int ,scalar_t__,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int searchy_encode_list (TYPE_1__*,int,TYPE_2__*) ;
+ long long tag_bits ;
+ long long terms_bits ;
+ long long tot_items ;
+ int tot_tags ;
+ int tot_terms ;
+ int vkprintf (int,char*,int,...) ;
+ scalar_t__ word_index_offset ;
+ int writeout (int ,long long) ;
 
 __attribute__((used)) static int searchy_encode_lists (void) {
   encode_lists_reset ();

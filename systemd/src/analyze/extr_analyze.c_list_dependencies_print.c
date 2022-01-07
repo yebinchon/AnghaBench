@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ts2 ;
-typedef  int /*<<< orphan*/  ts ;
+
+
+
+
+typedef int ts2 ;
+typedef int ts ;
 struct unit_times {scalar_t__ time; scalar_t__ activating; scalar_t__ activated; } ;
 struct boot_times {scalar_t__ userspace_time; } ;
 
-/* Variables and functions */
- int FORMAT_TIMESPAN_MAX ; 
- int /*<<< orphan*/  SPECIAL_GLYPH_TREE_BRANCH ; 
- int /*<<< orphan*/  SPECIAL_GLYPH_TREE_RIGHT ; 
- int /*<<< orphan*/  SPECIAL_GLYPH_TREE_SPACE ; 
- int /*<<< orphan*/  SPECIAL_GLYPH_TREE_VERTICAL ; 
- int /*<<< orphan*/  USEC_PER_MSEC ; 
- char* ansi_highlight_red () ; 
- int /*<<< orphan*/  ansi_normal () ; 
- char* format_timespan (char*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* special_glyph (int /*<<< orphan*/ ) ; 
+
+ int FORMAT_TIMESPAN_MAX ;
+ int SPECIAL_GLYPH_TREE_BRANCH ;
+ int SPECIAL_GLYPH_TREE_RIGHT ;
+ int SPECIAL_GLYPH_TREE_SPACE ;
+ int SPECIAL_GLYPH_TREE_VERTICAL ;
+ int USEC_PER_MSEC ;
+ char* ansi_highlight_red () ;
+ int ansi_normal () ;
+ char* format_timespan (char*,int,scalar_t__,int ) ;
+ int printf (char*,...) ;
+ char* special_glyph (int ) ;
 
 __attribute__((used)) static int list_dependencies_print(
                 const char *name,

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  lwCanvas ;
-struct TYPE_5__ {int argc; int /*<<< orphan*/ * argv; } ;
-typedef  TYPE_1__ client ;
 
-/* Variables and functions */
- scalar_t__ C_OK ; 
- char* REDIS_VERSION ; 
- int /*<<< orphan*/  addReplyVerbatim (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  generateSkyline (int /*<<< orphan*/ *) ; 
- scalar_t__ getLongFromObjectOrReply (TYPE_1__*,int /*<<< orphan*/ ,long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lwCreateCanvas (long,long,int) ; 
- int /*<<< orphan*/  lwFreeCanvas (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  renderCanvas (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sds ;
+typedef int lwCanvas ;
+struct TYPE_5__ {int argc; int * argv; } ;
+typedef TYPE_1__ client ;
+
+
+ scalar_t__ C_OK ;
+ char* REDIS_VERSION ;
+ int addReplyVerbatim (TYPE_1__*,int ,int ,char*) ;
+ int generateSkyline (int *) ;
+ scalar_t__ getLongFromObjectOrReply (TYPE_1__*,int ,long*,int *) ;
+ int * lwCreateCanvas (long,long,int) ;
+ int lwFreeCanvas (int *) ;
+ int renderCanvas (int *) ;
+ int sdscat (int ,char*) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdsfree (int ) ;
+ int sdslen (int ) ;
 
 void lolwut6Command(client *c) {
     long cols = 80;
     long rows = 20;
 
-    /* Parse the optional arguments if any. */
+
     if (c->argc > 1 &&
-        getLongFromObjectOrReply(c,c->argv[1],&cols,NULL) != C_OK)
+        getLongFromObjectOrReply(c,c->argv[1],&cols,((void*)0)) != C_OK)
         return;
 
     if (c->argc > 2 &&
-        getLongFromObjectOrReply(c,c->argv[2],&rows,NULL) != C_OK)
+        getLongFromObjectOrReply(c,c->argv[2],&rows,((void*)0)) != C_OK)
         return;
 
-    /* Limits. We want LOLWUT to be always reasonably fast and cheap to execute
-     * so we have maximum number of columns, rows, and output resulution. */
+
+
     if (cols < 1) cols = 1;
     if (cols > 1000) cols = 1000;
     if (rows < 1) rows = 1;
     if (rows > 1000) rows = 1000;
 
-    /* Generate the city skyline and reply. */
+
     lwCanvas *canvas = lwCreateCanvas(cols,rows,3);
     generateSkyline(canvas);
     sds rendered = renderCanvas(canvas);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tgl_state {int dummy; } ;
-struct in_ev {int /*<<< orphan*/  refcnt; } ;
+struct in_ev {int refcnt; } ;
 
-/* Variables and functions */
- struct tgl_state* TLS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (struct in_ev*) ; 
- int /*<<< orphan*/  print_fail (struct in_ev*) ; 
- int /*<<< orphan*/  print_success (struct in_ev*) ; 
+
+ struct tgl_state* TLS ;
+ int assert (int) ;
+ int free (struct in_ev*) ;
+ int print_fail (struct in_ev*) ;
+ int print_success (struct in_ev*) ;
 
 void print_success_gw (struct tgl_state *TLSR, void *extra, int success) {
   assert (TLS == TLSR);

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tty_struct {struct ipw_tty* driver_data; int /*<<< orphan*/  index; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tty_struct {struct ipw_tty* driver_data; int index; } ;
 struct TYPE_2__ {scalar_t__ count; int low_latency; struct tty_struct* tty; } ;
-struct ipw_tty {scalar_t__ tty_type; int /*<<< orphan*/  ipw_tty_mutex; int /*<<< orphan*/  network; TYPE_1__ port; scalar_t__ tx_bytes_queued; } ;
+struct ipw_tty {scalar_t__ tty_type; int ipw_tty_mutex; int network; TYPE_1__ port; scalar_t__ tx_bytes_queued; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- scalar_t__ TTYTYPE_MODEM ; 
- struct ipw_tty* get_tty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ipwireless_ppp_open (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ scalar_t__ TTYTYPE_MODEM ;
+ struct ipw_tty* get_tty (int ) ;
+ int ipwireless_ppp_open (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int ipw_open(struct tty_struct *linux_tty, struct file *filp)
 {
-	struct ipw_tty *tty = get_tty(linux_tty->index);
+ struct ipw_tty *tty = get_tty(linux_tty->index);
 
-	if (!tty)
-		return -ENODEV;
+ if (!tty)
+  return -ENODEV;
 
-	mutex_lock(&tty->ipw_tty_mutex);
-	if (tty->port.count == 0)
-		tty->tx_bytes_queued = 0;
+ mutex_lock(&tty->ipw_tty_mutex);
+ if (tty->port.count == 0)
+  tty->tx_bytes_queued = 0;
 
-	tty->port.count++;
+ tty->port.count++;
 
-	tty->port.tty = linux_tty;
-	linux_tty->driver_data = tty;
-	tty->port.low_latency = 1;
+ tty->port.tty = linux_tty;
+ linux_tty->driver_data = tty;
+ tty->port.low_latency = 1;
 
-	if (tty->tty_type == TTYTYPE_MODEM)
-		ipwireless_ppp_open(tty->network);
+ if (tty->tty_type == TTYTYPE_MODEM)
+  ipwireless_ppp_open(tty->network);
 
-	mutex_unlock(&tty->ipw_tty_mutex);
+ mutex_unlock(&tty->ipw_tty_mutex);
 
-	return 0;
+ return 0;
 }

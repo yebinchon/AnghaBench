@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_2__* priv; } ;
-struct TYPE_11__ {int h; int w; TYPE_5__* dst; int /*<<< orphan*/  format; } ;
-struct TYPE_10__ {TYPE_1__* comp; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; int /*<<< orphan*/  nb_components; } ;
-struct TYPE_9__ {float direction; int range; int* planeheight; int* planewidth; int* thr; int* threshold; int* x_pos; int* y_pos; int /*<<< orphan*/  deband; scalar_t__ coupling; int /*<<< orphan*/ * shift; int /*<<< orphan*/  nb_components; } ;
+struct TYPE_11__ {int h; int w; TYPE_5__* dst; int format; } ;
+struct TYPE_10__ {TYPE_1__* comp; int log2_chroma_h; int log2_chroma_w; int nb_components; } ;
+struct TYPE_9__ {float direction; int range; int* planeheight; int* planewidth; int* thr; int* threshold; int* x_pos; int* y_pos; int deband; scalar_t__ coupling; int * shift; int nb_components; } ;
 struct TYPE_8__ {int depth; } ;
-typedef  TYPE_2__ DebandContext ;
-typedef  TYPE_3__ AVPixFmtDescriptor ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ DebandContext ;
+typedef TYPE_3__ AVPixFmtDescriptor ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- void* AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* av_malloc (int) ; 
- TYPE_3__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int const cosf (float const) ; 
- int /*<<< orphan*/  deband_16_c ; 
- int /*<<< orphan*/  deband_16_coupling_c ; 
- int /*<<< orphan*/  deband_8_c ; 
- int /*<<< orphan*/  deband_8_coupling_c ; 
- float frand (int,int) ; 
- int const sinf (float const) ; 
+
+ int AVERROR (int ) ;
+ void* AV_CEIL_RSHIFT (int,int ) ;
+ int ENOMEM ;
+ void* av_malloc (int) ;
+ TYPE_3__* av_pix_fmt_desc_get (int ) ;
+ int const cosf (float const) ;
+ int deband_16_c ;
+ int deband_16_coupling_c ;
+ int deband_8_c ;
+ int deband_8_coupling_c ;
+ float frand (int,int) ;
+ int const sinf (float const) ;
 
 __attribute__((used)) static int config_input(AVFilterLink *inlink)
 {
@@ -52,8 +52,8 @@ __attribute__((used)) static int config_input(AVFilterLink *inlink)
 
     s->planeheight[1] = s->planeheight[2] = AV_CEIL_RSHIFT(inlink->h, desc->log2_chroma_h);
     s->planeheight[0] = s->planeheight[3] = inlink->h;
-    s->planewidth[1]  = s->planewidth[2]  = AV_CEIL_RSHIFT(inlink->w, desc->log2_chroma_w);
-    s->planewidth[0]  = s->planewidth[3]  = inlink->w;
+    s->planewidth[1] = s->planewidth[2] = AV_CEIL_RSHIFT(inlink->w, desc->log2_chroma_w);
+    s->planewidth[0] = s->planewidth[3] = inlink->w;
     s->shift[0] = desc->log2_chroma_w;
     s->shift[1] = desc->log2_chroma_h;
 

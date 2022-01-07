@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int CO_E_RELEASED ; 
- int ITextDocument_Range (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **) ; 
- int ITextRange_Collapse (int /*<<< orphan*/ *,int) ; 
- int ITextRange_GetEnd (int /*<<< orphan*/ *,int*) ; 
- int ITextRange_GetStart (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  ITextRange_Release (int /*<<< orphan*/ *) ; 
- int S_FALSE ; 
- int S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int tomEnd ; 
- int tomFalse ; 
- int tomStart ; 
- int tomTrue ; 
- int tomUndefined ; 
+
+
+
+typedef int LPARAM ;
+typedef int LONG ;
+typedef int ITextRange ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef int HRESULT ;
+typedef char CHAR ;
+
+
+ int CO_E_RELEASED ;
+ int ITextDocument_Range (int *,int,int,int **) ;
+ int ITextRange_Collapse (int *,int) ;
+ int ITextRange_GetEnd (int *,int*) ;
+ int ITextRange_GetStart (int *,int*) ;
+ int ITextRange_Release (int *) ;
+ int S_FALSE ;
+ int S_OK ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int *) ;
+ int ok (int,char*,...) ;
+ int release_interfaces (int *,int **,int **,int *) ;
+ int tomEnd ;
+ int tomFalse ;
+ int tomStart ;
+ int tomTrue ;
+ int tomUndefined ;
 
 __attribute__((used)) static void test_ITextRange_Collapse(void)
 {
   HWND w;
-  IRichEditOle *reOle = NULL;
-  ITextDocument *txtDoc = NULL;
-  ITextRange *txtRge = NULL;
+  IRichEditOle *reOle = ((void*)0);
+  ITextDocument *txtDoc = ((void*)0);
+  ITextRange *txtRge = ((void*)0);
   HRESULT hres;
   LONG first, lim, start, end;
   static const CHAR test_text1[] = "TestSomeText";
 
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   SendMessageA(w, WM_SETTEXT, 0, (LPARAM)test_text1);
 
   first = 4, lim = 8;
@@ -101,7 +101,7 @@ __attribute__((used)) static void test_ITextRange_Collapse(void)
   ok(end == 8, "got wrong end value: %d\n", end);
   ITextRange_Release(txtRge);
 
-  /* tomStart is the default */
+
   hres = ITextDocument_Range(txtDoc, first, lim, &txtRge);
   ok(hres == S_OK, "got 0x%08x\n", hres);
   hres = ITextRange_Collapse(txtRge, 256);
@@ -139,7 +139,7 @@ __attribute__((used)) static void test_ITextRange_Collapse(void)
   ok(hres == S_OK, "got 0x%08x\n", hres);
   ok(end == 8, "got wrong end value: %d\n", end);
 
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
   hres = ITextRange_Collapse(txtRge, tomStart);
   ok(hres == CO_E_RELEASED, "got 0x%08x\n", hres);

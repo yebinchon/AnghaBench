@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char CCLASS_DIGIT ; 
- char CCLASS_L ; 
- unsigned char CCLASS_OTHER ; 
- char CCLASS_R ; 
- unsigned char CCLASS_SILENT ; 
- unsigned char CCLASS_SPACE ; 
- unsigned char CCLASS_VOWEL ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned char* className ; 
- unsigned char* initClass ; 
- unsigned char* midClass ; 
- unsigned char* sqlite3_malloc64 (int) ; 
+ char CCLASS_DIGIT ;
+ char CCLASS_L ;
+ unsigned char CCLASS_OTHER ;
+ char CCLASS_R ;
+ unsigned char CCLASS_SILENT ;
+ unsigned char CCLASS_SPACE ;
+ unsigned char CCLASS_VOWEL ;
+ int assert (int) ;
+ unsigned char* className ;
+ unsigned char* initClass ;
+ unsigned char* midClass ;
+ unsigned char* sqlite3_malloc64 (int) ;
 
 __attribute__((used)) static unsigned char *phoneticHash(const unsigned char *zIn, int nIn){
   unsigned char *zOut = sqlite3_malloc64( nIn + 1 );
@@ -36,7 +28,7 @@ __attribute__((used)) static unsigned char *phoneticHash(const unsigned char *zI
   if( zOut==0 ) return 0;
   if( nIn>2 ){
     switch( zIn[0] ){
-      case 'g': 
+      case 'g':
       case 'k': {
         if( zIn[1]=='n' ){ zIn++; nIn--; }
         break;
@@ -57,10 +49,10 @@ __attribute__((used)) static unsigned char *phoneticHash(const unsigned char *zI
     if( c==CCLASS_OTHER && cPrev!=CCLASS_DIGIT ) continue;
     aClass = midClass;
     if( c==CCLASS_VOWEL && (cPrevX==CCLASS_R || cPrevX==CCLASS_L) ){
-       continue; /* No vowels beside L or R */ 
+       continue;
     }
     if( (c==CCLASS_R || c==CCLASS_L) && cPrevX==CCLASS_VOWEL ){
-       nOut--;   /* No vowels beside L or R */
+       nOut--;
     }
     cPrev = c;
     if( c==CCLASS_SILENT ) continue;

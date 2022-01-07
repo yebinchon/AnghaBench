@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  exports ;
-typedef  int /*<<< orphan*/  exportnode ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDRPROC_T_TYPE ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_XDRTRACE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XLOG_DEBUG ; 
- scalar_t__ amuDebug (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plog (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ xdr_exportnode ; 
- int /*<<< orphan*/  xdr_pointer (int /*<<< orphan*/ *,char**,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int exports ;
+typedef int exportnode ;
+typedef int bool_t ;
+typedef int XDRPROC_T_TYPE ;
+typedef int XDR ;
+
+
+ int D_XDRTRACE ;
+ int FALSE ;
+ int TRUE ;
+ int XLOG_DEBUG ;
+ scalar_t__ amuDebug (int ) ;
+ int plog (int ,char*) ;
+ scalar_t__ xdr_exportnode ;
+ int xdr_pointer (int *,char**,int,int ) ;
 
 bool_t
 xdr_exports(XDR *xdrs, exports *objp)

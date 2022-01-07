@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CLEANUP_EXPENSIVE ; 
- int CLEANUP_UPDATE_LIFE ; 
- int /*<<< orphan*/  cleanup_cfg (int) ; 
- int /*<<< orphan*/  get_insns () ; 
- int /*<<< orphan*/  max_reg_num () ; 
- int /*<<< orphan*/  regmove_optimize (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int CLEANUP_EXPENSIVE ;
+ int CLEANUP_UPDATE_LIFE ;
+ int cleanup_cfg (int) ;
+ int get_insns () ;
+ int max_reg_num () ;
+ int regmove_optimize (int ,int ) ;
 
 __attribute__((used)) static unsigned int
 rest_of_handle_regmove (void)

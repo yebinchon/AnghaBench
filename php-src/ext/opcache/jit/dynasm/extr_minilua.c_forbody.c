@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * fs; } ;
-typedef  TYPE_1__ LexState ;
-typedef  int /*<<< orphan*/  FuncState ;
-typedef  int /*<<< orphan*/  BlockCnt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_FORLOOP ; 
- int /*<<< orphan*/  OP_FORPREP ; 
- int /*<<< orphan*/  OP_TFORLOOP ; 
- int /*<<< orphan*/  TK_DO ; 
- int /*<<< orphan*/  adjustlocalvars (TYPE_1__*,int) ; 
- int /*<<< orphan*/  block (TYPE_1__*) ; 
- int /*<<< orphan*/  checknext (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enterblock (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  leaveblock (int /*<<< orphan*/ *) ; 
- int luaK_codeABC (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int luaK_codeAsBx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  luaK_fixline (int /*<<< orphan*/ *,int) ; 
- int luaK_jump (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_patchlist (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaK_patchtohere (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaK_reserveregs (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * fs; } ;
+typedef TYPE_1__ LexState ;
+typedef int FuncState ;
+typedef int BlockCnt ;
+
+
+ int OP_FORLOOP ;
+ int OP_FORPREP ;
+ int OP_TFORLOOP ;
+ int TK_DO ;
+ int adjustlocalvars (TYPE_1__*,int) ;
+ int block (TYPE_1__*) ;
+ int checknext (TYPE_1__*,int ) ;
+ int enterblock (int *,int *,int ) ;
+ int leaveblock (int *) ;
+ int luaK_codeABC (int *,int ,int,int ,int) ;
+ int luaK_codeAsBx (int *,int ,int,int) ;
+ int luaK_fixline (int *,int) ;
+ int luaK_jump (int *) ;
+ int luaK_patchlist (int *,int,int) ;
+ int luaK_patchtohere (int *,int) ;
+ int luaK_reserveregs (int *,int) ;
 
 __attribute__((used)) static void forbody(LexState*ls,int base,int line,int nvars,int isnum){
 BlockCnt bl;

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  ITfDocumentMgr ;
-typedef  int /*<<< orphan*/  ITfContext ;
-typedef  int /*<<< orphan*/  ITfCompartmentMgr ;
-typedef  int /*<<< orphan*/  ITfCompartment ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_FakeService ; 
- int /*<<< orphan*/  GUID_COMPARTMENT_PERSISTMENUENABLED ; 
- int /*<<< orphan*/  GUID_COMPARTMENT_SPEECH_OPENCLOSE ; 
- int /*<<< orphan*/  IID_ITfCompartmentMgr ; 
- int /*<<< orphan*/  ITfCompartmentMgr_ClearCompartment (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfCompartmentMgr_GetCompartment (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITfCompartmentMgr_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfCompartment_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfContext_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfContext_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfDocumentMgr_GetTop (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITfDocumentMgr_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfDocumentMgr_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITfThreadMgr_GetFocus (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITfThreadMgr_GetGlobalCompartment (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITfThreadMgr_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  enum_compartments (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_tm ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  tid ; 
+
+
+
+typedef int LPVOID ;
+typedef int ITfDocumentMgr ;
+typedef int ITfContext ;
+typedef int ITfCompartmentMgr ;
+typedef int ITfCompartment ;
+typedef int HRESULT ;
+
+
+ int CLSID_FakeService ;
+ int GUID_COMPARTMENT_PERSISTMENUENABLED ;
+ int GUID_COMPARTMENT_SPEECH_OPENCLOSE ;
+ int IID_ITfCompartmentMgr ;
+ int ITfCompartmentMgr_ClearCompartment (int *,int ,int *) ;
+ int ITfCompartmentMgr_GetCompartment (int *,int *,int **) ;
+ int ITfCompartmentMgr_Release (int *) ;
+ int ITfCompartment_Release (int *) ;
+ int ITfContext_QueryInterface (int *,int *,int *) ;
+ int ITfContext_Release (int *) ;
+ int ITfDocumentMgr_GetTop (int *,int **) ;
+ int ITfDocumentMgr_QueryInterface (int *,int *,int *) ;
+ int ITfDocumentMgr_Release (int *) ;
+ int ITfThreadMgr_GetFocus (int ,int **) ;
+ int ITfThreadMgr_GetGlobalCompartment (int ,int **) ;
+ int ITfThreadMgr_QueryInterface (int ,int *,int *) ;
+ int SUCCEEDED (int ) ;
+ int enum_compartments (int *,int *,int *) ;
+ int g_tm ;
+ int ok (int ,char*) ;
+ int tid ;
 
 __attribute__((used)) static void test_Compartments(void)
 {
@@ -51,27 +51,27 @@ __attribute__((used)) static void test_Compartments(void)
     ITfThreadMgr_GetFocus(g_tm, &dm);
     ITfDocumentMgr_GetTop(dm,&cxt);
 
-    /* Global */
+
     hr = ITfThreadMgr_GetGlobalCompartment(g_tm, &cmpmgr);
     ok(SUCCEEDED(hr),"GetGlobalCompartment failed\n");
     hr = ITfCompartmentMgr_GetCompartment(cmpmgr, &GUID_COMPARTMENT_SPEECH_OPENCLOSE, &cmp);
     ok(SUCCEEDED(hr),"GetCompartment failed\n");
     ITfCompartment_Release(cmp);
-    enum_compartments(cmpmgr,&GUID_COMPARTMENT_SPEECH_OPENCLOSE,NULL);
+    enum_compartments(cmpmgr,&GUID_COMPARTMENT_SPEECH_OPENCLOSE,((void*)0));
     ITfCompartmentMgr_Release(cmpmgr);
 
-    /* Thread */
+
     hr = ITfThreadMgr_QueryInterface(g_tm, &IID_ITfCompartmentMgr, (LPVOID*)&cmpmgr);
     ok(SUCCEEDED(hr),"ThreadMgr QI for IID_ITfCompartmentMgr failed\n");
     hr = ITfCompartmentMgr_GetCompartment(cmpmgr, &CLSID_FakeService, &cmp);
     ok(SUCCEEDED(hr),"GetCompartment failed\n");
     enum_compartments(cmpmgr,&CLSID_FakeService,&GUID_COMPARTMENT_SPEECH_OPENCLOSE);
     ITfCompartmentMgr_ClearCompartment(cmpmgr,tid,&CLSID_FakeService);
-    enum_compartments(cmpmgr,NULL,&CLSID_FakeService);
+    enum_compartments(cmpmgr,((void*)0),&CLSID_FakeService);
     ITfCompartmentMgr_Release(cmpmgr);
     ITfCompartment_Release(cmp);
 
-    /* DocumentMgr */
+
     hr = ITfDocumentMgr_QueryInterface(dm, &IID_ITfCompartmentMgr, (LPVOID*)&cmpmgr);
     ok(SUCCEEDED(hr),"DocumentMgr QI for IID_ITfCompartmentMgr failed\n");
 
@@ -80,10 +80,10 @@ __attribute__((used)) static void test_Compartments(void)
     enum_compartments(cmpmgr,&GUID_COMPARTMENT_PERSISTMENUENABLED,&GUID_COMPARTMENT_SPEECH_OPENCLOSE);
     ITfCompartmentMgr_Release(cmpmgr);
 
-    /* Context */
+
     hr = ITfContext_QueryInterface(cxt, &IID_ITfCompartmentMgr, (LPVOID*)&cmpmgr);
     ok(SUCCEEDED(hr),"Context QI for IID_ITfCompartmentMgr failed\n");
-    enum_compartments(cmpmgr,NULL,&GUID_COMPARTMENT_PERSISTMENUENABLED);
+    enum_compartments(cmpmgr,((void*)0),&GUID_COMPARTMENT_PERSISTMENUENABLED);
     ITfCompartmentMgr_Release(cmpmgr);
 
     ITfContext_Release(cxt);

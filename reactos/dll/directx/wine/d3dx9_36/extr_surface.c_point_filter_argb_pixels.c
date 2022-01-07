@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct volume {int depth; int height; int width; } ;
 struct vec4 {float w; } ;
-struct pixel_format_desc {int bytes_per_pixel; scalar_t__ type; int /*<<< orphan*/  (* from_rgba ) (struct vec4*,struct vec4*) ;int /*<<< orphan*/  (* to_rgba ) (struct vec4*,struct vec4*,int /*<<< orphan*/  const*) ;} ;
+struct pixel_format_desc {int bytes_per_pixel; scalar_t__ type; int (* from_rgba ) (struct vec4*,struct vec4*) ;int (* to_rgba ) (struct vec4*,struct vec4*,int const*) ;} ;
 struct argb_conversion_info {scalar_t__* destmask; } ;
-typedef  int /*<<< orphan*/  channels ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  PALETTEENTRY ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ D3DCOLOR ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int channels ;
+typedef int UINT ;
+typedef int PALETTEENTRY ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ D3DCOLOR ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DFMT_A8R8G8B8 ; 
- int /*<<< orphan*/  ZeroMemory (scalar_t__*,int) ; 
- int /*<<< orphan*/  format_from_vec4 (struct pixel_format_desc const*,struct vec4*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  format_to_vec4 (struct pixel_format_desc const*,int /*<<< orphan*/  const*,struct vec4*) ; 
- struct pixel_format_desc* get_format_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_relevant_argb_components (struct argb_conversion_info*,int /*<<< orphan*/  const*,scalar_t__*) ; 
- int /*<<< orphan*/  init_argb_conversion_info (struct pixel_format_desc const*,struct pixel_format_desc const*,struct argb_conversion_info*) ; 
- scalar_t__ make_argb_color (struct argb_conversion_info*,scalar_t__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  stub1 (struct vec4*,struct vec4*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub2 (struct vec4*,struct vec4*) ; 
+
+ int D3DFMT_A8R8G8B8 ;
+ int ZeroMemory (scalar_t__*,int) ;
+ int format_from_vec4 (struct pixel_format_desc const*,struct vec4*,int *) ;
+ int format_to_vec4 (struct pixel_format_desc const*,int const*,struct vec4*) ;
+ struct pixel_format_desc* get_format_info (int ) ;
+ int get_relevant_argb_components (struct argb_conversion_info*,int const*,scalar_t__*) ;
+ int init_argb_conversion_info (struct pixel_format_desc const*,struct pixel_format_desc const*,struct argb_conversion_info*) ;
+ scalar_t__ make_argb_color (struct argb_conversion_info*,scalar_t__*) ;
+ int memcpy (int *,scalar_t__*,int) ;
+ int stub1 (struct vec4*,struct vec4*,int const*) ;
+ int stub2 (struct vec4*,struct vec4*) ;
 
 void point_filter_argb_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slice_pitch, const struct volume *src_size,
         const struct pixel_format_desc *src_format, BYTE *dst, UINT dst_row_pitch, UINT dst_slice_pitch,
@@ -40,7 +40,7 @@ void point_filter_argb_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slic
         const PALETTEENTRY *palette)
 {
     struct argb_conversion_info conv_info, ck_conv_info;
-    const struct pixel_format_desc *ck_format = NULL;
+    const struct pixel_format_desc *ck_format = ((void*)0);
     DWORD channels[4];
     UINT x, y, z;
 
@@ -49,7 +49,7 @@ void point_filter_argb_pixels(const BYTE *src, UINT src_row_pitch, UINT src_slic
 
     if (color_key)
     {
-        /* Color keys are always represented in D3DFMT_A8R8G8B8 format. */
+
         ck_format = get_format_info(D3DFMT_A8R8G8B8);
         init_argb_conversion_info(src_format, ck_format, &ck_conv_info);
     }

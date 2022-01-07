@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  HwIdle; int /*<<< orphan*/  HwDetect; int /*<<< orphan*/  GetMemoryMap; int /*<<< orphan*/  VideoGetDisplaySize; int /*<<< orphan*/  VideoSetDisplayMode; int /*<<< orphan*/  VideoClearScreen; int /*<<< orphan*/  ConsGetCh; int /*<<< orphan*/  ConsKbHit; int /*<<< orphan*/  DiskReadLogicalSectors; int /*<<< orphan*/  ConsPutChar; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BootMain (char*) ; 
- char* FrLdrVersionString ; 
- TYPE_1__ MachVtbl ; 
- int /*<<< orphan*/  PcPrepHwIdle ; 
- int /*<<< orphan*/  PpcPrepConsGetCh ; 
- int /*<<< orphan*/  PpcPrepConsKbHit ; 
- int /*<<< orphan*/  PpcPrepDiskReadLogicalSectors ; 
- int /*<<< orphan*/  PpcPrepGetMemoryMap ; 
- int /*<<< orphan*/  PpcPrepHwDetect ; 
- int /*<<< orphan*/  PpcPrepPutChar ; 
- int /*<<< orphan*/  PpcPrepVideoClearScreen ; 
- int /*<<< orphan*/  PpcPrepVideoGetDisplaySize ; 
- int /*<<< orphan*/  PpcPrepVideoSetDisplayMode ; 
- int /*<<< orphan*/  ide1_desc ; 
- int /*<<< orphan*/  ide_setup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int HwIdle; int HwDetect; int GetMemoryMap; int VideoGetDisplaySize; int VideoSetDisplayMode; int VideoClearScreen; int ConsGetCh; int ConsKbHit; int DiskReadLogicalSectors; int ConsPutChar; } ;
+
+
+ int BootMain (char*) ;
+ char* FrLdrVersionString ;
+ TYPE_1__ MachVtbl ;
+ int PcPrepHwIdle ;
+ int PpcPrepConsGetCh ;
+ int PpcPrepConsKbHit ;
+ int PpcPrepDiskReadLogicalSectors ;
+ int PpcPrepGetMemoryMap ;
+ int PpcPrepHwDetect ;
+ int PpcPrepPutChar ;
+ int PpcPrepVideoClearScreen ;
+ int PpcPrepVideoGetDisplaySize ;
+ int PpcPrepVideoSetDisplayMode ;
+ int ide1_desc ;
+ int ide_setup (int *) ;
+ int printf (char*,...) ;
 
 void PpcPrepInit()
 {
@@ -41,8 +41,8 @@ void PpcPrepInit()
 
     MachVtbl.DiskReadLogicalSectors = PpcPrepDiskReadLogicalSectors;
 
-    MachVtbl.ConsKbHit   = PpcPrepConsKbHit;
-    MachVtbl.ConsGetCh   = PpcPrepConsGetCh;
+    MachVtbl.ConsKbHit = PpcPrepConsKbHit;
+    MachVtbl.ConsGetCh = PpcPrepConsGetCh;
 
     MachVtbl.VideoClearScreen = PpcPrepVideoClearScreen;
     MachVtbl.VideoSetDisplayMode = PpcPrepVideoSetDisplayMode;

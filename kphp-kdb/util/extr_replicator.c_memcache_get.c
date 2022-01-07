@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ STATS_BUFF_SIZE ; 
- int prepare_slaves_stats (scalar_t__,int) ; 
- int prepare_stats (struct connection*,scalar_t__,scalar_t__) ; 
- int replicator_prepare_stats () ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,scalar_t__,int) ; 
- scalar_t__ stats_buff ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+ scalar_t__ STATS_BUFF_SIZE ;
+ int prepare_slaves_stats (scalar_t__,int) ;
+ int prepare_stats (struct connection*,scalar_t__,scalar_t__) ;
+ int replicator_prepare_stats () ;
+ int return_one_key (struct connection*,char const*,scalar_t__,int) ;
+ scalar_t__ stats_buff ;
+ int strncmp (char const*,char*,int) ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   if (key_len >= 5 && !strncmp (key, "stats", 5)) {

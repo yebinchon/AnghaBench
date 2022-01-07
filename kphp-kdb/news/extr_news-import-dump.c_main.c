@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SPLIT_PARAM_OWNER ; 
- int /*<<< orphan*/  SPLIT_PARAM_OWNERXPLACE ; 
- int /*<<< orphan*/  atoi (int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  import_dump () ; 
- int /*<<< orphan*/  import_dump2 () ; 
- int /*<<< orphan*/  import_file ; 
- int /*<<< orphan*/  log_split_mod ; 
- char* name_pattern ; 
- int /*<<< orphan*/  optarg ; 
- int optind ; 
- char* progname ; 
- int /*<<< orphan*/  split_param ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  verbosity ; 
+ int SPLIT_PARAM_OWNER ;
+ int SPLIT_PARAM_OWNERXPLACE ;
+ int atoi (int ) ;
+ int getopt (int,char**,char*) ;
+ int import_dump () ;
+ int import_dump2 () ;
+ int import_file ;
+ int log_split_mod ;
+ char* name_pattern ;
+ int optarg ;
+ int optind ;
+ char* progname ;
+ int split_param ;
+ int usage () ;
+ int verbosity ;
 
 int main (int argc, char *argv[]) {
   progname = argv[0];

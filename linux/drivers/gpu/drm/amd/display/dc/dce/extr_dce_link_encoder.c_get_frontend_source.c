@@ -1,56 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum engine_id { ____Placeholder_engine_id } engine_id ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_CRITICAL (int) ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGA ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGB ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGC ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGD ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGE ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGF ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_DIGG ; 
- int /*<<< orphan*/  DCE110_DIG_FE_SOURCE_SELECT_INVALID ; 
-#define  ENGINE_ID_DIGA 134 
-#define  ENGINE_ID_DIGB 133 
-#define  ENGINE_ID_DIGC 132 
-#define  ENGINE_ID_DIGD 131 
-#define  ENGINE_ID_DIGE 130 
-#define  ENGINE_ID_DIGF 129 
-#define  ENGINE_ID_DIGG 128 
 
+
+
+typedef int uint8_t ;
+typedef enum engine_id { ____Placeholder_engine_id } engine_id ;
+
+
+ int ASSERT_CRITICAL (int) ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGA ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGB ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGC ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGD ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGE ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGF ;
+ int DCE110_DIG_FE_SOURCE_SELECT_DIGG ;
+ int DCE110_DIG_FE_SOURCE_SELECT_INVALID ;
 __attribute__((used)) static uint8_t get_frontend_source(
-	enum engine_id engine)
+ enum engine_id engine)
 {
-	switch (engine) {
-	case ENGINE_ID_DIGA:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGA;
-	case ENGINE_ID_DIGB:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGB;
-	case ENGINE_ID_DIGC:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGC;
-	case ENGINE_ID_DIGD:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGD;
-	case ENGINE_ID_DIGE:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGE;
-	case ENGINE_ID_DIGF:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGF;
-	case ENGINE_ID_DIGG:
-		return DCE110_DIG_FE_SOURCE_SELECT_DIGG;
-	default:
-		ASSERT_CRITICAL(false);
-		return DCE110_DIG_FE_SOURCE_SELECT_INVALID;
-	}
+ switch (engine) {
+ case 134:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGA;
+ case 133:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGB;
+ case 132:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGC;
+ case 131:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGD;
+ case 130:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGE;
+ case 129:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGF;
+ case 128:
+  return DCE110_DIG_FE_SOURCE_SELECT_DIGG;
+ default:
+  ASSERT_CRITICAL(0);
+  return DCE110_DIG_FE_SOURCE_SELECT_INVALID;
+ }
 }

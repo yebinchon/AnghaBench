@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int eof_returned; int /*<<< orphan*/  src; } ;
-struct mp_frame {int /*<<< orphan*/  type; struct demux_packet* member_1; int /*<<< orphan*/  member_0; } ;
-struct mp_filter {int /*<<< orphan*/ * ppins; struct priv* priv; } ;
+
+
+
+
+struct priv {int eof_returned; int src; } ;
+struct mp_frame {int type; struct demux_packet* member_1; int member_0; } ;
+struct mp_filter {int * ppins; struct priv* priv; } ;
 struct demux_packet {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_FRAME_EOF ; 
- int /*<<< orphan*/  MP_FRAME_PACKET ; 
- scalar_t__ demux_read_packet_async (int /*<<< orphan*/ ,struct demux_packet**) ; 
- int /*<<< orphan*/  mp_pin_in_needs_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_pin_in_write (int /*<<< orphan*/ ,struct mp_frame) ; 
+
+ int MP_FRAME_EOF ;
+ int MP_FRAME_PACKET ;
+ scalar_t__ demux_read_packet_async (int ,struct demux_packet**) ;
+ int mp_pin_in_needs_data (int ) ;
+ int mp_pin_in_write (int ,struct mp_frame) ;
 
 __attribute__((used)) static void process(struct mp_filter *f)
 {
@@ -29,20 +29,20 @@ __attribute__((used)) static void process(struct mp_filter *f)
     if (!mp_pin_in_needs_data(f->ppins[0]))
         return;
 
-    struct demux_packet *pkt = NULL;
+    struct demux_packet *pkt = ((void*)0);
     if (demux_read_packet_async(p->src, &pkt) == 0)
-        return; // wait
+        return;
 
     struct mp_frame frame = {MP_FRAME_PACKET, pkt};
     if (pkt) {
-        p->eof_returned = false;
+        p->eof_returned = 0;
     } else {
         frame.type = MP_FRAME_EOF;
 
-        // While the demuxer will repeat EOFs, filters never do that.
+
         if (p->eof_returned)
             return;
-        p->eof_returned = true;
+        p->eof_returned = 1;
     }
 
     mp_pin_in_write(f->ppins[0], frame);

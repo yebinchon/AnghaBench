@@ -1,108 +1,108 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_10__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/ * member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Rpc; } ;
-struct TYPE_8__ {int KeepConnectProtocol; int /*<<< orphan*/  KeepConnectInterval; scalar_t__ KeepConnectPort; int /*<<< orphan*/  KeepConnectHost; } ;
-typedef  TYPE_1__ RPC_KEEP ;
-typedef  TYPE_2__ PS ;
-typedef  TYPE_3__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CmdEvalHostAndPort ; 
- int /*<<< orphan*/ * CmdEvalTcpOrUdp ; 
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetParamInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  GetParamStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- scalar_t__ ParseHostPort (int /*<<< orphan*/ ,char**,scalar_t__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ScGetKeep (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ ScSetKeep (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_10__ {char* member_0; int * member_4; int * member_3; int member_2; int member_1; } ;
+struct TYPE_9__ {int Rpc; } ;
+struct TYPE_8__ {int KeepConnectProtocol; int KeepConnectInterval; scalar_t__ KeepConnectPort; int KeepConnectHost; } ;
+typedef TYPE_1__ RPC_KEEP ;
+typedef TYPE_2__ PS ;
+typedef TYPE_3__ PARAM ;
+typedef int LIST ;
+typedef int CONSOLE ;
+
+
+ int * CmdEvalHostAndPort ;
+ int * CmdEvalTcpOrUdp ;
+ int CmdPrintError (int *,scalar_t__) ;
+ int CmdPrompt ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int Free (char*) ;
+ int FreeParamValueList (int *) ;
+ int GetParamInt (int *,char*) ;
+ int GetParamStr (int *,char*) ;
+ int * ParseCommandList (int *,char*,int *,TYPE_3__*,int) ;
+ scalar_t__ ParseHostPort (int ,char**,scalar_t__*,int ) ;
+ scalar_t__ ScGetKeep (int ,TYPE_1__*) ;
+ scalar_t__ ScSetKeep (int ,TYPE_1__*) ;
+ scalar_t__ StrCmpi (int ,char*) ;
+ int StrCpy (int ,int,char*) ;
+ int Zero (TYPE_1__*,int) ;
+ int _UU (char*) ;
 
 UINT PsKeepSet(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_KEEP t;
-	char *host;
-	UINT port;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		// "name", prompt_proc, prompt_param, eval_proc, eval_param
-		{"HOST", CmdPrompt, _UU("CMD_KeepSet_PROMPT_HOST"), CmdEvalHostAndPort, NULL},
-		{"PROTOCOL", CmdPrompt, _UU("CMD_KeepSet_PROMPT_PROTOCOL"), CmdEvalTcpOrUdp, NULL},
-		{"INTERVAL", CmdPrompt, _UU("CMD_KeepSet_PROMPT_INTERVAL"), NULL, NULL},
-	};
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_KEEP t;
+ char *host;
+ UINT port;
 
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
 
-	Zero(&t, sizeof(t));
+  {"HOST", CmdPrompt, _UU("CMD_KeepSet_PROMPT_HOST"), CmdEvalHostAndPort, ((void*)0)},
+  {"PROTOCOL", CmdPrompt, _UU("CMD_KeepSet_PROMPT_PROTOCOL"), CmdEvalTcpOrUdp, ((void*)0)},
+  {"INTERVAL", CmdPrompt, _UU("CMD_KeepSet_PROMPT_INTERVAL"), ((void*)0), ((void*)0)},
+ };
 
-	// RPC call
-	ret = ScGetKeep(ps->Rpc, &t);
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
+ Zero(&t, sizeof(t));
 
-	if (ParseHostPort(GetParamStr(o, "HOST"), &host, &port, 0))
-	{
-		StrCpy(t.KeepConnectHost, sizeof(t.KeepConnectHost), host);
-		t.KeepConnectPort = port;
-		t.KeepConnectInterval = GetParamInt(o, "INTERVAL");
-		t.KeepConnectProtocol = (StrCmpi(GetParamStr(o, "PROTOCOL"), "tcp") == 0) ? 0 : 1;
-		Free(host);
 
-		// RPC call
-		ret = ScSetKeep(ps->Rpc, &t);
+ ret = ScGetKeep(ps->Rpc, &t);
 
-		if (ret != ERR_NO_ERROR)
-		{
-			// An error has occured
-			CmdPrintError(c, ret);
-			FreeParamValueList(o);
-			return ret;
-		}
-	}
+ if (ret != ERR_NO_ERROR)
+ {
 
-	FreeParamValueList(o);
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
 
-	return 0;
+ if (ParseHostPort(GetParamStr(o, "HOST"), &host, &port, 0))
+ {
+  StrCpy(t.KeepConnectHost, sizeof(t.KeepConnectHost), host);
+  t.KeepConnectPort = port;
+  t.KeepConnectInterval = GetParamInt(o, "INTERVAL");
+  t.KeepConnectProtocol = (StrCmpi(GetParamStr(o, "PROTOCOL"), "tcp") == 0) ? 0 : 1;
+  Free(host);
+
+
+  ret = ScSetKeep(ps->Rpc, &t);
+
+  if (ret != ERR_NO_ERROR)
+  {
+
+   CmdPrintError(c, ret);
+   FreeParamValueList(o);
+   return ret;
+  }
+ }
+
+ FreeParamValueList(o);
+
+ return 0;
 }

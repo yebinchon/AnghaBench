@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct reloc_entry {int reloc; } ;
 
-/* Variables and functions */
- int BFD_RELOC_UNUSED ; 
- int /*<<< orphan*/  arm_reloc_hsh ; 
- struct reloc_entry* hash_find_n (int /*<<< orphan*/ ,char*,int) ; 
+
+ int BFD_RELOC_UNUSED ;
+ int arm_reloc_hsh ;
+ struct reloc_entry* hash_find_n (int ,char*,int) ;
 
 __attribute__((used)) static int
 parse_reloc (char **str)
@@ -34,7 +34,7 @@ parse_reloc (char **str)
   if (*q != ')')
     return -1;
 
-  if ((r = hash_find_n (arm_reloc_hsh, p, q - p)) == NULL)
+  if ((r = hash_find_n (arm_reloc_hsh, p, q - p)) == ((void*)0))
     return -1;
 
   *str = q + 1;

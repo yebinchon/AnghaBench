@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  size_t u64 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_12__ {int /*<<< orphan*/  zMalloc; scalar_t__ szMalloc; int /*<<< orphan*/  enc; int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  mem ;
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-typedef  TYPE_1__ Mem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENC (int /*<<< orphan*/ *) ; 
-#define  SQLITE_BLOB 132 
-#define  SQLITE_FLOAT 131 
-#define  SQLITE_INTEGER 130 
-#define  SQLITE_NULL 129 
-#define  SQLITE_TEXT 128 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  Tcl_AppendStringsToObj (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_GetString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_NewDoubleObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * Tcl_NewObj () ; 
- int /*<<< orphan*/ * Tcl_NewStringObj (char const*,int) ; 
- int /*<<< orphan*/ * Tcl_NewWideIntObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3GetVarint (int*,size_t*) ; 
- int /*<<< orphan*/  sqlite3VdbeSerialGet (int*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_blob (TYPE_1__*) ; 
- int sqlite3_value_bytes (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_value_double (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_value_int64 (TYPE_1__*) ; 
- scalar_t__ sqlite3_value_text (TYPE_1__*) ; 
- int sqlite3_value_type (TYPE_1__*) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef size_t u64 ;
+typedef int u32 ;
+struct TYPE_12__ {int zMalloc; scalar_t__ szMalloc; int enc; int * db; } ;
+typedef TYPE_1__ sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+typedef int mem ;
+typedef int Tcl_Obj ;
+typedef TYPE_1__ Mem ;
+
+
+ int ENC (int *) ;
+
+
+
+
+
+ int SQLITE_TRANSIENT ;
+ int Tcl_AppendStringsToObj (int *,char*,int ) ;
+ int Tcl_DecrRefCount (int *) ;
+ int Tcl_GetString (int *) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int ,int *,int *) ;
+ int * Tcl_NewDoubleObj (int ) ;
+ int * Tcl_NewObj () ;
+ int * Tcl_NewStringObj (char const*,int) ;
+ int * Tcl_NewWideIntObj (int ) ;
+ int assert (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sqlite3DbFree (int *,int ) ;
+ int sqlite3GetVarint (int*,size_t*) ;
+ int sqlite3VdbeSerialGet (int*,int ,TYPE_1__*) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_text (int *,int ,int,int ) ;
+ scalar_t__ sqlite3_value_blob (TYPE_1__*) ;
+ int sqlite3_value_bytes (TYPE_1__*) ;
+ int sqlite3_value_double (TYPE_1__*) ;
+ int sqlite3_value_int64 (TYPE_1__*) ;
+ scalar_t__ sqlite3_value_text (TYPE_1__*) ;
+ int sqlite3_value_type (TYPE_1__*) ;
 
 __attribute__((used)) static void test_decode(
   sqlite3_context *context,
@@ -60,11 +60,11 @@ __attribute__((used)) static void test_decode(
 ){
   sqlite3 *db = sqlite3_context_db_handle(context);
   u8 *pRec;
-  u8 *pEndHdr;                    /* Points to one byte past record header */
-  u8 *pHdr;                       /* Current point in record header */
-  u8 *pBody;                      /* Current point in record data */
-  u64 nHdr;                       /* Bytes in record header */
-  Tcl_Obj *pRet;                  /* Return value */
+  u8 *pEndHdr;
+  u8 *pHdr;
+  u8 *pBody;
+  u64 nHdr;
+  Tcl_Obj *pRet;
 
   pRet = Tcl_NewObj();
   Tcl_IncrRefCount(pRet);
@@ -86,11 +86,11 @@ __attribute__((used)) static void test_decode(
     pBody += sqlite3VdbeSerialGet(pBody, (u32)iSerialType, &mem);
 
     switch( sqlite3_value_type(&mem) ){
-      case SQLITE_TEXT:
+      case 128:
         pVal = Tcl_NewStringObj((const char*)sqlite3_value_text(&mem), -1);
         break;
 
-      case SQLITE_BLOB: {
+      case 132: {
         char hexdigit[] = {
           '0', '1', '2', '3', '4', '5', '6', '7',
           '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
@@ -110,15 +110,15 @@ __attribute__((used)) static void test_decode(
         break;
       }
 
-      case SQLITE_FLOAT:
+      case 131:
         pVal = Tcl_NewDoubleObj(sqlite3_value_double(&mem));
         break;
 
-      case SQLITE_INTEGER:
+      case 130:
         pVal = Tcl_NewWideIntObj(sqlite3_value_int64(&mem));
         break;
 
-      case SQLITE_NULL:
+      case 129:
         pVal = Tcl_NewStringObj("NULL", -1);
         break;
 

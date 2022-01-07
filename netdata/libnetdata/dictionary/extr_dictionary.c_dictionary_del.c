@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  NAME_VALUE ;
-typedef  int /*<<< orphan*/  DICTIONARY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_DICTIONARY ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  dictionary_name_value_destroy_nolock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictionary_name_value_index_find_nolock (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dictionary_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictionary_write_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int NAME_VALUE ;
+typedef int DICTIONARY ;
+
+
+ int D_DICTIONARY ;
+ int debug (int ,char*,char const*) ;
+ int dictionary_name_value_destroy_nolock (int *,int *) ;
+ int * dictionary_name_value_index_find_nolock (int *,char const*,int ) ;
+ int dictionary_unlock (int *) ;
+ int dictionary_write_lock (int *) ;
+ scalar_t__ unlikely (int) ;
 
 int dictionary_del(DICTIONARY *dict, const char *name) {
     int ret;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hpi_response {int dummy; } ;
 struct hpi_message {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPI_ADAPTER_CLOSE ; 
- int /*<<< orphan*/  HPI_DEBUG_LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  HPI_OBJ_ADAPTER ; 
- int /*<<< orphan*/  VERBOSE ; 
- int /*<<< orphan*/  hpi_init_response (struct hpi_response*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int HPI_ADAPTER_CLOSE ;
+ int HPI_DEBUG_LOG (int ,char*) ;
+ int HPI_OBJ_ADAPTER ;
+ int VERBOSE ;
+ int hpi_init_response (struct hpi_response*,int ,int ,int ) ;
 
 __attribute__((used)) static void adapter_close(struct hpi_message *phm, struct hpi_response *phr)
 {
-	HPI_DEBUG_LOG(VERBOSE, "adapter_close\n");
-	hpi_init_response(phr, HPI_OBJ_ADAPTER, HPI_ADAPTER_CLOSE, 0);
+ HPI_DEBUG_LOG(VERBOSE, "adapter_close\n");
+ hpi_init_response(phr, HPI_OBJ_ADAPTER, HPI_ADAPTER_CLOSE, 0);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* ilcs_common_deinit ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ilcs_thread_init ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_8__ {scalar_t__ kill_service; int /*<<< orphan*/  thread; int /*<<< orphan*/  wait_mtx; int /*<<< orphan*/  send_sem; int /*<<< orphan*/  wait_event; TYPE_2__* wait; int /*<<< orphan*/  timer; int /*<<< orphan*/  queue; int /*<<< orphan*/  bulk_rx; int /*<<< orphan*/  service; int /*<<< orphan*/  ilcs_common; TYPE_1__ config; } ;
-struct TYPE_7__ {int /*<<< orphan*/  event; } ;
-typedef  TYPE_3__ ILCS_SERVICE_T ;
 
-/* Variables and functions */
- scalar_t__ CLOSED_CALLBACK ; 
- int ILCS_MAX_WAITING ; 
- int /*<<< orphan*/  ilcs_process_message (TYPE_3__*,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiq_remove_service (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiu_queue_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_abort () ; 
- int /*<<< orphan*/  vcos_event_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_free ; 
- int /*<<< orphan*/  vcos_mutex_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_thread_reap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  vcos_timer_delete (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* ilcs_common_deinit ) (int ) ;int (* ilcs_thread_init ) (int ) ;} ;
+struct TYPE_8__ {scalar_t__ kill_service; int thread; int wait_mtx; int send_sem; int wait_event; TYPE_2__* wait; int timer; int queue; int bulk_rx; int service; int ilcs_common; TYPE_1__ config; } ;
+struct TYPE_7__ {int event; } ;
+typedef TYPE_3__ ILCS_SERVICE_T ;
+
+
+ scalar_t__ CLOSED_CALLBACK ;
+ int ILCS_MAX_WAITING ;
+ int ilcs_process_message (TYPE_3__*,int) ;
+ int stub1 (int ) ;
+ int stub2 (int ) ;
+ int vchiq_remove_service (int ) ;
+ int vchiu_queue_delete (int *) ;
+ int vcos_abort () ;
+ int vcos_event_delete (int *) ;
+ int vcos_free ;
+ int vcos_mutex_delete (int *) ;
+ int vcos_semaphore_delete (int *) ;
+ int vcos_thread_reap (int *,int ,TYPE_3__*) ;
+ int vcos_timer_delete (int *) ;
 
 __attribute__((used)) static void *ilcs_task(void *param)
 {
@@ -44,11 +44,11 @@ __attribute__((used)) static void *ilcs_task(void *param)
    while(st->kill_service < CLOSED_CALLBACK)
       ilcs_process_message(st, 1);
 
-   // tidy up after ourselves
+
    st->config.ilcs_common_deinit(st->ilcs_common);
-#ifdef USE_VCHIQ_ARM
-   vchiq_remove_service(st->service);
-#endif
+
+
+
    vcos_event_delete(&st->bulk_rx);
    vchiu_queue_delete(&st->queue);
    vcos_timer_delete(&st->timer);
@@ -60,14 +60,14 @@ __attribute__((used)) static void *ilcs_task(void *param)
 
    if(st->kill_service == CLOSED_CALLBACK)
    {
-#ifdef _VIDEOCORE
-      // need vcos reaper thread to do join/free for us
-      vcos_thread_reap(&st->thread, vcos_free, st);
-#else
-      // we've got a CLOSED callback from vchiq without ilcs_deinit being called.
-      // this shouldn't really happen, so we just want to abort at this point.
+
+
+
+
+
+
       vcos_abort();
-#endif
+
    }
 
    return 0;

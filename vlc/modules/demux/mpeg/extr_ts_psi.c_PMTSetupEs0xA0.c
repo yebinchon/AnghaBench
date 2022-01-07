@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {void* i_height; void* i_visible_height; void* i_width; void* i_visible_width; } ;
 struct TYPE_10__ {scalar_t__ i_extra; int b_packetized; scalar_t__ p_extra; TYPE_1__ video; } ;
 struct TYPE_9__ {TYPE_3__ fmt; } ;
-typedef  TYPE_2__ ts_es_t ;
-typedef  TYPE_3__ es_format_t ;
-typedef  int /*<<< orphan*/  dvbpsi_pmt_es_t ;
-struct TYPE_11__ {int i_length; int /*<<< orphan*/ * p_data; } ;
-typedef  TYPE_4__ dvbpsi_descriptor_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+typedef TYPE_2__ ts_es_t ;
+typedef TYPE_3__ es_format_t ;
+typedef int dvbpsi_pmt_es_t ;
+struct TYPE_11__ {int i_length; int * p_data; } ;
+typedef TYPE_4__ dvbpsi_descriptor_t ;
+typedef int demux_t ;
 
-/* Variables and functions */
- void* GetWBE (int /*<<< orphan*/ *) ; 
- TYPE_4__* PMTEsFindDescriptor (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  VIDEO_ES ; 
- int /*<<< orphan*/  VLC_FOURCC (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __MIN (scalar_t__,int) ; 
- int /*<<< orphan*/  es_format_Change (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
+
+ void* GetWBE (int *) ;
+ TYPE_4__* PMTEsFindDescriptor (int const*,int) ;
+ int VIDEO_ES ;
+ int VLC_FOURCC (int ,int ,int ,int ) ;
+ int __MIN (scalar_t__,int) ;
+ int es_format_Change (TYPE_3__*,int ,int ) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int memcpy (scalar_t__,int *,int ) ;
+ int msg_Warn (int *,char*) ;
 
 __attribute__((used)) static void PMTSetupEs0xA0( demux_t *p_demux, ts_es_t *p_es,
                            const dvbpsi_pmt_es_t *p_dvbpsies )
 {
-    /* MSCODEC sent by vlc */
+
     dvbpsi_descriptor_t *p_dr = PMTEsFindDescriptor( p_dvbpsies, 0xa0 );
     if( !p_dr || p_dr->i_length < 10 )
     {
@@ -66,8 +66,8 @@ __attribute__((used)) static void PMTSetupEs0xA0( demux_t *p_demux, ts_es_t *p_e
         else
             p_fmt->i_extra = 0;
     }
-    /* For such stream we will gather them ourself and don't launch a
-     * packetizer.
-     * Yes it's ugly but it's the only way to have DIV3 working */
-    p_fmt->b_packetized = true;
+
+
+
+    p_fmt->b_packetized = 1;
 }

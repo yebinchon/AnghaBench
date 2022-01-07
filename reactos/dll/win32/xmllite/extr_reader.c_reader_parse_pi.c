@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int resumestate; scalar_t__* resume; int /*<<< orphan*/  nodetype; } ;
-typedef  TYPE_1__ xmlreader ;
-typedef  int /*<<< orphan*/  strval ;
-typedef  char WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StringValue_LocalName ; 
- int /*<<< orphan*/  StringValue_QualifiedName ; 
- int /*<<< orphan*/  StringValue_Value ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XmlNodeType_ProcessingInstruction ; 
-#define  XmlReadResumeState_Initial 129 
- int XmlReadResumeState_PIBody ; 
-#define  XmlReadResumeState_PITarget 128 
- size_t XmlReadResume_Body ; 
- int /*<<< orphan*/  debug_strval (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_wchar_space (char) ; 
- void* reader_get_cur (TYPE_1__*) ; 
- char* reader_get_ptr (TYPE_1__*) ; 
- char* reader_get_ptr2 (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  reader_init_strvalue (scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_parse_pitarget (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_set_strvalue (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_shrink (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_skipn (TYPE_1__*,int) ; 
- int /*<<< orphan*/  strval_empty ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int resumestate; scalar_t__* resume; int nodetype; } ;
+typedef TYPE_1__ xmlreader ;
+typedef int strval ;
+typedef char WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int HRESULT ;
+
+
+ int FAILED (int ) ;
+ int S_OK ;
+ int StringValue_LocalName ;
+ int StringValue_QualifiedName ;
+ int StringValue_Value ;
+ int TRACE (char*,int ) ;
+ int XmlNodeType_ProcessingInstruction ;
+
+ int XmlReadResumeState_PIBody ;
+
+ size_t XmlReadResume_Body ;
+ int debug_strval (TYPE_1__*,int *) ;
+ int is_wchar_space (char) ;
+ void* reader_get_cur (TYPE_1__*) ;
+ char* reader_get_ptr (TYPE_1__*) ;
+ char* reader_get_ptr2 (TYPE_1__*,scalar_t__) ;
+ int reader_init_strvalue (scalar_t__,scalar_t__,int *) ;
+ int reader_parse_pitarget (TYPE_1__*,int *) ;
+ int reader_set_strvalue (TYPE_1__*,int ,int *) ;
+ int reader_shrink (TYPE_1__*) ;
+ int reader_skipn (TYPE_1__*,int) ;
+ int strval_empty ;
 
 __attribute__((used)) static HRESULT reader_parse_pi(xmlreader *reader)
 {
@@ -51,12 +51,12 @@ __attribute__((used)) static HRESULT reader_parse_pi(xmlreader *reader)
 
     switch (reader->resumestate)
     {
-    case XmlReadResumeState_Initial:
-        /* skip '<?' */
+    case 129:
+
         reader_skipn(reader, 2);
         reader_shrink(reader);
-        reader->resumestate = XmlReadResumeState_PITarget;
-    case XmlReadResumeState_PITarget:
+        reader->resumestate = 128;
+    case 128:
         hr = reader_parse_pitarget(reader, &target);
         if (FAILED(hr)) return hr;
         reader_set_strvalue(reader, StringValue_LocalName, &target);
@@ -79,7 +79,7 @@ __attribute__((used)) static HRESULT reader_parse_pi(xmlreader *reader)
                 UINT cur = reader_get_cur(reader);
                 strval value;
 
-                /* strip all leading whitespace chars */
+
                 while (start < cur)
                 {
                     ptr = reader_get_ptr2(reader, start);
@@ -89,11 +89,11 @@ __attribute__((used)) static HRESULT reader_parse_pi(xmlreader *reader)
 
                 reader_init_strvalue(start, cur-start, &value);
 
-                /* skip '?>' */
+
                 reader_skipn(reader, 2);
                 TRACE("%s\n", debug_strval(reader, &value));
                 reader->nodetype = XmlNodeType_ProcessingInstruction;
-                reader->resumestate = XmlReadResumeState_Initial;
+                reader->resumestate = 129;
                 reader->resume[XmlReadResume_Body] = 0;
                 reader_set_strvalue(reader, StringValue_Value, &value);
                 return S_OK;

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_obj_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int mp_obj_t ;
 struct TYPE_8__ {void* WeekDay; void* Date; void* Month; void* Year; } ;
-struct TYPE_7__ {int /*<<< orphan*/  StoreOperation; int /*<<< orphan*/  DayLightSaving; int /*<<< orphan*/  TimeFormat; void* Seconds; void* Minutes; void* Hours; int /*<<< orphan*/  SubSeconds; } ;
-typedef  TYPE_1__ RTC_TimeTypeDef ;
-typedef  TYPE_2__ RTC_DateTypeDef ;
+struct TYPE_7__ {int StoreOperation; int DayLightSaving; int TimeFormat; void* Seconds; void* Minutes; void* Hours; int SubSeconds; } ;
+typedef TYPE_1__ RTC_TimeTypeDef ;
+typedef TYPE_2__ RTC_DateTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HAL_RTC_GetDate (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HAL_RTC_GetTime (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HAL_RTC_SetDate (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HAL_RTC_SetTime (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTCHandle ; 
- int /*<<< orphan*/  RTC_DAYLIGHTSAVING_NONE ; 
- int /*<<< orphan*/  RTC_FORMAT_BIN ; 
- int /*<<< orphan*/  RTC_HOURFORMAT12_AM ; 
- int /*<<< orphan*/  RTC_STOREOPERATION_SET ; 
- int /*<<< orphan*/  mp_const_none ; 
- int /*<<< orphan*/  mp_obj_get_array_fixed_n (int /*<<< orphan*/  const,int,int /*<<< orphan*/ **) ; 
- void* mp_obj_get_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_obj_new_int (void*) ; 
- int /*<<< orphan*/  mp_obj_new_tuple (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rtc_init_finalise () ; 
- void* rtc_subsec_to_us (int /*<<< orphan*/ ) ; 
+
+ int HAL_RTC_GetDate (int *,TYPE_2__*,int ) ;
+ int HAL_RTC_GetTime (int *,TYPE_1__*,int ) ;
+ int HAL_RTC_SetDate (int *,TYPE_2__*,int ) ;
+ int HAL_RTC_SetTime (int *,TYPE_1__*,int ) ;
+ int RTCHandle ;
+ int RTC_DAYLIGHTSAVING_NONE ;
+ int RTC_FORMAT_BIN ;
+ int RTC_HOURFORMAT12_AM ;
+ int RTC_STOREOPERATION_SET ;
+ int mp_const_none ;
+ int mp_obj_get_array_fixed_n (int const,int,int **) ;
+ void* mp_obj_get_int (int ) ;
+ int mp_obj_new_int (void*) ;
+ int mp_obj_new_tuple (int,int *) ;
+ int rtc_init_finalise () ;
+ void* rtc_subsec_to_us (int ) ;
 
 mp_obj_t pyb_rtc_datetime(size_t n_args, const mp_obj_t *args) {
     rtc_init_finalise();
     if (n_args == 1) {
-        // get date and time
-        // note: need to call get time then get date to correctly access the registers
+
+
         RTC_DateTypeDef date;
         RTC_TimeTypeDef time;
         HAL_RTC_GetTime(&RTCHandle, &time, RTC_FORMAT_BIN);
@@ -57,7 +57,7 @@ mp_obj_t pyb_rtc_datetime(size_t n_args, const mp_obj_t *args) {
         };
         return mp_obj_new_tuple(8, tuple);
     } else {
-        // set date and time
+
         mp_obj_t *items;
         mp_obj_get_array_fixed_n(args[1], 8, &items);
 

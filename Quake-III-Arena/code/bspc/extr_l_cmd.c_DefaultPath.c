@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char PATHSEPERATOR ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+ char PATHSEPERATOR ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 void DefaultPath (char *path, char *basepath)
 {
-	char    temp[128];
+ char temp[128];
 
-	if (path[0] == PATHSEPERATOR)
-		return;                   // absolute path location
-	strcpy (temp,path);
-	strcpy (path,basepath);
-	strcat (path,temp);
+ if (path[0] == PATHSEPERATOR)
+  return;
+ strcpy (temp,path);
+ strcpy (path,basepath);
+ strcat (path,temp);
 }

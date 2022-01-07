@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AutoVacLauncherMain (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ClosePostmasterPorts (int) ; 
- int /*<<< orphan*/  InitPostmasterChild () ; 
- int /*<<< orphan*/  LOG ; 
- scalar_t__ avlauncher_forkexec () ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- scalar_t__ fork_process () ; 
+
+
+
+typedef scalar_t__ pid_t ;
+
+
+ int AutoVacLauncherMain (int ,int *) ;
+ int ClosePostmasterPorts (int) ;
+ int InitPostmasterChild () ;
+ int LOG ;
+ scalar_t__ avlauncher_forkexec () ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
+ scalar_t__ fork_process () ;
 
 int
 StartAutoVacLauncher(void)
 {
-	pid_t		AutoVacPID;
+ pid_t AutoVacPID;
 
-#ifdef EXEC_BACKEND
-	switch ((AutoVacPID = avlauncher_forkexec()))
-#else
-	switch ((AutoVacPID = fork_process()))
-#endif
-	{
-		case -1:
-			ereport(LOG,
-					(errmsg("could not fork autovacuum launcher process: %m")));
-			return 0;
 
-#ifndef EXEC_BACKEND
-		case 0:
-			/* in postmaster child ... */
-			InitPostmasterChild();
 
-			/* Close the postmaster's sockets */
-			ClosePostmasterPorts(false);
 
-			AutoVacLauncherMain(0, NULL);
-			break;
-#endif
-		default:
-			return (int) AutoVacPID;
-	}
+ switch ((AutoVacPID = fork_process()))
 
-	/* shouldn't get here */
-	return 0;
+ {
+  case -1:
+   ereport(LOG,
+     (errmsg("could not fork autovacuum launcher process: %m")));
+   return 0;
+
+
+  case 0:
+
+   InitPostmasterChild();
+
+
+   ClosePostmasterPorts(0);
+
+   AutoVacLauncherMain(0, ((void*)0));
+   break;
+
+  default:
+   return (int) AutoVacPID;
+ }
+
+
+ return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vhost_umem {int /*<<< orphan*/  umem_list; scalar_t__ numem; int /*<<< orphan*/  umem_tree; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RB_ROOT_CACHED ; 
- struct vhost_umem* kvzalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct vhost_umem {int umem_list; scalar_t__ numem; int umem_tree; } ;
+
+
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ int RB_ROOT_CACHED ;
+ struct vhost_umem* kvzalloc (int,int ) ;
 
 __attribute__((used)) static struct vhost_umem *vhost_umem_alloc(void)
 {
-	struct vhost_umem *umem = kvzalloc(sizeof(*umem), GFP_KERNEL);
+ struct vhost_umem *umem = kvzalloc(sizeof(*umem), GFP_KERNEL);
 
-	if (!umem)
-		return NULL;
+ if (!umem)
+  return ((void*)0);
 
-	umem->umem_tree = RB_ROOT_CACHED;
-	umem->numem = 0;
-	INIT_LIST_HEAD(&umem->umem_list);
+ umem->umem_tree = RB_ROOT_CACHED;
+ umem->numem = 0;
+ INIT_LIST_HEAD(&umem->umem_list);
 
-	return umem;
+ return umem;
 }

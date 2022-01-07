@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dummyrec ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_write (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cipher_list (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SSL_CTX_set_ciphersuites (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_get_wbio (int /*<<< orphan*/ *) ; 
- int SSL_read (int /*<<< orphan*/ *,char*,int) ; 
- int SSL_write (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_error (char*,char*) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_le (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int dummyrec ;
+typedef int buf ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+typedef int BIO ;
+
+
+ int BIO_write (int *,unsigned char*,int) ;
+ int ERR_clear_error () ;
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_cipher_list (int *,char*) ;
+ int SSL_CTX_set_ciphersuites (int *,char*) ;
+ int SSL_ERROR_NONE ;
+ int SSL_free (int *) ;
+ int * SSL_get_wbio (int *) ;
+ int SSL_read (int *,char*,int) ;
+ int SSL_write (int *,char const*,int ) ;
+ int TEST_error (char*,char*) ;
+ int TEST_false (int ) ;
+ int TEST_int_gt (int ,int ) ;
+ int TEST_int_le (int,int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int TLS1_VERSION ;
+ int TLS_method () ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int printf (char*) ;
+ int privkey ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int test_fatalerr(void)
 {
-    SSL_CTX *sctx = NULL, *cctx = NULL;
-    SSL *sssl = NULL, *cssl = NULL;
+    SSL_CTX *sctx = ((void*)0), *cctx = ((void*)0);
+    SSL *sssl = ((void*)0), *cssl = ((void*)0);
     const char *msg = "Dummy";
-    BIO *wbio = NULL;
+    BIO *wbio = ((void*)0);
     int ret = 0, len;
     char buf[80];
     unsigned char dummyrec[] = {
@@ -60,18 +60,18 @@ __attribute__((used)) static int test_fatalerr(void)
                                        &sctx, &cctx, cert, privkey)))
         goto err;
 
-    /*
-     * Deliberately set the cipher lists for client and server to be different
-     * to force a handshake failure.
-     */
+
+
+
+
     if (!TEST_true(SSL_CTX_set_cipher_list(sctx, "AES128-SHA"))
             || !TEST_true(SSL_CTX_set_cipher_list(cctx, "AES256-SHA"))
             || !TEST_true(SSL_CTX_set_ciphersuites(sctx,
                                                    "TLS_AES_128_GCM_SHA256"))
             || !TEST_true(SSL_CTX_set_ciphersuites(cctx,
                                                    "TLS_AES_256_GCM_SHA384"))
-            || !TEST_true(create_ssl_objects(sctx, cctx, &sssl, &cssl, NULL,
-                          NULL)))
+            || !TEST_true(create_ssl_objects(sctx, cctx, &sssl, &cssl, ((void*)0),
+                          ((void*)0))))
         goto err;
 
     wbio = SSL_get_wbio(cssl);
@@ -80,17 +80,17 @@ __attribute__((used)) static int test_fatalerr(void)
         goto err;
     }
 
-    /* Connection should fail */
+
     if (!TEST_false(create_ssl_connection(sssl, cssl, SSL_ERROR_NONE)))
         goto err;
 
     ERR_clear_error();
 
-    /* Inject a plaintext record from client to server */
+
     if (!TEST_int_gt(BIO_write(wbio, dummyrec, sizeof(dummyrec)), 0))
         goto err;
 
-    /* SSL_read()/SSL_write should fail because of a previous fatal error */
+
     if (!TEST_int_le(len = SSL_read(sssl, buf, sizeof(buf) - 1), 0)) {
         buf[len] = '\0';
         TEST_error("Unexpected success reading data: %s\n", buf);

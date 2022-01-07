@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct skb_shared_info {int nr_frags; int /*<<< orphan*/ * frags; } ;
+
+
+
+
+struct skb_shared_info {int nr_frags; int * frags; } ;
 struct sk_buff {int len; } ;
 
-/* Variables and functions */
- void* skb_frag_address_safe (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ void* skb_frag_address_safe (int *) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static bool is_inline(int inline_thold, const struct sk_buff *skb,
-		      const struct skb_shared_info *shinfo,
-		      void **pfrag)
+        const struct skb_shared_info *shinfo,
+        void **pfrag)
 {
-	void *ptr;
+ void *ptr;
 
-	if (skb->len > inline_thold || !inline_thold)
-		return false;
+ if (skb->len > inline_thold || !inline_thold)
+  return 0;
 
-	if (shinfo->nr_frags == 1) {
-		ptr = skb_frag_address_safe(&shinfo->frags[0]);
-		if (unlikely(!ptr))
-			return false;
-		*pfrag = ptr;
-		return true;
-	}
-	if (shinfo->nr_frags)
-		return false;
-	return true;
+ if (shinfo->nr_frags == 1) {
+  ptr = skb_frag_address_safe(&shinfo->frags[0]);
+  if (unlikely(!ptr))
+   return 0;
+  *pfrag = ptr;
+  return 1;
+ }
+ if (shinfo->nr_frags)
+  return 0;
+ return 1;
 }

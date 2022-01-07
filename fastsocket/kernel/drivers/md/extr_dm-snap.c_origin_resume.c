@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_target {int /*<<< orphan*/  split_io; struct dm_dev* private; } ;
-struct dm_dev {int /*<<< orphan*/  bdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_origin_minimum_chunksize (int /*<<< orphan*/ ) ; 
+
+
+
+struct dm_target {int split_io; struct dm_dev* private; } ;
+struct dm_dev {int bdev; } ;
+
+
+ int get_origin_minimum_chunksize (int ) ;
 
 __attribute__((used)) static void origin_resume(struct dm_target *ti)
 {
-	struct dm_dev *dev = ti->private;
+ struct dm_dev *dev = ti->private;
 
-	ti->split_io = get_origin_minimum_chunksize(dev->bdev);
+ ti->split_io = get_origin_minimum_chunksize(dev->bdev);
 }

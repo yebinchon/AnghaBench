@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int top; int val; int* l; int* r; int* n; int* st; int* s_val; } ;
-typedef  TYPE_1__ iCode_iterator ;
+typedef TYPE_1__ iCode_iterator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int iCode_get_next_int (TYPE_1__*,int) ; 
+
+ int assert (int ) ;
+ int iCode_get_next_int (TYPE_1__*,int) ;
 
 void iCode_iter_next (iCode_iterator *it) {
   if (it->top == -1) {
@@ -61,7 +61,7 @@ void iCode_iter_next (iCode_iterator *it) {
       t--;
       break;
 
-    default: // TODO optimize
+    default:
       assert (0);
     }
     if (t < 0) {

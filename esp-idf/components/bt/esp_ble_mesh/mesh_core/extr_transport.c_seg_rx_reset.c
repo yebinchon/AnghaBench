@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct seg_rx {scalar_t__ block; unsigned int seq_auth; unsigned int in_use; void* dst; void* src; int /*<<< orphan*/ * sub; int /*<<< orphan*/  seg_n; scalar_t__ obo; int /*<<< orphan*/  ack; } ;
 
-/* Variables and functions */
- void* BLE_MESH_ADDR_UNASSIGNED ; 
- scalar_t__ BLOCK_COMPLETE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BT_DBG (char*,struct seg_rx*) ; 
- int /*<<< orphan*/  BT_WARN (char*) ; 
- int /*<<< orphan*/  CONFIG_BLE_MESH_FRIEND ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_mesh_friend_clear_incomplete (int /*<<< orphan*/ *,void*,void*,unsigned int*) ; 
- int /*<<< orphan*/  k_delayed_work_cancel (int /*<<< orphan*/ *) ; 
+
+
+
+struct seg_rx {scalar_t__ block; unsigned int seq_auth; unsigned int in_use; void* dst; void* src; int * sub; int seg_n; scalar_t__ obo; int ack; } ;
+
+
+ void* BLE_MESH_ADDR_UNASSIGNED ;
+ scalar_t__ BLOCK_COMPLETE (int ) ;
+ int BT_DBG (char*,struct seg_rx*) ;
+ int BT_WARN (char*) ;
+ int CONFIG_BLE_MESH_FRIEND ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int bt_mesh_friend_clear_incomplete (int *,void*,void*,unsigned int*) ;
+ int k_delayed_work_cancel (int *) ;
 
 __attribute__((used)) static void seg_rx_reset(struct seg_rx *rx, bool full_reset)
 {
@@ -37,13 +37,13 @@ __attribute__((used)) static void seg_rx_reset(struct seg_rx *rx, bool full_rese
 
     rx->in_use = 0U;
 
-    /* We don't always reset these values since we need to be able to
-     * send an ack if we receive a segment after we've already received
-     * the full SDU.
-     */
+
+
+
+
     if (full_reset) {
         rx->seq_auth = 0U;
-        rx->sub = NULL;
+        rx->sub = ((void*)0);
         rx->src = BLE_MESH_ADDR_UNASSIGNED;
         rx->dst = BLE_MESH_ADDR_UNASSIGNED;
     }

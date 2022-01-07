@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_17__ {int /*<<< orphan*/  buffered; int /*<<< orphan*/  log; TYPE_3__* (* send_chain ) (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ ngx_connection_t ;
-struct TYPE_18__ {TYPE_3__* out; TYPE_3__** last; TYPE_8__* pool; int /*<<< orphan*/  limit; TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_chain_writer_ctx_t ;
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_11__ ;
+
+
+typedef scalar_t__ off_t ;
+typedef int ngx_int_t ;
+struct TYPE_17__ {int buffered; int log; TYPE_3__* (* send_chain ) (TYPE_1__*,TYPE_3__*,int ) ;} ;
+typedef TYPE_1__ ngx_connection_t ;
+struct TYPE_18__ {TYPE_3__* out; TYPE_3__** last; TYPE_8__* pool; int limit; TYPE_1__* connection; } ;
+typedef TYPE_2__ ngx_chain_writer_ctx_t ;
 struct TYPE_19__ {struct TYPE_19__* next; TYPE_11__* buf; } ;
-typedef  TYPE_3__ ngx_chain_t ;
-struct TYPE_20__ {int /*<<< orphan*/  log; } ;
-struct TYPE_16__ {int /*<<< orphan*/  file_last; int /*<<< orphan*/  file_pos; int /*<<< orphan*/  file; int /*<<< orphan*/  last; int /*<<< orphan*/  pos; int /*<<< orphan*/  start; int /*<<< orphan*/  in_file; int /*<<< orphan*/  recycled; int /*<<< orphan*/  temporary; int /*<<< orphan*/  flush; } ;
+typedef TYPE_3__ ngx_chain_t ;
+struct TYPE_20__ {int log; } ;
+struct TYPE_16__ {int file_last; int file_pos; int file; int last; int pos; int start; int in_file; int recycled; int temporary; int flush; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- TYPE_3__* NGX_CHAIN_ERROR ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_CORE ; 
- int /*<<< orphan*/  NGX_OK ; 
- TYPE_3__* ngx_alloc_chain_link (TYPE_8__*) ; 
- scalar_t__ ngx_buf_size (TYPE_11__*) ; 
- int /*<<< orphan*/  ngx_buf_special (TYPE_11__*) ; 
- int /*<<< orphan*/  ngx_debug_point () ; 
- int /*<<< orphan*/  ngx_free_chain (TYPE_8__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* stub1 (TYPE_1__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int NGX_AGAIN ;
+ TYPE_3__* NGX_CHAIN_ERROR ;
+ int NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_CORE ;
+ int NGX_OK ;
+ TYPE_3__* ngx_alloc_chain_link (TYPE_8__*) ;
+ scalar_t__ ngx_buf_size (TYPE_11__*) ;
+ int ngx_buf_special (TYPE_11__*) ;
+ int ngx_debug_point () ;
+ int ngx_free_chain (TYPE_8__*,TYPE_3__*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_3__*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int ,scalar_t__) ;
+ int ngx_log_error (int ,int ,int ,char*,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ TYPE_3__* stub1 (TYPE_1__*,TYPE_3__*,int ) ;
 
 ngx_int_t
 ngx_chain_writer(void *data, ngx_chain_t *in)
 {
     ngx_chain_writer_ctx_t *ctx = data;
 
-    off_t              size;
-    ngx_chain_t       *cl, *ln, *chain;
-    ngx_connection_t  *c;
+    off_t size;
+    ngx_chain_t *cl, *ln, *chain;
+    ngx_connection_t *c;
 
     c = ctx->connection;
 
@@ -103,12 +103,12 @@ ngx_chain_writer(void *data, ngx_chain_t *in)
                        in->buf->flush, ngx_buf_size(in->buf));
 
         cl = ngx_alloc_chain_link(ctx->pool);
-        if (cl == NULL) {
+        if (cl == ((void*)0)) {
             return NGX_ERROR;
         }
 
         cl->buf = in->buf;
-        cl->next = NULL;
+        cl->next = ((void*)0);
         *ctx->last = cl;
         ctx->last = &cl->next;
     }
@@ -174,7 +174,7 @@ ngx_chain_writer(void *data, ngx_chain_t *in)
         return NGX_ERROR;
     }
 
-    for (cl = ctx->out; cl && cl != chain; /* void */) {
+    for (cl = ctx->out; cl && cl != chain; ) {
         ln = cl;
         cl = cl->next;
         ngx_free_chain(ctx->pool, ln);
@@ -182,7 +182,7 @@ ngx_chain_writer(void *data, ngx_chain_t *in)
 
     ctx->out = chain;
 
-    if (ctx->out == NULL) {
+    if (ctx->out == ((void*)0)) {
         ctx->last = &ctx->out;
 
         if (!c->buffered) {

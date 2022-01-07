@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EACCES ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  RETVAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  STRINGMATCH (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  krb5_acl_match_string (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  krb5_errx (int /*<<< orphan*/ ,int,char*) ; 
+
+
+
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+
+
+ int EACCES ;
+ int EINVAL ;
+ int RETVAL (int ,int ,int ,char*) ;
+ int STRINGMATCH (int ,char*,char*,char*) ;
+ int free (char*) ;
+ int krb5_acl_match_string (int ,char*,char*,...) ;
+ int krb5_errx (int ,int,char*) ;
 
 __attribute__((used)) static void
 test_match_string(krb5_context context)
@@ -50,10 +50,10 @@ test_match_string(krb5_context context)
     ret = krb5_acl_match_string(context, "foo/bar", "f", "foo/*");
     RETVAL(context, ret, 0, "foo/*");
     ret = krb5_acl_match_string(context, "foo/bar.example.org", "f",
-				"foo/*.example.org");
+    "foo/*.example.org");
     RETVAL(context, ret, 0, "foo/*.example.org");
     ret = krb5_acl_match_string(context, "foo/bar.example.com", "f",
-				"foo/*.example.org");
+    "foo/*.example.org");
     RETVAL(context, ret, EACCES, "foo/*.example.com");
 
     ret = krb5_acl_match_string(context, "foo/bar/baz", "f", "foo/*/baz");
@@ -70,7 +70,7 @@ test_match_string(krb5_context context)
 
     ret = krb5_acl_match_string(context, "foo bar", "sr", "bar", &s1);
     RETVAL(context, ret, EACCES, "ret mismatch");
-    if (s1 != NULL) krb5_errx(context, 1, "s1 not NULL");
+    if (s1 != ((void*)0)) krb5_errx(context, 1, "s1 not NULL");
 
     ret = krb5_acl_match_string(context, "foo", "l", "foo");
     RETVAL(context, ret, EINVAL, "unknown letter");

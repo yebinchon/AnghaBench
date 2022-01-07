@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/ * PCWSTR ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegDeleteKeyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegDeleteValueW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- scalar_t__ max (scalar_t__,scalar_t__) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * PWSTR ;
+typedef int * PCWSTR ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ scalar_t__ ERROR_SUCCESS ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,scalar_t__) ;
+ int HeapFree (int ,int ,int *) ;
+ int KEY_READ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegDeleteKeyW (int *,int *) ;
+ scalar_t__ RegDeleteValueW (int *,int *) ;
+ scalar_t__ RegEnumKeyExW (int *,int ,int *,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegEnumValueW (int *,int ,int *,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int *,int *,int ,int ,int **) ;
+ scalar_t__ RegQueryInfoKeyW (int *,int *,int *,int *,int *,scalar_t__*,int *,int *,scalar_t__*,int *,int *,int *) ;
+ scalar_t__ TRUE ;
+ scalar_t__ max (scalar_t__,scalar_t__) ;
 
 DWORD
 ScmDeleteTree(
@@ -40,11 +40,11 @@ ScmDeleteTree(
 {
     DWORD dwMaxSubkeyLength, dwMaxValueLength;
     DWORD dwMaxLength, dwSize;
-    PWSTR pszName = NULL;
-    HKEY hSubKey = NULL;
+    PWSTR pszName = ((void*)0);
+    HKEY hSubKey = ((void*)0);
     DWORD dwError;
 
-    if (pszSubKey != NULL)
+    if (pszSubKey != ((void*)0))
     {
         dwError = RegOpenKeyExW(hKey, pszSubKey, 0, KEY_READ, &hSubKey);
         if (dwError != ERROR_SUCCESS)
@@ -55,19 +55,19 @@ ScmDeleteTree(
          hSubKey = hKey;
     }
 
-    /* Get highest length for keys, values */
+
     dwError = RegQueryInfoKeyW(hSubKey,
-                               NULL,
-                               NULL,
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0),
                                &dwMaxSubkeyLength,
-                               NULL,
-                               NULL,
+                               ((void*)0),
+                               ((void*)0),
                                &dwMaxValueLength,
-                               NULL,
-                               NULL,
-                               NULL);
+                               ((void*)0),
+                               ((void*)0),
+                               ((void*)0));
     if (dwError != ERROR_SUCCESS)
         goto done;
 
@@ -75,17 +75,17 @@ ScmDeleteTree(
     dwMaxValueLength++;
     dwMaxLength = max(dwMaxSubkeyLength, dwMaxValueLength);
 
-    /* Allocate a buffer for key and value names */
+
     pszName = HeapAlloc(GetProcessHeap(),
                          0,
                          dwMaxLength * sizeof(WCHAR));
-    if (pszName == NULL)
+    if (pszName == ((void*)0))
     {
         dwError = ERROR_NOT_ENOUGH_MEMORY;
         goto done;
     }
 
-    /* Recursively delete all the subkeys */
+
     while (TRUE)
     {
         dwSize = dwMaxLength;
@@ -93,10 +93,10 @@ ScmDeleteTree(
                           0,
                           pszName,
                           &dwSize,
-                          NULL,
-                          NULL,
-                          NULL,
-                          NULL))
+                          ((void*)0),
+                          ((void*)0),
+                          ((void*)0),
+                          ((void*)0)))
             break;
 
         dwError = ScmDeleteTree(hSubKey, pszName);
@@ -104,7 +104,7 @@ ScmDeleteTree(
             goto done;
     }
 
-    if (pszSubKey != NULL)
+    if (pszSubKey != ((void*)0))
     {
         dwError = RegDeleteKeyW(hKey, pszSubKey);
     }
@@ -117,10 +117,10 @@ ScmDeleteTree(
                               0,
                               pszName,
                               &dwSize,
-                              NULL,
-                              NULL,
-                              NULL,
-                              NULL))
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0)))
                 break;
 
             dwError = RegDeleteValueW(hKey, pszName);
@@ -130,10 +130,10 @@ ScmDeleteTree(
     }
 
 done:
-    if (pszName != NULL)
+    if (pszName != ((void*)0))
         HeapFree(GetProcessHeap(), 0, pszName);
 
-    if (pszSubKey != NULL)
+    if (pszSubKey != ((void*)0))
         RegCloseKey(hSubKey);
 
     return dwError;

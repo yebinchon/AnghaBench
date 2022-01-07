@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {void* KeySchedule; int /*<<< orphan*/  KeyValue; } ;
-typedef  int /*<<< orphan*/  DES_key_schedule ;
-typedef  TYPE_1__ DES_KEY_VALUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DES_KEY_SIZE ; 
- int /*<<< orphan*/  DES_set_key_unchecked (void*,void*) ; 
- void* ZeroMalloc (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {void* KeySchedule; int KeyValue; } ;
+typedef int DES_key_schedule ;
+typedef TYPE_1__ DES_KEY_VALUE ;
+
+
+ int Copy (int ,void*,int ) ;
+ int DES_KEY_SIZE ;
+ int DES_set_key_unchecked (void*,void*) ;
+ void* ZeroMalloc (int) ;
 
 DES_KEY_VALUE *DesNewKeyValue(void *value)
 {
-	DES_KEY_VALUE *v;
-	// Validate arguments
-	if (value == NULL)
-	{
-		return NULL;
-	}
+ DES_KEY_VALUE *v;
 
-	v = ZeroMalloc(sizeof(DES_KEY_VALUE));
+ if (value == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	Copy(v->KeyValue, value, DES_KEY_SIZE);
+ v = ZeroMalloc(sizeof(DES_KEY_VALUE));
 
-	v->KeySchedule = ZeroMalloc(sizeof(DES_key_schedule));
+ Copy(v->KeyValue, value, DES_KEY_SIZE);
 
-	DES_set_key_unchecked(value, v->KeySchedule);
+ v->KeySchedule = ZeroMalloc(sizeof(DES_key_schedule));
 
-	return v;
+ DES_set_key_unchecked(value, v->KeySchedule);
+
+ return v;
 }

@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cardstate {int connected; scalar_t__ mstate; int control_state; int waiting; int /*<<< orphan*/  mutex; int /*<<< orphan*/  waitqueue; int /*<<< orphan*/  at_state; TYPE_1__* ops; int /*<<< orphan*/  lock; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* set_line_ctrl ) (struct cardstate*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* baud_rate ) (struct cardstate*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* set_modem_ctrl ) (struct cardstate*,int /*<<< orphan*/ ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B115200 ; 
- int /*<<< orphan*/  CS8 ; 
- int /*<<< orphan*/  DEBUG_CMD ; 
- int /*<<< orphan*/  EV_START ; 
- scalar_t__ MS_LOCKED ; 
- int TIOCM_DTR ; 
- int TIOCM_RTS ; 
- int /*<<< orphan*/  gig_dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gigaset_add_event (struct cardstate*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gigaset_schedule_event (struct cardstate*) ; 
- scalar_t__ mutex_lock_interruptible (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct cardstate*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub2 (struct cardstate*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (struct cardstate*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait_event (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cardstate {int connected; scalar_t__ mstate; int control_state; int waiting; int mutex; int waitqueue; int at_state; TYPE_1__* ops; int lock; } ;
+struct TYPE_2__ {int (* set_line_ctrl ) (struct cardstate*,int ) ;int (* baud_rate ) (struct cardstate*,int ) ;int (* set_modem_ctrl ) (struct cardstate*,int ,int) ;} ;
+
+
+ int B115200 ;
+ int CS8 ;
+ int DEBUG_CMD ;
+ int EV_START ;
+ scalar_t__ MS_LOCKED ;
+ int TIOCM_DTR ;
+ int TIOCM_RTS ;
+ int gig_dbg (int ,char*) ;
+ int gigaset_add_event (struct cardstate*,int *,int ,int *,int ,int *) ;
+ int gigaset_schedule_event (struct cardstate*) ;
+ scalar_t__ mutex_lock_interruptible (int *) ;
+ int mutex_unlock (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct cardstate*,int ,int) ;
+ int stub2 (struct cardstate*,int ) ;
+ int stub3 (struct cardstate*,int ) ;
+ int wait_event (int ,int) ;
 
 int gigaset_start(struct cardstate *cs)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	if (mutex_lock_interruptible(&cs->mutex))
-		return 0;
+ if (mutex_lock_interruptible(&cs->mutex))
+  return 0;
 
-	spin_lock_irqsave(&cs->lock, flags);
-	cs->connected = 1;
-	spin_unlock_irqrestore(&cs->lock, flags);
+ spin_lock_irqsave(&cs->lock, flags);
+ cs->connected = 1;
+ spin_unlock_irqrestore(&cs->lock, flags);
 
-	if (cs->mstate != MS_LOCKED) {
-		cs->ops->set_modem_ctrl(cs, 0, TIOCM_DTR|TIOCM_RTS);
-		cs->ops->baud_rate(cs, B115200);
-		cs->ops->set_line_ctrl(cs, CS8);
-		cs->control_state = TIOCM_DTR|TIOCM_RTS;
-	} else {
-		//FIXME use some saved values?
-	}
+ if (cs->mstate != MS_LOCKED) {
+  cs->ops->set_modem_ctrl(cs, 0, TIOCM_DTR|TIOCM_RTS);
+  cs->ops->baud_rate(cs, B115200);
+  cs->ops->set_line_ctrl(cs, CS8);
+  cs->control_state = TIOCM_DTR|TIOCM_RTS;
+ } else {
 
-	cs->waiting = 1;
+ }
 
-	if (!gigaset_add_event(cs, &cs->at_state, EV_START, NULL, 0, NULL)) {
-		cs->waiting = 0;
-		//FIXME what should we do?
-		goto error;
-	}
+ cs->waiting = 1;
 
-	gig_dbg(DEBUG_CMD, "scheduling START");
-	gigaset_schedule_event(cs);
+ if (!gigaset_add_event(cs, &cs->at_state, EV_START, ((void*)0), 0, ((void*)0))) {
+  cs->waiting = 0;
 
-	wait_event(cs->waitqueue, !cs->waiting);
+  goto error;
+ }
 
-	mutex_unlock(&cs->mutex);
-	return 1;
+ gig_dbg(DEBUG_CMD, "scheduling START");
+ gigaset_schedule_event(cs);
+
+ wait_event(cs->waitqueue, !cs->waiting);
+
+ mutex_unlock(&cs->mutex);
+ return 1;
 
 error:
-	mutex_unlock(&cs->mutex);
-	return 0;
+ mutex_unlock(&cs->mutex);
+ return 0;
 }

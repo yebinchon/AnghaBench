@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-struct TYPE_5__ {int fd; int axisCount; int buttonCount; void* buttons; void* axes; void* path; void* name; int /*<<< orphan*/  present; } ;
-typedef  TYPE_2__ _GLFWjoystickLinux ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int name ;
+struct TYPE_5__ {int fd; int axisCount; int buttonCount; void* buttons; void* axes; void* path; void* name; int present; } ;
+typedef TYPE_2__ _GLFWjoystickLinux ;
 struct TYPE_4__ {TYPE_2__* js; } ;
 struct TYPE_6__ {TYPE_1__ linux_js; } ;
-typedef  int /*<<< orphan*/  GLFWbool ;
+typedef int GLFWbool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_CONNECTED ; 
- int /*<<< orphan*/  GLFW_FALSE ; 
- int GLFW_JOYSTICK_1 ; 
- int GLFW_JOYSTICK_LAST ; 
- int /*<<< orphan*/  GLFW_TRUE ; 
- int /*<<< orphan*/  JSIOCGAXES ; 
- int /*<<< orphan*/  JSIOCGBUTTONS ; 
- int /*<<< orphan*/  JSIOCGNAME (int) ; 
- int /*<<< orphan*/  JSIOCGVERSION ; 
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- TYPE_3__ _glfw ; 
- int /*<<< orphan*/  _glfwInputJoystickChange (int,int /*<<< orphan*/ ) ; 
- void* calloc (char,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,...) ; 
- int open (char const*,int) ; 
- scalar_t__ strcmp (void*,char const*) ; 
- void* strdup (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
+
+ int GLFW_CONNECTED ;
+ int GLFW_FALSE ;
+ int GLFW_JOYSTICK_1 ;
+ int GLFW_JOYSTICK_LAST ;
+ int GLFW_TRUE ;
+ int JSIOCGAXES ;
+ int JSIOCGBUTTONS ;
+ int JSIOCGNAME (int) ;
+ int JSIOCGVERSION ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ TYPE_3__ _glfw ;
+ int _glfwInputJoystickChange (int,int ) ;
+ void* calloc (char,int) ;
+ int close (int) ;
+ scalar_t__ ioctl (int,int ,...) ;
+ int open (char const*,int) ;
+ scalar_t__ strcmp (void*,char const*) ;
+ void* strdup (char const*) ;
+ int strncpy (char*,char*,int) ;
 
 __attribute__((used)) static GLFWbool openJoystickDevice(const char* path)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static GLFWbool openJoystickDevice(const char* path)
     int joy, fd, version;
     _GLFWjoystickLinux* js;
 
-    for (joy = GLFW_JOYSTICK_1;  joy <= GLFW_JOYSTICK_LAST;  joy++)
+    for (joy = GLFW_JOYSTICK_1; joy <= GLFW_JOYSTICK_LAST; joy++)
     {
         if (!_glfw.linux_js.js[joy].present)
             continue;
@@ -58,7 +58,7 @@ __attribute__((used)) static GLFWbool openJoystickDevice(const char* path)
             return GLFW_FALSE;
     }
 
-    for (joy = GLFW_JOYSTICK_1;  joy <= GLFW_JOYSTICK_LAST;  joy++)
+    for (joy = GLFW_JOYSTICK_1; joy <= GLFW_JOYSTICK_LAST; joy++)
     {
         if (!_glfw.linux_js.js[joy].present)
             break;
@@ -71,11 +71,11 @@ __attribute__((used)) static GLFWbool openJoystickDevice(const char* path)
     if (fd == -1)
         return GLFW_FALSE;
 
-    // Verify that the joystick driver version is at least 1.0
+
     ioctl(fd, JSIOCGVERSION, &version);
     if (version < 0x010000)
     {
-        // It's an old 0.x interface (we don't support it)
+
         close(fd);
         return GLFW_FALSE;
     }

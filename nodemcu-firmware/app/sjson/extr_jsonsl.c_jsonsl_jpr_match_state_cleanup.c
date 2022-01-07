@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* jsonsl_t ;
-struct TYPE_3__ {scalar_t__ jpr_count; int /*<<< orphan*/ * jpr_root; int /*<<< orphan*/ * jprs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* jsonsl_t ;
+struct TYPE_3__ {scalar_t__ jpr_count; int * jpr_root; int * jprs; } ;
+
+
+ int free (int *) ;
 
 void jsonsl_jpr_match_state_cleanup(jsonsl_t jsn)
 {
@@ -25,7 +25,7 @@ void jsonsl_jpr_match_state_cleanup(jsonsl_t jsn)
 
     free(jsn->jpr_root);
     free(jsn->jprs);
-    jsn->jprs = NULL;
-    jsn->jpr_root = NULL;
+    jsn->jprs = ((void*)0);
+    jsn->jpr_root = ((void*)0);
     jsn->jpr_count = 0;
 }

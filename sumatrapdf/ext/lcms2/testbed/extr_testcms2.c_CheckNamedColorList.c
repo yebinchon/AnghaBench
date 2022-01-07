@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsNAMEDCOLORLIST ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  Fail (char*) ; 
- int /*<<< orphan*/ * cmsAllocNamedColorList (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,char*) ; 
- int /*<<< orphan*/  cmsAppendNamedColor (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsFreeNamedColorList (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int cmsMAXCHANNELS ; 
- int cmsMAX_PATH ; 
- int cmsNamedColorCount (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int cmsNamedColorIndex (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  cmsNamedColorInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ cmsReadTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsSigNamedColor2Tag ; 
- int /*<<< orphan*/  cmsWriteTag (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  remove (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+
+
+typedef scalar_t__ cmsUInt16Number ;
+typedef int cmsNAMEDCOLORLIST ;
+typedef int cmsInt32Number ;
+typedef int * cmsHPROFILE ;
+
+
+ int DbgThread () ;
+ int Fail (char*) ;
+ int * cmsAllocNamedColorList (int ,int ,int,char*,char*) ;
+ int cmsAppendNamedColor (int ,int *,char*,scalar_t__*,scalar_t__*) ;
+ int cmsCloseProfile (int ,int *) ;
+ int cmsFreeNamedColorList (int ,int *) ;
+ int cmsMAXCHANNELS ;
+ int cmsMAX_PATH ;
+ int cmsNamedColorCount (int ,int *) ;
+ int cmsNamedColorIndex (int ,int *,char*) ;
+ int cmsNamedColorInfo (int ,int *,int,char*,int *,int *,scalar_t__*,scalar_t__*) ;
+ int * cmsOpenProfileFromFile (int ,char*,char*) ;
+ scalar_t__ cmsReadTag (int ,int *,int ) ;
+ int cmsSigNamedColor2Tag ;
+ int cmsWriteTag (int ,int *,int ,int *) ;
+ int remove (char*) ;
+ int sprintf (char*,char*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckNamedColorList(void)
 {
-    cmsNAMEDCOLORLIST* nc = NULL, *nc2;
+    cmsNAMEDCOLORLIST* nc = ((void*)0), *nc2;
     cmsInt32Number i, j, rc=1;
     char Name[cmsMAX_PATH];
     cmsUInt16Number PCS[3];
@@ -49,7 +49,7 @@ cmsInt32Number CheckNamedColorList(void)
     cmsHPROFILE h;
 
     nc = cmsAllocNamedColorList(DbgThread(), 0, 4, "prefix", "suffix");
-    if (nc == NULL) return 0;
+    if (nc == ((void*)0)) return 0;
 
     for (i=0; i < 4096; i++) {
 
@@ -67,7 +67,7 @@ cmsInt32Number CheckNamedColorList(void)
         CheckColorant[0] = CheckColorant[1] = CheckColorant[2] = CheckColorant[3] = (cmsUInt16Number) (4096 - i);
 
         sprintf(CheckName, "#%d", i);
-        if (!cmsNamedColorInfo(DbgThread(), nc, i, Name, NULL, NULL, PCS, Colorant)) { rc = 0; goto Error; }
+        if (!cmsNamedColorInfo(DbgThread(), nc, i, Name, ((void*)0), ((void*)0), PCS, Colorant)) { rc = 0; goto Error; }
 
 
         for (j=0; j < 3; j++) {
@@ -82,11 +82,11 @@ cmsInt32Number CheckNamedColorList(void)
     }
 
     h = cmsOpenProfileFromFile(DbgThread(), "namedcol.icc", "w");
-    if (h == NULL) return 0;
+    if (h == ((void*)0)) return 0;
     if (!cmsWriteTag(DbgThread(), h, cmsSigNamedColor2Tag, nc)) return 0;
     cmsCloseProfile(DbgThread(), h);
     cmsFreeNamedColorList(DbgThread(), nc);
-    nc = NULL;
+    nc = ((void*)0);
 
     h = cmsOpenProfileFromFile(DbgThread(), "namedcol.icc", "r");
     nc2 = (cmsNAMEDCOLORLIST *) cmsReadTag(DbgThread(), h, cmsSigNamedColor2Tag);
@@ -103,7 +103,7 @@ cmsInt32Number CheckNamedColorList(void)
         CheckColorant[0] = CheckColorant[1] = CheckColorant[2] = CheckColorant[3] = (cmsUInt16Number) (4096 - i);
 
         sprintf(CheckName, "#%d", i);
-        if (!cmsNamedColorInfo(DbgThread(), nc2, i, Name, NULL, NULL, PCS, Colorant)) { rc = 0; goto Error; }
+        if (!cmsNamedColorInfo(DbgThread(), nc2, i, Name, ((void*)0), ((void*)0), PCS, Colorant)) { rc = 0; goto Error; }
 
 
         for (j=0; j < 3; j++) {
@@ -121,6 +121,6 @@ cmsInt32Number CheckNamedColorList(void)
     remove("namedcol.icc");
 
 Error:
-    if (nc != NULL) cmsFreeNamedColorList(DbgThread(), nc);
+    if (nc != ((void*)0)) cmsFreeNamedColorList(DbgThread(), nc);
     return rc;
 }

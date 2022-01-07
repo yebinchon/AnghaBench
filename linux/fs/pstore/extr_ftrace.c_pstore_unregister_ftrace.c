@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  debugfs_remove_recursive (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pstore_ftrace_dir ; 
- int pstore_ftrace_enabled ; 
- int /*<<< orphan*/  pstore_ftrace_lock ; 
- int /*<<< orphan*/  pstore_ftrace_ops ; 
- int /*<<< orphan*/  unregister_ftrace_function (int /*<<< orphan*/ *) ; 
+ int debugfs_remove_recursive (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pstore_ftrace_dir ;
+ int pstore_ftrace_enabled ;
+ int pstore_ftrace_lock ;
+ int pstore_ftrace_ops ;
+ int unregister_ftrace_function (int *) ;
 
 void pstore_unregister_ftrace(void)
 {
-	mutex_lock(&pstore_ftrace_lock);
-	if (pstore_ftrace_enabled) {
-		unregister_ftrace_function(&pstore_ftrace_ops);
-		pstore_ftrace_enabled = false;
-	}
-	mutex_unlock(&pstore_ftrace_lock);
+ mutex_lock(&pstore_ftrace_lock);
+ if (pstore_ftrace_enabled) {
+  unregister_ftrace_function(&pstore_ftrace_ops);
+  pstore_ftrace_enabled = 0;
+ }
+ mutex_unlock(&pstore_ftrace_lock);
 
-	debugfs_remove_recursive(pstore_ftrace_dir);
+ debugfs_remove_recursive(pstore_ftrace_dir);
 }

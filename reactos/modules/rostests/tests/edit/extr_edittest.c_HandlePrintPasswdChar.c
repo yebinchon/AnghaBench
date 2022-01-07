@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetStockObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ResultX ; 
- int /*<<< orphan*/  ResultY ; 
- int /*<<< orphan*/  SYSTEM_FIXED_FONT ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* TextBuffer ; 
- int /*<<< orphan*/  TextOut (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ValidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_hwnd ; 
- int /*<<< orphan*/  rect ; 
+
+
+
+typedef int WPARAM ;
+typedef int VOID ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef int HDC ;
+typedef int DWORD ;
+
+
+ int GetDC (int ) ;
+ int GetStockObject (int ) ;
+ int ReleaseDC (int ,int ) ;
+ int ResultX ;
+ int ResultY ;
+ int SYSTEM_FIXED_FONT ;
+ int SelectObject (int ,int ) ;
+ int SendMessage (int ,int ,int ,int ) ;
+ char* TextBuffer ;
+ int TextOut (int ,int ,int ,char*,int) ;
+ int ValidateRect (int ,int *) ;
+ int g_hwnd ;
+ int rect ;
 
 __attribute__((used)) static
 VOID
@@ -48,8 +48,8 @@ HandlePrintPasswdChar(HWND handle,DWORD Msg,WPARAM wParam,LPARAM lParam)
           }
       else
           {
-            TextBuffer[8]  = 'N';
-            TextBuffer[9]  = 'U';
+            TextBuffer[8] = 'N';
+            TextBuffer[9] = 'U';
             TextBuffer[10] = 'L';
             TextBuffer[11] = 'L';
             s = 4;

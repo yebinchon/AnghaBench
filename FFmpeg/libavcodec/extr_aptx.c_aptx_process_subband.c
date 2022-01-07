@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-struct TYPE_12__ {int /*<<< orphan*/  prediction_order; } ;
-struct TYPE_11__ {int /*<<< orphan*/  reconstructed_difference; } ;
-struct TYPE_10__ {int* prev_sign; int* s_weight; int /*<<< orphan*/  predicted_difference; } ;
-typedef  TYPE_1__ Prediction ;
-typedef  TYPE_2__ InvertQuantize ;
-typedef  TYPE_3__ ConstTables ;
 
-/* Variables and functions */
- int FFDIFFSIGN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aptx_invert_quantization (TYPE_2__*,int,int,TYPE_3__*) ; 
- int /*<<< orphan*/  aptx_prediction_filtering (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int av_clip (int,int,int) ; 
- int rshift32 (int,int) ; 
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_12__ {int prediction_order; } ;
+struct TYPE_11__ {int reconstructed_difference; } ;
+struct TYPE_10__ {int* prev_sign; int* s_weight; int predicted_difference; } ;
+typedef TYPE_1__ Prediction ;
+typedef TYPE_2__ InvertQuantize ;
+typedef TYPE_3__ ConstTables ;
+
+
+ int FFDIFFSIGN (int ,int ) ;
+ int aptx_invert_quantization (TYPE_2__*,int,int,TYPE_3__*) ;
+ int aptx_prediction_filtering (TYPE_1__*,int ,int ) ;
+ int av_clip (int,int,int) ;
+ int rshift32 (int,int) ;
 
 __attribute__((used)) static void aptx_process_subband(InvertQuantize *invert_quantize,
                                  Prediction *prediction,

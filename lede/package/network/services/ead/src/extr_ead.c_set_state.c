@@ -1,70 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int A ;
+ int B ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  A ; 
- int /*<<< orphan*/  B ; 
-#define  EAD_TYPE_GET_PRIME 130 
-#define  EAD_TYPE_SEND_A 129 
-#define  EAD_TYPE_SET_USERNAME 128 
- int /*<<< orphan*/  ead_set_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prepare_password () ; 
- int /*<<< orphan*/  skey ; 
- int state ; 
- int /*<<< orphan*/  t_serverclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  t_servergenexp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  t_servergetkey (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * t_serveropenraw (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tce ; 
- int /*<<< orphan*/  tpe ; 
- int /*<<< orphan*/ * ts ; 
+ int ead_set_key (int ) ;
+ int prepare_password () ;
+ int skey ;
+ int state ;
+ int t_serverclose (int *) ;
+ int t_servergenexp (int *) ;
+ int t_servergetkey (int *,int *) ;
+ int * t_serveropenraw (int *,int ) ;
+ int tce ;
+ int tpe ;
+ int * ts ;
 
 __attribute__((used)) static void
 set_state(int nstate)
 {
-	if (state == nstate)
-		return;
+ if (state == nstate)
+  return;
 
-	if (nstate < state) {
-		if ((nstate < EAD_TYPE_GET_PRIME) &&
-			(state >= EAD_TYPE_GET_PRIME)) {
-			t_serverclose(ts);
-			ts = NULL;
-		}
-		goto done;
-	}
+ if (nstate < state) {
+  if ((nstate < 130) &&
+   (state >= 130)) {
+   t_serverclose(ts);
+   ts = ((void*)0);
+  }
+  goto done;
+ }
 
-	switch(state) {
-	case EAD_TYPE_SET_USERNAME:
-		if (!prepare_password())
-			goto error;
-		ts = t_serveropenraw(&tpe, tce);
-		if (!ts)
-			goto error;
-		break;
-	case EAD_TYPE_GET_PRIME:
-		B = t_servergenexp(ts);
-		break;
-	case EAD_TYPE_SEND_A:
-		skey = t_servergetkey(ts, &A);
-		if (!skey)
-			goto error;
+ switch(state) {
+ case 128:
+  if (!prepare_password())
+   goto error;
+  ts = t_serveropenraw(&tpe, tce);
+  if (!ts)
+   goto error;
+  break;
+ case 130:
+  B = t_servergenexp(ts);
+  break;
+ case 129:
+  skey = t_servergetkey(ts, &A);
+  if (!skey)
+   goto error;
 
-		ead_set_key(skey);
-		break;
-	}
+  ead_set_key(skey);
+  break;
+ }
 done:
-	state = nstate;
+ state = nstate;
 error:
-	return;
+ return;
 }

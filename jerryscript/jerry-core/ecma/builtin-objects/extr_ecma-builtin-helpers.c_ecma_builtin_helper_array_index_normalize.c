@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int ecma_number_t ;
 
-/* Variables and functions */
- scalar_t__ ecma_number_is_infinity (int) ; 
- int /*<<< orphan*/  ecma_number_is_nan (int) ; 
- scalar_t__ ecma_number_is_negative (int) ; 
- scalar_t__ ecma_number_is_zero (int) ; 
- int ecma_number_to_uint32 (int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int ecma_number_t ;
+
+
+ scalar_t__ ecma_number_is_infinity (int) ;
+ int ecma_number_is_nan (int) ;
+ scalar_t__ ecma_number_is_negative (int) ;
+ scalar_t__ ecma_number_is_zero (int) ;
+ int ecma_number_to_uint32 (int) ;
 
 uint32_t
-ecma_builtin_helper_array_index_normalize (ecma_number_t index, /**< index */
-                                           uint32_t length, /**< array's length */
-                                           bool is_last_index_of) /**< true - normalize for lastIndexOf method*/
+ecma_builtin_helper_array_index_normalize (ecma_number_t index,
+                                           uint32_t length,
+                                           bool is_last_index_of)
 {
   uint32_t norm_index;
 

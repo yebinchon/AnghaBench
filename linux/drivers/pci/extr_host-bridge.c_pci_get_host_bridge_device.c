@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  bus; } ;
+
+
+
+
+struct pci_dev {int bus; } ;
 struct pci_bus {struct device* bridge; } ;
-struct device {int /*<<< orphan*/  kobj; } ;
+struct device {int kobj; } ;
 
-/* Variables and functions */
- struct pci_bus* find_pci_root_bus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kobject_get (int /*<<< orphan*/ *) ; 
+
+ struct pci_bus* find_pci_root_bus (int ) ;
+ int kobject_get (int *) ;
 
 struct device *pci_get_host_bridge_device(struct pci_dev *dev)
 {
-	struct pci_bus *root_bus = find_pci_root_bus(dev->bus);
-	struct device *bridge = root_bus->bridge;
+ struct pci_bus *root_bus = find_pci_root_bus(dev->bus);
+ struct device *bridge = root_bus->bridge;
 
-	kobject_get(&bridge->kobj);
-	return bridge;
+ kobject_get(&bridge->kobj);
+ return bridge;
 }

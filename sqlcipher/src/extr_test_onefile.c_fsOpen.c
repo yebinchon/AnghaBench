@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_9__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int /*<<< orphan*/ * pMethods; } ;
-struct TYPE_24__ {char const* zName; int nBlob; unsigned char nDatabase; int nJournal; TYPE_6__* pFile; int /*<<< orphan*/  nRef; struct TYPE_24__** ppThis; struct TYPE_24__* pNext; TYPE_1__ base; } ;
-typedef  TYPE_4__ tmp_file ;
+
+
+typedef struct TYPE_28__ TYPE_9__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+struct TYPE_21__ {int * pMethods; } ;
+struct TYPE_24__ {char const* zName; int nBlob; unsigned char nDatabase; int nJournal; TYPE_6__* pFile; int nRef; struct TYPE_24__** ppThis; struct TYPE_24__* pNext; TYPE_1__ base; } ;
+typedef TYPE_4__ tmp_file ;
 struct TYPE_25__ {int szOsFile; int (* xOpen ) (TYPE_5__*,char const*,TYPE_6__*,int,int*) ;} ;
-typedef  TYPE_5__ sqlite3_vfs ;
-typedef  scalar_t__ sqlite3_int64 ;
+typedef TYPE_5__ sqlite3_vfs ;
+typedef scalar_t__ sqlite3_int64 ;
 struct TYPE_26__ {TYPE_3__* pMethods; } ;
-typedef  TYPE_6__ sqlite3_file ;
+typedef TYPE_6__ sqlite3_file ;
 struct TYPE_27__ {TYPE_4__* pFileList; TYPE_5__* pParent; } ;
-typedef  TYPE_7__ fs_vfs_t ;
-typedef  TYPE_4__ fs_real_file ;
-struct TYPE_22__ {int /*<<< orphan*/ * pMethods; } ;
+typedef TYPE_7__ fs_vfs_t ;
+typedef TYPE_4__ fs_real_file ;
+struct TYPE_22__ {int * pMethods; } ;
 struct TYPE_28__ {int eType; TYPE_4__* pReal; TYPE_2__ base; } ;
-typedef  TYPE_9__ fs_file ;
-struct TYPE_23__ {int (* xFileSize ) (TYPE_6__*,scalar_t__*) ;int (* xWrite ) (TYPE_6__*,char*,int,int) ;int (* xRead ) (TYPE_6__*,unsigned char*,int,int) ;int /*<<< orphan*/  (* xClose ) (TYPE_6__*) ;} ;
+typedef TYPE_9__ fs_file ;
+struct TYPE_23__ {int (* xFileSize ) (TYPE_6__*,scalar_t__*) ;int (* xWrite ) (TYPE_6__*,char*,int,int) ;int (* xRead ) (TYPE_6__*,unsigned char*,int,int) ;int (* xClose ) (TYPE_6__*) ;} ;
 
-/* Variables and functions */
- int BLOBSIZE ; 
- int DATABASE_FILE ; 
- int JOURNAL_FILE ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int SQLITE_OPEN_MAIN_DB ; 
- int SQLITE_OPEN_MAIN_JOURNAL ; 
- int SQLITE_OPEN_TEMP_DB ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fs_io_methods ; 
- int /*<<< orphan*/  memset (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3_free (TYPE_4__*) ; 
- scalar_t__ sqlite3_malloc (int) ; 
- int strlen (char const*) ; 
- scalar_t__ strncmp (char const*,char const*,int) ; 
- int stub1 (TYPE_5__*,char const*,TYPE_6__*,int,int*) ; 
- int stub2 (TYPE_6__*,scalar_t__*) ; 
- int stub3 (TYPE_6__*,char*,int,int) ; 
- int stub4 (TYPE_6__*,unsigned char*,int,int) ; 
- int stub5 (TYPE_6__*,unsigned char*,int,int) ; 
- int /*<<< orphan*/  stub6 (TYPE_6__*) ; 
- int /*<<< orphan*/  tmp_io_methods ; 
+
+ int BLOBSIZE ;
+ int DATABASE_FILE ;
+ int JOURNAL_FILE ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SQLITE_OPEN_MAIN_DB ;
+ int SQLITE_OPEN_MAIN_JOURNAL ;
+ int SQLITE_OPEN_TEMP_DB ;
+ int assert (int) ;
+ int fs_io_methods ;
+ int memset (TYPE_4__*,int ,int) ;
+ int sqlite3_free (TYPE_4__*) ;
+ scalar_t__ sqlite3_malloc (int) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (char const*,char const*,int) ;
+ int stub1 (TYPE_5__*,char const*,TYPE_6__*,int,int*) ;
+ int stub2 (TYPE_6__*,scalar_t__*) ;
+ int stub3 (TYPE_6__*,char*,int,int) ;
+ int stub4 (TYPE_6__*,unsigned char*,int,int) ;
+ int stub5 (TYPE_6__*,unsigned char*,int,int) ;
+ int stub6 (TYPE_6__*) ;
+ int tmp_io_methods ;
 
 __attribute__((used)) static int fsOpen(
   sqlite3_vfs *pVfs,
@@ -85,7 +85,7 @@ __attribute__((used)) static int fsOpen(
 
   assert(strlen("-journal")==8);
   nName = (int)strlen(zName)-((eType==JOURNAL_FILE)?8:0);
-  pReal=pFsVfs->pFileList; 
+  pReal=pFsVfs->pFileList;
   for(; pReal && strncmp(pReal->zName, zName, nName); pReal=pReal->pNext);
 
   if( !pReal ){

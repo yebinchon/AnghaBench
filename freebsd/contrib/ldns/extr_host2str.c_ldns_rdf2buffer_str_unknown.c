@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_status ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
-typedef  int /*<<< orphan*/  ldns_buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ldns_buffer_printf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldns_rdf2buffer_str_hex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ldns_rdf_size (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int ldns_status ;
+typedef int ldns_rdf ;
+typedef int ldns_buffer ;
+
+
+ int ldns_buffer_printf (int *,char*,int ) ;
+ int ldns_rdf2buffer_str_hex (int *,int const*) ;
+ int ldns_rdf_size (int const*) ;
 
 ldns_status
 ldns_rdf2buffer_str_unknown(ldns_buffer *output, const ldns_rdf *rdf)
 {
-	ldns_buffer_printf(output, "\\# %u ", ldns_rdf_size(rdf));
-	return ldns_rdf2buffer_str_hex(output, rdf);
+ ldns_buffer_printf(output, "\\# %u ", ldns_rdf_size(rdf));
+ return ldns_rdf2buffer_str_hex(output, rdf);
 }

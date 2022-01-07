@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ULONG ;
-struct TYPE_8__ {size_t type; char* type_name; int error; void* value; void* address; int /*<<< orphan*/  size; int /*<<< orphan*/  name; int /*<<< orphan*/  bStructType; int /*<<< orphan*/  bPtrType; int /*<<< orphan*/  bArrayType; int /*<<< orphan*/  file; int /*<<< orphan*/  pSymbols; } ;
-typedef  TYPE_1__* PVRET ;
-typedef  void** PUSHORT ;
-typedef  void** PULONG ;
-typedef  void** PUCHAR ;
-typedef  int* LPSTR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- size_t DIM (TYPE_1__*) ; 
- int /*<<< orphan*/  DPRINT (int) ; 
- int /*<<< orphan*/  ExtractArray (TYPE_1__*,int*) ; 
- int ExtractNumber (int*) ; 
- TYPE_1__* ExtractStructMembers (TYPE_1__*,int*) ; 
- int* ExtractTypeName (int*) ; 
- size_t ExtractTypeNumber (int*) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ FindGlobalStabSymbol (int*,void**,size_t*,int /*<<< orphan*/ *) ; 
- int* FindTypeDefinition (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsRangeValid (void*,size_t) ; 
- int /*<<< orphan*/  PICE_isdigit (int) ; 
- int* PICE_strchr (int*,char) ; 
- int /*<<< orphan*/  PICE_strcpy (char*,int*) ; 
- int /*<<< orphan*/  PICE_strlen (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- size_t ulNumStructMembers ; 
- TYPE_1__* vrStructMembers ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t ULONG ;
+struct TYPE_8__ {size_t type; char* type_name; int error; void* value; void* address; int size; int name; int bStructType; int bPtrType; int bArrayType; int file; int pSymbols; } ;
+typedef TYPE_1__* PVRET ;
+typedef void** PUSHORT ;
+typedef void** PULONG ;
+typedef void** PUCHAR ;
+typedef int* LPSTR ;
+typedef int LONG ;
+typedef int BOOLEAN ;
+
+
+ size_t DIM (TYPE_1__*) ;
+ int DPRINT (int) ;
+ int ExtractArray (TYPE_1__*,int*) ;
+ int ExtractNumber (int*) ;
+ TYPE_1__* ExtractStructMembers (TYPE_1__*,int*) ;
+ int* ExtractTypeName (int*) ;
+ size_t ExtractTypeNumber (int*) ;
+ int FALSE ;
+ scalar_t__ FindGlobalStabSymbol (int*,void**,size_t*,int *) ;
+ int* FindTypeDefinition (int ,size_t,int ) ;
+ int IsRangeValid (void*,size_t) ;
+ int PICE_isdigit (int) ;
+ int* PICE_strchr (int*,char) ;
+ int PICE_strcpy (char*,int*) ;
+ int PICE_strlen (char*) ;
+ int TRUE ;
+ size_t ulNumStructMembers ;
+ TYPE_1__* vrStructMembers ;
 
 BOOLEAN EvaluateSymbol(PVRET pvr,LPSTR pToken)
 {
@@ -51,7 +51,7 @@ BOOLEAN EvaluateSymbol(PVRET pvr,LPSTR pToken)
 
     DPRINT((1,"EvaluateSymbol(%s)\n",pToken));
 
-	if(FindGlobalStabSymbol(pToken,&pvr->value,&pvr->type,&pvr->file))
+ if(FindGlobalStabSymbol(pToken,&pvr->value,&pvr->type,&pvr->file))
     {
         DPRINT((1,"EvaluateSymbol(%s) pvr->value = %x pvr->type = %x\n",pToken,pvr->value,pvr->type));
         while(!bDone)
@@ -77,12 +77,12 @@ BOOLEAN EvaluateSymbol(PVRET pvr,LPSTR pToken)
 
             switch(*pTypeBase)
             {
-                case '(': // type reference
+                case '(':
                     ulType = ExtractTypeNumber(pTypeBase);
                     DPRINT((1,"%x is a type reference to %x\n",pvr->type,ulType));
                     pvr->type = ulType;
                     break;
-                case 'r': // subrange
+                case 'r':
                     pTypeBase++;
                     ulType = ExtractTypeNumber(pTypeBase);
                     DPRINT((1,"%x is sub range of %x\n",pvr->type,ulType));
@@ -128,7 +128,7 @@ BOOLEAN EvaluateSymbol(PVRET pvr,LPSTR pToken)
                     else
                         pvr->type = ulType;
                     break;
-                case 'a': // array type
+                case 'a':
                     DPRINT((1,"%x array\n",pvr->type));
                     pTypeBase++;
                     if(!ExtractArray(pvr,pTypeBase))
@@ -137,33 +137,33 @@ BOOLEAN EvaluateSymbol(PVRET pvr,LPSTR pToken)
                         pvr->error = 1;
                     }
                     break;
-                case '*': // ptr type
+                case '*':
                     DPRINT((1,"%x is ptr to\n",pvr->type));
-                    bDone = TRUE; // meanwhile
+                    bDone = TRUE;
                     break;
-                case 's': // struct type [name:T(#,#)=s#membername1:(#,#),#,#;membername1:(#,#),#,#;;]
-                    // go past 's'
+                case 's':
+
                     pTypeBase++;
 
-                    // extract the the struct size
+
                     lLowerRange = ExtractNumber(pTypeBase);
                     DPRINT((1,"%x struct size = %x\n",pvr->type,lLowerRange));
 
-                    // skip over the digits
+
                     while(PICE_isdigit(*pTypeBase))
                         pTypeBase++;
 
-                    // the structs address is is value
+
                     pvr->address = pvr->value;
                     pvr->bStructType = TRUE;
 
-                    // decode the struct members. pStructMembers now points to first member name
+
                     pStructMembers = pTypeBase;
 
                     while(pStructMembers && *pStructMembers && *pStructMembers!=';' && ulNumStructMembers<DIM(vrStructMembers))
                     {
                         DPRINT((1,"EvaluateSymbol(): member #%u\n",ulNumStructMembers));
-                        // put this into our array
+
                         vrStructMembers[ulNumStructMembers] = *ExtractStructMembers(pvr,pStructMembers);
 
                         if(!PICE_strlen(vrStructMembers[ulNumStructMembers].type_name))
@@ -200,55 +200,55 @@ BOOLEAN EvaluateSymbol(PVRET pvr,LPSTR pToken)
 
                         ulNumStructMembers++;
 
-                        // skip to next ':'
+
                         pStructMembers = PICE_strchr(pStructMembers,';');
                         pStructMembers = PICE_strchr(pStructMembers,':');
                         if(pStructMembers)
                         {
                             DPRINT((1,"EvaluateSymbol(): ptr is now %s\n",pStructMembers));
-                            // go back to where member name starts
+
                             while(*pStructMembers!=';')
                                 pStructMembers--;
-                            // if ';' present, go to next char
+
                             if(pStructMembers)
                                 pStructMembers++;
                         }
                     }
 
-                    bDone = TRUE; // meanwhile
+                    bDone = TRUE;
                     break;
-                case 'u': // union type
+                case 'u':
                     DPRINT((1,"%x union\n",pvr->type));
-                    bDone = TRUE; // meanwhile
+                    bDone = TRUE;
                     break;
-                case 'e': // enum type
+                case 'e':
                     DPRINT((1,"%x enum\n",pvr->type));
-                    bDone = TRUE; // meanwhile
+                    bDone = TRUE;
                     break;
                 default:
                     DPRINT((1,"DEFAULT %x, base: %c\n",pvr->type, *pTypeBase));
-		    pvr->address = pvr->value;
-		    if(IsRangeValid(pvr->value,ulBytes))
-		      {
-			switch(ulBytes)
-			  {
-			  case 1:
-			    pvr->value = *(PUCHAR)pvr->value;
-			    break;
-			  case 2:
-			    pvr->value = *(PUSHORT)pvr->value;
-			    break;
-			  case 4:
-			    pvr->value = *(PULONG)pvr->value;
-			    break;
-			  }
-		      }
+      pvr->address = pvr->value;
+      if(IsRangeValid(pvr->value,ulBytes))
+        {
+   switch(ulBytes)
+     {
+     case 1:
+       pvr->value = *(PUCHAR)pvr->value;
+       break;
+     case 2:
+       pvr->value = *(PUSHORT)pvr->value;
+       break;
+     case 4:
+       pvr->value = *(PULONG)pvr->value;
+       break;
+     }
+        }
                     bDone = TRUE;
                     break;
             }
 
         }
         return TRUE;
-	}
+ }
     return FALSE;
 }

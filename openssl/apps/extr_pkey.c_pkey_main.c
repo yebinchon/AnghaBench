@@ -1,157 +1,142 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  ERR_get_error () ; 
- unsigned long ERR_peek_error () ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_reason_error_string (unsigned long) ; 
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int EVP_PKEY_check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_print_private (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_print_public (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int EVP_PKEY_public_check (int /*<<< orphan*/ *) ; 
- int FORMAT_ASN1 ; 
- int FORMAT_PEM ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_CHECK 146 
-#define  OPT_ENGINE 145 
-#define  OPT_EOF 144 
-#define  OPT_ERR 143 
- int /*<<< orphan*/  OPT_FMT_ANY ; 
- int /*<<< orphan*/  OPT_FMT_PEMDER ; 
-#define  OPT_HELP 142 
-#define  OPT_IN 141 
-#define  OPT_INFORM 140 
-#define  OPT_MD 139 
-#define  OPT_NOOUT 138 
-#define  OPT_OUT 137 
-#define  OPT_OUTFORM 136 
-#define  OPT_PASSIN 135 
-#define  OPT_PASSOUT 134 
-#define  OPT_PUBIN 133 
-#define  OPT_PUBOUT 132 
-#define  OPT_PUB_CHECK 131 
-#define  OPT_TEXT 130 
-#define  OPT_TEXT_PUB 129 
-#define  OPT_TRADITIONAL 128 
- int /*<<< orphan*/  PEM_write_bio_PUBKEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PEM_write_bio_PrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PEM_write_bio_PrivateKey_traditional (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  app_passwd (char*,char*,char**,char**) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * bio_err ; 
- int /*<<< orphan*/ * bio_open_owner (char*,int,int) ; 
- int /*<<< orphan*/  i2d_PUBKEY_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  i2d_PrivateKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * load_key (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * load_pubkey (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_cipher (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  opt_format (char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_unknown () ; 
- int /*<<< orphan*/  pkey_options ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OPTION_CHOICE ;
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
+typedef int EVP_CIPHER ;
+typedef int ENGINE ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int BIO_printf (int *,char*,...) ;
+ int ERR_get_error () ;
+ unsigned long ERR_peek_error () ;
+ int ERR_print_errors (int *) ;
+ int ERR_reason_error_string (unsigned long) ;
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new (int *,int *) ;
+ int EVP_PKEY_check (int *) ;
+ int EVP_PKEY_free (int *) ;
+ scalar_t__ EVP_PKEY_print_private (int *,int *,int ,int *) ;
+ scalar_t__ EVP_PKEY_print_public (int *,int *,int ,int *) ;
+ int EVP_PKEY_public_check (int *) ;
+ int FORMAT_ASN1 ;
+ int FORMAT_PEM ;
+ int OPENSSL_free (char*) ;
+
+
+
+
+ int OPT_FMT_ANY ;
+ int OPT_FMT_PEMDER ;
+ int PEM_write_bio_PUBKEY (int *,int *) ;
+ int PEM_write_bio_PrivateKey (int *,int *,int const*,int *,int ,int *,char*) ;
+ int PEM_write_bio_PrivateKey_traditional (int *,int *,int const*,int *,int ,int *,char*) ;
+ int app_passwd (char*,char*,char**,char**) ;
+ int assert (int) ;
+ int * bio_err ;
+ int * bio_open_owner (char*,int,int) ;
+ int i2d_PUBKEY_bio (int *,int *) ;
+ int i2d_PrivateKey_bio (int *,int *) ;
+ int * load_key (char*,int,int,char*,int *,char*) ;
+ int * load_pubkey (char*,int,int,char*,int *,char*) ;
+ char* opt_arg () ;
+ int opt_cipher (int ,int const**) ;
+ int opt_format (char*,int ,int*) ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_unknown () ;
+ int pkey_options ;
+ int release_engine (int *) ;
+ int * setup_engine (char*,int ) ;
 
 int pkey_main(int argc, char **argv)
 {
-    BIO *in = NULL, *out = NULL;
-    ENGINE *e = NULL;
-    EVP_PKEY *pkey = NULL;
-    const EVP_CIPHER *cipher = NULL;
-    char *infile = NULL, *outfile = NULL, *passin = NULL, *passout = NULL;
-    char *passinarg = NULL, *passoutarg = NULL, *prog;
+    BIO *in = ((void*)0), *out = ((void*)0);
+    ENGINE *e = ((void*)0);
+    EVP_PKEY *pkey = ((void*)0);
+    const EVP_CIPHER *cipher = ((void*)0);
+    char *infile = ((void*)0), *outfile = ((void*)0), *passin = ((void*)0), *passout = ((void*)0);
+    char *passinarg = ((void*)0), *passoutarg = ((void*)0), *prog;
     OPTION_CHOICE o;
     int informat = FORMAT_PEM, outformat = FORMAT_PEM;
     int pubin = 0, pubout = 0, pubtext = 0, text = 0, noout = 0, ret = 1;
     int private = 0, traditional = 0, check = 0, pub_check = 0;
 
     prog = opt_init(argc, argv, pkey_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 144) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 144:
+        case 143:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 142:
             opt_help(pkey_options);
             ret = 0;
             goto end;
-        case OPT_INFORM:
+        case 140:
             if (!opt_format(opt_arg(), OPT_FMT_ANY, &informat))
                 goto opthelp;
             break;
-        case OPT_OUTFORM:
+        case 136:
             if (!opt_format(opt_arg(), OPT_FMT_PEMDER, &outformat))
                 goto opthelp;
             break;
-        case OPT_PASSIN:
+        case 135:
             passinarg = opt_arg();
             break;
-        case OPT_PASSOUT:
+        case 134:
             passoutarg = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 145:
             e = setup_engine(opt_arg(), 0);
             break;
-        case OPT_IN:
+        case 141:
             infile = opt_arg();
             break;
-        case OPT_OUT:
+        case 137:
             outfile = opt_arg();
             break;
-        case OPT_PUBIN:
+        case 133:
             pubin = pubout = pubtext = 1;
             break;
-        case OPT_PUBOUT:
+        case 132:
             pubout = 1;
             break;
-        case OPT_TEXT_PUB:
+        case 129:
             pubtext = text = 1;
             break;
-        case OPT_TEXT:
+        case 130:
             text = 1;
             break;
-        case OPT_NOOUT:
+        case 138:
             noout = 1;
             break;
-        case OPT_TRADITIONAL:
+        case 128:
             traditional = 1;
             break;
-        case OPT_CHECK:
+        case 146:
             check = 1;
             break;
-        case OPT_PUB_CHECK:
+        case 131:
             pub_check = 1;
             break;
-        case OPT_MD:
+        case 139:
             if (!opt_cipher(opt_unknown(), &cipher))
                 goto opthelp;
         }
@@ -170,14 +155,14 @@ int pkey_main(int argc, char **argv)
     }
 
     out = bio_open_owner(outfile, outformat, private);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     if (pubin)
         pkey = load_pubkey(infile, informat, 1, passin, e, "Public Key");
     else
         pkey = load_key(infile, informat, 1, passin, e, "key");
-    if (pkey == NULL)
+    if (pkey == ((void*)0))
         goto end;
 
     if (check || pub_check) {
@@ -185,7 +170,7 @@ int pkey_main(int argc, char **argv)
         EVP_PKEY_CTX *ctx;
 
         ctx = EVP_PKEY_CTX_new(pkey, e);
-        if (ctx == NULL) {
+        if (ctx == ((void*)0)) {
             ERR_print_errors(bio_err);
             goto end;
         }
@@ -198,10 +183,10 @@ int pkey_main(int argc, char **argv)
         if (r == 1) {
             BIO_printf(out, "Key is valid\n");
         } else {
-            /*
-             * Note: at least for RSA keys if this function returns
-             * -1, there will be no error reasons.
-             */
+
+
+
+
             unsigned long err;
 
             BIO_printf(out, "Key is invalid\n");
@@ -209,7 +194,7 @@ int pkey_main(int argc, char **argv)
             while ((err = ERR_peek_error()) != 0) {
                 BIO_printf(out, "Detailed error: %s\n",
                            ERR_reason_error_string(err));
-                ERR_get_error(); /* remove err from error stack */
+                ERR_get_error();
             }
         }
         EVP_PKEY_CTX_free(ctx);
@@ -224,12 +209,12 @@ int pkey_main(int argc, char **argv)
                 assert(private);
                 if (traditional) {
                     if (!PEM_write_bio_PrivateKey_traditional(out, pkey, cipher,
-                                                              NULL, 0, NULL,
+                                                              ((void*)0), 0, ((void*)0),
                                                               passout))
                         goto end;
                 } else {
                     if (!PEM_write_bio_PrivateKey(out, pkey, cipher,
-                                                  NULL, 0, NULL, passout))
+                                                  ((void*)0), 0, ((void*)0), passout))
                         goto end;
                 }
             }
@@ -250,11 +235,11 @@ int pkey_main(int argc, char **argv)
 
     if (text) {
         if (pubtext) {
-            if (EVP_PKEY_print_public(out, pkey, 0, NULL) <= 0)
+            if (EVP_PKEY_print_public(out, pkey, 0, ((void*)0)) <= 0)
                 goto end;
         } else {
             assert(private);
-            if (EVP_PKEY_print_private(out, pkey, 0, NULL) <= 0)
+            if (EVP_PKEY_print_private(out, pkey, 0, ((void*)0)) <= 0)
                 goto end;
         }
     }

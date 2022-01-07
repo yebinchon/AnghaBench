@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timespec {double tv_sec; scalar_t__ tv_nsec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int /*<<< orphan*/  END_TICKS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  START_TICKS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- int /*<<< orphan*/  utime ; 
 
-__attribute__((used)) static double get_utime_monotonic (void) { /* {{{ */
+ int ADD_CNT (int ) ;
+ int CLOCK_MONOTONIC ;
+ int END_TICKS (int ) ;
+ int START_TICKS (int ) ;
+ int assert (int) ;
+ scalar_t__ clock_gettime (int ,struct timespec*) ;
+ int utime ;
+
+__attribute__((used)) static double get_utime_monotonic (void) {
   ADD_CNT (utime);
   START_TICKS (utime);
   struct timespec T;

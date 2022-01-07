@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ccdigest_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIPSPOST_TRACE_EVENT ; 
- int /*<<< orphan*/  cchmac_di_clear (struct ccdigest_info const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cchmac_di_decl (struct ccdigest_info const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cchmac_final (struct ccdigest_info const*,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  cchmac_init (struct ccdigest_info const*,int /*<<< orphan*/ ,size_t,void const*) ; 
- int /*<<< orphan*/  cchmac_update (struct ccdigest_info const*,int /*<<< orphan*/ ,size_t,void const*) ; 
- int /*<<< orphan*/  hc ; 
+
+ int FIPSPOST_TRACE_EVENT ;
+ int cchmac_di_clear (struct ccdigest_info const*,int ) ;
+ int cchmac_di_decl (struct ccdigest_info const*,int ) ;
+ int cchmac_final (struct ccdigest_info const*,int ,unsigned char*) ;
+ int cchmac_init (struct ccdigest_info const*,int ,size_t,void const*) ;
+ int cchmac_update (struct ccdigest_info const*,int ,size_t,void const*) ;
+ int hc ;
 
 void cchmac(const struct ccdigest_info *di,
             size_t key_len, const void *key,
@@ -30,5 +30,5 @@ void cchmac(const struct ccdigest_info *di,
     cchmac_init(di, hc, key_len, key);
     cchmac_update(di, hc, data_len, data);
     cchmac_final(di, hc, mac);
-	cchmac_di_clear(di, hc);
+ cchmac_di_clear(di, hc);
 }

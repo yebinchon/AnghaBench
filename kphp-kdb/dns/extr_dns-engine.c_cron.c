@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  worker_stats_t ;
-struct connection {int last_query_time; scalar_t__ status; int /*<<< orphan*/  ev; int /*<<< orphan*/  fd; int /*<<< orphan*/ * type; } ;
 
-/* Variables and functions */
- struct connection* Connections ; 
- scalar_t__ WStats ; 
- int /*<<< orphan*/  check_children_status () ; 
- scalar_t__ conn_expect_query ; 
- scalar_t__ conn_write_close ; 
- int /*<<< orphan*/  ct_dns_server ; 
- int max_connection ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int now ; 
- int /*<<< orphan*/  put_event_into_heap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sem_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sem_wait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  semaphore ; 
- int /*<<< orphan*/  update_idle_stats () ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ worker_id ; 
- int /*<<< orphan*/  wstat ; 
+
+
+
+typedef int worker_stats_t ;
+struct connection {int last_query_time; scalar_t__ status; int ev; int fd; int * type; } ;
+
+
+ struct connection* Connections ;
+ scalar_t__ WStats ;
+ int check_children_status () ;
+ scalar_t__ conn_expect_query ;
+ scalar_t__ conn_write_close ;
+ int ct_dns_server ;
+ int max_connection ;
+ int memcpy (scalar_t__,int *,int) ;
+ int now ;
+ int put_event_into_heap (int ) ;
+ int sem_post (int *) ;
+ int sem_wait (int *) ;
+ int semaphore ;
+ int update_idle_stats () ;
+ int vkprintf (int,char*,int ) ;
+ scalar_t__ worker_id ;
+ int wstat ;
 
 __attribute__((used)) static void cron (void) {
   static int cur_conn_idx = 0;

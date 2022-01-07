@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  i_physical_channels; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_physical_channels; } ;
 struct TYPE_6__ {int b_packetized; TYPE_1__ audio; } ;
-typedef  TYPE_2__ es_format_t ;
-typedef  int /*<<< orphan*/  demux_t ;
+typedef TYPE_2__ es_format_t ;
+typedef int demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AOUT_CHANS_STEREO ; 
- int /*<<< orphan*/  AUDIO_ES ; 
- int /*<<< orphan*/  VLC_CODEC_MPGA ; 
- void* codec_init (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  es_format_Init (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AOUT_CHANS_STEREO ;
+ int AUDIO_ES ;
+ int VLC_CODEC_MPGA ;
+ void* codec_init (int *,TYPE_2__*) ;
+ int es_format_Init (TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static void *mpa_init (demux_t *demux)
 {
@@ -30,6 +30,6 @@ __attribute__((used)) static void *mpa_init (demux_t *demux)
 
     es_format_Init (&fmt, AUDIO_ES, VLC_CODEC_MPGA);
     fmt.audio.i_physical_channels = AOUT_CHANS_STEREO;
-    fmt.b_packetized = false;
+    fmt.b_packetized = 0;
     return codec_init (demux, &fmt);
 }

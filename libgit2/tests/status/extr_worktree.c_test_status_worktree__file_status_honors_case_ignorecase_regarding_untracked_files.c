@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_ENOTFOUND ; 
- int /*<<< orphan*/  cl_git_fail_with (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cl_git_sandbox_init (char*) ; 
- int /*<<< orphan*/ * cl_git_sandbox_reopen () ; 
- int /*<<< orphan*/  cl_repo_set_bool (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  git_index_add_bypath (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  git_index_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_index_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_index (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_status_file (unsigned int*,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_index ;
+
+
+ int GIT_ENOTFOUND ;
+ int cl_git_fail_with (int ,int ) ;
+ int cl_git_pass (int ) ;
+ int * cl_git_sandbox_init (char*) ;
+ int * cl_git_sandbox_reopen () ;
+ int cl_repo_set_bool (int *,char*,int) ;
+ int git_index_add_bypath (int *,char*) ;
+ int git_index_free (int *) ;
+ int git_index_write (int *) ;
+ int git_repository_index (int **,int *) ;
+ int git_status_file (unsigned int*,int *,char*) ;
 
 void test_status_worktree__file_status_honors_case_ignorecase_regarding_untracked_files(void)
 {
@@ -32,11 +32,11 @@ void test_status_worktree__file_status_honors_case_ignorecase_regarding_untracke
     unsigned int status;
     git_index *index;
 
-    cl_repo_set_bool(repo, "core.ignorecase", false);
+    cl_repo_set_bool(repo, "core.ignorecase", 0);
 
-	repo = cl_git_sandbox_reopen();
+ repo = cl_git_sandbox_reopen();
 
-    /* Actually returns GIT_STATUS_IGNORED on Windows */
+
     cl_git_fail_with(git_status_file(&status, repo, "NEW_FILE"), GIT_ENOTFOUND);
 
     cl_git_pass(git_repository_index(&index, repo));
@@ -45,6 +45,6 @@ void test_status_worktree__file_status_honors_case_ignorecase_regarding_untracke
     cl_git_pass(git_index_write(index));
     git_index_free(index);
 
-    /* Actually returns GIT_STATUS_IGNORED on Windows */
+
     cl_git_fail_with(git_status_file(&status, repo, "NEW_FILE"), GIT_ENOTFOUND);
 }

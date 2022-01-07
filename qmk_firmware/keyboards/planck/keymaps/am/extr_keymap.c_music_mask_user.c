@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
-#define  LOWER 129 
-#define  RAISE 128 
+
+
+
+typedef int uint16_t ;
+
+
+
+
 
 bool music_mask_user(uint16_t keycode) {
   switch (keycode) {
-  case RAISE:
-  case LOWER:
-    return false;
+  case 128:
+  case 129:
+    return 0;
   default:
-    return true;
+    return 1;
   }
 }

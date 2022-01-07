@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zend_accel_globals ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZEND_TSRMLS_CACHE_UPDATE () ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int zend_accel_globals ;
+
+
+ int ZEND_TSRMLS_CACHE_UPDATE () ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static void accel_globals_ctor(zend_accel_globals *accel_globals)
 {
-#if defined(COMPILE_DL_OPCACHE) && defined(ZTS)
-	ZEND_TSRMLS_CACHE_UPDATE();
-#endif
-	memset(accel_globals, 0, sizeof(zend_accel_globals));
+
+
+
+ memset(accel_globals, 0, sizeof(zend_accel_globals));
 }

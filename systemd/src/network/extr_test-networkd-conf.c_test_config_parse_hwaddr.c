@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ether_addr {int /*<<< orphan*/  ether_addr_octet; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  test_config_parse_hwaddr_one (char*,int /*<<< orphan*/ ,struct ether_addr const*) ; 
- int /*<<< orphan*/  test_config_parse_hwaddrs_one (char*,struct ether_addr const*,int) ; 
+
+
+
+struct ether_addr {int ether_addr_octet; } ;
+
+
+ int test_config_parse_hwaddr_one (char*,int ,struct ether_addr const*) ;
+ int test_config_parse_hwaddrs_one (char*,struct ether_addr const*,int) ;
 
 __attribute__((used)) static void test_config_parse_hwaddr(void) {
         const struct ether_addr t[] = {
@@ -22,18 +22,18 @@ __attribute__((used)) static void test_config_parse_hwaddr(void) {
                 { .ether_addr_octet = { 0x01, 0x23, 0x45, 0x67, 0x89, 0xab } },
         };
 
-        test_config_parse_hwaddr_one("", 0, NULL);
-        test_config_parse_hwaddr_one("no:ta:ma:ca:dd:re", 0, NULL);
-        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:fx", 0, NULL);
+        test_config_parse_hwaddr_one("", 0, ((void*)0));
+        test_config_parse_hwaddr_one("no:ta:ma:ca:dd:re", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:fx", 0, ((void*)0));
         test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff", 0, &t[0]);
         test_config_parse_hwaddr_one(" aa:bb:cc:dd:ee:ff", 0, &t[0]);
-        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff \t\n", 0, NULL);
-        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff \t\nxxx", 0, NULL);
-        test_config_parse_hwaddr_one("aa:bb:cc: dd:ee:ff", 0, NULL);
-        test_config_parse_hwaddr_one("aa:bb:cc:d d:ee:ff", 0, NULL);
-        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee", 0, NULL);
-        test_config_parse_hwaddr_one("9:aa:bb:cc:dd:ee:ff", 0, NULL);
-        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff:gg", 0, NULL);
+        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff \t\n", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff \t\nxxx", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aa:bb:cc: dd:ee:ff", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aa:bb:cc:d d:ee:ff", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee", 0, ((void*)0));
+        test_config_parse_hwaddr_one("9:aa:bb:cc:dd:ee:ff", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aa:bb:cc:dd:ee:ff:gg", 0, ((void*)0));
         test_config_parse_hwaddr_one("aa:Bb:CC:dd:ee:ff", 0, &t[0]);
         test_config_parse_hwaddr_one("01:23:45:67:89:aB", 0, &t[1]);
         test_config_parse_hwaddr_one("1:23:45:67:89:aB", 0, &t[1]);
@@ -42,11 +42,11 @@ __attribute__((used)) static void test_config_parse_hwaddr(void) {
         test_config_parse_hwaddr_one("01-23-45-67-89-ab", 0, &t[1]);
         test_config_parse_hwaddr_one("aabb.ccdd.eeff", 0, &t[0]);
         test_config_parse_hwaddr_one("0123.4567.89ab", 0, &t[1]);
-        test_config_parse_hwaddr_one("123.4567.89ab.", 0, NULL);
-        test_config_parse_hwaddr_one("aabbcc.ddeeff", 0, NULL);
-        test_config_parse_hwaddr_one("aabbccddeeff", 0, NULL);
-        test_config_parse_hwaddr_one("aabbccddee:ff", 0, NULL);
-        test_config_parse_hwaddr_one("012345.6789ab", 0, NULL);
+        test_config_parse_hwaddr_one("123.4567.89ab.", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aabbcc.ddeeff", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aabbccddeeff", 0, ((void*)0));
+        test_config_parse_hwaddr_one("aabbccddee:ff", 0, ((void*)0));
+        test_config_parse_hwaddr_one("012345.6789ab", 0, ((void*)0));
         test_config_parse_hwaddr_one("123.4567.89ab", 0, &t[1]);
 
         test_config_parse_hwaddrs_one("", t, 0);

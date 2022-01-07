@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uvc_device {int /*<<< orphan*/  udev; } ;
-typedef  int __u8 ;
-typedef  int /*<<< orphan*/  __u16 ;
 
-/* Variables and functions */
- int USB_DIR_IN ; 
- int USB_DIR_OUT ; 
- int USB_RECIP_INTERFACE ; 
- int USB_TYPE_CLASS ; 
- int usb_control_msg (int /*<<< orphan*/ ,unsigned int,int,int,int,int,void*,int /*<<< orphan*/ ,int) ; 
- unsigned int usb_rcvctrlpipe (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int usb_sndctrlpipe (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct uvc_device {int udev; } ;
+typedef int __u8 ;
+typedef int __u16 ;
+
+
+ int USB_DIR_IN ;
+ int USB_DIR_OUT ;
+ int USB_RECIP_INTERFACE ;
+ int USB_TYPE_CLASS ;
+ int usb_control_msg (int ,unsigned int,int,int,int,int,void*,int ,int) ;
+ unsigned int usb_rcvctrlpipe (int ,int ) ;
+ unsigned int usb_sndctrlpipe (int ,int ) ;
 
 __attribute__((used)) static int __uvc_query_ctrl(struct uvc_device *dev, __u8 query, __u8 unit,
-			__u8 intfnum, __u8 cs, void *data, __u16 size,
-			int timeout)
+   __u8 intfnum, __u8 cs, void *data, __u16 size,
+   int timeout)
 {
-	__u8 type = USB_TYPE_CLASS | USB_RECIP_INTERFACE;
-	unsigned int pipe;
+ __u8 type = USB_TYPE_CLASS | USB_RECIP_INTERFACE;
+ unsigned int pipe;
 
-	pipe = (query & 0x80) ? usb_rcvctrlpipe(dev->udev, 0)
-			      : usb_sndctrlpipe(dev->udev, 0);
-	type |= (query & 0x80) ? USB_DIR_IN : USB_DIR_OUT;
+ pipe = (query & 0x80) ? usb_rcvctrlpipe(dev->udev, 0)
+         : usb_sndctrlpipe(dev->udev, 0);
+ type |= (query & 0x80) ? USB_DIR_IN : USB_DIR_OUT;
 
-	return usb_control_msg(dev->udev, pipe, query, type, cs << 8,
-			unit << 8 | intfnum, data, size, timeout);
+ return usb_control_msg(dev->udev, pipe, query, type, cs << 8,
+   unit << 8 | intfnum, data, size, timeout);
 }

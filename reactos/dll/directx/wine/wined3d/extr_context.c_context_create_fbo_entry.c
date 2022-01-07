@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct wined3d_rendertarget_info {TYPE_1__* resource; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* glGenFramebuffers ) (int,int /*<<< orphan*/ *) ;} ;
+struct TYPE_4__ {int (* glGenFramebuffers ) (int,int *) ;} ;
 struct wined3d_gl_info {TYPE_2__ fbo_ops; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct fbo_entry {int /*<<< orphan*/  id; int /*<<< orphan*/  rt_mask; int /*<<< orphan*/  flags; int /*<<< orphan*/  key; } ;
+struct fbo_entry {int id; int rt_mask; int flags; int key; } ;
 struct TYPE_3__ {int format_flags; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int WINED3DFMT_FLAG_DEPTH ; 
- int WINED3DFMT_FLAG_STENCIL ; 
- int /*<<< orphan*/  WINED3D_FBO_ENTRY_FLAG_DEPTH ; 
- int /*<<< orphan*/  WINED3D_FBO_ENTRY_FLAG_STENCIL ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  context_generate_fbo_key (struct wined3d_context const*,int /*<<< orphan*/ *,struct wined3d_rendertarget_info const*,struct wined3d_rendertarget_info const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_generate_rt_mask (int /*<<< orphan*/ ) ; 
- struct fbo_entry* heap_alloc (int) ; 
- int /*<<< orphan*/  stub1 (int,int /*<<< orphan*/ *) ; 
+
+ int GL_COLOR_ATTACHMENT0 ;
+ int TRACE (char*,int ) ;
+ int WINED3DFMT_FLAG_DEPTH ;
+ int WINED3DFMT_FLAG_STENCIL ;
+ int WINED3D_FBO_ENTRY_FLAG_DEPTH ;
+ int WINED3D_FBO_ENTRY_FLAG_STENCIL ;
+ int checkGLcall (char*) ;
+ int context_generate_fbo_key (struct wined3d_context const*,int *,struct wined3d_rendertarget_info const*,struct wined3d_rendertarget_info const*,int ,int ) ;
+ int context_generate_rt_mask (int ) ;
+ struct fbo_entry* heap_alloc (int) ;
+ int stub1 (int,int *) ;
 
 __attribute__((used)) static struct fbo_entry *context_create_fbo_entry(const struct wined3d_context *context,
         const struct wined3d_rendertarget_info *render_targets, const struct wined3d_rendertarget_info *depth_stencil,

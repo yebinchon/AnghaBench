@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASM_OUTPUT_CALL (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_ATTRIBUTES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ lookup_attribute (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int FILE ;
+
+
+ int ASM_OUTPUT_CALL (int *,int ) ;
+ int DECL_ATTRIBUTES (int ) ;
+ int fprintf (int *,char*) ;
+ scalar_t__ lookup_attribute (char*,int ) ;
 
 void
 solaris_output_init_fini (FILE *file, tree decl)

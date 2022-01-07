@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  volume_name; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int volume_name; } ;
 struct grub_ext2_data {TYPE_1__ sblock; } ;
-typedef  int /*<<< orphan*/  grub_err_t ;
-typedef  int /*<<< orphan*/  grub_disk_t ;
-typedef  TYPE_2__* grub_device_t ;
-struct TYPE_5__ {int /*<<< orphan*/  disk; } ;
+typedef int grub_err_t ;
+typedef int grub_disk_t ;
+typedef TYPE_2__* grub_device_t ;
+struct TYPE_5__ {int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  grub_dl_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_errno ; 
- struct grub_ext2_data* grub_ext2_mount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_free (struct grub_ext2_data*) ; 
- char* grub_strndup (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  my_mod ; 
+
+ int grub_dl_ref (int ) ;
+ int grub_dl_unref (int ) ;
+ int grub_errno ;
+ struct grub_ext2_data* grub_ext2_mount (int ) ;
+ int grub_free (struct grub_ext2_data*) ;
+ char* grub_strndup (int ,int) ;
+ int my_mod ;
 
 __attribute__((used)) static grub_err_t
 grub_ext2_label (grub_device_t device, char **label)
@@ -40,7 +40,7 @@ grub_ext2_label (grub_device_t device, char **label)
   if (data)
     *label = grub_strndup (data->sblock.volume_name, 14);
   else
-    *label = NULL;
+    *label = ((void*)0);
 
   grub_dl_unref (my_mod);
 

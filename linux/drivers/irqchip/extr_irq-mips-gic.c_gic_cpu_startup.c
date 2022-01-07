@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIC_VX_CTL_EIC ; 
- int /*<<< orphan*/  change_gic_vl_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ cpu_has_veic ; 
- int /*<<< orphan*/  irq_cpu_online () ; 
- int /*<<< orphan*/  write_gic_vl_rmask (int /*<<< orphan*/ ) ; 
+ int GIC_VX_CTL_EIC ;
+ int change_gic_vl_ctl (int ,int ) ;
+ scalar_t__ cpu_has_veic ;
+ int irq_cpu_online () ;
+ int write_gic_vl_rmask (int ) ;
 
 __attribute__((used)) static int gic_cpu_startup(unsigned int cpu)
 {
-	/* Enable or disable EIC */
-	change_gic_vl_ctl(GIC_VX_CTL_EIC,
-			  cpu_has_veic ? GIC_VX_CTL_EIC : 0);
 
-	/* Clear all local IRQ masks (ie. disable all local interrupts) */
-	write_gic_vl_rmask(~0);
+ change_gic_vl_ctl(GIC_VX_CTL_EIC,
+     cpu_has_veic ? GIC_VX_CTL_EIC : 0);
 
-	/* Invoke irq_cpu_online callbacks to enable desired interrupts */
-	irq_cpu_online();
 
-	return 0;
+ write_gic_vl_rmask(~0);
+
+
+ irq_cpu_online();
+
+ return 0;
 }

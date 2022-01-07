@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
 struct TYPE_6__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  enum rtsp_result { ____Placeholder_rtsp_result } rtsp_result ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_7__ {char* content_base; int /*<<< orphan*/  tcp_sock; void* stream_id; int /*<<< orphan*/  keepalive_interval; int /*<<< orphan*/  session_id; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_1__ stream_t ;
+typedef enum rtsp_result { ____Placeholder_rtsp_result } rtsp_result ;
+typedef int buffer ;
+struct TYPE_7__ {char* content_base; int tcp_sock; void* stream_id; int keepalive_interval; int session_id; } ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  __MIN (int,size_t) ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- size_t net_Read (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* net_readln_timeout (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  parse_session (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_transport (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  skip_whitespace (char*) ; 
- char* strdup (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+ int VLC_EGENERIC ;
+ int __MIN (int,size_t) ;
+ void* atoi (char*) ;
+ int free (char*) ;
+ size_t net_Read (TYPE_1__*,int ,int *,int ) ;
+ char* net_readln_timeout (int *,int ,int,int*) ;
+ int parse_session (char*,int ,int,int *) ;
+ scalar_t__ parse_transport (TYPE_1__*,char*) ;
+ int skip_whitespace (char*) ;
+ char* strdup (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static enum rtsp_result rtsp_handle(stream_t *access, bool *interrupted) {
     access_sys_t *sys = access->p_sys;
     uint8_t buffer[512];
     int rtsp_result = 0;
-    bool have_header = false;
+    bool have_header = 0;
     size_t content_length = 0;
     size_t read = 0;
     char *in, *val;
 
-    /* Parse header */
+
     while (!have_header) {
         in = net_readln_timeout((vlc_object_t*)access, sys->tcp_sock, 5000,
                 interrupted);
-        if (in == NULL)
+        if (in == ((void*)0))
             break;
 
         if (strncmp(in, "RTSP/1.0 ", 9) == 0) {
@@ -83,13 +83,13 @@ __attribute__((used)) static enum rtsp_result rtsp_handle(stream_t *access, bool
 
             sys->stream_id = atoi(val);
         } else if (in[0] == '\0') {
-            have_header = true;
+            have_header = 1;
         }
 
         free(in);
     }
 
-    /* Discard further content */
+
     while (content_length > 0 &&
             (read = net_Read(access, sys->tcp_sock, buffer, __MIN(sizeof(buffer), content_length))))
         content_length -= read;

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {scalar_t__ codec_type; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  channels; int /*<<< orphan*/  bits_per_coded_sample; int /*<<< orphan*/  sample_rate; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {scalar_t__ codec_type; int height; int width; int codec_id; int channels; int bits_per_coded_sample; int sample_rate; } ;
 struct TYPE_13__ {char* key; char* value; } ;
-struct TYPE_12__ {int nb_streams; TYPE_1__** streams; int /*<<< orphan*/  metadata; int /*<<< orphan*/ * pb; } ;
+struct TYPE_12__ {int nb_streams; TYPE_1__** streams; int metadata; int * pb; } ;
 struct TYPE_11__ {TYPE_4__* codecpar; } ;
-typedef  TYPE_1__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  TYPE_3__ AVDictionaryEntry ;
-typedef  TYPE_4__ AVCodecParameters ;
+typedef TYPE_1__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+typedef TYPE_3__ AVDictionaryEntry ;
+typedef TYPE_4__ AVCodecParameters ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int SMJPEG_HEND ; 
- char* SMJPEG_MAGIC ; 
- int SMJPEG_SND ; 
- int SMJPEG_TXT ; 
- int SMJPEG_VID ; 
- TYPE_3__* av_dict_get (int /*<<< orphan*/ ,char*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_1__*,int,int,int) ; 
- int ff_codec_get_tag (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_codec_smjpeg_audio_tags ; 
- int /*<<< orphan*/  ff_codec_smjpeg_video_tags ; 
- int /*<<< orphan*/  ff_standardize_creation_time (TYPE_2__*) ; 
- int strlen (char*) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int SMJPEG_HEND ;
+ char* SMJPEG_MAGIC ;
+ int SMJPEG_SND ;
+ int SMJPEG_TXT ;
+ int SMJPEG_VID ;
+ TYPE_3__* av_dict_get (int ,char*,TYPE_3__*,int ) ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int avio_flush (int *) ;
+ int avio_w8 (int *,int ) ;
+ int avio_wb16 (int *,int ) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wl32 (int *,int) ;
+ int avio_write (int *,char*,int) ;
+ int avpriv_set_pts_info (TYPE_1__*,int,int,int) ;
+ int ff_codec_get_tag (int ,int ) ;
+ int ff_codec_smjpeg_audio_tags ;
+ int ff_codec_smjpeg_video_tags ;
+ int ff_standardize_creation_time (TYPE_2__*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int smjpeg_write_header(AVFormatContext *s)
 {
-    AVDictionaryEntry *t = NULL;
+    AVDictionaryEntry *t = ((void*)0);
     AVIOContext *pb = s->pb;
     int n, tag;
 

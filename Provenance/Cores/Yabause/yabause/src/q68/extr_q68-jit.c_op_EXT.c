@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSN_GET_REG0 ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_EXT_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_EXT_W (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_GET_OP1_REGISTER (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_SETCC_LOGIC_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SETCC_LOGIC_W (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SET_REGISTER_L (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_SET_REGISTER_W (int /*<<< orphan*/ ,int) ; 
- int cc_needed (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  current_entry ; 
- int reg0 ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ int INSN_GET_REG0 ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_EXT_L (int ) ;
+ int JIT_EMIT_EXT_W (int ) ;
+ int JIT_EMIT_GET_OP1_REGISTER (int ,int) ;
+ int JIT_EMIT_SETCC_LOGIC_L (int ) ;
+ int JIT_EMIT_SETCC_LOGIC_W (int ) ;
+ int JIT_EMIT_SET_REGISTER_L (int ,int) ;
+ int JIT_EMIT_SET_REGISTER_W (int ,int) ;
+ int cc_needed (int *,int) ;
+ int current_entry ;
+ int reg0 ;
 
 __attribute__((used)) static int op_EXT(Q68State *state, uint32_t opcode)
 {

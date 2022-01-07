@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int DFLAG ;
+ int INTERNAL_DISASSEMBLER_ERROR ;
+ int PREFIX_DATA ;
+ int REX_EXTX ;
+ int REX_MODE64 ;
+ int USED_REX (int) ;
 
-/* Forward declarations */
 
-/* Type definitions */
+ int * names16 ;
+ int * names32 ;
+ int * names64 ;
+ int * names8 ;
+ int * names8rex ;
+ int oappend (int ) ;
+ int prefixes ;
 
-/* Variables and functions */
- int DFLAG ; 
- int /*<<< orphan*/  INTERNAL_DISASSEMBLER_ERROR ; 
- int PREFIX_DATA ; 
- int REX_EXTX ; 
- int REX_MODE64 ; 
- int /*<<< orphan*/  USED_REX (int) ; 
-#define  b_mode 132 
-#define  d_mode 131 
- int /*<<< orphan*/ * names16 ; 
- int /*<<< orphan*/ * names32 ; 
- int /*<<< orphan*/ * names64 ; 
- int /*<<< orphan*/ * names8 ; 
- int /*<<< orphan*/ * names8rex ; 
- int /*<<< orphan*/  oappend (int /*<<< orphan*/ ) ; 
- int prefixes ; 
-#define  q_mode 130 
- int /*<<< orphan*/  reg ; 
- int rex ; 
- int used_prefixes ; 
-#define  v_mode 129 
-#define  w_mode 128 
+ int reg ;
+ int rex ;
+ int used_prefixes ;
+
+
 
 __attribute__((used)) static void
 OP_G (int bytemode, int sizeflag)
@@ -43,30 +35,30 @@ OP_G (int bytemode, int sizeflag)
     add += 8;
   switch (bytemode)
     {
-    case b_mode:
+    case 132:
       USED_REX (0);
       if (rex)
-	oappend (names8rex[reg + add]);
+ oappend (names8rex[reg + add]);
       else
-	oappend (names8[reg + add]);
+ oappend (names8[reg + add]);
       break;
-    case w_mode:
+    case 128:
       oappend (names16[reg + add]);
       break;
-    case d_mode:
+    case 131:
       oappend (names32[reg + add]);
       break;
-    case q_mode:
+    case 130:
       oappend (names64[reg + add]);
       break;
-    case v_mode:
+    case 129:
       USED_REX (REX_MODE64);
       if (rex & REX_MODE64)
-	oappend (names64[reg + add]);
+ oappend (names64[reg + add]);
       else if (sizeflag & DFLAG)
-	oappend (names32[reg + add]);
+ oappend (names32[reg + add]);
       else
-	oappend (names16[reg + add]);
+ oappend (names16[reg + add]);
       used_prefixes |= (prefixes & PREFIX_DATA);
       break;
     default:

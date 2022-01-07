@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  stream; int /*<<< orphan*/  url; } ;
-typedef  TYPE_2__ travellog_entry_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int stream; int url; } ;
+typedef TYPE_2__ travellog_entry_t ;
 struct TYPE_9__ {unsigned int loading_pos; TYPE_2__* log; } ;
-struct TYPE_12__ {int /*<<< orphan*/  document; TYPE_1__ travellog; int /*<<< orphan*/  doc_navigate; } ;
+struct TYPE_12__ {int document; TYPE_1__ travellog; int doc_navigate; } ;
 struct TYPE_11__ {scalar_t__ QuadPart; } ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IPersistHistory ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_4__ DocHost ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef int IPersistHistory ;
+typedef int HRESULT ;
+typedef TYPE_4__ DocHost ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IID_IPersistHistory ; 
- int /*<<< orphan*/  IPersistHistory_LoadHistory (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistHistory_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ ,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  async_doc_navigate (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_navigation_commands (TYPE_4__*) ; 
+
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FIXME (char*) ;
+ int IID_IPersistHistory ;
+ int IPersistHistory_LoadHistory (int *,int ,int *) ;
+ int IPersistHistory_Release (int *) ;
+ int IStream_Seek (int ,TYPE_3__,int ,int *) ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ int STREAM_SEEK_SET ;
+ int async_doc_navigate (TYPE_4__*,int ,int *,int *,int ,int ) ;
+ int update_navigation_commands (TYPE_4__*) ;
 
 __attribute__((used)) static HRESULT navigate_history(DocHost *This, unsigned travellog_pos)
 {
@@ -56,16 +56,16 @@ __attribute__((used)) static HRESULT navigate_history(DocHost *This, unsigned tr
     update_navigation_commands(This);
 
     if(!entry->stream)
-        return async_doc_navigate(This, entry->url, NULL, NULL, 0, FALSE);
+        return async_doc_navigate(This, entry->url, ((void*)0), ((void*)0), 0, FALSE);
 
     hres = IUnknown_QueryInterface(This->document, &IID_IPersistHistory, (void**)&persist_history);
     if(FAILED(hres))
         return hres;
 
     li.QuadPart = 0;
-    IStream_Seek(entry->stream, li, STREAM_SEEK_SET, NULL);
+    IStream_Seek(entry->stream, li, STREAM_SEEK_SET, ((void*)0));
 
-    hres = IPersistHistory_LoadHistory(persist_history, entry->stream, NULL);
+    hres = IPersistHistory_LoadHistory(persist_history, entry->stream, ((void*)0));
     IPersistHistory_Release(persist_history);
     return hres;
 }

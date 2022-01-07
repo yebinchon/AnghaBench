@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Connection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Connection ;
+
+
+ int srand (int ) ;
+ int time (int ) ;
 
 __attribute__((used)) static int
 mock_init(Connection *conn)
 {
-	srand(time(0));
-	return 0;
+ srand(time(0));
+ return 0;
 }

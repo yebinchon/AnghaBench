@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ENGINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONF_parse_list (char const*,char,int,int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  ENGINE_F_ENGINE_SET_DEFAULT_STRING ; 
- int /*<<< orphan*/  ENGINE_R_INVALID_STRING ; 
- int ENGINE_set_default (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  ENGINEerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char const*) ; 
- int /*<<< orphan*/  int_def_cb ; 
+
+
+
+typedef int ENGINE ;
+
+
+ int CONF_parse_list (char const*,char,int,int ,unsigned int*) ;
+ int ENGINE_F_ENGINE_SET_DEFAULT_STRING ;
+ int ENGINE_R_INVALID_STRING ;
+ int ENGINE_set_default (int *,unsigned int) ;
+ int ENGINEerr (int ,int ) ;
+ int ERR_add_error_data (int,char*,char const*) ;
+ int int_def_cb ;
 
 int ENGINE_set_default_string(ENGINE *e, const char *def_list)
 {

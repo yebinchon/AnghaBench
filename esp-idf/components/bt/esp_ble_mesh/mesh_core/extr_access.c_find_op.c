@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8_t ;
-typedef  scalar_t__ u32_t ;
-typedef  int /*<<< orphan*/  u16_t ;
+
+
+
+
+typedef size_t u8_t ;
+typedef scalar_t__ u32_t ;
+typedef int u16_t ;
 struct bt_mesh_model_op {scalar_t__ opcode; scalar_t__ func; } ;
 struct bt_mesh_model {struct bt_mesh_model_op* op; } ;
 
-/* Variables and functions */
- scalar_t__ BLE_MESH_ADDR_IS_GROUP (int /*<<< orphan*/ ) ; 
- scalar_t__ BLE_MESH_ADDR_IS_VIRTUAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_mesh_model_find_group (struct bt_mesh_model*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  model_has_key (struct bt_mesh_model*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BLE_MESH_ADDR_IS_GROUP (int ) ;
+ scalar_t__ BLE_MESH_ADDR_IS_VIRTUAL (int ) ;
+ int bt_mesh_model_find_group (struct bt_mesh_model*,int ) ;
+ int model_has_key (struct bt_mesh_model*,int ) ;
 
 __attribute__((used)) static const struct bt_mesh_model_op *find_op(struct bt_mesh_model *models,
         u8_t model_count, u16_t dst,
@@ -52,6 +52,6 @@ __attribute__((used)) static const struct bt_mesh_model_op *find_op(struct bt_me
         }
     }
 
-    *model = NULL;
-    return NULL;
+    *model = ((void*)0);
+    return ((void*)0);
 }

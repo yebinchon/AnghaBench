@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32 ;
-struct TYPE_3__ {unsigned char* cur; int /*<<< orphan*/  nesting; } ;
-typedef  TYPE_1__ nbt ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ nbt_parse_uint32 (unsigned char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32 ;
+struct TYPE_3__ {unsigned char* cur; int nesting; } ;
+typedef TYPE_1__ nbt ;
+
+
+ int assert (int) ;
+ scalar_t__ nbt_parse_uint32 (unsigned char*) ;
 
 __attribute__((used)) static int nbt_begin_list(nbt *n, unsigned char type)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static int nbt_begin_list(nbt *n, unsigned char type)
    n->cur = ptr;
    len = nbt_parse_uint32(n->cur+1);
    assert(n->cur[0] == type);
-   // @TODO keep a stack with the count to make sure they do it right
+
    ++n->nesting;
    n->cur += 5;
    return (int) len;

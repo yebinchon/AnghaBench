@@ -1,116 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct kvm_device_attr {int group; int /*<<< orphan*/  attr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct kvm_device_attr {int group; int attr; } ;
 struct kvm {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  has_cmma; } ;
+struct TYPE_2__ {int has_cmma; } ;
 
-/* Variables and functions */
- int ENXIO ; 
-#define  KVM_S390_VM_CPU_MACHINE 149 
-#define  KVM_S390_VM_CPU_MACHINE_FEAT 148 
-#define  KVM_S390_VM_CPU_MACHINE_SUBFUNC 147 
-#define  KVM_S390_VM_CPU_MODEL 146 
-#define  KVM_S390_VM_CPU_PROCESSOR 145 
-#define  KVM_S390_VM_CPU_PROCESSOR_FEAT 144 
-#define  KVM_S390_VM_CPU_PROCESSOR_SUBFUNC 143 
-#define  KVM_S390_VM_CRYPTO 142 
-#define  KVM_S390_VM_CRYPTO_DISABLE_AES_KW 141 
-#define  KVM_S390_VM_CRYPTO_DISABLE_APIE 140 
-#define  KVM_S390_VM_CRYPTO_DISABLE_DEA_KW 139 
-#define  KVM_S390_VM_CRYPTO_ENABLE_AES_KW 138 
-#define  KVM_S390_VM_CRYPTO_ENABLE_APIE 137 
-#define  KVM_S390_VM_CRYPTO_ENABLE_DEA_KW 136 
-#define  KVM_S390_VM_MEM_CLR_CMMA 135 
-#define  KVM_S390_VM_MEM_CTRL 134 
-#define  KVM_S390_VM_MEM_ENABLE_CMMA 133 
-#define  KVM_S390_VM_MEM_LIMIT_SIZE 132 
-#define  KVM_S390_VM_MIGRATION 131 
-#define  KVM_S390_VM_TOD 130 
-#define  KVM_S390_VM_TOD_HIGH 129 
-#define  KVM_S390_VM_TOD_LOW 128 
- int /*<<< orphan*/  ap_instructions_available () ; 
- TYPE_1__ sclp ; 
+
+ int ENXIO ;
+ int ap_instructions_available () ;
+ TYPE_1__ sclp ;
 
 __attribute__((used)) static int kvm_s390_vm_has_attr(struct kvm *kvm, struct kvm_device_attr *attr)
 {
-	int ret;
+ int ret;
 
-	switch (attr->group) {
-	case KVM_S390_VM_MEM_CTRL:
-		switch (attr->attr) {
-		case KVM_S390_VM_MEM_ENABLE_CMMA:
-		case KVM_S390_VM_MEM_CLR_CMMA:
-			ret = sclp.has_cmma ? 0 : -ENXIO;
-			break;
-		case KVM_S390_VM_MEM_LIMIT_SIZE:
-			ret = 0;
-			break;
-		default:
-			ret = -ENXIO;
-			break;
-		}
-		break;
-	case KVM_S390_VM_TOD:
-		switch (attr->attr) {
-		case KVM_S390_VM_TOD_LOW:
-		case KVM_S390_VM_TOD_HIGH:
-			ret = 0;
-			break;
-		default:
-			ret = -ENXIO;
-			break;
-		}
-		break;
-	case KVM_S390_VM_CPU_MODEL:
-		switch (attr->attr) {
-		case KVM_S390_VM_CPU_PROCESSOR:
-		case KVM_S390_VM_CPU_MACHINE:
-		case KVM_S390_VM_CPU_PROCESSOR_FEAT:
-		case KVM_S390_VM_CPU_MACHINE_FEAT:
-		case KVM_S390_VM_CPU_MACHINE_SUBFUNC:
-		case KVM_S390_VM_CPU_PROCESSOR_SUBFUNC:
-			ret = 0;
-			break;
-		default:
-			ret = -ENXIO;
-			break;
-		}
-		break;
-	case KVM_S390_VM_CRYPTO:
-		switch (attr->attr) {
-		case KVM_S390_VM_CRYPTO_ENABLE_AES_KW:
-		case KVM_S390_VM_CRYPTO_ENABLE_DEA_KW:
-		case KVM_S390_VM_CRYPTO_DISABLE_AES_KW:
-		case KVM_S390_VM_CRYPTO_DISABLE_DEA_KW:
-			ret = 0;
-			break;
-		case KVM_S390_VM_CRYPTO_ENABLE_APIE:
-		case KVM_S390_VM_CRYPTO_DISABLE_APIE:
-			ret = ap_instructions_available() ? 0 : -ENXIO;
-			break;
-		default:
-			ret = -ENXIO;
-			break;
-		}
-		break;
-	case KVM_S390_VM_MIGRATION:
-		ret = 0;
-		break;
-	default:
-		ret = -ENXIO;
-		break;
-	}
+ switch (attr->group) {
+ case 134:
+  switch (attr->attr) {
+  case 133:
+  case 135:
+   ret = sclp.has_cmma ? 0 : -ENXIO;
+   break;
+  case 132:
+   ret = 0;
+   break;
+  default:
+   ret = -ENXIO;
+   break;
+  }
+  break;
+ case 130:
+  switch (attr->attr) {
+  case 128:
+  case 129:
+   ret = 0;
+   break;
+  default:
+   ret = -ENXIO;
+   break;
+  }
+  break;
+ case 146:
+  switch (attr->attr) {
+  case 145:
+  case 149:
+  case 144:
+  case 148:
+  case 147:
+  case 143:
+   ret = 0;
+   break;
+  default:
+   ret = -ENXIO;
+   break;
+  }
+  break;
+ case 142:
+  switch (attr->attr) {
+  case 138:
+  case 136:
+  case 141:
+  case 139:
+   ret = 0;
+   break;
+  case 137:
+  case 140:
+   ret = ap_instructions_available() ? 0 : -ENXIO;
+   break;
+  default:
+   ret = -ENXIO;
+   break;
+  }
+  break;
+ case 131:
+  ret = 0;
+  break;
+ default:
+  ret = -ENXIO;
+  break;
+ }
 
-	return ret;
+ return ret;
 }

@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  L (int,char*) ; 
- int /*<<< orphan*/  R (int,char*) ; 
- int /*<<< orphan*/  wclrtoeol (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wnd ; 
+ int L (int,char*) ;
+ int R (int,char*) ;
+ int wclrtoeol (int ) ;
+ int wmove (int ,int ,int ) ;
+ int wnd ;
 
 void
 labelip(void)
 {
-	wmove(wnd, 0, 0); wclrtoeol(wnd);
-#define L(row, str) mvwprintw(wnd, row, 10, str)
-#define R(row, str) mvwprintw(wnd, row, 45, str);
-	L(0, "IP Input");		R(0, "IP Output");
-	L(1, "total packets received");	R(1, "total packets sent");
-	L(2, "- with bad checksums");	R(2, "- generated locally");
-	L(3, "- too short for header");	R(3, "- output drops");
-	L(4, "- too short for data");	R(4, "output fragments generated");
-	L(5, "- with invalid hlen");	R(5, "- fragmentation failed");
-	L(6, "- with invalid length");	R(6, "destinations unreachable");
-	L(7, "- with invalid version");	R(7, "packets output via raw IP");
-	L(8, "- jumbograms");
-	L(9, "total fragments received");	R(9, "UDP Statistics");
-	L(10, "- fragments dropped");	R(10, "total input packets");
-	L(11, "- fragments timed out");	R(11, "- too short for header");
-	L(12, "- packets reassembled ok");	R(12, "- invalid checksum");
-	L(13, "packets forwarded");	R(13, "- no checksum");
-	L(14, "- unreachable dests");	R(14, "- invalid length");
-	L(15, "- redirects generated");	R(15, "- no socket for dest port");
-	L(16, "option errors");		R(16, "- no socket for broadcast");
-	L(17, "unwanted multicasts");	R(17, "- socket buffer full");
-	L(18, "delivered to upper layer");	R(18, "total output packets");
-#undef L
-#undef R
+ wmove(wnd, 0, 0); wclrtoeol(wnd);
+
+
+ mvwprintw(wnd, 0, 10, "IP Input"); mvwprintw(wnd, 0, 45, "IP Output");;
+ mvwprintw(wnd, 1, 10, "total packets received"); mvwprintw(wnd, 1, 45, "total packets sent");;
+ mvwprintw(wnd, 2, 10, "- with bad checksums"); mvwprintw(wnd, 2, 45, "- generated locally");;
+ mvwprintw(wnd, 3, 10, "- too short for header"); mvwprintw(wnd, 3, 45, "- output drops");;
+ mvwprintw(wnd, 4, 10, "- too short for data"); mvwprintw(wnd, 4, 45, "output fragments generated");;
+ mvwprintw(wnd, 5, 10, "- with invalid hlen"); mvwprintw(wnd, 5, 45, "- fragmentation failed");;
+ mvwprintw(wnd, 6, 10, "- with invalid length"); mvwprintw(wnd, 6, 45, "destinations unreachable");;
+ mvwprintw(wnd, 7, 10, "- with invalid version"); mvwprintw(wnd, 7, 45, "packets output via raw IP");;
+ mvwprintw(wnd, 8, 10, "- jumbograms");
+ mvwprintw(wnd, 9, 10, "total fragments received"); mvwprintw(wnd, 9, 45, "UDP Statistics");;
+ mvwprintw(wnd, 10, 10, "- fragments dropped"); mvwprintw(wnd, 10, 45, "total input packets");;
+ mvwprintw(wnd, 11, 10, "- fragments timed out"); mvwprintw(wnd, 11, 45, "- too short for header");;
+ mvwprintw(wnd, 12, 10, "- packets reassembled ok"); mvwprintw(wnd, 12, 45, "- invalid checksum");;
+ mvwprintw(wnd, 13, 10, "packets forwarded"); mvwprintw(wnd, 13, 45, "- no checksum");;
+ mvwprintw(wnd, 14, 10, "- unreachable dests"); mvwprintw(wnd, 14, 45, "- invalid length");;
+ mvwprintw(wnd, 15, 10, "- redirects generated"); mvwprintw(wnd, 15, 45, "- no socket for dest port");;
+ mvwprintw(wnd, 16, 10, "option errors"); mvwprintw(wnd, 16, 45, "- no socket for broadcast");;
+ mvwprintw(wnd, 17, 10, "unwanted multicasts"); mvwprintw(wnd, 17, 45, "- socket buffer full");;
+ mvwprintw(wnd, 18, 10, "delivered to upper layer"); mvwprintw(wnd, 18, 45, "total output packets");;
+
+
 }

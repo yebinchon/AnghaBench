@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  scalar_t__ BROTLI_BOOL ;
 
-/* Variables and functions */
- int BROTLI_LARGE_MAX_WINDOW_BITS ; 
- int BROTLI_MAX_QUALITY ; 
- int BROTLI_MAX_WINDOW_BITS ; 
- int BROTLI_MIN_QUALITY ; 
- int BROTLI_MIN_WINDOW_BITS ; 
- char* DEFAULT_SUFFIX ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdout ; 
+
+
+
+typedef int FILE ;
+typedef scalar_t__ BROTLI_BOOL ;
+
+
+ int BROTLI_LARGE_MAX_WINDOW_BITS ;
+ int BROTLI_MAX_QUALITY ;
+ int BROTLI_MAX_WINDOW_BITS ;
+ int BROTLI_MIN_QUALITY ;
+ int BROTLI_MIN_WINDOW_BITS ;
+ char* DEFAULT_SUFFIX ;
+ int fprintf (int *,char*,...) ;
+ int * stderr ;
+ int * stdout ;
 
 __attribute__((used)) static void PrintHelp(const char* name, BROTLI_BOOL error) {
   FILE* media = error ? stderr : stdout;
-  /* String is cut to pieces with length less than 509, to conform C90 spec. */
+
   fprintf(media,
 "Usage: %s [OPTION]... [FILE]...\n",
           name);

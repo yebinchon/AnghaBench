@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int packet_timestamp_end; int packet_timestamp_start; int packet_size_left; int packet_size; scalar_t__ packet_buf; int /*<<< orphan*/  pb; scalar_t__ packet_nb_payloads; int /*<<< orphan*/  nb_packets; scalar_t__ is_streamed; } ;
-struct TYPE_6__ {scalar_t__ packet_size; int /*<<< orphan*/  pb; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  TYPE_2__ ASFContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ffio_init_context (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  put_chunk (TYPE_1__*,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int put_payload_parsing_info (TYPE_1__*,int,int,scalar_t__,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int packet_timestamp_end; int packet_timestamp_start; int packet_size_left; int packet_size; scalar_t__ packet_buf; int pb; scalar_t__ packet_nb_payloads; int nb_packets; scalar_t__ is_streamed; } ;
+struct TYPE_6__ {scalar_t__ packet_size; int pb; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ AVFormatContext ;
+typedef TYPE_2__ ASFContext ;
+
+
+ int av_assert0 (int) ;
+ int avio_flush (int ) ;
+ int avio_write (int ,scalar_t__,scalar_t__) ;
+ int ffio_init_context (int *,scalar_t__,scalar_t__,int,int *,int *,int *,int *) ;
+ int memset (scalar_t__,int ,int) ;
+ int put_chunk (TYPE_1__*,int,scalar_t__,int ) ;
+ int put_payload_parsing_info (TYPE_1__*,int,int,scalar_t__,int) ;
 
 __attribute__((used)) static void flush_packet(AVFormatContext *s)
 {
@@ -50,9 +50,9 @@ __attribute__((used)) static void flush_packet(AVFormatContext *s)
 
     avio_flush(s->pb);
     asf->nb_packets++;
-    asf->packet_nb_payloads     = 0;
+    asf->packet_nb_payloads = 0;
     asf->packet_timestamp_start = -1;
-    asf->packet_timestamp_end   = -1;
+    asf->packet_timestamp_end = -1;
     ffio_init_context(&asf->pb, asf->packet_buf, s->packet_size, 1,
-                      NULL, NULL, NULL, NULL);
+                      ((void*)0), ((void*)0), ((void*)0), ((void*)0));
 }

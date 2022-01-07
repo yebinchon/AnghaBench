@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {long long field_i; TYPE_2__* fields; } ;
-typedef  TYPE_4__ type_desc ;
+typedef TYPE_4__ type_desc ;
 struct TYPE_13__ {int v_fid; int type; int v_int; long long v_long; double v_double; int v_string_len; char* v_string; } ;
-struct TYPE_8__ {int size; int /*<<< orphan*/  secret; int /*<<< orphan*/  extra; int /*<<< orphan*/  local_id; int /*<<< orphan*/  volume_id; int /*<<< orphan*/  server; int /*<<< orphan*/  rotate; } ;
-struct TYPE_10__ {int photo_len; char* photo; int /*<<< orphan*/  orig_album_id; int /*<<< orphan*/  orig_owner_id; int /*<<< orphan*/  server_id2; int /*<<< orphan*/  server_id; } ;
+struct TYPE_8__ {int size; int secret; int extra; int local_id; int volume_id; int server; int rotate; } ;
+struct TYPE_10__ {int photo_len; char* photo; int orig_album_id; int orig_owner_id; int server_id2; int server_id; } ;
 struct TYPE_12__ {int v_fid; int is_location_engine; TYPE_1__ location_engine; TYPE_3__ location_old; } ;
 struct TYPE_9__ {int type; } ;
 
-/* Variables and functions */
- size_t MAX_LOCATIONS ; 
- int /*<<< orphan*/  TL_ERROR_BAD_VALUE ; 
- int TL_PHOTO_AUDIO_LOCATION ; 
- int TL_PHOTO_AUDIO_LOCATION_STORAGE ; 
- int TL_PHOTO_PHOTO_LOCATION ; 
- int TL_PHOTO_PHOTO_LOCATION_STORAGE ; 
- int TL_PHOTO_VIDEO_LOCATION ; 
- int TL_PHOTO_VIDEO_LOCATION_STORAGE ; 
- int /*<<< orphan*/  base64url_to_secret (char*,int /*<<< orphan*/ *) ; 
- TYPE_7__* field_changes ; 
- size_t field_changes_n ; 
- TYPE_6__* location_changes ; 
- size_t location_changes_n ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
-#define  t_double 132 
-#define  t_int 131 
-#define  t_long 130 
-#define  t_raw 129 
-#define  t_string 128 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_4__* types ; 
+
+ size_t MAX_LOCATIONS ;
+ int TL_ERROR_BAD_VALUE ;
+ int TL_PHOTO_AUDIO_LOCATION ;
+ int TL_PHOTO_AUDIO_LOCATION_STORAGE ;
+ int TL_PHOTO_PHOTO_LOCATION ;
+ int TL_PHOTO_PHOTO_LOCATION_STORAGE ;
+ int TL_PHOTO_VIDEO_LOCATION ;
+ int TL_PHOTO_VIDEO_LOCATION_STORAGE ;
+ int base64url_to_secret (char*,int *) ;
+ TYPE_7__* field_changes ;
+ size_t field_changes_n ;
+ TYPE_6__* location_changes ;
+ size_t location_changes_n ;
+ int memcpy (char*,char*,int) ;
+
+
+
+
+
+ int tl_fetch_set_error_format (int ,char*,...) ;
+ TYPE_4__* types ;
 
 int rpc_get_fields (int type_id, long long mask, char *s, int len) {
   if (len % sizeof (int) != 0 || len == 0) {
@@ -70,28 +70,28 @@ int rpc_get_fields (int type_id, long long mask, char *s, int len) {
       int f_type = field_changes[field_changes_n].type = t->fields[id].type;
 
       switch (f_type) {
-        case t_int:
+        case 131:
           if (a_end - a < 1) {
             return -1;
           }
           field_changes[field_changes_n].v_int = *a;
           a++;
           break;
-        case t_long:
+        case 130:
           if (a_end - a < 2) {
             return -1;
           }
           field_changes[field_changes_n].v_long = *(long long *)a;
           a += 2;
           break;
-        case t_double:
+        case 132:
           if (a_end - a < 2) {
             return -1;
           }
           field_changes[field_changes_n].v_double = *(double *)a;
           a += 2;
           break;
-        case t_string: {
+        case 128: {
           if (a_end == a) {
             return -1;
           }
@@ -118,7 +118,7 @@ int rpc_get_fields (int type_id, long long mask, char *s, int len) {
           field_changes[field_changes_n].v_string = str;
           break;
         }
-        case t_raw: {
+        case 129: {
           if (a_end - a < 1) {
             return -1;
           }

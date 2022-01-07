@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {struct TYPE_4__* map; int /*<<< orphan*/  libkse_debug_addr; int /*<<< orphan*/  ph; } ;
-typedef  TYPE_1__ td_thragent_t ;
-typedef  int /*<<< orphan*/  td_err_e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TDBG_FUNC () ; 
- int /*<<< orphan*/  TD_OK ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  ps_pwrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {struct TYPE_4__* map; int libkse_debug_addr; int ph; } ;
+typedef TYPE_1__ td_thragent_t ;
+typedef int td_err_e ;
+
+
+ int TDBG_FUNC () ;
+ int TD_OK ;
+ int free (TYPE_1__*) ;
+ int ps_pwrite (int ,int ,int*,int) ;
 
 __attribute__((used)) static td_err_e
 pt_ta_delete(td_thragent_t *ta)
 {
-	int dbg;
+ int dbg;
 
-	TDBG_FUNC();
+ TDBG_FUNC();
 
-	dbg = 0;
-	/*
-	 * Error returns from this write are not really a problem;
-	 * the process doesn't exist any more.
-	 */
-	ps_pwrite(ta->ph, ta->libkse_debug_addr, &dbg, sizeof(int));
-	if (ta->map)
-		free(ta->map);
-	free(ta);
-	return (TD_OK);
+ dbg = 0;
+
+
+
+
+ ps_pwrite(ta->ph, ta->libkse_debug_addr, &dbg, sizeof(int));
+ if (ta->map)
+  free(ta->map);
+ free(ta);
+ return (TD_OK);
 }

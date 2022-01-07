@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int hi; int lo; } ;
 struct TYPE_4__ {double dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- int __HI (double) ; 
- int __LO (double) ; 
- double huge ; 
+
+ int __HI (double) ;
+ int __LO (double) ;
+ double huge ;
 
 double
 floor (double x)
@@ -32,9 +32,9 @@ floor (double x)
   j0 = ((i0 >> 20) & 0x7ff) - 0x3ff;
   if (j0 < 20)
   {
-    if (j0 < 0) /* raise inexact if x != 0 */
+    if (j0 < 0)
     {
-      if (huge + x > 0.0) /* return 0 * sign(x) if |x| < 1 */
+      if (huge + x > 0.0)
       {
         if (i0 >= 0)
         {
@@ -50,11 +50,11 @@ floor (double x)
     else
     {
       i = (0x000fffff) >> j0;
-      if (((i0 & i) | i1) == 0) /* x is integral */
+      if (((i0 & i) | i1) == 0)
       {
         return x;
       }
-      if (huge + x > 0.0) /* raise inexact flag */
+      if (huge + x > 0.0)
       {
         if (i0 < 0)
         {
@@ -67,11 +67,11 @@ floor (double x)
   }
   else if (j0 > 51)
   {
-    if (j0 == 0x400) /* inf or NaN */
+    if (j0 == 0x400)
     {
       return x + x;
     }
-    else /* x is integral */
+    else
     {
       return x;
     }
@@ -79,11 +79,11 @@ floor (double x)
   else
   {
     i = ((unsigned) (0xffffffff)) >> (j0 - 20);
-    if ((i1 & i) == 0) /* x is integral */
+    if ((i1 & i) == 0)
     {
       return x;
     }
-    if (huge + x > 0.0) /* raise inexact flag */
+    if (huge + x > 0.0)
     {
       if (i0 < 0)
       {
@@ -94,7 +94,7 @@ floor (double x)
         else
         {
           j = i1 + (1 << (52 - j0));
-          if (j < i1) /* got a carry */
+          if (j < i1)
           {
             i0 += 1;
           }

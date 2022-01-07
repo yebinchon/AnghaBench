@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct _fcb {int /*<<< orphan*/  sd; } ;
-struct TYPE_5__ {int /*<<< orphan*/  st_gid; int /*<<< orphan*/  st_uid; } ;
-struct TYPE_6__ {scalar_t__ type; int /*<<< orphan*/  sd; TYPE_1__ inode_item; int /*<<< orphan*/  inode; int /*<<< orphan*/  subvol; int /*<<< orphan*/  Vcb; } ;
-typedef  TYPE_2__ fcb ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  SECURITY_SUBJECT_CONTEXT ;
-typedef  int /*<<< orphan*/ * PSID ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- scalar_t__ BTRFS_TYPE_DIRECTORY ; 
- int /*<<< orphan*/  EA_NTACL ; 
- int /*<<< orphan*/  EA_NTACL_HASH ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IoGetFileObjectGenericMapping () ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlSetGroupSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RtlSetOwnerSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SEF_DACL_AUTO_INHERIT ; 
- int /*<<< orphan*/  SeAssignSecurityEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SeCaptureSubjectContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_top_level_sd (TYPE_2__*) ; 
- scalar_t__ get_xattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gid_to_sid (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  uid_to_sid (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct _fcb {int sd; } ;
+struct TYPE_5__ {int st_gid; int st_uid; } ;
+struct TYPE_6__ {scalar_t__ type; int sd; TYPE_1__ inode_item; int inode; int subvol; int Vcb; } ;
+typedef TYPE_2__ fcb ;
+typedef int ULONG ;
+typedef int SECURITY_SUBJECT_CONTEXT ;
+typedef int * PSID ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
+
+
+ scalar_t__ BTRFS_TYPE_DIRECTORY ;
+ int EA_NTACL ;
+ int EA_NTACL_HASH ;
+ int ERR (char*,...) ;
+ int ExFreePool (int *) ;
+ int IoGetFileObjectGenericMapping () ;
+ int NT_SUCCESS (int ) ;
+ int PagedPool ;
+ int RtlSetGroupSecurityDescriptor (int *,int *,int) ;
+ int RtlSetOwnerSecurityDescriptor (int *,int *,int) ;
+ int SEF_DACL_AUTO_INHERIT ;
+ int SeAssignSecurityEx (int ,int *,void**,int *,int,int ,int *,int ,int ) ;
+ int SeCaptureSubjectContext (int *) ;
+ int get_top_level_sd (TYPE_2__*) ;
+ scalar_t__ get_xattr (int ,int ,int ,int ,int ,int **,int *,int ) ;
+ int gid_to_sid (int ,int **) ;
+ int uid_to_sid (int ,int **) ;
 
 void fcb_get_sd(fcb* fcb, struct _fcb* parent, bool look_for_xattr, PIRP Irp) {
     NTSTATUS Status;
-    PSID usersid = NULL, groupsid = NULL;
+    PSID usersid = ((void*)0), groupsid = ((void*)0);
     SECURITY_SUBJECT_CONTEXT subjcont;
     ULONG buflen;
 
@@ -59,7 +59,7 @@ void fcb_get_sd(fcb* fcb, struct _fcb* parent, bool look_for_xattr, PIRP Irp) {
 
     SeCaptureSubjectContext(&subjcont);
 
-    Status = SeAssignSecurityEx(parent->sd, NULL, (void**)&fcb->sd, NULL, fcb->type == BTRFS_TYPE_DIRECTORY, SEF_DACL_AUTO_INHERIT,
+    Status = SeAssignSecurityEx(parent->sd, ((void*)0), (void**)&fcb->sd, ((void*)0), fcb->type == BTRFS_TYPE_DIRECTORY, SEF_DACL_AUTO_INHERIT,
                                 &subjcont, IoGetFileObjectGenericMapping(), PagedPool);
     if (!NT_SUCCESS(Status)) {
         ERR("SeAssignSecurityEx returned %08x\n", Status);
@@ -72,7 +72,7 @@ void fcb_get_sd(fcb* fcb, struct _fcb* parent, bool look_for_xattr, PIRP Irp) {
         return;
     }
 
-    RtlSetOwnerSecurityDescriptor(&fcb->sd, usersid, false);
+    RtlSetOwnerSecurityDescriptor(&fcb->sd, usersid, 0);
 
     gid_to_sid(fcb->inode_item.st_gid, &groupsid);
     if (!groupsid) {
@@ -81,7 +81,7 @@ void fcb_get_sd(fcb* fcb, struct _fcb* parent, bool look_for_xattr, PIRP Irp) {
         return;
     }
 
-    RtlSetGroupSecurityDescriptor(&fcb->sd, groupsid, false);
+    RtlSetGroupSecurityDescriptor(&fcb->sd, groupsid, 0);
 
     ExFreePool(usersid);
     ExFreePool(groupsid);

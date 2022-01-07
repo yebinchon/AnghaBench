@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int reg_val; } ;
 struct TYPE_4__ {TYPE_1__ value; } ;
-typedef  TYPE_2__ reg_entry ;
-typedef  int reg ;
+typedef TYPE_2__ reg_entry ;
+typedef int reg ;
 
-/* Variables and functions */
- scalar_t__ hash_find (int /*<<< orphan*/ ,char*) ; 
- int nullregister ; 
- int /*<<< orphan*/  reg_hash ; 
+
+ scalar_t__ hash_find (int ,char*) ;
+ int nullregister ;
+ int reg_hash ;
 
 __attribute__((used)) static reg
 get_index_register (char *reg_name)
@@ -29,7 +29,7 @@ get_index_register (char *reg_name)
 
   reg = (const reg_entry *) hash_find (reg_hash, reg_name);
 
-  if ((reg != NULL)
+  if ((reg != ((void*)0))
       && ((reg->value.reg_val == 12) || (reg->value.reg_val == 13)))
     return reg->value.reg_val;
 

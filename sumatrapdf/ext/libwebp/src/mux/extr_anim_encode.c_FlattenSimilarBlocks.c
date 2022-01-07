@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_6__ {scalar_t__ width; scalar_t__ height; int* argb; int argb_stride; } ;
-typedef  TYPE_1__ WebPPicture ;
+typedef TYPE_1__ WebPPicture ;
 struct TYPE_7__ {int const y_offset_; int const height_; int const x_offset_; int const width_; } ;
-typedef  TYPE_2__ FrameRectangle ;
+typedef TYPE_2__ FrameRectangle ;
 
-/* Variables and functions */
- scalar_t__ PixelsAreSimilar (int const,int,int const) ; 
- int QualityToMaxDiff (float) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ PixelsAreSimilar (int const,int,int const) ;
+ int QualityToMaxDiff (float) ;
+ int assert (int) ;
 
 __attribute__((used)) static int FlattenSimilarBlocks(const WebPPicture* const src,
                                 const FrameRectangle* const rect,
@@ -34,10 +34,10 @@ __attribute__((used)) static int FlattenSimilarBlocks(const WebPPicture* const s
   const int y_end = (rect->y_offset_ + rect->height_) & ~(block_size - 1);
   const int x_start = (rect->x_offset_ + block_size) & ~(block_size - 1);
   const int x_end = (rect->x_offset_ + rect->width_) & ~(block_size - 1);
-  assert(src != NULL && dst != NULL && rect != NULL);
+  assert(src != ((void*)0) && dst != ((void*)0) && rect != ((void*)0));
   assert(src->width == dst->width && src->height == dst->height);
-  assert((block_size & (block_size - 1)) == 0);  // must be a power of 2
-  // Iterate over each block and count similar pixels.
+  assert((block_size & (block_size - 1)) == 0);
+
   for (j = y_start; j < y_end; j += block_size) {
     for (i = x_start; i < x_end; i += block_size) {
       int cnt = 0;
@@ -59,13 +59,13 @@ __attribute__((used)) static int FlattenSimilarBlocks(const WebPPicture* const s
           }
         }
       }
-      // If we have a fully similar block, we replace it with an
-      // average transparent block. This compresses better in lossy mode.
+
+
       if (cnt == block_size * block_size) {
-        const uint32_t color = (0x00          << 24) |
+        const uint32_t color = (0x00 << 24) |
                                ((avg_r / cnt) << 16) |
-                               ((avg_g / cnt) <<  8) |
-                               ((avg_b / cnt) <<  0);
+                               ((avg_g / cnt) << 8) |
+                               ((avg_b / cnt) << 0);
         for (y = 0; y < block_size; ++y) {
           for (x = 0; x < block_size; ++x) {
             pdst[x + y * dst->argb_stride] = color;

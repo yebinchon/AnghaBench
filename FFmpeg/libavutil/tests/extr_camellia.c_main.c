@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct AVCAMELLIA {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- struct AVCAMELLIA* av_camellia_alloc () ; 
- int /*<<< orphan*/  av_camellia_crypt (struct AVCAMELLIA*,int*,int const*,int,int*,int) ; 
- int /*<<< orphan*/  av_camellia_init (struct AVCAMELLIA*,int const*,int const) ; 
- int /*<<< orphan*/  av_free (struct AVCAMELLIA*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int const,int) ; 
- int /*<<< orphan*/  memcpy (int*,char*,int) ; 
+
+ int AV_LOG_ERROR ;
+ struct AVCAMELLIA* av_camellia_alloc () ;
+ int av_camellia_crypt (struct AVCAMELLIA*,int*,int const*,int,int*,int) ;
+ int av_camellia_init (struct AVCAMELLIA*,int const*,int const) ;
+ int av_free (struct AVCAMELLIA*) ;
+ int av_log (int *,int ,char*,int,int const,int) ;
+ int memcpy (int*,char*,int) ;
 
 int main(int argc, char *argv[])
 {
@@ -44,17 +44,17 @@ int main(int argc, char *argv[])
         return 1;
     for (j = 0; j < 3; j++) {
         av_camellia_init(cs, Key[j], kbits[j]);
-        av_camellia_crypt(cs, temp, rpt, 1, NULL, 0);
+        av_camellia_crypt(cs, temp, rpt, 1, ((void*)0), 0);
         for (i = 0; i < 16; i++) {
             if (rct[j][i] != temp[i]) {
-                av_log(NULL, AV_LOG_ERROR, "%d %02x %02x\n", i, rct[j][i], temp[i]);
+                av_log(((void*)0), AV_LOG_ERROR, "%d %02x %02x\n", i, rct[j][i], temp[i]);
                 err = 1;
             }
         }
-        av_camellia_crypt(cs, temp, rct[j], 1, NULL, 1);
+        av_camellia_crypt(cs, temp, rct[j], 1, ((void*)0), 1);
         for (i = 0; i < 16; i++) {
             if (rpt[i] != temp[i]) {
-                av_log(NULL, AV_LOG_ERROR, "%d %02x %02x\n", i, rpt[i], temp[i]);
+                av_log(((void*)0), AV_LOG_ERROR, "%d %02x %02x\n", i, rpt[i], temp[i]);
                 err = 1;
             }
         }
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     av_camellia_crypt(cs, temp, temp, 2, iv, 1);
     for (i = 0; i < 32; i++) {
         if (rpt[i] != temp[i]) {
-            av_log(NULL, AV_LOG_ERROR, "%d %02x %02x\n", i, rpt[i], temp[i]);
+            av_log(((void*)0), AV_LOG_ERROR, "%d %02x %02x\n", i, rpt[i], temp[i]);
             err = 1;
         }
     }

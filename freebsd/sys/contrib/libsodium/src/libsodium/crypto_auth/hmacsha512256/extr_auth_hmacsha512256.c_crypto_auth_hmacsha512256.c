@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  crypto_auth_hmacsha512256_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_auth_hmacsha512256_KEYBYTES ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512256_final (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512256_init (int /*<<< orphan*/ *,unsigned char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_auth_hmacsha512256_update (int /*<<< orphan*/ *,unsigned char const*,unsigned long long) ; 
+
+
+
+typedef int crypto_auth_hmacsha512256_state ;
+
+
+ int crypto_auth_hmacsha512256_KEYBYTES ;
+ int crypto_auth_hmacsha512256_final (int *,unsigned char*) ;
+ int crypto_auth_hmacsha512256_init (int *,unsigned char const*,int ) ;
+ int crypto_auth_hmacsha512256_update (int *,unsigned char const*,unsigned long long) ;
 
 int
 crypto_auth_hmacsha512256(unsigned char *out, const unsigned char *in,

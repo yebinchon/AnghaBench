@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_8__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_13__ ;
 
-/* Type definitions */
-struct TYPE_17__ {int alloc; int count; TYPE_2__* list; int /*<<< orphan*/  packet; } ;
+
+
+typedef struct TYPE_19__ TYPE_8__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_13__ ;
+
+
+struct TYPE_17__ {int alloc; int count; TYPE_2__* list; int packet; } ;
 struct TYPE_15__ {int alloc; TYPE_8__* list; scalar_t__ count; } ;
-struct TYPE_18__ {TYPE_3__ ts; TYPE_1__ pes; scalar_t__ scan; int /*<<< orphan*/  packetsize; } ;
-typedef  TYPE_4__ hb_stream_t ;
+struct TYPE_18__ {TYPE_3__ ts; TYPE_1__ pes; scalar_t__ scan; int packetsize; } ;
+typedef TYPE_4__ hb_stream_t ;
 struct TYPE_19__ {int stream_id; int next; } ;
 struct TYPE_16__ {int continuity; int pid; int pes_list; scalar_t__ is_pcr; TYPE_13__* buf; } ;
 struct TYPE_14__ {scalar_t__ size; } ;
 
-/* Variables and functions */
- scalar_t__ A ; 
- scalar_t__ N ; 
- scalar_t__ P ; 
- scalar_t__ S ; 
- scalar_t__ V ; 
- TYPE_13__* hb_buffer_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_log (char*,...) ; 
- int /*<<< orphan*/  hb_stream_delete_ts_entry (TYPE_4__*,int) ; 
- int /*<<< orphan*/  hb_ts_resolve_pid_types (TYPE_4__*) ; 
- scalar_t__ hb_ts_stream_find_pids (TYPE_4__*) ; 
- int /*<<< orphan*/  malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stream_type_name2 (TYPE_4__*,TYPE_8__*) ; 
- scalar_t__ ts_stream_kind (TYPE_4__*,int) ; 
- int /*<<< orphan*/  ts_stream_type (TYPE_4__*,int) ; 
+
+ scalar_t__ A ;
+ scalar_t__ N ;
+ scalar_t__ P ;
+ scalar_t__ S ;
+ scalar_t__ V ;
+ TYPE_13__* hb_buffer_init (int ) ;
+ int hb_log (char*,...) ;
+ int hb_stream_delete_ts_entry (TYPE_4__*,int) ;
+ int hb_ts_resolve_pid_types (TYPE_4__*) ;
+ scalar_t__ hb_ts_stream_find_pids (TYPE_4__*) ;
+ int malloc (int ) ;
+ int stream_type_name2 (TYPE_4__*,TYPE_8__*) ;
+ scalar_t__ ts_stream_kind (TYPE_4__*,int) ;
+ int ts_stream_type (TYPE_4__*,int) ;
 
 __attribute__((used)) static int hb_ts_stream_init(hb_stream_t *stream)
 {
@@ -67,17 +67,17 @@ __attribute__((used)) static int hb_ts_stream_init(hb_stream_t *stream)
 
     stream->ts.packet = malloc( stream->packetsize );
 
-    // Find the audio and video pids in the stream
+
     if (hb_ts_stream_find_pids(stream) < 0)
     {
         return -1;
     }
 
-    // hb_ts_resolve_pid_types reads some data, so the TS buffers
-    // are needed here.
+
+
     for (i = 0; i < stream->ts.count; i++)
     {
-        // demuxing buffer for TS to PS conversion
+
         stream->ts.list[i].buf = hb_buffer_init(stream->packetsize);
         stream->ts.list[i].buf->size = 0;
     }

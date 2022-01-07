@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * next; int /*<<< orphan*/ * prev; int /*<<< orphan*/  module; int /*<<< orphan*/ * metrics; } ;
-typedef  TYPE_1__ GSubItem ;
-typedef  int /*<<< orphan*/  GModule ;
-typedef  int /*<<< orphan*/  GMetrics ;
 
-/* Variables and functions */
- TYPE_1__* xmalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * next; int * prev; int module; int * metrics; } ;
+typedef TYPE_1__ GSubItem ;
+typedef int GModule ;
+typedef int GMetrics ;
+
+
+ TYPE_1__* xmalloc (int) ;
 
 __attribute__((used)) static GSubItem *
 new_gsubitem (GModule module, GMetrics * nmetrics)
@@ -26,8 +26,8 @@ new_gsubitem (GModule module, GMetrics * nmetrics)
 
   sub_item->metrics = nmetrics;
   sub_item->module = module;
-  sub_item->prev = NULL;
-  sub_item->next = NULL;
+  sub_item->prev = ((void*)0);
+  sub_item->next = ((void*)0);
 
   return sub_item;
 }

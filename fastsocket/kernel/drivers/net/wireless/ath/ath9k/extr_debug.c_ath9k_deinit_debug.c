@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ath_softc {int /*<<< orphan*/ * rfs_chan_spec_scan; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_ATH9K_DEBUGFS ; 
- scalar_t__ config_enabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  relay_close (int /*<<< orphan*/ *) ; 
+
+
+
+struct ath_softc {int * rfs_chan_spec_scan; } ;
+
+
+ int CONFIG_ATH9K_DEBUGFS ;
+ scalar_t__ config_enabled (int ) ;
+ int relay_close (int *) ;
 
 void ath9k_deinit_debug(struct ath_softc *sc)
 {
-	if (config_enabled(CONFIG_ATH9K_DEBUGFS) && sc->rfs_chan_spec_scan) {
-		relay_close(sc->rfs_chan_spec_scan);
-		sc->rfs_chan_spec_scan = NULL;
-	}
+ if (config_enabled(CONFIG_ATH9K_DEBUGFS) && sc->rfs_chan_spec_scan) {
+  relay_close(sc->rfs_chan_spec_scan);
+  sc->rfs_chan_spec_scan = ((void*)0);
+ }
 }

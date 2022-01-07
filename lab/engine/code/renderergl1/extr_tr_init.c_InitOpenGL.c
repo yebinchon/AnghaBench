@@ -1,59 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ vidWidth; scalar_t__ maxTextureSize; } ;
-typedef  scalar_t__ GLint ;
+typedef scalar_t__ GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_MAX_TEXTURE_SIZE ; 
- int /*<<< orphan*/  GL_SetDefaultState () ; 
- int /*<<< orphan*/  GLimp_Init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLimp_InitExtraExtensions () ; 
- TYPE_1__ glConfig ; 
- int /*<<< orphan*/  qglGetIntegerv (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  qtrue ; 
+
+ int GL_MAX_TEXTURE_SIZE ;
+ int GL_SetDefaultState () ;
+ int GLimp_Init (int ) ;
+ int GLimp_InitExtraExtensions () ;
+ TYPE_1__ glConfig ;
+ int qglGetIntegerv (int ,scalar_t__*) ;
+ int qtrue ;
 
 __attribute__((used)) static void InitOpenGL( void )
 {
-	//
-	// initialize OS specific portions of the renderer
-	//
-	// GLimp_Init directly or indirectly references the following cvars:
-	//		- r_fullscreen
-	//		- r_mode
-	//		- r_(color|depth|stencil)bits
-	//		- r_ignorehwgamma
-	//		- r_gamma
-	//
-	
-	if ( glConfig.vidWidth == 0 )
-	{
-		GLint		temp;
-		
-		GLimp_Init( qtrue );
-		GLimp_InitExtraExtensions();
+ if ( glConfig.vidWidth == 0 )
+ {
+  GLint temp;
 
-		// OpenGL driver constants
-		qglGetIntegerv( GL_MAX_TEXTURE_SIZE, &temp );
-		glConfig.maxTextureSize = temp;
+  GLimp_Init( qtrue );
+  GLimp_InitExtraExtensions();
 
-		// stubbed or broken drivers may have reported 0...
-		if ( glConfig.maxTextureSize <= 0 ) 
-		{
-			glConfig.maxTextureSize = 0;
-		}
-	}
 
-	// set default state
-	GL_SetDefaultState();
+  qglGetIntegerv( GL_MAX_TEXTURE_SIZE, &temp );
+  glConfig.maxTextureSize = temp;
+
+
+  if ( glConfig.maxTextureSize <= 0 )
+  {
+   glConfig.maxTextureSize = 0;
+  }
+ }
+
+
+ GL_SetDefaultState();
 }

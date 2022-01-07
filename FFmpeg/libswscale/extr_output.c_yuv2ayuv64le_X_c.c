@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  unsigned int int32_t ;
-typedef  scalar_t__ int16_t ;
-typedef  int /*<<< orphan*/  SwsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WL16 (int /*<<< orphan*/ *,int) ; 
- int av_clip_int16 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned int int32_t ;
+typedef scalar_t__ int16_t ;
+typedef int SwsContext ;
+
+
+ int AV_WL16 (int *,int) ;
+ int av_clip_int16 (int) ;
 
 __attribute__((used)) static void
 yuv2ayuv64le_X_c(SwsContext *c, const int16_t *lumFilter,
@@ -26,10 +26,10 @@ yuv2ayuv64le_X_c(SwsContext *c, const int16_t *lumFilter,
                  const int16_t **_chrVSrc, int chrFilterSize,
                  const int16_t **_alpSrc, uint8_t *dest, int dstW, int y)
 {
-    const int32_t **lumSrc  = (const int32_t **) _lumSrc,
+    const int32_t **lumSrc = (const int32_t **) _lumSrc,
                   **chrUSrc = (const int32_t **) _chrUSrc,
                   **chrVSrc = (const int32_t **) _chrVSrc,
-                  **alpSrc  = (const int32_t **) _alpSrc;
+                  **alpSrc = (const int32_t **) _alpSrc;
     int hasAlpha = !!alpSrc;
     int i;
 

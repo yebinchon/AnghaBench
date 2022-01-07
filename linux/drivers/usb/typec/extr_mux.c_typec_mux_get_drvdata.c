@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct typec_mux {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- void* dev_get_drvdata (int /*<<< orphan*/ *) ; 
+
+
+
+struct typec_mux {int dev; } ;
+
+
+ void* dev_get_drvdata (int *) ;
 
 void *typec_mux_get_drvdata(struct typec_mux *mux)
 {
-	return dev_get_drvdata(&mux->dev);
+ return dev_get_drvdata(&mux->dev);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int w; int h; int /*<<< orphan*/  format; TYPE_1__* dst; } ;
-struct TYPE_11__ {int nb_components; TYPE_2__* comp; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; } ;
-struct TYPE_10__ {int* planewidth; int* planeheight; int nb_planes; int* fft_bits; int* fft_len; void** fft_vdata_impulse; void** fft_hdata_impulse; void** fft_vdata; void** fft_hdata; int /*<<< orphan*/  depth; } ;
-struct TYPE_9__ {int /*<<< orphan*/  depth; } ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int w; int h; int format; TYPE_1__* dst; } ;
+struct TYPE_11__ {int nb_components; TYPE_2__* comp; int log2_chroma_h; int log2_chroma_w; } ;
+struct TYPE_10__ {int* planewidth; int* planeheight; int nb_planes; int* fft_bits; int* fft_len; void** fft_vdata_impulse; void** fft_hdata_impulse; void** fft_vdata; void** fft_hdata; int depth; } ;
+struct TYPE_9__ {int depth; } ;
 struct TYPE_8__ {TYPE_3__* priv; } ;
-typedef  int /*<<< orphan*/  FFTComplex ;
-typedef  TYPE_3__ ConvolveContext ;
-typedef  TYPE_4__ AVPixFmtDescriptor ;
-typedef  TYPE_5__ AVFilterLink ;
+typedef int FFTComplex ;
+typedef TYPE_3__ ConvolveContext ;
+typedef TYPE_4__ AVPixFmtDescriptor ;
+typedef TYPE_5__ AVFilterLink ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- void* AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int) ; 
- void* av_calloc (int,int) ; 
- TYPE_4__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ void* AV_CEIL_RSHIFT (int,int ) ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ void* av_calloc (int,int) ;
+ TYPE_4__* av_pix_fmt_desc_get (int ) ;
 
 __attribute__((used)) static int config_input_main(AVFilterLink *inlink)
 {

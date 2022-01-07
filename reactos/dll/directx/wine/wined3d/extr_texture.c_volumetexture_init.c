@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_texture_sub_resource {int /*<<< orphan*/ * parent; int /*<<< orphan*/  parent_ops; int /*<<< orphan*/  locations; } ;
-struct TYPE_6__ {int /*<<< orphan*/  map_binding; } ;
-struct wined3d_texture {float* pow2_matrix; unsigned int level_count; struct wined3d_texture_sub_resource* sub_resources; TYPE_3__ resource; int /*<<< orphan*/  target; } ;
-struct wined3d_resource_desc {scalar_t__ format; int usage; int /*<<< orphan*/  depth; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  access; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct wined3d_texture_sub_resource {int * parent; int parent_ops; int locations; } ;
+struct TYPE_6__ {int map_binding; } ;
+struct wined3d_texture {float* pow2_matrix; unsigned int level_count; struct wined3d_texture_sub_resource* sub_resources; TYPE_3__ resource; int target; } ;
+struct wined3d_resource_desc {scalar_t__ format; int usage; int depth; int height; int width; int access; } ;
 struct wined3d_parent_ops {int dummy; } ;
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; } ;
+struct wined3d_gl_info {int * supported; } ;
 struct wined3d_device_parent {TYPE_2__* ops; } ;
 struct wined3d_device {TYPE_1__* adapter; struct wined3d_device_parent* device_parent; } ;
-typedef  int UINT ;
-struct TYPE_5__ {struct wined3d_texture* (* volume_created ) (struct wined3d_device_parent*,struct wined3d_texture*,unsigned int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ;} ;
+typedef int UINT ;
+struct TYPE_5__ {struct wined3d_texture* (* volume_created ) (struct wined3d_device_parent*,struct wined3d_texture*,unsigned int,int **,int *) ;} ;
 struct TYPE_4__ {struct wined3d_gl_info gl_info; } ;
-typedef  struct wined3d_texture* HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef struct wined3d_texture* HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- size_t ARB_TEXTURE_NON_POWER_OF_TWO ; 
- int /*<<< orphan*/  ERR (char*) ; 
- size_t EXT_TEXTURE3D ; 
- struct wined3d_texture* E_INVALIDARG ; 
- scalar_t__ FAILED (struct wined3d_texture*) ; 
- int /*<<< orphan*/  GL_TEXTURE_3D ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int,...) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- struct wined3d_texture* WINED3DERR_INVALIDCALL ; 
- scalar_t__ WINED3DFMT_UNKNOWN ; 
- int WINED3DUSAGE_DYNAMIC ; 
- int WINED3DUSAGE_SCRATCH ; 
- int /*<<< orphan*/  WINED3D_LOCATION_BUFFER ; 
- int /*<<< orphan*/  WINED3D_LOCATION_DISCARDED ; 
- struct wined3d_texture* WINED3D_OK ; 
- int /*<<< orphan*/  is_power_of_two (int /*<<< orphan*/ ) ; 
- struct wined3d_texture* stub1 (struct wined3d_device_parent*,struct wined3d_texture*,unsigned int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  texture3d_ops ; 
- int /*<<< orphan*/  texture_resource_ops ; 
- struct wined3d_texture* wined3d_debug_resource_access (int /*<<< orphan*/ ) ; 
- scalar_t__ wined3d_resource_access_is_managed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_resource_free_sysmem (TYPE_3__*) ; 
- int /*<<< orphan*/  wined3d_texture_cleanup_sync (struct wined3d_texture*) ; 
- struct wined3d_texture* wined3d_texture_init (struct wined3d_texture*,int /*<<< orphan*/ *,int,int,struct wined3d_resource_desc const*,int /*<<< orphan*/ ,struct wined3d_device*,void*,struct wined3d_parent_ops const*,int /*<<< orphan*/ *) ; 
- scalar_t__ wined3d_texture_use_pbo (struct wined3d_texture*,struct wined3d_gl_info const*) ; 
+
+ size_t ARB_TEXTURE_NON_POWER_OF_TWO ;
+ int ERR (char*) ;
+ size_t EXT_TEXTURE3D ;
+ struct wined3d_texture* E_INVALIDARG ;
+ scalar_t__ FAILED (struct wined3d_texture*) ;
+ int GL_TEXTURE_3D ;
+ int TRACE (char*,unsigned int,...) ;
+ int WARN (char*,...) ;
+ struct wined3d_texture* WINED3DERR_INVALIDCALL ;
+ scalar_t__ WINED3DFMT_UNKNOWN ;
+ int WINED3DUSAGE_DYNAMIC ;
+ int WINED3DUSAGE_SCRATCH ;
+ int WINED3D_LOCATION_BUFFER ;
+ int WINED3D_LOCATION_DISCARDED ;
+ struct wined3d_texture* WINED3D_OK ;
+ int is_power_of_two (int ) ;
+ struct wined3d_texture* stub1 (struct wined3d_device_parent*,struct wined3d_texture*,unsigned int,int **,int *) ;
+ int texture3d_ops ;
+ int texture_resource_ops ;
+ struct wined3d_texture* wined3d_debug_resource_access (int ) ;
+ scalar_t__ wined3d_resource_access_is_managed (int ) ;
+ int wined3d_resource_free_sysmem (TYPE_3__*) ;
+ int wined3d_texture_cleanup_sync (struct wined3d_texture*) ;
+ struct wined3d_texture* wined3d_texture_init (struct wined3d_texture*,int *,int,int,struct wined3d_resource_desc const*,int ,struct wined3d_device*,void*,struct wined3d_parent_ops const*,int *) ;
+ scalar_t__ wined3d_texture_use_pbo (struct wined3d_texture*,struct wined3d_gl_info const*) ;
 
 __attribute__((used)) static HRESULT volumetexture_init(struct wined3d_texture *texture, const struct wined3d_resource_desc *desc,
         UINT layer_count, UINT level_count, DWORD flags, struct wined3d_device *device, void *parent,
@@ -69,8 +69,8 @@ __attribute__((used)) static HRESULT volumetexture_init(struct wined3d_texture *
         return E_INVALIDARG;
     }
 
-    /* TODO: It should only be possible to create textures for formats
-     * that are reported as supported. */
+
+
     if (WINED3DFMT_UNKNOWN >= desc->format)
     {
         WARN("(%p) : Texture cannot be created with a format of WINED3DFMT_UNKNOWN.\n", texture);
@@ -127,7 +127,7 @@ __attribute__((used)) static HRESULT volumetexture_init(struct wined3d_texture *
         texture->resource.map_binding = WINED3D_LOCATION_BUFFER;
     }
 
-    /* Generate all the sub resources. */
+
     for (i = 0; i < texture->level_count; ++i)
     {
         struct wined3d_texture_sub_resource *sub_resource;
@@ -139,7 +139,7 @@ __attribute__((used)) static HRESULT volumetexture_init(struct wined3d_texture *
                 texture, i, &sub_resource->parent, &sub_resource->parent_ops)))
         {
             WARN("Failed to create volume parent, hr %#x.\n", hr);
-            sub_resource->parent = NULL;
+            sub_resource->parent = ((void*)0);
             wined3d_texture_cleanup_sync(texture);
             return hr;
         }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct debug_buffer {int size; int /*<<< orphan*/ * ptr; int /*<<< orphan*/ * str; } ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int snprintf (int /*<<< orphan*/ *,int,char*,char const*,char const*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ *,char*) ; 
+
+
+
+struct debug_buffer {int size; int * ptr; int * str; } ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int snprintf (int *,int,char*,char const*,char const*) ;
+ int strcpy (int *,char*) ;
 
 __attribute__((used)) static void debug_append(struct debug_buffer *buffer, const char *str, const char *separator)
 {

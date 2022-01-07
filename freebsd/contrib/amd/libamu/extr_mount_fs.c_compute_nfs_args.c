@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_long ;
+
+
+
+
+typedef scalar_t__ u_long ;
 struct sockaddr_in {int dummy; } ;
 struct netconfig {int dummy; } ;
-typedef  int /*<<< orphan*/  mntent_t ;
-typedef  int /*<<< orphan*/  am_nfs_handle_t ;
+typedef int mntent_t ;
+typedef int am_nfs_handle_t ;
 
-/* Variables and functions */
- scalar_t__ NFS_VERSION4 ; 
- int /*<<< orphan*/  compute_nfs23_args (void*,int /*<<< orphan*/ *,int,struct netconfig*,struct sockaddr_in*,scalar_t__,char*,int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  compute_nfs4_args (void*,int /*<<< orphan*/ *,int,struct netconfig*,struct sockaddr_in*,scalar_t__,char*,int /*<<< orphan*/ *,char*,char*) ; 
+
+ scalar_t__ NFS_VERSION4 ;
+ int compute_nfs23_args (void*,int *,int,struct netconfig*,struct sockaddr_in*,scalar_t__,char*,int *,char*,char*) ;
+ int compute_nfs4_args (void*,int *,int,struct netconfig*,struct sockaddr_in*,scalar_t__,char*,int *,char*,char*) ;
 
 void
 compute_nfs_args(void *nap,
@@ -33,12 +33,12 @@ compute_nfs_args(void *nap,
                  char *host_name,
                  char *fs_name)
 {
-#ifdef HAVE_FS_NFS4
-  if (nfs_version == NFS_VERSION4)
-    compute_nfs4_args(nap, mntp, genflags, nfsncp, ip_addr, nfs_version,
-		      nfs_proto, fhp, host_name, fs_name);
-  else
-#endif /* HAVE_FS_NFS4 */
+
+
+
+
+
+
     compute_nfs23_args(nap, mntp, genflags, nfsncp, ip_addr, nfs_version,
-		       nfs_proto, fhp, host_name, fs_name);
+         nfs_proto, fhp, host_name, fs_name);
 }

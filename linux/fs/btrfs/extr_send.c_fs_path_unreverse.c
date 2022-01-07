@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fs_path {char* start; char* end; char* buf; scalar_t__ reversed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
+
+ int memmove (char*,char*,int) ;
 
 __attribute__((used)) static void fs_path_unreverse(struct fs_path *p)
 {
-	char *tmp;
-	int len;
+ char *tmp;
+ int len;
 
-	if (!p->reversed)
-		return;
+ if (!p->reversed)
+  return;
 
-	tmp = p->start;
-	len = p->end - p->start;
-	p->start = p->buf;
-	p->end = p->start + len;
-	memmove(p->start, tmp, len + 1);
-	p->reversed = 0;
+ tmp = p->start;
+ len = p->end - p->start;
+ p->start = p->buf;
+ p->end = p->start + len;
+ memmove(p->start, tmp, len + 1);
+ p->reversed = 0;
 }

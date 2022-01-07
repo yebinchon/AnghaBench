@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int WTV_SECTOR_BITS ; 
- int WTV_SECTOR_SIZE ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_fat (int /*<<< orphan*/ ,int,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_3__ {int pb; } ;
+typedef TYPE_1__ AVFormatContext ;
+
+
+ int WTV_SECTOR_BITS ;
+ int WTV_SECTOR_SIZE ;
+ int avio_tell (int ) ;
+ int write_fat (int ,int,int,int) ;
 
 __attribute__((used)) static int64_t write_fat_sector(AVFormatContext *s, int64_t start_pos, int nb_sectors, int sector_bits, int depth)
 {

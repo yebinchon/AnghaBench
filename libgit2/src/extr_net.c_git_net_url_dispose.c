@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * password; int /*<<< orphan*/ * username; int /*<<< orphan*/ * path; int /*<<< orphan*/ * port; int /*<<< orphan*/ * host; int /*<<< orphan*/ * scheme; } ;
-typedef  TYPE_1__ git_net_url ;
 
-/* Variables and functions */
- int /*<<< orphan*/  git__free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git__memzero (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * password; int * username; int * path; int * port; int * host; int * scheme; } ;
+typedef TYPE_1__ git_net_url ;
+
+
+ int git__free (int *) ;
+ int git__memzero (int *,int ) ;
+ int strlen (int *) ;
 
 void git_net_url_dispose(git_net_url *url)
 {
-	if (url->username)
-		git__memzero(url->username, strlen(url->username));
+ if (url->username)
+  git__memzero(url->username, strlen(url->username));
 
-	if (url->password)
-		git__memzero(url->password, strlen(url->password));
+ if (url->password)
+  git__memzero(url->password, strlen(url->password));
 
-	git__free(url->scheme); url->scheme = NULL;
-	git__free(url->host); url->host = NULL;
-	git__free(url->port); url->port = NULL;
-	git__free(url->path); url->path = NULL;
-	git__free(url->username); url->username = NULL;
-	git__free(url->password); url->password = NULL;
+ git__free(url->scheme); url->scheme = ((void*)0);
+ git__free(url->host); url->host = ((void*)0);
+ git__free(url->port); url->port = ((void*)0);
+ git__free(url->path); url->path = ((void*)0);
+ git__free(url->username); url->username = ((void*)0);
+ git__free(url->password); url->password = ((void*)0);
 }

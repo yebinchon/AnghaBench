@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ wave_len; scalar_t__ written; int offset; scalar_t__ wave; int buffer_size; int /*<<< orphan*/  dsbo; } ;
-typedef  TYPE_1__ play_state_t ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ DS_OK ; 
- scalar_t__ IDirectSoundBuffer_Lock (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ **,scalar_t__*,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirectSoundBuffer_Unlock (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ wave_len; scalar_t__ written; int offset; scalar_t__ wave; int buffer_size; int dsbo; } ;
+typedef TYPE_1__ play_state_t ;
+typedef int * LPVOID ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ DS_OK ;
+ scalar_t__ IDirectSoundBuffer_Lock (int ,int,scalar_t__,int **,scalar_t__*,int **,scalar_t__*,int ) ;
+ scalar_t__ IDirectSoundBuffer_Unlock (int ,int *,scalar_t__,int *,scalar_t__) ;
+ int memcpy (int *,scalar_t__,scalar_t__) ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static int buffer_refill8(play_state_t* state, DWORD size)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int buffer_refill8(play_state_t* state, DWORD size)
 
     memcpy(ptr1,state->wave+state->written,len1);
     state->written+=len1;
-    if (ptr2!=NULL) {
+    if (ptr2!=((void*)0)) {
         memcpy(ptr2,state->wave+state->written,len2);
         state->written+=len2;
     }

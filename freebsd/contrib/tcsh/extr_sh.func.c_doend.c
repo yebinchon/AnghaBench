@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * command ;
-struct TYPE_2__ {int /*<<< orphan*/  w_end; } ;
-typedef  int /*<<< orphan*/  Char ;
 
-/* Variables and functions */
- int ERR_NAME ; 
- int ERR_NOTWHILE ; 
- int /*<<< orphan*/  USE (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  btell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  doagain () ; 
- int /*<<< orphan*/  noexec ; 
- int /*<<< orphan*/  stderror (int) ; 
- TYPE_1__* whyles ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * command ;
+struct TYPE_2__ {int w_end; } ;
+typedef int Char ;
+
+
+ int ERR_NAME ;
+ int ERR_NOTWHILE ;
+ int USE (int **) ;
+ int btell (int *) ;
+ int doagain () ;
+ int noexec ;
+ int stderror (int) ;
+ TYPE_1__* whyles ;
 
 void
 doend(Char **v, struct command *c)
@@ -31,8 +31,8 @@ doend(Char **v, struct command *c)
     USE(v);
     USE(c);
     if (!whyles)
-	stderror(ERR_NAME | ERR_NOTWHILE);
+ stderror(ERR_NAME | ERR_NOTWHILE);
     btell(&whyles->w_end);
     if (!noexec)
-	doagain();
+ doagain();
 }

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HELP ; 
- char* convert_path (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  generate_xml () ; 
- int /*<<< orphan*/ * out ; 
- int /*<<< orphan*/  parse_file (char*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  puts (int /*<<< orphan*/ ) ; 
+ int HELP ;
+ char* convert_path (char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ int generate_xml () ;
+ int * out ;
+ int parse_file (char*) ;
+ int printf (char*) ;
+ int puts (int ) ;
 
 int main(int argc, char **argv)
 {
@@ -52,12 +44,12 @@ int main(int argc, char **argv)
     }
 
   out = fopen(output_file, "wb");
-  if (out == NULL)
+  if (out == ((void*)0))
     {
         free(input_file);
         free(output_file);
-    	printf("Cannot open output file");
-    	return 1;
+     printf("Cannot open output file");
+     return 1;
      }
 
   parse_file(input_file);

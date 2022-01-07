@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OTV_Validator ;
-typedef  int FT_UInt ;
-typedef  int FT_Bytes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_INVALID_FORMAT ; 
- int FT_NEXT_USHORT (int) ; 
- int /*<<< orphan*/  OTV_ENTER ; 
- int /*<<< orphan*/  OTV_EXIT ; 
- int /*<<< orphan*/  OTV_LIMIT_CHECK (int) ; 
- int /*<<< orphan*/  OTV_TRACE (char*) ; 
- int /*<<< orphan*/  otv_Device_validate (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OTV_Validator ;
+typedef int FT_UInt ;
+typedef int FT_Bytes ;
+
+
+ int FT_INVALID_FORMAT ;
+ int FT_NEXT_USHORT (int) ;
+ int OTV_ENTER ;
+ int OTV_EXIT ;
+ int OTV_LIMIT_CHECK (int) ;
+ int OTV_TRACE (char*) ;
+ int otv_Device_validate (int,int ) ;
 
 __attribute__((used)) static void
-  otv_CaretValue_validate( FT_Bytes       table,
-                           OTV_Validator  otvalid )
+  otv_CaretValue_validate( FT_Bytes table,
+                           OTV_Validator otvalid )
   {
-    FT_Bytes  p = table;
-    FT_UInt   CaretValueFormat;
+    FT_Bytes p = table;
+    FT_UInt CaretValueFormat;
 
 
     OTV_ENTER;
@@ -41,20 +41,20 @@ __attribute__((used)) static void
 
     switch ( CaretValueFormat )
     {
-    case 1:     /* CaretValueFormat1 */
-      /* skip Coordinate, no test */
+    case 1:
+
       break;
 
-    case 2:     /* CaretValueFormat2 */
-      /* skip CaretValuePoint, no test */
+    case 2:
+
       break;
 
-    case 3:     /* CaretValueFormat3 */
-      p += 2;   /* skip Coordinate */
+    case 3:
+      p += 2;
 
       OTV_LIMIT_CHECK( 2 );
 
-      /* DeviceTable */
+
       otv_Device_validate( table + FT_NEXT_USHORT( p ), otvalid );
       break;
 

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device ;
-struct TYPE_11__ {int /*<<< orphan*/  seat; } ;
-struct TYPE_10__ {int /*<<< orphan*/  seats; int /*<<< orphan*/  devices; } ;
-typedef  int /*<<< orphan*/  Seat ;
-typedef  TYPE_1__ Manager ;
-typedef  TYPE_2__ Device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEVICE_ACTION_REMOVE ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  device_attach (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ device_for_action (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_free (TYPE_2__*) ; 
- void* hashmap_get (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ isempty (char const*) ; 
- int /*<<< orphan*/  log_device_warning (int /*<<< orphan*/ *,char*,char const*) ; 
- int manager_add_device (TYPE_1__*,char const*,int,TYPE_2__**) ; 
- int manager_add_seat (TYPE_1__*,char const*,int /*<<< orphan*/ **) ; 
- scalar_t__ sd_device_get_property_value (int /*<<< orphan*/ *,char*,char const**) ; 
- int sd_device_get_syspath (int /*<<< orphan*/ *,char const**) ; 
- scalar_t__ sd_device_has_tag (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  seat_add_to_gc_queue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seat_name_is_valid (char const*) ; 
- int /*<<< orphan*/  seat_start (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int sd_device ;
+struct TYPE_11__ {int seat; } ;
+struct TYPE_10__ {int seats; int devices; } ;
+typedef int Seat ;
+typedef TYPE_1__ Manager ;
+typedef TYPE_2__ Device ;
+
+
+ int DEVICE_ACTION_REMOVE ;
+ int assert (TYPE_1__*) ;
+ int device_attach (TYPE_2__*,int *) ;
+ scalar_t__ device_for_action (int *,int ) ;
+ int device_free (TYPE_2__*) ;
+ void* hashmap_get (int ,char const*) ;
+ scalar_t__ isempty (char const*) ;
+ int log_device_warning (int *,char*,char const*) ;
+ int manager_add_device (TYPE_1__*,char const*,int,TYPE_2__**) ;
+ int manager_add_seat (TYPE_1__*,char const*,int **) ;
+ scalar_t__ sd_device_get_property_value (int *,char*,char const**) ;
+ int sd_device_get_syspath (int *,char const**) ;
+ scalar_t__ sd_device_has_tag (int *,char*) ;
+ int seat_add_to_gc_queue (int ) ;
+ int seat_name_is_valid (char const*) ;
+ int seat_start (int *) ;
 
 int manager_process_seat_device(Manager *m, sd_device *d) {
         Device *device;
@@ -73,7 +73,7 @@ int manager_process_seat_device(Manager *m, sd_device *d) {
                 seat = hashmap_get(m->seats, sn);
                 master = sd_device_has_tag(d, "master-of-seat") > 0;
 
-                /* Ignore non-master devices for unknown seats */
+
                 if (!master && !seat)
                         return 0;
 

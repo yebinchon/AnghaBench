@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct grub_prio_list_insert_closure {int inactive; } ;
-typedef  TYPE_1__* grub_prio_list_t ;
-struct TYPE_4__ {int prio; int /*<<< orphan*/  name; } ;
+typedef TYPE_1__* grub_prio_list_t ;
+struct TYPE_4__ {int prio; int name; } ;
 
-/* Variables and functions */
- int GRUB_PRIO_LIST_FLAG_ACTIVE ; 
- int GRUB_PRIO_LIST_PRIO_MASK ; 
- int grub_strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GRUB_PRIO_LIST_FLAG_ACTIVE ;
+ int GRUB_PRIO_LIST_PRIO_MASK ;
+ int grub_strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 grub_prio_list_insert_test (grub_prio_list_t new_item, grub_prio_list_t item,
-			    void *closure)
+       void *closure)
 {
   struct grub_prio_list_insert_closure *c = closure;
   int r;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ buffered; void const* buffer; int /*<<< orphan*/  hashes; } ;
-typedef  TYPE_1__ svn_fnv1a_32x4__context_t ;
-typedef  scalar_t__ apr_size_t ;
 
-/* Variables and functions */
- scalar_t__ SCALING ; 
- scalar_t__ fnv1a_32x4 (int /*<<< orphan*/ ,void const*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (void const*,char const*,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ buffered; void const* buffer; int hashes; } ;
+typedef TYPE_1__ svn_fnv1a_32x4__context_t ;
+typedef scalar_t__ apr_size_t ;
+
+
+ scalar_t__ SCALING ;
+ scalar_t__ fnv1a_32x4 (int ,void const*,scalar_t__) ;
+ int memcpy (void const*,char const*,scalar_t__) ;
 
 void
 svn_fnv1a_32x4__update(svn_fnv1a_32x4__context_t *context,

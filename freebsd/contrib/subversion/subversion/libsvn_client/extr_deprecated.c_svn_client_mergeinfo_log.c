@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {void* kind; } ;
-typedef  TYPE_1__ svn_opt_revision_t ;
-typedef  int /*<<< orphan*/  svn_log_entry_receiver_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_opt_revision_t ;
+typedef int svn_log_entry_receiver_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * svn_client_mergeinfo_log2 (int /*<<< orphan*/ ,char const*,TYPE_1__ const*,char const*,TYPE_1__ const*,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* svn_opt_revision_unspecified ; 
+
+ int * svn_client_mergeinfo_log2 (int ,char const*,TYPE_1__ const*,char const*,TYPE_1__ const*,TYPE_1__*,TYPE_1__*,int ,void*,int ,int ,int const*,int *,int *) ;
+ void* svn_opt_revision_unspecified ;
 
 svn_error_t *
 svn_client_mergeinfo_log(svn_boolean_t finding_merged,

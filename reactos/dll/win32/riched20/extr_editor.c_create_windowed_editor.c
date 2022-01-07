@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  hwndParent; } ;
-struct TYPE_6__ {int exStyleFlags; int styleFlags; int /*<<< orphan*/  hwndParent; int /*<<< orphan*/  hWnd; } ;
-typedef  TYPE_1__ ME_TextEditor ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  int /*<<< orphan*/  ITextHost ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_2__ CREATESTRUCTW ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int ES_WANTRETURN ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GWL_EXSTYLE ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int GetWindowLongW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITextHost_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ME_CreateTextHost (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* ME_MakeEditor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int hwndParent; } ;
+struct TYPE_6__ {int exStyleFlags; int styleFlags; int hwndParent; int hWnd; } ;
+typedef TYPE_1__ ME_TextEditor ;
+typedef int LONG_PTR ;
+typedef int ITextHost ;
+typedef int HWND ;
+typedef TYPE_2__ CREATESTRUCTW ;
+typedef int BOOL ;
+
+
+ int ES_WANTRETURN ;
+ int FALSE ;
+ int GWL_EXSTYLE ;
+ int GWL_STYLE ;
+ int GetWindowLongW (int ,int ) ;
+ int ITextHost_Release (int *) ;
+ int * ME_CreateTextHost (int ,TYPE_2__*,int ) ;
+ TYPE_1__* ME_MakeEditor (int *,int ) ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL create_windowed_editor(HWND hwnd, CREATESTRUCTW *create, BOOL emulate_10)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static BOOL create_windowed_editor(HWND hwnd, CREATESTRUCT
 
     editor->exStyleFlags = GetWindowLongW( hwnd, GWL_EXSTYLE );
     editor->styleFlags |= GetWindowLongW( hwnd, GWL_STYLE ) & ES_WANTRETURN;
-    editor->hWnd = hwnd; /* FIXME: Remove editor's dependence on hWnd */
+    editor->hWnd = hwnd;
     editor->hwndParent = create->hwndParent;
 
     SetWindowLongPtrW( hwnd, 0, (LONG_PTR)editor );

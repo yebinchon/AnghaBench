@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_LOCAL ; 
- int /*<<< orphan*/  AF_NETLINK ; 
- int EINVAL ; 
- int SD_LISTEN_FDS_START ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int /*<<< orphan*/  SOCK_SEQPACKET ; 
- int /*<<< orphan*/  assert (int*) ; 
- scalar_t__ sd_is_socket (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int sd_listen_fds (int) ; 
+ int AF_LOCAL ;
+ int AF_NETLINK ;
+ int EINVAL ;
+ int SD_LISTEN_FDS_START ;
+ int SOCK_RAW ;
+ int SOCK_SEQPACKET ;
+ int assert (int*) ;
+ scalar_t__ sd_is_socket (int,int ,int ,int) ;
+ int sd_listen_fds (int) ;
 
 __attribute__((used)) static int listen_fds(int *ret_ctrl, int *ret_netlink) {
         int ctrl_fd = -1, netlink_fd = -1;
@@ -29,7 +21,7 @@ __attribute__((used)) static int listen_fds(int *ret_ctrl, int *ret_netlink) {
         assert(ret_ctrl);
         assert(ret_netlink);
 
-        n = sd_listen_fds(true);
+        n = sd_listen_fds(1);
         if (n < 0)
                 return n;
 

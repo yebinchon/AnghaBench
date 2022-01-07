@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-struct TYPE_2__ {scalar_t__ y; scalar_t__ x; scalar_t__ v; scalar_t__ h; int /*<<< orphan*/  buttons; } ;
 
-/* Variables and functions */
- scalar_t__ KC_MS_ACCEL0 ; 
- scalar_t__ KC_MS_ACCEL1 ; 
- scalar_t__ KC_MS_ACCEL2 ; 
- scalar_t__ KC_MS_BTN1 ; 
- scalar_t__ KC_MS_BTN2 ; 
- scalar_t__ KC_MS_BTN3 ; 
- scalar_t__ KC_MS_BTN4 ; 
- scalar_t__ KC_MS_BTN5 ; 
- scalar_t__ KC_MS_DOWN ; 
- scalar_t__ KC_MS_LEFT ; 
- scalar_t__ KC_MS_RIGHT ; 
- scalar_t__ KC_MS_UP ; 
- scalar_t__ KC_MS_WH_DOWN ; 
- scalar_t__ KC_MS_WH_LEFT ; 
- scalar_t__ KC_MS_WH_RIGHT ; 
- scalar_t__ KC_MS_WH_UP ; 
- int /*<<< orphan*/  MOUSE_BTN1 ; 
- int /*<<< orphan*/  MOUSE_BTN2 ; 
- int /*<<< orphan*/  MOUSE_BTN3 ; 
- int /*<<< orphan*/  MOUSE_BTN4 ; 
- int /*<<< orphan*/  MOUSE_BTN5 ; 
- TYPE_1__ mouse_report ; 
- int mousekey_accel ; 
- scalar_t__ mousekey_repeat ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+struct TYPE_2__ {scalar_t__ y; scalar_t__ x; scalar_t__ v; scalar_t__ h; int buttons; } ;
+
+
+ scalar_t__ KC_MS_ACCEL0 ;
+ scalar_t__ KC_MS_ACCEL1 ;
+ scalar_t__ KC_MS_ACCEL2 ;
+ scalar_t__ KC_MS_BTN1 ;
+ scalar_t__ KC_MS_BTN2 ;
+ scalar_t__ KC_MS_BTN3 ;
+ scalar_t__ KC_MS_BTN4 ;
+ scalar_t__ KC_MS_BTN5 ;
+ scalar_t__ KC_MS_DOWN ;
+ scalar_t__ KC_MS_LEFT ;
+ scalar_t__ KC_MS_RIGHT ;
+ scalar_t__ KC_MS_UP ;
+ scalar_t__ KC_MS_WH_DOWN ;
+ scalar_t__ KC_MS_WH_LEFT ;
+ scalar_t__ KC_MS_WH_RIGHT ;
+ scalar_t__ KC_MS_WH_UP ;
+ int MOUSE_BTN1 ;
+ int MOUSE_BTN2 ;
+ int MOUSE_BTN3 ;
+ int MOUSE_BTN4 ;
+ int MOUSE_BTN5 ;
+ TYPE_1__ mouse_report ;
+ int mousekey_accel ;
+ scalar_t__ mousekey_repeat ;
 
 void mousekey_off(uint8_t code) {
     if (code == KC_MS_UP && mouse_report.y < 0)

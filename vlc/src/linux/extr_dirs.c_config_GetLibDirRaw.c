@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* LIBDIR ; 
- scalar_t__ config_GetLibDir ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- int sscanf (char*,char*,void**,void**) ; 
- char* strchr (char*,char) ; 
- char* strdup (char*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int ssize_t ;
+typedef int FILE ;
+
+
+ char* LIBDIR ;
+ scalar_t__ config_GetLibDir ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ int getline (char**,size_t*,int *) ;
+ int sscanf (char*,char*,void**,void**) ;
+ char* strchr (char*,char) ;
+ char* strdup (char*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static char *config_GetLibDirRaw(void)
 {
-    char *path = NULL;
-    /* Find the path to libvlc (i.e. ourselves) */
+    char *path = ((void*)0);
+
     FILE *maps = fopen ("/proc/self/maps", "rte");
-    if (maps == NULL)
+    if (maps == ((void*)0))
         goto error;
 
-    char *line = NULL;
+    char *line = ((void*)0);
     size_t linelen = 0;
     uintptr_t needle = (uintptr_t)config_GetLibDir;
 
@@ -46,16 +46,16 @@ __attribute__((used)) static char *config_GetLibDirRaw(void)
         void *start, *end;
         if (sscanf (line, "%p-%p", &start, &end) < 2)
             continue;
-        /* This mapping contains the address of this function. */
+
         if (needle < (uintptr_t)start || (uintptr_t)end <= needle)
             continue;
 
         char *dir = strchr (line, '/');
-        if (dir == NULL)
+        if (dir == ((void*)0))
             continue;
 
         char *file = strrchr (line, '/');
-        if (end == NULL)
+        if (end == ((void*)0))
             continue;
         *file = '\0';
 
@@ -66,7 +66,7 @@ __attribute__((used)) static char *config_GetLibDirRaw(void)
     free (line);
     fclose (maps);
 error:
-    if (path == NULL)
+    if (path == ((void*)0))
         path = strdup(LIBDIR);
     return path;
 }

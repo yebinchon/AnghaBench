@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  on_each_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ shrink_timer ; 
- int /*<<< orphan*/  tau_timeout ; 
- int /*<<< orphan*/  tau_timer ; 
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int on_each_cpu (int ,int *,int ) ;
+ scalar_t__ shrink_timer ;
+ int tau_timeout ;
+ int tau_timer ;
 
 __attribute__((used)) static void tau_timeout_smp(unsigned long unused)
 {
 
-	/* schedule ourselves to be run again */
-	mod_timer(&tau_timer, jiffies + shrink_timer) ;
-	on_each_cpu(tau_timeout, NULL, 0);
+
+ mod_timer(&tau_timer, jiffies + shrink_timer) ;
+ on_each_cpu(tau_timeout, ((void*)0), 0);
 }

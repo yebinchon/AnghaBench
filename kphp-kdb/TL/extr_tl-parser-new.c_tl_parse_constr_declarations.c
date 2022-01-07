@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tree {scalar_t__ type; int nc; int /*<<< orphan*/ * c; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TL_TRY_PES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  tl_parse_declaration (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ type_constr_declarations ; 
+
+
+
+struct tree {scalar_t__ type; int nc; int * c; } ;
+
+
+ int TL_TRY_PES (int ) ;
+ int assert (int) ;
+ int tl_parse_declaration (int ,int ) ;
+ scalar_t__ type_constr_declarations ;
 
 int tl_parse_constr_declarations (struct tree *T) {
   assert (T->type == type_constr_declarations);

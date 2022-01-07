@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  PGLOBAL_DATA ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_READ ; 
- scalar_t__ LoadEventLabel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyEx (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
- scalar_t__ _countof (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TCHAR ;
+typedef int PGLOBAL_DATA ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_CURRENT_USER ;
+ int KEY_READ ;
+ scalar_t__ LoadEventLabel (int ,int ,int *) ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyEx (int ,scalar_t__,int *,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ int _T (char*) ;
+ scalar_t__ _countof (int *) ;
 
 BOOL
 LoadEventLabels(PGLOBAL_DATA pGlobalData)
@@ -56,10 +56,10 @@ LoadEventLabels(PGLOBAL_DATA pGlobalData)
                                 dwCurKey,
                                 szName,
                                 &dwName,
-                                NULL,
-                                NULL,
-                                NULL,
-                                NULL);
+                                ((void*)0),
+                                ((void*)0),
+                                ((void*)0),
+                                ((void*)0));
 
         if (dwResult == ERROR_SUCCESS)
         {

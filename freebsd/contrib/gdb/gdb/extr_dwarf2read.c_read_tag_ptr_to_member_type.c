@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct type {int dummy; } ;
 struct objfile {int dummy; } ;
 struct dwarf2_cu {struct objfile* objfile; } ;
 struct die_info {struct type* type; } ;
 
-/* Variables and functions */
- struct type* alloc_type (struct objfile*) ; 
- struct type* die_containing_type (struct die_info*,struct dwarf2_cu*) ; 
- struct type* die_type (struct die_info*,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  smash_to_member_type (struct type*,struct type*,struct type*) ; 
+
+ struct type* alloc_type (struct objfile*) ;
+ struct type* die_containing_type (struct die_info*,struct dwarf2_cu*) ;
+ struct type* die_type (struct die_info*,struct dwarf2_cu*) ;
+ int smash_to_member_type (struct type*,struct type*,struct type*) ;
 
 __attribute__((used)) static void
 read_tag_ptr_to_member_type (struct die_info *die, struct dwarf2_cu *cu)

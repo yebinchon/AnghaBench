@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ APR_HASH_KEY_STRING ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,char const*,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ strlen (char const*) ; 
- int /*<<< orphan*/  svn_string_ncreate (char const*,scalar_t__,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ scalar_t__ APR_HASH_KEY_STRING ;
+ int apr_hash_set (int *,char const*,scalar_t__,int ) ;
+ scalar_t__ strlen (char const*) ;
+ int svn_string_ncreate (char const*,scalar_t__,int *) ;
 
 __attribute__((used)) static void
 hash_store(apr_hash_t *hash,

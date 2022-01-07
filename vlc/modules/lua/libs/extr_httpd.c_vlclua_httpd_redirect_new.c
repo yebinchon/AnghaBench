@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  httpd_redirect_t ;
-typedef  int /*<<< orphan*/  httpd_host_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * httpd_RedirectNew (int /*<<< orphan*/ *,char const*,char const*) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ luaL_newmetatable (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ ** lua_newuserdata (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlclua_httpd_redirect_delete ; 
+
+
+
+typedef int lua_State ;
+typedef int httpd_redirect_t ;
+typedef int httpd_host_t ;
+
+
+ int * httpd_RedirectNew (int *,char const*,char const*) ;
+ char* luaL_checkstring (int *,int) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ scalar_t__ luaL_newmetatable (int *,char*) ;
+ int ** lua_newuserdata (int *,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setmetatable (int *,int) ;
+ int vlclua_httpd_redirect_delete ;
 
 __attribute__((used)) static int vlclua_httpd_redirect_new( lua_State *L )
 {

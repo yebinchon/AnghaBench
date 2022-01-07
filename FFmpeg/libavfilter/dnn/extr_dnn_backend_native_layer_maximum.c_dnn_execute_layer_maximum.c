@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-struct TYPE_7__ {int /*<<< orphan*/  y; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+struct TYPE_7__ {int y; } ;
 struct TYPE_9__ {TYPE_1__ val; } ;
-struct TYPE_8__ {float* data; int /*<<< orphan*/  length; int /*<<< orphan*/  data_type; int /*<<< orphan*/ * dims; } ;
-typedef  TYPE_2__ DnnOperand ;
-typedef  TYPE_3__ DnnLayerMaximumParams ;
+struct TYPE_8__ {float* data; int length; int data_type; int * dims; } ;
+typedef TYPE_2__ DnnOperand ;
+typedef TYPE_3__ DnnLayerMaximumParams ;
 
-/* Variables and functions */
- int DNN_ERROR ; 
- float FFMAX (float const,int /*<<< orphan*/ ) ; 
- float* av_realloc (float*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  calculate_operand_data_length (TYPE_2__*) ; 
- int calculate_operand_dims_count (TYPE_2__*) ; 
+
+ int DNN_ERROR ;
+ float FFMAX (float const,int ) ;
+ float* av_realloc (float*,int ) ;
+ int calculate_operand_data_length (TYPE_2__*) ;
+ int calculate_operand_dims_count (TYPE_2__*) ;
 
 int dnn_execute_layer_maximum(DnnOperand *operands, const int32_t *input_operand_indexes,
                               int32_t output_operand_index, const void *parameters)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int GLushort ;
-typedef  float GLfloat ;
 
-/* Variables and functions */
- scalar_t__ M_PI ; 
- float SPHERE_RADIUS ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (float*) ; 
- int /*<<< orphan*/  sincosf (float,float*,float*) ; 
- void* vlc_alloc (unsigned int,int) ; 
+
+
+
+typedef unsigned int GLushort ;
+typedef float GLfloat ;
+
+
+ scalar_t__ M_PI ;
+ float SPHERE_RADIUS ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int free (float*) ;
+ int sincosf (float,float*,float*) ;
+ void* vlc_alloc (unsigned int,int) ;
 
 __attribute__((used)) static int BuildSphere(unsigned nbPlanes,
                         GLfloat **vertexCoord, GLfloat **textureCoord, unsigned *nbVertices,
@@ -35,16 +35,16 @@ __attribute__((used)) static int BuildSphere(unsigned nbPlanes,
     *nbIndices = nbLatBands * nbLonBands * 3 * 2;
 
     *vertexCoord = vlc_alloc(*nbVertices * 3, sizeof(GLfloat));
-    if (*vertexCoord == NULL)
+    if (*vertexCoord == ((void*)0))
         return VLC_ENOMEM;
     *textureCoord = vlc_alloc(nbPlanes * *nbVertices * 2, sizeof(GLfloat));
-    if (*textureCoord == NULL)
+    if (*textureCoord == ((void*)0))
     {
         free(*vertexCoord);
         return VLC_ENOMEM;
     }
     *indices = vlc_alloc(*nbIndices, sizeof(GLushort));
-    if (*indices == NULL)
+    if (*indices == ((void*)0))
     {
         free(*textureCoord);
         free(*vertexCoord);

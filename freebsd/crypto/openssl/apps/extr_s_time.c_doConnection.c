@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct linger {int l_onoff; scalar_t__ l_linger; } ;
-typedef  int /*<<< orphan*/  no_linger ;
+typedef int no_linger ;
 struct TYPE_2__ {scalar_t__ error; } ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+typedef int BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_SOCK_NODELAY ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BIO_s_connect () ; 
- int /*<<< orphan*/  BIO_set_conn_hostname (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  BIO_set_conn_mode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_LINGER ; 
- int SSL_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int SSL_get_fd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_connect_state (int /*<<< orphan*/ *) ; 
- scalar_t__ X509_V_OK ; 
- int /*<<< orphan*/  X509_verify_cert_error_string (scalar_t__) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__ verify_args ; 
+
+ int BIO_SOCK_NODELAY ;
+ int * BIO_new (int ) ;
+ int BIO_printf (int ,char*,...) ;
+ int BIO_s_connect () ;
+ int BIO_set_conn_hostname (int *,char const*) ;
+ int BIO_set_conn_mode (int *,int ) ;
+ int ERR_print_errors (int ) ;
+ int SOL_SOCKET ;
+ int SO_LINGER ;
+ int SSL_connect (int *) ;
+ int SSL_free (int *) ;
+ int SSL_get_fd (int *) ;
+ int * SSL_new (int *) ;
+ int SSL_set_bio (int *,int *,int *) ;
+ int SSL_set_connect_state (int *) ;
+ scalar_t__ X509_V_OK ;
+ int X509_verify_cert_error_string (scalar_t__) ;
+ int bio_err ;
+ int setsockopt (int,int ,int ,char*,int) ;
+ TYPE_1__ verify_args ;
 
 __attribute__((used)) static SSL *doConnection(SSL *scon, const char *host, SSL_CTX *ctx)
 {
@@ -46,13 +46,13 @@ __attribute__((used)) static SSL *doConnection(SSL *scon, const char *host, SSL_
     SSL *serverCon;
     int i;
 
-    if ((conn = BIO_new(BIO_s_connect())) == NULL)
-        return NULL;
+    if ((conn = BIO_new(BIO_s_connect())) == ((void*)0))
+        return ((void*)0);
 
     BIO_set_conn_hostname(conn, host);
     BIO_set_conn_mode(conn, BIO_SOCK_NODELAY);
 
-    if (scon == NULL)
+    if (scon == ((void*)0))
         serverCon = SSL_new(ctx);
     else {
         serverCon = scon;
@@ -61,7 +61,7 @@ __attribute__((used)) static SSL *doConnection(SSL *scon, const char *host, SSL_
 
     SSL_set_bio(serverCon, conn, conn);
 
-    /* ok, lets connect */
+
     i = SSL_connect(serverCon);
     if (i <= 0) {
         BIO_printf(bio_err, "ERROR\n");
@@ -70,24 +70,9 @@ __attribute__((used)) static SSL *doConnection(SSL *scon, const char *host, SSL_
                        X509_verify_cert_error_string(verify_args.error));
         else
             ERR_print_errors(bio_err);
-        if (scon == NULL)
+        if (scon == ((void*)0))
             SSL_free(serverCon);
-        return NULL;
+        return ((void*)0);
     }
-
-#if defined(SOL_SOCKET) && defined(SO_LINGER)
-    {
-        struct linger no_linger;
-        int fd;
-
-        no_linger.l_onoff  = 1;
-        no_linger.l_linger = 0;
-        fd = SSL_get_fd(serverCon);
-        if (fd >= 0)
-            (void)setsockopt(fd, SOL_SOCKET, SO_LINGER, (char*)&no_linger,
-                             sizeof(no_linger));
-    }
-#endif
-
     return serverCon;
 }

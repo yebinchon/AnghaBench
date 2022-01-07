@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_17__ ;
 
-/* Type definitions */
-struct TYPE_28__ {scalar_t__ missing_width; void* x_height; void* cap_height; int /*<<< orphan*/  error; int /*<<< orphan*/  attr; } ;
-struct TYPE_27__ {int /*<<< orphan*/  offset; } ;
+
+
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_17__ ;
+
+
+struct TYPE_28__ {scalar_t__ missing_width; void* x_height; void* cap_height; int error; int attr; } ;
+struct TYPE_27__ {int offset; } ;
 struct TYPE_25__ {int units_per_em; } ;
-struct TYPE_23__ {int /*<<< orphan*/  base_offset; } ;
-struct TYPE_26__ {int /*<<< orphan*/ * stream; TYPE_3__ header; TYPE_2__* h_metric; TYPE_1__ glyph_tbl; int /*<<< orphan*/  embedding; } ;
+struct TYPE_23__ {int base_offset; } ;
+struct TYPE_26__ {int * stream; TYPE_3__ header; TYPE_2__* h_metric; TYPE_1__ glyph_tbl; int embedding; } ;
 struct TYPE_24__ {scalar_t__ advance_width; } ;
 struct TYPE_22__ {scalar_t__ top; } ;
-typedef  int HPDF_UINT32 ;
-typedef  void* HPDF_UINT16 ;
-typedef  int /*<<< orphan*/  HPDF_UINT ;
-typedef  TYPE_4__* HPDF_TTFontDefAttr ;
-typedef  TYPE_5__ HPDF_TTFTable ;
-typedef  int /*<<< orphan*/ * HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  scalar_t__ HPDF_INT16 ;
-typedef  TYPE_6__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BOOL ;
+typedef int HPDF_UINT32 ;
+typedef void* HPDF_UINT16 ;
+typedef int HPDF_UINT ;
+typedef TYPE_4__* HPDF_TTFontDefAttr ;
+typedef TYPE_5__ HPDF_TTFTable ;
+typedef int * HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef scalar_t__ HPDF_INT16 ;
+typedef TYPE_6__* HPDF_FontDef ;
+typedef int HPDF_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DumpTable (TYPE_6__*) ; 
- TYPE_5__* FindTable (TYPE_6__*,char*) ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HPDF_Stream_Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HPDF_Stream_Seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_TTF_MISSING_TABLE ; 
- TYPE_17__ HPDF_TTFontDef_GetCharBBox (TYPE_6__*,void*) ; 
- int /*<<< orphan*/  LoadTTFTable (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseCMap (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseHead (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseHhea (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseHmtx (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseLoca (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseMaxp (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseName (TYPE_6__*) ; 
- int /*<<< orphan*/  ParseOS2 (TYPE_6__*) ; 
+
+ int DumpTable (TYPE_6__*) ;
+ TYPE_5__* FindTable (TYPE_6__*,char*) ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ int HPDF_SetError (int ,int ,int) ;
+ int HPDF_Stream_Free (int *) ;
+ int HPDF_Stream_Seek (int *,int ,int ) ;
+ int HPDF_TTF_MISSING_TABLE ;
+ TYPE_17__ HPDF_TTFontDef_GetCharBBox (TYPE_6__*,void*) ;
+ int LoadTTFTable (TYPE_6__*) ;
+ int ParseCMap (TYPE_6__*) ;
+ int ParseHead (TYPE_6__*) ;
+ int ParseHhea (TYPE_6__*) ;
+ int ParseHmtx (TYPE_6__*) ;
+ int ParseLoca (TYPE_6__*) ;
+ int ParseMaxp (TYPE_6__*) ;
+ int ParseName (TYPE_6__*) ;
+ int ParseOS2 (TYPE_6__*) ;
 
 __attribute__((used)) static HPDF_STATUS
-LoadFontData (HPDF_FontDef  fontdef,
-              HPDF_Stream   stream,
-              HPDF_BOOL     embedding,
-              HPDF_UINT     offset)
+LoadFontData (HPDF_FontDef fontdef,
+              HPDF_Stream stream,
+              HPDF_BOOL embedding,
+              HPDF_UINT offset)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_STATUS ret;
@@ -77,9 +77,9 @@ LoadFontData (HPDF_FontDef  fontdef,
     if ((ret = LoadTTFTable (fontdef)) != HPDF_OK)
         return ret;
 
-#ifdef HPDF_DUMP_FONTDATA
-    DumpTable (fontdef);
-#endif /* HPDF_DUMP_FONTDATA */
+
+
+
 
     if ((ret = ParseHead (fontdef)) != HPDF_OK)
         return ret;
@@ -123,7 +123,7 @@ LoadFontData (HPDF_FontDef  fontdef,
 
     if (!embedding) {
         HPDF_Stream_Free (attr->stream);
-        attr->stream = NULL;
+        attr->stream = ((void*)0);
     }
 
     return HPDF_OK;

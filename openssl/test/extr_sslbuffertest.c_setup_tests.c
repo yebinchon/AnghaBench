@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_error (char*) ; 
- int /*<<< orphan*/  TEST_ptr (char*) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  clientctx ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  serverctx ; 
- int /*<<< orphan*/  test_func ; 
- char* test_get_argument (int) ; 
+ int ADD_ALL_TESTS (int ,int) ;
+ int TEST_error (char*) ;
+ int TEST_ptr (char*) ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int clientctx ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int *,int *,char*,char*) ;
+ int serverctx ;
+ int test_func ;
+ char* test_get_argument (int) ;
 
 int setup_tests(void)
 {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  rtc_xtal_freq_t ;
-struct TYPE_3__ {scalar_t__ source; int div; int /*<<< orphan*/  freq_mhz; int /*<<< orphan*/  source_freq_mhz; } ;
-typedef  TYPE_1__ rtc_cpu_freq_config_t ;
 
-/* Variables and functions */
- scalar_t__ REG_GET_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTC_CNTL_CLK_CONF_REG ; 
- int /*<<< orphan*/  RTC_CNTL_SOC_CLK_SEL ; 
- scalar_t__ RTC_CNTL_SOC_CLK_SEL_PLL ; 
- scalar_t__ RTC_CNTL_SOC_CLK_SEL_XTL ; 
- scalar_t__ RTC_CPU_FREQ_SRC_8M ; 
- scalar_t__ RTC_CPU_FREQ_SRC_PLL ; 
- scalar_t__ RTC_CPU_FREQ_SRC_XTAL ; 
- int /*<<< orphan*/  rtc_clk_bbpll_configure (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_clk_bbpll_disable () ; 
- int /*<<< orphan*/  rtc_clk_bbpll_enable () ; 
- int /*<<< orphan*/  rtc_clk_cpu_freq_to_8m () ; 
- int /*<<< orphan*/  rtc_clk_cpu_freq_to_pll_mhz (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_clk_cpu_freq_to_xtal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rtc_clk_wait_for_slow_cycle () ; 
- int /*<<< orphan*/  rtc_clk_xtal_freq_get () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int rtc_xtal_freq_t ;
+struct TYPE_3__ {scalar_t__ source; int div; int freq_mhz; int source_freq_mhz; } ;
+typedef TYPE_1__ rtc_cpu_freq_config_t ;
+
+
+ scalar_t__ REG_GET_FIELD (int ,int ) ;
+ int RTC_CNTL_CLK_CONF_REG ;
+ int RTC_CNTL_SOC_CLK_SEL ;
+ scalar_t__ RTC_CNTL_SOC_CLK_SEL_PLL ;
+ scalar_t__ RTC_CNTL_SOC_CLK_SEL_XTL ;
+ scalar_t__ RTC_CPU_FREQ_SRC_8M ;
+ scalar_t__ RTC_CPU_FREQ_SRC_PLL ;
+ scalar_t__ RTC_CPU_FREQ_SRC_XTAL ;
+ int rtc_clk_bbpll_configure (int ,int ) ;
+ int rtc_clk_bbpll_disable () ;
+ int rtc_clk_bbpll_enable () ;
+ int rtc_clk_cpu_freq_to_8m () ;
+ int rtc_clk_cpu_freq_to_pll_mhz (int ) ;
+ int rtc_clk_cpu_freq_to_xtal (int ,int) ;
+ int rtc_clk_wait_for_slow_cycle () ;
+ int rtc_clk_xtal_freq_get () ;
 
 void rtc_clk_cpu_freq_set_config(const rtc_cpu_freq_config_t* config)
 {

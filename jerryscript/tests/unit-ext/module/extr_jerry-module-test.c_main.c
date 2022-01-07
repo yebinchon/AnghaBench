@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  eval_one (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  eval_string1 ; 
- int /*<<< orphan*/  eval_string2 ; 
- int /*<<< orphan*/  eval_string3 ; 
- int /*<<< orphan*/  eval_string4 ; 
- int /*<<< orphan*/  eval_string5 ; 
- int /*<<< orphan*/  eval_string6 ; 
- int /*<<< orphan*/  eval_string7 ; 
- int /*<<< orphan*/  handle_clear_require_cache ; 
- int /*<<< orphan*/  handle_require ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_external_function (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- scalar_t__ jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_boolean (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_broken_module_register () ; 
- int /*<<< orphan*/  my_custom_module_register () ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int eval_one (int ,int) ;
+ int eval_string1 ;
+ int eval_string2 ;
+ int eval_string3 ;
+ int eval_string4 ;
+ int eval_string5 ;
+ int eval_string6 ;
+ int eval_string7 ;
+ int handle_clear_require_cache ;
+ int handle_require ;
+ int jerry_cleanup () ;
+ int jerry_create_external_function (int ) ;
+ int jerry_create_string (int const*) ;
+ scalar_t__ jerry_get_boolean_value (int ) ;
+ int jerry_get_global_object () ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_set_property (int ,int ,int ) ;
+ scalar_t__ jerry_value_is_boolean (int ) ;
+ int jerry_value_is_error (int ) ;
+ int my_broken_module_register () ;
+ int my_custom_module_register () ;
 
 int
 main (int argc, char **argv)
@@ -47,10 +47,10 @@ main (int argc, char **argv)
   jerry_value_t js_global = 0, js_function = 0, js_property_name = 0;
   jerry_value_t res;
 
-#ifndef ENABLE_INIT_FINI
+
   my_broken_module_register ();
   my_custom_module_register ();
-#endif /* !ENABLE_INIT_FINI */
+
 
   jerry_init (JERRY_INIT_EMPTY);
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_query {int dummy; } ;
-struct wined3d_cs_query_issue {int /*<<< orphan*/  flags; struct wined3d_query* query; int /*<<< orphan*/  opcode; } ;
-struct wined3d_cs {int /*<<< orphan*/  queries_flushed; TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* submit ) (struct wined3d_cs*,int /*<<< orphan*/ ) ;struct wined3d_cs_query_issue* (* require_space ) (struct wined3d_cs*,int,int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  DWORD ;
+struct wined3d_cs_query_issue {int flags; struct wined3d_query* query; int opcode; } ;
+struct wined3d_cs {int queries_flushed; TYPE_1__* ops; } ;
+struct TYPE_2__ {int (* submit ) (struct wined3d_cs*,int ) ;struct wined3d_cs_query_issue* (* require_space ) (struct wined3d_cs*,int,int ) ;} ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  WINED3D_CS_OP_QUERY_ISSUE ; 
- int /*<<< orphan*/  WINED3D_CS_QUEUE_DEFAULT ; 
- struct wined3d_cs_query_issue* stub1 (struct wined3d_cs*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct wined3d_cs*,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int WINED3D_CS_OP_QUERY_ISSUE ;
+ int WINED3D_CS_QUEUE_DEFAULT ;
+ struct wined3d_cs_query_issue* stub1 (struct wined3d_cs*,int,int ) ;
+ int stub2 (struct wined3d_cs*,int ) ;
 
 void wined3d_cs_emit_query_issue(struct wined3d_cs *cs, struct wined3d_query *query, DWORD flags)
 {

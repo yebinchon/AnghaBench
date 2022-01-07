@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  scalar_t__ ULONG ;
-typedef  int UCHAR ;
-typedef  int /*<<< orphan*/ * PUSHORT ;
-typedef  int /*<<< orphan*/ * PULONG ;
-typedef  int /*<<< orphan*/ * PSHORT ;
-typedef  int* PCHAR ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClassIDtoClassName (int) ; 
- scalar_t__ ExtractIP (int*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ ExtractName (int*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  OpcodeIDtoOpcodeName (int) ; 
- int /*<<< orphan*/  RCodeIDtoRCodeName (int) ; 
- int TYPE_A ; 
- int TYPE_NS ; 
- int TYPE_SOA ; 
- int /*<<< orphan*/  TypeIDtoTypeName (int) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
- scalar_t__ ntohl (int /*<<< orphan*/ ) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int USHORT ;
+typedef scalar_t__ ULONG ;
+typedef int UCHAR ;
+typedef int * PUSHORT ;
+typedef int * PULONG ;
+typedef int * PSHORT ;
+typedef int* PCHAR ;
+typedef scalar_t__ DWORD ;
+typedef int CHAR ;
+
+
+ int ClassIDtoClassName (int) ;
+ scalar_t__ ExtractIP (int*,int *,int) ;
+ scalar_t__ ExtractName (int*,int *,int,int) ;
+ int OpcodeIDtoOpcodeName (int) ;
+ int RCodeIDtoRCodeName (int) ;
+ int TYPE_A ;
+ int TYPE_NS ;
+ int TYPE_SOA ;
+ int TypeIDtoTypeName (int) ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
+ scalar_t__ ntohl (int ) ;
+ int ntohs (int ) ;
 
 void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
 {
@@ -116,12 +116,12 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
         {
             _tprintf( _T("    ->  ") );
 
-            /* Print out the name. */
+
             i += ExtractName( pBuffer, pName, i, 0 );
 
             _tprintf( _T("%s\n"), pName );
 
-            /* Print out the type, class and data length. */
+
             Type = ntohs( ((PUSHORT)&pBuffer[i])[0] );
             i += 2;
 
@@ -139,7 +139,7 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
                       ClassIDtoClassName( Class ),
                       d );
 
-            /* Print out the answer. */
+
             if( TYPE_A == Type )
             {
                 i += ExtractIP( pBuffer, pName, i );
@@ -163,12 +163,12 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
 
         for( k = 0; k < NumAuthority; k += 1 )
         {
-            /* Print out the zone name. */
+
             i += ExtractName( pBuffer, pName, i, 0 );
 
             _tprintf( _T("    ->  %s\n"), pName );
 
-            /* Print out the type, class, data length and TTL. */
+
             Type = ntohs( ((PUSHORT)&pBuffer[i])[0] );
             i += 2;
 
@@ -186,10 +186,10 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
                       ClassIDtoClassName( Class ),
                       d );
 
-            /* TODO: There might be more types? */
+
             if( TYPE_NS == Type )
             {
-                /* Print out the NS. */
+
                 i += ExtractName( pBuffer, pName, i, d );
 
                 _tprintf( _T("        nameserver = %s\n"), pName );
@@ -200,17 +200,17 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
             {
                 _tprintf( _T("        ttl = %d ()\n"), (int)TTL );
 
-                /* Print out the primary NS. */
+
                 i += ExtractName( pBuffer, pName, i, 0 );
 
                 _tprintf( _T("        primary name server = %s\n"), pName );
 
-                /* Print out the responsible mailbox. */
+
                 i += ExtractName( pBuffer, pName, i, 0 );
 
                 _tprintf( _T("        responsible mail addr = %s\n"), pName );
 
-                /* Print out the serial, refresh, retry, expire and default TTL. */
+
                 _tprintf( _T("        serial = ()\n") );
                 _tprintf( _T("        refresh = ()\n") );
                 _tprintf( _T("        retry = ()\n") );
@@ -227,12 +227,12 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
 
         for( k = 0; k < NumAdditional; k += 1 )
         {
-            /* Print the name. */
+
             i += ExtractName( pBuffer, pName, i, 0 );
 
             _tprintf( _T("    ->  %s\n"), pName );
 
-            /* Print out the type, class, data length and TTL. */
+
             Type = ntohs( ((PUSHORT)&pBuffer[i])[0] );
             i += 2;
 
@@ -250,10 +250,10 @@ void PrintDebug( PCHAR pBuffer, DWORD BufferLength )
                       ClassIDtoClassName( Class ),
                       d );
 
-            /* TODO: There might be more types? */
+
             if( TYPE_A == Type )
             {
-                /* Print out the NS. */
+
                 i += ExtractIP( pBuffer, pName, i );
 
                 _tprintf( _T("        internet address = %s\n"), pName );

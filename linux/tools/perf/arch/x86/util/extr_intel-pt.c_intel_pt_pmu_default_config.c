@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct perf_pmu {int selectable; } ;
-struct perf_event_attr {int /*<<< orphan*/  config; } ;
+struct perf_event_attr {int config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_pt_default_config (struct perf_pmu*) ; 
- struct perf_event_attr* zalloc (int) ; 
+
+ int intel_pt_default_config (struct perf_pmu*) ;
+ struct perf_event_attr* zalloc (int) ;
 
 struct perf_event_attr *
 intel_pt_pmu_default_config(struct perf_pmu *intel_pt_pmu)
 {
-	struct perf_event_attr *attr;
+ struct perf_event_attr *attr;
 
-	attr = zalloc(sizeof(struct perf_event_attr));
-	if (!attr)
-		return NULL;
+ attr = zalloc(sizeof(struct perf_event_attr));
+ if (!attr)
+  return ((void*)0);
 
-	attr->config = intel_pt_default_config(intel_pt_pmu);
+ attr->config = intel_pt_default_config(intel_pt_pmu);
 
-	intel_pt_pmu->selectable = true;
+ intel_pt_pmu->selectable = 1;
 
-	return attr;
+ return attr;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ (* UuidToStringFunc ) (int /*<<< orphan*/ *,unsigned char**) ;
-typedef  scalar_t__ (* UuidCreateFunc ) (int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  UUID ;
-typedef  int /*<<< orphan*/  (* RpcStringFreeFunc ) (unsigned char**) ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  scalar_t__ HMODULE ;
-typedef  int /*<<< orphan*/  HCRYPTPROV ;
-typedef  int /*<<< orphan*/  HCRYPTKEY ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AT_SIGNATURE ; 
- int /*<<< orphan*/  CRYPT_NEWKEYSET ; 
- scalar_t__ CryptAcquireContextA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CryptDestroyKey (int /*<<< orphan*/ ) ; 
- scalar_t__ CryptGenKey (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeLibrary (scalar_t__) ; 
- int /*<<< orphan*/  GetProcAddress (scalar_t__,char*) ; 
- scalar_t__ LoadLibraryA (char*) ; 
- int /*<<< orphan*/  MS_DEF_PROV_A ; 
- int /*<<< orphan*/  PROV_RSA_FULL ; 
- scalar_t__ RPC_S_OK ; 
- scalar_t__ RPC_S_UUID_LOCAL_ONLY ; 
+
+
+
+typedef scalar_t__ (* UuidToStringFunc ) (int *,unsigned char**) ;
+typedef scalar_t__ (* UuidCreateFunc ) (int *) ;
+typedef int UUID ;
+typedef int (* RpcStringFreeFunc ) (unsigned char**) ;
+typedef scalar_t__ RPC_STATUS ;
+typedef int LPCSTR ;
+typedef scalar_t__ HMODULE ;
+typedef int HCRYPTPROV ;
+typedef int HCRYPTKEY ;
+typedef scalar_t__ BOOL ;
+
+
+ int AT_SIGNATURE ;
+ int CRYPT_NEWKEYSET ;
+ scalar_t__ CryptAcquireContextA (int *,int ,int ,int ,int ) ;
+ int CryptDestroyKey (int ) ;
+ scalar_t__ CryptGenKey (int ,int ,int ,int *) ;
+ int FreeLibrary (scalar_t__) ;
+ int GetProcAddress (scalar_t__,char*) ;
+ scalar_t__ LoadLibraryA (char*) ;
+ int MS_DEF_PROV_A ;
+ int PROV_RSA_FULL ;
+ scalar_t__ RPC_S_OK ;
+ scalar_t__ RPC_S_UUID_LOCAL_ONLY ;
 
 __attribute__((used)) static HCRYPTPROV CRYPT_CreateKeyProv(void)
 {

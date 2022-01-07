@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- unsigned int PACK_FLAG_LSB ; 
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ unsigned int PACK_FLAG_LSB ;
+ char* RSTRING_PTR (int ) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_str_new (int *,int *,int) ;
+ int mrb_str_resize (int *,int ,int) ;
 
 __attribute__((used)) static int
 unpack_h(mrb_state *mrb, const void *src, int slen, mrb_value ary, int count, unsigned int flags)
@@ -42,7 +42,7 @@ unpack_h(mrb_state *mrb, const void *src, int slen, mrb_value ary, int count, un
   if (count == -1)
     count = slen * 2;
 
-  dst = mrb_str_new(mrb, NULL, count);
+  dst = mrb_str_new(mrb, ((void*)0), count);
   dptr = RSTRING_PTR(dst);
 
   sptr0 = sptr;

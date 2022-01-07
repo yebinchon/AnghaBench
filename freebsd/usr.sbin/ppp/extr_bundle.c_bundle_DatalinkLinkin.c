@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct datalink {struct datalink* next; } ;
-struct TYPE_2__ {int /*<<< orphan*/  mp; } ;
+struct TYPE_2__ {int mp; } ;
 struct bundle {TYPE_1__ ncp; struct datalink* links; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bundle_LinkAdded (struct bundle*,struct datalink*) ; 
- int /*<<< orphan*/  mp_CheckAutoloadTimer (int /*<<< orphan*/ *) ; 
+
+ int bundle_LinkAdded (struct bundle*,struct datalink*) ;
+ int mp_CheckAutoloadTimer (int *) ;
 
 __attribute__((used)) static void
 bundle_DatalinkLinkin(struct bundle *bundle, struct datalink *dl)
@@ -28,7 +28,7 @@ bundle_DatalinkLinkin(struct bundle *bundle, struct datalink *dl)
     dlp = &(*dlp)->next;
 
   *dlp = dl;
-  dl->next = NULL;
+  dl->next = ((void*)0);
 
   bundle_LinkAdded(bundle, dl);
   mp_CheckAutoloadTimer(&bundle->ncp.mp);

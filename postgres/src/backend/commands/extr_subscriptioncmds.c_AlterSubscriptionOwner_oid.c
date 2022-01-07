@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AlterSubscriptionOwner_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERRCODE_UNDEFINED_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RowExclusiveLock ; 
- int /*<<< orphan*/  SUBSCRIPTIONOID ; 
- int /*<<< orphan*/  SearchSysCacheCopy1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SubscriptionRelationId ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_freetuple (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int Oid ;
+typedef int HeapTuple ;
+
+
+ int AlterSubscriptionOwner_internal (int ,int ,int ) ;
+ int ERRCODE_UNDEFINED_OBJECT ;
+ int ERROR ;
+ int HeapTupleIsValid (int ) ;
+ int ObjectIdGetDatum (int ) ;
+ int RowExclusiveLock ;
+ int SUBSCRIPTIONOID ;
+ int SearchSysCacheCopy1 (int ,int ) ;
+ int SubscriptionRelationId ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
+ int heap_freetuple (int ) ;
+ int table_close (int ,int ) ;
+ int table_open (int ,int ) ;
 
 void
 AlterSubscriptionOwner_oid(Oid subid, Oid newOwnerId)
 {
-	HeapTuple	tup;
-	Relation	rel;
+ HeapTuple tup;
+ Relation rel;
 
-	rel = table_open(SubscriptionRelationId, RowExclusiveLock);
+ rel = table_open(SubscriptionRelationId, RowExclusiveLock);
 
-	tup = SearchSysCacheCopy1(SUBSCRIPTIONOID, ObjectIdGetDatum(subid));
+ tup = SearchSysCacheCopy1(SUBSCRIPTIONOID, ObjectIdGetDatum(subid));
 
-	if (!HeapTupleIsValid(tup))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("subscription with OID %u does not exist", subid)));
+ if (!HeapTupleIsValid(tup))
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_OBJECT),
+     errmsg("subscription with OID %u does not exist", subid)));
 
-	AlterSubscriptionOwner_internal(rel, tup, newOwnerId);
+ AlterSubscriptionOwner_internal(rel, tup, newOwnerId);
 
-	heap_freetuple(tup);
+ heap_freetuple(tup);
 
-	table_close(rel, RowExclusiveLock);
+ table_close(rel, RowExclusiveLock);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct prompt {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  OctetsPerSecond; } ;
-struct TYPE_3__ {int /*<<< orphan*/  OctetsPerSecond; } ;
-struct pppThroughput {int OctetsIn; int OctetsOut; int SamplePeriod; scalar_t__ BestOctetsPerSecondTime; int /*<<< orphan*/  BestOctetsPerSecond; TYPE_2__ out; TYPE_1__ in; scalar_t__ downtime; scalar_t__ rolling; int /*<<< orphan*/  PacketsOut; int /*<<< orphan*/  PacketsIn; } ;
+struct TYPE_4__ {int OctetsPerSecond; } ;
+struct TYPE_3__ {int OctetsPerSecond; } ;
+struct pppThroughput {int OctetsIn; int OctetsOut; int SamplePeriod; scalar_t__ BestOctetsPerSecondTime; int BestOctetsPerSecond; TYPE_2__ out; TYPE_1__ in; scalar_t__ downtime; scalar_t__ rolling; int PacketsOut; int PacketsIn; } ;
 
-/* Variables and functions */
- int ctime (scalar_t__*) ; 
- int /*<<< orphan*/  prompt_Printf (struct prompt*,char*,...) ; 
- int throughput_uptime (struct pppThroughput*) ; 
+
+ int ctime (scalar_t__*) ;
+ int prompt_Printf (struct prompt*,char*,...) ;
+ int throughput_uptime (struct pppThroughput*) ;
 
 void
 throughput_disp(struct pppThroughput *t, struct prompt *prompt)

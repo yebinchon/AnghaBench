@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct key_type {int /*<<< orphan*/  hmac_length; int /*<<< orphan*/  cipher_length; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct key_type {int hmac_length; int cipher_length; } ;
 struct key2 {int n; TYPE_1__* keys; } ;
 struct gc_arena {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  hmac; int /*<<< orphan*/  cipher; } ;
+struct TYPE_2__ {int hmac; int cipher; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  D_SHOW_KEY_SOURCE ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format_hex (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
+
+ int ASSERT (int) ;
+ int D_SHOW_KEY_SOURCE ;
+ int dmsg (int ,char*,char const*,int ) ;
+ int format_hex (int ,int ,int ,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
 
 void
 key2_print(const struct key2 *k,

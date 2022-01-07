@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct GlobalConfig {TYPE_1__* current; scalar_t__ libcurl; } ;
-typedef  int /*<<< orphan*/  curl_mime ;
-struct TYPE_2__ {int /*<<< orphan*/  mimeroot; } ;
-typedef  int /*<<< orphan*/  CURLoption ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef int curl_mime ;
+struct TYPE_2__ {int mimeroot; } ;
+typedef int CURLoption ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODE2 (char*,char const*,int) ; 
- scalar_t__ curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ libcurl_generate_mime (int /*<<< orphan*/ *,struct GlobalConfig*,int /*<<< orphan*/ ,int*) ; 
+
+ int CODE2 (char*,char const*,int) ;
+ scalar_t__ curl_easy_setopt (int *,int ,int *) ;
+ scalar_t__ libcurl_generate_mime (int *,struct GlobalConfig*,int ,int*) ;
 
 CURLcode tool_setopt_mimepost(CURL *curl, struct GlobalConfig *config,
                               const char *name, CURLoption tag,

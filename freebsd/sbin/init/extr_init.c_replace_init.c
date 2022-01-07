@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  execute_script (char**) ; 
+ int execute_script (char**) ;
 
 __attribute__((used)) static void
 replace_init(char *path)
 {
-	char *argv[3];
-	char sh[] = "sh";
+ char *argv[3];
+ char sh[] = "sh";
 
-	argv[0] = sh;
-	argv[1] = path;
-	argv[2] = NULL;
+ argv[0] = sh;
+ argv[1] = path;
+ argv[2] = ((void*)0);
 
-	execute_script(argv);
+ execute_script(argv);
 }

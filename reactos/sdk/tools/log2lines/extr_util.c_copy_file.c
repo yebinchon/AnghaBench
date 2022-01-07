@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* CP_FMT ; 
- int LINESIZE ; 
- scalar_t__ file_exists (char*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,char*,...) ; 
- int /*<<< orphan*/  remove (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- scalar_t__ system (char*) ; 
+ char* CP_FMT ;
+ int LINESIZE ;
+ scalar_t__ file_exists (char*) ;
+ int l2l_dbg (int,char*,char*,...) ;
+ int remove (char*) ;
+ int sprintf (char*,char*,char*,char*) ;
+ scalar_t__ system (char*) ;
 
 int
 copy_file(char *src, char *dst)

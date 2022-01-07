@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int info ;
 struct TYPE_10__ {int VirtualAddress; } ;
 struct TYPE_7__ {scalar_t__ HighPart; scalar_t__ LowPart; } ;
 struct TYPE_9__ {TYPE_1__ u; } ;
-struct TYPE_8__ {char* BaseAddress; void* AllocationBase; int AllocationProtect; int State; int Type; int /*<<< orphan*/  Protect; int /*<<< orphan*/  RegionSize; } ;
-typedef  int SIZE_T ;
-typedef  int NTSTATUS ;
-typedef  TYPE_2__ MEMORY_BASIC_INFORMATION ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
+struct TYPE_8__ {char* BaseAddress; void* AllocationBase; int AllocationProtect; int State; int Type; int Protect; int RegionSize; } ;
+typedef int SIZE_T ;
+typedef int NTSTATUS ;
+typedef TYPE_2__ MEMORY_BASIC_INFORMATION ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CreateFileMappingW (scalar_t__,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ERROR_INVALID_ADDRESS ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int FreeLibrary (void*) ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- void* LoadLibraryA (char const*) ; 
- int MEM_COMMIT ; 
- void* MapViewOfFile (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int PAGE_EXECUTE_WRITECOPY ; 
- int PAGE_READONLY ; 
- int SEC_IMAGE ; 
- int STATUS_IMAGE_NOT_AT_BASE ; 
- int STATUS_SUCCESS ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  UnmapViewOfFile (void*) ; 
- int VirtualQuery (char*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pNtMapViewOfSection (scalar_t__,int /*<<< orphan*/ ,void**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int*,int,int /*<<< orphan*/ ,int) ; 
- int pNtUnmapViewOfSection (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  page_size ; 
- TYPE_4__ section ; 
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char const*,int ,int ,int *,int ,int ,int ) ;
+ scalar_t__ CreateFileMappingW (scalar_t__,int *,int,int ,int ,int ) ;
+ int ERROR_INVALID_ADDRESS ;
+ int FILE_SHARE_READ ;
+ int FreeLibrary (void*) ;
+ int GENERIC_READ ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ void* LoadLibraryA (char const*) ;
+ int MEM_COMMIT ;
+ void* MapViewOfFile (scalar_t__,int ,int ,int ,int ) ;
+ int OPEN_EXISTING ;
+ int PAGE_EXECUTE_WRITECOPY ;
+ int PAGE_READONLY ;
+ int SEC_IMAGE ;
+ int STATUS_IMAGE_NOT_AT_BASE ;
+ int STATUS_SUCCESS ;
+ int SetLastError (int) ;
+ int UnmapViewOfFile (void*) ;
+ int VirtualQuery (char*,TYPE_2__*,int) ;
+ int ok (int,char*,...) ;
+ int pNtMapViewOfSection (scalar_t__,int ,void**,int ,int ,TYPE_3__*,int*,int,int ,int) ;
+ int pNtUnmapViewOfSection (int ,void*) ;
+ int page_size ;
+ TYPE_4__ section ;
 
 __attribute__((used)) static void test_image_mapping(const char *dll_name, DWORD scn_page_access, BOOL is_dll)
 {
@@ -68,20 +68,20 @@ __attribute__((used)) static void test_image_mapping(const char *dll_name, DWORD
     if (!pNtMapViewOfSection) return;
 
     SetLastError(0xdeadbeef);
-    hfile = CreateFileA(dll_name, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, 0);
+    hfile = CreateFileA(dll_name, GENERIC_READ, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING, 0, 0);
     ok(hfile != INVALID_HANDLE_VALUE, "CreateFile error %d\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    hmap = CreateFileMappingW(hfile, NULL, PAGE_READONLY | SEC_IMAGE, 0, 0, 0);
+    hmap = CreateFileMappingW(hfile, ((void*)0), PAGE_READONLY | SEC_IMAGE, 0, 0, 0);
     ok(hmap != 0, "CreateFileMapping error %d\n", GetLastError());
 
-    offset.u.LowPart  = 0;
+    offset.u.LowPart = 0;
     offset.u.HighPart = 0;
 
-    addr1 = NULL;
+    addr1 = ((void*)0);
     size = 0;
     status = pNtMapViewOfSection(hmap, GetCurrentProcess(), &addr1, 0, 0, &offset,
-                                 &size, 1 /* ViewShare */, 0, PAGE_READONLY);
+                                 &size, 1 , 0, PAGE_READONLY);
     ok(status == STATUS_SUCCESS, "NtMapViewOfSection error %x\n", status);
     ok(addr1 != 0, "mapped address should be valid\n");
 
@@ -96,10 +96,10 @@ __attribute__((used)) static void test_image_mapping(const char *dll_name, DWORD
     ok(info.State == MEM_COMMIT, "%#x != MEM_COMMIT\n", info.State);
     ok(info.Type == SEC_IMAGE, "%#x != SEC_IMAGE\n", info.Type);
 
-    addr2 = NULL;
+    addr2 = ((void*)0);
     size = 0;
     status = pNtMapViewOfSection(hmap, GetCurrentProcess(), &addr2, 0, 0, &offset,
-                                 &size, 1 /* ViewShare */, 0, PAGE_READONLY);
+                                 &size, 1 , 0, PAGE_READONLY);
     ok(status == STATUS_IMAGE_NOT_AT_BASE, "expected STATUS_IMAGE_NOT_AT_BASE, got %x\n", status);
     ok(addr2 != 0, "mapped address should be valid\n");
     ok(addr2 != addr1, "mapped addresses should be different\n");

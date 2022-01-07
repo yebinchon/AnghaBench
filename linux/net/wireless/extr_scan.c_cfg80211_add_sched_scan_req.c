@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cfg80211_sched_scan_request {int /*<<< orphan*/  list; } ;
-struct cfg80211_registered_device {int /*<<< orphan*/  sched_scan_req_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_RTNL () ; 
- int /*<<< orphan*/  list_add_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct cfg80211_sched_scan_request {int list; } ;
+struct cfg80211_registered_device {int sched_scan_req_list; } ;
+
+
+ int ASSERT_RTNL () ;
+ int list_add_rcu (int *,int *) ;
 
 void cfg80211_add_sched_scan_req(struct cfg80211_registered_device *rdev,
-				 struct cfg80211_sched_scan_request *req)
+     struct cfg80211_sched_scan_request *req)
 {
-	ASSERT_RTNL();
+ ASSERT_RTNL();
 
-	list_add_rcu(&req->list, &rdev->sched_scan_req_list);
+ list_add_rcu(&req->list, &rdev->sched_scan_req_list);
 }

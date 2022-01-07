@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct termios {int /*<<< orphan*/  c_cc; void* c_ospeed; void* c_ispeed; int /*<<< orphan*/  c_oflag; int /*<<< orphan*/  c_lflag; int /*<<< orphan*/  c_iflag; int /*<<< orphan*/  c_cflag; } ;
+
+
+
+
+struct termios {int c_cc; void* c_ospeed; void* c_ispeed; int c_oflag; int c_lflag; int c_iflag; int c_cflag; } ;
 struct tty {struct termios t_termios_init_out; struct termios t_termios_init_in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TTYDEF_CFLAG ; 
- int /*<<< orphan*/  TTYDEF_IFLAG ; 
- int /*<<< orphan*/  TTYDEF_LFLAG ; 
- int /*<<< orphan*/  TTYDEF_OFLAG ; 
- void* TTYDEF_SPEED ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ttydefchars ; 
+
+ int TTYDEF_CFLAG ;
+ int TTYDEF_IFLAG ;
+ int TTYDEF_LFLAG ;
+ int TTYDEF_OFLAG ;
+ void* TTYDEF_SPEED ;
+ int memcpy (int *,int ,int) ;
+ int ttydefchars ;
 
 __attribute__((used)) static void
 tty_init_termios(struct tty *tp)
 {
-	struct termios *t = &tp->t_termios_init_in;
+ struct termios *t = &tp->t_termios_init_in;
 
-	t->c_cflag = TTYDEF_CFLAG;
-	t->c_iflag = TTYDEF_IFLAG;
-	t->c_lflag = TTYDEF_LFLAG;
-	t->c_oflag = TTYDEF_OFLAG;
-	t->c_ispeed = TTYDEF_SPEED;
-	t->c_ospeed = TTYDEF_SPEED;
-	memcpy(&t->c_cc, ttydefchars, sizeof ttydefchars);
+ t->c_cflag = TTYDEF_CFLAG;
+ t->c_iflag = TTYDEF_IFLAG;
+ t->c_lflag = TTYDEF_LFLAG;
+ t->c_oflag = TTYDEF_OFLAG;
+ t->c_ispeed = TTYDEF_SPEED;
+ t->c_ospeed = TTYDEF_SPEED;
+ memcpy(&t->c_cc, ttydefchars, sizeof ttydefchars);
 
-	tp->t_termios_init_out = *t;
+ tp->t_termios_init_out = *t;
 }

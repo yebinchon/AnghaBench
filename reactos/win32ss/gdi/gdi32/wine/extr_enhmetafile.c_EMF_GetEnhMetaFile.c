@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HENHMETAFILE ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  ENHMETAHEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateFileMappingA (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EMF_Create_HENHMETAFILE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_MAP_READ ; 
- int /*<<< orphan*/ * MapViewOfFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UnmapViewOfFile (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HENHMETAFILE ;
+typedef int HANDLE ;
+typedef int ENHMETAHEADER ;
+
+
+ int CloseHandle (int ) ;
+ int CreateFileMappingA (int ,int *,int ,int ,int ,int *) ;
+ int EMF_Create_HENHMETAFILE (int *,int ) ;
+ int FILE_MAP_READ ;
+ int * MapViewOfFile (int ,int ,int ,int ,int ) ;
+ int PAGE_READONLY ;
+ int TRUE ;
+ int UnmapViewOfFile (int *) ;
 
 __attribute__((used)) static HENHMETAFILE EMF_GetEnhMetaFile( HANDLE hFile )
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static HENHMETAFILE EMF_GetEnhMetaFile( HANDLE hFile )
     HANDLE hMapping;
     HENHMETAFILE hemf;
 
-    hMapping = CreateFileMappingA( hFile, NULL, PAGE_READONLY, 0, 0, NULL );
+    hMapping = CreateFileMappingA( hFile, ((void*)0), PAGE_READONLY, 0, 0, ((void*)0) );
     emh = MapViewOfFile( hMapping, FILE_MAP_READ, 0, 0, 0 );
     CloseHandle( hMapping );
 

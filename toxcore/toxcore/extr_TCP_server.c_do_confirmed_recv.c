@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  packet ;
-struct TYPE_7__ {int /*<<< orphan*/  recv_nonce; int /*<<< orphan*/  shared_key; int /*<<< orphan*/  next_packet_length; int /*<<< orphan*/  sock; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef int packet ;
+struct TYPE_7__ {int recv_nonce; int shared_key; int next_packet_length; int sock; } ;
 struct TYPE_6__ {TYPE_2__* accepted_connection_array; } ;
-typedef  TYPE_1__ TCP_Server ;
-typedef  TYPE_2__ TCP_Secure_Connection ;
+typedef TYPE_1__ TCP_Server ;
+typedef TYPE_2__ TCP_Secure_Connection ;
 
-/* Variables and functions */
- int MAX_PACKET_SIZE ; 
- int handle_TCP_packet (TYPE_1__*,size_t,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  kill_accepted (TYPE_1__*,size_t) ; 
- int read_packet_TCP_secure_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int MAX_PACKET_SIZE ;
+ int handle_TCP_packet (TYPE_1__*,size_t,int *,int) ;
+ int kill_accepted (TYPE_1__*,size_t) ;
+ int read_packet_TCP_secure_connection (int ,int *,int ,int ,int *,int) ;
 
 __attribute__((used)) static void do_confirmed_recv(TCP_Server *TCP_server, uint32_t i)
 {

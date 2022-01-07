@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in {int dummy; } ;
 struct msghdr {int msg_namelen; struct msghdr* msg_iov; struct sockaddr_in* msg_name; } ;
 struct iovec {int msg_namelen; struct iovec* msg_iov; struct sockaddr_in* msg_name; } ;
 
-/* Variables and functions */
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  memset (struct msghdr*,int /*<<< orphan*/ ,size_t) ; 
+
+ scalar_t__ malloc (size_t) ;
+ int memset (struct msghdr*,int ,size_t) ;
 
 void taosInitMsgHdr(void **hdr, void *dest, int maxPkts) {
   struct msghdr *msgHdr = (struct msghdr *)malloc(sizeof(struct msghdr));

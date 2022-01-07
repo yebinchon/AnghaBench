@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  buffer_header_callback; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int buffer_header_callback; } ;
 struct TYPE_11__ {int is_enabled; scalar_t__ buffer_num; scalar_t__ buffer_num_min; scalar_t__ buffer_size; scalar_t__ buffer_size_min; TYPE_1__* priv; } ;
-struct TYPE_10__ {scalar_t__ (* pf_enable ) (TYPE_2__*,int /*<<< orphan*/ ) ;TYPE_3__* core; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_2__ MMAL_PORT_T ;
-typedef  TYPE_3__ MMAL_PORT_PRIVATE_CORE_T ;
-typedef  int /*<<< orphan*/  MMAL_PORT_BH_CB_T ;
+struct TYPE_10__ {scalar_t__ (* pf_enable ) (TYPE_2__*,int ) ;TYPE_3__* core; } ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_2__ MMAL_PORT_T ;
+typedef TYPE_3__ MMAL_PORT_PRIVATE_CORE_T ;
+typedef int MMAL_PORT_BH_CB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOCK_PORT (TYPE_2__*) ; 
- int /*<<< orphan*/  LOCK_SENDING (TYPE_2__*) ; 
- int /*<<< orphan*/  LOG_ERROR (char*,int,int) ; 
- scalar_t__ MMAL_EINVAL ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  UNLOCK_PORT (TYPE_2__*) ; 
- int /*<<< orphan*/  UNLOCK_SENDING (TYPE_2__*) ; 
- scalar_t__ stub1 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int LOCK_PORT (TYPE_2__*) ;
+ int LOCK_SENDING (TYPE_2__*) ;
+ int LOG_ERROR (char*,int,int) ;
+ scalar_t__ MMAL_EINVAL ;
+ scalar_t__ MMAL_SUCCESS ;
+ int UNLOCK_PORT (TYPE_2__*) ;
+ int UNLOCK_SENDING (TYPE_2__*) ;
+ scalar_t__ stub1 (TYPE_2__*,int ) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmal_port_enable_internal(MMAL_PORT_T *port, MMAL_PORT_BH_CB_T cb)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static MMAL_STATUS_T mmal_port_enable_internal(MMAL_PORT_T
    if (port->is_enabled)
       goto end;
 
-   /* Sanity check the buffer requirements */
+
    if (port->buffer_num < port->buffer_num_min)
    {
       LOG_ERROR("buffer_num too small (%i/%i)", (int)port->buffer_num, (int)port->buffer_num_min);

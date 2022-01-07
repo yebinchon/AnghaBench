@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct playlist_entry {int /*<<< orphan*/  prev; } ;
-struct playlist {int current_was_replaced; struct playlist_entry* current; int /*<<< orphan*/  last; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  playlist_insert (struct playlist*,int /*<<< orphan*/ ,struct playlist_entry*) ; 
- int /*<<< orphan*/  playlist_unlink (struct playlist*,struct playlist_entry*) ; 
+
+
+
+struct playlist_entry {int prev; } ;
+struct playlist {int current_was_replaced; struct playlist_entry* current; int last; } ;
+
+
+ int playlist_insert (struct playlist*,int ,struct playlist_entry*) ;
+ int playlist_unlink (struct playlist*,struct playlist_entry*) ;
 
 void playlist_move(struct playlist *pl, struct playlist_entry *entry,
                    struct playlist_entry *at)

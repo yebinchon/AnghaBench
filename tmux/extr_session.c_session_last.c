@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct winlink {int dummy; } ;
-struct session {struct winlink* curw; int /*<<< orphan*/  lastw; } ;
+struct session {struct winlink* curw; int lastw; } ;
 
-/* Variables and functions */
- struct winlink* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int session_set_current (struct session*,struct winlink*) ; 
+
+ struct winlink* TAILQ_FIRST (int *) ;
+ int session_set_current (struct session*,struct winlink*) ;
 
 int
 session_last(struct session *s)
 {
-	struct winlink	*wl;
+ struct winlink *wl;
 
-	wl = TAILQ_FIRST(&s->lastw);
-	if (wl == NULL)
-		return (-1);
-	if (wl == s->curw)
-		return (1);
+ wl = TAILQ_FIRST(&s->lastw);
+ if (wl == ((void*)0))
+  return (-1);
+ if (wl == s->curw)
+  return (1);
 
-	return (session_set_current(s, wl));
+ return (session_set_current(s, wl));
 }

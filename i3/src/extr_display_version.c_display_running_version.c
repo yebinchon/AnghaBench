@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ yajl_status ;
-typedef  int /*<<< orphan*/  yajl_handle ;
-typedef  char uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  time_t ;
-struct stat {int /*<<< orphan*/  st_mtime; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  mtime ;
-typedef  int /*<<< orphan*/  destpath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ELOG (char*,char*) ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- scalar_t__ I3_IPC_MESSAGE_TYPE_GET_VERSION ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  conn ; 
- int /*<<< orphan*/  conn_screen ; 
- double difftime (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * getenv (char*) ; 
- char* getpid () ; 
- char* human_readable_version ; 
- int ipc_connect (int /*<<< orphan*/ *) ; 
- int ipc_recv_message (int,scalar_t__*,scalar_t__*,char**) ; 
- int ipc_send_message (int,int /*<<< orphan*/ ,scalar_t__,char*) ; 
- char* loaded_config_file_name ; 
- int /*<<< orphan*/  localtime (int /*<<< orphan*/ *) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int read (int,char*,int) ; 
- int readlink (char*,char*,size_t) ; 
- char* root_atom_contents (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sasprintf (char**,char*,char*) ; 
- char* smalloc (size_t) ; 
- char* srealloc (char*,size_t) ; 
- int stat (char*,struct stat*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  version_callbacks ; 
- int /*<<< orphan*/  yajl_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  yajl_free (int /*<<< orphan*/ ) ; 
- scalar_t__ yajl_parse (int /*<<< orphan*/ ,unsigned char const*,int) ; 
- scalar_t__ yajl_status_ok ; 
+
+
+
+typedef scalar_t__ yajl_status ;
+typedef int yajl_handle ;
+typedef char uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int time_t ;
+struct stat {int st_mtime; } ;
+typedef int ssize_t ;
+typedef int mtime ;
+typedef int destpath ;
+
+
+ int ELOG (char*,char*) ;
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ scalar_t__ I3_IPC_MESSAGE_TYPE_GET_VERSION ;
+ int O_RDONLY ;
+ int close (int) ;
+ int conn ;
+ int conn_screen ;
+ double difftime (int ,int ) ;
+ int err (int ,char*,...) ;
+ int errx (int ,char*,int,char*) ;
+ int exit (int ) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int * getenv (char*) ;
+ char* getpid () ;
+ char* human_readable_version ;
+ int ipc_connect (int *) ;
+ int ipc_recv_message (int,scalar_t__*,scalar_t__*,char**) ;
+ int ipc_send_message (int,int ,scalar_t__,char*) ;
+ char* loaded_config_file_name ;
+ int localtime (int *) ;
+ int open (char*,int ) ;
+ int printf (char*,...) ;
+ int read (int,char*,int) ;
+ int readlink (char*,char*,size_t) ;
+ char* root_atom_contents (char*,int ,int ) ;
+ int sasprintf (char**,char*,char*) ;
+ char* smalloc (size_t) ;
+ char* srealloc (char*,size_t) ;
+ int stat (char*,struct stat*) ;
+ int stderr ;
+ int stdout ;
+ int strftime (char*,int,char*,int ) ;
+ int * strstr (char*,char*) ;
+ int time (int *) ;
+ int version_callbacks ;
+ int yajl_alloc (int *,int *,int *) ;
+ int yajl_free (int ) ;
+ scalar_t__ yajl_parse (int ,unsigned char const*,int) ;
+ scalar_t__ yajl_status_ok ;
 
 void display_running_version(void) {
-    if (getenv("DISPLAY") == NULL) {
+    if (getenv("DISPLAY") == ((void*)0)) {
         fprintf(stderr, "\nYour DISPLAY environment variable is not set.\n");
         fprintf(stderr, "Are you running i3 via SSH or on a virtual console?\n");
         fprintf(stderr, "Try DISPLAY=:0 i3 --moreversion\n");
@@ -73,18 +73,18 @@ void display_running_version(void) {
     }
 
     char *pid_from_atom = root_atom_contents("I3_PID", conn, conn_screen);
-    if (pid_from_atom == NULL) {
-        /* If I3_PID is not set, the running version is older than 4.2-200. */
+    if (pid_from_atom == ((void*)0)) {
+
         printf("\nRunning version: < 4.2-200\n");
         exit(EXIT_SUCCESS);
     }
 
-    /* Inform the user of what we are doing. While a single IPC request is
-     * really fast normally, in case i3 hangs, this will not terminate. */
+
+
     printf("(Getting version from running i3, press ctrl-c to abort…)");
     fflush(stdout);
 
-    int sockfd = ipc_connect(NULL);
+    int sockfd = ipc_connect(((void*)0));
     if (ipc_send_message(sockfd, 0, I3_IPC_MESSAGE_TYPE_GET_VERSION,
                          (uint8_t *)"") == -1)
         err(EXIT_FAILURE, "IPC: write()");
@@ -102,7 +102,7 @@ void display_running_version(void) {
     if (reply_type != I3_IPC_MESSAGE_TYPE_GET_VERSION)
         errx(EXIT_FAILURE, "Got reply type %d, but expected %d (GET_VERSION)", reply_type, I3_IPC_MESSAGE_TYPE_GET_VERSION);
 
-    yajl_handle handle = yajl_alloc(&version_callbacks, NULL, NULL);
+    yajl_handle handle = yajl_alloc(&version_callbacks, ((void*)0), ((void*)0));
 
     yajl_status state = yajl_parse(handle, (const unsigned char *)reply, (int)reply_length);
     if (state != yajl_status_ok)
@@ -125,7 +125,7 @@ void display_running_version(void) {
         }
     }
 
-#ifdef __linux__
+
     size_t destpath_size = 1024;
     ssize_t linksize;
     char *exepath;
@@ -140,7 +140,7 @@ void display_running_version(void) {
     if (linksize == -1)
         err(EXIT_FAILURE, "readlink(%s)", exepath);
 
-    /* readlink() does not NULL-terminate strings, so we have to. */
+
     destpath[linksize] = '\0';
 
     printf("\n");
@@ -156,17 +156,17 @@ void display_running_version(void) {
     if (linksize == -1)
         err(EXIT_FAILURE, "readlink(%s)", exepath);
 
-    /* readlink() does not NULL-terminate strings, so we have to. */
+
     destpath[linksize] = '\0';
 
-    /* Check if "(deleted)" is the readlink result. If so, the running version
-     * does not match the file on disk. */
-    if (strstr(destpath, "(deleted)") != NULL)
+
+
+    if (strstr(destpath, "(deleted)") != ((void*)0))
         printf("RUNNING BINARY DIFFERENT FROM BINARY ON DISK!\n");
 
-    /* Since readlink() might put a "(deleted)" somewhere in the buffer and
-     * stripping that out seems hackish and ugly, we read the process’s argv[0]
-     * instead. */
+
+
+
     free(exepath);
     sasprintf(&exepath, "/proc/%s/cmdline", pid_from_atom);
 
@@ -181,7 +181,7 @@ void display_running_version(void) {
 
     free(exepath);
     free(destpath);
-#endif
+
 
     yajl_free(handle);
     free(reply);

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rnorm_data {double spare; int /*<<< orphan*/  seed; scalar_t__ has_spare; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- double log (double) ; 
- double rand_float (int /*<<< orphan*/ ) ; 
- double sqrt (double) ; 
+
+
+
+struct rnorm_data {double spare; int seed; scalar_t__ has_spare; } ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ double log (double) ;
+ double rand_float (int ) ;
+ double sqrt (double) ;
 
 __attribute__((used)) static double
 rand_normal(struct rnorm_data* d)

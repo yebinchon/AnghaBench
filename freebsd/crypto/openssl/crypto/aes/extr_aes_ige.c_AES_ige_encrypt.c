@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* data; } ;
-typedef  TYPE_1__ aes_block_t ;
-typedef  int /*<<< orphan*/  AES_KEY ;
+typedef TYPE_1__ aes_block_t ;
+typedef int AES_KEY ;
 
-/* Variables and functions */
- size_t AES_BLOCK_SIZE ; 
- int const AES_DECRYPT ; 
- int const AES_ENCRYPT ; 
- int /*<<< orphan*/  AES_decrypt (unsigned char*,unsigned char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  AES_encrypt (unsigned char*,unsigned char*,int /*<<< orphan*/  const*) ; 
- size_t N_WORDS ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- scalar_t__ UNALIGNED_MEMOPS_ARE_FAST ; 
- int /*<<< orphan*/  load_block (TYPE_1__,unsigned char const*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int*,size_t) ; 
- int /*<<< orphan*/  store_block (unsigned char*,TYPE_1__) ; 
+
+ size_t AES_BLOCK_SIZE ;
+ int const AES_DECRYPT ;
+ int const AES_ENCRYPT ;
+ int AES_decrypt (unsigned char*,unsigned char*,int const*) ;
+ int AES_encrypt (unsigned char*,unsigned char*,int const*) ;
+ size_t N_WORDS ;
+ int OPENSSL_assert (int) ;
+ scalar_t__ UNALIGNED_MEMOPS_ARE_FAST ;
+ int load_block (TYPE_1__,unsigned char const*) ;
+ int memcpy (unsigned char*,int*,size_t) ;
+ int store_block (unsigned char*,TYPE_1__) ;
 
 void AES_ige_encrypt(const unsigned char *in, unsigned char *out,
                      size_t length, const AES_KEY *key,

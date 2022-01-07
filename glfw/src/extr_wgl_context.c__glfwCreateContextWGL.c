@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pfd ;
-struct TYPE_21__ {int /*<<< orphan*/  handle; int /*<<< orphan*/  dc; } ;
-struct TYPE_22__ {int /*<<< orphan*/  destroy; int /*<<< orphan*/  getProcAddress; int /*<<< orphan*/  extensionSupported; int /*<<< orphan*/  swapInterval; int /*<<< orphan*/  swapBuffers; int /*<<< orphan*/  makeCurrent; TYPE_6__ wgl; } ;
-struct TYPE_19__ {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_14__ ;
+
+
+typedef int pfd ;
+struct TYPE_21__ {int handle; int dc; } ;
+struct TYPE_22__ {int destroy; int getProcAddress; int extensionSupported; int swapInterval; int swapBuffers; int makeCurrent; TYPE_6__ wgl; } ;
+struct TYPE_19__ {int handle; } ;
 struct TYPE_23__ {TYPE_7__ context; TYPE_4__ win32; } ;
-typedef  TYPE_8__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  _GLFWfbconfig ;
+typedef TYPE_8__ _GLFWwindow ;
+typedef int _GLFWfbconfig ;
 struct TYPE_24__ {scalar_t__ client; scalar_t__ profile; scalar_t__ robustness; scalar_t__ release; int major; int minor; scalar_t__ noerror; scalar_t__ debug; scalar_t__ forward; TYPE_3__* share; } ;
-typedef  TYPE_9__ _GLFWctxconfig ;
-struct TYPE_20__ {scalar_t__ ARB_create_context_no_error; scalar_t__ ARB_context_flush_control; scalar_t__ ARB_create_context_robustness; scalar_t__ ARB_create_context; int /*<<< orphan*/  EXT_create_context_es2_profile; int /*<<< orphan*/  ARB_create_context_profile; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * handle; } ;
+typedef TYPE_9__ _GLFWctxconfig ;
+struct TYPE_20__ {scalar_t__ ARB_create_context_no_error; scalar_t__ ARB_context_flush_control; scalar_t__ ARB_create_context_robustness; scalar_t__ ARB_create_context; int EXT_create_context_es2_profile; int ARB_create_context_profile; } ;
+struct TYPE_16__ {int * handle; } ;
 struct TYPE_17__ {TYPE_1__ wgl; } ;
 struct TYPE_18__ {TYPE_2__ context; } ;
 struct TYPE_15__ {TYPE_5__ wgl; } ;
-typedef  int /*<<< orphan*/  PIXELFORMATDESCRIPTOR ;
-typedef  int /*<<< orphan*/ * HGLRC ;
-typedef  int GLFWbool ;
-typedef  int DWORD ;
+typedef int PIXELFORMATDESCRIPTOR ;
+typedef int * HGLRC ;
+typedef int GLFWbool ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DescribePixelFormat (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int ERROR_INCOMPATIBLE_DEVICE_CONTEXTS_ARB ; 
- int ERROR_INVALID_PROFILE_ARB ; 
- int ERROR_INVALID_VERSION_ARB ; 
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- scalar_t__ GLFW_LOSE_CONTEXT_ON_RESET ; 
- scalar_t__ GLFW_NO_RESET_NOTIFICATION ; 
- scalar_t__ GLFW_OPENGL_API ; 
- scalar_t__ GLFW_OPENGL_COMPAT_PROFILE ; 
- scalar_t__ GLFW_OPENGL_CORE_PROFILE ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- scalar_t__ GLFW_RELEASE_BEHAVIOR_FLUSH ; 
- scalar_t__ GLFW_RELEASE_BEHAVIOR_NONE ; 
- int GLFW_TRUE ; 
- int /*<<< orphan*/  GLFW_VERSION_UNAVAILABLE ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetPixelFormat (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB ; 
- int WGL_CONTEXT_CORE_PROFILE_BIT_ARB ; 
- int WGL_CONTEXT_DEBUG_BIT_ARB ; 
- int WGL_CONTEXT_ES2_PROFILE_BIT_EXT ; 
- int /*<<< orphan*/  WGL_CONTEXT_FLAGS_ARB ; 
- int WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB ; 
- int /*<<< orphan*/  WGL_CONTEXT_MAJOR_VERSION_ARB ; 
- int /*<<< orphan*/  WGL_CONTEXT_MINOR_VERSION_ARB ; 
- int /*<<< orphan*/  WGL_CONTEXT_OPENGL_NO_ERROR_ARB ; 
- int /*<<< orphan*/  WGL_CONTEXT_PROFILE_MASK_ARB ; 
- int /*<<< orphan*/  WGL_CONTEXT_RELEASE_BEHAVIOR_ARB ; 
- int WGL_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB ; 
- int WGL_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB ; 
- int /*<<< orphan*/  WGL_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB ; 
- int WGL_CONTEXT_ROBUST_ACCESS_BIT_ARB ; 
- int WGL_LOSE_CONTEXT_ON_RESET_ARB ; 
- int WGL_NO_RESET_NOTIFICATION_ARB ; 
- TYPE_14__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  _glfwInputErrorWin32 (int /*<<< orphan*/ ,char*) ; 
- int choosePixelFormat (TYPE_8__*,TYPE_9__ const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  destroyContextWGL ; 
- int /*<<< orphan*/  extensionSupportedWGL ; 
- int /*<<< orphan*/  getProcAddressWGL ; 
- int /*<<< orphan*/  makeContextCurrentWGL ; 
- int /*<<< orphan*/  setAttrib (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  swapBuffersWGL ; 
- int /*<<< orphan*/  swapIntervalWGL ; 
- int /*<<< orphan*/  wglCreateContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wglCreateContextAttribsARB (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  wglShareLists (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int DescribePixelFormat (int ,int,int,int *) ;
+ int ERROR_INCOMPATIBLE_DEVICE_CONTEXTS_ARB ;
+ int ERROR_INVALID_PROFILE_ARB ;
+ int ERROR_INVALID_VERSION_ARB ;
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_FALSE ;
+ int GLFW_INVALID_VALUE ;
+ scalar_t__ GLFW_LOSE_CONTEXT_ON_RESET ;
+ scalar_t__ GLFW_NO_RESET_NOTIFICATION ;
+ scalar_t__ GLFW_OPENGL_API ;
+ scalar_t__ GLFW_OPENGL_COMPAT_PROFILE ;
+ scalar_t__ GLFW_OPENGL_CORE_PROFILE ;
+ int GLFW_PLATFORM_ERROR ;
+ scalar_t__ GLFW_RELEASE_BEHAVIOR_FLUSH ;
+ scalar_t__ GLFW_RELEASE_BEHAVIOR_NONE ;
+ int GLFW_TRUE ;
+ int GLFW_VERSION_UNAVAILABLE ;
+ int GetDC (int ) ;
+ int GetLastError () ;
+ int SetPixelFormat (int ,int,int *) ;
+ int WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB ;
+ int WGL_CONTEXT_CORE_PROFILE_BIT_ARB ;
+ int WGL_CONTEXT_DEBUG_BIT_ARB ;
+ int WGL_CONTEXT_ES2_PROFILE_BIT_EXT ;
+ int WGL_CONTEXT_FLAGS_ARB ;
+ int WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB ;
+ int WGL_CONTEXT_MAJOR_VERSION_ARB ;
+ int WGL_CONTEXT_MINOR_VERSION_ARB ;
+ int WGL_CONTEXT_OPENGL_NO_ERROR_ARB ;
+ int WGL_CONTEXT_PROFILE_MASK_ARB ;
+ int WGL_CONTEXT_RELEASE_BEHAVIOR_ARB ;
+ int WGL_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB ;
+ int WGL_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB ;
+ int WGL_CONTEXT_RESET_NOTIFICATION_STRATEGY_ARB ;
+ int WGL_CONTEXT_ROBUST_ACCESS_BIT_ARB ;
+ int WGL_LOSE_CONTEXT_ON_RESET_ARB ;
+ int WGL_NO_RESET_NOTIFICATION_ARB ;
+ TYPE_14__ _glfw ;
+ int _glfwInputError (int ,char*,...) ;
+ int _glfwInputErrorWin32 (int ,char*) ;
+ int choosePixelFormat (TYPE_8__*,TYPE_9__ const*,int const*) ;
+ int destroyContextWGL ;
+ int extensionSupportedWGL ;
+ int getProcAddressWGL ;
+ int makeContextCurrentWGL ;
+ int setAttrib (int ,int) ;
+ int swapBuffersWGL ;
+ int swapIntervalWGL ;
+ int wglCreateContext (int ) ;
+ int wglCreateContextAttribsARB (int ,int *,int*) ;
+ int wglShareLists (int *,int ) ;
 
 GLFWbool _glfwCreateContextWGL(_GLFWwindow* window,
                                const _GLFWctxconfig* ctxconfig,
@@ -99,7 +99,7 @@ GLFWbool _glfwCreateContextWGL(_GLFWwindow* window,
     int attribs[40];
     int pixelFormat;
     PIXELFORMATDESCRIPTOR pfd;
-    HGLRC share = NULL;
+    HGLRC share = ((void*)0);
 
     if (ctxconfig->share)
         share = ctxconfig->share->context.wgl.handle;
@@ -227,9 +227,9 @@ GLFWbool _glfwCreateContextWGL(_GLFWwindow* window,
                 setAttrib(WGL_CONTEXT_OPENGL_NO_ERROR_ARB, GLFW_TRUE);
         }
 
-        // NOTE: Only request an explicitly versioned context when necessary, as
-        //       explicitly requesting version 1.0 does not always return the
-        //       highest version supported by the driver
+
+
+
         if (ctxconfig->major != 1 || ctxconfig->minor != 0)
         {
             setAttrib(WGL_CONTEXT_MAJOR_VERSION_ARB, ctxconfig->major);

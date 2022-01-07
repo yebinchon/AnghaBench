@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * jsstr_alloc_buf (unsigned int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jsstr_extract (int /*<<< orphan*/ *,unsigned int,unsigned int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int jsstr_t ;
+typedef int WCHAR ;
+
+
+ int * jsstr_alloc_buf (unsigned int,int **) ;
+ int jsstr_extract (int *,unsigned int,unsigned int,int *) ;
 
 __attribute__((used)) static inline jsstr_t *jsstr_substr(jsstr_t *str, unsigned off, unsigned len)
 {

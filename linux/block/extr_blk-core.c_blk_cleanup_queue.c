@@ -1,86 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  q_usage_counter; int /*<<< orphan*/  sysfs_lock; scalar_t__ elevator; TYPE_1__* backing_dev_info; } ;
-struct TYPE_2__ {int /*<<< orphan*/  laptop_mode_wb_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QUEUE_FLAG_DEAD ; 
- int /*<<< orphan*/  QUEUE_FLAG_DYING ; 
- int /*<<< orphan*/  QUEUE_FLAG_NOMERGES ; 
- int /*<<< orphan*/  QUEUE_FLAG_NOXMERGES ; 
- int /*<<< orphan*/  blk_flush_integrity () ; 
- int /*<<< orphan*/  blk_freeze_queue (struct request_queue*) ; 
- int /*<<< orphan*/  blk_mq_exit_queue (struct request_queue*) ; 
- int /*<<< orphan*/  blk_mq_sched_free_requests (struct request_queue*) ; 
- int /*<<< orphan*/  blk_put_queue (struct request_queue*) ; 
- int /*<<< orphan*/  blk_queue_flag_set (int /*<<< orphan*/ ,struct request_queue*) ; 
- int /*<<< orphan*/  blk_set_queue_dying (struct request_queue*) ; 
- int /*<<< orphan*/  blk_sync_queue (struct request_queue*) ; 
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  percpu_ref_exit (int /*<<< orphan*/ *) ; 
- scalar_t__ queue_is_mq (struct request_queue*) ; 
- int /*<<< orphan*/  rq_qos_exit (struct request_queue*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct request_queue {int q_usage_counter; int sysfs_lock; scalar_t__ elevator; TYPE_1__* backing_dev_info; } ;
+struct TYPE_2__ {int laptop_mode_wb_timer; } ;
+
+
+ int QUEUE_FLAG_DEAD ;
+ int QUEUE_FLAG_DYING ;
+ int QUEUE_FLAG_NOMERGES ;
+ int QUEUE_FLAG_NOXMERGES ;
+ int blk_flush_integrity () ;
+ int blk_freeze_queue (struct request_queue*) ;
+ int blk_mq_exit_queue (struct request_queue*) ;
+ int blk_mq_sched_free_requests (struct request_queue*) ;
+ int blk_put_queue (struct request_queue*) ;
+ int blk_queue_flag_set (int ,struct request_queue*) ;
+ int blk_set_queue_dying (struct request_queue*) ;
+ int blk_sync_queue (struct request_queue*) ;
+ int del_timer_sync (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int percpu_ref_exit (int *) ;
+ scalar_t__ queue_is_mq (struct request_queue*) ;
+ int rq_qos_exit (struct request_queue*) ;
 
 void blk_cleanup_queue(struct request_queue *q)
 {
-	/* mark @q DYING, no new request or merges will be allowed afterwards */
-	mutex_lock(&q->sysfs_lock);
-	blk_set_queue_dying(q);
 
-	blk_queue_flag_set(QUEUE_FLAG_NOMERGES, q);
-	blk_queue_flag_set(QUEUE_FLAG_NOXMERGES, q);
-	blk_queue_flag_set(QUEUE_FLAG_DYING, q);
-	mutex_unlock(&q->sysfs_lock);
+ mutex_lock(&q->sysfs_lock);
+ blk_set_queue_dying(q);
 
-	/*
-	 * Drain all requests queued before DYING marking. Set DEAD flag to
-	 * prevent that blk_mq_run_hw_queues() accesses the hardware queues
-	 * after draining finished.
-	 */
-	blk_freeze_queue(q);
+ blk_queue_flag_set(QUEUE_FLAG_NOMERGES, q);
+ blk_queue_flag_set(QUEUE_FLAG_NOXMERGES, q);
+ blk_queue_flag_set(QUEUE_FLAG_DYING, q);
+ mutex_unlock(&q->sysfs_lock);
 
-	rq_qos_exit(q);
 
-	blk_queue_flag_set(QUEUE_FLAG_DEAD, q);
 
-	/* for synchronous bio-based driver finish in-flight integrity i/o */
-	blk_flush_integrity();
 
-	/* @q won't process any more request, flush async actions */
-	del_timer_sync(&q->backing_dev_info->laptop_mode_wb_timer);
-	blk_sync_queue(q);
 
-	if (queue_is_mq(q))
-		blk_mq_exit_queue(q);
 
-	/*
-	 * In theory, request pool of sched_tags belongs to request queue.
-	 * However, the current implementation requires tag_set for freeing
-	 * requests, so free the pool now.
-	 *
-	 * Queue has become frozen, there can't be any in-queue requests, so
-	 * it is safe to free requests now.
-	 */
-	mutex_lock(&q->sysfs_lock);
-	if (q->elevator)
-		blk_mq_sched_free_requests(q);
-	mutex_unlock(&q->sysfs_lock);
+ blk_freeze_queue(q);
 
-	percpu_ref_exit(&q->q_usage_counter);
+ rq_qos_exit(q);
 
-	/* @q is and will stay empty, shutdown and put */
-	blk_put_queue(q);
+ blk_queue_flag_set(QUEUE_FLAG_DEAD, q);
+
+
+ blk_flush_integrity();
+
+
+ del_timer_sync(&q->backing_dev_info->laptop_mode_wb_timer);
+ blk_sync_queue(q);
+
+ if (queue_is_mq(q))
+  blk_mq_exit_queue(q);
+ mutex_lock(&q->sysfs_lock);
+ if (q->elevator)
+  blk_mq_sched_free_requests(q);
+ mutex_unlock(&q->sysfs_lock);
+
+ percpu_ref_exit(&q->q_usage_counter);
+
+
+ blk_put_queue(q);
 }

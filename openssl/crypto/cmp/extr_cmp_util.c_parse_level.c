@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int OSSL_CMP_severity ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_strlcpy (char*,char const*,int) ; 
- int OSSL_CMP_LOG_ALERT ; 
- int OSSL_CMP_LOG_CRIT ; 
- int OSSL_CMP_LOG_DEBUG ; 
- int OSSL_CMP_LOG_EMERG ; 
- int OSSL_CMP_LOG_ERR ; 
- int OSSL_CMP_LOG_INFO ; 
- int OSSL_CMP_LOG_NOTICE ; 
- int /*<<< orphan*/  OSSL_CMP_LOG_PREFIX ; 
- int OSSL_CMP_LOG_WARNING ; 
- int max_level_len ; 
- char* strchr (char const*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ strncmp (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int OSSL_CMP_severity ;
+
+
+ int OPENSSL_strlcpy (char*,char const*,int) ;
+ int OSSL_CMP_LOG_ALERT ;
+ int OSSL_CMP_LOG_CRIT ;
+ int OSSL_CMP_LOG_DEBUG ;
+ int OSSL_CMP_LOG_EMERG ;
+ int OSSL_CMP_LOG_ERR ;
+ int OSSL_CMP_LOG_INFO ;
+ int OSSL_CMP_LOG_NOTICE ;
+ int OSSL_CMP_LOG_PREFIX ;
+ int OSSL_CMP_LOG_WARNING ;
+ int max_level_len ;
+ char* strchr (char const*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (int ) ;
+ scalar_t__ strncmp (char const*,int ,int ) ;
 
 __attribute__((used)) static OSSL_CMP_severity parse_level(const char *level)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static OSSL_CMP_severity parse_level(const char *level)
     int len;
     char level_copy[max_level_len + 1];
 
-    if (end_level == NULL)
+    if (end_level == ((void*)0))
         return -1;
 
     if (strncmp(level, OSSL_CMP_LOG_PREFIX,

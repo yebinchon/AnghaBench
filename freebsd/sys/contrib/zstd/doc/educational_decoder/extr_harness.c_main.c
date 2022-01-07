@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  dictionary_t ;
 
-/* Variables and functions */
- size_t const MAX_COMPRESSION_RATIO ; 
- size_t MAX_OUTPUT_SIZE ; 
- size_t ZSTD_decompress_with_dict (int /*<<< orphan*/ * const,size_t,int /*<<< orphan*/ *,size_t const,int /*<<< orphan*/ * const) ; 
- size_t ZSTD_get_decompressed_size (int /*<<< orphan*/ *,size_t const) ; 
- int /*<<< orphan*/ * create_dictionary () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_dictionary (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * malloc (size_t) ; 
- int /*<<< orphan*/  parse_dictionary (int /*<<< orphan*/ * const,int /*<<< orphan*/ *,size_t) ; 
- void* read_file (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  write_file (char*,int /*<<< orphan*/ * const,size_t const) ; 
+
+
+
+typedef int u8 ;
+typedef int dictionary_t ;
+
+
+ size_t const MAX_COMPRESSION_RATIO ;
+ size_t MAX_OUTPUT_SIZE ;
+ size_t ZSTD_decompress_with_dict (int * const,size_t,int *,size_t const,int * const) ;
+ size_t ZSTD_get_decompressed_size (int *,size_t const) ;
+ int * create_dictionary () ;
+ int fprintf (int ,char*,...) ;
+ int free (int *) ;
+ int free_dictionary (int * const) ;
+ int * malloc (size_t) ;
+ int parse_dictionary (int * const,int *,size_t) ;
+ void* read_file (char*,int **) ;
+ int stderr ;
+ int write_file (char*,int * const,size_t const) ;
 
 int main(int argc, char **argv)
 {
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     u8* input;
     size_t const input_size = read_file(argv[1], &input);
 
-    u8* dict = NULL;
+    u8* dict = ((void*)0);
     size_t dict_size = 0;
     if (argc >= 4) {
         dict_size = read_file(argv[3], &dict);

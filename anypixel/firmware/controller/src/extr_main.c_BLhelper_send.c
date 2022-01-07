@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  a; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Delay (int) ; 
- size_t PANEL_NE ; 
- size_t PANEL_NW ; 
- size_t PANEL_SE ; 
- size_t PANEL_SW ; 
- int /*<<< orphan*/  UART_SendBytes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  USART_NE ; 
- int /*<<< orphan*/  USART_NW ; 
- int /*<<< orphan*/  USART_SE ; 
- int /*<<< orphan*/  USART_SW ; 
- int /*<<< orphan*/  handle_feedback (int /*<<< orphan*/ ,size_t) ; 
- TYPE_1__* ledpackets ; 
- int /*<<< orphan*/ * usarts ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int a; } ;
+
+
+ int Delay (int) ;
+ size_t PANEL_NE ;
+ size_t PANEL_NW ;
+ size_t PANEL_SE ;
+ size_t PANEL_SW ;
+ int UART_SendBytes (int *,int ,int) ;
+ int USART_NE ;
+ int USART_NW ;
+ int USART_SE ;
+ int USART_SW ;
+ int handle_feedback (int ,size_t) ;
+ TYPE_1__* ledpackets ;
+ int * usarts ;
 
 __attribute__((used)) static void BLhelper_send() {
     UART_SendBytes(&usarts[3], ledpackets[PANEL_NW].a, sizeof(ledpackets[PANEL_NW].a));

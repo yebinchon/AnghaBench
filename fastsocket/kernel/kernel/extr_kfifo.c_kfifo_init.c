@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kfifo {unsigned char* buffer; unsigned int size; int /*<<< orphan*/ * lock; scalar_t__ out; scalar_t__ in; } ;
-typedef  int /*<<< orphan*/  spinlock_t ;
-typedef  int /*<<< orphan*/  gfp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- struct kfifo* ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_power_of_2 (unsigned int) ; 
- struct kfifo* kmalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct kfifo {unsigned char* buffer; unsigned int size; int * lock; scalar_t__ out; scalar_t__ in; } ;
+typedef int spinlock_t ;
+typedef int gfp_t ;
+
+
+ int BUG_ON (int) ;
+ int ENOMEM ;
+ struct kfifo* ERR_PTR (int ) ;
+ int is_power_of_2 (unsigned int) ;
+ struct kfifo* kmalloc (int,int ) ;
 
 struct kfifo *kfifo_init(unsigned char *buffer, unsigned int size,
-			 gfp_t gfp_mask, spinlock_t *lock)
+    gfp_t gfp_mask, spinlock_t *lock)
 {
-	struct kfifo *fifo;
+ struct kfifo *fifo;
 
-	/* size must be a power of 2 */
-	BUG_ON(!is_power_of_2(size));
 
-	fifo = kmalloc(sizeof(struct kfifo), gfp_mask);
-	if (!fifo)
-		return ERR_PTR(-ENOMEM);
+ BUG_ON(!is_power_of_2(size));
 
-	fifo->buffer = buffer;
-	fifo->size = size;
-	fifo->in = fifo->out = 0;
-	fifo->lock = lock;
+ fifo = kmalloc(sizeof(struct kfifo), gfp_mask);
+ if (!fifo)
+  return ERR_PTR(-ENOMEM);
 
-	return fifo;
+ fifo->buffer = buffer;
+ fifo->size = size;
+ fifo->in = fifo->out = 0;
+ fifo->lock = lock;
+
+ return fifo;
 }

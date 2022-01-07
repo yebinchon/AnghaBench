@@ -1,68 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SIGHUP ;
+ int SIGINT ;
+ int SIGPIPE ;
+ int SIGTERM ;
+ int SIGUSR1 ;
+ int SIGUSR2 ;
+ int SIG_IGN ;
+ int active_connections ;
+ scalar_t__ change_user (char*) ;
+ int close (int ) ;
+ int create_all_outbound_connections () ;
+ int cron () ;
+ int ct_memcache_server ;
+ int ct_mysql_server ;
+ scalar_t__ daemonize ;
+ int db_proxy_inbound ;
+ int db_proxy_memcache_inbound ;
+ int do_reload_config (int) ;
+ double drand48 () ;
+ int epoll_close (int ) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int init_epoll () ;
+ int init_listening_connection (int ,int *,int *) ;
+ int init_netbuffers () ;
+ int maxconn ;
+ scalar_t__ memcache_port ;
+ int memcache_sfd ;
+ scalar_t__ need_reload_config ;
+ int now ;
+ double precise_now ;
+ scalar_t__ quit_steps ;
+ int setsid () ;
+ int sfd ;
+ int sighup_handler ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigterm_handler ;
+ int sigusr1_handler ;
+ int sigusr2_handler ;
+ int stderr ;
+ int test_mode ;
+ char* username ;
+ scalar_t__ verbosity ;
 
-/* Forward declarations */
+void start_server (void) {
 
-/* Type definitions */
-
-/* Variables and functions */
- int NB_alloc ; 
- int NB_max ; 
- int NB_used ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  SIGUSR2 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int active_connections ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  ct_memcache_server ; 
- int /*<<< orphan*/  ct_mysql_server ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  db_proxy_inbound ; 
- int /*<<< orphan*/  db_proxy_memcache_inbound ; 
- int /*<<< orphan*/  do_reload_config (int) ; 
- double drand48 () ; 
- int /*<<< orphan*/  epoll_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_listening_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int maxconn ; 
- scalar_t__ memcache_port ; 
- int /*<<< orphan*/  memcache_sfd ; 
- scalar_t__ need_reload_config ; 
- int now ; 
- double precise_now ; 
- scalar_t__ quit_steps ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  sfd ; 
- int /*<<< orphan*/  sighup_handler ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int /*<<< orphan*/  sigusr1_handler ; 
- int /*<<< orphan*/  sigusr2_handler ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_mode ; 
- char* username ; 
- scalar_t__ verbosity ; 
-
-void start_server (void) { 
-  //  struct sigaction sa;
   int i;
   int prev_time;
   double next_create_outbound = 0;
@@ -101,7 +93,7 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (verbosity > 0 && !(i & 255)) {
       fprintf (stderr, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
     epoll_work (50);
     if (precise_now > next_create_outbound) {
@@ -120,6 +112,6 @@ void start_server (void) {
 
   epoll_close (sfd);
   close(sfd);
-  
-  //  flush_binlog_ts();
+
+
 }

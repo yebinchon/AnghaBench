@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_status_t ;
-struct TYPE_7__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  params; int /*<<< orphan*/  (* constructor ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ apr_reslist_t ;
-struct TYPE_8__ {int /*<<< orphan*/  opaque; } ;
-typedef  TYPE_2__ apr_res_t ;
 
-/* Variables and functions */
- TYPE_2__* get_container (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int apr_status_t ;
+struct TYPE_7__ {int pool; int params; int (* constructor ) (int *,int ,int ) ;} ;
+typedef TYPE_1__ apr_reslist_t ;
+struct TYPE_8__ {int opaque; } ;
+typedef TYPE_2__ apr_res_t ;
+
+
+ TYPE_2__* get_container (TYPE_1__*) ;
+ int stub1 (int *,int ,int ) ;
 
 __attribute__((used)) static apr_status_t create_resource(apr_reslist_t *reslist, apr_res_t **ret_res)
 {

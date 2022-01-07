@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  scalar_t__ v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ FILT_8TAP_DPADD_S_H (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ HORIZ_8TAP_FILT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  INSERT_W4_UB (int,int,int,int,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB7 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ LD_SH (int /*<<< orphan*/  const*) ; 
- scalar_t__ LD_UB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LW4 (int /*<<< orphan*/ *,int,int,int,int,int) ; 
- scalar_t__ PCKEV_XORI128_UB (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SAT_SH2_SH (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  SLDI_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SPLATI_H4_SB (scalar_t__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPLATI_H4_SH (scalar_t__,int /*<<< orphan*/ ,int,int,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SRARI_H2_SH (scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ST_W4 (scalar_t__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XORI_B7_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_aver_u_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvev_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_sldi_b (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * mc_filt_mask_arr ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef scalar_t__ v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ FILT_8TAP_DPADD_S_H (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ HORIZ_8TAP_FILT (int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,int ) ;
+ int ILVEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int INSERT_W4_UB (int,int,int,int,scalar_t__) ;
+ int LD_SB4 (int const*,int,int ,int ,int ,int ) ;
+ int LD_SB7 (int const*,int,int ,int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ LD_SH (int const*) ;
+ scalar_t__ LD_UB (int *) ;
+ int LW4 (int *,int,int,int,int,int) ;
+ scalar_t__ PCKEV_XORI128_UB (scalar_t__,scalar_t__) ;
+ int SAT_SH2_SH (scalar_t__,scalar_t__,int) ;
+ int SLDI_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,scalar_t__,scalar_t__) ;
+ int SPLATI_H4_SB (scalar_t__,int ,int,int,int,int ,int ,int ,int ) ;
+ int SPLATI_H4_SH (scalar_t__,int ,int,int,int,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SRARI_H2_SH (scalar_t__,scalar_t__,int) ;
+ int ST_W4 (scalar_t__,int ,int,int,int,int *,int) ;
+ int XORI_B4_128_SB (int ,int ,int ,int ) ;
+ int XORI_B7_128_SB (int ,int ,int ,int ,int ,int ,int ) ;
+ scalar_t__ __msa_aver_u_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvev_b (int ,int ) ;
+ scalar_t__ __msa_sldi_b (int ,int ,int) ;
+ int * mc_filt_mask_arr ;
 
 __attribute__((used)) static void common_hv_8ht_8vt_and_aver_dst_4w_msa(const uint8_t *src,
                                                   int32_t src_stride,
@@ -62,7 +62,7 @@ __attribute__((used)) static void common_hv_8ht_8vt_and_aver_dst_4w_msa(const ui
     mask0 = LD_UB(&mc_filt_mask_arr[16]);
     src -= (3 + 3 * src_stride);
 
-    /* rearranging filter */
+
     filt = LD_SH(filter_horiz);
     SPLATI_H4_SB(filt, 0, 1, 2, 3, filt_hz0, filt_hz1, filt_hz2, filt_hz3);
 

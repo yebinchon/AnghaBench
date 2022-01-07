@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct input_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_AMIGA_VERTB ; 
- int /*<<< orphan*/  amimouse_interrupt ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IRQ_AMIGA_VERTB ;
+ int amimouse_interrupt ;
+ int free_irq (int ,int ) ;
 
 __attribute__((used)) static void amimouse_close(struct input_dev *dev)
 {
-	free_irq(IRQ_AMIGA_VERTB, amimouse_interrupt);
+ free_irq(IRQ_AMIGA_VERTB, amimouse_interrupt);
 }

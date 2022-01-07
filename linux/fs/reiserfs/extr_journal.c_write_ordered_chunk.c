@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct buffer_chunk {int nr; int /*<<< orphan*/ * bh; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  submit_ordered_buffer (int /*<<< orphan*/ ) ; 
+
+
+
+struct buffer_chunk {int nr; int * bh; } ;
+
+
+ int submit_ordered_buffer (int ) ;
 
 __attribute__((used)) static void write_ordered_chunk(struct buffer_chunk *chunk)
 {
-	int i;
-	for (i = 0; i < chunk->nr; i++) {
-		submit_ordered_buffer(chunk->bh[i]);
-	}
-	chunk->nr = 0;
+ int i;
+ for (i = 0; i < chunk->nr; i++) {
+  submit_ordered_buffer(chunk->bh[i]);
+ }
+ chunk->nr = 0;
 }

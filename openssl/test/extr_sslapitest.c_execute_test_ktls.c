@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  rbio; int /*<<< orphan*/  wbio; } ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_get_ktls_recv (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_get_ktls_send (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cipher_list (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_MODE_NO_KTLS_RX ; 
- int /*<<< orphan*/  SSL_MODE_NO_KTLS_TX ; 
- int /*<<< orphan*/  SSL_free (TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_set_mode (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_shutdown (TYPE_1__*) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_2_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__**,TYPE_1__**,int,int) ; 
- int /*<<< orphan*/  create_test_sockets (int*,int*) ; 
- int /*<<< orphan*/  ktls_chk_platform (int) ; 
- int /*<<< orphan*/  ping_pong_query (TYPE_1__*,TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  privkey ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int rbio; int wbio; } ;
+typedef int SSL_CTX ;
+typedef TYPE_1__ SSL ;
+
+
+ int BIO_get_ktls_recv (int ) ;
+ int BIO_get_ktls_send (int ) ;
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_cipher_list (int *,char*) ;
+ int SSL_ERROR_NONE ;
+ int SSL_MODE_NO_KTLS_RX ;
+ int SSL_MODE_NO_KTLS_TX ;
+ int SSL_free (TYPE_1__*) ;
+ int SSL_set_mode (TYPE_1__*,int ) ;
+ int SSL_shutdown (TYPE_1__*) ;
+ int TEST_false (int ) ;
+ int TEST_true (int ) ;
+ int TLS1_2_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int create_ssl_connection (TYPE_1__*,TYPE_1__*,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects2 (int *,int *,TYPE_1__**,TYPE_1__**,int,int) ;
+ int create_test_sockets (int*,int*) ;
+ int ktls_chk_platform (int) ;
+ int ping_pong_query (TYPE_1__*,TYPE_1__*,int,int) ;
+ int privkey ;
 
 __attribute__((used)) static int execute_test_ktls(int cis_ktls_tx, int cis_ktls_rx,
                              int sis_ktls_tx, int sis_ktls_rx)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
     int cfd, sfd;
 
     if (!TEST_true(create_test_sockets(&cfd, &sfd)))
         goto end;
 
-    /* Skip this test if the platform does not support ktls */
+
     if (!ktls_chk_platform(cfd))
         return 1;
 
-    /* Create a session based on SHA-256 */
+
     if (!TEST_true(create_ssl_ctx_pair(TLS_server_method(),
                                        TLS_client_method(),
                                        TLS1_2_VERSION, TLS1_2_VERSION,
@@ -137,6 +137,6 @@ end:
     }
     SSL_CTX_free(sctx);
     SSL_CTX_free(cctx);
-    serverssl = clientssl = NULL;
+    serverssl = clientssl = ((void*)0);
     return testresult;
 }

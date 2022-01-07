@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* b; } ;
-typedef  TYPE_1__ guid_t ;
+typedef TYPE_1__ guid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __uuid_gen_common (int*) ; 
+
+ int __uuid_gen_common (int*) ;
 
 void guid_gen(guid_t *lu)
 {
-	__uuid_gen_common(lu->b);
-	/* version 4 : random generation */
-	lu->b[7] = (lu->b[7] & 0x0F) | 0x40;
+ __uuid_gen_common(lu->b);
+
+ lu->b[7] = (lu->b[7] & 0x0F) | 0x40;
 }

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_23__ {int seekable; } ;
-struct TYPE_22__ {int channels; int bits_per_coded_sample; int* extradata; int /*<<< orphan*/  sample_rate; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-struct TYPE_21__ {TYPE_8__* pb; int /*<<< orphan*/  metadata; TYPE_1__* priv_data; } ;
+struct TYPE_22__ {int channels; int bits_per_coded_sample; int* extradata; int sample_rate; int channel_layout; int codec_id; int codec_type; } ;
+struct TYPE_21__ {TYPE_8__* pb; int metadata; TYPE_1__* priv_data; } ;
 struct TYPE_20__ {int duration; scalar_t__ start_time; TYPE_7__* codecpar; } ;
-struct TYPE_19__ {int ver; int fcount; int lastframe; int curbits; int /*<<< orphan*/  frames; scalar_t__ frames_noted; scalar_t__ curframe; } ;
-typedef  int /*<<< orphan*/  MPCFrame ;
-typedef  TYPE_1__ MPCContext ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_19__ {int ver; int fcount; int lastframe; int curbits; int frames; scalar_t__ frames_noted; scalar_t__ curframe; } ;
+typedef int MPCFrame ;
+typedef TYPE_1__ MPCContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVIO_SEEKABLE_NORMAL ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
- int /*<<< orphan*/  AV_CODEC_ID_MUSEPACK7 ; 
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ MKTAG (char,char,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MPC_FRAMESIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int UINT_MAX ; 
- int /*<<< orphan*/  av_dict_get (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_malloc (int) ; 
- TYPE_2__* avformat_new_stream (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int avio_r8 (TYPE_8__*) ; 
- scalar_t__ avio_rl24 (TYPE_8__*) ; 
- int avio_rl32 (TYPE_8__*) ; 
- int /*<<< orphan*/  avio_seek (TYPE_8__*,int,int /*<<< orphan*/ ) ; 
- int avio_tell (TYPE_8__*) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_ape_parse_tag (TYPE_3__*) ; 
- scalar_t__ ff_get_extradata (TYPE_3__*,TYPE_7__*,TYPE_8__*,int) ; 
- int /*<<< orphan*/  ff_id3v1_read (TYPE_3__*) ; 
- int /*<<< orphan*/ * mpc_rate ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVIO_SEEKABLE_NORMAL ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CODEC_ID_MUSEPACK7 ;
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int ENOMEM ;
+ scalar_t__ MKTAG (char,char,char,int ) ;
+ int MPC_FRAMESIZE ;
+ int SEEK_SET ;
+ int UINT_MAX ;
+ int av_dict_get (int ,char*,int *,int ) ;
+ int av_freep (int *) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int av_malloc (int) ;
+ TYPE_2__* avformat_new_stream (TYPE_3__*,int *) ;
+ int avio_r8 (TYPE_8__*) ;
+ scalar_t__ avio_rl24 (TYPE_8__*) ;
+ int avio_rl32 (TYPE_8__*) ;
+ int avio_seek (TYPE_8__*,int,int ) ;
+ int avio_tell (TYPE_8__*) ;
+ int avpriv_set_pts_info (TYPE_2__*,int,int ,int ) ;
+ int ff_ape_parse_tag (TYPE_3__*) ;
+ scalar_t__ ff_get_extradata (TYPE_3__*,TYPE_7__*,TYPE_8__*,int) ;
+ int ff_id3v1_read (TYPE_3__*) ;
+ int * mpc_rate ;
 
 __attribute__((used)) static int mpc_read_header(AVFormatContext *s)
 {
@@ -90,7 +90,7 @@ __attribute__((used)) static int mpc_read_header(AVFormatContext *s)
     c->curbits = 8;
     c->frames_noted = 0;
 
-    st = avformat_new_stream(s, NULL);
+    st = avformat_new_stream(s, ((void*)0));
     if (!st)
         goto mem_error;
     st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
@@ -103,15 +103,15 @@ __attribute__((used)) static int mpc_read_header(AVFormatContext *s)
         goto mem_error;
     st->codecpar->sample_rate = mpc_rate[st->codecpar->extradata[2] & 3];
     avpriv_set_pts_info(st, 32, MPC_FRAMESIZE, st->codecpar->sample_rate);
-    /* scan for seekpoints */
+
     st->start_time = 0;
     st->duration = c->fcount;
 
-    /* try to read APE tags */
+
     if (s->pb->seekable & AVIO_SEEKABLE_NORMAL) {
         int64_t pos = avio_tell(s->pb);
         ff_ape_parse_tag(s);
-        if (!av_dict_get(s->metadata, "", NULL, AV_DICT_IGNORE_SUFFIX))
+        if (!av_dict_get(s->metadata, "", ((void*)0), AV_DICT_IGNORE_SUFFIX))
             ff_id3v1_read(s);
         avio_seek(s->pb, pos, SEEK_SET);
     }

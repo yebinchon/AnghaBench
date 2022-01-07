@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct crush_bucket_tree {int num_nodes; int /*<<< orphan*/ * node_weights; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  bad ; 
- int /*<<< orphan*/  ceph_decode_32 (void**) ; 
- int /*<<< orphan*/  ceph_decode_8_safe (void**,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ceph_decode_need (void**,void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dout (char*,void*,void*) ; 
- int /*<<< orphan*/ * kcalloc (int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct crush_bucket_tree {int num_nodes; int * node_weights; } ;
+
+
+ int EINVAL ;
+ int ENOMEM ;
+ int GFP_NOFS ;
+ int bad ;
+ int ceph_decode_32 (void**) ;
+ int ceph_decode_8_safe (void**,void*,int,int ) ;
+ int ceph_decode_need (void**,void*,int,int ) ;
+ int dout (char*,void*,void*) ;
+ int * kcalloc (int,int,int ) ;
 
 __attribute__((used)) static int crush_decode_tree_bucket(void **p, void *end,
-				    struct crush_bucket_tree *b)
+        struct crush_bucket_tree *b)
 {
-	int j;
-	dout("crush_decode_tree_bucket %p to %p\n", *p, end);
-	ceph_decode_8_safe(p, end, b->num_nodes, bad);
-	b->node_weights = kcalloc(b->num_nodes, sizeof(u32), GFP_NOFS);
-	if (b->node_weights == NULL)
-		return -ENOMEM;
-	ceph_decode_need(p, end, b->num_nodes * sizeof(u32), bad);
-	for (j = 0; j < b->num_nodes; j++)
-		b->node_weights[j] = ceph_decode_32(p);
-	return 0;
+ int j;
+ dout("crush_decode_tree_bucket %p to %p\n", *p, end);
+ ceph_decode_8_safe(p, end, b->num_nodes, bad);
+ b->node_weights = kcalloc(b->num_nodes, sizeof(u32), GFP_NOFS);
+ if (b->node_weights == ((void*)0))
+  return -ENOMEM;
+ ceph_decode_need(p, end, b->num_nodes * sizeof(u32), bad);
+ for (j = 0; j < b->num_nodes; j++)
+  b->node_weights[j] = ceph_decode_32(p);
+ return 0;
 bad:
-	return -EINVAL;
+ return -EINVAL;
 }

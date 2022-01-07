@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ status; int parties; TYPE_1__* T; scalar_t__ tr_cancel_peer; } ;
-typedef  TYPE_3__ transaction_t ;
+typedef TYPE_3__ transaction_t ;
 struct TYPE_9__ {int acc_state; long long balance; long long locked; TYPE_2__* acc_type; } ;
-typedef  TYPE_4__ account_t ;
+typedef TYPE_4__ account_t ;
 struct TYPE_7__ {int acc_class; } ;
 struct TYPE_6__ {long long acc_incr; TYPE_4__* tr_account; } ;
 
-/* Variables and functions */
- long long MAX_ACC_INCR ; 
- long long MAX_BALANCE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ trs_committed ; 
+
+ long long MAX_ACC_INCR ;
+ long long MAX_BALANCE ;
+ int assert (int) ;
+ scalar_t__ trs_committed ;
 
 __attribute__((used)) static int check_cancellation_possibility (transaction_t *T) {
   int i;

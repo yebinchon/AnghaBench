@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_WRITE ; 
- int /*<<< orphan*/  filestream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  filestream_eof (int /*<<< orphan*/ *) ; 
- scalar_t__ filestream_error (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filestream_open (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ filestream_read (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ filestream_write (int /*<<< orphan*/ *,char*,scalar_t__) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
+
+
+
+typedef scalar_t__ int64_t ;
+typedef int buffer ;
+typedef int RFILE ;
+
+
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int RETRO_VFS_FILE_ACCESS_WRITE ;
+ int filestream_close (int *) ;
+ int filestream_eof (int *) ;
+ scalar_t__ filestream_error (int *) ;
+ int * filestream_open (char const*,int ,int ) ;
+ scalar_t__ filestream_read (int *,char*,int) ;
+ scalar_t__ filestream_write (int *,char*,scalar_t__) ;
+ int strlcpy (char*,char*,size_t) ;
 
 __attribute__((used)) static bool file_copy(const char *src_path, const char *dst_path, char *msg, size_t size)
 {
-   RFILE *dst = NULL;
-   bool ret   = true;
+   RFILE *dst = ((void*)0);
+   bool ret = 1;
    RFILE *src = filestream_open(src_path,
          RETRO_VFS_FILE_ACCESS_READ,
          RETRO_VFS_FILE_ACCESS_HINT_NONE);
@@ -37,7 +37,7 @@ __attribute__((used)) static bool file_copy(const char *src_path, const char *ds
    if (!src)
    {
       strlcpy(msg, "unable to open source file", size);
-      ret = false;
+      ret = 0;
    }
 
    dst = filestream_open(dst_path,
@@ -47,7 +47,7 @@ __attribute__((used)) static bool file_copy(const char *src_path, const char *ds
    if (!dst)
    {
       strlcpy(msg, "unable to open destination file", size);
-      ret = false;
+      ret = 0;
    }
 
    while (!filestream_eof(src))
@@ -59,7 +59,7 @@ __attribute__((used)) static bool file_copy(const char *src_path, const char *ds
       if (filestream_error(dst) != 0)
       {
          strlcpy(msg, "error reading file\n", size);
-         ret = false;
+         ret = 0;
          break;
       }
 
@@ -68,7 +68,7 @@ __attribute__((used)) static bool file_copy(const char *src_path, const char *ds
       if (numw != numr)
       {
          strlcpy(msg, "error writing to file\n", size);
-         ret = false;
+         ret = 0;
          break;
       }
    }

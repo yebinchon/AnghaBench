@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ int32_t ;
-typedef  scalar_t__ iconv_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_ALLOC (scalar_t__) ; 
- scalar_t__ MZ_ENCODING_CODEPAGE_437 ; 
- scalar_t__ MZ_ENCODING_CODEPAGE_932 ; 
- scalar_t__ MZ_ENCODING_CODEPAGE_936 ; 
- scalar_t__ MZ_ENCODING_CODEPAGE_950 ; 
- scalar_t__ MZ_ENCODING_UTF8 ; 
- int /*<<< orphan*/  MZ_FREE (int /*<<< orphan*/ *) ; 
- size_t iconv (scalar_t__,char**,size_t*,char**,size_t*) ; 
- int /*<<< orphan*/  iconv_close (scalar_t__) ; 
- scalar_t__ iconv_open (char*,char const*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int32_t ;
+typedef scalar_t__ iconv_t ;
+
+
+ scalar_t__ MZ_ALLOC (scalar_t__) ;
+ scalar_t__ MZ_ENCODING_CODEPAGE_437 ;
+ scalar_t__ MZ_ENCODING_CODEPAGE_932 ;
+ scalar_t__ MZ_ENCODING_CODEPAGE_936 ;
+ scalar_t__ MZ_ENCODING_CODEPAGE_950 ;
+ scalar_t__ MZ_ENCODING_UTF8 ;
+ int MZ_FREE (int *) ;
+ size_t iconv (scalar_t__,char**,size_t*,char**,size_t*) ;
+ int iconv_close (scalar_t__) ;
+ scalar_t__ iconv_open (char*,char const*) ;
+ int memset (int *,int ,size_t) ;
+ size_t strlen (char const*) ;
 
 uint8_t *mz_os_utf8_string_create(const char *string, int32_t encoding)
 {
     iconv_t cd;
-    const char *from_encoding = NULL;
+    const char *from_encoding = ((void*)0);
     size_t result = 0;
     size_t string_length = 0;
     size_t string_utf8_size = 0;
-    uint8_t *string_utf8 = NULL;
-    uint8_t *string_utf8_ptr = NULL;
+    uint8_t *string_utf8 = ((void*)0);
+    uint8_t *string_utf8_ptr = ((void*)0);
 
-    if (string == NULL)
-        return NULL;
+    if (string == ((void*)0))
+        return ((void*)0);
 
     if (encoding == MZ_ENCODING_CODEPAGE_437)
         from_encoding = "CP437";
@@ -52,11 +52,11 @@ uint8_t *mz_os_utf8_string_create(const char *string, int32_t encoding)
     else if (encoding == MZ_ENCODING_UTF8)
         from_encoding = "UTF-8";
     else
-        return NULL;
+        return ((void*)0);
 
     cd = iconv_open("UTF-8", from_encoding);
     if (cd == (iconv_t)-1)
-        return NULL;
+        return ((void*)0);
 
     string_length = strlen(string);
     string_utf8_size = string_length * 2;
@@ -76,7 +76,7 @@ uint8_t *mz_os_utf8_string_create(const char *string, int32_t encoding)
     if (result == (size_t)-1)
     {
         MZ_FREE(string_utf8);
-        string_utf8 = NULL;
+        string_utf8 = ((void*)0);
     }
 
     return string_utf8;

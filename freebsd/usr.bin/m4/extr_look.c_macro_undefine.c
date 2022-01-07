@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct macro_definition {scalar_t__ defn; struct macro_definition* next; } ;
-typedef  TYPE_1__* ndptr ;
+typedef TYPE_1__* ndptr ;
 struct TYPE_3__ {struct macro_definition* d; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct macro_definition*) ; 
- TYPE_1__* lookup (char const*) ; 
- scalar_t__ null ; 
+
+ int free (struct macro_definition*) ;
+ TYPE_1__* lookup (char const*) ;
+ scalar_t__ null ;
 
 void
 macro_undefine(const char *name)
 {
-	ndptr n = lookup(name);
-	if (n != NULL) {
-		struct macro_definition *r, *r2;
+ ndptr n = lookup(name);
+ if (n != ((void*)0)) {
+  struct macro_definition *r, *r2;
 
-		for (r = n->d; r != NULL; r = r2) {
-			r2 = r->next;
-			if (r->defn != null)
-				free(r->defn);
-			free(r);
-		}
-		n->d = NULL;
-	}
+  for (r = n->d; r != ((void*)0); r = r2) {
+   r2 = r->next;
+   if (r->defn != null)
+    free(r->defn);
+   free(r);
+  }
+  n->d = ((void*)0);
+ }
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  exprval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_ILLEGAL_ASSIGN ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  exprval_propput (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exprval_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_pop_exprval (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  throw_reference_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int exprval_t ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int JS_E_ILLEGAL_ASSIGN ;
+ int TRACE (char*) ;
+ int exprval_propput (int *,int *,int ) ;
+ int exprval_release (int *) ;
+ int jsval_release (int ) ;
+ int stack_pop (int *) ;
+ int stack_pop_exprval (int *,int *) ;
+ int stack_push (int *,int ) ;
+ int throw_reference_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT interp_assign(script_ctx_t *ctx)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT interp_assign(script_ctx_t *ctx)
 
     if(!stack_pop_exprval(ctx, &ref)) {
         jsval_release(v);
-        return throw_reference_error(ctx, JS_E_ILLEGAL_ASSIGN, NULL);
+        return throw_reference_error(ctx, JS_E_ILLEGAL_ASSIGN, ((void*)0));
     }
 
     hres = exprval_propput(ctx, &ref, v);

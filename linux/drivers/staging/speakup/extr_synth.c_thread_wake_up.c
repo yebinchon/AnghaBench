@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timer_list {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  speakup_event ; 
- int /*<<< orphan*/  wake_up_interruptible_all (int /*<<< orphan*/ *) ; 
+
+ int speakup_event ;
+ int wake_up_interruptible_all (int *) ;
 
 __attribute__((used)) static void thread_wake_up(struct timer_list *unused)
 {
-	wake_up_interruptible_all(&speakup_event);
+ wake_up_interruptible_all(&speakup_event);
 }

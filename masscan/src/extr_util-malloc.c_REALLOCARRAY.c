@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t MAXNUM ; 
- size_t SIZE_MAX ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- void* realloc (void*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
+ size_t MAXNUM ;
+ size_t SIZE_MAX ;
+ int abort () ;
+ int fprintf (int ,char*) ;
+ void* realloc (void*,size_t) ;
+ int stderr ;
 
 void *
 REALLOCARRAY(void *p, size_t count, size_t size)
@@ -30,10 +22,10 @@ REALLOCARRAY(void *p, size_t count, size_t size)
     }
 
     p = realloc(p, count * size);
-    if (p == NULL && count * size != 0) {
+    if (p == ((void*)0) && count * size != 0) {
         fprintf(stderr, "[-] out of memory, aborting\n");
         abort();
     }
-    
+
     return p;
 }

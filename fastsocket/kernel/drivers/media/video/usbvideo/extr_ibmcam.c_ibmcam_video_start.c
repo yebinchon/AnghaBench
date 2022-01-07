@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uvd {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ibmcam_change_lighting_conditions (struct uvd*) ; 
- int /*<<< orphan*/  ibmcam_reinit_iso (struct uvd*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ibmcam_set_sharpness (struct uvd*) ; 
+
+ int ibmcam_change_lighting_conditions (struct uvd*) ;
+ int ibmcam_reinit_iso (struct uvd*,int ) ;
+ int ibmcam_set_sharpness (struct uvd*) ;
 
 __attribute__((used)) static void ibmcam_video_start(struct uvd *uvd)
 {
-	ibmcam_change_lighting_conditions(uvd);
-	ibmcam_set_sharpness(uvd);
-	ibmcam_reinit_iso(uvd, 0);
+ ibmcam_change_lighting_conditions(uvd);
+ ibmcam_set_sharpness(uvd);
+ ibmcam_reinit_iso(uvd, 0);
 }

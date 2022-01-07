@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ IS_SURROGATE_PAIR (int const,int const) ; 
- int /*<<< orphan*/  TRACE (char*,int const,int const,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int DWORD ;
+
+
+ scalar_t__ IS_SURROGATE_PAIR (int const,int const) ;
+ int TRACE (char*,int const,int const,int) ;
 
 __attribute__((used)) static DWORD decode_surrogate_pair(const WCHAR *str, unsigned int index, unsigned int end)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _GLFWwindow ;
-typedef  int /*<<< orphan*/  MirPointerEvent ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_PRESS ; 
- int /*<<< orphan*/  GLFW_RELEASE ; 
- int /*<<< orphan*/  handlePointerButton (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  handlePointerMotion (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
-#define  mir_pointer_action_button_down 132 
-#define  mir_pointer_action_button_up 131 
-#define  mir_pointer_action_enter 130 
-#define  mir_pointer_action_leave 129 
-#define  mir_pointer_action_motion 128 
- int mir_pointer_event_action (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int _GLFWwindow ;
+typedef int MirPointerEvent ;
+
+
+ int GLFW_PRESS ;
+ int GLFW_RELEASE ;
+ int handlePointerButton (int *,int ,int const*) ;
+ int handlePointerMotion (int *,int const*) ;
+
+
+
+
+
+ int mir_pointer_event_action (int const*) ;
 
 __attribute__((used)) static void handlePointerEvent(const MirPointerEvent* pointer_event,
                              _GLFWwindow* window)
@@ -32,17 +32,17 @@ __attribute__((used)) static void handlePointerEvent(const MirPointerEvent* poin
 
     switch (action)
     {
-          case mir_pointer_action_button_down:
+          case 132:
               handlePointerButton(window, GLFW_PRESS, pointer_event);
               break;
-          case mir_pointer_action_button_up:
+          case 131:
               handlePointerButton(window, GLFW_RELEASE, pointer_event);
               break;
-          case mir_pointer_action_motion:
+          case 128:
               handlePointerMotion(window, pointer_event);
               break;
-          case mir_pointer_action_enter:
-          case mir_pointer_action_leave:
+          case 130:
+          case 129:
               break;
           default:
               break;

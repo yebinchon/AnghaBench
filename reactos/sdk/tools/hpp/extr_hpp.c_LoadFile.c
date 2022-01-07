@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int fread (void*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- int ftell (int /*<<< orphan*/ *) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fread (void*,int,int,int *) ;
+ int free (void*) ;
+ int fseek (int *,long,int ) ;
+ int ftell (int *) ;
+ void* malloc (int) ;
+ int trace (char*,...) ;
 
 void*
 LoadFile(const char* pszFileName, size_t* pFileSize)
 {
     FILE* file;
-    void* pFileData = NULL;
+    void* pFileData = ((void*)0);
     int iFileSize;
 
     trace("Loading file...");
@@ -37,7 +37,7 @@ LoadFile(const char* pszFileName, size_t* pFileSize)
     if (!file)
     {
         trace("Could not open file\n");
-        return NULL;
+        return ((void*)0);
     }
 
     fseek(file, 0L, SEEK_END);
@@ -48,12 +48,12 @@ LoadFile(const char* pszFileName, size_t* pFileSize)
 
     pFileData = malloc(iFileSize + 1);
 
-    if (pFileData != NULL)
+    if (pFileData != ((void*)0))
     {
         if (iFileSize != fread(pFileData, 1, iFileSize, file))
         {
             free(pFileData);
-            pFileData = NULL;
+            pFileData = ((void*)0);
         }
     }
     else

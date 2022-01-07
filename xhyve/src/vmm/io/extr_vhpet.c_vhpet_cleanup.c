@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vhpet {TYPE_1__* timer; } ;
-struct TYPE_2__ {int /*<<< orphan*/  callout; } ;
+struct TYPE_2__ {int callout; } ;
 
-/* Variables and functions */
- int VHPET_NUM_TIMERS ; 
- int /*<<< orphan*/  callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct vhpet*) ; 
+
+ int VHPET_NUM_TIMERS ;
+ int callout_drain (int *) ;
+ int free (struct vhpet*) ;
 
 void
 vhpet_cleanup(struct vhpet *vhpet)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < VHPET_NUM_TIMERS; i++)
-		callout_drain(&vhpet->timer[i].callout);
+ for (i = 0; i < VHPET_NUM_TIMERS; i++)
+  callout_drain(&vhpet->timer[i].callout);
 
-	free(vhpet);
+ free(vhpet);
 }

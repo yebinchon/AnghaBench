@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UCHAR ;
 
-/* Variables and functions */
- int NCBNAMSZ ; 
- scalar_t__* gScopeID ; 
- int /*<<< orphan*/  memcpy (int*,scalar_t__*,int) ; 
- int strlen (scalar_t__*) ; 
+
+
+
+typedef int UCHAR ;
+
+
+ int NCBNAMSZ ;
+ scalar_t__* gScopeID ;
+ int memcpy (int*,scalar_t__*,int) ;
+ int strlen (scalar_t__*) ;
 
 __attribute__((used)) static int NetBTNameEncode(const UCHAR *p, UCHAR *buffer)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static int NetBTNameEncode(const UCHAR *p, UCHAR *buffer)
     for (i = 0; i < NCBNAMSZ && p[i]; i++)
     {
         buffer[len++] = ((p[i] & 0xf0) >> 4) + 'A';
-        buffer[len++] =  (p[i] & 0x0f) + 'A';
+        buffer[len++] = (p[i] & 0x0f) + 'A';
     }
     while (len < NCBNAMSZ * 2)
     {
@@ -43,6 +43,6 @@ __attribute__((used)) static int NetBTNameEncode(const UCHAR *p, UCHAR *buffer)
         memcpy(buffer + len, gScopeID, scopeIDLen);
         len += scopeIDLen;
     }
-    buffer[len++] = 0;     /* add second terminator */
+    buffer[len++] = 0;
     return len;
 }

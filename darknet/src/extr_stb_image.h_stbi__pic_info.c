@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int size; int channel; void* type; } ;
-typedef  TYPE_1__ stbi__pic_packet ;
-typedef  int /*<<< orphan*/  stbi__context ;
-typedef  int /*<<< orphan*/  packets ;
+typedef TYPE_1__ stbi__pic_packet ;
+typedef int stbi__context ;
+typedef int packets ;
 
-/* Variables and functions */
- scalar_t__ stbi__at_eof (int /*<<< orphan*/ *) ; 
- int stbi__get16be (int /*<<< orphan*/ *) ; 
- void* stbi__get8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stbi__pic_is4 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  stbi__rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stbi__skip (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ stbi__at_eof (int *) ;
+ int stbi__get16be (int *) ;
+ void* stbi__get8 (int *) ;
+ int stbi__pic_is4 (int *,char*) ;
+ int stbi__rewind (int *) ;
+ int stbi__skip (int *,int) ;
 
 __attribute__((used)) static int stbi__pic_info(stbi__context *s, int *x, int *y, int *comp)
 {
@@ -61,8 +61,8 @@ __attribute__((used)) static int stbi__pic_info(stbi__context *s, int *x, int *y
 
       packet = &packets[num_packets++];
       chained = stbi__get8(s);
-      packet->size    = stbi__get8(s);
-      packet->type    = stbi__get8(s);
+      packet->size = stbi__get8(s);
+      packet->type = stbi__get8(s);
       packet->channel = stbi__get8(s);
       act_comp |= packet->channel;
 

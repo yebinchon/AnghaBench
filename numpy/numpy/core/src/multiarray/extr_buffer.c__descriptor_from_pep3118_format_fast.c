@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
 
-/* Variables and functions */
- int NPY_BYTE ; 
- int /*<<< orphan*/ * PyArray_DescrFromType (int) ; 
- scalar_t__ PyArray_DescrNewByteorder (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int _pep3118_letter_to_type (char,int,int) ; 
+
+
+
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+
+
+ int NPY_BYTE ;
+ int * PyArray_DescrFromType (int) ;
+ scalar_t__ PyArray_DescrNewByteorder (int *,char) ;
+ int Py_DECREF (int *) ;
+ int _pep3118_letter_to_type (char,int,int) ;
 
 __attribute__((used)) static int
 _descriptor_from_pep3118_format_fast(char *s, PyObject **result)
@@ -37,7 +37,7 @@ _descriptor_from_pep3118_format_fast(char *s, PyObject **result)
         switch (*s) {
         case '@':
         case '^':
-            /* ^ means no alignment; doesn't matter for a single element */
+
             byte_order = '=';
             is_standard_size = 0;
             break;
@@ -59,13 +59,13 @@ _descriptor_from_pep3118_format_fast(char *s, PyObject **result)
             ++s;
         default:
             if (item_seen) {
-                /* Not a single-element data type */
+
                 return 0;
             }
             type_num = _pep3118_letter_to_type(*s, !is_standard_size,
                                                is_complex);
             if (type_num < 0) {
-                /* Something unknown */
+
                 return 0;
             }
             item_seen = 1;

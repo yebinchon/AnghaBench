@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPXDTALINK ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ HWND ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNTOF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GWL_ATTRIBS ; 
- int /*<<< orphan*/  GWL_HDTA ; 
- int /*<<< orphan*/  GWL_IERROR ; 
- int /*<<< orphan*/  GW_CHILD ; 
- int /*<<< orphan*/  GW_HWNDNEXT ; 
- int /*<<< orphan*/  GetMDIWindowText (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetWindowLongPtr (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ HasDirWindow (scalar_t__) ; 
- scalar_t__ IDS_NOFILES ; 
- int MAXPATHLEN ; 
- int /*<<< orphan*/ * MemClone (int /*<<< orphan*/ *) ; 
- scalar_t__ hwndMDIClient ; 
- int /*<<< orphan*/  lstrcmpi (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPXDTALINK ;
+typedef int LPWSTR ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ HWND ;
+typedef scalar_t__ DWORD ;
+
+
+ int COUNTOF (int *) ;
+ int GWL_ATTRIBS ;
+ int GWL_HDTA ;
+ int GWL_IERROR ;
+ int GW_CHILD ;
+ int GW_HWNDNEXT ;
+ int GetMDIWindowText (scalar_t__,int *,int ) ;
+ scalar_t__ GetWindow (scalar_t__,int ) ;
+ scalar_t__ GetWindowLongPtr (scalar_t__,int ) ;
+ scalar_t__ HasDirWindow (scalar_t__) ;
+ scalar_t__ IDS_NOFILES ;
+ int MAXPATHLEN ;
+ int * MemClone (int *) ;
+ scalar_t__ hwndMDIClient ;
+ int lstrcmpi (int ,int *) ;
 
 LPXDTALINK
 StealDTABlock(
@@ -70,5 +70,5 @@ StealDTABlock(
       }
    }
 
-   return NULL;
+   return ((void*)0);
 }

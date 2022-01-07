@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  varname; } ;
-struct TYPE_5__ {int /*<<< orphan*/  nactvar; } ;
-typedef  int /*<<< orphan*/  TString ;
-typedef  TYPE_1__ FuncState ;
 
-/* Variables and functions */
- int cast_int (int /*<<< orphan*/ ) ; 
- TYPE_3__* getlocvar (TYPE_1__*,int) ; 
- scalar_t__ luaS_eqstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int varname; } ;
+struct TYPE_5__ {int nactvar; } ;
+typedef int TString ;
+typedef TYPE_1__ FuncState ;
+
+
+ int cast_int (int ) ;
+ TYPE_3__* getlocvar (TYPE_1__*,int) ;
+ scalar_t__ luaS_eqstr (int *,int ) ;
 
 __attribute__((used)) static int searchvar (FuncState *fs, TString *n) {
   int i;
@@ -28,5 +28,5 @@ __attribute__((used)) static int searchvar (FuncState *fs, TString *n) {
     if (luaS_eqstr(n, getlocvar(fs, i)->varname))
       return i;
   }
-  return -1;  /* not found */
+  return -1;
 }

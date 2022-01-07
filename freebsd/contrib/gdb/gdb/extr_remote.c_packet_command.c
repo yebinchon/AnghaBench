@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct remote_state {int /*<<< orphan*/  remote_packet_size; } ;
 
-/* Variables and functions */
- char* alloca (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*) ; 
- struct remote_state* get_remote_state () ; 
- int /*<<< orphan*/  getpkt (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_packet (char*) ; 
- int /*<<< orphan*/  putpkt (char*) ; 
- int /*<<< orphan*/  puts_filtered (char*) ; 
- int /*<<< orphan*/  remote_desc ; 
+
+
+
+struct remote_state {int remote_packet_size; } ;
+
+
+ char* alloca (int ) ;
+ int error (char*) ;
+ struct remote_state* get_remote_state () ;
+ int getpkt (char*,int ,int ) ;
+ int print_packet (char*) ;
+ int putpkt (char*) ;
+ int puts_filtered (char*) ;
+ int remote_desc ;
 
 __attribute__((used)) static void
 packet_command (char *args, int from_tty)

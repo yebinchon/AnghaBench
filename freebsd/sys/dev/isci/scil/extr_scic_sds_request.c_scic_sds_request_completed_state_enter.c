@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ is_task_management_request; int /*<<< orphan*/  sci_status; } ;
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  TYPE_1__ SCIC_SDS_REQUEST_T ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SCI_BASE_REQUEST_STATE_COMPLETED ; 
- int /*<<< orphan*/  SET_STATE_HANDLER (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_io_request_complete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_task_request_complete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_sds_request_get_controller (TYPE_1__*) ; 
- int /*<<< orphan*/  scic_sds_request_get_device (TYPE_1__*) ; 
- int /*<<< orphan*/  scic_sds_request_state_handler_table ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ is_task_management_request; int sci_status; } ;
+typedef int SCI_BASE_OBJECT_T ;
+typedef TYPE_1__ SCIC_SDS_REQUEST_T ;
+
+
+ scalar_t__ FALSE ;
+ int SCI_BASE_REQUEST_STATE_COMPLETED ;
+ int SET_STATE_HANDLER (TYPE_1__*,int ,int ) ;
+ int scic_cb_io_request_complete (int ,int ,TYPE_1__*,int ) ;
+ int scic_cb_task_request_complete (int ,int ,TYPE_1__*,int ) ;
+ int scic_sds_request_get_controller (TYPE_1__*) ;
+ int scic_sds_request_get_device (TYPE_1__*) ;
+ int scic_sds_request_state_handler_table ;
 
 __attribute__((used)) static
 void scic_sds_request_completed_state_enter(
@@ -38,7 +38,7 @@ void scic_sds_request_completed_state_enter(
       SCI_BASE_REQUEST_STATE_COMPLETED
    );
 
-   // Tell the SCI_USER that the IO request is complete
+
    if (this_request->is_task_management_request == FALSE)
    {
       scic_cb_io_request_complete(

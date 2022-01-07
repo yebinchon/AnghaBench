@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct WalSegment {size_t iNext; size_t nEntry; int* aPgno; size_t* aIndex; int iZero; } ;
 struct TYPE_3__ {int iPrior; int nSegment; struct WalSegment* aSegment; } ;
-typedef  TYPE_1__ WalIterator ;
+typedef TYPE_1__ WalIterator ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 __attribute__((used)) static int walIteratorNext(
-  WalIterator *p,               /* Iterator */
-  u32 *piPage,                  /* OUT: The page number of the next page */
-  u32 *piFrame                  /* OUT: Wal frame index of next page */
+  WalIterator *p,
+  u32 *piPage,
+  u32 *piFrame
 ){
-  u32 iMin;                     /* Result pgno must be greater than iMin */
-  u32 iRet = 0xFFFFFFFF;        /* 0xffffffff is never a valid page number */
-  int i;                        /* For looping through segments */
+  u32 iMin;
+  u32 iRet = 0xFFFFFFFF;
+  int i;
 
   iMin = p->iPrior;
   assert( iMin<0xffffffff );

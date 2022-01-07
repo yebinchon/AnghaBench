@@ -1,65 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  awss3; int /*<<< orphan*/  squid; int /*<<< orphan*/  awselb; int /*<<< orphan*/  cloudstorage; int /*<<< orphan*/  cloudfront; int /*<<< orphan*/  w3c; int /*<<< orphan*/  vcombined; int /*<<< orphan*/  combined; int /*<<< orphan*/  vcommon; int /*<<< orphan*/  common; } ;
 
-/* Variables and functions */
-#define  AWSELB 137 
-#define  AWSS3 136 
-#define  CLOUDFRONT 135 
-#define  CLOUDSTORAGE 134 
-#define  COMBINED 133 
-#define  COMMON 132 
-#define  SQUID 131 
-#define  VCOMBINED 130 
-#define  VCOMMON 129 
-#define  W3C 128 
- char* alloc_string (int /*<<< orphan*/ ) ; 
- TYPE_1__ logs ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int awss3; int squid; int awselb; int cloudstorage; int cloudfront; int w3c; int vcombined; int combined; int vcommon; int common; } ;
+ char* alloc_string (int ) ;
+ TYPE_1__ logs ;
 
 char *
 get_selected_format_str (size_t idx)
 {
-  char *fmt = NULL;
+  char *fmt = ((void*)0);
   switch (idx) {
-  case COMMON:
+  case 132:
     fmt = alloc_string (logs.common);
     break;
-  case VCOMMON:
+  case 129:
     fmt = alloc_string (logs.vcommon);
     break;
-  case COMBINED:
+  case 133:
     fmt = alloc_string (logs.combined);
     break;
-  case VCOMBINED:
+  case 130:
     fmt = alloc_string (logs.vcombined);
     break;
-  case W3C:
+  case 128:
     fmt = alloc_string (logs.w3c);
     break;
-  case CLOUDFRONT:
+  case 135:
     fmt = alloc_string (logs.cloudfront);
     break;
-  case CLOUDSTORAGE:
+  case 134:
     fmt = alloc_string (logs.cloudstorage);
     break;
-  case AWSELB:
+  case 137:
     fmt = alloc_string (logs.awselb);
     break;
-  case SQUID:
+  case 131:
     fmt = alloc_string (logs.squid);
     break;
-  case AWSS3:
+  case 136:
     fmt = alloc_string (logs.awss3);
     break;
   }

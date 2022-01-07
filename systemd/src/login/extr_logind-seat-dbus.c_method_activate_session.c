@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  id; TYPE_1__* manager; } ;
-typedef  TYPE_2__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int id; TYPE_1__* manager; } ;
+typedef TYPE_2__ sd_bus_message ;
+typedef int sd_bus_error ;
 struct TYPE_13__ {TYPE_2__* seat; } ;
-struct TYPE_11__ {int /*<<< orphan*/  sessions; } ;
-typedef  TYPE_3__ Session ;
-typedef  TYPE_2__ Seat ;
+struct TYPE_11__ {int sessions; } ;
+typedef TYPE_3__ Session ;
+typedef TYPE_2__ Seat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_NO_SUCH_SESSION ; 
- int /*<<< orphan*/  BUS_ERROR_SESSION_NOT_ON_SEAT ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- TYPE_3__* hashmap_get (int /*<<< orphan*/ ,char const*) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,...) ; 
- int sd_bus_message_read (TYPE_2__*,char*,char const**) ; 
- int sd_bus_reply_method_return (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int session_activate (TYPE_3__*) ; 
+
+ int BUS_ERROR_NO_SUCH_SESSION ;
+ int BUS_ERROR_SESSION_NOT_ON_SEAT ;
+ int assert (TYPE_2__*) ;
+ TYPE_3__* hashmap_get (int ,char const*) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*,...) ;
+ int sd_bus_message_read (TYPE_2__*,char*,char const**) ;
+ int sd_bus_reply_method_return (TYPE_2__*,int *) ;
+ int session_activate (TYPE_3__*) ;
 
 __attribute__((used)) static int method_activate_session(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Seat *s = userdata;
@@ -55,5 +55,5 @@ __attribute__((used)) static int method_activate_session(sd_bus_message *message
         if (r < 0)
                 return r;
 
-        return sd_bus_reply_method_return(message, NULL);
+        return sd_bus_reply_method_return(message, ((void*)0));
 }

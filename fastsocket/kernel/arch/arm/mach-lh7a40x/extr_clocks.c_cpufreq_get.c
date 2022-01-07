@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int fclkfreq_get () ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int fclkfreq_get () ; 
-
-unsigned int cpufreq_get (unsigned int cpu) /* in kHz */
+unsigned int cpufreq_get (unsigned int cpu)
 {
-	return fclkfreq_get ()/1000;
+ return fclkfreq_get ()/1000;
 }

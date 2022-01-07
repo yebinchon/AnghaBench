@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
 struct TYPE_4__ {scalar_t__ psz_lang; } ;
-typedef  TYPE_1__ atsc_a65_handle_t ;
+typedef TYPE_1__ atsc_a65_handle_t ;
 
-/* Variables and functions */
- scalar_t__ const ATSC_A65_COMPRESSION_NONE ; 
- int /*<<< orphan*/  BUF_ADVANCE (scalar_t__ const) ; 
- int /*<<< orphan*/  convert_encoding_set (TYPE_1__*,scalar_t__ const*,scalar_t__ const,char**,size_t*,scalar_t__ const) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ memcmp (scalar_t__ const*,scalar_t__,int) ; 
+
+ scalar_t__ const ATSC_A65_COMPRESSION_NONE ;
+ int BUF_ADVANCE (scalar_t__ const) ;
+ int convert_encoding_set (TYPE_1__*,scalar_t__ const*,scalar_t__ const,char**,size_t*,scalar_t__ const) ;
+ int free (char*) ;
+ scalar_t__ memcmp (scalar_t__ const*,scalar_t__,int) ;
 
 char * atsc_a65_Decode_multiple_string( atsc_a65_handle_t *p_handle, const uint8_t *p_buffer, size_t i_buffer )
 {
-    char *psz_res = NULL;
+    char *psz_res = ((void*)0);
     size_t i_resmin1 = 0;
 
     if( i_buffer < 1 )
-        return NULL;
+        return ((void*)0);
 
     uint8_t i_nb = p_buffer[0];
     BUF_ADVANCE(1);
@@ -56,9 +56,9 @@ char * atsc_a65_Decode_multiple_string( atsc_a65_handle_t *p_handle, const uint8
             if( i_buffer < i_bytes )
                 goto error;
 
-            if( i_compression != ATSC_A65_COMPRESSION_NONE ) // TBD
+            if( i_compression != ATSC_A65_COMPRESSION_NONE )
             {
-                b_skip = true;
+                b_skip = 1;
             }
 
             if( !b_skip )
@@ -75,5 +75,5 @@ char * atsc_a65_Decode_multiple_string( atsc_a65_handle_t *p_handle, const uint8
 
 error:
     free( psz_res );
-    return NULL;
+    return ((void*)0);
 }

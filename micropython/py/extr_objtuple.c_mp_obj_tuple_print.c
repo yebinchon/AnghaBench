@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_print_t ;
-typedef  scalar_t__ mp_print_kind_t ;
-struct TYPE_3__ {size_t len; int /*<<< orphan*/ * items; } ;
-typedef  TYPE_1__ mp_obj_tuple_t ;
-typedef  int /*<<< orphan*/  mp_obj_t ;
 
-/* Variables and functions */
- scalar_t__ MICROPY_PY_UJSON ; 
- TYPE_1__* MP_OBJ_TO_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ PRINT_JSON ; 
- scalar_t__ PRINT_REPR ; 
- int /*<<< orphan*/  mp_obj_print_helper (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mp_print_str (int /*<<< orphan*/  const*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mp_print_t ;
+typedef scalar_t__ mp_print_kind_t ;
+struct TYPE_3__ {size_t len; int * items; } ;
+typedef TYPE_1__ mp_obj_tuple_t ;
+typedef int mp_obj_t ;
+
+
+ scalar_t__ MICROPY_PY_UJSON ;
+ TYPE_1__* MP_OBJ_TO_PTR (int ) ;
+ scalar_t__ PRINT_JSON ;
+ scalar_t__ PRINT_REPR ;
+ int mp_obj_print_helper (int const*,int ,scalar_t__) ;
+ int mp_print_str (int const*,char*) ;
 
 void mp_obj_tuple_print(const mp_print_t *print, mp_obj_t o_in, mp_print_kind_t kind) {
     mp_obj_tuple_t *o = MP_OBJ_TO_PTR(o_in);

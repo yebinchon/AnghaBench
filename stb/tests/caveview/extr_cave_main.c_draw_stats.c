@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float Uint64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_RENDERER ; 
- float SDL_GetPerformanceCounter () ; 
- scalar_t__ SDL_GetPerformanceFrequency () ; 
- int /*<<< orphan*/  chunk_locations ; 
- float chunk_server_activity ; 
- size_t chunk_server_pos ; 
- float* chunk_server_status ; 
- int chunk_storage_considered ; 
- int chunk_storage_rendered ; 
- int chunk_storage_total ; 
- int /*<<< orphan*/  chunks_considered ; 
- int /*<<< orphan*/  chunks_in_frustum ; 
- int /*<<< orphan*/  glGetString (int /*<<< orphan*/ ) ; 
- scalar_t__ is_synchronous_debug ; 
- int /*<<< orphan*/  num_meshes_started ; 
- int /*<<< orphan*/  num_meshes_uploaded ; 
- int /*<<< orphan*/  num_threads_active ; 
- int pos_y ; 
- int /*<<< orphan*/  print (char*,...) ; 
- int quads_considered ; 
- int quads_rendered ; 
- int render_time ; 
- int /*<<< orphan*/  stb_easy_font_spacing (double) ; 
- double* text_color ; 
- int view_dist_in_chunks ; 
+
+
+
+typedef float Uint64 ;
+
+
+ int GL_RENDERER ;
+ float SDL_GetPerformanceCounter () ;
+ scalar_t__ SDL_GetPerformanceFrequency () ;
+ int chunk_locations ;
+ float chunk_server_activity ;
+ size_t chunk_server_pos ;
+ float* chunk_server_status ;
+ int chunk_storage_considered ;
+ int chunk_storage_rendered ;
+ int chunk_storage_total ;
+ int chunks_considered ;
+ int chunks_in_frustum ;
+ int glGetString (int ) ;
+ scalar_t__ is_synchronous_debug ;
+ int num_meshes_started ;
+ int num_meshes_uploaded ;
+ int num_threads_active ;
+ int pos_y ;
+ int print (char*,...) ;
+ int quads_considered ;
+ int quads_rendered ;
+ int render_time ;
+ int stb_easy_font_spacing (double) ;
+ double* text_color ;
+ int view_dist_in_chunks ;
 
 void draw_stats(void)
 {

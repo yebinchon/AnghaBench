@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
 struct TYPE_10__ {char* zJContent; int iAppend; TYPE_3__* pPatch; } ;
 struct TYPE_12__ {scalar_t__ eType; int jnFlags; size_t n; TYPE_1__ u; } ;
 struct TYPE_11__ {size_t nNode; TYPE_3__* aNode; scalar_t__ oom; } ;
-typedef  TYPE_2__ JsonParse ;
-typedef  TYPE_3__ JsonNode ;
+typedef TYPE_2__ JsonParse ;
+typedef TYPE_3__ JsonNode ;
 
-/* Variables and functions */
- int JNODE_APPEND ; 
- int JNODE_LABEL ; 
- int JNODE_PATCH ; 
- int JNODE_RAW ; 
- int JNODE_REMOVE ; 
- scalar_t__ JSON_NULL ; 
- scalar_t__ JSON_OBJECT ; 
- scalar_t__ JSON_STRING ; 
- scalar_t__ JSON_TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ jsonNodeSize (TYPE_3__*) ; 
- int jsonParseAddNode (TYPE_2__*,scalar_t__,size_t,char const*) ; 
- int /*<<< orphan*/  jsonRemoveAllNulls (TYPE_3__*) ; 
- scalar_t__ strncmp (char*,char const*,size_t) ; 
+
+ int JNODE_APPEND ;
+ int JNODE_LABEL ;
+ int JNODE_PATCH ;
+ int JNODE_RAW ;
+ int JNODE_REMOVE ;
+ scalar_t__ JSON_NULL ;
+ scalar_t__ JSON_OBJECT ;
+ scalar_t__ JSON_STRING ;
+ scalar_t__ JSON_TRUE ;
+ int assert (int) ;
+ scalar_t__ jsonNodeSize (TYPE_3__*) ;
+ int jsonParseAddNode (TYPE_2__*,scalar_t__,size_t,char const*) ;
+ int jsonRemoveAllNulls (TYPE_3__*) ;
+ scalar_t__ strncmp (char*,char const*,size_t) ;
 
 __attribute__((used)) static JsonNode *jsonMergePatch(
-  JsonParse *pParse,   /* The JSON parser that contains the TARGET */
-  u32 iTarget,         /* Node of the TARGET in pParse */
-  JsonNode *pPatch     /* The PATCH */
+  JsonParse *pParse,
+  u32 iTarget,
+  JsonNode *pPatch
 ){
   u32 i, j;
   u32 iRoot;

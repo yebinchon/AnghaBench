@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {scalar_t__ st_size; int /*<<< orphan*/  st_mode; } ;
 
-/* Variables and functions */
- int D_TAPE ; 
- int /*<<< orphan*/  FIODTYPE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ S_ISBLK (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISCHR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISFIFO (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISSOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  address ; 
- int /*<<< orphan*/  err (int,char*,char const*) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ ) ; 
- scalar_t__ fseeko (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ fstat (int /*<<< orphan*/ ,struct stat*) ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  noseek () ; 
- scalar_t__ skip ; 
- int /*<<< orphan*/  stdin ; 
+
+
+
+struct stat {scalar_t__ st_size; int st_mode; } ;
+
+
+ int D_TAPE ;
+ int FIODTYPE ;
+ int SEEK_SET ;
+ scalar_t__ S_ISBLK (int ) ;
+ scalar_t__ S_ISCHR (int ) ;
+ scalar_t__ S_ISFIFO (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ scalar_t__ S_ISSOCK (int ) ;
+ int address ;
+ int err (int,char*,char const*) ;
+ int fileno (int ) ;
+ scalar_t__ fseeko (int ,scalar_t__,int ) ;
+ scalar_t__ fstat (int ,struct stat*) ;
+ scalar_t__ ioctl (int ,int ,int*) ;
+ int noseek () ;
+ scalar_t__ skip ;
+ int stdin ;
 
 void
 doskip(const char *fname, int statok)
 {
-	int type;
-	struct stat sb;
+ int type;
+ struct stat sb;
 
-	if (statok) {
-		if (fstat(fileno(stdin), &sb))
-			err(1, "%s", fname);
-		if (S_ISREG(sb.st_mode) && skip > sb.st_size) {
-			address += sb.st_size;
-			skip -= sb.st_size;
-			return;
-		}
-	}
-	if (!statok || S_ISFIFO(sb.st_mode) || S_ISSOCK(sb.st_mode)) {
-		noseek();
-		return;
-	}
-	if (S_ISCHR(sb.st_mode) || S_ISBLK(sb.st_mode)) {
-		if (ioctl(fileno(stdin), FIODTYPE, &type))
-			err(1, "%s", fname);
-		/*
-		 * Most tape drives don't support seeking,
-		 * yet fseek() would succeed.
-		 */
-		if (type & D_TAPE) {
-			noseek();
-			return;
-		}
-	}
-	if (fseeko(stdin, skip, SEEK_SET)) {
-		noseek();
-		return;
-	}
-	address += skip;
-	skip = 0;
+ if (statok) {
+  if (fstat(fileno(stdin), &sb))
+   err(1, "%s", fname);
+  if (S_ISREG(sb.st_mode) && skip > sb.st_size) {
+   address += sb.st_size;
+   skip -= sb.st_size;
+   return;
+  }
+ }
+ if (!statok || S_ISFIFO(sb.st_mode) || S_ISSOCK(sb.st_mode)) {
+  noseek();
+  return;
+ }
+ if (S_ISCHR(sb.st_mode) || S_ISBLK(sb.st_mode)) {
+  if (ioctl(fileno(stdin), FIODTYPE, &type))
+   err(1, "%s", fname);
+
+
+
+
+  if (type & D_TAPE) {
+   noseek();
+   return;
+  }
+ }
+ if (fseeko(stdin, skip, SEEK_SET)) {
+  noseek();
+  return;
+ }
+ address += skip;
+ skip = 0;
 }

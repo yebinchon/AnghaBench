@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nvkm_msgqueue_func {int dummy; } ;
-struct nvkm_msgqueue {int /*<<< orphan*/  init_done; TYPE_1__* seq; int /*<<< orphan*/  seq_lock; struct nvkm_falcon* falcon; struct nvkm_msgqueue_func const* func; } ;
+struct nvkm_msgqueue {int init_done; TYPE_1__* seq; int seq_lock; struct nvkm_falcon* falcon; struct nvkm_msgqueue_func const* func; } ;
 struct nvkm_falcon {int dummy; } ;
 struct TYPE_2__ {int id; } ;
 
-/* Variables and functions */
- int NVKM_MSGQUEUE_NUM_SEQUENCES ; 
- int /*<<< orphan*/  init_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+ int NVKM_MSGQUEUE_NUM_SEQUENCES ;
+ int init_completion (int *) ;
+ int mutex_init (int *) ;
 
 void
 nvkm_msgqueue_ctor(const struct nvkm_msgqueue_func *func,
-		   struct nvkm_falcon *falcon,
-		   struct nvkm_msgqueue *queue)
+     struct nvkm_falcon *falcon,
+     struct nvkm_msgqueue *queue)
 {
-	int i;
+ int i;
 
-	queue->func = func;
-	queue->falcon = falcon;
-	mutex_init(&queue->seq_lock);
-	for (i = 0; i < NVKM_MSGQUEUE_NUM_SEQUENCES; i++)
-		queue->seq[i].id = i;
+ queue->func = func;
+ queue->falcon = falcon;
+ mutex_init(&queue->seq_lock);
+ for (i = 0; i < NVKM_MSGQUEUE_NUM_SEQUENCES; i++)
+  queue->seq[i].id = i;
 
-	init_completion(&queue->init_done);
+ init_completion(&queue->init_done);
 
 
 }

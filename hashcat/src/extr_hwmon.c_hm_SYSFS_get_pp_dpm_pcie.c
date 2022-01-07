@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  HCFILE ;
 
-/* Variables and functions */
- int HCBUFSIZ_TINY ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  event_log_error (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hc_asprintf (char**,char*,char*) ; 
- int /*<<< orphan*/  hc_fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hc_feof (int /*<<< orphan*/ *) ; 
- char* hc_fgets (char*,int,int /*<<< orphan*/ *) ; 
- int hc_fopen (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- char* hm_SYSFS_get_syspath_device (int /*<<< orphan*/ *,int const) ; 
- int sscanf (char*,char*,int*,float*,int*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- size_t strlen (char*) ; 
+
+
+
+typedef int hashcat_ctx_t ;
+typedef int buf ;
+typedef int HCFILE ;
+
+
+ int HCBUFSIZ_TINY ;
+ int errno ;
+ int event_log_error (int *,char*,char*,int ) ;
+ int hc_asprintf (char**,char*,char*) ;
+ int hc_fclose (int *) ;
+ int hc_feof (int *) ;
+ char* hc_fgets (char*,int,int *) ;
+ int hc_fopen (int *,char*,char*) ;
+ int hcfree (char*) ;
+ char* hm_SYSFS_get_syspath_device (int *,int const) ;
+ int sscanf (char*,char*,int*,float*,int*) ;
+ int strerror (int ) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static int hm_SYSFS_get_pp_dpm_pcie (hashcat_ctx_t *hashcat_ctx, const int backend_device_idx, int *val)
 {
   char *syspath = hm_SYSFS_get_syspath_device (hashcat_ctx, backend_device_idx);
 
-  if (syspath == NULL) return -1;
+  if (syspath == ((void*)0)) return -1;
 
   char *path;
 
@@ -43,7 +43,7 @@ __attribute__((used)) static int hm_SYSFS_get_pp_dpm_pcie (hashcat_ctx_t *hashca
 
   HCFILE fp;
 
-  if (hc_fopen (&fp, path, "r") == false)
+  if (hc_fopen (&fp, path, "r") == 0)
   {
     event_log_error (hashcat_ctx, "%s: %s", path, strerror (errno));
 
@@ -60,7 +60,7 @@ __attribute__((used)) static int hm_SYSFS_get_pp_dpm_pcie (hashcat_ctx_t *hashca
 
     char *ptr = hc_fgets (buf, sizeof (buf), &fp);
 
-    if (ptr == NULL) continue;
+    if (ptr == ((void*)0)) continue;
 
     size_t len = strlen (ptr);
 
@@ -68,7 +68,7 @@ __attribute__((used)) static int hm_SYSFS_get_pp_dpm_pcie (hashcat_ctx_t *hashca
 
     if (ptr[len - 2] != '*') continue;
 
-    int   profile = 0;
+    int profile = 0;
     float speed = 0;
 
     int rc = sscanf (ptr, "%d: %fGB, x%d *", &profile, &speed, &lanes);

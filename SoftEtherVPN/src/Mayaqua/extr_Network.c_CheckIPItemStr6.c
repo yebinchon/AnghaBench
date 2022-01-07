@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
 
-/* Variables and functions */
- int StrLen (char*) ; 
+
+
+
+typedef int UINT ;
+
+
+ int StrLen (char*) ;
 
 bool CheckIPItemStr6(char *str)
 {
-	UINT i, len;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return false;
-	}
+ UINT i, len;
 
-	len = StrLen(str);
-	if (len >= 5)
-	{
-		// Invalid length
-		return false;
-	}
+ if (str == ((void*)0))
+ {
+  return 0;
+ }
 
-	for (i = 0;i < len;i++)
-	{
-		char c = str[i];
+ len = StrLen(str);
+ if (len >= 5)
+ {
 
-		if ((c >= 'a' && c <= 'f') ||
-			(c >= 'A' && c <= 'F') ||
-			(c >= '0' && c <= '9'))
-		{
-		}
-		else
-		{
-			return false;
-		}
-	}
+  return 0;
+ }
 
-	return true;
+ for (i = 0;i < len;i++)
+ {
+  char c = str[i];
+
+  if ((c >= 'a' && c <= 'f') ||
+   (c >= 'A' && c <= 'F') ||
+   (c >= '0' && c <= '9'))
+  {
+  }
+  else
+  {
+   return 0;
+  }
+ }
+
+ return 1;
 }

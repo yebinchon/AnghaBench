@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int size; struct pollfd* items; } ;
-typedef  TYPE_1__ uv__os390_epoll ;
+typedef TYPE_1__ uv__os390_epoll ;
 struct pollfd {int fd; int revents; } ;
 struct epoll_event {int fd; int events; } ;
-typedef  int /*<<< orphan*/  nmsgsfds_t ;
+typedef int nmsgsfds_t ;
 
-/* Variables and functions */
- int POLLIN ; 
- int POLLOUT ; 
- int _NFDS (int) ; 
- int _NMSGS (int) ; 
- int /*<<< orphan*/  _SET_FDS_MSGS (int /*<<< orphan*/ ,int,int) ; 
- int poll (struct pollfd*,int /*<<< orphan*/ ,int) ; 
+
+ int POLLIN ;
+ int POLLOUT ;
+ int _NFDS (int) ;
+ int _NMSGS (int) ;
+ int _SET_FDS_MSGS (int ,int,int) ;
+ int poll (struct pollfd*,int ,int) ;
 
 int epoll_wait(uv__os390_epoll* lst, struct epoll_event* events,
                int maxevents, int timeout) {
@@ -43,7 +43,7 @@ int epoll_wait(uv__os390_epoll* lst, struct epoll_event* events,
 
   reventcount = 0;
   nevents = 0;
-  for (int i = 0; 
+  for (int i = 0;
        i < lst->size && i < maxevents && reventcount < pollret; ++i) {
     struct epoll_event ev;
     struct pollfd* pfd;

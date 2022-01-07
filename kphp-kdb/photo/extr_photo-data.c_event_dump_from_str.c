@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int type; } ;
-typedef  TYPE_1__ field_desc ;
+typedef TYPE_1__ field_desc ;
 struct TYPE_8__ {int type_id; int* id; int* tp; char** tval; size_t tn; int size; } ;
-typedef  TYPE_2__ event_dump ;
-typedef  int /*<<< orphan*/  event ;
+typedef TYPE_2__ event_dump ;
+typedef int event ;
 struct TYPE_9__ {TYPE_1__* fields; } ;
 
-/* Variables and functions */
- char* GET_FIELD (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int MAX_FIELDS ; 
- int /*<<< orphan*/  assert (int) ; 
- int get_field_id_len (TYPE_3__*,char*,int) ; 
- scalar_t__ has_field (int /*<<< orphan*/ *,int) ; 
- int sscanf (char*,char*,...) ; 
- int strlen (char*) ; 
-#define  t_double 131 
-#define  t_int 130 
-#define  t_long 129 
- int t_raw ; 
-#define  t_string 128 
- char* tmp_mem_strdup (char*) ; 
- TYPE_3__* types ; 
+
+ char* GET_FIELD (int *,TYPE_1__*) ;
+ int MAX_FIELDS ;
+ int assert (int) ;
+ int get_field_id_len (TYPE_3__*,char*,int) ;
+ scalar_t__ has_field (int *,int) ;
+ int sscanf (char*,char*,...) ;
+ int strlen (char*) ;
+
+
+
+ int t_raw ;
+
+ char* tmp_mem_strdup (char*) ;
+ TYPE_3__* types ;
 
 int event_dump_from_str (event_dump *d, char *buff, int type_id, event *e) {
   assert (d->type_id == type_id);
@@ -80,7 +80,7 @@ int event_dump_from_str (event_dump *d, char *buff, int type_id, event *e) {
 
     d->tp[fn] = types[type_id].fields[fid].type;
 
-    //we can't change raw fields from string
+
     if (d->tp[fn] == t_raw) {
       return -1;
     }
@@ -95,10 +95,10 @@ int event_dump_from_str (event_dump *d, char *buff, int type_id, event *e) {
   field_desc *f = types[type_id].fields;
 
 
-  for (i = 0; i < fn;  i++) {
+  for (i = 0; i < fn; i++) {
     char *dest;
     int flag = 0;
-    if (e != NULL && has_field (e, d->id[i]) && d->tp[i] != t_string) {
+    if (e != ((void*)0) && has_field (e, d->id[i]) && d->tp[i] != 128) {
       dest = GET_FIELD (e, &f[d->id[i]]);
     } else {
       dest = d->tval[d->tn];
@@ -106,25 +106,25 @@ int event_dump_from_str (event_dump *d, char *buff, int type_id, event *e) {
     }
     int nn, add = 0;
     switch (d->tp[i]) {
-    case t_int:
+    case 130:
       if (sscanf (val[i], "%d%n", (int *)dest, &nn) != 1 || nn != valn[i]) {
         return -1;
       }
       add = 4;
       break;
-    case t_long:
+    case 129:
       if (sscanf (val[i], "%lld%n", (long long *)dest, &nn) != 1 || nn != valn[i]) {
         return -1;
       }
       add = 8;
       break;
-    case t_double:
+    case 131:
       if (sscanf (val[i], "%lf%n", (double *)dest, &nn) != 1 || nn != valn[i]) {
         return -1;
       }
       add = 8;
       break;
-    case t_string:
+    case 128:
       *(char **)dest = tmp_mem_strdup (val[i]);
       add = valn[i] + 1;
       break;
@@ -138,8 +138,8 @@ int event_dump_from_str (event_dump *d, char *buff, int type_id, event *e) {
       d->tn++;
     }
   }
-//  d->size += types[type_id].shifts_len;
-//  d->type_id = type_id;
+
+
 
   return 0;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_des3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBEDTLS_DES_DECRYPT ; 
- int /*<<< orphan*/  mbedtls_des3_crypt_cbc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  mbedtls_des3_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_des3_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mbedtls_des3_set3key_dec (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  mbedtls_zeroize (unsigned char*,int) ; 
- int /*<<< orphan*/  pem_pbkdf1 (unsigned char*,int,unsigned char*,unsigned char const*,size_t) ; 
+
+
+
+typedef int mbedtls_des3_context ;
+
+
+ int MBEDTLS_DES_DECRYPT ;
+ int mbedtls_des3_crypt_cbc (int *,int ,size_t,unsigned char*,unsigned char*,unsigned char*) ;
+ int mbedtls_des3_free (int *) ;
+ int mbedtls_des3_init (int *) ;
+ int mbedtls_des3_set3key_dec (int *,unsigned char*) ;
+ int mbedtls_zeroize (unsigned char*,int) ;
+ int pem_pbkdf1 (unsigned char*,int,unsigned char*,unsigned char const*,size_t) ;
 
 __attribute__((used)) static void pem_des3_decrypt( unsigned char des3_iv[8],
                                unsigned char *buf, size_t buflen,

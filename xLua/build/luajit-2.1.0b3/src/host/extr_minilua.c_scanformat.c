@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ isdigit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * strchr (char*,char const) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,int) ; 
- int /*<<< orphan*/  uchar (char const) ; 
+
+
+
+typedef int lua_State ;
+
+
+ scalar_t__ isdigit (int ) ;
+ int luaL_error (int *,char*) ;
+ int * strchr (char*,char const) ;
+ int strncpy (char*,char const*,int) ;
+ int uchar (char const) ;
 
 __attribute__((used)) static const char*scanformat(lua_State*L,const char*strfrmt,char*form){
 const char*p=strfrmt;
-while(*p!='\0'&&strchr("-+ #0",*p)!=NULL)p++;
+while(*p!='\0'&&strchr("-+ #0",*p)!=((void*)0))p++;
 if((size_t)(p-strfrmt)>=sizeof("-+ #0"))
 luaL_error(L,"invalid format (repeated flags)");
 if(isdigit(uchar(*p)))p++;

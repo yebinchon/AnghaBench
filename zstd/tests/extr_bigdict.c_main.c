@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_DCtx ;
-typedef  int /*<<< orphan*/  ZSTD_CCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RDG_genBuffer (char*,size_t const,double,double,int) ; 
- int /*<<< orphan*/  ZSTD_CCtx_setParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ZSTD_DCtx_setParameter (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int ZSTD_btopt ; 
- int /*<<< orphan*/  ZSTD_c_chainLog ; 
- int /*<<< orphan*/  ZSTD_c_checksumFlag ; 
- int /*<<< orphan*/  ZSTD_c_hashLog ; 
- int /*<<< orphan*/  ZSTD_c_minMatch ; 
- int /*<<< orphan*/  ZSTD_c_nbWorkers ; 
- int /*<<< orphan*/  ZSTD_c_overlapLog ; 
- int /*<<< orphan*/  ZSTD_c_searchLog ; 
- int /*<<< orphan*/  ZSTD_c_strategy ; 
- int /*<<< orphan*/  ZSTD_c_targetLength ; 
- int /*<<< orphan*/  ZSTD_c_windowLog ; 
- size_t ZSTD_compressBound (size_t const) ; 
- int /*<<< orphan*/ * ZSTD_createCCtx () ; 
- int /*<<< orphan*/ * ZSTD_createDCtx () ; 
- int /*<<< orphan*/  ZSTD_d_windowLogMax ; 
- int /*<<< orphan*/  ZSTD_e_continue ; 
- int /*<<< orphan*/  ZSTD_e_end ; 
- int /*<<< orphan*/  ZSTD_freeCCtx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_freeDCtx (int /*<<< orphan*/ *) ; 
- scalar_t__ ZSTD_isError (int /*<<< orphan*/ ) ; 
- scalar_t__ compress (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,size_t const,char*,size_t const,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- void* malloc (size_t const) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int ZSTD_DCtx ;
+typedef int ZSTD_CCtx ;
+
+
+ int RDG_genBuffer (char*,size_t const,double,double,int) ;
+ int ZSTD_CCtx_setParameter (int *,int ,int) ;
+ int ZSTD_DCtx_setParameter (int *,int ,int) ;
+ int ZSTD_btopt ;
+ int ZSTD_c_chainLog ;
+ int ZSTD_c_checksumFlag ;
+ int ZSTD_c_hashLog ;
+ int ZSTD_c_minMatch ;
+ int ZSTD_c_nbWorkers ;
+ int ZSTD_c_overlapLog ;
+ int ZSTD_c_searchLog ;
+ int ZSTD_c_strategy ;
+ int ZSTD_c_targetLength ;
+ int ZSTD_c_windowLog ;
+ size_t ZSTD_compressBound (size_t const) ;
+ int * ZSTD_createCCtx () ;
+ int * ZSTD_createDCtx () ;
+ int ZSTD_d_windowLogMax ;
+ int ZSTD_e_continue ;
+ int ZSTD_e_end ;
+ int ZSTD_freeCCtx (int *) ;
+ int ZSTD_freeDCtx (int *) ;
+ scalar_t__ ZSTD_isError (int ) ;
+ scalar_t__ compress (int *,int *,void*,size_t const,char*,size_t const,void*,int ) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ void* malloc (size_t const) ;
+ int stderr ;
 
 int main(int argc, const char** argv)
 {
@@ -87,7 +87,7 @@ int main(int argc, const char** argv)
 
     RDG_genBuffer(buffer, bufferSize, 1.0, 0.0, 0xbeefcafe);
 
-    /* Compress 30 GB */
+
     {
         int i;
         for (i = 0; i < 10; ++i) {

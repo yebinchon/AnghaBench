@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned long address; unsigned int last_file_entry; } ;
 
-/* Variables and functions */
-#define  DW_LNE_define_file 130 
-#define  DW_LNE_end_sequence 129 
-#define  DW_LNE_set_address 128 
- char* _ (char*) ; 
- unsigned long byte_get (unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- unsigned int read_leb128 (unsigned char*,unsigned int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reset_state_machine (int) ; 
- TYPE_1__ state_machine_regs ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  warn (char*) ; 
+
+
+
+
+ char* _ (char*) ;
+ unsigned long byte_get (unsigned char*,unsigned int) ;
+ int printf (char*,...) ;
+ unsigned int read_leb128 (unsigned char*,unsigned int*,int ) ;
+ int reset_state_machine (int) ;
+ TYPE_1__ state_machine_regs ;
+ int strlen (char*) ;
+ int warn (char*) ;
 
 __attribute__((used)) static int
 process_extended_line_op (unsigned char *data, int is_stmt)
@@ -51,18 +51,18 @@ process_extended_line_op (unsigned char *data, int is_stmt)
 
   switch (op_code)
     {
-    case DW_LNE_end_sequence:
+    case 129:
       printf (_("End of Sequence\n\n"));
       reset_state_machine (is_stmt);
       break;
 
-    case DW_LNE_set_address:
+    case 128:
       adr = byte_get (data, len - bytes_read - 1);
       printf (_("set Address to 0x%lx\n"), adr);
       state_machine_regs.address = adr;
       break;
 
-    case DW_LNE_define_file:
+    case 130:
       printf (_("  define new File Table entry\n"));
       printf (_("  Entry\tDir\tTime\tSize\tName\n"));
 

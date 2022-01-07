@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jobject ;
-typedef  int /*<<< orphan*/  JNIEnv ;
-typedef  int /*<<< orphan*/  IjkMediaPlayer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JNI_CHECK_GOTO (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LABEL_RETURN ; 
- int /*<<< orphan*/  ijkmp_dec_ref_p (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ijkmp_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jni_get_media_player (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jobject ;
+typedef int JNIEnv ;
+typedef int IjkMediaPlayer ;
+
+
+ int JNI_CHECK_GOTO (int *,int *,char*,char*,int ) ;
+ int LABEL_RETURN ;
+ int ijkmp_dec_ref_p (int **) ;
+ int ijkmp_stop (int *) ;
+ int * jni_get_media_player (int *,int ) ;
 
 __attribute__((used)) static void
 IjkMediaPlayer_stop(JNIEnv *env, jobject thiz)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct int_tree_map {int /*<<< orphan*/  to; int /*<<< orphan*/  uid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_UID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  SSA_VAR_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  default_defs ; 
- int /*<<< orphan*/  gcc_assert (int /*<<< orphan*/ ) ; 
- scalar_t__ htab_find_with_hash (int /*<<< orphan*/ ,struct int_tree_map*,int /*<<< orphan*/ ) ; 
 
-tree 
+
+
+typedef int tree ;
+struct int_tree_map {int to; int uid; } ;
+
+
+ int DECL_UID (int ) ;
+ int NULL_TREE ;
+ int SSA_VAR_P (int ) ;
+ int default_defs ;
+ int gcc_assert (int ) ;
+ scalar_t__ htab_find_with_hash (int ,struct int_tree_map*,int ) ;
+
+tree
 default_def (tree var)
 {
   struct int_tree_map *h, in;

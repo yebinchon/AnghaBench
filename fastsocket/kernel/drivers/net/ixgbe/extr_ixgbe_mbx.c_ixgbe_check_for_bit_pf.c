@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct ixgbe_hw {int dummy; } ;
-typedef  scalar_t__ s32 ;
+typedef scalar_t__ s32 ;
 
-/* Variables and functions */
- scalar_t__ IXGBE_ERR_MBX ; 
- int /*<<< orphan*/  IXGBE_MBVFICR (scalar_t__) ; 
- int IXGBE_READ_REG (struct ixgbe_hw*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IXGBE_WRITE_REG (struct ixgbe_hw*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ IXGBE_ERR_MBX ;
+ int IXGBE_MBVFICR (scalar_t__) ;
+ int IXGBE_READ_REG (struct ixgbe_hw*,int ) ;
+ int IXGBE_WRITE_REG (struct ixgbe_hw*,int ,int) ;
 
 __attribute__((used)) static s32 ixgbe_check_for_bit_pf(struct ixgbe_hw *hw, u32 mask, s32 index)
 {
-	u32 mbvficr = IXGBE_READ_REG(hw, IXGBE_MBVFICR(index));
-	s32 ret_val = IXGBE_ERR_MBX;
+ u32 mbvficr = IXGBE_READ_REG(hw, IXGBE_MBVFICR(index));
+ s32 ret_val = IXGBE_ERR_MBX;
 
-	if (mbvficr & mask) {
-		ret_val = 0;
-		IXGBE_WRITE_REG(hw, IXGBE_MBVFICR(index), mask);
-	}
+ if (mbvficr & mask) {
+  ret_val = 0;
+  IXGBE_WRITE_REG(hw, IXGBE_MBVFICR(index), mask);
+ }
 
-	return ret_val;
+ return ret_val;
 }

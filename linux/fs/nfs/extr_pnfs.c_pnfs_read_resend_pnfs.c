@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tk_status; } ;
-struct nfs_pgio_header {TYPE_1__ task; int /*<<< orphan*/  completion_ops; int /*<<< orphan*/  inode; int /*<<< orphan*/ * lseg; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tk_status; } ;
+struct nfs_pgio_header {TYPE_1__ task; int completion_ops; int inode; int * lseg; int flags; } ;
 struct nfs_pageio_descriptor {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NFS_IOHDR_REDO ; 
- int /*<<< orphan*/  nfs_pageio_init_read (struct nfs_pageio_descriptor*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nfs_pageio_resend (struct nfs_pageio_descriptor*,struct nfs_pgio_header*) ; 
- int /*<<< orphan*/  pnfs_put_lseg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int NFS_IOHDR_REDO ;
+ int nfs_pageio_init_read (struct nfs_pageio_descriptor*,int ,int,int ) ;
+ int nfs_pageio_resend (struct nfs_pageio_descriptor*,struct nfs_pgio_header*) ;
+ int pnfs_put_lseg (int *) ;
+ int test_and_set_bit (int ,int *) ;
 
 void pnfs_read_resend_pnfs(struct nfs_pgio_header *hdr)
 {
-	struct nfs_pageio_descriptor pgio;
+ struct nfs_pageio_descriptor pgio;
 
-	if (!test_and_set_bit(NFS_IOHDR_REDO, &hdr->flags)) {
-		/* Prevent deadlocks with layoutreturn! */
-		pnfs_put_lseg(hdr->lseg);
-		hdr->lseg = NULL;
+ if (!test_and_set_bit(NFS_IOHDR_REDO, &hdr->flags)) {
 
-		nfs_pageio_init_read(&pgio, hdr->inode, false,
-					hdr->completion_ops);
-		hdr->task.tk_status = nfs_pageio_resend(&pgio, hdr);
-	}
+  pnfs_put_lseg(hdr->lseg);
+  hdr->lseg = ((void*)0);
+
+  nfs_pageio_init_read(&pgio, hdr->inode, 0,
+     hdr->completion_ops);
+  hdr->task.tk_status = nfs_pageio_resend(&pgio, hdr);
+ }
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int ptrdiff_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
 struct TYPE_13__ {int width; int height; TYPE_1__* priv_data; } ;
-struct TYPE_12__ {int* linesize; scalar_t__* data; int /*<<< orphan*/  top_field_first; } ;
-struct TYPE_11__ {int pictures_per_frame; int cur_picture_idx; int** quants; int** quants_chroma; int* custom_q; int* custom_chroma_q; int* quant_mat; int* quant_chroma_mat; int num_planes; int chroma_factor; int /*<<< orphan*/ * blocks; int /*<<< orphan*/  alpha_bits; int /*<<< orphan*/  emu_buf; scalar_t__ force_quant; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
-typedef  TYPE_1__ ProresContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_12__ {int* linesize; scalar_t__* data; int top_field_first; } ;
+struct TYPE_11__ {int pictures_per_frame; int cur_picture_idx; int** quants; int** quants_chroma; int* custom_q; int* custom_chroma_q; int* quant_mat; int* quant_chroma_mat; int num_planes; int chroma_factor; int * blocks; int alpha_bits; int emu_buf; scalar_t__ force_quant; } ;
+typedef int PutBitContext ;
+typedef TYPE_1__ ProresContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_BUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int CFACTOR_Y444 ; 
- int MAX_STORED_Q ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int av_log2 (int) ; 
- int encode_alpha_plane (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int encode_slice_plane (TYPE_1__*,int /*<<< orphan*/ *,int const*,int,int,int /*<<< orphan*/ ,int,int,int*) ; 
- int /*<<< orphan*/  get_alpha_data (TYPE_1__*,int const*,int,int,int,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_slice_data (TYPE_1__*,int const*,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- scalar_t__ put_bits_left (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_BUG ;
+ int AV_LOG_ERROR ;
+ int CFACTOR_Y444 ;
+ int MAX_STORED_Q ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int av_log2 (int) ;
+ int encode_alpha_plane (TYPE_1__*,int *,int,int ,int) ;
+ int encode_slice_plane (TYPE_1__*,int *,int const*,int,int,int ,int,int,int*) ;
+ int get_alpha_data (TYPE_1__*,int const*,int,int,int,int,int,int ,int,int ) ;
+ int get_slice_data (TYPE_1__*,int const*,int,int,int,int,int,int ,int ,int,int,int) ;
+ scalar_t__ put_bits_left (int *) ;
 
 __attribute__((used)) static int encode_slice(AVCodecContext *avctx, const AVFrame *pic,
                         PutBitContext *pb,
@@ -73,20 +73,20 @@ __attribute__((used)) static int encode_slice(AVCodecContext *avctx, const AVFra
     }
 
     for (i = 0; i < ctx->num_planes; i++) {
-        is_chroma    = (i == 1 || i == 2);
+        is_chroma = (i == 1 || i == 2);
         plane_factor = slice_width_factor + 2;
         if (is_chroma)
             plane_factor += ctx->chroma_factor - 3;
         if (!is_chroma || ctx->chroma_factor == CFACTOR_Y444) {
-            xp          = x << 4;
-            yp          = y << 4;
+            xp = x << 4;
+            yp = y << 4;
             num_cblocks = 4;
-            pwidth      = avctx->width;
+            pwidth = avctx->width;
         } else {
-            xp          = x << 3;
-            yp          = y << 4;
+            xp = x << 3;
+            yp = y << 4;
             num_cblocks = 2;
-            pwidth      = avctx->width >> 1;
+            pwidth = avctx->width >> 1;
         }
 
         linesize = pic->linesize[i] * ctx->pictures_per_frame;
@@ -98,12 +98,12 @@ __attribute__((used)) static int encode_slice(AVCodecContext *avctx, const AVFra
                            pwidth, avctx->height / ctx->pictures_per_frame,
                            ctx->blocks[0], ctx->emu_buf,
                            mbs_per_slice, num_cblocks, is_chroma);
-            if (!is_chroma) {/* luma quant */
+            if (!is_chroma) {
                 sizes[i] = encode_slice_plane(ctx, pb, src, linesize,
                                               mbs_per_slice, ctx->blocks[0],
                                               num_cblocks, plane_factor,
                                               qmat);
-            } else { /* chroma plane */
+            } else {
                 sizes[i] = encode_slice_plane(ctx, pb, src, linesize,
                                               mbs_per_slice, ctx->blocks[0],
                                               num_cblocks, plane_factor,

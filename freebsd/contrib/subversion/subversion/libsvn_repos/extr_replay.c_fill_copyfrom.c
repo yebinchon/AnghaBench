@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  (* svn_repos_authz_func_t ) (void**,int /*<<< orphan*/ *,char const*,void*,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_fs_root_t ;
-struct TYPE_3__ {char* copyfrom_path; int /*<<< orphan*/  copyfrom_rev; void* copyfrom_known; } ;
-typedef  TYPE_1__ svn_fs_path_change3_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  void* svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  svn_fs_copied_from (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_revision_root (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_root_fs (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int (* svn_repos_authz_func_t ) (void**,int *,char const*,void*,int *) ;
+typedef int svn_fs_root_t ;
+struct TYPE_3__ {char* copyfrom_path; int copyfrom_rev; void* copyfrom_known; } ;
+typedef TYPE_1__ svn_fs_path_change3_t ;
+typedef int svn_error_t ;
+typedef void* svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int svn_fs_copied_from (int *,char**,int *,char const*,int *) ;
+ int svn_fs_revision_root (int **,int ,int ,int *) ;
+ int svn_fs_root_fs (int *) ;
 
 __attribute__((used)) static svn_error_t *
 fill_copyfrom(svn_fs_root_t **copyfrom_root,
@@ -69,8 +69,8 @@ fill_copyfrom(svn_fs_root_t **copyfrom_root,
     }
   else
     {
-      *copyfrom_root = NULL;
-      /* SRC_READABLE left uninitialized */
+      *copyfrom_root = ((void*)0);
+
     }
   return SVN_NO_ERROR;
 }

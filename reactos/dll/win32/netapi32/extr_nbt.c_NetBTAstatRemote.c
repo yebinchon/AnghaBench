@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_19__ {scalar_t__ numAddresses; int /*<<< orphan*/ * addresses; } ;
-struct TYPE_18__ {int /*<<< orphan*/  nameQueryXID; } ;
-struct TYPE_17__ {int /*<<< orphan*/  gotResponse; int /*<<< orphan*/  astatLen; TYPE_2__* astat; } ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int UCHAR ;
+struct TYPE_19__ {scalar_t__ numAddresses; int * addresses; } ;
+struct TYPE_18__ {int nameQueryXID; } ;
+struct TYPE_17__ {int gotResponse; int astatLen; TYPE_2__* astat; } ;
 struct TYPE_16__ {scalar_t__ name_count; } ;
-struct TYPE_15__ {int /*<<< orphan*/  ncb_callname; int /*<<< orphan*/  ncb_length; int /*<<< orphan*/  ncb_buffer; } ;
-typedef  scalar_t__ SOCKET ;
-typedef  TYPE_1__* PNCB ;
-typedef  TYPE_2__* PADAPTER_STATUS ;
-typedef  TYPE_3__ NetBTNodeQueryData ;
-typedef  TYPE_4__ NetBTAdapter ;
-typedef  TYPE_5__ NBNameCacheEntry ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_15__ {int ncb_callname; int ncb_length; int ncb_buffer; } ;
+typedef scalar_t__ SOCKET ;
+typedef TYPE_1__* PNCB ;
+typedef TYPE_2__* PADAPTER_STATUS ;
+typedef TYPE_3__ NetBTNodeQueryData ;
+typedef TYPE_4__ NetBTAdapter ;
+typedef TYPE_5__ NBNameCacheEntry ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetTickCount () ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  NBNS_TYPE_NBSTAT ; 
- int /*<<< orphan*/  NCB_CANCELLED (TYPE_1__*) ; 
- int /*<<< orphan*/  NRC_BADDR ; 
- int /*<<< orphan*/  NRC_CMDCAN ; 
- int /*<<< orphan*/  NRC_CMDTMO ; 
- int /*<<< orphan*/  NRC_GOODRET ; 
- int /*<<< orphan*/  NRC_INVADDRESS ; 
- int /*<<< orphan*/  NRC_OSRESNOTAV ; 
- int /*<<< orphan*/  NRC_SYSTEM ; 
- int /*<<< orphan*/  NetBTInternalFindName (TYPE_4__*,TYPE_1__*,TYPE_5__ const**) ; 
- int /*<<< orphan*/  NetBTNodeStatusAnswerCallback ; 
- int NetBTSendNameQuery (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NetBTWaitForNameResponse (TYPE_4__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_4__*,...) ; 
- scalar_t__ WSASocketA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WSA_FLAG_OVERLAPPED ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- scalar_t__ gWINSQueries ; 
- scalar_t__ gWINSQueryTimeout ; 
+
+ int FALSE ;
+ scalar_t__ GetTickCount () ;
+ scalar_t__ INVALID_SOCKET ;
+ int IPPROTO_UDP ;
+ int NBNS_TYPE_NBSTAT ;
+ int NCB_CANCELLED (TYPE_1__*) ;
+ int NRC_BADDR ;
+ int NRC_CMDCAN ;
+ int NRC_CMDTMO ;
+ int NRC_GOODRET ;
+ int NRC_INVADDRESS ;
+ int NRC_OSRESNOTAV ;
+ int NRC_SYSTEM ;
+ int NetBTInternalFindName (TYPE_4__*,TYPE_1__*,TYPE_5__ const**) ;
+ int NetBTNodeStatusAnswerCallback ;
+ int NetBTSendNameQuery (scalar_t__,int ,int ,int ,int ,int ) ;
+ int NetBTWaitForNameResponse (TYPE_4__*,scalar_t__,scalar_t__,int ,TYPE_3__*) ;
+ int PF_INET ;
+ int SOCK_DGRAM ;
+ int TRACE (char*,TYPE_4__*,...) ;
+ scalar_t__ WSASocketA (int ,int ,int ,int *,int ,int ) ;
+ int WSA_FLAG_OVERLAPPED ;
+ int closesocket (scalar_t__) ;
+ scalar_t__ gWINSQueries ;
+ scalar_t__ gWINSQueryTimeout ;
 
 __attribute__((used)) static UCHAR NetBTAstatRemote(NetBTAdapter *adapter, PNCB ncb)
 {
     UCHAR ret = NRC_GOODRET;
-    const NBNameCacheEntry *cacheEntry = NULL;
+    const NBNameCacheEntry *cacheEntry = ((void*)0);
 
     TRACE("adapter %p, NCB %p\n", adapter, ncb);
 
@@ -71,7 +71,7 @@ __attribute__((used)) static UCHAR NetBTAstatRemote(NetBTAdapter *adapter, PNCB 
     {
         if (cacheEntry->numAddresses > 0)
         {
-            SOCKET fd = WSASocketA(PF_INET, SOCK_DGRAM, IPPROTO_UDP, NULL, 0,
+            SOCKET fd = WSASocketA(PF_INET, SOCK_DGRAM, IPPROTO_UDP, ((void*)0), 0,
              WSA_FLAG_OVERLAPPED);
 
             if(fd == INVALID_SOCKET)
@@ -113,7 +113,7 @@ __attribute__((used)) static UCHAR NetBTAstatRemote(NetBTAdapter *adapter, PNCB 
             ret = NRC_CMDTMO;
     }
     else if (ret == NRC_CMDCAN)
-        ; /* do nothing, we were cancelled */
+        ;
     else
         ret = NRC_CMDTMO;
     TRACE("returning 0x%02x\n", ret);

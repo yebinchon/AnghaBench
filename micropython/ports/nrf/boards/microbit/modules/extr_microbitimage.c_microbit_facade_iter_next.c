@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ mp_obj_t ;
-struct TYPE_2__ {size_t index; scalar_t__ image; int /*<<< orphan*/  string; } ;
-typedef  TYPE_1__ facade_iterator_t ;
 
-/* Variables and functions */
- scalar_t__ MP_OBJ_STOP_ITERATION ; 
- int /*<<< orphan*/  microbit_image_set_from_char (scalar_t__,char const) ; 
- char* mp_obj_str_get_data (int /*<<< orphan*/ ,size_t*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ mp_obj_t ;
+struct TYPE_2__ {size_t index; scalar_t__ image; int string; } ;
+typedef TYPE_1__ facade_iterator_t ;
+
+
+ scalar_t__ MP_OBJ_STOP_ITERATION ;
+ int microbit_image_set_from_char (scalar_t__,char const) ;
+ char* mp_obj_str_get_data (int ,size_t*) ;
 
 __attribute__((used)) static mp_obj_t microbit_facade_iter_next(mp_obj_t iter_in) {
     facade_iterator_t *iter = (facade_iterator_t *)iter_in;

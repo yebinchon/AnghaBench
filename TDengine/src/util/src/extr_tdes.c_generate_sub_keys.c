@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {unsigned char* k; int* c; int* d; } ;
-typedef  TYPE_1__ key_set ;
+typedef TYPE_1__ key_set ;
 
-/* Variables and functions */
- int* initial_key_permutaion ; 
- int* key_shift_sizes ; 
- int* sub_key_permutation ; 
+
+ int* initial_key_permutaion ;
+ int* key_shift_sizes ;
+ int* sub_key_permutation ;
 
 void generate_sub_keys(unsigned char* main_key, key_set* key_sets) {
-  int           i, j;
-  int           shift_size;
+  int i, j;
+  int shift_size;
   unsigned char shift_byte, first_shift_bits, second_shift_bits, third_shift_bits, fourth_shift_bits;
 
   for (i = 0; i < 8; i++) {
@@ -63,7 +63,7 @@ void generate_sub_keys(unsigned char* main_key, key_set* key_sets) {
       shift_byte = 0xC0;
     }
 
-    // Process C
+
     first_shift_bits = shift_byte & key_sets[i].c[0];
     second_shift_bits = shift_byte & key_sets[i].c[1];
     third_shift_bits = shift_byte & key_sets[i].c[2];
@@ -81,7 +81,7 @@ void generate_sub_keys(unsigned char* main_key, key_set* key_sets) {
     key_sets[i].c[3] <<= shift_size;
     key_sets[i].c[3] |= (first_shift_bits >> (4 - shift_size));
 
-    // Process D
+
     first_shift_bits = shift_byte & key_sets[i].d[0];
     second_shift_bits = shift_byte & key_sets[i].d[1];
     third_shift_bits = shift_byte & key_sets[i].d[2];

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- unsigned int AOUT_CHAN_LEFT ; 
- unsigned int AOUT_CHAN_RIGHT ; 
+
+
+
+typedef int uint8_t ;
+
+
+ unsigned int AOUT_CHAN_LEFT ;
+ unsigned int AOUT_CHAN_RIGHT ;
 
 __attribute__((used)) static int WidiHeader( unsigned *pi_rate,
                        unsigned *pi_channels, unsigned *pi_original_channels,
@@ -26,10 +26,10 @@ __attribute__((used)) static int WidiHeader( unsigned *pi_rate,
 
     switch( ( p_header[3] & 0x38 ) >> 3 )
     {
-    case 0x01: //0b001
+    case 0x01:
         *pi_rate = 44100;
         break;
-    case 0x02: //0b010
+    case 0x02:
         *pi_rate = 48000;
         break;
     default:

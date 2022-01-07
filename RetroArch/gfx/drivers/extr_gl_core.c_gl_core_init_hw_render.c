@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct retro_hw_render_callback {scalar_t__ depth; scalar_t__ stencil; int /*<<< orphan*/  bottom_left_origin; } ;
-struct TYPE_4__ {int hw_render_enable; unsigned int hw_render_max_width; unsigned int hw_render_max_height; scalar_t__ hw_render_rb_ds; int /*<<< orphan*/  hw_render_bottom_left; int /*<<< orphan*/  hw_render_texture; int /*<<< orphan*/  hw_render_fbo; } ;
-typedef  TYPE_1__ gl_core_t ;
-typedef  unsigned int GLint ;
-typedef  scalar_t__ GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int GL_COLOR_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_DEPTH24_STENCIL8 ; 
- int /*<<< orphan*/  GL_DEPTH_ATTACHMENT ; 
- int GL_DEPTH_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_DEPTH_COMPONENT16 ; 
- int /*<<< orphan*/  GL_DEPTH_STENCIL_ATTACHMENT ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- scalar_t__ GL_FRAMEBUFFER_COMPLETE ; 
- int /*<<< orphan*/  GL_MAX_RENDERBUFFER_SIZE ; 
- int /*<<< orphan*/  GL_MAX_TEXTURE_SIZE ; 
- int /*<<< orphan*/  GL_RENDERBUFFER ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int GL_STENCIL_BUFFER_BIT ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  glBindFramebuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindRenderbuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ glCheckFramebufferStatus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClear (int) ; 
- int /*<<< orphan*/  glFramebufferRenderbuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glFramebufferTexture2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenFramebuffers (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenRenderbuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,unsigned int*) ; 
- int /*<<< orphan*/  glRenderbufferStorage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  glTexStorage2D (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  gl_core_context_bind_hw_render (TYPE_1__*,int) ; 
- struct retro_hw_render_callback* video_driver_get_hw_context () ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct retro_hw_render_callback {scalar_t__ depth; scalar_t__ stencil; int bottom_left_origin; } ;
+struct TYPE_4__ {int hw_render_enable; unsigned int hw_render_max_width; unsigned int hw_render_max_height; scalar_t__ hw_render_rb_ds; int hw_render_bottom_left; int hw_render_texture; int hw_render_fbo; } ;
+typedef TYPE_1__ gl_core_t ;
+typedef unsigned int GLint ;
+typedef scalar_t__ GLenum ;
+
+
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_COLOR_BUFFER_BIT ;
+ int GL_DEPTH24_STENCIL8 ;
+ int GL_DEPTH_ATTACHMENT ;
+ int GL_DEPTH_BUFFER_BIT ;
+ int GL_DEPTH_COMPONENT16 ;
+ int GL_DEPTH_STENCIL_ATTACHMENT ;
+ int GL_FRAMEBUFFER ;
+ scalar_t__ GL_FRAMEBUFFER_COMPLETE ;
+ int GL_MAX_RENDERBUFFER_SIZE ;
+ int GL_MAX_TEXTURE_SIZE ;
+ int GL_RENDERBUFFER ;
+ int GL_RGBA8 ;
+ int GL_STENCIL_BUFFER_BIT ;
+ int GL_TEXTURE_2D ;
+ int RARCH_ERR (char*) ;
+ int RARCH_LOG (char*,unsigned int,unsigned int) ;
+ int glBindFramebuffer (int ,int ) ;
+ int glBindRenderbuffer (int ,scalar_t__) ;
+ int glBindTexture (int ,int ) ;
+ scalar_t__ glCheckFramebufferStatus (int ) ;
+ int glClear (int) ;
+ int glFramebufferRenderbuffer (int ,int ,int ,scalar_t__) ;
+ int glFramebufferTexture2D (int ,int ,int ,int ,int ) ;
+ int glGenFramebuffers (int,int *) ;
+ int glGenRenderbuffers (int,scalar_t__*) ;
+ int glGenTextures (int,int *) ;
+ int glGetIntegerv (int ,unsigned int*) ;
+ int glRenderbufferStorage (int ,int ,unsigned int,unsigned int) ;
+ int glTexStorage2D (int ,int,int ,unsigned int,unsigned int) ;
+ int gl_core_context_bind_hw_render (TYPE_1__*,int) ;
+ struct retro_hw_render_callback* video_driver_get_hw_context () ;
 
 __attribute__((used)) static bool gl_core_init_hw_render(gl_core_t *gl, unsigned width, unsigned height)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static bool gl_core_init_hw_render(gl_core_t *gl, unsigned
    GLenum status;
    struct retro_hw_render_callback *hwr = video_driver_get_hw_context();
 
-   gl_core_context_bind_hw_render(gl, true);
+   gl_core_context_bind_hw_render(gl, 1);
 
    RARCH_LOG("[GLCore]: Initializing HW render (%u x %u).\n", width, height);
    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_fbo_size);
@@ -102,8 +102,8 @@ __attribute__((used)) static bool gl_core_init_hw_render(gl_core_t *gl, unsigned
    if (status != GL_FRAMEBUFFER_COMPLETE)
    {
       RARCH_ERR("[GLCore]: Framebuffer is not complete.\n");
-      gl_core_context_bind_hw_render(gl, false);
-      return false;
+      gl_core_context_bind_hw_render(gl, 0);
+      return 0;
    }
 
    if (hwr->depth && hwr->stencil)
@@ -113,12 +113,12 @@ __attribute__((used)) static bool gl_core_init_hw_render(gl_core_t *gl, unsigned
    else
       glClear(GL_COLOR_BUFFER_BIT);
 
-   gl->hw_render_enable = true;
+   gl->hw_render_enable = 1;
    gl->hw_render_max_width = width;
    gl->hw_render_max_height = height;
    glBindTexture(GL_TEXTURE_2D, 0);
    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-   gl_core_context_bind_hw_render(gl, false);
+   gl_core_context_bind_hw_render(gl, 0);
 
-   return true;
+   return 1;
 }

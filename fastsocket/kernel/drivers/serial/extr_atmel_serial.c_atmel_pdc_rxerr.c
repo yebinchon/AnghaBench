@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  overrun; int /*<<< orphan*/  frame; int /*<<< orphan*/  parity; int /*<<< orphan*/  brk; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int overrun; int frame; int parity; int brk; } ;
 struct uart_port {TYPE_1__ icount; } ;
 
-/* Variables and functions */
- unsigned int ATMEL_US_FRAME ; 
- unsigned int ATMEL_US_OVRE ; 
- unsigned int ATMEL_US_PARE ; 
- int /*<<< orphan*/  ATMEL_US_RSTSTA ; 
- unsigned int ATMEL_US_RXBRK ; 
- int /*<<< orphan*/  UART_PUT_CR (struct uart_port*,int /*<<< orphan*/ ) ; 
+
+ unsigned int ATMEL_US_FRAME ;
+ unsigned int ATMEL_US_OVRE ;
+ unsigned int ATMEL_US_PARE ;
+ int ATMEL_US_RSTSTA ;
+ unsigned int ATMEL_US_RXBRK ;
+ int UART_PUT_CR (struct uart_port*,int ) ;
 
 __attribute__((used)) static void atmel_pdc_rxerr(struct uart_port *port, unsigned int status)
 {
-	/* clear error */
-	UART_PUT_CR(port, ATMEL_US_RSTSTA);
 
-	if (status & ATMEL_US_RXBRK) {
-		/* ignore side-effect */
-		status &= ~(ATMEL_US_PARE | ATMEL_US_FRAME);
-		port->icount.brk++;
-	}
-	if (status & ATMEL_US_PARE)
-		port->icount.parity++;
-	if (status & ATMEL_US_FRAME)
-		port->icount.frame++;
-	if (status & ATMEL_US_OVRE)
-		port->icount.overrun++;
+ UART_PUT_CR(port, ATMEL_US_RSTSTA);
+
+ if (status & ATMEL_US_RXBRK) {
+
+  status &= ~(ATMEL_US_PARE | ATMEL_US_FRAME);
+  port->icount.brk++;
+ }
+ if (status & ATMEL_US_PARE)
+  port->icount.parity++;
+ if (status & ATMEL_US_FRAME)
+  port->icount.frame++;
+ if (status & ATMEL_US_OVRE)
+  port->icount.overrun++;
 }

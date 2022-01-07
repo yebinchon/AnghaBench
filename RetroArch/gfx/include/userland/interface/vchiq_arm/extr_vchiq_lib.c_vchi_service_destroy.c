@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  lib_handle; int /*<<< orphan*/  handle; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ VCHI_SERVICE_T ;
-typedef  int /*<<< orphan*/  VCHI_SERVICE_HANDLE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RETRY (int,int /*<<< orphan*/ ) ; 
- int VCHIQ_ERROR ; 
- int /*<<< orphan*/  VCHIQ_IOC_REMOVE_SERVICE ; 
- int /*<<< orphan*/  VCHIQ_SERVICE_HANDLE_INVALID ; 
- TYPE_1__* find_service_by_handle (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_3__ {int lib_handle; int handle; int fd; } ;
+typedef TYPE_1__ VCHI_SERVICE_T ;
+typedef int VCHI_SERVICE_HANDLE_T ;
+
+
+ int RETRY (int,int ) ;
+ int VCHIQ_ERROR ;
+ int VCHIQ_IOC_REMOVE_SERVICE ;
+ int VCHIQ_SERVICE_HANDLE_INVALID ;
+ TYPE_1__* find_service_by_handle (int const) ;
+ int ioctl (int ,int ,int ) ;
 
 int32_t
 vchi_service_destroy( const VCHI_SERVICE_HANDLE_T handle )

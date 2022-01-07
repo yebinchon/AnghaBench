@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct label {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAC_POLICY_INTERNALIZE (int /*<<< orphan*/ ,struct label*,char*) ; 
- int /*<<< orphan*/  cred ; 
+
+ int MAC_POLICY_INTERNALIZE (int ,struct label*,char*) ;
+ int cred ;
 
 int
 mac_cred_internalize_label(struct label *label, char *string)
 {
-	int error;
+ int error;
 
-	MAC_POLICY_INTERNALIZE(cred, label, string);
+ MAC_POLICY_INTERNALIZE(cred, label, string);
 
-	return (error);
+ return (error);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_DEPTH_NODE ; 
- int /*<<< orphan*/  STMT_SELECT_OP_DEPTH_MOVED_TO ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (char const) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int relpath_depth (char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* svn_relpath_dirname (char const*,int /*<<< orphan*/ *) ; 
- char* svn_relpath_prefix (char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*,int) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_SELECT_DEPTH_NODE ;
+ int STMT_SELECT_OP_DEPTH_MOVED_TO ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (char const) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ char* apr_pstrdup (int *,char const*) ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int relpath_depth (char const*) ;
+ int * svn_error_createf (int ,int ,int ,int ) ;
+ char* svn_relpath_dirname (char const*,int *) ;
+ char* svn_relpath_prefix (char const*,int,int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*,int) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
 
 svn_error_t *
 svn_wc__db_scan_moved_to_internal(const char **move_src_relpath,
@@ -55,14 +55,14 @@ svn_wc__db_scan_moved_to_internal(const char **move_src_relpath,
   const char *relpath = local_relpath;
   const char *dst_relpath;
 
-  SVN_ERR_ASSERT(local_relpath[0]); /* Not valid on the WC root */
+  SVN_ERR_ASSERT(local_relpath[0]);
 
   if (move_src_relpath)
-    *move_src_relpath = NULL;
+    *move_src_relpath = ((void*)0);
   if (move_dst_relpath)
-    *move_dst_relpath = NULL;
+    *move_dst_relpath = ((void*)0);
   if (delete_relpath)
-    *delete_relpath = NULL;
+    *delete_relpath = ((void*)0);
 
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb,
                                     STMT_SELECT_OP_DEPTH_MOVED_TO));

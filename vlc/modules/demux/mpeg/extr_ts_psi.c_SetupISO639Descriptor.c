@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_8__ {char* psz_language; scalar_t__ i_extra_languages; TYPE_4__* p_extra_languages; scalar_t__ i_priority; void* psz_description; } ;
 struct TYPE_10__ {TYPE_1__ fmt; } ;
-typedef  TYPE_3__ ts_es_t ;
+typedef TYPE_3__ ts_es_t ;
 struct TYPE_11__ {char* psz_language; void* psz_description; } ;
-typedef  TYPE_4__ extra_languages_t ;
+typedef TYPE_4__ extra_languages_t ;
 struct TYPE_12__ {scalar_t__ i_code_count; TYPE_2__* code; } ;
-typedef  TYPE_5__ dvbpsi_iso639_dr_t ;
-typedef  int /*<<< orphan*/  dvbpsi_descriptor_t ;
-typedef  int /*<<< orphan*/  demux_t ;
-struct TYPE_9__ {int i_audio_type; int /*<<< orphan*/  iso_639_code; } ;
+typedef TYPE_5__ dvbpsi_iso639_dr_t ;
+typedef int dvbpsi_descriptor_t ;
+typedef int demux_t ;
+struct TYPE_9__ {int i_audio_type; int iso_639_code; } ;
 
-/* Variables and functions */
- scalar_t__ ES_PRIORITY_SELECTABLE_MIN ; 
- void* GetIso639AudioTypeDesc (int) ; 
- TYPE_5__* dvbpsi_DecodeISO639Dr (int /*<<< orphan*/ *) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
+
+ scalar_t__ ES_PRIORITY_SELECTABLE_MIN ;
+ void* GetIso639AudioTypeDesc (int) ;
+ TYPE_5__* dvbpsi_DecodeISO639Dr (int *) ;
+ void* malloc (int) ;
+ int memcpy (char*,int ,int) ;
+ int msg_Dbg (int *,char*,char*) ;
+ int msg_Err (int *,char*) ;
 
 __attribute__((used)) static void SetupISO639Descriptor( demux_t *p_demux, ts_es_t *p_es,
                                    dvbpsi_descriptor_t *p_dr )
@@ -60,8 +60,8 @@ __attribute__((used)) static void SetupISO639Descriptor( demux_t *p_demux, ts_es
     uint8_t type = p_decoded->code[0].i_audio_type;
     if( !p_es->fmt.psz_description )
         p_es->fmt.psz_description = GetIso639AudioTypeDesc( type );
-    if (type == 0x00) /* Undefined */
-        p_es->fmt.i_priority = ES_PRIORITY_SELECTABLE_MIN + 1; // prioritize normal audio tracks
+    if (type == 0x00)
+        p_es->fmt.i_priority = ES_PRIORITY_SELECTABLE_MIN + 1;
 
     if( p_es->fmt.p_extra_languages )
         return;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int flags; scalar_t__ pid; } ;
-typedef  TYPE_1__ sentinelScriptJob ;
-typedef  scalar_t__ pid_t ;
+typedef TYPE_1__ sentinelScriptJob ;
+typedef scalar_t__ pid_t ;
 struct TYPE_7__ {TYPE_1__* value; } ;
-typedef  TYPE_2__ listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-struct TYPE_8__ {int /*<<< orphan*/  scripts_queue; } ;
+typedef TYPE_2__ listNode ;
+typedef int listIter ;
+struct TYPE_8__ {int scripts_queue; } ;
 
-/* Variables and functions */
- int SENTINEL_SCRIPT_RUNNING ; 
- TYPE_2__* listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_4__ sentinel ; 
+
+ int SENTINEL_SCRIPT_RUNNING ;
+ TYPE_2__* listNext (int *) ;
+ int listRewind (int ,int *) ;
+ TYPE_4__ sentinel ;
 
 listNode *sentinelGetScriptListNodeByPid(pid_t pid) {
     listNode *ln;
     listIter li;
 
     listRewind(sentinel.scripts_queue,&li);
-    while ((ln = listNext(&li)) != NULL) {
+    while ((ln = listNext(&li)) != ((void*)0)) {
         sentinelScriptJob *sj = ln->value;
 
         if ((sj->flags & SENTINEL_SCRIPT_RUNNING) && sj->pid == pid)
             return ln;
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_4__ {void* controller; int /*<<< orphan*/ * base; } ;
-typedef  int /*<<< orphan*/  PerConfig_struct ;
-typedef  int /*<<< orphan*/  PerBaseConfig_struct ;
 
-/* Variables and functions */
- TYPE_1__* perkeyconfig ; 
- int perkeyconfigsize ; 
- TYPE_1__* realloc (TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_4__ {void* controller; int * base; } ;
+typedef int PerConfig_struct ;
+typedef int PerBaseConfig_struct ;
+
+
+ TYPE_1__* perkeyconfig ;
+ int perkeyconfigsize ;
+ TYPE_1__* realloc (TYPE_1__*,int) ;
 
 void PerUpdateConfig(PerBaseConfig_struct * baseconfig, int nelems, void * controller)
 {

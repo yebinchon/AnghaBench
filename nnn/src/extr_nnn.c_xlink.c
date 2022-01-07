@@ -1,66 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t NONE_SELECTED ; 
- size_t PATH_MAX ; 
- int /*<<< orphan*/  endselection () ; 
- int link (char const*,char const*) ; 
- char** messages ; 
- size_t mkpath (char*,char*,char*) ; 
- int /*<<< orphan*/  printwait (char*,int*) ; 
- char* pselbuf ; 
- size_t selbufpos ; 
- size_t strlen (char*) ; 
- int symlink (char const*,char const*) ; 
- char* xbasename (char*) ; 
- int /*<<< orphan*/  xstrlcpy (char*,char*,size_t) ; 
+ size_t NONE_SELECTED ;
+ size_t PATH_MAX ;
+ int endselection () ;
+ int link (char const*,char const*) ;
+ char** messages ;
+ size_t mkpath (char*,char*,char*) ;
+ int printwait (char*,int*) ;
+ char* pselbuf ;
+ size_t selbufpos ;
+ size_t strlen (char*) ;
+ int symlink (char const*,char const*) ;
+ char* xbasename (char*) ;
+ int xstrlcpy (char*,char*,size_t) ;
 
 __attribute__((used)) static int xlink(char *suffix, char *path, char *buf, int *presel, int type)
 {
-	int count = 0;
-	char *pbuf = pselbuf, *fname;
-	size_t pos = 0, len, r;
-	int (*link_fn)(const char *, const char *) = NULL;
+ int count = 0;
+ char *pbuf = pselbuf, *fname;
+ size_t pos = 0, len, r;
+ int (*link_fn)(const char *, const char *) = ((void*)0);
 
-	/* Check if selection is empty */
-	if (!selbufpos) {
-		printwait(messages[NONE_SELECTED], presel);
-		return -1;
-	}
 
-	endselection();
+ if (!selbufpos) {
+  printwait(messages[NONE_SELECTED], presel);
+  return -1;
+ }
 
-	if (type == 's') /* symbolic link */
-		link_fn = &symlink;
-	else /* hard link */
-		link_fn = &link;
+ endselection();
 
-	while (pos < selbufpos) {
-		len = strlen(pbuf);
-		fname = xbasename(pbuf);
-		r = mkpath(path, fname, buf);
-		xstrlcpy(buf + r - 1, suffix, PATH_MAX - r - 1);
+ if (type == 's')
+  link_fn = &symlink;
+ else
+  link_fn = &link;
 
-		if (!link_fn(pbuf, buf))
-			++count;
+ while (pos < selbufpos) {
+  len = strlen(pbuf);
+  fname = xbasename(pbuf);
+  r = mkpath(path, fname, buf);
+  xstrlcpy(buf + r - 1, suffix, PATH_MAX - r - 1);
 
-		pos += len + 1;
-		pbuf += len + 1;
-	}
+  if (!link_fn(pbuf, buf))
+   ++count;
 
-	if (!count)
-		printwait("none created", presel);
+  pos += len + 1;
+  pbuf += len + 1;
+ }
 
-	return count;
+ if (!count)
+  printwait("none created", presel);
+
+ return count;
 }

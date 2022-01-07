@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t x; size_t y; int dir; } ;
 struct TYPE_3__ {size_t x; size_t y; int dir; } ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef int HWND ;
 
-/* Variables and functions */
- int DOOR_IN_TOP ; 
- int DOOR_OUT_TOP ; 
- int END_SQUARE ; 
- int backup () ; 
- int choose_door (int /*<<< orphan*/ ) ; 
- size_t cur_sq_x ; 
- size_t cur_sq_y ; 
- int /*<<< orphan*/  hDC ; 
- int** maze ; 
- TYPE_2__* move_list ; 
- int path_length ; 
- TYPE_1__* save_path ; 
- size_t sqnum ; 
 
-__attribute__((used)) static void create_maze(HWND hWnd)             /* create a maze layout given the initialized maze */
+ int DOOR_IN_TOP ;
+ int DOOR_OUT_TOP ;
+ int END_SQUARE ;
+ int backup () ;
+ int choose_door (int ) ;
+ size_t cur_sq_x ;
+ size_t cur_sq_y ;
+ int hDC ;
+ int** maze ;
+ TYPE_2__* move_list ;
+ int path_length ;
+ TYPE_1__* save_path ;
+ size_t sqnum ;
+
+__attribute__((used)) static void create_maze(HWND hWnd)
 {
     register int i, newdoor = 0;
 
@@ -39,13 +39,13 @@ __attribute__((used)) static void create_maze(HWND hWnd)             /* create a
         move_list[sqnum].x = cur_sq_x;
         move_list[sqnum].y = cur_sq_y;
         move_list[sqnum].dir = newdoor;
-        while ((newdoor = choose_door(hDC)) == -1) { /* pick a door */
-            if (backup() == -1) { /* no more doors ... backup */
-                return; /* done ... return */
+        while ((newdoor = choose_door(hDC)) == -1) {
+            if (backup() == -1) {
+                return;
             }
         }
 
-        /* mark the out door */
+
         maze[cur_sq_x][cur_sq_y] |= (DOOR_OUT_TOP >> newdoor);
 
         switch (newdoor) {
@@ -60,10 +60,10 @@ __attribute__((used)) static void create_maze(HWND hWnd)             /* create a
         }
         sqnum++;
 
-        /* mark the in door */
+
         maze[cur_sq_x][cur_sq_y] |= (DOOR_IN_TOP >> ((newdoor + 2) % 4));
 
-        /* if end square set path length and save path */
+
         if (maze[cur_sq_x][cur_sq_y] & END_SQUARE) {
             path_length = sqnum;
             for (i = 0; i < path_length; i++) {

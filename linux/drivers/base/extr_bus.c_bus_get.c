@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct bus_type {TYPE_1__* p; } ;
-struct TYPE_2__ {int /*<<< orphan*/  subsys; } ;
+struct TYPE_2__ {int subsys; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kset_get (int /*<<< orphan*/ *) ; 
+
+ int kset_get (int *) ;
 
 __attribute__((used)) static struct bus_type *bus_get(struct bus_type *bus)
 {
-	if (bus) {
-		kset_get(&bus->p->subsys);
-		return bus;
-	}
-	return NULL;
+ if (bus) {
+  kset_get(&bus->p->subsys);
+  return bus;
+ }
+ return ((void*)0);
 }

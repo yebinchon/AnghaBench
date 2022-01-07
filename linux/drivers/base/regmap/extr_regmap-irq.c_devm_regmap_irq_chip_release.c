@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct regmap_irq_chip_data {int /*<<< orphan*/  irq; } ;
+
+
+
+
+struct regmap_irq_chip_data {int irq; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  regmap_del_irq_chip (int /*<<< orphan*/ ,struct regmap_irq_chip_data*) ; 
+
+ int regmap_del_irq_chip (int ,struct regmap_irq_chip_data*) ;
 
 __attribute__((used)) static void devm_regmap_irq_chip_release(struct device *dev, void *res)
 {
-	struct regmap_irq_chip_data *d = *(struct regmap_irq_chip_data **)res;
+ struct regmap_irq_chip_data *d = *(struct regmap_irq_chip_data **)res;
 
-	regmap_del_irq_chip(d->irq, d);
+ regmap_del_irq_chip(d->irq, d);
 }

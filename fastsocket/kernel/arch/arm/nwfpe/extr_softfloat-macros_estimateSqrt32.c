@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int sbits32 ;
-typedef  size_t int8 ;
-typedef  int int16 ;
-typedef  int bits64 ;
-typedef  int bits32 ;
-typedef  int bits16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_div (int,int) ; 
+
+
+
+typedef int sbits32 ;
+typedef size_t int8 ;
+typedef int int16 ;
+typedef int bits64 ;
+typedef int bits32 ;
+typedef int bits16 ;
+
+
+ int do_div (int,int) ;
 
 __attribute__((used)) static bits32 estimateSqrt32( int16 aExp, bits32 a )
 {

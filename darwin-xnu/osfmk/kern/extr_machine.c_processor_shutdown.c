@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spl_t ;
-typedef  TYPE_1__* processor_t ;
-typedef  int /*<<< orphan*/  processor_set_t ;
-typedef  int /*<<< orphan*/  kern_return_t ;
-struct TYPE_5__ {scalar_t__ state; int /*<<< orphan*/  cpu_id; int /*<<< orphan*/  processor_set; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_FAILURE ; 
- int /*<<< orphan*/  KERN_SUCCESS ; 
- scalar_t__ PROCESSOR_DISPATCHING ; 
- scalar_t__ PROCESSOR_OFF_LINE ; 
- scalar_t__ PROCESSOR_SHUTDOWN ; 
- scalar_t__ PROCESSOR_START ; 
- int /*<<< orphan*/  cpu_exit_wait (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delay (int) ; 
- int /*<<< orphan*/  processor_doshutdown (TYPE_1__*) ; 
- int /*<<< orphan*/  pset_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pset_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pset_update_processor_state (int /*<<< orphan*/ ,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  splsched () ; 
- int /*<<< orphan*/  splx (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int spl_t ;
+typedef TYPE_1__* processor_t ;
+typedef int processor_set_t ;
+typedef int kern_return_t ;
+struct TYPE_5__ {scalar_t__ state; int cpu_id; int processor_set; } ;
+
+
+ int KERN_FAILURE ;
+ int KERN_SUCCESS ;
+ scalar_t__ PROCESSOR_DISPATCHING ;
+ scalar_t__ PROCESSOR_OFF_LINE ;
+ scalar_t__ PROCESSOR_SHUTDOWN ;
+ scalar_t__ PROCESSOR_START ;
+ int cpu_exit_wait (int ) ;
+ int delay (int) ;
+ int processor_doshutdown (TYPE_1__*) ;
+ int pset_lock (int ) ;
+ int pset_unlock (int ) ;
+ int pset_update_processor_state (int ,TYPE_1__*,scalar_t__) ;
+ int splsched () ;
+ int splx (int ) ;
 
 kern_return_t
 processor_shutdown(
-	processor_t			processor)
+ processor_t processor)
 {
-	processor_set_t		pset;
-	spl_t				s;
+ processor_set_t pset;
+ spl_t s;
 
-	s = splsched();
-	pset = processor->processor_set;
-	pset_lock(pset);
-	if (processor->state == PROCESSOR_OFF_LINE) {
-		/*
-		 * Success if already shutdown.
-		 */
-		pset_unlock(pset);
-		splx(s);
+ s = splsched();
+ pset = processor->processor_set;
+ pset_lock(pset);
+ if (processor->state == PROCESSOR_OFF_LINE) {
 
-		return (KERN_SUCCESS);
-	}
 
-	if (processor->state == PROCESSOR_START) {
-		/*
-		 * Failure if currently being started.
-		 */
-		pset_unlock(pset);
-		splx(s);
 
-		return (KERN_FAILURE);
-	}
+  pset_unlock(pset);
+  splx(s);
 
-	/*
-	 * If the processor is dispatching, let it finish.
-	 */
-	while (processor->state == PROCESSOR_DISPATCHING) {
-		pset_unlock(pset);
-		splx(s);
-		delay(1);
-		s = splsched();
-		pset_lock(pset);
-	}
+  return (KERN_SUCCESS);
+ }
 
-	/*
-	 * Success if already being shutdown.
-	 */
-	if (processor->state == PROCESSOR_SHUTDOWN) {
-		pset_unlock(pset);
-		splx(s);
+ if (processor->state == PROCESSOR_START) {
 
-		return (KERN_SUCCESS);
-	}
 
-	pset_update_processor_state(pset, processor, PROCESSOR_SHUTDOWN);
 
-	pset_unlock(pset);
+  pset_unlock(pset);
+  splx(s);
 
-	processor_doshutdown(processor);
-	splx(s);
+  return (KERN_FAILURE);
+ }
 
-	cpu_exit_wait(processor->cpu_id);
 
-	return (KERN_SUCCESS);
+
+
+ while (processor->state == PROCESSOR_DISPATCHING) {
+  pset_unlock(pset);
+  splx(s);
+  delay(1);
+  s = splsched();
+  pset_lock(pset);
+ }
+
+
+
+
+ if (processor->state == PROCESSOR_SHUTDOWN) {
+  pset_unlock(pset);
+  splx(s);
+
+  return (KERN_SUCCESS);
+ }
+
+ pset_update_processor_state(pset, processor, PROCESSOR_SHUTDOWN);
+
+ pset_unlock(pset);
+
+ processor_doshutdown(processor);
+ splx(s);
+
+ cpu_exit_wait(processor->cpu_id);
+
+ return (KERN_SUCCESS);
 }

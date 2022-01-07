@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ ignore_ppc ; 
+ scalar_t__ ignore_ppc ;
 
 void acpi_processor_ignore_ppc_init(void)
 {
-	if (ignore_ppc < 0)
-		ignore_ppc = 0;
+ if (ignore_ppc < 0)
+  ignore_ppc = 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct GlobalConfig {scalar_t__ libcurl; } ;
-typedef  int /*<<< orphan*/  preamble ;
+typedef int preamble ;
 struct TYPE_3__ {unsigned long value; scalar_t__ name; } ;
-typedef  TYPE_1__ NameValueUnsigned ;
-typedef  int /*<<< orphan*/  CURLoption ;
-typedef  int /*<<< orphan*/  CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef TYPE_1__ NameValueUnsigned ;
+typedef int CURLoption ;
+typedef int CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODE2 (char*,char*,unsigned long) ; 
- int /*<<< orphan*/  CODE3 (char*,char*,scalar_t__,char*) ; 
- int /*<<< orphan*/  CURLE_OK ; 
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,char const*,...) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int CODE2 (char*,char*,unsigned long) ;
+ int CODE3 (char*,char*,scalar_t__,char*) ;
+ int CURLE_OK ;
+ int FALSE ;
+ int TRUE ;
+ int curl_easy_setopt (int *,int ,long) ;
+ int msnprintf (char*,int,char*,char const*,...) ;
+ int strlen (char*) ;
 
 CURLcode tool_setopt_bitmask(CURL *curl, struct GlobalConfig *config,
                              const char *name, CURLoption tag,
@@ -42,27 +42,27 @@ CURLcode tool_setopt_bitmask(CURL *curl, struct GlobalConfig *config,
     skip = TRUE;
 
   if(config->libcurl && !skip && !ret) {
-    /* we only use this for real if --libcurl was used */
+
     char preamble[80];
     unsigned long rest = (unsigned long)lval;
-    const NameValueUnsigned *nv = NULL;
+    const NameValueUnsigned *nv = ((void*)0);
     msnprintf(preamble, sizeof(preamble),
               "curl_easy_setopt(hnd, %s, ", name);
     for(nv = nvlist; nv->name; nv++) {
       if((nv->value & ~ rest) == 0) {
-        /* all value flags contained in rest */
-        rest &= ~ nv->value;    /* remove bits handled here */
+
+        rest &= ~ nv->value;
         CODE3("%s(long)%s%s",
               preamble, nv->name, rest ? " |" : ");");
         if(!rest)
-          break;                /* handled them all */
-        /* replace with all spaces for continuation line */
+          break;
+
         msnprintf(preamble, sizeof(preamble), "%*s", strlen(preamble), "");
       }
     }
-    /* If any bits have no definition, output an explicit value.
-     * This could happen if new bits are defined and used
-     * but the NameValue list is not updated. */
+
+
+
     if(rest)
       CODE2("%s%luUL);", preamble, rest);
   }

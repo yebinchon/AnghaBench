@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rq {int /*<<< orphan*/  load; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  update_load_sub (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct rq {int load; } ;
+
+
+ int update_load_sub (int *,unsigned long) ;
 
 __attribute__((used)) static inline void dec_cpu_load(struct rq *rq, unsigned long load)
 {
-	update_load_sub(&rq->load, load);
+ update_load_sub(&rq->load, load);
 }

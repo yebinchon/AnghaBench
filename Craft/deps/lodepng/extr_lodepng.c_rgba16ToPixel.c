@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bitdepth; scalar_t__ colortype; } ;
-typedef  TYPE_1__ LodePNGColorMode ;
+typedef TYPE_1__ LodePNGColorMode ;
 
-/* Variables and functions */
- scalar_t__ LCT_GREY ; 
- scalar_t__ LCT_GREY_ALPHA ; 
- scalar_t__ LCT_RGB ; 
- scalar_t__ LCT_RGBA ; 
+
+ scalar_t__ LCT_GREY ;
+ scalar_t__ LCT_GREY_ALPHA ;
+ scalar_t__ LCT_RGB ;
+ scalar_t__ LCT_RGBA ;
 
 __attribute__((used)) static unsigned rgba16ToPixel(unsigned char* out, size_t i,
                               const LodePNGColorMode* mode,
                               unsigned short r, unsigned short g, unsigned short b, unsigned short a)
 {
-  if(mode->bitdepth != 16) return 85; /*must be 16 for this function*/
+  if(mode->bitdepth != 16) return 85;
   if(mode->colortype == LCT_GREY)
   {
-    unsigned short grey = r; /*((unsigned)r + g + b) / 3*/;
+    unsigned short grey = r; ;
     out[i * 2 + 0] = (grey >> 8) & 255;
     out[i * 2 + 1] = grey & 255;
   }
@@ -42,7 +42,7 @@ __attribute__((used)) static unsigned rgba16ToPixel(unsigned char* out, size_t i
   }
   else if(mode->colortype == LCT_GREY_ALPHA)
   {
-    unsigned short grey = r; /*((unsigned)r + g + b) / 3*/;
+    unsigned short grey = r; ;
     out[i * 4 + 0] = (grey >> 8) & 255;
     out[i * 4 + 1] = grey & 255;
     out[i * 4 + 2] = (a >> 8) & 255;
@@ -60,5 +60,5 @@ __attribute__((used)) static unsigned rgba16ToPixel(unsigned char* out, size_t i
     out[i * 8 + 7] = a & 255;
   }
 
-  return 0; /*no error*/
+  return 0;
 }

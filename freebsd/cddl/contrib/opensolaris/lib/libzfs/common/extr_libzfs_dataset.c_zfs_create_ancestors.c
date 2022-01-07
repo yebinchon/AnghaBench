@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libzfs_handle_t ;
-typedef  int /*<<< orphan*/  errbuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_TRUE ; 
- int /*<<< orphan*/  EZFS_INVALIDNAME ; 
- int /*<<< orphan*/  TEXT_DOMAIN ; 
- scalar_t__ check_parents (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int create_parents (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ dataset_nestcheck (char const*) ; 
- char* dgettext (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- char* strdup (char const*) ; 
- int zfs_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  zfs_error_aux (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int libzfs_handle_t ;
+typedef int errbuf ;
+
+
+ int B_TRUE ;
+ int EZFS_INVALIDNAME ;
+ int TEXT_DOMAIN ;
+ scalar_t__ check_parents (int *,char const*,int *,int ,int*) ;
+ int create_parents (int *,char*,int) ;
+ scalar_t__ dataset_nestcheck (char const*) ;
+ char* dgettext (int ,char*) ;
+ int free (char*) ;
+ int snprintf (char*,int,char*,char const*) ;
+ char* strdup (char const*) ;
+ int zfs_error (int *,int ,char*) ;
+ int zfs_error_aux (int *,char*) ;
 
 int
 zfs_create_ancestors(libzfs_handle_t *hdl, const char *path)
 {
-	int prefix;
-	char *path_copy;
-	char errbuf[1024];
-	int rc = 0;
+ int prefix;
+ char *path_copy;
+ char errbuf[1024];
+ int rc = 0;
 
-	(void) snprintf(errbuf, sizeof (errbuf), dgettext(TEXT_DOMAIN,
-	    "cannot create '%s'"), path);
+ (void) snprintf(errbuf, sizeof (errbuf), dgettext(TEXT_DOMAIN,
+     "cannot create '%s'"), path);
 
-	/*
-	 * Check that we are not passing the nesting limit
-	 * before we start creating any ancestors.
-	 */
-	if (dataset_nestcheck(path) != 0) {
-		zfs_error_aux(hdl, dgettext(TEXT_DOMAIN,
-		    "maximum name nesting depth exceeded"));
-		return (zfs_error(hdl, EZFS_INVALIDNAME, errbuf));
-	}
 
-	if (check_parents(hdl, path, NULL, B_TRUE, &prefix) != 0)
-		return (-1);
 
-	if ((path_copy = strdup(path)) != NULL) {
-		rc = create_parents(hdl, path_copy, prefix);
-		free(path_copy);
-	}
-	if (path_copy == NULL || rc != 0)
-		return (-1);
 
-	return (0);
+
+ if (dataset_nestcheck(path) != 0) {
+  zfs_error_aux(hdl, dgettext(TEXT_DOMAIN,
+      "maximum name nesting depth exceeded"));
+  return (zfs_error(hdl, EZFS_INVALIDNAME, errbuf));
+ }
+
+ if (check_parents(hdl, path, ((void*)0), B_TRUE, &prefix) != 0)
+  return (-1);
+
+ if ((path_copy = strdup(path)) != ((void*)0)) {
+  rc = create_parents(hdl, path_copy, prefix);
+  free(path_copy);
+ }
+ if (path_copy == ((void*)0) || rc != 0)
+  return (-1);
+
+ return (0);
 }

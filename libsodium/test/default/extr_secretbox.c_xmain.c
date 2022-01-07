@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__* c ; 
- int crypto_secretbox (scalar_t__*,scalar_t__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int crypto_secretbox_boxzerobytes () ; 
- unsigned int crypto_secretbox_keybytes () ; 
- unsigned int crypto_secretbox_macbytes () ; 
- unsigned int crypto_secretbox_messagebytes_max () ; 
- unsigned int crypto_secretbox_noncebytes () ; 
- int /*<<< orphan*/  crypto_secretbox_primitive () ; 
- unsigned int crypto_secretbox_xsalsa20poly1305_boxzerobytes () ; 
- unsigned int crypto_secretbox_xsalsa20poly1305_keybytes () ; 
- unsigned int crypto_secretbox_xsalsa20poly1305_macbytes () ; 
- unsigned int crypto_secretbox_xsalsa20poly1305_messagebytes_max () ; 
- unsigned int crypto_secretbox_xsalsa20poly1305_noncebytes () ; 
- unsigned int crypto_secretbox_xsalsa20poly1305_zerobytes () ; 
- unsigned int crypto_secretbox_zerobytes () ; 
- int /*<<< orphan*/  firstkey ; 
- scalar_t__* m ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  nonce ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+ int assert (int) ;
+ scalar_t__* c ;
+ int crypto_secretbox (scalar_t__*,scalar_t__*,int,int ,int ) ;
+ unsigned int crypto_secretbox_boxzerobytes () ;
+ unsigned int crypto_secretbox_keybytes () ;
+ unsigned int crypto_secretbox_macbytes () ;
+ unsigned int crypto_secretbox_messagebytes_max () ;
+ unsigned int crypto_secretbox_noncebytes () ;
+ int crypto_secretbox_primitive () ;
+ unsigned int crypto_secretbox_xsalsa20poly1305_boxzerobytes () ;
+ unsigned int crypto_secretbox_xsalsa20poly1305_keybytes () ;
+ unsigned int crypto_secretbox_xsalsa20poly1305_macbytes () ;
+ unsigned int crypto_secretbox_xsalsa20poly1305_messagebytes_max () ;
+ unsigned int crypto_secretbox_xsalsa20poly1305_noncebytes () ;
+ unsigned int crypto_secretbox_xsalsa20poly1305_zerobytes () ;
+ unsigned int crypto_secretbox_zerobytes () ;
+ int firstkey ;
+ scalar_t__* m ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
+ int nonce ;
+ int printf (char*,...) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 int
 main(void)

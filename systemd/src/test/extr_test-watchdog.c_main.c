@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int usec_t ;
 
-/* Variables and functions */
- int EPERM ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int USEC_PER_SEC ; 
- int /*<<< orphan*/  log_info (char*) ; 
- int /*<<< orphan*/  log_warning_errno (int,char*) ; 
- int slow_tests_enabled () ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usleep (int) ; 
- int /*<<< orphan*/  watchdog_close (int) ; 
- int watchdog_ping () ; 
- int watchdog_set_timeout (int*) ; 
+
+
+
+typedef int usec_t ;
+
+
+ int EPERM ;
+ int LOG_DEBUG ;
+ int USEC_PER_SEC ;
+ int log_info (char*) ;
+ int log_warning_errno (int,char*) ;
+ int slow_tests_enabled () ;
+ int test_setup_logging (int ) ;
+ int usleep (int) ;
+ int watchdog_close (int) ;
+ int watchdog_ping () ;
+ int watchdog_set_timeout (int*) ;
 
 int main(int argc, char *argv[]) {
         usec_t t;
@@ -53,6 +53,6 @@ int main(int argc, char *argv[]) {
                 usleep(t/2);
         }
 
-        watchdog_close(true);
+        watchdog_close(1);
         return 0;
 }

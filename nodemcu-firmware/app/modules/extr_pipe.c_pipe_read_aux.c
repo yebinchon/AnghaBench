@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  N ; 
- int /*<<< orphan*/  TBL ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settop (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int pipe_read (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int N ;
+ int TBL ;
+ int lua_pushvalue (int *,int ) ;
+ int lua_settop (int *,int ) ;
+ int pipe_read (int *) ;
 
 __attribute__((used)) static int pipe_read_aux(lua_State *L) {
-  lua_settop(L, 0);                /* ignore args since we use upvals instead */
+  lua_settop(L, 0);
   lua_pushvalue(L, TBL);
   lua_pushvalue(L, N);
   return pipe_read(L);

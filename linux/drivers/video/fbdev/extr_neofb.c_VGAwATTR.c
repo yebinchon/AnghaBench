@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VGA_IS1_RC ; 
- scalar_t__ paletteEnabled ; 
- int /*<<< orphan*/  vga_r (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vga_wattr (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int u8 ;
+
+
+ int VGA_IS1_RC ;
+ scalar_t__ paletteEnabled ;
+ int vga_r (int *,int ) ;
+ int vga_wattr (int *,int,int) ;
 
 __attribute__((used)) static inline void VGAwATTR(u8 index, u8 value)
 {
-	if (paletteEnabled)
-		index &= ~0x20;
-	else
-		index |= 0x20;
+ if (paletteEnabled)
+  index &= ~0x20;
+ else
+  index |= 0x20;
 
-	vga_r(NULL, VGA_IS1_RC);
-	vga_wattr(NULL, index, value);
+ vga_r(((void*)0), VGA_IS1_RC);
+ vga_wattr(((void*)0), index, value);
 }

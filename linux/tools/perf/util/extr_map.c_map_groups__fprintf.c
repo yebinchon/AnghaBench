@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct map_groups {int /*<<< orphan*/  maps; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- size_t maps__fprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct map_groups {int maps; } ;
+typedef int FILE ;
+
+
+ size_t maps__fprintf (int *,int *) ;
 
 size_t map_groups__fprintf(struct map_groups *mg, FILE *fp)
 {
-	return maps__fprintf(&mg->maps, fp);
+ return maps__fprintf(&mg->maps, fp);
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ Pointer; int /*<<< orphan*/  Length; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_NAMESPACE_NODE ;
-typedef  TYPE_1__ ACPI_BUFFER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_ALLOCATE_LOCAL_BUFFER ; 
- int /*<<< orphan*/  ACPI_FREE (scalar_t__) ; 
- scalar_t__ ACPI_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiNsHandleToPathname (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ Pointer; int Length; } ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_NAMESPACE_NODE ;
+typedef TYPE_1__ ACPI_BUFFER ;
+
+
+ int ACPI_ALLOCATE_LOCAL_BUFFER ;
+ int ACPI_FREE (scalar_t__) ;
+ scalar_t__ ACPI_SUCCESS (int ) ;
+ int AcpiNsHandleToPathname (int *,TYPE_1__*,int ) ;
+ int AcpiOsPrintf (char*,...) ;
+ int TRUE ;
 
 void
 AcpiNsPrintNodePathname (
-    ACPI_NAMESPACE_NODE     *Node,
-    const char              *Message)
+    ACPI_NAMESPACE_NODE *Node,
+    const char *Message)
 {
-    ACPI_BUFFER             Buffer;
-    ACPI_STATUS             Status;
+    ACPI_BUFFER Buffer;
+    ACPI_STATUS Status;
 
 
     if (!Node)
@@ -39,7 +39,7 @@ AcpiNsPrintNodePathname (
         return;
     }
 
-    /* Convert handle to full pathname and print it (with supplied message) */
+
 
     Buffer.Length = ACPI_ALLOCATE_LOCAL_BUFFER;
 

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  set_divisor; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int set_divisor; } ;
 struct uart_8250_port {TYPE_1__ port; } ;
-struct serial_private {int /*<<< orphan*/  dev; } ;
+struct serial_private {int dev; } ;
 struct pciserial_board {unsigned int first_offset; int flags; int uart_offset; int reg_shift; } ;
 
-/* Variables and functions */
- int FL_BASE_BARS ; 
- unsigned int FL_GET_BASE (int) ; 
- int FL_REGION_SZ_CAP ; 
- int pci_resource_len (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  pericom_do_set_divisor ; 
- int setup_port (struct serial_private*,struct uart_8250_port*,unsigned int,unsigned int,int) ; 
+
+ int FL_BASE_BARS ;
+ unsigned int FL_GET_BASE (int) ;
+ int FL_REGION_SZ_CAP ;
+ int pci_resource_len (int ,unsigned int) ;
+ int pericom_do_set_divisor ;
+ int setup_port (struct serial_private*,struct uart_8250_port*,unsigned int,unsigned int,int) ;
 
 __attribute__((used)) static int pci_pericom_setup_four_at_eight(struct serial_private *priv,
-		  const struct pciserial_board *board,
-		  struct uart_8250_port *port, int idx)
+    const struct pciserial_board *board,
+    struct uart_8250_port *port, int idx)
 {
-	unsigned int bar, offset = board->first_offset, maxnr;
+ unsigned int bar, offset = board->first_offset, maxnr;
 
-	bar = FL_GET_BASE(board->flags);
-	if (board->flags & FL_BASE_BARS)
-		bar += idx;
-	else
-		offset += idx * board->uart_offset;
+ bar = FL_GET_BASE(board->flags);
+ if (board->flags & FL_BASE_BARS)
+  bar += idx;
+ else
+  offset += idx * board->uart_offset;
 
-	if (idx==3)
-		offset = 0x38;
+ if (idx==3)
+  offset = 0x38;
 
-	maxnr = (pci_resource_len(priv->dev, bar) - board->first_offset) >>
-		(board->reg_shift + 3);
+ maxnr = (pci_resource_len(priv->dev, bar) - board->first_offset) >>
+  (board->reg_shift + 3);
 
-	if (board->flags & FL_REGION_SZ_CAP && idx >= maxnr)
-		return 1;
+ if (board->flags & FL_REGION_SZ_CAP && idx >= maxnr)
+  return 1;
 
-	port->port.set_divisor = pericom_do_set_divisor;
+ port->port.set_divisor = pericom_do_set_divisor;
 
-	return setup_port(priv, port, bar, offset, board->reg_shift);
+ return setup_port(priv, port, bar, offset, board->reg_shift);
 }

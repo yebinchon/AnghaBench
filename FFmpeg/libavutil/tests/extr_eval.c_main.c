@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  START_TIMER ; 
- int /*<<< orphan*/  STOP_TIMER (char*) ; 
- int av_expr_parse_and_eval (double*,char const* const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const_names ; 
- int /*<<< orphan*/  const_values ; 
- scalar_t__ isnan (double) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+ int START_TIMER ;
+ int STOP_TIMER (char*) ;
+ int av_expr_parse_and_eval (double*,char const* const,int ,int ,int *,int *,int *,int *,int *,int ,int *) ;
+ int const_names ;
+ int const_values ;
+ scalar_t__ isnan (double) ;
+ int printf (char*,...) ;
+ int strcmp (char*,char*) ;
 
 int main(int argc, char **argv)
 {
@@ -67,9 +59,9 @@ int main(int argc, char **argv)
         "gt(1, 0)",
         "gt(2, 7)",
         "gte(122, 122)",
-        /* compute 1+2+...+N */
+
         "st(0, 1); while(lte(ld(0), 100), st(1, ld(1)+ld(0));st(0, ld(0)+1)); ld(1)",
-        /* compute Fib(N) */
+
         "st(1, 1); st(2, 2); st(0, 1); while(lte(ld(0),10), st(3, ld(1)+ld(2)); st(1, ld(2)); st(2, ld(3)); st(0, ld(0)+1)); ld(3)",
         "while(0, 10)",
         "st(0, 1); while(lte(ld(0),100), st(1, ld(1)+ld(0)); st(0, ld(0)+1))",
@@ -122,7 +114,7 @@ int main(int argc, char **argv)
         "clip(0, 2, 1)",
         "clip(0/0, 1, 2)",
         "clip(0, 0/0, 1)",
-        NULL
+        ((void*)0)
     };
     int ret;
 
@@ -130,7 +122,7 @@ int main(int argc, char **argv)
         printf("Evaluating '%s'\n", *expr);
         ret = av_expr_parse_and_eval(&d, *expr,
                                const_names, const_values,
-                               NULL, NULL, NULL, NULL, NULL, 0, NULL);
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, ((void*)0));
         if (isnan(d))
             printf("'%s' -> nan\n\n", *expr);
         else
@@ -141,13 +133,13 @@ int main(int argc, char **argv)
 
     ret = av_expr_parse_and_eval(&d, "1+(5-2)^(3-1)+1/2+sin(PI)-max(-2.2,-3.1)",
                            const_names, const_values,
-                           NULL, NULL, NULL, NULL, NULL, 0, NULL);
+                           ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, ((void*)0));
     printf("%f == 12.7\n", d);
     if (ret < 0)
         printf("av_expr_parse_and_eval failed\n");
     ret = av_expr_parse_and_eval(&d, "80G/80Gi",
                            const_names, const_values,
-                           NULL, NULL, NULL, NULL, NULL, 0, NULL);
+                           ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, ((void*)0));
     printf("%f == 0.931322575\n", d);
     if (ret < 0)
         printf("av_expr_parse_and_eval failed\n");
@@ -157,7 +149,7 @@ int main(int argc, char **argv)
             START_TIMER;
             ret = av_expr_parse_and_eval(&d, "1+(5-2)^(3-1)+1/2+sin(PI)-max(-2.2,-3.1)",
                                    const_names, const_values,
-                                   NULL, NULL, NULL, NULL, NULL, 0, NULL);
+                                   ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, ((void*)0));
             if (ret < 0)
                 printf("av_expr_parse_and_eval failed\n");
             STOP_TIMER("av_expr_parse_and_eval");

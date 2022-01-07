@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ fpos_t ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ fpos_t ;
 struct TYPE_10__ {scalar_t__ _cnt; int _flag; scalar_t__ _ptr; scalar_t__ _base; } ;
-typedef  TYPE_1__ FILE ;
+typedef TYPE_1__ FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int _IOREAD ; 
- int /*<<< orphan*/  _snprintf (char*,int,char*) ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  fflush (TYPE_1__*) ; 
- int /*<<< orphan*/  fgetpos (TYPE_1__*,scalar_t__*) ; 
- int fileno (TYPE_1__*) ; 
- int fread (char*,int,int,TYPE_1__*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  fseek (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,TYPE_1__*) ; 
- int /*<<< orphan*/  lseek (int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  rewind (TYPE_1__*) ; 
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int _IOREAD ;
+ int _snprintf (char*,int,char*) ;
+ char* calloc (int,int) ;
+ int fflush (TYPE_1__*) ;
+ int fgetpos (TYPE_1__*,scalar_t__*) ;
+ int fileno (TYPE_1__*) ;
+ int fread (char*,int,int,TYPE_1__*) ;
+ int free (char*) ;
+ int fseek (TYPE_1__*,int,int ) ;
+ int fwrite (char*,int,int,TYPE_1__*) ;
+ int lseek (int,int,int ) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ int rewind (TYPE_1__*) ;
 
 __attribute__((used)) static void test_write_flush_size(FILE *file, int bufsize)
 {
@@ -49,9 +49,9 @@ __attribute__((used)) static void test_write_flush_size(FILE *file, int bufsize)
         rewind(file);
         ok(file->_cnt == 0, "_cnt should be 0 after rewind, but is %d\n", file->_cnt);
         fwrite(outbuffer, 1, size, file);
-        /* lseek() below intentionally redirects the write in fflush() to detect
-         * if fwrite() has already flushed the whole buffer or not.
-         */
+
+
+
         lseek(fd, 1, SEEK_SET);
         fflush(file);
         ok(file->_cnt == 0, "_cnt should be 0 after fflush, but is %d\n", file->_cnt);

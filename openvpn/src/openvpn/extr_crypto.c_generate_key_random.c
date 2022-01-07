@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct key_type {int cipher_length; int hmac_length; scalar_t__ digest; scalar_t__ cipher; } ;
-struct key {int /*<<< orphan*/  hmac; int /*<<< orphan*/  cipher; } ;
+struct key {int hmac; int cipher; } ;
 struct gc_arena {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (struct key) ; 
- int /*<<< orphan*/  D_SHOW_KEY_SOURCE ; 
- int MAX_CIPHER_KEY_LENGTH ; 
- int MAX_HMAC_KEY_LENGTH ; 
- int /*<<< orphan*/  M_FATAL ; 
- int /*<<< orphan*/  check_key (struct key*,struct key_type const*) ; 
- int /*<<< orphan*/  dmsg (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fixup_key (struct key*,struct key_type const*) ; 
- int /*<<< orphan*/  format_hex (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,struct gc_arena*) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  rand_bytes (int /*<<< orphan*/ ,int) ; 
+
+ int CLEAR (struct key) ;
+ int D_SHOW_KEY_SOURCE ;
+ int MAX_CIPHER_KEY_LENGTH ;
+ int MAX_HMAC_KEY_LENGTH ;
+ int M_FATAL ;
+ int check_key (struct key*,struct key_type const*) ;
+ int dmsg (int ,char*,int ) ;
+ int fixup_key (struct key*,struct key_type const*) ;
+ int format_hex (int ,int,int ,struct gc_arena*) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int ,char*) ;
+ int rand_bytes (int ,int) ;
 
 void
 generate_key_random(struct key *key, const struct key_type *kt)

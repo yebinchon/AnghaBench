@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  state ;
-typedef  int /*<<< orphan*/  sec ;
-typedef  int /*<<< orphan*/  part ;
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  char* LPCWSTR ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int MAX_THEME_APP_NAME ; 
- int MAX_THEME_CLASS_NAME ; 
- int /*<<< orphan*/  MSSTYLES_LookupPartState (char*,char*,char*,int*,int*) ; 
- int /*<<< orphan*/  lstrcpynW (char*,char*,int) ; 
- int min (scalar_t__,int) ; 
- char* strchrW (char*,char) ; 
+
+
+
+typedef int state ;
+typedef int sec ;
+typedef int part ;
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef char* LPCWSTR ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int MAX_THEME_APP_NAME ;
+ int MAX_THEME_CLASS_NAME ;
+ int MSSTYLES_LookupPartState (char*,char*,char*,int*,int*) ;
+ int lstrcpynW (char*,char*,int) ;
+ int min (scalar_t__,int) ;
+ char* strchrW (char*,char) ;
 
 __attribute__((used)) static BOOL MSSTYLES_ParseIniSectionName(LPCWSTR lpSection, DWORD dwLen, LPWSTR szAppName, LPWSTR szClassName, int *iPartId, int *iStateId)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static BOOL MSSTYLES_ParseIniSectionName(LPCWSTR lpSection
     *iPartId = 0;
     *iStateId = 0;
     comp = sec;
-    /* Get the application name */
+
     tmp = strchrW(comp, ':');
     if(tmp) {
         *tmp++ = 0;
@@ -56,13 +56,13 @@ __attribute__((used)) static BOOL MSSTYLES_ParseIniSectionName(LPCWSTR lpSection
         *tmp++ = 0;
         lstrcpynW(szClassName, comp, MAX_THEME_CLASS_NAME);
         comp = tmp;
-        /* now get the part & state */
+
         tmp = strchrW(comp, '(');
         if(tmp) {
             *tmp++ = 0;
             lstrcpynW(part, comp, sizeof(part)/sizeof(part[0]));
             comp = tmp;
-            /* now get the state */
+
             tmp = strchrW(comp, ')');
             if (!tmp)
                 return FALSE;
@@ -79,7 +79,7 @@ __attribute__((used)) static BOOL MSSTYLES_ParseIniSectionName(LPCWSTR lpSection
             *tmp++ = 0;
             lstrcpynW(szClassName, comp, MAX_THEME_CLASS_NAME);
             comp = tmp;
-            /* now get the state */
+
             tmp = strchrW(comp, ')');
             if (!tmp)
                 return FALSE;
@@ -91,5 +91,5 @@ __attribute__((used)) static BOOL MSSTYLES_ParseIniSectionName(LPCWSTR lpSection
         }
     }
     if(!*szClassName) return FALSE;
-    return MSSTYLES_LookupPartState(szClassName, part[0]?part:NULL, state[0]?state:NULL, iPartId, iStateId);
+    return MSSTYLES_LookupPartState(szClassName, part[0]?part:((void*)0), state[0]?state:((void*)0), iPartId, iStateId);
 }

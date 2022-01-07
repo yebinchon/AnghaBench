@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int words; int phrases_cnt; int /*<<< orphan*/ * phrases; void* words_buf; } ;
-typedef  TYPE_1__ watchcat_query_t ;
-typedef  int /*<<< orphan*/  watchcat_query_phrase_t ;
-struct TYPE_8__ {int words; int /*<<< orphan*/  words_buf; int /*<<< orphan*/ * phrases; } ;
-typedef  TYPE_2__ searchy_query_t ;
-typedef  int /*<<< orphan*/  hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cmp_watchcat_query_phrase ; 
- void* dl_malloc (int) ; 
- TYPE_1__* dl_malloc0 (int) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  qsort (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * searchy_phrases_dump (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,void*,int /*<<< orphan*/ ) ; 
- int searchy_phrases_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  searchy_query_free (TYPE_2__*) ; 
- int /*<<< orphan*/  searchy_query_parse (TYPE_2__*,char*) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int words; int phrases_cnt; int * phrases; void* words_buf; } ;
+typedef TYPE_1__ watchcat_query_t ;
+typedef int watchcat_query_phrase_t ;
+struct TYPE_8__ {int words; int words_buf; int * phrases; } ;
+typedef TYPE_2__ searchy_query_t ;
+typedef int hash_t ;
+
+
+ int assert (int) ;
+ int cmp_watchcat_query_phrase ;
+ void* dl_malloc (int) ;
+ TYPE_1__* dl_malloc0 (int) ;
+ int memcpy (void*,int ,size_t) ;
+ int qsort (int *,int,int,int ) ;
+ int * searchy_phrases_dump (int *,int ,int,void*,int ) ;
+ int searchy_phrases_length (int ) ;
+ int searchy_query_free (TYPE_2__*) ;
+ int searchy_query_parse (TYPE_2__*,char*) ;
 
 watchcat_query_t *create_watchcat_query (char *s) {
   static searchy_query_t Q;

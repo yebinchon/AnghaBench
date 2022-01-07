@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HRSRC ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FindResourceA (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- char* LoadResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int SizeofResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * HRSRC ;
+typedef int DWORD ;
+
+
+ int * FindResourceA (int *,char const*,char const*) ;
+ int GetLastError () ;
+ char* LoadResource (int *,int *) ;
+ int SizeofResource (int *,int *) ;
+ int ok (int ,char*,char const*,int ) ;
 
 __attribute__((used)) static DWORD load_resource(const char *name, const char *type, const char **ret)
 {
@@ -26,13 +26,13 @@ __attribute__((used)) static DWORD load_resource(const char *name, const char *t
     HRSRC src;
     DWORD size;
 
-    src = FindResourceA(NULL, name, type);
-    ok(src != NULL, "Could not find resource %s: %u\n", name, GetLastError());
+    src = FindResourceA(((void*)0), name, type);
+    ok(src != ((void*)0), "Could not find resource %s: %u\n", name, GetLastError());
     if(!src)
         return 0;
 
-    res = LoadResource(NULL, src);
-    size = SizeofResource(NULL, src);
+    res = LoadResource(((void*)0), src);
+    size = SizeofResource(((void*)0), src);
     while(size && !res[size-1])
         size--;
 

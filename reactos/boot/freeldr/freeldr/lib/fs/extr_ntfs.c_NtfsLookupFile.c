@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__ UCHAR ;
-typedef  int /*<<< orphan*/  PNTFS_VOLUME_INFO ;
-typedef  int /*<<< orphan*/  PNTFS_MFT_RECORD ;
-typedef  int /*<<< orphan*/ * PNTFS_ATTR_CONTEXT ;
-typedef  char* PCSTR ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FsGetFirstNameFromPath (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ FsGetNumPathParts (char*) ; 
- int /*<<< orphan*/  NTFS_ATTR_TYPE_DATA ; 
- int /*<<< orphan*/  NTFS_FILE_ROOT ; 
- int /*<<< orphan*/ * NtfsFindAttribute (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NtfsFindMftRecord (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtfsReadMftRecord (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int ULONGLONG ;
+typedef scalar_t__ ULONG ;
+typedef scalar_t__ UCHAR ;
+typedef int PNTFS_VOLUME_INFO ;
+typedef int PNTFS_MFT_RECORD ;
+typedef int * PNTFS_ATTR_CONTEXT ;
+typedef char* PCSTR ;
+typedef int CHAR ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+ int FsGetFirstNameFromPath (int *,char*) ;
+ scalar_t__ FsGetNumPathParts (char*) ;
+ int NTFS_ATTR_TYPE_DATA ;
+ int NTFS_FILE_ROOT ;
+ int * NtfsFindAttribute (int ,int ,int ,char*) ;
+ int NtfsFindMftRecord (int ,int ,int *,int *) ;
+ int NtfsReadMftRecord (int ,int ,int ) ;
+ int TRACE (char*,...) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOLEAN NtfsLookupFile(PNTFS_VOLUME_INFO Volume, PCSTR FileName, PNTFS_MFT_RECORD MftRecord, PNTFS_ATTR_CONTEXT *DataContext)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static BOOLEAN NtfsLookupFile(PNTFS_VOLUME_INFO Volume, PC
     }
 
     *DataContext = NtfsFindAttribute(Volume, MftRecord, NTFS_ATTR_TYPE_DATA, L"");
-    if (*DataContext == NULL)
+    if (*DataContext == ((void*)0))
     {
         TRACE("NtfsLookupFile: Can't find data attribute\n");
         return FALSE;

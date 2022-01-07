@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/ * PHANDLE ;
-typedef  int /*<<< orphan*/  PFILE_OBJECT ;
-typedef  int /*<<< orphan*/  PFILE_FULL_EA_INFORMATION ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  IO_STATUS_BLOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_OPEN_IF ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KernelMode ; 
- int /*<<< orphan*/  MIN_TRACE ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  ObReferenceObjectByHandle (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TDI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ZwClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZwCreateFile (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UNICODE_STRING ;
+typedef int ULONG ;
+typedef int PWSTR ;
+typedef int PVOID ;
+typedef int * PHANDLE ;
+typedef int PFILE_OBJECT ;
+typedef int PFILE_FULL_EA_INFORMATION ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int IO_STATUS_BLOCK ;
+
+
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_OPEN_IF ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int InitializeObjectAttributes (int *,int *,int ,int *,int *) ;
+ int KernelMode ;
+ int MIN_TRACE ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int ObReferenceObjectByHandle (int ,int,int *,int ,int *,int *) ;
+ int RtlInitUnicodeString (int *,int ) ;
+ int TDI_DbgPrint (int ,char*) ;
+ int ZwClose (int ) ;
+ int ZwCreateFile (int *,int,int *,int *,int ,int ,int,int ,int ,int ,int ) ;
 
 NTSTATUS TdiOpenDevice(
     PWSTR Protocol,
@@ -45,64 +45,53 @@ NTSTATUS TdiOpenDevice(
     PFILE_FULL_EA_INFORMATION EaInfo,
     PHANDLE Handle,
     PFILE_OBJECT *Object)
-/*
- * FUNCTION: Opens a device
- * ARGUMENTS:
- *     Protocol = Pointer to buffer with name of device
- *     EaLength = Length of EA information
- *     EaInfo   = Pointer to buffer with EA information
- *     Handle   = Address of buffer to place device handle
- *     Object   = Address of buffer to place device object
- * RETURNS:
- *     Status of operation
- */
 {
-	OBJECT_ATTRIBUTES Attr;
-	IO_STATUS_BLOCK Iosb;
-	UNICODE_STRING Name;
-	NTSTATUS Status;
+ OBJECT_ATTRIBUTES Attr;
+ IO_STATUS_BLOCK Iosb;
+ UNICODE_STRING Name;
+ NTSTATUS Status;
 
-	RtlInitUnicodeString(&Name, Protocol);
-	InitializeObjectAttributes(
-		&Attr,                   /* Attribute buffer */
-		&Name,                   /* Device name */
-		OBJ_CASE_INSENSITIVE,    /* Attributes */
-		NULL,                    /* Root directory */
-		NULL);                   /* Security descriptor */
+ RtlInitUnicodeString(&Name, Protocol);
+ InitializeObjectAttributes(
+  &Attr,
+  &Name,
+  OBJ_CASE_INSENSITIVE,
+  ((void*)0),
+  ((void*)0));
 
-	Status = ZwCreateFile(
-		Handle,                               /* Return file handle */
-		GENERIC_READ | GENERIC_WRITE,         /* Desired access */
-		&Attr,                                /* Object attributes */
-		&Iosb,                                /* IO status */
-		0,                                    /* Initial allocation size */
-		FILE_ATTRIBUTE_NORMAL,                /* File attributes */
-		FILE_SHARE_READ | FILE_SHARE_WRITE,   /* Share access */
-		FILE_OPEN_IF,                         /* Create disposition */
-		0,                                    /* Create options */
-		EaInfo,                               /* EA buffer */
-		EaLength);                            /* EA length */
+ Status = ZwCreateFile(
+  Handle,
+  GENERIC_READ | GENERIC_WRITE,
+  &Attr,
+  &Iosb,
+  0,
+  FILE_ATTRIBUTE_NORMAL,
+  FILE_SHARE_READ | FILE_SHARE_WRITE,
+  FILE_OPEN_IF,
+  0,
+  EaInfo,
+  EaLength);
 
-	if (NT_SUCCESS(Status))
-		{
-			Status  = ObReferenceObjectByHandle(
-				*Handle,                        /* Handle to open file */
-				GENERIC_READ | GENERIC_WRITE,   /* Access mode */
-				NULL,                           /* Object type */
-				KernelMode,                     /* Access mode */
-				(PVOID*)Object,                 /* Pointer to object */
-				NULL);                          /* Handle information */
+ if (NT_SUCCESS(Status))
+  {
+   Status = ObReferenceObjectByHandle(
+    *Handle,
+    GENERIC_READ | GENERIC_WRITE,
+    ((void*)0),
+    KernelMode,
+    (PVOID*)Object,
+    ((void*)0));
 
-			if (!NT_SUCCESS(Status))
-				{
-					TDI_DbgPrint(MIN_TRACE, ("ObReferenceObjectByHandle() failed with status (0x%X).\n", Status));
-					ZwClose(*Handle);
-				}
-		}
-	else
-		{
-			TDI_DbgPrint(MIN_TRACE, ("ZwCreateFile() failed with status (0x%X)\n", Status));
-		}
+   if (!NT_SUCCESS(Status))
+    {
+     TDI_DbgPrint(MIN_TRACE, ("ObReferenceObjectByHandle() failed with status (0x%X).\n", Status));
+     ZwClose(*Handle);
+    }
+  }
+ else
+  {
+   TDI_DbgPrint(MIN_TRACE, ("ZwCreateFile() failed with status (0x%X)\n", Status));
+  }
 
     return Status;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  THSetGCHandler (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int luaT_checkboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * luaTorchGCFunction ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int THSetGCHandler (int *,int *) ;
+ int luaT_checkboolean (int *,int) ;
+ int * luaTorchGCFunction ;
+ int lua_getglobal (int *,char*) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
 
 __attribute__((used)) static int torch_setheaptracking(lua_State *L)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static int torch_setheaptracking(lua_State *L)
   if(enabled) {
     THSetGCHandler(luaTorchGCFunction, L);
   } else {
-    THSetGCHandler(NULL, NULL);
+    THSetGCHandler(((void*)0), ((void*)0));
   }
   return 0;
 }

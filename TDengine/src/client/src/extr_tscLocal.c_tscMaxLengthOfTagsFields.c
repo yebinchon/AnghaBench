@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
 struct TYPE_12__ {TYPE_3__* pMeterMeta; } ;
 struct TYPE_11__ {scalar_t__ meterType; size_t numOfTags; } ;
-struct TYPE_10__ {int /*<<< orphan*/  bytes; int /*<<< orphan*/  type; } ;
-struct TYPE_9__ {int /*<<< orphan*/  cmd; } ;
-typedef  TYPE_1__ SSqlObj ;
-typedef  TYPE_2__ SSchema ;
-typedef  TYPE_3__ SMeterMeta ;
+struct TYPE_10__ {int bytes; int type; } ;
+struct TYPE_9__ {int cmd; } ;
+typedef TYPE_1__ SSqlObj ;
+typedef TYPE_2__ SSchema ;
+typedef TYPE_3__ SMeterMeta ;
 
-/* Variables and functions */
- scalar_t__ TSDB_METER_METRIC ; 
- scalar_t__ TSDB_METER_OTABLE ; 
- scalar_t__ TSDB_METER_STABLE ; 
- size_t getToStringLength (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* tsGetTagSchema (TYPE_3__*) ; 
- char* tsGetTagsValue (TYPE_3__*) ; 
- TYPE_5__* tscGetMeterMetaInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ TSDB_METER_METRIC ;
+ scalar_t__ TSDB_METER_OTABLE ;
+ scalar_t__ TSDB_METER_STABLE ;
+ size_t getToStringLength (char*,int ,int ) ;
+ TYPE_2__* tsGetTagSchema (TYPE_3__*) ;
+ char* tsGetTagsValue (TYPE_3__*) ;
+ TYPE_5__* tscGetMeterMetaInfo (int *,int ) ;
 
 __attribute__((used)) static int32_t tscMaxLengthOfTagsFields(SSqlObj *pSql) {
   SMeterMeta *pMeta = tscGetMeterMetaInfo(&pSql->cmd, 0)->pMeterMeta;
@@ -40,7 +40,7 @@ __attribute__((used)) static int32_t tscMaxLengthOfTagsFields(SSqlObj *pSql) {
     return 0;
   }
 
-  char *   pTagValue = tsGetTagsValue(pMeta);
+  char * pTagValue = tsGetTagsValue(pMeta);
   SSchema *pTagsSchema = tsGetTagSchema(pMeta);
 
   int32_t len = getToStringLength(pTagValue, pTagsSchema[0].bytes, pTagsSchema[0].type);

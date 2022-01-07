@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FFEBUR128State ;
 
-/* Variables and functions */
- int ff_ebur128_loudness_range_multiple (int /*<<< orphan*/ **,int,double*) ; 
+
+
+
+typedef int FFEBUR128State ;
+
+
+ int ff_ebur128_loudness_range_multiple (int **,int,double*) ;
 
 int ff_ebur128_loudness_range(FFEBUR128State * st, double *out)
 {

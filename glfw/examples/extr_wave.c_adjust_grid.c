@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {float z; } ;
 
-/* Variables and functions */
- int GRIDH ; 
- int GRIDW ; 
- double** p ; 
- TYPE_1__* vertex ; 
+
+ int GRIDH ;
+ int GRIDW ;
+ double** p ;
+ TYPE_1__* vertex ;
 
 void adjust_grid(void)
 {
     int pos;
     int x, y;
 
-    for (y = 0; y < GRIDH;  y++)
+    for (y = 0; y < GRIDH; y++)
     {
-        for (x = 0;  x < GRIDW;  x++)
+        for (x = 0; x < GRIDW; x++)
         {
             pos = y * GRIDW + x;
             vertex[pos].z = (float) (p[x][y] * (1.0 / 50.0));

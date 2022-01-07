@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  REG_CPSR ; 
- int /*<<< orphan*/  writeRegister (int /*<<< orphan*/ ,unsigned long const) ; 
+ int REG_CPSR ;
+ int writeRegister (int ,unsigned long const) ;
 
 __attribute__((used)) static inline void writeCPSR(const unsigned long val)
 {
-	writeRegister(REG_CPSR, val);
+ writeRegister(REG_CPSR, val);
 }

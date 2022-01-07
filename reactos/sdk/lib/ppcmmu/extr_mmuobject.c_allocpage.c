@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {void* addr; } ;
-typedef  TYPE_1__ ppc_map_t ;
+typedef TYPE_1__ ppc_map_t ;
 struct TYPE_7__ {struct TYPE_7__* next; } ;
-typedef  TYPE_2__ MmuFreePage ;
+typedef TYPE_2__ MmuFreePage ;
 
-/* Variables and functions */
- TYPE_2__* FreeList ; 
- void* MMU_ADDR_RESERVED ; 
- int NextPage ; 
- int PPC_PAGE_NUMBER (int /*<<< orphan*/ ) ; 
- TYPE_1__* PpcPageTable ; 
- int /*<<< orphan*/  RamSize ; 
- int /*<<< orphan*/  fmtout (char*,...) ; 
- int /*<<< orphan*/  mmuisfreepage (int) ; 
+
+ TYPE_2__* FreeList ;
+ void* MMU_ADDR_RESERVED ;
+ int NextPage ;
+ int PPC_PAGE_NUMBER (int ) ;
+ TYPE_1__* PpcPageTable ;
+ int RamSize ;
+ int fmtout (char*,...) ;
+ int mmuisfreepage (int) ;
 
 ppc_map_t *allocpage()
 {
@@ -39,10 +39,10 @@ ppc_map_t *allocpage()
             while(1);
         }
 
-	FreePage = FreeList;
-	FreeList = FreeList->next;
+ FreePage = FreeList;
+ FreeList = FreeList->next;
         ((ppc_map_t*)FreePage)->addr = MMU_ADDR_RESERVED;
-	return ((ppc_map_t*)FreePage);
+ return ((ppc_map_t*)FreePage);
     }
     else
     {
@@ -57,13 +57,13 @@ ppc_map_t *allocpage()
                 fmtout("Problem! NextPage is low (%x)\n", NextPage);
                 while(1);
             }
-            
+
             PpcPageTable[NextPage].addr = MMU_ADDR_RESERVED;
             return &PpcPageTable[NextPage++];
         }
         else
         {
-            return NULL;
+            return ((void*)0);
         }
     }
 }

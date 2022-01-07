@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdebug_queued_cmd {int /*<<< orphan*/ * a_cmnd; scalar_t__ in_use; int /*<<< orphan*/  cmnd_timer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer_sync (int /*<<< orphan*/ *) ; 
- struct sdebug_queued_cmd* queued_arr ; 
- int /*<<< orphan*/  queued_arr_lock ; 
- int scsi_debug_max_queue ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct sdebug_queued_cmd {int * a_cmnd; scalar_t__ in_use; int cmnd_timer; } ;
+
+
+ int del_timer_sync (int *) ;
+ struct sdebug_queued_cmd* queued_arr ;
+ int queued_arr_lock ;
+ int scsi_debug_max_queue ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void stop_all_queued(void)
 {
-	unsigned long iflags;
-	int k;
-	struct sdebug_queued_cmd *sqcp;
+ unsigned long iflags;
+ int k;
+ struct sdebug_queued_cmd *sqcp;
 
-	spin_lock_irqsave(&queued_arr_lock, iflags);
-	for (k = 0; k < scsi_debug_max_queue; ++k) {
-		sqcp = &queued_arr[k];
-		if (sqcp->in_use && sqcp->a_cmnd) {
-			del_timer_sync(&sqcp->cmnd_timer);
-			sqcp->in_use = 0;
-			sqcp->a_cmnd = NULL;
-		}
-	}
-	spin_unlock_irqrestore(&queued_arr_lock, iflags);
+ spin_lock_irqsave(&queued_arr_lock, iflags);
+ for (k = 0; k < scsi_debug_max_queue; ++k) {
+  sqcp = &queued_arr[k];
+  if (sqcp->in_use && sqcp->a_cmnd) {
+   del_timer_sync(&sqcp->cmnd_timer);
+   sqcp->in_use = 0;
+   sqcp->a_cmnd = ((void*)0);
+  }
+ }
+ spin_unlock_irqrestore(&queued_arr_lock, iflags);
 }

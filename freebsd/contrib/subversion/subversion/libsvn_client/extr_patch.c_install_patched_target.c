@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_9__ {int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; int /*<<< orphan*/  wc_ctx; } ;
-typedef  TYPE_2__ svn_client_ctx_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_10__ {char const* local_abspath; scalar_t__ kind_on_disk; char const* move_target_abspath; int /*<<< orphan*/  executable; scalar_t__ added; TYPE_1__* content; int /*<<< orphan*/  patched_path; scalar_t__ git_symlink_format; scalar_t__ is_special; void* skipped; void* obstructed; scalar_t__ deleted; } ;
-typedef  TYPE_3__ patch_target_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
-struct TYPE_8__ {scalar_t__ eol_style; int /*<<< orphan*/  keywords; int /*<<< orphan*/  eol_str; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* TRUE ; 
- int /*<<< orphan*/  create_missing_parents (TYPE_3__*,char const*,TYPE_2__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_remove_file2 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_set_file_executable (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_puts (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  svn_subst_copy_and_translate4 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_create_specialfile (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_subst_eol_style_fixed ; 
- scalar_t__ svn_subst_eol_style_native ; 
- int /*<<< orphan*/  svn_wc__move2 (int /*<<< orphan*/ ,char const*,char const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_add_from_disk3 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_delete4 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_read_kind2 (scalar_t__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+struct TYPE_9__ {int cancel_baton; int cancel_func; int wc_ctx; } ;
+typedef TYPE_2__ svn_client_ctx_t ;
+typedef int svn_boolean_t ;
+struct TYPE_10__ {char const* local_abspath; scalar_t__ kind_on_disk; char const* move_target_abspath; int executable; scalar_t__ added; TYPE_1__* content; int patched_path; scalar_t__ git_symlink_format; scalar_t__ is_special; void* skipped; void* obstructed; scalar_t__ deleted; } ;
+typedef TYPE_3__ patch_target_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+struct TYPE_8__ {scalar_t__ eol_style; int keywords; int eol_str; } ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* TRUE ;
+ int create_missing_parents (TYPE_3__*,char const*,TYPE_2__*,int,int *,int *) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_io_check_path (char const*,scalar_t__*,int *) ;
+ int svn_io_remove_file2 (char const*,int ,int *) ;
+ int svn_io_set_file_executable (char const*,int ,int ,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ int svn_stream_copy3 (int *,int *,int ,int ,int *) ;
+ int svn_stream_open_readonly (int **,int ,int *,int *) ;
+ int svn_stream_puts (int *,char*) ;
+ int svn_subst_copy_and_translate4 (int ,char const*,int ,int,int ,void*,int ,int ,int ,int *) ;
+ int svn_subst_create_specialfile (int **,char const*,int *,int *) ;
+ scalar_t__ svn_subst_eol_style_fixed ;
+ scalar_t__ svn_subst_eol_style_native ;
+ int svn_wc__move2 (int ,char const*,char const*,void*,int ,int ,int ,int *,int *,int *) ;
+ int svn_wc_add_from_disk3 (int ,char const*,int *,int ,int *,int *,int *) ;
+ int svn_wc_delete4 (int ,char const*,int ,int ,int ,int ,int *,int *,int *) ;
+ int svn_wc_read_kind2 (scalar_t__*,int ,char const*,int ,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 install_patched_target(patch_target_t *target, const char *abs_wc_path,
@@ -60,15 +60,15 @@ install_patched_target(patch_target_t *target, const char *abs_wc_path,
     {
       if (! dry_run)
         {
-          /* Schedule the target for deletion.  Suppress
-           * notification, we'll do it manually in a minute
-           * because we also need to notify during dry-run.
-           * Also suppress cancellation, because we'd rather
-           * notify about what we did before aborting. */
+
+
+
+
+
           SVN_ERR(svn_wc_delete4(ctx->wc_ctx, target->local_abspath,
-                                 FALSE /* keep_local */, FALSE,
+                                 FALSE , FALSE,
                                  ctx->cancel_func, ctx->cancel_baton,
-                                 NULL, NULL /* notify */,
+                                 ((void*)0), ((void*)0) ,
                                  pool));
         }
     }
@@ -81,14 +81,14 @@ install_patched_target(patch_target_t *target, const char *abs_wc_path,
 
           parent_abspath = svn_dirent_dirname(target->local_abspath,
                                               pool);
-          /* If the target's parent directory does not yet exist
-           * we need to create it before we can copy the patched
-           * result in place. */
+
+
+
           SVN_ERR(svn_wc_read_kind2(&parent_db_kind, ctx->wc_ctx,
                                     parent_abspath, FALSE, FALSE, pool));
 
-          /* We can't add targets under nodes scheduled for delete, so add
-             a new directory if needed. */
+
+
           if (parent_db_kind == svn_node_dir
               || parent_db_kind == svn_node_file)
             {
@@ -112,7 +112,7 @@ install_patched_target(patch_target_t *target, const char *abs_wc_path,
         {
           svn_node_kind_t wc_kind;
 
-          /* The target should exist */
+
           SVN_ERR(svn_wc_read_kind2(&wc_kind, ctx->wc_ctx,
                                     target->local_abspath,
                                     FALSE, FALSE, pool));
@@ -149,9 +149,9 @@ install_patched_target(patch_target_t *target, const char *abs_wc_path,
             {
               svn_boolean_t repair_eol;
 
-              /* Copy the patched file on top of the target file.
-               * Always expand keywords in the patched file, but repair EOL
-               * only if svn:eol-style dictates a particular style. */
+
+
+
               repair_eol = (target->content->eol_style ==
                               svn_subst_eol_style_fixed ||
                             target->content->eol_style ==
@@ -164,24 +164,24 @@ install_patched_target(patch_target_t *target, const char *abs_wc_path,
                           : target->local_abspath,
                         target->content->eol_str, repair_eol,
                         target->content->keywords,
-                        TRUE /* expand */, FALSE /* special */,
+                        TRUE , FALSE ,
                         ctx->cancel_func, ctx->cancel_baton, pool));
             }
 
           if (target->added)
             {
-              /* The target file didn't exist previously,
-               * so add it to version control.
-               * Suppress notification, we'll do that later (and also
-               * during dry-run). Don't allow cancellation because
-               * we'd rather notify about what we did before aborting. */
+
+
+
+
+
               SVN_ERR(svn_wc_add_from_disk3(ctx->wc_ctx, target->local_abspath,
-                                            NULL /*props*/,
-                                            FALSE /* skip checks */,
-                                            NULL, NULL, pool));
+                                            ((void*)0) ,
+                                            FALSE ,
+                                            ((void*)0), ((void*)0), pool));
             }
 
-          /* Restore the target's executable bit if necessary. */
+
           SVN_ERR(svn_io_set_file_executable(target->move_target_abspath
                                                ? target->move_target_abspath
                                                : target->local_abspath,
@@ -190,23 +190,23 @@ install_patched_target(patch_target_t *target, const char *abs_wc_path,
 
           if (target->move_target_abspath)
             {
-              /* ### Copying the patched content to the move target location,
-               * performing the move in meta-data, and removing the file at
-               * the move source should be one atomic operation. */
 
-              /* ### Create missing parents. */
 
-              /* Perform the move in meta-data. */
+
+
+
+
+
               SVN_ERR(svn_wc__move2(ctx->wc_ctx,
                                     target->local_abspath,
                                     target->move_target_abspath,
-                                    TRUE, /* metadata_only */
-                                    FALSE, /* allow_mixed_revisions */
+                                    TRUE,
+                                    FALSE,
                                     ctx->cancel_func, ctx->cancel_baton,
-                                    NULL, NULL,
+                                    ((void*)0), ((void*)0),
                                     pool));
 
-              /* Delete the patch target's old location from disk. */
+
               SVN_ERR(svn_io_remove_file2(target->local_abspath, FALSE, pool));
             }
         }

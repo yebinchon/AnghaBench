@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {TYPE_2__* priv_data; int /*<<< orphan*/  interrupt_callback; int /*<<< orphan*/  flags; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_9__ {int fd; int /*<<< orphan*/  listen_timeout; int /*<<< orphan*/  listen; } ;
-typedef  TYPE_2__ TCPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- int ff_accept (int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int ffurl_alloc (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ffurl_closep (TYPE_1__**) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {TYPE_2__* priv_data; int interrupt_callback; int flags; int filename; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_9__ {int fd; int listen_timeout; int listen; } ;
+typedef TYPE_2__ TCPContext ;
+
+
+ int av_assert0 (int ) ;
+ int ff_accept (int,int ,TYPE_1__*) ;
+ int ffurl_alloc (TYPE_1__**,int ,int ,int *) ;
+ int ffurl_closep (TYPE_1__**) ;
 
 __attribute__((used)) static int tcp_accept(URLContext *s, URLContext **c)
 {

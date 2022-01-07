@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct path {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TOMOYO_TYPE_GETATTR ; 
- int tomoyo_path_perm (int /*<<< orphan*/ ,struct path const*,int /*<<< orphan*/ *) ; 
+
+ int TOMOYO_TYPE_GETATTR ;
+ int tomoyo_path_perm (int ,struct path const*,int *) ;
 
 __attribute__((used)) static int tomoyo_inode_getattr(const struct path *path)
 {
-	return tomoyo_path_perm(TOMOYO_TYPE_GETATTR, path, NULL);
+ return tomoyo_path_perm(TOMOYO_TYPE_GETATTR, path, ((void*)0));
 }

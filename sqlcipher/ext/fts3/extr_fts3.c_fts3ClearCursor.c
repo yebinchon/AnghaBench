@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-struct TYPE_5__ {int /*<<< orphan*/  base; int /*<<< orphan*/  pExpr; int /*<<< orphan*/  pMIBuffer; int /*<<< orphan*/  aDoclist; } ;
-typedef  TYPE_1__ Fts3Cursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fts3CursorFinalizeStmt (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3Fts3ExprFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3Fts3FreeDeferredTokens (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3Fts3MIBufferFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+struct TYPE_5__ {int base; int pExpr; int pMIBuffer; int aDoclist; } ;
+typedef TYPE_1__ Fts3Cursor ;
+
+
+ int fts3CursorFinalizeStmt (TYPE_1__*) ;
+ int memset (int *,int ,int) ;
+ int sqlite3Fts3ExprFree (int ) ;
+ int sqlite3Fts3FreeDeferredTokens (TYPE_1__*) ;
+ int sqlite3Fts3MIBufferFree (int ) ;
+ int sqlite3_free (int ) ;
 
 __attribute__((used)) static void fts3ClearCursor(Fts3Cursor *pCsr){
   fts3CursorFinalizeStmt(pCsr);

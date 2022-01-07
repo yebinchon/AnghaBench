@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * cd_nodes; } ;
-typedef  TYPE_1__ ctf_decl_t ;
-typedef  int /*<<< orphan*/  ctf_decl_node_t ;
 
-/* Variables and functions */
- int CTF_PREC_BASE ; 
- int CTF_PREC_MAX ; 
- int /*<<< orphan*/  ctf_free (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * ctf_list_next (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * cd_nodes; } ;
+typedef TYPE_1__ ctf_decl_t ;
+typedef int ctf_decl_node_t ;
+
+
+ int CTF_PREC_BASE ;
+ int CTF_PREC_MAX ;
+ int ctf_free (int *,int) ;
+ int * ctf_list_next (int *) ;
 
 void
 ctf_decl_fini(ctf_decl_t *cd)
 {
-	ctf_decl_node_t *cdp, *ndp;
-	int i;
+ ctf_decl_node_t *cdp, *ndp;
+ int i;
 
-	for (i = CTF_PREC_BASE; i < CTF_PREC_MAX; i++) {
-		for (cdp = ctf_list_next(&cd->cd_nodes[i]);
-		    cdp != NULL; cdp = ndp) {
-			ndp = ctf_list_next(cdp);
-			ctf_free(cdp, sizeof (ctf_decl_node_t));
-		}
-	}
+ for (i = CTF_PREC_BASE; i < CTF_PREC_MAX; i++) {
+  for (cdp = ctf_list_next(&cd->cd_nodes[i]);
+      cdp != ((void*)0); cdp = ndp) {
+   ndp = ctf_list_next(cdp);
+   ctf_free(cdp, sizeof (ctf_decl_node_t));
+  }
+ }
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pool; int /*<<< orphan*/  wc_queues; } ;
-typedef  TYPE_2__ svn_wc_committed_queue_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_commit_queue_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- char* apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_commit_queue_add (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_create_commit_queue (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_get_wcroot (char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__prop_array_to_hash (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+struct TYPE_6__ {int pool; int wc_queues; } ;
+typedef TYPE_2__ svn_wc_committed_queue_t ;
+typedef int svn_wc__db_commit_queue_t ;
+typedef int svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ char* apr_pstrdup (int ,char const*) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int * svn_error_trace (int ) ;
+ int * svn_hash_gets (int ,char const*) ;
+ int svn_hash_sets (int ,char const*,int *) ;
+ int svn_wc__db_commit_queue_add (int *,char const*,int ,int ,int ,int ,int const*,int ,int ,int *) ;
+ int svn_wc__db_create_commit_queue (int **,int ,char const*,int ,int *) ;
+ int svn_wc__db_get_wcroot (char const**,int ,char const*,int *,int *) ;
+ int svn_wc__prop_array_to_hash (int const*,int ) ;
 
 svn_error_t *
 svn_wc_queue_committed4(svn_wc_committed_queue_t *queue,
@@ -53,9 +53,9 @@ svn_wc_queue_committed4(svn_wc_committed_queue_t *queue,
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
 
-  /* Use the same pool as the one QUEUE was allocated in,
-     to prevent lifetime issues.  Intermediate operations
-     should use SCRATCH_POOL. */
+
+
+
 
   SVN_ERR(svn_wc__db_get_wcroot(&wcroot_abspath,
                                 wc_ctx->db, local_abspath,

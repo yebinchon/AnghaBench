@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ idx; int triggered; } ;
 struct TYPE_5__ {TYPE_1__ cmd_trigger; } ;
-typedef  TYPE_2__ rarch_setting_t ;
+typedef TYPE_2__ rarch_setting_t ;
 
-/* Variables and functions */
- scalar_t__ CMD_EVENT_NONE ; 
+
+ scalar_t__ CMD_EVENT_NONE ;
 
 int setting_generic_action_ok_default(rarch_setting_t *setting, bool wraparound)
 {
    if (!setting)
       return -1;
 
-   (void)wraparound; /* TODO/FIXME - handle this */
+   (void)wraparound;
 
    if (setting->cmd_trigger.idx != CMD_EVENT_NONE)
-      setting->cmd_trigger.triggered = true;
+      setting->cmd_trigger.triggered = 1;
 
    return 0;
 }

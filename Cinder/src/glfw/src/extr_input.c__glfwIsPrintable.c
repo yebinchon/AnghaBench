@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int GLFWbool ;
 
-/* Variables and functions */
- int GLFW_KEY_APOSTROPHE ; 
- int GLFW_KEY_KP_0 ; 
- int GLFW_KEY_KP_ADD ; 
- int GLFW_KEY_KP_EQUAL ; 
- int GLFW_KEY_WORLD_2 ; 
+
+
+
+typedef int GLFWbool ;
+
+
+ int GLFW_KEY_APOSTROPHE ;
+ int GLFW_KEY_KP_0 ;
+ int GLFW_KEY_KP_ADD ;
+ int GLFW_KEY_KP_EQUAL ;
+ int GLFW_KEY_WORLD_2 ;
 
 GLFWbool _glfwIsPrintable(int key)
 {

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- scalar_t__ RegCreateKeyEx (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bTheKeyIsOpen ; 
- scalar_t__ currentKeyClass ; 
- int /*<<< orphan*/  currentKeyHandle ; 
- int /*<<< orphan*/ * currentKeyName ; 
- scalar_t__ getRegClass (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getRegKeyName (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * LPTSTR ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_SUCCESS ;
+ int KEY_ALL_ACCESS ;
+ int REG_OPTION_NON_VOLATILE ;
+ scalar_t__ RegCreateKeyEx (scalar_t__,int *,int ,int *,int ,int ,int *,int *,int *) ;
+ int TRUE ;
+ int bTheKeyIsOpen ;
+ scalar_t__ currentKeyClass ;
+ int currentKeyHandle ;
+ int * currentKeyName ;
+ scalar_t__ getRegClass (int *) ;
+ int * getRegKeyName (int *) ;
 
 HRESULT openKey(LPTSTR stdInput)
 {
-  DWORD   dwDisp;
+  DWORD dwDisp;
   HRESULT hRes;
 
-  /* Sanity checks */
-  if (stdInput == NULL)
+
+  if (stdInput == ((void*)0))
     return ERROR_INVALID_PARAMETER;
 
-  /* Get the registry class */
-  currentKeyClass = getRegClass(stdInput); /* Sets global variable */
+
+  currentKeyClass = getRegClass(stdInput);
   if (currentKeyClass == (HKEY)ERROR_INVALID_PARAMETER)
     return (HRESULT)ERROR_INVALID_PARAMETER;
 
-  /* Get the key name */
-  currentKeyName = getRegKeyName(stdInput); /* Sets global variable */
-  if (currentKeyName == NULL)
+
+  currentKeyName = getRegKeyName(stdInput);
+  if (currentKeyName == ((void*)0))
     return ERROR_INVALID_PARAMETER;
 
   hRes = RegCreateKeyEx(
-          currentKeyClass,          /* Class     */
-          currentKeyName,           /* Sub Key   */
-          0,                        /* MUST BE 0 */
-          NULL,                     /* object type */
-          REG_OPTION_NON_VOLATILE,  /* option, REG_OPTION_NON_VOLATILE ... */
-          KEY_ALL_ACCESS,           /* access mask, KEY_ALL_ACCESS */
-          NULL,                     /* security attribute */
-          &currentKeyHandle,        /* result */
-          &dwDisp);                 /* disposition, REG_CREATED_NEW_KEY or
-                                                    REG_OPENED_EXISTING_KEY */
+          currentKeyClass,
+          currentKeyName,
+          0,
+          ((void*)0),
+          REG_OPTION_NON_VOLATILE,
+          KEY_ALL_ACCESS,
+          ((void*)0),
+          &currentKeyHandle,
+          &dwDisp);
+
 
   if (hRes == ERROR_SUCCESS)
     bTheKeyIsOpen = TRUE;

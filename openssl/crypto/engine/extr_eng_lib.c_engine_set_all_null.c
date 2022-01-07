@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ flags; int /*<<< orphan*/ * cmd_defns; int /*<<< orphan*/ * load_pubkey; int /*<<< orphan*/ * load_privkey; int /*<<< orphan*/ * ctrl; int /*<<< orphan*/ * finish; int /*<<< orphan*/ * init; int /*<<< orphan*/ * destroy; int /*<<< orphan*/ * digests; int /*<<< orphan*/ * ciphers; int /*<<< orphan*/ * rand_meth; int /*<<< orphan*/ * dh_meth; int /*<<< orphan*/ * dsa_meth; int /*<<< orphan*/ * rsa_meth; int /*<<< orphan*/ * name; int /*<<< orphan*/ * id; } ;
-typedef  TYPE_1__ ENGINE ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ flags; int * cmd_defns; int * load_pubkey; int * load_privkey; int * ctrl; int * finish; int * init; int * destroy; int * digests; int * ciphers; int * rand_meth; int * dh_meth; int * dsa_meth; int * rsa_meth; int * name; int * id; } ;
+typedef TYPE_1__ ENGINE ;
+
+
 
 void engine_set_all_null(ENGINE *e)
 {
-    e->id = NULL;
-    e->name = NULL;
-    e->rsa_meth = NULL;
-    e->dsa_meth = NULL;
-    e->dh_meth = NULL;
-    e->rand_meth = NULL;
-    e->ciphers = NULL;
-    e->digests = NULL;
-    e->destroy = NULL;
-    e->init = NULL;
-    e->finish = NULL;
-    e->ctrl = NULL;
-    e->load_privkey = NULL;
-    e->load_pubkey = NULL;
-    e->cmd_defns = NULL;
+    e->id = ((void*)0);
+    e->name = ((void*)0);
+    e->rsa_meth = ((void*)0);
+    e->dsa_meth = ((void*)0);
+    e->dh_meth = ((void*)0);
+    e->rand_meth = ((void*)0);
+    e->ciphers = ((void*)0);
+    e->digests = ((void*)0);
+    e->destroy = ((void*)0);
+    e->init = ((void*)0);
+    e->finish = ((void*)0);
+    e->ctrl = ((void*)0);
+    e->load_privkey = ((void*)0);
+    e->load_pubkey = ((void*)0);
+    e->cmd_defns = ((void*)0);
     e->flags = 0;
 }

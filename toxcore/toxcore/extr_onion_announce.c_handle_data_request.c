@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_5__ {TYPE_1__* entries; int /*<<< orphan*/  net; } ;
-struct TYPE_4__ {int /*<<< orphan*/  ret; int /*<<< orphan*/  ret_ip_port; } ;
-typedef  TYPE_2__ Onion_Announce ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- scalar_t__ DATA_REQUEST_MIN_SIZE_RECV ; 
- int /*<<< orphan*/  NET_PACKET_ONION_DATA_RESPONSE ; 
- scalar_t__ ONION_MAX_PACKET_SIZE ; 
- scalar_t__ ONION_RETURN_3 ; 
- scalar_t__ crypto_box_PUBLICKEYBYTES ; 
- int in_entries (TYPE_2__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
- int send_onion_response (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+typedef int data ;
+struct TYPE_5__ {TYPE_1__* entries; int net; } ;
+struct TYPE_4__ {int ret; int ret_ip_port; } ;
+typedef TYPE_2__ Onion_Announce ;
+typedef int IP_Port ;
+
+
+ scalar_t__ DATA_REQUEST_MIN_SIZE_RECV ;
+ int NET_PACKET_ONION_DATA_RESPONSE ;
+ scalar_t__ ONION_MAX_PACKET_SIZE ;
+ scalar_t__ ONION_RETURN_3 ;
+ scalar_t__ crypto_box_PUBLICKEYBYTES ;
+ int in_entries (TYPE_2__*,int const*) ;
+ int memcpy (int *,int const*,scalar_t__) ;
+ int send_onion_response (int ,int ,int *,int,int ) ;
 
 __attribute__((used)) static int handle_data_request(void *object, IP_Port source, const uint8_t *packet, uint16_t length)
 {

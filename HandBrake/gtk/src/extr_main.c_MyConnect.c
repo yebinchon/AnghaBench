@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gpointer ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkBuilder ;
-typedef  int /*<<< orphan*/  GObject ;
-typedef  int GConnectFlags ;
-typedef  int /*<<< orphan*/  GCallback ;
 
-/* Variables and functions */
- int G_CONNECT_AFTER ; 
- int /*<<< orphan*/  g_debug (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g_message (char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  g_return_if_fail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_signal_connect (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_signal_connect_after (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_signal_connect_object (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  self_symbol_lookup (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int gpointer ;
+typedef int gchar ;
+typedef int GtkBuilder ;
+typedef int GObject ;
+typedef int GConnectFlags ;
+typedef int GCallback ;
+
+
+ int G_CONNECT_AFTER ;
+ int g_debug (char*,int const*) ;
+ int g_message (char*,int const*) ;
+ int g_return_if_fail (int ) ;
+ int g_signal_connect (int *,int const*,int ,int ) ;
+ int g_signal_connect_after (int *,int const*,int ,int ) ;
+ int g_signal_connect_object (int *,int const*,int ,int *,int) ;
+ int self_symbol_lookup (int const*) ;
 
 __attribute__((used)) static void
 MyConnect(
@@ -39,12 +39,12 @@ MyConnect(
 {
     GCallback callback;
 
-    g_return_if_fail(object != NULL);
-    g_return_if_fail(handler_name != NULL);
-    g_return_if_fail(signal_name != NULL);
+    g_return_if_fail(object != ((void*)0));
+    g_return_if_fail(handler_name != ((void*)0));
+    g_return_if_fail(signal_name != ((void*)0));
 
-    //const gchar *name = ghb_get_setting_key((GtkWidget*)object);
-    //g_message("\n\nname %s", name);
+
+
     g_debug("handler_name %s", handler_name);
     g_debug("signal_name %s", signal_name);
     callback = self_symbol_lookup(handler_name);

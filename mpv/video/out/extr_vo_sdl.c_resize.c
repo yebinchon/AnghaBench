@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {int dwidth; int dheight; int want_redraw; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  renderer; int /*<<< orphan*/  osd_res; int /*<<< orphan*/  dst_rect; int /*<<< orphan*/  src_rect; } ;
+struct priv {int renderer; int osd_res; int dst_rect; int src_rect; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_RenderSetLogicalSize (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  vo_get_src_dst_rects (struct vo*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vo_wakeup (struct vo*) ; 
+
+ int SDL_RenderSetLogicalSize (int ,int,int) ;
+ int vo_get_src_dst_rects (struct vo*,int *,int *,int *) ;
+ int vo_wakeup (struct vo*) ;
 
 __attribute__((used)) static void resize(struct vo *vo, int w, int h)
 {
@@ -26,6 +26,6 @@ __attribute__((used)) static void resize(struct vo *vo, int w, int h)
     vo_get_src_dst_rects(vo, &vc->src_rect, &vc->dst_rect,
                          &vc->osd_res);
     SDL_RenderSetLogicalSize(vc->renderer, w, h);
-    vo->want_redraw = true;
+    vo->want_redraw = 1;
     vo_wakeup(vo);
 }

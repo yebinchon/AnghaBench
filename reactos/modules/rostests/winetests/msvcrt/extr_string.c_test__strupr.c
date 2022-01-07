@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  str ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LC_ALL ; 
- int /*<<< orphan*/  MEM_COMMIT ; 
- int /*<<< orphan*/  MEM_RELEASE ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- char* VirtualAlloc (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VirtualFree (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VirtualProtect (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* _strupr (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  setlocale (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int str ;
+typedef int DWORD ;
+
+
+ int LC_ALL ;
+ int MEM_COMMIT ;
+ int MEM_RELEASE ;
+ int PAGE_READONLY ;
+ int PAGE_READWRITE ;
+ char* VirtualAlloc (int *,int,int ,int ) ;
+ int VirtualFree (char*,int,int ) ;
+ int VirtualProtect (char*,int,int ,int *) ;
+ char* _strupr (char*) ;
+ int memcpy (char*,char const*,int) ;
+ int ok (int,char*,...) ;
+ int setlocale (int ,char*) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__strupr(void)
 {
@@ -37,8 +37,8 @@ __attribute__((used)) static void test__strupr(void)
     char *mem, *p;
     DWORD prot;
 
-    mem = VirtualAlloc(NULL, sizeof(str), MEM_COMMIT, PAGE_READWRITE);
-    ok(mem != NULL, "VirtualAlloc failed\n");
+    mem = VirtualAlloc(((void*)0), sizeof(str), MEM_COMMIT, PAGE_READWRITE);
+    ok(mem != ((void*)0), "VirtualAlloc failed\n");
     memcpy(mem, str, sizeof(str));
     ok(VirtualProtect(mem, sizeof(str), PAGE_READONLY, &prot), "VirtualProtect failed\n");
 
@@ -62,7 +62,7 @@ __attribute__((used)) static void test__strupr(void)
     ok(p == str2, "_strupr returned %p\n", p);
     ok(!strcmp(str2, "ABC"), "str2 = %s\n", str2);
 
-    if (0) /* crashes on Windows */
+    if (0)
     {
         p = _strupr(mem);
         ok(p == mem, "_strupr returned %p\n", p);

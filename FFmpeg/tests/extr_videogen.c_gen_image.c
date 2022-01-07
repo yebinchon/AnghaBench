@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int x; int y; int w; int h; int r; int g; int b; } ;
-typedef  TYPE_1__ VObj ;
+typedef TYPE_1__ VObj ;
 
-/* Variables and functions */
- int FRAC_BITS ; 
- int FRAC_ONE ; 
- int NB_OBJS ; 
- int NOISE_W ; 
- int NOISE_X ; 
- int NOISE_Y ; 
- int int_cos (int) ; 
- int myrnd (unsigned int*,int) ; 
- TYPE_1__* objs ; 
- int /*<<< orphan*/  put_pixel (int,int,int,int,int) ; 
- unsigned int seed ; 
+
+ int FRAC_BITS ;
+ int FRAC_ONE ;
+ int NB_OBJS ;
+ int NOISE_W ;
+ int NOISE_X ;
+ int NOISE_Y ;
+ int int_cos (int) ;
+ int myrnd (unsigned int*,int) ;
+ TYPE_1__* objs ;
+ int put_pixel (int,int,int,int,int) ;
+ unsigned int seed ;
 
 __attribute__((used)) static void gen_image(int num, int w, int h)
 {
@@ -44,22 +44,22 @@ __attribute__((used)) static void gen_image(int num, int w, int h)
         }
     }
 
-    /* first a moving background with gradients */
-    /* test motion estimation */
+
+
     dx = int_cos(num * FRAC_ONE / 50) * 35;
     dy = int_cos(num * FRAC_ONE / 50 + FRAC_ONE / 10) * 30;
     for (y = 0; y < h; y++) {
         for (x = 0; x < w; x++) {
             x1 = (x << FRAC_BITS) + dx;
             y1 = (y << FRAC_BITS) + dy;
-            r  =       ((y1  * 7) >> FRAC_BITS) & 0xff;
-            g  = (((x1 + y1) * 9) >> FRAC_BITS) & 0xff;
-            b  =  ((x1       * 5) >> FRAC_BITS) & 0xff;
+            r = ((y1 * 7) >> FRAC_BITS) & 0xff;
+            g = (((x1 + y1) * 9) >> FRAC_BITS) & 0xff;
+            b = ((x1 * 5) >> FRAC_BITS) & 0xff;
             put_pixel(x, y, r, g, b);
         }
     }
 
-    /* then some noise with very high intensity to test saturation */
+
     seed1 = num;
     for (y = 0; y < NOISE_W; y++) {
         for (x = 0; x < NOISE_W; x++) {
@@ -70,7 +70,7 @@ __attribute__((used)) static void gen_image(int num, int w, int h)
         }
     }
 
-    /* then moving objects */
+
     for (i = 0; i < NB_OBJS; i++) {
         VObj *p = &objs[i];
         seed1 = i;
@@ -79,7 +79,7 @@ __attribute__((used)) static void gen_image(int num, int w, int h)
                 r = p->r;
                 g = p->g;
                 b = p->b;
-                /* add a per object noise */
+
                 r += myrnd(&seed1, 50);
                 g += myrnd(&seed1, 50);
                 b += myrnd(&seed1, 50);

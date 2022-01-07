@@ -1,61 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * strchr (char const*,int) ; 
+ int * strchr (char const*,int) ;
 
 int
 Strntok(char *dstTokenStart, size_t tokenSize, char *buf, const char *delims)
 {
-	static char *p = NULL;
-	char *end;
-	char *lim;
-	char *dst;
-	int len;
+ static char *p = ((void*)0);
+ char *end;
+ char *lim;
+ char *dst;
+ int len;
 
-	dst = dstTokenStart;
-	lim = dst + tokenSize - 1;		/* Leave room for nul byte. */
+ dst = dstTokenStart;
+ lim = dst + tokenSize - 1;
 
-	if (buf != NULL) {
-		p = buf;
-	} else {
-		if (p == NULL) {
-			*dst = '\0';
-			return (-1);		/* No more tokens. */
-		}
-	}
+ if (buf != ((void*)0)) {
+  p = buf;
+ } else {
+  if (p == ((void*)0)) {
+   *dst = '\0';
+   return (-1);
+  }
+ }
 
-	for (end = p; ; end++) {
-		if (*end == '\0') {
-			p = NULL;		/* This is the last token. */
-			break;
-		}
-		if (strchr(delims, (int) *end) != NULL) {
-			++end;
-			p = end;
-			break;
-		}
-		if (dst < lim)			/* Don't overrun token size. */
-			*dst++ = *end;
-	}
-	*dst = '\0';
-	len = (int) (dst - dstTokenStart);	/* Return length of token. */
+ for (end = p; ; end++) {
+  if (*end == '\0') {
+   p = ((void*)0);
+   break;
+  }
+  if (strchr(delims, (int) *end) != ((void*)0)) {
+   ++end;
+   p = end;
+   break;
+  }
+  if (dst < lim)
+   *dst++ = *end;
+ }
+ *dst = '\0';
+ len = (int) (dst - dstTokenStart);
 
-#if (STRN_ZERO_PAD == 1)
-	/* Pad with zeros. */
-	for (++dst; dst <= lim; )
-		*dst++ = 0;
-#endif	/* STRN_ZERO_PAD */
 
-	return (len);
+
+
+
+
+
+ return (len);
 }

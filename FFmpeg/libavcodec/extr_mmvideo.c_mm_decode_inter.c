@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ buffer; scalar_t__ buffer_start; } ;
 struct TYPE_12__ {TYPE_2__* frame; TYPE_1__* avctx; TYPE_4__ gb; } ;
 struct TYPE_11__ {int** data; int* linesize; } ;
 struct TYPE_10__ {int height; int width; } ;
-typedef  TYPE_3__ MmContext ;
-typedef  TYPE_4__ GetByteContext ;
+typedef TYPE_3__ MmContext ;
+typedef TYPE_4__ GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int bytestream2_get_byte (TYPE_4__*) ; 
- int bytestream2_get_bytes_left (TYPE_4__*) ; 
- int bytestream2_get_le16 (TYPE_4__*) ; 
- int /*<<< orphan*/  bytestream2_init (TYPE_4__*,scalar_t__,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_get_byte (TYPE_4__*) ;
+ int bytestream2_get_bytes_left (TYPE_4__*) ;
+ int bytestream2_get_le16 (TYPE_4__*) ;
+ int bytestream2_init (TYPE_4__*,scalar_t__,int) ;
 
 __attribute__((used)) static int mm_decode_inter(MmContext * s, int half_horiz, int half_vert)
 {

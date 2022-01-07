@@ -1,56 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int int16_t ;
 struct TYPE_18__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ decoder_t ;
-struct TYPE_19__ {scalar_t__ i_block; int codec; int /*<<< orphan*/  i_samplesperblock; int /*<<< orphan*/  end_date; } ;
-typedef  TYPE_2__ decoder_sys_t ;
+typedef TYPE_1__ decoder_t ;
+struct TYPE_19__ {scalar_t__ i_block; int codec; int i_samplesperblock; int end_date; } ;
+typedef TYPE_2__ decoder_sys_t ;
 struct TYPE_20__ {int i_flags; scalar_t__ i_pts; scalar_t__ i_buffer; scalar_t__ i_length; scalar_t__ p_buffer; } ;
-typedef  TYPE_3__ block_t ;
-
-/* Variables and functions */
-#define  ADPCM_DK3 133 
-#define  ADPCM_DK4 132 
-#define  ADPCM_EA 131 
-#define  ADPCM_IMA_QT 130 
-#define  ADPCM_IMA_WAV 129 
-#define  ADPCM_MS 128 
- int BLOCK_FLAG_CORRUPTED ; 
- int BLOCK_FLAG_DISCONTINUITY ; 
- int /*<<< orphan*/  DecodeAdpcmDk3 (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  DecodeAdpcmDk4 (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  DecodeAdpcmEA (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  DecodeAdpcmImaQT (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  DecodeAdpcmImaWav (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  DecodeAdpcmMs (TYPE_1__*,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  Flush (TYPE_1__*) ; 
- scalar_t__ VLC_TICK_INVALID ; 
- int /*<<< orphan*/  block_Release (TYPE_3__*) ; 
- scalar_t__ date_Get (int /*<<< orphan*/ *) ; 
- scalar_t__ date_Increment (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  date_Set (int /*<<< orphan*/ *,scalar_t__) ; 
- TYPE_3__* decoder_NewAudioBuffer (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ decoder_UpdateAudioFormat (TYPE_1__*) ; 
+typedef TYPE_3__ block_t ;
+ int BLOCK_FLAG_CORRUPTED ;
+ int BLOCK_FLAG_DISCONTINUITY ;
+ int DecodeAdpcmDk3 (TYPE_1__*,int *,scalar_t__) ;
+ int DecodeAdpcmDk4 (TYPE_1__*,int *,scalar_t__) ;
+ int DecodeAdpcmEA (TYPE_1__*,int *,scalar_t__) ;
+ int DecodeAdpcmImaQT (TYPE_1__*,int *,scalar_t__) ;
+ int DecodeAdpcmImaWav (TYPE_1__*,int *,scalar_t__) ;
+ int DecodeAdpcmMs (TYPE_1__*,int *,scalar_t__) ;
+ int Flush (TYPE_1__*) ;
+ scalar_t__ VLC_TICK_INVALID ;
+ int block_Release (TYPE_3__*) ;
+ scalar_t__ date_Get (int *) ;
+ scalar_t__ date_Increment (int *,int ) ;
+ int date_Set (int *,scalar_t__) ;
+ TYPE_3__* decoder_NewAudioBuffer (TYPE_1__*,int ) ;
+ scalar_t__ decoder_UpdateAudioFormat (TYPE_1__*) ;
 
 __attribute__((used)) static block_t *DecodeBlock( decoder_t *p_dec, block_t **pp_block )
 {
-    decoder_sys_t *p_sys  = p_dec->p_sys;
+    decoder_sys_t *p_sys = p_dec->p_sys;
     block_t *p_block;
 
-    if( !*pp_block ) return NULL;
+    if( !*pp_block ) return ((void*)0);
 
     p_block = *pp_block;
 
@@ -67,10 +59,10 @@ __attribute__((used)) static block_t *DecodeBlock( decoder_t *p_dec, block_t **p
         date_Set( &p_sys->end_date, p_block->i_pts );
     }
     else if( date_Get( &p_sys->end_date ) == VLC_TICK_INVALID )
-        /* We've just started the stream, wait for the first PTS. */
+
         goto drop;
 
-    /* Don't re-use the same pts twice */
+
     p_block->i_pts = VLC_TICK_INVALID;
 
     if( p_block->i_buffer >= p_sys->i_block )
@@ -80,7 +72,7 @@ __attribute__((used)) static block_t *DecodeBlock( decoder_t *p_dec, block_t **p
         if( decoder_UpdateAudioFormat( p_dec ) )
             goto drop;
         p_out = decoder_NewAudioBuffer( p_dec, p_sys->i_samplesperblock );
-        if( p_out == NULL )
+        if( p_out == ((void*)0) )
             goto drop;
 
         p_out->i_pts = date_Get( &p_sys->end_date );
@@ -89,27 +81,27 @@ __attribute__((used)) static block_t *DecodeBlock( decoder_t *p_dec, block_t **p
 
         switch( p_sys->codec )
         {
-        case ADPCM_IMA_QT:
+        case 130:
             DecodeAdpcmImaQT( p_dec, (int16_t*)p_out->p_buffer,
                               p_block->p_buffer );
             break;
-        case ADPCM_IMA_WAV:
+        case 129:
             DecodeAdpcmImaWav( p_dec, (int16_t*)p_out->p_buffer,
                                p_block->p_buffer );
             break;
-        case ADPCM_MS:
+        case 128:
             DecodeAdpcmMs( p_dec, (int16_t*)p_out->p_buffer,
                            p_block->p_buffer );
             break;
-        case ADPCM_DK4:
+        case 132:
             DecodeAdpcmDk4( p_dec, (int16_t*)p_out->p_buffer,
                             p_block->p_buffer );
             break;
-        case ADPCM_DK3:
+        case 133:
             DecodeAdpcmDk3( p_dec, (int16_t*)p_out->p_buffer,
                             p_block->p_buffer );
             break;
-        case ADPCM_EA:
+        case 131:
             DecodeAdpcmEA( p_dec, (int16_t*)p_out->p_buffer,
                            p_block->p_buffer );
         default:
@@ -123,6 +115,6 @@ __attribute__((used)) static block_t *DecodeBlock( decoder_t *p_dec, block_t **p
 
 drop:
     block_Release( p_block );
-    *pp_block = NULL;
-    return NULL;
+    *pp_block = ((void*)0);
+    return ((void*)0);
 }

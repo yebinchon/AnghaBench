@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union sctp_addr {int dummy; } sctp_addr ;
+
+
+
+
+typedef union sctp_addr {int dummy; } sctp_addr ;
 struct sctp_transport {int dummy; } ;
 struct net {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCTP_DBG_OBJCNT_INC (struct sctp_transport*) ; 
- int /*<<< orphan*/  kfree (struct sctp_transport*) ; 
- struct sctp_transport* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sctp_transport_init (struct net*,struct sctp_transport*,union sctp_addr const*,int /*<<< orphan*/ ) ; 
+
+ int SCTP_DBG_OBJCNT_INC (struct sctp_transport*) ;
+ int kfree (struct sctp_transport*) ;
+ struct sctp_transport* kzalloc (int,int ) ;
+ int sctp_transport_init (struct net*,struct sctp_transport*,union sctp_addr const*,int ) ;
 
 struct sctp_transport *sctp_transport_new(struct net *net,
-					  const union sctp_addr *addr,
-					  gfp_t gfp)
+       const union sctp_addr *addr,
+       gfp_t gfp)
 {
-	struct sctp_transport *transport;
+ struct sctp_transport *transport;
 
-	transport = kzalloc(sizeof(*transport), gfp);
-	if (!transport)
-		goto fail;
+ transport = kzalloc(sizeof(*transport), gfp);
+ if (!transport)
+  goto fail;
 
-	if (!sctp_transport_init(net, transport, addr, gfp))
-		goto fail_init;
+ if (!sctp_transport_init(net, transport, addr, gfp))
+  goto fail_init;
 
-	SCTP_DBG_OBJCNT_INC(transport);
+ SCTP_DBG_OBJCNT_INC(transport);
 
-	return transport;
+ return transport;
 
 fail_init:
-	kfree(transport);
+ kfree(transport);
 
 fail:
-	return NULL;
+ return ((void*)0);
 }

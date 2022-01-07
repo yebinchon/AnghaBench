@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  psz_string; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- scalar_t__ LUA_TNIL ; 
- scalar_t__ VLC_SUCCESS ; 
- int VLC_VAR_STRING ; 
- int config_GetType (char const*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ ** luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
- scalar_t__ var_Inherit (int /*<<< orphan*/ *,char const*,int,TYPE_1__*) ; 
- int /*<<< orphan*/ * vlclua_get_this (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlclua_pushvalue (int /*<<< orphan*/ *,int,TYPE_1__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int psz_string; } ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int vlc_object_t ;
+typedef int lua_State ;
+
+
+ scalar_t__ LUA_TNIL ;
+ scalar_t__ VLC_SUCCESS ;
+ int VLC_VAR_STRING ;
+ int config_GetType (char const*) ;
+ int free (int ) ;
+ char* luaL_checkstring (int *,int) ;
+ int ** luaL_checkudata (int *,int,char*) ;
+ int lua_pop (int *,int) ;
+ scalar_t__ lua_type (int *,int) ;
+ scalar_t__ var_Inherit (int *,char const*,int,TYPE_1__*) ;
+ int * vlclua_get_this (int *) ;
+ int vlclua_pushvalue (int *,int,TYPE_1__) ;
 
 __attribute__((used)) static int vlclua_var_inherit( lua_State *L )
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  PNTFS_ATTR_RECORD ;
-typedef  int /*<<< orphan*/  PFILE_RECORD_HEADER ;
-typedef  int /*<<< orphan*/  PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  FIND_ATTR_CONTXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FindCloseAttribute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindFirstAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindNextAttribute (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsDumpAttribute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VOID ;
+typedef int PNTFS_ATTR_RECORD ;
+typedef int PFILE_RECORD_HEADER ;
+typedef int PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
+typedef int FIND_ATTR_CONTXT ;
+
+
+ int FALSE ;
+ int FindCloseAttribute (int *) ;
+ int FindFirstAttribute (int *,int ,int ,int ,int *) ;
+ int FindNextAttribute (int *,int *) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NtfsDumpAttribute (int ,int ) ;
 
 VOID
 NtfsDumpFileAttributes(PDEVICE_EXTENSION Vcb,

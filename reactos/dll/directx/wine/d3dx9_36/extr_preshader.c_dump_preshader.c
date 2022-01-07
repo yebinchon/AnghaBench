@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int* table_sizes; double** tables; } ;
-struct d3dx_preshader {unsigned int ins_count; int /*<<< orphan*/ * ins; TYPE_1__ regs; int /*<<< orphan*/  inputs; } ;
+struct d3dx_preshader {unsigned int ins_count; int * ins; TYPE_1__ regs; int inputs; } ;
 
-/* Variables and functions */
- size_t PRES_REGTAB_IMMED ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  dump_ins (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dump_registers (int /*<<< orphan*/ *) ; 
+
+ size_t PRES_REGTAB_IMMED ;
+ int TRACE (char*,...) ;
+ int dump_ins (TYPE_1__*,int *) ;
+ int dump_registers (int *) ;
 
 __attribute__((used)) static void dump_preshader(struct d3dx_preshader *pres)
 {

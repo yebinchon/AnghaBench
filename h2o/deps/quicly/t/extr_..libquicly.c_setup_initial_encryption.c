@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct st_quicly_cipher_context_t {int dummy; } ;
-typedef  int /*<<< orphan*/  secret ;
-typedef  int /*<<< orphan*/  salt ;
-typedef  int /*<<< orphan*/  ptls_iovec_t ;
-struct TYPE_4__ {int /*<<< orphan*/  hash; } ;
-typedef  TYPE_1__ ptls_cipher_suite_t ;
+typedef int secret ;
+typedef int salt ;
+typedef int ptls_iovec_t ;
+struct TYPE_4__ {int hash; } ;
+typedef TYPE_1__ ptls_cipher_suite_t ;
 
-/* Variables and functions */
- int PTLS_MAX_DIGEST_SIZE ; 
- int /*<<< orphan*/  ptls_clear_memory (int*,int) ; 
- int ptls_hkdf_extract (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_iovec_init (int const*,int) ; 
- int setup_initial_key (struct st_quicly_cipher_context_t*,TYPE_1__*,int*,char const*,int) ; 
+
+ int PTLS_MAX_DIGEST_SIZE ;
+ int ptls_clear_memory (int*,int) ;
+ int ptls_hkdf_extract (int ,int*,int ,int ) ;
+ int ptls_iovec_init (int const*,int) ;
+ int setup_initial_key (struct st_quicly_cipher_context_t*,TYPE_1__*,int*,char const*,int) ;
 
 __attribute__((used)) static int setup_initial_encryption(ptls_cipher_suite_t *cs, struct st_quicly_cipher_context_t *ingress,
                                     struct st_quicly_cipher_context_t *egress, ptls_iovec_t cid, int is_client)
@@ -35,11 +35,11 @@ __attribute__((used)) static int setup_initial_encryption(ptls_cipher_suite_t *c
     uint8_t secret[PTLS_MAX_DIGEST_SIZE];
     int ret;
 
-    /* extract master secret */
+
     if ((ret = ptls_hkdf_extract(cs->hash, secret, ptls_iovec_init(salt, sizeof(salt)), cid)) != 0)
         goto Exit;
 
-    /* create aead contexts */
+
     if ((ret = setup_initial_key(ingress, cs, secret, labels[is_client], 0)) != 0)
         goto Exit;
     if ((ret = setup_initial_key(egress, cs, secret, labels[!is_client], 1)) != 0)

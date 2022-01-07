@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  bits_; int /*<<< orphan*/  depths_; } ;
-typedef  int /*<<< orphan*/  MemoryManager ;
-typedef  TYPE_1__ BlockEncoder ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BROTLI_FREE (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bits_; int depths_; } ;
+typedef int MemoryManager ;
+typedef TYPE_1__ BlockEncoder ;
+
+
+ int BROTLI_FREE (int *,int ) ;
 
 __attribute__((used)) static void CleanupBlockEncoder(MemoryManager* m, BlockEncoder* self) {
   BROTLI_FREE(m, self->depths_);

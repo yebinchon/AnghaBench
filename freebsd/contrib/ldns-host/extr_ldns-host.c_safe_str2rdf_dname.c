@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_status ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LDNS_STATUS_OK ; 
- int /*<<< orphan*/  die (int,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldns_get_errorstr_by_id (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldns_str2rdf_dname (int /*<<< orphan*/ **,char const*) ; 
+
+
+
+typedef int ldns_status ;
+typedef int ldns_rdf ;
+
+
+ int LDNS_STATUS_OK ;
+ int die (int,char*,char const*,int ) ;
+ int ldns_get_errorstr_by_id (int ) ;
+ int ldns_str2rdf_dname (int **,char const*) ;
 
 __attribute__((used)) static ldns_rdf*
 safe_str2rdf_dname(const char *name) {

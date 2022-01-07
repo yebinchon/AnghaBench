@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fz_text ;
-typedef  int /*<<< orphan*/  fz_matrix ;
-typedef  int /*<<< orphan*/  fz_device ;
-typedef  int /*<<< orphan*/  fz_context ;
-typedef  int /*<<< orphan*/  fz_colorspace ;
-typedef  int /*<<< orphan*/  fz_color_params ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fz_bbox_add_rect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fz_bound_text (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fz_text ;
+typedef int fz_matrix ;
+typedef int fz_device ;
+typedef int fz_context ;
+typedef int fz_colorspace ;
+typedef int fz_color_params ;
+
+
+ int fz_bbox_add_rect (int *,int *,int ,int ) ;
+ int fz_bound_text (int *,int const*,int *,int ) ;
 
 __attribute__((used)) static void
 fz_bbox_fill_text(fz_context *ctx, fz_device *dev, const fz_text *text, fz_matrix ctm,
-	fz_colorspace *colorspace, const float *color, float alpha, fz_color_params color_params)
+ fz_colorspace *colorspace, const float *color, float alpha, fz_color_params color_params)
 {
-	fz_bbox_add_rect(ctx, dev, fz_bound_text(ctx, text, NULL, ctm), 0);
+ fz_bbox_add_rect(ctx, dev, fz_bound_text(ctx, text, ((void*)0), ctm), 0);
 }

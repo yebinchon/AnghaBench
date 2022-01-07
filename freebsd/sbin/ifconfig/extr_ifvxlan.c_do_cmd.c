@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
-struct ifdrv {size_t ifd_len; void* ifd_data; int /*<<< orphan*/  ifd_cmd; int /*<<< orphan*/  ifd_name; } ;
-typedef  int /*<<< orphan*/  ifd ;
-struct TYPE_2__ {int /*<<< orphan*/  ifr_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIOCGDRVSPEC ; 
- int /*<<< orphan*/  SIOCSDRVSPEC ; 
- int /*<<< orphan*/  bzero (struct ifdrv*,int) ; 
- TYPE_1__ ifr ; 
- int ioctl (int,int /*<<< orphan*/ ,struct ifdrv*) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_long ;
+struct ifdrv {size_t ifd_len; void* ifd_data; int ifd_cmd; int ifd_name; } ;
+typedef int ifd ;
+struct TYPE_2__ {int ifr_name; } ;
+
+
+ int SIOCGDRVSPEC ;
+ int SIOCSDRVSPEC ;
+ int bzero (struct ifdrv*,int) ;
+ TYPE_1__ ifr ;
+ int ioctl (int,int ,struct ifdrv*) ;
+ int strlcpy (int ,int ,int) ;
 
 __attribute__((used)) static int
 do_cmd(int sock, u_long op, void *arg, size_t argsize, int set)
 {
-	struct ifdrv ifd;
+ struct ifdrv ifd;
 
-	bzero(&ifd, sizeof(ifd));
+ bzero(&ifd, sizeof(ifd));
 
-	strlcpy(ifd.ifd_name, ifr.ifr_name, sizeof(ifd.ifd_name));
-	ifd.ifd_cmd = op;
-	ifd.ifd_len = argsize;
-	ifd.ifd_data = arg;
+ strlcpy(ifd.ifd_name, ifr.ifr_name, sizeof(ifd.ifd_name));
+ ifd.ifd_cmd = op;
+ ifd.ifd_len = argsize;
+ ifd.ifd_data = arg;
 
-	return (ioctl(sock, set ? SIOCSDRVSPEC : SIOCGDRVSPEC, &ifd));
+ return (ioctl(sock, set ? SIOCSDRVSPEC : SIOCGDRVSPEC, &ifd));
 }

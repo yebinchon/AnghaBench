@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int BUS_GET_DOMAIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int BUS_GET_DOMAIN (int ,int ,int*) ;
+ int device_get_parent (int ) ;
 
 int
 bus_get_domain(device_t dev, int *domain)
 {
-	return (BUS_GET_DOMAIN(device_get_parent(dev), dev, domain));
+ return (BUS_GET_DOMAIN(device_get_parent(dev), dev, domain));
 }

@@ -1,48 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int INT ;
 
-/* Variables and functions */
-#define  COND_ILHS 133 
-#define  COND_IRHS 132 
-#define  COND_ISS 131 
-#define  COND_LHS 130 
-#define  COND_RHS 129 
-#define  COND_SS 128 
- int /*<<< orphan*/  ERR (char*) ; 
- int atoiW (int /*<<< orphan*/ *) ; 
- int compare_int (int,int,int) ; 
- scalar_t__ str_is_number (int /*<<< orphan*/ *) ; 
- int strlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strncmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strncmpiW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strstrW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strstriW (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * LPCWSTR ;
+typedef int INT ;
+ int ERR (char*) ;
+ int atoiW (int *) ;
+ int compare_int (int,int,int) ;
+ scalar_t__ str_is_number (int *) ;
+ int strlenW (int *) ;
+ int strncmpW (int *,int *,int) ;
+ int strncmpiW (int *,int *,int) ;
+ int strstrW (int *,int *) ;
+ int strstriW (int *,int *) ;
 
 __attribute__((used)) static INT compare_substring( LPCWSTR a, INT operator, LPCWSTR b )
 {
     int lhs, rhs;
 
-    /* substring operators return 0 if LHS is missing */
+
     if (!a || !*a)
         return 0;
 
-    /* substring operators return 1 if RHS is missing */
+
     if (!b || !*b)
         return 1;
 
-    /* if both strings contain only numbers, use integer comparison */
+
     lhs = atoiW(a);
     rhs = atoiW(b);
     if (str_is_number(a) && str_is_number(b))
@@ -50,32 +42,32 @@ __attribute__((used)) static INT compare_substring( LPCWSTR a, INT operator, LPC
 
     switch (operator)
     {
-    case COND_SS:
+    case 128:
         return strstrW( a, b ) != 0;
-    case COND_ISS:
+    case 131:
         return strstriW( a, b ) != 0;
-    case COND_LHS:
+    case 130:
     {
         int l = strlenW( a );
         int r = strlenW( b );
         if (r > l) return 0;
         return !strncmpW( a, b, r );
     }
-    case COND_RHS:
+    case 129:
     {
         int l = strlenW( a );
         int r = strlenW( b );
         if (r > l) return 0;
         return !strncmpW( a + (l - r), b, r );
     }
-    case COND_ILHS:
+    case 133:
     {
         int l = strlenW( a );
         int r = strlenW( b );
         if (r > l) return 0;
         return !strncmpiW( a, b, r );
     }
-    case COND_IRHS:
+    case 132:
     {
         int l = strlenW( a );
         int r = strlenW( b );

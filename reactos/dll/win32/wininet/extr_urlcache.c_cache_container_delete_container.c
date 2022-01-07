@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* cache_prefix; struct TYPE_5__* path; int /*<<< orphan*/  mutex; int /*<<< orphan*/  entry; } ;
-typedef  TYPE_1__ cache_container ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cache_container_close_index (TYPE_1__*) ; 
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* cache_prefix; struct TYPE_5__* path; int mutex; int entry; } ;
+typedef TYPE_1__ cache_container ;
+
+
+ int CloseHandle (int ) ;
+ int cache_container_close_index (TYPE_1__*) ;
+ int heap_free (TYPE_1__*) ;
+ int list_remove (int *) ;
 
 __attribute__((used)) static void cache_container_delete_container(cache_container *pContainer)
 {

@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int asprintf (char**,char*,...) ; 
- char* strrchr (char const*,char) ; 
- scalar_t__ unlikely (int) ; 
+ int asprintf (char**,char*,...) ;
+ char* strrchr (char const*,char) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static char *vlc_uri_merge_paths(const char *base, const char *ref)
 {
     char *str;
     int len;
 
-    if (base == NULL)
+    if (base == ((void*)0))
         len = asprintf(&str, "/%s", ref);
     else
     {
         const char *end = strrchr(base, '/');
 
-        if (end != NULL)
+        if (end != ((void*)0))
             end++;
         else
             end = base;
@@ -36,6 +28,6 @@ __attribute__((used)) static char *vlc_uri_merge_paths(const char *base, const c
     }
 
     if (unlikely(len == -1))
-        str = NULL;
+        str = ((void*)0);
     return str;
 }

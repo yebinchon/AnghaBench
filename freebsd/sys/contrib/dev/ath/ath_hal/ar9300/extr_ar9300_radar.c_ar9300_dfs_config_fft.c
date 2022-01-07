@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
+
+
+
+
+typedef int u_int32_t ;
 struct ath_hal {int dummy; } ;
-typedef  scalar_t__ HAL_BOOL ;
+typedef scalar_t__ HAL_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_PHY_RADAR_0 ; 
- int /*<<< orphan*/  AR_PHY_RADAR_0_FFT_ENA ; 
- int /*<<< orphan*/  OS_REG_READ (struct ath_hal*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OS_REG_WRITE (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AR_PHY_RADAR_0 ;
+ int AR_PHY_RADAR_0_FFT_ENA ;
+ int OS_REG_READ (struct ath_hal*,int ) ;
+ int OS_REG_WRITE (struct ath_hal*,int ,int ) ;
 
 u_int32_t ar9300_dfs_config_fft(struct ath_hal *ah, HAL_BOOL is_enable)
 {

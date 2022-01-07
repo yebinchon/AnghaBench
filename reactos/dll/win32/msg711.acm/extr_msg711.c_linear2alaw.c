@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int QUANT_MASK ; 
- unsigned char SEG_SHIFT ; 
- int search (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  seg_aend ; 
+ int QUANT_MASK ;
+ unsigned char SEG_SHIFT ;
+ int search (int,int ,int) ;
+ int seg_aend ;
 
 __attribute__((used)) static inline unsigned char
-linear2alaw(int pcm_val)	/* 2's complement (16-bit range) */
-    /* changed from "short" *drago* */
+linear2alaw(int pcm_val)
+
 {
-    int		mask;	/* changed from "short" *drago* */
-    int		seg;	/* changed from "short" *drago* */
-    unsigned char	aval;
+    int mask;
+    int seg;
+    unsigned char aval;
 
     pcm_val = pcm_val >> 3;
 
     if (pcm_val >= 0) {
-        mask = 0xD5;		/* sign (7th) bit = 1 */
+        mask = 0xD5;
     } else {
-        mask = 0x55;		/* sign bit = 0 */
+        mask = 0x55;
         pcm_val = -pcm_val - 1;
     }
 
-    /* Convert the scaled magnitude to segment number. */
+
     seg = search(pcm_val, seg_aend, 8);
 
-    /* Combine the sign, segment, and quantization bits. */
 
-    if (seg >= 8)		/* out of range, return maximum value. */
+
+    if (seg >= 8)
         return (unsigned char) (0x7F ^ mask);
     else {
         aval = (unsigned char) seg << SEG_SHIFT;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_cache_set_size_short {int size; scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  a2hex (unsigned char*,int,char*) ; 
- scalar_t__ dump_line_header (char*) ; 
- int /*<<< orphan*/  filtered_uri_short_md5 ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int) ; 
- int /*<<< orphan*/  out ; 
- int /*<<< orphan*/  strncmp (char*,int /*<<< orphan*/ ,int) ; 
+
+ int a2hex (unsigned char*,int,char*) ;
+ scalar_t__ dump_line_header (char*) ;
+ int filtered_uri_short_md5 ;
+ int fprintf (int ,char*,char*,int) ;
+ int out ;
+ int strncmp (char*,int ,int) ;
 
 void cache_set_size_short (struct lev_cache_set_size_short *E) {
   char output[33];

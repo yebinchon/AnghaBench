@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
- unsigned short* gb18030ext_page2e ; 
- unsigned short* gb18030ext_page2f ; 
- unsigned short* gb18030ext_page34 ; 
- unsigned short* gb18030ext_page36 ; 
- unsigned short* gb18030ext_page39 ; 
- unsigned short* gb18030ext_page43 ; 
- unsigned short* gb18030ext_page46 ; 
- unsigned short* gb18030ext_page47_1 ; 
- unsigned short* gb18030ext_page47_2 ; 
- unsigned short* gb18030ext_page49 ; 
- unsigned short* gb18030ext_page4c ; 
- unsigned short* gb18030ext_page4d ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
+ unsigned short* gb18030ext_page2e ;
+ unsigned short* gb18030ext_page2f ;
+ unsigned short* gb18030ext_page34 ;
+ unsigned short* gb18030ext_page36 ;
+ unsigned short* gb18030ext_page39 ;
+ unsigned short* gb18030ext_page43 ;
+ unsigned short* gb18030ext_page46 ;
+ unsigned short* gb18030ext_page47_1 ;
+ unsigned short* gb18030ext_page47_2 ;
+ unsigned short* gb18030ext_page49 ;
+ unsigned short* gb18030ext_page4c ;
+ unsigned short* gb18030ext_page4d ;
 
 __attribute__((used)) static int
 gb18030ext_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)

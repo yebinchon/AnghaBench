@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PHANDLE ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUPLICATE_SAME_ACCESS ; 
- int DuplicateHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int IS_HKCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  ok_dec (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PHANDLE ;
+typedef int * HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int DUPLICATE_SAME_ACCESS ;
+ int DuplicateHandle (int ,int *,int ,int ,int ,int ,int ) ;
+ int ERROR_SUCCESS ;
+ int GetCurrentProcess () ;
+ int HKEY_CLASSES_ROOT ;
+ int IS_HKCR (int *) ;
+ int KEY_READ ;
+ int RegCloseKey (int *) ;
+ int RegOpenKeyExW (int ,char*,int ,int ,int **) ;
+ int ok (int,char*) ;
+ int ok_dec (int ,int ) ;
 
 __attribute__((used)) static
 void
@@ -42,7 +42,7 @@ Test_DuplicateHandle(void)
 
     Duplicated = DuplicateHandle(GetCurrentProcess(), KeyHandle, GetCurrentProcess(), (PHANDLE)&DupHandle, 0, 0, DUPLICATE_SAME_ACCESS);
     ok(Duplicated, "\n");
-    ok(DupHandle != NULL, "\n");
+    ok(DupHandle != ((void*)0), "\n");
     ok(!IS_HKCR(DupHandle), "\n");
 
     RegCloseKey(KeyHandle);

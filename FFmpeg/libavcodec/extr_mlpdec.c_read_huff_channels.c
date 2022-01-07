@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  table; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int table; } ;
 struct TYPE_8__ {int codebook; int huff_lsbs; scalar_t__ sign_huff_offset; } ;
-struct TYPE_7__ {int** sample_buffer; int /*<<< orphan*/ ** bypassed_lsbs; TYPE_1__* substream; } ;
+struct TYPE_7__ {int** sample_buffer; int ** bypassed_lsbs; TYPE_1__* substream; } ;
 struct TYPE_6__ {unsigned int num_primitive_matrices; unsigned int blockpos; unsigned int min_channel; unsigned int max_channel; int* quant_step_size; TYPE_3__* channel_params; scalar_t__* lsb_bypass; } ;
-typedef  TYPE_1__ SubStream ;
-typedef  TYPE_2__ MLPDecodeContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ ChannelParams ;
+typedef TYPE_1__ SubStream ;
+typedef TYPE_2__ MLPDecodeContext ;
+typedef int GetBitContext ;
+typedef TYPE_3__ ChannelParams ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int VLC_BITS ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_bits1 (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- TYPE_5__* huff_vlc ; 
+
+ int AVERROR_INVALIDDATA ;
+ int VLC_BITS ;
+ int get_bits (int *,int) ;
+ int get_bits1 (int *) ;
+ int get_vlc2 (int *,int ,int,int) ;
+ TYPE_5__* huff_vlc ;
 
 __attribute__((used)) static inline int read_huff_channels(MLPDecodeContext *m, GetBitContext *gbp,
                                      unsigned int substr, unsigned int pos)
@@ -58,7 +58,7 @@ __attribute__((used)) static inline int read_huff_channels(MLPDecodeContext *m, 
         if (lsb_bits > 0)
             result = (result << lsb_bits) + get_bits(gbp, lsb_bits);
 
-        result  += cp->sign_huff_offset;
+        result += cp->sign_huff_offset;
         result *= 1 << quant_step_size;
 
         m->sample_buffer[pos + s->blockpos][channel] = result;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_long ;
-typedef  int /*<<< orphan*/  kern_return_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_FAILURE ; 
- int /*<<< orphan*/  KERN_SUCCESS ; 
- int /*<<< orphan*/  VTABLE_PREFIX ; 
- int /*<<< orphan*/  check (char const*) ; 
- int /*<<< orphan*/  extract_inner_string (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  finish ; 
- int /*<<< orphan*/  require_noerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-kern_return_t 
+
+
+typedef int u_long ;
+typedef int kern_return_t ;
+
+
+ int KERN_FAILURE ;
+ int KERN_SUCCESS ;
+ int VTABLE_PREFIX ;
+ int check (char const*) ;
+ int extract_inner_string (char const*,int ,int *,char*,int ) ;
+ int finish ;
+ int require_noerr (int ,int ) ;
+
+kern_return_t
 kxld_sym_get_class_name_from_vtable_name(const char *vtable_name,
     char class_name[], u_long class_name_len)
 {
@@ -30,7 +30,7 @@ kxld_sym_get_class_name_from_vtable_name(const char *vtable_name,
 
     check(vtable_name);
 
-    rval = extract_inner_string(vtable_name, VTABLE_PREFIX, NULL,
+    rval = extract_inner_string(vtable_name, VTABLE_PREFIX, ((void*)0),
         class_name, class_name_len);
     require_noerr(rval, finish);
 

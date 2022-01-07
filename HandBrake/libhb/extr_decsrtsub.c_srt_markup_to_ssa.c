@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HB_RGB_TO_BGR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_rgb_lookup_by_name (char*) ; 
- char* hb_strdup_printf (char*,...) ; 
- int sscanf (char*,char*,char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  strtol (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int HB_RGB_TO_BGR (int ) ;
+ int hb_rgb_lookup_by_name (char*) ;
+ char* hb_strdup_printf (char*,...) ;
+ int sscanf (char*,char*,char*) ;
+ int strncmp (char*,char*,int) ;
+ int strtol (char*,int *,int) ;
 
 __attribute__((used)) static char* srt_markup_to_ssa(char *srt, int *len)
 {
@@ -28,7 +28,7 @@ __attribute__((used)) static char* srt_markup_to_ssa(char *srt, int *len)
 
     *len = 0;
     if (srt[0] != '<' && srt[0] != '{')
-        return NULL;
+        return ((void*)0);
 
     if (srt[0] == '<')
         terminator = '>';
@@ -71,12 +71,12 @@ __attribute__((used)) static char* srt_markup_to_ssa(char *srt, int *len)
         match = sscanf(srt + 1, "font color=\"%39[^\"]\">", color);
         if (match != 1)
         {
-            return NULL;
+            return ((void*)0);
         }
         while (srt[*len] != '>') (*len)++;
         (*len)++;
         if (color[0] == '#')
-            rgb = strtol(color + 1, NULL, 16);
+            rgb = strtol(color + 1, ((void*)0), 16);
         else
             rgb = hb_rgb_lookup_by_name(color);
         return hb_strdup_printf("{\\1c&H%X&}", HB_RGB_TO_BGR(rgb));
@@ -88,5 +88,5 @@ __attribute__((used)) static char* srt_markup_to_ssa(char *srt, int *len)
         return hb_strdup_printf("{\\1c&HFFFFFF&}");
     }
 
-    return NULL;
+    return ((void*)0);
 }

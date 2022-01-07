@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct notify_baton {int /*<<< orphan*/  conflicted_paths; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_HASH_KEY_STRING ; 
- int /*<<< orphan*/  apr_hash_pool_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+struct notify_baton {int conflicted_paths; } ;
+
+
+ int APR_HASH_KEY_STRING ;
+ int apr_hash_pool_get (int ) ;
+ int apr_hash_set (int ,int ,int ,char*) ;
+ int apr_pstrdup (int ,char const*) ;
 
 __attribute__((used)) static void
 add_conflicted_path(struct notify_baton *nb, const char *path)

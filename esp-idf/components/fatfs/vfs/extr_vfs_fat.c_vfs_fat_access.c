@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ vfs_fat_ctx_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int lock; } ;
+typedef TYPE_1__ vfs_fat_ctx_t ;
 struct TYPE_6__ {int fattrib; } ;
-typedef  scalar_t__ FRESULT ;
-typedef  TYPE_2__ FILINFO ;
+typedef scalar_t__ FRESULT ;
+typedef TYPE_2__ FILINFO ;
 
-/* Variables and functions */
- int AM_RDO ; 
- int /*<<< orphan*/  EACCES ; 
- int /*<<< orphan*/  ENOENT ; 
- scalar_t__ FR_OK ; 
- int W_OK ; 
- int /*<<< orphan*/  _lock_acquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _lock_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ f_stat (char const*,TYPE_2__*) ; 
- int /*<<< orphan*/  prepend_drive_to_path (TYPE_1__*,char const**,int /*<<< orphan*/ *) ; 
+
+ int AM_RDO ;
+ int EACCES ;
+ int ENOENT ;
+ scalar_t__ FR_OK ;
+ int W_OK ;
+ int _lock_acquire (int *) ;
+ int _lock_release (int *) ;
+ int errno ;
+ scalar_t__ f_stat (char const*,TYPE_2__*) ;
+ int prepend_drive_to_path (TYPE_1__*,char const**,int *) ;
 
 __attribute__((used)) static int vfs_fat_access(void* ctx, const char *path, int amode)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static int vfs_fat_access(void* ctx, const char *path, int
     vfs_fat_ctx_t* fat_ctx = (vfs_fat_ctx_t*) ctx;
 
     _lock_acquire(&fat_ctx->lock);
-    prepend_drive_to_path(fat_ctx, &path, NULL);
+    prepend_drive_to_path(fat_ctx, &path, ((void*)0));
     res = f_stat(path, &info);
     _lock_release(&fat_ctx->lock);
 
@@ -48,8 +48,8 @@ __attribute__((used)) static int vfs_fat_access(void* ctx, const char *path, int
             ret = -1;
             errno = EACCES;
         }
-        // There is no flag to test readable or executable: we assume that if
-        // it exists then it is readable and executable
+
+
     } else {
         ret = -1;
         errno = ENOENT;

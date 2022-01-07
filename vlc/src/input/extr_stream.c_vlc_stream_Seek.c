@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_7__ {int (* pf_seek ) (TYPE_1__*,scalar_t__) ;} ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 struct TYPE_8__ {int eof; scalar_t__ offset; TYPE_3__* block; TYPE_3__* peek; } ;
-typedef  TYPE_2__ stream_priv_t ;
+typedef TYPE_2__ stream_priv_t ;
 struct TYPE_9__ {scalar_t__ i_buffer; size_t p_buffer; } ;
-typedef  TYPE_3__ block_t ;
+typedef TYPE_3__ block_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  block_Release (TYPE_3__*) ; 
- int stub1 (TYPE_1__*,scalar_t__) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int block_Release (TYPE_3__*) ;
+ int stub1 (TYPE_1__*,scalar_t__) ;
 
 int vlc_stream_Seek(stream_t *s, uint64_t offset)
 {
     stream_priv_t *priv = (stream_priv_t *)s;
 
-    priv->eof = false;
+    priv->eof = 0;
 
     block_t *peek = priv->peek;
-    if (peek != NULL)
+    if (peek != ((void*)0))
     {
         if (offset >= priv->offset
          && offset <= (priv->offset + peek->i_buffer))
-        {   /* Seeking within the peek buffer */
+        {
             size_t fwd = offset - priv->offset;
 
             peek->p_buffer += fwd;
@@ -47,7 +47,7 @@ int vlc_stream_Seek(stream_t *s, uint64_t offset)
 
             if (peek->i_buffer == 0)
             {
-                priv->peek = NULL;
+                priv->peek = ((void*)0);
                 block_Release(peek);
             }
 
@@ -57,10 +57,10 @@ int vlc_stream_Seek(stream_t *s, uint64_t offset)
     else
     {
         if (priv->offset == offset)
-            return VLC_SUCCESS; /* Nothing to do! */
+            return VLC_SUCCESS;
     }
 
-    if (s->pf_seek == NULL)
+    if (s->pf_seek == ((void*)0))
         return VLC_EGENERIC;
 
     int ret = s->pf_seek(s, offset);
@@ -69,16 +69,16 @@ int vlc_stream_Seek(stream_t *s, uint64_t offset)
 
     priv->offset = offset;
 
-    if (peek != NULL)
+    if (peek != ((void*)0))
     {
-        priv->peek = NULL;
+        priv->peek = ((void*)0);
         block_Release(peek);
     }
 
-    if (priv->block != NULL)
+    if (priv->block != ((void*)0))
     {
         block_Release(priv->block);
-        priv->block = NULL;
+        priv->block = ((void*)0);
     }
 
     return VLC_SUCCESS;

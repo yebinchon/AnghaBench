@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dir_struct {int /*<<< orphan*/  unmanaged_exclude_files; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_patterns_from_file_1 (struct dir_struct*,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+struct dir_struct {int unmanaged_exclude_files; } ;
+
+
+ int add_patterns_from_file_1 (struct dir_struct*,char const*,int *) ;
 
 void add_patterns_from_file(struct dir_struct *dir, const char *fname)
 {
-	dir->unmanaged_exclude_files++; /* see validate_untracked_cache() */
-	add_patterns_from_file_1(dir, fname, NULL);
+ dir->unmanaged_exclude_files++;
+ add_patterns_from_file_1(dir, fname, ((void*)0));
 }

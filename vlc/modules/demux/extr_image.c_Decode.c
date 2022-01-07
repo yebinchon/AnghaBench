@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct TYPE_11__ {size_t i_pitch; size_t i_lines; int i_visible_lines; size_t i_visible_pitch; int /*<<< orphan*/ * p_pixels; } ;
-typedef  TYPE_1__ plane_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int vlc_fourcc_t ;
+typedef int video_format_t ;
+struct TYPE_11__ {size_t i_pitch; size_t i_lines; int i_visible_lines; size_t i_visible_pitch; int * p_pixels; } ;
+typedef TYPE_1__ plane_t ;
 struct TYPE_12__ {int i_planes; TYPE_1__* p; } ;
-typedef  TYPE_2__ picture_t ;
-typedef  int /*<<< orphan*/  image_handler_t ;
-typedef  int /*<<< orphan*/  es_format_t ;
-typedef  int /*<<< orphan*/  demux_t ;
-struct TYPE_13__ {int /*<<< orphan*/ * p_buffer; } ;
-typedef  TYPE_3__ block_t ;
+typedef TYPE_2__ picture_t ;
+typedef int image_handler_t ;
+typedef int es_format_t ;
+typedef int demux_t ;
+struct TYPE_13__ {int * p_buffer; } ;
+typedef TYPE_3__ block_t ;
 
-/* Variables and functions */
- TYPE_3__* block_Alloc (size_t) ; 
- int /*<<< orphan*/  block_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  es_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  es_format_InitFromVideo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * image_HandlerCreate (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  image_HandlerDelete (int /*<<< orphan*/ *) ; 
- TYPE_2__* image_Read (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  picture_Release (TYPE_2__*) ; 
- int /*<<< orphan*/  video_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_3__* block_Alloc (size_t) ;
+ int block_Release (TYPE_3__*) ;
+ int es_format_Clean (int *) ;
+ int es_format_InitFromVideo (int *,int *) ;
+ int * image_HandlerCreate (int *) ;
+ int image_HandlerDelete (int *) ;
+ TYPE_2__* image_Read (int *,TYPE_3__*,int *,int *) ;
+ int memcpy (int *,int *,size_t) ;
+ int picture_Release (TYPE_2__*) ;
+ int video_format_Clean (int *) ;
+ int video_format_Init (int *,int ) ;
 
 __attribute__((used)) static block_t *Decode(demux_t *demux,
                        es_format_t *fmt, vlc_fourcc_t chroma, block_t *data)
@@ -44,7 +44,7 @@ __attribute__((used)) static block_t *Decode(demux_t *demux,
     image_handler_t *handler = image_HandlerCreate(demux);
     if (!handler) {
         block_Release(data);
-        return NULL;
+        return ((void*)0);
     }
 
     video_format_t decoded;
@@ -54,7 +54,7 @@ __attribute__((used)) static block_t *Decode(demux_t *demux,
     image_HandlerDelete(handler);
 
     if (!image)
-        return NULL;
+        return ((void*)0);
 
     es_format_Clean(fmt);
     es_format_InitFromVideo(fmt, &decoded);
@@ -67,7 +67,7 @@ __attribute__((used)) static block_t *Decode(demux_t *demux,
     data = block_Alloc(size);
     if (!data) {
         picture_Release(image);
-        return NULL;
+        return ((void*)0);
     }
 
     size_t offset = 0;

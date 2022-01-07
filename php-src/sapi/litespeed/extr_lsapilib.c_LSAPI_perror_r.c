@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  achError ;
-typedef  int /*<<< orphan*/  LSAPI_Request ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSAPI_Write_Stderr_r (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  errno ; 
- int getpid () ; 
- int snprintf (char*,int,char*,int,char const*,char const*,char*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write (int /*<<< orphan*/ ,char*,int) ; 
+
+
+
+typedef int achError ;
+typedef int LSAPI_Request ;
+
+
+ int LSAPI_Write_Stderr_r (int *,char*,int) ;
+ int STDERR_FILENO ;
+ int errno ;
+ int getpid () ;
+ int snprintf (char*,int,char*,int,char const*,char const*,char*) ;
+ char* strerror (int ) ;
+ int write (int ,char*,int) ;
 
 __attribute__((used)) static int LSAPI_perror_r( LSAPI_Request * pReq, const char * pErr1, const char *pErr2 )
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* right; struct TYPE_4__* left; } ;
-typedef  TYPE_1__ query_node_t ;
+typedef TYPE_1__ query_node_t ;
 
-/* Variables and functions */
- TYPE_1__* new_query_node (int /*<<< orphan*/ ) ; 
- char* parse_ptr ; 
- void* parse_query_term () ; 
- int /*<<< orphan*/  qn_and ; 
- int /*<<< orphan*/  qn_minus ; 
- int /*<<< orphan*/  qn_or ; 
- int /*<<< orphan*/  skipspc () ; 
+
+ TYPE_1__* new_query_node (int ) ;
+ char* parse_ptr ;
+ void* parse_query_term () ;
+ int qn_and ;
+ int qn_minus ;
+ int qn_or ;
+ int skipspc () ;
 
 __attribute__((used)) static query_node_t *parse_query_expr (void) {
   query_node_t *X, *Y;

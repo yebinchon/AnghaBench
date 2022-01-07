@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  oInst; } ;
-struct TYPE_5__ {int /*<<< orphan*/  varkind; int /*<<< orphan*/  wVarFlags; int /*<<< orphan*/  elemdescVar; TYPE_1__ u; int /*<<< orphan*/  lpstrSchema; int /*<<< orphan*/  memid; } ;
-typedef  TYPE_2__ VARDESC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MESSAGE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_ELEMDESC (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int oInst; } ;
+struct TYPE_5__ {int varkind; int wVarFlags; int elemdescVar; TYPE_1__ u; int lpstrSchema; int memid; } ;
+typedef TYPE_2__ VARDESC ;
+
+
+ int MESSAGE (char*,int ) ;
+ int debugstr_w (int ) ;
+ int dump_ELEMDESC (int *) ;
 
 __attribute__((used)) static void dump_VARDESC(const VARDESC *v)
 {

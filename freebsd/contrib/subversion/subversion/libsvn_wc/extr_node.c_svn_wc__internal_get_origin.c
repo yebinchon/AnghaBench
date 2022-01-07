@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_UNEXPECTED_STATUS ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_skip_ancestor (char const*,char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* svn_relpath_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_base_get_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_info (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_scan_addition (scalar_t__*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_added ; 
- scalar_t__ svn_wc__db_status_deleted ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_PATH_UNEXPECTED_STATUS ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int _ (char*) ;
+ char* apr_pstrdup (int *,char const*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_dirent_skip_ancestor (char const*,char const*) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ char* svn_relpath_join (char const*,int ,int *) ;
+ int svn_wc__db_base_get_info (int *,int *,int *,char const**,char const**,char const**,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_read_info (scalar_t__*,int *,int *,char const**,char const**,char const**,int *,int *,int *,int *,int *,int *,char const**,char const**,char const**,int *,int *,int *,int *,int *,int *,scalar_t__*,int *,int *,int *,scalar_t__*,scalar_t__*,int *,char const*,int *,int *) ;
+ int svn_wc__db_scan_addition (scalar_t__*,char const**,int *,int *,int *,char const**,char const**,char const**,int *,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc__db_status_added ;
+ scalar_t__ svn_wc__db_status_deleted ;
+ scalar_t__ svn_wc__db_status_incomplete ;
 
 svn_error_t *
 svn_wc__internal_get_origin(svn_boolean_t *is_copy,
@@ -62,36 +62,36 @@ svn_wc__internal_get_origin(svn_boolean_t *is_copy,
   const char *tmp_repos_relpath;
 
   if (copy_root_abspath)
-    *copy_root_abspath = NULL;
+    *copy_root_abspath = ((void*)0);
   if (!repos_relpath)
     repos_relpath = &tmp_repos_relpath;
 
-  SVN_ERR(svn_wc__db_read_info(&status, NULL, revision, repos_relpath,
-                               repos_root_url, repos_uuid, NULL, NULL, NULL,
-                               depth, NULL, NULL,
+  SVN_ERR(svn_wc__db_read_info(&status, ((void*)0), revision, repos_relpath,
+                               repos_root_url, repos_uuid, ((void*)0), ((void*)0), ((void*)0),
+                               depth, ((void*)0), ((void*)0),
                                &original_repos_relpath,
                                &original_repos_root_url,
                                &original_repos_uuid, &original_revision,
-                               NULL, NULL, NULL, NULL, NULL, &op_root, NULL,
-                               NULL, NULL, &have_more_work, is_copy,
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &op_root, ((void*)0),
+                               ((void*)0), ((void*)0), &have_more_work, is_copy,
                                db, local_abspath, result_pool, scratch_pool));
 
   if (*repos_relpath)
     {
-      return SVN_NO_ERROR; /* Returned BASE information */
+      return SVN_NO_ERROR;
     }
 
   if (status == svn_wc__db_status_deleted && !scan_deleted)
     {
       if (is_copy)
-        *is_copy = FALSE; /* Deletes are stored in working; default to FALSE */
+        *is_copy = FALSE;
 
-      return SVN_NO_ERROR; /* No info */
+      return SVN_NO_ERROR;
     }
 
   if (original_repos_relpath)
     {
-      /* We an have a copy */
+
       *repos_relpath = original_repos_relpath;
       if (revision)
         *revision = original_revision;
@@ -100,7 +100,7 @@ svn_wc__internal_get_origin(svn_boolean_t *is_copy,
       if (repos_uuid)
         *repos_uuid = original_repos_uuid;
 
-      if (copy_root_abspath == NULL)
+      if (copy_root_abspath == ((void*)0))
         return SVN_NO_ERROR;
       else if (op_root)
         {
@@ -120,8 +120,8 @@ svn_wc__internal_get_origin(svn_boolean_t *is_copy,
       {
         const char *op_root_abspath;
 
-        SVN_ERR(svn_wc__db_scan_addition(&status, &op_root_abspath, NULL,
-                                         NULL, NULL, &original_repos_relpath,
+        SVN_ERR(svn_wc__db_scan_addition(&status, &op_root_abspath, ((void*)0),
+                                         ((void*)0), ((void*)0), &original_repos_relpath,
                                          repos_root_url,
                                          repos_uuid, revision,
                                          db, local_abspath,
@@ -131,14 +131,14 @@ svn_wc__internal_get_origin(svn_boolean_t *is_copy,
           {
             if (is_copy)
               *is_copy = FALSE;
-            return SVN_NO_ERROR; /* Local addition */
+            return SVN_NO_ERROR;
           }
 
-        /* We don't know how the following error condition can be fulfilled
-         * but we have seen that happening in the wild.  Better to create
-         * an error than a SEGFAULT. */
+
+
+
         if (status == svn_wc__db_status_incomplete && !original_repos_relpath)
-          return svn_error_createf(SVN_ERR_WC_PATH_UNEXPECTED_STATUS, NULL,
+          return svn_error_createf(SVN_ERR_WC_PATH_UNEXPECTED_STATUS, ((void*)0),
                                _("Incomplete copy information on path '%s'."),
                                    svn_dirent_local_style(local_abspath,
                                                           scratch_pool));
@@ -151,15 +151,15 @@ svn_wc__internal_get_origin(svn_boolean_t *is_copy,
         if (copy_root_abspath)
           *copy_root_abspath = op_root_abspath;
       }
-    else /* Deleted, excluded, not-present, server-excluded, ... */
+    else
       {
         if (is_copy)
           *is_copy = FALSE;
 
-        SVN_ERR(svn_wc__db_base_get_info(NULL, NULL, revision, repos_relpath,
-                                         repos_root_url, repos_uuid, NULL,
-                                         NULL, NULL, NULL, NULL, NULL, NULL,
-                                         NULL, NULL, NULL,
+        SVN_ERR(svn_wc__db_base_get_info(((void*)0), ((void*)0), revision, repos_relpath,
+                                         repos_root_url, repos_uuid, ((void*)0),
+                                         ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                         ((void*)0), ((void*)0), ((void*)0),
                                          db, local_abspath,
                                          result_pool, scratch_pool));
       }

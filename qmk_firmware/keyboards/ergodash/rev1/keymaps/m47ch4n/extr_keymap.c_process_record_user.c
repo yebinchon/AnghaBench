@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  ADJUST 133 
- int /*<<< orphan*/  AMPR ; 
- int /*<<< orphan*/  ASTR ; 
- int /*<<< orphan*/  AT ; 
- int BSLASH ; 
- int /*<<< orphan*/  BSLS ; 
- int BSPACE ; 
- int /*<<< orphan*/  CASE_US (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CIRC ; 
- int /*<<< orphan*/  CSTM_0 ; 
- int /*<<< orphan*/  CSTM_1 ; 
- int /*<<< orphan*/  CSTM_2 ; 
- int /*<<< orphan*/  CSTM_3 ; 
- int /*<<< orphan*/  CSTM_4 ; 
- int /*<<< orphan*/  CSTM_5 ; 
- int /*<<< orphan*/  CSTM_6 ; 
- int /*<<< orphan*/  CSTM_7 ; 
- int /*<<< orphan*/  CSTM_8 ; 
- int /*<<< orphan*/  CSTM_9 ; 
- int /*<<< orphan*/  DEL ; 
- int DELETE ; 
- int /*<<< orphan*/  DLR ; 
- int /*<<< orphan*/  EQL ; 
- int EQUAL ; 
- int /*<<< orphan*/  EXLM ; 
- int GRAVE ; 
- int /*<<< orphan*/  GRV ; 
- int /*<<< orphan*/  HASH ; 
- int INT1 ; 
- int INT3 ; 
-#define  JP 132 
- int /*<<< orphan*/  JP_LAYOUT ; 
- int /*<<< orphan*/  KEY (int) ; 
- int /*<<< orphan*/  KEY_SHIFT (int) ; 
- int /*<<< orphan*/  KEY_UPSHIFT (int) ; 
- int /*<<< orphan*/  LAYOUT_STATUS ; 
- int LBRACKET ; 
- int /*<<< orphan*/  LBRC ; 
- int /*<<< orphan*/  LCBR ; 
-#define  LOWER 131 
- int /*<<< orphan*/  LPRN ; 
- int /*<<< orphan*/  MINS ; 
- int MINUS ; 
- int NONUS_HASH ; 
- int /*<<< orphan*/  PERC ; 
- int /*<<< orphan*/  PIPE ; 
- int /*<<< orphan*/  PLUS ; 
- int /*<<< orphan*/  QUOT ; 
- int QUOTE ; 
-#define  RAISE 130 
- int RBRACKET ; 
- int /*<<< orphan*/  RBRC ; 
- int /*<<< orphan*/  RCBR ; 
- int /*<<< orphan*/  RPRN ; 
- int /*<<< orphan*/  SCLN ; 
- int SCOLON ; 
- int /*<<< orphan*/  SEND_STRING (int /*<<< orphan*/ ) ; 
-#define  SHIFT 129 
- int /*<<< orphan*/  SHIFT_DU (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SHIFT_PRESSED ; 
- int /*<<< orphan*/  SS_DOWN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SS_UP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TILD ; 
- int /*<<< orphan*/  UNDS ; 
-#define  US 128 
- int /*<<< orphan*/  US_LAYOUT ; 
- int /*<<< orphan*/  X_LSHIFT ; 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+ int AMPR ;
+ int ASTR ;
+ int AT ;
+ int BSLASH ;
+ int BSLS ;
+ int BSPACE ;
+ int CASE_US (int ,int ,int ) ;
+ int CIRC ;
+ int CSTM_0 ;
+ int CSTM_1 ;
+ int CSTM_2 ;
+ int CSTM_3 ;
+ int CSTM_4 ;
+ int CSTM_5 ;
+ int CSTM_6 ;
+ int CSTM_7 ;
+ int CSTM_8 ;
+ int CSTM_9 ;
+ int DEL ;
+ int DELETE ;
+ int DLR ;
+ int EQL ;
+ int EQUAL ;
+ int EXLM ;
+ int GRAVE ;
+ int GRV ;
+ int HASH ;
+ int INT1 ;
+ int INT3 ;
+
+ int JP_LAYOUT ;
+ int KEY (int) ;
+ int KEY_SHIFT (int) ;
+ int KEY_UPSHIFT (int) ;
+ int LAYOUT_STATUS ;
+ int LBRACKET ;
+ int LBRC ;
+ int LCBR ;
+
+ int LPRN ;
+ int MINS ;
+ int MINUS ;
+ int NONUS_HASH ;
+ int PERC ;
+ int PIPE ;
+ int PLUS ;
+ int QUOT ;
+ int QUOTE ;
+
+ int RBRACKET ;
+ int RBRC ;
+ int RCBR ;
+ int RPRN ;
+ int SCLN ;
+ int SCOLON ;
+ int SEND_STRING (int ) ;
+
+ int SHIFT_DU (int ,int ) ;
+ int SHIFT_PRESSED ;
+ int SS_DOWN (int ) ;
+ int SS_UP (int ) ;
+ int TILD ;
+ int UNDS ;
+
+ int US_LAYOUT ;
+ int X_LSHIFT ;
+ int _ADJUST ;
+ int _LOWER ;
+ int _RAISE ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -129,54 +129,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         CASE_US(PLUS, KEY_SHIFT(EQUAL), KEY_SHIFT(SCOLON));
         CASE_US(SCLN, KEY(SCOLON), SHIFT_DU(KEY_UPSHIFT(QUOTE), KEY(SCOLON)));
         CASE_US(QUOT, KEY(QUOTE), SHIFT_DU(KEY_SHIFT(2), KEY_SHIFT(7)));
-        case JP:
+        case 132:
             if (record->event.pressed) {
                 LAYOUT_STATUS = JP_LAYOUT;
             }
-            return false;
+            return 0;
             break;
-        case US:
+        case 128:
             if (record->event.pressed) {
                 LAYOUT_STATUS = US_LAYOUT;
             }
-            return false;
+            return 0;
             break;
-        case SHIFT:
+        case 129:
             if (record->event.pressed) {
                 SEND_STRING(SS_DOWN(X_LSHIFT));
-                SHIFT_PRESSED = true;
+                SHIFT_PRESSED = 1;
             } else {
                 SEND_STRING(SS_UP(X_LSHIFT));
-                SHIFT_PRESSED = false;
+                SHIFT_PRESSED = 0;
             }
-            return false;
+            return 0;
             break;
-        case LOWER:
+        case 131:
             if (record->event.pressed) {
                 layer_on(_LOWER);
             } else {
                 layer_off(_LOWER);
             }
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            return false;
+            return 0;
             break;
-        case RAISE:
+        case 130:
             if (record->event.pressed) {
                 layer_on(_RAISE);
             } else {
                 layer_off(_RAISE);
             }
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            return false;
+            return 0;
             break;
-        case ADJUST:
+        case 133:
             if (record->event.pressed) {
                 layer_on(_ADJUST);
             } else {
                 layer_off(_ADJUST);
             }
-            return false;
+            return 0;
             break;
     }
-    return true;
+    return 1;
 }

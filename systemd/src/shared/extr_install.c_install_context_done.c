@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* have_processed; void* will_process; } ;
-typedef  TYPE_1__ InstallContext ;
+typedef TYPE_1__ InstallContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  install_info_free ; 
- void* ordered_hashmap_free_with_destructor (void*,int /*<<< orphan*/ ) ; 
+
+ int assert (TYPE_1__*) ;
+ int install_info_free ;
+ void* ordered_hashmap_free_with_destructor (void*,int ) ;
 
 __attribute__((used)) static void install_context_done(InstallContext *c) {
         assert(c);

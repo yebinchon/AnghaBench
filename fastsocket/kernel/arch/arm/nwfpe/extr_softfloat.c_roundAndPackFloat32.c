@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct roundingData {scalar_t__ mode; int exception; } ;
-typedef  scalar_t__ sbits32 ;
-typedef  scalar_t__ int8 ;
-typedef  int int16 ;
-typedef  scalar_t__ float32 ;
-typedef  int flag ;
-typedef  int bits32 ;
-typedef  int bits16 ;
+typedef scalar_t__ sbits32 ;
+typedef scalar_t__ int8 ;
+typedef int int16 ;
+typedef scalar_t__ float32 ;
+typedef int flag ;
+typedef int bits32 ;
+typedef int bits16 ;
 
-/* Variables and functions */
- scalar_t__ float_detect_tininess ; 
- int float_flag_inexact ; 
- int float_flag_overflow ; 
- int float_flag_underflow ; 
- scalar_t__ float_round_down ; 
- scalar_t__ float_round_nearest_even ; 
- scalar_t__ float_round_to_zero ; 
- scalar_t__ float_round_up ; 
- scalar_t__ float_tininess_before_rounding ; 
- scalar_t__ packFloat32 (int,int,int) ; 
- int /*<<< orphan*/  shift32RightJamming (int,int,int*) ; 
+
+ scalar_t__ float_detect_tininess ;
+ int float_flag_inexact ;
+ int float_flag_overflow ;
+ int float_flag_underflow ;
+ scalar_t__ float_round_down ;
+ scalar_t__ float_round_nearest_even ;
+ scalar_t__ float_round_to_zero ;
+ scalar_t__ float_round_up ;
+ scalar_t__ float_tininess_before_rounding ;
+ scalar_t__ packFloat32 (int,int,int) ;
+ int shift32RightJamming (int,int,int*) ;
 
 __attribute__((used)) static float32 roundAndPackFloat32( struct roundingData *roundData, flag zSign, int16 zExp, bits32 zSig )
 {
@@ -58,8 +58,8 @@ __attribute__((used)) static float32 roundAndPackFloat32( struct roundingData *r
     }
     roundBits = zSig & 0x7F;
     if ( 0xFD <= (bits16) zExp ) {
-        if (    ( 0xFD < zExp )
-             || (    ( zExp == 0xFD )
+        if ( ( 0xFD < zExp )
+             || ( ( zExp == 0xFD )
                   && ( (sbits32) ( zSig + roundIncrement ) < 0 ) )
            ) {
             roundData->exception |= float_flag_overflow | float_flag_inexact;

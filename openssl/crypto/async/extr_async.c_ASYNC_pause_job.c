@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  dispatcher; TYPE_2__* currjob; scalar_t__ blocked; } ;
-typedef  TYPE_1__ async_ctx ;
-struct TYPE_5__ {int /*<<< orphan*/  waitctx; int /*<<< orphan*/  fibrectx; int /*<<< orphan*/  status; } ;
-typedef  TYPE_2__ ASYNC_JOB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASYNC_F_ASYNC_PAUSE_JOB ; 
- int /*<<< orphan*/  ASYNC_JOB_PAUSING ; 
- int /*<<< orphan*/  ASYNC_R_FAILED_TO_SWAP_CONTEXT ; 
- int /*<<< orphan*/  ASYNCerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  async_fibre_swapcontext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- TYPE_1__* async_get_ctx () ; 
- int /*<<< orphan*/  async_wait_ctx_reset_counts (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dispatcher; TYPE_2__* currjob; scalar_t__ blocked; } ;
+typedef TYPE_1__ async_ctx ;
+struct TYPE_5__ {int waitctx; int fibrectx; int status; } ;
+typedef TYPE_2__ ASYNC_JOB ;
+
+
+ int ASYNC_F_ASYNC_PAUSE_JOB ;
+ int ASYNC_JOB_PAUSING ;
+ int ASYNC_R_FAILED_TO_SWAP_CONTEXT ;
+ int ASYNCerr (int ,int ) ;
+ int async_fibre_swapcontext (int *,int *,int) ;
+ TYPE_1__* async_get_ctx () ;
+ int async_wait_ctx_reset_counts (int ) ;
 
 int ASYNC_pause_job(void)
 {
     ASYNC_JOB *job;
     async_ctx *ctx = async_get_ctx();
 
-    if (ctx == NULL
-            || ctx->currjob == NULL
+    if (ctx == ((void*)0)
+            || ctx->currjob == ((void*)0)
             || ctx->blocked) {
-        /*
-         * Could be we've deliberately not been started within a job so this is
-         * counted as success.
-         */
+
+
+
+
         return 1;
     }
 
@@ -49,7 +49,7 @@ int ASYNC_pause_job(void)
         ASYNCerr(ASYNC_F_ASYNC_PAUSE_JOB, ASYNC_R_FAILED_TO_SWAP_CONTEXT);
         return 0;
     }
-    /* Reset counts of added and deleted fds */
+
     async_wait_ctx_reset_counts(job->waitctx);
 
     return 1;

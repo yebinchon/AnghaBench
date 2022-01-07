@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ classoid; scalar_t__ objoid; } ;
-typedef  scalar_t__ Oid ;
-typedef  TYPE_1__ CommentItem ;
-typedef  int /*<<< orphan*/  Archive ;
+typedef scalar_t__ Oid ;
+typedef TYPE_1__ CommentItem ;
+typedef int Archive ;
 
-/* Variables and functions */
- int collectComments (int /*<<< orphan*/ *,TYPE_1__**) ; 
+
+ int collectComments (int *,TYPE_1__**) ;
 
 __attribute__((used)) static int
 findComments(Archive *fout, Oid classoid, Oid objoid,
-			 CommentItem **items)
+    CommentItem **items)
 {
-	/* static storage for table of comments */
-	static CommentItem *comments = NULL;
-	static int	ncomments = -1;
 
-	CommentItem *middle = NULL;
-	CommentItem *low;
-	CommentItem *high;
-	int			nmatch;
+ static CommentItem *comments = ((void*)0);
+ static int ncomments = -1;
 
-	/* Get comments if we didn't already */
-	if (ncomments < 0)
-		ncomments = collectComments(fout, &comments);
+ CommentItem *middle = ((void*)0);
+ CommentItem *low;
+ CommentItem *high;
+ int nmatch;
 
-	/*
-	 * Do binary search to find some item matching the object.
-	 */
-	low = &comments[0];
-	high = &comments[ncomments - 1];
-	while (low <= high)
-	{
-		middle = low + (high - low) / 2;
 
-		if (classoid < middle->classoid)
-			high = middle - 1;
-		else if (classoid > middle->classoid)
-			low = middle + 1;
-		else if (objoid < middle->objoid)
-			high = middle - 1;
-		else if (objoid > middle->objoid)
-			low = middle + 1;
-		else
-			break;				/* found a match */
-	}
+ if (ncomments < 0)
+  ncomments = collectComments(fout, &comments);
 
-	if (low > high)				/* no matches */
-	{
-		*items = NULL;
-		return 0;
-	}
 
-	/*
-	 * Now determine how many items match the object.  The search loop
-	 * invariant still holds: only items between low and high inclusive could
-	 * match.
-	 */
-	nmatch = 1;
-	while (middle > low)
-	{
-		if (classoid != middle[-1].classoid ||
-			objoid != middle[-1].objoid)
-			break;
-		middle--;
-		nmatch++;
-	}
 
-	*items = middle;
 
-	middle += nmatch;
-	while (middle <= high)
-	{
-		if (classoid != middle->classoid ||
-			objoid != middle->objoid)
-			break;
-		middle++;
-		nmatch++;
-	}
+ low = &comments[0];
+ high = &comments[ncomments - 1];
+ while (low <= high)
+ {
+  middle = low + (high - low) / 2;
 
-	return nmatch;
+  if (classoid < middle->classoid)
+   high = middle - 1;
+  else if (classoid > middle->classoid)
+   low = middle + 1;
+  else if (objoid < middle->objoid)
+   high = middle - 1;
+  else if (objoid > middle->objoid)
+   low = middle + 1;
+  else
+   break;
+ }
+
+ if (low > high)
+ {
+  *items = ((void*)0);
+  return 0;
+ }
+
+
+
+
+
+
+ nmatch = 1;
+ while (middle > low)
+ {
+  if (classoid != middle[-1].classoid ||
+   objoid != middle[-1].objoid)
+   break;
+  middle--;
+  nmatch++;
+ }
+
+ *items = middle;
+
+ middle += nmatch;
+ while (middle <= high)
+ {
+  if (classoid != middle->classoid ||
+   objoid != middle->objoid)
+   break;
+  middle++;
+  nmatch++;
+ }
+
+ return nmatch;
 }

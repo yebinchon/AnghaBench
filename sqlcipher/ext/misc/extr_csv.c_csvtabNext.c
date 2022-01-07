@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ pVtab; } ;
-typedef  TYPE_1__ sqlite3_vtab_cursor ;
+typedef TYPE_1__ sqlite3_vtab_cursor ;
 struct TYPE_12__ {char cTerm; scalar_t__ n; } ;
 struct TYPE_11__ {scalar_t__* aLen; char** azVal; int iRowid; TYPE_6__ rdr; } ;
 struct TYPE_10__ {int nCol; } ;
-typedef  TYPE_2__ CsvTable ;
-typedef  TYPE_3__ CsvCursor ;
+typedef TYPE_2__ CsvTable ;
+typedef TYPE_3__ CsvCursor ;
 
-/* Variables and functions */
- char EOF ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  csv_errmsg (TYPE_6__*,char*) ; 
- char* csv_read_one_field (TYPE_6__*) ; 
- int /*<<< orphan*/  csv_xfer_error (TYPE_2__*,TYPE_6__*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_realloc64 (char*,scalar_t__) ; 
+
+ char EOF ;
+ int SQLITE_OK ;
+ int csv_errmsg (TYPE_6__*,char*) ;
+ char* csv_read_one_field (TYPE_6__*) ;
+ int csv_xfer_error (TYPE_2__*,TYPE_6__*) ;
+ int memcpy (char*,char*,scalar_t__) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_realloc64 (char*,scalar_t__) ;
 
 __attribute__((used)) static int csvtabNext(sqlite3_vtab_cursor *cur){
   CsvCursor *pCur = (CsvCursor*)cur;

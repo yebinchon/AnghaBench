@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int linenoiseEdit (char*,size_t,char const*) ; 
- int /*<<< orphan*/  stdout ; 
+ int EINVAL ;
+ int errno ;
+ int fputc (char,int ) ;
+ int linenoiseEdit (char*,size_t,char const*) ;
+ int stdout ;
 
 __attribute__((used)) static int linenoiseRaw(char *buf, size_t buflen, const char *prompt) {
     int count;

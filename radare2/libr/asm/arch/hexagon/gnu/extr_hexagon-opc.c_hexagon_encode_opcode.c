@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int hexagon_insn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HEXAGON_END_NOT ; 
- int HEXAGON_END_PACKET_SET (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HEXAGON_END_PAIR ; 
- int HEXAGON_INSN_LEN ; 
- scalar_t__ ISSPACE (char const) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,int) ; 
+
+
+
+typedef int hexagon_insn ;
+
+
+ int FALSE ;
+ int HEXAGON_END_NOT ;
+ int HEXAGON_END_PACKET_SET (int,int ) ;
+ int HEXAGON_END_PAIR ;
+ int HEXAGON_INSN_LEN ;
+ scalar_t__ ISSPACE (char const) ;
+ int assert (int ) ;
+ int printf (char*,int) ;
 
 hexagon_insn
 hexagon_encode_opcode

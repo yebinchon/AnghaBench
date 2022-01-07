@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleDesc ;
-typedef  int /*<<< orphan*/  TableScanDesc ;
-struct TYPE_2__ {int /*<<< orphan*/  rolname; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
-typedef  int /*<<< orphan*/  HeapScanDesc ;
-typedef  TYPE_1__* Form_pg_authid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  AuthIdRelationId ; 
- int /*<<< orphan*/  ForwardScanDirection ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ *) ; 
- char* GenerateAlterRoleIfExistsCommand (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IsReservedName (char const*) ; 
- int /*<<< orphan*/ * NIL ; 
- char* NameStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_beginscan_catalog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * heap_getnext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lappend (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  table_beginscan_catalog (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int TupleDesc ;
+typedef int TableScanDesc ;
+struct TYPE_2__ {int rolname; } ;
+typedef int Relation ;
+typedef int List ;
+typedef int * HeapTuple ;
+typedef int HeapScanDesc ;
+typedef TYPE_1__* Form_pg_authid ;
+
+
+ int AccessShareLock ;
+ int AuthIdRelationId ;
+ int ForwardScanDirection ;
+ scalar_t__ GETSTRUCT (int *) ;
+ char* GenerateAlterRoleIfExistsCommand (int *,int ) ;
+ scalar_t__ IsReservedName (char const*) ;
+ int * NIL ;
+ char* NameStr (int ) ;
+ int RelationGetDescr (int ) ;
+ int heap_beginscan_catalog (int ,int ,int *) ;
+ int heap_close (int ,int ) ;
+ int heap_endscan (int ) ;
+ int * heap_getnext (int ,int ) ;
+ int heap_open (int ,int ) ;
+ int * lappend (int *,void*) ;
+ int table_beginscan_catalog (int ,int ,int *) ;
 
 List *
 GenerateAlterRoleIfExistsCommandAllRoles()
 {
-	Relation pgAuthId = heap_open(AuthIdRelationId, AccessShareLock);
-	TupleDesc pgAuthIdDescription = RelationGetDescr(pgAuthId);
-	HeapTuple tuple = NULL;
-	List *commands = NIL;
-	const char *alterRoleQuery = NULL;
+ Relation pgAuthId = heap_open(AuthIdRelationId, AccessShareLock);
+ TupleDesc pgAuthIdDescription = RelationGetDescr(pgAuthId);
+ HeapTuple tuple = ((void*)0);
+ List *commands = NIL;
+ const char *alterRoleQuery = ((void*)0);
 
-#if PG_VERSION_NUM >= 120000
-	TableScanDesc scan = table_beginscan_catalog(pgAuthId, 0, NULL);
-#else
-	HeapScanDesc scan = heap_beginscan_catalog(pgAuthId, 0, NULL);
-#endif
 
-	while ((tuple = heap_getnext(scan, ForwardScanDirection)) != NULL)
-	{
-		const char *rolename = NameStr(((Form_pg_authid) GETSTRUCT(tuple))->rolname);
 
-		/*
-		 * The default roles are skipped, because reserved roles
-		 * cannot be altered.
-		 */
-		if (IsReservedName(rolename))
-		{
-			continue;
-		}
-		alterRoleQuery = GenerateAlterRoleIfExistsCommand(tuple, pgAuthIdDescription);
-		commands = lappend(commands, (void *) alterRoleQuery);
-	}
 
-	heap_endscan(scan);
-	heap_close(pgAuthId, AccessShareLock);
+ HeapScanDesc scan = heap_beginscan_catalog(pgAuthId, 0, ((void*)0));
 
-	return commands;
+
+ while ((tuple = heap_getnext(scan, ForwardScanDirection)) != ((void*)0))
+ {
+  const char *rolename = NameStr(((Form_pg_authid) GETSTRUCT(tuple))->rolname);
+
+
+
+
+
+  if (IsReservedName(rolename))
+  {
+   continue;
+  }
+  alterRoleQuery = GenerateAlterRoleIfExistsCommand(tuple, pgAuthIdDescription);
+  commands = lappend(commands, (void *) alterRoleQuery);
+ }
+
+ heap_endscan(scan);
+ heap_close(pgAuthId, AccessShareLock);
+
+ return commands;
 }

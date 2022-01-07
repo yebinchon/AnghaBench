@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fuse_iqueue {int /*<<< orphan*/  interrupts; int /*<<< orphan*/  pending; } ;
 
-/* Variables and functions */
- scalar_t__ forget_pending (struct fuse_iqueue*) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
+
+
+
+struct fuse_iqueue {int interrupts; int pending; } ;
+
+
+ scalar_t__ forget_pending (struct fuse_iqueue*) ;
+ int list_empty (int *) ;
 
 __attribute__((used)) static int request_pending(struct fuse_iqueue *fiq)
 {
-	return !list_empty(&fiq->pending) || !list_empty(&fiq->interrupts) ||
-		forget_pending(fiq);
+ return !list_empty(&fiq->pending) || !list_empty(&fiq->interrupts) ||
+  forget_pending(fiq);
 }

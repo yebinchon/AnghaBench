@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const vlc_mutex_t ;
-typedef  int /*<<< orphan*/  locks ;
 
-/* Variables and functions */
- int VLC_MAX_MUTEX ; 
-#define  VLC_STATIC_MUTEX 128 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  static_assert (int,char*) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int const vlc_mutex_t ;
+typedef int locks ;
+
+
+ int VLC_MAX_MUTEX ;
+
+ int assert (int) ;
+ int static_assert (int,char*) ;
+ int vlc_mutex_lock (int const*) ;
+ int vlc_mutex_unlock (int const*) ;
 
 void vlc_global_mutex (unsigned n, bool acquire)
 {
     static vlc_mutex_t locks[] = {
-        VLC_STATIC_MUTEX,
-        VLC_STATIC_MUTEX,
-        VLC_STATIC_MUTEX,
-        VLC_STATIC_MUTEX,
-#ifdef _WIN32
-        VLC_STATIC_MUTEX, // For MTA holder
-#endif
+        128,
+        128,
+        128,
+        128,
+
+
+
     };
     static_assert (VLC_MAX_MUTEX == (sizeof (locks) / sizeof (locks[0])),
                    "Wrong number of global mutexes");

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_media_t ;
-typedef  int /*<<< orphan*/  libvlc_media_list_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INPUT_ITEM_URI_NOP ; 
- int /*<<< orphan*/ * input_item_New (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_new_from_input_item (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_printerr (char*) ; 
- int /*<<< orphan*/ * media_get_subitems (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int libvlc_media_t ;
+typedef int libvlc_media_list_t ;
+typedef int libvlc_instance_t ;
+typedef int input_item_t ;
+
+
+ int INPUT_ITEM_URI_NOP ;
+ int * input_item_New (int ,char const*) ;
+ int input_item_Release (int *) ;
+ int * libvlc_media_new_from_input_item (int *,int *) ;
+ int libvlc_media_release (int *) ;
+ int libvlc_printerr (char*) ;
+ int * media_get_subitems (int *,int) ;
 
 libvlc_media_t * libvlc_media_new_as_node( libvlc_instance_t *p_instance,
                                            const char * psz_name )
@@ -36,16 +36,16 @@ libvlc_media_t * libvlc_media_new_as_node( libvlc_instance_t *p_instance,
     if (!p_input_item)
     {
         libvlc_printerr( "Not enough memory" );
-        return NULL;
+        return ((void*)0);
     }
 
     p_md = libvlc_media_new_from_input_item( p_instance, p_input_item );
     input_item_Release( p_input_item );
 
-    p_subitems = media_get_subitems( p_md, true );
-    if( p_subitems == NULL) {
+    p_subitems = media_get_subitems( p_md, 1 );
+    if( p_subitems == ((void*)0)) {
         libvlc_media_release( p_md );
-        return NULL;
+        return ((void*)0);
     }
 
     return p_md;

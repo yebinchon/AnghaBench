@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EUCLEAN ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int _LOG_TARGET_MAX ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  log_info_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_set_target (int) ; 
- int /*<<< orphan*/  test_file () ; 
- int /*<<< orphan*/  test_log_struct () ; 
- int /*<<< orphan*/  test_log_syntax () ; 
- int /*<<< orphan*/  test_long_lines () ; 
+ int EUCLEAN ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int _LOG_TARGET_MAX ;
+ int assert_se (int) ;
+ int log_info_errno (int ,char*) ;
+ int log_open () ;
+ int log_set_target (int) ;
+ int test_file () ;
+ int test_log_struct () ;
+ int test_log_syntax () ;
+ int test_long_lines () ;
 
 int main(int argc, char* argv[]) {
         int target;

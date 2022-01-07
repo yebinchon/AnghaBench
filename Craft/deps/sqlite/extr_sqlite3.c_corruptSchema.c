@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int flags; scalar_t__ mallocFailed; } ;
-typedef  TYPE_1__ sqlite3 ;
-struct TYPE_7__ {int /*<<< orphan*/  rc; int /*<<< orphan*/ * pzErrMsg; TYPE_1__* db; } ;
-typedef  TYPE_2__ InitData ;
+typedef TYPE_1__ sqlite3 ;
+struct TYPE_7__ {int rc; int * pzErrMsg; TYPE_1__* db; } ;
+typedef TYPE_2__ InitData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_CORRUPT_BKPT ; 
- int /*<<< orphan*/  SQLITE_NOMEM ; 
- int SQLITE_RecoveryMode ; 
- int /*<<< orphan*/  sqlite3MAppendf (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  sqlite3SetString (int /*<<< orphan*/ *,TYPE_1__*,char*,char const*) ; 
+
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_NOMEM ;
+ int SQLITE_RecoveryMode ;
+ int sqlite3MAppendf (TYPE_1__*,int ,char*,int ,char const*) ;
+ int sqlite3SetString (int *,TYPE_1__*,char*,char const*) ;
 
 __attribute__((used)) static void corruptSchema(
-  InitData *pData,     /* Initialization context */
-  const char *zObj,    /* Object being parsed at the point of error */
-  const char *zExtra   /* Error information */
+  InitData *pData,
+  const char *zObj,
+  const char *zExtra
 ){
   sqlite3 *db = pData->db;
   if( !db->mallocFailed && (db->flags & SQLITE_RecoveryMode)==0 ){
@@ -35,7 +35,7 @@ __attribute__((used)) static void corruptSchema(
     sqlite3SetString(pData->pzErrMsg, db,
       "malformed database schema (%s)", zObj);
     if( zExtra ){
-      *pData->pzErrMsg = sqlite3MAppendf(db, *pData->pzErrMsg, 
+      *pData->pzErrMsg = sqlite3MAppendf(db, *pData->pzErrMsg,
                                  "%s - %s", *pData->pzErrMsg, zExtra);
     }
   }

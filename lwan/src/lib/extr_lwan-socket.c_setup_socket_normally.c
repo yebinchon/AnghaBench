@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  reuse_port; int /*<<< orphan*/  listener; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int reuse_port; int listener; } ;
 struct lwan {TYPE_1__ config; } ;
-struct addrinfo {scalar_t__ ai_family; int /*<<< orphan*/  ai_flags; int /*<<< orphan*/  ai_socktype; } ;
-typedef  scalar_t__ sa_family_t ;
+struct addrinfo {scalar_t__ ai_family; int ai_flags; int ai_socktype; } ;
+typedef scalar_t__ sa_family_t ;
 
-/* Variables and functions */
- scalar_t__ AF_UNSPEC ; 
- int /*<<< orphan*/  AI_PASSIVE ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int bind_and_listen_addrinfos (struct addrinfo*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  gai_strerror (int) ; 
- int getaddrinfo (char*,char*,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  lwan_status_critical (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ parse_listener (char*,char**,char**) ; 
- char* strdupa (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_UNSPEC ;
+ int AI_PASSIVE ;
+ int SOCK_STREAM ;
+ int bind_and_listen_addrinfos (struct addrinfo*,int ) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int gai_strerror (int) ;
+ int getaddrinfo (char*,char*,struct addrinfo*,struct addrinfo**) ;
+ int lwan_status_critical (char*,int ) ;
+ scalar_t__ parse_listener (char*,char**,char**) ;
+ char* strdupa (int ) ;
 
 __attribute__((used)) static int setup_socket_normally(struct lwan *l)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tty {scalar_t__ t_sessioncnt; struct pgrp* t_pgrp; } ;
 struct pgrp {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  MPASS (int) ; 
- int /*<<< orphan*/  tty_lock_assert (struct tty*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tty_unlock (struct tty*) ; 
+
+ int MA_OWNED ;
+ int MPASS (int) ;
+ int tty_lock_assert (struct tty*,int ) ;
+ int tty_unlock (struct tty*) ;
 
 void
 tty_rel_pgrp(struct tty *tp, struct pgrp *pg)
 {
 
-	MPASS(tp->t_sessioncnt > 0);
-	tty_lock_assert(tp, MA_OWNED);
+ MPASS(tp->t_sessioncnt > 0);
+ tty_lock_assert(tp, MA_OWNED);
 
-	if (tp->t_pgrp == pg)
-		tp->t_pgrp = NULL;
+ if (tp->t_pgrp == pg)
+  tp->t_pgrp = ((void*)0);
 
-	tty_unlock(tp);
+ tty_unlock(tp);
 }

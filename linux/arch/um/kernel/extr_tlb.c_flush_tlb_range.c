@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vm_area_struct {int /*<<< orphan*/ * vm_mm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fix_range (int /*<<< orphan*/ *,unsigned long,unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_tlb_kernel_range_common (unsigned long,unsigned long) ; 
+
+
+
+struct vm_area_struct {int * vm_mm; } ;
+
+
+ int fix_range (int *,unsigned long,unsigned long,int ) ;
+ int flush_tlb_kernel_range_common (unsigned long,unsigned long) ;
 
 void flush_tlb_range(struct vm_area_struct *vma, unsigned long start,
-		     unsigned long end)
+       unsigned long end)
 {
-	if (vma->vm_mm == NULL)
-		flush_tlb_kernel_range_common(start, end);
-	else fix_range(vma->vm_mm, start, end, 0);
+ if (vma->vm_mm == ((void*)0))
+  flush_tlb_kernel_range_common(start, end);
+ else fix_range(vma->vm_mm, start, end, 0);
 }

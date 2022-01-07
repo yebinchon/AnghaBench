@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IMimeMessage ;
-typedef  int /*<<< orphan*/  IMimeBody ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  HBODY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HBODY_ROOT ; 
- int /*<<< orphan*/  IET_BASE64 ; 
- int /*<<< orphan*/  IET_BINARY ; 
- int /*<<< orphan*/  IET_QP ; 
- int /*<<< orphan*/  IID_IMimeBody ; 
- int IMimeBody_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMimeBody_Release (int /*<<< orphan*/ *) ; 
- int IMimeMessage_BindToObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int IMimeMessage_CountBodies (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int IMimeMessage_GetAttachments (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ **) ; 
- int IMimeMessage_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMimeMessage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int MimeOleCreateMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * create_stream_from_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mhtml_page1 ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  test_current_encoding (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_stream_read (int /*<<< orphan*/ *,int,char*,int) ; 
+
+
+
+typedef int ULONG ;
+typedef int IStream ;
+typedef int IMimeMessage ;
+typedef int IMimeBody ;
+typedef int HRESULT ;
+typedef int HBODY ;
+
+
+ int CoTaskMemFree (int *) ;
+ int HBODY_ROOT ;
+ int IET_BASE64 ;
+ int IET_BINARY ;
+ int IET_QP ;
+ int IID_IMimeBody ;
+ int IMimeBody_GetData (int *,int ,int **) ;
+ int IMimeBody_Release (int *) ;
+ int IMimeMessage_BindToObject (int *,int ,int *,void**) ;
+ int IMimeMessage_CountBodies (int *,int ,int ,int*) ;
+ int IMimeMessage_GetAttachments (int *,int*,int **) ;
+ int IMimeMessage_Load (int *,int *) ;
+ int IMimeMessage_Release (int *) ;
+ int IStream_Release (int *) ;
+ int MimeOleCreateMessage (int *,int **) ;
+ int S_OK ;
+ int TRUE ;
+ int * create_stream_from_string (int ) ;
+ int mhtml_page1 ;
+ int ok (int,char*,int) ;
+ int test_current_encoding (int *,int ) ;
+ int test_stream_read (int *,int,char*,int) ;
 
 __attribute__((used)) static void test_mhtml_message(void)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_mhtml_message(void)
     ULONG count;
     HRESULT hres;
 
-    hres = MimeOleCreateMessage(NULL, &mime_message);
+    hres = MimeOleCreateMessage(((void*)0), &mime_message);
     ok(hres == S_OK, "MimeOleCreateMessage failed: %08x\n", hres);
 
     stream = create_stream_from_string(mhtml_page1);

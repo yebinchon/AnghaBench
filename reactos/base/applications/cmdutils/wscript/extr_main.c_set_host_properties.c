@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/  WINE_FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (char const*) ; 
- scalar_t__ strcmpiW (char const*,char const*) ; 
- int /*<<< orphan*/  wshInteractive ; 
+
+
+
+typedef char WCHAR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int WINE_FIXME (char*,int ) ;
+ int debugstr_w (char const*) ;
+ scalar_t__ strcmpiW (char const*,char const*) ;
+ int wshInteractive ;
 
 __attribute__((used)) static BOOL set_host_properties(const WCHAR *prop)
 {

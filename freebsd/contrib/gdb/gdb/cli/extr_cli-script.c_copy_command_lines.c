@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct command_line {int body_count; struct command_line** body_list; int /*<<< orphan*/  control_type; int /*<<< orphan*/  line; struct command_line* next; } ;
 
-/* Variables and functions */
- scalar_t__ xmalloc (int) ; 
- int /*<<< orphan*/  xstrdup (int /*<<< orphan*/ ) ; 
+
+
+
+struct command_line {int body_count; struct command_line** body_list; int control_type; int line; struct command_line* next; } ;
+
+
+ scalar_t__ xmalloc (int) ;
+ int xstrdup (int ) ;
 
 struct command_line *
 copy_command_lines (struct command_line *cmds)
 {
-  struct command_line *result = NULL;
+  struct command_line *result = ((void*)0);
 
   if (cmds)
     {
@@ -40,7 +40,7 @@ copy_command_lines (struct command_line *cmds)
             result->body_list[i] = copy_command_lines (cmds->body_list[i]);
         }
       else
-        result->body_list = NULL;
+        result->body_list = ((void*)0);
     }
 
   return result;

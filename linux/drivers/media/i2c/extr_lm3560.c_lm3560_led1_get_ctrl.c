@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_ctrl {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LM3560_LED1 ; 
- int lm3560_get_ctrl (struct v4l2_ctrl*,int /*<<< orphan*/ ) ; 
+
+ int LM3560_LED1 ;
+ int lm3560_get_ctrl (struct v4l2_ctrl*,int ) ;
 
 __attribute__((used)) static int lm3560_led1_get_ctrl(struct v4l2_ctrl *ctrl)
 {
-	return lm3560_get_ctrl(ctrl, LM3560_LED1);
+ return lm3560_get_ctrl(ctrl, LM3560_LED1);
 }

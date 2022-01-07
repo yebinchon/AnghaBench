@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- scalar_t__ PLVR ; 
- int /*<<< orphan*/  PV_LH ; 
- int /*<<< orphan*/  PV_LP ; 
- int /*<<< orphan*/  PV_LR ; 
- int /*<<< orphan*/  PV_O ; 
- int /*<<< orphan*/  PV_RG ; 
- int /*<<< orphan*/  PV_RL ; 
- scalar_t__ biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_off (scalar_t__) ; 
- int /*<<< orphan*/  layer_on (scalar_t__) ; 
- int /*<<< orphan*/  layer_state ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ scalar_t__ PLVR ;
+ int PV_LH ;
+ int PV_LP ;
+ int PV_LR ;
+ int PV_O ;
+ int PV_RG ;
+ int PV_RL ;
+ scalar_t__ biton32 (int ) ;
+ int layer_off (scalar_t__) ;
+ int layer_on (scalar_t__) ;
+ int layer_state ;
+ int register_code (int ) ;
+ int unregister_code (int ) ;
 
 __attribute__((used)) static void toggle_steno(int pressed)
 {

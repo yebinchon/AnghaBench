@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_6__ {int /*<<< orphan*/ * certs; } ;
-typedef  int OPTION_CHOICE ;
-typedef  TYPE_1__ NETSCAPE_CERT_SEQUENCE ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FORMAT_PEM ; 
- int /*<<< orphan*/  NETSCAPE_CERT_SEQUENCE_free (TYPE_1__*) ; 
- TYPE_1__* NETSCAPE_CERT_SEQUENCE_new () ; 
-#define  OPT_EOF 133 
-#define  OPT_ERR 132 
-#define  OPT_HELP 131 
-#define  OPT_IN 130 
-#define  OPT_OUT 129 
-#define  OPT_TOSEQ 128 
- TYPE_1__* PEM_read_bio_NETSCAPE_CERT_SEQUENCE (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PEM_write_bio_NETSCAPE_CERT_SEQUENCE (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  PEM_write_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char*,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_cert_text (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nseq_options ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/ * sk_X509_new_null () ; 
- int sk_X509_num (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sk_X509_push (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sk_X509_value (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int X509 ;
+struct TYPE_6__ {int * certs; } ;
+typedef int OPTION_CHOICE ;
+typedef TYPE_1__ NETSCAPE_CERT_SEQUENCE ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int BIO_printf (int ,char*,char*,...) ;
+ int ERR_print_errors (int ) ;
+ int FORMAT_PEM ;
+ int NETSCAPE_CERT_SEQUENCE_free (TYPE_1__*) ;
+ TYPE_1__* NETSCAPE_CERT_SEQUENCE_new () ;
+
+
+
+
+
+
+ TYPE_1__* PEM_read_bio_NETSCAPE_CERT_SEQUENCE (int *,int *,int *,int *) ;
+ int * PEM_read_bio_X509 (int *,int *,int *,int *) ;
+ int PEM_write_bio_NETSCAPE_CERT_SEQUENCE (int *,TYPE_1__*) ;
+ int PEM_write_bio_X509 (int *,int *) ;
+ int bio_err ;
+ int * bio_open_default (char*,char,int ) ;
+ int dump_cert_text (int *,int *) ;
+ int nseq_options ;
+ char* opt_arg () ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int * sk_X509_new_null () ;
+ int sk_X509_num (int *) ;
+ int sk_X509_push (int *,int *) ;
+ int * sk_X509_value (int *,int) ;
 
 int nseq_main(int argc, char **argv)
 {
-    BIO *in = NULL, *out = NULL;
-    X509 *x509 = NULL;
-    NETSCAPE_CERT_SEQUENCE *seq = NULL;
+    BIO *in = ((void*)0), *out = ((void*)0);
+    X509 *x509 = ((void*)0);
+    NETSCAPE_CERT_SEQUENCE *seq = ((void*)0);
     OPTION_CHOICE o;
     int toseq = 0, ret = 1, i;
-    char *infile = NULL, *outfile = NULL, *prog;
+    char *infile = ((void*)0), *outfile = ((void*)0), *prog;
 
     prog = opt_init(argc, argv, nseq_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 133) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 133:
+        case 132:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 131:
             ret = 0;
             opt_help(nseq_options);
             goto end;
-        case OPT_TOSEQ:
+        case 128:
             toseq = 1;
             break;
-        case OPT_IN:
+        case 130:
             infile = opt_arg();
             break;
-        case OPT_OUT:
+        case 129:
             outfile = opt_arg();
             break;
         }
@@ -86,20 +86,20 @@ int nseq_main(int argc, char **argv)
         goto opthelp;
 
     in = bio_open_default(infile, 'r', FORMAT_PEM);
-    if (in == NULL)
+    if (in == ((void*)0))
         goto end;
     out = bio_open_default(outfile, 'w', FORMAT_PEM);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     if (toseq) {
         seq = NETSCAPE_CERT_SEQUENCE_new();
-        if (seq == NULL)
+        if (seq == ((void*)0))
             goto end;
         seq->certs = sk_X509_new_null();
-        if (seq->certs == NULL)
+        if (seq->certs == ((void*)0))
             goto end;
-        while ((x509 = PEM_read_bio_X509(in, NULL, NULL, NULL)))
+        while ((x509 = PEM_read_bio_X509(in, ((void*)0), ((void*)0), ((void*)0))))
             sk_X509_push(seq->certs, x509);
 
         if (!sk_X509_num(seq->certs)) {
@@ -113,8 +113,8 @@ int nseq_main(int argc, char **argv)
         goto end;
     }
 
-    seq = PEM_read_bio_NETSCAPE_CERT_SEQUENCE(in, NULL, NULL, NULL);
-    if (seq == NULL) {
+    seq = PEM_read_bio_NETSCAPE_CERT_SEQUENCE(in, ((void*)0), ((void*)0), ((void*)0));
+    if (seq == ((void*)0)) {
         BIO_printf(bio_err, "%s: Error reading sequence file %s\n",
                    prog, infile);
         ERR_print_errors(bio_err);

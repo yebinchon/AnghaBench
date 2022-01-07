@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fuse_file_info {int /*<<< orphan*/  fh; } ;
+
+
+
+
+struct fuse_file_info {int fh; } ;
 struct connection {int dummy; } ;
-typedef  int /*<<< orphan*/  inode_id_t ;
+typedef int inode_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cmd_get ; 
- int ff_create (int /*<<< orphan*/ ,int,struct fuse_file_info*) ; 
- int ff_open (int /*<<< orphan*/ ,struct fuse_file_info*) ; 
- int ff_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,unsigned int,struct fuse_file_info*) ; 
- int filesys_prepare_stats (struct connection*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
- int /*<<< orphan*/  parse_path (struct connection*) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  return_one_long (struct connection*,char const*,int /*<<< orphan*/ ) ; 
- int sscanf (char const*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int /*<<< orphan*/  value_buff ; 
- int verbosity ; 
+
+ int cmd_get ;
+ int ff_create (int ,int,struct fuse_file_info*) ;
+ int ff_open (int ,struct fuse_file_info*) ;
+ int ff_read (int *,int ,unsigned int,unsigned int,struct fuse_file_info*) ;
+ int filesys_prepare_stats (struct connection*) ;
+ int fprintf (int ,char*,char const*) ;
+ int free_tmp_buffers (struct connection*) ;
+ int parse_path (struct connection*) ;
+ int return_one_key (struct connection*,char const*,int ,int) ;
+ int return_one_long (struct connection*,char const*,int ) ;
+ int sscanf (char const*,char*,...) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
+ int strncmp (char const*,char*,int) ;
+ int value_buff ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   if (verbosity >= 3) {
@@ -71,7 +71,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
     case 'r':
       if (!strncmp (key, "read", 4) && sscanf (key, "read%u,%u,%lld", &offset, &length, &inode) >= 3) {
         fi.fh = inode;
-        r = ff_read (NULL, value_buff, length, offset, &fi);
+        r = ff_read (((void*)0), value_buff, length, offset, &fi);
         if (r >= 0) {
           return_one_key (c, key, value_buff, r);
         }

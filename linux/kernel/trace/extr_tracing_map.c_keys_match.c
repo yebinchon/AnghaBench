@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ memcmp (void*,void*,unsigned int) ; 
+ scalar_t__ memcmp (void*,void*,unsigned int) ;
 
 __attribute__((used)) static inline bool keys_match(void *key, void *test_key, unsigned key_size)
 {
-	bool match = true;
+ bool match = 1;
 
-	if (memcmp(key, test_key, key_size))
-		match = false;
+ if (memcmp(key, test_key, key_size))
+  match = 0;
 
-	return match;
+ return match;
 }

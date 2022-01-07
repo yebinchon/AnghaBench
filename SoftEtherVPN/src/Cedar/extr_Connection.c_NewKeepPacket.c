@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- char* KEEP_ALIVE_STRING ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BUF ;
+
+
+ char* KEEP_ALIVE_STRING ;
+ int * NewBuf () ;
+ int SeekBuf (int *,int ,int ) ;
+ int StrLen (char*) ;
+ int WriteBuf (int *,char*,int ) ;
 
 BUF *NewKeepPacket(bool server_mode)
 {
-	BUF *b = NewBuf();
-	char *string = KEEP_ALIVE_STRING;
+ BUF *b = NewBuf();
+ char *string = KEEP_ALIVE_STRING;
 
-	WriteBuf(b, string, StrLen(string));
+ WriteBuf(b, string, StrLen(string));
 
-	SeekBuf(b, 0, 0);
+ SeekBuf(b, 0, 0);
 
-	return b;
+ return b;
 }

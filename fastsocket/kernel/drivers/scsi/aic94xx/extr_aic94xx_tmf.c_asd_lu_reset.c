@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct domain_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TMF_LU_RESET ; 
- int TMF_RESP_FUNC_COMPLETE ; 
- int /*<<< orphan*/  asd_clear_nexus_I_T_L (struct domain_device*,int /*<<< orphan*/ *) ; 
- int asd_initiate_ssp_tmf (struct domain_device*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int TMF_LU_RESET ;
+ int TMF_RESP_FUNC_COMPLETE ;
+ int asd_clear_nexus_I_T_L (struct domain_device*,int *) ;
+ int asd_initiate_ssp_tmf (struct domain_device*,int *,int ,int ) ;
 
 int asd_lu_reset(struct domain_device *dev, u8 *lun)
 {
-	int res = asd_initiate_ssp_tmf(dev, lun, TMF_LU_RESET, 0);
+ int res = asd_initiate_ssp_tmf(dev, lun, TMF_LU_RESET, 0);
 
-	if (res == TMF_RESP_FUNC_COMPLETE)
-		asd_clear_nexus_I_T_L(dev, lun);
-	return res;
+ if (res == TMF_RESP_FUNC_COMPLETE)
+  asd_clear_nexus_I_T_L(dev, lun);
+ return res;
 }

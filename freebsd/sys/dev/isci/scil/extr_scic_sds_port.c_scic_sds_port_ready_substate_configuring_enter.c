@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ active_phy_mask; int /*<<< orphan*/  ready_substate_machine; } ;
-typedef  int /*<<< orphan*/  SCI_BASE_OBJECT_T ;
-typedef  TYPE_1__ SCIC_SDS_PORT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_PORT_NOT_READY_NO_ACTIVE_PHYS ; 
- int /*<<< orphan*/  SCIC_SDS_PORT_READY_SUBSTATE_CONFIGURING ; 
- int /*<<< orphan*/  SCIC_SDS_PORT_READY_SUBSTATE_OPERATIONAL ; 
- int /*<<< orphan*/  SCIC_SDS_PORT_READY_SUBSTATE_WAITING ; 
- int /*<<< orphan*/  sci_base_state_machine_change_state (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_cb_port_not_ready (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scic_sds_port_get_controller (TYPE_1__*) ; 
- int /*<<< orphan*/  scic_sds_port_set_ready_state_handlers (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ active_phy_mask; int ready_substate_machine; } ;
+typedef int SCI_BASE_OBJECT_T ;
+typedef TYPE_1__ SCIC_SDS_PORT_T ;
+
+
+ int SCIC_PORT_NOT_READY_NO_ACTIVE_PHYS ;
+ int SCIC_SDS_PORT_READY_SUBSTATE_CONFIGURING ;
+ int SCIC_SDS_PORT_READY_SUBSTATE_OPERATIONAL ;
+ int SCIC_SDS_PORT_READY_SUBSTATE_WAITING ;
+ int sci_base_state_machine_change_state (int *,int ) ;
+ int scic_cb_port_not_ready (int ,TYPE_1__*,int ) ;
+ int scic_sds_port_get_controller (TYPE_1__*) ;
+ int scic_sds_port_set_ready_state_handlers (TYPE_1__*,int ) ;
 
 __attribute__((used)) static
 void scic_sds_port_ready_substate_configuring_enter(
@@ -49,7 +49,7 @@ void scic_sds_port_ready_substate_configuring_enter(
          SCIC_SDS_PORT_READY_SUBSTATE_WAITING
       );
    }
-   //do not wait for IO to go to 0 in this state.
+
    else
    {
       sci_base_state_machine_change_state(

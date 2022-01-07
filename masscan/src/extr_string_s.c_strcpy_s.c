@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
+
+
+
+typedef int errno_t ;
+
+
+ int EINVAL ;
+ int ERANGE ;
 
 errno_t strcpy_s(char *dst, size_t sizeof_dst, const char *src)
 {
@@ -23,10 +23,10 @@ errno_t strcpy_s(char *dst, size_t sizeof_dst, const char *src)
     if (sizeof_dst == 0)
         return ERANGE;
 
-    if (dst == NULL)
+    if (dst == ((void*)0))
         return EINVAL;
 
-    if (src == NULL) {
+    if (src == ((void*)0)) {
         dst[0] = 0;
         return EINVAL;
     }

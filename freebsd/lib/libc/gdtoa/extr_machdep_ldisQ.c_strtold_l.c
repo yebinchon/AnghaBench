@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  locale_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLT_ROUNDS ; 
- int /*<<< orphan*/  strtorQ_l (char const*,char**,int /*<<< orphan*/ ,long double*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int locale_t ;
+
+
+ int FLT_ROUNDS ;
+ int strtorQ_l (char const*,char**,int ,long double*,int ) ;
 
 long double
 strtold_l(const char * __restrict s, char ** __restrict sp, locale_t locale)
 {
-	long double result;
+ long double result;
 
-	strtorQ_l(s, sp, FLT_ROUNDS, &result, locale);
-	return result;
+ strtorQ_l(s, sp, FLT_ROUNDS, &result, locale);
+ return result;
 }

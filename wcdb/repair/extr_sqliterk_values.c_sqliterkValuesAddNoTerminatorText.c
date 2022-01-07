@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {size_t count; TYPE_4__* values; } ;
-typedef  TYPE_3__ sqliterk_values ;
+typedef TYPE_3__ sqliterk_values ;
 struct TYPE_9__ {TYPE_1__* text; } ;
-struct TYPE_11__ {TYPE_2__ any; int /*<<< orphan*/  type; } ;
-typedef  TYPE_4__ sqliterk_value ;
-typedef  int /*<<< orphan*/  sqliterk_text ;
+struct TYPE_11__ {TYPE_2__ any; int type; } ;
+typedef TYPE_4__ sqliterk_value ;
+typedef int sqliterk_text ;
 struct TYPE_8__ {int s; char* t; } ;
 
-/* Variables and functions */
- int SQLITERK_MISUSE ; 
- int SQLITERK_NOMEM ; 
- int SQLITERK_OK ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int const) ; 
- void* sqliterkOSMalloc (int) ; 
- int /*<<< orphan*/  sqliterkValueClear (TYPE_4__*) ; 
- int sqliterkValuesAutoGrow (TYPE_3__*) ; 
- int /*<<< orphan*/  sqliterk_value_type_text ; 
+
+ int SQLITERK_MISUSE ;
+ int SQLITERK_NOMEM ;
+ int SQLITERK_OK ;
+ int memcpy (char*,char const*,int const) ;
+ void* sqliterkOSMalloc (int) ;
+ int sqliterkValueClear (TYPE_4__*) ;
+ int sqliterkValuesAutoGrow (TYPE_3__*) ;
+ int sqliterk_value_type_text ;
 
 int sqliterkValuesAddNoTerminatorText(sqliterk_values *values,
                                       const char *t,

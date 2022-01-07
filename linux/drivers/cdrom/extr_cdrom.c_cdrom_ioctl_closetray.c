@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct cdrom_device_info {TYPE_1__* ops; } ;
-struct TYPE_2__ {int (* tray_move ) (struct cdrom_device_info*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* tray_move ) (struct cdrom_device_info*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CDC_CLOSE_TRAY ; 
- int /*<<< orphan*/  CDROM_CAN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CD_DO_IOCTL ; 
- int ENOSYS ; 
- int /*<<< orphan*/  cd_dbg (int /*<<< orphan*/ ,char*) ; 
- int stub1 (struct cdrom_device_info*,int /*<<< orphan*/ ) ; 
+
+ int CDC_CLOSE_TRAY ;
+ int CDROM_CAN (int ) ;
+ int CD_DO_IOCTL ;
+ int ENOSYS ;
+ int cd_dbg (int ,char*) ;
+ int stub1 (struct cdrom_device_info*,int ) ;
 
 __attribute__((used)) static int cdrom_ioctl_closetray(struct cdrom_device_info *cdi)
 {
-	cd_dbg(CD_DO_IOCTL, "entering CDROMCLOSETRAY\n");
+ cd_dbg(CD_DO_IOCTL, "entering CDROMCLOSETRAY\n");
 
-	if (!CDROM_CAN(CDC_CLOSE_TRAY))
-		return -ENOSYS;
-	return cdi->ops->tray_move(cdi, 0);
+ if (!CDROM_CAN(CDC_CLOSE_TRAY))
+  return -ENOSYS;
+ return cdi->ops->tray_move(cdi, 0);
 }

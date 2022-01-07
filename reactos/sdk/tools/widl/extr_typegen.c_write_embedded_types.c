@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TYPE_CONTEXT_CONTAINER ; 
- int /*<<< orphan*/  TYPE_CONTEXT_CONTAINER_NO_POINTERS ; 
- int write_type_tfs (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,unsigned int*) ; 
+
+
+
+typedef int type_t ;
+typedef int attr_list_t ;
+typedef int FILE ;
+
+
+ int TYPE_CONTEXT_CONTAINER ;
+ int TYPE_CONTEXT_CONTAINER_NO_POINTERS ;
+ int write_type_tfs (int *,int,int const*,int *,char const*,int ,unsigned int*) ;
 
 __attribute__((used)) static int write_embedded_types(FILE *file, const attr_list_t *attrs, type_t *type,
                                 const char *name, int write_ptr, unsigned int *tfsoff)

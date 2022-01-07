@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char const* name; } ;
 
-/* Variables and functions */
- int AMD64_NUM_REGS ; 
- TYPE_1__* amd64_register_info ; 
+
+ int AMD64_NUM_REGS ;
+ TYPE_1__* amd64_register_info ;
 
 __attribute__((used)) static const char *
 amd64_register_name (int regnum)
@@ -23,5 +23,5 @@ amd64_register_name (int regnum)
   if (regnum >= 0 && regnum < AMD64_NUM_REGS)
     return amd64_register_info[regnum].name;
 
-  return NULL;
+  return ((void*)0);
 }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct peer_svc {int dummy; } ;
 struct peer_dsc {int dummy; } ;
 struct peer_chr {int dummy; } ;
 struct peer {int dummy; } ;
 
-/* Variables and functions */
- int BLE_HS_ENOMEM ; 
- int BLE_HS_EOS ; 
- int /*<<< orphan*/  OS_MEMPOOL_BYTES (int,int) ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ) ; 
- int os_mempool_init (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * peer_chr_mem ; 
- int /*<<< orphan*/  peer_chr_pool ; 
- int /*<<< orphan*/ * peer_dsc_mem ; 
- int /*<<< orphan*/  peer_dsc_pool ; 
- int /*<<< orphan*/  peer_free_mem () ; 
- int /*<<< orphan*/ * peer_mem ; 
- int /*<<< orphan*/  peer_pool ; 
- int /*<<< orphan*/ * peer_svc_mem ; 
- int /*<<< orphan*/  peer_svc_pool ; 
+
+ int BLE_HS_ENOMEM ;
+ int BLE_HS_EOS ;
+ int OS_MEMPOOL_BYTES (int,int) ;
+ int * malloc (int ) ;
+ int os_mempool_init (int *,int,int,int *,char*) ;
+ int * peer_chr_mem ;
+ int peer_chr_pool ;
+ int * peer_dsc_mem ;
+ int peer_dsc_pool ;
+ int peer_free_mem () ;
+ int * peer_mem ;
+ int peer_pool ;
+ int * peer_svc_mem ;
+ int peer_svc_pool ;
 
 int
 peer_init(int max_peers, int max_svcs, int max_chrs, int max_dscs)
 {
     int rc;
 
-    /* Free memory first in case this function gets called more than once. */
+
     peer_free_mem();
 
     peer_mem = malloc(
                    OS_MEMPOOL_BYTES(max_peers, sizeof (struct peer)));
-    if (peer_mem == NULL) {
+    if (peer_mem == ((void*)0)) {
         rc = BLE_HS_ENOMEM;
         goto err;
     }
@@ -56,7 +56,7 @@ peer_init(int max_peers, int max_svcs, int max_chrs, int max_dscs)
 
     peer_svc_mem = malloc(
                        OS_MEMPOOL_BYTES(max_svcs, sizeof (struct peer_svc)));
-    if (peer_svc_mem == NULL) {
+    if (peer_svc_mem == ((void*)0)) {
         rc = BLE_HS_ENOMEM;
         goto err;
     }
@@ -71,7 +71,7 @@ peer_init(int max_peers, int max_svcs, int max_chrs, int max_dscs)
 
     peer_chr_mem = malloc(
                        OS_MEMPOOL_BYTES(max_chrs, sizeof (struct peer_chr)));
-    if (peer_chr_mem == NULL) {
+    if (peer_chr_mem == ((void*)0)) {
         rc = BLE_HS_ENOMEM;
         goto err;
     }
@@ -86,7 +86,7 @@ peer_init(int max_peers, int max_svcs, int max_chrs, int max_dscs)
 
     peer_dsc_mem = malloc(
                        OS_MEMPOOL_BYTES(max_dscs, sizeof (struct peer_dsc)));
-    if (peer_dsc_mem == NULL) {
+    if (peer_dsc_mem == ((void*)0)) {
         rc = BLE_HS_ENOMEM;
         goto err;
     }

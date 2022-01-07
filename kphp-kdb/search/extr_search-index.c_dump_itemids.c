@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct item {int item_id; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- struct item** Items ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,int,...) ; 
- int /*<<< orphan*/  fsync (int) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- int /*<<< orphan*/  sort_items () ; 
- int tot_items ; 
+
+ struct item** Items ;
+ int assert (int) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int fileno (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,int,...) ;
+ int fsync (int) ;
+ int kprintf (char*,char*) ;
+ int sort_items () ;
+ int tot_items ;
 
 void dump_itemids (char *filename) {
   int i;
   FILE *f = fopen (filename, "w");
-  if (f == NULL) {
+  if (f == ((void*)0)) {
     kprintf ("fopen (\"%s\", \"w\") fail. %m\n", filename);
     exit (1);
   }

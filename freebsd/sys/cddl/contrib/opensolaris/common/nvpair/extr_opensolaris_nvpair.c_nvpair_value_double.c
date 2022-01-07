@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvpair_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA_TYPE_DOUBLE ; 
- int nvpair_value_common (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,double*) ; 
+
+
+
+typedef int nvpair_t ;
+
+
+ int DATA_TYPE_DOUBLE ;
+ int nvpair_value_common (int *,int ,int *,double*) ;
 
 int
 nvpair_value_double(nvpair_t *nvp, double *val)
 {
-	return (nvpair_value_common(nvp, DATA_TYPE_DOUBLE, NULL, val));
+ return (nvpair_value_common(nvp, DATA_TYPE_DOUBLE, ((void*)0), val));
 }

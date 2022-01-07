@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct bio_bio_st {scalar_t__ len; scalar_t__ size; size_t offset; int /*<<< orphan*/ * buf; scalar_t__ closed; scalar_t__ request; int /*<<< orphan*/ * peer; } ;
-struct TYPE_5__ {struct bio_bio_st* ptr; int /*<<< orphan*/  init; } ;
-typedef  TYPE_1__ BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_F_BIO_WRITE ; 
- int /*<<< orphan*/  BIO_R_BROKEN_PIPE ; 
- int /*<<< orphan*/  BIO_clear_retry_flags (TYPE_1__*) ; 
- int /*<<< orphan*/  BIO_set_retry_write (TYPE_1__*) ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct bio_bio_st {scalar_t__ len; scalar_t__ size; size_t offset; int * buf; scalar_t__ closed; scalar_t__ request; int * peer; } ;
+struct TYPE_5__ {struct bio_bio_st* ptr; int init; } ;
+typedef TYPE_1__ BIO ;
+
+
+ int BIO_F_BIO_WRITE ;
+ int BIO_R_BROKEN_PIPE ;
+ int BIO_clear_retry_flags (TYPE_1__*) ;
+ int BIO_set_retry_write (TYPE_1__*) ;
+ int BIOerr (int ,int ) ;
+ int assert (int) ;
+ int memcpy (int *,char const*,size_t) ;
 
 __attribute__((used)) static int bio_write(BIO *bio, const char *buf, int num_)
 {
@@ -32,17 +32,17 @@ __attribute__((used)) static int bio_write(BIO *bio, const char *buf, int num_)
 
     BIO_clear_retry_flags(bio);
 
-    if (!bio->init || buf == NULL || num == 0)
+    if (!bio->init || buf == ((void*)0) || num == 0)
         return 0;
 
     b = bio->ptr;
-    assert(b != NULL);
-    assert(b->peer != NULL);
-    assert(b->buf != NULL);
+    assert(b != ((void*)0));
+    assert(b->peer != ((void*)0));
+    assert(b->buf != ((void*)0));
 
     b->request = 0;
     if (b->closed) {
-        /* we already closed */
+
         BIOerr(BIO_F_BIO_WRITE, BIO_R_BROKEN_PIPE);
         return -1;
     }
@@ -50,20 +50,20 @@ __attribute__((used)) static int bio_write(BIO *bio, const char *buf, int num_)
     assert(b->len <= b->size);
 
     if (b->len == b->size) {
-        BIO_set_retry_write(bio); /* buffer is full */
+        BIO_set_retry_write(bio);
         return -1;
     }
 
-    /* we can write */
+
     if (num > b->size - b->len)
         num = b->size - b->len;
 
-    /* now write "num" bytes */
+
 
     rest = num;
 
     assert(rest > 0);
-    do {                        /* one or two iterations */
+    do {
         size_t write_offset;
         size_t chunk;
 
@@ -72,12 +72,12 @@ __attribute__((used)) static int bio_write(BIO *bio, const char *buf, int num_)
         write_offset = b->offset + b->len;
         if (write_offset >= b->size)
             write_offset -= b->size;
-        /* b->buf[write_offset] is the first byte we can write to. */
+
 
         if (write_offset + rest <= b->size)
             chunk = rest;
         else
-            /* wrap around ring buffer */
+
             chunk = b->size - write_offset;
 
         memcpy(b->buf + write_offset, buf, chunk);

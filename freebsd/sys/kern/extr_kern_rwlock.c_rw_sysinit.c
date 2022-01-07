@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rwlock {int dummy; } ;
-struct rw_args {int /*<<< orphan*/  ra_flags; int /*<<< orphan*/  ra_desc; scalar_t__ ra_rw; } ;
+struct rw_args {int ra_flags; int ra_desc; scalar_t__ ra_rw; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rw_init_flags (struct rwlock*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int rw_init_flags (struct rwlock*,int ,int ) ;
 
 void
 rw_sysinit(void *arg)
 {
-	struct rw_args *args;
+ struct rw_args *args;
 
-	args = arg;
-	rw_init_flags((struct rwlock *)args->ra_rw, args->ra_desc,
-	    args->ra_flags);
+ args = arg;
+ rw_init_flags((struct rwlock *)args->ra_rw, args->ra_desc,
+     args->ra_flags);
 }

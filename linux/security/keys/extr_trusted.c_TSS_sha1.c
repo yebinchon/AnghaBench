@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sdesc {int /*<<< orphan*/  shash; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR (struct sdesc*) ; 
- int PTR_ERR (struct sdesc*) ; 
- int crypto_shash_digest (int /*<<< orphan*/ *,unsigned char const*,unsigned int,unsigned char*) ; 
- int /*<<< orphan*/  hash_alg ; 
- int /*<<< orphan*/  hashalg ; 
- struct sdesc* init_sdesc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kzfree (struct sdesc*) ; 
- int /*<<< orphan*/  pr_info (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct sdesc {int shash; } ;
+
+
+ scalar_t__ IS_ERR (struct sdesc*) ;
+ int PTR_ERR (struct sdesc*) ;
+ int crypto_shash_digest (int *,unsigned char const*,unsigned int,unsigned char*) ;
+ int hash_alg ;
+ int hashalg ;
+ struct sdesc* init_sdesc (int ) ;
+ int kzfree (struct sdesc*) ;
+ int pr_info (char*,int ) ;
 
 __attribute__((used)) static int TSS_sha1(const unsigned char *data, unsigned int datalen,
-		    unsigned char *digest)
+      unsigned char *digest)
 {
-	struct sdesc *sdesc;
-	int ret;
+ struct sdesc *sdesc;
+ int ret;
 
-	sdesc = init_sdesc(hashalg);
-	if (IS_ERR(sdesc)) {
-		pr_info("trusted_key: can't alloc %s\n", hash_alg);
-		return PTR_ERR(sdesc);
-	}
+ sdesc = init_sdesc(hashalg);
+ if (IS_ERR(sdesc)) {
+  pr_info("trusted_key: can't alloc %s\n", hash_alg);
+  return PTR_ERR(sdesc);
+ }
 
-	ret = crypto_shash_digest(&sdesc->shash, data, datalen, digest);
-	kzfree(sdesc);
-	return ret;
+ ret = crypto_shash_digest(&sdesc->shash, data, datalen, digest);
+ kzfree(sdesc);
+ return ret;
 }

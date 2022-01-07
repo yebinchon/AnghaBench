@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int off; int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ ptls_buffer_t ;
-typedef  int /*<<< orphan*/  ptls_base64_decode_state_t ;
 
-/* Variables and functions */
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ok (int) ; 
- int ptls_base64_decode (char*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ptls_base64_decode_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ptls_buffer_dispose (TYPE_1__*) ; 
- int /*<<< orphan*/  ptls_buffer_init (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int off; int base; } ;
+typedef TYPE_1__ ptls_buffer_t ;
+typedef int ptls_base64_decode_state_t ;
+
+
+ scalar_t__ memcmp (int ,char*,int) ;
+ int ok (int) ;
+ int ptls_base64_decode (char*,int *,TYPE_1__*) ;
+ int ptls_base64_decode_init (int *) ;
+ int ptls_buffer_dispose (TYPE_1__*) ;
+ int ptls_buffer_init (TYPE_1__*,char*,int ) ;
 
 __attribute__((used)) static void test_base64_decode(void)
 {

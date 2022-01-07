@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct uvcg_config_group_type {int /*<<< orphan*/  type; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct uvcg_config_group_type {int type; int name; } ;
 struct config_group {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  config_group_init_type_name (struct config_group*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  configfs_add_default_group (struct config_group*,struct config_group*) ; 
- struct config_group* kzalloc (int,int /*<<< orphan*/ ) ; 
- int uvcg_config_create_children (struct config_group*,struct uvcg_config_group_type const*) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int config_group_init_type_name (struct config_group*,int ,int *) ;
+ int configfs_add_default_group (struct config_group*,struct config_group*) ;
+ struct config_group* kzalloc (int,int ) ;
+ int uvcg_config_create_children (struct config_group*,struct uvcg_config_group_type const*) ;
 
 __attribute__((used)) static int uvcg_config_create_group(struct config_group *parent,
-				    const struct uvcg_config_group_type *type)
+        const struct uvcg_config_group_type *type)
 {
-	struct config_group *group;
+ struct config_group *group;
 
-	group = kzalloc(sizeof(*group), GFP_KERNEL);
-	if (!group)
-		return -ENOMEM;
+ group = kzalloc(sizeof(*group), GFP_KERNEL);
+ if (!group)
+  return -ENOMEM;
 
-	config_group_init_type_name(group, type->name, &type->type);
-	configfs_add_default_group(group, parent);
+ config_group_init_type_name(group, type->name, &type->type);
+ configfs_add_default_group(group, parent);
 
-	return uvcg_config_create_children(group, type);
+ return uvcg_config_create_children(group, type);
 }

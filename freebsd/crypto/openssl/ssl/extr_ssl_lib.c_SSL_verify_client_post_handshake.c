@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int post_handshake_auth; int /*<<< orphan*/  server; } ;
-typedef  TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE ; 
- int /*<<< orphan*/  SSL_IS_TLS13 (TYPE_1__*) ; 
-#define  SSL_PHA_EXT_RECEIVED 132 
-#define  SSL_PHA_EXT_SENT 131 
-#define  SSL_PHA_NONE 130 
-#define  SSL_PHA_REQUESTED 129 
-#define  SSL_PHA_REQUEST_PENDING 128 
- int /*<<< orphan*/  SSL_R_EXTENSION_NOT_RECEIVED ; 
- int /*<<< orphan*/  SSL_R_INVALID_CONFIG ; 
- int /*<<< orphan*/  SSL_R_NOT_SERVER ; 
- int /*<<< orphan*/  SSL_R_REQUEST_PENDING ; 
- int /*<<< orphan*/  SSL_R_REQUEST_SENT ; 
- int /*<<< orphan*/  SSL_R_STILL_IN_INIT ; 
- int /*<<< orphan*/  SSL_R_WRONG_SSL_VERSION ; 
- int /*<<< orphan*/  SSL_is_init_finished (TYPE_1__*) ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ossl_statem_set_in_init (TYPE_1__*,int) ; 
- int /*<<< orphan*/  send_certificate_request (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int post_handshake_auth; int server; } ;
+typedef TYPE_1__ SSL ;
+
+
+ int ERR_R_INTERNAL_ERROR ;
+ int SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE ;
+ int SSL_IS_TLS13 (TYPE_1__*) ;
+
+
+
+
+
+ int SSL_R_EXTENSION_NOT_RECEIVED ;
+ int SSL_R_INVALID_CONFIG ;
+ int SSL_R_NOT_SERVER ;
+ int SSL_R_REQUEST_PENDING ;
+ int SSL_R_REQUEST_SENT ;
+ int SSL_R_STILL_IN_INIT ;
+ int SSL_R_WRONG_SSL_VERSION ;
+ int SSL_is_init_finished (TYPE_1__*) ;
+ int SSLerr (int ,int ) ;
+ int ossl_statem_set_in_init (TYPE_1__*,int) ;
+ int send_certificate_request (TYPE_1__*) ;
 
 int SSL_verify_client_post_handshake(SSL *ssl)
 {
@@ -52,28 +52,28 @@ int SSL_verify_client_post_handshake(SSL *ssl)
     }
 
     switch (ssl->post_handshake_auth) {
-    case SSL_PHA_NONE:
+    case 130:
         SSLerr(SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE, SSL_R_EXTENSION_NOT_RECEIVED);
         return 0;
     default:
-    case SSL_PHA_EXT_SENT:
+    case 131:
         SSLerr(SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE, ERR_R_INTERNAL_ERROR);
         return 0;
-    case SSL_PHA_EXT_RECEIVED:
+    case 132:
         break;
-    case SSL_PHA_REQUEST_PENDING:
+    case 128:
         SSLerr(SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE, SSL_R_REQUEST_PENDING);
         return 0;
-    case SSL_PHA_REQUESTED:
+    case 129:
         SSLerr(SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE, SSL_R_REQUEST_SENT);
         return 0;
     }
 
-    ssl->post_handshake_auth = SSL_PHA_REQUEST_PENDING;
+    ssl->post_handshake_auth = 128;
 
-    /* checks verify_mode and algorithm_auth */
+
     if (!send_certificate_request(ssl)) {
-        ssl->post_handshake_auth = SSL_PHA_EXT_RECEIVED; /* restore on error */
+        ssl->post_handshake_auth = 132;
         SSLerr(SSL_F_SSL_VERIFY_CLIENT_POST_HANDSHAKE, SSL_R_INVALID_CONFIG);
         return 0;
     }

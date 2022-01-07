@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-struct TYPE_8__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREENULL (char*) ; 
- int /*<<< orphan*/ * GetCurrentItem (TYPE_1__*) ; 
- int /*<<< orphan*/  IsWhitespace (char const*) ; 
-#define  XML_READER_ENDELEM 130 
-#define  XML_READER_STARTELEM 129 
-#define  XML_READER_TEXT 128 
- int /*<<< orphan*/  atoi (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * input_item_New (char*,char*) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_SetGenre (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetName (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  input_item_SetNowPlaying (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_node_AppendItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  unlikely (int) ; 
- char* vlc_stream_ReadLine (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_xml_decode (char*) ; 
- int /*<<< orphan*/ * xml_ReaderCreate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xml_ReaderDelete (int /*<<< orphan*/ *) ; 
- char* xml_ReaderNextAttr (int /*<<< orphan*/ *,char const**) ; 
- int xml_ReaderNextNode (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+struct TYPE_8__ {int s; } ;
+typedef TYPE_1__ stream_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+
+
+ int FREENULL (char*) ;
+ int * GetCurrentItem (TYPE_1__*) ;
+ int IsWhitespace (char const*) ;
+
+
+
+ int atoi (char const*) ;
+ int free (char*) ;
+ int * input_item_New (char*,char*) ;
+ int input_item_Release (int *) ;
+ int input_item_SetGenre (int *,char*) ;
+ int input_item_SetName (int *,char const*) ;
+ int input_item_SetNowPlaying (int *,char*) ;
+ int input_item_node_AppendItem (int *,int *) ;
+ int msg_Dbg (TYPE_1__*,char*,int ) ;
+ int msg_Err (TYPE_1__*,char*,...) ;
+ int msg_Warn (TYPE_1__*,char*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ int unlikely (int) ;
+ char* vlc_stream_ReadLine (int ) ;
+ int vlc_xml_decode (char*) ;
+ int * xml_ReaderCreate (TYPE_1__*,int ) ;
+ int xml_ReaderDelete (int *) ;
+ char* xml_ReaderNextAttr (int *,char const**) ;
+ int xml_ReaderNextNode (int *,char const**) ;
 
 __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *p_subitems )
 {
     int i_ret = -1;
 
-    xml_reader_t *p_xml_reader = NULL;
-    char *psz_elname = NULL;
+    xml_reader_t *p_xml_reader = ((void*)0);
+    char *psz_elname = ((void*)0);
     const char *node;
     input_item_t *p_input;
-    char *psz_mrl = NULL, *psz_title = NULL, *psz_genre = NULL;
-    char *psz_now = NULL, *psz_listeners = NULL, *psz_bitrate = NULL;
+    char *psz_mrl = ((void*)0), *psz_title = ((void*)0), *psz_genre = ((void*)0);
+    char *psz_now = ((void*)0), *psz_listeners = ((void*)0), *psz_bitrate = ((void*)0);
 
     input_item_t *p_current_input = GetCurrentItem(p_demux);
 
@@ -64,9 +64,9 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
     if( !p_xml_reader )
         return -1;
 
-    /* xml */
-    /* check root node */
-    if( xml_ReaderNextNode( p_xml_reader, &node ) != XML_READER_STARTELEM )
+
+
+    if( xml_ReaderNextNode( p_xml_reader, &node ) != 129 )
     {
         msg_Err( p_demux, "invalid file (no root node)" );
         goto end;
@@ -78,11 +78,11 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
         goto end;
     }
 
-    /* root node should not have any attributes, and should only
-     * contain the "playlist node */
 
-    /* Skip until 1st child node */
-    while( (i_ret = xml_ReaderNextNode( p_xml_reader, &node )) != XML_READER_STARTELEM )
+
+
+
+    while( (i_ret = xml_ReaderNextNode( p_xml_reader, &node )) != 129 )
         if( i_ret <= 0 )
         {
             msg_Err( p_demux, "invalid file (no child node)" );
@@ -95,9 +95,9 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
         goto end;
     }
 
-    // Read the attributes
+
     const char *attr, *value;
-    while( (attr = xml_ReaderNextAttr( p_xml_reader, &value )) != NULL )
+    while( (attr = xml_ReaderNextAttr( p_xml_reader, &value )) != ((void*)0) )
     {
         if( !strcmp( attr, "num_entries" ) )
             msg_Dbg( p_demux, "playlist has %d entries", atoi(value) );
@@ -110,18 +110,18 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
 
     while( (i_ret = xml_ReaderNextNode( p_xml_reader, &node )) > 0 )
     {
-        // Get the node type
+
         switch( i_ret )
         {
-            case XML_READER_STARTELEM:
+            case 129:
             {
-                // Read the element name
+
                 free( psz_elname );
                 psz_elname = strdup( node );
                 if( unlikely(!psz_elname) )
                     goto end;
 
-                // Read the attributes
+
                 while( (attr = xml_ReaderNextAttr( p_xml_reader, &value )) )
                 {
                     if( !strcmp( psz_elname, "entry" ) &&
@@ -139,11 +139,11 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 break;
             }
 
-            case XML_READER_TEXT:
+            case 128:
             {
                 char **p;
 
-                if( psz_elname == NULL )
+                if( psz_elname == ((void*)0) )
                     break;
                 if( IsWhitespace( node ) )
                     break;
@@ -168,10 +168,10 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 break;
             }
 
-            // End element
-            case XML_READER_ENDELEM:
+
+            case 130:
             {
-                // Read the element name
+
                 if( !strcmp( node, "entry" ) )
                 {
                     vlc_xml_decode( psz_mrl );
@@ -203,7 +203,7 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
     if( i_ret < 0 )
     {
         msg_Warn( p_demux, "error while parsing data" );
-        i_ret = 0; /* Needed for correct operation of go back */
+        i_ret = 0;
     }
 
 end:

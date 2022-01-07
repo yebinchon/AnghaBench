@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct net_device {int /*<<< orphan*/  lstats; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * loopback_dev; } ;
 
-/* Variables and functions */
- TYPE_1__* dev_net (struct net_device*) ; 
- int /*<<< orphan*/  free_percpu (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct net_device {int lstats; } ;
+struct TYPE_2__ {int * loopback_dev; } ;
+
+
+ TYPE_1__* dev_net (struct net_device*) ;
+ int free_percpu (int ) ;
 
 __attribute__((used)) static void loopback_dev_free(struct net_device *dev)
 {
-	dev_net(dev)->loopback_dev = NULL;
-	free_percpu(dev->lstats);
+ dev_net(dev)->loopback_dev = ((void*)0);
+ free_percpu(dev->lstats);
 }

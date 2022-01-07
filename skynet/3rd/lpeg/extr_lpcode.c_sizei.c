@@ -1,43 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  code; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int code; } ;
 struct TYPE_5__ {TYPE_1__ i; } ;
-typedef  int /*<<< orphan*/  Opcode ;
-typedef  TYPE_2__ Instruction ;
+typedef int Opcode ;
+typedef TYPE_2__ Instruction ;
 
-/* Variables and functions */
- int CHARSETINSTSIZE ; 
-#define  IBackCommit 139 
-#define  ICall 138 
-#define  IChoice 137 
-#define  ICommit 136 
-#define  IJmp 135 
-#define  IOpenCall 134 
-#define  IPartialCommit 133 
-#define  ISet 132 
-#define  ISpan 131 
-#define  ITestAny 130 
-#define  ITestChar 129 
-#define  ITestSet 128 
 
+ int CHARSETINSTSIZE ;
 int sizei (const Instruction *i) {
   switch((Opcode)i->i.code) {
-    case ISet: case ISpan: return CHARSETINSTSIZE;
-    case ITestSet: return CHARSETINSTSIZE + 1;
-    case ITestChar: case ITestAny: case IChoice: case IJmp: case ICall:
-    case IOpenCall: case ICommit: case IPartialCommit: case IBackCommit:
+    case 132: case 131: return CHARSETINSTSIZE;
+    case 128: return CHARSETINSTSIZE + 1;
+    case 129: case 130: case 137: case 135: case 138:
+    case 134: case 136: case 133: case 139:
       return 2;
     default: return 1;
   }

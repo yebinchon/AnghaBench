@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  int /*<<< orphan*/  TIFF ;
 
-/* Variables and functions */
- scalar_t__ BlackWhiteCompensation ; 
- int /*<<< orphan*/  ComputeOutputFormatDescriptor (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CopyOtherTags (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DoEmbedProfile (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ EmbedProfile ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- scalar_t__ GamutCheck ; 
- int /*<<< orphan*/  GetInputPixelType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetTIFFProfile (int /*<<< orphan*/ *) ; 
- double InkLimit ; 
- int /*<<< orphan*/  Intent ; 
- int /*<<< orphan*/  ObserverAdaptationState ; 
- int /*<<< orphan*/ * OpenStockProfile (int /*<<< orphan*/ *,char const*) ; 
- int PT_CMY ; 
- int PT_CMYK ; 
- int PrecalcMode ; 
- int /*<<< orphan*/  ProofingIntent ; 
- int /*<<< orphan*/  StripBasedXform (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ TIFFIsTiled (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TIFFWriteDirectory (int /*<<< orphan*/ *) ; 
- int T_CHANNELS (int /*<<< orphan*/ ) ; 
- scalar_t__ T_COLORSPACE (int /*<<< orphan*/ ) ; 
- int T_EXTRA (int /*<<< orphan*/ ) ; 
- scalar_t__ T_PLANAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TileBasedXform (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int Width ; 
- int /*<<< orphan*/  WriteOutputTags (int /*<<< orphan*/ *,int,int) ; 
- int _cmsLCMScolorSpace (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char const* cOutProf ; 
- char const* cProofing ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsCreateInkLimitingDeviceLink (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/ * cmsCreateMultiprofileTransform (int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsCreateProofingTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsFLAGS_BLACKPOINTCOMPENSATION ; 
- int /*<<< orphan*/  cmsFLAGS_GAMUTCHECK ; 
- int /*<<< orphan*/  cmsFLAGS_HIGHRESPRECALC ; 
- int /*<<< orphan*/  cmsFLAGS_LOWRESPRECALC ; 
- int /*<<< orphan*/  cmsFLAGS_NOOPTIMIZE ; 
- int /*<<< orphan*/  cmsFLAGS_SOFTPROOFING ; 
- int /*<<< orphan*/  cmsGetColorSpace (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsGetPCS (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromFile (char const*,char*) ; 
- int /*<<< orphan*/  cmsSetAdaptationState (int /*<<< orphan*/ ) ; 
- scalar_t__ lIsDeviceLink ; 
+
+
+
+typedef int cmsUInt32Number ;
+typedef int * cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+typedef int TIFF ;
+
+
+ scalar_t__ BlackWhiteCompensation ;
+ int ComputeOutputFormatDescriptor (int ,int,int) ;
+ int CopyOtherTags (int *,int *) ;
+ int DoEmbedProfile (int *,char const*) ;
+ scalar_t__ EmbedProfile ;
+ int FatalError (char*,...) ;
+ scalar_t__ GamutCheck ;
+ int GetInputPixelType (int *) ;
+ int * GetTIFFProfile (int *) ;
+ double InkLimit ;
+ int Intent ;
+ int ObserverAdaptationState ;
+ int * OpenStockProfile (int *,char const*) ;
+ int PT_CMY ;
+ int PT_CMYK ;
+ int PrecalcMode ;
+ int ProofingIntent ;
+ int StripBasedXform (int *,int *,int *,int) ;
+ scalar_t__ TIFFIsTiled (int *) ;
+ int TIFFWriteDirectory (int *) ;
+ int T_CHANNELS (int ) ;
+ scalar_t__ T_COLORSPACE (int ) ;
+ int T_EXTRA (int ) ;
+ scalar_t__ T_PLANAR (int ) ;
+ int TileBasedXform (int *,int *,int *,int) ;
+ int Width ;
+ int WriteOutputTags (int *,int,int) ;
+ int _cmsLCMScolorSpace (int *,int ) ;
+ char const* cOutProf ;
+ char const* cProofing ;
+ int cmsCloseProfile (int *,int *) ;
+ int * cmsCreateInkLimitingDeviceLink (int ,double) ;
+ int * cmsCreateMultiprofileTransform (int **,int,int ,int ,int ,int ) ;
+ int * cmsCreateProofingTransform (int *,int ,int *,int ,int *,int ,int ,int ) ;
+ int cmsDeleteTransform (int *,int *) ;
+ int cmsFLAGS_BLACKPOINTCOMPENSATION ;
+ int cmsFLAGS_GAMUTCHECK ;
+ int cmsFLAGS_HIGHRESPRECALC ;
+ int cmsFLAGS_LOWRESPRECALC ;
+ int cmsFLAGS_NOOPTIMIZE ;
+ int cmsFLAGS_SOFTPROOFING ;
+ int cmsGetColorSpace (int *,int *) ;
+ int cmsGetPCS (int *,int *) ;
+ int * cmsOpenProfileFromFile (char const*,char*) ;
+ int cmsSetAdaptationState (int ) ;
+ scalar_t__ lIsDeviceLink ;
 
 __attribute__((used)) static
 int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
 {
-    cmsHPROFILE hIn, hOut, hProof, hInkLimit = NULL;
+    cmsHPROFILE hIn, hOut, hProof, hInkLimit = ((void*)0);
     cmsHTRANSFORM xform;
     cmsUInt32Number wInput, wOutput;
     int OutputColorSpace;
@@ -74,7 +74,7 @@ int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
     cmsUInt32Number dwFlags = 0;
     int nPlanes;
 
-    // Observer adaptation state (only meaningful on absolute colorimetric intent)
+
 
     cmsSetAdaptationState(ObserverAdaptationState);
 
@@ -99,8 +99,8 @@ int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
     if (GamutCheck)
         dwFlags |= cmsFLAGS_GAMUTCHECK;
 
-    hProof = NULL;
-    hOut = NULL;
+    hProof = ((void*)0);
+    hOut = ((void*)0);
 
     if (lIsDeviceLink) {
 
@@ -108,41 +108,41 @@ int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
     }
     else {
 
-        hIn =  GetTIFFProfile(in);
+        hIn = GetTIFFProfile(in);
 
-        if (hIn == NULL)
-            hIn = OpenStockProfile(NULL, cDefInpProf);
+        if (hIn == ((void*)0))
+            hIn = OpenStockProfile(((void*)0), cDefInpProf);
 
-        hOut = OpenStockProfile(NULL, cOutProf);
+        hOut = OpenStockProfile(((void*)0), cOutProf);
 
-        if (cProofing != NULL) {
+        if (cProofing != ((void*)0)) {
 
-            hProof = OpenStockProfile(NULL, cProofing);
+            hProof = OpenStockProfile(((void*)0), cProofing);
             dwFlags |= cmsFLAGS_SOFTPROOFING;
         }
     }
 
-    // Take input color space
+
 
     wInput = GetInputPixelType(in);
 
-    // Assure both, input profile and input TIFF are on same colorspace
 
-    if (_cmsLCMScolorSpace(NULL, cmsGetColorSpace(NULL, hIn)) != (int) T_COLORSPACE(wInput))
+
+    if (_cmsLCMScolorSpace(((void*)0), cmsGetColorSpace(((void*)0), hIn)) != (int) T_COLORSPACE(wInput))
         FatalError("Input profile is not operating in proper color space");
 
 
     if (!lIsDeviceLink)
-        OutputColorSpace = _cmsLCMScolorSpace(NULL, cmsGetColorSpace(NULL, hOut));
+        OutputColorSpace = _cmsLCMScolorSpace(((void*)0), cmsGetColorSpace(((void*)0), hOut));
     else
-        OutputColorSpace = _cmsLCMScolorSpace(NULL, cmsGetPCS(NULL, hIn));
+        OutputColorSpace = _cmsLCMScolorSpace(((void*)0), cmsGetPCS(((void*)0), hIn));
 
-    wOutput  = ComputeOutputFormatDescriptor(wInput, OutputColorSpace, bps);
+    wOutput = ComputeOutputFormatDescriptor(wInput, OutputColorSpace, bps);
 
     WriteOutputTags(out, OutputColorSpace, bps);
     CopyOtherTags(in, out);
 
-    // Ink limit
+
     if (InkLimit != 400.0 &&
         (OutputColorSpace == PT_CMYK || OutputColorSpace == PT_CMY)) {
 
@@ -150,7 +150,7 @@ int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
             int nProfiles = 0;
 
 
-            hInkLimit = cmsCreateInkLimitingDeviceLink(cmsGetColorSpace(NULL, hOut), InkLimit);
+            hInkLimit = cmsCreateInkLimitingDeviceLink(cmsGetColorSpace(((void*)0), hOut), InkLimit);
 
             hProfiles[nProfiles++] = hIn;
             if (hProof) {
@@ -174,24 +174,24 @@ int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
                                            dwFlags);
     }
 
-    cmsCloseProfile(NULL, hIn);
-    cmsCloseProfile(NULL, hOut);
+    cmsCloseProfile(((void*)0), hIn);
+    cmsCloseProfile(((void*)0), hOut);
 
     if (hInkLimit)
-        cmsCloseProfile(NULL, hInkLimit);
+        cmsCloseProfile(((void*)0), hInkLimit);
     if (hProof)
-        cmsCloseProfile(NULL, hProof);
+        cmsCloseProfile(((void*)0), hProof);
 
-    if (xform == NULL) return 0;
+    if (xform == ((void*)0)) return 0;
 
-    // Planar stuff
+
     if (T_PLANAR(wInput))
         nPlanes = T_CHANNELS(wInput) + T_EXTRA(wInput);
     else
         nPlanes = 1;
 
 
-    // Handle tile by tile or strip by strip
+
     if (TIFFIsTiled(in)) {
 
         TileBasedXform(xform, in, out, nPlanes);
@@ -201,7 +201,7 @@ int TransformImage(TIFF* in, TIFF* out, const char *cDefInpProf)
     }
 
 
-    cmsDeleteTransform(NULL, xform);
+    cmsDeleteTransform(((void*)0), xform);
 
     TIFFWriteDirectory(out);
 

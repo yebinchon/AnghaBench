@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* winmm_js; } ;
-struct TYPE_6__ {int /*<<< orphan*/  szPname; } ;
+struct TYPE_6__ {int szPname; } ;
 struct TYPE_5__ {char const* name; } ;
-typedef  TYPE_2__ JOYCAPS ;
+typedef TYPE_2__ JOYCAPS ;
 
-/* Variables and functions */
- scalar_t__ JOYERR_NOERROR ; 
- TYPE_4__ _glfw ; 
- char const* _glfwCreateUTF8FromWideString (int /*<<< orphan*/ ) ; 
- scalar_t__ _glfw_joyGetDevCaps (int,TYPE_2__*,int) ; 
- int /*<<< orphan*/  free (char const*) ; 
+
+ scalar_t__ JOYERR_NOERROR ;
+ TYPE_4__ _glfw ;
+ char const* _glfwCreateUTF8FromWideString (int ) ;
+ scalar_t__ _glfw_joyGetDevCaps (int,TYPE_2__*,int) ;
+ int free (char const*) ;
 
 const char* _glfwPlatformGetJoystickName(int joy)
 {
     JOYCAPS jc;
 
     if (_glfw_joyGetDevCaps(joy, &jc, sizeof(JOYCAPS)) != JOYERR_NOERROR)
-        return NULL;
+        return ((void*)0);
 
     free(_glfw.winmm_js[joy].name);
     _glfw.winmm_js[joy].name = _glfwCreateUTF8FromWideString(jc.szPname);

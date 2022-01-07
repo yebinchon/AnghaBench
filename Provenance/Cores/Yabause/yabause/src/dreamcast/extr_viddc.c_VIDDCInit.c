@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32 ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32 ;
 struct TYPE_11__ {void* culling; } ;
 struct TYPE_12__ {TYPE_1__ gen; } ;
-typedef  TYPE_2__ pvr_sprite_cxt_t ;
-struct TYPE_13__ {int /*<<< orphan*/  argb; } ;
+typedef TYPE_2__ pvr_sprite_cxt_t ;
+struct TYPE_13__ {int argb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DM_320x240 ; 
- int /*<<< orphan*/  PM_RGB565 ; 
- void* PVR_CULLING_NONE ; 
- int /*<<< orphan*/  PVR_FILTER_NONE ; 
- int /*<<< orphan*/  PVR_LIST_OP_POLY ; 
- int /*<<< orphan*/  PVR_LIST_PT_POLY ; 
- int /*<<< orphan*/  PVR_LIST_TR_POLY ; 
- int /*<<< orphan*/  PVR_PACK_COLOR (float,float,float,float) ; 
- int PVR_TXRFMT_ARGB1555 ; 
- int PVR_TXRFMT_NONTWIDDLED ; 
- scalar_t__ cur_addr ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ framecount ; 
- int /*<<< orphan*/  lastup ; 
- TYPE_3__ op_poly_hdr ; 
- int /*<<< orphan*/  printf (char*,int /*<<< orphan*/ ) ; 
- float* priority_levels ; 
- TYPE_3__ pt_sprite_hdr ; 
- scalar_t__ pvr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pvr_mem_available () ; 
- void* pvr_mem_malloc (int) ; 
- int /*<<< orphan*/  pvr_params ; 
- int /*<<< orphan*/  pvr_set_vertbuf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pvr_sprite_compile (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  pvr_sprite_cxt_col (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pvr_sprite_cxt_txr (TYPE_2__*,int /*<<< orphan*/ ,int,int,int,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sq_set (void*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- void* tex_space ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
- TYPE_3__ tr_poly_hdr ; 
- TYPE_3__ tr_sprite_hdr ; 
- int /*<<< orphan*/  vbuf_opaque ; 
- int /*<<< orphan*/  vbuf_punchthru ; 
- int /*<<< orphan*/  vbuf_translucent ; 
- void* vdp2_tex ; 
- int /*<<< orphan*/  vid_set_mode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static int VIDDCInit(void)  {
+ int DM_320x240 ;
+ int PM_RGB565 ;
+ void* PVR_CULLING_NONE ;
+ int PVR_FILTER_NONE ;
+ int PVR_LIST_OP_POLY ;
+ int PVR_LIST_PT_POLY ;
+ int PVR_LIST_TR_POLY ;
+ int PVR_PACK_COLOR (float,float,float,float) ;
+ int PVR_TXRFMT_ARGB1555 ;
+ int PVR_TXRFMT_NONTWIDDLED ;
+ scalar_t__ cur_addr ;
+ int fprintf (int ,char*) ;
+ scalar_t__ framecount ;
+ int lastup ;
+ TYPE_3__ op_poly_hdr ;
+ int printf (char*,int ) ;
+ float* priority_levels ;
+ TYPE_3__ pt_sprite_hdr ;
+ scalar_t__ pvr_init (int *) ;
+ int pvr_mem_available () ;
+ void* pvr_mem_malloc (int) ;
+ int pvr_params ;
+ int pvr_set_vertbuf (int ,int ,int) ;
+ int pvr_sprite_compile (TYPE_3__*,TYPE_2__*) ;
+ int pvr_sprite_cxt_col (TYPE_2__*,int ) ;
+ int pvr_sprite_cxt_txr (TYPE_2__*,int ,int,int,int,void*,int ) ;
+ int sq_set (void*,int,int) ;
+ int stderr ;
+ void* tex_space ;
+ int time (int *) ;
+ TYPE_3__ tr_poly_hdr ;
+ TYPE_3__ tr_sprite_hdr ;
+ int vbuf_opaque ;
+ int vbuf_punchthru ;
+ int vbuf_translucent ;
+ void* vdp2_tex ;
+ int vid_set_mode (int ,int ) ;
+
+__attribute__((used)) static int VIDDCInit(void) {
     pvr_sprite_cxt_t op_poly_cxt, tr_poly_cxt;
     pvr_sprite_cxt_t pt_sprite_cxt, tr_sprite_cxt;
 
     vid_set_mode(DM_320x240, PM_RGB565);
 
-    if(pvr_init(&pvr_params))   {
+    if(pvr_init(&pvr_params)) {
         fprintf(stderr, "VIDDCInit() - error initializing PVR\n");
         return -1;
     }
@@ -115,7 +115,7 @@ __attribute__((used)) static int VIDDCInit(void)  {
     priority_levels[7] = 7.0f;
 
     framecount = 0;
-    lastup = time(NULL);
+    lastup = time(((void*)0));
 
     return 0;
 }

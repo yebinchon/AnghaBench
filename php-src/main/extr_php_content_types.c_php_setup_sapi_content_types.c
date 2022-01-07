@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SUCCESS ; 
- int /*<<< orphan*/  php_post_entries ; 
- int /*<<< orphan*/  sapi_register_post_entries (int /*<<< orphan*/ ) ; 
+ int SUCCESS ;
+ int php_post_entries ;
+ int sapi_register_post_entries (int ) ;
 
 int php_setup_sapi_content_types(void)
 {
-	sapi_register_post_entries(php_post_entries);
+ sapi_register_post_entries(php_post_entries);
 
-	return SUCCESS;
+ return SUCCESS;
 }

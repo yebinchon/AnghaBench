@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  writewordfunc ;
-typedef  int /*<<< orphan*/  writelongfunc ;
-typedef  int /*<<< orphan*/  writebytefunc ;
-typedef  int /*<<< orphan*/  readwordfunc ;
-typedef  int /*<<< orphan*/  readlongfunc ;
-typedef  int /*<<< orphan*/  readbytefunc ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ReadByteList ; 
- int /*<<< orphan*/ * ReadLongList ; 
- int /*<<< orphan*/ * ReadWordList ; 
- int /*<<< orphan*/ * WriteByteList ; 
- int /*<<< orphan*/ * WriteLongList ; 
- int /*<<< orphan*/ * WriteWordList ; 
+
+
+
+typedef int writewordfunc ;
+typedef int writelongfunc ;
+typedef int writebytefunc ;
+typedef int readwordfunc ;
+typedef int readlongfunc ;
+typedef int readbytefunc ;
+
+
+ int * ReadByteList ;
+ int * ReadLongList ;
+ int * ReadWordList ;
+ int * WriteByteList ;
+ int * WriteLongList ;
+ int * WriteWordList ;
 
 __attribute__((used)) static void FillMemoryArea(unsigned short start, unsigned short end,
                            readbytefunc r8func, readwordfunc r16func,

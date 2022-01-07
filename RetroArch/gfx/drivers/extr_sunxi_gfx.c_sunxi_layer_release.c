@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_3__ {int layer_id; int fb_id; scalar_t__ layer_has_scaler; int /*<<< orphan*/  fd_disp; } ;
-typedef  TYPE_1__ sunxi_disp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_CMD_LAYER_RELEASE ; 
- int /*<<< orphan*/  ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int layer_id; int fb_id; scalar_t__ layer_has_scaler; int fd_disp; } ;
+typedef TYPE_1__ sunxi_disp_t ;
+
+
+ int DISP_CMD_LAYER_RELEASE ;
+ int ioctl (int ,int ,int**) ;
 
 __attribute__((used)) static int sunxi_layer_release(sunxi_disp_t *ctx)
 {

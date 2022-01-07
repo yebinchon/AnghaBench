@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct nn_sha1 {int* buffer; int buffer_offset; int* state; scalar_t__ is_little_endian; } ;
 
-/* Variables and functions */
- size_t SHA1_BLOCK_LEN ; 
- int sha1_rol32 (int,int) ; 
+
+ size_t SHA1_BLOCK_LEN ;
+ int sha1_rol32 (int,int) ;
 
 __attribute__((used)) static void nn_sha1_add (struct nn_sha1 *self, uint8_t data)
 {

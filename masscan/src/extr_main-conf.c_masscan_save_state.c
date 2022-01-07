@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Masscan {int dummy; } ;
-typedef  int /*<<< orphan*/  filename ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int filename ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int fopen_s (int /*<<< orphan*/ **,char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  masscan_echo (struct Masscan*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy_s (char*,int,char*) ; 
+
+ int fclose (int *) ;
+ int fopen_s (int **,char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int masscan_echo (struct Masscan*,int *,int ) ;
+ int perror (char*) ;
+ int stderr ;
+ int strcpy_s (char*,int,char*) ;
 
 void
 masscan_save_state(struct Masscan *masscan)
@@ -42,7 +42,7 @@ masscan_save_state(struct Masscan *masscan)
         return;
     }
 
-    
+
     masscan_echo(masscan, fp, 0);
 
     fclose(fp);

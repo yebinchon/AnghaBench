@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int nType; size_t* iActions; size_t nCount; int /*<<< orphan*/  uParentMsg; int /*<<< orphan*/  nLine; int /*<<< orphan*/  nLevel; int /*<<< orphan*/ * uMessages; } ;
-typedef  TYPE_1__ STAGE ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoAction (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  NextStage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARENT_MSG ; 
-#define  STAGE_TYPE_COUNTING 129 
-#define  STAGE_TYPE_SEQUENCE 128 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  ok_int (int,int) ; 
- scalar_t__ s_bNextStage ; 
- size_t s_cStages ; 
- size_t s_iStage ; 
- size_t s_iStep ; 
- int /*<<< orphan*/ * s_nCounters ; 
- int /*<<< orphan*/  s_nLevel ; 
- TYPE_1__* s_pStages ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+typedef int UINT ;
+struct TYPE_3__ {int nType; size_t* iActions; size_t nCount; int uParentMsg; int nLine; int nLevel; int * uMessages; } ;
+typedef TYPE_1__ STAGE ;
+typedef int LPARAM ;
+typedef size_t INT ;
+typedef int HWND ;
+
+
+ int DoAction (int ,size_t,int ,int ) ;
+ scalar_t__ FALSE ;
+ int NextStage (int ) ;
+ int PARENT_MSG ;
+
+
+ scalar_t__ TRUE ;
+ int ok (int,char*,int ,size_t,int ,...) ;
+ int ok_int (int,int) ;
+ scalar_t__ s_bNextStage ;
+ size_t s_cStages ;
+ size_t s_iStage ;
+ size_t s_iStep ;
+ int * s_nCounters ;
+ int s_nLevel ;
+ TYPE_1__* s_pStages ;
 
 __attribute__((used)) static void DoStage(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void DoStage(HWND hwnd, UINT uMsg, WPARAM wParam, L
     pStage = &s_pStages[s_iStage];
     switch (pStage->nType)
     {
-        case STAGE_TYPE_SEQUENCE:
+        case 128:
             if (pStage->uMessages[s_iStep] == uMsg)
             {
                 ok_int(1, 1);
@@ -69,7 +69,7 @@ __attribute__((used)) static void DoStage(HWND hwnd, UINT uMsg, WPARAM wParam, L
                     s_bNextStage = TRUE;
             }
             break;
-        case STAGE_TYPE_COUNTING:
+        case 129:
             for (i = 0; i < pStage->nCount; ++i)
             {
                 if (pStage->uMessages[i] == uMsg)

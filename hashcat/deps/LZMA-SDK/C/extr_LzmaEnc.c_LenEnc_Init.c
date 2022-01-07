@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void** high; void** low; } ;
-typedef  TYPE_1__ CLenEnc ;
+typedef TYPE_1__ CLenEnc ;
 
-/* Variables and functions */
- int LZMA_NUM_PB_STATES_MAX ; 
- unsigned int kLenNumHighSymbols ; 
- int kLenNumLowBits ; 
- void* kProbInitValue ; 
+
+ int LZMA_NUM_PB_STATES_MAX ;
+ unsigned int kLenNumHighSymbols ;
+ int kLenNumLowBits ;
+ void* kProbInitValue ;
 
 __attribute__((used)) static void LenEnc_Init(CLenEnc *p)
 {

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINTN ;
-typedef  char CHAR8 ;
 
-/* Variables and functions */
- scalar_t__ strchra (char*,char) ; 
+
+
+
+typedef int UINTN ;
+typedef char CHAR8 ;
+
+
+ scalar_t__ strchra (char*,char) ;
 
 __attribute__((used)) static CHAR8 *line_get_key_value(
                 CHAR8 *content,
@@ -30,31 +30,31 @@ __attribute__((used)) static CHAR8 *line_get_key_value(
 skip:
         line = content + *pos;
         if (*line == '\0')
-                return NULL;
+                return ((void*)0);
 
         linelen = 0;
         while (line[linelen] && !strchra((CHAR8 *)"\n\r", line[linelen]))
                linelen++;
 
-        /* move pos to next line */
+
         *pos += linelen;
         if (content[*pos])
                 (*pos)++;
 
-        /* empty line */
+
         if (linelen == 0)
                 goto skip;
 
-        /* terminate line */
+
         line[linelen] = '\0';
 
-        /* remove leading whitespace */
+
         while (strchra((CHAR8 *)" \t", *line)) {
                 line++;
                 linelen--;
         }
 
-        /* remove trailing whitespace */
+
         while (linelen > 0 && strchra((CHAR8 *)" \t", line[linelen-1]))
                 linelen--;
         line[linelen] = '\0';
@@ -62,7 +62,7 @@ skip:
         if (*line == '#')
                 goto skip;
 
-        /* split key/value */
+
         value = line;
         while (*value && !strchra(sep, *value))
                 value++;
@@ -73,7 +73,7 @@ skip:
         while (*value && strchra(sep, *value))
                 value++;
 
-        /* unquote */
+
         if (value[0] == '"' && line[linelen-1] == '"') {
                 value++;
                 line[linelen-1] = '\0';

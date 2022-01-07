@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_12__ {TYPE_1__* p_sessions; int /*<<< orphan*/  obj; } ;
-typedef  TYPE_2__ cam_t ;
-struct TYPE_11__ {int i_resource_id; int i_slot; int /*<<< orphan*/ * pf_manage; int /*<<< orphan*/ * pf_close; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ApplicationInformationOpen (TYPE_2__*,int) ; 
- int /*<<< orphan*/  ConditionalAccessOpen (TYPE_2__*,int) ; 
- int /*<<< orphan*/  DateTimeOpen (TYPE_2__*,int) ; 
- int MAX_SESSIONS ; 
- int /*<<< orphan*/  MMIOpen (TYPE_2__*,int) ; 
-#define  RI_APPLICATION_INFORMATION 133 
-#define  RI_CONDITIONAL_ACCESS_SUPPORT 132 
-#define  RI_DATE_TIME 131 
-#define  RI_HOST_CONTROL 130 
-#define  RI_MMI 129 
-#define  RI_RESOURCE_MANAGER 128 
- int ResourceIdToInt (int*) ; 
- int /*<<< orphan*/  ResourceManagerOpen (TYPE_2__*,int) ; 
- int SS_NOT_ALLOCATED ; 
- int SS_OK ; 
- int ST_OPEN_SESSION_RESPONSE ; 
- scalar_t__ TPDURecv (TYPE_2__*,int,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TPDUSend (TYPE_2__*,int,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  T_DATA_LAST ; 
- scalar_t__ VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_UNUSED (int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*,...) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_12__ {TYPE_1__* p_sessions; int obj; } ;
+typedef TYPE_2__ cam_t ;
+struct TYPE_11__ {int i_resource_id; int i_slot; int * pf_manage; int * pf_close; } ;
+
+
+ int ApplicationInformationOpen (TYPE_2__*,int) ;
+ int ConditionalAccessOpen (TYPE_2__*,int) ;
+ int DateTimeOpen (TYPE_2__*,int) ;
+ int MAX_SESSIONS ;
+ int MMIOpen (TYPE_2__*,int) ;
+
+
+
+
+
+
+ int ResourceIdToInt (int*) ;
+ int ResourceManagerOpen (TYPE_2__*,int) ;
+ int SS_NOT_ALLOCATED ;
+ int SS_OK ;
+ int ST_OPEN_SESSION_RESPONSE ;
+ scalar_t__ TPDURecv (TYPE_2__*,int,int*,int *,int *) ;
+ scalar_t__ TPDUSend (TYPE_2__*,int,int ,int*,int) ;
+ int T_DATA_LAST ;
+ scalar_t__ VLC_SUCCESS ;
+ int VLC_UNUSED (int) ;
+ int msg_Err (int ,char*,...) ;
 
 __attribute__((used)) static void SessionOpen( cam_t * p_cam, uint8_t i_slot,
                          uint8_t *p_spdu, int i_size )
@@ -64,14 +64,14 @@ __attribute__((used)) static void SessionOpen( cam_t * p_cam, uint8_t i_slot,
     }
     p_cam->p_sessions[i_session_id - 1].i_slot = i_slot;
     p_cam->p_sessions[i_session_id - 1].i_resource_id = i_resource_id;
-    p_cam->p_sessions[i_session_id - 1].pf_close = NULL;
-    p_cam->p_sessions[i_session_id - 1].pf_manage = NULL;
+    p_cam->p_sessions[i_session_id - 1].pf_close = ((void*)0);
+    p_cam->p_sessions[i_session_id - 1].pf_manage = ((void*)0);
 
-    if ( i_resource_id == RI_RESOURCE_MANAGER
-          || i_resource_id == RI_APPLICATION_INFORMATION
-          || i_resource_id == RI_CONDITIONAL_ACCESS_SUPPORT
-          || i_resource_id == RI_DATE_TIME
-          || i_resource_id == RI_MMI )
+    if ( i_resource_id == 128
+          || i_resource_id == 133
+          || i_resource_id == 132
+          || i_resource_id == 131
+          || i_resource_id == 129 )
     {
         i_status = SS_OK;
     }
@@ -93,7 +93,7 @@ __attribute__((used)) static void SessionOpen( cam_t * p_cam, uint8_t i_slot,
                  "SessionOpen: couldn't send TPDU on slot %d", i_slot );
         return;
     }
-    if ( TPDURecv( p_cam, i_slot, &i_tag, NULL, NULL ) != VLC_SUCCESS )
+    if ( TPDURecv( p_cam, i_slot, &i_tag, ((void*)0), ((void*)0) ) != VLC_SUCCESS )
     {
         msg_Err( p_cam->obj,
                  "SessionOpen: couldn't recv TPDU on slot %d", i_slot );
@@ -102,18 +102,18 @@ __attribute__((used)) static void SessionOpen( cam_t * p_cam, uint8_t i_slot,
 
     switch ( i_resource_id )
     {
-    case RI_RESOURCE_MANAGER:
+    case 128:
         ResourceManagerOpen( p_cam, i_session_id ); break;
-    case RI_APPLICATION_INFORMATION:
+    case 133:
         ApplicationInformationOpen( p_cam, i_session_id ); break;
-    case RI_CONDITIONAL_ACCESS_SUPPORT:
+    case 132:
         ConditionalAccessOpen( p_cam, i_session_id ); break;
-    case RI_DATE_TIME:
+    case 131:
         DateTimeOpen( p_cam, i_session_id ); break;
-    case RI_MMI:
+    case 129:
         MMIOpen( p_cam, i_session_id ); break;
 
-    case RI_HOST_CONTROL:
+    case 130:
     default:
         msg_Err( p_cam->obj, "unknown resource id (0x%x)", i_resource_id );
         p_cam->p_sessions[i_session_id - 1].i_resource_id = 0;

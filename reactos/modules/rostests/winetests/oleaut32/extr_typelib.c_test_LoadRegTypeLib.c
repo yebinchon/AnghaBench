@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG_PTR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG_PTR ;
 struct TYPE_4__ {int lcid; int wMajorVerNum; int wMinorVerNum; int wLibFlags; } ;
-typedef  TYPE_1__ TLIBATTR ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/ * BSTR ;
-typedef  int BOOL ;
+typedef TYPE_1__ TLIBATTR ;
+typedef int LCID ;
+typedef int ITypeLib ;
+typedef int HRESULT ;
+typedef int HANDLE ;
+typedef int * BSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int GetLastError () ; 
- int ITypeLib_GetLibAttr (int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeLib_ReleaseTLibAttr (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  LANG_ENGLISH ; 
- int /*<<< orphan*/  LANG_RUSSIAN ; 
- int LIBFLAG_FHASDISKIMAGE ; 
- int /*<<< orphan*/  LIBID_TestTypelib ; 
- int /*<<< orphan*/  LIBID_register_test ; 
- int /*<<< orphan*/  LOCALE_NEUTRAL ; 
- int LoadRegTypeLib (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKELCID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int QueryPathOfRegTypeLib (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SORT_DEFAULT ; 
- int /*<<< orphan*/  SUBLANG_ENGLISH_US ; 
- int /*<<< orphan*/  SUBLANG_NEUTRAL ; 
- int S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int TYPE_E_LIBNOTREGISTERED ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  create_actctx (char*) ; 
- int /*<<< orphan*/  create_manifest_file (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  manifest_dep ; 
- int /*<<< orphan*/  manifest_main ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pActivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int pDeactivateActCtx (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pReleaseActCtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  write_typelib (int,char*) ; 
+
+ int DeleteFileA (char*) ;
+ int GetLastError () ;
+ int ITypeLib_GetLibAttr (int *,TYPE_1__**) ;
+ int ITypeLib_Release (int *) ;
+ int ITypeLib_ReleaseTLibAttr (int *,TYPE_1__*) ;
+ int LANG_ENGLISH ;
+ int LANG_RUSSIAN ;
+ int LIBFLAG_FHASDISKIMAGE ;
+ int LIBID_TestTypelib ;
+ int LIBID_register_test ;
+ int LOCALE_NEUTRAL ;
+ int LoadRegTypeLib (int *,int,int,int ,int **) ;
+ int MAKELANGID (int ,int ) ;
+ int MAKELCID (int ,int ) ;
+ int QueryPathOfRegTypeLib (int *,int,int,int ,int **) ;
+ int SORT_DEFAULT ;
+ int SUBLANG_ENGLISH_US ;
+ int SUBLANG_NEUTRAL ;
+ int S_OK ;
+ int SysFreeString (int *) ;
+ int TYPE_E_LIBNOTREGISTERED ;
+ scalar_t__ broken (int) ;
+ int create_actctx (char*) ;
+ int create_manifest_file (char*,int ) ;
+ int manifest_dep ;
+ int manifest_main ;
+ int ok (int,char*,int) ;
+ int pActivateActCtx (int ,int *) ;
+ int pDeactivateActCtx (int ,int ) ;
+ int pReleaseActCtx (int ) ;
+ int win_skip (char*) ;
+ int write_typelib (int,char*) ;
 
 __attribute__((used)) static void test_LoadRegTypeLib(void)
 {
@@ -80,7 +80,7 @@ __attribute__((used)) static void test_LoadRegTypeLib(void)
     DeleteFileA("testdep.manifest");
     DeleteFileA("main.manifest");
 
-    /* create typelib file */
+
     write_typelib(1, "test_actctx_tlb.tlb");
     write_typelib(3, "test_actctx_tlb2.tlb");
 
@@ -96,48 +96,48 @@ __attribute__((used)) static void test_LoadRegTypeLib(void)
     ret = pActivateActCtx(handle, &cookie);
     ok(ret, "ActivateActCtx failed: %u\n", GetLastError());
 
-    path = NULL;
+    path = ((void*)0);
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 2, 0, LOCALE_NEUTRAL, &path);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     SysFreeString(path);
 
-    path = NULL;
+    path = ((void*)0);
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 2, 0, lcid_en, &path);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     SysFreeString(path);
 
-    path = NULL;
+    path = ((void*)0);
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 2, 0, lcid_ru, &path);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     SysFreeString(path);
 
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 2, 8, LOCALE_NEUTRAL, &path);
-    ok(hr == TYPE_E_LIBNOTREGISTERED || broken(hr == S_OK) /* winxp */, "got 0x%08x\n", hr);
+    ok(hr == TYPE_E_LIBNOTREGISTERED || broken(hr == S_OK) , "got 0x%08x\n", hr);
 
-    path = NULL;
+    path = ((void*)0);
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 2, 7, LOCALE_NEUTRAL, &path);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     SysFreeString(path);
 
-    path = NULL;
+    path = ((void*)0);
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 1, 0, LOCALE_NEUTRAL, &path);
-    ok(hr == TYPE_E_LIBNOTREGISTERED || broken(hr == S_OK) /* winxp */, "got 0x%08x\n", hr);
+    ok(hr == TYPE_E_LIBNOTREGISTERED || broken(hr == S_OK) , "got 0x%08x\n", hr);
     SysFreeString(path);
 
-    path = NULL;
+    path = ((void*)0);
     hr = QueryPathOfRegTypeLib(&LIBID_TestTypelib, 0xffff, 0xffff, LOCALE_NEUTRAL, &path);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     SysFreeString(path);
 
-    /* manifest version is 2.0, actual is 1.0 */
+
     hr = LoadRegTypeLib(&LIBID_register_test, 1, 0, LOCALE_NEUTRAL, &tl);
-    ok(hr == TYPE_E_LIBNOTREGISTERED || broken(hr == S_OK) /* winxp */, "got 0x%08x\n", hr);
+    ok(hr == TYPE_E_LIBNOTREGISTERED || broken(hr == S_OK) , "got 0x%08x\n", hr);
     if (hr == S_OK) ITypeLib_Release(tl);
 
     hr = LoadRegTypeLib(&LIBID_register_test, 2, 0, LOCALE_NEUTRAL, &tl);
     ok(hr == TYPE_E_LIBNOTREGISTERED, "got 0x%08x\n", hr);
 
-    /* manifest version is 2.7, actual is 2.5 */
+
     hr = LoadRegTypeLib(&LIBID_TestTypelib, 2, 0, LOCALE_NEUTRAL, &tl);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     if (hr == S_OK) ITypeLib_Release(tl);
@@ -174,7 +174,7 @@ __attribute__((used)) static void test_LoadRegTypeLib(void)
     hr = LoadRegTypeLib(&LIBID_TestTypelib, 1, 7, LOCALE_NEUTRAL, &tl);
     ok(hr == TYPE_E_LIBNOTREGISTERED, "got 0x%08x\n", hr);
 
-    tl = NULL;
+    tl = ((void*)0);
     hr = LoadRegTypeLib(&LIBID_TestTypelib, 0xffff, 0xffff, LOCALE_NEUTRAL, &tl);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 

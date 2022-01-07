@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* base_path; int max_files; int format_if_mount_failed; int /*<<< orphan*/ * partition_label; } ;
-typedef  TYPE_1__ esp_vfs_spiffs_conf_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_ERR_NOT_FOUND ; 
- scalar_t__ ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_err_to_name (scalar_t__) ; 
- scalar_t__ esp_spiffs_info (int /*<<< orphan*/ *,size_t*,size_t*) ; 
- scalar_t__ esp_vfs_spiffs_register (TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* base_path; int max_files; int format_if_mount_failed; int * partition_label; } ;
+typedef TYPE_1__ esp_vfs_spiffs_conf_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_ERR_NOT_FOUND ;
+ scalar_t__ ESP_FAIL ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_LOGI (int ,char*,...) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ int esp_err_to_name (scalar_t__) ;
+ scalar_t__ esp_spiffs_info (int *,size_t*,size_t*) ;
+ scalar_t__ esp_vfs_spiffs_register (TYPE_1__*) ;
 
 __attribute__((used)) static esp_err_t init_spiffs(void)
 {
@@ -32,9 +32,9 @@ __attribute__((used)) static esp_err_t init_spiffs(void)
 
     esp_vfs_spiffs_conf_t conf = {
       .base_path = "/spiffs",
-      .partition_label = NULL,
-      .max_files = 5,   // This decides the maximum number of files that can be created on the storage
-      .format_if_mount_failed = true
+      .partition_label = ((void*)0),
+      .max_files = 5,
+      .format_if_mount_failed = 1
     };
 
     esp_err_t ret = esp_vfs_spiffs_register(&conf);
@@ -50,7 +50,7 @@ __attribute__((used)) static esp_err_t init_spiffs(void)
     }
 
     size_t total = 0, used = 0;
-    ret = esp_spiffs_info(NULL, &total, &used);
+    ret = esp_spiffs_info(((void*)0), &total, &used);
     if (ret != ESP_OK) {
         ESP_LOGE(TAG, "Failed to get SPIFFS partition information (%s)", esp_err_to_name(ret));
         return ESP_FAIL;

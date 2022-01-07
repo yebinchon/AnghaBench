@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  L2TP_TUNNEL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GenerateNewSessionIdEx (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int UINT ;
+typedef int L2TP_TUNNEL ;
+
+
+ int GenerateNewSessionIdEx (int *,int) ;
 
 UINT GenerateNewSessionId(L2TP_TUNNEL *t)
 {
-	return GenerateNewSessionIdEx(t, false);
+ return GenerateNewSessionIdEx(t, 0);
 }

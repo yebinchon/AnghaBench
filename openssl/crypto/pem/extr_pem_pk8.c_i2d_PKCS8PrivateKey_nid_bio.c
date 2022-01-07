@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pem_password_cb ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int do_pk8pkey (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int,int,int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *,void*) ; 
+
+
+
+typedef int pem_password_cb ;
+typedef int EVP_PKEY ;
+typedef int BIO ;
+
+
+ int do_pk8pkey (int *,int const*,int,int,int *,char*,int,int *,void*) ;
 
 int i2d_PKCS8PrivateKey_nid_bio(BIO *bp, const EVP_PKEY *x, int nid,
                                 char *kstr, int klen,
                                 pem_password_cb *cb, void *u)
 {
-    return do_pk8pkey(bp, x, 1, nid, NULL, kstr, klen, cb, u);
+    return do_pk8pkey(bp, x, 1, nid, ((void*)0), kstr, klen, cb, u);
 }

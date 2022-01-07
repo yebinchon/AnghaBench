@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct load_args {int dummy; } ;
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  struct load_args load_args ;
+typedef int pthread_t ;
+typedef struct load_args load_args ;
 
-/* Variables and functions */
- struct load_args* calloc (int,int) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  load_thread ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct load_args*) ; 
+
+ struct load_args* calloc (int,int) ;
+ int error (char*) ;
+ int load_thread ;
+ scalar_t__ pthread_create (int *,int ,int ,struct load_args*) ;
 
 pthread_t load_data_in_thread(load_args args)
 {

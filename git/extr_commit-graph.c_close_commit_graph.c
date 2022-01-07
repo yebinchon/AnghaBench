@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct raw_object_store {int /*<<< orphan*/ * commit_graph; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close_commit_graph_one (int /*<<< orphan*/ *) ; 
+
+
+
+struct raw_object_store {int * commit_graph; } ;
+
+
+ int close_commit_graph_one (int *) ;
 
 void close_commit_graph(struct raw_object_store *o)
 {
-	close_commit_graph_one(o->commit_graph);
-	o->commit_graph = NULL;
+ close_commit_graph_one(o->commit_graph);
+ o->commit_graph = ((void*)0);
 }

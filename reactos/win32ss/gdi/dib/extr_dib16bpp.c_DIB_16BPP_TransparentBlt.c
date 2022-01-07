@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XLATEOBJ ;
-typedef  scalar_t__ USHORT ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int XLATEOBJ ;
+typedef scalar_t__ USHORT ;
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONG ;
 struct TYPE_11__ {int bottom; int top; int right; int left; } ;
 struct TYPE_9__ {int cx; int cy; } ;
 struct TYPE_10__ {int lDelta; TYPE_1__ sizlBitmap; scalar_t__ pvScan0; } ;
-typedef  TYPE_2__ SURFOBJ ;
-typedef  TYPE_3__ RECTL ;
-typedef  scalar_t__* PULONG ;
-typedef  scalar_t__ PBYTE ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_2__ SURFOBJ ;
+typedef TYPE_3__ RECTL ;
+typedef scalar_t__* PULONG ;
+typedef scalar_t__ PBYTE ;
+typedef int LONG ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ DIB_GetSourceIndex (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int XLATEOBJ_iXlate (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ DIB_GetSourceIndex (TYPE_2__*,int,int) ;
+ int TRUE ;
+ int XLATEOBJ_iXlate (int *,scalar_t__) ;
 
 BOOLEAN
 DIB_16BPP_TransparentBlt(SURFOBJ *DestSurf, SURFOBJ *SourceSurf,
-                         RECTL*  DestRect,  RECTL *SourceRect,
+                         RECTL* DestRect, RECTL *SourceRect,
                          XLATEOBJ *ColorTranslation, ULONG iTransColor)
 {
   LONG RoundedRight, X, Y, SourceX = 0, SourceY = 0, wd;

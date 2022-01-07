@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pa_threaded_mainloop ;
-typedef  scalar_t__ pa_context_state_t ;
-typedef  int /*<<< orphan*/  pa_context ;
 
-/* Variables and functions */
- scalar_t__ PA_CONTEXT_FAILED ; 
- scalar_t__ PA_CONTEXT_READY ; 
- scalar_t__ PA_CONTEXT_TERMINATED ; 
- scalar_t__ pa_context_get_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pa_threaded_mainloop_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pa_threaded_mainloop ;
+typedef scalar_t__ pa_context_state_t ;
+typedef int pa_context ;
+
+
+ scalar_t__ PA_CONTEXT_FAILED ;
+ scalar_t__ PA_CONTEXT_READY ;
+ scalar_t__ PA_CONTEXT_TERMINATED ;
+ scalar_t__ pa_context_get_state (int *) ;
+ int pa_threaded_mainloop_wait (int *) ;
 
 __attribute__((used)) static bool context_wait (pa_context *ctx, pa_threaded_mainloop *mainloop)
 {

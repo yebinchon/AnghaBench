@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct be_async_event_grp5_pvid_state {int /*<<< orphan*/  tag; scalar_t__ enabled; } ;
+
+
+
+
+struct be_async_event_grp5_pvid_state {int tag; scalar_t__ enabled; } ;
 struct be_adapter {int pvid; } ;
 
-/* Variables and functions */
- int VLAN_VID_MASK ; 
- int le16_to_cpu (int /*<<< orphan*/ ) ; 
+
+ int VLAN_VID_MASK ;
+ int le16_to_cpu (int ) ;
 
 __attribute__((used)) static void be_async_grp5_pvid_state_process(struct be_adapter *adapter,
-		struct be_async_event_grp5_pvid_state *evt)
+  struct be_async_event_grp5_pvid_state *evt)
 {
-	if (evt->enabled)
-		adapter->pvid = le16_to_cpu(evt->tag) & VLAN_VID_MASK;
-	else
-		adapter->pvid = 0;
+ if (evt->enabled)
+  adapter->pvid = le16_to_cpu(evt->tag) & VLAN_VID_MASK;
+ else
+  adapter->pvid = 0;
 }

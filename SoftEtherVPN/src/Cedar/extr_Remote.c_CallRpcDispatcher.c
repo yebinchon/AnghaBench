@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  func_name ;
-struct TYPE_4__ {int /*<<< orphan*/ * (* Dispatch ) (TYPE_1__*,char*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ RPC ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int MAX_SIZE ; 
- int PackGetStr (int /*<<< orphan*/ *,char*,char*,int) ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int func_name ;
+struct TYPE_4__ {int * (* Dispatch ) (TYPE_1__*,char*,int *) ;} ;
+typedef TYPE_1__ RPC ;
+typedef int PACK ;
+
+
+ int MAX_SIZE ;
+ int PackGetStr (int *,char*,char*,int) ;
+ int * stub1 (TYPE_1__*,char*,int *) ;
 
 PACK *CallRpcDispatcher(RPC *r, PACK *p)
 {
-	char func_name[MAX_SIZE];
-	// Validate arguments
-	if (r == NULL || p == NULL)
-	{
-		return NULL;
-	}
+ char func_name[MAX_SIZE];
 
-	if (PackGetStr(p, "function_name", func_name, sizeof(func_name)) == false)
-	{
-		return NULL;
-	}
+ if (r == ((void*)0) || p == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	return r->Dispatch(r, func_name, p);
+ if (PackGetStr(p, "function_name", func_name, sizeof(func_name)) == 0)
+ {
+  return ((void*)0);
+ }
+
+ return r->Dispatch(r, func_name, p);
 }

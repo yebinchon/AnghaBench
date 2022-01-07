@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mipid_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mipid_transfer (struct mipid_device*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int mipid_transfer (struct mipid_device*,int,int *,int ,int *,int ) ;
 
 __attribute__((used)) static inline void mipid_cmd(struct mipid_device *md, int cmd)
 {
-	mipid_transfer(md, cmd, NULL, 0, NULL, 0);
+ mipid_transfer(md, cmd, ((void*)0), 0, ((void*)0), 0);
 }

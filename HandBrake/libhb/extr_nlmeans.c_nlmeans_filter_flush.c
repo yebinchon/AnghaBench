@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  color_range; int /*<<< orphan*/  color_matrix; int /*<<< orphan*/  color_transfer; int /*<<< orphan*/  color_prim; int /*<<< orphan*/  pix_fmt; } ;
-struct TYPE_16__ {int next_frame; int* prefilter; int* nframes; int /*<<< orphan*/ * diff_max; int /*<<< orphan*/ * weight_fact_table; int /*<<< orphan*/ * exptable; int /*<<< orphan*/ * range; int /*<<< orphan*/ * patch_size; int /*<<< orphan*/ * origin_tune; int /*<<< orphan*/ * strength; int /*<<< orphan*/  functions; TYPE_2__ output; TYPE_6__* frame; } ;
-typedef  TYPE_4__ hb_filter_private_t ;
-struct TYPE_13__ {int /*<<< orphan*/  color_range; int /*<<< orphan*/  color_matrix; int /*<<< orphan*/  color_transfer; int /*<<< orphan*/  color_prim; } ;
-struct TYPE_17__ {int /*<<< orphan*/  s; TYPE_3__* plane; TYPE_1__ f; } ;
-typedef  TYPE_5__ hb_buffer_t ;
-typedef  int /*<<< orphan*/  hb_buffer_list_t ;
-struct TYPE_18__ {int /*<<< orphan*/  s; int /*<<< orphan*/ * plane; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_15__ {int /*<<< orphan*/  height; int /*<<< orphan*/  stride; int /*<<< orphan*/  width; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  NLMeansFunctions ;
-typedef  TYPE_6__ Frame ;
 
-/* Variables and functions */
- int NLMEANS_PREFILTER_MODE_PASSTHRU ; 
- int /*<<< orphan*/  hb_buffer_list_append (int /*<<< orphan*/ *,TYPE_5__*) ; 
- TYPE_5__* hb_buffer_list_clear (int /*<<< orphan*/ *) ; 
- TYPE_5__* hb_frame_buffer_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nlmeans_deborder (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nlmeans_plane (int /*<<< orphan*/ *,TYPE_6__*,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nlmeans_prefilter (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int color_range; int color_matrix; int color_transfer; int color_prim; int pix_fmt; } ;
+struct TYPE_16__ {int next_frame; int* prefilter; int* nframes; int * diff_max; int * weight_fact_table; int * exptable; int * range; int * patch_size; int * origin_tune; int * strength; int functions; TYPE_2__ output; TYPE_6__* frame; } ;
+typedef TYPE_4__ hb_filter_private_t ;
+struct TYPE_13__ {int color_range; int color_matrix; int color_transfer; int color_prim; } ;
+struct TYPE_17__ {int s; TYPE_3__* plane; TYPE_1__ f; } ;
+typedef TYPE_5__ hb_buffer_t ;
+typedef int hb_buffer_list_t ;
+struct TYPE_18__ {int s; int * plane; int height; int width; } ;
+struct TYPE_15__ {int height; int stride; int width; int data; } ;
+typedef int NLMeansFunctions ;
+typedef TYPE_6__ Frame ;
+
+
+ int NLMEANS_PREFILTER_MODE_PASSTHRU ;
+ int hb_buffer_list_append (int *,TYPE_5__*) ;
+ TYPE_5__* hb_buffer_list_clear (int *) ;
+ TYPE_5__* hb_frame_buffer_init (int ,int ,int ) ;
+ int nlmeans_deborder (int *,int ,int ,int ,int ) ;
+ int nlmeans_plane (int *,TYPE_6__*,int,int,int,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int nlmeans_prefilter (int *,int) ;
 
 __attribute__((used)) static hb_buffer_t * nlmeans_filter_flush(hb_filter_private_t *pv)
 {
@@ -48,10 +48,10 @@ __attribute__((used)) static hb_buffer_t * nlmeans_filter_flush(hb_filter_privat
         hb_buffer_t *buf;
         buf = hb_frame_buffer_init(pv->output.pix_fmt,
                                    frame->width, frame->height);
-        buf->f.color_prim     = pv->output.color_prim;
+        buf->f.color_prim = pv->output.color_prim;
         buf->f.color_transfer = pv->output.color_transfer;
-        buf->f.color_matrix   = pv->output.color_matrix;
-        buf->f.color_range    = pv->output.color_range ;
+        buf->f.color_matrix = pv->output.color_matrix;
+        buf->f.color_range = pv->output.color_range ;
 
         NLMeansFunctions *functions = &pv->functions;
 
@@ -78,7 +78,7 @@ __attribute__((used)) static hb_buffer_t * nlmeans_filter_flush(hb_filter_privat
             {
                 nframes = pv->nframes[c];
             }
-            // Process current plane
+
             nlmeans_plane(functions,
                           frame,
                           pv->prefilter[c],

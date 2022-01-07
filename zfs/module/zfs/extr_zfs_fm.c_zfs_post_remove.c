@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdev_t ;
-typedef  int /*<<< orphan*/  spa_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FM_RESOURCE_REMOVED ; 
- int /*<<< orphan*/  FM_RSRC_CLASS ; 
- int /*<<< orphan*/  zfs_post_common (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdev_t ;
+typedef int spa_t ;
+
+
+ int FM_RESOURCE_REMOVED ;
+ int FM_RSRC_CLASS ;
+ int zfs_post_common (int *,int *,int ,int ,int *) ;
 
 void
 zfs_post_remove(spa_t *spa, vdev_t *vd)
 {
-	zfs_post_common(spa, vd, FM_RSRC_CLASS, FM_RESOURCE_REMOVED, NULL);
+ zfs_post_common(spa, vd, FM_RSRC_CLASS, FM_RESOURCE_REMOVED, ((void*)0));
 }

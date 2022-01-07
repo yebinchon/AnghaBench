@@ -1,194 +1,194 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  args ;
-typedef  int /*<<< orphan*/  X_SERIAL ;
-typedef  int /*<<< orphan*/  X ;
-typedef  scalar_t__ UINT ;
-struct TYPE_18__ {int Size; int /*<<< orphan*/  Buf; } ;
-struct TYPE_17__ {char* member_0; int member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_16__ {int /*<<< orphan*/  (* Write ) (TYPE_2__*,int /*<<< orphan*/ *) ;} ;
-struct TYPE_15__ {char* member_0; TYPE_3__* member_4; int /*<<< orphan*/ * member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/ * member_1; } ;
-typedef  TYPE_1__ PARAM ;
-typedef  int /*<<< orphan*/  NAME ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  K ;
-typedef  TYPE_2__ CONSOLE ;
-typedef  TYPE_3__ CMD_EVAL_MIN_MAX ;
-typedef  TYPE_4__ BUF ;
 
-/* Variables and functions */
- int CheckXandK (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CmdEvalIsFile ; 
- int /*<<< orphan*/ * CmdEvalMinMax ; 
- int /*<<< orphan*/ * CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdPrintError (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/ * CmdPrompt ; 
- scalar_t__ ERR_INTERNAL_ERROR ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/ * FileToKW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileToXW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_4__*) ; 
- int /*<<< orphan*/  FreeK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeName (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeXSerial (int /*<<< orphan*/ *) ; 
- scalar_t__ GetParamInt (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  GetParamStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  GetParamUniStr (int /*<<< orphan*/ *,char*) ; 
- int IsEmptyStr (int /*<<< orphan*/ ) ; 
- int KToFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewName (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewRootX (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewX (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewXSerial (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * ParseCommandList (TYPE_2__*,char*,int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  RsaGen (int /*<<< orphan*/ **,int /*<<< orphan*/ **,int) ; 
- TYPE_4__* StrToBin (int /*<<< orphan*/ ) ; 
- int XToFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int args ;
+typedef int X_SERIAL ;
+typedef int X ;
+typedef scalar_t__ UINT ;
+struct TYPE_18__ {int Size; int Buf; } ;
+struct TYPE_17__ {char* member_0; int member_2; int member_1; } ;
+struct TYPE_16__ {int (* Write ) (TYPE_2__*,int *) ;} ;
+struct TYPE_15__ {char* member_0; TYPE_3__* member_4; int * member_3; int * member_2; int * member_1; } ;
+typedef TYPE_1__ PARAM ;
+typedef int NAME ;
+typedef int LIST ;
+typedef int K ;
+typedef TYPE_2__ CONSOLE ;
+typedef TYPE_3__ CMD_EVAL_MIN_MAX ;
+typedef TYPE_4__ BUF ;
+
+
+ int CheckXandK (int *,int *) ;
+ int * CmdEvalIsFile ;
+ int * CmdEvalMinMax ;
+ int * CmdEvalNotEmpty ;
+ int CmdPrintError (TYPE_2__*,scalar_t__) ;
+ int * CmdPrompt ;
+ scalar_t__ ERR_INTERNAL_ERROR ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int * FileToKW (int ,int,int *) ;
+ int * FileToXW (int ) ;
+ int FreeBuf (TYPE_4__*) ;
+ int FreeK (int *) ;
+ int FreeName (int *) ;
+ int FreeParamValueList (int *) ;
+ int FreeX (int *) ;
+ int FreeXSerial (int *) ;
+ scalar_t__ GetParamInt (int *,char*) ;
+ int GetParamStr (int *,char*) ;
+ int GetParamUniStr (int *,char*) ;
+ int IsEmptyStr (int ) ;
+ int KToFileW (int *,int ,int,int *) ;
+ int * NewName (int ,int ,int ,int ,int ,int ) ;
+ int * NewRootX (int *,int *,int *,scalar_t__,int *) ;
+ int * NewX (int *,int *,int *,int *,scalar_t__,int *) ;
+ int * NewXSerial (int ,int) ;
+ int * ParseCommandList (TYPE_2__*,char*,int *,TYPE_1__*,int) ;
+ int RsaGen (int **,int **,int) ;
+ TYPE_4__* StrToBin (int ) ;
+ int XToFileW (int *,int ,int) ;
+ int * _UU (char*) ;
+ int stub1 (TYPE_2__*,int *) ;
+ int stub2 (TYPE_2__*,int *) ;
+ int stub3 (TYPE_2__*,int *) ;
+ int stub4 (TYPE_2__*,int *) ;
 
 UINT PtMakeCert(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	UINT ret = ERR_NO_ERROR;
-	X *x = NULL;
-	K *pub = NULL;
-	K *pri = NULL;
-	NAME *n;
-	X_SERIAL *x_serial = NULL;
-	BUF *buf;
-	UINT days;
-	X *root_x = NULL;
-	K *root_k = NULL;
-	// Parameter list that can be specified
-	CMD_EVAL_MIN_MAX minmax =
-	{
-		"CMD_MakeCert_EVAL_EXPIRES",
-		0,
-		10950,
-	};
-	PARAM args[] =
-	{
-		{"CN", CmdPrompt, _UU("CMD_MakeCert_PROMPT_CN"), NULL, NULL},
-		{"O", CmdPrompt, _UU("CMD_MakeCert_PROMPT_O"), NULL, NULL},
-		{"OU", CmdPrompt, _UU("CMD_MakeCert_PROMPT_OU"), NULL, NULL},
-		{"C", CmdPrompt, _UU("CMD_MakeCert_PROMPT_C"), NULL, NULL},
-		{"ST", CmdPrompt, _UU("CMD_MakeCert_PROMPT_ST"), NULL, NULL},
-		{"L", CmdPrompt, _UU("CMD_MakeCert_PROMPT_L"), NULL, NULL},
-		{"SERIAL", CmdPrompt, _UU("CMD_MakeCert_PROMPT_SERIAL"), NULL, NULL},
-		{"EXPIRES", CmdPrompt, _UU("CMD_MakeCert_PROMPT_EXPIRES"), CmdEvalMinMax, &minmax},
-		{"SIGNCERT", NULL, NULL, CmdEvalIsFile, NULL},
-		{"SIGNKEY", NULL, NULL, CmdEvalIsFile, NULL},
-		{"SAVECERT", CmdPrompt, _UU("CMD_MakeCert_PROMPT_SAVECERT"), CmdEvalNotEmpty, NULL},
-		{"SAVEKEY", CmdPrompt, _UU("CMD_MakeCert_PROMPT_SAVEKEY"), CmdEvalNotEmpty, NULL},
-	};
+ LIST *o;
+ UINT ret = ERR_NO_ERROR;
+ X *x = ((void*)0);
+ K *pub = ((void*)0);
+ K *pri = ((void*)0);
+ NAME *n;
+ X_SERIAL *x_serial = ((void*)0);
+ BUF *buf;
+ UINT days;
+ X *root_x = ((void*)0);
+ K *root_k = ((void*)0);
 
-	// Get the parameter list
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ CMD_EVAL_MIN_MAX minmax =
+ {
+  "CMD_MakeCert_EVAL_EXPIRES",
+  0,
+  10950,
+ };
+ PARAM args[] =
+ {
+  {"CN", CmdPrompt, _UU("CMD_MakeCert_PROMPT_CN"), ((void*)0), ((void*)0)},
+  {"O", CmdPrompt, _UU("CMD_MakeCert_PROMPT_O"), ((void*)0), ((void*)0)},
+  {"OU", CmdPrompt, _UU("CMD_MakeCert_PROMPT_OU"), ((void*)0), ((void*)0)},
+  {"C", CmdPrompt, _UU("CMD_MakeCert_PROMPT_C"), ((void*)0), ((void*)0)},
+  {"ST", CmdPrompt, _UU("CMD_MakeCert_PROMPT_ST"), ((void*)0), ((void*)0)},
+  {"L", CmdPrompt, _UU("CMD_MakeCert_PROMPT_L"), ((void*)0), ((void*)0)},
+  {"SERIAL", CmdPrompt, _UU("CMD_MakeCert_PROMPT_SERIAL"), ((void*)0), ((void*)0)},
+  {"EXPIRES", CmdPrompt, _UU("CMD_MakeCert_PROMPT_EXPIRES"), CmdEvalMinMax, &minmax},
+  {"SIGNCERT", ((void*)0), ((void*)0), CmdEvalIsFile, ((void*)0)},
+  {"SIGNKEY", ((void*)0), ((void*)0), CmdEvalIsFile, ((void*)0)},
+  {"SAVECERT", CmdPrompt, _UU("CMD_MakeCert_PROMPT_SAVECERT"), CmdEvalNotEmpty, ((void*)0)},
+  {"SAVEKEY", CmdPrompt, _UU("CMD_MakeCert_PROMPT_SAVEKEY"), CmdEvalNotEmpty, ((void*)0)},
+ };
 
-	if (IsEmptyStr(GetParamStr(o, "SIGNCERT")) == false && IsEmptyStr(GetParamStr(o, "SIGNKEY")) == false)
-	{
-		root_x = FileToXW(GetParamUniStr(o, "SIGNCERT"));
-		root_k = FileToKW(GetParamUniStr(o, "SIGNKEY"), true, NULL);
 
-		if (root_x == NULL || root_k == NULL || CheckXandK(root_x, root_k) == false)
-		{
-			ret = ERR_INTERNAL_ERROR;
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-			c->Write(c, _UU("CMD_MakeCert_ERROR_SIGNKEY"));
-		}
-	}
+ if (IsEmptyStr(GetParamStr(o, "SIGNCERT")) == 0 && IsEmptyStr(GetParamStr(o, "SIGNKEY")) == 0)
+ {
+  root_x = FileToXW(GetParamUniStr(o, "SIGNCERT"));
+  root_k = FileToKW(GetParamUniStr(o, "SIGNKEY"), 1, ((void*)0));
 
-	if (ret == ERR_NO_ERROR)
-	{
-		buf = StrToBin(GetParamStr(o, "SERIAL"));
-		if (buf != NULL && buf->Size >= 1)
-		{
-			x_serial = NewXSerial(buf->Buf, buf->Size);
-		}
-		FreeBuf(buf);
+  if (root_x == ((void*)0) || root_k == ((void*)0) || CheckXandK(root_x, root_k) == 0)
+  {
+   ret = ERR_INTERNAL_ERROR;
 
-		n = NewName(GetParamUniStr(o, "CN"), GetParamUniStr(o, "O"), GetParamUniStr(o, "OU"), 
-			GetParamUniStr(o, "C"), GetParamUniStr(o, "ST"), GetParamUniStr(o, "L"));
+   c->Write(c, _UU("CMD_MakeCert_ERROR_SIGNKEY"));
+  }
+ }
 
-		days = GetParamInt(o, "EXPIRES");
-		if (days == 0)
-		{
-			days = 3650;
-		}
+ if (ret == ERR_NO_ERROR)
+ {
+  buf = StrToBin(GetParamStr(o, "SERIAL"));
+  if (buf != ((void*)0) && buf->Size >= 1)
+  {
+   x_serial = NewXSerial(buf->Buf, buf->Size);
+  }
+  FreeBuf(buf);
 
-		RsaGen(&pri, &pub, 1024);
+  n = NewName(GetParamUniStr(o, "CN"), GetParamUniStr(o, "O"), GetParamUniStr(o, "OU"),
+   GetParamUniStr(o, "C"), GetParamUniStr(o, "ST"), GetParamUniStr(o, "L"));
 
-		if (root_x == NULL)
-		{
-			x = NewRootX(pub, pri, n, days, x_serial);
-		}
-		else
-		{
-			x = NewX(pub, root_k, root_x, n, days, x_serial);
-		}
+  days = GetParamInt(o, "EXPIRES");
+  if (days == 0)
+  {
+   days = 3650;
+  }
 
-		FreeXSerial(x_serial);
-		FreeName(n);
+  RsaGen(&pri, &pub, 1024);
 
-		if (x == NULL)
-		{
-			ret = ERR_INTERNAL_ERROR;
-			c->Write(c, _UU("CMD_MakeCert_ERROR_GEN_FAILED"));
-		}
-		else
-		{
-			if (XToFileW(x, GetParamUniStr(o, "SAVECERT"), true) == false)
-			{
-				c->Write(c, _UU("CMD_SAVECERT_FAILED"));
-			}
-			else if (KToFileW(pri, GetParamUniStr(o, "SAVEKEY"), true, NULL) == false)
-			{
-				c->Write(c, _UU("CMD_SAVEKEY_FAILED"));
-			}
-		}
-	}
+  if (root_x == ((void*)0))
+  {
+   x = NewRootX(pub, pri, n, days, x_serial);
+  }
+  else
+  {
+   x = NewX(pub, root_k, root_x, n, days, x_serial);
+  }
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// Error has occurred
-		CmdPrintError(c, ret);
-	}
+  FreeXSerial(x_serial);
+  FreeName(n);
 
-	// Release of the parameter list
-	FreeParamValueList(o);
+  if (x == ((void*)0))
+  {
+   ret = ERR_INTERNAL_ERROR;
+   c->Write(c, _UU("CMD_MakeCert_ERROR_GEN_FAILED"));
+  }
+  else
+  {
+   if (XToFileW(x, GetParamUniStr(o, "SAVECERT"), 1) == 0)
+   {
+    c->Write(c, _UU("CMD_SAVECERT_FAILED"));
+   }
+   else if (KToFileW(pri, GetParamUniStr(o, "SAVEKEY"), 1, ((void*)0)) == 0)
+   {
+    c->Write(c, _UU("CMD_SAVEKEY_FAILED"));
+   }
+  }
+ }
 
-	FreeX(root_x);
-	FreeK(root_k);
+ if (ret != ERR_NO_ERROR)
+ {
 
-	FreeX(x);
-	FreeK(pri);
-	FreeK(pub);
+  CmdPrintError(c, ret);
+ }
 
-	return ret;
+
+ FreeParamValueList(o);
+
+ FreeX(root_x);
+ FreeK(root_k);
+
+ FreeX(x);
+ FreeK(pri);
+ FreeK(pub);
+
+ return ret;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expected3 ;
-typedef  int /*<<< orphan*/  expected2 ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  scalar_t__ HRESULT ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int*) ; 
- scalar_t__ E_INVALIDARG ; 
- scalar_t__ S_OK ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  memcmp (int*,int const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pHashData (int*,int,int*,int) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__) ; 
+
+
+
+typedef int expected3 ;
+typedef int expected2 ;
+typedef int expected ;
+typedef scalar_t__ HRESULT ;
+typedef int BYTE ;
+
+
+ int ARRAY_SIZE (int*) ;
+ scalar_t__ E_INVALIDARG ;
+ scalar_t__ S_OK ;
+ scalar_t__ broken (int) ;
+ int memcmp (int*,int const*,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pHashData (int*,int,int*,int) ;
+ int trace (char*,scalar_t__) ;
 
 __attribute__((used)) static void test_HashData(void)
 {
@@ -45,41 +45,41 @@ __attribute__((used)) static void test_HashData(void)
                                      0x36, 0x07};
     int i;
 
-    /* Test hashing with identically sized input/output buffers. */
+
     res = pHashData(input, 16, output, 16);
     ok(res == S_OK, "Expected HashData to return S_OK, got 0x%08x\n", res);
     if(res == S_OK)
        ok(!memcmp(output, expected, sizeof(expected)),
           "Output buffer did not match expected contents\n");
 
-    /* Test hashing with larger output buffer. */
+
     res = pHashData(input, 16, output, 32);
     ok(res == S_OK, "Expected HashData to return S_OK, got 0x%08x\n", res);
     if(res == S_OK)
        ok(!memcmp(output, expected2, sizeof(expected2)),
           "Output buffer did not match expected contents\n");
 
-    /* Test hashing with smaller input buffer. */
+
     res = pHashData(input, 8, output, 16);
     ok(res == S_OK, "Expected HashData to return S_OK, got 0x%08x\n", res);
     if(res == S_OK)
        ok(!memcmp(output, expected3, sizeof(expected3)),
           "Output buffer did not match expected contents\n");
 
-    /* Test passing NULL pointers for input/output parameters. */
-    res = pHashData(NULL, 0, NULL, 0);
-    ok(res == E_INVALIDARG || broken(res == S_OK), /* Windows 2000 */
+
+    res = pHashData(((void*)0), 0, ((void*)0), 0);
+    ok(res == E_INVALIDARG || broken(res == S_OK),
        "Expected HashData to return E_INVALIDARG, got 0x%08x\n", res);
 
-    res = pHashData(input, 0, NULL, 0);
-    ok(res == E_INVALIDARG || broken(res == S_OK), /* Windows 2000 */
+    res = pHashData(input, 0, ((void*)0), 0);
+    ok(res == E_INVALIDARG || broken(res == S_OK),
        "Expected HashData to return E_INVALIDARG, got 0x%08x\n", res);
 
-    res = pHashData(NULL, 0, output, 0);
-    ok(res == E_INVALIDARG || broken(res == S_OK), /* Windows 2000 */
+    res = pHashData(((void*)0), 0, output, 0);
+    ok(res == E_INVALIDARG || broken(res == S_OK),
        "Expected HashData to return E_INVALIDARG, got 0x%08x\n", res);
 
-    /* Test passing valid pointers with sizes of zero. */
+
     for (i = 0; i < ARRAY_SIZE(input); i++)
         input[i] = 0x00;
 
@@ -89,7 +89,7 @@ __attribute__((used)) static void test_HashData(void)
     res = pHashData(input, 0, output, 0);
     ok(res == S_OK, "Expected HashData to return S_OK, got 0x%08x\n", res);
 
-    /* The buffers should be unchanged. */
+
     for (i = 0; i < ARRAY_SIZE(input); i++)
     {
         ok(input[i] == 0x00, "Expected the input buffer to be unchanged\n");
@@ -102,7 +102,7 @@ __attribute__((used)) static void test_HashData(void)
         if(output[i] != 0xFF) break;
     }
 
-    /* Input/output parameters are not validated. */
+
     res = pHashData((BYTE *)0xdeadbeef, 0, (BYTE *)0xdeadbeef, 0);
     ok(res == S_OK, "Expected HashData to return S_OK, got 0x%08x\n", res);
 

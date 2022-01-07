@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {int dummy; } ;
 struct msghdr {int dummy; } ;
 
-/* Variables and functions */
- int hash_check_key (struct socket*) ; 
- int hash_sendmsg (struct socket*,struct msghdr*,size_t) ; 
+
+ int hash_check_key (struct socket*) ;
+ int hash_sendmsg (struct socket*,struct msghdr*,size_t) ;
 
 __attribute__((used)) static int hash_sendmsg_nokey(struct socket *sock, struct msghdr *msg,
-			      size_t size)
+         size_t size)
 {
-	int err;
+ int err;
 
-	err = hash_check_key(sock);
-	if (err)
-		return err;
+ err = hash_check_key(sock);
+ if (err)
+  return err;
 
-	return hash_sendmsg(sock, msg, size);
+ return hash_sendmsg(sock, msg, size);
 }

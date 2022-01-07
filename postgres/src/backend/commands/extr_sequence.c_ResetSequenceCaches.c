@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hash_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * last_used_seq ; 
- int /*<<< orphan*/ * seqhashtab ; 
+ int hash_destroy (int *) ;
+ int * last_used_seq ;
+ int * seqhashtab ;
 
 void
 ResetSequenceCaches(void)
 {
-	if (seqhashtab)
-	{
-		hash_destroy(seqhashtab);
-		seqhashtab = NULL;
-	}
+ if (seqhashtab)
+ {
+  hash_destroy(seqhashtab);
+  seqhashtab = ((void*)0);
+ }
 
-	last_used_seq = NULL;
+ last_used_seq = ((void*)0);
 }

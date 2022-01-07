@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int GET_CODE (int /*<<< orphan*/ ) ; 
-#define  LABEL_REF 129 
-#define  SYMBOL_REF 128 
- int /*<<< orphan*/  SYMBOL_REF_LOCAL_P (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int GET_CODE (int ) ;
+
+
+ int SYMBOL_REF_LOCAL_P (int ) ;
 
 __attribute__((used)) static int
 compute_reloc_for_rtx_1 (rtx *xp, void *data)
@@ -26,10 +26,10 @@ compute_reloc_for_rtx_1 (rtx *xp, void *data)
 
   switch (GET_CODE (x))
     {
-    case SYMBOL_REF:
+    case 128:
       *preloc |= SYMBOL_REF_LOCAL_P (x) ? 1 : 2;
       break;
-    case LABEL_REF:
+    case 129:
       *preloc |= 1;
       break;
     default:

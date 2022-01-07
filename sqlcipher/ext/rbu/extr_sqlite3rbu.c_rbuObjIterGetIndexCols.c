@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int rc; int /*<<< orphan*/  zErrmsg; int /*<<< orphan*/  dbMain; } ;
-typedef  TYPE_1__ sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_7__ {scalar_t__ eType; scalar_t__* abTblPk; int nTblCol; char** azTblCol; char** azTblType; scalar_t__ bUnique; int /*<<< orphan*/  zIdx; } ;
-typedef  TYPE_2__ RbuObjIter ;
 
-/* Variables and functions */
- scalar_t__ RBU_PK_IPK ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int prepareFreeAndCollectError (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,char*) ; 
- scalar_t__ rbuIsVacuum (TYPE_1__*) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char*,...) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int rc; int zErrmsg; int dbMain; } ;
+typedef TYPE_1__ sqlite3rbu ;
+typedef int sqlite3_stmt ;
+struct TYPE_7__ {scalar_t__ eType; scalar_t__* abTblPk; int nTblCol; char** azTblCol; char** azTblType; scalar_t__ bUnique; int zIdx; } ;
+typedef TYPE_2__ RbuObjIter ;
+
+
+ scalar_t__ RBU_PK_IPK ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int assert (int) ;
+ int prepareFreeAndCollectError (int ,int **,int *,char*) ;
+ scalar_t__ rbuIsVacuum (TYPE_1__*) ;
+ int sqlite3_column_int (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char*,...) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static char *rbuObjIterGetIndexCols(
-  sqlite3rbu *p,                  /* RBU object */
-  RbuObjIter *pIter,              /* Object iterator for column names */
-  char **pzImposterCols,          /* OUT: Columns for imposter table */
-  char **pzImposterPk,            /* OUT: Imposter PK clause */
-  char **pzWhere,                 /* OUT: WHERE clause */
-  int *pnBind                     /* OUT: Trbul number of columns */
+  sqlite3rbu *p,
+  RbuObjIter *pIter,
+  char **pzImposterCols,
+  char **pzImposterPk,
+  char **pzWhere,
+  int *pnBind
 ){
-  int rc = p->rc;                 /* Error code */
-  int rc2;                        /* sqlite3_finalize() return code */
-  char *zRet = 0;                 /* String to return */
-  char *zImpCols = 0;             /* String to return via *pzImposterCols */
-  char *zImpPK = 0;               /* String to return via *pzImposterPK */
-  char *zWhere = 0;               /* String to return via *pzWhere */
-  int nBind = 0;                  /* Value to return via *pnBind */
-  const char *zCom = "";          /* Set to ", " later on */
-  const char *zAnd = "";          /* Set to " AND " later on */
-  sqlite3_stmt *pXInfo = 0;       /* PRAGMA index_xinfo = ? */
+  int rc = p->rc;
+  int rc2;
+  char *zRet = 0;
+  char *zImpCols = 0;
+  char *zImpPK = 0;
+  char *zWhere = 0;
+  int nBind = 0;
+  const char *zCom = "";
+  const char *zAnd = "";
+  sqlite3_stmt *pXInfo = 0;
 
   if( rc==SQLITE_OK ){
     assert( p->zErrmsg==0 );
@@ -67,8 +67,8 @@ __attribute__((used)) static char *rbuObjIterGetIndexCols(
     const char *zType;
 
     if( iCid<0 ){
-      /* An integer primary key. If the table has an explicit IPK, use
-      ** its name. Otherwise, use "rbu_rowid".  */
+
+
       if( pIter->eType==RBU_PK_IPK ){
         int i;
         for(i=0; pIter->abTblPk[i]==0; i++);
@@ -88,11 +88,11 @@ __attribute__((used)) static char *rbuObjIterGetIndexCols(
     zRet = sqlite3_mprintf("%z%s\"%w\" COLLATE %Q", zRet, zCom, zCol, zCollate);
     if( pIter->bUnique==0 || sqlite3_column_int(pXInfo, 5) ){
       const char *zOrder = (bDesc ? " DESC" : "");
-      zImpPK = sqlite3_mprintf("%z%s\"rbu_imp_%d%w\"%s", 
+      zImpPK = sqlite3_mprintf("%z%s\"rbu_imp_%d%w\"%s",
           zImpPK, zCom, nBind, zCol, zOrder
       );
     }
-    zImpCols = sqlite3_mprintf("%z%s\"rbu_imp_%d%w\" %s COLLATE %Q", 
+    zImpCols = sqlite3_mprintf("%z%s\"rbu_imp_%d%w\" %s COLLATE %Q",
         zImpCols, zCom, nBind, zCol, zType, zCollate
     );
     zWhere = sqlite3_mprintf(

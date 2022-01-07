@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct input_handle {int /*<<< orphan*/  open; struct input_dev* dev; } ;
-struct input_dev {int /*<<< orphan*/  mutex; int /*<<< orphan*/  (* close ) (struct input_dev*) ;int /*<<< orphan*/  users; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __input_release_device (struct input_handle*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct input_dev*) ; 
- int /*<<< orphan*/  synchronize_rcu () ; 
+
+
+
+struct input_handle {int open; struct input_dev* dev; } ;
+struct input_dev {int mutex; int (* close ) (struct input_dev*) ;int users; } ;
+
+
+ int __input_release_device (struct input_handle*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int stub1 (struct input_dev*) ;
+ int synchronize_rcu () ;
 
 void input_close_device(struct input_handle *handle)
 {
-	struct input_dev *dev = handle->dev;
+ struct input_dev *dev = handle->dev;
 
-	mutex_lock(&dev->mutex);
+ mutex_lock(&dev->mutex);
 
-	__input_release_device(handle);
+ __input_release_device(handle);
 
-	if (!--dev->users && dev->close)
-		dev->close(dev);
+ if (!--dev->users && dev->close)
+  dev->close(dev);
 
-	if (!--handle->open) {
-		/*
-		 * synchronize_rcu() makes sure that input_pass_event()
-		 * completed and that no more input events are delivered
-		 * through this handle
-		 */
-		synchronize_rcu();
-	}
+ if (!--handle->open) {
 
-	mutex_unlock(&dev->mutex);
+
+
+
+
+  synchronize_rcu();
+ }
+
+ mutex_unlock(&dev->mutex);
 }

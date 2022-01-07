@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct validate_replace_src_data {int /*<<< orphan*/  insn; int /*<<< orphan*/  to; int /*<<< orphan*/  from; } ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  validate_replace_rtx_1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct validate_replace_src_data {int insn; int to; int from; } ;
+typedef int rtx ;
+
+
+ int validate_replace_rtx_1 (int *,int ,int ,int ) ;
 
 __attribute__((used)) static void
 validate_replace_src_1 (rtx *x, void *data)

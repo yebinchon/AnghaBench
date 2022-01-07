@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {scalar_t__ st_size; int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FuzzerTestOneInput (unsigned char*,size_t) ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int /*<<< orphan*/  S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (unsigned char*,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned char* malloc (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,char const*) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+struct stat {scalar_t__ st_size; int st_mode; } ;
+typedef int FILE ;
+
+
+ int FuzzerTestOneInput (unsigned char*,size_t) ;
+ int OPENSSL_assert (int) ;
+ int S_ISREG (int ) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (unsigned char*,int,scalar_t__,int *) ;
+ int free (unsigned char*) ;
+ unsigned char* malloc (scalar_t__) ;
+ int printf (char*,char const*) ;
+ scalar_t__ stat (char const*,struct stat*) ;
+ int stdout ;
 
 __attribute__((used)) static void testfile(const char *pathname)
 {
@@ -39,10 +39,10 @@ __attribute__((used)) static void testfile(const char *pathname)
     printf("# %s\n", pathname);
     fflush(stdout);
     f = fopen(pathname, "rb");
-    if (f == NULL)
+    if (f == ((void*)0))
         return;
     buf = malloc(st.st_size);
-    if (buf != NULL) {
+    if (buf != ((void*)0)) {
         s = fread(buf, 1, st.st_size, f);
         OPENSSL_assert(s == (size_t)st.st_size);
         FuzzerTestOneInput(buf, s);

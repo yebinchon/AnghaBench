@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_6__ {scalar_t__ pts; scalar_t__ duration; } ;
-struct TYPE_5__ {int frame_count; scalar_t__ remaining_samples; scalar_t__ remaining_delay; int /*<<< orphan*/  avctx; TYPE_2__* frames; scalar_t__ frame_alloc; } ;
-typedef  TYPE_1__ AudioFrameQueue ;
+struct TYPE_5__ {int frame_count; scalar_t__ remaining_samples; scalar_t__ remaining_delay; int avctx; TYPE_2__* frames; scalar_t__ frame_alloc; } ;
+typedef TYPE_1__ AudioFrameQueue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int FFMIN (scalar_t__,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int ff_samples_to_time_base (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memmove (TYPE_2__*,TYPE_2__*,int) ; 
+
+ int AV_LOG_DEBUG ;
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int FFMIN (scalar_t__,int) ;
+ int av_assert0 (int) ;
+ int av_log (int ,int ,char*,int) ;
+ int ff_samples_to_time_base (int ,int) ;
+ int memmove (TYPE_2__*,TYPE_2__*,int) ;
 
 void ff_af_queue_remove(AudioFrameQueue *afq, int nb_samples, int64_t *pts,
                         int64_t *duration)
@@ -46,10 +46,10 @@ void ff_af_queue_remove(AudioFrameQueue *afq, int nb_samples, int64_t *pts,
     for(i=0; nb_samples && i<afq->frame_count; i++){
         int n= FFMIN(afq->frames[i].duration, nb_samples);
         afq->frames[i].duration -= n;
-        nb_samples              -= n;
-        removed_samples         += n;
+        nb_samples -= n;
+        removed_samples += n;
         if(afq->frames[i].pts != AV_NOPTS_VALUE)
-            afq->frames[i].pts      += n;
+            afq->frames[i].pts += n;
     }
     afq->remaining_samples -= removed_samples;
     i -= i && afq->frames[i-1].duration;

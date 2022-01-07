@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  SECURITY_DESCRIPTOR ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int CIM_FLAG_ARRAY ; 
- int CIM_UINT32 ; 
- int CIM_UINT8 ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_Put (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  IWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWbemClassObject_SpawnInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PARAM_OUT ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_systemsecurityW ; 
- int /*<<< orphan*/  create_signature (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  get_sd (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  method_getsdW ; 
- int /*<<< orphan*/  param_returnvalueW ; 
- int /*<<< orphan*/  param_sdW ; 
- int /*<<< orphan*/  set_variant (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_byte_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VARIANT ;
+typedef int SECURITY_DESCRIPTOR ;
+typedef int IWbemClassObject ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int CIM_FLAG_ARRAY ;
+ int CIM_UINT32 ;
+ int CIM_UINT8 ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int *) ;
+ int IWbemClassObject_AddRef (int *) ;
+ int IWbemClassObject_Put (int *,int ,int ,int *,int) ;
+ int IWbemClassObject_Release (int *) ;
+ int IWbemClassObject_SpawnInstance (int *,int ,int **) ;
+ int PARAM_OUT ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,int *,int **) ;
+ int VT_UI4 ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int class_systemsecurityW ;
+ int create_signature (int ,int ,int ,int **) ;
+ int get_sd (int **,int *) ;
+ int method_getsdW ;
+ int param_returnvalueW ;
+ int param_sdW ;
+ int set_variant (int ,int ,int *,int *) ;
+ int to_byte_array (int *,int ,int *) ;
 
 HRESULT security_get_sd( IWbemClassObject *obj, IWbemClassObject *in, IWbemClassObject **out )
 {
     VARIANT var_sd, retval;
-    IWbemClassObject *sig, *out_params = NULL;
+    IWbemClassObject *sig, *out_params = ((void*)0);
     HRESULT hr, ret;
     SECURITY_DESCRIPTOR *sd;
     DWORD sd_size;
@@ -79,7 +79,7 @@ HRESULT security_get_sd( IWbemClassObject *obj, IWbemClassObject *in, IWbemClass
 
         if (SUCCEEDED(hr))
         {
-            set_variant( VT_UI4, ret, NULL, &retval );
+            set_variant( VT_UI4, ret, ((void*)0), &retval );
             hr = IWbemClassObject_Put( out_params, param_returnvalueW, 0, &retval, CIM_UINT32 );
         }
 

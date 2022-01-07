@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct omapfb_plane_info {int enabled; int /*<<< orphan*/  member_0; } ;
-struct TYPE_3__ {int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ omapfb_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OMAPFB_QUERY_PLANE ; 
- int /*<<< orphan*/  OMAPFB_SETUP_PLANE ; 
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct omapfb_plane_info*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct omapfb_plane_info {int enabled; int member_0; } ;
+struct TYPE_3__ {int fd; } ;
+typedef TYPE_1__ omapfb_data_t ;
+
+
+ int OMAPFB_QUERY_PLANE ;
+ int OMAPFB_SETUP_PLANE ;
+ int RARCH_ERR (char*) ;
+ scalar_t__ ioctl (int ,int ,struct omapfb_plane_info*) ;
 
 __attribute__((used)) static int omapfb_enable_plane(omapfb_data_t *pdata)
 {

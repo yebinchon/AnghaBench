@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UDP ; 
- int /*<<< orphan*/  echo_alloc ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  on_recv ; 
- int /*<<< orphan*/ * server ; 
- int /*<<< orphan*/  serverType ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  udpServer ; 
- char* uv_strerror (int) ; 
- int uv_udp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int uv_udp_recv_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uv_handle_t ;
+
+
+ int UDP ;
+ int echo_alloc ;
+ int fprintf (int ,char*,char*) ;
+ int loop ;
+ int on_recv ;
+ int * server ;
+ int serverType ;
+ int stderr ;
+ int udpServer ;
+ char* uv_strerror (int) ;
+ int uv_udp_init (int ,int *) ;
+ int uv_udp_recv_start (int *,int ,int ) ;
 
 __attribute__((used)) static int udp4_echo_start(int port) {
   int r;

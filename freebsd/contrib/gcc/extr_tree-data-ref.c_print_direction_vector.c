@@ -1,33 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int* lambda_vector ;
-typedef  enum data_dependence_direction { ____Placeholder_data_dependence_direction } data_dependence_direction ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
-#define  dir_equal 134 
-#define  dir_negative 133 
-#define  dir_negative_or_equal 132 
-#define  dir_positive 131 
-#define  dir_positive_or_equal 130 
-#define  dir_positive_or_negative 129 
-#define  dir_star 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int* lambda_vector ;
+typedef enum data_dependence_direction { ____Placeholder_data_dependence_direction } data_dependence_direction ;
+typedef int FILE ;
+ int fprintf (int *,char*) ;
 
 void
 print_direction_vector (FILE *outf,
-			lambda_vector dirv,
-			int length)
+   lambda_vector dirv,
+   int length)
 {
   int eq;
 
@@ -36,32 +27,32 @@ print_direction_vector (FILE *outf,
       enum data_dependence_direction dir = dirv[eq];
 
       switch (dir)
-	{
-	case dir_positive:
-	  fprintf (outf, "    +");
-	  break;
-	case dir_negative:
-	  fprintf (outf, "    -");
-	  break;
-	case dir_equal:
-	  fprintf (outf, "    =");
-	  break;
-	case dir_positive_or_equal:
-	  fprintf (outf, "   +=");
-	  break;
-	case dir_positive_or_negative:
-	  fprintf (outf, "   +-");
-	  break;
-	case dir_negative_or_equal:
-	  fprintf (outf, "   -=");
-	  break;
-	case dir_star:
-	  fprintf (outf, "    *");
-	  break;
-	default:
-	  fprintf (outf, "indep");
-	  break;
-	}
+ {
+ case 131:
+   fprintf (outf, "    +");
+   break;
+ case 133:
+   fprintf (outf, "    -");
+   break;
+ case 134:
+   fprintf (outf, "    =");
+   break;
+ case 130:
+   fprintf (outf, "   +=");
+   break;
+ case 129:
+   fprintf (outf, "   +-");
+   break;
+ case 132:
+   fprintf (outf, "   -=");
+   break;
+ case 128:
+   fprintf (outf, "    *");
+   break;
+ default:
+   fprintf (outf, "indep");
+   break;
+ }
     }
   fprintf (outf, "\n");
 }

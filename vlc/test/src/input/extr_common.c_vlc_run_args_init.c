@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_run_args {int verbose; void* test_demux_controls; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  getenv (char*) ; 
- void* getenv_atoi (char*) ; 
- int /*<<< orphan*/  memset (struct vlc_run_args*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct vlc_run_args {int verbose; void* test_demux_controls; int name; } ;
+
+
+ int getenv (char*) ;
+ void* getenv_atoi (char*) ;
+ int memset (struct vlc_run_args*,int ,int) ;
 
 void vlc_run_args_init(struct vlc_run_args *args)
 {

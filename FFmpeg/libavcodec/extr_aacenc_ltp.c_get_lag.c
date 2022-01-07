@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t coef_idx; int /*<<< orphan*/  coef; void* lag; } ;
-typedef  TYPE_1__ LongTermPrediction ;
 
-/* Variables and functions */
- void* FFMAX (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_clip_uintp2 (int,int) ; 
- int /*<<< orphan*/ * ltp_coef ; 
- size_t quant_array_idx (float,int /*<<< orphan*/ *,int) ; 
- float sqrt (float) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t coef_idx; int coef; void* lag; } ;
+typedef TYPE_1__ LongTermPrediction ;
+
+
+ void* FFMAX (int ,int) ;
+ int av_clip_uintp2 (int,int) ;
+ int * ltp_coef ;
+ size_t quant_array_idx (float,int *,int) ;
+ float sqrt (float) ;
 
 __attribute__((used)) static void get_lag(float *buf, const float *new, LongTermPrediction *ltp)
 {

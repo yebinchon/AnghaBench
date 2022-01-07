@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  network; void* slaves; int /*<<< orphan*/  bound_by_links; int /*<<< orphan*/  bound_to_links; int /*<<< orphan*/  sd_device; int /*<<< orphan*/  state_file; int /*<<< orphan*/  ssid; int /*<<< orphan*/  kind; int /*<<< orphan*/  ifname; int /*<<< orphan*/  lldp_file; int /*<<< orphan*/  lease_file; int /*<<< orphan*/ * pool_addresses; void* addresses_foreign; void* addresses; void* neighbors_foreign; void* neighbors; void* nexthops_foreign; void* nexthops; void* routes_foreign; void* routes; } ;
-typedef  TYPE_1__ Link ;
-typedef  int /*<<< orphan*/  Address ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  address_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addresses ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link_dns_settings_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  link_free_engines (TYPE_1__*) ; 
- int /*<<< orphan*/  link_lldp_emit_stop (TYPE_1__*) ; 
- int /*<<< orphan*/  link_ntp_settings_clear (TYPE_1__*) ; 
- int /*<<< orphan*/  link_unref (int /*<<< orphan*/ *) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  neighbor_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  network_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nexthop_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  route_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_device_unref (int /*<<< orphan*/ ) ; 
- void* set_free_with_destructor (void*,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int network; void* slaves; int bound_by_links; int bound_to_links; int sd_device; int state_file; int ssid; int kind; int ifname; int lldp_file; int lease_file; int * pool_addresses; void* addresses_foreign; void* addresses; void* neighbors_foreign; void* neighbors; void* nexthops_foreign; void* nexthops; void* routes_foreign; void* routes; } ;
+typedef TYPE_1__ Link ;
+typedef int Address ;
+
+
+ int LIST_REMOVE (int ,int *,int *) ;
+ int address_free (int *) ;
+ int addresses ;
+ int assert (TYPE_1__*) ;
+ int free (int ) ;
+ int hashmap_free (int ) ;
+ int link_dns_settings_clear (TYPE_1__*) ;
+ int link_free_engines (TYPE_1__*) ;
+ int link_lldp_emit_stop (TYPE_1__*) ;
+ int link_ntp_settings_clear (TYPE_1__*) ;
+ int link_unref (int *) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int neighbor_free (int *) ;
+ int network_unref (int ) ;
+ int nexthop_free (int *) ;
+ int route_free (int *) ;
+ int sd_device_unref (int ) ;
+ void* set_free_with_destructor (void*,int (*) (int *)) ;
+ int unlink (int ) ;
 
 __attribute__((used)) static Link *link_free(Link *link) {
         Address *address;

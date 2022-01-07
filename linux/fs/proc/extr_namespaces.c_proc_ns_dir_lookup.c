@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct task_struct {int dummy; } ;
-struct proc_ns_operations {int /*<<< orphan*/  name; } ;
+struct proc_ns_operations {int name; } ;
 struct inode {int dummy; } ;
-struct TYPE_2__ {unsigned int len; int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {unsigned int len; int name; } ;
 struct dentry {TYPE_1__ d_name; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (struct proc_ns_operations**) ; 
- int /*<<< orphan*/  ENOENT ; 
- struct dentry* ERR_PTR (int /*<<< orphan*/ ) ; 
- struct task_struct* get_proc_task (struct inode*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- struct proc_ns_operations** ns_entries ; 
- struct dentry* proc_ns_instantiate (struct dentry*,struct task_struct*,struct proc_ns_operations const*) ; 
- int /*<<< orphan*/  put_task_struct (struct task_struct*) ; 
- unsigned int strlen (int /*<<< orphan*/ ) ; 
+
+ size_t ARRAY_SIZE (struct proc_ns_operations**) ;
+ int ENOENT ;
+ struct dentry* ERR_PTR (int ) ;
+ struct task_struct* get_proc_task (struct inode*) ;
+ int memcmp (int ,int ,unsigned int) ;
+ struct proc_ns_operations** ns_entries ;
+ struct dentry* proc_ns_instantiate (struct dentry*,struct task_struct*,struct proc_ns_operations const*) ;
+ int put_task_struct (struct task_struct*) ;
+ unsigned int strlen (int ) ;
 
 __attribute__((used)) static struct dentry *proc_ns_dir_lookup(struct inode *dir,
-				struct dentry *dentry, unsigned int flags)
+    struct dentry *dentry, unsigned int flags)
 {
-	struct task_struct *task = get_proc_task(dir);
-	const struct proc_ns_operations **entry, **last;
-	unsigned int len = dentry->d_name.len;
-	struct dentry *res = ERR_PTR(-ENOENT);
+ struct task_struct *task = get_proc_task(dir);
+ const struct proc_ns_operations **entry, **last;
+ unsigned int len = dentry->d_name.len;
+ struct dentry *res = ERR_PTR(-ENOENT);
 
-	if (!task)
-		goto out_no_task;
+ if (!task)
+  goto out_no_task;
 
-	last = &ns_entries[ARRAY_SIZE(ns_entries)];
-	for (entry = ns_entries; entry < last; entry++) {
-		if (strlen((*entry)->name) != len)
-			continue;
-		if (!memcmp(dentry->d_name.name, (*entry)->name, len))
-			break;
-	}
-	if (entry == last)
-		goto out;
+ last = &ns_entries[ARRAY_SIZE(ns_entries)];
+ for (entry = ns_entries; entry < last; entry++) {
+  if (strlen((*entry)->name) != len)
+   continue;
+  if (!memcmp(dentry->d_name.name, (*entry)->name, len))
+   break;
+ }
+ if (entry == last)
+  goto out;
 
-	res = proc_ns_instantiate(dentry, task, *entry);
+ res = proc_ns_instantiate(dentry, task, *entry);
 out:
-	put_task_struct(task);
+ put_task_struct(task);
 out_no_task:
-	return res;
+ return res;
 }

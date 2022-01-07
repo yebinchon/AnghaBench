@@ -1,46 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int type_t ;
 struct TYPE_2__ {int cval; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int FALSE ; 
-#define  TYPE_ALIAS 141 
-#define  TYPE_ARRAY 140 
-#define  TYPE_BASIC 139 
-#define  TYPE_BITFIELD 138 
-#define  TYPE_COCLASS 137 
-#define  TYPE_ENCAPSULATED_UNION 136 
-#define  TYPE_ENUM 135 
-#define  TYPE_FUNCTION 134 
-#define  TYPE_INTERFACE 133 
-#define  TYPE_MODULE 132 
-#define  TYPE_POINTER 131 
-#define  TYPE_STRUCT 130 
-#define  TYPE_UNION 129 
-#define  TYPE_VOID 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  is_array (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  is_conformant_array (int /*<<< orphan*/ *) ; 
- int type_array_get_dim (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * type_array_get_element (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  type_array_is_decl_as_ptr (int /*<<< orphan*/ *) ; 
- TYPE_1__* type_bitfield_get_bits (int /*<<< orphan*/ *) ; 
- int type_get_type (int /*<<< orphan*/ *) ; 
- scalar_t__ type_is_alias (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * type_pointer_get_ref (int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int fprintf (int *,char*,...) ;
+ int is_array (int *) ;
+ int is_conformant_array (int *) ;
+ int type_array_get_dim (int *) ;
+ int * type_array_get_element (int *) ;
+ int type_array_is_decl_as_ptr (int *) ;
+ TYPE_1__* type_bitfield_get_bits (int *) ;
+ int type_get_type (int *) ;
+ scalar_t__ type_is_alias (int *) ;
+ int * type_pointer_get_ref (int *) ;
 
 void write_type_right(FILE *h, type_t *t, int is_field)
 {
@@ -49,7 +35,7 @@ void write_type_right(FILE *h, type_t *t, int is_field)
 
   switch (type_get_type(t))
   {
-  case TYPE_ARRAY:
+  case 140:
   {
     type_t *elem = type_array_get_element(t);
     if (type_array_is_decl_as_ptr(t))
@@ -67,7 +53,7 @@ void write_type_right(FILE *h, type_t *t, int is_field)
     write_type_right(h, elem, FALSE);
     break;
   }
-  case TYPE_POINTER:
+  case 131:
   {
     type_t *ref = type_pointer_get_ref(t);
     if (!type_is_alias(ref) && is_array(ref) && !type_array_is_decl_as_ptr(ref))
@@ -75,20 +61,20 @@ void write_type_right(FILE *h, type_t *t, int is_field)
     write_type_right(h, ref, FALSE);
     break;
   }
-  case TYPE_BITFIELD:
+  case 138:
     fprintf(h, " : %u", type_bitfield_get_bits(t)->cval);
     break;
-  case TYPE_VOID:
-  case TYPE_BASIC:
-  case TYPE_ENUM:
-  case TYPE_STRUCT:
-  case TYPE_ENCAPSULATED_UNION:
-  case TYPE_UNION:
-  case TYPE_ALIAS:
-  case TYPE_MODULE:
-  case TYPE_COCLASS:
-  case TYPE_FUNCTION:
-  case TYPE_INTERFACE:
+  case 128:
+  case 139:
+  case 135:
+  case 130:
+  case 136:
+  case 129:
+  case 141:
+  case 132:
+  case 137:
+  case 134:
+  case 133:
     break;
   }
 }

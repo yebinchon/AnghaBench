@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int (* xCreate ) (int /*<<< orphan*/ ,char const**,int,int /*<<< orphan*/ **) ;} ;
-typedef  TYPE_1__ fts5_tokenizer ;
-struct TYPE_6__ {TYPE_1__ x; int /*<<< orphan*/  pUserData; } ;
-typedef  TYPE_2__ Fts5TokenizerModule ;
-typedef  int /*<<< orphan*/  Fts5Tokenizer ;
-typedef  int /*<<< orphan*/  Fts5Global ;
 
-/* Variables and functions */
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* fts5LocateTokenizer (int /*<<< orphan*/ *,char const*) ; 
- char* sqlite3_mprintf (char*,...) ; 
- int stub1 (int /*<<< orphan*/ ,char const**,int,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int (* xCreate ) (int ,char const**,int,int **) ;} ;
+typedef TYPE_1__ fts5_tokenizer ;
+struct TYPE_6__ {TYPE_1__ x; int pUserData; } ;
+typedef TYPE_2__ Fts5TokenizerModule ;
+typedef int Fts5Tokenizer ;
+typedef int Fts5Global ;
+
+
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ TYPE_2__* fts5LocateTokenizer (int *,char const*) ;
+ char* sqlite3_mprintf (char*,...) ;
+ int stub1 (int ,char const**,int,int **) ;
 
 int sqlite3Fts5GetTokenizer(
-  Fts5Global *pGlobal, 
+  Fts5Global *pGlobal,
   const char **azArg,
   int nArg,
   Fts5Tokenizer **ppTok,

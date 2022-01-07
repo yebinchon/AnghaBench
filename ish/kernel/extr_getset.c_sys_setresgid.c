@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uid_t_ ;
-typedef  scalar_t__ uid_t ;
-typedef  int /*<<< orphan*/  dword_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uid_t_ ;
+typedef scalar_t__ uid_t ;
+typedef int dword_t ;
 struct TYPE_2__ {scalar_t__ gid; scalar_t__ egid; scalar_t__ sgid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  _EPERM ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  superuser () ; 
+
+ int STRACE (char*,scalar_t__,scalar_t__,scalar_t__) ;
+ int _EPERM ;
+ TYPE_1__* current ;
+ int superuser () ;
 
 dword_t sys_setresgid(uid_t_ rgid, uid_t_ egid, uid_t_ sgid) {
     STRACE("setresgid(%d, %d, %d)", rgid, egid, sgid);

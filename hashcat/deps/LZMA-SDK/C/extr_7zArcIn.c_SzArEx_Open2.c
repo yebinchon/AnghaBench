@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UInt64 ;
-typedef  scalar_t__ UInt32 ;
-struct TYPE_15__ {scalar_t__* data; int /*<<< orphan*/  size; } ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef size_t UInt64 ;
+typedef scalar_t__ UInt32 ;
+struct TYPE_15__ {scalar_t__* data; int size; } ;
 struct TYPE_14__ {int startPosAfterHeader; } ;
-struct TYPE_13__ {scalar_t__* Data; int /*<<< orphan*/  Size; } ;
-typedef  scalar_t__ SRes ;
-typedef  int Int64 ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  int /*<<< orphan*/  ILookInStream ;
-typedef  TYPE_1__ CSzData ;
-typedef  TYPE_2__ CSzArEx ;
-typedef  int /*<<< orphan*/  CSzAr ;
-typedef  TYPE_3__ CBuf ;
-typedef  scalar_t__ Byte ;
+struct TYPE_13__ {scalar_t__* Data; int Size; } ;
+typedef scalar_t__ SRes ;
+typedef int Int64 ;
+typedef int ISzAllocPtr ;
+typedef int ILookInStream ;
+typedef TYPE_1__ CSzData ;
+typedef TYPE_2__ CSzArEx ;
+typedef int CSzAr ;
+typedef TYPE_3__ CBuf ;
+typedef scalar_t__ Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Buf_Create (TYPE_3__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Buf_Free (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Buf_Init (TYPE_3__*) ; 
- scalar_t__ CrcCalc (scalar_t__*,size_t) ; 
- scalar_t__ GetUi32 (scalar_t__*) ; 
- size_t GetUi64 (scalar_t__*) ; 
- int /*<<< orphan*/  ILookInStream_Seek (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- scalar_t__ LookInStream_Read (int /*<<< orphan*/ *,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  LookInStream_Read2 (int /*<<< orphan*/ *,scalar_t__*,int,scalar_t__) ; 
- int /*<<< orphan*/  LookInStream_SeekTo (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- scalar_t__ ReadID (TYPE_1__*,size_t*) ; 
- scalar_t__ SZ_ERROR_ARCHIVE ; 
- scalar_t__ SZ_ERROR_CRC ; 
- scalar_t__ SZ_ERROR_INPUT_EOF ; 
- scalar_t__ SZ_ERROR_MEM ; 
- scalar_t__ SZ_ERROR_NO_ARCHIVE ; 
- scalar_t__ SZ_ERROR_UNSUPPORTED ; 
- scalar_t__ SZ_OK ; 
- int /*<<< orphan*/  SZ_SEEK_CUR ; 
- int /*<<< orphan*/  SZ_SEEK_END ; 
- int /*<<< orphan*/  SzAr_Free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SzAr_Init (int /*<<< orphan*/ *) ; 
- scalar_t__ SzReadAndDecodePackedStreams (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__*,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ SzReadHeader (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TestSignatureCandidate (scalar_t__*) ; 
- size_t k7zIdEncodedHeader ; 
- size_t k7zIdHeader ; 
- scalar_t__ k7zMajorVersion ; 
- int k7zStartHeaderSize ; 
+
+ int Buf_Create (TYPE_3__*,size_t,int ) ;
+ int Buf_Free (TYPE_3__*,int ) ;
+ int Buf_Init (TYPE_3__*) ;
+ scalar_t__ CrcCalc (scalar_t__*,size_t) ;
+ scalar_t__ GetUi32 (scalar_t__*) ;
+ size_t GetUi64 (scalar_t__*) ;
+ int ILookInStream_Seek (int *,int*,int ) ;
+ scalar_t__ LookInStream_Read (int *,scalar_t__*,size_t) ;
+ int LookInStream_Read2 (int *,scalar_t__*,int,scalar_t__) ;
+ int LookInStream_SeekTo (int *,int) ;
+ int RINOK (int ) ;
+ scalar_t__ ReadID (TYPE_1__*,size_t*) ;
+ scalar_t__ SZ_ERROR_ARCHIVE ;
+ scalar_t__ SZ_ERROR_CRC ;
+ scalar_t__ SZ_ERROR_INPUT_EOF ;
+ scalar_t__ SZ_ERROR_MEM ;
+ scalar_t__ SZ_ERROR_NO_ARCHIVE ;
+ scalar_t__ SZ_ERROR_UNSUPPORTED ;
+ scalar_t__ SZ_OK ;
+ int SZ_SEEK_CUR ;
+ int SZ_SEEK_END ;
+ int SzAr_Free (int *,int ) ;
+ int SzAr_Init (int *) ;
+ scalar_t__ SzReadAndDecodePackedStreams (int *,TYPE_1__*,TYPE_3__*,int,int,int *,int ) ;
+ scalar_t__ SzReadHeader (TYPE_2__*,TYPE_1__*,int *,int ,int ) ;
+ int TestSignatureCandidate (scalar_t__*) ;
+ size_t k7zIdEncodedHeader ;
+ size_t k7zIdHeader ;
+ scalar_t__ k7zMajorVersion ;
+ int k7zStartHeaderSize ;
 
 __attribute__((used)) static SRes SzArEx_Open2(
     CSzArEx *p,
@@ -89,7 +89,7 @@ __attribute__((used)) static SRes SzArEx_Open2(
   nextHeaderCRC = GetUi32(header + 28);
 
   p->startPosAfterHeader = startArcPos + k7zStartHeaderSize;
-  
+
   if (CrcCalc(header + 12, 20) != GetUi32(header + 8))
     return SZ_ERROR_CRC;
 
@@ -117,7 +117,7 @@ __attribute__((used)) static SRes SzArEx_Open2(
     return SZ_ERROR_MEM;
 
   res = LookInStream_Read(inStream, buf.data, nextHeaderSizeT);
-  
+
   if (res == SZ_OK)
   {
     res = SZ_ERROR_ARCHIVE;
@@ -127,19 +127,19 @@ __attribute__((used)) static SRes SzArEx_Open2(
       UInt64 type;
       sd.Data = buf.data;
       sd.Size = buf.size;
-      
+
       res = ReadID(&sd, &type);
-      
+
       if (res == SZ_OK && type == k7zIdEncodedHeader)
       {
         CSzAr tempAr;
         CBuf tempBuf;
         Buf_Init(&tempBuf);
-        
+
         SzAr_Init(&tempAr);
         res = SzReadAndDecodePackedStreams(inStream, &sd, &tempBuf, 1, p->startPosAfterHeader, &tempAr, allocTemp);
         SzAr_Free(&tempAr, allocTemp);
-       
+
         if (res != SZ_OK)
         {
           Buf_Free(&tempBuf, allocTemp);
@@ -154,23 +154,11 @@ __attribute__((used)) static SRes SzArEx_Open2(
           res = ReadID(&sd, &type);
         }
       }
-  
+
       if (res == SZ_OK)
       {
         if (type == k7zIdHeader)
         {
-          /*
-          CSzData sd2;
-          unsigned ttt;
-          for (ttt = 0; ttt < 40000; ttt++)
-          {
-            SzArEx_Free(p, allocMain);
-            sd2 = sd;
-            res = SzReadHeader(p, &sd2, inStream, allocMain, allocTemp);
-            if (res != SZ_OK)
-              break;
-          }
-          */
           res = SzReadHeader(p, &sd, inStream, allocMain, allocTemp);
         }
         else
@@ -178,7 +166,7 @@ __attribute__((used)) static SRes SzArEx_Open2(
       }
     }
   }
- 
+
   Buf_Free(&buf, allocTemp);
   return res;
 }

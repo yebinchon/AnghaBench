@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  opfowner; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_opfamily ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_UNDEFINED_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPFAMILYOID ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int has_privs_of_role (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ superuser_arg (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int opfowner; } ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_opfamily ;
+
+
+ int ERRCODE_UNDEFINED_OBJECT ;
+ int ERROR ;
+ scalar_t__ GETSTRUCT (int ) ;
+ int HeapTupleIsValid (int ) ;
+ int OPFAMILYOID ;
+ int ObjectIdGetDatum (int ) ;
+ int ReleaseSysCache (int ) ;
+ int SearchSysCache1 (int ,int ) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
+ int has_privs_of_role (int ,int ) ;
+ scalar_t__ superuser_arg (int ) ;
 
 bool
 pg_opfamily_ownercheck(Oid opf_oid, Oid roleid)
 {
-	HeapTuple	tuple;
-	Oid			ownerId;
+ HeapTuple tuple;
+ Oid ownerId;
 
-	/* Superusers bypass all permission checking. */
-	if (superuser_arg(roleid))
-		return true;
 
-	tuple = SearchSysCache1(OPFAMILYOID, ObjectIdGetDatum(opf_oid));
-	if (!HeapTupleIsValid(tuple))
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("operator family with OID %u does not exist",
-						opf_oid)));
+ if (superuser_arg(roleid))
+  return 1;
 
-	ownerId = ((Form_pg_opfamily) GETSTRUCT(tuple))->opfowner;
+ tuple = SearchSysCache1(OPFAMILYOID, ObjectIdGetDatum(opf_oid));
+ if (!HeapTupleIsValid(tuple))
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_OBJECT),
+     errmsg("operator family with OID %u does not exist",
+      opf_oid)));
 
-	ReleaseSysCache(tuple);
+ ownerId = ((Form_pg_opfamily) GETSTRUCT(tuple))->opfowner;
 
-	return has_privs_of_role(roleid, ownerId);
+ ReleaseSysCache(tuple);
+
+ return has_privs_of_role(roleid, ownerId);
 }

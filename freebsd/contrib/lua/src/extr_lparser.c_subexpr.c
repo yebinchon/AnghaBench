@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expdesc ;
-typedef  scalar_t__ UnOpr ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int expdesc ;
+typedef scalar_t__ UnOpr ;
 struct TYPE_11__ {int left; int right; } ;
-struct TYPE_9__ {int /*<<< orphan*/  token; } ;
-struct TYPE_10__ {int linenumber; int /*<<< orphan*/  fs; TYPE_1__ t; } ;
-typedef  TYPE_2__ LexState ;
-typedef  size_t BinOpr ;
+struct TYPE_9__ {int token; } ;
+struct TYPE_10__ {int linenumber; int fs; TYPE_1__ t; } ;
+typedef TYPE_2__ LexState ;
+typedef size_t BinOpr ;
 
-/* Variables and functions */
- size_t OPR_NOBINOPR ; 
- scalar_t__ OPR_NOUNOPR ; 
- int UNARY_PRIORITY ; 
- int /*<<< orphan*/  enterlevel (TYPE_2__*) ; 
- size_t getbinopr (int /*<<< orphan*/ ) ; 
- scalar_t__ getunopr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  leavelevel (TYPE_2__*) ; 
- int /*<<< orphan*/  luaK_infix (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaK_posfix (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaK_prefix (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaX_next (TYPE_2__*) ; 
- TYPE_5__* priority ; 
- int /*<<< orphan*/  simpleexp (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ size_t OPR_NOBINOPR ;
+ scalar_t__ OPR_NOUNOPR ;
+ int UNARY_PRIORITY ;
+ int enterlevel (TYPE_2__*) ;
+ size_t getbinopr (int ) ;
+ scalar_t__ getunopr (int ) ;
+ int leavelevel (TYPE_2__*) ;
+ int luaK_infix (int ,size_t,int *) ;
+ int luaK_posfix (int ,size_t,int *,int *,int) ;
+ int luaK_prefix (int ,scalar_t__,int *,int) ;
+ int luaX_next (TYPE_2__*) ;
+ TYPE_5__* priority ;
+ int simpleexp (TYPE_2__*,int *) ;
 
 __attribute__((used)) static BinOpr subexpr (LexState *ls, expdesc *v, int limit) {
   BinOpr op;
@@ -48,7 +48,7 @@ __attribute__((used)) static BinOpr subexpr (LexState *ls, expdesc *v, int limit
     luaK_prefix(ls->fs, uop, v, line);
   }
   else simpleexp(ls, v);
-  /* expand while operators have priorities higher than 'limit' */
+
   op = getbinopr(ls->t.token);
   while (op != OPR_NOBINOPR && priority[op].left > limit) {
     expdesc v2;
@@ -56,11 +56,11 @@ __attribute__((used)) static BinOpr subexpr (LexState *ls, expdesc *v, int limit
     int line = ls->linenumber;
     luaX_next(ls);
     luaK_infix(ls->fs, op, v);
-    /* read sub-expression with higher priority */
+
     nextop = subexpr(ls, &v2, priority[op].right);
     luaK_posfix(ls->fs, op, v, &v2, line);
     op = nextop;
   }
   leavelevel(ls);
-  return op;  /* return first untreated operator */
+  return op;
 }

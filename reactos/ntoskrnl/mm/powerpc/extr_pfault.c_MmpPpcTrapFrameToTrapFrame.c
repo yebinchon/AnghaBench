@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int srr1; int /*<<< orphan*/  dsisr; int /*<<< orphan*/  dar; int /*<<< orphan*/  srr0; int /*<<< orphan*/  xer; int /*<<< orphan*/  ctr; int /*<<< orphan*/  cr; int /*<<< orphan*/  lr; int /*<<< orphan*/  gpr; } ;
-typedef  TYPE_1__ ppc_trap_frame_t ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_6__ {int Msr; int /*<<< orphan*/  Dr1; int /*<<< orphan*/  Dr0; int /*<<< orphan*/  Iar; int /*<<< orphan*/  Xer; int /*<<< orphan*/  Ctr; int /*<<< orphan*/  Cr; int /*<<< orphan*/  Lr; int /*<<< orphan*/  Gpr0; } ;
-typedef  TYPE_2__* PKTRAP_FRAME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int srr1; int dsisr; int dar; int srr0; int xer; int ctr; int cr; int lr; int gpr; } ;
+typedef TYPE_1__ ppc_trap_frame_t ;
+typedef int VOID ;
+typedef int ULONG ;
+struct TYPE_6__ {int Msr; int Dr1; int Dr0; int Iar; int Xer; int Ctr; int Cr; int Lr; int Gpr0; } ;
+typedef TYPE_2__* PKTRAP_FRAME ;
+
+
+ int RtlCopyMemory (int *,int ,int) ;
 
 VOID MmpPpcTrapFrameToTrapFrame(ppc_trap_frame_t *frame, PKTRAP_FRAME Tf)
 {

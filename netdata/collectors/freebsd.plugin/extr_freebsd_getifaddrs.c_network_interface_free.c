@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cgroup_network_interface {struct cgroup_network_interface* name; int /*<<< orphan*/  st_events; int /*<<< orphan*/  st_drops; int /*<<< orphan*/  st_errors; int /*<<< orphan*/  st_packets; int /*<<< orphan*/  st_bandwidth; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  freez (struct cgroup_network_interface*) ; 
- scalar_t__ likely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  network_interfaces_added ; 
- int /*<<< orphan*/  rrdset_is_obsolete (int /*<<< orphan*/ ) ; 
+
+
+
+struct cgroup_network_interface {struct cgroup_network_interface* name; int st_events; int st_drops; int st_errors; int st_packets; int st_bandwidth; } ;
+
+
+ int freez (struct cgroup_network_interface*) ;
+ scalar_t__ likely (int ) ;
+ int network_interfaces_added ;
+ int rrdset_is_obsolete (int ) ;
 
 __attribute__((used)) static void network_interface_free(struct cgroup_network_interface *ifm) {
     if (likely(ifm->st_bandwidth))

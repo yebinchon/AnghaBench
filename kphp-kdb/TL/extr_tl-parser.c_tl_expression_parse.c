@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct tl_expression {char* text; scalar_t__ type; scalar_t__ section; unsigned int magic; TYPE_1__* right; void* right_name; TYPE_2__* left; struct tl_expression* next; } ;
-struct tl_compiler {int /*<<< orphan*/  errors; struct tl_expression* expr; } ;
+struct tl_compiler {int errors; struct tl_expression* expr; } ;
 struct TYPE_5__ {char* text; } ;
 struct TYPE_4__ {scalar_t__ next; } ;
 
-/* Variables and functions */
- scalar_t__ TL_SECTION_FUNCTIONS ; 
- size_t TL_SECTION_TYPES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cstr_free (char**) ; 
- void* cstr_join_with_sugar (TYPE_1__*) ; 
- void* cstr_substr (char*,int /*<<< orphan*/ ,int) ; 
- int sscanf (char*,char*,unsigned int*,char*) ; 
- char* strchr (char*,char) ; 
- void* tl_expresion_split (struct tl_compiler*,struct tl_expression*,char*,int) ; 
- int /*<<< orphan*/  tl_expression_expand (struct tl_expression*,struct tl_expression*) ; 
- scalar_t__ tl_expression_is_polymorhic (struct tl_expression*) ; 
- int tl_failf (struct tl_compiler*,char*,char*) ; 
- scalar_t__ tl_token_polymorphic_match (TYPE_1__*,TYPE_2__*) ; 
- scalar_t__ tlet_polymorphic ; 
- scalar_t__ tlet_polymorphic_instance ; 
- scalar_t__ tlet_simple ; 
+
+ scalar_t__ TL_SECTION_FUNCTIONS ;
+ size_t TL_SECTION_TYPES ;
+ int assert (int) ;
+ int cstr_free (char**) ;
+ void* cstr_join_with_sugar (TYPE_1__*) ;
+ void* cstr_substr (char*,int ,int) ;
+ int sscanf (char*,char*,unsigned int*,char*) ;
+ char* strchr (char*,char) ;
+ void* tl_expresion_split (struct tl_compiler*,struct tl_expression*,char*,int) ;
+ int tl_expression_expand (struct tl_expression*,struct tl_expression*) ;
+ scalar_t__ tl_expression_is_polymorhic (struct tl_expression*) ;
+ int tl_failf (struct tl_compiler*,char*,char*) ;
+ scalar_t__ tl_token_polymorphic_match (TYPE_1__*,TYPE_2__*) ;
+ scalar_t__ tlet_polymorphic ;
+ scalar_t__ tlet_polymorphic_instance ;
+ scalar_t__ tlet_simple ;
 
 int tl_expression_parse (struct tl_compiler *C, struct tl_expression *E) {
   char *p = strchr (E->text, '=');
-  if (p == NULL) {
+  if (p == ((void*)0)) {
     E->left = tl_expresion_split (C, E, E->text, 1);
-    if (E->left == NULL) {
+    if (E->left == ((void*)0)) {
       return -1;
     }
-    E->right = NULL;
+    E->right = ((void*)0);
     E->type = tlet_polymorphic_instance;
     if (E->section) {
       return tl_failf (C, "polymorphic instance in the '---functions---' section, expr: %s", E->text);
@@ -61,7 +61,7 @@ int tl_expression_parse (struct tl_compiler *C, struct tl_expression *E) {
   if (p == E->text || p[-1] != ' ' || p[1] != ' ') {
     return tl_failf (C, "'=' should be surrounded by spaces, expr: %s", E->text);
   }
-  if (strchr (p + 1, '=') != NULL) {
+  if (strchr (p + 1, '=') != ((void*)0)) {
     return tl_failf (C, "'=' occures multiple times, expr: %s", E->text);
   }
 
@@ -69,12 +69,12 @@ int tl_expression_parse (struct tl_compiler *C, struct tl_expression *E) {
   E->left = tl_expresion_split (C, E, first, 0);
   cstr_free (&first);
 
-  if (E->left == NULL) {
+  if (E->left == ((void*)0)) {
     return tl_failf (C, "empty lhs, expr: %s\n", E->text);
   }
 
   char *q = strchr (E->left->text, '#');
-  if (q != NULL) {
+  if (q != ((void*)0)) {
     unsigned int magic = 0;
     char ch;
     int r = sscanf (q + 1, "%x%c", &magic, &ch);
@@ -88,7 +88,7 @@ int tl_expression_parse (struct tl_compiler *C, struct tl_expression *E) {
   }
   E->type = tlet_simple;
   E->right = tl_expresion_split (C, E, p + 1, E->section ? 0 : 1);
-  if (E->right == NULL) {
+  if (E->right == ((void*)0)) {
     if (!C->errors) {
       return tl_failf (C, "empty rhs, expr: %s\n", E->text);
     }
@@ -100,7 +100,7 @@ int tl_expression_parse (struct tl_compiler *C, struct tl_expression *E) {
     return 0;
   }
 
-  /* type declaration section */
+
   if (tl_expression_is_polymorhic (E)) {
     E->type = tlet_polymorphic;
     return 0;

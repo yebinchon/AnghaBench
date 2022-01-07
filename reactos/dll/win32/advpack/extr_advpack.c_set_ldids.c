@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/ * HINF ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int MAX_FIELD_LENGTH ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetupFindFirstLineW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetLineTextW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char*,int,int*) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int*) ; 
- int /*<<< orphan*/  SetupSetDirectoryIdW (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  get_dest_dir (int /*<<< orphan*/ *,char*,char*,int) ; 
- char* get_parameter (char**,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpiW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpynW (char*,int /*<<< orphan*/ *,int) ; 
- char* wcschr (char*,char) ; 
- int wcstol (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef int * LPCWSTR ;
+typedef int INFCONTEXT ;
+typedef int * HINF ;
+typedef int DWORD ;
+
+
+ int FALSE ;
+ int FIXME (char*) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int MAX_FIELD_LENGTH ;
+ int MAX_PATH ;
+ int SetupFindFirstLineW (int *,char*,int *,int *) ;
+ scalar_t__ SetupFindNextLine (int *,int *) ;
+ int SetupGetLineTextW (int *,int *,int *,char const*,char*,int,int*) ;
+ int SetupGetStringFieldW (int *,int ,char*,int,int*) ;
+ int SetupSetDirectoryIdW (int *,int,char*) ;
+ int get_dest_dir (int *,char*,char*,int) ;
+ char* get_parameter (char**,char,int ) ;
+ int lstrcmpiW (char*,char const*) ;
+ int lstrcpynW (char*,int *,int) ;
+ char* wcschr (char*,char) ;
+ int wcstol (char*,int *,int) ;
 
 void set_ldids(HINF hInf, LPCWSTR pszInstallSection, LPCWSTR pszWorkingDir)
 {
@@ -52,27 +52,27 @@ void set_ldids(HINF hInf, LPCWSTR pszInstallSection, LPCWSTR pszWorkingDir)
         'C','u','s','t','o','m','D','e','s','t','i','n','a','t','i','o','n',0
     };
 
-    if (!SetupGetLineTextW(NULL, hInf, pszInstallSection, custDestW,
+    if (!SetupGetLineTextW(((void*)0), hInf, pszInstallSection, custDestW,
                            field, MAX_FIELD_LENGTH, &size))
         return;
 
-    if (!SetupFindFirstLineW(hInf, field, NULL, &context))
+    if (!SetupFindFirstLineW(hInf, field, ((void*)0), &context))
         return;
 
     do
     {
-        LPWSTR value, ptr, key, key_copy = NULL;
+        LPWSTR value, ptr, key, key_copy = ((void*)0);
         DWORD flags = 0;
 
-        SetupGetLineTextW(&context, NULL, NULL, NULL,
+        SetupGetLineTextW(&context, ((void*)0), ((void*)0), ((void*)0),
                           line, MAX_FIELD_LENGTH, &size);
 
-        /* SetupGetLineTextW returns the value if there is only one key, but
-         * returns the whole line if there is more than one key
-         */
+
+
+
         if (!(value = wcschr(line, '=')))
         {
-            SetupGetStringFieldW(&context, 0, NULL, 0, &size);
+            SetupGetStringFieldW(&context, 0, ((void*)0), 0, &size);
             key = HeapAlloc(GetProcessHeap(), 0, size * sizeof(WCHAR));
             key_copy = key;
             SetupGetStringFieldW(&context, 0, key, size, &size);
@@ -84,31 +84,31 @@ void set_ldids(HINF hInf, LPCWSTR pszInstallSection, LPCWSTR pszWorkingDir)
             *(value++) = '\0';
         }
 
-        /* remove leading whitespace from the value */
+
         while (*value == ' ')
             value++;
 
-        /* Extract the flags */
+
         ptr = wcschr(value, ',');
         if (ptr) {
             *ptr = '\0';
-            flags = wcstol(ptr+1, NULL, 10);
+            flags = wcstol(ptr+1, ((void*)0), 10);
         }
 
-        /* set dest to pszWorkingDir if key is SourceDir */
+
         if (pszWorkingDir && !lstrcmpiW(value, source_dir))
             lstrcpynW(dest, pszWorkingDir, MAX_PATH);
         else
             get_dest_dir(hInf, value, dest, MAX_PATH);
 
-        /* If prompting required, provide dialog to request path */
+
         if (flags & 0x04)
             FIXME("Need to support changing paths - default will be used\n");
 
-        /* set all ldids to dest */
+
         while ((ptr = get_parameter(&key, ',', FALSE)))
         {
-            ldid = wcstol(ptr, NULL, 10);
+            ldid = wcstol(ptr, ((void*)0), 10);
             SetupSetDirectoryIdW(hInf, ldid, dest);
         }
         HeapFree(GetProcessHeap(), 0, key_copy);

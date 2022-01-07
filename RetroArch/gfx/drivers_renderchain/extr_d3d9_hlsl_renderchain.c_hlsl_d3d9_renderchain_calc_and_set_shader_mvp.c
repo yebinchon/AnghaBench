@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct shader_pass {int /*<<< orphan*/  vtable; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct shader_pass {int vtable; } ;
 struct d3d_matrix {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_4__ {int dev; } ;
 struct TYPE_5__ {TYPE_1__ chain; } ;
-typedef  TYPE_2__ hlsl_renderchain_t ;
+typedef TYPE_2__ hlsl_renderchain_t ;
 
-/* Variables and functions */
- double D3D_PI ; 
- int /*<<< orphan*/  d3d9_hlsl_set_param_matrix (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void const*) ; 
- int /*<<< orphan*/  d3d_matrix_identity (struct d3d_matrix*) ; 
- int /*<<< orphan*/  d3d_matrix_multiply (struct d3d_matrix*,struct d3d_matrix*,struct d3d_matrix*) ; 
- int /*<<< orphan*/  d3d_matrix_ortho_off_center_lh (struct d3d_matrix*,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  d3d_matrix_rotation_z (struct d3d_matrix*,unsigned int) ; 
- int /*<<< orphan*/  d3d_matrix_transpose (struct d3d_matrix*,struct d3d_matrix*) ; 
+
+ double D3D_PI ;
+ int d3d9_hlsl_set_param_matrix (int ,int ,char*,void const*) ;
+ int d3d_matrix_identity (struct d3d_matrix*) ;
+ int d3d_matrix_multiply (struct d3d_matrix*,struct d3d_matrix*,struct d3d_matrix*) ;
+ int d3d_matrix_ortho_off_center_lh (struct d3d_matrix*,int ,unsigned int,int ,unsigned int,int ,int) ;
+ int d3d_matrix_rotation_z (struct d3d_matrix*,unsigned int) ;
+ int d3d_matrix_transpose (struct d3d_matrix*,struct d3d_matrix*) ;
 
 __attribute__((used)) static void hlsl_d3d9_renderchain_calc_and_set_shader_mvp(
       hlsl_renderchain_t *chain,

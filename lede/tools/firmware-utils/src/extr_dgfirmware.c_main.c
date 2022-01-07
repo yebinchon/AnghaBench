@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* app_name ; 
- unsigned short compute_checksum (unsigned char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned short get_checksum (unsigned char*) ; 
- int /*<<< orphan*/  print_usage () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- unsigned char* read_img (char*) ; 
- int /*<<< orphan*/  read_kernel (unsigned char*,char*) ; 
- int /*<<< orphan*/  read_rootfs (unsigned char*,char*) ; 
- int /*<<< orphan*/  set_checksum (unsigned char*,unsigned short) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  write_img (unsigned char*,char*) ; 
- int /*<<< orphan*/  write_kernel (unsigned char*,char*) ; 
- int /*<<< orphan*/  write_rootfs (unsigned char*,char*) ; 
+ char* app_name ;
+ unsigned short compute_checksum (unsigned char*) ;
+ int fprintf (int ,char*,char*) ;
+ int free (unsigned char*) ;
+ unsigned short get_checksum (unsigned char*) ;
+ int print_usage () ;
+ int printf (char*,...) ;
+ unsigned char* read_img (char*) ;
+ int read_kernel (unsigned char*,char*) ;
+ int read_rootfs (unsigned char*,char*) ;
+ int set_checksum (unsigned char*,unsigned short) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ int write_img (unsigned char*,char*) ;
+ int write_kernel (unsigned char*,char*) ;
+ int write_rootfs (unsigned char*,char*) ;
 
 int main(int argc, char* argv[])
 {
-  char *img_fname     = NULL;
-  char *rootfs_fname  = NULL;
-  char *kernel_fname  = NULL;
-  char *new_img_fname = NULL;
+  char *img_fname = ((void*)0);
+  char *rootfs_fname = ((void*)0);
+  char *kernel_fname = ((void*)0);
+  char *new_img_fname = ((void*)0);
 
   int do_fix_checksum = 0;
-  int do_write        = 0;
+  int do_write = 0;
   int do_write_rootfs = 0;
-  int do_read_rootfs  = 0;
+  int do_read_rootfs = 0;
   int do_write_kernel = 0;
-  int do_read_kernel  = 0;
+  int do_read_kernel = 0;
 
   int i;
   unsigned char *img;
@@ -60,8 +52,8 @@ int main(int argc, char* argv[])
     }
     else if (!strcmp(argv[i], "-x")) {
       if (i+1 >= argc) {
-	fprintf(stderr, "%s: missing argument\n", app_name);
-	return -1;
+ fprintf(stderr, "%s: missing argument\n", app_name);
+ return -1;
       }
       do_write_rootfs = 1;
       rootfs_fname = argv[i+1];
@@ -69,8 +61,8 @@ int main(int argc, char* argv[])
     }
     else if (!strcmp(argv[i], "-xk")) {
       if (i+1 >= argc) {
-	fprintf(stderr, "%s: missing argument\n", app_name);
-	return -1;
+ fprintf(stderr, "%s: missing argument\n", app_name);
+ return -1;
       }
       do_write_kernel = 1;
       kernel_fname = argv[i+1];
@@ -78,8 +70,8 @@ int main(int argc, char* argv[])
     }
     else if (!strcmp(argv[i], "-m")) {
       if (i+1 >= argc) {
-	fprintf(stderr, "%s: missing argument\n", app_name);
-	return -1;
+ fprintf(stderr, "%s: missing argument\n", app_name);
+ return -1;
       }
       do_read_rootfs = 1;
       rootfs_fname = argv[i+1];
@@ -87,8 +79,8 @@ int main(int argc, char* argv[])
     }
     else if (!strcmp(argv[i], "-k")) {
       if (i+1 >= argc) {
-	fprintf(stderr, "%s: missing argument\n", app_name);
-	return -1;
+ fprintf(stderr, "%s: missing argument\n", app_name);
+ return -1;
       }
       do_read_kernel = 1;
       kernel_fname = argv[i+1];
@@ -96,8 +88,8 @@ int main(int argc, char* argv[])
     }
     else if (!strcmp(argv[i], "-w")) {
       if (i+1 >= argc) {
-	fprintf(stderr, "%s: missing argument\n", app_name);
-	return -1;
+ fprintf(stderr, "%s: missing argument\n", app_name);
+ return -1;
       }
       do_write = 1;
       new_img_fname = argv[i+1];
@@ -112,7 +104,7 @@ int main(int argc, char* argv[])
     }
   }
 
-  if (img_fname == NULL) {
+  if (img_fname == ((void*)0)) {
     fprintf(stderr, "%s: missing argument\n", app_name);
     return -1;
   }
@@ -153,7 +145,7 @@ int main(int argc, char* argv[])
 
   img_checksum = get_checksum(img);
   real_checksum = compute_checksum(img);
-  
+
   printf ("image checksum = %04x\n", img_checksum);
   printf ("real checksum  = %04x\n", real_checksum);
 

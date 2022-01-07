@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  scalar_t__* LPSTR ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURR_DIR ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  ERROR_INSTALL_PACKAGE_REJECTED ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  INSTALLUILEVEL_NONE ; 
- int /*<<< orphan*/  MAKELONG (int,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MsiDoActionA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  MsiGetPropertyA (int /*<<< orphan*/ ,char*,char*,int*) ; 
- int /*<<< orphan*/  MsiSetInternalUI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WritePrivateProfileStringA (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  add_appsearch_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_inilocator_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_signature_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_appsearch_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_file_with_version (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_inilocator_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  create_signature_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_test_file (char*) ; 
- int /*<<< orphan*/  delete_win_ini (char*) ; 
- scalar_t__ is_root (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyA (char*,char*) ; 
- char* msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- scalar_t__* strrchr (char*,char) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef scalar_t__* LPSTR ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CURR_DIR ;
+ int DeleteFileA (char*) ;
+ int ERROR_INSTALL_PACKAGE_REJECTED ;
+ int ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int INSTALLUILEVEL_NONE ;
+ int MAKELONG (int,int) ;
+ int MAX_PATH ;
+ int MsiCloseHandle (int ) ;
+ int MsiDoActionA (int ,char*) ;
+ int MsiGetPropertyA (int ,char*,char*,int*) ;
+ int MsiSetInternalUI (int ,int *) ;
+ scalar_t__ TRUE ;
+ int WritePrivateProfileStringA (char*,char*,char*,char*) ;
+ int add_appsearch_entry (int ,char*) ;
+ int add_inilocator_entry (int ,char*) ;
+ int add_signature_entry (int ,char*) ;
+ int create_appsearch_table (int ) ;
+ int create_file_with_version (char*,int ,int ) ;
+ int create_inilocator_table (int ) ;
+ int create_package_db () ;
+ int create_signature_table (int ) ;
+ int create_test_file (char*) ;
+ int delete_win_ini (char*) ;
+ scalar_t__ is_root (int ) ;
+ int lstrcmpA (char*,char*) ;
+ int lstrcpyA (char*,char*) ;
+ char* msifile ;
+ int ok (int,char*,...) ;
+ int package_from_db (int ,int *) ;
+ int skip (char*) ;
+ int sprintf (char*,char*,char*) ;
+ int strcpy (char*,int ) ;
+ scalar_t__* strrchr (char*,char) ;
 
 __attribute__((used)) static void test_appsearch_inilocator(void)
 {
@@ -112,40 +112,40 @@ __attribute__((used)) static void test_appsearch_inilocator(void)
 
     create_inilocator_table(hdb);
 
-    /* msidbLocatorTypeRawValue, field 1 */
+
     add_inilocator_entry(hdb, "'NewSignature1', 'IniFile.ini', 'Section', 'Key', 1, 2");
 
-    /* msidbLocatorTypeRawValue, field 2 */
+
     add_inilocator_entry(hdb, "'NewSignature2', 'IniFile.ini', 'Section', 'Key', 2, 2");
 
-    /* msidbLocatorTypeRawValue, entire field */
+
     add_inilocator_entry(hdb, "'NewSignature3', 'IniFile.ini', 'Section', 'Key', 0, 2");
 
-    /* msidbLocatorTypeFile */
+
     add_inilocator_entry(hdb, "'NewSignature4', 'IniFile.ini', 'Section', 'Key2', 1, 1");
 
-    /* msidbLocatorTypeDirectory, file */
+
     add_inilocator_entry(hdb, "'NewSignature5', 'IniFile.ini', 'Section', 'Key2', 1, 0");
 
-    /* msidbLocatorTypeDirectory, directory */
+
     add_inilocator_entry(hdb, "'NewSignature6', 'IniFile.ini', 'Section', 'Key3', 1, 0");
 
-    /* msidbLocatorTypeFile, file, no signature */
+
     add_inilocator_entry(hdb, "'NewSignature7', 'IniFile.ini', 'Section', 'Key2', 1, 1");
 
-    /* msidbLocatorTypeFile, dir, no signature */
+
     add_inilocator_entry(hdb, "'NewSignature8', 'IniFile.ini', 'Section', 'Key3', 1, 1");
 
-    /* msidbLocatorTypeFile, file does not exist */
+
     add_inilocator_entry(hdb, "'NewSignature9', 'IniFile.ini', 'Section', 'Key4', 1, 1");
 
-    /* msidbLocatorTypeFile, signature with version */
+
     add_inilocator_entry(hdb, "'NewSignature10', 'IniFile.ini', 'Section', 'Key5', 1, 1");
 
-    /* msidbLocatorTypeFile, signature with version, ver > max */
+
     add_inilocator_entry(hdb, "'NewSignature11', 'IniFile.ini', 'Section', 'Key6', 1, 1");
 
-    /* msidbLocatorTypeFile, signature with version, sig->name ignored */
+
     add_inilocator_entry(hdb, "'NewSignature12', 'IniFile.ini', 'Section', 'Key7', 1, 1");
 
     create_signature_table(hdb);
@@ -163,7 +163,7 @@ __attribute__((used)) static void test_appsearch_inilocator(void)
     }
     ok(r == ERROR_SUCCESS, "Expected a valid package handle %u\n", r);
 
-    MsiSetInternalUI(INSTALLUILEVEL_NONE, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_NONE, ((void*)0));
 
     r = MsiDoActionA(hpkg, "AppSearch");
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);

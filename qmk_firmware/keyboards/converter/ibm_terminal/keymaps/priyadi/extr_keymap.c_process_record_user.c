@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- unsigned long COL ; 
- unsigned long DVO ; 
-#define  LAY_COL 134 
-#define  LAY_DVO 133 
-#define  LAY_QWE 132 
-#define  LAY_WOR 131 
-#define  OS_LIN 130 
-#define  OS_MAC 129 
-#define  OS_WIN 128 
- unsigned long QWE ; 
- int /*<<< orphan*/  UC_LNX ; 
- int /*<<< orphan*/  UC_OSX ; 
- int /*<<< orphan*/  UC_WINC ; 
- unsigned long WOR ; 
- int /*<<< orphan*/  persistent_default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  set_unicode_input_mode (int /*<<< orphan*/ ) ; 
+
+ unsigned long COL ;
+ unsigned long DVO ;
+
+
+
+
+
+
+
+ unsigned long QWE ;
+ int UC_LNX ;
+ int UC_OSX ;
+ int UC_WINC ;
+ unsigned long WOR ;
+ int persistent_default_layer_set (unsigned long) ;
+ int set_unicode_input_mode (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    /* layout switcher */
-    case LAY_QWE:
+
+    case 132:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<QWE);
       }
-      return false;
+      return 0;
       break;
-    case LAY_COL:
+    case 134:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<COL);
       }
-      return false;
+      return 0;
       break;
-    case LAY_WOR:
+    case 131:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<WOR);
       }
-      return false;
+      return 0;
       break;
-    case LAY_DVO:
+    case 133:
       if (record->event.pressed) {
         persistent_default_layer_set(1UL<<DVO);
       }
-      return false;
+      return 0;
       break;
 
-    /* os switcher */
-    case OS_LIN:
+
+    case 130:
       set_unicode_input_mode(UC_LNX);
-      return false;
+      return 0;
       break;
-    case OS_WIN:
+    case 128:
       set_unicode_input_mode(UC_WINC);
-      return false;
+      return 0;
       break;
-    case OS_MAC:
+    case 129:
       set_unicode_input_mode(UC_OSX);
-      return false;
+      return 0;
       break;
 
   }
-  return true;
+  return 1;
 }

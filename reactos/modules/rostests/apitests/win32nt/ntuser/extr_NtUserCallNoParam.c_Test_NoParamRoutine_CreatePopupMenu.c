@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HMENU ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyMenu (scalar_t__) ; 
- scalar_t__ IsMenu (scalar_t__) ; 
- scalar_t__ NtUserCallNoParam (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST (int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _NOPARAM_ROUTINE_CREATEMENUPOPUP ; 
+
+
+
+typedef scalar_t__ HMENU ;
+
+
+ int DestroyMenu (scalar_t__) ;
+ scalar_t__ IsMenu (scalar_t__) ;
+ scalar_t__ NtUserCallNoParam (int ) ;
+ int TEST (int) ;
+ scalar_t__ TRUE ;
+ int _NOPARAM_ROUTINE_CREATEMENUPOPUP ;
 
 void
-Test_NoParamRoutine_CreatePopupMenu(void) /* 1 */
+Test_NoParamRoutine_CreatePopupMenu(void)
 {
     HMENU hMenu;
 

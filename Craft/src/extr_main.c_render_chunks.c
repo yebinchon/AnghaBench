@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int ortho; float render_radius; int chunk_count; TYPE_3__* chunks; int /*<<< orphan*/  fov; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_15__ {int /*<<< orphan*/  timer; int /*<<< orphan*/  extra4; int /*<<< orphan*/  extra3; int /*<<< orphan*/  extra2; int /*<<< orphan*/  extra1; int /*<<< orphan*/  sampler; int /*<<< orphan*/  camera; int /*<<< orphan*/  matrix; int /*<<< orphan*/  program; } ;
-struct TYPE_14__ {scalar_t__ faces; int /*<<< orphan*/  maxy; int /*<<< orphan*/  miny; int /*<<< orphan*/  q; int /*<<< orphan*/  p; } ;
-struct TYPE_12__ {int /*<<< orphan*/  z; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  ry; int /*<<< orphan*/  rx; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int ortho; float render_radius; int chunk_count; TYPE_3__* chunks; int fov; int height; int width; } ;
+struct TYPE_15__ {int timer; int extra4; int extra3; int extra2; int extra1; int sampler; int camera; int matrix; int program; } ;
+struct TYPE_14__ {scalar_t__ faces; int maxy; int miny; int q; int p; } ;
+struct TYPE_12__ {int z; int y; int x; int ry; int rx; } ;
 struct TYPE_13__ {TYPE_1__ state; } ;
-typedef  TYPE_1__ State ;
-typedef  TYPE_2__ Player ;
-typedef  TYPE_3__ Chunk ;
-typedef  TYPE_4__ Attrib ;
+typedef TYPE_1__ State ;
+typedef TYPE_2__ Player ;
+typedef TYPE_3__ Chunk ;
+typedef TYPE_4__ Attrib ;
 
-/* Variables and functions */
- float CHUNK_SIZE ; 
- int /*<<< orphan*/  GL_FALSE ; 
- float chunk_distance (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  chunk_visible (float**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int chunked (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  draw_chunk (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ensure_chunks (TYPE_2__*) ; 
- int /*<<< orphan*/  frustum_planes (float**,float,float*) ; 
- TYPE_7__* g ; 
- float get_daylight () ; 
- int /*<<< orphan*/  glUniform1f (int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glUniform3f (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniformMatrix4fv (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_matrix_3d (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,float) ; 
- float time_of_day () ; 
+
+ float CHUNK_SIZE ;
+ int GL_FALSE ;
+ float chunk_distance (TYPE_3__*,int,int) ;
+ int chunk_visible (float**,int ,int ,int ,int ) ;
+ int chunked (int ) ;
+ int draw_chunk (TYPE_4__*,TYPE_3__*) ;
+ int ensure_chunks (TYPE_2__*) ;
+ int frustum_planes (float**,float,float*) ;
+ TYPE_7__* g ;
+ float get_daylight () ;
+ int glUniform1f (int ,float) ;
+ int glUniform1i (int ,int) ;
+ int glUniform3f (int ,int ,int ,int ) ;
+ int glUniformMatrix4fv (int ,int,int ,float*) ;
+ int glUseProgram (int ) ;
+ int set_matrix_3d (float*,int ,int ,int ,int ,int ,int ,int ,int ,int,float) ;
+ float time_of_day () ;
 
 int render_chunks(Attrib *attrib, Player *player) {
     int result = 0;

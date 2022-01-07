@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t maxcount; TYPE_1__* strings; } ;
-typedef  TYPE_2__ string_table ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_4__ {int len; int /*<<< orphan*/  const* data; int /*<<< orphan*/  nonpersistent_refcount; int /*<<< orphan*/  persistent_refcount; } ;
+typedef TYPE_2__ string_table ;
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_4__ {int len; int const* data; int nonpersistent_refcount; int persistent_refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* szEmpty ; 
+
+ int const* szEmpty ;
 
 const WCHAR *msi_string_lookup( const string_table *st, UINT id, int *len )
 {
@@ -29,10 +29,10 @@ const WCHAR *msi_string_lookup( const string_table *st, UINT id, int *len )
         return szEmpty;
     }
     if( id >= st->maxcount )
-        return NULL;
+        return ((void*)0);
 
     if( id && !st->strings[id].persistent_refcount && !st->strings[id].nonpersistent_refcount)
-        return NULL;
+        return ((void*)0);
 
     if (len) *len = st->strings[id].len;
 

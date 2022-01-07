@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned char u8 ;
-struct TYPE_6__ {scalar_t__ nOverflow; unsigned char* aData; int hdrOffset; int cellOffset; int nCell; int nFree; int /*<<< orphan*/  pDbPage; TYPE_1__* pBt; } ;
-struct TYPE_5__ {int usableSize; int /*<<< orphan*/  pPager; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_2__ MemPage ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_MAX_PAGE_SIZE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int cellSizePtr (TYPE_2__*,unsigned char*) ; 
- int get2byte (unsigned char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  put2byte (unsigned char*,int) ; 
- int sqlite3PagerIswriteable (int /*<<< orphan*/ ) ; 
- unsigned char* sqlite3PagerTempSpace (int /*<<< orphan*/ ) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef unsigned char u8 ;
+struct TYPE_6__ {scalar_t__ nOverflow; unsigned char* aData; int hdrOffset; int cellOffset; int nCell; int nFree; int pDbPage; TYPE_1__* pBt; } ;
+struct TYPE_5__ {int usableSize; int pPager; int mutex; } ;
+typedef TYPE_2__ MemPage ;
+
+
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_MAX_PAGE_SIZE ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int cellSizePtr (TYPE_2__*,unsigned char*) ;
+ int get2byte (unsigned char*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int memset (unsigned char*,int ,int) ;
+ int put2byte (unsigned char*,int) ;
+ int sqlite3PagerIswriteable (int ) ;
+ unsigned char* sqlite3PagerTempSpace (int ) ;
+ int sqlite3_mutex_held (int ) ;
+ int testcase (int) ;
 
 __attribute__((used)) static int defragmentPage(MemPage *pPage){
-  int i;                     /* Loop counter */
-  int pc;                    /* Address of a i-th cell */
-  int hdr;                   /* Offset to the page header */
-  int size;                  /* Size of a cell */
-  int usableSize;            /* Number of usable bytes on a page */
-  int cellOffset;            /* Offset to the cell pointer array */
-  int cbrk;                  /* Offset to the cell content area */
-  int nCell;                 /* Number of cells on the page */
-  unsigned char *data;       /* The page data */
-  unsigned char *temp;       /* Temp area for cell content */
-  int iCellFirst;            /* First allowable cell index */
-  int iCellLast;             /* Last possible cell index */
+  int i;
+  int pc;
+  int hdr;
+  int size;
+  int usableSize;
+  int cellOffset;
+  int cbrk;
+  int nCell;
+  unsigned char *data;
+  unsigned char *temp;
+  int iCellFirst;
+  int iCellLast;
 
 
   assert( sqlite3PagerIswriteable(pPage->pDbPage) );
@@ -65,31 +65,31 @@ __attribute__((used)) static int defragmentPage(MemPage *pPage){
   iCellFirst = cellOffset + 2*nCell;
   iCellLast = usableSize - 4;
   for(i=0; i<nCell; i++){
-    u8 *pAddr;     /* The i-th cell pointer */
+    u8 *pAddr;
     pAddr = &data[cellOffset + i*2];
     pc = get2byte(pAddr);
     testcase( pc==iCellFirst );
     testcase( pc==iCellLast );
-#if !defined(SQLITE_ENABLE_OVERSIZE_CELL_CHECK)
-    /* These conditions have already been verified in btreeInitPage()
-    ** if SQLITE_ENABLE_OVERSIZE_CELL_CHECK is defined 
-    */
+
+
+
+
     if( pc<iCellFirst || pc>iCellLast ){
       return SQLITE_CORRUPT_BKPT;
     }
-#endif
+
     assert( pc>=iCellFirst && pc<=iCellLast );
     size = cellSizePtr(pPage, &temp[pc]);
     cbrk -= size;
-#if defined(SQLITE_ENABLE_OVERSIZE_CELL_CHECK)
-    if( cbrk<iCellFirst ){
-      return SQLITE_CORRUPT_BKPT;
-    }
-#else
+
+
+
+
+
     if( cbrk<iCellFirst || pc+size>usableSize ){
       return SQLITE_CORRUPT_BKPT;
     }
-#endif
+
     assert( cbrk+size<=usableSize && cbrk>=iCellFirst );
     testcase( cbrk+size==usableSize );
     testcase( pc+size==usableSize );

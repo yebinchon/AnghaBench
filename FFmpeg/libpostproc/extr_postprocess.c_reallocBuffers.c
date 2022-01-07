@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-struct TYPE_3__ {int stride; int qpStride; int* yHistogram; int /*<<< orphan*/  forcedQPTable; int /*<<< orphan*/  stdQPTable; int /*<<< orphan*/  nonBQPTable; int /*<<< orphan*/  deintTemp; int /*<<< orphan*/ * tempBlurredPast; int /*<<< orphan*/ * tempBlurred; int /*<<< orphan*/  tempBlocks; int /*<<< orphan*/  tempSrc; int /*<<< orphan*/  tempDst; } ;
-typedef  TYPE_1__ PPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  reallocAlign (void**,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int int8_t ;
+struct TYPE_3__ {int stride; int qpStride; int* yHistogram; int forcedQPTable; int stdQPTable; int nonBQPTable; int deintTemp; int * tempBlurredPast; int * tempBlurred; int tempBlocks; int tempSrc; int tempDst; } ;
+typedef TYPE_1__ PPContext ;
+
+
+ int reallocAlign (void**,int) ;
 
 __attribute__((used)) static void reallocBuffers(PPContext *c, int width, int height, int stride, int qpStride){
     int mbWidth = (width+15)>>4;
@@ -35,9 +35,9 @@ __attribute__((used)) static void reallocBuffers(PPContext *c, int width, int he
             c->yHistogram[i]= width*height/64*15/256;
 
     for(i=0; i<3; i++){
-        //Note: The +17*1024 is just there so I do not have to worry about r/w over the end.
+
         reallocAlign((void **)&c->tempBlurred[i], stride*mbHeight*16 + 17*1024);
-        reallocAlign((void **)&c->tempBlurredPast[i], 256*((height+7)&(~7))/2 + 17*1024);//FIXME size
+        reallocAlign((void **)&c->tempBlurredPast[i], 256*((height+7)&(~7))/2 + 17*1024);
     }
 
     reallocAlign((void **)&c->deintTemp, 2*width+32);

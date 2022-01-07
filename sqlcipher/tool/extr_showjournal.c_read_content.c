@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  db ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,...) ; 
- scalar_t__ fread (unsigned char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- unsigned char* malloc (int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  out_of_memory () ; 
- int /*<<< orphan*/  stderr ; 
+ int SEEK_SET ;
+ int db ;
+ int fprintf (int ,char*,int,int,...) ;
+ scalar_t__ fread (unsigned char*,int,int,int ) ;
+ int fseek (int ,int,int ) ;
+ unsigned char* malloc (int) ;
+ int memset (unsigned char*,int ,int) ;
+ int out_of_memory () ;
+ int stderr ;
 
 __attribute__((used)) static unsigned char *read_content(int N, int iOfst){
   int got;

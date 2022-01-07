@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int TDF_SLIM ; 
- int /*<<< orphan*/  TDI_class ; 
- int /*<<< orphan*/  TFF_PLAIN_IDENTIFIER ; 
- int /*<<< orphan*/  dump_array (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * dump_begin (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  dump_end (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- char* type_as_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int FILE ;
+
+
+ int TDF_SLIM ;
+ int TDI_class ;
+ int TFF_PLAIN_IDENTIFIER ;
+ int dump_array (int *,int ) ;
+ int * dump_begin (int ,int*) ;
+ int dump_end (int ,int *) ;
+ int fprintf (int *,char*,...) ;
+ char* type_as_string (int ,int ) ;
 
 __attribute__((used)) static void
 dump_vtt (tree t, tree vtt)
@@ -35,7 +35,7 @@ dump_vtt (tree t, tree vtt)
   if (!(flags & TDF_SLIM))
     {
       fprintf (stream, "VTT for %s\n",
-	       type_as_string (t, TFF_PLAIN_IDENTIFIER));
+        type_as_string (t, TFF_PLAIN_IDENTIFIER));
       dump_array (stream, vtt);
       fprintf (stream, "\n");
     }

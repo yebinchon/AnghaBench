@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ff_asf_guid ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int ff_asf_guid ;
+typedef int AVIOContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int av_assert0 (int) ;
+ int avio_read (int *,int ,int) ;
+ int memset (int ,int ,int) ;
 
 int ff_get_guid(AVIOContext *s, ff_asf_guid *g)
 {
     int ret;
-    av_assert0(sizeof(*g) == 16); //compiler will optimize this out
+    av_assert0(sizeof(*g) == 16);
     ret = avio_read(s, *g, sizeof(*g));
     if (ret < (int)sizeof(*g)) {
         memset(*g, 0, sizeof(*g));

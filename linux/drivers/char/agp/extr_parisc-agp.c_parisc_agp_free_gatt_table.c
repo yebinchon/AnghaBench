@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct agp_bridge_data {int dummy; } ;
-struct _parisc_agp_info {int /*<<< orphan*/ * gatt; } ;
+struct _parisc_agp_info {int * gatt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SBA_AGPGART_COOKIE ; 
- struct _parisc_agp_info parisc_agp_info ; 
+
+ int SBA_AGPGART_COOKIE ;
+ struct _parisc_agp_info parisc_agp_info ;
 
 __attribute__((used)) static int
 parisc_agp_free_gatt_table(struct agp_bridge_data *bridge)
 {
-	struct _parisc_agp_info *info = &parisc_agp_info;
+ struct _parisc_agp_info *info = &parisc_agp_info;
 
-	info->gatt[0] = SBA_AGPGART_COOKIE;
+ info->gatt[0] = SBA_AGPGART_COOKIE;
 
-	return 0;
+ return 0;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_event_loop_handle_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ esp_event_loop_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  vTaskSuspend (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int esp_event_loop_handle_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int ESP_LOGD (int ,char*,int ) ;
+ int ESP_LOGE (int ,char*,int ) ;
+ scalar_t__ ESP_OK ;
+ int TAG ;
+ scalar_t__ esp_event_loop_run (int ,int ) ;
+ int portMAX_DELAY ;
+ int vTaskSuspend (int *) ;
 
 __attribute__((used)) static void esp_event_loop_run_task(void* args)
 {
@@ -37,5 +37,5 @@ __attribute__((used)) static void esp_event_loop_run_task(void* args)
     }
 
     ESP_LOGE(TAG, "suspended task for loop %p", event_loop);
-    vTaskSuspend(NULL);
+    vTaskSuspend(((void*)0));
 }

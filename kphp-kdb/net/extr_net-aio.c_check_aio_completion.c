@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct conn_query {TYPE_4__* cq_type; struct conn_query* next; } ;
 struct aiocb {int dummy; } ;
-struct aio_connection {int fd; struct aio_connection* cb; struct conn_query* first_query; TYPE_3__* next; TYPE_2__* prev; TYPE_1__* type; int /*<<< orphan*/  last_query; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* close ) (struct conn_query*) ;int /*<<< orphan*/  (* complete ) (struct conn_query*) ;} ;
+struct aio_connection {int fd; struct aio_connection* cb; struct conn_query* first_query; TYPE_3__* next; TYPE_2__* prev; TYPE_1__* type; int last_query; } ;
+struct TYPE_8__ {int (* close ) (struct conn_query*) ;int (* complete ) (struct conn_query*) ;} ;
 struct TYPE_7__ {TYPE_2__* prev; } ;
 struct TYPE_6__ {TYPE_3__* next; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* wakeup_aio ) (struct connection*,int) ;} ;
+struct TYPE_5__ {int (* wakeup_aio ) (struct connection*,int) ;} ;
 
-/* Variables and functions */
- scalar_t__ AIO_NOTCANCELED ; 
- int EINPROGRESS ; 
- scalar_t__ aio_cancel (int,struct aio_connection*) ; 
- int aio_error (struct aio_connection*) ; 
- scalar_t__ aio_errors_verbosity ; 
- int aio_return (struct aio_connection*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
- int /*<<< orphan*/  stub1 (struct connection*,int) ; 
- int /*<<< orphan*/  stub2 (struct conn_query*) ; 
- int /*<<< orphan*/  stub3 (struct conn_query*) ; 
- int verbosity ; 
- int /*<<< orphan*/  zfree (struct aio_connection*,int) ; 
+
+ scalar_t__ AIO_NOTCANCELED ;
+ int EINPROGRESS ;
+ scalar_t__ aio_cancel (int,struct aio_connection*) ;
+ int aio_error (struct aio_connection*) ;
+ scalar_t__ aio_errors_verbosity ;
+ int aio_return (struct aio_connection*) ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ char* strerror (int) ;
+ int stub1 (struct connection*,int) ;
+ int stub2 (struct conn_query*) ;
+ int stub3 (struct conn_query*) ;
+ int verbosity ;
+ int zfree (struct aio_connection*,int) ;
 
 int check_aio_completion (struct aio_connection *a) {
 
@@ -49,7 +49,7 @@ int check_aio_completion (struct aio_connection *a) {
   errno = 0;
 
   int err = aio_error (a->cb);
-  
+
   if (err == EINPROGRESS) {
     if (verbosity > 1) {
       fprintf (stderr, "aio_query %p in progress...\n", a);
@@ -90,7 +90,7 @@ int check_aio_completion (struct aio_connection *a) {
 
   for (tmp = a->first_query; tmp != (struct conn_query *)a; tmp = tnext) {
     tnext = tmp->next;
-//    fprintf (stderr, "scanning aio_completion %p,next = %p\n", tmp, tnext);
+
     if (res >= 0) {
       tmp->cq_type->complete (tmp);
     } else {

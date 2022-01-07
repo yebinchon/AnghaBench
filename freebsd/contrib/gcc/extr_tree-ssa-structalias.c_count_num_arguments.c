@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
 
-/* Variables and functions */
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- int /*<<< orphan*/  TREE_TYPE (scalar_t__) ; 
- scalar_t__ TREE_VALUE (scalar_t__) ; 
- scalar_t__ TYPE_ARG_TYPES (int /*<<< orphan*/ ) ; 
- scalar_t__ void_type_node ; 
+
+
+
+typedef scalar_t__ tree ;
+
+
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ int TREE_TYPE (scalar_t__) ;
+ scalar_t__ TREE_VALUE (scalar_t__) ;
+ scalar_t__ TYPE_ARG_TYPES (int ) ;
+ scalar_t__ void_type_node ;
 
 __attribute__((used)) static unsigned int
 count_num_arguments (tree decl, bool *is_varargs)
@@ -30,11 +30,11 @@ count_num_arguments (tree decl, bool *is_varargs)
        t = TREE_CHAIN (t))
     {
       if (TREE_VALUE (t) == void_type_node)
-	break;
+ break;
       i++;
     }
 
   if (!t)
-    *is_varargs = true;
+    *is_varargs = 1;
   return i;
 }

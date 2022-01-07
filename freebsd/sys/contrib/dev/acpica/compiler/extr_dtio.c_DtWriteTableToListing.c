@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
-struct TYPE_2__ {int /*<<< orphan*/  Handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_FREE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACPI_RAW_TABLE_DATA_HEADER ; 
- int /*<<< orphan*/  ASL_FILE_AML_OUTPUT ; 
- size_t ASL_FILE_LISTING_OUTPUT ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsRedirectOutput (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiUtDumpBuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* AslGbl_Files ; 
- int /*<<< orphan*/  AslGbl_ListingFlag ; 
- int /*<<< orphan*/  AslGbl_TableLength ; 
- int /*<<< orphan*/  DB_BYTE_DISPLAY ; 
- int /*<<< orphan*/  FlReadFile (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FlSeekFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * UtLocalCalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
+struct TYPE_2__ {int Handle; } ;
+
+
+ int ACPI_FREE (int *) ;
+ int ACPI_RAW_TABLE_DATA_HEADER ;
+ int ASL_FILE_AML_OUTPUT ;
+ size_t ASL_FILE_LISTING_OUTPUT ;
+ int AcpiOsPrintf (char*,int ,int ,int ) ;
+ int AcpiOsRedirectOutput (int ) ;
+ int AcpiUtDumpBuffer (int *,int ,int ,int ) ;
+ TYPE_1__* AslGbl_Files ;
+ int AslGbl_ListingFlag ;
+ int AslGbl_TableLength ;
+ int DB_BYTE_DISPLAY ;
+ int FlReadFile (int ,int *,int ) ;
+ int FlSeekFile (int ,int ) ;
+ int * UtLocalCalloc (int ) ;
+ int stdout ;
 
 void
 DtWriteTableToListing (
     void)
 {
-    UINT8                   *Buffer;
+    UINT8 *Buffer;
 
 
     if (!AslGbl_ListingFlag)
@@ -43,13 +43,13 @@ DtWriteTableToListing (
         return;
     }
 
-    /* Read the entire table from the output file */
+
 
     Buffer = UtLocalCalloc (AslGbl_TableLength);
     FlSeekFile (ASL_FILE_AML_OUTPUT, 0);
     FlReadFile (ASL_FILE_AML_OUTPUT, Buffer, AslGbl_TableLength);
 
-    /* Dump the raw table data */
+
 
     AcpiOsRedirectOutput (AslGbl_Files[ASL_FILE_LISTING_OUTPUT].Handle);
 

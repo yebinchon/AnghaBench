@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- scalar_t__ StrCmpi (char*,char*) ; 
- scalar_t__ StrLen (char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+
+
+ scalar_t__ StrCmpi (char*,char*) ;
+ scalar_t__ StrLen (char*) ;
 
 bool EndWith(char *str, char *key)
 {
-	UINT str_len;
-	UINT key_len;
-	// Validate arguments
-	if (str == NULL || key == NULL)
-	{
-		return false;
-	}
+ UINT str_len;
+ UINT key_len;
 
-	// Comparison
-	str_len = StrLen(str);
-	key_len = StrLen(key);
-	if (str_len < key_len)
-	{
-		return false;
-	}
+ if (str == ((void*)0) || key == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (StrCmpi(str + (str_len - key_len), key) == 0)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+
+ str_len = StrLen(str);
+ key_len = StrLen(key);
+ if (str_len < key_len)
+ {
+  return 0;
+ }
+
+ if (StrCmpi(str + (str_len - key_len), key) == 0)
+ {
+  return 1;
+ }
+ else
+ {
+  return 0;
+ }
 }

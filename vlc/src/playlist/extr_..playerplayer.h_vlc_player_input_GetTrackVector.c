@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_track_vector ;
-struct vlc_player_input {int /*<<< orphan*/  spu_track_vector; int /*<<< orphan*/  audio_track_vector; int /*<<< orphan*/  video_track_vector; } ;
-typedef  enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
 
-/* Variables and functions */
-#define  AUDIO_ES 130 
-#define  SPU_ES 129 
-#define  VIDEO_ES 128 
+
+
+
+typedef int vlc_player_track_vector ;
+struct vlc_player_input {int spu_track_vector; int audio_track_vector; int video_track_vector; } ;
+typedef enum es_format_category_e { ____Placeholder_es_format_category_e } es_format_category_e ;
+
+
+
+
+
 
 __attribute__((used)) static inline vlc_player_track_vector *
 vlc_player_input_GetTrackVector(struct vlc_player_input *input,
@@ -25,13 +25,13 @@ vlc_player_input_GetTrackVector(struct vlc_player_input *input,
 {
     switch (cat)
     {
-        case VIDEO_ES:
+        case 128:
             return &input->video_track_vector;
-        case AUDIO_ES:
+        case 130:
             return &input->audio_track_vector;
-        case SPU_ES:
+        case 129:
             return &input->spu_track_vector;
         default:
-            return NULL;
+            return ((void*)0);
     }
 }

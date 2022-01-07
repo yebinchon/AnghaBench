@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ZSTD_dictContentType_e ;
-struct TYPE_3__ {int entropyPresent; int dictSize; char const* dictContent; int /*<<< orphan*/  entropy; void* dictID; } ;
-typedef  TYPE_1__ ZSTD_DDict ;
-typedef  scalar_t__ U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_E (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ERROR (int /*<<< orphan*/ ) ; 
- void* MEM_readLE32 (char const*) ; 
- int ZSTD_FRAMEIDSIZE ; 
- scalar_t__ const ZSTD_MAGIC_DICTIONARY ; 
- scalar_t__ ZSTD_dct_fullDict ; 
- scalar_t__ ZSTD_dct_rawContent ; 
- int /*<<< orphan*/  ZSTD_loadDEntropy (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  dictionary_corrupted ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ZSTD_dictContentType_e ;
+struct TYPE_3__ {int entropyPresent; int dictSize; char const* dictContent; int entropy; void* dictID; } ;
+typedef TYPE_1__ ZSTD_DDict ;
+typedef scalar_t__ U32 ;
+
+
+ int CHECK_E (int ,int ) ;
+ size_t ERROR (int ) ;
+ void* MEM_readLE32 (char const*) ;
+ int ZSTD_FRAMEIDSIZE ;
+ scalar_t__ const ZSTD_MAGIC_DICTIONARY ;
+ scalar_t__ ZSTD_dct_fullDict ;
+ scalar_t__ ZSTD_dct_rawContent ;
+ int ZSTD_loadDEntropy (int *,char const*,int) ;
+ int dictionary_corrupted ;
 
 __attribute__((used)) static size_t
 ZSTD_loadEntropy_intoDDict(ZSTD_DDict* ddict,
@@ -37,19 +37,19 @@ ZSTD_loadEntropy_intoDDict(ZSTD_DDict* ddict,
 
     if (ddict->dictSize < 8) {
         if (dictContentType == ZSTD_dct_fullDict)
-            return ERROR(dictionary_corrupted);   /* only accept specified dictionaries */
-        return 0;   /* pure content mode */
+            return ERROR(dictionary_corrupted);
+        return 0;
     }
-    {   U32 const magic = MEM_readLE32(ddict->dictContent);
+    { U32 const magic = MEM_readLE32(ddict->dictContent);
         if (magic != ZSTD_MAGIC_DICTIONARY) {
             if (dictContentType == ZSTD_dct_fullDict)
-                return ERROR(dictionary_corrupted);   /* only accept specified dictionaries */
-            return 0;   /* pure content mode */
+                return ERROR(dictionary_corrupted);
+            return 0;
         }
     }
     ddict->dictID = MEM_readLE32((const char*)ddict->dictContent + ZSTD_FRAMEIDSIZE);
 
-    /* load entropy tables */
+
     CHECK_E( ZSTD_loadDEntropy(&ddict->entropy,
                                 ddict->dictContent, ddict->dictSize),
              dictionary_corrupted );

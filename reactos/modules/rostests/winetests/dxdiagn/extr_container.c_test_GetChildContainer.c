@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  void IDxDiagContainer ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDxDiagContainer_EnumChildContainerNames (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDxDiagContainer_GetChildContainer (void*,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDxDiagContainer_Release (void*) ; 
- int /*<<< orphan*/  IDxDiagProvider_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  create_root_IDxDiagContainer () ; 
- int /*<<< orphan*/  ok (int,char*,void*,...) ; 
- void* pddc ; 
- int /*<<< orphan*/  pddp ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef void IDxDiagContainer ;
+typedef int HRESULT ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int ) ;
+ int IDxDiagContainer_EnumChildContainerNames (void*,int ,int *,int ) ;
+ int IDxDiagContainer_GetChildContainer (void*,int *,void**) ;
+ int IDxDiagContainer_Release (void*) ;
+ int IDxDiagProvider_Release (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int create_root_IDxDiagContainer () ;
+ int ok (int,char*,void*,...) ;
+ void* pddc ;
+ int pddp ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_GetChildContainer(void)
 {
@@ -42,18 +42,18 @@ __attribute__((used)) static void test_GetChildContainer(void)
         return;
     }
 
-    /* Test various combinations of invalid parameters. */
-    hr = IDxDiagContainer_GetChildContainer(pddc, NULL, NULL);
+
+    hr = IDxDiagContainer_GetChildContainer(pddc, ((void*)0), ((void*)0));
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::GetChildContainer to return E_INVALIDARG, got 0x%08x\n", hr);
 
     child = (void*)0xdeadbeef;
-    hr = IDxDiagContainer_GetChildContainer(pddc, NULL, &child);
+    hr = IDxDiagContainer_GetChildContainer(pddc, ((void*)0), &child);
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::GetChildContainer to return E_INVALIDARG, got 0x%08x\n", hr);
     ok(child == (void*)0xdeadbeef, "Expected output pointer to be unchanged, got %p\n", child);
 
-    hr = IDxDiagContainer_GetChildContainer(pddc, container, NULL);
+    hr = IDxDiagContainer_GetChildContainer(pddc, container, ((void*)0));
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::GetChildContainer to return E_INVALIDARG, got 0x%08x\n", hr);
 
@@ -61,9 +61,9 @@ __attribute__((used)) static void test_GetChildContainer(void)
     hr = IDxDiagContainer_GetChildContainer(pddc, container, &child);
     ok(hr == E_INVALIDARG,
        "Expected IDxDiagContainer::GetChildContainer to return E_INVALIDARG, got 0x%08x\n", hr);
-    ok(child == NULL, "Expected output pointer to be NULL, got %p\n", child);
+    ok(child == ((void*)0), "Expected output pointer to be NULL, got %p\n", child);
 
-    /* Get the name of a suitable child container. */
+
     hr = IDxDiagContainer_EnumChildContainerNames(pddc, 0, container, ARRAY_SIZE(container));
     ok(hr == S_OK,
        "Expected IDxDiagContainer::EnumChildContainerNames to return S_OK, got 0x%08x\n", hr);
@@ -77,14 +77,14 @@ __attribute__((used)) static void test_GetChildContainer(void)
     hr = IDxDiagContainer_GetChildContainer(pddc, container, &child);
     ok(hr == S_OK,
        "Expected IDxDiagContainer::GetChildContainer to return S_OK, got 0x%08x\n", hr);
-    ok(child != NULL && child != (void*)0xdeadbeef, "Expected a valid output pointer, got %p\n", child);
+    ok(child != ((void*)0) && child != (void*)0xdeadbeef, "Expected a valid output pointer, got %p\n", child);
 
     if (SUCCEEDED(hr))
     {
         IDxDiagContainer *ptr;
 
-        /* Show that IDxDiagContainer::GetChildContainer returns a different pointer
-         * for multiple calls for the same container name. */
+
+
         hr = IDxDiagContainer_GetChildContainer(pddc, container, &ptr);
         ok(hr == S_OK,
            "Expected IDxDiagContainer::GetChildContainer to return S_OK, got 0x%08x\n", hr);

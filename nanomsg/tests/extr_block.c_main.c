@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_thread {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- int /*<<< orphan*/  NN_PAIR ; 
- int /*<<< orphan*/  SOCKET_ADDRESS ; 
- int /*<<< orphan*/  nn_thread_init (struct nn_thread*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_thread_term (struct nn_thread*) ; 
- int /*<<< orphan*/  sb ; 
- int /*<<< orphan*/  sc ; 
- int /*<<< orphan*/  test_bind (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_connect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_recv (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  worker ; 
+
+ int AF_SP ;
+ int NN_PAIR ;
+ int SOCKET_ADDRESS ;
+ int nn_thread_init (struct nn_thread*,int ,int *) ;
+ int nn_thread_term (struct nn_thread*) ;
+ int sb ;
+ int sc ;
+ int test_bind (int ,int ) ;
+ int test_close (int ) ;
+ int test_connect (int ,int ) ;
+ int test_recv (int ,char*) ;
+ int test_socket (int ,int ) ;
+ int worker ;
 
 int main ()
 {
@@ -36,7 +36,7 @@ int main ()
     sc = test_socket (AF_SP, NN_PAIR);
     test_connect (sc, SOCKET_ADDRESS);
 
-    nn_thread_init (&thread, worker, NULL);
+    nn_thread_init (&thread, worker, ((void*)0));
 
     test_recv (sb, "ABC");
     test_recv (sb, "ABC");

@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ SID_IDENTIFIER_AUTHORITY ;
-typedef  int /*<<< orphan*/  PSID ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AllocateAndInitializeSid (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CheckTokenMembership (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  DOMAIN_ALIAS_RID_ADMINS ; 
- int /*<<< orphan*/  DOMAIN_ALIAS_RID_POWER_USERS ; 
- int /*<<< orphan*/  FreeSid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SECURITY_BUILTIN_DOMAIN_RID ; 
- int /*<<< orphan*/  SECURITY_NT_AUTHORITY ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int member_0; } ;
+typedef TYPE_1__ SID_IDENTIFIER_AUTHORITY ;
+typedef int PSID ;
+typedef scalar_t__ BOOL ;
+
+
+ int AllocateAndInitializeSid (TYPE_1__*,int,int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ int CheckTokenMembership (int *,int ,scalar_t__*) ;
+ int DOMAIN_ALIAS_RID_ADMINS ;
+ int DOMAIN_ALIAS_RID_POWER_USERS ;
+ int FreeSid (int ) ;
+ int GetLastError () ;
+ int SECURITY_BUILTIN_DOMAIN_RID ;
+ int SECURITY_NT_AUTHORITY ;
+ int _ (char*) ;
+ int exit (int) ;
+ int log_error (int ,int ) ;
 
 int
 pgwin32_is_admin(void)
 {
-	PSID		AdministratorsSid;
-	PSID		PowerUsersSid;
-	SID_IDENTIFIER_AUTHORITY NtAuthority = {SECURITY_NT_AUTHORITY};
-	BOOL		IsAdministrators;
-	BOOL		IsPowerUsers;
+ PSID AdministratorsSid;
+ PSID PowerUsersSid;
+ SID_IDENTIFIER_AUTHORITY NtAuthority = {SECURITY_NT_AUTHORITY};
+ BOOL IsAdministrators;
+ BOOL IsPowerUsers;
 
-	if (!AllocateAndInitializeSid(&NtAuthority, 2,
-								  SECURITY_BUILTIN_DOMAIN_RID,
-								  DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0,
-								  0, &AdministratorsSid))
-	{
-		log_error(_("could not get SID for Administrators group: error code %lu\n"),
-				  GetLastError());
-		exit(1);
-	}
+ if (!AllocateAndInitializeSid(&NtAuthority, 2,
+          SECURITY_BUILTIN_DOMAIN_RID,
+          DOMAIN_ALIAS_RID_ADMINS, 0, 0, 0, 0, 0,
+          0, &AdministratorsSid))
+ {
+  log_error(_("could not get SID for Administrators group: error code %lu\n"),
+      GetLastError());
+  exit(1);
+ }
 
-	if (!AllocateAndInitializeSid(&NtAuthority, 2,
-								  SECURITY_BUILTIN_DOMAIN_RID,
-								  DOMAIN_ALIAS_RID_POWER_USERS, 0, 0, 0, 0, 0,
-								  0, &PowerUsersSid))
-	{
-		log_error(_("could not get SID for PowerUsers group: error code %lu\n"),
-				  GetLastError());
-		exit(1);
-	}
+ if (!AllocateAndInitializeSid(&NtAuthority, 2,
+          SECURITY_BUILTIN_DOMAIN_RID,
+          DOMAIN_ALIAS_RID_POWER_USERS, 0, 0, 0, 0, 0,
+          0, &PowerUsersSid))
+ {
+  log_error(_("could not get SID for PowerUsers group: error code %lu\n"),
+      GetLastError());
+  exit(1);
+ }
 
-	if (!CheckTokenMembership(NULL, AdministratorsSid, &IsAdministrators) ||
-		!CheckTokenMembership(NULL, PowerUsersSid, &IsPowerUsers))
-	{
-		log_error(_("could not check access token membership: error code %lu\n"),
-				  GetLastError());
-		exit(1);
-	}
+ if (!CheckTokenMembership(((void*)0), AdministratorsSid, &IsAdministrators) ||
+  !CheckTokenMembership(((void*)0), PowerUsersSid, &IsPowerUsers))
+ {
+  log_error(_("could not check access token membership: error code %lu\n"),
+      GetLastError());
+  exit(1);
+ }
 
-	FreeSid(AdministratorsSid);
-	FreeSid(PowerUsersSid);
+ FreeSid(AdministratorsSid);
+ FreeSid(PowerUsersSid);
 
-	if (IsAdministrators || IsPowerUsers)
-		return 1;
-	else
-		return 0;
+ if (IsAdministrators || IsPowerUsers)
+  return 1;
+ else
+  return 0;
 }

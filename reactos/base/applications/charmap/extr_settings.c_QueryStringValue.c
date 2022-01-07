@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  scalar_t__ LPCTSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- int REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int RegOpenKey (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ **) ; 
- int RegQueryValueEx (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  _T (char) ; 
+
+
+
+typedef int * LPTSTR ;
+typedef scalar_t__ LPCTSTR ;
+typedef int LPBYTE ;
+typedef int LONG ;
+typedef int * HKEY ;
+typedef int DWORD ;
+
+
+ int ERROR_SUCCESS ;
+ int REG_SZ ;
+ int RegCloseKey (int *) ;
+ int RegOpenKey (int *,scalar_t__,int **) ;
+ int RegQueryValueEx (int *,scalar_t__,int *,int*,int ,int*) ;
+ int _T (char) ;
 
 LONG QueryStringValue(HKEY hKey, LPCTSTR lpSubKey, LPCTSTR lpValueName, LPTSTR pszBuffer, DWORD dwBufferLen)
 {
     LONG lResult;
-    HKEY hSubKey = NULL;
+    HKEY hSubKey = ((void*)0);
     DWORD cbData, dwType;
 
     if (lpSubKey)
@@ -40,7 +40,7 @@ LONG QueryStringValue(HKEY hKey, LPCTSTR lpSubKey, LPCTSTR lpValueName, LPTSTR p
     }
 
     cbData = (dwBufferLen - 1) * sizeof(*pszBuffer);
-    lResult = RegQueryValueEx(hKey, lpValueName, NULL, &dwType, (LPBYTE) pszBuffer, &cbData);
+    lResult = RegQueryValueEx(hKey, lpValueName, ((void*)0), &dwType, (LPBYTE) pszBuffer, &cbData);
     if (lResult != ERROR_SUCCESS)
         goto done;
     if (dwType != REG_SZ)

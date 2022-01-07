@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int* q_prev; int /*<<< orphan*/ * std_val; } ;
-typedef  TYPE_1__ event ;
 
-/* Variables and functions */
- int FN ; 
- int* map_int_int_add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int* map_ll_int_add (int /*<<< orphan*/ *,long long) ; 
- int /*<<< orphan*/ * q_st_int ; 
- int /*<<< orphan*/ * q_st_ll ; 
- scalar_t__* std_t ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int* q_prev; int * std_val; } ;
+typedef TYPE_1__ event ;
+
+
+ int FN ;
+ int* map_int_int_add (int *,int ) ;
+ int* map_ll_int_add (int *,long long) ;
+ int * q_st_int ;
+ int * q_st_ll ;
+ scalar_t__* std_t ;
 
 void upd_q_st_add (event *e, int id) {
   int i;

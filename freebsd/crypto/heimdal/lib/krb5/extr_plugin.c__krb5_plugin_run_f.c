@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iter_ctx {char const* name; int min_version; int /*<<< orphan*/  ret; int /*<<< orphan*/ * n; int /*<<< orphan*/ * result; void* userctx; int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ,void const*,void*,void*) ;int /*<<< orphan*/  context; } ;
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  int /*<<< orphan*/ * heim_string_t ;
-typedef  int /*<<< orphan*/ * heim_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEIMDAL_MUTEX_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEIMDAL_MUTEX_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KRB5_PLUGIN_NO_HANDLE ; 
- int /*<<< orphan*/  eval_results ; 
- int /*<<< orphan*/ * heim_array_create () ; 
- int /*<<< orphan*/  heim_array_iterate_f (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct iter_ctx*) ; 
- int /*<<< orphan*/ * heim_dict_copy_value (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heim_dict_iterate_f (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct iter_ctx*) ; 
- int /*<<< orphan*/  heim_release (int /*<<< orphan*/ *) ; 
- void* heim_string_create (char const*) ; 
- int /*<<< orphan*/  modules ; 
- int /*<<< orphan*/  plugin_mutex ; 
- int /*<<< orphan*/  search_modules ; 
+
+
+
+struct iter_ctx {char const* name; int min_version; int ret; int * n; int * result; void* userctx; int (* func ) (int ,void const*,void*,void*) ;int context; } ;
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+typedef int * heim_string_t ;
+typedef int * heim_dict_t ;
+
+
+ int HEIMDAL_MUTEX_lock (int *) ;
+ int HEIMDAL_MUTEX_unlock (int *) ;
+ int KRB5_PLUGIN_NO_HANDLE ;
+ int eval_results ;
+ int * heim_array_create () ;
+ int heim_array_iterate_f (int *,int ,struct iter_ctx*) ;
+ int * heim_dict_copy_value (int ,int *) ;
+ int heim_dict_iterate_f (int *,int ,struct iter_ctx*) ;
+ int heim_release (int *) ;
+ void* heim_string_create (char const*) ;
+ int modules ;
+ int plugin_mutex ;
+ int search_modules ;
 
 krb5_error_code
 _krb5_plugin_run_f(krb5_context context,
-		   const char *module,
-		   const char *name,
-		   int min_version,
-		   int flags,
-		   void *userctx,
-		   krb5_error_code (*func)(krb5_context, const void *, void *, void *))
+     const char *module,
+     const char *name,
+     int min_version,
+     int flags,
+     void *userctx,
+     krb5_error_code (*func)(krb5_context, const void *, void *, void *))
 {
     heim_string_t m = heim_string_create(module);
     heim_dict_t dict;
@@ -48,9 +48,9 @@ _krb5_plugin_run_f(krb5_context context,
 
     dict = heim_dict_copy_value(modules, m);
     heim_release(m);
-    if (dict == NULL) {
-	HEIMDAL_MUTEX_unlock(&plugin_mutex);
-	return KRB5_PLUGIN_NO_HANDLE;
+    if (dict == ((void*)0)) {
+ HEIMDAL_MUTEX_unlock(&plugin_mutex);
+ return KRB5_PLUGIN_NO_HANDLE;
     }
 
     s.context = context;

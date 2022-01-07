@@ -1,212 +1,212 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TransactionId ;
-struct TYPE_12__ {scalar_t__ t_tableOid; int /*<<< orphan*/  t_self; TYPE_1__* t_data; } ;
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int TransactionId ;
+struct TYPE_12__ {scalar_t__ t_tableOid; int t_self; TYPE_1__* t_data; } ;
 struct TYPE_11__ {int t_infomask; } ;
-typedef  int /*<<< orphan*/  Snapshot ;
-typedef  TYPE_1__* HeapTupleHeader ;
-typedef  TYPE_2__* HeapTuple ;
-typedef  int /*<<< orphan*/  Buffer ;
+typedef int Snapshot ;
+typedef TYPE_1__* HeapTupleHeader ;
+typedef TYPE_2__* HeapTuple ;
+typedef int Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int HEAP_MOVED_IN ; 
- int HEAP_MOVED_OFF ; 
- int HEAP_XMAX_COMMITTED ; 
- int HEAP_XMAX_INVALID ; 
- scalar_t__ HEAP_XMAX_IS_LOCKED_ONLY (int) ; 
- int HEAP_XMAX_IS_MULTI ; 
- int HEAP_XMIN_COMMITTED ; 
- int HEAP_XMIN_INVALID ; 
- int /*<<< orphan*/  HeapTupleGetUpdateXid (TYPE_1__*) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawXmax (TYPE_1__*) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetRawXmin (TYPE_1__*) ; 
- int /*<<< orphan*/  HeapTupleHeaderGetXvac (TYPE_1__*) ; 
- int /*<<< orphan*/  HeapTupleHeaderXminCommitted (TYPE_1__*) ; 
- scalar_t__ HeapTupleHeaderXminInvalid (TYPE_1__*) ; 
- scalar_t__ InvalidOid ; 
- int /*<<< orphan*/  InvalidTransactionId ; 
- int ItemPointerIsValid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetHintBits (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ TransactionIdDidCommit (int /*<<< orphan*/ ) ; 
- scalar_t__ TransactionIdIsCurrentTransactionId (int /*<<< orphan*/ ) ; 
- scalar_t__ TransactionIdIsInProgress (int /*<<< orphan*/ ) ; 
- int TransactionIdIsValid (int /*<<< orphan*/ ) ; 
+
+ int Assert (int) ;
+ int HEAP_MOVED_IN ;
+ int HEAP_MOVED_OFF ;
+ int HEAP_XMAX_COMMITTED ;
+ int HEAP_XMAX_INVALID ;
+ scalar_t__ HEAP_XMAX_IS_LOCKED_ONLY (int) ;
+ int HEAP_XMAX_IS_MULTI ;
+ int HEAP_XMIN_COMMITTED ;
+ int HEAP_XMIN_INVALID ;
+ int HeapTupleGetUpdateXid (TYPE_1__*) ;
+ int HeapTupleHeaderGetRawXmax (TYPE_1__*) ;
+ int HeapTupleHeaderGetRawXmin (TYPE_1__*) ;
+ int HeapTupleHeaderGetXvac (TYPE_1__*) ;
+ int HeapTupleHeaderXminCommitted (TYPE_1__*) ;
+ scalar_t__ HeapTupleHeaderXminInvalid (TYPE_1__*) ;
+ scalar_t__ InvalidOid ;
+ int InvalidTransactionId ;
+ int ItemPointerIsValid (int *) ;
+ int SetHintBits (TYPE_1__*,int ,int,int ) ;
+ scalar_t__ TransactionIdDidCommit (int ) ;
+ scalar_t__ TransactionIdIsCurrentTransactionId (int ) ;
+ scalar_t__ TransactionIdIsInProgress (int ) ;
+ int TransactionIdIsValid (int ) ;
 
 __attribute__((used)) static bool
 HeapTupleSatisfiesSelf(HeapTuple htup, Snapshot snapshot, Buffer buffer)
 {
-	HeapTupleHeader tuple = htup->t_data;
+ HeapTupleHeader tuple = htup->t_data;
 
-	Assert(ItemPointerIsValid(&htup->t_self));
-	Assert(htup->t_tableOid != InvalidOid);
+ Assert(ItemPointerIsValid(&htup->t_self));
+ Assert(htup->t_tableOid != InvalidOid);
 
-	if (!HeapTupleHeaderXminCommitted(tuple))
-	{
-		if (HeapTupleHeaderXminInvalid(tuple))
-			return false;
+ if (!HeapTupleHeaderXminCommitted(tuple))
+ {
+  if (HeapTupleHeaderXminInvalid(tuple))
+   return 0;
 
-		/* Used by pre-9.0 binary upgrades */
-		if (tuple->t_infomask & HEAP_MOVED_OFF)
-		{
-			TransactionId xvac = HeapTupleHeaderGetXvac(tuple);
 
-			if (TransactionIdIsCurrentTransactionId(xvac))
-				return false;
-			if (!TransactionIdIsInProgress(xvac))
-			{
-				if (TransactionIdDidCommit(xvac))
-				{
-					SetHintBits(tuple, buffer, HEAP_XMIN_INVALID,
-								InvalidTransactionId);
-					return false;
-				}
-				SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
-							InvalidTransactionId);
-			}
-		}
-		/* Used by pre-9.0 binary upgrades */
-		else if (tuple->t_infomask & HEAP_MOVED_IN)
-		{
-			TransactionId xvac = HeapTupleHeaderGetXvac(tuple);
+  if (tuple->t_infomask & HEAP_MOVED_OFF)
+  {
+   TransactionId xvac = HeapTupleHeaderGetXvac(tuple);
 
-			if (!TransactionIdIsCurrentTransactionId(xvac))
-			{
-				if (TransactionIdIsInProgress(xvac))
-					return false;
-				if (TransactionIdDidCommit(xvac))
-					SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
-								InvalidTransactionId);
-				else
-				{
-					SetHintBits(tuple, buffer, HEAP_XMIN_INVALID,
-								InvalidTransactionId);
-					return false;
-				}
-			}
-		}
-		else if (TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmin(tuple)))
-		{
-			if (tuple->t_infomask & HEAP_XMAX_INVALID)	/* xid invalid */
-				return true;
+   if (TransactionIdIsCurrentTransactionId(xvac))
+    return 0;
+   if (!TransactionIdIsInProgress(xvac))
+   {
+    if (TransactionIdDidCommit(xvac))
+    {
+     SetHintBits(tuple, buffer, HEAP_XMIN_INVALID,
+        InvalidTransactionId);
+     return 0;
+    }
+    SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
+       InvalidTransactionId);
+   }
+  }
 
-			if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))	/* not deleter */
-				return true;
+  else if (tuple->t_infomask & HEAP_MOVED_IN)
+  {
+   TransactionId xvac = HeapTupleHeaderGetXvac(tuple);
 
-			if (tuple->t_infomask & HEAP_XMAX_IS_MULTI)
-			{
-				TransactionId xmax;
+   if (!TransactionIdIsCurrentTransactionId(xvac))
+   {
+    if (TransactionIdIsInProgress(xvac))
+     return 0;
+    if (TransactionIdDidCommit(xvac))
+     SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
+        InvalidTransactionId);
+    else
+    {
+     SetHintBits(tuple, buffer, HEAP_XMIN_INVALID,
+        InvalidTransactionId);
+     return 0;
+    }
+   }
+  }
+  else if (TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmin(tuple)))
+  {
+   if (tuple->t_infomask & HEAP_XMAX_INVALID)
+    return 1;
 
-				xmax = HeapTupleGetUpdateXid(tuple);
+   if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
+    return 1;
 
-				/* not LOCKED_ONLY, so it has to have an xmax */
-				Assert(TransactionIdIsValid(xmax));
+   if (tuple->t_infomask & HEAP_XMAX_IS_MULTI)
+   {
+    TransactionId xmax;
 
-				/* updating subtransaction must have aborted */
-				if (!TransactionIdIsCurrentTransactionId(xmax))
-					return true;
-				else
-					return false;
-			}
+    xmax = HeapTupleGetUpdateXid(tuple);
 
-			if (!TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmax(tuple)))
-			{
-				/* deleting subtransaction must have aborted */
-				SetHintBits(tuple, buffer, HEAP_XMAX_INVALID,
-							InvalidTransactionId);
-				return true;
-			}
 
-			return false;
-		}
-		else if (TransactionIdIsInProgress(HeapTupleHeaderGetRawXmin(tuple)))
-			return false;
-		else if (TransactionIdDidCommit(HeapTupleHeaderGetRawXmin(tuple)))
-			SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
-						HeapTupleHeaderGetRawXmin(tuple));
-		else
-		{
-			/* it must have aborted or crashed */
-			SetHintBits(tuple, buffer, HEAP_XMIN_INVALID,
-						InvalidTransactionId);
-			return false;
-		}
-	}
+    Assert(TransactionIdIsValid(xmax));
 
-	/* by here, the inserting transaction has committed */
 
-	if (tuple->t_infomask & HEAP_XMAX_INVALID)	/* xid invalid or aborted */
-		return true;
+    if (!TransactionIdIsCurrentTransactionId(xmax))
+     return 1;
+    else
+     return 0;
+   }
 
-	if (tuple->t_infomask & HEAP_XMAX_COMMITTED)
-	{
-		if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
-			return true;
-		return false;			/* updated by other */
-	}
+   if (!TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmax(tuple)))
+   {
 
-	if (tuple->t_infomask & HEAP_XMAX_IS_MULTI)
-	{
-		TransactionId xmax;
+    SetHintBits(tuple, buffer, HEAP_XMAX_INVALID,
+       InvalidTransactionId);
+    return 1;
+   }
 
-		if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
-			return true;
+   return 0;
+  }
+  else if (TransactionIdIsInProgress(HeapTupleHeaderGetRawXmin(tuple)))
+   return 0;
+  else if (TransactionIdDidCommit(HeapTupleHeaderGetRawXmin(tuple)))
+   SetHintBits(tuple, buffer, HEAP_XMIN_COMMITTED,
+      HeapTupleHeaderGetRawXmin(tuple));
+  else
+  {
 
-		xmax = HeapTupleGetUpdateXid(tuple);
+   SetHintBits(tuple, buffer, HEAP_XMIN_INVALID,
+      InvalidTransactionId);
+   return 0;
+  }
+ }
 
-		/* not LOCKED_ONLY, so it has to have an xmax */
-		Assert(TransactionIdIsValid(xmax));
 
-		if (TransactionIdIsCurrentTransactionId(xmax))
-			return false;
-		if (TransactionIdIsInProgress(xmax))
-			return true;
-		if (TransactionIdDidCommit(xmax))
-			return false;
-		/* it must have aborted or crashed */
-		return true;
-	}
 
-	if (TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmax(tuple)))
-	{
-		if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
-			return true;
-		return false;
-	}
+ if (tuple->t_infomask & HEAP_XMAX_INVALID)
+  return 1;
 
-	if (TransactionIdIsInProgress(HeapTupleHeaderGetRawXmax(tuple)))
-		return true;
+ if (tuple->t_infomask & HEAP_XMAX_COMMITTED)
+ {
+  if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
+   return 1;
+  return 0;
+ }
 
-	if (!TransactionIdDidCommit(HeapTupleHeaderGetRawXmax(tuple)))
-	{
-		/* it must have aborted or crashed */
-		SetHintBits(tuple, buffer, HEAP_XMAX_INVALID,
-					InvalidTransactionId);
-		return true;
-	}
+ if (tuple->t_infomask & HEAP_XMAX_IS_MULTI)
+ {
+  TransactionId xmax;
 
-	/* xmax transaction committed */
+  if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
+   return 1;
 
-	if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
-	{
-		SetHintBits(tuple, buffer, HEAP_XMAX_INVALID,
-					InvalidTransactionId);
-		return true;
-	}
+  xmax = HeapTupleGetUpdateXid(tuple);
 
-	SetHintBits(tuple, buffer, HEAP_XMAX_COMMITTED,
-				HeapTupleHeaderGetRawXmax(tuple));
-	return false;
+
+  Assert(TransactionIdIsValid(xmax));
+
+  if (TransactionIdIsCurrentTransactionId(xmax))
+   return 0;
+  if (TransactionIdIsInProgress(xmax))
+   return 1;
+  if (TransactionIdDidCommit(xmax))
+   return 0;
+
+  return 1;
+ }
+
+ if (TransactionIdIsCurrentTransactionId(HeapTupleHeaderGetRawXmax(tuple)))
+ {
+  if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
+   return 1;
+  return 0;
+ }
+
+ if (TransactionIdIsInProgress(HeapTupleHeaderGetRawXmax(tuple)))
+  return 1;
+
+ if (!TransactionIdDidCommit(HeapTupleHeaderGetRawXmax(tuple)))
+ {
+
+  SetHintBits(tuple, buffer, HEAP_XMAX_INVALID,
+     InvalidTransactionId);
+  return 1;
+ }
+
+
+
+ if (HEAP_XMAX_IS_LOCKED_ONLY(tuple->t_infomask))
+ {
+  SetHintBits(tuple, buffer, HEAP_XMAX_INVALID,
+     InvalidTransactionId);
+  return 1;
+ }
+
+ SetHintBits(tuple, buffer, HEAP_XMAX_COMMITTED,
+    HeapTupleHeaderGetRawXmax(tuple));
+ return 0;
 }

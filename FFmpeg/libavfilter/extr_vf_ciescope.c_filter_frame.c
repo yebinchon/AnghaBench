@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_20__ {TYPE_4__** outputs; TYPE_2__* priv; } ;
 struct TYPE_19__ {int w; int h; TYPE_5__* dst; } ;
-struct TYPE_18__ {int* linesize; int height; int width; scalar_t__* data; int /*<<< orphan*/  pts; } ;
-struct TYPE_17__ {int intensity; int background; scalar_t__ cie; int /*<<< orphan*/  gamuts; int /*<<< orphan*/  color_system; scalar_t__ show_white; TYPE_1__* f; int /*<<< orphan*/  (* filter ) (TYPE_5__*,TYPE_3__*,double*,double*,int,int) ;} ;
+struct TYPE_18__ {int* linesize; int height; int width; scalar_t__* data; int pts; } ;
+struct TYPE_17__ {int intensity; int background; scalar_t__ cie; int gamuts; int color_system; scalar_t__ show_white; TYPE_1__* f; int (* filter ) (TYPE_5__*,TYPE_3__*,double*,double*,int,int) ;} ;
 struct TYPE_16__ {int* linesize; scalar_t__* data; } ;
-typedef  TYPE_2__ CiescopeContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_2__ CiescopeContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int,int) ; 
- scalar_t__ LUV ; 
- scalar_t__ UCS ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int draw_background (TYPE_5__*) ; 
- int ff_filter_frame (TYPE_4__*,TYPE_3__*) ; 
- TYPE_3__* ff_get_video_buffer (TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  plot_gamuts (int*,int,int,int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plot_white_point (int*,int,int,int,int,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (TYPE_5__*,TYPE_3__*,double*,double*,int,int) ; 
- int /*<<< orphan*/  xy_to_upvp (double,double,double*,double*) ; 
- int /*<<< orphan*/  xy_to_uv (double,double,double*,double*) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMIN (int,int) ;
+ scalar_t__ LUV ;
+ scalar_t__ UCS ;
+ int av_frame_free (TYPE_3__**) ;
+ int draw_background (TYPE_5__*) ;
+ int ff_filter_frame (TYPE_4__*,TYPE_3__*) ;
+ TYPE_3__* ff_get_video_buffer (TYPE_4__*,int,int) ;
+ int memset (scalar_t__,int ,int) ;
+ int plot_gamuts (int*,int,int,int,scalar_t__,int ) ;
+ int plot_white_point (int*,int,int,int,int,int ,scalar_t__) ;
+ int stub1 (TYPE_5__*,TYPE_3__*,double*,double*,int,int) ;
+ int xy_to_upvp (double,double,double*,double*) ;
+ int xy_to_uv (double,double,double*,double*) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {
-    AVFilterContext *ctx  = inlink->dst;
+    AVFilterContext *ctx = inlink->dst;
     CiescopeContext *s = ctx->priv;
     AVFilterLink *outlink = ctx->outputs[0];
     int i = s->intensity * 65535;

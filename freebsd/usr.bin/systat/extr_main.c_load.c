@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CMDLINE ; 
- int /*<<< orphan*/ * avenrun ; 
- int /*<<< orphan*/  clrtoeol () ; 
- int /*<<< orphan*/  getloadavg (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvprintw (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nitems (int /*<<< orphan*/ *) ; 
+ int CMDLINE ;
+ int * avenrun ;
+ int clrtoeol () ;
+ int getloadavg (int *,int ) ;
+ int mvprintw (int ,int ,char*,int ,int ,int ) ;
+ int nitems (int *) ;
 
 void
 load(void)
 {
 
-	(void) getloadavg(avenrun, nitems(avenrun));
-	mvprintw(CMDLINE, 0, "%4.1f %4.1f %4.1f",
-	    avenrun[0], avenrun[1], avenrun[2]);
-	clrtoeol();
+ (void) getloadavg(avenrun, nitems(avenrun));
+ mvprintw(CMDLINE, 0, "%4.1f %4.1f %4.1f",
+     avenrun[0], avenrun[1], avenrun[2]);
+ clrtoeol();
 }

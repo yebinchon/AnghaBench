@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct file_prop_baton_t {int /*<<< orphan*/  result_pool; int /*<<< orphan*/  props; int /*<<< orphan*/  sha1_checksum; int /*<<< orphan*/  kind; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_error_t ;
+struct file_prop_baton_t {int result_pool; int props; int sha1_checksum; int kind; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- char* SVN_DAV_PROP_NS_DAV ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_node_file ; 
- char* svn_ra_serf__svnname_from_wirename (char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_string_dup (TYPE_1__ const*,int /*<<< orphan*/ ) ; 
+
+ char* SVN_DAV_PROP_NS_DAV ;
+ int * SVN_NO_ERROR ;
+ int apr_pstrdup (int ,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int svn_hash_sets (int ,char const*,int ) ;
+ int svn_node_dir ;
+ int svn_node_file ;
+ char* svn_ra_serf__svnname_from_wirename (char const*,char const*,int ) ;
+ int svn_string_dup (TYPE_1__ const*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 get_file_prop_cb(void *baton,

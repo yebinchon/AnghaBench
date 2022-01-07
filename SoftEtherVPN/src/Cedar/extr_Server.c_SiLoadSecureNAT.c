@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VH_OPTION ;
-struct TYPE_4__ {int /*<<< orphan*/  SecureNATOption; } ;
-typedef  TYPE_1__ HUB ;
-typedef  int /*<<< orphan*/  FOLDER ;
 
-/* Variables and functions */
- scalar_t__ CfgGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Copy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  EnableSecureNAT (TYPE_1__*,int) ; 
- int /*<<< orphan*/  NiLoadVhOptionEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VH_OPTION ;
+struct TYPE_4__ {int SecureNATOption; } ;
+typedef TYPE_1__ HUB ;
+typedef int FOLDER ;
+
+
+ scalar_t__ CfgGetBool (int *,char*) ;
+ int Copy (int ,int *,int) ;
+ int EnableSecureNAT (TYPE_1__*,int) ;
+ int NiLoadVhOptionEx (int *,int *) ;
 
 void SiLoadSecureNAT(HUB *h, FOLDER *f)
 {
-	VH_OPTION o;
-	// Validate arguments
-	if (h == NULL || f == NULL)
-	{
-		return;
-	}
+ VH_OPTION o;
 
-	// Read the VH_OPTION
-	NiLoadVhOptionEx(&o, f);
+ if (h == ((void*)0) || f == ((void*)0))
+ {
+  return;
+ }
 
-	// Set the VH_OPTION
-	Copy(h->SecureNATOption, &o, sizeof(VH_OPTION));
 
-	EnableSecureNAT(h, CfgGetBool(f, "Disabled") ? false : true);
+ NiLoadVhOptionEx(&o, f);
+
+
+ Copy(h->SecureNATOption, &o, sizeof(VH_OPTION));
+
+ EnableSecureNAT(h, CfgGetBool(f, "Disabled") ? 0 : 1);
 }

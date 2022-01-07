@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* store_palette ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_2__* store_palette ;
 struct TYPE_8__ {scalar_t__ is_transparent; int npalette; TYPE_1__* palette; } ;
-typedef  TYPE_3__ standard_display ;
-typedef  int /*<<< orphan*/  png_infop ;
-typedef  int /*<<< orphan*/  png_const_structp ;
+typedef TYPE_3__ standard_display ;
+typedef int png_infop ;
+typedef int png_const_structp ;
 struct TYPE_7__ {scalar_t__ red; scalar_t__ green; scalar_t__ blue; scalar_t__ alpha; } ;
 struct TYPE_6__ {scalar_t__ red; scalar_t__ green; scalar_t__ blue; scalar_t__ alpha; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ read_palette (TYPE_2__*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t safecat (char*,int,size_t,char*) ; 
- size_t safecatn (char*,int,size_t,int) ; 
+
+ int png_error (int ,char*) ;
+ scalar_t__ read_palette (TYPE_2__*,int*,int ,int ) ;
+ size_t safecat (char*,int,size_t,char*) ;
+ size_t safecatn (char*,int,size_t,int) ;
 
 __attribute__((used)) static void
 standard_palette_validate(standard_display *dp, png_const_structp pp,
@@ -50,7 +50,7 @@ standard_palette_validate(standard_display *dp, png_const_structp pp,
    }
 
    {
-      int i = npalette; /* npalette is aliased */
+      int i = npalette;
 
       while (--i >= 0)
          if (palette[i].red != dp->palette[i].red ||

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_3__ {int nIter; int nWrite; int nRange; int /*<<< orphan*/  defn; } ;
-typedef  TYPE_1__ Datatest2 ;
-typedef  int /*<<< orphan*/  Datasource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_CONFIG_AUTOFLUSH ; 
- int LSM_OK ; 
- int MIN (int,int) ; 
- int /*<<< orphan*/  lsm_config (scalar_t__,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ tdb_lsm (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testCaseFinish (int) ; 
- int /*<<< orphan*/  testCaseNDot () ; 
- int /*<<< orphan*/  testCaseProgress (int,int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  testClose (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testCompareDb (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int testControlDb (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testDatasourceEntry (int /*<<< orphan*/ *,int,void**,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  testDatasourceFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * testDatasourceNew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testDeleteRange (int /*<<< orphan*/ *,void*,int,void*,int,int*) ; 
- int /*<<< orphan*/  testFree (void*) ; 
- void* testMallocCopy (void*,int) ; 
- int /*<<< orphan*/ * testOpen (char const*,int,int*) ; 
- int /*<<< orphan*/  testReopen (int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  testReopenRecover (int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  testWriteDatasource (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int TestDb ;
+struct TYPE_3__ {int nIter; int nWrite; int nRange; int defn; } ;
+typedef TYPE_1__ Datatest2 ;
+typedef int Datasource ;
+
+
+ int LSM_CONFIG_AUTOFLUSH ;
+ int LSM_OK ;
+ int MIN (int,int) ;
+ int lsm_config (scalar_t__,int ,int*) ;
+ scalar_t__ tdb_lsm (int *) ;
+ int testCaseFinish (int) ;
+ int testCaseNDot () ;
+ int testCaseProgress (int,int,int ,int*) ;
+ int testClose (int **) ;
+ int testCompareDb (int *,int,int,int *,int *,int*) ;
+ int testControlDb (int **) ;
+ int testDatasourceEntry (int *,int,void**,int*,int ,int ) ;
+ int testDatasourceFree (int *) ;
+ int * testDatasourceNew (int *) ;
+ int testDeleteRange (int *,void*,int,void*,int,int*) ;
+ int testFree (void*) ;
+ void* testMallocCopy (void*,int) ;
+ int * testOpen (char const*,int,int*) ;
+ int testReopen (int **,int*) ;
+ int testReopenRecover (int **,int*) ;
+ int testWriteDatasource (int *,int *,int,int*) ;
 
 __attribute__((used)) static void doDataTest2(
-  const char *zSystem,            /* Database system to test */
+  const char *zSystem,
   int bRecover,
-  Datatest2 *p,                   /* Structure containing test parameters */
-  int *pRc                        /* OUT: Error code */
+  Datatest2 *p,
+  int *pRc
 ){
   TestDb *pDb;
   TestDb *pControl;
@@ -52,7 +52,7 @@ __attribute__((used)) static void doDataTest2(
   int rc = LSM_OK;
   int iDot = 0;
 
-  /* Start the test case, open a database and allocate the datasource. */
+
   pDb = testOpen(zSystem, 1, &rc);
   pData = testDatasourceNew(&p->defn);
   rc = testControlDb(&pControl);
@@ -90,7 +90,7 @@ __attribute__((used)) static void doDataTest2(
     }
     testCompareDb(pData, nRange, i, pControl, pDb, &rc);
 
-    /* Update the progress dots... */
+
     testCaseProgress(i, p->nIter, testCaseNDot(), &iDot);
   }
 

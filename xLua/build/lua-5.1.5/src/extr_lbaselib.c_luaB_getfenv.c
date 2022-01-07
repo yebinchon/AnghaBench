@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_GLOBALSINDEX ; 
- int /*<<< orphan*/  getfunc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_getfenv (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_iscfunction (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_GLOBALSINDEX ;
+ int getfunc (int *,int) ;
+ int lua_getfenv (int *,int) ;
+ scalar_t__ lua_iscfunction (int *,int) ;
+ int lua_pushvalue (int *,int ) ;
 
 __attribute__((used)) static int luaB_getfenv (lua_State *L) {
   getfunc(L, 1);
-  if (lua_iscfunction(L, -1))  /* is a C function? */
-    lua_pushvalue(L, LUA_GLOBALSINDEX);  /* return the thread's global env. */
+  if (lua_iscfunction(L, -1))
+    lua_pushvalue(L, LUA_GLOBALSINDEX);
   else
     lua_getfenv(L, -1);
   return 1;

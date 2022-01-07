@@ -1,323 +1,312 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fb_info {scalar_t__ screen_size; int /*<<< orphan*/  device; struct cirrusfb_info* par; } ;
-struct cirrusfb_info {size_t btype; int /*<<< orphan*/  regbase; } ;
+
+
+
+
+struct fb_info {scalar_t__ screen_size; int device; struct cirrusfb_info* par; } ;
+struct cirrusfb_info {size_t btype; int regbase; } ;
 struct cirrusfb_board_info_rec {int sr07; scalar_t__ init_sr07; } ;
-
-/* Variables and functions */
-#define  BT_ALPINE 136 
-#define  BT_GD5480 135 
-#define  BT_LAGUNA 134 
-#define  BT_LAGUNAB 133 
-#define  BT_PICASSO 132 
-#define  BT_PICASSO4 131 
-#define  BT_PICCOLO 130 
-#define  BT_SD64 129 
-#define  BT_SPECTRUM 128 
- int /*<<< orphan*/  CL_CRT1B ; 
- int /*<<< orphan*/  CL_CRT51 ; 
- int /*<<< orphan*/  CL_GR2F ; 
- int /*<<< orphan*/  CL_GR31 ; 
- int /*<<< orphan*/  CL_GR33 ; 
- int /*<<< orphan*/  CL_GRB ; 
- int /*<<< orphan*/  CL_GRC ; 
- int /*<<< orphan*/  CL_GRD ; 
- int /*<<< orphan*/  CL_GRE ; 
- int /*<<< orphan*/  CL_POS102 ; 
- int /*<<< orphan*/  CL_SEQR10 ; 
- int /*<<< orphan*/  CL_SEQR11 ; 
- int /*<<< orphan*/  CL_SEQR12 ; 
- int /*<<< orphan*/  CL_SEQR13 ; 
- int /*<<< orphan*/  CL_SEQR16 ; 
- int /*<<< orphan*/  CL_SEQR17 ; 
- int /*<<< orphan*/  CL_SEQR18 ; 
- int /*<<< orphan*/  CL_SEQR6 ; 
- int /*<<< orphan*/  CL_SEQR7 ; 
- int /*<<< orphan*/  CL_SEQRF ; 
- int /*<<< orphan*/  CL_VSSM ; 
- int /*<<< orphan*/  CL_VSSM2 ; 
- int /*<<< orphan*/  VGA_ATC_COLOR_PAGE ; 
- int /*<<< orphan*/  VGA_ATC_MODE ; 
- int /*<<< orphan*/  VGA_ATC_OVERSCAN ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE0 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE1 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE2 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE3 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE4 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE5 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE6 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE7 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE8 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTE9 ; 
- int /*<<< orphan*/  VGA_ATC_PALETTEA ; 
- int /*<<< orphan*/  VGA_ATC_PALETTEB ; 
- int /*<<< orphan*/  VGA_ATC_PALETTEC ; 
- int /*<<< orphan*/  VGA_ATC_PALETTED ; 
- int /*<<< orphan*/  VGA_ATC_PALETTEE ; 
- int /*<<< orphan*/  VGA_ATC_PALETTEF ; 
- int /*<<< orphan*/  VGA_ATC_PLANE_ENABLE ; 
- int /*<<< orphan*/  VGA_CRTC_CURSOR_END ; 
- int /*<<< orphan*/  VGA_CRTC_CURSOR_HI ; 
- int /*<<< orphan*/  VGA_CRTC_CURSOR_LO ; 
- int /*<<< orphan*/  VGA_CRTC_CURSOR_START ; 
- int /*<<< orphan*/  VGA_CRTC_PRESET_ROW ; 
- int /*<<< orphan*/  VGA_CRTC_UNDERLINE ; 
- int /*<<< orphan*/  VGA_GFX_BIT_MASK ; 
- int /*<<< orphan*/  VGA_GFX_COMPARE_MASK ; 
- int /*<<< orphan*/  VGA_GFX_COMPARE_VALUE ; 
- int /*<<< orphan*/  VGA_GFX_DATA_ROTATE ; 
- int /*<<< orphan*/  VGA_GFX_MISC ; 
- int /*<<< orphan*/  VGA_GFX_MODE ; 
- int /*<<< orphan*/  VGA_GFX_PLANE_READ ; 
- int /*<<< orphan*/  VGA_GFX_SR_ENABLE ; 
- int /*<<< orphan*/  VGA_GFX_SR_VALUE ; 
- int /*<<< orphan*/  VGA_PEL_MSK ; 
- int /*<<< orphan*/  VGA_SEQ_CHARACTER_MAP ; 
- int /*<<< orphan*/  VGA_SEQ_CLOCK_MODE ; 
- int /*<<< orphan*/  VGA_SEQ_MEMORY_MODE ; 
- int /*<<< orphan*/  VGA_SEQ_PLANE_WRITE ; 
- int /*<<< orphan*/  VGA_SEQ_RESET ; 
- int /*<<< orphan*/  WGen (struct cirrusfb_info*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  WHDR (struct cirrusfb_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WSFR (struct cirrusfb_info*,int) ; 
- int /*<<< orphan*/  WSFR2 (struct cirrusfb_info*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- struct cirrusfb_board_info_rec* cirrusfb_board_info ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ is_laguna (struct cirrusfb_info*) ; 
- int /*<<< orphan*/  mdelay (int) ; 
- int /*<<< orphan*/  udelay (int) ; 
- int /*<<< orphan*/  vga_wattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vga_wcrt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vga_wgfx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vga_wseq (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+ int CL_CRT1B ;
+ int CL_CRT51 ;
+ int CL_GR2F ;
+ int CL_GR31 ;
+ int CL_GR33 ;
+ int CL_GRB ;
+ int CL_GRC ;
+ int CL_GRD ;
+ int CL_GRE ;
+ int CL_POS102 ;
+ int CL_SEQR10 ;
+ int CL_SEQR11 ;
+ int CL_SEQR12 ;
+ int CL_SEQR13 ;
+ int CL_SEQR16 ;
+ int CL_SEQR17 ;
+ int CL_SEQR18 ;
+ int CL_SEQR6 ;
+ int CL_SEQR7 ;
+ int CL_SEQRF ;
+ int CL_VSSM ;
+ int CL_VSSM2 ;
+ int VGA_ATC_COLOR_PAGE ;
+ int VGA_ATC_MODE ;
+ int VGA_ATC_OVERSCAN ;
+ int VGA_ATC_PALETTE0 ;
+ int VGA_ATC_PALETTE1 ;
+ int VGA_ATC_PALETTE2 ;
+ int VGA_ATC_PALETTE3 ;
+ int VGA_ATC_PALETTE4 ;
+ int VGA_ATC_PALETTE5 ;
+ int VGA_ATC_PALETTE6 ;
+ int VGA_ATC_PALETTE7 ;
+ int VGA_ATC_PALETTE8 ;
+ int VGA_ATC_PALETTE9 ;
+ int VGA_ATC_PALETTEA ;
+ int VGA_ATC_PALETTEB ;
+ int VGA_ATC_PALETTEC ;
+ int VGA_ATC_PALETTED ;
+ int VGA_ATC_PALETTEE ;
+ int VGA_ATC_PALETTEF ;
+ int VGA_ATC_PLANE_ENABLE ;
+ int VGA_CRTC_CURSOR_END ;
+ int VGA_CRTC_CURSOR_HI ;
+ int VGA_CRTC_CURSOR_LO ;
+ int VGA_CRTC_CURSOR_START ;
+ int VGA_CRTC_PRESET_ROW ;
+ int VGA_CRTC_UNDERLINE ;
+ int VGA_GFX_BIT_MASK ;
+ int VGA_GFX_COMPARE_MASK ;
+ int VGA_GFX_COMPARE_VALUE ;
+ int VGA_GFX_DATA_ROTATE ;
+ int VGA_GFX_MISC ;
+ int VGA_GFX_MODE ;
+ int VGA_GFX_PLANE_READ ;
+ int VGA_GFX_SR_ENABLE ;
+ int VGA_GFX_SR_VALUE ;
+ int VGA_PEL_MSK ;
+ int VGA_SEQ_CHARACTER_MAP ;
+ int VGA_SEQ_CLOCK_MODE ;
+ int VGA_SEQ_MEMORY_MODE ;
+ int VGA_SEQ_PLANE_WRITE ;
+ int VGA_SEQ_RESET ;
+ int WGen (struct cirrusfb_info*,int ,int) ;
+ int WHDR (struct cirrusfb_info*,int ) ;
+ int WSFR (struct cirrusfb_info*,int) ;
+ int WSFR2 (struct cirrusfb_info*,int) ;
+ int assert (int) ;
+ struct cirrusfb_board_info_rec* cirrusfb_board_info ;
+ int dev_err (int ,char*) ;
+ scalar_t__ is_laguna (struct cirrusfb_info*) ;
+ int mdelay (int) ;
+ int udelay (int) ;
+ int vga_wattr (int ,int ,int) ;
+ int vga_wcrt (int ,int ,int) ;
+ int vga_wgfx (int ,int ,int) ;
+ int vga_wseq (int ,int ,int) ;
 
 __attribute__((used)) static void init_vgachip(struct fb_info *info)
 {
-	struct cirrusfb_info *cinfo = info->par;
-	const struct cirrusfb_board_info_rec *bi;
+ struct cirrusfb_info *cinfo = info->par;
+ const struct cirrusfb_board_info_rec *bi;
 
-	assert(cinfo != NULL);
+ assert(cinfo != ((void*)0));
 
-	bi = &cirrusfb_board_info[cinfo->btype];
+ bi = &cirrusfb_board_info[cinfo->btype];
 
-	/* reset board globally */
-	switch (cinfo->btype) {
-	case BT_PICCOLO:
-		WSFR(cinfo, 0x01);
-		udelay(500);
-		WSFR(cinfo, 0x51);
-		udelay(500);
-		break;
-	case BT_PICASSO:
-		WSFR2(cinfo, 0xff);
-		udelay(500);
-		break;
-	case BT_SD64:
-	case BT_SPECTRUM:
-		WSFR(cinfo, 0x1f);
-		udelay(500);
-		WSFR(cinfo, 0x4f);
-		udelay(500);
-		break;
-	case BT_PICASSO4:
-		/* disable flickerfixer */
-		vga_wcrt(cinfo->regbase, CL_CRT51, 0x00);
-		mdelay(100);
-		/* mode */
-		vga_wgfx(cinfo->regbase, CL_GR31, 0x00);
-	case BT_GD5480:  /* fall through */
-		/* from Klaus' NetBSD driver: */
-		vga_wgfx(cinfo->regbase, CL_GR2F, 0x00);
-	case BT_ALPINE:  /* fall through */
-		/* put blitter into 542x compat */
-		vga_wgfx(cinfo->regbase, CL_GR33, 0x00);
-		break;
 
-	case BT_LAGUNA:
-	case BT_LAGUNAB:
-		/* Nothing to do to reset the board. */
-		break;
+ switch (cinfo->btype) {
+ case 130:
+  WSFR(cinfo, 0x01);
+  udelay(500);
+  WSFR(cinfo, 0x51);
+  udelay(500);
+  break;
+ case 132:
+  WSFR2(cinfo, 0xff);
+  udelay(500);
+  break;
+ case 129:
+ case 128:
+  WSFR(cinfo, 0x1f);
+  udelay(500);
+  WSFR(cinfo, 0x4f);
+  udelay(500);
+  break;
+ case 131:
 
-	default:
-		dev_err(info->device, "Warning: Unknown board type\n");
-		break;
-	}
+  vga_wcrt(cinfo->regbase, CL_CRT51, 0x00);
+  mdelay(100);
 
-	/* make sure RAM size set by this point */
-	assert(info->screen_size > 0);
+  vga_wgfx(cinfo->regbase, CL_GR31, 0x00);
+ case 135:
 
-	/* the P4 is not fully initialized here; I rely on it having been */
-	/* inited under AmigaOS already, which seems to work just fine    */
-	/* (Klaus advised to do it this way)			      */
+  vga_wgfx(cinfo->regbase, CL_GR2F, 0x00);
+ case 136:
 
-	if (cinfo->btype != BT_PICASSO4) {
-		WGen(cinfo, CL_VSSM, 0x10);	/* EGS: 0x16 */
-		WGen(cinfo, CL_POS102, 0x01);
-		WGen(cinfo, CL_VSSM, 0x08);	/* EGS: 0x0e */
+  vga_wgfx(cinfo->regbase, CL_GR33, 0x00);
+  break;
 
-		if (cinfo->btype != BT_SD64)
-			WGen(cinfo, CL_VSSM2, 0x01);
+ case 134:
+ case 133:
 
-		/* reset sequencer logic */
-		vga_wseq(cinfo->regbase, VGA_SEQ_RESET, 0x03);
+  break;
 
-		/* FullBandwidth (video off) and 8/9 dot clock */
-		vga_wseq(cinfo->regbase, VGA_SEQ_CLOCK_MODE, 0x21);
+ default:
+  dev_err(info->device, "Warning: Unknown board type\n");
+  break;
+ }
 
-		/* "magic cookie" - doesn't make any sense to me.. */
-/*      vga_wgfx(cinfo->regbase, CL_GRA, 0xce);   */
-		/* unlock all extension registers */
-		vga_wseq(cinfo->regbase, CL_SEQR6, 0x12);
 
-		switch (cinfo->btype) {
-		case BT_GD5480:
-			vga_wseq(cinfo->regbase, CL_SEQRF, 0x98);
-			break;
-		case BT_ALPINE:
-		case BT_LAGUNA:
-		case BT_LAGUNAB:
-			break;
-		case BT_SD64:
-#ifdef CONFIG_ZORRO
-			vga_wseq(cinfo->regbase, CL_SEQRF, 0xb8);
-#endif
-			break;
-		default:
-			vga_wseq(cinfo->regbase, CL_SEQR16, 0x0f);
-			vga_wseq(cinfo->regbase, CL_SEQRF, 0xb0);
-			break;
-		}
-	}
-	/* plane mask: nothing */
-	vga_wseq(cinfo->regbase, VGA_SEQ_PLANE_WRITE, 0xff);
-	/* character map select: doesn't even matter in gx mode */
-	vga_wseq(cinfo->regbase, VGA_SEQ_CHARACTER_MAP, 0x00);
-	/* memory mode: chain4, ext. memory */
-	vga_wseq(cinfo->regbase, VGA_SEQ_MEMORY_MODE, 0x0a);
+ assert(info->screen_size > 0);
 
-	/* controller-internal base address of video memory */
-	if (bi->init_sr07)
-		vga_wseq(cinfo->regbase, CL_SEQR7, bi->sr07);
 
-	/*  vga_wseq(cinfo->regbase, CL_SEQR8, 0x00); */
-	/* EEPROM control: shouldn't be necessary to write to this at all.. */
 
-	/* graphics cursor X position (incomplete; position gives rem. 3 bits */
-	vga_wseq(cinfo->regbase, CL_SEQR10, 0x00);
-	/* graphics cursor Y position (..."... ) */
-	vga_wseq(cinfo->regbase, CL_SEQR11, 0x00);
-	/* graphics cursor attributes */
-	vga_wseq(cinfo->regbase, CL_SEQR12, 0x00);
-	/* graphics cursor pattern address */
-	vga_wseq(cinfo->regbase, CL_SEQR13, 0x00);
 
-	/* writing these on a P4 might give problems..  */
-	if (cinfo->btype != BT_PICASSO4) {
-		/* configuration readback and ext. color */
-		vga_wseq(cinfo->regbase, CL_SEQR17, 0x00);
-		/* signature generator */
-		vga_wseq(cinfo->regbase, CL_SEQR18, 0x02);
-	}
 
-	/* Screen A preset row scan: none */
-	vga_wcrt(cinfo->regbase, VGA_CRTC_PRESET_ROW, 0x00);
-	/* Text cursor start: disable text cursor */
-	vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_START, 0x20);
-	/* Text cursor end: - */
-	vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_END, 0x00);
-	/* text cursor location high: 0 */
-	vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_HI, 0x00);
-	/* text cursor location low: 0 */
-	vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_LO, 0x00);
+ if (cinfo->btype != 131) {
+  WGen(cinfo, CL_VSSM, 0x10);
+  WGen(cinfo, CL_POS102, 0x01);
+  WGen(cinfo, CL_VSSM, 0x08);
 
-	/* Underline Row scanline: - */
-	vga_wcrt(cinfo->regbase, VGA_CRTC_UNDERLINE, 0x00);
-	/* ### add 0x40 for text modes with > 30 MHz pixclock */
-	/* ext. display controls: ext.adr. wrap */
-	vga_wcrt(cinfo->regbase, CL_CRT1B, 0x02);
+  if (cinfo->btype != 129)
+   WGen(cinfo, CL_VSSM2, 0x01);
 
-	/* Set/Reset registes: - */
-	vga_wgfx(cinfo->regbase, VGA_GFX_SR_VALUE, 0x00);
-	/* Set/Reset enable: - */
-	vga_wgfx(cinfo->regbase, VGA_GFX_SR_ENABLE, 0x00);
-	/* Color Compare: - */
-	vga_wgfx(cinfo->regbase, VGA_GFX_COMPARE_VALUE, 0x00);
-	/* Data Rotate: - */
-	vga_wgfx(cinfo->regbase, VGA_GFX_DATA_ROTATE, 0x00);
-	/* Read Map Select: - */
-	vga_wgfx(cinfo->regbase, VGA_GFX_PLANE_READ, 0x00);
-	/* Mode: conf. for 16/4/2 color mode, no odd/even, read/write mode 0 */
-	vga_wgfx(cinfo->regbase, VGA_GFX_MODE, 0x00);
-	/* Miscellaneous: memory map base address, graphics mode */
-	vga_wgfx(cinfo->regbase, VGA_GFX_MISC, 0x01);
-	/* Color Don't care: involve all planes */
-	vga_wgfx(cinfo->regbase, VGA_GFX_COMPARE_MASK, 0x0f);
-	/* Bit Mask: no mask at all */
-	vga_wgfx(cinfo->regbase, VGA_GFX_BIT_MASK, 0xff);
 
-	if (cinfo->btype == BT_ALPINE || cinfo->btype == BT_SD64 ||
-	    is_laguna(cinfo))
-		/* (5434 can't have bit 3 set for bitblt) */
-		vga_wgfx(cinfo->regbase, CL_GRB, 0x20);
-	else
-	/* Graphics controller mode extensions: finer granularity,
-	 * 8byte data latches
-	 */
-		vga_wgfx(cinfo->regbase, CL_GRB, 0x28);
+  vga_wseq(cinfo->regbase, VGA_SEQ_RESET, 0x03);
 
-	vga_wgfx(cinfo->regbase, CL_GRC, 0xff);	/* Color Key compare: - */
-	vga_wgfx(cinfo->regbase, CL_GRD, 0x00);	/* Color Key compare mask: - */
-	vga_wgfx(cinfo->regbase, CL_GRE, 0x00);	/* Miscellaneous control: - */
-	/* Background color byte 1: - */
-	/*  vga_wgfx (cinfo->regbase, CL_GR10, 0x00); */
-	/*  vga_wgfx (cinfo->regbase, CL_GR11, 0x00); */
 
-	/* Attribute Controller palette registers: "identity mapping" */
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE0, 0x00);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE1, 0x01);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE2, 0x02);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE3, 0x03);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE4, 0x04);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE5, 0x05);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE6, 0x06);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE7, 0x07);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE8, 0x08);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTE9, 0x09);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTEA, 0x0a);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTEB, 0x0b);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTEC, 0x0c);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTED, 0x0d);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTEE, 0x0e);
-	vga_wattr(cinfo->regbase, VGA_ATC_PALETTEF, 0x0f);
+  vga_wseq(cinfo->regbase, VGA_SEQ_CLOCK_MODE, 0x21);
 
-	/* Attribute Controller mode: graphics mode */
-	vga_wattr(cinfo->regbase, VGA_ATC_MODE, 0x01);
-	/* Overscan color reg.: reg. 0 */
-	vga_wattr(cinfo->regbase, VGA_ATC_OVERSCAN, 0x00);
-	/* Color Plane enable: Enable all 4 planes */
-	vga_wattr(cinfo->regbase, VGA_ATC_PLANE_ENABLE, 0x0f);
-	/* Color Select: - */
-	vga_wattr(cinfo->regbase, VGA_ATC_COLOR_PAGE, 0x00);
 
-	WGen(cinfo, VGA_PEL_MSK, 0xff);	/* Pixel mask: no mask */
 
-	/* BLT Start/status: Blitter reset */
-	vga_wgfx(cinfo->regbase, CL_GR31, 0x04);
-	/* - " -	   : "end-of-reset" */
-	vga_wgfx(cinfo->regbase, CL_GR31, 0x00);
 
-	/* misc... */
-	WHDR(cinfo, 0);	/* Hidden DAC register: - */
-	return;
+  vga_wseq(cinfo->regbase, CL_SEQR6, 0x12);
+
+  switch (cinfo->btype) {
+  case 135:
+   vga_wseq(cinfo->regbase, CL_SEQRF, 0x98);
+   break;
+  case 136:
+  case 134:
+  case 133:
+   break;
+  case 129:
+
+
+
+   break;
+  default:
+   vga_wseq(cinfo->regbase, CL_SEQR16, 0x0f);
+   vga_wseq(cinfo->regbase, CL_SEQRF, 0xb0);
+   break;
+  }
+ }
+
+ vga_wseq(cinfo->regbase, VGA_SEQ_PLANE_WRITE, 0xff);
+
+ vga_wseq(cinfo->regbase, VGA_SEQ_CHARACTER_MAP, 0x00);
+
+ vga_wseq(cinfo->regbase, VGA_SEQ_MEMORY_MODE, 0x0a);
+
+
+ if (bi->init_sr07)
+  vga_wseq(cinfo->regbase, CL_SEQR7, bi->sr07);
+
+
+
+
+
+ vga_wseq(cinfo->regbase, CL_SEQR10, 0x00);
+
+ vga_wseq(cinfo->regbase, CL_SEQR11, 0x00);
+
+ vga_wseq(cinfo->regbase, CL_SEQR12, 0x00);
+
+ vga_wseq(cinfo->regbase, CL_SEQR13, 0x00);
+
+
+ if (cinfo->btype != 131) {
+
+  vga_wseq(cinfo->regbase, CL_SEQR17, 0x00);
+
+  vga_wseq(cinfo->regbase, CL_SEQR18, 0x02);
+ }
+
+
+ vga_wcrt(cinfo->regbase, VGA_CRTC_PRESET_ROW, 0x00);
+
+ vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_START, 0x20);
+
+ vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_END, 0x00);
+
+ vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_HI, 0x00);
+
+ vga_wcrt(cinfo->regbase, VGA_CRTC_CURSOR_LO, 0x00);
+
+
+ vga_wcrt(cinfo->regbase, VGA_CRTC_UNDERLINE, 0x00);
+
+
+ vga_wcrt(cinfo->regbase, CL_CRT1B, 0x02);
+
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_SR_VALUE, 0x00);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_SR_ENABLE, 0x00);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_COMPARE_VALUE, 0x00);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_DATA_ROTATE, 0x00);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_PLANE_READ, 0x00);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_MODE, 0x00);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_MISC, 0x01);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_COMPARE_MASK, 0x0f);
+
+ vga_wgfx(cinfo->regbase, VGA_GFX_BIT_MASK, 0xff);
+
+ if (cinfo->btype == 136 || cinfo->btype == 129 ||
+     is_laguna(cinfo))
+
+  vga_wgfx(cinfo->regbase, CL_GRB, 0x20);
+ else
+
+
+
+  vga_wgfx(cinfo->regbase, CL_GRB, 0x28);
+
+ vga_wgfx(cinfo->regbase, CL_GRC, 0xff);
+ vga_wgfx(cinfo->regbase, CL_GRD, 0x00);
+ vga_wgfx(cinfo->regbase, CL_GRE, 0x00);
+
+
+
+
+
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE0, 0x00);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE1, 0x01);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE2, 0x02);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE3, 0x03);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE4, 0x04);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE5, 0x05);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE6, 0x06);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE7, 0x07);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE8, 0x08);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTE9, 0x09);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTEA, 0x0a);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTEB, 0x0b);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTEC, 0x0c);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTED, 0x0d);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTEE, 0x0e);
+ vga_wattr(cinfo->regbase, VGA_ATC_PALETTEF, 0x0f);
+
+
+ vga_wattr(cinfo->regbase, VGA_ATC_MODE, 0x01);
+
+ vga_wattr(cinfo->regbase, VGA_ATC_OVERSCAN, 0x00);
+
+ vga_wattr(cinfo->regbase, VGA_ATC_PLANE_ENABLE, 0x0f);
+
+ vga_wattr(cinfo->regbase, VGA_ATC_COLOR_PAGE, 0x00);
+
+ WGen(cinfo, VGA_PEL_MSK, 0xff);
+
+
+ vga_wgfx(cinfo->regbase, CL_GR31, 0x04);
+
+ vga_wgfx(cinfo->regbase, CL_GR31, 0x00);
+
+
+ WHDR(cinfo, 0);
+ return;
 }

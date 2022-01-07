@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_slist {int dummy; } ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_FAILED_INIT ; 
- scalar_t__ CURLE_OK ; 
- long CURLHEADER_SEPARATE ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_HEADEROPT ; 
- int /*<<< orphan*/  CURLOPT_HTTPHEADER ; 
- int /*<<< orphan*/  CURLOPT_PROXY ; 
- int /*<<< orphan*/  CURLOPT_PROXYHEADER ; 
- int /*<<< orphan*/  CURLOPT_PROXYTYPE ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- long CURLPROXY_HTTP ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int TEST_ERR_MAJOR_BAD ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * curl_easy_init () ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- scalar_t__ curl_global_init (int /*<<< orphan*/ ) ; 
- struct curl_slist* curl_slist_append (struct curl_slist*,char*) ; 
- int /*<<< orphan*/  curl_slist_free_all (struct curl_slist*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- long libtest_arg2 ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  test_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
+
+ scalar_t__ CURLE_FAILED_INIT ;
+ scalar_t__ CURLE_OK ;
+ long CURLHEADER_SEPARATE ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_HEADEROPT ;
+ int CURLOPT_HTTPHEADER ;
+ int CURLOPT_PROXY ;
+ int CURLOPT_PROXYHEADER ;
+ int CURLOPT_PROXYTYPE ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ long CURLPROXY_HTTP ;
+ int CURL_GLOBAL_ALL ;
+ int TEST_ERR_MAJOR_BAD ;
+ int curl_easy_cleanup (int *) ;
+ int * curl_easy_init () ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_global_cleanup () ;
+ scalar_t__ curl_global_init (int ) ;
+ struct curl_slist* curl_slist_append (struct curl_slist*,char*) ;
+ int curl_slist_free_all (struct curl_slist*) ;
+ int fprintf (int ,char*) ;
+ long libtest_arg2 ;
+ int stderr ;
+ int test_setopt (int *,int ,...) ;
 
 int test(char *URL)
 {
-  CURL *curl = NULL;
+  CURL *curl = ((void*)0);
   CURLcode res = CURLE_FAILED_INIT;
-  /* http header list*/
-  struct curl_slist *hhl = NULL;
-  struct curl_slist *phl = NULL;
+
+  struct curl_slist *hhl = ((void*)0);
+  struct curl_slist *phl = ((void*)0);
 
   if(curl_global_init(CURL_GLOBAL_ALL) != CURLE_OK) {
     fprintf(stderr, "curl_global_init() failed\n");

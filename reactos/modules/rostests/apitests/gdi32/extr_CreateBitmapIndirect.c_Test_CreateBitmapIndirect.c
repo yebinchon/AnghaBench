@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int bmBitsPixel; int bmHeight; int bmPlanes; int bmType; int bmWidth; int bmWidthBytes; scalar_t__ bmBits; } ;
-typedef  scalar_t__ HBITMAP ;
-typedef  TYPE_1__ BITMAP ;
+typedef scalar_t__ HBITMAP ;
+typedef TYPE_1__ BITMAP ;
 
-/* Variables and functions */
- scalar_t__ CreateBitmapIndirect (TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  RtlZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ scalar_t__ CreateBitmapIndirect (TYPE_1__*) ;
+ int DeleteObject (scalar_t__) ;
+ int RtlZeroMemory (TYPE_1__*,int) ;
+ int ok (int,char*) ;
 
 void Test_CreateBitmapIndirect()
 {
@@ -80,7 +80,7 @@ void Test_CreateBitmapIndirect()
     win_bitmap.bmWidth = 0x8000;
     win_bitmap.bmWidthBytes = win_bitmap.bmWidth;
     win_hBmp = CreateBitmapIndirect(&win_bitmap);
-    //ok(win_hBmp != 0, "CreateBitmapIndirect failed\n"); // fails on win 2003
+
 
     DeleteObject(win_hBmp);
 }

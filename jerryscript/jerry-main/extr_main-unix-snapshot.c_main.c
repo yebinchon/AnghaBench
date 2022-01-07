@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* error; } ;
-typedef  TYPE_1__ cli_state_t ;
+typedef TYPE_1__ cli_state_t ;
 
-/* Variables and functions */
-#define  CLI_OPT_DEFAULT 129 
- int CLI_OPT_END ; 
- int /*<<< orphan*/  JERRY_LOG_LEVEL_ERROR ; 
- int JERRY_STANDALONE_EXIT_CODE_FAIL ; 
- int JERRY_STANDALONE_EXIT_CODE_OK ; 
-#define  OPT_MERGE_HELP 128 
- scalar_t__ check_cli_error (TYPE_1__*) ; 
- int cli_consume_option (TYPE_1__*) ; 
- char* cli_consume_string (TYPE_1__*) ; 
- TYPE_1__ cli_init (int /*<<< orphan*/ ,int,char**) ; 
- int /*<<< orphan*/  jerry_port_log (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  main_opts ; 
- int /*<<< orphan*/  print_commands (char*) ; 
- int process_generate (TYPE_1__*,int,char*) ; 
- int process_literal_dump (TYPE_1__*,int,char*) ; 
- int process_merge (TYPE_1__*,int,char*) ; 
- int /*<<< orphan*/  strcmp (char*,char const*) ; 
+
+
+ int CLI_OPT_END ;
+ int JERRY_LOG_LEVEL_ERROR ;
+ int JERRY_STANDALONE_EXIT_CODE_FAIL ;
+ int JERRY_STANDALONE_EXIT_CODE_OK ;
+
+ scalar_t__ check_cli_error (TYPE_1__*) ;
+ int cli_consume_option (TYPE_1__*) ;
+ char* cli_consume_string (TYPE_1__*) ;
+ TYPE_1__ cli_init (int ,int,char**) ;
+ int jerry_port_log (int ,char*,char const*) ;
+ int main_opts ;
+ int print_commands (char*) ;
+ int process_generate (TYPE_1__*,int,char*) ;
+ int process_literal_dump (TYPE_1__*,int,char*) ;
+ int process_merge (TYPE_1__*,int,char*) ;
+ int strcmp (char*,char const*) ;
 
 int
-main (int argc, /**< number of arguments */
-      char **argv) /**< argument list */
+main (int argc,
+      char **argv)
 {
   cli_state_t cli_state = cli_init (main_opts, argc - 1, argv + 1);
 
@@ -43,16 +43,16 @@ main (int argc, /**< number of arguments */
   {
     switch (id)
     {
-      case OPT_MERGE_HELP:
+      case 128:
       {
-        /* Help is always printed if no command is provided. */
+
         break;
       }
-      case CLI_OPT_DEFAULT:
+      case 129:
       {
         const char *command_p = cli_consume_string (&cli_state);
 
-        if (cli_state.error != NULL)
+        if (cli_state.error != ((void*)0))
         {
           break;
         }

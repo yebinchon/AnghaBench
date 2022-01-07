@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gdbarch {int /*<<< orphan*/ * return_value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gdb_assert (int /*<<< orphan*/ ) ; 
+
+
+
+struct gdbarch {int * return_value; } ;
+
+
+ int gdb_assert (int ) ;
 
 int
 gdbarch_return_value_p (struct gdbarch *gdbarch)
 {
-  gdb_assert (gdbarch != NULL);
-  return gdbarch->return_value != NULL;
+  gdb_assert (gdbarch != ((void*)0));
+  return gdbarch->return_value != ((void*)0);
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TASK_POLICY_IO ; 
- int /*<<< orphan*/  current_thread () ; 
- int proc_get_effective_thread_policy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int TASK_POLICY_IO ;
+ int current_thread () ;
+ int proc_get_effective_thread_policy (int ,int ) ;
 
 int throttle_get_thread_effective_io_policy()
 {
-	return proc_get_effective_thread_policy(current_thread(), TASK_POLICY_IO);
+ return proc_get_effective_thread_policy(current_thread(), TASK_POLICY_IO);
 }

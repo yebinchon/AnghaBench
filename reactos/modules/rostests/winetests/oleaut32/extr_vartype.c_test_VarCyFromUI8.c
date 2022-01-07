@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONVERT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CONVERT_I8 (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  CONVVARS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXPECTCY (int) ; 
- int /*<<< orphan*/  EXPECTCY64 (unsigned long,unsigned long) ; 
- int /*<<< orphan*/  EXPECT_OVERFLOW ; 
- int /*<<< orphan*/  ULONG64 ; 
- int /*<<< orphan*/  VarCyFromUI8 ; 
+ int CONVERT (int ,int) ;
+ int CONVERT_I8 (int ,int,int) ;
+ int CONVVARS (int ) ;
+ int EXPECTCY (int) ;
+ int EXPECTCY64 (unsigned long,unsigned long) ;
+ int EXPECT_OVERFLOW ;
+ int ULONG64 ;
+ int VarCyFromUI8 ;
 
 __attribute__((used)) static void test_VarCyFromUI8(void)
 {

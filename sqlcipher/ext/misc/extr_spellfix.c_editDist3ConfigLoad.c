@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u8 ;
-typedef  scalar_t__ u16 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef void* u8 ;
+typedef scalar_t__ u16 ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
 struct TYPE_13__ {int nLang; TYPE_1__* a; } ;
 struct TYPE_12__ {struct TYPE_12__* pNext; scalar_t__ a; scalar_t__ iCost; void* nTo; void* nFrom; } ;
 struct TYPE_11__ {int iLang; int iInsCost; int iDelCost; int iSubCost; TYPE_2__* pCost; } ;
-typedef  TYPE_1__ EditDist3Lang ;
-typedef  TYPE_2__ EditDist3Cost ;
-typedef  TYPE_3__ EditDist3Config ;
+typedef TYPE_1__ EditDist3Lang ;
+typedef TYPE_2__ EditDist3Cost ;
+typedef TYPE_3__ EditDist3Config ;
 
-/* Variables and functions */
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  editDist3ConfigClear (TYPE_3__*) ; 
- TYPE_2__* editDist3CostSort (TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,char const*,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- TYPE_2__* sqlite3_malloc64 (int) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_prepare (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- TYPE_1__* sqlite3_realloc64 (TYPE_1__*,int) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int assert (int) ;
+ int editDist3ConfigClear (TYPE_3__*) ;
+ TYPE_2__* editDist3CostSort (TYPE_2__*) ;
+ int memcpy (scalar_t__,char const*,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int (int *,int) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ TYPE_2__* sqlite3_malloc64 (int) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_prepare (int *,char*,int,int **,int ) ;
+ TYPE_1__* sqlite3_realloc64 (TYPE_1__*,int) ;
+ scalar_t__ sqlite3_step (int *) ;
 
 __attribute__((used)) static int editDist3ConfigLoad(
-  EditDist3Config *p,      /* The edit distance configuration to load */
-  sqlite3 *db,            /* Load from this database */
-  const char *zTable      /* Name of the table from which to load */
+  EditDist3Config *p,
+  sqlite3 *db,
+  const char *zTable
 ){
   sqlite3_stmt *pStmt;
   int rc, rc2;
@@ -73,7 +73,7 @@ __attribute__((used)) static int editDist3ConfigLoad(
     assert( zTo!=0 || nTo==0 );
     if( nFrom>100 || nTo>100 ) continue;
     if( iCost<0 ) continue;
-    if( iCost>=10000 ) continue;  /* Costs above 10K are considered infinite */
+    if( iCost>=10000 ) continue;
     if( pLang==0 || iLang!=iLangPrev ){
       EditDist3Lang *pNew;
       pNew = sqlite3_realloc64(p->a, (p->nLang+1)*sizeof(p->a[0]));
@@ -106,7 +106,7 @@ __attribute__((used)) static int editDist3ConfigLoad(
       memcpy(pCost->a, zFrom, nFrom);
       memcpy(pCost->a + nFrom, zTo, nTo);
       pCost->pNext = pLang->pCost;
-      pLang->pCost = pCost; 
+      pLang->pCost = pCost;
     }
   }
   rc2 = sqlite3_finalize(pStmt);

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  writedir; } ;
-struct connection {int rdbuf_pos; TYPE_1__ info; int /*<<< orphan*/  fd; scalar_t__ rdbuf; } ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- char* TOKEN_RESPONSE ; 
- scalar_t__ TRUE ; 
- char* VERIFY_STRING_CHECK ; 
- int /*<<< orphan*/  connection_close (struct connection*) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int strlen (char*) ; 
- char* strtok (scalar_t__,char*) ; 
- int util_memsearch (scalar_t__,int,char*,int) ; 
- int /*<<< orphan*/  util_sockprintf (int /*<<< orphan*/ ,char*,char*,char*,char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int writedir; } ;
+struct connection {int rdbuf_pos; TYPE_1__ info; int fd; scalar_t__ rdbuf; } ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ char* TOKEN_RESPONSE ;
+ scalar_t__ TRUE ;
+ char* VERIFY_STRING_CHECK ;
+ int connection_close (struct connection*) ;
+ int strcpy (int ,char*) ;
+ int strlen (char*) ;
+ char* strtok (scalar_t__,char*) ;
+ int util_memsearch (scalar_t__,int,char*,int) ;
+ int util_sockprintf (int ,char*,char*,char*,char*) ;
 
 int connection_consume_written_dirs(struct connection *conn)
 {
@@ -46,7 +46,7 @@ int connection_consume_written_dirs(struct connection *conn)
         total_offset += offset;
 
         pch = strtok(conn->rdbuf + total_offset, "\n");
-        if (pch == NULL)
+        if (pch == ((void*)0))
             continue;
         pch_len = strlen(pch);
 

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* get_line (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ isdigit (unsigned char) ; 
+
+
+
+typedef int FILE ;
+
+
+ char* get_line (int *,int *) ;
+ scalar_t__ isdigit (unsigned char) ;
 
 __attribute__((used)) static char *
 getchange(FILE *b)
 {
-	char *line;
+ char *line;
 
-	while ((line = get_line(b, NULL))) {
-		if (isdigit((unsigned char)line[0]))
-			return (line);
-	}
-	return (NULL);
+ while ((line = get_line(b, ((void*)0)))) {
+  if (isdigit((unsigned char)line[0]))
+   return (line);
+ }
+ return (((void*)0));
 }

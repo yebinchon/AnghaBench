@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  caller; int /*<<< orphan*/  context; } ;
-typedef  TYPE_1__ kadm5_server_context ;
-typedef  int /*<<< orphan*/  kadm5_ret_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int caller; int context; } ;
+typedef TYPE_1__ kadm5_server_context ;
+typedef int kadm5_ret_t ;
 struct TYPE_8__ {TYPE_3__* modified_by; } ;
-typedef  TYPE_2__ hdb_entry ;
-struct TYPE_9__ {int /*<<< orphan*/  principal; int /*<<< orphan*/  time; } ;
+typedef TYPE_2__ hdb_entry ;
+struct TYPE_9__ {int principal; int time; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  free_Event (TYPE_3__*) ; 
- int /*<<< orphan*/  krb5_copy_principal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* malloc (int) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int ENOMEM ;
+ int free_Event (TYPE_3__*) ;
+ int krb5_copy_principal (int ,int ,int *) ;
+ TYPE_3__* malloc (int) ;
+ int time (int *) ;
 
 kadm5_ret_t
 _kadm5_set_modifier(kadm5_server_context *context,
-		    hdb_entry *ent)
+      hdb_entry *ent)
 {
     kadm5_ret_t ret;
-    if(ent->modified_by == NULL){
-	ent->modified_by = malloc(sizeof(*ent->modified_by));
-	if(ent->modified_by == NULL)
-	    return ENOMEM;
+    if(ent->modified_by == ((void*)0)){
+ ent->modified_by = malloc(sizeof(*ent->modified_by));
+ if(ent->modified_by == ((void*)0))
+     return ENOMEM;
     } else
-	free_Event(ent->modified_by);
-    ent->modified_by->time = time(NULL);
+ free_Event(ent->modified_by);
+    ent->modified_by->time = time(((void*)0));
     ret = krb5_copy_principal(context->context, context->caller,
-			      &ent->modified_by->principal);
+         &ent->modified_by->principal);
     return ret;
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* priv; } ;
-struct TYPE_5__ {int sample_noise_start; int sample_noise_end; int /*<<< orphan*/  output_mode; void* noise_floor; void* noise_reduction; } ;
-typedef  TYPE_1__ AudioFFTDeNoiseContext ;
-typedef  TYPE_2__ AVFilterContext ;
+struct TYPE_5__ {int sample_noise_start; int sample_noise_end; int output_mode; void* noise_floor; void* noise_reduction; } ;
+typedef TYPE_1__ AudioFFTDeNoiseContext ;
+typedef TYPE_2__ AVFilterContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IN_MODE ; 
- int /*<<< orphan*/  NOISE_MODE ; 
- int /*<<< orphan*/  OUT_MODE ; 
- void* av_clipf (float,int,int) ; 
- int av_sscanf (char const*,char*,float*) ; 
- int /*<<< orphan*/  set_parameters (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int IN_MODE ;
+ int NOISE_MODE ;
+ int OUT_MODE ;
+ void* av_clipf (float,int,int) ;
+ int av_sscanf (char const*,char*,float*) ;
+ int set_parameters (TYPE_1__*) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static int process_command(AVFilterContext *ctx, const char *cmd, const char *args,
                            char *res, int res_len, int flags)

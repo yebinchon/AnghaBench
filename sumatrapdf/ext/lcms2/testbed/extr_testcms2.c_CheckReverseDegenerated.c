@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsUInt16Number ;
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckFToneCurvePoint (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/ * cmsBuildTabulatedToneCurve16 (int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsReverseToneCurve (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+
+
+ int CheckFToneCurvePoint (int *,int,int) ;
+ int DbgThread () ;
+ int * cmsBuildTabulatedToneCurve16 (int ,int,int*) ;
+ int cmsFreeToneCurve (int ,int *) ;
+ int * cmsReverseToneCurve (int ,int *) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckReverseDegenerated(void)
@@ -47,14 +47,14 @@ cmsInt32Number CheckReverseDegenerated(void)
     p = cmsBuildTabulatedToneCurve16(DbgThread(), 16, Tab);
     g = cmsReverseToneCurve(DbgThread(), p);
 
-    // Now let's check some points
+
     if (!CheckFToneCurvePoint(g, 0x5555, 0x5555)) return 0;
     if (!CheckFToneCurvePoint(g, 0x7777, 0x7777)) return 0;
 
-    // First point for zero
+
     if (!CheckFToneCurvePoint(g, 0x0000, 0x4444)) return 0;
 
-    // Last point
+
     if (!CheckFToneCurvePoint(g, 0xFFFF, 0xFFFF)) return 0;
 
     cmsFreeToneCurve(DbgThread(), p);

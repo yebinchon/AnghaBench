@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct object {int /*<<< orphan*/  dbase; int /*<<< orphan*/  tbase; } ;
-typedef  int /*<<< orphan*/  _Unwind_Ptr ;
 
-/* Variables and functions */
-#define  DW_EH_PE_absptr 132 
-#define  DW_EH_PE_aligned 131 
-#define  DW_EH_PE_datarel 130 
- unsigned char DW_EH_PE_omit ; 
-#define  DW_EH_PE_pcrel 129 
-#define  DW_EH_PE_textrel 128 
- int /*<<< orphan*/  gcc_unreachable () ; 
+
+
+
+struct object {int dbase; int tbase; } ;
+typedef int _Unwind_Ptr ;
+
+
+
+
+
+ unsigned char DW_EH_PE_omit ;
+
+
+ int gcc_unreachable () ;
 
 __attribute__((used)) static _Unwind_Ptr
 base_from_object (unsigned char encoding, struct object *ob)
@@ -30,14 +30,14 @@ base_from_object (unsigned char encoding, struct object *ob)
 
   switch (encoding & 0x70)
     {
-    case DW_EH_PE_absptr:
-    case DW_EH_PE_pcrel:
-    case DW_EH_PE_aligned:
+    case 132:
+    case 129:
+    case 131:
       return 0;
 
-    case DW_EH_PE_textrel:
+    case 128:
       return (_Unwind_Ptr) ob->tbase;
-    case DW_EH_PE_datarel:
+    case 130:
       return (_Unwind_Ptr) ob->dbase;
     default:
       gcc_unreachable ();

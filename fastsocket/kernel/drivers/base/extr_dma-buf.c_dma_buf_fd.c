@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dma_buf {int /*<<< orphan*/  file; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  fd_install (int,int /*<<< orphan*/ ) ; 
- int get_unused_fd_flags (int) ; 
+
+
+
+struct dma_buf {int file; } ;
+
+
+ int EINVAL ;
+ int fd_install (int,int ) ;
+ int get_unused_fd_flags (int) ;
 
 int dma_buf_fd(struct dma_buf *dmabuf, int flags)
 {
-	int error, fd;
+ int error, fd;
 
-	if (!dmabuf || !dmabuf->file)
-		return -EINVAL;
+ if (!dmabuf || !dmabuf->file)
+  return -EINVAL;
 
-	error = get_unused_fd_flags(flags);
-	if (error < 0)
-		return error;
-	fd = error;
+ error = get_unused_fd_flags(flags);
+ if (error < 0)
+  return error;
+ fd = error;
 
-	fd_install(fd, dmabuf->file);
+ fd_install(fd, dmabuf->file);
 
-	return fd;
+ return fd;
 }

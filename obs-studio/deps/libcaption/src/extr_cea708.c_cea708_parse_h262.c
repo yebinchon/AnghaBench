@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  libcaption_stauts_t ;
-struct TYPE_3__ {int user_identifier; int user_data_type_code; int /*<<< orphan*/  user_data; } ;
-typedef  TYPE_1__ cea708_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIBCAPTION_ERROR ; 
- int /*<<< orphan*/  LIBCAPTION_OK ; 
- int /*<<< orphan*/  cea708_parse_user_data_type_strcture (int const*,size_t,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int libcaption_stauts_t ;
+struct TYPE_3__ {int user_identifier; int user_data_type_code; int user_data; } ;
+typedef TYPE_1__ cea708_t ;
+
+
+ int LIBCAPTION_ERROR ;
+ int LIBCAPTION_OK ;
+ int cea708_parse_user_data_type_strcture (int const*,size_t,int *) ;
 
 libcaption_stauts_t cea708_parse_h262(const uint8_t* data, size_t size, cea708_t* cea708)
 {

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int u16 ;
-struct cx231xx {int /*<<< orphan*/  dev; int /*<<< orphan*/  udev; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int usb_bulk_msg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*,int) ; 
- int /*<<< orphan*/  usb_sndbulkpipe (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
+struct cx231xx {int dev; int udev; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int dev_err (int ,char*,int,int,int) ;
+ int kfree (int *) ;
+ int * kzalloc (int,int ) ;
+ int memcpy (int *,int *,int) ;
+ int usb_bulk_msg (int ,int ,int *,int,int*,int) ;
+ int usb_sndbulkpipe (int ,int) ;
 
 int cx231xx_ep5_bulkout(struct cx231xx *dev, u8 *firmware, u16 size)
 {
-	int errCode = 0;
-	int actlen = -1;
-	int ret = -ENOMEM;
-	u32 *buffer;
+ int errCode = 0;
+ int actlen = -1;
+ int ret = -ENOMEM;
+ u32 *buffer;
 
-	buffer = kzalloc(4096, GFP_KERNEL);
-	if (buffer == NULL)
-		return -ENOMEM;
-	memcpy(&buffer[0], firmware, 4096);
+ buffer = kzalloc(4096, GFP_KERNEL);
+ if (buffer == ((void*)0))
+  return -ENOMEM;
+ memcpy(&buffer[0], firmware, 4096);
 
-	ret = usb_bulk_msg(dev->udev, usb_sndbulkpipe(dev->udev, 5),
-			buffer, 4096, &actlen, 2000);
+ ret = usb_bulk_msg(dev->udev, usb_sndbulkpipe(dev->udev, 5),
+   buffer, 4096, &actlen, 2000);
 
-	if (ret)
-		dev_err(dev->dev,
-			"bulk message failed: %d (%d/%d)", ret,
-			size, actlen);
-	else {
-		errCode = actlen != size ? -1 : 0;
-	}
-	kfree(buffer);
-	return errCode;
+ if (ret)
+  dev_err(dev->dev,
+   "bulk message failed: %d (%d/%d)", ret,
+   size, actlen);
+ else {
+  errCode = actlen != size ? -1 : 0;
+ }
+ kfree(buffer);
+ return errCode;
 }

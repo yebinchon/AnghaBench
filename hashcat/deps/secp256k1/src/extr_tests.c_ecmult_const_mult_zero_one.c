@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
-typedef  int /*<<< orphan*/  secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_ge ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SECP256K1_SCALAR_CONST (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ge_equals_ge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  random_group_element_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ecmult_const (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  secp256k1_ge_is_infinity (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ge_set_gej (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_gej_neg (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_scalar_negate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int secp256k1_scalar ;
+typedef int secp256k1_gej ;
+typedef int secp256k1_ge ;
+
+
+ int CHECK (int ) ;
+ int SECP256K1_SCALAR_CONST (int ,int ,int ,int ,int ,int ,int ,int) ;
+ int ge_equals_ge (int *,int *) ;
+ int random_group_element_test (int *) ;
+ int secp256k1_ecmult_const (int *,int *,int *,int) ;
+ int secp256k1_ge_is_infinity (int *) ;
+ int secp256k1_ge_set_gej (int *,int *) ;
+ int secp256k1_gej_neg (int *,int *) ;
+ int secp256k1_scalar_negate (int *,int *) ;
 
 void ecmult_const_mult_zero_one(void) {
     secp256k1_scalar zero = SECP256K1_SCALAR_CONST(0, 0, 0, 0, 0, 0, 0, 0);

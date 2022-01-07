@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_str {scalar_t__ p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_MG_STREQ (struct mg_str,char*) ; 
- struct mg_str MG_MK_STR (char*) ; 
- int MG_URL_ENCODE_F_SPACE_AS_PLUS ; 
- int MG_URL_ENCODE_F_UPPERCASE_HEX ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  mg_mk_str (char*) ; 
- struct mg_str mg_url_encode (struct mg_str const) ; 
- struct mg_str mg_url_encode_opt (struct mg_str const,int /*<<< orphan*/ ,int) ; 
+
+ int ASSERT_MG_STREQ (struct mg_str,char*) ;
+ struct mg_str MG_MK_STR (char*) ;
+ int MG_URL_ENCODE_F_SPACE_AS_PLUS ;
+ int MG_URL_ENCODE_F_UPPERCASE_HEX ;
+ int free (void*) ;
+ int mg_mk_str (char*) ;
+ struct mg_str mg_url_encode (struct mg_str const) ;
+ struct mg_str mg_url_encode_opt (struct mg_str const,int ,int) ;
 
 __attribute__((used)) static const char *test_mg_url_encode(void) {
   const struct mg_str encode_me =
@@ -33,7 +33,7 @@ __attribute__((used)) static const char *test_mg_url_encode(void) {
     free((void *) encoded.p);
   }
   {
-    struct mg_str encoded = mg_url_encode_opt(encode_me, mg_mk_str(NULL), 0);
+    struct mg_str encoded = mg_url_encode_opt(encode_me, mg_mk_str(((void*)0)), 0);
     ASSERT_MG_STREQ(encoded,
                     "I%27m%20a%2elittle%5ftea%2dpot%2chere%27s%24my%3bspout%"
                     "7eoink%28oink%29oink%2f%21");
@@ -57,5 +57,5 @@ __attribute__((used)) static const char *test_mg_url_encode(void) {
                     "7Eoink%28oink%29oink/!");
     free((void *) encoded.p);
   }
-  return NULL;
+  return ((void*)0);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int /*<<< orphan*/  MSIMODIFY_DELETE ; 
- int MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MsiRecordGetInteger (int /*<<< orphan*/ ,int) ; 
- int MsiRecordGetStringA (int /*<<< orphan*/ ,int,char*,int*) ; 
- int MsiViewClose (int /*<<< orphan*/ ) ; 
- int MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MsiViewModify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int buffer ;
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int MSIDBOPEN_CREATE ;
+ int MSIMODIFY_DELETE ;
+ int MsiCloseHandle (int ) ;
+ int MsiDatabaseOpenViewA (int ,char const*,int *) ;
+ int MsiOpenDatabaseW (int ,int ,int *) ;
+ int MsiRecordGetInteger (int ,int) ;
+ int MsiRecordGetStringA (int ,int,char*,int*) ;
+ int MsiViewClose (int ) ;
+ int MsiViewExecute (int ,int ) ;
+ int MsiViewFetch (int ,int *) ;
+ int MsiViewModify (int ,int ,int ) ;
+ int lstrcmpA (char*,char*) ;
+ int msifile ;
+ int msifileW ;
+ int ok (int,char*,...) ;
+ int run_query (int ,int ,char const*) ;
 
 __attribute__((used)) static void test_viewmodify_delete(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static void test_viewmodify_delete(void)
 
     DeleteFileA(msifile);
 
-    /* just MsiOpenDatabase should not create a file */
+
     r = MsiOpenDatabaseW(msifileW, MSIDBOPEN_CREATE, &hdb);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
@@ -79,7 +79,7 @@ __attribute__((used)) static void test_viewmodify_delete(void)
     r = MsiViewFetch(hview, &hrec);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* delete 1 */
+
     r = MsiViewModify(hview, MSIMODIFY_DELETE, hrec);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
@@ -88,7 +88,7 @@ __attribute__((used)) static void test_viewmodify_delete(void)
     r = MsiViewFetch(hview, &hrec);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* delete 2 */
+
     r = MsiViewModify(hview, MSIMODIFY_DELETE, hrec);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 

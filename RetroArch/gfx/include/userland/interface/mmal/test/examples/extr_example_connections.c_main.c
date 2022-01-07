@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_14__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_14__ ;
+
+
 struct TYPE_19__ {void* userdata; } ;
-struct TYPE_18__ {int /*<<< orphan*/ * input; int /*<<< orphan*/ * output; TYPE_5__* control; } ;
-struct TYPE_17__ {int flags; int /*<<< orphan*/  in; int /*<<< orphan*/  queue; int /*<<< orphan*/  out; TYPE_1__* pool; void* callback; TYPE_14__* user_data; } ;
-struct TYPE_16__ {int /*<<< orphan*/  queue; } ;
-struct TYPE_15__ {scalar_t__ status; int /*<<< orphan*/  semaphore; scalar_t__ eos; } ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  TYPE_2__ MMAL_CONNECTION_T ;
-typedef  TYPE_3__ MMAL_COMPONENT_T ;
-typedef  int /*<<< orphan*/  MMAL_BUFFER_HEADER_T ;
+struct TYPE_18__ {int * input; int * output; TYPE_5__* control; } ;
+struct TYPE_17__ {int flags; int in; int queue; int out; TYPE_1__* pool; void* callback; TYPE_14__* user_data; } ;
+struct TYPE_16__ {int queue; } ;
+struct TYPE_15__ {scalar_t__ status; int semaphore; scalar_t__ eos; } ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef TYPE_2__ MMAL_CONNECTION_T ;
+typedef TYPE_3__ MMAL_COMPONENT_T ;
+typedef int MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_STATUS (scalar_t__,char*) ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_CONTAINER_READER ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_VIDEO_DECODER ; 
- int /*<<< orphan*/  MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER ; 
- int MMAL_CONNECTION_FLAG_TUNNELLING ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  bcm_host_init () ; 
- void* connection_callback ; 
- TYPE_14__ context ; 
- int /*<<< orphan*/  control_callback ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ mmal_component_create (int /*<<< orphan*/ ,TYPE_3__**) ; 
- int /*<<< orphan*/  mmal_component_destroy (TYPE_3__*) ; 
- scalar_t__ mmal_component_enable (TYPE_3__*) ; 
- scalar_t__ mmal_connection_create (TYPE_2__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_connection_destroy (TYPE_2__*) ; 
- int /*<<< orphan*/  mmal_connection_disable (TYPE_2__*) ; 
- scalar_t__ mmal_connection_enable (TYPE_2__*) ; 
- scalar_t__ mmal_port_enable (TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ mmal_port_send_buffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * mmal_queue_get (int /*<<< orphan*/ ) ; 
- scalar_t__ mmal_util_port_set_uri (TYPE_5__*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- unsigned int vcos_countof (TYPE_2__**) ; 
- int /*<<< orphan*/  vcos_semaphore_create (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  vcos_semaphore_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_wait (int /*<<< orphan*/ *) ; 
+
+ int CHECK_STATUS (scalar_t__,char*) ;
+ int MMAL_COMPONENT_DEFAULT_CONTAINER_READER ;
+ int MMAL_COMPONENT_DEFAULT_VIDEO_DECODER ;
+ int MMAL_COMPONENT_DEFAULT_VIDEO_RENDERER ;
+ int MMAL_CONNECTION_FLAG_TUNNELLING ;
+ scalar_t__ MMAL_SUCCESS ;
+ int bcm_host_init () ;
+ void* connection_callback ;
+ TYPE_14__ context ;
+ int control_callback ;
+ int fprintf (int ,char*) ;
+ scalar_t__ mmal_component_create (int ,TYPE_3__**) ;
+ int mmal_component_destroy (TYPE_3__*) ;
+ scalar_t__ mmal_component_enable (TYPE_3__*) ;
+ scalar_t__ mmal_connection_create (TYPE_2__**,int ,int ,int ) ;
+ int mmal_connection_destroy (TYPE_2__*) ;
+ int mmal_connection_disable (TYPE_2__*) ;
+ scalar_t__ mmal_connection_enable (TYPE_2__*) ;
+ scalar_t__ mmal_port_enable (TYPE_5__*,int ) ;
+ scalar_t__ mmal_port_send_buffer (int ,int *) ;
+ int * mmal_queue_get (int ) ;
+ scalar_t__ mmal_util_port_set_uri (TYPE_5__*,char*) ;
+ int stderr ;
+ unsigned int vcos_countof (TYPE_2__**) ;
+ int vcos_semaphore_create (int *,char*,int) ;
+ int vcos_semaphore_delete (int *) ;
+ int vcos_semaphore_wait (int *) ;
 
 int main(int argc, char **argv)
 {
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 
    vcos_semaphore_create(&context.semaphore, "example", 1);
 
-   /* Create the components */
+
    status = mmal_component_create(MMAL_COMPONENT_DEFAULT_CONTAINER_READER, &reader);
    CHECK_STATUS(status, "failed to create reader");
    reader->control->userdata = (void *)&context;
@@ -96,11 +96,11 @@ int main(int argc, char **argv)
    status = mmal_component_enable(renderer);
    CHECK_STATUS(status, "failed to enable component");
 
-   /* Configure the reader using the given URI */
+
    status = mmal_util_port_set_uri(reader->control, argv[1]);
    CHECK_STATUS(status, "failed to set uri");
 
-   /* Create the connections between the components */
+
    status = mmal_connection_create(&connection[0], reader->output[0], decoder->input[0], 0);
    CHECK_STATUS(status, "failed to create connection between reader / decoder");
    connection[0]->user_data = &context;
@@ -110,45 +110,45 @@ int main(int argc, char **argv)
    connection[1]->user_data = &context;
    connection[1]->callback = connection_callback;
 
-   /* Enable all our connections */
+
    for (i = connection_num; i; i--)
    {
       status = mmal_connection_enable(connection[i-1]);
       CHECK_STATUS(status, "failed to enable connection");
    }
 
-   /* Start playback */
+
    fprintf(stderr, "start playback\n");
 
-   /* This is the main processing loop */
+
    for (count = 0; count < 500; count++)
    {
       MMAL_BUFFER_HEADER_T *buffer;
       vcos_semaphore_wait(&context.semaphore);
 
-      /* Check for errors */
+
       status = context.status;
       CHECK_STATUS(status, "error during playback");
 
-      /* Check for end of stream */
+
       if (context.eos)
          break;
 
-      /* Handle buffers for all our connections */
+
       for (i = 0; i < connection_num; i++)
       {
          if (connection[i]->flags & MMAL_CONNECTION_FLAG_TUNNELLING)
-            continue; /* Nothing else to do in tunnelling mode */
+            continue;
 
-         /* Send empty buffers to the output port of the connection */
-         while ((buffer = mmal_queue_get(connection[i]->pool->queue)) != NULL)
+
+         while ((buffer = mmal_queue_get(connection[i]->pool->queue)) != ((void*)0))
          {
             status = mmal_port_send_buffer(connection[i]->out, buffer);
             CHECK_STATUS(status, "failed to send buffer");
          }
 
-         /* Send any queued buffer to the next component */
-         while ((buffer = mmal_queue_get(connection[i]->queue)) != NULL)
+
+         while ((buffer = mmal_queue_get(connection[i]->queue)) != ((void*)0))
          {
             status = mmal_port_send_buffer(connection[i]->in, buffer);
             CHECK_STATUS(status, "failed to send buffer");
@@ -156,7 +156,7 @@ int main(int argc, char **argv)
       }
    }
 
-   /* Stop everything */
+
    fprintf(stderr, "stop playback\n");
    for (i = 0; i < connection_num; i++)
    {
@@ -164,7 +164,7 @@ int main(int argc, char **argv)
    }
 
  error:
-   /* Cleanup everything */
+
    for (i = 0; i < connection_num; i++)
    {
       if (connection[i])

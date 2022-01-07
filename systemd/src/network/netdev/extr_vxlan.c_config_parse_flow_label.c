@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int flow_label; } ;
-typedef  TYPE_1__ VxLan ;
+typedef TYPE_1__ VxLan ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_ERR ; 
- unsigned int VXLAN_FLOW_LABEL_MAX_MASK ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*) ; 
- int safe_atou (char const*,unsigned int*) ; 
+
+ int LOG_ERR ;
+ unsigned int VXLAN_FLOW_LABEL_MAX_MASK ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*) ;
+ int safe_atou (char const*,unsigned int*) ;
 
 int config_parse_flow_label(const char *unit,
                             const char *filename,

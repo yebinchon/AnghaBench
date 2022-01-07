@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct sym_ccb {int /*<<< orphan*/  cmd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  spi_print_msg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sym_print_addr (int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef int u_char ;
+struct sym_ccb {int cmd; } ;
+
+
+ int printf (char*) ;
+ int spi_print_msg (int *) ;
+ int sym_print_addr (int ,char*,char*) ;
 
 __attribute__((used)) static void sym_print_msg(struct sym_ccb *cp, char *label, u_char *msg)
 {
-	sym_print_addr(cp->cmd, "%s: ", label);
+ sym_print_addr(cp->cmd, "%s: ", label);
 
-	spi_print_msg(msg);
-	printf("\n");
+ spi_print_msg(msg);
+ printf("\n");
 }

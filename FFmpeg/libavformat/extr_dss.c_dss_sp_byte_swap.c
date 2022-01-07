@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int swap; int /*<<< orphan*/  dss_sp_swap_byte; } ;
-typedef  TYPE_1__ DSSDemuxContext ;
 
-/* Variables and functions */
- int DSS_FRAME_SIZE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int swap; int dss_sp_swap_byte; } ;
+typedef TYPE_1__ DSSDemuxContext ;
+
+
+ int DSS_FRAME_SIZE ;
+ int memcpy (int *,int const*,int) ;
 
 __attribute__((used)) static void dss_sp_byte_swap(DSSDemuxContext *ctx,
                              uint8_t *dst, const uint8_t *src)
@@ -37,7 +37,7 @@ __attribute__((used)) static void dss_sp_byte_swap(DSSDemuxContext *ctx,
         ctx->dss_sp_swap_byte = src[DSS_FRAME_SIZE - 2];
     }
 
-    /* make sure byte 40 is always 0 */
+
     dst[DSS_FRAME_SIZE - 2] = 0;
-    ctx->swap             ^= 1;
+    ctx->swap ^= 1;
 }

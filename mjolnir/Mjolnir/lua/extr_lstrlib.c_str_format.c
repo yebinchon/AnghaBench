@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  scalar_t__ lua_Integer ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-typedef  char const* LUAI_UACNUMBER ;
-typedef  char const* LUAI_UACINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_INTEGER_FRMLEN ; 
- int /*<<< orphan*/  LUA_NUMBER_FRMLEN ; 
- char const L_ESC ; 
- int MAX_FORMAT ; 
- int MAX_ITEM ; 
- int /*<<< orphan*/  addlenmod (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addliteral (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int l_sprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_addsize (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_addvalue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  luaL_argerror (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*,char const) ; 
- char* luaL_prepbuffsize (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- char* luaL_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int lua_number2strx (int /*<<< orphan*/ *,char*,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- char* scanformat (int /*<<< orphan*/ *,char const*,char*) ; 
- int /*<<< orphan*/  strchr (char*,char) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Number ;
+typedef scalar_t__ lua_Integer ;
+typedef int luaL_Buffer ;
+typedef char const* LUAI_UACNUMBER ;
+typedef char const* LUAI_UACINT ;
+
+
+ int LUA_INTEGER_FRMLEN ;
+ int LUA_NUMBER_FRMLEN ;
+ char const L_ESC ;
+ int MAX_FORMAT ;
+ int MAX_ITEM ;
+ int addlenmod (char*,int ) ;
+ int addliteral (int *,int *,int) ;
+ int l_sprintf (char*,int,char*,...) ;
+ int luaL_addchar (int *,int ) ;
+ int luaL_addsize (int *,int) ;
+ int luaL_addvalue (int *) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_argerror (int *,int,char*) ;
+ int luaL_buffinit (int *,int *) ;
+ scalar_t__ luaL_checkinteger (int *,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_checknumber (int *,int) ;
+ int luaL_error (int *,char*,char const) ;
+ char* luaL_prepbuffsize (int *,int) ;
+ int luaL_pushresult (int *) ;
+ char* luaL_tolstring (int *,int,size_t*) ;
+ int lua_assert (int) ;
+ int lua_gettop (int *) ;
+ int lua_number2strx (int *,char*,int,char*,int ) ;
+ int lua_pop (int *,int) ;
+ char* scanformat (int *,char const*,char*) ;
+ int strchr (char*,char) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int str_format (lua_State *L) {
   int top = lua_gettop(L);
@@ -59,11 +59,11 @@ __attribute__((used)) static int str_format (lua_State *L) {
     if (*strfrmt != L_ESC)
       luaL_addchar(&b, *strfrmt++);
     else if (*++strfrmt == L_ESC)
-      luaL_addchar(&b, *strfrmt++);  /* %% */
-    else { /* format item */
-      char form[MAX_FORMAT];  /* to store the format ('%...') */
-      char *buff = luaL_prepbuffsize(&b, MAX_ITEM);  /* to put formatted item */
-      int nb = 0;  /* number of bytes in added item */
+      luaL_addchar(&b, *strfrmt++);
+    else {
+      char form[MAX_FORMAT];
+      char *buff = luaL_prepbuffsize(&b, MAX_ITEM);
+      int nb = 0;
       if (++arg > top)
         luaL_argerror(L, arg, "no value");
       strfrmt = scanformat(L, strfrmt, form);
@@ -98,22 +98,22 @@ __attribute__((used)) static int str_format (lua_State *L) {
         case 's': {
           size_t l;
           const char *s = luaL_tolstring(L, arg, &l);
-          if (form[2] == '\0')  /* no modifiers? */
-            luaL_addvalue(&b);  /* keep entire string */
+          if (form[2] == '\0')
+            luaL_addvalue(&b);
           else {
             luaL_argcheck(L, l == strlen(s), arg, "string contains zeros");
             if (!strchr(form, '.') && l >= 100) {
-              /* no precision and string is too long to be formatted */
-              luaL_addvalue(&b);  /* keep entire string */
+
+              luaL_addvalue(&b);
             }
-            else {  /* format the string into 'buff' */
+            else {
               nb = l_sprintf(buff, MAX_ITEM, form, s);
-              lua_pop(L, 1);  /* remove result from 'luaL_tolstring' */
+              lua_pop(L, 1);
             }
           }
           break;
         }
-        default: {  /* also treat cases 'pnLlh' */
+        default: {
           return luaL_error(L, "invalid option '%%%c' to 'format'",
                                *(strfrmt - 1));
         }

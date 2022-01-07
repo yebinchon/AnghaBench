@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BF_OFB_LEN ; 
- int /*<<< orphan*/  mch_memmove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ofb_buffer ; 
- int /*<<< orphan*/  pax ; 
- int /*<<< orphan*/  randbyte_offset ; 
- int /*<<< orphan*/  save_ofb_buffer ; 
- int /*<<< orphan*/  save_pax ; 
- int /*<<< orphan*/  save_randbyte_offset ; 
- int /*<<< orphan*/  save_sbx ; 
- int /*<<< orphan*/  save_update_offset ; 
- int /*<<< orphan*/  sbx ; 
- int /*<<< orphan*/  update_offset ; 
+ int BF_OFB_LEN ;
+ int mch_memmove (int ,int ,int) ;
+ int ofb_buffer ;
+ int pax ;
+ int randbyte_offset ;
+ int save_ofb_buffer ;
+ int save_pax ;
+ int save_randbyte_offset ;
+ int save_sbx ;
+ int save_update_offset ;
+ int sbx ;
+ int update_offset ;
 
 void
 bf_crypt_save()

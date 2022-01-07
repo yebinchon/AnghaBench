@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_palette {int dummy; } ;
 struct wined3d_color_key {int dummy; } ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ color_in_range (struct wined3d_color_key const*,int) ; 
+
+ scalar_t__ color_in_range (struct wined3d_color_key const*,int) ;
 
 __attribute__((used)) static void convert_b8g8r8a8_unorm_b8g8r8a8_unorm_color_key(const BYTE *src, unsigned int src_pitch,
         BYTE *dst, unsigned int dst_pitch, unsigned int width, unsigned int height,

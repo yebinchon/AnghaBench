@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  reclaim; int /*<<< orphan*/  share; int /*<<< orphan*/  cookie; } ;
-typedef  TYPE_1__ nlm4_shareargs ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  xdr_bool (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_netobj (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xdr_nlm4_share (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int reclaim; int share; int cookie; } ;
+typedef TYPE_1__ nlm4_shareargs ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int xdr_bool (int *,int *) ;
+ int xdr_netobj (int *,int *) ;
+ int xdr_nlm4_share (int *,int *) ;
 
 bool_t
 xdr_nlm4_shareargs(XDR *xdrs, nlm4_shareargs *objp)
 {
 
-	if (!xdr_netobj(xdrs, &objp->cookie))
-		return (FALSE);
-	if (!xdr_nlm4_share(xdrs, &objp->share))
-		return (FALSE);
-	if (!xdr_bool(xdrs, &objp->reclaim))
-		return (FALSE);
-	return (TRUE);
+ if (!xdr_netobj(xdrs, &objp->cookie))
+  return (FALSE);
+ if (!xdr_nlm4_share(xdrs, &objp->share))
+  return (FALSE);
+ if (!xdr_bool(xdrs, &objp->reclaim))
+  return (FALSE);
+ return (TRUE);
 }

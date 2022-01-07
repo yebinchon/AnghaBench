@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_10__ {scalar_t__ Buf; } ;
-struct TYPE_9__ {int NumTokens; int /*<<< orphan*/ * Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_2__ BUF ;
+struct TYPE_9__ {int NumTokens; int * Token; } ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int LIST ;
+typedef TYPE_2__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ClearBuf (TYPE_2__*) ; 
- int /*<<< orphan*/  CopyStr (char*) ; 
- char* DefaultTokenSplitChars () ; 
- int /*<<< orphan*/  FreeBuf (TYPE_2__*) ; 
- int /*<<< orphan*/  Insert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IsCharInStr (char*,char) ; 
- int /*<<< orphan*/  LIST_DATA (int /*<<< orphan*/ *,size_t) ; 
- int LIST_NUM (int /*<<< orphan*/ *) ; 
- TYPE_2__* NewBuf () ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- TYPE_1__* NullToken () ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- size_t StrLen (char*) ; 
- int /*<<< orphan*/  WriteBuf (TYPE_2__*,char*,int) ; 
- void* ZeroMalloc (int) ; 
+
+ int ClearBuf (TYPE_2__*) ;
+ int CopyStr (char*) ;
+ char* DefaultTokenSplitChars () ;
+ int FreeBuf (TYPE_2__*) ;
+ int Insert (int *,int ) ;
+ int IsCharInStr (char*,char) ;
+ int LIST_DATA (int *,size_t) ;
+ int LIST_NUM (int *) ;
+ TYPE_2__* NewBuf () ;
+ int * NewListFast (int *) ;
+ TYPE_1__* NullToken () ;
+ int ReleaseList (int *) ;
+ size_t StrLen (char*) ;
+ int WriteBuf (TYPE_2__*,char*,int) ;
+ void* ZeroMalloc (int) ;
 
 TOKEN_LIST *ParseTokenWithNullStr(char *str, char *split_chars)
 {
-	LIST *o;
-	UINT i, len;
-	BUF *b;
-	char zero = 0;
-	TOKEN_LIST *t;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return NullToken();
-	}
-	if (split_chars == NULL)
-	{
-		split_chars = DefaultTokenSplitChars();
-	}
+ LIST *o;
+ UINT i, len;
+ BUF *b;
+ char zero = 0;
+ TOKEN_LIST *t;
 
-	b = NewBuf();
-	o = NewListFast(NULL);
+ if (str == ((void*)0))
+ {
+  return NullToken();
+ }
+ if (split_chars == ((void*)0))
+ {
+  split_chars = DefaultTokenSplitChars();
+ }
 
-	len = StrLen(str);
+ b = NewBuf();
+ o = NewListFast(((void*)0));
 
-	for (i = 0;i < (len + 1);i++)
-	{
-		char c = str[i];
-		bool flag = IsCharInStr(split_chars, c);
+ len = StrLen(str);
 
-		if (c == '\0')
-		{
-			flag = true;
-		}
+ for (i = 0;i < (len + 1);i++)
+ {
+  char c = str[i];
+  bool flag = IsCharInStr(split_chars, c);
 
-		if (flag == false)
-		{
-			WriteBuf(b, &c, sizeof(char));
-		}
-		else
-		{
-			WriteBuf(b, &zero, sizeof(char));
+  if (c == '\0')
+  {
+   flag = 1;
+  }
 
-			Insert(o, CopyStr((char *)b->Buf));
-			ClearBuf(b);
-		}
-	}
+  if (flag == 0)
+  {
+   WriteBuf(b, &c, sizeof(char));
+  }
+  else
+  {
+   WriteBuf(b, &zero, sizeof(char));
 
-	t = ZeroMalloc(sizeof(TOKEN_LIST));
-	t->NumTokens = LIST_NUM(o);
-	t->Token = ZeroMalloc(sizeof(char *) * t->NumTokens);
+   Insert(o, CopyStr((char *)b->Buf));
+   ClearBuf(b);
+  }
+ }
 
-	for (i = 0;i < t->NumTokens;i++)
-	{
-		t->Token[i] = LIST_DATA(o, i);
-	}
+ t = ZeroMalloc(sizeof(TOKEN_LIST));
+ t->NumTokens = LIST_NUM(o);
+ t->Token = ZeroMalloc(sizeof(char *) * t->NumTokens);
 
-	ReleaseList(o);
-	FreeBuf(b);
+ for (i = 0;i < t->NumTokens;i++)
+ {
+  t->Token[i] = LIST_DATA(o, i);
+ }
 
-	return t;
+ ReleaseList(o);
+ FreeBuf(b);
+
+ return t;
 }

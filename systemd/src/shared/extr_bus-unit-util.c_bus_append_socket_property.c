@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTRACT_UNQUOTE ; 
- int STRLEN (char*) ; 
- scalar_t__ STR_IN_SET (char const*,char*,char*,...) ; 
- int bus_append_exec_command (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_ip_tos_from_string (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_parse_boolean (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_parse_ip_protocol (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_parse_mode (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_parse_sec_rename (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_parse_size (int /*<<< orphan*/ *,char const*,char const*,int) ; 
- int bus_append_safe_atoi (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_safe_atoi64 (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_safe_atou (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_string (int /*<<< orphan*/ *,char const*,char const*) ; 
- int bus_append_strv (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ) ; 
- int bus_log_create_error (int) ; 
- scalar_t__ isempty (char const*) ; 
- int sd_bus_message_append (int /*<<< orphan*/ *,char*,char*,char*,int,...) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef int sd_bus_message ;
+
+
+ int EXTRACT_UNQUOTE ;
+ int STRLEN (char*) ;
+ scalar_t__ STR_IN_SET (char const*,char*,char*,...) ;
+ int bus_append_exec_command (int *,char const*,char const*) ;
+ int bus_append_ip_tos_from_string (int *,char const*,char const*) ;
+ int bus_append_parse_boolean (int *,char const*,char const*) ;
+ int bus_append_parse_ip_protocol (int *,char const*,char const*) ;
+ int bus_append_parse_mode (int *,char const*,char const*) ;
+ int bus_append_parse_sec_rename (int *,char const*,char const*) ;
+ int bus_append_parse_size (int *,char const*,char const*,int) ;
+ int bus_append_safe_atoi (int *,char const*,char const*) ;
+ int bus_append_safe_atoi64 (int *,char const*,char const*) ;
+ int bus_append_safe_atou (int *,char const*,char const*) ;
+ int bus_append_string (int *,char const*,char const*) ;
+ int bus_append_strv (int *,char const*,char const*,int ) ;
+ int bus_log_create_error (int) ;
+ scalar_t__ isempty (char const*) ;
+ int sd_bus_message_append (int *,char*,char*,char*,int,...) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int bus_append_socket_property(sd_bus_message *m, const char *field, const char *eq) {
         int r;

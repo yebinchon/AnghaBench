@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct track {int type; scalar_t__ is_external; int /*<<< orphan*/  title; scalar_t__ attached_picture; scalar_t__ forced_track; scalar_t__ default_track; int /*<<< orphan*/  lang; int /*<<< orphan*/  user_tid; scalar_t__ selected; struct sh_stream* stream; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct track {int type; scalar_t__ is_external; int title; scalar_t__ attached_picture; scalar_t__ forced_track; scalar_t__ default_track; int lang; int user_tid; scalar_t__ selected; struct sh_stream* stream; } ;
 struct sh_stream {TYPE_2__* codec; } ;
 struct MPContext {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  num; } ;
-struct TYPE_4__ {char* codec; int /*<<< orphan*/  samplerate; TYPE_1__ channels; int /*<<< orphan*/  fps; int /*<<< orphan*/  disp_h; int /*<<< orphan*/  disp_w; } ;
+struct TYPE_3__ {int num; } ;
+struct TYPE_4__ {char* codec; int samplerate; TYPE_1__ channels; int fps; int disp_h; int disp_w; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPEND (char*,char*,...) ; 
- int /*<<< orphan*/  MP_INFO (struct MPContext*,char*,char*) ; 
-#define  STREAM_AUDIO 130 
-#define  STREAM_SUB 129 
-#define  STREAM_VIDEO 128 
+
+ int APPEND (char*,char*,...) ;
+ int MP_INFO (struct MPContext*,char*,char*) ;
+
+
+
 
 __attribute__((used)) static void print_stream(struct MPContext *mpctx, struct track *t)
 {
@@ -32,13 +32,13 @@ __attribute__((used)) static void print_stream(struct MPContext *mpctx, struct t
     const char *selopt = "?";
     const char *langopt = "?";
     switch (t->type) {
-    case STREAM_VIDEO:
-        tname = "Video"; selopt = "vid"; langopt = NULL;
+    case 128:
+        tname = "Video"; selopt = "vid"; langopt = ((void*)0);
         break;
-    case STREAM_AUDIO:
+    case 130:
         tname = "Audio"; selopt = "aid"; langopt = "alang";
         break;
-    case STREAM_SUB:
+    case 129:
         tname = "Subs"; selopt = "sid"; langopt = "slang";
         break;
     }
@@ -55,14 +55,14 @@ __attribute__((used)) static void print_stream(struct MPContext *mpctx, struct t
         APPEND(b, " [P]");
     if (t->title)
         APPEND(b, " '%s'", t->title);
-    const char *codec = s ? s->codec->codec : NULL;
+    const char *codec = s ? s->codec->codec : ((void*)0);
     APPEND(b, " (%s", codec ? codec : "<unknown>");
-    if (t->type == STREAM_VIDEO) {
+    if (t->type == 128) {
         if (s && s->codec->disp_w)
             APPEND(b, " %dx%d", s->codec->disp_w, s->codec->disp_h);
         if (s && s->codec->fps)
             APPEND(b, " %.3ffps", s->codec->fps);
-    } else if (t->type == STREAM_AUDIO) {
+    } else if (t->type == 130) {
         if (s && s->codec->channels.num)
             APPEND(b, " %dch", s->codec->channels.num);
         if (s && s->codec->samplerate)

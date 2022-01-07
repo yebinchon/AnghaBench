@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_10__ ;
+
+
 struct TYPE_24__ {void* present; } ;
-struct TYPE_25__ {int* use_kb_window; int /*<<< orphan*/  max_sfb; TYPE_6__ ltp; scalar_t__ predictor_present; } ;
-struct TYPE_23__ {TYPE_2__* oc; int /*<<< orphan*/  avctx; } ;
+struct TYPE_25__ {int* use_kb_window; int max_sfb; TYPE_6__ ltp; scalar_t__ predictor_present; } ;
+struct TYPE_23__ {TYPE_2__* oc; int avctx; } ;
 struct TYPE_22__ {TYPE_10__* ch; } ;
 struct TYPE_20__ {scalar_t__ object_type; } ;
 struct TYPE_21__ {TYPE_1__ m4ac; } ;
 struct TYPE_19__ {TYPE_8__ ics; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ ChannelElement ;
-typedef  TYPE_4__ AACContext ;
+typedef int GetBitContext ;
+typedef TYPE_3__ ChannelElement ;
+typedef TYPE_4__ AACContext ;
 
-/* Variables and functions */
- scalar_t__ AOT_AAC_MAIN ; 
- scalar_t__ AOT_ER_AAC_ELD ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  apply_intensity_stereo (TYPE_4__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/  apply_mid_side_stereo (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  apply_prediction (TYPE_4__*,TYPE_10__*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int decode_ics (TYPE_4__*,TYPE_10__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ decode_ics_info (TYPE_4__*,TYPE_8__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decode_ltp (TYPE_6__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decode_mid_side_stereo (TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AOT_AAC_MAIN ;
+ scalar_t__ AOT_ER_AAC_ELD ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int apply_intensity_stereo (TYPE_4__*,TYPE_3__*,int) ;
+ int apply_mid_side_stereo (TYPE_4__*,TYPE_3__*) ;
+ int apply_prediction (TYPE_4__*,TYPE_10__*) ;
+ int av_log (int ,int ,char*) ;
+ int decode_ics (TYPE_4__*,TYPE_10__*,int *,int,int ) ;
+ scalar_t__ decode_ics_info (TYPE_4__*,TYPE_8__*,int *) ;
+ int decode_ltp (TYPE_6__*,int *,int ) ;
+ int decode_mid_side_stereo (TYPE_3__*,int *,int) ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
 
 __attribute__((used)) static int decode_cpe(AACContext *ac, GetBitContext *gb, ChannelElement *cpe)
 {

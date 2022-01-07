@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct http_parser_url {int port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int http_parser_parse_url (char*,int,int /*<<< orphan*/ ,struct http_parser_url*) ; 
- int /*<<< orphan*/  http_parser_url_init (struct http_parser_url*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int abort () ;
+ int fprintf (int ,char*,int) ;
+ int http_parser_parse_url (char*,int,int ,struct http_parser_url*) ;
+ int http_parser_url_init (struct http_parser_url*) ;
+ int stderr ;
 
 void
 test_no_overflow_parse_url (void)

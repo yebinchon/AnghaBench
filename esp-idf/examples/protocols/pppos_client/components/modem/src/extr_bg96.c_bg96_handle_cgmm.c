@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ modem_dce_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  MODEM_MAX_NAME_LENGTH ; 
- int /*<<< orphan*/  MODEM_RESULT_CODE_ERROR ; 
- int /*<<< orphan*/  MODEM_RESULT_CODE_SUCCESS ; 
- int /*<<< orphan*/  MODEM_STATE_FAIL ; 
- int /*<<< orphan*/  MODEM_STATE_SUCCESS ; 
- int /*<<< orphan*/  esp_modem_process_command_done (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int snprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  strip_cr_lf_tail (int /*<<< orphan*/ ,int) ; 
- scalar_t__ strstr (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int name; } ;
+typedef TYPE_1__ modem_dce_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int MODEM_MAX_NAME_LENGTH ;
+ int MODEM_RESULT_CODE_ERROR ;
+ int MODEM_RESULT_CODE_SUCCESS ;
+ int MODEM_STATE_FAIL ;
+ int MODEM_STATE_SUCCESS ;
+ int esp_modem_process_command_done (TYPE_1__*,int ) ;
+ int snprintf (int ,int ,char*,char const*) ;
+ int strip_cr_lf_tail (int ,int) ;
+ scalar_t__ strstr (char const*,int ) ;
 
 __attribute__((used)) static esp_err_t bg96_handle_cgmm(modem_dce_t *dce, const char *line)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static esp_err_t bg96_handle_cgmm(modem_dce_t *dce, const 
     } else {
         int len = snprintf(dce->name, MODEM_MAX_NAME_LENGTH, "%s", line);
         if (len > 2) {
-            /* Strip "\r\n" */
+
             strip_cr_lf_tail(dce->name, len);
             err = ESP_OK;
         }

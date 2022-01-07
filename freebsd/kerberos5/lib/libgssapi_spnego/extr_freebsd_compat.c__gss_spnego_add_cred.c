@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gss_name_t ;
-typedef  int /*<<< orphan*/  gss_cred_usage_t ;
-typedef  int /*<<< orphan*/  gss_cred_id_t ;
-typedef  int /*<<< orphan*/  gss_OID_set ;
-typedef  int /*<<< orphan*/  gss_OID ;
-typedef  int /*<<< orphan*/  OM_uint32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gss_add_cred (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gss_name_t ;
+typedef int gss_cred_usage_t ;
+typedef int gss_cred_id_t ;
+typedef int gss_OID_set ;
+typedef int gss_OID ;
+typedef int OM_uint32 ;
+
+
+ int gss_add_cred (int *,int const,int const,int const,int ,int ,int ,int *,int *,int *,int *) ;
 
 OM_uint32 _gss_spnego_add_cred (
             OM_uint32 * minor_status,
@@ -34,7 +34,7 @@ OM_uint32 _gss_spnego_add_cred (
             OM_uint32 * acceptor_time_rec
            )
 {
-	return gss_add_cred(minor_status,
+ return gss_add_cred(minor_status,
                        input_cred_handle,
                        desired_name,
                        desired_mech,

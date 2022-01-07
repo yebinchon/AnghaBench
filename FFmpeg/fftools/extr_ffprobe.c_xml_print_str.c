@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct section {int flags; char const* element_name; } ;
-typedef  int /*<<< orphan*/  XMLContext ;
-struct TYPE_4__ {size_t level; scalar_t__* nb_item; struct section** section; int /*<<< orphan*/ * priv; } ;
-typedef  TYPE_1__ WriterContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
+typedef int XMLContext ;
+struct TYPE_4__ {size_t level; scalar_t__* nb_item; struct section** section; int * priv; } ;
+typedef TYPE_1__ WriterContext ;
+typedef int AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int SECTION_FLAG_HAS_VARIABLE_FIELDS ; 
- int /*<<< orphan*/  XML_INDENT () ; 
- int /*<<< orphan*/  av_bprint_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* xml_escape_str (int /*<<< orphan*/ *,char const*,TYPE_1__*) ; 
+
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int SECTION_FLAG_HAS_VARIABLE_FIELDS ;
+ int XML_INDENT () ;
+ int av_bprint_clear (int *) ;
+ int av_bprint_finalize (int *,int *) ;
+ int av_bprint_init (int *,int,int ) ;
+ int printf (char*,...) ;
+ char* xml_escape_str (int *,char const*,TYPE_1__*) ;
 
 __attribute__((used)) static void xml_print_str(WriterContext *wctx, const char *key, const char *value)
 {
@@ -47,5 +47,5 @@ __attribute__((used)) static void xml_print_str(WriterContext *wctx, const char 
         printf("%s=\"%s\"", key, xml_escape_str(&buf, value, wctx));
     }
 
-    av_bprint_finalize(&buf, NULL);
+    av_bprint_finalize(&buf, ((void*)0));
 }

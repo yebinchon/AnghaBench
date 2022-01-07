@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec_mapper {TYPE_1__* src; int /*<<< orphan*/  ra; struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  egl_surface; int /*<<< orphan*/  egl_display; int /*<<< orphan*/  gl_texture; int /*<<< orphan*/  query9; int /*<<< orphan*/  surface9; int /*<<< orphan*/  device9ex; } ;
-typedef  int int64_t ;
-struct TYPE_9__ {int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_8__ {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {scalar_t__* planes; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_2__ RECT ;
-typedef  int /*<<< orphan*/  IDirect3DSurface9 ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_3__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DGETDATA_FLUSH ; 
- int /*<<< orphan*/  D3DISSUE_END ; 
- int /*<<< orphan*/  D3DTEXF_NONE ; 
- int /*<<< orphan*/  EGL_BACK_BUFFER ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- scalar_t__ IDirect3DDevice9Ex_StretchRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirect3DQuery9_GetData (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IDirect3DQuery9_Issue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,...) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ra_hwdec_mapper*,char*,long long) ; 
- scalar_t__ S_FALSE ; 
- int /*<<< orphan*/  eglBindTexImage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (scalar_t__) ; 
- int /*<<< orphan*/  mp_sleep_us (int const) ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct ra_hwdec_mapper {TYPE_1__* src; int ra; struct priv* priv; } ;
+struct priv {int egl_surface; int egl_display; int gl_texture; int query9; int surface9; int device9ex; } ;
+typedef int int64_t ;
+struct TYPE_9__ {int (* BindTexture ) (int ,int ) ;} ;
+struct TYPE_8__ {int member_3; int member_2; int member_1; int member_0; } ;
+struct TYPE_7__ {scalar_t__* planes; int h; int w; } ;
+typedef TYPE_2__ RECT ;
+typedef int IDirect3DSurface9 ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_3__ GL ;
+
+
+ int D3DGETDATA_FLUSH ;
+ int D3DISSUE_END ;
+ int D3DTEXF_NONE ;
+ int EGL_BACK_BUFFER ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int GL_TEXTURE_2D ;
+ scalar_t__ IDirect3DDevice9Ex_StretchRect (int ,int *,TYPE_2__*,int ,TYPE_2__*,int ) ;
+ scalar_t__ IDirect3DQuery9_GetData (int ,int *,int ,int ) ;
+ scalar_t__ IDirect3DQuery9_Issue (int ,int ) ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,...) ;
+ int MP_VERBOSE (struct ra_hwdec_mapper*,char*,long long) ;
+ scalar_t__ S_FALSE ;
+ int eglBindTexImage (int ,int ,int ) ;
+ int mp_HRESULT_to_str (scalar_t__) ;
+ int mp_sleep_us (int const) ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int stub1 (int ,int ) ;
+ int stub2 (int ,int ) ;
 
 __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
 {
@@ -68,14 +68,14 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
         return -1;
     }
 
-    // There doesn't appear to be an efficient way to do a blocking flush
-    // of the above StretchRect. Timeout of 8ms is required to reliably
-    // render 4k on Intel Haswell, Ivybridge and Cherry Trail Atom.
+
+
+
     const int max_retries = 8;
     const int64_t wait_us = 1000;
     int retries = 0;
-    while (true) {
-        hr = IDirect3DQuery9_GetData(p->query9, NULL, 0, D3DGETDATA_FLUSH);
+    while (1) {
+        hr = IDirect3DQuery9_GetData(p->query9, ((void*)0), 0, D3DGETDATA_FLUSH);
         if (FAILED(hr)) {
             MP_ERR(mapper, "Failed to query Direct3D flush state\n");
             return -1;

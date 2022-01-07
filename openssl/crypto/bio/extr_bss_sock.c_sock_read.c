@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  num; } ;
-typedef  TYPE_1__ BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_clear_retry_flags (TYPE_1__*) ; 
- scalar_t__ BIO_get_ktls_recv (TYPE_1__*) ; 
- int /*<<< orphan*/  BIO_set_retry_read (TYPE_1__*) ; 
- scalar_t__ BIO_sock_should_retry (int) ; 
- int /*<<< orphan*/  clear_socket_error () ; 
- int ktls_read_record (int /*<<< orphan*/ ,char*,int) ; 
- int readsocket (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int num; } ;
+typedef TYPE_1__ BIO ;
+
+
+ int BIO_clear_retry_flags (TYPE_1__*) ;
+ scalar_t__ BIO_get_ktls_recv (TYPE_1__*) ;
+ int BIO_set_retry_read (TYPE_1__*) ;
+ scalar_t__ BIO_sock_should_retry (int) ;
+ int clear_socket_error () ;
+ int ktls_read_record (int ,char*,int) ;
+ int readsocket (int ,char*,int) ;
 
 __attribute__((used)) static int sock_read(BIO *b, char *out, int outl)
 {
     int ret = 0;
 
-    if (out != NULL) {
+    if (out != ((void*)0)) {
         clear_socket_error();
-# ifndef OPENSSL_NO_KTLS
+
         if (BIO_get_ktls_recv(b))
             ret = ktls_read_record(b->num, out, outl);
         else
-# endif
+
             ret = readsocket(b->num, out, outl);
         BIO_clear_retry_flags(b);
         if (ret <= 0) {

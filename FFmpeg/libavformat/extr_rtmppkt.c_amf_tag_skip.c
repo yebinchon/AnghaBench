@@ -1,40 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int AMFDataType ;
 
-/* Variables and functions */
-#define  AMF_DATA_TYPE_ARRAY 137 
-#define  AMF_DATA_TYPE_BOOL 136 
-#define  AMF_DATA_TYPE_DATE 135 
-#define  AMF_DATA_TYPE_LONG_STRING 134 
-#define  AMF_DATA_TYPE_MIXEDARRAY 133 
-#define  AMF_DATA_TYPE_NULL 132 
-#define  AMF_DATA_TYPE_NUMBER 131 
-#define  AMF_DATA_TYPE_OBJECT 130 
-#define  AMF_DATA_TYPE_OBJECT_END 129 
-#define  AMF_DATA_TYPE_STRING 128 
- int bytestream2_get_be16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_be32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_get_be64 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int GetByteContext ;
+typedef int AMFDataType ;
+ int bytestream2_get_be16 (int *) ;
+ int bytestream2_get_be32 (int *) ;
+ int bytestream2_get_be64 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_skip (int *,int) ;
 
 __attribute__((used)) static int amf_tag_skip(GetByteContext *gb)
 {
     AMFDataType type;
-    unsigned nb   = -1;
+    unsigned nb = -1;
     int parse_key = 1;
 
     if (bytestream2_get_bytes_left(gb) < 1)
@@ -42,29 +30,29 @@ __attribute__((used)) static int amf_tag_skip(GetByteContext *gb)
 
     type = bytestream2_get_byte(gb);
     switch (type) {
-    case AMF_DATA_TYPE_NUMBER:
+    case 131:
         bytestream2_get_be64(gb);
         return 0;
-    case AMF_DATA_TYPE_BOOL:
+    case 136:
         bytestream2_get_byte(gb);
         return 0;
-    case AMF_DATA_TYPE_STRING:
+    case 128:
         bytestream2_skip(gb, bytestream2_get_be16(gb));
         return 0;
-    case AMF_DATA_TYPE_LONG_STRING:
+    case 134:
         bytestream2_skip(gb, bytestream2_get_be32(gb));
         return 0;
-    case AMF_DATA_TYPE_NULL:
+    case 132:
         return 0;
-    case AMF_DATA_TYPE_DATE:
+    case 135:
         bytestream2_skip(gb, 10);
         return 0;
-    case AMF_DATA_TYPE_ARRAY:
+    case 137:
         parse_key = 0;
-    case AMF_DATA_TYPE_MIXEDARRAY:
+    case 133:
         nb = bytestream2_get_be32(gb);
-    case AMF_DATA_TYPE_OBJECT:
-        while (nb-- > 0 || type != AMF_DATA_TYPE_ARRAY) {
+    case 130:
+        while (nb-- > 0 || type != 137) {
             int t;
             if (parse_key) {
                 int size = bytestream2_get_be16(gb);
@@ -81,7 +69,7 @@ __attribute__((used)) static int amf_tag_skip(GetByteContext *gb)
                 return -1;
         }
         return 0;
-    case AMF_DATA_TYPE_OBJECT_END:  return 0;
-    default:                        return -1;
+    case 129: return 0;
+    default: return -1;
     }
 }

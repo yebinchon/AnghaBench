@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  name; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ TypeField ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int name; int type; } ;
+typedef TYPE_2__ TypeField ;
 struct TYPE_9__ {size_t num_fields; TYPE_2__* fields; } ;
-struct TYPE_11__ {scalar_t__ reachable; TYPE_1__ aggregate; int /*<<< orphan*/  typeid; } ;
-typedef  TYPE_3__ Type ;
+struct TYPE_11__ {scalar_t__ reachable; TYPE_1__ aggregate; int typeid; } ;
+typedef TYPE_3__ Type ;
 
-/* Variables and functions */
- scalar_t__ REACHABLE_NATURAL ; 
- size_t buf_len (TYPE_3__**) ; 
- int /*<<< orphan*/  gen_decl (TYPE_3__*) ; 
- int /*<<< orphan*/  gen_indent ; 
- int /*<<< orphan*/  genlnf (char*,...) ; 
- int /*<<< orphan*/  is_tuple_reachable (TYPE_3__*) ; 
- TYPE_3__** sorted_syms ; 
- TYPE_3__** tuple_types ; 
- int /*<<< orphan*/  type_to_cdecl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ REACHABLE_NATURAL ;
+ size_t buf_len (TYPE_3__**) ;
+ int gen_decl (TYPE_3__*) ;
+ int gen_indent ;
+ int genlnf (char*,...) ;
+ int is_tuple_reachable (TYPE_3__*) ;
+ TYPE_3__** sorted_syms ;
+ TYPE_3__** tuple_types ;
+ int type_to_cdecl (int ,int ) ;
 
 void gen_sorted_decls(void) {
     for (int i = 0; i < buf_len(tuple_types); i++) {

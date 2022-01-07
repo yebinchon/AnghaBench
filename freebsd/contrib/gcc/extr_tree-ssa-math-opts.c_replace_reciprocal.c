@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  use_operand_p ;
-typedef  scalar_t__ tree ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int use_operand_p ;
+typedef scalar_t__ tree ;
 struct occurrence {scalar_t__ recip_def_stmt; scalar_t__ recip_def; } ;
-typedef  TYPE_1__* basic_block ;
+typedef TYPE_1__* basic_block ;
 struct TYPE_3__ {scalar_t__ aux; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MULT_EXPR ; 
- int /*<<< orphan*/  SET_USE (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TREE_OPERAND (scalar_t__,int) ; 
- int /*<<< orphan*/  TREE_SET_CODE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ USE_STMT (int /*<<< orphan*/ ) ; 
- TYPE_1__* bb_for_stmt (scalar_t__) ; 
- int /*<<< orphan*/  fold_stmt_inplace (scalar_t__) ; 
- int /*<<< orphan*/  update_stmt (scalar_t__) ; 
+
+ int MULT_EXPR ;
+ int SET_USE (int ,scalar_t__) ;
+ int TREE_OPERAND (scalar_t__,int) ;
+ int TREE_SET_CODE (int ,int ) ;
+ scalar_t__ USE_STMT (int ) ;
+ TYPE_1__* bb_for_stmt (scalar_t__) ;
+ int fold_stmt_inplace (scalar_t__) ;
+ int update_stmt (scalar_t__) ;
 
 __attribute__((used)) static inline void
 replace_reciprocal (use_operand_p use_p)

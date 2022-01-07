@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  int_; } ;
-struct rmsgpack_dom_value {TYPE_1__ val; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int int_; } ;
+struct rmsgpack_dom_value {TYPE_1__ val; int type; } ;
 struct buffer {int offset; scalar_t__* data; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RDT_INT ; 
- int /*<<< orphan*/  STRING_REP_INT64 ; 
- scalar_t__ isdigit (int) ; 
- int /*<<< orphan*/  query_raise_expected_number (int,char const**) ; 
- scalar_t__ sscanf (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int RDT_INT ;
+ int STRING_REP_INT64 ;
+ scalar_t__ isdigit (int) ;
+ int query_raise_expected_number (int,char const**) ;
+ scalar_t__ sscanf (scalar_t__*,int ,int *) ;
 
 __attribute__((used)) static struct buffer query_parse_integer(struct buffer buff,
       struct rmsgpack_dom_value *value, const char **error)
 {
-   bool test   = false;
+   bool test = 0;
 
    value->type = RDT_INT;
 
-   test        = (sscanf(buff.data + buff.offset,
+   test = (sscanf(buff.data + buff.offset,
                          STRING_REP_INT64,
                          (int64_t*)&value->val.int_) == 0);
 

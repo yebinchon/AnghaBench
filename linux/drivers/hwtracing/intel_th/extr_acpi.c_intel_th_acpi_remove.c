@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
 struct intel_th {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  intel_th_free (struct intel_th*) ; 
- struct intel_th* platform_get_drvdata (struct platform_device*) ; 
+
+ int intel_th_free (struct intel_th*) ;
+ struct intel_th* platform_get_drvdata (struct platform_device*) ;
 
 __attribute__((used)) static int intel_th_acpi_remove(struct platform_device *pdev)
 {
-	struct intel_th *th = platform_get_drvdata(pdev);
+ struct intel_th *th = platform_get_drvdata(pdev);
 
-	intel_th_free(th);
+ intel_th_free(th);
 
-	return 0;
+ return 0;
 }

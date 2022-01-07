@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_sem_t ;
-typedef  int /*<<< orphan*/  libvlc_media_player_t ;
-typedef  int /*<<< orphan*/  libvlc_event_manager_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  libvlc_MediaPlayerPlaying ; 
- int libvlc_event_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_event_detach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_media_player_event_manager (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_media_player_play (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  on_event ; 
- int /*<<< orphan*/  test_log (char*) ; 
- int /*<<< orphan*/  vlc_sem_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_sem_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_sem_t ;
+typedef int libvlc_media_player_t ;
+typedef int libvlc_event_manager_t ;
+
+
+ int assert (int) ;
+ int libvlc_MediaPlayerPlaying ;
+ int libvlc_event_attach (int *,int ,int ,int *) ;
+ int libvlc_event_detach (int *,int ,int ,int *) ;
+ int * libvlc_media_player_event_manager (int *) ;
+ int libvlc_media_player_play (int *) ;
+ int on_event ;
+ int test_log (char*) ;
+ int vlc_sem_destroy (int *) ;
+ int vlc_sem_init (int *,int ) ;
+ int vlc_sem_wait (int *) ;
 
 __attribute__((used)) static void play_and_wait(libvlc_media_player_t *mp)
 {

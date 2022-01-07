@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_osd_res {double w; double h; int display_par; } ;
-struct MPContext {int /*<<< orphan*/  osd; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+struct MPContext {int osd; } ;
+typedef int lua_State ;
 
-/* Variables and functions */
- double MPMAX (double,int) ; 
- struct MPContext* get_mpctx (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,double) ; 
- struct mp_osd_res osd_get_vo_res (int /*<<< orphan*/ ) ; 
+
+ double MPMAX (double,int) ;
+ struct MPContext* get_mpctx (int *) ;
+ int lua_pushnumber (int *,double) ;
+ struct mp_osd_res osd_get_vo_res (int ) ;
 
 __attribute__((used)) static int script_get_osd_size(lua_State *L)
 {

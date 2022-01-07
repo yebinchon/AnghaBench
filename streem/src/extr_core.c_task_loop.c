@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct strm_task {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  excl; int /*<<< orphan*/  queue; } ;
-typedef  TYPE_1__ strm_stream ;
+struct TYPE_3__ {int excl; int queue; } ;
+typedef TYPE_1__ strm_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  prod_queue ; 
- int /*<<< orphan*/  queue ; 
- scalar_t__ stream_count ; 
- scalar_t__ strm_atomic_cas (int /*<<< orphan*/ ,int,int) ; 
- void* strm_queue_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  task_exec (TYPE_1__*,struct strm_task*) ; 
+
+ int prod_queue ;
+ int queue ;
+ scalar_t__ stream_count ;
+ scalar_t__ strm_atomic_cas (int ,int,int) ;
+ void* strm_queue_get (int ) ;
+ int task_exec (TYPE_1__*,struct strm_task*) ;
 
 __attribute__((used)) static void*
 task_loop(void *data)
@@ -37,7 +37,7 @@ task_loop(void *data)
       if (strm_atomic_cas(strm->excl, 0, 1)) {
         struct strm_task* t;
 
-        while ((t = strm_queue_get(strm->queue)) != NULL) {
+        while ((t = strm_queue_get(strm->queue)) != ((void*)0)) {
           task_exec(strm, t);
         }
         strm_atomic_cas(strm->excl, 1, 0);
@@ -47,5 +47,5 @@ task_loop(void *data)
       break;
     }
   }
-  return NULL;
+  return ((void*)0);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_customMem ;
-struct TYPE_4__ {int /*<<< orphan*/  job_cond; int /*<<< orphan*/  job_mutex; } ;
-typedef  TYPE_1__ ZSTDMT_jobDescription ;
-typedef  int U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTDMT_freeJobsTable (TYPE_1__* const,int const,int /*<<< orphan*/ ) ; 
- scalar_t__ ZSTD_calloc (int const,int /*<<< orphan*/ ) ; 
- int ZSTD_highbit32 (int) ; 
- int ZSTD_pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ZSTD_pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ZSTD_customMem ;
+struct TYPE_4__ {int job_cond; int job_mutex; } ;
+typedef TYPE_1__ ZSTDMT_jobDescription ;
+typedef int U32 ;
+
+
+ int ZSTDMT_freeJobsTable (TYPE_1__* const,int const,int ) ;
+ scalar_t__ ZSTD_calloc (int const,int ) ;
+ int ZSTD_highbit32 (int) ;
+ int ZSTD_pthread_cond_init (int *,int *) ;
+ int ZSTD_pthread_mutex_init (int *,int *) ;
 
 __attribute__((used)) static ZSTDMT_jobDescription* ZSTDMT_createJobsTable(U32* nbJobsPtr, ZSTD_customMem cMem)
 {
@@ -31,15 +31,15 @@ __attribute__((used)) static ZSTDMT_jobDescription* ZSTDMT_createJobsTable(U32* 
     ZSTDMT_jobDescription* const jobTable = (ZSTDMT_jobDescription*)
                 ZSTD_calloc(nbJobs * sizeof(ZSTDMT_jobDescription), cMem);
     int initError = 0;
-    if (jobTable==NULL) return NULL;
+    if (jobTable==((void*)0)) return ((void*)0);
     *nbJobsPtr = nbJobs;
     for (jobNb=0; jobNb<nbJobs; jobNb++) {
-        initError |= ZSTD_pthread_mutex_init(&jobTable[jobNb].job_mutex, NULL);
-        initError |= ZSTD_pthread_cond_init(&jobTable[jobNb].job_cond, NULL);
+        initError |= ZSTD_pthread_mutex_init(&jobTable[jobNb].job_mutex, ((void*)0));
+        initError |= ZSTD_pthread_cond_init(&jobTable[jobNb].job_cond, ((void*)0));
     }
     if (initError != 0) {
         ZSTDMT_freeJobsTable(jobTable, nbJobs, cMem);
-        return NULL;
+        return ((void*)0);
     }
     return jobTable;
 }

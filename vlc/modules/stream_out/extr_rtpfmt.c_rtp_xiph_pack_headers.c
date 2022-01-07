@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int XIPH_MAX_HEADER_COUNT ; 
- int* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (int*,void const*,unsigned int) ; 
- scalar_t__ xiph_SplitHeaders (unsigned int*,void const**,unsigned int*,size_t,void*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int XIPH_MAX_HEADER_COUNT ;
+ int* malloc (size_t) ;
+ int memcpy (int*,void const*,unsigned int) ;
+ scalar_t__ xiph_SplitHeaders (unsigned int*,void const**,unsigned int*,size_t,void*) ;
 
 __attribute__((used)) static int rtp_xiph_pack_headers(size_t room, void *p_extra, size_t i_extra,
                                  uint8_t **p_buffer, size_t *i_buffer,
@@ -35,7 +35,7 @@ __attribute__((used)) static int rtp_xiph_pack_headers(size_t room, void *p_extr
     if (packet_count < 3)
         return VLC_EGENERIC;;
 
-    if (theora_pixel_fmt != NULL)
+    if (theora_pixel_fmt != ((void*)0))
     {
         if (packet_size[0] < 42)
             return VLC_EGENERIC;
@@ -56,11 +56,11 @@ __attribute__((used)) static int rtp_xiph_pack_headers(size_t room, void *p_extr
     *i_buffer = room + 1 + length_size[0] + length_size[1]
                 + packet_size[0] + packet_size[1] + packet_size[2];
     *p_buffer = malloc(*i_buffer);
-    if (*p_buffer == NULL)
+    if (*p_buffer == ((void*)0))
         return VLC_ENOMEM;
 
     uint8_t *p = *p_buffer + room;
-    /* Number of headers */
+
     *p++ = 2;
 
     for (int i = 0; i < 2; i++)

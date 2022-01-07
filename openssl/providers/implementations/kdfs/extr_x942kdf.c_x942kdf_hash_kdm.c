@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mac ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_PROV ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_DigestFinal_ex (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestInit (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_copy_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_create () ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- int /*<<< orphan*/  PROV_R_BAD_LENGTH ; 
- size_t X942KDF_MAX_INLEN ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
+
+
+
+typedef int mac ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+
+
+ int ERR_LIB_PROV ;
+ int ERR_raise (int ,int ) ;
+ int EVP_DigestFinal_ex (int *,unsigned char*,int *) ;
+ int EVP_DigestInit (int *,int const*) ;
+ int EVP_DigestUpdate (int *,unsigned char const*,size_t) ;
+ int EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_copy_ex (int *,int *) ;
+ int * EVP_MD_CTX_create () ;
+ int EVP_MD_CTX_free (int *) ;
+ int EVP_MD_size (int const*) ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ int PROV_R_BAD_LENGTH ;
+ size_t X942KDF_MAX_INLEN ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
 
 __attribute__((used)) static int x942kdf_hash_kdm(const EVP_MD *kdf_md,
                             const unsigned char *z, size_t z_len,
@@ -40,7 +40,7 @@ __attribute__((used)) static int x942kdf_hash_kdm(const EVP_MD *kdf_md,
     size_t counter, out_len, len = derived_key_len;
     unsigned char mac[EVP_MAX_MD_SIZE];
     unsigned char *out = derived_key;
-    EVP_MD_CTX *ctx = NULL, *ctx_init = NULL;
+    EVP_MD_CTX *ctx = ((void*)0), *ctx_init = ((void*)0);
 
     if (z_len > X942KDF_MAX_INLEN || other_len > X942KDF_MAX_INLEN
             || derived_key_len > X942KDF_MAX_INLEN
@@ -56,14 +56,14 @@ __attribute__((used)) static int x942kdf_hash_kdm(const EVP_MD *kdf_md,
 
     ctx = EVP_MD_CTX_create();
     ctx_init = EVP_MD_CTX_create();
-    if (ctx == NULL || ctx_init == NULL)
+    if (ctx == ((void*)0) || ctx_init == ((void*)0))
         goto end;
 
     if (!EVP_DigestInit(ctx_init, kdf_md))
         goto end;
 
     for (counter = 1;; counter++) {
-        /* updating the ctr modifies 4 bytes in the 'other' buffer */
+
         ctr[0] = (unsigned char)((counter >> 24) & 0xff);
         ctr[1] = (unsigned char)((counter >> 16) & 0xff);
         ctr[2] = (unsigned char)((counter >> 8) & 0xff);
@@ -74,14 +74,14 @@ __attribute__((used)) static int x942kdf_hash_kdm(const EVP_MD *kdf_md,
             || !EVP_DigestUpdate(ctx, other, other_len))
             goto end;
         if (len >= out_len) {
-            if (!EVP_DigestFinal_ex(ctx, out, NULL))
+            if (!EVP_DigestFinal_ex(ctx, out, ((void*)0)))
                 goto end;
             out += out_len;
             len -= out_len;
             if (len == 0)
                 break;
         } else {
-            if (!EVP_DigestFinal_ex(ctx, mac, NULL))
+            if (!EVP_DigestFinal_ex(ctx, mac, ((void*)0)))
                 goto end;
             memcpy(out, mac, len);
             break;

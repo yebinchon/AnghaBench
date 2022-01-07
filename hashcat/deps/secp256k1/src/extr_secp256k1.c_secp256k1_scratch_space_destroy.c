@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  secp256k1_scratch_space ;
-struct TYPE_3__ {int /*<<< orphan*/  error_callback; } ;
-typedef  TYPE_1__ secp256k1_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VERIFY_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  secp256k1_scratch_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int secp256k1_scratch_space ;
+struct TYPE_3__ {int error_callback; } ;
+typedef TYPE_1__ secp256k1_context ;
+
+
+ int VERIFY_CHECK (int ) ;
+ int secp256k1_scratch_destroy (int *,int *) ;
 
 void secp256k1_scratch_space_destroy(const secp256k1_context *ctx, secp256k1_scratch_space* scratch) {
-    VERIFY_CHECK(ctx != NULL);
+    VERIFY_CHECK(ctx != ((void*)0));
     secp256k1_scratch_destroy(&ctx->error_callback, scratch);
 }

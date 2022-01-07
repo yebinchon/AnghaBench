@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tilegx_spr {int number; char const* name; } ;
 
-/* Variables and functions */
- void* bsearch (void const*,void const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tilegx_num_sprs ; 
- int /*<<< orphan*/  tilegx_spr_compare ; 
- scalar_t__ tilegx_sprs ; 
+
+ void* bsearch (void const*,void const*,int ,int,int ) ;
+ int tilegx_num_sprs ;
+ int tilegx_spr_compare ;
+ scalar_t__ tilegx_sprs ;
 
 const char *
 get_tilegx_spr_name (int num)
@@ -29,9 +29,9 @@ get_tilegx_spr_name (int num)
                    tilegx_num_sprs, sizeof (struct tilegx_spr),
                    tilegx_spr_compare);
 
-  if (result == NULL)
+  if (result == ((void*)0))
   {
-    return (NULL);
+    return (((void*)0));
   }
   else
   {

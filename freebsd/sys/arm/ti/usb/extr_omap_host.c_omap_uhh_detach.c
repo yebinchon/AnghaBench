@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_uhh_softc {int /*<<< orphan*/ * uhh_mem_res; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_delete_children (int /*<<< orphan*/ ) ; 
- struct omap_uhh_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  omap_uhh_fini (struct omap_uhh_softc*) ; 
+
+
+
+struct omap_uhh_softc {int * uhh_mem_res; } ;
+typedef int device_t ;
+
+
+ int SYS_RES_MEMORY ;
+ int bus_release_resource (int ,int ,int ,int *) ;
+ int device_delete_children (int ) ;
+ struct omap_uhh_softc* device_get_softc (int ) ;
+ int omap_uhh_fini (struct omap_uhh_softc*) ;
 
 __attribute__((used)) static int
 omap_uhh_detach(device_t dev)
 {
-	struct omap_uhh_softc *isc = device_get_softc(dev);
+ struct omap_uhh_softc *isc = device_get_softc(dev);
 
-	/* during module unload there are lots of children leftover */
-	device_delete_children(dev);
 
-	if (isc->uhh_mem_res) {
-		bus_release_resource(dev, SYS_RES_MEMORY, 0, isc->uhh_mem_res);
-		isc->uhh_mem_res = NULL;
-	}
+ device_delete_children(dev);
 
-	omap_uhh_fini(isc);
+ if (isc->uhh_mem_res) {
+  bus_release_resource(dev, SYS_RES_MEMORY, 0, isc->uhh_mem_res);
+  isc->uhh_mem_res = ((void*)0);
+ }
 
-	return (0);
+ omap_uhh_fini(isc);
+
+ return (0);
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_btree_type ;
-struct TYPE_3__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ sqliterk_btree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sqliterk_btree_type_unknown ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqliterk_btree_type ;
+struct TYPE_3__ {int type; } ;
+typedef TYPE_1__ sqliterk_btree ;
+
+
+ int sqliterk_btree_type_unknown ;
 
 sqliterk_btree_type sqliterkBtreeGetType(sqliterk_btree *btree)
 {

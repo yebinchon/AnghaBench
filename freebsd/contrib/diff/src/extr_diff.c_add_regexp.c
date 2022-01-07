@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct regexp_list {char* regexps; size_t len; int multiple_regexps; size_t size; int /*<<< orphan*/  buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- char* re_compile_pattern (char const*,size_t,int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
- char* xrealloc (char*,size_t) ; 
+
+
+
+struct regexp_list {char* regexps; size_t len; int multiple_regexps; size_t size; int buf; } ;
+
+
+ int error (int ,int ,char*,char const*,char const*) ;
+ int memcpy (char*,char const*,size_t) ;
+ char* re_compile_pattern (char const*,size_t,int ) ;
+ size_t strlen (char const*) ;
+ char* xrealloc (char*,size_t) ;
 
 __attribute__((used)) static void
 add_regexp (struct regexp_list *reglist, char const *pattern)
@@ -36,21 +36,21 @@ add_regexp (struct regexp_list *reglist, char const *pattern)
       size_t size = reglist->size;
 
       if (size <= newlen)
-	{
-	  if (!size)
-	    size = 1;
+ {
+   if (!size)
+     size = 1;
 
-	  do size *= 2;
-	  while (size <= newlen);
+   do size *= 2;
+   while (size <= newlen);
 
-	  reglist->size = size;
-	  reglist->regexps = regexps = xrealloc (regexps, size);
-	}
+   reglist->size = size;
+   reglist->regexps = regexps = xrealloc (regexps, size);
+ }
       if (multiple_regexps)
-	{
-	  regexps[len++] = '\\';
-	  regexps[len++] = '|';
-	}
+ {
+   regexps[len++] = '\\';
+   regexps[len++] = '|';
+ }
       memcpy (regexps + len, pattern, patlen + 1);
     }
 }

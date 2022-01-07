@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BasicTest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  DataCreate () ; 
- int /*<<< orphan*/  DataSharedMem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,char*,int) ; 
- int /*<<< orphan*/  DeleteImage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ EEXIST ; 
- int GenImage (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int HEIGHT ; 
- int /*<<< orphan*/  IPC_PRIVATE ; 
- int /*<<< orphan*/  IPC_RMID ; 
- int /*<<< orphan*/  S_IRWXU ; 
- int TEXTSIZE ; 
- int /*<<< orphan*/  TextTest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int WIDTH ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- scalar_t__ mkfifo (char*,int /*<<< orphan*/ ) ; 
- void* p_imageRGBA ; 
- void* p_text ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- void* shmat (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int shmctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int shmget (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FILE ;
+
+
+ int BasicTest (int *,int *,int) ;
+ int DataCreate () ;
+ int DataSharedMem (int *,int *,int,int,int,char*,int) ;
+ int DeleteImage (int *,int *,int) ;
+ scalar_t__ EEXIST ;
+ int GenImage (int *,int *) ;
+ int HEIGHT ;
+ int IPC_PRIVATE ;
+ int IPC_RMID ;
+ int S_IRWXU ;
+ int TEXTSIZE ;
+ int TextTest (int *,int *,int) ;
+ int WIDTH ;
+ scalar_t__ errno ;
+ int exit (int) ;
+ int * fopen (char*,char*) ;
+ scalar_t__ mkfifo (char*,int ) ;
+ void* p_imageRGBA ;
+ void* p_text ;
+ int printf (char*,...) ;
+ void* shmat (int,int *,int ) ;
+ int shmctl (int,int ,int ) ;
+ int shmget (int ,int,int ) ;
 
 int main( int i_argc, char *ppsz_argv[] ) {
     if( i_argc != 3 ) {
@@ -59,13 +59,13 @@ int main( int i_argc, char *ppsz_argv[] ) {
     printf( " done, ID is %d\n", i_shmText );
 
     printf( "Attaching shared memory for RGBA..." );
-    p_imageRGBA = shmat( i_shmRGBA, NULL, 0 );
+    p_imageRGBA = shmat( i_shmRGBA, ((void*)0), 0 );
     if( p_imageRGBA == (void*)-1 ) {
         printf( " failed\n" );
         exit( -1 );
     }
     printf( " done. Text..." );
-    p_text = shmat( i_shmText, NULL, 0 );
+    p_text = shmat( i_shmText, ((void*)0), 0 );
     if( p_text == (void*)-1 ) {
         printf( " failed\n" );
         exit( -1 );
@@ -112,12 +112,12 @@ int main( int i_argc, char *ppsz_argv[] ) {
 
     printf( "Opening FIFOs..." );
     FILE *p_cmd = fopen( ppsz_argv[1], "w" );
-    if( p_cmd == NULL ) {
+    if( p_cmd == ((void*)0) ) {
         printf( " failed\n" );
         exit( -1 );
     }
     FILE *p_res = fopen( ppsz_argv[2], "r" );
-    if( p_res == NULL ) {
+    if( p_res == ((void*)0) ) {
         printf( " failed\n" );
         exit( -1 );
     }

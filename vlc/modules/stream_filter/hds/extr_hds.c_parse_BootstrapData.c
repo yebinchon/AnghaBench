@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_5__ {scalar_t__ server_entry_count; scalar_t__ fragment_run_count; scalar_t__ segment_run_count; int /*<<< orphan*/ * quality_segment_modifier; void** server_entries; void* movie_id; int /*<<< orphan*/  live_current_time; void* timescale; } ;
-typedef  TYPE_1__ hds_stream_t ;
-typedef  int /*<<< orphan*/  abst_len ;
 
-/* Variables and functions */
- scalar_t__ MAX_HDS_SERVERS ; 
- void* U32_AT (int*) ; 
- int /*<<< orphan*/  U64_AT (int*) ; 
- int* memchr (int*,char,int) ; 
- scalar_t__ memcmp (int*,char*,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
- int* parse_afrt (int /*<<< orphan*/ *,TYPE_1__*,int*,int*) ; 
- int* parse_asrt (int /*<<< orphan*/ *,TYPE_1__*,int*,int*) ; 
- scalar_t__ strlen (void*) ; 
- void* strndup (char*,int) ; 
- scalar_t__ strnlen (char*,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_5__ {scalar_t__ server_entry_count; scalar_t__ fragment_run_count; scalar_t__ segment_run_count; int * quality_segment_modifier; void** server_entries; void* movie_id; int live_current_time; void* timescale; } ;
+typedef TYPE_1__ hds_stream_t ;
+typedef int abst_len ;
+
+
+ scalar_t__ MAX_HDS_SERVERS ;
+ void* U32_AT (int*) ;
+ int U64_AT (int*) ;
+ int* memchr (int*,char,int) ;
+ scalar_t__ memcmp (int*,char*,int) ;
+ int msg_Err (int *,char*) ;
+ int msg_Warn (int *,char*) ;
+ int* parse_afrt (int *,TYPE_1__*,int*,int*) ;
+ int* parse_asrt (int *,TYPE_1__*,int*,int*) ;
+ scalar_t__ strlen (void*) ;
+ void* strndup (char*,int) ;
+ scalar_t__ strnlen (char*,int) ;
 
 __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
                                  hds_stream_t * s,
@@ -41,7 +41,7 @@ __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
 
     uint32_t abst_len = U32_AT( data_p );
     if( abst_len > data_end - data
-        || data_end - data < 29 /* min size of data */ )
+        || data_end - data < 29 )
     {
         msg_Warn( p_this, "Not enough bootstrap data" );
         return;
@@ -55,25 +55,25 @@ __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
     }
     data_p += 4;
 
-    /* version, flags*/
+
     data_p += 4;
 
-    /* we ignore the version */
+
     data_p += 4;
 
-    /* some flags we don't care about here because they are
-     * in the manifest
-     */
+
+
+
     data_p += 1;
 
-    /* timescale */
+
     s->timescale = U32_AT( data_p );
     data_p += sizeof(s->timescale);
 
     s->live_current_time = U64_AT( data_p );
     data_p += sizeof(s->live_current_time);
 
-    /* smtpe time code offset */
+
     data_p += 8;
 
     s->movie_id = strndup( (char*)data_p, data_end - data_p );
@@ -121,7 +121,7 @@ __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
         return;
     }
 
-    s->quality_segment_modifier = NULL;
+    s->quality_segment_modifier = ((void*)0);
 
     uint8_t quality_entry_count = *data_p;
     data_p++;
@@ -132,7 +132,7 @@ __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
         return;
     }
 
-    s->quality_segment_modifier = NULL;
+    s->quality_segment_modifier = ((void*)0);
     while( quality_entry_count-- > 0 )
     {
         if( s->quality_segment_modifier )
@@ -147,7 +147,7 @@ __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
         return;
     }
 
-    /* ignoring "DrmData" */
+
     data_p = memchr( data_p, '\0', data_end - data_p );
     if( ! data_p )
     {
@@ -161,7 +161,7 @@ __attribute__((used)) static void parse_BootstrapData( vlc_object_t* p_this,
         return;
     }
 
-    /* ignoring "metadata" */
+
     data_p = memchr( data_p, '\0', data_end - data_p );
     if( ! data_p )
     {

@@ -1,59 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* BACKLOG ; 
- scalar_t__ MAX_CONNECTIONS ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atexit (int /*<<< orphan*/ ) ; 
- void* atoi (void*) ; 
- void* backlog ; 
- scalar_t__ change_user (char*) ; 
- int daemonize ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  help () ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- void* logname ; 
- scalar_t__ maxconn ; 
- void* optarg ; 
- char* port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (scalar_t__) ; 
- scalar_t__ server_socket (char*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  spell_done ; 
- int /*<<< orphan*/  spell_init () ; 
- int /*<<< orphan*/  start_server () ; 
- int /*<<< orphan*/  start_time ; 
- int /*<<< orphan*/  stderr ; 
- int test_mode ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
- void* udp_port ; 
- int use_aspell_suggestion ; 
- char* username ; 
- int /*<<< orphan*/  verbosity ; 
- int yo_hack ; 
+ void* BACKLOG ;
+ scalar_t__ MAX_CONNECTIONS ;
+ int aes_load_pwd_file (int ) ;
+ int atexit (int ) ;
+ void* atoi (void*) ;
+ void* backlog ;
+ scalar_t__ change_user (char*) ;
+ int daemonize ;
+ int exit (int) ;
+ int fprintf (int ,char*,scalar_t__) ;
+ int getopt (int,char**,char*) ;
+ int help () ;
+ int init_dyn_data () ;
+ int kprintf (char*,char*) ;
+ void* logname ;
+ scalar_t__ maxconn ;
+ void* optarg ;
+ char* port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (scalar_t__) ;
+ scalar_t__ server_socket (char*,int ,void*,int ) ;
+ int set_debug_handlers () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int spell_done ;
+ int spell_init () ;
+ int start_server () ;
+ int start_time ;
+ int stderr ;
+ int test_mode ;
+ int time (int ) ;
+ void* udp_port ;
+ int use_aspell_suggestion ;
+ char* username ;
+ int verbosity ;
+ int yo_hack ;
 
 int main (int argc, char *argv[]) {
   int i;
-  //int k;
-  //long long x;
-  //char c;
+
+
+
 
   set_debug_handlers ();
 
@@ -105,13 +97,13 @@ int main (int argc, char *argv[]) {
     }
   }
 
-  //dynamic_data_buffer_size = 1 << 22;
+
 
   if (raise_file_rlimit (maxconn + 16) < 0) {
     fprintf (stderr, "fatal: cannot raise open file limit to %d\n", maxconn + 16);
     exit (1);
   }
-  
+
   sfd = server_socket (port, settings_addr, backlog, 0);
   if (sfd < 0) {
     kprintf ("cannot open server socket at port %d: %m\n", port);

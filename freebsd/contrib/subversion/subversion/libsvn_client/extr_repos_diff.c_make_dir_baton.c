@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_prop_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
+
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_prop_t ;
+typedef int svn_boolean_t ;
 struct edit_baton {int dummy; } ;
-struct dir_baton {int /*<<< orphan*/  users; int /*<<< orphan*/  base_revision; int /*<<< orphan*/  propchanges; int /*<<< orphan*/  path; int /*<<< orphan*/ * pool; void* skip_children; void* skip; void* tree_conflicted; int /*<<< orphan*/  added; struct edit_baton* edit_baton; struct dir_baton* parent_baton; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+struct dir_baton {int users; int base_revision; int propchanges; int path; int * pool; void* skip_children; void* skip; void* tree_conflicted; int added; struct edit_baton* edit_baton; struct dir_baton* parent_baton; } ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/  apr_array_make (int /*<<< orphan*/ *,int,int) ; 
- struct dir_baton* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
+
+ void* FALSE ;
+ int apr_array_make (int *,int,int) ;
+ struct dir_baton* apr_pcalloc (int *,int) ;
+ int apr_pstrdup (int *,char const*) ;
+ int * svn_pool_create (int *) ;
 
 __attribute__((used)) static struct dir_baton *
 make_dir_baton(const char *path,
@@ -43,7 +43,7 @@ make_dir_baton(const char *path,
   dir_baton->skip_children = FALSE;
   dir_baton->pool = dir_pool;
   dir_baton->path = apr_pstrdup(dir_pool, path);
-  dir_baton->propchanges  = apr_array_make(dir_pool, 8, sizeof(svn_prop_t));
+  dir_baton->propchanges = apr_array_make(dir_pool, 8, sizeof(svn_prop_t));
   dir_baton->base_revision = base_revision;
   dir_baton->users++;
 

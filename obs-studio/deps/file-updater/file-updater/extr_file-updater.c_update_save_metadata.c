@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct update_info {int /*<<< orphan*/  etag_remote; int /*<<< orphan*/  cache; } ;
-struct dstr {int /*<<< orphan*/  array; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  obs_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dstr_cat (struct dstr*,char*) ; 
- int /*<<< orphan*/  dstr_copy (struct dstr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dstr_free (struct dstr*) ; 
- int /*<<< orphan*/ * obs_data_create () ; 
- int /*<<< orphan*/  obs_data_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  obs_data_save_json (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  obs_data_set_string (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct update_info {int etag_remote; int cache; } ;
+struct dstr {int array; int member_0; } ;
+typedef int obs_data_t ;
+
+
+ int dstr_cat (struct dstr*,char*) ;
+ int dstr_copy (struct dstr*,int ) ;
+ int dstr_free (struct dstr*) ;
+ int * obs_data_create () ;
+ int obs_data_release (int *) ;
+ int obs_data_save_json (int *,int ) ;
+ int obs_data_set_string (int *,char*,int ) ;
 
 __attribute__((used)) static void update_save_metadata(struct update_info *info)
 {
-	struct dstr path = {0};
+ struct dstr path = {0};
 
-	if (!info->etag_remote)
-		return;
+ if (!info->etag_remote)
+  return;
 
-	dstr_copy(&path, info->cache);
-	dstr_cat(&path, "meta.json");
+ dstr_copy(&path, info->cache);
+ dstr_cat(&path, "meta.json");
 
-	obs_data_t *data;
-	data = obs_data_create();
-	obs_data_set_string(data, "etag", info->etag_remote);
-	obs_data_save_json(data, path.array);
-	obs_data_release(data);
+ obs_data_t *data;
+ data = obs_data_create();
+ obs_data_set_string(data, "etag", info->etag_remote);
+ obs_data_save_json(data, path.array);
+ obs_data_release(data);
 
-	dstr_free(&path);
+ dstr_free(&path);
 }

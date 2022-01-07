@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_mouse_t ;
-struct TYPE_6__ {scalar_t__ (* pf_video_mouse ) (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ filter_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vlc_mouse_t ;
+struct TYPE_6__ {scalar_t__ (* pf_video_mouse ) (TYPE_1__*,int *,int *,int *) ;} ;
+typedef TYPE_1__ filter_t ;
 struct TYPE_7__ {TYPE_3__* last; } ;
-typedef  TYPE_2__ filter_chain_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * mouse; TYPE_1__ filter; struct TYPE_8__* prev; } ;
-typedef  TYPE_3__ chained_filter_t ;
+typedef TYPE_2__ filter_chain_t ;
+struct TYPE_8__ {int * mouse; TYPE_1__ filter; struct TYPE_8__* prev; } ;
+typedef TYPE_3__ chained_filter_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ stub1 (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ stub1 (TYPE_1__*,int *,int *,int *) ;
 
 int filter_chain_MouseFilter( filter_chain_t *p_chain, vlc_mouse_t *p_dst, const vlc_mouse_t *p_src )
 {
     vlc_mouse_t current = *p_src;
 
-    for( chained_filter_t *f = p_chain->last; f != NULL; f = f->prev )
+    for( chained_filter_t *f = p_chain->last; f != ((void*)0); f = f->prev )
     {
         filter_t *p_filter = &f->filter;
         vlc_mouse_t *p_mouse = f->mouse;

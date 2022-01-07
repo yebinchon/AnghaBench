@@ -1,40 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/ * crop; } ;
-typedef  TYPE_1__ hb_job_t ;
-struct TYPE_17__ {int type; int /*<<< orphan*/ * crop; } ;
-typedef  TYPE_2__ hb_filter_private_t ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int * crop; } ;
+typedef TYPE_1__ hb_job_t ;
+struct TYPE_17__ {int type; int * crop; } ;
+typedef TYPE_2__ hb_filter_private_t ;
 struct TYPE_18__ {TYPE_2__* private_data; } ;
-typedef  TYPE_3__ hb_filter_object_t ;
-
-/* Variables and functions */
-#define  CC608SUB 135 
-#define  IMPORTSRT 134 
-#define  IMPORTSSA 133 
-#define  PGSSUB 132 
-#define  SSASUB 131 
-#define  TX3GSUB 130 
-#define  UTF8SUB 129 
-#define  VOBSUB 128 
- int cc608sub_post_init (TYPE_3__*,TYPE_1__*) ; 
- int /*<<< orphan*/  hb_log (char*,int) ; 
- int pgssub_post_init (TYPE_3__*,TYPE_1__*) ; 
- int ssa_post_init (TYPE_3__*,TYPE_1__*) ; 
- int textsub_post_init (TYPE_3__*,TYPE_1__*) ; 
- int vobsub_post_init (TYPE_3__*,TYPE_1__*) ; 
+typedef TYPE_3__ hb_filter_object_t ;
+ int cc608sub_post_init (TYPE_3__*,TYPE_1__*) ;
+ int hb_log (char*,int) ;
+ int pgssub_post_init (TYPE_3__*,TYPE_1__*) ;
+ int ssa_post_init (TYPE_3__*,TYPE_1__*) ;
+ int textsub_post_init (TYPE_3__*,TYPE_1__*) ;
+ int vobsub_post_init (TYPE_3__*,TYPE_1__*) ;
 
 __attribute__((used)) static int hb_rendersub_post_init( hb_filter_object_t * filter, hb_job_t *job )
 {
@@ -47,30 +37,30 @@ __attribute__((used)) static int hb_rendersub_post_init( hb_filter_object_t * fi
 
     switch( pv->type )
     {
-        case VOBSUB:
+        case 128:
         {
             return vobsub_post_init( filter, job );
         } break;
 
-        case SSASUB:
+        case 131:
         {
             return ssa_post_init( filter, job );
         } break;
 
-        case IMPORTSRT:
-        case IMPORTSSA:
-        case UTF8SUB:
-        case TX3GSUB:
+        case 134:
+        case 133:
+        case 129:
+        case 130:
         {
             return textsub_post_init( filter, job );
         } break;
 
-        case CC608SUB:
+        case 135:
         {
             return cc608sub_post_init( filter, job );
         } break;
 
-        case PGSSUB:
+        case 132:
         {
             return pgssub_post_init( filter, job );
         } break;

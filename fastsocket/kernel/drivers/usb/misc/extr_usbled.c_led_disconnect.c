@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_led {int /*<<< orphan*/  udev; } ;
-struct usb_interface {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_attr_blue ; 
- int /*<<< orphan*/  dev_attr_green ; 
- int /*<<< orphan*/  dev_attr_red ; 
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  device_remove_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct usb_led*) ; 
- struct usb_led* usb_get_intfdata (struct usb_interface*) ; 
- int /*<<< orphan*/  usb_put_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_set_intfdata (struct usb_interface*,int /*<<< orphan*/ *) ; 
+
+
+
+struct usb_led {int udev; } ;
+struct usb_interface {int dev; } ;
+
+
+ int dev_attr_blue ;
+ int dev_attr_green ;
+ int dev_attr_red ;
+ int dev_info (int *,char*) ;
+ int device_remove_file (int *,int *) ;
+ int kfree (struct usb_led*) ;
+ struct usb_led* usb_get_intfdata (struct usb_interface*) ;
+ int usb_put_dev (int ) ;
+ int usb_set_intfdata (struct usb_interface*,int *) ;
 
 __attribute__((used)) static void led_disconnect(struct usb_interface *interface)
 {
-	struct usb_led *dev;
+ struct usb_led *dev;
 
-	dev = usb_get_intfdata (interface);
+ dev = usb_get_intfdata (interface);
 
-	device_remove_file(&interface->dev, &dev_attr_blue);
-	device_remove_file(&interface->dev, &dev_attr_red);
-	device_remove_file(&interface->dev, &dev_attr_green);
+ device_remove_file(&interface->dev, &dev_attr_blue);
+ device_remove_file(&interface->dev, &dev_attr_red);
+ device_remove_file(&interface->dev, &dev_attr_green);
 
-	/* first remove the files, then set the pointer to NULL */
-	usb_set_intfdata (interface, NULL);
 
-	usb_put_dev(dev->udev);
+ usb_set_intfdata (interface, ((void*)0));
 
-	kfree(dev);
+ usb_put_dev(dev->udev);
 
-	dev_info(&interface->dev, "USB LED now disconnected\n");
+ kfree(dev);
+
+ dev_info(&interface->dev, "USB LED now disconnected\n");
 }

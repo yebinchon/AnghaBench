@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  reuse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- int /*<<< orphan*/  error (char*,int) ; 
- int setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+typedef int reuse ;
+
+
+ int SOL_SOCKET ;
+ int SO_REUSEADDR ;
+ int error (char*,int) ;
+ int setsockopt (int,int ,int ,int*,int) ;
 
 int sock_setreuse(int fd, int reuse) {
     int ret = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse));

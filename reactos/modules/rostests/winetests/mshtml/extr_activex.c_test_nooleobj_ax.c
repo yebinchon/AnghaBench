@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateInstance ; 
- int /*<<< orphan*/  Invoke_READYSTATE ; 
- int /*<<< orphan*/  Invoke_SCRIPTCALL ; 
- int /*<<< orphan*/  Invoke_SECURITYCTX ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_DISPONLY ; 
- int /*<<< orphan*/ * create_doc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_test (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  object_ax_str ; 
- int /*<<< orphan*/  release_doc (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IHTMLDocument2 ;
+
+
+ int CHECK_CALLED (int ) ;
+ int CreateInstance ;
+ int Invoke_READYSTATE ;
+ int Invoke_SCRIPTCALL ;
+ int Invoke_SECURITYCTX ;
+ int SET_EXPECT (int ) ;
+ int TEST_DISPONLY ;
+ int * create_doc (int ) ;
+ int init_test (int ) ;
+ int object_ax_str ;
+ int release_doc (int *) ;
 
 __attribute__((used)) static void test_nooleobj_ax(void)
 {

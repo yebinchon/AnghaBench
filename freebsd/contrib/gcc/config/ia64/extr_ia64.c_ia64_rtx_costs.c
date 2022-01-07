@@ -1,110 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
-#define  ASHIFT 143 
-#define  ASHIFTRT 142 
-#define  CONST 141 
-#define  CONST_DOUBLE 140 
-#define  CONST_INT 139 
- int /*<<< orphan*/  CONST_OK_FOR_I (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CONST_OK_FOR_J (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CONST_OK_FOR_K (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CONST_OK_FOR_L (int /*<<< orphan*/ ) ; 
- int COSTS_N_INSNS (int) ; 
-#define  DIV 138 
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
- int GET_MODE_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INTVAL (int /*<<< orphan*/ ) ; 
-#define  LABEL_REF 137 
-#define  LSHIFTRT 136 
-#define  MINUS 135 
-#define  MOD 134 
-#define  MULT 133 
-#define  PLUS 132 
-#define  SET 131 
-#define  SYMBOL_REF 130 
-#define  UDIV 129 
-#define  UMOD 128 
 
+
+
+typedef int rtx ;
+
+
+
+
+
+
+
+ int CONST_OK_FOR_I (int ) ;
+ int CONST_OK_FOR_J (int ) ;
+ int CONST_OK_FOR_K (int ) ;
+ int CONST_OK_FOR_L (int ) ;
+ int COSTS_N_INSNS (int) ;
+
+ int GET_MODE (int ) ;
+ int GET_MODE_SIZE (int ) ;
+ int INTVAL (int ) ;
 __attribute__((used)) static bool
 ia64_rtx_costs (rtx x, int code, int outer_code, int *total)
 {
   switch (code)
     {
-    case CONST_INT:
+    case 139:
       switch (outer_code)
         {
-        case SET:
-	  *total = CONST_OK_FOR_J (INTVAL (x)) ? 0 : COSTS_N_INSNS (1);
-	  return true;
-        case PLUS:
-	  if (CONST_OK_FOR_I (INTVAL (x)))
-	    *total = 0;
-	  else if (CONST_OK_FOR_J (INTVAL (x)))
-	    *total = 1;
-	  else
-	    *total = COSTS_N_INSNS (1);
-	  return true;
+        case 131:
+   *total = CONST_OK_FOR_J (INTVAL (x)) ? 0 : COSTS_N_INSNS (1);
+   return 1;
+        case 132:
+   if (CONST_OK_FOR_I (INTVAL (x)))
+     *total = 0;
+   else if (CONST_OK_FOR_J (INTVAL (x)))
+     *total = 1;
+   else
+     *total = COSTS_N_INSNS (1);
+   return 1;
         default:
-	  if (CONST_OK_FOR_K (INTVAL (x)) || CONST_OK_FOR_L (INTVAL (x)))
-	    *total = 0;
-	  else
-	    *total = COSTS_N_INSNS (1);
-	  return true;
-	}
+   if (CONST_OK_FOR_K (INTVAL (x)) || CONST_OK_FOR_L (INTVAL (x)))
+     *total = 0;
+   else
+     *total = COSTS_N_INSNS (1);
+   return 1;
+ }
 
-    case CONST_DOUBLE:
+    case 140:
       *total = COSTS_N_INSNS (1);
-      return true;
+      return 1;
 
-    case CONST:
-    case SYMBOL_REF:
-    case LABEL_REF:
+    case 141:
+    case 130:
+    case 137:
       *total = COSTS_N_INSNS (3);
-      return true;
+      return 1;
 
-    case MULT:
-      /* For multiplies wider than HImode, we have to go to the FPU,
-         which normally involves copies.  Plus there's the latency
-         of the multiply itself, and the latency of the instructions to
-         transfer integer regs to FP regs.  */
-      /* ??? Check for FP mode.  */
+    case 133:
+
+
+
+
+
       if (GET_MODE_SIZE (GET_MODE (x)) > 2)
         *total = COSTS_N_INSNS (10);
       else
-	*total = COSTS_N_INSNS (2);
-      return true;
+ *total = COSTS_N_INSNS (2);
+      return 1;
 
-    case PLUS:
-    case MINUS:
-    case ASHIFT:
-    case ASHIFTRT:
-    case LSHIFTRT:
+    case 132:
+    case 135:
+    case 143:
+    case 142:
+    case 136:
       *total = COSTS_N_INSNS (1);
-      return true;
+      return 1;
 
-    case DIV:
-    case UDIV:
-    case MOD:
-    case UMOD:
-      /* We make divide expensive, so that divide-by-constant will be
-         optimized to a multiply.  */
+    case 138:
+    case 129:
+    case 134:
+    case 128:
+
+
       *total = COSTS_N_INSNS (60);
-      return true;
+      return 1;
 
     default:
-      return false;
+      return 0;
     }
 }

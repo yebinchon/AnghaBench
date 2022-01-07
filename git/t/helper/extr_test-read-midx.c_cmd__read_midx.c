@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int read_midx_file (char const*) ; 
- int /*<<< orphan*/  usage (char*) ; 
+ int read_midx_file (char const*) ;
+ int usage (char*) ;
 
 int cmd__read_midx(int argc, const char **argv)
 {
-	if (argc != 2)
-		usage("read-midx <object-dir>");
+ if (argc != 2)
+  usage("read-midx <object-dir>");
 
-	return read_midx_file(argv[1]);
+ return read_midx_file(argv[1]);
 }

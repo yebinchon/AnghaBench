@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  rules; int /*<<< orphan*/  rules_foreign; } ;
-typedef  int /*<<< orphan*/  RoutingPolicyRule ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  routing_policy_rule_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  routing_policy_rule_hash_ops ; 
- scalar_t__ set_contains (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int set_ensure_allocated (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int set_put (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int rules; int rules_foreign; } ;
+typedef int RoutingPolicyRule ;
+typedef TYPE_1__ Manager ;
+
+
+ int ENOENT ;
+ int assert (TYPE_1__*) ;
+ int routing_policy_rule_free (int *) ;
+ int routing_policy_rule_hash_ops ;
+ scalar_t__ set_contains (int ,int *) ;
+ int set_ensure_allocated (int *,int *) ;
+ int set_put (int ,int *) ;
+ int set_remove (int ,int *) ;
 
 int routing_policy_rule_make_local(Manager *m, RoutingPolicyRule *rule) {
         int r;

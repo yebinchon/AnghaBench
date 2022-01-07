@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ stbi_uc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STBI_FREE (float*) ; 
- scalar_t__ pow (float,int /*<<< orphan*/ ) ; 
- scalar_t__* stbi__errpuc (char*,char*) ; 
- scalar_t__ stbi__float2int (float) ; 
- int /*<<< orphan*/  stbi__h2l_gamma_i ; 
- float stbi__h2l_scale_i ; 
- scalar_t__ stbi__malloc (int) ; 
 
-__attribute__((used)) static stbi_uc *stbi__hdr_to_ldr(float   *data, int x, int y, int comp)
+
+
+typedef scalar_t__ stbi_uc ;
+
+
+ int STBI_FREE (float*) ;
+ scalar_t__ pow (float,int ) ;
+ scalar_t__* stbi__errpuc (char*,char*) ;
+ scalar_t__ stbi__float2int (float) ;
+ int stbi__h2l_gamma_i ;
+ float stbi__h2l_scale_i ;
+ scalar_t__ stbi__malloc (int) ;
+
+__attribute__((used)) static stbi_uc *stbi__hdr_to_ldr(float *data, int x, int y, int comp)
 {
    int i,k,n;
    stbi_uc *output = (stbi_uc *) stbi__malloc(x * y * comp);
-   if (output == NULL) { STBI_FREE(data); return stbi__errpuc("outofmem", "Out of memory"); }
-   // compute number of non-alpha components
+   if (output == ((void*)0)) { STBI_FREE(data); return stbi__errpuc("outofmem", "Out of memory"); }
+
    if (comp & 1) n = comp; else n = comp-1;
    for (i=0; i < x*y; ++i) {
       for (k=0; k < n; ++k) {

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int numcomps; int z1; int z0; int x1; int x0; int y1; int y0; TYPE_2__* comps; } ;
-typedef  TYPE_1__ opj_volume_t ;
-struct TYPE_5__ {int w; int h; int l; int prec; int* data; scalar_t__ bigendian; scalar_t__ sgnd; int /*<<< orphan*/ * factor; int /*<<< orphan*/  dz; int /*<<< orphan*/  dy; int /*<<< orphan*/  dx; } ;
-typedef  TYPE_2__ opj_volume_comp_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ opj_volume_t ;
+struct TYPE_5__ {int w; int h; int l; int prec; int* data; scalar_t__ bigendian; scalar_t__ sgnd; int * factor; int dz; int dy; int dx; } ;
+typedef TYPE_2__ opj_volume_comp_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- int int_ceildiv (int,int /*<<< orphan*/ ) ; 
- int int_ceildivpow2 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int fwrite (char*,int,int,int *) ;
+ int int_ceildiv (int,int ) ;
+ int int_ceildivpow2 (int,int ) ;
+ int sprintf (char*,char*,char*,...) ;
+ int stdout ;
 
 int volumetopgx(opj_volume_t * volume, char *outfile)
 {
     int w, wr, wrr, h, hr, hrr, l, lr, lrr;
     int i, j, compno, offset, sliceno;
-    FILE *fdest = NULL;
+    FILE *fdest = ((void*)0);
 
     for (compno = 0; compno < volume->numcomps; compno++) {
         opj_volume_comp_t *comp = &volume->comps[compno];
@@ -89,7 +89,7 @@ int volumetopgx(opj_volume_t * volume, char *outfile)
 
             offset = (sliceno / lrr * l) + (sliceno % lrr);
             offset = wrr * hrr * offset;
-            /*fprintf(stdout,"%d %d %d %d\n",offset,wrr*hrr,wrr,w);*/
+
             for (i = 0; i < wrr * hrr; i++) {
                 int v = volume->comps[0].data[(i / wrr * w) + (i % wrr) + offset];
                 if (volume->comps[0].bigendian) {
@@ -106,8 +106,8 @@ int volumetopgx(opj_volume_t * volume, char *outfile)
             }
 
             fclose(fdest);
-        }/*for sliceno*/
-    }/*for compno*/
+        }
+    }
 
     return 0;
 }

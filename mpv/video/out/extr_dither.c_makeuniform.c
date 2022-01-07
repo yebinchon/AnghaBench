@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ctx {unsigned int size2; unsigned int* unimat; } ;
-typedef  unsigned int index_t ;
+typedef unsigned int index_t ;
 
-/* Variables and functions */
- unsigned int getmin (struct ctx*) ; 
- int /*<<< orphan*/  setbit (struct ctx*,unsigned int) ; 
+
+ unsigned int getmin (struct ctx*) ;
+ int setbit (struct ctx*,unsigned int) ;
 
 __attribute__((used)) static void makeuniform(struct ctx *k)
 {

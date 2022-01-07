@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct thread {TYPE_1__* td_frame; } ;
 struct fpreg {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  f0; } ;
+struct TYPE_2__ {int f0; } ;
 
-/* Variables and functions */
- struct thread* PCPU_GET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCPU_SET (int /*<<< orphan*/ ,struct thread*) ; 
- int /*<<< orphan*/  fpcurthread ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct fpreg*,int) ; 
+
+ struct thread* PCPU_GET (int ) ;
+ int PCPU_SET (int ,struct thread*) ;
+ int fpcurthread ;
+ int memcpy (int *,struct fpreg*,int) ;
 
 int
 set_fpregs(struct thread *td, struct fpreg *fpregs)
 {
-	if (PCPU_GET(fpcurthread) == td)
-		PCPU_SET(fpcurthread, (struct thread *)0);
-	memcpy(&td->td_frame->f0, fpregs, sizeof(struct fpreg));
-	return 0;
+ if (PCPU_GET(fpcurthread) == td)
+  PCPU_SET(fpcurthread, (struct thread *)0);
+ memcpy(&td->td_frame->f0, fpregs, sizeof(struct fpreg));
+ return 0;
 }

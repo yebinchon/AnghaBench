@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int item_size_max; scalar_t__ use_cas; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * calloc (int,int) ; 
- int /*<<< orphan*/  get_cas_id () ; 
- TYPE_1__ settings ; 
- int stats_sizes_buckets ; 
- int /*<<< orphan*/  stats_sizes_cas_min ; 
- int /*<<< orphan*/ * stats_sizes_hist ; 
+
+ int * calloc (int,int) ;
+ int get_cas_id () ;
+ TYPE_1__ settings ;
+ int stats_sizes_buckets ;
+ int stats_sizes_cas_min ;
+ int * stats_sizes_hist ;
 
 void item_stats_sizes_init(void) {
-    if (stats_sizes_hist != NULL)
+    if (stats_sizes_hist != ((void*)0))
         return;
     stats_sizes_buckets = settings.item_size_max / 32 + 1;
     stats_sizes_hist = calloc(stats_sizes_buckets, sizeof(int));

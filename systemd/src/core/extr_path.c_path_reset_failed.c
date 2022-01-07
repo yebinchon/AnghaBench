@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_5__ {scalar_t__ state; int /*<<< orphan*/  result; } ;
-typedef  TYPE_1__ Path ;
 
-/* Variables and functions */
- TYPE_1__* PATH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PATH_DEAD ; 
- scalar_t__ PATH_FAILED ; 
- int /*<<< orphan*/  PATH_SUCCESS ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  path_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_5__ {scalar_t__ state; int result; } ;
+typedef TYPE_1__ Path ;
+
+
+ TYPE_1__* PATH (int *) ;
+ int PATH_DEAD ;
+ scalar_t__ PATH_FAILED ;
+ int PATH_SUCCESS ;
+ int assert (TYPE_1__*) ;
+ int path_set_state (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void path_reset_failed(Unit *u) {
         Path *p = PATH(u);

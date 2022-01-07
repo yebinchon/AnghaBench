@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char TCHAR ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  OutputDebugString (char*) ; 
- int /*<<< orphan*/  OutputDebugStringA (char*) ; 
- char _T (char) ; 
- int /*<<< orphan*/  _pclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _popen (char*,char*) ; 
- int /*<<< orphan*/  _putts (char*) ; 
- int _tcslen (char*) ; 
- int /*<<< orphan*/  _tcsncpy (char*,char*,size_t) ; 
- scalar_t__ _tcsstr (char*,char*) ; 
- int /*<<< orphan*/ * _tpopen (char*,char*) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef char TCHAR ;
+typedef int FILE ;
+
+
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,char*) ;
+ int OutputDebugString (char*) ;
+ int OutputDebugStringA (char*) ;
+ char _T (char) ;
+ int _pclose (int *) ;
+ int * _popen (char*,char*) ;
+ int _putts (char*) ;
+ int _tcslen (char*) ;
+ int _tcsncpy (char*,char*,size_t) ;
+ scalar_t__ _tcsstr (char*,char*) ;
+ int * _tpopen (char*,char*) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ int puts (char*) ;
+ int strcat (char*,char*) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
 
 int _tmain(int argc, TCHAR ** argv)
 {
@@ -53,19 +53,19 @@ int _tmain(int argc, TCHAR ** argv)
 
     if (_tcsstr(argv[1], "--winetest") && (argc == 3))
     {
-        char   psBuffer[128];
-        char   psBuffer2[128];
-        char   *nlptr2;
-        char   cmd[255];
-        char   test[300];
-        FILE   *pPipe;
-        FILE   *pPipe2;
+        char psBuffer[128];
+        char psBuffer2[128];
+        char *nlptr2;
+        char cmd[255];
+        char test[300];
+        FILE *pPipe;
+        FILE *pPipe2;
 
-        /* get available tests */
+
         strcpy(cmd, argv[2]);
         strcat(cmd, " --list");
         pPipe = _tpopen(cmd, "r");
-        if (pPipe != NULL)
+        if (pPipe != ((void*)0))
         {
             while(fgets(psBuffer, 128, pPipe))
             {
@@ -74,12 +74,12 @@ int _tmain(int argc, TCHAR ** argv)
                     strcpy(cmd, argv[2]);
                     strcat(cmd, " ");
                     strcat(cmd, psBuffer+4);
-                    /* run the current test */
+
                     strcpy(test, "\n\nRunning ");
                     strcat(test, cmd);
                     OutputDebugStringA(test);
                     pPipe2 = _popen(cmd, "r");
-                    if (pPipe2 != NULL)
+                    if (pPipe2 != ((void*)0))
                     {
                         while(fgets(psBuffer2, 128, pPipe2))
                         {
@@ -100,11 +100,11 @@ int _tmain(int argc, TCHAR ** argv)
     }
     else if (_tcsstr(argv[1], "--process") && (argc == 3))
     {
-        char   psBuffer[128];
-        FILE   *pPipe;
+        char psBuffer[128];
+        FILE *pPipe;
 
         pPipe = _tpopen(argv[2], "r");
-        if (pPipe != NULL)
+        if (pPipe != ((void*)0))
         {
             while(fgets(psBuffer, 128, pPipe))
             {

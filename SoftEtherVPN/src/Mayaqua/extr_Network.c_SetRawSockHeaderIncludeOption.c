@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  value ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int IsRawSocket; int RawIP_HeaderIncludeFlag; int /*<<< orphan*/  socket; } ;
-typedef  TYPE_1__ SOCK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOOL_TO_INT (int) ; 
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IP_HDRINCL ; 
- int /*<<< orphan*/  setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int value ;
+typedef int UINT ;
+struct TYPE_3__ {int IsRawSocket; int RawIP_HeaderIncludeFlag; int socket; } ;
+typedef TYPE_1__ SOCK ;
+
+
+ int BOOL_TO_INT (int) ;
+ int IPPROTO_IP ;
+ int IP_HDRINCL ;
+ int setsockopt (int ,int ,int ,char*,int) ;
 
 void SetRawSockHeaderIncludeOption(SOCK *s, bool enable)
 {
-	UINT value = BOOL_TO_INT(enable);
-	if (s == NULL || s->IsRawSocket == false)
-	{
-		return;
-	}
+ UINT value = BOOL_TO_INT(enable);
+ if (s == ((void*)0) || s->IsRawSocket == 0)
+ {
+  return;
+ }
 
-	(void)setsockopt(s->socket, IPPROTO_IP, IP_HDRINCL, (char *)&value, sizeof(value));
+ (void)setsockopt(s->socket, IPPROTO_IP, IP_HDRINCL, (char *)&value, sizeof(value));
 
-	s->RawIP_HeaderIncludeFlag = enable;
+ s->RawIP_HeaderIncludeFlag = enable;
 }

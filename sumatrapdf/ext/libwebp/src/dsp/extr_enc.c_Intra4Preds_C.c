@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DC4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  HD4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  HE4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  HU4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int I4DC4 ; 
- int I4HD4 ; 
- int I4HE4 ; 
- int I4HU4 ; 
- int I4LD4 ; 
- int I4RD4 ; 
- int I4TM4 ; 
- int I4VE4 ; 
- int I4VL4 ; 
- int I4VR4 ; 
- int /*<<< orphan*/  LD4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  RD4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TM4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  VE4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  VL4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  VR4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int DC4 (int *,int const*) ;
+ int HD4 (int *,int const*) ;
+ int HE4 (int *,int const*) ;
+ int HU4 (int *,int const*) ;
+ int I4DC4 ;
+ int I4HD4 ;
+ int I4HE4 ;
+ int I4HU4 ;
+ int I4LD4 ;
+ int I4RD4 ;
+ int I4TM4 ;
+ int I4VE4 ;
+ int I4VL4 ;
+ int I4VR4 ;
+ int LD4 (int *,int const*) ;
+ int RD4 (int *,int const*) ;
+ int TM4 (int *,int const*) ;
+ int VE4 (int *,int const*) ;
+ int VL4 (int *,int const*) ;
+ int VR4 (int *,int const*) ;
 
 __attribute__((used)) static void Intra4Preds_C(uint8_t* dst, const uint8_t* top) {
   DC4(I4DC4 + dst, top);

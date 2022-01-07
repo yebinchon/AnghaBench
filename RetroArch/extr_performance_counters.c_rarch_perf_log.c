@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_CTL_IS_PERFCNT_ENABLE ; 
- int /*<<< orphan*/  RARCH_LOG (char*) ; 
- int /*<<< orphan*/  log_counters (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perf_counters_rarch ; 
- int /*<<< orphan*/  perf_ptr_rarch ; 
- int /*<<< orphan*/  rarch_ctl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int RARCH_CTL_IS_PERFCNT_ENABLE ;
+ int RARCH_LOG (char*) ;
+ int log_counters (int ,int ) ;
+ int perf_counters_rarch ;
+ int perf_ptr_rarch ;
+ int rarch_ctl (int ,int *) ;
 
 void rarch_perf_log(void)
 {
-   if (!rarch_ctl(RARCH_CTL_IS_PERFCNT_ENABLE, NULL))
+   if (!rarch_ctl(RARCH_CTL_IS_PERFCNT_ENABLE, ((void*)0)))
       return;
 
    RARCH_LOG("[PERF]: Performance counters (RetroArch):\n");

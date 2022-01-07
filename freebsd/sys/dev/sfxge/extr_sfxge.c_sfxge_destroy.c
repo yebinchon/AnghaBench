@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sfxge_softc {int /*<<< orphan*/  task_reset; int /*<<< orphan*/  dev; int /*<<< orphan*/ * enp; } ;
-typedef  int /*<<< orphan*/  efx_nic_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SFXGE_ADAPTER_LOCK_DESTROY (struct sfxge_softc*) ; 
- int /*<<< orphan*/  efx_nic_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  efx_nic_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  efx_nic_unprobe (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  efx_nvram_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  efx_vpd_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_disable_busmaster (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sfxge_bar_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_dma_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_ev_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_intr_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_mcdi_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_port_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_rx_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  sfxge_tx_fini (struct sfxge_softc*) ; 
- int /*<<< orphan*/  taskqueue_drain (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_thread ; 
+
+
+
+struct sfxge_softc {int task_reset; int dev; int * enp; } ;
+typedef int efx_nic_t ;
+
+
+ int SFXGE_ADAPTER_LOCK_DESTROY (struct sfxge_softc*) ;
+ int efx_nic_destroy (int *) ;
+ int efx_nic_reset (int *) ;
+ int efx_nic_unprobe (int *) ;
+ int efx_nvram_fini (int *) ;
+ int efx_vpd_fini (int *) ;
+ int pci_disable_busmaster (int ) ;
+ int sfxge_bar_fini (struct sfxge_softc*) ;
+ int sfxge_dma_fini (struct sfxge_softc*) ;
+ int sfxge_ev_fini (struct sfxge_softc*) ;
+ int sfxge_intr_fini (struct sfxge_softc*) ;
+ int sfxge_mcdi_fini (struct sfxge_softc*) ;
+ int sfxge_port_fini (struct sfxge_softc*) ;
+ int sfxge_rx_fini (struct sfxge_softc*) ;
+ int sfxge_tx_fini (struct sfxge_softc*) ;
+ int taskqueue_drain (int ,int *) ;
+ int taskqueue_thread ;
 
 __attribute__((used)) static void
 sfxge_destroy(struct sfxge_softc *sc)
 {
-	efx_nic_t *enp;
+ efx_nic_t *enp;
 
-	/* Clean up transmit state. */
-	sfxge_tx_fini(sc);
 
-	/* Clean up receive state. */
-	sfxge_rx_fini(sc);
+ sfxge_tx_fini(sc);
 
-	/* Clean up port state. */
-	sfxge_port_fini(sc);
 
-	/* Clean up event processing state. */
-	sfxge_ev_fini(sc);
+ sfxge_rx_fini(sc);
 
-	/* Clean up interrupts. */
-	sfxge_intr_fini(sc);
 
-	/* Tear down common code subsystems. */
-	efx_nic_reset(sc->enp);
-	efx_vpd_fini(sc->enp);
-	efx_nvram_fini(sc->enp);
-	efx_nic_unprobe(sc->enp);
+ sfxge_port_fini(sc);
 
-	/* Tear down MCDI. */
-	sfxge_mcdi_fini(sc);
 
-	/* Destroy common code context. */
-	enp = sc->enp;
-	sc->enp = NULL;
-	efx_nic_destroy(enp);
+ sfxge_ev_fini(sc);
 
-	/* Free DMA memory. */
-	sfxge_dma_fini(sc);
 
-	/* Free mapped BARs. */
-	sfxge_bar_fini(sc);
+ sfxge_intr_fini(sc);
 
-	(void) pci_disable_busmaster(sc->dev);
 
-	taskqueue_drain(taskqueue_thread, &sc->task_reset);
+ efx_nic_reset(sc->enp);
+ efx_vpd_fini(sc->enp);
+ efx_nvram_fini(sc->enp);
+ efx_nic_unprobe(sc->enp);
 
-	/* Destroy the softc lock. */
-	SFXGE_ADAPTER_LOCK_DESTROY(sc);
+
+ sfxge_mcdi_fini(sc);
+
+
+ enp = sc->enp;
+ sc->enp = ((void*)0);
+ efx_nic_destroy(enp);
+
+
+ sfxge_dma_fini(sc);
+
+
+ sfxge_bar_fini(sc);
+
+ (void) pci_disable_busmaster(sc->dev);
+
+ taskqueue_drain(taskqueue_thread, &sc->task_reset);
+
+
+ SFXGE_ADAPTER_LOCK_DESTROY(sc);
 }

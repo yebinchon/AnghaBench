@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v ;
-struct TYPE_4__ {int /*<<< orphan*/  str_val; } ;
-struct TYPE_5__ {int /*<<< orphan*/  type; TYPE_1__ v; } ;
-typedef  TYPE_2__ PROPERTY_DEFINITION ;
-typedef  int /*<<< orphan*/  OPENSSL_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_PROP ; 
- int /*<<< orphan*/  ERR_raise_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  PROPERTY_TYPE_STRING ; 
- int /*<<< orphan*/  PROP_R_NO_MATCHING_STRING_DELIMETER ; 
- int /*<<< orphan*/  PROP_R_STRING_TOO_LONG ; 
- int /*<<< orphan*/  ossl_property_value (int /*<<< orphan*/ *,char*,int const) ; 
- char* skip_space (char const*) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int v ;
+struct TYPE_4__ {int str_val; } ;
+struct TYPE_5__ {int type; TYPE_1__ v; } ;
+typedef TYPE_2__ PROPERTY_DEFINITION ;
+typedef int OPENSSL_CTX ;
+
+
+ int ERR_LIB_PROP ;
+ int ERR_raise_data (int ,int ,char*,...) ;
+ int PROPERTY_TYPE_STRING ;
+ int PROP_R_NO_MATCHING_STRING_DELIMETER ;
+ int PROP_R_STRING_TOO_LONG ;
+ int ossl_property_value (int *,char*,int const) ;
+ char* skip_space (char const*) ;
 
 __attribute__((used)) static int parse_string(OPENSSL_CTX *ctx, const char *t[], char delim,
                         PROPERTY_DEFINITION *res, const int create)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ full; } ;
-typedef  TYPE_1__ fInt ;
+typedef TYPE_1__ fInt ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static fInt fAdd (fInt X, fInt Y)
 {
-	fInt Sum;
+ fInt Sum;
 
-	Sum.full = X.full + Y.full;
+ Sum.full = X.full + Y.full;
 
-	return Sum;
+ return Sum;
 }

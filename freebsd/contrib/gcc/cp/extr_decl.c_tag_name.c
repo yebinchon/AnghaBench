@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tag_types { ____Placeholder_tag_types } tag_types ;
 
-/* Variables and functions */
-#define  class_type 132 
-#define  enum_type 131 
- int /*<<< orphan*/  gcc_unreachable () ; 
-#define  record_type 130 
-#define  typename_type 129 
-#define  union_type 128 
+
+
+
+typedef enum tag_types { ____Placeholder_tag_types } tag_types ;
+
+
+
+
+ int gcc_unreachable () ;
+
+
+
 
 __attribute__((used)) static const char *
 tag_name (enum tag_types code)
 {
   switch (code)
     {
-    case record_type:
+    case 130:
       return "struct";
-    case class_type:
+    case 132:
       return "class";
-    case union_type:
+    case 128:
       return "union";
-    case enum_type:
+    case 131:
       return "enum";
-    case typename_type:
+    case 129:
       return "typename";
     default:
       gcc_unreachable ();

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- int GetModuleFileNameW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetModuleHandleW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- char* utf8_from_wide_char (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HMODULE ;
+
+
+ int GetModuleFileNameW (int ,char*,int ) ;
+ int GetModuleHandleW (int *) ;
+ int MAX_PATH ;
+ char* utf8_from_wide_char (char*) ;
 
 char *
 get_executable_path(void) {
-    HMODULE hModule = GetModuleHandleW(NULL);
+    HMODULE hModule = GetModuleHandleW(((void*)0));
     if (!hModule) {
-        return NULL;
+        return ((void*)0);
     }
-    WCHAR buf[MAX_PATH + 1]; // +1 for the null byte
+    WCHAR buf[MAX_PATH + 1];
     int len = GetModuleFileNameW(hModule, buf, MAX_PATH);
     if (!len) {
-        return NULL;
+        return ((void*)0);
     }
     buf[len] = '\0';
     return utf8_from_wide_char(buf);

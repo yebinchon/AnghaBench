@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int wMonth; int wYear; int wDayOfWeek; int wDay; int wHour; int wMinute; } ;
-typedef  TYPE_1__ SYSTEMTIME ;
-typedef  int DOUBLE ;
+typedef TYPE_1__ SYSTEMTIME ;
+typedef int DOUBLE ;
 
-/* Variables and functions */
- int MS_PER_DAY ; 
- int MS_PER_HOUR ; 
- int MS_PER_MINUTE ; 
- int NAN ; 
- scalar_t__ day_from_month (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  in_leap_year (int) ; 
- int month_from_time (int) ; 
- int time_from_year (int) ; 
- int week_day (int) ; 
+
+ int MS_PER_DAY ;
+ int MS_PER_HOUR ;
+ int MS_PER_MINUTE ;
+ int NAN ;
+ scalar_t__ day_from_month (int,int ) ;
+ int in_leap_year (int) ;
+ int month_from_time (int) ;
+ int time_from_year (int) ;
+ int week_day (int) ;
 
 __attribute__((used)) static inline DOUBLE convert_time(int year, SYSTEMTIME st)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct namespace {int /*<<< orphan*/  name; struct namespace* parent; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ is_global_namespace (struct namespace*) ; 
- scalar_t__ use_abi_namespace ; 
- int /*<<< orphan*/  write_line (int /*<<< orphan*/ *,int,char*,...) ; 
+
+
+
+struct namespace {int name; struct namespace* parent; } ;
+typedef int FILE ;
+
+
+ scalar_t__ is_global_namespace (struct namespace*) ;
+ scalar_t__ use_abi_namespace ;
+ int write_line (int *,int,char*,...) ;
 
 __attribute__((used)) static void write_namespace_start(FILE *header, struct namespace *namespace)
 {

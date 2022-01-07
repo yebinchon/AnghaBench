@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  OPENSSL_free (int*) ; 
- int* app_malloc (int,char*) ; 
- double atof (int /*<<< orphan*/ ) ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  close (int) ; 
- double** dsa_results ; 
- int dup (int) ; 
- double** ecdh_results ; 
- double** ecdsa_results ; 
- double** eddsa_results ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fdopen (int,char*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- scalar_t__ fgets (char*,int,int /*<<< orphan*/ *) ; 
- scalar_t__ fork () ; 
- int mr ; 
- int pipe (int*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- double** results ; 
- double** rsa_results ; 
- double** sm2_results ; 
- int /*<<< orphan*/  sstrsep (char**,char*) ; 
- int /*<<< orphan*/  stdout ; 
- char* strchr (char*,char) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- scalar_t__ usertime ; 
+
+
+
+typedef int buf ;
+typedef int FILE ;
+
+
+ int BIO_flush (int ) ;
+ int BIO_printf (int ,char*,...) ;
+ int OPENSSL_free (int*) ;
+ int* app_malloc (int,char*) ;
+ double atof (int ) ;
+ int atoi (int ) ;
+ int bio_err ;
+ int close (int) ;
+ double** dsa_results ;
+ int dup (int) ;
+ double** ecdh_results ;
+ double** ecdsa_results ;
+ double** eddsa_results ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fdopen (int,char*) ;
+ int fflush (int ) ;
+ scalar_t__ fgets (char*,int,int *) ;
+ scalar_t__ fork () ;
+ int mr ;
+ int pipe (int*) ;
+ int printf (char*,...) ;
+ double** results ;
+ double** rsa_results ;
+ double** sm2_results ;
+ int sstrsep (char**,char*) ;
+ int stdout ;
+ char* strchr (char*,char) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ scalar_t__ usertime ;
 
 __attribute__((used)) static int do_multi(int multi, int size_num)
 {
@@ -79,7 +79,7 @@ __attribute__((used)) static int do_multi(int multi, int size_num)
         printf("Forked child %d\n", n);
     }
 
-    /* for now, assume the pipe is long enough to take all the output */
+
     for (n = 0; n < multi; ++n) {
         FILE *f;
         char buf[1024];
@@ -120,7 +120,7 @@ __attribute__((used)) static int do_multi(int multi, int size_num)
                 d = atof(sstrsep(&p, sep));
                 rsa_results[k][1] += d;
             }
-# ifndef OPENSSL_NO_DSA
+
             else if (strncmp(buf, "+F3:", 4) == 0) {
                 int k;
                 double d;
@@ -135,8 +135,8 @@ __attribute__((used)) static int do_multi(int multi, int size_num)
                 d = atof(sstrsep(&p, sep));
                 dsa_results[k][1] += d;
             }
-# endif
-# ifndef OPENSSL_NO_EC
+
+
             else if (strncmp(buf, "+F4:", 4) == 0) {
                 int k;
                 double d;
@@ -174,7 +174,7 @@ __attribute__((used)) static int do_multi(int multi, int size_num)
                 d = atof(sstrsep(&p, sep));
                 eddsa_results[k][1] += d;
             }
-#  ifndef OPENSSL_NO_SM2
+
             else if (strncmp(buf, "+F7:", 4) == 0) {
                 int k;
                 double d;
@@ -189,8 +189,8 @@ __attribute__((used)) static int do_multi(int multi, int size_num)
                 d = atof(sstrsep(&p, sep));
                 sm2_results[k][1] += d;
             }
-#  endif /* OPENSSL_NO_SM2 */
-# endif
+
+
 
             else if (strncmp(buf, "+H:", 3) == 0) {
                 ;

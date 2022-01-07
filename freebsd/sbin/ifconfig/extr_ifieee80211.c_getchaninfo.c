@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IEEE80211_CHANINFO_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IEEE80211_IOC_CHANINFO ; 
- int /*<<< orphan*/  MAXCHAN ; 
- int /*<<< orphan*/ * chaninfo ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/  errx (int,char*) ; 
- scalar_t__ get80211 (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gethtconf (int) ; 
- int /*<<< orphan*/  getvhtconf (int) ; 
- int /*<<< orphan*/  ifmedia_getstate (int) ; 
- int /*<<< orphan*/  ifmr ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ) ; 
+ int IEEE80211_CHANINFO_SIZE (int ) ;
+ int IEEE80211_IOC_CHANINFO ;
+ int MAXCHAN ;
+ int * chaninfo ;
+ int err (int,char*) ;
+ int errx (int,char*) ;
+ scalar_t__ get80211 (int,int ,int *,int ) ;
+ int gethtconf (int) ;
+ int getvhtconf (int) ;
+ int ifmedia_getstate (int) ;
+ int ifmr ;
+ int * malloc (int ) ;
 
 __attribute__((used)) static void
 getchaninfo(int s)
 {
-	if (chaninfo != NULL)
-		return;
-	chaninfo = malloc(IEEE80211_CHANINFO_SIZE(MAXCHAN));
-	if (chaninfo == NULL)
-		errx(1, "no space for channel list");
-	if (get80211(s, IEEE80211_IOC_CHANINFO, chaninfo,
-	    IEEE80211_CHANINFO_SIZE(MAXCHAN)) < 0)
-		err(1, "unable to get channel information");
-	ifmr = ifmedia_getstate(s);
-	gethtconf(s);
-	getvhtconf(s);
+ if (chaninfo != ((void*)0))
+  return;
+ chaninfo = malloc(IEEE80211_CHANINFO_SIZE(MAXCHAN));
+ if (chaninfo == ((void*)0))
+  errx(1, "no space for channel list");
+ if (get80211(s, IEEE80211_IOC_CHANINFO, chaninfo,
+     IEEE80211_CHANINFO_SIZE(MAXCHAN)) < 0)
+  err(1, "unable to get channel information");
+ ifmr = ifmedia_getstate(s);
+ gethtconf(s);
+ getvhtconf(s);
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float FFMAX (int /*<<< orphan*/ ,float) ; 
- float FFMIN (float,int) ; 
- int /*<<< orphan*/  FFMIN3 (float,float,int) ; 
- float av_clipf (float,int /*<<< orphan*/ ,int) ; 
- float fmodf (float,float) ; 
+ float FFMAX (int ,float) ;
+ float FFMIN (float,int) ;
+ int FFMIN3 (float,float,int) ;
+ float av_clipf (float,int ,int) ;
+ float fmodf (float,float) ;
 
 __attribute__((used)) static float hfun(float n, float h, float s, float l)
 {

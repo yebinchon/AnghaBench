@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_19__ {unsigned int num_key_ids; unsigned int data_size; struct TYPE_19__* next; int /*<<< orphan*/ * data; int /*<<< orphan*/ ** key_ids; int /*<<< orphan*/ * system_id; } ;
+
+
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_11__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_19__ {unsigned int num_key_ids; unsigned int data_size; struct TYPE_19__* next; int * data; int ** key_ids; int * system_id; } ;
 struct TYPE_18__ {scalar_t__ eof_reached; } ;
 struct TYPE_17__ {TYPE_11__* fc; } ;
-struct TYPE_16__ {int nb_streams; int /*<<< orphan*/ ** streams; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  int /*<<< orphan*/  AVStream ;
-typedef  TYPE_2__ AVIOContext ;
-typedef  TYPE_3__ AVEncryptionInitInfo ;
+struct TYPE_16__ {int nb_streams; int ** streams; } ;
+typedef TYPE_1__ MOVContext ;
+typedef int MOVAtom ;
+typedef int AVStream ;
+typedef TYPE_2__ AVIOContext ;
+typedef TYPE_3__ AVEncryptionInitInfo ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PKT_DATA_ENCRYPTION_INIT_INFO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMAX (unsigned int,int) ; 
- unsigned int FFMIN (int /*<<< orphan*/ ,unsigned int) ; 
- int INT_MAX ; 
- int /*<<< orphan*/ * av_encryption_init_info_add_side_data (TYPE_3__*,size_t*) ; 
- TYPE_3__* av_encryption_init_info_alloc (int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_encryption_init_info_free (TYPE_3__*) ; 
- TYPE_3__* av_encryption_init_info_get_side_data (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ ** av_fast_realloc (int /*<<< orphan*/ **,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (TYPE_11__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * av_mallocz (int) ; 
- int av_stream_add_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/ * av_stream_get_side_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- unsigned int avio_r8 (TYPE_2__*) ; 
- int /*<<< orphan*/  avio_rb24 (TYPE_2__*) ; 
- unsigned int avio_rb32 (TYPE_2__*) ; 
- int avio_read (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int mov_try_read_block (TYPE_2__*,unsigned int,int /*<<< orphan*/ **) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PKT_DATA_ENCRYPTION_INIT_INFO ;
+ int ENOMEM ;
+ int FFMAX (unsigned int,int) ;
+ unsigned int FFMIN (int ,unsigned int) ;
+ int INT_MAX ;
+ int * av_encryption_init_info_add_side_data (TYPE_3__*,size_t*) ;
+ TYPE_3__* av_encryption_init_info_alloc (int,int ,int,int ) ;
+ int av_encryption_init_info_free (TYPE_3__*) ;
+ TYPE_3__* av_encryption_init_info_get_side_data (int *,int) ;
+ int ** av_fast_realloc (int **,unsigned int*,unsigned int) ;
+ int av_free (int *) ;
+ int av_freep (int **) ;
+ int av_log (TYPE_11__*,int ,char*) ;
+ int * av_mallocz (int) ;
+ int av_stream_add_side_data (int *,int ,int *,size_t) ;
+ int * av_stream_get_side_data (int *,int ,int*) ;
+ unsigned int avio_r8 (TYPE_2__*) ;
+ int avio_rb24 (TYPE_2__*) ;
+ unsigned int avio_rb32 (TYPE_2__*) ;
+ int avio_read (TYPE_2__*,int *,int) ;
+ int mov_try_read_block (TYPE_2__*,unsigned int,int **) ;
 
 __attribute__((used)) static int mov_read_pssh(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -65,11 +65,11 @@ __attribute__((used)) static int mov_read_pssh(MOVContext *c, AVIOContext *pb, M
         return 0;
     st = c->fc->streams[c->fc->nb_streams-1];
 
-    version = avio_r8(pb); /* version */
-    avio_rb24(pb);  /* flags */
+    version = avio_r8(pb);
+    avio_rb24(pb);
 
-    info = av_encryption_init_info_alloc(/* system_id_size */ 16, /* num_key_ids */ 0,
-                                         /* key_id_size */ 16, /* data_size */ 0);
+    info = av_encryption_init_info_alloc( 16, 0,
+                                                           16, 0);
     if (!info)
         return AVERROR(ENOMEM);
 
@@ -120,16 +120,16 @@ __attribute__((used)) static int mov_read_pssh(MOVContext *c, AVIOContext *pb, M
     if (ret < 0)
         goto finish;
 
-    av_freep(&info->data);  // malloc(0) may still allocate something.
+    av_freep(&info->data);
     info->data = extra_data;
     info->data_size = extra_data_size;
 
-    // If there is existing initialization data, append to the list.
+
     old_side_data = av_stream_get_side_data(st, AV_PKT_DATA_ENCRYPTION_INIT_INFO, &old_side_data_size);
     if (old_side_data) {
         old_init_info = av_encryption_init_info_get_side_data(old_side_data, old_side_data_size);
         if (old_init_info) {
-            // Append to the end of the list.
+
             for (AVEncryptionInitInfo *cur = old_init_info;; cur = cur->next) {
                 if (!cur->next) {
                     cur->next = info;
@@ -138,7 +138,7 @@ __attribute__((used)) static int mov_read_pssh(MOVContext *c, AVIOContext *pb, M
             }
             info = old_init_info;
         } else {
-            // Assume existing side-data will be valid, so the only error we could get is OOM.
+
             ret = AVERROR(ENOMEM);
             goto finish;
         }

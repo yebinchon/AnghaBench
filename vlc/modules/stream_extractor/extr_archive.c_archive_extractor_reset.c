@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  identifier; int /*<<< orphan*/  source; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_extractor_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int identifier; int source; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ stream_extractor_t ;
 struct TYPE_8__ {int b_dead; int b_eof; scalar_t__ i_offset; } ;
-typedef  TYPE_2__ private_sys_t ;
+typedef TYPE_2__ private_sys_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- scalar_t__ archive_clean (TYPE_2__*) ; 
- scalar_t__ archive_init (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ archive_seek_subentry (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_stream_Seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ scalar_t__ archive_clean (TYPE_2__*) ;
+ scalar_t__ archive_init (TYPE_2__*,int ) ;
+ scalar_t__ archive_seek_subentry (TYPE_2__*,int ) ;
+ scalar_t__ vlc_stream_Seek (int ,int ) ;
 
 __attribute__((used)) static int archive_extractor_reset( stream_extractor_t* p_extractor )
 {
@@ -34,12 +34,12 @@ __attribute__((used)) static int archive_extractor_reset( stream_extractor_t* p_
         || archive_init( p_sys, p_extractor->source )
         || archive_seek_subentry( p_sys, p_extractor->identifier ) )
     {
-        p_sys->b_dead = true;
+        p_sys->b_dead = 1;
         return VLC_EGENERIC;
     }
 
     p_sys->i_offset = 0;
-    p_sys->b_eof = false;
-    p_sys->b_dead = false;
+    p_sys->b_eof = 0;
+    p_sys->b_dead = 0;
     return VLC_SUCCESS;
 }

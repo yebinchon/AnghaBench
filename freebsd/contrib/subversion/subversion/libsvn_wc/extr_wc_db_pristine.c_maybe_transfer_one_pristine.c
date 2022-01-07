@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_23__ {int /*<<< orphan*/  abspath; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-struct TYPE_24__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- scalar_t__ APR_STATUS_IS_ENOENT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  STMT_INSERT_OR_IGNORE_PRISTINE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_2__*) ; 
- TYPE_2__* SVN_NO_ERROR ; 
- TYPE_2__* get_pristine_fname (char const**,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pristine_get_tempdir (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_2__*) ; 
- int /*<<< orphan*/  svn_error_compose_create (TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* svn_error_trace (int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_io_dir_make (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- TYPE_2__* svn_io_file_rename2 (char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_sqlite__bind_checksum (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_sqlite__bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_sqlite__update (int*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_stream_open_unique (int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+struct TYPE_23__ {int abspath; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_stream_t ;
+typedef int svn_sqlite__stmt_t ;
+struct TYPE_24__ {int apr_err; } ;
+typedef TYPE_2__ svn_error_t ;
+typedef int svn_checksum_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int APR_OS_DEFAULT ;
+ scalar_t__ APR_STATUS_IS_ENOENT (int ) ;
+ int FALSE ;
+ int STMT_INSERT_OR_IGNORE_PRISTINE ;
+ int SVN_ERR (TYPE_2__*) ;
+ TYPE_2__* SVN_NO_ERROR ;
+ TYPE_2__* get_pristine_fname (char const**,int ,int const*,int *,int *) ;
+ int pristine_get_tempdir (TYPE_1__*,int *,int *) ;
+ int svn_dirent_dirname (char const*,int *) ;
+ int svn_error_clear (TYPE_2__*) ;
+ int svn_error_compose_create (TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* svn_error_trace (int ) ;
+ TYPE_2__* svn_io_dir_make (int ,int ,int *) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ TYPE_2__* svn_io_file_rename2 (char const*,char const*,int ,int *) ;
+ TYPE_2__* svn_sqlite__bind_checksum (int *,int,int const*,int *) ;
+ TYPE_2__* svn_sqlite__bind_int64 (int *,int,int ) ;
+ TYPE_2__* svn_sqlite__get_statement (int **,int ,int ) ;
+ TYPE_2__* svn_sqlite__update (int*,int *) ;
+ TYPE_2__* svn_stream_copy3 (int *,int *,int ,void*,int *) ;
+ TYPE_2__* svn_stream_open_readonly (int **,char const*,int *,int *) ;
+ TYPE_2__* svn_stream_open_unique (int **,char const**,int ,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 maybe_transfer_one_pristine(svn_wc__db_wcroot_t *src_wcroot,
@@ -90,7 +90,7 @@ maybe_transfer_one_pristine(svn_wc__db_wcroot_t *src_wcroot,
   SVN_ERR(svn_stream_open_readonly(&src_stream, src_abspath,
                                    scratch_pool, scratch_pool));
 
-  /* ### Should we verify the SHA1 or MD5 here, or is that too expensive? */
+
   SVN_ERR(svn_stream_copy3(src_stream, dst_stream,
                            cancel_func, cancel_baton,
                            scratch_pool));
@@ -98,12 +98,12 @@ maybe_transfer_one_pristine(svn_wc__db_wcroot_t *src_wcroot,
   SVN_ERR(get_pristine_fname(&pristine_abspath, dst_wcroot->abspath, checksum,
                              scratch_pool, scratch_pool));
 
-  /* Move the file to its target location.  (If it is already there, it is
-   * an orphan file and it doesn't matter if we overwrite it.) */
+
+
   err = svn_io_file_rename2(tmp_abspath, pristine_abspath, FALSE,
                             scratch_pool);
 
-  /* Maybe the directory doesn't exist yet? */
+
   if (err && APR_STATUS_IS_ENOENT(err->apr_err))
     {
       svn_error_t *err2;
@@ -113,10 +113,10 @@ maybe_transfer_one_pristine(svn_wc__db_wcroot_t *src_wcroot,
                              APR_OS_DEFAULT, scratch_pool);
 
       if (err2)
-        /* Creating directory didn't work: Return all errors */
+
         return svn_error_trace(svn_error_compose_create(err, err2));
       else
-        /* We could create a directory: retry install */
+
         svn_error_clear(err);
 
       SVN_ERR(svn_io_file_rename2(tmp_abspath, pristine_abspath, FALSE,

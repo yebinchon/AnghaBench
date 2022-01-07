@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  REG_CLR_BIT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_SET_BIT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTC_CNTL_WDTCONFIG0_REG ; 
- int /*<<< orphan*/  RTC_CNTL_WDTFEED_REG ; 
- int /*<<< orphan*/  RTC_CNTL_WDT_EN ; 
- int /*<<< orphan*/  RTC_CNTL_WDT_FEED ; 
- int /*<<< orphan*/  RTC_CNTL_WDT_FLASHBOOT_MOD_EN ; 
- int /*<<< orphan*/  RTC_WDT_STAGE0 ; 
- int /*<<< orphan*/  RTC_WDT_STAGE1 ; 
- int /*<<< orphan*/  RTC_WDT_STAGE2 ; 
- int /*<<< orphan*/  RTC_WDT_STAGE3 ; 
- int /*<<< orphan*/  RTC_WDT_STAGE_ACTION_OFF ; 
- int rtc_wdt_get_protect_status () ; 
- int /*<<< orphan*/  rtc_wdt_protect_off () ; 
- int /*<<< orphan*/  rtc_wdt_protect_on () ; 
- int /*<<< orphan*/  rtc_wdt_set_stage (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int REG_CLR_BIT (int ,int ) ;
+ int REG_SET_BIT (int ,int ) ;
+ int RTC_CNTL_WDTCONFIG0_REG ;
+ int RTC_CNTL_WDTFEED_REG ;
+ int RTC_CNTL_WDT_EN ;
+ int RTC_CNTL_WDT_FEED ;
+ int RTC_CNTL_WDT_FLASHBOOT_MOD_EN ;
+ int RTC_WDT_STAGE0 ;
+ int RTC_WDT_STAGE1 ;
+ int RTC_WDT_STAGE2 ;
+ int RTC_WDT_STAGE3 ;
+ int RTC_WDT_STAGE_ACTION_OFF ;
+ int rtc_wdt_get_protect_status () ;
+ int rtc_wdt_protect_off () ;
+ int rtc_wdt_protect_on () ;
+ int rtc_wdt_set_stage (int ,int ) ;
 
 void rtc_wdt_disable(void)
 {

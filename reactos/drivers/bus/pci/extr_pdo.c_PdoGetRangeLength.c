@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONGLONG ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  UCHAR ;
-typedef  int* PULONGLONG ;
-typedef  int* PULONG ;
-typedef  int* PUCHAR ;
-typedef  int /*<<< orphan*/  PPDO_DEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int PCI_ADDRESS_IO_ADDRESS_MASK_64 ; 
- int PCI_ADDRESS_IO_SPACE ; 
- int PCI_ADDRESS_MEMORY_ADDRESS_MASK_64 ; 
- int PCI_ADDRESS_MEMORY_TYPE_MASK ; 
- int PCI_TYPE_20BIT ; 
- int PCI_TYPE_32BIT ; 
- int PCI_TYPE_64BIT ; 
- int /*<<< orphan*/  PdoReadPciBar (int /*<<< orphan*/ ,int,int*,int*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int ULONGLONG ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef int* PULONGLONG ;
+typedef int* PULONG ;
+typedef int* PUCHAR ;
+typedef int PPDO_DEVICE_EXTENSION ;
+typedef int BOOLEAN ;
+
+
+ int DPRINT (char*) ;
+ int FALSE ;
+ int PCI_ADDRESS_IO_ADDRESS_MASK_64 ;
+ int PCI_ADDRESS_IO_SPACE ;
+ int PCI_ADDRESS_MEMORY_ADDRESS_MASK_64 ;
+ int PCI_ADDRESS_MEMORY_TYPE_MASK ;
+ int PCI_TYPE_20BIT ;
+ int PCI_TYPE_32BIT ;
+ int PCI_TYPE_64BIT ;
+ int PdoReadPciBar (int ,int,int*,int*) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOLEAN
 PdoGetRangeLength(PPDO_DEVICE_EXTENSION DeviceExtension,
@@ -57,17 +57,17 @@ PdoGetRangeLength(PPDO_DEVICE_EXTENSION DeviceExtension,
     } NewValue;
     ULONG Offset;
 
-    /* Compute the offset of this BAR in PCI config space */
+
     Offset = 0x10 + Bar * 4;
 
-    /* Assume this is a 32-bit BAR until we find wrong */
+
     *NextBar = Bar + 1;
 
-    /* Initialize BAR values to zero */
+
     OriginalValue.Bar = 0ULL;
     NewValue.Bar = 0ULL;
 
-    /* Read the first BAR */
+
     if (!PdoReadPciBar(DeviceExtension, Offset,
                        &OriginalValue.Bars.Bar0,
                        &NewValue.Bars.Bar0))
@@ -75,11 +75,11 @@ PdoGetRangeLength(PPDO_DEVICE_EXTENSION DeviceExtension,
         return FALSE;
     }
 
-    /* Check if this is a memory BAR */
+
     if (!(OriginalValue.Bars.Bar0 & PCI_ADDRESS_IO_SPACE))
     {
-        /* Write the maximum address if the caller asked for it */
-        if (MaximumAddress != NULL)
+
+        if (MaximumAddress != ((void*)0))
         {
             if ((OriginalValue.Bars.Bar0 & PCI_ADDRESS_MEMORY_TYPE_MASK) == PCI_TYPE_32BIT)
             {
@@ -95,13 +95,13 @@ PdoGetRangeLength(PPDO_DEVICE_EXTENSION DeviceExtension,
             }
         }
 
-        /* Check if this is a 64-bit BAR */
+
         if ((OriginalValue.Bars.Bar0 & PCI_ADDRESS_MEMORY_TYPE_MASK) == PCI_TYPE_64BIT)
         {
-            /* We've now consumed the next BAR too */
+
             *NextBar = Bar + 2;
 
-            /* Read the next BAR */
+
             if (!PdoReadPciBar(DeviceExtension, Offset + 4,
                                &OriginalValue.Bars.Bar1,
                                &NewValue.Bars.Bar1))
@@ -112,8 +112,8 @@ PdoGetRangeLength(PPDO_DEVICE_EXTENSION DeviceExtension,
     }
     else
     {
-        /* Write the maximum I/O port address */
-        if (MaximumAddress != NULL)
+
+        if (MaximumAddress != ((void*)0))
         {
             *MaximumAddress = 0x00000000FFFFFFFFULL;
         }

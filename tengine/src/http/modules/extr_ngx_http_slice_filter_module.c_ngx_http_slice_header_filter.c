@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_9__ ;
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-struct TYPE_21__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_29__ TYPE_9__ ;
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_10__ ;
+
+
+typedef scalar_t__ off_t ;
+struct TYPE_21__ {scalar_t__ len; int data; } ;
 struct TYPE_26__ {TYPE_1__ value; } ;
-typedef  TYPE_6__ ngx_table_elt_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+typedef TYPE_6__ ngx_table_elt_t ;
+typedef int ngx_int_t ;
 struct TYPE_27__ {int size; } ;
-typedef  TYPE_7__ ngx_http_slice_loc_conf_t ;
+typedef TYPE_7__ ngx_http_slice_loc_conf_t ;
 struct TYPE_28__ {int start; int active; int end; TYPE_1__ etag; } ;
-typedef  TYPE_8__ ngx_http_slice_ctx_t ;
+typedef TYPE_8__ ngx_http_slice_ctx_t ;
 struct TYPE_29__ {int complete_length; scalar_t__ start; scalar_t__ end; } ;
-typedef  TYPE_9__ ngx_http_slice_content_range_t ;
+typedef TYPE_9__ ngx_http_slice_content_range_t ;
 struct TYPE_23__ {scalar_t__ len; } ;
 struct TYPE_25__ {scalar_t__ status; int content_length_n; int content_offset; TYPE_4__* content_range; TYPE_3__ status_line; TYPE_6__* etag; } ;
 struct TYPE_20__ {int allow_ranges; int subrequest_ranges; int single_range; int preserve_body; TYPE_5__ headers_out; struct TYPE_20__* main; TYPE_2__* connection; } ;
-typedef  TYPE_10__ ngx_http_request_t ;
+typedef TYPE_10__ ngx_http_request_t ;
 struct TYPE_24__ {scalar_t__ hash; } ;
-struct TYPE_22__ {int /*<<< orphan*/  log; } ;
+struct TYPE_22__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- scalar_t__ NGX_HTTP_OK ; 
- scalar_t__ NGX_HTTP_PARTIAL_CONTENT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- scalar_t__ NGX_OK ; 
- TYPE_8__* ngx_http_get_module_ctx (TYPE_10__*,int /*<<< orphan*/ ) ; 
- TYPE_7__* ngx_http_get_module_loc_conf (TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_next_header_filter (TYPE_10__*) ; 
- int /*<<< orphan*/  ngx_http_set_ctx (TYPE_10__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_slice_filter_module ; 
- scalar_t__ ngx_http_slice_parse_content_range (TYPE_10__*,TYPE_9__*) ; 
- int /*<<< orphan*/  ngx_log_debug3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ ngx_min (scalar_t__,int) ; 
- scalar_t__ ngx_strncmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int NGX_ERROR ;
+ scalar_t__ NGX_HTTP_OK ;
+ scalar_t__ NGX_HTTP_PARTIAL_CONTENT ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ scalar_t__ NGX_OK ;
+ TYPE_8__* ngx_http_get_module_ctx (TYPE_10__*,int ) ;
+ TYPE_7__* ngx_http_get_module_loc_conf (TYPE_10__*,int ) ;
+ int ngx_http_next_header_filter (TYPE_10__*) ;
+ int ngx_http_set_ctx (TYPE_10__*,int *,int ) ;
+ int ngx_http_slice_filter_module ;
+ scalar_t__ ngx_http_slice_parse_content_range (TYPE_10__*,TYPE_9__*) ;
+ int ngx_log_debug3 (int ,int ,int ,char*,scalar_t__,scalar_t__,int) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
+ scalar_t__ ngx_min (scalar_t__,int) ;
+ scalar_t__ ngx_strncmp (int ,int ,scalar_t__) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_slice_header_filter(ngx_http_request_t *r)
 {
-    off_t                            end;
-    ngx_int_t                        rc;
-    ngx_table_elt_t                 *h;
-    ngx_http_slice_ctx_t            *ctx;
-    ngx_http_slice_loc_conf_t       *slcf;
-    ngx_http_slice_content_range_t   cr;
+    off_t end;
+    ngx_int_t rc;
+    ngx_table_elt_t *h;
+    ngx_http_slice_ctx_t *ctx;
+    ngx_http_slice_loc_conf_t *slcf;
+    ngx_http_slice_content_range_t cr;
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_slice_filter_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return ngx_http_next_header_filter(r);
     }
 
     if (r->headers_out.status != NGX_HTTP_PARTIAL_CONTENT) {
         if (r == r->main) {
-            ngx_http_set_ctx(r, NULL, ngx_http_slice_filter_module);
+            ngx_http_set_ctx(r, ((void*)0), ngx_http_slice_filter_module);
             return ngx_http_next_header_filter(r);
         }
 
@@ -86,7 +86,7 @@ ngx_http_slice_header_filter(ngx_http_request_t *r)
     h = r->headers_out.etag;
 
     if (ctx->etag.len) {
-        if (h == NULL
+        if (h == ((void*)0)
             || h->value.len != ctx->etag.len
             || ngx_strncmp(h->value.data, ctx->etag.data, ctx->etag.len)
                != 0)
@@ -136,7 +136,7 @@ ngx_http_slice_header_filter(ngx_http_request_t *r)
     r->headers_out.content_length_n = cr.complete_length;
     r->headers_out.content_offset = cr.start;
     r->headers_out.content_range->hash = 0;
-    r->headers_out.content_range = NULL;
+    r->headers_out.content_range = ((void*)0);
 
     r->allow_ranges = 1;
     r->subrequest_ranges = 1;

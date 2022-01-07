@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  sct_list; int /*<<< orphan*/  ctlog_store; } ;
-typedef  TYPE_1__ CT_TEST_FIXTURE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTLOG_STORE_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_1__*) ; 
- int /*<<< orphan*/  SCT_LIST_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int sct_list; int ctlog_store; } ;
+typedef TYPE_1__ CT_TEST_FIXTURE ;
+
+
+ int CTLOG_STORE_free (int ) ;
+ int OPENSSL_free (TYPE_1__*) ;
+ int SCT_LIST_free (int ) ;
 
 __attribute__((used)) static void tear_down(CT_TEST_FIXTURE *fixture)
 {
-    if (fixture != NULL) {
+    if (fixture != ((void*)0)) {
         CTLOG_STORE_free(fixture->ctlog_store);
         SCT_LIST_free(fixture->sct_list);
     }

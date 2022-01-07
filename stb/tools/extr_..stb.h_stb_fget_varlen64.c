@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int stb_uint64 ;
-typedef  int stb_uint ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int stb_fgetc (int /*<<< orphan*/ *) ; 
 
-stb_uint64   stb_fget_varlen64(FILE *f)
+
+
+typedef int stb_uint64 ;
+typedef int stb_uint ;
+typedef int FILE ;
+
+
+ int stb_fgetc (int *) ;
+
+stb_uint64 stb_fget_varlen64(FILE *f)
 {
    stb_uint64 z;
    unsigned char d;

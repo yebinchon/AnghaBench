@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* previousDstEnd; } ;
-typedef  TYPE_1__ ZSTD_DCtx ;
+typedef TYPE_1__ ZSTD_DCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZSTD_checkContinuity (TYPE_1__*,void*) ; 
- size_t ZSTD_decompressBlock_internal (TYPE_1__*,void*,size_t,void const*,size_t,int /*<<< orphan*/ ) ; 
+
+ int ZSTD_checkContinuity (TYPE_1__*,void*) ;
+ size_t ZSTD_decompressBlock_internal (TYPE_1__*,void*,size_t,void const*,size_t,int ) ;
 
 size_t ZSTD_decompressBlock(ZSTD_DCtx* dctx,
                             void* dst, size_t dstCapacity,
@@ -24,7 +24,7 @@ size_t ZSTD_decompressBlock(ZSTD_DCtx* dctx,
 {
     size_t dSize;
     ZSTD_checkContinuity(dctx, dst);
-    dSize = ZSTD_decompressBlock_internal(dctx, dst, dstCapacity, src, srcSize, /* frame */ 0);
+    dSize = ZSTD_decompressBlock_internal(dctx, dst, dstCapacity, src, srcSize, 0);
     dctx->previousDstEnd = (char*)dst + dSize;
     return dSize;
 }

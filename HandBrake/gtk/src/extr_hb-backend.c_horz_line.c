@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  guint8 ;
-typedef  int gint ;
-typedef  int /*<<< orphan*/  GdkPixbuf ;
 
-/* Variables and functions */
- int gdk_pixbuf_get_n_channels (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gdk_pixbuf_get_pixels (int /*<<< orphan*/ *) ; 
- int gdk_pixbuf_get_rowstride (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int guint8 ;
+typedef int gint ;
+typedef int GdkPixbuf ;
+
+
+ int gdk_pixbuf_get_n_channels (int *) ;
+ int * gdk_pixbuf_get_pixels (int *) ;
+ int gdk_pixbuf_get_rowstride (int *) ;
 
 __attribute__((used)) static void
 horz_line(

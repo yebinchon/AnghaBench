@@ -1,222 +1,222 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  my_pcname ;
-struct TYPE_12__ {int /*<<< orphan*/  HostIP; } ;
-typedef  TYPE_1__ VH ;
-typedef  int USHORT ;
-typedef  scalar_t__ UINT ;
-typedef  int UCHAR ;
-struct TYPE_13__ {int Size; int /*<<< orphan*/  Buf; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IP ;
-typedef  TYPE_2__ BUF ;
 
-/* Variables and functions */
- scalar_t__ Cmp (int*,int*,int) ; 
- int /*<<< orphan*/  EncodeNetBiosName (int*,char*) ; 
- int Endian16 (int) ; 
- scalar_t__ Endian32 (scalar_t__) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_2__*) ; 
- int /*<<< orphan*/  FreeHostIPAddressList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetHostIPAddressList () ; 
- int /*<<< orphan*/  GetMachineHostName (char*,int) ; 
- scalar_t__ IPToUINT (int /*<<< orphan*/ *) ; 
- scalar_t__ IsIP4 (int /*<<< orphan*/ *) ; 
- scalar_t__ IsIPPrivate (int /*<<< orphan*/ *) ; 
- int IsLocalHostIP4 (int /*<<< orphan*/ *) ; 
- int IsZeroIp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- TYPE_2__* NewBuf () ; 
- TYPE_2__* NewBufFromMemory (void*,scalar_t__) ; 
- int ReadBuf (TYPE_2__*,int*,int) ; 
- int /*<<< orphan*/  SendUdp (TYPE_1__*,scalar_t__,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int) ; 
- unsigned long long Tick64 () ; 
- int /*<<< orphan*/  WHERE ; 
- int /*<<< orphan*/  WriteBuf (TYPE_2__*,...) ; 
- int /*<<< orphan*/  WriteBufBuf (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  Zero (char*,int) ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int my_pcname ;
+struct TYPE_12__ {int HostIP; } ;
+typedef TYPE_1__ VH ;
+typedef int USHORT ;
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+struct TYPE_13__ {int Size; int Buf; } ;
+typedef int LIST ;
+typedef int IP ;
+typedef TYPE_2__ BUF ;
+
+
+ scalar_t__ Cmp (int*,int*,int) ;
+ int EncodeNetBiosName (int*,char*) ;
+ int Endian16 (int) ;
+ scalar_t__ Endian32 (scalar_t__) ;
+ int FreeBuf (TYPE_2__*) ;
+ int FreeHostIPAddressList (int *) ;
+ int * GetHostIPAddressList () ;
+ int GetMachineHostName (char*,int) ;
+ scalar_t__ IPToUINT (int *) ;
+ scalar_t__ IsIP4 (int *) ;
+ scalar_t__ IsIPPrivate (int *) ;
+ int IsLocalHostIP4 (int *) ;
+ int IsZeroIp (int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int MAX_SIZE ;
+ TYPE_2__* NewBuf () ;
+ TYPE_2__* NewBufFromMemory (void*,scalar_t__) ;
+ int ReadBuf (TYPE_2__*,int*,int) ;
+ int SendUdp (TYPE_1__*,scalar_t__,scalar_t__,int ,scalar_t__,int ,int) ;
+ unsigned long long Tick64 () ;
+ int WHERE ;
+ int WriteBuf (TYPE_2__*,...) ;
+ int WriteBufBuf (TYPE_2__*,TYPE_2__*) ;
+ int Zero (char*,int) ;
 
 bool ProcessNetBiosNameQueryPacketForMyself(VH *v, UINT src_ip, UINT src_port, UINT dest_ip, UINT dest_port, void *data, UINT size)
 {
-	BUF *rb;
-	USHORT tran_id;
-	USHORT flags;
-	USHORT num_query;
-	USHORT zero1, zero2, zero3;
-	UCHAR name_size;
-	UCHAR encoded_name[32];
-	UCHAR node_type;
-	USHORT type, classid;
-	UCHAR my_pc_encoded_name[32];
-	bool ret = false;
-	// Validate arguments
-	if (v == NULL || data == NULL)
-	{
-		return false;
-	}
+ BUF *rb;
+ USHORT tran_id;
+ USHORT flags;
+ USHORT num_query;
+ USHORT zero1, zero2, zero3;
+ UCHAR name_size;
+ UCHAR encoded_name[32];
+ UCHAR node_type;
+ USHORT type, classid;
+ UCHAR my_pc_encoded_name[32];
+ bool ret = 0;
 
-	rb = NewBufFromMemory(data, size);
+ if (v == ((void*)0) || data == ((void*)0))
+ {
+  return 0;
+ }
 
-	ReadBuf(rb, &tran_id, sizeof(USHORT));
+ rb = NewBufFromMemory(data, size);
 
-	ReadBuf(rb, &flags, sizeof(USHORT));
-	flags = Endian16(flags);
+ ReadBuf(rb, &tran_id, sizeof(USHORT));
 
-	ReadBuf(rb, &num_query, sizeof(USHORT));
-	num_query = Endian16(num_query);
+ ReadBuf(rb, &flags, sizeof(USHORT));
+ flags = Endian16(flags);
 
-	ReadBuf(rb, &zero1, sizeof(USHORT));
-	ReadBuf(rb, &zero2, sizeof(USHORT));
-	ReadBuf(rb, &zero3, sizeof(USHORT));
+ ReadBuf(rb, &num_query, sizeof(USHORT));
+ num_query = Endian16(num_query);
 
-	ReadBuf(rb, &name_size, 1);
+ ReadBuf(rb, &zero1, sizeof(USHORT));
+ ReadBuf(rb, &zero2, sizeof(USHORT));
+ ReadBuf(rb, &zero3, sizeof(USHORT));
 
-	ReadBuf(rb, encoded_name, 32);
+ ReadBuf(rb, &name_size, 1);
 
-	ReadBuf(rb, &node_type, 1);
+ ReadBuf(rb, encoded_name, 32);
 
-	ReadBuf(rb, &type, sizeof(USHORT));
-	type = Endian16(type);
+ ReadBuf(rb, &node_type, 1);
 
-	if (ReadBuf(rb, &classid, sizeof(USHORT)) == sizeof(USHORT))
-	{
-		classid = Endian16(classid);
+ ReadBuf(rb, &type, sizeof(USHORT));
+ type = Endian16(type);
 
-		if (((flags >> 11) & 0x0F) == 0 &&
-			num_query == 1 && name_size == 0x20 &&
-			zero1 == 0 && zero2 == 0 && zero3 == 0 && node_type == 0 && type == 0x0020 && classid == 0x0001)
-		{
-			char my_pcname[MAX_SIZE];
+ if (ReadBuf(rb, &classid, sizeof(USHORT)) == sizeof(USHORT))
+ {
+  classid = Endian16(classid);
 
-			// Get the encoded name of this PC
-			Zero(my_pcname, sizeof(my_pcname));
-			GetMachineHostName(my_pcname, sizeof(my_pcname));
+  if (((flags >> 11) & 0x0F) == 0 &&
+   num_query == 1 && name_size == 0x20 &&
+   zero1 == 0 && zero2 == 0 && zero3 == 0 && node_type == 0 && type == 0x0020 && classid == 0x0001)
+  {
+   char my_pcname[MAX_SIZE];
 
-			EncodeNetBiosName(my_pc_encoded_name, my_pcname);
 
-			if (Cmp(my_pc_encoded_name, encoded_name, 30) == 0)
-			{
-				// Assemble the response packet since the name resolution packet which targets this PC name received
-				BUF *sb = NewBuf();
-				USHORT us;
-				UINT ui;
-				LIST *ip_list;
-				BUF *ip_list_buf;
-				bool found = false;
+   Zero(my_pcname, sizeof(my_pcname));
+   GetMachineHostName(my_pcname, sizeof(my_pcname));
 
-				WriteBuf(sb, &tran_id, sizeof(USHORT));
+   EncodeNetBiosName(my_pc_encoded_name, my_pcname);
 
-				flags = Endian16(0x8500);
-				WriteBuf(sb, &flags, sizeof(USHORT));
+   if (Cmp(my_pc_encoded_name, encoded_name, 30) == 0)
+   {
 
-				num_query = 0;
-				WriteBuf(sb, &num_query, sizeof(USHORT));
+    BUF *sb = NewBuf();
+    USHORT us;
+    UINT ui;
+    LIST *ip_list;
+    BUF *ip_list_buf;
+    bool found = 0;
 
-				us = Endian16(1);
-				WriteBuf(sb, &us, sizeof(USHORT));
+    WriteBuf(sb, &tran_id, sizeof(USHORT));
 
-				us = 0;
-				WriteBuf(sb, &us, sizeof(USHORT));
-				WriteBuf(sb, &us, sizeof(USHORT));
+    flags = Endian16(0x8500);
+    WriteBuf(sb, &flags, sizeof(USHORT));
 
-				name_size = 0x20;
-				WriteBuf(sb, &name_size, 1);
+    num_query = 0;
+    WriteBuf(sb, &num_query, sizeof(USHORT));
 
-				WriteBuf(sb, encoded_name, 32);
+    us = Endian16(1);
+    WriteBuf(sb, &us, sizeof(USHORT));
 
-				node_type = 0;
-				WriteBuf(sb, &node_type, 1);
+    us = 0;
+    WriteBuf(sb, &us, sizeof(USHORT));
+    WriteBuf(sb, &us, sizeof(USHORT));
 
-				type = Endian16(type);
-				classid = Endian16(classid);
+    name_size = 0x20;
+    WriteBuf(sb, &name_size, 1);
 
-				WriteBuf(sb, &type, sizeof(USHORT));
-				WriteBuf(sb, &classid, sizeof(USHORT));
+    WriteBuf(sb, encoded_name, 32);
 
-				ui = Endian32((UINT)(Tick64() / 1000ULL));
-				WriteBuf(sb, &ui, sizeof(UINT));
+    node_type = 0;
+    WriteBuf(sb, &node_type, 1);
 
-				ip_list_buf = NewBuf();
+    type = Endian16(type);
+    classid = Endian16(classid);
 
-				ip_list = GetHostIPAddressList();
-				if (ip_list != NULL)
-				{
-					UINT i;
+    WriteBuf(sb, &type, sizeof(USHORT));
+    WriteBuf(sb, &classid, sizeof(USHORT));
 
-					// Return only private IP if there is a private IP
-					for (i = 0;i < LIST_NUM(ip_list);i++)
-					{
-						IP *ip = LIST_DATA(ip_list, i);
+    ui = Endian32((UINT)(Tick64() / 1000ULL));
+    WriteBuf(sb, &ui, sizeof(UINT));
 
-						if (IsIP4(ip) && IsLocalHostIP4(ip) == false && IsZeroIp(ip) == false)
-						{
-							if (IsIPPrivate(ip))
-							{
-								USHORT flags = Endian16(0x4000);
-								UINT ip_uint = IPToUINT(ip);
+    ip_list_buf = NewBuf();
 
-								WriteBuf(ip_list_buf, &flags, sizeof(USHORT));
-								WriteBuf(ip_list_buf, &ip_uint, sizeof(UINT));
+    ip_list = GetHostIPAddressList();
+    if (ip_list != ((void*)0))
+    {
+     UINT i;
 
-								found = true;
-							}
-						}
-					}
 
-					if (found == false)
-					{
-						// Return all IP if no private IP are found
-						for (i = 0;i < LIST_NUM(ip_list);i++)
-						{
-							IP *ip = LIST_DATA(ip_list, i);
+     for (i = 0;i < LIST_NUM(ip_list);i++)
+     {
+      IP *ip = LIST_DATA(ip_list, i);
 
-							if (IsIP4(ip) && IsLocalHostIP4(ip) == false && IsZeroIp(ip) == false)
-							{
-								USHORT flags = Endian16(0x4000);
-								UINT ip_uint = IPToUINT(ip);
+      if (IsIP4(ip) && IsLocalHostIP4(ip) == 0 && IsZeroIp(ip) == 0)
+      {
+       if (IsIPPrivate(ip))
+       {
+        USHORT flags = Endian16(0x4000);
+        UINT ip_uint = IPToUINT(ip);
 
-								WriteBuf(ip_list_buf, &flags, sizeof(USHORT));
-								WriteBuf(ip_list_buf, &ip_uint, sizeof(UINT));
+        WriteBuf(ip_list_buf, &flags, sizeof(USHORT));
+        WriteBuf(ip_list_buf, &ip_uint, sizeof(UINT));
 
-								found = true;
-							}
-						}
-					}
+        found = 1;
+       }
+      }
+     }
 
-					FreeHostIPAddressList(ip_list);
-				}
+     if (found == 0)
+     {
 
-				us = Endian16(ip_list_buf->Size);
-				WriteBuf(sb, &us, sizeof(USHORT));
+      for (i = 0;i < LIST_NUM(ip_list);i++)
+      {
+       IP *ip = LIST_DATA(ip_list, i);
 
-				WriteBufBuf(sb, ip_list_buf);
+       if (IsIP4(ip) && IsLocalHostIP4(ip) == 0 && IsZeroIp(ip) == 0)
+       {
+        USHORT flags = Endian16(0x4000);
+        UINT ip_uint = IPToUINT(ip);
 
-				SendUdp(v, src_ip, src_port, v->HostIP, dest_port, sb->Buf, sb->Size);
+        WriteBuf(ip_list_buf, &flags, sizeof(USHORT));
+        WriteBuf(ip_list_buf, &ip_uint, sizeof(UINT));
 
-				FreeBuf(ip_list_buf);
+        found = 1;
+       }
+      }
+     }
 
-				FreeBuf(sb);
+     FreeHostIPAddressList(ip_list);
+    }
 
-				WHERE;
-			}
-		}
-	}
+    us = Endian16(ip_list_buf->Size);
+    WriteBuf(sb, &us, sizeof(USHORT));
 
-	FreeBuf(rb);
+    WriteBufBuf(sb, ip_list_buf);
 
-	return ret;
+    SendUdp(v, src_ip, src_port, v->HostIP, dest_port, sb->Buf, sb->Size);
+
+    FreeBuf(ip_list_buf);
+
+    FreeBuf(sb);
+
+    WHERE;
+   }
+  }
+ }
+
+ FreeBuf(rb);
+
+ return ret;
 }

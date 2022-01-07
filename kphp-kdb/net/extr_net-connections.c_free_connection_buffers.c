@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_all_buffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
+
+
+
+struct connection {int Out; int In; } ;
+
+
+ int free_all_buffers (int *) ;
+ int free_tmp_buffers (struct connection*) ;
 
 int free_connection_buffers (struct connection *c) {
   free_tmp_buffers (c);

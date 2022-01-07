@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connectdata {int /*<<< orphan*/  data; } ;
+
+
+
+
+struct connectdata {int data; } ;
 struct connectbundle {int dummy; } ;
-struct conncache {int /*<<< orphan*/  hash; } ;
-typedef  int /*<<< orphan*/  key ;
+struct conncache {int hash; } ;
+typedef int key ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONN_LOCK (int /*<<< orphan*/ ) ; 
- struct connectbundle* Curl_hash_pick (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int HASHKEY_SIZE ; 
- int /*<<< orphan*/  hashkey (struct connectdata*,char*,int,char const**) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int CONN_LOCK (int ) ;
+ struct connectbundle* Curl_hash_pick (int *,char*,int ) ;
+ int HASHKEY_SIZE ;
+ int hashkey (struct connectdata*,char*,int,char const**) ;
+ int strlen (char*) ;
 
 struct connectbundle *Curl_conncache_find_bundle(struct connectdata *conn,
                                                  struct conncache *connc,
                                                  const char **hostp)
 {
-  struct connectbundle *bundle = NULL;
+  struct connectbundle *bundle = ((void*)0);
   CONN_LOCK(conn->data);
   if(connc) {
     char key[HASHKEY_SIZE];

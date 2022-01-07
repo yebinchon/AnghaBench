@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CTL_KERN ; 
- int KERN_PROC ; 
- int KERN_PROC_PATHNAME ; 
- int PATH_MAX ; 
- int UV_EINVAL ; 
- int UV__ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- scalar_t__ sysctl (int*,int,char*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int CTL_KERN ;
+ int KERN_PROC ;
+ int KERN_PROC_PATHNAME ;
+ int PATH_MAX ;
+ int UV_EINVAL ;
+ int UV__ERR (int ) ;
+ int assert (int) ;
+ int errno ;
+ int memcpy (char*,char*,size_t) ;
+ scalar_t__ sysctl (int*,int,char*,size_t*,int *,int ) ;
 
 int uv_exepath(char* buffer, size_t* size) {
   char abspath[PATH_MAX * 2 + 1];
   int mib[4];
   size_t abspath_size;
 
-  if (buffer == NULL || size == NULL || *size == 0)
+  if (buffer == ((void*)0) || size == ((void*)0) || *size == 0)
     return UV_EINVAL;
 
   mib[0] = CTL_KERN;
@@ -37,7 +29,7 @@ int uv_exepath(char* buffer, size_t* size) {
   mib[3] = -1;
 
   abspath_size = sizeof abspath;
-  if (sysctl(mib, 4, abspath, &abspath_size, NULL, 0))
+  if (sysctl(mib, 4, abspath, &abspath_size, ((void*)0), 0))
     return UV__ERR(errno);
 
   assert(abspath_size > 0);

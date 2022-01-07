@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned char* s; } ;
-typedef  TYPE_1__ str ;
+typedef TYPE_1__ str ;
 
-/* Variables and functions */
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 str * coap_new_string(size_t size) {
   str *s = (str *)malloc(sizeof(str) + size + 1);
   if ( !s ) {
-    return NULL;
+    return ((void*)0);
   }
 
   memset(s, 0, sizeof(str));

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  size_t int8_t ;
-typedef  int /*<<< orphan*/  WIZCHIP_EXPORT ;
 
-/* Variables and functions */
- size_t _WIZCHIP_SOCK_NUM_ ; 
- int /*<<< orphan*/  setSn_RXBUF_SIZE (size_t,scalar_t__) ; 
- int /*<<< orphan*/  setSn_TXBUF_SIZE (size_t,scalar_t__) ; 
- int /*<<< orphan*/  wizchip_sw_reset () ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef size_t int8_t ;
+typedef int WIZCHIP_EXPORT ;
+
+
+ size_t _WIZCHIP_SOCK_NUM_ ;
+ int setSn_RXBUF_SIZE (size_t,scalar_t__) ;
+ int setSn_TXBUF_SIZE (size_t,scalar_t__) ;
+ int wizchip_sw_reset () ;
 
 int8_t wizchip_init(uint8_t* txsize, uint8_t* rxsize)
 {

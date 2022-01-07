@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
 struct ethtool_rxnfc {int cmd; } ;
-struct ena_adapter {int /*<<< orphan*/  ena_dev; } ;
+struct ena_adapter {int ena_dev; } ;
 
-/* Variables and functions */
- int EOPNOTSUPP ; 
-#define  ETHTOOL_SRXCLSRLDEL 130 
-#define  ETHTOOL_SRXCLSRLINS 129 
-#define  ETHTOOL_SRXFH 128 
- int /*<<< orphan*/  drv ; 
- int ena_set_rss_hash (int /*<<< orphan*/ ,struct ethtool_rxnfc*) ; 
- struct ena_adapter* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_err (struct ena_adapter*,int /*<<< orphan*/ ,struct net_device*,char*,int) ; 
+
+ int EOPNOTSUPP ;
+
+
+
+ int drv ;
+ int ena_set_rss_hash (int ,struct ethtool_rxnfc*) ;
+ struct ena_adapter* netdev_priv (struct net_device*) ;
+ int netif_err (struct ena_adapter*,int ,struct net_device*,char*,int) ;
 
 __attribute__((used)) static int ena_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *info)
 {
-	struct ena_adapter *adapter = netdev_priv(netdev);
-	int rc = 0;
+ struct ena_adapter *adapter = netdev_priv(netdev);
+ int rc = 0;
 
-	switch (info->cmd) {
-	case ETHTOOL_SRXFH:
-		rc = ena_set_rss_hash(adapter->ena_dev, info);
-		break;
-	case ETHTOOL_SRXCLSRLDEL:
-	case ETHTOOL_SRXCLSRLINS:
-	default:
-		netif_err(adapter, drv, netdev,
-			  "Command parameter %d is not supported\n", info->cmd);
-		rc = -EOPNOTSUPP;
-	}
+ switch (info->cmd) {
+ case 128:
+  rc = ena_set_rss_hash(adapter->ena_dev, info);
+  break;
+ case 130:
+ case 129:
+ default:
+  netif_err(adapter, drv, netdev,
+     "Command parameter %d is not supported\n", info->cmd);
+  rc = -EOPNOTSUPP;
+ }
 
-	return rc;
+ return rc;
 }

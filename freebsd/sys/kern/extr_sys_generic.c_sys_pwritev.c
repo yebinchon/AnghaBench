@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uio {int dummy; } ;
 struct thread {int dummy; } ;
-struct pwritev_args {int /*<<< orphan*/  offset; int /*<<< orphan*/  fd; int /*<<< orphan*/  iovcnt; int /*<<< orphan*/  iovp; } ;
+struct pwritev_args {int offset; int fd; int iovcnt; int iovp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IOV ; 
- int copyinuio (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct uio**) ; 
- int /*<<< orphan*/  free (struct uio*,int /*<<< orphan*/ ) ; 
- int kern_pwritev (struct thread*,int /*<<< orphan*/ ,struct uio*,int /*<<< orphan*/ ) ; 
+
+ int M_IOV ;
+ int copyinuio (int ,int ,struct uio**) ;
+ int free (struct uio*,int ) ;
+ int kern_pwritev (struct thread*,int ,struct uio*,int ) ;
 
 int
 sys_pwritev(struct thread *td, struct pwritev_args *uap)
 {
-	struct uio *auio;
-	int error;
+ struct uio *auio;
+ int error;
 
-	error = copyinuio(uap->iovp, uap->iovcnt, &auio);
-	if (error)
-		return (error);
-	error = kern_pwritev(td, uap->fd, auio, uap->offset);
-	free(auio, M_IOV);
-	return (error);
+ error = copyinuio(uap->iovp, uap->iovcnt, &auio);
+ if (error)
+  return (error);
+ error = kern_pwritev(td, uap->fd, auio, uap->offset);
+ free(auio, M_IOV);
+ return (error);
 }

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int /*<<< orphan*/  session; scalar_t__ a53_cc; } ;
-typedef  TYPE_2__ VTEncContext ;
-struct TYPE_20__ {int num; int /*<<< orphan*/  den; } ;
+
+
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+struct TYPE_21__ {int session; scalar_t__ a53_cc; } ;
+typedef TYPE_2__ VTEncContext ;
+struct TYPE_20__ {int num; int den; } ;
 struct TYPE_25__ {TYPE_1__ time_base; } ;
 struct TYPE_24__ {int pts; } ;
 struct TYPE_23__ {scalar_t__ size; } ;
-struct TYPE_22__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-typedef  TYPE_3__ ExtraSEI ;
-typedef  int /*<<< orphan*/ * CVPixelBufferRef ;
-typedef  int /*<<< orphan*/  CMTime ;
-typedef  int /*<<< orphan*/ * CFDictionaryRef ;
-typedef  TYPE_4__ AVFrameSideData ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVCodecContext ;
+struct TYPE_22__ {int size; int data; } ;
+typedef TYPE_3__ ExtraSEI ;
+typedef int * CVPixelBufferRef ;
+typedef int CMTime ;
+typedef int * CFDictionaryRef ;
+typedef TYPE_4__ AVFrameSideData ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_FRAME_DATA_A53_CC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CMTimeMake (int,int /*<<< orphan*/ ) ; 
- int VTCompressionSessionEncodeFrame (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ *) ; 
- TYPE_4__* av_frame_get_side_data (TYPE_5__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (TYPE_3__*) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,...) ; 
- TYPE_3__* av_mallocz (int) ; 
- int create_cv_pixel_buffer (TYPE_6__*,TYPE_5__ const*,int /*<<< orphan*/ **) ; 
- int create_encoder_dict_h264 (TYPE_5__ const*,int /*<<< orphan*/ **) ; 
- int ff_alloc_a53_sei (TYPE_5__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kCMTimeInvalid ; 
+
+ int AVERROR_EXTERNAL ;
+ int AV_FRAME_DATA_A53_CC ;
+ int AV_LOG_ERROR ;
+ int CFRelease (int *) ;
+ int CMTimeMake (int,int ) ;
+ int VTCompressionSessionEncodeFrame (int ,int *,int ,int ,int *,TYPE_3__*,int *) ;
+ TYPE_4__* av_frame_get_side_data (TYPE_5__ const*,int ) ;
+ int av_free (TYPE_3__*) ;
+ int av_log (TYPE_6__*,int ,char*,...) ;
+ TYPE_3__* av_mallocz (int) ;
+ int create_cv_pixel_buffer (TYPE_6__*,TYPE_5__ const*,int **) ;
+ int create_encoder_dict_h264 (TYPE_5__ const*,int **) ;
+ int ff_alloc_a53_sei (TYPE_5__ const*,int ,int *,int *) ;
+ int kCMTimeInvalid ;
 
 __attribute__((used)) static int vtenc_send_frame(AVCodecContext *avctx,
-                            VTEncContext   *vtctx,
-                            const AVFrame  *frame)
+                            VTEncContext *vtctx,
+                            const AVFrame *frame)
 {
     CMTime time;
     CFDictionaryRef frame_dict;
-    CVPixelBufferRef cv_img = NULL;
-    AVFrameSideData *side_data = NULL;
-    ExtraSEI *sei = NULL;
+    CVPixelBufferRef cv_img = ((void*)0);
+    AVFrameSideData *side_data = ((void*)0);
+    ExtraSEI *sei = ((void*)0);
     int status = create_cv_pixel_buffer(avctx, frame, &cv_img);
 
     if (status) return status;
@@ -76,7 +76,7 @@ __attribute__((used)) static int vtenc_send_frame(AVCodecContext *avctx,
             if (ret < 0) {
                 av_log(avctx, AV_LOG_ERROR, "Not enough memory for closed captions, skipping\n");
                 av_free(sei);
-                sei = NULL;
+                sei = ((void*)0);
             }
         }
     }
@@ -89,7 +89,7 @@ __attribute__((used)) static int vtenc_send_frame(AVCodecContext *avctx,
         kCMTimeInvalid,
         frame_dict,
         sei,
-        NULL
+        ((void*)0)
     );
 
     if (frame_dict) CFRelease(frame_dict);

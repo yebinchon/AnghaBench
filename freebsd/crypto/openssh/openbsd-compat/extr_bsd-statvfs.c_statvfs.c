@@ -1,38 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct statvfs {int dummy; } ;
 struct statfs {int dummy; } ;
-typedef  int /*<<< orphan*/  fs ;
+typedef int fs ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  copy_statfs_to_statvfs (struct statvfs*,struct statfs*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  memset (struct statfs*,int /*<<< orphan*/ ,int) ; 
- int statfs (char const*,struct statfs*) ; 
+
+ int ENOSYS ;
+ int copy_statfs_to_statvfs (struct statvfs*,struct statfs*) ;
+ int errno ;
+ int memset (struct statfs*,int ,int) ;
+ int statfs (char const*,struct statfs*) ;
 
 int statvfs(const char *path, struct statvfs *buf)
 {
-#  ifdef HAVE_STATFS
-	struct statfs fs;
+ errno = ENOSYS;
+ return -1;
 
-	memset(&fs, 0, sizeof(fs));
-	if (statfs(path, &fs) == -1)
-		return -1;
-	copy_statfs_to_statvfs(buf, &fs);
-	return 0;
-#  else
-	errno = ENOSYS;
-	return -1;
-#  endif
 }

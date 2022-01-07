@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* uint8 ;
 struct TYPE_2__ {void* b; void* g; void* r; } ;
 
-/* Variables and functions */
- TYPE_1__** vdp_palette ; 
+
+ TYPE_1__** vdp_palette ;
 
 void make_vdp_palette(void)
 {

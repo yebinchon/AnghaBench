@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int blink; int /*<<< orphan*/  cursor; int /*<<< orphan*/ * text; } ;
-typedef  TYPE_1__ textbox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MIN (int,int) ; 
- int /*<<< orphan*/  WIDGET (TYPE_1__*) ; 
- int g_utf8_strlen (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  widget_queue_redraw (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int blink; int cursor; int * text; } ;
+typedef TYPE_1__ textbox ;
+
+
+ int MAX (int ,int ) ;
+ int MIN (int,int) ;
+ int WIDGET (TYPE_1__*) ;
+ int g_utf8_strlen (int *,int) ;
+ int widget_queue_redraw (int ) ;
 
 void textbox_cursor ( textbox *tb, int pos )
 {
-    if ( tb == NULL ) {
+    if ( tb == ((void*)0) ) {
         return;
     }
-    int length = ( tb->text == NULL ) ? 0 : g_utf8_strlen ( tb->text, -1 );
+    int length = ( tb->text == ((void*)0) ) ? 0 : g_utf8_strlen ( tb->text, -1 );
     tb->cursor = MAX ( 0, MIN ( length, pos ) );
-    // Stop blink!
+
     tb->blink = 3;
     widget_queue_redraw ( WIDGET ( tb ) );
 }

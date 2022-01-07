@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ ipv4; } ;
-typedef  TYPE_1__ ipv6_address ;
-typedef  scalar_t__ USHORT ;
-typedef  int INT ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_1__ ipv6_address ;
+typedef scalar_t__ USHORT ;
+typedef int INT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void compute_elision_location(const ipv6_address *address, const USHORT values[8],
                                      INT *index, DWORD *count) {
@@ -32,7 +32,7 @@ __attribute__((used)) static void compute_elision_location(const ipv6_address *a
         BOOL is_end = (check_ipv4 || i == 7);
 
         if(check_ipv4) {
-            /* Check if the IPv4 address contains only zeros. */
+
             if(values[i] == 0 && values[i+1] == 0) {
                 if(cur_index == -1)
                     cur_index = i;
@@ -48,16 +48,16 @@ __attribute__((used)) static void compute_elision_location(const ipv6_address *a
         }
 
         if(is_end || values[i] != 0) {
-            /* We only consider it for an elision if it's
-             * more than 1 component long.
-             */
+
+
+
             if(cur_len > 1 && cur_len > max_len) {
-                /* Found the new elision location. */
+
                 max_len = cur_len;
                 max_index = cur_index;
             }
 
-            /* Reset the current range for the next range of zeros. */
+
             cur_index = -1;
             cur_len = 0;
         }

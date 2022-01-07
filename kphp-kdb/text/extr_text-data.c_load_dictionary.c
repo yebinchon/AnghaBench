@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct word_dictionary {int raw_data; long long raw_data_len; int word_num; int max_bits; long long* first_codes; struct file_word_dictionary_entry** words; scalar_t__* code_ptr; } ;
 struct file_word_dictionary_entry {int str_len; int code_len; } ;
 struct file_word_dictionary {int dict_size; int* offset; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_FILE_DICTIONARY_BYTES ; 
- int /*<<< orphan*/  assert (int) ; 
- int load_index_part (int /*<<< orphan*/ ,long long,long long,int /*<<< orphan*/ ) ; 
- struct file_word_dictionary_entry** zmalloc (int) ; 
+
+ int MAX_FILE_DICTIONARY_BYTES ;
+ int assert (int) ;
+ int load_index_part (int ,long long,long long,int ) ;
+ struct file_word_dictionary_entry** zmalloc (int) ;
 
 struct word_dictionary *load_dictionary (struct word_dictionary *D, long long offset, long long size) {
   int N, i, j, k;
@@ -29,7 +29,7 @@ struct word_dictionary *load_dictionary (struct word_dictionary *D, long long of
   D->raw_data_len = size;
   assert (size >= 4);
   tmp = (struct file_word_dictionary *) D->raw_data;
-  
+
   N = tmp->dict_size;
   assert (N >= 0 && N <= (size >> 2) - 2);
   D->word_num = N;
@@ -48,7 +48,7 @@ struct word_dictionary *load_dictionary (struct word_dictionary *D, long long of
   }
 
   D->max_bits = 32;
-  
+
   x = 0;
   k = 0;
   for (j = 1; j <= 32; j++) {

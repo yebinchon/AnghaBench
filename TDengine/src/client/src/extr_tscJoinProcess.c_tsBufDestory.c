@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  payload; } ;
-struct TYPE_6__ {int /*<<< orphan*/  rawBuf; } ;
-struct TYPE_8__ {int /*<<< orphan*/  path; scalar_t__ autoDelete; int /*<<< orphan*/  f; TYPE_2__ block; int /*<<< orphan*/  pData; TYPE_1__ tsData; int /*<<< orphan*/  assistBuf; } ;
-typedef  TYPE_3__ STSBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  tfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int payload; } ;
+struct TYPE_6__ {int rawBuf; } ;
+struct TYPE_8__ {int path; scalar_t__ autoDelete; int f; TYPE_2__ block; int pData; TYPE_1__ tsData; int assistBuf; } ;
+typedef TYPE_3__ STSBuf ;
+
+
+ int fclose (int ) ;
+ int free (TYPE_3__*) ;
+ int tfree (int ) ;
+ int unlink (int ) ;
 
 void tsBufDestory(STSBuf* pTSBuf) {
-  if (pTSBuf == NULL) {
+  if (pTSBuf == ((void*)0)) {
     return;
   }
 

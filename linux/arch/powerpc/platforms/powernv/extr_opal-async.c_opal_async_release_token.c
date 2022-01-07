@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int __opal_async_release_token (int) ; 
- int /*<<< orphan*/  opal_async_sem ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+ int __opal_async_release_token (int) ;
+ int opal_async_sem ;
+ int up (int *) ;
 
 int opal_async_release_token(int token)
 {
-	int ret;
+ int ret;
 
-	ret = __opal_async_release_token(token);
-	if (!ret)
-		up(&opal_async_sem);
+ ret = __opal_async_release_token(token);
+ if (!ret)
+  up(&opal_async_sem);
 
-	return ret;
+ return ret;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const elem_type_t ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
-#define  ET_BR 129 
-#define  ET_DIV 128 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  insert_adjacent_elem (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * test_create_elem (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_elem_all (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int const elem_type_t ;
+typedef int IUnknown ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+
+
+
+
+ int IHTMLElement_Release (int *) ;
+ int insert_adjacent_elem (int *,char*,int *) ;
+ int * test_create_elem (int *,char*) ;
+ int test_elem_all (int *,int const*,int) ;
 
 __attribute__((used)) static void test_insert_adjacent_elems(IHTMLDocument2 *doc, IHTMLElement *parent)
 {
     IHTMLElement *elem, *elem2;
 
-    static const elem_type_t br_br[] = {ET_BR, ET_BR};
-    static const elem_type_t br_div_br[] = {ET_BR, ET_DIV, ET_BR};
+    static const elem_type_t br_br[] = {129, 129};
+    static const elem_type_t br_div_br[] = {129, 128, 129};
 
     elem = test_create_elem(doc, "BR");
     insert_adjacent_elem(parent, "BeforeEnd", elem);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int comments; char** user_comments; int* comment_lengths; } ;
-typedef  TYPE_1__ vorbis_comment ;
-typedef  int /*<<< orphan*/  oggpack_buffer ;
+typedef TYPE_1__ vorbis_comment ;
+typedef int oggpack_buffer ;
 
-/* Variables and functions */
- char* ENCODE_VENDOR_STRING ; 
- int /*<<< orphan*/  _v_writestring (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  oggpack_write (int /*<<< orphan*/ *,int,int) ; 
- int strlen (char*) ; 
+
+ char* ENCODE_VENDOR_STRING ;
+ int _v_writestring (int *,char*,int) ;
+ int oggpack_write (int *,int,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int _vorbis_pack_comment(oggpack_buffer *opb,vorbis_comment *vc){
   int bytes = strlen(ENCODE_VENDOR_STRING);
 
-  /* preamble */
+
   oggpack_write(opb,0x03,8);
   _v_writestring(opb,"vorbis", 6);
 
-  /* vendor */
+
   oggpack_write(opb,bytes,32);
   _v_writestring(opb,ENCODE_VENDOR_STRING, bytes);
 
-  /* comments */
+
 
   oggpack_write(opb,vc->comments,32);
   if(vc->comments){

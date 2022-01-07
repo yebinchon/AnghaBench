@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PacketQueue ;
 
-/* Variables and functions */
- int packet_queue_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PacketQueue ;
+
+
+ int packet_queue_init (int *) ;
 
 int ffp_packet_queue_init(PacketQueue *q)
 {

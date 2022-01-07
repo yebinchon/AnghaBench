@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_6__ {scalar_t__ i_ca_type; int /*<<< orphan*/  obj; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ cam_t ;
-struct TYPE_7__ {int length; int /*<<< orphan*/ * msg; } ;
-typedef  TYPE_2__ ca_msg_t ;
 
-/* Variables and functions */
- scalar_t__ CA_CI_LINK ; 
- int /*<<< orphan*/  CA_SEND_MSG ; 
- int SPDUSend (TYPE_1__*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * SetLength (int /*<<< orphan*/ *,size_t) ; 
- int VLC_EGENERIC ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * xmalloc (size_t) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {scalar_t__ i_ca_type; int obj; int fd; } ;
+typedef TYPE_1__ cam_t ;
+struct TYPE_7__ {int length; int * msg; } ;
+typedef TYPE_2__ ca_msg_t ;
+
+
+ scalar_t__ CA_CI_LINK ;
+ int CA_SEND_MSG ;
+ int SPDUSend (TYPE_1__*,int,int *,int) ;
+ int * SetLength (int *,size_t) ;
+ int VLC_EGENERIC ;
+ int errno ;
+ int free (int *) ;
+ int ioctl (int ,int ,TYPE_2__*) ;
+ int memcpy (int *,int *,int) ;
+ int msg_Err (int ,char*,...) ;
+ int vlc_strerror_c (int ) ;
+ int * xmalloc (size_t) ;
 
 __attribute__((used)) static int APDUSend( cam_t * p_cam, int i_session_id, int i_tag,
                      uint8_t *p_data, size_t i_size )

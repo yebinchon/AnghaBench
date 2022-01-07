@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+ int exit (int) ;
+ int fprintf (int ,char*,char const*) ;
+ int stderr ;
 
 __attribute__((used)) static void
 usage(int errcode)
 {
-/* This usage is generated from the pkt-gen man page:
- *   $ man pkt-gen > x
- * and pasted here adding the string terminators and endlines with simple
- * regular expressions. */
-	const char *cmd = "pkt-gen";
-	fprintf(stderr,
-		"Usage:\n"
-		"%s arguments\n"
+
+
+
+
+ const char *cmd = "pkt-gen";
+ fprintf(stderr,
+  "Usage:\n"
+  "%s arguments\n"
 "     -h      Show program usage and exit.\n"
 "\n"
 "     -i interface\n"
@@ -156,7 +148,7 @@ usage(int errcode)
 "				OPT_RANDOM_SRC  512\n"
 "				OPT_RANDOM_DST  1024\n"
 "				OPT_PPS_STATS   2048\n"
-		     "",
-		cmd);
-	exit(errcode);
+       "",
+  cmd);
+ exit(errcode);
 }

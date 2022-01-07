@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int szTest; int /*<<< orphan*/  pStmt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_STATIC ; 
- TYPE_1__ g ; 
- int /*<<< orphan*/  speedtest1_begin_test (int,char*,...) ; 
- int /*<<< orphan*/  speedtest1_end_test () ; 
- int /*<<< orphan*/  speedtest1_prepare (char*,...) ; 
- int /*<<< orphan*/  speedtest1_run () ; 
- int /*<<< orphan*/  sqlite3_bind_double (int /*<<< orphan*/ ,int,double) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ ,int,char const*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int szTest; int pStmt; } ;
+
+
+ int SQLITE_STATIC ;
+ TYPE_1__ g ;
+ int speedtest1_begin_test (int,char*,...) ;
+ int speedtest1_end_test () ;
+ int speedtest1_prepare (char*,...) ;
+ int speedtest1_run () ;
+ int sqlite3_bind_double (int ,int,double) ;
+ int sqlite3_bind_text (int ,int,char const*,int,int ) ;
 
 void testset_cte(void){
   static const char *azPuzzle[] = {
-    /* Easy */
+
     "534...9.."
     "67.195..."
     ".98....6."
@@ -36,7 +36,7 @@ void testset_cte(void){
     "...419..5"
     "...28..79",
 
-    /* Medium */
+
     "53....9.."
     "6..195..."
     ".98....6."
@@ -47,7 +47,7 @@ void testset_cte(void){
     "...419..5"
     "....8..79",
 
-    /* Hard */
+
     "53......."
     "6..195..."
     ".98....6."

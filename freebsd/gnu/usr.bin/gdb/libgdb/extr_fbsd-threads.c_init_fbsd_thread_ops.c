@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_get_thread_local_address; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_has_thread_control; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_pid_to_str; int /*<<< orphan*/  to_find_new_threads; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_can_run; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_post_startup_inferior; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_post_attach; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_attach; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  fbsd_thread_alive ; 
- int /*<<< orphan*/  fbsd_thread_attach ; 
- int /*<<< orphan*/  fbsd_thread_can_run ; 
- int /*<<< orphan*/  fbsd_thread_create_inferior ; 
- int /*<<< orphan*/  fbsd_thread_detach ; 
- int /*<<< orphan*/  fbsd_thread_fetch_registers ; 
- int /*<<< orphan*/  fbsd_thread_files_info ; 
- int /*<<< orphan*/  fbsd_thread_find_new_threads ; 
- int /*<<< orphan*/  fbsd_thread_get_local_address ; 
- int /*<<< orphan*/  fbsd_thread_kill ; 
- int /*<<< orphan*/  fbsd_thread_mourn_inferior ; 
- TYPE_1__ fbsd_thread_ops ; 
- int /*<<< orphan*/  fbsd_thread_pid_to_str ; 
- int /*<<< orphan*/  fbsd_thread_post_attach ; 
- int /*<<< orphan*/  fbsd_thread_post_startup_inferior ; 
- int /*<<< orphan*/  fbsd_thread_resume ; 
- int /*<<< orphan*/  fbsd_thread_store_registers ; 
- int /*<<< orphan*/  fbsd_thread_wait ; 
- int /*<<< orphan*/  fbsd_thread_xfer_memory ; 
- int /*<<< orphan*/  memory_insert_breakpoint ; 
- int /*<<< orphan*/  memory_remove_breakpoint ; 
- int /*<<< orphan*/  tc_none ; 
- int /*<<< orphan*/  thread_stratum ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_magic; int to_get_thread_local_address; int to_remove_breakpoint; int to_insert_breakpoint; int to_has_thread_control; int to_stratum; int to_pid_to_str; int to_find_new_threads; int to_thread_alive; int to_can_run; int to_mourn_inferior; int to_post_startup_inferior; int to_create_inferior; int to_kill; int to_files_info; int to_xfer_memory; int to_store_registers; int to_fetch_registers; int to_wait; int to_resume; int to_post_attach; int to_detach; int to_attach; } ;
+
+
+ int OPS_MAGIC ;
+ int fbsd_thread_alive ;
+ int fbsd_thread_attach ;
+ int fbsd_thread_can_run ;
+ int fbsd_thread_create_inferior ;
+ int fbsd_thread_detach ;
+ int fbsd_thread_fetch_registers ;
+ int fbsd_thread_files_info ;
+ int fbsd_thread_find_new_threads ;
+ int fbsd_thread_get_local_address ;
+ int fbsd_thread_kill ;
+ int fbsd_thread_mourn_inferior ;
+ TYPE_1__ fbsd_thread_ops ;
+ int fbsd_thread_pid_to_str ;
+ int fbsd_thread_post_attach ;
+ int fbsd_thread_post_startup_inferior ;
+ int fbsd_thread_resume ;
+ int fbsd_thread_store_registers ;
+ int fbsd_thread_wait ;
+ int fbsd_thread_xfer_memory ;
+ int memory_insert_breakpoint ;
+ int memory_remove_breakpoint ;
+ int tc_none ;
+ int thread_stratum ;
 
 __attribute__((used)) static void
 init_fbsd_thread_ops (void)

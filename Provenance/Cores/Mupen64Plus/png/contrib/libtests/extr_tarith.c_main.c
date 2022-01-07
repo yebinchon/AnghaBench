@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int COUNT ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int validation_ascii_to_fp (int,int,char**) ; 
- int validation_checkfp (int,int,char**) ; 
- int validation_gamma (int,char**) ; 
- int validation_muldiv (int,int,char**) ; 
- int /*<<< orphan*/  verbose ; 
+ int COUNT ;
+ int atoi (char*) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int validation_ascii_to_fp (int,int,char**) ;
+ int validation_checkfp (int,int,char**) ;
+ int validation_gamma (int,char**) ;
+ int validation_muldiv (int,int,char**) ;
+ int verbose ;
 
 int main(int argc, char **argv)
 {
@@ -59,7 +51,7 @@ int main(int argc, char **argv)
          return validation_gamma(argc-1, argv+1);
    }
 
-   /* Bad argument: */
+
    fprintf(stderr,
       "usage: tarith [-v] [-c count] {ascii,muldiv,gamma} [args]\n");
    fprintf(stderr, " arguments: ascii [-a (all results)] [-e error%%]\n");

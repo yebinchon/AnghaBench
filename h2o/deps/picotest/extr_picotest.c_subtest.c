@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct test_t {int failed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _ok (int,char*,char const*) ; 
- struct test_t* cur_tests ; 
- int /*<<< orphan*/  done_testing () ; 
- int /*<<< orphan*/  note (char*,char const*) ; 
- int /*<<< orphan*/  test_level ; 
+
+ int _ok (int,char*,char const*) ;
+ struct test_t* cur_tests ;
+ int done_testing () ;
+ int note (char*,char const*) ;
+ int test_level ;
 
 void subtest(const char *name, void (*cb)(void))
 {

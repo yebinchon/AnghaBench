@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct reg_flags {int is_fp; int is_and; int is_or; } ;
-typedef  int /*<<< orphan*/  rtx ;
+typedef int rtx ;
 
-/* Variables and functions */
- int AND ; 
-#define  CALL 129 
- int /*<<< orphan*/  COMPARISON_P (int /*<<< orphan*/ ) ; 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
-#define  IF_THEN_ELSE 128 
- int IOR ; 
- int /*<<< orphan*/  SCALAR_FLOAT_MODE_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_SRC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AND ;
+
+ int COMPARISON_P (int ) ;
+ int GET_CODE (int ) ;
+ int GET_MODE (int ) ;
+
+ int IOR ;
+ int SCALAR_FLOAT_MODE_P (int ) ;
+ int SET_SRC (int ) ;
+ int XEXP (int ,int ) ;
 
 __attribute__((used)) static void
 update_set_flags (rtx x, struct reg_flags *pflags)
@@ -32,37 +32,27 @@ update_set_flags (rtx x, struct reg_flags *pflags)
 
   switch (GET_CODE (src))
     {
-    case CALL:
+    case 129:
       return;
 
-    case IF_THEN_ELSE:
-      /* There are four cases here:
-	 (1) The destination is (pc), in which case this is a branch,
-	 nothing here applies.
-	 (2) The destination is ar.lc, in which case this is a
-	 doloop_end_internal,
-	 (3) The destination is an fp register, in which case this is
-	 an fselect instruction.
-	 (4) The condition has (unspec [(reg)] UNSPEC_LDC), in which case 
-	 this is a check load.
-	 In all cases, nothing we do in this function applies.  */
+    case 128:
       return;
 
     default:
       if (COMPARISON_P (src)
-	  && SCALAR_FLOAT_MODE_P (GET_MODE (XEXP (src, 0))))
-	/* Set pflags->is_fp to 1 so that we know we're dealing
-	   with a floating point comparison when processing the
-	   destination of the SET.  */
-	pflags->is_fp = 1;
+   && SCALAR_FLOAT_MODE_P (GET_MODE (XEXP (src, 0))))
 
-      /* Discover if this is a parallel comparison.  We only handle
-	 and.orcm and or.andcm at present, since we must retain a
-	 strict inverse on the predicate pair.  */
+
+
+ pflags->is_fp = 1;
+
+
+
+
       else if (GET_CODE (src) == AND)
-	pflags->is_and = 1;
+ pflags->is_and = 1;
       else if (GET_CODE (src) == IOR)
-	pflags->is_or = 1;
+ pflags->is_or = 1;
 
       break;
     }

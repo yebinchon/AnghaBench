@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {int tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
-typedef  int /*<<< orphan*/  SOCKET ;
+typedef int fd_set ;
+typedef int SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- int SOCKET_ERROR ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int select (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int FD_SET (int ,int *) ;
+ int FD_ZERO (int *) ;
+ int SOCKET_ERROR ;
+ int fprintf (int ,char*) ;
+ int select (int ,int *,int *,int *,struct timeval*) ;
+ int stderr ;
 
 int checkRecv(SOCKET s)
 {
@@ -33,7 +33,7 @@ int checkRecv(SOCKET s)
 
    FD_SET(s, &sSet);
 
-   testVal = select(0, &sSet, NULL, NULL, &timeout);
+   testVal = select(0, &sSet, ((void*)0), ((void*)0), &timeout);
 
    if (testVal == SOCKET_ERROR)
       fprintf(stderr, "Socket Error");

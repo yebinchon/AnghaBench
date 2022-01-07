@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {short events; } ;
 struct vlc_dbus_watch_data {TYPE_1__ pollfd; } ;
-typedef  int /*<<< orphan*/  DBusWatch ;
+typedef int DBusWatch ;
 
-/* Variables and functions */
- scalar_t__ dbus_watch_get_enabled (int /*<<< orphan*/ *) ; 
- struct vlc_dbus_watch_data* vlc_dbus_watch_get_data (int /*<<< orphan*/ *,void*) ; 
- short vlc_dbus_watch_get_poll_events (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ dbus_watch_get_enabled (int *) ;
+ struct vlc_dbus_watch_data* vlc_dbus_watch_get_data (int *,void*) ;
+ short vlc_dbus_watch_get_poll_events (int *) ;
 
 __attribute__((used)) static void
 vlc_dbus_watch_toggled_function( DBusWatch *p_watch, void *p_data )

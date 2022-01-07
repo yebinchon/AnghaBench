@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct NBCmdQueue {int /*<<< orphan*/  cs; } ;
-typedef  scalar_t__ UCHAR ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct NBCmdQueue {int cs; } ;
+typedef scalar_t__ UCHAR ;
 struct TYPE_8__ {scalar_t__ ncb_retcode; } ;
-typedef  TYPE_1__* PNCB ;
+typedef TYPE_1__* PNCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CANCEL_EVENT_PTR (TYPE_1__*) ; 
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- TYPE_1__** NBCmdQueueFindNBC (struct NBCmdQueue*,TYPE_1__*) ; 
- TYPE_1__** NEXT_PTR (TYPE_1__*) ; 
- scalar_t__ NRC_BADDR ; 
- scalar_t__ NRC_CANOCCR ; 
- scalar_t__ NRC_CMDCAN ; 
- scalar_t__ NRC_INVADDRESS ; 
- int /*<<< orphan*/  TRACE (char*,struct NBCmdQueue*,...) ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int * CANCEL_EVENT_PTR (TYPE_1__*) ;
+ int CloseHandle (int ) ;
+ int CreateEventW (int *,int ,int ,int *) ;
+ int EnterCriticalSection (int *) ;
+ int FALSE ;
+ int INFINITE ;
+ int LeaveCriticalSection (int *) ;
+ TYPE_1__** NBCmdQueueFindNBC (struct NBCmdQueue*,TYPE_1__*) ;
+ TYPE_1__** NEXT_PTR (TYPE_1__*) ;
+ scalar_t__ NRC_BADDR ;
+ scalar_t__ NRC_CANOCCR ;
+ scalar_t__ NRC_CMDCAN ;
+ scalar_t__ NRC_INVADDRESS ;
+ int TRACE (char*,struct NBCmdQueue*,...) ;
+ int WaitForSingleObject (int ,int ) ;
 
 UCHAR NBCmdQueueCancel(struct NBCmdQueue *queue, PNCB ncb)
 {
@@ -49,7 +49,7 @@ UCHAR NBCmdQueueCancel(struct NBCmdQueue *queue, PNCB ncb)
     spot = NBCmdQueueFindNBC(queue, ncb);
     if (spot)
     {
-        *CANCEL_EVENT_PTR(*spot) = CreateEventW(NULL, FALSE, FALSE, NULL);
+        *CANCEL_EVENT_PTR(*spot) = CreateEventW(((void*)0), FALSE, FALSE, ((void*)0));
         WaitForSingleObject(*CANCEL_EVENT_PTR(*spot), INFINITE);
         CloseHandle(*CANCEL_EVENT_PTR(*spot));
         *spot = *NEXT_PTR(*spot);

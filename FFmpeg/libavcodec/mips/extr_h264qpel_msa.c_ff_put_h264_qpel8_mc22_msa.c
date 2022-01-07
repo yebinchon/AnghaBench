@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  scalar_t__ v4i32 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  int /*<<< orphan*/  v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- scalar_t__ AVC_DOT_SW3_SW (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ AVC_HORZ_FILTER_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ILVL_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ILVR_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  LD_SB3 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB4 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_SB5 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_XORI128_UB (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_D4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XORI_B5_128_SB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ __msa_fill_w (int const) ; 
- scalar_t__ __msa_pckev_h (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/ * luma_mask_arr ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef scalar_t__ v4i32 ;
+typedef int v16u8 ;
+typedef int v16i8 ;
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int int32_t ;
+
+
+ scalar_t__ AVC_DOT_SW3_SW (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ AVC_HORZ_FILTER_SH (int ,int ,int ,int ,int ) ;
+ int ILVL_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int ILVR_H4_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int LD_SB3 (int *,int,int ,int ,int ) ;
+ int LD_SB4 (int const*,int,int ,int ,int ,int ) ;
+ int LD_SB5 (int const*,int,int ,int ,int ,int ,int ) ;
+ int PCKEV_XORI128_UB (scalar_t__,scalar_t__) ;
+ int ST_D4 (int ,int ,int ,int,int ,int,int *,int) ;
+ int XORI_B4_128_SB (int ,int ,int ,int ) ;
+ int XORI_B5_128_SB (int ,int ,int ,int ,int ) ;
+ scalar_t__ __msa_fill_w (int const) ;
+ scalar_t__ __msa_pckev_h (scalar_t__,scalar_t__) ;
+ int * luma_mask_arr ;
 
 void ff_put_h264_qpel8_mc22_msa(uint8_t *dst, const uint8_t *src,
                                 ptrdiff_t stride)

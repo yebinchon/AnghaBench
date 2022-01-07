@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ top; int neg; } ;
-typedef  TYPE_1__ BIGNUM ;
+typedef TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_dec2bn (TYPE_1__**,char const*) ; 
- int /*<<< orphan*/  BN_hex2bn (TYPE_1__**,char const*) ; 
+
+ int BN_dec2bn (TYPE_1__**,char const*) ;
+ int BN_hex2bn (TYPE_1__**,char const*) ;
 
 int BN_asc2bn(BIGNUM **bn, const char *a)
 {
@@ -32,7 +32,7 @@ int BN_asc2bn(BIGNUM **bn, const char *a)
         if (!BN_dec2bn(bn, p))
             return 0;
     }
-    /* Don't set the negative flag if it's zero. */
+
     if (*a == '-' && (*bn)->top != 0)
         (*bn)->neg = 1;
     return 1;

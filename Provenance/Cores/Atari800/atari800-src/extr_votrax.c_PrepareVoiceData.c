@@ -1,237 +1,228 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ iType; int iSecondStart; int iLengthms; int** lpStart; scalar_t__ sameAs; int* iLength; } ;
-struct TYPE_3__ {size_t actPhoneme; int iRemainingSamples; int iSamplesInBuffer; int* lpBuffer; size_t actIntonation; int* pActPos; int* pBufferPos; int /*<<< orphan*/  iDelay; } ;
-typedef  int SWORD ;
-
-/* Variables and functions */
-#define  PT_F 134 
-#define  PT_FS 133 
-#define  PT_N 132 
-#define  PT_NS 131 
-#define  PT_V 130 
-#define  PT_VF 129 
-#define  PT_VS 128 
- TYPE_2__* PhonemeData ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- double sin (double) ; 
- int time_to_samples (int) ; 
- TYPE_1__ votraxsc01_locals ; 
+struct TYPE_3__ {size_t actPhoneme; int iRemainingSamples; int iSamplesInBuffer; int* lpBuffer; size_t actIntonation; int* pActPos; int* pBufferPos; int iDelay; } ;
+typedef int SWORD ;
+ TYPE_2__* PhonemeData ;
+ int memcpy (int*,int*,int) ;
+ double sin (double) ;
+ int time_to_samples (int) ;
+ TYPE_1__ votraxsc01_locals ;
 
 __attribute__((used)) static void PrepareVoiceData(int nextPhoneme, int nextIntonation)
 {
-	int iNextRemainingSamples;
-	SWORD *pNextPos, *lpHelp;
+ int iNextRemainingSamples;
+ SWORD *pNextPos, *lpHelp;
 
-	int iFadeOutSamples;
-	int iFadeOutPos;
-	
-	int iFadeInSamples;
-	int iFadeInPos;
+ int iFadeOutSamples;
+ int iFadeOutPos;
 
-	int doMix;
-	/* used only for SecondStart phonemes */
-	int AdditionalSamples;
-	/* dwCount is the length of samples to produce in ms from iLengthms */
-	int dwCount, i;
+ int iFadeInSamples;
+ int iFadeInPos;
 
-	SWORD data;
+ int doMix;
 
-	AdditionalSamples = 0;
-	/* some phonenemes have a SecondStart */
-	if ( PhonemeData[votraxsc01_locals.actPhoneme].iType>=PT_VS && votraxsc01_locals.actPhoneme!=nextPhoneme ) {
-		AdditionalSamples = PhonemeData[votraxsc01_locals.actPhoneme].iSecondStart;
-	}
+ int AdditionalSamples;
 
-	if ( PhonemeData[nextPhoneme].iType>=PT_VS ) {
-		/* 'stop phonemes' will stop playing until the next phoneme is sent*/
-		votraxsc01_locals.iRemainingSamples = 0;
-		return;
-	}
+ int dwCount, i;
 
-	/* length of samples to produce*/
-	dwCount = time_to_samples(PhonemeData[nextPhoneme].iLengthms);
+ SWORD data;
 
-	votraxsc01_locals.iSamplesInBuffer = dwCount+AdditionalSamples;
+ AdditionalSamples = 0;
 
-	if ( AdditionalSamples )
-		memcpy(votraxsc01_locals.lpBuffer, PhonemeData[votraxsc01_locals.actPhoneme].lpStart[votraxsc01_locals.actIntonation], AdditionalSamples*sizeof(SWORD));
+ if ( PhonemeData[votraxsc01_locals.actPhoneme].iType>=128 && votraxsc01_locals.actPhoneme!=nextPhoneme ) {
+  AdditionalSamples = PhonemeData[votraxsc01_locals.actPhoneme].iSecondStart;
+ }
 
-	lpHelp = votraxsc01_locals.lpBuffer + AdditionalSamples;
+ if ( PhonemeData[nextPhoneme].iType>=128 ) {
 
-	iNextRemainingSamples = 0;
-	pNextPos = NULL;
+  votraxsc01_locals.iRemainingSamples = 0;
+  return;
+ }
 
-	iFadeOutSamples = 0;
-	iFadeOutPos     = 0;
-	
-	iFadeInSamples   = 0;
-	iFadeInPos       = 0;
 
-	doMix = 0;
+ dwCount = time_to_samples(PhonemeData[nextPhoneme].iLengthms);
 
-	/* set up processing*/
-	if ( PhonemeData[votraxsc01_locals.actPhoneme].sameAs!=PhonemeData[nextPhoneme].sameAs  ) {
-		/* do something, if they are the same all FadeIn/Out values are 0, */
-		/* the buffer is simply filled with the samples of the new phoneme */
+ votraxsc01_locals.iSamplesInBuffer = dwCount+AdditionalSamples;
 
-		switch ( PhonemeData[votraxsc01_locals.actPhoneme].iType ) {
-			case PT_NS:
-				/* "fade" out NS:*/
-				iFadeOutSamples = time_to_samples(30);
-				iFadeOutPos = 0;
+ if ( AdditionalSamples )
+  memcpy(votraxsc01_locals.lpBuffer, PhonemeData[votraxsc01_locals.actPhoneme].lpStart[votraxsc01_locals.actIntonation], AdditionalSamples*sizeof(SWORD));
 
-				/* fade in new phoneme*/
-				iFadeInPos = -time_to_samples(30);
-				iFadeInSamples = time_to_samples(30);
-				break;
+ lpHelp = votraxsc01_locals.lpBuffer + AdditionalSamples;
 
-			case PT_V:
-			case PT_VF:
-				switch ( PhonemeData[nextPhoneme].iType ){
-					case PT_F:
-					case PT_VF:
-						/* V-->F, V-->VF: fade out 30 ms fade in from 30 ms to 60 ms without mixing*/
-						iFadeOutPos = 0;
-						iFadeOutSamples = time_to_samples(30);
+ iNextRemainingSamples = 0;
+ pNextPos = ((void*)0);
 
-						iFadeInPos = -time_to_samples(30);
-						iFadeInSamples = time_to_samples(30);
-						break;
+ iFadeOutSamples = 0;
+ iFadeOutPos = 0;
 
-					case PT_N:
-						/* V-->N: fade out 40 ms fade from 0 ms to 40 ms without mixing*/
-						iFadeOutPos = 0;
-						iFadeOutSamples = time_to_samples(40);
+ iFadeInSamples = 0;
+ iFadeInPos = 0;
 
-						iFadeInPos = -time_to_samples(10);
-						iFadeInSamples = time_to_samples(10);
-						break;
+ doMix = 0;
 
-					default:
-						/* fade out 20 ms, no fade in from 10 ms to 30 ms*/
-						iFadeOutPos = 0;
-						iFadeOutSamples = time_to_samples(20);
 
-						iFadeInPos = -time_to_samples(0);
-						iFadeInSamples = time_to_samples(20);
-						break;
-				}
-				break;
+ if ( PhonemeData[votraxsc01_locals.actPhoneme].sameAs!=PhonemeData[nextPhoneme].sameAs ) {
 
-			case PT_N:
-				switch ( PhonemeData[nextPhoneme].iType ){
-					case PT_V:
-					case PT_VF:
-						/* N-->V, N-->VF: fade out 30 ms fade in from 10 ms to 50 ms without mixing*/
-						iFadeOutPos = 0;
-						iFadeOutSamples = time_to_samples(30);
 
-						iFadeInPos = -time_to_samples(10);
-						iFadeInSamples = time_to_samples(40);
-						break;
 
-					default:
-						break;
-				}
+  switch ( PhonemeData[votraxsc01_locals.actPhoneme].iType ) {
+   case 131:
 
-			case PT_VS:
-			case PT_FS:
-				iFadeOutPos = 0;
-				iFadeOutSamples = PhonemeData[votraxsc01_locals.actPhoneme].iLength[votraxsc01_locals.actIntonation] - PhonemeData[votraxsc01_locals.actPhoneme].iSecondStart;
-				votraxsc01_locals.pActPos = PhonemeData[votraxsc01_locals.actPhoneme].lpStart[votraxsc01_locals.actIntonation] + PhonemeData[votraxsc01_locals.actPhoneme].iSecondStart;
-				votraxsc01_locals.iRemainingSamples = iFadeOutSamples;
-				doMix = 1;
+    iFadeOutSamples = time_to_samples(30);
+    iFadeOutPos = 0;
 
-				iFadeInPos = -time_to_samples(0);
-				iFadeInSamples = time_to_samples(0);
 
-				break;
+    iFadeInPos = -time_to_samples(30);
+    iFadeInSamples = time_to_samples(30);
+    break;
 
-			default:
-				/* fade out 30 ms, no fade in*/
-				iFadeOutPos = 0;
-				iFadeOutSamples = time_to_samples(20);
+   case 130:
+   case 129:
+    switch ( PhonemeData[nextPhoneme].iType ){
+     case 134:
+     case 129:
 
-				iFadeInPos = -time_to_samples(20);
-				break;
-		}
+      iFadeOutPos = 0;
+      iFadeOutSamples = time_to_samples(30);
 
-		if ( !votraxsc01_locals.iDelay ) {
-			/* this is true if after a stop and a phoneme was sent a second phoneme is sent*/
-			/* during the delay time of the chip. Ignore the first phoneme data*/
-			iFadeOutPos = 0;
-			iFadeOutSamples = 0;
-		}
+      iFadeInPos = -time_to_samples(30);
+      iFadeInSamples = time_to_samples(30);
+      break;
 
-	}
-	else {
-		/* the next one is of the same type as the previous one; continue to use the samples of the last phoneme*/
-		iNextRemainingSamples = votraxsc01_locals.iRemainingSamples;
-		pNextPos = votraxsc01_locals.pActPos;
-	}
+     case 132:
 
-	for (i=0; i<dwCount; i++)
-	{
-		data = 0x00;
+      iFadeOutPos = 0;
+      iFadeOutSamples = time_to_samples(40);
 
-		/* fade out*/
-		if ( iFadeOutPos<iFadeOutSamples ) 
-		{
-			double dFadeOut = 1.0;
+      iFadeInPos = -time_to_samples(10);
+      iFadeInSamples = time_to_samples(10);
+      break;
 
-			if ( !doMix )
-				dFadeOut = 1.0-sin((1.0*iFadeOutPos/iFadeOutSamples)*3.1415/2);
+     default:
 
-			if ( !votraxsc01_locals.iRemainingSamples ) {
-				votraxsc01_locals.iRemainingSamples = PhonemeData[votraxsc01_locals.actPhoneme].iLength[votraxsc01_locals.actIntonation];
-				votraxsc01_locals.pActPos = PhonemeData[votraxsc01_locals.actPhoneme].lpStart[votraxsc01_locals.actIntonation];
-			}
+      iFadeOutPos = 0;
+      iFadeOutSamples = time_to_samples(20);
 
-			data = (SWORD) (*votraxsc01_locals.pActPos++ * dFadeOut);
+      iFadeInPos = -time_to_samples(0);
+      iFadeInSamples = time_to_samples(20);
+      break;
+    }
+    break;
 
-			votraxsc01_locals.iRemainingSamples--;
-			iFadeOutPos++;
-		}
+   case 132:
+    switch ( PhonemeData[nextPhoneme].iType ){
+     case 130:
+     case 129:
 
-		/* fade in or copy*/
-		if ( iFadeInPos>=0 )
-		{
-			double dFadeIn = 1.0;
-			
-			if ( iFadeInPos<iFadeInSamples ) {
-				dFadeIn = sin((1.0*iFadeInPos/iFadeInSamples)*3.1415/2);
-				iFadeInPos++;
-			}
+      iFadeOutPos = 0;
+      iFadeOutSamples = time_to_samples(30);
 
-			if ( !iNextRemainingSamples ) {
-				iNextRemainingSamples = PhonemeData[nextPhoneme].iLength[nextIntonation];
-				pNextPos = PhonemeData[nextPhoneme].lpStart[nextIntonation];
-			}
+      iFadeInPos = -time_to_samples(10);
+      iFadeInSamples = time_to_samples(40);
+      break;
 
-			data += (SWORD) (*pNextPos++ * dFadeIn);
-			
-			iNextRemainingSamples--;
-		}
-		iFadeInPos++;
+     default:
+      break;
+    }
 
-		*lpHelp++ = data;
-	}
+   case 128:
+   case 133:
+    iFadeOutPos = 0;
+    iFadeOutSamples = PhonemeData[votraxsc01_locals.actPhoneme].iLength[votraxsc01_locals.actIntonation] - PhonemeData[votraxsc01_locals.actPhoneme].iSecondStart;
+    votraxsc01_locals.pActPos = PhonemeData[votraxsc01_locals.actPhoneme].lpStart[votraxsc01_locals.actIntonation] + PhonemeData[votraxsc01_locals.actPhoneme].iSecondStart;
+    votraxsc01_locals.iRemainingSamples = iFadeOutSamples;
+    doMix = 1;
 
-	votraxsc01_locals.pBufferPos = votraxsc01_locals.lpBuffer;
+    iFadeInPos = -time_to_samples(0);
+    iFadeInSamples = time_to_samples(0);
 
-	votraxsc01_locals.pActPos = pNextPos;
-	votraxsc01_locals.iRemainingSamples = iNextRemainingSamples;
+    break;
+
+   default:
+
+    iFadeOutPos = 0;
+    iFadeOutSamples = time_to_samples(20);
+
+    iFadeInPos = -time_to_samples(20);
+    break;
+  }
+
+  if ( !votraxsc01_locals.iDelay ) {
+
+
+   iFadeOutPos = 0;
+   iFadeOutSamples = 0;
+  }
+
+ }
+ else {
+
+  iNextRemainingSamples = votraxsc01_locals.iRemainingSamples;
+  pNextPos = votraxsc01_locals.pActPos;
+ }
+
+ for (i=0; i<dwCount; i++)
+ {
+  data = 0x00;
+
+
+  if ( iFadeOutPos<iFadeOutSamples )
+  {
+   double dFadeOut = 1.0;
+
+   if ( !doMix )
+    dFadeOut = 1.0-sin((1.0*iFadeOutPos/iFadeOutSamples)*3.1415/2);
+
+   if ( !votraxsc01_locals.iRemainingSamples ) {
+    votraxsc01_locals.iRemainingSamples = PhonemeData[votraxsc01_locals.actPhoneme].iLength[votraxsc01_locals.actIntonation];
+    votraxsc01_locals.pActPos = PhonemeData[votraxsc01_locals.actPhoneme].lpStart[votraxsc01_locals.actIntonation];
+   }
+
+   data = (SWORD) (*votraxsc01_locals.pActPos++ * dFadeOut);
+
+   votraxsc01_locals.iRemainingSamples--;
+   iFadeOutPos++;
+  }
+
+
+  if ( iFadeInPos>=0 )
+  {
+   double dFadeIn = 1.0;
+
+   if ( iFadeInPos<iFadeInSamples ) {
+    dFadeIn = sin((1.0*iFadeInPos/iFadeInSamples)*3.1415/2);
+    iFadeInPos++;
+   }
+
+   if ( !iNextRemainingSamples ) {
+    iNextRemainingSamples = PhonemeData[nextPhoneme].iLength[nextIntonation];
+    pNextPos = PhonemeData[nextPhoneme].lpStart[nextIntonation];
+   }
+
+   data += (SWORD) (*pNextPos++ * dFadeIn);
+
+   iNextRemainingSamples--;
+  }
+  iFadeInPos++;
+
+  *lpHelp++ = data;
+ }
+
+ votraxsc01_locals.pBufferPos = votraxsc01_locals.lpBuffer;
+
+ votraxsc01_locals.pActPos = pNextPos;
+ votraxsc01_locals.iRemainingSamples = iNextRemainingSamples;
 }

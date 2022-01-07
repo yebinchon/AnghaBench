@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct net_bridge {int /*<<< orphan*/  tcn_timer; scalar_t__ topology_change_detected; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  del_timer (int /*<<< orphan*/ *) ; 
+
+
+
+struct net_bridge {int tcn_timer; scalar_t__ topology_change_detected; } ;
+
+
+ int del_timer (int *) ;
 
 __attribute__((used)) static inline void br_topology_change_acknowledged(struct net_bridge *br)
 {
-	br->topology_change_detected = 0;
-	del_timer(&br->tcn_timer);
+ br->topology_change_detected = 0;
+ del_timer(&br->tcn_timer);
 }

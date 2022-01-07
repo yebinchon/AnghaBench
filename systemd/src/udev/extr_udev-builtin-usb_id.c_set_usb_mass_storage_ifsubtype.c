@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strscpy (char*,size_t,char const*) ; 
- int strtoul (char const*,char**,int /*<<< orphan*/ ) ; 
+ int strscpy (char*,size_t,char const*) ;
+ int strtoul (char const*,char**,int ) ;
 
 __attribute__((used)) static int set_usb_mass_storage_ifsubtype(char *to, const char *from, size_t len) {
         int type_num = 0;
@@ -23,7 +15,7 @@ __attribute__((used)) static int set_usb_mass_storage_ifsubtype(char *to, const 
         type_num = strtoul(from, &eptr, 0);
         if (eptr != from) {
                 switch (type_num) {
-                case 1: /* RBC devices */
+                case 1:
                         type = "rbc";
                         break;
                 case 2:
@@ -32,10 +24,10 @@ __attribute__((used)) static int set_usb_mass_storage_ifsubtype(char *to, const 
                 case 3:
                         type = "tape";
                         break;
-                case 4: /* UFI */
+                case 4:
                         type = "floppy";
                         break;
-                case 6: /* Transparent SPC-2 devices */
+                case 6:
                         type = "scsi";
                         break;
                 default:

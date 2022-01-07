@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct SN_env {int c; int lb; int* p; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  a_12 ; 
- int /*<<< orphan*/  find_among_b (struct SN_env*,int /*<<< orphan*/ ,int) ; 
- int r_check_vowel_harmony (struct SN_env*) ; 
- int r_mark_suffix_with_optional_y_consonant (struct SN_env*) ; 
 
-__attribute__((used)) static int r_mark_yUm(struct SN_env * z) { /* backwardmode */
-    {   int ret = r_check_vowel_harmony(z); /* call check_vowel_harmony, line 245 */
+ int a_12 ;
+ int find_among_b (struct SN_env*,int ,int) ;
+ int r_check_vowel_harmony (struct SN_env*) ;
+ int r_mark_suffix_with_optional_y_consonant (struct SN_env*) ;
+
+__attribute__((used)) static int r_mark_yUm(struct SN_env * z) {
+    { int ret = r_check_vowel_harmony(z);
         if (ret <= 0) return ret;
     }
-    if (z->c - 1 <= z->lb || z->p[z->c - 1] != 109) return 0; /* among, line 246 */
+    if (z->c - 1 <= z->lb || z->p[z->c - 1] != 109) return 0;
     if (!(find_among_b(z, a_12, 4))) return 0;
-    {   int ret = r_mark_suffix_with_optional_y_consonant(z); /* call mark_suffix_with_optional_y_consonant, line 247 */
+    { int ret = r_mark_suffix_with_optional_y_consonant(z);
         if (ret <= 0) return ret;
     }
     return 1;

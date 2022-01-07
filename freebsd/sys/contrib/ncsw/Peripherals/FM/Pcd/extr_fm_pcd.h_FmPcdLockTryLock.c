@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {int flag; int /*<<< orphan*/  h_Spinlock; } ;
-typedef  TYPE_1__ t_FmPcdLock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_1__*) ; 
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  XX_LockIntrSpinlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_UnlockIntrSpinlock (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_4__ {int flag; int h_Spinlock; } ;
+typedef TYPE_1__ t_FmPcdLock ;
+
+
+ int ASSERT_COND (TYPE_1__*) ;
+ int FALSE ;
+ int TRUE ;
+ int XX_LockIntrSpinlock (int ) ;
+ int XX_UnlockIntrSpinlock (int ,int ) ;
 
 __attribute__((used)) static __inline__ bool FmPcdLockTryLock(t_FmPcdLock *p_Lock)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
+
+
+
+
+typedef int u64 ;
 struct amd_iommu {int cap; int features; } ;
 
-/* Variables and functions */
- int IOMMU_CAP_EFR ; 
+
+ int IOMMU_CAP_EFR ;
 
 __attribute__((used)) static inline bool iommu_feature(struct amd_iommu *iommu, u64 f)
 {
-	if (!(iommu->cap & (1 << IOMMU_CAP_EFR)))
-		return false;
+ if (!(iommu->cap & (1 << IOMMU_CAP_EFR)))
+  return 0;
 
-	return !!(iommu->features & f);
+ return !!(iommu->features & f);
 }

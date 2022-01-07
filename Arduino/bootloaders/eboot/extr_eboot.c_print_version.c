@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ver ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  section_header_t ;
-typedef  int /*<<< orphan*/  image_header_t ;
 
-/* Variables and functions */
- scalar_t__ const APP_START_OFFSET ; 
- scalar_t__ SPIRead (scalar_t__ const,scalar_t__*,int) ; 
- int /*<<< orphan*/  ets_printf (char const*,scalar_t__) ; 
+
+
+
+typedef int ver ;
+typedef scalar_t__ uint32_t ;
+typedef int section_header_t ;
+typedef int image_header_t ;
+
+
+ scalar_t__ const APP_START_OFFSET ;
+ scalar_t__ SPIRead (scalar_t__ const,scalar_t__*,int) ;
+ int ets_printf (char const*,scalar_t__) ;
 
 int print_version(const uint32_t flash_addr)
 {

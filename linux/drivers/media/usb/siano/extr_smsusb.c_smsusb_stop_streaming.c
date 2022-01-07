@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct smsusb_device_t {TYPE_1__* surbs; int /*<<< orphan*/  coredev; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * cb; int /*<<< orphan*/  urb; } ;
 
-/* Variables and functions */
- int MAX_URBS ; 
- int /*<<< orphan*/  smscore_putbuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_kill_urb (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct smsusb_device_t {TYPE_1__* surbs; int coredev; } ;
+struct TYPE_2__ {int * cb; int urb; } ;
+
+
+ int MAX_URBS ;
+ int smscore_putbuffer (int ,int *) ;
+ int usb_kill_urb (int *) ;
 
 __attribute__((used)) static void smsusb_stop_streaming(struct smsusb_device_t *dev)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < MAX_URBS; i++) {
-		usb_kill_urb(&dev->surbs[i].urb);
+ for (i = 0; i < MAX_URBS; i++) {
+  usb_kill_urb(&dev->surbs[i].urb);
 
-		if (dev->surbs[i].cb) {
-			smscore_putbuffer(dev->coredev, dev->surbs[i].cb);
-			dev->surbs[i].cb = NULL;
-		}
-	}
+  if (dev->surbs[i].cb) {
+   smscore_putbuffer(dev->coredev, dev->surbs[i].cb);
+   dev->surbs[i].cb = ((void*)0);
+  }
+ }
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct occurrence {struct occurrence* children; TYPE_1__* bb; } ;
-typedef  TYPE_1__* basic_block ;
+typedef TYPE_1__* basic_block ;
 struct TYPE_3__ {struct occurrence* aux; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct occurrence*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  occ_pool ; 
- struct occurrence* pool_alloc (int /*<<< orphan*/ ) ; 
+
+ int memset (struct occurrence*,int ,int) ;
+ int occ_pool ;
+ struct occurrence* pool_alloc (int ) ;
 
 __attribute__((used)) static struct occurrence *
 occ_new (basic_block bb, struct occurrence *children)

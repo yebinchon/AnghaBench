@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  PointerIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationClearRelation (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RelationHasReferenceCountZero (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationIdCacheLookup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int Oid ;
+
+
+ int ERROR ;
+ int PointerIsValid (int ) ;
+ int RelationClearRelation (int ,int) ;
+ int RelationHasReferenceCountZero (int ) ;
+ int RelationIdCacheLookup (int ,int ) ;
+ int elog (int ,char*,int ) ;
 
 void
 RelationForgetRelation(Oid rid)
 {
-	Relation	relation;
+ Relation relation;
 
-	RelationIdCacheLookup(rid, relation);
+ RelationIdCacheLookup(rid, relation);
 
-	if (!PointerIsValid(relation))
-		return;					/* not in cache, nothing to do */
+ if (!PointerIsValid(relation))
+  return;
 
-	if (!RelationHasReferenceCountZero(relation))
-		elog(ERROR, "relation %u is still open", rid);
+ if (!RelationHasReferenceCountZero(relation))
+  elog(ERROR, "relation %u is still open", rid);
 
-	/* Unconditionally destroy the relcache entry */
-	RelationClearRelation(relation, false);
+
+ RelationClearRelation(relation, 0);
 }

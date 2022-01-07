@@ -1,37 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int type; } ;
-typedef  TYPE_1__ hb_filter_private_t ;
+typedef TYPE_1__ hb_filter_private_t ;
 struct TYPE_9__ {TYPE_1__* private_data; } ;
-typedef  TYPE_2__ hb_filter_object_t ;
-typedef  int /*<<< orphan*/  hb_buffer_t ;
-
-/* Variables and functions */
-#define  CC608SUB 135 
-#define  IMPORTSRT 134 
-#define  IMPORTSSA 133 
-#define  PGSSUB 132 
-#define  SSASUB 131 
-#define  TX3GSUB 130 
-#define  UTF8SUB 129 
-#define  VOBSUB 128 
- int /*<<< orphan*/  hb_error (char*,int) ; 
- int pgssub_work (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int ssa_work (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int textsub_work (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int vobsub_work (TYPE_2__*,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+typedef TYPE_2__ hb_filter_object_t ;
+typedef int hb_buffer_t ;
+ int hb_error (char*,int) ;
+ int pgssub_work (TYPE_2__*,int **,int **) ;
+ int ssa_work (TYPE_2__*,int **,int **) ;
+ int textsub_work (TYPE_2__*,int **,int **) ;
+ int vobsub_work (TYPE_2__*,int **,int **) ;
 
 __attribute__((used)) static int hb_rendersub_work( hb_filter_object_t * filter,
                                  hb_buffer_t ** buf_in,
@@ -40,26 +30,26 @@ __attribute__((used)) static int hb_rendersub_work( hb_filter_object_t * filter,
     hb_filter_private_t * pv = filter->private_data;
     switch( pv->type )
     {
-        case VOBSUB:
+        case 128:
         {
             return vobsub_work( filter, buf_in, buf_out );
         } break;
 
-        case SSASUB:
+        case 131:
         {
             return ssa_work( filter, buf_in, buf_out );
         } break;
 
-        case IMPORTSRT:
-        case IMPORTSSA:
-        case CC608SUB:
-        case UTF8SUB:
-        case TX3GSUB:
+        case 134:
+        case 133:
+        case 135:
+        case 129:
+        case 130:
         {
             return textsub_work( filter, buf_in, buf_out );
         } break;
 
-        case PGSSUB:
+        case 132:
         {
             return pgssub_work( filter, buf_in, buf_out );
         } break;

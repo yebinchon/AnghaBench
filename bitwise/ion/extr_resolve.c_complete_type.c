@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ kind; TYPE_2__* sym; } ;
-typedef  TYPE_1__ Type ;
-struct TYPE_9__ {scalar_t__ kind; int /*<<< orphan*/  aggregate; int /*<<< orphan*/  pos; scalar_t__ is_incomplete; } ;
-struct TYPE_8__ {TYPE_3__* decl; int /*<<< orphan*/  home_package; } ;
-typedef  TYPE_2__ Sym ;
-typedef  int /*<<< orphan*/  Package ;
-typedef  TYPE_3__ Decl ;
+typedef TYPE_1__ Type ;
+struct TYPE_9__ {scalar_t__ kind; int aggregate; int pos; scalar_t__ is_incomplete; } ;
+struct TYPE_8__ {TYPE_3__* decl; int home_package; } ;
+typedef TYPE_2__ Sym ;
+typedef int Package ;
+typedef TYPE_3__ Decl ;
 
-/* Variables and functions */
- scalar_t__ DECL_STRUCT ; 
- scalar_t__ DECL_UNION ; 
- scalar_t__ TYPE_COMPLETING ; 
- scalar_t__ TYPE_INCOMPLETE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  buf_push (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  complete_aggregate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * enter_package (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  leave_package (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sorted_syms ; 
+
+ scalar_t__ DECL_STRUCT ;
+ scalar_t__ DECL_UNION ;
+ scalar_t__ TYPE_COMPLETING ;
+ scalar_t__ TYPE_INCOMPLETE ;
+ int assert (int) ;
+ int buf_push (int ,TYPE_2__*) ;
+ int complete_aggregate (TYPE_1__*,int ) ;
+ int * enter_package (int ) ;
+ int fatal_error (int ,char*) ;
+ int leave_package (int *) ;
+ int sorted_syms ;
 
 void complete_type(Type *type) {
     if (type->kind == TYPE_COMPLETING) {

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef size_t u8 ;
+typedef int u16 ;
 struct rtl_pci {struct rtl8192_tx_ring* tx_ring; } ;
-struct rtl8192_tx_ring {size_t idx; int /*<<< orphan*/ * desc; } ;
+struct rtl8192_tx_ring {size_t idx; int * desc; } ;
 struct ieee80211_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HW_DESC_OWN ; 
- int /*<<< orphan*/  rtl8821ae_get_desc (struct ieee80211_hw*,size_t*,int,int /*<<< orphan*/ ) ; 
- struct rtl_pci* rtl_pcidev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtl_pcipriv (struct ieee80211_hw*) ; 
+
+ int HW_DESC_OWN ;
+ int rtl8821ae_get_desc (struct ieee80211_hw*,size_t*,int,int ) ;
+ struct rtl_pci* rtl_pcidev (int ) ;
+ int rtl_pcipriv (struct ieee80211_hw*) ;
 
 bool rtl8821ae_is_tx_desc_closed(struct ieee80211_hw *hw,
-				 u8 hw_queue, u16 index)
+     u8 hw_queue, u16 index)
 {
-	struct rtl_pci *rtlpci = rtl_pcidev(rtl_pcipriv(hw));
-	struct rtl8192_tx_ring *ring = &rtlpci->tx_ring[hw_queue];
-	u8 *entry = (u8 *)(&ring->desc[ring->idx]);
-	u8 own = (u8)rtl8821ae_get_desc(hw, entry, true, HW_DESC_OWN);
+ struct rtl_pci *rtlpci = rtl_pcidev(rtl_pcipriv(hw));
+ struct rtl8192_tx_ring *ring = &rtlpci->tx_ring[hw_queue];
+ u8 *entry = (u8 *)(&ring->desc[ring->idx]);
+ u8 own = (u8)rtl8821ae_get_desc(hw, entry, 1, HW_DESC_OWN);
 
-	/**
-	 *beacon packet will only use the first
-	 *descriptor defautly,and the own may not
-	 *be cleared by the hardware
-	 */
-	if (own)
-		return false;
-	return true;
+
+
+
+
+
+ if (own)
+  return 0;
+ return 1;
 }

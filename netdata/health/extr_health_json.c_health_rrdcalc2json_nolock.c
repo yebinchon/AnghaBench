@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {char* units; int rrdcalc_flags; char* info; int options; int /*<<< orphan*/  value; int /*<<< orphan*/  red; int /*<<< orphan*/  green; TYPE_4__* critical; TYPE_3__* warning; TYPE_2__* calculation; int /*<<< orphan*/  before; int /*<<< orphan*/  after; int /*<<< orphan*/  group; scalar_t__ db_before; scalar_t__ db_after; scalar_t__* dimensions; scalar_t__ last_repeat; int /*<<< orphan*/  crit_repeat_every; int /*<<< orphan*/  warn_repeat_every; scalar_t__ delay_up_to_timestamp; int /*<<< orphan*/  delay_last; int /*<<< orphan*/  delay_multiplier; int /*<<< orphan*/  delay_max_duration; int /*<<< orphan*/  delay_down_duration; int /*<<< orphan*/  delay_up_duration; int /*<<< orphan*/  update_every; scalar_t__ next_update; scalar_t__ last_updated; scalar_t__ last_status_change; int /*<<< orphan*/  status; int /*<<< orphan*/  source; scalar_t__ recipient; scalar_t__ exec; TYPE_1__* rrdset; int /*<<< orphan*/  chart; int /*<<< orphan*/  name; scalar_t__ id; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_15__ {char* units; int rrdcalc_flags; char* info; int options; int value; int red; int green; TYPE_4__* critical; TYPE_3__* warning; TYPE_2__* calculation; int before; int after; int group; scalar_t__ db_before; scalar_t__ db_after; scalar_t__* dimensions; scalar_t__ last_repeat; int crit_repeat_every; int warn_repeat_every; scalar_t__ delay_up_to_timestamp; int delay_last; int delay_multiplier; int delay_max_duration; int delay_down_duration; int delay_up_duration; int update_every; scalar_t__ next_update; scalar_t__ last_updated; scalar_t__ last_status_change; int status; int source; scalar_t__ recipient; scalar_t__ exec; TYPE_1__* rrdset; int chart; int name; scalar_t__ id; } ;
 struct TYPE_14__ {scalar_t__ health_default_recipient; scalar_t__ health_default_exec; } ;
 struct TYPE_13__ {scalar_t__* parsed_as; scalar_t__* source; } ;
 struct TYPE_12__ {scalar_t__* parsed_as; scalar_t__* source; } ;
 struct TYPE_11__ {scalar_t__* parsed_as; scalar_t__* source; } ;
 struct TYPE_10__ {char* family; } ;
-typedef  TYPE_5__ RRDHOST ;
-typedef  TYPE_6__ RRDCALC ;
-typedef  int /*<<< orphan*/  BUFFER ;
+typedef TYPE_5__ RRDHOST ;
+typedef TYPE_6__ RRDCALC ;
+typedef int BUFFER ;
 
-/* Variables and functions */
- int RRDCALC_FLAG_DISABLED ; 
- int RRDCALC_FLAG_NO_CLEAR_NOTIFICATION ; 
- int RRDCALC_FLAG_SILENCED ; 
- scalar_t__ RRDCALC_HAS_DB_LOOKUP (TYPE_6__*) ; 
- int /*<<< orphan*/  buffer_data_options2string (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  buffer_rrd_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char*,unsigned long,unsigned long,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  format_value_and_unit (char*,int,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  group_method2string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  health_string2json (int /*<<< orphan*/ *,char*,char*,scalar_t__*,char*) ; 
- int /*<<< orphan*/  rrdcalc_status2string (int /*<<< orphan*/ ) ; 
- scalar_t__ unlikely (int) ; 
+
+ int RRDCALC_FLAG_DISABLED ;
+ int RRDCALC_FLAG_NO_CLEAR_NOTIFICATION ;
+ int RRDCALC_FLAG_SILENCED ;
+ scalar_t__ RRDCALC_HAS_DB_LOOKUP (TYPE_6__*) ;
+ int buffer_data_options2string (int *,int) ;
+ int buffer_rrd_value (int *,int ) ;
+ int buffer_sprintf (int *,char*,unsigned long,unsigned long,unsigned long,int ,int ,...) ;
+ int buffer_strcat (int *,char*) ;
+ int format_value_and_unit (char*,int,int ,char*,int) ;
+ int group_method2string (int ) ;
+ int health_string2json (int *,char*,char*,scalar_t__*,char*) ;
+ int rrdcalc_status2string (int ) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void health_rrdcalc2json_nolock(RRDHOST *host, BUFFER *wb, RRDCALC *rc) {
     char value_string[100 + 1];

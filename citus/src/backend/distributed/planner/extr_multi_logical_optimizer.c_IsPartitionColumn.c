@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ varattno; } ;
-typedef  TYPE_1__ Var ;
-typedef  int /*<<< orphan*/  Query ;
-typedef  scalar_t__ Oid ;
-typedef  int /*<<< orphan*/  Expr ;
+typedef TYPE_1__ Var ;
+typedef int Query ;
+typedef scalar_t__ Oid ;
+typedef int Expr ;
 
-/* Variables and functions */
- TYPE_1__* DistPartitionKey (scalar_t__) ; 
- int /*<<< orphan*/  FindReferencedTableColumn (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,TYPE_1__**) ; 
- scalar_t__ InvalidOid ; 
- int /*<<< orphan*/  NIL ; 
+
+ TYPE_1__* DistPartitionKey (scalar_t__) ;
+ int FindReferencedTableColumn (int *,int ,int *,scalar_t__*,TYPE_1__**) ;
+ scalar_t__ InvalidOid ;
+ int NIL ;
 
 bool
 IsPartitionColumn(Expr *columnExpression, Query *query)
 {
-	bool isPartitionColumn = false;
-	Oid relationId = InvalidOid;
-	Var *column = NULL;
+ bool isPartitionColumn = 0;
+ Oid relationId = InvalidOid;
+ Var *column = ((void*)0);
 
-	FindReferencedTableColumn(columnExpression, NIL, query, &relationId, &column);
+ FindReferencedTableColumn(columnExpression, NIL, query, &relationId, &column);
 
-	if (relationId != InvalidOid && column != NULL)
-	{
-		Var *partitionColumn = DistPartitionKey(relationId);
+ if (relationId != InvalidOid && column != ((void*)0))
+ {
+  Var *partitionColumn = DistPartitionKey(relationId);
 
-		/* not all distributed tables have partition column */
-		if (partitionColumn != NULL && column->varattno == partitionColumn->varattno)
-		{
-			isPartitionColumn = true;
-		}
-	}
 
-	return isPartitionColumn;
+  if (partitionColumn != ((void*)0) && column->varattno == partitionColumn->varattno)
+  {
+   isPartitionColumn = 1;
+  }
+ }
+
+ return isPartitionColumn;
 }

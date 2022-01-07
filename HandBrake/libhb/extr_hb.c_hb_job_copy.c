@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  list_filter; int /*<<< orphan*/ * file; int /*<<< orphan*/ * encoder_level; int /*<<< orphan*/ * encoder_profile; int /*<<< orphan*/ * encoder_options; int /*<<< orphan*/ * encoder_tune; int /*<<< orphan*/ * encoder_preset; int /*<<< orphan*/  metadata; int /*<<< orphan*/  list_attachment; int /*<<< orphan*/  list_audio; int /*<<< orphan*/  list_chapter; int /*<<< orphan*/  list_subtitle; int /*<<< orphan*/ * json; } ;
-typedef  TYPE_1__ hb_job_t ;
 
-/* Variables and functions */
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  hb_attachment_list_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_audio_list_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_chapter_list_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_filter_list_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_metadata_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_subtitle_list_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__*,int) ; 
- void* strdup (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int list_filter; int * file; int * encoder_level; int * encoder_profile; int * encoder_options; int * encoder_tune; int * encoder_preset; int metadata; int list_attachment; int list_audio; int list_chapter; int list_subtitle; int * json; } ;
+typedef TYPE_1__ hb_job_t ;
+
+
+ TYPE_1__* calloc (int,int) ;
+ int hb_attachment_list_copy (int ) ;
+ int hb_audio_list_copy (int ) ;
+ int hb_chapter_list_copy (int ) ;
+ int hb_filter_list_copy (int ) ;
+ int hb_metadata_copy (int ) ;
+ int hb_subtitle_list_copy (int ) ;
+ int memcpy (TYPE_1__*,TYPE_1__*,int) ;
+ void* strdup (int *) ;
 
 hb_job_t* hb_job_copy(hb_job_t * job)
 {
-    hb_job_t      * job_copy;
+    hb_job_t * job_copy;
 
-    /* Copy the job */
-    job_copy        = calloc( sizeof( hb_job_t ), 1 );
-    if (job_copy == NULL)
-        return NULL;
 
-    if (job->json != NULL)
+    job_copy = calloc( sizeof( hb_job_t ), 1 );
+    if (job_copy == ((void*)0))
+        return ((void*)0);
+
+    if (job->json != ((void*)0))
     {
-        // JSON jobs should only have the json string set.
+
         job_copy->json = strdup(job->json);
         return job_copy;
     }
@@ -48,17 +48,17 @@ hb_job_t* hb_job_copy(hb_job_t * job)
     job_copy->list_attachment = hb_attachment_list_copy( job->list_attachment );
     job_copy->metadata = hb_metadata_copy( job->metadata );
 
-    if (job->encoder_preset != NULL)
+    if (job->encoder_preset != ((void*)0))
         job_copy->encoder_preset = strdup(job->encoder_preset);
-    if (job->encoder_tune != NULL)
+    if (job->encoder_tune != ((void*)0))
         job_copy->encoder_tune = strdup(job->encoder_tune);
-    if (job->encoder_options != NULL)
+    if (job->encoder_options != ((void*)0))
         job_copy->encoder_options = strdup(job->encoder_options);
-    if (job->encoder_profile != NULL)
+    if (job->encoder_profile != ((void*)0))
         job_copy->encoder_profile = strdup(job->encoder_profile);
-    if (job->encoder_level != NULL)
+    if (job->encoder_level != ((void*)0))
         job_copy->encoder_level = strdup(job->encoder_level);
-    if (job->file != NULL)
+    if (job->file != ((void*)0))
         job_copy->file = strdup(job->file);
 
     job_copy->list_filter = hb_filter_list_copy( job->list_filter );

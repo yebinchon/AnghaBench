@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int left; int top; int right; int bottom; } ;
-typedef  TYPE_1__ RECT ;
-typedef  TYPE_1__* PVOID ;
+typedef TYPE_1__ RECT ;
+typedef TYPE_1__* PVOID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int NtUserSystemParametersInfo (int /*<<< orphan*/ ,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SM_CXVIRTUALSCREEN ; 
- int /*<<< orphan*/  SM_CYVIRTUALSCREEN ; 
- int /*<<< orphan*/  SPI_GETWORKAREA ; 
- int /*<<< orphan*/  SPI_SETWORKAREA ; 
- int /*<<< orphan*/  TEST (int) ; 
+
+ int ASSERT (int) ;
+ int GetSystemMetrics (int ) ;
+ int NtUserSystemParametersInfo (int ,int,TYPE_1__*,int ) ;
+ int SM_CXVIRTUALSCREEN ;
+ int SM_CYVIRTUALSCREEN ;
+ int SPI_GETWORKAREA ;
+ int SPI_SETWORKAREA ;
+ int TEST (int) ;
 
 void
 Test_SPI_SETWORKAREA(void)
 {
     RECT rcOrig, rc;
 
-    /* Get the original value */
+
     ASSERT(NtUserSystemParametersInfo(SPI_GETWORKAREA, 0, &rcOrig, 0) == 1);
 
-    /* Change value */
+
     rc = rcOrig;
     rc.left += 1;
     rc.top += 2;
@@ -48,7 +48,7 @@ Test_SPI_SETWORKAREA(void)
     TEST(NtUserSystemParametersInfo(SPI_GETWORKAREA, 0xdeadbeef, &rc, 0) == 1);
     TEST(NtUserSystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)0xdeadbeef, 0) == 0);
 
-    /* Test values */
+
     rc = rcOrig; rc.left = -1;
     TEST(NtUserSystemParametersInfo(SPI_SETWORKAREA, 0, &rc, 0) == 0);
     rc = rcOrig; rc.top = -1;
@@ -74,7 +74,7 @@ Test_SPI_SETWORKAREA(void)
     rc = rcOrig; rc.right = GetSystemMetrics(SM_CXVIRTUALSCREEN)+1;
     TEST(NtUserSystemParametersInfo(SPI_SETWORKAREA, 0, &rc, 0) == 0);
 
-    /* Restore original value */
+
     ASSERT(NtUserSystemParametersInfo(SPI_SETWORKAREA, 0, &rcOrig, 0) == 1);
 
 

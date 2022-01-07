@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
-#define  AV_PIX_FMT_NONE 130 
-#define  AV_PIX_FMT_YUV420P 129 
-#define  AV_PIX_FMT_YUVJ420P 128 
- int /*<<< orphan*/  ff_make_format_list (int const*) ; 
- int ff_set_common_formats (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+typedef int AVFilterContext ;
+
+
+
+
+
+ int ff_make_format_list (int const*) ;
+ int ff_set_common_formats (int *,int ) ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {
     static const enum AVPixelFormat pix_fmts[] = {
-        AV_PIX_FMT_YUV420P,
-        AV_PIX_FMT_YUVJ420P,
-        AV_PIX_FMT_NONE
+        129,
+        128,
+        130
     };
 
     return ff_set_common_formats(ctx, ff_make_format_list(pix_fmts));

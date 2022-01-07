@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  bt_cursor ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_2__ {int nBuffer; int /*<<< orphan*/  pBt; int /*<<< orphan*/ * aBuffer; scalar_t__ bFastInsert; } ;
-typedef  TYPE_1__ BtDb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_CONTROL_FAST_INSERT_OP ; 
- int /*<<< orphan*/  BT_SEEK_EQ ; 
- int SQLITE4_INEXACT ; 
- int SQLITE4_NOTFOUND ; 
- int SQLITE4_OK ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,void const*,int) ; 
- int sqlite4BtBegin (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite4BtCommit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite4BtControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite4BtCsrClose (int /*<<< orphan*/ *) ; 
- int sqlite4BtCsrData (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,void const**,int*) ; 
- int sqlite4BtCsrOpen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sqlite4BtCsrSeek (int /*<<< orphan*/ *,void*,int,int /*<<< orphan*/ ) ; 
- int sqlite4BtTransactionLevel (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int bt_cursor ;
+typedef int TestDb ;
+struct TYPE_2__ {int nBuffer; int pBt; int * aBuffer; scalar_t__ bFastInsert; } ;
+typedef TYPE_1__ BtDb ;
+
+
+ int BT_CONTROL_FAST_INSERT_OP ;
+ int BT_SEEK_EQ ;
+ int SQLITE4_INEXACT ;
+ int SQLITE4_NOTFOUND ;
+ int SQLITE4_OK ;
+ int free (int *) ;
+ scalar_t__ malloc (int) ;
+ int memcpy (int *,void const*,int) ;
+ int sqlite4BtBegin (int ,int) ;
+ int sqlite4BtCommit (int ,int ) ;
+ int sqlite4BtControl (int ,int ,int ) ;
+ int sqlite4BtCsrClose (int *) ;
+ int sqlite4BtCsrData (int *,int ,int,void const**,int*) ;
+ int sqlite4BtCsrOpen (int ,int ,int **) ;
+ int sqlite4BtCsrSeek (int *,void*,int,int ) ;
+ int sqlite4BtTransactionLevel (int ) ;
 
 __attribute__((used)) static int bt_fetch(
-  TestDb *pTestDb, 
-  void *pK, int nK, 
+  TestDb *pTestDb,
+  void *pK, int nK,
   void **ppVal, int *pnVal
 ){
   BtDb *p = (BtDb*)pTestDb;
@@ -46,8 +46,8 @@ __attribute__((used)) static int bt_fetch(
   int rc = SQLITE4_OK;
 
   iLevel = sqlite4BtTransactionLevel(p->pBt);
-  if( iLevel==0 ){ 
-    rc = sqlite4BtBegin(p->pBt, 1); 
+  if( iLevel==0 ){
+    rc = sqlite4BtBegin(p->pBt, 1);
     if( rc!=SQLITE4_OK ) return rc;
   }
 
@@ -78,6 +78,6 @@ __attribute__((used)) static int bt_fetch(
     sqlite4BtCsrClose(pCsr);
   }
 
-  if( iLevel==0 ) sqlite4BtCommit(p->pBt, 0); 
+  if( iLevel==0 ) sqlite4BtCommit(p->pBt, 0);
   return rc;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
-typedef  TYPE_1__* kcm_ccache ;
-struct TYPE_6__ {int refcnt; int /*<<< orphan*/  mutex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEIMDAL_MUTEX_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HEIMDAL_MUTEX_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KCM_ASSERT_VALID (TYPE_1__*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  kcm_free_ccache_data_internal (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int krb5_error_code ;
+typedef int krb5_context ;
+typedef TYPE_1__* kcm_ccache ;
+struct TYPE_6__ {int refcnt; int mutex; } ;
+
+
+ int HEIMDAL_MUTEX_lock (int *) ;
+ int HEIMDAL_MUTEX_unlock (int *) ;
+ int KCM_ASSERT_VALID (TYPE_1__*) ;
+ int free (TYPE_1__*) ;
+ int kcm_free_ccache_data_internal (int ,TYPE_1__*) ;
 
 krb5_error_code
 kcm_release_ccache(krb5_context context, kcm_ccache c)
@@ -32,11 +32,11 @@ kcm_release_ccache(krb5_context context, kcm_ccache c)
 
     HEIMDAL_MUTEX_lock(&c->mutex);
     if (c->refcnt == 1) {
-	kcm_free_ccache_data_internal(context, c);
-	free(c);
+ kcm_free_ccache_data_internal(context, c);
+ free(c);
     } else {
-	c->refcnt--;
-	HEIMDAL_MUTEX_unlock(&c->mutex);
+ c->refcnt--;
+ HEIMDAL_MUTEX_unlock(&c->mutex);
     }
 
     return ret;

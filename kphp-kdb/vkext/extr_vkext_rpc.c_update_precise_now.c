@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int /*<<< orphan*/ ) ; 
- int get_utime_monotonic () ; 
- int precise_now ; 
- long long precise_now_ticks ; 
- int /*<<< orphan*/  precise_now_updates ; 
- long long rdtsc () ; 
+ int ADD_CNT (int ) ;
+ int get_utime_monotonic () ;
+ int precise_now ;
+ long long precise_now_ticks ;
+ int precise_now_updates ;
+ long long rdtsc () ;
 
 void update_precise_now () {
   long long x = rdtsc ();

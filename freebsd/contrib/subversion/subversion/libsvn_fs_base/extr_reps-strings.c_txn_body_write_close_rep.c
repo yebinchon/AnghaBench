@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  pool; } ;
-typedef  TYPE_1__ trail_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct rep_write_baton {int /*<<< orphan*/  rep_key; int /*<<< orphan*/  fs; int /*<<< orphan*/  sha1_checksum; int /*<<< orphan*/  md5_checksum; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int pool; } ;
+typedef TYPE_1__ trail_t ;
+typedef int svn_error_t ;
+struct rep_write_baton {int rep_key; int fs; int sha1_checksum; int md5_checksum; } ;
 struct TYPE_9__ {void* sha1_checksum; void* md5_checksum; } ;
-typedef  TYPE_2__ representation_t ;
+typedef TYPE_2__ representation_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- void* svn_checksum_dup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_bdb__read_rep (TYPE_2__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_fs_bdb__write_rep (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR (int ) ;
+ void* svn_checksum_dup (int ,int ) ;
+ int svn_fs_bdb__read_rep (TYPE_2__**,int ,int ,TYPE_1__*,int ) ;
+ int * svn_fs_bdb__write_rep (int ,int ,TYPE_2__*,TYPE_1__*,int ) ;
 
 __attribute__((used)) static svn_error_t *
 txn_body_write_close_rep(void *baton, trail_t *trail)

@@ -1,0 +1,267 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/wireless/ath/ath10k/extr_wmi.c_ath10k_wmi_10_4_pull_pdev_stats_tx.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/wireless/ath/ath10k/extr_wmi.c_ath10k_wmi_10_4_pull_pdev_stats_tx.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.wmi_10_4_pdev_stats_tx = type { i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32, i32 }
+%struct.ath10k_fw_stats_pdev = type { i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8*, i8* }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.wmi_10_4_pdev_stats_tx*, %struct.ath10k_fw_stats_pdev*)* @ath10k_wmi_10_4_pull_pdev_stats_tx to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @ath10k_wmi_10_4_pull_pdev_stats_tx(%struct.wmi_10_4_pdev_stats_tx* %0, %struct.ath10k_fw_stats_pdev* %1) #0 {
+  %3 = alloca %struct.wmi_10_4_pdev_stats_tx*, align 8
+  %4 = alloca %struct.ath10k_fw_stats_pdev*, align 8
+  store %struct.wmi_10_4_pdev_stats_tx* %0, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  store %struct.ath10k_fw_stats_pdev* %1, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %5 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %6 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %5, i32 0, i32 32
+  %7 = load i32, i32* %6, align 4
+  %8 = call i8* @__le32_to_cpu(i32 %7)
+  %9 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %10 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %9, i32 0, i32 32
+  store i8* %8, i8** %10, align 8
+  %11 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %12 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %11, i32 0, i32 31
+  %13 = load i32, i32* %12, align 4
+  %14 = call i8* @__le32_to_cpu(i32 %13)
+  %15 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %16 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %15, i32 0, i32 31
+  store i8* %14, i8** %16, align 8
+  %17 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %18 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %17, i32 0, i32 30
+  %19 = load i32, i32* %18, align 4
+  %20 = call i8* @__le32_to_cpu(i32 %19)
+  %21 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %22 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %21, i32 0, i32 30
+  store i8* %20, i8** %22, align 8
+  %23 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %24 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %23, i32 0, i32 29
+  %25 = load i32, i32* %24, align 4
+  %26 = call i8* @__le32_to_cpu(i32 %25)
+  %27 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %28 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %27, i32 0, i32 29
+  store i8* %26, i8** %28, align 8
+  %29 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %30 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %29, i32 0, i32 28
+  %31 = load i32, i32* %30, align 4
+  %32 = call i8* @__le32_to_cpu(i32 %31)
+  %33 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %34 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %33, i32 0, i32 28
+  store i8* %32, i8** %34, align 8
+  %35 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %36 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %35, i32 0, i32 27
+  %37 = load i32, i32* %36, align 4
+  %38 = call i8* @__le32_to_cpu(i32 %37)
+  %39 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %40 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %39, i32 0, i32 27
+  store i8* %38, i8** %40, align 8
+  %41 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %42 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %41, i32 0, i32 26
+  %43 = load i32, i32* %42, align 4
+  %44 = call i8* @__le32_to_cpu(i32 %43)
+  %45 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %46 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %45, i32 0, i32 26
+  store i8* %44, i8** %46, align 8
+  %47 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %48 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %47, i32 0, i32 25
+  %49 = load i32, i32* %48, align 4
+  %50 = call i8* @__le32_to_cpu(i32 %49)
+  %51 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %52 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %51, i32 0, i32 25
+  store i8* %50, i8** %52, align 8
+  %53 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %54 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %53, i32 0, i32 24
+  %55 = load i32, i32* %54, align 4
+  %56 = call i8* @__le32_to_cpu(i32 %55)
+  %57 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %58 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %57, i32 0, i32 24
+  store i8* %56, i8** %58, align 8
+  %59 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %60 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %59, i32 0, i32 23
+  %61 = load i32, i32* %60, align 4
+  %62 = call i8* @__le32_to_cpu(i32 %61)
+  %63 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %64 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %63, i32 0, i32 23
+  store i8* %62, i8** %64, align 8
+  %65 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %66 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %65, i32 0, i32 22
+  %67 = load i32, i32* %66, align 4
+  %68 = call i8* @__le32_to_cpu(i32 %67)
+  %69 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %70 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %69, i32 0, i32 22
+  store i8* %68, i8** %70, align 8
+  %71 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %72 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %71, i32 0, i32 21
+  %73 = load i32, i32* %72, align 4
+  %74 = call i8* @__le32_to_cpu(i32 %73)
+  %75 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %76 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %75, i32 0, i32 21
+  store i8* %74, i8** %76, align 8
+  %77 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %78 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %77, i32 0, i32 20
+  %79 = load i32, i32* %78, align 4
+  %80 = call i8* @__le32_to_cpu(i32 %79)
+  %81 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %82 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %81, i32 0, i32 20
+  store i8* %80, i8** %82, align 8
+  %83 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %84 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %83, i32 0, i32 19
+  %85 = load i32, i32* %84, align 4
+  %86 = call i8* @__le32_to_cpu(i32 %85)
+  %87 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %88 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %87, i32 0, i32 19
+  store i8* %86, i8** %88, align 8
+  %89 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %90 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %89, i32 0, i32 18
+  %91 = load i32, i32* %90, align 4
+  %92 = call i8* @__le32_to_cpu(i32 %91)
+  %93 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %94 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %93, i32 0, i32 18
+  store i8* %92, i8** %94, align 8
+  %95 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %96 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %95, i32 0, i32 17
+  %97 = load i32, i32* %96, align 4
+  %98 = call i8* @__le32_to_cpu(i32 %97)
+  %99 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %100 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %99, i32 0, i32 17
+  store i8* %98, i8** %100, align 8
+  %101 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %102 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %101, i32 0, i32 16
+  %103 = load i32, i32* %102, align 4
+  %104 = call i8* @__le32_to_cpu(i32 %103)
+  %105 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %106 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %105, i32 0, i32 16
+  store i8* %104, i8** %106, align 8
+  %107 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %108 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %107, i32 0, i32 15
+  %109 = load i32, i32* %108, align 4
+  %110 = call i8* @__le32_to_cpu(i32 %109)
+  %111 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %112 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %111, i32 0, i32 15
+  store i8* %110, i8** %112, align 8
+  %113 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %114 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %113, i32 0, i32 14
+  %115 = load i32, i32* %114, align 4
+  %116 = call i8* @__le32_to_cpu(i32 %115)
+  %117 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %118 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %117, i32 0, i32 14
+  store i8* %116, i8** %118, align 8
+  %119 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %120 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %119, i32 0, i32 13
+  %121 = load i32, i32* %120, align 4
+  %122 = call i8* @__le32_to_cpu(i32 %121)
+  %123 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %124 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %123, i32 0, i32 13
+  store i8* %122, i8** %124, align 8
+  %125 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %126 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %125, i32 0, i32 12
+  %127 = load i32, i32* %126, align 4
+  %128 = call i8* @__le32_to_cpu(i32 %127)
+  %129 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %130 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %129, i32 0, i32 12
+  store i8* %128, i8** %130, align 8
+  %131 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %132 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %131, i32 0, i32 11
+  %133 = load i32, i32* %132, align 4
+  %134 = call i8* @__le32_to_cpu(i32 %133)
+  %135 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %136 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %135, i32 0, i32 11
+  store i8* %134, i8** %136, align 8
+  %137 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %138 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %137, i32 0, i32 10
+  %139 = load i32, i32* %138, align 4
+  %140 = call i8* @__le32_to_cpu(i32 %139)
+  %141 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %142 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %141, i32 0, i32 10
+  store i8* %140, i8** %142, align 8
+  %143 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %144 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %143, i32 0, i32 9
+  %145 = load i32, i32* %144, align 4
+  %146 = call i8* @__le32_to_cpu(i32 %145)
+  %147 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %148 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %147, i32 0, i32 9
+  store i8* %146, i8** %148, align 8
+  %149 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %150 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %149, i32 0, i32 8
+  %151 = load i32, i32* %150, align 4
+  %152 = call i8* @__le32_to_cpu(i32 %151)
+  %153 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %154 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %153, i32 0, i32 8
+  store i8* %152, i8** %154, align 8
+  %155 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %156 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %155, i32 0, i32 7
+  %157 = load i32, i32* %156, align 4
+  %158 = call i8* @__le32_to_cpu(i32 %157)
+  %159 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %160 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %159, i32 0, i32 7
+  store i8* %158, i8** %160, align 8
+  %161 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %162 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %161, i32 0, i32 6
+  %163 = load i32, i32* %162, align 4
+  %164 = call i8* @__le32_to_cpu(i32 %163)
+  %165 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %166 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %165, i32 0, i32 6
+  store i8* %164, i8** %166, align 8
+  %167 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %168 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %167, i32 0, i32 5
+  %169 = load i32, i32* %168, align 4
+  %170 = call i8* @__le32_to_cpu(i32 %169)
+  %171 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %172 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %171, i32 0, i32 5
+  store i8* %170, i8** %172, align 8
+  %173 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %174 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %173, i32 0, i32 4
+  %175 = load i32, i32* %174, align 4
+  %176 = call i8* @__le32_to_cpu(i32 %175)
+  %177 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %178 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %177, i32 0, i32 4
+  store i8* %176, i8** %178, align 8
+  %179 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %180 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %179, i32 0, i32 1
+  %181 = load i32, i32* %180, align 4
+  %182 = call i8* @__le32_to_cpu(i32 %181)
+  %183 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %184 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %183, i32 0, i32 1
+  store i8* %182, i8** %184, align 8
+  %185 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %186 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %185, i32 0, i32 3
+  %187 = load i32, i32* %186, align 4
+  %188 = call i8* @__le32_to_cpu(i32 %187)
+  %189 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %190 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %189, i32 0, i32 3
+  store i8* %188, i8** %190, align 8
+  %191 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %192 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %191, i32 0, i32 2
+  %193 = load i32, i32* %192, align 4
+  %194 = call i8* @__le32_to_cpu(i32 %193)
+  %195 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %196 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %195, i32 0, i32 2
+  store i8* %194, i8** %196, align 8
+  %197 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %198 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %197, i32 0, i32 1
+  %199 = load i32, i32* %198, align 4
+  %200 = call i8* @__le32_to_cpu(i32 %199)
+  %201 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %202 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %201, i32 0, i32 1
+  store i8* %200, i8** %202, align 8
+  %203 = load %struct.wmi_10_4_pdev_stats_tx*, %struct.wmi_10_4_pdev_stats_tx** %3, align 8
+  %204 = getelementptr inbounds %struct.wmi_10_4_pdev_stats_tx, %struct.wmi_10_4_pdev_stats_tx* %203, i32 0, i32 0
+  %205 = load i32, i32* %204, align 4
+  %206 = call i8* @__le32_to_cpu(i32 %205)
+  %207 = load %struct.ath10k_fw_stats_pdev*, %struct.ath10k_fw_stats_pdev** %4, align 8
+  %208 = getelementptr inbounds %struct.ath10k_fw_stats_pdev, %struct.ath10k_fw_stats_pdev* %207, i32 0, i32 0
+  store i8* %206, i8** %208, align 8
+  ret void
+}
+
+declare dso_local i8* @__le32_to_cpu(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

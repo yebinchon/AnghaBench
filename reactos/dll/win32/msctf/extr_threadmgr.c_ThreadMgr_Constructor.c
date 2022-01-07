@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_21__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_19__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_18__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_17__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_22__ {int refCount; TYPE_11__ ITfThreadMgrEx_iface; int /*<<< orphan*/  InputProcessorProfileActivationSink; int /*<<< orphan*/  UIElementSink; int /*<<< orphan*/  ThreadMgrEventSink; int /*<<< orphan*/  ThreadFocusSink; int /*<<< orphan*/  PreservedKeyNotifySink; int /*<<< orphan*/  KeyTraceEventSink; int /*<<< orphan*/  DisplayAttributeNotifySink; int /*<<< orphan*/  ActiveLanguageProfileNotifySink; int /*<<< orphan*/  AssociatedFocusWindows; int /*<<< orphan*/  CreatedDocumentMgrs; int /*<<< orphan*/  CurrentPreservedKeys; int /*<<< orphan*/  CompartmentMgr; TYPE_7__ ITfSourceSingle_iface; TYPE_6__ ITfUIElementMgr_iface; TYPE_5__ ITfThreadMgrEventSink_iface; TYPE_4__ ITfClientId_iface; TYPE_3__ ITfMessagePump_iface; TYPE_2__ ITfKeystrokeMgr_iface; TYPE_1__ ITfSource_iface; } ;
-typedef  TYPE_8__ ThreadMgr ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLASS_E_NOAGGREGATION ; 
- int /*<<< orphan*/  ClientIdVtbl ; 
- int /*<<< orphan*/  CompartmentMgr_Constructor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_8__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  KeystrokeMgrVtbl ; 
- int /*<<< orphan*/  MessagePumpVtbl ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SourceSingleVtbl ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_8__*) ; 
- int /*<<< orphan*/  ThreadMgrEventSinkVtbl ; 
- int /*<<< orphan*/  ThreadMgrExVtbl ; 
- int /*<<< orphan*/  ThreadMgrSourceVtbl ; 
- int /*<<< orphan*/  ThreadMgrUIElementMgrVtbl ; 
- int /*<<< orphan*/  ThreadMgr_AddRef (TYPE_11__*) ; 
- TYPE_8__* TlsGetValue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TlsSetValue (int /*<<< orphan*/ ,TYPE_8__*) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tlsIndex ; 
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_11__ ;
+
+
+struct TYPE_14__ {int * lpVtbl; } ;
+struct TYPE_21__ {int * lpVtbl; } ;
+struct TYPE_20__ {int * lpVtbl; } ;
+struct TYPE_19__ {int * lpVtbl; } ;
+struct TYPE_18__ {int * lpVtbl; } ;
+struct TYPE_17__ {int * lpVtbl; } ;
+struct TYPE_16__ {int * lpVtbl; } ;
+struct TYPE_15__ {int * lpVtbl; } ;
+struct TYPE_22__ {int refCount; TYPE_11__ ITfThreadMgrEx_iface; int InputProcessorProfileActivationSink; int UIElementSink; int ThreadMgrEventSink; int ThreadFocusSink; int PreservedKeyNotifySink; int KeyTraceEventSink; int DisplayAttributeNotifySink; int ActiveLanguageProfileNotifySink; int AssociatedFocusWindows; int CreatedDocumentMgrs; int CurrentPreservedKeys; int CompartmentMgr; TYPE_7__ ITfSourceSingle_iface; TYPE_6__ ITfUIElementMgr_iface; TYPE_5__ ITfThreadMgrEventSink_iface; TYPE_4__ ITfClientId_iface; TYPE_3__ ITfMessagePump_iface; TYPE_2__ ITfKeystrokeMgr_iface; TYPE_1__ ITfSource_iface; } ;
+typedef TYPE_8__ ThreadMgr ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int CLASS_E_NOAGGREGATION ;
+ int ClientIdVtbl ;
+ int CompartmentMgr_Constructor (int *,int *,int **) ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_8__* HeapAlloc (int ,int ,int) ;
+ int IID_IUnknown ;
+ int KeystrokeMgrVtbl ;
+ int MessagePumpVtbl ;
+ int S_OK ;
+ int SourceSingleVtbl ;
+ int TRACE (char*,TYPE_8__*) ;
+ int ThreadMgrEventSinkVtbl ;
+ int ThreadMgrExVtbl ;
+ int ThreadMgrSourceVtbl ;
+ int ThreadMgrUIElementMgrVtbl ;
+ int ThreadMgr_AddRef (TYPE_11__*) ;
+ TYPE_8__* TlsGetValue (int ) ;
+ int TlsSetValue (int ,TYPE_8__*) ;
+ int list_init (int *) ;
+ int tlsIndex ;
 
 HRESULT ThreadMgr_Constructor(IUnknown *pUnkOuter, IUnknown **ppOut)
 {
@@ -62,7 +62,7 @@ HRESULT ThreadMgr_Constructor(IUnknown *pUnkOuter, IUnknown **ppOut)
     if (pUnkOuter)
         return CLASS_E_NOAGGREGATION;
 
-    /* Only 1 ThreadMgr is created per thread */
+
     This = TlsGetValue(tlsIndex);
     if (This)
     {
@@ -72,7 +72,7 @@ HRESULT ThreadMgr_Constructor(IUnknown *pUnkOuter, IUnknown **ppOut)
     }
 
     This = HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(ThreadMgr));
-    if (This == NULL)
+    if (This == ((void*)0))
         return E_OUTOFMEMORY;
 
     This->ITfThreadMgrEx_iface.lpVtbl = &ThreadMgrExVtbl;

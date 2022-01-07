@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  place ;
-typedef  int /*<<< orphan*/  key2 ;
-typedef  float int32_t ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_5__ {int /*<<< orphan*/  metadata; int /*<<< orphan*/  event_flags; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int place ;
+typedef int key2 ;
+typedef float int32_t ;
+typedef int buf ;
+struct TYPE_5__ {int metadata; int event_flags; } ;
 struct TYPE_4__ {TYPE_3__* fc; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MOVContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVFMT_EVENT_FLAG_METADATA_UPDATED ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int av_dict_set (int /*<<< orphan*/ *,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_strlcatf (char*,int,char*,...) ; 
- scalar_t__ avio_get_str (int /*<<< orphan*/ *,unsigned int,char*,int) ; 
- int /*<<< orphan*/  avio_rb16 (int /*<<< orphan*/ *) ; 
- scalar_t__ avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_mov_lang_to_iso639 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AVFMT_EVENT_FLAG_METADATA_UPDATED ;
+ int AV_LOG_ERROR ;
+ int av_dict_set (int *,char const*,char*,int ) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int av_strlcatf (char*,int,char*,...) ;
+ scalar_t__ avio_get_str (int *,unsigned int,char*,int) ;
+ int avio_rb16 (int *) ;
+ scalar_t__ avio_rb32 (int *) ;
+ int avio_skip (int *,int) ;
+ int ff_mov_lang_to_iso639 (int ,char*) ;
+ int snprintf (char*,int,char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int mov_metadata_loci(MOVContext *c, AVIOContext *pb, unsigned len)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static int mov_metadata_loci(MOVContext *c, AVIOContext *p
         return AVERROR_INVALIDDATA;
     }
 
-    avio_skip(pb, 4); // version+flags
+    avio_skip(pb, 4);
     langcode = avio_rb16(pb);
     ff_mov_lang_to_iso639(langcode, language);
     len -= 6;
@@ -60,7 +60,7 @@ __attribute__((used)) static int mov_metadata_loci(MOVContext *c, AVIOContext *p
         av_log(c->fc, AV_LOG_ERROR, "place name too long\n");
         return AVERROR_INVALIDDATA;
     }
-    avio_skip(pb, 1); // role
+    avio_skip(pb, 1);
     len -= 1;
 
     if (len < 12) {
@@ -69,11 +69,11 @@ __attribute__((used)) static int mov_metadata_loci(MOVContext *c, AVIOContext *p
         return AVERROR_INVALIDDATA;
     }
     longitude = ((int32_t) avio_rb32(pb)) / (float) (1 << 16);
-    latitude  = ((int32_t) avio_rb32(pb)) / (float) (1 << 16);
-    altitude  = ((int32_t) avio_rb32(pb)) / (float) (1 << 16);
+    latitude = ((int32_t) avio_rb32(pb)) / (float) (1 << 16);
+    altitude = ((int32_t) avio_rb32(pb)) / (float) (1 << 16);
 
-    // Try to output in the same format as the ?xyz field
-    snprintf(buf, sizeof(buf), "%+08.4f%+09.4f",  latitude, longitude);
+
+    snprintf(buf, sizeof(buf), "%+08.4f%+09.4f", latitude, longitude);
     if (altitude)
         av_strlcatf(buf, sizeof(buf), "%+f", altitude);
     av_strlcatf(buf, sizeof(buf), "/%s", place);

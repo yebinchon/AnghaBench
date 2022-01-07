@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RPC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPM_PROTOCOL_HTTP ; 
- int /*<<< orphan*/  rpcrt4_ip_tcp_parse_top_of_tower (unsigned char const*,size_t,char**,int /*<<< orphan*/ ,char**) ; 
+
+
+
+typedef int RPC_STATUS ;
+
+
+ int EPM_PROTOCOL_HTTP ;
+ int rpcrt4_ip_tcp_parse_top_of_tower (unsigned char const*,size_t,char**,int ,char**) ;
 
 __attribute__((used)) static RPC_STATUS rpcrt4_ncacn_http_parse_top_of_tower(const unsigned char *tower_data,
                                                        size_t tower_size,

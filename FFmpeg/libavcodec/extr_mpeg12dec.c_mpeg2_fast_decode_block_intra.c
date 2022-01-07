@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int16_t ;
 struct TYPE_8__ {int* permutated; } ;
-struct TYPE_10__ {int qscale; int* intra_matrix; int* chroma_intra_matrix; int* last_dc; int intra_dc_precision; int* block_last_index; int /*<<< orphan*/  gb; scalar_t__ intra_vlc_format; TYPE_1__ intra_scantable; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * rl_vlc; } ;
-typedef  TYPE_2__ RLTable ;
-typedef  TYPE_3__ MpegEncContext ;
+struct TYPE_10__ {int qscale; int* intra_matrix; int* chroma_intra_matrix; int* last_dc; int intra_dc_precision; int* block_last_index; int gb; scalar_t__ intra_vlc_format; TYPE_1__ intra_scantable; } ;
+struct TYPE_9__ {int * rl_vlc; } ;
+typedef TYPE_2__ RLTable ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  CLOSE_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GET_RL_VLC (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LAST_SKIP_BITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OPEN_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SHOW_SBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int SHOW_UBITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SKIP_BITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEX_VLC_BITS ; 
- int /*<<< orphan*/  UPDATE_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_scantable_index (TYPE_3__*,int) ; 
- int decode_dc (int /*<<< orphan*/ *,int) ; 
- TYPE_2__ ff_rl_mpeg1 ; 
- TYPE_2__ ff_rl_mpeg2 ; 
- int /*<<< orphan*/  re ; 
+
+ int AVERROR_INVALIDDATA ;
+ int CLOSE_READER (int ,int *) ;
+ int GET_RL_VLC (int,int,int ,int *,int ,int ,int,int ) ;
+ int LAST_SKIP_BITS (int ,int *,int) ;
+ int OPEN_READER (int ,int *) ;
+ int SHOW_SBITS (int ,int *,int) ;
+ int SHOW_UBITS (int ,int *,int) ;
+ int SKIP_BITS (int ,int *,int) ;
+ int TEX_VLC_BITS ;
+ int UPDATE_CACHE (int ,int *) ;
+ int check_scantable_index (TYPE_3__*,int) ;
+ int decode_dc (int *,int) ;
+ TYPE_2__ ff_rl_mpeg1 ;
+ TYPE_2__ ff_rl_mpeg2 ;
+ int re ;
 
 __attribute__((used)) static inline int mpeg2_fast_decode_block_intra(MpegEncContext *s,
                                                 int16_t *block, int n)
@@ -49,13 +49,13 @@ __attribute__((used)) static inline int mpeg2_fast_decode_block_intra(MpegEncCon
     const uint16_t *quant_matrix;
     const int qscale = s->qscale;
 
-    /* DC coefficient */
+
     if (n < 4) {
         quant_matrix = s->intra_matrix;
-        component    = 0;
+        component = 0;
     } else {
         quant_matrix = s->chroma_intra_matrix;
-        component    = (n & 1) + 1;
+        component = (n & 1) + 1;
     }
     diff = decode_dc(&s->gb, component);
     if (diff >= 0xffff)
@@ -72,7 +72,7 @@ __attribute__((used)) static inline int mpeg2_fast_decode_block_intra(MpegEncCon
 
     {
         OPEN_READER(re, &s->gb);
-        /* now quantify & encode AC coefficients */
+
         for (;;) {
             UPDATE_CACHE(re, &s->gb);
             GET_RL_VLC(level, run, re, &s->gb, rl->rl_vlc[0],
@@ -88,7 +88,7 @@ __attribute__((used)) static inline int mpeg2_fast_decode_block_intra(MpegEncCon
                         SHOW_SBITS(re, &s->gb, 1);
                 LAST_SKIP_BITS(re, &s->gb, 1);
             } else {
-                /* escape */
+
                 run = SHOW_UBITS(re, &s->gb, 6) + 1;
                 LAST_SKIP_BITS(re, &s->gb, 6);
                 UPDATE_CACHE(re, &s->gb);

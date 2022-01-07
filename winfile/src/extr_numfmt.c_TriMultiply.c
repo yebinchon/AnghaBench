@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int QuadPart; } ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int DWORD ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int UInt32x32To64 (int,int) ; 
+
+ int UInt32x32To64 (int,int) ;
 
 LARGE_INTEGER
 TriMultiply(DWORD dw1, DWORD dw2, DWORD dwSmall)

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct mcfqspi {TYPE_1__* cs_control; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* deselect ) (TYPE_1__*,int /*<<< orphan*/ ,int) ;} ;
+struct TYPE_2__ {int (* deselect ) (TYPE_1__*,int ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int stub1 (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void mcfqspi_cs_deselect(struct mcfqspi *mcfqspi, u8 chip_select,
-				bool cs_high)
+    bool cs_high)
 {
-	mcfqspi->cs_control->deselect(mcfqspi->cs_control, chip_select, cs_high);
+ mcfqspi->cs_control->deselect(mcfqspi->cs_control, chip_select, cs_high);
 }

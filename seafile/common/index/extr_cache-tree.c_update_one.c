@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct cache_tree_sub {int used; struct cache_tree* cache_tree; } ;
 struct cache_tree {int entry_count; int subtree_nr; TYPE_1__** down; } ;
 struct cache_entry {char* name; } ;
 struct TYPE_2__ {scalar_t__ used; } ;
-typedef  scalar_t__ (* CommitCB ) (char const*,int,char const*,struct cache_tree*,struct cache_entry**,int,char const*,int) ;
+typedef scalar_t__ (* CommitCB ) (char const*,int,char const*,struct cache_tree*,struct cache_entry**,int,char const*,int) ;
 
-/* Variables and functions */
- struct cache_tree* cache_tree () ; 
- int ce_namelen (struct cache_entry*) ; 
- int /*<<< orphan*/  discard_unused_subtrees (struct cache_tree*) ; 
- struct cache_tree_sub* find_subtree (struct cache_tree*,char const*,int,int) ; 
- scalar_t__ memcmp (char const*,char const*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- char* strchr (char const*,char) ; 
+
+ struct cache_tree* cache_tree () ;
+ int ce_namelen (struct cache_entry*) ;
+ int discard_unused_subtrees (struct cache_tree*) ;
+ struct cache_tree_sub* find_subtree (struct cache_tree*,char const*,int,int) ;
+ scalar_t__ memcmp (char const*,char const*,int) ;
+ int seaf_warning (char*) ;
+ char* strchr (char const*,char) ;
 
 __attribute__((used)) static int update_one(const char *repo_id,
                       int version,
@@ -43,17 +43,17 @@ __attribute__((used)) static int update_one(const char *repo_id,
     if (0 <= it->entry_count)
         return it->entry_count;
 
-    /*
-     * We first scan for subtrees and update them; we start by
-     * marking existing subtrees -- the ones that are unmarked
-     * should not be in the result.
-     */
+
+
+
+
+
     for (i = 0; i < it->subtree_nr; i++)
         it->down[i]->used = 0;
 
-    /*
-     * Find the subtrees and update them.
-     */
+
+
+
     for (i = 0; i < entries; i++) {
         struct cache_entry *ce = cache[i];
         struct cache_tree_sub *sub;
@@ -63,16 +63,16 @@ __attribute__((used)) static int update_one(const char *repo_id,
         path = ce->name;
         pathlen = ce_namelen(ce);
         if (pathlen <= baselen || memcmp(base, path, baselen))
-            break; /* at the end of this level */
+            break;
 
         slash = strchr(path + baselen, '/');
         if (!slash)
             continue;
-        /*
-         * a/bbb/c (base = a/, slash = /c)
-         * ==>
-         * path+baselen = bbb/c, sublen = 3
-         */
+
+
+
+
+
         sublen = slash - (path + baselen);
         sub = find_subtree(it, path + baselen, sublen, 1);
         if (!sub->cache_tree)

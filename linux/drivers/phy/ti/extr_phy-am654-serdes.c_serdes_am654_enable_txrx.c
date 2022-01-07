@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct serdes_am654 {int /*<<< orphan*/  rx0_enable; int /*<<< orphan*/  tx0_enable; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RX0_ENABLE_STATE ; 
- int /*<<< orphan*/  TX0_ENABLE_STATE ; 
- int regmap_field_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct serdes_am654 {int rx0_enable; int tx0_enable; } ;
+
+
+ int RX0_ENABLE_STATE ;
+ int TX0_ENABLE_STATE ;
+ int regmap_field_write (int ,int ) ;
 
 __attribute__((used)) static int serdes_am654_enable_txrx(struct serdes_am654 *phy)
 {
-	int ret;
+ int ret;
 
-	/* Enable TX */
-	ret = regmap_field_write(phy->tx0_enable, TX0_ENABLE_STATE);
-	if (ret)
-		return ret;
 
-	/* Enable RX */
-	ret = regmap_field_write(phy->rx0_enable, RX0_ENABLE_STATE);
-	if (ret)
-		return ret;
+ ret = regmap_field_write(phy->tx0_enable, TX0_ENABLE_STATE);
+ if (ret)
+  return ret;
 
-	return 0;
+
+ ret = regmap_field_write(phy->rx0_enable, RX0_ENABLE_STATE);
+ if (ret)
+  return ret;
+
+ return 0;
 }

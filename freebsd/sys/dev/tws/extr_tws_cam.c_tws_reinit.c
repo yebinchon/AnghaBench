@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tws_softc {int obfl_q_overrun; int /*<<< orphan*/  is64bit; int /*<<< orphan*/  tws_dev; int /*<<< orphan*/  gen_lock; } ;
 
-/* Variables and functions */
- int TWS_RESET_TIMEOUT ; 
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*) ; 
- int hz ; 
- int /*<<< orphan*/  mtx_sleep (struct tws_softc*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  tws_assert_soft_reset (struct tws_softc*) ; 
- scalar_t__ tws_ctlr_ready (struct tws_softc*) ; 
- scalar_t__ tws_init_connect (struct tws_softc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tws_init_obfl_q (struct tws_softc*) ; 
- int /*<<< orphan*/  tws_queue_depth ; 
- int /*<<< orphan*/  tws_turn_on_interrupts (struct tws_softc*) ; 
- int /*<<< orphan*/  wakeup_one (struct tws_softc*) ; 
+
+
+
+struct tws_softc {int obfl_q_overrun; int is64bit; int tws_dev; int gen_lock; } ;
+
+
+ int TWS_RESET_TIMEOUT ;
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,int ,int ) ;
+ int device_printf (int ,char*) ;
+ int hz ;
+ int mtx_sleep (struct tws_softc*,int *,int ,char*,int) ;
+ int tws_assert_soft_reset (struct tws_softc*) ;
+ scalar_t__ tws_ctlr_ready (struct tws_softc*) ;
+ scalar_t__ tws_init_connect (struct tws_softc*,int ) ;
+ int tws_init_obfl_q (struct tws_softc*) ;
+ int tws_queue_depth ;
+ int tws_turn_on_interrupts (struct tws_softc*) ;
+ int wakeup_one (struct tws_softc*) ;
 
 __attribute__((used)) static void
 tws_reinit(void *arg)
@@ -35,7 +35,7 @@ tws_reinit(void *arg)
     int done=0;
 
 
-//  device_printf(sc->tws_dev,  "Waiting for Controller Ready\n");
+
     while ( !done && try ) {
         if ( tws_ctlr_ready(sc) ) {
             done = 1;
@@ -53,12 +53,12 @@ tws_reinit(void *arg)
     }
 
     if (!done) {
-        device_printf(sc->tws_dev,  "FAILED to get Controller Ready!\n");
+        device_printf(sc->tws_dev, "FAILED to get Controller Ready!\n");
         return;
     }
 
-    sc->obfl_q_overrun = false;
-//  device_printf(sc->tws_dev,  "Sending initConnect\n");
+    sc->obfl_q_overrun = 0;
+
     if ( tws_init_connect(sc, tws_queue_depth) ) {
         TWS_TRACE_DEBUG(sc, "initConnect failed", 0, sc->is64bit);
     }

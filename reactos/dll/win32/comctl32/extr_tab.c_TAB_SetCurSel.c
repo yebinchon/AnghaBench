@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  dwState; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int dwState; } ;
 struct TYPE_8__ {scalar_t__ iSelected; int uFocus; scalar_t__ uNumItem; } ;
-typedef  TYPE_1__ TAB_INFO ;
-typedef  int LRESULT ;
-typedef  scalar_t__ INT ;
+typedef TYPE_1__ TAB_INFO ;
+typedef int LRESULT ;
+typedef scalar_t__ INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_EnsureSelectionVisible (TYPE_1__*) ; 
- TYPE_5__* TAB_GetItem (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  TAB_InvalidateTabArea (TYPE_1__*) ; 
- int /*<<< orphan*/  TCIS_BUTTONPRESSED ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,scalar_t__) ; 
+
+ int TAB_EnsureSelectionVisible (TYPE_1__*) ;
+ TYPE_5__* TAB_GetItem (TYPE_1__*,scalar_t__) ;
+ int TAB_InvalidateTabArea (TYPE_1__*) ;
+ int TCIS_BUTTONPRESSED ;
+ int TRACE (char*,TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static inline LRESULT TAB_SetCurSel (TAB_INFO *infoPtr, INT iItem)
 {

@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
-#define  AVP6_TAG 137 
- int AVPROBE_SCORE_MAX ; 
- int AV_RL32 (int /*<<< orphan*/ *) ; 
-#define  ISNh_TAG 136 
-#define  MADk_TAG 135 
-#define  MPCh_TAG 134 
-#define  MVIh_TAG 133 
-#define  MVhd_TAG 132 
-#define  SCHl_TAG 131 
-#define  SEAD_TAG 130 
-#define  SHEN_TAG 129 
- unsigned int av_bswap32 (unsigned int) ; 
-#define  kVGT_TAG 128 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * buf; } ;
+typedef TYPE_1__ AVProbeData ;
+
+
+
+ int AVPROBE_SCORE_MAX ;
+ int AV_RL32 (int *) ;
+ unsigned int av_bswap32 (unsigned int) ;
+
 
 __attribute__((used)) static int ea_probe(const AVProbeData *p)
 {
     unsigned big_endian, size;
 
     switch (AV_RL32(&p->buf[0])) {
-    case ISNh_TAG:
-    case SCHl_TAG:
-    case SEAD_TAG:
-    case SHEN_TAG:
-    case kVGT_TAG:
-    case MADk_TAG:
-    case MPCh_TAG:
-    case MVhd_TAG:
-    case MVIh_TAG:
-    case AVP6_TAG:
+    case 136:
+    case 131:
+    case 130:
+    case 129:
+    case 128:
+    case 135:
+    case 134:
+    case 132:
+    case 133:
+    case 137:
         break;
     default:
         return 0;

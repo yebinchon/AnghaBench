@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int atoi (char*) ; 
- int packetdroppercentage ; 
- int /*<<< orphan*/  printf (char*,int) ; 
+ int atoi (char*) ;
+ int packetdroppercentage ;
+ int printf (char*,int) ;
 
 __attribute__((used)) static void
 setpacketdrop(int argc, char *argv[])
 {
 
-	if (argc != 1)
-		packetdroppercentage = atoi(argv[1]);
+ if (argc != 1)
+  packetdroppercentage = atoi(argv[1]);
 
-	printf("Randomly %d in 100 packets will be dropped\n",
-	    packetdroppercentage);
+ printf("Randomly %d in 100 packets will be dropped\n",
+     packetdroppercentage);
 }

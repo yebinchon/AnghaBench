@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  terminal_handle_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/  config_dir; } ;
-typedef  TYPE_1__ svn_cmdline_prompt_baton2_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_CONFIG_CATEGORY_SERVERS ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  apr_psprintf (int /*<<< orphan*/ *,char const*,char const*,char const*) ; 
- scalar_t__ apr_strnatcasecmp (char const*,char*) ; 
- int /*<<< orphan*/  prompt (char const**,char const*,scalar_t__,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_config_get_user_config_path (char const**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  terminal_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  terminal_open (int /*<<< orphan*/ **,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  terminal_puts (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int terminal_handle_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {int config_dir; } ;
+typedef TYPE_1__ svn_cmdline_prompt_baton2_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_CONFIG_CATEGORY_SERVERS ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ char* _ (char*) ;
+ int apr_psprintf (int *,char const*,char const*,char const*) ;
+ scalar_t__ apr_strnatcasecmp (char const*,char*) ;
+ int prompt (char const**,char const*,scalar_t__,TYPE_1__*,int *) ;
+ int svn_config_get_user_config_path (char const**,int ,int ,int *) ;
+ int terminal_close (int *) ;
+ int terminal_open (int **,scalar_t__,int *) ;
+ int terminal_puts (int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 plaintext_prompt_helper(svn_boolean_t *may_save_plaintext,
@@ -41,13 +41,13 @@ plaintext_prompt_helper(svn_boolean_t *may_save_plaintext,
                         void *baton,
                         apr_pool_t *pool)
 {
-  const char *answer = NULL;
+  const char *answer = ((void*)0);
   svn_boolean_t answered = FALSE;
   svn_cmdline_prompt_baton2_t *pb = baton;
-  const char *config_path = NULL;
+  const char *config_path = ((void*)0);
   terminal_handle_t *terminal;
 
-  *may_save_plaintext = FALSE; /* de facto API promise */
+  *may_save_plaintext = FALSE;
 
   if (pb)
     SVN_ERR(svn_config_get_user_config_path(&config_path, pb->config_dir,

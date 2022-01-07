@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct dm_pool_metadata {int /*<<< orphan*/  root_lock; int /*<<< orphan*/  trans_id; int /*<<< orphan*/  fail_io; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  down_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up_read (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+struct dm_pool_metadata {int root_lock; int trans_id; int fail_io; } ;
+
+
+ int EINVAL ;
+ int down_read (int *) ;
+ int up_read (int *) ;
 
 int dm_pool_get_metadata_transaction_id(struct dm_pool_metadata *pmd,
-					uint64_t *result)
+     uint64_t *result)
 {
-	int r = -EINVAL;
+ int r = -EINVAL;
 
-	down_read(&pmd->root_lock);
-	if (!pmd->fail_io) {
-		*result = pmd->trans_id;
-		r = 0;
-	}
-	up_read(&pmd->root_lock);
+ down_read(&pmd->root_lock);
+ if (!pmd->fail_io) {
+  *result = pmd->trans_id;
+  r = 0;
+ }
+ up_read(&pmd->root_lock);
 
-	return r;
+ return r;
 }

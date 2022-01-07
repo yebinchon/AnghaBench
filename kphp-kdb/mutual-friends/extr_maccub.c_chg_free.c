@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ treap ;
-typedef  int* changes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  qfree (int*,int) ; 
- int /*<<< orphan*/  trp_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int root; } ;
+typedef TYPE_1__ treap ;
+typedef int* changes ;
+
+
+ int qfree (int*,int) ;
+ int trp_free (int ) ;
 
 void chg_free (changes *_x) {
   changes x = *_x;
 
-#ifdef __x86_64__
+
   if ((long)(x) < 0) {
   } else
-#endif
+
   if (x) {
     if (x[0] < 0) {
       trp_free (((treap *)x)->root);
@@ -35,5 +35,5 @@ void chg_free (changes *_x) {
     }
   }
 
-  *_x = NULL;
+  *_x = ((void*)0);
 }

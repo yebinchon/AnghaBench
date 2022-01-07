@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int intrinsic_latency_duration; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  compute_something_fast () ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ force_cancel_loop ; 
- int /*<<< orphan*/  intrinsicLatencyModeStop ; 
- int /*<<< orphan*/  printf (char*,long long,...) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long long ustime () ; 
+
+ int SIGINT ;
+ int compute_something_fast () ;
+ TYPE_1__ config ;
+ int exit (int ) ;
+ scalar_t__ force_cancel_loop ;
+ int intrinsicLatencyModeStop ;
+ int printf (char*,long long,...) ;
+ int signal (int ,int ) ;
+ long long ustime () ;
 
 __attribute__((used)) static void intrinsicLatencyMode(void) {
     long long test_end, run_time, max_latency = 0, runs = 0;
@@ -41,7 +41,7 @@ __attribute__((used)) static void intrinsicLatencyMode(void) {
         runs++;
         if (latency <= 0) continue;
 
-        /* Reporting */
+
         if (latency > max_latency) {
             max_latency = latency;
             printf("Max latency so far: %lld microseconds.\n", max_latency);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct smb_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SMB_LOCK () ; 
- int /*<<< orphan*/  SMB_UNLOCK () ; 
- int /*<<< orphan*/  sdp_trydestroy (struct smb_dev*) ; 
+
+ int SMB_LOCK () ;
+ int SMB_UNLOCK () ;
+ int sdp_trydestroy (struct smb_dev*) ;
 
 void
 sdp_dtor(void *arg)
 {
-	struct smb_dev *dev;
+ struct smb_dev *dev;
 
-	dev = (struct smb_dev *)arg;	
-	SMB_LOCK();
-	sdp_trydestroy(dev);
-	SMB_UNLOCK();
+ dev = (struct smb_dev *)arg;
+ SMB_LOCK();
+ sdp_trydestroy(dev);
+ SMB_UNLOCK();
 }

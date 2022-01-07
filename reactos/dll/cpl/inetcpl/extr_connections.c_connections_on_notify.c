@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  use_proxy ;
-typedef  int /*<<< orphan*/  connection_settings ;
-typedef  int /*<<< orphan*/  WPARAM ;
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int use_proxy ;
+typedef int connection_settings ;
+typedef int WPARAM ;
+typedef char WCHAR ;
 struct TYPE_3__ {scalar_t__ code; } ;
 struct TYPE_4__ {TYPE_1__ hdr; } ;
-typedef  TYPE_2__ PSHNOTIFY ;
-typedef  scalar_t__ LRESULT ;
-typedef  scalar_t__ LPARAM ;
-typedef  int INT_PTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_2__ PSHNOTIFY ;
+typedef scalar_t__ LRESULT ;
+typedef scalar_t__ LPARAM ;
+typedef int INT_PTR ;
+typedef int HWND ;
+typedef int HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_SIZE (char*) ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int GetDlgItemTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  IDC_EDIT_PAC_SCRIPT ; 
- int /*<<< orphan*/  IDC_EDIT_PROXY_PORT ; 
- int /*<<< orphan*/  IDC_EDIT_PROXY_SERVER ; 
- int /*<<< orphan*/  IDC_USE_PAC_SCRIPT ; 
- int /*<<< orphan*/  IDC_USE_PROXY_SERVER ; 
- int /*<<< orphan*/  IDC_USE_WPAD ; 
- int INTERNET_MAX_URL_LENGTH ; 
- int IsDlgButtonChecked (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- scalar_t__ PSN_APPLY ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegDeleteValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegSetValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  auto_config_url ; 
- int /*<<< orphan*/  connections ; 
- int create_connection_settings (int,char*,int,int,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  default_connection_settings ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  internet_settings ; 
- int /*<<< orphan*/  proxy_enable ; 
- int /*<<< orphan*/  proxy_server ; 
- int wine_dbgstr_w (char*) ; 
+
+ scalar_t__ ARRAY_SIZE (char*) ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GetDlgItemTextW (int ,int ,char*,scalar_t__) ;
+ int HKEY_CURRENT_USER ;
+ int IDC_EDIT_PAC_SCRIPT ;
+ int IDC_EDIT_PROXY_PORT ;
+ int IDC_EDIT_PROXY_SERVER ;
+ int IDC_USE_PAC_SCRIPT ;
+ int IDC_USE_PROXY_SERVER ;
+ int IDC_USE_WPAD ;
+ int INTERNET_MAX_URL_LENGTH ;
+ int IsDlgButtonChecked (int ,int ) ;
+ int KEY_WRITE ;
+ scalar_t__ PSN_APPLY ;
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyExW (int ,int ,int ,int *,int ,int ,int *,int *,int *) ;
+ scalar_t__ RegDeleteValueW (int ,int ) ;
+ scalar_t__ RegOpenKeyW (int ,int ,int *) ;
+ scalar_t__ RegSetValueExW (int ,int ,int ,int ,int *,int) ;
+ int TRACE (char*,int) ;
+ int auto_config_url ;
+ int connections ;
+ int create_connection_settings (int,char*,int,int,char*,int **) ;
+ int default_connection_settings ;
+ int heap_free (int *) ;
+ int internet_settings ;
+ int proxy_enable ;
+ int proxy_server ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static INT_PTR connections_on_notify(HWND hwnd, WPARAM wparam, LPARAM lparam)
 {
@@ -140,11 +140,11 @@ __attribute__((used)) static INT_PTR connections_on_notify(HWND hwnd, WPARAM wpa
         RegCloseKey(hkey);
         return FALSE;
     }
-    TRACE("AutoConfigURL set to %s\n", wine_dbgstr_w(use_pac_script ? pac_script : NULL));
+    TRACE("AutoConfigURL set to %s\n", wine_dbgstr_w(use_pac_script ? pac_script : ((void*)0)));
 
     use_wpad = IsDlgButtonChecked(hwnd, IDC_USE_WPAD);
 
-    res = RegCreateKeyExW(hkey, connections, 0, NULL, 0, KEY_WRITE, NULL, &con, NULL);
+    res = RegCreateKeyExW(hkey, connections, 0, ((void*)0), 0, KEY_WRITE, ((void*)0), &con, ((void*)0));
     RegCloseKey(hkey);
     if(res)
         return FALSE;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_MODE (int /*<<< orphan*/ ) ; 
- scalar_t__ REG ; 
- scalar_t__ SUBREG ; 
- int /*<<< orphan*/  SUBREG_REG (int /*<<< orphan*/ ) ; 
- scalar_t__ TImode ; 
- int /*<<< orphan*/  adjust_address (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assign_stack_temp (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ GET_CODE (int ) ;
+ scalar_t__ GET_MODE (int ) ;
+ scalar_t__ REG ;
+ scalar_t__ SUBREG ;
+ int SUBREG_REG (int ) ;
+ scalar_t__ TImode ;
+ int adjust_address (int ,int,int ) ;
+ int assign_stack_temp (int,int,int ) ;
+ int emit_move_insn (int ,int ) ;
 
 __attribute__((used)) static rtx
 spill_xfmode_rfmode_operand (rtx in, int force, enum machine_mode mode)

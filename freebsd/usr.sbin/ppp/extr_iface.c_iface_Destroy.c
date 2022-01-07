@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifreq {int /*<<< orphan*/  ifr_name; } ;
-struct iface {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  caddr_t ;
 
-/* Variables and functions */
- scalar_t__ ID0ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ID0socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  SIOCIFDESTROY ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  iface_Free (struct iface*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct ifreq {int ifr_name; } ;
+struct iface {int name; } ;
+typedef int caddr_t ;
+
+
+ scalar_t__ ID0ioctl (int,int ,int ) ;
+ int ID0socket (int ,int ,int ) ;
+ int LogERROR ;
+ int LogWARN ;
+ int PF_INET ;
+ int SIOCIFDESTROY ;
+ int SOCK_DGRAM ;
+ int errno ;
+ int iface_Free (struct iface*) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int strerror (int ) ;
+ int strlcpy (int ,int ,int) ;
 
 void
 iface_Destroy(struct iface *iface)
@@ -34,7 +34,7 @@ iface_Destroy(struct iface *iface)
   struct ifreq ifr;
   int s;
 
-  if (iface != NULL) {
+  if (iface != ((void*)0)) {
     if ((s = ID0socket(PF_INET, SOCK_DGRAM, 0)) == -1) {
       log_Printf(LogERROR, "iface_Destroy: socket(): %s\n", strerror(errno));
     } else {

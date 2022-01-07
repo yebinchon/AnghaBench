@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {double buffered; double speed; int /*<<< orphan*/  paused; } ;
+
+
+
+
+struct priv {double buffered; double speed; int paused; } ;
 struct ao {double samplerate; struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drain (struct ao*) ; 
- int /*<<< orphan*/  mp_sleep_us (double) ; 
+
+ int drain (struct ao*) ;
+ int mp_sleep_us (double) ;
 
 __attribute__((used)) static void wait_drain(struct ao *ao)
 {

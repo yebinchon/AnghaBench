@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-struct TYPE_3__ {int num_components; int out_color_space; int jpeg_color_space; int /*<<< orphan*/  saw_Adobe_marker; int /*<<< orphan*/  marker_list; } ;
 
-/* Variables and functions */
- int BYTES_SH (int) ; 
- int CHANNELS_SH (int) ; 
- int COLORSPACE_SH (int) ; 
- TYPE_1__ Decompressor ; 
- int EXTRA_SH (int) ; 
- int FLAVOR_SH (int) ; 
- int /*<<< orphan*/  FatalError (char*,int) ; 
- int /*<<< orphan*/  HandleEXIF (TYPE_1__*) ; 
- int /*<<< orphan*/  HandlePhotoshopAPP13 (int /*<<< orphan*/ ) ; 
- scalar_t__ IsITUFax (int /*<<< orphan*/ ) ; 
-#define  JCS_CMYK 132 
-#define  JCS_GRAYSCALE 131 
-#define  JCS_RGB 130 
-#define  JCS_YCCK 129 
-#define  JCS_YCbCr 128 
- int PT_CMYK ; 
- int PT_GRAY ; 
- int PT_Lab ; 
- int PT_RGB ; 
- int /*<<< orphan*/  lIsEXIF ; 
- scalar_t__ lIsITUFax ; 
- int /*<<< orphan*/  lIsPhotoshopApp13 ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsUInt32Number ;
+struct TYPE_3__ {int num_components; int out_color_space; int jpeg_color_space; int saw_Adobe_marker; int marker_list; } ;
+
+
+ int BYTES_SH (int) ;
+ int CHANNELS_SH (int) ;
+ int COLORSPACE_SH (int) ;
+ TYPE_1__ Decompressor ;
+ int EXTRA_SH (int) ;
+ int FLAVOR_SH (int) ;
+ int FatalError (char*,int) ;
+ int HandleEXIF (TYPE_1__*) ;
+ int HandlePhotoshopAPP13 (int ) ;
+ scalar_t__ IsITUFax (int ) ;
+
+
+
+
+
+ int PT_CMYK ;
+ int PT_GRAY ;
+ int PT_Lab ;
+ int PT_RGB ;
+ int lIsEXIF ;
+ scalar_t__ lIsITUFax ;
+ int lIsPhotoshopApp13 ;
 
 __attribute__((used)) static
 cmsUInt32Number GetInputPixelType(void)
 {
      int space, bps, extra, ColorChannels, Flavor;
 
-     lIsITUFax         = IsITUFax(Decompressor.marker_list);
+     lIsITUFax = IsITUFax(Decompressor.marker_list);
      lIsPhotoshopApp13 = HandlePhotoshopAPP13(Decompressor.marker_list);
-     lIsEXIF           = HandleEXIF(&Decompressor);
+     lIsEXIF = HandleEXIF(&Decompressor);
 
      ColorChannels = Decompressor.num_components;
-     extra  = 0;            // Alpha = None
-     bps    = 1;            // 8 bits
-     Flavor = 0;            // Vanilla
+     extra = 0;
+     bps = 1;
+     Flavor = 0;
 
      if (lIsITUFax) {
 
         space = PT_Lab;
-        Decompressor.out_color_space = JCS_YCbCr;  // Fake to don't touch
+        Decompressor.out_color_space = 128;
      }
      else
      switch (Decompressor.jpeg_color_space) {
 
-     case JCS_GRAYSCALE:        // monochrome
+     case 131:
               space = PT_GRAY;
-              Decompressor.out_color_space = JCS_GRAYSCALE;
+              Decompressor.out_color_space = 131;
               break;
 
-     case JCS_RGB:             // red/green/blue
+     case 130:
               space = PT_RGB;
-              Decompressor.out_color_space = JCS_RGB;
+              Decompressor.out_color_space = 130;
               break;
 
-     case JCS_YCbCr:               // Y/Cb/Cr (also known as YUV)
-              space = PT_RGB;      // Let IJG code to do the conversion
-              Decompressor.out_color_space = JCS_RGB;
+     case 128:
+              space = PT_RGB;
+              Decompressor.out_color_space = 130;
               break;
 
-     case JCS_CMYK:            // C/M/Y/K
+     case 132:
               space = PT_CMYK;
-              Decompressor.out_color_space = JCS_CMYK;
-              if (Decompressor.saw_Adobe_marker)            // Adobe keeps CMYK inverted, so change flavor
-                                Flavor = 1;                 // from vanilla to chocolate
+              Decompressor.out_color_space = 132;
+              if (Decompressor.saw_Adobe_marker)
+                                Flavor = 1;
               break;
 
-     case JCS_YCCK:            // Y/Cb/Cr/K
+     case 129:
               space = PT_CMYK;
-              Decompressor.out_color_space = JCS_CMYK;
-              if (Decompressor.saw_Adobe_marker)            // ditto
+              Decompressor.out_color_space = 132;
+              if (Decompressor.saw_Adobe_marker)
                                 Flavor = 1;
               break;
 

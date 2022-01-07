@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct PreprocessedInfo {int dummy; } ;
 struct PcapFile {int dummy; } ;
-typedef  int /*<<< orphan*/  px ;
+typedef int px ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  pcapfile_close (struct PcapFile*) ; 
- unsigned int pcapfile_datalink (struct PcapFile*) ; 
- struct PcapFile* pcapfile_openread (char const*) ; 
- int pcapfile_readframe (struct PcapFile*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned char*,int) ; 
- unsigned int preprocess_frame (unsigned char*,unsigned int,unsigned int,struct PreprocessedInfo*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int fprintf (int ,char*,char const*) ;
+ int pcapfile_close (struct PcapFile*) ;
+ unsigned int pcapfile_datalink (struct PcapFile*) ;
+ struct PcapFile* pcapfile_openread (char const*) ;
+ int pcapfile_readframe (struct PcapFile*,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned char*,int) ;
+ unsigned int preprocess_frame (unsigned char*,unsigned int,unsigned int,struct PreprocessedInfo*) ;
+ int stderr ;
 
 void
 banner1_test(const char *filename)
@@ -30,7 +30,7 @@ banner1_test(const char *filename)
     unsigned link_type;
 
     cap = pcapfile_openread(filename);
-    if (cap == NULL) {
+    if (cap == ((void*)0)) {
         fprintf(stderr, "%s: can't open capture file\n", filename);
         return;
     }
@@ -49,7 +49,7 @@ banner1_test(const char *filename)
 
 
         packets_read = pcapfile_readframe(
-                    cap,    /* capture dump file */
+                    cap,
                     &secs, &usecs,
                     &origlength, &length,
                     px, sizeof(px));

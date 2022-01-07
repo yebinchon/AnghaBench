@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int op_mode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int EXIT_SUCCESS ; 
-#define  FACTORY 130 
-#define  NONE 129 
-#define  SYSUPGRADE 128 
- int getopt (int,char**,char*) ; 
- char* optarg ; 
- int process_image (char*,char*,int) ; 
- int /*<<< orphan*/  usage (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int op_mode_t ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+
+
+
+ int getopt (int,char**,char*) ;
+ char* optarg ;
+ int process_image (char*,char*,int) ;
+ int usage (char*,int ) ;
 
 int
 main(int argc, char **argv)
 {
-	int 		opt;
-	char 		*filename, *progname;
-	op_mode_t	opmode = NONE;
+ int opt;
+ char *filename, *progname;
+ op_mode_t opmode = 129;
 
-	progname = argv[0];
+ progname = argv[0];
 
-	while ((opt = getopt(argc, argv,":s:f:h?")) != -1) {
-		switch (opt) {
-		case 's':
-			opmode = SYSUPGRADE;
-			filename = optarg;
-			break;
-		case 'f':
-			opmode = FACTORY;
-			filename = optarg;
-			break;
-		case 'h':
-			opmode = NONE;
-		default:
-			usage(progname, EXIT_FAILURE);
-			opmode = NONE;
-		}
-	}
+ while ((opt = getopt(argc, argv,":s:f:h?")) != -1) {
+  switch (opt) {
+  case 's':
+   opmode = 128;
+   filename = optarg;
+   break;
+  case 'f':
+   opmode = 130;
+   filename = optarg;
+   break;
+  case 'h':
+   opmode = 129;
+  default:
+   usage(progname, EXIT_FAILURE);
+   opmode = 129;
+  }
+ }
 
-	if(filename == NULL)
-		opmode = NONE;
+ if(filename == ((void*)0))
+  opmode = 129;
 
-	switch (opmode) {
-	case NONE:
-		usage(progname, EXIT_FAILURE);
-		break;
-	case FACTORY:
-	case SYSUPGRADE:
-		return process_image(progname, filename, opmode);
-		break;
-	}
+ switch (opmode) {
+ case 129:
+  usage(progname, EXIT_FAILURE);
+  break;
+ case 130:
+ case 128:
+  return process_image(progname, filename, opmode);
+  break;
+ }
 
-	return EXIT_SUCCESS;
+ return EXIT_SUCCESS;
 }

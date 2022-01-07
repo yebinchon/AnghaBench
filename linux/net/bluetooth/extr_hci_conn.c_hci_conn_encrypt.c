@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hci_cp_set_conn_encrypt {int encrypt; int /*<<< orphan*/  handle; } ;
-struct hci_conn {int /*<<< orphan*/  hdev; int /*<<< orphan*/  handle; int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  cp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct hci_conn*) ; 
- int /*<<< orphan*/  HCI_CONN_ENCRYPT_PEND ; 
- int /*<<< orphan*/  HCI_OP_SET_CONN_ENCRYPT ; 
- int /*<<< orphan*/  cpu_to_le16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hci_send_cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct hci_cp_set_conn_encrypt*) ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct hci_cp_set_conn_encrypt {int encrypt; int handle; } ;
+struct hci_conn {int hdev; int handle; int flags; } ;
+typedef int cp ;
+
+
+ int BT_DBG (char*,struct hci_conn*) ;
+ int HCI_CONN_ENCRYPT_PEND ;
+ int HCI_OP_SET_CONN_ENCRYPT ;
+ int cpu_to_le16 (int ) ;
+ int hci_send_cmd (int ,int ,int,struct hci_cp_set_conn_encrypt*) ;
+ int test_and_set_bit (int ,int *) ;
 
 __attribute__((used)) static void hci_conn_encrypt(struct hci_conn *conn)
 {
-	BT_DBG("hcon %p", conn);
+ BT_DBG("hcon %p", conn);
 
-	if (!test_and_set_bit(HCI_CONN_ENCRYPT_PEND, &conn->flags)) {
-		struct hci_cp_set_conn_encrypt cp;
-		cp.handle  = cpu_to_le16(conn->handle);
-		cp.encrypt = 0x01;
-		hci_send_cmd(conn->hdev, HCI_OP_SET_CONN_ENCRYPT, sizeof(cp),
-			     &cp);
-	}
+ if (!test_and_set_bit(HCI_CONN_ENCRYPT_PEND, &conn->flags)) {
+  struct hci_cp_set_conn_encrypt cp;
+  cp.handle = cpu_to_le16(conn->handle);
+  cp.encrypt = 0x01;
+  hci_send_cmd(conn->hdev, HCI_OP_SET_CONN_ENCRYPT, sizeof(cp),
+        &cp);
+ }
 }

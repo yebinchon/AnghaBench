@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  dpm_mutex; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int dpm_mutex; } ;
 struct amdgpu_device {TYPE_1__ virt; } ;
 
-/* Variables and functions */
- int EBADRQC ; 
- int /*<<< orphan*/  IDH_FAIL ; 
- int /*<<< orphan*/  IDH_IRQ_FORCE_DPM_LEVEL ; 
- int /*<<< orphan*/  IDH_SUCCESS ; 
- int /*<<< orphan*/  amdgim_is_hwperf (struct amdgpu_device*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- int /*<<< orphan*/  xgpu_ai_mailbox_trans_msg (struct amdgpu_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int xgpu_ai_poll_msg (struct amdgpu_device*,int /*<<< orphan*/ ) ; 
+
+ int EBADRQC ;
+ int IDH_FAIL ;
+ int IDH_IRQ_FORCE_DPM_LEVEL ;
+ int IDH_SUCCESS ;
+ int amdgim_is_hwperf (struct amdgpu_device*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pr_info (char*) ;
+ int xgpu_ai_mailbox_trans_msg (struct amdgpu_device*,int ,int ,int ,int ) ;
+ int xgpu_ai_poll_msg (struct amdgpu_device*,int ) ;
 
 __attribute__((used)) static int xgpu_ai_force_dpm_level(struct amdgpu_device *adev, u32 level)
 {

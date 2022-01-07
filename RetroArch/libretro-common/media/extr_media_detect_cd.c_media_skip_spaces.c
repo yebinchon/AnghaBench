@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static bool media_skip_spaces(const char **buf, size_t len)
 {
-   bool found = false;
+   bool found = 0;
    unsigned i;
 
    if (!buf || !*buf || !**buf)
-      return false;
+      return 0;
 
    for (i = 0; i < len; i++)
    {
@@ -27,12 +18,12 @@ __attribute__((used)) static bool media_skip_spaces(const char **buf, size_t len
          continue;
 
       *buf += i;
-      found = true;
+      found = 1;
       break;
    }
 
    if (found)
-      return true;
+      return 1;
 
-   return false;
+   return 0;
 }

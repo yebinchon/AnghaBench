@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * config ; 
- int /*<<< orphan*/  config_set_string (int /*<<< orphan*/ *,char const*,char const*,char const*,int) ; 
+ int assert (int ) ;
+ int * config ;
+ int config_set_string (int *,char const*,char const*,char const*,int) ;
 
 bool btc_config_set_str(const char *section, const char *key, const char *value)
 {
-    assert(config != NULL);
-    assert(section != NULL);
-    assert(key != NULL);
-    assert(value != NULL);
+    assert(config != ((void*)0));
+    assert(section != ((void*)0));
+    assert(key != ((void*)0));
+    assert(value != ((void*)0));
 
-    config_set_string(config, section, key, value, false);
+    config_set_string(config, section, key, value, 0);
 
-    return true;
+    return 1;
 }

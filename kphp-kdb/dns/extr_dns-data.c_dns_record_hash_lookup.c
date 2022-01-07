@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int data_type; int data_len; scalar_t__ flag_has_ttl; int* data; } ;
-typedef  TYPE_1__ dns_trie_record_t ;
+typedef TYPE_1__ dns_trie_record_t ;
 
-/* Variables and functions */
- size_t* RH ; 
-#define  dns_type_a 131 
-#define  dns_type_aaaa 130 
-#define  dns_type_cname 129 
-#define  dns_type_ptr 128 
- scalar_t__ max_hashed_records ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/ * records_buff ; 
- int records_hash_prime ; 
- scalar_t__ tot_hashed_records ; 
+
+ size_t* RH ;
+
+
+
+
+ scalar_t__ max_hashed_records ;
+ int memcmp (int*,int*,int) ;
+ int * records_buff ;
+ int records_hash_prime ;
+ scalar_t__ tot_hashed_records ;
 
 __attribute__((used)) static int dns_record_hash_lookup (int record_off) {
-  if (RH == NULL) {
+  if (RH == ((void*)0)) {
     return -1;
   }
   dns_trie_record_t *R = (dns_trie_record_t *) (&records_buff[record_off]);
   switch (R->data_type) {
-    case dns_type_a:
-    case dns_type_aaaa:
-    case dns_type_ptr:
-    case dns_type_cname:
+    case 131:
+    case 130:
+    case 128:
+    case 129:
       break;
     default:
       return -1;

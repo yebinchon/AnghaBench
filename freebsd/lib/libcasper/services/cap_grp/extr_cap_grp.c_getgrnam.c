@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct group {int dummy; } ;
-typedef  int /*<<< orphan*/  cap_channel_t ;
+typedef int cap_channel_t ;
 
-/* Variables and functions */
- struct group* cap_getgrcommon (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
+
+ struct group* cap_getgrcommon (int *,char*,char const*,int ) ;
 
 struct group *
 cap_getgrnam(cap_channel_t *chan, const char *name)
 {
 
-	return (cap_getgrcommon(chan, "getgrnam", name, 0));
+ return (cap_getgrcommon(chan, "getgrnam", name, 0));
 }

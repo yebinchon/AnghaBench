@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_2__ {char* zTransient; char** azFile; int /*<<< orphan*/  nFile; int /*<<< orphan*/ * aBuf; } ;
-typedef  TYPE_1__ VfslogCsr ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned int get32bits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- char* vfslog_eventname (unsigned int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_context ;
+struct TYPE_2__ {char* zTransient; char** azFile; int nFile; int * aBuf; } ;
+typedef TYPE_1__ VfslogCsr ;
+
+
+ int SQLITE_OK ;
+ int SQLITE_STATIC ;
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ unsigned int get32bits (int *) ;
+ int sqlite3_result_int (int *,unsigned int) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ char* vfslog_eventname (unsigned int) ;
 
 __attribute__((used)) static int vlogColumn(
-  sqlite3_vtab_cursor *pCursor, 
-  sqlite3_context *ctx, 
+  sqlite3_vtab_cursor *pCursor,
+  sqlite3_context *ctx,
   int i
 ){
   unsigned int val;

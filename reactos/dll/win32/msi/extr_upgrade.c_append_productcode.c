@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__*) ; 
- scalar_t__* msi_alloc (int) ; 
- scalar_t__* msi_dup_property (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  msi_free (scalar_t__*) ; 
- int /*<<< orphan*/  msi_reset_folders (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ msi_set_property (int /*<<< orphan*/ ,scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  strcatW (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  strcmpW (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (scalar_t__*,scalar_t__*) ; 
- int strlenW (scalar_t__*) ; 
- scalar_t__* szSemiColon ; 
- int /*<<< orphan*/  szSourceDir ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_4__ {int db; } ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__* LPCWSTR ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int TRACE (char*,int ,int ) ;
+ int TRUE ;
+ int debugstr_w (scalar_t__*) ;
+ scalar_t__* msi_alloc (int) ;
+ scalar_t__* msi_dup_property (int ,scalar_t__*) ;
+ int msi_free (scalar_t__*) ;
+ int msi_reset_folders (TYPE_1__*,int ) ;
+ scalar_t__ msi_set_property (int ,scalar_t__*,scalar_t__*,int) ;
+ int strcatW (scalar_t__*,scalar_t__*) ;
+ int strcmpW (scalar_t__*,int ) ;
+ int strcpyW (scalar_t__*,scalar_t__*) ;
+ int strlenW (scalar_t__*) ;
+ scalar_t__* szSemiColon ;
+ int szSourceDir ;
 
 __attribute__((used)) static void append_productcode(MSIPACKAGE* package, LPCWSTR action_property,
                                LPCWSTR productid)
@@ -50,12 +50,12 @@ __attribute__((used)) static void append_productcode(MSIPACKAGE* package, LPCWST
     else
         len = 0;
 
-    /*separator*/
+
     len ++;
 
     len += strlenW(productid);
 
-    /*null*/
+
     len++;
 
     newprop = msi_alloc( len*sizeof(WCHAR) );

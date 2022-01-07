@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CREATE_NEW ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
-#define  STGM_CONVERT 130 
-#define  STGM_CREATE 129 
- int STGM_CREATE_MODE (int /*<<< orphan*/ ) ; 
-#define  STGM_FAILIFTHERE 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int CREATE_ALWAYS ;
+ int CREATE_NEW ;
+ int ERR (char*) ;
+ int FIXME (char*) ;
+
+
+ int STGM_CREATE_MODE (int ) ;
+
+ int assert (int ) ;
 
 __attribute__((used)) static DWORD GetCreationModeFromSTGM(DWORD stgm)
 {
   switch(STGM_CREATE_MODE(stgm))
   {
-  case STGM_CREATE:
+  case 129:
     return CREATE_ALWAYS;
-  case STGM_CONVERT:
+  case 130:
     FIXME("STGM_CONVERT not implemented!\n");
     return CREATE_NEW;
-  case STGM_FAILIFTHERE:
+  case 128:
     return CREATE_NEW;
   }
   ERR("Invalid create mode!\n");

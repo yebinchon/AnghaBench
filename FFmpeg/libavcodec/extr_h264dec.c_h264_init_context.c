@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_8__ ;
-typedef  struct TYPE_21__   TYPE_7__ ;
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
-typedef  struct TYPE_14__   TYPE_12__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_22__ {int active_thread_type; int thread_count; int /*<<< orphan*/  chroma_sample_location; int /*<<< orphan*/  flags; int /*<<< orphan*/  workaround_bugs; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
+
+
+typedef struct TYPE_22__ TYPE_8__ ;
+typedef struct TYPE_21__ TYPE_7__ ;
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+typedef struct TYPE_14__ TYPE_12__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+struct TYPE_22__ {int active_thread_type; int thread_count; int chroma_sample_location; int flags; int workaround_bugs; int height; int width; } ;
 struct TYPE_20__ {void* f; } ;
 struct TYPE_19__ {void* f; } ;
 struct TYPE_17__ {int x264_build; } ;
 struct TYPE_16__ {int arrangement_cancel_flag; } ;
 struct TYPE_13__ {TYPE_3__ unregistered; TYPE_2__ frame_packing; } ;
 struct TYPE_15__ {int prev_poc_msb; int prev_frame_num; } ;
-struct TYPE_21__ {int cur_chroma_format_idc; int recovery_frame; int nb_slice_ctx; TYPE_12__* slice_ctx; TYPE_6__ last_pic_for_ec; TYPE_5__ cur_pic; TYPE_4__* DPB; TYPE_11__ sei; void** last_pocs; void* next_outputed_poc; TYPE_1__ poc; scalar_t__ frame_recovered; int /*<<< orphan*/  flags; int /*<<< orphan*/  workaround_bugs; int /*<<< orphan*/  picture_structure; int /*<<< orphan*/  height_from_caller; int /*<<< orphan*/  width_from_caller; TYPE_8__* avctx; } ;
+struct TYPE_21__ {int cur_chroma_format_idc; int recovery_frame; int nb_slice_ctx; TYPE_12__* slice_ctx; TYPE_6__ last_pic_for_ec; TYPE_5__ cur_pic; TYPE_4__* DPB; TYPE_11__ sei; void** last_pocs; void* next_outputed_poc; TYPE_1__ poc; scalar_t__ frame_recovered; int flags; int workaround_bugs; int picture_structure; int height_from_caller; int width_from_caller; TYPE_8__* avctx; } ;
 struct TYPE_18__ {void* f; } ;
 struct TYPE_14__ {TYPE_7__* h264; } ;
-typedef  TYPE_7__ H264Context ;
-typedef  TYPE_8__ AVCodecContext ;
+typedef TYPE_7__ H264Context ;
+typedef TYPE_8__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVCHROMA_LOC_LEFT ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FF_THREAD_SLICE ; 
- int H264_MAX_PICTURE_COUNT ; 
- void* INT_MIN ; 
- int MAX_DELAYED_PIC_COUNT ; 
- int /*<<< orphan*/  PICT_FRAME ; 
- void* av_frame_alloc () ; 
- TYPE_12__* av_mallocz_array (int,int) ; 
- int /*<<< orphan*/  ff_h264_sei_uninit (TYPE_11__*) ; 
+
+ int AVCHROMA_LOC_LEFT ;
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FF_THREAD_SLICE ;
+ int H264_MAX_PICTURE_COUNT ;
+ void* INT_MIN ;
+ int MAX_DELAYED_PIC_COUNT ;
+ int PICT_FRAME ;
+ void* av_frame_alloc () ;
+ TYPE_12__* av_mallocz_array (int,int) ;
+ int ff_h264_sei_uninit (TYPE_11__*) ;
 
 __attribute__((used)) static int h264_init_context(AVCodecContext *avctx, H264Context *h)
 {
     int i;
 
-    h->avctx                 = avctx;
+    h->avctx = avctx;
     h->cur_chroma_format_idc = -1;
 
-    h->width_from_caller     = avctx->width;
-    h->height_from_caller    = avctx->height;
+    h->width_from_caller = avctx->width;
+    h->height_from_caller = avctx->height;
 
-    h->picture_structure     = PICT_FRAME;
-    h->workaround_bugs       = avctx->workaround_bugs;
-    h->flags                 = avctx->flags;
-    h->poc.prev_poc_msb      = 1 << 16;
-    h->recovery_frame        = -1;
-    h->frame_recovered       = 0;
-    h->poc.prev_frame_num    = -1;
+    h->picture_structure = PICT_FRAME;
+    h->workaround_bugs = avctx->workaround_bugs;
+    h->flags = avctx->flags;
+    h->poc.prev_poc_msb = 1 << 16;
+    h->recovery_frame = -1;
+    h->frame_recovered = 0;
+    h->poc.prev_frame_num = -1;
     h->sei.frame_packing.arrangement_cancel_flag = -1;
     h->sei.unregistered.x264_build = -1;
 

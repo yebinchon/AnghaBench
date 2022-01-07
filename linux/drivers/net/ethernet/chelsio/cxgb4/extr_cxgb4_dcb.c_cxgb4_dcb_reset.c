@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cxgb4_dcb_cleanup_apps (struct net_device*) ; 
- int /*<<< orphan*/  cxgb4_dcb_state_init (struct net_device*) ; 
+
+ int cxgb4_dcb_cleanup_apps (struct net_device*) ;
+ int cxgb4_dcb_state_init (struct net_device*) ;
 
 void cxgb4_dcb_reset(struct net_device *dev)
 {
-	cxgb4_dcb_cleanup_apps(dev);
-	cxgb4_dcb_state_init(dev);
+ cxgb4_dcb_cleanup_apps(dev);
+ cxgb4_dcb_state_init(dev);
 }

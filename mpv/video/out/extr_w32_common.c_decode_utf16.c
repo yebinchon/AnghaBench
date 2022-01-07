@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int wchar_t ;
+
+
+
+
+typedef int wchar_t ;
 struct vo_w32_state {int high_surrogate; } ;
 
-/* Variables and functions */
- scalar_t__ IS_HIGH_SURROGATE (int) ; 
- scalar_t__ IS_LOW_SURROGATE (int) ; 
- int /*<<< orphan*/  MP_ERR (struct vo_w32_state*,char*) ; 
- int decode_surrogate_pair (int,int) ; 
+
+ scalar_t__ IS_HIGH_SURROGATE (int) ;
+ scalar_t__ IS_LOW_SURROGATE (int) ;
+ int MP_ERR (struct vo_w32_state*,char*) ;
+ int decode_surrogate_pair (int,int) ;
 
 __attribute__((used)) static int decode_utf16(struct vo_w32_state *w32, wchar_t c)
 {
-    // Decode UTF-16, keeping state in w32->high_surrogate
+
     if (IS_HIGH_SURROGATE(c)) {
         w32->high_surrogate = c;
         return 0;

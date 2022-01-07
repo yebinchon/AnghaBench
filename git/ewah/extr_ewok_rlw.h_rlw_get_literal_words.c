@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int eword_t ;
 
-/* Variables and functions */
- int RLW_RUNNING_BITS ; 
+
+
+
+typedef int eword_t ;
+
+
+ int RLW_RUNNING_BITS ;
 
 __attribute__((used)) static inline eword_t rlw_get_literal_words(const eword_t *word)
 {
-	return *word >> (1 + RLW_RUNNING_BITS);
+ return *word >> (1 + RLW_RUNNING_BITS);
 }

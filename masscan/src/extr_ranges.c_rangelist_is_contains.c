@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RangeList {unsigned int count; struct Range* list; } ;
 struct Range {unsigned int begin; unsigned int end; } ;
 
-/* Variables and functions */
+
 
 int
 rangelist_is_contains(const struct RangeList *targets, unsigned addr)

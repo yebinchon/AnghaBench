@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ddi ;
-struct TYPE_9__ {scalar_t__ dwHow; int /*<<< orphan*/  guidInstance; int /*<<< orphan*/  dwObjID; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int ddi ;
+struct TYPE_9__ {scalar_t__ dwHow; int guidInstance; int dwObjID; } ;
 struct TYPE_8__ {TYPE_3__* rgoAction; } ;
-struct TYPE_7__ {int dwSize; int /*<<< orphan*/  guidInstance; } ;
-typedef  int /*<<< orphan*/  IDirectInputDevice8A ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_1__ DIDEVICEINSTANCEA ;
-typedef  TYPE_2__ DIACTIONFORMATA ;
-typedef  TYPE_3__ DIACTIONA ;
+struct TYPE_7__ {int dwSize; int guidInstance; } ;
+typedef int IDirectInputDevice8A ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_1__ DIDEVICEINSTANCEA ;
+typedef TYPE_2__ DIACTIONFORMATA ;
+typedef TYPE_3__ DIACTIONA ;
 
-/* Variables and functions */
- scalar_t__ DIAH_DEFAULT ; 
- scalar_t__ DIAH_USERCONFIG ; 
- int /*<<< orphan*/  DIDBAM_HWDEFAULTS ; 
- scalar_t__ DIDFT_GETINSTANCE (int /*<<< orphan*/ ) ; 
- scalar_t__ DIDFT_GETTYPE (int /*<<< orphan*/ ) ; 
- int IDirectInputDevice8_BuildActionMap (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirectInputDevice_GetDeviceInfo (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int SUCCEEDED (int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
+
+ scalar_t__ DIAH_DEFAULT ;
+ scalar_t__ DIAH_USERCONFIG ;
+ int DIDBAM_HWDEFAULTS ;
+ scalar_t__ DIDFT_GETINSTANCE (int ) ;
+ scalar_t__ DIDFT_GETTYPE (int ) ;
+ int IDirectInputDevice8_BuildActionMap (int *,TYPE_2__*,int *,int ) ;
+ int IDirectInputDevice_GetDeviceInfo (int *,TYPE_1__*) ;
+ int IsEqualGUID (int *,int *) ;
+ int SUCCEEDED (int) ;
+ int ok (int,char*,int,...) ;
 
 __attribute__((used)) static void test_build_action_map(IDirectInputDevice8A *lpdid, DIACTIONFORMATA *lpdiaf,
                                   int action_index, DWORD expected_type, DWORD expected_inst)
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_build_action_map(IDirectInputDevice8A *lp
     ddi.dwSize = sizeof(ddi);
     IDirectInputDevice_GetDeviceInfo(lpdid, &ddi);
 
-    hr = IDirectInputDevice8_BuildActionMap(lpdid, lpdiaf, NULL, DIDBAM_HWDEFAULTS);
+    hr = IDirectInputDevice8_BuildActionMap(lpdid, lpdiaf, ((void*)0), DIDBAM_HWDEFAULTS);
     ok (SUCCEEDED(hr), "BuildActionMap failed hr=%08x\n", hr);
 
     actions = lpdiaf->rgoAction;

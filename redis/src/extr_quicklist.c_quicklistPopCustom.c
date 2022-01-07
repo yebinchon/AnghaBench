@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  zl; } ;
-typedef  TYPE_1__ quicklistNode ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int zl; } ;
+typedef TYPE_1__ quicklistNode ;
 struct TYPE_7__ {scalar_t__ count; TYPE_1__* tail; TYPE_1__* head; } ;
-typedef  TYPE_2__ quicklist ;
+typedef TYPE_2__ quicklist ;
 
-/* Variables and functions */
- int QUICKLIST_HEAD ; 
- int QUICKLIST_TAIL ; 
- int /*<<< orphan*/  quicklistDelIndex (TYPE_2__*,TYPE_1__*,unsigned char**) ; 
- scalar_t__ ziplistGet (unsigned char*,unsigned char**,unsigned int*,long long*) ; 
- unsigned char* ziplistIndex (int /*<<< orphan*/ ,int) ; 
+
+ int QUICKLIST_HEAD ;
+ int QUICKLIST_TAIL ;
+ int quicklistDelIndex (TYPE_2__*,TYPE_1__*,unsigned char**) ;
+ scalar_t__ ziplistGet (unsigned char*,unsigned char**,unsigned int*,long long*) ;
+ unsigned char* ziplistIndex (int ,int) ;
 
 int quicklistPopCustom(quicklist *quicklist, int where, unsigned char **data,
                        unsigned int *sz, long long *sval,
@@ -37,7 +37,7 @@ int quicklistPopCustom(quicklist *quicklist, int where, unsigned char **data,
         return 0;
 
     if (data)
-        *data = NULL;
+        *data = ((void*)0);
     if (sz)
         *sz = 0;
     if (sval)
@@ -61,7 +61,7 @@ int quicklistPopCustom(quicklist *quicklist, int where, unsigned char **data,
                 *sz = vlen;
         } else {
             if (data)
-                *data = NULL;
+                *data = ((void*)0);
             if (sval)
                 *sval = vlong;
         }

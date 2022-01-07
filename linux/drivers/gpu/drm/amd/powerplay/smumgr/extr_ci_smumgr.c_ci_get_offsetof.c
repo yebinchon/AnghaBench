@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int const AverageGraphicsA ; 
-#define  AverageGraphicsActivity 141 
- int const AverageMemoryA ; 
-#define  AverageMemoryActivity 140 
-#define  DRAM_LOG_ADDR_H 139 
-#define  DRAM_LOG_ADDR_L 138 
-#define  DRAM_LOG_BUFF_SIZE 137 
-#define  DRAM_LOG_PHY_ADDR_H 136 
-#define  DRAM_LOG_PHY_ADDR_L 135 
-#define  HandshakeDisables 134 
- int const LowSclkInterruptT ; 
-#define  LowSclkInterruptThreshold 133 
-#define  PreVBlankGap 132 
- int /*<<< orphan*/  SMU7_Discrete_DpmTable ; 
- int /*<<< orphan*/  SMU7_SoftRegisters ; 
-#define  SMU_Discrete_DpmTable 131 
-#define  SMU_SoftRegisters 130 
-#define  VBlankTimeout 129 
-#define  VoltageChangeTimeout 128 
- int offsetof (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  pr_debug (char*,int,int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int const AverageGraphicsA ;
+
+ int const AverageMemoryA ;
+
+
+
+
+
+
+
+ int const LowSclkInterruptT ;
+
+
+ int SMU7_Discrete_DpmTable ;
+ int SMU7_SoftRegisters ;
+
+
+
+
+ int offsetof (int ,int const) ;
+ int pr_debug (char*,int,int) ;
 
 __attribute__((used)) static uint32_t ci_get_offsetof(uint32_t type, uint32_t member)
 {
-	switch (type) {
-	case SMU_SoftRegisters:
-		switch (member) {
-		case HandshakeDisables:
-			return offsetof(SMU7_SoftRegisters, HandshakeDisables);
-		case VoltageChangeTimeout:
-			return offsetof(SMU7_SoftRegisters, VoltageChangeTimeout);
-		case AverageGraphicsActivity:
-			return offsetof(SMU7_SoftRegisters, AverageGraphicsA);
-		case AverageMemoryActivity:
-			return offsetof(SMU7_SoftRegisters, AverageMemoryA);
-		case PreVBlankGap:
-			return offsetof(SMU7_SoftRegisters, PreVBlankGap);
-		case VBlankTimeout:
-			return offsetof(SMU7_SoftRegisters, VBlankTimeout);
-		case DRAM_LOG_ADDR_H:
-			return offsetof(SMU7_SoftRegisters, DRAM_LOG_ADDR_H);
-		case DRAM_LOG_ADDR_L:
-			return offsetof(SMU7_SoftRegisters, DRAM_LOG_ADDR_L);
-		case DRAM_LOG_PHY_ADDR_H:
-			return offsetof(SMU7_SoftRegisters, DRAM_LOG_PHY_ADDR_H);
-		case DRAM_LOG_PHY_ADDR_L:
-			return offsetof(SMU7_SoftRegisters, DRAM_LOG_PHY_ADDR_L);
-		case DRAM_LOG_BUFF_SIZE:
-			return offsetof(SMU7_SoftRegisters, DRAM_LOG_BUFF_SIZE);
-		}
-		break;
-	case SMU_Discrete_DpmTable:
-		switch (member) {
-		case LowSclkInterruptThreshold:
-			return offsetof(SMU7_Discrete_DpmTable, LowSclkInterruptT);
-		}
-		break;
-	}
-	pr_debug("can't get the offset of type %x member %x\n", type, member);
-	return 0;
+ switch (type) {
+ case 130:
+  switch (member) {
+  case 134:
+   return offsetof(SMU7_SoftRegisters, 134);
+  case 128:
+   return offsetof(SMU7_SoftRegisters, 128);
+  case 141:
+   return offsetof(SMU7_SoftRegisters, AverageGraphicsA);
+  case 140:
+   return offsetof(SMU7_SoftRegisters, AverageMemoryA);
+  case 132:
+   return offsetof(SMU7_SoftRegisters, 132);
+  case 129:
+   return offsetof(SMU7_SoftRegisters, 129);
+  case 139:
+   return offsetof(SMU7_SoftRegisters, 139);
+  case 138:
+   return offsetof(SMU7_SoftRegisters, 138);
+  case 136:
+   return offsetof(SMU7_SoftRegisters, 136);
+  case 135:
+   return offsetof(SMU7_SoftRegisters, 135);
+  case 137:
+   return offsetof(SMU7_SoftRegisters, 137);
+  }
+  break;
+ case 131:
+  switch (member) {
+  case 133:
+   return offsetof(SMU7_Discrete_DpmTable, LowSclkInterruptT);
+  }
+  break;
+ }
+ pr_debug("can't get the offset of type %x member %x\n", type, member);
+ return 0;
 }

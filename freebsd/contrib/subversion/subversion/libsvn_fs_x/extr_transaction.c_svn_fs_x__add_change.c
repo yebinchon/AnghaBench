@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__txn_id_t ;
-struct TYPE_4__ {char const* data; int /*<<< orphan*/  len; } ;
-struct TYPE_5__ {int /*<<< orphan*/  copyfrom_path; int /*<<< orphan*/  copyfrom_rev; int /*<<< orphan*/  copyfrom_known; int /*<<< orphan*/  node_kind; int /*<<< orphan*/  mergeinfo_mod; void* prop_mod; void* text_mod; int /*<<< orphan*/  change_kind; TYPE_1__ path; } ;
-typedef  TYPE_2__ svn_fs_x__change_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_path_change_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  void* svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int APR_APPEND ; 
- int APR_CREATE ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int APR_WRITE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  svn_fs_x__path_txn_changes (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__write_changes (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,TYPE_2__*) ; 
- int /*<<< orphan*/ * svn_io_file_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_tristate_false ; 
- int /*<<< orphan*/  svn_tristate_true ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_fs_x__txn_id_t ;
+struct TYPE_4__ {char const* data; int len; } ;
+struct TYPE_5__ {int copyfrom_path; int copyfrom_rev; int copyfrom_known; int node_kind; int mergeinfo_mod; void* prop_mod; void* text_mod; int change_kind; TYPE_1__ path; } ;
+typedef TYPE_2__ svn_fs_x__change_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_path_change_kind_t ;
+typedef int svn_error_t ;
+typedef void* svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_file_t ;
+
+
+ int APR_APPEND ;
+ int APR_CREATE ;
+ int APR_OS_DEFAULT ;
+ int APR_WRITE ;
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int TRUE ;
+ int * apr_hash_make (int *) ;
+ int apr_pstrdup (int *,char const*) ;
+ int strlen (char const*) ;
+ int svn_fs_x__path_txn_changes (int *,int ,int *) ;
+ int svn_fs_x__write_changes (int ,int *,int *,int ,int *) ;
+ int svn_hash_sets (int *,char const*,TYPE_2__*) ;
+ int * svn_io_file_close (int *,int *) ;
+ int svn_io_file_open (int **,int ,int,int ,int *) ;
+ int svn_stream_from_aprfile2 (int *,int ,int *) ;
+ int svn_tristate_false ;
+ int svn_tristate_true ;
 
 svn_error_t *
 svn_fs_x__add_change(svn_fs_t *fs,
@@ -63,7 +63,7 @@ svn_fs_x__add_change(svn_fs_t *fs,
   svn_fs_x__change_t change;
   apr_hash_t *changes = apr_hash_make(scratch_pool);
 
-  /* Not using APR_BUFFERED to append change in one atomic write operation. */
+
   SVN_ERR(svn_io_file_open(&file,
                            svn_fs_x__path_txn_changes(fs, txn_id,
                                                       scratch_pool),

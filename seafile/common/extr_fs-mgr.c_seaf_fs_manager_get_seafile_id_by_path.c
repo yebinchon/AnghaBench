@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  guint32 ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* seaf_fs_manager_path_to_obj_id (int /*<<< orphan*/ *,char const*,int,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int guint32 ;
+typedef int SeafFSManager ;
+typedef int GError ;
+
+
+ scalar_t__ S_ISDIR (int ) ;
+ int g_free (char*) ;
+ char* seaf_fs_manager_path_to_obj_id (int *,char const*,int,char const*,char const*,int *,int **) ;
 
 char *
 seaf_fs_manager_get_seafile_id_by_path (SeafFSManager *mgr,
@@ -34,11 +34,11 @@ seaf_fs_manager_get_seafile_id_by_path (SeafFSManager *mgr,
                                               root_id, path, &mode, error);
 
     if (!file_id)
-        return NULL;
+        return ((void*)0);
 
     if (file_id && S_ISDIR(mode)) {
         g_free (file_id);
-        return NULL;
+        return ((void*)0);
     }
 
     return file_id;

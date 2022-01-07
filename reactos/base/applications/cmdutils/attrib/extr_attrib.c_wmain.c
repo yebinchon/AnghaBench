@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  char* LPWSTR ;
-typedef  int INT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChangeAttribute (int*,int*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int FILE_ATTRIBUTE_ARCHIVE ; 
- int FILE_ATTRIBUTE_HIDDEN ; 
- int FILE_ATTRIBUTE_READONLY ; 
- int FILE_ATTRIBUTE_SYSTEM ; 
- int GetCurrentDirectory (int,int*) ; 
- int /*<<< orphan*/  GetFullPathName (int*,int,int*,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  PrintAttribute (int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STRING_ATTRIB_HELP ; 
- int /*<<< orphan*/  STRING_ERROR_INVALID_PARAM_FORMAT ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  TRUE ; 
- int UNICODE_NULL ; 
- int towupper (int) ; 
- scalar_t__ wcscmp (int*,char*) ; 
- int /*<<< orphan*/  wcscpy (int*,char*) ; 
- scalar_t__ wcsicmp (int*,char*) ; 
- int wcslen (int*) ; 
- char* wcsrchr (int*,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef char* LPWSTR ;
+typedef int INT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ChangeAttribute (int*,int*,int,int,int ,int ) ;
+ int ConInitStdStreams () ;
+ int ConResPrintf (int ,int ,int*) ;
+ int ConResPuts (int ,int ) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_ARCHIVE ;
+ int FILE_ATTRIBUTE_HIDDEN ;
+ int FILE_ATTRIBUTE_READONLY ;
+ int FILE_ATTRIBUTE_SYSTEM ;
+ int GetCurrentDirectory (int,int*) ;
+ int GetFullPathName (int*,int,int*,int *) ;
+ int MAX_PATH ;
+ int PrintAttribute (int*,int*,int ) ;
+ int STRING_ATTRIB_HELP ;
+ int STRING_ERROR_INVALID_PARAM_FORMAT ;
+ int StdErr ;
+ int StdOut ;
+ int TRUE ;
+ int UNICODE_NULL ;
+ int towupper (int) ;
+ scalar_t__ wcscmp (int*,char*) ;
+ int wcscpy (int*,char*) ;
+ scalar_t__ wcsicmp (int*,char*) ;
+ int wcslen (int*) ;
+ char* wcsrchr (int*,int) ;
 
 int wmain(int argc, WCHAR *argv[])
 {
-    INT    i;
-    WCHAR  szPath[MAX_PATH];
-    WCHAR  szFileName [MAX_PATH];
-    BOOL   bRecurse = FALSE;
-    BOOL   bDirectories = FALSE;
-    DWORD  dwAttrib = 0;
-    DWORD  dwMask = 0;
+    INT i;
+    WCHAR szPath[MAX_PATH];
+    WCHAR szFileName [MAX_PATH];
+    BOOL bRecurse = FALSE;
+    BOOL bDirectories = FALSE;
+    DWORD dwAttrib = 0;
+    DWORD dwMask = 0;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
-    /* Print help */
+
     if (argc > 1 && wcscmp(argv[1], L"/?") == 0)
     {
         ConResPuts(StdOut, STRING_ATTRIB_HELP);
         return 0;
     }
 
-    /* check for options */
+
     for (i = 1; i < argc; i++)
     {
         if (wcsicmp(argv[i], L"/s") == 0)
@@ -72,7 +72,7 @@ int wmain(int argc, WCHAR *argv[])
             bDirectories = TRUE;
     }
 
-    /* create attributes and mask */
+
     for (i = 1; i < argc; i++)
     {
         if (*argv[i] == L'+')
@@ -86,22 +86,22 @@ int wmain(int argc, WCHAR *argv[])
             switch (towupper(argv[i][1]))
             {
                 case L'A':
-                    dwMask   |= FILE_ATTRIBUTE_ARCHIVE;
+                    dwMask |= FILE_ATTRIBUTE_ARCHIVE;
                     dwAttrib |= FILE_ATTRIBUTE_ARCHIVE;
                     break;
 
                 case L'H':
-                    dwMask   |= FILE_ATTRIBUTE_HIDDEN;
+                    dwMask |= FILE_ATTRIBUTE_HIDDEN;
                     dwAttrib |= FILE_ATTRIBUTE_HIDDEN;
                     break;
 
                 case L'R':
-                    dwMask   |= FILE_ATTRIBUTE_READONLY;
+                    dwMask |= FILE_ATTRIBUTE_READONLY;
                     dwAttrib |= FILE_ATTRIBUTE_READONLY;
                     break;
 
                 case L'S':
-                    dwMask   |= FILE_ATTRIBUTE_SYSTEM;
+                    dwMask |= FILE_ATTRIBUTE_SYSTEM;
                     dwAttrib |= FILE_ATTRIBUTE_SYSTEM;
                     break;
 
@@ -121,22 +121,22 @@ int wmain(int argc, WCHAR *argv[])
             switch (towupper(argv[i][1]))
             {
                 case L'A':
-                    dwMask   |= FILE_ATTRIBUTE_ARCHIVE;
+                    dwMask |= FILE_ATTRIBUTE_ARCHIVE;
                     dwAttrib &= ~FILE_ATTRIBUTE_ARCHIVE;
                     break;
 
                 case L'H':
-                    dwMask   |= FILE_ATTRIBUTE_HIDDEN;
+                    dwMask |= FILE_ATTRIBUTE_HIDDEN;
                     dwAttrib &= ~FILE_ATTRIBUTE_HIDDEN;
                     break;
 
                 case L'R':
-                    dwMask   |= FILE_ATTRIBUTE_READONLY;
+                    dwMask |= FILE_ATTRIBUTE_READONLY;
                     dwAttrib &= ~FILE_ATTRIBUTE_READONLY;
                     break;
 
                 case L'S':
-                    dwMask   |= FILE_ATTRIBUTE_SYSTEM;
+                    dwMask |= FILE_ATTRIBUTE_SYSTEM;
                     dwAttrib &= ~FILE_ATTRIBUTE_SYSTEM;
                     break;
 
@@ -162,14 +162,14 @@ int wmain(int argc, WCHAR *argv[])
         return 0;
     }
 
-    /* get full file name */
+
     for (i = 1; i < argc; i++)
     {
         if ((*argv[i] != L'+') && (*argv[i] != L'-') && (*argv[i] != L'/'))
         {
             LPWSTR p;
 
-            GetFullPathName(argv[i], MAX_PATH, szPath, NULL);
+            GetFullPathName(argv[i], MAX_PATH, szPath, ((void*)0));
             p = wcsrchr(szPath, L'\\') + 1;
             wcscpy(szFileName, p);
             *p = L'\0';

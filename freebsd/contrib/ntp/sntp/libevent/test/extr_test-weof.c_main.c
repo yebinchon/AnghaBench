@@ -1,69 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct event {int dummy; } ;
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  int /*<<< orphan*/  WORD ;
+typedef int WSADATA ;
+typedef int WORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNIX ; 
- int /*<<< orphan*/  EV_WRITE ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  SIGPIPE ; 
- scalar_t__ SIG_ERR ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_add (struct event*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_dispatch () ; 
- int /*<<< orphan*/  event_init () ; 
- int /*<<< orphan*/  event_set (struct event*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct event*) ; 
- int evutil_socketpair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pair ; 
- scalar_t__ signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int test_okay ; 
- int /*<<< orphan*/  write_cb ; 
+
+ int AF_UNIX ;
+ int EV_WRITE ;
+ int MAKEWORD (int,int) ;
+ int SIGPIPE ;
+ scalar_t__ SIG_ERR ;
+ int SIG_IGN ;
+ int SOCK_STREAM ;
+ int WSAStartup (int ,int *) ;
+ int event_add (struct event*,int *) ;
+ int event_dispatch () ;
+ int event_init () ;
+ int event_set (struct event*,int ,int ,int ,struct event*) ;
+ int evutil_socketpair (int ,int ,int ,int *) ;
+ int * pair ;
+ scalar_t__ signal (int ,int ) ;
+ int test_okay ;
+ int write_cb ;
 
 int
 main(int argc, char **argv)
 {
-	struct event ev;
+ struct event ev;
+ if (signal(SIGPIPE, SIG_IGN) == SIG_ERR)
+  return (1);
 
-#ifdef _WIN32
-	WORD wVersionRequested;
-	WSADATA wsaData;
 
-	wVersionRequested = MAKEWORD(2, 2);
+ if (evutil_socketpair(AF_UNIX, SOCK_STREAM, 0, pair) == -1)
+  return (1);
 
-	(void) WSAStartup(wVersionRequested, &wsaData);
-#endif
 
-#ifndef _WIN32
-	if (signal(SIGPIPE, SIG_IGN) == SIG_ERR)
-		return (1);
-#endif
+ event_init();
 
-	if (evutil_socketpair(AF_UNIX, SOCK_STREAM, 0, pair) == -1)
-		return (1);
 
-	/* Initalize the event library */
-	event_init();
+ event_set(&ev, pair[1], EV_WRITE, write_cb, &ev);
 
-	/* Initalize one event */
-	event_set(&ev, pair[1], EV_WRITE, write_cb, &ev);
+ event_add(&ev, ((void*)0));
 
-	event_add(&ev, NULL);
+ event_dispatch();
 
-	event_dispatch();
-
-	return (test_okay);
+ return (test_okay);
 }

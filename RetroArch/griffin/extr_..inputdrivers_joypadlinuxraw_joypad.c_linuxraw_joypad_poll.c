@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
 struct linuxraw_joypad {int dummy; } ;
 struct inotify_event {scalar_t__ name; int mask; scalar_t__ len; } ;
 struct TYPE_5__ {scalar_t__ ptr; } ;
 struct epoll_event {TYPE_1__ data; } ;
-typedef  int /*<<< orphan*/  path ;
-struct TYPE_7__ {int /*<<< orphan*/  ident; } ;
-struct TYPE_6__ {int fd; char* ident; int /*<<< orphan*/  axes; scalar_t__ buttons; } ;
+typedef int path ;
+struct TYPE_7__ {int ident; } ;
+struct TYPE_6__ {int fd; char* ident; int axes; scalar_t__ buttons; } ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int IN_ATTRIB ; 
- int IN_CREATE ; 
- int IN_DELETE ; 
- int MAX_USERS ; 
- int NAME_MAX ; 
- int PATH_MAX_LENGTH ; 
- scalar_t__ calloc (int,size_t) ; 
- int /*<<< orphan*/  close (int) ; 
- int epoll_wait (int /*<<< orphan*/ ,struct epoll_event*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  input_autoconfigure_connect (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_autoconfigure_disconnect (unsigned int,char*) ; 
- int /*<<< orphan*/  linuxraw_epoll ; 
- scalar_t__ linuxraw_hotplug ; 
- int /*<<< orphan*/  linuxraw_inotify ; 
- TYPE_4__ linuxraw_joypad ; 
- scalar_t__ linuxraw_joypad_init_pad (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  linuxraw_joypad_name (unsigned int) ; 
- TYPE_2__* linuxraw_pads ; 
- int /*<<< orphan*/  linuxraw_poll_pad (struct linuxraw_joypad*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int read (int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,scalar_t__) ; 
- int /*<<< orphan*/  string_is_empty (char*) ; 
- scalar_t__ strstr (scalar_t__,char*) ; 
- unsigned int strtoul (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EINTR ;
+ int IN_ATTRIB ;
+ int IN_CREATE ;
+ int IN_DELETE ;
+ int MAX_USERS ;
+ int NAME_MAX ;
+ int PATH_MAX_LENGTH ;
+ scalar_t__ calloc (int,size_t) ;
+ int close (int) ;
+ int epoll_wait (int ,struct epoll_event*,int,int ) ;
+ scalar_t__ errno ;
+ int free (char*) ;
+ int input_autoconfigure_connect (char*,int *,int ,unsigned int,int ,int ) ;
+ int input_autoconfigure_disconnect (unsigned int,char*) ;
+ int linuxraw_epoll ;
+ scalar_t__ linuxraw_hotplug ;
+ int linuxraw_inotify ;
+ TYPE_4__ linuxraw_joypad ;
+ scalar_t__ linuxraw_joypad_init_pad (char*,TYPE_2__*) ;
+ int linuxraw_joypad_name (unsigned int) ;
+ TYPE_2__* linuxraw_pads ;
+ int linuxraw_poll_pad (struct linuxraw_joypad*) ;
+ int memset (int ,int ,int) ;
+ int read (int ,char*,size_t) ;
+ int snprintf (char*,int,char*,scalar_t__) ;
+ int string_is_empty (char*) ;
+ scalar_t__ strstr (scalar_t__,char*) ;
+ unsigned int strtoul (scalar_t__,int *,int ) ;
 
 __attribute__((used)) static void linuxraw_joypad_poll(void)
 {
@@ -71,9 +71,9 @@ retry:
          linuxraw_poll_pad(ptr);
       else
       {
-         /* handle plugged pad */
+
          int j, rc;
-         size_t event_size  = sizeof(struct inotify_event) + NAME_MAX + 1;
+         size_t event_size = sizeof(struct inotify_event) + NAME_MAX + 1;
          uint8_t *event_buf = (uint8_t*)calloc(1, event_size);
 
          while ((rc = read(linuxraw_inotify, event_buf, event_size)) >= 0)
@@ -82,7 +82,7 @@ retry:
 
             event_buf[rc-1] = '\0';
 
-            /* Can read multiple events in one read() call. */
+
 
             for (j = 0; j < rc; j += event->len + sizeof(struct inotify_event))
             {
@@ -93,7 +93,7 @@ retry:
                if (strstr(event->name, "js") != event->name)
                   continue;
 
-               idx = strtoul(event->name + 2, NULL, 0);
+               idx = strtoul(event->name + 2, ((void*)0), 0);
                if (idx >= MAX_USERS)
                   continue;
 
@@ -113,16 +113,16 @@ retry:
                      *linuxraw_pads[idx].ident = '\0';
 
                      input_autoconfigure_connect(
-                           NULL,
-                           NULL,
+                           ((void*)0),
+                           ((void*)0),
                            linuxraw_joypad_name(idx),
                            idx,
                            0,
                            0);
                   }
                }
-               /* Sometimes, device will be created before
-                * access to it is established. */
+
+
                else if (event->mask & (IN_CREATE | IN_ATTRIB))
                {
                   char path[PATH_MAX_LENGTH];
@@ -131,11 +131,11 @@ retry:
 
                   snprintf(path, sizeof(path), "/dev/input/%s", event->name);
 
-                  if (     !string_is_empty(linuxraw_pads[idx].ident)
+                  if ( !string_is_empty(linuxraw_pads[idx].ident)
                         && linuxraw_joypad_init_pad(path, &linuxraw_pads[idx]))
                      input_autoconfigure_connect(
                            linuxraw_pads[idx].ident,
-                           NULL,
+                           ((void*)0),
                            linuxraw_joypad.ident,
                            idx,
                            0,

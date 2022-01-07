@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct scsi_cmnd {int* cmnd; TYPE_3__* device; int /*<<< orphan*/  cmd_len; } ;
-struct TYPE_16__ {int /*<<< orphan*/  dma_direction; TYPE_5__* pthru; } ;
-typedef  TYPE_4__ scb_t ;
-struct TYPE_17__ {int timeout; int ars; int reqsenselen; int channel; int target; int /*<<< orphan*/  dataxferlen; int /*<<< orphan*/  dataxferaddr; int /*<<< orphan*/  numsgelements; int /*<<< orphan*/  cdb; int /*<<< orphan*/  logdrv; int /*<<< orphan*/  cdblen; scalar_t__ islogical; } ;
-typedef  TYPE_5__ mega_passthru ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct scsi_cmnd {int* cmnd; TYPE_3__* device; int cmd_len; } ;
+struct TYPE_16__ {int dma_direction; TYPE_5__* pthru; } ;
+typedef TYPE_4__ scb_t ;
+struct TYPE_17__ {int timeout; int ars; int reqsenselen; int channel; int target; int dataxferlen; int dataxferaddr; int numsgelements; int cdb; int logdrv; int cdblen; scalar_t__ islogical; } ;
+typedef TYPE_5__ mega_passthru ;
 struct TYPE_18__ {int flag; TYPE_2__* host; TYPE_1__* dev; } ;
-typedef  TYPE_6__ adapter_t ;
-struct TYPE_15__ {long channel; int /*<<< orphan*/  lun; } ;
-struct TYPE_14__ {int /*<<< orphan*/  host_no; } ;
-struct TYPE_13__ {int /*<<< orphan*/  dev; } ;
+typedef TYPE_6__ adapter_t ;
+struct TYPE_15__ {long channel; int lun; } ;
+struct TYPE_14__ {int host_no; } ;
+struct TYPE_13__ {int dev; } ;
 
-/* Variables and functions */
- int BOARD_40LD ; 
-#define  INQUIRY 129 
- int /*<<< orphan*/  PCI_DMA_BIDIRECTIONAL ; 
-#define  READ_CAPACITY 128 
- int /*<<< orphan*/  dev_notice (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,long,int) ; 
- int /*<<< orphan*/  mega_build_sglist (TYPE_6__*,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
+
+ int BOARD_40LD ;
+
+ int PCI_DMA_BIDIRECTIONAL ;
+
+ int dev_notice (int *,char*,int ,long,int) ;
+ int mega_build_sglist (TYPE_6__*,TYPE_4__*,int *,int *) ;
+ int memcpy (int ,int*,int ) ;
+ int memset (TYPE_5__*,int ,int) ;
 
 __attribute__((used)) static mega_passthru *
 mega_prepare_passthru(adapter_t *adapter, scb_t *scb, struct scsi_cmnd *cmd,
-		      int channel, int target)
+        int channel, int target)
 {
-	mega_passthru *pthru;
+ mega_passthru *pthru;
 
-	pthru = scb->pthru;
-	memset(pthru, 0, sizeof (mega_passthru));
+ pthru = scb->pthru;
+ memset(pthru, 0, sizeof (mega_passthru));
 
-	/* 0=6sec/1=60sec/2=10min/3=3hrs */
-	pthru->timeout = 2;
 
-	pthru->ars = 1;
-	pthru->reqsenselen = 14;
-	pthru->islogical = 0;
+ pthru->timeout = 2;
 
-	pthru->channel = (adapter->flag & BOARD_40LD) ? 0 : channel;
+ pthru->ars = 1;
+ pthru->reqsenselen = 14;
+ pthru->islogical = 0;
 
-	pthru->target = (adapter->flag & BOARD_40LD) ?
-		(channel << 4) | target : target;
+ pthru->channel = (adapter->flag & BOARD_40LD) ? 0 : channel;
 
-	pthru->cdblen = cmd->cmd_len;
-	pthru->logdrv = cmd->device->lun;
+ pthru->target = (adapter->flag & BOARD_40LD) ?
+  (channel << 4) | target : target;
 
-	memcpy(pthru->cdb, cmd->cmnd, cmd->cmd_len);
+ pthru->cdblen = cmd->cmd_len;
+ pthru->logdrv = cmd->device->lun;
 
-	/* Not sure about the direction */
-	scb->dma_direction = PCI_DMA_BIDIRECTIONAL;
+ memcpy(pthru->cdb, cmd->cmnd, cmd->cmd_len);
 
-	/* Special Code for Handling READ_CAPA/ INQ using bounce buffers */
-	switch (cmd->cmnd[0]) {
-	case INQUIRY:
-	case READ_CAPACITY:
-		if(!(adapter->flag & (1L << cmd->device->channel))) {
 
-			dev_notice(&adapter->dev->dev,
-				"scsi%d: scanning scsi channel %d [P%d] "
-				"for physical devices\n",
-					adapter->host->host_no,
-					cmd->device->channel, channel);
+ scb->dma_direction = PCI_DMA_BIDIRECTIONAL;
 
-			adapter->flag |= (1L << cmd->device->channel);
-		}
-		/* Fall through */
-	default:
-		pthru->numsgelements = mega_build_sglist(adapter, scb,
-				&pthru->dataxferaddr, &pthru->dataxferlen);
-		break;
-	}
-	return pthru;
+
+ switch (cmd->cmnd[0]) {
+ case 129:
+ case 128:
+  if(!(adapter->flag & (1L << cmd->device->channel))) {
+
+   dev_notice(&adapter->dev->dev,
+    "scsi%d: scanning scsi channel %d [P%d] "
+    "for physical devices\n",
+     adapter->host->host_no,
+     cmd->device->channel, channel);
+
+   adapter->flag |= (1L << cmd->device->channel);
+  }
+
+ default:
+  pthru->numsgelements = mega_build_sglist(adapter, scb,
+    &pthru->dataxferaddr, &pthru->dataxferlen);
+  break;
+ }
+ return pthru;
 }

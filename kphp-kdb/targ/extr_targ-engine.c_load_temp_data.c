@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Tmp; } ;
-typedef  int /*<<< orphan*/  nb_iterator_t ;
 
-/* Variables and functions */
- int MAX_AUX_USERS ; 
- int VALUE_BUFF_SIZE ; 
- int* aux_userlist ; 
- int aux_userlist_size ; 
- int aux_userlist_tag ; 
- int nbit_read_in (int /*<<< orphan*/ *,int*,int) ; 
- scalar_t__ nbit_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int tag_id ; 
- int tag_len ; 
- int* value_buff ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int) ; 
+
+
+
+struct connection {int Tmp; } ;
+typedef int nb_iterator_t ;
+
+
+ int MAX_AUX_USERS ;
+ int VALUE_BUFF_SIZE ;
+ int* aux_userlist ;
+ int aux_userlist_size ;
+ int aux_userlist_tag ;
+ int nbit_read_in (int *,int*,int) ;
+ scalar_t__ nbit_set (int *,int ) ;
+ int tag_id ;
+ int tag_len ;
+ int* value_buff ;
+ int vkprintf (int,char*,int,int) ;
 
 int load_temp_data (struct connection *c) {
   nb_iterator_t it;

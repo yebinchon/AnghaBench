@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ sign; scalar_t__ exp; int /*<<< orphan*/  sig; scalar_t__ isZero; scalar_t__ isInf; scalar_t__ isNaN; } ;
-typedef  TYPE_1__ floatX ;
-typedef  scalar_t__ flag ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- scalar_t__ lt128 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ sign; scalar_t__ exp; int sig; scalar_t__ isZero; scalar_t__ isInf; scalar_t__ isNaN; } ;
+typedef TYPE_1__ floatX ;
+typedef scalar_t__ flag ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ scalar_t__ lt128 (int ,int ) ;
 
 __attribute__((used)) static flag floatXLt( floatX ax, floatX bx )
 {

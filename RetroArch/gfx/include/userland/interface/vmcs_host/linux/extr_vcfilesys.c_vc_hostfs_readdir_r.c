@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int st_size; int st_mode; int /*<<< orphan*/  st_mtime; int /*<<< orphan*/  st_ctime; } ;
-struct fs_dirent {char* d_name; unsigned int d_size; int /*<<< orphan*/  d_attrib; int /*<<< orphan*/  d_modtime; int /*<<< orphan*/  d_creatime; } ;
-struct fs_dir {char* pathbuf; size_t pathlen; int /*<<< orphan*/  dhandle; } ;
-struct dirent {int /*<<< orphan*/  d_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_DIRENT ; 
- int /*<<< orphan*/  ATTR_NORMAL ; 
- int /*<<< orphan*/  ATTR_RDONLY ; 
- int /*<<< orphan*/  DEBUG_MINOR (char*,...) ; 
- int S_IFDIR ; 
- int S_IWUSR ; 
- struct dirent* readdir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rewinddir (int /*<<< orphan*/ ) ; 
- int stat (char*,struct stat*) ; 
- int /*<<< orphan*/  vcos_safe_strcpy (char*,int /*<<< orphan*/ ,int,size_t) ; 
+
+
+
+struct stat {int st_size; int st_mode; int st_mtime; int st_ctime; } ;
+struct fs_dirent {char* d_name; unsigned int d_size; int d_attrib; int d_modtime; int d_creatime; } ;
+struct fs_dir {char* pathbuf; size_t pathlen; int dhandle; } ;
+struct dirent {int d_name; } ;
+
+
+ int ATTR_DIRENT ;
+ int ATTR_NORMAL ;
+ int ATTR_RDONLY ;
+ int DEBUG_MINOR (char*,...) ;
+ int S_IFDIR ;
+ int S_IWUSR ;
+ struct dirent* readdir (int ) ;
+ int rewinddir (int ) ;
+ int stat (char*,struct stat*) ;
+ int vcos_safe_strcpy (char*,int ,int,size_t) ;
 
 struct fs_dirent *vc_hostfs_readdir_r(void *dhandle, struct fs_dirent *result)
 {
@@ -37,12 +37,12 @@ struct fs_dirent *vc_hostfs_readdir_r(void *dhandle, struct fs_dirent *result)
    {
       struct dirent *dent;
 
-      while ((dent = readdir(fsdir->dhandle)) != NULL)
+      while ((dent = readdir(fsdir->dhandle)) != ((void*)0))
       {
          struct stat statbuf;
          int ret;
 
-         /* Append the filename, and stat the resulting path */
+
          fsdir->pathbuf[fsdir->pathlen] = '/';
          vcos_safe_strcpy(fsdir->pathbuf, dent->d_name, sizeof(fsdir->pathbuf), fsdir->pathlen + 1);
          ret = stat(fsdir->pathbuf, &statbuf);
@@ -68,12 +68,12 @@ struct fs_dirent *vc_hostfs_readdir_r(void *dhandle, struct fs_dirent *result)
       {
          DEBUG_MINOR( "vc_hostfs_readdir_r() = NULL" );
          rewinddir(fsdir->dhandle);
-         result = NULL;
+         result = ((void*)0);
       }
    }
    else
    {
-      result = NULL;
+      result = ((void*)0);
    }
 
    return result;

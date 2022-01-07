@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char* condition; } ;
-typedef  TYPE_1__ mm_backup_tabdesc ;
-struct TYPE_6__ {int flags; int writable_schema; int /*<<< orphan*/  num_tabdesc; scalar_t__ tabdesc; scalar_t__ canceled; } ;
-typedef  TYPE_2__ mm_backup_ctx ;
+typedef TYPE_1__ mm_backup_tabdesc ;
+struct TYPE_6__ {int flags; int writable_schema; int num_tabdesc; scalar_t__ tabdesc; scalar_t__ canceled; } ;
+typedef TYPE_2__ mm_backup_ctx ;
 
-/* Variables and functions */
- int MMBAK_FLAG_FIX_CORRUPTION ; 
- int MMBAK_FLAG_NO_CREATE_TABLE ; 
- int /*<<< orphan*/  MMBAK_TAG_SQL_ONESHOT ; 
- int SQLITE_CORRUPT ; 
- int SQLITE_OK ; 
- scalar_t__ bsearch (char const*,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compar_table_tabdesc ; 
- int dump_rows (TYPE_2__*,char const*,char const*,int) ; 
- scalar_t__ dump_write_blob (TYPE_2__*,int /*<<< orphan*/ ,char const*,...) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  sqlite3_strglob (char*,char const*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  string_literal (char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+ int MMBAK_FLAG_FIX_CORRUPTION ;
+ int MMBAK_FLAG_NO_CREATE_TABLE ;
+ int MMBAK_TAG_SQL_ONESHOT ;
+ int SQLITE_CORRUPT ;
+ int SQLITE_OK ;
+ scalar_t__ bsearch (char const*,scalar_t__,int ,int,int ) ;
+ int compar_table_tabdesc ;
+ int dump_rows (TYPE_2__*,char const*,char const*,int) ;
+ scalar_t__ dump_write_blob (TYPE_2__*,int ,char const*,...) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,char const*,char const*) ;
+ int sqlite3_strglob (char*,char const*) ;
+ int strcmp (char const*,char*) ;
+ int string_literal (char*) ;
+ int strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int
 dump_callback(void *ud, int num_columns, char **values, char **columns)
@@ -43,11 +43,11 @@ dump_callback(void *ud, int num_columns, char **values, char **columns)
     const char *sql = values[2];
     int ret;
 
-    // check exit status.
+
     if (ctx->canceled)
         return -1;
 
-    // deal with system tables.
+
     if (!strcmp(table, "sqlite_sequence")) {
         if (dump_write_blob(ctx, MMBAK_TAG_SQL_ONESHOT,
                             string_literal("DELETE FROM sqlite_sequence;")) !=
@@ -61,8 +61,8 @@ dump_callback(void *ud, int num_columns, char **values, char **columns)
         return 0;
     }
 
-    // find whether in dump list.
-    const char *table_condition = NULL;
+
+    const char *table_condition = ((void*)0);
     if (ctx->tabdesc) {
         const mm_backup_tabdesc *desc = (const mm_backup_tabdesc *) bsearch(
             table, ctx->tabdesc, ctx->num_tabdesc, sizeof(mm_backup_tabdesc),
@@ -98,7 +98,7 @@ dump_callback(void *ud, int num_columns, char **values, char **columns)
             return -1;
     }
 
-    // for tables, dump all rows.
+
     if (!strcmp(type, "table")) {
         ret = dump_rows(ctx, table, table_condition, 0);
         if (ret == SQLITE_CORRUPT && !table_condition &&

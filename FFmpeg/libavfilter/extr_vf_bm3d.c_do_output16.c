@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_5__ {int* planeheight; int* planewidth; int depth; TYPE_1__* slices; } ;
 struct TYPE_4__ {float* num; float* den; } ;
-typedef  TYPE_1__ SliceContext ;
-typedef  TYPE_2__ BM3DContext ;
+typedef TYPE_1__ SliceContext ;
+typedef TYPE_2__ BM3DContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_clip_uintp2_c (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  lrintf (float) ; 
+
+ int av_clip_uintp2_c (int ,int const) ;
+ int lrintf (float) ;
 
 __attribute__((used)) static void do_output16(BM3DContext *s, uint8_t *dst, int dst_linesize,
                         int plane, int nb_jobs)

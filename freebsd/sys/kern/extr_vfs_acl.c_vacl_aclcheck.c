@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnode {int dummy; } ;
-struct thread {int /*<<< orphan*/  td_ucred; } ;
+struct thread {int td_ucred; } ;
 struct acl {int dummy; } ;
-typedef  int /*<<< orphan*/  acl_type_t ;
+typedef int acl_type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_WAITOK ; 
- int VOP_ACLCHECK (struct vnode*,int /*<<< orphan*/ ,struct acl*,int /*<<< orphan*/ ,struct thread*) ; 
- struct acl* acl_alloc (int /*<<< orphan*/ ) ; 
- int acl_copyin (struct acl const*,struct acl*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acl_free (struct acl*) ; 
- int /*<<< orphan*/  acl_type_unold (int /*<<< orphan*/ ) ; 
+
+ int M_WAITOK ;
+ int VOP_ACLCHECK (struct vnode*,int ,struct acl*,int ,struct thread*) ;
+ struct acl* acl_alloc (int ) ;
+ int acl_copyin (struct acl const*,struct acl*,int ) ;
+ int acl_free (struct acl*) ;
+ int acl_type_unold (int ) ;
 
 __attribute__((used)) static int
 vacl_aclcheck(struct thread *td, struct vnode *vp, acl_type_t type,
     const struct acl *aclp)
 {
-	struct acl *inkernelacl;
-	int error;
+ struct acl *inkernelacl;
+ int error;
 
-	inkernelacl = acl_alloc(M_WAITOK);
-	error = acl_copyin(aclp, inkernelacl, type);
-	if (error != 0)
-		goto out;
-	error = VOP_ACLCHECK(vp, acl_type_unold(type), inkernelacl,
-	    td->td_ucred, td);
+ inkernelacl = acl_alloc(M_WAITOK);
+ error = acl_copyin(aclp, inkernelacl, type);
+ if (error != 0)
+  goto out;
+ error = VOP_ACLCHECK(vp, acl_type_unold(type), inkernelacl,
+     td->td_ucred, td);
 out:
-	acl_free(inkernelacl);
-	return (error);
+ acl_free(inkernelacl);
+ return (error);
 }

@@ -1,45 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ftp_conn {size_t state; } ;
 struct TYPE_2__ {struct ftp_conn ftpc; } ;
-struct connectdata {int /*<<< orphan*/  data; TYPE_1__ proto; } ;
-typedef  size_t ftpstate ;
+struct connectdata {int data; TYPE_1__ proto; } ;
+typedef size_t ftpstate ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ftp_state_names ; 
- int /*<<< orphan*/  infof (int /*<<< orphan*/ ,char*,void*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int * ftp_state_names ;
+ int infof (int ,char*,void*,int,int ,int ) ;
 
 __attribute__((used)) static void _state(struct connectdata *conn,
                    ftpstate newstate
-#ifdef DEBUGBUILD
-                   , int lineno
-#endif
+
+
+
   )
 {
   struct ftp_conn *ftpc = &conn->proto.ftpc;
-
-#if defined(DEBUGBUILD)
-
-#if defined(CURL_DISABLE_VERBOSE_STRINGS)
-  (void) lineno;
-#else
-  if(ftpc->state != newstate)
-    infof(conn->data, "FTP %p (line %d) state change from %s to %s\n",
-          (void *)ftpc, lineno, ftp_state_names[ftpc->state],
-          ftp_state_names[newstate]);
-#endif
-#endif
-
   ftpc->state = newstate;
 }

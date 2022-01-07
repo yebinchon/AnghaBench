@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint64_t ;
-struct MPOpts {int /*<<< orphan*/  quiet; int /*<<< orphan*/  stream_dump; } ;
-struct MPContext {scalar_t__ stop_play; int /*<<< orphan*/  global; struct MPOpts* opts; } ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+struct MPOpts {int quiet; int stream_dump; } ;
+struct MPContext {scalar_t__ stop_play; int global; struct MPOpts* opts; } ;
 struct TYPE_6__ {int pos; int eof; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ stream_t ;
+typedef scalar_t__ int64_t ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ KEEP_PLAYING ; 
- int /*<<< orphan*/  MP_ERR (struct MPContext*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_MSG (struct MPContext*,int /*<<< orphan*/ ,char*,long long,long long) ; 
- int /*<<< orphan*/  MSGL_STATUS ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free_stream (TYPE_1__*) ; 
- int fwrite (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_idle (struct MPContext*) ; 
- int /*<<< orphan*/  mp_strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- scalar_t__ stream_get_size (TYPE_1__*) ; 
- TYPE_1__* stream_open (char const*,int /*<<< orphan*/ ) ; 
- int stream_read (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ KEEP_PLAYING ;
+ int MP_ERR (struct MPContext*,char*,int ) ;
+ int MP_MSG (struct MPContext*,int ,char*,long long,long long) ;
+ int MSGL_STATUS ;
+ int errno ;
+ scalar_t__ fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int free_stream (TYPE_1__*) ;
+ int fwrite (int *,int,int,int *) ;
+ int mp_idle (struct MPContext*) ;
+ int mp_strerror (int ) ;
+ int mp_wakeup_core (struct MPContext*) ;
+ scalar_t__ stream_get_size (TYPE_1__*) ;
+ TYPE_1__* stream_open (char const*,int ) ;
+ int stream_read (TYPE_1__*,int *,int) ;
 
 int stream_dump(struct MPContext *mpctx, const char *source_filename)
 {
@@ -53,7 +53,7 @@ int stream_dump(struct MPContext *mpctx, const char *source_filename)
         return -1;
     }
 
-    bool ok = true;
+    bool ok = 1;
 
     while (mpctx->stop_play == KEEP_PLAYING && ok) {
         if (!opts->quiet && ((stream->pos / (1024 * 1024)) % 2) == 1) {
@@ -68,8 +68,8 @@ int stream_dump(struct MPContext *mpctx, const char *source_filename)
             break;
         }
         ok &= fwrite(buf, len, 1, dest) == 1;
-        mp_wakeup_core(mpctx); // don't actually sleep
-        mp_idle(mpctx); // but process input
+        mp_wakeup_core(mpctx);
+        mp_idle(mpctx);
     }
 
     ok &= fclose(dest) == 0;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptext_ex ;
-typedef  int /*<<< orphan*/  RSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RSA_PKCS1_OAEP_PADDING ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int RSA_private_decrypt (int,unsigned char*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int RSA_public_encrypt (int,unsigned char*,unsigned char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_info (char*) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int) ; 
- int /*<<< orphan*/  TEST_int_le (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char*,int) ; 
- scalar_t__ pad_unknown () ; 
- int rsa_setkey (int /*<<< orphan*/ **,unsigned char*,int) ; 
+
+
+
+typedef int ptext_ex ;
+typedef int RSA ;
+
+
+ int RSA_PKCS1_OAEP_PADDING ;
+ int RSA_free (int *) ;
+ int RSA_private_decrypt (int,unsigned char*,unsigned char*,int *,int ) ;
+ int RSA_public_encrypt (int,unsigned char*,unsigned char*,int *,int ) ;
+ int TEST_info (char*) ;
+ int TEST_int_eq (int,int) ;
+ int TEST_int_le (int,int ) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ;
+ scalar_t__ pad_unknown () ;
+ int rsa_setkey (int **,unsigned char*,int) ;
 
 __attribute__((used)) static int test_rsa_oaep(int idx)
 {
@@ -56,13 +56,13 @@ __attribute__((used)) static int test_rsa_oaep(int idx)
     if (!TEST_mem_eq(ptext, num, ptext_ex, plen))
         goto err;
 
-    /* Different ciphertexts. Try decrypting ctext_ex */
+
     num = RSA_private_decrypt(clen, ctext_ex, ptext, key,
                               RSA_PKCS1_OAEP_PADDING);
     if (!TEST_mem_eq(ptext, num, ptext_ex, plen))
         goto err;
 
-    /* Try decrypting corrupted ciphertexts. */
+
     for (n = 0; n < clen; ++n) {
         ctext[n] ^= 1;
         num = RSA_private_decrypt(clen, ctext, ptext, key,
@@ -72,7 +72,7 @@ __attribute__((used)) static int test_rsa_oaep(int idx)
         ctext[n] ^= 1;
     }
 
-    /* Test truncated ciphertexts, as well as negative length. */
+
     for (n = -1; n < clen; ++n) {
         num = RSA_private_decrypt(n, ctext, ptext, key,
                                   RSA_PKCS1_OAEP_PADDING);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  wme_chanParams; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int wme_chanParams; } ;
 struct ieee80211com {TYPE_1__ ic_wme; } ;
 struct chanAccParams {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (struct chanAccParams*,int /*<<< orphan*/ *,int) ; 
+
+ int memcpy (struct chanAccParams*,int *,int) ;
 
 void
 ieee80211_wme_ic_getparams(struct ieee80211com *ic, struct chanAccParams *wp)
 {
 
-	memcpy(wp, &ic->ic_wme.wme_chanParams, sizeof(*wp));
+ memcpy(wp, &ic->ic_wme.wme_chanParams, sizeof(*wp));
 }

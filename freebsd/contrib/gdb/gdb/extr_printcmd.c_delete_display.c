@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct display {int number; struct display* next; } ;
 
-/* Variables and functions */
- struct display* display_chain ; 
- int /*<<< orphan*/  error (char*,int) ; 
- int /*<<< orphan*/  free_display (struct display*) ; 
+
+ struct display* display_chain ;
+ int error (char*,int) ;
+ int free_display (struct display*) ;
 
 __attribute__((used)) static void
 delete_display (int num)
@@ -34,14 +34,14 @@ delete_display (int num)
   else
     for (d = display_chain;; d = d->next)
       {
-	if (d->next == 0)
-	  error ("No display number %d.", num);
-	if (d->next->number == num)
-	  {
-	    d1 = d->next;
-	    d->next = d1->next;
-	    free_display (d1);
-	    break;
-	  }
+ if (d->next == 0)
+   error ("No display number %d.", num);
+ if (d->next->number == num)
+   {
+     d1 = d->next;
+     d->next = d1->next;
+     free_display (d1);
+     break;
+   }
       }
 }

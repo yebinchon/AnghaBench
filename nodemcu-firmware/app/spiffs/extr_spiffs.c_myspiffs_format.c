@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  phys_addr; int /*<<< orphan*/  phys_size; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int phys_addr; int phys_size; } ;
 struct TYPE_6__ {TYPE_1__ cfg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NODE_DBG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SPIFFS_format (TYPE_2__*) ; 
- int /*<<< orphan*/  SPIFFS_unmount (TYPE_2__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int erase_cnt ; 
- TYPE_2__ fs ; 
- int myspiffs_mount (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int NODE_DBG (char*,int ,int ) ;
+ int SPIFFS_format (TYPE_2__*) ;
+ int SPIFFS_unmount (TYPE_2__*) ;
+ int TRUE ;
+ int erase_cnt ;
+ TYPE_2__ fs ;
+ int myspiffs_mount (int ) ;
 
 int myspiffs_format( void )
 {

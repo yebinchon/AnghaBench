@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int size; unsigned int capacity; void* queue; } ;
-typedef  TYPE_1__ Group_JitterBuffer ;
-typedef  int /*<<< orphan*/  Group_Audio_Packet ;
+typedef TYPE_1__ Group_JitterBuffer ;
+typedef int Group_Audio_Packet ;
 
-/* Variables and functions */
- void* calloc (int,unsigned int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ void* calloc (int,unsigned int) ;
+ int free (TYPE_1__*) ;
 
 __attribute__((used)) static Group_JitterBuffer *create_queue(unsigned int capacity)
 {
@@ -29,11 +29,11 @@ __attribute__((used)) static Group_JitterBuffer *create_queue(unsigned int capac
 
     Group_JitterBuffer *q;
 
-    if (!(q = calloc(sizeof(Group_JitterBuffer), 1))) return NULL;
+    if (!(q = calloc(sizeof(Group_JitterBuffer), 1))) return ((void*)0);
 
     if (!(q->queue = calloc(sizeof(Group_Audio_Packet *), size))) {
         free(q);
-        return NULL;
+        return ((void*)0);
     }
 
     q->size = size;

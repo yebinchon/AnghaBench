@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  _n_offset; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int _n_offset; } ;
 struct TYPE_9__ {scalar_t__* _n_name; TYPE_1__ _n_n; } ;
-struct internal_syment {int /*<<< orphan*/  n_numaux; int /*<<< orphan*/  n_sclass; int /*<<< orphan*/  n_type; int /*<<< orphan*/  n_scnum; int /*<<< orphan*/  n_value; TYPE_4__ _n; } ;
-typedef  int /*<<< orphan*/  bfd ;
-struct TYPE_7__ {int /*<<< orphan*/  e_offset; int /*<<< orphan*/  e_zeroes; } ;
-struct TYPE_8__ {int /*<<< orphan*/  e_name; TYPE_2__ e; } ;
-struct TYPE_10__ {int /*<<< orphan*/  e_numaux; int /*<<< orphan*/  e_sclass; int /*<<< orphan*/  e_type; int /*<<< orphan*/  e_scnum; int /*<<< orphan*/  e_value; TYPE_3__ e; } ;
-typedef  TYPE_5__ SYMENT ;
+struct internal_syment {int n_numaux; int n_sclass; int n_type; int n_scnum; int n_value; TYPE_4__ _n; } ;
+typedef int bfd ;
+struct TYPE_7__ {int e_offset; int e_zeroes; } ;
+struct TYPE_8__ {int e_name; TYPE_2__ e; } ;
+struct TYPE_10__ {int e_numaux; int e_sclass; int e_type; int e_scnum; int e_value; TYPE_3__ e; } ;
+typedef TYPE_5__ SYMENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H_PUT_16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  H_PUT_8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int SYMESZ ; 
- int /*<<< orphan*/  SYMNMLEN ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int H_PUT_16 (int *,int ,int ) ;
+ int H_PUT_32 (int *,int ,int ) ;
+ int H_PUT_8 (int *,int ,int ) ;
+ unsigned int SYMESZ ;
+ int SYMNMLEN ;
+ int memcpy (int ,scalar_t__*,int ) ;
 
 unsigned int
 _bfd_XXi_swap_sym_out (bfd * abfd, void * inp, void * extp)

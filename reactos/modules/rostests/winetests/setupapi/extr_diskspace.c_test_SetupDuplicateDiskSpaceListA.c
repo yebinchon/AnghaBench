@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HDSKSPC ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INVALID_HANDLE ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ GetLastError () ; 
- unsigned int SPDSL_IGNORE_DISK ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/ * SetupCreateDiskSpaceListA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetupDestroyDiskSpaceList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SetupDuplicateDiskSpaceListA (int /*<<< orphan*/ *,void*,int,unsigned int) ; 
- scalar_t__ is_win9x ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int * HDSKSPC ;
+
+
+ scalar_t__ ERROR_INVALID_HANDLE ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ GetLastError () ;
+ unsigned int SPDSL_IGNORE_DISK ;
+ int SetLastError (int) ;
+ int * SetupCreateDiskSpaceListA (int *,int ,int ) ;
+ int SetupDestroyDiskSpaceList (int *) ;
+ int * SetupDuplicateDiskSpaceListA (int *,void*,int,unsigned int) ;
+ scalar_t__ is_win9x ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_SetupDuplicateDiskSpaceListA(void)
 {
@@ -35,32 +35,32 @@ __attribute__((used)) static void test_SetupDuplicateDiskSpaceListA(void)
     else
     {
         SetLastError(0xdeadbeef);
-        duplicate = SetupDuplicateDiskSpaceListA(NULL, NULL, 0, 0);
+        duplicate = SetupDuplicateDiskSpaceListA(((void*)0), ((void*)0), 0, 0);
         ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
         ok(GetLastError() == ERROR_INVALID_HANDLE,
            "Expected GetLastError() to return ERROR_INVALID_HANDLE, got %u\n", GetLastError());
 
         SetLastError(0xdeadbeef);
-        duplicate = SetupDuplicateDiskSpaceListA(NULL, (void *)0xdeadbeef, 0, 0);
+        duplicate = SetupDuplicateDiskSpaceListA(((void*)0), (void *)0xdeadbeef, 0, 0);
         ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
         ok(GetLastError() == ERROR_INVALID_PARAMETER,
            "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
 
         SetLastError(0xdeadbeef);
-        duplicate = SetupDuplicateDiskSpaceListA(NULL, NULL, 0xdeadbeef, 0);
+        duplicate = SetupDuplicateDiskSpaceListA(((void*)0), ((void*)0), 0xdeadbeef, 0);
         ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
         ok(GetLastError() == ERROR_INVALID_PARAMETER,
            "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
 
         SetLastError(0xdeadbeef);
-        duplicate = SetupDuplicateDiskSpaceListA(NULL, NULL, 0, ~0U);
+        duplicate = SetupDuplicateDiskSpaceListA(((void*)0), ((void*)0), 0, ~0U);
         ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
         ok(GetLastError() == ERROR_INVALID_PARAMETER,
            "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
     }
 
-    handle = SetupCreateDiskSpaceListA(NULL, 0, 0);
-    ok(handle != NULL,
+    handle = SetupCreateDiskSpaceListA(((void*)0), 0, 0);
+    ok(handle != ((void*)0),
        "Expected SetupCreateDiskSpaceListA to return a valid handle, got NULL\n");
 
     if (!handle)
@@ -76,25 +76,25 @@ __attribute__((used)) static void test_SetupDuplicateDiskSpaceListA(void)
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    duplicate = SetupDuplicateDiskSpaceListA(handle, NULL, 0xdeadbeef, 0);
+    duplicate = SetupDuplicateDiskSpaceListA(handle, ((void*)0), 0xdeadbeef, 0);
     ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    duplicate = SetupDuplicateDiskSpaceListA(handle, NULL, 0, SPDSL_IGNORE_DISK);
+    duplicate = SetupDuplicateDiskSpaceListA(handle, ((void*)0), 0, SPDSL_IGNORE_DISK);
     ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
 
     SetLastError(0xdeadbeef);
-    duplicate = SetupDuplicateDiskSpaceListA(handle, NULL, 0, ~0U);
+    duplicate = SetupDuplicateDiskSpaceListA(handle, ((void*)0), 0, ~0U);
     ok(!duplicate, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
     ok(GetLastError() == ERROR_INVALID_PARAMETER,
        "Expected GetLastError() to return ERROR_INVALID_PARAMETER, got %u\n", GetLastError());
 
-    duplicate = SetupDuplicateDiskSpaceListA(handle, NULL, 0, 0);
-    ok(duplicate != NULL, "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
+    duplicate = SetupDuplicateDiskSpaceListA(handle, ((void*)0), 0, 0);
+    ok(duplicate != ((void*)0), "Expected SetupDuplicateDiskSpaceList to return NULL, got %p\n", duplicate);
     ok(duplicate != handle,
        "Expected new handle (%p) to be different from the old handle (%p)\n", duplicate, handle);
 

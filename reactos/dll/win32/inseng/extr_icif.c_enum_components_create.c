@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct list {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct ciffenum_components {int ref; char* group_id; TYPE_1__ IEnumCifComponents_iface; struct list* position; struct list* start; int /*<<< orphan*/ * file; } ;
-typedef  TYPE_1__ IEnumCifComponents ;
-typedef  int /*<<< orphan*/  ICifFile ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_3__ {int * lpVtbl; } ;
+struct ciffenum_components {int ref; char* group_id; TYPE_1__ IEnumCifComponents_iface; struct list* position; struct list* start; int * file; } ;
+typedef TYPE_1__ IEnumCifComponents ;
+typedef int ICifFile ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  ICifFile_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  enum_componentsVtbl ; 
- struct ciffenum_components* heap_alloc_zero (int) ; 
+
+ int E_OUTOFMEMORY ;
+ int ICifFile_AddRef (int *) ;
+ int S_OK ;
+ int enum_componentsVtbl ;
+ struct ciffenum_components* heap_alloc_zero (int) ;
 
 __attribute__((used)) static HRESULT enum_components_create(ICifFile *file, struct list *start, char *group_id, IEnumCifComponents **iface)
 {
@@ -33,9 +33,9 @@ __attribute__((used)) static HRESULT enum_components_create(ICifFile *file, stru
     if (!enumerator) return E_OUTOFMEMORY;
 
     enumerator->IEnumCifComponents_iface.lpVtbl = &enum_componentsVtbl;
-    enumerator->ref      = 1;
-    enumerator->file     = file;
-    enumerator->start    = start;
+    enumerator->ref = 1;
+    enumerator->file = file;
+    enumerator->start = start;
     enumerator->position = start;
     enumerator->group_id = group_id;
 

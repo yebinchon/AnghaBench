@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  lock; TYPE_2__* p_storage_r; int /*<<< orphan*/  thread; } ;
-typedef  TYPE_1__ ts_thread_t ;
-typedef  int /*<<< orphan*/  ts_cmd_t ;
-struct TYPE_7__ {int /*<<< orphan*/  p_next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CmdClean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TsDestroy (TYPE_1__*) ; 
- scalar_t__ TsPopCmdLocked (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TsStorageDelete (TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  vlc_cancel (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int lock; TYPE_2__* p_storage_r; int thread; } ;
+typedef TYPE_1__ ts_thread_t ;
+typedef int ts_cmd_t ;
+struct TYPE_7__ {int p_next; } ;
+
+
+ int CmdClean (int *) ;
+ int TsDestroy (TYPE_1__*) ;
+ scalar_t__ TsPopCmdLocked (TYPE_1__*,int *,int) ;
+ int TsStorageDelete (TYPE_2__*) ;
+ int assert (int) ;
+ int vlc_cancel (int ) ;
+ int vlc_join (int ,int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void TsStop( ts_thread_t *p_ts )
 {
     vlc_cancel( p_ts->thread );
-    vlc_join( p_ts->thread, NULL );
+    vlc_join( p_ts->thread, ((void*)0) );
 
     vlc_mutex_lock( &p_ts->lock );
     for( ;; )
     {
         ts_cmd_t cmd;
 
-        if( TsPopCmdLocked( p_ts, &cmd, true ) )
+        if( TsPopCmdLocked( p_ts, &cmd, 1 ) )
             break;
 
         CmdClean( &cmd );

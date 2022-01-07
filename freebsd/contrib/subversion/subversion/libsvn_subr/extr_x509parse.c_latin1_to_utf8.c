@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int len; scalar_t__* data; } ;
-typedef  TYPE_1__ svn_string_t ;
+typedef TYPE_1__ svn_string_t ;
 struct TYPE_8__ {scalar_t__* data; } ;
-typedef  TYPE_2__ svn_membuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  size_t apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  unsigned char apr_int32_t ;
+typedef TYPE_2__ svn_membuf_t ;
+typedef int svn_error_t ;
+typedef size_t apr_size_t ;
+typedef int apr_pool_t ;
+typedef unsigned char apr_int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_membuf__create (TYPE_2__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_utf__encode_ucs4_string (TYPE_2__*,unsigned char*,int,size_t*) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ void* apr_palloc (int *,int) ;
+ int svn_membuf__create (TYPE_2__*,int,int *) ;
+ int svn_utf__encode_ucs4_string (TYPE_2__*,unsigned char*,int,size_t*) ;
 
 __attribute__((used)) static svn_error_t *
 latin1_to_utf8(const svn_string_t **result, const svn_string_t *src,

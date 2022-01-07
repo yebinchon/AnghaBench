@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int word ;
-typedef  size_t byte ;
-struct TYPE_5__ {size_t* ch_ncci; size_t* ncci_ch; size_t* ncci_next; int /*<<< orphan*/ * ncci_state; int /*<<< orphan*/ * ncci_plci; } ;
-struct TYPE_4__ {int ncci_ring_list; int /*<<< orphan*/  Id; TYPE_2__* adapter; } ;
-typedef  TYPE_1__ PLCI ;
-typedef  TYPE_2__ DIVA_CAPI_ADAPTER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDLE ; 
- int MAX_NCCI ; 
- int MAX_NL_CHANNEL ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,int /*<<< orphan*/ ,size_t,int,...) ; 
- int /*<<< orphan*/  ncci_mapping_bug ; 
 
-__attribute__((used)) static word get_ncci (PLCI   *plci, byte ch, word force_ncci)
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int word ;
+typedef size_t byte ;
+struct TYPE_5__ {size_t* ch_ncci; size_t* ncci_ch; size_t* ncci_next; int * ncci_state; int * ncci_plci; } ;
+struct TYPE_4__ {int ncci_ring_list; int Id; TYPE_2__* adapter; } ;
+typedef TYPE_1__ PLCI ;
+typedef TYPE_2__ DIVA_CAPI_ADAPTER ;
+
+
+ int IDLE ;
+ int MAX_NCCI ;
+ int MAX_NL_CHANNEL ;
+ int dbug (int,int ) ;
+ int dprintf (char*,int ,size_t,int,...) ;
+ int ncci_mapping_bug ;
+
+__attribute__((used)) static word get_ncci (PLCI *plci, byte ch, word force_ncci)
 {
-  DIVA_CAPI_ADAPTER   *a;
+  DIVA_CAPI_ADAPTER *a;
   word ncci, i, j, k;
 
   a = plci->adapter;

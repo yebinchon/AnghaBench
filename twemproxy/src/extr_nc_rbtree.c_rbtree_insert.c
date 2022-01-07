@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rbtree {struct rbnode* sentinel; struct rbnode* root; } ;
 struct rbnode {scalar_t__ key; struct rbnode* parent; struct rbnode* left; struct rbnode* right; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rbtree_black (struct rbnode*) ; 
- scalar_t__ rbtree_is_red (struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_left_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_red (struct rbnode*) ; 
- int /*<<< orphan*/  rbtree_right_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ; 
+
+ int rbtree_black (struct rbnode*) ;
+ scalar_t__ rbtree_is_red (struct rbnode*) ;
+ int rbtree_left_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ;
+ int rbtree_red (struct rbnode*) ;
+ int rbtree_right_rotate (struct rbnode**,struct rbnode*,struct rbnode*) ;
 
 void
 rbtree_insert(struct rbtree *tree, struct rbnode *node)
@@ -27,10 +27,10 @@ rbtree_insert(struct rbtree *tree, struct rbnode *node)
     struct rbnode *sentinel = tree->sentinel;
     struct rbnode *temp, **p;
 
-    /* empty tree */
+
 
     if (*root == sentinel) {
-        node->parent = NULL;
+        node->parent = ((void*)0);
         node->left = sentinel;
         node->right = sentinel;
         rbtree_black(node);
@@ -38,7 +38,7 @@ rbtree_insert(struct rbtree *tree, struct rbnode *node)
         return;
     }
 
-    /* a binary tree insert */
+
 
     temp = *root;
     for (;;) {
@@ -56,7 +56,7 @@ rbtree_insert(struct rbtree *tree, struct rbnode *node)
     node->right = sentinel;
     rbtree_red(node);
 
-    /* re-balance tree */
+
 
     while (node != *root && rbtree_is_red(node->parent)) {
 

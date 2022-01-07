@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_20__ {size_t best_coding; size_t cbEntry; size_t* subCels; scalar_t__ best_bit_use; scalar_t__* eval_dist; } ;
-struct TYPE_19__ {int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-struct TYPE_18__ {int sourceY; int sourceX; int* eval_dist; size_t cbEntry; int best_coding; TYPE_7__* subCels; int /*<<< orphan*/  motion; } ;
-struct TYPE_17__ {int width; int framesSinceKeyframe; int lambda; TYPE_6__* frame_to_enc; TYPE_1__* current_frame; int /*<<< orphan*/ * this_motion8; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * usedCB2; int /*<<< orphan*/ * usedCB4; int /*<<< orphan*/  numCB4; int /*<<< orphan*/  unpacked_cb4_enlarged; } ;
-struct TYPE_16__ {int mainChunkSize; TYPE_2__ codebooks; int /*<<< orphan*/ * used_option; } ;
-struct TYPE_14__ {int /*<<< orphan*/  linesize; int /*<<< orphan*/  data; } ;
-typedef  TYPE_3__ RoqTempdata ;
-typedef  TYPE_4__ RoqContext ;
-typedef  TYPE_5__ CelEvaluation ;
+struct TYPE_19__ {int linesize; int data; } ;
+struct TYPE_18__ {int sourceY; int sourceX; int* eval_dist; size_t cbEntry; int best_coding; TYPE_7__* subCels; int motion; } ;
+struct TYPE_17__ {int width; int framesSinceKeyframe; int lambda; TYPE_6__* frame_to_enc; TYPE_1__* current_frame; int * this_motion8; } ;
+struct TYPE_15__ {int * usedCB2; int * usedCB4; int numCB4; int unpacked_cb4_enlarged; } ;
+struct TYPE_16__ {int mainChunkSize; TYPE_2__ codebooks; int * used_option; } ;
+struct TYPE_14__ {int linesize; int data; } ;
+typedef TYPE_3__ RoqTempdata ;
+typedef TYPE_4__ RoqContext ;
+typedef TYPE_5__ CelEvaluation ;
 
-/* Variables and functions */
- void* INT_MAX ; 
- int ROQ_LAMBDA_SCALE ; 
- size_t RoQ_ID_CCC ; 
- size_t RoQ_ID_FCC ; 
- size_t RoQ_ID_MOT ; 
- size_t RoQ_ID_SLD ; 
- int block_sse (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int eval_motion_dist (TYPE_4__*,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gather_data_for_subcel (TYPE_7__*,int,int,TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  get_frame_mb (TYPE_6__*,int,int,int /*<<< orphan*/ *,int) ; 
- int index_mb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,int) ; 
+
+ void* INT_MAX ;
+ int ROQ_LAMBDA_SCALE ;
+ size_t RoQ_ID_CCC ;
+ size_t RoQ_ID_FCC ;
+ size_t RoQ_ID_MOT ;
+ size_t RoQ_ID_SLD ;
+ int block_sse (int ,int ,int,int,int,int,int ,int ,int) ;
+ int eval_motion_dist (TYPE_4__*,int,int,int ,int) ;
+ int gather_data_for_subcel (TYPE_7__*,int,int,TYPE_4__*,TYPE_3__*) ;
+ int get_frame_mb (TYPE_6__*,int,int,int *,int) ;
+ int index_mb (int *,int ,int ,size_t*,int) ;
 
 __attribute__((used)) static void gather_data_for_cel(CelEvaluation *cel, RoqContext *enc,
                                 RoqTempdata *tempData)

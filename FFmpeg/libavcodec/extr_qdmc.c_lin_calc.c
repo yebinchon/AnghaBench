@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int subframe_size; float* noise_buffer; float* noise2_buffer; } ;
-typedef  TYPE_1__ QDMCContext ;
+typedef TYPE_1__ QDMCContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void lin_calc(QDMCContext *s, float amplitude, int node1, int node2, int index)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void lin_calc(QDMCContext *s, float amplitude, int 
     noise_ptr = &s->noise_buffer[256 * index];
 
     for (i = 0; i < length; i += 4, j+= 4, noise_ptr += 4) {
-        s->noise2_buffer[j    ] += scale * noise_ptr[0];
+        s->noise2_buffer[j ] += scale * noise_ptr[0];
         s->noise2_buffer[j + 1] += scale * noise_ptr[1];
         s->noise2_buffer[j + 2] += scale * noise_ptr[2];
         s->noise2_buffer[j + 3] += scale * noise_ptr[3];

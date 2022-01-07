@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-typedef  int /*<<< orphan*/  dsm_segment ;
-typedef  int /*<<< orphan*/  dsm_handle ;
-struct TYPE_4__ {int stepCount; int /*<<< orphan*/  processId; } ;
-typedef  int Size ;
-typedef  TYPE_1__ ProgressMonitorData ;
-typedef  int /*<<< orphan*/  Oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSM_CREATE_NULL_IF_MAXSEGMENTS ; 
- int /*<<< orphan*/  ERROR ; 
- TYPE_1__* MonitorDataFromDSMHandle (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MyProcPid ; 
- int /*<<< orphan*/  PROGRESS_COMMAND_VACUUM ; 
- int /*<<< orphan*/  WARNING ; 
- int /*<<< orphan*/  currentProgressDSMHandle ; 
- int /*<<< orphan*/ * dsm_create (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dsm_segment_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
- int /*<<< orphan*/  pgstat_progress_start_command (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pgstat_progress_update_param (int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint64 ;
+typedef int dsm_segment ;
+typedef int dsm_handle ;
+struct TYPE_4__ {int stepCount; int processId; } ;
+typedef int Size ;
+typedef TYPE_1__ ProgressMonitorData ;
+typedef int Oid ;
+
+
+ int DSM_CREATE_NULL_IF_MAXSEGMENTS ;
+ int ERROR ;
+ TYPE_1__* MonitorDataFromDSMHandle (int ,int **) ;
+ int MyProcPid ;
+ int PROGRESS_COMMAND_VACUUM ;
+ int WARNING ;
+ int currentProgressDSMHandle ;
+ int * dsm_create (int,int ) ;
+ int dsm_segment_handle (int *) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
+ int pgstat_progress_start_command (int ,int ) ;
+ int pgstat_progress_update_param (int,int ) ;
 
 ProgressMonitorData *
 CreateProgressMonitor(uint64 progressTypeMagicNumber, int stepCount, Size stepSize,
-					  Oid relationId)
+       Oid relationId)
 {
-	dsm_segment *dsmSegment = NULL;
-	dsm_handle dsmHandle = 0;
-	ProgressMonitorData *monitor = NULL;
-	Size monitorSize = 0;
+ dsm_segment *dsmSegment = ((void*)0);
+ dsm_handle dsmHandle = 0;
+ ProgressMonitorData *monitor = ((void*)0);
+ Size monitorSize = 0;
 
-	if (stepSize <= 0 || stepCount <= 0)
-	{
-		ereport(ERROR,
-				(errmsg("number of steps and size of each step should be "
-						"positive values")));
-	}
+ if (stepSize <= 0 || stepCount <= 0)
+ {
+  ereport(ERROR,
+    (errmsg("number of steps and size of each step should be "
+      "positive values")));
+ }
 
-	monitorSize = sizeof(ProgressMonitorData) + stepSize * stepCount;
-	dsmSegment = dsm_create(monitorSize, DSM_CREATE_NULL_IF_MAXSEGMENTS);
+ monitorSize = sizeof(ProgressMonitorData) + stepSize * stepCount;
+ dsmSegment = dsm_create(monitorSize, DSM_CREATE_NULL_IF_MAXSEGMENTS);
 
-	if (dsmSegment == NULL)
-	{
-		ereport(WARNING,
-				(errmsg("could not create a dynamic shared memory segment to "
-						"keep track of progress of the current command")));
-		return NULL;
-	}
+ if (dsmSegment == ((void*)0))
+ {
+  ereport(WARNING,
+    (errmsg("could not create a dynamic shared memory segment to "
+      "keep track of progress of the current command")));
+  return ((void*)0);
+ }
 
-	dsmHandle = dsm_segment_handle(dsmSegment);
+ dsmHandle = dsm_segment_handle(dsmSegment);
 
-	monitor = MonitorDataFromDSMHandle(dsmHandle, &dsmSegment);
+ monitor = MonitorDataFromDSMHandle(dsmHandle, &dsmSegment);
 
-	monitor->stepCount = stepCount;
-	monitor->processId = MyProcPid;
+ monitor->stepCount = stepCount;
+ monitor->processId = MyProcPid;
 
-	pgstat_progress_start_command(PROGRESS_COMMAND_VACUUM, relationId);
-	pgstat_progress_update_param(1, dsmHandle);
-	pgstat_progress_update_param(0, progressTypeMagicNumber);
+ pgstat_progress_start_command(PROGRESS_COMMAND_VACUUM, relationId);
+ pgstat_progress_update_param(1, dsmHandle);
+ pgstat_progress_update_param(0, progressTypeMagicNumber);
 
-	currentProgressDSMHandle = dsmHandle;
+ currentProgressDSMHandle = dsmHandle;
 
-	return monitor;
+ return monitor;
 }

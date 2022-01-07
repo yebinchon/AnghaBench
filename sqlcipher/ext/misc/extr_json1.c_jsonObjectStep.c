@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-struct TYPE_6__ {scalar_t__ zBuf; int /*<<< orphan*/ * pCtx; } ;
-typedef  TYPE_1__ JsonString ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSED_PARAM (int) ; 
- int /*<<< orphan*/  jsonAppendChar (TYPE_1__*,char) ; 
- int /*<<< orphan*/  jsonAppendString (TYPE_1__*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  jsonAppendValue (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonInit (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_aggregate_context (int /*<<< orphan*/ *,int) ; 
- scalar_t__ sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+struct TYPE_6__ {scalar_t__ zBuf; int * pCtx; } ;
+typedef TYPE_1__ JsonString ;
+
+
+ int UNUSED_PARAM (int) ;
+ int jsonAppendChar (TYPE_1__*,char) ;
+ int jsonAppendString (TYPE_1__*,char const*,scalar_t__) ;
+ int jsonAppendValue (TYPE_1__*,int *) ;
+ int jsonInit (TYPE_1__*,int *) ;
+ scalar_t__ sqlite3_aggregate_context (int *,int) ;
+ scalar_t__ sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void jsonObjectStep(
   sqlite3_context *ctx,

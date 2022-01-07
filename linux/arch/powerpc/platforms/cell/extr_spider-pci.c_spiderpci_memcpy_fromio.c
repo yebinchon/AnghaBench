@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PCI_IO_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __do_memcpy_fromio (void*,int /*<<< orphan*/  const,unsigned long) ; 
- int /*<<< orphan*/  iowa_mem_find_bus (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  spiderpci_io_flush (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PCI_IO_ADDR ;
+
+
+ int __do_memcpy_fromio (void*,int const,unsigned long) ;
+ int iowa_mem_find_bus (int const) ;
+ int spiderpci_io_flush (int ) ;
 
 __attribute__((used)) static void spiderpci_memcpy_fromio(void *dest, const PCI_IO_ADDR src,
-				    unsigned long n)
+        unsigned long n)
 {
-	__do_memcpy_fromio(dest, src, n);
-	spiderpci_io_flush(iowa_mem_find_bus(src));
+ __do_memcpy_fromio(dest, src, n);
+ spiderpci_io_flush(iowa_mem_find_bus(src));
 }

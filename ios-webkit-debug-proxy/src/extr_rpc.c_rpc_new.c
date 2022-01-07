@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct rpc_struct {int dummy; } ;
-typedef  TYPE_1__* rpc_t ;
-struct TYPE_4__ {int /*<<< orphan*/  on_error; int /*<<< orphan*/  recv_plist; int /*<<< orphan*/  send_forwardDidClose; int /*<<< orphan*/  send_forwardSocketData; int /*<<< orphan*/  send_forwardSocketSetup; int /*<<< orphan*/  send_forwardIndicateWebView; int /*<<< orphan*/  send_forwardGetListing; int /*<<< orphan*/  send_getConnectedApplications; int /*<<< orphan*/  send_reportIdentifier; } ;
+typedef TYPE_1__* rpc_t ;
+struct TYPE_4__ {int on_error; int recv_plist; int send_forwardDidClose; int send_forwardSocketData; int send_forwardSocketSetup; int send_forwardIndicateWebView; int send_forwardGetListing; int send_getConnectedApplications; int send_reportIdentifier; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rpc_on_error ; 
- int /*<<< orphan*/  rpc_recv_plist ; 
- int /*<<< orphan*/  rpc_send_forwardDidClose ; 
- int /*<<< orphan*/  rpc_send_forwardGetListing ; 
- int /*<<< orphan*/  rpc_send_forwardIndicateWebView ; 
- int /*<<< orphan*/  rpc_send_forwardSocketData ; 
- int /*<<< orphan*/  rpc_send_forwardSocketSetup ; 
- int /*<<< orphan*/  rpc_send_getConnectedApplications ; 
- int /*<<< orphan*/  rpc_send_reportIdentifier ; 
+
+ int malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int rpc_on_error ;
+ int rpc_recv_plist ;
+ int rpc_send_forwardDidClose ;
+ int rpc_send_forwardGetListing ;
+ int rpc_send_forwardIndicateWebView ;
+ int rpc_send_forwardSocketData ;
+ int rpc_send_forwardSocketSetup ;
+ int rpc_send_getConnectedApplications ;
+ int rpc_send_reportIdentifier ;
 
 rpc_t rpc_new() {
   rpc_t self = (rpc_t)malloc(sizeof(struct rpc_struct));
   if (!self) {
-    return NULL;
+    return ((void*)0);
   }
   memset(self, 0, sizeof(struct rpc_struct));
   self->send_reportIdentifier = rpc_send_reportIdentifier;

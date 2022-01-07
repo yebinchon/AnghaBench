@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tl_query_header {int op; scalar_t__ actor_id; int /*<<< orphan*/  qid; } ;
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int RPC_INVOKE_REQ ; 
- int SKIP_ALL_BYTES ; 
- int /*<<< orphan*/  TL_ERROR_UNKNOWN ; 
- int /*<<< orphan*/  TL_ERROR_UNKNOWN_FUNCTION_ID ; 
-#define  TL_MEMCACHE_ADD 134 
-#define  TL_MEMCACHE_DECR 133 
-#define  TL_MEMCACHE_DELETE 132 
-#define  TL_MEMCACHE_GET 131 
-#define  TL_MEMCACHE_INCR 130 
-#define  TL_MEMCACHE_REPLACE 129 
-#define  TL_MEMCACHE_SET 128 
- scalar_t__ advance_skip_read_ptr (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mct_add ; 
- int /*<<< orphan*/  mct_replace ; 
- int /*<<< orphan*/  mct_set ; 
- scalar_t__ tl_fetch_error () ; 
- int /*<<< orphan*/  tl_fetch_init (struct connection*,int) ; 
- int tl_fetch_int () ; 
- int /*<<< orphan*/  tl_fetch_query_header (struct tl_query_header*) ; 
- int /*<<< orphan*/  tl_fetch_set_error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_fetch_set_error_format (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ tl_fetch_unread () ; 
- int tl_memcache_delete () ; 
- int tl_memcache_get () ; 
- int tl_memcache_incr (int) ; 
- int tl_memcache_store (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tl_store_end () ; 
- int /*<<< orphan*/  tl_store_init_keep_error (struct connection*,int /*<<< orphan*/ ) ; 
+
+
+
+struct tl_query_header {int op; scalar_t__ actor_id; int qid; } ;
+struct connection {int In; } ;
+
+
+ int RPC_INVOKE_REQ ;
+ int SKIP_ALL_BYTES ;
+ int TL_ERROR_UNKNOWN ;
+ int TL_ERROR_UNKNOWN_FUNCTION_ID ;
+
+
+
+
+
+
+
+ scalar_t__ advance_skip_read_ptr (int *,scalar_t__) ;
+ int assert (int) ;
+ int mct_add ;
+ int mct_replace ;
+ int mct_set ;
+ scalar_t__ tl_fetch_error () ;
+ int tl_fetch_init (struct connection*,int) ;
+ int tl_fetch_int () ;
+ int tl_fetch_query_header (struct tl_query_header*) ;
+ int tl_fetch_set_error (char*,int ) ;
+ int tl_fetch_set_error_format (int ,char*,int) ;
+ scalar_t__ tl_fetch_unread () ;
+ int tl_memcache_delete () ;
+ int tl_memcache_get () ;
+ int tl_memcache_incr (int) ;
+ int tl_memcache_store (int ) ;
+ int tl_store_end () ;
+ int tl_store_init_keep_error (struct connection*,int ) ;
 
 int memcache_rpcs_execute (struct connection *c, int op, int len) {
   if (op != RPC_INVOKE_REQ) {
@@ -62,25 +62,25 @@ int memcache_rpcs_execute (struct connection *c, int op, int len) {
   int result = -1;
 
   switch (f) {
-  case TL_MEMCACHE_SET:
+  case 128:
     result = tl_memcache_store (mct_set);
     break;
-  case TL_MEMCACHE_ADD:
+  case 134:
     result = tl_memcache_store (mct_add);
     break;
-  case TL_MEMCACHE_REPLACE:
+  case 129:
     result = tl_memcache_store (mct_replace);
     break;
-  case TL_MEMCACHE_INCR:
+  case 130:
     result = tl_memcache_incr (0);
     break;
-  case TL_MEMCACHE_DECR:
+  case 133:
     result = tl_memcache_incr (1);
     break;
-  case TL_MEMCACHE_DELETE:
+  case 132:
     result = tl_memcache_delete ();
     break;
-  case TL_MEMCACHE_GET:
+  case 131:
     result = tl_memcache_get ();
     break;
   default:

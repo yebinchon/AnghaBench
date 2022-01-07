@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pll_freq_tbl {long freq; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static const
 struct pll_freq_tbl *find_freq(const struct pll_freq_tbl *f, unsigned long rate)
 {
-	if (!f)
-		return NULL;
+ if (!f)
+  return ((void*)0);
 
-	for (; f->freq; f++)
-		if (rate <= f->freq)
-			return f;
+ for (; f->freq; f++)
+  if (rate <= f->freq)
+   return f;
 
-	return NULL;
+ return ((void*)0);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_tree ;
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_TREEWALK_POST ; 
- int /*<<< orphan*/  GIT_TREEWALK_PRE ; 
- int /*<<< orphan*/  cl_assert_equal_i (int,int) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_repo ; 
- int /*<<< orphan*/  git_oid_fromstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_tree_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_tree_lookup (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_tree_walk (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  tree_oid ; 
- int /*<<< orphan*/  treewalk_count_cb ; 
+
+
+
+typedef int git_tree ;
+typedef int git_oid ;
+
+
+ int GIT_TREEWALK_POST ;
+ int GIT_TREEWALK_PRE ;
+ int cl_assert_equal_i (int,int) ;
+ int cl_git_pass (int ) ;
+ int g_repo ;
+ int git_oid_fromstr (int *,int ) ;
+ int git_tree_free (int *) ;
+ int git_tree_lookup (int **,int ,int *) ;
+ int git_tree_walk (int *,int ,int ,int*) ;
+ int tree_oid ;
+ int treewalk_count_cb ;
 
 void test_object_tree_walk__0(void)
 {
-	git_oid id;
-	git_tree *tree;
-	int ct;
+ git_oid id;
+ git_tree *tree;
+ int ct;
 
-	git_oid_fromstr(&id, tree_oid);
+ git_oid_fromstr(&id, tree_oid);
 
-	cl_git_pass(git_tree_lookup(&tree, g_repo, &id));
+ cl_git_pass(git_tree_lookup(&tree, g_repo, &id));
 
-	ct = 0;
-	cl_git_pass(git_tree_walk(tree, GIT_TREEWALK_PRE, treewalk_count_cb, &ct));
-	cl_assert_equal_i(3, ct);
+ ct = 0;
+ cl_git_pass(git_tree_walk(tree, GIT_TREEWALK_PRE, treewalk_count_cb, &ct));
+ cl_assert_equal_i(3, ct);
 
-	ct = 0;
-	cl_git_pass(git_tree_walk(tree, GIT_TREEWALK_POST, treewalk_count_cb, &ct));
-	cl_assert_equal_i(3, ct);
+ ct = 0;
+ cl_git_pass(git_tree_walk(tree, GIT_TREEWALK_POST, treewalk_count_cb, &ct));
+ cl_assert_equal_i(3, ct);
 
-	git_tree_free(tree);
+ git_tree_free(tree);
 }

@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int echo_format; } ;
-typedef  TYPE_1__ nn_options_t ;
-
-/* Variables and functions */
-#define  NN_ECHO_ASCII 133 
-#define  NN_ECHO_HEX 132 
-#define  NN_ECHO_MSGPACK 131 
-#define  NN_ECHO_QUOTED 130 
-#define  NN_ECHO_RAW 129 
-#define  NN_NO_ECHO 128 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isprint (char) ; 
- int /*<<< orphan*/  stdout ; 
+typedef TYPE_1__ nn_options_t ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,...) ;
+ int fputc (char,int ) ;
+ int fwrite (char*,int,int,int ) ;
+ int isprint (char) ;
+ int stdout ;
 
 void nn_print_message (nn_options_t *options, char *buf, int buflen)
 {
     switch (options->echo_format) {
-    case NN_NO_ECHO:
+    case 128:
         return;
-    case NN_ECHO_RAW:
+    case 129:
         fwrite (buf, 1, buflen, stdout);
         break;
-    case NN_ECHO_ASCII:
+    case 133:
         for (; buflen > 0; --buflen, ++buf) {
             if (isprint (*buf)) {
                 fputc (*buf, stdout);
@@ -46,7 +38,7 @@ void nn_print_message (nn_options_t *options, char *buf, int buflen)
         }
         fputc ('\n', stdout);
         break;
-    case NN_ECHO_QUOTED:
+    case 130:
         fputc ('"', stdout);
         for (; buflen > 0; --buflen, ++buf) {
             switch (*buf) {
@@ -70,7 +62,7 @@ void nn_print_message (nn_options_t *options, char *buf, int buflen)
         }
         fprintf (stdout, "\"\n");
         break;
-    case NN_ECHO_MSGPACK:
+    case 131:
         if (buflen < 256) {
             fputc ('\xc4', stdout);
             fputc (buflen, stdout);
@@ -89,14 +81,14 @@ void nn_print_message (nn_options_t *options, char *buf, int buflen)
             fwrite (buf, 1, buflen, stdout);
         }
         break;
-    case NN_ECHO_HEX:
+    case 132:
         fputc ('"', stdout);
         for (; buflen > 0; --buflen, ++buf) {
              fprintf (stdout, "\\x%02x", (unsigned char)*buf);
         }
         fprintf (stdout, "\"\n");
         break;
-    
+
     }
     fflush (stdout);
 }

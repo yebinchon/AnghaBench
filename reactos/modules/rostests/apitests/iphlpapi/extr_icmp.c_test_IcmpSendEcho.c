@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SendData ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  ICMP_ECHO_REPLY ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetLastError () ; 
- unsigned long INADDR_NONE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ IP_BUF_TOO_SMALL ; 
- scalar_t__ IP_GENERAL_FAILURE ; 
- int /*<<< orphan*/  IcmpCloseHandle (scalar_t__) ; 
- scalar_t__ IcmpCreateFile () ; 
- scalar_t__ IcmpSendEcho (scalar_t__,unsigned long,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/  ok (scalar_t__,char*,...) ; 
- int /*<<< orphan*/  skip (char*,scalar_t__) ; 
+
+
+
+typedef int SendData ;
+typedef int PVOID ;
+typedef int ICMP_ECHO_REPLY ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ GetLastError () ;
+ unsigned long INADDR_NONE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ IP_BUF_TOO_SMALL ;
+ scalar_t__ IP_GENERAL_FAILURE ;
+ int IcmpCloseHandle (scalar_t__) ;
+ scalar_t__ IcmpCreateFile () ;
+ scalar_t__ IcmpSendEcho (scalar_t__,unsigned long,char*,int,int *,int ,scalar_t__,int) ;
+ int SetLastError (int) ;
+ int free (int ) ;
+ int malloc (int) ;
+ int ok (scalar_t__,char*,...) ;
+ int skip (char*,scalar_t__) ;
 
 __attribute__((used)) static
 void
@@ -50,24 +50,24 @@ test_IcmpSendEcho(void)
         return;
     }
 
-    ipaddr = 0x08080808; // 8.8.8.8
+    ipaddr = 0x08080808;
     ReplyBuffer = malloc(sizeof(ICMP_ECHO_REPLY) + sizeof(SendData));
 
     ReplySize = sizeof(ICMP_ECHO_REPLY);
     SetLastError(0xDEADBEEF);
-    bRet = IcmpSendEcho(hIcmp, ipaddr, SendData, sizeof(SendData), 
-        NULL, ReplyBuffer, ReplySize, 5000);
+    bRet = IcmpSendEcho(hIcmp, ipaddr, SendData, sizeof(SendData),
+        ((void*)0), ReplyBuffer, ReplySize, 5000);
 
     ok(!bRet, "IcmpSendEcho succeeded unexpectedly\n");
     error = GetLastError();
-    ok(error == IP_BUF_TOO_SMALL /* Win2003 */ ||
-       error == IP_GENERAL_FAILURE /* Win10 */,
+    ok(error == IP_BUF_TOO_SMALL ||
+       error == IP_GENERAL_FAILURE ,
        "IcmpSendEcho returned unexpected error: %lu\n", error);
 
     ReplySize = sizeof(ICMP_ECHO_REPLY) + sizeof(SendData);
     SetLastError(0xDEADBEEF);
-    bRet = IcmpSendEcho(hIcmp, ipaddr, SendData, sizeof(SendData), 
-        NULL, ReplyBuffer, ReplySize, 5000);
+    bRet = IcmpSendEcho(hIcmp, ipaddr, SendData, sizeof(SendData),
+        ((void*)0), ReplyBuffer, ReplySize, 5000);
 
     ok(bRet, "IcmpSendEcho failed unexpectedly: %lu\n", GetLastError());
 

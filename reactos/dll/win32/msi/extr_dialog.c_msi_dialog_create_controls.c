@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_dialog ;
-typedef  size_t UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  control_type; } ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- size_t ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- size_t NUM_CONTROL_TYPES ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- TYPE_1__* msi_dialog_handler ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int msi_dialog ;
+typedef size_t UINT ;
+struct TYPE_2__ {int (* func ) (int *,int *) ;int control_type; } ;
+typedef int MSIRECORD ;
+typedef int * LPVOID ;
+typedef int LPCWSTR ;
+
+
+ int ERR (char*,int ) ;
+ size_t ERROR_SUCCESS ;
+ int MSI_RecordGetString (int *,int) ;
+ size_t NUM_CONTROL_TYPES ;
+ int debugstr_w (int ) ;
+ TYPE_1__* msi_dialog_handler ;
+ int strcmpiW (int ,int ) ;
+ int stub1 (int *,int *) ;
 
 __attribute__((used)) static UINT msi_dialog_create_controls( MSIRECORD *rec, LPVOID param )
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static UINT msi_dialog_create_controls( MSIRECORD *rec, LP
     LPCWSTR control_type;
     UINT i;
 
-    /* find and call the function that can create this type of control */
+
     control_type = MSI_RecordGetString( rec, 3 );
     for( i=0; i<NUM_CONTROL_TYPES; i++ )
         if (!strcmpiW( msi_dialog_handler[i].control_type, control_type ))

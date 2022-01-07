@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+typedef int buf ;
 struct TYPE_4__ {char* rdb_filename; } ;
 struct TYPE_3__ {int fd; } ;
 
-/* Variables and functions */
- int O_CREAT ; 
- int O_WRONLY ; 
- int STDOUT_FILENO ; 
- int /*<<< orphan*/  close (int) ; 
- TYPE_2__ config ; 
- TYPE_1__* context ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fsync (int) ; 
- int open (char*,int,int) ; 
- scalar_t__ read (int,char*,int) ; 
- unsigned long long sendSync (int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- scalar_t__ write (int,char*,scalar_t__) ; 
+
+ int O_CREAT ;
+ int O_WRONLY ;
+ int STDOUT_FILENO ;
+ int close (int) ;
+ TYPE_2__ config ;
+ TYPE_1__* context ;
+ int errno ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int fsync (int) ;
+ int open (char*,int,int) ;
+ scalar_t__ read (int,char*,int) ;
+ unsigned long long sendSync (int) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ char* strerror (int ) ;
+ scalar_t__ write (int,char*,scalar_t__) ;
 
 __attribute__((used)) static void getRDB(void) {
     int s = context->fd;
@@ -45,7 +45,7 @@ __attribute__((used)) static void getRDB(void) {
     fprintf(stderr,"SYNC sent to master, writing %llu bytes to '%s'\n",
         payload, config.rdb_filename);
 
-    /* Write to file. */
+
     if (!strcmp(config.rdb_filename,"-")) {
         fd = STDOUT_FILENO;
     } else {
@@ -73,7 +73,7 @@ __attribute__((used)) static void getRDB(void) {
         }
         payload -= nread;
     }
-    close(s); /* Close the file descriptor ASAP as fsync() may take time. */
+    close(s);
     fsync(fd);
     fprintf(stderr,"Transfer finished with success.\n");
     exit(0);

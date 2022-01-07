@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mmc_host {int /*<<< orphan*/  card; int /*<<< orphan*/  ocr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  mmc_claim_host (struct mmc_host*) ; 
- int /*<<< orphan*/  mmc_release_host (struct mmc_host*) ; 
- int mmc_sd_init_card (struct mmc_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mmc_host {int card; int ocr; } ;
+
+
+ int BUG_ON (int) ;
+ int mmc_claim_host (struct mmc_host*) ;
+ int mmc_release_host (struct mmc_host*) ;
+ int mmc_sd_init_card (struct mmc_host*,int ,int ) ;
 
 __attribute__((used)) static int mmc_sd_resume(struct mmc_host *host)
 {
-	int err;
+ int err;
 
-	BUG_ON(!host);
-	BUG_ON(!host->card);
+ BUG_ON(!host);
+ BUG_ON(!host->card);
 
-	mmc_claim_host(host);
-	err = mmc_sd_init_card(host, host->ocr, host->card);
-	mmc_release_host(host);
+ mmc_claim_host(host);
+ err = mmc_sd_init_card(host, host->ocr, host->card);
+ mmc_release_host(host);
 
-	return err;
+ return err;
 }

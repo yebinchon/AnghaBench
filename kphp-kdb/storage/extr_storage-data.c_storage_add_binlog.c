@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int binlogs; int /*<<< orphan*/  mutex_write; TYPE_2__** B; } ;
-typedef  TYPE_1__ volume_t ;
-struct TYPE_8__ {int dir_id; long long volume_id; int binlog_file_id; long long size; int mtime; int fd_rdonly; int fd_wronly; int /*<<< orphan*/  abs_filename; } ;
-typedef  TYPE_2__ storage_binlog_file_t ;
+
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int binlogs; int mutex_write; TYPE_2__** B; } ;
+typedef TYPE_1__ volume_t ;
+struct TYPE_8__ {int dir_id; long long volume_id; int binlog_file_id; long long size; int mtime; int fd_rdonly; int fd_wronly; int abs_filename; } ;
+typedef TYPE_2__ storage_binlog_file_t ;
 struct TYPE_9__ {int path; } ;
 
-/* Variables and functions */
- TYPE_6__* Dirs ; 
- int MAX_VOLUME_BINLOGS ; 
- int PATH_MAX ; 
- int STORAGE_ERR_PATH_TOO_LONG ; 
- int STORAGE_ERR_TOO_MANY_BINLOGS ; 
- TYPE_1__* get_volume_f (long long,int) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int read_volume_info (char const*,long long*,long long*,int*) ; 
- char* realpath (char const*,char*) ; 
- int /*<<< orphan*/  storage_evaluate_priorities (TYPE_1__*) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdup (char*) ; 
- TYPE_2__* tszmalloc0 (int) ; 
+
+ TYPE_6__* Dirs ;
+ int MAX_VOLUME_BINLOGS ;
+ int PATH_MAX ;
+ int STORAGE_ERR_PATH_TOO_LONG ;
+ int STORAGE_ERR_TOO_MANY_BINLOGS ;
+ TYPE_1__* get_volume_f (long long,int) ;
+ int kprintf (char*,...) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int read_volume_info (char const*,long long*,long long*,int*) ;
+ char* realpath (char const*,char*) ;
+ int storage_evaluate_priorities (TYPE_1__*) ;
+ int strcmp (char*,int ) ;
+ int strdup (char*) ;
+ TYPE_2__* tszmalloc0 (int) ;
 
 int storage_add_binlog (const char *binlogname, int dir_id) {
   char real_filename_buf[PATH_MAX];
   char *abs_filename = realpath (binlogname, real_filename_buf);
-  if (abs_filename == NULL) {
+  if (abs_filename == ((void*)0)) {
     kprintf ("absolute filename for binlog %s is too long. %m\n", binlogname);
     return STORAGE_ERR_PATH_TOO_LONG;
   }

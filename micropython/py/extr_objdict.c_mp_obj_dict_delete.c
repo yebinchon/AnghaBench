@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_obj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_MAP_LOOKUP_REMOVE_IF_FOUND ; 
- int /*<<< orphan*/  dict_get_helper (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mp_obj_t ;
+
+
+ int MP_MAP_LOOKUP_REMOVE_IF_FOUND ;
+ int dict_get_helper (int,int *,int ) ;
 
 mp_obj_t mp_obj_dict_delete(mp_obj_t self_in, mp_obj_t key) {
     mp_obj_t args[2] = {self_in, key};

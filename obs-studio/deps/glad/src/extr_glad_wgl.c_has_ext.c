@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ GLADWGLhdc ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int strlen (char const*) ; 
- char* strstr (char const*,char const*) ; 
- char* wglGetExtensionsStringARB (scalar_t__) ; 
- char* wglGetExtensionsStringEXT () ; 
+ scalar_t__ GLADWGLhdc ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int strlen (char const*) ;
+ char* strstr (char const*,char const*) ;
+ char* wglGetExtensionsStringARB (scalar_t__) ;
+ char* wglGetExtensionsStringEXT () ;
 
 __attribute__((used)) static int has_ext(const char *ext) {
     const char *terminator;
     const char *loc;
     const char *extensions;
 
-    if(wglGetExtensionsStringEXT == NULL && wglGetExtensionsStringARB == NULL)
+    if(wglGetExtensionsStringEXT == ((void*)0) && wglGetExtensionsStringARB == ((void*)0))
         return 0;
 
-    if(wglGetExtensionsStringARB == NULL || GLADWGLhdc == INVALID_HANDLE_VALUE)
+    if(wglGetExtensionsStringARB == ((void*)0) || GLADWGLhdc == INVALID_HANDLE_VALUE)
         extensions = wglGetExtensionsStringEXT();
     else
         extensions = wglGetExtensionsStringARB(GLADWGLhdc);
 
-    if(extensions == NULL || ext == NULL)
+    if(extensions == ((void*)0) || ext == ((void*)0))
         return 0;
 
     while(1) {
         loc = strstr(extensions, ext);
-        if(loc == NULL)
+        if(loc == ((void*)0))
             break;
 
         terminator = loc + strlen(ext);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_INTIMEOUT ; 
- int DELAY_INFINITY ; 
- int MAX_VALUE_LEN ; 
- int SEC_IN_MONTH ; 
- int /*<<< orphan*/  assert (int) ; 
- long long atoll (scalar_t__*) ; 
- int binlog_disabled ; 
- int /*<<< orphan*/  cmd_set ; 
- int do_pmemcached_incr (int /*<<< orphan*/ ,char const*,int,long long) ; 
- int do_pmemcached_preload (char const*,int,int) ; 
- int do_pmemcached_store (int,char const*,int,int,int,scalar_t__*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int,int,int,int) ; 
- scalar_t__ get_double_time_since_epoch () ; 
- int mct_set ; 
- scalar_t__ memcache_wait (struct connection*) ; 
- scalar_t__ protected_mode ; 
- int read_in (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- scalar_t__* value_buff ; 
- int verbosity ; 
+
+
+
+struct connection {int In; int flags; } ;
+
+
+ int C_INTIMEOUT ;
+ int DELAY_INFINITY ;
+ int MAX_VALUE_LEN ;
+ int SEC_IN_MONTH ;
+ int assert (int) ;
+ long long atoll (scalar_t__*) ;
+ int binlog_disabled ;
+ int cmd_set ;
+ int do_pmemcached_incr (int ,char const*,int,long long) ;
+ int do_pmemcached_preload (char const*,int,int) ;
+ int do_pmemcached_store (int,char const*,int,int,int,scalar_t__*,int) ;
+ int fprintf (int ,char*,char const*,int,int,int,int) ;
+ scalar_t__ get_double_time_since_epoch () ;
+ int mct_set ;
+ scalar_t__ memcache_wait (struct connection*) ;
+ scalar_t__ protected_mode ;
+ int read_in (int *,scalar_t__*,int) ;
+ int stderr ;
+ int strncmp (char const*,char*,int) ;
+ scalar_t__* value_buff ;
+ int verbosity ;
 
 int memcache_store (struct connection *c, int op, const char *key, int key_len, int flags, int delay, int size) {
   if (binlog_disabled == 1) {

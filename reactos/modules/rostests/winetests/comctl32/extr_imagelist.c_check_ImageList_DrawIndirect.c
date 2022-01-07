@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  IMAGELISTDRAWPARAMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  colour_match (int,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int /*<<< orphan*/  pImageList_DrawIndirect (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT32 ;
+typedef int IMAGELISTDRAWPARAMS ;
+
+
+ int colour_match (int,int) ;
+ int ok (int ,char*,int,int,int) ;
+ int pImageList_DrawIndirect (int *) ;
 
 __attribute__((used)) static void check_ImageList_DrawIndirect(IMAGELISTDRAWPARAMS *ildp, UINT32 *bits,
                                          UINT32 expected, int line)

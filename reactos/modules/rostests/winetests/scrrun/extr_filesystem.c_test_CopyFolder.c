@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  float* BSTR ;
 
-/* Variables and functions */
- scalar_t__ CTL_E_FILEALREADYEXISTS ; 
- scalar_t__ CTL_E_FILENOTFOUND ; 
- scalar_t__ CTL_E_PATHNOTFOUND ; 
- int CreateDirectoryW (float const*,int /*<<< orphan*/ *) ; 
- scalar_t__ GetFileAttributesW (float*) ; 
- scalar_t__ IFileSystem3_CopyFile (int /*<<< orphan*/ ,float*,float*,int /*<<< orphan*/ ) ; 
- scalar_t__ IFileSystem3_CopyFolder (int /*<<< orphan*/ ,float*,float*,int /*<<< orphan*/ ) ; 
- scalar_t__ IFileSystem3_DeleteFile (int /*<<< orphan*/ ,float*,int /*<<< orphan*/ ) ; 
- scalar_t__ IFileSystem3_DeleteFolder (int /*<<< orphan*/ ,float*,int /*<<< orphan*/ ) ; 
- scalar_t__ INVALID_FILE_ATTRIBUTES ; 
- int MAX_PATH ; 
- int RemoveDirectoryW (float*) ; 
- scalar_t__ S_OK ; 
- float* SysAllocString (float const*) ; 
- int /*<<< orphan*/  SysFreeString (float*) ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int create_file (float*) ; 
- int /*<<< orphan*/  create_path (float const*,float const*,float*) ; 
- int /*<<< orphan*/  fs3 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  skip (char*) ; 
- scalar_t__ wine_dbgstr_w (float*) ; 
+
+
+
+typedef float WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef float* BSTR ;
+
+
+ scalar_t__ CTL_E_FILEALREADYEXISTS ;
+ scalar_t__ CTL_E_FILENOTFOUND ;
+ scalar_t__ CTL_E_PATHNOTFOUND ;
+ int CreateDirectoryW (float const*,int *) ;
+ scalar_t__ GetFileAttributesW (float*) ;
+ scalar_t__ IFileSystem3_CopyFile (int ,float*,float*,int ) ;
+ scalar_t__ IFileSystem3_CopyFolder (int ,float*,float*,int ) ;
+ scalar_t__ IFileSystem3_DeleteFile (int ,float*,int ) ;
+ scalar_t__ IFileSystem3_DeleteFolder (int ,float*,int ) ;
+ scalar_t__ INVALID_FILE_ATTRIBUTES ;
+ int MAX_PATH ;
+ int RemoveDirectoryW (float*) ;
+ scalar_t__ S_OK ;
+ float* SysAllocString (float const*) ;
+ int SysFreeString (float*) ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int create_file (float*) ;
+ int create_path (float const*,float const*,float*) ;
+ int fs3 ;
+ int ok (int,char*,scalar_t__) ;
+ int skip (char*) ;
+ scalar_t__ wine_dbgstr_w (float*) ;
 
 __attribute__((used)) static void test_CopyFolder(void)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static void test_CopyFolder(void)
     BSTR bsrc, bdst;
     HRESULT hr;
 
-    if(!CreateDirectoryW(filesystem3_dir, NULL)) {
+    if(!CreateDirectoryW(filesystem3_dir, ((void*)0))) {
         skip("can't create temporary directory\n");
         return;
     }
@@ -76,7 +76,7 @@ __attribute__((used)) static void test_CopyFolder(void)
     hr = IFileSystem3_DeleteFile(fs3, bsrc, VARIANT_FALSE);
     ok(hr == S_OK, "DeleteFile returned %x, expected S_OK\n", hr);
 
-    ok(CreateDirectoryW(bsrc, NULL), "can't create %s\n", wine_dbgstr_w(bsrc));
+    ok(CreateDirectoryW(bsrc, ((void*)0)), "can't create %s\n", wine_dbgstr_w(bsrc));
     hr = IFileSystem3_CopyFile(fs3, bsrc, bdst, VARIANT_TRUE);
     ok(hr == CTL_E_FILENOTFOUND, "CopyFile returned %x, expected CTL_E_FILENOTFOUND\n", hr);
 

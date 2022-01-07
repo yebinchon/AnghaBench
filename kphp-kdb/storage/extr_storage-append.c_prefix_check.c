@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_crc32 {scalar_t__ type; int /*<<< orphan*/  crc32; } ;
-struct TYPE_7__ {int size; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ file_t ;
-typedef  int /*<<< orphan*/  C1 ;
 
-/* Variables and functions */
- scalar_t__ LEV_CRC32 ; 
- int STORAGE_LEV_START_SIZE ; 
- int /*<<< orphan*/  crc32_complement ; 
- int /*<<< orphan*/  crc32_partial (struct lev_crc32*,int,int /*<<< orphan*/ ) ; 
- int head_check (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ local_id ; 
- scalar_t__ memcmp (struct lev_crc32*,struct lev_crc32*,int) ; 
- scalar_t__ vk_pread (TYPE_1__*,struct lev_crc32*,int,long long) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct lev_crc32 {scalar_t__ type; int crc32; } ;
+struct TYPE_7__ {int size; int filename; } ;
+typedef TYPE_1__ file_t ;
+typedef int C1 ;
+
+
+ scalar_t__ LEV_CRC32 ;
+ int STORAGE_LEV_START_SIZE ;
+ int crc32_complement ;
+ int crc32_partial (struct lev_crc32*,int,int ) ;
+ int head_check (TYPE_1__*,TYPE_1__*) ;
+ int kprintf (char*,...) ;
+ scalar_t__ local_id ;
+ scalar_t__ memcmp (struct lev_crc32*,struct lev_crc32*,int) ;
+ scalar_t__ vk_pread (TYPE_1__*,struct lev_crc32*,int,long long) ;
+ int vkprintf (int,char*,int,int ,int ) ;
 
 int prefix_check (file_t *A, file_t *B) {
   if (A->size < B->size) {

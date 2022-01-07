@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  audio; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int audio; } ;
 struct TYPE_11__ {TYPE_1__ fmt_out; TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ filter_t ;
+typedef TYPE_2__ filter_t ;
 struct TYPE_12__ {scalar_t__ i_rear_left; scalar_t__ i_rear_center; scalar_t__ i_rear_right; scalar_t__ i_center; size_t i_left; size_t i_right; } ;
-typedef  TYPE_3__ filter_sys_t ;
-struct TYPE_13__ {size_t i_nb_samples; int /*<<< orphan*/  i_buffer; int /*<<< orphan*/  i_length; int /*<<< orphan*/  i_pts; int /*<<< orphan*/  i_dts; scalar_t__ p_buffer; } ;
-typedef  TYPE_4__ block_t ;
+typedef TYPE_3__ filter_sys_t ;
+struct TYPE_13__ {size_t i_nb_samples; int i_buffer; int i_length; int i_pts; int i_dts; scalar_t__ p_buffer; } ;
+typedef TYPE_4__ block_t ;
 
-/* Variables and functions */
- size_t aout_FormatNbChannels (int /*<<< orphan*/ *) ; 
- TYPE_4__* block_Alloc (int) ; 
- int /*<<< orphan*/  block_Release (TYPE_4__*) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ size_t aout_FormatNbChannels (int *) ;
+ TYPE_4__* block_Alloc (int) ;
+ int block_Release (TYPE_4__*) ;
+ int memset (float*,int ,int ) ;
 
 __attribute__((used)) static block_t *DoWork( filter_t * p_filter, block_t * p_in_buf )
 {
@@ -43,9 +43,9 @@ __attribute__((used)) static block_t *DoWork( filter_t * p_filter, block_t * p_i
 
     float * p_out = (float*) p_out_buf->p_buffer;
     p_out_buf->i_nb_samples = i_nb_samples;
-    p_out_buf->i_dts        = p_in_buf->i_dts;
-    p_out_buf->i_pts        = p_in_buf->i_pts;
-    p_out_buf->i_length     = p_in_buf->i_length;
+    p_out_buf->i_dts = p_in_buf->i_dts;
+    p_out_buf->i_pts = p_in_buf->i_pts;
+    p_out_buf->i_length = p_in_buf->i_length;
 
     memset( p_out, 0, p_out_buf->i_buffer );
 

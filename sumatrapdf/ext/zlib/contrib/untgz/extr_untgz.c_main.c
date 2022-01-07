@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gzFile ;
 
-/* Variables and functions */
-#define  TGZ_EXTRACT 129 
-#define  TGZ_LIST 128 
- char* TGZfname (char*) ; 
- int /*<<< orphan*/  TGZnotfound (char*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/ * gzopen (char*,char*) ; 
- int /*<<< orphan*/  help (int) ; 
- char* prog ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- char* strrchr (char*,char) ; 
- int tar (int /*<<< orphan*/ *,int,int,int,char**) ; 
+
+
+
+typedef int gzFile ;
+
+
+
+
+ char* TGZfname (char*) ;
+ int TGZnotfound (char*) ;
+ int error (char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*,char*) ;
+ int * gzopen (char*,char*) ;
+ int help (int) ;
+ char* prog ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ char* strrchr (char*,char) ;
+ int tar (int *,int,int,int,char**) ;
 
 int main(int argc,char **argv)
 {
-    int         action = TGZ_EXTRACT;
-    int         arg = 1;
-    char        *TGZfile;
-    gzFile      *f;
+    int action = 129;
+    int arg = 1;
+    char *TGZfile;
+    gzFile *f;
 
     prog = strrchr(argv[0],'\\');
-    if (prog == NULL)
+    if (prog == ((void*)0))
       {
         prog = strrchr(argv[0],'/');
-        if (prog == NULL)
+        if (prog == ((void*)0))
           {
             prog = strrchr(argv[0],':');
-            if (prog == NULL)
+            if (prog == ((void*)0))
               prog = argv[0];
             else
               prog++;
@@ -58,7 +58,7 @@ int main(int argc,char **argv)
 
     if (strcmp(argv[arg],"-l") == 0)
       {
-        action = TGZ_LIST;
+        action = 128;
         if (argc == ++arg)
           help(0);
       }
@@ -67,22 +67,22 @@ int main(int argc,char **argv)
         help(0);
       }
 
-    if ((TGZfile = TGZfname(argv[arg])) == NULL)
+    if ((TGZfile = TGZfname(argv[arg])) == ((void*)0))
       TGZnotfound(argv[arg]);
 
     ++arg;
-    if ((action == TGZ_LIST) && (arg != argc))
+    if ((action == 128) && (arg != argc))
       help(1);
 
-/*
- *  Process the TGZ file
- */
+
+
+
     switch(action)
       {
-      case TGZ_LIST:
-      case TGZ_EXTRACT:
+      case 128:
+      case 129:
         f = gzopen(TGZfile,"rb");
-        if (f == NULL)
+        if (f == ((void*)0))
           {
             fprintf(stderr,"%s: Couldn't gzopen %s\n",prog,TGZfile);
             return 1;

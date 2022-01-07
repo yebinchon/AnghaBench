@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Output ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_DOWN ; 
- int /*<<< orphan*/  D_LEFT ; 
- int /*<<< orphan*/  D_RIGHT ; 
- int /*<<< orphan*/  D_UP ; 
- int /*<<< orphan*/  focused ; 
- int /*<<< orphan*/ * get_output_by_name (char const*,int) ; 
- int /*<<< orphan*/ * get_output_for_con (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_output_next_wrap (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
+
+
+
+typedef int Output ;
+
+
+ int D_DOWN ;
+ int D_LEFT ;
+ int D_RIGHT ;
+ int D_UP ;
+ int focused ;
+ int * get_output_by_name (char const*,int) ;
+ int * get_output_for_con (int ) ;
+ int * get_output_next_wrap (int ,int *) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
 
 Output *get_output_from_string(Output *current_output, const char *output_str) {
     if (strcasecmp(output_str, "current") == 0) {
@@ -36,5 +36,5 @@ Output *get_output_from_string(Output *current_output, const char *output_str) {
         return get_output_next_wrap(D_DOWN, current_output);
     }
 
-    return get_output_by_name(output_str, true);
+    return get_output_by_name(output_str, 1);
 }

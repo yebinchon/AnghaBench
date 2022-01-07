@@ -1,43 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int PG_ELPA ; 
- int /*<<< orphan*/  back_to_back_c0_hazard () ; 
- scalar_t__ mips_xpa_disabled ; 
- int /*<<< orphan*/  panic (char*) ; 
- int /*<<< orphan*/  pr_info (char*) ; 
- unsigned int read_c0_pagegrain () ; 
- int /*<<< orphan*/  write_c0_pagegrain (unsigned int) ; 
+ unsigned int PG_ELPA ;
+ int back_to_back_c0_hazard () ;
+ scalar_t__ mips_xpa_disabled ;
+ int panic (char*) ;
+ int pr_info (char*) ;
+ unsigned int read_c0_pagegrain () ;
+ int write_c0_pagegrain (unsigned int) ;
 
 __attribute__((used)) static void config_xpa_params(void)
 {
-#ifdef CONFIG_XPA
-	unsigned int pagegrain;
-
-	if (mips_xpa_disabled) {
-		pr_info("Extended Physical Addressing (XPA) disabled\n");
-		return;
-	}
-
-	pagegrain = read_c0_pagegrain();
-	write_c0_pagegrain(pagegrain | PG_ELPA);
-	back_to_back_c0_hazard();
-	pagegrain = read_c0_pagegrain();
-
-	if (pagegrain & PG_ELPA)
-		pr_info("Extended Physical Addressing (XPA) enabled\n");
-	else
-		panic("Extended Physical Addressing (XPA) disabled");
-#endif
 }

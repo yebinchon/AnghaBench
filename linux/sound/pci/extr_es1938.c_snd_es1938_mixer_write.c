@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct es1938 {TYPE_1__* card; int /*<<< orphan*/  mixer_lock; } ;
-struct TYPE_2__ {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIXERADDR ; 
- int /*<<< orphan*/  MIXERDATA ; 
- int /*<<< orphan*/  SLSB_REG (struct es1938*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*,unsigned char,unsigned char) ; 
- int /*<<< orphan*/  outb (unsigned char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct es1938 {TYPE_1__* card; int mixer_lock; } ;
+struct TYPE_2__ {int dev; } ;
+
+
+ int MIXERADDR ;
+ int MIXERDATA ;
+ int SLSB_REG (struct es1938*,int ) ;
+ int dev_dbg (int ,char*,unsigned char,unsigned char) ;
+ int outb (unsigned char,int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void snd_es1938_mixer_write(struct es1938 *chip, unsigned char reg, unsigned char val)
 {
-	unsigned long flags;
-	spin_lock_irqsave(&chip->mixer_lock, flags);
-	outb(reg, SLSB_REG(chip, MIXERADDR));
-	outb(val, SLSB_REG(chip, MIXERDATA));
-	spin_unlock_irqrestore(&chip->mixer_lock, flags);
-	dev_dbg(chip->card->dev, "Mixer reg %02x set to %02x\n", reg, val);
+ unsigned long flags;
+ spin_lock_irqsave(&chip->mixer_lock, flags);
+ outb(reg, SLSB_REG(chip, MIXERADDR));
+ outb(val, SLSB_REG(chip, MIXERDATA));
+ spin_unlock_irqrestore(&chip->mixer_lock, flags);
+ dev_dbg(chip->card->dev, "Mixer reg %02x set to %02x\n", reg, val);
 }

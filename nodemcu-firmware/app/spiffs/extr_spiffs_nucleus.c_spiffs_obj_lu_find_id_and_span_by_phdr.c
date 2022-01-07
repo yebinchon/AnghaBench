@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  spiffs_span_ix ;
-typedef  scalar_t__ spiffs_page_ix ;
-typedef  int /*<<< orphan*/  spiffs_obj_id ;
-typedef  int /*<<< orphan*/  spiffs_block_ix ;
-struct TYPE_5__ {int cursor_obj_lu_entry; int /*<<< orphan*/  cursor_block_ix; } ;
-typedef  TYPE_1__ spiffs ;
-typedef  scalar_t__ s32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIFFS_CHECK_RES (scalar_t__) ; 
- scalar_t__ SPIFFS_ERR_NOT_FOUND ; 
- scalar_t__ SPIFFS_OBJ_LOOKUP_ENTRY_TO_PIX (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SPIFFS_VIS_CHECK_PH ; 
- scalar_t__ SPIFFS_VIS_END ; 
- scalar_t__ spiffs_obj_lu_find_entry_visitor (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  spiffs_obj_lu_find_id_and_span_v ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int spiffs_span_ix ;
+typedef scalar_t__ spiffs_page_ix ;
+typedef int spiffs_obj_id ;
+typedef int spiffs_block_ix ;
+struct TYPE_5__ {int cursor_obj_lu_entry; int cursor_block_ix; } ;
+typedef TYPE_1__ spiffs ;
+typedef scalar_t__ s32_t ;
+
+
+ int SPIFFS_CHECK_RES (scalar_t__) ;
+ scalar_t__ SPIFFS_ERR_NOT_FOUND ;
+ scalar_t__ SPIFFS_OBJ_LOOKUP_ENTRY_TO_PIX (TYPE_1__*,int ,int) ;
+ int SPIFFS_VIS_CHECK_PH ;
+ scalar_t__ SPIFFS_VIS_END ;
+ scalar_t__ spiffs_obj_lu_find_entry_visitor (TYPE_1__*,int ,int,int ,int ,int ,scalar_t__*,int *,int *,int*) ;
+ int spiffs_obj_lu_find_id_and_span_v ;
 
 s32_t spiffs_obj_lu_find_id_and_span_by_phdr(
     spiffs *fs,

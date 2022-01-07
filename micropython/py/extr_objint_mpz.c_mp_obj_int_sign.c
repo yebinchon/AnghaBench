@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mp_obj_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int mp_obj_t ;
 struct TYPE_4__ {scalar_t__ len; scalar_t__ neg; } ;
 struct TYPE_5__ {TYPE_1__ mpz; } ;
-typedef  TYPE_2__ mp_obj_int_t ;
-typedef  scalar_t__ mp_int_t ;
+typedef TYPE_2__ mp_obj_int_t ;
+typedef scalar_t__ mp_int_t ;
 
-/* Variables and functions */
- scalar_t__ MP_OBJ_SMALL_INT_VALUE (int /*<<< orphan*/ ) ; 
- TYPE_2__* MP_OBJ_TO_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ mp_obj_is_small_int (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ MP_OBJ_SMALL_INT_VALUE (int ) ;
+ TYPE_2__* MP_OBJ_TO_PTR (int ) ;
+ scalar_t__ mp_obj_is_small_int (int ) ;
 
 int mp_obj_int_sign(mp_obj_t self_in) {
     if (mp_obj_is_small_int(self_in)) {

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wm8904_priv {int devtype; } ;
-struct snd_soc_component {int /*<<< orphan*/  dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  capture; } ;
+struct snd_soc_component {int dev; } ;
+struct TYPE_2__ {int capture; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  WM8904 129 
-#define  WM8912 128 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- struct wm8904_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
- int /*<<< orphan*/  wm8904_add_widgets (struct snd_soc_component*) ; 
- TYPE_1__ wm8904_dai ; 
- int /*<<< orphan*/  wm8904_handle_pdata (struct snd_soc_component*) ; 
+
+ int EINVAL ;
+
+
+ int dev_err (int ,char*,int) ;
+ int memset (int *,int ,int) ;
+ struct wm8904_priv* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
+ int wm8904_add_widgets (struct snd_soc_component*) ;
+ TYPE_1__ wm8904_dai ;
+ int wm8904_handle_pdata (struct snd_soc_component*) ;
 
 __attribute__((used)) static int wm8904_probe(struct snd_soc_component *component)
 {
-	struct wm8904_priv *wm8904 = snd_soc_component_get_drvdata(component);
+ struct wm8904_priv *wm8904 = snd_soc_component_get_drvdata(component);
 
-	switch (wm8904->devtype) {
-	case WM8904:
-		break;
-	case WM8912:
-		memset(&wm8904_dai.capture, 0, sizeof(wm8904_dai.capture));
-		break;
-	default:
-		dev_err(component->dev, "Unknown device type %d\n",
-			wm8904->devtype);
-		return -EINVAL;
-	}
+ switch (wm8904->devtype) {
+ case 129:
+  break;
+ case 128:
+  memset(&wm8904_dai.capture, 0, sizeof(wm8904_dai.capture));
+  break;
+ default:
+  dev_err(component->dev, "Unknown device type %d\n",
+   wm8904->devtype);
+  return -EINVAL;
+ }
 
-	wm8904_handle_pdata(component);
+ wm8904_handle_pdata(component);
 
-	wm8904_add_widgets(component);
+ wm8904_add_widgets(component);
 
-	return 0;
+ return 0;
 }

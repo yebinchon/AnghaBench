@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  ENOMEM ; 
- unsigned int FFMIN (size_t,unsigned int) ; 
- unsigned int const INT_MAX ; 
- int /*<<< orphan*/ * av_fast_realloc (int /*<<< orphan*/ *,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- unsigned int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVIOContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int ENOMEM ;
+ unsigned int FFMIN (size_t,unsigned int) ;
+ unsigned int const INT_MAX ;
+ int * av_fast_realloc (int *,unsigned int*,unsigned int) ;
+ int av_free (int *) ;
+ unsigned int avio_read (int *,int *,unsigned int) ;
 
 __attribute__((used)) static int mov_try_read_block(AVIOContext *pb, size_t size, uint8_t **data)
 {
     const unsigned int block_size = 1024 * 1024;
-    uint8_t *buffer = NULL;
+    uint8_t *buffer = ((void*)0);
     unsigned int alloc_size = 0, offset = 0;
     while (offset < size) {
         unsigned int new_size =

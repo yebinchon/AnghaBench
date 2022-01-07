@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connectdata {int dummy; } ;
 struct Curl_easy {int dummy; } ;
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  curl_socket_t ;
-typedef  scalar_t__ CURLcode ;
+typedef scalar_t__ ssize_t ;
+typedef int curl_socket_t ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_RECURSIVE_API_CALL ; 
- scalar_t__ Curl_is_in_callback (struct Curl_easy*) ; 
- scalar_t__ Curl_read (struct connectdata*,int /*<<< orphan*/ ,void*,size_t,scalar_t__*) ; 
- scalar_t__ easy_connection (struct Curl_easy*,int /*<<< orphan*/ *,struct connectdata**) ; 
+
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_RECURSIVE_API_CALL ;
+ scalar_t__ Curl_is_in_callback (struct Curl_easy*) ;
+ scalar_t__ Curl_read (struct connectdata*,int ,void*,size_t,scalar_t__*) ;
+ scalar_t__ easy_connection (struct Curl_easy*,int *,struct connectdata**) ;
 
 CURLcode curl_easy_recv(struct Curl_easy *data, void *buffer, size_t buflen,
                         size_t *n)

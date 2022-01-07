@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int flags; TYPE_1__* tty; } ;
-struct gs_port {int /*<<< orphan*/  driver_lock; TYPE_3__ port; TYPE_2__* rd; int /*<<< orphan*/ * xmit_buf; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* shutdown_port ) (struct gs_port*) ;} ;
-struct TYPE_4__ {int /*<<< orphan*/  flags; } ;
+struct gs_port {int driver_lock; TYPE_3__ port; TYPE_2__* rd; int * xmit_buf; } ;
+struct TYPE_5__ {int (* shutdown_port ) (struct gs_port*) ;} ;
+struct TYPE_4__ {int flags; } ;
 
-/* Variables and functions */
- int ASYNC_INITIALIZED ; 
- int /*<<< orphan*/  TTY_IO_ERROR ; 
- int /*<<< orphan*/  free_page (unsigned long) ; 
- int /*<<< orphan*/  func_enter () ; 
- int /*<<< orphan*/  func_exit () ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct gs_port*) ; 
+
+ int ASYNC_INITIALIZED ;
+ int TTY_IO_ERROR ;
+ int free_page (unsigned long) ;
+ int func_enter () ;
+ int func_exit () ;
+ int set_bit (int ,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct gs_port*) ;
 
 __attribute__((used)) static void gs_shutdown_port (struct gs_port *port)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	func_enter();
-	
-	if (!port) return;
-	
-	if (!(port->port.flags & ASYNC_INITIALIZED))
-		return;
+ func_enter();
 
-	spin_lock_irqsave(&port->driver_lock, flags);
+ if (!port) return;
 
-	if (port->xmit_buf) {
-		free_page((unsigned long) port->xmit_buf);
-		port->xmit_buf = NULL;
-	}
+ if (!(port->port.flags & ASYNC_INITIALIZED))
+  return;
 
-	if (port->port.tty)
-		set_bit(TTY_IO_ERROR, &port->port.tty->flags);
+ spin_lock_irqsave(&port->driver_lock, flags);
 
-	port->rd->shutdown_port (port);
+ if (port->xmit_buf) {
+  free_page((unsigned long) port->xmit_buf);
+  port->xmit_buf = ((void*)0);
+ }
 
-	port->port.flags &= ~ASYNC_INITIALIZED;
-	spin_unlock_irqrestore(&port->driver_lock, flags);
+ if (port->port.tty)
+  set_bit(TTY_IO_ERROR, &port->port.tty->flags);
 
-	func_exit();
+ port->rd->shutdown_port (port);
+
+ port->port.flags &= ~ASYNC_INITIALIZED;
+ spin_unlock_irqrestore(&port->driver_lock, flags);
+
+ func_exit();
 }

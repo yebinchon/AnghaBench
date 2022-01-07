@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vatpit {TYPE_1__* channel; } ;
-struct TYPE_2__ {int /*<<< orphan*/  callout; } ;
+struct TYPE_2__ {int callout; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  callout_drain (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct vatpit*) ; 
+
+ int callout_drain (int *) ;
+ int free (struct vatpit*) ;
 
 void
 vatpit_cleanup(struct vatpit *vatpit)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < 3; i++)
-		callout_drain(&vatpit->channel[i].callout);
+ for (i = 0; i < 3; i++)
+  callout_drain(&vatpit->channel[i].callout);
 
-	free(vatpit);
+ free(vatpit);
 }

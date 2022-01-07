@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  references; } ;
-typedef  TYPE_1__ DSO ;
 
-/* Variables and functions */
- scalar_t__ CRYPTO_UP_REF (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSO_F_DSO_UP_REF ; 
- int /*<<< orphan*/  DSOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_PASSED_NULL_PARAMETER ; 
- int /*<<< orphan*/  REF_ASSERT_ISNT (int) ; 
- int /*<<< orphan*/  REF_PRINT_COUNT (char*,TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int lock; int references; } ;
+typedef TYPE_1__ DSO ;
+
+
+ scalar_t__ CRYPTO_UP_REF (int *,int*,int ) ;
+ int DSO_F_DSO_UP_REF ;
+ int DSOerr (int ,int ) ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
+ int REF_ASSERT_ISNT (int) ;
+ int REF_PRINT_COUNT (char*,TYPE_1__*) ;
 
 int DSO_up_ref(DSO *dso)
 {
     int i;
 
-    if (dso == NULL) {
+    if (dso == ((void*)0)) {
         DSOerr(DSO_F_DSO_UP_REF, ERR_R_PASSED_NULL_PARAMETER);
         return 0;
     }

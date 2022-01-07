@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PACKET ;
 
-/* Variables and functions */
- int BUF_LEN ; 
- int /*<<< orphan*/  PACKET_buf_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PACKET_forward (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  PACKET_get_bytes (int /*<<< orphan*/ *,unsigned char const**,int) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_uchar_eq (unsigned char const,int) ; 
- int /*<<< orphan*/  smbuf ; 
+
+
+
+typedef int PACKET ;
+
+
+ int BUF_LEN ;
+ int PACKET_buf_init (int *,int ,int) ;
+ int PACKET_forward (int *,int) ;
+ int PACKET_get_bytes (int *,unsigned char const**,int) ;
+ int TEST_true (int ) ;
+ int TEST_uchar_eq (unsigned char const,int) ;
+ int smbuf ;
 
 __attribute__((used)) static int test_PACKET_forward(void)
 {
-    const unsigned char *byte = NULL;
+    const unsigned char *byte = ((void*)0);
     PACKET pkt;
 
     if (!TEST_true(PACKET_buf_init(&pkt, smbuf, BUF_LEN))

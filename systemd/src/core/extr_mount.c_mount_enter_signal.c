@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ send_sigkill; } ;
-struct TYPE_10__ {scalar_t__ result; TYPE_2__ kill_context; int /*<<< orphan*/  timeout_usec; int /*<<< orphan*/  control_pid; } ;
-typedef  int /*<<< orphan*/  MountState ;
-typedef  scalar_t__ MountResult ;
-typedef  TYPE_1__ Mount ;
+struct TYPE_10__ {scalar_t__ result; TYPE_2__ kill_context; int timeout_usec; int control_pid; } ;
+typedef int MountState ;
+typedef scalar_t__ MountResult ;
+typedef TYPE_1__ Mount ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ MOUNT_FAILURE_RESOURCES ; 
- int /*<<< orphan*/  MOUNT_REMOUNTING_SIGKILL ; 
- int /*<<< orphan*/  MOUNT_REMOUNTING_SIGTERM ; 
- scalar_t__ MOUNT_SUCCESS ; 
- int /*<<< orphan*/  MOUNT_UNMOUNTING_SIGKILL ; 
- int /*<<< orphan*/  MOUNT_UNMOUNTING_SIGTERM ; 
- int /*<<< orphan*/  UNIT (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_unit_warning_errno (int /*<<< orphan*/ ,int,char*) ; 
- int mount_arm_timer (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mount_enter_dead_or_mounted (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  mount_enter_mounted (TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  mount_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  now (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  state_to_kill_operation (int /*<<< orphan*/ ) ; 
- int unit_kill_context (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  usec_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CLOCK_MONOTONIC ;
+ scalar_t__ IN_SET (int ,int ,int ) ;
+ scalar_t__ MOUNT_FAILURE_RESOURCES ;
+ int MOUNT_REMOUNTING_SIGKILL ;
+ int MOUNT_REMOUNTING_SIGTERM ;
+ scalar_t__ MOUNT_SUCCESS ;
+ int MOUNT_UNMOUNTING_SIGKILL ;
+ int MOUNT_UNMOUNTING_SIGTERM ;
+ int UNIT (TYPE_1__*) ;
+ int assert (TYPE_1__*) ;
+ int log_unit_warning_errno (int ,int,char*) ;
+ int mount_arm_timer (TYPE_1__*,int ) ;
+ int mount_enter_dead_or_mounted (TYPE_1__*,scalar_t__) ;
+ int mount_enter_mounted (TYPE_1__*,scalar_t__) ;
+ int mount_set_state (TYPE_1__*,int ) ;
+ int now (int ) ;
+ int state_to_kill_operation (int ) ;
+ int unit_kill_context (int ,TYPE_2__*,int ,int,int ,int) ;
+ int usec_add (int ,int ) ;
 
 __attribute__((used)) static void mount_enter_signal(Mount *m, MountState state, MountResult f) {
         int r;
@@ -53,7 +53,7 @@ __attribute__((used)) static void mount_enter_signal(Mount *m, MountState state,
                         state_to_kill_operation(state),
                         -1,
                         m->control_pid,
-                        false);
+                        0);
         if (r < 0)
                 goto fail;
 

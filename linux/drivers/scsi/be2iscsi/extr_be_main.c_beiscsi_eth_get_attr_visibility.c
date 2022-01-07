@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  umode_t ;
 
-/* Variables and functions */
-#define  ISCSI_BOOT_ETH_FLAGS 130 
-#define  ISCSI_BOOT_ETH_INDEX 129 
-#define  ISCSI_BOOT_ETH_MAC 128 
- int /*<<< orphan*/  S_IRUGO ; 
+
+
+
+typedef int umode_t ;
+
+
+
+
+
+ int S_IRUGO ;
 
 __attribute__((used)) static umode_t beiscsi_eth_get_attr_visibility(void *data, int type)
 {
-	umode_t rc = 0;
+ umode_t rc = 0;
 
-	switch (type) {
-	case ISCSI_BOOT_ETH_FLAGS:
-	case ISCSI_BOOT_ETH_MAC:
-	case ISCSI_BOOT_ETH_INDEX:
-		rc = S_IRUGO;
-		break;
-	}
-	return rc;
+ switch (type) {
+ case 130:
+ case 128:
+ case 129:
+  rc = S_IRUGO;
+  break;
+ }
+ return rc;
 }

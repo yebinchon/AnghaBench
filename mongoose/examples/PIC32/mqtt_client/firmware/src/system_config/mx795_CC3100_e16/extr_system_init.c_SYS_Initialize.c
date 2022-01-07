@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sysDebug; int /*<<< orphan*/  sysConsole0; int /*<<< orphan*/  drvUsart0; int /*<<< orphan*/  spiObjectIdx0; int /*<<< orphan*/  sysDevcon; } ;
-typedef  int /*<<< orphan*/  SYS_MODULE_INIT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_Initialize () ; 
- int /*<<< orphan*/  DRV_RTCC_Initialize () ; 
- int /*<<< orphan*/  DRV_SPI_INDEX_0 ; 
- int /*<<< orphan*/  DRV_SPI_Initialize (int /*<<< orphan*/ ,int /*<<< orphan*/  const* const) ; 
- int /*<<< orphan*/  DRV_USART_INDEX_0 ; 
- int /*<<< orphan*/  DRV_USART_Initialize (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INT_PRIORITY_LEVEL3 ; 
- int /*<<< orphan*/  INT_SUBPRIORITY_LEVEL0 ; 
- int /*<<< orphan*/  INT_VECTOR_UART2 ; 
- int /*<<< orphan*/  SYS_CLK_Initialize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_CLK_SystemFrequencyGet () ; 
- int /*<<< orphan*/  SYS_CONSOLE_INDEX_0 ; 
- int /*<<< orphan*/  SYS_CONSOLE_Initialize (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_DEBUG_INDEX_0 ; 
- int /*<<< orphan*/  SYS_DEBUG_Initialize (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_DEVCON_INDEX_0 ; 
- int /*<<< orphan*/  SYS_DEVCON_Initialize (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SYS_DEVCON_JTAGDisable () ; 
- int /*<<< orphan*/  SYS_DEVCON_PerformanceConfig (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYS_INT_Enable () ; 
- int /*<<< orphan*/  SYS_INT_Initialize () ; 
- int /*<<< orphan*/  SYS_INT_VectorPrioritySet (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYS_INT_VectorSubprioritySet (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYS_PORTS_Initialize () ; 
- int /*<<< orphan*/  debugInit ; 
- int /*<<< orphan*/  sysDevconInit ; 
- TYPE_1__ sysObj ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sysDebug; int sysConsole0; int drvUsart0; int spiObjectIdx0; int sysDevcon; } ;
+typedef int SYS_MODULE_INIT ;
+
+
+ int APP_Initialize () ;
+ int DRV_RTCC_Initialize () ;
+ int DRV_SPI_INDEX_0 ;
+ int DRV_SPI_Initialize (int ,int const* const) ;
+ int DRV_USART_INDEX_0 ;
+ int DRV_USART_Initialize (int ,int *) ;
+ int INT_PRIORITY_LEVEL3 ;
+ int INT_SUBPRIORITY_LEVEL0 ;
+ int INT_VECTOR_UART2 ;
+ int SYS_CLK_Initialize (int *) ;
+ int SYS_CLK_SystemFrequencyGet () ;
+ int SYS_CONSOLE_INDEX_0 ;
+ int SYS_CONSOLE_Initialize (int ,int *) ;
+ int SYS_DEBUG_INDEX_0 ;
+ int SYS_DEBUG_Initialize (int ,int *) ;
+ int SYS_DEVCON_INDEX_0 ;
+ int SYS_DEVCON_Initialize (int ,int *) ;
+ int SYS_DEVCON_JTAGDisable () ;
+ int SYS_DEVCON_PerformanceConfig (int ) ;
+ int SYS_INT_Enable () ;
+ int SYS_INT_Initialize () ;
+ int SYS_INT_VectorPrioritySet (int ,int ) ;
+ int SYS_INT_VectorSubprioritySet (int ,int ) ;
+ int SYS_PORTS_Initialize () ;
+ int debugInit ;
+ int sysDevconInit ;
+ TYPE_1__ sysObj ;
 
 void SYS_Initialize ( void* data )
 {
-    /* Core Processor Initialization */
-    SYS_CLK_Initialize( NULL );
+
+    SYS_CLK_Initialize( ((void*)0) );
     sysObj.sysDevcon = SYS_DEVCON_Initialize(SYS_DEVCON_INDEX_0, (SYS_MODULE_INIT*)&sysDevconInit);
     SYS_DEVCON_PerformanceConfig(SYS_CLK_SystemFrequencyGet());
     SYS_DEVCON_JTAGDisable();
     SYS_PORTS_Initialize();
 
-    /* Initialize Drivers */
 
-    /*** SPI Driver Index 0 initialization***/
 
-    sysObj.spiObjectIdx0 = DRV_SPI_Initialize(DRV_SPI_INDEX_0, (const SYS_MODULE_INIT  * const)NULL);
-    /* RTCC Initialization Call */
+
+
+    sysObj.spiObjectIdx0 = DRV_SPI_Initialize(DRV_SPI_INDEX_0, (const SYS_MODULE_INIT * const)((void*)0));
+
     DRV_RTCC_Initialize();
 
-    sysObj.drvUsart0 = DRV_USART_Initialize(DRV_USART_INDEX_0, (SYS_MODULE_INIT *)NULL);
+    sysObj.drvUsart0 = DRV_USART_Initialize(DRV_USART_INDEX_0, (SYS_MODULE_INIT *)((void*)0));
     SYS_INT_VectorPrioritySet(INT_VECTOR_UART2, INT_PRIORITY_LEVEL3);
     SYS_INT_VectorSubprioritySet(INT_VECTOR_UART2, INT_SUBPRIORITY_LEVEL0);
 
-    /* Initialize System Services */
-    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, NULL);
+
+    sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, ((void*)0));
 
 
-    /*** Debug Service Initialization Code ***/
+
     sysObj.sysDebug = SYS_DEBUG_Initialize(SYS_DEBUG_INDEX_0, (SYS_MODULE_INIT*)&debugInit);
 
-    /*** Interrupt Service Initialization Code ***/
-    SYS_INT_Initialize();
-  
-    /* Initialize Middleware */
 
-    /* Enable Global Interrupts */
+    SYS_INT_Initialize();
+
+
+
+
     SYS_INT_Enable();
 
-    /* Initialize the Application */
+
     APP_Initialize();
 }

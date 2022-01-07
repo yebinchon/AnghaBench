@@ -1,92 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
 struct TYPE_11__ {unsigned int cbSizeInstance; } ;
-struct TYPE_10__ {int vt; int /*<<< orphan*/  hreftype; TYPE_2__* lpadesc; } ;
+struct TYPE_10__ {int vt; int hreftype; TYPE_2__* lpadesc; } ;
 struct TYPE_9__ {unsigned int cDims; TYPE_1__* rgbounds; TYPE_3__ tdescElem; } ;
 struct TYPE_8__ {unsigned int cElements; } ;
-typedef  TYPE_3__ TYPEDESC ;
-typedef  TYPE_4__ TYPEATTR ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
+typedef TYPE_3__ TYPEDESC ;
+typedef TYPE_4__ TYPEATTR ;
+typedef int ITypeInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  ITypeInfo_GetRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeInfo_GetTypeAttr (int /*<<< orphan*/ *,TYPE_4__**) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_ReleaseTypeAttr (int /*<<< orphan*/ *,TYPE_4__*) ; 
-#define  VT_BOOL 151 
-#define  VT_BSTR 150 
-#define  VT_CARRAY 149 
-#define  VT_DATE 148 
-#define  VT_DISPATCH 147 
-#define  VT_ERROR 146 
-#define  VT_HRESULT 145 
-#define  VT_I1 144 
-#define  VT_I2 143 
-#define  VT_I4 142 
-#define  VT_I8 141 
-#define  VT_INT 140 
-#define  VT_PTR 139 
-#define  VT_R4 138 
-#define  VT_R8 137 
-#define  VT_SAFEARRAY 136 
-#define  VT_UI1 135 
-#define  VT_UI2 134 
-#define  VT_UI4 133 
-#define  VT_UI8 132 
-#define  VT_UINT 131 
-#define  VT_UNKNOWN 130 
-#define  VT_USERDEFINED 129 
-#define  VT_VARIANT 128 
 
+ int FIXME (char*,int) ;
+ int ITypeInfo_GetRefTypeInfo (int *,int ,int **) ;
+ int ITypeInfo_GetTypeAttr (int *,TYPE_4__**) ;
+ int ITypeInfo_Release (int *) ;
+ int ITypeInfo_ReleaseTypeAttr (int *,TYPE_4__*) ;
 __attribute__((used)) static unsigned int type_memsize(ITypeInfo *typeinfo, TYPEDESC *desc)
 {
     switch (desc->vt)
     {
-    case VT_I1:
-    case VT_UI1:
+    case 144:
+    case 135:
         return 1;
-    case VT_I2:
-    case VT_UI2:
-    case VT_BOOL:
+    case 143:
+    case 134:
+    case 151:
         return 2;
-    case VT_I4:
-    case VT_UI4:
-    case VT_R4:
-    case VT_INT:
-    case VT_UINT:
-    case VT_ERROR:
-    case VT_HRESULT:
+    case 142:
+    case 133:
+    case 138:
+    case 140:
+    case 131:
+    case 146:
+    case 145:
         return 4;
-    case VT_I8:
-    case VT_UI8:
-    case VT_R8:
-    case VT_DATE:
+    case 141:
+    case 132:
+    case 137:
+    case 148:
         return 8;
-    case VT_BSTR:
-    case VT_SAFEARRAY:
-    case VT_PTR:
-    case VT_UNKNOWN:
-    case VT_DISPATCH:
+    case 150:
+    case 136:
+    case 139:
+    case 130:
+    case 147:
         return sizeof(void *);
-    case VT_VARIANT:
+    case 128:
         return sizeof(VARIANT);
-    case VT_CARRAY:
+    case 149:
     {
         unsigned int size = type_memsize(typeinfo, &desc->lpadesc->tdescElem);
         unsigned int i;
@@ -94,7 +69,7 @@ __attribute__((used)) static unsigned int type_memsize(ITypeInfo *typeinfo, TYPE
             size *= desc->lpadesc->rgbounds[i].cElements;
         return size;
     }
-    case VT_USERDEFINED:
+    case 129:
     {
         unsigned int size = 0;
         ITypeInfo *refinfo;

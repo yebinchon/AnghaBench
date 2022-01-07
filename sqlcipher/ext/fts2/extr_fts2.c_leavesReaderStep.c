@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fulltext_vtab ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int fulltext_vtab ;
 struct TYPE_5__ {scalar_t__ pData; } ;
-struct TYPE_6__ {int eof; int /*<<< orphan*/  leafReader; int /*<<< orphan*/  pStmt; TYPE_1__ rootData; } ;
-typedef  TYPE_2__ LeavesReader ;
+struct TYPE_6__ {int eof; int leafReader; int pStmt; TYPE_1__ rootData; } ;
+typedef TYPE_2__ LeavesReader ;
 
-/* Variables and functions */
- int SQLITE_DONE ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ leafReaderAtEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  leafReaderDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  leafReaderInit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  leafReaderStep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  leavesReaderAtEnd (TYPE_2__*) ; 
- int /*<<< orphan*/  sqlite3_column_blob (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_bytes (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ ) ; 
+
+ int SQLITE_DONE ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int assert (int) ;
+ scalar_t__ leafReaderAtEnd (int *) ;
+ int leafReaderDestroy (int *) ;
+ int leafReaderInit (int ,int ,int *) ;
+ int leafReaderStep (int *) ;
+ int leavesReaderAtEnd (TYPE_2__*) ;
+ int sqlite3_column_blob (int ,int ) ;
+ int sqlite3_column_bytes (int ,int ) ;
+ int sqlite3_step (int ) ;
 
 __attribute__((used)) static int leavesReaderStep(fulltext_vtab *v, LeavesReader *pReader){
   assert( !leavesReaderAtEnd(pReader) );

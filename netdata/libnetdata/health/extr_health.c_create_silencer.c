@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SILENCER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- int /*<<< orphan*/ * callocz (int,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int SILENCER ;
+
+
+ int D_HEALTH ;
+ int * callocz (int,int) ;
+ int debug (int ,char*) ;
 
 SILENCER *create_silencer(void) {
     SILENCER *t = callocz(1, sizeof(SILENCER));

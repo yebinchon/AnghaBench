@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ data; } ;
-struct TYPE_4__ {TYPE_1__ secret; int /*<<< orphan*/ * md5; int /*<<< orphan*/ * variable; } ;
-typedef  TYPE_2__ ngx_http_secure_link_conf_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
+struct TYPE_4__ {TYPE_1__ secret; int * md5; int * variable; } ;
+typedef TYPE_2__ ngx_http_secure_link_conf_t ;
+typedef int ngx_conf_t ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_LOG_EMERG ;
+ int ngx_conf_log_error (int ,int *,int ,char*) ;
 
 __attribute__((used)) static char *
 ngx_http_secure_link_merge_conf(ngx_conf_t *cf, void *parent, void *child)
@@ -40,15 +40,15 @@ ngx_http_secure_link_merge_conf(ngx_conf_t *cf, void *parent, void *child)
         return NGX_CONF_OK;
     }
 
-    if (conf->variable == NULL) {
+    if (conf->variable == ((void*)0)) {
         conf->variable = prev->variable;
     }
 
-    if (conf->md5 == NULL) {
+    if (conf->md5 == ((void*)0)) {
         conf->md5 = prev->md5;
     }
 
-    if (conf->variable == NULL && conf->md5 == NULL) {
+    if (conf->variable == ((void*)0) && conf->md5 == ((void*)0)) {
         conf->secret = prev->secret;
     }
 

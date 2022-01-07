@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct urb {int /*<<< orphan*/  status; scalar_t__ context; } ;
-struct TYPE_2__ {int busy; int /*<<< orphan*/  finished; int /*<<< orphan*/  status; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct urb {int status; scalar_t__ context; } ;
+struct TYPE_2__ {int busy; int finished; int status; } ;
 struct imon_context {TYPE_1__ tx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smp_rmb () ; 
+
+ int complete (int *) ;
+ int smp_rmb () ;
 
 __attribute__((used)) static void usb_tx_callback(struct urb *urb)
 {
-	struct imon_context *ictx;
+ struct imon_context *ictx;
 
-	if (!urb)
-		return;
-	ictx = (struct imon_context *)urb->context;
-	if (!ictx)
-		return;
+ if (!urb)
+  return;
+ ictx = (struct imon_context *)urb->context;
+ if (!ictx)
+  return;
 
-	ictx->tx.status = urb->status;
+ ictx->tx.status = urb->status;
 
-	/* notify waiters that write has finished */
-	ictx->tx.busy = false;
-	smp_rmb(); /* ensure later readers know we're not busy */
-	complete(&ictx->tx.finished);
+
+ ictx->tx.busy = 0;
+ smp_rmb();
+ complete(&ictx->tx.finished);
 }

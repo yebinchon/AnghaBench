@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_5__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_5__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
 struct TYPE_6__ {int pos; } ;
-typedef  TYPE_1__ stats_buffer_t ;
-struct TYPE_7__ {int /*<<< orphan*/  left_subtree_size_threshold; } ;
+typedef TYPE_1__ stats_buffer_t ;
+struct TYPE_7__ {int left_subtree_size_threshold; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AM_GET_MEMORY_USAGE_SELF ; 
- int /*<<< orphan*/  FullVersionStr ; 
- TYPE_5__ Header ; 
- int /*<<< orphan*/  SB_BINLOG ; 
- int /*<<< orphan*/  SB_INDEX ; 
- int /*<<< orphan*/  SB_PRINT_I32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_I64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SB_PRINT_QUERIES (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int /*<<< orphan*/  alloc_tree_nodes ; 
- int /*<<< orphan*/  creation_date ; 
- int /*<<< orphan*/  decoder_positions_max_capacity ; 
- int /*<<< orphan*/  del_items ; 
- int /*<<< orphan*/  delete_item_queries ; 
- int /*<<< orphan*/  free_tree_nodes ; 
- int /*<<< orphan*/  get_malloc_memory_used () ; 
- int /*<<< orphan*/  hashtags_enabled ; 
- int /*<<< orphan*/  idx_bytes ; 
- int /*<<< orphan*/  idx_items ; 
- int /*<<< orphan*/  idx_words ; 
- int /*<<< orphan*/  increment_queries ; 
- int /*<<< orphan*/  listcomp_version ; 
- int /*<<< orphan*/  max_search_query_memory ; 
- int /*<<< orphan*/  mod_items ; 
- int /*<<< orphan*/  sb_memory (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_prepare (TYPE_1__*,struct connection*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sb_printf (TYPE_1__*,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  search_queries ; 
- int /*<<< orphan*/  set_item_queries ; 
- int /*<<< orphan*/  set_rate_queries ; 
- int /*<<< orphan*/  stats_buff ; 
- int /*<<< orphan*/  stemmer_version ; 
- int /*<<< orphan*/  tag_owner ; 
- int /*<<< orphan*/  tot_freed_deleted_items ; 
- int /*<<< orphan*/  tot_items ; 
- int /*<<< orphan*/  tree_positions_bytes ; 
- int /*<<< orphan*/  universal ; 
- int /*<<< orphan*/  use_stemmer ; 
- int /*<<< orphan*/  word_split_utf8 ; 
- int /*<<< orphan*/  word_split_version ; 
- int /*<<< orphan*/  wordfreqs_enabled ; 
+
+ int AM_GET_MEMORY_USAGE_SELF ;
+ int FullVersionStr ;
+ TYPE_5__ Header ;
+ int SB_BINLOG ;
+ int SB_INDEX ;
+ int SB_PRINT_I32 (int ) ;
+ int SB_PRINT_I64 (int ) ;
+ int SB_PRINT_QUERIES (int ) ;
+ int STATS_BUFF_SIZE ;
+ int alloc_tree_nodes ;
+ int creation_date ;
+ int decoder_positions_max_capacity ;
+ int del_items ;
+ int delete_item_queries ;
+ int free_tree_nodes ;
+ int get_malloc_memory_used () ;
+ int hashtags_enabled ;
+ int idx_bytes ;
+ int idx_items ;
+ int idx_words ;
+ int increment_queries ;
+ int listcomp_version ;
+ int max_search_query_memory ;
+ int mod_items ;
+ int sb_memory (TYPE_1__*,int ) ;
+ int sb_prepare (TYPE_1__*,struct connection*,int ,int ) ;
+ int sb_printf (TYPE_1__*,char*,int ,...) ;
+ int search_queries ;
+ int set_item_queries ;
+ int set_rate_queries ;
+ int stats_buff ;
+ int stemmer_version ;
+ int tag_owner ;
+ int tot_freed_deleted_items ;
+ int tot_items ;
+ int tree_positions_bytes ;
+ int universal ;
+ int use_stemmer ;
+ int word_split_utf8 ;
+ int word_split_version ;
+ int wordfreqs_enabled ;
 
 int searchy_prepare_stats (struct connection *c) {
   stats_buffer_t sb;

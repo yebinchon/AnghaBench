@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct netup_unidvb_dev {struct netup_spi* spi; } ;
-struct netup_spi {int /*<<< orphan*/  master; int /*<<< orphan*/  lock; TYPE_1__* regs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  control_stat; } ;
+struct netup_spi {int master; int lock; TYPE_1__* regs; } ;
+struct TYPE_2__ {int control_stat; } ;
 
-/* Variables and functions */
- int NETUP_SPI_CTRL_IMASK ; 
- int NETUP_SPI_CTRL_IRQ ; 
- int readw (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spi_unregister_master (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  writew (int,int /*<<< orphan*/ *) ; 
+
+ int NETUP_SPI_CTRL_IMASK ;
+ int NETUP_SPI_CTRL_IRQ ;
+ int readw (int *) ;
+ int spi_unregister_master (int ) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int writew (int,int *) ;
 
 void netup_spi_release(struct netup_unidvb_dev *ndev)
 {
-	u16 reg;
-	unsigned long flags;
-	struct netup_spi *spi = ndev->spi;
+ u16 reg;
+ unsigned long flags;
+ struct netup_spi *spi = ndev->spi;
 
-	if (!spi)
-		return;
+ if (!spi)
+  return;
 
-	spin_lock_irqsave(&spi->lock, flags);
-	reg = readw(&spi->regs->control_stat);
-	writew(reg | NETUP_SPI_CTRL_IRQ, &spi->regs->control_stat);
-	reg = readw(&spi->regs->control_stat);
-	writew(reg & ~NETUP_SPI_CTRL_IMASK, &spi->regs->control_stat);
-	spin_unlock_irqrestore(&spi->lock, flags);
-	spi_unregister_master(spi->master);
-	ndev->spi = NULL;
+ spin_lock_irqsave(&spi->lock, flags);
+ reg = readw(&spi->regs->control_stat);
+ writew(reg | NETUP_SPI_CTRL_IRQ, &spi->regs->control_stat);
+ reg = readw(&spi->regs->control_stat);
+ writew(reg & ~NETUP_SPI_CTRL_IMASK, &spi->regs->control_stat);
+ spin_unlock_irqrestore(&spi->lock, flags);
+ spi_unregister_master(spi->master);
+ ndev->spi = ((void*)0);
 }

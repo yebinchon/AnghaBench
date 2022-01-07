@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int len; int /*<<< orphan*/ * val; } ;
-typedef  int /*<<< orphan*/  PA_DATA ;
-typedef  TYPE_1__ METHOD_DATA ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/ * realloc (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int len; int * val; } ;
+typedef int PA_DATA ;
+typedef TYPE_1__ METHOD_DATA ;
+
+
+ int ENOMEM ;
+ int * realloc (int *,int) ;
 
 __attribute__((used)) static int
 realloc_method_data(METHOD_DATA *md)
 {
     PA_DATA *pa;
     pa = realloc(md->val, (md->len + 1) * sizeof(*md->val));
-    if(pa == NULL)
-	return ENOMEM;
+    if(pa == ((void*)0))
+ return ENOMEM;
     md->val = pa;
     md->len++;
     return 0;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  cf_chash_ctx ;
-struct TYPE_3__ {size_t hashsz; int /*<<< orphan*/  (* digest ) (int /*<<< orphan*/ *,int*) ;int /*<<< orphan*/  (* update ) (int /*<<< orphan*/ *,int*,size_t) ;int /*<<< orphan*/  (* init ) (int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ cf_chash ;
 
-/* Variables and functions */
- int CF_MAXHASH ; 
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- scalar_t__ memcmp (void const*,int*,size_t) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ *,int*,size_t) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int cf_chash_ctx ;
+struct TYPE_3__ {size_t hashsz; int (* digest ) (int *,int*) ;int (* update ) (int *,int*,size_t) ;int (* init ) (int *) ;} ;
+typedef TYPE_1__ cf_chash ;
+
+
+ int CF_MAXHASH ;
+ int TEST_CHECK (int) ;
+ scalar_t__ memcmp (void const*,int*,size_t) ;
+ int stub1 (int *) ;
+ int stub2 (int *) ;
+ int stub3 (int *,int*,int) ;
+ int stub4 (int *,int*) ;
+ int stub5 (int *,int*,size_t) ;
+ int stub6 (int *,int*) ;
 
 __attribute__((used)) static inline void vector_length(const cf_chash *h,
                                  size_t max,
@@ -39,7 +39,7 @@ __attribute__((used)) static inline void vector_length(const cf_chash *h,
   for (size_t n = 0; n < max; n++)
   {
     h->init(&inner);
-    
+
     for (size_t i = 0; i < n; i++)
     {
       uint8_t byte = (uint8_t) n & 0xff;

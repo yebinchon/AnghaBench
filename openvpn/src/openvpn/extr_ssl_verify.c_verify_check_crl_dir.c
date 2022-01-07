@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gc_arena {int dummy; } ;
-typedef  int /*<<< orphan*/  result_t ;
-typedef  int /*<<< orphan*/  openvpn_x509_cert_t ;
-typedef  int /*<<< orphan*/  fn ;
+typedef int result_t ;
+typedef int openvpn_x509_cert_t ;
+typedef int fn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HANDSHAKE ; 
- int /*<<< orphan*/  FAILURE ; 
- int /*<<< orphan*/  OS_SPECIFIC_DIRSEP ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SUCCESS ; 
- char* backend_x509_get_serial (int /*<<< orphan*/ *,struct gc_arena*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  gc_free (struct gc_arena*) ; 
- struct gc_arena gc_new () ; 
- int /*<<< orphan*/  msg (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  openvpn_snprintf (char*,int,char*,char const*,int /*<<< orphan*/ ,char*) ; 
- int platform_open (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int D_HANDSHAKE ;
+ int FAILURE ;
+ int OS_SPECIFIC_DIRSEP ;
+ int O_RDONLY ;
+ int SUCCESS ;
+ char* backend_x509_get_serial (int *,struct gc_arena*) ;
+ int close (int) ;
+ int gc_free (struct gc_arena*) ;
+ struct gc_arena gc_new () ;
+ int msg (int ,char*,...) ;
+ int openvpn_snprintf (char*,int,char*,char const*,int ,char*) ;
+ int platform_open (char*,int ,int ) ;
 
 __attribute__((used)) static result_t
 verify_check_crl_dir(const char *crl_dir, openvpn_x509_cert_t *cert)

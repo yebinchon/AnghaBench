@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  die (char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage_string ; 
+ int die (char*,char const*,int ) ;
+ int usage_string ;
 
 void
 usage(const char *message)
 {
-	die("%s\n\n%s", message, usage_string);
+ die("%s\n\n%s", message, usage_string);
 }

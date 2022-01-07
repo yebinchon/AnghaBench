@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int size; TYPE_1__* buffer; int /*<<< orphan*/ * data; } ;
-struct TYPE_8__ {int flags; int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ AVBufferRef ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int BUFFER_FLAG_REALLOCATABLE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN (int,int) ; 
- TYPE_2__* av_buffer_create (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_buffer_default_free ; 
- int /*<<< orphan*/  av_buffer_is_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  buffer_replace (TYPE_2__**,TYPE_2__**) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int size; TYPE_1__* buffer; int * data; } ;
+struct TYPE_8__ {int flags; int size; int * data; } ;
+typedef TYPE_2__ AVBufferRef ;
+
+
+ int AVERROR (int ) ;
+ int BUFFER_FLAG_REALLOCATABLE ;
+ int ENOMEM ;
+ int FFMIN (int,int) ;
+ TYPE_2__* av_buffer_create (int *,int,int ,int *,int ) ;
+ int av_buffer_default_free ;
+ int av_buffer_is_writable (TYPE_2__*) ;
+ int av_freep (int **) ;
+ int * av_realloc (int *,int) ;
+ int buffer_replace (TYPE_2__**,TYPE_2__**) ;
+ int memcpy (int *,int *,int ) ;
 
 int av_buffer_realloc(AVBufferRef **pbuf, int size)
 {
@@ -36,13 +36,13 @@ int av_buffer_realloc(AVBufferRef **pbuf, int size)
     uint8_t *tmp;
 
     if (!buf) {
-        /* allocate a new buffer with av_realloc(), so it will be reallocatable
-         * later */
-        uint8_t *data = av_realloc(NULL, size);
+
+
+        uint8_t *data = av_realloc(((void*)0), size);
         if (!data)
             return AVERROR(ENOMEM);
 
-        buf = av_buffer_create(data, size, av_buffer_default_free, NULL, 0);
+        buf = av_buffer_create(data, size, av_buffer_default_free, ((void*)0), 0);
         if (!buf) {
             av_freep(&data);
             return AVERROR(ENOMEM);
@@ -57,8 +57,8 @@ int av_buffer_realloc(AVBufferRef **pbuf, int size)
 
     if (!(buf->buffer->flags & BUFFER_FLAG_REALLOCATABLE) ||
         !av_buffer_is_writable(buf) || buf->data != buf->buffer->data) {
-        /* cannot realloc, allocate a new reallocable buffer and copy data */
-        AVBufferRef *new = NULL;
+
+        AVBufferRef *new = ((void*)0);
 
         av_buffer_realloc(&new, size);
         if (!new)

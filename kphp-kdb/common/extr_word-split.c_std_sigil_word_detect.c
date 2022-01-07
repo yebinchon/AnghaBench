@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int get_word (char const*) ; 
- unsigned char* is_letter ; 
- unsigned char* is_letter_utf8 ; 
- scalar_t__ word_split_utf8 ; 
+ int get_word (char const*) ;
+ unsigned char* is_letter ;
+ unsigned char* is_letter_utf8 ;
+ scalar_t__ word_split_utf8 ;
 
 int std_sigil_word_detect (int sigil, const char *str) {
   if (sigil == 0x1f) {
@@ -49,9 +41,9 @@ int std_sigil_word_detect (int sigil, const char *str) {
   while (
          (tmp <= str + 120) &&
          (
-          (*tmp >= '0' && *tmp <= '9') || 
+          (*tmp >= '0' && *tmp <= '9') ||
           (*tmp >= 'A' && *tmp <= 'Z') ||
-          (*tmp >= 'a' && *tmp <= 'z') || 
+          (*tmp >= 'a' && *tmp <= 'z') ||
           (*tmp == '_') ||
           (*tmp == '-')
          )

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nv50_wndw {int /*<<< orphan*/  notify; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nvif_notify_get (int /*<<< orphan*/ *) ; 
+
+
+
+struct nv50_wndw {int notify; } ;
+
+
+ int nvif_notify_get (int *) ;
 
 void
 nv50_wndw_init(struct nv50_wndw *wndw)
 {
-	nvif_notify_get(&wndw->notify);
+ nvif_notify_get(&wndw->notify);
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_3__ {size_t bank; } ;
 struct TYPE_4__ {int** pcm_ram_b; TYPE_1__ pcm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_CDREGS ; 
- TYPE_2__* Pico_mcd ; 
- int /*<<< orphan*/  SekPcS68k ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,int,int,int /*<<< orphan*/ ) ; 
- int pcd_pcm_read (int) ; 
- int s68k_reg_read16 (int) ; 
- int s68k_unmapped_read16 (int) ; 
+
+ int EL_CDREGS ;
+ TYPE_2__* Pico_mcd ;
+ int SekPcS68k ;
+ int elprintf (int ,char*,int,int,int ) ;
+ int pcd_pcm_read (int) ;
+ int s68k_reg_read16 (int) ;
+ int s68k_unmapped_read16 (int) ;
 
 __attribute__((used)) static u32 PicoReadS68k16_pr(u32 a)
 {
   u32 d = 0;
 
-  // regs
+
   if ((a & 0xfe00) == 0x8000) {
     a &= 0x1fe;
     d = s68k_reg_read16(a);
@@ -39,7 +39,7 @@ __attribute__((used)) static u32 PicoReadS68k16_pr(u32 a)
     return d;
   }
 
-  // PCM
+
   if ((a & 0x8000) == 0x0000) {
     a &= 0x7fff;
     if (a >= 0x2000)

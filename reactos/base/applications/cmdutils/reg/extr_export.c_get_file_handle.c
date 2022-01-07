@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CREATE_NEW ; 
- scalar_t__ ERROR_FILE_EXISTS ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  STRING_CANCELLED ; 
- int /*<<< orphan*/  STRING_OVERWRITE_FILE ; 
- int /*<<< orphan*/  ask_confirm (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ create_file (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  lstrlenW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  output_message (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  output_writeconsole (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int CREATE_ALWAYS ;
+ int CREATE_NEW ;
+ scalar_t__ ERROR_FILE_EXISTS ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ int FormatMessageW (int,int *,scalar_t__,int ,int *,int ,int *) ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int LocalFree (int *) ;
+ int STRING_CANCELLED ;
+ int STRING_OVERWRITE_FILE ;
+ int ask_confirm (int ,int *) ;
+ scalar_t__ create_file (int *,int ) ;
+ int exit (int) ;
+ int lstrlenW (int *) ;
+ int output_message (int ) ;
+ int output_writeconsole (int *,int ) ;
 
 __attribute__((used)) static HANDLE get_file_handle(WCHAR *filename, BOOL overwrite_file)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static HANDLE get_file_handle(WCHAR *filename, BOOL overwr
             WCHAR *str;
 
             FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
-                           FORMAT_MESSAGE_IGNORE_INSERTS, NULL, error, 0, (WCHAR *)&str, 0, NULL);
+                           FORMAT_MESSAGE_IGNORE_INSERTS, ((void*)0), error, 0, (WCHAR *)&str, 0, ((void*)0));
             output_writeconsole(str, lstrlenW(str));
             LocalFree(str);
             exit(1);

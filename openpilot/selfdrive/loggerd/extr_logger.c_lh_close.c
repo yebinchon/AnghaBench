@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ refcnt; int /*<<< orphan*/  lock; int /*<<< orphan*/  lock_path; scalar_t__ log_file; scalar_t__ qlog_file; int /*<<< orphan*/ * bz_qlog; int /*<<< orphan*/ * bz_file; } ;
-typedef  TYPE_1__ LoggerHandle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BZ2_bzWriteClose (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ refcnt; int lock; int lock_path; scalar_t__ log_file; scalar_t__ qlog_file; int * bz_qlog; int * bz_file; } ;
+typedef TYPE_1__ LoggerHandle ;
+
+
+ int BZ2_bzWriteClose (int*,int *,int ,int *,int *) ;
+ int assert (int) ;
+ int fclose (scalar_t__) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int unlink (int ) ;
 
 void lh_close(LoggerHandle* h) {
   pthread_mutex_lock(&h->lock);
@@ -30,13 +30,13 @@ void lh_close(LoggerHandle* h) {
   if (h->refcnt == 0) {
     if (h->bz_file){
       int bzerror;
-      BZ2_bzWriteClose(&bzerror, h->bz_file, 0, NULL, NULL);
-      h->bz_file = NULL;
+      BZ2_bzWriteClose(&bzerror, h->bz_file, 0, ((void*)0), ((void*)0));
+      h->bz_file = ((void*)0);
     }
     if (h->bz_qlog){
       int bzerror;
-      BZ2_bzWriteClose(&bzerror, h->bz_qlog, 0, NULL, NULL);
-      h->bz_qlog = NULL;
+      BZ2_bzWriteClose(&bzerror, h->bz_qlog, 0, ((void*)0), ((void*)0));
+      h->bz_qlog = ((void*)0);
     }
     if (h->qlog_file) fclose(h->qlog_file);
     fclose(h->log_file);

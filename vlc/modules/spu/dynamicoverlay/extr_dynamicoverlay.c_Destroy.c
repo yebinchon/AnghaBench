@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
 struct TYPE_7__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_8__ {struct TYPE_8__* psz_outputfile; struct TYPE_8__* psz_inputfile; int /*<<< orphan*/  lock; int /*<<< orphan*/  overlays; int /*<<< orphan*/  processed; int /*<<< orphan*/  pending; int /*<<< orphan*/  atomic; int /*<<< orphan*/  output; int /*<<< orphan*/  input; } ;
-typedef  TYPE_2__ filter_sys_t ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_8__ {struct TYPE_8__* psz_outputfile; struct TYPE_8__* psz_inputfile; int lock; int overlays; int processed; int pending; int atomic; int output; int input; } ;
+typedef TYPE_2__ filter_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdjustCallback ; 
- int /*<<< orphan*/  BufferDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QueueDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnregisterCommand (TYPE_1__*) ; 
- int /*<<< orphan*/  do_ListDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  var_DelCallback (TYPE_1__*,char*,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+ int AdjustCallback ;
+ int BufferDestroy (int *) ;
+ int QueueDestroy (int *) ;
+ int UnregisterCommand (TYPE_1__*) ;
+ int do_ListDestroy (int *) ;
+ int free (TYPE_2__*) ;
+ int var_DelCallback (TYPE_1__*,char*,int ,TYPE_2__*) ;
+ int vlc_mutex_destroy (int *) ;
 
 __attribute__((used)) static void Destroy( vlc_object_t *p_this )
 {

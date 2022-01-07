@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inode {int dummy; } ;
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int EACCES ; 
- int ENOTTY ; 
- int NVRAM_BYTES ; 
-#define  NVRAM_INIT 129 
-#define  NVRAM_SETCKS 128 
- int /*<<< orphan*/  __nvram_set_checksum () ; 
- int /*<<< orphan*/  __nvram_write_byte (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  capable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtc_lock ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+ int CAP_SYS_ADMIN ;
+ int EACCES ;
+ int ENOTTY ;
+ int NVRAM_BYTES ;
+
+
+ int __nvram_set_checksum () ;
+ int __nvram_write_byte (int ,int) ;
+ int capable (int ) ;
+ int rtc_lock ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 __attribute__((used)) static int nvram_ioctl(struct inode *inode, struct file *file,
-					unsigned int cmd, unsigned long arg)
+     unsigned int cmd, unsigned long arg)
 {
-	int i;
+ int i;
 
-	switch (cmd) {
+ switch (cmd) {
 
-	case NVRAM_INIT:
-		/* initialize NVRAM contents and checksum */
-		if (!capable(CAP_SYS_ADMIN))
-			return -EACCES;
+ case 129:
 
-		spin_lock_irq(&rtc_lock);
+  if (!capable(CAP_SYS_ADMIN))
+   return -EACCES;
 
-		for (i = 0; i < NVRAM_BYTES; ++i)
-			__nvram_write_byte(0, i);
-		__nvram_set_checksum();
+  spin_lock_irq(&rtc_lock);
 
-		spin_unlock_irq(&rtc_lock);
-		return 0;
+  for (i = 0; i < NVRAM_BYTES; ++i)
+   __nvram_write_byte(0, i);
+  __nvram_set_checksum();
 
-	case NVRAM_SETCKS:
-		/* just set checksum, contents unchanged (maybe useful after
-		 * checksum garbaged somehow...) */
-		if (!capable(CAP_SYS_ADMIN))
-			return -EACCES;
+  spin_unlock_irq(&rtc_lock);
+  return 0;
 
-		spin_lock_irq(&rtc_lock);
-		__nvram_set_checksum();
-		spin_unlock_irq(&rtc_lock);
-		return 0;
+ case 128:
 
-	default:
-		return -ENOTTY;
-	}
+
+  if (!capable(CAP_SYS_ADMIN))
+   return -EACCES;
+
+  spin_lock_irq(&rtc_lock);
+  __nvram_set_checksum();
+  spin_unlock_irq(&rtc_lock);
+  return 0;
+
+ default:
+  return -ENOTTY;
+ }
 }

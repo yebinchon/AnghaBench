@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lu_mem ;
-typedef  int /*<<< orphan*/  global_State ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int lu_mem ;
+typedef int global_State ;
 struct TYPE_5__ {int marked; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ GCObject ;
+typedef TYPE_1__ GCObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * G (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHAREBIT ; 
- int bitmask (int /*<<< orphan*/ ) ; 
- int cast_byte (int) ; 
- int /*<<< orphan*/  freeobj (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ isdeadm (int,int) ; 
- int luaC_white (int /*<<< orphan*/ *) ; 
- int maskcolors ; 
- int otherwhite (int /*<<< orphan*/ *) ; 
+
+ int * G (int *) ;
+ int SHAREBIT ;
+ int bitmask (int ) ;
+ int cast_byte (int) ;
+ int freeobj (int *,TYPE_1__*) ;
+ scalar_t__ isdeadm (int,int) ;
+ int luaC_white (int *) ;
+ int maskcolors ;
+ int otherwhite (int *) ;
 
 __attribute__((used)) static GCObject **sweeplist (lua_State *L, GCObject **p, lu_mem count) {
   global_State *g = G(L);
-  int ow = otherwhite(g) | bitmask(SHAREBIT);  /* shared object never dead */
-  int white = luaC_white(g);  /* current white */
-  while (*p != NULL && count-- > 0) {
+  int ow = otherwhite(g) | bitmask(SHAREBIT);
+  int white = luaC_white(g);
+  while (*p != ((void*)0) && count-- > 0) {
     GCObject *curr = *p;
     int marked = curr->marked;
-    if (isdeadm(ow, marked)) {  /* is 'curr' dead? */
-      *p = curr->next;  /* remove 'curr' from list */
-      freeobj(L, curr);  /* erase 'curr' */
+    if (isdeadm(ow, marked)) {
+      *p = curr->next;
+      freeobj(L, curr);
     }
-    else {  /* change mark to 'white' */
+    else {
       curr->marked = cast_byte((marked & maskcolors) | (marked & bitmask(SHAREBIT)) |white);
-      p = &curr->next;  /* go to next element */
+      p = &curr->next;
     }
   }
-  return (*p == NULL) ? NULL : p;
+  return (*p == ((void*)0)) ? ((void*)0) : p;
 }

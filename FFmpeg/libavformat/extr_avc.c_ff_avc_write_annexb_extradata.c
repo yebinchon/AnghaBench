@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int AV_RB16 (int const*) ; 
- int AV_RB24 (int const*) ; 
- int AV_RB32 (int const*) ; 
- int /*<<< orphan*/  AV_WB32 (int*,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int* av_mallocz (scalar_t__) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_RB16 (int const*) ;
+ int AV_RB24 (int const*) ;
+ int AV_RB32 (int const*) ;
+ int AV_WB32 (int*,int) ;
+ int ENOMEM ;
+ int* av_mallocz (scalar_t__) ;
+ int memcpy (int*,int const*,int) ;
 
 int ff_avc_write_annexb_extradata(const uint8_t *in, uint8_t **buf, int *size)
 {
@@ -31,7 +31,7 @@ int ff_avc_write_annexb_extradata(const uint8_t *in, uint8_t **buf, int *size)
     uint8_t *out;
     int out_size;
 
-    *buf = NULL;
+    *buf = ((void*)0);
     if (*size >= 4 && (AV_RB32(in) == 0x00000001 || AV_RB24(in) == 0x000001))
         return 0;
     if (*size < 11 || in[0] != 1)

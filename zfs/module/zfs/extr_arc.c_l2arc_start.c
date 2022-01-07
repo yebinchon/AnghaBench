@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FWRITE ; 
- int /*<<< orphan*/  TS_RUN ; 
- int /*<<< orphan*/  defclsyspri ; 
- int /*<<< orphan*/  l2arc_feed_thread ; 
- int /*<<< orphan*/  p0 ; 
- int spa_mode_global ; 
- int /*<<< orphan*/  thread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int FWRITE ;
+ int TS_RUN ;
+ int defclsyspri ;
+ int l2arc_feed_thread ;
+ int p0 ;
+ int spa_mode_global ;
+ int thread_create (int *,int ,int ,int *,int ,int *,int ,int ) ;
 
 void
 l2arc_start(void)
 {
-	if (!(spa_mode_global & FWRITE))
-		return;
+ if (!(spa_mode_global & FWRITE))
+  return;
 
-	(void) thread_create(NULL, 0, l2arc_feed_thread, NULL, 0, &p0,
-	    TS_RUN, defclsyspri);
+ (void) thread_create(((void*)0), 0, l2arc_feed_thread, ((void*)0), 0, &p0,
+     TS_RUN, defclsyspri);
 }

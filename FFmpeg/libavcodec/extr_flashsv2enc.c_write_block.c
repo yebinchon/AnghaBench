@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-struct TYPE_3__ {unsigned int data_size; int flags; unsigned int start; unsigned int len; unsigned int col; unsigned int row; int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ Block ;
 
-/* Variables and functions */
- int HAS_DIFF_BLOCKS ; 
- int ZLIB_PRIME_COMPRESS_CURRENT ; 
- int /*<<< orphan*/  memcpy (unsigned int*,int /*<<< orphan*/ ,unsigned int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int uint8_t ;
+struct TYPE_3__ {unsigned int data_size; int flags; unsigned int start; unsigned int len; unsigned int col; unsigned int row; int data; } ;
+typedef TYPE_1__ Block ;
+
+
+ int HAS_DIFF_BLOCKS ;
+ int ZLIB_PRIME_COMPRESS_CURRENT ;
+ int memcpy (unsigned int*,int ,unsigned int) ;
 
 __attribute__((used)) static int write_block(Block * b, uint8_t * buf, int buf_size)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int write_block(Block * b, uint8_t * buf, int buf_s
     }
 
     if (b->flags & ZLIB_PRIME_COMPRESS_CURRENT) {
-        //This feature of the format is poorly understood, and as of now, unused.
+
         buf[buf_pos++] = (b->col);
         buf[buf_pos++] = (b->row);
     }

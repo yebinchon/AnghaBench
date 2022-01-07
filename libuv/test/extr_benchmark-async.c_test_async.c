@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  threads ;
-struct ctx {int nthreads; int worker_sent; int worker_seen; unsigned int main_sent; unsigned int main_seen; int /*<<< orphan*/  thread; int /*<<< orphan*/  main_async; int /*<<< orphan*/  worker_async; int /*<<< orphan*/  loop; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  MAKE_VALGRIND_HAPPY () ; 
- int NUM_PINGS ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- struct ctx* calloc (int,int) ; 
- char* fmt (int) ; 
- int /*<<< orphan*/  free (struct ctx*) ; 
- int /*<<< orphan*/  main_async_cb ; 
- int /*<<< orphan*/  printf (char*,int,int,char*) ; 
- scalar_t__ uv_async_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * uv_default_loop () ; 
- int uv_hrtime () ; 
- scalar_t__ uv_loop_init (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_thread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct ctx*) ; 
- scalar_t__ uv_thread_join (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  worker ; 
- int /*<<< orphan*/  worker_async_cb ; 
+
+
+
+typedef int uint64_t ;
+typedef int threads ;
+struct ctx {int nthreads; int worker_sent; int worker_seen; unsigned int main_sent; unsigned int main_seen; int thread; int main_async; int worker_async; int loop; } ;
+
+
+ int ASSERT (int) ;
+ int MAKE_VALGRIND_HAPPY () ;
+ int NUM_PINGS ;
+ int UV_RUN_DEFAULT ;
+ struct ctx* calloc (int,int) ;
+ char* fmt (int) ;
+ int free (struct ctx*) ;
+ int main_async_cb ;
+ int printf (char*,int,int,char*) ;
+ scalar_t__ uv_async_init (int *,int *,int ) ;
+ int * uv_default_loop () ;
+ int uv_hrtime () ;
+ scalar_t__ uv_loop_init (int *) ;
+ scalar_t__ uv_run (int *,int ) ;
+ scalar_t__ uv_thread_create (int *,int ,struct ctx*) ;
+ scalar_t__ uv_thread_join (int *) ;
+ int worker ;
+ int worker_async_cb ;
 
 __attribute__((used)) static int test_async(int nthreads) {
   struct ctx* threads;
@@ -41,7 +41,7 @@ __attribute__((used)) static int test_async(int nthreads) {
   int i;
 
   threads = calloc(nthreads, sizeof(threads[0]));
-  ASSERT(threads != NULL);
+  ASSERT(threads != ((void*)0));
 
   for (i = 0; i < nthreads; i++) {
     ctx = threads + i;

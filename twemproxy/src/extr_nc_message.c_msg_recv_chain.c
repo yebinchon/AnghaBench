@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct msg {int /*<<< orphan*/  mlen; int /*<<< orphan*/  pos; int /*<<< orphan*/  mhdr; } ;
-struct mbuf {scalar_t__ end; scalar_t__ last; int /*<<< orphan*/  pos; } ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
+struct msg {int mlen; int pos; int mhdr; } ;
+struct mbuf {scalar_t__ end; scalar_t__ last; int pos; } ;
 struct context {int dummy; } ;
 struct conn {struct msg* (* recv_next ) (struct context*,struct conn*,int) ;} ;
-typedef  scalar_t__ ssize_t ;
-typedef  scalar_t__ rstatus_t ;
+typedef scalar_t__ ssize_t ;
+typedef scalar_t__ rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ NC_EAGAIN ; 
- scalar_t__ NC_ENOMEM ; 
- scalar_t__ NC_ERROR ; 
- scalar_t__ NC_OK ; 
- struct mbuf* STAILQ_LAST (int /*<<< orphan*/ *,struct mbuf*,int /*<<< orphan*/ ) ; 
- scalar_t__ conn_recv (struct conn*,scalar_t__,size_t) ; 
- scalar_t__ mbuf_full (struct mbuf*) ; 
- struct mbuf* mbuf_get () ; 
- int /*<<< orphan*/  mbuf_insert (int /*<<< orphan*/ *,struct mbuf*) ; 
- size_t mbuf_size (struct mbuf*) ; 
- scalar_t__ msg_parse (struct context*,struct conn*,struct msg*) ; 
- int /*<<< orphan*/  next ; 
- struct msg* stub1 (struct context*,struct conn*,int) ; 
+
+ int ASSERT (int) ;
+ scalar_t__ NC_EAGAIN ;
+ scalar_t__ NC_ENOMEM ;
+ scalar_t__ NC_ERROR ;
+ scalar_t__ NC_OK ;
+ struct mbuf* STAILQ_LAST (int *,struct mbuf*,int ) ;
+ scalar_t__ conn_recv (struct conn*,scalar_t__,size_t) ;
+ scalar_t__ mbuf_full (struct mbuf*) ;
+ struct mbuf* mbuf_get () ;
+ int mbuf_insert (int *,struct mbuf*) ;
+ size_t mbuf_size (struct mbuf*) ;
+ scalar_t__ msg_parse (struct context*,struct conn*,struct msg*) ;
+ int next ;
+ struct msg* stub1 (struct context*,struct conn*,int) ;
 
 __attribute__((used)) static rstatus_t
 msg_recv_chain(struct context *ctx, struct conn *conn, struct msg *msg)
@@ -44,9 +44,9 @@ msg_recv_chain(struct context *ctx, struct conn *conn, struct msg *msg)
     ssize_t n;
 
     mbuf = STAILQ_LAST(&msg->mhdr, mbuf, next);
-    if (mbuf == NULL || mbuf_full(mbuf)) {
+    if (mbuf == ((void*)0) || mbuf_full(mbuf)) {
         mbuf = mbuf_get();
-        if (mbuf == NULL) {
+        if (mbuf == ((void*)0)) {
             return NC_ENOMEM;
         }
         mbuf_insert(&msg->mhdr, mbuf);
@@ -74,10 +74,10 @@ msg_recv_chain(struct context *ctx, struct conn *conn, struct msg *msg)
             return status;
         }
 
-        /* get next message to parse */
-        nmsg = conn->recv_next(ctx, conn, false);
-        if (nmsg == NULL || nmsg == msg) {
-            /* no more data to parse */
+
+        nmsg = conn->recv_next(ctx, conn, 0);
+        if (nmsg == ((void*)0) || nmsg == msg) {
+
             break;
         }
 

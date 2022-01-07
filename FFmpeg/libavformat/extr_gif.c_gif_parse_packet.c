@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int GIF_EXTENSION_INTRODUCER ; 
- int GIF_GCE_EXT_LABEL ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int GetByteContext ;
+typedef int AVFormatContext ;
+
+
+ int GIF_EXTENSION_INTRODUCER ;
+ int GIF_GCE_EXT_LABEL ;
+ int bytestream2_get_byte (int *) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ int bytestream2_init (int *,int *,int) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
 
 __attribute__((used)) static int gif_parse_packet(AVFormatContext *s, uint8_t *data, int size)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tree {int dummy; } ;
 struct TYPE_3__ {scalar_t__ type; } ;
 struct TYPE_4__ {TYPE_1__ lex; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PARSE_FAIL ; 
- int /*<<< orphan*/  PARSE_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PARSE_OK ; 
- int /*<<< orphan*/  PARSE_TRY_PES (int /*<<< orphan*/ ) ; 
- scalar_t__ expect (char*) ; 
- scalar_t__ lex_eof ; 
- scalar_t__ lex_error ; 
- TYPE_2__ parse ; 
- int /*<<< orphan*/  parse_constr_declarations ; 
- int /*<<< orphan*/  parse_fun_declarations ; 
- int /*<<< orphan*/  type_tl_program ; 
+
+ int PARSE_FAIL ;
+ int PARSE_INIT (int ) ;
+ int PARSE_OK ;
+ int PARSE_TRY_PES (int ) ;
+ scalar_t__ expect (char*) ;
+ scalar_t__ lex_eof ;
+ scalar_t__ lex_error ;
+ TYPE_2__ parse ;
+ int parse_constr_declarations ;
+ int parse_fun_declarations ;
+ int type_tl_program ;
 
 struct tree *parse_program (void) {
   PARSE_INIT (type_tl_program);

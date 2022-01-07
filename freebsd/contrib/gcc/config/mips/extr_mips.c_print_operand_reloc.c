@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum mips_symbol_type { ____Placeholder_mips_symbol_type } mips_symbol_type ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNSPEC_ADDRESS (int /*<<< orphan*/ ) ; 
- scalar_t__ UNSPEC_ADDRESS_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fatal_insn (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputc (char,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ *) ; 
- int mips_classify_symbolic_expression (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mips_split_const (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  output_addr_const (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plus_constant (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum mips_symbol_type { ____Placeholder_mips_symbol_type } mips_symbol_type ;
+typedef int HOST_WIDE_INT ;
+typedef int FILE ;
+
+
+ int UNSPEC_ADDRESS (int ) ;
+ scalar_t__ UNSPEC_ADDRESS_P (int ) ;
+ int fatal_insn (char*,int ) ;
+ int fputc (char,int *) ;
+ int fputs (char const*,int *) ;
+ int mips_classify_symbolic_expression (int ) ;
+ int mips_split_const (int ,int *,int *) ;
+ int output_addr_const (int *,int ) ;
+ int plus_constant (int ,int ) ;
 
 __attribute__((used)) static void
 print_operand_reloc (FILE *file, rtx op, const char **relocs)
@@ -38,7 +38,7 @@ print_operand_reloc (FILE *file, rtx op, const char **relocs)
   if (relocs[symbol_type] == 0)
     fatal_insn ("PRINT_OPERAND, invalid operand for relocation", op);
 
-  /* If OP uses an UNSPEC address, we want to print the inner symbol.  */
+
   mips_split_const (op, &base, &offset);
   if (UNSPEC_ADDRESS_P (base))
     op = plus_constant (UNSPEC_ADDRESS (base), offset);

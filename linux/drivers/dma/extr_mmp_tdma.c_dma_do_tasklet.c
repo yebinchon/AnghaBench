@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mmp_tdma_chan {int /*<<< orphan*/  desc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dmaengine_desc_get_callback_invoke (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct mmp_tdma_chan {int desc; } ;
+
+
+ int dmaengine_desc_get_callback_invoke (int *,int *) ;
 
 __attribute__((used)) static void dma_do_tasklet(unsigned long data)
 {
-	struct mmp_tdma_chan *tdmac = (struct mmp_tdma_chan *)data;
+ struct mmp_tdma_chan *tdmac = (struct mmp_tdma_chan *)data;
 
-	dmaengine_desc_get_callback_invoke(&tdmac->desc, NULL);
+ dmaengine_desc_get_callback_invoke(&tdmac->desc, ((void*)0));
 }

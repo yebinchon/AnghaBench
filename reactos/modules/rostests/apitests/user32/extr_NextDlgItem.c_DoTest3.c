@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  y; int /*<<< orphan*/  x; } ;
-typedef  TYPE_1__ POINT ;
-typedef  int /*<<< orphan*/  HWND ;
 
-/* Variables and functions */
- scalar_t__ BST_CHECKED ; 
- scalar_t__ BST_UNCHECKED ; 
- int /*<<< orphan*/  CheckDlgButton (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_1__ GetCtrlCenter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ IsDlgButtonChecked (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKELPARAM (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MK_LBUTTON ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_LBUTTONDOWN ; 
- int /*<<< orphan*/  WM_LBUTTONUP ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  rad1 ; 
- int /*<<< orphan*/  rad2 ; 
- int /*<<< orphan*/  rad3 ; 
- int /*<<< orphan*/  rad5 ; 
- int /*<<< orphan*/  rad6 ; 
- int /*<<< orphan*/  rad7 ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int y; int x; } ;
+typedef TYPE_1__ POINT ;
+typedef int HWND ;
+
+
+ scalar_t__ BST_CHECKED ;
+ scalar_t__ BST_UNCHECKED ;
+ int CheckDlgButton (int ,int ,scalar_t__) ;
+ TYPE_1__ GetCtrlCenter (int ) ;
+ int GetDlgItem (int ,int ) ;
+ scalar_t__ IsDlgButtonChecked (int ,int ) ;
+ int MAKELPARAM (int ,int ) ;
+ int MK_LBUTTON ;
+ int SendMessage (int ,int ,int ,int ) ;
+ int WM_LBUTTONDOWN ;
+ int WM_LBUTTONUP ;
+ int ok (int,char*) ;
+ int rad1 ;
+ int rad2 ;
+ int rad3 ;
+ int rad5 ;
+ int rad6 ;
+ int rad7 ;
 
 __attribute__((used)) static void
 DoTest3(HWND hwnd)

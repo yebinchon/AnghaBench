@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct adapter {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cxgb_free (struct adapter*) ; 
- struct adapter* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int cxgb_free (struct adapter*) ;
+ struct adapter* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 cxgb_controller_detach(device_t dev)
 {
-	struct adapter *sc;
+ struct adapter *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	cxgb_free(sc);
+ cxgb_free(sc);
 
-	return (0);
+ return (0);
 }

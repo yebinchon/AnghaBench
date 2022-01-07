@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fileproc {int /*<<< orphan*/  f_flags; } ;
-typedef  int /*<<< orphan*/  proc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FP_WRITTEN ; 
- int fp_drop (int /*<<< orphan*/ ,int,struct fileproc*,int) ; 
- int /*<<< orphan*/  proc_fdlock_spin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  proc_fdunlock (int /*<<< orphan*/ ) ; 
+
+
+
+struct fileproc {int f_flags; } ;
+typedef int proc_t ;
+
+
+ int FP_WRITTEN ;
+ int fp_drop (int ,int,struct fileproc*,int) ;
+ int proc_fdlock_spin (int ) ;
+ int proc_fdunlock (int ) ;
 
 int
 fp_drop_written(proc_t p, int fd, struct fileproc *fp)
 {
         int error;
 
-	proc_fdlock_spin(p);
+ proc_fdlock_spin(p);
 
-	fp->f_flags |= FP_WRITTEN;
+ fp->f_flags |= FP_WRITTEN;
 
-	error = fp_drop(p, fd, fp, 1);
+ error = fp_drop(p, fd, fp, 1);
 
-	proc_fdunlock(p);
+ proc_fdunlock(p);
 
-	return (error);
+ return (error);
 }

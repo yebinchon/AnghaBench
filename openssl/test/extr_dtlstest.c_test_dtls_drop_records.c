@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- scalar_t__ BIO_ctrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * BIO_next (int /*<<< orphan*/ *) ; 
- int CLI_TO_SRV_EPOCH_0_RECS ; 
- int CLI_TO_SRV_EPOCH_1_RECS ; 
- int CLI_TO_SRV_RESUME_EPOCH_0_RECS ; 
- int CLI_TO_SRV_RESUME_EPOCH_1_RECS ; 
- int /*<<< orphan*/  DTLS1_VERSION ; 
- int /*<<< orphan*/  DTLS_client_method () ; 
- int /*<<< orphan*/  DTLS_server_method () ; 
- int /*<<< orphan*/  DTLS_set_timer_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MEMPACKET_CTRL_GET_DROP_REC ; 
- int /*<<< orphan*/  MEMPACKET_CTRL_SET_DROP_EPOCH ; 
- int /*<<< orphan*/  MEMPACKET_CTRL_SET_DROP_REC ; 
- int SRV_TO_CLI_EPOCH_0_RECS ; 
- int SRV_TO_CLI_RESUME_EPOCH_0_RECS ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_get1_session (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_get_wbio (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_session_reused (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_session (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_shutdown (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_int_eq (int,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int TOTAL_FULL_HAND_RECORDS ; 
- int /*<<< orphan*/  bio_f_tls_dump_filter () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  timer_cb ; 
+
+
+
+typedef int SSL_SESSION ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+typedef int BIO ;
+
+
+ scalar_t__ BIO_ctrl (int *,int ,int,int *) ;
+ int * BIO_new (int ) ;
+ int * BIO_next (int *) ;
+ int CLI_TO_SRV_EPOCH_0_RECS ;
+ int CLI_TO_SRV_EPOCH_1_RECS ;
+ int CLI_TO_SRV_RESUME_EPOCH_0_RECS ;
+ int CLI_TO_SRV_RESUME_EPOCH_1_RECS ;
+ int DTLS1_VERSION ;
+ int DTLS_client_method () ;
+ int DTLS_server_method () ;
+ int DTLS_set_timer_cb (int *,int ) ;
+ int MEMPACKET_CTRL_GET_DROP_REC ;
+ int MEMPACKET_CTRL_SET_DROP_EPOCH ;
+ int MEMPACKET_CTRL_SET_DROP_REC ;
+ int SRV_TO_CLI_EPOCH_0_RECS ;
+ int SRV_TO_CLI_RESUME_EPOCH_0_RECS ;
+ int SSL_CTX_free (int *) ;
+ int SSL_ERROR_NONE ;
+ int SSL_SESSION_free (int *) ;
+ int SSL_free (int *) ;
+ int * SSL_get1_session (int *) ;
+ int * SSL_get_wbio (int *) ;
+ int SSL_session_reused (int *) ;
+ int SSL_set_session (int *,int *) ;
+ int SSL_shutdown (int *) ;
+ int TEST_int_eq (int,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int TOTAL_FULL_HAND_RECORDS ;
+ int bio_f_tls_dump_filter () ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int privkey ;
+ int timer_cb ;
 
 __attribute__((used)) static int test_dtls_drop_records(int idx)
 {
-    SSL_CTX *sctx = NULL, *cctx = NULL;
-    SSL *serverssl = NULL, *clientssl = NULL;
+    SSL_CTX *sctx = ((void*)0), *cctx = ((void*)0);
+    SSL *serverssl = ((void*)0), *clientssl = ((void*)0);
     BIO *c_to_s_fbio, *mempackbio;
     int testresult = 0;
     int epoch = 0;
-    SSL_SESSION *sess = NULL;
+    SSL_SESSION *sess = ((void*)0);
     int cli_to_srv_epoch0, cli_to_srv_epoch1, srv_to_cli_epoch0;
 
     if (!TEST_true(create_ssl_ctx_pair(DTLS_server_method(),
@@ -70,9 +70,9 @@ __attribute__((used)) static int test_dtls_drop_records(int idx)
         return 0;
 
     if (idx >= TOTAL_FULL_HAND_RECORDS) {
-        /* We're going to do a resumption handshake. Get a session first. */
+
         if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                          NULL, NULL))
+                                          ((void*)0), ((void*)0)))
                 || !TEST_true(create_ssl_connection(serverssl, clientssl,
                               SSL_ERROR_NONE))
                 || !TEST_ptr(sess = SSL_get1_session(clientssl)))
@@ -82,7 +82,7 @@ __attribute__((used)) static int test_dtls_drop_records(int idx)
         SSL_shutdown(serverssl);
         SSL_free(serverssl);
         SSL_free(clientssl);
-        serverssl = clientssl = NULL;
+        serverssl = clientssl = ((void*)0);
 
         cli_to_srv_epoch0 = CLI_TO_SRV_RESUME_EPOCH_0_RECS;
         cli_to_srv_epoch1 = CLI_TO_SRV_RESUME_EPOCH_1_RECS;
@@ -98,12 +98,12 @@ __attribute__((used)) static int test_dtls_drop_records(int idx)
     if (!TEST_ptr(c_to_s_fbio))
         goto end;
 
-    /* BIO is freed by create_ssl_connection on error */
+
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                      NULL, c_to_s_fbio)))
+                                      ((void*)0), c_to_s_fbio)))
         goto end;
 
-    if (sess != NULL) {
+    if (sess != ((void*)0)) {
         if (!TEST_true(SSL_set_session(clientssl, sess)))
             goto end;
     }
@@ -111,7 +111,7 @@ __attribute__((used)) static int test_dtls_drop_records(int idx)
     DTLS_set_timer_cb(clientssl, timer_cb);
     DTLS_set_timer_cb(serverssl, timer_cb);
 
-    /* Work out which record to drop based on the test number */
+
     if (idx >= cli_to_srv_epoch0 + cli_to_srv_epoch1) {
         mempackbio = SSL_get_wbio(serverssl);
         idx -= cli_to_srv_epoch0 + cli_to_srv_epoch1;
@@ -127,18 +127,18 @@ __attribute__((used)) static int test_dtls_drop_records(int idx)
         }
          mempackbio = BIO_next(mempackbio);
     }
-    BIO_ctrl(mempackbio, MEMPACKET_CTRL_SET_DROP_EPOCH, epoch, NULL);
-    BIO_ctrl(mempackbio, MEMPACKET_CTRL_SET_DROP_REC, idx, NULL);
+    BIO_ctrl(mempackbio, MEMPACKET_CTRL_SET_DROP_EPOCH, epoch, ((void*)0));
+    BIO_ctrl(mempackbio, MEMPACKET_CTRL_SET_DROP_REC, idx, ((void*)0));
 
     if (!TEST_true(create_ssl_connection(serverssl, clientssl, SSL_ERROR_NONE)))
         goto end;
 
-    if (sess != NULL && !TEST_true(SSL_session_reused(clientssl)))
+    if (sess != ((void*)0) && !TEST_true(SSL_session_reused(clientssl)))
         goto end;
 
-    /* If the test did what we planned then it should have dropped a record */
+
     if (!TEST_int_eq((int)BIO_ctrl(mempackbio, MEMPACKET_CTRL_GET_DROP_REC, 0,
-                                   NULL), -1))
+                                   ((void*)0)), -1))
         goto end;
 
     testresult = 1;

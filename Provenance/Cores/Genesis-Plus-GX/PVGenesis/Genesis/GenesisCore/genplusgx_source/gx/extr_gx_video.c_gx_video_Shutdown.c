@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_BLACK ; 
- int /*<<< orphan*/  FONT_Shutdown () ; 
- int /*<<< orphan*/  VIDEO_ClearFrameBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VIDEO_Flush () ; 
- int /*<<< orphan*/  VIDEO_WaitVSync () ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- scalar_t__ screenshot ; 
- scalar_t__ texturemem ; 
- int /*<<< orphan*/  vmode ; 
- size_t whichfb ; 
- int /*<<< orphan*/ * xfb ; 
+ int COLOR_BLACK ;
+ int FONT_Shutdown () ;
+ int VIDEO_ClearFrameBuffer (int ,int ,int ) ;
+ int VIDEO_Flush () ;
+ int VIDEO_WaitVSync () ;
+ int free (scalar_t__) ;
+ scalar_t__ screenshot ;
+ scalar_t__ texturemem ;
+ int vmode ;
+ size_t whichfb ;
+ int * xfb ;
 
 void gx_video_Shutdown(void)
 {

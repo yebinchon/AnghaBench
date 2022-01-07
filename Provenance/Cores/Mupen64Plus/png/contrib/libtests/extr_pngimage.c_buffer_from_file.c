@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct buffer_list {struct buffer_list* next; scalar_t__ buffer; } ;
 struct buffer {size_t end_count; struct buffer_list* last; struct buffer_list first; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int ERANGE ; 
- int MEMORY ; 
- int /*<<< orphan*/  assert (int) ; 
- struct buffer_list* buffer_extend (struct buffer_list*) ; 
- scalar_t__ errno ; 
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- size_t fread (scalar_t__,int,int,int /*<<< orphan*/ *) ; 
+
+ int ERANGE ;
+ int MEMORY ;
+ int assert (int) ;
+ struct buffer_list* buffer_extend (struct buffer_list*) ;
+ scalar_t__ errno ;
+ scalar_t__ feof (int *) ;
+ size_t fread (scalar_t__,int,int,int *) ;
 
 __attribute__((used)) static int
 buffer_from_file(struct buffer *buffer, FILE *fp)
@@ -31,7 +31,7 @@ buffer_from_file(struct buffer *buffer, FILE *fp)
 
    for (;;)
    {
-      size_t r = fread(last->buffer+count, 1/*size*/,
+      size_t r = fread(last->buffer+count, 1 ,
          (sizeof last->buffer)-count, fp);
 
       if (r > 0)
@@ -43,10 +43,10 @@ buffer_from_file(struct buffer *buffer, FILE *fp)
             assert(count == sizeof last->buffer);
             count = 0;
 
-            if (last->next == NULL)
+            if (last->next == ((void*)0))
             {
                last = buffer_extend(last);
-               if (last == NULL)
+               if (last == ((void*)0))
                   return MEMORY;
             }
 
@@ -55,16 +55,16 @@ buffer_from_file(struct buffer *buffer, FILE *fp)
          }
       }
 
-      else /* fread failed - probably end of file */
+      else
       {
          if (feof(fp))
          {
             buffer->last = last;
             buffer->end_count = count;
-            return 0; /* no error */
+            return 0;
          }
 
-         /* Some kind of funky error; errno should be non-zero */
+
          return errno == 0 ? ERANGE : errno;
       }
    }

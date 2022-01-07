@@ -1,115 +1,107 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct snmp_context {TYPE_1__* scratch; } ;
 struct inet_port_params {int dummy; } ;
-struct inet_port {int /*<<< orphan*/  row_status; int /*<<< orphan*/  tport; } ;
-typedef  enum RowStatus { ____Placeholder_RowStatus } RowStatus ;
+struct inet_port {int row_status; int tport; } ;
+typedef enum RowStatus { ____Placeholder_RowStatus } RowStatus ;
 struct TYPE_2__ {void* int1; } ;
-
-/* Variables and functions */
-#define  RowStatus_active 133 
-#define  RowStatus_createAndGo 132 
-#define  RowStatus_createAndWait 131 
-#define  RowStatus_destroy 130 
-#define  RowStatus_notInService 129 
-#define  RowStatus_notReady 128 
- void* SET_ACTIVATED ; 
- void* SET_CREATED ; 
- void* SET_DEACTIVATE ; 
- void* SET_DESTROY ; 
- int SNMP_ERR_INCONS_VALUE ; 
- int SNMP_ERR_NOERROR ; 
- int SNMP_ERR_WRONG_VALUE ; 
- int /*<<< orphan*/  abort () ; 
- int create_and_go (struct snmp_context*,struct inet_port_params*) ; 
- int create_and_wait (struct snmp_context*,struct inet_port_params*) ; 
- int inet_activate (int /*<<< orphan*/ *) ; 
+ void* SET_ACTIVATED ;
+ void* SET_CREATED ;
+ void* SET_DEACTIVATE ;
+ void* SET_DESTROY ;
+ int SNMP_ERR_INCONS_VALUE ;
+ int SNMP_ERR_NOERROR ;
+ int SNMP_ERR_WRONG_VALUE ;
+ int abort () ;
+ int create_and_go (struct snmp_context*,struct inet_port_params*) ;
+ int create_and_wait (struct snmp_context*,struct inet_port_params*) ;
+ int inet_activate (int *) ;
 
 __attribute__((used)) static int
 inet_port_set(struct snmp_context *ctx, struct inet_port *port,
     struct inet_port_params *params, enum RowStatus nstatus)
 {
-	switch (nstatus) {
+ switch (nstatus) {
 
-	  case RowStatus_createAndGo:
-		if (port != NULL)
-			return (SNMP_ERR_INCONS_VALUE);
-		ctx->scratch->int1 = SET_CREATED;
-		return (create_and_go(ctx, params));
+   case 132:
+  if (port != ((void*)0))
+   return (SNMP_ERR_INCONS_VALUE);
+  ctx->scratch->int1 = SET_CREATED;
+  return (create_and_go(ctx, params));
 
-	  case RowStatus_createAndWait:
-		if (port != NULL)
-			return (SNMP_ERR_INCONS_VALUE);
-		ctx->scratch->int1 = SET_CREATED;
-		return (create_and_wait(ctx, params));
+   case 131:
+  if (port != ((void*)0))
+   return (SNMP_ERR_INCONS_VALUE);
+  ctx->scratch->int1 = SET_CREATED;
+  return (create_and_wait(ctx, params));
 
-	  case RowStatus_active:
-		if (port == NULL)
-			return (SNMP_ERR_INCONS_VALUE);
+   case 133:
+  if (port == ((void*)0))
+   return (SNMP_ERR_INCONS_VALUE);
 
-		switch (port->row_status) {
+  switch (port->row_status) {
 
-		  case RowStatus_notReady:
-			/* this can not happend */
-			abort();
+    case 128:
 
-		  case RowStatus_notInService:
-			ctx->scratch->int1 = SET_ACTIVATED;
-			return (inet_activate(&port->tport));
+   abort();
 
-		  case RowStatus_active:
-			return (SNMP_ERR_NOERROR);
+    case 129:
+   ctx->scratch->int1 = SET_ACTIVATED;
+   return (inet_activate(&port->tport));
 
-		  case RowStatus_createAndGo:
-		  case RowStatus_createAndWait:
-		  case RowStatus_destroy:
-			abort();
-		}
-		break;
+    case 133:
+   return (SNMP_ERR_NOERROR);
 
-	  case RowStatus_notInService:
-		if (port == NULL)
-			return (SNMP_ERR_INCONS_VALUE);
+    case 132:
+    case 131:
+    case 130:
+   abort();
+  }
+  break;
 
-		switch (port->row_status) {
+   case 129:
+  if (port == ((void*)0))
+   return (SNMP_ERR_INCONS_VALUE);
 
-		  case RowStatus_notReady:
-			/* this can not happend */
-			abort();
+  switch (port->row_status) {
 
-		  case RowStatus_notInService:
-			return (SNMP_ERR_NOERROR);
+    case 128:
 
-		  case RowStatus_active:
-			/* this is done during commit */
-			ctx->scratch->int1 = SET_DEACTIVATE;
-			return (SNMP_ERR_NOERROR);
+   abort();
 
-		  case RowStatus_createAndGo:
-		  case RowStatus_createAndWait:
-		  case RowStatus_destroy:
-			abort();
-		}
-		break;
-		
-	  case RowStatus_destroy:
-		/* this is done during commit */
-		ctx->scratch->int1 = SET_DESTROY;
-		return (SNMP_ERR_NOERROR);
+    case 129:
+   return (SNMP_ERR_NOERROR);
 
-	  case RowStatus_notReady:
-		return (SNMP_ERR_WRONG_VALUE);
-	}
-	abort();
+    case 133:
+
+   ctx->scratch->int1 = SET_DEACTIVATE;
+   return (SNMP_ERR_NOERROR);
+
+    case 132:
+    case 131:
+    case 130:
+   abort();
+  }
+  break;
+
+   case 130:
+
+  ctx->scratch->int1 = SET_DESTROY;
+  return (SNMP_ERR_NOERROR);
+
+   case 128:
+  return (SNMP_ERR_WRONG_VALUE);
+ }
+ abort();
 }

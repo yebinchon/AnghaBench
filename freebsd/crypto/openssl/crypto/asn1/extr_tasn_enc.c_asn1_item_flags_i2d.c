@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ASN1_VALUE ;
-typedef  int /*<<< orphan*/  ASN1_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_ITEM_FLAGS_I2D ; 
- int ASN1_item_ex_i2d (int /*<<< orphan*/ **,unsigned char**,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- unsigned char* OPENSSL_malloc (int) ; 
+
+
+
+typedef int ASN1_VALUE ;
+typedef int ASN1_ITEM ;
+
+
+ int ASN1_F_ASN1_ITEM_FLAGS_I2D ;
+ int ASN1_item_ex_i2d (int **,unsigned char**,int const*,int,int) ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ unsigned char* OPENSSL_malloc (int) ;
 
 __attribute__((used)) static int asn1_item_flags_i2d(ASN1_VALUE *val, unsigned char **out,
                                const ASN1_ITEM *it, int flags)
@@ -27,10 +27,10 @@ __attribute__((used)) static int asn1_item_flags_i2d(ASN1_VALUE *val, unsigned c
         unsigned char *p, *buf;
         int len;
 
-        len = ASN1_item_ex_i2d(&val, NULL, it, -1, flags);
+        len = ASN1_item_ex_i2d(&val, ((void*)0), it, -1, flags);
         if (len <= 0)
             return len;
-        if ((buf = OPENSSL_malloc(len)) == NULL) {
+        if ((buf = OPENSSL_malloc(len)) == ((void*)0)) {
             ASN1err(ASN1_F_ASN1_ITEM_FLAGS_I2D, ERR_R_MALLOC_FAILURE);
             return -1;
         }

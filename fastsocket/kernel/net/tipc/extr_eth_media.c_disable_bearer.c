@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tipc_bearer {scalar_t__ usr_handle; } ;
-struct eth_bearer {int /*<<< orphan*/ * bearer; } ;
+struct eth_bearer {int * bearer; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void disable_bearer(struct tipc_bearer *tb_ptr)
 {
-	((struct eth_bearer *)tb_ptr->usr_handle)->bearer = NULL;
+ ((struct eth_bearer *)tb_ptr->usr_handle)->bearer = ((void*)0);
 }

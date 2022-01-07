@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  actx; void* (* alloc ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ;} ;
-typedef  TYPE_1__ js_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  js_outofmemory (TYPE_1__*) ; 
- void* stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int actx; void* (* alloc ) (int ,int *,int) ;} ;
+typedef TYPE_1__ js_State ;
+
+
+ int js_outofmemory (TYPE_1__*) ;
+ void* stub1 (int ,int *,int) ;
 
 void *js_malloc(js_State *J, int size)
 {
-	void *ptr = J->alloc(J->actx, NULL, size);
-	if (!ptr)
-		js_outofmemory(J);
-	return ptr;
+ void *ptr = J->alloc(J->actx, ((void*)0), size);
+ if (!ptr)
+  js_outofmemory(J);
+ return ptr;
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_DEPTH_BITS ; 
- int /*<<< orphan*/  GLFW_TRANSPARENT_FRAMEBUFFER ; 
- int GLFW_TRUE ; 
- int /*<<< orphan*/  animate () ; 
- int /*<<< orphan*/  draw () ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gladLoadGL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetFramebufferSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  glfwGetProcAddress ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int,int)) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init () ; 
- int /*<<< orphan*/  key ; 
- int /*<<< orphan*/  reshape (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int GLFWwindow ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GLFW_DEPTH_BITS ;
+ int GLFW_TRANSPARENT_FRAMEBUFFER ;
+ int GLFW_TRUE ;
+ int animate () ;
+ int draw () ;
+ int exit (int ) ;
+ int fprintf (int ,char*) ;
+ int gladLoadGL (int ) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwGetFramebufferSize (int *,int*,int*) ;
+ int glfwGetProcAddress ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwPollEvents () ;
+ int glfwSetFramebufferSizeCallback (int *,int (*) (int *,int,int)) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwSwapInterval (int) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,int) ;
+ int glfwWindowShouldClose (int *) ;
+ int init () ;
+ int key ;
+ int reshape (int *,int,int) ;
+ int stderr ;
 
 int main(int argc, char *argv[])
 {
@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     glfwWindowHint(GLFW_DEPTH_BITS, 16);
     glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, GLFW_TRUE);
 
-    window = glfwCreateWindow( 300, 300, "Gears", NULL, NULL );
+    window = glfwCreateWindow( 300, 300, "Gears", ((void*)0), ((void*)0) );
     if (!window)
     {
         fprintf( stderr, "Failed to open GLFW window\n" );
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
         exit( EXIT_FAILURE );
     }
 
-    // Set callback functions
+
     glfwSetFramebufferSizeCallback(window, reshape);
     glfwSetKeyCallback(window, key);
 
@@ -74,26 +74,26 @@ int main(int argc, char *argv[])
     glfwGetFramebufferSize(window, &width, &height);
     reshape(window, width, height);
 
-    // Parse command-line options
+
     init();
 
-    // Main loop
+
     while( !glfwWindowShouldClose(window) )
     {
-        // Draw gears
+
         draw();
 
-        // Update animation
+
         animate();
 
-        // Swap buffers
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
 
-    // Terminate GLFW
+
     glfwTerminate();
 
-    // Exit program
+
     exit( EXIT_SUCCESS );
 }

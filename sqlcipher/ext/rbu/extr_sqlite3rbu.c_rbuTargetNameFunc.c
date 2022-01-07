@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3rbu ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ memcmp (char*,char const*,int) ; 
- scalar_t__ rbuIsVacuum (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3_user_data (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int sqlite3rbu ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int SQLITE_STATIC ;
+ int assert (int) ;
+ scalar_t__ memcmp (char*,char const*,int) ;
+ scalar_t__ rbuIsVacuum (int *) ;
+ int sqlite3_result_text (int *,char const*,int,int ) ;
+ int * sqlite3_user_data (int *) ;
+ scalar_t__ sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void rbuTargetNameFunc(
   sqlite3_context *pCtx,

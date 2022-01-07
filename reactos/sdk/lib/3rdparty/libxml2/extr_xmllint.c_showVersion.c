@@ -1,54 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  XML_WITH_AUTOMATA ; 
- int /*<<< orphan*/  XML_WITH_C14N ; 
- int /*<<< orphan*/  XML_WITH_CATALOG ; 
- int /*<<< orphan*/  XML_WITH_DEBUG ; 
- int /*<<< orphan*/  XML_WITH_DEBUG_MEM ; 
- int /*<<< orphan*/  XML_WITH_DEBUG_RUN ; 
- int /*<<< orphan*/  XML_WITH_EXPR ; 
- int /*<<< orphan*/  XML_WITH_FTP ; 
- int /*<<< orphan*/  XML_WITH_HTML ; 
- int /*<<< orphan*/  XML_WITH_HTTP ; 
- int /*<<< orphan*/  XML_WITH_ICONV ; 
- int /*<<< orphan*/  XML_WITH_ICU ; 
- int /*<<< orphan*/  XML_WITH_ISO8859X ; 
- int /*<<< orphan*/  XML_WITH_LEGACY ; 
- int /*<<< orphan*/  XML_WITH_LZMA ; 
- int /*<<< orphan*/  XML_WITH_MODULES ; 
- int /*<<< orphan*/  XML_WITH_OUTPUT ; 
- int /*<<< orphan*/  XML_WITH_PATTERN ; 
- int /*<<< orphan*/  XML_WITH_PUSH ; 
- int /*<<< orphan*/  XML_WITH_READER ; 
- int /*<<< orphan*/  XML_WITH_REGEXP ; 
- int /*<<< orphan*/  XML_WITH_SAX1 ; 
- int /*<<< orphan*/  XML_WITH_SCHEMAS ; 
- int /*<<< orphan*/  XML_WITH_SCHEMATRON ; 
- int /*<<< orphan*/  XML_WITH_THREAD ; 
- int /*<<< orphan*/  XML_WITH_TREE ; 
- int /*<<< orphan*/  XML_WITH_UNICODE ; 
- int /*<<< orphan*/  XML_WITH_VALID ; 
- int /*<<< orphan*/  XML_WITH_WRITER ; 
- int /*<<< orphan*/  XML_WITH_XINCLUDE ; 
- int /*<<< orphan*/  XML_WITH_XPATH ; 
- int /*<<< orphan*/  XML_WITH_XPTR ; 
- int /*<<< orphan*/  XML_WITH_ZLIB ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ xmlHasFeature (int /*<<< orphan*/ ) ; 
- char* xmlParserVersion ; 
+ int XML_WITH_AUTOMATA ;
+ int XML_WITH_C14N ;
+ int XML_WITH_CATALOG ;
+ int XML_WITH_DEBUG ;
+ int XML_WITH_DEBUG_MEM ;
+ int XML_WITH_DEBUG_RUN ;
+ int XML_WITH_EXPR ;
+ int XML_WITH_FTP ;
+ int XML_WITH_HTML ;
+ int XML_WITH_HTTP ;
+ int XML_WITH_ICONV ;
+ int XML_WITH_ICU ;
+ int XML_WITH_ISO8859X ;
+ int XML_WITH_LEGACY ;
+ int XML_WITH_LZMA ;
+ int XML_WITH_MODULES ;
+ int XML_WITH_OUTPUT ;
+ int XML_WITH_PATTERN ;
+ int XML_WITH_PUSH ;
+ int XML_WITH_READER ;
+ int XML_WITH_REGEXP ;
+ int XML_WITH_SAX1 ;
+ int XML_WITH_SCHEMAS ;
+ int XML_WITH_SCHEMATRON ;
+ int XML_WITH_THREAD ;
+ int XML_WITH_TREE ;
+ int XML_WITH_UNICODE ;
+ int XML_WITH_VALID ;
+ int XML_WITH_WRITER ;
+ int XML_WITH_XINCLUDE ;
+ int XML_WITH_XPATH ;
+ int XML_WITH_XPTR ;
+ int XML_WITH_ZLIB ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ scalar_t__ xmlHasFeature (int ) ;
+ char* xmlParserVersion ;
 
 __attribute__((used)) static void showVersion(const char *name) {
     fprintf(stderr, "%s: using libxml version %s\n", name, xmlParserVersion);

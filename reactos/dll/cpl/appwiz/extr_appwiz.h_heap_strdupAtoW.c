@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- size_t MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/ * heap_alloc (size_t) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int CP_ACP ;
+ size_t MultiByteToWideChar (int ,int ,char const*,int,int *,size_t) ;
+ int * heap_alloc (size_t) ;
 
 __attribute__((used)) static inline WCHAR *heap_strdupAtoW(const char *str)
 {
-    WCHAR *ret = NULL;
+    WCHAR *ret = ((void*)0);
 
     if(str) {
         size_t len;
 
-        len = MultiByteToWideChar(CP_ACP, 0, str, -1, NULL, 0);
+        len = MultiByteToWideChar(CP_ACP, 0, str, -1, ((void*)0), 0);
         ret = heap_alloc(len*sizeof(WCHAR));
         if(ret)
             MultiByteToWideChar(CP_ACP, 0, str, -1, ret, len);

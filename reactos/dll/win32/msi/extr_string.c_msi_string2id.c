@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int sortcount; size_t* sorted; TYPE_1__* strings; } ;
-typedef  TYPE_2__ string_table ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  len; int /*<<< orphan*/  data; } ;
+typedef TYPE_2__ string_table ;
+typedef int WCHAR ;
+typedef size_t UINT ;
+struct TYPE_4__ {int len; int data; } ;
 
-/* Variables and functions */
- size_t ERROR_INVALID_PARAMETER ; 
- size_t ERROR_SUCCESS ; 
- int cmp_string (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int strlenW (int /*<<< orphan*/  const*) ; 
+
+ size_t ERROR_INVALID_PARAMETER ;
+ size_t ERROR_SUCCESS ;
+ int cmp_string (int const*,int,int ,int ) ;
+ int strlenW (int const*) ;
 
 UINT msi_string2id( const string_table *st, const WCHAR *str, int len, UINT *id )
 {

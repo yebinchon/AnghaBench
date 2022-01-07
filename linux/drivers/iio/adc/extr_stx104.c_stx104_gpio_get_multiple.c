@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stx104_gpio {int /*<<< orphan*/  base; } ;
+
+
+
+
+struct stx104_gpio {int base; } ;
 struct gpio_chip {int dummy; } ;
 
-/* Variables and functions */
- struct stx104_gpio* gpiochip_get_data (struct gpio_chip*) ; 
- unsigned long inb (int /*<<< orphan*/ ) ; 
+
+ struct stx104_gpio* gpiochip_get_data (struct gpio_chip*) ;
+ unsigned long inb (int ) ;
 
 __attribute__((used)) static int stx104_gpio_get_multiple(struct gpio_chip *chip, unsigned long *mask,
-	unsigned long *bits)
+ unsigned long *bits)
 {
-	struct stx104_gpio *const stx104gpio = gpiochip_get_data(chip);
+ struct stx104_gpio *const stx104gpio = gpiochip_get_data(chip);
 
-	*bits = inb(stx104gpio->base);
+ *bits = inb(stx104gpio->base);
 
-	return 0;
+ return 0;
 }

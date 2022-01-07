@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  NB_alloc ; 
- int /*<<< orphan*/  NB_max ; 
- int /*<<< orphan*/  NB_used ; 
- int /*<<< orphan*/  SIGINT ; 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  active_connections ; 
- int /*<<< orphan*/  add_history (char*) ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  cleanup () ; 
- int /*<<< orphan*/  connected ; 
- int /*<<< orphan*/  create_all_outbound_connections () ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exec_command (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ expect_input ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ log_file ; 
- int /*<<< orphan*/  maxconn ; 
- int now ; 
- int /*<<< orphan*/  pending_signals ; 
- scalar_t__ quit_steps ; 
- char* readline (char*) ; 
- int /*<<< orphan*/  send_rpc_command (char*) ; 
- int /*<<< orphan*/  sigint_handler ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigterm_handler ; 
- int start_time ; 
- int strlen (char*) ; 
- char* username ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SIGINT ;
+ int SIGTERM ;
+ int active_connections ;
+ int add_history (char*) ;
+ scalar_t__ change_user (char*) ;
+ int cleanup () ;
+ int connected ;
+ int create_all_outbound_connections () ;
+ int cron () ;
+ int epoll_work (int) ;
+ int exec_command (char*) ;
+ int exit (int) ;
+ scalar_t__ expect_input ;
+ int fprintf (scalar_t__,char*,char*) ;
+ int free (char*) ;
+ int init_epoll () ;
+ int init_netbuffers () ;
+ int kprintf (char*,...) ;
+ scalar_t__ log_file ;
+ int maxconn ;
+ int now ;
+ int pending_signals ;
+ scalar_t__ quit_steps ;
+ char* readline (char*) ;
+ int send_rpc_command (char*) ;
+ int sigint_handler ;
+ int signal (int ,int ) ;
+ int sigterm_handler ;
+ int start_time ;
+ int strlen (char*) ;
+ char* username ;
+ int vkprintf (int,char*,...) ;
 
 void start_server (void) {
   int i;
@@ -70,7 +62,7 @@ void start_server (void) {
   for (i = 0; !pending_signals; i++) {
     if (!(i & 255)) {
       vkprintf (1, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
 
     epoll_work (97);
@@ -103,7 +95,7 @@ void start_server (void) {
           exec_command (input);
         }
       }
-      if (input != NULL) {
+      if (input != ((void*)0)) {
         free (input);
       }
     }

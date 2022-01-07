@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int in_rate; int /*<<< orphan*/  avrctx; scalar_t__ out_rate; } ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- double swr_get_delay (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct priv {int in_rate; int avrctx; scalar_t__ out_rate; } ;
+typedef int int64_t ;
+
+
+ double swr_get_delay (int ,int) ;
 
 __attribute__((used)) static double get_delay(struct priv *p)
 {

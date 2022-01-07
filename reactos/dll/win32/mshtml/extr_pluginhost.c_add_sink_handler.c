@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * disp; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ sink_entry_t ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * disp; int id; } ;
+typedef TYPE_1__ sink_entry_t ;
 struct TYPE_10__ {int handlers_size; int handlers_cnt; TYPE_1__* handlers; } ;
-typedef  TYPE_2__ PHEventSink ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  DISPID ;
+typedef TYPE_2__ PHEventSink ;
+typedef int IDispatch ;
+typedef int DISPID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDispatch_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- TYPE_1__* find_sink_entry (TYPE_2__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* heap_alloc (int) ; 
- TYPE_1__* heap_realloc (TYPE_1__*,int) ; 
+
+ int IDispatch_AddRef (int *) ;
+ int IDispatch_Release (int *) ;
+ TYPE_1__* find_sink_entry (TYPE_2__*,int ) ;
+ TYPE_1__* heap_alloc (int) ;
+ TYPE_1__* heap_realloc (TYPE_1__*,int) ;
 
 __attribute__((used)) static void add_sink_handler(PHEventSink *sink, DISPID id, IDispatch *disp)
 {

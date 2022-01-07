@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nb_channels; int sub_sampling; int**** tone_level_idx_hi1; int** tone_level_idx_hi2; int*** tone_level_idx_mid; int /*<<< orphan*/ ** quantized_coeffs; } ;
-typedef  TYPE_1__ QDM2Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int QDM2_SB_USED (int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_quantized_coeffs_elem0 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int qdm2_get_vlc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vlc_tab_tone_level_idx_hi1 ; 
- int /*<<< orphan*/  vlc_tab_tone_level_idx_hi2 ; 
- int /*<<< orphan*/  vlc_tab_tone_level_idx_mid ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nb_channels; int sub_sampling; int**** tone_level_idx_hi1; int** tone_level_idx_hi2; int*** tone_level_idx_mid; int ** quantized_coeffs; } ;
+typedef TYPE_1__ QDM2Context ;
+typedef int GetBitContext ;
+
+
+ int QDM2_SB_USED (int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int init_quantized_coeffs_elem0 (int ,int *) ;
+ int memset (int ,int ,int) ;
+ int qdm2_get_vlc (int *,int *,int ,int) ;
+ int vlc_tab_tone_level_idx_hi1 ;
+ int vlc_tab_tone_level_idx_hi2 ;
+ int vlc_tab_tone_level_idx_mid ;
 
 __attribute__((used)) static void init_tone_level_dequantization(QDM2Context *q, GetBitContext *gb)
 {

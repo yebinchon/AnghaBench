@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  abrtflag ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  longjmp (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  ptabort ; 
- scalar_t__ ptflag ; 
- int /*<<< orphan*/  stdout ; 
+ int abrtflag ;
+ int fflush (int ) ;
+ int longjmp (int ,int) ;
+ int printf (char*) ;
+ int ptabort ;
+ scalar_t__ ptflag ;
+ int stdout ;
 
 void
 cmdabort (int sig)
@@ -28,5 +20,5 @@ cmdabort (int sig)
     fflush (stdout);
     abrtflag++;
     if (ptflag)
-	longjmp (ptabort, 1);
+ longjmp (ptabort, 1);
 }

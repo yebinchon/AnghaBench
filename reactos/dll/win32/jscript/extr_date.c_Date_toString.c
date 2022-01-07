@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DateInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JS_E_DATE_EXPECTED ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/ * date_this (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dateobj_to_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+typedef int DateInstance ;
+
+
+ int JS_E_DATE_EXPECTED ;
+ int TRACE (char*) ;
+ int * date_this (int *) ;
+ int dateobj_to_string (int *,int *) ;
+ int throw_type_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT Date_toString(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv, jsval_t *r)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static HRESULT Date_toString(script_ctx_t *ctx, vdisp_t *j
     TRACE("\n");
 
     if(!(date = date_this(jsthis)))
-        return throw_type_error(ctx, JS_E_DATE_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_DATE_EXPECTED, ((void*)0));
 
     return dateobj_to_string(date, r);
 }

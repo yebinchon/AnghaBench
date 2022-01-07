@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_9__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int word ;
-typedef  int /*<<< orphan*/  dlc ;
-typedef  int byte ;
+
+
+typedef struct TYPE_13__ TYPE_9__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int word ;
+typedef int dlc ;
+typedef int byte ;
 struct TYPE_13__ {int manufacturer_features; } ;
-struct TYPE_12__ {scalar_t__ length; int /*<<< orphan*/ * info; } ;
+struct TYPE_12__ {scalar_t__ length; int * info; } ;
 struct TYPE_11__ {int B2_prot; int B3_prot; int rx_dma_descriptor; int rx_dma_magic; int call_dir; TYPE_1__* appl; TYPE_9__* adapter; } ;
-struct TYPE_10__ {int /*<<< orphan*/  MaxDataLength; } ;
-typedef  TYPE_2__ PLCI ;
-typedef  TYPE_3__ API_PARSE ;
+struct TYPE_10__ {int MaxDataLength; } ;
+typedef TYPE_2__ PLCI ;
+typedef TYPE_3__ API_PARSE ;
 
-/* Variables and functions */
- int B1_MODEM_ALL_NEGOTIATE ; 
- int B2_MODEM_EC_COMPRESSION ; 
- int B2_TRANSPARENT ; 
- int B3_MODEM ; 
- int B3_TRANSPARENT ; 
- int CALL_DIR_FORCE_OUTG_NL ; 
- int CALL_DIR_ORIGINATE ; 
- scalar_t__ DIVA_CAPI_SUPPORTS_NO_CANCEL (TYPE_9__*) ; 
- int DIVA_CAPI_USE_CMA ; 
- int /*<<< orphan*/  DLC ; 
- int DLC_MODEMPROT_DISABLE_COMPRESSION ; 
- int DLC_MODEMPROT_DISABLE_MNP_MNP5 ; 
- int DLC_MODEMPROT_DISABLE_V42_DETECT ; 
- int DLC_MODEMPROT_DISABLE_V42_V42BIS ; 
- int DLC_MODEMPROT_REQUIRE_PROTOCOL ; 
- int GET_WORD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LLC ; 
- int /*<<< orphan*/  LLI ; 
- int MANUFACTURER_FEATURE_OOB_CHANNEL ; 
- int MANUFACTURER_FEATURE_XONOFF_FLOW_CONTROL ; 
- int MDM_B2_DISABLE_COMP ; 
- int MDM_B2_DISABLE_MNP ; 
- int MDM_B2_DISABLE_TRANS ; 
- int MDM_B2_DISABLE_V42 ; 
- int MDM_B2_DISABLE_V42bis ; 
- int /*<<< orphan*/  PUT_WORD (int*,int /*<<< orphan*/ ) ; 
- int _B_STACK_NOT_SUPPORTED ; 
- int _WRONG_MESSAGE_FORMAT ; 
- int /*<<< orphan*/  add_p (TYPE_2__*,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ api_parse (int /*<<< orphan*/ *,int,char*,TYPE_3__*) ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int diva_get_dma_descriptor (TYPE_2__*,int*) ; 
- int diva_xdi_extended_features ; 
- int /*<<< orphan*/  dprintf (char*,int) ; 
 
-__attribute__((used)) static word add_modem_b23 (PLCI  * plci, API_PARSE* bp_parms)
+ int B1_MODEM_ALL_NEGOTIATE ;
+ int B2_MODEM_EC_COMPRESSION ;
+ int B2_TRANSPARENT ;
+ int B3_MODEM ;
+ int B3_TRANSPARENT ;
+ int CALL_DIR_FORCE_OUTG_NL ;
+ int CALL_DIR_ORIGINATE ;
+ scalar_t__ DIVA_CAPI_SUPPORTS_NO_CANCEL (TYPE_9__*) ;
+ int DIVA_CAPI_USE_CMA ;
+ int DLC ;
+ int DLC_MODEMPROT_DISABLE_COMPRESSION ;
+ int DLC_MODEMPROT_DISABLE_MNP_MNP5 ;
+ int DLC_MODEMPROT_DISABLE_V42_DETECT ;
+ int DLC_MODEMPROT_DISABLE_V42_V42BIS ;
+ int DLC_MODEMPROT_REQUIRE_PROTOCOL ;
+ int GET_WORD (int *) ;
+ int LLC ;
+ int LLI ;
+ int MANUFACTURER_FEATURE_OOB_CHANNEL ;
+ int MANUFACTURER_FEATURE_XONOFF_FLOW_CONTROL ;
+ int MDM_B2_DISABLE_COMP ;
+ int MDM_B2_DISABLE_MNP ;
+ int MDM_B2_DISABLE_TRANS ;
+ int MDM_B2_DISABLE_V42 ;
+ int MDM_B2_DISABLE_V42bis ;
+ int PUT_WORD (int*,int ) ;
+ int _B_STACK_NOT_SUPPORTED ;
+ int _WRONG_MESSAGE_FORMAT ;
+ int add_p (TYPE_2__*,int ,int*) ;
+ scalar_t__ api_parse (int *,int,char*,TYPE_3__*) ;
+ int dbug (int,int ) ;
+ int diva_get_dma_descriptor (TYPE_2__*,int*) ;
+ int diva_xdi_extended_features ;
+ int dprintf (char*,int) ;
+
+__attribute__((used)) static word add_modem_b23 (PLCI * plci, API_PARSE* bp_parms)
 {
   static byte lli[12] = {1,1};
   static byte llc[3] = {2,0,0};
@@ -99,7 +99,7 @@ __attribute__((used)) static word add_modem_b23 (PLCI  * plci, API_PARSE* bp_par
     b2_config = GET_WORD(mdm_config[0].info);
   }
 
-  /* OK, L2 is modem */
+
 
   lli[0] = 1;
   lli[1] = 1;
@@ -120,7 +120,7 @@ __attribute__((used)) static word add_modem_b23 (PLCI  * plci, API_PARSE* bp_par
       lli[0] = 6;
       lli[2] = (byte)(plci->rx_dma_descriptor - 1);
       lli[3] = (byte)plci->rx_dma_magic;
-      lli[4] = (byte)(plci->rx_dma_magic >>  8);
+      lli[4] = (byte)(plci->rx_dma_magic >> 8);
       lli[5] = (byte)(plci->rx_dma_magic >> 16);
       lli[6] = (byte)(plci->rx_dma_magic >> 24);
     }
@@ -131,11 +131,11 @@ __attribute__((used)) static word add_modem_b23 (PLCI  * plci, API_PARSE* bp_par
   }
 
   llc[1] = (plci->call_dir & (CALL_DIR_ORIGINATE | CALL_DIR_FORCE_OUTG_NL)) ?
-    /*V42*/ 10 : /*V42_IN*/ 9;
-  llc[2] = 4;                      /* pass L3 always transparent */
+            10 : 9;
+  llc[2] = 4;
   add_p(plci, LLI, lli);
   add_p(plci, LLC, llc);
-  i =  1;
+  i = 1;
   PUT_WORD (&dlc[i], plci->appl->MaxDataLength);
   i += 2;
   if (GET_WORD(bp_parms[1].info) == B2_MODEM_EC_COMPRESSION)
@@ -143,12 +143,12 @@ __attribute__((used)) static word add_modem_b23 (PLCI  * plci, API_PARSE* bp_par
     if (bp_parms[4].length)
   {
     dbug(1, dprintf("MDM b2_config=%02x", b2_config));
-    dlc[i++] = 3; /* Addr A */
-    dlc[i++] = 1; /* Addr B */
-    dlc[i++] = 7; /* modulo mode */
-    dlc[i++] = 7; /* window size */
-    dlc[i++] = 0; /* XID len Lo  */
-    dlc[i++] = 0; /* XID len Hi  */
+    dlc[i++] = 3;
+    dlc[i++] = 1;
+    dlc[i++] = 7;
+    dlc[i++] = 7;
+    dlc[i++] = 0;
+    dlc[i++] = 0;
 
     if (b2_config & MDM_B2_DISABLE_V42bis)
     {
@@ -175,19 +175,19 @@ __attribute__((used)) static word add_modem_b23 (PLCI  * plci, API_PARSE* bp_par
   }
   else
   {
-    dlc[i++] = 3; /* Addr A */
-    dlc[i++] = 1; /* Addr B */
-    dlc[i++] = 7; /* modulo mode */
-    dlc[i++] = 7; /* window size */
-    dlc[i++] = 0; /* XID len Lo  */
-    dlc[i++] = 0; /* XID len Hi  */
+    dlc[i++] = 3;
+    dlc[i++] = 1;
+    dlc[i++] = 7;
+    dlc[i++] = 7;
+    dlc[i++] = 0;
+    dlc[i++] = 0;
     dlc[i++] = DLC_MODEMPROT_DISABLE_V42_V42BIS |
                DLC_MODEMPROT_DISABLE_MNP_MNP5 |
                DLC_MODEMPROT_DISABLE_V42_DETECT |
                DLC_MODEMPROT_DISABLE_COMPRESSION;
   }
   dlc[0] = (byte)(i - 1);
-/* HexDump ("DLC", sizeof(dlc), &dlc[0]); */
+
   add_p(plci, DLC, dlc);
   return (0);
 }

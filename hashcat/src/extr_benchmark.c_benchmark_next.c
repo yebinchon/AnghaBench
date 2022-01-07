@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int benchmark_all; } ;
-typedef  TYPE_1__ user_options_t ;
-struct TYPE_5__ {TYPE_1__* user_options; int /*<<< orphan*/ * folder_config; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
-typedef  int /*<<< orphan*/  folder_config_t ;
+typedef TYPE_1__ user_options_t ;
+struct TYPE_5__ {TYPE_1__* user_options; int * folder_config; } ;
+typedef TYPE_2__ hashcat_ctx_t ;
+typedef int folder_config_t ;
 
-/* Variables and functions */
- int* DEFAULT_BENCHMARK_ALGORITHMS_BUF ; 
- int /*<<< orphan*/  HCBUFSIZ_TINY ; 
- int MODULE_HASH_MODES_MAXIMUM ; 
- int hc_path_exist (char*) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- scalar_t__ hcmalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  module_filename (int /*<<< orphan*/  const*,int,char*,int /*<<< orphan*/ ) ; 
+
+ int* DEFAULT_BENCHMARK_ALGORITHMS_BUF ;
+ int HCBUFSIZ_TINY ;
+ int MODULE_HASH_MODES_MAXIMUM ;
+ int hc_path_exist (char*) ;
+ int hcfree (char*) ;
+ scalar_t__ hcmalloc (int ) ;
+ int module_filename (int const*,int,char*,int ) ;
 
 int benchmark_next (hashcat_ctx_t *hashcat_ctx)
 {
   const folder_config_t *folder_config = hashcat_ctx->folder_config;
-  const user_options_t  *user_options  = hashcat_ctx->user_options;
+  const user_options_t *user_options = hashcat_ctx->user_options;
 
   static int cur = 0;
 
-  if (user_options->benchmark_all == false)
+  if (user_options->benchmark_all == 0)
   {
     const int hash_mode = DEFAULT_BENCHMARK_ALGORITHMS_BUF[cur];
 
@@ -51,7 +51,7 @@ int benchmark_next (hashcat_ctx_t *hashcat_ctx)
   {
     module_filename (folder_config, i, modulefile, HCBUFSIZ_TINY);
 
-    if (hc_path_exist (modulefile) == true)
+    if (hc_path_exist (modulefile) == 1)
     {
       const int hash_mode = i;
 

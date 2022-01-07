@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network ;
-struct TYPE_8__ {int rows; int /*<<< orphan*/  cols; int /*<<< orphan*/ * vals; } ;
-typedef  TYPE_2__ matrix ;
-struct TYPE_7__ {int /*<<< orphan*/  cols; int /*<<< orphan*/ * vals; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int network ;
+struct TYPE_8__ {int rows; int cols; int * vals; } ;
+typedef TYPE_2__ matrix ;
+struct TYPE_7__ {int cols; int * vals; } ;
 struct TYPE_9__ {TYPE_1__ y; } ;
-typedef  TYPE_3__ data ;
+typedef TYPE_3__ data ;
 
-/* Variables and functions */
- scalar_t__ abs (int) ; 
- int max_index (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ network_predict_data (int /*<<< orphan*/ *,TYPE_3__) ; 
- float pow (scalar_t__,int) ; 
- int /*<<< orphan*/  printf (char*,float,...) ; 
+
+ scalar_t__ abs (int) ;
+ int max_index (int ,int ) ;
+ TYPE_2__ network_predict_data (int *,TYPE_3__) ;
+ float pow (scalar_t__,int) ;
+ int printf (char*,float,...) ;
 
 void compare_networks(network *n1, network *n2, data test)
 {
@@ -49,5 +49,5 @@ void compare_networks(network *n1, network *n2, data test)
     printf("%5d %5d\n%5d %5d\n", a, b, c, d);
     float num = pow((abs(b - c) - 1.), 2.);
     float den = b + c;
-    printf("%f\n", num/den); 
+    printf("%f\n", num/den);
 }

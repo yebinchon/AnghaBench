@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_STRING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string (char*) ; 
- int /*<<< orphan*/  jv_string_append_buf (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  jv_string_append_str (int /*<<< orphan*/ ,char const*) ; 
- int jv_string_length_bytes (int /*<<< orphan*/ ) ; 
- char* jv_string_value (int /*<<< orphan*/ ) ; 
- char* jvp_utf8_next (char const*,char const*,int*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+
+
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_STRING ;
+ int assert (int) ;
+ int jv_copy (int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_string (char*) ;
+ int jv_string_append_buf (int ,char const*,int) ;
+ int jv_string_append_str (int ,char const*) ;
+ int jv_string_length_bytes (int ) ;
+ char* jv_string_value (int ) ;
+ char* jvp_utf8_next (char const*,char const*,int*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static jv escape_string(jv input, const char* escapings) {
 

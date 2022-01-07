@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
 struct TYPE_26__ {TYPE_3__** outputs; TYPE_1__* priv; } ;
-struct TYPE_25__ {int /*<<< orphan*/  frame_count_out; int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_4__* dst; } ;
-struct TYPE_24__ {int /*<<< orphan*/ * data; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_23__ {int (* set_frame ) (TYPE_1__*,TYPE_2__*,TYPE_2__*,int,int,int,int) ;scalar_t__ calc_mean_err; int /*<<< orphan*/  palette; int /*<<< orphan*/  last_in; int /*<<< orphan*/  last_out; int /*<<< orphan*/  diff_mode; } ;
-typedef  TYPE_1__ PaletteUseContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+struct TYPE_25__ {int frame_count_out; int h; int w; TYPE_4__* dst; } ;
+struct TYPE_24__ {int * data; int height; int width; } ;
+struct TYPE_23__ {int (* set_frame ) (TYPE_1__*,TYPE_2__*,TYPE_2__*,int,int,int,int) ;scalar_t__ calc_mean_err; int palette; int last_in; int last_out; int diff_mode; } ;
+typedef TYPE_1__ PaletteUseContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVPALETTE_SIZE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- scalar_t__ av_frame_make_writable (int /*<<< orphan*/ ) ; 
- scalar_t__ av_frame_ref (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_mean_error (TYPE_1__*,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_dlog (TYPE_4__*,char*,int,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* ff_get_video_buffer (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_processing_window (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__*,int*,int*,int*,int*) ; 
- int stub1 (TYPE_1__*,TYPE_2__*,TYPE_2__*,int,int,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AVPALETTE_SIZE ;
+ int ENOMEM ;
+ int av_frame_copy_props (TYPE_2__*,TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ scalar_t__ av_frame_make_writable (int ) ;
+ scalar_t__ av_frame_ref (int ,TYPE_2__*) ;
+ int av_frame_unref (int ) ;
+ int debug_mean_error (TYPE_1__*,TYPE_2__*,TYPE_2__*,int ) ;
+ int ff_dlog (TYPE_4__*,char*,int,int,int,int,int,int,int ,int ) ;
+ TYPE_2__* ff_get_video_buffer (TYPE_3__*,int ,int ) ;
+ int memcpy (int ,int ,int ) ;
+ int set_processing_window (int ,int ,TYPE_2__*,int ,TYPE_2__*,int*,int*,int*,int*) ;
+ int stub1 (TYPE_1__*,TYPE_2__*,TYPE_2__*,int,int,int,int) ;
 
 __attribute__((used)) static int apply_palette(AVFilterLink *inlink, AVFrame *in, AVFrame **outf)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int apply_palette(AVFilterLink *inlink, AVFrame *in
     AVFrame *out = ff_get_video_buffer(outlink, outlink->w, outlink->h);
     if (!out) {
         av_frame_free(&in);
-        *outf = NULL;
+        *outf = ((void*)0);
         return AVERROR(ENOMEM);
     }
     av_frame_copy_props(out, in);
@@ -63,7 +63,7 @@ __attribute__((used)) static int apply_palette(AVFilterLink *inlink, AVFrame *in
         av_frame_make_writable(s->last_in) < 0) {
         av_frame_free(&in);
         av_frame_free(&out);
-        *outf = NULL;
+        *outf = ((void*)0);
         return AVERROR(ENOMEM);
     }
 
@@ -73,7 +73,7 @@ __attribute__((used)) static int apply_palette(AVFilterLink *inlink, AVFrame *in
     ret = s->set_frame(s, out, in, x, y, w, h);
     if (ret < 0) {
         av_frame_free(&out);
-        *outf = NULL;
+        *outf = ((void*)0);
         return ret;
     }
     memcpy(out->data[1], s->palette, AVPALETTE_SIZE);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uart_port {int dummy; } ;
 
-/* Variables and functions */
- unsigned int TIOCSER_TEMT ; 
- unsigned int TXEMPTY ; 
- unsigned int UART_GET_STATUS (struct uart_port*) ; 
+
+ unsigned int TIOCSER_TEMT ;
+ unsigned int TXEMPTY ;
+ unsigned int UART_GET_STATUS (struct uart_port*) ;
 
 __attribute__((used)) static unsigned int arc_serial_tx_empty(struct uart_port *port)
 {
-	unsigned int stat;
+ unsigned int stat;
 
-	stat = UART_GET_STATUS(port);
-	if (stat & TXEMPTY)
-		return TIOCSER_TEMT;
+ stat = UART_GET_STATUS(port);
+ if (stat & TXEMPTY)
+  return TIOCSER_TEMT;
 
-	return 0;
+ return 0;
 }

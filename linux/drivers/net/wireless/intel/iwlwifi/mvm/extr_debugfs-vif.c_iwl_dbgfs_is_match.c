@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
 
 __attribute__((used)) static inline char *iwl_dbgfs_is_match(char *name, char *buf)
 {
-	int len = strlen(name);
+ int len = strlen(name);
 
-	return !strncmp(name, buf, len) ? buf + len : NULL;
+ return !strncmp(name, buf, len) ? buf + len : ((void*)0);
 }

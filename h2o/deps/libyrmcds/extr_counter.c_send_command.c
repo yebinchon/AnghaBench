@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yrmcds_error ;
-typedef  scalar_t__ yrmcds_cnt_command ;
-struct TYPE_3__ {int serial; int /*<<< orphan*/  lock; int /*<<< orphan*/  sock; } ;
-typedef  TYPE_1__ yrmcds_cnt ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int yrmcds_error ;
+typedef scalar_t__ yrmcds_cnt_command ;
+struct TYPE_3__ {int serial; int lock; int sock; } ;
+typedef TYPE_1__ yrmcds_cnt ;
+typedef int uint32_t ;
 struct iovec {char* iov_base; int iov_len; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int EINTR ; 
- int HEADER_SIZE ; 
- size_t UINT32_MAX ; 
- int /*<<< orphan*/  YRMCDS_BAD_ARGUMENT ; 
- int /*<<< orphan*/  YRMCDS_OK ; 
- int /*<<< orphan*/  YRMCDS_SYSTEM_ERROR ; 
- int errno ; 
- int /*<<< orphan*/  hton32 (int,char*) ; 
- int /*<<< orphan*/  memcpy (char*,int*,int) ; 
- int pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int writev (int /*<<< orphan*/ ,struct iovec*,int) ; 
+
+ int EINTR ;
+ int HEADER_SIZE ;
+ size_t UINT32_MAX ;
+ int YRMCDS_BAD_ARGUMENT ;
+ int YRMCDS_OK ;
+ int YRMCDS_SYSTEM_ERROR ;
+ int errno ;
+ int hton32 (int,char*) ;
+ int memcpy (char*,int*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int writev (int ,struct iovec*,int) ;
 
 __attribute__((used)) static yrmcds_error
 send_command(yrmcds_cnt* c, yrmcds_cnt_command cmd, uint32_t* serial,
              size_t body1_len, const char* body1,
              size_t body2_len, const char* body2) {
-    if( c == NULL ||
+    if( c == ((void*)0) ||
         body1_len > UINT32_MAX - body2_len ||
-        (body1_len != 0 && body1 == NULL) ||
-        (body2_len != 0 && body2 == NULL) )
+        (body1_len != 0 && body1 == ((void*)0)) ||
+        (body2_len != 0 && body2 == ((void*)0)) )
         return YRMCDS_BAD_ARGUMENT;
 
-#ifndef LIBYRMCDS_NO_INTERNAL_LOCK
+
     int e = pthread_mutex_lock(&c->lock);
     if( e != 0 ) {
         errno = e;
         return YRMCDS_SYSTEM_ERROR;
     }
-#endif // ! LIBYRMCDS_NO_INTERNAL_LOCK
+
 
     c->serial += 1;
-    if( serial != NULL )
+    if( serial != ((void*)0) )
         *serial = c->serial;
 
     char header[HEADER_SIZE];
@@ -102,8 +102,8 @@ send_command(yrmcds_cnt* c, yrmcds_cnt_command cmd, uint32_t* serial,
         }
     }
 
-#ifndef LIBYRMCDS_NO_INTERNAL_LOCK
+
     pthread_mutex_unlock(&c->lock);
-#endif
+
     return ret;
 }

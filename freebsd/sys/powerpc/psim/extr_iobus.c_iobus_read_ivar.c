@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iobus_devinfo {uintptr_t id_node; uintptr_t id_nregs; int /*<<< orphan*/  id_reg; int /*<<< orphan*/  id_name; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ENOENT ; 
-#define  IOBUS_IVAR_NAME 131 
-#define  IOBUS_IVAR_NODE 130 
-#define  IOBUS_IVAR_NREGS 129 
-#define  IOBUS_IVAR_REGS 128 
- struct iobus_devinfo* device_get_ivars (int /*<<< orphan*/ ) ; 
+
+
+
+struct iobus_devinfo {uintptr_t id_node; uintptr_t id_nregs; int id_reg; int id_name; } ;
+typedef int device_t ;
+
+
+ int ENOENT ;
+
+
+
+
+ struct iobus_devinfo* device_get_ivars (int ) ;
 
 __attribute__((used)) static int
 iobus_read_ivar(device_t dev, device_t child, int which, uintptr_t *result)
 {
         struct iobus_devinfo *dinfo;
 
-        if ((dinfo = device_get_ivars(child)) == NULL)
+        if ((dinfo = device_get_ivars(child)) == ((void*)0))
                 return (ENOENT);
 
         switch (which) {
-        case IOBUS_IVAR_NODE:
+        case 130:
                 *result = dinfo->id_node;
                 break;
-        case IOBUS_IVAR_NAME:
+        case 131:
                 *result = (uintptr_t)dinfo->id_name;
                 break;
-	case IOBUS_IVAR_NREGS:
-		*result = dinfo->id_nregs;
-		break;
-	case IOBUS_IVAR_REGS:
-		*result = (uintptr_t)dinfo->id_reg;
-		break;
+ case 129:
+  *result = dinfo->id_nregs;
+  break;
+ case 128:
+  *result = (uintptr_t)dinfo->id_reg;
+  break;
         default:
                 return (ENOENT);
         }

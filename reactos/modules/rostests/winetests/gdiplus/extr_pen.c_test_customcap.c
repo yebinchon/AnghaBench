@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpPen ;
-typedef  int /*<<< orphan*/  GpCustomLineCap ;
-typedef  int /*<<< orphan*/  ARGB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreatePen1 (int /*<<< orphan*/ ,float,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipGetPenCustomEndCap (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipGetPenCustomStartCap (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipSetPenCustomEndCap (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipSetPenCustomStartCap (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpPen ;
+typedef int GpCustomLineCap ;
+typedef int ARGB ;
+
+
+ int GdipCreatePen1 (int ,float,int ,int **) ;
+ int GdipDeletePen (int *) ;
+ int GdipGetPenCustomEndCap (int *,int **) ;
+ int GdipGetPenCustomStartCap (int *,int **) ;
+ int GdipSetPenCustomEndCap (int *,int *) ;
+ int GdipSetPenCustomStartCap (int *,int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int UnitPixel ;
+ int expect (int ,int ) ;
+ int ok (int ,char*) ;
 
 __attribute__((used)) static void test_customcap(void)
 {
@@ -37,42 +37,42 @@ __attribute__((used)) static void test_customcap(void)
     status = GdipCreatePen1((ARGB)0xffff00ff, 10.0f, UnitPixel, &pen);
     expect(Ok, status);
 
-    /* NULL args */
-    status = GdipGetPenCustomStartCap(NULL, NULL);
+
+    status = GdipGetPenCustomStartCap(((void*)0), ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetPenCustomStartCap(pen, NULL);
+    status = GdipGetPenCustomStartCap(pen, ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetPenCustomStartCap(NULL, &custom);
+    status = GdipGetPenCustomStartCap(((void*)0), &custom);
     expect(InvalidParameter, status);
 
-    status = GdipGetPenCustomEndCap(NULL, NULL);
+    status = GdipGetPenCustomEndCap(((void*)0), ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetPenCustomEndCap(pen, NULL);
+    status = GdipGetPenCustomEndCap(pen, ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipGetPenCustomEndCap(NULL, &custom);
-    expect(InvalidParameter, status);
-
-    /* native crashes on pen == NULL, custom != NULL */
-    status = GdipSetPenCustomStartCap(NULL, NULL);
-    expect(InvalidParameter, status);
-    status = GdipSetPenCustomStartCap(pen, NULL);
+    status = GdipGetPenCustomEndCap(((void*)0), &custom);
     expect(InvalidParameter, status);
 
-    status = GdipSetPenCustomEndCap(NULL, NULL);
+
+    status = GdipSetPenCustomStartCap(((void*)0), ((void*)0));
     expect(InvalidParameter, status);
-    status = GdipSetPenCustomEndCap(pen, NULL);
+    status = GdipSetPenCustomStartCap(pen, ((void*)0));
     expect(InvalidParameter, status);
 
-    /* get without setting previously */
+    status = GdipSetPenCustomEndCap(((void*)0), ((void*)0));
+    expect(InvalidParameter, status);
+    status = GdipSetPenCustomEndCap(pen, ((void*)0));
+    expect(InvalidParameter, status);
+
+
     custom = (GpCustomLineCap*)0xdeadbeef;
     status = GdipGetPenCustomEndCap(pen, &custom);
     expect(Ok, status);
-    ok(custom == NULL,"Expect CustomCap == NULL\n");
+    ok(custom == ((void*)0),"Expect CustomCap == NULL\n");
 
     custom = (GpCustomLineCap*)0xdeadbeef;
     status = GdipGetPenCustomStartCap(pen, &custom);
     expect(Ok, status);
-    ok(custom == NULL,"Expect CustomCap == NULL\n");
+    ok(custom == ((void*)0),"Expect CustomCap == NULL\n");
 
     GdipDeletePen(pen);
 }

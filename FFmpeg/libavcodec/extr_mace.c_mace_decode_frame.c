@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
 struct TYPE_13__ {scalar_t__ codec_id; int channels; TYPE_1__* priv_data; } ;
 struct TYPE_12__ {int nb_samples; scalar_t__ extended_data; } ;
 struct TYPE_11__ {int* data; int size; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * chd; } ;
-typedef  TYPE_1__ MACEContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_10__ {int * chd; } ;
+typedef TYPE_1__ MACEContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_CODEC_ID_MACE3 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  chomp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  chomp6 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_CODEC_ID_MACE3 ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_4__*,int ,char*,int) ;
+ int chomp3 (int *,int *,int,int) ;
+ int chomp6 (int *,int *,int,int) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
 
 __attribute__((used)) static int mace_decode_frame(AVCodecContext *avctx, void *data,
                              int *got_frame_ptr, AVPacket *avpkt)
 {
-    AVFrame *frame     = data;
+    AVFrame *frame = data;
     const uint8_t *buf = avpkt->data;
     int buf_size = avpkt->size;
     int16_t **samples;
@@ -52,7 +52,7 @@ __attribute__((used)) static int mace_decode_frame(AVCodecContext *avctx, void *
             return AVERROR_INVALIDDATA;
     }
 
-    /* get output buffer */
+
     frame->nb_samples = 3 * (buf_size << (1 - is_mace3)) / avctx->channels;
     if ((ret = ff_get_buffer(avctx, frame, 0)) < 0)
         return ret;

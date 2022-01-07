@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3expert ;
-struct TYPE_4__ {int bVerbose; int /*<<< orphan*/ * pExpert; } ;
-struct TYPE_5__ {TYPE_1__ expert; int /*<<< orphan*/ * out; } ;
-typedef  TYPE_2__ ShellState ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPERT_REPORT_CANDIDATES ; 
- int /*<<< orphan*/  EXPERT_REPORT_INDEXES ; 
- int /*<<< orphan*/  EXPERT_REPORT_PLAN ; 
- int /*<<< orphan*/  EXPERT_REPORT_SQL ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ *,char*,...) ; 
- int sqlite3_expert_analyze (int /*<<< orphan*/ *,char**) ; 
- int sqlite3_expert_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_expert_destroy (int /*<<< orphan*/ *) ; 
- char* sqlite3_expert_report (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3expert ;
+struct TYPE_4__ {int bVerbose; int * pExpert; } ;
+struct TYPE_5__ {TYPE_1__ expert; int * out; } ;
+typedef TYPE_2__ ShellState ;
+typedef int FILE ;
+
+
+ int EXPERT_REPORT_CANDIDATES ;
+ int EXPERT_REPORT_INDEXES ;
+ int EXPERT_REPORT_PLAN ;
+ int EXPERT_REPORT_SQL ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int raw_printf (int *,char*,...) ;
+ int sqlite3_expert_analyze (int *,char**) ;
+ int sqlite3_expert_count (int *) ;
+ int sqlite3_expert_destroy (int *) ;
+ char* sqlite3_expert_report (int *,int,int ) ;
 
 __attribute__((used)) static int expertFinish(
   ShellState *pState,

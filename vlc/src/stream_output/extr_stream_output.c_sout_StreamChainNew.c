@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_array_t ;
-typedef  char sout_stream_t ;
-typedef  int /*<<< orphan*/  sout_instance_t ;
-typedef  char config_chain_t ;
 
-/* Variables and functions */
- char* config_ChainCreate (char**,char**,char*) ; 
- int /*<<< orphan*/  config_ChainDestroy (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  sout_StreamDelete (char*) ; 
- char* sout_StreamNew (int /*<<< orphan*/ *,char*,char*,char*) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  vlc_array_append_or_abort (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_array_clear (int /*<<< orphan*/ *) ; 
- int vlc_array_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_array_init (int /*<<< orphan*/ *) ; 
- char* vlc_array_item_at_index (int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int vlc_array_t ;
+typedef char sout_stream_t ;
+typedef int sout_instance_t ;
+typedef char config_chain_t ;
+
+
+ char* config_ChainCreate (char**,char**,char*) ;
+ int config_ChainDestroy (char*) ;
+ int free (char*) ;
+ int sout_StreamDelete (char*) ;
+ char* sout_StreamNew (int *,char*,char*,char*) ;
+ char* strdup (char const*) ;
+ int vlc_array_append_or_abort (int *,char*) ;
+ int vlc_array_clear (int *) ;
+ int vlc_array_count (int *) ;
+ int vlc_array_init (int *) ;
+ char* vlc_array_item_at_index (int *,size_t) ;
 
 sout_stream_t *sout_StreamChainNew(sout_instance_t *p_sout, const char *psz_chain,
                                 sout_stream_t *p_next, sout_stream_t **pp_last)
 {
     if(!psz_chain || !*psz_chain)
     {
-        if(pp_last) *pp_last = NULL;
+        if(pp_last) *pp_last = ((void*)0);
         return p_next;
     }
 
     char *psz_parser = strdup(psz_chain);
     if(!psz_parser)
-        return NULL;
+        return ((void*)0);
 
     vlc_array_t cfg, name;
     vlc_array_init(&cfg);
     vlc_array_init(&name);
 
-    /* parse chain */
+
     while(psz_parser)
     {
         config_chain_t *p_cfg;
@@ -70,7 +70,7 @@ sout_stream_t *sout_StreamChainNew(sout_instance_t *p_sout, const char *psz_chai
             goto error;
 
         if(i == vlc_array_count(&name) - 1 && pp_last)
-            *pp_last = p_next;   /* last module created in the chain */
+            *pp_last = p_next;
 
         vlc_array_append_or_abort(&module, p_next);
     }
@@ -83,16 +83,16 @@ sout_stream_t *sout_StreamChainNew(sout_instance_t *p_sout, const char *psz_chai
 
 error:
 
-    i++;    /* last module couldn't be created */
+    i++;
 
-    /* destroy all modules created, starting with the last one */
+
     int modules = vlc_array_count(&module);
     while(modules--)
         sout_StreamDelete(vlc_array_item_at_index(&module, modules));
     vlc_array_clear(&module);
 
-    /* then destroy all names and config which weren't destroyed by
-     * sout_StreamDelete */
+
+
     while(i--)
     {
         free(vlc_array_item_at_index(&name, i));
@@ -101,5 +101,5 @@ error:
     vlc_array_clear(&name);
     vlc_array_clear(&cfg);
 
-    return NULL;
+    return ((void*)0);
 }

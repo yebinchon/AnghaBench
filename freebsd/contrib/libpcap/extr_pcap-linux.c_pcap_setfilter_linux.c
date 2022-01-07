@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bpf_program {int dummy; } ;
-typedef  int /*<<< orphan*/  pcap_t ;
+typedef int pcap_t ;
 
-/* Variables and functions */
- int pcap_setfilter_linux_common (int /*<<< orphan*/ *,struct bpf_program*,int /*<<< orphan*/ ) ; 
+
+ int pcap_setfilter_linux_common (int *,struct bpf_program*,int ) ;
 
 __attribute__((used)) static int
 pcap_setfilter_linux(pcap_t *handle, struct bpf_program *filter)
 {
-	return pcap_setfilter_linux_common(handle, filter, 0);
+ return pcap_setfilter_linux_common(handle, filter, 0);
 }

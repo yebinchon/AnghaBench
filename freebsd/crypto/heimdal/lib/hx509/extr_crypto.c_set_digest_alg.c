@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  heim_oid ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int heim_oid ;
 struct TYPE_6__ {size_t length; struct TYPE_6__* data; } ;
-struct TYPE_5__ {TYPE_3__* parameters; int /*<<< orphan*/  algorithm; } ;
-typedef  TYPE_1__ DigestAlgorithmIdentifier ;
+struct TYPE_5__ {TYPE_3__* parameters; int algorithm; } ;
+typedef TYPE_1__ DigestAlgorithmIdentifier ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int der_copy_oid (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- void* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,void const*,size_t) ; 
+
+ int ENOMEM ;
+ int der_copy_oid (int const*,int *) ;
+ int free (TYPE_3__*) ;
+ void* malloc (size_t) ;
+ int memcpy (TYPE_3__*,void const*,size_t) ;
 
 __attribute__((used)) static int
 set_digest_alg(DigestAlgorithmIdentifier *id,
-	       const heim_oid *oid,
-	       const void *param, size_t length)
+        const heim_oid *oid,
+        const void *param, size_t length)
 {
     int ret;
     if (param) {
-	id->parameters = malloc(sizeof(*id->parameters));
-	if (id->parameters == NULL)
-	    return ENOMEM;
-	id->parameters->data = malloc(length);
-	if (id->parameters->data == NULL) {
-	    free(id->parameters);
-	    id->parameters = NULL;
-	    return ENOMEM;
-	}
-	memcpy(id->parameters->data, param, length);
-	id->parameters->length = length;
+ id->parameters = malloc(sizeof(*id->parameters));
+ if (id->parameters == ((void*)0))
+     return ENOMEM;
+ id->parameters->data = malloc(length);
+ if (id->parameters->data == ((void*)0)) {
+     free(id->parameters);
+     id->parameters = ((void*)0);
+     return ENOMEM;
+ }
+ memcpy(id->parameters->data, param, length);
+ id->parameters->length = length;
     } else
-	id->parameters = NULL;
+ id->parameters = ((void*)0);
     ret = der_copy_oid(oid, &id->algorithm);
     if (ret) {
-	if (id->parameters) {
-	    free(id->parameters->data);
-	    free(id->parameters);
-	    id->parameters = NULL;
-	}
-	return ret;
+ if (id->parameters) {
+     free(id->parameters->data);
+     free(id->parameters);
+     id->parameters = ((void*)0);
+ }
+ return ret;
     }
     return 0;
 }

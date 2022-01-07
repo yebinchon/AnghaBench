@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int user_id; TYPE_1__* search_mf; } ;
-typedef  TYPE_2__ user_t ;
-struct TYPE_4__ {int len; int /*<<< orphan*/  data; } ;
+typedef TYPE_2__ user_t ;
+struct TYPE_4__ {int len; int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * QWords ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ cur_bit ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  load_bit () ; 
- int /*<<< orphan*/  stderr ; 
+
+ int * QWords ;
+ int assert (int) ;
+ scalar_t__ cur_bit ;
+ int fprintf (int ,char*,...) ;
+ int load_bit () ;
+ int stderr ;
 
 int get_word_metafile_len (unsigned char *wm, int ws, user_t *U, int word_idx) {
  int s = (*wm >> 2) + 6;
  unsigned char *ptr = wm + (s >> 3);
  int m = ((((int) *ptr++) << 24) | (1 << 23)) << (s & 7);
-#define	cur_bit (m < 0)
-#define	load_bit()	{ m <<= 1; if (unlikely(m == (-1 << 31))) { m = ((int) *ptr++ << 24) + (1 << 23); } }
+
+
  int a = 0;
- while (cur_bit) {
+ while ((m < 0)) {
    a++;
-   load_bit();
+   { m <<= 1; if (unlikely(m == (-1 << 31))) { m = ((int) *ptr++ << 24) + (1 << 23); } };
    assert (a <= 30);
  }
- load_bit();
+ { m <<= 1; if (unlikely(m == (-1 << 31))) { m = ((int) *ptr++ << 24) + (1 << 23); } };
  int r = 1;
  while (a > 0) {
    r <<= 1;
-   r += cur_bit;
-   load_bit();
+   r += (m < 0);
+   { m <<= 1; if (unlikely(m == (-1 << 31))) { m = ((int) *ptr++ << 24) + (1 << 23); } };
    a--;
  }
  if (m & (1 << 23)) {

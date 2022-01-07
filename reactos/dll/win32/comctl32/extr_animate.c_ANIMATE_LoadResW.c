@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mminfo ;
-typedef  char WCHAR ;
-struct TYPE_7__ {int /*<<< orphan*/  hRes; int /*<<< orphan*/  hMMio; } ;
-struct TYPE_6__ {int /*<<< orphan*/  cchBuffer; scalar_t__ pchBuffer; int /*<<< orphan*/  fccIOProc; } ;
-typedef  TYPE_1__ MMIOINFO ;
-typedef  scalar_t__ LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HRSRC ;
-typedef  int /*<<< orphan*/  HINSTANCE ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  TYPE_2__ ANIMATE_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FOURCC_MEM ; 
- int /*<<< orphan*/  FindResourceW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  FreeResource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ LockResource (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MMIO_READ ; 
- int /*<<< orphan*/  SizeofResource (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mmioOpenW (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int mminfo ;
+typedef char WCHAR ;
+struct TYPE_7__ {int hRes; int hMMio; } ;
+struct TYPE_6__ {int cchBuffer; scalar_t__ pchBuffer; int fccIOProc; } ;
+typedef TYPE_1__ MMIOINFO ;
+typedef scalar_t__ LPVOID ;
+typedef int LPCWSTR ;
+typedef int HRSRC ;
+typedef int HINSTANCE ;
+typedef int BOOL ;
+typedef TYPE_2__ ANIMATE_INFO ;
+
+
+ int FALSE ;
+ int FOURCC_MEM ;
+ int FindResourceW (int ,int ,char const*) ;
+ int FreeResource (int ) ;
+ int LoadResource (int ,int ) ;
+ scalar_t__ LockResource (int ) ;
+ int MMIO_READ ;
+ int SizeofResource (int ,int ) ;
+ int TRUE ;
+ int memset (TYPE_1__*,int ,int) ;
+ int mmioOpenW (int *,TYPE_1__*,int ) ;
 
 __attribute__((used)) static BOOL ANIMATE_LoadResW(ANIMATE_INFO *infoPtr, HINSTANCE hInst, LPCWSTR lpName)
 {
     static const WCHAR aviW[] = { 'A', 'V', 'I', 0 };
-    HRSRC 	hrsrc;
-    MMIOINFO	mminfo;
-    LPVOID	lpAvi;
+    HRSRC hrsrc;
+    MMIOINFO mminfo;
+    LPVOID lpAvi;
 
     hrsrc = FindResourceW(hInst, lpName, aviW);
     if (!hrsrc)
-	return FALSE;
+ return FALSE;
 
     infoPtr->hRes = LoadResource(hInst, hrsrc);
     if (!infoPtr->hRes)
- 	return FALSE;
+  return FALSE;
 
     lpAvi = LockResource(infoPtr->hRes);
     if (!lpAvi)
-	return FALSE;
+ return FALSE;
 
     memset(&mminfo, 0, sizeof(mminfo));
     mminfo.fccIOProc = FOURCC_MEM;
     mminfo.pchBuffer = lpAvi;
     mminfo.cchBuffer = SizeofResource(hInst, hrsrc);
-    infoPtr->hMMio = mmioOpenW(NULL, &mminfo, MMIO_READ);
-    if (!infoPtr->hMMio) 
+    infoPtr->hMMio = mmioOpenW(((void*)0), &mminfo, MMIO_READ);
+    if (!infoPtr->hMMio)
     {
-	FreeResource(infoPtr->hRes);
-	return FALSE;
+ FreeResource(infoPtr->hRes);
+ return FALSE;
     }
 
     return TRUE;

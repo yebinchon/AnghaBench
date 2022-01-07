@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
 struct TYPE_10__ {char const* psz_url; struct TYPE_10__* s; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
+typedef TYPE_1__ stream_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetCurrentItem (TYPE_1__*) ; 
- TYPE_1__* PreparseStream (TYPE_1__*) ; 
- int /*<<< orphan*/  ProcessEntry (int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ReadElement (int /*<<< orphan*/ *,char**) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int XML_READER_ENDELEM ; 
- int XML_READER_ERROR ; 
- int XML_READER_STARTELEM ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * input_item_New (char*,char*) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_SetArtist (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetCopyright (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetDescription (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetTitle (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_SetURL (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  input_item_node_AppendItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- char* strdup (char const*) ; 
- scalar_t__ strncasecmp (char const*,char*,int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_stream_Delete (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_xml_decode (char*) ; 
- int /*<<< orphan*/ * xml_ReaderCreate (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  xml_ReaderDelete (int /*<<< orphan*/ *) ; 
- char* xml_ReaderNextAttr (int /*<<< orphan*/ *,char const**) ; 
- int xml_ReaderNextNode (int /*<<< orphan*/ *,char const**) ; 
+
+ int * GetCurrentItem (TYPE_1__*) ;
+ TYPE_1__* PreparseStream (TYPE_1__*) ;
+ int ProcessEntry (int*,int *,int *,int *,char*) ;
+ int ReadElement (int *,char**) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int XML_READER_ENDELEM ;
+ int XML_READER_ERROR ;
+ int XML_READER_STARTELEM ;
+ int free (char*) ;
+ int * input_item_New (char*,char*) ;
+ int input_item_Release (int *) ;
+ int input_item_SetArtist (int *,char*) ;
+ int input_item_SetCopyright (int *,char*) ;
+ int input_item_SetDescription (int *,char*) ;
+ int input_item_SetTitle (int *,char*) ;
+ int input_item_SetURL (int *,char*) ;
+ int input_item_node_AppendItem (int *,int *) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ char* strdup (char const*) ;
+ scalar_t__ strncasecmp (char const*,char*,int) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_stream_Delete (TYPE_1__*) ;
+ int vlc_xml_decode (char*) ;
+ int * xml_ReaderCreate (TYPE_1__*,TYPE_1__*) ;
+ int xml_ReaderDelete (int *) ;
+ char* xml_ReaderNextAttr (int *,char const**) ;
+ int xml_ReaderNextNode (int *,char const**) ;
 
 __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *p_subitems )
 {
-    if (unlikely(p_demux->psz_url == NULL))
+    if (unlikely(p_demux->psz_url == ((void*)0)))
         return VLC_EGENERIC;
 
-    const char *psz_node = NULL;
-    char *psz_txt = NULL;
+    const char *psz_node = ((void*)0);
+    char *psz_txt = ((void*)0);
     char *psz_base = strdup( p_demux->psz_url );
-    if (unlikely(psz_base == NULL))
+    if (unlikely(psz_base == ((void*)0)))
         return VLC_ENOMEM;
 
-    char *psz_title_asx = NULL;
-    char *psz_entryref = NULL;
+    char *psz_title_asx = ((void*)0);
+    char *psz_entryref = ((void*)0);
 
-    xml_reader_t *p_xml_reader = NULL;
+    xml_reader_t *p_xml_reader = ((void*)0);
     input_item_t *p_current_input = GetCurrentItem( p_demux );
     stream_t* p_stream = PreparseStream( p_demux );
 
-    bool b_first_node = false;
+    bool b_first_node = 0;
     int i_type;
     int i_n_entry = 0;
 
@@ -88,7 +88,7 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
             if( !b_first_node )
             {
                 if(!strncasecmp( psz_node, "ASX", 3 ) )
-                    b_first_node = true;
+                    b_first_node = 1;
                 else
                 {
                     msg_Err( p_demux, "invalid root node" );
@@ -96,7 +96,7 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 }
             }
 
-            /* Metadata Node Handler */
+
             if( !strncasecmp( psz_node, "TITLE", 5 ) )
             {
                 if( ! ReadElement( p_xml_reader, &psz_title_asx ) )
@@ -124,7 +124,7 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 }
                 while( psz_tmp && strncasecmp( psz_tmp, "HREF", 4 ) );
 
-                if( !psz_tmp )  // If HREF attribute doesn't exist
+                if( !psz_tmp )
                 {
                     if( ! ReadElement( p_xml_reader, &psz_txt ) )
                         break;
@@ -142,14 +142,14 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 input_item_SetDescription( p_current_input, psz_txt );
             }
             else
-            /* Base Node handler */
+
             if( !strncasecmp( psz_node, "BASE", 4 ) )
             {
                 if( ! ReadElement( p_xml_reader, &psz_base ) )
                     break;
             }
             else
-            /* Entry Ref Handler */
+
             if( !strncasecmp( psz_node, "ENTRYREF", 7 ) )
             {
                 const char *psz_tmp;
@@ -161,7 +161,7 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 if( ! psz_tmp )
                     break;
 
-                /* Create new input item */
+
                 input_item_t *p_input;
                 psz_txt = strdup( psz_node );
                 vlc_xml_decode( psz_txt );
@@ -171,19 +171,19 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
                 input_item_Release( p_input );
             }
             else
-            /* Entry Handler */
+
             if( !strncasecmp( psz_node, "ENTRY", 5 ) )
             {
                 ProcessEntry( &i_n_entry, p_xml_reader, p_subitems,
                               p_current_input, psz_base);
             }
-        /* FIXME Unsupported elements
-            PARAM
-            EVENT
-            REPEAT
-            ENDMARK
-            STARTMARK
-        */
+
+
+
+
+
+
+
         }
     }
     while( i_type != XML_READER_ENDELEM || strncasecmp( psz_node, "ASX", 3 ) );

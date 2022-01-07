@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-typedef  int /*<<< orphan*/  flow_indr_block_bind_cb_t ;
+typedef int flow_indr_block_bind_cb_t ;
 
-/* Variables and functions */
- int __flow_indr_block_cb_register (struct net_device*,void*,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  rtnl_lock () ; 
- int /*<<< orphan*/  rtnl_unlock () ; 
+
+ int __flow_indr_block_cb_register (struct net_device*,void*,int *,void*) ;
+ int rtnl_lock () ;
+ int rtnl_unlock () ;
 
 int flow_indr_block_cb_register(struct net_device *dev, void *cb_priv,
-				flow_indr_block_bind_cb_t *cb,
-				void *cb_ident)
+    flow_indr_block_bind_cb_t *cb,
+    void *cb_ident)
 {
-	int err;
+ int err;
 
-	rtnl_lock();
-	err = __flow_indr_block_cb_register(dev, cb_priv, cb, cb_ident);
-	rtnl_unlock();
+ rtnl_lock();
+ err = __flow_indr_block_cb_register(dev, cb_priv, cb, cb_ident);
+ rtnl_unlock();
 
-	return err;
+ return err;
 }

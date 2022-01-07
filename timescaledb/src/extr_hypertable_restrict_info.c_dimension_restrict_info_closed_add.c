@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ strategy; int /*<<< orphan*/ * partitions; } ;
-struct TYPE_6__ {int /*<<< orphan*/  use_or; int /*<<< orphan*/  values; } ;
-typedef  scalar_t__ StrategyNumber ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__ DimensionValues ;
-typedef  TYPE_2__ DimensionRestrictInfoClosed ;
 
-/* Variables and functions */
- scalar_t__ BTEqualStrategyNumber ; 
- scalar_t__ InvalidStrategy ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/ * dimension_restrict_info_get_partitions (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * list_intersection_int (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int list_length (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ strategy; int * partitions; } ;
+struct TYPE_6__ {int use_or; int values; } ;
+typedef scalar_t__ StrategyNumber ;
+typedef int List ;
+typedef TYPE_1__ DimensionValues ;
+typedef TYPE_2__ DimensionRestrictInfoClosed ;
+
+
+ scalar_t__ BTEqualStrategyNumber ;
+ scalar_t__ InvalidStrategy ;
+ int * NIL ;
+ int * dimension_restrict_info_get_partitions (TYPE_2__*,int ) ;
+ int * list_intersection_int (int *,int *) ;
+ int list_length (int *) ;
 
 __attribute__((used)) static bool
 dimension_restrict_info_closed_add(DimensionRestrictInfoClosed *dri, StrategyNumber strategy,
-								   DimensionValues *dimvalues)
+           DimensionValues *dimvalues)
 {
-	List *partitions;
-	bool restriction_added = false;
+ List *partitions;
+ bool restriction_added = 0;
 
-	if (strategy != BTEqualStrategyNumber)
-	{
-		return false;
-	}
+ if (strategy != BTEqualStrategyNumber)
+ {
+  return 0;
+ }
 
-	partitions = dimension_restrict_info_get_partitions(dri, dimvalues->values);
+ partitions = dimension_restrict_info_get_partitions(dri, dimvalues->values);
 
-	/* the intersection is empty when using ALL operator (ANDing values)  */
-	if (list_length(partitions) > 1 && !dimvalues->use_or)
-	{
-		dri->strategy = strategy;
-		dri->partitions = NIL;
-		return true;
-	}
 
-	if (dri->strategy == InvalidStrategy)
-	/* first time through */
-	{
-		dri->partitions = partitions;
-		dri->strategy = strategy;
-		restriction_added = true;
-	}
-	else
-	{
-		/* intersection with NULL is NULL */
-		if (dri->partitions == NIL)
-			return true;
+ if (list_length(partitions) > 1 && !dimvalues->use_or)
+ {
+  dri->strategy = strategy;
+  dri->partitions = NIL;
+  return 1;
+ }
 
-		/*
-		 * We are always ANDing the expressions thus intersection is used.
-		 */
-		dri->partitions = list_intersection_int(dri->partitions, partitions);
+ if (dri->strategy == InvalidStrategy)
 
-		/* no intersection is also a restriction  */
-		restriction_added = true;
-	}
-	return restriction_added;
+ {
+  dri->partitions = partitions;
+  dri->strategy = strategy;
+  restriction_added = 1;
+ }
+ else
+ {
+
+  if (dri->partitions == NIL)
+   return 1;
+
+
+
+
+  dri->partitions = list_intersection_int(dri->partitions, partitions);
+
+
+  restriction_added = 1;
+ }
+ return restriction_added;
 }

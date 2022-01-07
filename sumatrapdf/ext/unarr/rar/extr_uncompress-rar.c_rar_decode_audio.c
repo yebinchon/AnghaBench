@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct AudioState {int* delta; int lastdelta; int lastbyte; int* weight; scalar_t__* error; int count; } ;
-typedef  int int8_t ;
+typedef int int8_t ;
 
-/* Variables and functions */
- scalar_t__ abs (int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ abs (int) ;
+ int memset (scalar_t__*,int ,int) ;
 
 __attribute__((used)) static uint8_t rar_decode_audio(struct AudioState *state, int8_t *channeldelta, int8_t delta)
 {

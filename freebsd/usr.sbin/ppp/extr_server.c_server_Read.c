@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sockaddr_storage {int dummy; } ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_port; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; } ;
+struct sockaddr_in6 {int sin6_port; } ;
+struct sockaddr_in {int sin_port; } ;
 struct sockaddr {scalar_t__ sa_len; int sa_family; } ;
-struct TYPE_3__ {int /*<<< orphan*/  sockname; } ;
+struct TYPE_3__ {int sockname; } ;
 struct server {scalar_t__ fd; TYPE_1__ cfg; } ;
 struct TYPE_4__ {char* type; char* from; } ;
-struct prompt {int /*<<< orphan*/  desc; struct prompt* next; TYPE_2__ src; } ;
+struct prompt {int desc; struct prompt* next; TYPE_2__ src; } ;
 struct ncpaddr {int dummy; } ;
 struct fdescriptor {int dummy; } ;
 struct bundle {int dummy; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
-#define  AF_INET 130 
-#define  AF_INET6 129 
-#define  AF_LOCAL 128 
- scalar_t__ FD_ISSET (scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LogALERT ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogPHASE ; 
- int accept (scalar_t__,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  close (int) ; 
- struct server* descriptor2server (struct fdescriptor*) ; 
- scalar_t__ descriptor_IsSet (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  descriptor_Read (int /*<<< orphan*/ *,struct bundle*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- struct prompt* log_PromptList () ; 
- scalar_t__ log_PromptListChanged ; 
- char* ncpaddr_ntoa (struct ncpaddr*) ; 
- int /*<<< orphan*/  ncpaddr_setsa (struct ncpaddr*,struct sockaddr*) ; 
- int ntohs (int /*<<< orphan*/ ) ; 
- struct prompt* prompt_Create (struct server*,struct bundle*,int) ; 
- int /*<<< orphan*/  prompt_Required (struct prompt*) ; 
- int /*<<< orphan*/  prompt_TtyCommandMode (struct prompt*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  write (int,char*,int) ; 
+
+
+
+
+ scalar_t__ FD_ISSET (scalar_t__,int const*) ;
+ int LogALERT ;
+ int LogERROR ;
+ int LogPHASE ;
+ int accept (scalar_t__,struct sockaddr*,int*) ;
+ int close (int) ;
+ struct server* descriptor2server (struct fdescriptor*) ;
+ scalar_t__ descriptor_IsSet (int *,int const*) ;
+ int descriptor_Read (int *,struct bundle*,int const*) ;
+ int errno ;
+ int log_Printf (int ,char*,...) ;
+ struct prompt* log_PromptList () ;
+ scalar_t__ log_PromptListChanged ;
+ char* ncpaddr_ntoa (struct ncpaddr*) ;
+ int ncpaddr_setsa (struct ncpaddr*,struct sockaddr*) ;
+ int ntohs (int ) ;
+ struct prompt* prompt_Create (struct server*,struct bundle*,int) ;
+ int prompt_Required (struct prompt*) ;
+ int prompt_TtyCommandMode (struct prompt*) ;
+ int snprintf (char*,int,char*,char*,int) ;
+ int strerror (int ) ;
+ int strncpy (char*,int ,int) ;
+ int write (int,char*,int) ;
 
 __attribute__((used)) static void
 server_Read(struct fdescriptor *d, struct bundle *bundle, const fd_set *fdset)
@@ -60,9 +60,9 @@ server_Read(struct fdescriptor *d, struct bundle *bundle, const fd_set *fdset)
   struct sockaddr_storage ss;
   struct sockaddr *sa = (struct sockaddr *)&ss;
   struct sockaddr_in *sin = (struct sockaddr_in *)&ss;
-#ifndef NOINET6
+
   struct sockaddr_in6 *sin6 = (struct sockaddr_in6 *)&ss;
-#endif
+
   int ssize = sizeof ss, wfd;
   struct prompt *p;
   struct ncpaddr addr;
@@ -80,11 +80,11 @@ server_Read(struct fdescriptor *d, struct bundle *bundle, const fd_set *fdset)
 
   if (wfd >= 0)
     switch (sa->sa_family) {
-      case AF_LOCAL:
+      case 128:
         log_Printf(LogPHASE, "Connected to local client.\n");
         break;
 
-      case AF_INET:
+      case 130:
         ncpaddr_setsa(&addr, sa);
         if (ntohs(sin->sin_port) < 1024) {
           log_Printf(LogALERT, "Rejected client connection from %s:%u"
@@ -98,8 +98,8 @@ server_Read(struct fdescriptor *d, struct bundle *bundle, const fd_set *fdset)
                   ncpaddr_ntoa(&addr), ntohs(sin->sin_port));
         break;
 
-#ifndef NOINET6
-      case AF_INET6:
+
+      case 129:
         ncpaddr_setsa(&addr, sa);
         if (ntohs(sin6->sin6_port) < 1024) {
           log_Printf(LogALERT, "Rejected client connection from %s:%u"
@@ -112,7 +112,7 @@ server_Read(struct fdescriptor *d, struct bundle *bundle, const fd_set *fdset)
         log_Printf(LogPHASE, "Connected to client from %s:%u\n",
                   ncpaddr_ntoa(&addr), ntohs(sin6->sin6_port));
         break;
-#endif
+
 
       default:
         write(wfd, "Unrecognised access !\n", 22);
@@ -122,28 +122,28 @@ server_Read(struct fdescriptor *d, struct bundle *bundle, const fd_set *fdset)
     }
 
   if (wfd >= 0) {
-    if ((p = prompt_Create(s, bundle, wfd)) == NULL) {
+    if ((p = prompt_Create(s, bundle, wfd)) == ((void*)0)) {
       write(wfd, "Connection refused.\n", 20);
       close(wfd);
     } else {
       switch (sa->sa_family) {
-        case AF_LOCAL:
+        case 128:
           p->src.type = "local";
           strncpy(p->src.from, s->cfg.sockname, sizeof p->src.from - 1);
           p->src.from[sizeof p->src.from - 1] = '\0';
           break;
-        case AF_INET:
+        case 130:
           p->src.type = "ip";
           snprintf(p->src.from, sizeof p->src.from, "%s:%u",
                    ncpaddr_ntoa(&addr), ntohs(sin->sin_port));
           break;
-#ifndef NOINET6
-        case AF_INET6:
+
+        case 129:
           p->src.type = "ip6";
           snprintf(p->src.from, sizeof p->src.from, "%s:%u",
                    ncpaddr_ntoa(&addr), ntohs(sin6->sin6_port));
           break;
-#endif
+
       }
       prompt_TtyCommandMode(p);
       prompt_Required(p);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  serf_context_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_SUCCESS ; 
- int /*<<< orphan*/  check_dirty_pollsets (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serf__open_connections (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int serf_context_t ;
+typedef int apr_status_t ;
+
+
+ int APR_SUCCESS ;
+ int check_dirty_pollsets (int *) ;
+ int serf__open_connections (int *) ;
 
 apr_status_t serf_context_prerun(serf_context_t *ctx)
 {

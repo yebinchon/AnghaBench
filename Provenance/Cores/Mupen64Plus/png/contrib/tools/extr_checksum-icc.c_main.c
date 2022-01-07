@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  read_one_file (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * stdin ; 
+
+
+
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int perror (char*) ;
+ int printf (char*,...) ;
+ int read_one_file (int *,char*) ;
+ int stderr ;
+ int * stdin ;
 
 int main(int argc, char **argv)
 {
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
       {
          FILE *ip = fopen(argv[i], "rb");
 
-         if (ip == NULL || !read_one_file(ip, argv[i]))
+         if (ip == ((void*)0) || !read_one_file(ip, argv[i]))
          {
             err = 1;
             perror(argv[i]);

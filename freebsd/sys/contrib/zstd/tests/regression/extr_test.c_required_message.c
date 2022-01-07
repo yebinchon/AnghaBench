@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int option_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
-#define  help_option 130 
-#define  optional_option 129 
-#define  required_option 128 
+
+
+
+typedef int option_type ;
+
+
+ int assert (int ) ;
+
+
+
 
 __attribute__((used)) static char const* required_message(option_type opt_type) {
     switch (opt_type) {
-        case required_option:
+        case 128:
             return "[required]";
-        case optional_option:
+        case 129:
             return "[optional]";
-        case help_option:
+        case 130:
             return "";
         default:
             assert(0);
-            return NULL;
+            return ((void*)0);
     }
 }

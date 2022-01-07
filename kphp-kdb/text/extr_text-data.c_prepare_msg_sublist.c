@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ delayed_tree; int /*<<< orphan*/ * Sublists; struct file_user_list_entry* dir_entry; } ;
-typedef  TYPE_1__ user_t ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ delayed_tree; int * Sublists; struct file_user_list_entry* dir_entry; } ;
+typedef TYPE_1__ user_t ;
 struct file_user_list_entry {int* user_sublists_size; } ;
-typedef  int /*<<< orphan*/  listree_t ;
+typedef int listree_t ;
 struct TYPE_6__ {int and_mask; int xor_mask; } ;
 
-/* Variables and functions */
- TYPE_4__* Sublists ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ conv_uid (int) ; 
- TYPE_1__* get_user (int) ; 
- scalar_t__ get_user_metafile (TYPE_1__*) ; 
- int idx_sublists_offset ; 
- int /*<<< orphan*/  load_user_metafile (int) ; 
- struct file_user_list_entry* lookup_user_directory (int) ; 
- int sublists_num ; 
+
+ TYPE_4__* Sublists ;
+ int assert (int) ;
+ scalar_t__ conv_uid (int) ;
+ TYPE_1__* get_user (int) ;
+ scalar_t__ get_user_metafile (TYPE_1__*) ;
+ int idx_sublists_offset ;
+ int load_user_metafile (int) ;
+ struct file_user_list_entry* lookup_user_directory (int) ;
+ int sublists_num ;
 
 int prepare_msg_sublist (int user_id, int and_mask, int xor_mask, listree_t **X, int from, int to) {
   user_t *U;
@@ -35,7 +35,7 @@ int prepare_msg_sublist (int user_id, int and_mask, int xor_mask, listree_t **X,
   int S;
   int k;
 
-  //fprintf (stderr, "get_msg_sublist_ext(%d,%d,%d:%d,%d,%d)\n", user_id, mode, and_mask, xor_mask, from, to);
+
 
   if (conv_uid (user_id) < 0 || !and_mask) {
     return -1;
@@ -59,7 +59,7 @@ int prepare_msg_sublist (int user_id, int and_mask, int xor_mask, listree_t **X,
     D = U->dir_entry;
     *X = U->Sublists + k;
     if (U->delayed_tree) {
-      /* need to load user metafile to perform delayed operations */
+
       if (!load_user_metafile (user_id)) {
         return -2;
       }
@@ -80,7 +80,7 @@ int prepare_msg_sublist (int user_id, int and_mask, int xor_mask, listree_t **X,
     if ((from < -S || from > S) && (to < -S || to > S)) {
       return S;
     }
-    /* need to load metafile here */
+
     if (!load_user_metafile (user_id)) {
       return -2;
     }

@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CLEANUP_EXPENSIVE ; 
- int /*<<< orphan*/  TV_CSE ; 
- int /*<<< orphan*/  TV_JUMP ; 
- int /*<<< orphan*/  cleanup_cfg (int /*<<< orphan*/ ) ; 
- int cse_main (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int cse_not_expected ; 
- int /*<<< orphan*/  delete_dead_jumptables () ; 
- int /*<<< orphan*/  delete_trivially_dead_insns (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int flag_cse_follow_jumps ; 
- int flag_cse_skip_blocks ; 
- scalar_t__ flag_expensive_optimizations ; 
- int /*<<< orphan*/  flag_rerun_cse_after_loop ; 
- int gcse_main (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_insns () ; 
- int /*<<< orphan*/  max_reg_num () ; 
- int /*<<< orphan*/  purge_all_dead_edges () ; 
- int /*<<< orphan*/  rebuild_jump_labels (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_scan (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timevar_pop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timevar_push (int /*<<< orphan*/ ) ; 
+ int CLEANUP_EXPENSIVE ;
+ int TV_CSE ;
+ int TV_JUMP ;
+ int cleanup_cfg (int ) ;
+ int cse_main (int ,int ) ;
+ int cse_not_expected ;
+ int delete_dead_jumptables () ;
+ int delete_trivially_dead_insns (int ,int ) ;
+ int flag_cse_follow_jumps ;
+ int flag_cse_skip_blocks ;
+ scalar_t__ flag_expensive_optimizations ;
+ int flag_rerun_cse_after_loop ;
+ int gcse_main (int ) ;
+ int get_insns () ;
+ int max_reg_num () ;
+ int purge_all_dead_edges () ;
+ int rebuild_jump_labels (int ) ;
+ int reg_scan (int ,int ) ;
+ int timevar_pop (int ) ;
+ int timevar_push (int ) ;
 
 __attribute__((used)) static unsigned int
 rest_of_handle_gcse (void)
@@ -47,8 +39,8 @@ rest_of_handle_gcse (void)
   save_cfj = flag_cse_follow_jumps;
   flag_cse_skip_blocks = flag_cse_follow_jumps = 0;
 
-  /* If -fexpensive-optimizations, re-run CSE to clean up things done
-     by gcse.  */
+
+
   if (flag_expensive_optimizations)
     {
       timevar_push (TV_CSE);
@@ -60,8 +52,8 @@ rest_of_handle_gcse (void)
       cse_not_expected = !flag_rerun_cse_after_loop;
     }
 
-  /* If gcse or cse altered any jumps, rerun jump optimizations to clean
-     things up.  */
+
+
   if (tem || tem2)
     {
       timevar_push (TV_JUMP);

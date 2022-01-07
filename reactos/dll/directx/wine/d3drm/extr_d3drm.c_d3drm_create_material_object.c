@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3drm_material {int /*<<< orphan*/  IDirect3DRMMaterial2_iface; } ;
-typedef  int /*<<< orphan*/  IDirect3DRM ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  d3drm_material_create (struct d3drm_material**,int /*<<< orphan*/ *) ; 
+
+
+
+struct d3drm_material {int IDirect3DRMMaterial2_iface; } ;
+typedef int IDirect3DRM ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int d3drm_material_create (struct d3drm_material**,int *) ;
 
 __attribute__((used)) static HRESULT d3drm_create_material_object(void **object, IDirect3DRM *d3drm)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pt; } ;
 struct RTPMessage {TYPE_1__ header; } ;
-struct TYPE_4__ {int /*<<< orphan*/  queue_mutex; int /*<<< orphan*/  j_buf; } ;
-typedef  TYPE_2__ ACSession ;
+struct TYPE_4__ {int queue_mutex; int j_buf; } ;
+typedef TYPE_2__ ACSession ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGGER_WARNING (char*) ; 
- int /*<<< orphan*/  free (struct RTPMessage*) ; 
- int jbuf_write (int /*<<< orphan*/ ,struct RTPMessage*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ ) ; 
- int rtp_TypeAudio ; 
+
+ int LOGGER_WARNING (char*) ;
+ int free (struct RTPMessage*) ;
+ int jbuf_write (int ,struct RTPMessage*) ;
+ int pthread_mutex_lock (int ) ;
+ int pthread_mutex_unlock (int ) ;
+ int rtp_TypeAudio ;
 
 int ac_queue_message(void *acp, struct RTPMessage *msg)
 {

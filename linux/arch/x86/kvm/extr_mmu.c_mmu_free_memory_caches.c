@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  mmu_page_header_cache; int /*<<< orphan*/  mmu_page_cache; int /*<<< orphan*/  mmu_pte_list_desc_cache; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int mmu_page_header_cache; int mmu_page_cache; int mmu_pte_list_desc_cache; } ;
 struct kvm_vcpu {TYPE_1__ arch; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mmu_free_memory_cache (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmu_free_memory_cache_page (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmu_page_header_cache ; 
- int /*<<< orphan*/  pte_list_desc_cache ; 
+
+ int mmu_free_memory_cache (int *,int ) ;
+ int mmu_free_memory_cache_page (int *) ;
+ int mmu_page_header_cache ;
+ int pte_list_desc_cache ;
 
 __attribute__((used)) static void mmu_free_memory_caches(struct kvm_vcpu *vcpu)
 {
-	mmu_free_memory_cache(&vcpu->arch.mmu_pte_list_desc_cache,
-				pte_list_desc_cache);
-	mmu_free_memory_cache_page(&vcpu->arch.mmu_page_cache);
-	mmu_free_memory_cache(&vcpu->arch.mmu_page_header_cache,
-				mmu_page_header_cache);
+ mmu_free_memory_cache(&vcpu->arch.mmu_pte_list_desc_cache,
+    pte_list_desc_cache);
+ mmu_free_memory_cache_page(&vcpu->arch.mmu_page_cache);
+ mmu_free_memory_cache(&vcpu->arch.mmu_page_header_cache,
+    mmu_page_header_cache);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u64 ;
-struct TYPE_4__ {int mLock; int /*<<< orphan*/  pEnv; struct TYPE_4__* pNext; TYPE_2__* pDatabase; } ;
-typedef  TYPE_1__ lsm_db ;
-struct TYPE_5__ {int /*<<< orphan*/  pClientMutex; int /*<<< orphan*/  pFile; scalar_t__ bMultiProc; TYPE_1__* pConn; } ;
-typedef  TYPE_2__ Database ;
 
-/* Variables and functions */
- int LSM_BUSY ; 
- int LSM_LOCK_EXCL ; 
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int lsmEnvTestLock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  lsmMutexEnter (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsmMutexLeave (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u64 ;
+struct TYPE_4__ {int mLock; int pEnv; struct TYPE_4__* pNext; TYPE_2__* pDatabase; } ;
+typedef TYPE_1__ lsm_db ;
+struct TYPE_5__ {int pClientMutex; int pFile; scalar_t__ bMultiProc; TYPE_1__* pConn; } ;
+typedef TYPE_2__ Database ;
+
+
+ int LSM_BUSY ;
+ int LSM_LOCK_EXCL ;
+ int LSM_OK ;
+ int assert (int) ;
+ int lsmEnvTestLock (int ,int ,int,int,int) ;
+ int lsmMutexEnter (int ,int ) ;
+ int lsmMutexLeave (int ,int ) ;
 
 int lsmShmTestLock(
   lsm_db *db,

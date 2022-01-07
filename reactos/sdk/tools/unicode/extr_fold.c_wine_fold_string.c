@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
 
-/* Variables and functions */
- int MAP_COMPOSITE ; 
- int MAP_EXPAND_LIGATURES ; 
- int MAP_FOLDCZONE ; 
- int MAP_FOLDDIGITS ; 
- int MAP_PRECOMPOSED ; 
- scalar_t__* get_ligature (scalar_t__) ; 
- scalar_t__ get_ligature_len (scalar_t__ const) ; 
- int strlenW (scalar_t__ const*) ; 
- scalar_t__ to_unicode_digit (scalar_t__) ; 
- scalar_t__ to_unicode_native (scalar_t__) ; 
+
+
+
+typedef scalar_t__ WCHAR ;
+
+
+ int MAP_COMPOSITE ;
+ int MAP_EXPAND_LIGATURES ;
+ int MAP_FOLDCZONE ;
+ int MAP_FOLDDIGITS ;
+ int MAP_PRECOMPOSED ;
+ scalar_t__* get_ligature (scalar_t__) ;
+ scalar_t__ get_ligature_len (scalar_t__ const) ;
+ int strlenW (scalar_t__ const*) ;
+ scalar_t__ to_unicode_digit (scalar_t__) ;
+ scalar_t__ to_unicode_native (scalar_t__) ;
 
 int wine_fold_string( int flags, const WCHAR *src, int srclen, WCHAR *dst, int dstlen )
 {
@@ -31,11 +31,11 @@ int wine_fold_string( int flags, const WCHAR *src, int srclen, WCHAR *dst, int d
     int i;
 
     if (srclen == -1)
-        srclen = strlenW(src) + 1; /* Include terminating NUL in count */
+        srclen = strlenW(src) + 1;
 
     if (!dstlen)
     {
-        /* Calculate the required size for dst */
+
         dstlen = srclen;
 
         if (flags & MAP_EXPAND_LIGATURES)
@@ -48,11 +48,11 @@ int wine_fold_string( int flags, const WCHAR *src, int srclen, WCHAR *dst, int d
         }
         else if (flags & MAP_COMPOSITE)
         {
-            /* FIXME */
+
         }
         else if (flags & MAP_PRECOMPOSED)
         {
-            /* FIXME */
+
         }
         return dstlen;
     }
@@ -62,7 +62,7 @@ int wine_fold_string( int flags, const WCHAR *src, int srclen, WCHAR *dst, int d
 
     dstlen -= srclen;
 
-    /* Actually perform the mapping(s) specified */
+
     for (i = 0; i < srclen; i++)
     {
         WCHAR ch = *src;
@@ -89,11 +89,11 @@ int wine_fold_string( int flags, const WCHAR *src, int srclen, WCHAR *dst, int d
         }
         else if (flags & MAP_COMPOSITE)
         {
-            /* FIXME */
+
         }
         else if (flags & MAP_PRECOMPOSED)
         {
-            /* FIXME */
+
         }
         if (flags & MAP_FOLDDIGITS)
             ch = to_unicode_digit(ch);

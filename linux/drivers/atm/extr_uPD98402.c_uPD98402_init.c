@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct atm_dev {int /*<<< orphan*/ * phy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTK (char*) ; 
- int /*<<< orphan*/  uPD98402_ops ; 
+
+
+
+struct atm_dev {int * phy; } ;
+
+
+ int DPRINTK (char*) ;
+ int uPD98402_ops ;
 
 int uPD98402_init(struct atm_dev *dev)
 {
 DPRINTK("phy_init\n");
-	dev->phy = &uPD98402_ops;
-	return 0;
+ dev->phy = &uPD98402_ops;
+ return 0;
 }

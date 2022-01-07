@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_15__ ;
 
-/* Type definitions */
-struct TYPE_18__ {int* buf; int x_off; int y_off; int size; int* unpack_buffer; TYPE_1__* prev_frame; TYPE_15__* avctx; int /*<<< orphan*/  unpack_buffer_size; scalar_t__ palette; } ;
-typedef  TYPE_2__ VmdVideoContext ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_15__ ;
+
+
+struct TYPE_18__ {int* buf; int x_off; int y_off; int size; int* unpack_buffer; TYPE_1__* prev_frame; TYPE_15__* avctx; int unpack_buffer_size; scalar_t__ palette; } ;
+typedef TYPE_2__ VmdVideoContext ;
 struct TYPE_20__ {unsigned char** data; unsigned char* linesize; } ;
-struct TYPE_19__ {int /*<<< orphan*/  buffer; } ;
+struct TYPE_19__ {int buffer; } ;
 struct TYPE_17__ {unsigned char** data; int* linesize; } ;
 struct TYPE_16__ {int width; int height; } ;
-typedef  TYPE_3__ GetByteContext ;
-typedef  TYPE_4__ AVFrame ;
+typedef TYPE_3__ GetByteContext ;
+typedef TYPE_4__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RL16 (int*) ; 
- int PALETTE_COUNT ; 
- int /*<<< orphan*/  av_log (TYPE_15__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  bytestream2_get_buffer (TYPE_3__*,unsigned char*,unsigned char) ; 
- int /*<<< orphan*/  bytestream2_get_bufferu (TYPE_3__*,unsigned char*,unsigned char) ; 
- unsigned char bytestream2_get_byte (TYPE_3__*) ; 
- unsigned char bytestream2_get_bytes_left (TYPE_3__*) ; 
- int bytestream2_get_byteu (TYPE_3__*) ; 
- int /*<<< orphan*/  bytestream2_init (TYPE_3__*,int*,int) ; 
- int bytestream2_peek_byte (TYPE_3__*) ; 
- int /*<<< orphan*/  bytestream2_skip (TYPE_3__*,unsigned char) ; 
- int lz_unpack (int /*<<< orphan*/ ,unsigned char,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,unsigned char) ; 
- unsigned char rle_unpack (int /*<<< orphan*/ ,unsigned char*,unsigned char,unsigned char,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RL16 (int*) ;
+ int PALETTE_COUNT ;
+ int av_log (TYPE_15__*,int ,char*,...) ;
+ int bytestream2_get_buffer (TYPE_3__*,unsigned char*,unsigned char) ;
+ int bytestream2_get_bufferu (TYPE_3__*,unsigned char*,unsigned char) ;
+ unsigned char bytestream2_get_byte (TYPE_3__*) ;
+ unsigned char bytestream2_get_bytes_left (TYPE_3__*) ;
+ int bytestream2_get_byteu (TYPE_3__*) ;
+ int bytestream2_init (TYPE_3__*,int*,int) ;
+ int bytestream2_peek_byte (TYPE_3__*) ;
+ int bytestream2_skip (TYPE_3__*,unsigned char) ;
+ int lz_unpack (int ,unsigned char,int*,int ) ;
+ int memcpy (unsigned char*,unsigned char*,unsigned char) ;
+ unsigned char rle_unpack (int ,unsigned char*,unsigned char,unsigned char,int) ;
 
 __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
 {
@@ -51,8 +51,8 @@ __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
     GetByteContext gb;
 
     unsigned char meth;
-    unsigned char *dp;   /* pointer to current frame */
-    unsigned char *pp;   /* pointer to previous frame */
+    unsigned char *dp;
+    unsigned char *pp;
     unsigned char len;
     int ofs;
 
@@ -92,8 +92,8 @@ __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
         return AVERROR_INVALIDDATA;
     }
 
-    /* if only a certain region will be updated, copy the entire previous
-     * frame before the decode */
+
+
     if (s->prev_frame->data[0] &&
         (frame_x || frame_y || (frame_width != s->avctx->width) ||
         (frame_height != s->avctx->height))) {
@@ -102,7 +102,7 @@ __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
             s->avctx->height * frame->linesize[0]);
     }
 
-    /* check if there is a new palette */
+
     bytestream2_init(&gb, s->buf + 16, s->size - 16);
     if (s->buf[15] & 0x02) {
         bytestream2_skip(&gb, 2);
@@ -124,7 +124,7 @@ __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
     if (!s->size)
         return 0;
 
-    /* originally UnpackFrame in VAG's code */
+
     if (bytestream2_get_bytes_left(&gb) < 1)
         return AVERROR_INVALIDDATA;
     meth = bytestream2_get_byteu(&gb);
@@ -159,7 +159,7 @@ __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
                     bytestream2_get_bufferu(&gb, &dp[ofs], len);
                     ofs += len;
                 } else {
-                    /* interframe pixel copy */
+
                     if (ofs + len + 1 > frame_width || !s->prev_frame->data[0])
                         return AVERROR_INVALIDDATA;
                     memcpy(&dp[ofs], &pp[ofs], len + 1);
@@ -208,7 +208,7 @@ __attribute__((used)) static int vmd_decode(VmdVideoContext *s, AVFrame *frame)
                         ofs += len;
                     }
                 } else {
-                    /* interframe pixel copy */
+
                     if (ofs + len + 1 > frame_width || !s->prev_frame->data[0])
                         return AVERROR_INVALIDDATA;
                     memcpy(&dp[ofs], &pp[ofs], len + 1);

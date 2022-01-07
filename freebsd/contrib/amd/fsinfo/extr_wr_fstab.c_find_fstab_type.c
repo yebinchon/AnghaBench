@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct os_fstab_type {scalar_t__ os_name; } ;
-struct TYPE_3__ {char* h_os; int /*<<< orphan*/  h_mask; } ;
-typedef  TYPE_1__ host ;
+struct TYPE_3__ {char* h_os; int h_mask; } ;
+typedef TYPE_1__ host ;
 
-/* Variables and functions */
- char* GENERIC_OS_NAME ; 
- int /*<<< orphan*/  HF_OS ; 
- scalar_t__ ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ STREQ (char*,scalar_t__) ; 
- struct os_fstab_type* os_tabs ; 
+
+ char* GENERIC_OS_NAME ;
+ int HF_OS ;
+ scalar_t__ ISSET (int ,int ) ;
+ scalar_t__ STREQ (char*,scalar_t__) ;
+ struct os_fstab_type* os_tabs ;
 
 __attribute__((used)) static struct os_fstab_type *
 find_fstab_type(host *hp)
 {
-  struct os_fstab_type *op = NULL;
-  char *os_name = NULL;
+  struct os_fstab_type *op = ((void*)0);
+  char *os_name = ((void*)0);
 
 again:;
   if (os_name == 0) {

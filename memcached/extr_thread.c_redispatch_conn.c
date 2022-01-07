@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  sfd; TYPE_2__* thread; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ conn ;
-struct TYPE_9__ {int /*<<< orphan*/  mode; TYPE_1__* c; int /*<<< orphan*/  init_state; int /*<<< orphan*/  sfd; } ;
-struct TYPE_8__ {int /*<<< orphan*/  notify_send_fd; int /*<<< orphan*/  new_conn_queue; } ;
-typedef  TYPE_2__ LIBEVENT_THREAD ;
-typedef  TYPE_3__ CQ_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  conn_closed ; 
- int /*<<< orphan*/  conn_new_cmd ; 
- int /*<<< orphan*/  cq_push (int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_3__* cqi_new () ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  queue_redispatch ; 
- int write (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int sfd; TYPE_2__* thread; int state; } ;
+typedef TYPE_1__ conn ;
+struct TYPE_9__ {int mode; TYPE_1__* c; int init_state; int sfd; } ;
+struct TYPE_8__ {int notify_send_fd; int new_conn_queue; } ;
+typedef TYPE_2__ LIBEVENT_THREAD ;
+typedef TYPE_3__ CQ_ITEM ;
+
+
+ int close (int ) ;
+ int conn_closed ;
+ int conn_new_cmd ;
+ int cq_push (int ,TYPE_3__*) ;
+ TYPE_3__* cqi_new () ;
+ int perror (char*) ;
+ int queue_redispatch ;
+ int write (int ,char*,int) ;
 
 void redispatch_conn(conn *c) {
     CQ_ITEM *item = cqi_new();
     char buf[1];
-    if (item == NULL) {
-        /* Can't cleanly redispatch connection. close it forcefully. */
+    if (item == ((void*)0)) {
+
         c->state = conn_closed;
         close(c->sfd);
         return;

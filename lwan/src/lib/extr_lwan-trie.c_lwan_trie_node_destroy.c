@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwan_trie_node {scalar_t__ ref_count; struct lwan_trie_node** next; struct lwan_trie_node* key; int /*<<< orphan*/  data; struct lwan_trie_node* leaf; } ;
-struct lwan_trie_leaf {scalar_t__ ref_count; struct lwan_trie_leaf** next; struct lwan_trie_leaf* key; int /*<<< orphan*/  data; struct lwan_trie_leaf* leaf; } ;
-struct lwan_trie {int /*<<< orphan*/  (* free_node ) (int /*<<< orphan*/ ) ;} ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct lwan_trie_node*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct lwan_trie_node {scalar_t__ ref_count; struct lwan_trie_node** next; struct lwan_trie_node* key; int data; struct lwan_trie_node* leaf; } ;
+struct lwan_trie_leaf {scalar_t__ ref_count; struct lwan_trie_leaf** next; struct lwan_trie_leaf* key; int data; struct lwan_trie_leaf* leaf; } ;
+struct lwan_trie {int (* free_node ) (int ) ;} ;
+typedef scalar_t__ int32_t ;
+
+
+ int free (struct lwan_trie_node*) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void lwan_trie_node_destroy(struct lwan_trie *trie,
                                    struct lwan_trie_node *node)

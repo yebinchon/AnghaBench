@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,size_t) ; 
- int strlen (char*) ; 
- int vasprintf (char**,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+
+
+ int free (char*) ;
+ int memcpy (char*,char*,size_t) ;
+ int strlen (char*) ;
+ int vasprintf (char**,char const*,int ) ;
 
 int
 vsnprintf (char *s, size_t n, const char *format, va_list ap)
@@ -36,12 +36,12 @@ vsnprintf (char *s, size_t n, const char *format, va_list ap)
   if (n > 0)
     {
       if ((long) n > result)
-	memcpy (s, buf, result+1);
+ memcpy (s, buf, result+1);
       else
         {
-	  memcpy (s, buf, n-1);
-	  s[n - 1] = 0;
-	}
+   memcpy (s, buf, n-1);
+   s[n - 1] = 0;
+ }
     }
   free (buf);
   return result;

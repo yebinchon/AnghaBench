@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
 
-/* Variables and functions */
- int MAX_HEIGHT_FOOTER ; 
- int MAX_HEIGHT_HEADER ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wresize (int /*<<< orphan*/ *,int,int) ; 
+
+
+
+typedef int WINDOW ;
+
+
+ int MAX_HEIGHT_FOOTER ;
+ int MAX_HEIGHT_HEADER ;
+ int getmaxyx (int ,int,int) ;
+ int stdscr ;
+ int wmove (int *,int,int ) ;
+ int wresize (int *,int,int) ;
 
 void
 term_size (WINDOW * main_win, int *main_win_height)

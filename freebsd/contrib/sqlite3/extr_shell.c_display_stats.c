@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  z ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_4__ {int statsOn; int shellFlgs; int /*<<< orphan*/ * out; int /*<<< orphan*/ * pStmt; } ;
-typedef  TYPE_1__ ShellState ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int SHFLG_Lookaside ; 
- int SHFLG_Pagecache ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_HIT ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_MISS ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_SPILL ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_USED ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_WRITE ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_LOOKASIDE_HIT ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_LOOKASIDE_USED ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_SCHEMA_USED ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_STMT_USED ; 
- int /*<<< orphan*/  SQLITE_STATUS_MALLOC_COUNT ; 
- int /*<<< orphan*/  SQLITE_STATUS_MALLOC_SIZE ; 
- int /*<<< orphan*/  SQLITE_STATUS_MEMORY_USED ; 
- int /*<<< orphan*/  SQLITE_STATUS_PAGECACHE_OVERFLOW ; 
- int /*<<< orphan*/  SQLITE_STATUS_PAGECACHE_SIZE ; 
- int /*<<< orphan*/  SQLITE_STATUS_PAGECACHE_USED ; 
- int /*<<< orphan*/  SQLITE_STATUS_PARSER_STACK ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_AUTOINDEX ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_FULLSCAN_STEP ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_MEMUSED ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_REPREPARE ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_RUN ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_SORT ; 
- int /*<<< orphan*/  SQLITE_STMTSTATUS_VM_STEP ; 
- int /*<<< orphan*/  displayLinuxIoStats (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  displayStatLine (TYPE_1__*,char*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ *,char*,...) ; 
- int sqlite3_column_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_column_database_name (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_decltype (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_name (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_origin_name (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_table_name (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_db_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,...) ; 
- int sqlite3_stmt_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int z ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+struct TYPE_4__ {int statsOn; int shellFlgs; int * out; int * pStmt; } ;
+typedef TYPE_1__ ShellState ;
+typedef int FILE ;
+
+
+ int SHFLG_Lookaside ;
+ int SHFLG_Pagecache ;
+ int SQLITE_DBSTATUS_CACHE_HIT ;
+ int SQLITE_DBSTATUS_CACHE_MISS ;
+ int SQLITE_DBSTATUS_CACHE_SPILL ;
+ int SQLITE_DBSTATUS_CACHE_USED ;
+ int SQLITE_DBSTATUS_CACHE_WRITE ;
+ int SQLITE_DBSTATUS_LOOKASIDE_HIT ;
+ int SQLITE_DBSTATUS_LOOKASIDE_MISS_FULL ;
+ int SQLITE_DBSTATUS_LOOKASIDE_MISS_SIZE ;
+ int SQLITE_DBSTATUS_LOOKASIDE_USED ;
+ int SQLITE_DBSTATUS_SCHEMA_USED ;
+ int SQLITE_DBSTATUS_STMT_USED ;
+ int SQLITE_STATUS_MALLOC_COUNT ;
+ int SQLITE_STATUS_MALLOC_SIZE ;
+ int SQLITE_STATUS_MEMORY_USED ;
+ int SQLITE_STATUS_PAGECACHE_OVERFLOW ;
+ int SQLITE_STATUS_PAGECACHE_SIZE ;
+ int SQLITE_STATUS_PAGECACHE_USED ;
+ int SQLITE_STATUS_PARSER_STACK ;
+ int SQLITE_STMTSTATUS_AUTOINDEX ;
+ int SQLITE_STMTSTATUS_FULLSCAN_STEP ;
+ int SQLITE_STMTSTATUS_MEMUSED ;
+ int SQLITE_STMTSTATUS_REPREPARE ;
+ int SQLITE_STMTSTATUS_RUN ;
+ int SQLITE_STMTSTATUS_SORT ;
+ int SQLITE_STMTSTATUS_VM_STEP ;
+ int displayLinuxIoStats (int *) ;
+ int displayStatLine (TYPE_1__*,char*,char*,int ,int) ;
+ int raw_printf (int *,char*,...) ;
+ int sqlite3_column_count (int *) ;
+ int sqlite3_column_database_name (int *,int) ;
+ int sqlite3_column_decltype (int *,int) ;
+ int sqlite3_column_name (int *,int) ;
+ int sqlite3_column_origin_name (int *,int) ;
+ int sqlite3_column_table_name (int *,int) ;
+ int sqlite3_db_status (int *,int ,int*,int*,int) ;
+ int sqlite3_snprintf (int,char*,char*,...) ;
+ int sqlite3_stmt_status (int *,int ,int) ;
+ int utf8_printf (int *,char*,char*,int ) ;
 
 __attribute__((used)) static int display_stats(
-  sqlite3 *db,                /* Database to query */
-  ShellState *pArg,           /* Pointer to ShellState */
-  int bReset                  /* True to reset the stats */
+  sqlite3 *db,
+  ShellState *pArg,
+  int bReset
 ){
   int iCur;
   int iHiwtr;
@@ -80,18 +80,9 @@ __attribute__((used)) static int display_stats(
     for(i=0; i<nCol; i++){
       sqlite3_snprintf(sizeof(z),z,"Column %d %nname:", i, &x);
       utf8_printf(out, "%-36s %s\n", z, sqlite3_column_name(pStmt,i));
-#ifndef SQLITE_OMIT_DECLTYPE
+
       sqlite3_snprintf(30, z+x, "declared type:");
       utf8_printf(out, "%-36s %s\n", z, sqlite3_column_decltype(pStmt, i));
-#endif
-#ifdef SQLITE_ENABLE_COLUMN_METADATA
-      sqlite3_snprintf(30, z+x, "database name:");
-      utf8_printf(out, "%-36s %s\n", z, sqlite3_column_database_name(pStmt,i));
-      sqlite3_snprintf(30, z+x, "table name:");
-      utf8_printf(out, "%-36s %s\n", z, sqlite3_column_table_name(pStmt,i));
-      sqlite3_snprintf(30, z+x, "origin name:");
-      utf8_printf(out, "%-36s %s\n", z, sqlite3_column_origin_name(pStmt,i));
-#endif
     }
   }
 
@@ -109,10 +100,10 @@ __attribute__((used)) static int display_stats(
      "%lld bytes", SQLITE_STATUS_MALLOC_SIZE, bReset);
   displayStatLine(pArg, "Largest Pcache Allocation:",
      "%lld bytes", SQLITE_STATUS_PAGECACHE_SIZE, bReset);
-#ifdef YYTRACKMAXSTACKDEPTH
-  displayStatLine(pArg, "Deepest Parser Stack:",
-     "%lld (max %lld)", SQLITE_STATUS_PARSER_STACK, bReset);
-#endif
+
+
+
+
 
   if( db ){
     if( pArg->shellFlgs & SHFLG_Lookaside ){
@@ -179,11 +170,11 @@ __attribute__((used)) static int display_stats(
     raw_printf(pArg->out, "Memory used by prepared stmt:        %d\n", iCur);
   }
 
-#ifdef __linux__
-  displayLinuxIoStats(pArg->out);
-#endif
 
-  /* Do not remove this machine readable comment: extra-stats-output-here */
+  displayLinuxIoStats(pArg->out);
+
+
+
 
   return 0;
 }

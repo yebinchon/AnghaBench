@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct biosregs {int al; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  initregs (struct biosregs*) ; 
- int /*<<< orphan*/  intcall (int,struct biosregs*,struct biosregs*) ; 
+
+ int initregs (struct biosregs*) ;
+ int intcall (int,struct biosregs*,struct biosregs*) ;
 
 int getchar(void)
 {
-	struct biosregs ireg, oreg;
+ struct biosregs ireg, oreg;
 
-	initregs(&ireg);
-	/* ireg.ah = 0x00; */
-	intcall(0x16, &ireg, &oreg);
+ initregs(&ireg);
 
-	return oreg.al;
+ intcall(0x16, &ireg, &oreg);
+
+ return oreg.al;
 }

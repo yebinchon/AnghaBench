@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_11__ {scalar_t__ pCachePool; } ;
-struct TYPE_10__ {int /*<<< orphan*/  index; int /*<<< orphan*/  slot; scalar_t__ notFree; } ;
-struct TYPE_9__ {int commitPoint; int commitSlot; int maxBlocks; int /*<<< orphan*/  unCommittedBlocks; TYPE_4__** cacheBlocks; } ;
-struct TYPE_8__ {int /*<<< orphan*/  notFreeSlots; int /*<<< orphan*/  vmutex; } ;
-struct TYPE_7__ {size_t vnode; int pointsPerBlock; int /*<<< orphan*/  commitCount; int /*<<< orphan*/  freePoints; int /*<<< orphan*/  meterId; int /*<<< orphan*/  sid; scalar_t__ pCache; } ;
-typedef  TYPE_1__ SMeterObj ;
-typedef  TYPE_2__ SCachePool ;
-typedef  TYPE_3__ SCacheInfo ;
-typedef  TYPE_4__ SCacheBlock ;
+struct TYPE_10__ {int index; int slot; scalar_t__ notFree; } ;
+struct TYPE_9__ {int commitPoint; int commitSlot; int maxBlocks; int unCommittedBlocks; TYPE_4__** cacheBlocks; } ;
+struct TYPE_8__ {int notFreeSlots; int vmutex; } ;
+struct TYPE_7__ {size_t vnode; int pointsPerBlock; int commitCount; int freePoints; int meterId; int sid; scalar_t__ pCache; } ;
+typedef TYPE_1__ SMeterObj ;
+typedef TYPE_2__ SCachePool ;
+typedef TYPE_3__ SCacheInfo ;
+typedef TYPE_4__ SCacheBlock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (scalar_t__) ; 
- int /*<<< orphan*/  atomic_fetch_add_32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  dTrace (char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_6__* vnodeList ; 
+
+ int assert (scalar_t__) ;
+ int atomic_fetch_add_32 (int *,int) ;
+ int dTrace (char*,size_t,int ,int ,int ,int ,int ,int ) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ TYPE_6__* vnodeList ;
 
 void vnodeUpdateCommitInfo(SMeterObj *pObj, int slot, int pos, uint64_t count) {
   SCacheInfo * pInfo;

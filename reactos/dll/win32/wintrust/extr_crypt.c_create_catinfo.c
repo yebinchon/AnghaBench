@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct catinfo {int /*<<< orphan*/  magic; int /*<<< orphan*/  file; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  struct catinfo* HCATINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CATINFO_MAGIC ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct catinfo* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct catinfo* INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+
+
+struct catinfo {int magic; int file; } ;
+typedef int WCHAR ;
+typedef struct catinfo* HCATINFO ;
+
+
+ int CATINFO_MAGIC ;
+ int ERROR_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ struct catinfo* HeapAlloc (int ,int ,int) ;
+ struct catinfo* INVALID_HANDLE_VALUE ;
+ int SetLastError (int ) ;
+ int strcpyW (int ,int const*) ;
 
 __attribute__((used)) static HCATINFO create_catinfo(const WCHAR *filename)
 {

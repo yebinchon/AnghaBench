@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__* compression_bytes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- TYPE_1__ Header ; 
- int NCOMPRESSION_METHODS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ compression_speed ; 
- scalar_t__ cur_offs ; 
- scalar_t__* encoded_bytes ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*,...) ; 
- scalar_t__ get_compression_bytes (int) ; 
- double get_utime (int /*<<< orphan*/ ) ; 
- double interpolative_percent ; 
- int /*<<< orphan*/  kprintf (char*,int,...) ; 
- int le_interpolative_ext ; 
- char* list_get_compression_method_description (int) ; 
- int /*<<< orphan*/  lists_encoded ; 
- scalar_t__* max_encoded_list_size ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- double percent (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  search_encode_lists (int*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- scalar_t__ word_index_offset ; 
+
+ int CLOCK_MONOTONIC ;
+ TYPE_1__ Header ;
+ int NCOMPRESSION_METHODS ;
+ int assert (int) ;
+ scalar_t__ compression_speed ;
+ scalar_t__ cur_offs ;
+ scalar_t__* encoded_bytes ;
+ int fprintf (int ,char*,char*,char*,...) ;
+ scalar_t__ get_compression_bytes (int) ;
+ double get_utime (int ) ;
+ double interpolative_percent ;
+ int kprintf (char*,int,...) ;
+ int le_interpolative_ext ;
+ char* list_get_compression_method_description (int) ;
+ int lists_encoded ;
+ scalar_t__* max_encoded_list_size ;
+ int memset (int*,int ,int) ;
+ double percent (scalar_t__,scalar_t__) ;
+ int search_encode_lists (int*,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ scalar_t__ word_index_offset ;
 
 void search_estimate_compression_method (int c[2]) {
   memset (c, 0, sizeof(int) * 2);

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  outb (int,int) ; 
+ int outb (int,int) ;
 
 __attribute__((used)) static void fatal(void)
 {
-#if defined(__i386__) || defined(__x86_64__)
+
     outb(0xcf9, 6);
-#else
-    while (true) {}
-#endif
+
+
+
 }

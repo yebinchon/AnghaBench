@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dm_deferred_set {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct dm_deferred_set*) ; 
+
+ int kfree (struct dm_deferred_set*) ;
 
 void dm_deferred_set_destroy(struct dm_deferred_set *ds)
 {
-	kfree(ds);
+ kfree(ds);
 }

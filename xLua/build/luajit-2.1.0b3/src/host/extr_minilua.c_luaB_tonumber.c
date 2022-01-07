@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
 
-/* Variables and functions */
- scalar_t__ isspace (unsigned char) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  luaL_checkany (int /*<<< orphan*/ *,int) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int luaL_optint (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_tonumber (int /*<<< orphan*/ *,int) ; 
- unsigned long strtoul (char const*,char**,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Number ;
+
+
+ scalar_t__ isspace (unsigned char) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_checkany (int *,int) ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_optint (int *,int,int) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int ) ;
+ int lua_tonumber (int *,int) ;
+ unsigned long strtoul (char const*,char**,int) ;
 
 __attribute__((used)) static int luaB_tonumber(lua_State*L){
 int base=luaL_optint(L,2,10);

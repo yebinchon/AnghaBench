@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {void* command_buffer; } ;
-typedef  scalar_t__ SCI_IO_REQUEST_HANDLE_T ;
-typedef  TYPE_1__ SCIC_SDS_REQUEST_T ;
+typedef scalar_t__ SCI_IO_REQUEST_HANDLE_T ;
+typedef TYPE_1__ SCIC_SDS_REQUEST_T ;
 
-/* Variables and functions */
+
 
 void * scic_stp_io_request_get_h2d_reg_address(
-   SCI_IO_REQUEST_HANDLE_T  scic_io_request
+   SCI_IO_REQUEST_HANDLE_T scic_io_request
 )
 {
    SCIC_SDS_REQUEST_T * this_request = (SCIC_SDS_REQUEST_T *)scic_io_request;

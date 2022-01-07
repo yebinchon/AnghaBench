@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int* h; int* hh; } ;
-typedef  TYPE_1__ MDC2_CTX ;
-typedef  int /*<<< orphan*/  DES_key_schedule ;
-typedef  int DES_LONG ;
+typedef TYPE_1__ MDC2_CTX ;
+typedef int DES_key_schedule ;
+typedef int DES_LONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DES_encrypt1 (int*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  DES_set_key_unchecked (int**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DES_set_odd_parity (int**) ; 
- int /*<<< orphan*/  c2l (unsigned char const*,int) ; 
- int /*<<< orphan*/  l2c (int,unsigned char*) ; 
+
+ int DES_encrypt1 (int*,int *,int) ;
+ int DES_set_key_unchecked (int**,int *) ;
+ int DES_set_odd_parity (int**) ;
+ int c2l (unsigned char const*,int) ;
+ int l2c (int,unsigned char*) ;
 
 __attribute__((used)) static void mdc2_body(MDC2_CTX *c, const unsigned char *in, size_t len)
 {

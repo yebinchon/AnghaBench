@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUriContainer ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IID_IUriContainer ; 
- int /*<<< orphan*/  IMoniker_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUriContainer_GetIUri (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUriContainer_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IUriContainer ;
+typedef int IUri ;
+typedef int IMoniker ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*) ;
+ int IID_IUriContainer ;
+ int IMoniker_QueryInterface (int *,int *,void**) ;
+ int IUriContainer_GetIUri (int *,int **) ;
+ int IUriContainer_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
 
 __attribute__((used)) static IUri *get_moniker_uri(IMoniker *mon)
 {
     IUriContainer *uri_container;
-    IUri *ret = NULL;
+    IUri *ret = ((void*)0);
     HRESULT hres;
 
     hres = IMoniker_QueryInterface(mon, &IID_IUriContainer, (void**)&uri_container);
@@ -35,7 +35,7 @@ __attribute__((used)) static IUri *get_moniker_uri(IMoniker *mon)
         hres = IUriContainer_GetIUri(uri_container, &ret);
         IUriContainer_Release(uri_container);
         if(FAILED(hres))
-            return NULL;
+            return ((void*)0);
     }else {
         FIXME("No IUriContainer\n");
     }

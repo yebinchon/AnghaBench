@@ -1,89 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct oxnas_hcd {int /*<<< orphan*/  clk; int /*<<< orphan*/  syscon; scalar_t__ use_phya; scalar_t__ use_pllb; int /*<<< orphan*/  rst_phyb; int /*<<< orphan*/  rst_phya; int /*<<< orphan*/  rst_host; int /*<<< orphan*/  phyref; int /*<<< orphan*/  refsrc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PLLB_DIV_CTRL_REGOFFSET ; 
- unsigned long PLLB_DIV_FRAC (int /*<<< orphan*/ ) ; 
- unsigned long PLLB_DIV_INT (int) ; 
- unsigned long REF300_DIV_FRAC (int /*<<< orphan*/ ) ; 
- unsigned long REF300_DIV_INT (int) ; 
- int /*<<< orphan*/  REF300_DIV_REGOFFSET ; 
- int /*<<< orphan*/  USBAMUX_DEVICE ; 
- int /*<<< orphan*/  USBHSPHY_CTRL_REGOFFSET ; 
- unsigned long USBHSPHY_TEST_ADD ; 
- unsigned long USBHSPHY_TEST_CLK ; 
- int USBHSPHY_TEST_DIN ; 
- unsigned long USB_CLK_INTERNAL ; 
- int /*<<< orphan*/  USB_CTRL_REGOFFSET ; 
- unsigned long USB_INT_CLK_PLLB ; 
- unsigned long USB_INT_CLK_REF300 ; 
- int /*<<< orphan*/  clk_prepare_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regmap_update_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regmap_write_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,unsigned long) ; 
- int /*<<< orphan*/  reset_control_reset (int /*<<< orphan*/ ) ; 
+
+
+
+struct oxnas_hcd {int clk; int syscon; scalar_t__ use_phya; scalar_t__ use_pllb; int rst_phyb; int rst_phya; int rst_host; int phyref; int refsrc; } ;
+
+
+ int PLLB_DIV_CTRL_REGOFFSET ;
+ unsigned long PLLB_DIV_FRAC (int ) ;
+ unsigned long PLLB_DIV_INT (int) ;
+ unsigned long REF300_DIV_FRAC (int ) ;
+ unsigned long REF300_DIV_INT (int) ;
+ int REF300_DIV_REGOFFSET ;
+ int USBAMUX_DEVICE ;
+ int USBHSPHY_CTRL_REGOFFSET ;
+ unsigned long USBHSPHY_TEST_ADD ;
+ unsigned long USBHSPHY_TEST_CLK ;
+ int USBHSPHY_TEST_DIN ;
+ unsigned long USB_CLK_INTERNAL ;
+ int USB_CTRL_REGOFFSET ;
+ unsigned long USB_INT_CLK_PLLB ;
+ unsigned long USB_INT_CLK_REF300 ;
+ int clk_prepare_enable (int ) ;
+ int regmap_update_bits (int ,int ,int ,int ) ;
+ int regmap_write_bits (int ,int ,int,unsigned long) ;
+ int reset_control_reset (int ) ;
 
 __attribute__((used)) static void start_oxnas_usb_ehci(struct oxnas_hcd *oxnas)
 {
-	if (oxnas->use_pllb) {
-		/* enable pllb */
-		clk_prepare_enable(oxnas->refsrc);
-		/* enable ref600 */
-		clk_prepare_enable(oxnas->phyref);
-		/* 600MHz pllb divider for 12MHz */
-		regmap_write_bits(oxnas->syscon, PLLB_DIV_CTRL_REGOFFSET, 0xffff, PLLB_DIV_INT(50) | PLLB_DIV_FRAC(0));
-	} else {
-		/* ref 300 divider for 12MHz */
-		regmap_write_bits(oxnas->syscon, REF300_DIV_REGOFFSET, 0xffff, REF300_DIV_INT(25) | REF300_DIV_FRAC(0));
-	}
+ if (oxnas->use_pllb) {
 
-	/* Ensure the USB block is properly reset */
-	reset_control_reset(oxnas->rst_host);
-	reset_control_reset(oxnas->rst_phya);
-	reset_control_reset(oxnas->rst_phyb);
+  clk_prepare_enable(oxnas->refsrc);
 
-	/* Force the high speed clock to be generated all the time, via serial
-	 programming of the USB HS PHY */
-	regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
-			  (2UL << USBHSPHY_TEST_ADD) |
-			  (0xe0UL << USBHSPHY_TEST_DIN));
+  clk_prepare_enable(oxnas->phyref);
 
-	regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
-			  (1UL << USBHSPHY_TEST_CLK) |
-			  (2UL << USBHSPHY_TEST_ADD) |
-			  (0xe0UL << USBHSPHY_TEST_DIN));
+  regmap_write_bits(oxnas->syscon, PLLB_DIV_CTRL_REGOFFSET, 0xffff, PLLB_DIV_INT(50) | PLLB_DIV_FRAC(0));
+ } else {
 
-	regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
-			  (0xfUL << USBHSPHY_TEST_ADD) |
-			  (0xaaUL << USBHSPHY_TEST_DIN));
+  regmap_write_bits(oxnas->syscon, REF300_DIV_REGOFFSET, 0xffff, REF300_DIV_INT(25) | REF300_DIV_FRAC(0));
+ }
 
-	regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
-			  (1UL << USBHSPHY_TEST_CLK) |
-			  (0xfUL << USBHSPHY_TEST_ADD) |
-			  (0xaaUL << USBHSPHY_TEST_DIN));
 
-	if (oxnas->use_pllb) /* use pllb clock */
-		regmap_write_bits(oxnas->syscon, USB_CTRL_REGOFFSET, 0xffff,
-				  USB_CLK_INTERNAL | USB_INT_CLK_PLLB);
-	else /* use ref300 derived clock */
-		regmap_write_bits(oxnas->syscon, USB_CTRL_REGOFFSET, 0xffff,
-				  USB_CLK_INTERNAL | USB_INT_CLK_REF300);
+ reset_control_reset(oxnas->rst_host);
+ reset_control_reset(oxnas->rst_phya);
+ reset_control_reset(oxnas->rst_phyb);
 
-	if (oxnas->use_phya) {
-		/* Configure USB PHYA as a host */
-		regmap_update_bits(oxnas->syscon, USB_CTRL_REGOFFSET, USBAMUX_DEVICE, 0);
-	}
 
-	/* Enable the clock to the USB block */
-	clk_prepare_enable(oxnas->clk);
+
+ regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
+     (2UL << USBHSPHY_TEST_ADD) |
+     (0xe0UL << USBHSPHY_TEST_DIN));
+
+ regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
+     (1UL << USBHSPHY_TEST_CLK) |
+     (2UL << USBHSPHY_TEST_ADD) |
+     (0xe0UL << USBHSPHY_TEST_DIN));
+
+ regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
+     (0xfUL << USBHSPHY_TEST_ADD) |
+     (0xaaUL << USBHSPHY_TEST_DIN));
+
+ regmap_write_bits(oxnas->syscon, USBHSPHY_CTRL_REGOFFSET, 0xffff,
+     (1UL << USBHSPHY_TEST_CLK) |
+     (0xfUL << USBHSPHY_TEST_ADD) |
+     (0xaaUL << USBHSPHY_TEST_DIN));
+
+ if (oxnas->use_pllb)
+  regmap_write_bits(oxnas->syscon, USB_CTRL_REGOFFSET, 0xffff,
+      USB_CLK_INTERNAL | USB_INT_CLK_PLLB);
+ else
+  regmap_write_bits(oxnas->syscon, USB_CTRL_REGOFFSET, 0xffff,
+      USB_CLK_INTERNAL | USB_INT_CLK_REF300);
+
+ if (oxnas->use_phya) {
+
+  regmap_update_bits(oxnas->syscon, USB_CTRL_REGOFFSET, USBAMUX_DEVICE, 0);
+ }
+
+
+ clk_prepare_enable(oxnas->clk);
 }

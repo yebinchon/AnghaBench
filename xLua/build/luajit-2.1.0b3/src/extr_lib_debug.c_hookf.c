@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/  currentline; scalar_t__ event; } ;
-typedef  TYPE_1__ lua_Debug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEY_HOOK ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_isfunction (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char const* const) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int currentline; scalar_t__ event; } ;
+typedef TYPE_1__ lua_Debug ;
+
+
+ int KEY_HOOK ;
+ int LUA_REGISTRYINDEX ;
+ int lua_call (int *,int,int ) ;
+ scalar_t__ lua_isfunction (int *,int) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_pushnil (int *) ;
+ int lua_pushstring (int *,char const* const) ;
+ int lua_rawget (int *,int ) ;
 
 __attribute__((used)) static void hookf(lua_State *L, lua_Debug *ar)
 {

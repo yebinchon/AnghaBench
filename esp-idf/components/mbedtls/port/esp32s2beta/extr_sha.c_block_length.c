@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int esp_sha_type ;
 
-/* Variables and functions */
-#define  SHA1 132 
-#define  SHA2_224 131 
-#define  SHA2_256 130 
-#define  SHA2_384 129 
-#define  SHA2_512 128 
 
+
+
+typedef int esp_sha_type ;
 __attribute__((used)) inline static size_t block_length(esp_sha_type type) {
     switch(type) {
-    case SHA1:
-    case SHA2_224:
-    case SHA2_256:
+    case 132:
+    case 131:
+    case 130:
         return 64;
-    case SHA2_384:
-    case SHA2_512:
+    case 129:
+    case 128:
         return 128;
     default:
         return 0;

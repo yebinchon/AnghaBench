@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
 
-/* Variables and functions */
- unsigned char FILL ; 
- unsigned char NONE ; 
- int RET_ILUNI ; 
- int /*<<< orphan*/  abort () ; 
- unsigned char* jamo_final ; 
- unsigned char* jamo_initial ; 
- unsigned char* jamo_medial ; 
- int johab_hangul_wctomb (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
+
+
+ unsigned char FILL ;
+ unsigned char NONE ;
+ int RET_ILUNI ;
+ int abort () ;
+ unsigned char* jamo_final ;
+ unsigned char* jamo_initial ;
+ unsigned char* jamo_medial ;
+ int johab_hangul_wctomb (int ,unsigned char*,int ,int) ;
 
 __attribute__((used)) static int johab_hangul_decompose (conv_t conv, ucs4_t* r, ucs4_t wc)
 {
@@ -34,8 +34,8 @@ __attribute__((used)) static int johab_hangul_decompose (conv_t conv, ucs4_t* r,
     unsigned char jamo3 = jamo_final[hangul & 31];
     if ((hangul >> 15) != 1) abort();
     if (jamo1 != NONE && jamo2 != NONE && jamo3 != NONE) {
-      /* They are not all three == FILL because that would correspond to
-         johab = 0x8441, which doesn't exist. */
+
+
       ucs4_t* p = r;
       if (jamo1 != FILL)
         *p++ = 0x3130 + jamo1;

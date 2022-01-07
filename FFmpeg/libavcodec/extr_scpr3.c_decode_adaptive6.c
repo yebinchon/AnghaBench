@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_6__ {int size; int* freqs; int* symbols; int fshift; int length; } ;
-typedef  TYPE_1__ PixelModel3 ;
+typedef TYPE_1__ PixelModel3 ;
 
-/* Variables and functions */
- int add_dec (TYPE_1__*,int,int,int) ; 
- int /*<<< orphan*/  grow_dec (TYPE_1__*) ; 
- int /*<<< orphan*/  incr_cntdec (TYPE_1__*,int) ; 
+
+ int add_dec (TYPE_1__*,int,int,int) ;
+ int grow_dec (TYPE_1__*) ;
+ int incr_cntdec (TYPE_1__*,int) ;
 
 __attribute__((used)) static int decode_adaptive6(PixelModel3 *m, uint32_t code, uint32_t *value,
                             uint16_t *a, uint16_t *b)

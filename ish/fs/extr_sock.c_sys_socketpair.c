@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct fd* unix_peer; } ;
 struct fd {TYPE_1__ socket; } ;
-typedef  int int_t ;
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  int /*<<< orphan*/  addr_t ;
+typedef int int_t ;
+typedef int dword_t ;
+typedef int addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,int,int,...) ; 
- int _EFAULT ; 
- int _EINVAL ; 
- int /*<<< orphan*/  close (int) ; 
- int errno_map () ; 
- struct fd* f_get (int) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  peer_lock ; 
- int sock_family_to_real (int /*<<< orphan*/ ) ; 
- int sock_fd_create (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sock_type_to_real (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int socketpair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  sys_close (int) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ user_put (int /*<<< orphan*/ ,int*) ; 
+
+ int STRACE (char*,int,int,...) ;
+ int _EFAULT ;
+ int _EINVAL ;
+ int close (int) ;
+ int errno_map () ;
+ struct fd* f_get (int) ;
+ int lock (int *) ;
+ int peer_lock ;
+ int sock_family_to_real (int ) ;
+ int sock_fd_create (int,int ,int ,int ) ;
+ int sock_type_to_real (int ,int ) ;
+ int socketpair (int ,int ,int ,int*) ;
+ int sys_close (int) ;
+ int unlock (int *) ;
+ scalar_t__ user_put (int ,int*) ;
 
 int_t sys_socketpair(dword_t domain, dword_t type, dword_t protocol, addr_t sockets_addr) {
     STRACE("socketpair(%d, %d, %d, 0x%x)", domain, type, protocol, sockets_addr);

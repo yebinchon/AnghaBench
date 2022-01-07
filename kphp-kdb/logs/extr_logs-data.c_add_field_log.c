@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_logs_add_field {int /*<<< orphan*/  text; } ;
-struct TYPE_5__ {int field_i; TYPE_1__* fields; int /*<<< orphan*/ * name; } ;
-struct TYPE_4__ {int type; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int MAX_TYPE ; 
- int /*<<< orphan*/  add_field (TYPE_2__*,char*,int) ; 
- char* buff ; 
- char* dl_pstr (char*,...) ; 
- int /*<<< orphan*/  dl_strhash (char*) ; 
- int get_type (char*) ; 
- int /*<<< orphan*/  is_name (char*) ; 
- int* map_ll_int_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  map_type_id ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*,int*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int t_string ; 
- int* ttt_size ; 
- TYPE_2__* types ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct lev_logs_add_field {int text; } ;
+struct TYPE_5__ {int field_i; TYPE_1__* fields; int * name; } ;
+struct TYPE_4__ {int type; int name; } ;
+
+
+ int MAX_TYPE ;
+ int add_field (TYPE_2__*,char*,int) ;
+ char* buff ;
+ char* dl_pstr (char*,...) ;
+ int dl_strhash (char*) ;
+ int get_type (char*) ;
+ int is_name (char*) ;
+ int* map_ll_int_get (int *,int ) ;
+ int map_type_id ;
+ int sscanf (char*,char*,int*,int*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int strcpy (char*,int ) ;
+ int t_string ;
+ int* ttt_size ;
+ TYPE_2__* types ;
 
 char *add_field_log (struct lev_logs_add_field *E) {
   strcpy (buff, E->text);
@@ -60,7 +60,7 @@ char *add_field_log (struct lev_logs_add_field *E) {
       return dl_pstr ("Type_id [%d] not in range [1;%d].", type_id, MAX_TYPE - 1);
     }
 
-    if (types[type_id].name == NULL) {
+    if (types[type_id].name == ((void*)0)) {
       return dl_pstr ("Type [%d] doesn't exist. You need to create it first.", type_id);
     }
   } else {
@@ -69,7 +69,7 @@ char *add_field_log (struct lev_logs_add_field *E) {
     }
 
     int *ptmp = map_ll_int_get (&map_type_id, dl_strhash (buff));
-    if (ptmp == NULL) {
+    if (ptmp == ((void*)0)) {
       return dl_pstr ("There is no type named [%s].", buff);
     }
 

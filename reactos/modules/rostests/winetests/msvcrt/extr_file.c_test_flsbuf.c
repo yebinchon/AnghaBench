@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* _base; int _cnt; int _bufsiz; } ;
-typedef  TYPE_1__ FILE ;
+typedef TYPE_1__ FILE ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int const*) ; 
- int EOF ; 
-#define  _IOFBF 129 
-#define  _IONBF 128 
- int _flsbuf (char,TYPE_1__*) ; 
- char* _tempnam (char*,char*) ; 
- int /*<<< orphan*/  fclose (TYPE_1__*) ; 
- int fgetc (TYPE_1__*) ; 
- TYPE_1__* fopen (char*,char*) ; 
- int /*<<< orphan*/  fputc (char,TYPE_1__*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  setbuf (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setvbuf (TYPE_1__*,int /*<<< orphan*/ *,int const,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int ARRAY_SIZE (int const*) ;
+ int EOF ;
+
+
+ int _flsbuf (char,TYPE_1__*) ;
+ char* _tempnam (char*,char*) ;
+ int fclose (TYPE_1__*) ;
+ int fgetc (TYPE_1__*) ;
+ TYPE_1__* fopen (char*,char*) ;
+ int fputc (char,TYPE_1__*) ;
+ int free (char*) ;
+ int ok (int,char*,...) ;
+ int setbuf (TYPE_1__*,int *) ;
+ int setvbuf (TYPE_1__*,int *,int const,int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void test_flsbuf( void )
 {
   char* tempf;
   FILE *tempfh;
-  int  c;
-  int  ret;
-  int  bufmode;
-  static const int bufmodes[] = {_IOFBF,_IONBF};
+  int c;
+  int ret;
+  int bufmode;
+  static const int bufmodes[] = {129,128};
 
   tempf=_tempnam(".","wne");
   for (bufmode=0; bufmode < ARRAY_SIZE(bufmodes); bufmode++)
   {
     tempfh = fopen(tempf,"wb");
-    setvbuf(tempfh,NULL,bufmodes[bufmode],2048);
+    setvbuf(tempfh,((void*)0),bufmodes[bufmode],2048);
     ret = _flsbuf(0,tempfh);
     ok(0 == ret, "_flsbuf(0,tempfh) with bufmode %x expected %x got %x\n",
                          bufmodes[bufmode], 0, ret);
@@ -73,20 +73,20 @@ __attribute__((used)) static void test_flsbuf( void )
   ok(EOF == ret, "_flsbuf(0,tempfh) on r/o file expected %x got %x\n", EOF, ret);
   fclose(tempfh);
 
-  /* See bug 17123, exposed by WinAVR's make */
+
   tempfh = fopen(tempf,"w");
   ok(tempfh->_cnt == 0, "_cnt on freshly opened file was %d\n", tempfh->_cnt);
-  setbuf(tempfh, NULL);
+  setbuf(tempfh, ((void*)0));
   ok(tempfh->_cnt == 0, "_cnt on unbuffered file was %d\n", tempfh->_cnt);
   ok(tempfh->_bufsiz == 2, "_bufsiz = %d\n", tempfh->_bufsiz);
-  /* Inlined putchar sets _cnt to -1.  Native seems to ignore the value... */
+
   tempfh->_cnt = 1234;
   ret = _flsbuf('Q',tempfh);
   ok('Q' == ret, "_flsbuf('Q',tempfh) expected %x got %x\n", 'Q', ret);
-  /* ... and reset it to zero */
+
   ok(tempfh->_cnt == 0, "after unbuf _flsbuf, _cnt was %d\n", tempfh->_cnt);
   fclose(tempfh);
-  /* And just for grins, make sure the file is correct */
+
   tempfh = fopen(tempf,"r");
   c = fgetc(tempfh);
   ok(c == 'Q', "first byte should be 'Q'\n");

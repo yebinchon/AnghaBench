@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  vc_keymap_toggle; int /*<<< orphan*/  vc_keymap; int /*<<< orphan*/  polkit_registry; } ;
-typedef  TYPE_1__ sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  TYPE_1__ Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int ENOMEM ; 
- int /*<<< orphan*/  SD_BUS_ERROR_FAILED ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int bus_verify_polkit_async (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* empty_to_null (char const*) ; 
- int /*<<< orphan*/  filename_is_valid (char const*) ; 
- scalar_t__ free_and_strdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  log_error_errno (int,char*) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_bus_emit_properties_changed (int /*<<< orphan*/ ,char*,char*,char*,char*,int /*<<< orphan*/ *) ; 
- int sd_bus_error_set_errnof (int /*<<< orphan*/ *,int,char*) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sd_bus_message_get_bus (TYPE_1__*) ; 
- int sd_bus_message_read (TYPE_1__*,char*,char const**,char const**,int*,int*) ; 
- int sd_bus_reply_method_return (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strempty (int /*<<< orphan*/ ) ; 
- scalar_t__ streq_ptr (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_is_safe (char const*) ; 
- int vconsole_convert_to_x11_and_emit (TYPE_1__*,TYPE_1__*) ; 
- int vconsole_read_data (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  vconsole_reload (int /*<<< orphan*/ ) ; 
- int vconsole_write_data (TYPE_1__*) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int vc_keymap_toggle; int vc_keymap; int polkit_registry; } ;
+typedef TYPE_1__ sd_bus_message ;
+typedef int sd_bus_error ;
+typedef TYPE_1__ Context ;
+
+
+ int CAP_SYS_ADMIN ;
+ int ENOMEM ;
+ int SD_BUS_ERROR_FAILED ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int UID_INVALID ;
+ int assert (TYPE_1__*) ;
+ int bus_verify_polkit_async (TYPE_1__*,int ,char*,int *,int,int ,int *,int *) ;
+ char* empty_to_null (char const*) ;
+ int filename_is_valid (char const*) ;
+ scalar_t__ free_and_strdup (int *,char const*) ;
+ int log_error_errno (int,char*) ;
+ int log_info (char*,int ,int ) ;
+ int sd_bus_emit_properties_changed (int ,char*,char*,char*,char*,int *) ;
+ int sd_bus_error_set_errnof (int *,int,char*) ;
+ int sd_bus_error_setf (int *,int ,char*) ;
+ int sd_bus_message_get_bus (TYPE_1__*) ;
+ int sd_bus_message_read (TYPE_1__*,char*,char const**,char const**,int*,int*) ;
+ int sd_bus_reply_method_return (TYPE_1__*,int *) ;
+ int strempty (int ) ;
+ scalar_t__ streq_ptr (char const*,int ) ;
+ int string_is_safe (char const*) ;
+ int vconsole_convert_to_x11_and_emit (TYPE_1__*,TYPE_1__*) ;
+ int vconsole_read_data (TYPE_1__*,TYPE_1__*) ;
+ int vconsole_reload (int ) ;
+ int vconsole_write_data (TYPE_1__*) ;
 
 __attribute__((used)) static int method_set_vc_keyboard(sd_bus_message *m, void *userdata, sd_bus_error *error) {
         Context *c = userdata;
@@ -66,7 +66,7 @@ __attribute__((used)) static int method_set_vc_keyboard(sd_bus_message *m, void 
 
         if (streq_ptr(keymap, c->vc_keymap) &&
             streq_ptr(keymap_toggle, c->vc_keymap_toggle))
-                return sd_bus_reply_method_return(m, NULL);
+                return sd_bus_reply_method_return(m, ((void*)0));
 
         if ((keymap && (!filename_is_valid(keymap) || !string_is_safe(keymap))) ||
             (keymap_toggle && (!filename_is_valid(keymap_toggle) || !string_is_safe(keymap_toggle))))
@@ -76,7 +76,7 @@ __attribute__((used)) static int method_set_vc_keyboard(sd_bus_message *m, void 
                         m,
                         CAP_SYS_ADMIN,
                         "org.freedesktop.locale1.set-keyboard",
-                        NULL,
+                        ((void*)0),
                         interactive,
                         UID_INVALID,
                         &c->polkit_registry,
@@ -84,7 +84,7 @@ __attribute__((used)) static int method_set_vc_keyboard(sd_bus_message *m, void 
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* No authorization for now, but the async polkit stuff will call us again when it has it */
+                return 1;
 
         if (free_and_strdup(&c->vc_keymap, keymap) < 0 ||
             free_and_strdup(&c->vc_keymap_toggle, keymap_toggle) < 0)
@@ -105,7 +105,7 @@ __attribute__((used)) static int method_set_vc_keyboard(sd_bus_message *m, void 
                         sd_bus_message_get_bus(m),
                         "/org/freedesktop/locale1",
                         "org.freedesktop.locale1",
-                        "VConsoleKeymap", "VConsoleKeymapToggle", NULL);
+                        "VConsoleKeymap", "VConsoleKeymapToggle", ((void*)0));
 
         if (convert) {
                 r = vconsole_convert_to_x11_and_emit(c, m);
@@ -113,5 +113,5 @@ __attribute__((used)) static int method_set_vc_keyboard(sd_bus_message *m, void 
                         log_error_errno(r, "Failed to convert keymap data: %m");
         }
 
-        return sd_bus_reply_method_return(m, NULL);
+        return sd_bus_reply_method_return(m, ((void*)0));
 }

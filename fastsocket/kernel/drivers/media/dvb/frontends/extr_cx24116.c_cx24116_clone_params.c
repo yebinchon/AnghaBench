@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dvb_frontend {struct cx24116_state* demodulator_priv; } ;
-struct cx24116_state {int /*<<< orphan*/  dnxt; int /*<<< orphan*/  dcur; } ;
+struct cx24116_state {int dnxt; int dcur; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static void cx24116_clone_params(struct dvb_frontend *fe)
 {
-	struct cx24116_state *state = fe->demodulator_priv;
-	memcpy(&state->dcur, &state->dnxt, sizeof(state->dcur));
+ struct cx24116_state *state = fe->demodulator_priv;
+ memcpy(&state->dcur, &state->dnxt, sizeof(state->dcur));
 }

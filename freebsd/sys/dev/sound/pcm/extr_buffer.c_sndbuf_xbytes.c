@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_dbuf {int dummy; } ;
 
-/* Variables and functions */
- unsigned int snd_xbytes (unsigned int,int,int) ; 
- int sndbuf_getalign (struct snd_dbuf*) ; 
- int sndbuf_getspd (struct snd_dbuf*) ; 
+
+ unsigned int snd_xbytes (unsigned int,int,int) ;
+ int sndbuf_getalign (struct snd_dbuf*) ;
+ int sndbuf_getspd (struct snd_dbuf*) ;
 
 unsigned int
 sndbuf_xbytes(unsigned int v, struct snd_dbuf *from, struct snd_dbuf *to)
 {
-	if (from == NULL || to == NULL || v == 0)
-		return 0;
+ if (from == ((void*)0) || to == ((void*)0) || v == 0)
+  return 0;
 
-	return snd_xbytes(v, sndbuf_getalign(from) * sndbuf_getspd(from),
-	    sndbuf_getalign(to) * sndbuf_getspd(to));
+ return snd_xbytes(v, sndbuf_getalign(from) * sndbuf_getspd(from),
+     sndbuf_getalign(to) * sndbuf_getspd(to));
 }

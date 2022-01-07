@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* insts; int len; int sub; } ;
-typedef  TYPE_1__ ByteProg ;
+typedef TYPE_1__ ByteProg ;
 
-/* Variables and functions */
- int Any ; 
- int Bol ; 
- int Char ; 
- int Class ; 
- int ClassNot ; 
- int /*<<< orphan*/  EMIT (int,char const) ; 
- int Eol ; 
- int /*<<< orphan*/  INSERT_CODE (int,int,int) ; 
- int Jmp ; 
- int NamedClass ; 
- int PC ; 
- int REL (int,int) ; 
- int RSplit ; 
- int Save ; 
- int Split ; 
+
+ int Any ;
+ int Bol ;
+ int Char ;
+ int Class ;
+ int ClassNot ;
+ int EMIT (int,char const) ;
+ int Eol ;
+ int INSERT_CODE (int,int,int) ;
+ int Jmp ;
+ int NamedClass ;
+ int PC ;
+ int REL (int,int) ;
+ int RSplit ;
+ int Save ;
+ int Split ;
 
 __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *prog, int sizecode)
 {
-    char *code = sizecode ? NULL : prog->insts;
+    char *code = sizecode ? ((void*)0) : prog->insts;
     int start = PC;
     int term = PC;
     int alt_label = 0;
@@ -42,7 +42,7 @@ __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *
         switch (*re) {
         case '\\':
             re++;
-            if (!*re) return NULL; // Trailing backslash
+            if (!*re) return ((void*)0);
             if ((*re | 0x20) == 'd' || (*re | 0x20) == 's' || (*re | 0x20) == 'w') {
                 term = PC;
                 EMIT(PC++, NamedClass);
@@ -71,13 +71,13 @@ __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *
             } else {
                 EMIT(PC++, Class);
             }
-            PC++; // Skip # of pair byte
+            PC++;
             prog->len++;
             for (cnt = 0; *re != ']'; re++, cnt++) {
                 if (*re == '\\') {
                     ++re;
                 }
-                if (!*re) return NULL;
+                if (!*re) return ((void*)0);
                 EMIT(PC++, *re);
                 if (re[1] == '-' && re[2] != ']') {
                     re += 2;
@@ -102,7 +102,7 @@ __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *
             }
 
             re = _compilecode(re + 1, prog, sizecode);
-            if (re == NULL || *re != ')') return NULL; // error, or no matching paren
+            if (re == ((void*)0) || *re != ')') return ((void*)0);
 
             if (capture) {
                 EMIT(PC++, Save);
@@ -113,7 +113,7 @@ __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *
             break;
         }
         case '?':
-            if (PC == term) return NULL; // nothing to repeat
+            if (PC == term) return ((void*)0);
             INSERT_CODE(term, 2, PC);
             if (re[1] == '?') {
                 EMIT(term, RSplit);
@@ -126,7 +126,7 @@ __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *
             term = PC;
             break;
         case '*':
-            if (PC == term) return NULL; // nothing to repeat
+            if (PC == term) return ((void*)0);
             INSERT_CODE(term, 2, PC);
             EMIT(PC, Jmp);
             EMIT(PC + 1, REL(PC, term));
@@ -142,7 +142,7 @@ __attribute__((used)) static const char *_compilecode(const char *re, ByteProg *
             term = PC;
             break;
         case '+':
-            if (PC == term) return NULL; // nothing to repeat
+            if (PC == term) return ((void*)0);
             if (re[1] == '?') {
                 EMIT(PC, Split);
                 re++;

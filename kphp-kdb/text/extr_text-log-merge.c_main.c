@@ -1,54 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int O_APPEND ; 
- int O_CREAT ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fdatasync (int) ; 
- int /*<<< orphan*/  flush_out () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int getopt (int,char**,char*) ; 
- int idx_fd ; 
- char* idx_fname ; 
- void* idx_size ; 
- int /*<<< orphan*/  load_index_header (int,void*) ; 
- void* lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* open (char*,int,...) ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_stats () ; 
- int /*<<< orphan*/  prepare_read () ; 
- scalar_t__ process_record () ; 
- char* progname ; 
- int rend ; 
- int rptr ; 
- scalar_t__ src_fd ; 
- char* src_fname ; 
- int /*<<< orphan*/  stderr ; 
- int targ_fd ; 
- char* targ_fname ; 
- scalar_t__ targ_orig_size ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int assert (int) ;
+ scalar_t__ change_user (char*) ;
+ int close (int) ;
+ int exit (int) ;
+ scalar_t__ fdatasync (int) ;
+ int flush_out () ;
+ int fprintf (int ,char*,char*) ;
+ int getopt (int,char**,char*) ;
+ int idx_fd ;
+ char* idx_fname ;
+ void* idx_size ;
+ int load_index_header (int,void*) ;
+ void* lseek (int,int ,int ) ;
+ void* open (char*,int,...) ;
+ char* optarg ;
+ int optind ;
+ int output_stats () ;
+ int prepare_read () ;
+ scalar_t__ process_record () ;
+ char* progname ;
+ int rend ;
+ int rptr ;
+ scalar_t__ src_fd ;
+ char* src_fname ;
+ int stderr ;
+ int targ_fd ;
+ char* targ_fname ;
+ scalar_t__ targ_orig_size ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  event; int /*<<< orphan*/  bus; int /*<<< orphan*/  polkit_registry; int /*<<< orphan*/  image_cache_defer_event; int /*<<< orphan*/  image_cache; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  bus_verify_polkit_async_registry_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_bus_flush_close_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int event; int bus; int polkit_registry; int image_cache_defer_event; int image_cache; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int assert (TYPE_1__*) ;
+ int bus_verify_polkit_async_registry_free (int ) ;
+ int hashmap_free (int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int sd_bus_flush_close_unref (int ) ;
+ int sd_event_source_unref (int ) ;
+ int sd_event_unref (int ) ;
 
 __attribute__((used)) static Manager* manager_unref(Manager *m) {
         assert(m);

@@ -1,63 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
 
-/* Variables and functions */
-#define  CIM_BOOLEAN 137 
- int CIM_ILLEGAL ; 
-#define  CIM_SINT16 136 
-#define  CIM_SINT32 135 
-#define  CIM_SINT64 134 
-#define  CIM_SINT8 133 
-#define  CIM_STRING 132 
-#define  CIM_UINT16 131 
-#define  CIM_UINT32 130 
-#define  CIM_UINT64 129 
-#define  CIM_UINT8 128 
 
+
+
+typedef int UINT ;
+
+
+
+ int CIM_ILLEGAL ;
 __attribute__((used)) static UINT resolve_type( UINT left, UINT right )
 {
     switch (left)
     {
-    case CIM_SINT8:
-    case CIM_SINT16:
-    case CIM_SINT32:
-    case CIM_SINT64:
-    case CIM_UINT8:
-    case CIM_UINT16:
-    case CIM_UINT32:
-    case CIM_UINT64:
+    case 133:
+    case 136:
+    case 135:
+    case 134:
+    case 128:
+    case 131:
+    case 130:
+    case 129:
         switch (right)
         {
-            case CIM_SINT8:
-            case CIM_SINT16:
-            case CIM_SINT32:
-            case CIM_SINT64:
-            case CIM_UINT8:
-            case CIM_UINT16:
-            case CIM_UINT32:
-            case CIM_UINT64:
-                return CIM_UINT64;
+            case 133:
+            case 136:
+            case 135:
+            case 134:
+            case 128:
+            case 131:
+            case 130:
+            case 129:
+                return 129;
             default: break;
         }
         break;
 
-    case CIM_STRING:
-        if (right == CIM_STRING) return CIM_STRING;
+    case 132:
+        if (right == 132) return 132;
         break;
 
-    case CIM_BOOLEAN:
-        if (right == CIM_BOOLEAN) return CIM_BOOLEAN;
+    case 137:
+        if (right == 137) return 137;
         break;
 
     default:

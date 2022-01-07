@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_11__ {int startIndex; scalar_t__ length; } ;
-struct TYPE_12__ {int /*<<< orphan*/  bits; TYPE_2__ src; } ;
+struct TYPE_12__ {int bits; TYPE_2__ src; } ;
 struct TYPE_14__ {int length; scalar_t__ sense; TYPE_3__ u; scalar_t__ converted; } ;
-struct TYPE_13__ {TYPE_1__* regexp; scalar_t__ ok; int /*<<< orphan*/  cx; } ;
+struct TYPE_13__ {TYPE_1__* regexp; scalar_t__ ok; int cx; } ;
 struct TYPE_10__ {int source_len; char* source; int flags; } ;
-typedef  TYPE_4__ REGlobalData ;
-typedef  TYPE_5__ RECharSet ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_4__ REGlobalData ;
+typedef TYPE_5__ RECharSet ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddCharacterRangeToCharSet (TYPE_5__*,char,char) ; 
- int /*<<< orphan*/  AddCharacterToCharSet (TYPE_5__*,char) ; 
- scalar_t__ FALSE ; 
- int JS7_UNDEC (char) ; 
- int /*<<< orphan*/  JS_ISWORD (char const) ; 
- int /*<<< orphan*/  JS_ReportOutOfMemory (int /*<<< orphan*/ ) ; 
- int REG_FOLD ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  heap_alloc (int) ; 
- int /*<<< orphan*/  isASCIIHexDigit (char,int*) ; 
- int /*<<< orphan*/  iswspace (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- char towlower (char) ; 
- char towupper (char) ; 
+
+ int AddCharacterRangeToCharSet (TYPE_5__*,char,char) ;
+ int AddCharacterToCharSet (TYPE_5__*,char) ;
+ scalar_t__ FALSE ;
+ int JS7_UNDEC (char) ;
+ int JS_ISWORD (char const) ;
+ int JS_ReportOutOfMemory (int ) ;
+ int REG_FOLD ;
+ scalar_t__ TRUE ;
+ int assert (int) ;
+ int heap_alloc (int) ;
+ int isASCIIHexDigit (char,int*) ;
+ int iswspace (int) ;
+ int memset (int ,int ,int) ;
+ char towlower (char) ;
+ char towupper (char) ;
 
 __attribute__((used)) static BOOL
 ProcessCharSet(REGlobalData *gData, RECharSet *charSet)
@@ -55,10 +55,10 @@ ProcessCharSet(REGlobalData *gData, RECharSet *charSet)
     INT nDigits, i;
 
     assert(!charSet->converted);
-    /*
-     * Assert that startIndex and length points to chars inside [] inside
-     * source string.
-     */
+
+
+
+
     assert(1 <= charSet->u.src.startIndex);
     assert(charSet->u.src.startIndex < gData->regexp->source_len);
     assert(charSet->u.src.length <= gData->regexp->source_len
@@ -133,10 +133,10 @@ ProcessCharSet(REGlobalData *gData, RECharSet *charSet)
                     UINT digit;
                     c = *src++;
                     if (!isASCIIHexDigit(c, &digit)) {
-                        /*
-                         * Back off to accepting the original '\'
-                         * as a literal
-                         */
+
+
+
+
                         src -= i + 1;
                         n = '\\';
                         break;
@@ -153,11 +153,11 @@ ProcessCharSet(REGlobalData *gData, RECharSet *charSet)
               case '5':
               case '6':
               case '7':
-                /*
-                 *  This is a non-ECMA extension - decimal escapes (in this
-                 *  case, octal!) are supposed to be an error inside class
-                 *  ranges, but supported here for backwards compatibility.
-                 */
+
+
+
+
+
                 n = JS7_UNDEC(c);
                 c = *src;
                 if ('0' <= c && c <= '7') {
@@ -178,7 +178,7 @@ ProcessCharSet(REGlobalData *gData, RECharSet *charSet)
 
               case 'd':
                 AddCharacterRangeToCharSet(charSet, '0', '9');
-                continue;   /* don't need range processing */
+                continue;
               case 'D':
                 AddCharacterRangeToCharSet(charSet, 0, '0' - 1);
                 AddCharacterRangeToCharSet(charSet,

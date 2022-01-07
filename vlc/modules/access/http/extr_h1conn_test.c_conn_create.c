@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_tls_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PF_LOCAL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * conn ; 
- int /*<<< orphan*/ * external_tls ; 
- int /*<<< orphan*/ * vlc_h1_conn_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ vlc_tls_SocketPair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int vlc_tls_t ;
+
+
+ int PF_LOCAL ;
+ int assert (int) ;
+ int * conn ;
+ int * external_tls ;
+ int * vlc_h1_conn_create (int *,int *,int) ;
+ scalar_t__ vlc_tls_SocketPair (int ,int ,int **) ;
 
 __attribute__((used)) static void conn_create(void)
 {
@@ -29,6 +29,6 @@ __attribute__((used)) static void conn_create(void)
 
     external_tls = tlsv[0];
 
-    conn = vlc_h1_conn_create(NULL, tlsv[1], false);
-    assert(conn != NULL);
+    conn = vlc_h1_conn_create(((void*)0), tlsv[1], 0);
+    assert(conn != ((void*)0));
 }

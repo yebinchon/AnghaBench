@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct TYPE_2__ {int /*<<< orphan*/  (* expand_decl ) (int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- scalar_t__ DECL_EXTERNAL (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_HARD_REGISTER (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_HAS_VALUE_EXPR_P (int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_RTL_SET_P (int /*<<< orphan*/ ) ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ TREE_STATIC (int /*<<< orphan*/ ) ; 
- scalar_t__ TREE_TYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ VAR_DECL ; 
- int /*<<< orphan*/  add_stack_var (int /*<<< orphan*/ ) ; 
- scalar_t__ defer_stack_allocation (int /*<<< orphan*/ ,int) ; 
- scalar_t__ error_mark_node ; 
- int /*<<< orphan*/  expand_one_error_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_one_hard_reg_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_one_register_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_one_stack_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expand_one_static_var (int /*<<< orphan*/ ) ; 
- TYPE_1__ lang_hooks ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- scalar_t__ use_register_for_decl (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
+struct TYPE_2__ {int (* expand_decl ) (int ) ;} ;
+
+
+ scalar_t__ DECL_EXTERNAL (int ) ;
+ scalar_t__ DECL_HARD_REGISTER (int ) ;
+ scalar_t__ DECL_HAS_VALUE_EXPR_P (int ) ;
+ scalar_t__ DECL_RTL_SET_P (int ) ;
+ scalar_t__ TREE_CODE (int ) ;
+ scalar_t__ TREE_STATIC (int ) ;
+ scalar_t__ TREE_TYPE (int ) ;
+ scalar_t__ VAR_DECL ;
+ int add_stack_var (int ) ;
+ scalar_t__ defer_stack_allocation (int ,int) ;
+ scalar_t__ error_mark_node ;
+ int expand_one_error_var (int ) ;
+ int expand_one_hard_reg_var (int ) ;
+ int expand_one_register_var (int ) ;
+ int expand_one_stack_var (int ) ;
+ int expand_one_static_var (int ) ;
+ TYPE_1__ lang_hooks ;
+ int stub1 (int ) ;
+ scalar_t__ use_register_for_decl (int ) ;
 
 __attribute__((used)) static void
 expand_one_var (tree var, bool toplevel)

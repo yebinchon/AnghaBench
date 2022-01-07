@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct TYPE_16__ {int ifindex; char const* ifname; scalar_t__ kind; } ;
-typedef  TYPE_1__ sd_netlink_message ;
-typedef  TYPE_1__ NetDev ;
+typedef TYPE_1__ sd_netlink_message ;
+typedef TYPE_1__ NetDev ;
 
-/* Variables and functions */
- int EEXIST ; 
- int EINVAL ; 
- int /*<<< orphan*/  IFLA_IFNAME ; 
- int /*<<< orphan*/  IFLA_INFO_KIND ; 
- int /*<<< orphan*/  IFLA_LINKINFO ; 
- scalar_t__ NETDEV_KIND_TAP ; 
- scalar_t__ RTM_NEWLINK ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  log_netdev_debug (TYPE_1__*,char*,int) ; 
- int /*<<< orphan*/  log_netdev_error (TYPE_1__*,char*,...) ; 
- int log_netdev_error_errno (TYPE_1__*,int,char*) ; 
- int /*<<< orphan*/  netdev_enter_failed (TYPE_1__*) ; 
- int /*<<< orphan*/  netdev_enter_ready (TYPE_1__*) ; 
- char* netdev_kind_to_string (scalar_t__) ; 
- int sd_netlink_message_enter_container (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int sd_netlink_message_exit_container (TYPE_1__*) ; 
- int sd_netlink_message_get_type (TYPE_1__*,scalar_t__*) ; 
- int sd_netlink_message_read_string (TYPE_1__*,int /*<<< orphan*/ ,char const**) ; 
- int sd_rtnl_message_link_get_ifindex (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  streq (char const*,char const*) ; 
+
+ int EEXIST ;
+ int EINVAL ;
+ int IFLA_IFNAME ;
+ int IFLA_INFO_KIND ;
+ int IFLA_LINKINFO ;
+ scalar_t__ NETDEV_KIND_TAP ;
+ scalar_t__ RTM_NEWLINK ;
+ int assert (TYPE_1__*) ;
+ int log_netdev_debug (TYPE_1__*,char*,int) ;
+ int log_netdev_error (TYPE_1__*,char*,...) ;
+ int log_netdev_error_errno (TYPE_1__*,int,char*) ;
+ int netdev_enter_failed (TYPE_1__*) ;
+ int netdev_enter_ready (TYPE_1__*) ;
+ char* netdev_kind_to_string (scalar_t__) ;
+ int sd_netlink_message_enter_container (TYPE_1__*,int ) ;
+ int sd_netlink_message_exit_container (TYPE_1__*) ;
+ int sd_netlink_message_get_type (TYPE_1__*,scalar_t__*) ;
+ int sd_netlink_message_read_string (TYPE_1__*,int ,char const**) ;
+ int sd_rtnl_message_link_get_ifindex (TYPE_1__*,int*) ;
+ int streq (char const*,char const*) ;
 
 int netdev_set_ifindex(NetDev *netdev, sd_netlink_message *message) {
         uint16_t type;
@@ -75,7 +75,7 @@ int netdev_set_ifindex(NetDev *netdev, sd_netlink_message *message) {
                         netdev_enter_failed(netdev);
                         return -EEXIST;
                 } else
-                        /* ifindex already set to the same for this netdev */
+
                         return 0;
         }
 
@@ -102,7 +102,7 @@ int netdev_set_ifindex(NetDev *netdev, sd_netlink_message *message) {
                 return log_netdev_error_errno(netdev, r, "Could not exit container: %m");
 
         if (netdev->kind == NETDEV_KIND_TAP)
-                /* the kernel does not distinguish between tun and tap */
+
                 kind = "tun";
         else {
                 kind = netdev_kind_to_string(netdev->kind);

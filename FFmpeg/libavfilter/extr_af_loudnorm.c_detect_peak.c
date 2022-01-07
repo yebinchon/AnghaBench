@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {double* limiter_buf; double target_tp; int limiter_buf_index; int limiter_buf_size; scalar_t__ frame_type; double* prev_smp; int peak_index; } ;
-typedef  TYPE_1__ LoudNormContext ;
+typedef TYPE_1__ LoudNormContext ;
 
-/* Variables and functions */
- scalar_t__ FIRST_FRAME ; 
- double fabs (double) ; 
+
+ scalar_t__ FIRST_FRAME ;
+ double fabs (double) ;
 
 __attribute__((used)) static void detect_peak(LoudNormContext *s, int offset, int nb_samples, int channels, int *peak_delta, double *peak_value)
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsIDOMNode ;
-typedef  int UINT16 ;
-struct TYPE_11__ {int /*<<< orphan*/ * vtbl; } ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int nsIDOMNode ;
+typedef int UINT16 ;
+struct TYPE_11__ {int * vtbl; } ;
 struct TYPE_10__ {TYPE_2__ node; } ;
-typedef  TYPE_1__ HTMLElement ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
-typedef  TYPE_2__ HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ HTMLElement ;
+typedef int HTMLDocumentNode ;
+typedef TYPE_2__ HTMLDOMNode ;
+typedef int HRESULT ;
 
-/* Variables and functions */
-#define  ATTRIBUTE_NODE 132 
-#define  COMMENT_NODE 131 
-#define  DOCUMENT_TYPE_NODE 130 
-#define  ELEMENT_NODE 129 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HTMLCommentElement_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__**) ; 
- int /*<<< orphan*/  HTMLDOMNodeImplVtbl ; 
- int /*<<< orphan*/  HTMLDOMNode_Init (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HTMLDOMTextNode_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__**) ; 
- int /*<<< orphan*/  HTMLElement_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  S_OK ; 
-#define  TEXT_NODE 128 
- int /*<<< orphan*/  TRACE (char*,int,TYPE_2__*) ; 
- TYPE_2__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  nsIDOMNode_GetNodeType (int /*<<< orphan*/ *,int*) ; 
+
+
+
+
+
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int E_UNEXPECTED ;
+ int FAILED (int ) ;
+ int FALSE ;
+ int HTMLCommentElement_Create (int *,int *,TYPE_1__**) ;
+ int HTMLDOMNodeImplVtbl ;
+ int HTMLDOMNode_Init (int *,TYPE_2__*,int *) ;
+ int HTMLDOMTextNode_Create (int *,int *,TYPE_2__**) ;
+ int HTMLElement_Create (int *,int *,int ,TYPE_1__**) ;
+ int S_OK ;
+
+ int TRACE (char*,int,TYPE_2__*) ;
+ TYPE_2__* heap_alloc_zero (int) ;
+ int nsIDOMNode_GetNodeType (int *,int*) ;
 
 __attribute__((used)) static HRESULT create_node(HTMLDocumentNode *doc, nsIDOMNode *nsnode, HTMLDOMNode **ret)
 {
@@ -50,7 +50,7 @@ __attribute__((used)) static HRESULT create_node(HTMLDocumentNode *doc, nsIDOMNo
     nsIDOMNode_GetNodeType(nsnode, &node_type);
 
     switch(node_type) {
-    case ELEMENT_NODE: {
+    case 129: {
         HTMLElement *elem;
         hres = HTMLElement_Create(doc, nsnode, FALSE, &elem);
         if(FAILED(hres))
@@ -58,14 +58,14 @@ __attribute__((used)) static HRESULT create_node(HTMLDocumentNode *doc, nsIDOMNo
         *ret = &elem->node;
         break;
     }
-    case TEXT_NODE:
+    case 128:
         hres = HTMLDOMTextNode_Create(doc, nsnode, ret);
         if(FAILED(hres))
             return hres;
         break;
-    /* doctype nodes are represented as comment nodes (at least in quirks mode) */
-    case DOCUMENT_TYPE_NODE:
-    case COMMENT_NODE: {
+
+    case 130:
+    case 131: {
         HTMLElement *comment;
         hres = HTMLCommentElement_Create(doc, nsnode, &comment);
         if(FAILED(hres))
@@ -73,7 +73,7 @@ __attribute__((used)) static HRESULT create_node(HTMLDocumentNode *doc, nsIDOMNo
         *ret = &comment->node;
         break;
     }
-    case ATTRIBUTE_NODE:
+    case 132:
         ERR("Called on attribute node\n");
         return E_UNEXPECTED;
     default: {

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int count_lhs; unsigned char protid; int count_rhs; int /*<<< orphan*/  port; } ;
-typedef  TYPE_2__ twr_tcp_floor_t ;
-struct TYPE_6__ {int count_lhs; int count_rhs; int /*<<< orphan*/  ipv4addr; int /*<<< orphan*/  protid; } ;
-typedef  TYPE_3__ twr_ipv4_floor_t ;
-struct TYPE_4__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; } ;
-struct addrinfo {scalar_t__ ai_family; int /*<<< orphan*/ * ai_addr; int /*<<< orphan*/ * ai_next; int /*<<< orphan*/ * ai_canonname; scalar_t__ ai_addrlen; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AI_NUMERICHOST ; 
- int /*<<< orphan*/  EPM_PROTOCOL_IP ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- scalar_t__ PF_INET ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  TRACE (char*,unsigned char*,char const*,char const*) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- scalar_t__ gai_strerror (int) ; 
- int getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int count_lhs; unsigned char protid; int count_rhs; int port; } ;
+typedef TYPE_2__ twr_tcp_floor_t ;
+struct TYPE_6__ {int count_lhs; int count_rhs; int ipv4addr; int protid; } ;
+typedef TYPE_3__ twr_ipv4_floor_t ;
+struct TYPE_4__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; } ;
+struct addrinfo {scalar_t__ ai_family; int * ai_addr; int * ai_next; int * ai_canonname; scalar_t__ ai_addrlen; int ai_protocol; int ai_socktype; int ai_flags; } ;
+
+
+ int AI_NUMERICHOST ;
+ int EPM_PROTOCOL_IP ;
+ int ERR (char*,scalar_t__) ;
+ int IPPROTO_TCP ;
+ scalar_t__ PF_INET ;
+ int SOCK_STREAM ;
+ int TRACE (char*,unsigned char*,char const*,char const*) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ scalar_t__ gai_strerror (int) ;
+ int getaddrinfo (char const*,char const*,struct addrinfo*,struct addrinfo**) ;
 
 __attribute__((used)) static size_t rpcrt4_ip_tcp_get_top_of_tower(unsigned char *tower_data,
                                              const char *networkaddr,
@@ -63,15 +63,15 @@ __attribute__((used)) static size_t rpcrt4_ip_tcp_get_top_of_tower(unsigned char
     ipv4_floor->protid = EPM_PROTOCOL_IP;
     ipv4_floor->count_rhs = sizeof(ipv4_floor->ipv4addr);
 
-    hints.ai_flags          = AI_NUMERICHOST;
-    /* FIXME: only support IPv4 at the moment. how is IPv6 represented by the EPM? */
-    hints.ai_family         = PF_INET;
-    hints.ai_socktype       = SOCK_STREAM;
-    hints.ai_protocol       = IPPROTO_TCP;
-    hints.ai_addrlen        = 0;
-    hints.ai_addr           = NULL;
-    hints.ai_canonname      = NULL;
-    hints.ai_next           = NULL;
+    hints.ai_flags = AI_NUMERICHOST;
+
+    hints.ai_family = PF_INET;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
+    hints.ai_addrlen = 0;
+    hints.ai_addr = ((void*)0);
+    hints.ai_canonname = ((void*)0);
+    hints.ai_next = ((void*)0);
 
     ret = getaddrinfo(networkaddr, endpoint, &hints, &ai);
     if (ret)

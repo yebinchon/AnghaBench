@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-struct TYPE_4__ {scalar_t__ max_total_in; scalar_t__ total_in; int /*<<< orphan*/  hmac; TYPE_1__ stream; } ;
-typedef  TYPE_2__ mz_stream_wzaes ;
-typedef  scalar_t__ int64_t ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_AES_FOOTER_SIZE ; 
- int /*<<< orphan*/  mz_crypt_hmac_update (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ mz_stream_read (int /*<<< orphan*/ ,void*,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_wzaes_ctr_encrypt (void*,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int base; } ;
+struct TYPE_4__ {scalar_t__ max_total_in; scalar_t__ total_in; int hmac; TYPE_1__ stream; } ;
+typedef TYPE_2__ mz_stream_wzaes ;
+typedef scalar_t__ int64_t ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_AES_FOOTER_SIZE ;
+ int mz_crypt_hmac_update (int ,int *,scalar_t__) ;
+ scalar_t__ mz_stream_read (int ,void*,scalar_t__) ;
+ int mz_stream_wzaes_ctr_encrypt (void*,int *,scalar_t__) ;
 
 int32_t mz_stream_wzaes_read(void *stream, void *buf, int32_t size)
 {

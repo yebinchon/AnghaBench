@@ -1,57 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  backtrace; } ;
-struct TYPE_7__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ StringInfoData ;
-typedef  TYPE_2__ ErrorData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  appendStringInfoString (TYPE_1__*,char*) ; 
- int backtrace (void**,int /*<<< orphan*/ ) ; 
- char** backtrace_symbols (void**,int) ; 
- int /*<<< orphan*/  free (char**) ; 
- int /*<<< orphan*/  initStringInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  lengthof (void**) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int backtrace; } ;
+struct TYPE_7__ {int data; } ;
+typedef TYPE_1__ StringInfoData ;
+typedef TYPE_2__ ErrorData ;
+
+
+ int appendStringInfo (TYPE_1__*,char*,char*) ;
+ int appendStringInfoString (TYPE_1__*,char*) ;
+ int backtrace (void**,int ) ;
+ char** backtrace_symbols (void**,int) ;
+ int free (char**) ;
+ int initStringInfo (TYPE_1__*) ;
+ int lengthof (void**) ;
 
 __attribute__((used)) static void
 set_backtrace(ErrorData *edata, int num_skip)
 {
-	StringInfoData errtrace;
+ StringInfoData errtrace;
 
-	initStringInfo(&errtrace);
+ initStringInfo(&errtrace);
+ appendStringInfoString(&errtrace,
+         "backtrace generation is not supported by this installation");
 
-#ifdef HAVE_BACKTRACE_SYMBOLS
-	{
-		void	   *buf[100];
-		int			nframes;
-		char	  **strfrms;
 
-		nframes = backtrace(buf, lengthof(buf));
-		strfrms = backtrace_symbols(buf, nframes);
-		if (strfrms == NULL)
-			return;
-
-		for (int i = num_skip; i < nframes; i++)
-			appendStringInfo(&errtrace, "\n%s", strfrms[i]);
-		free(strfrms);
-	}
-#else
-	appendStringInfoString(&errtrace,
-						   "backtrace generation is not supported by this installation");
-#endif
-
-	edata->backtrace = errtrace.data;
+ edata->backtrace = errtrace.data;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_texture_sub_resource {int locations; } ;
-struct wined3d_texture {int /*<<< orphan*/  sysmem_count; struct wined3d_texture_sub_resource* sub_resources; } ;
-typedef  int DWORD ;
+struct wined3d_texture {int sysmem_count; struct wined3d_texture_sub_resource* sub_resources; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,unsigned int,struct wined3d_texture*) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_texture*,...) ; 
- int WINED3D_LOCATION_SYSMEM ; 
- int WINED3D_LOCATION_TEXTURE_RGB ; 
- int WINED3D_LOCATION_TEXTURE_SRGB ; 
- int /*<<< orphan*/  wined3d_debug_location (int) ; 
- int /*<<< orphan*/  wined3d_texture_set_dirty (struct wined3d_texture*) ; 
+
+ int ERR (char*,unsigned int,struct wined3d_texture*) ;
+ int TRACE (char*,struct wined3d_texture*,...) ;
+ int WINED3D_LOCATION_SYSMEM ;
+ int WINED3D_LOCATION_TEXTURE_RGB ;
+ int WINED3D_LOCATION_TEXTURE_SRGB ;
+ int wined3d_debug_location (int) ;
+ int wined3d_texture_set_dirty (struct wined3d_texture*) ;
 
 void wined3d_texture_invalidate_location(struct wined3d_texture *texture,
         unsigned int sub_resource_idx, DWORD location)

@@ -1,79 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiWindow ;
-typedef  int /*<<< orphan*/  uiLabel ;
-typedef  int /*<<< orphan*/  uiButton ;
-typedef  int /*<<< orphan*/  uiBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * description ; 
- int /*<<< orphan*/  msgBox ; 
- int /*<<< orphan*/  msgBoxError ; 
- int /*<<< orphan*/ * newHorizontalBox () ; 
- int /*<<< orphan*/ * newVerticalBox () ; 
- int /*<<< orphan*/  openFile ; 
- int /*<<< orphan*/ * parent ; 
- int /*<<< orphan*/  saveFile ; 
- int /*<<< orphan*/ * title ; 
- int /*<<< orphan*/  uiBoxAppend (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uiButtonOnClicked (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiEntrySetText (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * uiNewButton (char*) ; 
- int /*<<< orphan*/ * uiNewEntry () ; 
+
+
+
+typedef int uiWindow ;
+typedef int uiLabel ;
+typedef int uiButton ;
+typedef int uiBox ;
+
+
+ int D (char*,int ) ;
+ int * description ;
+ int msgBox ;
+ int msgBoxError ;
+ int * newHorizontalBox () ;
+ int * newVerticalBox () ;
+ int openFile ;
+ int * parent ;
+ int saveFile ;
+ int * title ;
+ int uiBoxAppend (int *,int ,int ) ;
+ int uiButtonOnClicked (int *,int ,int *) ;
+ int uiControl (int *) ;
+ int uiEntrySetText (int *,char*) ;
+ int * uiNewButton (char*) ;
+ int * uiNewEntry () ;
 
 uiBox *makePage5(uiWindow *pw)
 {
-	uiBox *page5;
-	uiBox *hbox;
-	uiButton *button;
-	uiLabel *label;
+ uiBox *page5;
+ uiBox *hbox;
+ uiButton *button;
+ uiLabel *label;
 
-	parent = pw;
+ parent = pw;
 
-	page5 = newVerticalBox();
+ page5 = newVerticalBox();
+ hbox = newHorizontalBox(); button = uiNewButton("Open File"); label = uiNewLabel(""); uiButtonOnClicked(button, openFile, label); uiBoxAppend(hbox, uiControl(button), 0); uiBoxAppend(hbox, uiControl(label), 0); uiBoxAppend(page5, uiControl(hbox), 0);;
+ hbox = newHorizontalBox(); button = uiNewButton("Save File"); label = uiNewLabel(""); uiButtonOnClicked(button, saveFile, label); uiBoxAppend(hbox, uiControl(button), 0); uiBoxAppend(hbox, uiControl(label), 0); uiBoxAppend(page5, uiControl(hbox), 0);;
 
-#define D(n, f) \
-	hbox = newHorizontalBox(); \
-	button = uiNewButton(n); \
-	label = uiNewLabel(""); \
-	uiButtonOnClicked(button, f, label); \
-	uiBoxAppend(hbox, uiControl(button), 0); \
-	uiBoxAppend(hbox, uiControl(label), 0); \
-	uiBoxAppend(page5, uiControl(hbox), 0);
+ title = uiNewEntry();
+ uiEntrySetText(title, "Title");
+ description = uiNewEntry();
+ uiEntrySetText(description, "Description");
 
-	D("Open File", openFile);
-	D("Save File", saveFile);
+ hbox = newHorizontalBox();
+ button = uiNewButton("Message Box");
+ uiButtonOnClicked(button, msgBox, ((void*)0));
+ uiBoxAppend(hbox, uiControl(button), 0);
+ uiBoxAppend(hbox, uiControl(title), 0);
+ uiBoxAppend(page5, uiControl(hbox), 0);
 
-	title = uiNewEntry();
-	uiEntrySetText(title, "Title");
-	description = uiNewEntry();
-	uiEntrySetText(description, "Description");
+ hbox = newHorizontalBox();
+ button = uiNewButton("Error Box");
+ uiButtonOnClicked(button, msgBoxError, ((void*)0));
+ uiBoxAppend(hbox, uiControl(button), 0);
+ uiBoxAppend(hbox, uiControl(description), 0);
+ uiBoxAppend(page5, uiControl(hbox), 0);
 
-	hbox = newHorizontalBox();
-	button = uiNewButton("Message Box");
-	uiButtonOnClicked(button, msgBox, NULL);
-	uiBoxAppend(hbox, uiControl(button), 0);
-	uiBoxAppend(hbox, uiControl(title), 0);
-	uiBoxAppend(page5, uiControl(hbox), 0);
-
-	hbox = newHorizontalBox();
-	button = uiNewButton("Error Box");
-	uiButtonOnClicked(button, msgBoxError, NULL);
-	uiBoxAppend(hbox, uiControl(button), 0);
-	uiBoxAppend(hbox, uiControl(description), 0);
-	uiBoxAppend(page5, uiControl(hbox), 0);
-
-	return page5;
+ return page5;
 }

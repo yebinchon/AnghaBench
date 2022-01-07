@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {int entry_size; int /*<<< orphan*/  entry_name; struct mp_archive* mpa; int /*<<< orphan*/  src; } ;
-struct mp_archive {int /*<<< orphan*/  entry; int /*<<< orphan*/  locale; int /*<<< orphan*/  entry_filename; } ;
-struct TYPE_4__ {int /*<<< orphan*/  log; scalar_t__ pos; struct priv* priv; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int /*<<< orphan*/  locale_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ARCHIVE_FLAG_UNSAFE ; 
- int /*<<< orphan*/  MP_ERR (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int STREAM_ERROR ; 
- int STREAM_OK ; 
- int archive_entry_size (int /*<<< orphan*/ ) ; 
- scalar_t__ archive_entry_size_is_set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_archive_free (struct mp_archive*) ; 
- struct mp_archive* mp_archive_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mp_archive_next_entry (struct mp_archive*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uselocale (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct priv {int entry_size; int entry_name; struct mp_archive* mpa; int src; } ;
+struct mp_archive {int entry; int locale; int entry_filename; } ;
+struct TYPE_4__ {int log; scalar_t__ pos; struct priv* priv; } ;
+typedef TYPE_1__ stream_t ;
+typedef int locale_t ;
+
+
+ int MP_ARCHIVE_FLAG_UNSAFE ;
+ int MP_ERR (TYPE_1__*,char*,int ) ;
+ int STREAM_ERROR ;
+ int STREAM_OK ;
+ int archive_entry_size (int ) ;
+ scalar_t__ archive_entry_size_is_set (int ) ;
+ int mp_archive_free (struct mp_archive*) ;
+ struct mp_archive* mp_archive_new (int ,int ,int ) ;
+ scalar_t__ mp_archive_next_entry (struct mp_archive*) ;
+ scalar_t__ strcmp (int ,int ) ;
+ int uselocale (int ) ;
 
 __attribute__((used)) static int reopen_archive(stream_t *s)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static int reopen_archive(stream_t *s)
     if (!p->mpa)
         return STREAM_ERROR;
 
-    // Follows the same logic as demux_libarchive.c.
+
     struct mp_archive *mpa = p->mpa;
     while (mp_archive_next_entry(mpa)) {
         if (strcmp(p->entry_name, mpa->entry_filename) == 0) {
@@ -53,7 +53,7 @@ __attribute__((used)) static int reopen_archive(stream_t *s)
     }
 
     mp_archive_free(p->mpa);
-    p->mpa = NULL;
+    p->mpa = ((void*)0);
     MP_ERR(s, "archive entry not found. '%s'\n", p->entry_name);
     return STREAM_ERROR;
 }

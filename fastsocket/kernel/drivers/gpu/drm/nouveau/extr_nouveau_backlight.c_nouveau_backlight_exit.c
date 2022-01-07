@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nouveau_drm {int /*<<< orphan*/ * backlight; } ;
+
+
+
+
+struct nouveau_drm {int * backlight; } ;
 struct drm_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  backlight_device_unregister (int /*<<< orphan*/ *) ; 
- struct nouveau_drm* nouveau_drm (struct drm_device*) ; 
+
+ int backlight_device_unregister (int *) ;
+ struct nouveau_drm* nouveau_drm (struct drm_device*) ;
 
 void
 nouveau_backlight_exit(struct drm_device *dev)
 {
-	struct nouveau_drm *drm = nouveau_drm(dev);
+ struct nouveau_drm *drm = nouveau_drm(dev);
 
-	if (drm->backlight) {
-		backlight_device_unregister(drm->backlight);
-		drm->backlight = NULL;
-	}
+ if (drm->backlight) {
+  backlight_device_unregister(drm->backlight);
+  drm->backlight = ((void*)0);
+ }
 }

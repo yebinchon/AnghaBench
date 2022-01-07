@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int user_t ;
 struct TYPE_3__ {int user_id; int first_local_id; } ;
 
-/* Variables and functions */
- TYPE_1__** User ; 
- int* UserMsgCnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int conv_uid (int) ; 
- int /*<<< orphan*/  discarded_rec ; 
- scalar_t__ ignore_delete_first_messages ; 
- int /*<<< orphan*/  tot_users ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+ TYPE_1__** User ;
+ int* UserMsgCnt ;
+ int assert (int) ;
+ int conv_uid (int) ;
+ int discarded_rec ;
+ scalar_t__ ignore_delete_first_messages ;
+ int tot_users ;
+ TYPE_1__* zmalloc0 (int) ;
 
 void delete_first_messages0 (int user_id, int first_local_id) {
   int uid = conv_uid (user_id);

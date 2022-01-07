@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JournalFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  journal_file_set_offline_internal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_self () ; 
- int /*<<< orphan*/  pthread_setname_np (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int JournalFile ;
+
+
+ int journal_file_set_offline_internal (int *) ;
+ int pthread_self () ;
+ int pthread_setname_np (int ,char*) ;
 
 __attribute__((used)) static void * journal_file_set_offline_thread(void *arg) {
         JournalFile *f = arg;
@@ -24,5 +24,5 @@ __attribute__((used)) static void * journal_file_set_offline_thread(void *arg) {
 
         journal_file_set_offline_internal(f);
 
-        return NULL;
+        return ((void*)0);
 }

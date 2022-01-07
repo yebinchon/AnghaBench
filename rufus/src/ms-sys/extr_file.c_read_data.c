@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_2__ {int _offset; int /*<<< orphan*/  _handle; } ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ FAKE_FD ;
 
-/* Variables and functions */
- int MAX_DATA_LEN ; 
- int /*<<< orphan*/  _mm_free (unsigned char*) ; 
- unsigned char* _mm_malloc (int,int) ; 
- int /*<<< orphan*/  memcpy (void*,unsigned char*,size_t) ; 
- scalar_t__ read_sectors (int /*<<< orphan*/ ,int,int,int,unsigned char*) ; 
- int ulBytesPerSector ; 
- int /*<<< orphan*/  uprintf (char*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_2__ {int _offset; int _handle; } ;
+typedef int HANDLE ;
+typedef int FILE ;
+typedef TYPE_1__ FAKE_FD ;
+
+
+ int MAX_DATA_LEN ;
+ int _mm_free (unsigned char*) ;
+ unsigned char* _mm_malloc (int,int) ;
+ int memcpy (void*,unsigned char*,size_t) ;
+ scalar_t__ read_sectors (int ,int,int,int,unsigned char*) ;
+ int ulBytesPerSector ;
+ int uprintf (char*) ;
 
 int read_data(FILE *fp, uint64_t Position,
               void *pData, uint64_t Len)
@@ -35,14 +35,14 @@ int read_data(FILE *fp, uint64_t Position,
    HANDLE hDrive = (HANDLE)fd->_handle;
    uint64_t StartSector, EndSector, NumSectors;
 
-   if (aucBuf == NULL)
+   if (aucBuf == ((void*)0))
       return 0;
 
    Position += fd->_offset;
 
    StartSector = Position/ulBytesPerSector;
-   EndSector   = (Position+Len+ulBytesPerSector -1)/ulBytesPerSector;
-   NumSectors  = (size_t)(EndSector - StartSector);
+   EndSector = (Position+Len+ulBytesPerSector -1)/ulBytesPerSector;
+   NumSectors = (size_t)(EndSector - StartSector);
 
    if((NumSectors*ulBytesPerSector) > MAX_DATA_LEN)
    {

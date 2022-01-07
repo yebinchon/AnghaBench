@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int width; int height; int /*<<< orphan*/  refreshRate; int /*<<< orphan*/  blueBits; int /*<<< orphan*/  greenBits; int /*<<< orphan*/  redBits; } ;
-typedef  scalar_t__ GLboolean ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  TYPE_1__ GLFWvidmode ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  GLFW_BLUE_BITS ; 
- int /*<<< orphan*/  GLFW_GREEN_BITS ; 
- int /*<<< orphan*/  GLFW_RED_BITS ; 
- int /*<<< orphan*/  GLFW_REFRESH_RATE ; 
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- scalar_t__ GL_FALSE ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_PROJECTION ; 
- scalar_t__ GL_TRUE ; 
- float cosf (float) ; 
- int /*<<< orphan*/  error_callback ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- double frame_rate ; 
- int /*<<< orphan*/  framebuffer_size_callback ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glMatrixMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glOrtho (float,float,float,float,float,float) ; 
- int /*<<< orphan*/  glRectf (float,float,float,float) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ glfwExtensionSupported (char*) ; 
- int /*<<< orphan*/ * glfwGetPrimaryMonitor () ; 
- double glfwGetTime () ; 
- TYPE_1__* glfwGetVideoMode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwInit () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwPollEvents () ; 
- int /*<<< orphan*/  glfwSetErrorCallback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapBuffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwWindowShouldClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  set_swap_interval (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int swap_tear ; 
- int /*<<< orphan*/  update_window_title (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int width; int height; int refreshRate; int blueBits; int greenBits; int redBits; } ;
+typedef scalar_t__ GLboolean ;
+typedef int GLFWwindow ;
+typedef TYPE_1__ GLFWvidmode ;
+typedef int GLFWmonitor ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int GLFW_BLUE_BITS ;
+ int GLFW_GREEN_BITS ;
+ int GLFW_RED_BITS ;
+ int GLFW_REFRESH_RATE ;
+ int GL_COLOR_BUFFER_BIT ;
+ scalar_t__ GL_FALSE ;
+ int GL_MODELVIEW ;
+ int GL_PROJECTION ;
+ scalar_t__ GL_TRUE ;
+ float cosf (float) ;
+ int error_callback ;
+ int exit (int ) ;
+ double frame_rate ;
+ int framebuffer_size_callback ;
+ int getopt (int,char**,char*) ;
+ int glClear (int ) ;
+ int glMatrixMode (int ) ;
+ int glOrtho (float,float,float,float,float,float) ;
+ int glRectf (float,float,float,float) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ scalar_t__ glfwExtensionSupported (char*) ;
+ int * glfwGetPrimaryMonitor () ;
+ double glfwGetTime () ;
+ TYPE_1__* glfwGetVideoMode (int *) ;
+ int glfwInit () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwPollEvents () ;
+ int glfwSetErrorCallback (int ) ;
+ int glfwSetFramebufferSizeCallback (int *,int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSwapBuffers (int *) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,int ) ;
+ int glfwWindowShouldClose (int *) ;
+ int key_callback ;
+ int set_swap_interval (int *,int ) ;
+ int swap_tear ;
+ int update_window_title (int *) ;
+ int usage () ;
 
 int main(int argc, char** argv)
 {
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
     unsigned long frame_count = 0;
     double last_time, current_time;
     GLboolean fullscreen = GL_FALSE;
-    GLFWmonitor* monitor = NULL;
+    GLFWmonitor* monitor = ((void*)0);
     GLFWwindow* window;
 
     while ((ch = getopt(argc, argv, "fh")) != -1)
@@ -110,7 +110,7 @@ int main(int argc, char** argv)
         height = 480;
     }
 
-    window = glfwCreateWindow(width, height, "", monitor, NULL);
+    window = glfwCreateWindow(width, height, "", monitor, ((void*)0));
     if (!window)
     {
         glfwTerminate();

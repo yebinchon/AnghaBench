@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xo_xof_flags_t ;
-typedef  int /*<<< orphan*/  xo_ssize_t ;
-typedef  int /*<<< orphan*/  xo_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XSS_OPEN_LIST ; 
- int /*<<< orphan*/  xo_transition (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int xo_xof_flags_t ;
+typedef int xo_ssize_t ;
+typedef int xo_handle_t ;
+
+
+ int XSS_OPEN_LIST ;
+ int xo_transition (int *,int ,char const*,int ) ;
 
 xo_ssize_t
 xo_open_list_hf (xo_handle_t *xop, xo_xof_flags_t flags, const char *name)

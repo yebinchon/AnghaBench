@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int v8i16 ;
-typedef  scalar_t__ v16u8 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ILVR_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int) ; 
- int /*<<< orphan*/  LD_UB8 (int /*<<< orphan*/ *,size_t,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (int,int,int,int,int,int) ; 
- int /*<<< orphan*/  ST_W8 (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  TRANSPOSE8x4_UB_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_adds_s_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_bmnz_v (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_bmz_v (scalar_t__,scalar_t__,scalar_t__) ; 
- int __msa_clti_s_h (int,int /*<<< orphan*/ ) ; 
- int __msa_fill_h (size_t) ; 
- int __msa_hsub_u_h (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvl_h (int,int) ; 
- scalar_t__ __msa_ilvr_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_ilvr_h (int,int) ; 
- scalar_t__ __msa_subsus_u_b (scalar_t__,scalar_t__) ; 
- scalar_t__ __msa_xori_b (scalar_t__,int) ; 
- size_t* h263_loop_filter_strength_msa ; 
+
+
+
+typedef int v8i16 ;
+typedef scalar_t__ v16u8 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef size_t int32_t ;
+
+
+ int ILVR_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int,int) ;
+ int LD_UB8 (int *,size_t,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int PCKEV_B2_SH (int,int,int,int,int,int) ;
+ int ST_W8 (scalar_t__,scalar_t__,int ,int,int,int,int ,int,int,int,int *,size_t) ;
+ int TRANSPOSE8x4_UB_UB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_adds_s_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_bmnz_v (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_bmz_v (scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_clti_s_h (int,int ) ;
+ int __msa_fill_h (size_t) ;
+ int __msa_hsub_u_h (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvl_h (int,int) ;
+ scalar_t__ __msa_ilvr_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_ilvr_h (int,int) ;
+ scalar_t__ __msa_subsus_u_b (scalar_t__,scalar_t__) ;
+ scalar_t__ __msa_xori_b (scalar_t__,int) ;
+ size_t* h263_loop_filter_strength_msa ;
 
 __attribute__((used)) static void h263_h_loop_filter_msa(uint8_t *src, int32_t stride, int32_t qscale)
 {

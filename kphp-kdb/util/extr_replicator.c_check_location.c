@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct remote_binlog {char* binlog_tag; struct location_list_entry* first; } ;
 struct location_list_entry {int flags; char* location; struct location_list_entry* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct remote_binlog*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int assert (struct remote_binlog*) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 int check_location (struct remote_binlog *B) {
   assert (B);

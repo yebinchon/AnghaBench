@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MOVTrack ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int FF_ARRAY_ELEMS (unsigned int*) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- unsigned int* fiel_data ; 
+
+
+
+typedef int MOVTrack ;
+typedef int AVIOContext ;
+
+
+ int FF_ARRAY_ELEMS (unsigned int*) ;
+ int avio_wb16 (int *,unsigned int) ;
+ int avio_wb32 (int *,int) ;
+ int ffio_wfourcc (int *,char*) ;
+ unsigned int* fiel_data ;
 
 __attribute__((used)) static int mov_write_fiel_tag(AVIOContext *pb, MOVTrack *track, int field_order)
 {

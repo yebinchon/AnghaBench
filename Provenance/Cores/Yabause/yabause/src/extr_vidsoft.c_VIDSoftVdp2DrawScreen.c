@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  TVMD; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VIDSoftVdp2SetResolution (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp2ColorRam ; 
- int /*<<< orphan*/  Vdp2DrawNBG0 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp2DrawNBG1 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp2DrawNBG2 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp2DrawNBG3 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp2DrawRBG0 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Vdp2Lines ; 
- int /*<<< orphan*/  Vdp2Ram ; 
- TYPE_1__* Vdp2Regs ; 
- int /*<<< orphan*/  cell_scroll_data ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int TVMD; } ;
+
+
+ int VIDSoftVdp2SetResolution (int ) ;
+ int Vdp2ColorRam ;
+ int Vdp2DrawNBG0 (int ,TYPE_1__*,int ,int ,int ) ;
+ int Vdp2DrawNBG1 (int ,TYPE_1__*,int ,int ,int ) ;
+ int Vdp2DrawNBG2 (int ,TYPE_1__*,int ,int ,int ) ;
+ int Vdp2DrawNBG3 (int ,TYPE_1__*,int ,int ,int ) ;
+ int Vdp2DrawRBG0 (int ,TYPE_1__*,int ,int ,int ) ;
+ int Vdp2Lines ;
+ int Vdp2Ram ;
+ TYPE_1__* Vdp2Regs ;
+ int cell_scroll_data ;
 
 void VIDSoftVdp2DrawScreen(int screen)
 {

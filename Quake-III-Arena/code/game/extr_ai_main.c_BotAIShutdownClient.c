@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ qboolean ;
-struct TYPE_7__ {int inuse; int /*<<< orphan*/  patrolpoints; int /*<<< orphan*/  checkpoints; int /*<<< orphan*/  character; int /*<<< orphan*/  ws; int /*<<< orphan*/  cs; int /*<<< orphan*/  gs; int /*<<< orphan*/  ms; int /*<<< orphan*/  client; } ;
-typedef  TYPE_1__ bot_state_t ;
 
-/* Variables and functions */
- scalar_t__ BotChat_ExitGame (TYPE_1__*) ; 
- int /*<<< orphan*/  BotClearActivateGoalStack (TYPE_1__*) ; 
- int /*<<< orphan*/  BotFreeWaypoints (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BotWriteSessionData (TYPE_1__*) ; 
- int /*<<< orphan*/  CHAT_ALL ; 
- TYPE_1__** botstates ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  numbots ; 
- int qfalse ; 
- int qtrue ; 
- int /*<<< orphan*/  trap_BotEnterChat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trap_BotFreeCharacter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trap_BotFreeChatState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trap_BotFreeGoalState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trap_BotFreeMoveState (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trap_BotFreeWeaponState (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ qboolean ;
+struct TYPE_7__ {int inuse; int patrolpoints; int checkpoints; int character; int ws; int cs; int gs; int ms; int client; } ;
+typedef TYPE_1__ bot_state_t ;
+
+
+ scalar_t__ BotChat_ExitGame (TYPE_1__*) ;
+ int BotClearActivateGoalStack (TYPE_1__*) ;
+ int BotFreeWaypoints (int ) ;
+ int BotWriteSessionData (TYPE_1__*) ;
+ int CHAT_ALL ;
+ TYPE_1__** botstates ;
+ int memset (TYPE_1__*,int ,int) ;
+ int numbots ;
+ int qfalse ;
+ int qtrue ;
+ int trap_BotEnterChat (int ,int ,int ) ;
+ int trap_BotFreeCharacter (int ) ;
+ int trap_BotFreeChatState (int ) ;
+ int trap_BotFreeGoalState (int ) ;
+ int trap_BotFreeMoveState (int ) ;
+ int trap_BotFreeWeaponState (int ) ;
 
 int BotAIShutdownClient(int client, qboolean restart) {
-	bot_state_t *bs;
+ bot_state_t *bs;
 
-	bs = botstates[client];
-	if (!bs || !bs->inuse) {
-		//BotAI_Print(PRT_ERROR, "BotAIShutdownClient: client %d already shutdown\n", client);
-		return qfalse;
-	}
+ bs = botstates[client];
+ if (!bs || !bs->inuse) {
 
-	if (restart) {
-		BotWriteSessionData(bs);
-	}
+  return qfalse;
+ }
 
-	if (BotChat_ExitGame(bs)) {
-		trap_BotEnterChat(bs->cs, bs->client, CHAT_ALL);
-	}
+ if (restart) {
+  BotWriteSessionData(bs);
+ }
 
-	trap_BotFreeMoveState(bs->ms);
-	//free the goal state`			
-	trap_BotFreeGoalState(bs->gs);
-	//free the chat file
-	trap_BotFreeChatState(bs->cs);
-	//free the weapon weights
-	trap_BotFreeWeaponState(bs->ws);
-	//free the bot character
-	trap_BotFreeCharacter(bs->character);
-	//
-	BotFreeWaypoints(bs->checkpoints);
-	BotFreeWaypoints(bs->patrolpoints);
-	//clear activate goal stack
-	BotClearActivateGoalStack(bs);
-	//clear the bot state
-	memset(bs, 0, sizeof(bot_state_t));
-	//set the inuse flag to qfalse
-	bs->inuse = qfalse;
-	//there's one bot less
-	numbots--;
-	//everything went ok
-	return qtrue;
+ if (BotChat_ExitGame(bs)) {
+  trap_BotEnterChat(bs->cs, bs->client, CHAT_ALL);
+ }
+
+ trap_BotFreeMoveState(bs->ms);
+
+ trap_BotFreeGoalState(bs->gs);
+
+ trap_BotFreeChatState(bs->cs);
+
+ trap_BotFreeWeaponState(bs->ws);
+
+ trap_BotFreeCharacter(bs->character);
+
+ BotFreeWaypoints(bs->checkpoints);
+ BotFreeWaypoints(bs->patrolpoints);
+
+ BotClearActivateGoalStack(bs);
+
+ memset(bs, 0, sizeof(bot_state_t));
+
+ bs->inuse = qfalse;
+
+ numbots--;
+
+ return qtrue;
 }

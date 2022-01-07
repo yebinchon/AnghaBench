@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  VARIANT ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int VARIANT ;
 struct TYPE_8__ {TYPE_2__* content_window; } ;
 struct TYPE_9__ {TYPE_3__ framebase; } ;
-struct TYPE_6__ {int /*<<< orphan*/  IDispatchEx_iface; } ;
+struct TYPE_6__ {int IDispatchEx_iface; } ;
 struct TYPE_7__ {TYPE_1__ base; } ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  TYPE_4__ HTMLFrameElement ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EXCEPINFO ;
-typedef  int /*<<< orphan*/  DISPPARAMS ;
-typedef  int /*<<< orphan*/  DISPID ;
+typedef int LCID ;
+typedef int IServiceProvider ;
+typedef TYPE_4__ HTMLFrameElement ;
+typedef int HTMLDOMNode ;
+typedef int HRESULT ;
+typedef int EXCEPINFO ;
+typedef int DISPPARAMS ;
+typedef int DISPID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  IDispatchEx_InvokeEx (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
+
+ int ERR (char*) ;
+ int E_FAIL ;
+ int IDispatchEx_InvokeEx (int *,int ,int ,int ,int *,int *,int *,int *) ;
+ TYPE_4__* impl_from_HTMLDOMNode (int *) ;
 
 __attribute__((used)) static HRESULT HTMLFrameElement_invoke(HTMLDOMNode *iface, DISPID id, LCID lcid,
         WORD flags, DISPPARAMS *params, VARIANT *res, EXCEPINFO *ei, IServiceProvider *caller)

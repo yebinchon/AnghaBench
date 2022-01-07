@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_20__ {int /*<<< orphan*/  pool; struct TYPE_20__* main; TYPE_2__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef scalar_t__ off_t ;
+typedef int ngx_int_t ;
+struct TYPE_20__ {int pool; struct TYPE_20__* main; TYPE_2__* connection; } ;
+typedef TYPE_3__ ngx_http_request_t ;
 struct TYPE_21__ {scalar_t__ end; scalar_t__ start; } ;
-typedef  TYPE_4__ ngx_http_range_t ;
+typedef TYPE_4__ ngx_http_range_t ;
 struct TYPE_18__ {TYPE_4__* elts; } ;
 struct TYPE_22__ {scalar_t__ offset; TYPE_1__ ranges; } ;
-typedef  TYPE_5__ ngx_http_range_filter_ctx_t ;
+typedef TYPE_5__ ngx_http_range_filter_ctx_t ;
 struct TYPE_23__ {struct TYPE_23__* next; TYPE_7__* buf; } ;
-typedef  TYPE_6__ ngx_chain_t ;
-struct TYPE_24__ {size_t pos; size_t last; int sync; int last_buf; int last_in_chain; int /*<<< orphan*/  file_last; scalar_t__ in_file; int /*<<< orphan*/  file_pos; } ;
-typedef  TYPE_7__ ngx_buf_t ;
-struct TYPE_19__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_6__ ngx_chain_t ;
+struct TYPE_24__ {size_t pos; size_t last; int sync; int last_buf; int last_in_chain; int file_last; scalar_t__ in_file; int file_pos; } ;
+typedef TYPE_7__ ngx_buf_t ;
+struct TYPE_19__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- TYPE_6__* ngx_alloc_chain_link (int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_buf_in_memory (TYPE_7__*) ; 
- scalar_t__ ngx_buf_size (TYPE_7__*) ; 
- scalar_t__ ngx_buf_special (TYPE_7__*) ; 
- int /*<<< orphan*/  ngx_free_chain (int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_http_next_body_filter (TYPE_3__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ TYPE_6__* ngx_alloc_chain_link (int ) ;
+ scalar_t__ ngx_buf_in_memory (TYPE_7__*) ;
+ scalar_t__ ngx_buf_size (TYPE_7__*) ;
+ scalar_t__ ngx_buf_special (TYPE_7__*) ;
+ int ngx_free_chain (int ,TYPE_6__*) ;
+ int ngx_http_next_body_filter (TYPE_3__*,TYPE_6__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_range_singlepart_body(ngx_http_request_t *r,
     ngx_http_range_filter_ctx_t *ctx, ngx_chain_t *in)
 {
-    off_t              start, last;
-    ngx_int_t          rc;
-    ngx_buf_t         *buf;
-    ngx_chain_t       *out, *cl, *tl, **ll;
-    ngx_http_range_t  *range;
+    off_t start, last;
+    ngx_int_t rc;
+    ngx_buf_t *buf;
+    ngx_chain_t *out, *cl, *tl, **ll;
+    ngx_http_range_t *range;
 
-    out = NULL;
+    out = ((void*)0);
     ll = &out;
     range = ctx->ranges.elts;
 
@@ -77,12 +77,12 @@ ngx_http_range_singlepart_body(ngx_http_request_t *r,
             }
 
             tl = ngx_alloc_chain_link(r->pool);
-            if (tl == NULL) {
+            if (tl == ((void*)0)) {
                 return NGX_ERROR;
             }
 
             tl->buf = buf;
-            tl->next = NULL;
+            tl->next = ((void*)0);
 
             *ll = tl;
             ll = &tl->next;
@@ -130,12 +130,12 @@ ngx_http_range_singlepart_body(ngx_http_request_t *r,
             buf->last_in_chain = 1;
 
             tl = ngx_alloc_chain_link(r->pool);
-            if (tl == NULL) {
+            if (tl == ((void*)0)) {
                 return NGX_ERROR;
             }
 
             tl->buf = buf;
-            tl->next = NULL;
+            tl->next = ((void*)0);
 
             *ll = tl;
             ll = &tl->next;
@@ -144,12 +144,12 @@ ngx_http_range_singlepart_body(ngx_http_request_t *r,
         }
 
         tl = ngx_alloc_chain_link(r->pool);
-        if (tl == NULL) {
+        if (tl == ((void*)0)) {
             return NGX_ERROR;
         }
 
         tl->buf = buf;
-        tl->next = NULL;
+        tl->next = ((void*)0);
 
         *ll = tl;
         ll = &tl->next;

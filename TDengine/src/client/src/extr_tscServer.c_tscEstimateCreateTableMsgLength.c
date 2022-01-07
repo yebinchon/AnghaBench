@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-struct TYPE_5__ {int numOfCols; int count; int /*<<< orphan*/  payload; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_5__ {int numOfCols; int count; int payload; } ;
 struct TYPE_4__ {TYPE_2__ cmd; } ;
-typedef  int /*<<< orphan*/  STagData ;
-typedef  TYPE_1__ SSqlObj ;
-typedef  TYPE_2__ SSqlCmd ;
-typedef  int /*<<< orphan*/  SSchema ;
-typedef  int /*<<< orphan*/  SMgmtHead ;
-typedef  int /*<<< orphan*/  SCreateTableMsg ;
+typedef int STagData ;
+typedef TYPE_1__ SSqlObj ;
+typedef TYPE_2__ SSqlCmd ;
+typedef int SSchema ;
+typedef int SMgmtHead ;
+typedef int SCreateTableMsg ;
 
-/* Variables and functions */
- int TSDB_EXTRA_PAYLOAD_SIZE ; 
- int minMsgSize () ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+ int TSDB_EXTRA_PAYLOAD_SIZE ;
+ int minMsgSize () ;
+ int strlen (int ) ;
 
 int tscEstimateCreateTableMsgLength(SSqlObj *pSql) {
   SSqlCmd *pCmd = &(pSql->cmd);

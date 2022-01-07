@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct eap_sm {int dummy; } ;
-struct eap_mschapv2_data {int /*<<< orphan*/  prev_challenge; int /*<<< orphan*/  auth_challenge; int /*<<< orphan*/  peer_challenge; } ;
+struct eap_mschapv2_data {int prev_challenge; int auth_challenge; int peer_challenge; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bin_clear_free (struct eap_mschapv2_data*,int) ; 
- int /*<<< orphan*/  os_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpabuf_free (int /*<<< orphan*/ ) ; 
+
+ int bin_clear_free (struct eap_mschapv2_data*,int) ;
+ int os_free (int ) ;
+ int wpabuf_free (int ) ;
 
 __attribute__((used)) static void eap_mschapv2_deinit(struct eap_sm *sm, void *priv)
 {
-	struct eap_mschapv2_data *data = priv;
-	os_free(data->peer_challenge);
-	os_free(data->auth_challenge);
-	wpabuf_free(data->prev_challenge);
-	bin_clear_free(data, sizeof(*data));
+ struct eap_mschapv2_data *data = priv;
+ os_free(data->peer_challenge);
+ os_free(data->auth_challenge);
+ wpabuf_free(data->prev_challenge);
+ bin_clear_free(data, sizeof(*data));
 }

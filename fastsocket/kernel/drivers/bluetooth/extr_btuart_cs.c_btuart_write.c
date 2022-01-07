@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  __u8 ;
 
-/* Variables and functions */
- scalar_t__ UART_LSR ; 
- int UART_LSR_THRE ; 
- scalar_t__ UART_TX ; 
- int inb (scalar_t__) ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef int __u8 ;
+
+
+ scalar_t__ UART_LSR ;
+ int UART_LSR_THRE ;
+ scalar_t__ UART_TX ;
+ int inb (scalar_t__) ;
+ int outb (int ,scalar_t__) ;
 
 __attribute__((used)) static int btuart_write(unsigned int iobase, int fifo_size, __u8 *buf, int len)
 {
-	int actual = 0;
+ int actual = 0;
 
-	/* Tx FIFO should be empty */
-	if (!(inb(iobase + UART_LSR) & UART_LSR_THRE))
-		return 0;
 
-	/* Fill FIFO with current frame */
-	while ((fifo_size-- > 0) && (actual < len)) {
-		/* Transmit next byte */
-		outb(buf[actual], iobase + UART_TX);
-		actual++;
-	}
+ if (!(inb(iobase + UART_LSR) & UART_LSR_THRE))
+  return 0;
 
-	return actual;
+
+ while ((fifo_size-- > 0) && (actual < len)) {
+
+  outb(buf[actual], iobase + UART_TX);
+  actual++;
+ }
+
+ return actual;
 }

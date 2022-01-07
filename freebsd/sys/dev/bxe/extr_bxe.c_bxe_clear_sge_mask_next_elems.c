@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bxe_fastpath {int /*<<< orphan*/  sge_mask; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT_VEC64_CLEAR_BIT (int /*<<< orphan*/ ,int) ; 
- int RX_SGE_NUM_PAGES ; 
- int RX_SGE_TOTAL_PER_PAGE ; 
+
+
+
+struct bxe_fastpath {int sge_mask; } ;
+
+
+ int BIT_VEC64_CLEAR_BIT (int ,int) ;
+ int RX_SGE_NUM_PAGES ;
+ int RX_SGE_TOTAL_PER_PAGE ;
 
 __attribute__((used)) static inline void
 bxe_clear_sge_mask_next_elems(struct bxe_fastpath *fp)

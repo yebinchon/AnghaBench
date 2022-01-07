@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
-struct ti_queue_inst {int /*<<< orphan*/  queue_state; } ;
-struct ti_msgmgr_desc {int status_err_mask; int /*<<< orphan*/  is_sproxy; } ;
 
-/* Variables and functions */
- int readl (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct ti_queue_inst {int queue_state; } ;
+struct ti_msgmgr_desc {int status_err_mask; int is_sproxy; } ;
+
+
+ int readl (int ) ;
 
 __attribute__((used)) static inline bool ti_msgmgr_queue_is_error(const struct ti_msgmgr_desc *d,
-					    struct ti_queue_inst *qinst)
+         struct ti_queue_inst *qinst)
 {
-	u32 val;
+ u32 val;
 
-	/* Msgmgr has no error detection */
-	if (!d->is_sproxy)
-		return false;
 
-	/*
-	 * We cannot use relaxed operation here - update may happen
-	 * real-time.
-	 */
-	val = readl(qinst->queue_state) & d->status_err_mask;
+ if (!d->is_sproxy)
+  return 0;
 
-	return val ? true : false;
+
+
+
+
+ val = readl(qinst->queue_state) & d->status_err_mask;
+
+ return val ? 1 : 0;
 }

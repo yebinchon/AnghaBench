@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct i2c_client {int dummy; } ;
 
-/* Variables and functions */
- int ltc_wait_ready (struct i2c_client*) ; 
- int pmbus_write_byte (struct i2c_client*,int,int /*<<< orphan*/ ) ; 
+
+ int ltc_wait_ready (struct i2c_client*) ;
+ int pmbus_write_byte (struct i2c_client*,int,int ) ;
 
 __attribute__((used)) static int ltc_write_byte(struct i2c_client *client, int page, u8 byte)
 {
-	int ret;
+ int ret;
 
-	ret = ltc_wait_ready(client);
-	if (ret < 0)
-		return ret;
+ ret = ltc_wait_ready(client);
+ if (ret < 0)
+  return ret;
 
-	return pmbus_write_byte(client, page, byte);
+ return pmbus_write_byte(client, page, byte);
 }

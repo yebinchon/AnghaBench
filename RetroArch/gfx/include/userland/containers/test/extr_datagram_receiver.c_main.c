@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vc_container_net_status_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_NET_T ;
 
-/* Variables and functions */
- int VC_CONTAINER_NET_SUCCESS ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  putchar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_container_net_close (int /*<<< orphan*/ *) ; 
- size_t vc_container_net_maximum_datagram_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vc_container_net_open (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int*) ; 
- size_t vc_container_net_read (int /*<<< orphan*/ *,char*,size_t) ; 
- int vc_container_net_status (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vc_container_net_status_t ;
+typedef int VC_CONTAINER_NET_T ;
+
+
+ int VC_CONTAINER_NET_SUCCESS ;
+ scalar_t__ malloc (size_t) ;
+ int printf (char*,...) ;
+ int putchar (int ) ;
+ int vc_container_net_close (int *) ;
+ size_t vc_container_net_maximum_datagram_size (int *) ;
+ int * vc_container_net_open (int *,char*,int ,int*) ;
+ size_t vc_container_net_read (int *,char*,size_t) ;
+ int vc_container_net_status (int *) ;
 
 int main(int argc, char **argv)
 {
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
       return 1;
    }
 
-   sock = vc_container_net_open(NULL, argv[1], 0, &status);
+   sock = vc_container_net_open(((void*)0), argv[1], 0, &status);
    if (!sock)
    {
       printf("vc_container_net_open failed: %d\n", status);

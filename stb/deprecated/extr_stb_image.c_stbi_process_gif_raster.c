@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int prefix; int first; int suffix; } ;
-typedef  TYPE_1__ stbi_gif_lzw ;
+typedef TYPE_1__ stbi_gif_lzw ;
 struct TYPE_6__ {int* out; TYPE_1__* codes; } ;
-typedef  TYPE_2__ stbi_gif ;
-typedef  int stbi__uint8 ;
-typedef  int stbi__uint32 ;
-typedef  int /*<<< orphan*/  stbi__uint16 ;
-typedef  int stbi__int32 ;
-typedef  int stbi__int16 ;
-typedef  int /*<<< orphan*/  stbi ;
+typedef TYPE_2__ stbi_gif ;
+typedef int stbi__uint8 ;
+typedef int stbi__uint32 ;
+typedef int stbi__uint16 ;
+typedef int stbi__int32 ;
+typedef int stbi__int16 ;
+typedef int stbi ;
 
-/* Variables and functions */
- int* epuc (char*,char*) ; 
- int get8 (int /*<<< orphan*/ *) ; 
- int get8u (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stbi_out_gif_code (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int* epuc (char*,char*) ;
+ int get8 (int *) ;
+ int get8u (int *) ;
+ int skip (int *,int) ;
+ int stbi_out_gif_code (TYPE_2__*,int ) ;
 
 __attribute__((used)) static stbi__uint8 *stbi_process_gif_raster(stbi *s, stbi_gif *g)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static stbi__uint8 *stbi_process_gif_raster(stbi *s, stbi_
       g->codes[code].suffix = (stbi__uint8) code;
    }
 
-   // support no starting clear code
+
    avail = clear+2;
    oldcode = -1;
 
@@ -59,8 +59,8 @@ __attribute__((used)) static stbi__uint8 *stbi_process_gif_raster(stbi *s, stbi_
    for(;;) {
       if (valid_bits < codesize) {
          if (len == 0) {
-            len = get8(s); // start new block
-            if (len == 0) 
+            len = get8(s);
+            if (len == 0)
                return g->out;
          }
          --len;
@@ -70,14 +70,14 @@ __attribute__((used)) static stbi__uint8 *stbi_process_gif_raster(stbi *s, stbi_
          stbi__int32 code = bits & codemask;
          bits >>= codesize;
          valid_bits -= codesize;
-         // @OPTIMIZE: is there some way we can accelerate the non-clear path?
-         if (code == clear) {  // clear code
+
+         if (code == clear) {
             codesize = lzw_cs + 1;
             codemask = (1 << codesize) - 1;
             avail = clear + 2;
             oldcode = -1;
             first = 0;
-         } else if (code == clear + 1) { // end of stream code
+         } else if (code == clear + 1) {
             skip(s, len);
             while ((len = get8(s)) > 0)
                skip(s,len);
@@ -87,7 +87,7 @@ __attribute__((used)) static stbi__uint8 *stbi_process_gif_raster(stbi *s, stbi_
 
             if (oldcode >= 0) {
                p = &g->codes[avail++];
-               if (avail > 4096)        return epuc("too many codes", "Corrupt GIF");
+               if (avail > 4096) return epuc("too many codes", "Corrupt GIF");
                p->prefix = (stbi__int16) oldcode;
                p->first = g->codes[oldcode].first;
                p->suffix = (code == avail) ? p->first : g->codes[code].first;
@@ -105,6 +105,6 @@ __attribute__((used)) static stbi__uint8 *stbi_process_gif_raster(stbi *s, stbi_
          } else {
             return epuc("illegal code in raster", "Corrupt GIF");
          }
-      } 
+      }
    }
 }

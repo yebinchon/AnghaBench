@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vsp1_uds {int dummy; } ;
-struct vsp1_entity {int /*<<< orphan*/  subdev; } ;
+struct vsp1_entity {int subdev; } ;
 struct vsp1_dl_body {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VI6_UDS_ALPVAL ; 
- unsigned int VI6_UDS_ALPVAL_VAL0_SHIFT ; 
- struct vsp1_uds* to_uds (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vsp1_uds_write (struct vsp1_uds*,struct vsp1_dl_body*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int VI6_UDS_ALPVAL ;
+ unsigned int VI6_UDS_ALPVAL_VAL0_SHIFT ;
+ struct vsp1_uds* to_uds (int *) ;
+ int vsp1_uds_write (struct vsp1_uds*,struct vsp1_dl_body*,int ,unsigned int) ;
 
 void vsp1_uds_set_alpha(struct vsp1_entity *entity, struct vsp1_dl_body *dlb,
-			unsigned int alpha)
+   unsigned int alpha)
 {
-	struct vsp1_uds *uds = to_uds(&entity->subdev);
+ struct vsp1_uds *uds = to_uds(&entity->subdev);
 
-	vsp1_uds_write(uds, dlb, VI6_UDS_ALPVAL,
-		       alpha << VI6_UDS_ALPVAL_VAL0_SHIFT);
+ vsp1_uds_write(uds, dlb, VI6_UDS_ALPVAL,
+         alpha << VI6_UDS_ALPVAL_VAL0_SHIFT);
 }

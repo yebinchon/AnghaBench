@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_imgfmt_desc {int num_planes; size_t** components; int /*<<< orphan*/  component_pad; int /*<<< orphan*/  component_bits; int /*<<< orphan*/  chroma_h; int /*<<< orphan*/  chroma_w; TYPE_1__** planes; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ra_imgfmt_desc {int num_planes; size_t** components; int component_pad; int component_bits; int chroma_h; int chroma_w; TYPE_1__** planes; } ;
 struct ra {int dummy; } ;
-typedef  int /*<<< orphan*/  pl ;
-typedef  int /*<<< orphan*/  pf ;
+typedef int pl ;
+typedef int pf ;
 struct TYPE_2__ {char* name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_MSG (struct ra*,int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  mp_snprintf_cat (char*,int,char*,...) ; 
+
+ int MP_MSG (struct ra*,int,char*,int,int ,int ,int ,int ,char*,char*) ;
+ int mp_snprintf_cat (char*,int,char*,...) ;
 
 void ra_dump_imgfmt_desc(struct ra *ra, const struct ra_imgfmt_desc *desc,
                          int msgl)

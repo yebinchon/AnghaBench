@@ -1,54 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ IS_ERR (int /*<<< orphan*/ *) ; 
- int PTR_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/ * class_create (int /*<<< orphan*/ ,char*) ; 
- int driver_register (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  driver_unregister (int /*<<< orphan*/ *) ; 
- int iucv_register (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  iucv_unregister (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * vmlogrdr_class ; 
- int /*<<< orphan*/  vmlogrdr_driver ; 
- int /*<<< orphan*/  vmlogrdr_iucv_handler ; 
+ scalar_t__ IS_ERR (int *) ;
+ int PTR_ERR (int *) ;
+ int THIS_MODULE ;
+ int * class_create (int ,char*) ;
+ int driver_register (int *) ;
+ int driver_unregister (int *) ;
+ int iucv_register (int *,int) ;
+ int iucv_unregister (int *,int) ;
+ int * vmlogrdr_class ;
+ int vmlogrdr_driver ;
+ int vmlogrdr_iucv_handler ;
 
 __attribute__((used)) static int vmlogrdr_register_driver(void)
 {
-	int ret;
+ int ret;
 
-	/* Register with iucv driver */
-	ret = iucv_register(&vmlogrdr_iucv_handler, 1);
-	if (ret)
-		goto out;
 
-	ret = driver_register(&vmlogrdr_driver);
-	if (ret)
-		goto out_iucv;
+ ret = iucv_register(&vmlogrdr_iucv_handler, 1);
+ if (ret)
+  goto out;
 
-	vmlogrdr_class = class_create(THIS_MODULE, "vmlogrdr");
-	if (IS_ERR(vmlogrdr_class)) {
-		ret = PTR_ERR(vmlogrdr_class);
-		vmlogrdr_class = NULL;
-		goto out_driver;
-	}
-	return 0;
+ ret = driver_register(&vmlogrdr_driver);
+ if (ret)
+  goto out_iucv;
+
+ vmlogrdr_class = class_create(THIS_MODULE, "vmlogrdr");
+ if (IS_ERR(vmlogrdr_class)) {
+  ret = PTR_ERR(vmlogrdr_class);
+  vmlogrdr_class = ((void*)0);
+  goto out_driver;
+ }
+ return 0;
 
 out_driver:
-	driver_unregister(&vmlogrdr_driver);
+ driver_unregister(&vmlogrdr_driver);
 out_iucv:
-	iucv_unregister(&vmlogrdr_iucv_handler, 1);
+ iucv_unregister(&vmlogrdr_iucv_handler, 1);
 out:
-	return ret;
+ return ret;
 }

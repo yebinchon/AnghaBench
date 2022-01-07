@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_subdev_pad_config {int dummy; } ;
 struct v4l2_mbus_framefmt {int dummy; } ;
-struct v4l2_subdev_format {scalar_t__ which; struct v4l2_mbus_framefmt format; int /*<<< orphan*/  pad; } ;
+struct v4l2_subdev_format {scalar_t__ which; struct v4l2_mbus_framefmt format; int pad; } ;
 struct v4l2_subdev {int dummy; } ;
-struct ov2680_dev {int /*<<< orphan*/  lock; struct v4l2_mbus_framefmt fmt; int /*<<< orphan*/  sd; } ;
+struct ov2680_dev {int lock; struct v4l2_mbus_framefmt fmt; int sd; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ V4L2_SUBDEV_FORMAT_TRY ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- struct ov2680_dev* to_ov2680_dev (struct v4l2_subdev*) ; 
- struct v4l2_mbus_framefmt* v4l2_subdev_get_try_format (int /*<<< orphan*/ *,struct v4l2_subdev_pad_config*,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ scalar_t__ V4L2_SUBDEV_FORMAT_TRY ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ struct ov2680_dev* to_ov2680_dev (struct v4l2_subdev*) ;
+ struct v4l2_mbus_framefmt* v4l2_subdev_get_try_format (int *,struct v4l2_subdev_pad_config*,int ) ;
 
 __attribute__((used)) static int ov2680_get_fmt(struct v4l2_subdev *sd,
-			  struct v4l2_subdev_pad_config *cfg,
-			  struct v4l2_subdev_format *format)
+     struct v4l2_subdev_pad_config *cfg,
+     struct v4l2_subdev_format *format)
 {
-	struct ov2680_dev *sensor = to_ov2680_dev(sd);
-	struct v4l2_mbus_framefmt *fmt = NULL;
-	int ret = 0;
+ struct ov2680_dev *sensor = to_ov2680_dev(sd);
+ struct v4l2_mbus_framefmt *fmt = ((void*)0);
+ int ret = 0;
 
-	if (format->pad != 0)
-		return -EINVAL;
+ if (format->pad != 0)
+  return -EINVAL;
 
-	mutex_lock(&sensor->lock);
+ mutex_lock(&sensor->lock);
 
-	if (format->which == V4L2_SUBDEV_FORMAT_TRY) {
-#ifdef CONFIG_VIDEO_V4L2_SUBDEV_API
-		fmt = v4l2_subdev_get_try_format(&sensor->sd, cfg, format->pad);
-#else
-		ret = -EINVAL;
-#endif
-	} else {
-		fmt = &sensor->fmt;
-	}
+ if (format->which == V4L2_SUBDEV_FORMAT_TRY) {
 
-	if (fmt)
-		format->format = *fmt;
 
-	mutex_unlock(&sensor->lock);
 
-	return ret;
+  ret = -EINVAL;
+
+ } else {
+  fmt = &sensor->fmt;
+ }
+
+ if (fmt)
+  format->format = *fmt;
+
+ mutex_unlock(&sensor->lock);
+
+ return ret;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  libvlc_renderer_discoverer_t ;
-typedef  int /*<<< orphan*/  libvlc_instance_t ;
-typedef  int /*<<< orphan*/  libvlc_event_manager_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  getchar () ; 
- int /*<<< orphan*/  libvlc_RendererDiscovererItemAdded ; 
- int /*<<< orphan*/  libvlc_RendererDiscovererItemDeleted ; 
- int libvlc_event_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_renderer_discoverer_event_manager (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * libvlc_renderer_discoverer_new (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  libvlc_renderer_discoverer_release (int /*<<< orphan*/ *) ; 
- int libvlc_renderer_discoverer_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libvlc_renderer_discoverer_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  renderer_discoverer_item_added ; 
- int /*<<< orphan*/  renderer_discoverer_item_deleted ; 
- int /*<<< orphan*/  test_log (char*,...) ; 
+
+
+
+typedef int libvlc_renderer_discoverer_t ;
+typedef int libvlc_instance_t ;
+typedef int libvlc_event_manager_t ;
+
+
+ int assert (int) ;
+ int getchar () ;
+ int libvlc_RendererDiscovererItemAdded ;
+ int libvlc_RendererDiscovererItemDeleted ;
+ int libvlc_event_attach (int *,int ,int ,int *) ;
+ int * libvlc_renderer_discoverer_event_manager (int *) ;
+ int * libvlc_renderer_discoverer_new (int *,char const*) ;
+ int libvlc_renderer_discoverer_release (int *) ;
+ int libvlc_renderer_discoverer_start (int *) ;
+ int libvlc_renderer_discoverer_stop (int *) ;
+ int renderer_discoverer_item_added ;
+ int renderer_discoverer_item_deleted ;
+ int test_log (char*,...) ;
 
 __attribute__((used)) static void
 test_discoverer(libvlc_instance_t *p_vlc, const char *psz_name)
@@ -36,17 +36,17 @@ test_discoverer(libvlc_instance_t *p_vlc, const char *psz_name)
 
     libvlc_renderer_discoverer_t *p_rd =
         libvlc_renderer_discoverer_new(p_vlc, psz_name);
-    assert(p_rd != NULL);
+    assert(p_rd != ((void*)0));
 
     libvlc_event_manager_t *p_evm = libvlc_renderer_discoverer_event_manager(p_rd);
     assert(p_evm);
 
     int i_ret;
     i_ret = libvlc_event_attach(p_evm, libvlc_RendererDiscovererItemAdded,
-                                renderer_discoverer_item_added, NULL);
+                                renderer_discoverer_item_added, ((void*)0));
     assert(i_ret == 0);
     i_ret = libvlc_event_attach(p_evm, libvlc_RendererDiscovererItemDeleted,
-                                renderer_discoverer_item_deleted, NULL);
+                                renderer_discoverer_item_deleted, ((void*)0));
     assert(i_ret == 0);
 
     if (libvlc_renderer_discoverer_start(p_rd) == -1)

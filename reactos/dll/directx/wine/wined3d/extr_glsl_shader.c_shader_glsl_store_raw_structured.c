@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_string_buffer {int /*<<< orphan*/  buffer; } ;
-struct TYPE_8__ {int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct wined3d_string_buffer {int buffer; } ;
+struct TYPE_8__ {int type; } ;
 struct wined3d_shader_reg_maps {unsigned int tgsm_count; TYPE_7__* uav_resource_info; TYPE_5__* tgsm; TYPE_1__ shader_version; } ;
-struct wined3d_shader_instruction {scalar_t__ handler_idx; int /*<<< orphan*/ * src; TYPE_6__* dst; TYPE_2__* ctx; } ;
-struct shader_glsl_ctx_priv {int /*<<< orphan*/  string_buffers; } ;
-struct glsl_src_param {int /*<<< orphan*/  param_str; } ;
+struct wined3d_shader_instruction {scalar_t__ handler_idx; int * src; TYPE_6__* dst; TYPE_2__* ctx; } ;
+struct shader_glsl_ctx_priv {int string_buffers; } ;
+struct glsl_src_param {int param_str; } ;
 struct TYPE_14__ {unsigned int stride; } ;
 struct TYPE_11__ {scalar_t__ type; TYPE_3__* idx; } ;
 struct TYPE_13__ {unsigned int write_mask; TYPE_4__ reg; } ;
 struct TYPE_12__ {unsigned int stride; } ;
 struct TYPE_10__ {unsigned int offset; } ;
 struct TYPE_9__ {struct wined3d_string_buffer* buffer; struct shader_glsl_ctx_priv* backend_data; struct wined3d_shader_reg_maps* reg_maps; } ;
-typedef  unsigned int DWORD ;
-typedef  int BOOL ;
+typedef unsigned int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_7__*) ; 
- int /*<<< orphan*/  ERR (char*,unsigned int) ; 
- scalar_t__ WINED3DSIH_STORE_STRUCTURED ; 
- scalar_t__ WINED3DSPR_GROUPSHAREDMEM ; 
- unsigned int WINED3DSP_WRITEMASK_0 ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,char const*,...) ; 
- int /*<<< orphan*/  shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int /*<<< orphan*/ *,unsigned int,struct glsl_src_param*) ; 
- char* shader_glsl_get_prefix (int /*<<< orphan*/ ) ; 
- struct wined3d_string_buffer* string_buffer_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_buffer_release (int /*<<< orphan*/ ,struct wined3d_string_buffer*) ; 
+
+ unsigned int ARRAY_SIZE (TYPE_7__*) ;
+ int ERR (char*,unsigned int) ;
+ scalar_t__ WINED3DSIH_STORE_STRUCTURED ;
+ scalar_t__ WINED3DSPR_GROUPSHAREDMEM ;
+ unsigned int WINED3DSP_WRITEMASK_0 ;
+ int shader_addline (struct wined3d_string_buffer*,char*,char const*,...) ;
+ int shader_glsl_add_src_param (struct wined3d_shader_instruction const*,int *,unsigned int,struct glsl_src_param*) ;
+ char* shader_glsl_get_prefix (int ) ;
+ struct wined3d_string_buffer* string_buffer_get (int ) ;
+ int string_buffer_release (int ,struct wined3d_string_buffer*) ;
 
 __attribute__((used)) static void shader_glsl_store_raw_structured(const struct wined3d_shader_instruction *ins)
 {

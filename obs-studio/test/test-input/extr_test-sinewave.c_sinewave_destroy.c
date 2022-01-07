@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sinewave_data {int /*<<< orphan*/  event; int /*<<< orphan*/  thread; scalar_t__ initialized_thread; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfree (struct sinewave_data*) ; 
- int /*<<< orphan*/  os_event_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  os_event_signal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,void**) ; 
+
+
+
+struct sinewave_data {int event; int thread; scalar_t__ initialized_thread; } ;
+
+
+ int bfree (struct sinewave_data*) ;
+ int os_event_destroy (int ) ;
+ int os_event_signal (int ) ;
+ int pthread_join (int ,void**) ;
 
 __attribute__((used)) static void sinewave_destroy(void *data)
 {
-	struct sinewave_data *swd = data;
+ struct sinewave_data *swd = data;
 
-	if (swd) {
-		if (swd->initialized_thread) {
-			void *ret;
-			os_event_signal(swd->event);
-			pthread_join(swd->thread, &ret);
-		}
+ if (swd) {
+  if (swd->initialized_thread) {
+   void *ret;
+   os_event_signal(swd->event);
+   pthread_join(swd->thread, &ret);
+  }
 
-		os_event_destroy(swd->event);
-		bfree(swd);
-	}
+  os_event_destroy(swd->event);
+  bfree(swd);
+ }
 }

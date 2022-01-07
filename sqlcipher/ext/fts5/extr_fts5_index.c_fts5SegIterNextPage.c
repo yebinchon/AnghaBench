@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {size_t szLeaf; int /*<<< orphan*/ * p; scalar_t__ nn; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {size_t szLeaf; int * p; scalar_t__ nn; } ;
 struct TYPE_9__ {scalar_t__ iLeafPgno; size_t iPgidxOff; scalar_t__ iEndofDoclist; TYPE_3__* pLeaf; TYPE_3__* pNextLeaf; TYPE_1__* pSeg; } ;
-struct TYPE_8__ {scalar_t__ pgnoLast; int /*<<< orphan*/  iSegid; } ;
-typedef  TYPE_1__ Fts5StructureSegment ;
-typedef  TYPE_2__ Fts5SegIter ;
-typedef  int /*<<< orphan*/  Fts5Index ;
-typedef  TYPE_3__ Fts5Data ;
+struct TYPE_8__ {scalar_t__ pgnoLast; int iSegid; } ;
+typedef TYPE_1__ Fts5StructureSegment ;
+typedef TYPE_2__ Fts5SegIter ;
+typedef int Fts5Index ;
+typedef TYPE_3__ Fts5Data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_SEGMENT_ROWID (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  fts5DataRelease (TYPE_3__*) ; 
- scalar_t__ fts5GetVarint32 (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ fts5LeafIsTermless (TYPE_3__*) ; 
- TYPE_3__* fts5LeafRead (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int FTS5_SEGMENT_ROWID (int ,scalar_t__) ;
+ int fts5DataRelease (TYPE_3__*) ;
+ scalar_t__ fts5GetVarint32 (int *,scalar_t__) ;
+ scalar_t__ fts5LeafIsTermless (TYPE_3__*) ;
+ TYPE_3__* fts5LeafRead (int *,int ) ;
 
 __attribute__((used)) static void fts5SegIterNextPage(
-  Fts5Index *p,                   /* FTS5 backend object */
-  Fts5SegIter *pIter              /* Iterator to advance to next page */
+  Fts5Index *p,
+  Fts5SegIter *pIter
 ){
   Fts5Data *pLeaf;
   Fts5StructureSegment *pSeg = pIter->pSeg;
@@ -40,7 +40,7 @@ __attribute__((used)) static void fts5SegIterNextPage(
     pIter->pLeaf = pIter->pNextLeaf;
     pIter->pNextLeaf = 0;
   }else if( pIter->iLeafPgno<=pSeg->pgnoLast ){
-    pIter->pLeaf = fts5LeafRead(p, 
+    pIter->pLeaf = fts5LeafRead(p,
         FTS5_SEGMENT_ROWID(pSeg->iSegid, pIter->iLeafPgno)
     );
   }else{

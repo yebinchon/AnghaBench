@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct Scsi_Host {int /*<<< orphan*/  host_lock; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct Scsi_Host {int host_lock; } ;
+typedef int irqreturn_t ;
 struct TYPE_2__ {unsigned int CNTR; } ;
 
-/* Variables and functions */
- TYPE_1__* DMA (struct Scsi_Host*) ; 
- unsigned int GVP11_DMAC_INT_PENDING ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  wd33c93_intr (struct Scsi_Host*) ; 
+
+ TYPE_1__* DMA (struct Scsi_Host*) ;
+ unsigned int GVP11_DMAC_INT_PENDING ;
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
+ int wd33c93_intr (struct Scsi_Host*) ;
 
 __attribute__((used)) static irqreturn_t gvp11_intr (int irq, void *_instance)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static irqreturn_t gvp11_intr (int irq, void *_instance)
 
     status = DMA(instance)->CNTR;
     if (!(status & GVP11_DMAC_INT_PENDING))
-	return IRQ_NONE;
+ return IRQ_NONE;
 
     spin_lock_irqsave(instance->host_lock, flags);
     wd33c93_intr(instance);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ a; scalar_t__ b; struct TYPE_11__* r; } ;
-typedef  TYPE_2__ perm_list ;
+typedef TYPE_2__ perm_list ;
 struct TYPE_12__ {int len; TYPE_1__* v; } ;
-typedef  TYPE_3__ dl_perm_list ;
-struct TYPE_10__ {int /*<<< orphan*/  r; } ;
+typedef TYPE_3__ dl_perm_list ;
+struct TYPE_10__ {int r; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_add (TYPE_2__*,TYPE_2__*) ; 
- TYPE_2__* list_alloc (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  list_del (TYPE_2__*) ; 
- TYPE_2__* move_r (int /*<<< orphan*/ ,int) ; 
+
+ int list_add (TYPE_2__*,TYPE_2__*) ;
+ TYPE_2__* list_alloc (scalar_t__,scalar_t__) ;
+ int list_del (TYPE_2__*) ;
+ TYPE_2__* move_r (int ,int) ;
 
 int dl_perm_list_move (dl_perm_list *p, int i, int j) {
   if (!(0 <= i && i < p->len)) {

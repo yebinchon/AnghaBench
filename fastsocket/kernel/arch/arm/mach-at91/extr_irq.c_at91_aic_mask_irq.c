@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AT91_AIC_IDCR ; 
- int /*<<< orphan*/  at91_sys_write (int /*<<< orphan*/ ,int) ; 
+ int AT91_AIC_IDCR ;
+ int at91_sys_write (int ,int) ;
 
 __attribute__((used)) static void at91_aic_mask_irq(unsigned int irq)
 {
-	/* Disable interrupt on AIC */
-	at91_sys_write(AT91_AIC_IDCR, 1 << irq);
+
+ at91_sys_write(AT91_AIC_IDCR, 1 << irq);
 }

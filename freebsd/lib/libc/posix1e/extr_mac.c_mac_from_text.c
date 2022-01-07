@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mac {int /*<<< orphan*/ * m_string; scalar_t__ m_buflen; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  free (struct mac*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/ * strdup (char const*) ; 
- scalar_t__ strlen (int /*<<< orphan*/ *) ; 
+
+
+
+struct mac {int * m_string; scalar_t__ m_buflen; } ;
+
+
+ int ENOMEM ;
+ int free (struct mac*) ;
+ scalar_t__ malloc (int) ;
+ int * strdup (char const*) ;
+ scalar_t__ strlen (int *) ;
 
 int
 mac_from_text(struct mac **mac, const char *text)
 {
 
-	*mac = (struct mac *) malloc(sizeof(**mac));
-	if (*mac == NULL)
-		return (ENOMEM);
+ *mac = (struct mac *) malloc(sizeof(**mac));
+ if (*mac == ((void*)0))
+  return (ENOMEM);
 
-	(*mac)->m_string = strdup(text);
-	if ((*mac)->m_string == NULL) {
-		free(*mac);
-		*mac = NULL;
-		return (ENOMEM);
-	}
+ (*mac)->m_string = strdup(text);
+ if ((*mac)->m_string == ((void*)0)) {
+  free(*mac);
+  *mac = ((void*)0);
+  return (ENOMEM);
+ }
 
-	(*mac)->m_buflen = strlen((*mac)->m_string)+1;
+ (*mac)->m_buflen = strlen((*mac)->m_string)+1;
 
-	return (0);
+ return (0);
 }

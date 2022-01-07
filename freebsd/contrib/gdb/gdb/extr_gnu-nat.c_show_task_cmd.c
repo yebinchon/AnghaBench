@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inf {scalar_t__ pause_sc; scalar_t__ detach_sc; scalar_t__ default_thread_detach_sc; scalar_t__ task; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_empty (char*,char*) ; 
- struct inf* cur_inf () ; 
- int /*<<< orphan*/  show_exceptions_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_sig_thread_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_signals_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_stopped_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_task_detach_sc_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_task_pause_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_thread_default_detach_sc_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_thread_default_pause_cmd (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  show_thread_default_run_cmd (int /*<<< orphan*/ ,int) ; 
+
+ int check_empty (char*,char*) ;
+ struct inf* cur_inf () ;
+ int show_exceptions_cmd (int ,int) ;
+ int show_sig_thread_cmd (int ,int) ;
+ int show_signals_cmd (int ,int) ;
+ int show_stopped_cmd (int ,int) ;
+ int show_task_detach_sc_cmd (int ,int) ;
+ int show_task_pause_cmd (int ,int) ;
+ int show_thread_default_detach_sc_cmd (int ,int) ;
+ int show_thread_default_pause_cmd (int ,int) ;
+ int show_thread_default_run_cmd (int ,int) ;
 
 __attribute__((used)) static void
 show_task_cmd (char *args, int from_tty)

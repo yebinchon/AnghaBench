@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct svc_xprt {int /*<<< orphan*/  xpt_lock; struct ip_map* xpt_auth_cache; int /*<<< orphan*/  xpt_flags; } ;
-struct ip_map {int /*<<< orphan*/  h; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XPT_CACHE_AUTH ; 
- int /*<<< orphan*/  cache_put (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ip_map_cache ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct svc_xprt {int xpt_lock; struct ip_map* xpt_auth_cache; int xpt_flags; } ;
+struct ip_map {int h; } ;
+
+
+ int XPT_CACHE_AUTH ;
+ int cache_put (int *,int *) ;
+ int ip_map_cache ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static inline void
 ip_map_cached_put(struct svc_xprt *xprt, struct ip_map *ipm)
 {
-	if (test_bit(XPT_CACHE_AUTH, &xprt->xpt_flags)) {
-		spin_lock(&xprt->xpt_lock);
-		if (xprt->xpt_auth_cache == NULL) {
-			/* newly cached, keep the reference */
-			xprt->xpt_auth_cache = ipm;
-			ipm = NULL;
-		}
-		spin_unlock(&xprt->xpt_lock);
-	}
-	if (ipm)
-		cache_put(&ipm->h, &ip_map_cache);
+ if (test_bit(XPT_CACHE_AUTH, &xprt->xpt_flags)) {
+  spin_lock(&xprt->xpt_lock);
+  if (xprt->xpt_auth_cache == ((void*)0)) {
+
+   xprt->xpt_auth_cache = ipm;
+   ipm = ((void*)0);
+  }
+  spin_unlock(&xprt->xpt_lock);
+ }
+ if (ipm)
+  cache_put(&ipm->h, &ip_map_cache);
 }

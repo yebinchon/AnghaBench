@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wrap_mode ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int wrap_mode ;
 struct video_shader {size_t luts; TYPE_1__* lut; } ;
-typedef  int /*<<< orphan*/  id_wrap ;
-typedef  int /*<<< orphan*/  id_mipmap ;
-typedef  int /*<<< orphan*/  id_filter ;
-struct TYPE_7__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_2__ config_file_t ;
-struct TYPE_6__ {char* id; int mipmap; int /*<<< orphan*/  wrap; int /*<<< orphan*/  filter; int /*<<< orphan*/  path; } ;
+typedef int id_wrap ;
+typedef int id_mipmap ;
+typedef int id_filter ;
+struct TYPE_7__ {int path; } ;
+typedef TYPE_2__ config_file_t ;
+struct TYPE_6__ {char* id; int mipmap; int wrap; int filter; int path; } ;
 
-/* Variables and functions */
- size_t GFX_MAX_TEXTURES ; 
- size_t PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RARCH_ERR (char*,char const*) ; 
- int /*<<< orphan*/  RARCH_FILTER_LINEAR ; 
- int /*<<< orphan*/  RARCH_FILTER_NEAREST ; 
- int /*<<< orphan*/  RARCH_FILTER_UNSPEC ; 
- scalar_t__ config_get_array (TYPE_2__*,char const*,char*,int) ; 
- scalar_t__ config_get_bool (TYPE_2__*,char*,int*) ; 
- int /*<<< orphan*/  fill_pathname_resolve_relative (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  strlcat (char*,char*,int) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,int) ; 
- char* strtok_r (char*,char*,char**) ; 
- int /*<<< orphan*/  wrap_str_to_mode (char*) ; 
+
+ size_t GFX_MAX_TEXTURES ;
+ size_t PATH_MAX_LENGTH ;
+ int RARCH_ERR (char*,char const*) ;
+ int RARCH_FILTER_LINEAR ;
+ int RARCH_FILTER_NEAREST ;
+ int RARCH_FILTER_UNSPEC ;
+ scalar_t__ config_get_array (TYPE_2__*,char const*,char*,int) ;
+ scalar_t__ config_get_bool (TYPE_2__*,char*,int*) ;
+ int fill_pathname_resolve_relative (int ,int ,char*,int) ;
+ int free (char*) ;
+ scalar_t__ malloc (int) ;
+ int strlcat (char*,char*,int) ;
+ int strlcpy (char*,char const*,int) ;
+ char* strtok_r (char*,char*,char**) ;
+ int wrap_str_to_mode (char*) ;
 
 __attribute__((used)) static bool video_shader_parse_textures(config_file_t *conf,
       struct video_shader *shader)
 {
-   size_t path_size     = PATH_MAX_LENGTH;
-   const char *id       = NULL;
-   char *save           = NULL;
-   char *textures       = (char*)malloc(1024 + path_size);
-   char *tmp_path       = textures + 1024;
+   size_t path_size = PATH_MAX_LENGTH;
+   const char *id = ((void*)0);
+   char *save = ((void*)0);
+   char *textures = (char*)malloc(1024 + path_size);
+   char *tmp_path = textures + 1024;
 
    if (!textures)
-      return false;
+      return 0;
 
    textures[0] = '\0';
 
    if (!config_get_array(conf, "textures", textures, 1024))
    {
       free(textures);
-      return true;
+      return 1;
    }
 
    for (id = strtok_r(textures, ";", &save);
          id && shader->luts < GFX_MAX_TEXTURES;
-         shader->luts++, id = strtok_r(NULL, ";", &save))
+         shader->luts++, id = strtok_r(((void*)0), ";", &save))
    {
       char id_filter[64];
       char id_wrap[64];
       char wrap_mode[64];
       char id_mipmap[64];
-      bool mipmap         = false;
-      bool smooth         = false;
+      bool mipmap = 0;
+      bool smooth = 0;
 
       id_filter[0] = id_wrap[0] = wrap_mode[0] = id_mipmap[0] = '\0';
 
@@ -75,7 +75,7 @@ __attribute__((used)) static bool video_shader_parse_textures(config_file_t *con
       {
          RARCH_ERR("Cannot find path to texture \"%s\" ...\n", id);
          free(textures);
-         return false;
+         return 0;
       }
 
       fill_pathname_resolve_relative(shader->lut[shader->luts].path,
@@ -102,9 +102,9 @@ __attribute__((used)) static bool video_shader_parse_textures(config_file_t *con
       if (config_get_bool(conf, id_mipmap, &mipmap))
          shader->lut[shader->luts].mipmap = mipmap;
       else
-         shader->lut[shader->luts].mipmap = false;
+         shader->lut[shader->luts].mipmap = 0;
    }
 
    free(textures);
-   return true;
+   return 1;
 }

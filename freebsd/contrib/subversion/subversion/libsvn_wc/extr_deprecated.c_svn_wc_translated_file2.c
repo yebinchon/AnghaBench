@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- char* svn_dirent_is_child (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_temp_dir (char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__internal_translated_file (char const**,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_adm_access_t ;
+typedef int svn_error_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ char* svn_dirent_is_child (char const*,char const*,int *) ;
+ int svn_io_temp_dir (char const**,int *) ;
+ int svn_wc__adm_get_db (int *) ;
+ int svn_wc__internal_translated_file (char const**,char const*,int ,char const*,int ,int *,int *,int *,int *) ;
 
 svn_error_t *
 svn_wc_translated_file2(const char **xlated_path,
@@ -45,7 +45,7 @@ svn_wc_translated_file2(const char **xlated_path,
   SVN_ERR(svn_wc__internal_translated_file(xlated_path, src_abspath,
                                            svn_wc__adm_get_db(adm_access),
                                            versioned_abspath,
-                                           flags, NULL, NULL, pool, pool));
+                                           flags, ((void*)0), ((void*)0), pool, pool));
 
   if (strcmp(*xlated_path, src_abspath) == 0)
     *xlated_path = src;

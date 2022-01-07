@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_64t ;
+
+
+
+
+typedef int time_64t ;
 struct tm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Zero (struct tm*,int) ; 
- int /*<<< orphan*/  c_gmtime_r (int /*<<< orphan*/ *,struct tm*) ; 
+
+ int Zero (struct tm*,int) ;
+ int c_gmtime_r (int *,struct tm*) ;
 
 void TimeToTm(struct tm *t, time_64t time)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	Zero(t, sizeof(struct tm));
-	c_gmtime_r(&time, t);
+ if (t == ((void*)0))
+ {
+  return;
+ }
+
+ Zero(t, sizeof(struct tm));
+ c_gmtime_r(&time, t);
 }

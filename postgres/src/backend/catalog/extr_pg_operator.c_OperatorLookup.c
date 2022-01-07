@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RegProcedure ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  LookupOperName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int RegProcedureIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_opcode (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int RegProcedure ;
+typedef int Oid ;
+typedef int List ;
+
+
+ int InvalidOid ;
+ int LookupOperName (int *,int *,int ,int ,int,int) ;
+ int OidIsValid (int ) ;
+ int RegProcedureIsValid (int ) ;
+ int get_opcode (int ) ;
 
 __attribute__((used)) static Oid
 OperatorLookup(List *operatorName,
-			   Oid leftObjectId,
-			   Oid rightObjectId,
-			   bool *defined)
+      Oid leftObjectId,
+      Oid rightObjectId,
+      bool *defined)
 {
-	Oid			operatorObjectId;
-	RegProcedure oprcode;
+ Oid operatorObjectId;
+ RegProcedure oprcode;
 
-	operatorObjectId = LookupOperName(NULL, operatorName,
-									  leftObjectId, rightObjectId,
-									  true, -1);
-	if (!OidIsValid(operatorObjectId))
-	{
-		*defined = false;
-		return InvalidOid;
-	}
+ operatorObjectId = LookupOperName(((void*)0), operatorName,
+           leftObjectId, rightObjectId,
+           1, -1);
+ if (!OidIsValid(operatorObjectId))
+ {
+  *defined = 0;
+  return InvalidOid;
+ }
 
-	oprcode = get_opcode(operatorObjectId);
-	*defined = RegProcedureIsValid(oprcode);
+ oprcode = get_opcode(operatorObjectId);
+ *defined = RegProcedureIsValid(oprcode);
 
-	return operatorObjectId;
+ return operatorObjectId;
 }

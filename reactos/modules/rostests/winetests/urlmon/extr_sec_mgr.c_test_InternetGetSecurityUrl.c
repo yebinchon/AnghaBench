@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  size_t HRESULT ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (char const**) ; 
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CoTaskMemFree (char*) ; 
- int /*<<< orphan*/  PSU_DEFAULT ; 
- int /*<<< orphan*/  PSU_SECURITY_URL_ONLY ; 
- int /*<<< orphan*/  ParseUrl_SECURITY_DOMAIN_expected ; 
- int /*<<< orphan*/  ParseUrl_SECURITY_URL_expected ; 
- int /*<<< orphan*/  ParseUrl_SECURITY_URL_input2 ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- size_t S_OK ; 
- int /*<<< orphan*/  lstrcmpW (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,size_t,...) ; 
- size_t pCoInternetGetSecurityUrl (char const*,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* security_expectedW ; 
- char const* security_url2W ; 
- int /*<<< orphan*/  strcmp_w (char*,char const*) ; 
- int /*<<< orphan*/  trace (char*) ; 
- char const* url10 ; 
- char const* url2 ; 
- char const* url3 ; 
- char const* url4 ; 
- char const* url5 ; 
- char const* url7 ; 
- char const* url8 ; 
- char const* url9 ; 
- size_t wine_dbgstr_w (char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef size_t HRESULT ;
+typedef size_t DWORD ;
+
+
+ size_t ARRAY_SIZE (char const**) ;
+ int CHECK_CALLED (int ) ;
+ int CoTaskMemFree (char*) ;
+ int PSU_DEFAULT ;
+ int PSU_SECURITY_URL_ONLY ;
+ int ParseUrl_SECURITY_DOMAIN_expected ;
+ int ParseUrl_SECURITY_URL_expected ;
+ int ParseUrl_SECURITY_URL_input2 ;
+ int SET_EXPECT (int ) ;
+ size_t S_OK ;
+ int lstrcmpW (char*,char*) ;
+ int ok (int,char*,size_t,...) ;
+ size_t pCoInternetGetSecurityUrl (char const*,char**,int ,int ) ;
+ char* security_expectedW ;
+ char const* security_url2W ;
+ int strcmp_w (char*,char const*) ;
+ int trace (char*) ;
+ char const* url10 ;
+ char const* url2 ;
+ char const* url3 ;
+ char const* url4 ;
+ char const* url5 ;
+ char const* url7 ;
+ char const* url8 ;
+ char const* url9 ;
+ size_t wine_dbgstr_w (char const*) ;
 
 __attribute__((used)) static void test_InternetGetSecurityUrl(void)
 {

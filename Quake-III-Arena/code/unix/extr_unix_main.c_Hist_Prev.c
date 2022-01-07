@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  field_t ;
 
-/* Variables and functions */
- int TTY_HISTORY ; 
- int /*<<< orphan*/  assert (int) ; 
- int hist_count ; 
- int hist_current ; 
- int /*<<< orphan*/ * ttyEditLines ; 
+
+
+
+typedef int field_t ;
+
+
+ int TTY_HISTORY ;
+ int assert (int) ;
+ int hist_count ;
+ int hist_current ;
+ int * ttyEditLines ;
 
 field_t *Hist_Prev()
 {
@@ -29,7 +29,7 @@ field_t *Hist_Prev()
   hist_prev = hist_current + 1;
   if (hist_prev >= hist_count)
   {
-    return NULL;
+    return ((void*)0);
   }
   hist_current++;
   return &(ttyEditLines[hist_current]);

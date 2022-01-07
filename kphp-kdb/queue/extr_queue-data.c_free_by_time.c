@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {char* name; int ref_cnt; TYPE_1__* ev_first; } ;
-typedef  TYPE_2__ queue ;
-struct TYPE_8__ {char* name; int timeout; struct TYPE_8__* next_time; int /*<<< orphan*/  lock; TYPE_2__* q; } ;
-typedef  TYPE_3__ qkey ;
+typedef TYPE_2__ queue ;
+struct TYPE_8__ {char* name; int timeout; struct TYPE_8__* next_time; int lock; TYPE_2__* q; } ;
+typedef TYPE_3__ qkey ;
 struct TYPE_6__ {int ref_cnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int GET_TIME_ID (int) ; 
- int MAX_TIME_GAP ; 
- int TIME_TABLE_RATIO_EXP ; 
- size_t TIME_TABLE_SIZE ; 
- int /*<<< orphan*/  delete_qkey (TYPE_3__*) ; 
- int /*<<< orphan*/  events_memory ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keys_memory ; 
- size_t last_del_time ; 
- int /*<<< orphan*/  max_events_memory ; 
- int my_verbosity ; 
- int now ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_3__** time_st ; 
+
+ int CLOCK_MONOTONIC ;
+ int GET_TIME_ID (int) ;
+ int MAX_TIME_GAP ;
+ int TIME_TABLE_RATIO_EXP ;
+ size_t TIME_TABLE_SIZE ;
+ int delete_qkey (TYPE_3__*) ;
+ int events_memory ;
+ int fprintf (int ,char*,...) ;
+ int get_utime (int ) ;
+ int keys_memory ;
+ size_t last_del_time ;
+ int max_events_memory ;
+ int my_verbosity ;
+ int now ;
+ int stderr ;
+ TYPE_3__** time_st ;
 
 void free_by_time (int mx) {
   int cur_time = get_utime (CLOCK_MONOTONIC);
   int en = GET_TIME_ID(cur_time);
   qkey *st = time_st[last_del_time];
 
-//  fprintf (stderr, "[%ld/%lld]\n", events_memory + keys_memory, max_events_memory);
+
   while (en - last_del_time > MAX_TIME_GAP || last_del_time - en > TIME_TABLE_SIZE - MAX_TIME_GAP ||
          (mx-- > 0 && last_del_time != en)) {
     if (st->next_time != st) {
       if (my_verbosity > 1) {
         fprintf (stderr, "del entry %p by time (key = %s) gap = %d, timeout = %d, qname = (%p), now = %d, now2 = %d\n", st->next_time, st->next_time->name, en - last_del_time, st->next_time->timeout, st->next_time->q, now, (int)get_utime (CLOCK_MONOTONIC));
-        if (st->next_time->q != NULL) {
+        if (st->next_time->q != ((void*)0)) {
           queue *q = st->next_time->q;
           fprintf (stderr, "!%s!%d!", q->name, q->ref_cnt);
-          if (q->ev_first != NULL) {
+          if (q->ev_first != ((void*)0)) {
             fprintf (stderr, "%d\n", q->ev_first->ref_cnt);
           } else {
             fprintf (stderr, "NULL\n");

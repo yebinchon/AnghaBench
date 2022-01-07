@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct BlackRock {scalar_t__ range; int /*<<< orphan*/  seed; int /*<<< orphan*/  b; int /*<<< orphan*/  a; int /*<<< orphan*/  rounds; } ;
 
-/* Variables and functions */
- scalar_t__ UNENCRYPT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint64_t ;
+struct BlackRock {scalar_t__ range; int seed; int b; int a; int rounds; } ;
+
+
+ scalar_t__ UNENCRYPT (int ,int ,int ,scalar_t__,int ) ;
 
 uint64_t
 blackrock_unshuffle(const struct BlackRock *br, uint64_t m)
@@ -23,7 +23,7 @@ blackrock_unshuffle(const struct BlackRock *br, uint64_t m)
 
     c = UNENCRYPT(br->rounds, br->a, br->b, m, br->seed);
     while (c >= br->range)
-        c = UNENCRYPT(br->rounds, br->a, br->b,  c, br->seed);
+        c = UNENCRYPT(br->rounds, br->a, br->b, c, br->seed);
 
     return c;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct track {TYPE_1__* dec; } ;
-struct MPContext {int num_next_frames; TYPE_2__* vo_chain; int /*<<< orphan*/  video_status; scalar_t__ display_sync_drift_dir; scalar_t__ drop_message_shown; scalar_t__ mistimed_frames_total; scalar_t__ last_av_difference; scalar_t__ total_avsync_change; scalar_t__ num_past_frames; scalar_t__ last_frame_duration; int /*<<< orphan*/  video_pts; scalar_t__ time_frame; scalar_t__ delay; int /*<<< orphan*/  saved_frame; int /*<<< orphan*/ * next_frames; int /*<<< orphan*/  play_dir; } ;
+struct MPContext {int num_next_frames; TYPE_2__* vo_chain; int video_status; scalar_t__ display_sync_drift_dir; scalar_t__ drop_message_shown; scalar_t__ mistimed_frames_total; scalar_t__ last_av_difference; scalar_t__ total_avsync_change; scalar_t__ num_past_frames; scalar_t__ last_frame_duration; int video_pts; scalar_t__ time_frame; scalar_t__ delay; int saved_frame; int * next_frames; int play_dir; } ;
 struct TYPE_4__ {struct track* track; } ;
-struct TYPE_3__ {int /*<<< orphan*/  play_dir; } ;
+struct TYPE_3__ {int play_dir; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  STATUS_EOF ; 
- int /*<<< orphan*/  STATUS_SYNCING ; 
- int /*<<< orphan*/  mp_image_unrefp (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vo_chain_reset_state (TYPE_2__*) ; 
+
+ int MP_NOPTS_VALUE ;
+ int STATUS_EOF ;
+ int STATUS_SYNCING ;
+ int mp_image_unrefp (int *) ;
+ int vo_chain_reset_state (TYPE_2__*) ;
 
 void reset_video_state(struct MPContext *mpctx)
 {

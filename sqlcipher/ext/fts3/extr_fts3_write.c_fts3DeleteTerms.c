@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  i64 ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
+typedef int i64 ;
 struct TYPE_7__ {int nColumn; scalar_t__* abNotindexed; } ;
-typedef  TYPE_1__ Fts3Table ;
+typedef TYPE_1__ Fts3Table ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQL_SELECT_CONTENT_BY_ROWID ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts3PendingTermsAdd (TYPE_1__*,int,char const*,int,int /*<<< orphan*/ *) ; 
- int fts3PendingTermsDocid (TYPE_1__*,int,int,int /*<<< orphan*/ ) ; 
- int fts3SqlStmt (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int langidFromSelect (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static void fts3DeleteTerms( 
-  int *pRC,               /* Result code */
-  Fts3Table *p,           /* The FTS table to delete from */
-  sqlite3_value *pRowid,  /* The docid to be deleted */
-  u32 *aSz,               /* Sizes of deleted document written here */
-  int *pbFound            /* OUT: Set to true if row really does exist */
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int SQL_SELECT_CONTENT_BY_ROWID ;
+ int assert (int) ;
+ int fts3PendingTermsAdd (TYPE_1__*,int,char const*,int,int *) ;
+ int fts3PendingTermsDocid (TYPE_1__*,int,int,int ) ;
+ int fts3SqlStmt (TYPE_1__*,int ,int **,int **) ;
+ int langidFromSelect (TYPE_1__*,int *) ;
+ scalar_t__ sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_int64 (int *,int ) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+
+__attribute__((used)) static void fts3DeleteTerms(
+  int *pRC,
+  Fts3Table *p,
+  sqlite3_value *pRowid,
+  u32 *aSz,
+  int *pbFound
 ){
   int rc;
   sqlite3_stmt *pSelect;

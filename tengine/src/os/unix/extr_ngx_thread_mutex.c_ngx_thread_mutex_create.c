@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_mutexattr_t ;
-typedef  int /*<<< orphan*/  ngx_thread_mutex_t ;
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-typedef  scalar_t__ ngx_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  PTHREAD_MUTEX_ERRORCHECK ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,char*) ; 
- scalar_t__ pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutexattr_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutexattr_init (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutexattr_settype (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pthread_mutexattr_t ;
+typedef int ngx_thread_mutex_t ;
+typedef int ngx_log_t ;
+typedef int ngx_int_t ;
+typedef scalar_t__ ngx_err_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_EMERG ;
+ int NGX_OK ;
+ int PTHREAD_MUTEX_ERRORCHECK ;
+ int ngx_log_error (int ,int *,scalar_t__,char*) ;
+ scalar_t__ pthread_mutex_init (int *,int *) ;
+ scalar_t__ pthread_mutexattr_destroy (int *) ;
+ scalar_t__ pthread_mutexattr_init (int *) ;
+ scalar_t__ pthread_mutexattr_settype (int *,int ) ;
 
 ngx_int_t
 ngx_thread_mutex_create(ngx_thread_mutex_t *mtx, ngx_log_t *log)
 {
-    ngx_err_t            err;
-    pthread_mutexattr_t  attr;
+    ngx_err_t err;
+    pthread_mutexattr_t attr;
 
     err = pthread_mutexattr_init(&attr);
     if (err != 0) {

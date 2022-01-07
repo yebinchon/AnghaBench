@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  fs_mgr; int /*<<< orphan*/  commit_mgr; } ;
-struct TYPE_6__ {char const* root_id; int /*<<< orphan*/  commit_id; scalar_t__ second_parent_id; int /*<<< orphan*/  version; int /*<<< orphan*/  repo_id; scalar_t__ parent_id; } ;
-typedef  TYPE_1__ SeafCommit ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- char* EMPTY_SHA1 ; 
- int /*<<< orphan*/  SEAFILE_DOMAIN ; 
- int /*<<< orphan*/  SEAF_ERR_GENERAL ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_set_error (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  g_warning (char*,scalar_t__) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* seaf ; 
- TYPE_1__* seaf_commit_manager_get_commit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  seaf_commit_unref (TYPE_1__*) ; 
- char* seaf_fs_manager_path_to_obj_id (int /*<<< orphan*/ ,char const*,int,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int fs_mgr; int commit_mgr; } ;
+struct TYPE_6__ {char const* root_id; int commit_id; scalar_t__ second_parent_id; int version; int repo_id; scalar_t__ parent_id; } ;
+typedef TYPE_1__ SeafCommit ;
+typedef int GError ;
+
+
+ char* EMPTY_SHA1 ;
+ int SEAFILE_DOMAIN ;
+ int SEAF_ERR_GENERAL ;
+ int g_free (char*) ;
+ int g_set_error (int **,int ,int ,char*) ;
+ int g_warning (char*,scalar_t__) ;
+ int memcpy (char*,int ,int) ;
+ TYPE_4__* seaf ;
+ TYPE_1__* seaf_commit_manager_get_commit (int ,int ,int ,scalar_t__) ;
+ int seaf_commit_unref (TYPE_1__*) ;
+ char* seaf_fs_manager_path_to_obj_id (int ,char const*,int,char const*,char const*,int *,int **) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int
 diff_parents_with_path (SeafCommit *commit,
@@ -41,8 +41,8 @@ diff_parents_with_path (SeafCommit *commit,
                         char *parent,
                         GError **error)
 {
-    SeafCommit *p1 = NULL, *p2 = NULL;
-    char *file_id_p1 = NULL, *file_id_p2 = NULL;
+    SeafCommit *p1 = ((void*)0), *p2 = ((void*)0);
+    char *file_id_p1 = ((void*)0), *file_id_p2 = ((void*)0);
     int ret = 0;
 
     p1 = seaf_commit_manager_get_commit (seaf->commit_mgr,
@@ -78,7 +78,7 @@ diff_parents_with_path (SeafCommit *commit,
                                                      store_id,
                                                      version,
                                                      p1->root_id, path,
-                                                     NULL,
+                                                     ((void*)0),
                                                      error);
         if (*error)
             goto out;
@@ -91,14 +91,14 @@ diff_parents_with_path (SeafCommit *commit,
                                                      store_id,
                                                      version,
                                                      p1->root_id, path,
-                                                     NULL, error);
+                                                     ((void*)0), error);
         if (*error)
             goto out;
         file_id_p2 = seaf_fs_manager_path_to_obj_id (seaf->fs_mgr,
                                                      store_id,
                                                      version,
                                                      p2->root_id, path,
-                                                     NULL, error);
+                                                     ((void*)0), error);
         if (*error)
             goto out;
 

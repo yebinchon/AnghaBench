@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct rar_br {int dummy; } ;
-struct rar {scalar_t__ filterstart; int output_last_match; int lastlength; int lastoffset; int start_new_block; int start_new_table; int* oldoffset; int numlowoffsetrepeats; int lastlowoffset; scalar_t__ valid; int /*<<< orphan*/  lowoffsetcode; int /*<<< orphan*/  offsetcode; int /*<<< orphan*/  lengthcode; int /*<<< orphan*/  lzss; int /*<<< orphan*/  maincode; scalar_t__ is_ppmd_block; struct rar_br br; } ;
-struct archive_read {int /*<<< orphan*/  archive; TYPE_1__* format; } ;
-typedef  int /*<<< orphan*/  offsetbits ;
-typedef  int /*<<< orphan*/  offsetbases ;
-typedef  int /*<<< orphan*/  lengthbits ;
-typedef  int /*<<< orphan*/  lengthbases ;
-typedef  scalar_t__ int64_t ;
+struct rar {scalar_t__ filterstart; int output_last_match; int lastlength; int lastoffset; int start_new_block; int start_new_table; int* oldoffset; int numlowoffsetrepeats; int lastlowoffset; scalar_t__ valid; int lowoffsetcode; int offsetcode; int lengthcode; int lzss; int maincode; scalar_t__ is_ppmd_block; struct rar_br br; } ;
+struct archive_read {int archive; TYPE_1__* format; } ;
+typedef int offsetbits ;
+typedef int offsetbases ;
+typedef int lengthbits ;
+typedef int lengthbases ;
+typedef scalar_t__ int64_t ;
 struct TYPE_2__ {scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_ERRNO_FILE_FORMAT ; 
- int /*<<< orphan*/  ARCHIVE_ERRNO_MISC ; 
- scalar_t__ ARCHIVE_FAILED ; 
- scalar_t__ ARCHIVE_FATAL ; 
- scalar_t__ ARCHIVE_OK ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lzss_emit_literal (struct rar*,int) ; 
- int /*<<< orphan*/  lzss_emit_match (struct rar*,int,int) ; 
- scalar_t__ lzss_position (int /*<<< orphan*/ *) ; 
- scalar_t__ parse_codes (struct archive_read*) ; 
- int rar_br_bits (struct rar_br*,unsigned char const) ; 
- int /*<<< orphan*/  rar_br_consume (struct rar_br*,unsigned char const) ; 
- int /*<<< orphan*/  rar_br_read_ahead (struct archive_read*,struct rar_br*,unsigned char const) ; 
- int read_next_symbol (struct archive_read*,int /*<<< orphan*/ *) ; 
+
+ int ARCHIVE_ERRNO_FILE_FORMAT ;
+ int ARCHIVE_ERRNO_MISC ;
+ scalar_t__ ARCHIVE_FAILED ;
+ scalar_t__ ARCHIVE_FATAL ;
+ scalar_t__ ARCHIVE_OK ;
+ int archive_set_error (int *,int ,char*) ;
+ int lzss_emit_literal (struct rar*,int) ;
+ int lzss_emit_match (struct rar*,int,int) ;
+ scalar_t__ lzss_position (int *) ;
+ scalar_t__ parse_codes (struct archive_read*) ;
+ int rar_br_bits (struct rar_br*,unsigned char const) ;
+ int rar_br_consume (struct rar_br*,unsigned char const) ;
+ int rar_br_read_ahead (struct archive_read*,struct rar_br*,unsigned char const) ;
+ int read_next_symbol (struct archive_read*,int *) ;
 
 __attribute__((used)) static int64_t
 expand(struct archive_read *a, int64_t end)
 {
   static const unsigned char lengthbases[] =
-    {   0,   1,   2,   3,   4,   5,   6,
-        7,   8,  10,  12,  14,  16,  20,
-       24,  28,  32,  40,  48,  56,  64,
-       80,  96, 112, 128, 160, 192, 224 };
+    { 0, 1, 2, 3, 4, 5, 6,
+        7, 8, 10, 12, 14, 16, 20,
+       24, 28, 32, 40, 48, 56, 64,
+       80, 96, 112, 128, 160, 192, 224 };
   static const unsigned char lengthbits[] =
     { 0, 0, 0, 0, 0, 0, 0,
       0, 1, 1, 1, 1, 2, 2,
       2, 2, 3, 3, 3, 3, 4,
       4, 4, 4, 5, 5, 5, 5 };
   static const unsigned int offsetbases[] =
-    {       0,       1,       2,       3,       4,       6,
-            8,      12,      16,      24,      32,      48,
-           64,      96,     128,     192,     256,     384,
-          512,     768,    1024,    1536,    2048,    3072,
-         4096,    6144,    8192,   12288,   16384,   24576,
-        32768,   49152,   65536,   98304,  131072,  196608,
-       262144,  327680,  393216,  458752,  524288,  589824,
-       655360,  720896,  786432,  851968,  917504,  983040,
+    { 0, 1, 2, 3, 4, 6,
+            8, 12, 16, 24, 32, 48,
+           64, 96, 128, 192, 256, 384,
+          512, 768, 1024, 1536, 2048, 3072,
+         4096, 6144, 8192, 12288, 16384, 24576,
+        32768, 49152, 65536, 98304, 131072, 196608,
+       262144, 327680, 393216, 458752, 524288, 589824,
+       655360, 720896, 786432, 851968, 917504, 983040,
       1048576, 1310720, 1572864, 1835008, 2097152, 2359296,
       2621440, 2883584, 3145728, 3407872, 3670016, 3932160 };
   static const unsigned char offsetbits[] =
-    {  0,  0,  0,  0,  1,  1,  2,  2,  3,  3,  4,  4,
-       5,  5,  6,  6,  7,  7,  8,  8,  9,  9, 10, 10,
+    { 0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4,
+       5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10,
       11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16,
       16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16,
       18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18 };
@@ -208,7 +208,7 @@ expand(struct archive_read *a, int64_t end)
               goto truncated_data;
             offs += rar_br_bits(br, offsetbits[offssymbol] - 4) << 4;
             rar_br_consume(br, offsetbits[offssymbol] - 4);
-	  }
+   }
 
           if(rar->numlowoffsetrepeats > 0)
           {

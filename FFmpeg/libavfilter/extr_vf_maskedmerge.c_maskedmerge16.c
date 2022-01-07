@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int ptrdiff_t ;
+
+
 
 __attribute__((used)) static void maskedmerge16(const uint8_t *bbsrc, const uint8_t *oosrc,
                           const uint8_t *mmsrc, uint8_t *ddst,
@@ -34,7 +34,7 @@ __attribute__((used)) static void maskedmerge16(const uint8_t *bbsrc, const uint
             dst[x] = bsrc[x] + ((msrc[x] * (osrc[x] - bsrc[x]) + half) >> shift);
         }
 
-        dst  += dlinesize / 2;
+        dst += dlinesize / 2;
         bsrc += blinesize / 2;
         osrc += olinesize / 2;
         msrc += mlinesize / 2;

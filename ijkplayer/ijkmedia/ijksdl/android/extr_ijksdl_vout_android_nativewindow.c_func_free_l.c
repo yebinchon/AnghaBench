@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* opaque; } ;
-struct TYPE_5__ {int /*<<< orphan*/  acodec; int /*<<< orphan*/  egl; int /*<<< orphan*/ * native_window; int /*<<< orphan*/  overlay_manager; int /*<<< orphan*/  overlay_pool; } ;
-typedef  TYPE_1__ SDL_Vout_Opaque ;
-typedef  TYPE_2__ SDL_Vout ;
-typedef  int /*<<< orphan*/  SDL_AMediaCodecBufferProxy ;
+struct TYPE_5__ {int acodec; int egl; int * native_window; int overlay_manager; int overlay_pool; } ;
+typedef TYPE_1__ SDL_Vout_Opaque ;
+typedef TYPE_2__ SDL_Vout ;
+typedef int SDL_AMediaCodecBufferProxy ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ANativeWindow_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IJK_EGL_freep (int /*<<< orphan*/ *) ; 
- scalar_t__ ISDL_Array__begin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ISDL_Array__clear (int /*<<< orphan*/ *) ; 
- scalar_t__ ISDL_Array__end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_AMediaCodecBufferProxy_destroyP (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SDL_AMediaCodec_decreaseReferenceP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Vout_FreeInternal (TYPE_2__*) ; 
+
+ int ANativeWindow_release (int *) ;
+ int IJK_EGL_freep (int *) ;
+ scalar_t__ ISDL_Array__begin (int *) ;
+ int ISDL_Array__clear (int *) ;
+ scalar_t__ ISDL_Array__end (int *) ;
+ int SDL_AMediaCodecBufferProxy_destroyP (int **) ;
+ int SDL_AMediaCodec_decreaseReferenceP (int *) ;
+ int SDL_Vout_FreeInternal (TYPE_2__*) ;
 
 __attribute__((used)) static void func_free_l(SDL_Vout *vout)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void func_free_l(SDL_Vout *vout)
     SDL_Vout_Opaque *opaque = vout->opaque;
     if (opaque) {
         SDL_AMediaCodecBufferProxy **begin = (SDL_AMediaCodecBufferProxy **)ISDL_Array__begin(&opaque->overlay_manager);
-        SDL_AMediaCodecBufferProxy **end   = (SDL_AMediaCodecBufferProxy **)ISDL_Array__end(&opaque->overlay_manager);
+        SDL_AMediaCodecBufferProxy **end = (SDL_AMediaCodecBufferProxy **)ISDL_Array__end(&opaque->overlay_manager);
         for (; begin < end; ++begin) {
             SDL_AMediaCodecBufferProxy_destroyP(begin);
         }
@@ -45,7 +45,7 @@ __attribute__((used)) static void func_free_l(SDL_Vout *vout)
 
         if (opaque->native_window) {
             ANativeWindow_release(opaque->native_window);
-            opaque->native_window = NULL;
+            opaque->native_window = ((void*)0);
         }
 
         IJK_EGL_freep(&opaque->egl);

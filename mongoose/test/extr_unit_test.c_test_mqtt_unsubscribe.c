@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mg_mqtt_proto_data {int /*<<< orphan*/  last_control_time; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mg_mqtt_proto_data {int last_control_time; } ;
 struct TYPE_2__ {char* buf; char const len; } ;
 struct mg_connection {scalar_t__ proto_data; TYPE_1__ send_mbuf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (char const,int) ; 
- int /*<<< orphan*/  ASSERT_GT (int /*<<< orphan*/ ,double const) ; 
- int /*<<< orphan*/  ASSERT_STREQ_NZ (char const*,char*) ; 
- int MG_MQTT_CMD_UNSUBSCRIBE ; 
- struct mg_connection* create_test_connection () ; 
- int /*<<< orphan*/  destroy_test_connection (struct mg_connection*) ; 
- int /*<<< orphan*/  mg_mqtt_unsubscribe (struct mg_connection*,char**,int,int) ; 
- int /*<<< orphan*/  mg_set_protocol_mqtt (struct mg_connection*) ; 
- double mg_time () ; 
- int /*<<< orphan*/  msleep (int) ; 
+
+ int ASSERT_EQ (char const,int) ;
+ int ASSERT_GT (int ,double const) ;
+ int ASSERT_STREQ_NZ (char const*,char*) ;
+ int MG_MQTT_CMD_UNSUBSCRIBE ;
+ struct mg_connection* create_test_connection () ;
+ int destroy_test_connection (struct mg_connection*) ;
+ int mg_mqtt_unsubscribe (struct mg_connection*,char**,int,int) ;
+ int mg_set_protocol_mqtt (struct mg_connection*) ;
+ double mg_time () ;
+ int msleep (int) ;
 
 __attribute__((used)) static const char *test_mqtt_unsubscribe(void) {
   struct mg_connection *nc = create_test_connection();
@@ -51,5 +51,5 @@ __attribute__((used)) static const char *test_mqtt_unsubscribe(void) {
             before);
 
   destroy_test_connection(nc);
-  return NULL;
+  return ((void*)0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  finish_mangling (int) ; 
- int /*<<< orphan*/  get_identifier_nocopy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_mangling (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  write_name (int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_string (char*) ; 
+
+
+
+typedef int tree ;
+
+
+ int finish_mangling (int) ;
+ int get_identifier_nocopy (int ) ;
+ int start_mangling (int const,int) ;
+ int write_name (int const,int ) ;
+ int write_string (char*) ;
 
 tree
 mangle_ref_init_variable (const tree variable)
 {
-  start_mangling (variable, /*ident_p=*/true);
+  start_mangling (variable, 1);
   write_string ("_ZGR");
-  write_name (variable, /*ignore_local_scope=*/0);
-  return get_identifier_nocopy (finish_mangling (/*warn=*/false));
+  write_name (variable, 0);
+  return get_identifier_nocopy (finish_mangling ( 0));
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIM_STRING ; 
- int /*<<< orphan*/  CIM_UINT32 ; 
- int /*<<< orphan*/  IWbemClassObject_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemClassObject_Put (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemClassObject_SpawnInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  PARAM_OUT ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  V_UI4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_processW ; 
- scalar_t__ create_signature (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ get_owner (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  method_getownerW ; 
- int /*<<< orphan*/  param_domainW ; 
- int /*<<< orphan*/  param_returnvalueW ; 
- int /*<<< orphan*/  param_userW ; 
+
+
+
+typedef int VARIANT ;
+typedef int IWbemClassObject ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CIM_STRING ;
+ int CIM_UINT32 ;
+ int IWbemClassObject_AddRef (int *) ;
+ scalar_t__ IWbemClassObject_Put (int *,int ,int ,int *,int ) ;
+ int IWbemClassObject_Release (int *) ;
+ scalar_t__ IWbemClassObject_SpawnInstance (int *,int ,int **) ;
+ int PARAM_OUT ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,int *,int *,int **) ;
+ int V_UI4 (int *) ;
+ int VariantClear (int *) ;
+ int VariantInit (int *) ;
+ int class_processW ;
+ scalar_t__ create_signature (int ,int ,int ,int **) ;
+ scalar_t__ get_owner (int *,int *,int *) ;
+ int method_getownerW ;
+ int param_domainW ;
+ int param_returnvalueW ;
+ int param_userW ;
 
 HRESULT process_get_owner( IWbemClassObject *obj, IWbemClassObject *in, IWbemClassObject **out )
 {
     VARIANT user, domain, retval;
-    IWbemClassObject *sig, *out_params = NULL;
+    IWbemClassObject *sig, *out_params = ((void*)0);
     HRESULT hr;
 
     TRACE("%p, %p, %p\n", obj, in, out);

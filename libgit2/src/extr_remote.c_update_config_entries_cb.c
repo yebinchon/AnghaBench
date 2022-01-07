@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct update_data {int /*<<< orphan*/  new_remote_name; int /*<<< orphan*/  config; int /*<<< orphan*/  old_remote_name; } ;
-struct TYPE_3__ {int /*<<< orphan*/  name; int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ git_config_entry ;
 
-/* Variables and functions */
- int git_config_set_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct update_data {int new_remote_name; int config; int old_remote_name; } ;
+struct TYPE_3__ {int name; int value; } ;
+typedef TYPE_1__ git_config_entry ;
+
+
+ int git_config_set_string (int ,int ,int ) ;
+ scalar_t__ strcmp (int ,int ) ;
 
 __attribute__((used)) static int update_config_entries_cb(
-	const git_config_entry *entry,
-	void *payload)
+ const git_config_entry *entry,
+ void *payload)
 {
-	struct update_data *data = (struct update_data *)payload;
+ struct update_data *data = (struct update_data *)payload;
 
-	if (strcmp(entry->value, data->old_remote_name))
-		return 0;
+ if (strcmp(entry->value, data->old_remote_name))
+  return 0;
 
-	return git_config_set_string(
-		data->config, entry->name, data->new_remote_name);
+ return git_config_set_string(
+  data->config, entry->name, data->new_remote_name);
 }

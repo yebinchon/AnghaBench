@@ -1,67 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u64 ;
-struct zpci_dev {int /*<<< orphan*/  iommu_bitmap_lock; int /*<<< orphan*/  iommu_pages; int /*<<< orphan*/  lazy_bitmap; int /*<<< orphan*/  iommu_bitmap; scalar_t__ fh; int /*<<< orphan*/  tlb_refresh; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  PAGE_ALIGN (size_t) ; 
- int ZPCI_PTE_VALID ; 
- int ZPCI_PTE_VALID_MASK ; 
- int /*<<< orphan*/  bitmap_andnot (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bitmap_zero (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s390_iommu_strict ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- scalar_t__ zpci_refresh_global (struct zpci_dev*) ; 
- int zpci_refresh_trans (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u64 ;
+struct zpci_dev {int iommu_bitmap_lock; int iommu_pages; int lazy_bitmap; int iommu_bitmap; scalar_t__ fh; int tlb_refresh; } ;
+typedef int dma_addr_t ;
+
+
+ int ENOMEM ;
+ int PAGE_ALIGN (size_t) ;
+ int ZPCI_PTE_VALID ;
+ int ZPCI_PTE_VALID_MASK ;
+ int bitmap_andnot (int ,int ,int ,int ) ;
+ int bitmap_zero (int ,int ) ;
+ int s390_iommu_strict ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ scalar_t__ zpci_refresh_global (struct zpci_dev*) ;
+ int zpci_refresh_trans (int,int ,int ) ;
 
 __attribute__((used)) static int __dma_purge_tlb(struct zpci_dev *zdev, dma_addr_t dma_addr,
-			   size_t size, int flags)
+      size_t size, int flags)
 {
-	unsigned long irqflags;
-	int ret;
+ unsigned long irqflags;
+ int ret;
+ if ((flags & ZPCI_PTE_VALID_MASK) == ZPCI_PTE_VALID) {
+  if (!zdev->tlb_refresh)
+   return 0;
+ } else {
+  if (!s390_iommu_strict)
+   return 0;
+ }
 
-	/*
-	 * With zdev->tlb_refresh == 0, rpcit is not required to establish new
-	 * translations when previously invalid translation-table entries are
-	 * validated. With lazy unmap, rpcit is skipped for previously valid
-	 * entries, but a global rpcit is then required before any address can
-	 * be re-used, i.e. after each iommu bitmap wrap-around.
-	 */
-	if ((flags & ZPCI_PTE_VALID_MASK) == ZPCI_PTE_VALID) {
-		if (!zdev->tlb_refresh)
-			return 0;
-	} else {
-		if (!s390_iommu_strict)
-			return 0;
-	}
+ ret = zpci_refresh_trans((u64) zdev->fh << 32, dma_addr,
+     PAGE_ALIGN(size));
+ if (ret == -ENOMEM && !s390_iommu_strict) {
 
-	ret = zpci_refresh_trans((u64) zdev->fh << 32, dma_addr,
-				 PAGE_ALIGN(size));
-	if (ret == -ENOMEM && !s390_iommu_strict) {
-		/* enable the hypervisor to free some resources */
-		if (zpci_refresh_global(zdev))
-			goto out;
+  if (zpci_refresh_global(zdev))
+   goto out;
 
-		spin_lock_irqsave(&zdev->iommu_bitmap_lock, irqflags);
-		bitmap_andnot(zdev->iommu_bitmap, zdev->iommu_bitmap,
-			      zdev->lazy_bitmap, zdev->iommu_pages);
-		bitmap_zero(zdev->lazy_bitmap, zdev->iommu_pages);
-		spin_unlock_irqrestore(&zdev->iommu_bitmap_lock, irqflags);
-		ret = 0;
-	}
+  spin_lock_irqsave(&zdev->iommu_bitmap_lock, irqflags);
+  bitmap_andnot(zdev->iommu_bitmap, zdev->iommu_bitmap,
+         zdev->lazy_bitmap, zdev->iommu_pages);
+  bitmap_zero(zdev->lazy_bitmap, zdev->iommu_pages);
+  spin_unlock_irqrestore(&zdev->iommu_bitmap_lock, irqflags);
+  ret = 0;
+ }
 out:
-	return ret;
+ return ret;
 }

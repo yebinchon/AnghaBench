@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ps2dev {TYPE_1__* serio; } ;
 struct atkbd {struct ps2dev ps2dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  phys; int /*<<< orphan*/  dev; } ;
+struct TYPE_2__ {int phys; int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATKBD_CMD_ENABLE ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ps2_command (struct ps2dev*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ATKBD_CMD_ENABLE ;
+ int dev_err (int *,char*,int ) ;
+ scalar_t__ ps2_command (struct ps2dev*,int *,int ) ;
 
 __attribute__((used)) static int atkbd_activate(struct atkbd *atkbd)
 {
-	struct ps2dev *ps2dev = &atkbd->ps2dev;
+ struct ps2dev *ps2dev = &atkbd->ps2dev;
 
-/*
- * Enable the keyboard to receive keystrokes.
- */
 
-	if (ps2_command(ps2dev, NULL, ATKBD_CMD_ENABLE)) {
-		dev_err(&ps2dev->serio->dev,
-			"Failed to enable keyboard on %s\n",
-			ps2dev->serio->phys);
-		return -1;
-	}
 
-	return 0;
+
+
+ if (ps2_command(ps2dev, ((void*)0), ATKBD_CMD_ENABLE)) {
+  dev_err(&ps2dev->serio->dev,
+   "Failed to enable keyboard on %s\n",
+   ps2dev->serio->phys);
+  return -1;
+ }
+
+ return 0;
 }

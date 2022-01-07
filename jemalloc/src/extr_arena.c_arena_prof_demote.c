@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsdn_t ;
-typedef  int /*<<< orphan*/  rtree_ctx_t ;
-typedef  int /*<<< orphan*/  extent_t ;
 
-/* Variables and functions */
- scalar_t__ SC_LARGE_MINCLASS ; 
- int /*<<< orphan*/  SC_NBINS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cassert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_prof ; 
- int /*<<< orphan*/  extent_szind_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  extents_rtree ; 
- scalar_t__ isalloc (int /*<<< orphan*/ *,void const*) ; 
- int /*<<< orphan*/  rtree_szind_slab_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,uintptr_t,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * tsdn_rtree_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tsdn_t ;
+typedef int rtree_ctx_t ;
+typedef int extent_t ;
+
+
+ scalar_t__ SC_LARGE_MINCLASS ;
+ int SC_NBINS ;
+ int assert (int) ;
+ int cassert (int ) ;
+ int config_prof ;
+ int extent_szind_set (int *,int ) ;
+ int extents_rtree ;
+ scalar_t__ isalloc (int *,void const*) ;
+ int rtree_szind_slab_update (int *,int *,int *,uintptr_t,int ,int) ;
+ int * tsdn_rtree_ctx (int *,int *) ;
 
 __attribute__((used)) static size_t
 arena_prof_demote(tsdn_t *tsdn, extent_t *extent, const void *ptr) {
-	cassert(config_prof);
-	assert(ptr != NULL);
+ cassert(config_prof);
+ assert(ptr != ((void*)0));
 
-	extent_szind_set(extent, SC_NBINS);
-	rtree_ctx_t rtree_ctx_fallback;
-	rtree_ctx_t *rtree_ctx = tsdn_rtree_ctx(tsdn, &rtree_ctx_fallback);
-	rtree_szind_slab_update(tsdn, &extents_rtree, rtree_ctx, (uintptr_t)ptr,
-	    SC_NBINS, false);
+ extent_szind_set(extent, SC_NBINS);
+ rtree_ctx_t rtree_ctx_fallback;
+ rtree_ctx_t *rtree_ctx = tsdn_rtree_ctx(tsdn, &rtree_ctx_fallback);
+ rtree_szind_slab_update(tsdn, &extents_rtree, rtree_ctx, (uintptr_t)ptr,
+     SC_NBINS, 0);
 
-	assert(isalloc(tsdn, ptr) == SC_LARGE_MINCLASS);
+ assert(isalloc(tsdn, ptr) == SC_LARGE_MINCLASS);
 
-	return SC_LARGE_MINCLASS;
+ return SC_LARGE_MINCLASS;
 }

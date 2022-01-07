@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONGLONG ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FAILED (int /*<<< orphan*/ ) ; 
- int FALSE ; 
- int /*<<< orphan*/  ITaskbarList3_SetProgressValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hMainDialog ; 
- int /*<<< orphan*/ * ptbl ; 
+
+
+
+typedef int ULONGLONG ;
+typedef int BOOL ;
+
+
+ int FAILED (int ) ;
+ int FALSE ;
+ int ITaskbarList3_SetProgressValue (int *,int ,int ,int ) ;
+ int hMainDialog ;
+ int * ptbl ;
 
 BOOL SetTaskbarProgressValue(ULONGLONG ullCompleted, ULONGLONG ullTotal)
 {
-	if (ptbl == NULL)
-		return FALSE;
-	return !FAILED(ITaskbarList3_SetProgressValue(ptbl, hMainDialog, ullCompleted, ullTotal));
+ if (ptbl == ((void*)0))
+  return FALSE;
+ return !FAILED(ITaskbarList3_SetProgressValue(ptbl, hMainDialog, ullCompleted, ullTotal));
 }

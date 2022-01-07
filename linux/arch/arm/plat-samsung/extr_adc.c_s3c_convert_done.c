@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct s3c_adc_client {unsigned int result; int /*<<< orphan*/  wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ ) ; 
+
+
+
+struct s3c_adc_client {unsigned int result; int wait; } ;
+
+
+ int wake_up (int ) ;
 
 __attribute__((used)) static void s3c_convert_done(struct s3c_adc_client *client,
-			     unsigned v, unsigned u, unsigned *left)
+        unsigned v, unsigned u, unsigned *left)
 {
-	client->result = v;
-	wake_up(client->wait);
+ client->result = v;
+ wake_up(client->wait);
 }

@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
+ int OPENSSL_assert (int) ;
 
 __attribute__((used)) static size_t der_encode_length(size_t len, unsigned char **pp)
 {
@@ -26,7 +18,7 @@ __attribute__((used)) static size_t der_encode_length(size_t len, unsigned char 
     else
         lenbytes = 1;
 
-    if (pp != NULL) {
+    if (pp != ((void*)0)) {
         if (lenbytes == 1) {
             *(*pp)++ = (unsigned char)len;
         } else {

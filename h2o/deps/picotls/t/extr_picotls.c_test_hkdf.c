@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char const uint8_t ;
-typedef  int /*<<< orphan*/  salt ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef char const uint8_t ;
+typedef int salt ;
 struct TYPE_5__ {int digest_size; } ;
-typedef  TYPE_1__ ptls_hash_algorithm_t ;
-typedef  int /*<<< orphan*/  okm ;
-typedef  int /*<<< orphan*/  info ;
-typedef  int /*<<< orphan*/  ikm ;
+typedef TYPE_1__ ptls_hash_algorithm_t ;
+typedef int okm ;
+typedef int info ;
+typedef int ikm ;
 struct TYPE_6__ {TYPE_1__* hash; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTLS_CIPHER_SUITE_AES_128_GCM_SHA256 ; 
- int PTLS_MAX_DIGEST_SIZE ; 
- int /*<<< orphan*/  ctx ; 
- TYPE_4__* find_cipher (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (char const*,char*,int) ; 
- int /*<<< orphan*/  ok (int) ; 
- int /*<<< orphan*/  ptls_hkdf_expand (TYPE_1__*,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_hkdf_extract (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ptls_iovec_init (char const*,int) ; 
+
+ int PTLS_CIPHER_SUITE_AES_128_GCM_SHA256 ;
+ int PTLS_MAX_DIGEST_SIZE ;
+ int ctx ;
+ TYPE_4__* find_cipher (int ,int ) ;
+ scalar_t__ memcmp (char const*,char*,int) ;
+ int ok (int) ;
+ int ptls_hkdf_expand (TYPE_1__*,char const*,int,int ,int ) ;
+ int ptls_hkdf_extract (TYPE_1__*,char const*,int ,int ) ;
+ int ptls_iovec_init (char const*,int) ;
 
 __attribute__((used)) static void test_hkdf(void)
 {

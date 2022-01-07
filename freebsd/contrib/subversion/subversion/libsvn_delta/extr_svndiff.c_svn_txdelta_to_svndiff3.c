@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-struct encoder_baton {int version; int compression_level; int /*<<< orphan*/  scratch_pool; int /*<<< orphan*/  header_done; int /*<<< orphan*/ * output; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- struct encoder_baton* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  window_handler ; 
+
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_stream_t ;
+struct encoder_baton {int version; int compression_level; int scratch_pool; int header_done; int * output; } ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ struct encoder_baton* apr_palloc (int *,int) ;
+ int svn_pool_create (int *) ;
+ int window_handler ;
 
 void
 svn_txdelta_to_svndiff3(svn_txdelta_window_handler_t *handler,

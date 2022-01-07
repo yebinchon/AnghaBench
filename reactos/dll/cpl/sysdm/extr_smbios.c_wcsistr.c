@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ const wchar_t ;
 
-/* Variables and functions */
- scalar_t__ towlower (scalar_t__ const) ; 
+
+
+
+typedef scalar_t__ const wchar_t ;
+
+
+ scalar_t__ towlower (scalar_t__ const) ;
 
 __attribute__((used)) static
 wchar_t * wcsistr(const wchar_t *s, const wchar_t *b)
@@ -38,5 +38,5 @@ wchar_t * wcsistr(const wchar_t *s, const wchar_t *b)
         }
         x++;
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_F_SLG_WRITE ; 
- int /*<<< orphan*/  BIOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
-#define  LOG_ALERT 135 
-#define  LOG_CRIT 134 
-#define  LOG_DEBUG 133 
-#define  LOG_EMERG 132 
-#define  LOG_ERR 131 
-#define  LOG_INFO 130 
-#define  LOG_NOTICE 129 
-#define  LOG_WARNING 128 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  xsyslog (int /*<<< orphan*/ *,int,char*) ; 
+
+
+
+typedef int BIO ;
+
+
+ int BIO_F_SLG_WRITE ;
+ int BIOerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_malloc (int) ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int xsyslog (int *,int,char*) ;
 
 __attribute__((used)) static int slg_write(BIO *b, const char *in, int inl)
 {
@@ -42,69 +34,69 @@ __attribute__((used)) static int slg_write(BIO *b, const char *in, int inl)
         int log_level;
     } mapping[] = {
         {
-            6, "PANIC ", LOG_EMERG
+            6, "PANIC ", 132
         },
         {
-            6, "EMERG ", LOG_EMERG
+            6, "EMERG ", 132
         },
         {
-            4, "EMR ", LOG_EMERG
+            4, "EMR ", 132
         },
         {
-            6, "ALERT ", LOG_ALERT
+            6, "ALERT ", 135
         },
         {
-            4, "ALR ", LOG_ALERT
+            4, "ALR ", 135
         },
         {
-            5, "CRIT ", LOG_CRIT
+            5, "CRIT ", 134
         },
         {
-            4, "CRI ", LOG_CRIT
+            4, "CRI ", 134
         },
         {
-            6, "ERROR ", LOG_ERR
+            6, "ERROR ", 131
         },
         {
-            4, "ERR ", LOG_ERR
+            4, "ERR ", 131
         },
         {
-            8, "WARNING ", LOG_WARNING
+            8, "WARNING ", 128
         },
         {
-            5, "WARN ", LOG_WARNING
+            5, "WARN ", 128
         },
         {
-            4, "WAR ", LOG_WARNING
+            4, "WAR ", 128
         },
         {
-            7, "NOTICE ", LOG_NOTICE
+            7, "NOTICE ", 129
         },
         {
-            5, "NOTE ", LOG_NOTICE
+            5, "NOTE ", 129
         },
         {
-            4, "NOT ", LOG_NOTICE
+            4, "NOT ", 129
         },
         {
-            5, "INFO ", LOG_INFO
+            5, "INFO ", 130
         },
         {
-            4, "INF ", LOG_INFO
+            4, "INF ", 130
         },
         {
-            6, "DEBUG ", LOG_DEBUG
+            6, "DEBUG ", 133
         },
         {
-            4, "DBG ", LOG_DEBUG
+            4, "DBG ", 133
         },
         {
-            0, "", LOG_ERR
+            0, "", 131
         }
-        /* The default */
+
     };
 
-    if ((buf = OPENSSL_malloc(inl + 1)) == NULL) {
+    if ((buf = OPENSSL_malloc(inl + 1)) == ((void*)0)) {
         BIOerr(BIO_F_SLG_WRITE, ERR_R_MALLOC_FAILURE);
         return 0;
     }

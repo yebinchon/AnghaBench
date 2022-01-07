@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vchiq_params ;
-typedef  scalar_t__ VCOS_STATUS_T ;
-typedef  scalar_t__ VCHIQ_STATUS_T ;
-struct TYPE_5__ {int /*<<< orphan*/  version_min; int /*<<< orphan*/  version; TYPE_2__* userdata; int /*<<< orphan*/  callback; int /*<<< orphan*/  fourcc; } ;
-typedef  TYPE_1__ VCHIQ_SERVICE_PARAMS_T ;
-struct TYPE_6__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  refcount; int /*<<< orphan*/  service; int /*<<< orphan*/  waitpool; } ;
 
-/* Variables and functions */
- scalar_t__ VCHIQ_SUCCESS ; 
- scalar_t__ VCOS_ENXIO ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  VCOS_LOG_CATEGORY ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  WFC_CLIENT_IPC_LOGLEVEL ; 
- int /*<<< orphan*/  WFC_IPC_CONTROL_FOURCC () ; 
- int /*<<< orphan*/  WFC_IPC_VER_CURRENT ; 
- int /*<<< orphan*/  WFC_IPC_VER_MINIMUM ; 
- int /*<<< orphan*/  init_once ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ vchiq_connect (int /*<<< orphan*/ ) ; 
- scalar_t__ vchiq_initialise (int /*<<< orphan*/ *) ; 
- scalar_t__ vchiq_open_service (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vchiq_release_service (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiq_remove_service (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vchiq_shutdown (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vcos_log_register (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_set_level (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_once (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__ wfc_client_ipc ; 
- scalar_t__ wfc_client_ipc_create_waitpool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wfc_client_ipc_destroy_waitpool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wfc_client_ipc_once ; 
- scalar_t__ wfc_client_ipc_send_client_pid () ; 
- int /*<<< orphan*/  wfc_client_ipc_vchiq_callback ; 
- int /*<<< orphan*/  wfc_client_ipc_vchiq_instance ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vchiq_params ;
+typedef scalar_t__ VCOS_STATUS_T ;
+typedef scalar_t__ VCHIQ_STATUS_T ;
+struct TYPE_5__ {int version_min; int version; TYPE_2__* userdata; int callback; int fourcc; } ;
+typedef TYPE_1__ VCHIQ_SERVICE_PARAMS_T ;
+struct TYPE_6__ {int lock; int refcount; int service; int waitpool; } ;
+
+
+ scalar_t__ VCHIQ_SUCCESS ;
+ scalar_t__ VCOS_ENXIO ;
+ int VCOS_FUNCTION ;
+ int VCOS_LOG_CATEGORY ;
+ scalar_t__ VCOS_SUCCESS ;
+ int WFC_CLIENT_IPC_LOGLEVEL ;
+ int WFC_IPC_CONTROL_FOURCC () ;
+ int WFC_IPC_VER_CURRENT ;
+ int WFC_IPC_VER_MINIMUM ;
+ int init_once ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ vchiq_connect (int ) ;
+ scalar_t__ vchiq_initialise (int *) ;
+ scalar_t__ vchiq_open_service (int ,TYPE_1__*,int *) ;
+ int vchiq_release_service (int ) ;
+ int vchiq_remove_service (int ) ;
+ int vchiq_shutdown (int ) ;
+ int vcos_log_error (char*,int ,scalar_t__) ;
+ int vcos_log_register (char*,int ) ;
+ int vcos_log_set_level (int ,int ) ;
+ int vcos_log_trace (char*,int ) ;
+ int vcos_log_unregister (int ) ;
+ int vcos_mutex_lock (int *) ;
+ int vcos_mutex_unlock (int *) ;
+ int vcos_once (int *,int ) ;
+ TYPE_2__ wfc_client_ipc ;
+ scalar_t__ wfc_client_ipc_create_waitpool (int *) ;
+ int wfc_client_ipc_destroy_waitpool (int *) ;
+ int wfc_client_ipc_once ;
+ scalar_t__ wfc_client_ipc_send_client_pid () ;
+ int wfc_client_ipc_vchiq_callback ;
+ int wfc_client_ipc_vchiq_instance ;
 
 VCOS_STATUS_T wfc_client_ipc_init(void)
 {
    VCHIQ_SERVICE_PARAMS_T vchiq_params;
-   bool vchiq_initialised = false, waitpool_initialised = false;
-   bool service_initialised = false;
+   bool vchiq_initialised = 0, waitpool_initialised = 0;
+   bool service_initialised = 0;
    VCOS_STATUS_T status = VCOS_ENXIO;
    VCHIQ_STATUS_T vchiq_status;
 
@@ -67,7 +67,7 @@ VCOS_STATUS_T wfc_client_ipc_init(void)
 
    if (wfc_client_ipc.refcount++ > 0)
    {
-      /* Already initialised so nothing to do */
+
       vcos_mutex_unlock(&wfc_client_ipc.lock);
       return VCOS_SUCCESS;
    }
@@ -77,14 +77,14 @@ VCOS_STATUS_T wfc_client_ipc_init(void)
 
    vcos_log_trace("%s: starting initialisation", VCOS_FUNCTION);
 
-   /* Initialise a VCHIQ instance */
+
    vchiq_status = vchiq_initialise(&wfc_client_ipc_vchiq_instance);
    if (vchiq_status != VCHIQ_SUCCESS)
    {
       vcos_log_error("%s: failed to initialise vchiq: %d", VCOS_FUNCTION, vchiq_status);
       goto error;
    }
-   vchiq_initialised = true;
+   vchiq_initialised = 1;
 
    vchiq_status = vchiq_connect(wfc_client_ipc_vchiq_instance);
    if (vchiq_status != VCHIQ_SUCCESS)
@@ -106,7 +106,7 @@ VCOS_STATUS_T wfc_client_ipc_init(void)
       vcos_log_error("%s: could not open vchiq service: %d", VCOS_FUNCTION, vchiq_status);
       goto error;
    }
-   service_initialised = true;
+   service_initialised = 1;
 
    status = wfc_client_ipc_create_waitpool(&wfc_client_ipc.waitpool);
    if (status != VCOS_SUCCESS)
@@ -114,9 +114,9 @@ VCOS_STATUS_T wfc_client_ipc_init(void)
       vcos_log_error("%s: could not create wait pool: %d", VCOS_FUNCTION, status);
       goto error;
    }
-   waitpool_initialised = true;
+   waitpool_initialised = 1;
 
-   /* Allow videocore to suspend, drops count to zero. */
+
    vchiq_release_service(wfc_client_ipc.service);
 
    vcos_mutex_unlock(&wfc_client_ipc.lock);

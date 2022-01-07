@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  test_array () ; 
- int /*<<< orphan*/  test_array_designator () ; 
- int /*<<< orphan*/  test_complex_designator () ; 
- int /*<<< orphan*/  test_excessive () ; 
- int /*<<< orphan*/  test_nested () ; 
- int /*<<< orphan*/  test_primitive () ; 
- int /*<<< orphan*/  test_string () ; 
- int /*<<< orphan*/  test_struct () ; 
- int /*<<< orphan*/  test_struct_designator () ; 
- int /*<<< orphan*/  test_typedef () ; 
- int /*<<< orphan*/  test_zero () ; 
+ int print (char*) ;
+ int test_array () ;
+ int test_array_designator () ;
+ int test_complex_designator () ;
+ int test_excessive () ;
+ int test_nested () ;
+ int test_primitive () ;
+ int test_string () ;
+ int test_struct () ;
+ int test_struct_designator () ;
+ int test_typedef () ;
+ int test_zero () ;
 
 void testmain() {
     print("initializer");

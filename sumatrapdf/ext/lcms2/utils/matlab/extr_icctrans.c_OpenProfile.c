@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  int /*<<< orphan*/  cmsContext ;
-typedef  int /*<<< orphan*/  cmsCIExyY ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * cmsBuildGamma (int /*<<< orphan*/ ,double) ; 
- int /*<<< orphan*/  cmsCreateGrayProfileTHR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateLab2ProfileTHR (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateLab4ProfileTHR (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsCreateLinearizationDeviceLink (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  cmsCreateNULLProfileTHR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateXYZProfileTHR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfileTHR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsD50_xyY () ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsOpenProfileFromFileTHR (int /*<<< orphan*/ ,char const*,char*) ; 
- int /*<<< orphan*/  cmsSigCmykData ; 
- int /*<<< orphan*/  cmsWhitePointFromTemp (int /*<<< orphan*/ *,int) ; 
- scalar_t__ cmsstrcasecmp (char const*,char*) ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsHPROFILE ;
+typedef int cmsContext ;
+typedef int cmsCIExyY ;
+
+
+ int * cmsBuildGamma (int ,double) ;
+ int cmsCreateGrayProfileTHR (int ,int ,int *) ;
+ int cmsCreateLab2ProfileTHR (int ,int *) ;
+ int cmsCreateLab4ProfileTHR (int ,int *) ;
+ int cmsCreateLinearizationDeviceLink (int ,int **) ;
+ int cmsCreateNULLProfileTHR (int ) ;
+ int cmsCreateXYZProfileTHR (int ) ;
+ int cmsCreate_sRGBProfileTHR (int ) ;
+ int cmsD50_xyY () ;
+ int cmsFreeToneCurve (int *) ;
+ int cmsOpenProfileFromFileTHR (int ,char const*,char*) ;
+ int cmsSigCmykData ;
+ int cmsWhitePointFromTemp (int *,int) ;
+ scalar_t__ cmsstrcasecmp (char const*,char*) ;
 
 __attribute__((used)) static
 cmsHPROFILE OpenProfile(const char* File)
-{   
+{
 
-	cmsContext ContextID = 0;
+ cmsContext ContextID = 0;
 
-	   if (!File) 
-            return cmsCreate_sRGBProfileTHR(ContextID);    
+    if (!File)
+            return cmsCreate_sRGBProfileTHR(ContextID);
 
        if (cmsstrcasecmp(File, "*Lab2") == 0)
-                return cmsCreateLab2ProfileTHR(ContextID, NULL);
+                return cmsCreateLab2ProfileTHR(ContextID, ((void*)0));
 
        if (cmsstrcasecmp(File, "*Lab4") == 0)
-                return cmsCreateLab4ProfileTHR(ContextID, NULL);
+                return cmsCreateLab4ProfileTHR(ContextID, ((void*)0));
 
        if (cmsstrcasecmp(File, "*Lab") == 0)
-                return cmsCreateLab4ProfileTHR(ContextID, NULL);
-       
+                return cmsCreateLab4ProfileTHR(ContextID, ((void*)0));
+
        if (cmsstrcasecmp(File, "*LabD65") == 0) {
 
            cmsCIExyY D65xyY;
-           
-           cmsWhitePointFromTemp( &D65xyY, 6504);           
+
+           cmsWhitePointFromTemp( &D65xyY, 6504);
            return cmsCreateLab4ProfileTHR(ContextID, &D65xyY);
        }
 
@@ -82,12 +82,12 @@ cmsHPROFILE OpenProfile(const char* File)
        if (cmsstrcasecmp(File, "*null") == 0)
                 return cmsCreateNULLProfileTHR(ContextID);
 
-       
+
        if (cmsstrcasecmp(File, "*Lin2222") == 0) {
 
-            cmsToneCurve*  Gamma = cmsBuildGamma(0, 2.2);
-            cmsToneCurve*  Gamma4[4];
-            cmsHPROFILE hProfile; 
+            cmsToneCurve* Gamma = cmsBuildGamma(0, 2.2);
+            cmsToneCurve* Gamma4[4];
+            cmsHPROFILE hProfile;
 
             Gamma4[0] = Gamma4[1] = Gamma4[2] = Gamma4[3] = Gamma;
             hProfile = cmsCreateLinearizationDeviceLink(cmsSigCmykData, Gamma4);
@@ -95,6 +95,6 @@ cmsHPROFILE OpenProfile(const char* File)
             return hProfile;
        }
 
-           
+
         return cmsOpenProfileFromFileTHR(ContextID, File, "r");
 }

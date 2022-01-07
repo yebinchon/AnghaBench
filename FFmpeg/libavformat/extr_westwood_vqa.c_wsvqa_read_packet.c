@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_13__ {int audio_stream_index; int sample_rate; int channels; int bps; int video_stream_index; int /*<<< orphan*/  version; } ;
-typedef  TYPE_1__ WsVqaDemuxContext ;
-struct TYPE_17__ {int sample_rate; int bits_per_coded_sample; int channels; int /*<<< orphan*/  extradata; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
-struct TYPE_15__ {int stream_index; int duration; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_13__ {int audio_stream_index; int sample_rate; int channels; int bps; int video_stream_index; int version; } ;
+typedef TYPE_1__ WsVqaDemuxContext ;
+struct TYPE_17__ {int sample_rate; int bits_per_coded_sample; int channels; int extradata; int codec_id; int codec_type; } ;
+struct TYPE_16__ {int * pb; TYPE_1__* priv_data; } ;
+struct TYPE_15__ {int stream_index; int duration; int data; } ;
 struct TYPE_14__ {int index; TYPE_7__* codecpar; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CODEC_ID_ADPCM_IMA_WS ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_S16LE ; 
- int /*<<< orphan*/  AV_CODEC_ID_PCM_U8 ; 
- int /*<<< orphan*/  AV_CODEC_ID_WESTWOOD_SND1 ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int AV_RB32 (int /*<<< orphan*/ *) ; 
- int AV_RL16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WL16 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  CMDS_TAG 132 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
-#define  SND0_TAG 131 
-#define  SND1_TAG 130 
-#define  SND2_TAG 129 
- int VQA_PREAMBLE_SIZE ; 
-#define  VQFR_TAG 128 
- int /*<<< orphan*/  av_bswap32 (int) ; 
- int /*<<< orphan*/  av_fourcc2str (int /*<<< orphan*/ ) ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  ff_alloc_extradata (TYPE_7__*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CODEC_ID_ADPCM_IMA_WS ;
+ int AV_CODEC_ID_PCM_S16LE ;
+ int AV_CODEC_ID_PCM_U8 ;
+ int AV_CODEC_ID_WESTWOOD_SND1 ;
+ int AV_LOG_INFO ;
+ int AV_RB32 (int *) ;
+ int AV_RL16 (int ) ;
+ int AV_WL16 (int ,int ) ;
+
+ int EIO ;
+ int ENOMEM ;
+
+
+
+ int VQA_PREAMBLE_SIZE ;
+
+ int av_bswap32 (int) ;
+ int av_fourcc2str (int ) ;
+ int av_get_packet (int *,TYPE_3__*,int) ;
+ int av_log (TYPE_4__*,int ,char*,int ) ;
+ TYPE_2__* avformat_new_stream (TYPE_4__*,int *) ;
+ int avio_read (int *,int *,int) ;
+ int avio_skip (int *,int) ;
+ int avpriv_set_pts_info (TYPE_2__*,int,int,int) ;
+ int ff_alloc_extradata (TYPE_7__*,int) ;
 
 __attribute__((used)) static int wsvqa_read_packet(AVFormatContext *s,
                              AVPacket *pkt)
@@ -74,19 +74,19 @@ __attribute__((used)) static int wsvqa_read_packet(AVFormatContext *s,
 
         skip_byte = chunk_size & 0x01;
 
-        if ((chunk_type == SND0_TAG) || (chunk_type == SND1_TAG) ||
-            (chunk_type == SND2_TAG) || (chunk_type == VQFR_TAG)) {
+        if ((chunk_type == 131) || (chunk_type == 130) ||
+            (chunk_type == 129) || (chunk_type == 128)) {
 
             ret= av_get_packet(pb, pkt, chunk_size);
             if (ret<0)
                 return AVERROR(EIO);
 
             switch (chunk_type) {
-            case SND0_TAG:
-            case SND1_TAG:
-            case SND2_TAG:
+            case 131:
+            case 130:
+            case 129:
                 if (wsvqa->audio_stream_index == -1) {
-                    AVStream *st = avformat_new_stream(s, NULL);
+                    AVStream *st = avformat_new_stream(s, ((void*)0));
                     if (!st)
                         return AVERROR(ENOMEM);
 
@@ -105,16 +105,16 @@ __attribute__((used)) static int wsvqa_read_packet(AVFormatContext *s,
                     avpriv_set_pts_info(st, 64, 1, st->codecpar->sample_rate);
 
                     switch (chunk_type) {
-                    case SND0_TAG:
+                    case 131:
                         if (wsvqa->bps == 16)
                             st->codecpar->codec_id = AV_CODEC_ID_PCM_S16LE;
                         else
                             st->codecpar->codec_id = AV_CODEC_ID_PCM_U8;
                         break;
-                    case SND1_TAG:
+                    case 130:
                         st->codecpar->codec_id = AV_CODEC_ID_WESTWOOD_SND1;
                         break;
-                    case SND2_TAG:
+                    case 129:
                         st->codecpar->codec_id = AV_CODEC_ID_ADPCM_IMA_WS;
                         if (ff_alloc_extradata(st->codecpar, 2))
                             return AVERROR(ENOMEM);
@@ -125,31 +125,31 @@ __attribute__((used)) static int wsvqa_read_packet(AVFormatContext *s,
 
                 pkt->stream_index = wsvqa->audio_stream_index;
                 switch (chunk_type) {
-                case SND1_TAG:
-                    /* unpacked size is stored in header */
+                case 130:
+
                     if(pkt->data)
                         pkt->duration = AV_RL16(pkt->data) / wsvqa->channels;
                     break;
-                case SND2_TAG:
-                    /* 2 samples/byte, 1 or 2 samples per frame depending on stereo */
+                case 129:
+
                     pkt->duration = (chunk_size * 2) / wsvqa->channels;
                     break;
                 }
                 break;
-            case VQFR_TAG:
+            case 128:
                 pkt->stream_index = wsvqa->video_stream_index;
                 pkt->duration = 1;
                 break;
             }
 
-            /* stay on 16-bit alignment */
+
             if (skip_byte)
                 avio_skip(pb, 1);
 
             return ret;
         } else {
             switch(chunk_type){
-            case CMDS_TAG:
+            case 132:
                 break;
             default:
                 av_log(s, AV_LOG_INFO, "Skipping unknown chunk %s\n",

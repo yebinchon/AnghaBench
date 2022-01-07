@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct gv_volume {void* size; TYPE_1__* provider; } ;
-typedef  void* off_t ;
+typedef void* off_t ;
 struct TYPE_2__ {void* mediasize; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_topology_lock () ; 
- int /*<<< orphan*/  g_topology_unlock () ; 
+
+ int g_topology_lock () ;
+ int g_topology_unlock () ;
 
 void
 gv_update_vol_size(struct gv_volume *v, off_t size)
 {
-	if (v == NULL)
-		return;
-	if (v->provider != NULL) {
-		g_topology_lock();
-		v->provider->mediasize = size;
-		g_topology_unlock();
-	}
-	v->size = size;
+ if (v == ((void*)0))
+  return;
+ if (v->provider != ((void*)0)) {
+  g_topology_lock();
+  v->provider->mediasize = size;
+  g_topology_unlock();
+ }
+ v->size = size;
 }

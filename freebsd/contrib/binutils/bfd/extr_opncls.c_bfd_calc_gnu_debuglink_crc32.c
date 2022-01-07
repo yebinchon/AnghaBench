@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int bfd_size_type ;
 
-/* Variables and functions */
+
+
+
+typedef int bfd_size_type ;
+
+
 
 unsigned long
 bfd_calc_gnu_debuglink_crc32 (unsigned long crc,
-			      const unsigned char *buf,
-			      bfd_size_type len)
+         const unsigned char *buf,
+         bfd_size_type len)
 {
   static const unsigned long crc32_table[256] =
     {

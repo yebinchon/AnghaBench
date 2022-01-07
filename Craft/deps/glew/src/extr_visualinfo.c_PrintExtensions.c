@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  file ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+ int file ;
+ int fprintf (int ,char*,char*) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 void PrintExtensions (const char* s)
 {
@@ -30,13 +22,13 @@ void PrintExtensions (const char* s)
     if(*s == ' ')
     {
       if (*(s+1) != '\0') {
-	t[i-1] = ',';
-	t[i] = ' ';
-	p = &t[i++];
+ t[i-1] = ',';
+ t[i] = ' ';
+ p = &t[i++];
       }
-      else /* zoinks! last one terminated in a space! */
+      else
       {
-	t[i-1] = '\0';
+ t[i-1] = '\0';
       }
     }
     if(i > 80 - 5)

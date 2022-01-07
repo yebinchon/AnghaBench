@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct poll_table_entry {int /*<<< orphan*/  filp; int /*<<< orphan*/  wait; int /*<<< orphan*/  wait_address; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fput (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct poll_table_entry {int filp; int wait; int wait_address; } ;
+
+
+ int fput (int ) ;
+ int remove_wait_queue (int ,int *) ;
 
 __attribute__((used)) static void free_poll_entry(struct poll_table_entry *entry)
 {
-	remove_wait_queue(entry->wait_address, &entry->wait);
-	fput(entry->filp);
+ remove_wait_queue(entry->wait_address, &entry->wait);
+ fput(entry->filp);
 }

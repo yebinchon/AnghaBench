@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_6__ {int mask; scalar_t__ iImage; int /*<<< orphan*/  pszText; scalar_t__ iSubItem; scalar_t__ iItem; } ;
-struct TYPE_5__ {int cbSize; int /*<<< orphan*/  ImageList; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__ SP_CLASSIMAGELIST_DATA ;
-typedef  int /*<<< orphan*/  (* SH_GIL_PROC ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  TYPE_2__ LV_ITEM ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HMODULE ;
-typedef  int /*<<< orphan*/  HIMAGELIST ;
-typedef  int /*<<< orphan*/  (* FII_PROC ) (int /*<<< orphan*/ ) ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IDC_DEVICE ; 
- int /*<<< orphan*/  IDC_LSTVIEW ; 
- scalar_t__ IDC_SYSTEM ; 
- scalar_t__ ImageList_GetImageCount (int /*<<< orphan*/ ) ; 
- int LVIF_IMAGE ; 
- int LVIF_TEXT ; 
- int /*<<< orphan*/  LVSIL_SMALL ; 
- int /*<<< orphan*/  ListView_DeleteAllItems (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ListView_InsertItem (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  ListView_SetImageList (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * LoadLibrary (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetupDiGetClassImageList (TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _itot (scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_6__ {int mask; scalar_t__ iImage; int pszText; scalar_t__ iSubItem; scalar_t__ iItem; } ;
+struct TYPE_5__ {int cbSize; int ImageList; } ;
+typedef int TCHAR ;
+typedef TYPE_1__ SP_CLASSIMAGELIST_DATA ;
+typedef int (* SH_GIL_PROC ) (int *,int *) ;
+typedef TYPE_2__ LV_ITEM ;
+typedef int LPCSTR ;
+typedef scalar_t__ INT ;
+typedef int HWND ;
+typedef int * HMODULE ;
+typedef int HIMAGELIST ;
+typedef int (* FII_PROC ) (int ) ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FreeLibrary (int *) ;
+ int GetDlgItem (int ,int ) ;
+ scalar_t__ GetProcAddress (int *,int ) ;
+ scalar_t__ IDC_DEVICE ;
+ int IDC_LSTVIEW ;
+ scalar_t__ IDC_SYSTEM ;
+ scalar_t__ ImageList_GetImageCount (int ) ;
+ int LVIF_IMAGE ;
+ int LVIF_TEXT ;
+ int LVSIL_SMALL ;
+ int ListView_DeleteAllItems (int ) ;
+ int ListView_InsertItem (int ,TYPE_2__*) ;
+ int ListView_SetImageList (int ,int ,int ) ;
+ int * LoadLibrary (int ) ;
+ int SetupDiGetClassImageList (TYPE_1__*) ;
+ int TRUE ;
+ int _T (char*) ;
+ int _itot (scalar_t__,int *,int) ;
 
 BOOL
 DisplayImageList(HWND hwnd,
@@ -65,18 +65,18 @@ DisplayImageList(HWND hwnd,
     if (uID == IDC_SYSTEM)
     {
         HIMAGELIST hLarge, hSmall;
-        HMODULE      hShell32;
-        SH_GIL_PROC  Shell_GetImageLists;
-        FII_PROC     FileIconInit;
+        HMODULE hShell32;
+        SH_GIL_PROC Shell_GetImageLists;
+        FII_PROC FileIconInit;
 
         hShell32 = LoadLibrary(_T("shell32.dll"));
-        if(hShell32 == NULL)
+        if(hShell32 == ((void*)0))
             return FALSE;
 
         Shell_GetImageLists = (SH_GIL_PROC)GetProcAddress(hShell32, (LPCSTR)71);
         FileIconInit = (FII_PROC)GetProcAddress(hShell32, (LPCSTR)660);
 
-        if(Shell_GetImageLists == NULL || FileIconInit == NULL)
+        if(Shell_GetImageLists == ((void*)0) || FileIconInit == ((void*)0))
         {
             FreeLibrary(hShell32);
             return FALSE;

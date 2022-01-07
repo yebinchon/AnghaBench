@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * ele; int /*<<< orphan*/  flags; int /*<<< orphan*/  ell; int /*<<< orphan*/  elen; int /*<<< orphan*/ * estr; } ;
-typedef  TYPE_1__ zsetopval ;
-typedef  int /*<<< orphan*/ * sds ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPVAL_DIRTY_SDS ; 
- int /*<<< orphan*/ * sdsfromlonglong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sdsnewlen (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * ele; int flags; int ell; int elen; int * estr; } ;
+typedef TYPE_1__ zsetopval ;
+typedef int * sds ;
+
+
+ int OPVAL_DIRTY_SDS ;
+ int * sdsfromlonglong (int ) ;
+ int * sdsnewlen (char*,int ) ;
 
 sds zuiSdsFromValue(zsetopval *val) {
-    if (val->ele == NULL) {
-        if (val->estr != NULL) {
+    if (val->ele == ((void*)0)) {
+        if (val->estr != ((void*)0)) {
             val->ele = sdsnewlen((char*)val->estr,val->elen);
         } else {
             val->ele = sdsfromlonglong(val->ell);

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  ID3v2ExtraMeta ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int ID3v2_HEADER_SIZE ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int avio_read (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_id3v2_34_metadata_conv ; 
- int /*<<< orphan*/  ff_id3v2_4_metadata_conv ; 
- int ff_id3v2_match (int*,char const*) ; 
- int /*<<< orphan*/  ff_metadata_conv (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ffio_ensure_seekback (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  id3v2_2_metadata_conv ; 
- int /*<<< orphan*/  id3v2_parse (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  merge_date (int /*<<< orphan*/ **) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef int ID3v2ExtraMeta ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+typedef int AVDictionary ;
+
+
+ int ID3v2_HEADER_SIZE ;
+ int SEEK_SET ;
+ int avio_read (int *,int*,int) ;
+ int avio_seek (int *,int,int ) ;
+ int avio_tell (int *) ;
+ int ff_id3v2_34_metadata_conv ;
+ int ff_id3v2_4_metadata_conv ;
+ int ff_id3v2_match (int*,char const*) ;
+ int ff_metadata_conv (int **,int *,int ) ;
+ int ffio_ensure_seekback (int *,int) ;
+ int id3v2_2_metadata_conv ;
+ int id3v2_parse (int *,int **,int *,int,int,int,int **) ;
+ int merge_date (int **) ;
 
 __attribute__((used)) static void id3v2_read_internal(AVIOContext *pb, AVDictionary **metadata,
                                 AVFormatContext *s, const char *magic,
@@ -46,7 +46,7 @@ __attribute__((used)) static void id3v2_read_internal(AVIOContext *pb, AVDiction
 
     start = avio_tell(pb);
     do {
-        /* save the current offset in case there's nothing to read/skip */
+
         off = avio_tell(pb);
         if (max_search_size && off - start >= max_search_size - ID3v2_HEADER_SIZE) {
             avio_seek(pb, off, SEEK_SET);
@@ -62,7 +62,7 @@ __attribute__((used)) static void id3v2_read_internal(AVIOContext *pb, AVDiction
         }
         found_header = ff_id3v2_match(buf, magic);
         if (found_header) {
-            /* parse ID3v2 header */
+
             len = ((buf[6] & 0x7f) << 21) |
                   ((buf[7] & 0x7f) << 14) |
                   ((buf[8] & 0x7f) << 7) |
@@ -72,8 +72,8 @@ __attribute__((used)) static void id3v2_read_internal(AVIOContext *pb, AVDiction
             avio_seek(pb, off, SEEK_SET);
         }
     } while (found_header);
-    ff_metadata_conv(metadata, NULL, ff_id3v2_34_metadata_conv);
-    ff_metadata_conv(metadata, NULL, id3v2_2_metadata_conv);
-    ff_metadata_conv(metadata, NULL, ff_id3v2_4_metadata_conv);
+    ff_metadata_conv(metadata, ((void*)0), ff_id3v2_34_metadata_conv);
+    ff_metadata_conv(metadata, ((void*)0), id3v2_2_metadata_conv);
+    ff_metadata_conv(metadata, ((void*)0), ff_id3v2_4_metadata_conv);
     merge_date(metadata);
 }

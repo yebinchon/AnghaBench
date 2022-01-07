@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CONF ;
 
-/* Variables and functions */
- unsigned long CONF_MFLAGS_IGNORE_MISSING_FILE ; 
- unsigned long CONF_MFLAGS_IGNORE_RETURN_CODES ; 
- scalar_t__ CONF_R_NO_SUCH_FILE ; 
- char* CONF_get1_default_config_file () ; 
- int CONF_modules_load (int /*<<< orphan*/ *,char const*,unsigned long) ; 
- scalar_t__ ERR_GET_REASON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  ERR_peek_last_error () ; 
- int /*<<< orphan*/  NCONF_free (int /*<<< orphan*/ *) ; 
- scalar_t__ NCONF_load (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NCONF_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
+
+
+
+typedef int CONF ;
+
+
+ unsigned long CONF_MFLAGS_IGNORE_MISSING_FILE ;
+ unsigned long CONF_MFLAGS_IGNORE_RETURN_CODES ;
+ scalar_t__ CONF_R_NO_SUCH_FILE ;
+ char* CONF_get1_default_config_file () ;
+ int CONF_modules_load (int *,char const*,unsigned long) ;
+ scalar_t__ ERR_GET_REASON (int ) ;
+ int ERR_clear_error () ;
+ int ERR_peek_last_error () ;
+ int NCONF_free (int *) ;
+ scalar_t__ NCONF_load (int *,char*,int *) ;
+ int * NCONF_new (int *) ;
+ int OPENSSL_free (char*) ;
 
 int CONF_modules_load_file(const char *filename, const char *appname,
                            unsigned long flags)
 {
-    char *file = NULL;
-    CONF *conf = NULL;
+    char *file = ((void*)0);
+    CONF *conf = ((void*)0);
     int ret = 0;
-    conf = NCONF_new(NULL);
-    if (conf == NULL)
+    conf = NCONF_new(((void*)0));
+    if (conf == ((void*)0))
         goto err;
 
-    if (filename == NULL) {
+    if (filename == ((void*)0)) {
         file = CONF_get1_default_config_file();
         if (!file)
             goto err;
     } else
         file = (char *)filename;
 
-    if (NCONF_load(conf, file, NULL) <= 0) {
+    if (NCONF_load(conf, file, ((void*)0)) <= 0) {
         if ((flags & CONF_MFLAGS_IGNORE_MISSING_FILE) &&
             (ERR_GET_REASON(ERR_peek_last_error()) == CONF_R_NO_SUCH_FILE)) {
             ERR_clear_error();
@@ -55,7 +55,7 @@ int CONF_modules_load_file(const char *filename, const char *appname,
     ret = CONF_modules_load(conf, appname, flags);
 
  err:
-    if (filename == NULL)
+    if (filename == ((void*)0))
         OPENSSL_free(file);
     NCONF_free(conf);
 

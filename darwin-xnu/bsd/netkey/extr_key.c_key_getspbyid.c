@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
+
+
+
+
+typedef int u_int32_t ;
 struct secpolicy {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LCK_MTX_ASSERT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LCK_MTX_ASSERT_NOTOWNED ; 
- struct secpolicy* __key_getspbyid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lck_mtx_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lck_mtx_unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sadb_mutex ; 
+
+ int LCK_MTX_ASSERT (int ,int ) ;
+ int LCK_MTX_ASSERT_NOTOWNED ;
+ struct secpolicy* __key_getspbyid (int ) ;
+ int lck_mtx_lock (int ) ;
+ int lck_mtx_unlock (int ) ;
+ int sadb_mutex ;
 
 struct secpolicy *
 key_getspbyid(
-			  u_int32_t id)
+     u_int32_t id)
 {
-	struct secpolicy *sp;
-	
+ struct secpolicy *sp;
+
     LCK_MTX_ASSERT(sadb_mutex, LCK_MTX_ASSERT_NOTOWNED);
-    
+
     lck_mtx_lock(sadb_mutex);
     sp = __key_getspbyid(id);
     lck_mtx_unlock(sadb_mutex);
-	
-	return sp;
+
+ return sp;
 }

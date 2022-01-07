@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef scalar_t__ UINT ;
 struct TYPE_3__ {int dmBitsPerPel; } ;
-typedef  TYPE_1__* PDEVMODEW ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__* PDEVMODEW ;
+typedef int * LPTSTR ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ IDS_15BPP ; 
- scalar_t__ IDS_16BPP ; 
- scalar_t__ IDS_24BPP ; 
- scalar_t__ IDS_32BPP ; 
- scalar_t__ IDS_4BPP ; 
- scalar_t__ IDS_8BPP ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char) ; 
- int /*<<< orphan*/  hInstance ; 
+
+ scalar_t__ IDS_15BPP ;
+ scalar_t__ IDS_16BPP ;
+ scalar_t__ IDS_24BPP ;
+ scalar_t__ IDS_32BPP ;
+ scalar_t__ IDS_4BPP ;
+ scalar_t__ IDS_8BPP ;
+ int LoadString (int ,scalar_t__,int *,int ) ;
+ int TEXT (char) ;
+ int hInstance ;
 
 __attribute__((used)) static VOID
 GetColorDescription(PDEVMODEW lpDevMode,

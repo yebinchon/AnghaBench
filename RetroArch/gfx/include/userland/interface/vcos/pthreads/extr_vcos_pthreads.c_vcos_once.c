@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCOS_STATUS_T ;
-typedef  int /*<<< orphan*/  VCOS_ONCE_T ;
 
-/* Variables and functions */
-#define  EINVAL 128 
- int /*<<< orphan*/  VCOS_EACCESS ; 
- int /*<<< orphan*/  VCOS_EINVAL ; 
- int /*<<< orphan*/  VCOS_SUCCESS ; 
- int errno ; 
- int pthread_once (int /*<<< orphan*/ *,void (*) ()) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VCOS_STATUS_T ;
+typedef int VCOS_ONCE_T ;
+
+
+
+ int VCOS_EACCESS ;
+ int VCOS_EINVAL ;
+ int VCOS_SUCCESS ;
+ int errno ;
+ int pthread_once (int *,void (*) ()) ;
+ int vcos_assert (int ) ;
 
 VCOS_STATUS_T vcos_once(VCOS_ONCE_T *once_control,
                         void (*init_routine)(void))
@@ -30,7 +30,7 @@ VCOS_STATUS_T vcos_once(VCOS_ONCE_T *once_control,
    {
       switch (errno)
       {
-      case EINVAL:
+      case 128:
          return VCOS_EINVAL;
       default:
          vcos_assert(0);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {int stex_attached; int /*<<< orphan*/  awh; } ;
-struct TYPE_3__ {int /*<<< orphan*/  gl; struct priv* priv; } ;
-typedef  TYPE_1__ opengl_tex_converter_t ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLsizei ;
 
-/* Variables and functions */
- scalar_t__ SurfaceTexture_attachToGLContext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct priv {int stex_attached; int awh; } ;
+struct TYPE_3__ {int gl; struct priv* priv; } ;
+typedef TYPE_1__ opengl_tex_converter_t ;
+typedef int GLuint ;
+typedef int GLsizei ;
+
+
+ scalar_t__ SurfaceTexture_attachToGLContext (int ,int ) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int msg_Err (int ,char*) ;
 
 __attribute__((used)) static int
 tc_anop_allocate_textures(const opengl_tex_converter_t *tc, GLuint *textures,
@@ -36,6 +36,6 @@ tc_anop_allocate_textures(const opengl_tex_converter_t *tc, GLuint *textures,
         msg_Err(tc->gl, "SurfaceTexture_attachToGLContext failed");
         return VLC_EGENERIC;
     }
-    priv->stex_attached = true;
+    priv->stex_attached = 1;
     return VLC_SUCCESS;
 }

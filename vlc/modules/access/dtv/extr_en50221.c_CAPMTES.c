@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  system_ids_t ;
-struct TYPE_3__ {int i_stream_type; int i_es_pid; int /*<<< orphan*/  i_descriptors; int /*<<< orphan*/  p_descriptors; } ;
-typedef  TYPE_1__ en50221_capmt_es_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyDescriptors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int*) ; 
- int* xrealloc (int*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int system_ids_t ;
+struct TYPE_3__ {int i_stream_type; int i_es_pid; int i_descriptors; int p_descriptors; } ;
+typedef TYPE_1__ en50221_capmt_es_info_t ;
+
+
+ int CopyDescriptors (int ,int ,int const*,int*) ;
+ int* xrealloc (int*,size_t) ;
 
 __attribute__((used)) static uint8_t *CAPMTES( const en50221_capmt_es_info_t *p_es,
                          const system_ids_t *p_ids,

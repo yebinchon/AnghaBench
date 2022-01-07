@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  settings_array; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  scalar_t__ gint ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
-typedef  int /*<<< orphan*/  GtkListBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * GTK_LIST_BOX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GTK_WIDGET (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ ghb_array_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_list_box_get_row_at_index (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  title_add_multiple_set_sensitive (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  title_multiple_can_select (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int settings_array; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef scalar_t__ gint ;
+typedef int gboolean ;
+typedef int GtkWidget ;
+typedef int GtkListBox ;
+
+
+ int FALSE ;
+ int GHB_WIDGET (int ,char*) ;
+ int * GTK_LIST_BOX (int ) ;
+ int * GTK_WIDGET (int *) ;
+ int TRUE ;
+ scalar_t__ ghb_array_len (int ) ;
+ int * gtk_list_box_get_row_at_index (int *,scalar_t__) ;
+ int title_add_multiple_set_sensitive (int *,int ) ;
+ int title_multiple_can_select (int ,scalar_t__) ;
 
 __attribute__((used)) static gboolean
 title_add_multiple_are_conflicts(signal_user_data_t *ud)

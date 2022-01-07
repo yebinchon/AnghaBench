@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  task_name ;
-typedef  scalar_t__ portBASE_TYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_ESP_IPC_TASK_STACK_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ configMAX_PRIORITIES ; 
- int /*<<< orphan*/  ipc_task ; 
- scalar_t__ pdTRUE ; 
- int portNUM_PROCESSORS ; 
- void** s_ipc_ack ; 
- int /*<<< orphan*/ * s_ipc_mutex ; 
- void** s_ipc_sem ; 
- int /*<<< orphan*/ * s_ipc_task_handle ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- void* xSemaphoreCreateBinary () ; 
- int /*<<< orphan*/  xSemaphoreCreateMutex () ; 
- scalar_t__ xTaskCreatePinnedToCore (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,void*,scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int task_name ;
+typedef scalar_t__ portBASE_TYPE ;
+
+
+ int CONFIG_ESP_IPC_TASK_STACK_SIZE ;
+ int assert (int) ;
+ scalar_t__ configMAX_PRIORITIES ;
+ int ipc_task ;
+ scalar_t__ pdTRUE ;
+ int portNUM_PROCESSORS ;
+ void** s_ipc_ack ;
+ int * s_ipc_mutex ;
+ void** s_ipc_sem ;
+ int * s_ipc_task_handle ;
+ int snprintf (char*,int,char*,int) ;
+ void* xSemaphoreCreateBinary () ;
+ int xSemaphoreCreateMutex () ;
+ scalar_t__ xTaskCreatePinnedToCore (int ,char*,int ,void*,scalar_t__,int *,int) ;
 
 __attribute__((used)) static void esp_ipc_init(void)
 {

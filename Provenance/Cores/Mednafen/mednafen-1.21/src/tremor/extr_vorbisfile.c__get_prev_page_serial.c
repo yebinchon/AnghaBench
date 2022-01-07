@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ogg_uint32_t ;
-typedef  int /*<<< orphan*/  ogg_page ;
-typedef  int ogg_int64_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ogg_uint32_t ;
+typedef int ogg_page ;
+typedef int ogg_int64_t ;
 struct TYPE_5__ {int offset; } ;
-typedef  TYPE_1__ OggVorbis_File ;
+typedef TYPE_1__ OggVorbis_File ;
 
-/* Variables and functions */
- int CHUNKSIZE ; 
- int OV_EREAD ; 
- int _get_next_page (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  _lookup_serialno (int,int*,int) ; 
- int _seek_helper (TYPE_1__*,int) ; 
- int ogg_page_granulepos (int /*<<< orphan*/ *) ; 
- int ogg_page_serialno (int /*<<< orphan*/ *) ; 
+
+ int CHUNKSIZE ;
+ int OV_EREAD ;
+ int _get_next_page (TYPE_1__*,int *,int) ;
+ int _lookup_serialno (int,int*,int) ;
+ int _seek_helper (TYPE_1__*,int) ;
+ int ogg_page_granulepos (int *) ;
+ int ogg_page_serialno (int *) ;
 
 __attribute__((used)) static ogg_int64_t _get_prev_page_serial(OggVorbis_File *vf, ogg_int64_t begin,
                                          ogg_uint32_t *serial_list, int serial_n,
@@ -62,17 +62,17 @@ __attribute__((used)) static ogg_int64_t _get_prev_page_serial(OggVorbis_File *v
         }
 
         if(!_lookup_serialno((ogg_uint32_t)ret_serialno,serial_list,serial_n)){
-          /* we fell off the end of the link, which means we seeked
-             back too far and shouldn't have been looking in that link
-             to begin with.  If we found the preferred serial number,
-             forget that we saw it. */
+
+
+
+
           prefoffset=-1;
         }
       }
     }
   }
 
-  /* we're not interested in the page... just the serialno and granpos. */
+
   if(prefoffset>=0)return(prefoffset);
 
   *serialno = ret_serialno;

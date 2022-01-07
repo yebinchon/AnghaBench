@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char* buf; char* name; char* path; scalar_t__ Size; int /*<<< orphan*/  RelBase; int /*<<< orphan*/  ImageBase; } ;
-typedef  TYPE_1__* PLIST_MEMBER ;
-typedef  int /*<<< orphan*/  LIST_MEMBER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVALID_BASE ; 
- TYPE_1__* entry_delete (TYPE_1__*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*) ; 
- void* malloc (int) ; 
- int sscanf (char*,char*,unsigned int*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char* buf; char* name; char* path; scalar_t__ Size; int RelBase; int ImageBase; } ;
+typedef TYPE_1__* PLIST_MEMBER ;
+typedef int LIST_MEMBER ;
+
+
+ int INVALID_BASE ;
+ TYPE_1__* entry_delete (TYPE_1__*) ;
+ int l2l_dbg (int,char*) ;
+ void* malloc (int) ;
+ int sscanf (char*,char*,unsigned int*) ;
+ char* strchr (char*,char) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 PLIST_MEMBER
 cache_entry_create(char *Line)
 {
     PLIST_MEMBER pentry;
-    char *s = NULL;
+    char *s = ((void*)0);
     int l;
 
     if (!Line)
-        return NULL;
+        return ((void*)0);
 
     pentry = malloc(sizeof(LIST_MEMBER));
     if (!pentry)
-        return NULL;
+        return ((void*)0);
 
     l = strlen(Line);
     pentry->buf = s = malloc(l + 1);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct strbuf_node {int children_count; struct strbuf_child_entry* children; } ;
-struct strbuf_child_entry {struct strbuf_node* child; int /*<<< orphan*/  c; } ;
+struct strbuf_child_entry {struct strbuf_node* child; int c; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memmove (struct strbuf_child_entry*,struct strbuf_child_entry*,int) ; 
- scalar_t__ strbuf_children_cmp (struct strbuf_child_entry*,struct strbuf_child_entry*) ; 
+
+ int memmove (struct strbuf_child_entry*,struct strbuf_child_entry*,int) ;
+ scalar_t__ strbuf_children_cmp (struct strbuf_child_entry*,struct strbuf_child_entry*) ;
 
 __attribute__((used)) static void bubbleinsert(struct strbuf_node *node,
                          uint8_t c,

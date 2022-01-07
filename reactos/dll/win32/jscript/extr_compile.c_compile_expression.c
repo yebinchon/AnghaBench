@@ -1,326 +1,268 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unary_expression_t ;
-typedef  int /*<<< orphan*/  property_value_expression_t ;
-typedef  int /*<<< orphan*/  member_expression_t ;
-struct TYPE_5__ {int /*<<< orphan*/  literal; } ;
-typedef  TYPE_1__ literal_expression_t ;
-struct TYPE_6__ {int /*<<< orphan*/  identifier; } ;
-typedef  TYPE_2__ identifier_expression_t ;
-typedef  int /*<<< orphan*/  function_expression_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int unary_expression_t ;
+typedef int property_value_expression_t ;
+typedef int member_expression_t ;
+struct TYPE_5__ {int literal; } ;
+typedef TYPE_1__ literal_expression_t ;
+struct TYPE_6__ {int identifier; } ;
+typedef TYPE_2__ identifier_expression_t ;
+typedef int function_expression_t ;
 struct TYPE_7__ {int type; } ;
-typedef  TYPE_3__ expression_t ;
-typedef  int /*<<< orphan*/  conditional_expression_t ;
-typedef  int /*<<< orphan*/  compiler_ctx_t ;
-typedef  int /*<<< orphan*/  call_expression_t ;
-typedef  int /*<<< orphan*/  binary_expression_t ;
-typedef  int /*<<< orphan*/  array_literal_expression_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_3__ expression_t ;
+typedef int conditional_expression_t ;
+typedef int compiler_ctx_t ;
+typedef int call_expression_t ;
+typedef int binary_expression_t ;
+typedef int array_literal_expression_t ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_UNREACHABLE ; 
-#define  EXPR_ADD 185 
-#define  EXPR_AND 184 
-#define  EXPR_ARRAY 183 
-#define  EXPR_ARRAYLIT 182 
-#define  EXPR_ASSIGN 181 
-#define  EXPR_ASSIGNADD 180 
-#define  EXPR_ASSIGNAND 179 
-#define  EXPR_ASSIGNDIV 178 
-#define  EXPR_ASSIGNLSHIFT 177 
-#define  EXPR_ASSIGNMOD 176 
-#define  EXPR_ASSIGNMUL 175 
-#define  EXPR_ASSIGNOR 174 
-#define  EXPR_ASSIGNRRSHIFT 173 
-#define  EXPR_ASSIGNRSHIFT 172 
-#define  EXPR_ASSIGNSUB 171 
-#define  EXPR_ASSIGNXOR 170 
-#define  EXPR_BAND 169 
-#define  EXPR_BITNEG 168 
-#define  EXPR_BOR 167 
-#define  EXPR_BXOR 166 
-#define  EXPR_CALL 165 
-#define  EXPR_COMMA 164 
-#define  EXPR_COND 163 
-#define  EXPR_DELETE 162 
-#define  EXPR_DIV 161 
-#define  EXPR_EQ 160 
-#define  EXPR_EQEQ 159 
-#define  EXPR_FUNC 158 
-#define  EXPR_GREATER 157 
-#define  EXPR_GREATEREQ 156 
-#define  EXPR_IDENT 155 
-#define  EXPR_IN 154 
-#define  EXPR_INSTANCEOF 153 
-#define  EXPR_LESS 152 
-#define  EXPR_LESSEQ 151 
-#define  EXPR_LITERAL 150 
-#define  EXPR_LOGNEG 149 
-#define  EXPR_LSHIFT 148 
-#define  EXPR_MEMBER 147 
-#define  EXPR_MINUS 146 
-#define  EXPR_MOD 145 
-#define  EXPR_MUL 144 
-#define  EXPR_NEW 143 
-#define  EXPR_NOTEQ 142 
-#define  EXPR_NOTEQEQ 141 
-#define  EXPR_OR 140 
-#define  EXPR_PLUS 139 
-#define  EXPR_POSTDEC 138 
-#define  EXPR_POSTINC 137 
-#define  EXPR_PREDEC 136 
-#define  EXPR_PREINC 135 
-#define  EXPR_PROPVAL 134 
-#define  EXPR_RRSHIFT 133 
-#define  EXPR_RSHIFT 132 
-#define  EXPR_SUB 131 
-#define  EXPR_THIS 130 
-#define  EXPR_TYPEOF 129 
-#define  EXPR_VOID 128 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_LAST ; 
- int /*<<< orphan*/  OP_add ; 
- int /*<<< orphan*/  OP_and ; 
- int /*<<< orphan*/  OP_array ; 
- int /*<<< orphan*/  OP_bneg ; 
- int /*<<< orphan*/  OP_cnd_nz ; 
- int /*<<< orphan*/  OP_cnd_z ; 
- int /*<<< orphan*/  OP_div ; 
- int /*<<< orphan*/  OP_eq ; 
- int /*<<< orphan*/  OP_eq2 ; 
- int /*<<< orphan*/  OP_gt ; 
- int /*<<< orphan*/  OP_gteq ; 
- int /*<<< orphan*/  OP_in ; 
- int /*<<< orphan*/  OP_instanceof ; 
- int /*<<< orphan*/  OP_lshift ; 
- int /*<<< orphan*/  OP_lt ; 
- int /*<<< orphan*/  OP_lteq ; 
- int /*<<< orphan*/  OP_minus ; 
- int /*<<< orphan*/  OP_mod ; 
- int /*<<< orphan*/  OP_mul ; 
- int /*<<< orphan*/  OP_neg ; 
- int /*<<< orphan*/  OP_neq ; 
- int /*<<< orphan*/  OP_neq2 ; 
- int /*<<< orphan*/  OP_or ; 
- int /*<<< orphan*/  OP_pop ; 
- int /*<<< orphan*/  OP_postinc ; 
- int /*<<< orphan*/  OP_preinc ; 
- int /*<<< orphan*/  OP_rshift ; 
- int /*<<< orphan*/  OP_rshift2 ; 
- int /*<<< orphan*/  OP_sub ; 
- int /*<<< orphan*/  OP_this ; 
- int /*<<< orphan*/  OP_tonum ; 
- int /*<<< orphan*/  OP_void ; 
- int /*<<< orphan*/  OP_xor ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  compile_array_literal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_assign_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_binary_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_call_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  compile_comma_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  compile_conditional_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_delete_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_function_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  compile_increment_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  compile_literal (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_logical_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_member_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_new_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_object_literal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_typeof_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  compile_unary_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_identifier (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_uint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int DEFAULT_UNREACHABLE ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_LAST ;
+ int OP_add ;
+ int OP_and ;
+ int OP_array ;
+ int OP_bneg ;
+ int OP_cnd_nz ;
+ int OP_cnd_z ;
+ int OP_div ;
+ int OP_eq ;
+ int OP_eq2 ;
+ int OP_gt ;
+ int OP_gteq ;
+ int OP_in ;
+ int OP_instanceof ;
+ int OP_lshift ;
+ int OP_lt ;
+ int OP_lteq ;
+ int OP_minus ;
+ int OP_mod ;
+ int OP_mul ;
+ int OP_neg ;
+ int OP_neq ;
+ int OP_neq2 ;
+ int OP_or ;
+ int OP_pop ;
+ int OP_postinc ;
+ int OP_preinc ;
+ int OP_rshift ;
+ int OP_rshift2 ;
+ int OP_sub ;
+ int OP_this ;
+ int OP_tonum ;
+ int OP_void ;
+ int OP_xor ;
+ int S_OK ;
+ int compile_array_literal (int *,int *) ;
+ int compile_assign_expression (int *,int *,int ) ;
+ int compile_binary_expression (int *,int *,int ) ;
+ int compile_call_expression (int *,int *,scalar_t__) ;
+ int compile_comma_expression (int *,int *,scalar_t__) ;
+ int compile_conditional_expression (int *,int *) ;
+ int compile_delete_expression (int *,int *) ;
+ int compile_function_expression (int *,int *,scalar_t__) ;
+ int compile_increment_expression (int *,int *,int ,int) ;
+ int compile_literal (int *,int ) ;
+ int compile_logical_expression (int *,int *,int ) ;
+ int compile_member_expression (int *,int *) ;
+ int compile_new_expression (int *,int *) ;
+ int compile_object_literal (int *,int *) ;
+ int compile_typeof_expression (int *,int *) ;
+ int compile_unary_expression (int *,int *,int ) ;
+ int emit_identifier (int *,int ) ;
+ int push_instr (int *,int ) ;
+ int push_instr_uint (int *,int ,int) ;
 
 __attribute__((used)) static HRESULT compile_expression(compiler_ctx_t *ctx, expression_t *expr, BOOL emit_ret)
 {
     HRESULT hres;
 
     switch(expr->type) {
-    case EXPR_ADD:
+    case 185:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_add);
         break;
-    case EXPR_AND:
+    case 184:
         hres = compile_logical_expression(ctx, (binary_expression_t*)expr, OP_cnd_z);
         break;
-    case EXPR_ARRAY:
+    case 183:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_array);
         break;
-    case EXPR_ARRAYLIT:
+    case 182:
         hres = compile_array_literal(ctx, (array_literal_expression_t*)expr);
         break;
-    case EXPR_ASSIGN:
+    case 181:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_LAST);
         break;
-    case EXPR_ASSIGNADD:
+    case 180:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_add);
         break;
-    case EXPR_ASSIGNAND:
+    case 179:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_and);
         break;
-    case EXPR_ASSIGNSUB:
+    case 171:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_sub);
         break;
-    case EXPR_ASSIGNMUL:
+    case 175:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_mul);
         break;
-    case EXPR_ASSIGNDIV:
+    case 178:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_div);
         break;
-    case EXPR_ASSIGNMOD:
+    case 176:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_mod);
         break;
-    case EXPR_ASSIGNOR:
+    case 174:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_or);
         break;
-    case EXPR_ASSIGNLSHIFT:
+    case 177:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_lshift);
         break;
-    case EXPR_ASSIGNRSHIFT:
+    case 172:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_rshift);
         break;
-    case EXPR_ASSIGNRRSHIFT:
+    case 173:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_rshift2);
         break;
-    case EXPR_ASSIGNXOR:
+    case 170:
         hres = compile_assign_expression(ctx, (binary_expression_t*)expr, OP_xor);
         break;
-    case EXPR_BAND:
+    case 169:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_and);
         break;
-    case EXPR_BITNEG:
+    case 168:
         hres = compile_unary_expression(ctx, (unary_expression_t*)expr, OP_bneg);
         break;
-    case EXPR_BOR:
+    case 167:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_or);
         break;
-    case EXPR_CALL:
+    case 165:
         return compile_call_expression(ctx, (call_expression_t*)expr, emit_ret);
-    case EXPR_COMMA:
+    case 164:
         return compile_comma_expression(ctx, (binary_expression_t*)expr, emit_ret);
-    case EXPR_COND:
+    case 163:
         hres = compile_conditional_expression(ctx, (conditional_expression_t*)expr);
         break;
-    case EXPR_DELETE:
+    case 162:
         hres = compile_delete_expression(ctx, (unary_expression_t*)expr);
         break;
-    case EXPR_DIV:
+    case 161:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_div);
         break;
-    case EXPR_EQ:
+    case 160:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_eq);
         break;
-    case EXPR_EQEQ:
+    case 159:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_eq2);
         break;
-    case EXPR_FUNC:
+    case 158:
         return compile_function_expression(ctx, (function_expression_t*)expr, emit_ret);
-    case EXPR_GREATER:
+    case 157:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_gt);
         break;
-    case EXPR_GREATEREQ:
+    case 156:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_gteq);
         break;
-    case EXPR_IDENT:
+    case 155:
         hres = emit_identifier(ctx, ((identifier_expression_t*)expr)->identifier);
         break;
-    case EXPR_IN:
+    case 154:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_in);
         break;
-    case EXPR_INSTANCEOF:
+    case 153:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_instanceof);
         break;
-    case EXPR_LESS:
+    case 152:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_lt);
         break;
-    case EXPR_LESSEQ:
+    case 151:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_lteq);
         break;
-    case EXPR_LITERAL:
+    case 150:
         hres = compile_literal(ctx, ((literal_expression_t*)expr)->literal);
         break;
-    case EXPR_LOGNEG:
+    case 149:
         hres = compile_unary_expression(ctx, (unary_expression_t*)expr, OP_neg);
         break;
-    case EXPR_LSHIFT:
+    case 148:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_lshift);
         break;
-    case EXPR_MEMBER:
+    case 147:
         hres = compile_member_expression(ctx, (member_expression_t*)expr);
         break;
-    case EXPR_MINUS:
+    case 146:
         hres = compile_unary_expression(ctx, (unary_expression_t*)expr, OP_minus);
         break;
-    case EXPR_MOD:
+    case 145:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_mod);
         break;
-    case EXPR_MUL:
+    case 144:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_mul);
         break;
-    case EXPR_NEW:
+    case 143:
         hres = compile_new_expression(ctx, (call_expression_t*)expr);
         break;
-    case EXPR_NOTEQ:
+    case 142:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_neq);
         break;
-    case EXPR_NOTEQEQ:
+    case 141:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_neq2);
         break;
-    case EXPR_OR:
+    case 140:
         hres = compile_logical_expression(ctx, (binary_expression_t*)expr, OP_cnd_nz);
         break;
-    case EXPR_PLUS:
+    case 139:
         hres = compile_unary_expression(ctx, (unary_expression_t*)expr, OP_tonum);
         break;
-    case EXPR_POSTDEC:
+    case 138:
         hres = compile_increment_expression(ctx, (unary_expression_t*)expr, OP_postinc, -1);
         break;
-    case EXPR_POSTINC:
+    case 137:
         hres = compile_increment_expression(ctx, (unary_expression_t*)expr, OP_postinc, 1);
         break;
-    case EXPR_PREDEC:
+    case 136:
         hres = compile_increment_expression(ctx, (unary_expression_t*)expr, OP_preinc, -1);
         break;
-    case EXPR_PREINC:
+    case 135:
         hres = compile_increment_expression(ctx, (unary_expression_t*)expr, OP_preinc, 1);
         break;
-    case EXPR_PROPVAL:
+    case 134:
         hres = compile_object_literal(ctx, (property_value_expression_t*)expr);
         break;
-    case EXPR_RSHIFT:
+    case 132:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_rshift);
         break;
-    case EXPR_RRSHIFT:
+    case 133:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_rshift2);
         break;
-    case EXPR_SUB:
+    case 131:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_sub);
         break;
-    case EXPR_THIS:
+    case 130:
         return !emit_ret || push_instr(ctx, OP_this) ? S_OK : E_OUTOFMEMORY;
-    case EXPR_TYPEOF:
+    case 129:
         hres = compile_typeof_expression(ctx, (unary_expression_t*)expr);
         break;
-    case EXPR_VOID:
+    case 128:
         hres = compile_unary_expression(ctx, (unary_expression_t*)expr, OP_void);
         break;
-    case EXPR_BXOR:
+    case 166:
         hres = compile_binary_expression(ctx, (binary_expression_t*)expr, OP_xor);
         break;
     DEFAULT_UNREACHABLE;

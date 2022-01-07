@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct virtio_balloon {int /*<<< orphan*/  shrinker; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  unregister_shrinker (int /*<<< orphan*/ *) ; 
+
+
+
+struct virtio_balloon {int shrinker; } ;
+
+
+ int unregister_shrinker (int *) ;
 
 __attribute__((used)) static void virtio_balloon_unregister_shrinker(struct virtio_balloon *vb)
 {
-	unregister_shrinker(&vb->shrinker);
+ unregister_shrinker(&vb->shrinker);
 }

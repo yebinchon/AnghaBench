@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int inputs; int n; TYPE_1__* layers; } ;
-typedef  TYPE_2__ network ;
+typedef TYPE_2__ network ;
 struct TYPE_6__ {float temperature; } ;
 
-/* Variables and functions */
- int EOF ; 
- char* basecfg (char*) ; 
- float* calloc (int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int getc (int /*<<< orphan*/ ) ; 
- TYPE_2__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- float* network_predict (TYPE_2__*,float*) ; 
- int /*<<< orphan*/  print_symbol (int,char**) ; 
- int /*<<< orphan*/  printf (char*) ; 
- char** read_tokens (char*,size_t*) ; 
- int /*<<< orphan*/  reset_network_state (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int sample_array (float*,int) ; 
- int /*<<< orphan*/  srand (int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
+
+ int EOF ;
+ char* basecfg (char*) ;
+ float* calloc (int,int) ;
+ int fprintf (int ,char*,char*) ;
+ int getc (int ) ;
+ TYPE_2__* load_network (char*,char*,int ) ;
+ float* network_predict (TYPE_2__*,float*) ;
+ int print_symbol (int,char**) ;
+ int printf (char*) ;
+ char** read_tokens (char*,size_t*) ;
+ int reset_network_state (TYPE_2__*,int ) ;
+ int sample_array (float*,int) ;
+ int srand (int) ;
+ int stderr ;
+ int stdin ;
 
 void test_tactic_rnn_multi(char *cfgfile, char *weightfile, int num, float temp, int rseed, char *token_file)
 {

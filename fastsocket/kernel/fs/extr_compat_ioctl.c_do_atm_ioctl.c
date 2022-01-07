@@ -1,96 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int cmd32; unsigned int cmd; } ;
-
-/* Variables and functions */
-#define  ATM_ADDADDR 152 
-#define  ATM_DELADDR 151 
-#define  ATM_GETADDR 150 
-#define  ATM_GETCIRANGE 149 
-#define  ATM_GETESI 148 
-#define  ATM_GETLINKRATE 147 
-#define  ATM_GETLOOP 146 
-#define  ATM_GETNAMES 145 
-#define  ATM_GETSTAT 144 
-#define  ATM_GETSTATZ 143 
-#define  ATM_GETTYPE 142 
-#define  ATM_QUERYLOOP 141 
-#define  ATM_RSTADDR 140 
-#define  ATM_SETCIRANGE 139 
-#define  ATM_SETESI 138 
-#define  ATM_SETESIF 137 
-#define  ATM_SETLOOP 136 
- int EINVAL ; 
- int NR_ATM_IOCTL ; 
-#define  SONET_CLRDIAG 135 
-#define  SONET_GETDIAG 134 
-#define  SONET_GETFRAMING 133 
-#define  SONET_GETFRSENSE 132 
-#define  SONET_GETSTAT 131 
-#define  SONET_GETSTATZ 130 
-#define  SONET_SETDIAG 129 
-#define  SONET_SETFRAMING 128 
- TYPE_1__* atm_ioctl_map ; 
- int do_atm_iobuf (unsigned int,unsigned int,unsigned long) ; 
- int do_atmif_sioc (unsigned int,unsigned int,unsigned long) ; 
+ int EINVAL ;
+ int NR_ATM_IOCTL ;
+ TYPE_1__* atm_ioctl_map ;
+ int do_atm_iobuf (unsigned int,unsigned int,unsigned long) ;
+ int do_atmif_sioc (unsigned int,unsigned int,unsigned long) ;
 
 __attribute__((used)) static int do_atm_ioctl(unsigned int fd, unsigned int cmd32, unsigned long arg)
 {
         int i;
         unsigned int cmd = 0;
-        
-	switch (cmd32) {
-	case SONET_GETSTAT:
-	case SONET_GETSTATZ:
-	case SONET_GETDIAG:
-	case SONET_SETDIAG:
-	case SONET_CLRDIAG:
-	case SONET_SETFRAMING:
-	case SONET_GETFRAMING:
-	case SONET_GETFRSENSE:
-		return do_atmif_sioc(fd, cmd32, arg);
-	}
 
-	for (i = 0; i < NR_ATM_IOCTL; i++) {
-		if (cmd32 == atm_ioctl_map[i].cmd32) {
-			cmd = atm_ioctl_map[i].cmd;
-			break;
-		}
-	}
-	if (i == NR_ATM_IOCTL)
-	        return -EINVAL;
-        
+ switch (cmd32) {
+ case 131:
+ case 130:
+ case 134:
+ case 129:
+ case 135:
+ case 128:
+ case 133:
+ case 132:
+  return do_atmif_sioc(fd, cmd32, arg);
+ }
+
+ for (i = 0; i < NR_ATM_IOCTL; i++) {
+  if (cmd32 == atm_ioctl_map[i].cmd32) {
+   cmd = atm_ioctl_map[i].cmd;
+   break;
+  }
+ }
+ if (i == NR_ATM_IOCTL)
+         return -EINVAL;
+
         switch (cmd) {
-	case ATM_GETNAMES:
-		return do_atm_iobuf(fd, cmd, arg);
-	    
-	case ATM_GETLINKRATE:
-        case ATM_GETTYPE:
-        case ATM_GETESI:
-        case ATM_GETADDR:
-        case ATM_RSTADDR:
-        case ATM_ADDADDR:
-        case ATM_DELADDR:
-        case ATM_GETCIRANGE:
-	case ATM_SETCIRANGE:
-	case ATM_SETESI:
-	case ATM_SETESIF:
-	case ATM_GETSTAT:
-	case ATM_GETSTATZ:
-	case ATM_GETLOOP:
-	case ATM_SETLOOP:
-	case ATM_QUERYLOOP:
+ case 145:
+  return do_atm_iobuf(fd, cmd, arg);
+
+ case 147:
+        case 142:
+        case 148:
+        case 150:
+        case 140:
+        case 152:
+        case 151:
+        case 149:
+ case 139:
+ case 138:
+ case 137:
+ case 144:
+ case 143:
+ case 146:
+ case 136:
+ case 141:
                 return do_atmif_sioc(fd, cmd, arg);
         }
 

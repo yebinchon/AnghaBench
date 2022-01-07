@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RClass {int mt; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ khiter_t ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
+typedef int mrb_state ;
+typedef scalar_t__ khiter_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_CLASS_ORIGIN (struct RClass*) ; 
- int h ; 
- int /*<<< orphan*/  kh_del (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,scalar_t__) ; 
- scalar_t__ kh_end (int) ; 
- scalar_t__ kh_get (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int khash_t (int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_name_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_sym2str (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_symbol_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mt ; 
+
+ int MRB_CLASS_ORIGIN (struct RClass*) ;
+ int h ;
+ int kh_del (int ,int *,int,scalar_t__) ;
+ scalar_t__ kh_end (int) ;
+ scalar_t__ kh_get (int ,int *,int,int ) ;
+ int khash_t (int ) ;
+ struct RClass* mrb_class_ptr (int ) ;
+ int mrb_funcall (int *,int ,char*,int,int ) ;
+ int mrb_name_error (int *,int ,char*,int ,int ) ;
+ int mrb_sym2str (int *,int ) ;
+ int mrb_symbol_value (int ) ;
+ int mt ;
 
 __attribute__((used)) static void
 remove_method(mrb_state *mrb, mrb_value mod, mrb_sym mid)

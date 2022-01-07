@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int NDIG ;
+ double modf (double,double*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int NDIG ; 
- double modf (double,double*) ; 
-
-__attribute__((used)) static char *apr_cvt(double arg, int ndigits, int *decpt, int *sign, 
+__attribute__((used)) static char *apr_cvt(double arg, int ndigits, int *decpt, int *sign,
                      int eflag, char *buf)
 {
     register int r2;
     double fi, fj;
     register char *p, *p1;
-    
+
     if (ndigits >= NDIG - 1)
         ndigits = NDIG - 2;
     r2 = 0;
@@ -33,9 +25,9 @@ __attribute__((used)) static char *apr_cvt(double arg, int ndigits, int *decpt, 
     }
     arg = modf(arg, &fi);
     p1 = &buf[NDIG];
-    /*
-     * Do integer part
-     */
+
+
+
     if (fi != 0) {
         p1 = &buf[NDIG];
         while (p1 > &buf[0] && fi != 0) {

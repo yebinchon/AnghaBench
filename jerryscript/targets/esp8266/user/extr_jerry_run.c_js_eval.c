@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_PARSE_NO_OPTS ; 
- int /*<<< orphan*/  jerry_eval (int /*<<< orphan*/ *,size_t const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_PARSE_NO_OPTS ;
+ int jerry_eval (int *,size_t const,int ) ;
+ int jerry_release_value (int ) ;
+ scalar_t__ jerry_value_is_error (int ) ;
 
 int js_eval (const char *source_p, const size_t source_size)
 {

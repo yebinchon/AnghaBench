@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * tcflush; int /*<<< orphan*/ * tcdrain; int /*<<< orphan*/ * tcgetattr; int /*<<< orphan*/ * tcsetattr; int /*<<< orphan*/ * end_select; int /*<<< orphan*/ * start_select; int /*<<< orphan*/ * access; int /*<<< orphan*/ * fsync; int /*<<< orphan*/ * fcntl; int /*<<< orphan*/ * read; int /*<<< orphan*/ * close; int /*<<< orphan*/ * fstat; int /*<<< orphan*/ * open; int /*<<< orphan*/ * write; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ esp_vfs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_VFS_FLAG_DEFAULT ; 
- int /*<<< orphan*/  esp_vfs_register (char*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uart_access ; 
- int /*<<< orphan*/  uart_close ; 
- int /*<<< orphan*/  uart_end_select ; 
- int /*<<< orphan*/  uart_fcntl ; 
- int /*<<< orphan*/  uart_fstat ; 
- int /*<<< orphan*/  uart_fsync ; 
- int /*<<< orphan*/  uart_open ; 
- int /*<<< orphan*/  uart_read ; 
- int /*<<< orphan*/  uart_start_select ; 
- int /*<<< orphan*/  uart_tcdrain ; 
- int /*<<< orphan*/  uart_tcflush ; 
- int /*<<< orphan*/  uart_tcgetattr ; 
- int /*<<< orphan*/  uart_tcsetattr ; 
- int /*<<< orphan*/  uart_write ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * tcflush; int * tcdrain; int * tcgetattr; int * tcsetattr; int * end_select; int * start_select; int * access; int * fsync; int * fcntl; int * read; int * close; int * fstat; int * open; int * write; int flags; } ;
+typedef TYPE_1__ esp_vfs_t ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_VFS_FLAG_DEFAULT ;
+ int esp_vfs_register (char*,TYPE_1__*,int *) ;
+ int uart_access ;
+ int uart_close ;
+ int uart_end_select ;
+ int uart_fcntl ;
+ int uart_fstat ;
+ int uart_fsync ;
+ int uart_open ;
+ int uart_read ;
+ int uart_start_select ;
+ int uart_tcdrain ;
+ int uart_tcflush ;
+ int uart_tcgetattr ;
+ int uart_tcsetattr ;
+ int uart_write ;
 
 void esp_vfs_dev_uart_register(void)
 {
@@ -47,12 +47,12 @@ void esp_vfs_dev_uart_register(void)
         .access = &uart_access,
         .start_select = &uart_start_select,
         .end_select = &uart_end_select,
-#ifdef CONFIG_VFS_SUPPORT_TERMIOS
-        .tcsetattr = &uart_tcsetattr,
-        .tcgetattr = &uart_tcgetattr,
-        .tcdrain = &uart_tcdrain,
-        .tcflush = &uart_tcflush,
-#endif // CONFIG_VFS_SUPPORT_TERMIOS
+
+
+
+
+
+
     };
-    ESP_ERROR_CHECK(esp_vfs_register("/dev/uart", &vfs, NULL));
+    ESP_ERROR_CHECK(esp_vfs_register("/dev/uart", &vfs, ((void*)0)));
 }

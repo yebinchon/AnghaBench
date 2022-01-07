@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  scalar_t__ off_t ;
-struct TYPE_11__ {int /*<<< orphan*/  wbio; } ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  TYPE_1__ SSL ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  unsigned char BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (unsigned char*) ; 
- int /*<<< orphan*/  BIO_get_fp (unsigned char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  BIO_get_ktls_send (int /*<<< orphan*/ ) ; 
- unsigned char* BIO_new_file (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ BIO_write (unsigned char*,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_zalloc (scalar_t__) ; 
- int /*<<< orphan*/  RAND_bytes (unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  SENDFILE_CHUNK ; 
- scalar_t__ SENDFILE_SZ ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cipher_list (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- scalar_t__ SSL_ERROR_WANT_READ ; 
- scalar_t__ SSL_ERROR_WANT_WRITE ; 
- int /*<<< orphan*/  SSL_free (TYPE_1__*) ; 
- scalar_t__ SSL_get_error (TYPE_1__*,int) ; 
- int SSL_read (TYPE_1__*,unsigned char*,int) ; 
- int SSL_sendfile (TYPE_1__*,int,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_shutdown (TYPE_1__*) ; 
- int /*<<< orphan*/  TEST_mem_eq (unsigned char*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  TEST_ptr (unsigned char*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_2_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__**,TYPE_1__**,int,int) ; 
- int /*<<< orphan*/  create_test_sockets (int*,int*) ; 
- int fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ktls_chk_platform (int) ; 
- int min (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  tmpfilename ; 
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+typedef scalar_t__ off_t ;
+struct TYPE_11__ {int wbio; } ;
+typedef int SSL_CTX ;
+typedef TYPE_1__ SSL ;
+typedef int FILE ;
+typedef unsigned char BIO ;
+
+
+ int BIO_free (unsigned char*) ;
+ int BIO_get_fp (unsigned char*,int **) ;
+ int BIO_get_ktls_send (int ) ;
+ unsigned char* BIO_new_file (int ,char*) ;
+ scalar_t__ BIO_write (unsigned char*,unsigned char*,scalar_t__) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_zalloc (scalar_t__) ;
+ int RAND_bytes (unsigned char*,scalar_t__) ;
+ int SENDFILE_CHUNK ;
+ scalar_t__ SENDFILE_SZ ;
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_cipher_list (int *,char*) ;
+ int SSL_ERROR_NONE ;
+ scalar_t__ SSL_ERROR_WANT_READ ;
+ scalar_t__ SSL_ERROR_WANT_WRITE ;
+ int SSL_free (TYPE_1__*) ;
+ scalar_t__ SSL_get_error (TYPE_1__*,int) ;
+ int SSL_read (TYPE_1__*,unsigned char*,int) ;
+ int SSL_sendfile (TYPE_1__*,int,scalar_t__,int,int ) ;
+ int SSL_shutdown (TYPE_1__*) ;
+ int TEST_mem_eq (unsigned char*,int,unsigned char*,int) ;
+ int TEST_ptr (unsigned char*) ;
+ int TEST_true (int ) ;
+ int TLS1_2_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int create_ssl_connection (TYPE_1__*,TYPE_1__*,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects2 (int *,int *,TYPE_1__**,TYPE_1__**,int,int) ;
+ int create_test_sockets (int*,int*) ;
+ int fileno (int *) ;
+ int ktls_chk_platform (int) ;
+ int min (int ,scalar_t__) ;
+ int privkey ;
+ int tmpfilename ;
 
 __attribute__((used)) static int test_ktls_sendfile(void)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     unsigned char *buf, *buf_dst;
-    BIO *out = NULL, *in = NULL;
+    BIO *out = ((void*)0), *in = ((void*)0);
     int cfd, sfd, ffd, err;
     ssize_t chunk_size = 0;
     off_t chunk_off = 0;
@@ -75,13 +75,13 @@ __attribute__((used)) static int test_ktls_sendfile(void)
         || !TEST_true(create_test_sockets(&cfd, &sfd)))
         goto end;
 
-    /* Skip this test if the platform does not support ktls */
+
     if (!ktls_chk_platform(sfd)) {
         testresult = 1;
         goto end;
     }
 
-    /* Create a session based on SHA-256 */
+
     if (!TEST_true(create_ssl_ctx_pair(TLS_server_method(),
                                        TLS_client_method(),
                                        TLS1_2_VERSION, TLS1_2_VERSION,
@@ -106,7 +106,7 @@ __attribute__((used)) static int test_ktls_sendfile(void)
         goto end;
 
     BIO_free(out);
-    out = NULL;
+    out = ((void*)0);
     in = BIO_new_file(tmpfilename, "rb");
     BIO_get_fp(in, &ffdp);
     ffd = fileno(ffdp);
@@ -128,7 +128,7 @@ __attribute__((used)) static int test_ktls_sendfile(void)
                 goto end;
         }
 
-        /* verify the payload */
+
         if (!TEST_mem_eq(buf_dst + chunk_off,
                          chunk_size,
                          buf + chunk_off,
@@ -150,7 +150,7 @@ end:
     }
     SSL_CTX_free(sctx);
     SSL_CTX_free(cctx);
-    serverssl = clientssl = NULL;
+    serverssl = clientssl = ((void*)0);
     BIO_free(out);
     BIO_free(in);
     OPENSSL_free(buf);

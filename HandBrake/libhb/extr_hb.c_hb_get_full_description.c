@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hb_community ; 
- int /*<<< orphan*/  hb_irc ; 
- int /*<<< orphan*/  hb_repo_branch ; 
- int /*<<< orphan*/  hb_repo_hash ; 
- int /*<<< orphan*/  hb_repo_remote ; 
- int /*<<< orphan*/  hb_repo_rev ; 
- int /*<<< orphan*/  hb_repo_tag ; 
- int /*<<< orphan*/  hb_repo_type ; 
- int /*<<< orphan*/  hb_repo_url ; 
- char* hb_strdup_printf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_title ; 
- int /*<<< orphan*/  hb_website ; 
+ int hb_community ;
+ int hb_irc ;
+ int hb_repo_branch ;
+ int hb_repo_hash ;
+ int hb_repo_remote ;
+ int hb_repo_rev ;
+ int hb_repo_tag ;
+ int hb_repo_type ;
+ int hb_repo_url ;
+ char* hb_strdup_printf (char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int hb_title ;
+ int hb_website ;
 
 const char * hb_get_full_description()
 {
-    static char * desc = NULL;
-    if (desc == NULL)
+    static char * desc = ((void*)0);
+    if (desc == ((void*)0))
     {
         desc = hb_strdup_printf("%s\n"
                                 "\tWebsite:     %s\n"

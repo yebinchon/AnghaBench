@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct string {size_t len; char* data; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  NC_ENOMEM ; 
- int /*<<< orphan*/  NC_OK ; 
- char* nc_strndup (int /*<<< orphan*/  const*,scalar_t__) ; 
+
+ int ASSERT (int) ;
+ int NC_ENOMEM ;
+ int NC_OK ;
+ char* nc_strndup (int const*,scalar_t__) ;
 
 rstatus_t
 string_copy(struct string *dst, const uint8_t *src, uint32_t srclen)
 {
-    ASSERT(dst->len == 0 && dst->data == NULL);
-    ASSERT(src != NULL && srclen != 0);
+    ASSERT(dst->len == 0 && dst->data == ((void*)0));
+    ASSERT(src != ((void*)0) && srclen != 0);
 
     dst->data = nc_strndup(src, srclen + 1);
-    if (dst->data == NULL) {
+    if (dst->data == ((void*)0)) {
         return NC_ENOMEM;
     }
 

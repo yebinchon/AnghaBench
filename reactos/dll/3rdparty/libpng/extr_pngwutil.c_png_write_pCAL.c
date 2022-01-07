@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t png_uint_32 ;
-typedef  int /*<<< orphan*/  png_structrp ;
-typedef  size_t* png_size_tp ;
-typedef  int /*<<< orphan*/  png_int_32 ;
-typedef  scalar_t__ png_const_charp ;
-typedef  scalar_t__* png_const_bytep ;
-typedef  scalar_t__* png_charpp ;
-typedef  int /*<<< orphan*/  png_charp ;
-typedef  scalar_t__ png_byte ;
-typedef  int png_alloc_size_t ;
 
-/* Variables and functions */
- int PNG_EQUATION_LAST ; 
- size_t png_check_keyword (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  png_debug1 (int,char*,int) ; 
- int /*<<< orphan*/  png_debug2 (int,char*,int,unsigned long) ; 
- int /*<<< orphan*/  png_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  png_free (int /*<<< orphan*/ ,size_t*) ; 
- scalar_t__ png_malloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  png_pCAL ; 
- int /*<<< orphan*/  png_save_int_32 (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_write_chunk_data (int /*<<< orphan*/ ,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  png_write_chunk_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  png_write_chunk_header (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- size_t strlen (scalar_t__) ; 
 
-void /* PRIVATE */
+
+
+typedef size_t png_uint_32 ;
+typedef int png_structrp ;
+typedef size_t* png_size_tp ;
+typedef int png_int_32 ;
+typedef scalar_t__ png_const_charp ;
+typedef scalar_t__* png_const_bytep ;
+typedef scalar_t__* png_charpp ;
+typedef int png_charp ;
+typedef scalar_t__ png_byte ;
+typedef int png_alloc_size_t ;
+
+
+ int PNG_EQUATION_LAST ;
+ size_t png_check_keyword (int ,int ,scalar_t__*) ;
+ int png_debug1 (int,char*,int) ;
+ int png_debug2 (int,char*,int,unsigned long) ;
+ int png_error (int ,char*) ;
+ int png_free (int ,size_t*) ;
+ scalar_t__ png_malloc (int ,int) ;
+ int png_pCAL ;
+ int png_save_int_32 (scalar_t__*,int ) ;
+ int png_write_chunk_data (int ,scalar_t__*,size_t) ;
+ int png_write_chunk_end (int ) ;
+ int png_write_chunk_header (int ,int ,size_t) ;
+ size_t strlen (scalar_t__) ;
+
+void
 png_write_pCAL(png_structrp png_ptr, png_charp purpose, png_int_32 X0,
     png_int_32 X1, int type, int nparams, png_const_charp units,
     png_charpp params)
@@ -58,7 +58,7 @@ png_write_pCAL(png_structrp png_ptr, png_charp purpose, png_int_32 X0,
    if (purpose_len == 0)
       png_error(png_ptr, "pCAL: invalid keyword");
 
-   ++purpose_len; /* terminator */
+   ++purpose_len;
 
    png_debug1(3, "pCAL purpose length = %d", (int)purpose_len);
    units_len = strlen(units) + (nparams == 0 ? 0 : 1);
@@ -68,9 +68,9 @@ png_write_pCAL(png_structrp png_ptr, png_charp purpose, png_int_32 X0,
    params_len = (png_size_tp)png_malloc(png_ptr,
        (png_alloc_size_t)((png_alloc_size_t)nparams * (sizeof (size_t))));
 
-   /* Find the length of each parameter, making sure we don't count the
-    * null terminator for the last parameter.
-    */
+
+
+
    for (i = 0; i < nparams; i++)
    {
       params_len[i] = strlen(params[i]) + (i == nparams - 1 ? 0 : 1);

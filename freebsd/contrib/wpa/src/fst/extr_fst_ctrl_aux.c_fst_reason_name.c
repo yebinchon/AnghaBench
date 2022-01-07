@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum fst_reason { ____Placeholder_fst_reason } fst_reason ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- char const* fst_get_str_name (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reason_names ; 
+
+
+
+typedef enum fst_reason { ____Placeholder_fst_reason } fst_reason ;
+
+
+ int ARRAY_SIZE (int ) ;
+ char const* fst_get_str_name (int,int ,int ) ;
+ int reason_names ;
 
 const char * fst_reason_name(enum fst_reason reason)
 {
-	return fst_get_str_name(reason, reason_names, ARRAY_SIZE(reason_names));
+ return fst_get_str_name(reason, reason_names, ARRAY_SIZE(reason_names));
 }

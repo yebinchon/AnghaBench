@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double EBADF ; 
- double EINVAL ; 
- int almost_equal (double,double) ; 
- double atof (char*) ; 
- double errno ; 
- int /*<<< orphan*/  ok (int,char*,double) ; 
- double p__atof_l (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ double EBADF ;
+ double EINVAL ;
+ int almost_equal (double,double) ;
+ double atof (char*) ;
+ double errno ;
+ int ok (int,char*,double) ;
+ double p__atof_l (int *,int *) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_atof(void)
 {
@@ -41,12 +33,12 @@ __attribute__((used)) static void test_atof(void)
     }
 
     errno = EBADF;
-    d = atof(NULL);
+    d = atof(((void*)0));
     ok(almost_equal(d, 0.0), "d = %lf\n", d);
     ok(errno == EINVAL, "errno = %x\n", errno);
 
     errno = EBADF;
-    d = p__atof_l(NULL, NULL);
+    d = p__atof_l(((void*)0), ((void*)0));
     ok(almost_equal(d, 0.0), "d = %lf\n", d);
     ok(errno == EINVAL, "errno = %x\n", errno);
 }

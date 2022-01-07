@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_FEATURE_SYMBOL ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_number (double) ; 
- int /*<<< orphan*/  jerry_create_object () ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_create_symbol (int /*<<< orphan*/ ) ; 
- int jerry_delete_internal_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int jerry_delete_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_internal_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- double jerry_get_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int jerry_has_internal_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_has_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_is_feature_enabled (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int jerry_set_internal_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int jerry_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_boolean (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_number (int /*<<< orphan*/ ) ; 
- int jerry_value_is_undefined (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_FEATURE_SYMBOL ;
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int jerry_cleanup () ;
+ int jerry_create_number (double) ;
+ int jerry_create_object () ;
+ int jerry_create_string (int const*) ;
+ int jerry_create_symbol (int ) ;
+ int jerry_delete_internal_property (int ,int ) ;
+ int jerry_delete_property (int ,int ) ;
+ scalar_t__ jerry_get_boolean_value (int ) ;
+ int jerry_get_internal_property (int ,int ) ;
+ double jerry_get_number_value (int ) ;
+ int jerry_get_property (int ,int ) ;
+ int jerry_has_internal_property (int ,int ) ;
+ int jerry_has_property (int ,int ) ;
+ int jerry_init (int ) ;
+ scalar_t__ jerry_is_feature_enabled (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_set_internal_property (int ,int ,int ) ;
+ int jerry_set_property (int ,int ,int ) ;
+ scalar_t__ jerry_value_is_boolean (int ) ;
+ scalar_t__ jerry_value_is_number (int ) ;
+ int jerry_value_is_undefined (int ) ;
 
 int
 main (void)
@@ -84,7 +84,7 @@ main (void)
   jerry_value_t internal_prop_value_2 = jerry_create_number (9.5);
   jerry_value_t internal_prop_value_3 = jerry_create_number (10.5);
 
-  /* Test the normal [[Set]] method */
+
   bool set_result_1 = jerry_set_property (object, prop_name_1, prop_value_1);
   bool set_result_2 = jerry_set_property (object, prop_name_2, prop_value_2);
   bool set_result_3 = jerry_set_property (object, prop_name_3, prop_value_3);
@@ -93,7 +93,7 @@ main (void)
   TEST_ASSERT (set_result_2);
   TEST_ASSERT (set_result_3);
 
-  /* Test the internal [[Set]] method */
+
   bool set_internal_result_1 = jerry_set_internal_property (object, internal_prop_name_1, internal_prop_value_1);
   bool set_internal_result_2 = jerry_set_internal_property (object, internal_prop_name_2, internal_prop_value_2);
   bool set_internal_result_3 = jerry_set_internal_property (object, internal_prop_name_3, internal_prop_value_3);
@@ -102,7 +102,7 @@ main (void)
   TEST_ASSERT (set_internal_result_2);
   TEST_ASSERT (set_internal_result_3);
 
-  /* Test the normal [[Has]] method. */
+
   jerry_value_t has_result_1 = jerry_has_property (object, prop_name_1);
   jerry_value_t has_result_2 = jerry_has_property (object, prop_name_2);
   jerry_value_t has_result_3 = jerry_has_property (object, prop_name_3);
@@ -124,7 +124,7 @@ main (void)
   jerry_release_value (has_result_5);
   jerry_release_value (has_result_6);
 
-  /* Test the internal [[Has]] method. */
+
   bool has_internal_result_1 = jerry_has_internal_property (object, prop_name_1);
   bool has_internal_result_2 = jerry_has_internal_property (object, prop_name_2);
   bool has_internal_result_3 = jerry_has_internal_property (object, prop_name_3);
@@ -139,7 +139,7 @@ main (void)
   TEST_ASSERT (has_internal_result_5);
   TEST_ASSERT (has_internal_result_6);
 
-  /* Test the normal [[Get]] method. */
+
   jerry_value_t get_result_1 = jerry_get_property (object, prop_name_1);
   jerry_value_t get_result_2 = jerry_get_property (object, prop_name_2);
   jerry_value_t get_result_3 = jerry_get_property (object, prop_name_3);
@@ -161,7 +161,7 @@ main (void)
   jerry_release_value (get_result_5);
   jerry_release_value (get_result_6);
 
-  /* Test the internal [[Get]] method. */
+
   jerry_value_t get_internal_result_1 = jerry_get_internal_property (object, prop_name_1);
   jerry_value_t get_internal_result_2 = jerry_get_internal_property (object, prop_name_2);
   jerry_value_t get_internal_result_3 = jerry_get_internal_property (object, prop_name_3);
@@ -183,7 +183,7 @@ main (void)
   jerry_release_value (get_internal_result_5);
   jerry_release_value (get_internal_result_6);
 
-  /* Test the normal [[Delete]] method. */
+
   bool delete_result_1 = jerry_delete_property (object, prop_name_1);
   bool delete_result_2 = jerry_delete_property (object, prop_name_2);
   bool delete_result_3 = jerry_delete_property (object, prop_name_3);
@@ -219,7 +219,7 @@ main (void)
   jerry_release_value (has_after_delete_result_2);
   jerry_release_value (has_after_delete_result_3);
 
-  /* Test the internal [[Delete]] method. */
+
   bool delete_internal_result_4 = jerry_delete_internal_property (object, internal_prop_name_1);
   bool delete_internal_result_5 = jerry_delete_internal_property (object, internal_prop_name_2);
   bool delete_internal_result_6 = jerry_delete_internal_property (object, internal_prop_name_3);
@@ -236,7 +236,7 @@ main (void)
   TEST_ASSERT (!has_after_internal_delete_result_2);
   TEST_ASSERT (!has_after_internal_delete_result_3);
 
-  /* Cleanup */
+
   jerry_release_value (prop_value_3);
   jerry_release_value (prop_value_2);
   jerry_release_value (prop_value_1);

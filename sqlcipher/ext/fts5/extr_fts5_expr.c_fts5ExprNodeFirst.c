@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int bEof; scalar_t__ xNext; int nChild; int eType; struct TYPE_7__** apChild; int /*<<< orphan*/  iRowid; scalar_t__ bNomatch; } ;
-typedef  TYPE_1__ Fts5ExprNode ;
-typedef  int /*<<< orphan*/  Fts5Expr ;
 
-/* Variables and functions */
-#define  FTS5_AND 129 
- int FTS5_NOT ; 
-#define  FTS5_OR 128 
- scalar_t__ Fts5NodeIsString (TYPE_1__*) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts5ExprNearInitAll (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int fts5ExprNodeTest (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  fts5ExprSetEof (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int bEof; scalar_t__ xNext; int nChild; int eType; struct TYPE_7__** apChild; int iRowid; scalar_t__ bNomatch; } ;
+typedef TYPE_1__ Fts5ExprNode ;
+typedef int Fts5Expr ;
+
+
+
+ int FTS5_NOT ;
+
+ scalar_t__ Fts5NodeIsString (TYPE_1__*) ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5ExprNearInitAll (int *,TYPE_1__*) ;
+ int fts5ExprNodeTest (int *,TYPE_1__*) ;
+ int fts5ExprSetEof (TYPE_1__*) ;
 
 __attribute__((used)) static int fts5ExprNodeFirst(Fts5Expr *pExpr, Fts5ExprNode *pNode){
   int rc = SQLITE_OK;
@@ -32,7 +32,7 @@ __attribute__((used)) static int fts5ExprNodeFirst(Fts5Expr *pExpr, Fts5ExprNode
   pNode->bNomatch = 0;
 
   if( Fts5NodeIsString(pNode) ){
-    /* Initialize all term iterators in the NEAR object. */
+
     rc = fts5ExprNearInitAll(pExpr, pNode);
   }else if( pNode->xNext==0 ){
     pNode->bEof = 1;
@@ -48,11 +48,11 @@ __attribute__((used)) static int fts5ExprNodeFirst(Fts5Expr *pExpr, Fts5ExprNode
     pNode->iRowid = pNode->apChild[0]->iRowid;
 
     switch( pNode->eType ){
-      case FTS5_AND:
+      case 129:
         if( nEof>0 ) fts5ExprSetEof(pNode);
         break;
 
-      case FTS5_OR:
+      case 128:
         if( pNode->nChild==nEof ) fts5ExprSetEof(pNode);
         break;
 

@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-struct da9150_gpadc {int /*<<< orphan*/  dev; int /*<<< orphan*/  lock; int /*<<< orphan*/  da9150; int /*<<< orphan*/  complete; } ;
 
-/* Variables and functions */
- int DA9150_GPADC_EN_MASK ; 
- int /*<<< orphan*/  DA9150_GPADC_MAN ; 
- int DA9150_GPADC_MUX_SHIFT ; 
- int /*<<< orphan*/  DA9150_GPADC_RES_A ; 
- int DA9150_GPADC_RES_L_BITS ; 
- int DA9150_GPADC_RES_L_MASK ; 
- int DA9150_GPADC_RES_L_SHIFT ; 
- int DA9150_GPADC_RUN_MASK ; 
- int ETIMEDOUT ; 
- int /*<<< orphan*/  da9150_bulk_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  da9150_reg_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  msecs_to_jiffies (int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  try_wait_for_completion (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wait_for_completion_timeout (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+struct da9150_gpadc {int dev; int lock; int da9150; int complete; } ;
+
+
+ int DA9150_GPADC_EN_MASK ;
+ int DA9150_GPADC_MAN ;
+ int DA9150_GPADC_MUX_SHIFT ;
+ int DA9150_GPADC_RES_A ;
+ int DA9150_GPADC_RES_L_BITS ;
+ int DA9150_GPADC_RES_L_MASK ;
+ int DA9150_GPADC_RES_L_SHIFT ;
+ int DA9150_GPADC_RUN_MASK ;
+ int ETIMEDOUT ;
+ int da9150_bulk_read (int ,int ,int,int*) ;
+ int da9150_reg_write (int ,int ,int) ;
+ int dev_err (int ,char*,int) ;
+ int msecs_to_jiffies (int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int try_wait_for_completion (int *) ;
+ int wait_for_completion_timeout (int *,int ) ;
 
 __attribute__((used)) static int da9150_gpadc_read_adc(struct da9150_gpadc *gpadc, int hw_chan)
 {
-	u8 result_regs[2];
-	int result;
+ u8 result_regs[2];
+ int result;
 
-	mutex_lock(&gpadc->lock);
+ mutex_lock(&gpadc->lock);
 
-	/* Set channel & enable measurement */
-	da9150_reg_write(gpadc->da9150, DA9150_GPADC_MAN,
-			 (DA9150_GPADC_EN_MASK |
-			  hw_chan << DA9150_GPADC_MUX_SHIFT));
 
-	/* Consume left-over completion from a previous timeout */
-	try_wait_for_completion(&gpadc->complete);
+ da9150_reg_write(gpadc->da9150, DA9150_GPADC_MAN,
+    (DA9150_GPADC_EN_MASK |
+     hw_chan << DA9150_GPADC_MUX_SHIFT));
 
-	/* Check for actual completion */
-	wait_for_completion_timeout(&gpadc->complete, msecs_to_jiffies(5));
 
-	/* Read result and status from device */
-	da9150_bulk_read(gpadc->da9150, DA9150_GPADC_RES_A, 2, result_regs);
+ try_wait_for_completion(&gpadc->complete);
 
-	mutex_unlock(&gpadc->lock);
 
-	/* Check to make sure device really has completed reading */
-	if (result_regs[1] & DA9150_GPADC_RUN_MASK) {
-		dev_err(gpadc->dev, "Timeout on channel %d of GPADC\n",
-			hw_chan);
-		return -ETIMEDOUT;
-	}
+ wait_for_completion_timeout(&gpadc->complete, msecs_to_jiffies(5));
 
-	/* LSBs - 2 bits */
-	result = (result_regs[1] & DA9150_GPADC_RES_L_MASK) >>
-		 DA9150_GPADC_RES_L_SHIFT;
-	/* MSBs - 8 bits */
-	result |= result_regs[0] << DA9150_GPADC_RES_L_BITS;
 
-	return result;
+ da9150_bulk_read(gpadc->da9150, DA9150_GPADC_RES_A, 2, result_regs);
+
+ mutex_unlock(&gpadc->lock);
+
+
+ if (result_regs[1] & DA9150_GPADC_RUN_MASK) {
+  dev_err(gpadc->dev, "Timeout on channel %d of GPADC\n",
+   hw_chan);
+  return -ETIMEDOUT;
+ }
+
+
+ result = (result_regs[1] & DA9150_GPADC_RES_L_MASK) >>
+   DA9150_GPADC_RES_L_SHIFT;
+
+ result |= result_regs[0] << DA9150_GPADC_RES_L_BITS;
+
+ return result;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ eState; int skipNext; scalar_t__ pKey; int /*<<< orphan*/  nKey; } ;
-typedef  TYPE_1__ BtCursor ;
 
-/* Variables and functions */
- scalar_t__ CURSOR_FAULT ; 
- scalar_t__ CURSOR_INVALID ; 
- scalar_t__ CURSOR_REQUIRESEEK ; 
- scalar_t__ CURSOR_VALID ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int btreeMoveto (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int cursorHoldsMutex (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_free (scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ eState; int skipNext; scalar_t__ pKey; int nKey; } ;
+typedef TYPE_1__ BtCursor ;
+
+
+ scalar_t__ CURSOR_FAULT ;
+ scalar_t__ CURSOR_INVALID ;
+ scalar_t__ CURSOR_REQUIRESEEK ;
+ scalar_t__ CURSOR_VALID ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int btreeMoveto (TYPE_1__*,scalar_t__,int ,int ,int*) ;
+ int cursorHoldsMutex (TYPE_1__*) ;
+ int sqlite3_free (scalar_t__) ;
 
 __attribute__((used)) static int btreeRestoreCursorPosition(BtCursor *pCur){
   int rc;

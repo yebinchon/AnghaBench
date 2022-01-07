@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {TYPE_1__* priv_data; } ;
 struct TYPE_11__ {int size; int* data; } ;
 struct TYPE_10__ {int amount; int state; int dropamount; } ;
-typedef  TYPE_1__ NoiseContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVBSFContext ;
+typedef TYPE_1__ NoiseContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EINVAL ; 
- int av_packet_make_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int ff_bsf_get_packet_ref (TYPE_3__*,TYPE_2__*) ; 
+
+ int AVERROR (int ) ;
+ int EAGAIN ;
+ int EINVAL ;
+ int av_packet_make_writable (TYPE_2__*) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int ff_bsf_get_packet_ref (TYPE_3__*,TYPE_2__*) ;
 
 __attribute__((used)) static int noise(AVBSFContext *ctx, AVPacket *pkt)
 {

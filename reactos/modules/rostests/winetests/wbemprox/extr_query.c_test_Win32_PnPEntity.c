@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IWbemServices ;
-typedef  int /*<<< orphan*/  IWbemClassObject ;
-typedef  int /*<<< orphan*/  IEnumWbemClassObject ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ CIMTYPE ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ CIM_STRING ; 
- scalar_t__ IEnumWbemClassObject_Next (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  IEnumWbemClassObject_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemClassObject_Get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ IWbemServices_CreateInstanceEnum (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- scalar_t__ VT_BSTR ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- scalar_t__ WBEM_S_FALSE ; 
- scalar_t__ WBEM_S_NO_ERROR ; 
- scalar_t__ WBEM_S_TIMEDOUT ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
+
+
+
+typedef char WCHAR ;
+typedef int VARIANT ;
+typedef int ULONG ;
+typedef int IWbemServices ;
+typedef int IWbemClassObject ;
+typedef int IEnumWbemClassObject ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ CIMTYPE ;
+typedef int BSTR ;
+
+
+ scalar_t__ CIM_STRING ;
+ scalar_t__ IEnumWbemClassObject_Next (int *,int,int,int **,int*) ;
+ int IEnumWbemClassObject_Release (int *) ;
+ scalar_t__ IWbemClassObject_Get (int *,int ,int ,int *,scalar_t__*,int *) ;
+ scalar_t__ IWbemServices_CreateInstanceEnum (int *,int ,int ,int *,int **) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (char const*) ;
+ int SysFreeString (int ) ;
+ scalar_t__ VT_BSTR ;
+ scalar_t__ V_VT (int *) ;
+ int VariantClear (int *) ;
+ scalar_t__ WBEM_S_FALSE ;
+ scalar_t__ WBEM_S_NO_ERROR ;
+ scalar_t__ WBEM_S_TIMEDOUT ;
+ int ok (int,char*,scalar_t__,...) ;
 
 __attribute__((used)) static void test_Win32_PnPEntity( IWbemServices *services )
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void test_Win32_PnPEntity( IWbemServices *services 
 
     bstr = SysAllocString( win32_pnpentityW );
 
-    hr = IWbemServices_CreateInstanceEnum( services, bstr, 0, NULL, &enm );
+    hr = IWbemServices_CreateInstanceEnum( services, bstr, 0, ((void*)0), &enm );
     ok( hr == S_OK, "got %08x\n", hr );
 
     SysFreeString( bstr );
@@ -71,7 +71,7 @@ __attribute__((used)) static void test_Win32_PnPEntity( IWbemServices *services 
 
         for (i = 0; i < count; ++i)
         {
-            hr = IWbemClassObject_Get( obj, bstr, 0, &val, &type, NULL );
+            hr = IWbemClassObject_Get( obj, bstr, 0, &val, &type, ((void*)0) );
             ok( hr == S_OK, "got %08x\n", hr );
 
             if (SUCCEEDED( hr ))

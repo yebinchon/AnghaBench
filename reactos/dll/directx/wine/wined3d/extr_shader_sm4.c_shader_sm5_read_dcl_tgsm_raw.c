@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct wined3d_sm4_data {int dummy; } ;
-struct TYPE_4__ {int byte_count; int /*<<< orphan*/  reg; } ;
+struct TYPE_4__ {int byte_count; int reg; } ;
 struct TYPE_3__ {TYPE_2__ tgsm_raw; } ;
 struct wined3d_shader_instruction {TYPE_1__ declaration; } ;
-typedef  int DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  WINED3D_DATA_FLOAT ; 
- int /*<<< orphan*/  shader_sm4_read_dst_param (struct wined3d_sm4_data*,int const**,int const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FIXME (char*,int) ;
+ int WINED3D_DATA_FLOAT ;
+ int shader_sm4_read_dst_param (struct wined3d_sm4_data*,int const**,int const*,int ,int *) ;
 
 __attribute__((used)) static void shader_sm5_read_dcl_tgsm_raw(struct wined3d_shader_instruction *ins,
         DWORD opcode, DWORD opcode_token, const DWORD *tokens, unsigned int token_count,

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int gsize ;
-typedef  scalar_t__ gboolean ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int gsize ;
+typedef scalar_t__ gboolean ;
 struct TYPE_5__ {scalar_t__ disable_block_hash; } ;
 struct TYPE_4__ {int len; char* block_buf; } ;
-typedef  int /*<<< orphan*/  SeafileCrypt ;
-typedef  int /*<<< orphan*/  GChecksum ;
-typedef  TYPE_1__ CDCDescriptor ;
+typedef int SeafileCrypt ;
+typedef int GChecksum ;
+typedef TYPE_1__ CDCDescriptor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_CHECKSUM_SHA1 ; 
- int do_write_chunk (char const*,int,int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  g_checksum_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_checksum_get_digest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * g_checksum_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_checksum_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* gen_uuid () ; 
- TYPE_3__* seaf ; 
- int /*<<< orphan*/  seaf_warning (char*) ; 
- int seafile_encrypt (char**,int*,char*,int,int /*<<< orphan*/ *) ; 
- int strlen (char*) ; 
+
+ int G_CHECKSUM_SHA1 ;
+ int do_write_chunk (char const*,int,int *,char*,int) ;
+ int g_checksum_free (int *) ;
+ int g_checksum_get_digest (int *,int *,int*) ;
+ int * g_checksum_new (int ) ;
+ int g_checksum_update (int *,unsigned char*,int) ;
+ int g_free (char*) ;
+ char* gen_uuid () ;
+ TYPE_3__* seaf ;
+ int seaf_warning (char*) ;
+ int seafile_encrypt (char**,int*,char*,int,int *) ;
+ int strlen (char*) ;
 
 int
 seafile_write_chunk (const char *repo_id,
@@ -47,16 +47,16 @@ seafile_write_chunk (const char *repo_id,
     gsize len = 20;
     int ret = 0;
 
-    /* Encrypt before write to disk if needed, and we don't encrypt
-     * empty files. */
-    if (crypt != NULL && chunk->len) {
-        char *encrypted_buf = NULL;         /* encrypted output */
-        int enc_len = -1;                /* encrypted length */
 
-        ret = seafile_encrypt (&encrypted_buf, /* output */
-                               &enc_len,      /* output len */
-                               chunk->block_buf, /* input */
-                               chunk->len,       /* input len */
+
+    if (crypt != ((void*)0) && chunk->len) {
+        char *encrypted_buf = ((void*)0);
+        int enc_len = -1;
+
+        ret = seafile_encrypt (&encrypted_buf,
+                               &enc_len,
+                               chunk->block_buf,
+                               chunk->len,
                                crypt);
         if (ret != 0) {
             seaf_warning ("Error: failed to encrypt block\n");
@@ -77,7 +77,7 @@ seafile_write_chunk (const char *repo_id,
             ret = do_write_chunk (repo_id, version, checksum, encrypted_buf, enc_len);
         g_free (encrypted_buf);
     } else {
-        /* not a encrypted repo, go ahead */
+
         if (seaf->disable_block_hash) {
             char *uuid = gen_uuid();
             g_checksum_update (ctx, (unsigned char *)uuid, strlen(uuid));

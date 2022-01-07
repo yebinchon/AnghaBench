@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ flushing_errors; scalar_t__ fs_errors; scalar_t__ io_errors; scalar_t__ journalfile_deletions; scalar_t__ journalfile_creations; scalar_t__ datafile_deletions; scalar_t__ datafile_creations; scalar_t__ io_read_extents; scalar_t__ io_read_extent_bytes; scalar_t__ io_write_extents; scalar_t__ io_write_extent_bytes; scalar_t__ io_read_requests; scalar_t__ io_read_bytes; scalar_t__ io_write_requests; scalar_t__ io_write_bytes; scalar_t__ after_decompress_bytes; scalar_t__ before_decompress_bytes; scalar_t__ after_compress_bytes; scalar_t__ before_compress_bytes; scalar_t__ pg_cache_evictions; scalar_t__ pg_cache_backfills; scalar_t__ pg_cache_misses; scalar_t__ pg_cache_hits; scalar_t__ pg_cache_deletions; scalar_t__ pg_cache_insertions; scalar_t__ page_cache_descriptors; scalar_t__ metric_API_consumers; scalar_t__ metric_API_producers; } ;
 struct TYPE_3__ {scalar_t__ nr_committed_pages; } ;
 struct page_cache {TYPE_1__ committed_page_index; scalar_t__ populated_pages; scalar_t__ page_descriptors; } ;
 struct rrdengine_instance {TYPE_2__ stats; struct page_cache pg_cache; } ;
 
-/* Variables and functions */
- scalar_t__ global_flushing_errors ; 
- scalar_t__ global_fs_errors ; 
- scalar_t__ global_io_errors ; 
- scalar_t__ rrdeng_reserved_file_descriptors ; 
- int /*<<< orphan*/  snprintfz (char*,size_t,char*,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long) ; 
+
+ scalar_t__ global_flushing_errors ;
+ scalar_t__ global_fs_errors ;
+ scalar_t__ global_io_errors ;
+ scalar_t__ rrdeng_reserved_file_descriptors ;
+ int snprintfz (char*,size_t,char*,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long,long) ;
 
 char *get_rrdeng_statistics(struct rrdengine_instance *ctx, char *str, size_t size)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_13__ {int /*<<< orphan*/  stream_index; int /*<<< orphan*/  const* data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  index; } ;
-struct TYPE_11__ {size_t cur_au_index; size_t nb_au_headers; size_t buf_size; size_t buf_pos; scalar_t__ timestamp; int /*<<< orphan*/  const* buf; TYPE_1__* au_headers; scalar_t__ au_headers_length_bytes; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
+typedef int uint16_t ;
+struct TYPE_13__ {int stream_index; int const* data; } ;
+struct TYPE_12__ {int index; } ;
+struct TYPE_11__ {size_t cur_au_index; size_t nb_au_headers; size_t buf_size; size_t buf_pos; scalar_t__ timestamp; int const* buf; TYPE_1__* au_headers; scalar_t__ au_headers_length_bytes; } ;
 struct TYPE_10__ {size_t size; } ;
-typedef  TYPE_2__ PayloadContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+typedef TYPE_2__ PayloadContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVPacket ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- int FFMIN (int,int) ; 
- int MAX_AAC_HBR_FRAME_SIZE ; 
- int RTP_FLAG_MARKER ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int av_new_packet (TYPE_4__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ rtp_parse_mp4_au (TYPE_2__*,int /*<<< orphan*/  const*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ int FFMIN (int,int) ;
+ int MAX_AAC_HBR_FRAME_SIZE ;
+ int RTP_FLAG_MARKER ;
+ int av_log (int *,int ,char*) ;
+ int av_new_packet (TYPE_4__*,int) ;
+ int memcpy (int const*,int const*,int) ;
+ scalar_t__ rtp_parse_mp4_au (TYPE_2__*,int const*,int) ;
 
 __attribute__((used)) static int aac_parse_packet(AVFormatContext *ctx, PayloadContext *data,
                             AVStream *st, AVPacket *pkt, uint32_t *timestamp,
@@ -81,7 +81,7 @@ __attribute__((used)) static int aac_parse_packet(AVFormatContext *ctx, PayloadC
     buf += data->au_headers_length_bytes + 2;
     len -= data->au_headers_length_bytes + 2;
     if (data->nb_au_headers == 1 && len < data->au_headers[0].size) {
-        /* Packet is fragmented */
+
 
         if (!data->buf_pos) {
             if (data->au_headers[0].size > MAX_AAC_HBR_FRAME_SIZE) {

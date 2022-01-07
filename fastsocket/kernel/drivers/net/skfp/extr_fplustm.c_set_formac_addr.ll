@@ -1,0 +1,196 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/net/skfp/extr_fplustm.c_set_formac_addr.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/net/skfp/extr_fplustm.c_set_formac_addr.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.s_smc = type { %struct.TYPE_12__, %struct.TYPE_8__ }
+%struct.TYPE_12__ = type { %struct.TYPE_11__, %struct.TYPE_9__ }
+%struct.TYPE_11__ = type { %struct.TYPE_10__ }
+%struct.TYPE_10__ = type { i32* }
+%struct.TYPE_9__ = type { i32* }
+%struct.TYPE_8__ = type { %struct.TYPE_7__* }
+%struct.TYPE_7__ = type { i64 }
+
+@MAC0 = common dso_local global i64 0, align 8
+@FM_SAID = common dso_local global i32 0, align 4
+@my_said = common dso_local global i32 0, align 4
+@FM_LAIL = common dso_local global i32 0, align 4
+@FM_LAIC = common dso_local global i32 0, align 4
+@FM_LAIM = common dso_local global i32 0, align 4
+@FM_SAGP = common dso_local global i32 0, align 4
+@my_sagp = common dso_local global i32 0, align 4
+@FM_LAGL = common dso_local global i32 0, align 4
+@FM_LAGC = common dso_local global i32 0, align 4
+@FM_LAGM = common dso_local global i32 0, align 4
+@FM_TREQ1 = common dso_local global i32 0, align 4
+@FM_TREQ0 = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.s_smc*)* @set_formac_addr to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @set_formac_addr(%struct.s_smc* %0) #0 {
+  %2 = alloca %struct.s_smc*, align 8
+  %3 = alloca i64, align 8
+  store %struct.s_smc* %0, %struct.s_smc** %2, align 8
+  %4 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %5 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %4, i32 0, i32 1
+  %6 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %5, i32 0, i32 0
+  %7 = load %struct.TYPE_7__*, %struct.TYPE_7__** %6, align 8
+  %8 = load i64, i64* @MAC0, align 8
+  %9 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %7, i64 %8
+  %10 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %9, i32 0, i32 0
+  %11 = load i64, i64* %10, align 8
+  store i64 %11, i64* %3, align 8
+  %12 = load i32, i32* @FM_SAID, align 4
+  %13 = call i32 @FM_A(i32 %12)
+  %14 = load i32, i32* @my_said, align 4
+  %15 = call i32 @outpw(i32 %13, i32 %14)
+  %16 = load i32, i32* @FM_LAIL, align 4
+  %17 = call i32 @FM_A(i32 %16)
+  %18 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %19 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %18, i32 0, i32 0
+  %20 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %19, i32 0, i32 1
+  %21 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %20, i32 0, i32 0
+  %22 = load i32*, i32** %21, align 8
+  %23 = getelementptr inbounds i32, i32* %22, i64 4
+  %24 = load i32, i32* %23, align 4
+  %25 = shl i32 %24, 8
+  %26 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %27 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %26, i32 0, i32 0
+  %28 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %27, i32 0, i32 1
+  %29 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %28, i32 0, i32 0
+  %30 = load i32*, i32** %29, align 8
+  %31 = getelementptr inbounds i32, i32* %30, i64 5
+  %32 = load i32, i32* %31, align 4
+  %33 = add nsw i32 %25, %32
+  %34 = call i32 @outpw(i32 %17, i32 %33)
+  %35 = load i32, i32* @FM_LAIC, align 4
+  %36 = call i32 @FM_A(i32 %35)
+  %37 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %38 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %37, i32 0, i32 0
+  %39 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %38, i32 0, i32 1
+  %40 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %39, i32 0, i32 0
+  %41 = load i32*, i32** %40, align 8
+  %42 = getelementptr inbounds i32, i32* %41, i64 2
+  %43 = load i32, i32* %42, align 4
+  %44 = shl i32 %43, 8
+  %45 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %46 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %45, i32 0, i32 0
+  %47 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %46, i32 0, i32 1
+  %48 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %47, i32 0, i32 0
+  %49 = load i32*, i32** %48, align 8
+  %50 = getelementptr inbounds i32, i32* %49, i64 3
+  %51 = load i32, i32* %50, align 4
+  %52 = add nsw i32 %44, %51
+  %53 = call i32 @outpw(i32 %36, i32 %52)
+  %54 = load i32, i32* @FM_LAIM, align 4
+  %55 = call i32 @FM_A(i32 %54)
+  %56 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %57 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %56, i32 0, i32 0
+  %58 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %57, i32 0, i32 1
+  %59 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %58, i32 0, i32 0
+  %60 = load i32*, i32** %59, align 8
+  %61 = getelementptr inbounds i32, i32* %60, i64 0
+  %62 = load i32, i32* %61, align 4
+  %63 = shl i32 %62, 8
+  %64 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %65 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %64, i32 0, i32 0
+  %66 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %65, i32 0, i32 1
+  %67 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %66, i32 0, i32 0
+  %68 = load i32*, i32** %67, align 8
+  %69 = getelementptr inbounds i32, i32* %68, i64 1
+  %70 = load i32, i32* %69, align 4
+  %71 = add nsw i32 %63, %70
+  %72 = call i32 @outpw(i32 %55, i32 %71)
+  %73 = load i32, i32* @FM_SAGP, align 4
+  %74 = call i32 @FM_A(i32 %73)
+  %75 = load i32, i32* @my_sagp, align 4
+  %76 = call i32 @outpw(i32 %74, i32 %75)
+  %77 = load i32, i32* @FM_LAGL, align 4
+  %78 = call i32 @FM_A(i32 %77)
+  %79 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %80 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %79, i32 0, i32 0
+  %81 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %80, i32 0, i32 0
+  %82 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %81, i32 0, i32 0
+  %83 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %82, i32 0, i32 0
+  %84 = load i32*, i32** %83, align 8
+  %85 = getelementptr inbounds i32, i32* %84, i64 4
+  %86 = load i32, i32* %85, align 4
+  %87 = shl i32 %86, 8
+  %88 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %89 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %88, i32 0, i32 0
+  %90 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %89, i32 0, i32 0
+  %91 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %90, i32 0, i32 0
+  %92 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %91, i32 0, i32 0
+  %93 = load i32*, i32** %92, align 8
+  %94 = getelementptr inbounds i32, i32* %93, i64 5
+  %95 = load i32, i32* %94, align 4
+  %96 = add nsw i32 %87, %95
+  %97 = call i32 @outpw(i32 %78, i32 %96)
+  %98 = load i32, i32* @FM_LAGC, align 4
+  %99 = call i32 @FM_A(i32 %98)
+  %100 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %101 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %100, i32 0, i32 0
+  %102 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %101, i32 0, i32 0
+  %103 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %102, i32 0, i32 0
+  %104 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %103, i32 0, i32 0
+  %105 = load i32*, i32** %104, align 8
+  %106 = getelementptr inbounds i32, i32* %105, i64 2
+  %107 = load i32, i32* %106, align 4
+  %108 = shl i32 %107, 8
+  %109 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %110 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %109, i32 0, i32 0
+  %111 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %110, i32 0, i32 0
+  %112 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %111, i32 0, i32 0
+  %113 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %112, i32 0, i32 0
+  %114 = load i32*, i32** %113, align 8
+  %115 = getelementptr inbounds i32, i32* %114, i64 3
+  %116 = load i32, i32* %115, align 4
+  %117 = add nsw i32 %108, %116
+  %118 = call i32 @outpw(i32 %99, i32 %117)
+  %119 = load i32, i32* @FM_LAGM, align 4
+  %120 = call i32 @FM_A(i32 %119)
+  %121 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %122 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %121, i32 0, i32 0
+  %123 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %122, i32 0, i32 0
+  %124 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %123, i32 0, i32 0
+  %125 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %124, i32 0, i32 0
+  %126 = load i32*, i32** %125, align 8
+  %127 = getelementptr inbounds i32, i32* %126, i64 0
+  %128 = load i32, i32* %127, align 4
+  %129 = shl i32 %128, 8
+  %130 = load %struct.s_smc*, %struct.s_smc** %2, align 8
+  %131 = getelementptr inbounds %struct.s_smc, %struct.s_smc* %130, i32 0, i32 0
+  %132 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %131, i32 0, i32 0
+  %133 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %132, i32 0, i32 0
+  %134 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %133, i32 0, i32 0
+  %135 = load i32*, i32** %134, align 8
+  %136 = getelementptr inbounds i32, i32* %135, i64 1
+  %137 = load i32, i32* %136, align 4
+  %138 = add nsw i32 %129, %137
+  %139 = call i32 @outpw(i32 %120, i32 %138)
+  %140 = load i32, i32* @FM_TREQ1, align 4
+  %141 = call i32 @FM_A(i32 %140)
+  %142 = load i64, i64* %3, align 8
+  %143 = ashr i64 %142, 16
+  %144 = trunc i64 %143 to i32
+  %145 = call i32 @outpw(i32 %141, i32 %144)
+  %146 = load i32, i32* @FM_TREQ0, align 4
+  %147 = call i32 @FM_A(i32 %146)
+  %148 = load i64, i64* %3, align 8
+  %149 = trunc i64 %148 to i32
+  %150 = call i32 @outpw(i32 %147, i32 %149)
+  ret void
+}
+
+declare dso_local i32 @outpw(i32, i32) #1
+
+declare dso_local i32 @FM_A(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

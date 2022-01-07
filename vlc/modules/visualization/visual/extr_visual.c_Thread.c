@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_5__ {int /*<<< orphan*/  fifo; } ;
-typedef  TYPE_2__ filter_sys_t ;
-typedef  int /*<<< orphan*/  block_t ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_5__ {int fifo; } ;
+typedef TYPE_2__ filter_sys_t ;
+typedef int block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoRealWork (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * block_FifoGet (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  block_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- int /*<<< orphan*/  vlc_restorecancel (int) ; 
- int vlc_savecancel () ; 
+
+ int DoRealWork (TYPE_1__*,int *) ;
+ int * block_FifoGet (int ) ;
+ int block_Release (int ) ;
+ int vlc_assert_unreachable () ;
+ int vlc_restorecancel (int) ;
+ int vlc_savecancel () ;
 
 __attribute__((used)) static void *Thread( void *data )
 {

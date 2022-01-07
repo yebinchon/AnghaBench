@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  sd_id128_t ;
 
-/* Variables and functions */
- int ENOKEY ; 
- int /*<<< orphan*/  arg_esp_path ; 
- int find_esp_and_warn (int /*<<< orphan*/ ,int,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_and_replace (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ) ; 
- int log_error_errno (int,char*) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int sd_id128_t ;
+
+
+ int ENOKEY ;
+ int arg_esp_path ;
+ int find_esp_and_warn (int ,int,char**,int *,int *,int *,int *) ;
+ int free_and_replace (int ,char*) ;
+ int log_debug (char*,int ) ;
+ int log_error_errno (int,char*) ;
 
 __attribute__((used)) static int acquire_esp(
                 bool unprivileged_mode,
@@ -32,11 +32,11 @@ __attribute__((used)) static int acquire_esp(
         char *np;
         int r;
 
-        /* Find the ESP, and log about errors. Note that find_esp_and_warn() will log in all error cases on
-         * its own, except for ENOKEY (which is good, we want to show our own message in that case,
-         * suggesting use of --esp-path=) and EACCESS (only when we request unprivileged mode; in this case
-         * we simply eat up the error here, so that --list and --status work too, without noise about
-         * this). */
+
+
+
+
+
 
         r = find_esp_and_warn(arg_esp_path, unprivileged_mode, &np, ret_part, ret_pstart, ret_psize, ret_uuid);
         if (r == -ENOKEY)

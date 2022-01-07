@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double greatcircle (double,double,double,double) ; 
- double satpropdelay (double) ; 
+ double greatcircle (double,double,double,double) ;
+ double satpropdelay (double) ;
 
 __attribute__((used)) static void
 satfinddelay(
-	double lat1,
-	double long1,
-	double lat2,
-	double long2,
-	double *delay
-	)
+ double lat1,
+ double long1,
+ double lat2,
+ double long2,
+ double *delay
+ )
 {
-	double dg;	/* great circle distance */
+ double dg;
 
-	dg = greatcircle(lat1, long1, lat2, long2);
+ dg = greatcircle(lat1, long1, lat2, long2);
 
-	*delay = satpropdelay(dg);
+ *delay = satpropdelay(dg);
 }

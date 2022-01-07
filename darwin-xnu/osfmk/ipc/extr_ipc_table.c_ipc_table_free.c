@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vm_size_t ;
+
+
+ int kfree (void*,int ) ;
 
 void
 ipc_table_free(
-	vm_size_t	size,
-	void *		table)
+ vm_size_t size,
+ void * table)
 {
-	kfree(table, size);
+ kfree(table, size);
 }

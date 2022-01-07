@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int f; int l41; int y; unsigned long j; int l35; int l33; int l43; scalar_t__ x; scalar_t__ l53; int /*<<< orphan*/  l73; TYPE_2__* d; scalar_t__ l146; scalar_t__ l52; int /*<<< orphan*/  l62; scalar_t__ l31; } ;
-typedef  TYPE_1__ e ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int f; int l41; int y; unsigned long j; int l35; int l33; int l43; scalar_t__ x; scalar_t__ l53; int l73; TYPE_2__* d; scalar_t__ l146; scalar_t__ l52; int l62; scalar_t__ l31; } ;
+typedef TYPE_1__ e ;
 struct TYPE_5__ {int l80; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  l (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  l141 (int,int,int*,int*) ; 
+
+ int l (TYPE_2__*,int ,int) ;
+ int l141 (int,int,int*,int*) ;
 
 void cp_set_baud(e
  *a,int y){int l54,l50;{if(!(a->f==2||((a->f==3)&&a->l31)))goto l240;

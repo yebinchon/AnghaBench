@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DOUBLE ;
 
-/* Variables and functions */
- int NAN ; 
- int day_within_year (int) ; 
- int in_leap_year (int) ; 
- scalar_t__ isnan (int) ; 
+
+
+
+typedef int DOUBLE ;
+
+
+ int NAN ;
+ int day_within_year (int) ;
+ int in_leap_year (int) ;
+ scalar_t__ isnan (int) ;
 
 __attribute__((used)) static inline DOUBLE month_from_time(DOUBLE time)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static inline DOUBLE month_from_time(DOUBLE time)
     if(dwy < 212+ily) return 6;
     if(dwy < 243+ily) return 7;
     if(dwy < 273+ily) return 8;
-    if(dwy < 304+ily) return  9;
-    if(dwy < 334+ily) return  10;
-    return  11;
+    if(dwy < 304+ily) return 9;
+    if(dwy < 334+ily) return 10;
+    return 11;
 }

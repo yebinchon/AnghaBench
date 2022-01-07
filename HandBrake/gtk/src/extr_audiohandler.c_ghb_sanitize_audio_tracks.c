@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int /*<<< orphan*/  gdouble ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * audio_get_selected_settings (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_ui_quality (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,int) ; 
- int ghb_array_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_dict_get_value (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_double_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ghb_get_job_audio_list (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ghb_sanitize_audio_settings (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_ui_update (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gdouble ;
+typedef int GhbValue ;
+
+
+ int * audio_get_selected_settings (TYPE_1__*,int *) ;
+ int get_ui_quality (int *) ;
+ int * ghb_array_get (int *,int) ;
+ int ghb_array_len (int *) ;
+ int ghb_dict_get_value (int *,char*) ;
+ int ghb_double_value (int ) ;
+ int * ghb_get_job_audio_list (int ) ;
+ int ghb_sanitize_audio_settings (int ,int *) ;
+ int ghb_ui_update (TYPE_1__*,char*,int ) ;
 
 void ghb_sanitize_audio_tracks(signal_user_data_t *ud)
 {
@@ -39,8 +39,8 @@ void ghb_sanitize_audio_tracks(signal_user_data_t *ud)
         ghb_sanitize_audio_settings(ud->settings, asettings);
     }
 
-    GhbValue *asettings = audio_get_selected_settings(ud, NULL);
-    if (asettings != NULL)
+    GhbValue *asettings = audio_get_selected_settings(ud, ((void*)0));
+    if (asettings != ((void*)0))
     {
         ghb_ui_update(ud, "AudioEncoder",
                       ghb_dict_get_value(asettings, "Encoder"));

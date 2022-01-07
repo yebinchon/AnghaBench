@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_8__ {int state; size_t data_size; size_t field_len; int /*<<< orphan*/  iovw; } ;
-typedef  TYPE_1__ JournalImporter ;
 
-/* Variables and functions */
-#define  IMPORTER_STATE_DATA 131 
-#define  IMPORTER_STATE_DATA_FINISH 130 
-#define  IMPORTER_STATE_DATA_START 129 
- void* IMPORTER_STATE_EOF ; 
-#define  IMPORTER_STATE_LINE 128 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int /*<<< orphan*/  cellescape (char*,int,char*) ; 
- int get_data_data (TYPE_1__*,void**) ; 
- int get_data_newline (TYPE_1__*) ; 
- int get_data_size (TYPE_1__*) ; 
- int get_line (TYPE_1__*,char**,size_t*) ; 
- int iovw_put (int /*<<< orphan*/ *,char*,size_t) ; 
- int /*<<< orphan*/  journal_field_valid (char*,int,int) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_trace (char*,...) ; 
- char* memchr (char*,char,size_t) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
- int process_special_field (TYPE_1__*,char*) ; 
- char* strndupa (char*,int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_8__ {int state; size_t data_size; size_t field_len; int iovw; } ;
+typedef TYPE_1__ JournalImporter ;
+
+
+
+
+
+ void* IMPORTER_STATE_EOF ;
+
+ int assert (void*) ;
+ int assert_not_reached (char*) ;
+ int cellescape (char*,int,char*) ;
+ int get_data_data (TYPE_1__*,void**) ;
+ int get_data_newline (TYPE_1__*) ;
+ int get_data_size (TYPE_1__*) ;
+ int get_line (TYPE_1__*,char**,size_t*) ;
+ int iovw_put (int *,char*,size_t) ;
+ int journal_field_valid (char*,int,int) ;
+ int log_debug (char*,int ) ;
+ int log_trace (char*,...) ;
+ char* memchr (char*,char,size_t) ;
+ int memmove (char*,char*,size_t) ;
+ int process_special_field (TYPE_1__*,char*) ;
+ char* strndupa (char*,int) ;
 
 int journal_importer_process_data(JournalImporter *imp) {
         int r;
 
         switch(imp->state) {
-        case IMPORTER_STATE_LINE: {
+        case 128: {
                 char *line, *sep;
                 size_t n = 0;
 
@@ -62,17 +62,17 @@ int journal_importer_process_data(JournalImporter *imp) {
                         return 1;
                 }
 
-                /* MESSAGE=xxx\n
-                   or
-                   COREDUMP\n
-                   LLLLLLLL0011223344...\n
-                */
+
+
+
+
+
                 sep = memchr(line, '=', n);
                 if (sep) {
-                        /* chomp newline */
+
                         n--;
 
-                        if (!journal_field_valid(line, sep - line, true)) {
+                        if (!journal_field_valid(line, sep - line, 1)) {
                                 char buf[64], *t;
 
                                 t = strndupa(line, sep - line);
@@ -91,25 +91,25 @@ int journal_importer_process_data(JournalImporter *imp) {
                         if (r < 0)
                                 return r;
                 } else {
-                        /* replace \n with = */
+
                         line[n-1] = '=';
 
                         imp->field_len = n;
-                        imp->state = IMPORTER_STATE_DATA_START;
+                        imp->state = 129;
 
-                        /* we cannot put the field in iovec until we have all data */
+
                 }
 
                 log_trace("Received: %.*s (%s)", (int) n, line, sep ? "text" : "binary");
 
-                return 0; /* continue */
+                return 0;
         }
 
-        case IMPORTER_STATE_DATA_START:
+        case 129:
                 assert(imp->data_size == 0);
 
                 r = get_data_size(imp);
-                // log_debug("get_data_size() -> %d", r);
+
                 if (r < 0)
                         return r;
                 if (r == 0) {
@@ -118,18 +118,18 @@ int journal_importer_process_data(JournalImporter *imp) {
                 }
 
                 imp->state = imp->data_size > 0 ?
-                        IMPORTER_STATE_DATA : IMPORTER_STATE_DATA_FINISH;
+                        131 : 130;
 
-                return 0; /* continue */
+                return 0;
 
-        case IMPORTER_STATE_DATA: {
+        case 131: {
                 void *data;
                 char *field;
 
                 assert(imp->data_size > 0);
 
                 r = get_data_data(imp, &data);
-                // log_debug("get_data_data() -> %d", r);
+
                 if (r < 0)
                         return r;
                 if (r == 0) {
@@ -146,14 +146,14 @@ int journal_importer_process_data(JournalImporter *imp) {
                 if (r < 0)
                         return r;
 
-                imp->state = IMPORTER_STATE_DATA_FINISH;
+                imp->state = 130;
 
-                return 0; /* continue */
+                return 0;
         }
 
-        case IMPORTER_STATE_DATA_FINISH:
+        case 130:
                 r = get_data_newline(imp);
-                // log_debug("get_data_newline() -> %d", r);
+
                 if (r < 0)
                         return r;
                 if (r == 0) {
@@ -162,9 +162,9 @@ int journal_importer_process_data(JournalImporter *imp) {
                 }
 
                 imp->data_size = 0;
-                imp->state = IMPORTER_STATE_LINE;
+                imp->state = 128;
 
-                return 0; /* continue */
+                return 0;
         default:
                 assert_not_reached("wtf?");
         }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  yrmcds_error ;
-typedef  scalar_t__ yrmcds_command ;
-struct TYPE_3__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  sock; int /*<<< orphan*/  serial; } ;
-typedef  TYPE_1__ yrmcds ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int yrmcds_error ;
+typedef scalar_t__ yrmcds_command ;
+struct TYPE_3__ {int lock; int sock; int serial; } ;
+typedef TYPE_1__ yrmcds ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct iovec {char* iov_base; int iov_len; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  h ;
+typedef int ssize_t ;
+typedef int h ;
 
-/* Variables and functions */
- int BINARY_HEADER_SIZE ; 
- int EINTR ; 
- size_t MAX_DATA_SIZE ; 
- int /*<<< orphan*/  YRMCDS_BAD_ARGUMENT ; 
- scalar_t__ YRMCDS_CMD_BOTTOM ; 
- int /*<<< orphan*/  YRMCDS_OK ; 
- int /*<<< orphan*/  YRMCDS_SYSTEM_ERROR ; 
- int errno ; 
- int /*<<< orphan*/  hton16 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hton32 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hton64 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int writev (int /*<<< orphan*/ ,struct iovec*,int) ; 
+
+ int BINARY_HEADER_SIZE ;
+ int EINTR ;
+ size_t MAX_DATA_SIZE ;
+ int YRMCDS_BAD_ARGUMENT ;
+ scalar_t__ YRMCDS_CMD_BOTTOM ;
+ int YRMCDS_OK ;
+ int YRMCDS_SYSTEM_ERROR ;
+ int errno ;
+ int hton16 (int ,char*) ;
+ int hton32 (int ,char*) ;
+ int hton64 (int ,char*) ;
+ int memcpy (char*,int *,int) ;
+ int memset (char*,int ,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int writev (int ,struct iovec*,int) ;
 
 __attribute__((used)) static yrmcds_error send_command(
     yrmcds* c, yrmcds_command cmd, uint64_t cas, uint32_t* serial,
@@ -47,9 +47,9 @@ __attribute__((used)) static yrmcds_error send_command(
     size_t data_len, const char* data) {
     if( cmd >= YRMCDS_CMD_BOTTOM ||
         key_len > 65535 || extras_len > 127 || data_len > MAX_DATA_SIZE ||
-        (key_len != 0 && key == NULL) ||
-        (extras_len != 0 && extras == NULL) ||
-        (data_len != 0 && data == NULL) )
+        (key_len != 0 && key == ((void*)0)) ||
+        (extras_len != 0 && extras == ((void*)0)) ||
+        (data_len != 0 && data == ((void*)0)) )
         return YRMCDS_BAD_ARGUMENT;
 
     char h[BINARY_HEADER_SIZE];
@@ -62,18 +62,18 @@ __attribute__((used)) static yrmcds_error send_command(
     hton32((uint32_t)total_len, &h[8]);
     hton64(cas, &h[16]);
 
-#ifndef LIBYRMCDS_NO_INTERNAL_LOCK
+
     int e = pthread_mutex_lock(&c->lock);
     if( e != 0 ) {
         errno = e;
         return YRMCDS_SYSTEM_ERROR;
     }
-#endif // ! LIBYRMCDS_NO_INTERNAL_LOCK
+
 
     yrmcds_error ret = YRMCDS_OK;
     c->serial = c->serial + 1;
     memcpy(&h[12], &c->serial, 4);
-    if( serial != NULL )
+    if( serial != ((void*)0) )
         *serial = c->serial;
 
     struct iovec iov[4];
@@ -123,8 +123,8 @@ __attribute__((used)) static yrmcds_error send_command(
     }
 
   OUT:
-#ifndef LIBYRMCDS_NO_INTERNAL_LOCK
+
     pthread_mutex_unlock(&c->lock);
-#endif
+
     return ret;
 }

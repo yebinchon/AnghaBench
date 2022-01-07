@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_3__ {char* szBindName; int /*<<< orphan*/ * pszBinding; } ;
-typedef  TYPE_1__ NetCfgComponentItem ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CoTaskMemAlloc (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  wcscat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_3__ {char* szBindName; int * pszBinding; } ;
+typedef TYPE_1__ NetCfgComponentItem ;
+typedef int * LPBYTE ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int * CoTaskMemAlloc (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int E_OUTOFMEMORY ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ int RegQueryValueExW (int ,char*,int *,int *,int *,int *) ;
+ int S_OK ;
+ int wcscat (int *,char*) ;
+ int wcscpy (int *,char*) ;
 
 HRESULT
 ReadBindingString(
@@ -40,7 +40,7 @@ ReadBindingString(
     HKEY hKey;
     DWORD dwType, dwSize;
 
-    if (Item == NULL || Item->szBindName == NULL)
+    if (Item == ((void*)0) || Item->szBindName == ((void*)0))
         return S_OK;
 
     wcscpy(szBuffer, L"SYSTEM\\CurrentControlSet\\Services\\");
@@ -50,15 +50,15 @@ ReadBindingString(
     if (RegOpenKeyExW(HKEY_LOCAL_MACHINE, szBuffer, 0, KEY_READ, &hKey) == ERROR_SUCCESS)
     {
         dwSize = 0;
-        RegQueryValueExW(hKey, L"Bind", NULL, &dwType, NULL, &dwSize);
+        RegQueryValueExW(hKey, L"Bind", ((void*)0), &dwType, ((void*)0), &dwSize);
 
         if (dwSize != 0)
         {
             Item->pszBinding = CoTaskMemAlloc(dwSize);
-            if (Item->pszBinding == NULL)
+            if (Item->pszBinding == ((void*)0))
                 return E_OUTOFMEMORY;
 
-            RegQueryValueExW(hKey, L"Bind", NULL, &dwType, (LPBYTE)Item->pszBinding, &dwSize);
+            RegQueryValueExW(hKey, L"Bind", ((void*)0), &dwType, (LPBYTE)Item->pszBinding, &dwSize);
         }
 
         RegCloseKey(hKey);

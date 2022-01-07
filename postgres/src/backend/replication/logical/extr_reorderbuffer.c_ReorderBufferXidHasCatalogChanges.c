@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TransactionId ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int TransactionId ;
 struct TYPE_3__ {int has_catalog_changes; } ;
-typedef  TYPE_1__ ReorderBufferTXN ;
-typedef  int /*<<< orphan*/  ReorderBuffer ;
+typedef TYPE_1__ ReorderBufferTXN ;
+typedef int ReorderBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InvalidXLogRecPtr ; 
- TYPE_1__* ReorderBufferTXNByXid (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int InvalidXLogRecPtr ;
+ TYPE_1__* ReorderBufferTXNByXid (int *,int ,int,int *,int ,int) ;
 
 bool
 ReorderBufferXidHasCatalogChanges(ReorderBuffer *rb, TransactionId xid)
 {
-	ReorderBufferTXN *txn;
+ ReorderBufferTXN *txn;
 
-	txn = ReorderBufferTXNByXid(rb, xid, false, NULL, InvalidXLogRecPtr,
-								false);
-	if (txn == NULL)
-		return false;
+ txn = ReorderBufferTXNByXid(rb, xid, 0, ((void*)0), InvalidXLogRecPtr,
+        0);
+ if (txn == ((void*)0))
+  return 0;
 
-	return txn->has_catalog_changes;
+ return txn->has_catalog_changes;
 }

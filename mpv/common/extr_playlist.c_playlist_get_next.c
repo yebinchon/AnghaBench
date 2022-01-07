@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct playlist_entry {struct playlist_entry* next; struct playlist_entry* prev; struct playlist* pl; } ;
 struct playlist {struct playlist_entry* current; scalar_t__ current_was_replaced; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+ int assert (int) ;
 
 struct playlist_entry *playlist_get_next(struct playlist *pl, int direction)
 {
     assert(direction == -1 || direction == +1);
     if (!pl->current)
-        return NULL;
+        return ((void*)0);
     assert(pl->current->pl == pl);
     if (direction < 0)
         return pl->current->prev;

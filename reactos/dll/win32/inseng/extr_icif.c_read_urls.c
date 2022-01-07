@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct url_info {int index; int /*<<< orphan*/  entry; int /*<<< orphan*/  flags; int /*<<< orphan*/ * url; } ;
+
+
+
+
+struct url_info {int index; int entry; int flags; int * url; } ;
 struct inf_value {int dummy; } ;
 struct inf_section {int dummy; } ;
-struct cifcomponent {int /*<<< orphan*/  urls; } ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct cifcomponent {int urls; } ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- struct url_info* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- scalar_t__ inf_section_next_value (struct inf_section*,struct inf_value**) ; 
- char* inf_value_get_key (struct inf_value*) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
- int strtol (char*,char**,int) ; 
- int /*<<< orphan*/  url_entry_free (struct url_info*) ; 
- int /*<<< orphan*/  value_get_dword_field (struct inf_value*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  value_get_str_field (struct inf_value*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int TRUE ;
+ struct url_info* heap_alloc_zero (int) ;
+ int heap_free (char*) ;
+ scalar_t__ inf_section_next_value (struct inf_section*,struct inf_value**) ;
+ char* inf_value_get_key (struct inf_value*) ;
+ int list_add_tail (int *,int *) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
+ int strtol (char*,char**,int) ;
+ int url_entry_free (struct url_info*) ;
+ int value_get_dword_field (struct inf_value*,int,int *,int ) ;
+ int value_get_str_field (struct inf_value*,int,int **,int *) ;
 
 __attribute__((used)) static BOOL read_urls(struct cifcomponent *component, struct inf_section *section)
 {
-    struct inf_value *inf_value = NULL;
+    struct inf_value *inf_value = ((void*)0);
     struct url_info *url_entry;
     char *str, *next;
     int index;
@@ -59,7 +59,7 @@ __attribute__((used)) static BOOL read_urls(struct cifcomponent *component, stru
 
         url_entry->index = index;
 
-        if (!value_get_str_field(inf_value, 1, &url_entry->url, NULL))
+        if (!value_get_str_field(inf_value, 1, &url_entry->url, ((void*)0)))
             goto error;
         if (!url_entry->url || !*url_entry->url)
         {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {struct TYPE_6__* next; int /*<<< orphan*/  respool; int /*<<< orphan*/  handler_baton; int /*<<< orphan*/  (* handler ) (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__ serf_request_t ;
-typedef  int /*<<< orphan*/  apr_status_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_request (TYPE_1__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {struct TYPE_6__* next; int respool; int handler_baton; int (* handler ) (TYPE_1__*,int *,int ,int ) ;} ;
+typedef TYPE_1__ serf_request_t ;
+typedef int apr_status_t ;
+
+
+ int destroy_request (TYPE_1__*) ;
+ int stub1 (TYPE_1__*,int *,int ,int ) ;
 
 __attribute__((used)) static apr_status_t cancel_request(serf_request_t *request,
                                    serf_request_t **list,
                                    int notify_request)
 {
-    /* If we haven't run setup, then we won't have a handler to call. */
+
     if (request->handler && notify_request) {
-        /* We actually don't care what the handler returns.
-         * We have bigger matters at hand.
-         */
-        (*request->handler)(request, NULL, request->handler_baton,
+
+
+
+        (*request->handler)(request, ((void*)0), request->handler_baton,
                             request->respool);
     }
 

@@ -1,137 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  NID_aes_128_cbc 163 
-#define  NID_aes_128_ccm 162 
-#define  NID_aes_128_ctr 161 
-#define  NID_aes_128_ecb 160 
-#define  NID_aes_128_gcm 159 
-#define  NID_aes_128_xts 158 
-#define  NID_aes_192_cbc 157 
-#define  NID_aes_192_ccm 156 
-#define  NID_aes_192_ctr 155 
-#define  NID_aes_192_ecb 154 
-#define  NID_aes_192_gcm 153 
-#define  NID_aes_256_cbc 152 
-#define  NID_aes_256_ccm 151 
-#define  NID_aes_256_ctr 150 
-#define  NID_aes_256_ecb 149 
-#define  NID_aes_256_gcm 148 
-#define  NID_aes_256_xts 147 
-#define  NID_des_ede3_cbc 146 
-#define  NID_des_ede3_ecb 145 
-#define  NID_id_aes128_wrap 144 
-#define  NID_id_aes128_wrap_pad 143 
-#define  NID_id_aes192_wrap 142 
-#define  NID_id_aes192_wrap_pad 141 
-#define  NID_id_aes256_wrap 140 
-#define  NID_id_aes256_wrap_pad 139 
-#define  NID_sha1 138 
-#define  NID_sha224 137 
-#define  NID_sha256 136 
-#define  NID_sha384 135 
-#define  NID_sha3_224 134 
-#define  NID_sha3_256 133 
-#define  NID_sha3_384 132 
-#define  NID_sha3_512 131 
-#define  NID_sha512 130 
-#define  NID_sha512_224 129 
-#define  NID_sha512_256 128 
-
 const char *ossl_prov_util_nid_to_name(int nid)
 {
-    /* We don't have OBJ_nid2n() in FIPS_MODE so we have an explicit list */
+
 
     switch (nid) {
-    /* Digests */
-    case NID_sha1:
+
+    case 138:
         return "SHA1";
-    case NID_sha224:
+    case 137:
         return "SHA-224";
-    case NID_sha256:
+    case 136:
         return "SHA-256";
-    case NID_sha384:
+    case 135:
         return "SHA-384";
-    case NID_sha512:
+    case 130:
         return "SHA-512";
-    case NID_sha512_224:
+    case 129:
         return "SHA-512/224";
-    case NID_sha512_256:
+    case 128:
         return "SHA-512/256";
-    case NID_sha3_224:
+    case 134:
         return "SHA3-224";
-    case NID_sha3_256:
+    case 133:
         return "SHA3-256";
-    case NID_sha3_384:
+    case 132:
         return "SHA3-384";
-    case NID_sha3_512:
+    case 131:
         return "SHA3-512";
 
-    /* Ciphers */
-    case NID_aes_256_ecb:
+
+    case 149:
         return "AES-256-ECB";
-    case NID_aes_192_ecb:
+    case 154:
         return "AES-192-ECB";
-    case NID_aes_128_ecb:
+    case 160:
         return "AES-128-ECB";
-    case NID_aes_256_cbc:
+    case 152:
         return "AES-256-CBC";
-    case NID_aes_192_cbc:
+    case 157:
         return "AES-192-CBC";
-    case NID_aes_128_cbc:
+    case 163:
         return "AES-128-CBC";
-    case NID_aes_256_ctr:
+    case 150:
         return "AES-256-CTR";
-    case NID_aes_192_ctr:
+    case 155:
         return "AES-192-CTR";
-    case NID_aes_128_ctr:
+    case 161:
         return "AES-128-CTR";
-    case NID_aes_256_xts:
+    case 147:
         return "AES-256-XTS";
-    case NID_aes_128_xts:
+    case 158:
         return "AES-128-XTS";
-    case NID_aes_256_gcm:
+    case 148:
         return "AES-256-GCM";
-    case NID_aes_192_gcm:
+    case 153:
         return "AES-192-GCM";
-    case NID_aes_128_gcm:
+    case 159:
         return "AES-128-GCM";
-    case NID_aes_256_ccm:
+    case 151:
         return "AES-256-CCM";
-    case NID_aes_192_ccm:
+    case 156:
         return "AES-192-CCM";
-    case NID_aes_128_ccm:
+    case 162:
         return "AES-128-CCM";
-    case NID_id_aes256_wrap:
+    case 140:
         return "AES-256-WRAP";
-    case NID_id_aes192_wrap:
+    case 142:
         return "AES-192-WRAP";
-    case NID_id_aes128_wrap:
+    case 144:
         return "AES-128-WRAP";
-    case NID_id_aes256_wrap_pad:
+    case 139:
         return "AES-256-WRAP-PAD";
-    case NID_id_aes192_wrap_pad:
+    case 141:
         return "AES-192-WRAP-PAD";
-    case NID_id_aes128_wrap_pad:
+    case 143:
         return "AES-128-WRAP-PAD";
-    case NID_des_ede3_ecb:
+    case 145:
         return "DES-EDE3";
-    case NID_des_ede3_cbc:
+    case 146:
         return "DES-EDE3-CBC";
     default:
         break;
     }
 
-    return NULL;
+    return ((void*)0);
 }

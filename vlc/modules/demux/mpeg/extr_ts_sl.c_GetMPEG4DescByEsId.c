@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct TYPE_10__ {int i_size; TYPE_5__** p_elems; } ;
 struct TYPE_11__ {TYPE_2__ objects; } ;
 struct TYPE_12__ {TYPE_3__ od; TYPE_1__* iod; } ;
-typedef  TYPE_4__ ts_pmt_t ;
+typedef TYPE_4__ ts_pmt_t ;
 struct TYPE_13__ {TYPE_6__* es_descr; } ;
-typedef  TYPE_5__ od_descriptor_t ;
+typedef TYPE_5__ od_descriptor_t ;
 struct TYPE_14__ {scalar_t__ i_es_id; scalar_t__ b_ok; } ;
-typedef  TYPE_6__ es_mpeg4_descriptor_t ;
+typedef TYPE_6__ es_mpeg4_descriptor_t ;
 struct TYPE_9__ {TYPE_6__* es_descr; } ;
 
-/* Variables and functions */
- int ES_DESCRIPTOR_COUNT ; 
+
+ int ES_DESCRIPTOR_COUNT ;
 
 const es_mpeg4_descriptor_t * GetMPEG4DescByEsId( const ts_pmt_t *pmt, uint16_t i_es_id )
 {
@@ -48,5 +48,5 @@ const es_mpeg4_descriptor_t * GetMPEG4DescByEsId( const ts_pmt_t *pmt, uint16_t 
                 return es_descr;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* state_t ;
-typedef  int /*<<< orphan*/  reserv_sets_t ;
-struct TYPE_9__ {scalar_t__ automaton; int /*<<< orphan*/  reservs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_state (TYPE_1__*) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- TYPE_1__* get_free_state (int,scalar_t__) ; 
- TYPE_1__* insert_state (TYPE_1__*) ; 
- int /*<<< orphan*/  reserv_sets_and (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reserv_sets_or (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef TYPE_1__* state_t ;
+typedef int reserv_sets_t ;
+struct TYPE_9__ {scalar_t__ automaton; int reservs; } ;
+
+
+ int free_state (TYPE_1__*) ;
+ int gcc_assert (int) ;
+ TYPE_1__* get_free_state (int,scalar_t__) ;
+ TYPE_1__* insert_state (TYPE_1__*) ;
+ int reserv_sets_and (int ,int ,int ) ;
+ int reserv_sets_or (int ,int ,int ) ;
 
 __attribute__((used)) static state_t
 states_union (state_t state1, state_t state2, reserv_sets_t reservs)

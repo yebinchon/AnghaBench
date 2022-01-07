@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ZSTD_cParameter ;
-struct TYPE_3__ {int lowerBound; int upperBound; int /*<<< orphan*/  error; } ;
-typedef  TYPE_1__ ZSTD_bounds ;
 
-/* Variables and functions */
- TYPE_1__ ZSTD_cParam_getBounds (int /*<<< orphan*/ ) ; 
- scalar_t__ ZSTD_isError (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ZSTD_cParameter ;
+struct TYPE_3__ {int lowerBound; int upperBound; int error; } ;
+typedef TYPE_1__ ZSTD_bounds ;
+
+
+ TYPE_1__ ZSTD_cParam_getBounds (int ) ;
+ scalar_t__ ZSTD_isError (int ) ;
 
 __attribute__((used)) static int ZSTD_cParam_withinBounds(ZSTD_cParameter cParam, int value)
 {

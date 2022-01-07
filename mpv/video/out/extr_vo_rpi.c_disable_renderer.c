@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int renderer_enabled; int /*<<< orphan*/ * swpool; TYPE_1__* renderer; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * input; int /*<<< orphan*/  control; } ;
+struct priv {int renderer_enabled; int * swpool; TYPE_1__* renderer; } ;
+struct TYPE_2__ {int * input; int control; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mmal_component_disable (TYPE_1__*) ; 
- int /*<<< orphan*/  mmal_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mmal_port_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_port_flush (int /*<<< orphan*/ ) ; 
+
+ int mmal_component_disable (TYPE_1__*) ;
+ int mmal_pool_destroy (int *) ;
+ int mmal_port_disable (int ) ;
+ int mmal_port_flush (int ) ;
 
 __attribute__((used)) static void disable_renderer(struct vo *vo)
 {
@@ -35,6 +35,6 @@ __attribute__((used)) static void disable_renderer(struct vo *vo)
         mmal_component_disable(p->renderer);
     }
     mmal_pool_destroy(p->swpool);
-    p->swpool = NULL;
-    p->renderer_enabled = false;
+    p->swpool = ((void*)0);
+    p->renderer_enabled = 0;
 }

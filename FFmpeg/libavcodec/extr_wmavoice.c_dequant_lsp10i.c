@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
-#define  M_PI 128 
- int /*<<< orphan*/  dequant_lsps (double*,int,int*,int const*,int,int /*<<< orphan*/ ,double const*,double const*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wmavoice_dq_lsp10i ; 
+
+
+
+typedef int uint16_t ;
+typedef int GetBitContext ;
+
+
+
+ int dequant_lsps (double*,int,int*,int const*,int,int ,double const*,double const*) ;
+ int get_bits (int *,int) ;
+ int wmavoice_dq_lsp10i ;
 
 __attribute__((used)) static void dequant_lsp10i(GetBitContext *gb, double *lsps)
 {
     static const uint16_t vec_sizes[4] = { 256, 64, 32, 32 };
     static const double mul_lsf[4] = {
-        5.2187144800e-3,    1.4626986422e-3,
-        9.6179549166e-4,    1.1325736225e-3
+        5.2187144800e-3, 1.4626986422e-3,
+        9.6179549166e-4, 1.1325736225e-3
     };
     static const double base_lsf[4] = {
-        M_PI * -2.15522e-1, M_PI * -6.1646e-2,
-        M_PI * -3.3486e-2,  M_PI * -5.7408e-2
+        128 * -2.15522e-1, 128 * -6.1646e-2,
+        128 * -3.3486e-2, 128 * -5.7408e-2
     };
     uint16_t v[4];
 

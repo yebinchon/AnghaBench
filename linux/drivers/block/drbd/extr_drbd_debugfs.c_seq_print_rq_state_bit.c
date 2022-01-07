@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct seq_file {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __seq_print_rq_state_bit (struct seq_file*,int,char*,char const*,int /*<<< orphan*/ *) ; 
+
+ int __seq_print_rq_state_bit (struct seq_file*,int,char*,char const*,int *) ;
 
 __attribute__((used)) static void seq_print_rq_state_bit(struct seq_file *m,
-	bool is_set, char *sep, const char *set_name)
+ bool is_set, char *sep, const char *set_name)
 {
-	__seq_print_rq_state_bit(m, is_set, sep, set_name, NULL);
+ __seq_print_rq_state_bit(m, is_set, sep, set_name, ((void*)0));
 }

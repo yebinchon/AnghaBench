@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  void* u_short ;
-typedef  int u_char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_EILSEQ ; 
- void** malloc (int) ; 
- int /*<<< orphan*/  ngx_free (void**) ; 
- int /*<<< orphan*/  ngx_memcpy (void**,void**,size_t) ; 
- int /*<<< orphan*/  ngx_set_errno (int /*<<< orphan*/ ) ; 
- int ngx_strlen (int*) ; 
- int ngx_utf8_decode (int**,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef void* u_short ;
+typedef int u_char ;
+
+
+ int NGX_EILSEQ ;
+ void** malloc (int) ;
+ int ngx_free (void**) ;
+ int ngx_memcpy (void**,void**,size_t) ;
+ int ngx_set_errno (int ) ;
+ int ngx_strlen (int*) ;
+ int ngx_utf8_decode (int**,int) ;
 
 __attribute__((used)) static u_short *
 ngx_utf8_to_utf16(u_short *utf16, u_char *utf8, size_t *len)
 {
-    u_char    *p;
-    u_short   *u, *last;
-    uint32_t   n;
+    u_char *p;
+    u_short *u, *last;
+    uint32_t n;
 
     p = utf8;
     u = utf16;
@@ -58,7 +58,7 @@ ngx_utf8_to_utf16(u_short *utf16, u_char *utf8, size_t *len)
 
         if (n > 0x10ffff) {
             ngx_set_errno(NGX_EILSEQ);
-            return NULL;
+            return ((void*)0);
         }
 
         if (n > 0xffff) {
@@ -71,11 +71,11 @@ ngx_utf8_to_utf16(u_short *utf16, u_char *utf8, size_t *len)
         *u++ = (u_short) n;
     }
 
-    /* the given buffer is not enough, allocate a new one */
+
 
     u = malloc(((p - utf8) + ngx_strlen(p) + 1) * sizeof(u_short));
-    if (u == NULL) {
-        return NULL;
+    if (u == ((void*)0)) {
+        return ((void*)0);
     }
 
     ngx_memcpy(u, utf16, *len * 2);
@@ -103,7 +103,7 @@ ngx_utf8_to_utf16(u_short *utf16, u_char *utf8, size_t *len)
         if (n > 0x10ffff) {
             ngx_free(utf16);
             ngx_set_errno(NGX_EILSEQ);
-            return NULL;
+            return ((void*)0);
         }
 
         if (n > 0xffff) {
@@ -116,5 +116,5 @@ ngx_utf8_to_utf16(u_short *utf16, u_char *utf8, size_t *len)
         *u++ = (u_short) n;
     }
 
-    /* unreachable */
+
 }

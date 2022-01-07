@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int current_input_buffer; int /*<<< orphan*/  hw_buffer_count; int /*<<< orphan*/  serial; scalar_t__ eos; scalar_t__ flushing; scalar_t__ draining; scalar_t__ output_buffer_count; int /*<<< orphan*/ * codec; } ;
-typedef  TYPE_1__ MediaCodecDecContext ;
-typedef  int /*<<< orphan*/  FFAMediaCodec ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  atomic_fetch_add (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  atomic_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int ff_AMediaCodec_flush (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int current_input_buffer; int hw_buffer_count; int serial; scalar_t__ eos; scalar_t__ flushing; scalar_t__ draining; scalar_t__ output_buffer_count; int * codec; } ;
+typedef TYPE_1__ MediaCodecDecContext ;
+typedef int FFAMediaCodec ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR_EXTERNAL ;
+ int AV_LOG_ERROR ;
+ int atomic_fetch_add (int *,int) ;
+ int atomic_init (int *,int ) ;
+ int av_log (int *,int ,char*) ;
+ int ff_AMediaCodec_flush (int *) ;
 
 __attribute__((used)) static int mediacodec_dec_flush_codec(AVCodecContext *avctx, MediaCodecDecContext *s)
 {

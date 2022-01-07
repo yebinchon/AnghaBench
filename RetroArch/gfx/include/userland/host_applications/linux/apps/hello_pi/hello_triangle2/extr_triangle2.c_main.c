@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int screen_width; int screen_height; } ;
-typedef  int GLfloat ;
+typedef int GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bcm_host_init () ; 
- int /*<<< orphan*/  draw_mandelbrot_to_texture (TYPE_1__*,int,int,double) ; 
- int /*<<< orphan*/  draw_triangles (TYPE_1__*,int,int,double,int,int) ; 
- int get_mouse (TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  init_ogl (TYPE_1__*) ; 
- int /*<<< orphan*/  init_shaders (TYPE_1__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- TYPE_1__* state ; 
+
+ int bcm_host_init () ;
+ int draw_mandelbrot_to_texture (TYPE_1__*,int,int,double) ;
+ int draw_triangles (TYPE_1__*,int,int,double,int,int) ;
+ int get_mouse (TYPE_1__*,int*,int*) ;
+ int init_ogl (TYPE_1__*) ;
+ int init_shaders (TYPE_1__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ TYPE_1__* state ;
 
 int main ()
 {
@@ -30,10 +30,10 @@ int main ()
    GLfloat cx, cy;
    bcm_host_init();
 
-   // Clear application state
+
    memset( state, 0, sizeof( *state ) );
 
-   // Start OGLES
+
    init_ogl(state);
    init_shaders(state);
    cx = state->screen_width/2;

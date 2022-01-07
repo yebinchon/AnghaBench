@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ReplicationSlot ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * MyReplicationSlot ; 
- int /*<<< orphan*/  ReplicationSlotDropPtr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ReplicationSlot ;
+
+
+ int Assert (int ) ;
+ int * MyReplicationSlot ;
+ int ReplicationSlotDropPtr (int *) ;
 
 __attribute__((used)) static void
 ReplicationSlotDropAcquired(void)
 {
-	ReplicationSlot *slot = MyReplicationSlot;
+ ReplicationSlot *slot = MyReplicationSlot;
 
-	Assert(MyReplicationSlot != NULL);
+ Assert(MyReplicationSlot != ((void*)0));
 
-	/* slot isn't acquired anymore */
-	MyReplicationSlot = NULL;
 
-	ReplicationSlotDropPtr(slot);
+ MyReplicationSlot = ((void*)0);
+
+ ReplicationSlotDropPtr(slot);
 }

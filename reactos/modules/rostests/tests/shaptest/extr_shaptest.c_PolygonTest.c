@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int member_0; int member_1; } ;
-typedef  TYPE_1__ POINT ;
-typedef  scalar_t__ HPEN ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ HBRUSH ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ POINT ;
+typedef scalar_t__ HPEN ;
+typedef int HDC ;
+typedef scalar_t__ HBRUSH ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALTERNATE ; 
- int /*<<< orphan*/  ASSERT (scalar_t__) ; 
- scalar_t__ CreatePen (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- int /*<<< orphan*/  GetPolyFillMode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PS_NULL ; 
- int /*<<< orphan*/  PS_SOLID ; 
- int /*<<< orphan*/  Polygon (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RGB (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Rectangle (int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  RoundRect (int /*<<< orphan*/ ,int,int,int,int,int,int) ; 
- scalar_t__ SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetPolyFillMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WINDING ; 
- int /*<<< orphan*/  nelem (TYPE_1__*) ; 
+
+ int ALTERNATE ;
+ int ASSERT (scalar_t__) ;
+ scalar_t__ CreatePen (int ,int,int ) ;
+ scalar_t__ CreateSolidBrush (int ) ;
+ int DeleteObject (scalar_t__) ;
+ int GetPolyFillMode (int ) ;
+ int PS_NULL ;
+ int PS_SOLID ;
+ int Polygon (int ,TYPE_1__*,int ) ;
+ int RGB (int,int ,int) ;
+ int Rectangle (int ,int,int,int,int) ;
+ int RoundRect (int ,int,int,int,int,int,int) ;
+ scalar_t__ SelectObject (int ,scalar_t__) ;
+ int SetPolyFillMode (int ,int ) ;
+ int WINDING ;
+ int nelem (TYPE_1__*) ;
 
 void PolygonTest ( HDC hdc )
 {
@@ -112,7 +112,7 @@ void PolygonTest ( HDC hdc )
     { 5, 33 }
   };
 
-  //create a pen to draw the shape
+
   Pen = CreatePen(PS_SOLID, 1, RGB(0, 0, 0xff));
   ASSERT(Pen);
   RedBrush = CreateSolidBrush(RGB(0xff, 0, 0));
@@ -135,24 +135,24 @@ void PolygonTest ( HDC hdc )
   Polygon(hdc,Tri1,nelem(Tri1));
   Polygon(hdc,Tri2,nelem(Tri2));
 
-  Rectangle ( hdc,  1, 11,  4, 14 );
-  Rectangle ( hdc,  5, 11,  8, 14 );
-  Rectangle ( hdc,  9, 11, 12, 14 );
+  Rectangle ( hdc, 1, 11, 4, 14 );
+  Rectangle ( hdc, 5, 11, 8, 14 );
+  Rectangle ( hdc, 9, 11, 12, 14 );
   Rectangle ( hdc, 13, 11, 16, 14 );
   Polygon(hdc,Square1,nelem(Square1));
   Polygon(hdc,Square2,nelem(Square2));
-  Rectangle ( hdc,  1, 19,  4, 22 );
-  Rectangle ( hdc,  5, 19,  8, 22 );
-  Rectangle ( hdc,  9, 19, 12, 22 );
+  Rectangle ( hdc, 1, 19, 4, 22 );
+  Rectangle ( hdc, 5, 19, 8, 22 );
+  Rectangle ( hdc, 9, 19, 12, 22 );
   Rectangle ( hdc, 13, 19, 16, 22 );
   Polygon(hdc,Square3,nelem(Square3));
   Polygon(hdc,Square4,nelem(Square4));
-  Rectangle ( hdc,  1, 27,  4, 30 );
-  Rectangle ( hdc,  5, 27,  8, 30 );
-  Rectangle ( hdc,  9, 27, 12, 30 );
+  Rectangle ( hdc, 1, 27, 4, 30 );
+  Rectangle ( hdc, 5, 27, 8, 30 );
+  Rectangle ( hdc, 9, 27, 12, 30 );
   Rectangle ( hdc, 13, 27, 16, 30 );
 
-  // switch to null pen to make surey they display correctly
+
   DeleteObject ( SelectObject(hdc, OldPen) );
   Pen = CreatePen ( PS_NULL, 0, 0 );
   ASSERT(Pen);
@@ -160,12 +160,12 @@ void PolygonTest ( HDC hdc )
 
   Polygon(hdc,Square5,nelem(Square5));
   Polygon(hdc,Square6,nelem(Square6));
-  Rectangle ( hdc,  1, 35,  4, 38 );
-  Rectangle ( hdc,  5, 35,  8, 38 );
-  Rectangle ( hdc,  9, 35, 12, 38 );
+  Rectangle ( hdc, 1, 35, 4, 38 );
+  Rectangle ( hdc, 5, 35, 8, 38 );
+  Rectangle ( hdc, 9, 35, 12, 38 );
   Rectangle ( hdc, 13, 35, 16, 38 );
 
-  //cleanup
+
   SetPolyFillMode(hdc, Mode);
   DeleteObject ( SelectObject(hdc, OldPen) );
   DeleteObject ( SelectObject(hdc, OldBrush) );

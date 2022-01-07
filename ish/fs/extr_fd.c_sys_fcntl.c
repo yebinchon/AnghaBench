@@ -1,82 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct flock_ {int /*<<< orphan*/  pid; int /*<<< orphan*/  len; int /*<<< orphan*/  start; int /*<<< orphan*/  whence; int /*<<< orphan*/  type; } ;
-struct flock32_ {int /*<<< orphan*/  pid; int /*<<< orphan*/  len; int /*<<< orphan*/  start; int /*<<< orphan*/  whence; int /*<<< orphan*/  type; } ;
-struct fdtable {int /*<<< orphan*/  cloexec; } ;
-struct fd {int /*<<< orphan*/  refcount; } ;
-typedef  int /*<<< orphan*/  flock32 ;
-typedef  int /*<<< orphan*/  flock ;
-typedef  int fd_t ;
-typedef  int dword_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct flock_ {int pid; int len; int start; int whence; int type; } ;
+struct flock32_ {int pid; int len; int start; int whence; int type; } ;
+struct fdtable {int cloexec; } ;
+struct fd {int refcount; } ;
+typedef int flock32 ;
+typedef int flock ;
+typedef int fd_t ;
+typedef int dword_t ;
 struct TYPE_2__ {struct fdtable* files; } ;
-
-/* Variables and functions */
-#define  F_DUPFD_ 139 
-#define  F_DUPFD_CLOEXEC_ 138 
-#define  F_GETFD_ 137 
-#define  F_GETFL_ 136 
-#define  F_GETLK64_ 135 
-#define  F_GETLK_ 134 
-#define  F_SETFD_ 133 
-#define  F_SETFL_ 132 
-#define  F_SETLK64_ 131 
-#define  F_SETLKW64_ 130 
-#define  F_SETLKW_ 129 
-#define  F_SETLK_ 128 
- int /*<<< orphan*/  STRACE (char*,int,...) ; 
- int _EBADF ; 
- int _EFAULT ; 
- int _EINVAL ; 
- int /*<<< orphan*/  bit_clear (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bit_set (int,int /*<<< orphan*/ ) ; 
- int bit_test (int,int /*<<< orphan*/ ) ; 
- TYPE_1__* current ; 
- struct fd* f_get (int) ; 
- int f_install_start (struct fd*,int) ; 
- int fcntl_getlk (struct fd*,struct flock_*) ; 
- int fcntl_setlk (struct fd*,struct flock_*,int) ; 
- int fd_getflags (struct fd*) ; 
- int fd_setflags (struct fd*,int) ; 
- int /*<<< orphan*/  user_read (int,struct flock_*,int) ; 
- int /*<<< orphan*/  user_write (int,struct flock_*,int) ; 
+ int STRACE (char*,int,...) ;
+ int _EBADF ;
+ int _EFAULT ;
+ int _EINVAL ;
+ int bit_clear (int,int ) ;
+ int bit_set (int,int ) ;
+ int bit_test (int,int ) ;
+ TYPE_1__* current ;
+ struct fd* f_get (int) ;
+ int f_install_start (struct fd*,int) ;
+ int fcntl_getlk (struct fd*,struct flock_*) ;
+ int fcntl_setlk (struct fd*,struct flock_*,int) ;
+ int fd_getflags (struct fd*) ;
+ int fd_setflags (struct fd*,int) ;
+ int user_read (int,struct flock_*,int) ;
+ int user_write (int,struct flock_*,int) ;
 
 dword_t sys_fcntl(fd_t f, dword_t cmd, dword_t arg) {
     struct fdtable *table = current->files;
     struct fd *fd = f_get(f);
-    if (fd == NULL)
+    if (fd == ((void*)0))
         return _EBADF;
     struct flock32_ flock32;
     struct flock_ flock;
     fd_t new_f;
     int err;
     switch (cmd) {
-        case F_DUPFD_:
+        case 139:
             STRACE("fcntl(%d, F_DUPFD, %d)", f, arg);
             fd->refcount++;
             return f_install_start(fd, arg);
 
-        case F_DUPFD_CLOEXEC_:
+        case 138:
             STRACE("fcntl(%d, F_DUPFD_CLOEXEC, %d)", f, arg);
             fd->refcount++;
             new_f = f_install_start(fd, arg);
             bit_set(new_f, table->cloexec);
             return new_f;
 
-        case F_GETFD_:
+        case 137:
             STRACE("fcntl(%d, F_GETFD)", f);
             return bit_test(f, table->cloexec);
-        case F_SETFD_:
+        case 133:
             STRACE("fcntl(%d, F_SETFD, 0x%x)", f, arg);
             if (arg & 1)
                 bit_set(f, table->cloexec);
@@ -84,14 +70,14 @@ dword_t sys_fcntl(fd_t f, dword_t cmd, dword_t arg) {
                 bit_clear(f, table->cloexec);
             return 0;
 
-        case F_GETFL_:
+        case 136:
             STRACE("fcntl(%d, F_GETFL)", f);
             return fd_getflags(fd);
-        case F_SETFL_:
+        case 132:
             STRACE("fcntl(%d, F_SETFL, %#x)", f, arg);
             return fd_setflags(fd, arg);
 
-        case F_GETLK_:
+        case 134:
             STRACE("fcntl(%d, F_GETLK, %#x)", f, arg);
             if (user_read(arg, &flock32, sizeof(flock32)))
                 return _EFAULT;
@@ -112,7 +98,7 @@ dword_t sys_fcntl(fd_t f, dword_t cmd, dword_t arg) {
             }
             return err;
 
-        case F_GETLK64_:
+        case 135:
             STRACE("fcntl(%d, F_GETLK64, %#x)", f, arg);
             if (user_read(arg, &flock, sizeof(flock)))
                 return _EFAULT;
@@ -122,9 +108,9 @@ dword_t sys_fcntl(fd_t f, dword_t cmd, dword_t arg) {
                     return _EFAULT;
             return err;
 
-        case F_SETLK_:
-        case F_SETLKW_:
-            STRACE("fcntl(%d, F_SETLK%*s, %#x)", f, cmd == F_SETLKW_, "W", arg);
+        case 128:
+        case 129:
+            STRACE("fcntl(%d, F_SETLK%*s, %#x)", f, cmd == 129, "W", arg);
             if (user_read(arg, &flock32, sizeof(flock32)))
                 return _EFAULT;
             flock.type = flock32.type;
@@ -132,14 +118,14 @@ dword_t sys_fcntl(fd_t f, dword_t cmd, dword_t arg) {
             flock.start = flock32.start;
             flock.len = flock32.len;
             flock.pid = flock32.pid;
-            return fcntl_setlk(fd, &flock, cmd == F_SETLKW64_);
+            return fcntl_setlk(fd, &flock, cmd == 130);
 
-        case F_SETLK64_:
-        case F_SETLKW64_:
-            STRACE("fcntl(%d, F_SETLK%*s64, %#x)", f, cmd == F_SETLKW_, "W", arg);
+        case 131:
+        case 130:
+            STRACE("fcntl(%d, F_SETLK%*s64, %#x)", f, cmd == 129, "W", arg);
             if (user_read(arg, &flock, sizeof(flock)))
                 return _EFAULT;
-            return fcntl_setlk(fd, &flock, cmd == F_SETLKW_);
+            return fcntl_setlk(fd, &flock, cmd == 129);
 
         default:
             STRACE("fcntl(%d, %d)", f, cmd);

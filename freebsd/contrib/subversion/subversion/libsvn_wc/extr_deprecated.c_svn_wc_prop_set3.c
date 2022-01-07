@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_string_t ;
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_func2_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_string_t ;
 struct TYPE_9__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (TYPE_1__*) ; 
- scalar_t__ SVN_ERR_WC_INVALID_SCHEDULE ; 
- int /*<<< orphan*/  svn_depth_empty ; 
- TYPE_1__* svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc__context_create_with_db (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_context_destroy (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_wc_prop_set4 (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (TYPE_1__*) ;
+ scalar_t__ SVN_ERR_WC_INVALID_SCHEDULE ;
+ int svn_depth_empty ;
+ TYPE_1__* svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_error_trace (int ) ;
+ int svn_wc__adm_get_db (int *) ;
+ TYPE_1__* svn_wc__context_create_with_db (int **,int *,int ,int *) ;
+ int svn_wc_context_destroy (int *) ;
+ TYPE_1__* svn_wc_prop_set4 (int *,char const*,char const*,int const*,int ,int ,int *,int *,int *,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_prop_set3(const char *name,
@@ -47,15 +47,15 @@ svn_wc_prop_set3(const char *name,
   svn_error_t *err;
 
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, pool));
-  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, NULL /* config */,
+  SVN_ERR(svn_wc__context_create_with_db(&wc_ctx, ((void*)0) ,
                                          svn_wc__adm_get_db(adm_access),
                                          pool));
 
   err = svn_wc_prop_set4(wc_ctx, local_abspath,
                          name, value,
                          svn_depth_empty,
-                         skip_checks, NULL /* changelist_filter */,
-                         NULL, NULL /* cancellation */,
+                         skip_checks, ((void*)0) ,
+                         ((void*)0), ((void*)0) ,
                          notify_func, notify_baton,
                          pool);
 

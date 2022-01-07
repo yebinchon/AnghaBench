@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zend_off_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zend_off_t ;
 struct TYPE_3__ {scalar_t__ abstract; } ;
-typedef  TYPE_1__ php_stream ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef TYPE_1__ php_stream ;
+typedef int DIR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rewinddir (int /*<<< orphan*/ *) ; 
+
+ int rewinddir (int *) ;
 
 __attribute__((used)) static int php_plain_files_dirstream_rewind(php_stream *stream, zend_off_t offset, int whence, zend_off_t *newoffs)
 {
-	rewinddir((DIR *)stream->abstract);
-	return 0;
+ rewinddir((DIR *)stream->abstract);
+ return 0;
 }

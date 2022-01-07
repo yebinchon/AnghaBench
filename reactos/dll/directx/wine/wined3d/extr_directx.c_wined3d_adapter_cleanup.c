@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  formats; } ;
-struct wined3d_adapter {int /*<<< orphan*/  cfgs; TYPE_1__ gl_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int formats; } ;
+struct wined3d_adapter {int cfgs; TYPE_1__ gl_info; } ;
+
+
+ int heap_free (int ) ;
 
 __attribute__((used)) static void wined3d_adapter_cleanup(struct wined3d_adapter *adapter)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsPipeline ;
-typedef  int cmsFloat64Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  cmsAT_END ; 
- int /*<<< orphan*/  cmsPipelineInsertStage (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsStageAllocMatrix (int /*<<< orphan*/ ,int,int,int const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsPipeline ;
+typedef int cmsFloat64Number ;
+
+
+ int DbgThread () ;
+ int cmsAT_END ;
+ int cmsPipelineInsertStage (int ,int *,int ,int ) ;
+ int cmsStageAllocMatrix (int ,int,int,int const*,int *) ;
 
 __attribute__((used)) static
 void AddIdentityMatrix(cmsPipeline* lut)
@@ -27,5 +27,5 @@ void AddIdentityMatrix(cmsPipeline* lut)
                           0, 0, 1,
                           0, 0, 0 };
 
-    cmsPipelineInsertStage(DbgThread(), lut, cmsAT_END, cmsStageAllocMatrix(DbgThread(), 3, 3, Identity, NULL));
+    cmsPipelineInsertStage(DbgThread(), lut, cmsAT_END, cmsStageAllocMatrix(DbgThread(), 3, 3, Identity, ((void*)0)));
 }

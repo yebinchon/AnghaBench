@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lockingContext; } ;
-typedef  TYPE_1__ unixFile ;
-typedef  int /*<<< orphan*/  sqlite3_file ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NO_LOCK ; 
- int /*<<< orphan*/  assert (int) ; 
- int closeUnixFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dotlockUnlock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lockingContext; } ;
+typedef TYPE_1__ unixFile ;
+typedef int sqlite3_file ;
+
+
+ int NO_LOCK ;
+ int assert (int) ;
+ int closeUnixFile (int *) ;
+ int dotlockUnlock (int *,int ) ;
+ int sqlite3_free (int ) ;
 
 __attribute__((used)) static int dotlockClose(sqlite3_file *id) {
   unixFile *pFile = (unixFile*)id;

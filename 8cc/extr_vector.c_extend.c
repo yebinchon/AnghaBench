@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int len; int nalloc; void* body; } ;
-typedef  TYPE_1__ Vector ;
+typedef TYPE_1__ Vector ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MIN_SIZE ; 
- void* malloc (int) ; 
- int max (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int) ; 
- int /*<<< orphan*/  roundup (int) ; 
+
+ int MIN_SIZE ;
+ void* malloc (int) ;
+ int max (int ,int ) ;
+ int memcpy (void*,void*,int) ;
+ int roundup (int) ;
 
 __attribute__((used)) static void extend(Vector *vec, int delta) {
     if (vec->len + delta <= vec->nalloc)

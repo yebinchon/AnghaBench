@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  int VARTYPE ;
-typedef  int ULONG ;
-struct TYPE_13__ {int /*<<< orphan*/  cElements; int /*<<< orphan*/  lLbound; } ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int VARTYPE ;
+typedef int ULONG ;
+struct TYPE_13__ {int cElements; int lLbound; } ;
 struct TYPE_12__ {int cDims; int fFeatures; int cLocks; TYPE_6__* rgsabound; } ;
-struct TYPE_11__ {int /*<<< orphan*/  cElements; int /*<<< orphan*/  lLbound; } ;
-typedef  int SF_TYPE ;
-typedef  TYPE_1__ SAFEARRAYBOUND ;
-typedef  TYPE_2__* LPSAFEARRAY ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
+struct TYPE_11__ {int cElements; int lLbound; } ;
+typedef int SF_TYPE ;
+typedef TYPE_1__ SAFEARRAYBOUND ;
+typedef TYPE_2__* LPSAFEARRAY ;
+typedef int GUID ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsEqualGUID (int /*<<< orphan*/ *,unsigned char*) ; 
- int SF_HAVEIID ; 
- int elem_wire_size (TYPE_2__*,int) ; 
- int get_cell_count (TYPE_2__*) ; 
- int get_union_type (TYPE_2__*) ; 
- scalar_t__ memcmp (TYPE_1__ const*,TYPE_6__*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pSafeArrayGetIID (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pSafeArrayGetVartype (TYPE_2__*,int*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int IsEqualGUID (int *,unsigned char*) ;
+ int SF_HAVEIID ;
+ int elem_wire_size (TYPE_2__*,int) ;
+ int get_cell_count (TYPE_2__*) ;
+ int get_union_type (TYPE_2__*) ;
+ scalar_t__ memcmp (TYPE_1__ const*,TYPE_6__*,int) ;
+ int ok (int,char*,...) ;
+ int pSafeArrayGetIID (TYPE_2__*,int *) ;
+ int pSafeArrayGetVartype (TYPE_2__*,int*) ;
 
 __attribute__((used)) static void check_safearray(void *buffer, LPSAFEARRAY lpsa)
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static void check_safearray(void *buffer, LPSAFEARRAY lpsa
     sftype = get_union_type(lpsa);
     cell_count = get_cell_count(lpsa);
 
-    ok(*(DWORD *)wiresa, "wiresa + 0x0 should be non-NULL instead of 0x%08x\n", *(DWORD *)wiresa); /* win2k: this is lpsa. winxp: this is 0x00000001 */
+    ok(*(DWORD *)wiresa, "wiresa + 0x0 should be non-NULL instead of 0x%08x\n", *(DWORD *)wiresa);
     wiresa += sizeof(DWORD);
     ok(*(DWORD *)wiresa == lpsa->cDims, "wiresa + 0x4 should be lpsa->cDims instead of 0x%08x\n", *(DWORD *)wiresa);
     wiresa += sizeof(DWORD);
@@ -89,7 +89,7 @@ __attribute__((used)) static void check_safearray(void *buffer, LPSAFEARRAY lpsa
         wiresa += sizeof(GUID);
     }
 
-    /* bounds are marshaled in natural dimensions order */
+
     bounds = (SAFEARRAYBOUND*)wiresa;
     for(i=0; i<lpsa->cDims; i++)
     {
@@ -104,5 +104,5 @@ __attribute__((used)) static void check_safearray(void *buffer, LPSAFEARRAY lpsa
 
     ok(*(DWORD *)wiresa == cell_count, "wiresa + 0x28 should be %u instead of %u\n", cell_count, *(DWORD*)wiresa);
     wiresa += sizeof(DWORD);
-    /* elements are now pointed to by wiresa */
+
 }

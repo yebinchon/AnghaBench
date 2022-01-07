@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* XMLRPC_VALUE ;
-struct TYPE_3__ {int /*<<< orphan*/  type; int /*<<< orphan*/  str; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  simplestring_add (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  simplestring_addn (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  simplestring_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlrpc_base64 ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* XMLRPC_VALUE ;
+struct TYPE_3__ {int type; int str; } ;
+
+
+ int simplestring_add (int *,char const*) ;
+ int simplestring_addn (int *,char const*,int) ;
+ int simplestring_clear (int *) ;
+ int xmlrpc_base64 ;
 
 void XMLRPC_SetValueBase64(XMLRPC_VALUE value, const char* s, int len) {
    if(value && s) {

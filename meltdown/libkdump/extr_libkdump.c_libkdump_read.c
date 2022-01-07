@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  res_stat ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int res_stat ;
 struct TYPE_2__ {int measurements; scalar_t__ fault_handling; char accept_after; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFO ; 
- scalar_t__ TSX ; 
- TYPE_1__ config ; 
- scalar_t__ dbg ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int,char) ; 
- int libkdump_read_signal_handler () ; 
- int libkdump_read_tsx () ; 
- size_t phys ; 
- int /*<<< orphan*/  sched_yield () ; 
+
+ int INFO ;
+ scalar_t__ TSX ;
+ TYPE_1__ config ;
+ scalar_t__ dbg ;
+ int debug (int ,char*,int,char) ;
+ int libkdump_read_signal_handler () ;
+ int libkdump_read_tsx () ;
+ size_t phys ;
+ int sched_yield () ;
 
 int __attribute__((optimize("-O0"))) libkdump_read(size_t addr) {
   phys = addr;

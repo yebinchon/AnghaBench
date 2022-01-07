@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
-typedef  int /*<<< orphan*/  zend_string ;
-typedef  int /*<<< orphan*/  zend_object ;
-typedef  int /*<<< orphan*/  xmlreader_prop_handler ;
-struct TYPE_3__ {int /*<<< orphan*/ * prop_handler; } ;
-typedef  TYPE_1__ xmlreader_object ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_WARNING ; 
- int /*<<< orphan*/  php_error_docref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* php_xmlreader_fetch_object (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * zend_hash_find_ptr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * zend_std_write_property (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zval ;
+typedef int zend_string ;
+typedef int zend_object ;
+typedef int xmlreader_prop_handler ;
+struct TYPE_3__ {int * prop_handler; } ;
+typedef TYPE_1__ xmlreader_object ;
+
+
+ int E_WARNING ;
+ int php_error_docref (int *,int ,char*) ;
+ TYPE_1__* php_xmlreader_fetch_object (int *) ;
+ int * zend_hash_find_ptr (int *,int *) ;
+ int * zend_std_write_property (int *,int *,int *,void**) ;
 
 zval *xmlreader_write_property(zend_object *object, zend_string *name, zval *value, void **cache_slot)
 {
-	xmlreader_object *obj;
-	xmlreader_prop_handler *hnd = NULL;
+ xmlreader_object *obj;
+ xmlreader_prop_handler *hnd = ((void*)0);
 
-	obj = php_xmlreader_fetch_object(object);
+ obj = php_xmlreader_fetch_object(object);
 
-	if (obj->prop_handler != NULL) {
-		hnd = zend_hash_find_ptr(obj->prop_handler, name);
-	}
-	if (hnd != NULL) {
-		php_error_docref(NULL, E_WARNING, "Cannot write to read-only property");
-	} else {
-		value = zend_std_write_property(object, name, value, cache_slot);
-	}
+ if (obj->prop_handler != ((void*)0)) {
+  hnd = zend_hash_find_ptr(obj->prop_handler, name);
+ }
+ if (hnd != ((void*)0)) {
+  php_error_docref(((void*)0), E_WARNING, "Cannot write to read-only property");
+ } else {
+  value = zend_std_write_property(object, name, value, cache_slot);
+ }
 
-	return value;
+ return value;
 }

@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_NLCK ; 
-#define  _ADJUST 133 
-#define  _FNL1 132 
-#define  _GAMEMODE 131 
-#define  _LOWER 130 
-#define  _QWERTY 129 
-#define  _RAISE 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bnumlock ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int KC_NLCK ;
+
+
+
+
+
+
+ int biton32 (int ) ;
+ int bnumlock ;
+ int tap_code (int ) ;
 
 uint32_t layer_state_set_user(uint32_t state) {
-//  if(rgblight_get_mode() == 1) {
+
     switch (biton32(state)) {
-    case _QWERTY:
+    case 129:
         if(bnumlock) {
             tap_code(KC_NLCK);
         }
         break;
-    case _LOWER:
+    case 130:
         if(!bnumlock) {
             tap_code(KC_NLCK);
         }
-        
+
         break;
-    case _ADJUST:
+    case 133:
         if(bnumlock) {
                 tap_code(KC_NLCK);
         }
         break;
-    case _RAISE:
+    case 128:
         if(bnumlock) {
                 tap_code(KC_NLCK);
         }
         break;
-    case _FNL1:
+    case 132:
         if(bnumlock) {
                 tap_code(KC_NLCK);
         }
         break;
-    case _GAMEMODE:
+    case 131:
         break;
-    default: //  for any other layers, or the default layer
+    default:
         if(bnumlock) {
                 tap_code(KC_NLCK);
         }
-        
+
         break;
     }
- // }
+
   return state;
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct histogram {int /*<<< orphan*/ *** data; } ;
+
+
+
+
+struct histogram {int *** data; } ;
 struct box {scalar_t__ b_max; scalar_t__ b_min; scalar_t__ g_max; scalar_t__ g_min; scalar_t__ r_max; scalar_t__ r_min; } ;
 
-/* Variables and functions */
- scalar_t__ B_COUNT ; 
- unsigned char B_SHIFT ; 
- scalar_t__ G_COUNT ; 
- unsigned char G_SHIFT ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct histogram* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct histogram*) ; 
- scalar_t__ R_COUNT ; 
- unsigned char R_SHIFT ; 
- unsigned int box_color (struct histogram*,struct box*) ; 
- struct box* find_box_max_count (struct box*,int) ; 
- struct box* find_box_max_score (struct box*,int) ; 
- int /*<<< orphan*/  shrink_box (struct histogram*,struct box*) ; 
- int /*<<< orphan*/  split_box (struct histogram*,struct box*,struct box*) ; 
+
+ scalar_t__ B_COUNT ;
+ unsigned char B_SHIFT ;
+ scalar_t__ G_COUNT ;
+ unsigned char G_SHIFT ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct histogram* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct histogram*) ;
+ scalar_t__ R_COUNT ;
+ unsigned char R_SHIFT ;
+ unsigned int box_color (struct histogram*,struct box*) ;
+ struct box* find_box_max_count (struct box*,int) ;
+ struct box* find_box_max_score (struct box*,int) ;
+ int shrink_box (struct histogram*,struct box*) ;
+ int split_box (struct histogram*,struct box*,struct box*) ;
 
 __attribute__((used)) static int median_cut(unsigned char *image, unsigned int width, unsigned int height,
                       unsigned int stride, int desired, unsigned int *colors)

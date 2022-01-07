@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u_long ;
-struct pppTimer {scalar_t__ state; scalar_t__ load; scalar_t__ rest; struct pppTimer* next; int /*<<< orphan*/  name; } ;
+
+
+
+
+typedef scalar_t__ u_long ;
+struct pppTimer {scalar_t__ state; scalar_t__ load; scalar_t__ rest; struct pppTimer* next; int name; } ;
 struct itimerval {int dummy; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
+typedef int sigset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITIMER_REAL ; 
- int /*<<< orphan*/  LogTIMER ; 
- scalar_t__ RESTVAL (struct itimerval) ; 
- int /*<<< orphan*/  SIGALRM ; 
- int /*<<< orphan*/  SIG_BLOCK ; 
- int /*<<< orphan*/  SIG_SETMASK ; 
- int /*<<< orphan*/  StopTimerNoBlock (struct pppTimer*) ; 
- scalar_t__ TIMER_RUNNING ; 
- scalar_t__ TIMER_STOPPED ; 
- struct pppTimer* TimerList ; 
- scalar_t__ getitimer (int /*<<< orphan*/ ,struct itimerval*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,struct pppTimer*,...) ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigprocmask (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timer_InitService (int /*<<< orphan*/ ) ; 
+
+ int ITIMER_REAL ;
+ int LogTIMER ;
+ scalar_t__ RESTVAL (struct itimerval) ;
+ int SIGALRM ;
+ int SIG_BLOCK ;
+ int SIG_SETMASK ;
+ int StopTimerNoBlock (struct pppTimer*) ;
+ scalar_t__ TIMER_RUNNING ;
+ scalar_t__ TIMER_STOPPED ;
+ struct pppTimer* TimerList ;
+ scalar_t__ getitimer (int ,struct itimerval*) ;
+ int log_Printf (int ,char*,int ,struct pppTimer*,...) ;
+ int sigaddset (int *,int ) ;
+ int sigemptyset (int *) ;
+ int sigprocmask (int ,int *,int *) ;
+ int timer_InitService (int ) ;
 
 void
 timer_Start(struct pppTimer *tp)
@@ -50,18 +50,18 @@ timer_Start(struct pppTimer *tp)
 
   if (tp->load == 0) {
     log_Printf(LogTIMER, "%s timer[%p] has 0 load!\n", tp->name, tp);
-    sigprocmask(SIG_SETMASK, &omask, NULL);
+    sigprocmask(SIG_SETMASK, &omask, ((void*)0));
     return;
   }
 
-  /*
-   * We just need to insert tp in the correct relative place.  We don't
-   * need to adjust TimerList->rest (yet).
-   */
+
+
+
+
   if (TimerList && getitimer(ITIMER_REAL, &itimer) == 0)
     ticks = RESTVAL(itimer) - TimerList->rest;
 
-  pt = NULL;
+  pt = ((void*)0);
   for (t = TimerList; t; t = t->next) {
     if (ticks + t->rest >= tp->load)
       break;
@@ -78,16 +78,16 @@ timer_Start(struct pppTimer *tp)
   else
     log_Printf(LogTIMER, "timer_Start: Inserting %s timer[%p]\n", tp->name, tp);
 
-  /* Insert given *tp just before *t */
+
   tp->next = t;
   if (pt) {
     pt->next = tp;
   } else {
     TimerList = tp;
-    timer_InitService(t != NULL);	/* [re]Start the Timer Service */
+    timer_InitService(t != ((void*)0));
   }
   if (t)
     t->rest -= tp->rest;
 
-  sigprocmask(SIG_SETMASK, &omask, NULL);
+  sigprocmask(SIG_SETMASK, &omask, ((void*)0));
 }

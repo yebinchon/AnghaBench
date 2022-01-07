@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iwnstats {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IWN_DEFAULT_IF ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getopt (int,char**,char*) ; 
- scalar_t__ iwn_collect (struct iwnstats*) ; 
- int /*<<< orphan*/  iwn_print (struct iwnstats*) ; 
- struct iwnstats* iwnstats_new (char*) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  stderr ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int IWN_DEFAULT_IF ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int getopt (int,char**,char*) ;
+ scalar_t__ iwn_collect (struct iwnstats*) ;
+ int iwn_print (struct iwnstats*) ;
+ struct iwnstats* iwnstats_new (char*) ;
+ int optarg ;
+ int stderr ;
+ char* strdup (int ) ;
+ int usage () ;
+ int usleep (int) ;
 
 int
 main(int argc, char *argv[])
 {
-	struct iwnstats *is;
-	int ch;
-	char *ifname;
-	bool first;
-	char *sysctlname;
-	size_t len;
-	int ret;
+ struct iwnstats *is;
+ int ch;
+ char *ifname;
+ bool first;
+ char *sysctlname;
+ size_t len;
+ int ret;
 
-	ifname = strdup(IWN_DEFAULT_IF);
+ ifname = strdup(IWN_DEFAULT_IF);
 
-	/* Parse command line arguments */
-	while ((ch = getopt(argc, argv,
-	    "hi:")) != -1) {
-		switch (ch) {
-		case 'i':
-			if (ifname)
-				free(ifname);
-			ifname = strdup(optarg);
-			break;
-		default:
-		case '?':
-		case 'h':
-			usage();
-			exit(1);
-		}
-	}
 
-	is = iwnstats_new(ifname);
+ while ((ch = getopt(argc, argv,
+     "hi:")) != -1) {
+  switch (ch) {
+  case 'i':
+   if (ifname)
+    free(ifname);
+   ifname = strdup(optarg);
+   break;
+  default:
+  case '?':
+  case 'h':
+   usage();
+   exit(1);
+  }
+ }
 
-	if (is == NULL) {
-		fprintf(stderr, "%s: couldn't allocate new stats structure\n",
-		    argv[0]);
-		exit(127);
-	}
+ is = iwnstats_new(ifname);
 
-	/* begin fetching data */
-	first = true;
-	while (1) {
-		if (iwn_collect(is) != 0) {
-			fprintf(stderr, "%s: fetch failed\n", argv[0]);
-			if (first)
-				return 1;
-			goto next;
-		}
+ if (is == ((void*)0)) {
+  fprintf(stderr, "%s: couldn't allocate new stats structure\n",
+      argv[0]);
+  exit(127);
+ }
 
-		iwn_print(is);
 
-	next:
-		usleep(100 * 1000);
-		first = false;
-	}
+ first = 1;
+ while (1) {
+  if (iwn_collect(is) != 0) {
+   fprintf(stderr, "%s: fetch failed\n", argv[0]);
+   if (first)
+    return 1;
+   goto next;
+  }
 
-	exit(0);
+  iwn_print(is);
+
+ next:
+  usleep(100 * 1000);
+  first = 0;
+ }
+
+ exit(0);
 }

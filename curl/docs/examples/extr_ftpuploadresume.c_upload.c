@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- scalar_t__ CURLE_GOT_NOTHING ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURLOPT_APPEND ; 
- int /*<<< orphan*/  CURLOPT_FTPPORT ; 
- int /*<<< orphan*/  CURLOPT_FTP_CREATE_MISSING_DIRS ; 
- int /*<<< orphan*/  CURLOPT_FTP_RESPONSE_TIMEOUT ; 
- int /*<<< orphan*/  CURLOPT_HEADER ; 
- int /*<<< orphan*/  CURLOPT_HEADERDATA ; 
- int /*<<< orphan*/  CURLOPT_HEADERFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_NOBODY ; 
- int /*<<< orphan*/  CURLOPT_READDATA ; 
- int /*<<< orphan*/  CURLOPT_READFUNCTION ; 
- int /*<<< orphan*/  CURLOPT_UPLOAD ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURLOPT_VERBOSE ; 
- int /*<<< orphan*/  CURLOPT_WRITEFUNCTION ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ curl_easy_perform (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  curl_easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- char* curl_easy_strerror (scalar_t__) ; 
- long discardfunc ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,long,int /*<<< orphan*/ ) ; 
- long getcontentlengthfunc ; 
- int /*<<< orphan*/  perror (int /*<<< orphan*/ *) ; 
- long readfunc ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
+
+
+ scalar_t__ CURLE_GOT_NOTHING ;
+ scalar_t__ CURLE_OK ;
+ int CURLOPT_APPEND ;
+ int CURLOPT_FTPPORT ;
+ int CURLOPT_FTP_CREATE_MISSING_DIRS ;
+ int CURLOPT_FTP_RESPONSE_TIMEOUT ;
+ int CURLOPT_HEADER ;
+ int CURLOPT_HEADERDATA ;
+ int CURLOPT_HEADERFUNCTION ;
+ int CURLOPT_NOBODY ;
+ int CURLOPT_READDATA ;
+ int CURLOPT_READFUNCTION ;
+ int CURLOPT_UPLOAD ;
+ int CURLOPT_URL ;
+ int CURLOPT_VERBOSE ;
+ int CURLOPT_WRITEFUNCTION ;
+ int SEEK_SET ;
+ scalar_t__ curl_easy_perform (int *) ;
+ int curl_easy_setopt (int *,int ,...) ;
+ char* curl_easy_strerror (scalar_t__) ;
+ long discardfunc ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ int fseek (int *,long,int ) ;
+ long getcontentlengthfunc ;
+ int perror (int *) ;
+ long readfunc ;
+ int stderr ;
 
 __attribute__((used)) static int upload(CURL *curlhandle, const char *remotepath,
                   const char *localpath, long timeout, long tries)
@@ -55,7 +55,7 @@ __attribute__((used)) static int upload(CURL *curlhandle, const char *remotepath
 
   f = fopen(localpath, "rb");
   if(!f) {
-    perror(NULL);
+    perror(((void*)0));
     return 0;
   }
 
@@ -74,25 +74,15 @@ __attribute__((used)) static int upload(CURL *curlhandle, const char *remotepath
   curl_easy_setopt(curlhandle, CURLOPT_READFUNCTION, readfunc);
   curl_easy_setopt(curlhandle, CURLOPT_READDATA, f);
 
-  /* disable passive mode */
+
   curl_easy_setopt(curlhandle, CURLOPT_FTPPORT, "-");
   curl_easy_setopt(curlhandle, CURLOPT_FTP_CREATE_MISSING_DIRS, 1L);
 
   curl_easy_setopt(curlhandle, CURLOPT_VERBOSE, 1L);
 
   for(c = 0; (r != CURLE_OK) && (c < tries); c++) {
-    /* are we resuming? */
-    if(c) { /* yes */
-      /* determine the length of the file already written */
 
-      /*
-       * With NOBODY and NOHEADER, libcurl will issue a SIZE
-       * command, but the only way to retrieve the result is
-       * to parse the returned Content-Length header. Thus,
-       * getcontentlengthfunc(). We need discardfunc() above
-       * because HEADER will dump the headers to stdout
-       * without it.
-       */
+    if(c) {
       curl_easy_setopt(curlhandle, CURLOPT_NOBODY, 1L);
       curl_easy_setopt(curlhandle, CURLOPT_HEADER, 1L);
 
@@ -107,7 +97,7 @@ __attribute__((used)) static int upload(CURL *curlhandle, const char *remotepath
 
       curl_easy_setopt(curlhandle, CURLOPT_APPEND, 1L);
     }
-    else { /* no */
+    else {
       curl_easy_setopt(curlhandle, CURLOPT_APPEND, 0L);
     }
 

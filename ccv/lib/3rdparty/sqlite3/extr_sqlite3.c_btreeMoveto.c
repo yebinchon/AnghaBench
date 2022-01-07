@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ i64 ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ i64 ;
 struct TYPE_11__ {scalar_t__ nField; } ;
-typedef  TYPE_1__ UnpackedRecord ;
-struct TYPE_13__ {int /*<<< orphan*/  db; } ;
+typedef TYPE_1__ UnpackedRecord ;
+struct TYPE_13__ {int db; } ;
 struct TYPE_12__ {TYPE_3__* pKeyInfo; } ;
-typedef  TYPE_2__ BtCursor ;
+typedef TYPE_2__ BtCursor ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_NOMEM_BKPT ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3BtreeMovetoUnpacked (TYPE_2__*,TYPE_1__*,scalar_t__,int,int*) ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_1__* sqlite3VdbeAllocUnpackedRecord (TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3VdbeRecordUnpack (TYPE_3__*,int,void const*,TYPE_1__*) ; 
+
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_NOMEM_BKPT ;
+ int assert (int) ;
+ int sqlite3BtreeMovetoUnpacked (TYPE_2__*,TYPE_1__*,scalar_t__,int,int*) ;
+ int sqlite3DbFree (int ,TYPE_1__*) ;
+ TYPE_1__* sqlite3VdbeAllocUnpackedRecord (TYPE_3__*) ;
+ int sqlite3VdbeRecordUnpack (TYPE_3__*,int,void const*,TYPE_1__*) ;
 
 __attribute__((used)) static int btreeMoveto(
-  BtCursor *pCur,     /* Cursor open on the btree to be searched */
-  const void *pKey,   /* Packed key if the btree is an index */
-  i64 nKey,           /* Integer key for tables.  Size of pKey for indices */
-  int bias,           /* Bias search to the high end */
-  int *pRes           /* Write search results here */
+  BtCursor *pCur,
+  const void *pKey,
+  i64 nKey,
+  int bias,
+  int *pRes
 ){
-  int rc;                    /* Status code */
-  UnpackedRecord *pIdxKey;   /* Unpacked index key */
+  int rc;
+  UnpackedRecord *pIdxKey;
 
   if( pKey ){
     assert( nKey==(i64)(int)nKey );

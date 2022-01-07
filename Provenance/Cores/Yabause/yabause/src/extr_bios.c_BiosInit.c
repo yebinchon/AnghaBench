@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MappedMemoryWriteLong (int,int) ; 
- int** interruptlist ; 
+ int MappedMemoryWriteLong (int,int) ;
+ int** interruptlist ;
 
 void BiosInit(void)
 {
    int i;
 
-   // Setup vectors
-   MappedMemoryWriteLong(0x06000600, 0x002B0009); // rte, nop
-   MappedMemoryWriteLong(0x06000604, 0xE0F0600C); // mov #0xF0, r0; extu.b r0, r0
-   MappedMemoryWriteLong(0x06000608, 0x400E8BFE); // ldc r0, sr; bf
-   MappedMemoryWriteLong(0x0600060C, 0x00090009); // nop
-   MappedMemoryWriteLong(0x06000610, 0x000B0009); // rts, nop
+
+   MappedMemoryWriteLong(0x06000600, 0x002B0009);
+   MappedMemoryWriteLong(0x06000604, 0xE0F0600C);
+   MappedMemoryWriteLong(0x06000608, 0x400E8BFE);
+   MappedMemoryWriteLong(0x0600060C, 0x00090009);
+   MappedMemoryWriteLong(0x06000610, 0x000B0009);
 
    for (i = 0; i < 0x200; i+=4)
    {
@@ -52,7 +44,7 @@ void BiosInit(void)
    interruptlist[1][9] = 0x06000604;
    interruptlist[1][10] = 0x06000604;
 
-   // Scu Interrupts
+
    for (i = 0; i < 0x38; i+=4)
    {
       MappedMemoryWriteLong(0x06000100+i, 0x00000400+i);
@@ -68,7 +60,7 @@ void BiosInit(void)
    for (i = 0; i < 0x100; i+=4)
       MappedMemoryWriteLong(0x06000A00+i, 0x06000610);
 
-   // Setup Bios Functions
+
    MappedMemoryWriteLong(0x06000210, 0x00000210);
    MappedMemoryWriteLong(0x0600026C, 0x0000026C);
    MappedMemoryWriteLong(0x06000274, 0x00000274);

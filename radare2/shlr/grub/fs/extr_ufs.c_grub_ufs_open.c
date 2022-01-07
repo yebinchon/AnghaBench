@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct grub_ufs_data {int dummy; } ;
-struct grub_file {int /*<<< orphan*/  size; struct grub_ufs_data* data; TYPE_1__* device; } ;
-typedef  scalar_t__ grub_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  disk; } ;
+struct grub_file {int size; struct grub_ufs_data* data; TYPE_1__* device; } ;
+typedef scalar_t__ grub_err_t ;
+struct TYPE_2__ {int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_BAD_FILENAME ; 
- scalar_t__ GRUB_ERR_NONE ; 
- int /*<<< orphan*/  INODE_SIZE (struct grub_ufs_data*) ; 
- scalar_t__ grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  grub_free (struct grub_ufs_data*) ; 
- int /*<<< orphan*/  grub_ufs_find_file (struct grub_ufs_data*,char const*) ; 
- struct grub_ufs_data* grub_ufs_mount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_ufs_read_inode (struct grub_ufs_data*,int,int /*<<< orphan*/ ) ; 
+
+ int GRUB_ERR_BAD_FILENAME ;
+ scalar_t__ GRUB_ERR_NONE ;
+ int INODE_SIZE (struct grub_ufs_data*) ;
+ scalar_t__ grub_errno ;
+ int grub_error (int ,char*) ;
+ int grub_free (struct grub_ufs_data*) ;
+ int grub_ufs_find_file (struct grub_ufs_data*,char const*) ;
+ struct grub_ufs_data* grub_ufs_mount (int ) ;
+ int grub_ufs_read_inode (struct grub_ufs_data*,int,int ) ;
 
 __attribute__((used)) static grub_err_t
 grub_ufs_open (struct grub_file *file, const char *name)

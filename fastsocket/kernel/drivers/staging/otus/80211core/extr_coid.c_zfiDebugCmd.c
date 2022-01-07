@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  scalar_t__ u8_t ;
-typedef  int u32_t ;
-typedef  int u16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef scalar_t__ u8_t ;
+typedef int u32_t ;
+typedef int u16_t ;
 struct TYPE_3__ {scalar_t__ keyId; } ;
 struct TYPE_4__ {int checksumTest; int enableProtectionMode; int rxPacketDump; TYPE_1__ sta; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZM_LV_1 ; 
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfTimerCancel (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zfTimerClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfTimerSchedule (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  zm_msg1_mm (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  zmw_declare_for_critical_section () ; 
- int /*<<< orphan*/  zmw_enter_critical_section (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zmw_leave_critical_section (int /*<<< orphan*/ *) ; 
+
+ int ZM_LV_1 ;
+ TYPE_2__* wd ;
+ int zfTimerCancel (int *,int) ;
+ int zfTimerClear (int *) ;
+ int zfTimerSchedule (int *,int,int) ;
+ int zm_msg1_mm (int ,char*,int) ;
+ int zmw_declare_for_critical_section () ;
+ int zmw_enter_critical_section (int *) ;
+ int zmw_get_wlan_dev (int *) ;
+ int zmw_leave_critical_section (int *) ;
 
 u32_t zfiDebugCmd(zdev_t* dev, u32_t cmd, u32_t value)
 {
@@ -43,23 +43,23 @@ u32_t zfiDebugCmd(zdev_t* dev, u32_t cmd, u32_t value)
     zmw_enter_critical_section(dev);
 
     if ( cmd == 0 )
-    {   /* schedule timer */
+    {
         event = (u16_t) ((value >> 16) & 0xffff);
         tick = value & 0xffff;
         zfTimerSchedule(dev, event, tick);
     }
     else if ( cmd == 1 )
-    {   /* cancel timer */
+    {
         event = (u16_t) (value & 0xffff);
         zfTimerCancel(dev, event);
     }
     else if ( cmd == 2 )
-    {   /* clear timer */
+    {
         zfTimerClear(dev);
     }
     else if ( cmd == 3 )
-    {   /* test timer */
-        zfTimerSchedule(dev, 1,  500);
+    {
+        zfTimerSchedule(dev, 1, 500);
         zfTimerSchedule(dev, 2, 1000);
         zfTimerSchedule(dev, 3, 1000);
         zfTimerSchedule(dev, 4, 1000);
@@ -71,7 +71,7 @@ u32_t zfiDebugCmd(zdev_t* dev, u32_t cmd, u32_t value)
     }
     else if ( cmd == 4)
     {
-        zfTimerSchedule(dev, 1,  500);
+        zfTimerSchedule(dev, 1, 500);
         zfTimerSchedule(dev, 2, 1000);
         zfTimerSchedule(dev, 3, 1000);
         zfTimerSchedule(dev, 4, 1000);
@@ -88,19 +88,19 @@ u32_t zfiDebugCmd(zdev_t* dev, u32_t cmd, u32_t value)
     {
         wd->sta.keyId = (u8_t) value;
     }
-	else if ( cmd == 6 )
-	{
-	    /* 0: normal    1: always set TCP/UDP checksum zero */
+ else if ( cmd == 6 )
+ {
+
         wd->checksumTest = value;
-	}
-	else if ( cmd == 7 )
-	{
+ }
+ else if ( cmd == 7 )
+ {
         wd->enableProtectionMode = value;
-   	    zm_msg1_mm(ZM_LV_1, "wd->enableProtectionMode=", wd->enableProtectionMode);
-	}
-	else if ( cmd == 8 )
-	{
-        /* rx packet content dump */
+        zm_msg1_mm(ZM_LV_1, "wd->enableProtectionMode=", wd->enableProtectionMode);
+ }
+ else if ( cmd == 8 )
+ {
+
         if (value)
         {
             wd->rxPacketDump = 1;
@@ -109,7 +109,7 @@ u32_t zfiDebugCmd(zdev_t* dev, u32_t cmd, u32_t value)
         {
             wd->rxPacketDump = 0;
         }
-	}
+ }
 
 
     zmw_leave_critical_section(dev);

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct ub_packed_rrset_key {int dummy; } ;
-struct nsec3_filter {int /*<<< orphan*/  zone; } ;
+struct nsec3_filter {int zone; } ;
 struct nsec3_cached_hash {int dummy; } ;
-struct module_env {int /*<<< orphan*/  scratch_buffer; int /*<<< orphan*/  scratch; } ;
-typedef  int /*<<< orphan*/  rbtree_type ;
+struct module_env {int scratch_buffer; int scratch; } ;
+typedef int rbtree_type ;
 
-/* Variables and functions */
- struct ub_packed_rrset_key* filter_first (struct nsec3_filter*,size_t*,int*) ; 
- struct ub_packed_rrset_key* filter_next (struct nsec3_filter*,size_t*,int*) ; 
- int /*<<< orphan*/  log_err (char*) ; 
- scalar_t__ nsec3_covers (int /*<<< orphan*/ ,struct nsec3_cached_hash*,struct ub_packed_rrset_key*,int,int /*<<< orphan*/ ) ; 
- int nsec3_hash_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ub_packed_rrset_key*,int,int /*<<< orphan*/ *,size_t,struct nsec3_cached_hash**) ; 
+
+ struct ub_packed_rrset_key* filter_first (struct nsec3_filter*,size_t*,int*) ;
+ struct ub_packed_rrset_key* filter_next (struct nsec3_filter*,size_t*,int*) ;
+ int log_err (char*) ;
+ scalar_t__ nsec3_covers (int ,struct nsec3_cached_hash*,struct ub_packed_rrset_key*,int,int ) ;
+ int nsec3_hash_name (int *,int ,int ,struct ub_packed_rrset_key*,int,int *,size_t,struct nsec3_cached_hash**) ;
 
 __attribute__((used)) static int
 find_covering_nsec3(struct module_env* env, struct nsec3_filter* flt,
-        rbtree_type* ct, uint8_t* nm, size_t nmlen, 
-	struct ub_packed_rrset_key** rrset, int* rr)
+        rbtree_type* ct, uint8_t* nm, size_t nmlen,
+ struct ub_packed_rrset_key** rrset, int* rr)
 {
-	size_t i_rs;
-	int i_rr;
-	struct ub_packed_rrset_key* s;
-	struct nsec3_cached_hash* hash = NULL;
-	int r;
+ size_t i_rs;
+ int i_rr;
+ struct ub_packed_rrset_key* s;
+ struct nsec3_cached_hash* hash = ((void*)0);
+ int r;
 
-	/* this loop skips other-zone and unknown NSEC3s, also non-NSEC3 RRs */
-	for(s=filter_first(flt, &i_rs, &i_rr); s; 
-		s=filter_next(flt, &i_rs, &i_rr)) {
-		/* get name hashed for this NSEC3 RR */
-		r = nsec3_hash_name(ct, env->scratch, env->scratch_buffer,
-			s, i_rr, nm, nmlen, &hash);
-		if(r == 0) {
-			log_err("nsec3: malloc failure");
-			break; /* alloc failure */
-		} else if(r != 1)
-			continue; /* malformed NSEC3 */
-		else if(nsec3_covers(flt->zone, hash, s, i_rr, 
-			env->scratch_buffer)) {
-			*rrset = s; /* rrset with this name */
-			*rr = i_rr; /* covers hash with these parameters */
-			return 1;
-		}
-	}
-	*rrset = NULL;
-	*rr = 0;
-	return 0;
+
+ for(s=filter_first(flt, &i_rs, &i_rr); s;
+  s=filter_next(flt, &i_rs, &i_rr)) {
+
+  r = nsec3_hash_name(ct, env->scratch, env->scratch_buffer,
+   s, i_rr, nm, nmlen, &hash);
+  if(r == 0) {
+   log_err("nsec3: malloc failure");
+   break;
+  } else if(r != 1)
+   continue;
+  else if(nsec3_covers(flt->zone, hash, s, i_rr,
+   env->scratch_buffer)) {
+   *rrset = s;
+   *rr = i_rr;
+   return 1;
+  }
+ }
+ *rrset = ((void*)0);
+ *rr = 0;
+ return 0;
 }

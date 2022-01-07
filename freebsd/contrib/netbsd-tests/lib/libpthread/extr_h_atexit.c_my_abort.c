@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIGABRT ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SIGABRT ;
+ int getpid () ;
+ int kill (int ,int ) ;
 
 __attribute__((used)) static void
 my_abort(void)
 {
 
-	kill(getpid(), SIGABRT);
-	/* NOTREACHED */
+ kill(getpid(), SIGABRT);
+
 }

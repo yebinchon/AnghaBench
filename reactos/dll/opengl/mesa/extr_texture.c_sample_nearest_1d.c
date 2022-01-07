@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gl_texture_object {int /*<<< orphan*/ * Image; } ;
-typedef  size_t GLuint ;
-typedef  int /*<<< orphan*/  GLubyte ;
-typedef  int /*<<< orphan*/  GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sample_1d_nearest (struct gl_texture_object const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct gl_texture_object {int * Image; } ;
+typedef size_t GLuint ;
+typedef int GLubyte ;
+typedef int GLfloat ;
+
+
+ int sample_1d_nearest (struct gl_texture_object const*,int ,int const,int *,int *,int *,int *) ;
 
 __attribute__((used)) static void sample_nearest_1d( const struct gl_texture_object *tObj, GLuint n,
                                const GLfloat s[], const GLfloat t[],

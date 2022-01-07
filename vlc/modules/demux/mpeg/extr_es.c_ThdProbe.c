@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BASE_PROBE_SIZE ; 
- int /*<<< orphan*/  GenericFormatCheck ; 
- int GenericProbe (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ThdCheckSync ; 
- int /*<<< orphan*/  const WAVE_FORMAT_PCM ; 
- int /*<<< orphan*/  const WAVE_FORMAT_UNKNOWN ; 
- int /*<<< orphan*/  WAV_EXTRA_PROBE_SIZE ; 
+
+
+
+typedef int uint64_t ;
+typedef int uint16_t ;
+typedef int demux_t ;
+
+
+ int BASE_PROBE_SIZE ;
+ int GenericFormatCheck ;
+ int GenericProbe (int *,int *,char const**,int ,int,int ,int ,int,int const*,int ) ;
+ int ThdCheckSync ;
+ int const WAVE_FORMAT_PCM ;
+ int const WAVE_FORMAT_UNKNOWN ;
+ int WAV_EXTRA_PROBE_SIZE ;
 
 __attribute__((used)) static int ThdProbe( demux_t *p_demux, uint64_t *pi_offset )
 {
-    const char *ppsz_name[] = { "thd", NULL };
+    const char *ppsz_name[] = { "thd", ((void*)0) };
     const uint16_t rgi_twocc[] = { WAVE_FORMAT_PCM, WAVE_FORMAT_UNKNOWN };
 
     return GenericProbe( p_demux, pi_offset, ppsz_name, ThdCheckSync,
                          4+28+16*4, BASE_PROBE_SIZE, WAV_EXTRA_PROBE_SIZE,
-                         false, rgi_twocc, GenericFormatCheck );
+                         0, rgi_twocc, GenericFormatCheck );
 }

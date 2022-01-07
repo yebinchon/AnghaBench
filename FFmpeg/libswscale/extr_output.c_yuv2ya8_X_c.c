@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int int16_t ;
-typedef  int /*<<< orphan*/  SwsContext ;
 
-/* Variables and functions */
- int av_clip_uint8 (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+typedef int SwsContext ;
+
+
+ int av_clip_uint8 (int) ;
 
 __attribute__((used)) static void
 yuv2ya8_X_c(SwsContext *c, const int16_t *lumFilter,
@@ -35,7 +35,7 @@ yuv2ya8_X_c(SwsContext *c, const int16_t *lumFilter,
             Y += lumSrc[j][i] * lumFilter[j];
 
         Y >>= 19;
-        if (Y  & 0x100)
+        if (Y & 0x100)
             Y = av_clip_uint8(Y);
 
         if (hasAlpha) {
@@ -48,7 +48,7 @@ yuv2ya8_X_c(SwsContext *c, const int16_t *lumFilter,
                 A = av_clip_uint8(A);
         }
 
-        dest[2 * i    ] = Y;
+        dest[2 * i ] = Y;
         dest[2 * i + 1] = hasAlpha ? A : 255;
     }
 }

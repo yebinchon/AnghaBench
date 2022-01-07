@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hso_serial {int /*<<< orphan*/ * parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ ** serial_table ; 
- int /*<<< orphan*/  serial_table_lock ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct hso_serial {int * parent; } ;
+
+
+ int ** serial_table ;
+ int serial_table_lock ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void set_serial_by_index(unsigned index, struct hso_serial *serial)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&serial_table_lock, flags);
-	if (serial)
-		serial_table[index] = serial->parent;
-	else
-		serial_table[index] = NULL;
-	spin_unlock_irqrestore(&serial_table_lock, flags);
+ spin_lock_irqsave(&serial_table_lock, flags);
+ if (serial)
+  serial_table[index] = serial->parent;
+ else
+  serial_table[index] = ((void*)0);
+ spin_unlock_irqrestore(&serial_table_lock, flags);
 }

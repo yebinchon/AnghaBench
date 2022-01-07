@@ -1,61 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16 ;
-typedef  int cmsUInt32Number ;
-typedef  int /*<<< orphan*/  TIFF ;
 
-/* Variables and functions */
- int BYTES_SH (int) ; 
- int CHANNELS_SH (int) ; 
- int COLORSPACE_SH (int) ; 
- int EXTRA_SH (int) ; 
- int FALSE ; 
- int FLAVOR_SH (int) ; 
- int FLOAT_SH (int) ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
-#define  PHOTOMETRIC_CIELAB 138 
-#define  PHOTOMETRIC_ICCLAB 137 
-#define  PHOTOMETRIC_LOGLUV 136 
-#define  PHOTOMETRIC_MINISBLACK 135 
-#define  PHOTOMETRIC_MINISWHITE 134 
-#define  PHOTOMETRIC_PALETTE 133 
-#define  PHOTOMETRIC_RGB 132 
-#define  PHOTOMETRIC_SEPARATED 131 
-#define  PHOTOMETRIC_YCBCR 130 
-#define  PLANARCONFIG_CONTIG 129 
-#define  PLANARCONFIG_SEPARATE 128 
- int PLANAR_SH (int) ; 
- int PT_GRAY ; 
- int PT_Lab ; 
- int PT_LabV2 ; 
- int PT_RGB ; 
- int PT_YCbCr ; 
- int PT_YUV ; 
- int PixelTypeFromChanCount (int) ; 
- int /*<<< orphan*/  SGILOGDATAFMT_16BIT ; 
- scalar_t__ StoreAsAlpha ; 
- int /*<<< orphan*/  TIFFGetField (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  TIFFGetFieldDefaulted (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,...) ; 
- int /*<<< orphan*/  TIFFSetField (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIFFTAG_BITSPERSAMPLE ; 
- int /*<<< orphan*/  TIFFTAG_COMPRESSION ; 
- int /*<<< orphan*/  TIFFTAG_EXTRASAMPLES ; 
- int /*<<< orphan*/  TIFFTAG_PHOTOMETRIC ; 
- int /*<<< orphan*/  TIFFTAG_PLANARCONFIG ; 
- int /*<<< orphan*/  TIFFTAG_SAMPLESPERPIXEL ; 
- int /*<<< orphan*/  TIFFTAG_SGILOGDATAFMT ; 
- int /*<<< orphan*/  TIFFTAG_YCBCRSUBSAMPLING ; 
- int TRUE ; 
+
+
+
+typedef int uint16 ;
+typedef int cmsUInt32Number ;
+typedef int TIFF ;
+
+
+ int BYTES_SH (int) ;
+ int CHANNELS_SH (int) ;
+ int COLORSPACE_SH (int) ;
+ int EXTRA_SH (int) ;
+ int FALSE ;
+ int FLAVOR_SH (int) ;
+ int FLOAT_SH (int) ;
+ int FatalError (char*,...) ;
+ int PLANAR_SH (int) ;
+ int PT_GRAY ;
+ int PT_Lab ;
+ int PT_LabV2 ;
+ int PT_RGB ;
+ int PT_YCbCr ;
+ int PT_YUV ;
+ int PixelTypeFromChanCount (int) ;
+ int SGILOGDATAFMT_16BIT ;
+ scalar_t__ StoreAsAlpha ;
+ int TIFFGetField (int *,int ,int*) ;
+ int TIFFGetFieldDefaulted (int *,int ,int*,...) ;
+ int TIFFSetField (int *,int ,int ) ;
+ int TIFFTAG_BITSPERSAMPLE ;
+ int TIFFTAG_COMPRESSION ;
+ int TIFFTAG_EXTRASAMPLES ;
+ int TIFFTAG_PHOTOMETRIC ;
+ int TIFFTAG_PLANARCONFIG ;
+ int TIFFTAG_SAMPLESPERPIXEL ;
+ int TIFFTAG_SGILOGDATAFMT ;
+ int TIFFTAG_YCBCRSUBSAMPLING ;
+ int TRUE ;
 
 __attribute__((used)) static
 cmsUInt32Number GetInputPixelType(TIFF *Bank)
@@ -65,8 +54,8 @@ cmsUInt32Number GetInputPixelType(TIFF *Bank)
     int ColorChannels, IsPlanar = 0, pt = 0, IsFlt;
     int labTiffSpecial = FALSE;
 
-    TIFFGetField(Bank,           TIFFTAG_PHOTOMETRIC,   &Photometric);
-    TIFFGetFieldDefaulted(Bank,  TIFFTAG_BITSPERSAMPLE, &bps);
+    TIFFGetField(Bank, TIFFTAG_PHOTOMETRIC, &Photometric);
+    TIFFGetFieldDefaulted(Bank, TIFFTAG_BITSPERSAMPLE, &bps);
 
     if (bps == 1)
         FatalError("Sorry, bilevel TIFFs has nothing to do with ICC profiles");
@@ -79,23 +68,23 @@ cmsUInt32Number GetInputPixelType(TIFF *Bank)
 
     switch (PlanarConfig) {
 
-     case PLANARCONFIG_CONTIG: IsPlanar = 0; break;
-     case PLANARCONFIG_SEPARATE: IsPlanar = 1; break;
+     case 129: IsPlanar = 0; break;
+     case 128: IsPlanar = 1; break;
      default:
 
          FatalError("Unsupported planar configuration (=%d) ", (int) PlanarConfig);
     }
 
-    // If Samples per pixel == 1, PlanarConfiguration is irrelevant and need
-    // not to be included.
+
+
 
     if (spp == 1) IsPlanar = 0;
 
-    // Any alpha?
+
 
     TIFFGetFieldDefaulted(Bank, TIFFTAG_EXTRASAMPLES, &extra, &info);
 
-    // Read alpha channels as colorant
+
 
     if (StoreAsAlpha) {
 
@@ -107,31 +96,31 @@ cmsUInt32Number GetInputPixelType(TIFF *Bank)
 
     switch (Photometric) {
 
-    case PHOTOMETRIC_MINISWHITE:
+    case 134:
 
         reverse = 1;
 
-        // ... fall through ...
 
-    case PHOTOMETRIC_MINISBLACK:
+
+    case 135:
         pt = PT_GRAY;
         break;
 
-    case PHOTOMETRIC_RGB:
+    case 132:
         pt = PT_RGB;
         break;
 
 
-     case PHOTOMETRIC_PALETTE:
+     case 133:
          FatalError("Sorry, palette images not supported");
          break;
 
-     case PHOTOMETRIC_SEPARATED:
+     case 131:
 
          pt = PixelTypeFromChanCount(ColorChannels);
          break;
 
-     case PHOTOMETRIC_YCBCR:
+     case 130:
          TIFFGetField(Bank, TIFFTAG_COMPRESSION, &Compression);
          {
              uint16 subx, suby;
@@ -144,28 +133,28 @@ cmsUInt32Number GetInputPixelType(TIFF *Bank)
          }
          break;
 
-     case PHOTOMETRIC_ICCLAB:
+     case 137:
          pt = PT_LabV2;
          break;
 
-     case PHOTOMETRIC_CIELAB:
+     case 138:
          pt = PT_Lab;
          labTiffSpecial = TRUE;
          break;
 
 
-     case PHOTOMETRIC_LOGLUV:      // CIE Log2(L) (u',v')
+     case 136:
 
          TIFFSetField(Bank, TIFFTAG_SGILOGDATAFMT, SGILOGDATAFMT_16BIT);
-         pt = PT_YUV;             // *ICCSpace = icSigLuvData;
-         bps = 16;                // 16 bits forced by LibTiff
+         pt = PT_YUV;
+         bps = 16;
          break;
 
      default:
          FatalError("Unsupported TIFF color space (Photometric %d)", Photometric);
     }
 
-    // Convert bits per sample to bytes per sample
+
 
     bps >>= 3;
     IsFlt = (bps == 0) || (bps == 4);

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA1 (void*,scalar_t__,void*) ; 
-#define  SHA1_160 131 
- int /*<<< orphan*/  SHA256 (void*,scalar_t__,void*) ; 
-#define  SHA2_256 130 
-#define  SHA2_384 129 
-#define  SHA2_512 128 
- int /*<<< orphan*/  SHA384 (void*,scalar_t__,void*) ; 
- int /*<<< orphan*/  SHA512 (void*,scalar_t__,void*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+
+
+ int SHA1 (void*,scalar_t__,void*) ;
+
+ int SHA256 (void*,scalar_t__,void*) ;
+
+
+
+ int SHA384 (void*,scalar_t__,void*) ;
+ int SHA512 (void*,scalar_t__,void*) ;
 
 void Sha(UINT sha_type, void *dst, void *src, UINT size)
 {
-	// Validate arguments
-	if (dst == NULL || (src == NULL && size != 0))
-	{
-		return;
-	}
 
-	switch(sha_type) {
-	case SHA1_160:
-		SHA1(src, size, dst);
-		break;
-	case SHA2_256:
-		SHA256(src, size, dst);
-		break;
-	case SHA2_384:
-		SHA384(src, size, dst);
-		break;
-	case SHA2_512:
-		SHA512(src, size, dst);
-		break;
-	}
+ if (dst == ((void*)0) || (src == ((void*)0) && size != 0))
+ {
+  return;
+ }
+
+ switch(sha_type) {
+ case 131:
+  SHA1(src, size, dst);
+  break;
+ case 130:
+  SHA256(src, size, dst);
+  break;
+ case 129:
+  SHA384(src, size, dst);
+  break;
+ case 128:
+  SHA512(src, size, dst);
+  break;
+ }
 }

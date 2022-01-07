@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AddressFamily ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDRESS_FAMILY_IPV4 ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  SET_FLAG (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- char const* address_family_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*,char const*,char const*) ; 
- int parse_boolean (char const*) ; 
+
+
+
+typedef int AddressFamily ;
+
+
+ int ADDRESS_FAMILY_IPV4 ;
+ int LOG_ERR ;
+ int LOG_WARNING ;
+ int SET_FLAG (int ,int ,int) ;
+ char const* address_family_to_string (int ) ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*,char const*,char const*) ;
+ int parse_boolean (char const*) ;
 
 int config_parse_ipv4ll(
                 const char* unit,
@@ -42,9 +42,9 @@ int config_parse_ipv4ll(
         assert(rvalue);
         assert(data);
 
-        /* Note that this is mostly like
-         * config_parse_address_family(), except that it
-         * applies only to IPv4 */
+
+
+
 
         r = parse_boolean(rvalue);
         if (r < 0) {

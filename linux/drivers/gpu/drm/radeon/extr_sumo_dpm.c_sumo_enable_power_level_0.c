@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct radeon_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sumo_power_level_enable (struct radeon_device*,int /*<<< orphan*/ ,int) ; 
+
+ int sumo_power_level_enable (struct radeon_device*,int ,int) ;
 
 __attribute__((used)) static void sumo_enable_power_level_0(struct radeon_device *rdev)
 {
-	sumo_power_level_enable(rdev, 0, true);
+ sumo_power_level_enable(rdev, 0, 1);
 }

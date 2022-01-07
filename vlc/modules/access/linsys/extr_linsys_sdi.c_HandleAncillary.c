@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HandleAudioConfig (int /*<<< orphan*/ *,int const*,unsigned int,int) ; 
- int /*<<< orphan*/  HandleAudioData (int /*<<< orphan*/ *,int const*,unsigned int,int,int const) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*,unsigned int,unsigned int) ; 
+
+
+
+typedef unsigned int uint8_t ;
+typedef int uint16_t ;
+typedef int demux_t ;
+
+
+ int HandleAudioConfig (int *,int const*,unsigned int,int) ;
+ int HandleAudioData (int *,int const*,unsigned int,int,int const) ;
+ int msg_Warn (int *,char*,unsigned int,unsigned int) ;
 
 __attribute__((used)) static void HandleAncillary( demux_t *p_demux, const uint16_t *p_anc,
                              unsigned int i_size )
@@ -36,7 +36,7 @@ __attribute__((used)) static void HandleAncillary( demux_t *p_demux, const uint1
         return;
     }
 
-    switch ( p_anc[3] ) /* Data ID */
+    switch ( p_anc[3] )
     {
     case 0x2ff:
         HandleAudioData( p_demux, p_anc + 6, i_data_count, 1, p_anc[4] & 0xff );
@@ -64,7 +64,7 @@ __attribute__((used)) static void HandleAncillary( demux_t *p_demux, const uint1
         HandleAudioConfig( p_demux, p_anc + 6, i_data_count, 4 );
         break;
 
-    /* Extended data packets, same order */
+
     case 0x1fe:
     case 0x2fc:
     case 0x2fa:
@@ -73,7 +73,7 @@ __attribute__((used)) static void HandleAncillary( demux_t *p_demux, const uint1
     default:
         break;
 
-    case 0x88: /* non-conforming ANC packet */
+    case 0x88:
         p_anc += 7;
         i_size -= 7;
         while ( i_size >= 7 && (p_anc[0] != 0x0 || p_anc[1] != 0x3ff

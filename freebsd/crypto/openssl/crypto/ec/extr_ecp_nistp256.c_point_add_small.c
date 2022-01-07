@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  smallfelem ;
-typedef  int /*<<< orphan*/  felem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  felem_shrink (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  point_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smallfelem_expand (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int smallfelem ;
+typedef int felem ;
+
+
+ int felem_shrink (int ,int ) ;
+ int point_add (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int smallfelem_expand (int ,int ) ;
 
 __attribute__((used)) static void point_add_small(smallfelem x3, smallfelem y3, smallfelem z3,
                             smallfelem x1, smallfelem y1, smallfelem z1,

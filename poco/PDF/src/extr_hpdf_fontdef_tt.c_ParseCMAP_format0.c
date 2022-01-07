@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  error; int /*<<< orphan*/  mmgr; int /*<<< orphan*/  attr; } ;
-struct TYPE_5__ {scalar_t__ format; scalar_t__ length; scalar_t__ language; int glyph_id_array_count; int /*<<< orphan*/ * glyph_id_array; } ;
-struct TYPE_6__ {TYPE_1__ cmap; int /*<<< orphan*/  stream; } ;
-typedef  int /*<<< orphan*/  HPDF_UINT32 ;
-typedef  int /*<<< orphan*/  HPDF_UINT16 ;
-typedef  int HPDF_UINT ;
-typedef  TYPE_2__* HPDF_TTFontDefAttr ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  TYPE_3__* HPDF_FontDef ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
 
-/* Variables and functions */
- scalar_t__ GetUINT16 (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ HPDF_Error_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * HPDF_GetMem (int /*<<< orphan*/ ,int) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SEEK_SET ; 
- scalar_t__ HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ HPDF_Stream_Seek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_TTF_INVALID_FOMAT ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int error; int mmgr; int attr; } ;
+struct TYPE_5__ {scalar_t__ format; scalar_t__ length; scalar_t__ language; int glyph_id_array_count; int * glyph_id_array; } ;
+struct TYPE_6__ {TYPE_1__ cmap; int stream; } ;
+typedef int HPDF_UINT32 ;
+typedef int HPDF_UINT16 ;
+typedef int HPDF_UINT ;
+typedef TYPE_2__* HPDF_TTFontDefAttr ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef TYPE_3__* HPDF_FontDef ;
+typedef int HPDF_BYTE ;
+
+
+ scalar_t__ GetUINT16 (int ,scalar_t__*) ;
+ scalar_t__ HPDF_Error_GetCode (int ) ;
+ int * HPDF_GetMem (int ,int) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SEEK_SET ;
+ scalar_t__ HPDF_SetError (int ,int ,int ) ;
+ scalar_t__ HPDF_Stream_Read (int ,int *,int*) ;
+ scalar_t__ HPDF_Stream_Seek (int ,int ,int ) ;
+ int HPDF_TTF_INVALID_FOMAT ;
 
 __attribute__((used)) static HPDF_STATUS
-ParseCMAP_format0  (HPDF_FontDef  fontdef,
-                    HPDF_UINT32   offset)
+ParseCMAP_format0 (HPDF_FontDef fontdef,
+                    HPDF_UINT32 offset)
 {
     HPDF_TTFontDefAttr attr = (HPDF_TTFontDefAttr)fontdef->attr;
     HPDF_STATUS ret;

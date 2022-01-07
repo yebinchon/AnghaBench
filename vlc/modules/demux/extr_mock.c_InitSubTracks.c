@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct demux_sys {int /*<<< orphan*/  sub_packetized; } ;
-typedef  int /*<<< orphan*/  es_format_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct demux_sys {int sub_packetized; } ;
+typedef int es_format_t ;
 struct TYPE_4__ {struct demux_sys* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
+typedef TYPE_1__ demux_t ;
 
-/* Variables and functions */
- scalar_t__ AppendMockTrack (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPU_ES ; 
- int /*<<< orphan*/  VLC_CODEC_SUBT ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AppendMockTrack (TYPE_1__*,int *,int,int ) ;
+ int SPU_ES ;
+ int VLC_CODEC_SUBT ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int es_format_Init (int *,int ,int ) ;
 
 __attribute__((used)) static int
 InitSubTracks(demux_t *demux, int group, size_t count)

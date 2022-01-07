@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct sci_phy_proto {int /*<<< orphan*/  all; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct sci_phy_proto {int all; } ;
 struct isci_phy {TYPE_1__* link_layer_registers; } ;
-struct TYPE_2__ {int /*<<< orphan*/  transmit_identification; } ;
+struct TYPE_2__ {int transmit_identification; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  readl (int /*<<< orphan*/ *) ; 
+
+ int readl (int *) ;
 
 void sci_phy_get_protocols(struct isci_phy *iphy, struct sci_phy_proto *proto)
 {
-	proto->all = readl(&iphy->link_layer_registers->transmit_identification);
+ proto->all = readl(&iphy->link_layer_registers->transmit_identification);
 }

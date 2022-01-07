@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_node {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ctrl_base ; 
- struct device_node* of_find_compatible_node (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  of_iomap (struct device_node*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  of_node_put (struct device_node*) ; 
+
+ int ctrl_base ;
+ struct device_node* of_find_compatible_node (int *,int *,char*) ;
+ int of_iomap (struct device_node*,int ) ;
+ int of_node_put (struct device_node*) ;
 
 __attribute__((used)) static bool hix5hd2_hotplug_init(void)
 {
-	struct device_node *np;
+ struct device_node *np;
 
-	np = of_find_compatible_node(NULL, NULL, "hisilicon,cpuctrl");
-	if (!np)
-		return false;
+ np = of_find_compatible_node(((void*)0), ((void*)0), "hisilicon,cpuctrl");
+ if (!np)
+  return 0;
 
-	ctrl_base = of_iomap(np, 0);
-	of_node_put(np);
-	if (!ctrl_base)
-		return false;
+ ctrl_base = of_iomap(np, 0);
+ of_node_put(np);
+ if (!ctrl_base)
+  return 0;
 
-	return true;
+ return 1;
 }

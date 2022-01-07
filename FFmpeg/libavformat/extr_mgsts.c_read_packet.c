@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_7__ {int /*<<< orphan*/ * pb; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_7__ {int * pb; } ;
 struct TYPE_6__ {int pos; int duration; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  EIO ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int EIO ;
+ int av_get_packet (int *,TYPE_1__*,int) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_rb32 (int *) ;
+ int avio_skip (int *,int) ;
 
 __attribute__((used)) static int read_packet(AVFormatContext *s, AVPacket *pkt)
 {

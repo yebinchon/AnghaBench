@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int16_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int16_t ;
 struct TYPE_5__ {int bits_per_raw_sample; } ;
-struct TYPE_4__ {int chroma_y_shift; int chroma_x_shift; int* last_dc; int dct_precision; int intra_dc_precision; TYPE_3__* avctx; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ MpegEncContext ;
+struct TYPE_4__ {int chroma_y_shift; int chroma_x_shift; int* last_dc; int dct_precision; int intra_dc_precision; TYPE_3__* avctx; int gb; } ;
+typedef TYPE_1__ MpegEncContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_bitsz (int /*<<< orphan*/ *,int) ; 
- int get_unary (int /*<<< orphan*/ *,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int get_bits (int *,int) ;
+ int get_bitsz (int *,int) ;
+ int get_unary (int *,int,int) ;
 
 __attribute__((used)) static int mpeg4_decode_dpcm_macroblock(MpegEncContext *s, int16_t macroblock[256], int n)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static int mpeg4_decode_dpcm_macroblock(MpegEncContext *s,
 
             rice_prefix_code = get_unary(&s->gb, 1, 12);
 
-            /* Escape */
+
             if (rice_prefix_code == 11)
                 dpcm_residual = get_bits(&s->gb, s->avctx->bits_per_raw_sample);
             else {
@@ -78,7 +78,7 @@ __attribute__((used)) static int mpeg4_decode_dpcm_macroblock(MpegEncContext *s,
                 dpcm_residual = (rice_prefix_code << rice_parameter) + rice_suffix_code;
             }
 
-            /* Map to a signed residual */
+
             if (dpcm_residual & 1)
                 dpcm_residual = (-1 * dpcm_residual) >> 1;
             else

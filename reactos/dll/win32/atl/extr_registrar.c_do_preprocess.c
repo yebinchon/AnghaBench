@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  str; } ;
-typedef  TYPE_1__ strbuf ;
-struct TYPE_8__ {int key_len; char const* item; int /*<<< orphan*/  key; struct TYPE_8__* next; } ;
-typedef  TYPE_2__ rep_list ;
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int str; } ;
+typedef TYPE_1__ strbuf ;
+struct TYPE_8__ {int key_len; char const* item; int key; struct TYPE_8__* next; } ;
+typedef TYPE_2__ rep_list ;
+typedef char WCHAR ;
 struct TYPE_9__ {TYPE_2__* rep; } ;
-typedef  TYPE_3__ Registrar ;
-typedef  char const* LPCOLESTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_3__ Registrar ;
+typedef char const* LPCOLESTR ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_EXCEPTION ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _wcsnicmp (char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_wn (char const*,int) ; 
- int /*<<< orphan*/  strbuf_write (char const*,TYPE_1__*,int) ; 
- char* wcschr (char const*,char) ; 
+
+ int DISP_E_EXCEPTION ;
+ int S_OK ;
+ int TRACE (char*,int ) ;
+ int WARN (char*,int ) ;
+ int _wcsnicmp (char const*,int ,int) ;
+ int debugstr_w (int ) ;
+ int debugstr_wn (char const*,int) ;
+ int strbuf_write (char const*,TYPE_1__*,int) ;
+ char* wcschr (char const*,char) ;
 
 __attribute__((used)) static HRESULT do_preprocess(const Registrar *This, LPCOLESTR data, strbuf *buf)
 {

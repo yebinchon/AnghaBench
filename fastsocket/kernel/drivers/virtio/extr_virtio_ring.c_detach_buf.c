@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* desc; } ;
-struct vring_virtqueue {unsigned int free_head; int /*<<< orphan*/  num_free; TYPE_2__ vring; int /*<<< orphan*/ ** data; } ;
-struct TYPE_3__ {int flags; unsigned int next; int /*<<< orphan*/  addr; } ;
+struct vring_virtqueue {unsigned int free_head; int num_free; TYPE_2__ vring; int ** data; } ;
+struct TYPE_3__ {int flags; unsigned int next; int addr; } ;
 
-/* Variables and functions */
- int VRING_DESC_F_INDIRECT ; 
- int VRING_DESC_F_NEXT ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  phys_to_virt (int /*<<< orphan*/ ) ; 
+
+ int VRING_DESC_F_INDIRECT ;
+ int VRING_DESC_F_NEXT ;
+ int kfree (int ) ;
+ int phys_to_virt (int ) ;
 
 __attribute__((used)) static void detach_buf(struct vring_virtqueue *vq, unsigned int head)
 {
-	unsigned int i;
+ unsigned int i;
 
-	/* Clear data ptr. */
-	vq->data[head] = NULL;
 
-	/* Put back on free list: find end */
-	i = head;
+ vq->data[head] = ((void*)0);
 
-	/* Free the indirect table */
-	if (vq->vring.desc[i].flags & VRING_DESC_F_INDIRECT)
-		kfree(phys_to_virt(vq->vring.desc[i].addr));
 
-	while (vq->vring.desc[i].flags & VRING_DESC_F_NEXT) {
-		i = vq->vring.desc[i].next;
-		vq->num_free++;
-	}
+ i = head;
 
-	vq->vring.desc[i].next = vq->free_head;
-	vq->free_head = head;
-	/* Plus final descriptor */
-	vq->num_free++;
+
+ if (vq->vring.desc[i].flags & VRING_DESC_F_INDIRECT)
+  kfree(phys_to_virt(vq->vring.desc[i].addr));
+
+ while (vq->vring.desc[i].flags & VRING_DESC_F_NEXT) {
+  i = vq->vring.desc[i].next;
+  vq->num_free++;
+ }
+
+ vq->vring.desc[i].next = vq->free_head;
+ vq->free_head = head;
+
+ vq->num_free++;
 }

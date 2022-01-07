@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int In; } ;
 struct TYPE_3__ {int data_len; char* key; int key_len; long long key_hash; int flags; int exp_time; scalar_t__* data; } ;
-typedef  TYPE_1__ hash_entry_t ;
+typedef TYPE_1__ hash_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_OPER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int MAX_VALUE_LEN ; 
- int SEC_IN_MONTH ; 
- int /*<<< orphan*/  add_entry (int) ; 
- int /*<<< orphan*/  add_entry_time (int) ; 
- int /*<<< orphan*/  add_entry_used (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cmd_set ; 
- int /*<<< orphan*/  del_entry_time (int) ; 
- int /*<<< orphan*/  del_entry_used (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_entry (char const*,int,long long) ; 
- TYPE_1__* get_entry_ptr (int) ; 
- long long get_hash (char const*,int) ; 
- int get_new_entry () ; 
- scalar_t__ get_utime (int /*<<< orphan*/ ) ; 
- int mct_add ; 
- int mct_replace ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ now ; 
- int read_in (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int* stats_now ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  total_items ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  zzfree (scalar_t__*,int) ; 
- void* zzmalloc (int) ; 
+
+ int ADD_OPER (int ) ;
+ int CLOCK_MONOTONIC ;
+ int MAX_VALUE_LEN ;
+ int SEC_IN_MONTH ;
+ int add_entry (int) ;
+ int add_entry_time (int) ;
+ int add_entry_used (int) ;
+ int assert (int) ;
+ int cmd_set ;
+ int del_entry_time (int) ;
+ int del_entry_used (int) ;
+ int fprintf (int ,char*,...) ;
+ int get_entry (char const*,int,long long) ;
+ TYPE_1__* get_entry_ptr (int) ;
+ long long get_hash (char const*,int) ;
+ int get_new_entry () ;
+ scalar_t__ get_utime (int ) ;
+ int mct_add ;
+ int mct_replace ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ now ;
+ int read_in (int *,scalar_t__*,int) ;
+ int* stats_now ;
+ int stderr ;
+ int total_items ;
+ scalar_t__ verbosity ;
+ int zzfree (scalar_t__*,int) ;
+ void* zzmalloc (int) ;
 
 int memcache_store (struct connection *c, int op, const char *key, int key_len, int flags, int delay, int size) {
   cmd_set++;
@@ -72,9 +72,9 @@ int memcache_store (struct connection *c, int op, const char *key, int key_len, 
     int x = get_entry (key, key_len, key_hash);
 
     ADD_OPER (0);
-#ifdef HISTORY
-    stats_now[4] += size;
-#endif
+
+
+
 
     hash_entry_t *entry;
 

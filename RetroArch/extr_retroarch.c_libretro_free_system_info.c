@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct retro_system_info {scalar_t__ valid_extensions; scalar_t__ library_version; scalar_t__ library_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  memset (struct retro_system_info*,int /*<<< orphan*/ ,int) ; 
+
+ int free (void*) ;
+ int memset (struct retro_system_info*,int ,int) ;
 
 void libretro_free_system_info(struct retro_system_info *info)
 {

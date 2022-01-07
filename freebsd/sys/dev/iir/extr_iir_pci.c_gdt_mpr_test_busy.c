@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gdt_softc {int /*<<< orphan*/  sc_dpmem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GDT_DPRINTF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  GDT_D_MISC ; 
- int /*<<< orphan*/  GDT_MPR_SEMA0 ; 
- int bus_read_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct gdt_softc {int sc_dpmem; } ;
+
+
+ int GDT_DPRINTF (int ,char*) ;
+ int GDT_D_MISC ;
+ int GDT_MPR_SEMA0 ;
+ int bus_read_1 (int ,int ) ;
 
 int
 gdt_mpr_test_busy(struct gdt_softc *gdt)

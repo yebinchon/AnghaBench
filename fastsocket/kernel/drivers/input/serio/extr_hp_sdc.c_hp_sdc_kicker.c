@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  kicker; int /*<<< orphan*/  task; } ;
 
-/* Variables and functions */
- scalar_t__ HZ ; 
- TYPE_1__ hp_sdc ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int kicker; int task; } ;
+
+
+ scalar_t__ HZ ;
+ TYPE_1__ hp_sdc ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int tasklet_schedule (int *) ;
 
 void hp_sdc_kicker (unsigned long data)
 {
-	tasklet_schedule(&hp_sdc.task);
-	/* Re-insert the periodic task. */
-	mod_timer(&hp_sdc.kicker, jiffies + HZ);
+ tasklet_schedule(&hp_sdc.task);
+
+ mod_timer(&hp_sdc.kicker, jiffies + HZ);
 }

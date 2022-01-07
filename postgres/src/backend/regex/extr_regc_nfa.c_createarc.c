@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct state {int /*<<< orphan*/  nins; int /*<<< orphan*/  nouts; struct arc* outs; struct arc* ins; } ;
-struct nfa {int /*<<< orphan*/  cm; int /*<<< orphan*/ * parent; } ;
-struct arc {int type; struct arc* outchainRev; struct arc* outchain; struct arc* inchainRev; struct arc* inchain; struct state* from; struct state* to; int /*<<< orphan*/  co; } ;
-typedef  int /*<<< orphan*/  color ;
 
-/* Variables and functions */
- scalar_t__ COLORED (struct arc*) ; 
- scalar_t__ NISERR () ; 
- struct arc* allocarc (struct nfa*,struct state*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  colorchain (int /*<<< orphan*/ ,struct arc*) ; 
+
+
+
+struct state {int nins; int nouts; struct arc* outs; struct arc* ins; } ;
+struct nfa {int cm; int * parent; } ;
+struct arc {int type; struct arc* outchainRev; struct arc* outchain; struct arc* inchainRev; struct arc* inchain; struct state* from; struct state* to; int co; } ;
+typedef int color ;
+
+
+ scalar_t__ COLORED (struct arc*) ;
+ scalar_t__ NISERR () ;
+ struct arc* allocarc (struct nfa*,struct state*) ;
+ int assert (int ) ;
+ int colorchain (int ,struct arc*) ;
 
 __attribute__((used)) static void
 createarc(struct nfa *nfa,
-		  int t,
-		  color co,
-		  struct state *from,
-		  struct state *to)
+    int t,
+    color co,
+    struct state *from,
+    struct state *to)
 {
-	struct arc *a;
+ struct arc *a;
 
-	/* the arc is physically allocated within its from-state */
-	a = allocarc(nfa, from);
-	if (NISERR())
-		return;
-	assert(a != NULL);
 
-	a->type = t;
-	a->co = co;
-	a->to = to;
-	a->from = from;
+ a = allocarc(nfa, from);
+ if (NISERR())
+  return;
+ assert(a != ((void*)0));
 
-	/*
-	 * Put the new arc on the beginning, not the end, of the chains; it's
-	 * simpler here, and freearc() is the same cost either way.  See also the
-	 * logic in moveins() and its cohorts, as well as fixempties().
-	 */
-	a->inchain = to->ins;
-	a->inchainRev = NULL;
-	if (to->ins)
-		to->ins->inchainRev = a;
-	to->ins = a;
-	a->outchain = from->outs;
-	a->outchainRev = NULL;
-	if (from->outs)
-		from->outs->outchainRev = a;
-	from->outs = a;
+ a->type = t;
+ a->co = co;
+ a->to = to;
+ a->from = from;
 
-	from->nouts++;
-	to->nins++;
 
-	if (COLORED(a) && nfa->parent == NULL)
-		colorchain(nfa->cm, a);
+
+
+
+
+ a->inchain = to->ins;
+ a->inchainRev = ((void*)0);
+ if (to->ins)
+  to->ins->inchainRev = a;
+ to->ins = a;
+ a->outchain = from->outs;
+ a->outchainRev = ((void*)0);
+ if (from->outs)
+  from->outs->outchainRev = a;
+ from->outs = a;
+
+ from->nouts++;
+ to->nins++;
+
+ if (COLORED(a) && nfa->parent == ((void*)0))
+  colorchain(nfa->cm, a);
 }

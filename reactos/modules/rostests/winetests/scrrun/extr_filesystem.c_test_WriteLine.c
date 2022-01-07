@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffW ;
-typedef  int /*<<< orphan*/  buffA ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  ITextStream ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ HANDLE ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int CreateDirectoryW (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateFileW (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int GetLastError () ; 
- scalar_t__ IFileSystem3_CreateTextFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  ITextStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITextStream_WriteLine (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MAX_PATH ; 
- size_t MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int ReadFile (scalar_t__,char*,int,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoveDirectoryW (char*) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysAllocString (char*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/  crlfW ; 
- int /*<<< orphan*/  fs3 ; 
- int /*<<< orphan*/  get_temp_filepath (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  lstrcatW (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpW (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  testfileW ; 
- int wine_dbgstr_w (char*) ; 
+
+
+
+typedef int buffW ;
+typedef int buffA ;
+typedef char WCHAR ;
+typedef int ITextStream ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ HANDLE ;
+typedef size_t DWORD ;
+typedef int BSTR ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int CP_ACP ;
+ int CloseHandle (scalar_t__) ;
+ int CreateDirectoryW (char*,int *) ;
+ scalar_t__ CreateFileW (char*,int ,int ,int *,int ,int ,int *) ;
+ int DeleteFileW (int ) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int GENERIC_READ ;
+ int GetLastError () ;
+ scalar_t__ IFileSystem3_CreateTextFile (int ,int ,int ,int ,int **) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int ITextStream_Release (int *) ;
+ scalar_t__ ITextStream_WriteLine (int *,int ) ;
+ int MAX_PATH ;
+ size_t MultiByteToWideChar (int ,int ,char*,size_t,char*,int ) ;
+ int OPEN_EXISTING ;
+ int ReadFile (scalar_t__,char*,int,size_t*,int *) ;
+ int RemoveDirectoryW (char*) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (char*) ;
+ int SysFreeString (int ) ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int crlfW ;
+ int fs3 ;
+ int get_temp_filepath (int ,char*,char*) ;
+ int lstrcatW (char*,int ) ;
+ int lstrcmpW (char*,char*) ;
+ int lstrcpyW (char*,int ) ;
+ int ok (int,char*,int,...) ;
+ int testfileW ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_WriteLine(void)
 {
@@ -68,10 +68,10 @@ __attribute__((used)) static void test_WriteLine(void)
 
     get_temp_filepath(testfileW, pathW, dirW);
 
-    ret = CreateDirectoryW(dirW, NULL);
+    ret = CreateDirectoryW(dirW, ((void*)0));
     ok(ret, "got %d, %d\n", ret, GetLastError());
 
-    /* create as ASCII file first */
+
     nameW = SysAllocString(pathW);
     hr = IFileSystem3_CreateTextFile(fs3, nameW, VARIANT_FALSE, VARIANT_FALSE, &stream);
     ok(hr == S_OK, "got 0x%08x\n", hr);
@@ -80,11 +80,11 @@ __attribute__((used)) static void test_WriteLine(void)
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ITextStream_Release(stream);
 
-    /* check contents */
-    file = CreateFileW(pathW, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+    file = CreateFileW(pathW, GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(file != INVALID_HANDLE_VALUE, "got %p\n", file);
     r = 0;
-    ret = ReadFile(file, buffA, sizeof(buffA), &r, NULL);
+    ret = ReadFile(file, buffA, sizeof(buffA), &r, ((void*)0));
     ok(ret && r, "read %d, got %d, %d\n", r, ret, GetLastError());
 
     len = MultiByteToWideChar(CP_ACP, 0, buffA, r, buffW, ARRAY_SIZE(buffW));
@@ -95,7 +95,7 @@ __attribute__((used)) static void test_WriteLine(void)
     CloseHandle(file);
     DeleteFileW(nameW);
 
-    /* same for unicode file */
+
     hr = IFileSystem3_CreateTextFile(fs3, nameW, VARIANT_FALSE, VARIANT_TRUE, &stream);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
@@ -103,11 +103,11 @@ __attribute__((used)) static void test_WriteLine(void)
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ITextStream_Release(stream);
 
-    /* check contents */
-    file = CreateFileW(pathW, GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+    file = CreateFileW(pathW, GENERIC_READ, 0, ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(file != INVALID_HANDLE_VALUE, "got %p\n", file);
     r = 0;
-    ret = ReadFile(file, buffW, sizeof(buffW), &r, NULL);
+    ret = ReadFile(file, buffW, sizeof(buffW), &r, ((void*)0));
     ok(ret && r, "read %d, got %d, %d\n", r, ret, GetLastError());
     buffW[r/sizeof(WCHAR)] = 0;
 

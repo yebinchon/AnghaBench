@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pwc_device {int dummy; } ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SET_CHROM_CTL ; 
- int /*<<< orphan*/  WB_MODE_FORMATTER ; 
- int send_control_msg (struct pwc_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+ int SET_CHROM_CTL ;
+ int WB_MODE_FORMATTER ;
+ int send_control_msg (struct pwc_device*,int ,int ,char*,int) ;
 
 int pwc_set_awb(struct pwc_device *pdev, int mode)
 {
-	char buf;
-	int ret;
+ char buf;
+ int ret;
 
-	if (mode < 0)
-	    mode = 0;
+ if (mode < 0)
+     mode = 0;
 
-	if (mode > 4)
-	    mode = 4;
+ if (mode > 4)
+     mode = 4;
 
-	buf = mode & 0x07; /* just the lowest three bits */
+ buf = mode & 0x07;
 
-	ret = send_control_msg(pdev,
-		SET_CHROM_CTL, WB_MODE_FORMATTER, &buf, sizeof(buf));
+ ret = send_control_msg(pdev,
+  SET_CHROM_CTL, WB_MODE_FORMATTER, &buf, sizeof(buf));
 
-	if (ret < 0)
-		return ret;
-	return 0;
+ if (ret < 0)
+  return ret;
+ return 0;
 }

@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* descr; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * names; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Descr ;
-typedef  TYPE_2__ PyArrayObject_fields ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  NPY_SORTKIND ;
+struct TYPE_9__ {int * names; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Descr ;
+typedef TYPE_2__ PyArrayObject_fields ;
+typedef int PyArrayObject ;
+typedef int NPY_SORTKIND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_QUICKSORT ; 
- int /*<<< orphan*/  PyArg_ParseTupleAndKeywords (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * PyArray_ArgSort (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_AxisConverter ; 
- TYPE_1__* PyArray_DESCR (int /*<<< orphan*/ *) ; 
- TYPE_1__* PyArray_DescrNew (TYPE_1__*) ; 
- int /*<<< orphan*/ * PyArray_Return (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_SortkindConverter ; 
- int /*<<< orphan*/  PyDataType_HASFIELDS (TYPE_1__*) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyImport_ImportModule (char*) ; 
- int /*<<< orphan*/ * PyObject_CallMethod (int /*<<< orphan*/ *,char*,char*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  Py_XDECREF (TYPE_1__*) ; 
+
+ int NPY_QUICKSORT ;
+ int PyArg_ParseTupleAndKeywords (int *,int *,char*,char**,int ,int*,int ,int *,int **) ;
+ int * PyArray_ArgSort (int *,int,int ) ;
+ int PyArray_AxisConverter ;
+ TYPE_1__* PyArray_DESCR (int *) ;
+ TYPE_1__* PyArray_DescrNew (TYPE_1__*) ;
+ int * PyArray_Return (int *) ;
+ int PyArray_SortkindConverter ;
+ int PyDataType_HASFIELDS (TYPE_1__*) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int * PyImport_ImportModule (char*) ;
+ int * PyObject_CallMethod (int *,char*,char*,TYPE_1__*,int *) ;
+ int Py_DECREF (int *) ;
+ int * Py_None ;
+ int Py_XDECREF (TYPE_1__*) ;
 
 __attribute__((used)) static PyObject *
 array_argsort(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
     int axis = -1;
     NPY_SORTKIND sortkind = NPY_QUICKSORT;
-    PyObject *order = NULL, *res;
-    PyArray_Descr *newd, *saved=NULL;
-    static char *kwlist[] = {"axis", "kind", "order", NULL};
+    PyObject *order = ((void*)0), *res;
+    PyArray_Descr *newd, *saved=((void*)0);
+    static char *kwlist[] = {"axis", "kind", "order", ((void*)0)};
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O&O&O:argsort", kwlist,
                                      PyArray_AxisConverter, &axis,
                                      PyArray_SortkindConverter, &sortkind,
                                      &order)) {
-        return NULL;
+        return ((void*)0);
     }
     if (order == Py_None) {
-        order = NULL;
+        order = ((void*)0);
     }
-    if (order != NULL) {
+    if (order != ((void*)0)) {
         PyObject *new_name;
         PyObject *_numpy_internal;
         saved = PyArray_DESCR(self);
         if (!PyDataType_HASFIELDS(saved)) {
             PyErr_SetString(PyExc_ValueError, "Cannot specify "
                             "order when the array has no fields.");
-            return NULL;
+            return ((void*)0);
         }
         _numpy_internal = PyImport_ImportModule("numpy.core._internal");
-        if (_numpy_internal == NULL) {
-            return NULL;
+        if (_numpy_internal == ((void*)0)) {
+            return ((void*)0);
         }
         new_name = PyObject_CallMethod(_numpy_internal, "_newnames",
                                        "OO", saved, order);
         Py_DECREF(_numpy_internal);
-        if (new_name == NULL) {
-            return NULL;
+        if (new_name == ((void*)0)) {
+            return ((void*)0);
         }
         newd = PyArray_DescrNew(saved);
         Py_DECREF(newd->names);
@@ -82,7 +82,7 @@ array_argsort(PyArrayObject *self, PyObject *args, PyObject *kwds)
     }
 
     res = PyArray_ArgSort(self, axis, sortkind);
-    if (order != NULL) {
+    if (order != ((void*)0)) {
         Py_XDECREF(PyArray_DESCR(self));
         ((PyArrayObject_fields *)self)->descr = saved;
     }

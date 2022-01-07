@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct TYPE_7__ {int nCell; int hdrOffset; int nFree; int /*<<< orphan*/ * aCellIdx; TYPE_1__* pBt; int /*<<< orphan*/ * aData; int /*<<< orphan*/  pDbPage; } ;
-struct TYPE_6__ {scalar_t__ usableSize; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_2__ MemPage ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT_BKPT ; 
- int SQLITE_PTR_TO_INT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int cellSize (TYPE_2__*,int) ; 
- int freeSpace (TYPE_2__*,scalar_t__,int) ; 
- scalar_t__ get2byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put2byte (int /*<<< orphan*/ *,int) ; 
- int sqlite3PagerIswriteable (int /*<<< orphan*/ ) ; 
- int sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  testcase (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef scalar_t__ u32 ;
+typedef int u16 ;
+struct TYPE_7__ {int nCell; int hdrOffset; int nFree; int * aCellIdx; TYPE_1__* pBt; int * aData; int pDbPage; } ;
+struct TYPE_6__ {scalar_t__ usableSize; int mutex; } ;
+typedef TYPE_2__ MemPage ;
+
+
+ int SQLITE_CORRUPT_BKPT ;
+ int SQLITE_PTR_TO_INT (int *) ;
+ int assert (int) ;
+ int cellSize (TYPE_2__*,int) ;
+ int freeSpace (TYPE_2__*,scalar_t__,int) ;
+ scalar_t__ get2byte (int *) ;
+ int put2byte (int *,int) ;
+ int sqlite3PagerIswriteable (int ) ;
+ int sqlite3_mutex_held (int ) ;
+ int testcase (int) ;
 
 __attribute__((used)) static void dropCell(MemPage *pPage, int idx, int sz, int *pRC){
-  u32 pc;         /* Offset to cell content of cell being deleted */
-  u8 *data;       /* pPage->aData */
-  u8 *ptr;        /* Used to move bytes around within data[] */
-  u8 *endPtr;     /* End of loop */
-  int rc;         /* The return code */
-  int hdr;        /* Beginning of the header.  0 most pages.  100 page 1 */
+  u32 pc;
+  u8 *data;
+  u8 *ptr;
+  u8 *endPtr;
+  int rc;
+  int hdr;
 
   if( *pRC ) return;
 
@@ -61,7 +61,7 @@ __attribute__((used)) static void dropCell(MemPage *pPage, int idx, int sz, int 
     return;
   }
   endPtr = &pPage->aCellIdx[2*pPage->nCell - 2];
-  assert( (SQLITE_PTR_TO_INT(ptr)&1)==0 );  /* ptr is always 2-byte aligned */
+  assert( (SQLITE_PTR_TO_INT(ptr)&1)==0 );
   while( ptr<endPtr ){
     *(u16*)ptr = *(u16*)&ptr[2];
     ptr += 2;

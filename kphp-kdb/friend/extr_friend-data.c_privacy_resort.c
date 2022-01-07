@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* P ; 
+ int* P ;
 
 __attribute__((used)) static void privacy_resort (int a, int b, int mode) {
   int i, j, h, t;
@@ -24,7 +16,7 @@ __attribute__((used)) static void privacy_resort (int a, int b, int mode) {
     while ((P[i] ^ mode) < h) { i++; }
     while ((P[j] ^ mode) > h) { j--; }
     if (i <= j) {
-      t = P[i];  P[i++] = P[j];  P[j--] = t;
+      t = P[i]; P[i++] = P[j]; P[j--] = t;
     }
   } while (i <= j);
   privacy_resort (a, j, mode);

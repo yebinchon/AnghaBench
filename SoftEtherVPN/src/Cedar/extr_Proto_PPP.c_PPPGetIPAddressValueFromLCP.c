@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_3__ {int DataSize; int IsSupported; scalar_t__ Data; } ;
-typedef  TYPE_1__ PPP_OPTION ;
-typedef  int /*<<< orphan*/  PPP_LCP ;
-typedef  int /*<<< orphan*/  IP ;
+typedef TYPE_1__ PPP_OPTION ;
+typedef int PPP_LCP ;
+typedef int IP ;
 
-/* Variables and functions */
- TYPE_1__* GetOptionValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UINTToIP (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* GetOptionValue (int *,int ) ;
+ int UINTToIP (int *,int ) ;
 
 bool PPPGetIPAddressValueFromLCP(PPP_LCP *c, UINT type, IP *ip)
 {
-	PPP_OPTION *opt;
-	UINT ui;
-	// Validate arguments
-	if (c == NULL || ip == NULL)
-	{
-		return false;
-	}
+ PPP_OPTION *opt;
+ UINT ui;
 
-	opt = GetOptionValue(c, type);
-	if (opt == NULL)
-	{
-		return false;
-	}
+ if (c == ((void*)0) || ip == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (opt->DataSize != 4)
-	{
-		return false;
-	}
+ opt = GetOptionValue(c, type);
+ if (opt == ((void*)0))
+ {
+  return 0;
+ }
 
-	opt->IsSupported = true;
+ if (opt->DataSize != 4)
+ {
+  return 0;
+ }
 
-	ui = *((UINT *)opt->Data);
+ opt->IsSupported = 1;
 
-	UINTToIP(ip, ui);
+ ui = *((UINT *)opt->Data);
 
-	return true;
+ UINTToIP(ip, ui);
+
+ return 1;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  const IRichEditOleImpl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_Igetrichole ; 
- int /*<<< orphan*/  ITextRange_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+
+
+typedef int ITextRange ;
+typedef int const IRichEditOleImpl ;
+
+
+ int IID_Igetrichole ;
+ int ITextRange_QueryInterface (int *,int *,void**) ;
 
 __attribute__((used)) static inline const IRichEditOleImpl *get_range_reole(ITextRange *range)
 {
-    IRichEditOleImpl *reole = NULL;
+    IRichEditOleImpl *reole = ((void*)0);
     ITextRange_QueryInterface(range, &IID_Igetrichole, (void**)&reole);
     return reole;
 }

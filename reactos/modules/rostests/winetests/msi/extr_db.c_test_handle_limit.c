@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hviews ;
-typedef  scalar_t__ UINT ;
-typedef  int MSIHANDLE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int MY_NVIEWS ; 
- scalar_t__ MsiCloseHandle (int) ; 
- scalar_t__ MsiDatabaseOpenViewA (int,char*,int*) ; 
- int /*<<< orphan*/  MsiViewClose (int) ; 
- int create_db () ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int hviews ;
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int MY_NVIEWS ;
+ scalar_t__ MsiCloseHandle (int) ;
+ scalar_t__ MsiDatabaseOpenViewA (int,char*,int*) ;
+ int MsiViewClose (int) ;
+ int create_db () ;
+ int memset (int*,int ,int) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_handle_limit(void)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void test_handle_limit(void)
     MSIHANDLE hviews[MY_NVIEWS];
     UINT r;
 
-    /* create an empty db */
+
     hdb = create_db();
     ok( hdb, "failed to create db\n");
 
@@ -41,7 +41,7 @@ __attribute__((used)) static void test_handle_limit(void)
         static char szQueryBuf[256] = "SELECT * from `_Tables`";
         hviews[i] = 0xdeadbeeb;
         r = MsiDatabaseOpenViewA(hdb, szQueryBuf, &hviews[i]);
-        if( r != ERROR_SUCCESS || hviews[i] == 0xdeadbeeb || 
+        if( r != ERROR_SUCCESS || hviews[i] == 0xdeadbeeb ||
             hviews[i] == 0 || (i && (hviews[i] == hviews[i-1])))
             break;
     }

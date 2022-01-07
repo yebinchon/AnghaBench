@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  info ;
-struct TYPE_7__ {int /*<<< orphan*/  info; int /*<<< orphan*/  registrations; } ;
-typedef  TYPE_1__ WFC_STREAM_T ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int info ;
+struct TYPE_7__ {int info; int registrations; } ;
+typedef TYPE_1__ WFC_STREAM_T ;
 struct TYPE_8__ {int size; } ;
-typedef  TYPE_2__ WFC_STREAM_INFO_T ;
-typedef  int /*<<< orphan*/  WFCNativeStreamType ;
+typedef TYPE_2__ WFC_STREAM_INFO_T ;
+typedef int WFCNativeStreamType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STREAM_UNLOCK (TYPE_1__*) ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- scalar_t__ VCOS_SUCCESS ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int vcos_process_id_current () ; 
- scalar_t__ wfc_server_connect () ; 
- scalar_t__ wfc_server_stream_get_info (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  wfc_server_stream_register (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- TYPE_1__* wfc_stream_create_stream_ptr (int /*<<< orphan*/ ,int) ; 
+
+ int STREAM_UNLOCK (TYPE_1__*) ;
+ int VCOS_FUNCTION ;
+ scalar_t__ VCOS_SUCCESS ;
+ int memcpy (int *,TYPE_2__*,int) ;
+ int vcos_log_error (char*,int ,scalar_t__) ;
+ int vcos_process_id_current () ;
+ scalar_t__ wfc_server_connect () ;
+ scalar_t__ wfc_server_stream_get_info (int ,TYPE_2__*) ;
+ int wfc_server_stream_register (int ,scalar_t__,scalar_t__) ;
+ TYPE_1__* wfc_stream_create_stream_ptr (int ,int) ;
 
 void wfc_stream_register(WFCNativeStreamType stream) {
    uint64_t pid = vcos_process_id_current();
@@ -48,7 +48,7 @@ void wfc_stream_register(WFCNativeStreamType stream) {
 
       if (status == VCOS_SUCCESS)
       {
-         WFC_STREAM_T *stream_ptr = wfc_stream_create_stream_ptr(stream, true);
+         WFC_STREAM_T *stream_ptr = wfc_stream_create_stream_ptr(stream, 1);
 
          if (stream_ptr)
          {

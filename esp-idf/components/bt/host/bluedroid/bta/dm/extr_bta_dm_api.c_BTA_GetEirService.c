@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int tBTA_SERVICE_MASK ;
-typedef  scalar_t__ UINT8 ;
-typedef  scalar_t__ UINT16 ;
 
-/* Variables and functions */
- int BTA_HL_SERVICE_MASK ; 
- int BTA_HSP_SERVICE_MASK ; 
- scalar_t__ BTA_MAX_SERVICE_ID ; 
- int /*<<< orphan*/  BTM_GetEirUuidList (scalar_t__*,int,scalar_t__*,scalar_t__*,scalar_t__) ; 
- int LEN_UUID_16 ; 
- scalar_t__ UUID_SERVCLASS_HDP_SINK ; 
- scalar_t__ UUID_SERVCLASS_HDP_SOURCE ; 
- scalar_t__ UUID_SERVCLASS_HEADSET_HS ; 
- scalar_t__* bta_service_id_to_uuid_lkup_tbl ; 
+
+
+
+typedef int tBTA_SERVICE_MASK ;
+typedef scalar_t__ UINT8 ;
+typedef scalar_t__ UINT16 ;
+
+
+ int BTA_HL_SERVICE_MASK ;
+ int BTA_HSP_SERVICE_MASK ;
+ scalar_t__ BTA_MAX_SERVICE_ID ;
+ int BTM_GetEirUuidList (scalar_t__*,int,scalar_t__*,scalar_t__*,scalar_t__) ;
+ int LEN_UUID_16 ;
+ scalar_t__ UUID_SERVCLASS_HDP_SINK ;
+ scalar_t__ UUID_SERVCLASS_HDP_SOURCE ;
+ scalar_t__ UUID_SERVCLASS_HEADSET_HS ;
+ scalar_t__* bta_service_id_to_uuid_lkup_tbl ;
 
 void BTA_GetEirService( UINT8 *p_eir, tBTA_SERVICE_MASK *p_services )
 {
@@ -44,7 +44,7 @@ void BTA_GetEirService( UINT8 *p_eir, tBTA_SERVICE_MASK *p_services )
             mask <<= 1;
         }
 
-        /* for HSP v1.2 only device */
+
         if (*(p_uuid16 + xx) == UUID_SERVCLASS_HEADSET_HS) {
             *p_services |= BTA_HSP_SERVICE_MASK;
         }

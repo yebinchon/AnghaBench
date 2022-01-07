@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- char* CURR_DIR ; 
- int /*<<< orphan*/  CreateDirectoryA (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- char* ERROR_INSTALL_PACKAGE_REJECTED ; 
- char* ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  INSTALLUILEVEL_NONE ; 
- int /*<<< orphan*/  MAKELONG (int,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- char* MsiDoActionA (int /*<<< orphan*/ ,char*) ; 
- char* MsiGetPropertyA (int /*<<< orphan*/ ,char*,char*,int*) ; 
- int /*<<< orphan*/  MsiSetInternalUI (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RemoveDirectoryA (char*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  add_appsearch_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_drlocator_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  add_reglocator_entry (int /*<<< orphan*/ ,char*,int,char*,char*,int) ; 
- int /*<<< orphan*/  add_signature_entry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  create_appsearch_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_drlocator_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_file_with_version (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_package_db () ; 
- int /*<<< orphan*/  create_reglocator_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_signature_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_test_file (char*) ; 
- scalar_t__ is_root (char*) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char*) ; 
- int /*<<< orphan*/  lstrcmpiA (char*,char*) ; 
- char* msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- char* package_from_db (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  search_absolute_directory (char*,char*) ; 
- int /*<<< orphan*/  skip (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef char* UINT ;
+typedef int MSIHANDLE ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ char* CURR_DIR ;
+ int CreateDirectoryA (char*,int *) ;
+ int DeleteFileA (char*) ;
+ char* ERROR_INSTALL_PACKAGE_REJECTED ;
+ char* ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int INSTALLUILEVEL_NONE ;
+ int MAKELONG (int,int) ;
+ int MAX_PATH ;
+ int MsiCloseHandle (int ) ;
+ char* MsiDoActionA (int ,char*) ;
+ char* MsiGetPropertyA (int ,char*,char*,int*) ;
+ int MsiSetInternalUI (int ,int *) ;
+ int RemoveDirectoryA (char*) ;
+ scalar_t__ TRUE ;
+ int add_appsearch_entry (int ,char*) ;
+ int add_drlocator_entry (int ,char*) ;
+ int add_reglocator_entry (int ,char*,int,char*,char*,int) ;
+ int add_signature_entry (int ,char*) ;
+ int create_appsearch_table (int ) ;
+ int create_drlocator_table (int ) ;
+ int create_file_with_version (char*,int ,int ) ;
+ int create_package_db () ;
+ int create_reglocator_table (int ) ;
+ int create_signature_table (int ) ;
+ int create_test_file (char*) ;
+ scalar_t__ is_root (char*) ;
+ int lstrcmpA (char*,char*) ;
+ int lstrcmpiA (char*,char*) ;
+ char* msifile ;
+ int ok (int,char*,...) ;
+ char* package_from_db (int ,int *) ;
+ int search_absolute_directory (char*,char*) ;
+ int skip (char*) ;
+ int sprintf (char*,char*,...) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_appsearch_drlocator(void)
 {
@@ -68,11 +68,11 @@ __attribute__((used)) static void test_appsearch_drlocator(void)
     DeleteFileA("test.dll");
 
     create_test_file("FileName1");
-    CreateDirectoryA("one", NULL);
-    CreateDirectoryA("one\\two", NULL);
-    CreateDirectoryA("one\\two\\three", NULL);
+    CreateDirectoryA("one", ((void*)0));
+    CreateDirectoryA("one\\two", ((void*)0));
+    CreateDirectoryA("one\\two\\three", ((void*)0));
     create_test_file("one\\two\\three\\FileName2");
-    CreateDirectoryA("another", NULL);
+    CreateDirectoryA("another", ((void*)0));
     create_file_with_version("FileName3.dll", MAKELONG(2, 1), MAKELONG(4, 3));
     create_file_with_version("FileName4.dll", MAKELONG(1, 2), MAKELONG(3, 4));
     create_file_with_version("FileName5.dll", MAKELONG(2, 1), MAKELONG(4, 3));
@@ -99,56 +99,56 @@ __attribute__((used)) static void test_appsearch_drlocator(void)
     strcpy(expected, CURR_DIR);
     if (is_root(CURR_DIR)) expected[2] = 0;
 
-    /* no parent, full path, depth 0, signature */
+
     sprintf(path, "'NewSignature1', '', '%s', 0", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 0, no signature */
+
     sprintf(path, "'NewSignature2', '', '%s', 0", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, relative path, depth 0, no signature */
+
     sprintf(path, "'NewSignature3', '', '%s', 0", expected + 3);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 2, signature */
+
     sprintf(path, "'NewSignature4', '', '%s', 2", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 3, signature */
+
     sprintf(path, "'NewSignature5', '', '%s', 3", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 1, signature is dir */
+
     sprintf(path, "'NewSignature6', '', '%s', 1", expected);
     add_drlocator_entry(hdb, path);
 
-    /* parent is in DrLocator, relative path, depth 0, signature */
+
     sprintf(path, "'NewSignature7', 'NewSignature1', 'one\\two\\three', 1");
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 0, signature w/ version */
+
     sprintf(path, "'NewSignature8', '', '%s', 0", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 0, signature w/ version, ver > max */
+
     sprintf(path, "'NewSignature9', '', '%s', 0", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, full path, depth 0, signature w/ version, sig->name not ignored */
+
     sprintf(path, "'NewSignature10', '', '%s', 0", expected);
     add_drlocator_entry(hdb, path);
 
-    /* no parent, relative empty path, depth 0, no signature */
+
     sprintf(path, "'NewSignature11', '', '', 0");
     add_drlocator_entry(hdb, path);
 
     create_reglocator_table(hdb);
 
-    /* parent */
+
     add_reglocator_entry(hdb, "NewSignature12", 2, "htmlfile\\shell\\open\\nonexistent", "", 1);
 
-    /* parent is in RegLocator, no path, depth 0, no signature */
+
     sprintf(path, "'NewSignature13', 'NewSignature12', '', 0");
     add_drlocator_entry(hdb, path);
 
@@ -170,7 +170,7 @@ __attribute__((used)) static void test_appsearch_drlocator(void)
     }
     ok(r == ERROR_SUCCESS, "Expected a valid package handle %u\n", r);
 
-    MsiSetInternalUI(INSTALLUILEVEL_NONE, NULL);
+    MsiSetInternalUI(INSTALLUILEVEL_NONE, ((void*)0));
 
     r = MsiDoActionA(hpkg, "AppSearch");
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);

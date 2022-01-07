@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rcode ;
-typedef  int /*<<< orphan*/  CONF_MODULE ;
-typedef  int /*<<< orphan*/  CONF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  CONF_F_MODULE_RUN ; 
- unsigned long CONF_MFLAGS_NO_DSO ; 
- unsigned long CONF_MFLAGS_SILENT ; 
- int /*<<< orphan*/  CONF_R_MODULE_INITIALIZATION_ERROR ; 
- int /*<<< orphan*/  CONF_R_UNKNOWN_MODULE_NAME ; 
- int /*<<< orphan*/  CONFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECIMAL_SIZE (int) ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char const*,...) ; 
- int /*<<< orphan*/ * module_find (char const*) ; 
- int module_init (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * module_load_dso (int /*<<< orphan*/  const*,char const*,char const*) ; 
+
+
+
+typedef int rcode ;
+typedef int CONF_MODULE ;
+typedef int CONF ;
+
+
+ int BIO_snprintf (char*,int,char*,int) ;
+ int CONF_F_MODULE_RUN ;
+ unsigned long CONF_MFLAGS_NO_DSO ;
+ unsigned long CONF_MFLAGS_SILENT ;
+ int CONF_R_MODULE_INITIALIZATION_ERROR ;
+ int CONF_R_UNKNOWN_MODULE_NAME ;
+ int CONFerr (int ,int ) ;
+ int DECIMAL_SIZE (int) ;
+ int ERR_add_error_data (int,char*,char const*,...) ;
+ int * module_find (char const*) ;
+ int module_init (int *,char const*,char const*,int const*) ;
+ int * module_load_dso (int const*,char const*,char const*) ;
 
 __attribute__((used)) static int module_run(const CONF *cnf, const char *name, const char *value,
                       unsigned long flags)
@@ -36,7 +36,7 @@ __attribute__((used)) static int module_run(const CONF *cnf, const char *name, c
 
     md = module_find(name);
 
-    /* Module not found: try to load DSO */
+
     if (!md && !(flags & CONF_MFLAGS_NO_DSO))
         md = module_load_dso(cnf, name, value);
 

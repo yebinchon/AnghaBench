@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPIO_OUTPUT_SET (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  PLATFORM_GPIO_FLOAT ; 
- int /*<<< orphan*/  PLATFORM_GPIO_HIGH ; 
- int /*<<< orphan*/  PLATFORM_GPIO_LOW ; 
- int /*<<< orphan*/  PLATFORM_GPIO_OUTPUT ; 
- int /*<<< orphan*/  apa102_send_buffer (int,int,int*,int) ; 
- int /*<<< orphan*/  gpio ; 
- size_t luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int* pin_num ; 
- int /*<<< orphan*/  platform_gpio_mode (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
+typedef int lua_State ;
+
+
+ int GPIO_OUTPUT_SET (int,int ) ;
+ int MOD_CHECK_ID (int ,size_t) ;
+ int PLATFORM_GPIO_FLOAT ;
+ int PLATFORM_GPIO_HIGH ;
+ int PLATFORM_GPIO_LOW ;
+ int PLATFORM_GPIO_OUTPUT ;
+ int apa102_send_buffer (int,int,int*,int) ;
+ int gpio ;
+ size_t luaL_checkinteger (int *,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_error (int *,char*) ;
+ int* pin_num ;
+ int platform_gpio_mode (size_t,int ,int ) ;
 
 __attribute__((used)) static int apa102_write(lua_State* L) {
   uint8_t data_pin = luaL_checkinteger(L, 1);
@@ -46,13 +46,13 @@ __attribute__((used)) static int apa102_write(lua_State* L) {
     return luaL_error(L, "The supplied buffer is too long, and might cause the callback watchdog to bark.");
   }
 
-  // Initialize the output pins
-  platform_gpio_mode(data_pin, PLATFORM_GPIO_OUTPUT, PLATFORM_GPIO_FLOAT);
-  GPIO_OUTPUT_SET(alt_data_pin, PLATFORM_GPIO_HIGH); // Set pin high
-  platform_gpio_mode(clock_pin, PLATFORM_GPIO_OUTPUT, PLATFORM_GPIO_FLOAT);
-  GPIO_OUTPUT_SET(alt_clock_pin, PLATFORM_GPIO_LOW); // Set pin low
 
-  // Send the buffers
+  platform_gpio_mode(data_pin, PLATFORM_GPIO_OUTPUT, PLATFORM_GPIO_FLOAT);
+  GPIO_OUTPUT_SET(alt_data_pin, PLATFORM_GPIO_HIGH);
+  platform_gpio_mode(clock_pin, PLATFORM_GPIO_OUTPUT, PLATFORM_GPIO_FLOAT);
+  GPIO_OUTPUT_SET(alt_clock_pin, PLATFORM_GPIO_LOW);
+
+
   apa102_send_buffer(alt_data_pin, alt_clock_pin, (uint32_t *) buf, (uint32_t) nbr_frames);
   return 0;
 }

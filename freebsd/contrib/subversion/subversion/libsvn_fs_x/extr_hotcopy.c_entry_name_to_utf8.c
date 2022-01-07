@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ APR_EINVAL ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_error_createf (scalar_t__,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* svn_path_cstring_to_utf8 (char const**,char const*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ APR_EINVAL ;
+ int _ (char*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ TYPE_1__* svn_error_createf (scalar_t__,TYPE_1__*,int ,int ) ;
+ TYPE_1__* svn_path_cstring_to_utf8 (char const**,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 entry_name_to_utf8(const char **name_p,

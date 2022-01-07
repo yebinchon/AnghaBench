@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct thread {int dummy; } ;
-struct linux_sigaltstack_args {int /*<<< orphan*/ * uoss; int /*<<< orphan*/ * uss; } ;
-struct TYPE_8__ {int /*<<< orphan*/  ss_flags; int /*<<< orphan*/  ss_size; int /*<<< orphan*/  ss_sp; } ;
-typedef  TYPE_1__ stack_t ;
-typedef  int /*<<< orphan*/  lss ;
-struct TYPE_9__ {int /*<<< orphan*/  ss_flags; int /*<<< orphan*/  ss_size; int /*<<< orphan*/  ss_sp; } ;
-typedef  TYPE_2__ l_stack_t ;
+struct linux_sigaltstack_args {int * uoss; int * uss; } ;
+struct TYPE_8__ {int ss_flags; int ss_size; int ss_sp; } ;
+typedef TYPE_1__ stack_t ;
+typedef int lss ;
+struct TYPE_9__ {int ss_flags; int ss_size; int ss_sp; } ;
+typedef TYPE_2__ l_stack_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINUX_CTR2 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PTRIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PTROUT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bsd_to_linux_sigaltstack (int /*<<< orphan*/ ) ; 
- int copyin (int /*<<< orphan*/ *,TYPE_2__*,int) ; 
- int copyout (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int kern_sigaltstack (struct thread*,TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  linux_to_bsd_sigaltstack (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sigaltstack ; 
+
+ int LINUX_CTR2 (int ,char*,int *,int *) ;
+ int PTRIN (int ) ;
+ int PTROUT (int ) ;
+ int bsd_to_linux_sigaltstack (int ) ;
+ int copyin (int *,TYPE_2__*,int) ;
+ int copyout (TYPE_2__*,int *,int) ;
+ int kern_sigaltstack (struct thread*,TYPE_1__*,TYPE_1__*) ;
+ int linux_to_bsd_sigaltstack (int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int sigaltstack ;
 
 int
 linux_sigaltstack(struct thread *td, struct linux_sigaltstack_args *uap)
 {
-	stack_t ss, oss;
-	l_stack_t lss;
-	int error;
+ stack_t ss, oss;
+ l_stack_t lss;
+ int error;
 
-	memset(&lss, 0, sizeof(lss));
-	LINUX_CTR2(sigaltstack, "%p, %p", uap->uss, uap->uoss);
+ memset(&lss, 0, sizeof(lss));
+ LINUX_CTR2(sigaltstack, "%p, %p", uap->uss, uap->uoss);
 
-	if (uap->uss != NULL) {
-		error = copyin(uap->uss, &lss, sizeof(l_stack_t));
-		if (error)
-			return (error);
+ if (uap->uss != ((void*)0)) {
+  error = copyin(uap->uss, &lss, sizeof(l_stack_t));
+  if (error)
+   return (error);
 
-		ss.ss_sp = PTRIN(lss.ss_sp);
-		ss.ss_size = lss.ss_size;
-		ss.ss_flags = linux_to_bsd_sigaltstack(lss.ss_flags);
-	}
-	error = kern_sigaltstack(td, (uap->uss != NULL) ? &ss : NULL,
-	    (uap->uoss != NULL) ? &oss : NULL);
-	if (!error && uap->uoss != NULL) {
-		lss.ss_sp = PTROUT(oss.ss_sp);
-		lss.ss_size = oss.ss_size;
-		lss.ss_flags = bsd_to_linux_sigaltstack(oss.ss_flags);
-		error = copyout(&lss, uap->uoss, sizeof(l_stack_t));
-	}
+  ss.ss_sp = PTRIN(lss.ss_sp);
+  ss.ss_size = lss.ss_size;
+  ss.ss_flags = linux_to_bsd_sigaltstack(lss.ss_flags);
+ }
+ error = kern_sigaltstack(td, (uap->uss != ((void*)0)) ? &ss : ((void*)0),
+     (uap->uoss != ((void*)0)) ? &oss : ((void*)0));
+ if (!error && uap->uoss != ((void*)0)) {
+  lss.ss_sp = PTROUT(oss.ss_sp);
+  lss.ss_size = oss.ss_size;
+  lss.ss_flags = bsd_to_linux_sigaltstack(oss.ss_flags);
+  error = copyout(&lss, uap->uoss, sizeof(l_stack_t));
+ }
 
-	return (error);
+ return (error);
 }

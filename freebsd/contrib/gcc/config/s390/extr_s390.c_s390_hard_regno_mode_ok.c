@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
-#define  ACCESS_REGS 132 
-#define  ADDR_REGS 131 
-#define  CC_REGS 130 
- int DImode ; 
- int /*<<< orphan*/  FLOAT_MODE_P (int) ; 
-#define  FP_REGS 129 
- int /*<<< orphan*/  FRAME_REGNO_P (unsigned int) ; 
-#define  GENERAL_REGS 128 
- int /*<<< orphan*/  GET_MODE_CLASS (int) ; 
- int /*<<< orphan*/  MODE_CC ; 
- int /*<<< orphan*/  MODE_VECTOR_FLOAT ; 
- int Pmode ; 
- int /*<<< orphan*/  REGNO_PAIR_OK (unsigned int,int) ; 
- int REGNO_REG_CLASS (unsigned int) ; 
- int SImode ; 
- int /*<<< orphan*/  TARGET_64BIT ; 
- int TCmode ; 
- int TDmode ; 
- int TFmode ; 
+
+
+
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+
+
+
+ int DImode ;
+ int FLOAT_MODE_P (int) ;
+
+ int FRAME_REGNO_P (unsigned int) ;
+
+ int GET_MODE_CLASS (int) ;
+ int MODE_CC ;
+ int MODE_VECTOR_FLOAT ;
+ int Pmode ;
+ int REGNO_PAIR_OK (unsigned int,int) ;
+ int REGNO_REG_CLASS (unsigned int) ;
+ int SImode ;
+ int TARGET_64BIT ;
+ int TCmode ;
+ int TDmode ;
+ int TFmode ;
 
 bool
 s390_hard_regno_mode_ok (unsigned int regno, enum machine_mode mode)
 {
   switch (REGNO_REG_CLASS (regno))
     {
-    case FP_REGS:
+    case 129:
       if (REGNO_PAIR_OK (regno, mode))
-	{
-	  if (mode == SImode || mode == DImode)
-	    return true;
+ {
+   if (mode == SImode || mode == DImode)
+     return 1;
 
-	  if (FLOAT_MODE_P (mode) && GET_MODE_CLASS (mode) != MODE_VECTOR_FLOAT)
-	    return true;
-	}
+   if (FLOAT_MODE_P (mode) && GET_MODE_CLASS (mode) != MODE_VECTOR_FLOAT)
+     return 1;
+ }
       break;
-    case ADDR_REGS:
+    case 131:
       if (FRAME_REGNO_P (regno) && mode == Pmode)
-	return true;
+ return 1;
 
-      /* fallthrough */
-    case GENERAL_REGS:
+
+    case 128:
       if (REGNO_PAIR_OK (regno, mode))
-	{
-	  if (TARGET_64BIT 
-	      || (mode != TFmode && mode != TCmode && mode != TDmode))
-	    return true;
-	}	  
+ {
+   if (TARGET_64BIT
+       || (mode != TFmode && mode != TCmode && mode != TDmode))
+     return 1;
+ }
       break;
-    case CC_REGS:
+    case 130:
       if (GET_MODE_CLASS (mode) == MODE_CC)
-	return true;
+ return 1;
       break;
-    case ACCESS_REGS:
+    case 132:
       if (REGNO_PAIR_OK (regno, mode))
-	{
-	  if (mode == SImode || mode == Pmode)
-	    return true;
-	}
+ {
+   if (mode == SImode || mode == Pmode)
+     return 1;
+ }
       break;
     default:
-      return false;
+      return 0;
     }
-  
-  return false;
+
+  return 0;
 }

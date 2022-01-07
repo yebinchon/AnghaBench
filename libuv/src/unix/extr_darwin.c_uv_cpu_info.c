@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_address_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vm_address_t ;
 struct TYPE_6__ {unsigned int user; unsigned int nice; unsigned int sys; unsigned int idle; scalar_t__ irq; } ;
-struct TYPE_7__ {unsigned int speed; int /*<<< orphan*/  model; TYPE_1__ cpu_times; } ;
-typedef  TYPE_2__ uv_cpu_info_t ;
-typedef  unsigned int uint64_t ;
-typedef  int /*<<< orphan*/  processor_info_array_t ;
+struct TYPE_7__ {unsigned int speed; int model; TYPE_1__ cpu_times; } ;
+typedef TYPE_2__ uv_cpu_info_t ;
+typedef unsigned int uint64_t ;
+typedef int processor_info_array_t ;
 struct TYPE_8__ {scalar_t__* cpu_ticks; } ;
-typedef  TYPE_3__ processor_cpu_load_info_data_t ;
-typedef  int natural_t ;
-typedef  int /*<<< orphan*/  model ;
-typedef  int /*<<< orphan*/  mach_msg_type_number_t ;
-typedef  int /*<<< orphan*/  cpuspeed ;
+typedef TYPE_3__ processor_cpu_load_info_data_t ;
+typedef int natural_t ;
+typedef int model ;
+typedef int mach_msg_type_number_t ;
+typedef int cpuspeed ;
 
-/* Variables and functions */
- scalar_t__ KERN_SUCCESS ; 
- int /*<<< orphan*/  PROCESSOR_CPU_LOAD_INFO ; 
- int UV_EINVAL ; 
- int UV_ENOMEM ; 
- int UV__ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _SC_CLK_TCK ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ host_processor_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mach_host_self () ; 
- int /*<<< orphan*/  mach_task_self () ; 
- scalar_t__ sysconf (int /*<<< orphan*/ ) ; 
- scalar_t__ sysctlbyname (char*,...) ; 
- TYPE_2__* uv__malloc (int) ; 
- int /*<<< orphan*/  uv__strdup (char*) ; 
- int /*<<< orphan*/  vm_deallocate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ KERN_SUCCESS ;
+ int PROCESSOR_CPU_LOAD_INFO ;
+ int UV_EINVAL ;
+ int UV_ENOMEM ;
+ int UV__ERR (int ) ;
+ int _SC_CLK_TCK ;
+ int errno ;
+ scalar_t__ host_processor_info (int ,int ,int*,int *,int *) ;
+ int mach_host_self () ;
+ int mach_task_self () ;
+ scalar_t__ sysconf (int ) ;
+ scalar_t__ sysctlbyname (char*,...) ;
+ TYPE_2__* uv__malloc (int) ;
+ int uv__strdup (char*) ;
+ int vm_deallocate (int ,int ,int ) ;
 
 int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
   unsigned int ticks = (unsigned int)sysconf(_SC_CLK_TCK),
@@ -56,19 +56,19 @@ int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
   uv_cpu_info_t* cpu_info;
 
   size = sizeof(model);
-  if (sysctlbyname("machdep.cpu.brand_string", &model, &size, NULL, 0) &&
-      sysctlbyname("hw.model", &model, &size, NULL, 0)) {
+  if (sysctlbyname("machdep.cpu.brand_string", &model, &size, ((void*)0), 0) &&
+      sysctlbyname("hw.model", &model, &size, ((void*)0), 0)) {
     return UV__ERR(errno);
   }
 
   size = sizeof(cpuspeed);
-  if (sysctlbyname("hw.cpufrequency", &cpuspeed, &size, NULL, 0))
+  if (sysctlbyname("hw.cpufrequency", &cpuspeed, &size, ((void*)0), 0))
     return UV__ERR(errno);
 
   if (host_processor_info(mach_host_self(), PROCESSOR_CPU_LOAD_INFO, &numcpus,
                           (processor_info_array_t*)&info,
                           &msg_type) != KERN_SUCCESS) {
-    return UV_EINVAL;  /* FIXME(bnoordhuis) Translate error. */
+    return UV_EINVAL;
   }
 
   *cpu_infos = uv__malloc(numcpus * sizeof(**cpu_infos));

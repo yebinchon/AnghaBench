@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
-struct TYPE_8__ {void* HeaderIncl; void* BCast; void* DF; int /*<<< orphan*/  TTL; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_8__ {void* HeaderIncl; void* BCast; void* DF; int TTL; } ;
 struct TYPE_7__ {int toi_id; } ;
-typedef  int /*<<< orphan*/  TDI_STATUS ;
-typedef  TYPE_1__ TDIObjectID ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  void** PUINT ;
-typedef  int /*<<< orphan*/ * PUCHAR ;
-typedef  TYPE_2__* PADDRESS_FILE ;
-typedef  int /*<<< orphan*/  KIRQL ;
+typedef int TDI_STATUS ;
+typedef TYPE_1__ TDIObjectID ;
+typedef int PVOID ;
+typedef void** PUINT ;
+typedef int * PUCHAR ;
+typedef TYPE_2__* PADDRESS_FILE ;
+typedef int KIRQL ;
 
-/* Variables and functions */
-#define  AO_OPTION_BROADCAST 131 
-#define  AO_OPTION_IP_DONTFRAGMENT 130 
-#define  AO_OPTION_IP_HDRINCL 129 
-#define  AO_OPTION_TTL 128 
- int /*<<< orphan*/  DbgPrint (char*,int) ; 
- int /*<<< orphan*/  LockObject (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TDI_INVALID_PARAMETER ; 
- int /*<<< orphan*/  TDI_INVALID_REQUEST ; 
- int /*<<< orphan*/  TDI_SUCCESS ; 
- int /*<<< orphan*/  UnlockObject (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int DbgPrint (char*,int) ;
+ int LockObject (TYPE_2__*,int *) ;
+ int TDI_INVALID_PARAMETER ;
+ int TDI_INVALID_REQUEST ;
+ int TDI_SUCCESS ;
+ int UnlockObject (TYPE_2__*,int ) ;
 
 TDI_STATUS SetAddressFileInfo(TDIObjectID *ID,
                               PADDRESS_FILE AddrFile,
@@ -44,7 +44,7 @@ TDI_STATUS SetAddressFileInfo(TDIObjectID *ID,
 
     switch (ID->toi_id)
     {
-      case AO_OPTION_TTL:
+      case 128:
          if (BufferSize < sizeof(UINT))
              return TDI_INVALID_PARAMETER;
 
@@ -54,7 +54,7 @@ TDI_STATUS SetAddressFileInfo(TDIObjectID *ID,
 
          return TDI_SUCCESS;
 
-      case AO_OPTION_IP_DONTFRAGMENT:
+      case 130:
          if (BufferSize < sizeof(UINT))
              return TDI_INVALID_PARAMETER;
 
@@ -64,7 +64,7 @@ TDI_STATUS SetAddressFileInfo(TDIObjectID *ID,
 
          return TDI_SUCCESS;
 
-      case AO_OPTION_BROADCAST:
+      case 131:
          if (BufferSize < sizeof(UINT))
              return TDI_INVALID_PARAMETER;
 
@@ -74,7 +74,7 @@ TDI_STATUS SetAddressFileInfo(TDIObjectID *ID,
 
          return TDI_SUCCESS;
 
-      case AO_OPTION_IP_HDRINCL:
+      case 129:
          if (BufferSize < sizeof(UINT))
              return TDI_INVALID_PARAMETER;
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct TYPE_3__ {int /*<<< orphan*/ ** info; } ;
-typedef  TYPE_1__ _pattern_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  convert_channel1 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_channel2 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_channel3 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_channel4 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* label_name ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mod_get_index_from_period (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  out_write_dec (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  out_write_str (char*,char*) ; 
- int /*<<< orphan*/  unpack_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct TYPE_3__ {int ** info; } ;
+typedef TYPE_1__ _pattern_t ;
+
+
+ int convert_channel1 (int ,int,int ,int ,int ,int ,int ) ;
+ int convert_channel2 (int ,int,int ,int ,int ,int ,int ) ;
+ int convert_channel3 (int ,int,int ,int ,int ,int ,int ) ;
+ int convert_channel4 (int ,int,int ,int ,int ,int ,int ) ;
+ char* label_name ;
+ int memcpy (int *,int ,int) ;
+ int mod_get_index_from_period (int ,int ,int,int) ;
+ int out_write_dec (int ) ;
+ int out_write_str (char*,char*) ;
+ int unpack_info (int *,int *,int *,int *,int *) ;
 
 void convert_pattern(_pattern_t * pattern, u8 number)
 {
@@ -40,12 +40,12 @@ void convert_pattern(_pattern_t * pattern, u8 number)
     {
         out_write_str("  ","  DB  ");
 
-        u8 data[4]; //packed data
-        u8 samplenum; u16 sampleperiod; u8 effectnum, effectparams; //unpacked data
+        u8 data[4];
+        u8 samplenum; u16 sampleperiod; u8 effectnum, effectparams;
 
         u8 note_index;
 
-        //Channel 1
+
         memcpy(data,pattern->info[step][0],4);
         unpack_info(data,&samplenum,&sampleperiod,&effectnum,&effectparams);
         note_index = mod_get_index_from_period(sampleperiod,number,step,1);
@@ -54,7 +54,7 @@ void convert_pattern(_pattern_t * pattern, u8 number)
                          note_index,samplenum,sampleperiod,effectnum,effectparams);
         out_write_str(", ",", ");
 
-        //Channel 2
+
         memcpy(data,pattern->info[step][1],4);
         unpack_info(data,&samplenum,&sampleperiod,&effectnum,&effectparams);
         note_index = mod_get_index_from_period(sampleperiod,number,step,2);
@@ -63,7 +63,7 @@ void convert_pattern(_pattern_t * pattern, u8 number)
                          note_index,samplenum,sampleperiod,effectnum,effectparams);
         out_write_str(", ",", ");
 
-        //Channel 3
+
         memcpy(data,pattern->info[step][2],4);
         unpack_info(data,&samplenum,&sampleperiod,&effectnum,&effectparams);
         note_index = mod_get_index_from_period(sampleperiod,number,step,3);
@@ -72,7 +72,7 @@ void convert_pattern(_pattern_t * pattern, u8 number)
                          note_index,samplenum,sampleperiod,effectnum,effectparams);
         out_write_str(", ",", ");
 
-        //Channel 4
+
         memcpy(data,pattern->info[step][3],4);
         unpack_info(data,&samplenum,&sampleperiod,&effectnum,&effectparams);
         note_index = mod_get_index_from_period(sampleperiod,number,step,4);

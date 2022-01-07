@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_4__ {int index; int count; } ;
 struct TYPE_3__ {unsigned int of; int one; } ;
-struct Masscan {int seed; int retries; int max_rate; scalar_t__ is_infinite; scalar_t__ is_test_csv; int /*<<< orphan*/  ports; int /*<<< orphan*/  targets; TYPE_2__ resume; TYPE_1__ shard; int /*<<< orphan*/  blackrock_rounds; } ;
+struct Masscan {int seed; int retries; int max_rate; scalar_t__ is_infinite; scalar_t__ is_test_csv; int ports; int targets; TYPE_2__ resume; TYPE_1__ shard; int blackrock_rounds; } ;
 struct BlackRock {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  blackrock_init (struct BlackRock*,int,int,int /*<<< orphan*/ ) ; 
- int blackrock_shuffle (struct BlackRock*,int) ; 
- int /*<<< orphan*/  printf (char*,unsigned int,unsigned int,...) ; 
- int /*<<< orphan*/  rangelist_add_range (int /*<<< orphan*/ *,int,int) ; 
- int rangelist_count (int /*<<< orphan*/ *) ; 
- unsigned int rangelist_pick (int /*<<< orphan*/ *,int) ; 
+
+ int LOG (int ,char*) ;
+ int blackrock_init (struct BlackRock*,int,int,int ) ;
+ int blackrock_shuffle (struct BlackRock*,int) ;
+ int printf (char*,unsigned int,unsigned int,...) ;
+ int rangelist_add_range (int *,int,int) ;
+ int rangelist_count (int *) ;
+ unsigned int rangelist_pick (int *,int) ;
 
 void
 main_listscan(struct Masscan *masscan)
@@ -64,23 +64,23 @@ infinite:
         end = start + masscan->resume.count;
     end += (uint64_t)(masscan->retries * masscan->max_rate);
 
-//printf("start=%llu, end=%llu\n", start, end);
+
     for (i=start; i<end; ) {
         uint64_t xXx;
         unsigned ip;
         unsigned port;
 
-        xXx = blackrock_shuffle(&blackrock,  i);
+        xXx = blackrock_shuffle(&blackrock, i);
 
         ip = rangelist_pick(&masscan->targets, xXx % count_ips);
         port = rangelist_pick(&masscan->ports, xXx / count_ips);
 
         if (count_ports == 1) {
             if (masscan->is_test_csv) {
-                /* [KLUDGE] [TEST]
-                 * For testing randomness output, prints last two bytes of
-                 * IP address as CSV format for import into spreadsheet
-                 */
+
+
+
+
                 printf("%u,%u\n",
                        (ip>>8)&0xFF, (ip>>0)&0xFF
                        );
@@ -95,7 +95,7 @@ infinite:
                    port
                    );
 
-        i += increment; /* <------ increment by 1 normally, more with shards/nics */
+        i += increment;
     }
 
     if (masscan->is_infinite) {

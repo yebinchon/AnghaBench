@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  ServerName; int /*<<< orphan*/  Path; } ;
-typedef  TYPE_1__ LOG_FILE ;
 
-/* Variables and functions */
- int StrCmpi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_2__ {int ServerName; int Path; } ;
+typedef TYPE_1__ LOG_FILE ;
+
+
+ int StrCmpi (int ,int ) ;
 
 int CmpLogFile(void *p1, void *p2)
 {
-	LOG_FILE *f1, *f2;
-	UINT i;
-	if (p1 == NULL || p2 == NULL)
-	{
-		return 0;
-	}
-	f1 = *(LOG_FILE **)p1;
-	f2 = *(LOG_FILE **)p2;
-	if (f1 == NULL || f2 == NULL)
-	{
-		return 0;
-	}
+ LOG_FILE *f1, *f2;
+ UINT i;
+ if (p1 == ((void*)0) || p2 == ((void*)0))
+ {
+  return 0;
+ }
+ f1 = *(LOG_FILE **)p1;
+ f2 = *(LOG_FILE **)p2;
+ if (f1 == ((void*)0) || f2 == ((void*)0))
+ {
+  return 0;
+ }
 
-	i = StrCmpi(f1->Path, f2->Path);
-	if (i != 0)
-	{
-		return i;
-	}
+ i = StrCmpi(f1->Path, f2->Path);
+ if (i != 0)
+ {
+  return i;
+ }
 
-	return StrCmpi(f1->ServerName, f2->ServerName);
+ return StrCmpi(f1->ServerName, f2->ServerName);
 }

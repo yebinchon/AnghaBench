@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  delta; int /*<<< orphan*/  train; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_6__ {int batch; int out_w; int out_h; scalar_t__ type; int outputs; int /*<<< orphan*/  delta; int /*<<< orphan*/  out_c; int /*<<< orphan*/  variance_delta; int /*<<< orphan*/  mean_delta; int /*<<< orphan*/  variance; int /*<<< orphan*/  mean; int /*<<< orphan*/  x; int /*<<< orphan*/  scales; int /*<<< orphan*/  scale_updates; int /*<<< orphan*/  x_norm; int /*<<< orphan*/  bias_updates; int /*<<< orphan*/  rolling_variance; int /*<<< orphan*/  rolling_mean; } ;
-typedef  TYPE_2__ layer ;
 
-/* Variables and functions */
- scalar_t__ BATCHNORM ; 
- int /*<<< orphan*/  backward_bias (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  backward_scale_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  copy_cpu (int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mean_delta_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  normalize_delta_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scale_bias (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  variance_delta_cpu (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int delta; int train; } ;
+typedef TYPE_1__ network ;
+struct TYPE_6__ {int batch; int out_w; int out_h; scalar_t__ type; int outputs; int delta; int out_c; int variance_delta; int mean_delta; int variance; int mean; int x; int scales; int scale_updates; int x_norm; int bias_updates; int rolling_variance; int rolling_mean; } ;
+typedef TYPE_2__ layer ;
+
+
+ scalar_t__ BATCHNORM ;
+ int backward_bias (int ,int ,int,int ,int) ;
+ int backward_scale_cpu (int ,int ,int,int ,int,int ) ;
+ int copy_cpu (int,int ,int,int ,int) ;
+ int mean_delta_cpu (int ,int ,int,int ,int,int ) ;
+ int normalize_delta_cpu (int ,int ,int ,int ,int ,int,int ,int,int ) ;
+ int scale_bias (int ,int ,int,int ,int) ;
+ int variance_delta_cpu (int ,int ,int ,int ,int,int ,int,int ) ;
 
 void backward_batchnorm_layer(layer l, network net)
 {

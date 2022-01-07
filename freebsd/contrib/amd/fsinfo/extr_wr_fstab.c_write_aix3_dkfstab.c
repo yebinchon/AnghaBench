@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* d_fstype; char* d_dev; char* d_log; char* d_mountpt; char* d_opts; } ;
-typedef  TYPE_1__ disk_fs ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ disk_fs ;
+typedef int FILE ;
 
-/* Variables and functions */
- scalar_t__ NSTREQ (char*,char*,int) ; 
- scalar_t__ STREQ (char*,char*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*,char*,char*,char*,char*,char*,char*) ; 
+
+ scalar_t__ NSTREQ (char*,char*,int) ;
+ scalar_t__ STREQ (char*,char*) ;
+ int error (char*) ;
+ int fprintf (int *,char*,char*,char*,char*,char*,char*,char*,char*) ;
 
 __attribute__((used)) static void
 write_aix3_dkfstab(FILE *ef, disk_fs *dp)
@@ -30,11 +30,11 @@ write_aix3_dkfstab(FILE *ef, disk_fs *dp)
     error("aix 3 needs a log device for journalled filesystem (jfs) mounts");
 
   fprintf(ef, "\n%s:\n\tdev = %s\n\tvfs = %s\n\ttype = %s\n\tlog = %s\n\tvol = %s\n\topts = %s\n\tmount = true\n\tcheck = true\n\tfree = false\n",
-	  dp->d_mountpt,
-	  dp->d_dev,
-	  dp->d_fstype,
-	  dp->d_fstype,
-	  dp->d_log,
-	  dp->d_mountpt,
-	  dp->d_opts);
+   dp->d_mountpt,
+   dp->d_dev,
+   dp->d_fstype,
+   dp->d_fstype,
+   dp->d_log,
+   dp->d_mountpt,
+   dp->d_opts);
 }

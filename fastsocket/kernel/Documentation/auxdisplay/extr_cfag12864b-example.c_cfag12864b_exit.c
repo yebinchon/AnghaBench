@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CFAG12864B_SIZE ; 
- int /*<<< orphan*/  cfag12864b_fd ; 
- int /*<<< orphan*/  cfag12864b_mem ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int CFAG12864B_SIZE ;
+ int cfag12864b_fd ;
+ int cfag12864b_mem ;
+ int close (int ) ;
+ int munmap (int ,int ) ;
 
 __attribute__((used)) static void cfag12864b_exit(void)
 {
-	munmap(cfag12864b_mem, CFAG12864B_SIZE);
-	close(cfag12864b_fd);
+ munmap(cfag12864b_mem, CFAG12864B_SIZE);
+ close(cfag12864b_fd);
 }

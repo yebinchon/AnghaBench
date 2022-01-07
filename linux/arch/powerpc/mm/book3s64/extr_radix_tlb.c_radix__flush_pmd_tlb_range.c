@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vm_area_struct {int /*<<< orphan*/  vm_mm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMU_PAGE_2M ; 
- int /*<<< orphan*/  radix__flush_tlb_range_psize (int /*<<< orphan*/ ,unsigned long,unsigned long,int /*<<< orphan*/ ) ; 
+
+
+
+struct vm_area_struct {int vm_mm; } ;
+
+
+ int MMU_PAGE_2M ;
+ int radix__flush_tlb_range_psize (int ,unsigned long,unsigned long,int ) ;
 
 void radix__flush_pmd_tlb_range(struct vm_area_struct *vma,
-				unsigned long start, unsigned long end)
+    unsigned long start, unsigned long end)
 {
-	radix__flush_tlb_range_psize(vma->vm_mm, start, end, MMU_PAGE_2M);
+ radix__flush_tlb_range_psize(vma->vm_mm, start, end, MMU_PAGE_2M);
 }

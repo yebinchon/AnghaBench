@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ssize_t ;
-struct TYPE_2__ {int /*<<< orphan*/  buffer; int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; scalar_t__ nonblock; } ;
-typedef  TYPE_1__ sdl_audio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_LockAudio () ; 
- int /*<<< orphan*/  SDL_UnlockAudio () ; 
- int /*<<< orphan*/  fifo_write (int /*<<< orphan*/ ,char const*,size_t) ; 
- size_t fifo_write_avail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scond_wait (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t ssize_t ;
+struct TYPE_2__ {int buffer; int lock; int cond; scalar_t__ nonblock; } ;
+typedef TYPE_1__ sdl_audio_t ;
+
+
+ int SDL_LockAudio () ;
+ int SDL_UnlockAudio () ;
+ int fifo_write (int ,char const*,size_t) ;
+ size_t fifo_write_avail (int ) ;
+ int scond_wait (int ,int ) ;
+ int slock_lock (int ) ;
+ int slock_unlock (int ) ;
 
 __attribute__((used)) static ssize_t sdl_audio_write(void *data, const void *buf, size_t size)
 {
-   ssize_t ret      = 0;
+   ssize_t ret = 0;
    sdl_audio_t *sdl = (sdl_audio_t*)data;
 
    if (sdl->nonblock)
@@ -54,11 +54,11 @@ __attribute__((used)) static ssize_t sdl_audio_write(void *data, const void *buf
          if (avail == 0)
          {
             SDL_UnlockAudio();
-#ifdef HAVE_THREADS
-            slock_lock(sdl->lock);
-            scond_wait(sdl->cond, sdl->lock);
-            slock_unlock(sdl->lock);
-#endif
+
+
+
+
+
          }
          else
          {

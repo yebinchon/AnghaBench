@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int char_u ;
 
-/* Variables and functions */
- int STRLEN (int*) ; 
- int* alloc (int) ; 
- int /*<<< orphan*/  mch_memmove (int*,int*,int) ; 
+
+
+
+typedef int char_u ;
+
+
+ int STRLEN (int*) ;
+ int* alloc (int) ;
+ int mch_memmove (int*,int*,int) ;
 
 char_u *
 C2Pascal_save(char_u *Cstring)
 {
-    char_u  *PascalString;
-    int	    len;
+    char_u *PascalString;
+    int len;
 
-    if (Cstring == NULL)
-	return NULL;
+    if (Cstring == ((void*)0))
+ return ((void*)0);
 
     len = STRLEN(Cstring);
 
-    if (len > 255) /* Truncate if necessary */
-	len = 255;
+    if (len > 255)
+ len = 255;
 
     PascalString = alloc(len + 1);
-    if (PascalString != NULL)
+    if (PascalString != ((void*)0))
     {
-	mch_memmove(PascalString + 1, Cstring, len);
-	PascalString[0] = len;
+ mch_memmove(PascalString + 1, Cstring, len);
+ PascalString[0] = len;
     }
 
     return PascalString;

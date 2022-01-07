@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_16__ {int type; } ;
 struct TYPE_15__ {scalar_t__ package; void* propfailed; scalar_t__ record; } ;
 struct TYPE_14__ {int n; int len; int type; } ;
-typedef  int /*<<< orphan*/  STACK ;
-typedef  TYPE_1__ FORMSTR ;
-typedef  TYPE_2__ FORMAT ;
-typedef  void* BOOL ;
+typedef int STACK ;
+typedef TYPE_1__ FORMSTR ;
+typedef TYPE_2__ FORMAT ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- void* FALSE ; 
- int FORMAT_ESCAPE ; 
- int FORMAT_LITERAL ; 
- int FORMAT_NUMBER ; 
- void* TRUE ; 
- int /*<<< orphan*/ * deformat_index (TYPE_2__*,TYPE_1__*,int*) ; 
- int /*<<< orphan*/ * deformat_literal (TYPE_2__*,TYPE_1__*,void**,int*,int*) ; 
- int /*<<< orphan*/ * dup_formstr (TYPE_2__*,TYPE_1__*,int*) ; 
- scalar_t__ format_str_is_number (int /*<<< orphan*/ *) ; 
- TYPE_1__* msi_alloc_zero (int) ; 
- int /*<<< orphan*/  msi_free (TYPE_1__*) ; 
- TYPE_4__* stack_peek (int /*<<< orphan*/ *) ; 
- TYPE_1__* stack_pop (int /*<<< orphan*/ *) ; 
+
+ void* FALSE ;
+ int FORMAT_ESCAPE ;
+ int FORMAT_LITERAL ;
+ int FORMAT_NUMBER ;
+ void* TRUE ;
+ int * deformat_index (TYPE_2__*,TYPE_1__*,int*) ;
+ int * deformat_literal (TYPE_2__*,TYPE_1__*,void**,int*,int*) ;
+ int * dup_formstr (TYPE_2__*,TYPE_1__*,int*) ;
+ scalar_t__ format_str_is_number (int *) ;
+ TYPE_1__* msi_alloc_zero (int) ;
+ int msi_free (TYPE_1__*) ;
+ TYPE_4__* stack_peek (int *) ;
+ TYPE_1__* stack_pop (int *) ;
 
 __attribute__((used)) static WCHAR *replace_stack_prop( FORMAT *format, STACK *values,
                                   BOOL *propfound, BOOL *nonprop,

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t eventid_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t eventid_t ;
 struct TYPE_5__ {TYPE_1__** event_table; } ;
-typedef  TYPE_2__ event_target_t ;
-struct TYPE_4__ {size_t handler_cnt; int /*<<< orphan*/ ** handlers; } ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EventTarget ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
+typedef TYPE_2__ event_target_t ;
+struct TYPE_4__ {size_t handler_cnt; int ** handlers; } ;
+typedef int IDispatch ;
+typedef int HRESULT ;
+typedef int EventTarget ;
+typedef size_t DWORD ;
+typedef int BSTR ;
 
-/* Variables and functions */
- size_t EVENTID_LAST ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- size_t attr_to_eid (int /*<<< orphan*/ ) ; 
- TYPE_2__* get_event_target_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ size_t EVENTID_LAST ;
+ int FALSE ;
+ int IDispatch_Release (int *) ;
+ int S_OK ;
+ int WARN (char*) ;
+ size_t attr_to_eid (int ) ;
+ TYPE_2__* get_event_target_data (int *,int ) ;
 
 HRESULT detach_event(EventTarget *event_target, BSTR name, IDispatch *disp)
 {
@@ -53,7 +53,7 @@ HRESULT detach_event(EventTarget *event_target, BSTR name, IDispatch *disp)
     while(i < data->event_table[eid]->handler_cnt) {
         if(data->event_table[eid]->handlers[i] == disp) {
             IDispatch_Release(data->event_table[eid]->handlers[i]);
-            data->event_table[eid]->handlers[i] = NULL;
+            data->event_table[eid]->handlers[i] = ((void*)0);
         }
         i++;
     }

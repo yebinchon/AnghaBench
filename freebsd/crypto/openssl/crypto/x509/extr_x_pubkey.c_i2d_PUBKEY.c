@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_PUBKEY ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X509_PUBKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_PUBKEY_set (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int i2d_X509_PUBKEY (int /*<<< orphan*/ *,unsigned char**) ; 
+
+
+
+typedef int X509_PUBKEY ;
+typedef int EVP_PKEY ;
+
+
+ int X509_PUBKEY_free (int *) ;
+ int X509_PUBKEY_set (int **,int *) ;
+ int i2d_X509_PUBKEY (int *,unsigned char**) ;
 
 int i2d_PUBKEY(EVP_PKEY *a, unsigned char **pp)
 {
-    X509_PUBKEY *xpk = NULL;
+    X509_PUBKEY *xpk = ((void*)0);
     int ret;
     if (!a)
         return 0;

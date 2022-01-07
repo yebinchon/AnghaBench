@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * free_model; int /*<<< orphan*/ * execute_model; int /*<<< orphan*/ * load_model; } ;
-typedef  TYPE_1__ DNNModule ;
-typedef  int DNNBackendType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
-#define  DNN_NATIVE 129 
-#define  DNN_TF 128 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* av_malloc (int) ; 
- int /*<<< orphan*/  ff_dnn_execute_model_native ; 
- int /*<<< orphan*/  ff_dnn_execute_model_tf ; 
- int /*<<< orphan*/  ff_dnn_free_model_native ; 
- int /*<<< orphan*/  ff_dnn_free_model_tf ; 
- int /*<<< orphan*/  ff_dnn_load_model_native ; 
- int /*<<< orphan*/  ff_dnn_load_model_tf ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * free_model; int * execute_model; int * load_model; } ;
+typedef TYPE_1__ DNNModule ;
+typedef int DNNBackendType ;
+
+
+ int AV_LOG_ERROR ;
+
+
+ int av_freep (TYPE_1__**) ;
+ int av_log (int *,int ,char*) ;
+ TYPE_1__* av_malloc (int) ;
+ int ff_dnn_execute_model_native ;
+ int ff_dnn_execute_model_tf ;
+ int ff_dnn_free_model_native ;
+ int ff_dnn_free_model_tf ;
+ int ff_dnn_load_model_native ;
+ int ff_dnn_load_model_tf ;
 
 DNNModule *ff_get_dnn_module(DNNBackendType backend_type)
 {
@@ -35,29 +35,29 @@ DNNModule *ff_get_dnn_module(DNNBackendType backend_type)
 
     dnn_module = av_malloc(sizeof(DNNModule));
     if(!dnn_module){
-        return NULL;
+        return ((void*)0);
     }
 
     switch(backend_type){
-    case DNN_NATIVE:
+    case 129:
         dnn_module->load_model = &ff_dnn_load_model_native;
         dnn_module->execute_model = &ff_dnn_execute_model_native;
         dnn_module->free_model = &ff_dnn_free_model_native;
         break;
-    case DNN_TF:
-    #if (CONFIG_LIBTENSORFLOW == 1)
-        dnn_module->load_model = &ff_dnn_load_model_tf;
-        dnn_module->execute_model = &ff_dnn_execute_model_tf;
-        dnn_module->free_model = &ff_dnn_free_model_tf;
-    #else
+    case 128:
+
+
+
+
+
         av_freep(&dnn_module);
-        return NULL;
-    #endif
+        return ((void*)0);
+
         break;
     default:
-        av_log(NULL, AV_LOG_ERROR, "Module backend_type is not native or tensorflow\n");
+        av_log(((void*)0), AV_LOG_ERROR, "Module backend_type is not native or tensorflow\n");
         av_freep(&dnn_module);
-        return NULL;
+        return ((void*)0);
     }
 
     return dnn_module;

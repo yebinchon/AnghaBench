@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct tsens_sensor {int offset; int slope; } ;
 
-/* Variables and functions */
- int SLOPE_FACTOR ; 
+
+ int SLOPE_FACTOR ;
 
 __attribute__((used)) static inline int code_to_degc(u32 adc_code, const struct tsens_sensor *s)
 {
-	int degc, num, den;
+ int degc, num, den;
 
-	num = (adc_code * SLOPE_FACTOR) - s->offset;
-	den = s->slope;
+ num = (adc_code * SLOPE_FACTOR) - s->offset;
+ den = s->slope;
 
-	if (num > 0)
-		degc = num + (den / 2);
-	else if (num < 0)
-		degc = num - (den / 2);
-	else
-		degc = num;
+ if (num > 0)
+  degc = num + (den / 2);
+ else if (num < 0)
+  degc = num - (den / 2);
+ else
+  degc = num;
 
-	degc /= den;
+ degc /= den;
 
-	return degc;
+ return degc;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct linenoiseState {char* buf; int len; int pos; int /*<<< orphan*/  buflen; int /*<<< orphan*/  ifd; } ;
-struct TYPE_4__ {scalar_t__ len; char** cvec; int /*<<< orphan*/ * member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ linenoiseCompletions ;
 
-/* Variables and functions */
- int /*<<< orphan*/  completionCallback (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  freeCompletions (TYPE_1__*) ; 
- int /*<<< orphan*/  linenoiseBeep () ; 
- int read (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  refreshLine (struct linenoiseState*) ; 
- int snprintf (char*,int /*<<< orphan*/ ,char*,char*) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct linenoiseState {char* buf; int len; int pos; int buflen; int ifd; } ;
+struct TYPE_4__ {scalar_t__ len; char** cvec; int * member_1; int member_0; } ;
+typedef TYPE_1__ linenoiseCompletions ;
+
+
+ int completionCallback (char*,TYPE_1__*) ;
+ int freeCompletions (TYPE_1__*) ;
+ int linenoiseBeep () ;
+ int read (int ,char*,int) ;
+ int refreshLine (struct linenoiseState*) ;
+ int snprintf (char*,int ,char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int completeLine(struct linenoiseState *ls) {
-    linenoiseCompletions lc = { 0, NULL };
+    linenoiseCompletions lc = { 0, ((void*)0) };
     int nread, nwritten;
     char c = 0;
 
@@ -36,7 +36,7 @@ __attribute__((used)) static int completeLine(struct linenoiseState *ls) {
         size_t stop = 0, i = 0;
 
         while(!stop) {
-            /* Show completion or original buffer */
+
             if (i < lc.len) {
                 struct linenoiseState saved = *ls;
 
@@ -57,17 +57,17 @@ __attribute__((used)) static int completeLine(struct linenoiseState *ls) {
             }
 
             switch(c) {
-                case 9: /* tab */
+                case 9:
                     i = (i+1) % (lc.len+1);
                     if (i == lc.len) linenoiseBeep();
                     break;
-                case 27: /* escape */
-                    /* Re-show original buffer */
+                case 27:
+
                     if (i < lc.len) refreshLine(ls);
                     stop = 1;
                     break;
                 default:
-                    /* Update buffer and return */
+
                     if (i < lc.len) {
                         nwritten = snprintf(ls->buf,ls->buflen,"%s",lc.cvec[i]);
                         ls->len = ls->pos = nwritten;
@@ -79,5 +79,5 @@ __attribute__((used)) static int completeLine(struct linenoiseState *ls) {
     }
 
     freeCompletions(&lc);
-    return c; /* Return last read character */
+    return c;
 }

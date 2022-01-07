@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int valid; int ret; long plen; int pclass; int ptag; int hdrlen; } ;
-typedef  TYPE_1__ ASN1_TLC ;
+typedef TYPE_1__ ASN1_TLC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_CHECK_TLEN ; 
- int /*<<< orphan*/  ASN1_R_BAD_OBJECT_HEADER ; 
- int /*<<< orphan*/  ASN1_R_TOO_LONG ; 
- int /*<<< orphan*/  ASN1_R_WRONG_TAG ; 
- int ASN1_get_object (unsigned char const**,long*,int*,int*,long) ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int V_ASN1_CONSTRUCTED ; 
- int /*<<< orphan*/  asn1_tlc_clear (TYPE_1__*) ; 
+
+ int ASN1_F_ASN1_CHECK_TLEN ;
+ int ASN1_R_BAD_OBJECT_HEADER ;
+ int ASN1_R_TOO_LONG ;
+ int ASN1_R_WRONG_TAG ;
+ int ASN1_get_object (unsigned char const**,long*,int*,int*,long) ;
+ int ASN1err (int ,int ) ;
+ int V_ASN1_CONSTRUCTED ;
+ int asn1_tlc_clear (TYPE_1__*) ;
 
 __attribute__((used)) static int asn1_check_tlen(long *olen, int *otag, unsigned char *oclass,
                            char *inf, char *cst,
@@ -51,10 +51,10 @@ __attribute__((used)) static int asn1_check_tlen(long *olen, int *otag, unsigned
             ctx->ptag = ptag;
             ctx->hdrlen = p - q;
             ctx->valid = 1;
-            /*
-             * If definite length, and no error, length + header can't exceed
-             * total amount of data available.
-             */
+
+
+
+
             if (!(i & 0x81) && ((plen + ctx->hdrlen) > len)) {
                 ASN1err(ASN1_F_ASN1_CHECK_TLEN, ASN1_R_TOO_LONG);
                 asn1_tlc_clear(ctx);
@@ -70,19 +70,19 @@ __attribute__((used)) static int asn1_check_tlen(long *olen, int *otag, unsigned
     }
     if (exptag >= 0) {
         if ((exptag != ptag) || (expclass != pclass)) {
-            /*
-             * If type is OPTIONAL, not an error: indicate missing type.
-             */
+
+
+
             if (opt)
                 return -1;
             asn1_tlc_clear(ctx);
             ASN1err(ASN1_F_ASN1_CHECK_TLEN, ASN1_R_WRONG_TAG);
             return 0;
         }
-        /*
-         * We have a tag and class match: assume we are going to do something
-         * with it
-         */
+
+
+
+
         asn1_tlc_clear(ctx);
     }
 

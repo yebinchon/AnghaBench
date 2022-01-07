@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int type; int i; int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ obj_attribute ;
-typedef  int /*<<< orphan*/  bfd_byte ;
 
-/* Variables and functions */
- scalar_t__ is_default_attr (TYPE_1__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * write_uleb128 (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int type; int i; int s; } ;
+typedef TYPE_1__ obj_attribute ;
+typedef int bfd_byte ;
+
+
+ scalar_t__ is_default_attr (TYPE_1__*) ;
+ int memcpy (int *,int ,int) ;
+ int strlen (int ) ;
+ int * write_uleb128 (int *,int) ;
 
 __attribute__((used)) static bfd_byte *
 write_obj_attribute (bfd_byte *p, int tag, obj_attribute *attr)
 {
-  /* Suppress default entries.  */
+
   if (is_default_attr (attr))
     return p;
 

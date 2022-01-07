@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HEVCDSPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_add_res (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ff_hevc_dsp_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  report (char*) ; 
+
+
+
+typedef int HEVCDSPContext ;
+
+
+ int check_add_res (int ,int) ;
+ int ff_hevc_dsp_init (int *,int) ;
+ int report (char*) ;
 
 void checkasm_check_hevc_add_res(void)
 {

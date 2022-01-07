@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int LONG ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GWL_EXSTYLE ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GW_CHILD ; 
- int /*<<< orphan*/  GW_HWNDFIRST ; 
- int /*<<< orphan*/  GW_HWNDLAST ; 
- int /*<<< orphan*/  GW_HWNDNEXT ; 
- int /*<<< orphan*/  GW_HWNDPREV ; 
- scalar_t__ GetParent (scalar_t__) ; 
- scalar_t__ GetWindow (scalar_t__,int /*<<< orphan*/ ) ; 
- int GetWindowLongPtrA (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ IsChild (scalar_t__,scalar_t__) ; 
- int WS_DISABLED ; 
- int WS_EX_CONTROLPARENT ; 
- int WS_TABSTOP ; 
- int WS_VISIBLE ; 
+
+
+
+typedef int UINT ;
+typedef int LONG ;
+typedef scalar_t__ HWND ;
+typedef int BOOL ;
+
+
+ int GWL_EXSTYLE ;
+ int GWL_STYLE ;
+ int GW_CHILD ;
+ int GW_HWNDFIRST ;
+ int GW_HWNDLAST ;
+ int GW_HWNDNEXT ;
+ int GW_HWNDPREV ;
+ scalar_t__ GetParent (scalar_t__) ;
+ scalar_t__ GetWindow (scalar_t__,int ) ;
+ int GetWindowLongPtrA (scalar_t__,int ) ;
+ scalar_t__ IsChild (scalar_t__,scalar_t__) ;
+ int WS_DISABLED ;
+ int WS_EX_CONTROLPARENT ;
+ int WS_TABSTOP ;
+ int WS_VISIBLE ;
 
 __attribute__((used)) static HWND DIALOG_GetNextTabItem( HWND hwndMain, HWND hwndDlg, HWND hwndCtrl, BOOL fPrevious )
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static HWND DIALOG_GetNextTabItem( HWND hwndMain, HWND hwn
         if(!hChildFirst)
         {
             if(GetParent(hwndCtrl) != hwndMain)
-                /* i.e. if we are not at the top level of the recursion */
+
                 hChildFirst = GetWindow(GetParent(hwndCtrl),wndSearch);
             else
                 hChildFirst = GetWindow(hwndCtrl, fPrevious ? GW_HWNDLAST : GW_HWNDFIRST);
@@ -65,7 +65,7 @@ __attribute__((used)) static HWND DIALOG_GetNextTabItem( HWND hwndMain, HWND hwn
         if( (exStyle & WS_EX_CONTROLPARENT) && (dsStyle & WS_VISIBLE) && !(dsStyle & WS_DISABLED))
         {
             HWND retWnd;
-            retWnd = DIALOG_GetNextTabItem(hwndMain,hChildFirst,NULL,fPrevious );
+            retWnd = DIALOG_GetNextTabItem(hwndMain,hChildFirst,((void*)0),fPrevious );
             if (retWnd) return (retWnd);
         }
         else if( (dsStyle & WS_TABSTOP) && (dsStyle & WS_VISIBLE) && !(dsStyle & WS_DISABLED))
@@ -85,7 +85,7 @@ __attribute__((used)) static HWND DIALOG_GetNextTabItem( HWND hwndMain, HWND hwn
             hParent = GetParent(hParent);
         }
         if(!retWnd)
-            retWnd = DIALOG_GetNextTabItem(hwndMain,hwndMain,NULL,fPrevious );
+            retWnd = DIALOG_GetNextTabItem(hwndMain,hwndMain,((void*)0),fPrevious );
     }
     return retWnd ? retWnd : hwndCtrl;
 }

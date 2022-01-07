@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ib_event {int /*<<< orphan*/  event; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISER_ERR (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct ib_event {int event; } ;
+
+
+ int ISER_ERR (char*,int ) ;
 
 __attribute__((used)) static void
 iser_cq_event_callback(struct ib_event *cause, void *context)
 {
-	ISER_ERR("got cq event %d", cause->event);
+ ISER_ERR("got cq event %d", cause->event);
 }

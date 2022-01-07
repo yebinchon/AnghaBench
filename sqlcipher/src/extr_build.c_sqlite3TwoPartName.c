@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int iDb; scalar_t__ busy; } ;
 struct TYPE_13__ {int mDbFlags; TYPE_1__ init; } ;
-typedef  TYPE_2__ sqlite3 ;
+typedef TYPE_2__ sqlite3 ;
 struct TYPE_14__ {scalar_t__ n; } ;
-typedef  TYPE_3__ Token ;
+typedef TYPE_3__ Token ;
 struct TYPE_15__ {TYPE_2__* db; } ;
-typedef  TYPE_4__ Parse ;
+typedef TYPE_4__ Parse ;
 
-/* Variables and functions */
- int DBFLAG_Vacuum ; 
- scalar_t__ IN_RENAME_OBJECT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_4__*,char*,...) ; 
- int sqlite3FindDb (TYPE_2__*,TYPE_3__*) ; 
+
+ int DBFLAG_Vacuum ;
+ scalar_t__ IN_RENAME_OBJECT ;
+ int assert (int) ;
+ int sqlite3ErrorMsg (TYPE_4__*,char*,...) ;
+ int sqlite3FindDb (TYPE_2__*,TYPE_3__*) ;
 
 int sqlite3TwoPartName(
-  Parse *pParse,      /* Parsing and code generating context */
-  Token *pName1,      /* The "xxx" in the name "xxx.yyy" or "xxx" */
-  Token *pName2,      /* The "yyy" in the name "xxx.yyy" */
-  Token **pUnqual     /* Write the unqualified object name here */
+  Parse *pParse,
+  Token *pName1,
+  Token *pName2,
+  Token **pUnqual
 ){
-  int iDb;                    /* Database holding the object */
+  int iDb;
   sqlite3 *db = pParse->db;
 
   assert( pName2!=0 );

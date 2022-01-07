@@ -1,57 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT8 ;
 
-/* Variables and functions */
-#define  BTA_AG_SCO_CLOSE_OP_ST 138 
-#define  BTA_AG_SCO_CLOSE_XFER_ST 137 
-#define  BTA_AG_SCO_CLOSING_ST 136 
-#define  BTA_AG_SCO_CODEC_ST 135 
-#define  BTA_AG_SCO_LISTEN_ST 134 
-#define  BTA_AG_SCO_OPENING_ST 133 
-#define  BTA_AG_SCO_OPEN_CL_ST 132 
-#define  BTA_AG_SCO_OPEN_ST 131 
-#define  BTA_AG_SCO_OPEN_XFER_ST 130 
-#define  BTA_AG_SCO_SHUTDOWN_ST 129 
-#define  BTA_AG_SCO_SHUTTING_ST 128 
 
+
+
+typedef int UINT8 ;
 __attribute__((used)) static char *bta_ag_sco_state_str(UINT8 state)
 {
     switch (state)
     {
-        case BTA_AG_SCO_SHUTDOWN_ST:
+        case 129:
             return "Shutdown";
-        case BTA_AG_SCO_LISTEN_ST:
+        case 134:
             return "Listening";
-#if (BTM_WBS_INCLUDED == TRUE )
-        case BTA_AG_SCO_CODEC_ST:
+
+        case 135:
             return "Codec Negotiation";
-#endif
-        case BTA_AG_SCO_OPENING_ST:
+
+        case 133:
             return "Opening";
-        case BTA_AG_SCO_OPEN_CL_ST:
+        case 132:
             return "Open while closing";
-        case BTA_AG_SCO_OPEN_XFER_ST:
+        case 130:
             return "Opening while Transferring";
-        case BTA_AG_SCO_OPEN_ST:
+        case 131:
             return "Open";
-        case BTA_AG_SCO_CLOSING_ST:
+        case 136:
             return "Closing";
-        case BTA_AG_SCO_CLOSE_OP_ST:
+        case 138:
             return "Close while Opening";
-        case BTA_AG_SCO_CLOSE_XFER_ST:
+        case 137:
             return "Close while Transferring";
-        case BTA_AG_SCO_SHUTTING_ST:
+        case 128:
             return "Shutting Down";
         default:
             return "Unknown SCO State";

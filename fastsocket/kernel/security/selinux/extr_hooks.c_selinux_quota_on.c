@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dentry {int dummy; } ;
 struct cred {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILE__QUOTAON ; 
- struct cred* current_cred () ; 
- int dentry_has_perm (struct cred const*,int /*<<< orphan*/ *,struct dentry*,int /*<<< orphan*/ ) ; 
+
+ int FILE__QUOTAON ;
+ struct cred* current_cred () ;
+ int dentry_has_perm (struct cred const*,int *,struct dentry*,int ) ;
 
 __attribute__((used)) static int selinux_quota_on(struct dentry *dentry)
 {
-	const struct cred *cred = current_cred();
+ const struct cred *cred = current_cred();
 
-	return dentry_has_perm(cred, NULL, dentry, FILE__QUOTAON);
+ return dentry_has_perm(cred, ((void*)0), dentry, FILE__QUOTAON);
 }

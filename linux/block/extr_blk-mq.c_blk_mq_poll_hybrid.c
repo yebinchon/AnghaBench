@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct request_queue {scalar_t__ poll_nsec; } ;
 struct request {int dummy; } ;
-struct blk_mq_hw_ctx {int /*<<< orphan*/  sched_tags; int /*<<< orphan*/  tags; } ;
-typedef  int /*<<< orphan*/  blk_qc_t ;
+struct blk_mq_hw_ctx {int sched_tags; int tags; } ;
+typedef int blk_qc_t ;
 
-/* Variables and functions */
- scalar_t__ BLK_MQ_POLL_CLASSIC ; 
- int blk_mq_poll_hybrid_sleep (struct request_queue*,struct blk_mq_hw_ctx*,struct request*) ; 
- struct request* blk_mq_tag_to_rq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_qc_t_is_internal (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_qc_t_to_tag (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BLK_MQ_POLL_CLASSIC ;
+ int blk_mq_poll_hybrid_sleep (struct request_queue*,struct blk_mq_hw_ctx*,struct request*) ;
+ struct request* blk_mq_tag_to_rq (int ,int ) ;
+ int blk_qc_t_is_internal (int ) ;
+ int blk_qc_t_to_tag (int ) ;
 
 __attribute__((used)) static bool blk_mq_poll_hybrid(struct request_queue *q,
-			       struct blk_mq_hw_ctx *hctx, blk_qc_t cookie)
+          struct blk_mq_hw_ctx *hctx, blk_qc_t cookie)
 {
-	struct request *rq;
+ struct request *rq;
 
-	if (q->poll_nsec == BLK_MQ_POLL_CLASSIC)
-		return false;
+ if (q->poll_nsec == BLK_MQ_POLL_CLASSIC)
+  return 0;
 
-	if (!blk_qc_t_is_internal(cookie))
-		rq = blk_mq_tag_to_rq(hctx->tags, blk_qc_t_to_tag(cookie));
-	else {
-		rq = blk_mq_tag_to_rq(hctx->sched_tags, blk_qc_t_to_tag(cookie));
-		/*
-		 * With scheduling, if the request has completed, we'll
-		 * get a NULL return here, as we clear the sched tag when
-		 * that happens. The request still remains valid, like always,
-		 * so we should be safe with just the NULL check.
-		 */
-		if (!rq)
-			return false;
-	}
+ if (!blk_qc_t_is_internal(cookie))
+  rq = blk_mq_tag_to_rq(hctx->tags, blk_qc_t_to_tag(cookie));
+ else {
+  rq = blk_mq_tag_to_rq(hctx->sched_tags, blk_qc_t_to_tag(cookie));
 
-	return blk_mq_poll_hybrid_sleep(q, hctx, rq);
+
+
+
+
+
+  if (!rq)
+   return 0;
+ }
+
+ return blk_mq_poll_hybrid_sleep(q, hctx, rq);
 }

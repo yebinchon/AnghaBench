@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  cxx_pretty_printer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_NAME (int /*<<< orphan*/ ) ; 
-#define  PARM_DECL 130 
-#define  TEMPLATE_DECL 129 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
-#define  TYPE_DECL 128 
- int /*<<< orphan*/  pp_cxx_identifier (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pp_cxx_parameter_declaration (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_tree_identifier (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_unsupported_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int cxx_pretty_printer ;
+
+
+ int DECL_NAME (int ) ;
+
+
+ int TREE_CODE (int ) ;
+ int TREE_VALUE (int ) ;
+
+ int pp_cxx_identifier (int *,char*) ;
+ int pp_cxx_parameter_declaration (int *,int ) ;
+ int pp_cxx_tree_identifier (int *,int ) ;
+ int pp_unsupported_tree (int *,int ) ;
 
 __attribute__((used)) static void
 pp_cxx_template_parameter (cxx_pretty_printer *pp, tree t)
 {
-  tree parameter =  TREE_VALUE (t);
+  tree parameter = TREE_VALUE (t);
   switch (TREE_CODE (parameter))
     {
-    case TYPE_DECL:
+    case 128:
       pp_cxx_identifier (pp, "class");
       if (DECL_NAME (parameter))
-	pp_cxx_tree_identifier (pp, DECL_NAME (parameter));
-      /* FIXME: Chech if we should print also default argument.  */
+ pp_cxx_tree_identifier (pp, DECL_NAME (parameter));
+
       break;
 
-    case PARM_DECL:
+    case 130:
       pp_cxx_parameter_declaration (pp, parameter);
       break;
 
-    case TEMPLATE_DECL:
+    case 129:
       break;
 
     default:

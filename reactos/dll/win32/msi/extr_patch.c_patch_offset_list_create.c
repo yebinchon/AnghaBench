@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct patch_offset_list {int min; scalar_t__ max; scalar_t__ count; int /*<<< orphan*/  patches; int /*<<< orphan*/  files; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- struct patch_offset_list* msi_alloc (int) ; 
+
+
+
+struct patch_offset_list {int min; scalar_t__ max; scalar_t__ count; int patches; int files; } ;
+
+
+ int list_init (int *) ;
+ struct patch_offset_list* msi_alloc (int) ;
 
 __attribute__((used)) static struct patch_offset_list *patch_offset_list_create( void )
 {

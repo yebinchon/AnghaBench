@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int cfgType; scalar_t__ valType; char* option; scalar_t__ ptr; } ;
-typedef  TYPE_1__ SGlobalConfig ;
+typedef TYPE_1__ SGlobalConfig ;
 
-/* Variables and functions */
- int TSDB_CFG_CTYPE_B_LOG ; 
- scalar_t__ TSDB_CFG_VTYPE_INT ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  pError (char*) ; 
- int /*<<< orphan*/  pPrint (char*,...) ; 
- int /*<<< orphan*/  paGetToken (char*,char**,int*) ; 
- int /*<<< orphan*/  startMonitor () ; 
- int /*<<< orphan*/  stopMonitor () ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
- int /*<<< orphan*/  stub1 () ; 
- int /*<<< orphan*/  stub2 () ; 
- int /*<<< orphan*/  taosLogSqlFp (char*) ; 
- int /*<<< orphan*/  taosResetLogFile () ; 
- TYPE_1__* tsGlobalConfig ; 
- int tsGlobalConfigNum ; 
- int /*<<< orphan*/  tsPrintGlobalConfig () ; 
- int /*<<< orphan*/  tsSetAllDebugFlag () ; 
+
+ int TSDB_CFG_CTYPE_B_LOG ;
+ scalar_t__ TSDB_CFG_VTYPE_INT ;
+ int atoi (char*) ;
+ int pError (char*) ;
+ int pPrint (char*,...) ;
+ int paGetToken (char*,char**,int*) ;
+ int startMonitor () ;
+ int stopMonitor () ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
+ int stub1 () ;
+ int stub2 () ;
+ int taosLogSqlFp (char*) ;
+ int taosResetLogFile () ;
+ TYPE_1__* tsGlobalConfig ;
+ int tsGlobalConfigNum ;
+ int tsPrintGlobalConfig () ;
+ int tsSetAllDebugFlag () ;
 
 int tsCfgDynamicOptions(char *msg) {
   char *option, *value;
-  int   olen, vlen, code = 0;
-  int   vint = 0;
+  int olen, vlen, code = 0;
+  int vint = 0;
 
   paGetToken(msg, &option, &olen);
   if (olen == 0) return 0;
@@ -69,7 +69,7 @@ int tsCfgDynamicOptions(char *msg) {
     if (strncasecmp(cfg->option, "debugFlag", olen) == 0) {
       tsSetAllDebugFlag();
     }
-    
+
     return code;
   }
 
@@ -88,7 +88,7 @@ int tsCfgDynamicOptions(char *msg) {
       code = 169;
     }
   } else {
-    code = 169;  // INVALID_OPTION
+    code = 169;
   }
 
   return code;

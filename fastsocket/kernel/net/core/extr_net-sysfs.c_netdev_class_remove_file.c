@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct class_attribute {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  class_remove_file (int /*<<< orphan*/ *,struct class_attribute*) ; 
- int /*<<< orphan*/  net_class ; 
+
+ int class_remove_file (int *,struct class_attribute*) ;
+ int net_class ;
 
 void netdev_class_remove_file(struct class_attribute *class_attr)
 {
-	class_remove_file(&net_class, class_attr);
+ class_remove_file(&net_class, class_attr);
 }

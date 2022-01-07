@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int arc4random () ; 
+ int arc4random () ;
 
 __attribute__((used)) static void
 getseed(char *seed, int seedsize, unsigned char *pass)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < seedsize; i++) {
-		seed[i] = (arc4random() & 0xff) ^ pass[i % 8];
-	}
+ for (i = 0; i < seedsize; i++) {
+  seed[i] = (arc4random() & 0xff) ^ pass[i % 8];
+ }
 }

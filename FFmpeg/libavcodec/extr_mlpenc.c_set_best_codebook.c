@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_23__ {scalar_t__ lsb_bits; int /*<<< orphan*/  offset; } ;
-struct TYPE_22__ {unsigned int codebook; scalar_t__ huff_lsbs; int /*<<< orphan*/  huff_offset; } ;
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+struct TYPE_23__ {scalar_t__ lsb_bits; int offset; } ;
+struct TYPE_22__ {unsigned int codebook; scalar_t__ huff_lsbs; int huff_offset; } ;
 struct TYPE_21__ {scalar_t__* quant_step_size; } ;
 struct TYPE_20__ {unsigned int number_of_subblocks; TYPE_7__*** best_offset; TYPE_1__* avctx; TYPE_6__* seq_channel_params; TYPE_2__* cur_restart_header; TYPE_5__* cur_decoding_params; } ;
 struct TYPE_19__ {char* path; int bitcount; } ;
 struct TYPE_18__ {unsigned int min_channel; unsigned int max_channel; } ;
 struct TYPE_17__ {unsigned int channels; } ;
-typedef  TYPE_2__ RestartHeader ;
-typedef  TYPE_3__ PathCounter ;
-typedef  TYPE_4__ MLPEncodeContext ;
-typedef  TYPE_5__ DecodingParams ;
-typedef  TYPE_6__ ChannelParams ;
-typedef  TYPE_7__ BestOffset ;
+typedef TYPE_2__ RestartHeader ;
+typedef TYPE_3__ PathCounter ;
+typedef TYPE_4__ MLPEncodeContext ;
+typedef TYPE_5__ DecodingParams ;
+typedef TYPE_6__ ChannelParams ;
+typedef TYPE_7__ BestOffset ;
 
-/* Variables and functions */
- void* INT_MAX ; 
- int NUM_CODEBOOKS ; 
- unsigned int ZERO_PATH ; 
- int /*<<< orphan*/  av_strlcat (char*,int /*<<< orphan*/ ,int) ; 
- int best_codebook_path_cost (TYPE_4__*,unsigned int,TYPE_3__*,unsigned int) ; 
- int /*<<< orphan*/  clear_path_counter (TYPE_3__*) ; 
- scalar_t__ compare_best_offset (TYPE_7__*,TYPE_7__*) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,TYPE_3__*,int) ; 
- int /*<<< orphan*/ * path_counter_codebook ; 
- TYPE_7__* restart_best_offset ; 
+
+ void* INT_MAX ;
+ int NUM_CODEBOOKS ;
+ unsigned int ZERO_PATH ;
+ int av_strlcat (char*,int ,int) ;
+ int best_codebook_path_cost (TYPE_4__*,unsigned int,TYPE_3__*,unsigned int) ;
+ int clear_path_counter (TYPE_3__*) ;
+ scalar_t__ compare_best_offset (TYPE_7__*,TYPE_7__*) ;
+ int memcpy (TYPE_3__*,TYPE_3__*,int) ;
+ int * path_counter_codebook ;
+ TYPE_7__* restart_best_offset ;
 
 __attribute__((used)) static void set_best_codebook(MLPEncodeContext *ctx)
 {
@@ -71,10 +71,10 @@ __attribute__((used)) static void set_best_codebook(MLPEncodeContext *ctx)
                 for (last_best = 0; last_best < 2; last_best++) {
                     PathCounter *dst_path = &path_counter[codebook];
                     PathCounter *src_path;
-                    int  temp_bitcount;
+                    int temp_bitcount;
 
-                    /* First test last path with same headers,
-                     * then with last best. */
+
+
                     if (last_best) {
                         src_path = &path_counter[NUM_CODEBOOKS];
                     } else {
@@ -108,7 +108,7 @@ __attribute__((used)) static void set_best_codebook(MLPEncodeContext *ctx)
 
         best_path = path_counter[NUM_CODEBOOKS].path + 1;
 
-        /* Update context. */
+
         for (index = 0; index < ctx->number_of_subblocks; index++) {
             ChannelParams *cp = ctx->seq_channel_params + index*(ctx->avctx->channels) + channel;
 
@@ -116,8 +116,8 @@ __attribute__((used)) static void set_best_codebook(MLPEncodeContext *ctx)
             cur_bo = &ctx->best_offset[index][channel][best_codebook];
 
             cp->huff_offset = cur_bo->offset;
-            cp->huff_lsbs   = cur_bo->lsb_bits + dp->quant_step_size[channel];
-            cp->codebook    = best_codebook;
+            cp->huff_lsbs = cur_bo->lsb_bits + dp->quant_step_size[channel];
+            cp->codebook = best_codebook;
         }
     }
 }

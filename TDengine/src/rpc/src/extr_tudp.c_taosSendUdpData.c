@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_8__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_8__ {int s_addr; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  destAdd ;
-struct TYPE_10__ {int totalLen; int /*<<< orphan*/  msgHdr; int /*<<< orphan*/  timer; } ;
-struct TYPE_9__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  fd; int /*<<< orphan*/  tmrCtrl; int /*<<< orphan*/ * hash; int /*<<< orphan*/  localPort; int /*<<< orphan*/  label; struct TYPE_9__* signature; } ;
-typedef  TYPE_2__ SUdpConn ;
-typedef  TYPE_3__ SUdpBuf ;
+typedef int destAdd ;
+struct TYPE_10__ {int totalLen; int msgHdr; int timer; } ;
+struct TYPE_9__ {int mutex; int fd; int tmrCtrl; int * hash; int localPort; int label; struct TYPE_9__* signature; } ;
+typedef TYPE_2__ SUdpConn ;
+typedef TYPE_3__ SUdpBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ RPC_MAX_UDP_PKTS ; 
- int RPC_MAX_UDP_SIZE ; 
- int /*<<< orphan*/  RPC_UDP_BUF_TIME ; 
- int /*<<< orphan*/  htons (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ sendto (int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int /*<<< orphan*/  tTrace (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,short,int,int,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  taosAddIpHash (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,short) ; 
- TYPE_3__* taosCreateUdpBuf (TYPE_2__*,int /*<<< orphan*/ ,short) ; 
- scalar_t__ taosGetIpHash (int /*<<< orphan*/ *,int /*<<< orphan*/ ,short) ; 
- scalar_t__ taosMsgHdrSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosProcessUdpBufTimer ; 
- int /*<<< orphan*/  taosSendMsgHdr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int taosSendPacketViaTcp (int /*<<< orphan*/ ,short,char*,int,void*) ; 
- int /*<<< orphan*/  taosSetMsgHdrData (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  taosTmrReset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int AF_INET ;
+ scalar_t__ RPC_MAX_UDP_PKTS ;
+ int RPC_MAX_UDP_SIZE ;
+ int RPC_UDP_BUF_TIME ;
+ int htons (int ) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ sendto (int ,char*,size_t,int ,struct sockaddr*,int) ;
+ int tTrace (char*,int ,int ,short,int,int,int ,void*) ;
+ int taosAddIpHash (int *,TYPE_3__*,int ,short) ;
+ TYPE_3__* taosCreateUdpBuf (TYPE_2__*,int ,short) ;
+ scalar_t__ taosGetIpHash (int *,int ,short) ;
+ scalar_t__ taosMsgHdrSize (int ) ;
+ int taosProcessUdpBufTimer ;
+ int taosSendMsgHdr (int ,int ) ;
+ int taosSendPacketViaTcp (int ,short,char*,int,void*) ;
+ int taosSetMsgHdrData (int ,char*,int) ;
+ int taosTmrReset (int ,int ,TYPE_3__*,int ,int *) ;
 
 int taosSendUdpData(uint32_t ip, short port, char *data, int dataLen, void *chandle) {
   SUdpConn *pConn = (SUdpConn *)chandle;
   SUdpBuf * pBuf;
 
-  if (pConn == NULL || pConn->signature != pConn) return -1;
+  if (pConn == ((void*)0) || pConn->signature != pConn) return -1;
 
   if (dataLen >= RPC_MAX_UDP_SIZE) return taosSendPacketViaTcp(ip, port, data, dataLen, chandle);
 
-  if (pConn->hash == NULL) {
+  if (pConn->hash == ((void*)0)) {
     struct sockaddr_in destAdd;
     memset(&destAdd, 0, sizeof(destAdd));
     destAdd.sin_family = AF_INET;
@@ -70,7 +70,7 @@ int taosSendUdpData(uint32_t ip, short port, char *data, int dataLen, void *chan
   pthread_mutex_lock(&pConn->mutex);
 
   pBuf = (SUdpBuf *)taosGetIpHash(pConn->hash, ip, port);
-  if (pBuf == NULL) {
+  if (pBuf == ((void*)0)) {
     pBuf = taosCreateUdpBuf(pConn, ip, port);
     taosAddIpHash(pConn->hash, pBuf, ip, port);
   }

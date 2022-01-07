@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  Tox ;
 
-/* Variables and functions */
- scalar_t__ memcmp (int /*<<< orphan*/  const*,char*,int) ; 
- int /*<<< orphan*/  num_recv ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int Tox ;
+
+
+ scalar_t__ memcmp (int const*,char*,int) ;
+ int num_recv ;
 
 void print_group_message(Tox *tox, int groupnumber, int peernumber, const uint8_t *message, uint16_t length,
                          void *userdata)

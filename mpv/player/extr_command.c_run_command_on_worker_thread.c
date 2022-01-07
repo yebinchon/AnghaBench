@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_cmd_ctx {TYPE_2__* cmd; struct MPContext* mpctx; } ;
 struct MPContext {int outstanding_async; } ;
 struct TYPE_4__ {TYPE_1__* def; } ;
-struct TYPE_3__ {int exec_async; int /*<<< orphan*/  (* handler ) (struct mp_cmd_ctx*) ;} ;
+struct TYPE_3__ {int exec_async; int (* handler ) (struct mp_cmd_ctx*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_cmd_ctx_complete (struct mp_cmd_ctx*) ; 
- int /*<<< orphan*/  mp_core_lock (struct MPContext*) ; 
- int /*<<< orphan*/  mp_core_unlock (struct MPContext*) ; 
- scalar_t__ mp_is_shutting_down (struct MPContext*) ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- int /*<<< orphan*/  stub1 (struct mp_cmd_ctx*) ; 
+
+ int mp_cmd_ctx_complete (struct mp_cmd_ctx*) ;
+ int mp_core_lock (struct MPContext*) ;
+ int mp_core_unlock (struct MPContext*) ;
+ scalar_t__ mp_is_shutting_down (struct MPContext*) ;
+ int mp_wakeup_core (struct MPContext*) ;
+ int stub1 (struct mp_cmd_ctx*) ;
 
 __attribute__((used)) static void run_command_on_worker_thread(void *p)
 {

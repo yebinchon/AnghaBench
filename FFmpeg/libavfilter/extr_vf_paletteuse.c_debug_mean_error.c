@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
 struct TYPE_7__ {size_t** data; int* linesize; int width; int height; } ;
-struct TYPE_6__ {int* palette; unsigned int total_mean_err; int /*<<< orphan*/  trans_thresh; } ;
-typedef  TYPE_1__ PaletteUseContext ;
-typedef  TYPE_2__ AVFrame ;
+struct TYPE_6__ {int* palette; unsigned int total_mean_err; int trans_thresh; } ;
+typedef TYPE_1__ PaletteUseContext ;
+typedef TYPE_2__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,unsigned int,float const) ; 
- scalar_t__ diff (size_t const*,size_t const*,int /*<<< orphan*/ ) ; 
+
+ int AV_LOG_INFO ;
+ int av_log (int *,int ,char*,unsigned int,float const) ;
+ scalar_t__ diff (size_t const*,size_t const*,int ) ;
 
 __attribute__((used)) static void debug_mean_error(PaletteUseContext *s, const AVFrame *in1,
                              const AVFrame *in2, int frame_count)
@@ -30,7 +30,7 @@ __attribute__((used)) static void debug_mean_error(PaletteUseContext *s, const A
     int x, y;
     const uint32_t *palette = s->palette;
     uint32_t *src1 = (uint32_t *)in1->data[0];
-    uint8_t  *src2 =             in2->data[0];
+    uint8_t *src2 = in2->data[0];
     const int src1_linesize = in1->linesize[0] >> 2;
     const int src2_linesize = in2->linesize[0];
     const float div = in1->width * in1->height * 3;
@@ -50,6 +50,6 @@ __attribute__((used)) static void debug_mean_error(PaletteUseContext *s, const A
 
     s->total_mean_err += mean_err;
 
-    av_log(NULL, AV_LOG_INFO, "MEP:%.3f TotalMEP:%.3f\n",
+    av_log(((void*)0), AV_LOG_INFO, "MEP:%.3f TotalMEP:%.3f\n",
            mean_err / div, s->total_mean_err / (div * frame_count));
 }

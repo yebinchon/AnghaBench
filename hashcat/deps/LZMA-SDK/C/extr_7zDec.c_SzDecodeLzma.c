@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UInt64 ;
-struct TYPE_7__ {scalar_t__ dicPos; scalar_t__ dicBufSize; int /*<<< orphan*/ * dic; } ;
-typedef  scalar_t__ SizeT ;
-typedef  scalar_t__ SRes ;
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
-typedef  int /*<<< orphan*/  ILookInStream ;
-typedef  scalar_t__ ELzmaStatus ;
-typedef  TYPE_1__ CLzmaDec ;
-typedef  int /*<<< orphan*/  Byte ;
 
-/* Variables and functions */
- scalar_t__ ILookInStream_Look (int /*<<< orphan*/ *,void const**,size_t*) ; 
- scalar_t__ ILookInStream_Skip (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  LZMA_FINISH_END ; 
- scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ; 
- scalar_t__ LZMA_STATUS_MAYBE_FINISHED_WITHOUT_MARK ; 
- int /*<<< orphan*/  LzmaDec_AllocateProbs (TYPE_1__*,int /*<<< orphan*/  const*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LzmaDec_Construct (TYPE_1__*) ; 
- scalar_t__ LzmaDec_DecodeToDic (TYPE_1__*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  LzmaDec_FreeProbs (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LzmaDec_Init (TYPE_1__*) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- scalar_t__ SZ_ERROR_DATA ; 
- scalar_t__ SZ_OK ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t UInt64 ;
+struct TYPE_7__ {scalar_t__ dicPos; scalar_t__ dicBufSize; int * dic; } ;
+typedef scalar_t__ SizeT ;
+typedef scalar_t__ SRes ;
+typedef int ISzAllocPtr ;
+typedef int ILookInStream ;
+typedef scalar_t__ ELzmaStatus ;
+typedef TYPE_1__ CLzmaDec ;
+typedef int Byte ;
+
+
+ scalar_t__ ILookInStream_Look (int *,void const**,size_t*) ;
+ scalar_t__ ILookInStream_Skip (int *,scalar_t__) ;
+ int LZMA_FINISH_END ;
+ scalar_t__ LZMA_STATUS_FINISHED_WITH_MARK ;
+ scalar_t__ LZMA_STATUS_MAYBE_FINISHED_WITHOUT_MARK ;
+ int LzmaDec_AllocateProbs (TYPE_1__*,int const*,unsigned int,int ) ;
+ int LzmaDec_Construct (TYPE_1__*) ;
+ scalar_t__ LzmaDec_DecodeToDic (TYPE_1__*,scalar_t__,int const*,scalar_t__*,int ,scalar_t__*) ;
+ int LzmaDec_FreeProbs (TYPE_1__*,int ) ;
+ int LzmaDec_Init (TYPE_1__*) ;
+ int RINOK (int ) ;
+ scalar_t__ SZ_ERROR_DATA ;
+ scalar_t__ SZ_OK ;
 
 __attribute__((used)) static SRes SzDecodeLzma(const Byte *props, unsigned propsSize, UInt64 inSize, ILookInStream *inStream,
     Byte *outBuffer, SizeT outSize, ISzAllocPtr allocMain)
@@ -50,7 +50,7 @@ __attribute__((used)) static SRes SzDecodeLzma(const Byte *props, unsigned props
 
   for (;;)
   {
-    const void *inBuf = NULL;
+    const void *inBuf = ((void*)0);
     size_t lookahead = (1 << 18);
     if (lookahead > inSize)
       lookahead = (size_t)inSize;

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPACKET ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WPACKET ;
 struct TYPE_4__ {scalar_t__ early_data_state; } ;
-typedef  TYPE_1__ SSL ;
+typedef TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- scalar_t__ SSL_EARLY_DATA_FINISHED_WRITING ; 
- scalar_t__ SSL_EARLY_DATA_WRITE_RETRY ; 
- int /*<<< orphan*/  SSL_F_TLS_CONSTRUCT_END_OF_EARLY_DATA ; 
- int /*<<< orphan*/  SSLfatal (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED ;
+ int SSL_AD_INTERNAL_ERROR ;
+ scalar_t__ SSL_EARLY_DATA_FINISHED_WRITING ;
+ scalar_t__ SSL_EARLY_DATA_WRITE_RETRY ;
+ int SSL_F_TLS_CONSTRUCT_END_OF_EARLY_DATA ;
+ int SSLfatal (TYPE_1__*,int ,int ,int ) ;
 
 int tls_construct_end_of_early_data(SSL *s, WPACKET *pkt)
 {

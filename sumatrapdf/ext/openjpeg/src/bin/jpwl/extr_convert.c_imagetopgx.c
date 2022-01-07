@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int numcomps; TYPE_2__* comps; } ;
-typedef  TYPE_1__ opj_image_t ;
+typedef TYPE_1__ opj_image_t ;
 struct TYPE_5__ {int w; int h; int prec; int* data; scalar_t__ sgnd; } ;
-typedef  TYPE_2__ opj_image_comp_t ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ opj_image_comp_t ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (char*) ; 
- size_t fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (size_t const) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t const) ; 
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int free (char*) ;
+ size_t fwrite (char*,int,int,int *) ;
+ scalar_t__ malloc (size_t const) ;
+ int sprintf (char*,char*,int) ;
+ int stderr ;
+ size_t strlen (char const*) ;
+ int strncpy (char*,char const*,size_t const) ;
 
 int imagetopgx(opj_image_t * image, const char *outfile)
 {
     int w, h;
     int i, j, compno;
-    FILE *fdest = NULL;
+    FILE *fdest = ((void*)0);
 
     for (compno = 0; compno < image->numcomps; compno++) {
         opj_image_comp_t *comp = &image->comps[compno];
-        char bname[256]; /* buffer for name */
-        char *name = bname; /* pointer */
+        char bname[256];
+        char *name = bname;
         int nbytes = 0;
         size_t res;
         const size_t olen = strlen(outfile);
         const size_t dotpos = olen - 4;
-        const size_t total = dotpos + 1 + 1 + 4; /* '-' + '[1-3]' + '.pgx' */
+        const size_t total = dotpos + 1 + 1 + 4;
         if (outfile[dotpos] != '.') {
-            /* `pgx` was recognized but there is no dot at expected position */
+
             fprintf(stderr, "ERROR -> Impossible happen.");
             return 1;
         }
@@ -54,17 +54,17 @@ int imagetopgx(opj_image_t * image, const char *outfile)
             name = (char*)malloc(total + 1);
         }
         strncpy(name, outfile, dotpos);
-        /*if (image->numcomps > 1) {*/
+
         sprintf(name + dotpos, "_%d.pgx", compno);
-        /*} else {
-            strcpy(name+dotpos, ".pgx");
-        }*/
+
+
+
         fdest = fopen(name, "wb");
         if (!fdest) {
             fprintf(stderr, "ERROR -> failed to open %s for writing\n", name);
             return 1;
         }
-        /* don't need name anymore */
+
         if (total > 256) {
             free(name);
         }

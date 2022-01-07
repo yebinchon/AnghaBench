@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
-struct wined3d_shader_src_param {int /*<<< orphan*/  swizzle; } ;
-struct TYPE_9__ {int major; int /*<<< orphan*/  type; } ;
+struct wined3d_shader_src_param {int swizzle; } ;
+struct TYPE_9__ {int major; int type; } ;
 struct wined3d_shader_reg_maps {TYPE_2__ shader_version; } ;
 struct wined3d_shader_instruction {scalar_t__ handler_idx; TYPE_7__* dst; struct wined3d_shader_src_param* src; TYPE_1__* ctx; } ;
 struct TYPE_12__ {scalar_t__ color0_mov; } ;
@@ -29,28 +29,28 @@ struct shader_arb_ctx_priv {scalar_t__ target_version; char* addr_reg; scalar_t_
 struct arb_vshader_private {scalar_t__ rel_offset; } ;
 struct TYPE_11__ {scalar_t__ type; TYPE_3__* idx; } ;
 struct TYPE_14__ {TYPE_4__ reg; } ;
-struct TYPE_10__ {int /*<<< orphan*/  offset; } ;
+struct TYPE_10__ {int offset; } ;
 struct TYPE_8__ {struct shader_arb_ctx_priv* backend_data; struct wined3d_string_buffer* buffer; struct wined3d_shader_reg_maps* reg_maps; struct wined3d_shader* shader; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ARB ; 
- int /*<<< orphan*/  ARB_ONE ; 
- int /*<<< orphan*/  ARB_TWO ; 
- int /*<<< orphan*/  ARB_VS_REL_OFFSET ; 
- int /*<<< orphan*/  ARB_ZERO ; 
- scalar_t__ NV2 ; 
- scalar_t__ WINED3DSIH_MOVA ; 
- scalar_t__ WINED3DSPR_ADDR ; 
- scalar_t__ WINED3DSPR_COLOROUT ; 
- int /*<<< orphan*/  WINED3D_SHADER_TYPE_VERTEX ; 
- char* arb_get_helper_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- int /*<<< orphan*/  shader_arb_get_src_param (struct wined3d_shader_instruction const*,struct wined3d_shader_src_param*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  shader_arb_get_write_mask (struct wined3d_shader_instruction const*,TYPE_7__*,char*) ; 
- int /*<<< orphan*/  shader_arb_select_component (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shader_hw_map2gl (struct wined3d_shader_instruction const*) ; 
- scalar_t__ shader_is_pshader_version (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ARB ;
+ int ARB_ONE ;
+ int ARB_TWO ;
+ int ARB_VS_REL_OFFSET ;
+ int ARB_ZERO ;
+ scalar_t__ NV2 ;
+ scalar_t__ WINED3DSIH_MOVA ;
+ scalar_t__ WINED3DSPR_ADDR ;
+ scalar_t__ WINED3DSPR_COLOROUT ;
+ int WINED3D_SHADER_TYPE_VERTEX ;
+ char* arb_get_helper_value (int ,int ) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ int shader_arb_get_src_param (struct wined3d_shader_instruction const*,struct wined3d_shader_src_param*,int ,char*) ;
+ int shader_arb_get_write_mask (struct wined3d_shader_instruction const*,TYPE_7__*,char*) ;
+ int shader_arb_select_component (int ,int ) ;
+ int shader_hw_map2gl (struct wined3d_shader_instruction const*) ;
+ scalar_t__ shader_is_pshader_version (int ) ;
 
 __attribute__((used)) static void shader_hw_mov(const struct wined3d_shader_instruction *ins)
 {
@@ -77,17 +77,6 @@ __attribute__((used)) static void shader_hw_mov(const struct wined3d_shader_inst
         }
         shader_arb_get_src_param(ins, &ins->src[0], 0, src0_param);
         shader_arb_get_write_mask(ins, &ins->dst[0], write_mask);
-
-        /* This implements the mova formula used in GLSL. The first two instructions
-         * prepare the sign() part. Note that it is fine to have my_sign(0.0) = 1.0
-         * in this case:
-         * mova A0.x, 0.0
-         *
-         * A0.x = arl(floor(abs(0.0) + 0.5) * 1.0) = floor(0.5) = 0.0 since arl does a floor
-         *
-         * The ARL is performed when A0 is used - the requested component is read from A0_SHADOW into
-         * A0.x. We can use the overwritten component of A0_shadow as temporary storage for the sign.
-         */
         shader_addline(buffer, "SGE A0_SHADOW%s, %s, %s;\n", write_mask, src0_param, zero);
         shader_addline(buffer, "MAD A0_SHADOW%s, A0_SHADOW, %s, -%s;\n", write_mask, two, one);
 
@@ -118,9 +107,9 @@ __attribute__((used)) static void shader_hw_mov(const struct wined3d_shader_inst
         }
         else
         {
-            /* Apple's ARB_vertex_program implementation does not accept an ARL source argument
-             * with more than one component. Thus replicate the first source argument over all
-             * 4 components. For example, .xyzw -> .x (or better: .xxxx), .zwxy -> .z, etc) */
+
+
+
             struct wined3d_shader_src_param tmp_src = ins->src[0];
             tmp_src.swizzle = shader_arb_select_component(tmp_src.swizzle, 0);
             shader_arb_get_src_param(ins, &tmp_src, 0, src0_param);

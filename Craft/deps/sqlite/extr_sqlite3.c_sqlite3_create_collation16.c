@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct TYPE_7__ {int /*<<< orphan*/  mutex; int /*<<< orphan*/  mallocFailed; } ;
-typedef  TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  SQLITE_UTF16NATIVE ; 
- int /*<<< orphan*/  assert (int) ; 
- int createCollation (TYPE_1__*,char*,int /*<<< orphan*/ ,void*,int (*) (void*,int,void const*,int,void const*),int /*<<< orphan*/ ) ; 
- int sqlite3ApiExit (TYPE_1__*,int) ; 
- int /*<<< orphan*/  sqlite3DbFree (TYPE_1__*,char*) ; 
- char* sqlite3Utf16to8 (TYPE_1__*,void const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_7__ {int mutex; int mallocFailed; } ;
+typedef TYPE_1__ sqlite3 ;
+
+
+ int SQLITE_OK ;
+ int SQLITE_UTF16NATIVE ;
+ int assert (int) ;
+ int createCollation (TYPE_1__*,char*,int ,void*,int (*) (void*,int,void const*,int,void const*),int ) ;
+ int sqlite3ApiExit (TYPE_1__*,int) ;
+ int sqlite3DbFree (TYPE_1__*,char*) ;
+ char* sqlite3Utf16to8 (TYPE_1__*,void const*,int,int ) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 int sqlite3_create_collation16(
-  sqlite3* db, 
+  sqlite3* db,
   const void *zName,
-  int enc, 
+  int enc,
   void* pCtx,
   int(*xCompare)(void*,int,const void*,int,const void*)
 ){

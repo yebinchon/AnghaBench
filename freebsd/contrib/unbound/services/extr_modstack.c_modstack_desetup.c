@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct module_stack {int num; TYPE_1__** mod; } ;
 struct module_env {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* deinit ) (struct module_env*,int) ;} ;
+struct TYPE_2__ {int (* deinit ) (struct module_env*,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fptr_ok (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fptr_whitelist_mod_deinit (int /*<<< orphan*/  (*) (struct module_env*,int)) ; 
- int /*<<< orphan*/  free (TYPE_1__**) ; 
- int /*<<< orphan*/  stub1 (struct module_env*,int) ; 
 
-void 
+ int fptr_ok (int ) ;
+ int fptr_whitelist_mod_deinit (int (*) (struct module_env*,int)) ;
+ int free (TYPE_1__**) ;
+ int stub1 (struct module_env*,int) ;
+
+void
 modstack_desetup(struct module_stack* stack, struct module_env* env)
 {
         int i;
@@ -31,5 +31,5 @@ modstack_desetup(struct module_stack* stack, struct module_env* env)
         }
         stack->num = 0;
         free(stack->mod);
-        stack->mod = NULL;
+        stack->mod = ((void*)0);
 }

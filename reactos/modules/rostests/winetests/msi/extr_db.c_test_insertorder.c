@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  char* LPCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_BAD_QUERY_SYNTAX ; 
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_NO_MORE_ITEMS ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ MsiRecordGetInteger (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MsiViewClose (int /*<<< orphan*/ ) ; 
- scalar_t__ MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_db () ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__** ordervals ; 
- scalar_t__ run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIHANDLE ;
+typedef char* LPCSTR ;
+
+
+ int DeleteFileA (int ) ;
+ scalar_t__ ERROR_BAD_QUERY_SYNTAX ;
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_NO_MORE_ITEMS ;
+ scalar_t__ ERROR_SUCCESS ;
+ int MsiCloseHandle (int ) ;
+ scalar_t__ MsiDatabaseOpenViewA (int ,char*,int *) ;
+ scalar_t__ MsiRecordGetInteger (int ,int) ;
+ int MsiViewClose (int ) ;
+ scalar_t__ MsiViewExecute (int ,int ) ;
+ scalar_t__ MsiViewFetch (int ,int *) ;
+ int create_db () ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ scalar_t__** ordervals ;
+ scalar_t__ run_query (int ,int ,char*) ;
 
 __attribute__((used)) static void test_insertorder(void)
 {
@@ -66,15 +66,15 @@ __attribute__((used)) static void test_insertorder(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* fails because the primary key already
-     * has an MSI_NULL_INTEGER value set above
-     */
+
+
+
     query = "INSERT INTO `T` ( `C` ) VALUES ( 14 )";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_FUNCTION_FAILED,
        "Expected ERROR_FUNCTION_FAILED, got %d\n", r);
 
-    /* replicate the error where primary key is set twice */
+
     query = "INSERT INTO `T` ( `A`, `C` ) VALUES ( 1, 14 )";
     r = run_query(hdb, 0, query);
     ok(r == ERROR_FUNCTION_FAILED,

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int length; int flags; int* data; } ;
-typedef  TYPE_1__ ASN1_BIT_STRING ;
+typedef TYPE_1__ ASN1_BIT_STRING ;
 
-/* Variables and functions */
- int ASN1_STRING_FLAG_BITS_LEFT ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
+
+ int ASN1_STRING_FLAG_BITS_LEFT ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
 
 int i2c_ASN1_BIT_STRING(ASN1_BIT_STRING *a, unsigned char **pp)
 {
     int ret, j, bits, len;
     unsigned char *p, *d;
 
-    if (a == NULL)
+    if (a == ((void*)0))
         return 0;
 
     len = a->length;
@@ -54,13 +54,13 @@ int i2c_ASN1_BIT_STRING(ASN1_BIT_STRING *a, unsigned char **pp)
             else if (j & 0x80)
                 bits = 7;
             else
-                bits = 0;       /* should not happen */
+                bits = 0;
         }
     } else
         bits = 0;
 
     ret = 1 + len;
-    if (pp == NULL)
+    if (pp == ((void*)0))
         return ret;
 
     p = *pp;

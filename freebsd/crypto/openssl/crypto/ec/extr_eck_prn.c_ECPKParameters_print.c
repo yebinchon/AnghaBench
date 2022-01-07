@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ point_conversion_form_t ;
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_bn_print (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BIO_indent (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_CTX_new () ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* BN_new () ; 
- int /*<<< orphan*/  EC_F_ECPKPARAMETERS_PRINT ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_cofactor (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EC_GROUP_get0_generator (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  const* EC_GROUP_get0_order (int /*<<< orphan*/  const*) ; 
- unsigned char* EC_GROUP_get0_seed (int /*<<< orphan*/  const*) ; 
- scalar_t__ EC_GROUP_get_asn1_flag (int /*<<< orphan*/  const*) ; 
- int EC_GROUP_get_basis_type (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_GROUP_get_curve (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int EC_GROUP_get_curve_name (int /*<<< orphan*/  const*) ; 
- scalar_t__ EC_GROUP_get_point_conversion_form (int /*<<< orphan*/  const*) ; 
- size_t EC_GROUP_get_seed_len (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_GROUP_method_of (int /*<<< orphan*/  const*) ; 
- int EC_METHOD_get_field_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* EC_POINT_point2bn (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* EC_curve_nid2nist (int) ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int) ; 
- int ERR_R_BIO_LIB ; 
- int ERR_R_EC_LIB ; 
- int ERR_R_MALLOC_FAILURE ; 
- int ERR_R_PASSED_NULL_PARAMETER ; 
- int NID_X9_62_characteristic_two_field ; 
- char const* OBJ_nid2sn (int) ; 
- scalar_t__ POINT_CONVERSION_COMPRESSED ; 
- scalar_t__ POINT_CONVERSION_UNCOMPRESSED ; 
- int /*<<< orphan*/  print_bin (int /*<<< orphan*/ *,char*,unsigned char const*,size_t,int) ; 
+
+
+
+typedef scalar_t__ point_conversion_form_t ;
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIO ;
+typedef int const BIGNUM ;
+
+
+ int ASN1_bn_print (int *,char const*,int const*,int *,int) ;
+ int BIO_indent (int *,int,int) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ int BN_CTX_free (int *) ;
+ int * BN_CTX_new () ;
+ int BN_free (int const*) ;
+ int const* BN_new () ;
+ int EC_F_ECPKPARAMETERS_PRINT ;
+ int const* EC_GROUP_get0_cofactor (int const*) ;
+ int * EC_GROUP_get0_generator (int const*) ;
+ int const* EC_GROUP_get0_order (int const*) ;
+ unsigned char* EC_GROUP_get0_seed (int const*) ;
+ scalar_t__ EC_GROUP_get_asn1_flag (int const*) ;
+ int EC_GROUP_get_basis_type (int const*) ;
+ int EC_GROUP_get_curve (int const*,int const*,int const*,int const*,int *) ;
+ int EC_GROUP_get_curve_name (int const*) ;
+ scalar_t__ EC_GROUP_get_point_conversion_form (int const*) ;
+ size_t EC_GROUP_get_seed_len (int const*) ;
+ int EC_GROUP_method_of (int const*) ;
+ int EC_METHOD_get_field_type (int ) ;
+ int const* EC_POINT_point2bn (int const*,int const*,scalar_t__,int *,int *) ;
+ char* EC_curve_nid2nist (int) ;
+ int ECerr (int ,int) ;
+ int ERR_R_BIO_LIB ;
+ int ERR_R_EC_LIB ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
+ int NID_X9_62_characteristic_two_field ;
+ char const* OBJ_nid2sn (int) ;
+ scalar_t__ POINT_CONVERSION_COMPRESSED ;
+ scalar_t__ POINT_CONVERSION_UNCOMPRESSED ;
+ int print_bin (int *,char*,unsigned char const*,size_t,int) ;
 
 int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off)
 {
     int ret = 0, reason = ERR_R_BIO_LIB;
-    BN_CTX *ctx = NULL;
-    const EC_POINT *point = NULL;
-    BIGNUM *p = NULL, *a = NULL, *b = NULL, *gen = NULL;
-    const BIGNUM *order = NULL, *cofactor = NULL;
+    BN_CTX *ctx = ((void*)0);
+    const EC_POINT *point = ((void*)0);
+    BIGNUM *p = ((void*)0), *a = ((void*)0), *b = ((void*)0), *gen = ((void*)0);
+    const BIGNUM *order = ((void*)0), *cofactor = ((void*)0);
     const unsigned char *seed;
     size_t seed_len = 0;
 
@@ -71,13 +71,13 @@ int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off)
     }
 
     ctx = BN_CTX_new();
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         reason = ERR_R_MALLOC_FAILURE;
         goto err;
     }
 
     if (EC_GROUP_get_asn1_flag(x)) {
-        /* the curve parameter are given by an asn1 OID */
+
         int nid;
         const char *nname;
 
@@ -99,7 +99,7 @@ int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off)
                 goto err;
         }
     } else {
-        /* explicit parameters */
+
         int is_char_two = 0;
         point_conversion_form_t form;
         int tmp_nid = EC_METHOD_get_field_type(EC_GROUP_method_of(x));
@@ -107,8 +107,8 @@ int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off)
         if (tmp_nid == NID_X9_62_characteristic_two_field)
             is_char_two = 1;
 
-        if ((p = BN_new()) == NULL || (a = BN_new()) == NULL ||
-            (b = BN_new()) == NULL) {
+        if ((p = BN_new()) == ((void*)0) || (a = BN_new()) == ((void*)0) ||
+            (b = BN_new()) == ((void*)0)) {
             reason = ERR_R_MALLOC_FAILURE;
             goto err;
         }
@@ -118,37 +118,37 @@ int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off)
             goto err;
         }
 
-        if ((point = EC_GROUP_get0_generator(x)) == NULL) {
+        if ((point = EC_GROUP_get0_generator(x)) == ((void*)0)) {
             reason = ERR_R_EC_LIB;
             goto err;
         }
         order = EC_GROUP_get0_order(x);
         cofactor = EC_GROUP_get0_cofactor(x);
-        if (order == NULL) {
+        if (order == ((void*)0)) {
             reason = ERR_R_EC_LIB;
             goto err;
         }
 
         form = EC_GROUP_get_point_conversion_form(x);
 
-        if ((gen = EC_POINT_point2bn(x, point, form, NULL, ctx)) == NULL) {
+        if ((gen = EC_POINT_point2bn(x, point, form, ((void*)0), ctx)) == ((void*)0)) {
             reason = ERR_R_EC_LIB;
             goto err;
         }
 
-        if ((seed = EC_GROUP_get0_seed(x)) != NULL)
+        if ((seed = EC_GROUP_get0_seed(x)) != ((void*)0))
             seed_len = EC_GROUP_get_seed_len(x);
 
         if (!BIO_indent(bp, off, 128))
             goto err;
 
-        /* print the 'short name' of the field type */
+
         if (BIO_printf(bp, "Field Type: %s\n", OBJ_nid2sn(tmp_nid))
             <= 0)
             goto err;
 
         if (is_char_two) {
-            /* print the 'short name' of the base type OID */
+
             int basis_type = EC_GROUP_get_basis_type(x);
             if (basis_type == 0)
                 goto err;
@@ -160,37 +160,37 @@ int ECPKParameters_print(BIO *bp, const EC_GROUP *x, int off)
                            OBJ_nid2sn(basis_type)) <= 0)
                 goto err;
 
-            /* print the polynomial */
-            if ((p != NULL) && !ASN1_bn_print(bp, "Polynomial:", p, NULL,
+
+            if ((p != ((void*)0)) && !ASN1_bn_print(bp, "Polynomial:", p, ((void*)0),
                                               off))
                 goto err;
         } else {
-            if ((p != NULL) && !ASN1_bn_print(bp, "Prime:", p, NULL, off))
+            if ((p != ((void*)0)) && !ASN1_bn_print(bp, "Prime:", p, ((void*)0), off))
                 goto err;
         }
-        if ((a != NULL) && !ASN1_bn_print(bp, "A:   ", a, NULL, off))
+        if ((a != ((void*)0)) && !ASN1_bn_print(bp, "A:   ", a, ((void*)0), off))
             goto err;
-        if ((b != NULL) && !ASN1_bn_print(bp, "B:   ", b, NULL, off))
+        if ((b != ((void*)0)) && !ASN1_bn_print(bp, "B:   ", b, ((void*)0), off))
             goto err;
         if (form == POINT_CONVERSION_COMPRESSED) {
-            if ((gen != NULL) && !ASN1_bn_print(bp, gen_compressed, gen,
-                                                NULL, off))
+            if ((gen != ((void*)0)) && !ASN1_bn_print(bp, gen_compressed, gen,
+                                                ((void*)0), off))
                 goto err;
         } else if (form == POINT_CONVERSION_UNCOMPRESSED) {
-            if ((gen != NULL) && !ASN1_bn_print(bp, gen_uncompressed, gen,
-                                                NULL, off))
+            if ((gen != ((void*)0)) && !ASN1_bn_print(bp, gen_uncompressed, gen,
+                                                ((void*)0), off))
                 goto err;
-        } else {                /* form == POINT_CONVERSION_HYBRID */
+        } else {
 
-            if ((gen != NULL) && !ASN1_bn_print(bp, gen_hybrid, gen,
-                                                NULL, off))
+            if ((gen != ((void*)0)) && !ASN1_bn_print(bp, gen_hybrid, gen,
+                                                ((void*)0), off))
                 goto err;
         }
-        if ((order != NULL) && !ASN1_bn_print(bp, "Order: ", order,
-                                              NULL, off))
+        if ((order != ((void*)0)) && !ASN1_bn_print(bp, "Order: ", order,
+                                              ((void*)0), off))
             goto err;
-        if ((cofactor != NULL) && !ASN1_bn_print(bp, "Cofactor: ", cofactor,
-                                                 NULL, off))
+        if ((cofactor != ((void*)0)) && !ASN1_bn_print(bp, "Cofactor: ", cofactor,
+                                                 ((void*)0), off))
             goto err;
         if (seed && !print_bin(bp, "Seed:", seed, seed_len, off))
             goto err;

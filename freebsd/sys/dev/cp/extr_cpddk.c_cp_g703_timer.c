@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ l100; scalar_t__ l120; scalar_t__ l110; scalar_t__ l119; scalar_t__ l108; scalar_t__ l117; scalar_t__ l89; scalar_t__ l101; scalar_t__ l103; scalar_t__ l121; scalar_t__ l112; scalar_t__ l47; } ;
-struct TYPE_6__ {int /*<<< orphan*/  l100; int /*<<< orphan*/  l120; int /*<<< orphan*/  l110; int /*<<< orphan*/  l119; int /*<<< orphan*/  l108; int /*<<< orphan*/  l117; int /*<<< orphan*/  l89; int /*<<< orphan*/  l101; int /*<<< orphan*/  l103; int /*<<< orphan*/  l121; int /*<<< orphan*/  l112; int /*<<< orphan*/  l47; } ;
-struct TYPE_7__ {int l55; int t; int l105; int l109; scalar_t__ l161; TYPE_3__ n; TYPE_1__ l29; TYPE_3__* l118; int /*<<< orphan*/  l44; int /*<<< orphan*/  d; } ;
-typedef  TYPE_2__ e ;
+struct TYPE_6__ {int l100; int l120; int l110; int l119; int l108; int l117; int l89; int l101; int l103; int l121; int l112; int l47; } ;
+struct TYPE_7__ {int l55; int t; int l105; int l109; scalar_t__ l161; TYPE_3__ n; TYPE_1__ l29; TYPE_3__* l118; int l44; int d; } ;
+typedef TYPE_2__ e ;
 
-/* Variables and functions */
- int cp_get_cd (TYPE_2__*) ; 
- int /*<<< orphan*/  l (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- unsigned char u (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int cp_get_cd (TYPE_2__*) ;
+ int l (int ,int ,unsigned char) ;
+ int memset (TYPE_3__*,int ,int) ;
+ unsigned char u (int ,int ) ;
 
 void cp_g703_timer(e*a){unsigned char l84;int l158;++a
 ->l55;{if(!(!a->l161&&a->l55<=1))goto l386;return;l386:;}a->t=0;l84=u

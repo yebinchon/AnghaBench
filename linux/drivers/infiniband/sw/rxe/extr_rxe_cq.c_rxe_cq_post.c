@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct rxe_cqe {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  cq_context; int /*<<< orphan*/  (* event_handler ) (struct ib_event*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  device; } ;
-struct rxe_cq {scalar_t__ notify; int /*<<< orphan*/  comp_task; int /*<<< orphan*/  cq_lock; int /*<<< orphan*/  queue; TYPE_2__ ibcq; } ;
+struct TYPE_4__ {int cq_context; int (* event_handler ) (struct ib_event*,int ) ;int device; } ;
+struct rxe_cq {scalar_t__ notify; int comp_task; int cq_lock; int queue; TYPE_2__ ibcq; } ;
 struct TYPE_3__ {TYPE_2__* cq; } ;
-struct ib_event {int /*<<< orphan*/  event; TYPE_1__ element; int /*<<< orphan*/  device; } ;
+struct ib_event {int event; TYPE_1__ element; int device; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- scalar_t__ IB_CQ_NEXT_COMP ; 
- scalar_t__ IB_CQ_SOLICITED ; 
- int /*<<< orphan*/  IB_EVENT_CQ_ERR ; 
- int /*<<< orphan*/  advance_producer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,struct rxe_cqe*,int) ; 
- int /*<<< orphan*/  producer_addr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  queue_full (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  smp_wmb () ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct ib_event*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+
+ int EBUSY ;
+ scalar_t__ IB_CQ_NEXT_COMP ;
+ scalar_t__ IB_CQ_SOLICITED ;
+ int IB_EVENT_CQ_ERR ;
+ int advance_producer (int ) ;
+ int memcpy (int ,struct rxe_cqe*,int) ;
+ int producer_addr (int ) ;
+ int queue_full (int ) ;
+ int smp_wmb () ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct ib_event*,int ) ;
+ int tasklet_schedule (int *) ;
+ scalar_t__ unlikely (int ) ;
 
 int rxe_cq_post(struct rxe_cq *cq, struct rxe_cqe *cqe, int solicited)
 {
-	struct ib_event ev;
-	unsigned long flags;
+ struct ib_event ev;
+ unsigned long flags;
 
-	spin_lock_irqsave(&cq->cq_lock, flags);
+ spin_lock_irqsave(&cq->cq_lock, flags);
 
-	if (unlikely(queue_full(cq->queue))) {
-		spin_unlock_irqrestore(&cq->cq_lock, flags);
-		if (cq->ibcq.event_handler) {
-			ev.device = cq->ibcq.device;
-			ev.element.cq = &cq->ibcq;
-			ev.event = IB_EVENT_CQ_ERR;
-			cq->ibcq.event_handler(&ev, cq->ibcq.cq_context);
-		}
+ if (unlikely(queue_full(cq->queue))) {
+  spin_unlock_irqrestore(&cq->cq_lock, flags);
+  if (cq->ibcq.event_handler) {
+   ev.device = cq->ibcq.device;
+   ev.element.cq = &cq->ibcq;
+   ev.event = IB_EVENT_CQ_ERR;
+   cq->ibcq.event_handler(&ev, cq->ibcq.cq_context);
+  }
 
-		return -EBUSY;
-	}
+  return -EBUSY;
+ }
 
-	memcpy(producer_addr(cq->queue), cqe, sizeof(*cqe));
+ memcpy(producer_addr(cq->queue), cqe, sizeof(*cqe));
 
-	/* make sure all changes to the CQ are written before we update the
-	 * producer pointer
-	 */
-	smp_wmb();
 
-	advance_producer(cq->queue);
-	spin_unlock_irqrestore(&cq->cq_lock, flags);
 
-	if ((cq->notify == IB_CQ_NEXT_COMP) ||
-	    (cq->notify == IB_CQ_SOLICITED && solicited)) {
-		cq->notify = 0;
-		tasklet_schedule(&cq->comp_task);
-	}
 
-	return 0;
+ smp_wmb();
+
+ advance_producer(cq->queue);
+ spin_unlock_irqrestore(&cq->cq_lock, flags);
+
+ if ((cq->notify == IB_CQ_NEXT_COMP) ||
+     (cq->notify == IB_CQ_SOLICITED && solicited)) {
+  cq->notify = 0;
+  tasklet_schedule(&cq->comp_task);
+ }
+
+ return 0;
 }

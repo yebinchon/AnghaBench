@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int stub1 (void const*,void const*,void*) ; 
+ int stub1 (void const*,void const*,void*) ;
 
 void *hc_bsearch_r (const void *key, const void *base, size_t nmemb, size_t size, int (*compar) (const void *, const void *, void *), void *arg)
 {
@@ -36,5 +28,5 @@ void *hc_bsearch_r (const void *key, const void *base, size_t nmemb, size_t size
     if (cmp == 0) return ((void *) next);
   }
 
-  return (NULL);
+  return (((void*)0));
 }

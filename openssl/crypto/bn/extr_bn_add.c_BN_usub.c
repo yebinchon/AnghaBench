@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int top; scalar_t__* d; scalar_t__ neg; } ;
-typedef  scalar_t__ BN_ULONG ;
-typedef  TYPE_1__ BIGNUM ;
+typedef scalar_t__ BN_ULONG ;
+typedef TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_F_BN_USUB ; 
- scalar_t__ BN_MASK2 ; 
- int /*<<< orphan*/  BN_R_ARG2_LT_ARG3 ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bn_check_top (TYPE_1__ const*) ; 
- int /*<<< orphan*/  bn_pollute (TYPE_1__*) ; 
- scalar_t__ bn_sub_words (scalar_t__*,scalar_t__ const*,scalar_t__ const*,int) ; 
- int /*<<< orphan*/ * bn_wexpand (TYPE_1__*,int) ; 
+
+ int BN_F_BN_USUB ;
+ scalar_t__ BN_MASK2 ;
+ int BN_R_ARG2_LT_ARG3 ;
+ int BNerr (int ,int ) ;
+ int bn_check_top (TYPE_1__ const*) ;
+ int bn_pollute (TYPE_1__*) ;
+ scalar_t__ bn_sub_words (scalar_t__*,scalar_t__ const*,scalar_t__ const*,int) ;
+ int * bn_wexpand (TYPE_1__*,int) ;
 
 int BN_usub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b)
 {
@@ -38,12 +38,12 @@ int BN_usub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b)
     min = b->top;
     dif = max - min;
 
-    if (dif < 0) {              /* hmm... should not be happening */
+    if (dif < 0) {
         BNerr(BN_F_BN_USUB, BN_R_ARG2_LT_ARG3);
         return 0;
     }
 
-    if (bn_wexpand(r, max) == NULL)
+    if (bn_wexpand(r, max) == ((void*)0))
         return 0;
 
     ap = a->d;

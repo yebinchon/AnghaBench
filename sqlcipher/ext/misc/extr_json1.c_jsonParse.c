@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite3_context ;
 struct TYPE_6__ {char const* zJson; scalar_t__ iDepth; scalar_t__ oom; } ;
-typedef  TYPE_1__ JsonParse ;
+typedef TYPE_1__ JsonParse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jsonParseReset (TYPE_1__*) ; 
- int jsonParseValue (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ safe_isspace (char const) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int jsonParseReset (TYPE_1__*) ;
+ int jsonParseValue (TYPE_1__*,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ safe_isspace (char const) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
 
 __attribute__((used)) static int jsonParse(
-  JsonParse *pParse,           /* Initialize and fill this JsonParse object */
-  sqlite3_context *pCtx,       /* Report errors here */
-  const char *zJson            /* Input JSON text to be parsed */
+  JsonParse *pParse,
+  sqlite3_context *pCtx,
+  const char *zJson
 ){
   int i;
   memset(pParse, 0, sizeof(*pParse));

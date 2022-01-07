@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_pcm_group {int /*<<< orphan*/  refs; int /*<<< orphan*/  substreams; int /*<<< orphan*/  mutex; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  refcount_set (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct snd_pcm_group {int refs; int substreams; int mutex; int lock; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int mutex_init (int *) ;
+ int refcount_set (int *,int) ;
+ int spin_lock_init (int *) ;
 
 void snd_pcm_group_init(struct snd_pcm_group *group)
 {
-	spin_lock_init(&group->lock);
-	mutex_init(&group->mutex);
-	INIT_LIST_HEAD(&group->substreams);
-	refcount_set(&group->refs, 1);
+ spin_lock_init(&group->lock);
+ mutex_init(&group->mutex);
+ INIT_LIST_HEAD(&group->substreams);
+ refcount_set(&group->refs, 1);
 }

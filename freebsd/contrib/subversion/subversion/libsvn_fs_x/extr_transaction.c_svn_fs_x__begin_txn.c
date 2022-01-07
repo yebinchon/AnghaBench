@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int data; int len; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_revnum_t ;
 struct TYPE_9__ {TYPE_3__* fsap_data; } ;
-typedef  TYPE_2__ svn_fs_txn_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_10__ {int /*<<< orphan*/  txn_id; } ;
-typedef  TYPE_3__ fs_txn_data_t ;
-typedef  int apr_uint32_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_2__ svn_fs_txn_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+struct TYPE_10__ {int txn_id; } ;
+typedef TYPE_3__ fs_txn_data_t ;
+typedef int apr_uint32_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int SVN_FS_TXN_CHECK_LOCKS ; 
- int SVN_FS_TXN_CHECK_OOD ; 
- int SVN_FS_TXN_CLIENT_DATE ; 
- int /*<<< orphan*/  SVN_FS__PROP_TXN_CHECK_LOCKS ; 
- int /*<<< orphan*/  SVN_FS__PROP_TXN_CHECK_OOD ; 
- int /*<<< orphan*/  SVN_FS__PROP_TXN_CLIENT_DATE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_REVISION_DATE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_time_now () ; 
- int /*<<< orphan*/  create_txn (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_txn_proplist (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs__check_fs (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_1__* svn_string_create (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_time_to_cstring (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_FS_TXN_CHECK_LOCKS ;
+ int SVN_FS_TXN_CHECK_OOD ;
+ int SVN_FS_TXN_CLIENT_DATE ;
+ int SVN_FS__PROP_TXN_CHECK_LOCKS ;
+ int SVN_FS__PROP_TXN_CHECK_OOD ;
+ int SVN_FS__PROP_TXN_CLIENT_DATE ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_REVISION_DATE ;
+ int TRUE ;
+ int * apr_hash_make (int *) ;
+ int apr_time_now () ;
+ int create_txn (TYPE_2__**,int *,int ,int *,int *) ;
+ int set_txn_proplist (int *,int ,int *,int *) ;
+ int strlen (int ) ;
+ int svn_fs__check_fs (int *,int ) ;
+ int svn_hash_sets (int *,int ,TYPE_1__*) ;
+ TYPE_1__* svn_string_create (char*,int *) ;
+ int svn_time_to_cstring (int ,int *) ;
 
 svn_error_t *
 svn_fs_x__begin_txn(svn_fs_txn_t **txn_p,
@@ -63,18 +63,18 @@ svn_fs_x__begin_txn(svn_fs_txn_t **txn_p,
 
   SVN_ERR(create_txn(txn_p, fs, rev, result_pool, scratch_pool));
 
-  /* Put a datestamp on the newly created txn, so we always know
-     exactly how old it is.  (This will help sysadmins identify
-     long-abandoned txns that may need to be manually removed.)  When
-     a txn is promoted to a revision, this property will be
-     automatically overwritten with a revision datestamp. */
+
+
+
+
+
   date.data = svn_time_to_cstring(apr_time_now(), scratch_pool);
   date.len = strlen(date.data);
 
   svn_hash_sets(props, SVN_PROP_REVISION_DATE, &date);
 
-  /* Set temporary txn props that represent the requested 'flags'
-     behaviors. */
+
+
   if (flags & SVN_FS_TXN_CHECK_OOD)
     svn_hash_sets(props, SVN_FS__PROP_TXN_CHECK_OOD,
                   svn_string_create("true", scratch_pool));

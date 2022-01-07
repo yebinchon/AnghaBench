@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  cvmx_bootmem_named_block_desc_t ;
-typedef  int /*<<< orphan*/  ULL ;
 
-/* Variables and functions */
- int CVMX_BOOTMEM_DESC_GET_FIELD (int /*<<< orphan*/ ) ; 
- int CVMX_BOOTMEM_NAMED_GET_FIELD (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CVMX_BOOTMEM_NAMED_GET_NAME (int,char*,int) ; 
- scalar_t__ __cvmx_bootmem_check_version (int) ; 
- int /*<<< orphan*/  base_addr ; 
- scalar_t__ cvmx_bootmem_desc_addr ; 
- int /*<<< orphan*/  cvmx_dprintf (char*,...) ; 
- int named_block_array_addr ; 
- int /*<<< orphan*/  named_block_name_len ; 
- int /*<<< orphan*/  named_block_num_blocks ; 
- int /*<<< orphan*/  size ; 
+
+
+
+typedef int uint64_t ;
+typedef int cvmx_bootmem_named_block_desc_t ;
+typedef int ULL ;
+
+
+ int CVMX_BOOTMEM_DESC_GET_FIELD (int ) ;
+ int CVMX_BOOTMEM_NAMED_GET_FIELD (int,int ) ;
+ int CVMX_BOOTMEM_NAMED_GET_NAME (int,char*,int) ;
+ scalar_t__ __cvmx_bootmem_check_version (int) ;
+ int base_addr ;
+ scalar_t__ cvmx_bootmem_desc_addr ;
+ int cvmx_dprintf (char*,...) ;
+ int named_block_array_addr ;
+ int named_block_name_len ;
+ int named_block_num_blocks ;
+ int size ;
 
 void cvmx_bootmem_phy_named_block_print(void)
 {
@@ -37,10 +37,10 @@ void cvmx_bootmem_phy_named_block_print(void)
     int name_length = CVMX_BOOTMEM_DESC_GET_FIELD(named_block_name_len);
     uint64_t named_block_addr = named_block_array_addr;
 
-#ifdef DEBUG
-    cvmx_dprintf("cvmx_bootmem_phy_named_block_print, desc addr: 0x%llx\n",
-        (ULL)cvmx_bootmem_desc_addr);
-#endif
+
+
+
+
     if (__cvmx_bootmem_check_version(3))
         return;
     cvmx_dprintf("List of currently allocated named bootmem blocks:\n");

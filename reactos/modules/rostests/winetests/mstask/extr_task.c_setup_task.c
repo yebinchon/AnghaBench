@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_CTask ; 
- int /*<<< orphan*/  CLSID_CTaskScheduler ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_ITask ; 
- int /*<<< orphan*/  IID_ITaskScheduler ; 
- scalar_t__ ITaskScheduler_NewWorkItem (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITaskScheduler_Release (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  test_task ; 
- int /*<<< orphan*/  test_task_scheduler ; 
+
+
+
+typedef char WCHAR ;
+typedef int IUnknown ;
+typedef scalar_t__ HRESULT ;
+typedef int BOOL ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_CTask ;
+ int CLSID_CTaskScheduler ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int FALSE ;
+ int IID_ITask ;
+ int IID_ITaskScheduler ;
+ scalar_t__ ITaskScheduler_NewWorkItem (int ,char const*,int *,int *,int **) ;
+ int ITaskScheduler_Release (int ) ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int test_task ;
+ int test_task_scheduler ;
 
 __attribute__((used)) static BOOL setup_task(void)
 {
     HRESULT hres;
     const WCHAR task_name[] = {'T','e','s','t','i','n','g', 0};
 
-    hres = CoCreateInstance(&CLSID_CTaskScheduler, NULL, CLSCTX_INPROC_SERVER,
+    hres = CoCreateInstance(&CLSID_CTaskScheduler, ((void*)0), CLSCTX_INPROC_SERVER,
             &IID_ITaskScheduler, (void **) &test_task_scheduler);
     if(hres != S_OK)
         return FALSE;

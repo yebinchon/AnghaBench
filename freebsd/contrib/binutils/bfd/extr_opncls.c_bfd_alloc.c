@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long bfd_size_type ;
-struct TYPE_3__ {int /*<<< orphan*/  memory; } ;
-typedef  TYPE_1__ bfd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfd_error_no_memory ; 
- int /*<<< orphan*/  bfd_set_error (int /*<<< orphan*/ ) ; 
- void* objalloc_alloc (int /*<<< orphan*/ ,unsigned long) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned long bfd_size_type ;
+struct TYPE_3__ {int memory; } ;
+typedef TYPE_1__ bfd ;
+
+
+ int bfd_error_no_memory ;
+ int bfd_set_error (int ) ;
+ void* objalloc_alloc (int ,unsigned long) ;
 
 void *
 bfd_alloc (bfd *abfd, bfd_size_type size)
@@ -28,11 +28,11 @@ bfd_alloc (bfd *abfd, bfd_size_type size)
   if (size != (unsigned long) size)
     {
       bfd_set_error (bfd_error_no_memory);
-      return NULL;
+      return ((void*)0);
     }
 
   ret = objalloc_alloc (abfd->memory, (unsigned long) size);
-  if (ret == NULL)
+  if (ret == ((void*)0))
     bfd_set_error (bfd_error_no_memory);
   return ret;
 }

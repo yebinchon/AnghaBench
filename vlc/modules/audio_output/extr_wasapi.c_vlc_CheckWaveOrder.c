@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_4__ {int /*<<< orphan*/  dwChannelMask; } ;
-typedef  TYPE_1__ WAVEFORMATEXTENSIBLE ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_4__ {int dwChannelMask; } ;
+typedef TYPE_1__ WAVEFORMATEXTENSIBLE ;
 struct TYPE_5__ {scalar_t__ wFormatTag; } ;
-typedef  TYPE_2__ WAVEFORMATEX ;
+typedef TYPE_2__ WAVEFORMATEX ;
 
-/* Variables and functions */
- scalar_t__ WAVE_FORMAT_EXTENSIBLE ; 
- int aout_CheckChannelReorder (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  chans_in ; 
- int /*<<< orphan*/  chans_out ; 
+
+ scalar_t__ WAVE_FORMAT_EXTENSIBLE ;
+ int aout_CheckChannelReorder (int ,int ,int ,int *) ;
+ int chans_in ;
+ int chans_out ;
 
 __attribute__((used)) static unsigned vlc_CheckWaveOrder (const WAVEFORMATEX *restrict wf,
                                     uint8_t *restrict table)

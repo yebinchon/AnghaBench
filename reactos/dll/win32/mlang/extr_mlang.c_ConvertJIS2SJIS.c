@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  unsigned char* LPSTR ;
-typedef  unsigned char* LPCSTR ;
-typedef  size_t DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  jis2sjis (unsigned char*,unsigned char*) ; 
+
+
+
+typedef int UINT ;
+typedef unsigned char* LPSTR ;
+typedef unsigned char* LPCSTR ;
+typedef size_t DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int jis2sjis (unsigned char*,unsigned char*) ;
 
 __attribute__((used)) static UINT ConvertJIS2SJIS(LPCSTR input, DWORD count, LPSTR output)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static UINT ConvertJIS2SJIS(LPCSTR input, DWORD count, LPS
     while (i < count)
     {
         p = input[i];
-        if (p == 0x1b /* ESC */)
+        if (p == 0x1b )
         {
             i++;
             if (i >= count)

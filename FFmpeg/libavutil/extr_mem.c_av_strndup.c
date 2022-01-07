@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* av_realloc (int /*<<< orphan*/ *,size_t) ; 
- char* memchr (char const*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
+ char* av_realloc (int *,size_t) ;
+ char* memchr (char const*,int ,size_t) ;
+ int memcpy (char*,char const*,size_t) ;
 
 char *av_strndup(const char *s, size_t len)
 {
-    char *ret = NULL, *end;
+    char *ret = ((void*)0), *end;
 
     if (!s)
-        return NULL;
+        return ((void*)0);
 
     end = memchr(s, 0, len);
     if (end)
         len = end - s;
 
-    ret = av_realloc(NULL, len + 1);
+    ret = av_realloc(((void*)0), len + 1);
     if (!ret)
-        return NULL;
+        return ((void*)0);
 
     memcpy(ret, s, len);
     ret[len] = 0;

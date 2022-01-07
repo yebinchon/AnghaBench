@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cRess_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXM_THROW (int,char*,char const*,int /*<<< orphan*/ ) ; 
- int FUZ_usage (char const* const) ; 
- int /*<<< orphan*/  LZ4_VERSION_STRING ; 
- int createCResources (int /*<<< orphan*/ *) ; 
- int displayLevel ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int frameCheck (int /*<<< orphan*/ ,int /*<<< orphan*/ *,unsigned int,size_t) ; 
- int /*<<< orphan*/  freeCResources (int /*<<< orphan*/ ) ; 
- int no_prompt ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int use_pause ; 
+
+
+
+typedef int cRess_t ;
+typedef int FILE ;
+
+
+ int DISPLAY (char*,int,int ) ;
+ int EXM_THROW (int,char*,char const*,int ) ;
+ int FUZ_usage (char const* const) ;
+ int LZ4_VERSION_STRING ;
+ int createCResources (int *) ;
+ int displayLevel ;
+ int errno ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int frameCheck (int ,int *,unsigned int,size_t) ;
+ int freeCResources (int ) ;
+ int no_prompt ;
+ int strcmp (char const*,char*) ;
+ int strerror (int ) ;
+ int use_pause ;
 
 int main(int argc, const char** argv)
 {
@@ -37,13 +37,13 @@ int main(int argc, const char** argv)
     size_t blockSize=0;
     const char* const programName = argv[0];
 
-    /* Check command line */
+
     for (argNb=1; argNb<argc; argNb++) {
         const char* argument = argv[argNb];
 
-        if(!argument) continue;   /* Protection if argument empty */
+        if(!argument) continue;
 
-        /* Decode command (note : aggregated short commands are allowed) */
+
         if (argument[0]=='-') {
             if (!strcmp(argument, "--no-prompt")) {
                 no_prompt=1;
@@ -65,7 +65,7 @@ int main(int argc, const char** argv)
                     argument++;
                     displayLevel--;
                     break;
-                case 'p': /* pause at the end */
+                case 'p':
                     argument++;
                     use_pause = 1;
                     break;
@@ -105,7 +105,7 @@ int main(int argc, const char** argv)
             err = createCResources(&ress);
             if (err) return (err);
             srcFile = fopen(argument, "rb");
-            if ( srcFile==NULL ) {
+            if ( srcFile==((void*)0) ) {
                 freeCResources(ress);
                 EXM_THROW(1, "%s: %s \n", argument, strerror(errno));
             }

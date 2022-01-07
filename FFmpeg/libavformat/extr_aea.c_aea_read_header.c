@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  pb; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int pb; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
-struct TYPE_8__ {int channels; int sample_rate; int bit_rate; int block_align; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_2__ AVStream ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_8__ {int channels; int sample_rate; int bit_rate; int block_align; int channel_layout; int codec_id; int codec_type; } ;
+typedef TYPE_2__ AVStream ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AT1_SU_SIZE ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_MONO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
- int /*<<< orphan*/  AV_CODEC_ID_ATRAC1 ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int) ; 
- TYPE_2__* avformat_new_stream (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ ,int) ; 
+
+ int AT1_SU_SIZE ;
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CH_LAYOUT_MONO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CODEC_ID_ATRAC1 ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_log (TYPE_3__*,int ,char*,int) ;
+ TYPE_2__* avformat_new_stream (TYPE_3__*,int *) ;
+ int avio_r8 (int ) ;
+ int avio_skip (int ,int) ;
 
 __attribute__((used)) static int aea_read_header(AVFormatContext *s)
 {
-    AVStream *st = avformat_new_stream(s, NULL);
+    AVStream *st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 
-    /* Parse the amount of channels and skip to pos 2048(0x800) */
+
     avio_skip(s->pb, 264);
     st->codecpar->channels = avio_r8(s->pb);
     avio_skip(s->pb, 1783);
 
 
-    st->codecpar->codec_type     = AVMEDIA_TYPE_AUDIO;
-    st->codecpar->codec_id       = AV_CODEC_ID_ATRAC1;
-    st->codecpar->sample_rate    = 44100;
-    st->codecpar->bit_rate       = 292000;
+    st->codecpar->codec_type = AVMEDIA_TYPE_AUDIO;
+    st->codecpar->codec_id = AV_CODEC_ID_ATRAC1;
+    st->codecpar->sample_rate = 44100;
+    st->codecpar->bit_rate = 292000;
 
     if (st->codecpar->channels != 1 && st->codecpar->channels != 2) {
         av_log(s, AV_LOG_ERROR, "Channels %d not supported!\n", st->codecpar->channels);

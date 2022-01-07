@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * tq; int /*<<< orphan*/  work; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * tq; int work; } ;
 struct lio {TYPE_1__ rx_status_tq; } ;
 struct ifnet {int dummy; } ;
 
-/* Variables and functions */
- struct lio* if_getsoftc (struct ifnet*) ; 
- scalar_t__ taskqueue_cancel_timeout (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_drain_timeout (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskqueue_free (int /*<<< orphan*/ *) ; 
+
+ struct lio* if_getsoftc (struct ifnet*) ;
+ scalar_t__ taskqueue_cancel_timeout (int *,int *,int *) ;
+ int taskqueue_drain_timeout (int *,int *) ;
+ int taskqueue_free (int *) ;
 
 __attribute__((used)) static void
 lio_cleanup_rx_oom_poll_fn(struct ifnet *ifp)
 {
-	struct lio	*lio = if_getsoftc(ifp);
+ struct lio *lio = if_getsoftc(ifp);
 
-	if (lio->rx_status_tq.tq != NULL) {
-		while (taskqueue_cancel_timeout(lio->rx_status_tq.tq,
-						&lio->rx_status_tq.work, NULL))
-			taskqueue_drain_timeout(lio->rx_status_tq.tq,
-						&lio->rx_status_tq.work);
+ if (lio->rx_status_tq.tq != ((void*)0)) {
+  while (taskqueue_cancel_timeout(lio->rx_status_tq.tq,
+      &lio->rx_status_tq.work, ((void*)0)))
+   taskqueue_drain_timeout(lio->rx_status_tq.tq,
+      &lio->rx_status_tq.work);
 
-		taskqueue_free(lio->rx_status_tq.tq);
+  taskqueue_free(lio->rx_status_tq.tq);
 
-		lio->rx_status_tq.tq = NULL;
-	}
+  lio->rx_status_tq.tq = ((void*)0);
+ }
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ svn_wc_operation_t ;
-typedef  scalar_t__ svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-struct TYPE_7__ {int /*<<< orphan*/ * tree_conflict_incoming_details; } ;
-typedef  TYPE_1__ svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,scalar_t__,...) ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  conflict_tree_get_incoming_description_generic (char const**,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ describe_incoming_edit_list_modified_revs (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* describe_incoming_edit_upon_switch (char const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- char* describe_incoming_edit_upon_update (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_new_repos_location (char const**,scalar_t__*,scalar_t__*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_client_conflict_get_incoming_old_repos_location (char const**,scalar_t__*,scalar_t__*,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_client_conflict_get_operation (TYPE_1__*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_symlink ; 
- scalar_t__ svn_wc_operation_merge ; 
- scalar_t__ svn_wc_operation_switch ; 
- scalar_t__ svn_wc_operation_update ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ svn_wc_operation_t ;
+typedef scalar_t__ svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+struct TYPE_7__ {int * tree_conflict_incoming_details; } ;
+typedef TYPE_1__ svn_client_conflict_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* _ (char*) ;
+ char* apr_psprintf (int *,char*,char const*,scalar_t__,...) ;
+ char* apr_pstrdup (int *,char const*) ;
+ int conflict_tree_get_incoming_description_generic (char const**,TYPE_1__*,int *,int *,int *) ;
+ scalar_t__ describe_incoming_edit_list_modified_revs (int *,int *) ;
+ char* describe_incoming_edit_upon_switch (char const*,scalar_t__,scalar_t__,int *) ;
+ char* describe_incoming_edit_upon_update (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int *) ;
+ int svn_client_conflict_get_incoming_new_repos_location (char const**,scalar_t__*,scalar_t__*,TYPE_1__*,int *,int *) ;
+ int svn_client_conflict_get_incoming_old_repos_location (char const**,scalar_t__*,scalar_t__*,TYPE_1__*,int *,int *) ;
+ scalar_t__ svn_client_conflict_get_operation (TYPE_1__*) ;
+ int * svn_error_trace (int ) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_symlink ;
+ scalar_t__ svn_wc_operation_merge ;
+ scalar_t__ svn_wc_operation_switch ;
+ scalar_t__ svn_wc_operation_update ;
 
 __attribute__((used)) static svn_error_t *
 conflict_tree_get_description_incoming_edit(
@@ -60,7 +60,7 @@ conflict_tree_get_description_incoming_edit(
   svn_node_kind_t new_node_kind;
   apr_array_header_t *edits;
 
-  if (conflict->tree_conflict_incoming_details == NULL)
+  if (conflict->tree_conflict_incoming_details == ((void*)0))
     return svn_error_trace(conflict_tree_get_incoming_description_generic(
                              incoming_change_description, conflict, ctx,
                              result_pool, scratch_pool));
@@ -85,7 +85,7 @@ conflict_tree_get_description_incoming_edit(
                                                 new_node_kind, scratch_pool);
   else if (conflict_operation == svn_wc_operation_merge)
     {
-      /* Handle merge inline because it returns early sometimes. */
+
       if (old_rev < new_rev)
         {
           if (old_rev + 1 == new_rev)
@@ -180,7 +180,7 @@ conflict_tree_get_description_incoming_edit(
                                         "during reverse-merge of\n"
                                         "'^/%s:%ld-%ld'"),
                                       new_repos_relpath, new_rev + 1, old_rev);
-                
+
               else
                 action = apr_psprintf(scratch_pool,
                                       _("Changes from the following revisions "

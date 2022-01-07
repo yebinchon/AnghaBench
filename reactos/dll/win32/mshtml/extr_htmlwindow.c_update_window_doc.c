@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLDocument ;
-typedef  int /*<<< orphan*/  nsIDOMDocument ;
-typedef  int /*<<< orphan*/  nsAString ;
+
+
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMHTMLDocument ;
+typedef int nsIDOMDocument ;
+typedef int nsAString ;
 struct TYPE_14__ {TYPE_10__* doc_node; TYPE_4__* window; } ;
 struct TYPE_17__ {scalar_t__ usermode; TYPE_3__ basedoc; } ;
 struct TYPE_12__ {TYPE_4__* outer_window; } ;
 struct TYPE_16__ {TYPE_10__* doc; TYPE_1__ base; } ;
 struct TYPE_13__ {TYPE_5__* inner_window; } ;
-struct TYPE_15__ {TYPE_8__* doc_obj; TYPE_5__* pending_window; TYPE_2__ base; int /*<<< orphan*/  nswindow; } ;
-struct TYPE_11__ {int /*<<< orphan*/  basedoc; int /*<<< orphan*/  nsdoc; } ;
-typedef  char PRUnichar ;
-typedef  TYPE_4__ HTMLOuterWindow ;
-typedef  TYPE_5__ HTMLInnerWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_15__ {TYPE_8__* doc_obj; TYPE_5__* pending_window; TYPE_2__ base; int nswindow; } ;
+struct TYPE_11__ {int basedoc; int nsdoc; } ;
+typedef char PRUnichar ;
+typedef TYPE_4__ HTMLOuterWindow ;
+typedef TYPE_5__ HTMLInnerWindow ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ EDITMODE ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLDocument ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  create_doc_from_nsdoc (int /*<<< orphan*/ *,TYPE_8__*,TYPE_5__*,TYPE_10__**) ; 
- int /*<<< orphan*/  detach_inner_window (TYPE_5__*) ; 
- int /*<<< orphan*/  htmldoc_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  htmldoc_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  nsIDOMDocument_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMHTMLDocument_SetDesignMode (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMWindow_GetDocument (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ EDITMODE ;
+ int ERR (char*,...) ;
+ int E_FAIL ;
+ int E_UNEXPECTED ;
+ scalar_t__ FAILED (int ) ;
+ int IID_nsIDOMHTMLDocument ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int assert (int) ;
+ int create_doc_from_nsdoc (int *,TYPE_8__*,TYPE_5__*,TYPE_10__**) ;
+ int detach_inner_window (TYPE_5__*) ;
+ int htmldoc_addref (int *) ;
+ int htmldoc_release (int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,char const*) ;
+ int nsIDOMDocument_QueryInterface (int *,int *,void**) ;
+ int nsIDOMDocument_Release (int *) ;
+ int nsIDOMHTMLDocument_Release (int *) ;
+ int nsIDOMHTMLDocument_SetDesignMode (int ,int *) ;
+ int nsIDOMWindow_GetDocument (int ,int **) ;
 
 HRESULT update_window_doc(HTMLInnerWindow *window)
 {
@@ -109,7 +109,7 @@ HRESULT update_window_doc(HTMLInnerWindow *window)
     if(outer_window->base.inner_window)
         detach_inner_window(outer_window->base.inner_window);
     outer_window->base.inner_window = window;
-    outer_window->pending_window = NULL;
+    outer_window->pending_window = ((void*)0);
 
     if(outer_window->doc_obj->basedoc.window == outer_window || !outer_window->doc_obj->basedoc.window) {
         if(outer_window->doc_obj->basedoc.doc_node)

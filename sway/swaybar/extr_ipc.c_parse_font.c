@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strdup (char const*) ; 
- scalar_t__ strncmp (char*,char const*,int) ; 
+ char* strdup (char const*) ;
+ scalar_t__ strncmp (char*,char const*,int) ;
 
 char *parse_font(const char *font) {
-	char *new_font = NULL;
-	if (strncmp("pango:", font, 6) == 0) {
-		font += 6;
-	}
-	new_font = strdup(font);
-	return new_font;
+ char *new_font = ((void*)0);
+ if (strncmp("pango:", font, 6) == 0) {
+  font += 6;
+ }
+ new_font = strdup(font);
+ return new_font;
 }

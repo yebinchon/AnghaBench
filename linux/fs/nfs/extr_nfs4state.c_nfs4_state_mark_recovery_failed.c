@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfs4_state {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NFS_STATE_RECOVERY_FAILED ; 
- int /*<<< orphan*/  nfs4_state_mark_open_context_bad (struct nfs4_state*,int) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct nfs4_state {int flags; } ;
+
+
+ int NFS_STATE_RECOVERY_FAILED ;
+ int nfs4_state_mark_open_context_bad (struct nfs4_state*,int) ;
+ int set_bit (int ,int *) ;
 
 __attribute__((used)) static void nfs4_state_mark_recovery_failed(struct nfs4_state *state, int error)
 {
-	set_bit(NFS_STATE_RECOVERY_FAILED, &state->flags);
-	nfs4_state_mark_open_context_bad(state, error);
+ set_bit(NFS_STATE_RECOVERY_FAILED, &state->flags);
+ nfs4_state_mark_open_context_bad(state, error);
 }

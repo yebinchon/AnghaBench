@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * ipc_importance_delayed_drop_call ; 
- int /*<<< orphan*/  ipc_importance_delayed_drop_queue ; 
- int /*<<< orphan*/  ipc_importance_task_delayed_drop_scan ; 
- int /*<<< orphan*/  panic (char*) ; 
- int /*<<< orphan*/  queue_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * thread_call_allocate (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int * ipc_importance_delayed_drop_call ;
+ int ipc_importance_delayed_drop_queue ;
+ int ipc_importance_task_delayed_drop_scan ;
+ int panic (char*) ;
+ int queue_init (int *) ;
+ int * thread_call_allocate (int ,int *) ;
 
 void
 ipc_importance_thread_call_init(void)
 {
-	/* initialize delayed drop queue and thread-call */
-	queue_init(&ipc_importance_delayed_drop_queue);
-	ipc_importance_delayed_drop_call = 
-		thread_call_allocate(ipc_importance_task_delayed_drop_scan, NULL);
-	if (NULL == ipc_importance_delayed_drop_call) {
-		panic("ipc_importance_init");
-	}
+
+ queue_init(&ipc_importance_delayed_drop_queue);
+ ipc_importance_delayed_drop_call =
+  thread_call_allocate(ipc_importance_task_delayed_drop_scan, ((void*)0));
+ if (((void*)0) == ipc_importance_delayed_drop_call) {
+  panic("ipc_importance_init");
+ }
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  item ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int item ;
 struct TYPE_3__ {int cbSize; int fMask; scalar_t__ hSubMenu; } ;
-typedef  TYPE_1__ MENUITEMINFOW ;
-typedef  scalar_t__ HMENU ;
+typedef TYPE_1__ MENUITEMINFOW ;
+typedef scalar_t__ HMENU ;
 
-/* Variables and functions */
- scalar_t__ GetMenuItemInfoW (scalar_t__,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int MIIM_DATA ; 
- int MIIM_SUBMENU ; 
- int /*<<< orphan*/  TRUE ; 
+
+ scalar_t__ GetMenuItemInfoW (scalar_t__,int,int ,TYPE_1__*) ;
+ int MIIM_DATA ;
+ int MIIM_SUBMENU ;
+ int TRUE ;
 
 __attribute__((used)) static int get_menu_item_count(HMENU menu)
 {

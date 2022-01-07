@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uchar ;
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINTF_D (int) ; 
- int F_NOWAIT ; 
- int /*<<< orphan*/  SIGHUP ; 
- int /*<<< orphan*/  SIGTSTP ; 
- int WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- int /*<<< orphan*/  oldsighup ; 
- int /*<<< orphan*/  oldsigtstp ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int waitpid (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uchar ;
+typedef int pid_t ;
+
+
+ int DPRINTF_D (int) ;
+ int F_NOWAIT ;
+ int SIGHUP ;
+ int SIGTSTP ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ int oldsighup ;
+ int oldsigtstp ;
+ int signal (int ,int ) ;
+ int waitpid (int ,int*,int ) ;
 
 __attribute__((used)) static int join(pid_t p, uchar flag)
 {
-	int status = 0xFFFF;
+ int status = 0xFFFF;
 
-	if (!(flag & F_NOWAIT)) {
-		/* wait for the child to exit */
-		do {
-		} while (waitpid(p, &status, 0) == -1);
+ if (!(flag & F_NOWAIT)) {
 
-		if (WIFEXITED(status)) {
-			status = WEXITSTATUS(status);
-			DPRINTF_D(status);
-		}
-	}
+  do {
+  } while (waitpid(p, &status, 0) == -1);
 
-	/* restore parent's signal handling */
-	signal(SIGHUP, oldsighup);
-	signal(SIGTSTP, oldsigtstp);
+  if (WIFEXITED(status)) {
+   status = WEXITSTATUS(status);
+   DPRINTF_D(status);
+  }
+ }
 
-	return status;
+
+ signal(SIGHUP, oldsighup);
+ signal(SIGTSTP, oldsigtstp);
+
+ return status;
 }

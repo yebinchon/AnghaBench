@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_set_flags_long {int flags; int and_mask; int xor_mask; } ;
 struct lev_set_flags {int flags; int and_mask; int xor_mask; } ;
 struct lev_change_flags_long {int flags; int and_mask; int xor_mask; } ;
-typedef  int /*<<< orphan*/  object_id_t ;
-typedef  int /*<<< orphan*/  list_id_t ;
+typedef int object_id_t ;
+typedef int list_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIRST_INT (int /*<<< orphan*/ ) ; 
- struct lev_set_flags_long* LEV_ADJUST_LO (struct lev_set_flags_long*) ; 
- scalar_t__ LEV_LI_CHANGE_FLAGS_LONG ; 
- scalar_t__ LEV_LI_DECR_FLAGS ; 
- scalar_t__ LEV_LI_INCR_FLAGS ; 
- scalar_t__ LEV_LI_SET_FLAGS ; 
- scalar_t__ LEV_LI_SET_FLAGS_LONG ; 
- struct lev_set_flags_long* alloc_log_event (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ conv_list_id (int /*<<< orphan*/ ) ; 
- scalar_t__ lev_list_object_bytes ; 
- scalar_t__ metafile_mode ; 
- scalar_t__ prepare_list_metafile (int /*<<< orphan*/ ,int) ; 
- int set_entry_flags (struct lev_set_flags_long*) ; 
- int /*<<< orphan*/  upcopy_list_object_id (struct lev_set_flags_long*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FIRST_INT (int ) ;
+ struct lev_set_flags_long* LEV_ADJUST_LO (struct lev_set_flags_long*) ;
+ scalar_t__ LEV_LI_CHANGE_FLAGS_LONG ;
+ scalar_t__ LEV_LI_DECR_FLAGS ;
+ scalar_t__ LEV_LI_INCR_FLAGS ;
+ scalar_t__ LEV_LI_SET_FLAGS ;
+ scalar_t__ LEV_LI_SET_FLAGS_LONG ;
+ struct lev_set_flags_long* alloc_log_event (scalar_t__,scalar_t__,int ) ;
+ scalar_t__ conv_list_id (int ) ;
+ scalar_t__ lev_list_object_bytes ;
+ scalar_t__ metafile_mode ;
+ scalar_t__ prepare_list_metafile (int ,int) ;
+ int set_entry_flags (struct lev_set_flags_long*) ;
+ int upcopy_list_object_id (struct lev_set_flags_long*,int ,int ) ;
 
 int do_change_entry_flags (list_id_t list_id, object_id_t object_id, int set_flags, int clear_flags) {
   int res = 0;

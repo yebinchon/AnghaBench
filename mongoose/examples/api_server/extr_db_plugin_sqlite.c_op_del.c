@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mg_str {int /*<<< orphan*/  len; int /*<<< orphan*/  p; } ;
+
+
+
+
+struct mg_str {int len; int p; } ;
 struct mg_connection {int dummy; } ;
 struct http_message {int dummy; } ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+typedef int sqlite3_stmt ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  mg_printf (struct mg_connection*,char*,char*) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (void*,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int mg_printf (struct mg_connection*,char*,char*) ;
+ int sqlite3_bind_text (int *,int,int ,int ,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare_v2 (void*,char*,int,int **,int *) ;
+ int sqlite3_step (int *) ;
 
 __attribute__((used)) static void op_del(struct mg_connection *nc, const struct http_message *hm,
                    const struct mg_str *key, void *db) {
-  sqlite3_stmt *stmt = NULL;
+  sqlite3_stmt *stmt = ((void*)0);
   int result;
   (void) hm;
 
   if (sqlite3_prepare_v2(db, "DELETE FROM kv WHERE key = ?;", -1, &stmt,
-                         NULL) == SQLITE_OK) {
+                         ((void*)0)) == SQLITE_OK) {
     sqlite3_bind_text(stmt, 1, key->p, key->len, SQLITE_STATIC);
     result = sqlite3_step(stmt);
     if (result == SQLITE_OK || result == SQLITE_ROW) {

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
 struct TYPE_11__ {int duration; } ;
-struct TYPE_13__ {int size; TYPE_2__ s; int /*<<< orphan*/  const* data; } ;
-typedef  TYPE_4__ hb_buffer_t ;
-struct TYPE_12__ {int sample_rate; int channels; int sample_size; int /*<<< orphan*/  sample_fmt; } ;
+struct TYPE_13__ {int size; TYPE_2__ s; int const* data; } ;
+typedef TYPE_4__ hb_buffer_t ;
+struct TYPE_12__ {int sample_rate; int channels; int sample_size; int sample_fmt; } ;
 struct TYPE_10__ {int sample_rate; } ;
-struct TYPE_14__ {TYPE_3__ out; int /*<<< orphan*/  dual_mono_right_only; scalar_t__ dual_mono_downmix; int /*<<< orphan*/ * swresample; TYPE_1__ in; scalar_t__ resample_needed; } ;
-typedef  TYPE_5__ hb_audio_resample_t ;
+struct TYPE_14__ {TYPE_3__ out; int dual_mono_right_only; scalar_t__ dual_mono_downmix; int * swresample; TYPE_1__ in; scalar_t__ resample_needed; } ;
+typedef TYPE_5__ hb_audio_resample_t ;
 
-/* Variables and functions */
- int av_samples_get_buffer_size (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_buffer_close (TYPE_4__**) ; 
- TYPE_4__* hb_buffer_init (int) ; 
- int /*<<< orphan*/  hb_error (char*) ; 
- int /*<<< orphan*/  hb_log (char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int) ; 
- int swr_convert (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int,int /*<<< orphan*/  const**,int) ; 
+
+ int av_samples_get_buffer_size (int *,int,int,int ,int ) ;
+ int hb_buffer_close (TYPE_4__**) ;
+ TYPE_4__* hb_buffer_init (int) ;
+ int hb_error (char*) ;
+ int hb_log (char*) ;
+ int memcpy (int const*,int const*,int) ;
+ int swr_convert (int *,int const**,int,int const**,int) ;
 
 hb_buffer_t* hb_audio_resample(hb_audio_resample_t *resample,
                                const uint8_t **samples, int nsamples)
 {
-    if (resample == NULL)
+    if (resample == ((void*)0))
     {
         hb_error("hb_audio_resample: resample is NULL");
-        return NULL;
+        return ((void*)0);
     }
-    if (resample->resample_needed && resample->swresample == NULL)
+    if (resample->resample_needed && resample->swresample == ((void*)0))
     {
         hb_error("hb_audio_resample: resample needed but libswresample context "
                  "is NULL");
-        return NULL;
+        return ((void*)0);
     }
 
     hb_buffer_t *out;
@@ -53,14 +53,14 @@ hb_buffer_t* hb_audio_resample(hb_audio_resample_t *resample,
 
     if (resample->resample_needed)
     {
-        out_samples = nsamples  * resample->out.sample_rate /
+        out_samples = nsamples * resample->out.sample_rate /
                                   resample->in.sample_rate + 1;
-        out_size = av_samples_get_buffer_size(NULL, resample->out.channels,
+        out_size = av_samples_get_buffer_size(((void*)0), resample->out.channels,
                                               out_samples,
                                               resample->out.sample_fmt, 0);
         out = hb_buffer_init(out_size);
         out_samples = swr_convert(resample->swresample, &out->data, out_samples,
-                                                        samples,    nsamples);
+                                                        samples, nsamples);
 
         if (out_samples <= 0)
         {
@@ -68,9 +68,9 @@ hb_buffer_t* hb_audio_resample(hb_audio_resample_t *resample,
             {
                 hb_log("hb_audio_resample: swr_convert() failed");
             }
-            // don't send empty buffers downstream (EOF)
+
             hb_buffer_close(&out);
-            return NULL;
+            return ((void*)0);
         }
         out->size = (out_samples *
                      resample->out.sample_size * resample->out.channels);
@@ -84,12 +84,12 @@ hb_buffer_t* hb_audio_resample(hb_audio_resample_t *resample,
         memcpy(out->data, samples[0], out_size);
     }
 
-    /*
-     * Dual Mono to Mono.
-     *
-     * Copy all left or right samples to the first half of the buffer and halve
-     * the buffer size.
-     */
+
+
+
+
+
+
     if (resample->dual_mono_downmix)
     {
         int ii, jj = !!resample->dual_mono_right_only;

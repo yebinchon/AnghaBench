@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lemon {char* filename; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int lemonStrlen (char const*) ; 
- int /*<<< orphan*/  lemon_strcat (char*,char const*) ; 
- int /*<<< orphan*/  lemon_strcpy (char*,char const*) ; 
- scalar_t__ malloc (int) ; 
- char const* outputDir ; 
- int /*<<< orphan*/  stderr ; 
- char* strrchr (char*,char) ; 
+
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int lemonStrlen (char const*) ;
+ int lemon_strcat (char*,char const*) ;
+ int lemon_strcpy (char*,char const*) ;
+ scalar_t__ malloc (int) ;
+ char const* outputDir ;
+ int stderr ;
+ char* strrchr (char*,char) ;
 
 char *file_makename(struct lemon *lemp, const char *suffix)
 {

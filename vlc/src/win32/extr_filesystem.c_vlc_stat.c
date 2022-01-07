@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
+
+
+
+
+typedef int wchar_t ;
 struct stat {int dummy; } ;
 struct _stati64 {int dummy; } ;
 
-/* Variables and functions */
- int _wstati64 (int /*<<< orphan*/ *,struct stat*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  static_assert (int,char*) ; 
- int /*<<< orphan*/ * widen_path (char const*) ; 
+
+ int _wstati64 (int *,struct stat*) ;
+ int free (int *) ;
+ int static_assert (int,char*) ;
+ int * widen_path (char const*) ;
 
 int vlc_stat (const char *filename, struct stat *buf)
 {
     wchar_t *wpath = widen_path (filename);
-    if (wpath == NULL)
+    if (wpath == ((void*)0))
         return -1;
 
     static_assert (sizeof (*buf) == sizeof (struct _stati64),

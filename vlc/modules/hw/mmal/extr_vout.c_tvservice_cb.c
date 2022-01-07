@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_4__ {int need_configure_display; int /*<<< orphan*/  manage_mutex; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_4__ {int need_configure_display; int manage_mutex; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+typedef int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_UNUSED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VLC_UNUSED (int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void tvservice_cb(void *callback_data, uint32_t reason, uint32_t param1, uint32_t param2)
 {
@@ -33,6 +33,6 @@ __attribute__((used)) static void tvservice_cb(void *callback_data, uint32_t rea
     vout_display_sys_t *sys = vd->sys;
 
     vlc_mutex_lock(&sys->manage_mutex);
-    sys->need_configure_display = true;
+    sys->need_configure_display = 1;
     vlc_mutex_unlock(&sys->manage_mutex);
 }

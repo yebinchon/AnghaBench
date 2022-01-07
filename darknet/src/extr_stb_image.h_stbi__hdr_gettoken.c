@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi__context ;
 
-/* Variables and functions */
- int STBI__HDR_BUFLEN ; 
- int /*<<< orphan*/  stbi__at_eof (int /*<<< orphan*/ *) ; 
- char stbi__get8 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stbi__context ;
+
+
+ int STBI__HDR_BUFLEN ;
+ int stbi__at_eof (int *) ;
+ char stbi__get8 (int *) ;
 
 __attribute__((used)) static char *stbi__hdr_gettoken(stbi__context *z, char *buffer)
 {
@@ -27,7 +27,7 @@ __attribute__((used)) static char *stbi__hdr_gettoken(stbi__context *z, char *bu
    while (!stbi__at_eof(z) && c != '\n') {
       buffer[len++] = c;
       if (len == STBI__HDR_BUFLEN-1) {
-         // flush to end of line
+
          while (!stbi__at_eof(z) && stbi__get8(z) != '\n')
             ;
          break;

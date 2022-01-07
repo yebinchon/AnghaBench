@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ ecma_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_ASSERT (int /*<<< orphan*/ ) ; 
- scalar_t__ LIT_CHAR_ASCII_DIGITS_BEGIN ; 
- scalar_t__ LIT_CHAR_ASCII_DIGITS_END ; 
- scalar_t__ LIT_CHAR_ASCII_LOWERCASE_LETTERS_HEX_BEGIN ; 
- scalar_t__ LIT_CHAR_ASCII_LOWERCASE_LETTERS_HEX_END ; 
- scalar_t__ LIT_CHAR_ASCII_UPPERCASE_LETTERS_HEX_BEGIN ; 
- int /*<<< orphan*/  lit_char_is_hex_digit (scalar_t__) ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ ecma_char_t ;
+
+
+ int JERRY_ASSERT (int ) ;
+ scalar_t__ LIT_CHAR_ASCII_DIGITS_BEGIN ;
+ scalar_t__ LIT_CHAR_ASCII_DIGITS_END ;
+ scalar_t__ LIT_CHAR_ASCII_LOWERCASE_LETTERS_HEX_BEGIN ;
+ scalar_t__ LIT_CHAR_ASCII_LOWERCASE_LETTERS_HEX_END ;
+ scalar_t__ LIT_CHAR_ASCII_UPPERCASE_LETTERS_HEX_BEGIN ;
+ int lit_char_is_hex_digit (scalar_t__) ;
 
 uint32_t
-lit_char_hex_to_int (ecma_char_t c) /**< code unit, corresponding to
-                                     *    one of HexDigit characters */
+lit_char_hex_to_int (ecma_char_t c)
+
 {
   JERRY_ASSERT (lit_char_is_hex_digit (c));
 

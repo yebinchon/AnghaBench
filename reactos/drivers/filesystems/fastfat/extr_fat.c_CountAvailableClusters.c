@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ FatType; } ;
-struct TYPE_11__ {int /*<<< orphan*/  FatResource; int /*<<< orphan*/  AvailableClusters; TYPE_1__ FatInfo; int /*<<< orphan*/  AvailableClustersValid; } ;
-struct TYPE_10__ {int /*<<< orphan*/  QuadPart; } ;
-typedef  TYPE_2__* PLARGE_INTEGER ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_11__ {int FatResource; int AvailableClusters; TYPE_1__ FatInfo; int AvailableClustersValid; } ;
+struct TYPE_10__ {int QuadPart; } ;
+typedef TYPE_2__* PLARGE_INTEGER ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- scalar_t__ FAT12 ; 
- int /*<<< orphan*/  FAT12CountAvailableClusters (TYPE_3__*) ; 
- scalar_t__ FAT16 ; 
- int /*<<< orphan*/  FAT16CountAvailableClusters (TYPE_3__*) ; 
- int /*<<< orphan*/  FAT32CountAvailableClusters (TYPE_3__*) ; 
- scalar_t__ FATX16 ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int ExAcquireResourceExclusiveLite (int *,int ) ;
+ int ExReleaseResourceLite (int *) ;
+ scalar_t__ FAT12 ;
+ int FAT12CountAvailableClusters (TYPE_3__*) ;
+ scalar_t__ FAT16 ;
+ int FAT16CountAvailableClusters (TYPE_3__*) ;
+ int FAT32CountAvailableClusters (TYPE_3__*) ;
+ scalar_t__ FATX16 ;
+ int STATUS_SUCCESS ;
+ int TRUE ;
 
 NTSTATUS
 CountAvailableClusters(
@@ -48,7 +48,7 @@ CountAvailableClusters(
         else
             Status = FAT32CountAvailableClusters(DeviceExt);
     }
-    if (Clusters != NULL)
+    if (Clusters != ((void*)0))
     {
         Clusters->QuadPart = DeviceExt->AvailableClusters;
     }

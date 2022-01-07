@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uLongf ;
-typedef  int /*<<< orphan*/  uLong ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  Bytef ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_BLOB ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- scalar_t__ Z_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ compress (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compressBound (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uLongf ;
+typedef int uLong ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int Bytef ;
+
+
+ scalar_t__ SQLITE_BLOB ;
+ int SQLITE_TRANSIENT ;
+ scalar_t__ Z_OK ;
+ int assert (int) ;
+ scalar_t__ compress (int *,int *,int const*,int ) ;
+ int compressBound (int ) ;
+ int sqlite3_free (int *) ;
+ scalar_t__ sqlite3_malloc (int ) ;
+ int sqlite3_result_blob (int *,int *,int ,int ) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_value (int *,int *) ;
+ int * sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void sqlarCompressFunc(
   sqlite3_context *context,

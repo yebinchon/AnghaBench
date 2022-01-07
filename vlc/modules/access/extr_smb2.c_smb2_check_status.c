@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct access_sys {int error_status; int res_done; int /*<<< orphan*/  smb2; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct access_sys {int error_status; int res_done; int smb2; } ;
 struct TYPE_4__ {struct access_sys* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*,char const*,int,char const*) ; 
- char* smb2_get_error (int /*<<< orphan*/ ) ; 
+
+ int msg_Warn (TYPE_1__*,char*,char const*,int,char const*) ;
+ char* smb2_get_error (int ) ;
 
 __attribute__((used)) static int
 smb2_check_status(stream_t *access, int status, const char *psz_func)
@@ -33,7 +33,7 @@ smb2_check_status(stream_t *access, int status, const char *psz_func)
     }
     else
     {
-        sys->res_done = true;
+        sys->res_done = 1;
         return 0;
     }
 }

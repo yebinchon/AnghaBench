@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {TYPE_2__* iformat; } ;
 struct TYPE_10__ {scalar_t__ start_time; TYPE_1__* codecpar; } ;
-struct TYPE_9__ {int /*<<< orphan*/  raw_codec_id; } ;
-struct TYPE_8__ {int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_9__ {int raw_codec_id; } ;
+struct TYPE_8__ {int codec_id; int codec_type; } ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_SUBTITLE ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_3__* avformat_new_stream (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_SUBTITLE ;
+ int ENOMEM ;
+ TYPE_3__* avformat_new_stream (TYPE_4__*,int *) ;
 
 int ff_raw_subtitle_read_header(AVFormatContext *s)
 {
-    AVStream *st = avformat_new_stream(s, NULL);
+    AVStream *st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
     st->codecpar->codec_type = AVMEDIA_TYPE_SUBTITLE;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct screen {int /*<<< orphan*/  texture; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_UpdateYUVTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct screen {int texture; } ;
+struct TYPE_3__ {int * linesize; int * data; } ;
+typedef TYPE_1__ AVFrame ;
+
+
+ int SDL_UpdateYUVTexture (int ,int *,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void
 update_texture(struct screen *screen, const AVFrame *frame) {
-    SDL_UpdateYUVTexture(screen->texture, NULL,
+    SDL_UpdateYUVTexture(screen->texture, ((void*)0),
             frame->data[0], frame->linesize[0],
             frame->data[1], frame->linesize[1],
             frame->data[2], frame->linesize[2]);

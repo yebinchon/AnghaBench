@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int mq_detached; } ;
-typedef  TYPE_1__ shm_mq ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  scalar_t__ BgwHandleStatus ;
-typedef  int /*<<< orphan*/  BackgroundWorkerHandle ;
+typedef TYPE_1__ shm_mq ;
+typedef int pid_t ;
+typedef scalar_t__ BgwHandleStatus ;
+typedef int BackgroundWorkerHandle ;
 
-/* Variables and functions */
- scalar_t__ BGWH_NOT_YET_STARTED ; 
- scalar_t__ BGWH_STARTED ; 
- scalar_t__ GetBackgroundWorkerPid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ BGWH_NOT_YET_STARTED ;
+ scalar_t__ BGWH_STARTED ;
+ scalar_t__ GetBackgroundWorkerPid (int *,int *) ;
 
 __attribute__((used)) static bool
 shm_mq_counterparty_gone(shm_mq *mq, BackgroundWorkerHandle *handle)
 {
-	pid_t		pid;
+ pid_t pid;
 
-	/* If the queue has been detached, counterparty is definitely gone. */
-	if (mq->mq_detached)
-		return true;
 
-	/* If there's a handle, check worker status. */
-	if (handle != NULL)
-	{
-		BgwHandleStatus status;
+ if (mq->mq_detached)
+  return 1;
 
-		/* Check for unexpected worker death. */
-		status = GetBackgroundWorkerPid(handle, &pid);
-		if (status != BGWH_STARTED && status != BGWH_NOT_YET_STARTED)
-		{
-			/* Mark it detached, just to make it official. */
-			mq->mq_detached = true;
-			return true;
-		}
-	}
 
-	/* Counterparty is not definitively gone. */
-	return false;
+ if (handle != ((void*)0))
+ {
+  BgwHandleStatus status;
+
+
+  status = GetBackgroundWorkerPid(handle, &pid);
+  if (status != BGWH_STARTED && status != BGWH_NOT_YET_STARTED)
+  {
+
+   mq->mq_detached = 1;
+   return 1;
+  }
+ }
+
+
+ return 0;
 }

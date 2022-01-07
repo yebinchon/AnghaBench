@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int x; int y; int btn_l; int btn_m; int btn_r; int btn_b4; int btn_b5; int /*<<< orphan*/  whl_d; int /*<<< orphan*/  whl_u; int /*<<< orphan*/  dlt_y; int /*<<< orphan*/  dlt_x; } ;
-typedef  TYPE_1__ winraw_mouse_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int x; int y; int btn_l; int btn_m; int btn_r; int btn_b4; int btn_b5; int whl_d; int whl_u; int dlt_y; int dlt_x; } ;
+typedef TYPE_1__ winraw_mouse_t ;
 struct TYPE_10__ {int x; int y; } ;
 struct TYPE_9__ {int usFlags; int lLastX; int lLastY; int usButtonFlags; scalar_t__ usButtonData; } ;
-typedef  scalar_t__ SHORT ;
-typedef  TYPE_2__ RAWMOUSE ;
-typedef  TYPE_3__ POINT ;
-typedef  void* LONG ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef scalar_t__ SHORT ;
+typedef TYPE_2__ RAWMOUSE ;
+typedef TYPE_3__ POINT ;
+typedef void* LONG ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCursorPos (TYPE_3__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  InterlockedExchange (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  InterlockedExchangeAdd (int /*<<< orphan*/ *,int) ; 
- int MOUSE_MOVE_ABSOLUTE ; 
- int /*<<< orphan*/  RARCH_WARN (char*,int /*<<< orphan*/ ) ; 
- int RI_MOUSE_BUTTON_4_DOWN ; 
- int RI_MOUSE_BUTTON_4_UP ; 
- int RI_MOUSE_BUTTON_5_DOWN ; 
- int RI_MOUSE_BUTTON_5_UP ; 
- int RI_MOUSE_LEFT_BUTTON_DOWN ; 
- int RI_MOUSE_LEFT_BUTTON_UP ; 
- int RI_MOUSE_MIDDLE_BUTTON_DOWN ; 
- int RI_MOUSE_MIDDLE_BUTTON_UP ; 
- int RI_MOUSE_RIGHT_BUTTON_DOWN ; 
- int RI_MOUSE_RIGHT_BUTTON_UP ; 
- int RI_MOUSE_WHEEL ; 
- int /*<<< orphan*/  ScreenToClient (int /*<<< orphan*/ ,TYPE_3__*) ; 
- scalar_t__ g_mouse_xy_mapping_ready ; 
- int g_view_abs_ratio_x ; 
- int g_view_abs_ratio_y ; 
- scalar_t__ video_driver_window_get () ; 
- int /*<<< orphan*/  winraw_init_mouse_xy_mapping () ; 
+
+ int GetCursorPos (TYPE_3__*) ;
+ int GetLastError () ;
+ int InterlockedExchange (int *,int) ;
+ int InterlockedExchangeAdd (int *,int) ;
+ int MOUSE_MOVE_ABSOLUTE ;
+ int RARCH_WARN (char*,int ) ;
+ int RI_MOUSE_BUTTON_4_DOWN ;
+ int RI_MOUSE_BUTTON_4_UP ;
+ int RI_MOUSE_BUTTON_5_DOWN ;
+ int RI_MOUSE_BUTTON_5_UP ;
+ int RI_MOUSE_LEFT_BUTTON_DOWN ;
+ int RI_MOUSE_LEFT_BUTTON_UP ;
+ int RI_MOUSE_MIDDLE_BUTTON_DOWN ;
+ int RI_MOUSE_MIDDLE_BUTTON_UP ;
+ int RI_MOUSE_RIGHT_BUTTON_DOWN ;
+ int RI_MOUSE_RIGHT_BUTTON_UP ;
+ int RI_MOUSE_WHEEL ;
+ int ScreenToClient (int ,TYPE_3__*) ;
+ scalar_t__ g_mouse_xy_mapping_ready ;
+ int g_view_abs_ratio_x ;
+ int g_view_abs_ratio_y ;
+ scalar_t__ video_driver_window_get () ;
+ int winraw_init_mouse_xy_mapping () ;
 
 __attribute__((used)) static void winraw_update_mouse_state(winraw_mouse_t *mouse, RAWMOUSE *state)
 {
@@ -87,29 +87,29 @@ __attribute__((used)) static void winraw_update_mouse_state(winraw_mouse_t *mous
    }
 
    if (state->usButtonFlags & RI_MOUSE_LEFT_BUTTON_DOWN)
-      mouse->btn_l = true;
+      mouse->btn_l = 1;
    else if (state->usButtonFlags & RI_MOUSE_LEFT_BUTTON_UP)
-      mouse->btn_l = false;
+      mouse->btn_l = 0;
 
    if (state->usButtonFlags & RI_MOUSE_MIDDLE_BUTTON_DOWN)
-      mouse->btn_m = true;
+      mouse->btn_m = 1;
    else if (state->usButtonFlags & RI_MOUSE_MIDDLE_BUTTON_UP)
-      mouse->btn_m = false;
+      mouse->btn_m = 0;
 
    if (state->usButtonFlags & RI_MOUSE_RIGHT_BUTTON_DOWN)
-      mouse->btn_r = true;
+      mouse->btn_r = 1;
    else if (state->usButtonFlags & RI_MOUSE_RIGHT_BUTTON_UP)
-      mouse->btn_r = false;
+      mouse->btn_r = 0;
 
    if (state->usButtonFlags & RI_MOUSE_BUTTON_4_DOWN)
-      mouse->btn_b4 = true;
+      mouse->btn_b4 = 1;
    else if (state->usButtonFlags & RI_MOUSE_BUTTON_4_UP)
-      mouse->btn_b4 = false;
+      mouse->btn_b4 = 0;
 
    if (state->usButtonFlags & RI_MOUSE_BUTTON_5_DOWN)
-      mouse->btn_b5 = true;
+      mouse->btn_b5 = 1;
    else if (state->usButtonFlags & RI_MOUSE_BUTTON_5_UP)
-      mouse->btn_b5 = false;
+      mouse->btn_b5 = 0;
 
    if (state->usButtonFlags & RI_MOUSE_WHEEL)
    {

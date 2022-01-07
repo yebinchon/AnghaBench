@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_8__ {scalar_t__ i_format; } ;
 struct TYPE_9__ {TYPE_1__ audio; } ;
 struct TYPE_11__ {TYPE_2__ fmt_out; TYPE_5__* p_sys; } ;
-typedef  TYPE_4__ filter_t ;
+typedef TYPE_4__ filter_t ;
 struct TYPE_12__ {size_t i_out_offset; TYPE_3__* p_out_buf; } ;
-typedef  TYPE_5__ filter_sys_t ;
+typedef TYPE_5__ filter_sys_t ;
 struct TYPE_10__ {int* p_buffer; size_t i_buffer; } ;
 
-/* Variables and functions */
- scalar_t__ VLC_CODEC_SPDIFB ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,size_t) ; 
- int /*<<< orphan*/  set_16 (TYPE_4__*,int*,int const) ; 
- int /*<<< orphan*/  swab (int const*,int*,size_t) ; 
+
+ scalar_t__ VLC_CODEC_SPDIFB ;
+ int assert (int) ;
+ int memcpy (int*,int const*,size_t) ;
+ int set_16 (TYPE_4__*,int*,int const) ;
+ int swab (int const*,int*,size_t) ;
 
 __attribute__((used)) static void write_data( filter_t *p_filter, const void *p_buf, size_t i_size,
                         bool b_input_big_endian )
 {
     filter_sys_t *p_sys = p_filter->p_sys;
-    assert( p_sys->p_out_buf != NULL );
+    assert( p_sys->p_out_buf != ((void*)0) );
 
     bool b_output_big_endian =
         p_filter->fmt_out.audio.i_format == VLC_CODEC_SPDIFB;

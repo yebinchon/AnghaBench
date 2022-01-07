@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * path; int /*<<< orphan*/ * label; int /*<<< orphan*/ * path_c; int /*<<< orphan*/ * path_b; int /*<<< orphan*/ * exts; } ;
-typedef  TYPE_1__ menu_displaylist_info_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * path; int * label; int * path_c; int * path_b; int * exts; } ;
+typedef TYPE_1__ menu_displaylist_info_t ;
+
+
+ int free (int *) ;
 
 void menu_displaylist_info_free(menu_displaylist_info_t *info)
 {
@@ -31,9 +31,9 @@ void menu_displaylist_info_free(menu_displaylist_info_t *info)
       free(info->label);
    if (info->path)
       free(info->path);
-   info->exts   = NULL;
-   info->path_b = NULL;
-   info->path_c = NULL;
-   info->label  = NULL;
-   info->path   = NULL;
+   info->exts = ((void*)0);
+   info->path_b = ((void*)0);
+   info->path_c = ((void*)0);
+   info->label = ((void*)0);
+   info->path = ((void*)0);
 }

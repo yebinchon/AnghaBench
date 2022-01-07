@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
 struct nsim_ipsec {scalar_t__ count; TYPE_1__* sa; } ;
-struct TYPE_2__ {int /*<<< orphan*/  used; } ;
+struct TYPE_2__ {int used; } ;
 
-/* Variables and functions */
- int ENOSPC ; 
- scalar_t__ NSIM_IPSEC_MAX_SA_COUNT ; 
+
+ int ENOSPC ;
+ scalar_t__ NSIM_IPSEC_MAX_SA_COUNT ;
 
 __attribute__((used)) static int nsim_ipsec_find_empty_idx(struct nsim_ipsec *ipsec)
 {
-	u32 i;
+ u32 i;
 
-	if (ipsec->count == NSIM_IPSEC_MAX_SA_COUNT)
-		return -ENOSPC;
+ if (ipsec->count == NSIM_IPSEC_MAX_SA_COUNT)
+  return -ENOSPC;
 
-	/* search sa table */
-	for (i = 0; i < NSIM_IPSEC_MAX_SA_COUNT; i++) {
-		if (!ipsec->sa[i].used)
-			return i;
-	}
 
-	return -ENOSPC;
+ for (i = 0; i < NSIM_IPSEC_MAX_SA_COUNT; i++) {
+  if (!ipsec->sa[i].used)
+   return i;
+ }
+
+ return -ENOSPC;
 }

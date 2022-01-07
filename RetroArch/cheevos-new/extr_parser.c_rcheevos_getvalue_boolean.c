@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* value; int length; scalar_t__ is_key; } ;
-typedef  TYPE_1__ rcheevos_getvalueud_t ;
+typedef TYPE_1__ rcheevos_getvalueud_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int rcheevos_getvalue_boolean(void* userdata, int istrue)
 {
@@ -24,16 +24,16 @@ __attribute__((used)) static int rcheevos_getvalue_boolean(void* userdata, int i
    {
       if (istrue)
       {
-         ud->value  = "true";
+         ud->value = "true";
          ud->length = 4;
       }
       else
       {
-         ud->value  = "false";
+         ud->value = "false";
          ud->length = 5;
       }
 
-      ud->is_key    = 0;
+      ud->is_key = 0;
    }
 
    return 0;

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct string_enumerator {int num_resets; int num_expand; char* last_expand; } ;
-typedef  char WCHAR ;
-typedef  int LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef char WCHAR ;
+typedef int LPARAM ;
+typedef int HWND ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,int) ; 
- int /*<<< orphan*/  SetFocus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_CHAR ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  dispatch_messages () ; 
- scalar_t__ lstrcmpW (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
+
+ int ARRAY_SIZE (char*) ;
+ int EM_SETSEL ;
+ int SendMessageW (int ,int ,char,int) ;
+ int SetFocus (int ) ;
+ int WM_CHAR ;
+ int WM_SETTEXT ;
+ int dispatch_messages () ;
+ scalar_t__ lstrcmpW (char*,char*) ;
+ int ok (int,char*,int,...) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_aclist_expand(HWND hwnd_edit, void *enumerator)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct freeze_baton_t {int /*<<< orphan*/  status; int /*<<< orphan*/  args; int /*<<< orphan*/  command; } ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ apr_file_open_stderr (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_file_open_stdin (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_file_open_stdout (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_wrap_apr (scalar_t__,char*) ; 
- int /*<<< orphan*/  svn_io_run_cmd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+struct freeze_baton_t {int status; int args; int command; } ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ scalar_t__ apr_file_open_stderr (int **,int *) ;
+ scalar_t__ apr_file_open_stdin (int **,int *) ;
+ scalar_t__ apr_file_open_stdout (int **,int *) ;
+ int * svn_error_wrap_apr (scalar_t__,char*) ;
+ int svn_io_run_cmd (int *,int ,int ,int *,int *,int ,int *,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 freeze_body(void *baton,
@@ -44,8 +44,8 @@ freeze_body(void *baton,
   if (apr_err)
     return svn_error_wrap_apr(apr_err, "Can't open stderr");
 
-  SVN_ERR(svn_io_run_cmd(NULL, b->command, b->args, &b->status,
-                         NULL, TRUE,
+  SVN_ERR(svn_io_run_cmd(((void*)0), b->command, b->args, &b->status,
+                         ((void*)0), TRUE,
                          infile, outfile, errfile, pool));
 
   return SVN_NO_ERROR;

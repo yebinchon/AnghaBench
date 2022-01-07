@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  X509_NAME ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_HASH_KEY_STRING ; 
- int /*<<< orphan*/  NID_commonName ; 
- int /*<<< orphan*/  NID_countryName ; 
- int /*<<< orphan*/  NID_localityName ; 
- int /*<<< orphan*/  NID_organizationName ; 
- int /*<<< orphan*/  NID_organizationalUnitName ; 
- int /*<<< orphan*/  NID_pkcs9_emailAddress ; 
- int /*<<< orphan*/  NID_stateOrProvinceName ; 
- int X509_NAME_get_text_by_NID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pstrdup_escape_nul_bytes (char*,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int X509_NAME ;
+
+
+ int APR_HASH_KEY_STRING ;
+ int NID_commonName ;
+ int NID_countryName ;
+ int NID_localityName ;
+ int NID_organizationName ;
+ int NID_organizationalUnitName ;
+ int NID_pkcs9_emailAddress ;
+ int NID_stateOrProvinceName ;
+ int X509_NAME_get_text_by_NID (int *,int ,char*,int) ;
+ int * apr_hash_make (int *) ;
+ int apr_hash_set (int *,char*,int ,int ) ;
+ int pstrdup_escape_nul_bytes (char*,int,int *) ;
 
 __attribute__((used)) static apr_hash_t *
 convert_X509_NAME_to_table(X509_NAME *org, apr_pool_t *pool)

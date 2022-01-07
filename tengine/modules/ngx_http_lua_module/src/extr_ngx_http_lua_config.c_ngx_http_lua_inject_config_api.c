@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  nginx_version ; 
- int /*<<< orphan*/  ngx_http_lua_config_configure ; 
- int /*<<< orphan*/  ngx_http_lua_config_prefix ; 
- int /*<<< orphan*/  ngx_http_lua_version ; 
+
+
+
+typedef int lua_State ;
+
+
+ int lua_createtable (int *,int ,int) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_setfield (int *,int,char*) ;
+ int nginx_version ;
+ int ngx_http_lua_config_configure ;
+ int ngx_http_lua_config_prefix ;
+ int ngx_http_lua_version ;
 
 void
 ngx_http_lua_inject_config_api(lua_State *L)
 {
-    /* ngx.config */
 
-    lua_createtable(L, 0, 6 /* nrec */);    /* .config */
 
-#if (NGX_DEBUG)
-    lua_pushboolean(L, 1);
-#else
+    lua_createtable(L, 0, 6 );
+
+
+
+
     lua_pushboolean(L, 0);
-#endif
+
     lua_setfield(L, -2, "debug");
 
     lua_pushcfunction(L, ngx_http_lua_config_prefix);

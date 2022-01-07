@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_PUBKEY ;
-typedef  int /*<<< orphan*/  X509_ALGOR ;
-typedef  int /*<<< orphan*/  X509 ;
-struct TYPE_4__ {int length; scalar_t__ type; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
-typedef  TYPE_1__ ASN1_INTEGER ;
-typedef  int /*<<< orphan*/  ASN1_BIT_STRING ;
 
-/* Variables and functions */
- long ASN1_INTEGER_get (TYPE_1__*) ; 
- int /*<<< orphan*/  ASN1_TIME_print (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ERR_pop_to_mark () ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_set_mark () ; 
- int /*<<< orphan*/  EVP_PKEY_print_public (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- scalar_t__ V_ASN1_NEG_INTEGER ; 
- int /*<<< orphan*/  X509V3_extensions_print (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,unsigned long,int) ; 
- unsigned long X509_FLAG_COMPAT ; 
- unsigned long X509_FLAG_NO_AUX ; 
- unsigned long X509_FLAG_NO_EXTENSIONS ; 
- unsigned long X509_FLAG_NO_HEADER ; 
- unsigned long X509_FLAG_NO_IDS ; 
- unsigned long X509_FLAG_NO_ISSUER ; 
- unsigned long X509_FLAG_NO_PUBKEY ; 
- unsigned long X509_FLAG_NO_SERIAL ; 
- unsigned long X509_FLAG_NO_SIGDUMP ; 
- unsigned long X509_FLAG_NO_SIGNAME ; 
- unsigned long X509_FLAG_NO_SUBJECT ; 
- unsigned long X509_FLAG_NO_VALIDITY ; 
- unsigned long X509_FLAG_NO_VERSION ; 
- scalar_t__ X509_NAME_print_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,unsigned long) ; 
- int /*<<< orphan*/  X509_PUBKEY_get0_param (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_aux_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_get0_extensions (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get0_notAfter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get0_notBefore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_get0_pubkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get0_signature (int /*<<< orphan*/  const**,int /*<<< orphan*/  const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_get0_tbs_sigalg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get0_uids (int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/ * X509_get_X509_PUBKEY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_issuer_name (int /*<<< orphan*/ *) ; 
- TYPE_1__* X509_get_serialNumber (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_get_subject_name (int /*<<< orphan*/ *) ; 
- long X509_get_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_signature_dump (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ X509_signature_print (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- unsigned long XN_FLAG_SEP_MASK ; 
- unsigned long XN_FLAG_SEP_MULTILINE ; 
- scalar_t__ i2a_ASN1_OBJECT (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int X509_PUBKEY ;
+typedef int X509_ALGOR ;
+typedef int X509 ;
+struct TYPE_4__ {int length; scalar_t__ type; int * data; } ;
+typedef int EVP_PKEY ;
+typedef int BIO ;
+typedef int ASN1_OBJECT ;
+typedef TYPE_1__ ASN1_INTEGER ;
+typedef int ASN1_BIT_STRING ;
+
+
+ long ASN1_INTEGER_get (TYPE_1__*) ;
+ int ASN1_TIME_print (int *,int ) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ scalar_t__ BIO_puts (int *,char*) ;
+ scalar_t__ BIO_write (int *,char*,int) ;
+ int ERR_pop_to_mark () ;
+ int ERR_print_errors (int *) ;
+ int ERR_set_mark () ;
+ int EVP_PKEY_print_public (int *,int *,int,int *) ;
+ int OPENSSL_free (char*) ;
+ scalar_t__ V_ASN1_NEG_INTEGER ;
+ int X509V3_extensions_print (int *,char*,int ,unsigned long,int) ;
+ unsigned long X509_FLAG_COMPAT ;
+ unsigned long X509_FLAG_NO_AUX ;
+ unsigned long X509_FLAG_NO_EXTENSIONS ;
+ unsigned long X509_FLAG_NO_HEADER ;
+ unsigned long X509_FLAG_NO_IDS ;
+ unsigned long X509_FLAG_NO_ISSUER ;
+ unsigned long X509_FLAG_NO_PUBKEY ;
+ unsigned long X509_FLAG_NO_SERIAL ;
+ unsigned long X509_FLAG_NO_SIGDUMP ;
+ unsigned long X509_FLAG_NO_SIGNAME ;
+ unsigned long X509_FLAG_NO_SUBJECT ;
+ unsigned long X509_FLAG_NO_VALIDITY ;
+ unsigned long X509_FLAG_NO_VERSION ;
+ scalar_t__ X509_NAME_print_ex (int *,int ,int,unsigned long) ;
+ int X509_PUBKEY_get0_param (int **,int *,int *,int *,int *) ;
+ int X509_aux_print (int *,int *,int ) ;
+ int X509_get0_extensions (int *) ;
+ int X509_get0_notAfter (int *) ;
+ int X509_get0_notBefore (int *) ;
+ int * X509_get0_pubkey (int *) ;
+ int X509_get0_signature (int const**,int const**,int *) ;
+ int * X509_get0_tbs_sigalg (int *) ;
+ int X509_get0_uids (int *,int const**,int const**) ;
+ int * X509_get_X509_PUBKEY (int *) ;
+ int X509_get_issuer_name (int *) ;
+ TYPE_1__* X509_get_serialNumber (int *) ;
+ int X509_get_subject_name (int *) ;
+ long X509_get_version (int *) ;
+ int X509_signature_dump (int *,int const*,int) ;
+ scalar_t__ X509_signature_print (int *,int const*,int const*) ;
+ unsigned long XN_FLAG_SEP_MASK ;
+ unsigned long XN_FLAG_SEP_MULTILINE ;
+ scalar_t__ i2a_ASN1_OBJECT (int *,int *) ;
 
 int X509_print_ex(BIO *bp, X509 *x, unsigned long nmflags,
                   unsigned long cflag)
 {
     long l;
     int ret = 0, i;
-    char *m = NULL, mlch = ' ';
+    char *m = ((void*)0), mlch = ' ';
     int nmindent = 0;
     ASN1_INTEGER *bs;
-    EVP_PKEY *pkey = NULL;
+    EVP_PKEY *pkey = ((void*)0);
     const char *neg;
 
     if ((nmflags & XN_FLAG_SEP_MASK) == XN_FLAG_SEP_MULTILINE) {
@@ -146,7 +146,7 @@ int X509_print_ex(BIO *bp, X509 *x, unsigned long nmflags,
 
         if (BIO_puts(bp, "    ") <= 0)
             goto err;
-        if (X509_signature_print(bp, tsig_alg, NULL) <= 0)
+        if (X509_signature_print(bp, tsig_alg, ((void*)0)) <= 0)
             goto err;
     }
 
@@ -185,7 +185,7 @@ int X509_print_ex(BIO *bp, X509 *x, unsigned long nmflags,
     if (!(cflag & X509_FLAG_NO_PUBKEY)) {
         X509_PUBKEY *xpkey = X509_get_X509_PUBKEY(x);
         ASN1_OBJECT *xpoid;
-        X509_PUBKEY_get0_param(&xpoid, NULL, NULL, NULL, xpkey);
+        X509_PUBKEY_get0_param(&xpoid, ((void*)0), ((void*)0), ((void*)0), xpkey);
         if (BIO_write(bp, "        Subject Public Key Info:\n", 33) <= 0)
             goto err;
         if (BIO_printf(bp, "%12sPublic Key Algorithm: ", "") <= 0)
@@ -196,24 +196,24 @@ int X509_print_ex(BIO *bp, X509 *x, unsigned long nmflags,
             goto err;
 
         pkey = X509_get0_pubkey(x);
-        if (pkey == NULL) {
+        if (pkey == ((void*)0)) {
             BIO_printf(bp, "%12sUnable to load Public Key\n", "");
             ERR_print_errors(bp);
         } else {
-            EVP_PKEY_print_public(bp, pkey, 16, NULL);
+            EVP_PKEY_print_public(bp, pkey, 16, ((void*)0));
         }
     }
 
     if (!(cflag & X509_FLAG_NO_IDS)) {
         const ASN1_BIT_STRING *iuid, *suid;
         X509_get0_uids(x, &iuid, &suid);
-        if (iuid != NULL) {
+        if (iuid != ((void*)0)) {
             if (BIO_printf(bp, "%8sIssuer Unique ID: ", "") <= 0)
                 goto err;
             if (!X509_signature_dump(bp, iuid, 12))
                 goto err;
         }
-        if (suid != NULL) {
+        if (suid != ((void*)0)) {
             if (BIO_printf(bp, "%8sSubject Unique ID: ", "") <= 0)
                 goto err;
             if (!X509_signature_dump(bp, suid, 12))

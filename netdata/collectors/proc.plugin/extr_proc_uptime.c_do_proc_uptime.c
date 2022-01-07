@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  NETDATA_CHART_PRIO_SYSTEM_UPTIME ; 
- int /*<<< orphan*/  PLUGIN_PROC_NAME ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- char* config_get (char*,char*,char*) ; 
- int /*<<< orphan*/  netdata_configured_host_prefix ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  uptime_msec (char*) ; 
+
+
+
+typedef int usec_t ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
+
+
+ int FILENAME_MAX ;
+ int NETDATA_CHART_PRIO_SYSTEM_UPTIME ;
+ int PLUGIN_PROC_NAME ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ char* config_get (char*,char*,char*) ;
+ int netdata_configured_host_prefix ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,int ) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,int ,char*,int ,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ int snprintfz (char*,int ,char*,int ,char*) ;
+ scalar_t__ unlikely (int) ;
+ int uptime_msec (char*) ;
 
 int do_proc_uptime(int update_every, usec_t dt) {
     (void)dt;
 
-    static char *uptime_filename = NULL;
+    static char *uptime_filename = ((void*)0);
     if(!uptime_filename) {
         char filename[FILENAME_MAX + 1];
         snprintfz(filename, FILENAME_MAX, "%s%s", netdata_configured_host_prefix, "/proc/uptime");
@@ -42,17 +42,17 @@ int do_proc_uptime(int update_every, usec_t dt) {
         uptime_filename = config_get("plugin:proc:/proc/uptime", "filename to monitor", filename);
     }
 
-    static RRDSET *st = NULL;
-    static RRDDIM *rd = NULL;
+    static RRDSET *st = ((void*)0);
+    static RRDDIM *rd = ((void*)0);
 
     if(unlikely(!st)) {
 
         st = rrdset_create_localhost(
                 "system"
                 , "uptime"
-                , NULL
+                , ((void*)0)
                 , "uptime"
-                , NULL
+                , ((void*)0)
                 , "System Uptime"
                 , "seconds"
                 , PLUGIN_PROC_NAME
@@ -62,7 +62,7 @@ int do_proc_uptime(int update_every, usec_t dt) {
                 , RRDSET_TYPE_LINE
         );
 
-        rd = rrddim_add(st, "uptime", NULL, 1, 1000, RRD_ALGORITHM_ABSOLUTE);
+        rd = rrddim_add(st, "uptime", ((void*)0), 1, 1000, RRD_ALGORITHM_ABSOLUTE);
     }
     else
         rrdset_next(st);

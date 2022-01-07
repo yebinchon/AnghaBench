@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct curl_fileinfo {char* filename; int size; int filetype; } ;
-struct callback_data {int /*<<< orphan*/  output; } ;
+struct callback_data {int output; } ;
 
-/* Variables and functions */
-#define  CURLFILETYPE_DIRECTORY 129 
-#define  CURLFILETYPE_FILE 128 
- long CURL_CHUNK_BGN_FUNC_FAIL ; 
- long CURL_CHUNK_BGN_FUNC_OK ; 
- long CURL_CHUNK_BGN_FUNC_SKIP ; 
- int /*<<< orphan*/  fopen (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+ long CURL_CHUNK_BGN_FUNC_FAIL ;
+ long CURL_CHUNK_BGN_FUNC_OK ;
+ long CURL_CHUNK_BGN_FUNC_SKIP ;
+ int fopen (char*,char*) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static long file_is_coming(struct curl_fileinfo *finfo,
                            struct callback_data *data,
@@ -30,10 +30,10 @@ __attribute__((used)) static long file_is_coming(struct curl_fileinfo *finfo,
          (unsigned long)finfo->size);
 
   switch(finfo->filetype) {
-  case CURLFILETYPE_DIRECTORY:
+  case 129:
     printf(" DIR\n");
     break;
-  case CURLFILETYPE_FILE:
+  case 128:
     printf("FILE ");
     break;
   default:
@@ -41,8 +41,8 @@ __attribute__((used)) static long file_is_coming(struct curl_fileinfo *finfo,
     break;
   }
 
-  if(finfo->filetype == CURLFILETYPE_FILE) {
-    /* do not transfer files >= 50B */
+  if(finfo->filetype == 128) {
+
     if(finfo->size > 50) {
       printf("SKIPPED\n");
       return CURL_CHUNK_BGN_FUNC_SKIP;

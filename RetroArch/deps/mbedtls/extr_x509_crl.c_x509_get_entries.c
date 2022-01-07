@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned char tag; unsigned char* p; size_t len; } ;
-struct TYPE_6__ {struct TYPE_6__* next; int /*<<< orphan*/  entry_ext; int /*<<< orphan*/  revocation_date; int /*<<< orphan*/  serial; TYPE_1__ raw; } ;
-typedef  TYPE_2__ mbedtls_x509_crl_entry ;
+struct TYPE_6__ {struct TYPE_6__* next; int entry_ext; int revocation_date; int serial; TYPE_1__ raw; } ;
+typedef TYPE_2__ mbedtls_x509_crl_entry ;
 
-/* Variables and functions */
- int MBEDTLS_ASN1_CONSTRUCTED ; 
- int MBEDTLS_ASN1_SEQUENCE ; 
- int MBEDTLS_ERR_ASN1_UNEXPECTED_TAG ; 
- int MBEDTLS_ERR_X509_ALLOC_FAILED ; 
- int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ; 
- TYPE_2__* mbedtls_calloc (int,int) ; 
- int mbedtls_x509_get_serial (unsigned char**,unsigned char const*,int /*<<< orphan*/ *) ; 
- int mbedtls_x509_get_time (unsigned char**,unsigned char const*,int /*<<< orphan*/ *) ; 
- int x509_get_crl_entry_ext (unsigned char**,unsigned char const*,int /*<<< orphan*/ *) ; 
+
+ int MBEDTLS_ASN1_CONSTRUCTED ;
+ int MBEDTLS_ASN1_SEQUENCE ;
+ int MBEDTLS_ERR_ASN1_UNEXPECTED_TAG ;
+ int MBEDTLS_ERR_X509_ALLOC_FAILED ;
+ int mbedtls_asn1_get_tag (unsigned char**,unsigned char const*,size_t*,int) ;
+ TYPE_2__* mbedtls_calloc (int,int) ;
+ int mbedtls_x509_get_serial (unsigned char**,unsigned char const*,int *) ;
+ int mbedtls_x509_get_time (unsigned char**,unsigned char const*,int *) ;
+ int x509_get_crl_entry_ext (unsigned char**,unsigned char const*,int *) ;
 
 __attribute__((used)) static int x509_get_entries( unsigned char **p,
                              const unsigned char *end,
@@ -80,7 +80,7 @@ __attribute__((used)) static int x509_get_entries( unsigned char **p,
         {
             cur_entry->next = mbedtls_calloc( 1, sizeof( mbedtls_x509_crl_entry ) );
 
-            if( cur_entry->next == NULL )
+            if( cur_entry->next == ((void*)0) )
                 return( MBEDTLS_ERR_X509_ALLOC_FAILED );
 
             cur_entry = cur_entry->next;

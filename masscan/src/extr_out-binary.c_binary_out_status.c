@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct TYPE_2__ {size_t bytes_written; } ;
 struct Output {TYPE_1__ rotate; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- unsigned char Out_Arp2 ; 
- unsigned char Out_Closed2 ; 
- unsigned char Out_Open2 ; 
-#define  PortStatus_Arp 130 
-#define  PortStatus_Closed 129 
-#define  PortStatus_Open 128 
- int /*<<< orphan*/  UNUSEDPARM (struct Output*) ; 
- int /*<<< orphan*/  exit (int) ; 
- size_t fwrite (unsigned char**,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
+
+ unsigned char Out_Arp2 ;
+ unsigned char Out_Closed2 ;
+ unsigned char Out_Open2 ;
+
+
+
+ int UNUSEDPARM (struct Output*) ;
+ int exit (int) ;
+ size_t fwrite (unsigned char**,int,int,int *) ;
+ int perror (char*) ;
 
 __attribute__((used)) static void
 binary_out_status(struct Output *out, FILE *fp, time_t timestamp,
@@ -37,25 +37,25 @@ binary_out_status(struct Output *out, FILE *fp, time_t timestamp,
 
     UNUSEDPARM(out);
 
-    /* [TYPE] field */
+
     switch (status) {
-    case PortStatus_Open:
+    case 128:
         foo[0] = Out_Open2;
         break;
-    case PortStatus_Closed:
+    case 129:
         foo[0] = Out_Closed2;
         break;
-    case PortStatus_Arp:
+    case 130:
         foo[0] = Out_Arp2;
         break;
     default:
         return;
     }
 
-    /* [LENGTH] field */
+
     foo[1] = 13;
 
-    /* [TIMESTAMP] field */
+
     foo[2] = (unsigned char)(timestamp>>24);
     foo[3] = (unsigned char)(timestamp>>16);
     foo[4] = (unsigned char)(timestamp>> 8);

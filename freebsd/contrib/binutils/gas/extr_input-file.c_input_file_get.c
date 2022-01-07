@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_bad (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  f_in ; 
- int /*<<< orphan*/  file_name ; 
- int fread (char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xstrerror (int /*<<< orphan*/ ) ; 
+ int _ (char*) ;
+ int as_bad (int ,int ,int ) ;
+ int errno ;
+ int f_in ;
+ int file_name ;
+ int fread (char*,int,int,int ) ;
+ int xstrerror (int ) ;
 
 __attribute__((used)) static int
 input_file_get (char *buf, int buflen)

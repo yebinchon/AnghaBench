@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int int32_t ;
 struct TYPE_11__ {int ofs; } ;
 struct TYPE_13__ {TYPE_1__ mrm; } ;
-struct TYPE_12__ {scalar_t__ r; int /*<<< orphan*/  t; int /*<<< orphan*/  i; int /*<<< orphan*/  op1; int /*<<< orphan*/  op2; } ;
-typedef  int /*<<< orphan*/  RegSet ;
-typedef  int Reg ;
-typedef  TYPE_2__ IRIns ;
-typedef  TYPE_3__ ASMState ;
+struct TYPE_12__ {scalar_t__ r; int t; int i; int op1; int op2; } ;
+typedef int RegSet ;
+typedef int Reg ;
+typedef TYPE_2__ IRIns ;
+typedef TYPE_3__ ASMState ;
 
-/* Variables and functions */
- TYPE_2__* IR (int /*<<< orphan*/ ) ; 
- scalar_t__ LJ_DUALNUM ; 
- int REX_64 ; 
- int /*<<< orphan*/  RID_MRM ; 
- int RID_NONE ; 
- scalar_t__ RID_SINK ; 
- int /*<<< orphan*/  RSET_FPR ; 
- int /*<<< orphan*/  RSET_GPR ; 
- int /*<<< orphan*/  XO_MOVSDto ; 
- int /*<<< orphan*/  XO_MOVmi ; 
- int /*<<< orphan*/  XO_MOVto ; 
- int /*<<< orphan*/  asm_fuseahuref (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_i32 (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_mrm (TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irref_isk (int /*<<< orphan*/ ) ; 
- scalar_t__ irt_isaddr (int /*<<< orphan*/ ) ; 
- scalar_t__ irt_isinteger (int /*<<< orphan*/ ) ; 
- scalar_t__ irt_islightud (int /*<<< orphan*/ ) ; 
- scalar_t__ irt_isnum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irt_ispri (int /*<<< orphan*/ ) ; 
- scalar_t__ irt_toitype (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int ra_alloc1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_hasreg (int) ; 
- int /*<<< orphan*/  rset_clear (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rset_exclude (int /*<<< orphan*/ ,int) ; 
+
+ TYPE_2__* IR (int ) ;
+ scalar_t__ LJ_DUALNUM ;
+ int REX_64 ;
+ int RID_MRM ;
+ int RID_NONE ;
+ scalar_t__ RID_SINK ;
+ int RSET_FPR ;
+ int RSET_GPR ;
+ int XO_MOVSDto ;
+ int XO_MOVmi ;
+ int XO_MOVto ;
+ int asm_fuseahuref (TYPE_3__*,int ,int ) ;
+ int emit_i32 (TYPE_3__*,int ) ;
+ int emit_mrm (TYPE_3__*,int ,int,int ) ;
+ int irref_isk (int ) ;
+ scalar_t__ irt_isaddr (int ) ;
+ scalar_t__ irt_isinteger (int ) ;
+ scalar_t__ irt_islightud (int ) ;
+ scalar_t__ irt_isnum (int ) ;
+ int irt_ispri (int ) ;
+ scalar_t__ irt_toitype (int ) ;
+ int lua_assert (int) ;
+ int ra_alloc1 (TYPE_3__*,int ,int ) ;
+ scalar_t__ ra_hasreg (int) ;
+ int rset_clear (int ,int) ;
+ int rset_exclude (int ,int) ;
 
 __attribute__((used)) static void asm_ahustore(ASMState *as, IRIns *ir)
 {
@@ -58,12 +58,12 @@ __attribute__((used)) static void asm_ahustore(ASMState *as, IRIns *ir)
     Reg src = ra_alloc1(as, ir->op2, RSET_FPR);
     asm_fuseahuref(as, ir->op1, RSET_GPR);
     emit_mrm(as, XO_MOVSDto, src, RID_MRM);
-#if LJ_64
-  } else if (irt_islightud(ir->t)) {
-    Reg src = ra_alloc1(as, ir->op2, RSET_GPR);
-    asm_fuseahuref(as, ir->op1, rset_exclude(RSET_GPR, src));
-    emit_mrm(as, XO_MOVto, src|REX_64, RID_MRM);
-#endif
+
+
+
+
+
+
   } else {
     IRIns *irr = IR(ir->op2);
     RegSet allow = RSET_GPR;

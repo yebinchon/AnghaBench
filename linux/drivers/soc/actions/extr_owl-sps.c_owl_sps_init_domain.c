@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  power_off; int /*<<< orphan*/  power_on; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int flags; int power_off; int power_on; int name; } ;
 struct owl_sps_domain {TYPE_4__ genpd; TYPE_2__* info; struct owl_sps* sps; } ;
 struct TYPE_7__ {TYPE_4__** domains; } ;
-struct owl_sps {TYPE_3__ genpd_data; TYPE_1__* info; int /*<<< orphan*/  dev; } ;
-struct TYPE_6__ {int /*<<< orphan*/  genpd_flags; int /*<<< orphan*/  name; } ;
+struct owl_sps {TYPE_3__ genpd_data; TYPE_1__* info; int dev; } ;
+struct TYPE_6__ {int genpd_flags; int name; } ;
 struct TYPE_5__ {TYPE_2__* domains; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- struct owl_sps_domain* devm_kzalloc (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  owl_sps_power_off ; 
- int /*<<< orphan*/  owl_sps_power_on ; 
- int /*<<< orphan*/  pm_genpd_init (TYPE_4__*,int /*<<< orphan*/ *,int) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ struct owl_sps_domain* devm_kzalloc (int ,int,int ) ;
+ int owl_sps_power_off ;
+ int owl_sps_power_on ;
+ int pm_genpd_init (TYPE_4__*,int *,int) ;
 
 __attribute__((used)) static int owl_sps_init_domain(struct owl_sps *sps, int index)
 {
-	struct owl_sps_domain *pd;
+ struct owl_sps_domain *pd;
 
-	pd = devm_kzalloc(sps->dev, sizeof(*pd), GFP_KERNEL);
-	if (!pd)
-		return -ENOMEM;
+ pd = devm_kzalloc(sps->dev, sizeof(*pd), GFP_KERNEL);
+ if (!pd)
+  return -ENOMEM;
 
-	pd->info = &sps->info->domains[index];
-	pd->sps = sps;
+ pd->info = &sps->info->domains[index];
+ pd->sps = sps;
 
-	pd->genpd.name = pd->info->name;
-	pd->genpd.power_on = owl_sps_power_on;
-	pd->genpd.power_off = owl_sps_power_off;
-	pd->genpd.flags = pd->info->genpd_flags;
-	pm_genpd_init(&pd->genpd, NULL, false);
+ pd->genpd.name = pd->info->name;
+ pd->genpd.power_on = owl_sps_power_on;
+ pd->genpd.power_off = owl_sps_power_off;
+ pd->genpd.flags = pd->info->genpd_flags;
+ pm_genpd_init(&pd->genpd, ((void*)0), 0);
 
-	sps->genpd_data.domains[index] = &pd->genpd;
+ sps->genpd_data.domains[index] = &pd->genpd;
 
-	return 0;
+ return 0;
 }

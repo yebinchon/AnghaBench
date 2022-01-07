@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  addr ;
-typedef  int /*<<< orphan*/  YabSock ;
+typedef int addr ;
+typedef int YabSock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  SOL_SOCKET ; 
- int /*<<< orphan*/  SO_REUSEADDR ; 
- int bind (int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  htons (int) ; 
- int listen (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int setsockopt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int INADDR_ANY ;
+ int SOCK_STREAM ;
+ int SOL_SOCKET ;
+ int SO_REUSEADDR ;
+ int bind (int ,struct sockaddr*,int) ;
+ int errno ;
+ int fprintf (int ,char*,int,char*) ;
+ int htons (int) ;
+ int listen (int ,int) ;
+ int memset (struct sockaddr_in*,int ,int) ;
+ int perror (char*) ;
+ int setsockopt (int ,int ,int ,char*,int) ;
+ int socket (int ,int ,int ) ;
+ int stderr ;
+ char* strerror (int ) ;
 
 int YabSockListenSocket(int port, YabSock *sock)
 {

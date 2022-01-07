@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int s8 ;
 
-/* Variables and functions */
-#define  BOND_LINK_BACK 131 
-#define  BOND_LINK_DOWN 130 
-#define  BOND_LINK_FAIL 129 
-#define  BOND_LINK_UP 128 
+
+
+
+typedef int s8 ;
+
+
+
+
+
+
 
 const char *bond_slave_link_status(s8 link)
 {
-	switch (link) {
-	case BOND_LINK_UP:
-		return "up";
-	case BOND_LINK_FAIL:
-		return "going down";
-	case BOND_LINK_DOWN:
-		return "down";
-	case BOND_LINK_BACK:
-		return "going back";
-	default:
-		return "unknown";
-	}
+ switch (link) {
+ case 128:
+  return "up";
+ case 129:
+  return "going down";
+ case 130:
+  return "down";
+ case 131:
+  return "going back";
+ default:
+  return "unknown";
+ }
 }

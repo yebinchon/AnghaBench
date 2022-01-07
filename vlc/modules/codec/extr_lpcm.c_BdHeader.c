@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pi_chan_table; int /*<<< orphan*/  i_chans_to_reorder; } ;
-typedef  TYPE_1__ decoder_sys_t ;
 
-/* Variables and functions */
- unsigned int AOUT_CHAN_CENTER ; 
- unsigned int AOUT_CHAN_LEFT ; 
- unsigned int AOUT_CHAN_LFE ; 
- unsigned int AOUT_CHAN_MIDDLELEFT ; 
- unsigned int AOUT_CHAN_MIDDLERIGHT ; 
- unsigned int AOUT_CHAN_REARCENTER ; 
- unsigned int AOUT_CHAN_REARLEFT ; 
- unsigned int AOUT_CHAN_REARRIGHT ; 
- unsigned int AOUT_CHAN_RIGHT ; 
- int GetDWBE (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  aout_CheckChannelReorder (int const*,int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- int* pi_3channels_in ; 
- int* pi_4channels_in ; 
- int* pi_5channels_in ; 
- int* pi_6channels_in ; 
- int* pi_7channels_in ; 
- int* pi_8channels_in ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int pi_chan_table; int i_chans_to_reorder; } ;
+typedef TYPE_1__ decoder_sys_t ;
+
+
+ unsigned int AOUT_CHAN_CENTER ;
+ unsigned int AOUT_CHAN_LEFT ;
+ unsigned int AOUT_CHAN_LFE ;
+ unsigned int AOUT_CHAN_MIDDLELEFT ;
+ unsigned int AOUT_CHAN_MIDDLERIGHT ;
+ unsigned int AOUT_CHAN_REARCENTER ;
+ unsigned int AOUT_CHAN_REARLEFT ;
+ unsigned int AOUT_CHAN_REARRIGHT ;
+ unsigned int AOUT_CHAN_RIGHT ;
+ int GetDWBE (int const*) ;
+ int aout_CheckChannelReorder (int const*,int *,unsigned int,int ) ;
+ int* pi_3channels_in ;
+ int* pi_4channels_in ;
+ int* pi_5channels_in ;
+ int* pi_6channels_in ;
+ int* pi_7channels_in ;
+ int* pi_8channels_in ;
 
 __attribute__((used)) static int BdHeader( decoder_sys_t *p_sys,
                      unsigned *pi_rate,
@@ -44,7 +44,7 @@ __attribute__((used)) static int BdHeader( decoder_sys_t *p_sys,
                      const uint8_t *p_header )
 {
     const uint32_t h = GetDWBE( p_header );
-    const uint32_t *pi_channels_in = NULL;
+    const uint32_t *pi_channels_in = ((void*)0);
     switch( ( h & 0xf000) >> 12 )
     {
     case 1:
@@ -114,8 +114,8 @@ __attribute__((used)) static int BdHeader( decoder_sys_t *p_sys,
     case 1:
         *pi_bits = 16;
         break;
-    case 2: /* 20 bits but samples are stored on 24 bits */
-    case 3: /* 24 bits */
+    case 2:
+    case 3:
         *pi_bits = 24;
         break;
     default:
@@ -139,7 +139,7 @@ __attribute__((used)) static int BdHeader( decoder_sys_t *p_sys,
     if( pi_channels_in )
     {
         p_sys->i_chans_to_reorder =
-            aout_CheckChannelReorder( pi_channels_in, NULL,
+            aout_CheckChannelReorder( pi_channels_in, ((void*)0),
                                       *pi_original_channels,
                                       p_sys->pi_chan_table );
     }

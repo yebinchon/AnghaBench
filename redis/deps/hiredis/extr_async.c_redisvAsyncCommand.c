@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  redisCallbackFn ;
-typedef  int /*<<< orphan*/  redisAsyncContext ;
 
-/* Variables and functions */
- int REDIS_ERR ; 
- int __redisAsyncCommand (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int redisvFormatCommand (char**,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+typedef int redisCallbackFn ;
+typedef int redisAsyncContext ;
+
+
+ int REDIS_ERR ;
+ int __redisAsyncCommand (int *,int *,void*,char*,int) ;
+ int free (char*) ;
+ int redisvFormatCommand (char**,char const*,int ) ;
 
 int redisvAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdata, const char *format, va_list ap) {
     char *cmd;
@@ -26,7 +26,7 @@ int redisvAsyncCommand(redisAsyncContext *ac, redisCallbackFn *fn, void *privdat
     int status;
     len = redisvFormatCommand(&cmd,format,ap);
 
-    /* We don't want to pass -1 or -2 to future functions as a length. */
+
     if (len < 0)
         return REDIS_ERR;
 

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* ir; } ;
 struct TYPE_6__ {scalar_t__ o; size_t op1; } ;
-typedef  TYPE_1__ IRIns ;
-typedef  TYPE_2__ GCtrace ;
+typedef TYPE_1__ IRIns ;
+typedef TYPE_2__ GCtrace ;
 
-/* Variables and functions */
- scalar_t__ IR_AREF ; 
- scalar_t__ IR_ASTORE ; 
- scalar_t__ IR_FSTORE ; 
- scalar_t__ IR_HREFK ; 
- scalar_t__ IR_HSTORE ; 
- scalar_t__ IR_XSTORE ; 
+
+ scalar_t__ IR_AREF ;
+ scalar_t__ IR_ASTORE ;
+ scalar_t__ IR_FSTORE ;
+ scalar_t__ IR_HREFK ;
+ scalar_t__ IR_HSTORE ;
+ scalar_t__ IR_XSTORE ;
 
 __attribute__((used)) static int snap_sunk_store2(GCtrace *T, IRIns *ira, IRIns *irs)
 {

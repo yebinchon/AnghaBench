@@ -1,110 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int point_conversion_form_t ;
-typedef  int OPTION_CHOICE ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  EVP_CIPHER ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int EC_KEY_check_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_KEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_KEY_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_KEY_set_asn1_flag (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  EC_KEY_set_conv_form (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  EC_KEY_set_enc_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_PKEY_NO_PUBKEY ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_get1_EC_KEY (int /*<<< orphan*/ *) ; 
- int FORMAT_ASN1 ; 
- int FORMAT_ENGINE ; 
- int FORMAT_PEM ; 
- int OPENSSL_EC_NAMED_CURVE ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_CHECK 147 
-#define  OPT_CIPHER 146 
-#define  OPT_CONV_FORM 145 
-#define  OPT_ENGINE 144 
-#define  OPT_EOF 143 
-#define  OPT_ERR 142 
- int /*<<< orphan*/  OPT_FMT_ANY ; 
- int /*<<< orphan*/  OPT_FMT_PEMDER ; 
-#define  OPT_HELP 141 
-#define  OPT_IN 140 
-#define  OPT_INFORM 139 
-#define  OPT_NOOUT 138 
-#define  OPT_NO_PUBLIC 137 
-#define  OPT_OUT 136 
-#define  OPT_OUTFORM 135 
-#define  OPT_PARAM_ENC 134 
-#define  OPT_PARAM_OUT 133 
-#define  OPT_PASSIN 132 
-#define  OPT_PASSOUT 131 
-#define  OPT_PUBIN 130 
-#define  OPT_PUBOUT 129 
-#define  OPT_TEXT 128 
- int /*<<< orphan*/ * PEM_read_bio_ECPrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * PEM_read_bio_EC_PUBKEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int PEM_write_bio_ECPKParameters (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int PEM_write_bio_ECPrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int PEM_write_bio_EC_PUBKEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int POINT_CONVERSION_UNCOMPRESSED ; 
- int /*<<< orphan*/  app_passwd (char*,char*,char**,char**) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char*,char,int) ; 
- int /*<<< orphan*/ * bio_open_owner (char*,int,int) ; 
- int /*<<< orphan*/  conv_forms ; 
- int /*<<< orphan*/ * d2i_ECPrivateKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * d2i_EC_PUBKEY_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ec_options ; 
- int i2d_ECPKParameters_bio (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int i2d_ECPrivateKey_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int i2d_EC_PUBKEY_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * load_key (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * load_pubkey (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- char* opt_arg () ; 
- int /*<<< orphan*/  opt_cipher (int /*<<< orphan*/ ,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  opt_format (char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  opt_pair (char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  opt_unknown () ; 
- int /*<<< orphan*/  param_enc ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int point_conversion_form_t ;
+typedef int OPTION_CHOICE ;
+typedef int EVP_PKEY ;
+typedef int EVP_CIPHER ;
+typedef int ENGINE ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int BIO_free_all (int *) ;
+ int BIO_printf (int ,char*,...) ;
+ int EC_KEY_check_key (int *) ;
+ int EC_KEY_free (int *) ;
+ int * EC_KEY_get0_group (int *) ;
+ int EC_KEY_print (int *,int *,int ) ;
+ int EC_KEY_set_asn1_flag (int *,int) ;
+ int EC_KEY_set_conv_form (int *,int) ;
+ int EC_KEY_set_enc_flags (int *,int ) ;
+ int EC_PKEY_NO_PUBKEY ;
+ int ERR_print_errors (int ) ;
+ int EVP_PKEY_free (int *) ;
+ int * EVP_PKEY_get1_EC_KEY (int *) ;
+ int FORMAT_ASN1 ;
+ int FORMAT_ENGINE ;
+ int FORMAT_PEM ;
+ int OPENSSL_EC_NAMED_CURVE ;
+ int OPENSSL_free (char*) ;
+
+
+
+
+
+
+ int OPT_FMT_ANY ;
+ int OPT_FMT_PEMDER ;
+ int * PEM_read_bio_ECPrivateKey (int *,int *,int *,char*) ;
+ int * PEM_read_bio_EC_PUBKEY (int *,int *,int *,int *) ;
+ int PEM_write_bio_ECPKParameters (int *,int const*) ;
+ int PEM_write_bio_ECPrivateKey (int *,int *,int const*,int *,int ,int *,char*) ;
+ int PEM_write_bio_EC_PUBKEY (int *,int *) ;
+ int POINT_CONVERSION_UNCOMPRESSED ;
+ int app_passwd (char*,char*,char**,char**) ;
+ int assert (int) ;
+ int bio_err ;
+ int * bio_open_default (char*,char,int) ;
+ int * bio_open_owner (char*,int,int) ;
+ int conv_forms ;
+ int * d2i_ECPrivateKey_bio (int *,int *) ;
+ int * d2i_EC_PUBKEY_bio (int *,int *) ;
+ int ec_options ;
+ int i2d_ECPKParameters_bio (int *,int const*) ;
+ int i2d_ECPrivateKey_bio (int *,int *) ;
+ int i2d_EC_PUBKEY_bio (int *,int *) ;
+ int * load_key (char*,int,int,char*,int *,char*) ;
+ int * load_pubkey (char*,int,int,char*,int *,char*) ;
+ char* opt_arg () ;
+ int opt_cipher (int ,int const**) ;
+ int opt_format (char*,int ,int*) ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int opt_pair (char*,int ,int*) ;
+ int opt_unknown () ;
+ int param_enc ;
+ int perror (char*) ;
+ int release_engine (int *) ;
+ int * setup_engine (char*,int ) ;
 
 int ec_main(int argc, char **argv)
 {
-    BIO *in = NULL, *out = NULL;
-    ENGINE *e = NULL;
-    EC_KEY *eckey = NULL;
+    BIO *in = ((void*)0), *out = ((void*)0);
+    ENGINE *e = ((void*)0);
+    EC_KEY *eckey = ((void*)0);
     const EC_GROUP *group;
-    const EVP_CIPHER *enc = NULL;
+    const EVP_CIPHER *enc = ((void*)0);
     point_conversion_form_t form = POINT_CONVERSION_UNCOMPRESSED;
-    char *infile = NULL, *outfile = NULL, *prog;
-    char *passin = NULL, *passout = NULL, *passinarg = NULL, *passoutarg = NULL;
+    char *infile = ((void*)0), *outfile = ((void*)0), *prog;
+    char *passin = ((void*)0), *passout = ((void*)0), *passinarg = ((void*)0), *passoutarg = ((void*)0);
     OPTION_CHOICE o;
     int asn1_flag = OPENSSL_EC_NAMED_CURVE, new_form = 0, new_asn1_flag = 0;
     int informat = FORMAT_PEM, outformat = FORMAT_PEM, text = 0, noout = 0;
@@ -112,75 +98,75 @@ int ec_main(int argc, char **argv)
     int no_public = 0, check = 0;
 
     prog = opt_init(argc, argv, ec_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 143) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 143:
+        case 142:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 141:
             opt_help(ec_options);
             ret = 0;
             goto end;
-        case OPT_INFORM:
+        case 139:
             if (!opt_format(opt_arg(), OPT_FMT_ANY, &informat))
                 goto opthelp;
             break;
-        case OPT_IN:
+        case 140:
             infile = opt_arg();
             break;
-        case OPT_OUTFORM:
+        case 135:
             if (!opt_format(opt_arg(), OPT_FMT_PEMDER, &outformat))
                 goto opthelp;
             break;
-        case OPT_OUT:
+        case 136:
             outfile = opt_arg();
             break;
-        case OPT_NOOUT:
+        case 138:
             noout = 1;
             break;
-        case OPT_TEXT:
+        case 128:
             text = 1;
             break;
-        case OPT_PARAM_OUT:
+        case 133:
             param_out = 1;
             break;
-        case OPT_PUBIN:
+        case 130:
             pubin = 1;
             break;
-        case OPT_PUBOUT:
+        case 129:
             pubout = 1;
             break;
-        case OPT_PASSIN:
+        case 132:
             passinarg = opt_arg();
             break;
-        case OPT_PASSOUT:
+        case 131:
             passoutarg = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 144:
             e = setup_engine(opt_arg(), 0);
             break;
-        case OPT_CIPHER:
+        case 146:
             if (!opt_cipher(opt_unknown(), &enc))
                 goto opthelp;
             break;
-        case OPT_CONV_FORM:
+        case 145:
             if (!opt_pair(opt_arg(), conv_forms, &i))
                 goto opthelp;
             new_form = 1;
             form = i;
             break;
-        case OPT_PARAM_ENC:
+        case 134:
             if (!opt_pair(opt_arg(), param_enc, &i))
                 goto opthelp;
             new_asn1_flag = 1;
             asn1_flag = i;
             break;
-        case OPT_NO_PUBLIC:
+        case 137:
             no_public = 1;
             break;
-        case OPT_CHECK:
+        case 147:
             check = 1;
             break;
         }
@@ -200,40 +186,40 @@ int ec_main(int argc, char **argv)
 
     if (informat != FORMAT_ENGINE) {
         in = bio_open_default(infile, 'r', informat);
-        if (in == NULL)
+        if (in == ((void*)0))
             goto end;
     }
 
     BIO_printf(bio_err, "read EC key\n");
     if (informat == FORMAT_ASN1) {
         if (pubin)
-            eckey = d2i_EC_PUBKEY_bio(in, NULL);
+            eckey = d2i_EC_PUBKEY_bio(in, ((void*)0));
         else
-            eckey = d2i_ECPrivateKey_bio(in, NULL);
+            eckey = d2i_ECPrivateKey_bio(in, ((void*)0));
     } else if (informat == FORMAT_ENGINE) {
         EVP_PKEY *pkey;
         if (pubin)
             pkey = load_pubkey(infile, informat, 1, passin, e, "Public Key");
         else
             pkey = load_key(infile, informat, 1, passin, e, "Private Key");
-        if (pkey != NULL) {
+        if (pkey != ((void*)0)) {
             eckey = EVP_PKEY_get1_EC_KEY(pkey);
             EVP_PKEY_free(pkey);
         }
     } else {
         if (pubin)
-            eckey = PEM_read_bio_EC_PUBKEY(in, NULL, NULL, NULL);
+            eckey = PEM_read_bio_EC_PUBKEY(in, ((void*)0), ((void*)0), ((void*)0));
         else
-            eckey = PEM_read_bio_ECPrivateKey(in, NULL, NULL, passin);
+            eckey = PEM_read_bio_ECPrivateKey(in, ((void*)0), ((void*)0), passin);
     }
-    if (eckey == NULL) {
+    if (eckey == ((void*)0)) {
         BIO_printf(bio_err, "unable to load Key\n");
         ERR_print_errors(bio_err);
         goto end;
     }
 
     out = bio_open_owner(outfile, outformat, private);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     group = EC_KEY_get0_group(eckey);
@@ -288,7 +274,7 @@ int ec_main(int argc, char **argv)
         } else {
             assert(private);
             i = PEM_write_bio_ECPrivateKey(out, eckey, enc,
-                                           NULL, 0, NULL, passout);
+                                           ((void*)0), 0, ((void*)0), passout);
         }
     }
 

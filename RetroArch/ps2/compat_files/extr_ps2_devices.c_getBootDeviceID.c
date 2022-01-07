@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum BootDeviceIDs { ____Placeholder_BootDeviceIDs } BootDeviceIDs ;
 
-/* Variables and functions */
- int BOOT_DEVICE_CDFS ; 
- int BOOT_DEVICE_CDROM ; 
- int BOOT_DEVICE_HDD ; 
- int BOOT_DEVICE_HDD0 ; 
- int BOOT_DEVICE_HOST ; 
- int BOOT_DEVICE_HOST0 ; 
- int BOOT_DEVICE_HOST1 ; 
- int BOOT_DEVICE_HOST2 ; 
- int BOOT_DEVICE_HOST3 ; 
- int BOOT_DEVICE_HOST4 ; 
- int BOOT_DEVICE_HOST5 ; 
- int BOOT_DEVICE_HOST6 ; 
- int BOOT_DEVICE_HOST7 ; 
- int BOOT_DEVICE_HOST8 ; 
- int BOOT_DEVICE_HOST9 ; 
- int BOOT_DEVICE_MASS ; 
- int BOOT_DEVICE_MASS0 ; 
- int BOOT_DEVICE_MC0 ; 
- int BOOT_DEVICE_MC1 ; 
- int BOOT_DEVICE_UNKNOWN ; 
- int /*<<< orphan*/  DEVICE_CDFS ; 
- int /*<<< orphan*/  DEVICE_CDROM ; 
- int /*<<< orphan*/  DEVICE_HDD ; 
- int /*<<< orphan*/  DEVICE_HDD0 ; 
- int /*<<< orphan*/  DEVICE_HOST ; 
- int /*<<< orphan*/  DEVICE_HOST0 ; 
- int /*<<< orphan*/  DEVICE_HOST1 ; 
- int /*<<< orphan*/  DEVICE_HOST2 ; 
- int /*<<< orphan*/  DEVICE_HOST3 ; 
- int /*<<< orphan*/  DEVICE_HOST4 ; 
- int /*<<< orphan*/  DEVICE_HOST5 ; 
- int /*<<< orphan*/  DEVICE_HOST6 ; 
- int /*<<< orphan*/  DEVICE_HOST7 ; 
- int /*<<< orphan*/  DEVICE_HOST8 ; 
- int /*<<< orphan*/  DEVICE_HOST9 ; 
- int /*<<< orphan*/  DEVICE_MASS ; 
- int /*<<< orphan*/  DEVICE_MASS0 ; 
- int /*<<< orphan*/  DEVICE_MC0 ; 
- int /*<<< orphan*/  DEVICE_MC1 ; 
- int /*<<< orphan*/  strncmp (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef enum BootDeviceIDs { ____Placeholder_BootDeviceIDs } BootDeviceIDs ;
+
+
+ int BOOT_DEVICE_CDFS ;
+ int BOOT_DEVICE_CDROM ;
+ int BOOT_DEVICE_HDD ;
+ int BOOT_DEVICE_HDD0 ;
+ int BOOT_DEVICE_HOST ;
+ int BOOT_DEVICE_HOST0 ;
+ int BOOT_DEVICE_HOST1 ;
+ int BOOT_DEVICE_HOST2 ;
+ int BOOT_DEVICE_HOST3 ;
+ int BOOT_DEVICE_HOST4 ;
+ int BOOT_DEVICE_HOST5 ;
+ int BOOT_DEVICE_HOST6 ;
+ int BOOT_DEVICE_HOST7 ;
+ int BOOT_DEVICE_HOST8 ;
+ int BOOT_DEVICE_HOST9 ;
+ int BOOT_DEVICE_MASS ;
+ int BOOT_DEVICE_MASS0 ;
+ int BOOT_DEVICE_MC0 ;
+ int BOOT_DEVICE_MC1 ;
+ int BOOT_DEVICE_UNKNOWN ;
+ int DEVICE_CDFS ;
+ int DEVICE_CDROM ;
+ int DEVICE_HDD ;
+ int DEVICE_HDD0 ;
+ int DEVICE_HOST ;
+ int DEVICE_HOST0 ;
+ int DEVICE_HOST1 ;
+ int DEVICE_HOST2 ;
+ int DEVICE_HOST3 ;
+ int DEVICE_HOST4 ;
+ int DEVICE_HOST5 ;
+ int DEVICE_HOST6 ;
+ int DEVICE_HOST7 ;
+ int DEVICE_HOST8 ;
+ int DEVICE_HOST9 ;
+ int DEVICE_MASS ;
+ int DEVICE_MASS0 ;
+ int DEVICE_MC0 ;
+ int DEVICE_MC1 ;
+ int strncmp (char*,int ,int) ;
 
 enum BootDeviceIDs getBootDeviceID(char *path)
 {

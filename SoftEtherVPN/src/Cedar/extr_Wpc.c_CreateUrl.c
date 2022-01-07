@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int Secure; int /*<<< orphan*/  Target; int /*<<< orphan*/  HeaderHostName; } ;
-typedef  TYPE_1__ URL_DATA ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Format (char*,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Secure; int Target; int HeaderHostName; } ;
+typedef TYPE_1__ URL_DATA ;
+typedef int UINT ;
+
+
+ int Format (char*,int ,char*,char*,int ,int ) ;
 
 void CreateUrl(char *url, UINT url_size, URL_DATA *data)
 {
-	char *protocol;
-	// Validate arguments
-	if (url == NULL || data == NULL)
-	{
-		return;
-	}
+ char *protocol;
 
-	if (data->Secure == false)
-	{
-		protocol = "http://";
-	}
-	else
-	{
-		protocol = "https://";
-	}
+ if (url == ((void*)0) || data == ((void*)0))
+ {
+  return;
+ }
 
-	Format(url, url_size, "%s%s%s", protocol, data->HeaderHostName, data->Target);
+ if (data->Secure == 0)
+ {
+  protocol = "http://";
+ }
+ else
+ {
+  protocol = "https://";
+ }
+
+ Format(url, url_size, "%s%s%s", protocol, data->HeaderHostName, data->Target);
 }

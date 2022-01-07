@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct evhttp_bound_socket {int dummy; } ;
 struct evhttp {int dummy; } ;
-typedef  int /*<<< orphan*/  evutil_socket_t ;
+typedef int evutil_socket_t ;
 
-/* Variables and functions */
- struct evhttp_bound_socket* evhttp_accept_socket_with_handle (struct evhttp*,int /*<<< orphan*/ ) ; 
+
+ struct evhttp_bound_socket* evhttp_accept_socket_with_handle (struct evhttp*,int ) ;
 
 int
 evhttp_accept_socket(struct evhttp *http, evutil_socket_t fd)
 {
-	struct evhttp_bound_socket *bound =
-		evhttp_accept_socket_with_handle(http, fd);
-	if (bound == NULL)
-		return (-1);
-	return (0);
+ struct evhttp_bound_socket *bound =
+  evhttp_accept_socket_with_handle(http, fd);
+ if (bound == ((void*)0))
+  return (-1);
+ return (0);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  src ;
-typedef  int /*<<< orphan*/  buffer ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileW (char const*) ; 
- int ERROR_FILE_NOT_FOUND ; 
- int ERROR_SUCCESS ; 
- int FALSE ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int GetFileAttributesW (char const*) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int MOVEFILE_REPLACE_EXISTING ; 
- int /*<<< orphan*/  MoveFileExW (char const*,char const*,int) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int RegDeleteValueW (int /*<<< orphan*/ *,char const*) ; 
- int RegOpenKeyExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int RegQueryValueExW (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  RemoveDirectoryW (char const*) ; 
- int TRUE ; 
- int /*<<< orphan*/  free (char*) ; 
- int lstrlenW (char const*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int src ;
+typedef int buffer ;
+typedef char WCHAR ;
+typedef int * LPBYTE ;
+typedef int * HKEY ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int DeleteFileW (char const*) ;
+ int ERROR_FILE_NOT_FOUND ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int GetFileAttributesW (char const*) ;
+ int GetLastError () ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int MOVEFILE_REPLACE_EXISTING ;
+ int MoveFileExW (char const*,char const*,int) ;
+ int RegCloseKey (int *) ;
+ int RegDeleteValueW (int *,char const*) ;
+ int RegOpenKeyExW (int ,char const*,int ,int ,int **) ;
+ int RegQueryValueExW (int *,char const*,int *,int *,int *,int*) ;
+ int RemoveDirectoryW (char const*) ;
+ int TRUE ;
+ int free (char*) ;
+ int lstrlenW (char const*) ;
+ char* malloc (int) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static BOOL pendingRename()
 {
@@ -50,10 +50,10 @@ __attribute__((used)) static BOOL pendingRename()
                                      'C','u','r','r','e','n','t','C','o','n','t','r','o','l','S','e','t','\\',
                                      'C','o','n','t','r','o','l','\\',
                                      'S','e','s','s','i','o','n',' ','M','a','n','a','g','e','r',0};
-    WCHAR *buffer=NULL;
-    const WCHAR *src=NULL, *dst=NULL;
+    WCHAR *buffer=((void*)0);
+    const WCHAR *src=((void*)0), *dst=((void*)0);
     DWORD dataLength=0;
-    HKEY hSession=NULL;
+    HKEY hSession=((void*)0);
     DWORD res;
 
     printf("Entered\n");
@@ -75,12 +75,12 @@ __attribute__((used)) static BOOL pendingRename()
         goto end;
     }
 
-    res=RegQueryValueExW(hSession, ValueName, NULL, NULL /* The value type does not really interest us, as it is not
-                                                             truely a REG_MULTI_SZ anyways */,
-            NULL, &dataLength);
+    res=RegQueryValueExW(hSession, ValueName, ((void*)0), ((void*)0) ,
+
+            ((void*)0), &dataLength);
     if (res==ERROR_FILE_NOT_FOUND)
     {
-        /* No value - nothing to do. Great! */
+
         printf("Value not present - nothing to rename\n");
         res=TRUE;
         goto end;
@@ -94,14 +94,14 @@ __attribute__((used)) static BOOL pendingRename()
     }
 
     buffer=malloc(dataLength);
-    if (buffer==NULL)
+    if (buffer==((void*)0))
     {
         printf("Couldn't allocate %lu bytes for the value\n", dataLength);
         res=FALSE;
         goto end;
     }
 
-    res=RegQueryValueExW(hSession, ValueName, NULL, NULL, (LPBYTE)buffer, &dataLength);
+    res=RegQueryValueExW(hSession, ValueName, ((void*)0), ((void*)0), (LPBYTE)buffer, &dataLength);
     if (res!=ERROR_SUCCESS)
     {
         printf("Couldn't query value after successfully querying before (%lu),\n"
@@ -110,9 +110,9 @@ __attribute__((used)) static BOOL pendingRename()
         goto end;
     }
 
-    /* Make sure that the data is long enough and ends with two NULLs. This
-     * simplifies the code later on.
-     */
+
+
+
     if (dataLength<2*sizeof(buffer[0]) ||
             buffer[dataLength/sizeof(buffer[0])-1]!='\0' ||
             buffer[dataLength/sizeof(buffer[0])-2]!='\0')
@@ -131,7 +131,7 @@ __attribute__((used)) static BOOL pendingRename()
 
         dst=src+lstrlenW(src)+1;
 
-        /* We need to skip the \??\ header */
+
         if (src[0]=='\\' && src[1]=='?' && src[2]=='?' && src[3]=='\\')
             src+=4;
 
@@ -146,21 +146,21 @@ __attribute__((used)) static BOOL pendingRename()
 
         if (*dst!='\0')
         {
-            /* Rename the file */
+
             MoveFileExW(src, dst, dwFlags);
         } else
         {
-            /* Delete the file or directory */
-			res = GetFileAttributesW (src);
+
+   res = GetFileAttributesW (src);
             if (res != (DWORD)-1)
             {
                 if ((res&FILE_ATTRIBUTE_DIRECTORY)==0)
                 {
-                    /* It's a file */
+
                     DeleteFileW(src);
                 } else
                 {
-                    /* It's a directory */
+
                     RemoveDirectoryW(src);
                 }
             } else
@@ -178,10 +178,10 @@ __attribute__((used)) static BOOL pendingRename()
         res=TRUE;
 
 end:
-    if (buffer!=NULL)
+    if (buffer!=((void*)0))
         free(buffer);
 
-    if (hSession!=NULL)
+    if (hSession!=((void*)0))
         RegCloseKey(hSession);
 
     return res;

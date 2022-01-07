@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TYPE_7__ {int /*<<< orphan*/  seal; } ;
-typedef  TYPE_1__ JournalFile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_REALTIME ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int journal_file_append_tag (TYPE_1__*) ; 
- int journal_file_fsprg_evolve (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int journal_file_fsprg_need_evolve (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  now (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_7__ {int seal; } ;
+typedef TYPE_1__ JournalFile ;
+
+
+ int CLOCK_REALTIME ;
+ int assert (TYPE_1__*) ;
+ int journal_file_append_tag (TYPE_1__*) ;
+ int journal_file_fsprg_evolve (TYPE_1__*,int ) ;
+ int journal_file_fsprg_need_evolve (TYPE_1__*,int ) ;
+ int now (int ) ;
 
 int journal_file_maybe_append_tag(JournalFile *f, uint64_t realtime) {
         int r;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_1__* calendars; } ;
-struct TYPE_7__ {int /*<<< orphan*/  month; } ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  TYPE_2__ MONTHCAL_INFO ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_7__ {int month; } ;
+typedef int SYSTEMTIME ;
+typedef int RECT ;
+typedef TYPE_2__ MONTHCAL_INFO ;
+typedef int INT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ MONTHCAL_CompareMonths (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int MONTHCAL_GetCalCount (TYPE_2__ const*) ; 
- int /*<<< orphan*/  MONTHCAL_GetDayPos (TYPE_2__ const*,int /*<<< orphan*/  const*,int*,int*,int) ; 
- int /*<<< orphan*/  MONTHCAL_GetDayRectI (TYPE_2__ const*,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  MONTHCAL_ValidateDate (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SetRectEmpty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ scalar_t__ MONTHCAL_CompareMonths (int const*,int *) ;
+ int MONTHCAL_GetCalCount (TYPE_2__ const*) ;
+ int MONTHCAL_GetDayPos (TYPE_2__ const*,int const*,int*,int*,int) ;
+ int MONTHCAL_GetDayRectI (TYPE_2__ const*,int *,int,int,int) ;
+ int MONTHCAL_ValidateDate (int const*) ;
+ int SetRectEmpty (int *) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL MONTHCAL_GetDayRect(const MONTHCAL_INFO *infoPtr, const SYSTEMTIME *date, RECT *r, INT calIdx)
 {

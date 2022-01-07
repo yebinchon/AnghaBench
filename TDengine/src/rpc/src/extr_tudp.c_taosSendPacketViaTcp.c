@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  void* int32_t ;
-typedef  int /*<<< orphan*/  handleViaTcp ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef void* int32_t ;
+typedef int handleViaTcp ;
 struct TYPE_9__ {scalar_t__ handle; void* msgLen; scalar_t__ port; } ;
-struct TYPE_8__ {int tcp; void* msgLen; int /*<<< orphan*/  msgType; scalar_t__ content; } ;
-struct TYPE_7__ {int /*<<< orphan*/  port; scalar_t__ pSet; } ;
-struct TYPE_6__ {int /*<<< orphan*/  label; scalar_t__ port; scalar_t__ server; } ;
-typedef  TYPE_1__ SUdpConnSet ;
-typedef  TYPE_2__ SUdpConn ;
-typedef  TYPE_3__ STaosHeader ;
-typedef  TYPE_4__ SPacketInfo ;
-typedef  int /*<<< orphan*/  SHandleViaTcp ;
+struct TYPE_8__ {int tcp; void* msgLen; int msgType; scalar_t__ content; } ;
+struct TYPE_7__ {int port; scalar_t__ pSet; } ;
+struct TYPE_6__ {int label; scalar_t__ port; scalar_t__ server; } ;
+typedef TYPE_1__ SUdpConnSet ;
+typedef TYPE_2__ SUdpConn ;
+typedef TYPE_3__ STaosHeader ;
+typedef TYPE_4__ SPacketInfo ;
+typedef int SHandleViaTcp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- scalar_t__ htonl (int) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,char*,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tError (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  tTrace (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  taosCloseTcpSocket (int) ; 
- int /*<<< orphan*/  taosInitHandleViaTcp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int taosOpenTcpClientSocket (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosReadMsg (int,char*,int) ; 
- int taosSendUdpData (int,short,char*,int,void*) ; 
- int taosWriteMsg (int,char*,int) ; 
- scalar_t__ taosWriteSocket (int,char*,int) ; 
- int /*<<< orphan*/  tinet_ntoa (char*,int) ; 
- int /*<<< orphan*/  tsLocalIp ; 
+
+ int errno ;
+ scalar_t__ htonl (int) ;
+ int memcpy (TYPE_3__*,char*,int) ;
+ int strerror (int ) ;
+ int tError (char*,int ,...) ;
+ int tTrace (char*,int ,...) ;
+ int taosCloseTcpSocket (int) ;
+ int taosInitHandleViaTcp (int *,int ) ;
+ int taosOpenTcpClientSocket (char*,int ,int ) ;
+ int taosReadMsg (int,char*,int) ;
+ int taosSendUdpData (int,short,char*,int,void*) ;
+ int taosWriteMsg (int,char*,int) ;
+ scalar_t__ taosWriteSocket (int,char*,int) ;
+ int tinet_ntoa (char*,int) ;
+ int tsLocalIp ;
 
 int taosSendPacketViaTcp(uint32_t ip, short port, char *data, int dataLen, void *chandle) {
-  SUdpConn *   pConn = (SUdpConn *)chandle;
+  SUdpConn * pConn = (SUdpConn *)chandle;
   SUdpConnSet *pSet = (SUdpConnSet *)pConn->pSet;
-  int          code = -1, retLen, msgLen;
-  char         ipstr[64];
-  char         buffer[128];
+  int code = -1, retLen, msgLen;
+  char ipstr[64];
+  char buffer[128];
   STaosHeader *pHead;
 
   if (pSet->server) {
-    // send from server
+
 
     pHead = (STaosHeader *)buffer;
     memcpy(pHead, data, sizeof(STaosHeader));
@@ -73,10 +73,10 @@ int taosSendPacketViaTcp(uint32_t ip, short port, char *data, int dataLen, void 
            pHead->msgType, htonl((uint32_t)pInfo->msgLen), pInfo->handle);
     if (code > 0) code = dataLen;
   } else {
-    // send from client
+
     tTrace("%s data will be sent via TCP from client", pSet->label);
 
-    // send a UDP header first to set up the connection
+
     pHead = (STaosHeader *)buffer;
     memcpy(pHead, data, sizeof(STaosHeader));
     pHead->tcp = 2;

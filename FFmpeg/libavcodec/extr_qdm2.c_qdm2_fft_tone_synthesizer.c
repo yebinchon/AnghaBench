@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_9__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_9__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_15__ {float re; float im; } ;
-struct TYPE_14__ {int cutoff; double level; int phase; int phase_shift; int duration; scalar_t__ time_index; int /*<<< orphan*/  table; TYPE_9__* complex; } ;
+struct TYPE_14__ {int cutoff; double level; int phase; int phase_shift; int duration; scalar_t__ time_index; int table; TYPE_9__* complex; } ;
 struct TYPE_13__ {float re; float im; } ;
 struct TYPE_10__ {TYPE_9__** complex; } ;
 struct TYPE_12__ {int channels; int fft_size; int* fft_coefs_min_index; int* fft_coefs_max_index; int fft_tone_end; int fft_tone_start; int frequency_range; TYPE_2__* fft_coefs; TYPE_1__ fft; scalar_t__ superblocktype_2_3; TYPE_5__* fft_tones; } ;
 struct TYPE_11__ {int sub_packet; int channel; scalar_t__ exp; double const phase; int offset; } ;
-typedef  TYPE_3__ QDM2Context ;
-typedef  TYPE_4__ QDM2Complex ;
-typedef  TYPE_5__ FFTTone ;
+typedef TYPE_3__ QDM2Context ;
+typedef TYPE_4__ QDM2Complex ;
+typedef TYPE_5__ FFTTone ;
 
-/* Variables and functions */
- double M_PI ; 
- float cos (double const) ; 
- double** fft_tone_level_table ; 
- int /*<<< orphan*/ ** fft_tone_sample_table ; 
- int /*<<< orphan*/  memset (TYPE_9__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qdm2_fft_generate_tone (TYPE_3__*,TYPE_5__*) ; 
- float sin (double const) ; 
+
+ double M_PI ;
+ float cos (double const) ;
+ double** fft_tone_level_table ;
+ int ** fft_tone_sample_table ;
+ int memset (TYPE_9__*,int ,int) ;
+ int qdm2_fft_generate_tone (TYPE_3__*,TYPE_5__*) ;
+ float sin (double const) ;
 
 __attribute__((used)) static void qdm2_fft_tone_synthesizer(QDM2Context *q, int sub_packet)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void qdm2_fft_tone_synthesizer(QDM2Context *q, int 
     }
 
 
-    /* apply FFT tones with duration 4 (1 FFT period) */
+
     if (q->fft_coefs_min_index[4] >= 0)
         for (i = q->fft_coefs_min_index[4]; i < q->fft_coefs_max_index[4]; i++) {
             float level;
@@ -65,13 +65,13 @@ __attribute__((used)) static void qdm2_fft_tone_synthesizer(QDM2Context *q, int 
             q->fft.complex[ch][q->fft_coefs[i].offset + 1].im -= c.im;
         }
 
-    /* generate existing FFT tones */
+
     for (i = q->fft_tone_end; i != q->fft_tone_start; ) {
         qdm2_fft_generate_tone(q, &q->fft_tones[q->fft_tone_start]);
         q->fft_tone_start = (q->fft_tone_start + 1) % 1000;
     }
 
-    /* create and generate new FFT tones with duration 0 (long) to 3 (short) */
+
     for (i = 0; i < 4; i++)
         if (q->fft_coefs_min_index[i] >= 0) {
             for (j = q->fft_coefs_min_index[i]; j < q->fft_coefs_max_index[i]; j++) {

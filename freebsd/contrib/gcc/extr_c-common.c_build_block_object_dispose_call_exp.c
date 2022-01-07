@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  build_block_object_dispose_decl () ; 
- int /*<<< orphan*/  build_function_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_int_cst (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  integer_type_node ; 
- int /*<<< orphan*/  tree_cons (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int NULL_TREE ;
+ int build_block_object_dispose_decl () ;
+ int build_function_call (int ,int ) ;
+ int build_int_cst (int ,int) ;
+ int integer_type_node ;
+ int tree_cons (int ,int ,int ) ;
 
 tree build_block_object_dispose_call_exp (tree src, int flag)
 {
-  tree func_params = tree_cons (NULL_TREE, src, 
-			        tree_cons (NULL_TREE,
-					    build_int_cst (integer_type_node, flag),
-					   NULL_TREE));
+  tree func_params = tree_cons (NULL_TREE, src,
+           tree_cons (NULL_TREE,
+         build_int_cst (integer_type_node, flag),
+        NULL_TREE));
   return build_function_call (build_block_object_dispose_decl (), func_params);
 }

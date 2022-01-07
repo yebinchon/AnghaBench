@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CONVERT (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CONVERTRANGE (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CONVVARS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXPECT (int) ; 
- int /*<<< orphan*/  VARIANT_BOOL ; 
- int /*<<< orphan*/  VarUI1FromBool ; 
+ int CONVERT (int ,int) ;
+ int CONVERTRANGE (int ,int ,int) ;
+ int CONVVARS (int ) ;
+ int EXPECT (int) ;
+ int VARIANT_BOOL ;
+ int VarUI1FromBool ;
 
 __attribute__((used)) static void test_VarUI1FromBool(void)
 {
   CONVVARS(VARIANT_BOOL);
   int i;
 
-  /* Note that conversions from bool overflow! */
+
   CONVERT(VarUI1FromBool, -1); EXPECT(255);
   CONVERTRANGE(VarUI1FromBool, 0, 256);
   CONVERT(VarUI1FromBool, 256); EXPECT(0);

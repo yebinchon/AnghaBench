@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct timeval {int /*<<< orphan*/  tv_sec; } ;
-struct authunix_parms {int /*<<< orphan*/  aup_time; int /*<<< orphan*/ * aup_gids; int /*<<< orphan*/ * aup_machname; } ;
-struct TYPE_11__ {scalar_t__ oa_base; int /*<<< orphan*/  oa_length; } ;
-struct audata {TYPE_1__ au_origcred; int /*<<< orphan*/  au_shfaults; } ;
-typedef  int bool_t ;
-struct TYPE_12__ {int /*<<< orphan*/  x_op; } ;
-typedef  TYPE_2__ XDR ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct timeval {int tv_sec; } ;
+struct authunix_parms {int aup_time; int * aup_gids; int * aup_machname; } ;
+struct TYPE_11__ {scalar_t__ oa_base; int oa_length; } ;
+struct audata {TYPE_1__ au_origcred; int au_shfaults; } ;
+typedef int bool_t ;
+struct TYPE_12__ {int x_op; } ;
+typedef TYPE_2__ XDR ;
 struct TYPE_13__ {TYPE_1__ ah_cred; } ;
-typedef  TYPE_3__ AUTH ;
+typedef TYPE_3__ AUTH ;
 
-/* Variables and functions */
- struct audata* AUTH_PRIVATE (TYPE_3__*) ; 
- int FALSE ; 
- int /*<<< orphan*/  XDR_DECODE ; 
- int /*<<< orphan*/  XDR_DESTROY (TYPE_2__*) ; 
- int /*<<< orphan*/  XDR_ENCODE ; 
- int /*<<< orphan*/  XDR_FREE ; 
- int /*<<< orphan*/  XDR_SETPOS (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gettimeofday (struct timeval*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  marshal_new_auth (TYPE_3__*) ; 
- int xdr_authunix_parms (TYPE_2__*,struct authunix_parms*) ; 
- int /*<<< orphan*/  xdrmem_create (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct audata* AUTH_PRIVATE (TYPE_3__*) ;
+ int FALSE ;
+ int XDR_DECODE ;
+ int XDR_DESTROY (TYPE_2__*) ;
+ int XDR_ENCODE ;
+ int XDR_FREE ;
+ int XDR_SETPOS (TYPE_2__*,int ) ;
+ int assert (int ) ;
+ int gettimeofday (struct timeval*,int *) ;
+ int marshal_new_auth (TYPE_3__*) ;
+ int xdr_authunix_parms (TYPE_2__*,struct authunix_parms*) ;
+ int xdrmem_create (TYPE_2__*,scalar_t__,int ,int ) ;
 
 __attribute__((used)) static bool_t
 authunix_refresh(AUTH *auth, void *dummy)
 {
-	struct audata *au = AUTH_PRIVATE(auth);
-	struct authunix_parms aup;
-	struct timeval now;
-	XDR xdrs;
-	int stat;
+ struct audata *au = AUTH_PRIVATE(auth);
+ struct authunix_parms aup;
+ struct timeval now;
+ XDR xdrs;
+ int stat;
 
-	assert(auth != NULL);
+ assert(auth != ((void*)0));
 
-	if (auth->ah_cred.oa_base == au->au_origcred.oa_base) {
-		/* there is no hope.  Punt */
-		return (FALSE);
-	}
-	au->au_shfaults ++;
+ if (auth->ah_cred.oa_base == au->au_origcred.oa_base) {
 
-	/* first deserialize the creds back into a struct authunix_parms */
-	aup.aup_machname = NULL;
-	aup.aup_gids = NULL;
-	xdrmem_create(&xdrs, au->au_origcred.oa_base,
-	    au->au_origcred.oa_length, XDR_DECODE);
-	stat = xdr_authunix_parms(&xdrs, &aup);
-	if (! stat)
-		goto done;
+  return (FALSE);
+ }
+ au->au_shfaults ++;
 
-	/* update the time and serialize in place */
-	(void)gettimeofday(&now, NULL);
-	aup.aup_time = now.tv_sec;
-	xdrs.x_op = XDR_ENCODE;
-	XDR_SETPOS(&xdrs, 0);
-	stat = xdr_authunix_parms(&xdrs, &aup);
-	if (! stat)
-		goto done;
-	auth->ah_cred = au->au_origcred;
-	marshal_new_auth(auth);
+
+ aup.aup_machname = ((void*)0);
+ aup.aup_gids = ((void*)0);
+ xdrmem_create(&xdrs, au->au_origcred.oa_base,
+     au->au_origcred.oa_length, XDR_DECODE);
+ stat = xdr_authunix_parms(&xdrs, &aup);
+ if (! stat)
+  goto done;
+
+
+ (void)gettimeofday(&now, ((void*)0));
+ aup.aup_time = now.tv_sec;
+ xdrs.x_op = XDR_ENCODE;
+ XDR_SETPOS(&xdrs, 0);
+ stat = xdr_authunix_parms(&xdrs, &aup);
+ if (! stat)
+  goto done;
+ auth->ah_cred = au->au_origcred;
+ marshal_new_auth(auth);
 done:
-	/* free the struct authunix_parms created by deserializing */
-	xdrs.x_op = XDR_FREE;
-	(void)xdr_authunix_parms(&xdrs, &aup);
-	XDR_DESTROY(&xdrs);
-	return (stat);
+
+ xdrs.x_op = XDR_FREE;
+ (void)xdr_authunix_parms(&xdrs, &aup);
+ XDR_DESTROY(&xdrs);
+ return (stat);
 }

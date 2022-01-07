@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  mms; } ;
-typedef  TYPE_1__ MMSTContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_PKT_TIMING_DATA_REQUEST ; 
- int /*<<< orphan*/  insert_command_prefixes (int /*<<< orphan*/ *,int,int) ; 
- int send_command_packet (TYPE_1__*) ; 
- int /*<<< orphan*/  start_command_packet (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int mms; } ;
+typedef TYPE_1__ MMSTContext ;
+
+
+ int CS_PKT_TIMING_DATA_REQUEST ;
+ int insert_command_prefixes (int *,int,int) ;
+ int send_command_packet (TYPE_1__*) ;
+ int start_command_packet (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int send_time_test_data(MMSTContext *mmst)
 {

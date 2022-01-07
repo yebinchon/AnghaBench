@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int CELT_PVQ_U (int,int) ; 
- int FFABS (int const) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int CELT_PVQ_U (int,int) ;
+ int FFABS (int const) ;
 
 __attribute__((used)) static inline uint32_t celt_icwrsi(uint32_t N, uint32_t K, const int *y)
 {

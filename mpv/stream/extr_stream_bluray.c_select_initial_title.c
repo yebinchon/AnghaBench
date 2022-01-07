@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct bluray_priv_s {scalar_t__ cfg_title; int cfg_playlist; int current_title; int /*<<< orphan*/  bd; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct bluray_priv_s {scalar_t__ cfg_title; int cfg_playlist; int current_title; int bd; } ;
 struct TYPE_4__ {struct bluray_priv_s* priv; } ;
-typedef  TYPE_1__ stream_t ;
+typedef TYPE_1__ stream_t ;
 
-/* Variables and functions */
- scalar_t__ BLURAY_DEFAULT_TITLE ; 
- scalar_t__ BLURAY_PLAYLIST_TITLE ; 
- int /*<<< orphan*/  MP_WARN (TYPE_1__*,char*,int) ; 
- void* bd_get_current_title (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  play_playlist (struct bluray_priv_s*,int) ; 
- scalar_t__ play_title (struct bluray_priv_s*,int) ; 
+
+ scalar_t__ BLURAY_DEFAULT_TITLE ;
+ scalar_t__ BLURAY_PLAYLIST_TITLE ;
+ int MP_WARN (TYPE_1__*,char*,int) ;
+ void* bd_get_current_title (int ) ;
+ int play_playlist (struct bluray_priv_s*,int) ;
+ scalar_t__ play_title (struct bluray_priv_s*,int) ;
 
 __attribute__((used)) static void select_initial_title(stream_t *s, int title_guess) {
     struct bluray_priv_s *b = s->priv;

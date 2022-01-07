@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nci_dev {int /*<<< orphan*/  nfc_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct nci_dev*) ; 
- int /*<<< orphan*/  nfc_free_device (int /*<<< orphan*/ ) ; 
+
+
+
+struct nci_dev {int nfc_dev; } ;
+
+
+ int kfree (struct nci_dev*) ;
+ int nfc_free_device (int ) ;
 
 void nci_free_device(struct nci_dev *ndev)
 {
-	nfc_free_device(ndev->nfc_dev);
-	kfree(ndev);
+ nfc_free_device(ndev->nfc_dev);
+ kfree(ndev);
 }

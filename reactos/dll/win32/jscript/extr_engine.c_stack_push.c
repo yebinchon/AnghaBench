@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int stack_size; int stack_top; int /*<<< orphan*/ * stack; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * heap_alloc (int) ; 
- int /*<<< orphan*/ * heap_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stack_size; int stack_top; int * stack; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsval_t ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int * heap_alloc (int) ;
+ int * heap_realloc (int *,int) ;
+ int jsval_release (int ) ;
 
 __attribute__((used)) static HRESULT stack_push(script_ctx_t *ctx, jsval_t v)
 {

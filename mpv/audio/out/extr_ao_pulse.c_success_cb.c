@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int retval; int /*<<< orphan*/  mainloop; } ;
+
+
+
+
+struct priv {int retval; int mainloop; } ;
 struct ao {struct priv* priv; } ;
-typedef  int /*<<< orphan*/  pa_stream ;
+typedef int pa_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pa_threaded_mainloop_signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int pa_threaded_mainloop_signal (int ,int ) ;
 
 __attribute__((used)) static void success_cb(pa_stream *s, int success, void *userdata)
 {

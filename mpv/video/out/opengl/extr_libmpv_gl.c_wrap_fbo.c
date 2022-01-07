@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct ra_tex {int dummy; } ;
 struct ra_swapchain {int dummy; } ;
 struct ra_fbo {struct ra_tex* tex; } ;
 struct priv {TYPE_2__* ra_ctx; TYPE_1__* gl; } ;
 struct libmpv_gpu_context {struct priv* priv; } ;
-typedef  int /*<<< orphan*/  mpv_render_param ;
-struct TYPE_7__ {int /*<<< orphan*/  fbo; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_3__ mpv_opengl_fbo ;
+typedef int mpv_render_param ;
+struct TYPE_7__ {int fbo; int h; int w; } ;
+typedef TYPE_3__ mpv_opengl_fbo ;
 struct TYPE_6__ {struct ra_swapchain* swapchain; } ;
 struct TYPE_5__ {int mpgl_caps; } ;
 
-/* Variables and functions */
- int MPGL_CAP_FB ; 
- int MPV_ERROR_INVALID_PARAMETER ; 
- int MPV_ERROR_UNSUPPORTED ; 
- int /*<<< orphan*/  MPV_RENDER_PARAM_OPENGL_FBO ; 
- int /*<<< orphan*/  MP_FATAL (struct libmpv_gpu_context*,char*) ; 
- TYPE_3__* get_mpv_render_param (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ra_gl_ctx_resize (struct ra_swapchain*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_gl_ctx_start_frame (struct ra_swapchain*,struct ra_fbo*) ; 
+
+ int MPGL_CAP_FB ;
+ int MPV_ERROR_INVALID_PARAMETER ;
+ int MPV_ERROR_UNSUPPORTED ;
+ int MPV_RENDER_PARAM_OPENGL_FBO ;
+ int MP_FATAL (struct libmpv_gpu_context*,char*) ;
+ TYPE_3__* get_mpv_render_param (int *,int ,int *) ;
+ int ra_gl_ctx_resize (struct ra_swapchain*,int ,int ,int ) ;
+ int ra_gl_ctx_start_frame (struct ra_swapchain*,struct ra_fbo*) ;
 
 __attribute__((used)) static int wrap_fbo(struct libmpv_gpu_context *ctx, mpv_render_param *params,
                     struct ra_tex **out)
@@ -40,7 +40,7 @@ __attribute__((used)) static int wrap_fbo(struct libmpv_gpu_context *ctx, mpv_re
     struct priv *p = ctx->priv;
 
     mpv_opengl_fbo *fbo =
-        get_mpv_render_param(params, MPV_RENDER_PARAM_OPENGL_FBO, NULL);
+        get_mpv_render_param(params, MPV_RENDER_PARAM_OPENGL_FBO, ((void*)0));
     if (!fbo)
         return MPV_ERROR_INVALID_PARAMETER;
 

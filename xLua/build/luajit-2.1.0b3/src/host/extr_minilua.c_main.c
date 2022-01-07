@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bitlib ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ luaL_loadfile (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * luaL_newstate () ; 
- int /*<<< orphan*/  luaL_openlibs (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_register (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ lua_pcall (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_rawseti (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setglobal (int /*<<< orphan*/ *,char*) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int lua_State ;
+
+
+ int bitlib ;
+ int fprintf (int ,char*,char*) ;
+ scalar_t__ luaL_loadfile (int *,char*) ;
+ int * luaL_newstate () ;
+ int luaL_openlibs (int *) ;
+ int luaL_register (int *,char*,int ) ;
+ int lua_close (int *) ;
+ int lua_createtable (int *,int ,int) ;
+ scalar_t__ lua_pcall (int *,int,int ,int ) ;
+ int lua_pushstring (int *,char*) ;
+ int lua_rawseti (int *,int,int ) ;
+ int lua_setglobal (int *,char*) ;
+ char* lua_tostring (int *,int) ;
+ int stderr ;
 
 int main(int argc,char**argv){
 lua_State*L=luaL_newstate();

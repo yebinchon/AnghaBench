@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trace_probe {int nr_args; scalar_t__ event; int /*<<< orphan*/ * args; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  trace_probe_unlink (struct trace_probe*) ; 
- int /*<<< orphan*/  traceprobe_free_probe_arg (int /*<<< orphan*/ *) ; 
+
+
+
+struct trace_probe {int nr_args; scalar_t__ event; int * args; } ;
+
+
+ int trace_probe_unlink (struct trace_probe*) ;
+ int traceprobe_free_probe_arg (int *) ;
 
 void trace_probe_cleanup(struct trace_probe *tp)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < tp->nr_args; i++)
-		traceprobe_free_probe_arg(&tp->args[i]);
+ for (i = 0; i < tp->nr_args; i++)
+  traceprobe_free_probe_arg(&tp->args[i]);
 
-	if (tp->event)
-		trace_probe_unlink(tp);
+ if (tp->event)
+  trace_probe_unlink(tp);
 }

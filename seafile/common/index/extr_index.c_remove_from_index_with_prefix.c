@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct index_state {int cache_nr; int cache_changed; struct cache_entry** cache; } ;
-struct cache_entry {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  gboolean ;
+struct cache_entry {int name; } ;
+typedef int gboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  cache_entry_free (struct cache_entry*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strconcat (char const*,char*,int /*<<< orphan*/ *) ; 
- int index_name_pos (struct index_state*,char const*,int) ; 
- int /*<<< orphan*/  memmove (struct cache_entry**,struct cache_entry**,int) ; 
- int /*<<< orphan*/  remove_index_entry_at (struct index_state*,int) ; 
- int /*<<< orphan*/  remove_name_hash (struct index_state*,struct cache_entry*) ; 
- int strlen (char const*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char*,int) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int cache_entry_free (struct cache_entry*) ;
+ int g_free (char*) ;
+ char* g_strconcat (char const*,char*,int *) ;
+ int index_name_pos (struct index_state*,char const*,int) ;
+ int memmove (struct cache_entry**,struct cache_entry**,int) ;
+ int remove_index_entry_at (struct index_state*,int) ;
+ int remove_name_hash (struct index_state*,struct cache_entry*) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (int ,char*,int) ;
 
 int
 remove_from_index_with_prefix (struct index_state *istate, const char *path_prefix,
@@ -38,24 +38,24 @@ remove_from_index_with_prefix (struct index_state *istate, const char *path_pref
     if (not_found)
         *not_found = FALSE;
 
-    /* Exact match, remove that entry. */
+
     if (pos >= 0) {
         remove_index_entry_at (istate, pos);
         return 0;
     }
 
-    /* Otherwise it may be a prefix match, remove all entries begin with this prefix.
-     */
 
-    /* -pos = (the position this entry *should* be) + 1.
-     * So -pos-1 is the first entry larger than this entry.
-     */
+
+
+
+
+
     pos = -pos-1;
 
-    /* Add '/' to the end of prefix so that we won't match a partial path component.
-     * e.g. we don't want to match 'abc' with 'abcd/ef'
-     */
-    char *full_path_prefix = g_strconcat (path_prefix, "/", NULL);
+
+
+
+    char *full_path_prefix = g_strconcat (path_prefix, "/", ((void*)0));
     ++pathlen;
 
     while (pos < istate->cache_nr) {
@@ -85,7 +85,7 @@ remove_from_index_with_prefix (struct index_state *istate, const char *path_pref
     }
     g_free (full_path_prefix);
 
-    /* No match. */
+
     if (i == pos) {
         if (not_found)
             *not_found = TRUE;

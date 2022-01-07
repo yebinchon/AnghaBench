@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DDRB ; 
- int /*<<< orphan*/  LED_BIT ; 
- int /*<<< orphan*/  LED_MASK ; 
- int /*<<< orphan*/  PORTB ; 
+ int DDRB ;
+ int LED_BIT ;
+ int LED_MASK ;
+ int PORTB ;
 
 void user_led_on(void) {
   DDRB |= LED_BIT;

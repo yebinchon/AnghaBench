@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_3__ {int cx; int cy; } ;
-typedef  TYPE_1__ SIZE ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ SIZE ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SM_CXBORDER ; 
- int /*<<< orphan*/  SM_CXDLGFRAME ; 
- int /*<<< orphan*/  SM_CXFRAME ; 
- int /*<<< orphan*/  SM_CYBORDER ; 
- int /*<<< orphan*/  SM_CYDLGFRAME ; 
- int /*<<< orphan*/  SM_CYFRAME ; 
- scalar_t__ UserHasWindowEdge (int,int) ; 
- int WS_CAPTION ; 
- int WS_EX_CLIENTEDGE ; 
- int WS_EX_DLGMODALFRAME ; 
- int WS_EX_STATICEDGE ; 
- int WS_MINIMIZE ; 
- int WS_THICKFRAME ; 
+
+ int GetSystemMetrics (int ) ;
+ int SM_CXBORDER ;
+ int SM_CXDLGFRAME ;
+ int SM_CXFRAME ;
+ int SM_CYBORDER ;
+ int SM_CYDLGFRAME ;
+ int SM_CYFRAME ;
+ scalar_t__ UserHasWindowEdge (int,int) ;
+ int WS_CAPTION ;
+ int WS_EX_CLIENTEDGE ;
+ int WS_EX_DLGMODALFRAME ;
+ int WS_EX_STATICEDGE ;
+ int WS_MINIMIZE ;
+ int WS_THICKFRAME ;
 
 VOID
 UserGetWindowBorders(DWORD Style, DWORD ExStyle, SIZE *Size, BOOL WithClient)

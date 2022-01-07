@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DONE_SYSTIME_INIT () ; 
- int /*<<< orphan*/  INIT_GET_SYSTIME_CRITSEC () ; 
- int /*<<< orphan*/  INIT_WIN_PRECISE_TIME () ; 
+ int DONE_SYSTIME_INIT () ;
+ int INIT_GET_SYSTIME_CRITSEC () ;
+ int INIT_WIN_PRECISE_TIME () ;
 
 void
 init_systime(void)
 {
-	INIT_GET_SYSTIME_CRITSEC();
-	INIT_WIN_PRECISE_TIME();
-	DONE_SYSTIME_INIT();
+ INIT_GET_SYSTIME_CRITSEC();
+ INIT_WIN_PRECISE_TIME();
+ DONE_SYSTIME_INIT();
 }

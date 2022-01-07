@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ int16_t ;
 struct TYPE_4__ {int* permutated; } ;
 struct TYPE_5__ {int* block_last_index; TYPE_1__ intra_scantable; scalar_t__** block; } ;
-typedef  TYPE_2__ MpegEncContext ;
+typedef TYPE_2__ MpegEncContext ;
 
-/* Variables and functions */
- int FFABS (scalar_t__) ; 
+
+ int FFABS (scalar_t__) ;
 
 __attribute__((used)) static inline void dct_single_coeff_elimination(MpegEncContext *s,
                                                 int n, int threshold)
@@ -46,7 +46,7 @@ __attribute__((used)) static inline void dct_single_coeff_elimination(MpegEncCon
     } else
         skip_dc = 1;
 
-    /* Are all we could set to zero already zero? */
+
     if (last_index <= skip_dc - 1)
         return;
 

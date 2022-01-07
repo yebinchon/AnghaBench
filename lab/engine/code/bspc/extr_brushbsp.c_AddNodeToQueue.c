@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* next; } ;
-typedef  TYPE_1__ node_t ;
+typedef TYPE_1__ node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ThreadLock () ; 
- int /*<<< orphan*/  ThreadSemaphoreIncrease (int) ; 
- int /*<<< orphan*/  ThreadUnlock () ; 
- TYPE_1__* firstnode ; 
- TYPE_1__* lastnode ; 
- int /*<<< orphan*/  nodelistsize ; 
+
+ int ThreadLock () ;
+ int ThreadSemaphoreIncrease (int) ;
+ int ThreadUnlock () ;
+ TYPE_1__* firstnode ;
+ TYPE_1__* lastnode ;
+ int nodelistsize ;
 
 void AddNodeToQueue(node_t *node)
 {
-	ThreadLock();
+ ThreadLock();
 
-	node->next = NULL;
-	if (lastnode) lastnode->next = node;
-	else firstnode = node;
-	lastnode = node;
-	nodelistsize++;
+ node->next = ((void*)0);
+ if (lastnode) lastnode->next = node;
+ else firstnode = node;
+ lastnode = node;
+ nodelistsize++;
 
-	ThreadUnlock();
-	//
-	ThreadSemaphoreIncrease(1);
+ ThreadUnlock();
+
+ ThreadSemaphoreIncrease(1);
 }

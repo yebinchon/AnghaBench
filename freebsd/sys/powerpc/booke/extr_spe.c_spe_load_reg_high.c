@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVLDW (int) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int EVLDW (int) ;
 
 __attribute__((used)) static void
 spe_load_reg_high(int reg, uint32_t val)
 {
-#define	EVLDW(n)   case n: __asm __volatile("evmergelo "#n",%0,"#n \
-	    :: "r"(val)); break;
-	switch (reg) {
-	EVLDW(1);	EVLDW(2);	EVLDW(3);	EVLDW(4);
-	EVLDW(5);	EVLDW(6);	EVLDW(7);	EVLDW(8);
-	EVLDW(9);	EVLDW(10);	EVLDW(11);	EVLDW(12);
-	EVLDW(13);	EVLDW(14);	EVLDW(15);	EVLDW(16);
-	EVLDW(17);	EVLDW(18);	EVLDW(19);	EVLDW(20);
-	EVLDW(21);	EVLDW(22);	EVLDW(23);	EVLDW(24);
-	EVLDW(25);	EVLDW(26);	EVLDW(27);	EVLDW(28);
-	EVLDW(29);	EVLDW(30);	EVLDW(31);	EVLDW(0);
-	}
-#undef EVLDW
+
+
+ switch (reg) {
+ case 1: __asm __volatile("evmergelo ""1"",%0,""1" :: "r"(val)); break;; case 2: __asm __volatile("evmergelo ""2"",%0,""2" :: "r"(val)); break;; case 3: __asm __volatile("evmergelo ""3"",%0,""3" :: "r"(val)); break;; case 4: __asm __volatile("evmergelo ""4"",%0,""4" :: "r"(val)); break;;
+ case 5: __asm __volatile("evmergelo ""5"",%0,""5" :: "r"(val)); break;; case 6: __asm __volatile("evmergelo ""6"",%0,""6" :: "r"(val)); break;; case 7: __asm __volatile("evmergelo ""7"",%0,""7" :: "r"(val)); break;; case 8: __asm __volatile("evmergelo ""8"",%0,""8" :: "r"(val)); break;;
+ case 9: __asm __volatile("evmergelo ""9"",%0,""9" :: "r"(val)); break;; case 10: __asm __volatile("evmergelo ""10"",%0,""10" :: "r"(val)); break;; case 11: __asm __volatile("evmergelo ""11"",%0,""11" :: "r"(val)); break;; case 12: __asm __volatile("evmergelo ""12"",%0,""12" :: "r"(val)); break;;
+ case 13: __asm __volatile("evmergelo ""13"",%0,""13" :: "r"(val)); break;; case 14: __asm __volatile("evmergelo ""14"",%0,""14" :: "r"(val)); break;; case 15: __asm __volatile("evmergelo ""15"",%0,""15" :: "r"(val)); break;; case 16: __asm __volatile("evmergelo ""16"",%0,""16" :: "r"(val)); break;;
+ case 17: __asm __volatile("evmergelo ""17"",%0,""17" :: "r"(val)); break;; case 18: __asm __volatile("evmergelo ""18"",%0,""18" :: "r"(val)); break;; case 19: __asm __volatile("evmergelo ""19"",%0,""19" :: "r"(val)); break;; case 20: __asm __volatile("evmergelo ""20"",%0,""20" :: "r"(val)); break;;
+ case 21: __asm __volatile("evmergelo ""21"",%0,""21" :: "r"(val)); break;; case 22: __asm __volatile("evmergelo ""22"",%0,""22" :: "r"(val)); break;; case 23: __asm __volatile("evmergelo ""23"",%0,""23" :: "r"(val)); break;; case 24: __asm __volatile("evmergelo ""24"",%0,""24" :: "r"(val)); break;;
+ case 25: __asm __volatile("evmergelo ""25"",%0,""25" :: "r"(val)); break;; case 26: __asm __volatile("evmergelo ""26"",%0,""26" :: "r"(val)); break;; case 27: __asm __volatile("evmergelo ""27"",%0,""27" :: "r"(val)); break;; case 28: __asm __volatile("evmergelo ""28"",%0,""28" :: "r"(val)); break;;
+ case 29: __asm __volatile("evmergelo ""29"",%0,""29" :: "r"(val)); break;; case 30: __asm __volatile("evmergelo ""30"",%0,""30" :: "r"(val)); break;; case 31: __asm __volatile("evmergelo ""31"",%0,""31" :: "r"(val)); break;; case 0: __asm __volatile("evmergelo ""0"",%0,""0" :: "r"(val)); break;;
+ }
+
 
 }

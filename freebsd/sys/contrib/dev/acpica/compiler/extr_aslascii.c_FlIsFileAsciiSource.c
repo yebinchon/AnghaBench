@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char UINT8 ;
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef char UINT8 ;
+typedef int UINT32 ;
 struct TYPE_4__ {int Line; scalar_t__ Offset; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  TYPE_1__ ASL_FILE_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
+typedef int FILE ;
+typedef scalar_t__ BOOLEAN ;
+typedef TYPE_1__ ASL_FILE_STATUS ;
+typedef int ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_IS_ASCII (char) ; 
- int /*<<< orphan*/  AE_BAD_CHARACTER ; 
- int /*<<< orphan*/  AE_ERROR ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  ASL_ERROR ; 
- int /*<<< orphan*/  ASL_MSG_NON_ASCII ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,int,...) ; 
- int /*<<< orphan*/  AslError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FlConsumeAnsiComment (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  FlConsumeNewComment (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isprint (char) ; 
- int /*<<< orphan*/  isspace (char) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int ACPI_IS_ASCII (char) ;
+ int AE_BAD_CHARACTER ;
+ int AE_ERROR ;
+ int AE_OK ;
+ int ASL_ERROR ;
+ int ASL_MSG_NON_ASCII ;
+ int AcpiOsPrintf (char*,int,...) ;
+ int AslError (int ,int ,int *,char*) ;
+ scalar_t__ FALSE ;
+ int FlConsumeAnsiComment (int *,TYPE_1__*) ;
+ int FlConsumeNewComment (int *,TYPE_1__*) ;
+ scalar_t__ TRUE ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,int) ;
+ int fread (char*,int,int,int *) ;
+ int isprint (char) ;
+ int isspace (char) ;
+ int perror (char*) ;
+ int stderr ;
 
 ACPI_STATUS
 FlIsFileAsciiSource (
-    char                    *Filename,
-    BOOLEAN                 DisplayErrors)
+    char *Filename,
+    BOOLEAN DisplayErrors)
 {
-    UINT8                   Byte;
-    UINT32                  BadBytes = 0;
-    BOOLEAN                 OpeningComment = FALSE;
-    ASL_FILE_STATUS         Status;
-    FILE                    *Handle;
+    UINT8 Byte;
+    UINT32 BadBytes = 0;
+    BOOLEAN OpeningComment = FALSE;
+    ASL_FILE_STATUS Status;
+    FILE *Handle;
 
 
-    /* Open file in text mode so file offset is always accurate */
+
 
     Handle = fopen (Filename, "rb");
     if (!Handle)
@@ -65,15 +65,15 @@ FlIsFileAsciiSource (
     Status.Line = 1;
     Status.Offset = 0;
 
-    /* Read the entire file */
+
 
     while (fread (&Byte, 1, 1, Handle) == 1)
     {
-        /* Ignore comment fields (allow non-ascii within) */
+
 
         if (OpeningComment)
         {
-            /* Check for second comment open delimiter */
+
 
             if (Byte == '*')
             {
@@ -85,7 +85,7 @@ FlIsFileAsciiSource (
                 FlConsumeNewComment (Handle, &Status);
             }
 
-            /* Reset */
+
 
             OpeningComment = FALSE;
         }
@@ -94,7 +94,7 @@ FlIsFileAsciiSource (
             OpeningComment = TRUE;
         }
 
-        /* Check for an ASCII character */
+
 
         if (!ACPI_IS_ASCII (Byte))
         {
@@ -108,7 +108,7 @@ FlIsFileAsciiSource (
             BadBytes++;
         }
 
-        /* Ensure character is either printable or a "space" char */
+
 
         else if (!isprint (Byte) && !isspace (Byte))
         {
@@ -122,7 +122,7 @@ FlIsFileAsciiSource (
             BadBytes++;
         }
 
-        /* Update line counter as necessary */
+
 
         if (Byte == 0x0A)
         {
@@ -134,7 +134,7 @@ FlIsFileAsciiSource (
 
     fclose (Handle);
 
-    /* Were there any non-ASCII characters in the file? */
+
 
     if (BadBytes)
     {
@@ -146,13 +146,13 @@ FlIsFileAsciiSource (
             AcpiOsPrintf (
                 "Total %u invalid characters found in input source text, "
                 "could be a binary file\n", BadBytes);
-            AslError (ASL_ERROR, ASL_MSG_NON_ASCII, NULL, Filename);
+            AslError (ASL_ERROR, ASL_MSG_NON_ASCII, ((void*)0), Filename);
         }
 
         return (AE_BAD_CHARACTER);
     }
 
-    /* File is OK (100% ASCII) */
+
 
     return (AE_OK);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  sync_time; int /*<<< orphan*/  sync_date; int /*<<< orphan*/  modification_time; int /*<<< orphan*/  hit_rate; int /*<<< orphan*/  expire_time; int /*<<< orphan*/  expire_date; int /*<<< orphan*/  exempt_delta; int /*<<< orphan*/  cache_entry_type; int /*<<< orphan*/  access_time; } ;
-typedef  TYPE_2__ entry_url ;
-struct TYPE_6__ {int /*<<< orphan*/  dwExemptDelta; } ;
-struct TYPE_8__ {int /*<<< orphan*/  LastAccessTime; int /*<<< orphan*/  LastModifiedTime; int /*<<< orphan*/  dwHitRate; int /*<<< orphan*/  ExpireTime; TYPE_1__ u; int /*<<< orphan*/  CacheEntryType; } ;
-typedef  TYPE_3__ INTERNET_CACHE_ENTRY_INFOA ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int CACHE_ENTRY_ACCTIME_FC ; 
- int CACHE_ENTRY_ATTRIBUTE_FC ; 
- int CACHE_ENTRY_EXEMPT_DELTA_FC ; 
- int CACHE_ENTRY_EXPTIME_FC ; 
- int CACHE_ENTRY_HEADERINFO_FC ; 
- int CACHE_ENTRY_HITRATE_FC ; 
- int CACHE_ENTRY_MODTIME_FC ; 
- int CACHE_ENTRY_SYNCTIME_FC ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  file_time_to_dos_date_time (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int sync_time; int sync_date; int modification_time; int hit_rate; int expire_time; int expire_date; int exempt_delta; int cache_entry_type; int access_time; } ;
+typedef TYPE_2__ entry_url ;
+struct TYPE_6__ {int dwExemptDelta; } ;
+struct TYPE_8__ {int LastAccessTime; int LastModifiedTime; int dwHitRate; int ExpireTime; TYPE_1__ u; int CacheEntryType; } ;
+typedef TYPE_3__ INTERNET_CACHE_ENTRY_INFOA ;
+typedef int DWORD ;
+
+
+ int CACHE_ENTRY_ACCTIME_FC ;
+ int CACHE_ENTRY_ATTRIBUTE_FC ;
+ int CACHE_ENTRY_EXEMPT_DELTA_FC ;
+ int CACHE_ENTRY_EXPTIME_FC ;
+ int CACHE_ENTRY_HEADERINFO_FC ;
+ int CACHE_ENTRY_HITRATE_FC ;
+ int CACHE_ENTRY_MODTIME_FC ;
+ int CACHE_ENTRY_SYNCTIME_FC ;
+ int ERROR_SUCCESS ;
+ int FIXME (char*) ;
+ int file_time_to_dos_date_time (int *,int *,int *) ;
 
 __attribute__((used)) static DWORD urlcache_set_entry_info(entry_url *url_entry, const INTERNET_CACHE_ENTRY_INFOA *entry_info, DWORD field_control)
 {

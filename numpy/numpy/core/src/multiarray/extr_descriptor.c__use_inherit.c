@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {scalar_t__ elsize; int /*<<< orphan*/  flags; int /*<<< orphan*/ * metadata; int /*<<< orphan*/ * names; int /*<<< orphan*/ * fields; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ PyArray_Descr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Integer ; 
- int /*<<< orphan*/  PyArray_DescrConverter (int /*<<< orphan*/ *,TYPE_1__**) ; 
- TYPE_1__* PyArray_DescrNew (TYPE_1__*) ; 
- scalar_t__ PyArray_IsScalar (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ PyDataType_HASFIELDS (TYPE_1__*) ; 
- scalar_t__ PyDataType_ISUNSIZED (TYPE_1__*) ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  Py_DECREF (TYPE_1__*) ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_XINCREF (int /*<<< orphan*/ *) ; 
- scalar_t__ _is_tuple_of_integers (int /*<<< orphan*/ *) ; 
- scalar_t__ invalid_union_object_dtype (TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {scalar_t__ elsize; int flags; int * metadata; int * names; int * fields; } ;
+typedef int PyObject ;
+typedef TYPE_1__ PyArray_Descr ;
+
+
+ int Integer ;
+ int PyArray_DescrConverter (int *,TYPE_1__**) ;
+ TYPE_1__* PyArray_DescrNew (TYPE_1__*) ;
+ scalar_t__ PyArray_IsScalar (int *,int ) ;
+ scalar_t__ PyDataType_HASFIELDS (TYPE_1__*) ;
+ scalar_t__ PyDataType_ISUNSIZED (TYPE_1__*) ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int Py_DECREF (TYPE_1__*) ;
+ int Py_XDECREF (int *) ;
+ int Py_XINCREF (int *) ;
+ scalar_t__ _is_tuple_of_integers (int *) ;
+ scalar_t__ invalid_union_object_dtype (TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static PyArray_Descr *
 _use_inherit(PyArray_Descr *type, PyObject *newobj, int *errflag)
@@ -40,11 +40,11 @@ _use_inherit(PyArray_Descr *type, PyObject *newobj, int *errflag)
     if (PyArray_IsScalar(newobj, Integer)
             || _is_tuple_of_integers(newobj)
             || !PyArray_DescrConverter(newobj, &conv)) {
-        return NULL;
+        return ((void*)0);
     }
     *errflag = 1;
     new = PyArray_DescrNew(type);
-    if (new == NULL) {
+    if (new == ((void*)0)) {
         goto fail;
     }
     if (PyDataType_ISUNSIZED(new)) {
@@ -70,7 +70,7 @@ _use_inherit(PyArray_Descr *type, PyObject *newobj, int *errflag)
         new->names = conv->names;
         Py_XINCREF(new->names);
     }
-    if (conv->metadata != NULL) {
+    if (conv->metadata != ((void*)0)) {
         Py_XDECREF(new->metadata);
         new->metadata = conv->metadata;
         Py_XINCREF(new->metadata);
@@ -82,5 +82,5 @@ _use_inherit(PyArray_Descr *type, PyObject *newobj, int *errflag)
 
  fail:
     Py_DECREF(conv);
-    return NULL;
+    return ((void*)0);
 }

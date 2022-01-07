@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int pending_count; int queue_size; int queue_tail; int /*<<< orphan*/  lock; int /*<<< orphan*/  notify; TYPE_1__* queue; scalar_t__ shutdown; } ;
-struct TYPE_5__ {void* out_arg; void* in_arg; int /*<<< orphan*/ * function; } ;
-typedef  int /*<<< orphan*/ * Runable ;
-typedef  TYPE_1__ IjkThreadPoolTask ;
-typedef  TYPE_2__ IjkThreadPoolContext ;
 
-/* Variables and functions */
- int IJK_THREADPOOL_INVALID ; 
- int IJK_THREADPOOL_LOCK_FAILURE ; 
- int IJK_THREADPOOL_QUEUE_FULL ; 
- int IJK_THREADPOOL_SHUTDOWN ; 
- int MAX_QUEUE ; 
- scalar_t__ pthread_cond_signal (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ realloc (TYPE_1__*,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int pending_count; int queue_size; int queue_tail; int lock; int notify; TYPE_1__* queue; scalar_t__ shutdown; } ;
+struct TYPE_5__ {void* out_arg; void* in_arg; int * function; } ;
+typedef int * Runable ;
+typedef TYPE_1__ IjkThreadPoolTask ;
+typedef TYPE_2__ IjkThreadPoolContext ;
+
+
+ int IJK_THREADPOOL_INVALID ;
+ int IJK_THREADPOOL_LOCK_FAILURE ;
+ int IJK_THREADPOOL_QUEUE_FULL ;
+ int IJK_THREADPOOL_SHUTDOWN ;
+ int MAX_QUEUE ;
+ scalar_t__ pthread_cond_signal (int *) ;
+ scalar_t__ pthread_mutex_lock (int *) ;
+ scalar_t__ pthread_mutex_unlock (int *) ;
+ scalar_t__ realloc (TYPE_1__*,int) ;
 
 int ijk_threadpool_add(IjkThreadPoolContext *ctx, Runable function,
                    void *in_arg, void *out_arg, int flags)
@@ -35,7 +35,7 @@ int ijk_threadpool_add(IjkThreadPoolContext *ctx, Runable function,
     int err = 0;
     int next;
 
-    if(ctx == NULL || function == NULL) {
+    if(ctx == ((void*)0) || function == ((void*)0)) {
         return IJK_THREADPOOL_INVALID;
     }
 
@@ -59,20 +59,20 @@ int ijk_threadpool_add(IjkThreadPoolContext *ctx, Runable function,
 
     next = (ctx->queue_tail + 1) % ctx->queue_size;
     do {
-        /* Are we shutting down ? */
+
         if(ctx->shutdown) {
             err = IJK_THREADPOOL_SHUTDOWN;
             break;
         }
 
-        /* Add task to queue */
+
         ctx->queue[ctx->queue_tail].function = function;
-        ctx->queue[ctx->queue_tail].in_arg   = in_arg;
-        ctx->queue[ctx->queue_tail].out_arg  = out_arg;
+        ctx->queue[ctx->queue_tail].in_arg = in_arg;
+        ctx->queue[ctx->queue_tail].out_arg = out_arg;
         ctx->queue_tail = next;
         ctx->pending_count += 1;
 
-        /* pthread_cond_broadcast */
+
         if(pthread_cond_signal(&(ctx->notify)) != 0) {
             err = IJK_THREADPOOL_LOCK_FAILURE;
             break;

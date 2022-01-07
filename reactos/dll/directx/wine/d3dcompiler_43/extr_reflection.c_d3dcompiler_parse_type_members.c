@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dcompiler_shader_reflection_type_member {int offset; int /*<<< orphan*/  name; int /*<<< orphan*/  type; } ;
+
+
+
+
+struct d3dcompiler_shader_reflection_type_member {int offset; int name; int type; } ;
 struct d3dcompiler_shader_reflection {int dummy; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
- int /*<<< orphan*/  copy_name (char const*,int /*<<< orphan*/ *) ; 
- int debugstr_a (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_reflection_type (struct d3dcompiler_shader_reflection*,char const*,int) ; 
- int /*<<< orphan*/  read_dword (char const**,int*) ; 
+
+ int ERR (char*) ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int ) ;
+ int S_OK ;
+ int TRACE (char*,int) ;
+ int copy_name (char const*,int *) ;
+ int debugstr_a (int ) ;
+ int get_reflection_type (struct d3dcompiler_shader_reflection*,char const*,int) ;
+ int read_dword (char const**,int*) ;
 
 __attribute__((used)) static HRESULT d3dcompiler_parse_type_members(struct d3dcompiler_shader_reflection *ref,
         struct d3dcompiler_shader_reflection_type_member *member, const char *data, const char **ptr)

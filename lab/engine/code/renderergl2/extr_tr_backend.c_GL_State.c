@@ -1,247 +1,231 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_4__ {unsigned long glStateBits; unsigned long storedGlState; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* Error ) (int /*<<< orphan*/ ,char*) ;} ;
-typedef  int /*<<< orphan*/  GLenum ;
+struct TYPE_3__ {int (* Error ) (int ,char*) ;} ;
+typedef int GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_DROP ; 
- unsigned long GLS_DEPTHFUNC_BITS ; 
- unsigned long GLS_DEPTHFUNC_EQUAL ; 
- unsigned long GLS_DEPTHFUNC_GREATER ; 
- unsigned long GLS_DEPTHMASK_TRUE ; 
- unsigned long GLS_DEPTHTEST_DISABLE ; 
- unsigned long GLS_DSTBLEND_BITS ; 
-#define  GLS_DSTBLEND_DST_ALPHA 144 
-#define  GLS_DSTBLEND_ONE 143 
-#define  GLS_DSTBLEND_ONE_MINUS_DST_ALPHA 142 
-#define  GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA 141 
-#define  GLS_DSTBLEND_ONE_MINUS_SRC_COLOR 140 
-#define  GLS_DSTBLEND_SRC_ALPHA 139 
-#define  GLS_DSTBLEND_SRC_COLOR 138 
-#define  GLS_DSTBLEND_ZERO 137 
- unsigned long GLS_POLYMODE_LINE ; 
-#define  GLS_SRCBLEND_ALPHA_SATURATE 136 
- unsigned long GLS_SRCBLEND_BITS ; 
-#define  GLS_SRCBLEND_DST_ALPHA 135 
-#define  GLS_SRCBLEND_DST_COLOR 134 
-#define  GLS_SRCBLEND_ONE 133 
-#define  GLS_SRCBLEND_ONE_MINUS_DST_ALPHA 132 
-#define  GLS_SRCBLEND_ONE_MINUS_DST_COLOR 131 
-#define  GLS_SRCBLEND_ONE_MINUS_SRC_ALPHA 130 
-#define  GLS_SRCBLEND_SRC_ALPHA 129 
-#define  GLS_SRCBLEND_ZERO 128 
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_DST_ALPHA ; 
- int /*<<< orphan*/  GL_DST_COLOR ; 
- int /*<<< orphan*/  GL_EQUAL ; 
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  GL_FILL ; 
- int /*<<< orphan*/  GL_FRONT_AND_BACK ; 
- int /*<<< orphan*/  GL_GREATER ; 
- int /*<<< orphan*/  GL_LEQUAL ; 
- int /*<<< orphan*/  GL_LINE ; 
- int /*<<< orphan*/  GL_ONE ; 
- int /*<<< orphan*/  GL_ONE_MINUS_DST_ALPHA ; 
- int /*<<< orphan*/  GL_ONE_MINUS_DST_COLOR ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_ONE_MINUS_SRC_COLOR ; 
- int /*<<< orphan*/  GL_SRC_ALPHA ; 
- int /*<<< orphan*/  GL_SRC_ALPHA_SATURATE ; 
- int /*<<< orphan*/  GL_SRC_COLOR ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  GL_ZERO ; 
- TYPE_2__ glState ; 
- int /*<<< orphan*/  qglBlendFunc (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglDepthFunc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglDepthMask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qglPolygonMode (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ ri ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,char*) ; 
+
+ int ERR_DROP ;
+ unsigned long GLS_DEPTHFUNC_BITS ;
+ unsigned long GLS_DEPTHFUNC_EQUAL ;
+ unsigned long GLS_DEPTHFUNC_GREATER ;
+ unsigned long GLS_DEPTHMASK_TRUE ;
+ unsigned long GLS_DEPTHTEST_DISABLE ;
+ unsigned long GLS_DSTBLEND_BITS ;
+ unsigned long GLS_POLYMODE_LINE ;
+
+ unsigned long GLS_SRCBLEND_BITS ;
+ int GL_BLEND ;
+ int GL_DEPTH_TEST ;
+ int GL_DST_ALPHA ;
+ int GL_DST_COLOR ;
+ int GL_EQUAL ;
+ int GL_FALSE ;
+ int GL_FILL ;
+ int GL_FRONT_AND_BACK ;
+ int GL_GREATER ;
+ int GL_LEQUAL ;
+ int GL_LINE ;
+ int GL_ONE ;
+ int GL_ONE_MINUS_DST_ALPHA ;
+ int GL_ONE_MINUS_DST_COLOR ;
+ int GL_ONE_MINUS_SRC_ALPHA ;
+ int GL_ONE_MINUS_SRC_COLOR ;
+ int GL_SRC_ALPHA ;
+ int GL_SRC_ALPHA_SATURATE ;
+ int GL_SRC_COLOR ;
+ int GL_TRUE ;
+ int GL_ZERO ;
+ TYPE_2__ glState ;
+ int qglBlendFunc (int ,int ) ;
+ int qglDepthFunc (int ) ;
+ int qglDepthMask (int ) ;
+ int qglDisable (int ) ;
+ int qglEnable (int ) ;
+ int qglPolygonMode (int ,int ) ;
+ TYPE_1__ ri ;
+ int stub1 (int ,char*) ;
+ int stub2 (int ,char*) ;
 
 void GL_State( unsigned long stateBits )
 {
-	unsigned long diff = stateBits ^ glState.glStateBits;
+ unsigned long diff = stateBits ^ glState.glStateBits;
 
-	if ( !diff )
-	{
-		return;
-	}
+ if ( !diff )
+ {
+  return;
+ }
 
-	//
-	// check depthFunc bits
-	//
-	if ( diff & GLS_DEPTHFUNC_BITS )
-	{
-		if ( stateBits & GLS_DEPTHFUNC_EQUAL )
-		{
-			qglDepthFunc( GL_EQUAL );
-		}
-		else if ( stateBits & GLS_DEPTHFUNC_GREATER)
-		{
-			qglDepthFunc( GL_GREATER );
-		}
-		else
-		{
-			qglDepthFunc( GL_LEQUAL );
-		}
-	}
 
-	//
-	// check blend bits
-	//
-	if ( diff & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS ) )
-	{
-		uint32_t oldState = glState.glStateBits & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
-		uint32_t newState = stateBits & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
-		uint32_t storedState = glState.storedGlState & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
 
-		if (oldState == 0)
-		{
-			qglEnable( GL_BLEND );
-		}
-		else if (newState == 0)
-		{
-			qglDisable( GL_BLEND );
-		}
 
-		if (newState != 0 && storedState != newState)
-		{
-			GLenum srcFactor = GL_ONE, dstFactor = GL_ONE;
+ if ( diff & GLS_DEPTHFUNC_BITS )
+ {
+  if ( stateBits & GLS_DEPTHFUNC_EQUAL )
+  {
+   qglDepthFunc( GL_EQUAL );
+  }
+  else if ( stateBits & GLS_DEPTHFUNC_GREATER)
+  {
+   qglDepthFunc( GL_GREATER );
+  }
+  else
+  {
+   qglDepthFunc( GL_LEQUAL );
+  }
+ }
 
-			glState.storedGlState &= ~( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
-			glState.storedGlState |= newState;
 
-			switch ( stateBits & GLS_SRCBLEND_BITS )
-			{
-			case GLS_SRCBLEND_ZERO:
-				srcFactor = GL_ZERO;
-				break;
-			case GLS_SRCBLEND_ONE:
-				srcFactor = GL_ONE;
-				break;
-			case GLS_SRCBLEND_DST_COLOR:
-				srcFactor = GL_DST_COLOR;
-				break;
-			case GLS_SRCBLEND_ONE_MINUS_DST_COLOR:
-				srcFactor = GL_ONE_MINUS_DST_COLOR;
-				break;
-			case GLS_SRCBLEND_SRC_ALPHA:
-				srcFactor = GL_SRC_ALPHA;
-				break;
-			case GLS_SRCBLEND_ONE_MINUS_SRC_ALPHA:
-				srcFactor = GL_ONE_MINUS_SRC_ALPHA;
-				break;
-			case GLS_SRCBLEND_DST_ALPHA:
-				srcFactor = GL_DST_ALPHA;
-				break;
-			case GLS_SRCBLEND_ONE_MINUS_DST_ALPHA:
-				srcFactor = GL_ONE_MINUS_DST_ALPHA;
-				break;
-			case GLS_SRCBLEND_ALPHA_SATURATE:
-				srcFactor = GL_SRC_ALPHA_SATURATE;
-				break;
-			default:
-				ri.Error( ERR_DROP, "GL_State: invalid src blend state bits" );
-				break;
-			}
 
-			switch ( stateBits & GLS_DSTBLEND_BITS )
-			{
-			case GLS_DSTBLEND_ZERO:
-				dstFactor = GL_ZERO;
-				break;
-			case GLS_DSTBLEND_ONE:
-				dstFactor = GL_ONE;
-				break;
-			case GLS_DSTBLEND_SRC_COLOR:
-				dstFactor = GL_SRC_COLOR;
-				break;
-			case GLS_DSTBLEND_ONE_MINUS_SRC_COLOR:
-				dstFactor = GL_ONE_MINUS_SRC_COLOR;
-				break;
-			case GLS_DSTBLEND_SRC_ALPHA:
-				dstFactor = GL_SRC_ALPHA;
-				break;
-			case GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA:
-				dstFactor = GL_ONE_MINUS_SRC_ALPHA;
-				break;
-			case GLS_DSTBLEND_DST_ALPHA:
-				dstFactor = GL_DST_ALPHA;
-				break;
-			case GLS_DSTBLEND_ONE_MINUS_DST_ALPHA:
-				dstFactor = GL_ONE_MINUS_DST_ALPHA;
-				break;
-			default:
-				ri.Error( ERR_DROP, "GL_State: invalid dst blend state bits" );
-				break;
-			}
 
-			qglBlendFunc( srcFactor, dstFactor );
-		}
-	}
+ if ( diff & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS ) )
+ {
+  uint32_t oldState = glState.glStateBits & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
+  uint32_t newState = stateBits & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
+  uint32_t storedState = glState.storedGlState & ( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
 
-	//
-	// check depthmask
-	//
-	if ( diff & GLS_DEPTHMASK_TRUE )
-	{
-		if ( stateBits & GLS_DEPTHMASK_TRUE )
-		{
-			qglDepthMask( GL_TRUE );
-		}
-		else
-		{
-			qglDepthMask( GL_FALSE );
-		}
-	}
+  if (oldState == 0)
+  {
+   qglEnable( GL_BLEND );
+  }
+  else if (newState == 0)
+  {
+   qglDisable( GL_BLEND );
+  }
 
-	//
-	// fill/line mode
-	//
-	if ( diff & GLS_POLYMODE_LINE )
-	{
-		if ( stateBits & GLS_POLYMODE_LINE )
-		{
-			qglPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-		}
-		else
-		{
-			qglPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
-		}
-	}
+  if (newState != 0 && storedState != newState)
+  {
+   GLenum srcFactor = GL_ONE, dstFactor = GL_ONE;
 
-	//
-	// depthtest
-	//
-	if ( diff & GLS_DEPTHTEST_DISABLE )
-	{
-		if ( stateBits & GLS_DEPTHTEST_DISABLE )
-		{
-			qglDisable( GL_DEPTH_TEST );
-		}
-		else
-		{
-			qglEnable( GL_DEPTH_TEST );
-		}
-	}
+   glState.storedGlState &= ~( GLS_SRCBLEND_BITS | GLS_DSTBLEND_BITS );
+   glState.storedGlState |= newState;
 
-	glState.glStateBits = stateBits;
+   switch ( stateBits & GLS_SRCBLEND_BITS )
+   {
+   case 128:
+    srcFactor = GL_ZERO;
+    break;
+   case 133:
+    srcFactor = GL_ONE;
+    break;
+   case 134:
+    srcFactor = GL_DST_COLOR;
+    break;
+   case 131:
+    srcFactor = GL_ONE_MINUS_DST_COLOR;
+    break;
+   case 129:
+    srcFactor = GL_SRC_ALPHA;
+    break;
+   case 130:
+    srcFactor = GL_ONE_MINUS_SRC_ALPHA;
+    break;
+   case 135:
+    srcFactor = GL_DST_ALPHA;
+    break;
+   case 132:
+    srcFactor = GL_ONE_MINUS_DST_ALPHA;
+    break;
+   case 136:
+    srcFactor = GL_SRC_ALPHA_SATURATE;
+    break;
+   default:
+    ri.Error( ERR_DROP, "GL_State: invalid src blend state bits" );
+    break;
+   }
+
+   switch ( stateBits & GLS_DSTBLEND_BITS )
+   {
+   case 137:
+    dstFactor = GL_ZERO;
+    break;
+   case 143:
+    dstFactor = GL_ONE;
+    break;
+   case 138:
+    dstFactor = GL_SRC_COLOR;
+    break;
+   case 140:
+    dstFactor = GL_ONE_MINUS_SRC_COLOR;
+    break;
+   case 139:
+    dstFactor = GL_SRC_ALPHA;
+    break;
+   case 141:
+    dstFactor = GL_ONE_MINUS_SRC_ALPHA;
+    break;
+   case 144:
+    dstFactor = GL_DST_ALPHA;
+    break;
+   case 142:
+    dstFactor = GL_ONE_MINUS_DST_ALPHA;
+    break;
+   default:
+    ri.Error( ERR_DROP, "GL_State: invalid dst blend state bits" );
+    break;
+   }
+
+   qglBlendFunc( srcFactor, dstFactor );
+  }
+ }
+
+
+
+
+ if ( diff & GLS_DEPTHMASK_TRUE )
+ {
+  if ( stateBits & GLS_DEPTHMASK_TRUE )
+  {
+   qglDepthMask( GL_TRUE );
+  }
+  else
+  {
+   qglDepthMask( GL_FALSE );
+  }
+ }
+
+
+
+
+ if ( diff & GLS_POLYMODE_LINE )
+ {
+  if ( stateBits & GLS_POLYMODE_LINE )
+  {
+   qglPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+  }
+  else
+  {
+   qglPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+  }
+ }
+
+
+
+
+ if ( diff & GLS_DEPTHTEST_DISABLE )
+ {
+  if ( stateBits & GLS_DEPTHTEST_DISABLE )
+  {
+   qglDisable( GL_DEPTH_TEST );
+  }
+  else
+  {
+   qglEnable( GL_DEPTH_TEST );
+  }
+ }
+
+ glState.glStateBits = stateBits;
 }

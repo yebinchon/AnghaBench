@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  path; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int path; } ;
 struct perf_data {TYPE_1__ file; } ;
-struct evsel_script {int /*<<< orphan*/  filename; int /*<<< orphan*/ * fp; } ;
+struct evsel_script {int filename; int * fp; } ;
 struct evsel {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ asprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (struct evsel_script*) ; 
- int /*<<< orphan*/  perf_evsel__name (struct evsel*) ; 
- struct evsel_script* zalloc (int) ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ asprintf (int *,char*,int ,int ) ;
+ int * fopen (int ,char*) ;
+ int free (struct evsel_script*) ;
+ int perf_evsel__name (struct evsel*) ;
+ struct evsel_script* zalloc (int) ;
+ int zfree (int *) ;
 
 __attribute__((used)) static struct evsel_script *perf_evsel_script__new(struct evsel *evsel,
-							struct perf_data *data)
+       struct perf_data *data)
 {
-	struct evsel_script *es = zalloc(sizeof(*es));
+ struct evsel_script *es = zalloc(sizeof(*es));
 
-	if (es != NULL) {
-		if (asprintf(&es->filename, "%s.%s.dump", data->file.path, perf_evsel__name(evsel)) < 0)
-			goto out_free;
-		es->fp = fopen(es->filename, "w");
-		if (es->fp == NULL)
-			goto out_free_filename;
-	}
+ if (es != ((void*)0)) {
+  if (asprintf(&es->filename, "%s.%s.dump", data->file.path, perf_evsel__name(evsel)) < 0)
+   goto out_free;
+  es->fp = fopen(es->filename, "w");
+  if (es->fp == ((void*)0))
+   goto out_free_filename;
+ }
 
-	return es;
+ return es;
 out_free_filename:
-	zfree(&es->filename);
+ zfree(&es->filename);
 out_free:
-	free(es);
-	return NULL;
+ free(es);
+ return ((void*)0);
 }

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_17__ {int nb_obus; TYPE_5__* obus; } ;
-struct TYPE_16__ {int const type; scalar_t__ raw_size; int /*<<< orphan*/  raw_data; } ;
+struct TYPE_16__ {int const type; scalar_t__ raw_size; int raw_data; } ;
 struct TYPE_15__ {TYPE_1__* priv_data; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * data; } ;
-struct TYPE_13__ {int size; int /*<<< orphan*/ * data; TYPE_3__* buf; } ;
+struct TYPE_14__ {int * data; } ;
+struct TYPE_13__ {int size; int * data; TYPE_3__* buf; } ;
 struct TYPE_12__ {scalar_t__ remove; TYPE_6__ av1_pkt; } ;
-typedef  TYPE_1__ ExtractExtradataContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVBufferRef ;
-typedef  TYPE_4__ AVBSFContext ;
-typedef  TYPE_5__ AV1OBU ;
+typedef TYPE_1__ ExtractExtradataContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVBufferRef ;
+typedef TYPE_4__ AVBSFContext ;
+typedef TYPE_5__ AV1OBU ;
 
-/* Variables and functions */
-#define  AV1_OBU_METADATA 129 
-#define  AV1_OBU_SEQUENCE_HEADER 128 
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FF_ARRAY_ELEMS (int const*) ; 
- TYPE_3__* av_buffer_alloc (scalar_t__) ; 
- int /*<<< orphan*/  av_buffer_unref (TYPE_3__**) ; 
- int /*<<< orphan*/ * av_malloc (scalar_t__) ; 
- int ff_av1_packet_split (TYPE_6__*,int /*<<< orphan*/ *,int,TYPE_4__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ val_in_array (int const*,int,int const) ; 
+
+
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int ENOMEM ;
+ int FF_ARRAY_ELEMS (int const*) ;
+ TYPE_3__* av_buffer_alloc (scalar_t__) ;
+ int av_buffer_unref (TYPE_3__**) ;
+ int * av_malloc (scalar_t__) ;
+ int ff_av1_packet_split (TYPE_6__*,int *,int,TYPE_4__*) ;
+ int memcpy (int *,int ,scalar_t__) ;
+ int memset (int *,int ,scalar_t__) ;
+ scalar_t__ val_in_array (int const*,int,int const) ;
 
 __attribute__((used)) static int extract_extradata_av1(AVBSFContext *ctx, AVPacket *pkt,
                                  uint8_t **data, int *size)
 {
     static const int extradata_obu_types[] = {
-        AV1_OBU_SEQUENCE_HEADER, AV1_OBU_METADATA,
+        128, 129,
     };
     ExtractExtradataContext *s = ctx->priv_data;
 
@@ -64,7 +64,7 @@ __attribute__((used)) static int extract_extradata_av1(AVBSFContext *ctx, AVPack
         AV1OBU *obu = &s->av1_pkt.obus[i];
         if (val_in_array(extradata_obu_types, nb_extradata_obu_types, obu->type)) {
             extradata_size += obu->raw_size;
-            if (obu->type == AV1_OBU_SEQUENCE_HEADER)
+            if (obu->type == 128)
                 has_seq = 1;
         } else if (s->remove) {
             filtered_size += obu->raw_size;
@@ -109,7 +109,7 @@ __attribute__((used)) static int extract_extradata_av1(AVBSFContext *ctx, AVPack
 
         if (s->remove) {
             av_buffer_unref(&pkt->buf);
-            pkt->buf  = filtered_buf;
+            pkt->buf = filtered_buf;
             pkt->data = filtered_buf->data;
             pkt->size = filtered_size;
         }

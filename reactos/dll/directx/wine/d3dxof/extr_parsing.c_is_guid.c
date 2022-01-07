@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tmp ;
 struct TYPE_4__ {int rem_bytes; char* buffer; scalar_t__ value; } ;
-typedef  TYPE_1__ parse_buffer ;
-struct TYPE_5__ {int Data2; int Data3; int* Data4; int /*<<< orphan*/  Data1; } ;
-typedef  TYPE_2__ GUID ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ parse_buffer ;
+struct TYPE_5__ {int Data2; int Data3; int* Data4; int Data1; } ;
+typedef TYPE_2__ GUID ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSIDFMT ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRACE (char*,char*,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int sscanf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int*,int*,int*,int*,int*,int*,int*,int*,int*) ; 
+
+ int CLSIDFMT ;
+ int FALSE ;
+ int TRACE (char*,char*,int) ;
+ int TRUE ;
+ int sscanf (char*,int ,int *,int*,int*,int*,int*,int*,int*,int*,int*,int*,int*) ;
 
 __attribute__((used)) static BOOL is_guid(parse_buffer* buf)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static BOOL is_guid(parse_buffer* buf)
   }
   tmp[pos++] = '>';
   tmp[pos] = 0;
-  if (pos != 38 /* <+36+> */)
+  if (pos != 38 )
   {
     TRACE("Wrong guid %s (%d)\n", tmp, pos);
     return FALSE;

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  i_chroma; } ;
-struct TYPE_7__ {TYPE_2__* vt; TYPE_1__ fmt; int /*<<< orphan*/  gl; scalar_t__ b_dump_shaders; int /*<<< orphan*/  glsl_version; } ;
-typedef  TYPE_3__ opengl_tex_converter_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* CompileShader ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ShaderSource ) (int /*<<< orphan*/ ,int,char const**,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* CreateShader ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_VERTEX_SHADER ; 
- scalar_t__ asprintf (char**,char const*,int /*<<< orphan*/ ,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int,char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_chroma; } ;
+struct TYPE_7__ {TYPE_2__* vt; TYPE_1__ fmt; int gl; scalar_t__ b_dump_shaders; int glsl_version; } ;
+typedef TYPE_3__ opengl_tex_converter_t ;
+struct TYPE_6__ {int (* CompileShader ) (int ) ;int (* ShaderSource ) (int ,int,char const**,int *) ;int (* CreateShader ) (int ) ;} ;
+typedef int GLuint ;
+
+
+ int GL_VERTEX_SHADER ;
+ scalar_t__ asprintf (char**,char const*,int ,char const*,char const*,char const*,char const*) ;
+ int free (char*) ;
+ int msg_Dbg (int ,char*,char const*,char*) ;
+ int stub1 (int ) ;
+ int stub2 (int ,int,char const**,int *) ;
+ int stub3 (int ) ;
 
 __attribute__((used)) static GLuint BuildVertexShader(const opengl_tex_converter_t *tc,
                                 unsigned plane_count)
 {
-    /* Basic vertex shader */
+
     static const char *template =
         "#version %u\n"
         "varying vec2 TexCoord0;\n"
@@ -64,7 +64,7 @@ __attribute__((used)) static GLuint BuildVertexShader(const opengl_tex_converter
         return 0;
 
     GLuint shader = tc->vt->CreateShader(GL_VERTEX_SHADER);
-    tc->vt->ShaderSource(shader, 1, (const char **) &code, NULL);
+    tc->vt->ShaderSource(shader, 1, (const char **) &code, ((void*)0));
     if (tc->b_dump_shaders)
         msg_Dbg(tc->gl, "\n=== Vertex shader for fourcc: %4.4s ===\n%s\n",
                 (const char *)&tc->fmt.i_chroma, code);

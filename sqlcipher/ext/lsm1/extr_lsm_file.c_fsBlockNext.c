@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int i64 ;
-typedef  int /*<<< orphan*/  aNext ;
-struct TYPE_11__ {scalar_t__ nMapLimit; scalar_t__ pCompress; int nBlocksize; int nPagesize; int /*<<< orphan*/  fdDb; int /*<<< orphan*/  pEnv; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * aData; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pRedirect; } ;
-typedef  TYPE_1__ Segment ;
-typedef  TYPE_2__ Page ;
-typedef  TYPE_3__ FileSystem ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fsPageGet (TYPE_3__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ ) ; 
- int fsRedirectBlock (int /*<<< orphan*/ ,int) ; 
- int lsmEnvRead (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lsmFsPageRelease (TYPE_2__*) ; 
- int lsmGetU32 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int i64 ;
+typedef int aNext ;
+struct TYPE_11__ {scalar_t__ nMapLimit; scalar_t__ pCompress; int nBlocksize; int nPagesize; int fdDb; int pEnv; } ;
+struct TYPE_10__ {int * aData; } ;
+struct TYPE_9__ {int pRedirect; } ;
+typedef TYPE_1__ Segment ;
+typedef TYPE_2__ Page ;
+typedef TYPE_3__ FileSystem ;
+
+
+ int LSM_OK ;
+ int assert (int) ;
+ int fsPageGet (TYPE_3__*,int ,int,int ,TYPE_2__**,int ) ;
+ int fsRedirectBlock (int ,int) ;
+ int lsmEnvRead (int ,int ,int,int *,int) ;
+ int lsmFsPageRelease (TYPE_2__*) ;
+ int lsmGetU32 (int *) ;
 
 __attribute__((used)) static int fsBlockNext(
-  FileSystem *pFS,                /* File-system object handle */
-  Segment *pSeg,                  /* Use this segment for block redirects */
-  int iBlock,                     /* Read field from this block */
-  int *piNext                     /* OUT: Next block in linked list */
+  FileSystem *pFS,
+  Segment *pSeg,
+  int iBlock,
+  int *piNext
 ){
   int rc;
-  int iRead;                      /* Read block from here */
-  
+  int iRead;
+
   if( pSeg ){
     iRead = fsRedirectBlock(pSeg->pRedirect, iBlock);
   }else{
@@ -49,8 +49,8 @@ __attribute__((used)) static int fsBlockNext(
 
   assert( pFS->nMapLimit==0 || pFS->pCompress==0 );
   if( pFS->pCompress ){
-    i64 iOff;                     /* File offset to read data from */
-    u8 aNext[4];                  /* 4-byte pointer read from db file */
+    i64 iOff;
+    u8 aNext[4];
 
     iOff = (i64)iRead * pFS->nBlocksize - sizeof(aNext);
     rc = lsmEnvRead(pFS->pEnv, pFS->fdDb, iOff, aNext, sizeof(aNext));

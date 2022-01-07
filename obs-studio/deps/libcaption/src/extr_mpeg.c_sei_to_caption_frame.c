@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_1__ sei_t ;
-typedef  int /*<<< orphan*/  sei_message_t ;
-typedef  scalar_t__ libcaption_stauts_t ;
-typedef  int /*<<< orphan*/  cea708_t ;
-struct TYPE_8__ {int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_2__ caption_frame_t ;
 
-/* Variables and functions */
- scalar_t__ LIBCAPTION_OK ; 
- scalar_t__ LIBCAPTION_READY ; 
- int /*<<< orphan*/  cea708_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cea708_parse_h264 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cea708_to_caption_frame (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ libcaption_status_update (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sei_message_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sei_message_head (TYPE_1__*) ; 
- int /*<<< orphan*/ * sei_message_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sei_message_size (int /*<<< orphan*/ *) ; 
- scalar_t__ sei_message_type (int /*<<< orphan*/ *) ; 
- scalar_t__ sei_type_user_data_registered_itu_t_t35 ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int timestamp; } ;
+typedef TYPE_1__ sei_t ;
+typedef int sei_message_t ;
+typedef scalar_t__ libcaption_stauts_t ;
+typedef int cea708_t ;
+struct TYPE_8__ {int timestamp; } ;
+typedef TYPE_2__ caption_frame_t ;
+
+
+ scalar_t__ LIBCAPTION_OK ;
+ scalar_t__ LIBCAPTION_READY ;
+ int cea708_init (int *,int ) ;
+ int cea708_parse_h264 (int ,int ,int *) ;
+ int cea708_to_caption_frame (TYPE_2__*,int *) ;
+ scalar_t__ libcaption_status_update (scalar_t__,int ) ;
+ int sei_message_data (int *) ;
+ int * sei_message_head (TYPE_1__*) ;
+ int * sei_message_next (int *) ;
+ int sei_message_size (int *) ;
+ scalar_t__ sei_message_type (int *) ;
+ scalar_t__ sei_type_user_data_registered_itu_t_t35 ;
 
 libcaption_stauts_t sei_to_caption_frame(sei_t* sei, caption_frame_t* frame)
 {

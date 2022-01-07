@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vfsmount {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fsnotify_clear_marks_by_mount (struct vfsmount*) ; 
+
+ int fsnotify_clear_marks_by_mount (struct vfsmount*) ;
 
 void __fsnotify_vfsmount_delete(struct vfsmount *mnt)
 {
-	fsnotify_clear_marks_by_mount(mnt);
+ fsnotify_clear_marks_by_mount(mnt);
 }

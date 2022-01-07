@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct ioatdma_chan {scalar_t__ reg_base; TYPE_1__* ioat_dma; } ;
-struct TYPE_2__ {int /*<<< orphan*/  version; } ;
+struct TYPE_2__ {int version; } ;
 
-/* Variables and functions */
- scalar_t__ IOAT_CHANCMD_OFFSET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IOAT_CHANCMD_SUSPEND ; 
- int /*<<< orphan*/  writeb (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ IOAT_CHANCMD_OFFSET (int ) ;
+ int IOAT_CHANCMD_SUSPEND ;
+ int writeb (int ,scalar_t__) ;
 
 __attribute__((used)) static inline void ioat_suspend(struct ioatdma_chan *ioat_chan)
 {
-	u8 ver = ioat_chan->ioat_dma->version;
+ u8 ver = ioat_chan->ioat_dma->version;
 
-	writeb(IOAT_CHANCMD_SUSPEND,
-	       ioat_chan->reg_base + IOAT_CHANCMD_OFFSET(ver));
+ writeb(IOAT_CHANCMD_SUSPEND,
+        ioat_chan->reg_base + IOAT_CHANCMD_OFFSET(ver));
 }

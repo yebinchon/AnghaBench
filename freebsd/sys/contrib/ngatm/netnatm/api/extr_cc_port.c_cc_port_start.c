@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-struct ccport {scalar_t__ admin; int /*<<< orphan*/  uarg; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int ;
+struct ccport {scalar_t__ admin; int uarg; } ;
 struct ccdata {TYPE_1__* funcs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* send_uni_glob ) (struct ccport*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
+struct TYPE_2__ {int (* send_uni_glob ) (struct ccport*,int ,int ,int ,int *) ;} ;
 
-/* Variables and functions */
- scalar_t__ CCPORT_RUNNING ; 
- scalar_t__ CCPORT_STOPPED ; 
- int EISCONN ; 
- int ENOENT ; 
- int /*<<< orphan*/  UNIAPI_LINK_ESTABLISH_request ; 
- struct ccport* find_port (struct ccdata*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct ccport*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CCPORT_RUNNING ;
+ scalar_t__ CCPORT_STOPPED ;
+ int EISCONN ;
+ int ENOENT ;
+ int UNIAPI_LINK_ESTABLISH_request ;
+ struct ccport* find_port (struct ccdata*,int ) ;
+ int stub1 (struct ccport*,int ,int ,int ,int *) ;
 
 int
 cc_port_start(struct ccdata *cc, u_int portno)
 {
-	struct ccport *port;
+ struct ccport *port;
 
-	if ((port = find_port(cc, portno)) == NULL)
-		return (ENOENT);
-	if (port->admin != CCPORT_STOPPED)
-		return (EISCONN);
+ if ((port = find_port(cc, portno)) == ((void*)0))
+  return (ENOENT);
+ if (port->admin != CCPORT_STOPPED)
+  return (EISCONN);
 
-	cc->funcs->send_uni_glob(port, port->uarg,
-	    UNIAPI_LINK_ESTABLISH_request, 0, NULL);
-	port->admin = CCPORT_RUNNING;
+ cc->funcs->send_uni_glob(port, port->uarg,
+     UNIAPI_LINK_ESTABLISH_request, 0, ((void*)0));
+ port->admin = CCPORT_RUNNING;
 
-	return (0);
+ return (0);
 }

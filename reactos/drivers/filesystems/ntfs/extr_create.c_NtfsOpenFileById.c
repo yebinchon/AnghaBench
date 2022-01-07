@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int ULONGLONG ;
-struct TYPE_14__ {int /*<<< orphan*/  FileRecLookasideList; } ;
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int UNICODE_STRING ;
+typedef int ULONGLONG ;
+struct TYPE_14__ {int FileRecLookasideList; } ;
 struct TYPE_13__ {int Flags; } ;
-typedef  int /*<<< orphan*/ * PNTFS_FCB ;
-typedef  TYPE_1__* PFILE_RECORD_HEADER ;
-typedef  int /*<<< orphan*/  PFILE_OBJECT ;
-typedef  TYPE_2__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef int * PNTFS_FCB ;
+typedef TYPE_1__* PFILE_RECORD_HEADER ;
+typedef int PFILE_OBJECT ;
+typedef TYPE_2__* PDEVICE_EXTENSION ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- TYPE_1__* ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int FRH_IN_USE ; 
- int /*<<< orphan*/ * MftIdToName ; 
- int NTFS_FILE_FIRST_USER_FILE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsAttachFCBToFileObject (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NtfsGrabFCBFromTable (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsMakeFCBFromDirEntry (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ReadFileRecord (TYPE_2__*,int,TYPE_1__*) ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_OBJECT_NAME_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_OBJECT_PATH_NOT_FOUND ; 
+
+ int ASSERT (int) ;
+ int DPRINT (char*,TYPE_2__*,int ,int,int **) ;
+ TYPE_1__* ExAllocateFromNPagedLookasideList (int *) ;
+ int ExFreeToNPagedLookasideList (int *,TYPE_1__*) ;
+ int FRH_IN_USE ;
+ int * MftIdToName ;
+ int NTFS_FILE_FIRST_USER_FILE ;
+ int NT_SUCCESS (int ) ;
+ int NtfsAttachFCBToFileObject (TYPE_2__*,int *,int ) ;
+ int * NtfsGrabFCBFromTable (TYPE_2__*,int ) ;
+ int NtfsMakeFCBFromDirEntry (TYPE_2__*,int *,int *,int *,TYPE_1__*,int,int **) ;
+ int ReadFileRecord (TYPE_2__*,int,TYPE_1__*) ;
+ int RtlInitUnicodeString (int *,int ) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_OBJECT_NAME_NOT_FOUND ;
+ int STATUS_OBJECT_PATH_NOT_FOUND ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -54,13 +54,13 @@ NtfsOpenFileById(PDEVICE_EXTENSION DeviceExt,
     DPRINT("NtfsOpenFileById(%p, %p, %I64x, %p)\n", DeviceExt, FileObject, MftId, FoundFCB);
 
     ASSERT(MftId < NTFS_FILE_FIRST_USER_FILE);
-    if (MftId > 0xb) /* No entries are used yet beyond this */
+    if (MftId > 0xb)
     {
         return STATUS_OBJECT_NAME_NOT_FOUND;
     }
 
     MftRecord = ExAllocateFromNPagedLookasideList(&DeviceExt->FileRecLookasideList);
-    if (MftRecord == NULL)
+    if (MftRecord == ((void*)0))
     {
         return STATUS_INSUFFICIENT_RESOURCES;
     }
@@ -79,12 +79,12 @@ NtfsOpenFileById(PDEVICE_EXTENSION DeviceExt,
     }
 
     FCB = NtfsGrabFCBFromTable(DeviceExt, MftIdToName[MftId]);
-    if (FCB == NULL)
+    if (FCB == ((void*)0))
     {
         UNICODE_STRING Name;
 
         RtlInitUnicodeString(&Name, MftIdToName[MftId]);
-        Status = NtfsMakeFCBFromDirEntry(DeviceExt, NULL, &Name, NULL, MftRecord, MftId, &FCB);
+        Status = NtfsMakeFCBFromDirEntry(DeviceExt, ((void*)0), &Name, ((void*)0), MftRecord, MftId, &FCB);
         if (!NT_SUCCESS(Status))
         {
             ExFreeToNPagedLookasideList(&DeviceExt->FileRecLookasideList, MftRecord);
@@ -92,7 +92,7 @@ NtfsOpenFileById(PDEVICE_EXTENSION DeviceExt,
         }
     }
 
-    ASSERT(FCB != NULL);
+    ASSERT(FCB != ((void*)0));
 
     ExFreeToNPagedLookasideList(&DeviceExt->FileRecLookasideList, MftRecord);
 

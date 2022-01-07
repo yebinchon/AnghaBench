@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WWAI (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  o ; 
- int /*<<< orphan*/  t ; 
- int /*<<< orphan*/  ww_mutex_lock_slow (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+ int WWAI (int *) ;
+ int o ;
+ int t ;
+ int ww_mutex_lock_slow (int *,int *) ;
 
 __attribute__((used)) static void ww_test_unneeded_slow(void)
 {
-	WWAI(&t);
+ WWAI(&t);
 
-	ww_mutex_lock_slow(&o, &t);
+ ww_mutex_lock_slow(&o, &t);
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  kprintf_multiprocessing_mode_enable () ; 
- char* logname ; 
- void* logname_pattern ; 
- void* strdup (char*) ; 
+ int assert (int) ;
+ int kprintf_multiprocessing_mode_enable () ;
+ char* logname ;
+ void* logname_pattern ;
+ void* strdup (char*) ;
 
 void init_logname (char *src) {
   char *t = src;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t dword ;
-typedef  int /*<<< orphan*/  diva_os_spin_lock_magic_t ;
-typedef  void* byte ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t dword ;
+typedef int diva_os_spin_lock_magic_t ;
+typedef void* byte ;
 struct TYPE_5__ {int sec; int usec; TYPE_1__* hDbg; scalar_t__* drvName; } ;
 struct TYPE_4__ {scalar_t__* drvTag; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_2__*) ; 
- TYPE_2__* clients ; 
- int /*<<< orphan*/  dbg_q_lock ; 
- int /*<<< orphan*/  diva_os_enter_spin_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  diva_os_leave_spin_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memcpy (void**,scalar_t__*,int) ; 
- int min (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  strlen (scalar_t__*) ; 
+
+ size_t ARRAY_SIZE (TYPE_2__*) ;
+ TYPE_2__* clients ;
+ int dbg_q_lock ;
+ int diva_os_enter_spin_lock (int *,int *,char*) ;
+ int diva_os_leave_spin_lock (int *,int *,char*) ;
+ int memcpy (void**,scalar_t__*,int) ;
+ int min (int ,size_t) ;
+ int strlen (scalar_t__*) ;
 
 int diva_get_driver_info (dword id, byte* data, int data_length) {
   diva_os_spin_lock_magic_t old_irql;
@@ -42,13 +42,13 @@ int diva_get_driver_info (dword id, byte* data, int data_length) {
 
   if (clients[id].hDbg) {
     *p++ = 1;
-    *p++ = (byte)clients[id].sec; /* save seconds */
-    *p++ = (byte)(clients[id].sec >>  8);
+    *p++ = (byte)clients[id].sec;
+    *p++ = (byte)(clients[id].sec >> 8);
     *p++ = (byte)(clients[id].sec >> 16);
     *p++ = (byte)(clients[id].sec >> 24);
 
-    *p++ = (byte)(clients[id].usec/1000); /* save mseconds */
-    *p++ = (byte)((clients[id].usec/1000) >>  8);
+    *p++ = (byte)(clients[id].usec/1000);
+    *p++ = (byte)((clients[id].usec/1000) >> 8);
     *p++ = (byte)((clients[id].usec/1000) >> 16);
     *p++ = (byte)((clients[id].usec/1000) >> 24);
 

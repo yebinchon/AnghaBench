@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Tracks {int nb_tracks; struct Track** tracks; } ;
-struct Track {int name; int track_id; int /*<<< orphan*/  bitrate; scalar_t__ is_video; } ;
-typedef  int /*<<< orphan*/  filename ;
-typedef  int /*<<< orphan*/  FILE ;
+struct Track {int name; int track_id; int bitrate; scalar_t__ is_video; } ;
+typedef int filename ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,char const*) ; 
+
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ int perror (char*) ;
+ int snprintf (char*,int,char*,char const*,char const*) ;
 
 __attribute__((used)) static void output_server_manifest(struct Tracks *tracks, const char *basename,
                                    const char *output_prefix,
@@ -47,7 +47,7 @@ __attribute__((used)) static void output_server_manifest(struct Tracks *tracks, 
     fprintf(out, "\t\t<switch>\n");
     for (i = 0; i < tracks->nb_tracks; i++) {
         struct Track *track = tracks->tracks[i];
-        const char *type    = track->is_video ? "video" : "audio";
+        const char *type = track->is_video ? "video" : "audio";
         fprintf(out, "\t\t\t<%s src=\"%s%s\" systemBitrate=\"%d\">\n",
                 type, path_prefix, track->name, track->bitrate);
         fprintf(out, "\t\t\t\t<param name=\"trackID\" value=\"%d\" "

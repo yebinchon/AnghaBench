@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct mp_image {int h; int** planes; int* stride; int w; } ;
 
-/* Variables and functions */
- int MPMIN (int,int) ; 
+
+ int MPMIN (int,int) ;
 
 __attribute__((used)) static void unpremultiply_and_split_BGR32(struct mp_image *img,
                                           struct mp_image *alpha)
@@ -29,11 +29,11 @@ __attribute__((used)) static void unpremultiply_and_split_BGR32(struct mp_image 
             uint8_t rval = (pval >> 16) & 0xFF;
             uint8_t gval = (pval >> 8) & 0xFF;
             uint8_t bval = pval & 0xFF;
-            // multiplied = separate * alpha / 255
-            // separate = rint(multiplied * 255 / alpha)
-            //          = floor(multiplied * 255 / alpha + 0.5)
-            //          = floor((multiplied * 255 + 0.5 * alpha) / alpha)
-            //          = floor((multiplied * 255 + floor(0.5 * alpha)) / alpha)
+
+
+
+
+
             int div = (int) aval;
             int add = div / 2;
             if (aval) {

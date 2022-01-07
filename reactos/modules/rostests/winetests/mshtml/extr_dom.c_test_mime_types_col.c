@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IOmNavigator ;
-typedef  int /*<<< orphan*/  IHTMLMimeTypesCollection ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IHTMLMimeTypesCollection_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLMimeTypesCollection_get_length (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IID_IHTMLMimeTypesCollection ; 
- scalar_t__ IOmNavigator_get_mimeTypes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef scalar_t__ LONG ;
+typedef int IUnknown ;
+typedef int IOmNavigator ;
+typedef int IHTMLMimeTypesCollection ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IHTMLMimeTypesCollection_Release (int *) ;
+ scalar_t__ IHTMLMimeTypesCollection_get_length (int *,scalar_t__*) ;
+ int IID_IHTMLMimeTypesCollection ;
+ scalar_t__ IOmNavigator_get_mimeTypes (int *,int **) ;
+ scalar_t__ S_OK ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int test_disp (int *,int *,char*) ;
 
 __attribute__((used)) static void test_mime_types_col(IOmNavigator *nav)
 {

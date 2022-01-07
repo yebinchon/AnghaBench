@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct mp_frame {scalar_t__ type; int /*<<< orphan*/  data; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct mp_frame {scalar_t__ type; int data; } ;
 struct mp_chmap {int dummy; } ;
 struct mp_audio_buffer {int dummy; } ;
-struct ao_chain {int out_eof; int /*<<< orphan*/  output_frame; int /*<<< orphan*/  last_out_pts; TYPE_3__* filter; int /*<<< orphan*/  ao; struct mp_audio_buffer* ao_buffer; } ;
+struct ao_chain {int out_eof; int output_frame; int last_out_pts; TYPE_3__* filter; int ao; struct mp_audio_buffer* ao_buffer; } ;
 struct MPContext {int audio_speed; TYPE_1__* opts; } ;
 struct TYPE_6__ {TYPE_2__* f; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * pins; } ;
+struct TYPE_5__ {int * pins; } ;
 struct TYPE_4__ {double audio_delay; } ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int MPCLAMP (double,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MP_ERR (struct MPContext*,char*) ; 
- scalar_t__ MP_FRAME_AUDIO ; 
- scalar_t__ MP_FRAME_EOF ; 
- double MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ao_get_format (int /*<<< orphan*/ ,int*,int*,struct mp_chmap*) ; 
- int /*<<< orphan*/  mp_aframe_end_pts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** mp_aframe_get_data_ro (int /*<<< orphan*/ ) ; 
- int mp_aframe_get_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_aframe_skip_samples (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mp_audio_buffer_append (struct mp_audio_buffer*,void**,int) ; 
- int mp_audio_buffer_samples (struct mp_audio_buffer*) ; 
- int /*<<< orphan*/  mp_frame_unref (struct mp_frame*) ; 
- struct mp_frame mp_pin_out_read (int /*<<< orphan*/ ) ; 
- double written_audio_pts (struct MPContext*) ; 
+
+ int INT_MAX ;
+ int MPCLAMP (double,int ,int) ;
+ int MP_ERR (struct MPContext*,char*) ;
+ scalar_t__ MP_FRAME_AUDIO ;
+ scalar_t__ MP_FRAME_EOF ;
+ double MP_NOPTS_VALUE ;
+ int TA_FREEP (int *) ;
+ int ao_get_format (int ,int*,int*,struct mp_chmap*) ;
+ int mp_aframe_end_pts (int ) ;
+ int ** mp_aframe_get_data_ro (int ) ;
+ int mp_aframe_get_size (int ) ;
+ int mp_aframe_skip_samples (int ,int) ;
+ int mp_audio_buffer_append (struct mp_audio_buffer*,void**,int) ;
+ int mp_audio_buffer_samples (struct mp_audio_buffer*) ;
+ int mp_frame_unref (struct mp_frame*) ;
+ struct mp_frame mp_pin_out_read (int ) ;
+ double written_audio_pts (struct MPContext*) ;
 
 __attribute__((used)) static bool copy_output(struct MPContext *mpctx, struct ao_chain *ao_c,
                         int minsamples, double endpts, bool *seteof)
@@ -71,23 +71,23 @@ __attribute__((used)) static bool copy_output(struct MPContext *mpctx, struct ao
             struct mp_frame frame = mp_pin_out_read(ao_c->filter->f->pins[1]);
             if (frame.type == MP_FRAME_AUDIO) {
                 ao_c->output_frame = frame.data;
-                ao_c->out_eof = false;
+                ao_c->out_eof = 0;
                 ao_c->last_out_pts = mp_aframe_end_pts(ao_c->output_frame);
             } else if (frame.type == MP_FRAME_EOF) {
-                ao_c->out_eof = true;
+                ao_c->out_eof = 1;
             } else if (frame.type) {
                 MP_ERR(mpctx, "unknown frame type\n");
                 mp_frame_unref(&frame);
             }
         }
 
-        // out of data
+
         if (!ao_c->output_frame) {
             if (ao_c->out_eof) {
-                *seteof = true;
-                return true;
+                *seteof = 1;
+                return 1;
             }
-            return false;
+            return 0;
         }
 
         if (cursamples + mp_aframe_get_size(ao_c->output_frame) > maxsamples) {
@@ -98,8 +98,8 @@ __attribute__((used)) static bool copy_output(struct MPContext *mpctx, struct ao
                 mp_aframe_skip_samples(ao_c->output_frame,
                                        maxsamples - cursamples);
             }
-            *seteof = true;
-            return true;
+            *seteof = 1;
+            return 1;
         }
 
         uint8_t **data = mp_aframe_get_data_ro(ao_c->output_frame);
@@ -107,5 +107,5 @@ __attribute__((used)) static bool copy_output(struct MPContext *mpctx, struct ao
                                mp_aframe_get_size(ao_c->output_frame));
         TA_FREEP(&ao_c->output_frame);
     }
-    return true;
+    return 1;
 }

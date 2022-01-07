@@ -1,98 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_5__ {int pressed; } ;
 struct TYPE_6__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-struct TYPE_7__ {int /*<<< orphan*/  mode; } ;
+typedef TYPE_2__ keyrecord_t ;
+struct TYPE_7__ {int mode; } ;
 
-/* Variables and functions */
-#define  ADJ 132 
-#define  FN 131 
-#define  MACROPAD 130 
-#define  QWERTY 129 
-#define  RGBRST 128 
- int /*<<< orphan*/  RGB_current_mode ; 
- int TOG_STATUS ; 
- int /*<<< orphan*/  _ADJ ; 
- int /*<<< orphan*/  _FN ; 
- int /*<<< orphan*/  _MACROPAD ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  eeconfig_update_rgblight_default () ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- TYPE_3__ rgblight_config ; 
- int /*<<< orphan*/  rgblight_enable () ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ int RGB_current_mode ;
+ int TOG_STATUS ;
+ int _ADJ ;
+ int _FN ;
+ int _MACROPAD ;
+ int _QWERTY ;
+ int eeconfig_update_rgblight_default () ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ TYPE_3__ rgblight_config ;
+ int rgblight_enable () ;
+ int set_single_persistent_default_layer (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  //uint8_t shifted = get_mods() & (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT));
+
 
   switch (keycode) {
-    case QWERTY:
+    case 129:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case MACROPAD:
+    case 130:
       if(record->event.pressed) {
         set_single_persistent_default_layer(_MACROPAD);
       }
-      return false;
+      return 0;
       break;
-    case FN:
+    case 131:
       if (record->event.pressed) {
-        //not sure how to have keyboard check mode and set it to a variable, so my work around
-        //uses another variable that would be set to true after the first time a reactive key is pressed.
-        if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
+
+
+        if (TOG_STATUS) {
         } else {
           TOG_STATUS = !TOG_STATUS;
-          #ifdef RGBLIGHT_ENABLE
-            //rgblight_mode(15);
-          #endif
+
+
+
         }
         layer_on(_FN);
       } else {
-        #ifdef RGBLIGHT_ENABLE
-          //rgblight_mode(RGB_current_mode);  // revert RGB to initial mode prior to RGB mode change
-        #endif
+
+
+
         layer_off(_FN);
-        TOG_STATUS = false;
+        TOG_STATUS = 0;
       }
-      return false;
+      return 0;
       break;
-    case ADJ:
+    case 132:
         if (record->event.pressed) {
           layer_on(_ADJ);
         } else {
           layer_off(_ADJ);
         }
-        return false;
+        return 0;
         break;
-      //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
-    case RGBRST:
-      #ifdef RGBLIGHT_ENABLE
-        if (record->event.pressed) {
-          eeconfig_update_rgblight_default();
-          rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
-        }
-      #endif
+
+    case 128:
+
+
+
+
+
+
+
       break;
   }
-  return true;
+  return 1;
 }

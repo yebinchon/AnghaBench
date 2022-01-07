@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SECP256K1_CONTEXT_SIGN ; 
- int /*<<< orphan*/  secp256k1_context_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  secp256k1_context_destroy (int /*<<< orphan*/ ) ; 
+ int SECP256K1_CONTEXT_SIGN ;
+ int secp256k1_context_create (int ) ;
+ int secp256k1_context_destroy (int ) ;
 
 void bench_context_sign(void* arg) {
     int i;

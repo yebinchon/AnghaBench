@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char DIR_SEPARATOR_CHAR ; 
- char toupper (char) ; 
+ char DIR_SEPARATOR_CHAR ;
+ char toupper (char) ;
 
 void normalize_dirname(char *filename)
 {
@@ -43,5 +35,5 @@ void normalize_dirname(char *filename)
             }
         }
     }
-    filename[tgt] = '\0'; // NULL-terminate
+    filename[tgt] = '\0';
 }

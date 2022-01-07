@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA1 (unsigned char*,int,unsigned char*) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+ int SHA1 (unsigned char*,int,unsigned char*) ;
+ int memset (char*,int ,int) ;
+ int strcmp (char const*,char*) ;
 
 int sqlc_password (struct connection *c, const char *user, char buffer[20]) {
   memset (buffer, 0, 20);
@@ -26,6 +26,6 @@ int sqlc_password (struct connection *c, const char *user, char buffer[20]) {
     SHA1 (buffer2, 20, (unsigned char *)buffer);
     return 2;
   }
-  
+
   return 1;
 }

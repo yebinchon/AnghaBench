@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strdup (char const*) ; 
- char* vlc_uri_decode_duplicate (char*) ; 
+ int free (char*) ;
+ char* strchr (char*,char) ;
+ int strcmp (char*,char*) ;
+ char* strdup (char const*) ;
+ char* vlc_uri_decode_duplicate (char*) ;
 
 __attribute__((used)) static void ParseClipInfo( const char *psz_clipinfo, char **ppsz_artist, char **ppsz_title,
                            char **ppsz_album, char **ppsz_genre, char **ppsz_year,
@@ -33,9 +25,9 @@ __attribute__((used)) static void ParseClipInfo( const char *psz_clipinfo, char 
 
     psz_option_start++;
     psz_option_next = psz_option_start;
-    while( 1 ) /* Process each sub option */
+    while( 1 )
     {
-        /* Get the sub option */
+
         psz_option_start = psz_option_next;
         psz_option_next = strchr( psz_option_start, '|' );
         if( psz_option_next )
@@ -53,7 +45,7 @@ __attribute__((used)) static void ParseClipInfo( const char *psz_clipinfo, char 
         if( !psz_suboption )
             break;
 
-        /* Parse out param and value */
+
         psz_param = psz_suboption;
         if( strchr( psz_suboption, '=' ) )
         {
@@ -65,7 +57,7 @@ __attribute__((used)) static void ParseClipInfo( const char *psz_clipinfo, char 
             free( psz_suboption );
             break;
         }
-        /* Put into args */
+
         if( !strcmp( psz_param, "artist name" ) )
             *ppsz_artist = vlc_uri_decode_duplicate( psz_value );
         else if( !strcmp( psz_param, "title" ) )

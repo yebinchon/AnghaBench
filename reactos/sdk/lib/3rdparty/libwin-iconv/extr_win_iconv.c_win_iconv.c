@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ushort ;
-typedef  scalar_t__ uint ;
-typedef  int /*<<< orphan*/  uchar ;
-struct TYPE_8__ {int (* flush ) (TYPE_3__*,int /*<<< orphan*/ *,size_t) ;int flags; int (* wctomb ) (TYPE_3__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,size_t) ;void* mode; TYPE_2__* compat; } ;
-struct TYPE_9__ {int (* mbtowc ) (TYPE_4__*,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,int*) ;void* mode; TYPE_2__* compat; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ushort ;
+typedef scalar_t__ uint ;
+typedef int uchar ;
+struct TYPE_8__ {int (* flush ) (TYPE_3__*,int *,size_t) ;int flags; int (* wctomb ) (TYPE_3__*,int *,int,int *,size_t) ;void* mode; TYPE_2__* compat; } ;
+struct TYPE_9__ {int (* mbtowc ) (TYPE_4__*,int const*,size_t,int *,int*) ;void* mode; TYPE_2__* compat; } ;
 struct TYPE_6__ {TYPE_3__ to; TYPE_4__ from; } ;
-typedef  TYPE_1__ rec_iconv_t ;
-typedef  scalar_t__ iconv_t ;
+typedef TYPE_1__ rec_iconv_t ;
+typedef scalar_t__ iconv_t ;
 struct TYPE_7__ {scalar_t__ in; int flag; scalar_t__ out; } ;
-typedef  TYPE_2__ compat_t ;
-typedef  void* DWORD ;
+typedef TYPE_2__ compat_t ;
+typedef void* DWORD ;
 
-/* Variables and functions */
- int COMPAT_IN ; 
- int COMPAT_OUT ; 
- scalar_t__ E2BIG ; 
- int FLAG_IGNORE ; 
- int MB_CHAR_MAX ; 
- scalar_t__ errno ; 
- int stub1 (TYPE_3__*,int /*<<< orphan*/ *,size_t) ; 
- int stub2 (TYPE_4__*,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,int*) ; 
- int stub3 (TYPE_3__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  ucs4_to_utf16 (scalar_t__,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ utf16_to_ucs4 (int /*<<< orphan*/ *) ; 
+
+ int COMPAT_IN ;
+ int COMPAT_OUT ;
+ scalar_t__ E2BIG ;
+ int FLAG_IGNORE ;
+ int MB_CHAR_MAX ;
+ scalar_t__ errno ;
+ int stub1 (TYPE_3__*,int *,size_t) ;
+ int stub2 (TYPE_4__*,int const*,size_t,int *,int*) ;
+ int stub3 (TYPE_3__*,int *,int,int *,size_t) ;
+ int ucs4_to_utf16 (scalar_t__,int *,int*) ;
+ scalar_t__ utf16_to_ucs4 (int *) ;
 
 __attribute__((used)) static size_t
 win_iconv(iconv_t _cd, const char **inbuf, size_t *inbytesleft, char **outbuf, size_t *outbytesleft)
 {
     rec_iconv_t *cd = (rec_iconv_t *)_cd;
-    ushort wbuf[MB_CHAR_MAX]; /* enough room for one character */
+    ushort wbuf[MB_CHAR_MAX];
     int insize;
     int outsize;
     int wsize;
@@ -53,9 +53,9 @@ win_iconv(iconv_t _cd, const char **inbuf, size_t *inbytesleft, char **outbuf, s
     compat_t *cp;
     int i;
 
-    if (inbuf == NULL || *inbuf == NULL)
+    if (inbuf == ((void*)0) || *inbuf == ((void*)0))
     {
-        if (outbuf != NULL && *outbuf != NULL && cd->to.flush != NULL)
+        if (outbuf != ((void*)0) && *outbuf != ((void*)0) && cd->to.flush != ((void*)0))
         {
             tomode = cd->to.mode;
             outsize = cd->to.flush(&cd->to, (uchar *)*outbuf, *outbytesleft);
@@ -108,7 +108,7 @@ win_iconv(iconv_t _cd, const char **inbuf, size_t *inbytesleft, char **outbuf, s
             continue;
         }
 
-        if (cd->from.compat != NULL)
+        if (cd->from.compat != ((void*)0))
         {
             wc = utf16_to_ucs4(wbuf);
             cp = cd->from.compat;
@@ -122,7 +122,7 @@ win_iconv(iconv_t _cd, const char **inbuf, size_t *inbytesleft, char **outbuf, s
             }
         }
 
-        if (cd->to.compat != NULL)
+        if (cd->to.compat != ((void*)0))
         {
             wc = utf16_to_ucs4(wbuf);
             cp = cd->to.compat;

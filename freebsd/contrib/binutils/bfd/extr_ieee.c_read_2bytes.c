@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  common_header_type ;
 
-/* Variables and functions */
- unsigned char this_byte_and_next (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int common_header_type ;
+
+
+ unsigned char this_byte_and_next (int *) ;
 
 __attribute__((used)) static unsigned short
 read_2bytes (common_header_type *ieee)

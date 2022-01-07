@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int buffer ;
 struct TYPE_6__ {scalar_t__ param; scalar_t__* values; TYPE_2__* pl; } ;
 struct TYPE_5__ {scalar_t__ cpuCount; TYPE_1__* settings; } ;
 struct TYPE_4__ {scalar_t__ detailedCPUTime; } ;
-typedef  int /*<<< orphan*/  RichString ;
-typedef  int /*<<< orphan*/  Object ;
-typedef  TYPE_3__ Meter ;
+typedef int RichString ;
+typedef int Object ;
+typedef TYPE_3__ Meter ;
 
-/* Variables and functions */
- size_t CPU_GUEST ; 
- size_t CPU_IOWAIT ; 
- size_t CPU_IRQ ; 
- size_t CPU_KERNEL ; 
- size_t CPU_METER_GUEST ; 
- size_t CPU_METER_IOWAIT ; 
- size_t CPU_METER_IRQ ; 
- size_t CPU_METER_KERNEL ; 
- size_t CPU_METER_NICE ; 
- size_t CPU_METER_NORMAL ; 
- size_t CPU_METER_SOFTIRQ ; 
- size_t CPU_METER_STEAL ; 
- size_t CPU_NICE_TEXT ; 
- size_t CPU_NORMAL ; 
- size_t CPU_SOFTIRQ ; 
- size_t CPU_STEAL ; 
- int /*<<< orphan*/ * CRT_colors ; 
- size_t METER_TEXT ; 
- int /*<<< orphan*/  RichString_append (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  RichString_prune (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xSnprintf (char*,int,char*,scalar_t__) ; 
+
+ size_t CPU_GUEST ;
+ size_t CPU_IOWAIT ;
+ size_t CPU_IRQ ;
+ size_t CPU_KERNEL ;
+ size_t CPU_METER_GUEST ;
+ size_t CPU_METER_IOWAIT ;
+ size_t CPU_METER_IRQ ;
+ size_t CPU_METER_KERNEL ;
+ size_t CPU_METER_NICE ;
+ size_t CPU_METER_NORMAL ;
+ size_t CPU_METER_SOFTIRQ ;
+ size_t CPU_METER_STEAL ;
+ size_t CPU_NICE_TEXT ;
+ size_t CPU_NORMAL ;
+ size_t CPU_SOFTIRQ ;
+ size_t CPU_STEAL ;
+ int * CRT_colors ;
+ size_t METER_TEXT ;
+ int RichString_append (int *,int ,char*) ;
+ int RichString_prune (int *) ;
+ int xSnprintf (char*,int,char*,scalar_t__) ;
 
 __attribute__((used)) static void CPUMeter_display(Object* cast, RichString* out) {
    char buffer[50];

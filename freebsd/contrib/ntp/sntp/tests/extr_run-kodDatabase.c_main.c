@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RUN_TEST (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UnityBegin (char*) ; 
- int UnityEnd () ; 
- char* progname ; 
- int /*<<< orphan*/  suite_setup () ; 
- int /*<<< orphan*/  test_AddDuplicate ; 
- int /*<<< orphan*/  test_DeleteEntry ; 
- int /*<<< orphan*/  test_MultipleEntryHandling ; 
- int /*<<< orphan*/  test_NoMatchInSearch ; 
- int /*<<< orphan*/  test_SingleEntryHandling ; 
+ int RUN_TEST (int ,int) ;
+ int UnityBegin (char*) ;
+ int UnityEnd () ;
+ char* progname ;
+ int suite_setup () ;
+ int test_AddDuplicate ;
+ int test_DeleteEntry ;
+ int test_MultipleEntryHandling ;
+ int test_NoMatchInSearch ;
+ int test_SingleEntryHandling ;
 
 int main(int argc, char *argv[])
 {

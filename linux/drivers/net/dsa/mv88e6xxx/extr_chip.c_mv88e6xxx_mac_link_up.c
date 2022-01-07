@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct phy_device {int dummy; } ;
 struct dsa_switch {int dummy; } ;
-typedef  int /*<<< orphan*/  phy_interface_t ;
+typedef int phy_interface_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINK_FORCED_UP ; 
- unsigned int MLO_AN_FIXED ; 
- int /*<<< orphan*/  mv88e6xxx_mac_link_force (struct dsa_switch*,int,int /*<<< orphan*/ ) ; 
+
+ int LINK_FORCED_UP ;
+ unsigned int MLO_AN_FIXED ;
+ int mv88e6xxx_mac_link_force (struct dsa_switch*,int,int ) ;
 
 __attribute__((used)) static void mv88e6xxx_mac_link_up(struct dsa_switch *ds, int port,
-				  unsigned int mode, phy_interface_t interface,
-				  struct phy_device *phydev)
+      unsigned int mode, phy_interface_t interface,
+      struct phy_device *phydev)
 {
-	if (mode == MLO_AN_FIXED)
-		mv88e6xxx_mac_link_force(ds, port, LINK_FORCED_UP);
+ if (mode == MLO_AN_FIXED)
+  mv88e6xxx_mac_link_force(ds, port, LINK_FORCED_UP);
 }

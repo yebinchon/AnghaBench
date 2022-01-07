@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  achDllName ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int achDllName ;
 struct TYPE_7__ {scalar_t__ bVersionIncluded; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ EXPORT ;
+typedef int FILE ;
+typedef TYPE_1__ EXPORT ;
 
-/* Variables and functions */
- scalar_t__ ARCH_AMD64 ; 
- scalar_t__ ARCH_ARM ; 
- scalar_t__ ARCH_IA64 ; 
- scalar_t__ ARCH_PPC ; 
- scalar_t__ ARCH_X86 ; 
- int /*<<< orphan*/  OutputHeader_asmstub (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  OutputHeader_def (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  OutputHeader_stub (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OutputLine_asmstub (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  OutputLine_def (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  OutputLine_stub (int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* ParseFile (char*,int /*<<< orphan*/ *,unsigned int*) ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- size_t fread (char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- int gbImportLib ; 
- int gbMSComp ; 
- int gbNotPrivateNoWarn ; 
- int gbTracing ; 
- scalar_t__ giArch ; 
- char* gpszUnderscore ; 
- int /*<<< orphan*/  guOsVersion ; 
- char* malloc (size_t) ; 
- char* pszArchString ; 
- char* pszArchString2 ; 
- char* pszDllName ; 
- char* pszSourceFileName ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stderr ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- int strlen (char const*) ; 
- scalar_t__ strncasecmp (char*,char const*,int) ; 
- int /*<<< orphan*/  strncpy (char*,char*,int) ; 
- char* strrchr (char*,char) ; 
- int /*<<< orphan*/  strtoul (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  usage () ; 
+
+ scalar_t__ ARCH_AMD64 ;
+ scalar_t__ ARCH_ARM ;
+ scalar_t__ ARCH_IA64 ;
+ scalar_t__ ARCH_PPC ;
+ scalar_t__ ARCH_X86 ;
+ int OutputHeader_asmstub (int *,char*) ;
+ int OutputHeader_def (int *,char*) ;
+ int OutputHeader_stub (int *) ;
+ int OutputLine_asmstub (int *,TYPE_1__*) ;
+ int OutputLine_def (int *,TYPE_1__*) ;
+ int OutputLine_stub (int *,TYPE_1__*) ;
+ TYPE_1__* ParseFile (char*,int *,unsigned int*) ;
+ int SEEK_END ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ size_t fread (char*,int,size_t,int *) ;
+ int free (TYPE_1__*) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ int gbImportLib ;
+ int gbMSComp ;
+ int gbNotPrivateNoWarn ;
+ int gbTracing ;
+ scalar_t__ giArch ;
+ char* gpszUnderscore ;
+ int guOsVersion ;
+ char* malloc (size_t) ;
+ char* pszArchString ;
+ char* pszArchString2 ;
+ char* pszDllName ;
+ char* pszSourceFileName ;
+ int rewind (int *) ;
+ int * stderr ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ int strlen (char const*) ;
+ scalar_t__ strncasecmp (char*,char const*,int) ;
+ int strncpy (char*,char*,int) ;
+ char* strrchr (char*,char) ;
+ int strtoul (char*,int *,int) ;
+ int usage () ;
 
 int main(int argc, char *argv[])
 {
     size_t nFileSize;
-    char *pszSource, *pszDefFileName = NULL, *pszStubFileName = NULL, *pszLibStubName = NULL;
+    char *pszSource, *pszDefFileName = ((void*)0), *pszStubFileName = ((void*)0), *pszLibStubName = ((void*)0);
     const char* pszVersionOption = "--version=0x";
     char achDllName[40];
     FILE *file;
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    /* Read options */
+
     for (i = 1; i < (unsigned)argc && *argv[i] == '-'; i++)
     {
         if ((strcasecmp(argv[i], "--help") == 0) ||
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
         }
         else if (strncasecmp(argv[i], pszVersionOption, strlen(pszVersionOption)) == 0)
         {
-            guOsVersion = strtoul(argv[i] + strlen(pszVersionOption), NULL, 16);
+            guOsVersion = strtoul(argv[i] + strlen(pszVersionOption), ((void*)0), 16);
         }
         else if (strcasecmp(argv[i], "--implib") == 0)
         {
@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
     else
         pszArchString2 = "win32";
 
-    /* Set a default dll name */
+
     if (!pszDllName)
     {
         char *p1, *p2;
@@ -163,7 +163,7 @@ int main(int argc, char *argv[])
         if (!p1) p1 = strrchr(argv[i], '/');
         p2 = p1 = p1 ? p1 + 1 : argv[i];
 
-        /* walk up to '.' */
+
         while (*p2 != '.' && *p2 != 0) p2++;
         len = p2 - p1;
         if (len >= sizeof(achDllName) - 5)
@@ -177,7 +177,7 @@ int main(int argc, char *argv[])
         pszDllName = achDllName;
     }
 
-    /* Open input file */
+
     pszSourceFileName = argv[i];
     file = fopen(pszSourceFileName, "r");
     if (!file)
@@ -186,12 +186,12 @@ int main(int argc, char *argv[])
         return -3;
     }
 
-    /* Get file size */
+
     fseek(file, 0, SEEK_END);
     nFileSize = ftell(file);
     rewind(file);
 
-    /* Allocate memory buffer */
+
     pszSource = malloc(nFileSize + 1);
     if (!pszSource)
     {
@@ -199,15 +199,15 @@ int main(int argc, char *argv[])
         return -4;
     }
 
-    /* Load input file into memory */
+
     nFileSize = fread(pszSource, 1, nFileSize, file);
     fclose(file);
 
-    /* Zero terminate the source */
+
     pszSource[nFileSize] = '\0';
 
     pexports = ParseFile(pszSource, file, &cExports);
-    if (pexports == NULL)
+    if (pexports == ((void*)0))
     {
         fprintf(stderr, "Failed to allocate memory for export data!\n");
         return -1;
@@ -215,7 +215,7 @@ int main(int argc, char *argv[])
 
     if (pszDefFileName)
     {
-        /* Open output file */
+
         file = fopen(pszDefFileName, "w");
         if (!file)
         {
@@ -236,7 +236,7 @@ int main(int argc, char *argv[])
 
     if (pszStubFileName)
     {
-        /* Open output file */
+
         file = fopen(pszStubFileName, "w");
         if (!file)
         {
@@ -257,7 +257,7 @@ int main(int argc, char *argv[])
 
     if (pszLibStubName)
     {
-        /* Open output file */
+
         file = fopen(pszLibStubName, "w");
         if (!file)
         {

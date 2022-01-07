@@ -1,55 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct nfc_hci_dev {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  NFC_HCI_ANY_SET_PARAMETER ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kmalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int nfc_hci_send_cmd (struct nfc_hci_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int NFC_HCI_ANY_SET_PARAMETER ;
+ int kfree (int *) ;
+ int * kmalloc (int,int ) ;
+ int memcpy (int *,int const*,size_t) ;
+ int nfc_hci_send_cmd (struct nfc_hci_dev*,int ,int ,int *,size_t,int *) ;
+ int pr_debug (char*,int ,int ) ;
 
 int nfc_hci_set_param(struct nfc_hci_dev *hdev, u8 gate, u8 idx,
-		      const u8 *param, size_t param_len)
+        const u8 *param, size_t param_len)
 {
-	int r;
-	u8 *tmp;
+ int r;
+ u8 *tmp;
+ pr_debug("idx=%d to gate %d\n", idx, gate);
 
-	/* TODO ELa: reg idx must be inserted before param, but we don't want
-	 * to ask the caller to do it to keep a simpler API.
-	 * For now, just create a new temporary param buffer. This is far from
-	 * optimal though, and the plan is to modify APIs to pass idx down to
-	 * nfc_hci_hcp_message_tx where the frame is actually built, thereby
-	 * eliminating the need for the temp allocation-copy here.
-	 */
+ tmp = kmalloc(1 + param_len, GFP_KERNEL);
+ if (tmp == ((void*)0))
+  return -ENOMEM;
 
-	pr_debug("idx=%d to gate %d\n", idx, gate);
+ *tmp = idx;
+ memcpy(tmp + 1, param, param_len);
 
-	tmp = kmalloc(1 + param_len, GFP_KERNEL);
-	if (tmp == NULL)
-		return -ENOMEM;
+ r = nfc_hci_send_cmd(hdev, gate, NFC_HCI_ANY_SET_PARAMETER,
+        tmp, param_len + 1, ((void*)0));
 
-	*tmp = idx;
-	memcpy(tmp + 1, param, param_len);
+ kfree(tmp);
 
-	r = nfc_hci_send_cmd(hdev, gate, NFC_HCI_ANY_SET_PARAMETER,
-			     tmp, param_len + 1, NULL);
-
-	kfree(tmp);
-
-	return r;
+ return r;
 }

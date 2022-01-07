@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct pnm_header {int height; int width; int format; int depth; int maxval; scalar_t__ bw; scalar_t__ rgba; scalar_t__ rgb; scalar_t__ graya; scalar_t__ gray; void* h; void* w; void* dy; void* dx; scalar_t__ sgnd; void* bpp; void* prec; int /*<<< orphan*/  ok; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct pnm_header {int height; int width; int format; int depth; int maxval; scalar_t__ bw; scalar_t__ rgba; scalar_t__ rgb; scalar_t__ graya; scalar_t__ gray; void* h; void* w; void* dy; void* dx; scalar_t__ sgnd; void* bpp; void* prec; int ok; } ;
 struct TYPE_9__ {TYPE_1__* comps; void* y1; void* x1; void* y0; void* x0; } ;
-typedef  TYPE_2__ opj_image_t ;
-typedef  struct pnm_header opj_image_cmptparm_t ;
+typedef TYPE_2__ opj_image_t ;
+typedef struct pnm_header opj_image_cmptparm_t ;
 struct TYPE_10__ {int subsampling_dx; int subsampling_dy; scalar_t__ image_offset_y0; scalar_t__ image_offset_x0; } ;
-typedef  TYPE_3__ opj_cparameters_t ;
+typedef TYPE_3__ opj_cparameters_t ;
 struct TYPE_8__ {int* data; } ;
-typedef  void* OPJ_UINT32 ;
-typedef  int OPJ_INT32 ;
-typedef  int /*<<< orphan*/  OPJ_COLOR_SPACE ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef void* OPJ_UINT32 ;
+typedef int OPJ_INT32 ;
+typedef int OPJ_COLOR_SPACE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int INT_MAX ; 
- int /*<<< orphan*/  OPJ_CLRSPC_GRAY ; 
- int /*<<< orphan*/  OPJ_CLRSPC_SRGB ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fread (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int fscanf (int /*<<< orphan*/ *,char*,unsigned int*) ; 
- scalar_t__ getc (int /*<<< orphan*/ *) ; 
- int has_prec (int) ; 
- int /*<<< orphan*/  memset (struct pnm_header*,int /*<<< orphan*/ ,size_t) ; 
- TYPE_2__* opj_image_create (void*,struct pnm_header*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  opj_image_destroy (TYPE_2__*) ; 
- int /*<<< orphan*/  read_pnm_header (int /*<<< orphan*/ *,struct pnm_header*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int INT_MAX ;
+ int OPJ_CLRSPC_GRAY ;
+ int OPJ_CLRSPC_SRGB ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fread (unsigned char*,int,int,int *) ;
+ int fscanf (int *,char*,unsigned int*) ;
+ scalar_t__ getc (int *) ;
+ int has_prec (int) ;
+ int memset (struct pnm_header*,int ,size_t) ;
+ TYPE_2__* opj_image_create (void*,struct pnm_header*,int ) ;
+ int opj_image_destroy (TYPE_2__*) ;
+ int read_pnm_header (int *,struct pnm_header*) ;
+ int stderr ;
 
 opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
 {
     int subsampling_dx = parameters->subsampling_dx;
     int subsampling_dy = parameters->subsampling_dy;
 
-    FILE *fp = NULL;
+    FILE *fp = ((void*)0);
     int i, compno, numcomps, w, h, prec, format;
     OPJ_COLOR_SPACE color_space;
-    opj_image_cmptparm_t cmptparm[4]; /* RGBA: max. 4 components */
-    opj_image_t * image = NULL;
+    opj_image_cmptparm_t cmptparm[4];
+    opj_image_t * image = ((void*)0);
     struct pnm_header header_info;
 
-    if ((fp = fopen(filename, "rb")) == NULL) {
+    if ((fp = fopen(filename, "rb")) == ((void*)0)) {
         fprintf(stderr, "pnmtoimage:Failed to open %s for reading!\n", filename);
-        return NULL;
+        return ((void*)0);
     }
     memset(&header_info, 0, sizeof(struct pnm_header));
 
@@ -64,48 +64,48 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
 
     if (!header_info.ok) {
         fclose(fp);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* This limitation could be removed by making sure to use size_t below */
+
     if (header_info.height != 0 &&
             header_info.width > INT_MAX / header_info.height) {
         fprintf(stderr, "pnmtoimage:Image %dx%d too big!\n",
                 header_info.width, header_info.height);
         fclose(fp);
-        return NULL;
+        return ((void*)0);
     }
 
     format = header_info.format;
 
     switch (format) {
-    case 1: /* ascii bitmap */
-    case 4: /* raw bitmap */
+    case 1:
+    case 4:
         numcomps = 1;
         break;
 
-    case 2: /* ascii greymap */
-    case 5: /* raw greymap */
+    case 2:
+    case 5:
         numcomps = 1;
         break;
 
-    case 3: /* ascii pixmap */
-    case 6: /* raw pixmap */
+    case 3:
+    case 6:
         numcomps = 3;
         break;
 
-    case 7: /* arbitrary map */
+    case 7:
         numcomps = header_info.depth;
         break;
 
     default:
         fclose(fp);
-        return NULL;
+        return ((void*)0);
     }
     if (numcomps < 3) {
-        color_space = OPJ_CLRSPC_GRAY;    /* GRAY, GRAYA */
+        color_space = OPJ_CLRSPC_GRAY;
     } else {
-        color_space = OPJ_CLRSPC_SRGB;    /* RGB, RGBA */
+        color_space = OPJ_CLRSPC_SRGB;
     }
 
     prec = has_prec(header_info.maxval);
@@ -134,10 +134,10 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
 
     if (!image) {
         fclose(fp);
-        return NULL;
+        return ((void*)0);
     }
 
-    /* set image offset and reference grid */
+
     image->x0 = (OPJ_UINT32)parameters->image_offset_x0;
     image->y0 = (OPJ_UINT32)parameters->image_offset_y0;
     image->x1 = (OPJ_UINT32)(parameters->image_offset_x0 + (w - 1) * subsampling_dx
@@ -145,7 +145,7 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
     image->y1 = (OPJ_UINT32)(parameters->image_offset_y0 + (h - 1) * subsampling_dy
                              + 1);
 
-    if ((format == 2) || (format == 3)) { /* ascii pixmap */
+    if ((format == 2) || (format == 3)) {
         unsigned int index;
 
         for (i = 0; i < w * h; i++) {
@@ -163,7 +163,7 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
                || (format == 6)
                || ((format == 7)
                    && (header_info.gray || header_info.graya
-                       || header_info.rgb || header_info.rgba))) { /* binary pixmap */
+                       || header_info.rgb || header_info.rgba))) {
         unsigned char c0, c1, one;
 
         one = (prec < 9);
@@ -175,7 +175,7 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
                             "\nError: fread return a number of element different from the expected.\n");
                     opj_image_destroy(image);
                     fclose(fp);
-                    return NULL;
+                    return ((void*)0);
                 }
                 if (one) {
                     image->comps[compno].data[i] = c0;
@@ -184,12 +184,12 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
                         fprintf(stderr,
                                 "\nError: fread return a number of element different from the expected.\n");
                     }
-                    /* netpbm: */
+
                     image->comps[compno].data[i] = ((c0 << 8) | c1);
                 }
             }
         }
-    } else if (format == 1) { /* ascii bitmap */
+    } else if (format == 1) {
         for (i = 0; i < w * h; i++) {
             unsigned int index;
 
@@ -219,7 +219,7 @@ opj_image_t* pnmtoimage(const char *filename, opj_cparameters_t *parameters)
                 ++i;
             }
         }
-    } else if ((format == 7 && header_info.bw)) { /*MONO*/
+    } else if ((format == 7 && header_info.bw)) {
         unsigned char uc;
 
         for (i = 0; i < w * h; ++i) {

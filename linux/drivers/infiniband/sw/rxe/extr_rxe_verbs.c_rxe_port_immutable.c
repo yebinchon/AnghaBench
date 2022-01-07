@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct ib_port_immutable {int /*<<< orphan*/  max_mad_size; int /*<<< orphan*/  gid_tbl_len; int /*<<< orphan*/  pkey_tbl_len; int /*<<< orphan*/  core_cap_flags; } ;
-struct ib_port_attr {int /*<<< orphan*/  gid_tbl_len; int /*<<< orphan*/  pkey_tbl_len; } ;
+
+
+
+
+typedef int u8 ;
+struct ib_port_immutable {int max_mad_size; int gid_tbl_len; int pkey_tbl_len; int core_cap_flags; } ;
+struct ib_port_attr {int gid_tbl_len; int pkey_tbl_len; } ;
 struct ib_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IB_MGMT_MAD_SIZE ; 
- int /*<<< orphan*/  RDMA_CORE_PORT_IBA_ROCE_UDP_ENCAP ; 
- int ib_query_port (struct ib_device*,int /*<<< orphan*/ ,struct ib_port_attr*) ; 
+
+ int IB_MGMT_MAD_SIZE ;
+ int RDMA_CORE_PORT_IBA_ROCE_UDP_ENCAP ;
+ int ib_query_port (struct ib_device*,int ,struct ib_port_attr*) ;
 
 __attribute__((used)) static int rxe_port_immutable(struct ib_device *dev, u8 port_num,
-			      struct ib_port_immutable *immutable)
+         struct ib_port_immutable *immutable)
 {
-	int err;
-	struct ib_port_attr attr;
+ int err;
+ struct ib_port_attr attr;
 
-	immutable->core_cap_flags = RDMA_CORE_PORT_IBA_ROCE_UDP_ENCAP;
+ immutable->core_cap_flags = RDMA_CORE_PORT_IBA_ROCE_UDP_ENCAP;
 
-	err = ib_query_port(dev, port_num, &attr);
-	if (err)
-		return err;
+ err = ib_query_port(dev, port_num, &attr);
+ if (err)
+  return err;
 
-	immutable->pkey_tbl_len = attr.pkey_tbl_len;
-	immutable->gid_tbl_len = attr.gid_tbl_len;
-	immutable->max_mad_size = IB_MGMT_MAD_SIZE;
+ immutable->pkey_tbl_len = attr.pkey_tbl_len;
+ immutable->gid_tbl_len = attr.gid_tbl_len;
+ immutable->max_mad_size = IB_MGMT_MAD_SIZE;
 
-	return 0;
+ return 0;
 }

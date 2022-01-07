@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx5e_priv {int /*<<< orphan*/  set_rx_mode_work; int /*<<< orphan*/  wq; } ;
+
+
+
+
+struct mlx5e_priv {int set_rx_mode_work; int wq; } ;
 struct ifnet {struct mlx5e_priv* if_softc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void
 mlx5e_set_rx_mode(struct ifnet *ifp)
 {
-	struct mlx5e_priv *priv = ifp->if_softc;
+ struct mlx5e_priv *priv = ifp->if_softc;
 
-	queue_work(priv->wq, &priv->set_rx_mode_work);
+ queue_work(priv->wq, &priv->set_rx_mode_work);
 }

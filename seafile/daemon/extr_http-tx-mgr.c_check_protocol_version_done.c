@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  result ;
-struct TYPE_7__ {struct TYPE_7__* host; int /*<<< orphan*/  user_data; int /*<<< orphan*/  (* callback ) (TYPE_1__*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  error_code; int /*<<< orphan*/  version; int /*<<< orphan*/  not_supported; int /*<<< orphan*/  success; } ;
-struct TYPE_6__ {int /*<<< orphan*/  error_code; int /*<<< orphan*/  version; int /*<<< orphan*/  not_supported; int /*<<< orphan*/  check_success; } ;
-typedef  TYPE_1__ HttpProtocolVersion ;
-typedef  TYPE_2__ CheckProtocolData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (TYPE_2__*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int result ;
+struct TYPE_7__ {struct TYPE_7__* host; int user_data; int (* callback ) (TYPE_1__*,int ) ;int error_code; int version; int not_supported; int success; } ;
+struct TYPE_6__ {int error_code; int version; int not_supported; int check_success; } ;
+typedef TYPE_1__ HttpProtocolVersion ;
+typedef TYPE_2__ CheckProtocolData ;
+
+
+ int g_free (TYPE_2__*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int stub1 (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void
 check_protocol_version_done (void *vdata)

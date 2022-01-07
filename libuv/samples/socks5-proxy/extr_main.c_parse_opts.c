@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  bind_port; int /*<<< orphan*/  bind_host; } ;
-typedef  TYPE_1__ server_config ;
 
-/* Variables and functions */
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  pr_err (char*,int /*<<< orphan*/ ) ; 
- int sscanf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usage () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bind_port; int bind_host; } ;
+typedef TYPE_1__ server_config ;
+
+
+ int getopt (int,char**,char*) ;
+ int optarg ;
+ int pr_err (char*,int ) ;
+ int sscanf (int ,char*,int *) ;
+ int usage () ;
 
 __attribute__((used)) static void parse_opts(server_config *cf, int argc, char **argv) {
   int opt;

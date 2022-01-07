@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cpp_reader ;
-struct TYPE_6__ {struct TYPE_6__* next; int /*<<< orphan*/  cur; int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ _cpp_buff ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFF_ROOM (TYPE_1__*) ; 
- size_t EXTENDED_BUFF_SIZE (TYPE_1__*,size_t) ; 
- TYPE_1__* _cpp_get_buff (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cpp_reader ;
+struct TYPE_6__ {struct TYPE_6__* next; int cur; int base; } ;
+typedef TYPE_1__ _cpp_buff ;
+
+
+ int BUFF_ROOM (TYPE_1__*) ;
+ size_t EXTENDED_BUFF_SIZE (TYPE_1__*,size_t) ;
+ TYPE_1__* _cpp_get_buff (int *,size_t) ;
+ int memcpy (int ,int ,int ) ;
 
 void
 _cpp_extend_buff (cpp_reader *pfile, _cpp_buff **pbuff, size_t min_extra)

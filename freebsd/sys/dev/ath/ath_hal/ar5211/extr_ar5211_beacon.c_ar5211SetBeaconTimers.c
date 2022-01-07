@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct ath_hal {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/  bt_intval; int /*<<< orphan*/  bt_nextatim; int /*<<< orphan*/  bt_nextswba; int /*<<< orphan*/  bt_nextdba; int /*<<< orphan*/  bt_nexttbtt; } ;
-typedef  TYPE_1__ HAL_BEACON_TIMERS ;
+struct TYPE_3__ {int bt_intval; int bt_nextatim; int bt_nextswba; int bt_nextdba; int bt_nexttbtt; } ;
+typedef TYPE_1__ HAL_BEACON_TIMERS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_BEACON ; 
- int /*<<< orphan*/  AR_TIMER0 ; 
- int /*<<< orphan*/  AR_TIMER1 ; 
- int /*<<< orphan*/  AR_TIMER2 ; 
- int /*<<< orphan*/  AR_TIMER3 ; 
- int /*<<< orphan*/  OS_REG_WRITE (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AR_BEACON ;
+ int AR_TIMER0 ;
+ int AR_TIMER1 ;
+ int AR_TIMER2 ;
+ int AR_TIMER3 ;
+ int OS_REG_WRITE (struct ath_hal*,int ,int ) ;
 
 void
 ar5211SetBeaconTimers(struct ath_hal *ah, const HAL_BEACON_TIMERS *bt)
 {
 
-	OS_REG_WRITE(ah, AR_TIMER0, bt->bt_nexttbtt);
-	OS_REG_WRITE(ah, AR_TIMER1, bt->bt_nextdba);
-	OS_REG_WRITE(ah, AR_TIMER2, bt->bt_nextswba);
-	OS_REG_WRITE(ah, AR_TIMER3, bt->bt_nextatim);
-	/*
-	 * Set the Beacon register after setting all timers.
-	 */
-	OS_REG_WRITE(ah, AR_BEACON, bt->bt_intval);
+ OS_REG_WRITE(ah, AR_TIMER0, bt->bt_nexttbtt);
+ OS_REG_WRITE(ah, AR_TIMER1, bt->bt_nextdba);
+ OS_REG_WRITE(ah, AR_TIMER2, bt->bt_nextswba);
+ OS_REG_WRITE(ah, AR_TIMER3, bt->bt_nextatim);
+
+
+
+ OS_REG_WRITE(ah, AR_BEACON, bt->bt_intval);
 }

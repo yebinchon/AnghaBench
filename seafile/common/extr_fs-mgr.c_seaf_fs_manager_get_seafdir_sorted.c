@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  entries; } ;
-typedef  int /*<<< orphan*/  SeafFSManager ;
-typedef  TYPE_1__ SeafDir ;
 
-/* Variables and functions */
- int /*<<< orphan*/  compare_dirents ; 
- int /*<<< orphan*/  g_list_sort (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_dirents_sorted (int /*<<< orphan*/ ) ; 
- TYPE_1__* seaf_fs_manager_get_seafdir (int /*<<< orphan*/ *,char const*,int,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int entries; } ;
+typedef int SeafFSManager ;
+typedef TYPE_1__ SeafDir ;
+
+
+ int compare_dirents ;
+ int g_list_sort (int ,int ) ;
+ int is_dirents_sorted (int ) ;
+ TYPE_1__* seaf_fs_manager_get_seafdir (int *,char const*,int,char const*) ;
 
 SeafDir *
 seaf_fs_manager_get_seafdir_sorted (SeafFSManager *mgr,
@@ -30,9 +30,9 @@ seaf_fs_manager_get_seafdir_sorted (SeafFSManager *mgr,
     SeafDir *dir = seaf_fs_manager_get_seafdir(mgr, repo_id, version, dir_id);
 
     if (!dir)
-        return NULL;
+        return ((void*)0);
 
-    /* Only some very old dir objects are not sorted. */
+
     if (version > 0)
         return dir;
 

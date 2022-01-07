@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sis7019 {int /*<<< orphan*/ * suspend_state; } ;
 
-/* Variables and functions */
- int SIS_SUSPEND_PAGES ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct sis7019 {int * suspend_state; } ;
+
+
+ int SIS_SUSPEND_PAGES ;
+ int kfree (int ) ;
 
 __attribute__((used)) static void sis_free_suspend(struct sis7019 *sis)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < SIS_SUSPEND_PAGES; i++)
-		kfree(sis->suspend_state[i]);
+ for (i = 0; i < SIS_SUSPEND_PAGES; i++)
+  kfree(sis->suspend_state[i]);
 }

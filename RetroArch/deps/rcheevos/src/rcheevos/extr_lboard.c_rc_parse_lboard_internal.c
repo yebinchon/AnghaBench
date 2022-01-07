@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ offset; } ;
-typedef  TYPE_1__ rc_parse_state_t ;
+typedef TYPE_1__ rc_parse_state_t ;
 struct TYPE_13__ {scalar_t__ memrefs; } ;
 struct TYPE_14__ {scalar_t__ memrefs; } ;
 struct TYPE_12__ {scalar_t__ submitted; scalar_t__ started; TYPE_3__* progress; TYPE_3__ value; TYPE_5__ submit; TYPE_5__ cancel; TYPE_5__ start; } ;
-typedef  TYPE_2__ rc_lboard_t ;
+typedef TYPE_2__ rc_lboard_t ;
 
-/* Variables and functions */
- TYPE_3__* RC_ALLOC (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ RC_DUPLICATED_CANCEL ; 
- scalar_t__ RC_DUPLICATED_PROGRESS ; 
- scalar_t__ RC_DUPLICATED_START ; 
- scalar_t__ RC_DUPLICATED_SUBMIT ; 
- scalar_t__ RC_DUPLICATED_VALUE ; 
- scalar_t__ RC_INVALID_LBOARD_FIELD ; 
- int RC_LBOARD_CANCEL ; 
- int RC_LBOARD_COMPLETE ; 
- int RC_LBOARD_PROGRESS ; 
- int RC_LBOARD_START ; 
- int RC_LBOARD_SUBMIT ; 
- int RC_LBOARD_VALUE ; 
- scalar_t__ RC_MISSING_CANCEL ; 
- scalar_t__ RC_MISSING_START ; 
- scalar_t__ RC_MISSING_SUBMIT ; 
- scalar_t__ RC_MISSING_VALUE ; 
- int /*<<< orphan*/  rc_parse_trigger_internal (TYPE_5__*,char const**,TYPE_1__*) ; 
- int /*<<< orphan*/  rc_parse_value_internal (TYPE_3__*,char const**,TYPE_1__*) ; 
- int /*<<< orphan*/  rc_value_t ; 
+
+ TYPE_3__* RC_ALLOC (int ,TYPE_1__*) ;
+ scalar_t__ RC_DUPLICATED_CANCEL ;
+ scalar_t__ RC_DUPLICATED_PROGRESS ;
+ scalar_t__ RC_DUPLICATED_START ;
+ scalar_t__ RC_DUPLICATED_SUBMIT ;
+ scalar_t__ RC_DUPLICATED_VALUE ;
+ scalar_t__ RC_INVALID_LBOARD_FIELD ;
+ int RC_LBOARD_CANCEL ;
+ int RC_LBOARD_COMPLETE ;
+ int RC_LBOARD_PROGRESS ;
+ int RC_LBOARD_START ;
+ int RC_LBOARD_SUBMIT ;
+ int RC_LBOARD_VALUE ;
+ scalar_t__ RC_MISSING_CANCEL ;
+ scalar_t__ RC_MISSING_START ;
+ scalar_t__ RC_MISSING_SUBMIT ;
+ scalar_t__ RC_MISSING_VALUE ;
+ int rc_parse_trigger_internal (TYPE_5__*,char const**,TYPE_1__*) ;
+ int rc_parse_value_internal (TYPE_3__*,char const**,TYPE_1__*) ;
+ int rc_value_t ;
 
 void rc_parse_lboard_internal(rc_lboard_t* self, const char* memaddr, rc_parse_state_t* parse) {
   int found;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  heim_visible_string ;
 
-/* Variables and functions */
- int der_copy_general_string (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int heim_visible_string ;
+
+
+ int der_copy_general_string (int const*,int *) ;
 
 int
 der_copy_visible_string (const heim_visible_string *from,
-			 heim_visible_string *to)
+    heim_visible_string *to)
 {
     return der_copy_general_string(from, to);
 }

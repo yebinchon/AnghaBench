@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct repl_handshake_ok {scalar_t__ binlog_slice_start_pos; scalar_t__ binlog_slice_end_pos; scalar_t__ binlog_last_start_pos; scalar_t__ binlog_last_end_pos; scalar_t__ session_id; int /*<<< orphan*/  handshake_id; } ;
-struct repl_client_status {int /*<<< orphan*/  flags; scalar_t__ session_id; struct related_binlog* rb; } ;
+
+
+
+
+struct repl_handshake_ok {scalar_t__ binlog_slice_start_pos; scalar_t__ binlog_slice_end_pos; scalar_t__ binlog_last_start_pos; scalar_t__ binlog_last_end_pos; scalar_t__ session_id; int handshake_id; } ;
+struct repl_client_status {int flags; scalar_t__ session_id; struct related_binlog* rb; } ;
 struct related_binlog {scalar_t__ slice_binlog_pos; scalar_t__ max_binlog_pos; scalar_t__ kfs_replica; } ;
-struct connection {int /*<<< orphan*/  remote_port; } ;
+struct connection {int remote_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RC_UPTODATE ; 
- int /*<<< orphan*/  R_ERROR_EBADFD ; 
- int /*<<< orphan*/  R_ERROR_EBADSLICE ; 
- int /*<<< orphan*/  destroy_client (struct repl_client_status*) ; 
- struct repl_client_status* get_client_by_handshake (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int send_error (struct connection*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  show_remote_ip (struct connection*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
+
+ int RC_UPTODATE ;
+ int R_ERROR_EBADFD ;
+ int R_ERROR_EBADSLICE ;
+ int destroy_client (struct repl_client_status*) ;
+ struct repl_client_status* get_client_by_handshake (int ,int ) ;
+ int send_error (struct connection*,int ,scalar_t__,int ,char*,...) ;
+ int show_remote_ip (struct connection*) ;
+ int vkprintf (int,char*,int ,int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
 
 int process_handshake_ok_packet (struct connection *c, struct repl_handshake_ok *HO) {
   struct repl_client_status *C = get_client_by_handshake (HO->handshake_id, 0);

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int /*<<< orphan*/  sin_port; TYPE_1__ sin_addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int sin_port; TYPE_1__ sin_addr; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
-typedef  scalar_t__ socklen_t ;
+typedef scalar_t__ socklen_t ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- int EAI_BADFLAGS ; 
- int EAI_FAMILY ; 
- int EAI_NONAME ; 
- int EAI_OVERFLOW ; 
- int NI_NAMEREQD ; 
- int NI_NUMERICHOST ; 
- int _NI_MASK ; 
- int ntohl (int /*<<< orphan*/ ) ; 
- scalar_t__ ntohs (int /*<<< orphan*/ ) ; 
- int snprintf (char*,int,char*,unsigned int,...) ; 
+
+ scalar_t__ AF_INET ;
+ int EAI_BADFLAGS ;
+ int EAI_FAMILY ;
+ int EAI_NONAME ;
+ int EAI_OVERFLOW ;
+ int NI_NAMEREQD ;
+ int NI_NUMERICHOST ;
+ int _NI_MASK ;
+ int ntohl (int ) ;
+ scalar_t__ ntohs (int ) ;
+ int snprintf (char*,int,char*,unsigned int,...) ;
 
 int
 getnameinfo (const struct sockaddr *sa, socklen_t salen,
@@ -45,16 +45,16 @@ getnameinfo (const struct sockaddr *sa, socklen_t salen,
 
         addr = (const struct sockaddr_in *)sa;
 
-        if (host != NULL)
+        if (host != ((void*)0))
         {
-            /* host name resolution */
+
             if (!(flags & NI_NUMERICHOST))
             {
                 if (flags & NI_NAMEREQD)
                     return EAI_NONAME;
             }
 
-            /* inet_ntoa() is not thread-safe, do not use it */
+
             uint32_t ipv4 = ntohl (addr->sin_addr.s_addr);
 
             if (snprintf (host, hostlen, "%u.%u.%u.%u", ipv4 >> 24,
@@ -63,7 +63,7 @@ getnameinfo (const struct sockaddr *sa, socklen_t salen,
                 return EAI_OVERFLOW;
         }
 
-        if (serv != NULL)
+        if (serv != ((void*)0))
         {
             if (snprintf (serv, servlen, "%u",
                           (unsigned int)ntohs (addr->sin_port)) >= (int)servlen)

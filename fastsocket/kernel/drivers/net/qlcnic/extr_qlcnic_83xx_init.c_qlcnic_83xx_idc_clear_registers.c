@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct qlcnic_adapter {int /*<<< orphan*/  ahw; } ;
 
-/* Variables and functions */
- int EBUSY ; 
- int /*<<< orphan*/  QLCRDX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QLCWRX (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  QLC_83XX_IDC_CTRL ; 
- int /*<<< orphan*/  QLC_83XX_IDC_DRV_ACK ; 
- int /*<<< orphan*/  QLC_83XX_IDC_GRACEFULL_RESET ; 
- scalar_t__ qlcnic_83xx_lock_driver (struct qlcnic_adapter*) ; 
- int /*<<< orphan*/  qlcnic_83xx_unlock_driver (struct qlcnic_adapter*) ; 
+
+
+
+typedef int u32 ;
+struct qlcnic_adapter {int ahw; } ;
+
+
+ int EBUSY ;
+ int QLCRDX (int ,int ) ;
+ int QLCWRX (int ,int ,int ) ;
+ int QLC_83XX_IDC_CTRL ;
+ int QLC_83XX_IDC_DRV_ACK ;
+ int QLC_83XX_IDC_GRACEFULL_RESET ;
+ scalar_t__ qlcnic_83xx_lock_driver (struct qlcnic_adapter*) ;
+ int qlcnic_83xx_unlock_driver (struct qlcnic_adapter*) ;
 
 __attribute__((used)) static int qlcnic_83xx_idc_clear_registers(struct qlcnic_adapter *adapter,
-					   int lock)
+        int lock)
 {
-	u32 val;
+ u32 val;
 
-	if (lock) {
-		if (qlcnic_83xx_lock_driver(adapter))
-			return -EBUSY;
-	}
+ if (lock) {
+  if (qlcnic_83xx_lock_driver(adapter))
+   return -EBUSY;
+ }
 
-	QLCWRX(adapter->ahw, QLC_83XX_IDC_DRV_ACK, 0);
-	/* Clear gracefull reset bit */
-	val = QLCRDX(adapter->ahw, QLC_83XX_IDC_CTRL);
-	val &= ~QLC_83XX_IDC_GRACEFULL_RESET;
-	QLCWRX(adapter->ahw, QLC_83XX_IDC_CTRL, val);
+ QLCWRX(adapter->ahw, QLC_83XX_IDC_DRV_ACK, 0);
 
-	if (lock)
-		qlcnic_83xx_unlock_driver(adapter);
+ val = QLCRDX(adapter->ahw, QLC_83XX_IDC_CTRL);
+ val &= ~QLC_83XX_IDC_GRACEFULL_RESET;
+ QLCWRX(adapter->ahw, QLC_83XX_IDC_CTRL, val);
 
-	return 0;
+ if (lock)
+  qlcnic_83xx_unlock_driver(adapter);
+
+ return 0;
 }

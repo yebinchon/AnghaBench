@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct phr_chunked_decoder {int _state; int _hex_count; int bytes_left_in_chunk; int /*<<< orphan*/  consume_trailer; } ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
-#define  CHUNKED_IN_CHUNK_CRLF 133 
-#define  CHUNKED_IN_CHUNK_DATA 132 
-#define  CHUNKED_IN_CHUNK_EXT 131 
-#define  CHUNKED_IN_CHUNK_SIZE 130 
-#define  CHUNKED_IN_TRAILERS_LINE_HEAD 129 
-#define  CHUNKED_IN_TRAILERS_LINE_MIDDLE 128 
- int /*<<< orphan*/  assert (int) ; 
- int decode_hex (char) ; 
- int /*<<< orphan*/  memmove (char*,char*,size_t) ; 
+
+
+
+struct phr_chunked_decoder {int _state; int _hex_count; int bytes_left_in_chunk; int consume_trailer; } ;
+typedef int ssize_t ;
+ int assert (int) ;
+ int decode_hex (char) ;
+ int memmove (char*,char*,size_t) ;
 
 ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_t *_bufsz)
 {
     size_t dst = 0, src = 0, bufsz = *_bufsz;
-    ssize_t ret = -2; /* incomplete */
+    ssize_t ret = -2;
 
     while (1) {
         switch (decoder->_state) {
-        case CHUNKED_IN_CHUNK_SIZE:
+        case 130:
             for (;; ++src) {
                 int v;
                 if (src == bufsz)
@@ -51,10 +43,10 @@ ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_
                 ++decoder->_hex_count;
             }
             decoder->_hex_count = 0;
-            decoder->_state = CHUNKED_IN_CHUNK_EXT;
-        /* fallthru */
-        case CHUNKED_IN_CHUNK_EXT:
-            /* RFC 7230 A.2 "Line folding in chunk extensions is disallowed" */
+            decoder->_state = 131;
+
+        case 131:
+
             for (;; ++src) {
                 if (src == bufsz)
                     goto Exit;
@@ -64,15 +56,15 @@ ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_
             ++src;
             if (decoder->bytes_left_in_chunk == 0) {
                 if (decoder->consume_trailer) {
-                    decoder->_state = CHUNKED_IN_TRAILERS_LINE_HEAD;
+                    decoder->_state = 129;
                     break;
                 } else {
                     goto Complete;
                 }
             }
-            decoder->_state = CHUNKED_IN_CHUNK_DATA;
-        /* fallthru */
-        case CHUNKED_IN_CHUNK_DATA: {
+            decoder->_state = 132;
+
+        case 132: {
             size_t avail = bufsz - src;
             if (avail < decoder->bytes_left_in_chunk) {
                 if (dst != src)
@@ -87,10 +79,10 @@ ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_
             src += decoder->bytes_left_in_chunk;
             dst += decoder->bytes_left_in_chunk;
             decoder->bytes_left_in_chunk = 0;
-            decoder->_state = CHUNKED_IN_CHUNK_CRLF;
+            decoder->_state = 133;
         }
-        /* fallthru */
-        case CHUNKED_IN_CHUNK_CRLF:
+
+        case 133:
             for (;; ++src) {
                 if (src == bufsz)
                     goto Exit;
@@ -102,9 +94,9 @@ ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_
                 goto Exit;
             }
             ++src;
-            decoder->_state = CHUNKED_IN_CHUNK_SIZE;
+            decoder->_state = 130;
             break;
-        case CHUNKED_IN_TRAILERS_LINE_HEAD:
+        case 129:
             for (;; ++src) {
                 if (src == bufsz)
                     goto Exit;
@@ -113,9 +105,9 @@ ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_
             }
             if (buf[src++] == '\012')
                 goto Complete;
-            decoder->_state = CHUNKED_IN_TRAILERS_LINE_MIDDLE;
-        /* fallthru */
-        case CHUNKED_IN_TRAILERS_LINE_MIDDLE:
+            decoder->_state = 128;
+
+        case 128:
             for (;; ++src) {
                 if (src == bufsz)
                     goto Exit;
@@ -123,7 +115,7 @@ ssize_t phr_decode_chunked(struct phr_chunked_decoder *decoder, char *buf, size_
                     break;
             }
             ++src;
-            decoder->_state = CHUNKED_IN_TRAILERS_LINE_HEAD;
+            decoder->_state = 129;
             break;
         default:
             assert(!"decoder is corrupt");

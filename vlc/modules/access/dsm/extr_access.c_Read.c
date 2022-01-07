@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  int ssize_t ;
-struct TYPE_6__ {int /*<<< orphan*/  i_fd; int /*<<< orphan*/  p_session; } ;
-typedef  TYPE_2__ access_sys_t ;
+typedef TYPE_1__ stream_t ;
+typedef int ssize_t ;
+struct TYPE_6__ {int i_fd; int p_session; } ;
+typedef TYPE_2__ access_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int smb_fread (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,size_t) ; 
+
+ int msg_Err (TYPE_1__*,char*) ;
+ int smb_fread (int ,int ,void*,size_t) ;
 
 __attribute__((used)) static ssize_t Read( stream_t *p_access, void *p_buffer, size_t i_len )
 {

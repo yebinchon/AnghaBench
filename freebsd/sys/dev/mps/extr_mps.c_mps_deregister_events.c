@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mps_softc {int /*<<< orphan*/  event_list; } ;
+
+
+
+
+struct mps_softc {int event_list; } ;
 struct mps_event_handle {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_MPT2 ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct mps_event_handle*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eh_list ; 
- int /*<<< orphan*/  free (struct mps_event_handle*,int /*<<< orphan*/ ) ; 
+
+ int M_MPT2 ;
+ int TAILQ_REMOVE (int *,struct mps_event_handle*,int ) ;
+ int eh_list ;
+ int free (struct mps_event_handle*,int ) ;
 
 void
 mps_deregister_events(struct mps_softc *sc, struct mps_event_handle *handle)
 {
 
-	TAILQ_REMOVE(&sc->event_list, handle, eh_list);
-	free(handle, M_MPT2);
+ TAILQ_REMOVE(&sc->event_list, handle, eh_list);
+ free(handle, M_MPT2);
 }

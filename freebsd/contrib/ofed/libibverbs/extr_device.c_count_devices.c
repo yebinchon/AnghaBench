@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  device_list ; 
- int /*<<< orphan*/  ibverbs_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  num_devices ; 
+ int device_list ;
+ int ibverbs_init (int *) ;
+ int num_devices ;
 
 __attribute__((used)) static void count_devices(void)
 {
-	num_devices = ibverbs_init(&device_list);
+ num_devices = ibverbs_init(&device_list);
 }

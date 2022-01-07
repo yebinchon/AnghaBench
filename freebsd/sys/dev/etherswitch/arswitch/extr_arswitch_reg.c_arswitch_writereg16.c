@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int MDIO_WRITEREG (int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  arswitch_split_setpage (int /*<<< orphan*/ ,int,int*,int*) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int device_t ;
+
+
+ int MDIO_WRITEREG (int ,int,int,int) ;
+ int arswitch_split_setpage (int ,int,int*,int*) ;
+ int device_get_parent (int ) ;
 
 __attribute__((used)) static inline int
 arswitch_writereg16(device_t dev, int addr, int data)
 {
-	uint16_t phy, reg;
+ uint16_t phy, reg;
 
-	arswitch_split_setpage(dev, addr, &phy, &reg);
-	return (MDIO_WRITEREG(device_get_parent(dev), 0x10 | phy, reg, data));
+ arswitch_split_setpage(dev, addr, &phy, &reg);
+ return (MDIO_WRITEREG(device_get_parent(dev), 0x10 | phy, reg, data));
 }

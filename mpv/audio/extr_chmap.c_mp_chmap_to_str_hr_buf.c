@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_chmap {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bstr0 (scalar_t__) ; 
- scalar_t__ mp_chmap_equals_reordered (struct mp_chmap*,struct mp_chmap*) ; 
- scalar_t__ mp_chmap_from_str (struct mp_chmap*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_chmap_remove_na (struct mp_chmap*) ; 
- char* mp_chmap_to_str_buf (char*,size_t,struct mp_chmap*) ; 
- scalar_t__** std_layout_names ; 
+
+ int bstr0 (scalar_t__) ;
+ scalar_t__ mp_chmap_equals_reordered (struct mp_chmap*,struct mp_chmap*) ;
+ scalar_t__ mp_chmap_from_str (struct mp_chmap*,int ) ;
+ int mp_chmap_remove_na (struct mp_chmap*) ;
+ char* mp_chmap_to_str_buf (char*,size_t,struct mp_chmap*) ;
+ scalar_t__** std_layout_names ;
 
 char *mp_chmap_to_str_hr_buf(char *buf, size_t buf_size, const struct mp_chmap *src)
 {

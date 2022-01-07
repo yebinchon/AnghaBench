@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGTERM ; 
- int kill (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  waitpid (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warn (char*) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int SIGTERM ;
+ int kill (int,int ) ;
+ int waitpid (int,int *,int ) ;
+ int warn (char*) ;
 
 void kill_nagbar(pid_t *nagbar_pid, bool wait_for_it) {
     if (*nagbar_pid == -1)
@@ -28,9 +28,9 @@ void kill_nagbar(pid_t *nagbar_pid, bool wait_for_it) {
     if (!wait_for_it)
         return;
 
-    /* When restarting, we don’t enter the ev main loop anymore and after the
-     * exec(), our old pid is no longer watched. So, ev won’t handle SIGCHLD
-     * for us and we would end up with a <defunct> process. Therefore we
-     * waitpid() here. */
-    waitpid(*nagbar_pid, NULL, 0);
+
+
+
+
+    waitpid(*nagbar_pid, ((void*)0), 0);
 }

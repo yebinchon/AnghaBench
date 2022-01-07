@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  compiler_ctx_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  compiler_alloc_bstr_len (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  debugstr_w (char const*) ; 
- scalar_t__ iswalnum (char const) ; 
- int /*<<< orphan*/  iswalpha (char const) ; 
- scalar_t__ iswspace (char const) ; 
+
+
+
+typedef int compiler_ctx_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ int FIXME (char*,int ) ;
+ int S_OK ;
+ int compiler_alloc_bstr_len (int *,char const*,int) ;
+ int debugstr_w (char const*) ;
+ scalar_t__ iswalnum (char const) ;
+ int iswalpha (char const) ;
+ scalar_t__ iswspace (char const) ;
 
 __attribute__((used)) static HRESULT parse_arguments(compiler_ctx_t *ctx, const WCHAR *args, BSTR *arg_array, unsigned *args_size)
 {

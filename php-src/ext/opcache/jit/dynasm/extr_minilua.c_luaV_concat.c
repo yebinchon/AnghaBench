@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
 struct TYPE_14__ {int base; } ;
-typedef  TYPE_1__ lua_State ;
+typedef TYPE_1__ lua_State ;
 struct TYPE_15__ {size_t len; } ;
-struct TYPE_13__ {int /*<<< orphan*/  buff; } ;
-typedef  int StkId ;
+struct TYPE_13__ {int buff; } ;
+typedef int StkId ;
 
-/* Variables and functions */
- TYPE_11__* G (TYPE_1__*) ; 
- int /*<<< orphan*/  TM_CONCAT ; 
- int /*<<< orphan*/  call_binTM (TYPE_1__*,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaG_concaterror (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  luaG_runerror (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  luaS_newlstr (TYPE_1__*,char*,size_t) ; 
- char* luaZ_openspace (TYPE_1__*,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  setsvalue (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svalue (int) ; 
- scalar_t__ tostring (TYPE_1__*,int) ; 
- TYPE_2__* tsvalue (int) ; 
- scalar_t__ ttisnumber (int) ; 
- scalar_t__ ttisstring (int) ; 
+
+ TYPE_11__* G (TYPE_1__*) ;
+ int TM_CONCAT ;
+ int call_binTM (TYPE_1__*,int,int,int,int ) ;
+ int luaG_concaterror (TYPE_1__*,int,int) ;
+ int luaG_runerror (TYPE_1__*,char*) ;
+ int luaS_newlstr (TYPE_1__*,char*,size_t) ;
+ char* luaZ_openspace (TYPE_1__*,int *,size_t) ;
+ int memcpy (char*,int ,size_t) ;
+ int setsvalue (TYPE_1__*,int,int ) ;
+ int svalue (int) ;
+ scalar_t__ tostring (TYPE_1__*,int) ;
+ TYPE_2__* tsvalue (int) ;
+ scalar_t__ ttisnumber (int) ;
+ scalar_t__ ttisstring (int) ;
 
 __attribute__((used)) static void luaV_concat(lua_State*L,int total,int last){
 do{

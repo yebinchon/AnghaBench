@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  sei_t ;
-typedef  int /*<<< orphan*/  sei_msgtype_t ;
-typedef  int /*<<< orphan*/  sei_message_t ;
-typedef  int /*<<< orphan*/  libcaption_stauts_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIBCAPTION_ERROR ; 
- int /*<<< orphan*/  LIBCAPTION_OK ; 
- size_t _copy_to_rbsp (int*,size_t,int const*,size_t) ; 
- int /*<<< orphan*/  sei_init (int /*<<< orphan*/ *,double) ; 
- int /*<<< orphan*/  sei_message_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int* sei_message_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sei_message_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int sei_t ;
+typedef int sei_msgtype_t ;
+typedef int sei_message_t ;
+typedef int libcaption_stauts_t ;
+
+
+ int LIBCAPTION_ERROR ;
+ int LIBCAPTION_OK ;
+ size_t _copy_to_rbsp (int*,size_t,int const*,size_t) ;
+ int sei_init (int *,double) ;
+ int sei_message_append (int *,int *) ;
+ int* sei_message_data (int *) ;
+ int * sei_message_new (int ,int ,size_t) ;
 
 libcaption_stauts_t sei_parse(sei_t* sei, const uint8_t* data, size_t size, double timestamp)
 {
     sei_init(sei, timestamp);
     int ret = 0;
 
-    // SEI may contain more than one payload
+
     while (1 < size) {
         size_t payloadType = 0;
         size_t payloadSize = 0;
@@ -75,6 +75,6 @@ libcaption_stauts_t sei_parse(sei_t* sei, const uint8_t* data, size_t size, doub
         }
     }
 
-    // There should be one trailing byte, 0x80. But really, we can just ignore that fact.
+
     return LIBCAPTION_OK;
 }

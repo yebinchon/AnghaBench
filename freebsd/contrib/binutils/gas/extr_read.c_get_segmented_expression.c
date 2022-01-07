@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  segT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int segT ;
 struct TYPE_4__ {scalar_t__ X_op; scalar_t__ X_add_number; } ;
-typedef  TYPE_1__ expressionS ;
+typedef TYPE_1__ expressionS ;
 
-/* Variables and functions */
- scalar_t__ O_absent ; 
- scalar_t__ O_big ; 
- scalar_t__ O_constant ; 
- scalar_t__ O_illegal ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  absolute_section ; 
- int /*<<< orphan*/  as_bad (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  expression (TYPE_1__*) ; 
+
+ scalar_t__ O_absent ;
+ scalar_t__ O_big ;
+ scalar_t__ O_constant ;
+ scalar_t__ O_illegal ;
+ int _ (char*) ;
+ int absolute_section ;
+ int as_bad (int ) ;
+ int expression (TYPE_1__*) ;
 
 __attribute__((used)) static segT
 get_segmented_expression (register expressionS *expP)

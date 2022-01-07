@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-struct TYPE_3__ {int /*<<< orphan*/  handle; int /*<<< orphan*/  header; int /*<<< orphan*/  description; int /*<<< orphan*/  op; } ;
-typedef  TYPE_1__ mmal_worker_opaque_allocator ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_OPAQUE_IMAGE_HANDLE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_FALSE ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  MMAL_WORKER_OPAQUE_ALLOCATOR_DESC ; 
- int /*<<< orphan*/  MMAL_WORKER_OPAQUE_MEM_ALLOC ; 
- int /*<<< orphan*/  mmal_vc_get_client () ; 
- scalar_t__ mmal_vc_sendwait_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_1__*,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_safe_strcpy (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int msg ;
+struct TYPE_3__ {int handle; int header; int description; int op; } ;
+typedef TYPE_1__ mmal_worker_opaque_allocator ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_OPAQUE_IMAGE_HANDLE_T ;
+
+
+ int MMAL_FALSE ;
+ scalar_t__ MMAL_SUCCESS ;
+ int MMAL_WORKER_OPAQUE_ALLOCATOR_DESC ;
+ int MMAL_WORKER_OPAQUE_MEM_ALLOC ;
+ int mmal_vc_get_client () ;
+ scalar_t__ mmal_vc_sendwait_message (int ,int *,int,int ,TYPE_1__*,size_t*,int ) ;
+ int vcos_safe_strcpy (int ,char const*,int,int ) ;
 
 MMAL_OPAQUE_IMAGE_HANDLE_T mmal_vc_opaque_alloc_desc(const char *description)
 {

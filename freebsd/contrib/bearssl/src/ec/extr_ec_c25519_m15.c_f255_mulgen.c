@@ -1,108 +1,100 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MM1 (int) ; 
- int /*<<< orphan*/  MM2 (int) ; 
- int MUL15 (int,int) ; 
- int /*<<< orphan*/  mul20 (int*,int const*,int const*) ; 
- int /*<<< orphan*/  square20 (int*,int const*) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int MM1 (int) ;
+ int MM2 (int) ;
+ int MUL15 (int,int) ;
+ int mul20 (int*,int const*,int const*) ;
+ int square20 (int*,int const*) ;
 
 __attribute__((used)) static void
 f255_mulgen(uint32_t *d, const uint32_t *a, const uint32_t *b, int square)
 {
-	uint32_t t[40], cc, w;
+ uint32_t t[40], cc, w;
 
-	/*
-	 * Compute raw multiplication. All result words fit in 13 bits
-	 * each; upper word (t[39]) must fit on 5 bits, since the product
-	 * of two 256-bit integers must fit on 512 bits.
-	 */
-	if (square) {
-		square20(t, a);
-	} else {
-		mul20(t, a, b);
-	}
 
-	/*
-	 * Modular reduction: each high word is added where necessary.
-	 * Since the modulus is 2^255-19 and word 20 corresponds to
-	 * offset 20*13 = 260, word 20+k must be added to word k with
-	 * a factor of 19*2^5 = 608. The extra bits in word 19 are also
-	 * added that way.
-	 */
-	cc = MUL15(t[19] >> 8, 19);
-	t[19] &= 0xFF;
 
-#define MM1(x)   do { \
-		w = t[x] + cc + MUL15(t[(x) + 20], 608); \
-		t[x] = w & 0x1FFF; \
-		cc = w >> 13; \
-	} while (0)
 
-	MM1( 0);
-	MM1( 1);
-	MM1( 2);
-	MM1( 3);
-	MM1( 4);
-	MM1( 5);
-	MM1( 6);
-	MM1( 7);
-	MM1( 8);
-	MM1( 9);
-	MM1(10);
-	MM1(11);
-	MM1(12);
-	MM1(13);
-	MM1(14);
-	MM1(15);
-	MM1(16);
-	MM1(17);
-	MM1(18);
-	MM1(19);
 
-#undef MM1
 
-	cc = MUL15(w >> 8, 19);
-	t[19] &= 0xFF;
+ if (square) {
+  square20(t, a);
+ } else {
+  mul20(t, a, b);
+ }
+ cc = MUL15(t[19] >> 8, 19);
+ t[19] &= 0xFF;
 
-#define MM2(x)   do { \
-		w = t[x] + cc; \
-		d[x] = w & 0x1FFF; \
-		cc = w >> 13; \
-	} while (0)
 
-	MM2( 0);
-	MM2( 1);
-	MM2( 2);
-	MM2( 3);
-	MM2( 4);
-	MM2( 5);
-	MM2( 6);
-	MM2( 7);
-	MM2( 8);
-	MM2( 9);
-	MM2(10);
-	MM2(11);
-	MM2(12);
-	MM2(13);
-	MM2(14);
-	MM2(15);
-	MM2(16);
-	MM2(17);
-	MM2(18);
-	MM2(19);
 
-#undef MM2
+
+
+
+
+ do { w = t[0] + cc + MUL15(t[(0) + 20], 608); t[0] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[1] + cc + MUL15(t[(1) + 20], 608); t[1] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[2] + cc + MUL15(t[(2) + 20], 608); t[2] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[3] + cc + MUL15(t[(3) + 20], 608); t[3] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[4] + cc + MUL15(t[(4) + 20], 608); t[4] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[5] + cc + MUL15(t[(5) + 20], 608); t[5] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[6] + cc + MUL15(t[(6) + 20], 608); t[6] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[7] + cc + MUL15(t[(7) + 20], 608); t[7] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[8] + cc + MUL15(t[(8) + 20], 608); t[8] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[9] + cc + MUL15(t[(9) + 20], 608); t[9] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[10] + cc + MUL15(t[(10) + 20], 608); t[10] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[11] + cc + MUL15(t[(11) + 20], 608); t[11] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[12] + cc + MUL15(t[(12) + 20], 608); t[12] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[13] + cc + MUL15(t[(13) + 20], 608); t[13] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[14] + cc + MUL15(t[(14) + 20], 608); t[14] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[15] + cc + MUL15(t[(15) + 20], 608); t[15] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[16] + cc + MUL15(t[(16) + 20], 608); t[16] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[17] + cc + MUL15(t[(17) + 20], 608); t[17] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[18] + cc + MUL15(t[(18) + 20], 608); t[18] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[19] + cc + MUL15(t[(19) + 20], 608); t[19] = w & 0x1FFF; cc = w >> 13; } while (0);
+
+
+
+ cc = MUL15(w >> 8, 19);
+ t[19] &= 0xFF;
+
+
+
+
+
+
+
+ do { w = t[0] + cc; d[0] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[1] + cc; d[1] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[2] + cc; d[2] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[3] + cc; d[3] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[4] + cc; d[4] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[5] + cc; d[5] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[6] + cc; d[6] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[7] + cc; d[7] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[8] + cc; d[8] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[9] + cc; d[9] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[10] + cc; d[10] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[11] + cc; d[11] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[12] + cc; d[12] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[13] + cc; d[13] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[14] + cc; d[14] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[15] + cc; d[15] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[16] + cc; d[16] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[17] + cc; d[17] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[18] + cc; d[18] = w & 0x1FFF; cc = w >> 13; } while (0);
+ do { w = t[19] + cc; d[19] = w & 0x1FFF; cc = w >> 13; } while (0);
+
+
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  TEST_REQ_RUNNING_SYSTEMD (int /*<<< orphan*/ ) ; 
- int getpid () ; 
- int /*<<< orphan*/  parse_pid (char*,int*) ; 
- int /*<<< orphan*/  save_argc_argv (int,char**) ; 
- int /*<<< orphan*/  test_get_process_cmdline_harder () ; 
- int /*<<< orphan*/  test_get_process_comm (int) ; 
- int /*<<< orphan*/  test_get_process_comm_escape () ; 
- int /*<<< orphan*/  test_getpid_cached () ; 
- int /*<<< orphan*/  test_getpid_measure () ; 
- int /*<<< orphan*/  test_ioprio_class_from_to_string () ; 
- int /*<<< orphan*/  test_personality () ; 
- int /*<<< orphan*/  test_pid_is_alive () ; 
- int /*<<< orphan*/  test_pid_is_unwaited () ; 
- int /*<<< orphan*/  test_pid_to_ptr () ; 
- int /*<<< orphan*/  test_rename_process () ; 
- int /*<<< orphan*/  test_safe_fork () ; 
- int /*<<< orphan*/  test_setup_logging (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int LOG_DEBUG ;
+ int TEST_REQ_RUNNING_SYSTEMD (int ) ;
+ int getpid () ;
+ int parse_pid (char*,int*) ;
+ int save_argc_argv (int,char**) ;
+ int test_get_process_cmdline_harder () ;
+ int test_get_process_comm (int) ;
+ int test_get_process_comm_escape () ;
+ int test_getpid_cached () ;
+ int test_getpid_measure () ;
+ int test_ioprio_class_from_to_string () ;
+ int test_personality () ;
+ int test_pid_is_alive () ;
+ int test_pid_is_unwaited () ;
+ int test_pid_to_ptr () ;
+ int test_rename_process () ;
+ int test_safe_fork () ;
+ int test_setup_logging (int ) ;
 
 int main(int argc, char *argv[]) {
         test_setup_logging(LOG_DEBUG);

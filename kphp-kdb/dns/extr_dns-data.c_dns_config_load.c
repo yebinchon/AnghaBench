@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct lev_start {int split_mod; int split_max; scalar_t__ split_min; scalar_t__ extra_bytes; int /*<<< orphan*/  schema_id; int /*<<< orphan*/  type; } ;
-struct TYPE_10__ {int /*<<< orphan*/  replica_prefix; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct lev_start {int split_mod; int split_max; scalar_t__ split_min; scalar_t__ extra_bytes; int schema_id; int type; } ;
+struct TYPE_10__ {int replica_prefix; } ;
 struct TYPE_9__ {TYPE_1__* info; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * filename; } ;
+struct TYPE_8__ {int * filename; } ;
 
-/* Variables and functions */
- TYPE_2__* Binlog ; 
- int /*<<< orphan*/  DNS_SCHEMA_V1 ; 
- int /*<<< orphan*/  LEV_START ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_WRONLY ; 
- int PATH_MAX ; 
- struct lev_start* alloca (int) ; 
- scalar_t__ append_to_binlog (TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  binlog_allow_query_networks ; 
- int /*<<< orphan*/  binlog_allow_query_networks6 ; 
- int /*<<< orphan*/ * binlogname ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- scalar_t__ close (int) ; 
- int /*<<< orphan*/  close_binlog (TYPE_2__*,int) ; 
- int config_load (char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  config_zones ; 
- int dns_convert_config_to_binlog ; 
- int /*<<< orphan*/  dns_record_hash_free () ; 
- int /*<<< orphan*/  dns_record_hash_init () ; 
- scalar_t__ engine_preload_filelist (char const*,int /*<<< orphan*/ *) ; 
- TYPE_3__* engine_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  expand_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_binlog_last () ; 
- scalar_t__ fsync (int) ; 
- char const* include_binlog_name ; 
- int /*<<< orphan*/  init_log_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ log_readto_pos ; 
- int open (char*,int,int) ; 
- TYPE_2__* open_binlog (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ replay_log (int /*<<< orphan*/ ,int) ; 
- int snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  sync_binlog (int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- int write (int,struct lev_start*,int) ; 
- int /*<<< orphan*/  zones ; 
+
+ TYPE_2__* Binlog ;
+ int DNS_SCHEMA_V1 ;
+ int LEV_START ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_WRONLY ;
+ int PATH_MAX ;
+ struct lev_start* alloca (int) ;
+ scalar_t__ append_to_binlog (TYPE_2__*) ;
+ int assert (int) ;
+ int binlog_allow_query_networks ;
+ int binlog_allow_query_networks6 ;
+ int * binlogname ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ scalar_t__ close (int) ;
+ int close_binlog (TYPE_2__*,int) ;
+ int config_load (char const*,int,int ) ;
+ int config_zones ;
+ int dns_convert_config_to_binlog ;
+ int dns_record_hash_free () ;
+ int dns_record_hash_init () ;
+ scalar_t__ engine_preload_filelist (char const*,int *) ;
+ TYPE_3__* engine_replica ;
+ int exit (int) ;
+ int expand_name (int ) ;
+ int flush_binlog_last () ;
+ scalar_t__ fsync (int) ;
+ char const* include_binlog_name ;
+ int init_log_data (int ,int ,int ) ;
+ int kprintf (char*,...) ;
+ scalar_t__ log_readto_pos ;
+ int open (char*,int,int) ;
+ TYPE_2__* open_binlog (TYPE_3__*,int ) ;
+ scalar_t__ replay_log (int ,int) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int sync_binlog (int) ;
+ int vkprintf (int,char*) ;
+ int write (int,struct lev_start*,int) ;
+ int zones ;
 
 int dns_config_load (const char *filename, int exit_after_first_error, const char *output_binlog_name) {
   if (output_binlog_name) {
@@ -80,7 +80,7 @@ int dns_config_load (const char *filename, int exit_after_first_error, const cha
     assert (write (fd, E, 24) == 24);
     assert (fsync (fd) >= 0);
     assert (close (fd) >= 0);
-    if (engine_preload_filelist (output_binlog_name, NULL) < 0) {
+    if (engine_preload_filelist (output_binlog_name, ((void*)0)) < 0) {
       kprintf ("cannot open binlog files for %s\n", output_binlog_name);
       exit (1);
     }
@@ -100,11 +100,11 @@ int dns_config_load (const char *filename, int exit_after_first_error, const cha
     assert (append_to_binlog (Binlog) == log_readto_pos);
     dns_convert_config_to_binlog = 1;
   }
-  include_binlog_name = NULL;
+  include_binlog_name = ((void*)0);
   dns_record_hash_init ();
   int res = config_load (filename, exit_after_first_error, 0);
   dns_record_hash_free ();
-  expand_name (0); //free cyclic buffer
+  expand_name (0);
   config_zones = zones;
   if (output_binlog_name) {
     if (include_binlog_name) {
@@ -114,13 +114,13 @@ int dns_config_load (const char *filename, int exit_after_first_error, const cha
     flush_binlog_last ();
     sync_binlog (2);
     close_binlog (Binlog, 1);
-    Binlog = NULL;
-    binlogname = NULL;
+    Binlog = ((void*)0);
+    binlogname = ((void*)0);
   }
 
   if (include_binlog_name && !binlog_allow_query_networks && !binlog_allow_query_networks6) {
     kprintf ("Ignore '$BINLOG %s' macro since there isn't any '$BINLOG_ALLOW_QUERY <network addr>' macro in config.\n", include_binlog_name);
-    include_binlog_name = NULL;
+    include_binlog_name = ((void*)0);
   }
   return res;
 }

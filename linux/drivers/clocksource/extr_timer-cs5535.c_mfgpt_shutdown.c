@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct clock_event_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs5535_event_clock ; 
- int /*<<< orphan*/  disable_timer (int /*<<< orphan*/ ) ; 
+
+ int cs5535_event_clock ;
+ int disable_timer (int ) ;
 
 __attribute__((used)) static int mfgpt_shutdown(struct clock_event_device *evt)
 {
-	disable_timer(cs5535_event_clock);
-	return 0;
+ disable_timer(cs5535_event_clock);
+ return 0;
 }

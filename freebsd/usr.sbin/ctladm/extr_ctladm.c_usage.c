@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* CTL_DEFAULT_DEV ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+ char* CTL_DEFAULT_DEV ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
+ int stdout ;
 
 void
 usage(int error)
 {
-	fprintf(error ? stderr : stdout,
+ fprintf(error ? stderr : stdout,
 "Usage:\n"
 "Primary commands:\n"
 "         ctladm tur         [dev_id][general options]\n"
@@ -146,7 +138,7 @@ usage(int error)
 "-W wwpn                  : set WWPN for one frontend\n"
 "-t port_type             : specify fc, scsi, ioctl, internal frontend type\n"
 "-p targ_port             : specify target port number\n"
-"-r                       : remove frontend port\n" 
+"-r                       : remove frontend port\n"
 "-q                       : omit header in list output\n"
 "-x                       : output port list in XML format\n"
 "portlist options:\n"

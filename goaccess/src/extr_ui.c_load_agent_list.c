@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_7__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
-struct TYPE_9__ {int /*<<< orphan*/  list_agents; } ;
+
+
+typedef struct TYPE_9__ TYPE_7__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WINDOW ;
+struct TYPE_9__ {int list_agents; } ;
 struct TYPE_8__ {int size; struct TYPE_8__* items; struct TYPE_8__* name; } ;
-typedef  TYPE_1__ GMenu ;
+typedef TYPE_1__ GMenu ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AGENTSDLG_DESC ; 
- char* AGENTSDLG_HEAD ; 
- int AGENTS_MENU_X ; 
- int AGENTS_MENU_Y ; 
-#define  KEY_DOWN 130 
-#define  KEY_RESIZE 129 
-#define  KEY_UP 128 
- int /*<<< orphan*/  REQ_DOWN ; 
- int /*<<< orphan*/  REQ_UP ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  close_win (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  color_panel_header ; 
- TYPE_7__ conf ; 
- int /*<<< orphan*/  draw_header (int /*<<< orphan*/ *,char*,char*,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  gmenu_driver (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keypad (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_host_agents_gmenu ; 
- int /*<<< orphan*/  mvwprintw (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* new_gmenu (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/ * newwin (int,int,int,int) ; 
- int /*<<< orphan*/  post_gmenu (TYPE_1__*) ; 
- int set_host_agents (char*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  touchwin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wborder (int /*<<< orphan*/ *,char,char,char,char,char,char,char,char) ; 
- int wgetch (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrefresh (int /*<<< orphan*/ *) ; 
+
+ int AGENTSDLG_DESC ;
+ char* AGENTSDLG_HEAD ;
+ int AGENTS_MENU_X ;
+ int AGENTS_MENU_Y ;
+
+
+
+ int REQ_DOWN ;
+ int REQ_UP ;
+ int TRUE ;
+ int close_win (int *) ;
+ int color_panel_header ;
+ TYPE_7__ conf ;
+ int draw_header (int *,char*,char*,int,int,int,int ) ;
+ int free (TYPE_1__*) ;
+ int getmaxyx (int ,int,int) ;
+ int gmenu_driver (TYPE_1__*,int ) ;
+ int keypad (int *,int ) ;
+ int load_host_agents_gmenu ;
+ int mvwprintw (int *,int,int,int ) ;
+ TYPE_1__* new_gmenu (int *,int,int,int,int) ;
+ int * newwin (int,int,int,int) ;
+ int post_gmenu (TYPE_1__*) ;
+ int set_host_agents (char*,int ,TYPE_1__*) ;
+ int snprintf (char*,int,char*,char*) ;
+ int stdscr ;
+ int touchwin (int *) ;
+ int wborder (int *,char,char,char,char,char,char,char,char) ;
+ int wgetch (int ) ;
+ int wrefresh (int *) ;
 
 void
 load_agent_list (WINDOW * main_win, char *addr)
@@ -63,16 +63,16 @@ load_agent_list (WINDOW * main_win, char *addr)
     return;
 
   getmaxyx (stdscr, y, x);
-  list_h = y / 2;       /* list window - height */
-  list_w = x - 4;       /* list window - width */
-  menu_h = list_h - AGENTS_MENU_Y - 1;  /* menu window - height */
-  menu_w = list_w - AGENTS_MENU_X - AGENTS_MENU_X;      /* menu window - width */
+  list_h = y / 2;
+  list_w = x - 4;
+  menu_h = list_h - AGENTS_MENU_Y - 1;
+  menu_w = list_w - AGENTS_MENU_X - AGENTS_MENU_X;
 
   win = newwin (list_h, list_w, (y - list_h) / 2, (x - list_w) / 2);
   keypad (win, TRUE);
   wborder (win, '|', '|', '-', '-', '+', '+', '+', '+');
 
-  /* create a new instance of GMenu and make it selectable */
+
   menu = new_gmenu (win, menu_h, menu_w, AGENTS_MENU_Y, AGENTS_MENU_X);
   if (set_host_agents (addr, load_host_agents_gmenu, menu) == 1)
     goto out;
@@ -86,13 +86,13 @@ load_agent_list (WINDOW * main_win, char *addr)
   while (quit) {
     c = wgetch (stdscr);
     switch (c) {
-    case KEY_DOWN:
+    case 130:
       gmenu_driver (menu, REQ_DOWN);
       break;
-    case KEY_UP:
+    case 128:
       gmenu_driver (menu, REQ_UP);
       break;
-    case KEY_RESIZE:
+    case 129:
     case 'q':
       quit = 0;
       break;
@@ -106,7 +106,7 @@ load_agent_list (WINDOW * main_win, char *addr)
 
 out:
 
-  /* clean stuff up */
+
   for (i = 0; i < menu->size; ++i)
     free (menu->items[i].name);
   if (menu->items)

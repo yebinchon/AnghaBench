@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  lf ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int name ;
+typedef int lf ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef int UINT ;
 struct TYPE_10__ {int ciACP; } ;
 struct TYPE_9__ {unsigned int* fsCsb; } ;
-struct TYPE_8__ {int lfHeight; int /*<<< orphan*/  lfFaceName; scalar_t__ lfCharSet; } ;
-typedef  TYPE_1__ LOGFONTA ;
-typedef  scalar_t__ INT_PTR ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  TYPE_2__ FONTSIGNATURE ;
-typedef  int DWORD ;
-typedef  TYPE_3__ CHARSETINFO ;
-typedef  char BYTE ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_8__ {int lfHeight; int lfFaceName; scalar_t__ lfCharSet; } ;
+typedef TYPE_1__ LOGFONTA ;
+typedef scalar_t__ INT_PTR ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ HFONT ;
+typedef int HDC ;
+typedef TYPE_2__ FONTSIGNATURE ;
+typedef int DWORD ;
+typedef TYPE_3__ CHARSETINFO ;
+typedef char BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CreateFontIndirectA (TYPE_1__*) ; 
- int /*<<< orphan*/  DeleteObject (scalar_t__) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetTextCharsetInfo (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int GetTextFaceA (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SYMBOL_CHARSET ; 
- scalar_t__ SelectObject (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TCI_SRCCHARSET ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  TranslateCharsetInfo (int*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lstrcpyA (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pGdiGetCodePage (int /*<<< orphan*/ ) ; 
- int pGetGlyphIndicesA (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int pGetGlyphIndicesW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip (char*,int,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__) ; 
+
+ scalar_t__ CreateFontIndirectA (TYPE_1__*) ;
+ int DeleteObject (scalar_t__) ;
+ scalar_t__ FALSE ;
+ int GetDC (int ) ;
+ int GetLastError () ;
+ scalar_t__ GetTextCharsetInfo (int ,TYPE_2__*,int ) ;
+ int GetTextFaceA (int ,int,char*) ;
+ int MultiByteToWideChar (int,int ,char*,int,int *,int) ;
+ int ReleaseDC (int ,int ) ;
+ scalar_t__ SYMBOL_CHARSET ;
+ scalar_t__ SelectObject (int ,scalar_t__) ;
+ int SetLastError (int) ;
+ int TCI_SRCCHARSET ;
+ scalar_t__ TRUE ;
+ int TranslateCharsetInfo (int*,TYPE_3__*,int ) ;
+ int assert (int) ;
+ int lstrcpyA (int ,char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
+ int pGdiGetCodePage (int ) ;
+ int pGetGlyphIndicesA (int ,char*,int,int *,int ) ;
+ int pGetGlyphIndicesW (int ,int *,int,int *,int ) ;
+ int skip (char*,int,int) ;
+ int strcmp (char*,char*) ;
+ int trace (char*,scalar_t__) ;
 
 __attribute__((used)) static BOOL get_glyph_indices(INT charset, UINT code_page, WORD *idx, UINT count, BOOL unicode)
 {
@@ -110,7 +110,7 @@ __attribute__((used)) static BOOL get_glyph_indices(INT charset, UINT code_page,
     }
     ok(csi.ciACP == code_page, "expected %d, got %d\n", code_page, csi.ciACP);
 
-    if (pGdiGetCodePage != NULL && pGdiGetCodePage(hdc) != code_page)
+    if (pGdiGetCodePage != ((void*)0) && pGdiGetCodePage(hdc) != code_page)
     {
         skip("Font code page %d, looking for code page %d\n",
              pGdiGetCodePage(hdc), code_page);

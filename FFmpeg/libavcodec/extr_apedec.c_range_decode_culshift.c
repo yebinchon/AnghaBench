@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int help; int range; int low; } ;
 struct TYPE_6__ {TYPE_1__ rc; } ;
-typedef  TYPE_2__ APEContext ;
+typedef TYPE_2__ APEContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  range_dec_normalize (TYPE_2__*) ; 
+
+ int range_dec_normalize (TYPE_2__*) ;
 
 __attribute__((used)) static inline int range_decode_culshift(APEContext *ctx, int shift)
 {

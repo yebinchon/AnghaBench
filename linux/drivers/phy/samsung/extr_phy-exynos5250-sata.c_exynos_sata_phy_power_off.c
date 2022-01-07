@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct phy {int dummy; } ;
-struct exynos_sata_phy {int /*<<< orphan*/  pmureg; } ;
+struct exynos_sata_phy {int pmureg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXYNOS5_SATAPHY_PMU_ENABLE ; 
- int /*<<< orphan*/  SATAPHY_CONTROL_OFFSET ; 
- struct exynos_sata_phy* phy_get_drvdata (struct phy*) ; 
- int regmap_update_bits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int EXYNOS5_SATAPHY_PMU_ENABLE ;
+ int SATAPHY_CONTROL_OFFSET ;
+ struct exynos_sata_phy* phy_get_drvdata (struct phy*) ;
+ int regmap_update_bits (int ,int ,int ,int) ;
 
 __attribute__((used)) static int exynos_sata_phy_power_off(struct phy *phy)
 {
-	struct exynos_sata_phy *sata_phy = phy_get_drvdata(phy);
+ struct exynos_sata_phy *sata_phy = phy_get_drvdata(phy);
 
-	return regmap_update_bits(sata_phy->pmureg, SATAPHY_CONTROL_OFFSET,
-			EXYNOS5_SATAPHY_PMU_ENABLE, false);
+ return regmap_update_bits(sata_phy->pmureg, SATAPHY_CONTROL_OFFSET,
+   EXYNOS5_SATAPHY_PMU_ENABLE, 0);
 
 }

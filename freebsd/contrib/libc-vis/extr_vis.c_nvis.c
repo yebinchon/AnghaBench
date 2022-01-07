@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int istrsenvisx (char**,size_t*,char*,int,int,char*,int /*<<< orphan*/ *) ; 
+ int istrsenvisx (char**,size_t*,char*,int,int,char*,int *) ;
 
 char *
 nvis(char *mbdst, size_t dlen, int c, int flags, int nextc)
 {
-	char cc[2];
-	int ret;
+ char cc[2];
+ int ret;
 
-	cc[0] = c;
-	cc[1] = nextc;
+ cc[0] = c;
+ cc[1] = nextc;
 
-	ret = istrsenvisx(&mbdst, &dlen, cc, 1, flags, "", NULL);
-	if (ret < 0)
-		return NULL;
-	return mbdst + ret;
+ ret = istrsenvisx(&mbdst, &dlen, cc, 1, flags, "", ((void*)0));
+ if (ret < 0)
+  return ((void*)0);
+ return mbdst + ret;
 }

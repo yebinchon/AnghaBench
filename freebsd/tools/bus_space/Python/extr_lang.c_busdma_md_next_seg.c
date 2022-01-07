@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int*,int*) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,int) ; 
- int /*<<< orphan*/  Py_RETURN_NONE ; 
- int bd_md_next_seg (int,int) ; 
+
+
+
+typedef int PyObject ;
+
+
+ int PyArg_ParseTuple (int *,char*,int*,int*) ;
+ int * Py_BuildValue (char*,int) ;
+ int Py_RETURN_NONE ;
+ int bd_md_next_seg (int,int) ;
 
 __attribute__((used)) static PyObject *
 busdma_md_next_seg(PyObject *self, PyObject *args)
 {
-	int error, mdid, sid;
+ int error, mdid, sid;
 
-	if (!PyArg_ParseTuple(args, "ii", &mdid, &sid))
-		return (NULL);
-	sid = bd_md_next_seg(mdid, sid);
-	if (sid == -1)
-		Py_RETURN_NONE;
-	return (Py_BuildValue("i", sid));
+ if (!PyArg_ParseTuple(args, "ii", &mdid, &sid))
+  return (((void*)0));
+ sid = bd_md_next_seg(mdid, sid);
+ if (sid == -1)
+  Py_RETURN_NONE;
+ return (Py_BuildValue("i", sid));
 }

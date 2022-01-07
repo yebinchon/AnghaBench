@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int bits; int ctx; int mlen; int tmp; scalar_t__ i; int /*<<< orphan*/ * m; int /*<<< orphan*/ * x; int /*<<< orphan*/  r; } ;
-typedef  TYPE_1__ bbs_t ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int BN_CTX_new () ; 
- int /*<<< orphan*/  BN_RECP_CTX_new () ; 
- int BN_RECP_CTX_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_gcd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * BN_generate_prime (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BN_is_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- void* BN_new () ; 
- int BN_num_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_rshift1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BN_set_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BN_sub (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_value_one () ; 
- int /*<<< orphan*/  assert (int) ; 
- int calloc (int,int) ; 
- int /*<<< orphan*/  prng_seed (char const* const,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int bits; int ctx; int mlen; int tmp; scalar_t__ i; int * m; int * x; int r; } ;
+typedef TYPE_1__ bbs_t ;
+typedef int BIGNUM ;
+
+
+ int BN_CTX_new () ;
+ int BN_RECP_CTX_new () ;
+ int BN_RECP_CTX_set (int ,int *,int) ;
+ int BN_clear_free (int *) ;
+ int BN_free (int *) ;
+ int BN_gcd (int *,int *,int *,int) ;
+ int * BN_generate_prime (int *,int,int ,int *,int *,int *,int *) ;
+ int BN_is_one (int *) ;
+ int BN_mul (int *,int *,int *,int) ;
+ void* BN_new () ;
+ int BN_num_bytes (int *) ;
+ int BN_rshift1 (int *,int *) ;
+ int BN_set_word (int *,int) ;
+ int BN_sub (int *,int *,int ) ;
+ int BN_value_one () ;
+ int assert (int) ;
+ int calloc (int,int) ;
+ int prng_seed (char const* const,int) ;
+ int vkprintf (int,char*) ;
 
 int bbs_init (bbs_t *self, int bits, const char *const password_filename, int password_length) {
   if (bits < 256) {
@@ -54,14 +54,14 @@ int bbs_init (bbs_t *self, int bits, const char *const password_filename, int pa
   vkprintf (2, "PRNG initialized.\n");
   self->bits = bits;
   vkprintf (2, "p was generated.\n");
-  BIGNUM *t = BN_new (), *p = NULL, *q = NULL;
+  BIGNUM *t = BN_new (), *p = ((void*)0), *q = ((void*)0);
   while (1) {
     BIGNUM *p1 = BN_new (), *q1 = BN_new ();
     assert (p1 && q1);
-    p = BN_generate_prime (NULL, bits / 2, 0, four, three, NULL, NULL);
+    p = BN_generate_prime (((void*)0), bits / 2, 0, four, three, ((void*)0), ((void*)0));
     assert (p);
     BN_sub (p1, p, BN_value_one ());
-    q = BN_generate_prime (NULL, bits / 2, 0, four, three, NULL, NULL);
+    q = BN_generate_prime (((void*)0), bits / 2, 0, four, three, ((void*)0), ((void*)0));
     assert (q);
     BN_sub (q1, q, BN_value_one ());
 
@@ -76,9 +76,9 @@ int bbs_init (bbs_t *self, int bits, const char *const password_filename, int pa
     }
     vkprintf (2, "gcd ((p-1)/2, (q-1)/2) isn't 1.\n");
     BN_free (p);
-    p = NULL;
+    p = ((void*)0);
     BN_free (q);
-    q = NULL;
+    q = ((void*)0);
   }
 
   BN_free (three);

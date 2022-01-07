@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* b; char const** s; int* i; } ;
-struct TYPE_5__ {int kind; int num_options; TYPE_1__ ptr; int /*<<< orphan*/ * options; } ;
-typedef  TYPE_2__ FlagDef ;
+struct TYPE_5__ {int kind; int num_options; TYPE_1__ ptr; int * options; } ;
+typedef TYPE_2__ FlagDef ;
 
-/* Variables and functions */
-#define  FLAG_BOOL 130 
-#define  FLAG_ENUM 129 
-#define  FLAG_STR 128 
- TYPE_2__* get_flag_def (char const*) ; 
- char const* path_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
+
+
+
+
+ TYPE_2__* get_flag_def (char const*) ;
+ char const* path_file (int ) ;
+ int printf (char*,...) ;
+ int strcmp (int ,char const*) ;
+ int strdup (char const*) ;
 
 const char *parse_flags(int *argc_ptr, const char ***argv_ptr) {
     int argc = *argc_ptr;
@@ -44,10 +44,10 @@ const char *parse_flags(int *argc_ptr, const char ***argv_ptr) {
                 continue;
             }
             switch (flag->kind) {
-            case FLAG_BOOL:
-                *flag->ptr.b = true;
+            case 130:
+                *flag->ptr.b = 1;
                 break;
-            case FLAG_STR:
+            case 128:
                 if (i + 1 < argc) {
                     i++;
                     *flag->ptr.s = argv[i];
@@ -55,7 +55,7 @@ const char *parse_flags(int *argc_ptr, const char ***argv_ptr) {
                     printf("No value argument after -%s\n", arg);
                 }
                 break;
-            case FLAG_ENUM: {
+            case 129: {
                 const char *option;
                 if (i + 1 < argc) {
                     i++;
@@ -64,11 +64,11 @@ const char *parse_flags(int *argc_ptr, const char ***argv_ptr) {
                     printf("No value after %s\n", arg);
                     break;
                 }
-                bool found = false;
+                bool found = 0;
                 for (int k = 0; k < flag->num_options; k++) {
                     if (strcmp(flag->options[k], option) == 0) {
                         *flag->ptr.i = k;
-                        found = true;
+                        found = 1;
                         break;
                     }
                 }

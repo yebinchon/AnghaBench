@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  jq_state ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_ARRAY ; 
- scalar_t__ JV_KIND_NULL ; 
- scalar_t__ JV_KIND_NUMBER ; 
- scalar_t__ JV_KIND_OBJECT ; 
- scalar_t__ JV_KIND_STRING ; 
- int /*<<< orphan*/  jv_array_concat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_number (scalar_t__) ; 
- scalar_t__ jv_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_object_merge (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string_concat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  type_error2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int jv ;
+typedef int jq_state ;
+
+
+ scalar_t__ JV_KIND_ARRAY ;
+ scalar_t__ JV_KIND_NULL ;
+ scalar_t__ JV_KIND_NUMBER ;
+ scalar_t__ JV_KIND_OBJECT ;
+ scalar_t__ JV_KIND_STRING ;
+ int jv_array_concat (int ,int ) ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_number (scalar_t__) ;
+ scalar_t__ jv_number_value (int ) ;
+ int jv_object_merge (int ,int ) ;
+ int jv_string_concat (int ,int ) ;
+ int type_error2 (int ,int ,char*) ;
 
 __attribute__((used)) static jv f_plus(jq_state *jq, jv input, jv a, jv b) {
   jv_free(input);

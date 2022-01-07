@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- char** HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const**) ; 
- char** HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const**,unsigned int) ; 
- unsigned int INITIAL_CONST_NAMES_SIZE ; 
- char* next_valid_constant_name (char**) ; 
+ int GetProcessHeap () ;
+ char** HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char const**) ;
+ char** HeapReAlloc (int ,int ,char const**,unsigned int) ;
+ unsigned int INITIAL_CONST_NAMES_SIZE ;
+ char* next_valid_constant_name (char**) ;
 
 __attribute__((used)) static const char **parse_skip_constants_string(char *skip_constants_string, unsigned int *names_count)
 {
@@ -28,7 +20,7 @@ __attribute__((used)) static const char **parse_skip_constants_string(char *skip
 
     names = HeapAlloc(GetProcessHeap(), 0, sizeof(*names) * size);
     if (!names)
-        return NULL;
+        return ((void*)0);
 
     *names_count = 0;
     s = skip_constants_string;
@@ -41,7 +33,7 @@ __attribute__((used)) static const char **parse_skip_constants_string(char *skip
             if (!new_alloc)
             {
                 HeapFree(GetProcessHeap(), 0, names);
-                return NULL;
+                return ((void*)0);
             }
             names = new_alloc;
         }

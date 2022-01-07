@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct connection {int dummy; } ;
-struct TYPE_4__ {double cluster_name; int cluster_no; int cluster_mode; int get_timeout; int set_timeout; int /*<<< orphan*/  points_num; int /*<<< orphan*/  tot_buckets; } ;
-struct TYPE_3__ {int config_loaded_at; int config_bytes; double config_md5_hex; int /*<<< orphan*/  clusters_num; } ;
+struct TYPE_4__ {double cluster_name; int cluster_no; int cluster_mode; int get_timeout; int set_timeout; int points_num; int tot_buckets; } ;
+struct TYPE_3__ {int config_loaded_at; int config_bytes; double config_md5_hex; int clusters_num; } ;
 
-/* Variables and functions */
- TYPE_2__* CC ; 
- TYPE_1__* CurConf ; 
- int /*<<< orphan*/  active_queries ; 
- int /*<<< orphan*/  client_errors_received ; 
- char* config_filename ; 
- int /*<<< orphan*/  diagonal_forwarded_total ; 
- int /*<<< orphan*/  diagonal_received_queries ; 
- int /*<<< orphan*/  dropped_overflow_responses ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_first ; 
- scalar_t__ dyn_last ; 
- int /*<<< orphan*/  dyn_update_stats () ; 
- int /*<<< orphan*/  errors_received ; 
- int /*<<< orphan*/  expired_forwarded_queries ; 
- char* extension_name ; 
- int freed_blocks ; 
- char* freed_bytes ; 
- int /*<<< orphan*/  immediate_forwarded_queries ; 
- int prepare_stats (struct connection*,char*,int) ; 
- scalar_t__ search_stats (char*,int) ; 
- scalar_t__ snprintf (char*,int,char*,...) ; 
- int /*<<< orphan*/  tot_forwarded_queries ; 
- int /*<<< orphan*/  tot_skipped_answers ; 
- int /*<<< orphan*/  total_connect_failures ; 
- int /*<<< orphan*/  total_failed_connections ; 
- char* wasted_blocks ; 
- int wasted_bytes ; 
+
+ TYPE_2__* CC ;
+ TYPE_1__* CurConf ;
+ int active_queries ;
+ int client_errors_received ;
+ char* config_filename ;
+ int diagonal_forwarded_total ;
+ int diagonal_received_queries ;
+ int dropped_overflow_responses ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_first ;
+ scalar_t__ dyn_last ;
+ int dyn_update_stats () ;
+ int errors_received ;
+ int expired_forwarded_queries ;
+ char* extension_name ;
+ int freed_blocks ;
+ char* freed_bytes ;
+ int immediate_forwarded_queries ;
+ int prepare_stats (struct connection*,char*,int) ;
+ scalar_t__ search_stats (char*,int) ;
+ scalar_t__ snprintf (char*,int,char*,...) ;
+ int tot_forwarded_queries ;
+ int tot_skipped_answers ;
+ int total_connect_failures ;
+ int total_failed_connections ;
+ char* wasted_blocks ;
+ int wasted_bytes ;
 
 int mcp_prepare_stats (struct connection *c, char *stats_buffer, int stats_buffer_len) {
   dyn_update_stats();
@@ -112,8 +112,8 @@ int mcp_prepare_stats (struct connection *c, char *stats_buffer, int stats_buffe
     client_errors_received,
     total_failed_connections,
     total_connect_failures);
-#ifdef SEARCH_MODE_ENABLED
-  stats_len += search_stats (stats_buffer + stats_len, stats_buffer_len - stats_len);
-#endif
+
+
+
   return stats_len;
 }

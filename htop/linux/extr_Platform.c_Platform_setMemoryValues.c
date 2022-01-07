@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {long* values; int /*<<< orphan*/  total; scalar_t__ pl; } ;
-struct TYPE_4__ {long usedMem; long buffersMem; long cachedMem; int /*<<< orphan*/  totalMem; } ;
-typedef  TYPE_1__ ProcessList ;
-typedef  TYPE_2__ Meter ;
 
-/* Variables and functions */
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {long* values; int total; scalar_t__ pl; } ;
+struct TYPE_4__ {long usedMem; long buffersMem; long cachedMem; int totalMem; } ;
+typedef TYPE_1__ ProcessList ;
+typedef TYPE_2__ Meter ;
+
+
 
 void Platform_setMemoryValues(Meter* this) {
    ProcessList* pl = (ProcessList*) this->pl;

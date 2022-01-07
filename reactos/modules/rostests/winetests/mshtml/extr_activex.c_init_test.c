@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int TEST_DISPONLY ; 
- int TEST_NOQUICKACT ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ activex_refcnt ; 
- int /*<<< orphan*/  have_container ; 
- int no_quickact ; 
- int plugin_behavior ; 
+ int TEST_DISPONLY ;
+ int TEST_NOQUICKACT ;
+ int TRUE ;
+ scalar_t__ activex_refcnt ;
+ int have_container ;
+ int no_quickact ;
+ int plugin_behavior ;
 
 __attribute__((used)) static void init_test(int behavior)
 {

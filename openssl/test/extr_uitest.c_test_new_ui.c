@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pass ;
-struct TYPE_3__ {char* member_0; char* member_1; int /*<<< orphan*/  password; } ;
-typedef  TYPE_1__ PW_CB_DATA ;
 
-/* Variables and functions */
- scalar_t__ TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_str_eq (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_ui_method () ; 
- int /*<<< orphan*/  password_callback (char*,int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  setup_ui_method () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int pass ;
+struct TYPE_3__ {char* member_0; char* member_1; int password; } ;
+typedef TYPE_1__ PW_CB_DATA ;
+
+
+ scalar_t__ TEST_int_gt (int ,int ) ;
+ scalar_t__ TEST_str_eq (char*,int ) ;
+ int destroy_ui_method () ;
+ int password_callback (char*,int,int ,TYPE_1__*) ;
+ int setup_ui_method () ;
 
 __attribute__((used)) static int test_new_ui(void)
 {

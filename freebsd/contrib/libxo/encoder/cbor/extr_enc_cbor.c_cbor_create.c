@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xo_handle_t ;
-struct TYPE_6__ {int /*<<< orphan*/  c_data; } ;
-typedef  TYPE_1__ cbor_private_t ;
 
-/* Variables and functions */
- int CBOR_INDEF ; 
- int CBOR_MAP ; 
- int /*<<< orphan*/  bzero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  cbor_append (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xo_buf_init (int /*<<< orphan*/ *) ; 
- TYPE_1__* xo_realloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  xo_set_private (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int xo_handle_t ;
+struct TYPE_6__ {int c_data; } ;
+typedef TYPE_1__ cbor_private_t ;
+
+
+ int CBOR_INDEF ;
+ int CBOR_MAP ;
+ int bzero (TYPE_1__*,int) ;
+ int cbor_append (int *,TYPE_1__*,int *,int,int ,int *) ;
+ int xo_buf_init (int *) ;
+ TYPE_1__* xo_realloc (int *,int) ;
+ int xo_set_private (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int
 cbor_create (xo_handle_t *xop)
 {
-    cbor_private_t *cbor = xo_realloc(NULL, sizeof(*cbor));
-    if (cbor == NULL)
-	return -1;
+    cbor_private_t *cbor = xo_realloc(((void*)0), sizeof(*cbor));
+    if (cbor == ((void*)0))
+ return -1;
 
     bzero(cbor, sizeof(*cbor));
     xo_buf_init(&cbor->c_data);
 
     xo_set_private(xop, cbor);
 
-    cbor_append(xop, cbor, &cbor->c_data, CBOR_MAP | CBOR_INDEF, 0, NULL);
+    cbor_append(xop, cbor, &cbor->c_data, CBOR_MAP | CBOR_INDEF, 0, ((void*)0));
 
     return 0;
 }

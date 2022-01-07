@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-struct TYPE_4__ {int digest_valid; size_t digest_size; int /*<<< orphan*/  digest; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_1__ khash ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ recv (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+struct TYPE_4__ {int digest_valid; size_t digest_size; int digest; int fd; } ;
+typedef TYPE_1__ khash ;
+
+
+ int EIO ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ recv (int ,int ,size_t,int ) ;
 
 __attribute__((used)) static int retrieve_digest(khash *h) {
         ssize_t n;
@@ -31,10 +31,10 @@ __attribute__((used)) static int retrieve_digest(khash *h) {
         n = recv(h->fd, h->digest, h->digest_size, 0);
         if (n < 0)
                 return n;
-        if ((size_t) n != h->digest_size) /* digest size changed? */
+        if ((size_t) n != h->digest_size)
                 return -EIO;
 
-        h->digest_valid = true;
+        h->digest_valid = 1;
 
         return 0;
 }

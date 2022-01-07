@@ -1,45 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
-#define  MRB_TT_ARRAY 136 
-#define  MRB_TT_FALSE 135 
-#define  MRB_TT_FIXNUM 134 
-#define  MRB_TT_FLOAT 133 
-#define  MRB_TT_HASH 132 
-#define  MRB_TT_STRING 131 
-#define  MRB_TT_SYMBOL 130 
-#define  MRB_TT_TRUE 129 
-#define  MRB_TT_UNDEF 128 
- int RARRAY_LEN (int /*<<< orphan*/ ) ; 
- char* RSTRING_END (int /*<<< orphan*/ ) ; 
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_entry (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_hash_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_hash_keys (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_method_defined (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_cat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  mrb_str_cat_cstr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_concat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new_cstr (int /*<<< orphan*/ *,char*) ; 
- int mrb_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pretty_cat (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+ int RARRAY_LEN (int ) ;
+ char* RSTRING_END (int ) ;
+ char* RSTRING_PTR (int ) ;
+ int mrb_ary_entry (int ,int) ;
+ int mrb_funcall (int *,int ,char*,int ,int *) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ int mrb_hash_get (int *,int ,int ) ;
+ int mrb_hash_keys (int *,int ) ;
+ int mrb_method_defined (int *,int ,char*) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_str_cat (int *,int ,char*,int) ;
+ int mrb_str_cat_cstr (int *,int ,char*) ;
+ int mrb_str_concat (int *,int ,int ) ;
+ int mrb_str_new_cstr (int *,char*) ;
+ int mrb_type (int ) ;
+ int pretty_cat (int *,int ,int) ;
 
 __attribute__((used)) static mrb_value
 mrb_value_to_string(mrb_state* mrb, mrb_value value, int pretty) {
@@ -50,22 +39,22 @@ mrb_value_to_string(mrb_state* mrb, mrb_value value, int pretty) {
   }
 
   switch (mrb_type(value)) {
-  case MRB_TT_FIXNUM:
-  case MRB_TT_FLOAT:
-  case MRB_TT_TRUE:
-  case MRB_TT_FALSE:
-  case MRB_TT_UNDEF:
-    str = mrb_funcall(mrb, value, "to_s", 0, NULL);
+  case 134:
+  case 133:
+  case 129:
+  case 135:
+  case 128:
+    str = mrb_funcall(mrb, value, "to_s", 0, ((void*)0));
     break;
-  case MRB_TT_SYMBOL:
-    value = mrb_funcall(mrb, value, "to_s", 0, NULL);
-    /* FALLTHROUGH */
-  case MRB_TT_STRING:
+  case 130:
+    value = mrb_funcall(mrb, value, "to_s", 0, ((void*)0));
+
+  case 131:
     {
       int ai = mrb_gc_arena_save(mrb);
       char* ptr = RSTRING_PTR(value);
       char* end = RSTRING_END(value);
-      str = mrb_str_new_cstr(mrb, "\""); 
+      str = mrb_str_new_cstr(mrb, "\"");
       while (ptr < end && *ptr) {
         switch (*ptr) {
         case '\\':
@@ -90,16 +79,16 @@ mrb_value_to_string(mrb_state* mrb, mrb_value value, int pretty) {
           str = mrb_str_cat_cstr(mrb, str, "\\t");
           break;
         default:
-          // TODO: handle unicode
+
           str = mrb_str_cat(mrb, str, ptr, 1);
         }
         ptr++;
       }
-      mrb_str_cat_cstr(mrb, str, "\""); 
+      mrb_str_cat_cstr(mrb, str, "\"");
       mrb_gc_arena_restore(mrb, ai);
     }
     break;
-  case MRB_TT_HASH:
+  case 132:
     {
       mrb_value keys;
       int n, l;
@@ -116,8 +105,8 @@ mrb_value_to_string(mrb_state* mrb, mrb_value value, int pretty) {
         mrb_value obj;
         int ai = mrb_gc_arena_save(mrb);
         mrb_value key = mrb_ary_entry(keys, n);
-        mrb_value enckey = mrb_funcall(mrb, key, "to_s", 0, NULL);
-        enckey = mrb_funcall(mrb, enckey, "inspect", 0, NULL);
+        mrb_value enckey = mrb_funcall(mrb, key, "to_s", 0, ((void*)0));
+        enckey = mrb_funcall(mrb, enckey, "inspect", 0, ((void*)0));
         mrb_str_concat(mrb, str, enckey);
         mrb_str_cat_cstr(mrb, str, ":");
         obj = mrb_hash_get(mrb, value, key);
@@ -132,7 +121,7 @@ mrb_value_to_string(mrb_state* mrb, mrb_value value, int pretty) {
       mrb_str_cat_cstr(mrb, str, "}");
       break;
     }
-  case MRB_TT_ARRAY:
+  case 136:
     {
       int n, l;
 
@@ -160,10 +149,10 @@ mrb_value_to_string(mrb_state* mrb, mrb_value value, int pretty) {
   default:
     {
       if (mrb_method_defined(mrb, value, "to_json"))
-        str = mrb_funcall(mrb, value, "to_json", 0, NULL);
+        str = mrb_funcall(mrb, value, "to_json", 0, ((void*)0));
       else
-        str = mrb_value_to_string(mrb, mrb_funcall(mrb, value, "to_s", 0, NULL), pretty);
+        str = mrb_value_to_string(mrb, mrb_funcall(mrb, value, "to_s", 0, ((void*)0)), pretty);
     }
-  } 
+  }
   return str;
 }

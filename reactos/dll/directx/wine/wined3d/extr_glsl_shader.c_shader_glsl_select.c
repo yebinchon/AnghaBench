@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wined3d_state {int dummy; } ;
 struct wined3d_gl_info {scalar_t__* supported; } ;
-struct wined3d_context {unsigned int shader_update_mask; int /*<<< orphan*/  constant_update_mask; struct wined3d_gl_info* gl_info; struct glsl_context_data* shader_backend_data; } ;
+struct wined3d_context {unsigned int shader_update_mask; int constant_update_mask; struct wined3d_gl_info* gl_info; struct glsl_context_data* shader_backend_data; } ;
 struct shader_glsl_priv {TYPE_2__* fragment_pipe; TYPE_1__* vertex_pipe; } ;
 struct TYPE_6__ {scalar_t__ vertex_color_clamp; } ;
-struct glsl_shader_prog_link {int /*<<< orphan*/  constant_update_mask; int /*<<< orphan*/  clip_distance_mask; scalar_t__ shader_controlled_clip_distances; TYPE_3__ vs; int /*<<< orphan*/  id; } ;
+struct glsl_shader_prog_link {int constant_update_mask; int clip_distance_mask; scalar_t__ shader_controlled_clip_distances; TYPE_3__ vs; int id; } ;
 struct glsl_context_data {scalar_t__ vertex_color_clamp; struct glsl_shader_prog_link* glsl_program; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* enable_extension ) (struct wined3d_gl_info const*,int) ;} ;
-struct TYPE_4__ {int /*<<< orphan*/  (* vp_enable ) (struct wined3d_gl_info const*,int) ;} ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  scalar_t__ GLenum ;
+struct TYPE_5__ {int (* enable_extension ) (struct wined3d_gl_info const*,int) ;} ;
+struct TYPE_4__ {int (* vp_enable ) (struct wined3d_gl_info const*,int) ;} ;
+typedef int GLuint ;
+typedef scalar_t__ GLenum ;
 
-/* Variables and functions */
- size_t ARB_COLOR_BUFFER_FLOAT ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GL_CLAMP_VERTEX_COLOR_ARB ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- scalar_t__ GL_FIXED_ONLY_ARB ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- unsigned int WINED3D_SHADER_TYPE_COMPUTE ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  context_enable_clip_distances (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClampColorARB (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_glsl_shader_program (struct wined3d_context*,struct wined3d_state const*,struct shader_glsl_priv*,struct glsl_context_data*) ; 
- int /*<<< orphan*/  stub1 (struct wined3d_gl_info const*,int) ; 
- int /*<<< orphan*/  stub2 (struct wined3d_gl_info const*,int) ; 
- int /*<<< orphan*/  use_ps (struct wined3d_state const*) ; 
- int /*<<< orphan*/  use_vs (struct wined3d_state const*) ; 
+
+ size_t ARB_COLOR_BUFFER_FLOAT ;
+ int FIXME (char*) ;
+ int GL_CLAMP_VERTEX_COLOR_ARB ;
+ int GL_EXTCALL (int ) ;
+ scalar_t__ GL_FIXED_ONLY_ARB ;
+ int TRACE (char*,int ) ;
+ unsigned int WINED3D_SHADER_TYPE_COMPUTE ;
+ int checkGLcall (char*) ;
+ int context_enable_clip_distances (struct wined3d_context*,int ) ;
+ int glClampColorARB (int ,scalar_t__) ;
+ int glUseProgram (int ) ;
+ int set_glsl_shader_program (struct wined3d_context*,struct wined3d_state const*,struct shader_glsl_priv*,struct glsl_context_data*) ;
+ int stub1 (struct wined3d_gl_info const*,int) ;
+ int stub2 (struct wined3d_gl_info const*,int) ;
+ int use_ps (struct wined3d_state const*) ;
+ int use_vs (struct wined3d_state const*) ;
 
 __attribute__((used)) static void shader_glsl_select(void *shader_priv, struct wined3d_context *context,
         const struct wined3d_state *state)

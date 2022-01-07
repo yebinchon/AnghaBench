@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct stat {int st_size; } ;
-struct TYPE_2__ {int loading; int loading_total_bytes; int /*<<< orphan*/  loading_start_time; } ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_2__ {int loading; int loading_total_bytes; int loading_start_time; } ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int fstat (int /*<<< orphan*/ ,struct stat*) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int fileno (int *) ;
+ int fstat (int ,struct stat*) ;
+ TYPE_1__ server ;
+ int time (int *) ;
 
 void startLoading(FILE *fp) {
     struct stat sb;
 
-    /* Load the DB */
+
     server.loading = 1;
-    server.loading_start_time = time(NULL);
+    server.loading_start_time = time(((void*)0));
     if (fstat(fileno(fp), &sb) == -1) {
-        server.loading_total_bytes = 1; /* just to avoid division by zero */
+        server.loading_total_bytes = 1;
     } else {
         server.loading_total_bytes = sb.st_size;
     }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ ResultSize; int /*<<< orphan*/  ResultCount; int /*<<< orphan*/ * Results; } ;
-typedef  TYPE_1__ ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_GENERIC_STATE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_EXEC ; 
- int /*<<< orphan*/  ACPI_DEBUG_PRINT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_NAME (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_RESULTS_FRAME_OBJ_NUM ; 
- int /*<<< orphan*/  AE_AML_INTERNAL ; 
- int /*<<< orphan*/  AE_AML_NO_OPERAND ; 
- int /*<<< orphan*/  AE_INFO ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiUtDeleteGenericState (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * AcpiUtPopGenericState (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DsResultStackPop ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ ResultSize; int ResultCount; int * Results; } ;
+typedef TYPE_1__ ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_GENERIC_STATE ;
+
+
+ int ACPI_DB_EXEC ;
+ int ACPI_DEBUG_PRINT (int ) ;
+ int ACPI_ERROR (int ) ;
+ int ACPI_FUNCTION_NAME (int ) ;
+ scalar_t__ ACPI_RESULTS_FRAME_OBJ_NUM ;
+ int AE_AML_INTERNAL ;
+ int AE_AML_NO_OPERAND ;
+ int AE_INFO ;
+ int AE_OK ;
+ int AcpiUtDeleteGenericState (int *) ;
+ int * AcpiUtPopGenericState (int **) ;
+ int DsResultStackPop ;
 
 __attribute__((used)) static ACPI_STATUS
 AcpiDsResultStackPop (
-    ACPI_WALK_STATE         *WalkState)
+    ACPI_WALK_STATE *WalkState)
 {
-    ACPI_GENERIC_STATE      *State;
+    ACPI_GENERIC_STATE *State;
 
 
     ACPI_FUNCTION_NAME (DsResultStackPop);
 
 
-    /* Check for stack underflow */
 
-    if (WalkState->Results == NULL)
+
+    if (WalkState->Results == ((void*)0))
     {
         ACPI_DEBUG_PRINT ((ACPI_DB_EXEC,
             "Result stack underflow - State=%p\n", WalkState));
@@ -58,7 +58,7 @@ AcpiDsResultStackPop (
     State = AcpiUtPopGenericState (&WalkState->Results);
     AcpiUtDeleteGenericState (State);
 
-    /* Decrease the length of result stack by the length of frame */
+
 
     WalkState->ResultSize -= ACPI_RESULTS_FRAME_OBJ_NUM;
 

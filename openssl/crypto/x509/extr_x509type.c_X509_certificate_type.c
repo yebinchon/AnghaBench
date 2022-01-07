@@ -1,90 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
-#define  EVP_PKEY_DH 142 
-#define  EVP_PKEY_DSA 141 
-#define  EVP_PKEY_EC 140 
-#define  EVP_PKEY_ED25519 139 
-#define  EVP_PKEY_ED448 138 
-#define  EVP_PKEY_RSA 137 
-#define  EVP_PKEY_RSA_PSS 136 
- int EVP_PKEY_id (int /*<<< orphan*/  const*) ; 
- int EVP_PKS_DSA ; 
- int EVP_PKS_EC ; 
- int EVP_PKS_RSA ; 
- int EVP_PKT_ENC ; 
- int EVP_PKT_EXCH ; 
- int EVP_PKT_SIGN ; 
- int EVP_PK_DH ; 
- int EVP_PK_DSA ; 
- int EVP_PK_EC ; 
- int EVP_PK_RSA ; 
-#define  NID_X9_62_id_ecPublicKey 135 
-#define  NID_dsa 134 
-#define  NID_dsa_2 133 
-#define  NID_id_GostR3410_2001 132 
-#define  NID_id_GostR3410_2012_256 131 
-#define  NID_id_GostR3410_2012_512 130 
-#define  NID_rsa 129 
-#define  NID_rsaEncryption 128 
- scalar_t__ OBJ_find_sigid_algs (int,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/ * X509_get0_pubkey (int /*<<< orphan*/  const*) ; 
- int X509_get_signature_nid (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int X509 ;
+typedef int EVP_PKEY ;
+ int EVP_PKEY_id (int const*) ;
+ int EVP_PKS_DSA ;
+ int EVP_PKS_EC ;
+ int EVP_PKS_RSA ;
+ int EVP_PKT_ENC ;
+ int EVP_PKT_EXCH ;
+ int EVP_PKT_SIGN ;
+ int EVP_PK_DH ;
+ int EVP_PK_DSA ;
+ int EVP_PK_EC ;
+ int EVP_PK_RSA ;
+ scalar_t__ OBJ_find_sigid_algs (int,int *,int*) ;
+ int * X509_get0_pubkey (int const*) ;
+ int X509_get_signature_nid (int const*) ;
 
 int X509_certificate_type(const X509 *x, const EVP_PKEY *pkey)
 {
     const EVP_PKEY *pk;
     int ret = 0, i;
 
-    if (x == NULL)
+    if (x == ((void*)0))
         return 0;
 
-    if (pkey == NULL)
+    if (pkey == ((void*)0))
         pk = X509_get0_pubkey(x);
     else
         pk = pkey;
 
-    if (pk == NULL)
+    if (pk == ((void*)0))
         return 0;
 
     switch (EVP_PKEY_id(pk)) {
-    case EVP_PKEY_RSA:
+    case 137:
         ret = EVP_PK_RSA | EVP_PKT_SIGN;
-/*              if (!sign only extension) */
+
         ret |= EVP_PKT_ENC;
         break;
-    case EVP_PKEY_RSA_PSS:
+    case 136:
         ret = EVP_PK_RSA | EVP_PKT_SIGN;
         break;
-    case EVP_PKEY_DSA:
+    case 141:
         ret = EVP_PK_DSA | EVP_PKT_SIGN;
         break;
-    case EVP_PKEY_EC:
+    case 140:
         ret = EVP_PK_EC | EVP_PKT_SIGN | EVP_PKT_EXCH;
         break;
-    case EVP_PKEY_ED448:
-    case EVP_PKEY_ED25519:
+    case 138:
+    case 139:
         ret = EVP_PKT_SIGN;
         break;
-    case EVP_PKEY_DH:
+    case 142:
         ret = EVP_PK_DH | EVP_PKT_EXCH;
         break;
-    case NID_id_GostR3410_2001:
-    case NID_id_GostR3410_2012_256:
-    case NID_id_GostR3410_2012_512:
+    case 132:
+    case 131:
+    case 130:
         ret = EVP_PKT_EXCH | EVP_PKT_SIGN;
         break;
     default:
@@ -92,18 +75,18 @@ int X509_certificate_type(const X509 *x, const EVP_PKEY *pkey)
     }
 
     i = X509_get_signature_nid(x);
-    if (i && OBJ_find_sigid_algs(i, NULL, &i)) {
+    if (i && OBJ_find_sigid_algs(i, ((void*)0), &i)) {
 
         switch (i) {
-        case NID_rsaEncryption:
-        case NID_rsa:
+        case 128:
+        case 129:
             ret |= EVP_PKS_RSA;
             break;
-        case NID_dsa:
-        case NID_dsa_2:
+        case 134:
+        case 133:
             ret |= EVP_PKS_DSA;
             break;
-        case NID_X9_62_id_ecPublicKey:
+        case 135:
             ret |= EVP_PKS_EC;
             break;
         default:

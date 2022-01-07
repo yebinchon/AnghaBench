@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int fence_count; int /*<<< orphan*/ * fences; } ;
-typedef  TYPE_1__ gl_core_t ;
-typedef  int /*<<< orphan*/  GLsync ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_BUFFER_BIT ; 
- unsigned int GL_CORE_NUM_FENCES ; 
- int /*<<< orphan*/  GL_SCISSOR_TEST ; 
- int /*<<< orphan*/  GL_SYNC_FLUSH_COMMANDS_BIT ; 
- int /*<<< orphan*/  GL_SYNC_GPU_COMMANDS_COMPLETE ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int /*<<< orphan*/  glClear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClientWaitSync (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glColorMask (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteSync (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glEnable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glFenceSync (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glScissor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int fence_count; int * fences; } ;
+typedef TYPE_1__ gl_core_t ;
+typedef int GLsync ;
+
+
+ int GL_COLOR_BUFFER_BIT ;
+ unsigned int GL_CORE_NUM_FENCES ;
+ int GL_SCISSOR_TEST ;
+ int GL_SYNC_FLUSH_COMMANDS_BIT ;
+ int GL_SYNC_GPU_COMMANDS_COMPLETE ;
+ int GL_TRUE ;
+ int glClear (int ) ;
+ int glClientWaitSync (int ,int ,int) ;
+ int glColorMask (int ,int ,int ,int ) ;
+ int glDeleteSync (int ) ;
+ int glDisable (int ) ;
+ int glEnable (int ) ;
+ int glFenceSync (int ,int ) ;
+ int glScissor (int ,int ,int,int) ;
+ int memmove (int *,int *,int) ;
 
 __attribute__((used)) static void gl_core_fence_iterate(gl_core_t *gl, unsigned hard_sync_frames)
 {
    if (gl->fence_count < GL_CORE_NUM_FENCES)
    {
-      /*
-       * We need to do some work after the flip, or we risk fencing too early.
-       * Do as little work as possible.
-       */
+
+
+
+
       glEnable(GL_SCISSOR_TEST);
       glScissor(0, 0, 1, 1);
       glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  test_equal_array () ; 
- int /*<<< orphan*/  test_equal_complex () ; 
- int /*<<< orphan*/  test_equal_object () ; 
- int /*<<< orphan*/  test_equal_simple () ; 
+ int test_equal_array () ;
+ int test_equal_complex () ;
+ int test_equal_object () ;
+ int test_equal_simple () ;
 
 __attribute__((used)) static void run_tests()
 {

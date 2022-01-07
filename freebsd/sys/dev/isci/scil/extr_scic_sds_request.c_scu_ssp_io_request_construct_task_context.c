@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ U32 ;
-struct TYPE_6__ {int /*<<< orphan*/  frame_type; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ U32 ;
+struct TYPE_6__ {int frame_type; } ;
 struct TYPE_7__ {TYPE_1__ ssp; } ;
-struct TYPE_8__ {int ssp_command_iu_length; scalar_t__ transfer_length_bytes; int /*<<< orphan*/  task_type; TYPE_2__ type; } ;
-typedef  TYPE_3__ SCU_TASK_CONTEXT_T ;
-typedef  int /*<<< orphan*/  SCI_SSP_COMMAND_IU_T ;
-typedef  int SCI_IO_REQUEST_DATA_DIRECTION ;
-typedef  int /*<<< orphan*/  SCIC_SDS_REQUEST_T ;
+struct TYPE_8__ {int ssp_command_iu_length; scalar_t__ transfer_length_bytes; int task_type; TYPE_2__ type; } ;
+typedef TYPE_3__ SCU_TASK_CONTEXT_T ;
+typedef int SCI_SSP_COMMAND_IU_T ;
+typedef int SCI_IO_REQUEST_DATA_DIRECTION ;
+typedef int SCIC_SDS_REQUEST_T ;
 
-/* Variables and functions */
-#define  SCI_IO_REQUEST_DATA_IN 130 
-#define  SCI_IO_REQUEST_DATA_OUT 129 
-#define  SCI_IO_REQUEST_NO_DATA 128 
- int /*<<< orphan*/  SCI_SAS_COMMAND_FRAME ; 
- int /*<<< orphan*/  SCU_TASK_TYPE_IOREAD ; 
- int /*<<< orphan*/  SCU_TASK_TYPE_IOWRITE ; 
- int /*<<< orphan*/  scic_sds_request_build_sgl (int /*<<< orphan*/ *) ; 
- TYPE_3__* scic_sds_request_get_task_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scu_ssp_reqeust_construct_task_context (int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+
+
+
+ int SCI_SAS_COMMAND_FRAME ;
+ int SCU_TASK_TYPE_IOREAD ;
+ int SCU_TASK_TYPE_IOWRITE ;
+ int scic_sds_request_build_sgl (int *) ;
+ TYPE_3__* scic_sds_request_get_task_context (int *) ;
+ int scu_ssp_reqeust_construct_task_context (int *,TYPE_3__*) ;
 
 __attribute__((used)) static
 void scu_ssp_io_request_construct_task_context(
@@ -51,11 +51,11 @@ void scu_ssp_io_request_construct_task_context(
 
    switch (data_direction)
    {
-   case SCI_IO_REQUEST_DATA_IN:
-   case SCI_IO_REQUEST_NO_DATA:
+   case 130:
+   case 128:
       task_context->task_type = SCU_TASK_TYPE_IOREAD;
       break;
-   case SCI_IO_REQUEST_DATA_OUT:
+   case 129:
       task_context->task_type = SCU_TASK_TYPE_IOWRITE;
       break;
    }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct NBCmdQueue {int /*<<< orphan*/  cs; TYPE_1__* head; } ;
-typedef  struct NBCmdQueue* UCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/  ncb_command; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NBCmdQueueCancel (struct NBCmdQueue*,TYPE_1__*) ; 
- struct NBCmdQueue* NRC_BADDR ; 
- struct NBCmdQueue* NRC_GOODRET ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct NBCmdQueue {int cs; TYPE_1__* head; } ;
+typedef struct NBCmdQueue* UCHAR ;
+struct TYPE_2__ {int ncb_command; } ;
+
+
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int NBCmdQueueCancel (struct NBCmdQueue*,TYPE_1__*) ;
+ struct NBCmdQueue* NRC_BADDR ;
+ struct NBCmdQueue* NRC_GOODRET ;
+ int TRACE (char*,...) ;
 
 UCHAR NBCmdQueueCancelAll(struct NBCmdQueue *queue)
 {

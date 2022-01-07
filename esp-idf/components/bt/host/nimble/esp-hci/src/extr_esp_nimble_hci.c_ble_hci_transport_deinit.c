@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  ble_hci_acl_pool ; 
- int /*<<< orphan*/  ble_hci_cmd_pool ; 
- int /*<<< orphan*/  ble_hci_evt_hi_pool ; 
- int /*<<< orphan*/  ble_hci_evt_lo_pool ; 
- scalar_t__ os_mempool_clear (int /*<<< orphan*/ *) ; 
- scalar_t__ os_mempool_ext_clear (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int esp_err_t ;
+
+
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int ble_hci_acl_pool ;
+ int ble_hci_cmd_pool ;
+ int ble_hci_evt_hi_pool ;
+ int ble_hci_evt_lo_pool ;
+ scalar_t__ os_mempool_clear (int *) ;
+ scalar_t__ os_mempool_ext_clear (int *) ;
 
 __attribute__((used)) static esp_err_t ble_hci_transport_deinit(void)
 {

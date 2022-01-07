@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  custom_ext_parse_cb_wrap ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int custom_ext_parse_cb_wrap ;
 struct TYPE_7__ {int meths_count; TYPE_2__* meths; } ;
-typedef  TYPE_1__ custom_ext_methods ;
+typedef TYPE_1__ custom_ext_methods ;
 struct TYPE_8__ {scalar_t__ add_cb; struct TYPE_8__* parse_arg; struct TYPE_8__* add_arg; } ;
-typedef  TYPE_2__ custom_ext_method ;
-typedef  int /*<<< orphan*/  custom_ext_add_cb_wrap ;
+typedef TYPE_2__ custom_ext_method ;
+typedef int custom_ext_add_cb_wrap ;
 
-/* Variables and functions */
- void* OPENSSL_memdup (TYPE_2__*,int) ; 
- scalar_t__ custom_ext_add_old_cb_wrap ; 
- int /*<<< orphan*/  custom_exts_free (TYPE_1__*) ; 
+
+ void* OPENSSL_memdup (TYPE_2__*,int) ;
+ scalar_t__ custom_ext_add_old_cb_wrap ;
+ int custom_exts_free (TYPE_1__*) ;
 
 int custom_exts_copy(custom_ext_methods *dst, const custom_ext_methods *src)
 {
@@ -33,7 +33,7 @@ int custom_exts_copy(custom_ext_methods *dst, const custom_ext_methods *src)
         dst->meths =
             OPENSSL_memdup(src->meths,
                            sizeof(*src->meths) * src->meths_count);
-        if (dst->meths == NULL)
+        if (dst->meths == ((void*)0))
             return 0;
         dst->meths_count = src->meths_count;
 
@@ -44,14 +44,14 @@ int custom_exts_copy(custom_ext_methods *dst, const custom_ext_methods *src)
             if (methsrc->add_cb != custom_ext_add_old_cb_wrap)
                 continue;
 
-            /*
-             * We have found an old style API wrapper. We need to copy the
-             * arguments too.
-             */
+
+
+
+
 
             if (err) {
-                methdst->add_arg = NULL;
-                methdst->parse_arg = NULL;
+                methdst->add_arg = ((void*)0);
+                methdst->parse_arg = ((void*)0);
                 continue;
             }
 
@@ -60,7 +60,7 @@ int custom_exts_copy(custom_ext_methods *dst, const custom_ext_methods *src)
             methdst->parse_arg = OPENSSL_memdup(methsrc->parse_arg,
                                             sizeof(custom_ext_parse_cb_wrap));
 
-            if (methdst->add_arg == NULL || methdst->parse_arg == NULL)
+            if (methdst->add_arg == ((void*)0) || methdst->parse_arg == ((void*)0))
                 err = 1;
         }
     }

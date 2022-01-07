@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_19__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_19__ ;
+
+
+typedef int int64_t ;
 struct TYPE_28__ {TYPE_4__* priv; TYPE_7__** outputs; } ;
 struct TYPE_21__ {int num; int den; } ;
 struct TYPE_27__ {TYPE_1__ time_base; TYPE_8__* dst; } ;
-struct TYPE_26__ {int width; int height; int** data; int* linesize; int /*<<< orphan*/  pts; } ;
-struct TYPE_25__ {int /*<<< orphan*/  sb; } ;
-struct TYPE_24__ {int mi_mode; int nb_planes; int b_height; int b_width; int log2_mb_size; TYPE_5__* int_blocks; TYPE_3__* frames; TYPE_2__* pixel_refs; int /*<<< orphan*/  me_mode; int /*<<< orphan*/  log2_chroma_h; int /*<<< orphan*/  log2_chroma_w; scalar_t__ scene_changed; } ;
+struct TYPE_26__ {int width; int height; int** data; int* linesize; int pts; } ;
+struct TYPE_25__ {int sb; } ;
+struct TYPE_24__ {int mi_mode; int nb_planes; int b_height; int b_width; int log2_mb_size; TYPE_5__* int_blocks; TYPE_3__* frames; TYPE_2__* pixel_refs; int me_mode; int log2_chroma_h; int log2_chroma_w; scalar_t__ scene_changed; } ;
 struct TYPE_23__ {TYPE_19__* avf; } ;
-struct TYPE_22__ {int /*<<< orphan*/  nb; } ;
+struct TYPE_22__ {int nb; } ;
 struct TYPE_20__ {int pts; int** data; int* linesize; int height; int width; } ;
-typedef  TYPE_4__ MIContext ;
-typedef  TYPE_5__ Block ;
-typedef  TYPE_6__ AVFrame ;
-typedef  TYPE_7__ AVFilterLink ;
-typedef  TYPE_8__ AVFilterContext ;
+typedef TYPE_4__ MIContext ;
+typedef TYPE_5__ Block ;
+typedef TYPE_6__ AVFrame ;
+typedef TYPE_7__ AVFilterLink ;
+typedef TYPE_8__ AVFilterContext ;
 
-/* Variables and functions */
- int ALPHA_MAX ; 
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ME_MODE_BIDIR ; 
- int /*<<< orphan*/  ME_MODE_BILAT ; 
-#define  MI_MODE_BLEND 130 
-#define  MI_MODE_DUP 129 
-#define  MI_MODE_MCI 128 
- int av_clip (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_frame_copy (TYPE_6__*,TYPE_19__*) ; 
- int av_rescale (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  bidirectional_obmc (TYPE_4__*,int) ; 
- int /*<<< orphan*/  bilateral_obmc (TYPE_4__*,TYPE_5__*,int,int,int) ; 
- int /*<<< orphan*/  set_frame_data (TYPE_4__*,int,TYPE_6__*) ; 
- int /*<<< orphan*/  var_size_bmc (TYPE_4__*,TYPE_5__*,int,int,int,int) ; 
+
+ int ALPHA_MAX ;
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int ME_MODE_BIDIR ;
+ int ME_MODE_BILAT ;
+
+
+
+ int av_clip (int,int ,int) ;
+ int av_frame_copy (TYPE_6__*,TYPE_19__*) ;
+ int av_rescale (int ,int,int) ;
+ int bidirectional_obmc (TYPE_4__*,int) ;
+ int bilateral_obmc (TYPE_4__*,TYPE_5__*,int,int,int) ;
+ int set_frame_data (TYPE_4__*,int,TYPE_6__*) ;
+ int var_size_bmc (TYPE_4__*,TYPE_5__*,int,int,int,int) ;
 
 __attribute__((used)) static void interpolate(AVFilterLink *inlink, AVFrame *avf_out)
 {
@@ -61,7 +61,7 @@ __attribute__((used)) static void interpolate(AVFilterLink *inlink, AVFrame *avf
     int64_t pts;
 
     pts = av_rescale(avf_out->pts, (int64_t) ALPHA_MAX * outlink->time_base.num * inlink->time_base.den,
-                                   (int64_t)             outlink->time_base.den * inlink->time_base.num);
+                                   (int64_t) outlink->time_base.den * inlink->time_base.num);
 
     alpha = (pts - mi_ctx->frames[1].avf->pts * ALPHA_MAX) / (mi_ctx->frames[2].avf->pts - mi_ctx->frames[1].avf->pts);
     alpha = av_clip(alpha, 0, ALPHA_MAX);
@@ -72,17 +72,17 @@ __attribute__((used)) static void interpolate(AVFilterLink *inlink, AVFrame *avf
     }
 
     if (mi_ctx->scene_changed) {
-        /* duplicate frame */
+
         av_frame_copy(avf_out, alpha > ALPHA_MAX / 2 ? mi_ctx->frames[2].avf : mi_ctx->frames[1].avf);
         return;
     }
 
     switch(mi_ctx->mi_mode) {
-        case MI_MODE_DUP:
+        case 129:
             av_frame_copy(avf_out, alpha > ALPHA_MAX / 2 ? mi_ctx->frames[2].avf : mi_ctx->frames[1].avf);
 
             break;
-        case MI_MODE_BLEND:
+        case 130:
             for (plane = 0; plane < mi_ctx->nb_planes; plane++) {
                 int width = avf_out->width;
                 int height = avf_out->height;
@@ -95,14 +95,14 @@ __attribute__((used)) static void interpolate(AVFilterLink *inlink, AVFrame *avf
                 for (y = 0; y < height; y++) {
                     for (x = 0; x < width; x++) {
                         avf_out->data[plane][x + y * avf_out->linesize[plane]] =
-                            (alpha  * mi_ctx->frames[2].avf->data[plane][x + y * mi_ctx->frames[2].avf->linesize[plane]] +
+                            (alpha * mi_ctx->frames[2].avf->data[plane][x + y * mi_ctx->frames[2].avf->linesize[plane]] +
                              (ALPHA_MAX - alpha) * mi_ctx->frames[1].avf->data[plane][x + y * mi_ctx->frames[1].avf->linesize[plane]] + 512) >> 10;
                     }
                 }
             }
 
             break;
-        case MI_MODE_MCI:
+        case 128:
             if (mi_ctx->me_mode == ME_MODE_BIDIR) {
                 bidirectional_obmc(mi_ctx, alpha);
                 set_frame_data(mi_ctx, alpha, avf_out);

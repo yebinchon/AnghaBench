@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* destroy ) (int /*<<< orphan*/ ) ;} ;
-struct nn_ep {int /*<<< orphan*/  fsm; int /*<<< orphan*/  item; int /*<<< orphan*/  tran; TYPE_1__ ops; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_EP_STATE_IDLE ; 
- int /*<<< orphan*/  nn_assert_state (struct nn_ep*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_list_item_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* destroy ) (int ) ;} ;
+struct nn_ep {int fsm; int item; int tran; TYPE_1__ ops; } ;
+
+
+ int NN_EP_STATE_IDLE ;
+ int nn_assert_state (struct nn_ep*,int ) ;
+ int nn_fsm_term (int *) ;
+ int nn_list_item_term (int *) ;
+ int stub1 (int ) ;
 
 void nn_ep_term (struct nn_ep *self)
 {

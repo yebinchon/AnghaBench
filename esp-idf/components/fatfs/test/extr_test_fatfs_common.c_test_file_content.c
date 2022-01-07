@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_EQUAL (int,int const) ; 
- int /*<<< orphan*/  close (int const) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int read (int const,char*,int) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
+
+
+
+typedef int buf ;
+
+
+ int O_RDONLY ;
+ int TEST_ASSERT_EQUAL (int ,int ) ;
+ int TEST_ASSERT_NOT_EQUAL (int,int const) ;
+ int close (int const) ;
+ int open (char const*,int ) ;
+ int read (int const,char*,int) ;
+ int strcmp (char const*,char*) ;
 
 __attribute__((used)) static void test_file_content(const char *filename, const char *msg)
 {

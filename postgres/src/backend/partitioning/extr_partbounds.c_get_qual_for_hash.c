@@ -1,121 +1,121 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-struct TYPE_6__ {int /*<<< orphan*/  remainder; int /*<<< orphan*/  modulus; } ;
-struct TYPE_5__ {int partnatts; scalar_t__* partattrs; int /*<<< orphan*/  partexprs; int /*<<< orphan*/ * parttypcoll; int /*<<< orphan*/ * parttypmod; int /*<<< orphan*/ * parttypid; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  TYPE_1__* PartitionKey ;
-typedef  TYPE_2__ PartitionBoundSpec ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  ListCell ;
-typedef  int /*<<< orphan*/  List ;
-typedef  int /*<<< orphan*/  FuncExpr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BOOLOID ; 
- int /*<<< orphan*/  COERCE_EXPLICIT_CALL ; 
- int /*<<< orphan*/  F_SATISFIES_HASH_PARTITION ; 
- int /*<<< orphan*/  INT4OID ; 
- int /*<<< orphan*/  Int32GetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  OIDOID ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- TYPE_1__* RelationGetPartitionKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetRelid (int /*<<< orphan*/ ) ; 
- scalar_t__ copyObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lappend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lfirst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * list_head (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * list_make1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * list_make3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lnext (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ makeConst (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/ * makeFuncExpr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ makeVar (int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int32 ;
+struct TYPE_6__ {int remainder; int modulus; } ;
+struct TYPE_5__ {int partnatts; scalar_t__* partattrs; int partexprs; int * parttypcoll; int * parttypmod; int * parttypid; } ;
+typedef int Relation ;
+typedef TYPE_1__* PartitionKey ;
+typedef TYPE_2__ PartitionBoundSpec ;
+typedef int Oid ;
+typedef int Node ;
+typedef int ListCell ;
+typedef int List ;
+typedef int FuncExpr ;
+
+
+ int BOOLOID ;
+ int COERCE_EXPLICIT_CALL ;
+ int F_SATISFIES_HASH_PARTITION ;
+ int INT4OID ;
+ int Int32GetDatum (int ) ;
+ int InvalidOid ;
+ int OIDOID ;
+ int ObjectIdGetDatum (int ) ;
+ TYPE_1__* RelationGetPartitionKey (int ) ;
+ int RelationGetRelid (int ) ;
+ scalar_t__ copyObject (int ) ;
+ int * lappend (int *,int *) ;
+ int lfirst (int *) ;
+ int * list_head (int ) ;
+ int * list_make1 (int *) ;
+ int * list_make3 (int *,int *,int *) ;
+ int * lnext (int ,int *) ;
+ scalar_t__ makeConst (int ,int,int ,int,int ,int,int) ;
+ int * makeFuncExpr (int ,int ,int *,int ,int ,int ) ;
+ scalar_t__ makeVar (int,scalar_t__,int ,int ,int ,int ) ;
 
 __attribute__((used)) static List *
 get_qual_for_hash(Relation parent, PartitionBoundSpec *spec)
 {
-	PartitionKey key = RelationGetPartitionKey(parent);
-	FuncExpr   *fexpr;
-	Node	   *relidConst;
-	Node	   *modulusConst;
-	Node	   *remainderConst;
-	List	   *args;
-	ListCell   *partexprs_item;
-	int			i;
+ PartitionKey key = RelationGetPartitionKey(parent);
+ FuncExpr *fexpr;
+ Node *relidConst;
+ Node *modulusConst;
+ Node *remainderConst;
+ List *args;
+ ListCell *partexprs_item;
+ int i;
 
-	/* Fixed arguments. */
-	relidConst = (Node *) makeConst(OIDOID,
-									-1,
-									InvalidOid,
-									sizeof(Oid),
-									ObjectIdGetDatum(RelationGetRelid(parent)),
-									false,
-									true);
 
-	modulusConst = (Node *) makeConst(INT4OID,
-									  -1,
-									  InvalidOid,
-									  sizeof(int32),
-									  Int32GetDatum(spec->modulus),
-									  false,
-									  true);
+ relidConst = (Node *) makeConst(OIDOID,
+         -1,
+         InvalidOid,
+         sizeof(Oid),
+         ObjectIdGetDatum(RelationGetRelid(parent)),
+         0,
+         1);
 
-	remainderConst = (Node *) makeConst(INT4OID,
-										-1,
-										InvalidOid,
-										sizeof(int32),
-										Int32GetDatum(spec->remainder),
-										false,
-										true);
+ modulusConst = (Node *) makeConst(INT4OID,
+           -1,
+           InvalidOid,
+           sizeof(int32),
+           Int32GetDatum(spec->modulus),
+           0,
+           1);
 
-	args = list_make3(relidConst, modulusConst, remainderConst);
-	partexprs_item = list_head(key->partexprs);
+ remainderConst = (Node *) makeConst(INT4OID,
+          -1,
+          InvalidOid,
+          sizeof(int32),
+          Int32GetDatum(spec->remainder),
+          0,
+          1);
 
-	/* Add an argument for each key column. */
-	for (i = 0; i < key->partnatts; i++)
-	{
-		Node	   *keyCol;
+ args = list_make3(relidConst, modulusConst, remainderConst);
+ partexprs_item = list_head(key->partexprs);
 
-		/* Left operand */
-		if (key->partattrs[i] != 0)
-		{
-			keyCol = (Node *) makeVar(1,
-									  key->partattrs[i],
-									  key->parttypid[i],
-									  key->parttypmod[i],
-									  key->parttypcoll[i],
-									  0);
-		}
-		else
-		{
-			keyCol = (Node *) copyObject(lfirst(partexprs_item));
-			partexprs_item = lnext(key->partexprs, partexprs_item);
-		}
 
-		args = lappend(args, keyCol);
-	}
+ for (i = 0; i < key->partnatts; i++)
+ {
+  Node *keyCol;
 
-	fexpr = makeFuncExpr(F_SATISFIES_HASH_PARTITION,
-						 BOOLOID,
-						 args,
-						 InvalidOid,
-						 InvalidOid,
-						 COERCE_EXPLICIT_CALL);
 
-	return list_make1(fexpr);
+  if (key->partattrs[i] != 0)
+  {
+   keyCol = (Node *) makeVar(1,
+           key->partattrs[i],
+           key->parttypid[i],
+           key->parttypmod[i],
+           key->parttypcoll[i],
+           0);
+  }
+  else
+  {
+   keyCol = (Node *) copyObject(lfirst(partexprs_item));
+   partexprs_item = lnext(key->partexprs, partexprs_item);
+  }
+
+  args = lappend(args, keyCol);
+ }
+
+ fexpr = makeFuncExpr(F_SATISFIES_HASH_PARTITION,
+       BOOLOID,
+       args,
+       InvalidOid,
+       InvalidOid,
+       COERCE_EXPLICIT_CALL);
+
+ return list_make1(fexpr);
 }

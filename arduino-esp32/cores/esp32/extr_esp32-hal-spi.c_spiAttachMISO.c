@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ num; } ;
-typedef  TYPE_1__ spi_t ;
-typedef  int int8_t ;
+typedef TYPE_1__ spi_t ;
+typedef int int8_t ;
 
-/* Variables and functions */
- scalar_t__ HSPI ; 
- int /*<<< orphan*/  INPUT ; 
- int /*<<< orphan*/  SPI_MISO_IDX (scalar_t__) ; 
- int /*<<< orphan*/  SPI_MUTEX_LOCK () ; 
- int /*<<< orphan*/  SPI_MUTEX_UNLOCK () ; 
- scalar_t__ VSPI ; 
- int /*<<< orphan*/  pinMatrixInAttach (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pinMode (int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ HSPI ;
+ int INPUT ;
+ int SPI_MISO_IDX (scalar_t__) ;
+ int SPI_MUTEX_LOCK () ;
+ int SPI_MUTEX_UNLOCK () ;
+ scalar_t__ VSPI ;
+ int pinMatrixInAttach (int,int ,int) ;
+ int pinMode (int,int ) ;
 
 void spiAttachMISO(spi_t * spi, int8_t miso)
 {
@@ -41,6 +41,6 @@ void spiAttachMISO(spi_t * spi, int8_t miso)
     }
     SPI_MUTEX_LOCK();
     pinMode(miso, INPUT);
-    pinMatrixInAttach(miso, SPI_MISO_IDX(spi->num), false);
+    pinMatrixInAttach(miso, SPI_MISO_IDX(spi->num), 0);
     SPI_MUTEX_UNLOCK();
 }

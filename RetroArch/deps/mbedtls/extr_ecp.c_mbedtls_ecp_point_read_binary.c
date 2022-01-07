@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  Z; int /*<<< orphan*/  Y; int /*<<< orphan*/  X; } ;
-typedef  TYPE_1__ mbedtls_ecp_point ;
-struct TYPE_7__ {int /*<<< orphan*/  P; } ;
-typedef  TYPE_2__ mbedtls_ecp_group ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_ECP_BAD_INPUT_DATA ; 
- int MBEDTLS_ERR_ECP_FEATURE_UNAVAILABLE ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int mbedtls_ecp_set_zero (TYPE_1__*) ; 
- int /*<<< orphan*/  mbedtls_mpi_lset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mbedtls_mpi_read_binary (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- size_t mbedtls_mpi_size (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int Z; int Y; int X; } ;
+typedef TYPE_1__ mbedtls_ecp_point ;
+struct TYPE_7__ {int P; } ;
+typedef TYPE_2__ mbedtls_ecp_group ;
+
+
+ int MBEDTLS_ERR_ECP_BAD_INPUT_DATA ;
+ int MBEDTLS_ERR_ECP_FEATURE_UNAVAILABLE ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int mbedtls_ecp_set_zero (TYPE_1__*) ;
+ int mbedtls_mpi_lset (int *,int) ;
+ int mbedtls_mpi_read_binary (int *,unsigned char const*,size_t) ;
+ size_t mbedtls_mpi_size (int *) ;
 
 int mbedtls_ecp_point_read_binary( const mbedtls_ecp_group *grp, mbedtls_ecp_point *pt,
                            const unsigned char *buf, size_t ilen )

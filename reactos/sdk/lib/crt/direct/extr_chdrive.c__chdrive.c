@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EACCES ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SetCurrentDirectoryW (int*) ; 
- int /*<<< orphan*/  _dosmaperr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _set_errno (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int EACCES ;
+ int GetLastError () ;
+ int SetCurrentDirectoryW (int*) ;
+ int _dosmaperr (int ) ;
+ int _set_errno (int ) ;
 
 int _chdrive(int newdrive)
 {

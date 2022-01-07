@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_18__ {TYPE_2__* priv; } ;
 struct TYPE_17__ {TYPE_5__* src; } ;
 struct TYPE_16__ {scalar_t__ format; scalar_t__ pts; scalar_t__* extended_data; } ;
-struct TYPE_15__ {int* input_state; int nb_inputs; scalar_t__ next_pts; int nb_channels; int /*<<< orphan*/ * input_scale; TYPE_1__* fdsp; scalar_t__ planar; int /*<<< orphan*/ * fifos; int /*<<< orphan*/  frame_list; } ;
-struct TYPE_14__ {int /*<<< orphan*/  (* vector_dmac_scalar ) (double*,double*,int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  (* vector_fmac_scalar ) (float*,float*,int /*<<< orphan*/ ,int) ;} ;
-typedef  TYPE_2__ MixContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+struct TYPE_15__ {int* input_state; int nb_inputs; scalar_t__ next_pts; int nb_channels; int * input_scale; TYPE_1__* fdsp; scalar_t__ planar; int * fifos; int frame_list; } ;
+struct TYPE_14__ {int (* vector_dmac_scalar ) (double*,double*,int ,int) ;int (* vector_fmac_scalar ) (float*,float*,int ,int) ;} ;
+typedef TYPE_2__ MixContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVERROR_EOF ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- scalar_t__ AV_SAMPLE_FMT_FLT ; 
- scalar_t__ AV_SAMPLE_FMT_FLTP ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFALIGN (int,int) ; 
- int FFMIN (int,int) ; 
- int INPUT_EOF ; 
- int INPUT_ON ; 
- int INT_MAX ; 
- int /*<<< orphan*/  av_audio_fifo_read (int /*<<< orphan*/ ,void**,int) ; 
- int av_audio_fifo_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int /*<<< orphan*/  calculate_scales (TYPE_2__*,int) ; 
- int ff_filter_frame (TYPE_4__*,TYPE_3__*) ; 
- TYPE_3__* ff_get_audio_buffer (TYPE_4__*,int) ; 
- int /*<<< orphan*/  ff_outlink_set_status (TYPE_4__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int frame_list_next_frame_size (int /*<<< orphan*/ ) ; 
- scalar_t__ frame_list_next_pts (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  frame_list_remove_samples (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (float*,float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub2 (double*,double*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ scalar_t__ AV_SAMPLE_FMT_FLT ;
+ scalar_t__ AV_SAMPLE_FMT_FLTP ;
+ int ENOMEM ;
+ int FFALIGN (int,int) ;
+ int FFMIN (int,int) ;
+ int INPUT_EOF ;
+ int INPUT_ON ;
+ int INT_MAX ;
+ int av_audio_fifo_read (int ,void**,int) ;
+ int av_audio_fifo_size (int ) ;
+ int av_frame_free (TYPE_3__**) ;
+ int calculate_scales (TYPE_2__*,int) ;
+ int ff_filter_frame (TYPE_4__*,TYPE_3__*) ;
+ TYPE_3__* ff_get_audio_buffer (TYPE_4__*,int) ;
+ int ff_outlink_set_status (TYPE_4__*,int ,scalar_t__) ;
+ int frame_list_next_frame_size (int ) ;
+ scalar_t__ frame_list_next_pts (int ) ;
+ int frame_list_remove_samples (int ,int) ;
+ int stub1 (float*,float*,int ,int) ;
+ int stub2 (double*,double*,int ,int) ;
 
 __attribute__((used)) static int output_frame(AVFilterLink *outlink)
 {
     AVFilterContext *ctx = outlink->src;
-    MixContext      *s = ctx->priv;
+    MixContext *s = ctx->priv;
     AVFrame *out_buf, *in_buf;
     int nb_samples, ns, i;
 
     if (s->input_state[0] & INPUT_ON) {
-        /* first input live: use the corresponding frame size */
+
         nb_samples = frame_list_next_frame_size(s->frame_list);
         for (i = 1; i < s->nb_inputs; i++) {
             if (s->input_state[i] & INPUT_ON) {
                 ns = av_audio_fifo_size(s->fifos[i]);
                 if (ns < nb_samples) {
                     if (!(s->input_state[i] & INPUT_EOF))
-                        /* unclosed input with not enough samples */
+
                         return 0;
-                    /* closed input to drain */
+
                     nb_samples = ns;
                 }
             }
         }
     } else {
-        /* first input closed: use the available samples */
+
         nb_samples = INT_MAX;
         for (i = 1; i < s->nb_inputs; i++) {
             if (s->input_state[i] & INPUT_ON) {
@@ -112,7 +112,7 @@ __attribute__((used)) static int output_frame(AVFilterLink *outlink)
             av_audio_fifo_read(s->fifos[i], (void **)in_buf->extended_data,
                                nb_samples);
 
-            planes     = s->planar ? s->nb_channels : 1;
+            planes = s->planar ? s->nb_channels : 1;
             plane_size = nb_samples * (s->planar ? 1 : s->nb_channels);
             plane_size = FFALIGN(plane_size, 16);
 

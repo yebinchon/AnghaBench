@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct s3c_hwmon {int /*<<< orphan*/  lock; int /*<<< orphan*/  client; } ;
+
+
+
+
+struct s3c_hwmon {int lock; int client; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_dbg (struct device*,char*,int) ; 
- int down_interruptible (int /*<<< orphan*/ *) ; 
- int s3c_adc_read (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ int dev_dbg (struct device*,char*,int) ;
+ int down_interruptible (int *) ;
+ int s3c_adc_read (int ,int) ;
+ int up (int *) ;
 
 __attribute__((used)) static int s3c_hwmon_read_ch(struct device *dev,
-			     struct s3c_hwmon *hwmon, int channel)
+        struct s3c_hwmon *hwmon, int channel)
 {
-	int ret;
+ int ret;
 
-	ret = down_interruptible(&hwmon->lock);
-	if (ret < 0)
-		return ret;
+ ret = down_interruptible(&hwmon->lock);
+ if (ret < 0)
+  return ret;
 
-	dev_dbg(dev, "reading channel %d\n", channel);
+ dev_dbg(dev, "reading channel %d\n", channel);
 
-	ret = s3c_adc_read(hwmon->client, channel);
-	up(&hwmon->lock);
+ ret = s3c_adc_read(hwmon->client, channel);
+ up(&hwmon->lock);
 
-	return ret;
+ return ret;
 }

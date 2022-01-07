@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  u_char ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint16_t ;
+typedef int u_char ;
 struct TYPE_6__ {TYPE_1__* connection; } ;
-typedef  TYPE_2__ ngx_rtmp_session_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_5__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_2__ ngx_rtmp_session_t ;
+typedef int ngx_int_t ;
+struct TYPE_5__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_RTMP ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_rtmp_mp4_parse_descr (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_rtmp_r16 (scalar_t__) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_RTMP ;
+ int NGX_OK ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int ,int ) ;
+ int ngx_rtmp_mp4_parse_descr (TYPE_2__*,int *,int *) ;
+ scalar_t__ ngx_rtmp_r16 (scalar_t__) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_rtmp_mp4_parse_es(ngx_rtmp_session_t *s, u_char *pos, u_char *last)
 {
-    uint16_t    id;
-    uint8_t     flags;
+    uint16_t id;
+    uint8_t flags;
 
     if (pos + 3 > last) {
         return NGX_ERROR;
@@ -44,15 +44,15 @@ ngx_rtmp_mp4_parse_es(ngx_rtmp_session_t *s, u_char *pos, u_char *last)
     flags = *(uint8_t *) pos;
     ++pos;
 
-    if (flags & 0x80) { /* streamDependenceFlag */
+    if (flags & 0x80) {
         pos += 2;
     }
 
-    if (flags & 0x40) { /* URL_FLag */
+    if (flags & 0x40) {
         return NGX_OK;
     }
 
-    if (flags & 0x20) { /* OCRstreamFlag */
+    if (flags & 0x20) {
         pos += 2;
     }
 

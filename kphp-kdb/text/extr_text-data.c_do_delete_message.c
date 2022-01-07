@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_del_message {int local_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LEV_TX_DEL_MESSAGE ; 
- int adjust_message (int,int,int,int,int /*<<< orphan*/ ) ; 
- struct lev_del_message* alloc_log_event (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- scalar_t__ write_all_events ; 
+
+ int LEV_TX_DEL_MESSAGE ;
+ int adjust_message (int,int,int,int,int ) ;
+ struct lev_del_message* alloc_log_event (int ,int,int) ;
+ int fprintf (int ,char*,int,...) ;
+ int stderr ;
+ int verbosity ;
+ scalar_t__ write_all_events ;
 
 int do_delete_message (int user_id, int local_id) {
   if (verbosity > 1) {

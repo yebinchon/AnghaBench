@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  swr_ctx; int /*<<< orphan*/  sws_ctx; int /*<<< orphan*/  tmp_frame; int /*<<< orphan*/  frame; int /*<<< orphan*/  enc; } ;
-typedef  TYPE_1__ OutputStream ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avcodec_free_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  swr_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sws_freeContext (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int swr_ctx; int sws_ctx; int tmp_frame; int frame; int enc; } ;
+typedef TYPE_1__ OutputStream ;
+typedef int AVFormatContext ;
+
+
+ int av_frame_free (int *) ;
+ int avcodec_free_context (int *) ;
+ int swr_free (int *) ;
+ int sws_freeContext (int ) ;
 
 __attribute__((used)) static void close_stream(AVFormatContext *oc, OutputStream *ost)
 {

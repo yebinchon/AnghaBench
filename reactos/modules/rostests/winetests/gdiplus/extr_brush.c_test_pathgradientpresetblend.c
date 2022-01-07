@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int member_0; int member_1; } ;
-typedef  float REAL ;
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPathGradient ;
-typedef  int /*<<< orphan*/  GpBrush ;
-typedef  int ARGB ;
+typedef float REAL ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPathGradient ;
+typedef int GpBrush ;
+typedef int ARGB ;
 
-/* Variables and functions */
- int GdipCreatePathGradient (TYPE_1__ const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int GdipDeleteBrush (int /*<<< orphan*/ *) ; 
- int GdipGetPathGradientPresetBlend (int /*<<< orphan*/ *,int*,float*,int) ; 
- int GdipGetPathGradientPresetBlendCount (int /*<<< orphan*/ *,int*) ; 
- int GdipSetPathGradientPresetBlend (int /*<<< orphan*/ *,int const*,float const*,int) ; 
- int const GenericError ; 
- int const InvalidParameter ; 
- int const Ok ; 
- int const OutOfMemory ; 
- int /*<<< orphan*/  WrapModeClamp ; 
- int /*<<< orphan*/  expect (int const,int) ; 
- int /*<<< orphan*/  expectf (float const,float) ; 
+
+ int GdipCreatePathGradient (TYPE_1__ const*,int,int ,int **) ;
+ int GdipDeleteBrush (int *) ;
+ int GdipGetPathGradientPresetBlend (int *,int*,float*,int) ;
+ int GdipGetPathGradientPresetBlendCount (int *,int*) ;
+ int GdipSetPathGradientPresetBlend (int *,int const*,float const*,int) ;
+ int const GenericError ;
+ int const InvalidParameter ;
+ int const Ok ;
+ int const OutOfMemory ;
+ int WrapModeClamp ;
+ int expect (int const,int) ;
+ int expectf (float const,float) ;
 
 __attribute__((used)) static void test_pathgradientpresetblend(void)
 {
@@ -50,23 +50,23 @@ __attribute__((used)) static void test_pathgradientpresetblend(void)
     status = GdipCreatePathGradient(path_points+1, 2, WrapModeClamp, &grad);
     expect(Ok, status);
 
-    status = GdipGetPathGradientPresetBlendCount(NULL, &count);
+    status = GdipGetPathGradientPresetBlendCount(((void*)0), &count);
     expect(InvalidParameter, status);
 
-    status = GdipGetPathGradientPresetBlendCount(grad, NULL);
+    status = GdipGetPathGradientPresetBlendCount(grad, ((void*)0));
     expect(InvalidParameter, status);
 
     status = GdipGetPathGradientPresetBlendCount(grad, &count);
     expect(Ok, status);
     expect(0, count);
 
-    status = GdipGetPathGradientPresetBlend(NULL, res_colors, res_positions, 1);
+    status = GdipGetPathGradientPresetBlend(((void*)0), res_colors, res_positions, 1);
     expect(InvalidParameter, status);
 
-    status = GdipGetPathGradientPresetBlend(grad, NULL, res_positions, 1);
+    status = GdipGetPathGradientPresetBlend(grad, ((void*)0), res_positions, 1);
     expect(InvalidParameter, status);
 
-    status = GdipGetPathGradientPresetBlend(grad, res_colors, NULL, 1);
+    status = GdipGetPathGradientPresetBlend(grad, res_colors, ((void*)0), 1);
     expect(InvalidParameter, status);
 
     status = GdipGetPathGradientPresetBlend(grad, res_colors, res_positions, 0);
@@ -81,16 +81,16 @@ __attribute__((used)) static void test_pathgradientpresetblend(void)
     status = GdipGetPathGradientPresetBlend(grad, res_colors, res_positions, 2);
     expect(GenericError, status);
 
-    status = GdipSetPathGradientPresetBlend(NULL, colors, positions, 5);
+    status = GdipSetPathGradientPresetBlend(((void*)0), colors, positions, 5);
     expect(InvalidParameter, status);
 
-    status = GdipSetPathGradientPresetBlend(grad, NULL, positions, 5);
+    status = GdipSetPathGradientPresetBlend(grad, ((void*)0), positions, 5);
     expect(InvalidParameter, status);
 
     if (0)
     {
-        /* crashes on windows xp */
-        status = GdipSetPathGradientPresetBlend(grad, colors, NULL, 5);
+
+        status = GdipSetPathGradientPresetBlend(grad, colors, ((void*)0), 5);
         expect(InvalidParameter, status);
     }
 
@@ -103,11 +103,11 @@ __attribute__((used)) static void test_pathgradientpresetblend(void)
     status = GdipSetPathGradientPresetBlend(grad, colors, positions, 1);
     expect(InvalidParameter, status);
 
-    /* leave off the 0.0 position */
+
     status = GdipSetPathGradientPresetBlend(grad, &colors[1], &positions[1], 4);
     expect(InvalidParameter, status);
 
-    /* leave off the 1.0 position */
+
     status = GdipSetPathGradientPresetBlend(grad, colors, positions, 4);
     expect(InvalidParameter, status);
 
@@ -120,9 +120,9 @@ __attribute__((used)) static void test_pathgradientpresetblend(void)
 
     if (0)
     {
-        /* Native GdipGetPathGradientPresetBlend seems to copy starting from
-         * the end of each array and do no bounds checking. This is so braindead
-         * I'm not going to copy it. */
+
+
+
 
         res_colors[0] = 0xdeadbeef;
         res_positions[0] = 0.3;

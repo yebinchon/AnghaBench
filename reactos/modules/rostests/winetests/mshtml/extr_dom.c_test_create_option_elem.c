@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLOptionElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLOptionElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/ * create_option_elem (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  test_option_defaultSelected_property (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_option_get_index (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_option_put_selected (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_option_put_text (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_option_put_value (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int IHTMLOptionElement ;
+typedef int IHTMLDocument2 ;
+
+
+ int IHTMLOptionElement_Release (int *) ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int * create_option_elem (int *,char*,char*) ;
+ int test_option_defaultSelected_property (int *) ;
+ int test_option_get_index (int *,int ) ;
+ int test_option_put_selected (int *,int ) ;
+ int test_option_put_text (int *,char*) ;
+ int test_option_put_value (int *,char*) ;
 
 __attribute__((used)) static void test_create_option_elem(IHTMLDocument2 *doc)
 {

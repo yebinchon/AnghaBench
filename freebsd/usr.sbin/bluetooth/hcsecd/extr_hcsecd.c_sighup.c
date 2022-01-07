@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  dump_keys_file () ; 
- int /*<<< orphan*/  read_config_file () ; 
- int /*<<< orphan*/  read_keys_file () ; 
- int /*<<< orphan*/  syslog (int /*<<< orphan*/ ,char*,int) ; 
+ int LOG_DEBUG ;
+ int dump_keys_file () ;
+ int read_config_file () ;
+ int read_keys_file () ;
+ int syslog (int ,char*,int) ;
 
 __attribute__((used)) static void
 sighup(int s)
 {
-	syslog(LOG_DEBUG, "Got SIGHUP (%d)", s);
+ syslog(LOG_DEBUG, "Got SIGHUP (%d)", s);
 
-	dump_keys_file();
-	read_config_file();
-	read_keys_file();
+ dump_keys_file();
+ read_config_file();
+ read_keys_file();
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ptrace_out ;
-typedef  int /*<<< orphan*/  ptrace_in ;
-struct TYPE_6__ {int status; int /*<<< orphan*/  errno_num; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ptrace_out ;
+typedef int ptrace_in ;
+struct TYPE_6__ {int status; int errno_num; } ;
 struct TYPE_5__ {scalar_t__ pid; } ;
-typedef  TYPE_1__ Rptrace ;
-typedef  TYPE_2__ Ptrace_return ;
+typedef TYPE_1__ Rptrace ;
+typedef TYPE_2__ Ptrace_return ;
 
-/* Variables and functions */
- scalar_t__ PIDGET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PTRACE_DETACH ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  inferior_ptid ; 
- int /*<<< orphan*/  local_hex_string (unsigned long) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int net_ptrace_clnt_call (int /*<<< orphan*/ ,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  null_ptid ; 
- int /*<<< orphan*/  perror_with_name (char*) ; 
- int /*<<< orphan*/  pop_target () ; 
- int /*<<< orphan*/  printf_unfiltered (char*,int /*<<< orphan*/ ) ; 
- char* rpcerr ; 
+
+ scalar_t__ PIDGET (int ) ;
+ int PTRACE_DETACH ;
+ int atoi (char*) ;
+ int errno ;
+ int error (char*) ;
+ int inferior_ptid ;
+ int local_hex_string (unsigned long) ;
+ int memset (char*,char,int) ;
+ int net_ptrace_clnt_call (int ,TYPE_1__*,TYPE_2__*) ;
+ int null_ptid ;
+ int perror_with_name (char*) ;
+ int pop_target () ;
+ int printf_unfiltered (char*,int ) ;
+ char* rpcerr ;
 
 __attribute__((used)) static void
 vx_detach (char *args, int from_tty)
@@ -48,10 +48,10 @@ vx_detach (char *args, int from_tty)
 
   if (from_tty)
     printf_unfiltered ("Detaching pid %s.\n",
-		       local_hex_string (
-		         (unsigned long) PIDGET (inferior_ptid)));
+         local_hex_string (
+           (unsigned long) PIDGET (inferior_ptid)));
 
-  if (args)			/* FIXME, should be possible to leave suspended */
+  if (args)
     signal = atoi (args);
 
   memset ((char *) &ptrace_in, '\0', sizeof (ptrace_in));
@@ -68,5 +68,5 @@ vx_detach (char *args, int from_tty)
     }
 
   inferior_ptid = null_ptid;
-  pop_target ();		/* go back to non-executing VxWorks connection */
+  pop_target ();
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  MOVMuxCencContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  auxiliary_info_add_subsample (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int mov_cenc_end_packet (int /*<<< orphan*/ *) ; 
- int mov_cenc_start_packet (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mov_cenc_write_encrypted (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int MOVMuxCencContext ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
+
+
+ int AV_LOG_ERROR ;
+ int auxiliary_info_add_subsample (int *,int,int) ;
+ int av_log (int *,int ,char*,int,int) ;
+ int avio_write (int *,int const*,int) ;
+ int mov_cenc_end_packet (int *) ;
+ int mov_cenc_start_packet (int *) ;
+ int mov_cenc_write_encrypted (int *,int *,int const*,int) ;
 
 int ff_mov_cenc_avc_write_nal_units(AVFormatContext *s, MOVMuxCencContext* ctx,
     int nal_length_size, AVIOContext *pb, const uint8_t *buf_in, int size)
@@ -37,7 +37,7 @@ int ff_mov_cenc_avc_write_nal_units(AVFormatContext *s, MOVMuxCencContext* ctx,
     }
 
     while (size > 0) {
-        /* parse the nal size */
+
         if (size < nal_length_size + 1) {
             av_log(s, AV_LOG_ERROR, "CENC-AVC: remaining size %d smaller than nal length+type %d\n",
                 size, nal_length_size + 1);
@@ -52,7 +52,7 @@ int ff_mov_cenc_avc_write_nal_units(AVFormatContext *s, MOVMuxCencContext* ctx,
         }
         size -= nal_length_size;
 
-        /* encrypt the nal body */
+
         if (nalsize <= 0 || nalsize > size) {
             av_log(s, AV_LOG_ERROR, "CENC-AVC: nal size %d remaining %d\n", nalsize, size);
             return -1;

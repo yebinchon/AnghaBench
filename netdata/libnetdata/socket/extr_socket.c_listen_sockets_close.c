@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t opened; int* fds; int* fds_types; scalar_t__ failed; int /*<<< orphan*/ ** fds_names; } ;
-typedef  TYPE_1__ LISTEN_SOCKETS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  freez (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t opened; int* fds; int* fds_types; scalar_t__ failed; int ** fds_names; } ;
+typedef TYPE_1__ LISTEN_SOCKETS ;
+
+
+ int close (int) ;
+ int freez (int *) ;
 
 void listen_sockets_close(LISTEN_SOCKETS *sockets) {
     size_t i;
@@ -25,7 +25,7 @@ void listen_sockets_close(LISTEN_SOCKETS *sockets) {
         sockets->fds[i] = -1;
 
         freez(sockets->fds_names[i]);
-        sockets->fds_names[i] = NULL;
+        sockets->fds_names[i] = ((void*)0);
 
         sockets->fds_types[i] = -1;
     }

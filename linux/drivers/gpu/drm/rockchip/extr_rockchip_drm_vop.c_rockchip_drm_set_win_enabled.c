@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vop_win_data {int dummy; } ;
 struct vop_win {struct vop_win_data* data; } ;
-struct vop {int win_enabled; int /*<<< orphan*/  reg_lock; struct vop_win* win; TYPE_1__* data; } ;
+struct vop {int win_enabled; int reg_lock; struct vop_win* win; TYPE_1__* data; } ;
 struct drm_crtc {int dummy; } ;
 struct TYPE_2__ {int win_size; } ;
 
-/* Variables and functions */
- int BIT (int) ; 
- int /*<<< orphan*/  VOP_WIN_SET (struct vop*,struct vop_win_data const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  enable ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- struct vop* to_vop (struct drm_crtc*) ; 
- int /*<<< orphan*/  vop_cfg_done (struct vop*) ; 
+
+ int BIT (int) ;
+ int VOP_WIN_SET (struct vop*,struct vop_win_data const*,int ,int) ;
+ int enable ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ struct vop* to_vop (struct drm_crtc*) ;
+ int vop_cfg_done (struct vop*) ;
 
 __attribute__((used)) static void rockchip_drm_set_win_enabled(struct drm_crtc *crtc, bool enabled)
 {

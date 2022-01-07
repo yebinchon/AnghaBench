@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ pid_t ;
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  asmfile ; 
- scalar_t__ atexit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  base (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buf_body (int /*<<< orphan*/ ) ; 
- scalar_t__ buf_len (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_output_file () ; 
- int /*<<< orphan*/  cpp_init () ; 
- int /*<<< orphan*/  cppdefs ; 
- scalar_t__ cpponly ; 
- int /*<<< orphan*/  delete_temp_files ; 
- int /*<<< orphan*/  dumpasm ; 
- scalar_t__ dumpast ; 
- int /*<<< orphan*/  emit_toplevel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  execlp (char*,char*,char*,scalar_t__,char*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  infile ; 
- int /*<<< orphan*/  lex_init (int /*<<< orphan*/ ) ; 
- char* node2s (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  open_asmfile () ; 
- scalar_t__ outfile ; 
- int /*<<< orphan*/  parse_init () ; 
- int /*<<< orphan*/  parseopt (int,char**) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  preprocess () ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  read_from_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * read_toplevels () ; 
- scalar_t__ replace_suffix (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/  set_output_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setbuf (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/ * vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  waitpid (scalar_t__,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ pid_t ;
+typedef int Vector ;
+typedef int Node ;
+
+
+ int asmfile ;
+ scalar_t__ atexit (int ) ;
+ int base (int ) ;
+ int buf_body (int ) ;
+ scalar_t__ buf_len (int ) ;
+ int close_output_file () ;
+ int cpp_init () ;
+ int cppdefs ;
+ scalar_t__ cpponly ;
+ int delete_temp_files ;
+ int dumpasm ;
+ scalar_t__ dumpast ;
+ int emit_toplevel (int *) ;
+ int error (char*) ;
+ int execlp (char*,char*,char*,scalar_t__,char*,int ,char*) ;
+ scalar_t__ fork () ;
+ int infile ;
+ int lex_init (int ) ;
+ char* node2s (int *) ;
+ int open_asmfile () ;
+ scalar_t__ outfile ;
+ int parse_init () ;
+ int parseopt (int,char**) ;
+ int perror (char*) ;
+ int preprocess () ;
+ int printf (char*,char*) ;
+ int read_from_string (int ) ;
+ int * read_toplevels () ;
+ scalar_t__ replace_suffix (int ,char) ;
+ int set_output_file (int ) ;
+ int setbuf (int ,int *) ;
+ int stdout ;
+ int * vec_get (int *,int) ;
+ int vec_len (int *) ;
+ int waitpid (scalar_t__,int*,int ) ;
 
 int main(int argc, char **argv) {
-    setbuf(stdout, NULL);
+    setbuf(stdout, ((void*)0));
     if (atexit(delete_temp_files))
         perror("atexit");
     parseopt(argc, argv);
@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
         pid_t pid = fork();
         if (pid < 0) perror("fork");
         if (pid == 0) {
-            execlp("as", "as", "-o", outfile, "-c", asmfile, (char *)NULL);
+            execlp("as", "as", "-o", outfile, "-c", asmfile, (char *)((void*)0));
             perror("execl failed");
         }
         int status;

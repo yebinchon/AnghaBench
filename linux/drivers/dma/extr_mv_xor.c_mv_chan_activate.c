@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mv_xor_chan {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XOR_ACTIVATION (struct mv_xor_chan*) ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mv_chan_to_devp (struct mv_xor_chan*) ; 
- int /*<<< orphan*/  writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BIT (int ) ;
+ int XOR_ACTIVATION (struct mv_xor_chan*) ;
+ int dev_dbg (int ,char*) ;
+ int mv_chan_to_devp (struct mv_xor_chan*) ;
+ int writel (int ,int ) ;
 
 __attribute__((used)) static void mv_chan_activate(struct mv_xor_chan *chan)
 {
-	dev_dbg(mv_chan_to_devp(chan), " activate chan.\n");
+ dev_dbg(mv_chan_to_devp(chan), " activate chan.\n");
 
-	/* writel ensures all descriptors are flushed before activation */
-	writel(BIT(0), XOR_ACTIVATION(chan));
+
+ writel(BIT(0), XOR_ACTIVATION(chan));
 }

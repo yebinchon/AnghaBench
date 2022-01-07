@@ -1,411 +1,298 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CURLcode ;
 
-/* Variables and functions */
-#define  CURLE_ABORTED_BY_CALLBACK 223 
-#define  CURLE_AGAIN 222 
-#define  CURLE_AUTH_ERROR 221 
-#define  CURLE_BAD_CONTENT_ENCODING 220 
-#define  CURLE_BAD_DOWNLOAD_RESUME 219 
-#define  CURLE_BAD_FUNCTION_ARGUMENT 218 
-#define  CURLE_CHUNK_FAILED 217 
-#define  CURLE_CONV_FAILED 216 
-#define  CURLE_CONV_REQD 215 
-#define  CURLE_COULDNT_CONNECT 214 
-#define  CURLE_COULDNT_RESOLVE_HOST 213 
-#define  CURLE_COULDNT_RESOLVE_PROXY 212 
-#define  CURLE_FAILED_INIT 211 
-#define  CURLE_FILESIZE_EXCEEDED 210 
-#define  CURLE_FILE_COULDNT_READ_FILE 209 
-#define  CURLE_FTP_ACCEPT_FAILED 208 
-#define  CURLE_FTP_ACCEPT_TIMEOUT 207 
-#define  CURLE_FTP_BAD_FILE_LIST 206 
-#define  CURLE_FTP_CANT_GET_HOST 205 
-#define  CURLE_FTP_COULDNT_RETR_FILE 204 
-#define  CURLE_FTP_COULDNT_SET_TYPE 203 
-#define  CURLE_FTP_COULDNT_USE_REST 202 
-#define  CURLE_FTP_PORT_FAILED 201 
-#define  CURLE_FTP_PRET_FAILED 200 
-#define  CURLE_FTP_WEIRD_227_FORMAT 199 
-#define  CURLE_FTP_WEIRD_PASS_REPLY 198 
-#define  CURLE_FTP_WEIRD_PASV_REPLY 197 
-#define  CURLE_FUNCTION_NOT_FOUND 196 
-#define  CURLE_GOT_NOTHING 195 
-#define  CURLE_HTTP2 194 
-#define  CURLE_HTTP2_STREAM 193 
-#define  CURLE_HTTP3 192 
-#define  CURLE_HTTP_POST_ERROR 191 
-#define  CURLE_HTTP_RETURNED_ERROR 190 
-#define  CURLE_INTERFACE_FAILED 189 
-#define  CURLE_LDAP_CANNOT_BIND 188 
-#define  CURLE_LDAP_INVALID_URL 187 
-#define  CURLE_LDAP_SEARCH_FAILED 186 
-#define  CURLE_LOGIN_DENIED 185 
-#define  CURLE_NOT_BUILT_IN 184 
-#define  CURLE_NO_CONNECTION_AVAILABLE 183 
-#define  CURLE_OBSOLETE24 182 
-#define  CURLE_OBSOLETE29 181 
-#define  CURLE_OBSOLETE32 180 
-#define  CURLE_OBSOLETE40 179 
-#define  CURLE_OBSOLETE44 178 
-#define  CURLE_OBSOLETE46 177 
-#define  CURLE_OBSOLETE50 176 
-#define  CURLE_OBSOLETE51 175 
-#define  CURLE_OBSOLETE57 174 
-#define  CURLE_OK 173 
-#define  CURLE_OPERATION_TIMEDOUT 172 
-#define  CURLE_OUT_OF_MEMORY 171 
-#define  CURLE_PARTIAL_FILE 170 
-#define  CURLE_PEER_FAILED_VERIFICATION 169 
-#define  CURLE_QUOTE_ERROR 168 
-#define  CURLE_RANGE_ERROR 167 
-#define  CURLE_READ_ERROR 166 
-#define  CURLE_RECURSIVE_API_CALL 165 
-#define  CURLE_RECV_ERROR 164 
-#define  CURLE_REMOTE_ACCESS_DENIED 163 
-#define  CURLE_REMOTE_DISK_FULL 162 
-#define  CURLE_REMOTE_FILE_EXISTS 161 
-#define  CURLE_REMOTE_FILE_NOT_FOUND 160 
-#define  CURLE_RTSP_CSEQ_ERROR 159 
-#define  CURLE_RTSP_SESSION_ERROR 158 
-#define  CURLE_SEND_ERROR 157 
-#define  CURLE_SEND_FAIL_REWIND 156 
-#define  CURLE_SSH 155 
-#define  CURLE_SSL_CACERT_BADFILE 154 
-#define  CURLE_SSL_CERTPROBLEM 153 
-#define  CURLE_SSL_CIPHER 152 
-#define  CURLE_SSL_CONNECT_ERROR 151 
-#define  CURLE_SSL_CRL_BADFILE 150 
-#define  CURLE_SSL_ENGINE_INITFAILED 149 
-#define  CURLE_SSL_ENGINE_NOTFOUND 148 
-#define  CURLE_SSL_ENGINE_SETFAILED 147 
-#define  CURLE_SSL_INVALIDCERTSTATUS 146 
-#define  CURLE_SSL_ISSUER_ERROR 145 
-#define  CURLE_SSL_PINNEDPUBKEYNOTMATCH 144 
-#define  CURLE_SSL_SHUTDOWN_FAILED 143 
-#define  CURLE_TELNET_OPTION_SYNTAX 142 
-#define  CURLE_TFTP_ILLEGAL 141 
-#define  CURLE_TFTP_NOSUCHUSER 140 
-#define  CURLE_TFTP_NOTFOUND 139 
-#define  CURLE_TFTP_PERM 138 
-#define  CURLE_TFTP_UNKNOWNID 137 
-#define  CURLE_TOO_MANY_REDIRECTS 136 
-#define  CURLE_UNKNOWN_OPTION 135 
-#define  CURLE_UNSUPPORTED_PROTOCOL 134 
-#define  CURLE_UPLOAD_FAILED 133 
-#define  CURLE_URL_MALFORMAT 132 
-#define  CURLE_USE_SSL_FAILED 131 
-#define  CURLE_WEIRD_SERVER_REPLY 130 
-#define  CURLE_WRITE_ERROR 129 
-#define  CURL_LAST 128 
 
+
+
+typedef int CURLcode ;
 const char *
 curl_easy_strerror(CURLcode error)
 {
-#ifndef CURL_DISABLE_VERBOSE_STRINGS
+
   switch(error) {
-  case CURLE_OK:
+  case 173:
     return "No error";
 
-  case CURLE_UNSUPPORTED_PROTOCOL:
+  case 134:
     return "Unsupported protocol";
 
-  case CURLE_FAILED_INIT:
+  case 211:
     return "Failed initialization";
 
-  case CURLE_URL_MALFORMAT:
+  case 132:
     return "URL using bad/illegal format or missing URL";
 
-  case CURLE_NOT_BUILT_IN:
+  case 184:
     return "A requested feature, protocol or option was not found built-in in"
       " this libcurl due to a build-time decision.";
 
-  case CURLE_COULDNT_RESOLVE_PROXY:
+  case 212:
     return "Couldn't resolve proxy name";
 
-  case CURLE_COULDNT_RESOLVE_HOST:
+  case 213:
     return "Couldn't resolve host name";
 
-  case CURLE_COULDNT_CONNECT:
+  case 214:
     return "Couldn't connect to server";
 
-  case CURLE_WEIRD_SERVER_REPLY:
+  case 130:
     return "Weird server reply";
 
-  case CURLE_REMOTE_ACCESS_DENIED:
+  case 163:
     return "Access denied to remote resource";
 
-  case CURLE_FTP_ACCEPT_FAILED:
+  case 208:
     return "FTP: The server failed to connect to data port";
 
-  case CURLE_FTP_ACCEPT_TIMEOUT:
+  case 207:
     return "FTP: Accepting server connect has timed out";
 
-  case CURLE_FTP_PRET_FAILED:
+  case 200:
     return "FTP: The server did not accept the PRET command.";
 
-  case CURLE_FTP_WEIRD_PASS_REPLY:
+  case 198:
     return "FTP: unknown PASS reply";
 
-  case CURLE_FTP_WEIRD_PASV_REPLY:
+  case 197:
     return "FTP: unknown PASV reply";
 
-  case CURLE_FTP_WEIRD_227_FORMAT:
+  case 199:
     return "FTP: unknown 227 response format";
 
-  case CURLE_FTP_CANT_GET_HOST:
+  case 205:
     return "FTP: can't figure out the host in the PASV response";
 
-  case CURLE_HTTP2:
+  case 194:
     return "Error in the HTTP2 framing layer";
 
-  case CURLE_FTP_COULDNT_SET_TYPE:
+  case 203:
     return "FTP: couldn't set file type";
 
-  case CURLE_PARTIAL_FILE:
+  case 170:
     return "Transferred a partial file";
 
-  case CURLE_FTP_COULDNT_RETR_FILE:
+  case 204:
     return "FTP: couldn't retrieve (RETR failed) the specified file";
 
-  case CURLE_QUOTE_ERROR:
+  case 168:
     return "Quote command returned error";
 
-  case CURLE_HTTP_RETURNED_ERROR:
+  case 190:
     return "HTTP response code said error";
 
-  case CURLE_WRITE_ERROR:
+  case 129:
     return "Failed writing received data to disk/application";
 
-  case CURLE_UPLOAD_FAILED:
+  case 133:
     return "Upload failed (at start/before it took off)";
 
-  case CURLE_READ_ERROR:
+  case 166:
     return "Failed to open/read local data from file/application";
 
-  case CURLE_OUT_OF_MEMORY:
+  case 171:
     return "Out of memory";
 
-  case CURLE_OPERATION_TIMEDOUT:
+  case 172:
     return "Timeout was reached";
 
-  case CURLE_FTP_PORT_FAILED:
+  case 201:
     return "FTP: command PORT failed";
 
-  case CURLE_FTP_COULDNT_USE_REST:
+  case 202:
     return "FTP: command REST failed";
 
-  case CURLE_RANGE_ERROR:
+  case 167:
     return "Requested range was not delivered by the server";
 
-  case CURLE_HTTP_POST_ERROR:
+  case 191:
     return "Internal problem setting up the POST";
 
-  case CURLE_SSL_CONNECT_ERROR:
+  case 151:
     return "SSL connect error";
 
-  case CURLE_BAD_DOWNLOAD_RESUME:
+  case 219:
     return "Couldn't resume download";
 
-  case CURLE_FILE_COULDNT_READ_FILE:
+  case 209:
     return "Couldn't read a file:// file";
 
-  case CURLE_LDAP_CANNOT_BIND:
+  case 188:
     return "LDAP: cannot bind";
 
-  case CURLE_LDAP_SEARCH_FAILED:
+  case 186:
     return "LDAP: search failed";
 
-  case CURLE_FUNCTION_NOT_FOUND:
+  case 196:
     return "A required function in the library was not found";
 
-  case CURLE_ABORTED_BY_CALLBACK:
+  case 223:
     return "Operation was aborted by an application callback";
 
-  case CURLE_BAD_FUNCTION_ARGUMENT:
+  case 218:
     return "A libcurl function was given a bad argument";
 
-  case CURLE_INTERFACE_FAILED:
+  case 189:
     return "Failed binding local connection end";
 
-  case CURLE_TOO_MANY_REDIRECTS :
+  case 136 :
     return "Number of redirects hit maximum amount";
 
-  case CURLE_UNKNOWN_OPTION:
+  case 135:
     return "An unknown option was passed in to libcurl";
 
-  case CURLE_TELNET_OPTION_SYNTAX :
+  case 142 :
     return "Malformed telnet option";
 
-  case CURLE_GOT_NOTHING:
+  case 195:
     return "Server returned nothing (no headers, no data)";
 
-  case CURLE_SSL_ENGINE_NOTFOUND:
+  case 148:
     return "SSL crypto engine not found";
 
-  case CURLE_SSL_ENGINE_SETFAILED:
+  case 147:
     return "Can not set SSL crypto engine as default";
 
-  case CURLE_SSL_ENGINE_INITFAILED:
+  case 149:
     return "Failed to initialise SSL crypto engine";
 
-  case CURLE_SEND_ERROR:
+  case 157:
     return "Failed sending data to the peer";
 
-  case CURLE_RECV_ERROR:
+  case 164:
     return "Failure when receiving data from the peer";
 
-  case CURLE_SSL_CERTPROBLEM:
+  case 153:
     return "Problem with the local SSL certificate";
 
-  case CURLE_SSL_CIPHER:
+  case 152:
     return "Couldn't use specified SSL cipher";
 
-  case CURLE_PEER_FAILED_VERIFICATION:
+  case 169:
     return "SSL peer certificate or SSH remote key was not OK";
 
-  case CURLE_SSL_CACERT_BADFILE:
+  case 154:
     return "Problem with the SSL CA cert (path? access rights?)";
 
-  case CURLE_BAD_CONTENT_ENCODING:
+  case 220:
     return "Unrecognized or bad HTTP Content or Transfer-Encoding";
 
-  case CURLE_LDAP_INVALID_URL:
+  case 187:
     return "Invalid LDAP URL";
 
-  case CURLE_FILESIZE_EXCEEDED:
+  case 210:
     return "Maximum file size exceeded";
 
-  case CURLE_USE_SSL_FAILED:
+  case 131:
     return "Requested SSL level failed";
 
-  case CURLE_SSL_SHUTDOWN_FAILED:
+  case 143:
     return "Failed to shut down the SSL connection";
 
-  case CURLE_SSL_CRL_BADFILE:
+  case 150:
     return "Failed to load CRL file (path? access rights?, format?)";
 
-  case CURLE_SSL_ISSUER_ERROR:
+  case 145:
     return "Issuer check against peer certificate failed";
 
-  case CURLE_SEND_FAIL_REWIND:
+  case 156:
     return "Send failed since rewinding of the data stream failed";
 
-  case CURLE_LOGIN_DENIED:
+  case 185:
     return "Login denied";
 
-  case CURLE_TFTP_NOTFOUND:
+  case 139:
     return "TFTP: File Not Found";
 
-  case CURLE_TFTP_PERM:
+  case 138:
     return "TFTP: Access Violation";
 
-  case CURLE_REMOTE_DISK_FULL:
+  case 162:
     return "Disk full or allocation exceeded";
 
-  case CURLE_TFTP_ILLEGAL:
+  case 141:
     return "TFTP: Illegal operation";
 
-  case CURLE_TFTP_UNKNOWNID:
+  case 137:
     return "TFTP: Unknown transfer ID";
 
-  case CURLE_REMOTE_FILE_EXISTS:
+  case 161:
     return "Remote file already exists";
 
-  case CURLE_TFTP_NOSUCHUSER:
+  case 140:
     return "TFTP: No such user";
 
-  case CURLE_CONV_FAILED:
+  case 216:
     return "Conversion failed";
 
-  case CURLE_CONV_REQD:
+  case 215:
     return "Caller must register CURLOPT_CONV_ callback options";
 
-  case CURLE_REMOTE_FILE_NOT_FOUND:
+  case 160:
     return "Remote file not found";
 
-  case CURLE_SSH:
+  case 155:
     return "Error in the SSH layer";
 
-  case CURLE_AGAIN:
+  case 222:
     return "Socket not ready for send/recv";
 
-  case CURLE_RTSP_CSEQ_ERROR:
+  case 159:
     return "RTSP CSeq mismatch or invalid CSeq";
 
-  case CURLE_RTSP_SESSION_ERROR:
+  case 158:
     return "RTSP session error";
 
-  case CURLE_FTP_BAD_FILE_LIST:
+  case 206:
     return "Unable to parse FTP file list";
 
-  case CURLE_CHUNK_FAILED:
+  case 217:
     return "Chunk callback failed";
 
-  case CURLE_NO_CONNECTION_AVAILABLE:
+  case 183:
     return "The max connection limit is reached";
 
-  case CURLE_SSL_PINNEDPUBKEYNOTMATCH:
+  case 144:
     return "SSL public key does not match pinned public key";
 
-  case CURLE_SSL_INVALIDCERTSTATUS:
+  case 146:
     return "SSL server certificate status verification FAILED";
 
-  case CURLE_HTTP2_STREAM:
+  case 193:
     return "Stream error in the HTTP/2 framing layer";
 
-  case CURLE_RECURSIVE_API_CALL:
+  case 165:
     return "API function called from within callback";
 
-  case CURLE_AUTH_ERROR:
+  case 221:
     return "An authentication function returned an error";
 
-  case CURLE_HTTP3:
+  case 192:
     return "HTTP/3 error";
 
-    /* error codes not used by current libcurl */
-  case CURLE_OBSOLETE24:
-  case CURLE_OBSOLETE29:
-  case CURLE_OBSOLETE32:
-  case CURLE_OBSOLETE40:
-  case CURLE_OBSOLETE44:
-  case CURLE_OBSOLETE46:
-  case CURLE_OBSOLETE50:
-  case CURLE_OBSOLETE51:
-  case CURLE_OBSOLETE57:
-  case CURL_LAST:
+
+  case 182:
+  case 181:
+  case 180:
+  case 179:
+  case 178:
+  case 177:
+  case 176:
+  case 175:
+  case 174:
+  case 128:
     break;
   }
-  /*
-   * By using a switch, gcc -Wall will complain about enum values
-   * which do not appear, helping keep this function up-to-date.
-   * By using gcc -Wall -Werror, you can't forget.
-   *
-   * A table would not have the same benefit.  Most compilers will
-   * generate code very similar to a table in any case, so there
-   * is little performance gain from a table.  And something is broken
-   * for the user's application, anyways, so does it matter how fast
-   * it _doesn't_ work?
-   *
-   * The line number for the error will be near this comment, which
-   * is why it is here, and not at the start of the switch.
-   */
   return "Unknown error";
-#else
-  if(!error)
-    return "No error";
-  else
-    return "Error";
-#endif
+
+
+
+
+
+
 }

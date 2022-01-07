@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_txdelta_window_handler_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_txdelta_window_handler_t ;
+typedef int svn_stream_t ;
 struct TYPE_4__ {TYPE_2__* fsap_data; } ;
-typedef  TYPE_1__ svn_fs_t ;
-struct TYPE_5__ {scalar_t__ delta_compression_type; scalar_t__ format; int /*<<< orphan*/  delta_compression_level; } ;
-typedef  TYPE_2__ fs_fs_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_fs_t ;
+struct TYPE_5__ {scalar_t__ delta_compression_type; scalar_t__ format; int delta_compression_level; } ;
+typedef TYPE_2__ fs_fs_data_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_ASSERT_NO_RETURN (int) ; 
- scalar_t__ SVN_FS_FS__MIN_SVNDIFF1_FORMAT ; 
- scalar_t__ SVN_FS_FS__MIN_SVNDIFF2_FORMAT ; 
- scalar_t__ compression_type_lz4 ; 
- scalar_t__ compression_type_zlib ; 
- int /*<<< orphan*/  svn_txdelta_to_svndiff3 (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR_ASSERT_NO_RETURN (int) ;
+ scalar_t__ SVN_FS_FS__MIN_SVNDIFF1_FORMAT ;
+ scalar_t__ SVN_FS_FS__MIN_SVNDIFF2_FORMAT ;
+ scalar_t__ compression_type_lz4 ;
+ scalar_t__ compression_type_zlib ;
+ int svn_txdelta_to_svndiff3 (int *,void**,int *,int,int ,int *) ;
 
 __attribute__((used)) static void
 txdelta_to_svndiff(svn_txdelta_window_handler_t *handler,

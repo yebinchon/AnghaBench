@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ s_addr; } ;
-struct sockaddr_in {TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+struct sockaddr_in {TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
 struct in_addr {scalar_t__ s_addr; } ;
 struct hostent {scalar_t__ h_addr; } ;
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  scalar_t__ SOCKET ;
+typedef int WSADATA ;
+typedef scalar_t__ SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- scalar_t__ INADDR_NONE ; 
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  R_ERROR ; 
- int /*<<< orphan*/  R_STATUS ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  WSACleanup () ; 
- char const* WSAGetLastError () ; 
- scalar_t__ WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- int /*<<< orphan*/  connect (scalar_t__,struct sockaddr*,int) ; 
- struct hostent* gethostbyname (char const*) ; 
- int /*<<< orphan*/  htons (int) ; 
- scalar_t__ inet_addr (char const*) ; 
- int /*<<< orphan*/  report (int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ scalar_t__ INADDR_NONE ;
+ scalar_t__ INVALID_SOCKET ;
+ int IPPROTO_TCP ;
+ int MAKEWORD (int,int) ;
+ int R_ERROR ;
+ int R_STATUS ;
+ int SOCK_STREAM ;
+ int WSACleanup () ;
+ char const* WSAGetLastError () ;
+ scalar_t__ WSAStartup (int ,int *) ;
+ int closesocket (scalar_t__) ;
+ int connect (scalar_t__,struct sockaddr*,int) ;
+ struct hostent* gethostbyname (char const*) ;
+ int htons (int) ;
+ scalar_t__ inet_addr (char const*) ;
+ int report (int ,char*,char const*) ;
+ scalar_t__ socket (int ,int ,int ) ;
 
 __attribute__((used)) static SOCKET
 open_http (const char *server)

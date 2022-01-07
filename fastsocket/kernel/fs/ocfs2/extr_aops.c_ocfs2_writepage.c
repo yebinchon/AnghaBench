@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct writeback_control {int dummy; } ;
 struct page {int dummy; } ;
 
-/* Variables and functions */
- int block_write_full_page (struct page*,int /*<<< orphan*/ ,struct writeback_control*) ; 
- int /*<<< orphan*/  mlog_entry (char*,struct page*) ; 
- int /*<<< orphan*/  mlog_exit (int) ; 
- int /*<<< orphan*/  ocfs2_get_block ; 
+
+ int block_write_full_page (struct page*,int ,struct writeback_control*) ;
+ int mlog_entry (char*,struct page*) ;
+ int mlog_exit (int) ;
+ int ocfs2_get_block ;
 
 __attribute__((used)) static int ocfs2_writepage(struct page *page, struct writeback_control *wbc)
 {
-	int ret;
+ int ret;
 
-	mlog_entry("(0x%p)\n", page);
+ mlog_entry("(0x%p)\n", page);
 
-	ret = block_write_full_page(page, ocfs2_get_block, wbc);
+ ret = block_write_full_page(page, ocfs2_get_block, wbc);
 
-	mlog_exit(ret);
+ mlog_exit(ret);
 
-	return ret;
+ return ret;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  e; int /*<<< orphan*/  query; int /*<<< orphan*/  defn; } ;
-typedef  int /*<<< orphan*/  OSSL_PROPERTY_LIST ;
-typedef  int /*<<< orphan*/  OSSL_METHOD_STORE ;
 
-/* Variables and functions */
- scalar_t__ TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ add_property_names (char*,char*,int /*<<< orphan*/ *) ; 
- TYPE_1__* definition_tests ; 
- int /*<<< orphan*/  ossl_method_store_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ossl_method_store_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ossl_parse_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ossl_parse_query (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ossl_property_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ossl_property_match_count (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int e; int query; int defn; } ;
+typedef int OSSL_PROPERTY_LIST ;
+typedef int OSSL_METHOD_STORE ;
+
+
+ scalar_t__ TEST_int_eq (int ,int ) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ add_property_names (char*,char*,int *) ;
+ TYPE_1__* definition_tests ;
+ int ossl_method_store_free (int *) ;
+ int * ossl_method_store_new (int *) ;
+ int * ossl_parse_property (int *,int ) ;
+ int * ossl_parse_query (int *,int ) ;
+ int ossl_property_free (int *) ;
+ int ossl_property_match_count (int *,int *) ;
 
 __attribute__((used)) static int test_definition_compares(int n)
 {
     OSSL_METHOD_STORE *store;
-    OSSL_PROPERTY_LIST *d = NULL, *q = NULL;
+    OSSL_PROPERTY_LIST *d = ((void*)0), *q = ((void*)0);
     int r;
 
-    r = TEST_ptr(store = ossl_method_store_new(NULL))
-        && add_property_names("alpha", "omega", NULL)
-        && TEST_ptr(d = ossl_parse_property(NULL, definition_tests[n].defn))
-        && TEST_ptr(q = ossl_parse_query(NULL, definition_tests[n].query))
+    r = TEST_ptr(store = ossl_method_store_new(((void*)0)))
+        && add_property_names("alpha", "omega", ((void*)0))
+        && TEST_ptr(d = ossl_parse_property(((void*)0), definition_tests[n].defn))
+        && TEST_ptr(q = ossl_parse_query(((void*)0), definition_tests[n].query))
         && TEST_int_eq(ossl_property_match_count(q, d), definition_tests[n].e);
 
     ossl_property_free(d);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct session {int /*<<< orphan*/  user; } ;
-typedef  int /*<<< orphan*/  X509_NAME_ENTRY ;
-typedef  int /*<<< orphan*/  X509_NAME ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  ASN1_STRING ;
-typedef  int /*<<< orphan*/  ASN1_OBJECT ;
 
-/* Variables and functions */
- scalar_t__ ASN1_STRING_to_UTF8 (unsigned char**,int /*<<< orphan*/ *) ; 
- int NID_undef ; 
- char* OBJ_nid2sn (int) ; 
- int OBJ_obj2nid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- int /*<<< orphan*/ * X509_NAME_ENTRY_get_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_NAME_ENTRY_get_object (int /*<<< orphan*/ *) ; 
- int X509_NAME_entry_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_NAME_get_entry (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * X509_get_subject_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  strncasecmp (char const*,char*,int) ; 
+
+
+
+struct session {int user; } ;
+typedef int X509_NAME_ENTRY ;
+typedef int X509_NAME ;
+typedef int X509 ;
+typedef int ASN1_STRING ;
+typedef int ASN1_OBJECT ;
+
+
+ scalar_t__ ASN1_STRING_to_UTF8 (unsigned char**,int *) ;
+ int NID_undef ;
+ char* OBJ_nid2sn (int) ;
+ int OBJ_obj2nid (int *) ;
+ int OPENSSL_free (unsigned char*) ;
+ int * X509_NAME_ENTRY_get_data (int *) ;
+ int * X509_NAME_ENTRY_get_object (int *) ;
+ int X509_NAME_entry_count (int *) ;
+ int * X509_NAME_get_entry (int *,int) ;
+ int * X509_get_subject_name (int *) ;
+ int snprintf (int ,int,char*) ;
+ int strncasecmp (char const*,char*,int) ;
 
 __attribute__((used)) static void
 session_user_set(struct session *sess, X509 *x509)
@@ -65,7 +65,7 @@ session_user_set(struct session *sess, X509 *x509)
         {
             continue;
         }
-        unsigned char *buf = NULL;
+        unsigned char *buf = ((void*)0);
         if (ASN1_STRING_to_UTF8(&buf, val) < 0)
         {
             continue;

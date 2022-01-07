@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int right; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ RECT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  SB_SETPARTS ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SIZE ; 
- int /*<<< orphan*/  hStatusBar ; 
+
+ int GetClientRect (int ,TYPE_1__*) ;
+ int SB_SETPARTS ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int WM_SIZE ;
+ int hStatusBar ;
 
 void SetupStatusBar(HWND hWnd, BOOL bResize)
 {
-    RECT  rc;
+    RECT rc;
     int nParts;
     GetClientRect(hWnd, &rc);
     nParts = rc.right;
-    /*    nParts = -1;*/
+
     if (bResize)
         SendMessageW(hStatusBar, WM_SIZE, 0, 0);
     SendMessageW(hStatusBar, SB_SETPARTS, 1, (LPARAM)&nParts);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BN_ULONG ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int* ONE ; 
- int P256_LIMBS ; 
- int bn_get_top (int /*<<< orphan*/  const*) ; 
- int* bn_get_words (int /*<<< orphan*/  const*) ; 
- int is_zero (int) ; 
+
+
+
+typedef int BN_ULONG ;
+typedef int BIGNUM ;
+
+
+ int* ONE ;
+ int P256_LIMBS ;
+ int bn_get_top (int const*) ;
+ int* bn_get_words (int const*) ;
+ int is_zero (int) ;
 
 __attribute__((used)) static BN_ULONG is_one(const BIGNUM *z)
 {
@@ -34,10 +34,10 @@ __attribute__((used)) static BN_ULONG is_one(const BIGNUM *z)
             res |= a[4] ^ ONE[4];
             res |= a[5] ^ ONE[5];
             res |= a[6] ^ ONE[6];
-            /*
-             * no check for a[7] (being zero) on 32-bit platforms,
-             * because value of "one" takes only 7 limbs.
-             */
+
+
+
+
         }
         res = is_zero(res);
     }

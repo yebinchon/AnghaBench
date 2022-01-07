@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BOARD_LED_BLUE_GPIO_PIN ; 
- int /*<<< orphan*/  BOARD_LED_BLUE_GPIO_PORT ; 
- int /*<<< orphan*/  BOARD_LED_GREEN_GPIO_PIN ; 
- int /*<<< orphan*/  BOARD_LED_GREEN_GPIO_PORT ; 
- int /*<<< orphan*/  BOARD_LED_RED_GPIO_PIN ; 
- int /*<<< orphan*/  BOARD_LED_RED_GPIO_PORT ; 
- int /*<<< orphan*/  CLOCK_EnableClock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED_BLUE_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED_BLUE_OFF () ; 
- int /*<<< orphan*/  LED_GREEN_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED_RED_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PORT_SetPinMux (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kCLOCK_PortA ; 
- int /*<<< orphan*/  kCLOCK_PortB ; 
- int /*<<< orphan*/  kCLOCK_PortE ; 
- int /*<<< orphan*/  kPORT_MuxAsGpio ; 
+ int BOARD_LED_BLUE_GPIO_PIN ;
+ int BOARD_LED_BLUE_GPIO_PORT ;
+ int BOARD_LED_GREEN_GPIO_PIN ;
+ int BOARD_LED_GREEN_GPIO_PORT ;
+ int BOARD_LED_RED_GPIO_PIN ;
+ int BOARD_LED_RED_GPIO_PORT ;
+ int CLOCK_EnableClock (int ) ;
+ int LED_BLUE_INIT (int ) ;
+ int LED_BLUE_OFF () ;
+ int LED_GREEN_INIT (int ) ;
+ int LED_RED_INIT (int ) ;
+ int PORT_SetPinMux (int ,int ,int ) ;
+ int kCLOCK_PortA ;
+ int kCLOCK_PortB ;
+ int kCLOCK_PortE ;
+ int kPORT_MuxAsGpio ;
 
 void gpio_init() {
   CLOCK_EnableClock(kCLOCK_PortA);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsdn_t ;
-typedef  int /*<<< orphan*/  extent_t ;
-typedef  int /*<<< orphan*/  extent_hooks_t ;
-typedef  int /*<<< orphan*/  arena_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EXTENT_HOOKS_INITIALIZER ; 
- int /*<<< orphan*/  WITNESS_RANK_CORE ; 
- int /*<<< orphan*/  extent_dalloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  extent_dalloc_wrapper (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ extent_register (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsdn_witness_tsdp_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  witness_assert_depth_to_rank (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tsdn_t ;
+typedef int extent_t ;
+typedef int extent_hooks_t ;
+typedef int arena_t ;
+
+
+ int * EXTENT_HOOKS_INITIALIZER ;
+ int WITNESS_RANK_CORE ;
+ int extent_dalloc (int *,int *,int *) ;
+ int extent_dalloc_wrapper (int *,int *,int **,int *) ;
+ scalar_t__ extent_register (int *,int *) ;
+ int tsdn_witness_tsdp_get (int *) ;
+ int witness_assert_depth_to_rank (int ,int ,int ) ;
 
 void
 extent_dalloc_gap(tsdn_t *tsdn, arena_t *arena, extent_t *extent) {
-	extent_hooks_t *extent_hooks = EXTENT_HOOKS_INITIALIZER;
+ extent_hooks_t *extent_hooks = EXTENT_HOOKS_INITIALIZER;
 
-	witness_assert_depth_to_rank(tsdn_witness_tsdp_get(tsdn),
-	    WITNESS_RANK_CORE, 0);
+ witness_assert_depth_to_rank(tsdn_witness_tsdp_get(tsdn),
+     WITNESS_RANK_CORE, 0);
 
-	if (extent_register(tsdn, extent)) {
-		extent_dalloc(tsdn, arena, extent);
-		return;
-	}
-	extent_dalloc_wrapper(tsdn, arena, &extent_hooks, extent);
+ if (extent_register(tsdn, extent)) {
+  extent_dalloc(tsdn, arena, extent);
+  return;
+ }
+ extent_dalloc_wrapper(tsdn, arena, &extent_hooks, extent);
 }

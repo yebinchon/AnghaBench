@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_element ;
-typedef  int /*<<< orphan*/  XMLRPC_VALUE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DANDARPC_to_xml_element_worker (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int xml_element ;
+typedef int XMLRPC_VALUE ;
+
+
+ int * DANDARPC_to_xml_element_worker (int *,int ) ;
 
 xml_element* DANDARPC_VALUE_to_xml_element(XMLRPC_VALUE node) {
-   return DANDARPC_to_xml_element_worker(NULL, node);
+   return DANDARPC_to_xml_element_worker(((void*)0), node);
 }

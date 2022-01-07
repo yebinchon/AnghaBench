@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gk104_fifo {int /*<<< orphan*/  base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nvkm_fifo_uevent (int /*<<< orphan*/ *) ; 
+
+
+
+struct gk104_fifo {int base; } ;
+
+
+ int nvkm_fifo_uevent (int *) ;
 
 __attribute__((used)) static void
 gk104_fifo_intr_engine(struct gk104_fifo *fifo)
 {
-	nvkm_fifo_uevent(&fifo->base);
+ nvkm_fifo_uevent(&fifo->base);
 }

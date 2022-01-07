@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+
+
+ int assert (int) ;
 
 void set_jump_target_fillslot(int addr,u32 target,int copy)
 {
@@ -29,10 +29,10 @@ void set_jump_target_fillslot(int addr,u32 target,int copy)
   else {
     assert((ptr[3]&0x0e)==0xa);
     u32 target_insn=*(u32 *)target;
-    if((target_insn&0x0e100000)==0) { // ALU, no immediate, no flags
+    if((target_insn&0x0e100000)==0) {
       copy=0;
     }
-    if((target_insn&0x0c100000)==0x04100000) { // Load
+    if((target_insn&0x0c100000)==0x04100000) {
       copy=0;
     }
     if(target_insn&0x08000000) {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct wined3d_state {int dummy; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct TYPE_9__ {unsigned int offset; struct wined3d_buffer* buffer; } ;
 struct TYPE_10__ {TYPE_3__ indirect; } ;
-struct TYPE_11__ {int /*<<< orphan*/  indexed; TYPE_4__ u; int /*<<< orphan*/  indirect; } ;
-struct wined3d_cs_draw {unsigned int patch_vertex_count; TYPE_5__ parameters; int /*<<< orphan*/  primitive_type; int /*<<< orphan*/  opcode; } ;
+struct TYPE_11__ {int indexed; TYPE_4__ u; int indirect; } ;
+struct wined3d_cs_draw {unsigned int patch_vertex_count; TYPE_5__ parameters; int primitive_type; int opcode; } ;
 struct wined3d_cs {TYPE_6__* ops; TYPE_2__* device; } ;
-struct wined3d_buffer {int /*<<< orphan*/  resource; } ;
-struct TYPE_12__ {int /*<<< orphan*/  (* submit ) (struct wined3d_cs*,int /*<<< orphan*/ ) ;struct wined3d_cs_draw* (* require_space ) (struct wined3d_cs*,int,int /*<<< orphan*/ ) ;} ;
+struct wined3d_buffer {int resource; } ;
+struct TYPE_12__ {int (* submit ) (struct wined3d_cs*,int ) ;struct wined3d_cs_draw* (* require_space ) (struct wined3d_cs*,int,int ) ;} ;
 struct TYPE_8__ {struct wined3d_state state; TYPE_1__* adapter; } ;
 struct TYPE_7__ {struct wined3d_gl_info gl_info; } ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int GLenum ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WINED3D_CS_OP_DRAW ; 
- int /*<<< orphan*/  WINED3D_CS_QUEUE_DEFAULT ; 
- int /*<<< orphan*/  acquire_graphics_pipeline_resources (struct wined3d_state const*,int /*<<< orphan*/ ,struct wined3d_gl_info const*) ; 
- struct wined3d_cs_draw* stub1 (struct wined3d_cs*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct wined3d_cs*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_resource_acquire (int /*<<< orphan*/ *) ; 
+
+ int TRUE ;
+ int WINED3D_CS_OP_DRAW ;
+ int WINED3D_CS_QUEUE_DEFAULT ;
+ int acquire_graphics_pipeline_resources (struct wined3d_state const*,int ,struct wined3d_gl_info const*) ;
+ struct wined3d_cs_draw* stub1 (struct wined3d_cs*,int,int ) ;
+ int stub2 (struct wined3d_cs*,int ) ;
+ int wined3d_resource_acquire (int *) ;
 
 void wined3d_cs_emit_draw_indirect(struct wined3d_cs *cs, GLenum primitive_type, unsigned int patch_vertex_count,
         struct wined3d_buffer *buffer, unsigned int offset, BOOL indexed)

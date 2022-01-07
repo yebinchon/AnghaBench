@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  http_request_t ;
-typedef  int /*<<< orphan*/  data_stream_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int http_request_t ;
+typedef int data_stream_t ;
 struct TYPE_2__ {scalar_t__ state; } ;
-typedef  TYPE_1__ chunked_stream_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ chunked_stream_t ;
+typedef int buf ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ CHUNKED_STREAM_STATE_END_OF_STREAM ; 
- scalar_t__ CHUNKED_STREAM_STATE_ERROR ; 
- scalar_t__ ERROR_NO_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ chunked_read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CHUNKED_STREAM_STATE_END_OF_STREAM ;
+ scalar_t__ CHUNKED_STREAM_STATE_ERROR ;
+ scalar_t__ ERROR_NO_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ chunked_read (int *,int *,int *,int,scalar_t__*,int ) ;
 
 __attribute__((used)) static DWORD chunked_drain_content(data_stream_t *stream, http_request_t *req, BOOL allow_blocking)
 {

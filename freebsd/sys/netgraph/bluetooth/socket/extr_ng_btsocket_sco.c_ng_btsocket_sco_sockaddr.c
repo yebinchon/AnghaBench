@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct socket {int dummy; } ;
-struct sockaddr_sco {int sco_len; int /*<<< orphan*/  sco_family; int /*<<< orphan*/  sco_bdaddr; } ;
+struct sockaddr_sco {int sco_len; int sco_family; int sco_bdaddr; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  sa ;
-typedef  TYPE_1__* ng_btsocket_sco_pcb_p ;
-struct TYPE_3__ {int /*<<< orphan*/  pcb_mtx; int /*<<< orphan*/  src; } ;
+typedef int sa ;
+typedef TYPE_1__* ng_btsocket_sco_pcb_p ;
+struct TYPE_3__ {int pcb_mtx; int src; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_BLUETOOTH ; 
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  M_NOWAIT ; 
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mtx_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ng_btsocket_sco_node ; 
- TYPE_1__* so2sco_pcb (struct socket*) ; 
- struct sockaddr* sodupsockaddr (struct sockaddr*,int /*<<< orphan*/ ) ; 
+
+ int AF_BLUETOOTH ;
+ int EINVAL ;
+ int ENOMEM ;
+ int M_NOWAIT ;
+ int bcopy (int *,int *,int) ;
+ int mtx_lock (int *) ;
+ int mtx_unlock (int *) ;
+ int * ng_btsocket_sco_node ;
+ TYPE_1__* so2sco_pcb (struct socket*) ;
+ struct sockaddr* sodupsockaddr (struct sockaddr*,int ) ;
 
 int
 ng_btsocket_sco_sockaddr(struct socket *so, struct sockaddr **nam)
 {
-	ng_btsocket_sco_pcb_p	pcb = so2sco_pcb(so);
-	struct sockaddr_sco	sa;
+ ng_btsocket_sco_pcb_p pcb = so2sco_pcb(so);
+ struct sockaddr_sco sa;
 
-	if (pcb == NULL)
-		return (EINVAL);
-	if (ng_btsocket_sco_node == NULL) 
-		return (EINVAL);
+ if (pcb == ((void*)0))
+  return (EINVAL);
+ if (ng_btsocket_sco_node == ((void*)0))
+  return (EINVAL);
 
-	mtx_lock(&pcb->pcb_mtx);
-	bcopy(&pcb->src, &sa.sco_bdaddr, sizeof(sa.sco_bdaddr));
-	mtx_unlock(&pcb->pcb_mtx);
+ mtx_lock(&pcb->pcb_mtx);
+ bcopy(&pcb->src, &sa.sco_bdaddr, sizeof(sa.sco_bdaddr));
+ mtx_unlock(&pcb->pcb_mtx);
 
-	sa.sco_len = sizeof(sa);
-	sa.sco_family = AF_BLUETOOTH;
+ sa.sco_len = sizeof(sa);
+ sa.sco_family = AF_BLUETOOTH;
 
-	*nam = sodupsockaddr((struct sockaddr *) &sa, M_NOWAIT);
+ *nam = sodupsockaddr((struct sockaddr *) &sa, M_NOWAIT);
 
-	return ((*nam == NULL)? ENOMEM : 0);
+ return ((*nam == ((void*)0))? ENOMEM : 0);
 }

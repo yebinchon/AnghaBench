@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int id; int /*<<< orphan*/  irreversible; int /*<<< orphan*/  state; int /*<<< orphan*/  type; TYPE_1__* unit; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int id; int irreversible; int state; int type; TYPE_1__* unit; } ;
 struct TYPE_9__ {char* id; } ;
-typedef  TYPE_2__ Job ;
-typedef  TYPE_2__ FILE ;
+typedef TYPE_2__ Job ;
+typedef TYPE_2__ FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  fprintf (TYPE_2__*,char*,char const*,int,char const*,char*,char*,char const*,char*,char const*,char*,char const*,char*) ; 
- int /*<<< orphan*/  job_may_gc (TYPE_2__*) ; 
- char* job_state_to_string (int /*<<< orphan*/ ) ; 
- char* job_type_to_string (int /*<<< orphan*/ ) ; 
- char* strempty (char const*) ; 
- char* yes_no (int /*<<< orphan*/ ) ; 
+
+ int assert (TYPE_2__*) ;
+ int fprintf (TYPE_2__*,char*,char const*,int,char const*,char*,char*,char const*,char*,char const*,char*,char const*,char*) ;
+ int job_may_gc (TYPE_2__*) ;
+ char* job_state_to_string (int ) ;
+ char* job_type_to_string (int ) ;
+ char* strempty (char const*) ;
+ char* yes_no (int ) ;
 
 void job_dump(Job *j, FILE *f, const char *prefix) {
         assert(j);

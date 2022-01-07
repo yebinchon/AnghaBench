@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_var_value_t ;
-struct tl_type {int /*<<< orphan*/  id; } ;
+
+
+
+
+typedef int tree_var_value_t ;
+struct tl_type {int id; } ;
 struct tl_combinator_tree {scalar_t__ act; int data; struct tl_combinator_tree* right; struct tl_combinator_tree* left; } ;
 
-/* Variables and functions */
- scalar_t__ act_field ; 
- scalar_t__ act_var ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
- int tl_get_var_value (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  tl_set_var_value (int /*<<< orphan*/ **,struct tl_combinator_tree*,struct tl_combinator_tree*) ; 
- struct tl_type* tl_tree_get_type (struct tl_combinator_tree*) ; 
+
+ scalar_t__ act_field ;
+ scalar_t__ act_var ;
+ int assert (int) ;
+ int strcmp (int ,char*) ;
+ int tl_get_var_value (int **,int) ;
+ int tl_set_var_value (int **,struct tl_combinator_tree*,struct tl_combinator_tree*) ;
+ struct tl_type* tl_tree_get_type (struct tl_combinator_tree*) ;
 
 void change_var_ptrs (struct tl_combinator_tree *O, struct tl_combinator_tree *D, tree_var_value_t **V) {
   if (!O || !D) {

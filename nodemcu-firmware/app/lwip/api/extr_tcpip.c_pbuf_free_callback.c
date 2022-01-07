@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pbuf {int dummy; } ;
-typedef  int /*<<< orphan*/  err_t ;
+typedef int err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pbuf_free_int ; 
- int /*<<< orphan*/  tcpip_callback_with_block (int /*<<< orphan*/ ,struct pbuf*,int /*<<< orphan*/ ) ; 
+
+ int pbuf_free_int ;
+ int tcpip_callback_with_block (int ,struct pbuf*,int ) ;
 
 err_t
 pbuf_free_callback(struct pbuf *p)

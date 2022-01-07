@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
 
-/* Variables and functions */
- int AV_HWDEVICE_TYPE_NONE ; 
- int av_hwdevice_iterate_types (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int test_device_type (int) ; 
+
+
+
+typedef enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
+
+
+ int AV_HWDEVICE_TYPE_NONE ;
+ int av_hwdevice_iterate_types (int) ;
+ int fprintf (int ,char*,int,int,int,int) ;
+ int stderr ;
+ int test_device_type (int) ;
 
 int main(void)
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-struct TYPE_17__ {scalar_t__ szLeaf; int /*<<< orphan*/  nn; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int u64 ;
+struct TYPE_17__ {scalar_t__ szLeaf; int nn; int p; } ;
 struct TYPE_14__ {int bEof; } ;
 struct TYPE_16__ {int bRev; TYPE_2__ base; TYPE_1__* aFirst; TYPE_3__* aSeg; } ;
-struct TYPE_15__ {int /*<<< orphan*/  flags; int /*<<< orphan*/  iEndofDoclist; int /*<<< orphan*/  iRowid; int /*<<< orphan*/  iLeafOffset; TYPE_5__* pLeaf; } ;
+struct TYPE_15__ {int flags; int iEndofDoclist; int iRowid; int iLeafOffset; TYPE_5__* pLeaf; } ;
 struct TYPE_13__ {int iFirst; } ;
-typedef  TYPE_3__ Fts5SegIter ;
-typedef  TYPE_4__ Fts5Iter ;
-typedef  int /*<<< orphan*/  Fts5Index ;
-typedef  TYPE_5__ Fts5Data ;
+typedef TYPE_3__ Fts5SegIter ;
+typedef TYPE_4__ Fts5Iter ;
+typedef int Fts5Index ;
+typedef TYPE_5__ Fts5Data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FTS5_SEGITER_ONETERM ; 
- int /*<<< orphan*/  FTS5_SEGITER_REVERSE ; 
- int /*<<< orphan*/  fts5DataRelease (TYPE_5__*) ; 
- int /*<<< orphan*/  fts5GetVarint (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_4__* fts5MultiIterAlloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fts5SegIterLoadNPos (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  fts5SegIterReverseInitPage (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  fts5SegIterSetNext (int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ int FTS5_SEGITER_ONETERM ;
+ int FTS5_SEGITER_REVERSE ;
+ int fts5DataRelease (TYPE_5__*) ;
+ int fts5GetVarint (int ,int *) ;
+ TYPE_4__* fts5MultiIterAlloc (int *,int) ;
+ int fts5SegIterLoadNPos (int *,TYPE_3__*) ;
+ int fts5SegIterReverseInitPage (int *,TYPE_3__*) ;
+ int fts5SegIterSetNext (int *,TYPE_3__*) ;
 
 __attribute__((used)) static void fts5MultiIterNew2(
-  Fts5Index *p,                   /* FTS5 backend to iterate within */
-  Fts5Data *pData,                /* Doclist to iterate through */
-  int bDesc,                      /* True for descending rowid order */
-  Fts5Iter **ppOut                /* New object */
+  Fts5Index *p,
+  Fts5Data *pData,
+  int bDesc,
+  Fts5Iter **ppOut
 ){
   Fts5Iter *pNew;
   pNew = fts5MultiIterAlloc(p, 2);

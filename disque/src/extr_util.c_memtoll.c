@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- long long LLONG_MAX ; 
- scalar_t__ isdigit (char const) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned int) ; 
- int /*<<< orphan*/  strcasecmp (char const*,char*) ; 
- long long strtoll (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int buf ;
+
+
+ long long LLONG_MAX ;
+ scalar_t__ isdigit (char const) ;
+ int memcpy (char*,char const*,unsigned int) ;
+ int strcasecmp (char const*,char*) ;
+ long long strtoll (char*,int *,int) ;
 
 long long memtoll(const char *p, int *err) {
     const char *u;
     char buf[128];
-    long mul; /* unit multiplier */
+    long mul;
     long long val;
     unsigned int digits;
 
     if (err) *err = 0;
-    /* Search the first non digit character. */
+
     u = p;
     if (*u == '-') u++;
     while(*u && isdigit(*u)) u++;
@@ -56,6 +56,6 @@ long long memtoll(const char *p, int *err) {
     }
     memcpy(buf,p,digits);
     buf[digits] = '\0';
-    val = strtoll(buf,NULL,10);
+    val = strtoll(buf,((void*)0),10);
     return val*mul;
 }

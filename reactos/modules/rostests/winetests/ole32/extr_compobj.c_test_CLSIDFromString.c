@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  clsid ;
-typedef  char WCHAR ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int clsid ;
+typedef char WCHAR ;
+typedef int UINT ;
 struct TYPE_11__ {int Data1; } ;
 struct TYPE_10__ {int Data1; int Data2; } ;
-typedef  int HRESULT ;
-typedef  TYPE_1__ CLSID ;
+typedef int HRESULT ;
+typedef TYPE_1__ CLSID ;
 
-/* Variables and functions */
- int CLSIDFromString (char*,TYPE_1__*) ; 
- TYPE_5__ CLSID_NULL ; 
- TYPE_5__ CLSID_StdFont ; 
- int CO_E_CLASSSTRING ; 
- TYPE_5__ IID_IClassFactory ; 
- int IsEqualCLSID (TYPE_1__*,TYPE_5__*) ; 
- int S_OK ; 
- char* cf_brokenW ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_ole_success (int,char*) ; 
- int wine_dbgstr_guid (TYPE_1__*) ; 
- char* wszCLSID_StdFont ; 
+
+ int CLSIDFromString (char*,TYPE_1__*) ;
+ TYPE_5__ CLSID_NULL ;
+ TYPE_5__ CLSID_StdFont ;
+ int CO_E_CLASSSTRING ;
+ TYPE_5__ IID_IClassFactory ;
+ int IsEqualCLSID (TYPE_1__*,TYPE_5__*) ;
+ int S_OK ;
+ char* cf_brokenW ;
+ int lstrcpyW (char*,char*) ;
+ int lstrlenW (char*) ;
+ int memset (TYPE_1__*,int,int) ;
+ int ok (int,char*,...) ;
+ int ok_ole_success (int,char*) ;
+ int wine_dbgstr_guid (TYPE_1__*) ;
+ char* wszCLSID_StdFont ;
 
 __attribute__((used)) static void test_CLSIDFromString(void)
 {
@@ -48,11 +48,11 @@ __attribute__((used)) static void test_CLSIDFromString(void)
     ok(IsEqualCLSID(&clsid, &CLSID_StdFont), "clsid wasn't equal to CLSID_StdFont\n");
 
     memset(&clsid, 0xab, sizeof(clsid));
-    hr = CLSIDFromString(NULL, &clsid);
+    hr = CLSIDFromString(((void*)0), &clsid);
     ok(hr == S_OK, "got 0x%08x\n", hr);
     ok(IsEqualCLSID(&clsid, &CLSID_NULL), "clsid wasn't equal to CLSID_NULL\n");
 
-    /* string is longer, but starts with a valid CLSID */
+
     memset(&clsid, 0, sizeof(clsid));
     hr = CLSIDFromString(cf_brokenW, &clsid);
     ok(hr == CO_E_CLASSSTRING, "got 0x%08x\n", hr);

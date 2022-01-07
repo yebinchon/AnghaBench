@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  secret_server ;
-typedef  int /*<<< orphan*/  secret_client ;
-typedef  int /*<<< orphan*/  ptls_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int secret_server ;
+typedef int secret_client ;
+typedef int ptls_t ;
 struct TYPE_7__ {TYPE_2__* hash; TYPE_1__* aead; } ;
-typedef  TYPE_3__ ptls_cipher_suite_t ;
+typedef TYPE_3__ ptls_cipher_suite_t ;
 struct TYPE_6__ {scalar_t__ digest_size; } ;
 struct TYPE_5__ {char* name; } ;
 
-/* Variables and functions */
- int extract_1rtt_secret (int /*<<< orphan*/ *,char const*,TYPE_3__**,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int extract_1rtt_secret (int *,char const*,TYPE_3__**,int *,int) ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ memcmp (int *,int *,scalar_t__) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int verify_1rtt_secret_extraction(ptls_t *tls_client, ptls_t *tls_server)
 {
@@ -38,7 +38,7 @@ int verify_1rtt_secret_extraction(ptls_t *tls_client, ptls_t *tls_server)
     uint8_t secret_server[64];
     char const * label = "This is just a test";
 
-    ret = extract_1rtt_secret(tls_client, label, &cipher_client, 
+    ret = extract_1rtt_secret(tls_client, label, &cipher_client,
         secret_client, sizeof(secret_client));
 
     if (ret != 0)

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct dshow_ctx {TYPE_1__* pktl; scalar_t__* event; scalar_t__ mutex; int /*<<< orphan*/ * device_unique_name; int /*<<< orphan*/ * device_name; int /*<<< orphan*/ ** device_filter; scalar_t__* device_pin; scalar_t__* capture_filter; scalar_t__* capture_pin; scalar_t__ graph; scalar_t__ media_event; scalar_t__ control; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct dshow_ctx {TYPE_1__* pktl; scalar_t__* event; scalar_t__ mutex; int * device_unique_name; int * device_name; int ** device_filter; scalar_t__* device_pin; scalar_t__* capture_filter; scalar_t__* capture_pin; scalar_t__ graph; scalar_t__ media_event; scalar_t__ control; } ;
 struct TYPE_6__ {struct dshow_ctx* priv_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pkt; struct TYPE_5__* next; } ;
-typedef  int /*<<< orphan*/  IEnumFilters ;
-typedef  int /*<<< orphan*/  IBaseFilter ;
-typedef  TYPE_1__ AVPacketList ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_5__ {int pkt; struct TYPE_5__* next; } ;
+typedef int IEnumFilters ;
+typedef int IBaseFilter ;
+typedef TYPE_1__ AVPacketList ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- size_t AudioDevice ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  CoUninitialize () ; 
- int /*<<< orphan*/  IBaseFilter_Release (int /*<<< orphan*/ *) ; 
- int IEnumFilters_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumFilters_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumFilters_Reset (int /*<<< orphan*/ *) ; 
- int IGraphBuilder_EnumFilters (scalar_t__,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IGraphBuilder_Release (scalar_t__) ; 
- int IGraphBuilder_RemoveFilter (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMediaControl_Release (scalar_t__) ; 
- int /*<<< orphan*/  IMediaControl_Stop (scalar_t__) ; 
- int /*<<< orphan*/  IMediaEvent_Release (scalar_t__) ; 
- int /*<<< orphan*/  IPin_Release (scalar_t__) ; 
- int S_OK ; 
- size_t VideoDevice ; 
- int /*<<< orphan*/  av_free (TYPE_1__*) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  libAVFilter_Release (scalar_t__) ; 
- int /*<<< orphan*/  libAVPin_Release (scalar_t__) ; 
+
+ size_t AudioDevice ;
+ int CloseHandle (scalar_t__) ;
+ int CoUninitialize () ;
+ int IBaseFilter_Release (int *) ;
+ int IEnumFilters_Next (int *,int,int **,int *) ;
+ int IEnumFilters_Release (int *) ;
+ int IEnumFilters_Reset (int *) ;
+ int IGraphBuilder_EnumFilters (scalar_t__,int **) ;
+ int IGraphBuilder_Release (scalar_t__) ;
+ int IGraphBuilder_RemoveFilter (scalar_t__,int *) ;
+ int IMediaControl_Release (scalar_t__) ;
+ int IMediaControl_Stop (scalar_t__) ;
+ int IMediaEvent_Release (scalar_t__) ;
+ int IPin_Release (scalar_t__) ;
+ int S_OK ;
+ size_t VideoDevice ;
+ int av_free (TYPE_1__*) ;
+ int av_freep (int *) ;
+ int av_packet_unref (int *) ;
+ int libAVFilter_Release (scalar_t__) ;
+ int libAVPin_Release (scalar_t__) ;
 
 __attribute__((used)) static int
 dshow_read_close(AVFormatContext *s)
@@ -64,10 +64,10 @@ dshow_read_close(AVFormatContext *s)
         if (r == S_OK) {
             IBaseFilter *f;
             IEnumFilters_Reset(fenum);
-            while (IEnumFilters_Next(fenum, 1, &f, NULL) == S_OK) {
+            while (IEnumFilters_Next(fenum, 1, &f, ((void*)0)) == S_OK) {
                 if (IGraphBuilder_RemoveFilter(ctx->graph, f) == S_OK)
-                    IEnumFilters_Reset(fenum); /* When a filter is removed,
-                                                * the list must be reset. */
+                    IEnumFilters_Reset(fenum);
+
                 IBaseFilter_Release(f);
             }
             IEnumFilters_Release(fenum);

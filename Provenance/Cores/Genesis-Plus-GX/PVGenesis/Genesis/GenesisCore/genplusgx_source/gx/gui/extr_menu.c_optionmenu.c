@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gui_menu ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GUI_DeleteMenu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GUI_DrawMenuFX (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  GUI_InitMenu (int /*<<< orphan*/ *) ; 
- int GUI_RunMenu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  config_save () ; 
- int /*<<< orphan*/  ctrlmenu () ; 
- int /*<<< orphan*/  menu_options ; 
- int /*<<< orphan*/  prefmenu () ; 
- int /*<<< orphan*/  soundmenu () ; 
- int /*<<< orphan*/  systemmenu () ; 
- int /*<<< orphan*/  videomenu () ; 
+
+
+
+typedef int gui_menu ;
+
+
+ int GUI_DeleteMenu (int *) ;
+ int GUI_DrawMenuFX (int *,int,int) ;
+ int GUI_InitMenu (int *) ;
+ int GUI_RunMenu (int *) ;
+ int config_save () ;
+ int ctrlmenu () ;
+ int menu_options ;
+ int prefmenu () ;
+ int soundmenu () ;
+ int systemmenu () ;
+ int videomenu () ;
 
 __attribute__((used)) static void optionmenu(void)
 {

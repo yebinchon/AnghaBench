@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  fd; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int fd; } ;
 struct TYPE_6__ {scalar_t__ send_queue_count; int flags; TYPE_1__ io_watcher; } ;
-typedef  TYPE_2__ uv_udp_t ;
-typedef  int /*<<< orphan*/  uv_buf_t ;
-struct sockaddr {int /*<<< orphan*/  sa_family; } ;
+typedef TYPE_2__ uv_udp_t ;
+typedef int uv_buf_t ;
+struct sockaddr {int sa_family; } ;
 struct msghdr {unsigned int msg_namelen; unsigned int msg_iovlen; struct iovec* msg_iov; struct sockaddr* msg_name; } ;
 struct iovec {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EAGAIN ; 
- scalar_t__ EINTR ; 
- scalar_t__ ENOBUFS ; 
- scalar_t__ EWOULDBLOCK ; 
- int UV_EAGAIN ; 
- int UV_HANDLE_UDP_CONNECTED ; 
- int UV__ERR (scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  memset (struct msghdr*,int /*<<< orphan*/ ,int) ; 
- int sendmsg (int /*<<< orphan*/ ,struct msghdr*,int /*<<< orphan*/ ) ; 
- int uv__udp_maybe_deferred_bind (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ EAGAIN ;
+ scalar_t__ EINTR ;
+ scalar_t__ ENOBUFS ;
+ scalar_t__ EWOULDBLOCK ;
+ int UV_EAGAIN ;
+ int UV_HANDLE_UDP_CONNECTED ;
+ int UV__ERR (scalar_t__) ;
+ int assert (int) ;
+ scalar_t__ errno ;
+ int memset (struct msghdr*,int ,int) ;
+ int sendmsg (int ,struct msghdr*,int ) ;
+ int uv__udp_maybe_deferred_bind (TYPE_2__*,int ,int ) ;
 
 int uv__udp_try_send(uv_udp_t* handle,
                      const uv_buf_t bufs[],
@@ -46,7 +46,7 @@ int uv__udp_try_send(uv_udp_t* handle,
 
   assert(nbufs > 0);
 
-  /* already sending a message */
+
   if (handle->send_queue_count != 0)
     return UV_EAGAIN;
 

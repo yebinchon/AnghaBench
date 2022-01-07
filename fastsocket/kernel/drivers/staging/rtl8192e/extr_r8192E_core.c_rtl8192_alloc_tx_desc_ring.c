@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
-struct TYPE_6__ {int /*<<< orphan*/  NextDescAddress; } ;
-typedef  TYPE_2__ tx_desc_819x_pci ;
-struct r8192_priv {TYPE_1__* tx_ring; int /*<<< orphan*/  pdev; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ u32 ;
+struct TYPE_6__ {int NextDescAddress; } ;
+typedef TYPE_2__ tx_desc_819x_pci ;
+struct r8192_priv {TYPE_1__* tx_ring; int pdev; } ;
 struct net_device {int dummy; } ;
-typedef  scalar_t__ dma_addr_t ;
-struct TYPE_5__ {unsigned int entries; int /*<<< orphan*/  queue; scalar_t__ idx; scalar_t__ dma; TYPE_2__* desc; } ;
+typedef scalar_t__ dma_addr_t ;
+struct TYPE_5__ {unsigned int entries; int queue; scalar_t__ idx; scalar_t__ dma; TYPE_2__* desc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMP_ERR ; 
- int ENOMEM ; 
- int /*<<< orphan*/  RT_TRACE (int /*<<< orphan*/ ,char*,unsigned int) ; 
- int /*<<< orphan*/  cpu_to_le32 (scalar_t__) ; 
- scalar_t__ ieee80211_priv (struct net_device*) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* pci_alloc_consistent (int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
+
+ int COMP_ERR ;
+ int ENOMEM ;
+ int RT_TRACE (int ,char*,unsigned int) ;
+ int cpu_to_le32 (scalar_t__) ;
+ scalar_t__ ieee80211_priv (struct net_device*) ;
+ int memset (TYPE_2__*,int ,int) ;
+ TYPE_2__* pci_alloc_consistent (int ,int,scalar_t__*) ;
+ int skb_queue_head_init (int *) ;
 
 __attribute__((used)) static int rtl8192_alloc_tx_desc_ring(struct net_device *dev,
         unsigned int prio, unsigned int entries)

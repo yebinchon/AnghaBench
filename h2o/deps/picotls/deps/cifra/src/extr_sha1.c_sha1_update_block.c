@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_2__ {int* H; int /*<<< orphan*/  blocks; } ;
-typedef  TYPE_1__ cf_sha1_context ;
 
-/* Variables and functions */
- int read32_be (int /*<<< orphan*/  const*) ; 
- int rotl32 (int,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_2__ {int* H; int blocks; } ;
+typedef TYPE_1__ cf_sha1_context ;
+
+
+ int read32_be (int const*) ;
+ int rotl32 (int,int) ;
 
 __attribute__((used)) static void sha1_update_block(void *vctx, const uint8_t *inp)
 {
   cf_sha1_context *ctx = vctx;
 
-  /* This is a 16-word window into the whole W array. */
+
   uint32_t W[16];
 
   uint32_t a = ctx->H[0],
@@ -36,13 +36,13 @@ __attribute__((used)) static void sha1_update_block(void *vctx, const uint8_t *i
 
   for (size_t t = 0; t < 80; t++)
   {
-    /* For W[0..16] we process the input into W.
-     * For W[16..79] we compute the next W value:
-     *
-     * W[t] = (W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16]) <<< 1
-     *
-     * But all W indices are reduced mod 16 into our window.
-     */
+
+
+
+
+
+
+
     if (t < 16)
     {
       W[t] = Wt = read32_be(inp);

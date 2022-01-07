@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Masscan {int is_capture_cert; int is_capture_html; int is_capture_heartbleed; int is_capture_ticketbleed; scalar_t__ echo; scalar_t__ echo_all; } ;
 
-/* Variables and functions */
- int CONF_ERR ; 
- int CONF_OK ; 
- scalar_t__ EQUALS (char*,char const*) ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*,char const*) ; 
- scalar_t__ stderr ; 
+
+ int CONF_ERR ;
+ int CONF_OK ;
+ scalar_t__ EQUALS (char*,char const*) ;
+ int fprintf (scalar_t__,char*,char const*) ;
+ scalar_t__ stderr ;
 
 __attribute__((used)) static int SET_capture(struct Masscan *masscan, const char *name, const char *value)
 {

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_14__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_17__ {size_t min_size; size_t min_shift; TYPE_1__* stats; } ;
-typedef  TYPE_2__ ngx_slab_pool_t ;
+typedef TYPE_2__ ngx_slab_pool_t ;
 struct TYPE_18__ {uintptr_t prev; uintptr_t slab; struct TYPE_18__* next; } ;
-typedef  TYPE_3__ ngx_slab_page_t ;
-struct TYPE_16__ {int total; int /*<<< orphan*/  fails; int /*<<< orphan*/  used; int /*<<< orphan*/  reqs; } ;
-struct TYPE_15__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_slab_page_t ;
+struct TYPE_16__ {int total; int fails; int used; int reqs; } ;
+struct TYPE_15__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_ALLOC ; 
- uintptr_t NGX_SLAB_BIG ; 
- uintptr_t NGX_SLAB_BUSY ; 
- uintptr_t NGX_SLAB_EXACT ; 
- uintptr_t NGX_SLAB_MAP_MASK ; 
- uintptr_t NGX_SLAB_MAP_SHIFT ; 
- uintptr_t NGX_SLAB_SMALL ; 
- TYPE_14__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_debug_point () ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void*) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,size_t,size_t) ; 
- size_t ngx_pagesize ; 
- size_t ngx_pagesize_shift ; 
- TYPE_3__* ngx_slab_alloc_pages (TYPE_2__*,int) ; 
- int /*<<< orphan*/  ngx_slab_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- size_t ngx_slab_exact_shift ; 
- size_t ngx_slab_max_size ; 
- size_t ngx_slab_page_addr (TYPE_2__*,TYPE_3__*) ; 
- TYPE_3__* ngx_slab_page_prev (TYPE_3__*) ; 
- TYPE_3__* ngx_slab_slots (TYPE_2__*) ; 
+
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_ALLOC ;
+ uintptr_t NGX_SLAB_BIG ;
+ uintptr_t NGX_SLAB_BUSY ;
+ uintptr_t NGX_SLAB_EXACT ;
+ uintptr_t NGX_SLAB_MAP_MASK ;
+ uintptr_t NGX_SLAB_MAP_SHIFT ;
+ uintptr_t NGX_SLAB_SMALL ;
+ TYPE_14__* ngx_cycle ;
+ int ngx_debug_point () ;
+ int ngx_log_debug1 (int ,int ,int ,char*,void*) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,size_t,size_t) ;
+ size_t ngx_pagesize ;
+ size_t ngx_pagesize_shift ;
+ TYPE_3__* ngx_slab_alloc_pages (TYPE_2__*,int) ;
+ int ngx_slab_error (TYPE_2__*,int ,char*) ;
+ size_t ngx_slab_exact_shift ;
+ size_t ngx_slab_max_size ;
+ size_t ngx_slab_page_addr (TYPE_2__*,TYPE_3__*) ;
+ TYPE_3__* ngx_slab_page_prev (TYPE_3__*) ;
+ TYPE_3__* ngx_slab_slots (TYPE_2__*) ;
 
 void *
 ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
 {
-    size_t            s;
-    uintptr_t         p, m, mask, *bitmap;
-    ngx_uint_t        i, n, slot, shift, map;
-    ngx_slab_page_t  *page, *prev, *slots;
+    size_t s;
+    uintptr_t p, m, mask, *bitmap;
+    ngx_uint_t i, n, slot, shift, map;
+    ngx_slab_page_t *page, *prev, *slots;
 
     if (size > ngx_slab_max_size) {
 
@@ -72,7 +72,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
 
     if (size > pool->min_size) {
         shift = 1;
-        for (s = size - 1; s >>= 1; shift++) { /* void */ }
+        for (s = size - 1; s >>= 1; shift++) { }
         slot = shift - pool->min_shift;
 
     } else {
@@ -124,7 +124,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
                             prev->next = page->next;
                             page->next->prev = page->prev;
 
-                            page->next = NULL;
+                            page->next = ((void*)0);
                             page->prev = NGX_SLAB_SMALL;
                         }
 
@@ -147,7 +147,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
                     prev->next = page->next;
                     page->next->prev = page->prev;
 
-                    page->next = NULL;
+                    page->next = ((void*)0);
                     page->prev = NGX_SLAB_EXACT;
                 }
 
@@ -158,7 +158,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
                 goto done;
             }
 
-        } else { /* shift > ngx_slab_exact_shift */
+        } else {
 
             mask = ((uintptr_t) 1 << (ngx_pagesize >> shift)) - 1;
             mask <<= NGX_SLAB_MAP_SHIFT;
@@ -178,7 +178,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
                     prev->next = page->next;
                     page->next->prev = page->prev;
 
-                    page->next = NULL;
+                    page->next = ((void*)0);
                     page->prev = NGX_SLAB_BIG;
                 }
 
@@ -206,7 +206,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
                 n = 1;
             }
 
-            /* "n" elements for bitmap, plus one requested */
+
 
             for (i = 0; i < (n + 1) / (8 * sizeof(uintptr_t)); i++) {
                 bitmap[i] = NGX_SLAB_BUSY;
@@ -251,7 +251,7 @@ ngx_slab_alloc_locked(ngx_slab_pool_t *pool, size_t size)
 
             goto done;
 
-        } else { /* shift > ngx_slab_exact_shift */
+        } else {
 
             page->slab = ((uintptr_t) 1 << NGX_SLAB_MAP_SHIFT) | shift;
             page->next = &slots[slot];

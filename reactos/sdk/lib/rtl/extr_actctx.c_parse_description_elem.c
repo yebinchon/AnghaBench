@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,...) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  descriptionW ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ next_xml_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_end_element (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_text_content (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ parse_unknown_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp_end (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
+typedef int UNICODE_STRING ;
+typedef scalar_t__ BOOL ;
+
+
+ int DPRINT (char*,int *) ;
+ int DPRINT1 (char*,int *,...) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int descriptionW ;
+ scalar_t__ next_xml_attr (int *,int *,int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ next_xml_elem (int *,int *) ;
+ scalar_t__ parse_end_element (int *) ;
+ int parse_text_content (int *,int *) ;
+ scalar_t__ parse_unknown_elem (int *,int *) ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp_end (int *,int ) ;
 
 __attribute__((used)) static BOOL parse_description_elem(xmlbuf_t* xmlbuf)
 {
-    xmlstr_t    elem, content, attr_name, attr_value;
-    BOOL        end = FALSE, ret = TRUE, error = FALSE;
+    xmlstr_t elem, content, attr_name, attr_value;
+    BOOL end = FALSE, ret = TRUE, error = FALSE;
 
     UNICODE_STRING elem1U, elem2U;
 

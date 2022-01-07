@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  errbuf ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVIO_FLAG_WRITE ; 
- int /*<<< orphan*/  MKBETAG (char,char,char,char) ; 
- int /*<<< orphan*/  av_strerror (int,char*,int) ; 
- int /*<<< orphan*/  avio_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ *) ; 
- int avio_open2 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int copy_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int errbuf ;
+typedef int AVIOContext ;
+
+
+ int AVIO_FLAG_WRITE ;
+ int MKBETAG (char,char,char,char) ;
+ int av_strerror (int,char*,int) ;
+ int avio_close (int *) ;
+ int avio_flush (int *) ;
+ int avio_open2 (int **,char const*,int ,int *,int *) ;
+ int copy_tag (int *,int *,int ) ;
+ int fprintf (int ,char*,char const*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static int write_fragment(const char *filename, AVIOContext *in)
 {
-    AVIOContext *out = NULL;
+    AVIOContext *out = ((void*)0);
     int ret;
 
-    if ((ret = avio_open2(&out, filename, AVIO_FLAG_WRITE, NULL, NULL)) < 0) {
+    if ((ret = avio_open2(&out, filename, AVIO_FLAG_WRITE, ((void*)0), ((void*)0))) < 0) {
         char errbuf[100];
         av_strerror(ret, errbuf, sizeof(errbuf));
         fprintf(stderr, "Unable to open %s: %s\n", filename, errbuf);

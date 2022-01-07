@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_sem {int /*<<< orphan*/  mutex; scalar_t__ signaled; int /*<<< orphan*/  cond; } ;
 
-/* Variables and functions */
- int EINTR ; 
- int /*<<< orphan*/  errnum_assert (int,int) ; 
- scalar_t__ nn_fast (scalar_t__) ; 
- scalar_t__ nn_slow (int) ; 
- int pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_sem {int mutex; scalar_t__ signaled; int cond; } ;
+
+
+ int EINTR ;
+ int errnum_assert (int,int) ;
+ scalar_t__ nn_fast (scalar_t__) ;
+ scalar_t__ nn_slow (int) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 int nn_sem_wait (struct nn_sem *self)
 {
     int rc;
 
-    /*  With OSX, semaphores are global named objects. They are not useful for
-        our use case. To get a similar object we exploit the implementation
-        detail of pthread_cond_wait() in Darwin kernel: It exits if signal is
-        caught. Note that this behaviour is not mandated by POSIX
-        and may break with future versions of Darwin. */
+
+
+
+
+
     rc = pthread_mutex_lock (&self->mutex);
     errnum_assert (rc == 0, rc);
     if (nn_fast (self->signaled)) {

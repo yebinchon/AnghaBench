@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int RBuff ; 
- int RBuffEnd ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int idx_bytes ; 
- long long idx_cur_read_pos () ; 
- int /*<<< orphan*/  idx_fd ; 
- char* idx_filename ; 
- int idx_metafile_pos ; 
- int idx_read_pos ; 
- int idx_rptr ; 
- int /*<<< orphan*/  idx_slide_read_buffer () ; 
- int idx_wptr ; 
- int read (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
- int /*<<< orphan*/  vkprintf (int,char*,long long,int,int) ; 
+ int RBuff ;
+ int RBuffEnd ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,...) ;
+ int idx_bytes ;
+ long long idx_cur_read_pos () ;
+ int idx_fd ;
+ char* idx_filename ;
+ int idx_metafile_pos ;
+ int idx_read_pos ;
+ int idx_rptr ;
+ int idx_slide_read_buffer () ;
+ int idx_wptr ;
+ int read (int ,int,int) ;
+ int stderr ;
+ int verbosity ;
+ int vkprintf (int,char*,long long,int,int) ;
 
 int idx_load_next (int need_bytes) {
   assert (need_bytes > 0 && need_bytes <= RBuffEnd - RBuff);

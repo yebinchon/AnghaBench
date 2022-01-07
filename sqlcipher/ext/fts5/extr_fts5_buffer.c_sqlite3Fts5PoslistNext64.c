@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int i64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fts5FastGetVarint32 (int /*<<< orphan*/  const*,int,int) ; 
+
+
+
+typedef int u8 ;
+typedef int i64 ;
+
+
+ int fts5FastGetVarint32 (int const*,int,int) ;
 
 int sqlite3Fts5PoslistNext64(
-  const u8 *a, int n,             /* Buffer containing poslist */
-  int *pi,                        /* IN/OUT: Offset within a[] */
-  i64 *piOff                      /* IN/OUT: Current offset */
+  const u8 *a, int n,
+  int *pi,
+  i64 *piOff
 ){
   int i = *pi;
   if( i>=n ){
-    /* EOF */
+
     *piOff = -1;
-    return 1;  
+    return 1;
   }else{
     i64 iOff = *piOff;
     int iVal;

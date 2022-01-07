@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const*) ; 
- int EBADF ; 
- int EINVAL ; 
- int ERANGE ; 
- int STRUNCATE ; 
- int errno ; 
- scalar_t__ lstrcmpW (char*,char const*) ; 
- int /*<<< orphan*/  memcmp (char*,char const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int p_wcscpy_s (char*,int,char const*) ; 
- int p_wcsncpy_s (char*,int,char const*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int wine_dbgstr_w (char*) ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int ARRAY_SIZE (char const*) ;
+ int EBADF ;
+ int EINVAL ;
+ int ERANGE ;
+ int STRUNCATE ;
+ int errno ;
+ scalar_t__ lstrcmpW (char*,char const*) ;
+ int memcmp (char*,char const*,int) ;
+ int ok (int,char*,...) ;
+ int p_wcscpy_s (char*,int,char const*) ;
+ int p_wcsncpy_s (char*,int,char const*,int) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (char*) ;
 
 __attribute__((used)) static void test_wcscpy_s(void)
 {
@@ -40,42 +40,42 @@ __attribute__((used)) static void test_wcscpy_s(void)
         return;
     }
 
-    /* Test NULL Dest */
+
     errno = EBADF;
-    ret = p_wcscpy_s(NULL, 18, szLongText);
+    ret = p_wcscpy_s(((void*)0), 18, szLongText);
     ok(ret == EINVAL, "p_wcscpy_s expect EINVAL got %d\n", ret);
     ok(errno == EINVAL, "expected errno EINVAL got %d\n", errno);
 
-    /* Test NULL Source */
+
     errno = EBADF;
     szDest[0] = 'A';
-    ret = p_wcscpy_s(szDest, 18, NULL);
+    ret = p_wcscpy_s(szDest, 18, ((void*)0));
     ok(ret == EINVAL, "expected EINVAL got %d\n", ret);
     ok(errno == EINVAL, "expected errno EINVAL got %d\n", errno);
     ok(szDest[0] == 0, "szDest[0] not 0, got %c\n", szDest[0]);
 
-    /* Test invalid size */
+
     errno = EBADF;
     szDest[0] = 'A';
     ret = p_wcscpy_s(szDest, 0, szLongText);
-    /* Later versions changed the return value for this case to EINVAL,
-     * and don't modify the result if the dest size is 0.
-     */
+
+
+
     ok(ret == ERANGE || ret == EINVAL, "expected ERANGE/EINVAL got %d\n", ret);
     ok(errno == ERANGE || errno == EINVAL, "expected errno ERANGE/EINVAL got %d\n", errno);
     ok(szDest[0] == 0 || ret == EINVAL, "szDest[0] not 0\n");
 
-    /* Copy same buffer size */
+
     ret = p_wcscpy_s(szDest, 18, szLongText);
     ok(ret == 0, "expected 0 got %d\n", ret);
     ok(lstrcmpW(szDest, szLongText) == 0, "szDest != szLongText\n");
 
-    /* dest == source */
+
     ret = p_wcscpy_s(szDest, 18, szDest);
     ok(ret == 0, "expected 0 got %d\n", ret);
     ok(lstrcmpW(szDest, szLongText) == 0, "szDest != szLongText\n");
 
-    /* Copy smaller buffer size */
+
     errno = EBADF;
     szDest[0] = 'A';
     ret = p_wcscpy_s(szDestShort, 8, szLongText);
@@ -89,16 +89,16 @@ __attribute__((used)) static void test_wcscpy_s(void)
         return;
     }
 
-    ret = p_wcsncpy_s(NULL, 18, szLongText, ARRAY_SIZE(szLongText));
+    ret = p_wcsncpy_s(((void*)0), 18, szLongText, ARRAY_SIZE(szLongText));
     ok(ret == EINVAL, "p_wcsncpy_s expect EINVAL got %d\n", ret);
 
     szDest[0] = 'A';
-    ret = p_wcsncpy_s(szDest, 18, NULL, 1);
+    ret = p_wcsncpy_s(szDest, 18, ((void*)0), 1);
     ok(ret == EINVAL, "expected EINVAL got %d\n", ret);
     ok(szDest[0] == 0, "szDest[0] not 0\n");
 
     szDest[0] = 'A';
-    ret = p_wcsncpy_s(szDest, 18, NULL, 0);
+    ret = p_wcsncpy_s(szDest, 18, ((void*)0), 0);
     ok(ret == 0, "expected ERROR_SUCCESS got %d\n", ret);
     ok(szDest[0] == 0, "szDest[0] not 0\n");
 
@@ -122,7 +122,7 @@ __attribute__((used)) static void test_wcscpy_s(void)
     ok(szDest[4] == 0, "szDest[4] not 0\n");
     ok(!memcmp(szDest, szLongText, 4*sizeof(WCHAR)), "szDest = %s\n", wine_dbgstr_w(szDest));
 
-    ret = p_wcsncpy_s(NULL, 0, (void*)0xdeadbeef, 0);
+    ret = p_wcsncpy_s(((void*)0), 0, (void*)0xdeadbeef, 0);
     ok(ret == 0, "ret = %d\n", ret);
 
     szDestShort[0] = '1';

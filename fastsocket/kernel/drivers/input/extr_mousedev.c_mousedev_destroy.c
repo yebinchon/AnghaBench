@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mousedev {scalar_t__ minor; int /*<<< orphan*/  dev; int /*<<< orphan*/  handle; } ;
 
-/* Variables and functions */
- scalar_t__ MOUSEDEV_MIX ; 
- int /*<<< orphan*/  device_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_unregister_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mousedev_cleanup (struct mousedev*) ; 
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ *) ; 
+
+
+
+struct mousedev {scalar_t__ minor; int dev; int handle; } ;
+
+
+ scalar_t__ MOUSEDEV_MIX ;
+ int device_del (int *) ;
+ int input_unregister_handle (int *) ;
+ int mousedev_cleanup (struct mousedev*) ;
+ int put_device (int *) ;
 
 __attribute__((used)) static void mousedev_destroy(struct mousedev *mousedev)
 {
-	device_del(&mousedev->dev);
-	mousedev_cleanup(mousedev);
-	if (mousedev->minor != MOUSEDEV_MIX)
-		input_unregister_handle(&mousedev->handle);
-	put_device(&mousedev->dev);
+ device_del(&mousedev->dev);
+ mousedev_cleanup(mousedev);
+ if (mousedev->minor != MOUSEDEV_MIX)
+  input_unregister_handle(&mousedev->handle);
+ put_device(&mousedev->dev);
 }

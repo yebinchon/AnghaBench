@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dma_pl330_desc {int /*<<< orphan*/  status; struct dma_pl330_chan* pchan; } ;
-struct dma_pl330_chan {int /*<<< orphan*/  task; int /*<<< orphan*/  lock; } ;
-typedef  enum pl330_op_err { ____Placeholder_pl330_op_err } pl330_op_err ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DONE ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+
+
+struct dma_pl330_desc {int status; struct dma_pl330_chan* pchan; } ;
+struct dma_pl330_chan {int task; int lock; } ;
+typedef enum pl330_op_err { ____Placeholder_pl330_op_err } pl330_op_err ;
+
+
+ int DONE ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int tasklet_schedule (int *) ;
 
 __attribute__((used)) static void dma_pl330_rqcb(struct dma_pl330_desc *desc, enum pl330_op_err err)
 {
-	struct dma_pl330_chan *pch;
-	unsigned long flags;
+ struct dma_pl330_chan *pch;
+ unsigned long flags;
 
-	if (!desc)
-		return;
+ if (!desc)
+  return;
 
-	pch = desc->pchan;
+ pch = desc->pchan;
 
-	/* If desc aborted */
-	if (!pch)
-		return;
 
-	spin_lock_irqsave(&pch->lock, flags);
+ if (!pch)
+  return;
 
-	desc->status = DONE;
+ spin_lock_irqsave(&pch->lock, flags);
 
-	spin_unlock_irqrestore(&pch->lock, flags);
+ desc->status = DONE;
 
-	tasklet_schedule(&pch->task);
+ spin_unlock_irqrestore(&pch->lock, flags);
+
+ tasklet_schedule(&pch->task);
 }

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_x__txn_id_t ;
-struct TYPE_4__ {void* offset; int item_count; TYPE_2__* items; int /*<<< orphan*/  type; void* size; int /*<<< orphan*/  fnv1_checksum; } ;
-typedef  TYPE_1__ svn_fs_x__p2l_entry_t ;
-struct TYPE_5__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ svn_fs_x__id_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  void* apr_off_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_FS_X__ITEM_INDEX_CHANGES ; 
- int /*<<< orphan*/  SVN_FS_X__ITEM_TYPE_CHANGES ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  store_l2p_index_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  store_p2l_index_entry (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_checksum__wrap_write_stream_fnv1a_32x4 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_x__write_changes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_get_offset (void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
+typedef int svn_fs_x__txn_id_t ;
+struct TYPE_4__ {void* offset; int item_count; TYPE_2__* items; int type; void* size; int fnv1_checksum; } ;
+typedef TYPE_1__ svn_fs_x__p2l_entry_t ;
+struct TYPE_5__ {int member_1; int member_0; } ;
+typedef TYPE_2__ svn_fs_x__id_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef void* apr_off_t ;
+typedef int apr_hash_t ;
+typedef int apr_file_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_FS_X__ITEM_INDEX_CHANGES ;
+ int SVN_FS_X__ITEM_TYPE_CHANGES ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int store_l2p_index_entry (int *,int ,void*,int ,int *) ;
+ int store_p2l_index_entry (int *,int ,TYPE_1__*,int *) ;
+ int * svn_checksum__wrap_write_stream_fnv1a_32x4 (int *,int ,int *) ;
+ int svn_fs_x__write_changes (int *,int *,int *,int ,int *) ;
+ int svn_io_file_get_offset (void**,int *,int *) ;
+ int svn_stream_close (int *) ;
+ int svn_stream_from_aprfile2 (int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 write_final_changed_path_info(apr_off_t *offset_p,
@@ -58,7 +58,7 @@ write_final_changed_path_info(apr_off_t *offset_p,
 
   SVN_ERR(svn_io_file_get_offset(&offset, file, scratch_pool));
 
-  /* write to target file & calculate checksum */
+
   stream = svn_checksum__wrap_write_stream_fnv1a_32x4(&entry.fnv1_checksum,
                          svn_stream_from_aprfile2(file, TRUE, scratch_pool),
                          scratch_pool);
@@ -68,7 +68,7 @@ write_final_changed_path_info(apr_off_t *offset_p,
 
   *offset_p = offset;
 
-  /* reference changes from the indexes */
+
   entry.offset = offset;
   SVN_ERR(svn_io_file_get_offset(&offset, file, scratch_pool));
   entry.size = offset - entry.offset;

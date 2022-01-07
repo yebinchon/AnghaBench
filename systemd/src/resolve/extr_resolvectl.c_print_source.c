@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  rtt_str ;
 
-/* Variables and functions */
- int FORMAT_TIMESTAMP_MAX ; 
- int SD_RESOLVED_AUTHENTICATED ; 
- int SD_RESOLVED_DNS ; 
- int SD_RESOLVED_LLMNR_IPV4 ; 
- int SD_RESOLVED_LLMNR_IPV6 ; 
- int SD_RESOLVED_MDNS_IPV4 ; 
- int SD_RESOLVED_MDNS_IPV6 ; 
- char* ansi_grey () ; 
- char* ansi_normal () ; 
- int /*<<< orphan*/  arg_legend ; 
- int /*<<< orphan*/  assert_se (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format_timespan (char*,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
- char* yes_no (int) ; 
+
+
+
+typedef int usec_t ;
+typedef int uint64_t ;
+typedef int rtt_str ;
+
+
+ int FORMAT_TIMESTAMP_MAX ;
+ int SD_RESOLVED_AUTHENTICATED ;
+ int SD_RESOLVED_DNS ;
+ int SD_RESOLVED_LLMNR_IPV4 ;
+ int SD_RESOLVED_LLMNR_IPV6 ;
+ int SD_RESOLVED_MDNS_IPV4 ;
+ int SD_RESOLVED_MDNS_IPV6 ;
+ char* ansi_grey () ;
+ char* ansi_normal () ;
+ int arg_legend ;
+ int assert_se (int ) ;
+ int format_timespan (char*,int,int ,int) ;
+ int printf (char*,char*,...) ;
+ char* yes_no (int) ;
 
 __attribute__((used)) static void print_source(uint64_t flags, usec_t rtt) {
         char rtt_str[FORMAT_TIMESTAMP_MAX];

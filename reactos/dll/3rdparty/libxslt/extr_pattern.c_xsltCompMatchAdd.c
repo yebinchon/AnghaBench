@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xsltStepOpPtr ;
-typedef  int /*<<< orphan*/  xsltStepOp ;
-typedef  TYPE_2__* xsltParserContextPtr ;
-typedef  scalar_t__ xsltOp ;
-typedef  TYPE_3__* xsltCompMatchPtr ;
-typedef  TYPE_4__* xmlXPathContextPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_17__ {int /*<<< orphan*/  errors; int /*<<< orphan*/  dict; int /*<<< orphan*/ * doc; } ;
-struct TYPE_16__ {int /*<<< orphan*/  dict; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xsltStepOpPtr ;
+typedef int xsltStepOp ;
+typedef TYPE_2__* xsltParserContextPtr ;
+typedef scalar_t__ xsltOp ;
+typedef TYPE_3__* xsltCompMatchPtr ;
+typedef TYPE_4__* xmlXPathContextPtr ;
+typedef int xmlChar ;
+struct TYPE_17__ {int errors; int dict; int * doc; } ;
+struct TYPE_16__ {int dict; int flags; } ;
 struct TYPE_15__ {int nbStep; int maxStep; TYPE_1__* steps; } ;
-struct TYPE_14__ {TYPE_5__* style; int /*<<< orphan*/  elem; int /*<<< orphan*/ * ctxt; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * comp; void* lenExtra; void* indexExtra; void* previousExtra; int /*<<< orphan*/ * value3; int /*<<< orphan*/ * value2; int /*<<< orphan*/ * value; scalar_t__ op; } ;
+struct TYPE_14__ {TYPE_5__* style; int elem; int * ctxt; } ;
+struct TYPE_13__ {int * comp; void* lenExtra; void* indexExtra; void* previousExtra; int * value3; int * value2; int * value; scalar_t__ op; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XML_XPATH_NOVAR ; 
- scalar_t__ XSLT_OP_PREDICATE ; 
- int /*<<< orphan*/  xmlFree (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlRealloc (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * xmlXPathCtxtCompile (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlXPathFreeContext (TYPE_4__*) ; 
- TYPE_4__* xmlXPathNewContext (int /*<<< orphan*/ *) ; 
- void* xsltAllocateExtra (TYPE_5__*) ; 
- void* xsltAllocateExtraCtxt (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xsltGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xsltGenericErrorContext ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
+
+ int XML_XPATH_NOVAR ;
+ scalar_t__ XSLT_OP_PREDICATE ;
+ int xmlFree (int *) ;
+ scalar_t__ xmlRealloc (TYPE_1__*,int) ;
+ int * xmlXPathCtxtCompile (TYPE_4__*,int *) ;
+ int xmlXPathFreeContext (TYPE_4__*) ;
+ TYPE_4__* xmlXPathNewContext (int *) ;
+ void* xsltAllocateExtra (TYPE_5__*) ;
+ void* xsltAllocateExtraCtxt (int *) ;
+ int xsltGenericError (int ,char*) ;
+ int xsltGenericErrorContext ;
+ int xsltTransformError (int *,TYPE_5__*,int ,char*) ;
 
 __attribute__((used)) static int
 xsltCompMatchAdd(xsltParserContextPtr ctxt, xsltCompMatchPtr comp,
@@ -49,63 +49,63 @@ xsltCompMatchAdd(xsltParserContextPtr ctxt, xsltCompMatchPtr comp,
     if (comp->nbStep >= comp->maxStep) {
         xsltStepOpPtr tmp;
 
-	tmp = (xsltStepOpPtr) xmlRealloc(comp->steps, comp->maxStep * 2 *
-	                                 sizeof(xsltStepOp));
-	if (tmp == NULL) {
-	    xsltGenericError(xsltGenericErrorContext,
-	     "xsltCompMatchAdd: memory re-allocation failure.\n");
-	    if (ctxt->style != NULL)
-		ctxt->style->errors++;
-	    if (value)
-	        xmlFree(value);
-	    if (value2)
-	        xmlFree(value2);
-	    return (-1);
-	}
+ tmp = (xsltStepOpPtr) xmlRealloc(comp->steps, comp->maxStep * 2 *
+                                  sizeof(xsltStepOp));
+ if (tmp == ((void*)0)) {
+     xsltGenericError(xsltGenericErrorContext,
+      "xsltCompMatchAdd: memory re-allocation failure.\n");
+     if (ctxt->style != ((void*)0))
+  ctxt->style->errors++;
+     if (value)
+         xmlFree(value);
+     if (value2)
+         xmlFree(value2);
+     return (-1);
+ }
         comp->maxStep *= 2;
-	comp->steps = tmp;
+ comp->steps = tmp;
     }
     comp->steps[comp->nbStep].op = op;
     comp->steps[comp->nbStep].value = value;
     comp->steps[comp->nbStep].value2 = value2;
-    comp->steps[comp->nbStep].value3 = NULL;
-    comp->steps[comp->nbStep].comp = NULL;
-    if (ctxt->ctxt != NULL) {
-	comp->steps[comp->nbStep].previousExtra =
-	    xsltAllocateExtraCtxt(ctxt->ctxt);
-	comp->steps[comp->nbStep].indexExtra =
-	    xsltAllocateExtraCtxt(ctxt->ctxt);
-	comp->steps[comp->nbStep].lenExtra =
-	    xsltAllocateExtraCtxt(ctxt->ctxt);
+    comp->steps[comp->nbStep].value3 = ((void*)0);
+    comp->steps[comp->nbStep].comp = ((void*)0);
+    if (ctxt->ctxt != ((void*)0)) {
+ comp->steps[comp->nbStep].previousExtra =
+     xsltAllocateExtraCtxt(ctxt->ctxt);
+ comp->steps[comp->nbStep].indexExtra =
+     xsltAllocateExtraCtxt(ctxt->ctxt);
+ comp->steps[comp->nbStep].lenExtra =
+     xsltAllocateExtraCtxt(ctxt->ctxt);
     } else {
-	comp->steps[comp->nbStep].previousExtra =
-	    xsltAllocateExtra(ctxt->style);
-	comp->steps[comp->nbStep].indexExtra =
-	    xsltAllocateExtra(ctxt->style);
-	comp->steps[comp->nbStep].lenExtra =
-	    xsltAllocateExtra(ctxt->style);
+ comp->steps[comp->nbStep].previousExtra =
+     xsltAllocateExtra(ctxt->style);
+ comp->steps[comp->nbStep].indexExtra =
+     xsltAllocateExtra(ctxt->style);
+ comp->steps[comp->nbStep].lenExtra =
+     xsltAllocateExtra(ctxt->style);
     }
     if (op == XSLT_OP_PREDICATE) {
-	xmlXPathContextPtr xctxt;
+ xmlXPathContextPtr xctxt;
 
-	if (ctxt->style != NULL)
-	    xctxt = xmlXPathNewContext(ctxt->style->doc);
-	else
-	    xctxt = xmlXPathNewContext(NULL);
-#ifdef XML_XPATH_NOVAR
-	if (novar != 0)
-	    xctxt->flags = XML_XPATH_NOVAR;
-#endif
-	if (ctxt->style != NULL)
-	    xctxt->dict = ctxt->style->dict;
-	comp->steps[comp->nbStep].comp = xmlXPathCtxtCompile(xctxt, value);
-	xmlXPathFreeContext(xctxt);
-	if (comp->steps[comp->nbStep].comp == NULL) {
-	    xsltTransformError(NULL, ctxt->style, ctxt->elem,
-		    "Failed to compile predicate\n");
-	    if (ctxt->style != NULL)
-		ctxt->style->errors++;
-	}
+ if (ctxt->style != ((void*)0))
+     xctxt = xmlXPathNewContext(ctxt->style->doc);
+ else
+     xctxt = xmlXPathNewContext(((void*)0));
+
+
+
+
+ if (ctxt->style != ((void*)0))
+     xctxt->dict = ctxt->style->dict;
+ comp->steps[comp->nbStep].comp = xmlXPathCtxtCompile(xctxt, value);
+ xmlXPathFreeContext(xctxt);
+ if (comp->steps[comp->nbStep].comp == ((void*)0)) {
+     xsltTransformError(((void*)0), ctxt->style, ctxt->elem,
+      "Failed to compile predicate\n");
+     if (ctxt->style != ((void*)0))
+  ctxt->style->errors++;
+ }
     }
     comp->nbStep++;
     return (0);

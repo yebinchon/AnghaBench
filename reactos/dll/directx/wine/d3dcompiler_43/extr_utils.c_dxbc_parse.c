@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dxbc {int dummy; } ;
-typedef  scalar_t__ SIZE_T ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ SIZE_T ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ TAG_DXBC ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_an (char const*,int) ; 
- int /*<<< orphan*/  dxbc_add_section (struct dxbc*,scalar_t__,char const*,scalar_t__) ; 
- int /*<<< orphan*/  dxbc_init (struct dxbc*,scalar_t__) ; 
- int /*<<< orphan*/  read_dword (char const**,scalar_t__*) ; 
- int /*<<< orphan*/  skip_dword_unknown (char const**,int) ; 
+
+ int D3DERR_INVALIDCALL ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ TAG_DXBC ;
+ int TRACE (char*,unsigned int,...) ;
+ int WARN (char*) ;
+ int debugstr_an (char const*,int) ;
+ int dxbc_add_section (struct dxbc*,scalar_t__,char const*,scalar_t__) ;
+ int dxbc_init (struct dxbc*,scalar_t__) ;
+ int read_dword (char const**,scalar_t__*) ;
+ int skip_dword_unknown (char const**,int) ;
 
 HRESULT dxbc_parse(const char *data, SIZE_T data_size, struct dxbc *dxbc)
 {
@@ -50,7 +50,7 @@ HRESULT dxbc_parse(const char *data, SIZE_T data_size, struct dxbc *dxbc)
         return E_FAIL;
     }
 
-    /* checksum? */
+
     skip_dword_unknown(&ptr, 4);
 
     skip_dword_unknown(&ptr, 1);

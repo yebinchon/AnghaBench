@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  AVHMAC ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_HMAC_SHA256 ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/ * av_hmac_alloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_hmac_final (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_hmac_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_hmac_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  av_hmac_update (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVHMAC ;
+
+
+ int AVERROR (int ) ;
+ int AV_HMAC_SHA256 ;
+ int ENOMEM ;
+ int * av_hmac_alloc (int ) ;
+ int av_hmac_final (int *,int *,int) ;
+ int av_hmac_free (int *) ;
+ int av_hmac_init (int *,int const*,int) ;
+ int av_hmac_update (int *,int const*,int) ;
 
 int ff_rtmp_calc_digest(const uint8_t *src, int len, int gap,
                         const uint8_t *key, int keylen, uint8_t *dst)
@@ -35,7 +35,7 @@ int ff_rtmp_calc_digest(const uint8_t *src, int len, int gap,
     av_hmac_init(hmac, key, keylen);
     if (gap <= 0) {
         av_hmac_update(hmac, src, len);
-    } else { //skip 32 bytes used for storing digest
+    } else {
         av_hmac_update(hmac, src, gap);
         av_hmac_update(hmac, src + gap + 32, len - gap - 32);
     }

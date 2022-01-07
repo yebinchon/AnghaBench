@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_5__ {TYPE_1__* AuthInfo; } ;
-struct TYPE_4__ {scalar_t__ AuthnSvc; scalar_t__ AuthnLevel; int /*<<< orphan*/  server_principal_name; } ;
-typedef  TYPE_2__ RpcConnection ;
-typedef  int /*<<< orphan*/  RPC_WSTR ;
-typedef  int /*<<< orphan*/  RPC_STATUS ;
-typedef  int /*<<< orphan*/ * RPC_AUTHZ_HANDLE ;
+struct TYPE_4__ {scalar_t__ AuthnSvc; scalar_t__ AuthnLevel; int server_principal_name; } ;
+typedef TYPE_2__ RpcConnection ;
+typedef int RPC_WSTR ;
+typedef int RPC_STATUS ;
+typedef int * RPC_AUTHZ_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  RPCRT4_strdupW (int /*<<< orphan*/ ) ; 
- scalar_t__ RPC_C_AUTHZ_NONE ; 
- int /*<<< orphan*/  RPC_S_BINDING_HAS_NO_AUTH ; 
- int /*<<< orphan*/  RPC_S_OK ; 
+
+ int ERROR_OUTOFMEMORY ;
+ int FIXME (char*,...) ;
+ int RPCRT4_strdupW (int ) ;
+ scalar_t__ RPC_C_AUTHZ_NONE ;
+ int RPC_S_BINDING_HAS_NO_AUTH ;
+ int RPC_S_OK ;
 
 RPC_STATUS RPCRT4_default_inquire_auth_client(
     RpcConnection *conn, RPC_AUTHZ_HANDLE *privs, RPC_WSTR *server_princ_name,
@@ -37,7 +37,7 @@ RPC_STATUS RPCRT4_default_inquire_auth_client(
     if (privs)
     {
         FIXME("privs not implemented\n");
-        *privs = NULL;
+        *privs = ((void*)0);
     }
     if (server_princ_name)
     {

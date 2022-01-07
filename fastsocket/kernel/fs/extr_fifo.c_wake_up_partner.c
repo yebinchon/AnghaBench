@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct inode {TYPE_1__* i_pipe; } ;
-struct TYPE_2__ {int /*<<< orphan*/  wait; } ;
+struct TYPE_2__ {int wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up_interruptible (int /*<<< orphan*/ *) ; 
+
+ int wake_up_interruptible (int *) ;
 
 __attribute__((used)) static void wake_up_partner(struct inode* inode)
 {
-	wake_up_interruptible(&inode->i_pipe->wait);
+ wake_up_interruptible(&inode->i_pipe->wait);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ACPI_SIZE ;
 
-/* Variables and functions */
- scalar_t__ memcmp (char*,char*,scalar_t__) ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef scalar_t__ ACPI_SIZE ;
+
+
+ scalar_t__ memcmp (char*,char*,scalar_t__) ;
+ scalar_t__ strlen (char*) ;
 
 char *
 strstr (
-    char                    *String1,
-    char                    *String2)
+    char *String1,
+    char *String2)
 {
-    ACPI_SIZE               Length;
+    ACPI_SIZE Length;
 
 
     Length = strlen (String2);
@@ -39,5 +39,5 @@ strstr (
         String1++;
     }
 
-    return (NULL);
+    return (((void*)0));
 }

@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int printf (char*,int) ;
+ int setlinebuf (int ) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_evfilt_proc () ;
+ int test_evfilt_read () ;
+ int test_evfilt_signal () ;
+ int test_evfilt_timer () ;
+ int test_evfilt_user () ;
+ int test_evfilt_vnode () ;
+ int test_kqueue () ;
+ int test_kqueue_close () ;
+ int testnum ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  setlinebuf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_evfilt_proc () ; 
- int /*<<< orphan*/  test_evfilt_read () ; 
- int /*<<< orphan*/  test_evfilt_signal () ; 
- int /*<<< orphan*/  test_evfilt_timer () ; 
- int /*<<< orphan*/  test_evfilt_user () ; 
- int /*<<< orphan*/  test_evfilt_vnode () ; 
- int /*<<< orphan*/  test_kqueue () ; 
- int /*<<< orphan*/  test_kqueue_close () ; 
- int testnum ; 
-
-int 
+int
 main(int argc, char **argv)
 {
     int test_proc = 1;
@@ -35,12 +27,12 @@ main(int argc, char **argv)
     int test_signal = 1;
     int test_vnode = 1;
     int test_timer = 1;
-#ifdef __FreeBSD__
-    int test_user = 1;
-#else
-    /* XXX-FIXME temporary */
+
+
+
+
     int test_user = 0;
-#endif
+
 
     while (argc) {
         if (strcmp(argv[0], "--no-proc") == 0)
@@ -59,31 +51,31 @@ main(int argc, char **argv)
         argc--;
     }
 
-    /*
-     * Some tests fork.  If output is fully buffered,
-     * the children inherit some buffered data and flush
-     * it when they exit, causing some data to be printed twice.
-     * Use line buffering to avoid this problem.
-     */
+
+
+
+
+
+
     setlinebuf(stdout);
     setlinebuf(stderr);
 
     test_kqueue();
     test_kqueue_close();
 
-    if (test_socket) 
+    if (test_socket)
         test_evfilt_read();
-    if (test_signal) 
+    if (test_signal)
         test_evfilt_signal();
-    if (test_vnode) 
+    if (test_vnode)
         test_evfilt_vnode();
-#if HAVE_EVFILT_USER
-    if (test_user) 
-        test_evfilt_user();
-#endif
-    if (test_timer) 
+
+
+
+
+    if (test_timer)
         test_evfilt_timer();
-    if (test_proc) 
+    if (test_proc)
         test_evfilt_proc();
 
     printf("\n---\n"

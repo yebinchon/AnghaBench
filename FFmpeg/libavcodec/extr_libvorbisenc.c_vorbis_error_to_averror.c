@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int AVERROR (int ) ;
+ int AVERROR_BUG ;
+ int AVERROR_UNKNOWN ;
+ int EINVAL ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_BUG ; 
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  EINVAL ; 
-#define  OV_EFAULT 130 
-#define  OV_EIMPL 129 
-#define  OV_EINVAL 128 
 
 __attribute__((used)) static int vorbis_error_to_averror(int ov_err)
 {
     switch (ov_err) {
-    case OV_EFAULT: return AVERROR_BUG;
-    case OV_EINVAL: return AVERROR(EINVAL);
-    case OV_EIMPL:  return AVERROR(EINVAL);
-    default:        return AVERROR_UNKNOWN;
+    case 130: return AVERROR_BUG;
+    case 128: return AVERROR(EINVAL);
+    case 129: return AVERROR(EINVAL);
+    default: return AVERROR_UNKNOWN;
     }
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  kwrite (int,char const*,int) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,void (*) (int const)) ; 
- int /*<<< orphan*/  sigusr1_cnt ; 
+
+
+
+typedef int message ;
+
+
+ int SIGUSR1 ;
+ int kwrite (int,char const*,int) ;
+ int signal (int ,void (*) (int const)) ;
+ int sigusr1_cnt ;
 
 __attribute__((used)) static void sigusr1_handler (const int sig) {
   static const char message[] = "got SIGUSR1.\n";

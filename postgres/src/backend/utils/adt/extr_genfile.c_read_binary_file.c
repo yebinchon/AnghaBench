@@ -1,111 +1,111 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {scalar_t__ st_size; } ;
-typedef  int /*<<< orphan*/  off_t ;
-typedef  scalar_t__ int64 ;
-typedef  int /*<<< orphan*/  bytea ;
-typedef  scalar_t__ Size ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int off_t ;
+typedef scalar_t__ int64 ;
+typedef int bytea ;
+typedef scalar_t__ Size ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * AllocateFile (char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ ENOENT ; 
- int /*<<< orphan*/  ERRCODE_INVALID_PARAMETER_VALUE ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  FreeFile (int /*<<< orphan*/ *) ; 
- scalar_t__ MaxAllocSize ; 
- int /*<<< orphan*/  PG_BINARY_R ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  SET_VARSIZE (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  VARDATA (int /*<<< orphan*/ *) ; 
- scalar_t__ VARHDRSZ ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode_for_file_access () ; 
- int /*<<< orphan*/  errmsg (char*,...) ; 
- scalar_t__ errno ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- size_t fread (int /*<<< orphan*/ ,int,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ fseeko (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ palloc (scalar_t__) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
+
+ int * AllocateFile (char const*,int ) ;
+ scalar_t__ ENOENT ;
+ int ERRCODE_INVALID_PARAMETER_VALUE ;
+ int ERROR ;
+ int FreeFile (int *) ;
+ scalar_t__ MaxAllocSize ;
+ int PG_BINARY_R ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int SET_VARSIZE (int *,scalar_t__) ;
+ int VARDATA (int *) ;
+ scalar_t__ VARHDRSZ ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errcode_for_file_access () ;
+ int errmsg (char*,...) ;
+ scalar_t__ errno ;
+ scalar_t__ ferror (int *) ;
+ size_t fread (int ,int,size_t,int *) ;
+ scalar_t__ fseeko (int *,int ,int ) ;
+ scalar_t__ palloc (scalar_t__) ;
+ scalar_t__ stat (char const*,struct stat*) ;
 
 __attribute__((used)) static bytea *
 read_binary_file(const char *filename, int64 seek_offset, int64 bytes_to_read,
-				 bool missing_ok)
+     bool missing_ok)
 {
-	bytea	   *buf;
-	size_t		nbytes;
-	FILE	   *file;
+ bytea *buf;
+ size_t nbytes;
+ FILE *file;
 
-	if (bytes_to_read < 0)
-	{
-		if (seek_offset < 0)
-			bytes_to_read = -seek_offset;
-		else
-		{
-			struct stat fst;
+ if (bytes_to_read < 0)
+ {
+  if (seek_offset < 0)
+   bytes_to_read = -seek_offset;
+  else
+  {
+   struct stat fst;
 
-			if (stat(filename, &fst) < 0)
-			{
-				if (missing_ok && errno == ENOENT)
-					return NULL;
-				else
-					ereport(ERROR,
-							(errcode_for_file_access(),
-							 errmsg("could not stat file \"%s\": %m", filename)));
-			}
+   if (stat(filename, &fst) < 0)
+   {
+    if (missing_ok && errno == ENOENT)
+     return ((void*)0);
+    else
+     ereport(ERROR,
+       (errcode_for_file_access(),
+        errmsg("could not stat file \"%s\": %m", filename)));
+   }
 
-			bytes_to_read = fst.st_size - seek_offset;
-		}
-	}
+   bytes_to_read = fst.st_size - seek_offset;
+  }
+ }
 
-	/* not sure why anyone thought that int64 length was a good idea */
-	if (bytes_to_read > (MaxAllocSize - VARHDRSZ))
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("requested length too large")));
 
-	if ((file = AllocateFile(filename, PG_BINARY_R)) == NULL)
-	{
-		if (missing_ok && errno == ENOENT)
-			return NULL;
-		else
-			ereport(ERROR,
-					(errcode_for_file_access(),
-					 errmsg("could not open file \"%s\" for reading: %m",
-							filename)));
-	}
+ if (bytes_to_read > (MaxAllocSize - VARHDRSZ))
+  ereport(ERROR,
+    (errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+     errmsg("requested length too large")));
 
-	if (fseeko(file, (off_t) seek_offset,
-			   (seek_offset >= 0) ? SEEK_SET : SEEK_END) != 0)
-		ereport(ERROR,
-				(errcode_for_file_access(),
-				 errmsg("could not seek in file \"%s\": %m", filename)));
+ if ((file = AllocateFile(filename, PG_BINARY_R)) == ((void*)0))
+ {
+  if (missing_ok && errno == ENOENT)
+   return ((void*)0);
+  else
+   ereport(ERROR,
+     (errcode_for_file_access(),
+      errmsg("could not open file \"%s\" for reading: %m",
+       filename)));
+ }
 
-	buf = (bytea *) palloc((Size) bytes_to_read + VARHDRSZ);
+ if (fseeko(file, (off_t) seek_offset,
+      (seek_offset >= 0) ? SEEK_SET : SEEK_END) != 0)
+  ereport(ERROR,
+    (errcode_for_file_access(),
+     errmsg("could not seek in file \"%s\": %m", filename)));
 
-	nbytes = fread(VARDATA(buf), 1, (size_t) bytes_to_read, file);
+ buf = (bytea *) palloc((Size) bytes_to_read + VARHDRSZ);
 
-	if (ferror(file))
-		ereport(ERROR,
-				(errcode_for_file_access(),
-				 errmsg("could not read file \"%s\": %m", filename)));
+ nbytes = fread(VARDATA(buf), 1, (size_t) bytes_to_read, file);
 
-	SET_VARSIZE(buf, nbytes + VARHDRSZ);
+ if (ferror(file))
+  ereport(ERROR,
+    (errcode_for_file_access(),
+     errmsg("could not read file \"%s\": %m", filename)));
 
-	FreeFile(file);
+ SET_VARSIZE(buf, nbytes + VARHDRSZ);
 
-	return buf;
+ FreeFile(file);
+
+ return buf;
 }

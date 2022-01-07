@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct opncls {scalar_t__ (* pread ) (struct bfd*,int /*<<< orphan*/ ,void*,scalar_t__,int /*<<< orphan*/ ) ;int /*<<< orphan*/  where; int /*<<< orphan*/  stream; } ;
+
+
+
+
+struct opncls {scalar_t__ (* pread ) (struct bfd*,int ,void*,scalar_t__,int ) ;int where; int stream; } ;
 struct bfd {struct opncls* iostream; } ;
-typedef  scalar_t__ file_ptr ;
+typedef scalar_t__ file_ptr ;
 
-/* Variables and functions */
- scalar_t__ stub1 (struct bfd*,int /*<<< orphan*/ ,void*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ stub1 (struct bfd*,int ,void*,scalar_t__,int ) ;
 
 __attribute__((used)) static file_ptr
 opncls_bread (struct bfd *abfd, void *buf, file_ptr nbytes)

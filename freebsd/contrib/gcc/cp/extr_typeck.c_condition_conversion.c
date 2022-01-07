@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  boolean_type_node ; 
- int /*<<< orphan*/  fold_build_cleanup_point_expr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perform_implicit_conversion (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ processing_template_decl ; 
+
+
+
+typedef int tree ;
+
+
+ int boolean_type_node ;
+ int fold_build_cleanup_point_expr (int ,int ) ;
+ int perform_implicit_conversion (int ,int ) ;
+ scalar_t__ processing_template_decl ;
 
 tree
 condition_conversion (tree expr)

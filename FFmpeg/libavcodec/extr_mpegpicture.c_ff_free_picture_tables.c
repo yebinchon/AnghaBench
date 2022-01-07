@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * ref_index_buf; int /*<<< orphan*/ * motion_val_buf; int /*<<< orphan*/  mb_type_buf; int /*<<< orphan*/  qscale_table_buf; int /*<<< orphan*/  mbskip_table_buf; int /*<<< orphan*/  mb_mean_buf; int /*<<< orphan*/  mc_mb_var_buf; int /*<<< orphan*/  mb_var_buf; scalar_t__ alloc_mb_height; scalar_t__ alloc_mb_width; } ;
-typedef  TYPE_1__ Picture ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_buffer_unref (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * ref_index_buf; int * motion_val_buf; int mb_type_buf; int qscale_table_buf; int mbskip_table_buf; int mb_mean_buf; int mc_mb_var_buf; int mb_var_buf; scalar_t__ alloc_mb_height; scalar_t__ alloc_mb_width; } ;
+typedef TYPE_1__ Picture ;
+
+
+ int av_buffer_unref (int *) ;
 
 void ff_free_picture_tables(Picture *pic)
 {
     int i;
 
-    pic->alloc_mb_width  =
+    pic->alloc_mb_width =
     pic->alloc_mb_height = 0;
 
     av_buffer_unref(&pic->mb_var_buf);

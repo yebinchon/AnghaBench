@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* block128_f ) (unsigned char*,unsigned char*,void*) ;
 
-/* Variables and functions */
- size_t CRYPTO128_WRAP_MAX ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  memmove (unsigned char*,unsigned char const*,size_t) ; 
+
+
+
+typedef int (* block128_f ) (unsigned char*,unsigned char*,void*) ;
+
+
+ size_t CRYPTO128_WRAP_MAX ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int memmove (unsigned char*,unsigned char const*,size_t) ;
 
 __attribute__((used)) static size_t crypto_128_unwrap_raw(void *key, unsigned char *iv,
                                     unsigned char *out,

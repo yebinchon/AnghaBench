@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
-struct TYPE_8__ {int i_nb_inputs; int /*<<< orphan*/  b_add_stream_any_time; TYPE_3__** pp_inputs; } ;
-typedef  TYPE_2__ sout_mux_t ;
-struct TYPE_9__ {int /*<<< orphan*/  p_fifo; TYPE_1__* p_fmt; } ;
-typedef  TYPE_3__ sout_input_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
+struct TYPE_8__ {int i_nb_inputs; int b_add_stream_any_time; TYPE_3__** pp_inputs; } ;
+typedef TYPE_2__ sout_mux_t ;
+struct TYPE_9__ {int p_fifo; TYPE_1__* p_fmt; } ;
+typedef TYPE_3__ sout_input_t ;
 struct TYPE_10__ {scalar_t__ i_dts; } ;
-typedef  TYPE_4__ block_t ;
+typedef TYPE_4__ block_t ;
 struct TYPE_7__ {scalar_t__ i_cat; } ;
 
-/* Variables and functions */
- scalar_t__ SPU_ES ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned int block_FifoCount (int /*<<< orphan*/ ) ; 
- TYPE_4__* block_FifoShow (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ SPU_ES ;
+ int assert (int) ;
+ unsigned int block_FifoCount (int ) ;
+ TYPE_4__* block_FifoShow (int ) ;
 
 int sout_MuxGetStream( sout_mux_t *p_mux, unsigned i_blocks, vlc_tick_t *pi_dts )
 {
     vlc_tick_t i_dts = 0;
-    int     i_stream = -1;
+    int i_stream = -1;
 
     assert( i_blocks > 0 );
 
@@ -48,7 +48,7 @@ int sout_MuxGetStream( sout_mux_t *p_mux, unsigned i_blocks, vlc_tick_t *pi_dts 
             {
                 return -1;
             }
-            /* FIXME: SPU muxing */
+
             continue;
         }
 
@@ -56,7 +56,7 @@ int sout_MuxGetStream( sout_mux_t *p_mux, unsigned i_blocks, vlc_tick_t *pi_dts 
         if( i_stream < 0 || p_data->i_dts < i_dts )
         {
             i_stream = i;
-            i_dts    = p_data->i_dts;
+            i_dts = p_data->i_dts;
         }
     }
 

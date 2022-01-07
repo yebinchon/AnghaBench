@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int usec_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int usec_t ;
 struct TYPE_5__ {unsigned long long tv_sec; int tv_usec; } ;
 struct TYPE_4__ {unsigned long long tv_sec; int tv_usec; } ;
 struct rusage {TYPE_2__ ru_stime; TYPE_1__ ru_utime; } ;
 struct mountinfo {int flags; struct mountinfo* next; } ;
-typedef  int /*<<< orphan*/  heartbeat_t ;
+typedef int heartbeat_t ;
 struct TYPE_6__ {int rrd_update_every; } ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
 
-/* Variables and functions */
- char* CONFIG_SECTION_DISKSPACE ; 
- int MOUNTINFO_IS_BIND ; 
- int MOUNTINFO_IS_DUMMY ; 
- int NETDATA_CHART_PRIO_NETDATA_DISKSPACE ; 
- int /*<<< orphan*/  PLUGIN_DISKSPACE_NAME ; 
- int /*<<< orphan*/  RRDSET_TYPE_AREA ; 
- int /*<<< orphan*/  RRDSET_TYPE_STACKED ; 
- int /*<<< orphan*/  RRD_ALGORITHM_ABSOLUTE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
- int /*<<< orphan*/  RUSAGE_THREAD ; 
- int USEC_PER_SEC ; 
- int check_for_new_mountpoints_every ; 
- int cleanup_mount_points ; 
- int config_get_boolean (char*,char*,int) ; 
- scalar_t__ config_get_number (char*,char*,int) ; 
- scalar_t__ dict_mountpoints ; 
- int /*<<< orphan*/  dictionary_get_all (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct mountinfo* disk_mountinfo_root ; 
- int /*<<< orphan*/  diskspace_main_cleanup ; 
- int /*<<< orphan*/  do_disk_space_stats (struct mountinfo*,int) ; 
- int /*<<< orphan*/  getrusage (int /*<<< orphan*/ ,struct rusage*) ; 
- int /*<<< orphan*/  heartbeat_init (int /*<<< orphan*/ *) ; 
- int heartbeat_monotonic_dt_to_now_usec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  heartbeat_next (int /*<<< orphan*/ *,int) ; 
- TYPE_3__* localhost ; 
- int /*<<< orphan*/  mount_point_cleanup ; 
- int /*<<< orphan*/  mountinfo_reload (int /*<<< orphan*/ ) ; 
- int netdata_exit ; 
- int /*<<< orphan*/  netdata_thread_cleanup_pop (int) ; 
- int /*<<< orphan*/  netdata_thread_cleanup_push (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ char* CONFIG_SECTION_DISKSPACE ;
+ int MOUNTINFO_IS_BIND ;
+ int MOUNTINFO_IS_DUMMY ;
+ int NETDATA_CHART_PRIO_NETDATA_DISKSPACE ;
+ int PLUGIN_DISKSPACE_NAME ;
+ int RRDSET_TYPE_AREA ;
+ int RRDSET_TYPE_STACKED ;
+ int RRD_ALGORITHM_ABSOLUTE ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+ int RUSAGE_THREAD ;
+ int USEC_PER_SEC ;
+ int check_for_new_mountpoints_every ;
+ int cleanup_mount_points ;
+ int config_get_boolean (char*,char*,int) ;
+ scalar_t__ config_get_number (char*,char*,int) ;
+ scalar_t__ dict_mountpoints ;
+ int dictionary_get_all (scalar_t__,int ,int *) ;
+ struct mountinfo* disk_mountinfo_root ;
+ int diskspace_main_cleanup ;
+ int do_disk_space_stats (struct mountinfo*,int) ;
+ int getrusage (int ,struct rusage*) ;
+ int heartbeat_init (int *) ;
+ int heartbeat_monotonic_dt_to_now_usec (int *) ;
+ int heartbeat_next (int *,int) ;
+ TYPE_3__* localhost ;
+ int mount_point_cleanup ;
+ int mountinfo_reload (int ) ;
+ int netdata_exit ;
+ int netdata_thread_cleanup_pop (int) ;
+ int netdata_thread_cleanup_push (int ,void*) ;
+ int * rrddim_add (int *,char*,int *,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,int) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,int ,int *,int,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_next (int *) ;
+ scalar_t__ unlikely (int) ;
 
 void *diskspace_main(void *ptr) {
     netdata_thread_cleanup_push(diskspace_main_cleanup, ptr);
@@ -84,19 +84,19 @@ void *diskspace_main(void *ptr) {
     heartbeat_init(&hb);
     while(!netdata_exit) {
         duration = heartbeat_monotonic_dt_to_now_usec(&hb);
-        /* usec_t hb_dt = */ heartbeat_next(&hb, step);
+                             heartbeat_next(&hb, step);
 
         if(unlikely(netdata_exit)) break;
 
 
-        // --------------------------------------------------------------------------
-        // this is smart enough not to reload it every time
+
+
 
         mountinfo_reload(0);
 
 
-        // --------------------------------------------------------------------------
-        // disk space metrics
+
+
 
         struct mountinfo *mi;
         for(mi = disk_mountinfo_root; mi; mi = mi->next) {
@@ -111,13 +111,13 @@ void *diskspace_main(void *ptr) {
         if(unlikely(netdata_exit)) break;
 
         if(dict_mountpoints)
-            dictionary_get_all(dict_mountpoints, mount_point_cleanup, NULL);
+            dictionary_get_all(dict_mountpoints, mount_point_cleanup, ((void*)0));
 
         if(vdo_cpu_netdata) {
-            static RRDSET *stcpu_thread = NULL, *st_duration = NULL;
-            static RRDDIM *rd_user = NULL, *rd_system = NULL, *rd_duration = NULL;
+            static RRDSET *stcpu_thread = ((void*)0), *st_duration = ((void*)0);
+            static RRDDIM *rd_user = ((void*)0), *rd_system = ((void*)0), *rd_duration = ((void*)0);
 
-            // ----------------------------------------------------------------
+
 
             getrusage(RUSAGE_THREAD, &thread);
 
@@ -125,20 +125,20 @@ void *diskspace_main(void *ptr) {
                 stcpu_thread = rrdset_create_localhost(
                         "netdata"
                         , "plugin_diskspace"
-                        , NULL
+                        , ((void*)0)
                         , "diskspace"
-                        , NULL
+                        , ((void*)0)
                         , "NetData Disk Space Plugin CPU usage"
                         , "milliseconds/s"
                         , PLUGIN_DISKSPACE_NAME
-                        , NULL
+                        , ((void*)0)
                         , NETDATA_CHART_PRIO_NETDATA_DISKSPACE
                         , update_every
                         , RRDSET_TYPE_STACKED
                 );
 
-                rd_user   = rrddim_add(stcpu_thread, "user", NULL, 1, 1000, RRD_ALGORITHM_INCREMENTAL);
-                rd_system = rrddim_add(stcpu_thread, "system", NULL, 1, 1000, RRD_ALGORITHM_INCREMENTAL);
+                rd_user = rrddim_add(stcpu_thread, "user", ((void*)0), 1, 1000, RRD_ALGORITHM_INCREMENTAL);
+                rd_system = rrddim_add(stcpu_thread, "system", ((void*)0), 1, 1000, RRD_ALGORITHM_INCREMENTAL);
             }
             else
                 rrdset_next(stcpu_thread);
@@ -147,25 +147,25 @@ void *diskspace_main(void *ptr) {
             rrddim_set_by_pointer(stcpu_thread, rd_system, thread.ru_stime.tv_sec * 1000000ULL + thread.ru_stime.tv_usec);
             rrdset_done(stcpu_thread);
 
-            // ----------------------------------------------------------------
+
 
             if(unlikely(!st_duration)) {
                 st_duration = rrdset_create_localhost(
                         "netdata"
                         , "plugin_diskspace_dt"
-                        , NULL
+                        , ((void*)0)
                         , "diskspace"
-                        , NULL
+                        , ((void*)0)
                         , "NetData Disk Space Plugin Duration"
                         , "milliseconds/run"
                         , PLUGIN_DISKSPACE_NAME
-                        , NULL
+                        , ((void*)0)
                         , 132021
                         , update_every
                         , RRDSET_TYPE_AREA
                 );
 
-                rd_duration = rrddim_add(st_duration, "duration", NULL, 1, 1000, RRD_ALGORITHM_ABSOLUTE);
+                rd_duration = rrddim_add(st_duration, "duration", ((void*)0), 1, 1000, RRD_ALGORITHM_ABSOLUTE);
             }
             else
                 rrdset_next(st_duration);
@@ -173,12 +173,12 @@ void *diskspace_main(void *ptr) {
             rrddim_set_by_pointer(st_duration, rd_duration, duration);
             rrdset_done(st_duration);
 
-            // ----------------------------------------------------------------
+
 
             if(unlikely(netdata_exit)) break;
         }
     }
 
     netdata_thread_cleanup_pop(1);
-    return NULL;
+    return ((void*)0);
 }

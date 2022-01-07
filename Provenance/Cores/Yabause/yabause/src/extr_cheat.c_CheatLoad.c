@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  cheatlist_struct ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int cheatlist_struct ;
 struct TYPE_7__ {int type; int addr; int val; int enable; } ;
-struct TYPE_6__ {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ IOCheck_struct ;
-typedef  int /*<<< orphan*/  FILE ;
+struct TYPE_6__ {int member_1; int member_0; } ;
+typedef TYPE_1__ IOCheck_struct ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheatChangeDescriptionByIndex (int,char*) ; 
- int /*<<< orphan*/  CheatClearCodes () ; 
- int /*<<< orphan*/  DoubleWordSwap (int) ; 
- TYPE_3__* cheatlist ; 
- int cheatsize ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- int numcheats ; 
- TYPE_3__* realloc (TYPE_3__*,int) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  yread (TYPE_1__*,void*,int,int,int /*<<< orphan*/ *) ; 
+
+ int CheatChangeDescriptionByIndex (int,char*) ;
+ int CheatClearCodes () ;
+ int DoubleWordSwap (int) ;
+ TYPE_3__* cheatlist ;
+ int cheatsize ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int memset (void*,int ,int) ;
+ int numcheats ;
+ TYPE_3__* realloc (TYPE_3__*,int) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int yread (TYPE_1__*,void*,int,int,int *) ;
 
 int CheatLoad(const char *filename)
 {
@@ -45,7 +45,7 @@ int CheatLoad(const char *filename)
    if (!filename)
       return -1;
 
-   if ((fp = fopen(filename, "rb")) == NULL)
+   if ((fp = fopen(filename, "rb")) == ((void*)0))
       return -1;
 
    yread(&check, (void *)id, 1, 4, fp);
@@ -58,9 +58,9 @@ int CheatLoad(const char *filename)
    CheatClearCodes();
 
    yread(&check, (void *)&numcheats, sizeof(int), 1, fp);
-#ifndef WORDS_BIGENDIAN
+
    DoubleWordSwap(numcheats);
-#endif
+
 
    if (numcheats >= cheatsize)
    {
@@ -80,12 +80,12 @@ int CheatLoad(const char *filename)
       yread(&check, (void *)desc, sizeof(char), descsize, fp);
       CheatChangeDescriptionByIndex(i, desc);
       yread(&check, (void *)&cheatlist[i].enable, sizeof(int), 1, fp);
-#ifndef WORDS_BIGENDIAN
+
       DoubleWordSwap(cheatlist[i].type);
       DoubleWordSwap(cheatlist[i].addr);
       DoubleWordSwap(cheatlist[i].val);
       DoubleWordSwap(cheatlist[i].enable);
-#endif
+
    }
 
    fclose (fp);

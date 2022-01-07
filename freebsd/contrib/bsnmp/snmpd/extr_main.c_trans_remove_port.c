@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tport {TYPE_1__* transport; } ;
-struct TYPE_2__ {int /*<<< orphan*/  table; } ;
+struct TYPE_2__ {int table; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct tport*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link ; 
+
+ int TAILQ_REMOVE (int *,struct tport*,int ) ;
+ int link ;
 
 void
 trans_remove_port(struct tport *port)
 {
 
-	TAILQ_REMOVE(&port->transport->table, port, link);
+ TAILQ_REMOVE(&port->transport->table, port, link);
 }

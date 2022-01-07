@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct priv {int* imgfmts; size_t num_imgfmts; int* subfmts; int force_update; } ;
 struct mp_autoconvert {TYPE_1__* f; } ;
 struct TYPE_2__ {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_TARRAY_GROW (struct priv*,int*,size_t) ; 
+
+ int MP_TARRAY_GROW (struct priv*,int*,size_t) ;
 
 void mp_autoconvert_add_imgfmt(struct mp_autoconvert *c, int imgfmt, int subfmt)
 {
@@ -29,5 +29,5 @@ void mp_autoconvert_add_imgfmt(struct mp_autoconvert *c, int imgfmt, int subfmt)
     p->subfmts[p->num_imgfmts] = subfmt;
 
     p->num_imgfmts += 1;
-    p->force_update = true;
+    p->force_update = 1;
 }

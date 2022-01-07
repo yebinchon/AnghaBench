@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * v; int /*<<< orphan*/ * s; int /*<<< orphan*/ * g; int /*<<< orphan*/ * N; int /*<<< orphan*/ * info; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * v; int * s; int * g; int * N; int * info; } ;
 struct TYPE_5__ {TYPE_1__ srp_ctx; } ;
-typedef  TYPE_2__ SSL ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
+typedef TYPE_2__ SSL ;
+typedef int const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- void* BN_dup (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OPENSSL_strdup (char*) ; 
+
+ int BN_copy (int *,int const*) ;
+ void* BN_dup (int const*) ;
+ int BN_free (int *) ;
+ int OPENSSL_free (int *) ;
+ int * OPENSSL_strdup (char*) ;
 
 int SSL_set_srp_server_param(SSL *s, const BIGNUM *N, const BIGNUM *g,
                              BIGNUM *sa, BIGNUM *v, char *info)
 {
-    if (N != NULL) {
-        if (s->srp_ctx.N != NULL) {
+    if (N != ((void*)0)) {
+        if (s->srp_ctx.N != ((void*)0)) {
             if (!BN_copy(s->srp_ctx.N, N)) {
                 BN_free(s->srp_ctx.N);
-                s->srp_ctx.N = NULL;
+                s->srp_ctx.N = ((void*)0);
             }
         } else
             s->srp_ctx.N = BN_dup(N);
     }
-    if (g != NULL) {
-        if (s->srp_ctx.g != NULL) {
+    if (g != ((void*)0)) {
+        if (s->srp_ctx.g != ((void*)0)) {
             if (!BN_copy(s->srp_ctx.g, g)) {
                 BN_free(s->srp_ctx.g);
-                s->srp_ctx.g = NULL;
+                s->srp_ctx.g = ((void*)0);
             }
         } else
             s->srp_ctx.g = BN_dup(g);
     }
-    if (sa != NULL) {
-        if (s->srp_ctx.s != NULL) {
+    if (sa != ((void*)0)) {
+        if (s->srp_ctx.s != ((void*)0)) {
             if (!BN_copy(s->srp_ctx.s, sa)) {
                 BN_free(s->srp_ctx.s);
-                s->srp_ctx.s = NULL;
+                s->srp_ctx.s = ((void*)0);
             }
         } else
             s->srp_ctx.s = BN_dup(sa);
     }
-    if (v != NULL) {
-        if (s->srp_ctx.v != NULL) {
+    if (v != ((void*)0)) {
+        if (s->srp_ctx.v != ((void*)0)) {
             if (!BN_copy(s->srp_ctx.v, v)) {
                 BN_free(s->srp_ctx.v);
-                s->srp_ctx.v = NULL;
+                s->srp_ctx.v = ((void*)0);
             }
         } else
             s->srp_ctx.v = BN_dup(v);
     }
-    if (info != NULL) {
+    if (info != ((void*)0)) {
         if (s->srp_ctx.info)
             OPENSSL_free(s->srp_ctx.info);
-        if ((s->srp_ctx.info = OPENSSL_strdup(info)) == NULL)
+        if ((s->srp_ctx.info = OPENSSL_strdup(info)) == ((void*)0))
             return -1;
     }
 

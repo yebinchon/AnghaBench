@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct recv_data {int /*<<< orphan*/  strm; int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct latch_data {int /*<<< orphan*/  rq; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct recv_data {int strm; int (* func ) (int ,int ) ;} ;
+struct latch_data {int rq; } ;
+typedef int strm_value ;
 struct TYPE_3__ {struct latch_data* data; } ;
-typedef  TYPE_1__ strm_stream ;
+typedef TYPE_1__ strm_stream ;
 
-/* Variables and functions */
- int STRM_OK ; 
- int /*<<< orphan*/  free (struct recv_data*) ; 
- struct recv_data* strm_queue_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int STRM_OK ;
+ int free (struct recv_data*) ;
+ struct recv_data* strm_queue_get (int ) ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static int
 latch_close(strm_stream* strm, strm_value data)

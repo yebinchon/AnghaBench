@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
 struct asus_oled_dev {int dummy; } ;
-typedef  size_t ssize_t ;
+typedef size_t ssize_t ;
 
-/* Variables and functions */
- scalar_t__ dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  enable_oled (struct asus_oled_dev*,int) ; 
- int strict_strtoul (char const*,int,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ dev_get_drvdata (struct device*) ;
+ int enable_oled (struct asus_oled_dev*,int) ;
+ int strict_strtoul (char const*,int,int *) ;
 
 __attribute__((used)) static ssize_t class_set_enabled(struct device *device,
-				 struct device_attribute *attr,
-				 const char *buf, size_t count)
+     struct device_attribute *attr,
+     const char *buf, size_t count)
 {
-	struct asus_oled_dev *odev =
-		(struct asus_oled_dev *) dev_get_drvdata(device);
+ struct asus_oled_dev *odev =
+  (struct asus_oled_dev *) dev_get_drvdata(device);
 
-	int temp = strict_strtoul(buf, 10, NULL);
+ int temp = strict_strtoul(buf, 10, ((void*)0));
 
-	enable_oled(odev, temp);
+ enable_oled(odev, temp);
 
-	return count;
+ return count;
 }

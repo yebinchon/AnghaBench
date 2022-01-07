@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
-struct TYPE_5__ {int /*<<< orphan*/ * lab2; int /*<<< orphan*/ * lab1; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int symbolS ;
+struct TYPE_5__ {int * lab2; int * lab1; } ;
 struct TYPE_6__ {TYPE_1__ ll; } ;
-struct cfi_insn_data {TYPE_2__ u; int /*<<< orphan*/  insn; } ;
+struct cfi_insn_data {TYPE_2__ u; int insn; } ;
 struct TYPE_8__ {TYPE_3__* frch_cfi_data; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * last_address; } ;
+struct TYPE_7__ {int * last_address; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DW_CFA_advance_loc ; 
- struct cfi_insn_data* alloc_cfi_insn_data () ; 
- TYPE_4__* frchain_now ; 
+
+ int DW_CFA_advance_loc ;
+ struct cfi_insn_data* alloc_cfi_insn_data () ;
+ TYPE_4__* frchain_now ;
 
 void
 cfi_add_advance_loc (symbolS *label)

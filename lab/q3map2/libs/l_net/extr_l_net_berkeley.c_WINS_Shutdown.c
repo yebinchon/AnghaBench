@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  WINS_CloseSocket (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WinPrint (char*) ; 
- int /*<<< orphan*/  net_controlsocket ; 
+ int WINS_CloseSocket (int ) ;
+ int WinPrint (char*) ;
+ int net_controlsocket ;
 
 void WINS_Shutdown( void ){
-	//WINS_Listen(0);
-	WINS_CloseSocket( net_controlsocket );
-//	WSACleanup();
-	//
-	WinPrint( "Winsock Shutdown\n" );
+
+ WINS_CloseSocket( net_controlsocket );
+
+
+ WinPrint( "Winsock Shutdown\n" );
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADVERTISING_LED ; 
- int /*<<< orphan*/  APPL_LOG (char*) ; 
- int /*<<< orphan*/  APP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int DISPLAY_LED_0 ; 
- int DISPLAY_LED_1 ; 
- int DISPLAY_LED_2 ; 
- int DISPLAY_LED_3 ; 
- int /*<<< orphan*/  LEDS_OFF (int) ; 
- int /*<<< orphan*/  LEDS_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TCP_STATE_DISCONNECTED ; 
- int /*<<< orphan*/  app_timer_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m_sys_timer_id ; 
- int /*<<< orphan*/  m_tcp_state ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int ADVERTISING_LED ;
+ int APPL_LOG (char*) ;
+ int APP_ERROR_CHECK (int ) ;
+ int DISPLAY_LED_0 ;
+ int DISPLAY_LED_1 ;
+ int DISPLAY_LED_2 ;
+ int DISPLAY_LED_3 ;
+ int LEDS_OFF (int) ;
+ int LEDS_ON (int ) ;
+ int TCP_STATE_DISCONNECTED ;
+ int app_timer_stop (int ) ;
+ int m_sys_timer_id ;
+ int m_tcp_state ;
 
 void nrf51_driver_interface_down(void)
 {

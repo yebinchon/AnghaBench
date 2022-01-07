@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_9__ {scalar_t__ sample_rate; int channel_layout; int channels; int /*<<< orphan*/  frame_size; TYPE_1__* priv_data; } ;
-struct TYPE_8__ {scalar_t__ sampleRate; int numChannels; size_t* pChannelType; int /*<<< orphan*/  frameSize; } ;
-struct TYPE_7__ {int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ FDKAACDecContext ;
-typedef  TYPE_2__ CStreamInfo ;
-typedef  TYPE_3__ AVCodecContext ;
-typedef  size_t AUDIO_CHANNEL_TYPE ;
 
-/* Variables and functions */
- size_t ACT_BACK ; 
- size_t ACT_BACK_TOP ; 
- size_t ACT_FRONT ; 
- size_t ACT_FRONT_TOP ; 
- size_t ACT_LFE ; 
- size_t ACT_NONE ; 
- size_t ACT_SIDE ; 
- size_t ACT_SIDE_TOP ; 
- size_t ACT_TOP ; 
- int AVERROR_UNKNOWN ; 
- int AV_CH_BACK_CENTER ; 
- int AV_CH_BACK_LEFT ; 
- int AV_CH_BACK_RIGHT ; 
- int AV_CH_FRONT_CENTER ; 
- int AV_CH_FRONT_LEFT_OF_CENTER ; 
- int AV_CH_FRONT_RIGHT_OF_CENTER ; 
- int AV_CH_LAYOUT_STEREO ; 
- int AV_CH_LOW_FREQUENCY ; 
- int AV_CH_SIDE_LEFT ; 
- int AV_CH_SIDE_RIGHT ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- size_t FF_ARRAY_ELEMS (int*) ; 
- TYPE_2__* aacDecoder_GetStreamInfo (int /*<<< orphan*/ ) ; 
- int av_get_channel_layout_nb_channels (int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_9__ {scalar_t__ sample_rate; int channel_layout; int channels; int frame_size; TYPE_1__* priv_data; } ;
+struct TYPE_8__ {scalar_t__ sampleRate; int numChannels; size_t* pChannelType; int frameSize; } ;
+struct TYPE_7__ {int handle; } ;
+typedef TYPE_1__ FDKAACDecContext ;
+typedef TYPE_2__ CStreamInfo ;
+typedef TYPE_3__ AVCodecContext ;
+typedef size_t AUDIO_CHANNEL_TYPE ;
+
+
+ size_t ACT_BACK ;
+ size_t ACT_BACK_TOP ;
+ size_t ACT_FRONT ;
+ size_t ACT_FRONT_TOP ;
+ size_t ACT_LFE ;
+ size_t ACT_NONE ;
+ size_t ACT_SIDE ;
+ size_t ACT_SIDE_TOP ;
+ size_t ACT_TOP ;
+ int AVERROR_UNKNOWN ;
+ int AV_CH_BACK_CENTER ;
+ int AV_CH_BACK_LEFT ;
+ int AV_CH_BACK_RIGHT ;
+ int AV_CH_FRONT_CENTER ;
+ int AV_CH_FRONT_LEFT_OF_CENTER ;
+ int AV_CH_FRONT_RIGHT_OF_CENTER ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CH_LOW_FREQUENCY ;
+ int AV_CH_SIDE_LEFT ;
+ int AV_CH_SIDE_RIGHT ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ size_t FF_ARRAY_ELEMS (int*) ;
+ TYPE_2__* aacDecoder_GetStreamInfo (int ) ;
+ int av_get_channel_layout_nb_channels (int) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
 
 __attribute__((used)) static int get_stream_info(AVCodecContext *avctx)
 {
-    FDKAACDecContext *s   = avctx->priv_data;
-    CStreamInfo *info     = aacDecoder_GetStreamInfo(s->handle);
+    FDKAACDecContext *s = avctx->priv_data;
+    CStreamInfo *info = aacDecoder_GetStreamInfo(s->handle);
     int channel_counts[0x24] = { 0 };
-    int i, ch_error       = 0;
-    uint64_t ch_layout    = 0;
+    int i, ch_error = 0;
+    uint64_t ch_layout = 0;
 
     if (!info) {
         av_log(avctx, AV_LOG_ERROR, "Unable to get stream info\n");
@@ -69,7 +69,7 @@ __attribute__((used)) static int get_stream_info(AVCodecContext *avctx)
         return AVERROR_UNKNOWN;
     }
     avctx->sample_rate = info->sampleRate;
-    avctx->frame_size  = info->frameSize;
+    avctx->frame_size = info->frameSize;
 
     for (i = 0; i < info->numChannels; i++) {
         AUDIO_CHANNEL_TYPE ctype = info->pChannelType[i];
@@ -83,9 +83,9 @@ __attribute__((used)) static int get_stream_info(AVCodecContext *avctx)
            "%d channels - front:%d side:%d back:%d lfe:%d top:%d\n",
            info->numChannels,
            channel_counts[ACT_FRONT], channel_counts[ACT_SIDE],
-           channel_counts[ACT_BACK],  channel_counts[ACT_LFE],
+           channel_counts[ACT_BACK], channel_counts[ACT_LFE],
            channel_counts[ACT_FRONT_TOP] + channel_counts[ACT_SIDE_TOP] +
-           channel_counts[ACT_BACK_TOP]  + channel_counts[ACT_TOP]);
+           channel_counts[ACT_BACK_TOP] + channel_counts[ACT_TOP]);
 
     switch (channel_counts[ACT_FRONT]) {
     case 4:

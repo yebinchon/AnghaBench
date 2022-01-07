@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  error_list; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int error_list; } ;
 struct shader_parser {TYPE_1__ cfp; } ;
 
-/* Variables and functions */
- char* error_data_buildstring (int /*<<< orphan*/ *) ; 
+
+ char* error_data_buildstring (int *) ;
 
 __attribute__((used)) static inline char *shader_parser_geterrors(struct shader_parser *sp)
 {
-	return error_data_buildstring(&sp->cfp.error_list);
+ return error_data_buildstring(&sp->cfp.error_list);
 }

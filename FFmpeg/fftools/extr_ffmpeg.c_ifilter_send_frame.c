@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-struct TYPE_28__ {scalar_t__ format; TYPE_5__* hw_frames_ctx; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  channels; int /*<<< orphan*/  sample_rate; } ;
+
+
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int tmp ;
+struct TYPE_28__ {scalar_t__ format; TYPE_5__* hw_frames_ctx; int height; int width; int channel_layout; int channels; int sample_rate; } ;
 struct TYPE_27__ {int nb_inputs; scalar_t__ graph; } ;
-struct TYPE_26__ {scalar_t__ format; int /*<<< orphan*/  filter; int /*<<< orphan*/  frame_queue; TYPE_4__* hw_frames_ctx; TYPE_3__* ist; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  channels; int /*<<< orphan*/  sample_rate; TYPE_7__* graph; } ;
+struct TYPE_26__ {scalar_t__ format; int filter; int frame_queue; TYPE_4__* hw_frames_ctx; TYPE_3__* ist; int height; int width; int channel_layout; int channels; int sample_rate; TYPE_7__* graph; } ;
 struct TYPE_25__ {scalar_t__ data; } ;
 struct TYPE_24__ {scalar_t__ data; } ;
-struct TYPE_23__ {int /*<<< orphan*/  reinit_filters; TYPE_2__* st; } ;
+struct TYPE_23__ {int reinit_filters; TYPE_2__* st; } ;
 struct TYPE_22__ {TYPE_1__* codecpar; } ;
 struct TYPE_21__ {int codec_type; } ;
-typedef  TYPE_6__ InputFilter ;
-typedef  TYPE_7__ FilterGraph ;
-typedef  TYPE_8__ AVFrame ;
+typedef TYPE_6__ InputFilter ;
+typedef TYPE_7__ FilterGraph ;
+typedef TYPE_8__ AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
-#define  AVMEDIA_TYPE_AUDIO 129 
-#define  AVMEDIA_TYPE_VIDEO 128 
- int /*<<< orphan*/  AV_BUFFERSRC_FLAG_PUSH ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int av_buffersrc_add_frame_flags (int /*<<< orphan*/ ,TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_fifo_generic_write (int /*<<< orphan*/ ,TYPE_8__**,int,int /*<<< orphan*/ *) ; 
- int av_fifo_realloc2 (int /*<<< orphan*/ ,int) ; 
- int av_fifo_size (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_fifo_space (int /*<<< orphan*/ ) ; 
- TYPE_8__* av_frame_clone (TYPE_8__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_8__**) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_8__*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int configure_filtergraph (TYPE_7__*) ; 
- int /*<<< orphan*/  ifilter_has_all_input_formats (TYPE_7__*) ; 
- int ifilter_parameters_from_frame (TYPE_6__*,TYPE_8__*) ; 
- int reap_filters (int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+
+
+ int AV_BUFFERSRC_FLAG_PUSH ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_buffersrc_add_frame_flags (int ,TYPE_8__*,int ) ;
+ int av_err2str (int) ;
+ int av_fifo_generic_write (int ,TYPE_8__**,int,int *) ;
+ int av_fifo_realloc2 (int ,int) ;
+ int av_fifo_size (int ) ;
+ int av_fifo_space (int ) ;
+ TYPE_8__* av_frame_clone (TYPE_8__*) ;
+ int av_frame_free (TYPE_8__**) ;
+ int av_frame_unref (TYPE_8__*) ;
+ int av_log (int *,int ,char*,...) ;
+ int configure_filtergraph (TYPE_7__*) ;
+ int ifilter_has_all_input_formats (TYPE_7__*) ;
+ int ifilter_parameters_from_frame (TYPE_6__*,TYPE_8__*) ;
+ int reap_filters (int) ;
 
 __attribute__((used)) static int ifilter_send_frame(InputFilter *ifilter, AVFrame *frame)
 {
     FilterGraph *fg = ifilter->graph;
     int need_reinit, ret, i;
 
-    /* determine if the parameters for this input changed */
+
     need_reinit = ifilter->format != frame->format;
 
     switch (ifilter->ist->st->codecpar->codec_type) {
-    case AVMEDIA_TYPE_AUDIO:
-        need_reinit |= ifilter->sample_rate    != frame->sample_rate ||
-                       ifilter->channels       != frame->channels ||
+    case 129:
+        need_reinit |= ifilter->sample_rate != frame->sample_rate ||
+                       ifilter->channels != frame->channels ||
                        ifilter->channel_layout != frame->channel_layout;
         break;
-    case AVMEDIA_TYPE_VIDEO:
-        need_reinit |= ifilter->width  != frame->width ||
+    case 128:
+        need_reinit |= ifilter->width != frame->width ||
                        ifilter->height != frame->height;
         break;
     }
@@ -87,7 +87,7 @@ __attribute__((used)) static int ifilter_send_frame(InputFilter *ifilter, AVFram
             return ret;
     }
 
-    /* (re)init the graph if possible, otherwise buffer the frame and return */
+
     if (need_reinit || !fg->graph) {
         for (i = 0; i < fg->nb_inputs; i++) {
             if (!ifilter_has_all_input_formats(fg)) {
@@ -103,20 +103,20 @@ __attribute__((used)) static int ifilter_send_frame(InputFilter *ifilter, AVFram
                         return ret;
                     }
                 }
-                av_fifo_generic_write(ifilter->frame_queue, &tmp, sizeof(tmp), NULL);
+                av_fifo_generic_write(ifilter->frame_queue, &tmp, sizeof(tmp), ((void*)0));
                 return 0;
             }
         }
 
         ret = reap_filters(1);
         if (ret < 0 && ret != AVERROR_EOF) {
-            av_log(NULL, AV_LOG_ERROR, "Error while filtering: %s\n", av_err2str(ret));
+            av_log(((void*)0), AV_LOG_ERROR, "Error while filtering: %s\n", av_err2str(ret));
             return ret;
         }
 
         ret = configure_filtergraph(fg);
         if (ret < 0) {
-            av_log(NULL, AV_LOG_ERROR, "Error reinitializing filters!\n");
+            av_log(((void*)0), AV_LOG_ERROR, "Error reinitializing filters!\n");
             return ret;
         }
     }
@@ -124,7 +124,7 @@ __attribute__((used)) static int ifilter_send_frame(InputFilter *ifilter, AVFram
     ret = av_buffersrc_add_frame_flags(ifilter->filter, frame, AV_BUFFERSRC_FLAG_PUSH);
     if (ret < 0) {
         if (ret != AVERROR_EOF)
-            av_log(NULL, AV_LOG_ERROR, "Error while filtering: %s\n", av_err2str(ret));
+            av_log(((void*)0), AV_LOG_ERROR, "Error while filtering: %s\n", av_err2str(ret));
         return ret;
     }
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_7__ {int btsFlags; int autoVacuum; int incrVacuum; } ;
 struct TYPE_6__ {TYPE_2__* pBt; } ;
-typedef  TYPE_1__ Btree ;
-typedef  TYPE_2__ BtShared ;
+typedef TYPE_1__ Btree ;
+typedef TYPE_2__ BtShared ;
 
-/* Variables and functions */
- int BTS_PAGESIZE_FIXED ; 
- int SQLITE_OK ; 
- int SQLITE_READONLY ; 
- int /*<<< orphan*/  sqlite3BtreeEnter (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3BtreeLeave (TYPE_1__*) ; 
+
+ int BTS_PAGESIZE_FIXED ;
+ int SQLITE_OK ;
+ int SQLITE_READONLY ;
+ int sqlite3BtreeEnter (TYPE_1__*) ;
+ int sqlite3BtreeLeave (TYPE_1__*) ;
 
 int sqlite3BtreeSetAutoVacuum(Btree *p, int autoVacuum){
-#ifdef SQLITE_OMIT_AUTOVACUUM
-  return SQLITE_READONLY;
-#else
+
+
+
   BtShared *pBt = p->pBt;
   int rc = SQLITE_OK;
   u8 av = (u8)autoVacuum;
@@ -42,5 +42,5 @@ int sqlite3BtreeSetAutoVacuum(Btree *p, int autoVacuum){
   }
   sqlite3BtreeLeave(p);
   return rc;
-#endif
+
 }

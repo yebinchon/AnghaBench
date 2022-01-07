@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlNsPtr ;
-typedef  int /*<<< orphan*/ * xmlDocPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_5__ {struct TYPE_5__* next; int /*<<< orphan*/  const* href; int /*<<< orphan*/  const* prefix; } ;
 
-/* Variables and functions */
- TYPE_1__* xmlNewNs (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ xmlStrEqual (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- TYPE_1__* xmlTreeEnsureXMLDecl (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlNsPtr ;
+typedef int * xmlDocPtr ;
+typedef int xmlChar ;
+struct TYPE_5__ {struct TYPE_5__* next; int const* href; int const* prefix; } ;
+
+
+ TYPE_1__* xmlNewNs (int *,int const*,int const*) ;
+ scalar_t__ xmlStrEqual (int const*,int const*) ;
+ TYPE_1__* xmlTreeEnsureXMLDecl (int *) ;
 
 __attribute__((used)) static xmlNsPtr
 xmlDOMWrapStoreNs(xmlDocPtr doc,
-		   const xmlChar *nsName,
-		   const xmlChar *prefix)
+     const xmlChar *nsName,
+     const xmlChar *prefix)
 {
     xmlNsPtr ns;
 
-    if (doc == NULL)
-	return (NULL);
+    if (doc == ((void*)0))
+ return (((void*)0));
     ns = xmlTreeEnsureXMLDecl(doc);
-    if (ns == NULL)
-	return (NULL);
-    if (ns->next != NULL) {
-	/* Reuse. */
-	ns = ns->next;
-	while (ns != NULL) {
-	    if (((ns->prefix == prefix) ||
-		xmlStrEqual(ns->prefix, prefix)) &&
-		xmlStrEqual(ns->href, nsName)) {
-		return (ns);
-	    }
-	    if (ns->next == NULL)
-		break;
-	    ns = ns->next;
-	}
+    if (ns == ((void*)0))
+ return (((void*)0));
+    if (ns->next != ((void*)0)) {
+
+ ns = ns->next;
+ while (ns != ((void*)0)) {
+     if (((ns->prefix == prefix) ||
+  xmlStrEqual(ns->prefix, prefix)) &&
+  xmlStrEqual(ns->href, nsName)) {
+  return (ns);
+     }
+     if (ns->next == ((void*)0))
+  break;
+     ns = ns->next;
+ }
     }
-    /* Create. */
-    if (ns != NULL) {
-        ns->next = xmlNewNs(NULL, nsName, prefix);
+
+    if (ns != ((void*)0)) {
+        ns->next = xmlNewNs(((void*)0), nsName, prefix);
         return (ns->next);
     }
-    return(NULL);
+    return(((void*)0));
 }

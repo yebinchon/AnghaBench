@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct connectdata {TYPE_1__* handler; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* doing ) (struct connectdata*,int*) ;} ;
-typedef  int /*<<< orphan*/  CURLcode ;
+struct TYPE_2__ {int (* doing ) (struct connectdata*,int*) ;} ;
+typedef int CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  stub1 (struct connectdata*,int*) ; 
+
+ int CURLE_OK ;
+ int FALSE ;
+ int TRUE ;
+ int stub1 (struct connectdata*,int*) ;
 
 __attribute__((used)) static CURLcode protocol_doing(struct connectdata *conn, bool *done)
 {

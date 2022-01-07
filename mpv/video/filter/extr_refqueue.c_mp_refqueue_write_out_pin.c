@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mp_refqueue {int /*<<< orphan*/  filter; int /*<<< orphan*/  out; } ;
+
+
+
+
+struct mp_refqueue {int filter; int out; } ;
 struct mp_image {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAKE_FRAME (int /*<<< orphan*/ ,struct mp_image*) ; 
- int /*<<< orphan*/  MP_FRAME_VIDEO ; 
- int /*<<< orphan*/  MP_WARN (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mp_filter_internal_mark_failed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_pin_in_write (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_refqueue_next_field (struct mp_refqueue*) ; 
+
+ int MAKE_FRAME (int ,struct mp_image*) ;
+ int MP_FRAME_VIDEO ;
+ int MP_WARN (int ,char*) ;
+ int mp_filter_internal_mark_failed (int ) ;
+ int mp_pin_in_write (int ,int ) ;
+ int mp_refqueue_next_field (struct mp_refqueue*) ;
 
 void mp_refqueue_write_out_pin(struct mp_refqueue *q, struct mp_image *mpi)
 {

@@ -1,94 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Args_per_line ; 
- int /*<<< orphan*/  Map ; 
- int O_APPEND ; 
- int O_CREAT ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEARCH_SCHEMA_V1 ; 
-#define  TF_APPS 138 
-#define  TF_AUDIO 137 
-#define  TF_BLOG_POSTS 136 
-#define  TF_EVENTS 135 
-#define  TF_GROUPS 134 
-#define  TF_MARKET_ITEMS 133 
-#define  TF_MEMLITE 132 
-#define  TF_MINIFEED 131 
-#define  TF_QUESTIONS 130 
-#define  TF_TOPICS 129 
-#define  TF_VIDEO 128 
- int /*<<< orphan*/  ap_END ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  atol (char*) ; 
- int /*<<< orphan*/  au_END ; 
- int /*<<< orphan*/  bp_END ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fdatasync (int) ; 
- int /*<<< orphan*/  flush_out () ; 
- char* fname_last (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_dump_format (char*) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  gr_END ; 
- char* groups_fname ; 
- int /*<<< orphan*/  load_map (int) ; 
- scalar_t__ map_changes ; 
- int map_fd ; 
- int map_size ; 
- int /*<<< orphan*/  mf_END ; 
- int /*<<< orphan*/  mi_END ; 
- int /*<<< orphan*/  ml_END ; 
- void* open (char*,int,...) ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_format ; 
- int /*<<< orphan*/  output_stats () ; 
- int /*<<< orphan*/  process_applications_row () ; 
- int /*<<< orphan*/  process_audio_row () ; 
- int /*<<< orphan*/  process_blog_posts_row () ; 
- int /*<<< orphan*/  process_events_row () ; 
- int /*<<< orphan*/  process_groups_row () ; 
- int /*<<< orphan*/  process_market_row () ; 
- int /*<<< orphan*/  process_memlite_row () ; 
- int /*<<< orphan*/  process_minifeed_row () ; 
- int /*<<< orphan*/  process_questions_row () ; 
- int /*<<< orphan*/  process_topics_row () ; 
- int /*<<< orphan*/  process_video_row () ; 
- char* progname ; 
- int /*<<< orphan*/  qu_END ; 
- int /*<<< orphan*/  read_record () ; 
- int split_mod ; 
- int split_rem ; 
- scalar_t__ src_fd ; 
- char* src_fname ; 
- int sscanf (char*,char*,int*,int*) ; 
- int /*<<< orphan*/  start_binlog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int table_format ; 
- int targ_fd ; 
- char* targ_fname ; 
- int /*<<< orphan*/  to_END ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  vi_END ; 
- int write (int,int /*<<< orphan*/ ,int) ; 
+ int Args_per_line ;
+ int Map ;
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_RDONLY ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int SEARCH_SCHEMA_V1 ;
+ int ap_END ;
+ int assert (int) ;
+ int atol (char*) ;
+ int au_END ;
+ int bp_END ;
+ scalar_t__ change_user (char*) ;
+ int close (int) ;
+ int exit (int) ;
+ scalar_t__ fdatasync (int) ;
+ int flush_out () ;
+ char* fname_last (char*) ;
+ int fprintf (int ,char*,...) ;
+ int get_dump_format (char*) ;
+ int getopt (int,char**,char*) ;
+ int gr_END ;
+ char* groups_fname ;
+ int load_map (int) ;
+ scalar_t__ map_changes ;
+ int map_fd ;
+ int map_size ;
+ int mf_END ;
+ int mi_END ;
+ int ml_END ;
+ void* open (char*,int,...) ;
+ char* optarg ;
+ int optind ;
+ int output_format ;
+ int output_stats () ;
+ int process_applications_row () ;
+ int process_audio_row () ;
+ int process_blog_posts_row () ;
+ int process_events_row () ;
+ int process_groups_row () ;
+ int process_market_row () ;
+ int process_memlite_row () ;
+ int process_minifeed_row () ;
+ int process_questions_row () ;
+ int process_topics_row () ;
+ int process_video_row () ;
+ char* progname ;
+ int qu_END ;
+ int read_record () ;
+ int split_mod ;
+ int split_rem ;
+ scalar_t__ src_fd ;
+ char* src_fname ;
+ int sscanf (char*,char*,int*,int*) ;
+ int start_binlog (int ,char*) ;
+ int stderr ;
+ int table_format ;
+ int targ_fd ;
+ char* targ_fname ;
+ int to_END ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ int vi_END ;
+ int write (int,int ,int) ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -108,8 +89,8 @@ int main (int argc, char *argv[]) {
     case 'f':
       table_format = get_dump_format(optarg);
       if (!table_format) {
-	fprintf (stderr, "fatal: unsupported table dump format: %s\n", optarg);
-	return 2;
+ fprintf (stderr, "fatal: unsupported table dump format: %s\n", optarg);
+ return 2;
       }
       break;
     case 'g':
@@ -162,70 +143,70 @@ int main (int argc, char *argv[]) {
   }
 
   switch (table_format) {
-  case TF_AUDIO:
+  case 137:
     Args_per_line = au_END;
     start_binlog(SEARCH_SCHEMA_V1, "audio_search");
     while (read_record() > 0) {
       process_audio_row();
     }
     break;
-  case TF_VIDEO:
+  case 128:
     Args_per_line = vi_END;
     start_binlog(SEARCH_SCHEMA_V1, "video_search");
     while (read_record() > 0) {
       process_video_row();
     }
     break;
-  case TF_APPS:
+  case 138:
     Args_per_line = ap_END;
     start_binlog(SEARCH_SCHEMA_V1, "apps_search");
     while (read_record() > 0) {
       process_applications_row();
     }
     break;
-  case TF_GROUPS:
+  case 134:
     Args_per_line = gr_END;
     start_binlog(SEARCH_SCHEMA_V1, "group_search");
     while (read_record() > 0) {
       process_groups_row();
     }
     break;
-  case TF_EVENTS:
+  case 135:
     Args_per_line = gr_END;
     start_binlog(SEARCH_SCHEMA_V1, "event_search");
     while (read_record() > 0) {
       process_events_row();
     }
     break;
-  case TF_BLOG_POSTS:
+  case 136:
     Args_per_line = bp_END;
     start_binlog(SEARCH_SCHEMA_V1, "blog_posts_search");
     while (read_record() > 0) {
       process_blog_posts_row();
     }
     break;
-  case TF_MEMLITE:
+  case 132:
     Args_per_line = ml_END;
     start_binlog(SEARCH_SCHEMA_V1, "member_name_search");
     while (read_record() > 0) {
       process_memlite_row();
     }
     break;
-  case TF_MARKET_ITEMS:
+  case 133:
     Args_per_line = mi_END;
     start_binlog(SEARCH_SCHEMA_V1, "market_search");
     while (read_record() > 0) {
       process_market_row();
     }
     break;
-  case TF_QUESTIONS:
+  case 130:
     Args_per_line = qu_END;
     start_binlog(SEARCH_SCHEMA_V1, "question_search");
     while (read_record() > 0) {
       process_questions_row();
     }
     break;
-  case TF_TOPICS:
+  case 129:
     load_map (1);
     Args_per_line = to_END;
     start_binlog(SEARCH_SCHEMA_V1, "topic_search");
@@ -233,7 +214,7 @@ int main (int argc, char *argv[]) {
       process_topics_row();
     }
     break;
-  case TF_MINIFEED:
+  case 131:
     Args_per_line = mf_END;
     start_binlog(SEARCH_SCHEMA_V1, "status_search");
     while (read_record() > 0) {

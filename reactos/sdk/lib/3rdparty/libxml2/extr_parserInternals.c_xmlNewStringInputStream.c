@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlParserInputPtr ;
-typedef  int /*<<< orphan*/  xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_4__ {size_t length; int /*<<< orphan*/  const* end; int /*<<< orphan*/  const* cur; int /*<<< orphan*/  const* base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlErrInternal (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlErrMemory (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- TYPE_1__* xmlNewInputStream (int /*<<< orphan*/ ) ; 
- scalar_t__ xmlParserDebugEntities ; 
- size_t xmlStrlen (int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlParserInputPtr ;
+typedef int xmlParserCtxtPtr ;
+typedef int xmlChar ;
+struct TYPE_4__ {size_t length; int const* end; int const* cur; int const* base; } ;
+
+
+ int xmlErrInternal (int ,char*,int *) ;
+ int xmlErrMemory (int ,char*) ;
+ int xmlGenericError (int ,char*,int const*) ;
+ int xmlGenericErrorContext ;
+ TYPE_1__* xmlNewInputStream (int ) ;
+ scalar_t__ xmlParserDebugEntities ;
+ size_t xmlStrlen (int const*) ;
 
 xmlParserInputPtr
 xmlNewStringInputStream(xmlParserCtxtPtr ctxt, const xmlChar *buffer) {
     xmlParserInputPtr input;
 
-    if (buffer == NULL) {
+    if (buffer == ((void*)0)) {
         xmlErrInternal(ctxt, "xmlNewStringInputStream string = NULL\n",
-	               NULL);
-	return(NULL);
+                ((void*)0));
+ return(((void*)0));
     }
     if (xmlParserDebugEntities)
-	xmlGenericError(xmlGenericErrorContext,
-		"new fixed input: %.30s\n", buffer);
+ xmlGenericError(xmlGenericErrorContext,
+  "new fixed input: %.30s\n", buffer);
     input = xmlNewInputStream(ctxt);
-    if (input == NULL) {
-        xmlErrMemory(ctxt,  "couldn't allocate a new input stream\n");
-	return(NULL);
+    if (input == ((void*)0)) {
+        xmlErrMemory(ctxt, "couldn't allocate a new input stream\n");
+ return(((void*)0));
     }
     input->base = buffer;
     input->cur = buffer;

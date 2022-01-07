@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_pthread_t ;
-typedef  int /*<<< orphan*/  TaskHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pthread_get_desc_by_handle ; 
- int /*<<< orphan*/ * pthread_list_find_item (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int esp_pthread_t ;
+typedef int TaskHandle_t ;
+
+
+ int pthread_get_desc_by_handle ;
+ int * pthread_list_find_item (int ,int ) ;
 
 __attribute__((used)) static esp_pthread_t *pthread_find(TaskHandle_t task_handle)
 {

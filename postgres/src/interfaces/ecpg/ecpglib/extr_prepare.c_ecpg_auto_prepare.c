@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct prepared_statement {int dummy; } ;
 struct connection {int dummy; } ;
-struct TYPE_2__ {char* stmtID; int /*<<< orphan*/  execs; } ;
+struct TYPE_2__ {char* stmtID; int execs; } ;
 
-/* Variables and functions */
- int AddStmtToCache (int,char*,char const*,int const,char const*) ; 
- int /*<<< orphan*/  ECPGprepare (int,char const*,int /*<<< orphan*/ ,char*,char const*) ; 
- int STMTID_SIZE ; 
- int SearchStmtCache (char const*) ; 
- struct prepared_statement* ecpg_find_prepared_statement (char*,struct connection*,int /*<<< orphan*/ *) ; 
- struct connection* ecpg_get_connection (char const*) ; 
- int /*<<< orphan*/  ecpg_log (char*,int,...) ; 
- char* ecpg_strdup (char*,int) ; 
- int /*<<< orphan*/  nextStmtID ; 
- int /*<<< orphan*/  prepare_common (int,struct connection*,char*,char const*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* stmtCacheEntries ; 
+
+ int AddStmtToCache (int,char*,char const*,int const,char const*) ;
+ int ECPGprepare (int,char const*,int ,char*,char const*) ;
+ int STMTID_SIZE ;
+ int SearchStmtCache (char const*) ;
+ struct prepared_statement* ecpg_find_prepared_statement (char*,struct connection*,int *) ;
+ struct connection* ecpg_get_connection (char const*) ;
+ int ecpg_log (char*,int,...) ;
+ char* ecpg_strdup (char*,int) ;
+ int nextStmtID ;
+ int prepare_common (int,struct connection*,char*,char const*) ;
+ int sprintf (char*,char*,int ) ;
+ TYPE_1__* stmtCacheEntries ;
 
 bool
 ecpg_auto_prepare(int lineno, const char *connection_name, const int compat, char **name, const char *query)
 {
-	int			entNo;
+ int entNo;
 
-	/* search the statement cache for this statement */
-	entNo = SearchStmtCache(query);
 
-	/* if not found - add the statement to the cache */
-	if (entNo)
-	{
-		char	   *stmtID;
-		struct connection *con;
-		struct prepared_statement *prep;
+ entNo = SearchStmtCache(query);
 
-		ecpg_log("ecpg_auto_prepare on line %d: statement found in cache; entry %d\n", lineno, entNo);
 
-		stmtID = stmtCacheEntries[entNo].stmtID;
+ if (entNo)
+ {
+  char *stmtID;
+  struct connection *con;
+  struct prepared_statement *prep;
 
-		con = ecpg_get_connection(connection_name);
-		prep = ecpg_find_prepared_statement(stmtID, con, NULL);
-		/* This prepared name doesn't exist on this connection. */
-		if (!prep && !prepare_common(lineno, con, stmtID, query))
-			return false;
+  ecpg_log("ecpg_auto_prepare on line %d: statement found in cache; entry %d\n", lineno, entNo);
 
-		*name = ecpg_strdup(stmtID, lineno);
-	}
-	else
-	{
-		char		stmtID[STMTID_SIZE];
+  stmtID = stmtCacheEntries[entNo].stmtID;
 
-		ecpg_log("ecpg_auto_prepare on line %d: statement not in cache; inserting\n", lineno);
+  con = ecpg_get_connection(connection_name);
+  prep = ecpg_find_prepared_statement(stmtID, con, ((void*)0));
 
-		/* generate a statement ID */
-		sprintf(stmtID, "ecpg%d", nextStmtID++);
+  if (!prep && !prepare_common(lineno, con, stmtID, query))
+   return 0;
 
-		if (!ECPGprepare(lineno, connection_name, 0, stmtID, query))
-			return false;
+  *name = ecpg_strdup(stmtID, lineno);
+ }
+ else
+ {
+  char stmtID[STMTID_SIZE];
 
-		entNo = AddStmtToCache(lineno, stmtID, connection_name, compat, query);
-		if (entNo < 0)
-			return false;
+  ecpg_log("ecpg_auto_prepare on line %d: statement not in cache; inserting\n", lineno);
 
-		*name = ecpg_strdup(stmtID, lineno);
-	}
 
-	/* increase usage counter */
-	stmtCacheEntries[entNo].execs++;
+  sprintf(stmtID, "ecpg%d", nextStmtID++);
 
-	return true;
+  if (!ECPGprepare(lineno, connection_name, 0, stmtID, query))
+   return 0;
+
+  entNo = AddStmtToCache(lineno, stmtID, connection_name, compat, query);
+  if (entNo < 0)
+   return 0;
+
+  *name = ecpg_strdup(stmtID, lineno);
+ }
+
+
+ stmtCacheEntries[entNo].execs++;
+
+ return 1;
 }

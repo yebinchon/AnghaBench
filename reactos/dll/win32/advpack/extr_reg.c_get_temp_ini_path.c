@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetTempFileNameW (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTempPathW (int /*<<< orphan*/ ,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef char WCHAR ;
+typedef int LPWSTR ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int FALSE ;
+ int GetTempFileNameW (char*,char const*,int ,int ) ;
+ int GetTempPathW (int ,char*) ;
+ int MAX_PATH ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL get_temp_ini_path(LPWSTR name)
 {

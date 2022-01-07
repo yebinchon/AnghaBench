@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IXMLDOMElement ;
-typedef  int /*<<< orphan*/  IXMLDOMDocumentFragment ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  int /*<<< orphan*/  IXMLDOMComment ;
-typedef  int /*<<< orphan*/  IXMLDOMCDATASection ;
-typedef  int /*<<< orphan*/ * HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_HR (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * E_INVALIDARG ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument ; 
- int /*<<< orphan*/  IXMLDOMCDATASection_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMCDATASection_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMComment_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMComment_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocumentFragment_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMDocumentFragment_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_createCDATASection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_createComment (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_createDocumentFragment (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_createElement (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IXMLDOMElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IXMLDOMElement_get_namespaceURI (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IXMLDOMElement_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * S_FALSE ; 
- int /*<<< orphan*/ * S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/ * create_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- char* get_prefix_doc ; 
- scalar_t__ lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VARIANT_BOOL ;
+typedef int IXMLDOMElement ;
+typedef int IXMLDOMDocumentFragment ;
+typedef int IXMLDOMDocument ;
+typedef int IXMLDOMComment ;
+typedef int IXMLDOMCDATASection ;
+typedef int * HRESULT ;
+typedef int * BSTR ;
+
+
+ int EXPECT_HR (int *,int *) ;
+ int * E_INVALIDARG ;
+ int IID_IXMLDOMDocument ;
+ int IXMLDOMCDATASection_Release (int *) ;
+ int * IXMLDOMCDATASection_get_prefix (int *,int **) ;
+ int IXMLDOMComment_Release (int *) ;
+ int * IXMLDOMComment_get_prefix (int *,int **) ;
+ int IXMLDOMDocumentFragment_Release (int *) ;
+ int * IXMLDOMDocumentFragment_get_prefix (int *,int **) ;
+ int IXMLDOMDocument_Release (int *) ;
+ int * IXMLDOMDocument_createCDATASection (int *,int *,int **) ;
+ int * IXMLDOMDocument_createComment (int *,int *,int **) ;
+ int * IXMLDOMDocument_createDocumentFragment (int *,int **) ;
+ int * IXMLDOMDocument_createElement (int *,int ,int **) ;
+ int * IXMLDOMDocument_get_documentElement (int *,int **) ;
+ int * IXMLDOMDocument_get_prefix (int *,int **) ;
+ int * IXMLDOMDocument_loadXML (int *,int ,int *) ;
+ int IXMLDOMElement_Release (int *) ;
+ int * IXMLDOMElement_get_namespaceURI (int *,int **) ;
+ int * IXMLDOMElement_get_prefix (int *,int **) ;
+ int * S_FALSE ;
+ int * S_OK ;
+ int SysFreeString (int *) ;
+ int _bstr_ (char*) ;
+ int * create_document (int *) ;
+ int free_bstrs () ;
+ char* get_prefix_doc ;
+ scalar_t__ lstrcmpW (int *,int ) ;
+ int ok (int,char*,...) ;
+ int * wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_get_prefix(void)
 {
@@ -64,18 +64,18 @@ __attribute__((used)) static void test_get_prefix(void)
 
     doc = create_document(&IID_IXMLDOMDocument);
 
-    /* nodes that can't support prefix */
-    /* 1. document */
+
+
     str = (void*)0xdeadbeef;
     hr = IXMLDOMDocument_get_prefix(doc, &str);
     EXPECT_HR(hr, S_FALSE);
-    ok(str == NULL, "got %p\n", str);
+    ok(str == ((void*)0), "got %p\n", str);
 
-    hr = IXMLDOMDocument_get_prefix(doc, NULL);
+    hr = IXMLDOMDocument_get_prefix(doc, ((void*)0));
     EXPECT_HR(hr, E_INVALIDARG);
 
-    /* 2. cdata */
-    hr = IXMLDOMDocument_createCDATASection(doc, NULL, &cdata);
+
+    hr = IXMLDOMDocument_createCDATASection(doc, ((void*)0), &cdata);
     ok(hr == S_OK, "got %08x\n", hr );
 
     str = (void*)0xdeadbeef;
@@ -83,12 +83,12 @@ __attribute__((used)) static void test_get_prefix(void)
     ok(hr == S_FALSE, "got %08x\n", hr);
     ok( str == 0, "got %p\n", str);
 
-    hr = IXMLDOMCDATASection_get_prefix(cdata, NULL);
+    hr = IXMLDOMCDATASection_get_prefix(cdata, ((void*)0));
     ok(hr == E_INVALIDARG, "got %08x\n", hr);
     IXMLDOMCDATASection_Release(cdata);
 
-    /* 3. comment */
-    hr = IXMLDOMDocument_createComment(doc, NULL, &comment);
+
+    hr = IXMLDOMDocument_createComment(doc, ((void*)0), &comment);
     ok(hr == S_OK, "got %08x\n", hr );
 
     str = (void*)0xdeadbeef;
@@ -96,11 +96,11 @@ __attribute__((used)) static void test_get_prefix(void)
     ok(hr == S_FALSE, "got %08x\n", hr);
     ok( str == 0, "got %p\n", str);
 
-    hr = IXMLDOMComment_get_prefix(comment, NULL);
+    hr = IXMLDOMComment_get_prefix(comment, ((void*)0));
     ok(hr == E_INVALIDARG, "got %08x\n", hr);
     IXMLDOMComment_Release(comment);
 
-    /* 4. fragment */
+
     hr = IXMLDOMDocument_createDocumentFragment(doc, &fragment);
     ok(hr == S_OK, "got %08x\n", hr );
 
@@ -109,15 +109,15 @@ __attribute__((used)) static void test_get_prefix(void)
     ok(hr == S_FALSE, "got %08x\n", hr);
     ok( str == 0, "got %p\n", str);
 
-    hr = IXMLDOMDocumentFragment_get_prefix(fragment, NULL);
+    hr = IXMLDOMDocumentFragment_get_prefix(fragment, ((void*)0));
     ok(hr == E_INVALIDARG, "got %08x\n", hr);
     IXMLDOMDocumentFragment_Release(fragment);
 
-    /* no prefix */
+
     hr = IXMLDOMDocument_createElement(doc, _bstr_("elem"), &element);
     ok( hr == S_OK, "got 0x%08x\n", hr);
 
-    hr = IXMLDOMElement_get_prefix(element, NULL);
+    hr = IXMLDOMElement_get_prefix(element, ((void*)0));
     ok( hr == E_INVALIDARG, "got 0x%08x\n", hr);
 
     str = (void*)0xdeadbeef;
@@ -127,7 +127,7 @@ __attribute__((used)) static void test_get_prefix(void)
 
     IXMLDOMElement_Release(element);
 
-    /* with prefix */
+
     hr = IXMLDOMDocument_createElement(doc, _bstr_("a:elem"), &element);
     ok( hr == S_OK, "got 0x%08x\n", hr);
 
@@ -153,12 +153,12 @@ __attribute__((used)) static void test_get_prefix(void)
     str = (void*)0xdeadbeef;
     hr = IXMLDOMElement_get_prefix(element, &str);
     EXPECT_HR(hr, S_FALSE);
-    ok(str == NULL, "got %p\n", str);
+    ok(str == ((void*)0), "got %p\n", str);
 
     str = (void*)0xdeadbeef;
     hr = IXMLDOMElement_get_namespaceURI(element, &str);
     EXPECT_HR(hr, S_FALSE);
-    ok(str == NULL, "got %s\n", wine_dbgstr_w(str));
+    ok(str == ((void*)0), "got %s\n", wine_dbgstr_w(str));
 
     IXMLDOMDocument_Release(doc);
     free_bstrs();

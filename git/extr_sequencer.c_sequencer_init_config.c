@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct replay_opts {int /*<<< orphan*/  default_msg_cleanup; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMMIT_MSG_CLEANUP_NONE ; 
- int /*<<< orphan*/  git_config (int /*<<< orphan*/ ,struct replay_opts*) ; 
- int /*<<< orphan*/  git_sequencer_config ; 
+
+
+
+struct replay_opts {int default_msg_cleanup; } ;
+
+
+ int COMMIT_MSG_CLEANUP_NONE ;
+ int git_config (int ,struct replay_opts*) ;
+ int git_sequencer_config ;
 
 void sequencer_init_config(struct replay_opts *opts)
 {
-	opts->default_msg_cleanup = COMMIT_MSG_CLEANUP_NONE;
-	git_config(git_sequencer_config, opts);
+ opts->default_msg_cleanup = COMMIT_MSG_CLEANUP_NONE;
+ git_config(git_sequencer_config, opts);
 }

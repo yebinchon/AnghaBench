@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (float const*) ; 
- int /*<<< orphan*/  vlc_player_ChangeRate (int /*<<< orphan*/ *,float) ; 
- float vlc_player_GetRate (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vlc_player_t ;
+
+
+ size_t ARRAY_SIZE (float const*) ;
+ int vlc_player_ChangeRate (int *,float) ;
+ float vlc_player_GetRate (int *) ;
 
 __attribute__((used)) static void
 vlc_player_ChangeRateOffset(vlc_player_t *player, bool increment)
@@ -27,7 +27,7 @@ vlc_player_ChangeRateOffset(vlc_player_t *player, bool increment)
     };
     float rate = vlc_player_GetRate(player) * (increment ? 1.1f : 0.9f);
 
-    /* find closest rate (if any) in the desired direction */
+
     for (size_t i = 0; i < ARRAY_SIZE(rates); ++i)
     {
         if ((increment && rates[i] > rate) ||

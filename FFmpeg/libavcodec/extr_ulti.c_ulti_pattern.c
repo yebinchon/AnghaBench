@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ulti_convert_yuv (int /*<<< orphan*/ *,int,int,int*,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVFrame ;
+
+
+ int ulti_convert_yuv (int *,int,int,int*,int) ;
 
 __attribute__((used)) static void ulti_pattern(AVFrame *frame, int x, int y,
                          int f0, int f1, int Y0, int Y1, int chroma)

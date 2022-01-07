@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  int dword ;
-typedef  scalar_t__ byte ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef int dword ;
+typedef scalar_t__ byte ;
 struct TYPE_12__ {int manufacturer_features; scalar_t__* ncci_state; } ;
-struct TYPE_11__ {int ncpi_state; int B3_prot; scalar_t__ B2_prot; scalar_t__* inc_dis_ncci_table; scalar_t__ State; TYPE_1__* adapter; int /*<<< orphan*/  appl; scalar_t__ channels; int /*<<< orphan*/  call_dir; scalar_t__ fax_connect_info_length; scalar_t__ requested_options_conn; } ;
+struct TYPE_11__ {int ncpi_state; int B3_prot; scalar_t__ B2_prot; scalar_t__* inc_dis_ncci_table; scalar_t__ State; TYPE_1__* adapter; int appl; scalar_t__ channels; int call_dir; scalar_t__ fax_connect_info_length; scalar_t__ requested_options_conn; } ;
 struct TYPE_10__ {scalar_t__* ncci_state; } ;
-typedef  TYPE_2__ PLCI ;
-typedef  TYPE_3__ DIVA_CAPI_ADAPTER ;
-typedef  int /*<<< orphan*/  APPL ;
-typedef  int /*<<< orphan*/  API_PARSE ;
+typedef TYPE_2__ PLCI ;
+typedef TYPE_3__ DIVA_CAPI_ADAPTER ;
+typedef int APPL ;
+typedef int API_PARSE ;
 
-/* Variables and functions */
- scalar_t__ B2_LAPD ; 
- scalar_t__ B2_LAPD_FREE_SAPI_SEL ; 
- int B3_ISO8208 ; 
- int B3_T90NL ; 
- int B3_X25_DCE ; 
- int /*<<< orphan*/  CALL_DIR_FORCE_OUTG_NL ; 
- scalar_t__ IDLE ; 
- scalar_t__ INC_DIS_PENDING ; 
- int MANUFACTURER_FEATURE_FAX_PAPER_FORMATS ; 
- size_t MAX_CHANNELS_PER_PLCI ; 
- int /*<<< orphan*/  N_EDATA ; 
- scalar_t__ SUSPENDING ; 
- int /*<<< orphan*/  _DISCONNECT_I ; 
- int /*<<< orphan*/  _FACILITY_I ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,size_t) ; 
- int /*<<< orphan*/  fax_disconnect_command ; 
- int /*<<< orphan*/  ncci_free_receive_buffers (TYPE_2__*,size_t) ; 
- int /*<<< orphan*/  nl_req_ncci (TYPE_2__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  plci_remove (TYPE_2__*) ; 
- int /*<<< orphan*/  sendf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,size_t,...) ; 
- int /*<<< orphan*/  start_internal_command (int,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ B2_LAPD ;
+ scalar_t__ B2_LAPD_FREE_SAPI_SEL ;
+ int B3_ISO8208 ;
+ int B3_T90NL ;
+ int B3_X25_DCE ;
+ int CALL_DIR_FORCE_OUTG_NL ;
+ scalar_t__ IDLE ;
+ scalar_t__ INC_DIS_PENDING ;
+ int MANUFACTURER_FEATURE_FAX_PAPER_FORMATS ;
+ size_t MAX_CHANNELS_PER_PLCI ;
+ int N_EDATA ;
+ scalar_t__ SUSPENDING ;
+ int _DISCONNECT_I ;
+ int _FACILITY_I ;
+ int dbug (int,int ) ;
+ int dprintf (char*,size_t) ;
+ int fax_disconnect_command ;
+ int ncci_free_receive_buffers (TYPE_2__*,size_t) ;
+ int nl_req_ncci (TYPE_2__*,int ,scalar_t__) ;
+ int plci_remove (TYPE_2__*) ;
+ int sendf (int ,int ,int,int ,char*,size_t,...) ;
+ int start_internal_command (int,TYPE_2__*,int ) ;
 
 __attribute__((used)) static byte disconnect_b3_res(dword Id, word Number, DIVA_CAPI_ADAPTER *a,
-			      PLCI *plci, APPL *appl, API_PARSE *parms)
+         PLCI *plci, APPL *appl, API_PARSE *parms)
 {
   word ncci;
   word i;
@@ -102,5 +102,5 @@ __attribute__((used)) static byte disconnect_b3_res(dword Id, word Number, DIVA_
       }
     }
   }
-  return false;
+  return 0;
 }

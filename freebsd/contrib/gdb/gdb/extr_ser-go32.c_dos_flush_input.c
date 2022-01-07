@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct serial {size_t fd; } ;
 struct dos_ttystate {scalar_t__ fifo; scalar_t__ count; scalar_t__ first; } ;
 
-/* Variables and functions */
- int FIFO_ENABLE ; 
- int FIFO_RCV_RST ; 
- int FIFO_TRIGGER ; 
- int /*<<< orphan*/  com_fifo ; 
- int /*<<< orphan*/  disable () ; 
- int /*<<< orphan*/  enable () ; 
- int /*<<< orphan*/  outb (struct dos_ttystate*,int /*<<< orphan*/ ,int) ; 
- struct dos_ttystate* ports ; 
+
+ int FIFO_ENABLE ;
+ int FIFO_RCV_RST ;
+ int FIFO_TRIGGER ;
+ int com_fifo ;
+ int disable () ;
+ int enable () ;
+ int outb (struct dos_ttystate*,int ,int) ;
+ struct dos_ttystate* ports ;
 
 __attribute__((used)) static int
 dos_flush_input (struct serial *scb)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_7__ {size_t client_sigalgslen; size_t conf_sigalgslen; int /*<<< orphan*/ * conf_sigalgs; int /*<<< orphan*/ * client_sigalgs; } ;
-struct TYPE_6__ {int hash; int sig; int /*<<< orphan*/  sigalg; } ;
-typedef  TYPE_1__ SIGALG_LOOKUP ;
-typedef  TYPE_2__ CERT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OPENSSL_malloc (size_t) ; 
- size_t OSSL_NELEM (TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_F_TLS1_SET_SIGALGS ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* sigalg_lookup_tbl ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_7__ {size_t client_sigalgslen; size_t conf_sigalgslen; int * conf_sigalgs; int * client_sigalgs; } ;
+struct TYPE_6__ {int hash; int sig; int sigalg; } ;
+typedef TYPE_1__ SIGALG_LOOKUP ;
+typedef TYPE_2__ CERT ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (int *) ;
+ int * OPENSSL_malloc (size_t) ;
+ size_t OSSL_NELEM (TYPE_1__*) ;
+ int SSL_F_TLS1_SET_SIGALGS ;
+ int SSLerr (int ,int ) ;
+ TYPE_1__* sigalg_lookup_tbl ;
 
 int tls1_set_sigalgs(CERT *c, const int *psig_nids, size_t salglen, int client)
 {
@@ -34,7 +34,7 @@ int tls1_set_sigalgs(CERT *c, const int *psig_nids, size_t salglen, int client)
 
     if (salglen & 1)
         return 0;
-    if ((sigalgs = OPENSSL_malloc((salglen / 2) * sizeof(*sigalgs))) == NULL) {
+    if ((sigalgs = OPENSSL_malloc((salglen / 2) * sizeof(*sigalgs))) == ((void*)0)) {
         SSLerr(SSL_F_TLS1_SET_SIGALGS, ERR_R_MALLOC_FAILURE);
         return 0;
     }

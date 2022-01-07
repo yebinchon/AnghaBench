@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  crypto_hash_sha256 (int*,scalar_t__*,int) ; 
- int /*<<< orphan*/  crypto_stream_salsa20 (scalar_t__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int crypto_stream_salsa20_keybytes () ; 
- unsigned int crypto_stream_salsa20_messagebytes_max () ; 
- unsigned int crypto_stream_salsa20_noncebytes () ; 
- int /*<<< orphan*/  crypto_stream_salsa20_xor_ic (scalar_t__*,scalar_t__*,int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int* h ; 
- int /*<<< orphan*/  noncesuffix ; 
- scalar_t__* output ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  secondkey ; 
+ int assert (int) ;
+ int crypto_hash_sha256 (int*,scalar_t__*,int) ;
+ int crypto_stream_salsa20 (scalar_t__*,int,int ,int ) ;
+ unsigned int crypto_stream_salsa20_keybytes () ;
+ unsigned int crypto_stream_salsa20_messagebytes_max () ;
+ unsigned int crypto_stream_salsa20_noncebytes () ;
+ int crypto_stream_salsa20_xor_ic (scalar_t__*,scalar_t__*,int,int ,unsigned int,int ) ;
+ int* h ;
+ int noncesuffix ;
+ scalar_t__* output ;
+ int printf (char*,...) ;
+ int secondkey ;
 
 int
 main(void)

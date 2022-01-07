@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Trigger ;
-typedef  int /*<<< orphan*/  Table ;
-struct TYPE_2__ {int schemaFlags; int /*<<< orphan*/  iGeneration; scalar_t__ pSeqTab; int /*<<< orphan*/  fkeyHash; int /*<<< orphan*/  tblHash; int /*<<< orphan*/  idxHash; int /*<<< orphan*/  trigHash; } ;
-typedef  TYPE_1__ Schema ;
-typedef  int /*<<< orphan*/  HashElem ;
-typedef  int /*<<< orphan*/  Hash ;
 
-/* Variables and functions */
- int DB_ResetWanted ; 
- int DB_SchemaLoaded ; 
- int /*<<< orphan*/  sqlite3DeleteTable (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3DeleteTrigger (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3HashClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3HashInit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqliteHashData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqliteHashFirst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqliteHashNext (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int Trigger ;
+typedef int Table ;
+struct TYPE_2__ {int schemaFlags; int iGeneration; scalar_t__ pSeqTab; int fkeyHash; int tblHash; int idxHash; int trigHash; } ;
+typedef TYPE_1__ Schema ;
+typedef int HashElem ;
+typedef int Hash ;
+
+
+ int DB_ResetWanted ;
+ int DB_SchemaLoaded ;
+ int sqlite3DeleteTable (int ,int *) ;
+ int sqlite3DeleteTrigger (int ,int *) ;
+ int sqlite3HashClear (int *) ;
+ int sqlite3HashInit (int *) ;
+ int * sqliteHashData (int *) ;
+ int * sqliteHashFirst (int *) ;
+ int * sqliteHashNext (int *) ;
 
 void sqlite3SchemaClear(void *p){
   Hash temp1;

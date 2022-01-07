@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_2__ {int /*<<< orphan*/ * tree; scalar_t__ codesize; int /*<<< orphan*/ * code; } ;
-typedef  int /*<<< orphan*/  TTree ;
-typedef  TYPE_1__ Pattern ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PATTERN_T ; 
- int /*<<< orphan*/  luaL_getmetatable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ lua_newuserdata (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setmetatable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setuservalue (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_2__ {int * tree; scalar_t__ codesize; int * code; } ;
+typedef int TTree ;
+typedef TYPE_1__ Pattern ;
+
+
+ int PATTERN_T ;
+ int luaL_getmetatable (int *,int ) ;
+ scalar_t__ lua_newuserdata (int *,size_t) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_setmetatable (int *,int) ;
+ int lua_setuservalue (int *,int) ;
 
 __attribute__((used)) static TTree *newtree (lua_State *L, int len) {
   size_t size = (len - 1) * sizeof(TTree) + sizeof(Pattern);
@@ -31,6 +31,6 @@ __attribute__((used)) static TTree *newtree (lua_State *L, int len) {
   lua_pushvalue(L, -1);
   lua_setuservalue(L, -3);
   lua_setmetatable(L, -2);
-  p->code = NULL;  p->codesize = 0;
+  p->code = ((void*)0); p->codesize = 0;
   return p->tree;
 }

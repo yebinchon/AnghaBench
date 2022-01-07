@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct statbuf {int /*<<< orphan*/  ctime_nsec; int /*<<< orphan*/  ctime; int /*<<< orphan*/  mtime_nsec; int /*<<< orphan*/  mtime; int /*<<< orphan*/  atime_nsec; int /*<<< orphan*/  atime; int /*<<< orphan*/  blocks; int /*<<< orphan*/  blksize; int /*<<< orphan*/  size; int /*<<< orphan*/  rdev; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  nlink; int /*<<< orphan*/  mode; int /*<<< orphan*/  inode; int /*<<< orphan*/  dev; } ;
-struct newstat64 {int /*<<< orphan*/  ctime_nsec; int /*<<< orphan*/  ctime; int /*<<< orphan*/  mtime_nsec; int /*<<< orphan*/  mtime; int /*<<< orphan*/  atime_nsec; int /*<<< orphan*/  atime; int /*<<< orphan*/  blocks; int /*<<< orphan*/  blksize; int /*<<< orphan*/  size; int /*<<< orphan*/  rdev; int /*<<< orphan*/  gid; int /*<<< orphan*/  uid; int /*<<< orphan*/  nlink; int /*<<< orphan*/  mode; int /*<<< orphan*/  ino; int /*<<< orphan*/  fucked_ino; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
+
+
+
+struct statbuf {int ctime_nsec; int ctime; int mtime_nsec; int mtime; int atime_nsec; int atime; int blocks; int blksize; int size; int rdev; int gid; int uid; int nlink; int mode; int inode; int dev; } ;
+struct newstat64 {int ctime_nsec; int ctime; int mtime_nsec; int mtime; int atime_nsec; int atime; int blocks; int blksize; int size; int rdev; int gid; int uid; int nlink; int mode; int ino; int fucked_ino; int dev; } ;
+
+
 
 struct newstat64 stat_convert_newstat64(struct statbuf stat) {
     struct newstat64 newstat;

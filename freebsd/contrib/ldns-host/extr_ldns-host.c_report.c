@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_resolver ;
-typedef  int /*<<< orphan*/  ldns_rdf ;
-typedef  scalar_t__ ldns_pkt_rcode ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- scalar_t__ LDNS_RCODE_NOERROR ; 
- scalar_t__ M_SINGLE_Q ; 
- int /*<<< orphan*/  ldns_pkt_answer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_pkt_answerfrom (int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_pkt_get_rcode (int /*<<< orphan*/ *) ; 
- int ldns_resolver_port (int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_rr_list_rr_count (int /*<<< orphan*/ ) ; 
- scalar_t__ o_mode ; 
- int o_print_pkt_server ; 
- int /*<<< orphan*/  o_print_rr_server ; 
- int /*<<< orphan*/  o_rrtype ; 
- char* o_server ; 
- scalar_t__ o_verbose ; 
- int /*<<< orphan*/  print_pkt_short (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_pkt_verbose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_rcode (scalar_t__) ; 
- int /*<<< orphan*/  print_rdf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_rdf_nodot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_received_line (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_rr_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int ldns_resolver ;
+typedef int ldns_rdf ;
+typedef scalar_t__ ldns_pkt_rcode ;
+typedef int ldns_pkt ;
+
+
+ scalar_t__ LDNS_RCODE_NOERROR ;
+ scalar_t__ M_SINGLE_Q ;
+ int ldns_pkt_answer (int *) ;
+ int ldns_pkt_answerfrom (int *) ;
+ scalar_t__ ldns_pkt_get_rcode (int *) ;
+ int ldns_resolver_port (int *) ;
+ scalar_t__ ldns_rr_list_rr_count (int ) ;
+ scalar_t__ o_mode ;
+ int o_print_pkt_server ;
+ int o_print_rr_server ;
+ int o_rrtype ;
+ char* o_server ;
+ scalar_t__ o_verbose ;
+ int print_pkt_short (int *,int ) ;
+ int print_pkt_verbose (int *) ;
+ int print_rcode (scalar_t__) ;
+ int print_rdf (int ) ;
+ int print_rdf_nodot (int *) ;
+ int print_received_line (int *,int *) ;
+ int print_rr_type (int ) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 report(ldns_resolver *res, ldns_rdf *domain, ldns_pkt *pkt) {
@@ -46,7 +46,7 @@ report(ldns_resolver *res, ldns_rdf *domain, ldns_pkt *pkt) {
         printf("Using domain server:\nName: %s\nAddress: ", o_server);
         print_rdf(ldns_pkt_answerfrom(pkt));
         printf("#%d\nAliases: \n\n", ldns_resolver_port(res));
-        o_print_pkt_server = false;
+        o_print_pkt_server = 0;
     }
     rcode = ldns_pkt_get_rcode(pkt);
     if (rcode != LDNS_RCODE_NOERROR) {

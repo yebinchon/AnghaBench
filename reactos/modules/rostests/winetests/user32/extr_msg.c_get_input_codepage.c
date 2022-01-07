@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cp ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HKL ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ CP_ACP ; 
- int /*<<< orphan*/  GetKeyboardLayout (int /*<<< orphan*/ ) ; 
- int GetLocaleInfoW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int LOCALE_IDEFAULTANSICODEPAGE ; 
- int LOCALE_RETURN_NUMBER ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cp ;
+typedef int WCHAR ;
+typedef int HKL ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ CP_ACP ;
+ int GetKeyboardLayout (int ) ;
+ int GetLocaleInfoW (int ,int,int *,int) ;
+ int LOCALE_IDEFAULTANSICODEPAGE ;
+ int LOCALE_RETURN_NUMBER ;
+ int LOWORD (int ) ;
 
 __attribute__((used)) static DWORD get_input_codepage( void )
 {

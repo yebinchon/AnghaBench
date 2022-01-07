@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_2__ {int mode; } ;
 
-/* Variables and functions */
- int RGB_INIT ; 
- int RGB_current_mode ; 
- int TOG_STATUS ; 
-#define  _LOWER 130 
-#define  _NAV 129 
-#define  _QWERTY 128 
- int biton32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_state ; 
- TYPE_1__ rgblight_config ; 
- int /*<<< orphan*/  rgblight_mode (int) ; 
+
+ int RGB_INIT ;
+ int RGB_current_mode ;
+ int TOG_STATUS ;
+
+
+
+ int biton32 (int ) ;
+ int layer_state ;
+ TYPE_1__ rgblight_config ;
+ int rgblight_mode (int) ;
 
 void matrix_scan_user(void) {
    uint8_t layer = biton32(layer_state);
    switch (layer) {
-     case _NAV:
+     case 129:
          if (RGB_INIT) {} else {
            RGB_current_mode = rgblight_config.mode;
-           RGB_INIT = true;
+           RGB_INIT = 1;
          }
-         if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
+         if (TOG_STATUS) {
          } else {
            TOG_STATUS = !TOG_STATUS;
            rgblight_mode(29);
          }
          break;
-     case _LOWER:
+     case 130:
          if (RGB_INIT) {} else {
            RGB_current_mode = rgblight_config.mode;
-           RGB_INIT = true;
+           RGB_INIT = 1;
          }
-         if (TOG_STATUS) { //TOG_STATUS checks is another reactive key currently pressed, only changes RGB mode if returns false
+         if (TOG_STATUS) {
          } else {
            TOG_STATUS = !TOG_STATUS;
            rgblight_mode(29);
          }
          break;
-     case _QWERTY:
+     case 128:
          if (RGB_INIT) {} else {
            RGB_current_mode = rgblight_config.mode;
-           RGB_INIT = true;
+           RGB_INIT = 1;
          }
-         rgblight_mode(RGB_current_mode);   // revert RGB to initial mode prior to RGB mode change
-         TOG_STATUS = false;
+         rgblight_mode(RGB_current_mode);
+         TOG_STATUS = 0;
          break;
    }
  }

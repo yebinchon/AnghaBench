@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct CUnreachableData {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct CUnreachableData*) ; 
- int /*<<< orphan*/  HandleMissingReturn (int,struct CUnreachableData*) ; 
+
+ int ASSERT (struct CUnreachableData*) ;
+ int HandleMissingReturn (int,struct CUnreachableData*) ;
 
 void
 __ubsan_handle_missing_return(struct CUnreachableData *pData)
 {
 
-	ASSERT(pData);
+ ASSERT(pData);
 
-	HandleMissingReturn(true, pData);
+ HandleMissingReturn(1, pData);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct list_decoder {int k; int K; int p; scalar_t__ data; } ;
 struct interpolative_ext_decoder_stack_entry {int left_idx; int right_idx; int middle_value; int left_value; int right_value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  interpolative_ext_decode_node (struct list_decoder*,struct interpolative_ext_decoder_stack_entry*) ; 
+
+ int interpolative_ext_decode_node (struct list_decoder*,struct interpolative_ext_decoder_stack_entry*) ;
 
 __attribute__((used)) static int interpolative_ext_decode_int (struct list_decoder *dec) {
-  if (dec->k >= dec->K) {  /* by K.O.T. */
+  if (dec->k >= dec->K) {
     return 0x7fffffff;
   }
   dec->k++;

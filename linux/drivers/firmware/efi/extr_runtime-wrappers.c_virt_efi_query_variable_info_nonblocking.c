@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  efi_status_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef int u32 ;
+typedef int efi_status_t ;
 struct TYPE_2__ {scalar_t__ runtime_version; } ;
 
-/* Variables and functions */
- scalar_t__ EFI_2_00_SYSTEM_TABLE_REVISION ; 
- int /*<<< orphan*/  EFI_NOT_READY ; 
- int /*<<< orphan*/  EFI_UNSUPPORTED ; 
- scalar_t__ down_trylock (int /*<<< orphan*/ *) ; 
- TYPE_1__ efi ; 
- int /*<<< orphan*/  efi_call_virt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  efi_runtime_lock ; 
- int /*<<< orphan*/  query_variable_info ; 
- int /*<<< orphan*/  up (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EFI_2_00_SYSTEM_TABLE_REVISION ;
+ int EFI_NOT_READY ;
+ int EFI_UNSUPPORTED ;
+ scalar_t__ down_trylock (int *) ;
+ TYPE_1__ efi ;
+ int efi_call_virt (int ,int ,int *,int *,int *) ;
+ int efi_runtime_lock ;
+ int query_variable_info ;
+ int up (int *) ;
 
 __attribute__((used)) static efi_status_t
 virt_efi_query_variable_info_nonblocking(u32 attr,
-					 u64 *storage_space,
-					 u64 *remaining_space,
-					 u64 *max_variable_size)
+      u64 *storage_space,
+      u64 *remaining_space,
+      u64 *max_variable_size)
 {
-	efi_status_t status;
+ efi_status_t status;
 
-	if (efi.runtime_version < EFI_2_00_SYSTEM_TABLE_REVISION)
-		return EFI_UNSUPPORTED;
+ if (efi.runtime_version < EFI_2_00_SYSTEM_TABLE_REVISION)
+  return EFI_UNSUPPORTED;
 
-	if (down_trylock(&efi_runtime_lock))
-		return EFI_NOT_READY;
+ if (down_trylock(&efi_runtime_lock))
+  return EFI_NOT_READY;
 
-	status = efi_call_virt(query_variable_info, attr, storage_space,
-			       remaining_space, max_variable_size);
-	up(&efi_runtime_lock);
-	return status;
+ status = efi_call_virt(query_variable_info, attr, storage_space,
+          remaining_space, max_variable_size);
+ up(&efi_runtime_lock);
+ return status;
 }

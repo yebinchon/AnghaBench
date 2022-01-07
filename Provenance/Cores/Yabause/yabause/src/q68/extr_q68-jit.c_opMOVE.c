@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  Q68State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_WRITE ; 
- scalar_t__ EA_ADDRESS_REG ; 
- scalar_t__ EA_MODE (int const) ; 
- int /*<<< orphan*/  JIT_EMIT_ADD_CYCLES (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  JIT_EMIT_EXT_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_MOVE_B (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_MOVE_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_MOVE_W (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SETCC_LOGIC_B (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SETCC_LOGIC_L (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JIT_EMIT_SETCC_LOGIC_W (int /*<<< orphan*/ ) ; 
- int const SIZE_B ; 
- int const SIZE_L ; 
- int const SIZE_W ; 
- int cc_needed (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  current_entry ; 
- int /*<<< orphan*/  ea_get (int /*<<< orphan*/ *,int,int const,int /*<<< orphan*/ ,int*,int) ; 
- int ea_resolve (int /*<<< orphan*/ *,int const,int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ea_set (int /*<<< orphan*/ *,int const,int const) ; 
- int op_ill (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int Q68State ;
+
+
+ int ACCESS_WRITE ;
+ scalar_t__ EA_ADDRESS_REG ;
+ scalar_t__ EA_MODE (int const) ;
+ int JIT_EMIT_ADD_CYCLES (int ,int) ;
+ int JIT_EMIT_EXT_L (int ) ;
+ int JIT_EMIT_MOVE_B (int ) ;
+ int JIT_EMIT_MOVE_L (int ) ;
+ int JIT_EMIT_MOVE_W (int ) ;
+ int JIT_EMIT_SETCC_LOGIC_B (int ) ;
+ int JIT_EMIT_SETCC_LOGIC_L (int ) ;
+ int JIT_EMIT_SETCC_LOGIC_W (int ) ;
+ int const SIZE_B ;
+ int const SIZE_L ;
+ int const SIZE_W ;
+ int cc_needed (int *,int) ;
+ int current_entry ;
+ int ea_get (int *,int,int const,int ,int*,int) ;
+ int ea_resolve (int *,int const,int const,int ) ;
+ int ea_set (int *,int const,int const) ;
+ int op_ill (int *,int) ;
 
 __attribute__((used)) static int opMOVE(Q68State *state, uint32_t opcode)
 {
@@ -45,8 +45,8 @@ __attribute__((used)) static int opMOVE(Q68State *state, uint32_t opcode)
         return 1;
     }
 
-    /* Rearrange the opcode bits so we can pass the destination EA to
-     * ea_resolve() */
+
+
     const uint32_t dummy_opcode = (opcode>>9 & 7) | (opcode>>3 & 0x38);
     int cycles_dest;
     if (EA_MODE(dummy_opcode) <= EA_ADDRESS_REG) {
@@ -58,12 +58,12 @@ __attribute__((used)) static int opMOVE(Q68State *state, uint32_t opcode)
         }
     }
 
-    /* Copy the operand to the result and set flags (if needed) */
+
     const int do_cc = cc_needed(state, opcode);
     if (EA_MODE(dummy_opcode) == EA_ADDRESS_REG) {
         if (size == SIZE_W) {
             JIT_EMIT_EXT_L(current_entry);
-        } else {  // size == SIZE_L
+        } else {
             JIT_EMIT_MOVE_L(current_entry);
         }
     } else {
@@ -73,13 +73,13 @@ __attribute__((used)) static int opMOVE(Q68State *state, uint32_t opcode)
         } else if (size == SIZE_W) {
             JIT_EMIT_MOVE_W(current_entry);
             if (do_cc) JIT_EMIT_SETCC_LOGIC_W(current_entry);
-        } else {  // size == SIZE_L
+        } else {
             JIT_EMIT_MOVE_L(current_entry);
             if (do_cc) JIT_EMIT_SETCC_LOGIC_L(current_entry);
         }
     }
 
-    /* Update the destination EA and cycle count */
+
     ea_set(state, dummy_opcode, size);
     JIT_EMIT_ADD_CYCLES(current_entry, 4 + cycles_src + cycles_dest);
 

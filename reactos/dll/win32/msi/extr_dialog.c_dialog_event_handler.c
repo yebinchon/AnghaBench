@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msi_dialog ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  (* handler ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ;scalar_t__ event; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- TYPE_1__* control_events ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  strcmpW (scalar_t__,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int msi_dialog ;
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_2__ {int (* handler ) (int *,int const*) ;scalar_t__ event; } ;
+
+
+ int ERROR_SUCCESS ;
+ int FIXME (char*,int ,int ) ;
+ int TRACE (char*,int ) ;
+ TYPE_1__* control_events ;
+ int debugstr_w (int const*) ;
+ int strcmpW (scalar_t__,int const*) ;
+ int stub1 (int *,int const*) ;
 
 __attribute__((used)) static UINT dialog_event_handler( msi_dialog *dialog, const WCHAR *event, const WCHAR *argument )
 {

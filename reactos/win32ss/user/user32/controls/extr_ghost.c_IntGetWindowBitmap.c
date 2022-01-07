@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/ * HGDIOBJ ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BitBlt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int CAPTUREBLT ; 
- int /*<<< orphan*/  CreateCompatibleDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * IntCreate32BppBitmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SRCCOPY ; 
- int /*<<< orphan*/ * SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int INT ;
+typedef int HWND ;
+typedef int * HGDIOBJ ;
+typedef int HDC ;
+typedef int * HBITMAP ;
+
+
+ int BitBlt (int ,int ,int ,int ,int ,int ,int ,int ,int) ;
+ int CAPTUREBLT ;
+ int CreateCompatibleDC (int ) ;
+ int DeleteDC (int ) ;
+ int GetWindowDC (int ) ;
+ int * IntCreate32BppBitmap (int ,int ) ;
+ int ReleaseDC (int ,int ) ;
+ int SRCCOPY ;
+ int * SelectObject (int ,int *) ;
 
 __attribute__((used)) static HBITMAP
 IntGetWindowBitmap(HWND hwnd, INT cx, INT cy)
 {
-    HBITMAP hbm = NULL;
+    HBITMAP hbm = ((void*)0);
     HDC hdc, hdcMem;
     HGDIOBJ hbmOld;
 
     hdc = GetWindowDC(hwnd);
     if (!hdc)
-        return NULL;
+        return ((void*)0);
 
     hdcMem = CreateCompatibleDC(hdc);
     if (!hdcMem)

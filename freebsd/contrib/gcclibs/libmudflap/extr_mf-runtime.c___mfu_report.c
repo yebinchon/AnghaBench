@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int persistent_count; scalar_t__ mudflap_mode; scalar_t__ print_leaks; scalar_t__ collect_stats; } ;
 
-/* Variables and functions */
- unsigned int LOOKUP_CACHE_SIZE ; 
- int /*<<< orphan*/  MAXPTR ; 
- int /*<<< orphan*/  MINPTR ; 
- unsigned int __MF_TYPE_MAX_CEM ; 
- int /*<<< orphan*/  __mf_count_check ; 
- int /*<<< orphan*/  __mf_count_register ; 
- int /*<<< orphan*/  __mf_count_unregister ; 
- int /*<<< orphan*/ * __mf_count_violation ; 
- int /*<<< orphan*/  __mf_describe_object (int /*<<< orphan*/ *) ; 
- unsigned int __mf_find_objects (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- unsigned int __mf_lock_contention ; 
- int* __mf_lookup_cache_reusecount ; 
- scalar_t__** __mf_object_cemetary ; 
- TYPE_1__ __mf_opts ; 
- unsigned int __mf_reentrancy ; 
- unsigned int __mf_report_leaks () ; 
- int /*<<< orphan*/ * __mf_total_register_size ; 
- int /*<<< orphan*/  __mf_total_unregister_size ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,unsigned int,...) ; 
- scalar_t__ mode_check ; 
- int /*<<< orphan*/  stderr ; 
+
+ unsigned int LOOKUP_CACHE_SIZE ;
+ int MAXPTR ;
+ int MINPTR ;
+ unsigned int __MF_TYPE_MAX_CEM ;
+ int __mf_count_check ;
+ int __mf_count_register ;
+ int __mf_count_unregister ;
+ int * __mf_count_violation ;
+ int __mf_describe_object (int *) ;
+ unsigned int __mf_find_objects (int ,int ,int *,int ) ;
+ unsigned int __mf_lock_contention ;
+ int* __mf_lookup_cache_reusecount ;
+ scalar_t__** __mf_object_cemetary ;
+ TYPE_1__ __mf_opts ;
+ unsigned int __mf_reentrancy ;
+ unsigned int __mf_report_leaks () ;
+ int * __mf_total_register_size ;
+ int __mf_total_unregister_size ;
+ int fprintf (int ,char*,unsigned int,...) ;
+ scalar_t__ mode_check ;
+ int stderr ;
 
 void
 __mfu_report ()
@@ -52,7 +52,7 @@ __mfu_report ()
                __mf_count_register,
                __mf_total_register_size[0], __mf_total_register_size[1],
                __mf_total_register_size[2], __mf_total_register_size[3],
-               __mf_total_register_size[4], /* XXX */
+               __mf_total_register_size[4],
                __mf_count_unregister, __mf_total_unregister_size,
                __mf_count_violation[0], __mf_count_violation[1],
                __mf_count_violation[2], __mf_count_violation[3],
@@ -60,12 +60,12 @@ __mfu_report ()
 
       fprintf (stderr,
                "calls with reentrancy: %lu\n", __mf_reentrancy);
-#ifdef LIBMUDFLAPTH
-      fprintf (stderr,
-               "           lock contention: %lu\n", __mf_lock_contention);
-#endif
 
-      /* Lookup cache stats.  */
+
+
+
+
+
       {
         unsigned i;
         unsigned max_reuse = 0;
@@ -87,7 +87,7 @@ __mfu_report ()
 
       {
         unsigned live_count;
-        live_count = __mf_find_objects (MINPTR, MAXPTR, NULL, 0);
+        live_count = __mf_find_objects (MINPTR, MAXPTR, ((void*)0), 0);
         fprintf (stderr, "number of live objects: %u\n", live_count);
       }
 
@@ -107,9 +107,9 @@ __mfu_report ()
       unsigned l;
       extern void * __mf_wrap_alloca_indirect (size_t c);
 
-      /* Free up any remaining alloca()'d blocks.  */
+
       __mf_wrap_alloca_indirect (0);
-      __mf_describe_object (NULL); /* Reset description epoch.  */
+      __mf_describe_object (((void*)0));
       l = __mf_report_leaks ();
       fprintf (stderr, "number of leaked objects: %u\n", l);
     }

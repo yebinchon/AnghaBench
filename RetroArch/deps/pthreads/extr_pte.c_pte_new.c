@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* pthread_t ;
-struct TYPE_5__ {void* threadLock; void* cancelLock; int /*<<< orphan*/  cancelType; int /*<<< orphan*/  cancelState; int /*<<< orphan*/  detachState; int /*<<< orphan*/  sched_priority; scalar_t__ x; } ;
-typedef  TYPE_1__ pte_thread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PTHREAD_CANCEL_DEFERRED ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_ENABLE ; 
- int /*<<< orphan*/  PTHREAD_CREATE_JOINABLE ; 
- void* PTHREAD_MUTEX_INITIALIZER ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  pte_osThreadGetMinPriority () ; 
- TYPE_1__* pte_threadReusePop () ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* pthread_t ;
+struct TYPE_5__ {void* threadLock; void* cancelLock; int cancelType; int cancelState; int detachState; int sched_priority; scalar_t__ x; } ;
+typedef TYPE_1__ pte_thread_t ;
+
+
+ int PTHREAD_CANCEL_DEFERRED ;
+ int PTHREAD_CANCEL_ENABLE ;
+ int PTHREAD_CREATE_JOINABLE ;
+ void* PTHREAD_MUTEX_INITIALIZER ;
+ scalar_t__ calloc (int,int) ;
+ int pte_osThreadGetMinPriority () ;
+ TYPE_1__* pte_threadReusePop () ;
 
 pthread_t pte_new (void)
 {
-   pthread_t nil     = NULL;
-   pte_thread_t * tp = NULL;
+   pthread_t nil = ((void*)0);
+   pte_thread_t * tp = ((void*)0);
 
-   /*
-    * If there's a reusable pthread_t then use it.
-    */
+
+
+
    pthread_t t = pte_threadReusePop ();
 
-   if (NULL != t)
+   if (((void*)0) != t)
       tp = (pte_thread_t *) t;
    else
    {
-      /* No reuse threads available */
+
       tp = (pte_thread_t *) calloc (1, sizeof(pte_thread_t));
 
-      if (tp == NULL)
+      if (tp == ((void*)0))
          return nil;
 
-      /* ptHandle.p needs to point to it's parent pte_thread_t. */
+
       t = tp;
       tp->x = 0;
    }
 
-   /* Set default state. */
+
    tp->sched_priority = pte_osThreadGetMinPriority();
 
    tp->detachState = PTHREAD_CREATE_JOINABLE;

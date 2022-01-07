@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  mmgr; int /*<<< orphan*/  error; } ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  scalar_t__ HPDF_InfoType ;
-typedef  int /*<<< orphan*/  HPDF_Encoder ;
-typedef  TYPE_1__* HPDF_Dict ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_Dict_Add (TYPE_1__*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_Dict_AddName (TYPE_1__*,char const*,char const*) ; 
- scalar_t__ HPDF_INFO_MOD_DATE ; 
- scalar_t__ HPDF_INFO_TRAPPED ; 
- int /*<<< orphan*/  HPDF_INVALID_PARAMETER ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- int /*<<< orphan*/  HPDF_SetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HPDF_String_New (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- char* InfoTypeToName (scalar_t__) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int mmgr; int error; } ;
+typedef int HPDF_STATUS ;
+typedef scalar_t__ HPDF_InfoType ;
+typedef int HPDF_Encoder ;
+typedef TYPE_1__* HPDF_Dict ;
+
+
+ int HPDF_Dict_Add (TYPE_1__*,char const*,int ) ;
+ int HPDF_Dict_AddName (TYPE_1__*,char const*,char const*) ;
+ scalar_t__ HPDF_INFO_MOD_DATE ;
+ scalar_t__ HPDF_INFO_TRAPPED ;
+ int HPDF_INVALID_PARAMETER ;
+ int HPDF_PTRACE (char*) ;
+ int HPDF_SetError (int ,int ,int ) ;
+ int HPDF_String_New (int ,char const*,int ) ;
+ char* InfoTypeToName (scalar_t__) ;
 
 HPDF_STATUS
-HPDF_Info_SetInfoAttr (HPDF_Dict        info,
-                       HPDF_InfoType    type,
-                       const char  *value,
-                       HPDF_Encoder     encoder)
+HPDF_Info_SetInfoAttr (HPDF_Dict info,
+                       HPDF_InfoType type,
+                       const char *value,
+                       HPDF_Encoder encoder)
 {
     const char* name = InfoTypeToName (type);
 

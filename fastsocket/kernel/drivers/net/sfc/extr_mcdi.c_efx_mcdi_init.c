@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct efx_nic {int dummy; } ;
-struct efx_mcdi_iface {int /*<<< orphan*/  mode; int /*<<< orphan*/  state; int /*<<< orphan*/  iface_lock; int /*<<< orphan*/  wq; } ;
+struct efx_mcdi_iface {int mode; int state; int iface_lock; int wq; } ;
 
-/* Variables and functions */
- scalar_t__ EFX_REV_SIENA_A0 ; 
- int /*<<< orphan*/  MCDI_MODE_POLL ; 
- int /*<<< orphan*/  MCDI_STATE_QUIESCENT ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct efx_mcdi_iface* efx_mcdi (struct efx_nic*) ; 
- int /*<<< orphan*/  efx_mcdi_poll_reboot (struct efx_nic*) ; 
- scalar_t__ efx_nic_rev (struct efx_nic*) ; 
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EFX_REV_SIENA_A0 ;
+ int MCDI_MODE_POLL ;
+ int MCDI_STATE_QUIESCENT ;
+ int atomic_set (int *,int ) ;
+ struct efx_mcdi_iface* efx_mcdi (struct efx_nic*) ;
+ int efx_mcdi_poll_reboot (struct efx_nic*) ;
+ scalar_t__ efx_nic_rev (struct efx_nic*) ;
+ int init_waitqueue_head (int *) ;
+ int spin_lock_init (int *) ;
 
 void efx_mcdi_init(struct efx_nic *efx)
 {
-	struct efx_mcdi_iface *mcdi;
+ struct efx_mcdi_iface *mcdi;
 
-	if (efx_nic_rev(efx) < EFX_REV_SIENA_A0)
-		return;
+ if (efx_nic_rev(efx) < EFX_REV_SIENA_A0)
+  return;
 
-	mcdi = efx_mcdi(efx);
-	init_waitqueue_head(&mcdi->wq);
-	spin_lock_init(&mcdi->iface_lock);
-	atomic_set(&mcdi->state, MCDI_STATE_QUIESCENT);
-	mcdi->mode = MCDI_MODE_POLL;
+ mcdi = efx_mcdi(efx);
+ init_waitqueue_head(&mcdi->wq);
+ spin_lock_init(&mcdi->iface_lock);
+ atomic_set(&mcdi->state, MCDI_STATE_QUIESCENT);
+ mcdi->mode = MCDI_MODE_POLL;
 
-	(void) efx_mcdi_poll_reboot(efx);
+ (void) efx_mcdi_poll_reboot(efx);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cma_device {scalar_t__ xrcd; int /*<<< orphan*/  pd; int /*<<< orphan*/  refcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ibv_close_xrcd (scalar_t__) ; 
- int /*<<< orphan*/  ibv_dealloc_pd (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mut ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct cma_device {scalar_t__ xrcd; int pd; int refcnt; } ;
+
+
+ int ibv_close_xrcd (scalar_t__) ;
+ int ibv_dealloc_pd (int ) ;
+ int mut ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static void ucma_put_device(struct cma_device *cma_dev)
 {
-	pthread_mutex_lock(&mut);
-	if (!--cma_dev->refcnt) {
-		ibv_dealloc_pd(cma_dev->pd);
-		if (cma_dev->xrcd)
-			ibv_close_xrcd(cma_dev->xrcd);
-	}
-	pthread_mutex_unlock(&mut);
+ pthread_mutex_lock(&mut);
+ if (!--cma_dev->refcnt) {
+  ibv_dealloc_pd(cma_dev->pd);
+  if (cma_dev->xrcd)
+   ibv_close_xrcd(cma_dev->xrcd);
+ }
+ pthread_mutex_unlock(&mut);
 }

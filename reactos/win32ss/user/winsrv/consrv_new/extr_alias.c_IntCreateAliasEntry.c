@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-struct TYPE_4__ {int /*<<< orphan*/ * Next; scalar_t__ lpTarget; scalar_t__ lpSource; } ;
-typedef  TYPE_1__* PALIAS_ENTRY ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  ALIAS_ENTRY ;
 
-/* Variables and functions */
- TYPE_1__* ConsoleAllocHeap (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,scalar_t__) ; 
- int wcslen (scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_4__ {int * Next; scalar_t__ lpTarget; scalar_t__ lpSource; } ;
+typedef TYPE_1__* PALIAS_ENTRY ;
+typedef int LPWSTR ;
+typedef scalar_t__ LPCWSTR ;
+typedef int ALIAS_ENTRY ;
+
+
+ TYPE_1__* ConsoleAllocHeap (int ,int) ;
+ int wcscpy (int ,scalar_t__) ;
+ int wcslen (scalar_t__) ;
 
 PALIAS_ENTRY
 IntCreateAliasEntry(LPCWSTR lpSource, LPCWSTR lpTarget)
@@ -41,7 +41,7 @@ IntCreateAliasEntry(LPCWSTR lpSource, LPCWSTR lpTarget)
     wcscpy((LPWSTR)Entry->lpSource, lpSource);
     Entry->lpTarget = Entry->lpSource + dwSource;
     wcscpy((LPWSTR)Entry->lpTarget, lpTarget);
-    Entry->Next = NULL;
+    Entry->Next = ((void*)0);
 
     return Entry;
 }

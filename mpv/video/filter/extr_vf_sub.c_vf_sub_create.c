@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/  pool; int /*<<< orphan*/  opts; } ;
+
+
+
+
+struct priv {int pool; int opts; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_PIN_IN ; 
- int /*<<< orphan*/  MP_PIN_OUT ; 
- int /*<<< orphan*/  MP_WARN (struct mp_filter*,char*) ; 
- int /*<<< orphan*/  mp_filter_add_pin (struct mp_filter*,int /*<<< orphan*/ ,char*) ; 
- struct mp_filter* mp_filter_create (struct mp_filter*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_image_pool_new (struct priv*) ; 
- int /*<<< orphan*/  talloc_free (void*) ; 
- int /*<<< orphan*/  talloc_steal (struct priv*,void*) ; 
- int /*<<< orphan*/  vf_sub_filter ; 
+
+ int MP_PIN_IN ;
+ int MP_PIN_OUT ;
+ int MP_WARN (struct mp_filter*,char*) ;
+ int mp_filter_add_pin (struct mp_filter*,int ,char*) ;
+ struct mp_filter* mp_filter_create (struct mp_filter*,int *) ;
+ int mp_image_pool_new (struct priv*) ;
+ int talloc_free (void*) ;
+ int talloc_steal (struct priv*,void*) ;
+ int vf_sub_filter ;
 
 __attribute__((used)) static struct mp_filter *vf_sub_create(struct mp_filter *parent, void *options)
 {
     struct mp_filter *f = mp_filter_create(parent, &vf_sub_filter);
     if (!f) {
         talloc_free(options);
-        return NULL;
+        return ((void*)0);
     }
 
     MP_WARN(f, "This filter is deprecated and will be removed (no replacement)\n");

@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_11__ {size_t nelts; TYPE_7__* elts; } ;
 struct TYPE_16__ {TYPE_1__ peers; } ;
-typedef  TYPE_6__ ngx_http_upstream_check_peers_t ;
-struct TYPE_17__ {TYPE_5__* conf; TYPE_3__* shm; TYPE_2__* peer_addr; int /*<<< orphan*/  upstream_name; scalar_t__ delete; } ;
-typedef  TYPE_7__ ngx_http_upstream_check_peer_t ;
+typedef TYPE_6__ ngx_http_upstream_check_peers_t ;
+struct TYPE_17__ {TYPE_5__* conf; TYPE_3__* shm; TYPE_2__* peer_addr; int upstream_name; scalar_t__ delete; } ;
+typedef TYPE_7__ ngx_http_upstream_check_peer_t ;
 struct TYPE_18__ {void* last; void* end; } ;
-typedef  TYPE_8__ ngx_buf_t ;
-struct TYPE_15__ {int /*<<< orphan*/  port; TYPE_4__* check_type_conf; } ;
-struct TYPE_14__ {int /*<<< orphan*/  name; } ;
-struct TYPE_13__ {int /*<<< orphan*/  fall_count; int /*<<< orphan*/  rise_count; scalar_t__ down; } ;
-struct TYPE_12__ {int /*<<< orphan*/  name; } ;
+typedef TYPE_8__ ngx_buf_t ;
+struct TYPE_15__ {int port; TYPE_4__* check_type_conf; } ;
+struct TYPE_14__ {int name; } ;
+struct TYPE_13__ {int fall_count; int rise_count; scalar_t__ down; } ;
+struct TYPE_12__ {int name; } ;
 
-/* Variables and functions */
- size_t NGX_CHECK_STATUS_DOWN ; 
- size_t NGX_CHECK_STATUS_UP ; 
- int /*<<< orphan*/  ngx_http_upstream_check_shm_generation ; 
- void* ngx_snprintf (void*,void*,char*,...) ; 
+
+ size_t NGX_CHECK_STATUS_DOWN ;
+ size_t NGX_CHECK_STATUS_UP ;
+ int ngx_http_upstream_check_shm_generation ;
+ void* ngx_snprintf (void*,void*,char*,...) ;
 
 __attribute__((used)) static void
 ngx_http_upstream_check_status_html_format(ngx_buf_t *b,
     ngx_http_upstream_check_peers_t *peers, ngx_uint_t flag)
 {
-    ngx_uint_t                      i, count;
+    ngx_uint_t i, count;
     ngx_http_upstream_check_peer_t *peer;
 
     peer = peers->peers.elts;
 
     count = 0;
 
-    /* TODO: two locks */
+
     for (i = 0; i < peers->peers.nelts; i++) {
 
         if (peer[i].delete) {

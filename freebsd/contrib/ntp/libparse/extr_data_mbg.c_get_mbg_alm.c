@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  af1; int /*<<< orphan*/  af0; int /*<<< orphan*/  deltai; int /*<<< orphan*/  OMEGADOT; int /*<<< orphan*/  OMEGA0; int /*<<< orphan*/  omega; int /*<<< orphan*/  M0; int /*<<< orphan*/  e; int /*<<< orphan*/  sqrt_A; int /*<<< orphan*/  t0a; scalar_t__ health; int /*<<< orphan*/  valid; scalar_t__ csum; } ;
-typedef  scalar_t__ HEALTH ;
-typedef  scalar_t__ CSUM ;
-typedef  TYPE_1__ ALM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FETCH_DOUBLE (unsigned char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_lsb_int16 (unsigned char**) ; 
- scalar_t__ get_lsb_short (unsigned char**) ; 
- int /*<<< orphan*/  get_mbg_tgps (unsigned char**,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int af1; int af0; int deltai; int OMEGADOT; int OMEGA0; int omega; int M0; int e; int sqrt_A; int t0a; scalar_t__ health; int valid; scalar_t__ csum; } ;
+typedef scalar_t__ HEALTH ;
+typedef scalar_t__ CSUM ;
+typedef TYPE_1__ ALM ;
+
+
+ int FETCH_DOUBLE (unsigned char**,int *) ;
+ int get_lsb_int16 (unsigned char**) ;
+ scalar_t__ get_lsb_short (unsigned char**) ;
+ int get_mbg_tgps (unsigned char**,int *) ;
 
 void
 get_mbg_alm(
-	unsigned char **buffpp,
-	ALM *almp
-	)
+ unsigned char **buffpp,
+ ALM *almp
+ )
 {
-  almp->csum   = (CSUM) get_lsb_short(buffpp);
-  almp->valid  = get_lsb_int16(buffpp);
+  almp->csum = (CSUM) get_lsb_short(buffpp);
+  almp->valid = get_lsb_int16(buffpp);
 
   almp->health = (HEALTH) get_lsb_short(buffpp);
   get_mbg_tgps(buffpp, &almp->t0a);

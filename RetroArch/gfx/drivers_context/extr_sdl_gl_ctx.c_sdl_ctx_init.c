@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  video_frame_info_t ;
-typedef  void gfx_ctx_sdl_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_LOG (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RARCH_WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_GetError () ; 
- int /*<<< orphan*/  SDL_INIT_VIDEO ; 
- scalar_t__ SDL_Init (int /*<<< orphan*/ ) ; 
- scalar_t__ SDL_InitSubSystem (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_MAJOR_VERSION ; 
- int /*<<< orphan*/  SDL_MINOR_VERSION ; 
- int /*<<< orphan*/  SDL_PATCHLEVEL ; 
- scalar_t__ SDL_WasInit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XInitThreads () ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/  sdl_ctx_destroy_resources (void*) ; 
+
+
+
+typedef int video_frame_info_t ;
+typedef void gfx_ctx_sdl_data_t ;
+
+
+ int RARCH_LOG (char*,int ,int ,int ) ;
+ int RARCH_WARN (char*,int ) ;
+ int SDL_GetError () ;
+ int SDL_INIT_VIDEO ;
+ scalar_t__ SDL_Init (int ) ;
+ scalar_t__ SDL_InitSubSystem (int ) ;
+ int SDL_MAJOR_VERSION ;
+ int SDL_MINOR_VERSION ;
+ int SDL_PATCHLEVEL ;
+ scalar_t__ SDL_WasInit (int ) ;
+ int XInitThreads () ;
+ scalar_t__ calloc (int,int) ;
+ int free (void*) ;
+ int sdl_ctx_destroy_resources (void*) ;
 
 __attribute__((used)) static void *sdl_ctx_init(video_frame_info_t *video_info, void *video_driver)
 {
@@ -35,11 +35,11 @@ __attribute__((used)) static void *sdl_ctx_init(video_frame_info_t *video_info, 
       calloc(1, sizeof(gfx_ctx_sdl_data_t));
 
    if (!sdl)
-      return NULL;
+      return ((void*)0);
 
-#ifdef HAVE_X11
-   XInitThreads();
-#endif
+
+
+
 
    if (SDL_WasInit(0) == 0)
    {
@@ -63,5 +63,5 @@ error:
    if (sdl)
       free(sdl);
 
-   return NULL;
+   return ((void*)0);
 }

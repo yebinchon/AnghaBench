@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct compareInfo {int matchOne; int matchAll; int matchSet; int noCase; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GlogUpperToLower (int) ; 
- int /*<<< orphan*/  SQLITE_SKIP_UTF8 (int const*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int sqlite3Utf8Read (int const**) ; 
+
+ int GlogUpperToLower (int) ;
+ int SQLITE_SKIP_UTF8 (int const*) ;
+ int assert (int) ;
+ int sqlite3Utf8Read (int const**) ;
 
 __attribute__((used)) static int patternCompare(
-  const u8 *zPattern,              /* The glob pattern */
-  const u8 *zString,               /* The string to compare against the glob */
-  const struct compareInfo *pInfo, /* Information about how to do the compare */
-  u32 esc                          /* The escape character */
+  const u8 *zPattern,
+  const u8 *zString,
+  const struct compareInfo *pInfo,
+  u32 esc
 ){
   u32 c, c2;
   int invert;
@@ -32,8 +32,8 @@ __attribute__((used)) static int patternCompare(
   u8 matchOne = pInfo->matchOne;
   u8 matchAll = pInfo->matchAll;
   u8 matchSet = pInfo->matchSet;
-  u8 noCase = pInfo->noCase; 
-  int prevEscape = 0;     /* True if the previous character was 'escape' */
+  u8 noCase = pInfo->noCase;
+  int prevEscape = 0;
 
   while( (c = sqlite3Utf8Read(&zPattern))!=0 ){
     if( c==matchAll && !prevEscape ){
@@ -51,8 +51,8 @@ __attribute__((used)) static int patternCompare(
           return 0;
         }
       }else if( c==matchSet ){
-        assert( esc==0 );         /* This is GLOB, not LIKE */
-        assert( matchSet<0x80 );  /* '[' is a single-byte character */
+        assert( esc==0 );
+        assert( matchSet<0x80 );
         while( *zString && patternCompare(&zPattern[-1],zString,pInfo,esc)==0 ){
           SQLITE_SKIP_UTF8(zString);
         }
@@ -81,7 +81,7 @@ __attribute__((used)) static int patternCompare(
       }
     }else if( c==matchSet ){
       u32 prior_c = 0;
-      assert( esc==0 );    /* This only occurs for GLOB, not LIKE */
+      assert( esc==0 );
       seen = 0;
       invert = 0;
       c = sqlite3Utf8Read(&zString);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int top; int* d; scalar_t__ neg; } ;
-typedef  int BN_ULONG ;
-typedef  TYPE_1__ BIGNUM ;
+typedef int BN_ULONG ;
+typedef TYPE_1__ BIGNUM ;
 
-/* Variables and functions */
- int BN_BITS2 ; 
- int BN_MASK2 ; 
- int /*<<< orphan*/  BN_lshift (TYPE_1__*,TYPE_1__*,int) ; 
- int BN_num_bits_word (int) ; 
- int /*<<< orphan*/  bn_check_top (TYPE_1__*) ; 
- int bn_div_words (int,int,int) ; 
+
+ int BN_BITS2 ;
+ int BN_MASK2 ;
+ int BN_lshift (TYPE_1__*,TYPE_1__*,int) ;
+ int BN_num_bits_word (int) ;
+ int bn_check_top (TYPE_1__*) ;
+ int bn_div_words (int,int,int) ;
 
 BN_ULONG BN_div_word(BIGNUM *a, BN_ULONG w)
 {
@@ -32,12 +32,12 @@ BN_ULONG BN_div_word(BIGNUM *a, BN_ULONG w)
     w &= BN_MASK2;
 
     if (!w)
-        /* actually this an error (division by zero) */
+
         return (BN_ULONG)-1;
     if (a->top == 0)
         return 0;
 
-    /* normalize input (so bn_div_words doesn't complain) */
+
     j = BN_BITS2 - BN_num_bits_word(w);
     w <<= j;
     if (!BN_lshift(a, a, j))
@@ -55,7 +55,7 @@ BN_ULONG BN_div_word(BIGNUM *a, BN_ULONG w)
         a->top--;
     ret >>= j;
     if (!a->top)
-        a->neg = 0; /* don't allow negative zero */
+        a->neg = 0;
     bn_check_top(a);
     return ret;
 }

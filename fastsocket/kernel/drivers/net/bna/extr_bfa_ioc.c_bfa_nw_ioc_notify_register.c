@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_ioc_notify {int /*<<< orphan*/  qe; } ;
-struct bfa_ioc {int /*<<< orphan*/  notify_q; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct bfa_ioc_notify {int qe; } ;
+struct bfa_ioc {int notify_q; } ;
+
+
+ int list_add_tail (int *,int *) ;
 
 void
 bfa_nw_ioc_notify_register(struct bfa_ioc *ioc,
-			struct bfa_ioc_notify *notify)
+   struct bfa_ioc_notify *notify)
 {
-	list_add_tail(&notify->qe, &ioc->notify_q);
+ list_add_tail(&notify->qe, &ioc->notify_q);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {struct TYPE_5__* next; } ;
-typedef  TYPE_1__ _GLFWcursor ;
+typedef TYPE_1__ _GLFWcursor ;
 struct TYPE_6__ {TYPE_1__* cursorListHead; } ;
-typedef  int /*<<< orphan*/  GLFWimage ;
-typedef  int /*<<< orphan*/  GLFWcursor ;
+typedef int GLFWimage ;
+typedef int GLFWcursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ *) ; 
- TYPE_4__ _glfw ; 
- int /*<<< orphan*/  _glfwPlatformCreateCursor (TYPE_1__*,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  glfwDestroyCursor (int /*<<< orphan*/ *) ; 
+
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int *) ;
+ TYPE_4__ _glfw ;
+ int _glfwPlatformCreateCursor (TYPE_1__*,int const*,int,int) ;
+ int assert (int ) ;
+ TYPE_1__* calloc (int,int) ;
+ int glfwDestroyCursor (int *) ;
 
 GLFWcursor* glfwCreateCursor(const GLFWimage* image, int xhot, int yhot)
 {
     _GLFWcursor* cursor;
 
-    assert(image != NULL);
+    assert(image != ((void*)0));
 
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+    _GLFW_REQUIRE_INIT_OR_RETURN(((void*)0));
 
     cursor = calloc(1, sizeof(_GLFWcursor));
     cursor->next = _glfw.cursorListHead;
@@ -41,7 +41,7 @@ GLFWcursor* glfwCreateCursor(const GLFWimage* image, int xhot, int yhot)
     if (!_glfwPlatformCreateCursor(cursor, image, xhot, yhot))
     {
         glfwDestroyCursor((GLFWcursor*) cursor);
-        return NULL;
+        return ((void*)0);
     }
 
     return (GLFWcursor*) cursor;

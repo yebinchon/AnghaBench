@@ -1,124 +1,116 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int TRUE ;
+ int ascii_code_str ;
+ int atoi (char*) ;
+ int bol () ;
+ int bottom () ;
+ int command_prompt () ;
+ int del_char () ;
+ int del_line () ;
+ int del_word () ;
+ int delete (int ) ;
+ int down () ;
+ int eol () ;
+ int free (char*) ;
+ char* get_string (int ,int ) ;
+ scalar_t__ horiz_offset ;
+ int in ;
+ int insert (int) ;
+ int insert_line (int ) ;
+ scalar_t__ last_line ;
+ int left (int ) ;
+ int main_menu ;
+ int max (int,scalar_t__) ;
+ int menu_op (int ) ;
+ int move_rel (unsigned char,int ) ;
+ int right (int ) ;
+ scalar_t__ scr_horz ;
+ int scr_vert ;
+ int search (int ) ;
+ int search_prompt () ;
+ int text_win ;
+ int top () ;
+ int undel_char () ;
+ int undel_line () ;
+ int undel_word () ;
+ int up () ;
+ int wmove (int ,int ,scalar_t__) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ascii_code_str ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  bol () ; 
- int /*<<< orphan*/  bottom () ; 
- int /*<<< orphan*/  command_prompt () ; 
- int /*<<< orphan*/  del_char () ; 
- int /*<<< orphan*/  del_line () ; 
- int /*<<< orphan*/  del_word () ; 
- int /*<<< orphan*/  delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  down () ; 
- int /*<<< orphan*/  eol () ; 
- int /*<<< orphan*/  free (char*) ; 
- char* get_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ horiz_offset ; 
- int in ; 
- int /*<<< orphan*/  insert (int) ; 
- int /*<<< orphan*/  insert_line (int /*<<< orphan*/ ) ; 
- scalar_t__ last_line ; 
- int /*<<< orphan*/  left (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  main_menu ; 
- int /*<<< orphan*/  max (int,scalar_t__) ; 
- int /*<<< orphan*/  menu_op (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  move_rel (unsigned char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  right (int /*<<< orphan*/ ) ; 
- scalar_t__ scr_horz ; 
- int /*<<< orphan*/  scr_vert ; 
- int /*<<< orphan*/  search (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  search_prompt () ; 
- int /*<<< orphan*/  text_win ; 
- int /*<<< orphan*/  top () ; 
- int /*<<< orphan*/  undel_char () ; 
- int /*<<< orphan*/  undel_line () ; 
- int /*<<< orphan*/  undel_word () ; 
- int /*<<< orphan*/  up () ; 
- int /*<<< orphan*/  wmove (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
-
-void 
-control()			/* use control for commands		*/
+void
+control()
 {
-	char *string;
+ char *string;
 
-	if (in == 1)		/* control a	*/
-	{
-		string = get_string(ascii_code_str, TRUE);
-		if (*string != '\0')
-		{
-			in = atoi(string);
-			wmove(text_win, scr_vert, (scr_horz - horiz_offset));
-			insert(in);
-		}
-		free(string);
-	}
-	else if (in == 2)	/* control b	*/
-		bottom();
-	else if (in == 3)	/* control c	*/
-	{
-		command_prompt();
-	}
-	else if (in == 4)	/* control d	*/
-		down();
-	else if (in == 5)	/* control e	*/
-		search_prompt();
-	else if (in == 6)	/* control f	*/
-		undel_char();
-	else if (in == 7)	/* control g	*/
-		bol();
-	else if (in == 8)	/* control h	*/
-		delete(TRUE);
-	else if (in == 9)	/* control i	*/
-		;
-	else if (in == 10)	/* control j	*/
-		insert_line(TRUE);
-	else if (in == 11)	/* control k	*/
-		del_char();
-	else if (in == 12)	/* control l	*/
-		left(TRUE);
-	else if (in == 13)	/* control m	*/
-		insert_line(TRUE);
-	else if (in == 14)	/* control n	*/
-		move_rel('d', max(5, (last_line - 5)));
-	else if (in == 15)	/* control o	*/
-		eol();
-	else if (in == 16)	/* control p	*/
-		move_rel('u', max(5, (last_line - 5)));
-	else if (in == 17)	/* control q	*/
-		;
-	else if (in == 18)	/* control r	*/
-		right(TRUE);
-	else if (in == 19)	/* control s	*/
-		;
-	else if (in == 20)	/* control t	*/
-		top();
-	else if (in == 21)	/* control u	*/
-		up();
-	else if (in == 22)	/* control v	*/
-		undel_word();
-	else if (in == 23)	/* control w	*/
-		del_word();
-	else if (in == 24)	/* control x	*/
-		search(TRUE);
-	else if (in == 25)	/* control y	*/
-		del_line();
-	else if (in == 26)	/* control z	*/
-		undel_line();
-	else if (in == 27)	/* control [ (escape)	*/
-	{
-		menu_op(main_menu);
-	}	
+ if (in == 1)
+ {
+  string = get_string(ascii_code_str, TRUE);
+  if (*string != '\0')
+  {
+   in = atoi(string);
+   wmove(text_win, scr_vert, (scr_horz - horiz_offset));
+   insert(in);
+  }
+  free(string);
+ }
+ else if (in == 2)
+  bottom();
+ else if (in == 3)
+ {
+  command_prompt();
+ }
+ else if (in == 4)
+  down();
+ else if (in == 5)
+  search_prompt();
+ else if (in == 6)
+  undel_char();
+ else if (in == 7)
+  bol();
+ else if (in == 8)
+  delete(TRUE);
+ else if (in == 9)
+  ;
+ else if (in == 10)
+  insert_line(TRUE);
+ else if (in == 11)
+  del_char();
+ else if (in == 12)
+  left(TRUE);
+ else if (in == 13)
+  insert_line(TRUE);
+ else if (in == 14)
+  move_rel('d', max(5, (last_line - 5)));
+ else if (in == 15)
+  eol();
+ else if (in == 16)
+  move_rel('u', max(5, (last_line - 5)));
+ else if (in == 17)
+  ;
+ else if (in == 18)
+  right(TRUE);
+ else if (in == 19)
+  ;
+ else if (in == 20)
+  top();
+ else if (in == 21)
+  up();
+ else if (in == 22)
+  undel_word();
+ else if (in == 23)
+  del_word();
+ else if (in == 24)
+  search(TRUE);
+ else if (in == 25)
+  del_line();
+ else if (in == 26)
+  undel_line();
+ else if (in == 27)
+ {
+  menu_op(main_menu);
+ }
 }

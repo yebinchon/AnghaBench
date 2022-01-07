@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cmd_list_element {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_alias_cmd (char*,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_cmd (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_prefix_cmd (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_info ; 
- int /*<<< orphan*/  cmdlist ; 
- int /*<<< orphan*/  info_macro_command ; 
- int /*<<< orphan*/  infolist ; 
- int /*<<< orphan*/  macro_command ; 
- int /*<<< orphan*/  macro_define_command ; 
- int /*<<< orphan*/  macro_expand_command ; 
- int /*<<< orphan*/  macro_expand_once_command ; 
- int /*<<< orphan*/  macro_list_command ; 
- int /*<<< orphan*/  macro_undef_command ; 
- int /*<<< orphan*/  macrolist ; 
- int /*<<< orphan*/  new_macro_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  no_class ; 
- int /*<<< orphan*/  user_macros ; 
+
+ int add_alias_cmd (char*,char*,int ,int,int *) ;
+ int add_cmd (char*,int ,int ,char*,int *) ;
+ int add_prefix_cmd (char*,int ,int ,char*,int *,char*,int ,int *) ;
+ int class_info ;
+ int cmdlist ;
+ int info_macro_command ;
+ int infolist ;
+ int macro_command ;
+ int macro_define_command ;
+ int macro_expand_command ;
+ int macro_expand_once_command ;
+ int macro_list_command ;
+ int macro_undef_command ;
+ int macrolist ;
+ int new_macro_table (int ,int ) ;
+ int no_class ;
+ int user_macros ;
 
 void
 _initialize_macrocmd (void)
 {
   struct cmd_list_element *c;
 
-  /* We introduce a new command prefix, `macro', under which we'll put
-     the various commands for working with preprocessor macros.  */
+
+
   add_prefix_cmd
     ("macro", class_info, macro_command,
      "Prefix for commands dealing with C preprocessor macros.",

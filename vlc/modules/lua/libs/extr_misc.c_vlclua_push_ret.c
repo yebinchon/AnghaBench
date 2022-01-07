@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOENT ; 
- int ENOMEM ; 
- int ETIMEDOUT ; 
-#define  VLC_EBADVAR 135 
-#define  VLC_EGENERIC 134 
-#define  VLC_ENOMEM 133 
-#define  VLC_ENOMOD 132 
-#define  VLC_ENOOBJ 131 
-#define  VLC_ENOVAR 130 
-#define  VLC_ETIMEOUT 129 
-#define  VLC_SUCCESS 128 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- char* vlc_strerror_c (int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int EINVAL ;
+ int ENOENT ;
+ int ENOMEM ;
+ int ETIMEDOUT ;
+ int lua_pushnumber (int *,int) ;
+ int lua_pushstring (int *,char*) ;
+ char* vlc_strerror_c (int) ;
 
 int vlclua_push_ret( lua_State *L, int i_error )
 {
@@ -37,14 +29,14 @@ int vlclua_push_ret( lua_State *L, int i_error )
 
     switch( i_error )
     {
-        case VLC_SUCCESS:   err = 0;         break;
-        case VLC_ENOMEM:    err = ENOMEM;    break;
-        case VLC_ETIMEOUT:  err = ETIMEDOUT; break;
-        case VLC_EBADVAR:   err = EINVAL;    break;
-        case VLC_ENOMOD:    err = ENOENT;    break;
-        case VLC_ENOOBJ:    err = ENOENT;    break;
-        case VLC_ENOVAR:    err = ENOENT;    break;
-        case VLC_EGENERIC:
+        case 128: err = 0; break;
+        case 133: err = ENOMEM; break;
+        case 129: err = ETIMEDOUT; break;
+        case 135: err = EINVAL; break;
+        case 132: err = ENOENT; break;
+        case 131: err = ENOENT; break;
+        case 130: err = ENOENT; break;
+        case 134:
             lua_pushstring( L, "generic error" );
             return 2;
         default:

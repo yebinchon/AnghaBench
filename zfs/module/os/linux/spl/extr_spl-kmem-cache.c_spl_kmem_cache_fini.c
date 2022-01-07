@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  spl_kmem_cache_shrinker ; 
- int /*<<< orphan*/  spl_kmem_cache_taskq ; 
- int /*<<< orphan*/  spl_unregister_shrinker (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskq_destroy (int /*<<< orphan*/ ) ; 
+ int spl_kmem_cache_shrinker ;
+ int spl_kmem_cache_taskq ;
+ int spl_unregister_shrinker (int *) ;
+ int taskq_destroy (int ) ;
 
 void
 spl_kmem_cache_fini(void)
 {
-	spl_unregister_shrinker(&spl_kmem_cache_shrinker);
-	taskq_destroy(spl_kmem_cache_taskq);
+ spl_unregister_shrinker(&spl_kmem_cache_shrinker);
+ taskq_destroy(spl_kmem_cache_taskq);
 }

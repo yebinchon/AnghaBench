@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct ath_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ath9k_hw_gpio_request (struct ath_hw*,int /*<<< orphan*/ ,int,char const*,int /*<<< orphan*/ ) ; 
+
+ int ath9k_hw_gpio_request (struct ath_hw*,int ,int,char const*,int ) ;
 
 void ath9k_hw_gpio_request_in(struct ath_hw *ah, u32 gpio, const char *label)
 {
-	ath9k_hw_gpio_request(ah, gpio, false, label, 0);
+ ath9k_hw_gpio_request(ah, gpio, 0, label, 0);
 }

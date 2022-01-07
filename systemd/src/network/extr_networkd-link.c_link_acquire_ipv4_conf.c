@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {struct TYPE_10__* dhcp_client; struct TYPE_10__* ipv4ll; struct TYPE_10__* event; struct TYPE_10__* manager; } ;
-typedef  TYPE_1__ Link ;
+typedef TYPE_1__ Link ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDRESS_FAMILY_IPV4 ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- scalar_t__ link_dhcp4_enabled (TYPE_1__*) ; 
- scalar_t__ link_ipv4ll_enabled (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_link_debug (TYPE_1__*,char*) ; 
- int log_link_warning_errno (TYPE_1__*,int,char*) ; 
- int sd_dhcp_client_start (TYPE_1__*) ; 
- int sd_ipv4ll_start (TYPE_1__*) ; 
+
+ int ADDRESS_FAMILY_IPV4 ;
+ int assert (TYPE_1__*) ;
+ scalar_t__ link_dhcp4_enabled (TYPE_1__*) ;
+ scalar_t__ link_ipv4ll_enabled (TYPE_1__*,int ) ;
+ int log_link_debug (TYPE_1__*,char*) ;
+ int log_link_warning_errno (TYPE_1__*,int,char*) ;
+ int sd_dhcp_client_start (TYPE_1__*) ;
+ int sd_ipv4ll_start (TYPE_1__*) ;
 
 __attribute__((used)) static int link_acquire_ipv4_conf(Link *link) {
         int r;

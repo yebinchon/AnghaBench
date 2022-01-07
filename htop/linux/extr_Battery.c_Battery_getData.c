@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
-typedef  int /*<<< orphan*/  ACPresence ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AC_ERROR ; 
- scalar_t__ BAT_ERR ; 
- scalar_t__ BAT_PROC ; 
- scalar_t__ BAT_SYS ; 
- int /*<<< orphan*/  Battery_cacheIsOnAC ; 
- double Battery_cacheLevel ; 
- scalar_t__ Battery_cacheTime ; 
- int /*<<< orphan*/  Battery_getProcData (double*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Battery_getSysData (double*,int /*<<< orphan*/ *) ; 
- scalar_t__ Battery_method ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ time_t ;
+typedef int ACPresence ;
+
+
+ int AC_ERROR ;
+ scalar_t__ BAT_ERR ;
+ scalar_t__ BAT_PROC ;
+ scalar_t__ BAT_SYS ;
+ int Battery_cacheIsOnAC ;
+ double Battery_cacheLevel ;
+ scalar_t__ Battery_cacheTime ;
+ int Battery_getProcData (double*,int *) ;
+ int Battery_getSysData (double*,int *) ;
+ scalar_t__ Battery_method ;
+ scalar_t__ time (int *) ;
 
 void Battery_getData(double* level, ACPresence* isOnAC) {
-   time_t now = time(NULL);
-   // update battery reading is slow. Update it each 10 seconds only.
+   time_t now = time(((void*)0));
+
    if (now < Battery_cacheTime + 10) {
       *level = Battery_cacheLevel;
       *isOnAC = Battery_cacheIsOnAC;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
 struct mii_bus {struct mdiobb_ctrl* priv; } ;
 struct mdiobb_ctrl {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* set_mdio_dir ) (struct mdiobb_ctrl*,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* set_mdio_dir ) (struct mdiobb_ctrl*,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDIO_WRITE ; 
- int /*<<< orphan*/  mdiobb_cmd (struct mdiobb_ctrl*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  mdiobb_get_bit (struct mdiobb_ctrl*) ; 
- int /*<<< orphan*/  mdiobb_send_bit (struct mdiobb_ctrl*,int) ; 
- int /*<<< orphan*/  mdiobb_send_num (struct mdiobb_ctrl*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (struct mdiobb_ctrl*,int /*<<< orphan*/ ) ; 
+
+ int MDIO_WRITE ;
+ int mdiobb_cmd (struct mdiobb_ctrl*,int ,int,int) ;
+ int mdiobb_get_bit (struct mdiobb_ctrl*) ;
+ int mdiobb_send_bit (struct mdiobb_ctrl*,int) ;
+ int mdiobb_send_num (struct mdiobb_ctrl*,int ,int) ;
+ int stub1 (struct mdiobb_ctrl*,int ) ;
 
 __attribute__((used)) static int mdiobb_write(struct mii_bus *bus, int phy, int reg, u16 val)
 {
-	struct mdiobb_ctrl *ctrl = bus->priv;
+ struct mdiobb_ctrl *ctrl = bus->priv;
 
-	mdiobb_cmd(ctrl, MDIO_WRITE, phy, reg);
+ mdiobb_cmd(ctrl, MDIO_WRITE, phy, reg);
 
-	/* send the turnaround (10) */
-	mdiobb_send_bit(ctrl, 1);
-	mdiobb_send_bit(ctrl, 0);
 
-	mdiobb_send_num(ctrl, val, 16);
+ mdiobb_send_bit(ctrl, 1);
+ mdiobb_send_bit(ctrl, 0);
 
-	ctrl->ops->set_mdio_dir(ctrl, 0);
-	mdiobb_get_bit(ctrl);
-	return 0;
+ mdiobb_send_num(ctrl, val, 16);
+
+ ctrl->ops->set_mdio_dir(ctrl, 0);
+ mdiobb_get_bit(ctrl);
+ return 0;
 }

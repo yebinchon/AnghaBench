@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wiimote_data {int dummy; } ;
-typedef  int /*<<< orphan*/  __u8 ;
+typedef int __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIIPROTO_REQ_NULL ; 
- int /*<<< orphan*/  handler_keys (struct wiimote_data*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  wiiproto_req_drm (struct wiimote_data*,int /*<<< orphan*/ ) ; 
+
+ int WIIPROTO_REQ_NULL ;
+ int handler_keys (struct wiimote_data*,int const*) ;
+ int wiiproto_req_drm (struct wiimote_data*,int ) ;
 
 __attribute__((used)) static void handler_status_K(struct wiimote_data *wdata,
-			     const __u8 *payload)
+        const __u8 *payload)
 {
-	handler_keys(wdata, payload);
+ handler_keys(wdata, payload);
 
-	/* on status reports the drm is reset so we need to resend the drm */
-	wiiproto_req_drm(wdata, WIIPROTO_REQ_NULL);
+
+ wiiproto_req_drm(wdata, WIIPROTO_REQ_NULL);
 }

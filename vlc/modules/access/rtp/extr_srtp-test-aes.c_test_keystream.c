@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  good_start ;
-typedef  int /*<<< orphan*/  good_end ;
-typedef  int /*<<< orphan*/  gcry_cipher_hd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GCRY_CIPHER_AES ; 
- int /*<<< orphan*/  GCRY_CIPHER_MODE_CTR ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  fatal (char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char const*) ; 
- int /*<<< orphan*/  gcry_cipher_close (int /*<<< orphan*/ ) ; 
- scalar_t__ gcry_cipher_open (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ gcry_cipher_setkey (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  const htonl (int) ; 
- scalar_t__ memcmp (char const*,char const*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  printhex (char const*,int) ; 
- int /*<<< orphan*/  puts (char*) ; 
- scalar_t__ rtp_crypt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,char const*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef char const uint8_t ;
+typedef int uint32_t ;
+typedef int key ;
+typedef int good_start ;
+typedef int good_end ;
+typedef int gcry_cipher_hd_t ;
+
+
+ int GCRY_CIPHER_AES ;
+ int GCRY_CIPHER_MODE_CTR ;
+ char* calloc (int,int) ;
+ int fatal (char*) ;
+ int fputs (char*,int ) ;
+ int free (char const*) ;
+ int gcry_cipher_close (int ) ;
+ scalar_t__ gcry_cipher_open (int *,int ,int ,int ) ;
+ scalar_t__ gcry_cipher_setkey (int ,char const*,int) ;
+ int const htonl (int) ;
+ scalar_t__ memcmp (char const*,char const*,int) ;
+ int printf (char*) ;
+ int printhex (char const*,int) ;
+ int puts (char*) ;
+ scalar_t__ rtp_crypt (int ,int ,int ,int ,int const*,char const*,int) ;
+ int stderr ;
 
 __attribute__((used)) static void test_keystream (void)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_keystream (void)
 
     puts ("AES-CM key stream test...");
     uint8_t *buf = calloc (0xff02, 16);
-    if (buf == NULL)
+    if (buf == ((void*)0))
     {
         fputs ("Not enough memory for test\n", stderr);
         return;

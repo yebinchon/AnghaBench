@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-typedef  size_t ssize_t ;
-struct TYPE_4__ {int pos; TYPE_1__* dev; int /*<<< orphan*/  fd; int /*<<< orphan*/  write; } ;
-typedef  TYPE_2__ sd_fat_file_state_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  pCmd; int /*<<< orphan*/  pClient; } ;
+typedef size_t ssize_t ;
+struct TYPE_4__ {int pos; TYPE_1__* dev; int fd; int write; } ;
+typedef TYPE_2__ sd_fat_file_state_t ;
+struct TYPE_3__ {int pMutex; int pCmd; int pClient; } ;
 
-/* Variables and functions */
- int EACCES ; 
- int ENODEV ; 
- int ENOMEM ; 
- int /*<<< orphan*/  FSFlushFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int FSWriteFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- size_t FS_ALIGN (size_t) ; 
- int /*<<< orphan*/  FS_ALIGNMENT ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ memalign (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,char const*,size_t) ; 
+
+ int EACCES ;
+ int ENODEV ;
+ int ENOMEM ;
+ int FSFlushFile (int ,int ,int ,int) ;
+ int FSWriteFile (int ,int ,unsigned char*,int,size_t,int ,int ,int) ;
+ size_t FS_ALIGN (size_t) ;
+ int FS_ALIGNMENT ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
+ int free (unsigned char*) ;
+ scalar_t__ memalign (int ,size_t) ;
+ int memcpy (unsigned char*,char const*,size_t) ;
 
 __attribute__((used)) static ssize_t sd_fat_write_r (struct _reent *r, void* fd, const char *ptr, size_t len)
 {
@@ -67,9 +67,9 @@ __attribute__((used)) static ssize_t sd_fat_write_r (struct _reent *r, void* fd,
         memcpy(tmpBuf, ptr + done, write_size);
 
         int result = FSWriteFile(file->dev->pClient, file->dev->pCmd, tmpBuf, 0x01, write_size, file->fd, 0, -1);
-#if 0
-        FSFlushFile(file->dev->pClient, file->dev->pCmd, file->fd, -1);
-#endif
+
+
+
         if(result < 0)
         {
             r->_errno = result;

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_revwalk__push_options ;
-typedef  int /*<<< orphan*/  git_revwalk ;
-typedef  int /*<<< orphan*/  git_oid ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_REVWALK__PUSH_OPTIONS_INIT ; 
- int /*<<< orphan*/  assert (int) ; 
- int git_revwalk__push_commit (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_revwalk__push_options ;
+typedef int git_revwalk ;
+typedef int git_oid ;
+
+
+ int GIT_REVWALK__PUSH_OPTIONS_INIT ;
+ int assert (int) ;
+ int git_revwalk__push_commit (int *,int const*,int *) ;
 
 int git_revwalk_push(git_revwalk *walk, const git_oid *oid)
 {
-	git_revwalk__push_options opts = GIT_REVWALK__PUSH_OPTIONS_INIT;
+ git_revwalk__push_options opts = GIT_REVWALK__PUSH_OPTIONS_INIT;
 
-	assert(walk && oid);
+ assert(walk && oid);
 
-	return git_revwalk__push_commit(walk, oid, &opts);
+ return git_revwalk__push_commit(walk, oid, &opts);
 }

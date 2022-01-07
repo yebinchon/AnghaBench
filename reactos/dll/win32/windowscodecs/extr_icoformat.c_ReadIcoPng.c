@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int Width; int Height; scalar_t__ Y; scalar_t__ X; } ;
-typedef  TYPE_1__ WICRect ;
-struct TYPE_6__ {int width; int height; int /*<<< orphan*/ * bits; int /*<<< orphan*/  dpiY; int /*<<< orphan*/  dpiX; } ;
-typedef  TYPE_2__ IcoFrameDecode ;
-typedef  int /*<<< orphan*/  IWICBitmapSource ;
-typedef  int /*<<< orphan*/  IWICBitmapFrameDecode ;
-typedef  int /*<<< orphan*/  IWICBitmapDecoder ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ WICRect ;
+struct TYPE_6__ {int width; int height; int * bits; int dpiY; int dpiX; } ;
+typedef TYPE_2__ IcoFrameDecode ;
+typedef int IWICBitmapSource ;
+typedef int IWICBitmapFrameDecode ;
+typedef int IWICBitmapDecoder ;
+typedef int IStream ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GUID_WICPixelFormat32bppBGRA ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IID_IWICBitmapDecoder ; 
- int /*<<< orphan*/  IWICBitmapDecoder_GetFrame (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Initialize (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IWICBitmapDecoder_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_GetResolution (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_GetSize (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapSource_CopyPixels (int /*<<< orphan*/ *,TYPE_1__*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IWICBitmapSource_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PngDecoder_CreateInstance (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  WICConvertBitmapSource (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  WICDecodeMetadataCacheOnLoad ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GUID_WICPixelFormat32bppBGRA ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int IID_IWICBitmapDecoder ;
+ int IWICBitmapDecoder_GetFrame (int *,int ,int **) ;
+ int IWICBitmapDecoder_Initialize (int *,int *,int ) ;
+ int IWICBitmapDecoder_Release (int *) ;
+ int IWICBitmapFrameDecode_GetResolution (int *,int *,int *) ;
+ int IWICBitmapFrameDecode_GetSize (int *,int*,int*) ;
+ int IWICBitmapFrameDecode_Release (int *) ;
+ int IWICBitmapSource_CopyPixels (int *,TYPE_1__*,int,int,int *) ;
+ int IWICBitmapSource_Release (int *) ;
+ int PngDecoder_CreateInstance (int *,void**) ;
+ int WICConvertBitmapSource (int *,int *,int **) ;
+ int WICDecodeMetadataCacheOnLoad ;
 
 __attribute__((used)) static HRESULT ReadIcoPng(IStream *stream, IcoFrameDecode *result)
 {
-    IWICBitmapDecoder *decoder = NULL;
-    IWICBitmapFrameDecode *sourceFrame = NULL;
-    IWICBitmapSource *sourceBitmap = NULL;
+    IWICBitmapDecoder *decoder = ((void*)0);
+    IWICBitmapFrameDecode *sourceFrame = ((void*)0);
+    IWICBitmapSource *sourceBitmap = ((void*)0);
     WICRect rect;
     HRESULT hr;
 
@@ -68,7 +68,7 @@ __attribute__((used)) static HRESULT ReadIcoPng(IStream *stream, IcoFrameDecode 
     if (FAILED(hr))
         goto end;
     result->bits = HeapAlloc(GetProcessHeap(), 0, 4 * result->width * result->height);
-    if (result->bits == NULL)
+    if (result->bits == ((void*)0))
     {
         hr = E_OUTOFMEMORY;
         goto end;
@@ -81,11 +81,11 @@ __attribute__((used)) static HRESULT ReadIcoPng(IStream *stream, IcoFrameDecode 
                                      4*result->width*result->height, result->bits);
 
 end:
-    if (decoder != NULL)
+    if (decoder != ((void*)0))
         IWICBitmapDecoder_Release(decoder);
-    if (sourceFrame != NULL)
+    if (sourceFrame != ((void*)0))
         IWICBitmapFrameDecode_Release(sourceFrame);
-    if (sourceBitmap != NULL)
+    if (sourceBitmap != ((void*)0))
         IWICBitmapSource_Release(sourceBitmap);
     return hr;
 }

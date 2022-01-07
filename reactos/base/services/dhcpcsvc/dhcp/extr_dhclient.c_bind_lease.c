@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
 struct interface_info {TYPE_1__* client; } ;
-struct client_lease {scalar_t__ renewal; int /*<<< orphan*/  address; int /*<<< orphan*/  medium; } ;
-struct TYPE_2__ {int /*<<< orphan*/  state; struct client_lease* active; struct client_lease* new; int /*<<< orphan*/  medium; } ;
-typedef  scalar_t__ PDHCP_ADAPTER ;
+struct client_lease {scalar_t__ renewal; int address; int medium; } ;
+struct TYPE_2__ {int state; struct client_lease* active; struct client_lease* new; int medium; } ;
+typedef scalar_t__ PDHCP_ADAPTER ;
 
-/* Variables and functions */
- scalar_t__ AdapterFindInfo (struct interface_info*) ; 
- int /*<<< orphan*/  S_BOUND ; 
- int /*<<< orphan*/  add_timeout (scalar_t__,int /*<<< orphan*/ ,struct interface_info*) ; 
- int /*<<< orphan*/  free_client_lease (struct client_lease*) ; 
- int /*<<< orphan*/  note (char*,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  piaddr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_domain (scalar_t__,struct client_lease*) ; 
- int /*<<< orphan*/  set_name_servers (scalar_t__,struct client_lease*) ; 
- int /*<<< orphan*/  setup_adapter (scalar_t__,struct client_lease*) ; 
- int /*<<< orphan*/  state_bound ; 
- int /*<<< orphan*/  time (scalar_t__*) ; 
- int /*<<< orphan*/  warning (char*,struct interface_info*) ; 
+
+ scalar_t__ AdapterFindInfo (struct interface_info*) ;
+ int S_BOUND ;
+ int add_timeout (scalar_t__,int ,struct interface_info*) ;
+ int free_client_lease (struct client_lease*) ;
+ int note (char*,int ,long) ;
+ int piaddr (int ) ;
+ int set_domain (scalar_t__,struct client_lease*) ;
+ int set_name_servers (scalar_t__,struct client_lease*) ;
+ int setup_adapter (scalar_t__,struct client_lease*) ;
+ int state_bound ;
+ int time (scalar_t__*) ;
+ int warning (char*,struct interface_info*) ;
 
 void
 bind_lease(struct interface_info *ip)
@@ -40,19 +40,19 @@ bind_lease(struct interface_info *ip)
 
     time(&cur_time);
 
-    /* Remember the medium. */
+
     ip->client->new->medium = ip->client->medium;
 
-    /* Replace the old active lease with the new one. */
+
     if (ip->client->active)
         free_client_lease(ip->client->active);
     ip->client->active = ip->client->new;
-    ip->client->new = NULL;
+    ip->client->new = ((void*)0);
 
-    /* Set up a timeout to start the renewal process. */
-    /* Timeout of zero means no timeout (some implementations seem to use
-     * one day).
-     */
+
+
+
+
     if( ip->client->active->renewal - cur_time )
         add_timeout(ip->client->active->renewal, state_bound, ip);
 
@@ -64,7 +64,7 @@ bind_lease(struct interface_info *ip)
 
     Adapter = AdapterFindInfo( ip );
 
-    if( Adapter )  setup_adapter( Adapter, new_lease );
+    if( Adapter ) setup_adapter( Adapter, new_lease );
     else {
         warning("Could not find adapter for info %p\n", ip);
         return;

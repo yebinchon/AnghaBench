@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bfd_boolean ;
-typedef  int /*<<< orphan*/  aarch64_opnd_info ;
-typedef  int /*<<< orphan*/  aarch64_operand_error ;
-typedef  int /*<<< orphan*/  aarch64_operand ;
-typedef  int /*<<< orphan*/  aarch64_inst ;
-typedef  int /*<<< orphan*/  aarch64_insn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aarch64_ext_addr_offset (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_addr_regoff (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_addr_simm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_addr_simm10 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_addr_simple (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_addr_uimm12 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_advsimd_imm_modified (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_advsimd_imm_shift (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_aimm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_barrier (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_cond (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_fbits (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_fpimm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_ft (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_hint (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_imm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_imm_half (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_imm_rotate1 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_imm_rotate2 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_inv_limm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_ldst_elemlist (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_ldst_reglist (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_ldst_reglist_r (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_limm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_prfop (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_pstatefield (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_reg_extended (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_reg_shifted (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_reglane (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_reglist (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_regno (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_regno_pair (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_regrt_sysins (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_shll_imm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_simd_addr_post (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_ri_s4 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_ri_s4xvl (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_ri_s6xvl (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_ri_s9xvl (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_ri_u6 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_rr_lsl (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_rz_xtw (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_zi_u5 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_zz_lsl (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_zz_sxtw (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_addr_zz_uxtw (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_aimm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_asimm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_float_half_one (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_float_half_two (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_float_zero_one (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_index (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_limm_mov (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_quad_index (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_reglist (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_scale (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_shlimm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sve_shrimm (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sysins_op (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  aarch64_ext_sysreg (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* aarch64_operands ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int bfd_boolean ;
+typedef int aarch64_opnd_info ;
+typedef int aarch64_operand_error ;
+typedef int aarch64_operand ;
+typedef int aarch64_inst ;
+typedef int aarch64_insn ;
+
+
+ int aarch64_ext_addr_offset (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_addr_regoff (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_addr_simm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_addr_simm10 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_addr_simple (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_addr_uimm12 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_advsimd_imm_modified (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_advsimd_imm_shift (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_aimm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_barrier (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_cond (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_fbits (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_fpimm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_ft (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_hint (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_imm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_imm_half (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_imm_rotate1 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_imm_rotate2 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_inv_limm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_ldst_elemlist (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_ldst_reglist (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_ldst_reglist_r (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_limm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_prfop (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_pstatefield (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_reg_extended (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_reg_shifted (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_reglane (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_reglist (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_regno (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_regno_pair (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_regrt_sysins (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_shll_imm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_simd_addr_post (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_ri_s4 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_ri_s4xvl (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_ri_s6xvl (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_ri_s9xvl (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_ri_u6 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_rr_lsl (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_rz_xtw (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_zi_u5 (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_zz_lsl (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_zz_sxtw (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_addr_zz_uxtw (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_aimm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_asimm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_float_half_one (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_float_half_two (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_float_zero_one (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_index (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_limm_mov (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_quad_index (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_reglist (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_scale (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_shlimm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sve_shrimm (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sysins_op (int const*,int *,int ,int const*,int *) ;
+ int aarch64_ext_sysreg (int const*,int *,int ,int const*,int *) ;
+ int const* aarch64_operands ;
+ int abort () ;
+ int assert (int ) ;
 
 bfd_boolean
 aarch64_extract_operand (const aarch64_operand *self,
-			   aarch64_opnd_info *info,
-			   aarch64_insn code, const aarch64_inst *inst,
-			   aarch64_operand_error *errors)
+      aarch64_opnd_info *info,
+      aarch64_insn code, const aarch64_inst *inst,
+      aarch64_operand_error *errors)
 {
-  /* Use the index as the key.  */
+
   int key = self - aarch64_operands;
   switch (key)
     {

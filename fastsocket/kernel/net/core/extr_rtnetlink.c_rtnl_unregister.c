@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * dumpit; int /*<<< orphan*/ * doit; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int ENOENT ; 
- int RTNL_FAMILY_MAX ; 
- int rtm_msgindex (int) ; 
- TYPE_1__** rtnl_msg_handlers ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * dumpit; int * doit; } ;
+
+
+ int BUG_ON (int) ;
+ int ENOENT ;
+ int RTNL_FAMILY_MAX ;
+ int rtm_msgindex (int) ;
+ TYPE_1__** rtnl_msg_handlers ;
 
 int rtnl_unregister(int protocol, int msgtype)
 {
-	int msgindex;
+ int msgindex;
 
-	BUG_ON(protocol < 0 || protocol > RTNL_FAMILY_MAX);
-	msgindex = rtm_msgindex(msgtype);
+ BUG_ON(protocol < 0 || protocol > RTNL_FAMILY_MAX);
+ msgindex = rtm_msgindex(msgtype);
 
-	if (rtnl_msg_handlers[protocol] == NULL)
-		return -ENOENT;
+ if (rtnl_msg_handlers[protocol] == ((void*)0))
+  return -ENOENT;
 
-	rtnl_msg_handlers[protocol][msgindex].doit = NULL;
-	rtnl_msg_handlers[protocol][msgindex].dumpit = NULL;
+ rtnl_msg_handlers[protocol][msgindex].doit = ((void*)0);
+ rtnl_msg_handlers[protocol][msgindex].dumpit = ((void*)0);
 
-	return 0;
+ return 0;
 }

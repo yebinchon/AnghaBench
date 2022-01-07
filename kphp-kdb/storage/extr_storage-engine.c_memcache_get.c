@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ disabled; } ;
-typedef  TYPE_1__ volume_t ;
-struct connection {int /*<<< orphan*/  Out; } ;
-typedef  int /*<<< orphan*/  path ;
+typedef TYPE_1__ volume_t ;
+struct connection {int Out; } ;
+typedef int path ;
 
-/* Variables and functions */
- int STORAGE_ERR_SCANDIR_MULTIPLE ; 
- int STORAGE_ERR_SIZE_MISMATCH ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_disabled ; 
- int /*<<< orphan*/  create_write_thread (struct connection*,int /*<<< orphan*/ ,TYPE_1__*,char const*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ct_unknown ; 
- scalar_t__ force_write_index ; 
- int gen_volumes_list () ; 
- int get_at_prefix_length (char const*,int) ; 
- int get_dir_id_by_name (char const*) ; 
- int /*<<< orphan*/  get_dirs_serialized (char*) ; 
- int /*<<< orphan*/  get_file_queries ; 
- int /*<<< orphan*/  get_hide_queries ; 
- int /*<<< orphan*/  get_misses ; 
- int /*<<< orphan*/  get_queries ; 
- TYPE_1__* get_volume_f (long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_volume_misses ; 
- int get_volume_serialized (char*,long long) ; 
- int get_volume_text (char*,long long) ; 
- int /*<<< orphan*/  memcmp (char const*,char*,int) ; 
- int return_one_key (struct connection*,char const*,char*,int) ; 
- int snprintf (char*,int,char*,int) ; 
- int sprintf (char*,char*,...) ; 
- int sscanf (char const*,char*,long long*,...) ; 
- char* stats_buff ; 
- int storage_close_binlog_file (TYPE_1__*,int) ; 
- int storage_enable_binlog_file (TYPE_1__*,int) ; 
- int storage_prepare_stats (struct connection*) ; 
- int storage_scan_dir (int) ; 
- int storage_volume_check_file (TYPE_1__*,double,long long) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- char* value_buff ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ int STORAGE_ERR_SCANDIR_MULTIPLE ;
+ int STORAGE_ERR_SIZE_MISMATCH ;
+ int assert (int) ;
+ scalar_t__ binlog_disabled ;
+ int create_write_thread (struct connection*,int ,TYPE_1__*,char const*,char*,int *,int ,int ) ;
+ int ct_unknown ;
+ scalar_t__ force_write_index ;
+ int gen_volumes_list () ;
+ int get_at_prefix_length (char const*,int) ;
+ int get_dir_id_by_name (char const*) ;
+ int get_dirs_serialized (char*) ;
+ int get_file_queries ;
+ int get_hide_queries ;
+ int get_misses ;
+ int get_queries ;
+ TYPE_1__* get_volume_f (long long,int ) ;
+ int get_volume_misses ;
+ int get_volume_serialized (char*,long long) ;
+ int get_volume_text (char*,long long) ;
+ int memcmp (char const*,char*,int) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int snprintf (char*,int,char*,int) ;
+ int sprintf (char*,char*,...) ;
+ int sscanf (char const*,char*,long long*,...) ;
+ char* stats_buff ;
+ int storage_close_binlog_file (TYPE_1__*,int) ;
+ int storage_enable_binlog_file (TYPE_1__*,int) ;
+ int storage_prepare_stats (struct connection*) ;
+ int storage_scan_dir (int) ;
+ int storage_volume_check_file (TYPE_1__*,double,long long) ;
+ int strlen (char*) ;
+ int strncmp (char const*,char*,int) ;
+ char* value_buff ;
+ int vkprintf (int,char*,...) ;
+ int write_out (int *,char*,int) ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   vkprintf (3, "memcache_get (c = %p, %.*s)\n", c, key_len, key);
@@ -80,7 +80,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
   if (has_path) {
     vkprintf (4, "path: %s\n", path);
     volume_t *V = get_volume_f (volume_id, 0);
-    if (V == NULL) {
+    if (V == ((void*)0)) {
       get_volume_misses++;
       get_misses++;
       return 0;
@@ -89,7 +89,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
     if (V->disabled || binlog_disabled || force_write_index) {
       return 0;
     }
-    create_write_thread (c, 0, V, key + dog_len, path, NULL, 0, ct_unknown);
+    create_write_thread (c, 0, V, key + dog_len, path, ((void*)0), 0, ct_unknown);
     return 0;
   }
 
@@ -107,7 +107,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
       percent = 100.0;
     }
     volume_t *V = get_volume_f (volume_id, 0);
-    if (V == NULL) {
+    if (V == ((void*)0)) {
       get_volume_misses++;
       get_misses++;
       return 0;
@@ -153,7 +153,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
 
   if (key_len >= 11 && !memcmp (key, "enable_file", 11) && sscanf (key + 11, "%lld,%d", &volume_id, &dir_id) == 2) {
     volume_t *V = get_volume_f (volume_id, 0);
-    if (V == NULL) {
+    if (V == ((void*)0)) {
       get_misses++;
       return 0;
     }
@@ -169,7 +169,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
 
   if (key_len >= 12 && !memcmp (key, "disable_file", 12) && sscanf (key + 12, "%lld,%d", &volume_id, &dir_id) == 2) {
     volume_t *V = get_volume_f (volume_id, 0);
-    if (V == NULL) {
+    if (V == ((void*)0)) {
       get_misses++;
       return 0;
     }
@@ -192,26 +192,6 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
       return return_one_key (c, key - dog_len, value_buff, sprintf (value_buff, "%d", r));
     }
   }
-
-/*
-  if (key_len >= 11 && !memcmp (key, "disable_dir", 11) && sscanf (key + 11, "%d", &dir_id) == 1) {
-    l = change_dir_write_status (dir_id, 1);
-    if (l < 0) {
-      return 0;
-    }
-    get_hits++;
-    return return_one_key (c, key - dog_len, value_buff, sprintf (value_buff, "%d", l));
-  }
-
-  if (key_len >= 10 && !memcmp (key, "enable_dir", 10) && sscanf (key + 10, "%d", &dir_id) == 1) {
-    l = change_dir_write_status (dir_id, 0);
-    if (l < 0) {
-      return 0;
-    }
-    get_hits++;
-    return return_one_key (c, key - dog_len, value_buff, sprintf (value_buff, "%d", l));
-  }
-*/
   get_misses++;
   return 0;
 }

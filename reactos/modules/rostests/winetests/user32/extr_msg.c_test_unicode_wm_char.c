@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct message {int message; int flags; int wParam; } ;
-typedef  int /*<<< orphan*/  seq ;
-typedef  int /*<<< orphan*/  cp ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef int seq ;
+typedef int cp ;
+typedef int WCHAR ;
 struct TYPE_6__ {int message; int hwnd; int wParam; int lParam; } ;
-typedef  TYPE_1__ MSG ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int HWND ;
-typedef  scalar_t__ HKL ;
-typedef  int DWORD ;
+typedef TYPE_1__ MSG ;
+typedef int LCID ;
+typedef int HWND ;
+typedef scalar_t__ HKL ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActivateKeyboardLayout (scalar_t__,int /*<<< orphan*/ ) ; 
- int CreateWindowExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int) ; 
- int /*<<< orphan*/  DispatchMessageA (TYPE_1__*) ; 
- int /*<<< orphan*/  DispatchMessageW (TYPE_1__*) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetKeyboardLayout (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLocaleInfoW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  GetMessageA (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetMessageW (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetThreadLocale () ; 
- int LOCALE_IDEFAULTANSICODEPAGE ; 
- int LOCALE_RETURN_NUMBER ; 
- int /*<<< orphan*/  LOWORD (scalar_t__) ; 
- scalar_t__ LoadKeyboardLayoutA (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PostMessageW (int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnloadKeyboardLayout (scalar_t__) ; 
- int WM_CHAR ; 
- int /*<<< orphan*/  WS_OVERLAPPEDWINDOW ; 
- int /*<<< orphan*/  flush_sequence () ; 
- int /*<<< orphan*/  ignore_message (int) ; 
- int /*<<< orphan*/  memset (struct message*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_sequence (struct message*,char*,int /*<<< orphan*/ ) ; 
- int sent ; 
- int /*<<< orphan*/  skip (char*,...) ; 
- int /*<<< orphan*/  testWindowClassW ; 
- int wparam ; 
+
+ int ActivateKeyboardLayout (scalar_t__,int ) ;
+ int CreateWindowExW (int ,int ,int *,int ,int,int,int,int,int ,int ,int ,int *) ;
+ int DestroyWindow (int) ;
+ int DispatchMessageA (TYPE_1__*) ;
+ int DispatchMessageW (TYPE_1__*) ;
+ int FALSE ;
+ scalar_t__ GetKeyboardLayout (int ) ;
+ int GetLocaleInfoW (int ,int,int *,int) ;
+ int GetMessageA (TYPE_1__*,int,int ,int ) ;
+ scalar_t__ GetMessageW (TYPE_1__*,int,int ,int ) ;
+ int GetThreadLocale () ;
+ int LOCALE_IDEFAULTANSICODEPAGE ;
+ int LOCALE_RETURN_NUMBER ;
+ int LOWORD (scalar_t__) ;
+ scalar_t__ LoadKeyboardLayoutA (char*,int ) ;
+ int PostMessageW (int,int,int,int ) ;
+ int UnloadKeyboardLayout (scalar_t__) ;
+ int WM_CHAR ;
+ int WS_OVERLAPPEDWINDOW ;
+ int flush_sequence () ;
+ int ignore_message (int) ;
+ int memset (struct message*,int ,int) ;
+ int ok (int,char*,...) ;
+ int ok_sequence (struct message*,char*,int ) ;
+ int sent ;
+ int skip (char*,...) ;
+ int testWindowClassW ;
+ int wparam ;
 
 __attribute__((used)) static void test_unicode_wm_char(void)
 {
@@ -70,14 +70,14 @@ __attribute__((used)) static void test_unicode_wm_char(void)
     }
 
     hkl_greek = LoadKeyboardLayoutA( "00000408", 0 );
-    if (!hkl_greek || hkl_greek == hkl_orig /* win2k */)
+    if (!hkl_greek || hkl_greek == hkl_orig )
     {
         skip( "Unable to load Greek keyboard layout\n" );
         return;
     }
 
-    hwnd = CreateWindowExW( 0, testWindowClassW, NULL, WS_OVERLAPPEDWINDOW,
-                            100, 100, 200, 200, 0, 0, 0, NULL );
+    hwnd = CreateWindowExW( 0, testWindowClassW, ((void*)0), WS_OVERLAPPEDWINDOW,
+                            100, 100, 200, 200, 0, 0, 0, ((void*)0) );
     flush_sequence();
 
     PostMessageW( hwnd, WM_CHAR, 0x3b1, 0 );
@@ -103,7 +103,7 @@ __attribute__((used)) static void test_unicode_wm_char(void)
 
     flush_sequence();
 
-    /* greek alpha -> 'a' in cp1252 */
+
     PostMessageW( hwnd, WM_CHAR, 0x3b1, 0 );
 
     ok( GetMessageA( &msg, hwnd, 0, 0 ), "no message\n" );
@@ -124,7 +124,7 @@ __attribute__((used)) static void test_unicode_wm_char(void)
 
     flush_sequence();
 
-    /* greek alpha -> 0xe1 in cp1253 */
+
     PostMessageW( hwnd, WM_CHAR, 0x3b1, 0 );
 
     ok( GetMessageA( &msg, hwnd, 0, 0 ), "no message\n" );

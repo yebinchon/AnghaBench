@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EVENTHANDLER_DEREGISTER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dev_clone ; 
- int /*<<< orphan*/ * dsp_ehtag ; 
+ int EVENTHANDLER_DEREGISTER (int ,int *) ;
+ int dev_clone ;
+ int * dsp_ehtag ;
 
 __attribute__((used)) static void
 dsp_sysuninit(void *p)
 {
-	if (dsp_ehtag == NULL)
-		return;
-	EVENTHANDLER_DEREGISTER(dev_clone, dsp_ehtag);
-	dsp_ehtag = NULL;
+ if (dsp_ehtag == ((void*)0))
+  return;
+ EVENTHANDLER_DEREGISTER(dev_clone, dsp_ehtag);
+ dsp_ehtag = ((void*)0);
 }

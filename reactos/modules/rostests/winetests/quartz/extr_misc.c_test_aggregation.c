@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IID ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  CLSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADDREF_EXPECT (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IGraphConfig ; 
- int /*<<< orphan*/  const IID_IUnknown ; 
- scalar_t__ IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- scalar_t__ IUnknown_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  QI_FAIL (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  QI_SUCCEED (int /*<<< orphan*/ *,int /*<<< orphan*/  const,int /*<<< orphan*/ *) ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- int /*<<< orphan*/  RELEASE_EXPECT (int /*<<< orphan*/ *,int) ; 
- scalar_t__ S_OK ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int LPVOID ;
+typedef int IUnknown ;
+typedef int IID ;
+typedef scalar_t__ HRESULT ;
+typedef int CLSID ;
+
+
+ int ADDREF_EXPECT (int *,int) ;
+ int CLSCTX_INPROC_SERVER ;
+ scalar_t__ CoCreateInstance (int const*,int *,int ,int const*,int *) ;
+ scalar_t__ E_NOINTERFACE ;
+ int IID_IGraphConfig ;
+ int const IID_IUnknown ;
+ scalar_t__ IUnknown_QueryInterface (int *,int const*,int *) ;
+ scalar_t__ IUnknown_Release (int *) ;
+ scalar_t__ IsEqualGUID (int *,int const*) ;
+ int QI_FAIL (int *,int const,int *) ;
+ int QI_SUCCEED (int *,int const,int *) ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ int RELEASE_EXPECT (int *,int) ;
+ scalar_t__ S_OK ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_aggregation(const CLSID clsidOuter, const CLSID clsidInner,
                              const IID iidOuter, const IID iidInner)
 {
     HRESULT hr;
     ULONG refCount;
-    IUnknown *pUnkOuter = NULL;
-    IUnknown *pUnkInner = NULL;
-    IUnknown *pUnkInnerFail = NULL;
-    IUnknown *pUnkOuterTest = NULL;
-    IUnknown *pUnkInnerTest = NULL;
-    IUnknown *pUnkAggregatee = NULL;
-    IUnknown *pUnkAggregator = NULL;
-    IUnknown *pUnkTest = NULL;
+    IUnknown *pUnkOuter = ((void*)0);
+    IUnknown *pUnkInner = ((void*)0);
+    IUnknown *pUnkInnerFail = ((void*)0);
+    IUnknown *pUnkOuterTest = ((void*)0);
+    IUnknown *pUnkInnerTest = ((void*)0);
+    IUnknown *pUnkAggregatee = ((void*)0);
+    IUnknown *pUnkAggregator = ((void*)0);
+    IUnknown *pUnkTest = ((void*)0);
 
-    hr = CoCreateInstance(&clsidOuter, NULL, CLSCTX_INPROC_SERVER,
+    hr = CoCreateInstance(&clsidOuter, ((void*)0), CLSCTX_INPROC_SERVER,
                           &IID_IUnknown, (LPVOID*)&pUnkOuter);
     ok(hr == S_OK, "CoCreateInstance failed with %x\n", hr);
-    ok(pUnkOuter != NULL, "pUnkOuter is NULL\n");
+    ok(pUnkOuter != ((void*)0), "pUnkOuter is NULL\n");
 
     if (!pUnkOuter)
     {
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_aggregation(const CLSID clsidOuter, const
         return;
     }
 
-    /* for aggregation, we should only be able to request IUnknown */
+
     hr = CoCreateInstance(&clsidInner, pUnkOuter, CLSCTX_INPROC_SERVER,
                           &iidInner, (LPVOID*)&pUnkInnerFail);
     if (hr == REGDB_E_CLASSNOTREG)
@@ -70,13 +70,13 @@ __attribute__((used)) static void test_aggregation(const CLSID clsidOuter, const
         return;
     }
     ok(hr == E_NOINTERFACE, "CoCreateInstance returned %x\n", hr);
-    ok(pUnkInnerFail == NULL, "pUnkInnerFail is not NULL\n");
+    ok(pUnkInnerFail == ((void*)0), "pUnkInnerFail is not NULL\n");
 
-    /* aggregation, request IUnknown */
+
     hr = CoCreateInstance(&clsidInner, pUnkOuter, CLSCTX_INPROC_SERVER,
                           &IID_IUnknown, (LPVOID*)&pUnkInner);
     ok(hr == S_OK, "CoCreateInstance returned %x\n", hr);
-    ok(pUnkInner != NULL, "pUnkInner is NULL\n");
+    ok(pUnkInner != ((void*)0), "pUnkInner is NULL\n");
 
     if (!pUnkInner)
     {
@@ -92,15 +92,15 @@ __attribute__((used)) static void test_aggregation(const CLSID clsidOuter, const
     QI_FAIL(pUnkOuter, iidInner, pUnkAggregatee);
     QI_FAIL(pUnkInner, iidOuter, pUnkAggregator);
 
-    /* these QueryInterface calls should work */
+
     QI_SUCCEED(pUnkOuter, iidOuter, pUnkAggregator);
     QI_SUCCEED(pUnkOuter, IID_IUnknown, pUnkOuterTest);
-    /* IGraphConfig interface comes with DirectShow 9 */
+
     if(IsEqualGUID(&IID_IGraphConfig, &iidInner))
     {
         hr = IUnknown_QueryInterface(pUnkInner, &iidInner, (LPVOID*)&pUnkAggregatee);
         ok(hr == S_OK || broken(hr == E_NOINTERFACE), "IUnknown_QueryInterface returned %x\n", hr);
-        ok(pUnkAggregatee != NULL || broken(!pUnkAggregatee), "Pointer is NULL\n");
+        ok(pUnkAggregatee != ((void*)0) || broken(!pUnkAggregatee), "Pointer is NULL\n");
     }
     else
     {

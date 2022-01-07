@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int width; int height; int /*<<< orphan*/  blueBits; int /*<<< orphan*/  greenBits; int /*<<< orphan*/  redBits; int /*<<< orphan*/  refreshRate; } ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  TYPE_1__ GLFWvidmode ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  GLFW_BLUE_BITS ; 
- int /*<<< orphan*/  GLFW_GREEN_BITS ; 
- int /*<<< orphan*/  GLFW_RED_BITS ; 
- int /*<<< orphan*/  GLFW_REFRESH_RATE ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gladLoadGL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwGetProcAddress ; 
- TYPE_1__* glfwGetVideoMode (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwTerminate () ; 
- int /*<<< orphan*/  glfwWindowHint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int width; int height; int blueBits; int greenBits; int redBits; int refreshRate; } ;
+typedef int GLFWwindow ;
+typedef TYPE_1__ GLFWvidmode ;
+typedef int GLFWmonitor ;
+
+
+ int EXIT_FAILURE ;
+ int GLFW_BLUE_BITS ;
+ int GLFW_GREEN_BITS ;
+ int GLFW_RED_BITS ;
+ int GLFW_REFRESH_RATE ;
+ int exit (int ) ;
+ int gladLoadGL (int ) ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ int glfwGetProcAddress ;
+ TYPE_1__* glfwGetVideoMode (int *) ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwTerminate () ;
+ int glfwWindowHint (int ,int ) ;
 
 __attribute__((used)) static GLFWwindow* create_window(GLFWmonitor* monitor)
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static GLFWwindow* create_window(GLFWmonitor* monitor)
         height = 480;
     }
 
-    window = glfwCreateWindow(width, height, "Iconify", monitor, NULL);
+    window = glfwCreateWindow(width, height, "Iconify", monitor, ((void*)0));
     if (!window)
     {
         glfwTerminate();

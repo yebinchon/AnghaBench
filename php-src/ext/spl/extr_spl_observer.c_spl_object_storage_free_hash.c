@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ key; } ;
-typedef  TYPE_1__ zend_hash_key ;
-typedef  int /*<<< orphan*/  spl_SplObjectStorage ;
+typedef TYPE_1__ zend_hash_key ;
+typedef int spl_SplObjectStorage ;
 
-/* Variables and functions */
- int /*<<< orphan*/  zend_string_release_ex (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int zend_string_release_ex (scalar_t__,int ) ;
 
 __attribute__((used)) static void spl_object_storage_free_hash(spl_SplObjectStorage *intern, zend_hash_key *key) {
-	if (key->key) {
-		zend_string_release_ex(key->key, 0);
-	}
+ if (key->key) {
+  zend_string_release_ex(key->key, 0);
+ }
 }

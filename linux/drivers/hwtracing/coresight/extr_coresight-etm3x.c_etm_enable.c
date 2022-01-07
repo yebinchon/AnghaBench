@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct perf_event {int dummy; } ;
-struct etm_drvdata {int /*<<< orphan*/  mode; } ;
-struct TYPE_2__ {int /*<<< orphan*/  parent; } ;
+struct etm_drvdata {int mode; } ;
+struct TYPE_2__ {int parent; } ;
 struct coresight_device {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_MODE_DISABLED ; 
-#define  CS_MODE_PERF 129 
-#define  CS_MODE_SYSFS 128 
- int EBUSY ; 
- int EINVAL ; 
- struct etm_drvdata* dev_get_drvdata (int /*<<< orphan*/ ) ; 
- int etm_enable_perf (struct coresight_device*,struct perf_event*) ; 
- int etm_enable_sysfs (struct coresight_device*) ; 
- int local_cmpxchg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  local_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int CS_MODE_DISABLED ;
+
+
+ int EBUSY ;
+ int EINVAL ;
+ struct etm_drvdata* dev_get_drvdata (int ) ;
+ int etm_enable_perf (struct coresight_device*,struct perf_event*) ;
+ int etm_enable_sysfs (struct coresight_device*) ;
+ int local_cmpxchg (int *,int ,int) ;
+ int local_set (int *,int ) ;
 
 __attribute__((used)) static int etm_enable(struct coresight_device *csdev,
-		      struct perf_event *event, u32 mode)
+        struct perf_event *event, u32 mode)
 {
-	int ret;
-	u32 val;
-	struct etm_drvdata *drvdata = dev_get_drvdata(csdev->dev.parent);
+ int ret;
+ u32 val;
+ struct etm_drvdata *drvdata = dev_get_drvdata(csdev->dev.parent);
 
-	val = local_cmpxchg(&drvdata->mode, CS_MODE_DISABLED, mode);
+ val = local_cmpxchg(&drvdata->mode, CS_MODE_DISABLED, mode);
 
-	/* Someone is already using the tracer */
-	if (val)
-		return -EBUSY;
 
-	switch (mode) {
-	case CS_MODE_SYSFS:
-		ret = etm_enable_sysfs(csdev);
-		break;
-	case CS_MODE_PERF:
-		ret = etm_enable_perf(csdev, event);
-		break;
-	default:
-		ret = -EINVAL;
-	}
+ if (val)
+  return -EBUSY;
 
-	/* The tracer didn't start */
-	if (ret)
-		local_set(&drvdata->mode, CS_MODE_DISABLED);
+ switch (mode) {
+ case 128:
+  ret = etm_enable_sysfs(csdev);
+  break;
+ case 129:
+  ret = etm_enable_perf(csdev, event);
+  break;
+ default:
+  ret = -EINVAL;
+ }
 
-	return ret;
+
+ if (ret)
+  local_set(&drvdata->mode, CS_MODE_DISABLED);
+
+ return ret;
 }

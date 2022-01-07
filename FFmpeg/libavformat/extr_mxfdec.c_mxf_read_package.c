@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  UID ;
-struct TYPE_2__ {int /*<<< orphan*/  comment_count; int /*<<< orphan*/  comment_refs; int /*<<< orphan*/  name; int /*<<< orphan*/  descriptor_ref; int /*<<< orphan*/  package_uid; int /*<<< orphan*/  package_ul; int /*<<< orphan*/  tracks_count; int /*<<< orphan*/  tracks_refs; } ;
-typedef  TYPE_1__ MXFPackage ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int mxf_read_strong_ref_array (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int mxf_read_utf16be_string (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int UID ;
+struct TYPE_2__ {int comment_count; int comment_refs; int name; int descriptor_ref; int package_uid; int package_ul; int tracks_count; int tracks_refs; } ;
+typedef TYPE_1__ MXFPackage ;
+typedef int AVIOContext ;
+
+
+ int avio_read (int *,int ,int) ;
+ int mxf_read_strong_ref_array (int *,int *,int *) ;
+ int mxf_read_utf16be_string (int *,int,int *) ;
 
 __attribute__((used)) static int mxf_read_package(void *arg, AVIOContext *pb, int tag, int size, UID uid, int64_t klv_offset)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static int mxf_read_package(void *arg, AVIOContext *pb, in
         return mxf_read_strong_ref_array(pb, &package->tracks_refs,
                                              &package->tracks_count);
     case 0x4401:
-        /* UMID */
+
         avio_read(pb, package->package_ul, 16);
         avio_read(pb, package->package_uid, 16);
         break;

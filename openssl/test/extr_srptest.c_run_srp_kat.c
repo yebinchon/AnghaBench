@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  N; int /*<<< orphan*/  g; } ;
-typedef  TYPE_1__ SRP_gN ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_clear_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_hex2bn (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/ * SRP_Calc_A (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SRP_Calc_B (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SRP_Calc_client_key (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SRP_Calc_server_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SRP_Calc_u (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SRP_Calc_x (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  SRP_Verify_A_mod_N (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRP_Verify_B_mod_N (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRP_create_verifier_BN (char*,char*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* SRP_get_default_gN (char*) ; 
- int /*<<< orphan*/  TEST_info (char*) ; 
- int /*<<< orphan*/  TEST_note (char*) ; 
- int /*<<< orphan*/  TEST_ptr (TYPE_1__ const*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  check_bn (char*,int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int N; int g; } ;
+typedef TYPE_1__ SRP_gN ;
+typedef int BIGNUM ;
+
+
+ int BN_clear_free (int *) ;
+ int BN_free (int *) ;
+ int BN_hex2bn (int **,char*) ;
+ int * SRP_Calc_A (int *,int ,int ) ;
+ int * SRP_Calc_B (int *,int ,int ,int *) ;
+ int * SRP_Calc_client_key (int ,int *,int ,int *,int *,int *) ;
+ int * SRP_Calc_server_key (int *,int *,int *,int *,int ) ;
+ int * SRP_Calc_u (int *,int *,int ) ;
+ int * SRP_Calc_x (int *,char*,char*) ;
+ int SRP_Verify_A_mod_N (int *,int ) ;
+ int SRP_Verify_B_mod_N (int *,int ) ;
+ int SRP_create_verifier_BN (char*,char*,int **,int **,int ,int ) ;
+ TYPE_1__* SRP_get_default_gN (char*) ;
+ int TEST_info (char*) ;
+ int TEST_note (char*) ;
+ int TEST_ptr (TYPE_1__ const*) ;
+ int TEST_true (int ) ;
+ int check_bn (char*,int *,char*) ;
 
 __attribute__((used)) static int run_srp_kat(void)
 {
     int ret = 0;
-    BIGNUM *s = NULL;
-    BIGNUM *v = NULL;
-    BIGNUM *a = NULL;
-    BIGNUM *b = NULL;
-    BIGNUM *u = NULL;
-    BIGNUM *x = NULL;
-    BIGNUM *Apub = NULL;
-    BIGNUM *Bpub = NULL;
-    BIGNUM *Kclient = NULL;
-    BIGNUM *Kserver = NULL;
-    /* use builtin 1024-bit params */
+    BIGNUM *s = ((void*)0);
+    BIGNUM *v = ((void*)0);
+    BIGNUM *a = ((void*)0);
+    BIGNUM *b = ((void*)0);
+    BIGNUM *u = ((void*)0);
+    BIGNUM *x = ((void*)0);
+    BIGNUM *Apub = ((void*)0);
+    BIGNUM *Bpub = ((void*)0);
+    BIGNUM *Kclient = ((void*)0);
+    BIGNUM *Kserver = ((void*)0);
+
     const SRP_gN *GN;
 
     if (!TEST_ptr(GN = SRP_get_default_gN("1024")))
         goto err;
     BN_hex2bn(&s, "BEB25379D1A8581EB5A727673A2441EE");
-    /* Set up server's password entry */
+
     if (!TEST_true(SRP_create_verifier_BN("alice", "password123", &s, &v, GN->N,
                                           GN->g)))
         goto err;
@@ -69,11 +69,11 @@ __attribute__((used)) static int run_srp_kat(void)
         goto err;
     TEST_note("    okay");
 
-    /* Server random */
+
     BN_hex2bn(&b, "E487CB59D31AC550471E81F00F6928E01DDA08E974A004F49E61F5D1"
                   "05284D20");
 
-    /* Server's first message */
+
     Bpub = SRP_Calc_B(b, GN->N, GN->g, v);
     if (!TEST_true(SRP_Verify_B_mod_N(Bpub, GN->N)))
         goto err;
@@ -88,11 +88,11 @@ __attribute__((used)) static int run_srp_kat(void)
         goto err;
     TEST_note("    okay");
 
-    /* Client random */
+
     BN_hex2bn(&a, "60975527035CF2AD1989806F0407210BC81EDC04E2762A56AFD529DD"
                   "DA2D4393");
 
-    /* Client's response */
+
     Apub = SRP_Calc_A(a, GN->N, GN->g);
     if (!TEST_true(SRP_Verify_A_mod_N(Apub, GN->N)))
         goto err;
@@ -107,14 +107,14 @@ __attribute__((used)) static int run_srp_kat(void)
         goto err;
     TEST_note("    okay");
 
-    /* Both sides calculate u */
+
     u = SRP_Calc_u(Apub, Bpub, GN->N);
 
     if (!TEST_true(check_bn("u", u,
                     "CE38B9593487DA98554ED47D70A7AE5F462EF019")))
         goto err;
 
-    /* Client's key */
+
     x = SRP_Calc_x(s, "alice", "password123");
     Kclient = SRP_Calc_client_key(GN->N, Bpub, GN->g, x, a, u);
     TEST_info("checking client's key");
@@ -127,7 +127,7 @@ __attribute__((used)) static int run_srp_kat(void)
         goto err;
     TEST_note("    okay");
 
-    /* Server's key */
+
     Kserver = SRP_Calc_server_key(Apub, v, u, b, GN->N);
     TEST_info("checking server's key");
     if (!TEST_true(check_bn("Server's key", Kserver,

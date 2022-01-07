@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  framebase; int /*<<< orphan*/  IHTMLIFrameElement3_iface; int /*<<< orphan*/  IHTMLIFrameElement2_iface; int /*<<< orphan*/  IHTMLIFrameElement_iface; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_1__ HTMLIFrame ;
-typedef  int /*<<< orphan*/  HTMLDOMNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTMLFrameBase_QI (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IID_IHTMLIFrameElement ; 
- int /*<<< orphan*/  IID_IHTMLIFrameElement2 ; 
- int /*<<< orphan*/  IID_IHTMLIFrameElement3 ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,void**) ; 
- TYPE_1__* impl_from_HTMLDOMNode (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int framebase; int IHTMLIFrameElement3_iface; int IHTMLIFrameElement2_iface; int IHTMLIFrameElement_iface; } ;
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef TYPE_1__ HTMLIFrame ;
+typedef int HTMLDOMNode ;
+typedef int HRESULT ;
+
+
+ int HTMLFrameBase_QI (int *,int ,void**) ;
+ int IID_IHTMLIFrameElement ;
+ int IID_IHTMLIFrameElement2 ;
+ int IID_IHTMLIFrameElement3 ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualGUID (int *,int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_1__*,void**) ;
+ TYPE_1__* impl_from_HTMLDOMNode (int *) ;
 
 __attribute__((used)) static HRESULT HTMLIFrame_QI(HTMLDOMNode *iface, REFIID riid, void **ppv)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddAtomA (char*) ; 
- int /*<<< orphan*/  AddAtomW (char*) ; 
- int /*<<< orphan*/  FindAtomA (char*) ; 
- int /*<<< orphan*/  FindAtomW (char*) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ unicode_OS ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int AddAtomA (char*) ;
+ int AddAtomW (char*) ;
+ int FindAtomA (char*) ;
+ int FindAtomW (char*) ;
+ int memset (char*,char,int) ;
+ int ok (int,char*) ;
+ scalar_t__ unicode_OS ;
 
 __attribute__((used)) static void test_local_error_handling(void)
 {

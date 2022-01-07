@@ -1,25 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static const char* __itt_fsplit(const char* s, const char* sep, const char** out, int* len)
 {
     int i;
     int j;
 
     if (!s || !sep || !out || !len)
-        return NULL;
+        return ((void*)0);
 
     for (i = 0; s[i]; i++)
     {
@@ -35,7 +26,7 @@ __attribute__((used)) static const char* __itt_fsplit(const char* s, const char*
     }
 
     if (!s[i])
-        return NULL;
+        return ((void*)0);
 
     *len = 0;
     *out = &s[i];

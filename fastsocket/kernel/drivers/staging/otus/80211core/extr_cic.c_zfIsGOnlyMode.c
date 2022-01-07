@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int u8_t ;
-typedef  int u16_t ;
 
-/* Variables and functions */
- int* zg11gRateTbl ; 
 
-u8_t zfIsGOnlyMode(zdev_t* dev, u16_t  frequency, u8_t* rateArray)
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+typedef int u16_t ;
+
+
+ int* zg11gRateTbl ;
+
+u8_t zfIsGOnlyMode(zdev_t* dev, u16_t frequency, u8_t* rateArray)
 {
     u8_t length = rateArray[1];
     u8_t i, j;

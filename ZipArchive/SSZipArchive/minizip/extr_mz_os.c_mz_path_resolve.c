@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int MZ_INTERNAL_ERROR ; 
- int MZ_OK ; 
- int MZ_PARAM_ERROR ; 
+
+
+
+typedef int int32_t ;
+
+
+ int MZ_INTERNAL_ERROR ;
+ int MZ_OK ;
+ int MZ_PARAM_ERROR ;
 
 int32_t mz_path_resolve(const char *path, char *output, int32_t max_output)
 {
@@ -34,7 +34,7 @@ int32_t mz_path_resolve(const char *path, char *output, int32_t max_output)
 
         if ((source == path) || (check != source))
         {
-            /* Skip double paths */
+
             if ((*check == '\\') || (*check == '/'))
             {
                 source += 1;
@@ -44,10 +44,10 @@ int32_t mz_path_resolve(const char *path, char *output, int32_t max_output)
             {
                 check += 1;
 
-                /* Remove current directory . if at end of string */
+
                 if ((*check == 0) && (source != path))
                 {
-                    /* Copy last slash */
+
                     *target = *source;
                     target += 1;
                     max_output -= 1;
@@ -55,10 +55,10 @@ int32_t mz_path_resolve(const char *path, char *output, int32_t max_output)
                     continue;
                 }
 
-                /* Remove current directory . if not at end of string */
+
                 if ((*check == 0) || (*check == '\\' || *check == '/'))
                 {
-                    /* Only proceed if .\ is not entire string */
+
                     if (check[1] != 0 || (path != source))
                     {
                         source += (check - source);
@@ -66,7 +66,7 @@ int32_t mz_path_resolve(const char *path, char *output, int32_t max_output)
                     }
                 }
 
-                /* Go to parent directory .. */
+
                 if ((*check != 0) || (*check == '.'))
                 {
                     check += 1;
@@ -74,7 +74,7 @@ int32_t mz_path_resolve(const char *path, char *output, int32_t max_output)
                     {
                         source += (check - source);
 
-                        /* Search backwards for previous slash */
+
                         if (target != output)
                         {
                             target -= 1;

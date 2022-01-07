@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int imcsmb_transfer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,short*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_char ;
+typedef int device_t ;
+
+
+ int TRUE ;
+ int imcsmb_transfer (int ,int ,char,short*,int ,int ) ;
 
 __attribute__((used)) static int
 imcsmb_writew(device_t dev, u_char slave, char cmd, short word)
 {
 
-	return (imcsmb_transfer(dev, slave, cmd, &word, TRUE, TRUE));
+ return (imcsmb_transfer(dev, slave, cmd, &word, TRUE, TRUE));
 }

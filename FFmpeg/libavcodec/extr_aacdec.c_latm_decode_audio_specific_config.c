@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
 struct TYPE_22__ {TYPE_2__* oc; TYPE_5__* avctx; } ;
 struct LATMContext {scalar_t__ initialized; TYPE_6__ aac_ctx; } ;
-struct TYPE_21__ {int extradata_size; int /*<<< orphan*/ * extradata; } ;
-struct TYPE_20__ {int /*<<< orphan*/  buffer; } ;
-struct TYPE_19__ {scalar_t__ sample_rate; scalar_t__ chan_config; int /*<<< orphan*/  member_0; } ;
+struct TYPE_21__ {int extradata_size; int * extradata; } ;
+struct TYPE_20__ {int buffer; } ;
+struct TYPE_19__ {scalar_t__ sample_rate; scalar_t__ chan_config; int member_0; } ;
 struct TYPE_17__ {scalar_t__ sample_rate; scalar_t__ chan_config; } ;
 struct TYPE_18__ {TYPE_1__ m4ac; } ;
-typedef  TYPE_3__ MPEG4AudioConfig ;
-typedef  TYPE_4__ GetBitContext ;
-typedef  TYPE_5__ AVCodecContext ;
-typedef  TYPE_6__ AACContext ;
+typedef TYPE_3__ MPEG4AudioConfig ;
+typedef TYPE_4__ GetBitContext ;
+typedef TYPE_5__ AVCodecContext ;
+typedef TYPE_6__ AACContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_INFO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMIN (int,scalar_t__) ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/ * av_malloc (scalar_t__) ; 
- int decode_audio_specific_config_gb (int /*<<< orphan*/ *,TYPE_5__*,TYPE_3__*,TYPE_4__*,int,int) ; 
- int /*<<< orphan*/  get_bits (TYPE_4__*,int) ; 
- int get_bits_count (TYPE_4__*) ; 
- scalar_t__ get_bits_left (TYPE_4__*) ; 
- int /*<<< orphan*/  init_get_bits (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  skip_bits_long (TYPE_4__*,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_INFO ;
+ int ENOMEM ;
+ int FFMIN (int,scalar_t__) ;
+ int av_free (int *) ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ int * av_malloc (scalar_t__) ;
+ int decode_audio_specific_config_gb (int *,TYPE_5__*,TYPE_3__*,TYPE_4__*,int,int) ;
+ int get_bits (TYPE_4__*,int) ;
+ int get_bits_count (TYPE_4__*) ;
+ scalar_t__ get_bits_left (TYPE_4__*) ;
+ int init_get_bits (TYPE_4__*,int ,int) ;
+ int memset (int *,int ,scalar_t__) ;
+ int skip_bits_long (TYPE_4__*,int) ;
 
 __attribute__((used)) static int latm_decode_audio_specific_config(struct LATMContext *latmctx,
                                              GetBitContext *gb, int asclen)
 {
-    AACContext *ac        = &latmctx->aac_ctx;
+    AACContext *ac = &latmctx->aac_ctx;
     AVCodecContext *avctx = ac->avctx;
     MPEG4AudioConfig m4ac = { 0 };
     GetBitContext gbc;
-    int config_start_bit  = get_bits_count(gb);
-    int sync_extension    = 0;
+    int config_start_bit = get_bits_count(gb);
+    int sync_extension = 0;
     int bits_consumed, esize, i;
 
     if (asclen > 0) {
         sync_extension = 1;
-        asclen         = FFMIN(asclen, get_bits_left(gb));
+        asclen = FFMIN(asclen, get_bits_left(gb));
         init_get_bits(&gbc, gb->buffer, config_start_bit + asclen);
         skip_bits_long(&gbc, config_start_bit);
     } else if (asclen == 0) {
@@ -72,7 +72,7 @@ __attribute__((used)) static int latm_decode_audio_specific_config(struct LATMCo
     if (get_bits_left(gb) <= 0)
         return AVERROR_INVALIDDATA;
 
-    bits_consumed = decode_audio_specific_config_gb(NULL, avctx, &m4ac,
+    bits_consumed = decode_audio_specific_config_gb(((void*)0), avctx, &m4ac,
                                                     &gbc, config_start_bit,
                                                     sync_extension);
 

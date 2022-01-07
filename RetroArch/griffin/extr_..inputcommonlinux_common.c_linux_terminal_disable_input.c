@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  member_0; } ;
-struct sigaction {int sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; TYPE_1__ member_0; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KDSKBMODE ; 
- int /*<<< orphan*/  K_MEDIUMRAW ; 
- int SA_RESETHAND ; 
- int SA_RESTART ; 
- int /*<<< orphan*/  SIGABRT ; 
- int /*<<< orphan*/  SIGBUS ; 
- int /*<<< orphan*/  SIGFPE ; 
- int /*<<< orphan*/  SIGILL ; 
- int /*<<< orphan*/  SIGQUIT ; 
- int /*<<< orphan*/  SIGSEGV ; 
- int /*<<< orphan*/  atexit (int /*<<< orphan*/ ) ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isatty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  linux_terminal_flush () ; 
- int /*<<< orphan*/  linux_terminal_init () ; 
- int /*<<< orphan*/  linux_terminal_restore_input ; 
- int /*<<< orphan*/  linux_terminal_restore_signal ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int member_0; } ;
+struct sigaction {int sa_flags; int sa_mask; int sa_handler; TYPE_1__ member_0; } ;
+
+
+ int KDSKBMODE ;
+ int K_MEDIUMRAW ;
+ int SA_RESETHAND ;
+ int SA_RESTART ;
+ int SIGABRT ;
+ int SIGBUS ;
+ int SIGFPE ;
+ int SIGILL ;
+ int SIGQUIT ;
+ int SIGSEGV ;
+ int atexit (int ) ;
+ scalar_t__ ioctl (int ,int ,int ) ;
+ int isatty (int ) ;
+ int linux_terminal_flush () ;
+ int linux_terminal_init () ;
+ int linux_terminal_restore_input ;
+ int linux_terminal_restore_signal ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int sigemptyset (int *) ;
 
 bool linux_terminal_disable_input(void)
 {
    struct sigaction sa = {{0}};
 
-   /* Avoid accidentally typing stuff. */
+
    if (!isatty(0))
-      return false;
+      return 0;
 
    if (!linux_terminal_init())
-      return false;
+      return 0;
 
    if (ioctl(0, KDSKBMODE, K_MEDIUMRAW) < 0)
    {
       linux_terminal_flush();
-      return false;
+      return 0;
    }
 
    sa.sa_handler = linux_terminal_restore_signal;
-   sa.sa_flags   = SA_RESTART | SA_RESETHAND;
+   sa.sa_flags = SA_RESTART | SA_RESETHAND;
    sigemptyset(&sa.sa_mask);
 
-   /* Trap some standard termination codes so we
-    * can restore the keyboard before we lose control. */
-   sigaction(SIGABRT, &sa, NULL);
-   sigaction(SIGBUS,  &sa, NULL);
-   sigaction(SIGFPE,  &sa, NULL);
-   sigaction(SIGILL,  &sa, NULL);
-   sigaction(SIGQUIT, &sa, NULL);
-   sigaction(SIGSEGV, &sa, NULL);
+
+
+   sigaction(SIGABRT, &sa, ((void*)0));
+   sigaction(SIGBUS, &sa, ((void*)0));
+   sigaction(SIGFPE, &sa, ((void*)0));
+   sigaction(SIGILL, &sa, ((void*)0));
+   sigaction(SIGQUIT, &sa, ((void*)0));
+   sigaction(SIGSEGV, &sa, ((void*)0));
 
    atexit(linux_terminal_restore_input);
 
-   return true;
+   return 1;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int /*<<< orphan*/ * HRSRC ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * FindResourceA (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- char* LoadResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SizeofResource (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SysAllocStringLen (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  strict_dispid_check ; 
- char const* test_name ; 
+
+
+
+typedef int LPCSTR ;
+typedef int * HRSRC ;
+typedef int DWORD ;
+typedef int * BSTR ;
+
+
+ int CP_ACP ;
+ int FALSE ;
+ int * FindResourceA (int *,char const*,int ) ;
+ char* LoadResource (int *,int *) ;
+ int MultiByteToWideChar (int ,int ,char const*,int ,int *,int ) ;
+ int SizeofResource (int *,int *) ;
+ int * SysAllocStringLen (int *,int ) ;
+ int ok (int ,char*,char const*) ;
+ int strict_dispid_check ;
+ char const* test_name ;
 
 __attribute__((used)) static BSTR load_res(const char *name)
 {
@@ -37,14 +37,14 @@ __attribute__((used)) static BSTR load_res(const char *name)
     strict_dispid_check = FALSE;
     test_name = name;
 
-    src = FindResourceA(NULL, name, (LPCSTR)40);
-    ok(src != NULL, "Could not find resource %s\n", name);
+    src = FindResourceA(((void*)0), name, (LPCSTR)40);
+    ok(src != ((void*)0), "Could not find resource %s\n", name);
 
-    size = SizeofResource(NULL, src);
-    data = LoadResource(NULL, src);
+    size = SizeofResource(((void*)0), src);
+    data = LoadResource(((void*)0), src);
 
-    len = MultiByteToWideChar(CP_ACP, 0, data, size, NULL, 0);
-    str = SysAllocStringLen(NULL, len);
+    len = MultiByteToWideChar(CP_ACP, 0, data, size, ((void*)0), 0);
+    str = SysAllocStringLen(((void*)0), len);
     MultiByteToWideChar(CP_ACP, 0, data, size, str, len);
 
     return str;

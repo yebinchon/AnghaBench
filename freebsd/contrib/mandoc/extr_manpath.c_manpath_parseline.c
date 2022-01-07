@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct manpaths {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  manpath_add (struct manpaths*,char*,char) ; 
- char* strtok (char*,char*) ; 
+
+ int manpath_add (struct manpaths*,char*,char) ;
+ char* strtok (char*,char*) ;
 
 __attribute__((used)) static void
 manpath_parseline(struct manpaths *dirs, char *path, char option)
 {
-	char	*dir;
+ char *dir;
 
-	if (NULL == path)
-		return;
+ if (((void*)0) == path)
+  return;
 
-	for (dir = strtok(path, ":"); dir; dir = strtok(NULL, ":"))
-		manpath_add(dirs, dir, option);
+ for (dir = strtok(path, ":"); dir; dir = strtok(((void*)0), ":"))
+  manpath_add(dirs, dir, option);
 }

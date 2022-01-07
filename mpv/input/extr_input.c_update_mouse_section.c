@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct input_ctx {char* mouse_section; } ;
 struct cmd_bind {TYPE_1__* owner; } ;
 struct TYPE_2__ {char* section; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_KEY_MOUSE_LEAVE ; 
- int /*<<< orphan*/  MP_KEY_MOUSE_MOVE ; 
- int /*<<< orphan*/  MP_TRACE (struct input_ctx*,char*,char*,char*) ; 
- struct cmd_bind* find_any_bind_for_key (struct input_ctx*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_cmd_from_keys (struct input_ctx*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_input_queue_cmd (struct input_ctx*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int MP_KEY_MOUSE_LEAVE ;
+ int MP_KEY_MOUSE_MOVE ;
+ int MP_TRACE (struct input_ctx*,char*,char*,char*) ;
+ struct cmd_bind* find_any_bind_for_key (struct input_ctx*,int *,int ) ;
+ int get_cmd_from_keys (struct input_ctx*,char*,int ) ;
+ int mp_input_queue_cmd (struct input_ctx*,int ) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void update_mouse_section(struct input_ctx *ictx)
 {
     struct cmd_bind *bind =
-        find_any_bind_for_key(ictx, NULL, MP_KEY_MOUSE_MOVE);
+        find_any_bind_for_key(ictx, ((void*)0), MP_KEY_MOUSE_MOVE);
 
     char *new_section = bind ? bind->owner->section : "default";
 

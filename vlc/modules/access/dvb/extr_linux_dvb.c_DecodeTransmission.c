@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  fe_transmit_mode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRANSMISSION_MODE_2K ; 
- int /*<<< orphan*/  TRANSMISSION_MODE_8K ; 
- int /*<<< orphan*/  TRANSMISSION_MODE_AUTO ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,...) ; 
- int var_GetInteger (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int fe_transmit_mode_t ;
+
+
+ int TRANSMISSION_MODE_2K ;
+ int TRANSMISSION_MODE_8K ;
+ int TRANSMISSION_MODE_AUTO ;
+ int msg_Dbg (int *,char*,...) ;
+ int var_GetInteger (int *,char*) ;
 
 __attribute__((used)) static fe_transmit_mode_t DecodeTransmission( vlc_object_t *p_access )
 {
-    fe_transmit_mode_t  fe_transmission = 0;
+    fe_transmit_mode_t fe_transmission = 0;
     int i_transmission = var_GetInteger( p_access, "dvb-transmission" );
 
     msg_Dbg( p_access, "using transmission=%d", i_transmission );

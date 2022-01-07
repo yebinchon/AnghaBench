@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ERESTARTSYS ; 
- int /*<<< orphan*/  cfg_idle () ; 
- int /*<<< orphan*/  cfg_wait_queue ; 
- scalar_t__ wait_event_interruptible (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int ERESTARTSYS ;
+ int cfg_idle () ;
+ int cfg_wait_queue ;
+ scalar_t__ wait_event_interruptible (int ,int ) ;
 
 __attribute__((used)) static int cfg_wait_idle(void)
 {
-	if (wait_event_interruptible(cfg_wait_queue, cfg_idle()))
-		return -ERESTARTSYS;
-	return 0;
+ if (wait_event_interruptible(cfg_wait_queue, cfg_idle()))
+  return -ERESTARTSYS;
+ return 0;
 }

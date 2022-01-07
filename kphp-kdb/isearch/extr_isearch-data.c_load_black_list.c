@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  trie_arr_node ;
 
-/* Variables and functions */
- int MAX_BUFF ; 
- int /*<<< orphan*/  aho_black_list ; 
- int /*<<< orphan*/  aho_black_list_size ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  black_list ; 
- int /*<<< orphan*/  black_list_set_string (char*,int /*<<< orphan*/ ) ; 
- char* buff ; 
- int /*<<< orphan*/  dl_malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int read (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  trie_arr_aho (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trie_encode (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int verbosity ; 
+
+
+
+typedef int trie_arr_node ;
+
+
+ int MAX_BUFF ;
+ int aho_black_list ;
+ int aho_black_list_size ;
+ int assert (int) ;
+ int black_list ;
+ int black_list_set_string (char*,int ) ;
+ char* buff ;
+ int dl_malloc (int ) ;
+ int * fd ;
+ int fprintf (int ,char*,...) ;
+ int memcpy (int ,char*,int ) ;
+ int read (int ,char*,int) ;
+ int stderr ;
+ int trie_arr_aho (int *) ;
+ int trie_encode (int ,char*,int ) ;
+ int verbosity ;
 
 void load_black_list (int size) {
   assert (size + 1 < MAX_BUFF);

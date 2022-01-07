@@ -1,91 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  scalar_t__ TCHAR ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  scalar_t__ FM_UNDELETE_PROC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddBackslash (scalar_t__*) ; 
- int /*<<< orphan*/  COUNTOF (scalar_t__*) ; 
- int /*<<< orphan*/  CheckMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  DrawMenuBar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EnableMenuItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FreeLibrary (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetPrivateProfileString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSubMenu (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetSystemDirectory (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDM_CONNECT ; 
- int /*<<< orphan*/  IDM_DISCONNECT ; 
- int /*<<< orphan*/  IDM_DISK ; 
- int /*<<< orphan*/  IDM_DISKCOPY ; 
- int /*<<< orphan*/  IDM_DRIVEBAR ; 
- int /*<<< orphan*/  IDM_FILE ; 
- int /*<<< orphan*/  IDM_INDEXONLAUNCH ; 
- int /*<<< orphan*/  IDM_MINONRUN ; 
- int /*<<< orphan*/  IDM_NEWWINONCONNECT ; 
- int /*<<< orphan*/  IDM_SAVESETTINGS ; 
- int /*<<< orphan*/  IDM_SHAREAS ; 
- int /*<<< orphan*/  IDM_STATUSBAR ; 
- int /*<<< orphan*/  IDM_STOPSHARE ; 
- int /*<<< orphan*/  IDM_TOOLBAR ; 
- int /*<<< orphan*/  IDM_UNDELETE ; 
- int /*<<< orphan*/  IDS_CONNECT ; 
- int /*<<< orphan*/  IDS_DISCONNECT ; 
- int /*<<< orphan*/  IDS_NEWWINONCONNECT ; 
- int /*<<< orphan*/  IDS_SHAREAS ; 
- int /*<<< orphan*/  IDS_STOPSHARE ; 
- int /*<<< orphan*/  IDS_UNDELETE ; 
- int /*<<< orphan*/  InitExtensions () ; 
- int /*<<< orphan*/  InitToolbarButtons () ; 
- int /*<<< orphan*/  InsertMenu (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/ * LoadLibrary (scalar_t__*) ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- int MAXPATHLEN ; 
- int MF_BYCOMMAND ; 
- int MF_BYPOSITION ; 
- int MF_CHECKED ; 
- int MF_GRAYED ; 
- int MF_SEPARATOR ; 
- int MF_STRING ; 
- int MapIDMToMenuPos (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_CONNECTDLG ; 
- int /*<<< orphan*/  NS_SHAREDLG ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  UNDELETE_ENTRYA ; 
- int /*<<< orphan*/  UNDELETE_ENTRYW ; 
- scalar_t__ WNetStat (int /*<<< orphan*/ ) ; 
- scalar_t__ bDriveBar ; 
- scalar_t__ bIndexOnLaunch ; 
- scalar_t__ bMinOnRun ; 
- scalar_t__ bNewWinOnConnect ; 
- scalar_t__ bSaveSettings ; 
- scalar_t__ bStatusBar ; 
- scalar_t__ bToolbar ; 
- int /*<<< orphan*/  bUndeleteUnicode ; 
- int /*<<< orphan*/  hAppInstance ; 
- int /*<<< orphan*/ * hModUndelete ; 
- int /*<<< orphan*/  hwndFrame ; 
- scalar_t__ lpfpUndelete ; 
- int /*<<< orphan*/  lstrcat (scalar_t__*,scalar_t__*) ; 
- scalar_t__ nFloppies ; 
- int /*<<< orphan*/  szNULL ; 
- int /*<<< orphan*/  szSettings ; 
- int /*<<< orphan*/  szTheINIFile ; 
- int /*<<< orphan*/  szUndelete ; 
+
+
+
+typedef int VOID ;
+typedef scalar_t__ TCHAR ;
+typedef int HMENU ;
+typedef scalar_t__ FM_UNDELETE_PROC ;
+
+
+ int AddBackslash (scalar_t__*) ;
+ int COUNTOF (scalar_t__*) ;
+ int CheckMenuItem (int ,int ,int) ;
+ int DrawMenuBar (int ) ;
+ int EnableMenuItem (int ,int ,int) ;
+ int FALSE ;
+ int FreeLibrary (int *) ;
+ int GetMenu (int ) ;
+ int GetPrivateProfileString (int ,int ,int ,scalar_t__*,int ,int ) ;
+ scalar_t__ GetProcAddress (int *,int ) ;
+ int GetSubMenu (int ,int) ;
+ int GetSystemDirectory (scalar_t__*,int ) ;
+ int IDM_CONNECT ;
+ int IDM_DISCONNECT ;
+ int IDM_DISK ;
+ int IDM_DISKCOPY ;
+ int IDM_DRIVEBAR ;
+ int IDM_FILE ;
+ int IDM_INDEXONLAUNCH ;
+ int IDM_MINONRUN ;
+ int IDM_NEWWINONCONNECT ;
+ int IDM_SAVESETTINGS ;
+ int IDM_SHAREAS ;
+ int IDM_STATUSBAR ;
+ int IDM_STOPSHARE ;
+ int IDM_TOOLBAR ;
+ int IDM_UNDELETE ;
+ int IDS_CONNECT ;
+ int IDS_DISCONNECT ;
+ int IDS_NEWWINONCONNECT ;
+ int IDS_SHAREAS ;
+ int IDS_STOPSHARE ;
+ int IDS_UNDELETE ;
+ int InitExtensions () ;
+ int InitToolbarButtons () ;
+ int InsertMenu (int ,int,int,int ,scalar_t__*) ;
+ int * LoadLibrary (scalar_t__*) ;
+ int LoadString (int ,int ,scalar_t__*,int ) ;
+ int MAXPATHLEN ;
+ int MF_BYCOMMAND ;
+ int MF_BYPOSITION ;
+ int MF_CHECKED ;
+ int MF_GRAYED ;
+ int MF_SEPARATOR ;
+ int MF_STRING ;
+ int MapIDMToMenuPos (int ) ;
+ int NS_CONNECTDLG ;
+ int NS_SHAREDLG ;
+ int TRUE ;
+ int UNDELETE_ENTRYA ;
+ int UNDELETE_ENTRYW ;
+ scalar_t__ WNetStat (int ) ;
+ scalar_t__ bDriveBar ;
+ scalar_t__ bIndexOnLaunch ;
+ scalar_t__ bMinOnRun ;
+ scalar_t__ bNewWinOnConnect ;
+ scalar_t__ bSaveSettings ;
+ scalar_t__ bStatusBar ;
+ scalar_t__ bToolbar ;
+ int bUndeleteUnicode ;
+ int hAppInstance ;
+ int * hModUndelete ;
+ int hwndFrame ;
+ scalar_t__ lpfpUndelete ;
+ int lstrcat (scalar_t__*,scalar_t__*) ;
+ scalar_t__ nFloppies ;
+ int szNULL ;
+ int szSettings ;
+ int szTheINIFile ;
+ int szUndelete ;
 
 VOID
 InitMenus()
@@ -100,7 +100,7 @@ InitMenus()
 
    if (szValue[0]) {
 
-      // create explicit filename to avoid searching the path
+
 
       GetSystemDirectory(szPathName, COUNTOF(szPathName));
       AddBackslash(szPathName);
@@ -125,18 +125,18 @@ InitMenus()
          }
       } else {
          FreeLibrary(hModUndelete);
-         hModUndelete = NULL;
+         hModUndelete = ((void*)0);
       }
    }
 
-   //
-   // use submenu because we are doing this by position
-   //
+
+
+
    hMenu = GetSubMenu(GetMenu(hwndFrame), MapIDMToMenuPos(IDM_DISK));
 
-   if (WNetStat(NS_CONNECTDLG)) {  // Network Connections...
+   if (WNetStat(NS_CONNECTDLG)) {
 
-      InsertMenu(hMenu, 4, MF_BYPOSITION | MF_SEPARATOR, 0, NULL);
+      InsertMenu(hMenu, 4, MF_BYPOSITION | MF_SEPARATOR, 0, ((void*)0));
 
       LoadString(hAppInstance, IDS_NEWWINONCONNECT, szValue, COUNTOF(szValue));
       hMenuOptions = GetSubMenu(GetMenu(hwndFrame), 4);
@@ -150,10 +150,10 @@ InitMenus()
 
    }
 
-   // Shared Directories
+
    if (WNetStat(NS_SHAREDLG)) {
 
-      InsertMenu(hMenu, 7, MF_BYPOSITION | MF_SEPARATOR, 0, NULL);
+      InsertMenu(hMenu, 7, MF_BYPOSITION | MF_SEPARATOR, 0, ((void*)0));
 
       LoadString(hAppInstance, IDS_SHAREAS, szValue, COUNTOF(szValue));
       InsertMenu(hMenu, 8, MF_BYPOSITION | MF_STRING, IDM_SHAREAS, szValue);
@@ -163,9 +163,9 @@ InitMenus()
 
    }
 
-   //
-   // Init the Disk menu.
-   //
+
+
+
    hMenu = GetMenu(hwndFrame);
 
    if (nFloppies == 0) {
@@ -176,12 +176,12 @@ InitMenus()
    if (bStatusBar)
       CheckMenuItem(hMenu, IDM_STATUSBAR, MF_BYCOMMAND | MF_CHECKED);
    if (bMinOnRun)
-      CheckMenuItem(hMenu, IDM_MINONRUN,  MF_BYCOMMAND | MF_CHECKED);
+      CheckMenuItem(hMenu, IDM_MINONRUN, MF_BYCOMMAND | MF_CHECKED);
    if (bIndexOnLaunch)
       CheckMenuItem(hMenu, IDM_INDEXONLAUNCH, MF_BYCOMMAND | MF_CHECKED);
 
    if (bSaveSettings)
-      CheckMenuItem(hMenu, IDM_SAVESETTINGS,  MF_BYCOMMAND | MF_CHECKED);
+      CheckMenuItem(hMenu, IDM_SAVESETTINGS, MF_BYCOMMAND | MF_CHECKED);
 
    if (bDriveBar)
       CheckMenuItem(hMenu, IDM_DRIVEBAR, MF_BYCOMMAND | MF_CHECKED);
@@ -192,15 +192,15 @@ InitMenus()
       CheckMenuItem(hMenu, IDM_NEWWINONCONNECT, MF_BYCOMMAND | MF_CHECKED);
 
 
-   //
-   // Init menus after the window/menu has been created
-   //
+
+
+
    InitExtensions();
 
    InitToolbarButtons();
 
-   //
-   // Redraw the menu bar since it's already displayed
-   //
+
+
+
    DrawMenuBar(hwndFrame);
 }

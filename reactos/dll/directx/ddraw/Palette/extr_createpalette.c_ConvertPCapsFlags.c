@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int DDPCAPS_1BIT ; 
- int DDPCAPS_2BIT ; 
- int DDPCAPS_4BIT ; 
- int DDPCAPS_8BIT ; 
- int DDPCAPS_8BITENTRIES ; 
- int DDPCAPS_ALLOW256 ; 
- int DDPCAPS_ALPHA ; 
- int DDRAWIPAL_16 ; 
- int DDRAWIPAL_2 ; 
- int DDRAWIPAL_256 ; 
- int DDRAWIPAL_4 ; 
- int DDRAWIPAL_ALLOW256 ; 
- int DDRAWIPAL_ALPHA ; 
- int DDRAWIPAL_STORED_8INDEX ; 
+
+
+
+typedef int DWORD ;
+
+
+ int DDPCAPS_1BIT ;
+ int DDPCAPS_2BIT ;
+ int DDPCAPS_4BIT ;
+ int DDPCAPS_8BIT ;
+ int DDPCAPS_8BITENTRIES ;
+ int DDPCAPS_ALLOW256 ;
+ int DDPCAPS_ALPHA ;
+ int DDRAWIPAL_16 ;
+ int DDRAWIPAL_2 ;
+ int DDRAWIPAL_256 ;
+ int DDRAWIPAL_4 ;
+ int DDRAWIPAL_ALLOW256 ;
+ int DDRAWIPAL_ALPHA ;
+ int DDRAWIPAL_STORED_8INDEX ;
 
 DWORD ConvertPCapsFlags(DWORD dwFlags)
 {

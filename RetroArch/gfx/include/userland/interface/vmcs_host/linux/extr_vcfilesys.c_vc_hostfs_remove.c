@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_MINOR (char*,char const*) ; 
- int /*<<< orphan*/  backslash_to_slash (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* strdup (char const*) ; 
- scalar_t__ unlink (char*) ; 
+ int DEBUG_MINOR (char*,char const*) ;
+ int backslash_to_slash (char*) ;
+ int free (char*) ;
+ char* strdup (char const*) ;
+ scalar_t__ unlink (char*) ;
 
 int vc_hostfs_remove(const char *path)
 {

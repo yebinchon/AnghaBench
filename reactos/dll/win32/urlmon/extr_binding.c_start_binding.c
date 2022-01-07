@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  IInternetProtocolEx_iface; } ;
-struct TYPE_9__ {scalar_t__ download_state; int bindf; int state; int /*<<< orphan*/  notif_hwnd; int /*<<< orphan*/  IBinding_iface; int /*<<< orphan*/  IInternetBindInfo_iface; int /*<<< orphan*/  IInternetProtocolSink_iface; TYPE_5__* protocol; scalar_t__ redirect_url; int /*<<< orphan*/  callback; } ;
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  MSG ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  int /*<<< orphan*/  IBindCtx ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_1__ Binding ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int BINDF_ASYNCHRONOUS ; 
- int BINDING_STOPPED ; 
- int /*<<< orphan*/  BINDSTATUS_REDIRECTING ; 
- int BSCF_FIRSTDATANOTIFICATION ; 
- int BSCF_LASTDATANOTIFICATION ; 
- scalar_t__ Binding_Create (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__**) ; 
- int /*<<< orphan*/  DispatchMessageW (int /*<<< orphan*/ *) ; 
- scalar_t__ END_DOWNLOAD ; 
- scalar_t__ E_ABORT ; 
- scalar_t__ E_NOTIMPL ; 
- scalar_t__ E_PENDING ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IBindStatusCallback_OnProgress (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ IBindStatusCallback_OnStartBinding (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IBinding_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IInternetProtocolEx_StartEx (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ INET_E_DOWNLOAD_FAILURE ; 
- int /*<<< orphan*/  MsgWaitForMultipleObjects (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int PI_APARTMENTTHREADED ; 
- int PI_MIMEVERIFICATION ; 
- int PM_NOYIELD ; 
- int PM_REMOVE ; 
- scalar_t__ PeekMessageW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int) ; 
- int /*<<< orphan*/  QS_POSTMESSAGE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  TranslateMessage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,scalar_t__) ; 
- scalar_t__ WM_USER ; 
- int /*<<< orphan*/  report_data (TYPE_1__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_binding_sink (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stop_binding (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int IInternetProtocolEx_iface; } ;
+struct TYPE_9__ {scalar_t__ download_state; int bindf; int state; int notif_hwnd; int IBinding_iface; int IInternetBindInfo_iface; int IInternetProtocolSink_iface; TYPE_5__* protocol; scalar_t__ redirect_url; int callback; } ;
+typedef int REFIID ;
+typedef int MSG ;
+typedef int IUri ;
+typedef int IMoniker ;
+typedef int IBindCtx ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_1__ Binding ;
+typedef int BOOL ;
+
+
+ int BINDF_ASYNCHRONOUS ;
+ int BINDING_STOPPED ;
+ int BINDSTATUS_REDIRECTING ;
+ int BSCF_FIRSTDATANOTIFICATION ;
+ int BSCF_LASTDATANOTIFICATION ;
+ scalar_t__ Binding_Create (int *,TYPE_1__*,int *,int *,int ,int ,TYPE_1__**) ;
+ int DispatchMessageW (int *) ;
+ scalar_t__ END_DOWNLOAD ;
+ scalar_t__ E_ABORT ;
+ scalar_t__ E_NOTIMPL ;
+ scalar_t__ E_PENDING ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int IBindStatusCallback_OnProgress (int ,int ,int ,int ,scalar_t__) ;
+ scalar_t__ IBindStatusCallback_OnStartBinding (int ,int ,int *) ;
+ int IBinding_Release (int *) ;
+ scalar_t__ IInternetProtocolEx_StartEx (int *,int *,int *,int *,int,int ) ;
+ scalar_t__ INET_E_DOWNLOAD_FAILURE ;
+ int MsgWaitForMultipleObjects (int ,int *,int ,int,int ) ;
+ int PI_APARTMENTTHREADED ;
+ int PI_MIMEVERIFICATION ;
+ int PM_NOYIELD ;
+ int PM_REMOVE ;
+ scalar_t__ PeekMessageW (int *,int ,scalar_t__,scalar_t__,int) ;
+ int QS_POSTMESSAGE ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,scalar_t__) ;
+ int TranslateMessage (int *) ;
+ int WARN (char*,scalar_t__) ;
+ scalar_t__ WM_USER ;
+ int report_data (TYPE_1__*,int,int ,int ) ;
+ int set_binding_sink (TYPE_5__*,int *,int *) ;
+ int stop_binding (TYPE_1__*,scalar_t__,int *) ;
 
 __attribute__((used)) static HRESULT start_binding(IMoniker *mon, Binding *binding_ctx, IUri *uri, IBindCtx *pbc,
                              BOOL to_obj, REFIID riid, Binding **ret)
 {
-    Binding *binding = NULL;
+    Binding *binding = ((void*)0);
     HRESULT hres;
     MSG msg;
 
@@ -75,7 +75,7 @@ __attribute__((used)) static HRESULT start_binding(IMoniker *mon, Binding *bindi
         if(hres != E_ABORT && hres != E_NOTIMPL)
             hres = INET_E_DOWNLOAD_FAILURE;
 
-        stop_binding(binding, hres, NULL);
+        stop_binding(binding, hres, ((void*)0));
         IBinding_Release(&binding->IBinding_iface);
         return hres;
     }
@@ -95,7 +95,7 @@ __attribute__((used)) static HRESULT start_binding(IMoniker *mon, Binding *bindi
         TRACE("start ret %08x\n", hres);
 
         if(FAILED(hres) && hres != E_PENDING) {
-            stop_binding(binding, hres, NULL);
+            stop_binding(binding, hres, ((void*)0));
             IBinding_Release(&binding->IBinding_iface);
 
             return hres;
@@ -104,7 +104,7 @@ __attribute__((used)) static HRESULT start_binding(IMoniker *mon, Binding *bindi
 
     while(!(binding->bindf & BINDF_ASYNCHRONOUS) &&
           !(binding->state & BINDING_STOPPED)) {
-        MsgWaitForMultipleObjects(0, NULL, FALSE, 5000, QS_POSTMESSAGE);
+        MsgWaitForMultipleObjects(0, ((void*)0), FALSE, 5000, QS_POSTMESSAGE);
         while (PeekMessageW(&msg, binding->notif_hwnd, WM_USER, WM_USER+117, PM_REMOVE|PM_NOYIELD)) {
             TranslateMessage(&msg);
             DispatchMessageW(&msg);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rxml_document_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  print_siblings (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rxml_free_document (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * rxml_load_document (char const*) ; 
- int /*<<< orphan*/  rxml_root_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int rxml_document_t ;
+
+
+ int fprintf (int ,char*,char const*) ;
+ int print_siblings (int ,int ) ;
+ int rxml_free_document (int *) ;
+ int * rxml_load_document (char const*) ;
+ int rxml_root_node (int *) ;
+ int stderr ;
 
 __attribute__((used)) static void rxml_log_document(const char *path)
 {

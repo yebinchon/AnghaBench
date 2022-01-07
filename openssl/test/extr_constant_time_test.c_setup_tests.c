@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADD_TEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSSL_NELEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  signed_test_values ; 
- int /*<<< orphan*/  test_32values ; 
- int /*<<< orphan*/  test_64values ; 
- int /*<<< orphan*/  test_8values ; 
- int /*<<< orphan*/  test_binops ; 
- int /*<<< orphan*/  test_binops_8 ; 
- int /*<<< orphan*/  test_binops_s ; 
- int /*<<< orphan*/  test_is_zero ; 
- int /*<<< orphan*/  test_is_zero_32 ; 
- int /*<<< orphan*/  test_is_zero_8 ; 
- int /*<<< orphan*/  test_is_zero_s ; 
- int /*<<< orphan*/  test_signed ; 
- int /*<<< orphan*/  test_sizeofs ; 
- int /*<<< orphan*/  test_values ; 
- int /*<<< orphan*/  test_values_32 ; 
- int /*<<< orphan*/  test_values_64 ; 
- int /*<<< orphan*/  test_values_8 ; 
- int /*<<< orphan*/  test_values_s ; 
+ int ADD_ALL_TESTS (int ,int ) ;
+ int ADD_TEST (int ) ;
+ int OSSL_NELEM (int ) ;
+ int signed_test_values ;
+ int test_32values ;
+ int test_64values ;
+ int test_8values ;
+ int test_binops ;
+ int test_binops_8 ;
+ int test_binops_s ;
+ int test_is_zero ;
+ int test_is_zero_32 ;
+ int test_is_zero_8 ;
+ int test_is_zero_s ;
+ int test_signed ;
+ int test_sizeofs ;
+ int test_values ;
+ int test_values_32 ;
+ int test_values_64 ;
+ int test_values_8 ;
+ int test_values_s ;
 
 int setup_tests(void)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int TIM_DeadTime; int /*<<< orphan*/  TIM_AutomaticOutput; int /*<<< orphan*/  TIM_BreakPolarity; int /*<<< orphan*/  TIM_Break; int /*<<< orphan*/  TIM_LOCKLevel; int /*<<< orphan*/  TIM_OSSIState; int /*<<< orphan*/  TIM_OSSRState; } ;
-typedef  TYPE_1__ TIM_BDTRInitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIM_AutomaticOutput_Disable ; 
- int /*<<< orphan*/  TIM_BreakPolarity_Low ; 
- int /*<<< orphan*/  TIM_Break_Disable ; 
- int /*<<< orphan*/  TIM_LOCKLevel_OFF ; 
- int /*<<< orphan*/  TIM_OSSIState_Disable ; 
- int /*<<< orphan*/  TIM_OSSRState_Disable ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int TIM_DeadTime; int TIM_AutomaticOutput; int TIM_BreakPolarity; int TIM_Break; int TIM_LOCKLevel; int TIM_OSSIState; int TIM_OSSRState; } ;
+typedef TYPE_1__ TIM_BDTRInitTypeDef ;
+
+
+ int TIM_AutomaticOutput_Disable ;
+ int TIM_BreakPolarity_Low ;
+ int TIM_Break_Disable ;
+ int TIM_LOCKLevel_OFF ;
+ int TIM_OSSIState_Disable ;
+ int TIM_OSSRState_Disable ;
 
 void TIM_BDTRStructInit(TIM_BDTRInitTypeDef* TIM_BDTRInitStruct)
 {
-  /* Set the default configuration */
+
   TIM_BDTRInitStruct->TIM_OSSRState = TIM_OSSRState_Disable;
   TIM_BDTRInitStruct->TIM_OSSIState = TIM_OSSIState_Disable;
   TIM_BDTRInitStruct->TIM_LOCKLevel = TIM_LOCKLevel_OFF;

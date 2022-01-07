@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiButton ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mainwin ; 
- int /*<<< orphan*/  uiMsgBoxError (int /*<<< orphan*/ ,char*,char*) ; 
+
+
+
+typedef int uiButton ;
+
+
+ int mainwin ;
+ int uiMsgBoxError (int ,char*,char*) ;
 
 __attribute__((used)) static void onMsgBoxErrorClicked(uiButton *b, void *data)
 {
-	uiMsgBoxError(mainwin,
-		"This message box describes an error.",
-		"More detailed information can be shown here.");
+ uiMsgBoxError(mainwin,
+  "This message box describes an error.",
+  "More detailed information can be shown here.");
 }

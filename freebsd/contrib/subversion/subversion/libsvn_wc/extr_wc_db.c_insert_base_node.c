@@ -1,83 +1,83 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  sdb; int /*<<< orphan*/  wc_id; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  scalar_t__ svn_filesize_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int svn_boolean_t ;
-struct TYPE_13__ {scalar_t__ repos_id; scalar_t__ status; scalar_t__ kind; scalar_t__ conflict; int /*<<< orphan*/  work_items; scalar_t__ insert_base_deleted; scalar_t__ delete_working; scalar_t__ file_external; int /*<<< orphan*/  children; int /*<<< orphan*/  revision; int /*<<< orphan*/ * repos_relpath; scalar_t__ new_actual_props; int /*<<< orphan*/ * props; scalar_t__ update_actual_props; int /*<<< orphan*/ * dav_cache; int /*<<< orphan*/  iprops; int /*<<< orphan*/  checksum; int /*<<< orphan*/ * target; int /*<<< orphan*/  changed_author; int /*<<< orphan*/  changed_date; int /*<<< orphan*/  changed_rev; int /*<<< orphan*/  depth; scalar_t__ keep_recorded_info; int /*<<< orphan*/  repos_uuid; int /*<<< orphan*/  repos_root_url; } ;
-typedef  TYPE_2__ insert_base_baton_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int sdb; int wc_id; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef scalar_t__ svn_filesize_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct TYPE_13__ {scalar_t__ repos_id; scalar_t__ status; scalar_t__ kind; scalar_t__ conflict; int work_items; scalar_t__ insert_base_deleted; scalar_t__ delete_working; scalar_t__ file_external; int children; int revision; int * repos_relpath; scalar_t__ new_actual_props; int * props; scalar_t__ update_actual_props; int * dav_cache; int iprops; int checksum; int * target; int changed_author; int changed_date; int changed_rev; int depth; scalar_t__ keep_recorded_info; int repos_uuid; int repos_root_url; } ;
+typedef TYPE_2__ insert_base_baton_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
+typedef int apr_hash_t ;
 struct TYPE_14__ {scalar_t__ nelts; } ;
-typedef  TYPE_3__ apr_array_header_t ;
+typedef TYPE_3__ apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ INVALID_REPOS_ID ; 
- int /*<<< orphan*/  STMT_DELETE_WORKING_NODE ; 
- int /*<<< orphan*/  STMT_INSERT_DELETE_FROM_BASE ; 
- int /*<<< orphan*/  STMT_INSERT_NODE ; 
- int /*<<< orphan*/  STMT_SELECT_BASE_NODE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int) ; 
- int /*<<< orphan*/  SVN_ERR_WC_CORRUPT ; 
- scalar_t__ SVN_INVALID_FILESIZE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add_work_items (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  create_repos_id (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  db_extend_parent_delete (TYPE_1__*,char const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  db_retract_parent_delete (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  depth_map ; 
- scalar_t__ get_recorded_size (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  insert_incomplete_children (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  presence_map ; 
- int /*<<< orphan*/  relpath_depth (char const*) ; 
- int /*<<< orphan*/  set_actual_props (TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_symlink ; 
- int /*<<< orphan*/  svn_prop_diffs (TYPE_3__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_relpath_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bind_checksum (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bind_int (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  svn_sqlite__bind_int64 (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  svn_sqlite__bind_iprops (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bind_properties (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*,...) ; 
- scalar_t__ svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_token__to_word (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__db_mark_conflict_internal (TYPE_1__*,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_excluded ; 
- scalar_t__ svn_wc__db_status_incomplete ; 
- scalar_t__ svn_wc__db_status_normal ; 
- scalar_t__ svn_wc__db_status_not_present ; 
- scalar_t__ svn_wc__db_status_server_excluded ; 
+
+ scalar_t__ INVALID_REPOS_ID ;
+ int STMT_DELETE_WORKING_NODE ;
+ int STMT_INSERT_DELETE_FROM_BASE ;
+ int STMT_INSERT_NODE ;
+ int STMT_SELECT_BASE_NODE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int) ;
+ int SVN_ERR_WC_CORRUPT ;
+ scalar_t__ SVN_INVALID_FILESIZE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int add_work_items (int ,int ,int *) ;
+ scalar_t__ apr_hash_count (int *) ;
+ int assert (int) ;
+ int create_repos_id (scalar_t__*,int ,int ,int ,int *) ;
+ int db_extend_parent_delete (TYPE_1__*,char const*,scalar_t__,int ,int *) ;
+ int db_retract_parent_delete (TYPE_1__*,char const*,int ,int *) ;
+ int depth_map ;
+ scalar_t__ get_recorded_size (int *,int) ;
+ int insert_incomplete_children (int ,int ,char const*,scalar_t__,int *,int ,int ,int ,int *) ;
+ int kind_map ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int presence_map ;
+ int relpath_depth (char const*) ;
+ int set_actual_props (TYPE_1__*,char const*,int *,int *) ;
+ int * svn_error_createf (int ,int ,int ,int ) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_symlink ;
+ int svn_prop_diffs (TYPE_3__**,int *,int *,int *) ;
+ char* svn_relpath_dirname (char const*,int *) ;
+ int svn_sqlite__bind_checksum (int *,int,int ,int *) ;
+ int svn_sqlite__bind_int (int *,int,int) ;
+ int svn_sqlite__bind_int64 (int *,int,scalar_t__) ;
+ int svn_sqlite__bind_iprops (int *,int,int ,int *) ;
+ int svn_sqlite__bind_properties (int *,int,int *,int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*,...) ;
+ scalar_t__ svn_sqlite__column_int64 (int *,int) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__insert (int *,int *) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (int*,int *) ;
+ int svn_sqlite__step_done (int *) ;
+ int * svn_token__to_word (int ,int ) ;
+ int svn_wc__db_mark_conflict_internal (TYPE_1__*,char const*,scalar_t__,int *) ;
+ scalar_t__ svn_wc__db_status_excluded ;
+ scalar_t__ svn_wc__db_status_incomplete ;
+ scalar_t__ svn_wc__db_status_normal ;
+ scalar_t__ svn_wc__db_status_not_present ;
+ scalar_t__ svn_wc__db_status_server_excluded ;
 
 __attribute__((used)) static svn_error_t *
 insert_base_node(const insert_base_baton_t *pibb,
@@ -91,10 +91,10 @@ insert_base_node(const insert_base_baton_t *pibb,
   apr_int64_t recorded_time;
   svn_boolean_t present;
 
-  /* The directory at the WCROOT has a NULL parent_relpath. Otherwise,
-     bind the appropriate parent_relpath. */
+
+
   const char *parent_relpath =
-    (*local_relpath == '\0') ? NULL
+    (*local_relpath == '\0') ? ((void*)0)
     : svn_relpath_dirname(local_relpath, scratch_pool);
 
   if (pibb->repos_id == INVALID_REPOS_ID)
@@ -102,7 +102,7 @@ insert_base_node(const insert_base_baton_t *pibb,
                             wcroot->sdb, scratch_pool));
 
   SVN_ERR_ASSERT(repos_id != INVALID_REPOS_ID);
-  SVN_ERR_ASSERT(pibb->repos_relpath != NULL);
+  SVN_ERR_ASSERT(pibb->repos_relpath != ((void*)0));
 
   if (pibb->keep_recorded_info)
     {
@@ -113,7 +113,7 @@ insert_base_node(const insert_base_baton_t *pibb,
       SVN_ERR(svn_sqlite__step(&have_row, stmt));
       if (have_row)
         {
-          /* Preserve size and modification time if caller asked us to. */
+
           recorded_size = get_recorded_size(stmt, 6);
           recorded_time = svn_sqlite__column_int64(stmt, 12);
         }
@@ -125,25 +125,25 @@ insert_base_node(const insert_base_baton_t *pibb,
 
   SVN_ERR(svn_sqlite__get_statement(&stmt, wcroot->sdb, STMT_INSERT_NODE));
   SVN_ERR(svn_sqlite__bindf(stmt, "isdsisr"
-                            "tstr"               /* 8 - 11 */
-                            "isnnnnns",          /* 12 - 19 */
-                            wcroot->wc_id,       /* 1 */
-                            local_relpath,       /* 2 */
-                            0,              /* op_depth is 0 for base */
-                            parent_relpath,      /* 4 */
+                            "tstr"
+                            "isnnnnns",
+                            wcroot->wc_id,
+                            local_relpath,
+                            0,
+                            parent_relpath,
                             repos_id,
                             pibb->repos_relpath,
                             pibb->revision,
-                            presence_map, pibb->status, /* 8 */
-                            (pibb->kind == svn_node_dir && present) /* 9 */
+                            presence_map, pibb->status,
+                            (pibb->kind == svn_node_dir && present)
                               ? svn_token__to_word(depth_map, pibb->depth)
-                              : NULL,
-                            kind_map, pibb->kind, /* 10 */
-                            pibb->changed_rev,    /* 11 */
-                            pibb->changed_date,   /* 12 */
-                            pibb->changed_author, /* 13 */
+                              : ((void*)0),
+                            kind_map, pibb->kind,
+                            pibb->changed_rev,
+                            pibb->changed_date,
+                            pibb->changed_author,
                             (pibb->kind == svn_node_symlink && present) ?
-                                pibb->target : NULL)); /* 19 */
+                                pibb->target : ((void*)0)));
   if (pibb->kind == svn_node_file && present)
     {
       if (!pibb->checksum
@@ -165,10 +165,10 @@ insert_base_node(const insert_base_baton_t *pibb,
         }
     }
 
-  /* Set properties.  Must be null if presence not normal or incomplete. */
+
   assert(pibb->status == svn_wc__db_status_normal
          || pibb->status == svn_wc__db_status_incomplete
-         || pibb->props == NULL);
+         || pibb->props == ((void*)0));
   if (present)
     {
       SVN_ERR(svn_sqlite__bind_properties(stmt, 15, pibb->props,
@@ -185,16 +185,16 @@ insert_base_node(const insert_base_baton_t *pibb,
   if (pibb->file_external)
     SVN_ERR(svn_sqlite__bind_int(stmt, 20, 1));
 
-  SVN_ERR(svn_sqlite__insert(NULL, stmt));
+  SVN_ERR(svn_sqlite__insert(((void*)0), stmt));
 
   if (pibb->update_actual_props)
     {
-      /* Cast away const, to allow calling property helpers */
+
       apr_hash_t *base_props = (apr_hash_t *)pibb->props;
       apr_hash_t *new_actual_props = (apr_hash_t *)pibb->new_actual_props;
 
-      if (base_props != NULL
-          && new_actual_props != NULL
+      if (base_props != ((void*)0)
+          && new_actual_props != ((void*)0)
           && (apr_hash_count(base_props) == apr_hash_count(new_actual_props)))
         {
           apr_array_header_t *diffs;
@@ -203,7 +203,7 @@ insert_base_node(const insert_base_baton_t *pibb,
                                  scratch_pool));
 
           if (diffs->nelts == 0)
-            new_actual_props = NULL;
+            new_actual_props = ((void*)0);
         }
 
       SVN_ERR(set_actual_props(wcroot, local_relpath, new_actual_props,
@@ -217,10 +217,10 @@ insert_base_node(const insert_base_baton_t *pibb,
                                        pibb->repos_relpath,
                                        pibb->revision,
                                        pibb->children,
-                                       0 /* BASE */,
+                                       0 ,
                                        scratch_pool));
 
-  /* When this is not the root node, check shadowing behavior */
+
   if (*local_relpath)
     {
       if (parent_relpath

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ npy_ucs4 ;
-typedef  int npy_intp ;
 
-/* Variables and functions */
- int PyArray_CompareUCS4 (scalar_t__*,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_MIN (int,int) ; 
- int /*<<< orphan*/  free (scalar_t__*) ; 
- scalar_t__* malloc (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__*,int) ; 
+
+
+
+typedef scalar_t__ npy_ucs4 ;
+typedef int npy_intp ;
+
+
+ int PyArray_CompareUCS4 (scalar_t__*,scalar_t__*,int ) ;
+ int PyArray_MIN (int,int) ;
+ int free (scalar_t__*) ;
+ scalar_t__* malloc (int) ;
+ int memcpy (scalar_t__*,scalar_t__*,int) ;
 
 __attribute__((used)) static int
 _myunincmp(npy_ucs4 *s1, npy_ucs4 *s2, int len1, int len2)

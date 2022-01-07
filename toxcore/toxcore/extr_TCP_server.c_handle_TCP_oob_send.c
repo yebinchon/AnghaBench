@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  size_t uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  resp_packet ;
-struct TYPE_7__ {int /*<<< orphan*/  const* public_key; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int resp_packet ;
+struct TYPE_7__ {int const* public_key; } ;
 struct TYPE_6__ {TYPE_2__* accepted_connection_array; } ;
-typedef  TYPE_1__ TCP_Server ;
-typedef  TYPE_2__ TCP_Secure_Connection ;
+typedef TYPE_1__ TCP_Server ;
+typedef TYPE_2__ TCP_Secure_Connection ;
 
-/* Variables and functions */
- scalar_t__ TCP_MAX_OOB_DATA_LENGTH ; 
- int /*<<< orphan*/  TCP_PACKET_OOB_RECV ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int get_TCP_connection_index (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  write_packet_TCP_secure_connection (TYPE_2__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ TCP_MAX_OOB_DATA_LENGTH ;
+ int TCP_PACKET_OOB_RECV ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int get_TCP_connection_index (TYPE_1__*,int const*) ;
+ int memcpy (int *,int const*,scalar_t__) ;
+ int write_packet_TCP_secure_connection (TYPE_2__*,int *,int,int ) ;
 
 __attribute__((used)) static int handle_TCP_oob_send(TCP_Server *TCP_server, uint32_t con_id, const uint8_t *public_key, const uint8_t *data,
                                uint16_t length)

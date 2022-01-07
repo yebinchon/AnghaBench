@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct HttpContext {int /*<<< orphan*/  ipstr; int /*<<< orphan*/  fd; TYPE_1__* multiCmds; } ;
-typedef  scalar_t__ int16_t ;
-struct TYPE_5__ {int /*<<< orphan*/  cmdType; int /*<<< orphan*/  tagNum; int /*<<< orphan*/  cmdReturnType; int /*<<< orphan*/  cmdState; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct HttpContext {int ipstr; int fd; TYPE_1__* multiCmds; } ;
+typedef scalar_t__ int16_t ;
+struct TYPE_5__ {int cmdType; int tagNum; int cmdReturnType; int cmdState; } ;
 struct TYPE_4__ {scalar_t__ pos; } ;
-typedef  TYPE_1__ HttpSqlCmds ;
-typedef  TYPE_2__ HttpSqlCmd ;
+typedef TYPE_1__ HttpSqlCmds ;
+typedef TYPE_2__ HttpSqlCmd ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HTTP_CMD_TYPE_CREATE_DB ; 
- int /*<<< orphan*/  HTTP_CMD_TYPE_CREATE_STBALE ; 
- int /*<<< orphan*/  HTTP_CMD_TYPE_INSERT ; 
- int /*<<< orphan*/  httpTrace (char*,struct HttpContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int HTTP_CMD_TYPE_CREATE_DB ;
+ int HTTP_CMD_TYPE_CREATE_STBALE ;
+ int HTTP_CMD_TYPE_INSERT ;
+ int httpTrace (char*,struct HttpContext*,int ,int ,scalar_t__,int,int ,int ,int ,int ) ;
 
 void tgSetNextCmd(struct HttpContext *pContext, HttpSqlCmd *cmd, int code) {
   HttpSqlCmds *multiCmds = pContext->multiCmds;

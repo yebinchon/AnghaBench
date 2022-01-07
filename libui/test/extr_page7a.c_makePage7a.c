@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uiGroup ;
-typedef  int /*<<< orphan*/  uiBox ;
-typedef  int /*<<< orphan*/  uiAreaHandler ;
-struct TYPE_3__ {int /*<<< orphan*/  KeyEvent; int /*<<< orphan*/  DragBroken; int /*<<< orphan*/  MouseCrossed; int /*<<< orphan*/  MouseEvent; int /*<<< orphan*/  Draw; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uiGroup ;
+typedef int uiBox ;
+typedef int uiAreaHandler ;
+struct TYPE_3__ {int KeyEvent; int DragBroken; int MouseCrossed; int MouseEvent; int Draw; } ;
 struct TYPE_4__ {TYPE_1__ ah; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * area ; 
- int /*<<< orphan*/  checkboxToggled ; 
- int /*<<< orphan*/  entryChanged ; 
- TYPE_2__ handler ; 
- int /*<<< orphan*/  handlerDragBroken ; 
- int /*<<< orphan*/  handlerDraw ; 
- int /*<<< orphan*/  handlerKeyEvent ; 
- int /*<<< orphan*/  handlerMouseCrossed ; 
- int /*<<< orphan*/  handlerMouseEvent ; 
- int /*<<< orphan*/ * negative ; 
- int /*<<< orphan*/ * newGroup (char*) ; 
- int /*<<< orphan*/ * newHorizontalBox () ; 
- int /*<<< orphan*/ * newVerticalBox () ; 
- int /*<<< orphan*/ * radians ; 
- int /*<<< orphan*/ * startAngle ; 
- int /*<<< orphan*/ * sweep ; 
- int /*<<< orphan*/  uiBoxAppend (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  uiCheckboxOnToggled (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiControl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiEntryOnChanged (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uiGroupSetChild (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * uiNewArea (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * uiNewCheckbox (char*) ; 
- int /*<<< orphan*/ * uiNewEntry () ; 
- int /*<<< orphan*/ * uiNewLabel (char*) ; 
+
+ int * area ;
+ int checkboxToggled ;
+ int entryChanged ;
+ TYPE_2__ handler ;
+ int handlerDragBroken ;
+ int handlerDraw ;
+ int handlerKeyEvent ;
+ int handlerMouseCrossed ;
+ int handlerMouseEvent ;
+ int * negative ;
+ int * newGroup (char*) ;
+ int * newHorizontalBox () ;
+ int * newVerticalBox () ;
+ int * radians ;
+ int * startAngle ;
+ int * sweep ;
+ int uiBoxAppend (int *,int ,int) ;
+ int uiCheckboxOnToggled (int *,int ,int *) ;
+ int uiControl (int *) ;
+ int uiEntryOnChanged (int *,int ,int *) ;
+ int uiGroupSetChild (int *,int ) ;
+ int * uiNewArea (int *) ;
+ int * uiNewCheckbox (char*) ;
+ int * uiNewEntry () ;
+ int * uiNewLabel (char*) ;
 
 uiGroup *makePage7a(void)
 {
-	uiGroup *group;
-	uiBox *box, *box2;
+ uiGroup *group;
+ uiBox *box, *box2;
 
-	handler.ah.Draw = handlerDraw;
-	handler.ah.MouseEvent = handlerMouseEvent;
-	handler.ah.MouseCrossed = handlerMouseCrossed;
-	handler.ah.DragBroken = handlerDragBroken;
-	handler.ah.KeyEvent = handlerKeyEvent;
+ handler.ah.Draw = handlerDraw;
+ handler.ah.MouseEvent = handlerMouseEvent;
+ handler.ah.MouseCrossed = handlerMouseCrossed;
+ handler.ah.DragBroken = handlerDragBroken;
+ handler.ah.KeyEvent = handlerKeyEvent;
 
-	group = newGroup("Arc Test");
+ group = newGroup("Arc Test");
 
-	box = newVerticalBox();
-	uiGroupSetChild(group, uiControl(box));
+ box = newVerticalBox();
+ uiGroupSetChild(group, uiControl(box));
 
-	area = uiNewArea((uiAreaHandler *) (&handler));
-	uiBoxAppend(box, uiControl(area), 1);
+ area = uiNewArea((uiAreaHandler *) (&handler));
+ uiBoxAppend(box, uiControl(area), 1);
 
-	box2 = newHorizontalBox();
-	uiBoxAppend(box, uiControl(box2), 0);
+ box2 = newHorizontalBox();
+ uiBoxAppend(box, uiControl(box2), 0);
 
-	uiBoxAppend(box2, uiControl(uiNewLabel("Start Angle")), 0);
-	startAngle = uiNewEntry();
-	uiEntryOnChanged(startAngle, entryChanged, NULL);
-	uiBoxAppend(box2, uiControl(startAngle), 1);
+ uiBoxAppend(box2, uiControl(uiNewLabel("Start Angle")), 0);
+ startAngle = uiNewEntry();
+ uiEntryOnChanged(startAngle, entryChanged, ((void*)0));
+ uiBoxAppend(box2, uiControl(startAngle), 1);
 
-	box2 = newHorizontalBox();
-	uiBoxAppend(box, uiControl(box2), 0);
+ box2 = newHorizontalBox();
+ uiBoxAppend(box, uiControl(box2), 0);
 
-	uiBoxAppend(box2, uiControl(uiNewLabel("Sweep")), 0);
-	sweep = uiNewEntry();
-	uiEntryOnChanged(sweep, entryChanged, NULL);
-	uiBoxAppend(box2, uiControl(sweep), 1);
+ uiBoxAppend(box2, uiControl(uiNewLabel("Sweep")), 0);
+ sweep = uiNewEntry();
+ uiEntryOnChanged(sweep, entryChanged, ((void*)0));
+ uiBoxAppend(box2, uiControl(sweep), 1);
 
-	negative = uiNewCheckbox("Negative");
-	uiCheckboxOnToggled(negative, checkboxToggled, NULL);
-	uiBoxAppend(box, uiControl(negative), 0);
+ negative = uiNewCheckbox("Negative");
+ uiCheckboxOnToggled(negative, checkboxToggled, ((void*)0));
+ uiBoxAppend(box, uiControl(negative), 0);
 
-	radians = uiNewCheckbox("Radians");
-	uiCheckboxOnToggled(radians, checkboxToggled, NULL);
-	uiBoxAppend(box, uiControl(radians), 0);
+ radians = uiNewCheckbox("Radians");
+ uiCheckboxOnToggled(radians, checkboxToggled, ((void*)0));
+ uiBoxAppend(box, uiControl(radians), 0);
 
-	return group;
+ return group;
 }

@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REVINFO ;
-typedef  int /*<<< orphan*/  LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LINESIZE ; 
- int /*<<< orphan*/  PCLOSE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POPEN (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  cache ; 
- scalar_t__ check_directory (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clearLastLine () ; 
- int /*<<< orphan*/  conIn ; 
- int /*<<< orphan*/  conOut ; 
- int /*<<< orphan*/  create_cache (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dbgIn ; 
- int /*<<< orphan*/  dbgOut ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fclose (scalar_t__) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ isOffset (char const*) ; 
- int /*<<< orphan*/  l2l_dbg (int,char*,...) ; 
- int /*<<< orphan*/  list_clear (int /*<<< orphan*/ *) ; 
- scalar_t__ logFile ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * opt_Pipe ; 
- int /*<<< orphan*/ * opt_Revision ; 
- scalar_t__ opt_exit ; 
- int /*<<< orphan*/  opt_force ; 
- int optionInit (int,char const**) ; 
- int optionParse (int,char const**) ; 
- int /*<<< orphan*/  read_cache () ; 
- int /*<<< orphan*/  report (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  revinfo ; 
- scalar_t__ set_LogFile (scalar_t__*) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  sources ; 
- int /*<<< orphan*/  stat_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  summ ; 
- int /*<<< orphan*/  translate_files (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  translate_line (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int updateSvnlog () ; 
+
+
+
+typedef int REVINFO ;
+typedef int LIST ;
+
+
+ int LINESIZE ;
+ int PCLOSE (int ) ;
+ int POPEN (int *,char*) ;
+ int cache ;
+ scalar_t__ check_directory (int ) ;
+ int clearLastLine () ;
+ int conIn ;
+ int conOut ;
+ int create_cache (int ,int ) ;
+ int dbgIn ;
+ int dbgOut ;
+ int errno ;
+ int fclose (scalar_t__) ;
+ int free (int *) ;
+ scalar_t__ isOffset (char const*) ;
+ int l2l_dbg (int,char*,...) ;
+ int list_clear (int *) ;
+ scalar_t__ logFile ;
+ int memset (int *,int ,int) ;
+ int * opt_Pipe ;
+ int * opt_Revision ;
+ scalar_t__ opt_exit ;
+ int opt_force ;
+ int optionInit (int,char const**) ;
+ int optionParse (int,char const**) ;
+ int read_cache () ;
+ int report (int ) ;
+ int revinfo ;
+ scalar_t__ set_LogFile (scalar_t__*) ;
+ int snprintf (char*,int ,char*,char const*,char const*) ;
+ int sources ;
+ int stat_clear (int *) ;
+ int stdin ;
+ int stdout ;
+ scalar_t__ strcmp (int *,char*) ;
+ int strerror (int ) ;
+ int summ ;
+ int translate_files (int ,int ) ;
+ int translate_line (int ,char*,char*,char*) ;
+ int updateSvnlog () ;
 
 int
 main(int argc, const char **argv)
@@ -119,24 +119,24 @@ main(int argc, const char **argv)
 
         if (!(dbgIn = POPEN(opt_Pipe, "r")))
         {
-            dbgIn = stdin; //restore
+            dbgIn = stdin;
             l2l_dbg(0, "Could not popen '%s' (%s)\n", opt_Pipe, strerror(errno));
             free(opt_Pipe);
-            opt_Pipe = NULL;
+            opt_Pipe = ((void*)0);
         }
     }
     l2l_dbg(4, "opt_Pipe processed\n");
 
     if (argc > 1)
-    {   // translate {<exefile> <offset>}
+    {
         int i = 1;
-        const char *exefile = NULL;
-        const char *offset = NULL;
+        const char *exefile = ((void*)0);
+        const char *offset = ((void*)0);
         char Line[LINESIZE + 1];
         char PathBuffer[LINESIZE + 1];
         char LineOutBuffer[LINESIZE + 1];
 
-        // TODO: Re-use one translate_files(), instead of repeated translate_line().
+
         while (i < argc)
         {
             offset = argv[optCount + i++];
@@ -159,13 +159,13 @@ main(int argc, const char **argv)
             }
             else
             {
-                // Not an offset so must be an exefile:
+
                 exefile = offset;
             }
         }
     }
     else
-    {   // translate logging from stdin
+    {
         translate_files(dbgIn, conOut);
     }
 
@@ -176,18 +176,18 @@ main(int argc, const char **argv)
         PCLOSE(dbgIn);
 
 cleanup:
-    // See optionParse().
+
     if (opt_Revision)
     {
         free(opt_Revision);
-        opt_Revision = NULL;
+        opt_Revision = ((void*)0);
     }
 
-    // See optionInit().
+
     if (opt_Pipe)
     {
         free(opt_Pipe);
-        opt_Pipe = NULL;
+        opt_Pipe = ((void*)0);
     }
 
     list_clear(&sources);

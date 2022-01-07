@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct spi_message {int /*<<< orphan*/  spi; } ;
+
+
+
+
+struct spi_message {int spi; } ;
 struct spi_master {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cdns_spi_config_clock_mode (int /*<<< orphan*/ ) ; 
+
+ int cdns_spi_config_clock_mode (int ) ;
 
 __attribute__((used)) static int cdns_prepare_message(struct spi_master *master,
-				struct spi_message *msg)
+    struct spi_message *msg)
 {
-	cdns_spi_config_clock_mode(msg->spi);
-	return 0;
+ cdns_spi_config_clock_mode(msg->spi);
+ return 0;
 }

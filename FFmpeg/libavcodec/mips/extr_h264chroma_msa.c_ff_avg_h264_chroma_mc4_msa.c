@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  avc_chroma_hv_and_aver_dst_4w_msa (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int,int,int) ; 
- int /*<<< orphan*/  avc_chroma_hz_and_aver_dst_4w_msa (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  avc_chroma_vt_and_aver_dst_4w_msa (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  avg_width4_msa (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+
+
+ int av_assert2 (int) ;
+ int avc_chroma_hv_and_aver_dst_4w_msa (int *,int *,int ,int,int,int,int,int) ;
+ int avc_chroma_hz_and_aver_dst_4w_msa (int *,int *,int ,int,int,int) ;
+ int avc_chroma_vt_and_aver_dst_4w_msa (int *,int *,int ,int,int,int) ;
+ int avg_width4_msa (int *,int *,int ,int) ;
 
 void ff_avg_h264_chroma_mc4_msa(uint8_t *dst, uint8_t *src,
                                 ptrdiff_t stride, int height, int x, int y)

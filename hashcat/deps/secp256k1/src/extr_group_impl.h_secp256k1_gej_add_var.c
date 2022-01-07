@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int infinity; int /*<<< orphan*/  y; int /*<<< orphan*/  x; int /*<<< orphan*/  z; } ;
-typedef  TYPE_1__ secp256k1_gej ;
-typedef  int /*<<< orphan*/  secp256k1_fe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VERIFY_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  secp256k1_fe_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_fe_mul (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_fe_mul_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  secp256k1_fe_negate (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ secp256k1_fe_normalizes_to_zero_var (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_fe_set_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  secp256k1_fe_sqr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_gej_double_var (TYPE_1__*,TYPE_1__ const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int infinity; int y; int x; int z; } ;
+typedef TYPE_1__ secp256k1_gej ;
+typedef int secp256k1_fe ;
+
+
+ int VERIFY_CHECK (int ) ;
+ int secp256k1_fe_add (int *,int *) ;
+ int secp256k1_fe_mul (int *,int *,int *) ;
+ int secp256k1_fe_mul_int (int *,int) ;
+ int secp256k1_fe_negate (int *,int *,int) ;
+ scalar_t__ secp256k1_fe_normalizes_to_zero_var (int *) ;
+ int secp256k1_fe_set_int (int *,int) ;
+ int secp256k1_fe_sqr (int *,int *) ;
+ int secp256k1_gej_double_var (TYPE_1__*,TYPE_1__ const*,int *) ;
 
 __attribute__((used)) static void secp256k1_gej_add_var(secp256k1_gej *r, const secp256k1_gej *a, const secp256k1_gej *b, secp256k1_fe *rzr) {
-    /* Operations: 12 mul, 4 sqr, 2 normalize, 12 mul_int/add/negate */
+
     secp256k1_fe z22, z12, u1, u2, s1, s2, h, i, i2, h2, h3, t;
 
     if (a->infinity) {
-        VERIFY_CHECK(rzr == NULL);
+        VERIFY_CHECK(rzr == ((void*)0));
         *r = *b;
         return;
     }
 
     if (b->infinity) {
-        if (rzr != NULL) {
+        if (rzr != ((void*)0)) {
             secp256k1_fe_set_int(rzr, 1);
         }
         *r = *a;
@@ -57,7 +57,7 @@ __attribute__((used)) static void secp256k1_gej_add_var(secp256k1_gej *r, const 
         if (secp256k1_fe_normalizes_to_zero_var(&i)) {
             secp256k1_gej_double_var(r, a, rzr);
         } else {
-            if (rzr != NULL) {
+            if (rzr != ((void*)0)) {
                 secp256k1_fe_set_int(rzr, 0);
             }
             r->infinity = 1;
@@ -68,7 +68,7 @@ __attribute__((used)) static void secp256k1_gej_add_var(secp256k1_gej *r, const 
     secp256k1_fe_sqr(&h2, &h);
     secp256k1_fe_mul(&h3, &h, &h2);
     secp256k1_fe_mul(&h, &h, &b->z);
-    if (rzr != NULL) {
+    if (rzr != ((void*)0)) {
         *rzr = h;
     }
     secp256k1_fe_mul(&r->z, &a->z, &h);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  VIDTEX_T ;
-typedef  scalar_t__ GLenum ;
 
-/* Variables and functions */
- scalar_t__ GL_NO_ERROR ; 
- int /*<<< orphan*/  SVP_STOP_ERROR ; 
- scalar_t__ glGetError () ; 
- int /*<<< orphan*/  vcos_log_error (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  vidtex_stop_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int VIDTEX_T ;
+typedef scalar_t__ GLenum ;
+
+
+ scalar_t__ GL_NO_ERROR ;
+ int SVP_STOP_ERROR ;
+ scalar_t__ glGetError () ;
+ int vcos_log_error (char*,int ,scalar_t__) ;
+ int vidtex_stop_cb (int *,int ) ;
 
 __attribute__((used)) static void vidtex_check_gl(VIDTEX_T *vt, uint32_t line)
 {

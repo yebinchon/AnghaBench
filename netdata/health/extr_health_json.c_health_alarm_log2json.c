@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
 struct TYPE_9__ {scalar_t__ unique_id; struct TYPE_9__* next; } ;
-struct TYPE_7__ {unsigned int max; int /*<<< orphan*/  alarm_log_rwlock; TYPE_3__* alarms; } ;
+struct TYPE_7__ {unsigned int max; int alarm_log_rwlock; TYPE_3__* alarms; } ;
 struct TYPE_8__ {TYPE_1__ health_log; } ;
-typedef  TYPE_2__ RRDHOST ;
-typedef  int /*<<< orphan*/  BUFFER ;
-typedef  TYPE_3__ ALARM_ENTRY ;
+typedef TYPE_2__ RRDHOST ;
+typedef int BUFFER ;
+typedef TYPE_3__ ALARM_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  health_alarm_entry2json_nolock (int /*<<< orphan*/ *,TYPE_3__*,TYPE_2__*) ; 
- scalar_t__ likely (unsigned int) ; 
- int /*<<< orphan*/  netdata_rwlock_rdlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdata_rwlock_unlock (int /*<<< orphan*/ *) ; 
+
+ int buffer_strcat (int *,char*) ;
+ int health_alarm_entry2json_nolock (int *,TYPE_3__*,TYPE_2__*) ;
+ scalar_t__ likely (unsigned int) ;
+ int netdata_rwlock_rdlock (int *) ;
+ int netdata_rwlock_unlock (int *) ;
 
 void health_alarm_log2json(RRDHOST *host, BUFFER *wb, uint32_t after) {
     netdata_rwlock_rdlock(&host->health_log.alarm_log_rwlock);

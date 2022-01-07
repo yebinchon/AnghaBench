@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ndptr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  macros ; 
- int /*<<< orphan*/  ohash_find (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ohash_qlookup (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int ndptr ;
+
+
+ int macros ;
+ int ohash_find (int *,int ) ;
+ int ohash_qlookup (int *,char const*) ;
 
 ndptr
 lookup(const char *name)
 {
-	return ohash_find(&macros, ohash_qlookup(&macros, name));
+ return ohash_find(&macros, ohash_qlookup(&macros, name));
 }

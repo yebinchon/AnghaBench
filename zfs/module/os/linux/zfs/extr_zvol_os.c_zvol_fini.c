@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long MINORBITS ; 
- int /*<<< orphan*/  MKDEV (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZVOL_DRIVER ; 
- int /*<<< orphan*/  blk_unregister_region (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  ida_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taskq_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unregister_blkdev (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zvol_fini_impl () ; 
- int /*<<< orphan*/  zvol_ida ; 
- int /*<<< orphan*/  zvol_major ; 
- int /*<<< orphan*/  zvol_taskq ; 
+ unsigned long MINORBITS ;
+ int MKDEV (int ,int ) ;
+ int ZVOL_DRIVER ;
+ int blk_unregister_region (int ,unsigned long) ;
+ int ida_destroy (int *) ;
+ int taskq_destroy (int ) ;
+ int unregister_blkdev (int ,int ) ;
+ int zvol_fini_impl () ;
+ int zvol_ida ;
+ int zvol_major ;
+ int zvol_taskq ;
 
 void
 zvol_fini(void)
 {
-	zvol_fini_impl();
-	blk_unregister_region(MKDEV(zvol_major, 0), 1UL << MINORBITS);
-	unregister_blkdev(zvol_major, ZVOL_DRIVER);
-	taskq_destroy(zvol_taskq);
-	ida_destroy(&zvol_ida);
+ zvol_fini_impl();
+ blk_unregister_region(MKDEV(zvol_major, 0), 1UL << MINORBITS);
+ unregister_blkdev(zvol_major, ZVOL_DRIVER);
+ taskq_destroy(zvol_taskq);
+ ida_destroy(&zvol_ida);
 }

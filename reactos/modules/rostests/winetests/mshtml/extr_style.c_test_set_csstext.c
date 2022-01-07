@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IHTMLStyle ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IHTMLStyle_get_backgroundColor (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- scalar_t__ VT_BSTR ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strcmp_wa (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_style_set_csstext (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VARIANT ;
+typedef int IHTMLStyle ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IHTMLStyle_get_backgroundColor (int *,int *) ;
+ scalar_t__ S_OK ;
+ scalar_t__ VT_BSTR ;
+ int V_BSTR (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int VariantClear (int *) ;
+ int ok (int,char*,scalar_t__) ;
+ int strcmp_wa (int ,char*) ;
+ int test_style_set_csstext (int *,char*) ;
+ scalar_t__ wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_set_csstext(IHTMLStyle *style)
 {

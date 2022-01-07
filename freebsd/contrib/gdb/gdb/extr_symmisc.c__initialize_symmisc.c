@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  std_err ; 
- int /*<<< orphan*/  std_in ; 
- int /*<<< orphan*/  std_out ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
+ int std_err ;
+ int std_in ;
+ int std_out ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
 
 void
 _initialize_symmisc (void)

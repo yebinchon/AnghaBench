@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct kvmgt_guest_info {int dummy; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * kvm; int /*<<< orphan*/  group_notifier; int /*<<< orphan*/  mdev; int /*<<< orphan*/  iommu_notifier; int /*<<< orphan*/  released; } ;
+struct TYPE_3__ {int * kvm; int group_notifier; int mdev; int iommu_notifier; int released; } ;
 struct intel_vgpu {scalar_t__ handle; TYPE_1__ vdev; } ;
-struct TYPE_4__ {int /*<<< orphan*/  (* vgpu_release ) (struct intel_vgpu*) ;} ;
+struct TYPE_4__ {int (* vgpu_release ) (struct intel_vgpu*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  VFIO_GROUP_NOTIFY ; 
- int /*<<< orphan*/  VFIO_IOMMU_NOTIFY ; 
- int /*<<< orphan*/  WARN (int,char*,int) ; 
- scalar_t__ atomic_cmpxchg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  handle_valid (scalar_t__) ; 
- TYPE_2__* intel_gvt_ops ; 
- int /*<<< orphan*/  intel_vgpu_release_msi_eventfd_ctx (struct intel_vgpu*) ; 
- int /*<<< orphan*/  kvmgt_guest_exit (struct kvmgt_guest_info*) ; 
- int /*<<< orphan*/  mdev_dev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (struct intel_vgpu*) ; 
- int vfio_unregister_notifier (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int THIS_MODULE ;
+ int VFIO_GROUP_NOTIFY ;
+ int VFIO_IOMMU_NOTIFY ;
+ int WARN (int,char*,int) ;
+ scalar_t__ atomic_cmpxchg (int *,int ,int) ;
+ int handle_valid (scalar_t__) ;
+ TYPE_2__* intel_gvt_ops ;
+ int intel_vgpu_release_msi_eventfd_ctx (struct intel_vgpu*) ;
+ int kvmgt_guest_exit (struct kvmgt_guest_info*) ;
+ int mdev_dev (int ) ;
+ int module_put (int ) ;
+ int stub1 (struct intel_vgpu*) ;
+ int vfio_unregister_notifier (int ,int ,int *) ;
 
 __attribute__((used)) static void __intel_vgpu_release(struct intel_vgpu *vgpu)
 {
-	struct kvmgt_guest_info *info;
-	int ret;
+ struct kvmgt_guest_info *info;
+ int ret;
 
-	if (!handle_valid(vgpu->handle))
-		return;
+ if (!handle_valid(vgpu->handle))
+  return;
 
-	if (atomic_cmpxchg(&vgpu->vdev.released, 0, 1))
-		return;
+ if (atomic_cmpxchg(&vgpu->vdev.released, 0, 1))
+  return;
 
-	intel_gvt_ops->vgpu_release(vgpu);
+ intel_gvt_ops->vgpu_release(vgpu);
 
-	ret = vfio_unregister_notifier(mdev_dev(vgpu->vdev.mdev), VFIO_IOMMU_NOTIFY,
-					&vgpu->vdev.iommu_notifier);
-	WARN(ret, "vfio_unregister_notifier for iommu failed: %d\n", ret);
+ ret = vfio_unregister_notifier(mdev_dev(vgpu->vdev.mdev), VFIO_IOMMU_NOTIFY,
+     &vgpu->vdev.iommu_notifier);
+ WARN(ret, "vfio_unregister_notifier for iommu failed: %d\n", ret);
 
-	ret = vfio_unregister_notifier(mdev_dev(vgpu->vdev.mdev), VFIO_GROUP_NOTIFY,
-					&vgpu->vdev.group_notifier);
-	WARN(ret, "vfio_unregister_notifier for group failed: %d\n", ret);
+ ret = vfio_unregister_notifier(mdev_dev(vgpu->vdev.mdev), VFIO_GROUP_NOTIFY,
+     &vgpu->vdev.group_notifier);
+ WARN(ret, "vfio_unregister_notifier for group failed: %d\n", ret);
 
-	/* dereference module reference taken at open */
-	module_put(THIS_MODULE);
 
-	info = (struct kvmgt_guest_info *)vgpu->handle;
-	kvmgt_guest_exit(info);
+ module_put(THIS_MODULE);
 
-	intel_vgpu_release_msi_eventfd_ctx(vgpu);
+ info = (struct kvmgt_guest_info *)vgpu->handle;
+ kvmgt_guest_exit(info);
 
-	vgpu->vdev.kvm = NULL;
-	vgpu->handle = 0;
+ intel_vgpu_release_msi_eventfd_ctx(vgpu);
+
+ vgpu->vdev.kvm = ((void*)0);
+ vgpu->handle = 0;
 }

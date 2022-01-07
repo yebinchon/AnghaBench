@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_2__* group; TYPE_1__* user; } ;
 struct TYPE_13__ {int stdin_fd; int stdout_fd; int stderr_fd; } ;
-struct TYPE_12__ {int /*<<< orphan*/  netns_storage_socket; } ;
-struct TYPE_11__ {int /*<<< orphan*/  storage_socket; } ;
-struct TYPE_10__ {int /*<<< orphan*/  storage_socket; } ;
-typedef  TYPE_3__ ExecRuntime ;
-typedef  TYPE_4__ ExecParameters ;
-typedef  TYPE_5__ DynamicCreds ;
+struct TYPE_12__ {int netns_storage_socket; } ;
+struct TYPE_11__ {int storage_socket; } ;
+struct TYPE_10__ {int storage_socket; } ;
+typedef TYPE_3__ ExecRuntime ;
+typedef TYPE_4__ ExecParameters ;
+typedef TYPE_5__ DynamicCreds ;
 
-/* Variables and functions */
- int /*<<< orphan*/  append_socket_pair (int*,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (TYPE_4__ const*) ; 
- int close_all_fds (int*,size_t) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int append_socket_pair (int*,size_t*,int ) ;
+ int assert (TYPE_4__ const*) ;
+ int close_all_fds (int*,size_t) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static int close_remaining_fds(
                 const ExecParameters *params,

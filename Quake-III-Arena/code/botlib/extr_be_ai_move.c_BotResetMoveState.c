@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bot_movestate_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BotMoveStateFromHandle (int) ; 
- int /*<<< orphan*/  Com_Memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int bot_movestate_t ;
+
+
+ int * BotMoveStateFromHandle (int) ;
+ int Com_Memset (int *,int ,int) ;
 
 void BotResetMoveState(int movestate)
 {
-	bot_movestate_t *ms;
+ bot_movestate_t *ms;
 
-	ms = BotMoveStateFromHandle(movestate);
-	if (!ms) return;
-	Com_Memset(ms, 0, sizeof(bot_movestate_t));
+ ms = BotMoveStateFromHandle(movestate);
+ if (!ms) return;
+ Com_Memset(ms, 0, sizeof(bot_movestate_t));
 }

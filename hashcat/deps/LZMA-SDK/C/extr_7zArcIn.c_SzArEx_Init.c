@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  CTime; int /*<<< orphan*/  MTime; int /*<<< orphan*/  Attribs; int /*<<< orphan*/  CRCs; int /*<<< orphan*/ * FileNames; int /*<<< orphan*/ * FileNameOffsets; int /*<<< orphan*/ * FileToFolder; int /*<<< orphan*/ * FolderToFile; int /*<<< orphan*/ * IsDirs; int /*<<< orphan*/ * UnpackPositions; scalar_t__ dataPos; scalar_t__ NumFiles; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ CSzArEx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SzAr_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzBitUi32s_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzBitUi64s_Init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int CTime; int MTime; int Attribs; int CRCs; int * FileNames; int * FileNameOffsets; int * FileToFolder; int * FolderToFile; int * IsDirs; int * UnpackPositions; scalar_t__ dataPos; scalar_t__ NumFiles; int db; } ;
+typedef TYPE_1__ CSzArEx ;
+
+
+ int SzAr_Init (int *) ;
+ int SzBitUi32s_Init (int *) ;
+ int SzBitUi64s_Init (int *) ;
 
 void SzArEx_Init(CSzArEx *p)
 {
   SzAr_Init(&p->db);
-  
+
   p->NumFiles = 0;
   p->dataPos = 0;
-  
-  p->UnpackPositions = NULL;
-  p->IsDirs = NULL;
-  
-  p->FolderToFile = NULL;
-  p->FileToFolder = NULL;
-  
-  p->FileNameOffsets = NULL;
-  p->FileNames = NULL;
-  
+
+  p->UnpackPositions = ((void*)0);
+  p->IsDirs = ((void*)0);
+
+  p->FolderToFile = ((void*)0);
+  p->FileToFolder = ((void*)0);
+
+  p->FileNameOffsets = ((void*)0);
+  p->FileNames = ((void*)0);
+
   SzBitUi32s_Init(&p->CRCs);
   SzBitUi32s_Init(&p->Attribs);
-  // SzBitUi32s_Init(&p->Parents);
+
   SzBitUi64s_Init(&p->MTime);
   SzBitUi64s_Init(&p->CTime);
 }

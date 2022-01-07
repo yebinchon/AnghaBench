@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  state_t ;
 
-/* Variables and functions */
- scalar_t__ cpu_unit_reservation_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pos_1 ; 
- int /*<<< orphan*/  pos_2 ; 
- int /*<<< orphan*/  pos_3 ; 
- int /*<<< orphan*/  pos_4 ; 
- int /*<<< orphan*/  pos_5 ; 
- int /*<<< orphan*/  pos_6 ; 
+
+
+
+typedef int state_t ;
+
+
+ scalar_t__ cpu_unit_reservation_p (int ,int ) ;
+ int pos_1 ;
+ int pos_2 ;
+ int pos_3 ;
+ int pos_4 ;
+ int pos_5 ;
+ int pos_6 ;
 
 __attribute__((used)) static int
 get_max_pos (state_t state)

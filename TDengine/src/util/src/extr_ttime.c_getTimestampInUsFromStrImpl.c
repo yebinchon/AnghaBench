@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  long int64_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- long MILLISECOND_PER_DAY ; 
- long MILLISECOND_PER_HOUR ; 
- long MILLISECOND_PER_MINUTE ; 
- long MILLISECOND_PER_MONTH ; 
- long MILLISECOND_PER_SECOND ; 
- long MILLISECOND_PER_WEEK ; 
- long MILLISECOND_PER_YEAR ; 
+
+
+
+typedef long int64_t ;
+typedef int int32_t ;
+
+
+ long MILLISECOND_PER_DAY ;
+ long MILLISECOND_PER_HOUR ;
+ long MILLISECOND_PER_MINUTE ;
+ long MILLISECOND_PER_MONTH ;
+ long MILLISECOND_PER_SECOND ;
+ long MILLISECOND_PER_WEEK ;
+ long MILLISECOND_PER_YEAR ;
 
 __attribute__((used)) static int32_t getTimestampInUsFromStrImpl(int64_t val, char unit, int64_t* result) {
   *result = val;
@@ -55,7 +55,7 @@ __attribute__((used)) static int32_t getTimestampInUsFromStrImpl(int64_t val, ch
     }
   }
 
-  /* get the value in microsecond */
+
   (*result) *= 1000L;
   return 0;
 }

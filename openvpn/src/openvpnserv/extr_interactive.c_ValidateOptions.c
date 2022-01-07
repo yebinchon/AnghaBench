@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  ovpn_admin_group; } ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckOption (char const*,int,char**,TYPE_1__*) ; 
- char** CommandLineToArgvW (char const*,int*) ; 
- int /*<<< orphan*/  ERROR_STARTUP_DATA ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IsOption (char*) ; 
- int /*<<< orphan*/  LocalFree (char**) ; 
- int /*<<< orphan*/  ReturnError (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReturnLastError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _countof (char*) ; 
- int /*<<< orphan*/  exit_event ; 
- int /*<<< orphan*/  openvpn_swprintf (char*,int /*<<< orphan*/ ,char const*,char*,char const*,...) ; 
- TYPE_1__ settings ; 
- scalar_t__ wcscmp (char*,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_3__ {int ovpn_admin_group; } ;
+typedef int HANDLE ;
+typedef int BOOL ;
+
+
+ int CheckOption (char const*,int,char**,TYPE_1__*) ;
+ char** CommandLineToArgvW (char const*,int*) ;
+ int ERROR_STARTUP_DATA ;
+ int FALSE ;
+ int IsOption (char*) ;
+ int LocalFree (char**) ;
+ int ReturnError (int ,int ,char*,int,int *) ;
+ int ReturnLastError (int ,char*) ;
+ int TRUE ;
+ int _countof (char*) ;
+ int exit_event ;
+ int openvpn_swprintf (char*,int ,char const*,char*,char const*,...) ;
+ TYPE_1__ settings ;
+ scalar_t__ wcscmp (char*,char*) ;
 
 __attribute__((used)) static BOOL
 ValidateOptions(HANDLE pipe, const WCHAR *workdir, const WCHAR *options)
@@ -57,16 +57,16 @@ ValidateOptions(HANDLE pipe, const WCHAR *workdir, const WCHAR *options)
         goto out;
     }
 
-    /* Note: argv[0] is the first option */
-    if (argc < 1)  /* no options */
+
+    if (argc < 1)
     {
         ret = TRUE;
         goto out;
     }
 
-    /*
-     * If only one argument, it is the config file
-     */
+
+
+
     if (argc == 1)
     {
         WCHAR *argv_tmp[2] = { L"--config", argv[0] };
@@ -105,7 +105,7 @@ ValidateOptions(HANDLE pipe, const WCHAR *workdir, const WCHAR *options)
         }
     }
 
-    /* all options passed */
+
     ret = TRUE;
 
 out:

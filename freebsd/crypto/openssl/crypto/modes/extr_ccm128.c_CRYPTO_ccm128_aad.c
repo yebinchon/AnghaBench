@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  (* block128_f ) (int*,int*,int /*<<< orphan*/ ) ;
-typedef  int /*<<< orphan*/  alen ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int (* block128_f ) (int*,int*,int ) ;
+typedef int alen ;
 struct TYPE_6__ {int* c; } ;
 struct TYPE_5__ {int* c; } ;
-struct TYPE_7__ {int /*<<< orphan*/  blocks; int /*<<< orphan*/  key; TYPE_2__ cmac; TYPE_1__ nonce; int /*<<< orphan*/  (* block ) (int*,int*,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ CCM128_CONTEXT ;
+struct TYPE_7__ {int blocks; int key; TYPE_2__ cmac; TYPE_1__ nonce; int (* block ) (int*,int*,int ) ;} ;
+typedef TYPE_3__ CCM128_CONTEXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int*,int*,int /*<<< orphan*/ ) ; 
+
+ int stub1 (int*,int*,int ) ;
+ int stub2 (int*,int*,int ) ;
 
 void CRYPTO_ccm128_aad(CCM128_CONTEXT *ctx,
                        const unsigned char *aad, size_t alen)
@@ -34,7 +34,7 @@ void CRYPTO_ccm128_aad(CCM128_CONTEXT *ctx,
     if (alen == 0)
         return;
 
-    ctx->nonce.c[0] |= 0x40;    /* set Adata flag */
+    ctx->nonce.c[0] |= 0x40;
     (*block) (ctx->nonce.c, ctx->cmac.c, ctx->key), ctx->blocks++;
 
     if (alen < (0x10000 - 0x100)) {

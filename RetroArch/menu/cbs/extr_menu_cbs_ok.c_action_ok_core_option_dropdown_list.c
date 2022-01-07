@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  core_option_lbl ;
-typedef  int /*<<< orphan*/  core_option_idx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_OK_DL_DROPDOWN_BOX_LIST ; 
- int /*<<< orphan*/  generic_action_ok_displaylist_push (char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int) ; 
+
+
+
+typedef int core_option_lbl ;
+typedef int core_option_idx ;
+
+
+ int ACTION_OK_DL_DROPDOWN_BOX_LIST ;
+ int generic_action_ok_displaylist_push (char*,int *,char*,int ,size_t,int ,int ) ;
+ int snprintf (char*,int,char*,unsigned int) ;
 
 int action_ok_core_option_dropdown_list(const char *path,
       const char *label, unsigned type, size_t idx, size_t entry_idx)
@@ -28,7 +28,7 @@ int action_ok_core_option_dropdown_list(const char *path,
          type);
 
    generic_action_ok_displaylist_push(
-         core_option_lbl, NULL,
+         core_option_lbl, ((void*)0),
          core_option_idx, 0, idx, 0,
          ACTION_OK_DL_DROPDOWN_BOX_LIST);
    return 0;

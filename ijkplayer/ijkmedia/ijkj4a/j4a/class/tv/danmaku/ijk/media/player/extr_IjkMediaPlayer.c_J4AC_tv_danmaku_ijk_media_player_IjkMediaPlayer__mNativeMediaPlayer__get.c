@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jobject ;
-typedef  int /*<<< orphan*/  jlong ;
-struct TYPE_6__ {int /*<<< orphan*/  field_mNativeMediaPlayer; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* GetLongField ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- TYPE_3__ class_J4AC_tv_danmaku_ijk_media_player_IjkMediaPlayer ; 
- int /*<<< orphan*/  stub1 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int jobject ;
+typedef int jlong ;
+struct TYPE_6__ {int field_mNativeMediaPlayer; } ;
+struct TYPE_5__ {int (* GetLongField ) (TYPE_1__**,int ,int ) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ TYPE_3__ class_J4AC_tv_danmaku_ijk_media_player_IjkMediaPlayer ;
+ int stub1 (TYPE_1__**,int ,int ) ;
 
 jlong J4AC_tv_danmaku_ijk_media_player_IjkMediaPlayer__mNativeMediaPlayer__get(JNIEnv *env, jobject thiz)
 {

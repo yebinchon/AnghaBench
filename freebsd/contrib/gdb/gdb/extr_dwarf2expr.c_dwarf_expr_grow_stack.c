@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dwarf_expr_context {size_t stack_len; size_t stack_allocated; int /*<<< orphan*/  stack; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xrealloc (int /*<<< orphan*/ ,size_t) ; 
+
+
+
+struct dwarf_expr_context {size_t stack_len; size_t stack_allocated; int stack; } ;
+typedef int CORE_ADDR ;
+
+
+ int xrealloc (int ,size_t) ;
 
 __attribute__((used)) static void
 dwarf_expr_grow_stack (struct dwarf_expr_context *ctx, size_t need)
@@ -23,7 +23,7 @@ dwarf_expr_grow_stack (struct dwarf_expr_context *ctx, size_t need)
     {
       size_t newlen = ctx->stack_len + need + 10;
       ctx->stack = xrealloc (ctx->stack,
-			     newlen * sizeof (CORE_ADDR));
+        newlen * sizeof (CORE_ADDR));
       ctx->stack_allocated = newlen;
     }
 }

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  APIC_ID ; 
- int /*<<< orphan*/  apic_read (int /*<<< orphan*/ ) ; 
- unsigned int flat_get_apic_id (int /*<<< orphan*/ ) ; 
+ int APIC_ID ;
+ int apic_read (int ) ;
+ unsigned int flat_get_apic_id (int ) ;
 
 __attribute__((used)) static unsigned int read_xapic_id(void)
 {
-	return flat_get_apic_id(apic_read(APIC_ID));
+ return flat_get_apic_id(apic_read(APIC_ID));
 }

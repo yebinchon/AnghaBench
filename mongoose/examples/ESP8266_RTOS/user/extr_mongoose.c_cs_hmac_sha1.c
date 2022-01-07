@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp_key ;
-typedef  int /*<<< orphan*/  cs_sha1_ctx ;
-typedef  int /*<<< orphan*/  buf2 ;
-typedef  int /*<<< orphan*/  buf1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs_sha1_final (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cs_sha1_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cs_sha1_update (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int tmp_key ;
+typedef int cs_sha1_ctx ;
+typedef int buf2 ;
+typedef int buf1 ;
+
+
+ int cs_sha1_final (unsigned char*,int *) ;
+ int cs_sha1_init (int *) ;
+ int cs_sha1_update (int *,unsigned char const*,int) ;
+ int memcpy (unsigned char*,unsigned char const*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
 
 void cs_hmac_sha1(const unsigned char *key, size_t keylen,
                   const unsigned char *data, size_t datalen,

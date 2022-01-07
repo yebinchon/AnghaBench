@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct brcmnand_controller {int /*<<< orphan*/  done; scalar_t__ dma_pending; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+
+
+struct brcmnand_controller {int done; scalar_t__ dma_pending; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int complete (int *) ;
 
 __attribute__((used)) static irqreturn_t brcmnand_ctlrdy_irq(int irq, void *data)
 {
-	struct brcmnand_controller *ctrl = data;
+ struct brcmnand_controller *ctrl = data;
 
-	/* Discard all NAND_CTLRDY interrupts during DMA */
-	if (ctrl->dma_pending)
-		return IRQ_HANDLED;
 
-	complete(&ctrl->done);
-	return IRQ_HANDLED;
+ if (ctrl->dma_pending)
+  return IRQ_HANDLED;
+
+ complete(&ctrl->done);
+ return IRQ_HANDLED;
 }

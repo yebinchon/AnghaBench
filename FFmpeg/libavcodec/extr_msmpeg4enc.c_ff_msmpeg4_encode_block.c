@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int int16_t ;
 struct TYPE_10__ {size_t* permutated; } ;
 struct TYPE_9__ {size_t* permutated; } ;
-struct TYPE_12__ {int mb_intra; size_t rl_table_index; int rl_chroma_table_index; int msmpeg4_version; int* block_last_index; int esc3_level_length; int esc3_run_length; int qscale; int /*<<< orphan*/  pb; int /*<<< orphan*/ ***** ac_stats; TYPE_2__ inter_scantable; TYPE_1__ intra_scantable; } ;
+struct TYPE_12__ {int mb_intra; size_t rl_table_index; int rl_chroma_table_index; int msmpeg4_version; int* block_last_index; int esc3_level_length; int esc3_run_length; int qscale; int pb; int ***** ac_stats; TYPE_2__ inter_scantable; TYPE_1__ intra_scantable; } ;
 struct TYPE_11__ {int** table_vlc; int n; int** max_level; int** max_run; } ;
-typedef  TYPE_3__ RLTable ;
-typedef  TYPE_4__ MpegEncContext ;
+typedef TYPE_3__ RLTable ;
+typedef TYPE_4__ MpegEncContext ;
 
-/* Variables and functions */
- int MAX_LEVEL ; 
- int MAX_RUN ; 
- TYPE_3__* ff_rl_table ; 
- int get_rl_index (TYPE_3__ const*,int,int,int) ; 
- int /*<<< orphan*/  msmpeg4_encode_dc (TYPE_4__*,int,int,int*) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_sbits (int /*<<< orphan*/ *,int,int) ; 
+
+ int MAX_LEVEL ;
+ int MAX_RUN ;
+ TYPE_3__* ff_rl_table ;
+ int get_rl_index (TYPE_3__ const*,int,int,int) ;
+ int msmpeg4_encode_dc (TYPE_4__*,int,int,int*) ;
+ int put_bits (int *,int,int) ;
+ int put_sbits (int *,int,int) ;
 
 void ff_msmpeg4_encode_block(MpegEncContext * s, int16_t * block, int n)
 {
@@ -60,7 +60,7 @@ void ff_msmpeg4_encode_block(MpegEncContext * s, int16_t * block, int n)
         scantable= s->inter_scantable.permutated;
     }
 
-    /* recalculate block_last_index for M$ wmv1 */
+
     if(s->msmpeg4_version>=4 && s->msmpeg4_version<6 && s->block_last_index[n]>0){
         for(last_index=63; last_index>=0; last_index--){
             if(block[scantable[last_index]]) break;
@@ -68,7 +68,7 @@ void ff_msmpeg4_encode_block(MpegEncContext * s, int16_t * block, int n)
         s->block_last_index[n]= last_index;
     }else
         last_index = s->block_last_index[n];
-    /* AC coefs */
+
     last_non_zero = i - 1;
     for (; i <= last_index; i++) {
         j = scantable[i];
@@ -87,7 +87,7 @@ void ff_msmpeg4_encode_block(MpegEncContext * s, int16_t * block, int n)
                 s->ac_stats[s->mb_intra][n>3][level][run][last]++;
             }
 
-            s->ac_stats[s->mb_intra][n > 3][40][63][0]++; //esc3 like
+            s->ac_stats[s->mb_intra][n > 3][40][63][0]++;
 
             code = get_rl_index(rl, last, run, level);
             put_bits(&s->pb, rl->table_vlc[code][1], rl->table_vlc[code][0]);
@@ -112,14 +112,14 @@ void ff_msmpeg4_encode_block(MpegEncContext * s, int16_t * block, int n)
                     code = get_rl_index(rl, last, run1, level);
                     if (code == rl->n) {
                     esc3:
-                        /* third escape */
+
                         put_bits(&s->pb, 1, 0);
                         put_bits(&s->pb, 1, last);
                         if(s->msmpeg4_version>=4){
                             if(s->esc3_level_length==0){
                                 s->esc3_level_length=8;
                                 s->esc3_run_length= 6;
-                                //ESCLVLSZ + ESCRUNSZ
+
                                 if(s->qscale<8)
                                     put_bits(&s->pb, 6 + (s->msmpeg4_version>=6), 3);
                                 else
@@ -133,13 +133,13 @@ void ff_msmpeg4_encode_block(MpegEncContext * s, int16_t * block, int n)
                             put_sbits(&s->pb, 8, slevel);
                         }
                     } else {
-                        /* second escape */
+
                         put_bits(&s->pb, 1, 1);
                         put_bits(&s->pb, rl->table_vlc[code][1], rl->table_vlc[code][0]);
                         put_bits(&s->pb, 1, sign);
                     }
                 } else {
-                    /* first escape */
+
                     put_bits(&s->pb, 1, 1);
                     put_bits(&s->pb, rl->table_vlc[code][1], rl->table_vlc[code][0]);
                     put_bits(&s->pb, 1, sign);

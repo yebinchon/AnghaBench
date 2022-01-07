@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_player_track {char* name; int /*<<< orphan*/  fmt; } ;
+
+
+
+
+struct vlc_player_track {char* name; int fmt; } ;
 struct vlc_player_track_priv {struct vlc_player_track t; } ;
-typedef  int /*<<< orphan*/  es_format_t ;
+typedef int es_format_t ;
 
-/* Variables and functions */
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Clean (int /*<<< orphan*/ *) ; 
- int es_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
+
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int es_format_Clean (int *) ;
+ int es_format_Copy (int *,int const*) ;
+ int free (char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
 
 int
 vlc_player_track_priv_Update(struct vlc_player_track_priv *trackpriv,

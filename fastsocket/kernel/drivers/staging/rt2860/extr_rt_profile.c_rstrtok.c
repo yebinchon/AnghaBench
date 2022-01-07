@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* __rstrtok ; 
- char* strpbrk (char*,char const*) ; 
- int /*<<< orphan*/  strspn (char*,char const*) ; 
+ char* __rstrtok ;
+ char* strpbrk (char*,char const*) ;
+ int strspn (char*,char const*) ;
 
 char * rstrtok(char * s,const char * ct)
 {
-	char *sbegin, *send;
+ char *sbegin, *send;
 
-	sbegin  = s ? s : __rstrtok;
-	if (!sbegin)
-	{
-		return NULL;
-	}
+ sbegin = s ? s : __rstrtok;
+ if (!sbegin)
+ {
+  return ((void*)0);
+ }
 
-	sbegin += strspn(sbegin,ct);
-	if (*sbegin == '\0')
-	{
-		__rstrtok = NULL;
-		return( NULL );
-	}
+ sbegin += strspn(sbegin,ct);
+ if (*sbegin == '\0')
+ {
+  __rstrtok = ((void*)0);
+  return( ((void*)0) );
+ }
 
-	send = strpbrk( sbegin, ct);
-	if (send && *send != '\0')
-		*send++ = '\0';
+ send = strpbrk( sbegin, ct);
+ if (send && *send != '\0')
+  *send++ = '\0';
 
-	__rstrtok = send;
+ __rstrtok = send;
 
-	return (sbegin);
+ return (sbegin);
 }

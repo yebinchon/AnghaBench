@@ -1,108 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
-#define  COND_CC 143 
-#define  COND_CS 142 
-#define  COND_EQ 141 
-#define  COND_F 140 
-#define  COND_GE 139 
-#define  COND_GT 138 
-#define  COND_HI 137 
-#define  COND_LE 136 
-#define  COND_LS 135 
-#define  COND_LT 134 
-#define  COND_MI 133 
-#define  COND_NE 132 
-#define  COND_PL 131 
-#define  COND_T 130 
-#define  COND_VC 129 
-#define  COND_VS 128 
 
+
+
+typedef int uint16_t ;
 __attribute__((used)) static unsigned int cc_info(uint16_t opcode)
 {
-    const unsigned int INPUT_XNZVC  = 0x1F00;
-    const unsigned int INPUT_XZ     = 0x1400;
-    const unsigned int INPUT_X      = 0x1000;
-    const unsigned int INPUT_N      = 0x0800;
-    const unsigned int INPUT_V      = 0x0200;
-    const unsigned int INPUT_NONE   = 0x0000;
+    const unsigned int INPUT_XNZVC = 0x1F00;
+    const unsigned int INPUT_XZ = 0x1400;
+    const unsigned int INPUT_X = 0x1000;
+    const unsigned int INPUT_N = 0x0800;
+    const unsigned int INPUT_V = 0x0200;
+    const unsigned int INPUT_NONE = 0x0000;
     const unsigned int OUTPUT_XNZVC = 0x001F;
-    const unsigned int OUTPUT_XZC   = 0x0015;
-    const unsigned int OUTPUT_NZVC  = 0x000F;
-    const unsigned int OUTPUT_N     = 0x0008;
-    const unsigned int OUTPUT_Z     = 0x0004;
-    const unsigned int OUTPUT_NONE  = 0x0000;
+    const unsigned int OUTPUT_XZC = 0x0015;
+    const unsigned int OUTPUT_NZVC = 0x000F;
+    const unsigned int OUTPUT_N = 0x0008;
+    const unsigned int OUTPUT_Z = 0x0004;
+    const unsigned int OUTPUT_NONE = 0x0000;
     static const unsigned int cond_inputs[] = {
-        [COND_T ] = 0x0000,
-        [COND_F ] = 0x0000,
-        [COND_HI] = 0x0500,
-        [COND_LS] = 0x0500,
-        [COND_CC] = 0x0100,
-        [COND_CS] = 0x0100,
-        [COND_NE] = 0x0400,
-        [COND_EQ] = 0x0400,
-        [COND_VC] = 0x0200,
-        [COND_VS] = 0x0200,
-        [COND_PL] = 0x0800,
-        [COND_MI] = 0x0800,
-        [COND_GE] = 0x0A00,
-        [COND_LT] = 0x0A00,
-        [COND_GT] = 0x0E00,
-        [COND_LE] = 0x0E00,
+        [130 ] = 0x0000,
+        [140 ] = 0x0000,
+        [137] = 0x0500,
+        [135] = 0x0500,
+        [143] = 0x0100,
+        [142] = 0x0100,
+        [132] = 0x0400,
+        [141] = 0x0400,
+        [129] = 0x0200,
+        [128] = 0x0200,
+        [131] = 0x0800,
+        [133] = 0x0800,
+        [139] = 0x0A00,
+        [134] = 0x0A00,
+        [138] = 0x0E00,
+        [136] = 0x0E00,
     };
 
     switch (opcode>>12) {
 
       case 0x0:
         if (opcode & 0x100) {
-            if ((opcode>>3 & 7) == 1) {  // MOVEP
+            if ((opcode>>3 & 7) == 1) {
                 return INPUT_NONE | OUTPUT_NONE;
-            } else {  // BTST, etc. (dynamic)
+            } else {
                 return INPUT_NONE | OUTPUT_Z;
             }
-        } else if ((opcode>>6 & 3) == 3) {  // Illegal (size==3)
+        } else if ((opcode>>6 & 3) == 3) {
             return 0;
         } else {
             switch (opcode>>9 & 7) {
-              case 0:  // ORI
-                if ((opcode & 0xBF) == 0x3C) {  // ORI to CCR/SR
+              case 0:
+                if ((opcode & 0xBF) == 0x3C) {
                     return INPUT_XNZVC | OUTPUT_XNZVC;
                 } else {
                     return INPUT_NONE | OUTPUT_NZVC;
                 }
-              case 1:  // ANDI
-                if ((opcode & 0xBF) == 0x3C) {  // ANDI to CCR/SR
+              case 1:
+                if ((opcode & 0xBF) == 0x3C) {
                     return INPUT_XNZVC | OUTPUT_XNZVC;
                 } else {
                     return INPUT_NONE | OUTPUT_NZVC;
                 }
-              case 2:  // SUBI
+              case 2:
                 return INPUT_NONE | OUTPUT_XNZVC;
-              case 3:  // ADDI
+              case 3:
                 return INPUT_NONE | OUTPUT_XNZVC;
-              case 4:  // BTST, etc. (static)
+              case 4:
                 return INPUT_NONE | OUTPUT_Z;
-              case 5:  // EORI
-                if ((opcode & 0xBF) == 0x3C) {  // EORI to CCR/SR
+              case 5:
+                if ((opcode & 0xBF) == 0x3C) {
                     return INPUT_XNZVC | OUTPUT_XNZVC;
                 } else {
                     return INPUT_NONE | OUTPUT_NZVC;
                 }
-              case 6:  // CMPI
+              case 6:
                 return INPUT_NONE | OUTPUT_NZVC;
-              case 7:  // Illegal
+              case 7:
                 return 0;
             }
         }
@@ -110,190 +91,190 @@ __attribute__((used)) static unsigned int cc_info(uint16_t opcode)
       case 0x1:
       case 0x2:
       case 0x3:
-        if ((opcode>>6 & 7) == 1) {  // MOVEA.[LW]
+        if ((opcode>>6 & 7) == 1) {
             return INPUT_NONE | OUTPUT_NONE;
-        } else {  // MOVE.[BLW]
+        } else {
             return INPUT_NONE | OUTPUT_NZVC;
         }
 
       case 0x4:
         if (opcode & 0x0100) {
             switch (opcode>>6 & 3) {
-              case 0:  // Illegal
-              case 1:  // Illegal
+              case 0:
+              case 1:
                 return 0;
-              case 2:  // CHK
-                /* N is unmodified if no exception occurs, so treat as input */
+              case 2:
+
                 return INPUT_N | OUTPUT_N;
-              case 3:  // LEA
+              case 3:
                 return INPUT_NONE | OUTPUT_NONE;
             }
         } else {
             switch (opcode & 0x0EC0) {
-              case 0x0000:  // NEGX.B
-              case 0x0040:  // NEGX.W
-              case 0x0080:  // NEGX.L
+              case 0x0000:
+              case 0x0040:
+              case 0x0080:
                 return INPUT_XZ | OUTPUT_XNZVC;
-              case 0x00C0:  // MOVE from SR
+              case 0x00C0:
                 return INPUT_XNZVC | OUTPUT_NONE;
-              case 0x0200:  // CLR.B
-              case 0x0240:  // CLR.W
-              case 0x0280:  // CLR.L
+              case 0x0200:
+              case 0x0240:
+              case 0x0280:
                 return INPUT_NONE | OUTPUT_NZVC;
-              case 0x02C0:  // Illegal
+              case 0x02C0:
                 return 0;
-              case 0x0400:  // NEG.B
-              case 0x0440:  // NEG.W
-              case 0x0480:  // NEG.L
+              case 0x0400:
+              case 0x0440:
+              case 0x0480:
                 return INPUT_NONE | OUTPUT_XNZVC;
-              case 0x04C0:  // MOVE to CCR
+              case 0x04C0:
                 return INPUT_NONE | OUTPUT_XNZVC;
-              case 0x0600:  // NOT.B
-              case 0x0640:  // NOT.W
-              case 0x0680:  // NOT.L
+              case 0x0600:
+              case 0x0640:
+              case 0x0680:
                 return INPUT_NONE | OUTPUT_NZVC;
-              case 0x06C0:  // MOVE to SR
+              case 0x06C0:
                 return INPUT_NONE | OUTPUT_XNZVC;
-              case 0x0800:  // NBCD
+              case 0x0800:
                 return INPUT_XZ | OUTPUT_XZC;
-              case 0x0840:  // PEA
-                if ((opcode>>3 & 7) == 0) {  // SWAP.L
+              case 0x0840:
+                if ((opcode>>3 & 7) == 0) {
                     return INPUT_NONE | OUTPUT_NZVC;
                 } else {
                     return INPUT_NONE | OUTPUT_NONE;
                 }
-              case 0x0880:  // MOVEM.W reglist,<ea>
-              case 0x08C0:  // MOVEM.L reglist,<ea>
-                if ((opcode>>3 & 7) == 0) {  // EXT.*
+              case 0x0880:
+              case 0x08C0:
+                if ((opcode>>3 & 7) == 0) {
                     return INPUT_NONE | OUTPUT_NZVC;
                 } else {
                     return INPUT_NONE | OUTPUT_NONE;
                 }
-              case 0x0A00:  // TST.B
-              case 0x0A40:  // TST.W
-              case 0x0A80:  // TST.L
-              case 0x0AC0:  // TAS
+              case 0x0A00:
+              case 0x0A40:
+              case 0x0A80:
+              case 0x0AC0:
                 return INPUT_NONE | OUTPUT_NZVC;
-              case 0x0C00:  // TST.B
+              case 0x0C00:
                 return 0;
-              case 0x0C40:  // Miscellaneous
+              case 0x0C40:
                 switch (opcode>>3 & 7) {
-                  case 0:  // TRAP #0-7
-                  case 1:  // TRAP #8-15
-                  case 2:  // LINK
-                  case 3:  // UNLK
-                  case 4:  // MOVE from USP
-                  case 5:  // MOVE to USP
+                  case 0:
+                  case 1:
+                  case 2:
+                  case 3:
+                  case 4:
+                  case 5:
                     return INPUT_NONE | OUTPUT_NONE;
-                  case 6:  // Miscellaneous
+                  case 6:
                     switch (opcode & 7) {
-                      case 0:  // RESET
-                      case 1:  // NOP
+                      case 0:
+                      case 1:
                         return INPUT_NONE | OUTPUT_NONE;
-                      case 2:  // STOP
-                      case 3:  // RTE
+                      case 2:
+                      case 3:
                         return INPUT_NONE | OUTPUT_XNZVC;
-                      case 4:  // Illegal
+                      case 4:
                         return 0;
-                      case 5:  // RTS
+                      case 5:
                         return INPUT_NONE | OUTPUT_NONE;
-                      case 6:  // TRAPV
+                      case 6:
                         return INPUT_V | OUTPUT_NONE;
-                      case 7:  // RTR
+                      case 7:
                         return INPUT_NONE | OUTPUT_XNZVC;
                     }
-                  case 7:  // Illegal
+                  case 7:
                     return 0;
                 }
-              case 0x0C80:  // MOVEM.W <ea>,reglist
-              case 0x0CC0:  // MOVEM.L <ea>,reglist
+              case 0x0C80:
+              case 0x0CC0:
                 return INPUT_NONE | OUTPUT_NONE;
-              case 0x0E00:  // Illegal
-              case 0x0E40:  // Illegal
+              case 0x0E00:
+              case 0x0E40:
                 return 0;
-              case 0x0E80:  // JSR
-              case 0x0EC0:  // JMP
+              case 0x0E80:
+              case 0x0EC0:
                 return INPUT_NONE | OUTPUT_NONE;
             }
         }
 
       case 0x5:
-        if ((opcode>>6 & 3) == 3) {  // Scc/DBcc
+        if ((opcode>>6 & 3) == 3) {
             return cond_inputs[opcode>>8 & 0xF] | OUTPUT_NONE;
-        } else {  // ADDQ/SUBQ
-            if ((opcode>>3 & 7) == 1) {  // Address register target
+        } else {
+            if ((opcode>>3 & 7) == 1) {
                 return INPUT_NONE | OUTPUT_NONE;
-            } else {  // Other target
+            } else {
                 return INPUT_NONE | OUTPUT_XNZVC;
             }
         }
 
       case 0x6:
-        /* Bcc/BSR */
+
         return cond_inputs[opcode>>8 & 0xF] | OUTPUT_NONE;
 
       case 0x7:
-        if (opcode & 0x0100) {  // Illegal
+        if (opcode & 0x0100) {
             return 0;
-        } else {  // MOVEQ
+        } else {
             return INPUT_NONE | OUTPUT_NZVC;
         }
 
       case 0x8:
-        if ((opcode>>6 & 3) == 3) {  // MULS/MULU
+        if ((opcode>>6 & 3) == 3) {
             return INPUT_NONE | OUTPUT_NZVC;
-        } else if ((opcode & 0x01F0) == 0x0100) {  // SBCD
+        } else if ((opcode & 0x01F0) == 0x0100) {
             return INPUT_XZ | OUTPUT_XZC;
-        } else {  // OR
+        } else {
             return INPUT_NONE | OUTPUT_NZVC;
         }
 
       case 0x9:
-        if ((opcode>>6 & 3) == 3) {  // SUBA
+        if ((opcode>>6 & 3) == 3) {
             return INPUT_NONE | OUTPUT_NONE;
-        } else if ((opcode & 0x0130) == 0x0100) {  // SUBX
+        } else if ((opcode & 0x0130) == 0x0100) {
             return INPUT_XZ | OUTPUT_XNZVC;
-        } else {  // SUB
+        } else {
             return INPUT_NONE | OUTPUT_XNZVC;
         }
 
       case 0xA:
-        /* Nothing here */
+
         return 0;
 
       case 0xB:
-        /* CMP/CMPA/CMPM/EOR */
+
         return INPUT_NONE | OUTPUT_NZVC;
 
       case 0xC:
-        if ((opcode>>6 & 3) == 3) {  // DIVS/DIVD
+        if ((opcode>>6 & 3) == 3) {
             return INPUT_NONE | OUTPUT_NZVC;
-        } else if ((opcode & 0x01F0) == 0x0100) {  // ABCD
+        } else if ((opcode & 0x01F0) == 0x0100) {
             return INPUT_XZ | OUTPUT_XZC;
-        } else if ((opcode & 0x0130) == 0x0100) {  // EXG
+        } else if ((opcode & 0x0130) == 0x0100) {
             return INPUT_NONE | OUTPUT_NONE;
-        } else {  // AND
+        } else {
             return INPUT_NONE | OUTPUT_NZVC;
         }
 
       case 0xD:
-        if ((opcode>>6 & 3) == 3) {  // ADDA
+        if ((opcode>>6 & 3) == 3) {
             return INPUT_NONE | OUTPUT_NONE;
-        } else if ((opcode & 0x0130) == 0x0100) {  // ADDX
+        } else if ((opcode & 0x0130) == 0x0100) {
             return INPUT_XZ | OUTPUT_XNZVC;
-        } else {  // ADD
+        } else {
             return INPUT_NONE | OUTPUT_XNZVC;
         }
 
       case 0xE:
-        /* Shift/rotate */
+
         return INPUT_X | OUTPUT_XNZVC;
 
       case 0xF:
-        /* Nothing here */
+
         return 0;
 
-    }  // switch (opcode>>12)
+    }
 
-    return 0;  // Should be unreachable, but just for safety
+    return 0;
 }

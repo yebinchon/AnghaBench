@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * malloc (size_t) ; 
- int wcslen (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * wmemcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
+
+
+
+typedef int wchar_t ;
+
+
+ int * malloc (size_t) ;
+ int wcslen (int const*) ;
+ int * wmemcpy (int *,int const*,size_t) ;
 
 wchar_t *
 wcsdup(const wchar_t *s)
 {
-	wchar_t *copy;
-	size_t len;
+ wchar_t *copy;
+ size_t len;
 
-	len = wcslen(s) + 1;
-	if ((copy = malloc(len * sizeof(wchar_t))) == NULL)
-		return (NULL);
-	return (wmemcpy(copy, s, len));
+ len = wcslen(s) + 1;
+ if ((copy = malloc(len * sizeof(wchar_t))) == ((void*)0))
+  return (((void*)0));
+ return (wmemcpy(copy, s, len));
 }

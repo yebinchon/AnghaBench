@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct velocity_info {int /*<<< orphan*/  lock; int /*<<< orphan*/  active_vlans; } ;
+
+
+
+
+typedef int u16 ;
+struct velocity_info {int lock; int active_vlans; } ;
 struct net_device {int dummy; } ;
-typedef  int /*<<< orphan*/  __be16 ;
+typedef int __be16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct velocity_info* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  velocity_init_cam_filter (struct velocity_info*) ; 
+
+ int clear_bit (int ,int ) ;
+ struct velocity_info* netdev_priv (struct net_device*) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
+ int velocity_init_cam_filter (struct velocity_info*) ;
 
 __attribute__((used)) static int velocity_vlan_rx_kill_vid(struct net_device *dev,
-				     __be16 proto, u16 vid)
+         __be16 proto, u16 vid)
 {
-	struct velocity_info *vptr = netdev_priv(dev);
+ struct velocity_info *vptr = netdev_priv(dev);
 
-	spin_lock_irq(&vptr->lock);
-	clear_bit(vid, vptr->active_vlans);
-	velocity_init_cam_filter(vptr);
-	spin_unlock_irq(&vptr->lock);
-	return 0;
+ spin_lock_irq(&vptr->lock);
+ clear_bit(vid, vptr->active_vlans);
+ velocity_init_cam_filter(vptr);
+ spin_unlock_irq(&vptr->lock);
+ return 0;
 }

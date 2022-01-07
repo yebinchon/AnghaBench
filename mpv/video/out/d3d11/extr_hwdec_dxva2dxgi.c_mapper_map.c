@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; TYPE_1__* src; struct priv* priv; } ;
-struct queue_surf {int /*<<< orphan*/  tex; int /*<<< orphan*/  surf9; } ;
-struct priv {int /*<<< orphan*/  dev9; } ;
-struct TYPE_6__ {int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {scalar_t__* planes; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_2__ RECT ;
-typedef  int /*<<< orphan*/  IDirect3DSurface9 ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DTEXF_NONE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_StretchRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_HRESULT_to_str (int /*<<< orphan*/ ) ; 
- struct queue_surf* surf_acquire (struct ra_hwdec_mapper*) ; 
- int /*<<< orphan*/  surf_wait_idle9 (struct ra_hwdec_mapper*,struct queue_surf*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct ra_hwdec_mapper {int * tex; TYPE_1__* src; struct priv* priv; } ;
+struct queue_surf {int tex; int surf9; } ;
+struct priv {int dev9; } ;
+struct TYPE_6__ {int member_3; int member_2; int member_1; int member_0; } ;
+struct TYPE_5__ {scalar_t__* planes; int h; int w; } ;
+typedef TYPE_2__ RECT ;
+typedef int IDirect3DSurface9 ;
+typedef int HRESULT ;
+
+
+ int D3DTEXF_NONE ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DDevice9Ex_StretchRect (int ,int *,TYPE_2__*,int ,TYPE_2__*,int ) ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,int ) ;
+ int mp_HRESULT_to_str (int ) ;
+ struct queue_surf* surf_acquire (struct ra_hwdec_mapper*) ;
+ int surf_wait_idle9 (struct ra_hwdec_mapper*,struct queue_surf*) ;
 
 __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
 {

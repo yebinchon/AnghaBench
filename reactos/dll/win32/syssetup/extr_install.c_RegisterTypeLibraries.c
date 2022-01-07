@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HMODULE ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CSIDL_SYSTEM ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FatalError (char*,...) ; 
- int /*<<< orphan*/ * LoadLibraryW (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  PathAddBackslash (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHGetFolderPathW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupFindFirstLine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetIntField (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  __wine_register_resources (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef int INFCONTEXT ;
+typedef int HRESULT ;
+typedef int * HMODULE ;
+typedef int HINF ;
+typedef int BOOL ;
+
+
+ int ARRAYSIZE (int *) ;
+ int CSIDL_SYSTEM ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int FatalError (char*,...) ;
+ int * LoadLibraryW (int *) ;
+ int MAX_PATH ;
+ int PathAddBackslash (int *) ;
+ int SHGetFolderPathW (int *,int ,int *,int ,int *) ;
+ int SetupFindFirstLine (int ,int ,int *,int *) ;
+ scalar_t__ SetupFindNextLine (int *,int *) ;
+ int SetupGetIntField (int *,int,int *) ;
+ int SetupGetStringFieldW (int *,int,int *,int ,int *) ;
+ int TRUE ;
+ int __wine_register_resources (int *) ;
+ int wcscpy (int ,int *) ;
 
 BOOL
 RegisterTypeLibraries(HINF hinf, LPCWSTR szSection)
@@ -50,14 +50,14 @@ RegisterTypeLibraries(HINF hinf, LPCWSTR szSection)
     HMODULE hmod;
     HRESULT hret;
 
-    /* Begin iterating the entries in the inf section */
-    res = SetupFindFirstLine(hinf, szSection, NULL, &InfContext);
+
+    res = SetupFindFirstLine(hinf, szSection, ((void*)0), &InfContext);
     if (!res) return FALSE;
 
     do
     {
-        /* Get the name of the current type library */
-        if (!SetupGetStringFieldW(&InfContext, 1, szName, ARRAYSIZE(szName), NULL))
+
+        if (!SetupGetStringFieldW(&InfContext, 1, szName, ARRAYSIZE(szName), ((void*)0)))
         {
             FatalError("SetupGetStringFieldW failed\n");
             continue;
@@ -66,7 +66,7 @@ RegisterTypeLibraries(HINF hinf, LPCWSTR szSection)
         if (!SetupGetIntField(&InfContext, 2, &csidl))
             csidl = CSIDL_SYSTEM;
 
-        hret = SHGetFolderPathW(NULL, csidl, NULL, 0, szPath);
+        hret = SHGetFolderPathW(((void*)0), csidl, ((void*)0), 0, szPath);
         if (FAILED(hret))
         {
             FatalError("SHGetFolderPathW failed hret=0x%lx\n", hret);
@@ -77,7 +77,7 @@ RegisterTypeLibraries(HINF hinf, LPCWSTR szSection)
         wcscpy(p, szName);
 
         hmod = LoadLibraryW(szName);
-        if (hmod == NULL)
+        if (hmod == ((void*)0))
         {
             FatalError("LoadLibraryW failed\n");
             continue;

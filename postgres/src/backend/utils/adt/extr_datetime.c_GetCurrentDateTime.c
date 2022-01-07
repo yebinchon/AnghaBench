@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pg_tm {int dummy; } ;
-typedef  int /*<<< orphan*/  fsec_t ;
+typedef int fsec_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCurrentTransactionStartTimestamp () ; 
- int /*<<< orphan*/  timestamp2tm (int /*<<< orphan*/ ,int*,struct pg_tm*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int GetCurrentTransactionStartTimestamp () ;
+ int timestamp2tm (int ,int*,struct pg_tm*,int *,int *,int *) ;
 
 void
 GetCurrentDateTime(struct pg_tm *tm)
 {
-	int			tz;
-	fsec_t		fsec;
+ int tz;
+ fsec_t fsec;
 
-	timestamp2tm(GetCurrentTransactionStartTimestamp(), &tz, tm, &fsec,
-				 NULL, NULL);
-	/* Note: don't pass NULL tzp to timestamp2tm; affects behavior */
+ timestamp2tm(GetCurrentTransactionStartTimestamp(), &tz, tm, &fsec,
+     ((void*)0), ((void*)0));
+
 }

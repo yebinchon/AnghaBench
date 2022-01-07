@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  complement_pos (int /*<<< orphan*/ ,int const) ; 
- int /*<<< orphan*/  sel_cons ; 
+ int complement_pos (int ,int const) ;
+ int sel_cons ;
 
 __attribute__((used)) static inline void highlight_pointer(const int where)
 {
-	complement_pos(sel_cons, where);
+ complement_pos(sel_cons, where);
 }

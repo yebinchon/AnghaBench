@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct priv {TYPE_1__* vsapi; } ;
-struct mp_image {int num_planes; int /*<<< orphan*/ * stride; int /*<<< orphan*/ ** planes; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  VSFrameRef ;
-struct TYPE_5__ {int /*<<< orphan*/  id; } ;
-typedef  TYPE_2__ VSFormat ;
-struct TYPE_4__ {int /*<<< orphan*/  (* getStride ) (int /*<<< orphan*/  const*,int) ;scalar_t__ (* getReadPtr ) (int /*<<< orphan*/  const*,int) ;int /*<<< orphan*/ * (* getWritePtr ) (int /*<<< orphan*/ *,int) ;int /*<<< orphan*/  (* getFrameHeight ) (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* getFrameWidth ) (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ;TYPE_2__* (* getFrameFormat ) (int /*<<< orphan*/  const*) ;} ;
+struct mp_image {int num_planes; int * stride; int ** planes; int member_0; } ;
+typedef int VSFrameRef ;
+struct TYPE_5__ {int id; } ;
+typedef TYPE_2__ VSFormat ;
+struct TYPE_4__ {int (* getStride ) (int const*,int) ;scalar_t__ (* getReadPtr ) (int const*,int) ;int * (* getWritePtr ) (int *,int) ;int (* getFrameHeight ) (int const*,int ) ;int (* getFrameWidth ) (int const*,int ) ;TYPE_2__* (* getFrameFormat ) (int const*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_from_vs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_set_size (struct mp_image*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_setfmt (struct mp_image*,int /*<<< orphan*/ ) ; 
- TYPE_2__* stub1 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub4 (int /*<<< orphan*/ *,int) ; 
- scalar_t__ stub5 (int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/  const*,int) ; 
+
+ int mp_from_vs (int ) ;
+ int mp_image_set_size (struct mp_image*,int ,int ) ;
+ int mp_image_setfmt (struct mp_image*,int ) ;
+ TYPE_2__* stub1 (int const*) ;
+ int stub2 (int const*,int ) ;
+ int stub3 (int const*,int ) ;
+ int * stub4 (int *,int) ;
+ scalar_t__ stub5 (int const*,int) ;
+ int stub6 (int const*,int) ;
 
 __attribute__((used)) static struct mp_image map_vs_frame(struct priv *p, const VSFrameRef *ref,
                                     bool w)

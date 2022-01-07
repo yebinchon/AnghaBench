@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileCreate (char*) ; 
- int /*<<< orphan*/  FileFlush (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FileWrite (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
+
+
+
+typedef int IO ;
+
+
+ int FileClose (int *) ;
+ int * FileCreate (char*) ;
+ int FileFlush (int *) ;
+ int FileWrite (int *,char*,int ) ;
+ int StrLen (char*) ;
 
 void SetLinuxArpFilter()
 {
-	char *filename = "/proc/sys/net/ipv4/conf/all/arp_filter";
-	char *data = "1\n";
-	IO *o;
+ char *filename = "/proc/sys/net/ipv4/conf/all/arp_filter";
+ char *data = "1\n";
+ IO *o;
 
-	o = FileCreate(filename);
-	if (o == NULL)
-	{
-		return;
-	}
+ o = FileCreate(filename);
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-	FileWrite(o, data, StrLen(data));
-	FileFlush(o);
+ FileWrite(o, data, StrLen(data));
+ FileFlush(o);
 
-	FileClose(o);
+ FileClose(o);
 }

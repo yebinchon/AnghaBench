@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ dwMagic; int bits_per_pixel; scalar_t__ cvinfo; } ;
 struct TYPE_7__ {int biBitCount; scalar_t__ biCompression; } ;
-struct TYPE_8__ {int /*<<< orphan*/  bmiColors; TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_2__* LPBITMAPINFO ;
-typedef  TYPE_3__ ICCVID_Info ;
+struct TYPE_8__ {int bmiColors; TYPE_1__ bmiHeader; } ;
+typedef int LRESULT ;
+typedef TYPE_2__* LPBITMAPINFO ;
+typedef TYPE_3__ ICCVID_Info ;
 
-/* Variables and functions */
- scalar_t__ BI_BITFIELDS ; 
- scalar_t__ ICCVID_CheckMask (int /*<<< orphan*/ ,int,int,int) ; 
- scalar_t__ ICCVID_MAGIC ; 
- int /*<<< orphan*/  ICERR_BADPARAM ; 
- int /*<<< orphan*/  ICERR_OK ; 
- int /*<<< orphan*/  ICERR_UNSUPPORTED ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ decode_cinepak_init () ; 
- int /*<<< orphan*/  free_cvinfo (scalar_t__) ; 
+
+ scalar_t__ BI_BITFIELDS ;
+ scalar_t__ ICCVID_CheckMask (int ,int,int,int) ;
+ scalar_t__ ICCVID_MAGIC ;
+ int ICERR_BADPARAM ;
+ int ICERR_OK ;
+ int ICERR_UNSUPPORTED ;
+ int TRACE (char*,...) ;
+ scalar_t__ decode_cinepak_init () ;
+ int free_cvinfo (scalar_t__) ;
 
 __attribute__((used)) static LRESULT ICCVID_DecompressBegin( ICCVID_Info *info, LPBITMAPINFO in, LPBITMAPINFO out )
 {
     TRACE("ICM_DECOMPRESS_BEGIN %p %p %p\n", info, in, out);
 
-    if( (info==NULL) || (info->dwMagic!=ICCVID_MAGIC) )
+    if( (info==((void*)0)) || (info->dwMagic!=ICCVID_MAGIC) )
         return ICERR_BADPARAM;
 
     info->bits_per_pixel = out->bmiHeader.biBitCount;

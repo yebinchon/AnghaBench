@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_ARRAY ; 
- scalar_t__ JV_KIND_NULL ; 
- scalar_t__ JV_KIND_NUMBER ; 
- scalar_t__ JV_KIND_OBJECT ; 
- scalar_t__ JV_KIND_STRING ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_array_get (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  jv_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_false () ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid_with_msg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_kind_name (scalar_t__) ; 
- scalar_t__ jv_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_object_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string_fmt (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_ARRAY ;
+ scalar_t__ JV_KIND_NULL ;
+ scalar_t__ JV_KIND_NUMBER ;
+ scalar_t__ JV_KIND_OBJECT ;
+ scalar_t__ JV_KIND_STRING ;
+ int assert (int ) ;
+ int jv_array_get (int ,int) ;
+ int jv_bool (int ) ;
+ int jv_false () ;
+ int jv_free (int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_invalid_with_msg (int ) ;
+ int jv_is_valid (int ) ;
+ int jv_kind_name (scalar_t__) ;
+ scalar_t__ jv_number_value (int ) ;
+ int jv_object_get (int ,int ) ;
+ int jv_string_fmt (char*,int ,int ) ;
 
 jv jv_has(jv t, jv k) {
   assert(jv_is_valid(t));

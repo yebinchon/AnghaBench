@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  SharedDelete; int /*<<< orphan*/  SharedWrite; int /*<<< orphan*/  SharedRead; int /*<<< orphan*/  DeleteAccess; int /*<<< orphan*/  WriteAccess; int /*<<< orphan*/  ReadAccess; int /*<<< orphan*/  FileName; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int SharedDelete; int SharedWrite; int SharedRead; int DeleteAccess; int WriteAccess; int ReadAccess; int FileName; } ;
 struct TYPE_8__ {TYPE_5__* FileObject; } ;
 struct TYPE_7__ {scalar_t__ CurrentIrp; TYPE_2__* CurrentIrpSp; } ;
-typedef  TYPE_1__* PRX_CONTEXT ;
-typedef  TYPE_2__* PIO_STACK_LOCATION ;
+typedef TYPE_1__* PRX_CONTEXT ;
+typedef TYPE_2__* PIO_STACK_LOCATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DbgP (char*,...) ; 
- int /*<<< orphan*/  print_file_object (int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  print_fo_all (int,TYPE_1__*) ; 
- int /*<<< orphan*/  print_irp_flags (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  print_irps_flags (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int DbgP (char*,...) ;
+ int print_file_object (int ,TYPE_5__*) ;
+ int print_fo_all (int,TYPE_1__*) ;
+ int print_irp_flags (int ,scalar_t__) ;
+ int print_irps_flags (int ,TYPE_2__*) ;
 
 void print_debug_header(
     PRX_CONTEXT RxContext)

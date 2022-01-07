@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kern_ipc_perm {int /*<<< orphan*/  security; } ;
+
+
+
+
+struct kern_ipc_perm {int security; } ;
 struct msg_queue {struct kern_ipc_perm q_perm; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current_security () ; 
+
+ int current_security () ;
 
 __attribute__((used)) static int smack_msg_queue_alloc_security(struct msg_queue *msq)
 {
-	struct kern_ipc_perm *kisp = &msq->q_perm;
+ struct kern_ipc_perm *kisp = &msq->q_perm;
 
-	kisp->security = current_security();
-	return 0;
+ kisp->security = current_security();
+ return 0;
 }

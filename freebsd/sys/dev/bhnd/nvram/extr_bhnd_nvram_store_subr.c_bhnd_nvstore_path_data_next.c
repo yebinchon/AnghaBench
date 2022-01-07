@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct bhnd_nvram_store {int /*<<< orphan*/  data; } ;
-struct TYPE_6__ {TYPE_1__* index; int /*<<< orphan*/  path_str; } ;
-typedef  TYPE_2__ bhnd_nvstore_path ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct bhnd_nvram_store {int data; } ;
+struct TYPE_6__ {TYPE_1__* index; int path_str; } ;
+typedef TYPE_2__ bhnd_nvstore_path ;
 struct TYPE_5__ {scalar_t__ count; void** cookiep; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BHND_NVSTORE_LOCK_ASSERT (struct bhnd_nvram_store*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BHND_NV_ASSERT (int,char*) ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/ * bhnd_nvram_data_next (int /*<<< orphan*/ ,void**) ; 
- int bhnd_nvstore_is_root_path (struct bhnd_nvram_store*,TYPE_2__*) ; 
+
+ int BHND_NVSTORE_LOCK_ASSERT (struct bhnd_nvram_store*,int ) ;
+ int BHND_NV_ASSERT (int,char*) ;
+ int MA_OWNED ;
+ int * bhnd_nvram_data_next (int ,void**) ;
+ int bhnd_nvstore_is_root_path (struct bhnd_nvram_store*,TYPE_2__*) ;
 
 void *
 bhnd_nvstore_path_data_next(struct bhnd_nvram_store *sc,
      bhnd_nvstore_path *path, void **indexp)
 {
-	void **index_ref;
+ void **index_ref;
 
-	BHND_NVSTORE_LOCK_ASSERT(sc, MA_OWNED);
+ BHND_NVSTORE_LOCK_ASSERT(sc, MA_OWNED);
 
-	/* No index */
-	if (path->index == NULL) {
-		/* An index is required for all non-empty, non-root path
-		 * instances */
-		BHND_NV_ASSERT(bhnd_nvstore_is_root_path(sc, path),
-		    ("missing index for non-root path %s", path->path_str));
 
-		/* Iterate NVRAM data directly, using the NVRAM data's cookiep
-		 * value as our indexp context */
-		if ((bhnd_nvram_data_next(sc->data, indexp)) == NULL)
-			return (NULL);
+ if (path->index == ((void*)0)) {
 
-		return (*indexp);
-	}
 
-	/* Empty index */
-	if (path->index->count == 0)
-		return (NULL);
+  BHND_NV_ASSERT(bhnd_nvstore_is_root_path(sc, path),
+      ("missing index for non-root path %s", path->path_str));
 
-	if (*indexp == NULL) {
-		/* First index entry */
-		index_ref = &path->index->cookiep[0];
-	} else {
-		size_t idxpos;
 
-		/* Advance to next index entry */
-		index_ref = *indexp;
-		index_ref++;
 
-		/* Hit end of index? */
-		BHND_NV_ASSERT(index_ref > path->index->cookiep,
-		    ("invalid indexp"));
+  if ((bhnd_nvram_data_next(sc->data, indexp)) == ((void*)0))
+   return (((void*)0));
 
-		idxpos = (index_ref - path->index->cookiep);
-		if (idxpos >= path->index->count)
-			return (NULL);
-	}
+  return (*indexp);
+ }
 
-	/* Provide new index position */
-	*indexp = index_ref;
 
-	/* Return the data's cookiep value */
-	return (*index_ref);
+ if (path->index->count == 0)
+  return (((void*)0));
+
+ if (*indexp == ((void*)0)) {
+
+  index_ref = &path->index->cookiep[0];
+ } else {
+  size_t idxpos;
+
+
+  index_ref = *indexp;
+  index_ref++;
+
+
+  BHND_NV_ASSERT(index_ref > path->index->cookiep,
+      ("invalid indexp"));
+
+  idxpos = (index_ref - path->index->cookiep);
+  if (idxpos >= path->index->count)
+   return (((void*)0));
+ }
+
+
+ *indexp = index_ref;
+
+
+ return (*index_ref);
 }

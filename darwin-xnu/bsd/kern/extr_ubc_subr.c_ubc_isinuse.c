@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vnode {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UBCINFOEXISTS (struct vnode*) ; 
- int ubc_isinuse_locked (struct vnode*,int,int /*<<< orphan*/ ) ; 
+
+ int UBCINFOEXISTS (struct vnode*) ;
+ int ubc_isinuse_locked (struct vnode*,int,int ) ;
 
 int
 ubc_isinuse(struct vnode *vp, int busycount)
 {
-	if ( !UBCINFOEXISTS(vp))
-		return (0);
-	return(ubc_isinuse_locked(vp, busycount, 0));
+ if ( !UBCINFOEXISTS(vp))
+  return (0);
+ return(ubc_isinuse_locked(vp, busycount, 0));
 }

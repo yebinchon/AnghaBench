@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KEY_READ ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,char const*,long,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  TRUE ; 
- char* malloc (scalar_t__) ; 
+
+
+
+typedef int * LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int KEY_READ ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyEx (int ,char const*,long,int ,int *) ;
+ scalar_t__ RegQueryValueEx (int ,char const*,int *,scalar_t__*,int *,scalar_t__*) ;
+ int TRUE ;
+ char* malloc (scalar_t__) ;
 
 BOOL readRegValue(HKEY root, const char *subkey, const char *name, char **value)
 {
     HKEY hKey;
-    char *buf = NULL;
+    char *buf = ((void*)0);
     BOOL ret = FALSE;
     LONG result = RegOpenKeyEx(root,
                                subkey,
                                0L,
-                               // KEY_READ | KEY_WOW64_64KEY,
+
                                KEY_READ,
                                &hKey);
     if (result != ERROR_SUCCESS) {
@@ -45,10 +45,10 @@ BOOL readRegValue(HKEY root, const char *subkey, const char *name, char **value)
     DWORD len, type;
     result = RegQueryValueEx(hKey,
                              name,
-                             NULL,  // reserved
-                             &type, // type
-                             NULL,  // data
-                             &len); // size
+                             ((void*)0),
+                             &type,
+                             ((void*)0),
+                             &len);
     if (result != ERROR_SUCCESS || type != REG_SZ) {
         goto out;
     }
@@ -57,10 +57,10 @@ BOOL readRegValue(HKEY root, const char *subkey, const char *name, char **value)
     buf[len] = 0;
     result = RegQueryValueEx(hKey,
                              name,
-                             NULL,          // reserved
-                             NULL,          // type
-                             (LPBYTE) buf,  // data
-                             &len);         // size
+                             ((void*)0),
+                             ((void*)0),
+                             (LPBYTE) buf,
+                             &len);
     if (result != ERROR_SUCCESS) {
         goto out;
     }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  thread; int /*<<< orphan*/  kill_service; } ;
-typedef  TYPE_1__ ILCS_SERVICE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEINIT_CALLED ; 
- int /*<<< orphan*/  ilcs_send_quit (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_free (TYPE_1__*) ; 
- int /*<<< orphan*/  vcos_thread_join (int /*<<< orphan*/ *,void**) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int thread; int kill_service; } ;
+typedef TYPE_1__ ILCS_SERVICE_T ;
+
+
+ int DEINIT_CALLED ;
+ int ilcs_send_quit (TYPE_1__*) ;
+ int vcos_free (TYPE_1__*) ;
+ int vcos_thread_join (int *,void**) ;
 
 void ilcs_deinit(ILCS_SERVICE_T *st)
 {

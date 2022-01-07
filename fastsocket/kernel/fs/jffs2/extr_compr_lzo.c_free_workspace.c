@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  lzo_compress_buf ; 
- int /*<<< orphan*/  lzo_mem ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ ) ; 
+ int lzo_compress_buf ;
+ int lzo_mem ;
+ int vfree (int ) ;
 
 __attribute__((used)) static void free_workspace(void)
 {
-	vfree(lzo_mem);
-	vfree(lzo_compress_buf);
+ vfree(lzo_mem);
+ vfree(lzo_compress_buf);
 }

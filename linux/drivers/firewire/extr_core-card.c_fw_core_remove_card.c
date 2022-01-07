@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fw_card_driver {int /*<<< orphan*/  stop_iso; int /*<<< orphan*/  free_iso_context; int /*<<< orphan*/  (* update_phy_reg ) (struct fw_card*,int,int,int /*<<< orphan*/ ) ;} ;
-struct fw_card {int /*<<< orphan*/  transaction_list; int /*<<< orphan*/  done; struct fw_card_driver* driver; int /*<<< orphan*/  link; } ;
 
-/* Variables and functions */
- int PHY_CONTENDER ; 
- int PHY_LINK_ACTIVE ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  card_mutex ; 
- struct fw_card_driver dummy_driver_template ; 
- int /*<<< orphan*/  fw_card_put (struct fw_card*) ; 
- int /*<<< orphan*/  fw_destroy_nodes (struct fw_card*) ; 
- int /*<<< orphan*/  fw_schedule_bus_reset (struct fw_card*,int,int) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (struct fw_card*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
+
+
+
+struct fw_card_driver {int stop_iso; int free_iso_context; int (* update_phy_reg ) (struct fw_card*,int,int,int ) ;} ;
+struct fw_card {int transaction_list; int done; struct fw_card_driver* driver; int link; } ;
+
+
+ int PHY_CONTENDER ;
+ int PHY_LINK_ACTIVE ;
+ int WARN_ON (int) ;
+ int card_mutex ;
+ struct fw_card_driver dummy_driver_template ;
+ int fw_card_put (struct fw_card*) ;
+ int fw_destroy_nodes (struct fw_card*) ;
+ int fw_schedule_bus_reset (struct fw_card*,int,int) ;
+ int list_del_init (int *) ;
+ int list_empty (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int stub1 (struct fw_card*,int,int,int ) ;
+ int wait_for_completion (int *) ;
 
 void fw_core_remove_card(struct fw_card *card)
 {
-	struct fw_card_driver dummy_driver = dummy_driver_template;
+ struct fw_card_driver dummy_driver = dummy_driver_template;
 
-	card->driver->update_phy_reg(card, 4,
-				     PHY_LINK_ACTIVE | PHY_CONTENDER, 0);
-	fw_schedule_bus_reset(card, false, true);
+ card->driver->update_phy_reg(card, 4,
+         PHY_LINK_ACTIVE | PHY_CONTENDER, 0);
+ fw_schedule_bus_reset(card, 0, 1);
 
-	mutex_lock(&card_mutex);
-	list_del_init(&card->link);
-	mutex_unlock(&card_mutex);
+ mutex_lock(&card_mutex);
+ list_del_init(&card->link);
+ mutex_unlock(&card_mutex);
 
-	/* Switch off most of the card driver interface. */
-	dummy_driver.free_iso_context	= card->driver->free_iso_context;
-	dummy_driver.stop_iso		= card->driver->stop_iso;
-	card->driver = &dummy_driver;
 
-	fw_destroy_nodes(card);
+ dummy_driver.free_iso_context = card->driver->free_iso_context;
+ dummy_driver.stop_iso = card->driver->stop_iso;
+ card->driver = &dummy_driver;
 
-	/* Wait for all users, especially device workqueue jobs, to finish. */
-	fw_card_put(card);
-	wait_for_completion(&card->done);
+ fw_destroy_nodes(card);
 
-	WARN_ON(!list_empty(&card->transaction_list));
+
+ fw_card_put(card);
+ wait_for_completion(&card->done);
+
+ WARN_ON(!list_empty(&card->transaction_list));
 }

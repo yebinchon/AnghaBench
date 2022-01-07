@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_14__ {TYPE_1__* prot; } ;
-struct TYPE_13__ {scalar_t__ cache_file_forwards_capacity; scalar_t__ read_logical_pos; int io_error; scalar_t__ file_logical_pos; int /*<<< orphan*/  file_mutex; int /*<<< orphan*/  cond_wakeup_file_background; scalar_t__ io_eof_reached; int /*<<< orphan*/  cond_wakeup_main; TYPE_5__* inner; scalar_t__ cache_file_close; } ;
+struct TYPE_13__ {scalar_t__ cache_file_forwards_capacity; scalar_t__ read_logical_pos; int io_error; scalar_t__ file_logical_pos; int file_mutex; int cond_wakeup_file_background; scalar_t__ io_eof_reached; int cond_wakeup_main; TYPE_5__* inner; scalar_t__ cache_file_close; } ;
 struct TYPE_12__ {TYPE_3__* priv_data; } ;
-struct TYPE_11__ {int (* url_seek ) (TYPE_5__*,scalar_t__,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_2__ IjkURLContext ;
-typedef  TYPE_3__ IjkIOCacheContext ;
+struct TYPE_11__ {int (* url_seek ) (TYPE_5__*,scalar_t__,int ) ;} ;
+typedef TYPE_2__ IjkURLContext ;
+typedef TYPE_3__ IjkIOCacheContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOSYS ; 
- int IJKAVERROR (int /*<<< orphan*/ ) ; 
- int IJKAVERROR_EOF ; 
- int IJKAVERROR_EXIT ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  call_inject_statistic (TYPE_2__*) ; 
- scalar_t__ ijkio_cache_check_interrupt (TYPE_2__*) ; 
- int ijkio_cache_sync_read (TYPE_2__*,unsigned char*,int) ; 
- int ijkio_file_read (TYPE_2__*,unsigned char*,int) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int stub1 (TYPE_5__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int wrapped_url_read (TYPE_2__*,unsigned char*,int) ; 
+
+ int ENOSYS ;
+ int IJKAVERROR (int ) ;
+ int IJKAVERROR_EOF ;
+ int IJKAVERROR_EXIT ;
+ int SEEK_SET ;
+ int call_inject_statistic (TYPE_2__*) ;
+ scalar_t__ ijkio_cache_check_interrupt (TYPE_2__*) ;
+ int ijkio_cache_sync_read (TYPE_2__*,unsigned char*,int) ;
+ int ijkio_file_read (TYPE_2__*,unsigned char*,int) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int stub1 (TYPE_5__*,scalar_t__,int ) ;
+ int wrapped_url_read (TYPE_2__*,unsigned char*,int) ;
 
 __attribute__((used)) static int ijkio_cache_read(IjkURLContext *h, unsigned char *buf, int size) {
     IjkIOCacheContext *c = h->priv_data;
-    int64_t          ret = 0;
-    int          to_read = size;
-    unsigned char  *dest = buf;
-    int          to_copy = 0;
+    int64_t ret = 0;
+    int to_read = size;
+    unsigned char *dest = buf;
+    int to_copy = 0;
 
     if (!c || !c->inner || !c->inner->prot)
         return IJKAVERROR(ENOSYS);
@@ -76,18 +76,18 @@ __attribute__((used)) static int ijkio_cache_read(IjkURLContext *h, unsigned cha
                 return (int)ret;
             }
 
-            to_copy  = wrapped_url_read(h, dest, to_read);
+            to_copy = wrapped_url_read(h, dest, to_read);
             to_read -= to_copy;
-            ret      = size - to_read;
+            ret = size - to_read;
             pthread_mutex_unlock(&c->file_mutex);
             return (int)ret;
         }
 
         to_copy = ijkio_file_read(h, dest, to_read);
         if (to_copy > 0) {
-            to_read             -= to_copy;
-            ret                  = size - to_read;
-            dest                += to_copy;
+            to_read -= to_copy;
+            ret = size - to_read;
+            dest += to_copy;
             c->read_logical_pos += to_copy;
             if (to_read <= 0)
                 break;

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_6__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/  time_base; } ;
-struct TYPE_8__ {int /*<<< orphan*/  time_base; } ;
-struct TYPE_7__ {int stream_index; int duration; int size; scalar_t__ dts; scalar_t__ pts; int /*<<< orphan*/ * data; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ AVPacket ;
 
-/* Variables and functions */
- scalar_t__ AV_PICTURE_TYPE_B ; 
- scalar_t__ AV_PICTURE_TYPE_I ; 
- scalar_t__ AV_PICTURE_TYPE_P ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int /*<<< orphan*/  AV_WB32 (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ audio_dts ; 
- int audio_duration ; 
- TYPE_6__* audio_st ; 
- scalar_t__ av_compare_ts (scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_init_packet (TYPE_1__*) ; 
- int /*<<< orphan*/  av_interleaved_write_frame (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  av_write_frame (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  bframes ; 
- scalar_t__ clear_duration ; 
- int /*<<< orphan*/  ctx ; 
- scalar_t__ do_interleave ; 
- int duration ; 
- int fake_pkt_duration ; 
- int frames ; 
- int gop_size ; 
- scalar_t__ last_picture ; 
- scalar_t__ next_p_pts ; 
- scalar_t__ skip_write ; 
- scalar_t__ skip_write_audio ; 
- scalar_t__ video_dts ; 
- TYPE_2__* video_st ; 
+
+typedef struct TYPE_9__ TYPE_6__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_9__ {int time_base; } ;
+struct TYPE_8__ {int time_base; } ;
+struct TYPE_7__ {int stream_index; int duration; int size; scalar_t__ dts; scalar_t__ pts; int * data; int flags; } ;
+typedef TYPE_1__ AVPacket ;
+
+
+ scalar_t__ AV_PICTURE_TYPE_B ;
+ scalar_t__ AV_PICTURE_TYPE_I ;
+ scalar_t__ AV_PICTURE_TYPE_P ;
+ int AV_PKT_FLAG_KEY ;
+ int AV_WB32 (int *,scalar_t__) ;
+ scalar_t__ audio_dts ;
+ int audio_duration ;
+ TYPE_6__* audio_st ;
+ scalar_t__ av_compare_ts (scalar_t__,int ,scalar_t__,int ) ;
+ int av_init_packet (TYPE_1__*) ;
+ int av_interleaved_write_frame (int ,TYPE_1__*) ;
+ int av_write_frame (int ,TYPE_1__*) ;
+ int bframes ;
+ scalar_t__ clear_duration ;
+ int ctx ;
+ scalar_t__ do_interleave ;
+ int duration ;
+ int fake_pkt_duration ;
+ int frames ;
+ int gop_size ;
+ scalar_t__ last_picture ;
+ scalar_t__ next_p_pts ;
+ scalar_t__ skip_write ;
+ scalar_t__ skip_write_audio ;
+ scalar_t__ video_dts ;
+ TYPE_2__* video_st ;
 
 __attribute__((used)) static void mux_frames(int n, int c)
 {

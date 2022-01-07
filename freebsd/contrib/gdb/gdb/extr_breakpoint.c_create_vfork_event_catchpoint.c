@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  bp_catch_vfork ; 
- int /*<<< orphan*/  create_fork_vfork_event_catchpoint (int,char*,int /*<<< orphan*/ ) ; 
+ int bp_catch_vfork ;
+ int create_fork_vfork_event_catchpoint (int,char*,int ) ;
 
 void
 create_vfork_event_catchpoint (int tempflag, char *cond_string)

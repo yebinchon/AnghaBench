@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CPU_ALLOC_SIZE (int) ; 
- int /*<<< orphan*/  log_info (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_cpu_set_to_from_dbus () ; 
- int /*<<< orphan*/  test_cpus_in_affinity_mask () ; 
- int /*<<< orphan*/  test_parse_cpu_set () ; 
- int /*<<< orphan*/  test_parse_cpu_set_extend () ; 
+ int CPU_ALLOC_SIZE (int) ;
+ int log_info (char*,int ) ;
+ int test_cpu_set_to_from_dbus () ;
+ int test_cpus_in_affinity_mask () ;
+ int test_parse_cpu_set () ;
+ int test_parse_cpu_set_extend () ;
 
 int main(int argc, char *argv[]) {
         log_info("CPU_ALLOC_SIZE(1) = %zu", CPU_ALLOC_SIZE(1));

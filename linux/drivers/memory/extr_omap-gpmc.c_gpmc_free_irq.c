@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gpmc_device {int nirqs; int /*<<< orphan*/  irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,struct gpmc_device*) ; 
- int /*<<< orphan*/ * gpmc_irq_domain ; 
- int /*<<< orphan*/  irq_dispose_mapping (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irq_domain_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  irq_find_mapping (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct gpmc_device {int nirqs; int irq; } ;
+
+
+ int free_irq (int ,struct gpmc_device*) ;
+ int * gpmc_irq_domain ;
+ int irq_dispose_mapping (int ) ;
+ int irq_domain_remove (int *) ;
+ int irq_find_mapping (int *,int) ;
 
 __attribute__((used)) static int gpmc_free_irq(struct gpmc_device *gpmc)
 {
-	int hwirq;
+ int hwirq;
 
-	free_irq(gpmc->irq, gpmc);
+ free_irq(gpmc->irq, gpmc);
 
-	for (hwirq = 0; hwirq < gpmc->nirqs; hwirq++)
-		irq_dispose_mapping(irq_find_mapping(gpmc_irq_domain, hwirq));
+ for (hwirq = 0; hwirq < gpmc->nirqs; hwirq++)
+  irq_dispose_mapping(irq_find_mapping(gpmc_irq_domain, hwirq));
 
-	irq_domain_remove(gpmc_irq_domain);
-	gpmc_irq_domain = NULL;
+ irq_domain_remove(gpmc_irq_domain);
+ gpmc_irq_domain = ((void*)0);
 
-	return 0;
+ return 0;
 }

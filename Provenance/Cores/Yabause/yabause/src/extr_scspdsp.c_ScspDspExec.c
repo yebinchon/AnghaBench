@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int ira; size_t iwa; int bsel; int tra; int xsel; int ysel; size_t coef; int shift; int twa; size_t masa; int table; size_t ewa; scalar_t__ ewt; scalar_t__ adrl; scalar_t__ mwt; scalar_t__ mrd; scalar_t__ nxadr; scalar_t__ adreb; scalar_t__ frcl; scalar_t__ twt; scalar_t__ yrl; scalar_t__ zero; scalar_t__ negb; scalar_t__ iwt; } ;
-union ScspDspInstruction {TYPE_1__ part; int /*<<< orphan*/  all; } ;
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u64 ;
-typedef  int u32 ;
-typedef  int u16 ;
-typedef  int s32 ;
-struct TYPE_7__ {int /*<<< orphan*/ * mpro; } ;
+union ScspDspInstruction {TYPE_1__ part; int all; } ;
+typedef int u8 ;
+typedef int u64 ;
+typedef int u32 ;
+typedef int u16 ;
+typedef int s32 ;
+struct TYPE_7__ {int * mpro; } ;
 struct TYPE_6__ {int inputs; int* mems; int* mixs; int* exts; int mrd_value; int* temp; int mdec_ct; int b; int acc; int x; int y; int frc_reg; int* coef; int y_reg; int shifted; int* madrs; int adrs_reg; int rbl; int rbp; int* efreg; } ;
-typedef  TYPE_2__ ScspDsp ;
+typedef TYPE_2__ ScspDsp ;
 
-/* Variables and functions */
- int float_to_int (int) ; 
- int int_to_float (int) ; 
- void* saturate_24 (int) ; 
- TYPE_3__ scsp_dsp ; 
+
+ int float_to_int (int) ;
+ int int_to_float (int) ;
+ void* saturate_24 (int) ;
+ TYPE_3__ scsp_dsp ;
 
 void ScspDspExec(ScspDsp* dsp, int addr, u8 * sound_ram)
 {
@@ -53,7 +53,7 @@ void ScspDspExec(ScspDsp* dsp, int addr, u8 * sound_ram)
       s32 temp_val = dsp->temp[(instruction.part.tra + dsp->mdec_ct) & 0x7f];
 
       if (temp_val & 0x800000)
-         temp_val |= 0x3000000;//sign extend to 26 bits
+         temp_val |= 0x3000000;
 
       dsp->b = temp_val;
    }
@@ -97,7 +97,7 @@ void ScspDspExec(ScspDsp* dsp, int addr, u8 * sound_ram)
    else if (instruction.part.shift == 2)
       dsp->shifted = dsp->acc & 0xffffff;
 
-   mul_temp = (u64)dsp->x * (u64)dsp->y;//prevent clipping
+   mul_temp = (u64)dsp->x * (u64)dsp->y;
    dsp->acc = (mul_temp >> 12) + dsp->b;
 
    dsp->acc &= 0xffffff;

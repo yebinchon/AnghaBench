@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _pthread_atfork (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sem_child_postfork ; 
- int /*<<< orphan*/  sem_llock ; 
- int /*<<< orphan*/  sem_postfork ; 
- int /*<<< orphan*/  sem_prefork ; 
+ int _pthread_atfork (int ,int ,int ) ;
+ int _pthread_mutex_init (int *,int *) ;
+ int sem_child_postfork ;
+ int sem_llock ;
+ int sem_postfork ;
+ int sem_prefork ;
 
 __attribute__((used)) static void
 sem_module_init(void)
 {
 
-	_pthread_mutex_init(&sem_llock, NULL);
-	_pthread_atfork(sem_prefork, sem_postfork, sem_child_postfork);
+ _pthread_mutex_init(&sem_llock, ((void*)0));
+ _pthread_atfork(sem_prefork, sem_postfork, sem_child_postfork);
 }

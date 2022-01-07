@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-typedef  scalar_t__ VCHI_SERVICE_HANDLE_T ;
-typedef  int /*<<< orphan*/  VCHIQ_STATUS_T ;
-struct TYPE_2__ {int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ SHIM_SERVICE_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vchiq_get_peer_version (int /*<<< orphan*/ ,short*) ; 
- int vchiq_status_to_vchi (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+typedef scalar_t__ VCHI_SERVICE_HANDLE_T ;
+typedef int VCHIQ_STATUS_T ;
+struct TYPE_2__ {int handle; } ;
+typedef TYPE_1__ SHIM_SERVICE_T ;
+
+
+ int vchiq_get_peer_version (int ,short*) ;
+ int vchiq_status_to_vchi (int ) ;
 
 int32_t vchi_get_peer_version( const VCHI_SERVICE_HANDLE_T handle, short *peer_version )
 {

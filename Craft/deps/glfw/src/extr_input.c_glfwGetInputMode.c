@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int cursorMode; int stickyKeys; int stickyMouseButtons; } ;
-typedef  TYPE_1__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_1__ _GLFWwindow ;
+typedef int GLFWwindow ;
 
-/* Variables and functions */
-#define  GLFW_CURSOR 130 
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
-#define  GLFW_STICKY_KEYS 129 
-#define  GLFW_STICKY_MOUSE_BUTTONS 128 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
+
+
+ int GLFW_INVALID_ENUM ;
+
+
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int ) ;
+ int _glfwInputError (int ,char*) ;
 
 int glfwGetInputMode(GLFWwindow* handle, int mode)
 {
@@ -31,11 +31,11 @@ int glfwGetInputMode(GLFWwindow* handle, int mode)
 
     switch (mode)
     {
-        case GLFW_CURSOR:
+        case 130:
             return window->cursorMode;
-        case GLFW_STICKY_KEYS:
+        case 129:
             return window->stickyKeys;
-        case GLFW_STICKY_MOUSE_BUTTONS:
+        case 128:
             return window->stickyMouseButtons;
         default:
             _glfwInputError(GLFW_INVALID_ENUM, "Invalid input mode");

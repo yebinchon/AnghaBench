@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_keystore ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/ * jobject ;
-typedef  int /*<<< orphan*/  jbyte ;
-struct TYPE_13__ {int /*<<< orphan*/  init; int /*<<< orphan*/  getInstance; } ;
-struct TYPE_10__ {int /*<<< orphan*/  DECRYPT_MODE; } ;
-struct TYPE_12__ {TYPE_1__ Cipher; int /*<<< orphan*/  VLC_CIPHER; } ;
-struct TYPE_11__ {int /*<<< orphan*/  (* SetByteArrayRegion ) (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;int /*<<< orphan*/ * (* NewByteArray ) (TYPE_2__**,int) ;} ;
-typedef  TYPE_2__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CALL_STATICOBJ (TYPE_8__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CALL_VOID (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ CHECK_EXCEPTION () ; 
- TYPE_8__ Cipher ; 
- int /*<<< orphan*/  DEL_LREF (int /*<<< orphan*/ *) ; 
- TYPE_2__** GET_ENV () ; 
- int /*<<< orphan*/  IvParameterSpec ; 
- int /*<<< orphan*/ * NEW_OBJECT (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- size_t Process (int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- TYPE_5__ fields ; 
- int /*<<< orphan*/  memcpy (int*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  s_jkey ; 
- int /*<<< orphan*/ * stub1 (TYPE_2__**,int) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int vlc_keystore ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int * jobject ;
+typedef int jbyte ;
+struct TYPE_13__ {int init; int getInstance; } ;
+struct TYPE_10__ {int DECRYPT_MODE; } ;
+struct TYPE_12__ {TYPE_1__ Cipher; int VLC_CIPHER; } ;
+struct TYPE_11__ {int (* SetByteArrayRegion ) (TYPE_2__**,int *,int ,int,int *) ;int * (* NewByteArray ) (TYPE_2__**,int) ;} ;
+typedef TYPE_2__* JNIEnv ;
+
+
+ int * CALL_STATICOBJ (TYPE_8__,int ,int ) ;
+ int CALL_VOID (int *,int ,int ,int ,int *) ;
+ scalar_t__ CHECK_EXCEPTION () ;
+ TYPE_8__ Cipher ;
+ int DEL_LREF (int *) ;
+ TYPE_2__** GET_ENV () ;
+ int IvParameterSpec ;
+ int * NEW_OBJECT (int ,int *) ;
+ size_t Process (int *,TYPE_2__**,int *,int const*,size_t,int *,int ,int **) ;
+ TYPE_5__ fields ;
+ int memcpy (int*,int const*,int) ;
+ int s_jkey ;
+ int * stub1 (TYPE_2__**,int) ;
+ int stub2 (TYPE_2__**,int *,int ,int,int *) ;
 
 __attribute__((used)) static size_t
 AndroidDecrypt(vlc_keystore *p_keystore, void *p_ctx, const uint8_t *p_src,
@@ -47,16 +47,16 @@ AndroidDecrypt(vlc_keystore *p_keystore, void *p_ctx, const uint8_t *p_src,
 {
     (void) p_ctx;
     JNIEnv *p_env = GET_ENV();
-    if (p_env == NULL)
+    if (p_env == ((void*)0))
         return 0;
 
-    jobject jivArray = NULL, jiv = NULL, jcipher = NULL;
+    jobject jivArray = ((void*)0), jiv = ((void*)0), jcipher = ((void*)0);
 
     jcipher = CALL_STATICOBJ(Cipher, Cipher.getInstance, fields.VLC_CIPHER);
     if (CHECK_EXCEPTION())
         return 0;
 
-    /* Get the IV located at the beginning of the secret */
+
     size_t i_dst_len = 0;
     uint32_t i_iv_len;
     if (i_src_len < sizeof(uint32_t))
@@ -76,7 +76,7 @@ AndroidDecrypt(vlc_keystore *p_keystore, void *p_ctx, const uint8_t *p_src,
     if (CHECK_EXCEPTION())
         goto end;
 
-    /* Use the IV to initialize the decrypt Cipher */
+
     CALL_VOID(jcipher, Cipher.init, fields.Cipher.DECRYPT_MODE, s_jkey, jiv);
     if (CHECK_EXCEPTION())
         goto end;
@@ -84,13 +84,13 @@ AndroidDecrypt(vlc_keystore *p_keystore, void *p_ctx, const uint8_t *p_src,
     i_dst_len = Process(p_keystore, p_env, jcipher,
                         p_src + sizeof(uint32_t) + i_iv_len,
                         i_src_len - sizeof(uint32_t) - i_iv_len,
-                        NULL, 0, pp_dst);
+                        ((void*)0), 0, pp_dst);
 
 end:
     DEL_LREF(jcipher);
-    if (jivArray != NULL)
+    if (jivArray != ((void*)0))
         DEL_LREF(jivArray);
-    if (jiv != NULL)
+    if (jiv != ((void*)0))
         DEL_LREF(jiv);
     return i_dst_len;
 }

@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int member_0; } ;
 struct variant_info {char const* bandwidth; TYPE_1__ member_0; } ;
-struct variant {int duration; int bandwidth; int /*<<< orphan*/  url; } ;
-struct segment {int duration; int bandwidth; int /*<<< orphan*/  url; } ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  ff_parse_key_val_cb ;
-struct TYPE_7__ {int /*<<< orphan*/  protocol_blacklist; int /*<<< orphan*/  protocol_whitelist; int /*<<< orphan*/  interrupt_callback; TYPE_3__* priv_data; } ;
-typedef  TYPE_2__ URLContext ;
-struct TYPE_8__ {int finished; int target_duration; int start_seq_no; int /*<<< orphan*/  last_load_time; int /*<<< orphan*/  n_variants; int /*<<< orphan*/  variants; int /*<<< orphan*/  n_segments; int /*<<< orphan*/  segments; } ;
-typedef  TYPE_3__ HLSContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct variant {int duration; int bandwidth; int url; } ;
+struct segment {int duration; int bandwidth; int url; } ;
+typedef int line ;
+typedef int int64_t ;
+typedef int ff_parse_key_val_cb ;
+struct TYPE_7__ {int protocol_blacklist; int protocol_whitelist; int interrupt_callback; TYPE_3__* priv_data; } ;
+typedef TYPE_2__ URLContext ;
+struct TYPE_8__ {int finished; int target_duration; int start_seq_no; int last_load_time; int n_variants; int variants; int n_segments; int segments; } ;
+typedef TYPE_3__ HLSContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int AV_TIME_BASE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int atof (char const*) ; 
- int atoi (char const*) ; 
- int /*<<< orphan*/  av_gettime_relative () ; 
- struct variant* av_malloc (int) ; 
- scalar_t__ av_strstart (char*,char*,char const**) ; 
- int /*<<< orphan*/  avio_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dynarray_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct variant*) ; 
- int /*<<< orphan*/  ff_get_chomp_line (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ff_make_absolute_url (int /*<<< orphan*/ ,int,char const*,char*) ; 
- int /*<<< orphan*/  ff_parse_key_value (char const*,int /*<<< orphan*/ ,struct variant_info*) ; 
- int ffio_open_whitelist (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_segment_list (TYPE_3__*) ; 
- scalar_t__ handle_variant_args ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVIO_FLAG_READ ;
+ int AV_TIME_BASE ;
+ int ENOMEM ;
+ int atof (char const*) ;
+ int atoi (char const*) ;
+ int av_gettime_relative () ;
+ struct variant* av_malloc (int) ;
+ scalar_t__ av_strstart (char*,char*,char const**) ;
+ int avio_close (int *) ;
+ int avio_feof (int *) ;
+ int dynarray_add (int *,int *,struct variant*) ;
+ int ff_get_chomp_line (int *,char*,int) ;
+ int ff_make_absolute_url (int ,int,char const*,char*) ;
+ int ff_parse_key_value (char const*,int ,struct variant_info*) ;
+ int ffio_open_whitelist (int **,char const*,int ,int *,int *,int ,int ) ;
+ int free_segment_list (TYPE_3__*) ;
+ scalar_t__ handle_variant_args ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int parse_playlist(URLContext *h, const char *url)
 {
@@ -58,7 +58,7 @@ __attribute__((used)) static int parse_playlist(URLContext *h, const char *url)
     const char *ptr;
 
     if ((ret = ffio_open_whitelist(&in, url, AVIO_FLAG_READ,
-                                   &h->interrupt_callback, NULL,
+                                   &h->interrupt_callback, ((void*)0),
                                    h->protocol_whitelist, h->protocol_blacklist)) < 0)
         return ret;
 
@@ -87,7 +87,7 @@ __attribute__((used)) static int parse_playlist(URLContext *h, const char *url)
         } else if (av_strstart(line, "#EXTINF:", &ptr)) {
             is_segment = 1;
             duration = atof(ptr) * AV_TIME_BASE;
-        } else if (av_strstart(line, "#", NULL)) {
+        } else if (av_strstart(line, "#", ((void*)0))) {
             continue;
         } else if (line[0]) {
             if (is_segment) {

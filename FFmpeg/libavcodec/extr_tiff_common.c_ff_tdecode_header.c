@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int AV_RB16 (char*) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16u (int /*<<< orphan*/ *) ; 
- int ff_tget_long (int /*<<< orphan*/ *,int) ; 
- int ff_tget_short (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_RB16 (char*) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16u (int *) ;
+ int ff_tget_long (int *,int) ;
+ int ff_tget_short (int *,int) ;
 
 int ff_tdecode_header(GetByteContext *gb, int *le, int *ifd_offset)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  cap_t ;
-typedef  scalar_t__ cap_flag_value_t ;
 
-/* Variables and functions */
- int CAP_CHOWN ; 
- int /*<<< orphan*/  CAP_INHERITABLE ; 
- scalar_t__ CAP_SET ; 
- int /*<<< orphan*/  PR_CAP_AMBIENT ; 
- int /*<<< orphan*/  PR_CAP_AMBIENT_IS_SET ; 
- int UINT64_C (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  cap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cap_get_flag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  cap_get_proc () ; 
- int /*<<< orphan*/  capability_ambient_set_apply (int,int) ; 
- int prctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int cap_t ;
+typedef scalar_t__ cap_flag_value_t ;
+
+
+ int CAP_CHOWN ;
+ int CAP_INHERITABLE ;
+ scalar_t__ CAP_SET ;
+ int PR_CAP_AMBIENT ;
+ int PR_CAP_AMBIENT_IS_SET ;
+ int UINT64_C (int) ;
+ int assert (int) ;
+ int assert_se (int) ;
+ int cap_free (int ) ;
+ int cap_get_flag (int ,int,int ,scalar_t__*) ;
+ int cap_get_proc () ;
+ int capability_ambient_set_apply (int,int) ;
+ int prctl (int ,int ,int,int ,int ) ;
 
 __attribute__((used)) static void test_set_ambient_caps(void) {
         cap_t caps;
@@ -38,7 +38,7 @@ __attribute__((used)) static void test_set_ambient_caps(void) {
 
         set = (UINT64_C(1) << CAP_CHOWN);
 
-        assert_se(!capability_ambient_set_apply(set, true));
+        assert_se(!capability_ambient_set_apply(set, 1));
 
         caps = cap_get_proc();
         assert_se(!cap_get_flag(caps, CAP_CHOWN, CAP_INHERITABLE, &fv));

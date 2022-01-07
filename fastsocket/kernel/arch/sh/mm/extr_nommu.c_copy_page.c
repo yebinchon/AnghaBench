@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  memcpy (void*,void*,int /*<<< orphan*/ ) ; 
+ int PAGE_SIZE ;
+ int memcpy (void*,void*,int ) ;
 
 void copy_page(void *to, void *from)
 {
-	memcpy(to, from, PAGE_SIZE);
+ memcpy(to, from, PAGE_SIZE);
 }

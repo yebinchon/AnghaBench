@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vorbis_info ;
-typedef  int /*<<< orphan*/  vorbis_comment ;
-typedef  int /*<<< orphan*/  ogg_page ;
-typedef  int /*<<< orphan*/  ogg_packet ;
-typedef  int ogg_int64_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int vorbis_info ;
+typedef int vorbis_comment ;
+typedef int ogg_page ;
+typedef int ogg_packet ;
+typedef int ogg_int64_t ;
 struct TYPE_8__ {scalar_t__ serialno; } ;
 struct TYPE_7__ {scalar_t__ ready_state; TYPE_2__ os; } ;
-typedef  TYPE_1__ OggVorbis_File ;
+typedef TYPE_1__ OggVorbis_File ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHUNKSIZE ; 
- void* OPENED ; 
- int OV_EBADHEADER ; 
- int OV_ENOTVORBIS ; 
- int OV_EREAD ; 
- scalar_t__ STREAMSET ; 
- int /*<<< orphan*/  _add_serialno (int /*<<< orphan*/ *,long**,int*) ; 
- scalar_t__ _get_next_page (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ _lookup_page_serialno (int /*<<< orphan*/ *,long*,int) ; 
- int /*<<< orphan*/  _ogg_free (long*) ; 
- scalar_t__ ogg_page_bos (int /*<<< orphan*/ *) ; 
- scalar_t__ ogg_page_serialno (int /*<<< orphan*/ *) ; 
- int ogg_stream_packetout (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ogg_stream_pagein (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ogg_stream_reset_serialno (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  vorbis_comment_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_comment_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_info_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vorbis_info_init (int /*<<< orphan*/ *) ; 
- int vorbis_synthesis_headerin (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ vorbis_synthesis_idheader (int /*<<< orphan*/ *) ; 
+
+ int CHUNKSIZE ;
+ void* OPENED ;
+ int OV_EBADHEADER ;
+ int OV_ENOTVORBIS ;
+ int OV_EREAD ;
+ scalar_t__ STREAMSET ;
+ int _add_serialno (int *,long**,int*) ;
+ scalar_t__ _get_next_page (TYPE_1__*,int *,int ) ;
+ scalar_t__ _lookup_page_serialno (int *,long*,int) ;
+ int _ogg_free (long*) ;
+ scalar_t__ ogg_page_bos (int *) ;
+ scalar_t__ ogg_page_serialno (int *) ;
+ int ogg_stream_packetout (TYPE_2__*,int *) ;
+ int ogg_stream_pagein (TYPE_2__*,int *) ;
+ int ogg_stream_reset_serialno (TYPE_2__*,scalar_t__) ;
+ int vorbis_comment_clear (int *) ;
+ int vorbis_comment_init (int *) ;
+ int vorbis_info_clear (int *) ;
+ int vorbis_info_init (int *) ;
+ int vorbis_synthesis_headerin (int *,int *,int *) ;
+ scalar_t__ vorbis_synthesis_idheader (int *) ;
 
 __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *vi,vorbis_comment *vc,
                           long **serialno_list, int *serialno_n,
@@ -63,13 +63,13 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
   vorbis_comment_init(vc);
   vf->ready_state=OPENED;
 
-  /* extract the serialnos of all BOS pages + the first set of vorbis
-     headers we see in the link */
+
+
 
   while(ogg_page_bos(og_ptr)){
     if(serialno_list){
       if(_lookup_page_serialno(og_ptr,*serialno_list,*serialno_n)){
-        /* a dupe serialnumber in an initial header packet set == invalid stream */
+
         if(*serialno_list)_ogg_free(*serialno_list);
         *serialno_list=0;
         *serialno_n=0;
@@ -81,14 +81,14 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
     }
 
     if(vf->ready_state<STREAMSET){
-      /* we don't have a vorbis stream in this link yet, so begin
-         prospective stream setup. We need a stream to get packets */
+
+
       ogg_stream_reset_serialno(&vf->os,ogg_page_serialno(og_ptr));
       ogg_stream_pagein(&vf->os,og_ptr);
 
       if(ogg_stream_packetout(&vf->os,&op) > 0 &&
          vorbis_synthesis_idheader(&op)){
-        /* vorbis header; continue setup */
+
         vf->ready_state=STREAMSET;
         if((ret=vorbis_synthesis_headerin(vi,vc,&op))){
           ret=OV_EBADHEADER;
@@ -97,7 +97,7 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
       }
     }
 
-    /* get next page */
+
     {
       ogg_int64_t llret=_get_next_page(vf,og_ptr,CHUNKSIZE);
       if(llret==OV_EREAD){
@@ -109,7 +109,7 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
         goto bail_header;
       }
 
-      /* if this page also belongs to our vorbis stream, submit it and break */
+
       if(vf->ready_state==STREAMSET &&
          vf->os.serialno == ogg_page_serialno(og_ptr)){
         ogg_stream_pagein(&vf->os,og_ptr);
@@ -126,9 +126,9 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
   while(1){
 
     i=0;
-    while(i<2){ /* get a page loop */
+    while(i<2){
 
-      while(i<2){ /* get a packet loop */
+      while(i<2){
 
         int result=ogg_stream_packetout(&vf->os,&op);
         if(result==0)break;
@@ -149,14 +149,14 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
           goto bail_header;
         }
 
-        /* if this page belongs to the correct stream, go parse it */
+
         if(vf->os.serialno == ogg_page_serialno(og_ptr)){
           ogg_stream_pagein(&vf->os,og_ptr);
           break;
         }
 
-        /* if we never see the final vorbis headers before the link
-           ends, abort */
+
+
         if(ogg_page_bos(og_ptr)){
           if(allbos){
             ret = OV_EBADHEADER;
@@ -165,7 +165,7 @@ __attribute__((used)) static int _fetch_headers(OggVorbis_File *vf,vorbis_info *
             allbos=1;
         }
 
-        /* otherwise, keep looking */
+
       }
     }
 

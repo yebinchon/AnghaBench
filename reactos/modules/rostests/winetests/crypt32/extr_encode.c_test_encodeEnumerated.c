@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int val; int* encoded; } ;
-typedef  size_t DWORD ;
-typedef  int BYTE ;
-typedef  int BOOL ;
+typedef size_t DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  CRYPT_ENCODE_ALLOC_FLAG ; 
- int GetLastError () ; 
- int /*<<< orphan*/  LocalFree (int*) ; 
- TYPE_1__* enumeratedTypes ; 
- TYPE_1__* enums ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int pCryptEncodeObjectEx (size_t,TYPE_1__,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int**,size_t*) ; 
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int CRYPT_ENCODE_ALLOC_FLAG ;
+ int GetLastError () ;
+ int LocalFree (int*) ;
+ TYPE_1__* enumeratedTypes ;
+ TYPE_1__* enums ;
+ int memcmp (int*,int*,int) ;
+ int ok (int,char*,int,...) ;
+ int pCryptEncodeObjectEx (size_t,TYPE_1__,int*,int ,int *,int**,size_t*) ;
 
 __attribute__((used)) static void test_encodeEnumerated(DWORD dwEncoding)
 {
@@ -36,11 +36,11 @@ __attribute__((used)) static void test_encodeEnumerated(DWORD dwEncoding)
         for (j = 0; j < ARRAY_SIZE(enums); j++)
         {
             BOOL ret;
-            BYTE *buf = NULL;
+            BYTE *buf = ((void*)0);
             DWORD bufSize = 0;
 
             ret = pCryptEncodeObjectEx(dwEncoding, enumeratedTypes[i],
-             &enums[j].val, CRYPT_ENCODE_ALLOC_FLAG, NULL, &buf,
+             &enums[j].val, CRYPT_ENCODE_ALLOC_FLAG, ((void*)0), &buf,
              &bufSize);
             ok(ret, "CryptEncodeObjectEx failed: %d\n", GetLastError());
             if (ret)

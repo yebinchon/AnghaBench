@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_1__* GPIOPORT; } ;
 struct TYPE_3__ {scalar_t__ PERM; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NRF_CLOCK_S ; 
- int /*<<< orphan*/  NRF_DPPIC_S ; 
- int /*<<< orphan*/  NRF_EGU1_S ; 
- int /*<<< orphan*/  NRF_EGU2_S ; 
- int /*<<< orphan*/  NRF_EGU3_S ; 
- int /*<<< orphan*/  NRF_EGU4_S ; 
- int /*<<< orphan*/  NRF_EGU5_S ; 
- int /*<<< orphan*/  NRF_FPU_S ; 
- int /*<<< orphan*/  NRF_GPIOTE1_NS ; 
- int /*<<< orphan*/  NRF_I2S_S ; 
- int /*<<< orphan*/  NRF_IPC_S ; 
- int /*<<< orphan*/  NRF_NVMC_S ; 
- int /*<<< orphan*/  NRF_P0_NS ; 
- int /*<<< orphan*/  NRF_PDM_S ; 
- int /*<<< orphan*/  NRF_PWM0_S ; 
- int /*<<< orphan*/  NRF_PWM1_S ; 
- int /*<<< orphan*/  NRF_PWM2_S ; 
- int /*<<< orphan*/  NRF_PWM3_S ; 
- int /*<<< orphan*/  NRF_REGULATORS_S ; 
- int /*<<< orphan*/  NRF_RTC0_S ; 
- int /*<<< orphan*/  NRF_RTC1_S ; 
- int /*<<< orphan*/  NRF_SAADC_S ; 
- TYPE_2__* NRF_SPU_S ; 
- int /*<<< orphan*/  NRF_TIMER0_S ; 
- int /*<<< orphan*/  NRF_TIMER1_S ; 
- int /*<<< orphan*/  NRF_TIMER2_S ; 
- int /*<<< orphan*/  NRF_UARTE0_S ; 
- int /*<<< orphan*/  NRF_UARTE1_S ; 
- int /*<<< orphan*/  NRF_UARTE2_S ; 
- int /*<<< orphan*/  NRF_UARTE3_S ; 
- int /*<<< orphan*/  NRF_VMC_S ; 
- int /*<<< orphan*/  NRF_WDT_S ; 
- int /*<<< orphan*/  PERIPHERAL_ID_GET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  peripheral_setup (int /*<<< orphan*/ ) ; 
+
+ int NRF_CLOCK_S ;
+ int NRF_DPPIC_S ;
+ int NRF_EGU1_S ;
+ int NRF_EGU2_S ;
+ int NRF_EGU3_S ;
+ int NRF_EGU4_S ;
+ int NRF_EGU5_S ;
+ int NRF_FPU_S ;
+ int NRF_GPIOTE1_NS ;
+ int NRF_I2S_S ;
+ int NRF_IPC_S ;
+ int NRF_NVMC_S ;
+ int NRF_P0_NS ;
+ int NRF_PDM_S ;
+ int NRF_PWM0_S ;
+ int NRF_PWM1_S ;
+ int NRF_PWM2_S ;
+ int NRF_PWM3_S ;
+ int NRF_REGULATORS_S ;
+ int NRF_RTC0_S ;
+ int NRF_RTC1_S ;
+ int NRF_SAADC_S ;
+ TYPE_2__* NRF_SPU_S ;
+ int NRF_TIMER0_S ;
+ int NRF_TIMER1_S ;
+ int NRF_TIMER2_S ;
+ int NRF_UARTE0_S ;
+ int NRF_UARTE1_S ;
+ int NRF_UARTE2_S ;
+ int NRF_UARTE3_S ;
+ int NRF_VMC_S ;
+ int NRF_WDT_S ;
+ int PERIPHERAL_ID_GET (int ) ;
+ int peripheral_setup (int ) ;
 
 __attribute__((used)) static void configure_peripherals(void)
 {

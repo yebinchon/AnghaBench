@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  pullup (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int platform_get_drvdata (struct platform_device*) ;
+ int pullup (int ,int ) ;
 
 __attribute__((used)) static void at91udc_shutdown(struct platform_device *dev)
 {
-	/* force disconnect on reboot */
-	pullup(platform_get_drvdata(dev), 0);
+
+ pullup(platform_get_drvdata(dev), 0);
 }

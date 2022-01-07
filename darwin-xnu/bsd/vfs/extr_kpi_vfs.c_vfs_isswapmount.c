@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* mount_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mnt_kern_flag; } ;
 
-/* Variables and functions */
- scalar_t__ ISSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MNTK_SWAP_MOUNT ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* mount_t ;
+struct TYPE_3__ {int mnt_kern_flag; } ;
+
+
+ scalar_t__ ISSET (int ,int ) ;
+ int MNTK_SWAP_MOUNT ;
 
 int vfs_isswapmount(mount_t mnt)
 {
-	return mnt && ISSET(mnt->mnt_kern_flag, MNTK_SWAP_MOUNT) ? 1 : 0;
+ return mnt && ISSET(mnt->mnt_kern_flag, MNTK_SWAP_MOUNT) ? 1 : 0;
 }

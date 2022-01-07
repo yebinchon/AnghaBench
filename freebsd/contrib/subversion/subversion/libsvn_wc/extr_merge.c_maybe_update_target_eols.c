@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* value; } ;
-typedef  TYPE_2__ svn_prop_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
-struct TYPE_4__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_2__ svn_prop_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+struct TYPE_4__ {int data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EOL_STYLE ; 
- int /*<<< orphan*/  TRUE ; 
- char* apr_pstrdup (int /*<<< orphan*/ *,char const*) ; 
- TYPE_2__* get_prop (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_del_on_pool_cleanup ; 
- int /*<<< orphan*/  svn_io_open_unique_file3 (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_copy_and_translate4 (char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_from_value (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EOL_STYLE ;
+ int TRUE ;
+ char* apr_pstrdup (int *,char const*) ;
+ TYPE_2__* get_prop (int const*,int ) ;
+ int svn_io_file_del_on_pool_cleanup ;
+ int svn_io_open_unique_file3 (int *,char const**,int *,int ,int *,int *) ;
+ int svn_subst_copy_and_translate4 (char const*,char const*,char const*,int ,int *,int ,int ,int ,void*,int *) ;
+ int svn_subst_eol_style_from_value (int *,char const**,int ) ;
 
 __attribute__((used)) static svn_error_t *
 maybe_update_target_eols(const char **new_target_abspath,
@@ -49,21 +49,21 @@ maybe_update_target_eols(const char **new_target_abspath,
       const char *eol;
       const char *tmp_new;
 
-      svn_subst_eol_style_from_value(NULL, &eol, prop->value->data);
-      SVN_ERR(svn_io_open_unique_file3(NULL, &tmp_new, NULL,
+      svn_subst_eol_style_from_value(((void*)0), &eol, prop->value->data);
+      SVN_ERR(svn_io_open_unique_file3(((void*)0), &tmp_new, ((void*)0),
                                        svn_io_file_del_on_pool_cleanup,
                                        result_pool, scratch_pool));
 
-      /* Always 'repair' EOLs here, so that we can apply a diff that
-         changes from inconsistent newlines and no 'svn:eol-style' to
-         consistent newlines and 'svn:eol-style' set.  */
+
+
+
       SVN_ERR(svn_subst_copy_and_translate4(old_target_abspath,
                                             tmp_new,
                                             eol,
-                                            TRUE /* repair */,
-                                            NULL /* keywords */,
-                                            FALSE /* expand */,
-                                            FALSE /* special */,
+                                            TRUE ,
+                                            ((void*)0) ,
+                                            FALSE ,
+                                            FALSE ,
                                             cancel_func, cancel_baton,
                                             scratch_pool));
       *new_target_abspath = apr_pstrdup(result_pool, tmp_new);

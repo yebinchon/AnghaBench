@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  name; } ;
-struct TYPE_4__ {int fd; int /*<<< orphan*/  disc; scalar_t__ speed; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int name; } ;
+struct TYPE_4__ {int fd; int disc; scalar_t__ speed; } ;
 struct ttydevice {int cs; char* hook; TYPE_2__ dev; TYPE_1__ real; } ;
 struct TYPE_6__ {scalar_t__ name; } ;
-struct physical {int fd; TYPE_3__ link; int /*<<< orphan*/  handler; } ;
+struct physical {int fd; TYPE_3__ link; int handler; } ;
 
-/* Variables and functions */
- scalar_t__ ID0ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  PHYSICAL_NOFORCE ; 
- int /*<<< orphan*/  TIOCSETD ; 
- int /*<<< orphan*/  close (int) ; 
- struct ttydevice* device2tty (int /*<<< orphan*/ ) ; 
- scalar_t__ isngtty (struct ttydevice*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  physical_SetSpeed (struct physical*,scalar_t__) ; 
- int /*<<< orphan*/  physical_SetupStack (struct physical*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ID0ioctl (int,int ,int *) ;
+ int LogPHASE ;
+ int LogWARN ;
+ int PHYSICAL_NOFORCE ;
+ int TIOCSETD ;
+ int close (int) ;
+ struct ttydevice* device2tty (int ) ;
+ scalar_t__ isngtty (struct ttydevice*) ;
+ int log_Printf (int ,char*,scalar_t__) ;
+ int physical_SetSpeed (struct physical*,scalar_t__) ;
+ int physical_SetupStack (struct physical*,int ,int ) ;
 
 __attribute__((used)) static void
 UnloadLineDiscipline(struct physical *p)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  st_mode; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int st_mode; } ;
 struct TYPE_4__ {char* path; int fd; scalar_t__ err_no; TYPE_3__ st; } ;
-typedef  TYPE_1__ _cpp_file ;
+typedef TYPE_1__ _cpp_file ;
 
-/* Variables and functions */
- scalar_t__ ENOENT ; 
- scalar_t__ ENOTDIR ; 
- int O_BINARY ; 
- int O_NOCTTY ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- scalar_t__ fstat (int,TYPE_3__*) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  set_stdin_to_binary_mode () ; 
+
+ scalar_t__ ENOENT ;
+ scalar_t__ ENOTDIR ;
+ int O_BINARY ;
+ int O_NOCTTY ;
+ int O_RDONLY ;
+ int S_ISDIR (int ) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ scalar_t__ fstat (int,TYPE_3__*) ;
+ int open (char*,int,int) ;
+ int set_stdin_to_binary_mode () ;
 
 __attribute__((used)) static bool
 open_file (_cpp_file *file)
@@ -43,17 +43,17 @@ open_file (_cpp_file *file)
   if (file->fd != -1)
     {
       if (fstat (file->fd, &file->st) == 0)
-	{
-	  if (!S_ISDIR (file->st.st_mode))
-	    {
-	      file->err_no = 0;
-	      return true;
-	    }
+ {
+   if (!S_ISDIR (file->st.st_mode))
+     {
+       file->err_no = 0;
+       return 1;
+     }
 
-	  /* Ignore a directory and continue the search.  The file we're
-	     looking for may be elsewhere in the search path.  */
-	  errno = ENOENT;
-	}
+
+
+   errno = ENOENT;
+ }
 
       close (file->fd);
       file->fd = -1;
@@ -63,5 +63,5 @@ open_file (_cpp_file *file)
 
   file->err_no = errno;
 
-  return false;
+  return 0;
 }

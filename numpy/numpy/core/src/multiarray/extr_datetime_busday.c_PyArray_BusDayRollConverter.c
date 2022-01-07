@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  NPY_BUSDAY_ROLL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_BUSDAY_BACKWARD ; 
- int /*<<< orphan*/  NPY_BUSDAY_FOLLOWING ; 
- int /*<<< orphan*/  NPY_BUSDAY_FORWARD ; 
- int /*<<< orphan*/  NPY_BUSDAY_MODIFIEDFOLLOWING ; 
- int /*<<< orphan*/  NPY_BUSDAY_MODIFIEDPRECEDING ; 
- int /*<<< orphan*/  NPY_BUSDAY_NAT ; 
- int /*<<< orphan*/  NPY_BUSDAY_PRECEDING ; 
- int /*<<< orphan*/  NPY_BUSDAY_RAISE ; 
- scalar_t__ PyBytes_AsStringAndSize (int /*<<< orphan*/ *,char**,int*) ; 
- int /*<<< orphan*/  PyErr_Format (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/ * PyUnicode_AsASCIIString (int /*<<< orphan*/ *) ; 
- scalar_t__ PyUnicode_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+
+
+
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef int NPY_BUSDAY_ROLL ;
+
+
+ int NPY_BUSDAY_BACKWARD ;
+ int NPY_BUSDAY_FOLLOWING ;
+ int NPY_BUSDAY_FORWARD ;
+ int NPY_BUSDAY_MODIFIEDFOLLOWING ;
+ int NPY_BUSDAY_MODIFIEDPRECEDING ;
+ int NPY_BUSDAY_NAT ;
+ int NPY_BUSDAY_PRECEDING ;
+ int NPY_BUSDAY_RAISE ;
+ scalar_t__ PyBytes_AsStringAndSize (int *,char**,int*) ;
+ int PyErr_Format (int ,char*,char*) ;
+ int PyExc_ValueError ;
+ int * PyUnicode_AsASCIIString (int *) ;
+ scalar_t__ PyUnicode_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int strcmp (char*,char*) ;
 
 __attribute__((used)) static int
 PyArray_BusDayRollConverter(PyObject *roll_in, NPY_BUSDAY_ROLL *roll)
@@ -39,13 +39,13 @@ PyArray_BusDayRollConverter(PyObject *roll_in, NPY_BUSDAY_ROLL *roll)
     char *str;
     Py_ssize_t len;
 
-    /* Make obj into an ASCII string */
+
     Py_INCREF(obj);
     if (PyUnicode_Check(obj)) {
-        /* accept unicode input */
+
         PyObject *obj_str;
         obj_str = PyUnicode_AsASCIIString(obj);
-        if (obj_str == NULL) {
+        if (obj_str == ((void*)0)) {
             Py_DECREF(obj);
             return 0;
         }
@@ -58,7 +58,7 @@ PyArray_BusDayRollConverter(PyObject *roll_in, NPY_BUSDAY_ROLL *roll)
         return 0;
     }
 
-    /* Use switch statements to quickly isolate the right enum value */
+
     switch (str[0]) {
         case 'b':
             if (strcmp(str, "backward") == 0) {

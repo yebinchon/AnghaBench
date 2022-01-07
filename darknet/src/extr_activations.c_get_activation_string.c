@@ -1,63 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ACTIVATION ;
 
-/* Variables and functions */
-#define  ELU 141 
-#define  HARDTAN 140 
-#define  LEAKY 139 
-#define  LHTAN 138 
-#define  LINEAR 137 
-#define  LOGGY 136 
-#define  LOGISTIC 135 
-#define  PLSE 134 
-#define  RAMP 133 
-#define  RELIE 132 
-#define  RELU 131 
-#define  SELU 130 
-#define  STAIR 129 
-#define  TANH 128 
 
+
+
+typedef int ACTIVATION ;
 char *get_activation_string(ACTIVATION a)
 {
     switch(a){
-        case LOGISTIC:
+        case 135:
             return "logistic";
-        case LOGGY:
+        case 136:
             return "loggy";
-        case RELU:
+        case 131:
             return "relu";
-        case ELU:
+        case 141:
             return "elu";
-        case SELU:
+        case 130:
             return "selu";
-        case RELIE:
+        case 132:
             return "relie";
-        case RAMP:
+        case 133:
             return "ramp";
-        case LINEAR:
+        case 137:
             return "linear";
-        case TANH:
+        case 128:
             return "tanh";
-        case PLSE:
+        case 134:
             return "plse";
-        case LEAKY:
+        case 139:
             return "leaky";
-        case STAIR:
+        case 129:
             return "stair";
-        case HARDTAN:
+        case 140:
             return "hardtan";
-        case LHTAN:
+        case 138:
             return "lhtan";
         default:
             break;

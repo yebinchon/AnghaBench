@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DebugMemDontCheckThis (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DupContext (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  Fail (char*) ; 
- int /*<<< orphan*/  WatchDogContext (int*) ; 
- int /*<<< orphan*/  cmsCreateContext (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  cmsDeleteContext (int /*<<< orphan*/ ) ; 
- scalar_t__ cmsGetContextUserData (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsContext ;
+
+
+ int DebugMemDontCheckThis (int ) ;
+ int DupContext (int ,int*) ;
+ int Fail (char*) ;
+ int WatchDogContext (int*) ;
+ int cmsCreateContext (int *,int*) ;
+ int cmsDeleteContext (int ) ;
+ scalar_t__ cmsGetContextUserData (int ) ;
 
 cmsInt32Number CheckSimpleContext(void)
 {
@@ -30,21 +30,21 @@ cmsInt32Number CheckSimpleContext(void)
 
     cmsContext c1, c2, c3;
 
-    // This function creates a context with a special
-    // memory manager that check allocation
+
+
     c1 = WatchDogContext(&a);
     cmsDeleteContext(c1);
 
     c1 = WatchDogContext(&a);
 
-    // Let's check duplication
-    c2 = DupContext(c1, NULL);
-    c3 = DupContext(c2, NULL);
 
-    // User data should have been propagated
+    c2 = DupContext(c1, ((void*)0));
+    c3 = DupContext(c2, ((void*)0));
+
+
     rc = (*(int*) cmsGetContextUserData(c3)) == 1 ;
 
-    // Free resources
+
     cmsDeleteContext(c1);
     cmsDeleteContext(c2);
     cmsDeleteContext(c3);
@@ -54,11 +54,11 @@ cmsInt32Number CheckSimpleContext(void)
         return 0;
     }
 
-    // Back to create 3 levels of inherance
-    c1 = cmsCreateContext(NULL, &a);
+
+    c1 = cmsCreateContext(((void*)0), &a);
     DebugMemDontCheckThis(c1);
 
-    c2 = DupContext(c1, NULL);
+    c2 = DupContext(c1, ((void*)0));
     c3 = DupContext(c2, &b);
 
     rc = (*(int*) cmsGetContextUserData(c3)) == 32 ;
@@ -72,6 +72,6 @@ cmsInt32Number CheckSimpleContext(void)
         return 0;
     }
 
-    // All seems ok
+
     return rc;
 }

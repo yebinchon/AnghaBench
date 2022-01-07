@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct s_write {int /*<<< orphan*/  new_channel; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  check_channel (unsigned char,struct s_write*) ; 
- int /*<<< orphan*/  handle_command (unsigned char,unsigned char,struct s_write*) ; 
- int /*<<< orphan*/  handle_double (unsigned char,unsigned char,struct s_write*) ; 
- int handle_extended (unsigned char,unsigned char,struct s_write*) ; 
- int /*<<< orphan*/  handle_pac (unsigned char,unsigned char,struct s_write*) ; 
- int /*<<< orphan*/  handle_text_attr (unsigned char,unsigned char,struct s_write*) ; 
+
+
+
+struct s_write {int new_channel; } ;
+
+
+ int check_channel (unsigned char,struct s_write*) ;
+ int handle_command (unsigned char,unsigned char,struct s_write*) ;
+ int handle_double (unsigned char,unsigned char,struct s_write*) ;
+ int handle_extended (unsigned char,unsigned char,struct s_write*) ;
+ int handle_pac (unsigned char,unsigned char,struct s_write*) ;
+ int handle_text_attr (unsigned char,unsigned char,struct s_write*) ;
 
 __attribute__((used)) static int disCommand(unsigned char hi, unsigned char lo, struct s_write *wb)
 {
     int wrote_to_screen=0;
 
-    /* Full channel changes are only allowed for "GLOBAL CODES",
-    * "OTHER POSITIONING CODES", "BACKGROUND COLOR CODES",
-    * "MID-ROW CODES".
-    * "PREAMBLE ACCESS CODES", "BACKGROUND COLOR CODES" and
-    * SPECIAL/SPECIAL CHARACTERS allow only switching
-    * between 1&3 or 2&4. */
+
+
+
+
+
+
     wb->new_channel = check_channel (hi,wb);
-    //if (wb->data608->channel!=cc_channel)
-    //    continue;
+
+
 
     if (hi>=0x18 && hi<=0x1f)
         hi=hi-8;

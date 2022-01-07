@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GJSON ;
 
-/* Variables and functions */
- int DATE_TIME ; 
- int /*<<< orphan*/  OVERALL_DATETIME ; 
- int /*<<< orphan*/  generate_time () ; 
- int /*<<< orphan*/  now_tm ; 
- int /*<<< orphan*/  pskeysval (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GJSON ;
+
+
+ int DATE_TIME ;
+ int OVERALL_DATETIME ;
+ int generate_time () ;
+ int now_tm ;
+ int pskeysval (int *,int ,char*,int,int ) ;
+ int strftime (char*,int,char*,int ) ;
 
 __attribute__((used)) static void
 poverall_datetime (GJSON * json, int sp)

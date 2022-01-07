@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int config_get_var_val (int /*<<< orphan*/ *,char*,int,char**,char**) ; 
- int /*<<< orphan*/  emu_set_defconfig () ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  keys_parse_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lprintf (char*,char const*,...) ; 
- int /*<<< orphan*/  parse (char*,char*,int*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int seek_sect (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int line ;
+typedef int FILE ;
+
+
+ int config_get_var_val (int *,char*,int,char**,char**) ;
+ int emu_set_defconfig () ;
+ int fclose (int *) ;
+ int feof (int *) ;
+ int * fopen (char const*,char*) ;
+ int keys_parse_all (int *) ;
+ int lprintf (char*,char const*,...) ;
+ int parse (char*,char*,int*) ;
+ int printf (char*) ;
+ int rewind (int *) ;
+ int seek_sect (int *,char const*) ;
 
 int config_readsect(const char *fname, const char *section)
 {
-	char line[128], *var, *val;
-	int keys_encountered = 0;
-	FILE *f;
-	int ret;
+ char line[128], *var, *val;
+ int keys_encountered = 0;
+ FILE *f;
+ int ret;
 
-	f = fopen(fname, "r");
-	if (f == NULL) return -1;
+ f = fopen(fname, "r");
+ if (f == ((void*)0)) return -1;
 
-	if (section != NULL)
-	{
-		/* for game_def.cfg only */
-		ret = seek_sect(f, section);
-		if (!ret) {
-			lprintf("config_readsect: %s: missing section [%s]\n", fname, section);
-			fclose(f);
-			return -1;
-		}
-	}
+ if (section != ((void*)0))
+ {
 
-	emu_set_defconfig();
+  ret = seek_sect(f, section);
+  if (!ret) {
+   lprintf("config_readsect: %s: missing section [%s]\n", fname, section);
+   fclose(f);
+   return -1;
+  }
+ }
 
-	while (!feof(f))
-	{
-		ret = config_get_var_val(f, line, sizeof(line), &var, &val);
-		if (ret ==  0) break;
-		if (ret == -1) continue;
+ emu_set_defconfig();
 
-		parse(var, val, &keys_encountered);
-	}
+ while (!feof(f))
+ {
+  ret = config_get_var_val(f, line, sizeof(line), &var, &val);
+  if (ret == 0) break;
+  if (ret == -1) continue;
 
-	if (keys_encountered) {
-		rewind(f);
-		keys_parse_all(f);
-	}
+  parse(var, val, &keys_encountered);
+ }
 
-	fclose(f);
+ if (keys_encountered) {
+  rewind(f);
+  keys_parse_all(f);
+ }
 
-	lprintf("config_readsect: loaded from %s", fname);
-	if (section != NULL)
-		lprintf(" [%s]", section);
-	printf("\n");
+ fclose(f);
 
-	return 0;
+ lprintf("config_readsect: loaded from %s", fname);
+ if (section != ((void*)0))
+  lprintf(" [%s]", section);
+ printf("\n");
+
+ return 0;
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CGI_varlist ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CGI_get_cookie (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CGI_get_post (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * CGI_get_query (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int CGI_varlist ;
+
+
+ int * CGI_get_cookie (int *) ;
+ int * CGI_get_post (int *,char const*) ;
+ int * CGI_get_query (int *) ;
 
 CGI_varlist *
 CGI_get_all(const char *template) {

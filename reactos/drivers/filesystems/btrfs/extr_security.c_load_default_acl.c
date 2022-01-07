@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  size_t uint16_t ;
-typedef  int /*<<< orphan*/  ULONG ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef size_t uint16_t ;
+typedef int ULONG ;
 struct TYPE_12__ {int elements; } ;
-struct TYPE_11__ {TYPE_6__* sid; int /*<<< orphan*/  mask; int /*<<< orphan*/  flags; } ;
-struct TYPE_8__ {int AceSize; int /*<<< orphan*/  AceFlags; int /*<<< orphan*/  AceType; } ;
-struct TYPE_10__ {TYPE_1__ Header; int /*<<< orphan*/  SidStart; int /*<<< orphan*/  Mask; } ;
-struct TYPE_9__ {size_t AclSize; size_t AceCount; scalar_t__ Sbz2; scalar_t__ Sbz1; int /*<<< orphan*/  AclRevision; } ;
-typedef  TYPE_2__ ACL ;
-typedef  TYPE_3__ ACCESS_ALLOWED_ACE ;
+struct TYPE_11__ {TYPE_6__* sid; int mask; int flags; } ;
+struct TYPE_8__ {int AceSize; int AceFlags; int AceType; } ;
+struct TYPE_10__ {TYPE_1__ Header; int SidStart; int Mask; } ;
+struct TYPE_9__ {size_t AclSize; size_t AceCount; scalar_t__ Sbz2; scalar_t__ Sbz1; int AclRevision; } ;
+typedef TYPE_2__ ACL ;
+typedef TYPE_3__ ACCESS_ALLOWED_ACE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS_ALLOWED_ACE_TYPE ; 
- int /*<<< orphan*/  ACL_REVISION ; 
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  ERR (char*) ; 
- TYPE_2__* ExAllocatePoolWithTag (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,TYPE_6__*,int) ; 
- TYPE_5__* def_dacls ; 
+
+ int ACCESS_ALLOWED_ACE_TYPE ;
+ int ACL_REVISION ;
+ int ALLOC_TAG ;
+ int ERR (char*) ;
+ TYPE_2__* ExAllocatePoolWithTag (int ,size_t,int ) ;
+ int PagedPool ;
+ int RtlCopyMemory (int *,TYPE_6__*,int) ;
+ TYPE_5__* def_dacls ;
 
 __attribute__((used)) static ACL* load_default_acl() {
     uint16_t size, i;
@@ -53,7 +53,7 @@ __attribute__((used)) static ACL* load_default_acl() {
     acl = ExAllocatePoolWithTag(PagedPool, size, ALLOC_TAG);
     if (!acl) {
         ERR("out of memory\n");
-        return NULL;
+        return ((void*)0);
     }
 
     acl->AclRevision = ACL_REVISION;

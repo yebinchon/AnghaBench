@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct object_slot {void* value; void* string; } ;
-struct TYPE_13__ {int /*<<< orphan*/  ptr; } ;
+struct TYPE_13__ {int ptr; } ;
 struct TYPE_14__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ jv ;
-struct TYPE_15__ {int /*<<< orphan*/  next_free; } ;
+typedef TYPE_2__ jv ;
+struct TYPE_15__ {int next_free; } ;
 
-/* Variables and functions */
- scalar_t__ JVP_HAS_KIND (TYPE_2__,int /*<<< orphan*/ ) ; 
- scalar_t__ JV_KIND_NULL ; 
- int /*<<< orphan*/  JV_KIND_OBJECT ; 
- int /*<<< orphan*/  assert (scalar_t__) ; 
- void* jv_copy (void*) ; 
- scalar_t__ jv_get_kind (void*) ; 
- int* jvp_object_buckets (TYPE_2__) ; 
- int /*<<< orphan*/  jvp_object_free (TYPE_2__) ; 
- struct object_slot* jvp_object_get_slot (TYPE_2__,int) ; 
- TYPE_2__ jvp_object_new (int) ; 
- TYPE_6__* jvp_object_ptr (TYPE_2__) ; 
- int jvp_object_size (TYPE_2__) ; 
- scalar_t__ jvp_refcnt_unshared (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ scalar_t__ JVP_HAS_KIND (TYPE_2__,int ) ;
+ scalar_t__ JV_KIND_NULL ;
+ int JV_KIND_OBJECT ;
+ int assert (scalar_t__) ;
+ void* jv_copy (void*) ;
+ scalar_t__ jv_get_kind (void*) ;
+ int* jvp_object_buckets (TYPE_2__) ;
+ int jvp_object_free (TYPE_2__) ;
+ struct object_slot* jvp_object_get_slot (TYPE_2__,int) ;
+ TYPE_2__ jvp_object_new (int) ;
+ TYPE_6__* jvp_object_ptr (TYPE_2__) ;
+ int jvp_object_size (TYPE_2__) ;
+ scalar_t__ jvp_refcnt_unshared (int ) ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static jv jvp_object_unshare(jv object) {
   assert(JVP_HAS_KIND(object, JV_KIND_OBJECT));

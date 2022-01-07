@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ VCOS_STATUS_T ;
-typedef  scalar_t__ VCHIQ_STATUS_T ;
-struct TYPE_3__ {int /*<<< orphan*/  callback; int /*<<< orphan*/  fourcc; void* version_min; void* version; int /*<<< orphan*/ * userdata; } ;
-typedef  TYPE_1__ VCHIQ_SERVICE_PARAMS_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FOURCC_KHAN ; 
- int /*<<< orphan*/  FOURCC_KHHN ; 
- int /*<<< orphan*/  FOURCC_KHRN ; 
- int /*<<< orphan*/  UNUSED_NDEBUG (scalar_t__) ; 
- scalar_t__ VCHIQ_SUCCESS ; 
- scalar_t__ VCOS_SUCCESS ; 
- void* VC_KHRN_VERSION ; 
- int /*<<< orphan*/  bulk_event ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  khan_callback ; 
- int /*<<< orphan*/  khhn_callback ; 
- int /*<<< orphan*/  khhn_queue ; 
- int /*<<< orphan*/  khrn_callback ; 
- int /*<<< orphan*/  khrn_queue ; 
- int /*<<< orphan*/  khrn_vchiq_instance ; 
- scalar_t__ vchiq_connect (int /*<<< orphan*/ ) ; 
- scalar_t__ vchiq_initialise (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vchiq_khan_service ; 
- int /*<<< orphan*/  vchiq_khhn_service ; 
- int /*<<< orphan*/  vchiq_khrn_service ; 
- scalar_t__ vchiq_open_service (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vchiu_queue_init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- scalar_t__ vcos_event_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_log_error (char*) ; 
- int /*<<< orphan*/  vcos_log_trace (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ VCOS_STATUS_T ;
+typedef scalar_t__ VCHIQ_STATUS_T ;
+struct TYPE_3__ {int callback; int fourcc; void* version_min; void* version; int * userdata; } ;
+typedef TYPE_1__ VCHIQ_SERVICE_PARAMS_T ;
+
+
+ int FOURCC_KHAN ;
+ int FOURCC_KHHN ;
+ int FOURCC_KHRN ;
+ int UNUSED_NDEBUG (scalar_t__) ;
+ scalar_t__ VCHIQ_SUCCESS ;
+ scalar_t__ VCOS_SUCCESS ;
+ void* VC_KHRN_VERSION ;
+ int bulk_event ;
+ int exit (int) ;
+ int khan_callback ;
+ int khhn_callback ;
+ int khhn_queue ;
+ int khrn_callback ;
+ int khrn_queue ;
+ int khrn_vchiq_instance ;
+ scalar_t__ vchiq_connect (int ) ;
+ scalar_t__ vchiq_initialise (int *) ;
+ int vchiq_khan_service ;
+ int vchiq_khhn_service ;
+ int vchiq_khrn_service ;
+ scalar_t__ vchiq_open_service (int ,TYPE_1__*,int *) ;
+ int vchiu_queue_init (int *,int) ;
+ int vcos_assert (int) ;
+ scalar_t__ vcos_event_create (int *,int *) ;
+ int vcos_log_error (char*) ;
+ int vcos_log_trace (char*) ;
 
 void vc_vchi_khronos_init()
 {
-   VCOS_STATUS_T status = vcos_event_create(&bulk_event, NULL);
+   VCOS_STATUS_T status = vcos_event_create(&bulk_event, ((void*)0));
    UNUSED_NDEBUG(status);
    vcos_assert(status == VCOS_SUCCESS);
 
@@ -69,7 +69,7 @@ void vc_vchi_khronos_init()
    VCHIQ_STATUS_T khan_return, khrn_return, khhn_return;
    VCHIQ_SERVICE_PARAMS_T params;
 
-   params.userdata = NULL;
+   params.userdata = ((void*)0);
    params.version = VC_KHRN_VERSION;
    params.version_min = VC_KHRN_VERSION;
 
@@ -98,10 +98,10 @@ void vc_vchi_khronos_init()
 
    vcos_log_trace("gldemo: connected");
 
-   /*
-      attach to process (there's just one)
-   */
 
-//   bool success = client_process_attach();
-//   vcos_assert(success);
+
+
+
+
+
 }

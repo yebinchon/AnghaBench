@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  netbuffer_t ;
 
-/* Variables and functions */
- int MAX_INT ; 
- int /*<<< orphan*/  advance_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  advance_skip_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  force_ready_bytes (int /*<<< orphan*/ *,int) ; 
- char* get_read_ptr (int /*<<< orphan*/ *) ; 
- int get_ready_bytes (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int netbuffer_t ;
+
+
+ int MAX_INT ;
+ int advance_read_ptr (int *,int) ;
+ int advance_skip_read_ptr (int *,int) ;
+ int assert (int) ;
+ int force_ready_bytes (int *,int) ;
+ char* get_read_ptr (int *) ;
+ int get_ready_bytes (int *) ;
 
 __attribute__((used)) static int parse_list (int *Res, int max_size, netbuffer_t *In, int bytes, int have_weights, int *id_ints) {
   char *ptr = 0, *ptr_e = 0;
-  #define MAX_INT 0x7fffffff
-  int j = MAX_INT, r = 0, s = 0;
+
+  int j = 0x7fffffff, r = 0, s = 0;
   int found = 0;
   *id_ints = -1;
   unsigned sgn;
@@ -79,7 +79,7 @@ __attribute__((used)) static int parse_list (int *Res, int max_size, netbuffer_t
       } else {
         if (*ptr == (have_weights ? '#' : ',')) {
           found = 1;
-          *id_ints = MAX_INT - j + 1;
+          *id_ints = 0x7fffffff - j + 1;
           j = have_weights + 1;
         } else if (*ptr != ':') {
           advance_skip_read_ptr (In, r + bytes);
@@ -89,7 +89,7 @@ __attribute__((used)) static int parse_list (int *Res, int max_size, netbuffer_t
     } else {
       if (!found && !have_weights) {
         found = 1;
-        *id_ints = MAX_INT - j + 1;
+        *id_ints = 0x7fffffff - j + 1;
         j = have_weights + 1;
       }
     }

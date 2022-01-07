@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct datalink {int state; TYPE_2__* physical; int /*<<< orphan*/  peer; } ;
-struct TYPE_7__ {int /*<<< orphan*/  fsm; } ;
-struct TYPE_5__ {int /*<<< orphan*/  fsm; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct datalink {int state; TYPE_2__* physical; int peer; } ;
+struct TYPE_7__ {int fsm; } ;
+struct TYPE_5__ {int fsm; } ;
 struct TYPE_8__ {TYPE_3__ lcp; TYPE_1__ ccp; } ;
 struct TYPE_6__ {TYPE_4__ link; } ;
 
-/* Variables and functions */
- int CLOSE_LCP ; 
- int CLOSE_STAYDOWN ; 
-#define  DATALINK_AUTH 131 
-#define  DATALINK_CBCP 130 
-#define  DATALINK_LCP 129 
-#define  DATALINK_OPEN 128 
- int /*<<< orphan*/  datalink_AuthReInit (struct datalink*) ; 
- int /*<<< orphan*/  datalink_ComeDown (struct datalink*,int) ; 
- int /*<<< orphan*/  datalink_DontHangup (struct datalink*) ; 
- int /*<<< orphan*/  datalink_StayDown (struct datalink*) ; 
- int /*<<< orphan*/  fsm2initial (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fsm_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  peerid_Init (int /*<<< orphan*/ *) ; 
+
+ int CLOSE_LCP ;
+ int CLOSE_STAYDOWN ;
+
+
+
+
+ int datalink_AuthReInit (struct datalink*) ;
+ int datalink_ComeDown (struct datalink*,int) ;
+ int datalink_DontHangup (struct datalink*) ;
+ int datalink_StayDown (struct datalink*) ;
+ int fsm2initial (int *) ;
+ int fsm_Close (int *) ;
+ int peerid_Init (int *) ;
 
 void
 datalink_Close(struct datalink *dl, int how)
 {
-  /* Please close */
+
   switch (dl->state) {
-    case DATALINK_OPEN:
+    case 128:
       peerid_Init(&dl->peer);
       fsm2initial(&dl->physical->link.ccp.fsm);
-      /* FALLTHROUGH */
 
-    case DATALINK_CBCP:
-    case DATALINK_AUTH:
-    case DATALINK_LCP:
+
+    case 130:
+    case 131:
+    case 129:
       datalink_AuthReInit(dl);
       if (how == CLOSE_LCP)
         datalink_DontHangup(dl);

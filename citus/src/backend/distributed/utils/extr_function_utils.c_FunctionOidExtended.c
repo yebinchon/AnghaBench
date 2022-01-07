@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  oid; int /*<<< orphan*/ * next; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__* FuncCandidateList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_AMBIGUOUS_FUNCTION ; 
- int /*<<< orphan*/  ERRCODE_UNDEFINED_FUNCTION ; 
- int /*<<< orphan*/  ERROR ; 
- TYPE_1__* FuncnameGetCandidates (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int const,int const,int) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/ * NIL ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char const*) ; 
- char* quote_qualified_identifier (char const*,char const*) ; 
- int /*<<< orphan*/ * stringToQualifiedNameList (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int oid; int * next; } ;
+typedef int Oid ;
+typedef int List ;
+typedef TYPE_1__* FuncCandidateList ;
+
+
+ int ERRCODE_AMBIGUOUS_FUNCTION ;
+ int ERRCODE_UNDEFINED_FUNCTION ;
+ int ERROR ;
+ TYPE_1__* FuncnameGetCandidates (int *,int,int *,int const,int const,int) ;
+ int InvalidOid ;
+ int * NIL ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,char const*) ;
+ char* quote_qualified_identifier (char const*,char const*) ;
+ int * stringToQualifiedNameList (char*) ;
 
 Oid
 FunctionOidExtended(const char *schemaName, const char *functionName, int argumentCount,
-					bool missingOK)
+     bool missingOK)
 {
-	FuncCandidateList functionList = NULL;
-	Oid functionOid = InvalidOid;
+ FuncCandidateList functionList = ((void*)0);
+ Oid functionOid = InvalidOid;
 
-	char *qualifiedFunctionName = quote_qualified_identifier(schemaName, functionName);
-	List *qualifiedFunctionNameList = stringToQualifiedNameList(qualifiedFunctionName);
-	List *argumentList = NIL;
-	const bool findVariadics = false;
-	const bool findDefaults = false;
+ char *qualifiedFunctionName = quote_qualified_identifier(schemaName, functionName);
+ List *qualifiedFunctionNameList = stringToQualifiedNameList(qualifiedFunctionName);
+ List *argumentList = NIL;
+ const bool findVariadics = 0;
+ const bool findDefaults = 0;
 
-	functionList = FuncnameGetCandidates(qualifiedFunctionNameList, argumentCount,
-										 argumentList, findVariadics,
-										 findDefaults, true);
+ functionList = FuncnameGetCandidates(qualifiedFunctionNameList, argumentCount,
+           argumentList, findVariadics,
+           findDefaults, 1);
 
-	if (functionList == NULL)
-	{
-		if (missingOK)
-		{
-			return InvalidOid;
-		}
+ if (functionList == ((void*)0))
+ {
+  if (missingOK)
+  {
+   return InvalidOid;
+  }
 
-		ereport(ERROR, (errcode(ERRCODE_UNDEFINED_FUNCTION),
-						errmsg("function \"%s\" does not exist", functionName)));
-	}
-	else if (functionList->next != NULL)
-	{
-		ereport(ERROR, (errcode(ERRCODE_AMBIGUOUS_FUNCTION),
-						errmsg("more than one function named \"%s\"", functionName)));
-	}
+  ereport(ERROR, (errcode(ERRCODE_UNDEFINED_FUNCTION),
+      errmsg("function \"%s\" does not exist", functionName)));
+ }
+ else if (functionList->next != ((void*)0))
+ {
+  ereport(ERROR, (errcode(ERRCODE_AMBIGUOUS_FUNCTION),
+      errmsg("more than one function named \"%s\"", functionName)));
+ }
 
-	/* get function oid from function list's head */
-	functionOid = functionList->oid;
 
-	return functionOid;
+ functionOid = functionList->oid;
+
+ return functionOid;
 }

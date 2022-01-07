@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  tfree (char*) ; 
+
+
+
+typedef int ssize_t ;
+typedef int FILE ;
+
+
+ int SEEK_SET ;
+ int fseek (int *,int ,int ) ;
+ int getline (char**,size_t*,int *) ;
+ int strcpy (char*,char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int tfree (char*) ;
 
 void taosLoadFileCharset(FILE *fp, char *fcharset) {
-  char * line = NULL;
+  char * line = ((void*)0);
   size_t line_size = 0;
 
   fseek(fp, 0, SEEK_SET);

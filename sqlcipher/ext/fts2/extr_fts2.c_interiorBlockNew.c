@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite_int64 ;
-struct TYPE_5__ {int /*<<< orphan*/  data; int /*<<< orphan*/  term; } ;
-typedef  TYPE_1__ InteriorBlock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTERIOR_MAX ; 
- int VARINT_MAX ; 
- int /*<<< orphan*/  dataBufferInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dataBufferReplace (int /*<<< orphan*/ *,char const*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int putVarint (char*,int) ; 
- TYPE_1__* sqlite3_malloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
+struct TYPE_5__ {int data; int term; } ;
+typedef TYPE_1__ InteriorBlock ;
+
+
+ int INTERIOR_MAX ;
+ int VARINT_MAX ;
+ int dataBufferInit (int *,int ) ;
+ int dataBufferReplace (int *,char const*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int putVarint (char*,int) ;
+ TYPE_1__* sqlite3_malloc (int) ;
 
 __attribute__((used)) static InteriorBlock *interiorBlockNew(int iHeight, sqlite_int64 iChildBlock,
                                        const char *pTerm, int nTerm){

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-struct TYPE_3__ {int /*<<< orphan*/  hostname; int /*<<< orphan*/  metadata_valid; } ;
-typedef  TYPE_1__ Image ;
 
-/* Variables and functions */
- int image_read_metadata (TYPE_1__*) ; 
- int sd_bus_error_set_errnof (int /*<<< orphan*/ *,int,char*) ; 
- int sd_bus_reply_method_return (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+struct TYPE_3__ {int hostname; int metadata_valid; } ;
+typedef TYPE_1__ Image ;
+
+
+ int image_read_metadata (TYPE_1__*) ;
+ int sd_bus_error_set_errnof (int *,int,char*) ;
+ int sd_bus_reply_method_return (int *,char*,int ) ;
 
 int bus_image_method_get_hostname(
                 sd_bus_message *message,

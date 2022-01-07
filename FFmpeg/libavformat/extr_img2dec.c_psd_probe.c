@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_3__ {int* buf; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
- int AV_RB16 (int const*) ; 
- scalar_t__ AV_RL16 (int const*) ; 
- scalar_t__ AV_RL32 (int const*) ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
+
+ int AVPROBE_SCORE_EXTENSION ;
+ int AV_RB16 (int const*) ;
+ scalar_t__ AV_RL16 (int const*) ;
+ scalar_t__ AV_RL32 (int const*) ;
+ scalar_t__ MKTAG (char,char,char,char) ;
 
 __attribute__((used)) static int psd_probe(const AVProbeData *p)
 {
@@ -35,13 +35,13 @@ __attribute__((used)) static int psd_probe(const AVProbeData *p)
         return 0;
     }
 
-    if ((b[4] == 0) && (b[5] == 1)) {/* version 1 is PSD, version 2 is PSB */
+    if ((b[4] == 0) && (b[5] == 1)) {
         ret += 1;
     } else {
         return 0;
     }
 
-    if ((AV_RL32(b+6) == 0) && (AV_RL16(b+10) == 0))/* reserved must be 0 */
+    if ((AV_RL32(b+6) == 0) && (AV_RL16(b+10) == 0))
         ret += 1;
 
     color_mode = AV_RB16(b+24);

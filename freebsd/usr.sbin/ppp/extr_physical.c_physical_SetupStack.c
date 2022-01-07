@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  speed; } ;
-struct physical {TYPE_1__ cfg; int /*<<< orphan*/  link; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  MODEM_SPEED ; 
- int PHYSICAL_FORCE_ASYNC ; 
- int PHYSICAL_FORCE_SYNC ; 
- int PHYSICAL_FORCE_SYNCNOACF ; 
- int PHYSICAL_NOFORCE ; 
- int /*<<< orphan*/  acflayer ; 
- int /*<<< orphan*/  asynclayer ; 
- int /*<<< orphan*/  ccplayer ; 
- int /*<<< orphan*/  hdlclayer ; 
- int /*<<< orphan*/  link_EmptyStack (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  link_Stack (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  lqrlayer ; 
- int /*<<< orphan*/  natlayer ; 
- scalar_t__ physical_IsSync (struct physical*) ; 
- int /*<<< orphan*/  physical_SetSync (struct physical*) ; 
- int /*<<< orphan*/  protolayer ; 
- int /*<<< orphan*/  synclayer ; 
- int /*<<< orphan*/  tcpmsslayer ; 
- int /*<<< orphan*/  vjlayer ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int speed; } ;
+struct physical {TYPE_1__ cfg; int link; } ;
+
+
+ int LogWARN ;
+ int MODEM_SPEED ;
+ int PHYSICAL_FORCE_ASYNC ;
+ int PHYSICAL_FORCE_SYNC ;
+ int PHYSICAL_FORCE_SYNCNOACF ;
+ int PHYSICAL_NOFORCE ;
+ int acflayer ;
+ int asynclayer ;
+ int ccplayer ;
+ int hdlclayer ;
+ int link_EmptyStack (int *) ;
+ int link_Stack (int *,int *) ;
+ int log_Printf (int ,char*,char const*) ;
+ int lqrlayer ;
+ int natlayer ;
+ scalar_t__ physical_IsSync (struct physical*) ;
+ int physical_SetSync (struct physical*) ;
+ int protolayer ;
+ int synclayer ;
+ int tcpmsslayer ;
+ int vjlayer ;
 
 void
 physical_SetupStack(struct physical *p, const char *who, int how)
@@ -55,9 +55,9 @@ physical_SetupStack(struct physical *p, const char *who, int how)
   link_Stack(&p->link, &ccplayer);
   link_Stack(&p->link, &vjlayer);
   link_Stack(&p->link, &tcpmsslayer);
-#ifndef NONAT
+
   link_Stack(&p->link, &natlayer);
-#endif
+
   if (how == PHYSICAL_FORCE_ASYNC && physical_IsSync(p)) {
     log_Printf(LogWARN, "Sync device setting ignored for ``%s'' device\n", who);
     p->cfg.speed = MODEM_SPEED;

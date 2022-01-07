@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  dck_holds; } ;
-typedef  TYPE_1__ dsl_crypto_key_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dsl_crypto_key_free (TYPE_1__*) ; 
- scalar_t__ zfs_refcount_remove (int /*<<< orphan*/ *,void*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dck_holds; } ;
+typedef TYPE_1__ dsl_crypto_key_t ;
+
+
+ int dsl_crypto_key_free (TYPE_1__*) ;
+ scalar_t__ zfs_refcount_remove (int *,void*) ;
 
 __attribute__((used)) static void
 dsl_crypto_key_rele(dsl_crypto_key_t *dck, void *tag)
 {
-	if (zfs_refcount_remove(&dck->dck_holds, tag) == 0)
-		dsl_crypto_key_free(dck);
+ if (zfs_refcount_remove(&dck->dck_holds, tag) == 0)
+  dsl_crypto_key_free(dck);
 }

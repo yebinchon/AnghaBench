@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int ENCODING ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CP_UTF8 ; 
-#define  ENCODING_ANSI 131 
-#define  ENCODING_UTF16BE 130 
-#define  ENCODING_UTF16LE 129 
-#define  ENCODING_UTF8 128 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PROFILE_ByteSwapShortBuffer (char*,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WriteFile (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_wn (char*,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HANDLE ;
+typedef int ENCODING ;
+typedef int DWORD ;
+
+
+ int CP_ACP ;
+ int CP_UTF8 ;
+
+
+
+
+ int FIXME (char*,int) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int PROFILE_ByteSwapShortBuffer (char*,int) ;
+ int TRACE (char*,int ) ;
+ int WideCharToMultiByte (int ,int ,char*,int,char*,int,int *,int *) ;
+ int WriteFile (int ,char*,int,int *,int *) ;
+ int debugstr_wn (char*,int) ;
 
 __attribute__((used)) static void PROFILE_WriteLine( HANDLE hFile, WCHAR * szLine, int len, ENCODING encoding)
 {
@@ -42,28 +42,28 @@ __attribute__((used)) static void PROFILE_WriteLine( HANDLE hFile, WCHAR * szLin
 
     switch (encoding)
     {
-    case ENCODING_ANSI:
-        write_buffer_len = WideCharToMultiByte(CP_ACP, 0, szLine, len, NULL, 0, NULL, NULL);
+    case 131:
+        write_buffer_len = WideCharToMultiByte(CP_ACP, 0, szLine, len, ((void*)0), 0, ((void*)0), ((void*)0));
         write_buffer = HeapAlloc(GetProcessHeap(), 0, write_buffer_len);
         if (!write_buffer) return;
-        len = WideCharToMultiByte(CP_ACP, 0, szLine, len, write_buffer, write_buffer_len, NULL, NULL);
-        WriteFile(hFile, write_buffer, len, &dwBytesWritten, NULL);
+        len = WideCharToMultiByte(CP_ACP, 0, szLine, len, write_buffer, write_buffer_len, ((void*)0), ((void*)0));
+        WriteFile(hFile, write_buffer, len, &dwBytesWritten, ((void*)0));
         HeapFree(GetProcessHeap(), 0, write_buffer);
         break;
-    case ENCODING_UTF8:
-        write_buffer_len = WideCharToMultiByte(CP_UTF8, 0, szLine, len, NULL, 0, NULL, NULL);
+    case 128:
+        write_buffer_len = WideCharToMultiByte(CP_UTF8, 0, szLine, len, ((void*)0), 0, ((void*)0), ((void*)0));
         write_buffer = HeapAlloc(GetProcessHeap(), 0, write_buffer_len);
         if (!write_buffer) return;
-        len = WideCharToMultiByte(CP_UTF8, 0, szLine, len, write_buffer, write_buffer_len, NULL, NULL);
-        WriteFile(hFile, write_buffer, len, &dwBytesWritten, NULL);
+        len = WideCharToMultiByte(CP_UTF8, 0, szLine, len, write_buffer, write_buffer_len, ((void*)0), ((void*)0));
+        WriteFile(hFile, write_buffer, len, &dwBytesWritten, ((void*)0));
         HeapFree(GetProcessHeap(), 0, write_buffer);
         break;
-    case ENCODING_UTF16LE:
-        WriteFile(hFile, szLine, len * sizeof(WCHAR), &dwBytesWritten, NULL);
+    case 129:
+        WriteFile(hFile, szLine, len * sizeof(WCHAR), &dwBytesWritten, ((void*)0));
         break;
-    case ENCODING_UTF16BE:
+    case 130:
         PROFILE_ByteSwapShortBuffer(szLine, len);
-        WriteFile(hFile, szLine, len * sizeof(WCHAR), &dwBytesWritten, NULL);
+        WriteFile(hFile, szLine, len * sizeof(WCHAR), &dwBytesWritten, ((void*)0));
         break;
     default:
         FIXME("encoding type %d not implemented\n", encoding);

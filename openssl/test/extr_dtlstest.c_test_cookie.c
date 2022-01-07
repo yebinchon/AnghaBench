@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DTLS1_VERSION ; 
- int /*<<< orphan*/  DTLS_client_method () ; 
- int /*<<< orphan*/  DTLS_server_method () ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_CTX_set_cookie_generate_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_cookie_verify_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_CTX_set_options (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_OP_COOKIE_EXCHANGE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  generate_cookie_cb ; 
- int /*<<< orphan*/  privkey ; 
- int /*<<< orphan*/  verify_cookie_cb ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int DTLS1_VERSION ;
+ int DTLS_client_method () ;
+ int DTLS_server_method () ;
+ int SSL_CTX_free (int *) ;
+ int SSL_CTX_set_cookie_generate_cb (int *,int ) ;
+ int SSL_CTX_set_cookie_verify_cb (int *,int ) ;
+ int SSL_CTX_set_options (int *,int ) ;
+ int SSL_ERROR_NONE ;
+ int SSL_OP_COOKIE_EXCHANGE ;
+ int SSL_free (int *) ;
+ int TEST_true (int ) ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int generate_cookie_cb ;
+ int privkey ;
+ int verify_cookie_cb ;
 
 __attribute__((used)) static int test_cookie(void)
 {
-    SSL_CTX *sctx = NULL, *cctx = NULL;
-    SSL *serverssl = NULL, *clientssl = NULL;
+    SSL_CTX *sctx = ((void*)0), *cctx = ((void*)0);
+    SSL *serverssl = ((void*)0), *clientssl = ((void*)0);
     int testresult = 0;
 
     if (!TEST_true(create_ssl_ctx_pair(DTLS_server_method(),
@@ -50,7 +50,7 @@ __attribute__((used)) static int test_cookie(void)
     SSL_CTX_set_cookie_verify_cb(sctx, verify_cookie_cb);
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                      NULL, NULL))
+                                      ((void*)0), ((void*)0)))
             || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                 SSL_ERROR_NONE)))
         goto end;

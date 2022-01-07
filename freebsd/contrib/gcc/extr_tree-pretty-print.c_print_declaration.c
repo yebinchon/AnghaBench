@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  pretty_printer ;
 
-/* Variables and functions */
- scalar_t__ ARRAY_TYPE ; 
- scalar_t__ CODE_CONTAINS_STRUCT (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ DECL_ASSEMBLER_NAME (scalar_t__) ; 
- scalar_t__ DECL_EXTERNAL (scalar_t__) ; 
- scalar_t__ DECL_HARD_REGISTER (scalar_t__) ; 
- scalar_t__ DECL_HAS_VALUE_EXPR_P (scalar_t__) ; 
- scalar_t__ DECL_INITIAL (scalar_t__) ; 
- scalar_t__ DECL_REGISTER (scalar_t__) ; 
- scalar_t__ DECL_VALUE_EXPR (scalar_t__) ; 
- scalar_t__ FUNCTION_DECL ; 
- int /*<<< orphan*/  INDENT (int) ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- scalar_t__ TREE_PUBLIC (scalar_t__) ; 
- scalar_t__ TREE_STATIC (scalar_t__) ; 
- scalar_t__ TREE_TYPE (scalar_t__) ; 
- int /*<<< orphan*/  TS_DECL_WRTL ; 
- scalar_t__ TYPE_DECL ; 
- int /*<<< orphan*/  TYPE_DOMAIN (scalar_t__) ; 
- scalar_t__ VAR_DECL ; 
- int /*<<< orphan*/  dump_array_domain (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  dump_decl_name (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  dump_function_declaration (int /*<<< orphan*/ *,scalar_t__,int,int) ; 
- int /*<<< orphan*/  dump_generic_node (int /*<<< orphan*/ *,scalar_t__,int,int,int) ; 
- int /*<<< orphan*/  pp_character (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  pp_space (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_string (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int pretty_printer ;
+
+
+ scalar_t__ ARRAY_TYPE ;
+ scalar_t__ CODE_CONTAINS_STRUCT (scalar_t__,int ) ;
+ scalar_t__ DECL_ASSEMBLER_NAME (scalar_t__) ;
+ scalar_t__ DECL_EXTERNAL (scalar_t__) ;
+ scalar_t__ DECL_HARD_REGISTER (scalar_t__) ;
+ scalar_t__ DECL_HAS_VALUE_EXPR_P (scalar_t__) ;
+ scalar_t__ DECL_INITIAL (scalar_t__) ;
+ scalar_t__ DECL_REGISTER (scalar_t__) ;
+ scalar_t__ DECL_VALUE_EXPR (scalar_t__) ;
+ scalar_t__ FUNCTION_DECL ;
+ int INDENT (int) ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ scalar_t__ TREE_PUBLIC (scalar_t__) ;
+ scalar_t__ TREE_STATIC (scalar_t__) ;
+ scalar_t__ TREE_TYPE (scalar_t__) ;
+ int TS_DECL_WRTL ;
+ scalar_t__ TYPE_DECL ;
+ int TYPE_DOMAIN (scalar_t__) ;
+ scalar_t__ VAR_DECL ;
+ int dump_array_domain (int *,int ,int,int) ;
+ int dump_decl_name (int *,scalar_t__,int) ;
+ int dump_function_declaration (int *,scalar_t__,int,int) ;
+ int dump_generic_node (int *,scalar_t__,int,int,int) ;
+ int pp_character (int *,char) ;
+ int pp_space (int *) ;
+ int pp_string (int *,char*) ;
 
 __attribute__((used)) static void
 print_declaration (pretty_printer *buffer, tree t, int spc, int flags)
@@ -57,73 +57,73 @@ print_declaration (pretty_printer *buffer, tree t, int spc, int flags)
   else if (TREE_STATIC (t))
     pp_string (buffer, "static ");
 
-  /* Print the type and name.  */
+
   if (TREE_CODE (TREE_TYPE (t)) == ARRAY_TYPE)
     {
       tree tmp;
 
-      /* Print array's type.  */
+
       tmp = TREE_TYPE (t);
       while (TREE_CODE (TREE_TYPE (tmp)) == ARRAY_TYPE)
-	tmp = TREE_TYPE (tmp);
-      dump_generic_node (buffer, TREE_TYPE (tmp), spc, flags, false);
+ tmp = TREE_TYPE (tmp);
+      dump_generic_node (buffer, TREE_TYPE (tmp), spc, flags, 0);
 
-      /* Print variable's name.  */
+
       pp_space (buffer);
-      dump_generic_node (buffer, t, spc, flags, false);
+      dump_generic_node (buffer, t, spc, flags, 0);
 
-      /* Print the dimensions.  */
+
       tmp = TREE_TYPE (t);
       while (TREE_CODE (tmp) == ARRAY_TYPE)
-	{
-	  dump_array_domain (buffer, TYPE_DOMAIN (tmp), spc, flags);
-	  tmp = TREE_TYPE (tmp);
-	}
+ {
+   dump_array_domain (buffer, TYPE_DOMAIN (tmp), spc, flags);
+   tmp = TREE_TYPE (tmp);
+ }
     }
   else if (TREE_CODE (t) == FUNCTION_DECL)
     {
-      dump_generic_node (buffer, TREE_TYPE (TREE_TYPE (t)), spc, flags, false);
+      dump_generic_node (buffer, TREE_TYPE (TREE_TYPE (t)), spc, flags, 0);
       pp_space (buffer);
       dump_decl_name (buffer, t, flags);
       dump_function_declaration (buffer, TREE_TYPE (t), spc, flags);
     }
   else
     {
-      /* Print type declaration.  */
-      dump_generic_node (buffer, TREE_TYPE (t), spc, flags, false);
 
-      /* Print variable's name.  */
+      dump_generic_node (buffer, TREE_TYPE (t), spc, flags, 0);
+
+
       pp_space (buffer);
-      dump_generic_node (buffer, t, spc, flags, false);
+      dump_generic_node (buffer, t, spc, flags, 0);
     }
 
   if (TREE_CODE (t) == VAR_DECL && DECL_HARD_REGISTER (t))
     {
       pp_string (buffer, " __asm__ ");
       pp_character (buffer, '(');
-      dump_generic_node (buffer, DECL_ASSEMBLER_NAME (t), spc, flags, false);
+      dump_generic_node (buffer, DECL_ASSEMBLER_NAME (t), spc, flags, 0);
       pp_character (buffer, ')');
     }
 
-  /* The initial value of a function serves to determine wether the function
-     is declared or defined.  So the following does not apply to function
-     nodes.  */
+
+
+
   if (TREE_CODE (t) != FUNCTION_DECL)
     {
-      /* Print the initial value.  */
+
       if (DECL_INITIAL (t))
-	{
-	  pp_space (buffer);
-	  pp_character (buffer, '=');
-	  pp_space (buffer);
-	  dump_generic_node (buffer, DECL_INITIAL (t), spc, flags, false);
-	}
+ {
+   pp_space (buffer);
+   pp_character (buffer, '=');
+   pp_space (buffer);
+   dump_generic_node (buffer, DECL_INITIAL (t), spc, flags, 0);
+ }
     }
 
   if (TREE_CODE (t) == VAR_DECL && DECL_HAS_VALUE_EXPR_P (t))
     {
       pp_string (buffer, " [value-expr: ");
-      dump_generic_node (buffer, DECL_VALUE_EXPR (t), spc, flags, false);
+      dump_generic_node (buffer, DECL_VALUE_EXPR (t), spc, flags, 0);
       pp_character (buffer, ']');
     }
 

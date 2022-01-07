@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int count; scalar_t__ pressed; scalar_t__ interrupted; } ;
-typedef  TYPE_1__ qk_tap_dance_state_t ;
+typedef TYPE_1__ qk_tap_dance_state_t ;
 
-/* Variables and functions */
- int DOUBLE_HOLD ; 
- int DOUBLE_SINGLE_TAP ; 
- int DOUBLE_TAP ; 
- int SINGLE_HOLD ; 
- int SINGLE_TAP ; 
- int TRIPLE_HOLD ; 
- int TRIPLE_SINGLE_TAP ; 
- int TRIPLE_TAP ; 
+
+ int DOUBLE_HOLD ;
+ int DOUBLE_SINGLE_TAP ;
+ int DOUBLE_TAP ;
+ int SINGLE_HOLD ;
+ int SINGLE_TAP ;
+ int TRIPLE_HOLD ;
+ int TRIPLE_SINGLE_TAP ;
+ int TRIPLE_TAP ;
 
 int cur_dance (qk_tap_dance_state_t *state) {
   if (state->count == 1) {
-    if (state->interrupted || !state->pressed)  return SINGLE_TAP;
+    if (state->interrupted || !state->pressed) return SINGLE_TAP;
     else return SINGLE_HOLD;
   }
   else if (state->count == 2) {
@@ -40,5 +40,5 @@ int cur_dance (qk_tap_dance_state_t *state) {
     else if (state->pressed) return TRIPLE_HOLD;
     else return TRIPLE_TAP;
   }
-  else return 9; //magic number. At some point this method will expand to work for more presses
+  else return 9;
 }

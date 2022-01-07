@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  d; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int d; } ;
 struct TYPE_5__ {unsigned int partial_len; int* buf; unsigned int* counter; TYPE_1__ key; } ;
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
-typedef  TYPE_2__ EVP_CHACHA_KEY ;
+typedef int EVP_CIPHER_CTX ;
+typedef TYPE_2__ EVP_CHACHA_KEY ;
 
-/* Variables and functions */
- unsigned int CHACHA_BLK_SIZE ; 
- int /*<<< orphan*/  ChaCha20_ctr32 (unsigned char*,unsigned char const*,unsigned int,int /*<<< orphan*/ ,unsigned int*) ; 
- TYPE_2__* data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ unsigned int CHACHA_BLK_SIZE ;
+ int ChaCha20_ctr32 (unsigned char*,unsigned char const*,unsigned int,int ,unsigned int*) ;
+ TYPE_2__* data (int *) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static int chacha_cipher(EVP_CIPHER_CTX * ctx, unsigned char *out,
                          const unsigned char *inp, size_t len)
@@ -52,20 +52,20 @@ __attribute__((used)) static int chacha_cipher(EVP_CIPHER_CTX * ctx, unsigned ch
     ctr32 = key->counter[0];
     while (len >= CHACHA_BLK_SIZE) {
         size_t blocks = len / CHACHA_BLK_SIZE;
-        /*
-         * 1<<28 is just a not-so-small yet not-so-large number...
-         * Below condition is practically never met, but it has to
-         * be checked for code correctness.
-         */
+
+
+
+
+
         if (sizeof(size_t)>sizeof(unsigned int) && blocks>(1U<<28))
             blocks = (1U<<28);
 
-        /*
-         * As ChaCha20_ctr32 operates on 32-bit counter, caller
-         * has to handle overflow. 'if' below detects the
-         * overflow, which is then handled by limiting the
-         * amount of blocks to the exact overflow point...
-         */
+
+
+
+
+
+
         ctr32 += (unsigned int)blocks;
         if (ctr32 < blocks) {
             blocks -= ctr32;

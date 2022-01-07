@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {void (* xProfile ) (void*,char const*,sqlite_uint64) ;int /*<<< orphan*/  mutex; int /*<<< orphan*/  mTrace; void* pProfileArg; } ;
-typedef  TYPE_1__ sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_MISUSE_BKPT ; 
- int /*<<< orphan*/  SQLITE_TRACE_NONLEGACY_MASK ; 
- int /*<<< orphan*/  SQLITE_TRACE_XPROFILE ; 
- int /*<<< orphan*/  sqlite3SafetyCheckOk (TYPE_1__*) ; 
- int /*<<< orphan*/  sqlite3_mutex_enter (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_mutex_leave (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {void (* xProfile ) (void*,char const*,sqlite_uint64) ;int mutex; int mTrace; void* pProfileArg; } ;
+typedef TYPE_1__ sqlite3 ;
+
+
+ int SQLITE_MISUSE_BKPT ;
+ int SQLITE_TRACE_NONLEGACY_MASK ;
+ int SQLITE_TRACE_XPROFILE ;
+ int sqlite3SafetyCheckOk (TYPE_1__*) ;
+ int sqlite3_mutex_enter (int ) ;
+ int sqlite3_mutex_leave (int ) ;
 
 void *sqlite3_profile(
   sqlite3 *db,
@@ -29,12 +29,12 @@ void *sqlite3_profile(
 ){
   void *pOld;
 
-#ifdef SQLITE_ENABLE_API_ARMOR
-  if( !sqlite3SafetyCheckOk(db) ){
-    (void)SQLITE_MISUSE_BKPT;
-    return 0;
-  }
-#endif
+
+
+
+
+
+
   sqlite3_mutex_enter(db->mutex);
   pOld = db->pProfileArg;
   db->xProfile = xProfile;

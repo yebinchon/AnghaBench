@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  thread_t ;
-typedef  int /*<<< orphan*/  hw_lock_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current_thread () ; 
- int /*<<< orphan*/  disable_preemption_for_thread (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hw_lock_lock_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int thread_t ;
+typedef int hw_lock_t ;
+
+
+ int current_thread () ;
+ int disable_preemption_for_thread (int ) ;
+ int hw_lock_lock_internal (int ,int ) ;
 
 void
 hw_lock_lock(hw_lock_t lock)
 {
-	thread_t thread = current_thread();
-	disable_preemption_for_thread(thread);
-	hw_lock_lock_internal(lock, thread);
+ thread_t thread = current_thread();
+ disable_preemption_for_thread(thread);
+ hw_lock_lock_internal(lock, thread);
 }

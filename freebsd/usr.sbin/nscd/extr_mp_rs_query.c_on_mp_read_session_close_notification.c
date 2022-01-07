@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct query_state {int /*<<< orphan*/ * process_func; scalar_t__ kevent_watermark; int /*<<< orphan*/ * mdata; int /*<<< orphan*/  config_entry; } ;
-typedef  int /*<<< orphan*/  cache_mp_read_session ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CELT_MULTIPART ; 
- int /*<<< orphan*/  TRACE_IN (int (*) (struct query_state*)) ; 
- int /*<<< orphan*/  TRACE_OUT (int (*) (struct query_state*)) ; 
- int /*<<< orphan*/  close_cache_mp_read_session (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  configuration_lock_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  configuration_unlock_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct query_state {int * process_func; scalar_t__ kevent_watermark; int * mdata; int config_entry; } ;
+typedef int cache_mp_read_session ;
+
+
+ int CELT_MULTIPART ;
+ int TRACE_IN (int (*) (struct query_state*)) ;
+ int TRACE_OUT (int (*) (struct query_state*)) ;
+ int close_cache_mp_read_session (int ) ;
+ int configuration_lock_entry (int ,int ) ;
+ int configuration_unlock_entry (int ,int ) ;
 
 __attribute__((used)) static int
 on_mp_read_session_close_notification(struct query_state *qstate)
 {
 
-	TRACE_IN(on_mp_read_session_close_notification);
-	configuration_lock_entry(qstate->config_entry, CELT_MULTIPART);
-	close_cache_mp_read_session((cache_mp_read_session)qstate->mdata);
-	configuration_unlock_entry(qstate->config_entry, CELT_MULTIPART);
-	qstate->mdata = NULL;
-	qstate->kevent_watermark = 0;
-	qstate->process_func = NULL;
-	TRACE_OUT(on_mp_read_session_close_notification);
-	return (0);
+ TRACE_IN(on_mp_read_session_close_notification);
+ configuration_lock_entry(qstate->config_entry, CELT_MULTIPART);
+ close_cache_mp_read_session((cache_mp_read_session)qstate->mdata);
+ configuration_unlock_entry(qstate->config_entry, CELT_MULTIPART);
+ qstate->mdata = ((void*)0);
+ qstate->kevent_watermark = 0;
+ qstate->process_func = ((void*)0);
+ TRACE_OUT(on_mp_read_session_close_notification);
+ return (0);
 }

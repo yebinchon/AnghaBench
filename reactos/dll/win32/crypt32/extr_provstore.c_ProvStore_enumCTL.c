@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * hCertStore; } ;
-struct TYPE_10__ {int /*<<< orphan*/  base; TYPE_3__ ctx; } ;
-typedef  TYPE_4__ ctl_t ;
-typedef  int /*<<< orphan*/  context_t ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * hCertStore; } ;
+struct TYPE_10__ {int base; TYPE_3__ ctx; } ;
+typedef TYPE_4__ ctl_t ;
+typedef int context_t ;
 struct TYPE_11__ {TYPE_6__* memStore; } ;
-typedef  TYPE_5__ WINE_PROVIDERSTORE ;
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
+typedef TYPE_5__ WINE_PROVIDERSTORE ;
+typedef int WINECRYPT_CERTSTORE ;
 struct TYPE_12__ {TYPE_2__* vtbl; } ;
-struct TYPE_7__ {scalar_t__ (* enumContext ) (TYPE_6__*,int /*<<< orphan*/ *) ;} ;
+struct TYPE_7__ {scalar_t__ (* enumContext ) (TYPE_6__*,int *) ;} ;
 struct TYPE_8__ {TYPE_1__ ctls; } ;
 
-/* Variables and functions */
- scalar_t__ stub1 (TYPE_6__*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ stub1 (TYPE_6__*,int *) ;
 
 __attribute__((used)) static context_t *ProvStore_enumCTL(WINECRYPT_CERTSTORE *store, context_t *prev)
 {
@@ -37,11 +37,11 @@ __attribute__((used)) static context_t *ProvStore_enumCTL(WINECRYPT_CERTSTORE *s
 
     ret = (ctl_t*)ps->memStore->vtbl->ctls.enumContext(ps->memStore, prev);
     if (!ret)
-        return NULL;
+        return ((void*)0);
 
-    /* same dirty trick: replace the returned context's hCertStore with
-     * store.
-     */
+
+
+
     ret->ctx.hCertStore = store;
     return &ret->base;
 }

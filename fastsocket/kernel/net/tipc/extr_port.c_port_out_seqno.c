@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  phdr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int phdr; } ;
 struct port {TYPE_1__ publ; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  msg_transp_seqno (int /*<<< orphan*/ *) ; 
+
+ int msg_transp_seqno (int *) ;
 
 __attribute__((used)) static u32 port_out_seqno(struct port *p_ptr)
 {
-	return msg_transp_seqno(&p_ptr->publ.phdr);
+ return msg_transp_seqno(&p_ptr->publ.phdr);
 }

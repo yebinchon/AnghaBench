@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  RADIX_TREE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  item_check_absent (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  item_check_present (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  item_insert (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  item_kill_tree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tree ; 
+ int GFP_KERNEL ;
+ int RADIX_TREE (int ,int ) ;
+ int item_check_absent (int *,int) ;
+ int item_check_present (int *,int) ;
+ int item_insert (int *,int) ;
+ int item_kill_tree (int *) ;
+ int tree ;
 
 void add_and_check(void)
 {
-	RADIX_TREE(tree, GFP_KERNEL);
+ RADIX_TREE(tree, GFP_KERNEL);
 
-	item_insert(&tree, 44);
-	item_check_present(&tree, 44);
-	item_check_absent(&tree, 43);
-	item_kill_tree(&tree);
+ item_insert(&tree, 44);
+ item_check_present(&tree, 44);
+ item_check_absent(&tree, 43);
+ item_kill_tree(&tree);
 }

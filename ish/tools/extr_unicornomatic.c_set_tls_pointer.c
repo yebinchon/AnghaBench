@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uc_engine ;
-typedef  int /*<<< orphan*/  tls_entry ;
+
+
+
+
+typedef int uc_engine ;
+typedef int tls_entry ;
 struct gdt_entry {int base0; int base1; int base2; } ;
-typedef  int dword_t ;
+typedef int dword_t ;
 
-/* Variables and functions */
- scalar_t__ GDT_ADDR ; 
- int /*<<< orphan*/  uc_read (int /*<<< orphan*/ *,scalar_t__,struct gdt_entry*,int) ; 
- int /*<<< orphan*/  uc_write (int /*<<< orphan*/ *,scalar_t__,struct gdt_entry*,int) ; 
+
+ scalar_t__ GDT_ADDR ;
+ int uc_read (int *,scalar_t__,struct gdt_entry*,int) ;
+ int uc_write (int *,scalar_t__,struct gdt_entry*,int) ;
 
 __attribute__((used)) static void set_tls_pointer(uc_engine *uc, dword_t tls_ptr) {
     struct gdt_entry tls_entry;

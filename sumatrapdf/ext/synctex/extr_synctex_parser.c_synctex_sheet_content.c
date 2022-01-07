@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* synctex_scanner_t ;
-typedef  int /*<<< orphan*/ * synctex_node_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * sheet; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SYNCTEX_CHILD (int /*<<< orphan*/ *) ; 
- int SYNCTEX_PAGE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SYNCTEX_SIBLING (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* synctex_scanner_t ;
+typedef int * synctex_node_t ;
+struct TYPE_3__ {int * sheet; } ;
+
+
+ int * SYNCTEX_CHILD (int *) ;
+ int SYNCTEX_PAGE (int *) ;
+ int * SYNCTEX_SIBLING (int *) ;
 
 synctex_node_t synctex_sheet_content(synctex_scanner_t scanner,int page) {
-	if (scanner) {
-		synctex_node_t sheet = scanner->sheet;
-		while(sheet) {
-			if (page == SYNCTEX_PAGE(sheet)) {
-				return SYNCTEX_CHILD(sheet);
-			}
-			sheet = SYNCTEX_SIBLING(sheet);
-		}
-	}
-	return NULL;
+ if (scanner) {
+  synctex_node_t sheet = scanner->sheet;
+  while(sheet) {
+   if (page == SYNCTEX_PAGE(sheet)) {
+    return SYNCTEX_CHILD(sheet);
+   }
+   sheet = SYNCTEX_SIBLING(sheet);
+  }
+ }
+ return ((void*)0);
 }

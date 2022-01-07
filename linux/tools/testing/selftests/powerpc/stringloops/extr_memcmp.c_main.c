@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int test_harness (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_harness_set_timeout (int) ; 
- int /*<<< orphan*/  testcases ; 
+ int test_harness (int ,char*) ;
+ int test_harness_set_timeout (int) ;
+ int testcases ;
 
 int main(void)
 {
-	test_harness_set_timeout(300);
-	return test_harness(testcases, "memcmp");
+ test_harness_set_timeout(300);
+ return test_harness(testcases, "memcmp");
 }

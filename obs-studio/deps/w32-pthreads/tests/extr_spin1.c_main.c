@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ EINVAL ; 
- int /*<<< orphan*/  PTHREAD_PROCESS_PRIVATE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lock ; 
- scalar_t__ pthread_spin_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_spin_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pthread_spin_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_spin_unlock (int /*<<< orphan*/ *) ; 
+ scalar_t__ EINVAL ;
+ int PTHREAD_PROCESS_PRIVATE ;
+ int assert (int) ;
+ int lock ;
+ scalar_t__ pthread_spin_destroy (int *) ;
+ scalar_t__ pthread_spin_init (int *,int ) ;
+ scalar_t__ pthread_spin_lock (int *) ;
+ scalar_t__ pthread_spin_unlock (int *) ;
 
 int
 main()

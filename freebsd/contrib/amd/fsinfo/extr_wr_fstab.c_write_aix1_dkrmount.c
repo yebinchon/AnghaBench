@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* f_localname; char* f_volname; char* f_fstype; char* f_opts; TYPE_3__* f_ref; } ;
-typedef  TYPE_4__ fsmount ;
+typedef TYPE_4__ fsmount ;
 struct TYPE_8__ {TYPE_2__* m_dk; } ;
 struct TYPE_7__ {TYPE_1__* d_host; } ;
 struct TYPE_6__ {char* h_hostname; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XFREE (char*) ; 
- int /*<<< orphan*/  domain_strip (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,char*,char*,char*,char*,char*,char*,char*,char*) ; 
- char* strchr (char*,char) ; 
- char* xstrdup (char*) ; 
+
+ int XFREE (char*) ;
+ int domain_strip (char*,char*) ;
+ int fprintf (int *,char*,char*,char*,char*,char*,char*,char*,char*,char*) ;
+ char* strchr (char*,char) ;
+ char* xstrdup (char*) ;
 
 __attribute__((used)) static void
 write_aix1_dkrmount(FILE *ef, char *hn, fsmount *fp)
@@ -39,14 +39,14 @@ write_aix1_dkrmount(FILE *ef, char *hn, fsmount *fp)
     *p = '\0';
   domain_strip(h, hn);
   fprintf(ef, "\n%s:\n\tsite = %s\n\tdev = %s:%s\n\tvfs = %s\n\ttype = %s\n\tvol = %s\n\topts = %s\n\tmount = true\n\tcheck = true\n\tfree = false\n",
-	  fp->f_localname,
-	  hp,
-	  h,
-	  fp->f_volname,
-	  fp->f_fstype,
-	  fp->f_fstype,
-	  fp->f_localname,
-	  fp->f_opts);
+   fp->f_localname,
+   hp,
+   h,
+   fp->f_volname,
+   fp->f_fstype,
+   fp->f_fstype,
+   fp->f_localname,
+   fp->f_opts);
 
   XFREE(hp);
   XFREE(h);

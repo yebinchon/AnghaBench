@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
-typedef  struct TYPE_13__   TYPE_11__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  callback; } ;
-struct TYPE_16__ {unsigned int start; int count; unsigned int* acount; char* pattern; TYPE_2__ st; int /*<<< orphan*/  plen; int /*<<< orphan*/ * mutex; int /*<<< orphan*/ * cond; int /*<<< orphan*/  stop; TYPE_4__* state; } ;
-typedef  TYPE_3__ thread_state_view ;
-typedef  int /*<<< orphan*/  glong ;
-typedef  char gchar ;
-struct TYPE_17__ {int num_lines; unsigned int* line_map; unsigned int filtered_lines; unsigned int selected_line; int height; void* refilter; scalar_t__ quit; int /*<<< orphan*/  retv; int /*<<< orphan*/  list_view; scalar_t__ tb_total_rows; scalar_t__ tb_filtered_rows; int /*<<< orphan*/  distance; int /*<<< orphan*/ * tokens; TYPE_1__* text; int /*<<< orphan*/  sw; void* reload; } ;
-struct TYPE_14__ {int /*<<< orphan*/  text; } ;
-struct TYPE_13__ {scalar_t__ auto_select; scalar_t__ sort; int /*<<< orphan*/  case_sensitive; } ;
-typedef  TYPE_4__ RofiViewState ;
-typedef  int /*<<< orphan*/  GMutex ;
-typedef  int /*<<< orphan*/  GCond ;
 
-/* Variables and functions */
- void* FALSE ; 
- unsigned int MAX (int,int) ; 
- int /*<<< orphan*/  MENU_OK ; 
- int /*<<< orphan*/  MIN (unsigned int,unsigned int) ; 
- int /*<<< orphan*/  TICK_N (char*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _rofi_view_reload_row (TYPE_4__*) ; 
- TYPE_11__ config ; 
- int /*<<< orphan*/  filter_elements ; 
- int /*<<< orphan*/  g_cond_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_cond_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_debug (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_mutex_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_qsort_with_data (unsigned int*,unsigned int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* g_strdup_printf (char*,unsigned int) ; 
- int /*<<< orphan*/  g_thread_pool_push (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_utf8_strlen (char*,int) ; 
- int /*<<< orphan*/ * helper_tokenize (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  helper_tokenize_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lev_sort ; 
- size_t listview_get_selected (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  listview_set_num_elements (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  memmove (unsigned int*,unsigned int*,int) ; 
- char* mode_preprocess_input (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int rofi_view_calculate_height (TYPE_4__*) ; 
- int /*<<< orphan*/  rofi_view_calculate_window_position (TYPE_4__*) ; 
- int /*<<< orphan*/  rofi_view_call_thread (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rofi_view_window_update_size (TYPE_4__*) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  textbox_text (scalar_t__,char*) ; 
- int /*<<< orphan*/  tpool ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+typedef struct TYPE_13__ TYPE_11__ ;
+
+
+struct TYPE_15__ {int callback; } ;
+struct TYPE_16__ {unsigned int start; int count; unsigned int* acount; char* pattern; TYPE_2__ st; int plen; int * mutex; int * cond; int stop; TYPE_4__* state; } ;
+typedef TYPE_3__ thread_state_view ;
+typedef int glong ;
+typedef char gchar ;
+struct TYPE_17__ {int num_lines; unsigned int* line_map; unsigned int filtered_lines; unsigned int selected_line; int height; void* refilter; scalar_t__ quit; int retv; int list_view; scalar_t__ tb_total_rows; scalar_t__ tb_filtered_rows; int distance; int * tokens; TYPE_1__* text; int sw; void* reload; } ;
+struct TYPE_14__ {int text; } ;
+struct TYPE_13__ {scalar_t__ auto_select; scalar_t__ sort; int case_sensitive; } ;
+typedef TYPE_4__ RofiViewState ;
+typedef int GMutex ;
+typedef int GCond ;
+
+
+ void* FALSE ;
+ unsigned int MAX (int,int) ;
+ int MENU_OK ;
+ int MIN (unsigned int,unsigned int) ;
+ int TICK_N (char*) ;
+ scalar_t__ TRUE ;
+ int _rofi_view_reload_row (TYPE_4__*) ;
+ TYPE_11__ config ;
+ int filter_elements ;
+ int g_cond_clear (int *) ;
+ int g_cond_init (int *) ;
+ int g_cond_wait (int *,int *) ;
+ int g_debug (char*) ;
+ int g_free (char*) ;
+ int g_mutex_clear (int *) ;
+ int g_mutex_init (int *) ;
+ int g_mutex_lock (int *) ;
+ int g_mutex_unlock (int *) ;
+ int g_qsort_with_data (unsigned int*,unsigned int,int,int ,int ) ;
+ char* g_strdup_printf (char*,unsigned int) ;
+ int g_thread_pool_push (int ,TYPE_3__*,int *) ;
+ int g_utf8_strlen (char*,int) ;
+ int * helper_tokenize (char*,int ) ;
+ int helper_tokenize_free (int *) ;
+ int lev_sort ;
+ size_t listview_get_selected (int ) ;
+ int listview_set_num_elements (int ,unsigned int) ;
+ int memmove (unsigned int*,unsigned int*,int) ;
+ char* mode_preprocess_input (int ,int ) ;
+ int rofi_view_calculate_height (TYPE_4__*) ;
+ int rofi_view_calculate_window_position (TYPE_4__*) ;
+ int rofi_view_call_thread (TYPE_3__*,int *) ;
+ int rofi_view_window_update_size (TYPE_4__*) ;
+ scalar_t__ strlen (int ) ;
+ int textbox_text (scalar_t__,char*) ;
+ int tpool ;
 
 __attribute__((used)) static void rofi_view_refilter ( RofiViewState *state )
 {
@@ -74,45 +74,45 @@ __attribute__((used)) static void rofi_view_refilter ( RofiViewState *state )
     }
     if ( state->tokens ) {
         helper_tokenize_free ( state->tokens );
-        state->tokens = NULL;
+        state->tokens = ((void*)0);
     }
     if ( state->text && strlen ( state->text->text ) > 0 ) {
-        unsigned int j        = 0;
-        gchar        *pattern = mode_preprocess_input ( state->sw, state->text->text );
-        glong        plen     = pattern ? g_utf8_strlen ( pattern, -1 ) : 0;
+        unsigned int j = 0;
+        gchar *pattern = mode_preprocess_input ( state->sw, state->text->text );
+        glong plen = pattern ? g_utf8_strlen ( pattern, -1 ) : 0;
         state->tokens = helper_tokenize ( pattern, config.case_sensitive );
-        /**
-         * On long lists it can be beneficial to parallelize.
-         * If number of threads is 1, no thread is spawn.
-         * If number of threads > 1 and there are enough (> 1000) items, spawn jobs for the thread pool.
-         * For large lists with 8 threads I see a factor three speedup of the whole function.
-         */
-        unsigned int      nt = MAX ( 1, state->num_lines / 500 );
+
+
+
+
+
+
+        unsigned int nt = MAX ( 1, state->num_lines / 500 );
         thread_state_view states[nt];
-        GCond             cond;
-        GMutex            mutex;
+        GCond cond;
+        GMutex mutex;
         g_mutex_init ( &mutex );
         g_cond_init ( &cond );
         unsigned int count = nt;
         unsigned int steps = ( state->num_lines + nt ) / nt;
         for ( unsigned int i = 0; i < nt; i++ ) {
-            states[i].state       = state;
-            states[i].start       = i * steps;
-            states[i].stop        = MIN ( state->num_lines, ( i + 1 ) * steps );
-            states[i].count       = 0;
-            states[i].cond        = &cond;
-            states[i].mutex       = &mutex;
-            states[i].acount      = &count;
-            states[i].plen        = plen;
-            states[i].pattern     = pattern;
+            states[i].state = state;
+            states[i].start = i * steps;
+            states[i].stop = MIN ( state->num_lines, ( i + 1 ) * steps );
+            states[i].count = 0;
+            states[i].cond = &cond;
+            states[i].mutex = &mutex;
+            states[i].acount = &count;
+            states[i].plen = plen;
+            states[i].pattern = pattern;
             states[i].st.callback = filter_elements;
             if ( i > 0 ) {
-                g_thread_pool_push ( tpool, &states[i], NULL );
+                g_thread_pool_push ( tpool, &states[i], ((void*)0) );
             }
         }
-        // Run one in this thread.
-        rofi_view_call_thread ( &states[0], NULL );
-        // No need to do this with only one thread.
+
+        rofi_view_call_thread ( &states[0], ((void*)0) );
+
         if ( nt > 1 ) {
             g_mutex_lock ( &mutex );
             while ( count > 0 ) {
@@ -132,7 +132,7 @@ __attribute__((used)) static void rofi_view_refilter ( RofiViewState *state )
             g_qsort_with_data ( state->line_map, j, sizeof ( int ), lev_sort, state->distance );
         }
 
-        // Cleanup + bookkeeping.
+
         state->filtered_lines = j;
         g_free ( pattern );
     }
@@ -149,7 +149,7 @@ __attribute__((used)) static void rofi_view_refilter ( RofiViewState *state )
         textbox_text( state->tb_filtered_rows, r );
         g_free(r);
     }
-    if ( state->tb_total_rows )  {
+    if ( state->tb_total_rows ) {
         char *r = g_strdup_printf("%u", state->num_lines);
         textbox_text( state->tb_total_rows, r );
         g_free(r);
@@ -158,11 +158,11 @@ __attribute__((used)) static void rofi_view_refilter ( RofiViewState *state )
 
 
     if ( config.auto_select == TRUE && state->filtered_lines == 1 && state->num_lines > 1 ) {
-        ( state->selected_line ) = state->line_map[listview_get_selected ( state->list_view  )];
-        state->retv              = MENU_OK;
-        state->quit              = TRUE;
+        ( state->selected_line ) = state->line_map[listview_get_selected ( state->list_view )];
+        state->retv = MENU_OK;
+        state->quit = TRUE;
     }
-    // Size the window.
+
     int height = rofi_view_calculate_height ( state );
     if ( height != state->height ) {
         state->height = height;

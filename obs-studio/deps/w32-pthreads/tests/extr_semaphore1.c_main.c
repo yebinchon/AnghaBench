@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sem_t ;
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int /*<<< orphan*/  PTHREAD_PROCESS_PRIVATE ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- char** error_string ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ sem_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sem_post (int /*<<< orphan*/ *) ; 
- int sem_trywait (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  thr ; 
+
+
+
+typedef int sem_t ;
+typedef int pthread_t ;
+
+
+ int EAGAIN ;
+ int PTHREAD_PROCESS_PRIVATE ;
+ int assert (int) ;
+ int errno ;
+ char** error_string ;
+ int fflush (int ) ;
+ int printf (char*,...) ;
+ scalar_t__ pthread_create (int *,int *,int ,int *) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ scalar_t__ sem_init (int *,int ,int ) ;
+ int sem_post (int *) ;
+ int sem_trywait (int *) ;
+ int stdout ;
+ int thr ;
 
 int
 main()
@@ -37,7 +37,7 @@ main()
   void* result1 = (void*)-1;
   int result2;
 
-  assert(pthread_create(&t, NULL, thr, NULL) == 0);
+  assert(pthread_create(&t, ((void*)0), thr, ((void*)0)) == 0);
   assert(pthread_join(t, &result1) == 0);
   assert((int)(size_t)result1 == 0);
 
@@ -51,7 +51,7 @@ main()
     if (err != EAGAIN)
     {
       printf("main: sem_trywait 1: expecting error %s: got %s\n",
-	     error_string[EAGAIN], error_string[err]); fflush(stdout);
+      error_string[EAGAIN], error_string[err]); fflush(stdout);
     }
     assert(err == EAGAIN);
   }

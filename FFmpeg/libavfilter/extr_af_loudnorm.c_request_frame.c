@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_1__* priv; TYPE_3__** inputs; } ;
-struct TYPE_13__ {int channels; int /*<<< orphan*/  sample_rate; TYPE_4__* src; } ;
+struct TYPE_13__ {int channels; int sample_rate; TYPE_4__* src; } ;
 struct TYPE_12__ {int nb_samples; scalar_t__* data; } ;
 struct TYPE_11__ {scalar_t__ frame_type; int buf_size; int prev_nb_samples; double* buf; int limiter_buf_size; int buf_index; } ;
-typedef  TYPE_1__ LoudNormContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ LoudNormContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ FINAL_FRAME ; 
- scalar_t__ INNER_FRAME ; 
- TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ; 
- int ff_request_frame (TYPE_3__*) ; 
- int filter_frame (TYPE_3__*,TYPE_2__*) ; 
- int frame_size (int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int ENOMEM ;
+ scalar_t__ FINAL_FRAME ;
+ scalar_t__ INNER_FRAME ;
+ TYPE_2__* ff_get_audio_buffer (TYPE_3__*,int) ;
+ int ff_request_frame (TYPE_3__*) ;
+ int filter_frame (TYPE_3__*,TYPE_2__*) ;
+ int frame_size (int ,int) ;
 
 __attribute__((used)) static int request_frame(AVFilterLink *outlink)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static int request_frame(AVFilterLink *outlink)
         int nb_samples, n, c, offset;
         AVFrame *frame;
 
-        nb_samples  = (s->buf_size / inlink->channels) - s->prev_nb_samples;
+        nb_samples = (s->buf_size / inlink->channels) - s->prev_nb_samples;
         nb_samples -= (frame_size(inlink->sample_rate, 100) - s->prev_nb_samples);
 
         frame = ff_get_audio_buffer(outlink, nb_samples);
@@ -59,7 +59,7 @@ __attribute__((used)) static int request_frame(AVFilterLink *outlink)
         buf = s->buf;
         src = (double *)frame->data[0];
 
-        offset  = ((s->limiter_buf_size / inlink->channels) - s->prev_nb_samples) * inlink->channels;
+        offset = ((s->limiter_buf_size / inlink->channels) - s->prev_nb_samples) * inlink->channels;
         offset -= (frame_size(inlink->sample_rate, 100) - s->prev_nb_samples) * inlink->channels;
         s->buf_index = s->buf_index - offset < 0 ? s->buf_index - offset + s->buf_size : s->buf_index - offset;
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int retval; scalar_t__ name; } ;
-typedef  TYPE_1__ STRINT_PAIR ;
-typedef  int /*<<< orphan*/  SSL ;
+typedef TYPE_1__ STRINT_PAIR ;
+typedef int SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  BIO_puts (int /*<<< orphan*/ ,char*) ; 
- int CERT_PKEY_SUITEB ; 
- int SSL_CERT_FLAG_SUITEB_128_LOS ; 
- int SSL_set_cert_flags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- TYPE_1__* chain_flags ; 
+
+ int BIO_printf (int ,char*,...) ;
+ int BIO_puts (int ,char*) ;
+ int CERT_PKEY_SUITEB ;
+ int SSL_CERT_FLAG_SUITEB_128_LOS ;
+ int SSL_set_cert_flags (int *,int ) ;
+ int bio_err ;
+ TYPE_1__* chain_flags ;
 
 __attribute__((used)) static void print_chain_flags(SSL *s, int flags)
 {

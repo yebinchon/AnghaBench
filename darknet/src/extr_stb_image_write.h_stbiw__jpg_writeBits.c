@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi__write_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stbiw__putc (int /*<<< orphan*/ *,unsigned char) ; 
+
+
+
+typedef int stbi__write_context ;
+
+
+ int stbiw__putc (int *,unsigned char) ;
 
 __attribute__((used)) static void stbiw__jpg_writeBits(stbi__write_context *s, int *bitBufP, int *bitCntP, const unsigned short *bs) {
    int bitBuf = *bitBufP, bitCnt = *bitCntP;

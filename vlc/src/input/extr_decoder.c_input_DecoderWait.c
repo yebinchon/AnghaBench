@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct decoder_owner {int /*<<< orphan*/  lock; int /*<<< orphan*/  wait_acknowledge; int /*<<< orphan*/  p_fifo; scalar_t__ b_idle; scalar_t__ paused; int /*<<< orphan*/  b_has_data; int /*<<< orphan*/  b_waiting; } ;
-typedef  int /*<<< orphan*/  decoder_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- struct decoder_owner* dec_get_owner (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ vlc_fifo_IsEmpty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_fifo_Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_fifo_Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct decoder_owner {int lock; int wait_acknowledge; int p_fifo; scalar_t__ b_idle; scalar_t__ paused; int b_has_data; int b_waiting; } ;
+typedef int decoder_t ;
+
+
+ int assert (int ) ;
+ struct decoder_owner* dec_get_owner (int *) ;
+ int msg_Err (int *,char*) ;
+ int vlc_cond_wait (int *,int *) ;
+ scalar_t__ vlc_fifo_IsEmpty (int ) ;
+ int vlc_fifo_Lock (int ) ;
+ int vlc_fifo_Unlock (int ) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void input_DecoderWait( decoder_t *p_dec )
 {
@@ -33,8 +33,8 @@ void input_DecoderWait( decoder_t *p_dec )
     vlc_mutex_lock( &p_owner->lock );
     while( !p_owner->b_has_data )
     {
-        /* Don't need to lock p_owner->paused since it's only modified by the
-         * owner */
+
+
         if( p_owner->paused )
             break;
         vlc_fifo_Lock( p_owner->p_fifo );

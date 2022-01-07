@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  last_name; int /*<<< orphan*/  first_name; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int last_name; int first_name; } ;
 struct TYPE_5__ {int flags; TYPE_1__ user; } ;
-typedef  TYPE_2__ tgl_peer_t ;
-typedef  int /*<<< orphan*/  tgl_peer_id_t ;
+typedef TYPE_2__ tgl_peer_t ;
+typedef int tgl_peer_id_t ;
 struct in_ev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLOR_RED ; 
- int /*<<< orphan*/  COLOR_REDB ; 
- int TGLUF_CONTACT ; 
- int TGLUF_CREATED ; 
- int TGLUF_DELETED ; 
- int TGLUF_SELF ; 
- scalar_t__ TGL_PEER_USER ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mpop_color (struct in_ev*) ; 
- int /*<<< orphan*/  mprintf (struct in_ev*,char*,scalar_t__,...) ; 
- int /*<<< orphan*/  mpush_color (struct in_ev*,int /*<<< orphan*/ ) ; 
- scalar_t__ permanent_peer_id_mode ; 
- int /*<<< orphan*/  print_peer_permanent_name (struct in_ev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- scalar_t__ tgl_get_peer_id (int /*<<< orphan*/ ) ; 
- scalar_t__ tgl_get_peer_type (int /*<<< orphan*/ ) ; 
- scalar_t__* unknown_user_list ; 
- int unknown_user_list_pos ; 
- scalar_t__ use_ids ; 
+
+ int COLOR_RED ;
+ int COLOR_REDB ;
+ int TGLUF_CONTACT ;
+ int TGLUF_CREATED ;
+ int TGLUF_DELETED ;
+ int TGLUF_SELF ;
+ scalar_t__ TGL_PEER_USER ;
+ int assert (int) ;
+ int mpop_color (struct in_ev*) ;
+ int mprintf (struct in_ev*,char*,scalar_t__,...) ;
+ int mpush_color (struct in_ev*,int ) ;
+ scalar_t__ permanent_peer_id_mode ;
+ int print_peer_permanent_name (struct in_ev*,int ) ;
+ int strlen (int ) ;
+ scalar_t__ tgl_get_peer_id (int ) ;
+ scalar_t__ tgl_get_peer_type (int ) ;
+ scalar_t__* unknown_user_list ;
+ int unknown_user_list_pos ;
+ scalar_t__ use_ids ;
 
 void print_user_name (struct in_ev *ev, tgl_peer_id_t id, tgl_peer_t *U) {
   assert (tgl_get_peer_type (id) == TGL_PEER_USER);
@@ -76,7 +76,7 @@ void print_user_name (struct in_ev *ev, tgl_peer_id_t id, tgl_peer_t *U) {
     } else if (!U->user.last_name || !strlen (U->user.last_name)) {
       mprintf (ev, "%s", U->user.first_name);
     } else {
-      mprintf (ev, "%s %s", U->user.first_name, U->user.last_name); 
+      mprintf (ev, "%s %s", U->user.first_name, U->user.last_name);
     }
     if (U->flags & (TGLUF_SELF | TGLUF_CONTACT)) {
       mpop_color (ev);

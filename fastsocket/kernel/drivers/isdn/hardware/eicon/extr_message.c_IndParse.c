@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t word ;
-typedef  size_t byte ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef size_t word ;
+typedef size_t byte ;
 struct TYPE_6__ {TYPE_1__* RBuffer; } ;
 struct TYPE_7__ {TYPE_2__ Sig; } ;
 struct TYPE_5__ {size_t* P; int length; } ;
-typedef  TYPE_3__ PLCI ;
+typedef TYPE_3__ PLCI ;
 
-/* Variables and functions */
- size_t CAD ; 
- size_t CONN_NR ; 
- size_t ESC ; 
- size_t OAD ; 
- size_t SHIFT ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*,size_t,size_t) ; 
+
+ size_t CAD ;
+ size_t CONN_NR ;
+ size_t ESC ;
+ size_t OAD ;
+ size_t SHIFT ;
+ int dbug (int,int ) ;
+ int dprintf (char*,size_t,size_t) ;
 
 __attribute__((used)) static void IndParse(PLCI *plci, word *parms_id, byte **parms, byte multiIEsize)
 {
-  word ploc;            /* points to current location within packet */
+  word ploc;
   byte w;
   byte wlen;
   byte codeset,lock;
-  byte   * in;
+  byte * in;
   word i;
   word code;
   word mIEindex = 0;
@@ -44,29 +44,29 @@ __attribute__((used)) static void IndParse(PLCI *plci, word *parms_id, byte **pa
   lock = 0;
 
   in = plci->Sig.RBuffer->P;
-  for(i=0; i<parms_id[0]; i++)   /* multiIE parms_id contains just the 1st */
-  {                            /* element but parms array is larger      */
-    parms[i] = (byte   *)"";
+  for(i=0; i<parms_id[0]; i++)
+  {
+    parms[i] = (byte *)"";
   }
   for(i=0; i<multiIEsize; i++)
   {
-    parms[i] = (byte   *)"";
+    parms[i] = (byte *)"";
   }
 
   while(ploc<plci->Sig.RBuffer->length-1) {
 
-        /* read information element id and length                   */
+
     w = in[ploc];
 
     if(w & 0x80) {
-/*    w &=0xf0; removed, cannot detect congestion levels */
-/*    upper 4 bit masked with w==SHIFT now               */
+
+
       wlen = 0;
     }
     else {
       wlen = (byte)(in[ploc+1]+1);
     }
-        /* check if length valid (not exceeding end of packet)      */
+
     if((ploc+wlen) > 270) return ;
     if(lock & 0x80) lock &=0x7f;
     else codeset = lock;
@@ -85,8 +85,8 @@ __attribute__((used)) static void IndParse(PLCI *plci, word *parms_id, byte **pa
       for(i=1; i<parms_id[0]+1 && parms_id[i]!=code; i++);
 
       if(i<parms_id[0]+1) {
-        if(!multiIEsize) { /* with multiIEs use next field index,          */
-          mIEindex = i-1;    /* with normal IEs use same index like parms_id */
+        if(!multiIEsize) {
+          mIEindex = i-1;
         }
 
         parms[mIEindex] = &in[ploc+1];
@@ -101,7 +101,7 @@ __attribute__((used)) static void IndParse(PLCI *plci, word *parms_id, byte **pa
             parms[mIEindex] = &in[ploc];
           }
         }
-        mIEindex++;       /* effects multiIEs only */
+        mIEindex++;
       }
     }
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
 struct TYPE_5__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ aout_stream_t ;
-struct TYPE_6__ {scalar_t__ rate; scalar_t__ written; int /*<<< orphan*/  client; int /*<<< orphan*/  started_state; } ;
-typedef  TYPE_2__ aout_stream_sys_t ;
-typedef  scalar_t__ UINT64 ;
-typedef  int /*<<< orphan*/  IAudioClock ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ aout_stream_t ;
+struct TYPE_6__ {scalar_t__ rate; scalar_t__ written; int client; int started_state; } ;
+typedef TYPE_2__ aout_stream_sys_t ;
+typedef scalar_t__ UINT64 ;
+typedef int IAudioClock ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int CLOCK_FREQ ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ GetQPC () ; 
- int /*<<< orphan*/  IAudioClient_GetService (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IAudioClock_GetFrequency (int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IAudioClock_GetPosition (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  IAudioClock_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAudioClock ; 
- scalar_t__ STARTED_STATE_OK ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- scalar_t__ VLC_TICK_FROM_MSFTIME (scalar_t__) ; 
- scalar_t__ atomic_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  static_assert (int,char*) ; 
- scalar_t__ vlc_tick_from_frac (scalar_t__,scalar_t__) ; 
+
+ int CLOCK_FREQ ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ GetQPC () ;
+ int IAudioClient_GetService (int ,int *,void**) ;
+ int IAudioClock_GetFrequency (int *,scalar_t__*) ;
+ int IAudioClock_GetPosition (int *,scalar_t__*,scalar_t__*) ;
+ int IAudioClock_Release (int *) ;
+ int IID_IAudioClock ;
+ scalar_t__ STARTED_STATE_OK ;
+ scalar_t__ SUCCEEDED (int ) ;
+ scalar_t__ VLC_TICK_FROM_MSFTIME (scalar_t__) ;
+ scalar_t__ atomic_load (int *) ;
+ int msg_Err (TYPE_1__*,char*,int ) ;
+ int static_assert (int,char*) ;
+ scalar_t__ vlc_tick_from_frac (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static HRESULT TimeGet(aout_stream_t *s, vlc_tick_t *restrict delay)
 {

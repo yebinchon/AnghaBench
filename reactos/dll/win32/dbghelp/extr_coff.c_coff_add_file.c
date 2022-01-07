@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct module {int dummy; } ;
 struct CoffFileSet {int nfiles; int nfiles_alloc; struct CoffFile* files; } ;
-struct CoffFile {int startaddr; int linetab_offset; scalar_t__ neps_alloc; scalar_t__ neps; int /*<<< orphan*/ * entries; scalar_t__ linecnt; int /*<<< orphan*/  compiland; scalar_t__ endaddr; } ;
+struct CoffFile {int startaddr; int linetab_offset; scalar_t__ neps_alloc; scalar_t__ neps; int * entries; scalar_t__ linecnt; int compiland; scalar_t__ endaddr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- struct CoffFile* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- struct CoffFile* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct CoffFile*,int) ; 
- int /*<<< orphan*/  source_new (struct module*,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  symt_new_compiland (struct module*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GetProcessHeap () ;
+ struct CoffFile* HeapAlloc (int ,int ,int) ;
+ struct CoffFile* HeapReAlloc (int ,int ,struct CoffFile*,int) ;
+ int source_new (struct module*,int *,char const*) ;
+ int symt_new_compiland (struct module*,int ,int ) ;
 
 __attribute__((used)) static int coff_add_file(struct CoffFileSet* coff_files, struct module* module,
                          const char* filename)
@@ -43,12 +43,12 @@ __attribute__((used)) static int coff_add_file(struct CoffFileSet* coff_files, s
     }
     file = coff_files->files + coff_files->nfiles;
     file->startaddr = 0xffffffff;
-    file->endaddr   = 0;
+    file->endaddr = 0;
     file->compiland = symt_new_compiland(module, 0,
-                                         source_new(module, NULL, filename));
+                                         source_new(module, ((void*)0), filename));
     file->linetab_offset = -1;
     file->linecnt = 0;
-    file->entries = NULL;
+    file->entries = ((void*)0);
     file->neps = file->neps_alloc = 0;
 
     return coff_files->nfiles++;

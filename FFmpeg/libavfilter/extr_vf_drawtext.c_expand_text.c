@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_bprint_chars (int /*<<< orphan*/ *,char,int) ; 
- int /*<<< orphan*/  av_bprint_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_bprint_is_complete (int /*<<< orphan*/ *) ; 
- int expand_function (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char**) ; 
+
+
+
+typedef int AVFilterContext ;
+typedef int AVBPrint ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_bprint_chars (int *,char,int) ;
+ int av_bprint_clear (int *) ;
+ int av_bprint_is_complete (int *) ;
+ int expand_function (int *,int *,char**) ;
 
 __attribute__((used)) static int expand_text(AVFilterContext *ctx, char *text, AVBPrint *bp)
 {

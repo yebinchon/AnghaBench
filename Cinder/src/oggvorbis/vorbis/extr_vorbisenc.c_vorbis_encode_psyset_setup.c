@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int blockflag; int normal_p; int normal_start; int normal_partition; double normal_thresh; } ;
-typedef  TYPE_1__ vorbis_info_psy ;
+typedef TYPE_1__ vorbis_info_psy ;
 struct TYPE_9__ {TYPE_4__* codec_setup; } ;
-typedef  TYPE_2__ vorbis_info ;
+typedef TYPE_2__ vorbis_info ;
 struct TYPE_10__ {scalar_t__ noise_normalize_p; } ;
-typedef  TYPE_3__ highlevel_encode_setup ;
+typedef TYPE_3__ highlevel_encode_setup ;
 struct TYPE_11__ {int psys; TYPE_1__** psy_param; TYPE_3__ hi; } ;
-typedef  TYPE_4__ codec_setup_info ;
+typedef TYPE_4__ codec_setup_info ;
 
-/* Variables and functions */
- TYPE_1__* _ogg_calloc (int,int) ; 
- int /*<<< orphan*/  _psy_info_template ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
+
+ TYPE_1__* _ogg_calloc (int,int) ;
+ int _psy_info_template ;
+ int memcpy (TYPE_1__*,int *,int) ;
 
 __attribute__((used)) static void vorbis_encode_psyset_setup(vorbis_info *vi,double s,
                                        const int *nn_start,

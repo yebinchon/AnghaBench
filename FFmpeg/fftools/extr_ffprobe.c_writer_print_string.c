@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct section {int /*<<< orphan*/  unique_name; int /*<<< orphan*/  entries_to_show; scalar_t__ show_all_entries; } ;
-struct TYPE_9__ {size_t level; int /*<<< orphan*/ * nb_item; TYPE_1__* writer; struct section** section; } ;
-typedef  TYPE_2__ WriterContext ;
-struct TYPE_8__ {int flags; int /*<<< orphan*/  (* print_string ) (TYPE_2__*,char const*,char const*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int PRINT_STRING_OPT ; 
- int PRINT_STRING_VALIDATE ; 
- int WRITER_FLAG_DISPLAY_OPTIONAL_FIELDS ; 
- scalar_t__ av_dict_get (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,char*,char*) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,char const*,char const*) ; 
- int validate_string (TYPE_2__*,char**,char const*) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct section {int unique_name; int entries_to_show; scalar_t__ show_all_entries; } ;
+struct TYPE_9__ {size_t level; int * nb_item; TYPE_1__* writer; struct section** section; } ;
+typedef TYPE_2__ WriterContext ;
+struct TYPE_8__ {int flags; int (* print_string ) (TYPE_2__*,char const*,char const*) ;} ;
+
+
+ int AV_LOG_ERROR ;
+ int PRINT_STRING_OPT ;
+ int PRINT_STRING_VALIDATE ;
+ int WRITER_FLAG_DISPLAY_OPTIONAL_FIELDS ;
+ scalar_t__ av_dict_get (int ,char const*,int *,int ) ;
+ int av_free (char*) ;
+ int av_log (TYPE_2__*,int ,char*,char const*,char const*,int ) ;
+ int stub1 (TYPE_2__*,char*,char*) ;
+ int stub2 (TYPE_2__*,char const*,char const*) ;
+ int validate_string (TYPE_2__*,char**,char const*) ;
 
 __attribute__((used)) static inline int writer_print_string(WriterContext *wctx,
                                       const char *key, const char *val, int flags)
@@ -39,9 +39,9 @@ __attribute__((used)) static inline int writer_print_string(WriterContext *wctx,
         && !(wctx->writer->flags & WRITER_FLAG_DISPLAY_OPTIONAL_FIELDS))
         return 0;
 
-    if (section->show_all_entries || av_dict_get(section->entries_to_show, key, NULL, 0)) {
+    if (section->show_all_entries || av_dict_get(section->entries_to_show, key, ((void*)0), 0)) {
         if (flags & PRINT_STRING_VALIDATE) {
-            char *key1 = NULL, *val1 = NULL;
+            char *key1 = ((void*)0), *val1 = ((void*)0);
             ret = validate_string(wctx, &key1, key);
             if (ret < 0) goto end;
             ret = validate_string(wctx, &val1, val);

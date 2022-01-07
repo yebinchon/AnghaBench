@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ Curl_raw_toupper (char const) ; 
+ scalar_t__ Curl_raw_toupper (char const) ;
 
 int Curl_strncasecompare(const char *first, const char *second, size_t max)
 {
@@ -25,7 +17,7 @@ int Curl_strncasecompare(const char *first, const char *second, size_t max)
     second++;
   }
   if(0 == max)
-    return 1; /* they are equal this far */
+    return 1;
 
   return Curl_raw_toupper(*first) == Curl_raw_toupper(*second);
 }

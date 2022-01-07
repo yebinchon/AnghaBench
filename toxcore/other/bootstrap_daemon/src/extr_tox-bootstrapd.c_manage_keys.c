@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * self_secret_key; int /*<<< orphan*/ * self_public_key; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ DHT ;
 
-/* Variables and functions */
- int crypto_box_PUBLICKEYBYTES ; 
- int crypto_box_SECRETKEYBYTES ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t fread (int /*<<< orphan*/ *,int,int const,int /*<<< orphan*/ *) ; 
- size_t fwrite (int /*<<< orphan*/ *,int,int const,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int * self_secret_key; int * self_public_key; } ;
+typedef int FILE ;
+typedef TYPE_1__ DHT ;
+
+
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_SECRETKEYBYTES ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ size_t fread (int *,int,int const,int *) ;
+ size_t fwrite (int *,int,int const,int *) ;
+ int memcpy (int *,int *,int) ;
 
 int manage_keys(DHT *dht, char *keys_file_path)
 {
@@ -32,10 +32,10 @@ int manage_keys(DHT *dht, char *keys_file_path)
     uint8_t keys[KEYS_SIZE];
     FILE *keys_file;
 
-    // Check if file exits, proceed to open and load keys
+
     keys_file = fopen(keys_file_path, "r");
 
-    if (keys_file != NULL) {
+    if (keys_file != ((void*)0)) {
         const size_t read_size = fread(keys, sizeof(uint8_t), KEYS_SIZE, keys_file);
 
         if (read_size != KEYS_SIZE) {
@@ -46,7 +46,7 @@ int manage_keys(DHT *dht, char *keys_file_path)
         memcpy(dht->self_public_key, keys, crypto_box_PUBLICKEYBYTES);
         memcpy(dht->self_secret_key, keys + crypto_box_PUBLICKEYBYTES, crypto_box_SECRETKEYBYTES);
     } else {
-        // Otherwise save new keys
+
         memcpy(keys, dht->self_public_key, crypto_box_PUBLICKEYBYTES);
         memcpy(keys + crypto_box_PUBLICKEYBYTES, dht->self_secret_key, crypto_box_SECRETKEYBYTES);
 

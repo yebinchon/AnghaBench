@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IServiceProvider ;
-typedef  int /*<<< orphan*/  IHTMLDocument3 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLDocument3_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLDocument2 ; 
- int /*<<< orphan*/  IID_IHTMLDocument3 ; 
- int /*<<< orphan*/  IID_IHTMLEditServices ; 
- int /*<<< orphan*/  IID_IServiceProvider ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- scalar_t__ IServiceProvider_QueryService (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IServiceProvider_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SID_SContainerDispatch ; 
- int /*<<< orphan*/  SID_SHTMLEditServices ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * create_document () ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  release_document (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IServiceProvider ;
+typedef int IHTMLDocument3 ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IHTMLDocument2_Release (int *) ;
+ int IHTMLDocument3_Release (int *) ;
+ int IID_IHTMLDocument2 ;
+ int IID_IHTMLDocument3 ;
+ int IID_IHTMLEditServices ;
+ int IID_IServiceProvider ;
+ int IID_IUnknown ;
+ scalar_t__ IServiceProvider_QueryService (int *,int *,int *,void**) ;
+ int IServiceProvider_Release (int *) ;
+ int IUnknown_Release (int *) ;
+ int SID_SContainerDispatch ;
+ int SID_SHTMLEditServices ;
+ scalar_t__ S_OK ;
+ int * create_document () ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int release_document (int *) ;
 
 __attribute__((used)) static void test_ServiceProvider(void)
 {

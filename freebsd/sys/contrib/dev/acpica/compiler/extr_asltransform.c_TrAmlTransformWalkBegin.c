@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  TrTransformSubtree (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT32 ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_PARSE_OBJECT ;
+
+
+ int AE_OK ;
+ int TrTransformSubtree (int *) ;
 
 ACPI_STATUS
 TrAmlTransformWalkBegin (
-    ACPI_PARSE_OBJECT       *Op,
-    UINT32                  Level,
-    void                    *Context)
+    ACPI_PARSE_OBJECT *Op,
+    UINT32 Level,
+    void *Context)
 {
 
     TrTransformSubtree (Op);

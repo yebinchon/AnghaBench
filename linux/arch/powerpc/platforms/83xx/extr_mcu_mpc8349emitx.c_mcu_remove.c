@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mcu {int dummy; } ;
-struct i2c_client {int /*<<< orphan*/  dev; } ;
+struct i2c_client {int dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_attr_status ; 
- int /*<<< orphan*/  device_remove_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct mcu* glob_mcu ; 
- struct mcu* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  kfree (struct mcu*) ; 
- int /*<<< orphan*/  kthread_stop (int /*<<< orphan*/ ) ; 
- int mcu_gpiochip_remove (struct mcu*) ; 
- int /*<<< orphan*/ * pm_power_off ; 
- int /*<<< orphan*/  shutdown_thread ; 
+
+ int dev_attr_status ;
+ int device_remove_file (int *,int *) ;
+ struct mcu* glob_mcu ;
+ struct mcu* i2c_get_clientdata (struct i2c_client*) ;
+ int kfree (struct mcu*) ;
+ int kthread_stop (int ) ;
+ int mcu_gpiochip_remove (struct mcu*) ;
+ int * pm_power_off ;
+ int shutdown_thread ;
 
 __attribute__((used)) static int mcu_remove(struct i2c_client *client)
 {
-	struct mcu *mcu = i2c_get_clientdata(client);
-	int ret;
+ struct mcu *mcu = i2c_get_clientdata(client);
+ int ret;
 
-	kthread_stop(shutdown_thread);
+ kthread_stop(shutdown_thread);
 
-	device_remove_file(&client->dev, &dev_attr_status);
+ device_remove_file(&client->dev, &dev_attr_status);
 
-	if (glob_mcu == mcu) {
-		pm_power_off = NULL;
-		glob_mcu = NULL;
-	}
+ if (glob_mcu == mcu) {
+  pm_power_off = ((void*)0);
+  glob_mcu = ((void*)0);
+ }
 
-	ret = mcu_gpiochip_remove(mcu);
-	if (ret)
-		return ret;
-	kfree(mcu);
-	return 0;
+ ret = mcu_gpiochip_remove(mcu);
+ if (ret)
+  return ret;
+ kfree(mcu);
+ return 0;
 }

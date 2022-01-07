@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ char* strchr (char const*,int) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strchr (char const*,int) ; 
-
-__attribute__((used)) static const char *nexttoken(const char *q,  int sep)
+__attribute__((used)) static const char *nexttoken(const char *q, int sep)
 {
-	if (q)
-		q = strchr(q, sep);
-	if (q)
-		q++;
-	return q;
+ if (q)
+  q = strchr(q, sep);
+ if (q)
+  q++;
+ return q;
 }

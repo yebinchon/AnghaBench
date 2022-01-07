@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
-typedef  int /*<<< orphan*/  sd_event ;
-typedef  int /*<<< orphan*/  sd_dhcp_lease ;
-typedef  int /*<<< orphan*/  sd_dhcp_client ;
 
-/* Variables and functions */
- int IN_SET (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SD_DHCP_CLIENT_EVENT_IP_ACQUIRE ; 
- int /*<<< orphan*/  SD_DHCP_CLIENT_EVENT_SELECTING ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ sd_dhcp_client_get_lease (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ sd_dhcp_lease_get_address (int /*<<< orphan*/ *,struct in_addr*) ; 
- scalar_t__ sd_dhcp_lease_get_netmask (int /*<<< orphan*/ *,struct in_addr*) ; 
- int sd_dhcp_lease_get_router (int /*<<< orphan*/ *,struct in_addr const**) ; 
- int /*<<< orphan*/  sd_event_exit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * test_addr_acq_ack ; 
- scalar_t__ verbose ; 
+
+
+
+struct in_addr {int s_addr; } ;
+typedef int sd_event ;
+typedef int sd_dhcp_lease ;
+typedef int sd_dhcp_client ;
+
+
+ int IN_SET (int,int ,int ) ;
+ int SD_DHCP_CLIENT_EVENT_IP_ACQUIRE ;
+ int SD_DHCP_CLIENT_EVENT_SELECTING ;
+ int assert_se (int) ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int printf (char*) ;
+ scalar_t__ sd_dhcp_client_get_lease (int *,int **) ;
+ scalar_t__ sd_dhcp_lease_get_address (int *,struct in_addr*) ;
+ scalar_t__ sd_dhcp_lease_get_netmask (int *,struct in_addr*) ;
+ int sd_dhcp_lease_get_router (int *,struct in_addr const**) ;
+ int sd_event_exit (int *,int ) ;
+ int * test_addr_acq_ack ;
+ scalar_t__ verbose ;
 
 __attribute__((used)) static int test_addr_acq_acquired(sd_dhcp_client *client, int event,
                                    void *userdata) {

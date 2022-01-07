@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct amp_mgr {int /*<<< orphan*/  amp_ctrls_lock; int /*<<< orphan*/  amp_ctrls; } ;
-struct amp_ctrl {int /*<<< orphan*/  list; int /*<<< orphan*/  id; int /*<<< orphan*/  kref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct amp_mgr*,struct amp_ctrl*) ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  kref_init (int /*<<< orphan*/ *) ; 
- struct amp_ctrl* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u8 ;
+struct amp_mgr {int amp_ctrls_lock; int amp_ctrls; } ;
+struct amp_ctrl {int list; int id; int kref; } ;
+
+
+ int BT_DBG (char*,struct amp_mgr*,struct amp_ctrl*) ;
+ int GFP_KERNEL ;
+ int kref_init (int *) ;
+ struct amp_ctrl* kzalloc (int,int ) ;
+ int list_add (int *,int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 struct amp_ctrl *amp_ctrl_add(struct amp_mgr *mgr, u8 id)
 {
-	struct amp_ctrl *ctrl;
+ struct amp_ctrl *ctrl;
 
-	ctrl = kzalloc(sizeof(*ctrl), GFP_KERNEL);
-	if (!ctrl)
-		return NULL;
+ ctrl = kzalloc(sizeof(*ctrl), GFP_KERNEL);
+ if (!ctrl)
+  return ((void*)0);
 
-	kref_init(&ctrl->kref);
-	ctrl->id = id;
+ kref_init(&ctrl->kref);
+ ctrl->id = id;
 
-	mutex_lock(&mgr->amp_ctrls_lock);
-	list_add(&ctrl->list, &mgr->amp_ctrls);
-	mutex_unlock(&mgr->amp_ctrls_lock);
+ mutex_lock(&mgr->amp_ctrls_lock);
+ list_add(&ctrl->list, &mgr->amp_ctrls);
+ mutex_unlock(&mgr->amp_ctrls_lock);
 
-	BT_DBG("mgr %p ctrl %p", mgr, ctrl);
+ BT_DBG("mgr %p ctrl %p", mgr, ctrl);
 
-	return ctrl;
+ return ctrl;
 }

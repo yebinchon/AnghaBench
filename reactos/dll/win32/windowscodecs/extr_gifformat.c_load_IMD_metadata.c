@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct image_descriptor {int packed; int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  top; int /*<<< orphan*/  left; } ;
-typedef  int /*<<< orphan*/  imd_data ;
-typedef  int ULONG ;
-struct TYPE_6__ {int boolVal; int bVal; void* pwszVal; int /*<<< orphan*/  uiVal; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct image_descriptor {int packed; int height; int width; int top; int left; } ;
+typedef int imd_data ;
+typedef int ULONG ;
+struct TYPE_6__ {int boolVal; int bVal; void* pwszVal; int uiVal; } ;
 struct TYPE_8__ {TYPE_1__ u; void* vt; } ;
 struct TYPE_7__ {TYPE_4__ value; TYPE_4__ id; TYPE_4__ schema; } ;
-typedef  TYPE_2__ MetadataItem ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
+typedef TYPE_2__ MetadataItem ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,struct image_descriptor*,int,int*) ; 
- int /*<<< orphan*/  PropVariantInit (TYPE_4__*) ; 
- int /*<<< orphan*/  S_OK ; 
- void* VT_BOOL ; 
- void* VT_LPWSTR ; 
- void* VT_UI1 ; 
- void* VT_UI2 ; 
- void* strdupAtoW (char*) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int IStream_Read (int *,struct image_descriptor*,int,int*) ;
+ int PropVariantInit (TYPE_4__*) ;
+ int S_OK ;
+ void* VT_BOOL ;
+ void* VT_LPWSTR ;
+ void* VT_UI1 ;
+ void* VT_UI2 ;
+ void* strdupAtoW (char*) ;
 
 __attribute__((used)) static HRESULT load_IMD_metadata(IStream *stream, const GUID *vendor, DWORD options,
                                  MetadataItem **items, DWORD *count)
@@ -48,7 +48,7 @@ __attribute__((used)) static HRESULT load_IMD_metadata(IStream *stream, const GU
     ULONG bytesread, i;
     MetadataItem *result;
 
-    *items = NULL;
+    *items = ((void*)0);
     *count = 0;
 
     hr = IStream_Read(stream, &imd_data, sizeof(imd_data), &bytesread);

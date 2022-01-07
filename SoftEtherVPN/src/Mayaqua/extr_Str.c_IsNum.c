@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int tmp ;
+typedef size_t UINT ;
 struct TYPE_4__ {int NumTokens; char** Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
+typedef TYPE_1__ TOKEN_LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int MAX_SIZE ; 
- TYPE_1__* ParseToken (char*,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- scalar_t__ StrLen (char*) ; 
- int /*<<< orphan*/  Trim (char*) ; 
+
+ int FreeToken (TYPE_1__*) ;
+ int MAX_SIZE ;
+ TYPE_1__* ParseToken (char*,char*) ;
+ int StrCpy (char*,int,char*) ;
+ scalar_t__ StrLen (char*) ;
+ int Trim (char*) ;
 
 bool IsNum(char *str)
 {
-	char c;
-	UINT i, len;
-	UINT n = 0;
-	char tmp[MAX_SIZE];
-	TOKEN_LIST *t;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return false;
-	}
+ char c;
+ UINT i, len;
+ UINT n = 0;
+ char tmp[MAX_SIZE];
+ TOKEN_LIST *t;
 
-	StrCpy(tmp, sizeof(tmp), str);
-	Trim(tmp);
+ if (str == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (StrLen(tmp) == 0)
-	{
-		return false;
-	}
+ StrCpy(tmp, sizeof(tmp), str);
+ Trim(tmp);
 
-	t = ParseToken(tmp, " ");
+ if (StrLen(tmp) == 0)
+ {
+  return 0;
+ }
 
-	if (t->NumTokens >= 1)
-	{
-		StrCpy(tmp, sizeof(tmp), t->Token[0]);
-	}
+ t = ParseToken(tmp, " ");
 
-	FreeToken(t);
+ if (t->NumTokens >= 1)
+ {
+  StrCpy(tmp, sizeof(tmp), t->Token[0]);
+ }
 
-	len = StrLen(tmp);
-	for (i = 0;i < len;i++)
-	{
-		bool b = false;
-		c = tmp[i];
-		if (('0' <= c && c <= '9') || (c == '+') || (c == '-') || (c == ','))
-		{
-			b = true;
-		}
+ FreeToken(t);
 
-		if (b == false)
-		{
-			return false;
-		}
-	}
+ len = StrLen(tmp);
+ for (i = 0;i < len;i++)
+ {
+  bool b = 0;
+  c = tmp[i];
+  if (('0' <= c && c <= '9') || (c == '+') || (c == '-') || (c == ','))
+  {
+   b = 1;
+  }
 
-	for (i = 0;i < len;i++)
-	{
-		c = tmp[i];
-		if (c == '-')
-		{
-			n++;
-		}
-	}
-	if (n >= 2)
-	{
-		return false;
-	}
+  if (b == 0)
+  {
+   return 0;
+  }
+ }
 
-	return true;
+ for (i = 0;i < len;i++)
+ {
+  c = tmp[i];
+  if (c == '-')
+  {
+   n++;
+  }
+ }
+ if (n >= 2)
+ {
+  return 0;
+ }
+
+ return 1;
 }

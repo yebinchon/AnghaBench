@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG ;
-typedef  int* PULONG ;
-typedef  int /*<<< orphan*/ * PUCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlMoveMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UNIMPLEMENTED ; 
+
+
+
+typedef int VOID ;
+typedef int ULONG ;
+typedef int* PULONG ;
+typedef int * PUCHAR ;
+typedef int DWORD ;
+
+
+ int ASSERT (int ) ;
+ int RtlMoveMemory (int *,int *,int) ;
+ scalar_t__ TRUE ;
+ int UNIMPLEMENTED ;
 
 VOID
 PerformChannelConversion(
@@ -43,11 +43,11 @@ PerformChannelConversion(
         ASSERT(0);
     }
 
-    /* setup index */
+
     NewIndex = 0;
     OldIndex = 0;
 
-    /* calculate offsets */
+
     NewLength = NewChannels * (BitsPerSample/8);
     Skip = OldChannels * (BitsPerSample/8);
 
@@ -65,13 +65,13 @@ PerformChannelConversion(
             break;
         }
 
-        /* copy first channel */
+
         RtlMoveMemory(&Result[NewIndex], &Buffer[OldIndex], NewLength);
 
-        /* skip other channels */
+
         OldIndex += Skip;
 
-        /* increment offset */
+
         NewIndex += NewLength;
 
     }while(TRUE);

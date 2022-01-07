@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int prop_cnt; TYPE_2__* props; } ;
-typedef  TYPE_1__ jsdisp_t ;
-struct TYPE_10__ {scalar_t__ type; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ dispex_prop_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DISPID ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__ jsdisp_t ;
+struct TYPE_10__ {scalar_t__ type; int name; } ;
+typedef TYPE_2__ dispex_prop_t ;
+typedef int HRESULT ;
+typedef int DISPID ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int DISPID_STARTENUM ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PROPF_ENUMERABLE ; 
- scalar_t__ PROP_DELETED ; 
- scalar_t__ PROP_PROTREF ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  fill_protrefs (TYPE_1__*) ; 
- int get_flags (TYPE_1__*,TYPE_2__*) ; 
- int prop_to_id (TYPE_1__*,TYPE_2__*) ; 
+
+ int DISPID_STARTENUM ;
+ scalar_t__ FAILED (int ) ;
+ int PROPF_ENUMERABLE ;
+ scalar_t__ PROP_DELETED ;
+ scalar_t__ PROP_PROTREF ;
+ int S_FALSE ;
+ int S_OK ;
+ int fill_protrefs (TYPE_1__*) ;
+ int get_flags (TYPE_1__*,TYPE_2__*) ;
+ int prop_to_id (TYPE_1__*,TYPE_2__*) ;
 
 HRESULT jsdisp_next_prop(jsdisp_t *obj, DISPID id, BOOL own_only, DISPID *ret)
 {

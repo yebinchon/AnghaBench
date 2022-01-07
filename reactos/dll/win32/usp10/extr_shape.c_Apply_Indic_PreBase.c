@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lexical_function ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lexical_function ;
+typedef int WORD ;
+typedef int WCHAR ;
 struct TYPE_5__ {scalar_t__ base; size_t start; } ;
-typedef  int /*<<< orphan*/  ScriptCache ;
-typedef  int /*<<< orphan*/  SCRIPT_ANALYSIS ;
-typedef  TYPE_1__ IndicSyllable ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef int ScriptCache ;
+typedef int SCRIPT_ANALYSIS ;
+typedef TYPE_1__ IndicSyllable ;
+typedef scalar_t__ INT ;
+typedef int HDC ;
 
-/* Variables and functions */
- scalar_t__ GSUB_E_NOGLYPH ; 
- int /*<<< orphan*/  UpdateClusters (scalar_t__,scalar_t__,int,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ apply_GSUB_feature_to_glyph (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,int,scalar_t__*,char const*) ; 
- scalar_t__ find_consonant_halant (int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  shift_syllable_glyph_indexs (TYPE_1__*,scalar_t__,scalar_t__) ; 
+
+ scalar_t__ GSUB_E_NOGLYPH ;
+ int UpdateClusters (scalar_t__,scalar_t__,int,scalar_t__,int *) ;
+ scalar_t__ apply_GSUB_feature_to_glyph (int ,int *,int *,int *,scalar_t__,int,scalar_t__*,char const*) ;
+ scalar_t__ find_consonant_halant (int *,scalar_t__,scalar_t__,int ) ;
+ int shift_syllable_glyph_indexs (TYPE_1__*,scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static void Apply_Indic_PreBase(HDC hdc, ScriptCache *psc, SCRIPT_ANALYSIS *psa, WCHAR* pwChars, INT cChars, IndicSyllable *syllable, WORD *pwOutGlyphs, INT* pcGlyphs, WORD *pwLogClust, lexical_function lexical, IndicSyllable *glyph_index, const char* feature)
 {

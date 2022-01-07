@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_6__ {int sizearray; int /*<<< orphan*/ * array; } ;
-typedef  TYPE_1__ Table ;
-typedef  scalar_t__ StkId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cast_num (int) ; 
- int findindex (int /*<<< orphan*/ *,TYPE_1__*,scalar_t__) ; 
- int /*<<< orphan*/  gnode (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * gval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * key2tval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setnvalue (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setobj (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ sizenode (TYPE_1__*) ; 
- int /*<<< orphan*/  ttisnil (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_6__ {int sizearray; int * array; } ;
+typedef TYPE_1__ Table ;
+typedef scalar_t__ StkId ;
+
+
+ int cast_num (int) ;
+ int findindex (int *,TYPE_1__*,scalar_t__) ;
+ int gnode (TYPE_1__*,int) ;
+ int * gval (int ) ;
+ int * key2tval (int ) ;
+ int setnvalue (scalar_t__,int ) ;
+ int setobj (int *,scalar_t__,int *) ;
+ scalar_t__ sizenode (TYPE_1__*) ;
+ int ttisnil (int *) ;
 
 __attribute__((used)) static int luaH_next(lua_State*L,Table*t,StkId key){
 int i=findindex(L,t,key);

@@ -1,124 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum video_driver_enum { ____Placeholder_video_driver_enum } video_driver_enum ;
 
-/* Variables and functions */
-#define  VIDEO_CACA 160 
-#define  VIDEO_CTR 159 
-#define  VIDEO_D3D10 158 
-#define  VIDEO_D3D11 157 
-#define  VIDEO_D3D12 156 
-#define  VIDEO_D3D8 155 
-#define  VIDEO_D3D9 154 
- int VIDEO_DEFAULT_DRIVER ; 
-#define  VIDEO_DISPMANX 153 
-#define  VIDEO_DRM 152 
-#define  VIDEO_EXT 151 
-#define  VIDEO_EXYNOS 150 
-#define  VIDEO_FPGA 149 
-#define  VIDEO_GDI 148 
-#define  VIDEO_GL 147 
-#define  VIDEO_GL1 146 
-#define  VIDEO_GL_CORE 145 
-#define  VIDEO_METAL 144 
-#define  VIDEO_NULL 143 
-#define  VIDEO_OMAP 142 
-#define  VIDEO_PS2 141 
-#define  VIDEO_PSP1 140 
-#define  VIDEO_SDL 139 
-#define  VIDEO_SDL2 138 
-#define  VIDEO_SUNXI 137 
-#define  VIDEO_SWITCH 136 
-#define  VIDEO_VG 135 
-#define  VIDEO_VGA 134 
-#define  VIDEO_VITA2D 133 
-#define  VIDEO_VULKAN 132 
-#define  VIDEO_WII 131 
-#define  VIDEO_WIIU 130 
-#define  VIDEO_XENON360 129 
-#define  VIDEO_XVIDEO 128 
 
+
+
+typedef enum video_driver_enum { ____Placeholder_video_driver_enum } video_driver_enum ;
+ int VIDEO_DEFAULT_DRIVER ;
 const char *config_get_default_video(void)
 {
    enum video_driver_enum default_driver = VIDEO_DEFAULT_DRIVER;
 
    switch (default_driver)
    {
-      case VIDEO_GL:
+      case 147:
          return "gl";
-      case VIDEO_GL1:
+      case 146:
          return "gl1";
-      case VIDEO_GL_CORE:
+      case 145:
          return "glcore";
-      case VIDEO_VULKAN:
+      case 132:
          return "vulkan";
-      case VIDEO_METAL:
+      case 144:
          return "metal";
-      case VIDEO_DRM:
+      case 152:
          return "drm";
-      case VIDEO_WII:
+      case 131:
          return "gx";
-      case VIDEO_WIIU:
+      case 130:
          return "gx2";
-      case VIDEO_XENON360:
+      case 129:
          return "xenon360";
-      case VIDEO_D3D8:
+      case 155:
          return "d3d8";
-      case VIDEO_D3D9:
+      case 154:
          return "d3d9";
-      case VIDEO_D3D10:
+      case 158:
          return "d3d10";
-      case VIDEO_D3D11:
+      case 157:
          return "d3d11";
-      case VIDEO_D3D12:
+      case 156:
          return "d3d12";
-      case VIDEO_PSP1:
+      case 140:
          return "psp1";
-      case VIDEO_PS2:
+      case 141:
          return "ps2";
-      case VIDEO_VITA2D:
+      case 133:
          return "vita2d";
-      case VIDEO_CTR:
+      case 159:
          return "ctr";
-      case VIDEO_SWITCH:
+      case 136:
          return "switch";
-      case VIDEO_XVIDEO:
+      case 128:
          return "xvideo";
-      case VIDEO_SDL:
+      case 139:
          return "sdl";
-      case VIDEO_SDL2:
+      case 138:
          return "sdl2";
-      case VIDEO_EXT:
+      case 151:
          return "ext";
-      case VIDEO_VG:
+      case 135:
          return "vg";
-      case VIDEO_OMAP:
+      case 142:
          return "omap";
-      case VIDEO_EXYNOS:
+      case 150:
          return "exynos";
-      case VIDEO_DISPMANX:
+      case 153:
          return "dispmanx";
-      case VIDEO_SUNXI:
+      case 137:
          return "sunxi";
-      case VIDEO_CACA:
+      case 160:
          return "caca";
-      case VIDEO_GDI:
+      case 148:
          return "gdi";
-      case VIDEO_VGA:
+      case 134:
          return "vga";
-      case VIDEO_FPGA:
+      case 149:
          return "fpga";
-      case VIDEO_NULL:
+      case 143:
          break;
    }
 

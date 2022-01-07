@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pblk_rb {int /*<<< orphan*/  entries; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pblk_rb_data_free (struct pblk_rb*) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct pblk_rb {int entries; } ;
+
+
+ int pblk_rb_data_free (struct pblk_rb*) ;
+ int vfree (int ) ;
 
 void pblk_rb_free(struct pblk_rb *rb)
 {
-	pblk_rb_data_free(rb);
-	vfree(rb->entries);
+ pblk_rb_data_free(rb);
+ vfree(rb->entries);
 }

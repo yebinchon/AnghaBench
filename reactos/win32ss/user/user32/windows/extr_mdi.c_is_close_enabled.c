@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HMENU ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int CS_NOCLOSE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GCL_STYLE ; 
- int GetClassLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GetMenuState (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetSystemMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MF_BYCOMMAND ; 
- int MF_DISABLED ; 
- int MF_GRAYED ; 
- int /*<<< orphan*/  SC_CLOSE ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int UINT ;
+typedef int HWND ;
+typedef scalar_t__ HMENU ;
+typedef int BOOL ;
+
+
+ int CS_NOCLOSE ;
+ int FALSE ;
+ int GCL_STYLE ;
+ int GetClassLongPtrW (int ,int ) ;
+ int GetMenuState (scalar_t__,int ,int ) ;
+ scalar_t__ GetSystemMenu (int ,int ) ;
+ int MF_BYCOMMAND ;
+ int MF_DISABLED ;
+ int MF_GRAYED ;
+ int SC_CLOSE ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL is_close_enabled(HWND hwnd, HMENU hSysMenu)
 {

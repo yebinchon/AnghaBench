@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ socket_t ;
 
-/* Variables and functions */
- scalar_t__ INVALID_SOCKET ; 
- int /*<<< orphan*/  LOGW (char*) ; 
- int /*<<< orphan*/  SDL_assert (int) ; 
- int /*<<< orphan*/  SHUT_RDWR ; 
- int /*<<< orphan*/  net_close (scalar_t__) ; 
- int /*<<< orphan*/  net_shutdown (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ socket_t ;
+
+
+ scalar_t__ INVALID_SOCKET ;
+ int LOGW (char*) ;
+ int SDL_assert (int) ;
+ int SHUT_RDWR ;
+ int net_close (scalar_t__) ;
+ int net_shutdown (scalar_t__,int ) ;
 
 __attribute__((used)) static void
 close_socket(socket_t *socket) {

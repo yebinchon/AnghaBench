@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_ASYNCHRONOUS ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_ENABLE ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_setcancelstate (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_setcanceltype (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ int CreateEvent (int *,int ,int ,int *) ;
+ int FALSE ;
+ int PTHREAD_CANCEL_ASYNCHRONOUS ;
+ int PTHREAD_CANCEL_ENABLE ;
+ int WaitForSingleObject (int ,int) ;
+ int pthread_setcancelstate (int ,int *) ;
+ int pthread_setcanceltype (int ,int *) ;
 
 void *
 test_wait (void *arg)
@@ -28,12 +28,12 @@ test_wait (void *arg)
   HANDLE hEvent;
   DWORD dwEvent;
 
-  pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, NULL);
-  pthread_setcanceltype (PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+  pthread_setcancelstate (PTHREAD_CANCEL_ENABLE, ((void*)0));
+  pthread_setcanceltype (PTHREAD_CANCEL_ASYNCHRONOUS, ((void*)0));
 
-  hEvent = CreateEvent (NULL, FALSE, FALSE, NULL);
+  hEvent = CreateEvent (((void*)0), FALSE, FALSE, ((void*)0));
 
-  dwEvent = WaitForSingleObject (hEvent, 1000);	/* WAIT_IO_COMPLETION */
+  dwEvent = WaitForSingleObject (hEvent, 1000);
 
-  return NULL;
+  return ((void*)0);
 }

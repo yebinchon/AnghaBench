@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int m_error_data; int m_warning_data; int m_info_data; void* warning_handler; void* info_handler; void* error_handler; } ;
-typedef  TYPE_1__ opj_event_mgr_t ;
+typedef TYPE_1__ opj_event_mgr_t ;
 
-/* Variables and functions */
- void* opj_default_callback ; 
+
+ void* opj_default_callback ;
 
 void opj_set_default_event_handler(opj_event_mgr_t * p_manager)
 {

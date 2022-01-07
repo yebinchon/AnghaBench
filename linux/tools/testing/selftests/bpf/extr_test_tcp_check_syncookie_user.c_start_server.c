@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr {int /*<<< orphan*/  sa_family; } ;
-typedef  int /*<<< orphan*/  socklen_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SOCK_STREAM ; 
- int bind (int,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int listen (int,int) ; 
- int /*<<< orphan*/  log_err (char*) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct sockaddr {int sa_family; } ;
+typedef int socklen_t ;
+
+
+ int SOCK_STREAM ;
+ int bind (int,struct sockaddr const*,int ) ;
+ int close (int) ;
+ int listen (int,int) ;
+ int log_err (char*) ;
+ int socket (int ,int ,int ) ;
 
 __attribute__((used)) static int start_server(const struct sockaddr *addr, socklen_t len)
 {
-	int fd;
+ int fd;
 
-	fd = socket(addr->sa_family, SOCK_STREAM, 0);
-	if (fd == -1) {
-		log_err("Failed to create server socket");
-		goto out;
-	}
+ fd = socket(addr->sa_family, SOCK_STREAM, 0);
+ if (fd == -1) {
+  log_err("Failed to create server socket");
+  goto out;
+ }
 
-	if (bind(fd, addr, len) == -1) {
-		log_err("Failed to bind server socket");
-		goto close_out;
-	}
+ if (bind(fd, addr, len) == -1) {
+  log_err("Failed to bind server socket");
+  goto close_out;
+ }
 
-	if (listen(fd, 128) == -1) {
-		log_err("Failed to listen on server socket");
-		goto close_out;
-	}
+ if (listen(fd, 128) == -1) {
+  log_err("Failed to listen on server socket");
+  goto close_out;
+ }
 
-	goto out;
+ goto out;
 
 close_out:
-	close(fd);
-	fd = -1;
+ close(fd);
+ fd = -1;
 out:
-	return fd;
+ return fd;
 }

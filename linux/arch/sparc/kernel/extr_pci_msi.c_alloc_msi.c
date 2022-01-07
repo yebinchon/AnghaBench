@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_pbm_info {int msi_num; int msi_first; int /*<<< orphan*/  msi_bitmap; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/  test_and_set_bit (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct pci_pbm_info {int msi_num; int msi_first; int msi_bitmap; } ;
+
+
+ int ENOENT ;
+ int test_and_set_bit (int,int ) ;
 
 __attribute__((used)) static int alloc_msi(struct pci_pbm_info *pbm)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < pbm->msi_num; i++) {
-		if (!test_and_set_bit(i, pbm->msi_bitmap))
-			return i + pbm->msi_first;
-	}
+ for (i = 0; i < pbm->msi_num; i++) {
+  if (!test_and_set_bit(i, pbm->msi_bitmap))
+   return i + pbm->msi_first;
+ }
 
-	return -ENOENT;
+ return -ENOENT;
 }

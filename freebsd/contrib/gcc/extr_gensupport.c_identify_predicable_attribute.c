@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct queue_elem {int /*<<< orphan*/  lineno; int /*<<< orphan*/  data; struct queue_elem* next; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lineno; } ;
 
-/* Variables and functions */
-#define  CONST 129 
-#define  CONST_STRING 128 
- int GET_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int) ; 
- char const* XSTR (int /*<<< orphan*/ ,int) ; 
- struct queue_elem* define_attr_queue ; 
- TYPE_1__* define_cond_exec_queue ; 
- int errors ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  message_with_line (int /*<<< orphan*/ ,char*,...) ; 
- int predicable_default ; 
- char* predicable_false ; 
- char* predicable_true ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* xstrdup (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct queue_elem {int lineno; int data; struct queue_elem* next; } ;
+struct TYPE_2__ {int lineno; } ;
+
+
+
+
+ int GET_CODE (int ) ;
+ int XEXP (int ,int) ;
+ char const* XSTR (int ,int) ;
+ struct queue_elem* define_attr_queue ;
+ TYPE_1__* define_cond_exec_queue ;
+ int errors ;
+ int free (char*) ;
+ int message_with_line (int ,char*,...) ;
+ int predicable_default ;
+ char* predicable_false ;
+ char* predicable_true ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* xstrdup (char const*) ;
 
 __attribute__((used)) static void
 identify_predicable_attribute (void)
@@ -39,13 +39,13 @@ identify_predicable_attribute (void)
   char *p_true, *p_false;
   const char *value;
 
-  /* Look for the DEFINE_ATTR for `predicable', which must exist.  */
+
   for (elem = define_attr_queue; elem ; elem = elem->next)
     if (strcmp (XSTR (elem->data, 0), "predicable") == 0)
       goto found;
 
   message_with_line (define_cond_exec_queue->lineno,
-		     "attribute `predicable' not defined");
+       "attribute `predicable' not defined");
   errors = 1;
   return;
 
@@ -53,10 +53,10 @@ identify_predicable_attribute (void)
   value = XSTR (elem->data, 1);
   p_false = xstrdup (value);
   p_true = strchr (p_false, ',');
-  if (p_true == NULL || strchr (++p_true, ',') != NULL)
+  if (p_true == ((void*)0) || strchr (++p_true, ',') != ((void*)0))
     {
       message_with_line (elem->lineno,
-			 "attribute `predicable' is not a boolean");
+    "attribute `predicable' is not a boolean");
       errors = 1;
       if (p_false)
         free (p_false);
@@ -69,24 +69,24 @@ identify_predicable_attribute (void)
 
   switch (GET_CODE (XEXP (elem->data, 2)))
     {
-    case CONST_STRING:
+    case 128:
       value = XSTR (XEXP (elem->data, 2), 0);
       break;
 
-    case CONST:
+    case 129:
       message_with_line (elem->lineno,
-			 "attribute `predicable' cannot be const");
+    "attribute `predicable' cannot be const");
       errors = 1;
       if (p_false)
-	free (p_false);
+ free (p_false);
       return;
 
     default:
       message_with_line (elem->lineno,
-			 "attribute `predicable' must have a constant default");
+    "attribute `predicable' must have a constant default");
       errors = 1;
       if (p_false)
-	free (p_false);
+ free (p_false);
       return;
     }
 
@@ -97,10 +97,10 @@ identify_predicable_attribute (void)
   else
     {
       message_with_line (elem->lineno,
-			 "unknown value `%s' for `predicable' attribute",
-			 value);
+    "unknown value `%s' for `predicable' attribute",
+    value);
       errors = 1;
       if (p_false)
-	free (p_false);
+ free (p_false);
     }
 }

@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_3__ {scalar_t__ size; } ;
-struct sst25l_flash {int /*<<< orphan*/  lock; TYPE_2__* spi; TYPE_1__ mtd; } ;
+struct sst25l_flash {int lock; TYPE_2__* spi; TYPE_1__ mtd; } ;
 struct mtd_info {int erasesize; } ;
-struct erase_info {scalar_t__ addr; scalar_t__ len; int /*<<< orphan*/  state; } ;
-struct TYPE_4__ {int /*<<< orphan*/  dev; } ;
+struct erase_info {scalar_t__ addr; scalar_t__ len; int state; } ;
+struct TYPE_4__ {int dev; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  MTD_ERASE_DONE ; 
- int /*<<< orphan*/  MTD_ERASE_FAILED ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mtd_erase_callback (struct erase_info*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int sst25l_erase_sector (struct sst25l_flash*,int) ; 
- int sst25l_wait_till_ready (struct sst25l_flash*) ; 
- struct sst25l_flash* to_sst25l_flash (struct mtd_info*) ; 
+
+ int EINVAL ;
+ int MTD_ERASE_DONE ;
+ int MTD_ERASE_FAILED ;
+ int dev_err (int *,char*) ;
+ int mtd_erase_callback (struct erase_info*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int sst25l_erase_sector (struct sst25l_flash*,int) ;
+ int sst25l_wait_till_ready (struct sst25l_flash*) ;
+ struct sst25l_flash* to_sst25l_flash (struct mtd_info*) ;
 
 __attribute__((used)) static int sst25l_erase(struct mtd_info *mtd, struct erase_info *instr)
 {
-	struct sst25l_flash *flash = to_sst25l_flash(mtd);
-	uint32_t addr, end;
-	int err;
+ struct sst25l_flash *flash = to_sst25l_flash(mtd);
+ uint32_t addr, end;
+ int err;
 
-	/* Sanity checks */
-	if (instr->addr + instr->len > flash->mtd.size)
-		return -EINVAL;
 
-	if ((uint32_t)instr->len % mtd->erasesize)
-		return -EINVAL;
+ if (instr->addr + instr->len > flash->mtd.size)
+  return -EINVAL;
 
-	if ((uint32_t)instr->addr % mtd->erasesize)
-		return -EINVAL;
+ if ((uint32_t)instr->len % mtd->erasesize)
+  return -EINVAL;
 
-	addr = instr->addr;
-	end = addr + instr->len;
+ if ((uint32_t)instr->addr % mtd->erasesize)
+  return -EINVAL;
 
-	mutex_lock(&flash->lock);
+ addr = instr->addr;
+ end = addr + instr->len;
 
-	err = sst25l_wait_till_ready(flash);
-	if (err) {
-		mutex_unlock(&flash->lock);
-		return err;
-	}
+ mutex_lock(&flash->lock);
 
-	while (addr < end) {
-		err = sst25l_erase_sector(flash, addr);
-		if (err) {
-			mutex_unlock(&flash->lock);
-			instr->state = MTD_ERASE_FAILED;
-			dev_err(&flash->spi->dev, "Erase failed\n");
-			return err;
-		}
+ err = sst25l_wait_till_ready(flash);
+ if (err) {
+  mutex_unlock(&flash->lock);
+  return err;
+ }
 
-		addr += mtd->erasesize;
-	}
+ while (addr < end) {
+  err = sst25l_erase_sector(flash, addr);
+  if (err) {
+   mutex_unlock(&flash->lock);
+   instr->state = MTD_ERASE_FAILED;
+   dev_err(&flash->spi->dev, "Erase failed\n");
+   return err;
+  }
 
-	mutex_unlock(&flash->lock);
+  addr += mtd->erasesize;
+ }
 
-	instr->state = MTD_ERASE_DONE;
-	mtd_erase_callback(instr);
-	return 0;
+ mutex_unlock(&flash->lock);
+
+ instr->state = MTD_ERASE_DONE;
+ mtd_erase_callback(instr);
+ return 0;
 }

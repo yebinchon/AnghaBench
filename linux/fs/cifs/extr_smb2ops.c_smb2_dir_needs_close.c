@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cifsFileInfo {int /*<<< orphan*/  invalidHandle; } ;
 
-/* Variables and functions */
+
+
+
+struct cifsFileInfo {int invalidHandle; } ;
+
+
 
 __attribute__((used)) static bool
 smb2_dir_needs_close(struct cifsFileInfo *cfile)
 {
-	return !cfile->invalidHandle;
+ return !cfile->invalidHandle;
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int buf ;
 struct TYPE_2__ {scalar_t__ chip_size; } ;
-typedef  TYPE_1__ SpiFlashChip ;
+typedef TYPE_1__ SpiFlashChip ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SPIRead (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  SPIWrite (scalar_t__,char*,int) ; 
- int /*<<< orphan*/  default_init_data ; 
- int /*<<< orphan*/  ets_printf (char*) ; 
- int /*<<< orphan*/  flashchip ; 
+
+ int SPIRead (scalar_t__,char*,int) ;
+ int SPIWrite (scalar_t__,char*,int) ;
+ int default_init_data ;
+ int ets_printf (char*) ;
+ int flashchip ;
 
 void firmware_start(void) {
-    // For SDK 1.5.2, either address has shifted and not mirrored in
-    // eagle.rom.addr.v6.ld, or extra initial member was added.
+
+
     SpiFlashChip *flash = (SpiFlashChip*)(&flashchip + 4);
 
     char buf[128];
     SPIRead(flash->chip_size - 4 * 0x1000, buf, sizeof(buf));
-    /*for (int i = 0; i < sizeof(buf); i++) {
-        static char hexf[] = "%x ";
-        ets_printf(hexf, buf[i]);
-    }*/
 
-    bool inited = false;
+
+
+
+
+    bool inited = 0;
     for (int i = 0; i < sizeof(buf); i++) {
         if (buf[i] != 0xff) {
-            inited = true;
+            inited = 1;
             break;
         }
     }

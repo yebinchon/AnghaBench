@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int db_index; void* description; void* term_name; int /*<<< orphan*/  checksum; } ;
-typedef  int /*<<< orphan*/  TERMTYPE ;
-typedef  TYPE_1__ TERMDATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  checksum_of (int /*<<< orphan*/ *) ; 
- TYPE_1__* new_termdata () ; 
- void* strmalloc (char const*) ; 
- char const* term_description (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int db_index; void* description; void* term_name; int checksum; } ;
+typedef int TERMTYPE ;
+typedef TYPE_1__ TERMDATA ;
+
+
+ int checksum_of (int *) ;
+ TYPE_1__* new_termdata () ;
+ void* strmalloc (char const*) ;
+ char const* term_description (int *) ;
 
 __attribute__((used)) static void
 sorthook(int db_index, int db_limit, const char *term_name, TERMTYPE *tp)

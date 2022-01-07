@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int custom_get_process_return (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_running_action (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_dialog_check_messages (int /*<<< orphan*/ ) ; 
- int msidbCustomActionTypeAsync ; 
- int msidbCustomActionTypeContinue ; 
+
+
+
+typedef int UINT ;
+typedef int MSIPACKAGE ;
+typedef int LPCWSTR ;
+typedef int HANDLE ;
+
+
+ int CloseHandle (int ) ;
+ int ERROR_SUCCESS ;
+ int TRACE (char*,int ) ;
+ int TRUE ;
+ int custom_get_process_return (int ) ;
+ int debugstr_w (int ) ;
+ int file_running_action (int *,int ,int ,int ) ;
+ int msi_dialog_check_messages (int ) ;
+ int msidbCustomActionTypeAsync ;
+ int msidbCustomActionTypeContinue ;
 
 __attribute__((used)) static UINT wait_process_handle(MSIPACKAGE* package, UINT type,
                            HANDLE ProcessHandle, LPCWSTR name)

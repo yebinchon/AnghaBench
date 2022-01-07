@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbi_uc ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int stbi_uc ;
 struct TYPE_5__ {int img_x; int img_y; int img_n; } ;
-typedef  TYPE_1__ stbi__context ;
+typedef TYPE_1__ stbi__context ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * stbi__convert_format (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/ * stbi__errpuc (char*,char*) ; 
- int /*<<< orphan*/  stbi__getn (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ stbi__malloc (int) ; 
- int /*<<< orphan*/  stbi__pnm_info (TYPE_1__*,int*,int*,int*) ; 
+
+ int * stbi__convert_format (int *,int,int,int,int) ;
+ int * stbi__errpuc (char*,char*) ;
+ int stbi__getn (TYPE_1__*,int *,int) ;
+ scalar_t__ stbi__malloc (int) ;
+ int stbi__pnm_info (TYPE_1__*,int*,int*,int*) ;
 
 __attribute__((used)) static stbi_uc *stbi__pnm_load(stbi__context *s, int *x, int *y, int *comp, int req_comp)
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static stbi_uc *stbi__pnm_load(stbi__context *s, int *x, i
 
    if (req_comp && req_comp != s->img_n) {
       out = stbi__convert_format(out, s->img_n, req_comp, s->img_x, s->img_y);
-      if (out == NULL) return out; // stbi__convert_format frees input on failure
+      if (out == ((void*)0)) return out;
    }
    return out;
 }

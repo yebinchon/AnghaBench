@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FDC (unsigned long) ; 
- int UNIT (unsigned long) ; 
- int /*<<< orphan*/  set_dor (int /*<<< orphan*/ ,unsigned char,int /*<<< orphan*/ ) ; 
+ int FDC (unsigned long) ;
+ int UNIT (unsigned long) ;
+ int set_dor (int ,unsigned char,int ) ;
 
 __attribute__((used)) static void motor_off_callback(unsigned long nr)
 {
-	unsigned char mask = ~(0x10 << UNIT(nr));
+ unsigned char mask = ~(0x10 << UNIT(nr));
 
-	set_dor(FDC(nr), mask, 0);
+ set_dor(FDC(nr), mask, 0);
 }

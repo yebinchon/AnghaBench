@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ubiblock {TYPE_1__* gd; int /*<<< orphan*/  tag_set; int /*<<< orphan*/  rq; int /*<<< orphan*/  wq; } ;
-struct TYPE_4__ {int /*<<< orphan*/  first_minor; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  blk_cleanup_queue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blk_mq_free_tag_set (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  del_gendisk (TYPE_1__*) ; 
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_info (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  disk_to_dev (TYPE_1__*) ; 
- int /*<<< orphan*/  idr_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_disk (TYPE_1__*) ; 
- int /*<<< orphan*/  ubiblock_minor_idr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ubiblock {TYPE_1__* gd; int tag_set; int rq; int wq; } ;
+struct TYPE_4__ {int first_minor; } ;
+
+
+ int blk_cleanup_queue (int ) ;
+ int blk_mq_free_tag_set (int *) ;
+ int del_gendisk (TYPE_1__*) ;
+ int destroy_workqueue (int ) ;
+ int dev_info (int ,char*) ;
+ int disk_to_dev (TYPE_1__*) ;
+ int idr_remove (int *,int ) ;
+ int put_disk (TYPE_1__*) ;
+ int ubiblock_minor_idr ;
 
 __attribute__((used)) static void ubiblock_cleanup(struct ubiblock *dev)
 {
-	/* Stop new requests to arrive */
-	del_gendisk(dev->gd);
-	/* Flush pending work */
-	destroy_workqueue(dev->wq);
-	/* Finally destroy the blk queue */
-	blk_cleanup_queue(dev->rq);
-	blk_mq_free_tag_set(&dev->tag_set);
-	dev_info(disk_to_dev(dev->gd), "released");
-	idr_remove(&ubiblock_minor_idr, dev->gd->first_minor);
-	put_disk(dev->gd);
+
+ del_gendisk(dev->gd);
+
+ destroy_workqueue(dev->wq);
+
+ blk_cleanup_queue(dev->rq);
+ blk_mq_free_tag_set(&dev->tag_set);
+ dev_info(disk_to_dev(dev->gd), "released");
+ idr_remove(&ubiblock_minor_idr, dev->gd->first_minor);
+ put_disk(dev->gd);
 }

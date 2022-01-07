@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  backup ;
 
-/* Variables and functions */
- int MEMTEST_BACKUP_WORDS ; 
- size_t MEMTEST_DECACHE_SIZE ; 
- int /*<<< orphan*/  ULONG_ONEZERO ; 
- unsigned long ULONG_ZEROONE ; 
- int /*<<< orphan*/  memcpy (unsigned long*,unsigned long*,size_t) ; 
- scalar_t__ memtest_addressing (unsigned long*,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ memtest_compare_times (unsigned long*,size_t,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memtest_fill_random (unsigned long*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memtest_fill_value (unsigned long*,size_t,int /*<<< orphan*/ ,unsigned long,char,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int backup ;
+
+
+ int MEMTEST_BACKUP_WORDS ;
+ size_t MEMTEST_DECACHE_SIZE ;
+ int ULONG_ONEZERO ;
+ unsigned long ULONG_ZEROONE ;
+ int memcpy (unsigned long*,unsigned long*,size_t) ;
+ scalar_t__ memtest_addressing (unsigned long*,size_t,int ) ;
+ scalar_t__ memtest_compare_times (unsigned long*,size_t,int,int,int ) ;
+ int memtest_fill_random (unsigned long*,size_t,int ) ;
+ int memtest_fill_value (unsigned long*,size_t,int ,unsigned long,char,int ) ;
 
 int memtest_preserving_test(unsigned long *m, size_t bytes, int passes) {
     unsigned long backup[MEMTEST_BACKUP_WORDS];
@@ -30,13 +30,13 @@ int memtest_preserving_test(unsigned long *m, size_t bytes, int passes) {
     size_t left = bytes;
     int errors = 0;
 
-    if (bytes & 4095) return 0; /* Can't test across 4k page boundaries. */
-    if (bytes < 4096*2) return 0; /* Can't test a single page. */
+    if (bytes & 4095) return 0;
+    if (bytes < 4096*2) return 0;
 
     while(left) {
-        /* If we have to test a single final page, go back a single page
-         * so that we can test two pages, since the code can't test a single
-         * page but at least two. */
+
+
+
         if (left == 4096) {
             left += 4096;
             p -= 4096/sizeof(unsigned long);
@@ -45,10 +45,10 @@ int memtest_preserving_test(unsigned long *m, size_t bytes, int passes) {
         int pass = 0;
         size_t len = (left > sizeof(backup)) ? sizeof(backup) : left;
 
-        /* Always test an even number of pages. */
+
         if (len/4096 % 2) len -= 4096;
 
-        memcpy(backup,p,len); /* Backup. */
+        memcpy(backup,p,len);
         while(pass != passes) {
             pass++;
             errors += memtest_addressing(p,len,0);
@@ -71,7 +71,7 @@ int memtest_preserving_test(unsigned long *m, size_t bytes, int passes) {
             }
             errors += memtest_compare_times(p,len,pass,4,0);
         }
-        memcpy(p,backup,len); /* Restore. */
+        memcpy(p,backup,len);
         left -= len;
         p += len/sizeof(unsigned long);
     }

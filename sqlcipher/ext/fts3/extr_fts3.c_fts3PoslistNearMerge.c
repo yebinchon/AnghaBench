@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fts3PoslistCopy (char**,char**) ; 
- int /*<<< orphan*/  fts3PoslistMerge (char**,char**,char**) ; 
- int /*<<< orphan*/  fts3PoslistPhraseMerge (char**,int,int,int /*<<< orphan*/ ,char**,char**) ; 
+ int fts3PoslistCopy (char**,char**) ;
+ int fts3PoslistMerge (char**,char**,char**) ;
+ int fts3PoslistPhraseMerge (char**,int,int,int ,char**,char**) ;
 
 __attribute__((used)) static int fts3PoslistNearMerge(
-  char **pp,                      /* Output buffer */
-  char *aTmp,                     /* Temporary buffer space */
-  int nRight,                     /* Maximum difference in token positions */
-  int nLeft,                      /* Maximum difference in token positions */
-  char **pp1,                     /* IN/OUT: Left input list */
-  char **pp2                      /* IN/OUT: Right input list */
+  char **pp,
+  char *aTmp,
+  int nRight,
+  int nLeft,
+  char **pp1,
+  char **pp2
 ){
   char *p1 = *pp1;
   char *p2 = *pp2;

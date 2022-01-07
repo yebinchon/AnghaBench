@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int utype; char const* str; int imp_tag; int imp_class; int /*<<< orphan*/  format; } ;
-typedef  TYPE_1__ tag_exp_arg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_ASN1_CB ; 
- int ASN1_GEN_FLAG ; 
-#define  ASN1_GEN_FLAG_BITWRAP 134 
-#define  ASN1_GEN_FLAG_EXP 133 
-#define  ASN1_GEN_FLAG_FORMAT 132 
-#define  ASN1_GEN_FLAG_IMP 131 
-#define  ASN1_GEN_FLAG_OCTWRAP 130 
-#define  ASN1_GEN_FLAG_SEQWRAP 129 
-#define  ASN1_GEN_FLAG_SETWRAP 128 
- int /*<<< orphan*/  ASN1_GEN_FORMAT_ASCII ; 
- int /*<<< orphan*/  ASN1_GEN_FORMAT_BITLIST ; 
- int /*<<< orphan*/  ASN1_GEN_FORMAT_HEX ; 
- int /*<<< orphan*/  ASN1_GEN_FORMAT_UTF8 ; 
- int /*<<< orphan*/  ASN1_R_ILLEGAL_NESTED_TAGGING ; 
- int /*<<< orphan*/  ASN1_R_MISSING_VALUE ; 
- int /*<<< orphan*/  ASN1_R_UNKNOWN_FORMAT ; 
- int /*<<< orphan*/  ASN1_R_UNKNOWN_TAG ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*,char const*) ; 
- int V_ASN1_BIT_STRING ; 
- int V_ASN1_OCTET_STRING ; 
- int V_ASN1_SEQUENCE ; 
- int V_ASN1_SET ; 
- int V_ASN1_UNIVERSAL ; 
- int /*<<< orphan*/  append_exp (TYPE_1__*,int,int,int,int,int) ; 
- int asn1_str2tag (char const*,int) ; 
- int /*<<< orphan*/  parse_tagging (char const*,int,int*,int*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int utype; char const* str; int imp_tag; int imp_class; int format; } ;
+typedef TYPE_1__ tag_exp_arg ;
+
+
+ int ASN1_F_ASN1_CB ;
+ int ASN1_GEN_FLAG ;
+
+
+
+
+
+
+
+ int ASN1_GEN_FORMAT_ASCII ;
+ int ASN1_GEN_FORMAT_BITLIST ;
+ int ASN1_GEN_FORMAT_HEX ;
+ int ASN1_GEN_FORMAT_UTF8 ;
+ int ASN1_R_ILLEGAL_NESTED_TAGGING ;
+ int ASN1_R_MISSING_VALUE ;
+ int ASN1_R_UNKNOWN_FORMAT ;
+ int ASN1_R_UNKNOWN_TAG ;
+ int ASN1err (int ,int ) ;
+ int ERR_add_error_data (int,char*,char const*) ;
+ int V_ASN1_BIT_STRING ;
+ int V_ASN1_OCTET_STRING ;
+ int V_ASN1_SEQUENCE ;
+ int V_ASN1_SET ;
+ int V_ASN1_UNIVERSAL ;
+ int append_exp (TYPE_1__*,int,int,int,int,int) ;
+ int asn1_str2tag (char const*,int) ;
+ int parse_tagging (char const*,int,int*,int*) ;
+ int strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int asn1_cb(const char *elem, int len, void *bitstr)
 {
@@ -50,15 +50,15 @@ __attribute__((used)) static int asn1_cb(const char *elem, int len, void *bitstr
     int i;
     int utype;
     int vlen = 0;
-    const char *p, *vstart = NULL;
+    const char *p, *vstart = ((void*)0);
 
     int tmp_tag, tmp_class;
 
-    if (elem == NULL)
+    if (elem == ((void*)0))
         return -1;
 
     for (i = 0, p = elem; i < len; p++, i++) {
-        /* Look for the ':' in name value pairs */
+
         if (*p == ':') {
             vstart = p + 1;
             vlen = len - (vstart - elem);
@@ -75,11 +75,11 @@ __attribute__((used)) static int asn1_cb(const char *elem, int len, void *bitstr
         return -1;
     }
 
-    /* If this is not a modifier mark end of string and exit */
+
     if (!(utype & ASN1_GEN_FLAG)) {
         arg->utype = utype;
         arg->str = vstart;
-        /* If no value and not end of string, error */
+
         if (!vstart && elem[len]) {
             ASN1err(ASN1_F_ASN1_CB, ASN1_R_MISSING_VALUE);
             return -1;
@@ -89,8 +89,8 @@ __attribute__((used)) static int asn1_cb(const char *elem, int len, void *bitstr
 
     switch (utype) {
 
-    case ASN1_GEN_FLAG_IMP:
-        /* Check for illegal multiple IMPLICIT tagging */
+    case 131:
+
         if (arg->imp_tag != -1) {
             ASN1err(ASN1_F_ASN1_CB, ASN1_R_ILLEGAL_NESTED_TAGGING);
             return -1;
@@ -99,7 +99,7 @@ __attribute__((used)) static int asn1_cb(const char *elem, int len, void *bitstr
             return -1;
         break;
 
-    case ASN1_GEN_FLAG_EXP:
+    case 133:
 
         if (!parse_tagging(vstart, vlen, &tmp_tag, &tmp_class))
             return -1;
@@ -107,27 +107,27 @@ __attribute__((used)) static int asn1_cb(const char *elem, int len, void *bitstr
             return -1;
         break;
 
-    case ASN1_GEN_FLAG_SEQWRAP:
+    case 129:
         if (!append_exp(arg, V_ASN1_SEQUENCE, V_ASN1_UNIVERSAL, 1, 0, 1))
             return -1;
         break;
 
-    case ASN1_GEN_FLAG_SETWRAP:
+    case 128:
         if (!append_exp(arg, V_ASN1_SET, V_ASN1_UNIVERSAL, 1, 0, 1))
             return -1;
         break;
 
-    case ASN1_GEN_FLAG_BITWRAP:
+    case 134:
         if (!append_exp(arg, V_ASN1_BIT_STRING, V_ASN1_UNIVERSAL, 0, 1, 1))
             return -1;
         break;
 
-    case ASN1_GEN_FLAG_OCTWRAP:
+    case 130:
         if (!append_exp(arg, V_ASN1_OCTET_STRING, V_ASN1_UNIVERSAL, 0, 0, 1))
             return -1;
         break;
 
-    case ASN1_GEN_FLAG_FORMAT:
+    case 132:
         if (!vstart) {
             ASN1err(ASN1_F_ASN1_CB, ASN1_R_UNKNOWN_FORMAT);
             return -1;

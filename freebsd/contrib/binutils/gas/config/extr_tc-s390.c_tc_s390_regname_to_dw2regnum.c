@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  REG_NAME_CNT ; 
- int /*<<< orphan*/  pre_defined_registers ; 
- int reg_name_search (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+ int REG_NAME_CNT ;
+ int pre_defined_registers ;
+ int reg_name_search (int ,int ,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 int
 tc_s390_regname_to_dw2regnum (char *regname)

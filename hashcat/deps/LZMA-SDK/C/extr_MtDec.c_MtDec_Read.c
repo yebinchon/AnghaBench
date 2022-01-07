@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UInt64 ;
-struct TYPE_8__ {scalar_t__ numFilledThreads; size_t filledThreadStart; size_t numStartedThreads; size_t inBufSize; size_t crossEnd; size_t crossStart; void* crossBlock; int /*<<< orphan*/  alloc; TYPE_1__* threads; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef size_t UInt64 ;
+struct TYPE_8__ {scalar_t__ numFilledThreads; size_t filledThreadStart; size_t numStartedThreads; size_t inBufSize; size_t crossEnd; size_t crossStart; void* crossBlock; int alloc; TYPE_1__* threads; } ;
 struct TYPE_7__ {void* next; } ;
 struct TYPE_6__ {void* inBuf; scalar_t__ inDataSize; size_t inDataSize_Start; } ;
-typedef  TYPE_1__ CMtDecThread ;
-typedef  TYPE_2__ CMtDecBufLink ;
-typedef  TYPE_3__ CMtDec ;
-typedef  int /*<<< orphan*/  Byte ;
+typedef TYPE_1__ CMtDecThread ;
+typedef TYPE_2__ CMtDecBufLink ;
+typedef TYPE_3__ CMtDec ;
+typedef int Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISzAlloc_Free (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/ * MTDEC__DATA_PTR_FROM_LINK (void*) ; 
- int /*<<< orphan*/  MtDecThread_FreeInBufs (TYPE_1__*) ; 
+
+ int ISzAlloc_Free (int ,void*) ;
+ int * MTDEC__DATA_PTR_FROM_LINK (void*) ;
+ int MtDecThread_FreeInBufs (TYPE_1__*) ;
 
 const Byte *MtDec_Read(CMtDec *p, size_t *inLim)
 {
   while (p->numFilledThreads != 0)
   {
     CMtDecThread *t = &p->threads[p->filledThreadStart];
-    
+
     if (*inLim != 0)
     {
       {
@@ -41,7 +41,7 @@ const Byte *MtDec_Read(CMtDec *p, size_t *inLim)
         ISzAlloc_Free(p->alloc, link);
         t->inBuf = next;
       }
-      
+
       if (t->inDataSize == 0)
       {
         MtDecThread_FreeInBufs(t);
@@ -52,7 +52,7 @@ const Byte *MtDec_Read(CMtDec *p, size_t *inLim)
         t = &p->threads[p->filledThreadStart];
       }
     }
-    
+
     {
       size_t lim = t->inDataSize_Start;
       if (lim != 0)
@@ -84,8 +84,8 @@ const Byte *MtDec_Read(CMtDec *p, size_t *inLim)
     if (p->crossBlock)
     {
       ISzAlloc_Free(p->alloc, p->crossBlock);
-      p->crossBlock = NULL;
+      p->crossBlock = ((void*)0);
     }
-    return NULL;
+    return ((void*)0);
   }
 }

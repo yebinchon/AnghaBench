@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct et_occ {scalar_t__ min; scalar_t__ depth; struct et_occ* min_occ; struct et_occ* next; struct et_occ* prev; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static inline void
 et_recomp_min (struct et_occ *occ)
@@ -21,7 +21,7 @@ et_recomp_min (struct et_occ *occ)
 
   if (!mson
       || (occ->next
-	  && mson->min > occ->next->min))
+   && mson->min > occ->next->min))
       mson = occ->next;
 
   if (mson && mson->min < 0)

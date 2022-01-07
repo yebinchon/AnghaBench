@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const fe25519 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fe25519_mul (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  fe25519_sq (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int const fe25519 ;
+
+
+ int fe25519_mul (int const,int const,int const) ;
+ int fe25519_sq (int const,int const) ;
 
 __attribute__((used)) static void
 fe25519_pow22523(fe25519 out, const fe25519 z)
@@ -22,7 +22,7 @@ fe25519_pow22523(fe25519 out, const fe25519 z)
     fe25519 t0;
     fe25519 t1;
     fe25519 t2;
-    int     i;
+    int i;
 
     fe25519_sq(t0, z);
     fe25519_sq(t1, t0);

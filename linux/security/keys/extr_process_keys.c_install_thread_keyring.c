@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cred {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  abort_creds (struct cred*) ; 
- int commit_creds (struct cred*) ; 
- int install_thread_keyring_to_cred (struct cred*) ; 
- struct cred* prepare_creds () ; 
+
+ int ENOMEM ;
+ int abort_creds (struct cred*) ;
+ int commit_creds (struct cred*) ;
+ int install_thread_keyring_to_cred (struct cred*) ;
+ struct cred* prepare_creds () ;
 
 __attribute__((used)) static int install_thread_keyring(void)
 {
-	struct cred *new;
-	int ret;
+ struct cred *new;
+ int ret;
 
-	new = prepare_creds();
-	if (!new)
-		return -ENOMEM;
+ new = prepare_creds();
+ if (!new)
+  return -ENOMEM;
 
-	ret = install_thread_keyring_to_cred(new);
-	if (ret < 0) {
-		abort_creds(new);
-		return ret;
-	}
+ ret = install_thread_keyring_to_cred(new);
+ if (ret < 0) {
+  abort_creds(new);
+  return ret;
+ }
 
-	return commit_creds(new);
+ return commit_creds(new);
 }

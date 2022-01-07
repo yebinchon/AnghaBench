@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  global_State ;
-struct TYPE_4__ {int /*<<< orphan*/  v; } ;
-typedef  TYPE_1__ UpVal ;
-typedef  int /*<<< orphan*/  GCObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gray2black (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  isblack (int /*<<< orphan*/ *) ; 
- scalar_t__ isgray (int /*<<< orphan*/ *) ; 
- int issweepphase (int /*<<< orphan*/ *) ; 
- scalar_t__ keepinvariant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- int /*<<< orphan*/  makewhite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  markvalue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * obj2gco (TYPE_1__*) ; 
- int /*<<< orphan*/  resetoldbit (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int global_State ;
+struct TYPE_4__ {int v; } ;
+typedef TYPE_1__ UpVal ;
+typedef int GCObject ;
+
+
+ int gray2black (int *) ;
+ int isblack (int *) ;
+ scalar_t__ isgray (int *) ;
+ int issweepphase (int *) ;
+ scalar_t__ keepinvariant (int *) ;
+ int lua_assert (int) ;
+ int makewhite (int *,int *) ;
+ int markvalue (int *,int ) ;
+ int * obj2gco (TYPE_1__*) ;
+ int resetoldbit (int *) ;
 
 void luaC_checkupvalcolor (global_State *g, UpVal *uv) {
   GCObject *o = obj2gco(uv);
-  lua_assert(!isblack(o));  /* open upvalues are never black */
+  lua_assert(!isblack(o));
   if (isgray(o)) {
     if (keepinvariant(g)) {
-      resetoldbit(o);  /* see MOVE OLD rule */
-      gray2black(o);  /* it is being visited now */
+      resetoldbit(o);
+      gray2black(o);
       markvalue(g, uv->v);
     }
     else {

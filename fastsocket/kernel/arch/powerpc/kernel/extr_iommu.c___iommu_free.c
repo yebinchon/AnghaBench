@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct iommu_table {unsigned long it_offset; int /*<<< orphan*/  it_map; } ;
-struct iommu_pool {int /*<<< orphan*/  lock; } ;
-typedef  unsigned long dma_addr_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* tce_free ) (struct iommu_table*,unsigned long,unsigned int) ;} ;
 
-/* Variables and functions */
- unsigned long IOMMU_PAGE_SHIFT ; 
- int /*<<< orphan*/  bitmap_clear (int /*<<< orphan*/ ,unsigned long,unsigned int) ; 
- struct iommu_pool* get_pool (struct iommu_table*,unsigned long) ; 
- int /*<<< orphan*/  iommu_free_check (struct iommu_table*,unsigned long,unsigned int) ; 
- TYPE_1__ ppc_md ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  stub1 (struct iommu_table*,unsigned long,unsigned int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct iommu_table {unsigned long it_offset; int it_map; } ;
+struct iommu_pool {int lock; } ;
+typedef unsigned long dma_addr_t ;
+struct TYPE_2__ {int (* tce_free ) (struct iommu_table*,unsigned long,unsigned int) ;} ;
+
+
+ unsigned long IOMMU_PAGE_SHIFT ;
+ int bitmap_clear (int ,unsigned long,unsigned int) ;
+ struct iommu_pool* get_pool (struct iommu_table*,unsigned long) ;
+ int iommu_free_check (struct iommu_table*,unsigned long,unsigned int) ;
+ TYPE_1__ ppc_md ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int stub1 (struct iommu_table*,unsigned long,unsigned int) ;
 
 __attribute__((used)) static void __iommu_free(struct iommu_table *tbl, dma_addr_t dma_addr,
-			unsigned int npages)
+   unsigned int npages)
 {
-	unsigned long entry, free_entry;
-	unsigned long flags;
-	struct iommu_pool *pool;
+ unsigned long entry, free_entry;
+ unsigned long flags;
+ struct iommu_pool *pool;
 
-	entry = dma_addr >> IOMMU_PAGE_SHIFT;
-	free_entry = entry - tbl->it_offset;
+ entry = dma_addr >> IOMMU_PAGE_SHIFT;
+ free_entry = entry - tbl->it_offset;
 
-	pool = get_pool(tbl, free_entry);
+ pool = get_pool(tbl, free_entry);
 
-	if (!iommu_free_check(tbl, dma_addr, npages))
-		return;
+ if (!iommu_free_check(tbl, dma_addr, npages))
+  return;
 
-	ppc_md.tce_free(tbl, entry, npages);
+ ppc_md.tce_free(tbl, entry, npages);
 
-	spin_lock_irqsave(&(pool->lock), flags);
-	bitmap_clear(tbl->it_map, free_entry, npages);
-	spin_unlock_irqrestore(&(pool->lock), flags);
+ spin_lock_irqsave(&(pool->lock), flags);
+ bitmap_clear(tbl->it_map, free_entry, npages);
+ spin_unlock_irqrestore(&(pool->lock), flags);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ PCP_EXPORTKEY ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ K_CPExportKey ; 
- int /*<<< orphan*/  LoadLibrary (char*) ; 
- int /*<<< orphan*/  STATUS_NOT_FOUND ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  kuhl_m_crypto_hRsaEnh ; 
+
+
+
+typedef scalar_t__ PCP_EXPORTKEY ;
+typedef int NTSTATUS ;
+
+
+ scalar_t__ GetProcAddress (int ,char*) ;
+ scalar_t__ K_CPExportKey ;
+ int LoadLibrary (char*) ;
+ int STATUS_NOT_FOUND ;
+ int STATUS_SUCCESS ;
+ int kuhl_m_crypto_hRsaEnh ;
 
 NTSTATUS kuhl_m_crypto_init()
 {
-	NTSTATUS status = STATUS_NOT_FOUND;
-	if(kuhl_m_crypto_hRsaEnh = LoadLibrary(L"rsaenh"))
-		if(K_CPExportKey = (PCP_EXPORTKEY) GetProcAddress(kuhl_m_crypto_hRsaEnh, "CPExportKey"))
-			status = STATUS_SUCCESS;
-	return status;
+ NTSTATUS status = STATUS_NOT_FOUND;
+ if(kuhl_m_crypto_hRsaEnh = LoadLibrary(L"rsaenh"))
+  if(K_CPExportKey = (PCP_EXPORTKEY) GetProcAddress(kuhl_m_crypto_hRsaEnh, "CPExportKey"))
+   status = STATUS_SUCCESS;
+ return status;
 }

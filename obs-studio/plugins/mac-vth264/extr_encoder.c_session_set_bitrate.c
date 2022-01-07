@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  float int32_t ;
-typedef  int /*<<< orphan*/  VTCompressionSessionRef ;
-typedef  int /*<<< orphan*/  OSStatus ;
-typedef  int /*<<< orphan*/  CFNumberRef ;
-typedef  int /*<<< orphan*/  CFMutableArrayRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFArrayAppendValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFArrayCreateMutable (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFNumberCreate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_WARNING ; 
- int /*<<< orphan*/  SESSION_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kCFNumberFloatType ; 
- int /*<<< orphan*/  kCFNumberIntType ; 
- int /*<<< orphan*/  kCFTypeArrayCallBacks ; 
- int /*<<< orphan*/  kVTCompressionPropertyKey_AverageBitRate ; 
- int /*<<< orphan*/  kVTCompressionPropertyKey_DataRateLimits ; 
- int /*<<< orphan*/  kVTPropertyNotSupportedErr ; 
- int /*<<< orphan*/  log_osstatus (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  noErr ; 
- int /*<<< orphan*/  session_set_prop (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  session_set_prop_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef float int32_t ;
+typedef int VTCompressionSessionRef ;
+typedef int OSStatus ;
+typedef int CFNumberRef ;
+typedef int CFMutableArrayRef ;
+
+
+ int CFArrayAppendValue (int ,int ) ;
+ int CFArrayCreateMutable (int ,int,int *) ;
+ int CFNumberCreate (int *,int ,float*) ;
+ int CFRelease (int ) ;
+ int LOG_WARNING ;
+ int SESSION_CHECK (int ) ;
+ int kCFAllocatorDefault ;
+ int kCFNumberFloatType ;
+ int kCFNumberIntType ;
+ int kCFTypeArrayCallBacks ;
+ int kVTCompressionPropertyKey_AverageBitRate ;
+ int kVTCompressionPropertyKey_DataRateLimits ;
+ int kVTPropertyNotSupportedErr ;
+ int log_osstatus (int ,int *,char*,int ) ;
+ int noErr ;
+ int session_set_prop (int ,int ,int ) ;
+ int session_set_prop_int (int ,int ,int) ;
 
 __attribute__((used)) static OSStatus session_set_bitrate(VTCompressionSessionRef session,
-				    int new_bitrate, bool limit_bitrate,
-				    int max_bitrate, float max_bitrate_window)
+        int new_bitrate, bool limit_bitrate,
+        int max_bitrate, float max_bitrate_window)
 {
-	OSStatus code;
+ OSStatus code;
 
-	SESSION_CHECK(session_set_prop_int(
-		session, kVTCompressionPropertyKey_AverageBitRate,
-		new_bitrate * 1000));
+ SESSION_CHECK(session_set_prop_int(
+  session, kVTCompressionPropertyKey_AverageBitRate,
+  new_bitrate * 1000));
 
-	if (limit_bitrate) {
-		int32_t cpb_size = max_bitrate * 125 * max_bitrate_window;
+ if (limit_bitrate) {
+  int32_t cpb_size = max_bitrate * 125 * max_bitrate_window;
 
-		CFNumberRef cf_cpb_size =
-			CFNumberCreate(NULL, kCFNumberIntType, &cpb_size);
-		CFNumberRef cf_cpb_window_s = CFNumberCreate(
-			NULL, kCFNumberFloatType, &max_bitrate_window);
+  CFNumberRef cf_cpb_size =
+   CFNumberCreate(((void*)0), kCFNumberIntType, &cpb_size);
+  CFNumberRef cf_cpb_window_s = CFNumberCreate(
+   ((void*)0), kCFNumberFloatType, &max_bitrate_window);
 
-		CFMutableArrayRef rate_control = CFArrayCreateMutable(
-			kCFAllocatorDefault, 2, &kCFTypeArrayCallBacks);
+  CFMutableArrayRef rate_control = CFArrayCreateMutable(
+   kCFAllocatorDefault, 2, &kCFTypeArrayCallBacks);
 
-		CFArrayAppendValue(rate_control, cf_cpb_size);
-		CFArrayAppendValue(rate_control, cf_cpb_window_s);
+  CFArrayAppendValue(rate_control, cf_cpb_size);
+  CFArrayAppendValue(rate_control, cf_cpb_window_s);
 
-		code = session_set_prop(
-			session, kVTCompressionPropertyKey_DataRateLimits,
-			rate_control);
+  code = session_set_prop(
+   session, kVTCompressionPropertyKey_DataRateLimits,
+   rate_control);
 
-		CFRelease(cf_cpb_size);
-		CFRelease(cf_cpb_window_s);
-		CFRelease(rate_control);
+  CFRelease(cf_cpb_size);
+  CFRelease(cf_cpb_window_s);
+  CFRelease(rate_control);
 
-		if (code == kVTPropertyNotSupportedErr) {
-			log_osstatus(LOG_WARNING, NULL,
-				     "setting DataRateLimits on session", code);
-			return noErr;
-		}
-	}
+  if (code == kVTPropertyNotSupportedErr) {
+   log_osstatus(LOG_WARNING, ((void*)0),
+         "setting DataRateLimits on session", code);
+   return noErr;
+  }
+ }
 
-	return noErr;
+ return noErr;
 }

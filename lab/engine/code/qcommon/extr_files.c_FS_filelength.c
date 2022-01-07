@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fileHandle_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FS_FileForHandle (int /*<<< orphan*/ ) ; 
- long FS_fplength (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int fileHandle_t ;
+typedef int FILE ;
+
+
+ int * FS_FileForHandle (int ) ;
+ long FS_fplength (int *) ;
 
 long FS_filelength(fileHandle_t f)
 {
-	FILE	*h;
+ FILE *h;
 
-	h = FS_FileForHandle(f);
-	
-	if(h == NULL)
-		return -1;
-	else
-		return FS_fplength(h);
+ h = FS_FileForHandle(f);
+
+ if(h == ((void*)0))
+  return -1;
+ else
+  return FS_fplength(h);
 }

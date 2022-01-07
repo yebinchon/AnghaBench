@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_EXIT ; 
-#define  EPERM 129 
-#define  ESRCH 128 
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int errno ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int D_EXIT ;
+
+
+ int SIGTERM ;
+ int debug (int ,char*,int ) ;
+ int errno ;
+ int error (char*,int ) ;
+ int kill (int ,int ) ;
 
 int killpid(pid_t pid) {
     int ret;
@@ -30,11 +30,11 @@ int killpid(pid_t pid) {
     ret = kill(pid, SIGTERM);
     if (ret == -1) {
         switch(errno) {
-            case ESRCH:
-                // We wanted the process to exit so just let the caller handle.
+            case 128:
+
                 return ret;
 
-            case EPERM:
+            case 129:
                 error("Cannot kill pid %d, but I do not have enough permissions.", pid);
                 break;
 

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ min; scalar_t__ max; scalar_t__ maxex; scalar_t__ minex; } ;
-typedef  TYPE_1__ zrangespec ;
+typedef TYPE_1__ zrangespec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  serverAssert (int /*<<< orphan*/ ) ; 
- unsigned char* ziplistIndex (unsigned char*,int) ; 
- int /*<<< orphan*/  zslValueGteMin (double,TYPE_1__*) ; 
- int /*<<< orphan*/  zslValueLteMax (double,TYPE_1__*) ; 
- double zzlGetScore (unsigned char*) ; 
+
+ int serverAssert (int ) ;
+ unsigned char* ziplistIndex (unsigned char*,int) ;
+ int zslValueGteMin (double,TYPE_1__*) ;
+ int zslValueLteMax (double,TYPE_1__*) ;
+ double zzlGetScore (unsigned char*) ;
 
 int zzlIsInRange(unsigned char *zl, zrangespec *range) {
     unsigned char *p;
     double score;
 
-    /* Test for ranges that will always be empty. */
+
     if (range->min > range->max ||
             (range->min == range->max && (range->minex || range->maxex)))
         return 0;
 
-    p = ziplistIndex(zl,-1); /* Last score. */
-    if (p == NULL) return 0; /* Empty sorted set */
+    p = ziplistIndex(zl,-1);
+    if (p == ((void*)0)) return 0;
     score = zzlGetScore(p);
     if (!zslValueGteMin(score,range))
         return 0;
 
-    p = ziplistIndex(zl,1); /* First score. */
-    serverAssert(p != NULL);
+    p = ziplistIndex(zl,1);
+    serverAssert(p != ((void*)0));
     score = zzlGetScore(p);
     if (!zslValueLteMax(score,range))
         return 0;

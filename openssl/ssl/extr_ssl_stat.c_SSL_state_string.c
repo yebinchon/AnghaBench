@@ -1,70 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
-#define  DTLS_ST_CR_HELLO_VERIFY_REQUEST 177 
-#define  DTLS_ST_SW_HELLO_VERIFY_REQUEST 176 
- int SSL_get_state (int /*<<< orphan*/  const*) ; 
-#define  TLS_ST_BEFORE 175 
-#define  TLS_ST_CR_CERT 174 
-#define  TLS_ST_CR_CERT_REQ 173 
-#define  TLS_ST_CR_CERT_STATUS 172 
-#define  TLS_ST_CR_CERT_VRFY 171 
-#define  TLS_ST_CR_CHANGE 170 
-#define  TLS_ST_CR_ENCRYPTED_EXTENSIONS 169 
-#define  TLS_ST_CR_FINISHED 168 
-#define  TLS_ST_CR_HELLO_REQ 167 
-#define  TLS_ST_CR_KEY_EXCH 166 
-#define  TLS_ST_CR_KEY_UPDATE 165 
-#define  TLS_ST_CR_SESSION_TICKET 164 
-#define  TLS_ST_CR_SRVR_DONE 163 
-#define  TLS_ST_CR_SRVR_HELLO 162 
-#define  TLS_ST_CW_CERT 161 
-#define  TLS_ST_CW_CERT_VRFY 160 
-#define  TLS_ST_CW_CHANGE 159 
-#define  TLS_ST_CW_CLNT_HELLO 158 
-#define  TLS_ST_CW_END_OF_EARLY_DATA 157 
-#define  TLS_ST_CW_FINISHED 156 
-#define  TLS_ST_CW_KEY_EXCH 155 
-#define  TLS_ST_CW_KEY_UPDATE 154 
-#define  TLS_ST_CW_NEXT_PROTO 153 
-#define  TLS_ST_EARLY_DATA 152 
-#define  TLS_ST_OK 151 
-#define  TLS_ST_PENDING_EARLY_DATA_END 150 
-#define  TLS_ST_SR_CERT 149 
-#define  TLS_ST_SR_CERT_VRFY 148 
-#define  TLS_ST_SR_CHANGE 147 
-#define  TLS_ST_SR_CLNT_HELLO 146 
-#define  TLS_ST_SR_END_OF_EARLY_DATA 145 
-#define  TLS_ST_SR_FINISHED 144 
-#define  TLS_ST_SR_KEY_EXCH 143 
-#define  TLS_ST_SR_KEY_UPDATE 142 
-#define  TLS_ST_SR_NEXT_PROTO 141 
-#define  TLS_ST_SW_CERT 140 
-#define  TLS_ST_SW_CERT_REQ 139 
-#define  TLS_ST_SW_CERT_STATUS 138 
-#define  TLS_ST_SW_CERT_VRFY 137 
-#define  TLS_ST_SW_CHANGE 136 
-#define  TLS_ST_SW_ENCRYPTED_EXTENSIONS 135 
-#define  TLS_ST_SW_FINISHED 134 
-#define  TLS_ST_SW_HELLO_REQ 133 
-#define  TLS_ST_SW_KEY_EXCH 132 
-#define  TLS_ST_SW_KEY_UPDATE 131 
-#define  TLS_ST_SW_SESSION_TICKET 130 
-#define  TLS_ST_SW_SRVR_DONE 129 
-#define  TLS_ST_SW_SRVR_HELLO 128 
- scalar_t__ ossl_statem_in_error (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int SSL ;
+
+
+
+
+ int SSL_get_state (int const*) ;
+ scalar_t__ ossl_statem_in_error (int const*) ;
 
 const char *SSL_state_string(const SSL *s)
 {
@@ -72,101 +24,101 @@ const char *SSL_state_string(const SSL *s)
         return "SSLERR";
 
     switch (SSL_get_state(s)) {
-    case TLS_ST_SR_NEXT_PROTO:
+    case 141:
         return "TRNP";
-    case TLS_ST_SW_SESSION_TICKET:
+    case 130:
         return "TWST";
-    case TLS_ST_SW_CERT_STATUS:
+    case 138:
         return "TWCS";
-    case TLS_ST_CR_CERT_STATUS:
+    case 172:
         return "TRCS";
-    case TLS_ST_CR_SESSION_TICKET:
+    case 164:
         return "TRST";
-    case TLS_ST_CW_NEXT_PROTO:
+    case 153:
         return "TWNP";
-    case TLS_ST_BEFORE:
+    case 175:
         return "PINIT ";
-    case TLS_ST_OK:
+    case 151:
         return "SSLOK ";
-    case TLS_ST_CW_CLNT_HELLO:
+    case 158:
         return "TWCH";
-    case TLS_ST_CR_SRVR_HELLO:
+    case 162:
         return "TRSH";
-    case TLS_ST_CR_CERT:
+    case 174:
         return "TRSC";
-    case TLS_ST_CR_KEY_EXCH:
+    case 166:
         return "TRSKE";
-    case TLS_ST_CR_CERT_REQ:
+    case 173:
         return "TRCR";
-    case TLS_ST_CR_SRVR_DONE:
+    case 163:
         return "TRSD";
-    case TLS_ST_CW_CERT:
+    case 161:
         return "TWCC";
-    case TLS_ST_CW_KEY_EXCH:
+    case 155:
         return "TWCKE";
-    case TLS_ST_CW_CERT_VRFY:
+    case 160:
         return "TWCV";
-    case TLS_ST_SW_CHANGE:
-    case TLS_ST_CW_CHANGE:
+    case 136:
+    case 159:
         return "TWCCS";
-    case TLS_ST_SW_FINISHED:
-    case TLS_ST_CW_FINISHED:
+    case 134:
+    case 156:
         return "TWFIN";
-    case TLS_ST_SR_CHANGE:
-    case TLS_ST_CR_CHANGE:
+    case 147:
+    case 170:
         return "TRCCS";
-    case TLS_ST_SR_FINISHED:
-    case TLS_ST_CR_FINISHED:
+    case 144:
+    case 168:
         return "TRFIN";
-    case TLS_ST_SW_HELLO_REQ:
+    case 133:
         return "TWHR";
-    case TLS_ST_SR_CLNT_HELLO:
+    case 146:
         return "TRCH";
-    case TLS_ST_SW_SRVR_HELLO:
+    case 128:
         return "TWSH";
-    case TLS_ST_SW_CERT:
+    case 140:
         return "TWSC";
-    case TLS_ST_SW_KEY_EXCH:
+    case 132:
         return "TWSKE";
-    case TLS_ST_SW_CERT_REQ:
+    case 139:
         return "TWCR";
-    case TLS_ST_SW_SRVR_DONE:
+    case 129:
         return "TWSD";
-    case TLS_ST_SR_CERT:
+    case 149:
         return "TRCC";
-    case TLS_ST_SR_KEY_EXCH:
+    case 143:
         return "TRCKE";
-    case TLS_ST_SR_CERT_VRFY:
+    case 148:
         return "TRCV";
-    case DTLS_ST_CR_HELLO_VERIFY_REQUEST:
+    case 177:
         return "DRCHV";
-    case DTLS_ST_SW_HELLO_VERIFY_REQUEST:
+    case 176:
         return "DWCHV";
-    case TLS_ST_SW_ENCRYPTED_EXTENSIONS:
+    case 135:
         return "TWEE";
-    case TLS_ST_CR_ENCRYPTED_EXTENSIONS:
+    case 169:
         return "TREE";
-    case TLS_ST_CR_CERT_VRFY:
+    case 171:
         return "TRSCV";
-    case TLS_ST_SW_CERT_VRFY:
+    case 137:
         return "TRSCV";
-    case TLS_ST_CR_HELLO_REQ:
+    case 167:
         return "TRHR";
-    case TLS_ST_SW_KEY_UPDATE:
+    case 131:
         return "TWSKU";
-    case TLS_ST_CW_KEY_UPDATE:
+    case 154:
         return "TWCKU";
-    case TLS_ST_SR_KEY_UPDATE:
+    case 142:
         return "TRCKU";
-    case TLS_ST_CR_KEY_UPDATE:
+    case 165:
         return "TRSKU";
-    case TLS_ST_EARLY_DATA:
+    case 152:
         return "TED";
-    case TLS_ST_PENDING_EARLY_DATA_END:
+    case 150:
         return "TPEDE";
-    case TLS_ST_CW_END_OF_EARLY_DATA:
+    case 157:
         return "TWEOED";
-    case TLS_ST_SR_END_OF_EARLY_DATA:
+    case 145:
         return "TWEOED";
     default:
         return "UNKWN ";

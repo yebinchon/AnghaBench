@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwan_url_map {char* prefix; int /*<<< orphan*/  member_1; struct index* data; int /*<<< orphan*/  handler; } ;
+
+
+
+
+struct lwan_url_map {char* prefix; int member_1; struct index* data; int handler; } ;
 struct lwan {int dummy; } ;
 struct index {char* title; char* variant; int width; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LWAN_HANDLER_REF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REDIRECT (char*) ; 
- int /*<<< orphan*/  blocks ; 
- int /*<<< orphan*/  clock ; 
- int /*<<< orphan*/  dali ; 
- int /*<<< orphan*/  lwan_init (struct lwan*) ; 
- int /*<<< orphan*/  lwan_main_loop (struct lwan*) ; 
- int /*<<< orphan*/  lwan_set_url_map (struct lwan*,struct lwan_url_map const*) ; 
- int /*<<< orphan*/  lwan_shutdown (struct lwan*) ; 
- int /*<<< orphan*/  templated_index ; 
+
+ int LWAN_HANDLER_REF (int ) ;
+ int REDIRECT (char*) ;
+ int blocks ;
+ int clock ;
+ int dali ;
+ int lwan_init (struct lwan*) ;
+ int lwan_main_loop (struct lwan*) ;
+ int lwan_set_url_map (struct lwan*,struct lwan_url_map const*) ;
+ int lwan_shutdown (struct lwan*) ;
+ int templated_index ;
 
 int main(void)
 {

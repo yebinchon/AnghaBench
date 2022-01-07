@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  REFIID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IActiveScriptSite ; 
- int /*<<< orphan*/  IID_IActiveScriptSiteWindow ; 
- int /*<<< orphan*/  IID_IUnknown ; 
- int /*<<< orphan*/  IUnknown_AddRef (int /*<<< orphan*/ *) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,void**,...) ; 
- int /*<<< orphan*/  script_site ; 
- int /*<<< orphan*/  script_site_window ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int REFIID ;
+typedef int IUnknown ;
+typedef int HRESULT ;
+
+
+ int E_NOINTERFACE ;
+ int IID_IActiveScriptSite ;
+ int IID_IActiveScriptSiteWindow ;
+ int IID_IUnknown ;
+ int IUnknown_AddRef (int *) ;
+ scalar_t__ IsEqualGUID (int ,int *) ;
+ int S_OK ;
+ int TRACE (char*,void**,...) ;
+ int script_site ;
+ int script_site_window ;
+ int wine_dbgstr_guid (int ) ;
 
 __attribute__((used)) static HRESULT query_interface(REFIID riid, void **ppv)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static HRESULT query_interface(REFIID riid, void **ppv)
         TRACE("(IID_IActiveScriptSiteWindow %p)\n", ppv);
         *ppv = &script_site_window;
     }else {
-        *ppv = NULL;
+        *ppv = ((void*)0);
         TRACE("(%s %p)\n", wine_dbgstr_guid(riid), ppv);
         return E_NOINTERFACE;
     }

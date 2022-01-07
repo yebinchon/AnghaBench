@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct callchain_root {int /*<<< orphan*/  node; } ;
-struct TYPE_2__ {int /*<<< orphan*/  use_callchain; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  decay_callchain_node (int /*<<< orphan*/ *) ; 
- TYPE_1__ symbol_conf ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct callchain_root {int node; } ;
+struct TYPE_2__ {int use_callchain; } ;
+
+
+ int decay_callchain_node (int *) ;
+ TYPE_1__ symbol_conf ;
 
 void decay_callchain(struct callchain_root *root)
 {
-	if (!symbol_conf.use_callchain)
-		return;
+ if (!symbol_conf.use_callchain)
+  return;
 
-	decay_callchain_node(&root->node);
+ decay_callchain_node(&root->node);
 }

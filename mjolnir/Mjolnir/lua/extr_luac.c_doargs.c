@@ -1,63 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- scalar_t__ IS (char*) ; 
- char* LUA_COPYRIGHT ; 
- char* Output ; 
- scalar_t__ dumping ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ listing ; 
- char* output ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* progname ; 
- int stripping ; 
- int /*<<< orphan*/  usage (char*) ; 
+ int EXIT_SUCCESS ;
+ scalar_t__ IS (char*) ;
+ char* LUA_COPYRIGHT ;
+ char* Output ;
+ scalar_t__ dumping ;
+ int exit (int ) ;
+ scalar_t__ listing ;
+ char* output ;
+ int printf (char*,char*) ;
+ char* progname ;
+ int stripping ;
+ int usage (char*) ;
 
 __attribute__((used)) static int doargs(int argc, char* argv[])
 {
  int i;
  int version=0;
- if (argv[0]!=NULL && *argv[0]!=0) progname=argv[0];
+ if (argv[0]!=((void*)0) && *argv[0]!=0) progname=argv[0];
  for (i=1; i<argc; i++)
  {
-  if (*argv[i]!='-')			/* end of options; keep it */
+  if (*argv[i]!='-')
    break;
-  else if (IS("--"))			/* end of options; skip it */
+  else if (IS("--"))
   {
    ++i;
    if (version) ++version;
    break;
   }
-  else if (IS("-"))			/* end of options; use stdin */
+  else if (IS("-"))
    break;
-  else if (IS("-l"))			/* list */
+  else if (IS("-l"))
    ++listing;
-  else if (IS("-o"))			/* output file */
+  else if (IS("-o"))
   {
    output=argv[++i];
-   if (output==NULL || *output==0 || (*output=='-' && output[1]!=0))
+   if (output==((void*)0) || *output==0 || (*output=='-' && output[1]!=0))
     usage("'-o' needs argument");
-   if (IS("-")) output=NULL;
+   if (IS("-")) output=((void*)0);
   }
-  else if (IS("-p"))			/* parse only */
+  else if (IS("-p"))
    dumping=0;
-  else if (IS("-s"))			/* strip debug information */
+  else if (IS("-s"))
    stripping=1;
-  else if (IS("-v"))			/* show version */
+  else if (IS("-v"))
    ++version;
-  else					/* unknown option */
+  else
    usage(argv[i]);
  }
  if (i==argc && (listing || !dumping))

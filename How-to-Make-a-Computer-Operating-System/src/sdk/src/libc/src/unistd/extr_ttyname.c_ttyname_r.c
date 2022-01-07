@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {scalar_t__ st_ino; } ;
 struct dirent {scalar_t__ d_ino; char* d_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int) ; 
- int fstat (int,struct stat*) ; 
- int getdents (int,struct dirent*,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,char*) ; 
+
+ int O_RDONLY ;
+ int close (int) ;
+ int fstat (int,struct stat*) ;
+ int getdents (int,struct dirent*,int) ;
+ int open (char*,int ) ;
+ int snprintf (char*,size_t,char*,char*) ;
 
 int ttyname_r( int fd, char* buf, size_t buflen ) {
     int dir;

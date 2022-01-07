@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vmctx {int /*<<< orphan*/  fd; } ;
+
+
+
+
+struct vmctx {int fd; } ;
 struct vm_pptdev {int bus; int slot; int func; } ;
-typedef  int /*<<< orphan*/  pptdev ;
+typedef int pptdev ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VM_BIND_PPTDEV ; 
- int /*<<< orphan*/  bzero (struct vm_pptdev*,int) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct vm_pptdev*) ; 
+
+ int VM_BIND_PPTDEV ;
+ int bzero (struct vm_pptdev*,int) ;
+ int ioctl (int ,int ,struct vm_pptdev*) ;
 
 int
 vm_assign_pptdev(struct vmctx *ctx, int bus, int slot, int func)
 {
-	struct vm_pptdev pptdev;
+ struct vm_pptdev pptdev;
 
-	bzero(&pptdev, sizeof(pptdev));
-	pptdev.bus = bus;
-	pptdev.slot = slot;
-	pptdev.func = func;
+ bzero(&pptdev, sizeof(pptdev));
+ pptdev.bus = bus;
+ pptdev.slot = slot;
+ pptdev.func = func;
 
-	return (ioctl(ctx->fd, VM_BIND_PPTDEV, &pptdev));
+ return (ioctl(ctx->fd, VM_BIND_PPTDEV, &pptdev));
 }

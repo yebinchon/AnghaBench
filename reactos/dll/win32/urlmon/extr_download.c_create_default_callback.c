@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  IBindStatusCallback_iface; } ;
-typedef  int /*<<< orphan*/  IBindStatusCallback ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DownloadBSC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DownloadBSC_Create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__**) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IBindStatusCallback_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wrap_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int IBindStatusCallback_iface; } ;
+typedef int IBindStatusCallback ;
+typedef int HRESULT ;
+typedef TYPE_1__ DownloadBSC ;
+
+
+ int DownloadBSC_Create (int *,int *,TYPE_1__**) ;
+ scalar_t__ FAILED (int ) ;
+ int IBindStatusCallback_Release (int *) ;
+ int wrap_callback (int *,int **) ;
 
 HRESULT create_default_callback(IBindStatusCallback **ret)
 {
     DownloadBSC *callback;
     HRESULT hres;
 
-    hres = DownloadBSC_Create(NULL, NULL, &callback);
+    hres = DownloadBSC_Create(((void*)0), ((void*)0), &callback);
     if(FAILED(hres))
         return hres;
 

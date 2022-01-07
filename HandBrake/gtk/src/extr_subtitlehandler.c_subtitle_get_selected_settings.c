@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  settings; int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  int gint ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GtkTreeView ;
-typedef  int /*<<< orphan*/  GtkTreeSelection ;
-typedef  int /*<<< orphan*/  GtkTreePath ;
-typedef  int /*<<< orphan*/  GtkTreeModel ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GhbValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * GTK_TREE_VIEW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ghb_array_get (int /*<<< orphan*/ *,int) ; 
- int ghb_array_len (int /*<<< orphan*/ *) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ghb_get_job_subtitle_list (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ghb_get_job_subtitle_search (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * gtk_tree_model_get_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_tree_path_free (int /*<<< orphan*/ *) ; 
- int* gtk_tree_path_get_indices (int /*<<< orphan*/ *) ; 
- scalar_t__ gtk_tree_selection_get_selected (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gtk_tree_view_get_selection (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int settings; int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef int gint ;
+typedef scalar_t__ gboolean ;
+typedef int GtkTreeView ;
+typedef int GtkTreeSelection ;
+typedef int GtkTreePath ;
+typedef int GtkTreeModel ;
+typedef int GtkTreeIter ;
+typedef int GhbValue ;
+
+
+ int GHB_WIDGET (int ,char*) ;
+ int * GTK_TREE_VIEW (int ) ;
+ int * ghb_array_get (int *,int) ;
+ int ghb_array_len (int *) ;
+ scalar_t__ ghb_dict_get_bool (int *,char*) ;
+ int * ghb_get_job_subtitle_list (int ) ;
+ int * ghb_get_job_subtitle_search (int ) ;
+ int * gtk_tree_model_get_path (int *,int *) ;
+ int gtk_tree_path_free (int *) ;
+ int* gtk_tree_path_get_indices (int *) ;
+ scalar_t__ gtk_tree_selection_get_selected (int *,int **,int *) ;
+ int * gtk_tree_view_get_selection (int *) ;
 
 __attribute__((used)) static GhbValue*
 subtitle_get_selected_settings(signal_user_data_t *ud, int *index)
@@ -43,7 +43,7 @@ subtitle_get_selected_settings(signal_user_data_t *ud, int *index)
     GtkTreeSelection *ts;
     GtkTreeModel *tm;
     GtkTreeIter iter;
-    GhbValue *subsettings = NULL;
+    GhbValue *subsettings = ((void*)0);
 
     tv = GTK_TREE_VIEW(GHB_WIDGET(ud->builder, "subtitle_list_view"));
     ts = gtk_tree_view_get_selection(tv);
@@ -54,7 +54,7 @@ subtitle_get_selected_settings(signal_user_data_t *ud, int *index)
         gint row, *indices;
         GtkTreePath *tp;
 
-        // Get the row number
+
         tp = gtk_tree_model_get_path(tm, &iter);
         indices = gtk_tree_path_get_indices(tp);
         row = indices[0];
@@ -66,7 +66,7 @@ subtitle_get_selected_settings(signal_user_data_t *ud, int *index)
         {
             if (row == 0)
             {
-                if (index != NULL)
+                if (index != ((void*)0))
                     *index = -1;
                 return subtitle_search;
             }
@@ -75,10 +75,10 @@ subtitle_get_selected_settings(signal_user_data_t *ud, int *index)
 
         subtitle_list = ghb_get_job_subtitle_list(ud->settings);
         if (row < 0 || row >= ghb_array_len(subtitle_list))
-            return NULL;
+            return ((void*)0);
 
         subsettings = ghb_array_get(subtitle_list, row);
-        if (index != NULL)
+        if (index != ((void*)0))
             *index = row;
     }
     return subsettings;

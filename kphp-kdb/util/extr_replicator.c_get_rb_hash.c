@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct remote_binlog {int binlog_tag_len; char* binlog_tag; scalar_t__ flags; scalar_t__ first; } ;
 
-/* Variables and functions */
- int HASH_PRIME ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- struct remote_binlog** rb_hash ; 
- void* zmalloc (int) ; 
+
+ int HASH_PRIME ;
+ int memcmp (char*,char*,int) ;
+ int memcpy (char*,char*,int) ;
+ struct remote_binlog** rb_hash ;
+ void* zmalloc (int) ;
 
 struct remote_binlog *get_rb_hash (char *name, int l, int force) {
   int h1 = l, h2 = l, t;

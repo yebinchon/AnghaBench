@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct exynos_data {int /*<<< orphan*/  drmname; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  drm_free () ; 
- int g_drm_fd ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct exynos_data {int drmname; } ;
+
+
+ int close (int) ;
+ int drm_free () ;
+ int g_drm_fd ;
+ int memset (int ,int ,int) ;
 
 __attribute__((used)) static void exynos_close(struct exynos_data *pdata)
 {
@@ -24,5 +24,5 @@ __attribute__((used)) static void exynos_close(struct exynos_data *pdata)
 
    drm_free();
    close(g_drm_fd);
-   g_drm_fd   = -1;
+   g_drm_fd = -1;
 }

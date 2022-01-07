@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-struct TYPE_3__ {int* buf; int thresh; int /*<<< orphan*/  (* filter_line ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int*,int,int,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* blur_line ) (int*,int*,int*,int /*<<< orphan*/  const*,int,int) ;} ;
-typedef  TYPE_1__ GradFunContext ;
 
-/* Variables and functions */
- int FFALIGN (int,int) ; 
- int /*<<< orphan*/ * dither ; 
- int /*<<< orphan*/  emms_c () ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stub1 (int*,int*,int*,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  stub2 (int*,int*,int*,int /*<<< orphan*/  const*,int,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int*,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {int* buf; int thresh; int (* filter_line ) (int *,int const*,int*,int,int,int ) ;int (* blur_line ) (int*,int*,int*,int const*,int,int) ;} ;
+typedef TYPE_1__ GradFunContext ;
+
+
+ int FFALIGN (int,int) ;
+ int * dither ;
+ int emms_c () ;
+ int memset (int*,int ,int) ;
+ int stub1 (int*,int*,int*,int const*,int,int) ;
+ int stub2 (int*,int*,int*,int const*,int,int) ;
+ int stub3 (int *,int const*,int*,int,int,int ) ;
+ int stub4 (int *,int const*,int*,int,int,int ) ;
+ int stub5 (int *,int const*,int*,int,int,int ) ;
 
 __attribute__((used)) static void filter(GradFunContext *ctx, uint8_t *dst, const uint8_t *src, int width, int height, int dst_linesize, int src_linesize, int r)
 {

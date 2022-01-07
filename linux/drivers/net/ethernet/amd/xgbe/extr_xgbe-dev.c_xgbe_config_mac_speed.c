@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xgbe_prv_data {int /*<<< orphan*/  phy_speed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xgbe_set_speed (struct xgbe_prv_data*,int /*<<< orphan*/ ) ; 
+
+
+
+struct xgbe_prv_data {int phy_speed; } ;
+
+
+ int xgbe_set_speed (struct xgbe_prv_data*,int ) ;
 
 __attribute__((used)) static void xgbe_config_mac_speed(struct xgbe_prv_data *pdata)
 {
-	xgbe_set_speed(pdata, pdata->phy_speed);
+ xgbe_set_speed(pdata, pdata->phy_speed);
 }

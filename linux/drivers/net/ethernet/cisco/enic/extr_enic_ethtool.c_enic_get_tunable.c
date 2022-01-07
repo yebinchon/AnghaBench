@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct net_device {int dummy; } ;
 struct ethtool_tunable {int id; } ;
-struct enic {int /*<<< orphan*/  rx_copybreak; } ;
+struct enic {int rx_copybreak; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  ETHTOOL_RX_COPYBREAK 128 
- struct enic* netdev_priv (struct net_device*) ; 
+
+ int EINVAL ;
+
+ struct enic* netdev_priv (struct net_device*) ;
 
 __attribute__((used)) static int enic_get_tunable(struct net_device *dev,
-			    const struct ethtool_tunable *tuna, void *data)
+       const struct ethtool_tunable *tuna, void *data)
 {
-	struct enic *enic = netdev_priv(dev);
-	int ret = 0;
+ struct enic *enic = netdev_priv(dev);
+ int ret = 0;
 
-	switch (tuna->id) {
-	case ETHTOOL_RX_COPYBREAK:
-		*(u32 *)data = enic->rx_copybreak;
-		break;
-	default:
-		ret = -EINVAL;
-		break;
-	}
+ switch (tuna->id) {
+ case 128:
+  *(u32 *)data = enic->rx_copybreak;
+  break;
+ default:
+  ret = -EINVAL;
+  break;
+ }
 
-	return ret;
+ return ret;
 }

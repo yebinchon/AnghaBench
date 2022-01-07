@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RObject {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- scalar_t__ MRB_TT_MODULE ; 
- scalar_t__ MRB_TT_SCLASS ; 
- struct RObject* method_object_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_class_get (int /*<<< orphan*/ *,char*) ; 
- char* mrb_class_name (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_intern_lit (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_iv_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_is_kind_of (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mrb_obj_iv_set (int /*<<< orphan*/ *,struct RObject*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RObject*) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new_static (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ int E_TYPE_ERROR ;
+ scalar_t__ MRB_TT_MODULE ;
+ scalar_t__ MRB_TT_SCLASS ;
+ struct RObject* method_object_alloc (int *,int ) ;
+ int mrb_class_get (int *,char*) ;
+ char* mrb_class_name (int *,scalar_t__) ;
+ scalar_t__ mrb_class_ptr (int ) ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_intern_lit (int *,char*) ;
+ int mrb_iv_get (int *,int ,int ) ;
+ scalar_t__ mrb_obj_class (int *,int ) ;
+ int mrb_obj_is_kind_of (int *,int ,scalar_t__) ;
+ int mrb_obj_iv_set (int *,struct RObject*,int ,int ) ;
+ int mrb_obj_value (struct RObject*) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_raisef (int *,int ,char*,int ) ;
+ int mrb_str_new_static (int *,char const*,int ) ;
+ scalar_t__ mrb_type (int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static mrb_value
 unbound_method_bind(mrb_state *mrb, mrb_value self)

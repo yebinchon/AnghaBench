@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* p_next; } ;
-typedef  TYPE_1__ line_desc_t ;
+typedef TYPE_1__ line_desc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeLine (TYPE_1__*) ; 
+
+ int FreeLine (TYPE_1__*) ;
 
 void FreeLines( line_desc_t *p_lines )
 {
-    for( line_desc_t *p_line = p_lines; p_line != NULL; )
+    for( line_desc_t *p_line = p_lines; p_line != ((void*)0); )
     {
         line_desc_t *p_next = p_line->p_next;
         FreeLine( p_line );

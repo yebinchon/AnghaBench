@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* updateEnd; } ;
-typedef  TYPE_1__ SVgObj ;
+typedef TYPE_1__ SVgObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,TYPE_1__*,int) ; 
+
+ int memcpy (char*,TYPE_1__*,int) ;
 
 void *mgmtVgroupActionEncode(void *row, char *str, int size, int *ssize) {
   SVgObj *pVgroup = (SVgObj *)row;
-  int     tsize = pVgroup->updateEnd - (char *)pVgroup;
+  int tsize = pVgroup->updateEnd - (char *)pVgroup;
   if (size < tsize) {
     *ssize = -1;
   } else {
@@ -27,5 +27,5 @@ void *mgmtVgroupActionEncode(void *row, char *str, int size, int *ssize) {
     *ssize = tsize;
   }
 
-  return NULL;
+  return ((void*)0);
 }

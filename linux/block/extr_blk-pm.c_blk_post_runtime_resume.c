@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct request_queue {int /*<<< orphan*/  queue_lock; int /*<<< orphan*/  rpm_status; int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RPM_ACTIVE ; 
- int /*<<< orphan*/  RPM_SUSPENDED ; 
- int /*<<< orphan*/  blk_clear_pm_only (struct request_queue*) ; 
- int /*<<< orphan*/  pm_request_autosuspend (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm_runtime_mark_last_busy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irq (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_irq (int /*<<< orphan*/ *) ; 
+
+
+
+struct request_queue {int queue_lock; int rpm_status; int dev; } ;
+
+
+ int RPM_ACTIVE ;
+ int RPM_SUSPENDED ;
+ int blk_clear_pm_only (struct request_queue*) ;
+ int pm_request_autosuspend (int ) ;
+ int pm_runtime_mark_last_busy (int ) ;
+ int spin_lock_irq (int *) ;
+ int spin_unlock_irq (int *) ;
 
 void blk_post_runtime_resume(struct request_queue *q, int err)
 {
-	if (!q->dev)
-		return;
+ if (!q->dev)
+  return;
 
-	spin_lock_irq(&q->queue_lock);
-	if (!err) {
-		q->rpm_status = RPM_ACTIVE;
-		pm_runtime_mark_last_busy(q->dev);
-		pm_request_autosuspend(q->dev);
-	} else {
-		q->rpm_status = RPM_SUSPENDED;
-	}
-	spin_unlock_irq(&q->queue_lock);
+ spin_lock_irq(&q->queue_lock);
+ if (!err) {
+  q->rpm_status = RPM_ACTIVE;
+  pm_runtime_mark_last_busy(q->dev);
+  pm_request_autosuspend(q->dev);
+ } else {
+  q->rpm_status = RPM_SUSPENDED;
+ }
+ spin_unlock_irq(&q->queue_lock);
 
-	if (!err)
-		blk_clear_pm_only(q);
+ if (!err)
+  blk_clear_pm_only(q);
 }

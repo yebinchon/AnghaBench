@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct arc_operand_value {scalar_t__ type; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct arc_operand_value {scalar_t__ type; int name; } ;
 struct arc_ext_operand_value {struct arc_ext_operand_value* next; struct arc_operand_value operand; } ;
 
-/* Variables and functions */
- scalar_t__ COND ; 
- struct arc_ext_operand_value* arc_ext_operands ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ COND ;
+ struct arc_ext_operand_value* arc_ext_operands ;
+ int strcmp (char*,int ) ;
 
 struct arc_operand_value *
 get_ext_suffix (char *s)
@@ -26,9 +26,9 @@ get_ext_suffix (char *s)
   while (suffix)
     {
       if ((COND == suffix->operand.type)
-	  && !strcmp(s,suffix->operand.name))
-	return(&suffix->operand);
+   && !strcmp(s,suffix->operand.name))
+ return(&suffix->operand);
       suffix = suffix->next;
     }
-  return NULL;
+  return ((void*)0);
 }

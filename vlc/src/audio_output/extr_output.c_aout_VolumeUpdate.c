@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- scalar_t__ AOUT_VOLUME_DEFAULT ; 
- float aout_VolumeGet (int /*<<< orphan*/ *) ; 
- int aout_VolumeSet (int /*<<< orphan*/ *,float) ; 
- float roundf (float) ; 
- float var_InheritFloat (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int audio_output_t ;
+
+
+ scalar_t__ AOUT_VOLUME_DEFAULT ;
+ float aout_VolumeGet (int *) ;
+ int aout_VolumeSet (int *,float) ;
+ float roundf (float) ;
+ float var_InheritFloat (int *,char*) ;
 
 int aout_VolumeUpdate (audio_output_t *aout, int value, float *volp)
 {
@@ -34,7 +34,7 @@ int aout_VolumeUpdate (audio_output_t *aout, int value, float *volp)
         if (vol > 2.f)
             vol = 2.f;
         vol = (roundf (vol / stepSize)) * stepSize;
-        if (volp != NULL)
+        if (volp != ((void*)0))
             *volp = vol;
         ret = aout_VolumeSet (aout, vol);
     }

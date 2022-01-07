@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* hash_entry_ptr ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef TYPE_1__* hash_entry_ptr ;
 struct TYPE_5__ {struct TYPE_5__* next_entry; } ;
-typedef  TYPE_1__ hash_entry ;
+typedef TYPE_1__ hash_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int htbl_allocated_cnt ; 
- TYPE_1__* htbl_free_entries ; 
- int /*<<< orphan*/  htbl_init_mem (int) ; 
+
+ int assert (int ) ;
+ int htbl_allocated_cnt ;
+ TYPE_1__* htbl_free_entries ;
+ int htbl_init_mem (int) ;
 
 hash_entry_ptr htbl_get_entry (void) {
-  if (htbl_free_entries == NULL) {
+  if (htbl_free_entries == ((void*)0)) {
     if (1 <= htbl_allocated_cnt && htbl_allocated_cnt < 10000) {
       htbl_init_mem (htbl_allocated_cnt);
     } else {
@@ -30,11 +30,11 @@ hash_entry_ptr htbl_get_entry (void) {
     }
   }
 
-  assert (htbl_free_entries != NULL);
+  assert (htbl_free_entries != ((void*)0));
 
   hash_entry *res = htbl_free_entries;
   htbl_free_entries = htbl_free_entries->next_entry;
-  res->next_entry = NULL;
+  res->next_entry = ((void*)0);
 
   return res;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* ExceptionRecord; } ;
-struct TYPE_4__ {int NumberParameters; int /*<<< orphan*/ * ExceptionInformation; } ;
-typedef  TYPE_2__* PEXCEPTION_POINTERS ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ LONG ;
+struct TYPE_4__ {int NumberParameters; int * ExceptionInformation; } ;
+typedef TYPE_2__* PEXCEPTION_POINTERS ;
+typedef int NTSTATUS ;
+typedef scalar_t__ LONG ;
 
-/* Variables and functions */
- int ERROR_SUCCESS ; 
- scalar_t__ EXCEPTION_CONTINUE_SEARCH ; 
- scalar_t__ EXCEPTION_EXECUTE_HANDLER ; 
- scalar_t__ EXCEPTION_IN_PAGE_ERROR ; 
- int UV_UNKNOWN ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int pRtlNtStatusToDosError (int /*<<< orphan*/ ) ; 
+
+ int ERROR_SUCCESS ;
+ scalar_t__ EXCEPTION_CONTINUE_SEARCH ;
+ scalar_t__ EXCEPTION_EXECUTE_HANDLER ;
+ scalar_t__ EXCEPTION_IN_PAGE_ERROR ;
+ int UV_UNKNOWN ;
+ int assert (int ) ;
+ int pRtlNtStatusToDosError (int ) ;
 
 LONG fs__filemap_ex_filter(LONG excode, PEXCEPTION_POINTERS pep,
                            int* perror) {
@@ -33,8 +33,8 @@ LONG fs__filemap_ex_filter(LONG excode, PEXCEPTION_POINTERS pep,
     return EXCEPTION_CONTINUE_SEARCH;
   }
 
-  assert(perror != NULL);
-  if (pep != NULL && pep->ExceptionRecord != NULL &&
+  assert(perror != ((void*)0));
+  if (pep != ((void*)0) && pep->ExceptionRecord != ((void*)0) &&
       pep->ExceptionRecord->NumberParameters >= 3) {
     NTSTATUS status = (NTSTATUS)pep->ExceptionRecord->ExceptionInformation[3];
     *perror = pRtlNtStatusToDosError(status);

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int sqlite3_int64 ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int sqlite3_int64 ;
 struct TYPE_10__ {int nDim; } ;
-typedef  int /*<<< orphan*/  RtreeNode ;
-typedef  scalar_t__ RtreeDValue ;
-typedef  int /*<<< orphan*/  RtreeCell ;
-typedef  TYPE_1__ Rtree ;
+typedef int RtreeNode ;
+typedef scalar_t__ RtreeDValue ;
+typedef int RtreeCell ;
+typedef TYPE_1__ Rtree ;
 
-/* Variables and functions */
- int RTREE_MINCELLS (TYPE_1__*) ; 
- scalar_t__ RTREE_ZERO ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  SortByDimension (TYPE_1__*,int*,int,int,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ cellArea (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ cellMargin (TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ cellOverlap (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  cellUnion (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nodeInsertCell (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (int**) ; 
- scalar_t__ sqlite3_malloc64 (int) ; 
+
+ int RTREE_MINCELLS (TYPE_1__*) ;
+ scalar_t__ RTREE_ZERO ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int SortByDimension (TYPE_1__*,int*,int,int,int *,int*) ;
+ scalar_t__ cellArea (TYPE_1__*,int *) ;
+ scalar_t__ cellMargin (TYPE_1__*,int *) ;
+ scalar_t__ cellOverlap (TYPE_1__*,int *,int *,int) ;
+ int cellUnion (TYPE_1__*,int *,int *) ;
+ int memcpy (int *,int *,int) ;
+ int memset (int**,int ,int) ;
+ int nodeInsertCell (TYPE_1__*,int *,int *) ;
+ int sqlite3_free (int**) ;
+ scalar_t__ sqlite3_malloc64 (int) ;
 
 __attribute__((used)) static int splitNodeStartree(
   Rtree *pRtree,
@@ -77,8 +77,8 @@ __attribute__((used)) static int splitNodeStartree(
     int nLeft;
 
     for(
-      nLeft=RTREE_MINCELLS(pRtree); 
-      nLeft<=(nCell-RTREE_MINCELLS(pRtree)); 
+      nLeft=RTREE_MINCELLS(pRtree);
+      nLeft<=(nCell-RTREE_MINCELLS(pRtree));
       nLeft++
     ){
       RtreeCell left;

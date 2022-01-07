@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- int DWORD_BITS ; 
+
+
+
+typedef size_t uint32_t ;
+typedef size_t DWORD ;
+
+
+ int DWORD_BITS ;
 
 DWORD multiprecision_lshift(DWORD *c, DWORD *a, uint32_t keyLength)
 {
@@ -26,7 +26,7 @@ DWORD multiprecision_lshift(DWORD *c, DWORD *a, uint32_t keyLength)
     DWORD temp;
 
     for (uint32_t i = 0; i < keyLength; i++) {
-        temp = a[i];  // in case c==a
+        temp = a[i];
         c[i] = (temp << b) | carrier;
         carrier = temp >> j;
     }

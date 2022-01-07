@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-struct TYPE_4__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  cond; int /*<<< orphan*/ * chroma_list; int /*<<< orphan*/  fmtsrc; int /*<<< orphan*/  fmtdst; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_fourcc_t ;
+typedef int video_format_t ;
+struct TYPE_4__ {int lock; int cond; int * chroma_list; int fmtsrc; int fmtdst; } ;
 struct TYPE_5__ {TYPE_1__ prerender; } ;
-typedef  TYPE_2__ spu_private_t ;
+typedef TYPE_2__ spu_private_t ;
 
-/* Variables and functions */
- size_t SPU_CHROMALIST_COUNT ; 
- int /*<<< orphan*/  video_format_Clean (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  video_format_Copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  video_format_IsSimilar (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ size_t SPU_CHROMALIST_COUNT ;
+ int video_format_Clean (int *) ;
+ int video_format_Copy (int *,int const*) ;
+ int video_format_IsSimilar (int const*,int *) ;
+ int vlc_cond_signal (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static void spu_PrerenderWake(spu_private_t *sys,
                               const video_format_t *fmt_dst,

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct test_request {int dummy; } ;
-struct info {int /*<<< orphan*/  wait; } ;
-typedef  char WCHAR ;
+struct info {int wait; } ;
+typedef char WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEventW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  close_request (struct test_request*,struct info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_async_request (int,struct test_request*,struct info*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_socket_request (int,struct test_request*,struct info*) ; 
- int /*<<< orphan*/  read_request_data (struct test_request*,struct info*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  server_read_data (char*) ; 
- int /*<<< orphan*/  server_send_reply (struct test_request*,struct info*,char*) ; 
- int /*<<< orphan*/  server_socket_done ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+ int CloseHandle (int ) ;
+ int CreateEventW (int *,int ,int ,int *) ;
+ int FALSE ;
+ int SetEvent (int ) ;
+ int TRUE ;
+ int close_request (struct test_request*,struct info*,int ) ;
+ int open_async_request (int,struct test_request*,struct info*,char const*,int ) ;
+ int open_socket_request (int,struct test_request*,struct info*) ;
+ int read_request_data (struct test_request*,struct info*,char*,int ) ;
+ int server_read_data (char*) ;
+ int server_send_reply (struct test_request*,struct info*,char*) ;
+ int server_socket_done ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_persistent_connection(int port)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void test_persistent_connection(int port)
 
     trace("Testing persistent connection...\n");
 
-    info.wait = CreateEventW( NULL, FALSE, FALSE, NULL );
+    info.wait = CreateEventW( ((void*)0), FALSE, FALSE, ((void*)0) );
 
     open_socket_request( port, &req, &info );
     server_send_reply( &req, &info,
@@ -51,7 +51,7 @@ __attribute__((used)) static void test_persistent_connection(int port)
     read_request_data( &req, &info, "X", FALSE );
     close_request( &req, &info, FALSE );
 
-    /* chunked connection test */
+
     open_async_request( port, &req, &info, testW, TRUE );
     server_read_data( "GET /test HTTP/1.1\r\n" );
     server_send_reply( &req, &info,
@@ -65,7 +65,7 @@ __attribute__((used)) static void test_persistent_connection(int port)
     read_request_data( &req, &info, "123456789", FALSE );
     close_request( &req, &info, FALSE );
 
-    /* HTTP/1.1 connections are persistent by default, no additional header is needed */
+
     open_async_request( port, &req, &info, testW, TRUE );
     server_read_data( "GET /test HTTP/1.1\r\n" );
     server_send_reply( &req, &info,

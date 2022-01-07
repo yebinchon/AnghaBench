@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  OMX_U32 ;
 
-/* Variables and functions */
- int MMAL_BUFFER_HEADER_VIDEO_FLAG_INTERLACED ; 
- int MMAL_BUFFER_HEADER_VIDEO_FLAG_TOP_FIELD_FIRST ; 
- int /*<<< orphan*/  OMX_BUFFERFLAG_INTERLACED ; 
- int /*<<< orphan*/  OMX_BUFFERFLAG_TOP_FIELD_FIRST ; 
+
+
+
+typedef int uint32_t ;
+typedef int OMX_U32 ;
+
+
+ int MMAL_BUFFER_HEADER_VIDEO_FLAG_INTERLACED ;
+ int MMAL_BUFFER_HEADER_VIDEO_FLAG_TOP_FIELD_FIRST ;
+ int OMX_BUFFERFLAG_INTERLACED ;
+ int OMX_BUFFERFLAG_TOP_FIELD_FIRST ;
 
 OMX_U32 mmalil_video_buffer_flags_to_omx(uint32_t flags)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct bson {int* ptr; int /*<<< orphan*/  size; } ;
-typedef  int /*<<< orphan*/  int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bson_reserve (struct bson*,int) ; 
+
+
+
+typedef int uint64_t ;
+struct bson {int* ptr; int size; } ;
+typedef int int64_t ;
+
+
+ int bson_reserve (struct bson*,int) ;
 
 __attribute__((used)) static inline void
 write_int64(struct bson *b, int64_t v) {
-	uint64_t uv = (uint64_t)v;
-	int i;
-	bson_reserve(b,8);
-	for (i=0;i<64;i+=8) {
-		b->ptr[b->size++] = (uv>>i) & 0xff;
-	}
+ uint64_t uv = (uint64_t)v;
+ int i;
+ bson_reserve(b,8);
+ for (i=0;i<64;i+=8) {
+  b->ptr[b->size++] = (uv>>i) & 0xff;
+ }
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_pcm_hw_params {int dummy; } ;
 struct pcm_params {int dummy; } ;
-typedef  int /*<<< orphan*/  fn ;
+typedef int fn ;
 
-/* Variables and functions */
- int O_NONBLOCK ; 
- int O_RDWR ; 
- unsigned int PCM_IN ; 
- int /*<<< orphan*/  SNDRV_PCM_IOCTL_HW_REFINE ; 
- scalar_t__ calloc (int,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free (struct snd_pcm_hw_params*) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct snd_pcm_hw_params*) ; 
- int open (char*,int) ; 
- int /*<<< orphan*/  param_init (struct snd_pcm_hw_params*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned int,unsigned int,char) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int O_NONBLOCK ;
+ int O_RDWR ;
+ unsigned int PCM_IN ;
+ int SNDRV_PCM_IOCTL_HW_REFINE ;
+ scalar_t__ calloc (int,int) ;
+ int close (int) ;
+ int errno ;
+ int fprintf (int ,char*,...) ;
+ int free (struct snd_pcm_hw_params*) ;
+ scalar_t__ ioctl (int,int ,struct snd_pcm_hw_params*) ;
+ int open (char*,int) ;
+ int param_init (struct snd_pcm_hw_params*) ;
+ int snprintf (char*,int,char*,unsigned int,unsigned int,char) ;
+ int stderr ;
 
 __attribute__((used)) static struct pcm_params *pcm_params_get(unsigned int card, unsigned int device,
       unsigned int flags)
@@ -69,5 +69,5 @@ err_hw_refine:
 err_calloc:
    close(fd);
 err_open:
-   return NULL;
+   return ((void*)0);
 }

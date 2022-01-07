@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int USHORT ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  UCHAR ;
 
-/* Variables and functions */
- int Endian16 (int) ; 
+
+
+
+typedef int USHORT ;
+typedef int UINT ;
+typedef int UCHAR ;
+
+
+ int Endian16 (int) ;
 
 bool IsNetbiosRegistrationPacket(UCHAR *buf, UINT size)
 {
-	// Validate arguments
-	if (buf == NULL || size == 0)
-	{
-		return false;
-	}
 
-	if (size >= 4)
-	{
-		USHORT us = *((USHORT *)(buf + 2));
+ if (buf == ((void*)0) || size == 0)
+ {
+  return 0;
+ }
 
-		us = Endian16(us);
+ if (size >= 4)
+ {
+  USHORT us = *((USHORT *)(buf + 2));
 
-		if (((us & 0x7800) >> 11) == 5)
-		{
-			return true;
-		}
-	}
+  us = Endian16(us);
 
-	return false;
+  if (((us & 0x7800) >> 11) == 5)
+  {
+   return 1;
+  }
+ }
+
+ return 0;
 }

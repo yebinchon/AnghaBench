@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  hmac_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int TOKEN_DATA_LEN ; 
- int /*<<< orphan*/  hmac_ctx_final (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  hmac_ctx_reset (int /*<<< orphan*/ *) ; 
- int hmac_ctx_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hmac_ctx_update (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ memcmp_constant_time (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int const uint8_t ;
+typedef int hmac_ctx_t ;
+
+
+ int ASSERT (int) ;
+ int TOKEN_DATA_LEN ;
+ int hmac_ctx_final (int *,int const*) ;
+ int hmac_ctx_reset (int *) ;
+ int hmac_ctx_size (int *) ;
+ int hmac_ctx_update (int *,int const*,int) ;
+ scalar_t__ memcmp_constant_time (int const**,int const*,int) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static bool
 check_hmac_token(hmac_ctx_t *ctx, const uint8_t *b64decoded, const char *username)

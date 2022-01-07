@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-struct TYPE_3__ {int /*<<< orphan*/  editor_controller; } ;
-typedef  TYPE_1__ NSContainer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char const*) ; 
- int /*<<< orphan*/  nsIController_DoCommand (int /*<<< orphan*/ ,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+struct TYPE_3__ {int editor_controller; } ;
+typedef TYPE_1__ NSContainer ;
+
+
+ int ERR (char*,int ,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int debugstr_a (char const*) ;
+ int nsIController_DoCommand (int ,char const*) ;
 
 __attribute__((used)) static void do_ns_editor_command(NSContainer *This, const char *cmd)
 {

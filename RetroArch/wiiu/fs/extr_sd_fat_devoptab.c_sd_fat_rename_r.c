@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct _reent {int _errno; } ;
-struct TYPE_4__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  pCmd; int /*<<< orphan*/  pClient; } ;
-typedef  TYPE_1__ sd_fat_private_t ;
+struct TYPE_4__ {int pMutex; int pCmd; int pClient; } ;
+typedef TYPE_1__ sd_fat_private_t ;
 
-/* Variables and functions */
- int ENODEV ; 
- void* ENOMEM ; 
- int FSRename (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,int) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* sd_fat_get_device_data (char const*) ; 
- char* sd_fat_real_path (char const*,TYPE_1__*) ; 
+
+ int ENODEV ;
+ void* ENOMEM ;
+ int FSRename (int ,int ,char*,char*,int) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
+ int free (char*) ;
+ TYPE_1__* sd_fat_get_device_data (char const*) ;
+ char* sd_fat_real_path (char const*,TYPE_1__*) ;
 
 __attribute__((used)) static int sd_fat_rename_r (struct _reent *r, const char *oldName, const char *newName)
 {

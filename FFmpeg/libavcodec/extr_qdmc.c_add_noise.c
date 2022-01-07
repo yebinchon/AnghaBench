@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {float** fft_buffer; int fft_offset; int subframe_size; int* noise2_buffer; size_t band_index; int*** noise; unsigned int rndval; } ;
-typedef  TYPE_1__ QDMCContext ;
+typedef TYPE_1__ QDMCContext ;
 
-/* Variables and functions */
- float* amplitude_tab ; 
- int /*<<< orphan*/  lin_calc (TYPE_1__*,float,int,int,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int* noise_bands_size ; 
- int* qdmc_nodes ; 
+
+ float* amplitude_tab ;
+ int lin_calc (TYPE_1__*,float,int,int,int) ;
+ int memset (int*,int ,int) ;
+ int* noise_bands_size ;
+ int* qdmc_nodes ;
 
 __attribute__((used)) static void add_noise(QDMCContext *s, int ch, int current_subframe)
 {
@@ -48,8 +48,8 @@ __attribute__((used)) static void add_noise(QDMCContext *s, int ch, int current_
         rnd_im = ((s->rndval & 0x7FFF) - 16384.0f) * 0.000030517578f * s->noise2_buffer[j];
         s->rndval = 214013U * s->rndval + 2531011;
         rnd_re = ((s->rndval & 0x7FFF) - 16384.0f) * 0.000030517578f * s->noise2_buffer[j];
-        im[j  ] += rnd_im;
-        re[j  ] += rnd_re;
+        im[j ] += rnd_im;
+        re[j ] += rnd_re;
         im[j+1] -= rnd_im;
         re[j+1] -= rnd_re;
     }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int sampleSize; int rate; int totalBytes; int format; int channels; int bits; } ;
 struct TYPE_4__ {int framePeriod; int maxRecordSize; int frameRate; int numVideoFrames; int width; int height; scalar_t__ moviOffset; TYPE_1__ a; scalar_t__ audio; scalar_t__ motionJpeg; scalar_t__ chunkStackTop; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  END_CHUNK () ; 
- int /*<<< orphan*/  START_CHUNK (char*) ; 
- int /*<<< orphan*/  WRITE_2BYTES (int) ; 
- int /*<<< orphan*/  WRITE_4BYTES (int) ; 
- int /*<<< orphan*/  WRITE_STRING (char*) ; 
- TYPE_2__ afd ; 
- scalar_t__ bufIndex ; 
+
+ int END_CHUNK () ;
+ int START_CHUNK (char*) ;
+ int WRITE_2BYTES (int) ;
+ int WRITE_4BYTES (int) ;
+ int WRITE_STRING (char*) ;
+ TYPE_2__ afd ;
+ scalar_t__ bufIndex ;
 
 void CL_WriteAVIHeader( void )
 {
@@ -37,82 +37,82 @@ void CL_WriteAVIHeader( void )
       {
         WRITE_STRING( "hdrl" );
         WRITE_STRING( "avih" );
-        WRITE_4BYTES( 56 );                     //"avih" "chunk" size
-        WRITE_4BYTES( afd.framePeriod );        //dwMicroSecPerFrame
+        WRITE_4BYTES( 56 );
+        WRITE_4BYTES( afd.framePeriod );
         WRITE_4BYTES( afd.maxRecordSize *
-            afd.frameRate );                    //dwMaxBytesPerSec
-        WRITE_4BYTES( 0 );                      //dwReserved1
-        WRITE_4BYTES( 0x110 );                  //dwFlags bits HAS_INDEX and IS_INTERLEAVED
-        WRITE_4BYTES( afd.numVideoFrames );     //dwTotalFrames
-        WRITE_4BYTES( 0 );                      //dwInitialFrame
+            afd.frameRate );
+        WRITE_4BYTES( 0 );
+        WRITE_4BYTES( 0x110 );
+        WRITE_4BYTES( afd.numVideoFrames );
+        WRITE_4BYTES( 0 );
 
-        if( afd.audio )                         //dwStreams
+        if( afd.audio )
           WRITE_4BYTES( 2 );
         else
           WRITE_4BYTES( 1 );
 
-        WRITE_4BYTES( afd.maxRecordSize );      //dwSuggestedBufferSize
-        WRITE_4BYTES( afd.width );              //dwWidth
-        WRITE_4BYTES( afd.height );             //dwHeight
-        WRITE_4BYTES( 0 );                      //dwReserved[ 0 ]
-        WRITE_4BYTES( 0 );                      //dwReserved[ 1 ]
-        WRITE_4BYTES( 0 );                      //dwReserved[ 2 ]
-        WRITE_4BYTES( 0 );                      //dwReserved[ 3 ]
+        WRITE_4BYTES( afd.maxRecordSize );
+        WRITE_4BYTES( afd.width );
+        WRITE_4BYTES( afd.height );
+        WRITE_4BYTES( 0 );
+        WRITE_4BYTES( 0 );
+        WRITE_4BYTES( 0 );
+        WRITE_4BYTES( 0 );
 
         START_CHUNK( "LIST" );
         {
           WRITE_STRING( "strl" );
           WRITE_STRING( "strh" );
-          WRITE_4BYTES( 56 );                   //"strh" "chunk" size
+          WRITE_4BYTES( 56 );
           WRITE_STRING( "vids" );
 
           if( afd.motionJpeg )
             WRITE_STRING( "MJPG" );
           else
-            WRITE_4BYTES( 0 );                  // BI_RGB
+            WRITE_4BYTES( 0 );
 
-          WRITE_4BYTES( 0 );                    //dwFlags
-          WRITE_4BYTES( 0 );                    //dwPriority
-          WRITE_4BYTES( 0 );                    //dwInitialFrame
+          WRITE_4BYTES( 0 );
+          WRITE_4BYTES( 0 );
+          WRITE_4BYTES( 0 );
 
-          WRITE_4BYTES( 1 );                    //dwTimescale
-          WRITE_4BYTES( afd.frameRate );        //dwDataRate
-          WRITE_4BYTES( 0 );                    //dwStartTime
-          WRITE_4BYTES( afd.numVideoFrames );   //dwDataLength
+          WRITE_4BYTES( 1 );
+          WRITE_4BYTES( afd.frameRate );
+          WRITE_4BYTES( 0 );
+          WRITE_4BYTES( afd.numVideoFrames );
 
-          WRITE_4BYTES( afd.maxRecordSize );    //dwSuggestedBufferSize
-          WRITE_4BYTES( -1 );                   //dwQuality
-          WRITE_4BYTES( 0 );                    //dwSampleSize
-          WRITE_2BYTES( 0 );                    //rcFrame
-          WRITE_2BYTES( 0 );                    //rcFrame
-          WRITE_2BYTES( afd.width );            //rcFrame
-          WRITE_2BYTES( afd.height );           //rcFrame
+          WRITE_4BYTES( afd.maxRecordSize );
+          WRITE_4BYTES( -1 );
+          WRITE_4BYTES( 0 );
+          WRITE_2BYTES( 0 );
+          WRITE_2BYTES( 0 );
+          WRITE_2BYTES( afd.width );
+          WRITE_2BYTES( afd.height );
 
           WRITE_STRING( "strf" );
-          WRITE_4BYTES( 40 );                   //"strf" "chunk" size
-          WRITE_4BYTES( 40 );                   //biSize
-          WRITE_4BYTES( afd.width );            //biWidth
-          WRITE_4BYTES( afd.height );           //biHeight
-          WRITE_2BYTES( 1 );                    //biPlanes
-          WRITE_2BYTES( 24 );                   //biBitCount
+          WRITE_4BYTES( 40 );
+          WRITE_4BYTES( 40 );
+          WRITE_4BYTES( afd.width );
+          WRITE_4BYTES( afd.height );
+          WRITE_2BYTES( 1 );
+          WRITE_2BYTES( 24 );
 
-          if( afd.motionJpeg )                  //biCompression
+          if( afd.motionJpeg )
           {
             WRITE_STRING( "MJPG" );
             WRITE_4BYTES( afd.width *
-                afd.height );                   //biSizeImage
+                afd.height );
           }
           else
           {
-            WRITE_4BYTES( 0 );                  // BI_RGB
+            WRITE_4BYTES( 0 );
             WRITE_4BYTES( afd.width *
-                afd.height * 3 );               //biSizeImage
+                afd.height * 3 );
           }
 
-          WRITE_4BYTES( 0 );                    //biXPelsPetMeter
-          WRITE_4BYTES( 0 );                    //biYPelsPetMeter
-          WRITE_4BYTES( 0 );                    //biClrUsed
-          WRITE_4BYTES( 0 );                    //biClrImportant
+          WRITE_4BYTES( 0 );
+          WRITE_4BYTES( 0 );
+          WRITE_4BYTES( 0 );
+          WRITE_4BYTES( 0 );
         }
         END_CHUNK( );
 
@@ -122,38 +122,38 @@ void CL_WriteAVIHeader( void )
           {
             WRITE_STRING( "strl" );
             WRITE_STRING( "strh" );
-            WRITE_4BYTES( 56 );                 //"strh" "chunk" size
+            WRITE_4BYTES( 56 );
             WRITE_STRING( "auds" );
-            WRITE_4BYTES( 0 );                  //FCC
-            WRITE_4BYTES( 0 );                  //dwFlags
-            WRITE_4BYTES( 0 );                  //dwPriority
-            WRITE_4BYTES( 0 );                  //dwInitialFrame
+            WRITE_4BYTES( 0 );
+            WRITE_4BYTES( 0 );
+            WRITE_4BYTES( 0 );
+            WRITE_4BYTES( 0 );
 
-            WRITE_4BYTES( afd.a.sampleSize );   //dwTimescale
+            WRITE_4BYTES( afd.a.sampleSize );
             WRITE_4BYTES( afd.a.sampleSize *
-                afd.a.rate );                   //dwDataRate
-            WRITE_4BYTES( 0 );                  //dwStartTime
+                afd.a.rate );
+            WRITE_4BYTES( 0 );
             WRITE_4BYTES( afd.a.totalBytes /
-                afd.a.sampleSize );             //dwDataLength
+                afd.a.sampleSize );
 
-            WRITE_4BYTES( 0 );                  //dwSuggestedBufferSize
-            WRITE_4BYTES( -1 );                 //dwQuality
-            WRITE_4BYTES( afd.a.sampleSize );   //dwSampleSize
-            WRITE_2BYTES( 0 );                  //rcFrame
-            WRITE_2BYTES( 0 );                  //rcFrame
-            WRITE_2BYTES( 0 );                  //rcFrame
-            WRITE_2BYTES( 0 );                  //rcFrame
+            WRITE_4BYTES( 0 );
+            WRITE_4BYTES( -1 );
+            WRITE_4BYTES( afd.a.sampleSize );
+            WRITE_2BYTES( 0 );
+            WRITE_2BYTES( 0 );
+            WRITE_2BYTES( 0 );
+            WRITE_2BYTES( 0 );
 
             WRITE_STRING( "strf" );
-            WRITE_4BYTES( 18 );                 //"strf" "chunk" size
-            WRITE_2BYTES( afd.a.format );       //wFormatTag
-            WRITE_2BYTES( afd.a.channels );     //nChannels
-            WRITE_4BYTES( afd.a.rate );         //nSamplesPerSec
+            WRITE_4BYTES( 18 );
+            WRITE_2BYTES( afd.a.format );
+            WRITE_2BYTES( afd.a.channels );
+            WRITE_4BYTES( afd.a.rate );
             WRITE_4BYTES( afd.a.sampleSize *
-                afd.a.rate );                   //nAvgBytesPerSec
-            WRITE_2BYTES( afd.a.sampleSize );   //nBlockAlign
-            WRITE_2BYTES( afd.a.bits );         //wBitsPerSample
-            WRITE_2BYTES( 0 );                  //cbSize
+                afd.a.rate );
+            WRITE_2BYTES( afd.a.sampleSize );
+            WRITE_2BYTES( afd.a.bits );
+            WRITE_2BYTES( 0 );
           }
           END_CHUNK( );
         }

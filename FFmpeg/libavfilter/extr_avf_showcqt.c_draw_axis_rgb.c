@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_9__ {int width; int height; int** data; int* linesize; } ;
 struct TYPE_7__ {float r; float g; float b; } ;
 struct TYPE_8__ {TYPE_1__ rgb; } ;
-typedef  TYPE_2__ ColorFloat ;
-typedef  TYPE_3__ AVFrame ;
+typedef TYPE_2__ ColorFloat ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- void* lrintf (float) ; 
+
+ void* lrintf (float) ;
 
 __attribute__((used)) static void draw_axis_rgb(AVFrame *out, AVFrame *axis, const ColorFloat *c, int off)
 {

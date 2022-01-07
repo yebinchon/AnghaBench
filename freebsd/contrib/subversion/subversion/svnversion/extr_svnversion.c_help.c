@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int apr_pool_t ;
 struct TYPE_4__ {scalar_t__ description; } ;
-typedef  TYPE_1__ apr_getopt_option_t ;
+typedef TYPE_1__ apr_getopt_option_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  svn_cmdline_fprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_opt_format_option (char const**,TYPE_1__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int TRUE ;
+ char* _ (char*) ;
+ int stdout ;
+ int svn_cmdline_fprintf (int ,int *,char*,...) ;
+ int svn_error_clear (int ) ;
+ int svn_opt_format_option (char const**,TYPE_1__ const*,int ,int *) ;
 
 __attribute__((used)) static void
 help(const apr_getopt_option_t *options, apr_pool_t *pool)

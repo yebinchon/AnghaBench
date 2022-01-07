@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int (* dfinal ) (int /*<<< orphan*/ ,unsigned char*,size_t*,size_t) ;int (* final ) (TYPE_1__*,unsigned char*) ;int /*<<< orphan*/  ctx_size; int /*<<< orphan*/  (* cleanup ) (TYPE_1__*) ;int /*<<< orphan*/ * prov; } ;
-struct TYPE_7__ {TYPE_4__* digest; int /*<<< orphan*/  md_data; int /*<<< orphan*/  provctx; } ;
-typedef  TYPE_1__ EVP_MD_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_F_EVP_DIGESTFINAL_EX ; 
- size_t EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_FLAG_CLEANED ; 
- int /*<<< orphan*/  EVP_MD_CTX_set_flags (TYPE_1__*,int /*<<< orphan*/ ) ; 
- size_t EVP_MD_size (TYPE_4__*) ; 
- int /*<<< orphan*/  EVP_R_FINAL_ERROR ; 
- int /*<<< orphan*/  EVPerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t UINT_MAX ; 
- int stub1 (int /*<<< orphan*/ ,unsigned char*,size_t*,size_t) ; 
- int stub2 (TYPE_1__*,unsigned char*) ; 
- int /*<<< orphan*/  stub3 (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int (* dfinal ) (int ,unsigned char*,size_t*,size_t) ;int (* final ) (TYPE_1__*,unsigned char*) ;int ctx_size; int (* cleanup ) (TYPE_1__*) ;int * prov; } ;
+struct TYPE_7__ {TYPE_4__* digest; int md_data; int provctx; } ;
+typedef TYPE_1__ EVP_MD_CTX ;
+
+
+ int EVP_F_EVP_DIGESTFINAL_EX ;
+ size_t EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_FLAG_CLEANED ;
+ int EVP_MD_CTX_set_flags (TYPE_1__*,int ) ;
+ size_t EVP_MD_size (TYPE_4__*) ;
+ int EVP_R_FINAL_ERROR ;
+ int EVPerr (int ,int ) ;
+ int OPENSSL_assert (int) ;
+ int OPENSSL_cleanse (int ,int ) ;
+ size_t UINT_MAX ;
+ int stub1 (int ,unsigned char*,size_t*,size_t) ;
+ int stub2 (TYPE_1__*,unsigned char*) ;
+ int stub3 (TYPE_1__*) ;
 
 int EVP_DigestFinal_ex(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *isize)
 {
@@ -37,17 +37,17 @@ int EVP_DigestFinal_ex(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *isize)
     size_t size = 0;
     size_t mdsize = EVP_MD_size(ctx->digest);
 
-    if (ctx->digest == NULL || ctx->digest->prov == NULL)
+    if (ctx->digest == ((void*)0) || ctx->digest->prov == ((void*)0))
         goto legacy;
 
-    if (ctx->digest->dfinal == NULL) {
+    if (ctx->digest->dfinal == ((void*)0)) {
         EVPerr(EVP_F_EVP_DIGESTFINAL_EX, EVP_R_FINAL_ERROR);
         return 0;
     }
 
     ret = ctx->digest->dfinal(ctx->provctx, md, &size, mdsize);
 
-    if (isize != NULL) {
+    if (isize != ((void*)0)) {
         if (size <= UINT_MAX) {
             *isize = (int)size;
         } else {
@@ -58,11 +58,11 @@ int EVP_DigestFinal_ex(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *isize)
 
     return ret;
 
-    /* TODO(3.0): Remove legacy code below */
+
  legacy:
     OPENSSL_assert(mdsize <= EVP_MAX_MD_SIZE);
     ret = ctx->digest->final(ctx, md);
-    if (isize != NULL)
+    if (isize != ((void*)0))
         *isize = mdsize;
     if (ctx->digest->cleanup) {
         ctx->digest->cleanup(ctx);

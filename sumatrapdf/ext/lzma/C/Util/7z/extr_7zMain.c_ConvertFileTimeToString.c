@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt64 ;
-typedef  int UInt32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UInt64 ;
+typedef int UInt32 ;
 struct TYPE_3__ {int Low; scalar_t__ High; } ;
-typedef  TYPE_1__ CNtfsFileTime ;
-typedef  int Byte ;
+typedef TYPE_1__ CNtfsFileTime ;
+typedef int Byte ;
 
-/* Variables and functions */
- int PERIOD_100 ; 
- int PERIOD_4 ; 
- int PERIOD_400 ; 
- char* UIntToStr (char*,unsigned int,int) ; 
+
+ int PERIOD_100 ;
+ int PERIOD_4 ;
+ int PERIOD_400 ;
+ char* UIntToStr (char*,unsigned int,int) ;
 
 __attribute__((used)) static void ConvertFileTimeToString(const CNtfsFileTime *ft, char *s)
 {
@@ -39,9 +39,9 @@ __attribute__((used)) static void ConvertFileTimeToString(const CNtfsFileTime *f
   year = (unsigned)(1601 + v / PERIOD_400 * 400);
   v %= PERIOD_400;
 
-  t = v / PERIOD_100; if (t ==  4) t =  3; year += t * 100; v -= t * PERIOD_100;
-  t = v / PERIOD_4;   if (t == 25) t = 24; year += t * 4;   v -= t * PERIOD_4;
-  t = v / 365;        if (t ==  4) t =  3; year += t;       v -= t * 365;
+  t = v / PERIOD_100; if (t == 4) t = 3; year += t * 100; v -= t * PERIOD_100;
+  t = v / PERIOD_4; if (t == 25) t = 24; year += t * 4; v -= t * PERIOD_4;
+  t = v / 365; if (t == 4) t = 3; year += t; v -= t * 365;
 
   if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
     ms[1] = 29;
@@ -54,9 +54,9 @@ __attribute__((used)) static void ConvertFileTimeToString(const CNtfsFileTime *f
   }
   day = (unsigned)v + 1;
   s = UIntToStr(s, year, 4); *s++ = '-';
-  s = UIntToStr(s, mon, 2);  *s++ = '-';
-  s = UIntToStr(s, day, 2);  *s++ = ' ';
+  s = UIntToStr(s, mon, 2); *s++ = '-';
+  s = UIntToStr(s, day, 2); *s++ = ' ';
   s = UIntToStr(s, hour, 2); *s++ = ':';
-  s = UIntToStr(s, min, 2);  *s++ = ':';
+  s = UIntToStr(s, min, 2); *s++ = ':';
   s = UIntToStr(s, sec, 2);
 }

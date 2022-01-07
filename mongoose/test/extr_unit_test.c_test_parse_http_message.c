@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct mg_str {int /*<<< orphan*/  p; int /*<<< orphan*/  len; } ;
-struct TYPE_9__ {int /*<<< orphan*/  len; } ;
-struct TYPE_10__ {int /*<<< orphan*/  len; } ;
-struct TYPE_8__ {int /*<<< orphan*/  len; } ;
-struct http_message {TYPE_4__ body; TYPE_5__ resp_status_msg; int /*<<< orphan*/  resp_code; TYPE_5__ proto; TYPE_5__ query_string; TYPE_5__ uri; TYPE_3__ message; TYPE_2__* header_names; TYPE_1__* header_values; } ;
-struct TYPE_7__ {int /*<<< orphan*/  len; int /*<<< orphan*/ * p; } ;
-struct TYPE_6__ {int /*<<< orphan*/  p; int /*<<< orphan*/  len; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASSERT_EQ (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ASSERT_EQ64 (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ASSERT_STREQ_NZ (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char*,int) ; 
- struct mg_str* mg_get_http_header (struct http_message*,char*) ; 
- int /*<<< orphan*/  mg_parse_http (char const*,int,struct http_message*,int) ; 
- int /*<<< orphan*/  mg_vcmp (TYPE_5__*,char*) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct mg_str {int p; int len; } ;
+struct TYPE_9__ {int len; } ;
+struct TYPE_10__ {int len; } ;
+struct TYPE_8__ {int len; } ;
+struct http_message {TYPE_4__ body; TYPE_5__ resp_status_msg; int resp_code; TYPE_5__ proto; TYPE_5__ query_string; TYPE_5__ uri; TYPE_3__ message; TYPE_2__* header_names; TYPE_1__* header_values; } ;
+struct TYPE_7__ {int len; int * p; } ;
+struct TYPE_6__ {int p; int len; } ;
+
+
+ int ASSERT (int ) ;
+ int ASSERT_EQ (int ,int) ;
+ int ASSERT_EQ64 (int ,size_t) ;
+ int ASSERT_STREQ_NZ (int ,char*) ;
+ int memcmp (int ,char*,int) ;
+ struct mg_str* mg_get_http_header (struct http_message*,char*) ;
+ int mg_parse_http (char const*,int,struct http_message*,int) ;
+ int mg_vcmp (TYPE_5__*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static const char *test_parse_http_message(void) {
   static const char *a = "GET / HTTP/1.0\n\n";
@@ -71,15 +71,15 @@ __attribute__((used)) static const char *test_parse_http_message(void) {
   ASSERT_EQ(mg_parse_http(b, strlen(b), &req, 1), (int) strlen(b));
   ASSERT_EQ(req.header_names[0].len, 3);
   ASSERT_EQ(req.header_values[0].len, 3);
-  ASSERT(req.header_names[1].p == NULL);
+  ASSERT(req.header_names[1].p == ((void*)0));
   ASSERT_EQ(req.query_string.len, 0);
   ASSERT_EQ(req.message.len, strlen(b));
   ASSERT_EQ(req.body.len, 0);
 
   ASSERT_EQ(mg_parse_http(c, strlen(c), &req, 1), (int) strlen(c) - 3);
-  ASSERT(req.header_names[2].p == NULL);
-  ASSERT(req.header_names[0].p != NULL);
-  ASSERT(req.header_names[1].p != NULL);
+  ASSERT(req.header_names[2].p == ((void*)0));
+  ASSERT(req.header_names[0].p != ((void*)0));
+  ASSERT(req.header_names[1].p != ((void*)0));
   ASSERT_EQ(memcmp(req.header_values[1].p, "t", 1), 0);
   ASSERT_EQ(req.header_names[1].len, 1);
   ASSERT_EQ(req.body.len, 0);
@@ -87,8 +87,8 @@ __attribute__((used)) static const char *test_parse_http_message(void) {
   ASSERT_EQ(mg_parse_http(d, strlen(d), &req, 1), (int) strlen(d));
   ASSERT_EQ(req.body.len, 21);
   ASSERT_EQ(req.message.len, 21 + strlen(d));
-  ASSERT(mg_get_http_header(&req, "foo") == NULL);
-  ASSERT((v = mg_get_http_header(&req, "contENT-Length")) != NULL);
+  ASSERT(mg_get_http_header(&req, "foo") == ((void*)0));
+  ASSERT((v = mg_get_http_header(&req, "contENT-Length")) != ((void*)0));
   ASSERT_EQ(v->len, 2);
   ASSERT_STREQ_NZ(v->p, "21");
 
@@ -111,9 +111,9 @@ __attribute__((used)) static const char *test_parse_http_message(void) {
   ASSERT_EQ(mg_parse_http(i, strlen(i), &req, 0), -1);
 
   ASSERT_EQ(mg_parse_http(j, strlen(j), &req, 1), (int) strlen(j));
-  ASSERT(mg_get_http_header(&req, "Host") != NULL);
-  ASSERT(mg_get_http_header(&req, "Cookie") == NULL);
-  ASSERT(mg_get_http_header(&req, "Range") != NULL);
+  ASSERT(mg_get_http_header(&req, "Host") != ((void*)0));
+  ASSERT(mg_get_http_header(&req, "Cookie") == ((void*)0));
+  ASSERT(mg_get_http_header(&req, "Range") != ((void*)0));
 
-  return NULL;
+  return ((void*)0);
 }

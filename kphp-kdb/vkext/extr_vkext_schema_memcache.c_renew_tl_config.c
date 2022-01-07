@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct tl_type {int extra; int constructors_num; int /*<<< orphan*/ * constructors; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct tl_type {int extra; int constructors_num; int * constructors; } ;
 struct tl_combinator {int dummy; } ;
 struct TYPE_4__ {int tn; int cn; int fn; struct tl_combinator** fns; struct tl_type** tps; } ;
 struct TYPE_3__ {scalar_t__ rptr; scalar_t__ wptr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_PFREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ADD_PMALLOC (int) ; 
- int TLS_COMBINATOR ; 
- int TLS_TYPE ; 
- long long config_crc64 ; 
- long long crc64_partial (scalar_t__,int,long long) ; 
- TYPE_2__* cur_config ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ gen_constructor_fetch (int /*<<< orphan*/ ,void**,int) ; 
- scalar_t__ gen_constructor_store (int /*<<< orphan*/ ,void**,int) ; 
- scalar_t__ gen_function_fetch (void**,int) ; 
- scalar_t__ gen_function_store (struct tl_combinator*,void**,int) ; 
- int get_schema_version (int) ; 
- TYPE_1__* inbuf ; 
- struct tl_combinator* read_combinators (int) ; 
- struct tl_type* read_types () ; 
- int schema_version ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (scalar_t__) ; 
- int /*<<< orphan*/  tl_config_alloc () ; 
- int /*<<< orphan*/  tl_config_back () ; 
- int tl_config_date ; 
- scalar_t__ tl_config_name ; 
- int tl_config_version ; 
- int /*<<< orphan*/  tl_parse_end () ; 
- scalar_t__ tl_parse_error () ; 
- int /*<<< orphan*/  tl_parse_init () ; 
- int tl_parse_int () ; 
- int verbosity ; 
- void* zzmalloc0 (int) ; 
- int /*<<< orphan*/  zzstrfree (scalar_t__) ; 
+
+ int ADD_PFREE (int ) ;
+ int ADD_PMALLOC (int) ;
+ int TLS_COMBINATOR ;
+ int TLS_TYPE ;
+ long long config_crc64 ;
+ long long crc64_partial (scalar_t__,int,long long) ;
+ TYPE_2__* cur_config ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ gen_constructor_fetch (int ,void**,int) ;
+ scalar_t__ gen_constructor_store (int ,void**,int) ;
+ scalar_t__ gen_function_fetch (void**,int) ;
+ scalar_t__ gen_function_store (struct tl_combinator*,void**,int) ;
+ int get_schema_version (int) ;
+ TYPE_1__* inbuf ;
+ struct tl_combinator* read_combinators (int) ;
+ struct tl_type* read_types () ;
+ int schema_version ;
+ int stderr ;
+ int strlen (scalar_t__) ;
+ int tl_config_alloc () ;
+ int tl_config_back () ;
+ int tl_config_date ;
+ scalar_t__ tl_config_name ;
+ int tl_config_version ;
+ int tl_parse_end () ;
+ scalar_t__ tl_parse_error () ;
+ int tl_parse_init () ;
+ int tl_parse_int () ;
+ int verbosity ;
+ void* zzmalloc0 (int) ;
+ int zzstrfree (scalar_t__) ;
 
 int renew_tl_config (void) {
   if (verbosity >= 2) {
@@ -80,11 +80,11 @@ int renew_tl_config (void) {
   }
 
   tl_config_alloc ();
-//  int x;
 
-//  struct tl_type *tps [10000];
+
+
   int tn = 0;
-//  struct tl_combinator *fns [10000];
+
   int fn = 0;
   int cn;
   int i;
@@ -94,7 +94,7 @@ int renew_tl_config (void) {
     tl_config_back ();
     return -1;
   }
-  
+
   cur_config->tps = zzmalloc0 (sizeof (void *) * tn);
   cur_config->tn = tn;
   ADD_PMALLOC (tn * sizeof (void *));
@@ -104,18 +104,18 @@ int renew_tl_config (void) {
   }
 
   for (i = 0; i < tn; i++) {
-    if (tl_parse_int () != TLS_TYPE) { 
+    if (tl_parse_int () != TLS_TYPE) {
       tl_config_back ();
-      return -1; 
+      return -1;
     }
     tps[i] = read_types ();
-    if (!tps[i]) { 
+    if (!tps[i]) {
       tl_config_back ();
-      return -1; 
+      return -1;
     }
   }
 
-  cn = tl_parse_int ();  
+  cn = tl_parse_int ();
   if (cn < 0 || tl_parse_error ()) {
     tl_config_back ();
     return -1;
@@ -127,9 +127,9 @@ int renew_tl_config (void) {
   }
 
   for (i = 0; i < cn; i++) {
-    if (tl_parse_int () != TLS_COMBINATOR) { 
+    if (tl_parse_int () != TLS_COMBINATOR) {
       tl_config_back ();
-      return -1; 
+      return -1;
     }
     if (!read_combinators (2)) {
       tl_config_back ();
@@ -145,20 +145,20 @@ int renew_tl_config (void) {
   cur_config->fns = zzmalloc0 (sizeof (void *) * fn);
   ADD_PMALLOC (fn * sizeof (void *));
   struct tl_combinator **fns = cur_config->fns;
-  
+
   if (verbosity >= 2) {
     fprintf (stderr, "Found %d functions\n", fn);
   }
 
   for (i = 0; i < fn; i++) {
-    if (tl_parse_int () != TLS_COMBINATOR) { 
+    if (tl_parse_int () != TLS_COMBINATOR) {
       tl_config_back ();
-      return -1; 
+      return -1;
     }
     fns[i] = read_combinators (3);
-    if (!fns[i]) { 
+    if (!fns[i]) {
       tl_config_back ();
-      return -1; 
+      return -1;
     }
   }
   tl_parse_end ();
@@ -186,7 +186,7 @@ int renew_tl_config (void) {
         return -2;
       }
     }
-  }  
+  }
   for (i = 0; i < fn; i++) {
     if (gen_function_store (fns[i], IP, 10000) < 0) {
       return -2;

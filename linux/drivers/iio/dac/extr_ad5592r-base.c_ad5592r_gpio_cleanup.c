@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ad5592r_state {int /*<<< orphan*/  gpiochip; scalar_t__ gpio_map; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gpiochip_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct ad5592r_state {int gpiochip; scalar_t__ gpio_map; } ;
+
+
+ int gpiochip_remove (int *) ;
 
 __attribute__((used)) static void ad5592r_gpio_cleanup(struct ad5592r_state *st)
 {
-	if (st->gpio_map)
-		gpiochip_remove(&st->gpiochip);
+ if (st->gpio_map)
+  gpiochip_remove(&st->gpiochip);
 }

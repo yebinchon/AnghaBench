@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ndrv_multiaddr {int /*<<< orphan*/  ifma; struct ndrv_multiaddr* next; } ;
-struct ndrv_cb {struct ndrv_multiaddr* nd_multiaddrs; int /*<<< orphan*/ * nd_if; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE (struct ndrv_multiaddr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_IFADDR ; 
- int /*<<< orphan*/  ifmaddr_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ifnet_remove_multicast (int /*<<< orphan*/ ) ; 
+
+
+
+struct ndrv_multiaddr {int ifma; struct ndrv_multiaddr* next; } ;
+struct ndrv_cb {struct ndrv_multiaddr* nd_multiaddrs; int * nd_if; } ;
+
+
+ int FREE (struct ndrv_multiaddr*,int ) ;
+ int M_IFADDR ;
+ int ifmaddr_release (int ) ;
+ int ifnet_remove_multicast (int ) ;
 
 __attribute__((used)) static void
 ndrv_remove_all_multicast(struct ndrv_cb* np)
 {
-    struct ndrv_multiaddr*	cur;
+    struct ndrv_multiaddr* cur;
 
-    if (np->nd_if != NULL)
+    if (np->nd_if != ((void*)0))
     {
-        while (np->nd_multiaddrs != NULL)
+        while (np->nd_multiaddrs != ((void*)0))
         {
             cur = np->nd_multiaddrs;
             np->nd_multiaddrs = cur->next;

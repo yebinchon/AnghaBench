@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_BITS_T ;
 
-/* Variables and functions */
- scalar_t__ BITS_READ_U32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int BITS_READ_U32_EXP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  BITS_SKIP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  BITS_SKIP_EXP (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int CHROMA_FORMAT_YUV_444_PLANAR ; 
- int /*<<< orphan*/  h264_skip_scaling_list (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_BITS_T ;
+
+
+ scalar_t__ BITS_READ_U32 (int *,int *,int,char*) ;
+ int BITS_READ_U32_EXP (int *,int *,char*) ;
+ int BITS_SKIP (int *,int *,int,char*) ;
+ int BITS_SKIP_EXP (int *,int *,char*) ;
+ int CHROMA_FORMAT_YUV_444_PLANAR ;
+ int h264_skip_scaling_list (int *,int *,int) ;
 
 __attribute__((used)) static uint32_t h264_get_chroma_format(VC_CONTAINER_T *p_ctx,
       VC_CONTAINER_BITS_T *sprop)

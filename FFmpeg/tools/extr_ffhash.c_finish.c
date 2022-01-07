@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  res ;
 
-/* Variables and functions */
- int AV_HASH_MAX_SIZE ; 
- int /*<<< orphan*/  av_hash_final_b64 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  av_hash_final_hex (int /*<<< orphan*/ ,char*,int) ; 
- char* av_hash_get_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hash ; 
- scalar_t__ out_b64 ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
+
+
+
+typedef int res ;
+
+
+ int AV_HASH_MAX_SIZE ;
+ int av_hash_final_b64 (int ,char*,int) ;
+ int av_hash_final_hex (int ,char*,int) ;
+ char* av_hash_get_name (int ) ;
+ int hash ;
+ scalar_t__ out_b64 ;
+ int printf (char*,char*) ;
 
 __attribute__((used)) static void finish(void)
 {

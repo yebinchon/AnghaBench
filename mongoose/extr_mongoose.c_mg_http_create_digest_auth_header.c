@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qop ;
-typedef  int /*<<< orphan*/  ha1 ;
-typedef  int /*<<< orphan*/  cnonce ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cs_md5 (char*,char const*,size_t,char const*,size_t const,char const*,size_t,char const*,size_t const,char const*,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mkmd5resp (char const*,scalar_t__,char const*,scalar_t__,char*,int,char const*,scalar_t__,char*,size_t const,char*,scalar_t__,char const*,int,char*) ; 
- scalar_t__ mg_time () ; 
- int snprintf (char*,size_t,char*,...) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int qop ;
+typedef int ha1 ;
+typedef int cnonce ;
+
+
+ int cs_md5 (char*,char const*,size_t,char const*,size_t const,char const*,size_t,char const*,size_t const,char const*,size_t,int *) ;
+ int mg_mkmd5resp (char const*,scalar_t__,char const*,scalar_t__,char*,int,char const*,scalar_t__,char*,size_t const,char*,scalar_t__,char const*,int,char*) ;
+ scalar_t__ mg_time () ;
+ int snprintf (char*,size_t,char*,...) ;
+ scalar_t__ strlen (char const*) ;
 
 int mg_http_create_digest_auth_header(char *buf, size_t buf_len,
                                       const char *method, const char *uri,
@@ -32,7 +32,7 @@ int mg_http_create_digest_auth_header(char *buf, size_t buf_len,
   snprintf(cnonce, sizeof(cnonce), "%lx", (unsigned long) mg_time());
   cs_md5(ha1, user, (size_t) strlen(user), colon, one, auth_domain,
          (size_t) strlen(auth_domain), colon, one, passwd,
-         (size_t) strlen(passwd), NULL);
+         (size_t) strlen(passwd), ((void*)0));
   mg_mkmd5resp(method, strlen(method), uri, strlen(uri), ha1, sizeof(ha1) - 1,
                nonce, strlen(nonce), "1", one, cnonce, strlen(cnonce), qop,
                sizeof(qop) - 1, resp);

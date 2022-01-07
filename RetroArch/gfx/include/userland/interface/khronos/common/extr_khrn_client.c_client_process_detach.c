@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RPC_TERM () ; 
- int /*<<< orphan*/  client_mutex ; 
- int /*<<< orphan*/  client_tls ; 
- int /*<<< orphan*/  client_tls_process ; 
- int /*<<< orphan*/  platform_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  platform_tls_destroy (int /*<<< orphan*/ ) ; 
+ int RPC_TERM () ;
+ int client_mutex ;
+ int client_tls ;
+ int client_tls_process ;
+ int platform_mutex_destroy (int *) ;
+ int platform_tls_destroy (int ) ;
 
 void client_process_detach()
 {
@@ -25,7 +17,7 @@ void client_process_detach()
    platform_tls_destroy(client_tls);
    platform_mutex_destroy(&client_mutex);
 
-#ifdef CLIENT_THREAD_IS_PROCESS
-	platform_tls_destroy(client_tls_process);
-#endif
+
+
+
 }

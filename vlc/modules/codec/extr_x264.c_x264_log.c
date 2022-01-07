@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  encoder_t ;
 
-/* Variables and functions */
- int VLC_MSG_DBG ; 
- int VLC_MSG_ERR ; 
- int VLC_MSG_INFO ; 
- int VLC_MSG_WARN ; 
-#define  X264_LOG_DEBUG 131 
-#define  X264_LOG_ERROR 130 
-#define  X264_LOG_INFO 129 
-#define  X264_LOG_WARNING 128 
- int /*<<< orphan*/  msg_GenericVa (int /*<<< orphan*/ *,int,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+typedef int encoder_t ;
+
+
+ int VLC_MSG_DBG ;
+ int VLC_MSG_ERR ;
+ int VLC_MSG_INFO ;
+ int VLC_MSG_WARN ;
+
+
+
+
+ int msg_GenericVa (int *,int,char const*,int ) ;
 
 __attribute__((used)) static void x264_log( void *data, int i_level, const char *psz, va_list args)
 {
@@ -30,16 +30,16 @@ __attribute__((used)) static void x264_log( void *data, int i_level, const char 
 
     switch( i_level )
     {
-        case X264_LOG_ERROR:
+        case 130:
             i_level = VLC_MSG_ERR;
             break;
-        case X264_LOG_WARNING:
+        case 128:
             i_level = VLC_MSG_WARN;
             break;
-        case X264_LOG_INFO:
+        case 129:
             i_level = VLC_MSG_INFO;
             break;
-        case X264_LOG_DEBUG:
+        case 131:
         default:
             i_level = VLC_MSG_DBG;
     }

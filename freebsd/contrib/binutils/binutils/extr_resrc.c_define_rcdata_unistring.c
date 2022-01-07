@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unichar ;
-typedef  int rc_uint_type ;
-struct TYPE_6__ {int length; int /*<<< orphan*/ * w; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int unichar ;
+typedef int rc_uint_type ;
+struct TYPE_6__ {int length; int * w; } ;
 struct TYPE_5__ {TYPE_2__ wstring; } ;
-struct TYPE_7__ {TYPE_1__ u; int /*<<< orphan*/  type; int /*<<< orphan*/ * next; } ;
-typedef  TYPE_3__ rc_rcdata_item ;
+struct TYPE_7__ {TYPE_1__ u; int type; int * next; } ;
+typedef TYPE_3__ rc_rcdata_item ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RCDATA_WSTRING ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ res_alloc (int) ; 
+
+ int RCDATA_WSTRING ;
+ int memcpy (int *,int const*,int) ;
+ scalar_t__ res_alloc (int) ;
 
 rc_rcdata_item *
 define_rcdata_unistring (const unichar *string, rc_uint_type len)
@@ -32,7 +32,7 @@ define_rcdata_unistring (const unichar *string, rc_uint_type len)
   unichar *s;
 
   ri = (rc_rcdata_item *) res_alloc (sizeof (rc_rcdata_item));
-  ri->next = NULL;
+  ri->next = ((void*)0);
   ri->type = RCDATA_WSTRING;
   ri->u.wstring.length = len;
   s = (unichar *) res_alloc (len * sizeof (unichar));

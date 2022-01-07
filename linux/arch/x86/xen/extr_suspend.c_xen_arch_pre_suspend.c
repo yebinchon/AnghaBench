@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ xen_pv_domain () ; 
- int /*<<< orphan*/  xen_pv_pre_suspend () ; 
- int /*<<< orphan*/  xen_save_time_memory_area () ; 
+ scalar_t__ xen_pv_domain () ;
+ int xen_pv_pre_suspend () ;
+ int xen_save_time_memory_area () ;
 
 void xen_arch_pre_suspend(void)
 {
-	xen_save_time_memory_area();
+ xen_save_time_memory_area();
 
-	if (xen_pv_domain())
-		xen_pv_pre_suspend();
+ if (xen_pv_domain())
+  xen_pv_pre_suspend();
 }

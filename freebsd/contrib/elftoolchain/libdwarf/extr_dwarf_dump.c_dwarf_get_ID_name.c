@@ -1,43 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int DW_DLV_NO_ENTRY ;
+ int DW_DLV_OK ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int DW_DLV_NO_ENTRY ; 
- int DW_DLV_OK ; 
-#define  DW_ID_case_insensitive 131 
-#define  DW_ID_case_sensitive 130 
-#define  DW_ID_down_case 129 
-#define  DW_ID_up_case 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+ int assert (int ) ;
 
 int
 dwarf_get_ID_name(unsigned id, const char **s)
 {
 
-	assert(s != NULL);
+ assert(s != ((void*)0));
 
-	switch (id) {
-	case DW_ID_case_sensitive:
-		*s = "DW_ID_case_sensitive"; break;
-	case DW_ID_up_case:
-		*s = "DW_ID_up_case"; break;
-	case DW_ID_down_case:
-		*s = "DW_ID_down_case"; break;
-	case DW_ID_case_insensitive:
-		*s = "DW_ID_case_insensitive"; break;
-	default:
-		return (DW_DLV_NO_ENTRY);
-	}
+ switch (id) {
+ case 130:
+  *s = "DW_ID_case_sensitive"; break;
+ case 128:
+  *s = "DW_ID_up_case"; break;
+ case 129:
+  *s = "DW_ID_down_case"; break;
+ case 131:
+  *s = "DW_ID_case_insensitive"; break;
+ default:
+  return (DW_DLV_NO_ENTRY);
+ }
 
-	return (DW_DLV_OK);
+ return (DW_DLV_OK);
 }

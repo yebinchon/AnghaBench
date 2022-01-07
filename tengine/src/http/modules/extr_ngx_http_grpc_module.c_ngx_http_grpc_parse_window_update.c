@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_char ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ssize_t ;
+typedef int ngx_int_t ;
 struct TYPE_11__ {TYPE_1__* connection; } ;
-typedef  TYPE_3__ ngx_http_request_t ;
-struct TYPE_12__ {int rest; int frame_state; int window_update; size_t send_window; TYPE_2__* connection; scalar_t__ stream_id; int /*<<< orphan*/  state; } ;
-typedef  TYPE_4__ ngx_http_grpc_ctx_t ;
+typedef TYPE_3__ ngx_http_request_t ;
+struct TYPE_12__ {int rest; int frame_state; int window_update; size_t send_window; TYPE_2__* connection; scalar_t__ stream_id; int state; } ;
+typedef TYPE_4__ ngx_http_grpc_ctx_t ;
 struct TYPE_13__ {int* last; int* pos; } ;
-typedef  TYPE_5__ ngx_buf_t ;
+typedef TYPE_5__ ngx_buf_t ;
 struct TYPE_10__ {scalar_t__ send_window; } ;
-struct TYPE_9__ {int /*<<< orphan*/  log; } ;
+struct TYPE_9__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_AGAIN ; 
- int /*<<< orphan*/  NGX_ERROR ; 
- scalar_t__ NGX_HTTP_V2_MAX_WINDOW ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_http_grpc_st_start ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
+
+ int NGX_AGAIN ;
+ int NGX_ERROR ;
+ scalar_t__ NGX_HTTP_V2_MAX_WINDOW ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_http_grpc_st_start ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int) ;
+ int ngx_log_debug2 (int ,int ,int ,char*,int,int) ;
+ int ngx_log_error (int ,int ,int ,char*,...) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_grpc_parse_window_update(ngx_http_request_t *r,
     ngx_http_grpc_ctx_t *ctx, ngx_buf_t *b)
 {
-    u_char  ch, *p, *last;
+    u_char ch, *p, *last;
     enum {
         sw_start = 0,
         sw_size_2,
@@ -73,10 +73,10 @@ ngx_http_grpc_parse_window_update(ngx_http_request_t *r,
     for (p = b->pos; p < last; p++) {
         ch = *p;
 
-#if 0
-        ngx_log_debug2(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
-                       "grpc window update byte: %02Xd s:%d", ch, state);
-#endif
+
+
+
+
 
         switch (state) {
 

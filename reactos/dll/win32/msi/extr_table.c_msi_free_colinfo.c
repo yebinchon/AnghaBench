@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  hash_table; } ;
-typedef  TYPE_1__ MSICOLUMNINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_3__ {int hash_table; } ;
+typedef TYPE_1__ MSICOLUMNINFO ;
+
+
+ int msi_free (int ) ;
 
 __attribute__((used)) static void msi_free_colinfo( MSICOLUMNINFO *colinfo, UINT count )
 {

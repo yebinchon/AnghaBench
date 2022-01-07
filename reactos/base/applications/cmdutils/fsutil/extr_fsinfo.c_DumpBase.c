@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  PFILESYSTEM_STATISTICS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DUMP_VALUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MetaDataDiskReads ; 
- int /*<<< orphan*/  MetaDataDiskWrites ; 
- int /*<<< orphan*/  MetaDataReadBytes ; 
- int /*<<< orphan*/  MetaDataReads ; 
- int /*<<< orphan*/  MetaDataWriteBytes ; 
- int /*<<< orphan*/  MetaDataWrites ; 
- int /*<<< orphan*/  UserDiskReads ; 
- int /*<<< orphan*/  UserDiskWrites ; 
- int /*<<< orphan*/  UserFileReadBytes ; 
- int /*<<< orphan*/  UserFileReads ; 
- int /*<<< orphan*/  UserFileWriteBytes ; 
- int /*<<< orphan*/  UserFileWrites ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _ftprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int TCHAR ;
+typedef int PFILESYSTEM_STATISTICS ;
+
+
+ int DUMP_VALUE (int ,int ) ;
+ int MetaDataDiskReads ;
+ int MetaDataDiskWrites ;
+ int MetaDataReadBytes ;
+ int MetaDataReads ;
+ int MetaDataWriteBytes ;
+ int MetaDataWrites ;
+ int UserDiskReads ;
+ int UserDiskWrites ;
+ int UserFileReadBytes ;
+ int UserFileReads ;
+ int UserFileWriteBytes ;
+ int UserFileWrites ;
+ int _T (char*) ;
+ int _ftprintf (int ,int ,...) ;
+ int stdout ;
 
 __attribute__((used)) static void
 DumpBase(PFILESYSTEM_STATISTICS Base, TCHAR * Name)
 {
-    /* Print FS name */
+
     _ftprintf(stdout, _T("File system type: %s\n\n"), Name);
 
-    /* And then, dump any base stat */
+
     DUMP_VALUE(Base, UserFileReads);
     DUMP_VALUE(Base, UserFileReadBytes);
     DUMP_VALUE(Base, UserDiskReads);

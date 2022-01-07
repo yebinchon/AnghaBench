@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; TYPE_1__* type; scalar_t__ crypto; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct connection {int Out; TYPE_1__* type; scalar_t__ crypto; } ;
 struct TYPE_4__ {int block_size; } ;
 struct TYPE_3__ {int (* crypto_needed_output_bytes ) (struct connection*) ;} ;
 
-/* Variables and functions */
- TYPE_2__* SQLC_DATA (struct connection*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  memset (char*,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int stub1 (struct connection*) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ TYPE_2__* SQLC_DATA (struct connection*) ;
+ int assert (int) ;
+ int fprintf (int ,char*,int) ;
+ int memset (char*,int,int) ;
+ int stderr ;
+ int stub1 (struct connection*) ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int sqlc_flush_packet (struct connection *c, int packet_len) {
   int pad_bytes = 0;

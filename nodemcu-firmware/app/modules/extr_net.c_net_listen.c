@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct tcp_pcb {int /*<<< orphan*/  so_options; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct tcp_pcb {int so_options; } ;
+typedef int lua_State ;
 struct TYPE_6__ {void* cb_accept_ref; } ;
-struct TYPE_7__ {int type; scalar_t__ self_ref; int /*<<< orphan*/ * udp_pcb; struct tcp_pcb* tcp_pcb; TYPE_1__ server; scalar_t__ pcb; } ;
-typedef  TYPE_2__ lnet_userdata ;
-typedef  int /*<<< orphan*/  ip_addr_t ;
-typedef  scalar_t__ err_t ;
+struct TYPE_7__ {int type; scalar_t__ self_ref; int * udp_pcb; struct tcp_pcb* tcp_pcb; TYPE_1__ server; scalar_t__ pcb; } ;
+typedef TYPE_2__ lnet_userdata ;
+typedef int ip_addr_t ;
+typedef scalar_t__ err_t ;
 
-/* Variables and functions */
- scalar_t__ ERR_MEM ; 
- scalar_t__ ERR_OK ; 
- scalar_t__ LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  SOF_REUSEADDR ; 
- int TYPE_TCP_CLIENT ; 
-#define  TYPE_TCP_SERVER 129 
-#define  TYPE_UDP_SOCKET 128 
- int /*<<< orphan*/  ipaddr_aton (char const*,int /*<<< orphan*/ *) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- void* luaL_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_unref (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ lua_isfunction (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_islightfunction (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tointeger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int lwip_lua_checkerr (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  net_accept_cb ; 
- TYPE_2__* net_get_udata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  net_udp_recv_cb ; 
- int /*<<< orphan*/  tcp_accept (struct tcp_pcb*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_arg (struct tcp_pcb*,TYPE_2__*) ; 
- scalar_t__ tcp_bind (struct tcp_pcb*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_close (struct tcp_pcb*) ; 
- struct tcp_pcb* tcp_listen (struct tcp_pcb*) ; 
- struct tcp_pcb* tcp_new () ; 
- scalar_t__ udp_bind (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * udp_new () ; 
- int /*<<< orphan*/  udp_recv (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  udp_remove (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ ERR_MEM ;
+ scalar_t__ ERR_OK ;
+ scalar_t__ LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int SOF_REUSEADDR ;
+ int TYPE_TCP_CLIENT ;
+
+
+ int ipaddr_aton (char const*,int *) ;
+ char* luaL_checklstring (int *,int ,size_t*) ;
+ int luaL_error (int *,char*) ;
+ void* luaL_ref (int *,int ) ;
+ int luaL_unref (int *,int ,void*) ;
+ scalar_t__ lua_isfunction (int *,int) ;
+ scalar_t__ lua_islightfunction (int *,int) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_tointeger (int *,int ) ;
+ int lwip_lua_checkerr (int *,scalar_t__) ;
+ int net_accept_cb ;
+ TYPE_2__* net_get_udata (int *) ;
+ int net_udp_recv_cb ;
+ int tcp_accept (struct tcp_pcb*,int ) ;
+ int tcp_arg (struct tcp_pcb*,TYPE_2__*) ;
+ scalar_t__ tcp_bind (struct tcp_pcb*,int *,int ) ;
+ int tcp_close (struct tcp_pcb*) ;
+ struct tcp_pcb* tcp_listen (struct tcp_pcb*) ;
+ struct tcp_pcb* tcp_new () ;
+ scalar_t__ udp_bind (int *,int *,int ) ;
+ int * udp_new () ;
+ int udp_recv (int *,int ,TYPE_2__*) ;
+ int udp_remove (int *) ;
 
 int net_listen( lua_State *L ) {
   lnet_userdata *ud = net_get_udata(L);
@@ -74,7 +74,7 @@ int net_listen( lua_State *L ) {
   ip_addr_t addr;
   if (!ipaddr_aton(domain, &addr))
     return luaL_error(L, "invalid IP address");
-  if (ud->type == TYPE_TCP_SERVER) {
+  if (ud->type == 129) {
     if (lua_isfunction(L, stack) || lua_islightfunction(L, stack)) {
       lua_pushvalue(L, stack++);
       luaL_unref(L, LUA_REGISTRYINDEX, ud->server.cb_accept_ref);
@@ -85,7 +85,7 @@ int net_listen( lua_State *L ) {
   }
   err_t err = ERR_OK;
   switch (ud->type) {
-    case TYPE_TCP_SERVER:
+    case 129:
       ud->tcp_pcb = tcp_new();
       if (!ud->tcp_pcb)
         return luaL_error(L, "cannot allocate PCB");
@@ -102,7 +102,7 @@ int net_listen( lua_State *L ) {
         }
       }
       break;
-    case TYPE_UDP_SOCKET:
+    case 128:
       ud->udp_pcb = udp_new();
       if (!ud->udp_pcb)
         return luaL_error(L, "cannot allocate PCB");
@@ -112,13 +112,13 @@ int net_listen( lua_State *L ) {
   }
   if (err != ERR_OK) {
     switch (ud->type) {
-      case TYPE_TCP_SERVER:
+      case 129:
         tcp_close(ud->tcp_pcb);
-        ud->tcp_pcb = NULL;
+        ud->tcp_pcb = ((void*)0);
         break;
-      case TYPE_UDP_SOCKET:
+      case 128:
         udp_remove(ud->udp_pcb);
-        ud->udp_pcb = NULL;
+        ud->udp_pcb = ((void*)0);
         break;
     }
     return lwip_lua_checkerr(L, err);

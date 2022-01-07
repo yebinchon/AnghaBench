@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  dhcp_server_raw_options; int /*<<< orphan*/  dhcp_send_options; int /*<<< orphan*/  dnssec_negative_trust_anchors; int /*<<< orphan*/  dhcp_server_sip; int /*<<< orphan*/  dhcp_server_ntp; int /*<<< orphan*/  dhcp_server_dns; int /*<<< orphan*/  dhcp_server_timezone; int /*<<< orphan*/  name; int /*<<< orphan*/  duid; TYPE_1__* manager; int /*<<< orphan*/  qdiscs_by_section; int /*<<< orphan*/  rules_by_section; int /*<<< orphan*/  route_prefixes_by_section; int /*<<< orphan*/  prefixes_by_section; int /*<<< orphan*/  address_labels_by_section; int /*<<< orphan*/  neighbors_by_section; int /*<<< orphan*/  fdb_entries_by_section; int /*<<< orphan*/  nexthops_by_section; int /*<<< orphan*/  routes_by_section; int /*<<< orphan*/  addresses_by_section; int /*<<< orphan*/ * rules; int /*<<< orphan*/ * static_route_prefixes; int /*<<< orphan*/ * static_prefixes; int /*<<< orphan*/ * address_labels; int /*<<< orphan*/ * neighbors; int /*<<< orphan*/ * ipv6_proxy_ndp_addresses; int /*<<< orphan*/ * static_fdb_entries; int /*<<< orphan*/ * static_addresses; int /*<<< orphan*/ * static_nexthops; int /*<<< orphan*/ * static_routes; int /*<<< orphan*/  stacked_netdevs; int /*<<< orphan*/  vrf; int /*<<< orphan*/  bond; int /*<<< orphan*/  bridge; int /*<<< orphan*/  stacked_netdev_names; int /*<<< orphan*/  vrf_name; int /*<<< orphan*/  bond_name; int /*<<< orphan*/  bridge_name; int /*<<< orphan*/  ndisc_black_listed_prefix; int /*<<< orphan*/  router_dns; int /*<<< orphan*/  router_search_domains; int /*<<< orphan*/  bind_carrier; int /*<<< orphan*/  route_domains; int /*<<< orphan*/  search_domains; int /*<<< orphan*/  sip; int /*<<< orphan*/  dns; int /*<<< orphan*/  ntp; int /*<<< orphan*/  mac; int /*<<< orphan*/  dhcp_request_options; int /*<<< orphan*/  dhcp_black_listed_ip; int /*<<< orphan*/  dhcp_hostname; int /*<<< orphan*/  dhcp_user_class; int /*<<< orphan*/  dhcp_vendor_class_identifier; int /*<<< orphan*/  description; int /*<<< orphan*/  conditions; int /*<<< orphan*/  match_bssid; int /*<<< orphan*/  match_ssid; int /*<<< orphan*/  match_wlan_iftype; int /*<<< orphan*/  match_property; int /*<<< orphan*/  match_name; int /*<<< orphan*/  match_type; int /*<<< orphan*/  match_driver; int /*<<< orphan*/  match_path; int /*<<< orphan*/  match_mac; int /*<<< orphan*/  filename; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int dhcp_server_raw_options; int dhcp_send_options; int dnssec_negative_trust_anchors; int dhcp_server_sip; int dhcp_server_ntp; int dhcp_server_dns; int dhcp_server_timezone; int name; int duid; TYPE_1__* manager; int qdiscs_by_section; int rules_by_section; int route_prefixes_by_section; int prefixes_by_section; int address_labels_by_section; int neighbors_by_section; int fdb_entries_by_section; int nexthops_by_section; int routes_by_section; int addresses_by_section; int * rules; int * static_route_prefixes; int * static_prefixes; int * address_labels; int * neighbors; int * ipv6_proxy_ndp_addresses; int * static_fdb_entries; int * static_addresses; int * static_nexthops; int * static_routes; int stacked_netdevs; int vrf; int bond; int bridge; int stacked_netdev_names; int vrf_name; int bond_name; int bridge_name; int ndisc_black_listed_prefix; int router_dns; int router_search_domains; int bind_carrier; int route_domains; int search_domains; int sip; int dns; int ntp; int mac; int dhcp_request_options; int dhcp_black_listed_ip; int dhcp_hostname; int dhcp_user_class; int dhcp_vendor_class_identifier; int description; int conditions; int match_bssid; int match_ssid; int match_wlan_iftype; int match_property; int match_name; int match_type; int match_driver; int match_path; int match_mac; int filename; } ;
 struct TYPE_7__ {scalar_t__ duids_requesting_uuid; } ;
-typedef  int /*<<< orphan*/  RoutingPolicyRule ;
-typedef  int /*<<< orphan*/  RoutePrefix ;
-typedef  int /*<<< orphan*/  Route ;
-typedef  int /*<<< orphan*/  Prefix ;
-typedef  int /*<<< orphan*/  NextHop ;
-typedef  TYPE_2__ Network ;
-typedef  int /*<<< orphan*/  Neighbor ;
-typedef  int /*<<< orphan*/  IPv6ProxyNDPAddress ;
-typedef  int /*<<< orphan*/  FdbEntry ;
-typedef  int /*<<< orphan*/  AddressLabel ;
-typedef  int /*<<< orphan*/  Address ;
+typedef int RoutingPolicyRule ;
+typedef int RoutePrefix ;
+typedef int Route ;
+typedef int Prefix ;
+typedef int NextHop ;
+typedef TYPE_2__ Network ;
+typedef int Neighbor ;
+typedef int IPv6ProxyNDPAddress ;
+typedef int FdbEntry ;
+typedef int AddressLabel ;
+typedef int Address ;
 
-/* Variables and functions */
- int /*<<< orphan*/  address_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  address_label_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  condition_free_list (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fdb_entry_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free_free_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free_with_destructor (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ )) ; 
- int /*<<< orphan*/  ipv6_proxy_ndp_address_free (int /*<<< orphan*/ *) ; 
- TYPE_2__* mfree (TYPE_2__*) ; 
- int /*<<< orphan*/  neighbor_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdev_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nexthop_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ordered_hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ordered_hashmap_free_with_destructor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ordered_set_free_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  prefix_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qdisc_free ; 
- int /*<<< orphan*/  route_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  route_prefix_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  routing_policy_rule_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_remove (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+ int address_free (int *) ;
+ int address_label_free (int *) ;
+ int condition_free_list (int ) ;
+ int fdb_entry_free (int *) ;
+ int free (int ) ;
+ int hashmap_free (int ) ;
+ int hashmap_free_free_key (int ) ;
+ int hashmap_free_with_destructor (int ,int (*) (int )) ;
+ int ipv6_proxy_ndp_address_free (int *) ;
+ TYPE_2__* mfree (TYPE_2__*) ;
+ int neighbor_free (int *) ;
+ int netdev_unref (int ) ;
+ int nexthop_free (int *) ;
+ int ordered_hashmap_free (int ) ;
+ int ordered_hashmap_free_with_destructor (int ,int ) ;
+ int ordered_set_free_free (int ) ;
+ int prefix_free (int *) ;
+ int qdisc_free ;
+ int route_free (int *) ;
+ int route_prefix_free (int *) ;
+ int routing_policy_rule_free (int *) ;
+ int set_free (int ) ;
+ int set_free_free (int ) ;
+ int set_remove (scalar_t__,int *) ;
+ int strv_free (int ) ;
 
 __attribute__((used)) static Network *network_free(Network *network) {
         IPv6ProxyNDPAddress *ipv6_proxy_ndp_address;
@@ -66,7 +66,7 @@ __attribute__((used)) static Network *network_free(Network *network) {
         Route *route;
 
         if (!network)
-                return NULL;
+                return ((void*)0);
 
         free(network->filename);
 

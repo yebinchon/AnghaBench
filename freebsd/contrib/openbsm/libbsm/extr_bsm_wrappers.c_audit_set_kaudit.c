@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  auditinfo_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A_SETKAUDIT ; 
- int /*<<< orphan*/  EINVAL ; 
- int auditon (int /*<<< orphan*/ ,int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+typedef int auditinfo_addr_t ;
+
+
+ int A_SETKAUDIT ;
+ int EINVAL ;
+ int auditon (int ,int *,size_t) ;
+ int errno ;
 
 int
 audit_set_kaudit(auditinfo_addr_t *aia, size_t sz)
 {
 
-	if (sizeof(*aia) != sz) {
-		errno = EINVAL;
-		return (-1);
-	}
+ if (sizeof(*aia) != sz) {
+  errno = EINVAL;
+  return (-1);
+ }
 
-	return (auditon(A_SETKAUDIT, aia, sz));
+ return (auditon(A_SETKAUDIT, aia, sz));
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
 struct TYPE_5__ {char* key; char* value; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ mdns_txt_linked_item_t ;
+typedef TYPE_1__ mdns_txt_linked_item_t ;
 struct TYPE_6__ {char* service; char* proto; TYPE_1__* txt; } ;
-typedef  TYPE_2__ mdns_service_t ;
+typedef TYPE_2__ mdns_service_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HOOK_MALLOC_FAILED ; 
- int /*<<< orphan*/  MDNS_ANSWER_TXT ; 
- int /*<<< orphan*/  MDNS_ANSWER_TXT_TTL ; 
- char* MDNS_DEFAULT_DOMAIN ; 
- scalar_t__ _mdns_append_fqdn (scalar_t__*,int*,char const**,int) ; 
- scalar_t__ _mdns_append_string (scalar_t__*,int*,char*) ; 
- scalar_t__ _mdns_append_type (scalar_t__*,int*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- char* _mdns_get_service_instance_name (TYPE_2__*) ; 
- int /*<<< orphan*/  _mdns_set_u16 (scalar_t__*,int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ int HOOK_MALLOC_FAILED ;
+ int MDNS_ANSWER_TXT ;
+ int MDNS_ANSWER_TXT_TTL ;
+ char* MDNS_DEFAULT_DOMAIN ;
+ scalar_t__ _mdns_append_fqdn (scalar_t__*,int*,char const**,int) ;
+ scalar_t__ _mdns_append_string (scalar_t__*,int*,char*) ;
+ scalar_t__ _mdns_append_type (scalar_t__*,int*,int ,int,int ) ;
+ char* _mdns_get_service_instance_name (TYPE_2__*) ;
+ int _mdns_set_u16 (scalar_t__*,int,int) ;
+ int free (char*) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int sprintf (char*,char*,char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static uint16_t _mdns_append_txt_record(uint8_t * packet, uint16_t * index, mdns_service_t * service, bool flush, bool bye)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static uint16_t _mdns_append_txt_record(uint8_t * packet, 
     uint16_t record_length = 0;
     uint8_t part_length;
 
-    if (service == NULL) {
+    if (service == ((void*)0)) {
         return 0;
     }
 
@@ -82,7 +82,7 @@ __attribute__((used)) static uint16_t _mdns_append_txt_record(uint8_t * packet, 
             data_len += l;
         } else {
             HOOK_MALLOC_FAILED;
-            // continue
+
         }
         txt = txt->next;
     }

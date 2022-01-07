@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  skdi ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  SYSTEM_KERNEL_DEBUGGER_INFORMATION ;
-typedef  int NTSTATUS ;
 
-/* Variables and functions */
- int STATUS_INFO_LENGTH_MISMATCH ; 
- int STATUS_SUCCESS ; 
- int /*<<< orphan*/  SystemKernelDebuggerInformation ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pNtQuerySystemInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int*) ; 
+
+
+
+typedef int skdi ;
+typedef int ULONG ;
+typedef int SYSTEM_KERNEL_DEBUGGER_INFORMATION ;
+typedef int NTSTATUS ;
+
+
+ int STATUS_INFO_LENGTH_MISMATCH ;
+ int STATUS_SUCCESS ;
+ int SystemKernelDebuggerInformation ;
+ int ok (int,char*,int) ;
+ int pNtQuerySystemInformation (int ,int *,int,int*) ;
 
 __attribute__((used)) static void test_query_kerndebug(void)
 {

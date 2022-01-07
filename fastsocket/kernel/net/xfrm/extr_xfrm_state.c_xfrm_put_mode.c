@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfrm_mode {int /*<<< orphan*/  owner; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct xfrm_mode {int owner; } ;
+
+
+ int module_put (int ) ;
 
 __attribute__((used)) static void xfrm_put_mode(struct xfrm_mode *mode)
 {
-	module_put(mode->owner);
+ module_put(mode->owner);
 }

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* aead; } ;
-typedef  TYPE_3__ ptls_cipher_suite_t ;
+typedef TYPE_3__ ptls_cipher_suite_t ;
 struct TYPE_10__ {TYPE_2__* ssl; } ;
-typedef  TYPE_4__ h2o_socket_t ;
-struct TYPE_8__ {int /*<<< orphan*/ * ossl; int /*<<< orphan*/ * ptls; } ;
+typedef TYPE_4__ h2o_socket_t ;
+struct TYPE_8__ {int * ossl; int * ptls; } ;
 struct TYPE_7__ {char const* name; } ;
 
-/* Variables and functions */
- char const* SSL_get_cipher_name (int /*<<< orphan*/ *) ; 
- TYPE_3__* ptls_get_cipher (int /*<<< orphan*/ *) ; 
+
+ char const* SSL_get_cipher_name (int *) ;
+ TYPE_3__* ptls_get_cipher (int *) ;
 
 const char *h2o_socket_get_ssl_cipher(h2o_socket_t *sock)
 {
-    if (sock->ssl != NULL) {
-        if (sock->ssl->ptls != NULL) {
+    if (sock->ssl != ((void*)0)) {
+        if (sock->ssl->ptls != ((void*)0)) {
             ptls_cipher_suite_t *cipher = ptls_get_cipher(sock->ssl->ptls);
-            if (cipher != NULL)
+            if (cipher != ((void*)0))
                 return cipher->aead->name;
-        } else if (sock->ssl->ossl != NULL) {
+        } else if (sock->ssl->ossl != ((void*)0)) {
             return SSL_get_cipher_name(sock->ssl->ossl);
         }
     }
-    return NULL;
+    return ((void*)0);
 }

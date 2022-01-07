@@ -1,121 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  EACCES 134 
-#define  ENODEV 133 
-#define  ENOENT 132 
-#define  ENOEXEC 131 
-#define  ENOTDIR 130 
-#define  ESTALE 129 
-#define  ETIMEDOUT 128 
- int errno ; 
- int /*<<< orphan*/  execv (char const*,char* const*) ; 
- char* getenv (char*) ; 
- char* memcpy (char*,char const*,int) ; 
- char* strchr (char const*,char) ; 
- int strlen (char const*) ; 
+ int errno ;
+ int execv (char const*,char* const*) ;
+ char* getenv (char*) ;
+ char* memcpy (char*,char const*,int) ;
+ char* strchr (char const*,char) ;
+ int strlen (char const*) ;
 
 int execvp_noalloc(char *buf, const char *file, char *const argv[])
 {
-	if (*file == '\0') {
-		return -ENOENT;
-	}
+ if (*file == '\0') {
+  return -132;
+ }
 
-	if (strchr (file, '/') != NULL) {
-		/* Don't search when it contains a slash.  */
-		execv(file, argv);
-	} else {
-		int got_eacces;
-		size_t len, pathlen;
-		char *name, *p;
-		char *path = getenv("PATH");
-		if (path == NULL)
-			path = ":/bin:/usr/bin";
+ if (strchr (file, '/') != ((void*)0)) {
 
-		len = strlen(file) + 1;
-		pathlen = strlen(path);
-		/* Copy the file name at the top.  */
-		name = memcpy(buf + pathlen + 1, file, len);
-		/* And add the slash.  */
-		*--name = '/';
+  execv(file, argv);
+ } else {
+  int got_eacces;
+  size_t len, pathlen;
+  char *name, *p;
+  char *path = getenv("PATH");
+  if (path == ((void*)0))
+   path = ":/bin:/usr/bin";
 
-		got_eacces = 0;
-		p = path;
-		do {
-			char *startp;
+  len = strlen(file) + 1;
+  pathlen = strlen(path);
 
-			path = p;
-			//Let's avoid this GNU extension.
-			//p = strchrnul (path, ':');
-			p = strchr(path, ':');
-			if (!p)
-				p = strchr(path, '\0');
+  name = memcpy(buf + pathlen + 1, file, len);
 
-			if (p == path)
-				/* Two adjacent colons, or a colon at the beginning or the end
-				   of `PATH' means to search the current directory.  */
-				startp = name + 1;
-			else
-				startp = memcpy(name - (p - path), path, p - path);
+  *--name = '/';
 
-			/* Try to execute this name.  If it works, execv will not return.  */
-			execv(startp, argv);
+  got_eacces = 0;
+  p = path;
+  do {
+   char *startp;
 
-			/*
-			if (errno == ENOEXEC) {
-			}
-			*/
+   path = p;
 
-			switch (errno) {
-				case EACCES:
-					/* Record the we got a `Permission denied' error.  If we end
-					   up finding no executable we can use, we want to diagnose
-					   that we did find one but were denied access.  */
-					got_eacces = 1;
-				case ENOENT:
-				case ESTALE:
-				case ENOTDIR:
-					/* Those errors indicate the file is missing or not executable
-					   by us, in which case we want to just try the next path
-					   directory.  */
-				case ENODEV:
-				case ETIMEDOUT:
-					/* Some strange filesystems like AFS return even
-					   stranger error numbers.  They cannot reasonably mean
-					   anything else so ignore those, too.  */
-				case ENOEXEC:
-					/* We won't go searching for the shell
-					 * if it is not executable - the Linux
-					 * kernel already handles this enough,
-					 * for us. */
-					break;
 
-				default:
-					/* Some other error means we found an executable file, but
-					   something went wrong executing it; return the error to our
-					   caller.  */
-					return -errno;
-			}
-		} while (*p++ != '\0');
+   p = strchr(path, ':');
+   if (!p)
+    p = strchr(path, '\0');
 
-		/* We tried every element and none of them worked.  */
-		if (got_eacces)
-			/* At least one failure was due to permissions, so report that
-			   error.  */
-			return -EACCES;
-	}
+   if (p == path)
 
-	/* Return the error from the last attempt (probably ENOENT).  */
-	return -errno;
+
+    startp = name + 1;
+   else
+    startp = memcpy(name - (p - path), path, p - path);
+
+
+   execv(startp, argv);
+
+
+
+
+
+
+   switch (errno) {
+    case 134:
+
+
+
+     got_eacces = 1;
+    case 132:
+    case 129:
+    case 130:
+
+
+
+    case 133:
+    case 128:
+
+
+
+    case 131:
+
+
+
+
+     break;
+
+    default:
+
+
+
+     return -errno;
+   }
+  } while (*p++ != '\0');
+
+
+  if (got_eacces)
+
+
+   return -134;
+ }
+
+
+ return -errno;
 }

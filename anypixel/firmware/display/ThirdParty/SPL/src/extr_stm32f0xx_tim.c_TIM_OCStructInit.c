@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int TIM_Pulse; int /*<<< orphan*/  TIM_OCNIdleState; int /*<<< orphan*/  TIM_OCIdleState; void* TIM_OCNPolarity; void* TIM_OCPolarity; int /*<<< orphan*/  TIM_OutputNState; int /*<<< orphan*/  TIM_OutputState; int /*<<< orphan*/  TIM_OCMode; } ;
-typedef  TYPE_1__ TIM_OCInitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIM_OCIdleState_Reset ; 
- int /*<<< orphan*/  TIM_OCMode_Timing ; 
- int /*<<< orphan*/  TIM_OCNIdleState_Reset ; 
- void* TIM_OCPolarity_High ; 
- int /*<<< orphan*/  TIM_OutputNState_Disable ; 
- int /*<<< orphan*/  TIM_OutputState_Disable ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int TIM_Pulse; int TIM_OCNIdleState; int TIM_OCIdleState; void* TIM_OCNPolarity; void* TIM_OCPolarity; int TIM_OutputNState; int TIM_OutputState; int TIM_OCMode; } ;
+typedef TYPE_1__ TIM_OCInitTypeDef ;
+
+
+ int TIM_OCIdleState_Reset ;
+ int TIM_OCMode_Timing ;
+ int TIM_OCNIdleState_Reset ;
+ void* TIM_OCPolarity_High ;
+ int TIM_OutputNState_Disable ;
+ int TIM_OutputState_Disable ;
 
 void TIM_OCStructInit(TIM_OCInitTypeDef* TIM_OCInitStruct)
 {
-  /* Set the default configuration */
+
   TIM_OCInitStruct->TIM_OCMode = TIM_OCMode_Timing;
   TIM_OCInitStruct->TIM_OutputState = TIM_OutputState_Disable;
   TIM_OCInitStruct->TIM_OutputNState = TIM_OutputNState_Disable;

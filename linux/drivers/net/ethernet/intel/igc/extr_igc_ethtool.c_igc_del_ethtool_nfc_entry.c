@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct igc_adapter {int /*<<< orphan*/  nfc_lock; } ;
-struct ethtool_rxnfc {int /*<<< orphan*/  fs; } ;
-struct ethtool_rx_flow_spec {int /*<<< orphan*/  location; } ;
 
-/* Variables and functions */
- int igc_update_ethtool_nfc_entry (struct igc_adapter*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct igc_adapter {int nfc_lock; } ;
+struct ethtool_rxnfc {int fs; } ;
+struct ethtool_rx_flow_spec {int location; } ;
+
+
+ int igc_update_ethtool_nfc_entry (struct igc_adapter*,int *,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int igc_del_ethtool_nfc_entry(struct igc_adapter *adapter,
-				     struct ethtool_rxnfc *cmd)
+         struct ethtool_rxnfc *cmd)
 {
-	struct ethtool_rx_flow_spec *fsp =
-		(struct ethtool_rx_flow_spec *)&cmd->fs;
-	int err;
+ struct ethtool_rx_flow_spec *fsp =
+  (struct ethtool_rx_flow_spec *)&cmd->fs;
+ int err;
 
-	spin_lock(&adapter->nfc_lock);
-	err = igc_update_ethtool_nfc_entry(adapter, NULL, fsp->location);
-	spin_unlock(&adapter->nfc_lock);
+ spin_lock(&adapter->nfc_lock);
+ err = igc_update_ethtool_nfc_entry(adapter, ((void*)0), fsp->location);
+ spin_unlock(&adapter->nfc_lock);
 
-	return err;
+ return err;
 }

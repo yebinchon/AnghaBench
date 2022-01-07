@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wps_tx_start () ; 
+ int MSG_DEBUG ;
+ int wpa_printf (int ,char*) ;
+ int wps_tx_start () ;
 
 void wifi_station_wps_eapol_start_handle_internal(void)
 {

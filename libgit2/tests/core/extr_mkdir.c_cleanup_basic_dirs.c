@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_RMDIR_EMPTY_HIERARCHY ; 
- int /*<<< orphan*/  GIT_UNUSED (void*) ; 
- int /*<<< orphan*/  git_futils_rmdir_r (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int GIT_RMDIR_EMPTY_HIERARCHY ;
+ int GIT_UNUSED (void*) ;
+ int git_futils_rmdir_r (char*,int *,int ) ;
 
 __attribute__((used)) static void cleanup_basic_dirs(void *ref)
 {
-	GIT_UNUSED(ref);
-	git_futils_rmdir_r("d0", NULL, GIT_RMDIR_EMPTY_HIERARCHY);
-	git_futils_rmdir_r("d1", NULL, GIT_RMDIR_EMPTY_HIERARCHY);
-	git_futils_rmdir_r("d2", NULL, GIT_RMDIR_EMPTY_HIERARCHY);
-	git_futils_rmdir_r("d3", NULL, GIT_RMDIR_EMPTY_HIERARCHY);
-	git_futils_rmdir_r("d4", NULL, GIT_RMDIR_EMPTY_HIERARCHY);
+ GIT_UNUSED(ref);
+ git_futils_rmdir_r("d0", ((void*)0), GIT_RMDIR_EMPTY_HIERARCHY);
+ git_futils_rmdir_r("d1", ((void*)0), GIT_RMDIR_EMPTY_HIERARCHY);
+ git_futils_rmdir_r("d2", ((void*)0), GIT_RMDIR_EMPTY_HIERARCHY);
+ git_futils_rmdir_r("d3", ((void*)0), GIT_RMDIR_EMPTY_HIERARCHY);
+ git_futils_rmdir_r("d4", ((void*)0), GIT_RMDIR_EMPTY_HIERARCHY);
 }

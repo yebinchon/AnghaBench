@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct job {int (* cb ) (void*) ;int /*<<< orphan*/  jobs; void* data; } ;
 
-/* Variables and functions */
- scalar_t__ LIKELY (int) ; 
- int /*<<< orphan*/  assert (int (*) (void*)) ; 
- struct job* calloc (int,int) ; 
- int /*<<< orphan*/  free (struct job*) ; 
- int /*<<< orphan*/  jobs ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lwan_status_critical_perror (char*) ; 
- int /*<<< orphan*/  lwan_status_warning (char*) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  queue_mutex ; 
+
+
+
+struct job {int (* cb ) (void*) ;int jobs; void* data; } ;
+
+
+ scalar_t__ LIKELY (int) ;
+ int assert (int (*) (void*)) ;
+ struct job* calloc (int,int) ;
+ int free (struct job*) ;
+ int jobs ;
+ int list_add (int *,int *) ;
+ int lwan_status_critical_perror (char*) ;
+ int lwan_status_warning (char*) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int queue_mutex ;
 
 void lwan_job_add(bool (*cb)(void *data), void *data)
 {

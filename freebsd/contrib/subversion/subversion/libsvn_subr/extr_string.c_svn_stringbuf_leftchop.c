@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ len; char* data; int /*<<< orphan*/  blocksize; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  scalar_t__ apr_size_t ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ len; char* data; int blocksize; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef scalar_t__ apr_size_t ;
+
+
 
 void
 svn_stringbuf_leftchop(svn_stringbuf_t *str, apr_size_t nbytes)
@@ -30,9 +30,9 @@ svn_stringbuf_leftchop(svn_stringbuf_t *str, apr_size_t nbytes)
     }
   else
     {
-      /* Note: This will irretrievably waste nbytes of space in the
-         stringbuf's pool, but unlike the alternative of memmoving the
-         data, it's a constant-time operation. */
+
+
+
       str->data += nbytes;
       str->len -= nbytes;
       str->blocksize -= nbytes;

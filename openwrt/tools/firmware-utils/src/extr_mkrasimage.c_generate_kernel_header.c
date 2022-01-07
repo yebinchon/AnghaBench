@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_info {int /*<<< orphan*/  size; scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  KERNEL_HEADER_LEN ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- unsigned int htonl (int /*<<< orphan*/ ) ; 
- char* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,unsigned int*,int) ; 
- unsigned int zyxel_chksm (unsigned char const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct file_info {int size; scalar_t__ data; } ;
+
+
+ int ERR (char*) ;
+ int EXIT_FAILURE ;
+ int KERNEL_HEADER_LEN ;
+ int exit (int ) ;
+ unsigned int htonl (int ) ;
+ char* malloc (int ) ;
+ int memcpy (char*,unsigned int*,int) ;
+ unsigned int zyxel_chksm (unsigned char const*,int ) ;
 
 char *generate_kernel_header(struct file_info kernel)
 {
@@ -37,11 +37,11 @@ char *generate_kernel_header(struct file_info kernel)
     chksm = zyxel_chksm((const unsigned char *)kernel.data, kernel.size);
     size = htonl(kernel.size);
 
-    /* 4 bytes:  checksum of the kernel image */
+
     memcpy(kernel_header + ptr, &chksm, 4);
     ptr += 4;
 
-    /* 4 bytes:  length of the contained kernel image file (big endian) */
+
     memcpy(kernel_header + ptr, &size, 4);
 
     return kernel_header;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lbuf {struct lbuf* l_freelist; int /*<<< orphan*/ * l_wqnext; struct jfs_log* l_log; } ;
-struct jfs_log {int /*<<< orphan*/  free_wait; struct lbuf* lbuf_free; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct lbuf {struct lbuf* l_freelist; int * l_wqnext; struct jfs_log* l_log; } ;
+struct jfs_log {int free_wait; struct lbuf* lbuf_free; } ;
+
+
+ int assert (int ) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static void lbmfree(struct lbuf * bp)
 {
-	struct jfs_log *log = bp->l_log;
+ struct jfs_log *log = bp->l_log;
 
-	assert(bp->l_wqnext == NULL);
+ assert(bp->l_wqnext == ((void*)0));
 
-	/*
-	 * return the buffer to head of freelist
-	 */
-	bp->l_freelist = log->lbuf_free;
-	log->lbuf_free = bp;
 
-	wake_up(&log->free_wait);
-	return;
+
+
+ bp->l_freelist = log->lbuf_free;
+ log->lbuf_free = bp;
+
+ wake_up(&log->free_wait);
+ return;
 }

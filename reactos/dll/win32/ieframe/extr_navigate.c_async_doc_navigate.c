@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  header; scalar_t__ async_notif; void* headers; TYPE_2__* post_data; void* url; } ;
-typedef  TYPE_1__ task_doc_navigate_t ;
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_6__ {int /*<<< orphan*/  pvData; } ;
-typedef  int /*<<< orphan*/  PBYTE ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DocHost ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_2__* SafeArrayCreateVector (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* SysAllocString (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ VARIANT_FALSE ; 
- int /*<<< orphan*/  VT_UI1 ; 
- int /*<<< orphan*/  abort_dochost_tasks (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__) ; 
- int /*<<< orphan*/  doc_navigate_proc ; 
- int /*<<< orphan*/  doc_navigate_task_destr (int /*<<< orphan*/ *) ; 
- TYPE_1__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  on_before_navigate2 (int /*<<< orphan*/ *,void*,TYPE_2__*,void*,scalar_t__*) ; 
- int /*<<< orphan*/  push_dochost_task (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *),int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int header; scalar_t__ async_notif; void* headers; TYPE_2__* post_data; void* url; } ;
+typedef TYPE_1__ task_doc_navigate_t ;
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int ULONG ;
+struct TYPE_6__ {int pvData; } ;
+typedef int PBYTE ;
+typedef scalar_t__ LPCWSTR ;
+typedef int HRESULT ;
+typedef int DocHost ;
+typedef scalar_t__ BOOL ;
+
+
+ int E_OUTOFMEMORY ;
+ int FALSE ;
+ int S_OK ;
+ TYPE_2__* SafeArrayCreateVector (int ,int ,int ) ;
+ void* SysAllocString (scalar_t__) ;
+ int TRACE (char*,...) ;
+ scalar_t__ VARIANT_FALSE ;
+ int VT_UI1 ;
+ int abort_dochost_tasks (int *,int ) ;
+ int debugstr_w (scalar_t__) ;
+ int doc_navigate_proc ;
+ int doc_navigate_task_destr (int *) ;
+ TYPE_1__* heap_alloc_zero (int) ;
+ int memcpy (int ,int ,int ) ;
+ int on_before_navigate2 (int *,void*,TYPE_2__*,void*,scalar_t__*) ;
+ int push_dochost_task (int *,int *,int ,int (*) (int *),int ) ;
 
 __attribute__((used)) static HRESULT async_doc_navigate(DocHost *This, LPCWSTR url, LPCWSTR headers, PBYTE post_data, ULONG post_data_size,
         BOOL async_notif)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  opj_stream_private_t ;
-typedef  int /*<<< orphan*/  opj_j2k_t ;
-typedef  int /*<<< orphan*/  opj_event_mgr_t ;
-typedef  int /*<<< orphan*/  OPJ_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPJ_TRUE ; 
+
+
+
+typedef int opj_stream_private_t ;
+typedef int opj_j2k_t ;
+typedef int opj_event_mgr_t ;
+typedef int OPJ_BOOL ;
+
+
+ int OPJ_TRUE ;
 
 OPJ_BOOL opj_j2k_end_decompress(opj_j2k_t *p_j2k,
                                 opj_stream_private_t *p_stream,

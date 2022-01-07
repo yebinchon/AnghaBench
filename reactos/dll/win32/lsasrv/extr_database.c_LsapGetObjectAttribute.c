@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {int /*<<< orphan*/  KeyHandle; } ;
-typedef  scalar_t__* PULONG ;
-typedef  TYPE_1__* PLSA_DB_OBJECT ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- scalar_t__ NT_SUCCESS (scalar_t__) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- scalar_t__ NtOpenKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- int /*<<< orphan*/  RtlInitUnicodeString (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RtlpNtQueryValueKey (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ ) ; 
- scalar_t__ STATUS_BUFFER_OVERFLOW ; 
- scalar_t__ STATUS_SUCCESS ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UNICODE_STRING ;
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {int KeyHandle; } ;
+typedef scalar_t__* PULONG ;
+typedef TYPE_1__* PLSA_DB_OBJECT ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef int LPWSTR ;
+typedef int * LPVOID ;
+typedef int HANDLE ;
+
+
+ int InitializeObjectAttributes (int *,int *,int ,int ,int *) ;
+ int KEY_QUERY_VALUE ;
+ scalar_t__ NT_SUCCESS (scalar_t__) ;
+ int NtClose (int ) ;
+ scalar_t__ NtOpenKey (int *,int ,int *) ;
+ int OBJ_CASE_INSENSITIVE ;
+ int RtlInitUnicodeString (int *,int ) ;
+ scalar_t__ RtlpNtQueryValueKey (int ,int *,int *,scalar_t__*,int ) ;
+ scalar_t__ STATUS_BUFFER_OVERFLOW ;
+ scalar_t__ STATUS_SUCCESS ;
 
 NTSTATUS
 LsapGetObjectAttribute(PLSA_DB_OBJECT DbObject,
@@ -53,7 +53,7 @@ LsapGetObjectAttribute(PLSA_DB_OBJECT DbObject,
                                &KeyName,
                                OBJ_CASE_INSENSITIVE,
                                DbObject->KeyHandle,
-                               NULL);
+                               ((void*)0));
 
     Status = NtOpenKey(&AttributeKey,
                        KEY_QUERY_VALUE,
@@ -65,8 +65,8 @@ LsapGetObjectAttribute(PLSA_DB_OBJECT DbObject,
 
     ValueSize = *AttributeSize;
     Status = RtlpNtQueryValueKey(AttributeKey,
-                                 NULL,
-                                 NULL,
+                                 ((void*)0),
+                                 ((void*)0),
                                  &ValueSize,
                                  0);
     if (!NT_SUCCESS(Status) && Status != STATUS_BUFFER_OVERFLOW)
@@ -74,7 +74,7 @@ LsapGetObjectAttribute(PLSA_DB_OBJECT DbObject,
         goto Done;
     }
 
-    if (AttributeData == NULL || *AttributeSize == 0)
+    if (AttributeData == ((void*)0) || *AttributeSize == 0)
     {
         *AttributeSize = ValueSize;
         Status = STATUS_SUCCESS;
@@ -88,7 +88,7 @@ LsapGetObjectAttribute(PLSA_DB_OBJECT DbObject,
     }
 
     Status = RtlpNtQueryValueKey(AttributeKey,
-                                 NULL,
+                                 ((void*)0),
                                  AttributeData,
                                  &ValueSize,
                                  0);

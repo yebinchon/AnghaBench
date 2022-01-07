@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  FileNames; scalar_t__ FileNameOffsets; scalar_t__ FileIndexToFolderIndexMap; scalar_t__ FolderStartFileIndex; scalar_t__ PackStreamStartPositions; scalar_t__ FolderStartPackStreamIndex; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ CSzArEx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Buf_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SzAr_Init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int FileNames; scalar_t__ FileNameOffsets; scalar_t__ FileIndexToFolderIndexMap; scalar_t__ FolderStartFileIndex; scalar_t__ PackStreamStartPositions; scalar_t__ FolderStartPackStreamIndex; int db; } ;
+typedef TYPE_1__ CSzArEx ;
+
+
+ int Buf_Init (int *) ;
+ int SzAr_Init (int *) ;
 
 void SzArEx_Init(CSzArEx *p)
 {

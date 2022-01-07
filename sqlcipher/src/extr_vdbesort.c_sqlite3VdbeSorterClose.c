@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-struct TYPE_8__ {int /*<<< orphan*/  aMemory; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int sqlite3 ;
+struct TYPE_8__ {int aMemory; } ;
 struct TYPE_10__ {TYPE_1__ list; } ;
-typedef  TYPE_3__ VdbeSorter ;
+typedef TYPE_3__ VdbeSorter ;
 struct TYPE_9__ {TYPE_3__* pSorter; } ;
 struct TYPE_11__ {scalar_t__ eCurType; TYPE_2__ uc; } ;
-typedef  TYPE_4__ VdbeCursor ;
+typedef TYPE_4__ VdbeCursor ;
 
-/* Variables and functions */
- scalar_t__ CURTYPE_SORTER ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3DbFree (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3VdbeSorterReset (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3_free (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ CURTYPE_SORTER ;
+ int assert (int) ;
+ int sqlite3DbFree (int *,TYPE_3__*) ;
+ int sqlite3VdbeSorterReset (int *,TYPE_3__*) ;
+ int sqlite3_free (int ) ;
 
 void sqlite3VdbeSorterClose(sqlite3 *db, VdbeCursor *pCsr){
   VdbeSorter *pSorter;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int fd; int error; int state; int /*<<< orphan*/  In; scalar_t__ unread_res_bytes; } ;
 
-/* Variables and functions */
- int C_NORD ; 
- int C_WANTRD ; 
- scalar_t__ EAGAIN ; 
- int /*<<< orphan*/  MSG_DONTWAIT ; 
- int /*<<< orphan*/  advance_read_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  advance_write_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int client_execute (struct connection*,char*,int) ; 
- int client_read_special (struct connection*) ; 
- scalar_t__ errno ; 
- int force_ready_bytes (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  free_all_buffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_unused_buffers (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_client_gather (struct connection*) ; 
- char* get_read_ptr (int /*<<< orphan*/ *) ; 
- int get_ready_bytes (int /*<<< orphan*/ *) ; 
- char* get_write_ptr (int /*<<< orphan*/ *,int) ; 
- int get_write_space (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int recv (int,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+
+
+struct connection {int fd; int error; int state; int In; scalar_t__ unread_res_bytes; } ;
+
+
+ int C_NORD ;
+ int C_WANTRD ;
+ scalar_t__ EAGAIN ;
+ int MSG_DONTWAIT ;
+ int advance_read_ptr (int *,int) ;
+ int advance_write_ptr (int *,int) ;
+ int assert (int ) ;
+ int client_execute (struct connection*,char*,int) ;
+ int client_read_special (struct connection*) ;
+ scalar_t__ errno ;
+ int force_ready_bytes (int *,int) ;
+ int fprintf (int ,char*,int,...) ;
+ int free_all_buffers (int *) ;
+ int free_unused_buffers (int *) ;
+ int get_client_gather (struct connection*) ;
+ char* get_read_ptr (int *) ;
+ int get_ready_bytes (int *) ;
+ char* get_write_ptr (int *,int) ;
+ int get_write_space (int *) ;
+ int perror (char*) ;
+ int recv (int,char*,int,int ) ;
+ int stderr ;
+ int verbosity ;
 
 int client_reader (struct connection *c) {
 

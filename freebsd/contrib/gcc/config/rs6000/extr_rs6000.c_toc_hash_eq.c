@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct toc_hash_struct {scalar_t__ key_mode; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int rtx_equal_p (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct toc_hash_struct {scalar_t__ key_mode; int key; } ;
+typedef int rtx ;
+
+
+ int rtx_equal_p (int ,int ) ;
 
 __attribute__((used)) static int
 toc_hash_eq (const void *h1, const void *h2)

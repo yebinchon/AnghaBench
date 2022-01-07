@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFX_BOTTOM ; 
- int /*<<< orphan*/  GFX_TOP ; 
- int /*<<< orphan*/  GSP_BGR8_OES ; 
- int /*<<< orphan*/  GSP_RGB565_OES ; 
- int /*<<< orphan*/  __ctr_patch_services ; 
- void* audio_ctr_csnd ; 
- void* audio_ctr_dsp ; 
- void* audio_null ; 
- int /*<<< orphan*/  cfguInit () ; 
- int /*<<< orphan*/  consoleInit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ csndInit () ; 
- int /*<<< orphan*/  ctr_check_dspfirm () ; 
- scalar_t__* gfxBottomFramebuffers ; 
- int /*<<< orphan*/  gfxInit (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gfxSet3D (int) ; 
- int /*<<< orphan*/  gfxSetFramebufferInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__* gfxTopLeftFramebuffers ; 
- scalar_t__* gfxTopRightFramebuffers ; 
- scalar_t__ linearAlloc (int) ; 
- int /*<<< orphan*/  linearFree (scalar_t__) ; 
- int /*<<< orphan*/  mcuHwcInit () ; 
- scalar_t__ ndspInit () ; 
- int /*<<< orphan*/  osSetSpeedupEnable (int) ; 
- int /*<<< orphan*/  ptmuInit () ; 
- int /*<<< orphan*/  svchax_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verbosity_enable () ; 
+
+
+
+typedef int u32 ;
+
+
+ int GFX_BOTTOM ;
+ int GFX_TOP ;
+ int GSP_BGR8_OES ;
+ int GSP_RGB565_OES ;
+ int __ctr_patch_services ;
+ void* audio_ctr_csnd ;
+ void* audio_ctr_dsp ;
+ void* audio_null ;
+ int cfguInit () ;
+ int consoleInit (int ,int *) ;
+ scalar_t__ csndInit () ;
+ int ctr_check_dspfirm () ;
+ scalar_t__* gfxBottomFramebuffers ;
+ int gfxInit (int ,int ,int) ;
+ int gfxSet3D (int) ;
+ int gfxSetFramebufferInfo (int ,int ) ;
+ scalar_t__* gfxTopLeftFramebuffers ;
+ scalar_t__* gfxTopRightFramebuffers ;
+ scalar_t__ linearAlloc (int) ;
+ int linearFree (scalar_t__) ;
+ int mcuHwcInit () ;
+ scalar_t__ ndspInit () ;
+ int osSetSpeedupEnable (int) ;
+ int ptmuInit () ;
+ int svchax_init (int ) ;
+ int verbosity_enable () ;
 
 __attribute__((used)) static void frontend_ctr_init(void* data)
 {
-#ifndef IS_SALAMANDER
+
    (void)data;
 
    verbosity_enable();
 
-   gfxInit(GSP_BGR8_OES, GSP_RGB565_OES, false);
+   gfxInit(GSP_BGR8_OES, GSP_RGB565_OES, 0);
 
-   u32 topSize               = 400 * 240 * 3;
-   u32 bottomSize            = 320 * 240 * 2;
+   u32 topSize = 400 * 240 * 3;
+   u32 bottomSize = 320 * 240 * 2;
    linearFree(gfxTopLeftFramebuffers [0]);
    linearFree(gfxTopLeftFramebuffers [1]);
-   linearFree(gfxBottomFramebuffers  [0]);
-   linearFree(gfxBottomFramebuffers  [1]);
+   linearFree(gfxBottomFramebuffers [0]);
+   linearFree(gfxBottomFramebuffers [1]);
    linearFree(gfxTopRightFramebuffers[0]);
    linearFree(gfxTopRightFramebuffers[1]);
 
@@ -64,22 +64,22 @@ __attribute__((used)) static void frontend_ctr_init(void* data)
    gfxTopLeftFramebuffers [1] = linearAlloc(topSize * 2);
    gfxTopRightFramebuffers[1] = gfxTopLeftFramebuffers[1] + topSize;
 
-   gfxBottomFramebuffers  [0] = linearAlloc(bottomSize);
-   gfxBottomFramebuffers  [1] = linearAlloc(bottomSize);
+   gfxBottomFramebuffers [0] = linearAlloc(bottomSize);
+   gfxBottomFramebuffers [1] = linearAlloc(bottomSize);
 
    gfxSetFramebufferInfo(GFX_TOP, 0);
    gfxSetFramebufferInfo(GFX_BOTTOM, 0);
 
-   gfxSet3D(true);
-   consoleInit(GFX_BOTTOM, NULL);
+   gfxSet3D(1);
+   consoleInit(GFX_BOTTOM, ((void*)0));
 
-   /* enable access to all service calls when possible. */
+
    if (svchax_init)
    {
-      osSetSpeedupEnable(false);
+      osSetSpeedupEnable(0);
       svchax_init(__ctr_patch_services);
    }
-   osSetSpeedupEnable(true);
+   osSetSpeedupEnable(1);
 
    if (csndInit() != 0)
       audio_ctr_csnd = audio_null;
@@ -89,5 +89,5 @@ __attribute__((used)) static void frontend_ctr_init(void* data)
    cfguInit();
    ptmuInit();
    mcuHwcInit();
-#endif
+
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_int ;
-struct slcompress {int last_recv; int last_xmit; int /*<<< orphan*/  flags; struct cstate* last_cs; struct cstate* tstate; } ;
+
+
+
+
+typedef size_t u_int ;
+struct slcompress {int last_recv; int last_xmit; int flags; struct cstate* last_cs; struct cstate* tstate; } ;
 struct cstate {size_t cs_id; struct cstate* cs_next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SLF_TOSS ; 
- int /*<<< orphan*/  memset (struct slcompress*,char,int) ; 
+
+ int SLF_TOSS ;
+ int memset (struct slcompress*,char,int) ;
 
 void
 sl_compress_init(struct slcompress *comp, int max_state)

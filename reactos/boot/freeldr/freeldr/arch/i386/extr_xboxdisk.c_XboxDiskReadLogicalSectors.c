@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONGLONG ;
-typedef  int ULONG ;
-typedef  int UCHAR ;
-typedef  scalar_t__ PVOID ;
-typedef  scalar_t__ PCHAR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IDE_CMD_READ ; 
- int IDE_DH_DRV0 ; 
- int IDE_DH_DRV1 ; 
- int IDE_DH_LBA ; 
- int IDE_SECTOR_BUF_SZ ; 
- int /*<<< orphan*/  TRUE ; 
- int UINT64_C (int) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  XBOX_IDE_COMMAND_PORT ; 
- int /*<<< orphan*/  XBOX_IDE_CONTROL_PORT ; 
- int /*<<< orphan*/  XboxDiskPolledRead (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int,int,int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef int ULONGLONG ;
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef scalar_t__ PVOID ;
+typedef scalar_t__ PCHAR ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+ int FIXME (char*) ;
+ int IDE_CMD_READ ;
+ int IDE_DH_DRV0 ;
+ int IDE_DH_DRV1 ;
+ int IDE_DH_LBA ;
+ int IDE_SECTOR_BUF_SZ ;
+ int TRUE ;
+ int UINT64_C (int) ;
+ int WARN (char*) ;
+ int XBOX_IDE_COMMAND_PORT ;
+ int XBOX_IDE_CONTROL_PORT ;
+ int XboxDiskPolledRead (int ,int ,int ,int,int,int,int,int,int ,scalar_t__) ;
 
 BOOLEAN
 XboxDiskReadLogicalSectors(UCHAR DriveNumber, ULONGLONG SectorNumber, ULONG SectorCount, PVOID Buffer)
@@ -40,7 +40,7 @@ XboxDiskReadLogicalSectors(UCHAR DriveNumber, ULONGLONG SectorNumber, ULONG Sect
 
     if (DriveNumber < 0x80 || (DriveNumber & 0x0f) >= 2)
     {
-        /* Xbox has only 1 IDE controller and no floppy */
+
         WARN("Invalid drive number\n");
         return FALSE;
     }

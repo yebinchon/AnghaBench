@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_getmetatable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  lua_rawget (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_remove (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int lua_getmetatable (int *,int) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushstring (int *,char const*) ;
+ int lua_rawget (int *,int) ;
+ int lua_remove (int *,int) ;
 
 __attribute__((used)) static int luaL_getmetafield(lua_State*L,int obj,const char*event){
 if(!lua_getmetatable(L,obj))

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lwan_module_info {struct lwan_module const* module; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct lwan_module_info {struct lwan_module const* module; int name; } ;
 struct lwan_module {int dummy; } ;
-typedef  int /*<<< orphan*/  lwan_module ;
+typedef int lwan_module ;
 
-/* Variables and functions */
- struct lwan_module_info* __start_lwan_module ; 
- struct lwan_module_info const* __stop_lwan_module ; 
- scalar_t__ streq (int /*<<< orphan*/ ,char const*) ; 
+
+ struct lwan_module_info* __start_lwan_module ;
+ struct lwan_module_info const* __stop_lwan_module ;
+ scalar_t__ streq (int ,char const*) ;
 
 __attribute__((used)) __attribute__((no_sanitize_address))
 static const struct lwan_module *find_module(const char *name)
@@ -31,5 +31,5 @@ static const struct lwan_module *find_module(const char *name)
             return module->module;
     }
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
-typedef  scalar_t__ acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ DEVICE_ACPI_HANDLE (int /*<<< orphan*/ *) ; 
- int acpi_bus_can_wakeup (scalar_t__) ; 
+
+
+
+struct pci_dev {int dev; } ;
+typedef scalar_t__ acpi_handle ;
+
+
+ scalar_t__ DEVICE_ACPI_HANDLE (int *) ;
+ int acpi_bus_can_wakeup (scalar_t__) ;
 
 __attribute__((used)) static bool acpi_pci_can_wakeup(struct pci_dev *dev)
 {
-	acpi_handle handle = DEVICE_ACPI_HANDLE(&dev->dev);
+ acpi_handle handle = DEVICE_ACPI_HANDLE(&dev->dev);
 
-	return handle ? acpi_bus_can_wakeup(handle) : false;
+ return handle ? acpi_bus_can_wakeup(handle) : 0;
 }

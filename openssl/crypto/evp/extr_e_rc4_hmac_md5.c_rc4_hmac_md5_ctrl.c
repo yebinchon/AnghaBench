@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hmac_key ;
-struct TYPE_3__ {unsigned int payload_length; int /*<<< orphan*/  md; int /*<<< orphan*/  head; int /*<<< orphan*/  tail; } ;
-typedef  TYPE_1__ EVP_RC4_HMAC_MD5 ;
-typedef  int /*<<< orphan*/  EVP_CIPHER_CTX ;
 
-/* Variables and functions */
- int EVP_AEAD_TLS1_AAD_LEN ; 
- int /*<<< orphan*/  EVP_CIPHER_CTX_encrypting (int /*<<< orphan*/ *) ; 
-#define  EVP_CTRL_AEAD_SET_MAC_KEY 129 
-#define  EVP_CTRL_AEAD_TLS1_AAD 128 
- unsigned int MD5_DIGEST_LENGTH ; 
- int /*<<< orphan*/  MD5_Final (unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD5_Init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MD5_Update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,int) ; 
- TYPE_1__* data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,void*,int) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hmac_key ;
+struct TYPE_3__ {unsigned int payload_length; int md; int head; int tail; } ;
+typedef TYPE_1__ EVP_RC4_HMAC_MD5 ;
+typedef int EVP_CIPHER_CTX ;
+
+
+ int EVP_AEAD_TLS1_AAD_LEN ;
+ int EVP_CIPHER_CTX_encrypting (int *) ;
+
+
+ unsigned int MD5_DIGEST_LENGTH ;
+ int MD5_Final (unsigned char*,int *) ;
+ int MD5_Init (int *) ;
+ int MD5_Update (int *,unsigned char*,int) ;
+ int OPENSSL_cleanse (unsigned char*,int) ;
+ TYPE_1__* data (int *) ;
+ int memcpy (unsigned char*,void*,int) ;
+ int memset (unsigned char*,int ,int) ;
 
 __attribute__((used)) static int rc4_hmac_md5_ctrl(EVP_CIPHER_CTX *ctx, int type, int arg,
                              void *ptr)
@@ -36,7 +36,7 @@ __attribute__((used)) static int rc4_hmac_md5_ctrl(EVP_CIPHER_CTX *ctx, int type
     EVP_RC4_HMAC_MD5 *key = data(ctx);
 
     switch (type) {
-    case EVP_CTRL_AEAD_SET_MAC_KEY:
+    case 129:
         {
             unsigned int i;
             unsigned char hmac_key[64];
@@ -52,12 +52,12 @@ __attribute__((used)) static int rc4_hmac_md5_ctrl(EVP_CIPHER_CTX *ctx, int type
             }
 
             for (i = 0; i < sizeof(hmac_key); i++)
-                hmac_key[i] ^= 0x36; /* ipad */
+                hmac_key[i] ^= 0x36;
             MD5_Init(&key->head);
             MD5_Update(&key->head, hmac_key, sizeof(hmac_key));
 
             for (i = 0; i < sizeof(hmac_key); i++)
-                hmac_key[i] ^= 0x36 ^ 0x5c; /* opad */
+                hmac_key[i] ^= 0x36 ^ 0x5c;
             MD5_Init(&key->tail);
             MD5_Update(&key->tail, hmac_key, sizeof(hmac_key));
 
@@ -65,7 +65,7 @@ __attribute__((used)) static int rc4_hmac_md5_ctrl(EVP_CIPHER_CTX *ctx, int type
 
             return 1;
         }
-    case EVP_CTRL_AEAD_TLS1_AAD:
+    case 128:
         {
             unsigned char *p = ptr;
             unsigned int len;

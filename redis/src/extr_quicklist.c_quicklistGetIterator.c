@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int offset; int direction; int /*<<< orphan*/ * zi; TYPE_2__ const* quicklist; int /*<<< orphan*/  current; } ;
-typedef  TYPE_1__ quicklistIter ;
-struct TYPE_7__ {int /*<<< orphan*/  tail; int /*<<< orphan*/  head; } ;
-typedef  TYPE_2__ quicklist ;
 
-/* Variables and functions */
- int AL_START_HEAD ; 
- int AL_START_TAIL ; 
- TYPE_1__* zmalloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int offset; int direction; int * zi; TYPE_2__ const* quicklist; int current; } ;
+typedef TYPE_1__ quicklistIter ;
+struct TYPE_7__ {int tail; int head; } ;
+typedef TYPE_2__ quicklist ;
+
+
+ int AL_START_HEAD ;
+ int AL_START_TAIL ;
+ TYPE_1__* zmalloc (int) ;
 
 quicklistIter *quicklistGetIterator(const quicklist *quicklist, int direction) {
     quicklistIter *iter;
@@ -38,7 +38,7 @@ quicklistIter *quicklistGetIterator(const quicklist *quicklist, int direction) {
     iter->direction = direction;
     iter->quicklist = quicklist;
 
-    iter->zi = NULL;
+    iter->zi = ((void*)0);
 
     return iter;
 }

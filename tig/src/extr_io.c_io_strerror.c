@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct io {int /*<<< orphan*/  error; } ;
 
-/* Variables and functions */
- char* strerror (int /*<<< orphan*/ ) ; 
+
+
+
+struct io {int error; } ;
+
+
+ char* strerror (int ) ;
 
 char *
 io_strerror(struct io *io)
 {
-	return strerror(io->error);
+ return strerror(io->error);
 }

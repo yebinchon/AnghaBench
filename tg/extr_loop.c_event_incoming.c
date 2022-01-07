@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct in_ev {scalar_t__ fd; int /*<<< orphan*/  refcnt; scalar_t__ bev; } ;
+
+
+
+
+struct in_ev {scalar_t__ fd; int refcnt; scalar_t__ bev; } ;
 struct bufferevent {int dummy; } ;
 
-/* Variables and functions */
- short BEV_EVENT_EOF ; 
- short BEV_EVENT_ERROR ; 
- int /*<<< orphan*/  E_WARNING ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bufferevent_free (struct bufferevent*) ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  free (struct in_ev*) ; 
- int /*<<< orphan*/  vlogprintf (int /*<<< orphan*/ ,char*) ; 
+
+ short BEV_EVENT_EOF ;
+ short BEV_EVENT_ERROR ;
+ int E_WARNING ;
+ int assert (int) ;
+ int bufferevent_free (struct bufferevent*) ;
+ int close (scalar_t__) ;
+ int free (struct in_ev*) ;
+ int vlogprintf (int ,char*) ;
 
 void event_incoming (struct bufferevent *bev, short what, void *_arg) {
   struct in_ev *ev = _arg;

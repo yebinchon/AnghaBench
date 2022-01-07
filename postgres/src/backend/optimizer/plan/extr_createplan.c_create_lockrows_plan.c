@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  plan; } ;
-struct TYPE_6__ {int /*<<< orphan*/  epqParam; int /*<<< orphan*/  rowMarks; int /*<<< orphan*/  subpath; } ;
-typedef  int /*<<< orphan*/  PlannerInfo ;
-typedef  int /*<<< orphan*/  Plan ;
-typedef  int /*<<< orphan*/  Path ;
-typedef  TYPE_1__ LockRowsPath ;
-typedef  TYPE_2__ LockRows ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_generic_path_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_plan_recurse (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* make_lockrows (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int plan; } ;
+struct TYPE_6__ {int epqParam; int rowMarks; int subpath; } ;
+typedef int PlannerInfo ;
+typedef int Plan ;
+typedef int Path ;
+typedef TYPE_1__ LockRowsPath ;
+typedef TYPE_2__ LockRows ;
+
+
+ int copy_generic_path_info (int *,int *) ;
+ int * create_plan_recurse (int *,int ,int) ;
+ TYPE_2__* make_lockrows (int *,int ,int ) ;
 
 __attribute__((used)) static LockRows *
 create_lockrows_plan(PlannerInfo *root, LockRowsPath *best_path,
-					 int flags)
+      int flags)
 {
-	LockRows   *plan;
-	Plan	   *subplan;
+ LockRows *plan;
+ Plan *subplan;
 
-	/* LockRows doesn't project, so tlist requirements pass through */
-	subplan = create_plan_recurse(root, best_path->subpath, flags);
 
-	plan = make_lockrows(subplan, best_path->rowMarks, best_path->epqParam);
+ subplan = create_plan_recurse(root, best_path->subpath, flags);
 
-	copy_generic_path_info(&plan->plan, (Path *) best_path);
+ plan = make_lockrows(subplan, best_path->rowMarks, best_path->epqParam);
 
-	return plan;
+ copy_generic_path_info(&plan->plan, (Path *) best_path);
+
+ return plan;
 }

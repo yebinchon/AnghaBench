@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rsi_thread {int /*<<< orphan*/  task; int /*<<< orphan*/  event; int /*<<< orphan*/  thread_done; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int kthread_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rsi_set_event (int /*<<< orphan*/ *) ; 
+
+
+
+struct rsi_thread {int task; int event; int thread_done; } ;
+
+
+ int atomic_inc (int *) ;
+ int kthread_stop (int ) ;
+ int rsi_set_event (int *) ;
 
 __attribute__((used)) static inline int rsi_kill_thread(struct rsi_thread *handle)
 {
-	atomic_inc(&handle->thread_done);
-	rsi_set_event(&handle->event);
+ atomic_inc(&handle->thread_done);
+ rsi_set_event(&handle->event);
 
-	return kthread_stop(handle->task);
+ return kthread_stop(handle->task);
 }

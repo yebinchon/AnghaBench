@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct disque_stat {scalar_t__ st_size; } ;
-typedef  scalar_t__ off_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef scalar_t__ off_t ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int disque_fstat (int /*<<< orphan*/ ,struct disque_stat*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fileno (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int ftruncate (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ process (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdin ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strncasecmp (char*,char*,int) ; 
+
+ int disque_fstat (int ,struct disque_stat*) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fgets (char*,int,int ) ;
+ int fileno (int *) ;
+ int * fopen (char*,char*) ;
+ int ftruncate (int ,scalar_t__) ;
+ int printf (char*,...) ;
+ scalar_t__ process (int *) ;
+ int stdin ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strncasecmp (char*,char*,int) ;
 
 int main(int argc, char **argv) {
     char *filename;
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     }
 
     FILE *fp = fopen(filename,"r+");
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         printf("Cannot open file: %s\n", filename);
         exit(1);
     }
@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
             char buf[2];
             printf("This will shrink the AOF from %lld bytes, with %lld bytes, to %lld bytes\n",(long long)size,(long long)diff,(long long)pos);
             printf("Continue? [y/N]: ");
-            if (fgets(buf,sizeof(buf),stdin) == NULL ||
+            if (fgets(buf,sizeof(buf),stdin) == ((void*)0) ||
                 strncasecmp(buf,"y",1) != 0) {
                     printf("Aborting...\n");
                     exit(1);

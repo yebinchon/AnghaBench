@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UBYTE ;
-typedef  int /*<<< orphan*/  ACTOR ;
 
-/* Variables and functions */
- scalar_t__ ACTOR_ENABLED (scalar_t__*) ; 
- scalar_t__ ACTOR_FLIP (scalar_t__*) ; 
- scalar_t__ ACTOR_FRAME (scalar_t__*) ; 
- scalar_t__ ACTOR_FRAME_OFFSET (scalar_t__*) ; 
- scalar_t__ ACTOR_SPRITE (scalar_t__*) ; 
- scalar_t__ ACTOR_SPRITE_OFFSET ; 
- scalar_t__ ACTOR_X (scalar_t__*) ; 
- scalar_t__ ACTOR_Y (scalar_t__*) ; 
- scalar_t__ IS_FRAME_9 ; 
- scalar_t__ MENU_CLOSED_Y ; 
- scalar_t__ MUL_2 (scalar_t__) ; 
- scalar_t__ MUL_4 (scalar_t__) ; 
- scalar_t__ SCX_REG ; 
- scalar_t__ SCY_REG ; 
- scalar_t__* actors ; 
- int /*<<< orphan*/  move_sprite (scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ scene_num_actors ; 
- int /*<<< orphan*/  set_sprite_tile (scalar_t__,scalar_t__) ; 
- scalar_t__ win_pos_x ; 
- scalar_t__ win_pos_y ; 
+
+
+
+typedef scalar_t__ UBYTE ;
+typedef int ACTOR ;
+
+
+ scalar_t__ ACTOR_ENABLED (scalar_t__*) ;
+ scalar_t__ ACTOR_FLIP (scalar_t__*) ;
+ scalar_t__ ACTOR_FRAME (scalar_t__*) ;
+ scalar_t__ ACTOR_FRAME_OFFSET (scalar_t__*) ;
+ scalar_t__ ACTOR_SPRITE (scalar_t__*) ;
+ scalar_t__ ACTOR_SPRITE_OFFSET ;
+ scalar_t__ ACTOR_X (scalar_t__*) ;
+ scalar_t__ ACTOR_Y (scalar_t__*) ;
+ scalar_t__ IS_FRAME_9 ;
+ scalar_t__ MENU_CLOSED_Y ;
+ scalar_t__ MUL_2 (scalar_t__) ;
+ scalar_t__ MUL_4 (scalar_t__) ;
+ scalar_t__ SCX_REG ;
+ scalar_t__ SCY_REG ;
+ scalar_t__* actors ;
+ int move_sprite (scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ scene_num_actors ;
+ int set_sprite_tile (scalar_t__,scalar_t__) ;
+ scalar_t__ win_pos_x ;
+ scalar_t__ win_pos_y ;
 
 void SceneRenderActors_b()
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlx4_en_priv {int /*<<< orphan*/  watchdog_timer; scalar_t__ port_up; int /*<<< orphan*/  watchdog_task; struct mlx4_en_dev* mdev; } ;
-struct mlx4_en_dev {int /*<<< orphan*/  workqueue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DRV ; 
- int /*<<< orphan*/  MLX4_EN_WATCHDOG_TIMEOUT ; 
- int /*<<< orphan*/  callout_reset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void (*) (void*),struct mlx4_en_priv*) ; 
- int /*<<< orphan*/  en_dbg (int /*<<< orphan*/ ,struct mlx4_en_priv*,char*) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct mlx4_en_priv {int watchdog_timer; scalar_t__ port_up; int watchdog_task; struct mlx4_en_dev* mdev; } ;
+struct mlx4_en_dev {int workqueue; } ;
+
+
+ int DRV ;
+ int MLX4_EN_WATCHDOG_TIMEOUT ;
+ int callout_reset (int *,int ,void (*) (void*),struct mlx4_en_priv*) ;
+ int en_dbg (int ,struct mlx4_en_priv*,char*) ;
+ int queue_work (int ,int *) ;
 
 __attribute__((used)) static void mlx4_en_watchdog_timeout(void *arg)
 {

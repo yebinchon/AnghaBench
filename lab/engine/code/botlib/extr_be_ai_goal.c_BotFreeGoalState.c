@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* Print ) (int /*<<< orphan*/ ,char*,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BotFreeItemWeights (int) ; 
- int /*<<< orphan*/  FreeMemory (int /*<<< orphan*/ *) ; 
- int MAX_CLIENTS ; 
- int /*<<< orphan*/  PRT_FATAL ; 
- int /*<<< orphan*/ ** botgoalstates ; 
- TYPE_1__ botimport ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* Print ) (int ,char*,int) ;} ;
+
+
+ int BotFreeItemWeights (int) ;
+ int FreeMemory (int *) ;
+ int MAX_CLIENTS ;
+ int PRT_FATAL ;
+ int ** botgoalstates ;
+ TYPE_1__ botimport ;
+ int stub1 (int ,char*,int) ;
+ int stub2 (int ,char*,int) ;
 
 void BotFreeGoalState(int handle)
 {
-	if (handle <= 0 || handle > MAX_CLIENTS)
-	{
-		botimport.Print(PRT_FATAL, "goal state handle %d out of range\n", handle);
-		return;
-	} //end if
-	if (!botgoalstates[handle])
-	{
-		botimport.Print(PRT_FATAL, "invalid goal state handle %d\n", handle);
-		return;
-	} //end if
-	BotFreeItemWeights(handle);
-	FreeMemory(botgoalstates[handle]);
-	botgoalstates[handle] = NULL;
+ if (handle <= 0 || handle > MAX_CLIENTS)
+ {
+  botimport.Print(PRT_FATAL, "goal state handle %d out of range\n", handle);
+  return;
+ }
+ if (!botgoalstates[handle])
+ {
+  botimport.Print(PRT_FATAL, "invalid goal state handle %d\n", handle);
+  return;
+ }
+ BotFreeItemWeights(handle);
+ FreeMemory(botgoalstates[handle]);
+ botgoalstates[handle] = ((void*)0);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
- int REGNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBREG_BYTE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBREG_REG (int /*<<< orphan*/ ) ; 
- int subreg_regno_offset (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int GET_MODE (int ) ;
+ int REGNO (int ) ;
+ int SUBREG_BYTE (int ) ;
+ int SUBREG_REG (int ) ;
+ int subreg_regno_offset (int,int ,int ,int ) ;
 
 unsigned int
 subreg_regno (rtx x)
@@ -27,9 +27,9 @@ subreg_regno (rtx x)
   int regno = REGNO (subreg);
 
   ret = regno + subreg_regno_offset (regno,
-				     GET_MODE (subreg),
-				     SUBREG_BYTE (x),
-				     GET_MODE (x));
+         GET_MODE (subreg),
+         SUBREG_BYTE (x),
+         GET_MODE (x));
   return ret;
 
 }

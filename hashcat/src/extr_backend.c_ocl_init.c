@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* backend_ctx; } ;
-typedef  TYPE_1__ hashcat_ctx_t ;
+typedef TYPE_1__ hashcat_ctx_t ;
 struct TYPE_8__ {scalar_t__ ocl; } ;
-typedef  TYPE_2__ backend_ctx_t ;
-struct TYPE_9__ {int /*<<< orphan*/ * lib; } ;
-typedef  TYPE_3__ OCL_PTR ;
+typedef TYPE_2__ backend_ctx_t ;
+struct TYPE_9__ {int * lib; } ;
+typedef TYPE_3__ OCL_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HC_LOAD_FUNC (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  OCL_CLBUILDPROGRAM ; 
- int /*<<< orphan*/  OCL_CLCREATEBUFFER ; 
- int /*<<< orphan*/  OCL_CLCREATECOMMANDQUEUE ; 
- int /*<<< orphan*/  OCL_CLCREATECONTEXT ; 
- int /*<<< orphan*/  OCL_CLCREATEKERNEL ; 
- int /*<<< orphan*/  OCL_CLCREATEPROGRAMWITHBINARY ; 
- int /*<<< orphan*/  OCL_CLCREATEPROGRAMWITHSOURCE ; 
- int /*<<< orphan*/  OCL_CLENQUEUECOPYBUFFER ; 
- int /*<<< orphan*/  OCL_CLENQUEUEMAPBUFFER ; 
- int /*<<< orphan*/  OCL_CLENQUEUENDRANGEKERNEL ; 
- int /*<<< orphan*/  OCL_CLENQUEUEREADBUFFER ; 
- int /*<<< orphan*/  OCL_CLENQUEUEUNMAPMEMOBJECT ; 
- int /*<<< orphan*/  OCL_CLENQUEUEWRITEBUFFER ; 
- int /*<<< orphan*/  OCL_CLFINISH ; 
- int /*<<< orphan*/  OCL_CLFLUSH ; 
- int /*<<< orphan*/  OCL_CLGETDEVICEIDS ; 
- int /*<<< orphan*/  OCL_CLGETDEVICEINFO ; 
- int /*<<< orphan*/  OCL_CLGETEVENTINFO ; 
- int /*<<< orphan*/  OCL_CLGETEVENTPROFILINGINFO ; 
- int /*<<< orphan*/  OCL_CLGETKERNELWORKGROUPINFO ; 
- int /*<<< orphan*/  OCL_CLGETPLATFORMIDS ; 
- int /*<<< orphan*/  OCL_CLGETPLATFORMINFO ; 
- int /*<<< orphan*/  OCL_CLGETPROGRAMBUILDINFO ; 
- int /*<<< orphan*/  OCL_CLGETPROGRAMINFO ; 
- int /*<<< orphan*/  OCL_CLRELEASECOMMANDQUEUE ; 
- int /*<<< orphan*/  OCL_CLRELEASECONTEXT ; 
- int /*<<< orphan*/  OCL_CLRELEASEEVENT ; 
- int /*<<< orphan*/  OCL_CLRELEASEKERNEL ; 
- int /*<<< orphan*/  OCL_CLRELEASEMEMOBJECT ; 
- int /*<<< orphan*/  OCL_CLRELEASEPROGRAM ; 
- int /*<<< orphan*/  OCL_CLSETKERNELARG ; 
- int /*<<< orphan*/  OCL_CLWAITFOREVENTS ; 
- int /*<<< orphan*/  OpenCL ; 
- int /*<<< orphan*/  clBuildProgram ; 
- int /*<<< orphan*/  clCreateBuffer ; 
- int /*<<< orphan*/  clCreateCommandQueue ; 
- int /*<<< orphan*/  clCreateContext ; 
- int /*<<< orphan*/  clCreateKernel ; 
- int /*<<< orphan*/  clCreateProgramWithBinary ; 
- int /*<<< orphan*/  clCreateProgramWithSource ; 
- int /*<<< orphan*/  clEnqueueCopyBuffer ; 
- int /*<<< orphan*/  clEnqueueMapBuffer ; 
- int /*<<< orphan*/  clEnqueueNDRangeKernel ; 
- int /*<<< orphan*/  clEnqueueReadBuffer ; 
- int /*<<< orphan*/  clEnqueueUnmapMemObject ; 
- int /*<<< orphan*/  clEnqueueWriteBuffer ; 
- int /*<<< orphan*/  clFinish ; 
- int /*<<< orphan*/  clFlush ; 
- int /*<<< orphan*/  clGetDeviceIDs ; 
- int /*<<< orphan*/  clGetDeviceInfo ; 
- int /*<<< orphan*/  clGetEventInfo ; 
- int /*<<< orphan*/  clGetEventProfilingInfo ; 
- int /*<<< orphan*/  clGetKernelWorkGroupInfo ; 
- int /*<<< orphan*/  clGetPlatformIDs ; 
- int /*<<< orphan*/  clGetPlatformInfo ; 
- int /*<<< orphan*/  clGetProgramBuildInfo ; 
- int /*<<< orphan*/  clGetProgramInfo ; 
- int /*<<< orphan*/  clReleaseCommandQueue ; 
- int /*<<< orphan*/  clReleaseContext ; 
- int /*<<< orphan*/  clReleaseEvent ; 
- int /*<<< orphan*/  clReleaseKernel ; 
- int /*<<< orphan*/  clReleaseMemObject ; 
- int /*<<< orphan*/  clReleaseProgram ; 
- int /*<<< orphan*/  clSetKernelArg ; 
- int /*<<< orphan*/  clWaitForEvents ; 
- void* hc_dlopen (char*) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
+
+ int HC_LOAD_FUNC (TYPE_3__*,int ,int ,int ,int) ;
+ int OCL_CLBUILDPROGRAM ;
+ int OCL_CLCREATEBUFFER ;
+ int OCL_CLCREATECOMMANDQUEUE ;
+ int OCL_CLCREATECONTEXT ;
+ int OCL_CLCREATEKERNEL ;
+ int OCL_CLCREATEPROGRAMWITHBINARY ;
+ int OCL_CLCREATEPROGRAMWITHSOURCE ;
+ int OCL_CLENQUEUECOPYBUFFER ;
+ int OCL_CLENQUEUEMAPBUFFER ;
+ int OCL_CLENQUEUENDRANGEKERNEL ;
+ int OCL_CLENQUEUEREADBUFFER ;
+ int OCL_CLENQUEUEUNMAPMEMOBJECT ;
+ int OCL_CLENQUEUEWRITEBUFFER ;
+ int OCL_CLFINISH ;
+ int OCL_CLFLUSH ;
+ int OCL_CLGETDEVICEIDS ;
+ int OCL_CLGETDEVICEINFO ;
+ int OCL_CLGETEVENTINFO ;
+ int OCL_CLGETEVENTPROFILINGINFO ;
+ int OCL_CLGETKERNELWORKGROUPINFO ;
+ int OCL_CLGETPLATFORMIDS ;
+ int OCL_CLGETPLATFORMINFO ;
+ int OCL_CLGETPROGRAMBUILDINFO ;
+ int OCL_CLGETPROGRAMINFO ;
+ int OCL_CLRELEASECOMMANDQUEUE ;
+ int OCL_CLRELEASECONTEXT ;
+ int OCL_CLRELEASEEVENT ;
+ int OCL_CLRELEASEKERNEL ;
+ int OCL_CLRELEASEMEMOBJECT ;
+ int OCL_CLRELEASEPROGRAM ;
+ int OCL_CLSETKERNELARG ;
+ int OCL_CLWAITFOREVENTS ;
+ int OpenCL ;
+ int clBuildProgram ;
+ int clCreateBuffer ;
+ int clCreateCommandQueue ;
+ int clCreateContext ;
+ int clCreateKernel ;
+ int clCreateProgramWithBinary ;
+ int clCreateProgramWithSource ;
+ int clEnqueueCopyBuffer ;
+ int clEnqueueMapBuffer ;
+ int clEnqueueNDRangeKernel ;
+ int clEnqueueReadBuffer ;
+ int clEnqueueUnmapMemObject ;
+ int clEnqueueWriteBuffer ;
+ int clFinish ;
+ int clFlush ;
+ int clGetDeviceIDs ;
+ int clGetDeviceInfo ;
+ int clGetEventInfo ;
+ int clGetEventProfilingInfo ;
+ int clGetKernelWorkGroupInfo ;
+ int clGetPlatformIDs ;
+ int clGetPlatformInfo ;
+ int clGetProgramBuildInfo ;
+ int clGetProgramInfo ;
+ int clReleaseCommandQueue ;
+ int clReleaseContext ;
+ int clReleaseEvent ;
+ int clReleaseKernel ;
+ int clReleaseMemObject ;
+ int clReleaseProgram ;
+ int clSetKernelArg ;
+ int clWaitForEvents ;
+ void* hc_dlopen (char*) ;
+ int memset (TYPE_3__*,int ,int) ;
 
 int ocl_init (hashcat_ctx_t *hashcat_ctx)
 {
@@ -97,55 +97,45 @@ int ocl_init (hashcat_ctx_t *hashcat_ctx)
   OCL_PTR *ocl = (OCL_PTR *) backend_ctx->ocl;
 
   memset (ocl, 0, sizeof (OCL_PTR));
-
-  #if   defined (_WIN)
-  ocl->lib = hc_dlopen ("OpenCL");
-  #elif defined (__APPLE__)
-  ocl->lib = hc_dlopen ("/System/Library/Frameworks/OpenCL.framework/OpenCL");
-  #elif defined (__CYGWIN__)
-  ocl->lib = hc_dlopen ("opencl.dll");
-
-  if (ocl->lib == NULL) ocl->lib = hc_dlopen ("cygOpenCL-1.dll");
-  #else
   ocl->lib = hc_dlopen ("libOpenCL.so");
 
-  if (ocl->lib == NULL) ocl->lib = hc_dlopen ("libOpenCL.so.1");
-  #endif
+  if (ocl->lib == ((void*)0)) ocl->lib = hc_dlopen ("libOpenCL.so.1");
 
-  if (ocl->lib == NULL) return -1;
 
-  HC_LOAD_FUNC (ocl, clBuildProgram,            OCL_CLBUILDPROGRAM,             OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clCreateBuffer,            OCL_CLCREATEBUFFER,             OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clCreateCommandQueue,      OCL_CLCREATECOMMANDQUEUE,       OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clCreateContext,           OCL_CLCREATECONTEXT,            OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clCreateKernel,            OCL_CLCREATEKERNEL,             OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clCreateProgramWithBinary, OCL_CLCREATEPROGRAMWITHBINARY,  OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clCreateProgramWithSource, OCL_CLCREATEPROGRAMWITHSOURCE,  OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clEnqueueCopyBuffer,       OCL_CLENQUEUECOPYBUFFER,        OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clEnqueueMapBuffer,        OCL_CLENQUEUEMAPBUFFER,         OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clEnqueueNDRangeKernel,    OCL_CLENQUEUENDRANGEKERNEL,     OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clEnqueueReadBuffer,       OCL_CLENQUEUEREADBUFFER,        OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clEnqueueUnmapMemObject,   OCL_CLENQUEUEUNMAPMEMOBJECT,    OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clEnqueueWriteBuffer,      OCL_CLENQUEUEWRITEBUFFER,       OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clFinish,                  OCL_CLFINISH,                   OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clFlush,                   OCL_CLFLUSH,                    OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetDeviceIDs,            OCL_CLGETDEVICEIDS,             OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetDeviceInfo,           OCL_CLGETDEVICEINFO,            OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetEventInfo,            OCL_CLGETEVENTINFO,             OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetKernelWorkGroupInfo,  OCL_CLGETKERNELWORKGROUPINFO,   OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetPlatformIDs,          OCL_CLGETPLATFORMIDS,           OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetPlatformInfo,         OCL_CLGETPLATFORMINFO,          OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetProgramBuildInfo,     OCL_CLGETPROGRAMBUILDINFO,      OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetProgramInfo,          OCL_CLGETPROGRAMINFO,           OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clReleaseCommandQueue,     OCL_CLRELEASECOMMANDQUEUE,      OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clReleaseContext,          OCL_CLRELEASECONTEXT,           OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clReleaseKernel,           OCL_CLRELEASEKERNEL,            OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clReleaseMemObject,        OCL_CLRELEASEMEMOBJECT,         OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clReleaseProgram,          OCL_CLRELEASEPROGRAM,           OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clSetKernelArg,            OCL_CLSETKERNELARG,             OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clWaitForEvents,           OCL_CLWAITFOREVENTS,            OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clGetEventProfilingInfo,   OCL_CLGETEVENTPROFILINGINFO,    OpenCL, 1);
-  HC_LOAD_FUNC (ocl, clReleaseEvent,            OCL_CLRELEASEEVENT,             OpenCL, 1);
+  if (ocl->lib == ((void*)0)) return -1;
+
+  HC_LOAD_FUNC (ocl, clBuildProgram, OCL_CLBUILDPROGRAM, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clCreateBuffer, OCL_CLCREATEBUFFER, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clCreateCommandQueue, OCL_CLCREATECOMMANDQUEUE, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clCreateContext, OCL_CLCREATECONTEXT, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clCreateKernel, OCL_CLCREATEKERNEL, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clCreateProgramWithBinary, OCL_CLCREATEPROGRAMWITHBINARY, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clCreateProgramWithSource, OCL_CLCREATEPROGRAMWITHSOURCE, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clEnqueueCopyBuffer, OCL_CLENQUEUECOPYBUFFER, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clEnqueueMapBuffer, OCL_CLENQUEUEMAPBUFFER, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clEnqueueNDRangeKernel, OCL_CLENQUEUENDRANGEKERNEL, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clEnqueueReadBuffer, OCL_CLENQUEUEREADBUFFER, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clEnqueueUnmapMemObject, OCL_CLENQUEUEUNMAPMEMOBJECT, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clEnqueueWriteBuffer, OCL_CLENQUEUEWRITEBUFFER, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clFinish, OCL_CLFINISH, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clFlush, OCL_CLFLUSH, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetDeviceIDs, OCL_CLGETDEVICEIDS, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetDeviceInfo, OCL_CLGETDEVICEINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetEventInfo, OCL_CLGETEVENTINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetKernelWorkGroupInfo, OCL_CLGETKERNELWORKGROUPINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetPlatformIDs, OCL_CLGETPLATFORMIDS, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetPlatformInfo, OCL_CLGETPLATFORMINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetProgramBuildInfo, OCL_CLGETPROGRAMBUILDINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetProgramInfo, OCL_CLGETPROGRAMINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clReleaseCommandQueue, OCL_CLRELEASECOMMANDQUEUE, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clReleaseContext, OCL_CLRELEASECONTEXT, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clReleaseKernel, OCL_CLRELEASEKERNEL, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clReleaseMemObject, OCL_CLRELEASEMEMOBJECT, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clReleaseProgram, OCL_CLRELEASEPROGRAM, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clSetKernelArg, OCL_CLSETKERNELARG, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clWaitForEvents, OCL_CLWAITFOREVENTS, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clGetEventProfilingInfo, OCL_CLGETEVENTPROFILINGINFO, OpenCL, 1);
+  HC_LOAD_FUNC (ocl, clReleaseEvent, OCL_CLRELEASEEVENT, OpenCL, 1);
 
   return 0;
 }

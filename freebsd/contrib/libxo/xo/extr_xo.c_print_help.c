@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static void
 print_help (void)
@@ -30,7 +22,7 @@ print_help (void)
 "    --instance OR -I <name> Wrap in an instance of the given name\n"
 "    --json OR -J          Generate JSON output\n"
 "    --leading-xpath <path> OR -l <path> "
-	    "Add a prefix to generated XPaths (HTML)\n"
+     "Add a prefix to generated XPaths (HTML)\n"
 "    --not-first           Indicate this object is not the first (JSON)\n"
 "    --open <path>         Open tags for the given path\n"
 "    --open-instance <name> Open an instance given by name\n"
@@ -38,7 +30,7 @@ print_help (void)
 "    --option <opts> -or -O <opts>  Give formatting options\n"
 "    --pretty OR -p        Make 'pretty' output (add indent, newlines)\n"
 "    --style <style> OR -s <style>  "
-	    "Generate given style (xml, json, text, html)\n"
+     "Generate given style (xml, json, text, html)\n"
 "    --text OR -T          Generate text output (the default style)\n"
 "    --top-wrap            Generate a top-level object wrapper (JSON)\n"
 "    --version             Display version information\n"

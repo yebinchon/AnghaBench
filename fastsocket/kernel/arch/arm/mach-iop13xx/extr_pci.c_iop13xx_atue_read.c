@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOP13XX_ATUE_OCCAR ; 
- int /*<<< orphan*/  IOP13XX_ATUE_OCCDR ; 
- int /*<<< orphan*/  __raw_readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __raw_writel (unsigned long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rmb () ; 
+
+
+
+typedef int u32 ;
+
+
+ int IOP13XX_ATUE_OCCAR ;
+ int IOP13XX_ATUE_OCCDR ;
+ int __raw_readl (int ) ;
+ int __raw_writel (unsigned long,int ) ;
+ int rmb () ;
 
 __attribute__((used)) static u32 iop13xx_atue_read(unsigned long addr)
 {
-	u32 val;
+ u32 val;
 
-	__raw_writel(addr, IOP13XX_ATUE_OCCAR);
-	val = __raw_readl(IOP13XX_ATUE_OCCDR);
+ __raw_writel(addr, IOP13XX_ATUE_OCCAR);
+ val = __raw_readl(IOP13XX_ATUE_OCCDR);
 
-	rmb();
+ rmb();
 
-	return val;
+ return val;
 }

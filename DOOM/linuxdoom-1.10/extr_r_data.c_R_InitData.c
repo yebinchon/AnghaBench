@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  R_InitColormaps () ; 
- int /*<<< orphan*/  R_InitFlats () ; 
- int /*<<< orphan*/  R_InitSpriteLumps () ; 
- int /*<<< orphan*/  R_InitTextures () ; 
- int /*<<< orphan*/  printf (char*) ; 
+ int R_InitColormaps () ;
+ int R_InitFlats () ;
+ int R_InitSpriteLumps () ;
+ int R_InitTextures () ;
+ int printf (char*) ;
 
 void R_InitData (void)
 {

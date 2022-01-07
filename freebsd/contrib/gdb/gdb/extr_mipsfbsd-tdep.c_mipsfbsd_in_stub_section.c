@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct obj_section {TYPE_1__* the_bfd_section; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * name; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+struct TYPE_2__ {int * name; } ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- struct obj_section* find_pc_section (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ *,char*) ; 
 
-int 
+ struct obj_section* find_pc_section (int ) ;
+ scalar_t__ strcmp (int *,char*) ;
+
+int
 mipsfbsd_in_stub_section (CORE_ADDR pc, char *name)
 {
   struct obj_section *s;
@@ -27,8 +27,8 @@ mipsfbsd_in_stub_section (CORE_ADDR pc, char *name)
 
   s = find_pc_section (pc);
 
-  retval = (s != NULL
-            && s->the_bfd_section->name != NULL
+  retval = (s != ((void*)0)
+            && s->the_bfd_section->name != ((void*)0)
             && strcmp (s->the_bfd_section->name, ".MIPS.stubs") == 0);
   return (retval);
 }

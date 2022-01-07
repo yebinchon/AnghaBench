@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HTMLDocument ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  NSALIGN_LEFT ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UPDATE_UI ; 
- int /*<<< orphan*/  set_ns_align (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_doc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VARIANT ;
+typedef int HTMLDocument ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int FIXME (char*) ;
+ int NSALIGN_LEFT ;
+ int S_OK ;
+ int TRACE (char*,int *) ;
+ int UPDATE_UI ;
+ int set_ns_align (int *,int ) ;
+ int update_doc (int *,int ) ;
 
 __attribute__((used)) static HRESULT exec_justifyleft(HTMLDocument *This, DWORD cmdexecopt, VARIANT *in, VARIANT *out)
 {

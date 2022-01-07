@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  dwForwarding; } ;
-struct TYPE_5__ {int /*<<< orphan*/  dwNumRoutes; int /*<<< orphan*/  dwNumAddr; int /*<<< orphan*/  dwNumIf; int /*<<< orphan*/  dwFragCreates; int /*<<< orphan*/  dwFragFails; int /*<<< orphan*/  dwFragOks; int /*<<< orphan*/  dwReasmFails; int /*<<< orphan*/  dwReasmOks; int /*<<< orphan*/  dwReasmReqds; int /*<<< orphan*/  dwReasmTimeout; int /*<<< orphan*/  dwOutNoRoutes; int /*<<< orphan*/  dwOutDiscards; int /*<<< orphan*/  dwRoutingDiscards; int /*<<< orphan*/  dwOutRequests; int /*<<< orphan*/  dwInDelivers; int /*<<< orphan*/  dwInDiscards; int /*<<< orphan*/  dwInUnknownProtos; int /*<<< orphan*/  dwForwDatagrams; int /*<<< orphan*/  dwInAddrErrors; int /*<<< orphan*/  dwInHdrErrors; int /*<<< orphan*/  dwInReceives; int /*<<< orphan*/  dwDefaultTTL; } ;
-typedef  TYPE_1__ MIB_IPSTATS ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_BAN ; 
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  AF_INET6 ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_NOT_SUPPORTED ; 
- scalar_t__ NO_ERROR ; 
- TYPE_3__ U (TYPE_1__) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pGetIpStatisticsEx (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int winetest_debug ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dwForwarding; } ;
+struct TYPE_5__ {int dwNumRoutes; int dwNumAddr; int dwNumIf; int dwFragCreates; int dwFragFails; int dwFragOks; int dwReasmFails; int dwReasmOks; int dwReasmReqds; int dwReasmTimeout; int dwOutNoRoutes; int dwOutDiscards; int dwRoutingDiscards; int dwOutRequests; int dwInDelivers; int dwInDiscards; int dwInUnknownProtos; int dwForwDatagrams; int dwInAddrErrors; int dwInHdrErrors; int dwInReceives; int dwDefaultTTL; } ;
+typedef TYPE_1__ MIB_IPSTATS ;
+typedef scalar_t__ DWORD ;
+
+
+ int AF_BAN ;
+ int AF_INET ;
+ int AF_INET6 ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_NOT_SUPPORTED ;
+ scalar_t__ NO_ERROR ;
+ TYPE_3__ U (TYPE_1__) ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pGetIpStatisticsEx (TYPE_1__*,int ) ;
+ int trace (char*,...) ;
+ int win_skip (char*) ;
+ int winetest_debug ;
 
 __attribute__((used)) static void testGetIpStatisticsEx(void)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void testGetIpStatisticsEx(void)
         return;
     }
 
-    apiReturn = pGetIpStatisticsEx(NULL, AF_INET);
+    apiReturn = pGetIpStatisticsEx(((void*)0), AF_INET);
     ok(apiReturn == ERROR_INVALID_PARAMETER,
        "GetIpStatisticsEx(NULL, AF_INET) returned %d, expected ERROR_INVALID_PARAMETER\n", apiReturn);
 

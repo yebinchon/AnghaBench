@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t SizeT ;
-typedef  scalar_t__ Byte ;
 
-/* Variables and functions */
- int DELTA_STATE_SIZE ; 
- int /*<<< orphan*/  MyMemCpy (scalar_t__*,scalar_t__*,unsigned int) ; 
+
+
+
+typedef size_t SizeT ;
+typedef scalar_t__ Byte ;
+
+
+ int DELTA_STATE_SIZE ;
+ int MyMemCpy (scalar_t__*,scalar_t__*,unsigned int) ;
 
 void Delta_Encode(Byte *state, unsigned delta, Byte *data, SizeT size)
 {

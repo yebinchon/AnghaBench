@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
-struct TYPE_5__ {int /*<<< orphan*/  endian; } ;
-typedef  TYPE_1__ Header ;
 
-/* Variables and functions */
- int /*<<< orphan*/  controloptions (int /*<<< orphan*/ *,int,char const**,TYPE_1__*) ; 
- int /*<<< orphan*/  correctbytes (char*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  defaultoptions (TYPE_1__*) ; 
- int gettoalign (size_t,TYPE_1__*,int,size_t) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ; 
- double luaL_checknumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- size_t optsize (int /*<<< orphan*/ *,int,char const**) ; 
- int /*<<< orphan*/  putinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+struct TYPE_5__ {int endian; } ;
+typedef TYPE_1__ Header ;
+
+
+ int controloptions (int *,int,char const**,TYPE_1__*) ;
+ int correctbytes (char*,size_t,int ) ;
+ int defaultoptions (TYPE_1__*) ;
+ int gettoalign (size_t,TYPE_1__*,int,size_t) ;
+ int luaL_addchar (int *,char) ;
+ int luaL_addlstring (int *,char const*,size_t) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_buffinit (int *,int *) ;
+ char* luaL_checklstring (int *,int ,size_t*) ;
+ double luaL_checknumber (int *,int ) ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_pushresult (int *) ;
+ int lua_pushnil (int *) ;
+ size_t optsize (int *,int,char const**) ;
+ int putinteger (int *,int *,int ,int ,size_t) ;
 
 __attribute__((used)) static int b_pack (lua_State *L) {
   luaL_Buffer b;
@@ -40,7 +40,7 @@ __attribute__((used)) static int b_pack (lua_State *L) {
   int arg = 2;
   size_t totalsize = 0;
   defaultoptions(&h);
-  lua_pushnil(L);  /* mark to separate arguments from string buffer */
+  lua_pushnil(L);
   luaL_buffinit(L, &b);
   while (*fmt != '\0') {
     int opt = *fmt++;
@@ -50,7 +50,7 @@ __attribute__((used)) static int b_pack (lua_State *L) {
     while (toalign-- > 0) luaL_addchar(&b, '\0');
     switch (opt) {
       case 'b': case 'B': case 'h': case 'H':
-      case 'l': case 'L': case 'T': case 'i': case 'I': {  /* integer types */
+      case 'l': case 'L': case 'T': case 'i': case 'I': {
         putinteger(L, &b, arg++, h.endian, size);
         break;
       }
@@ -77,7 +77,7 @@ __attribute__((used)) static int b_pack (lua_State *L) {
         luaL_argcheck(L, l >= (size_t)size, arg, "string too short");
         luaL_addlstring(&b, s, size);
         if (opt == 's') {
-          luaL_addchar(&b, '\0');  /* add zero at the end */
+          luaL_addchar(&b, '\0');
           size++;
         }
         break;

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ena_adapter {int /*<<< orphan*/  rx_buf_tag; int /*<<< orphan*/  max_rx_sgl_size; int /*<<< orphan*/  dma_width; int /*<<< orphan*/  pdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int /*<<< orphan*/  ENA_DMA_BIT_MASK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MJUM16BYTES ; 
- int bus_dma_tag_create (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_get_dma_tag (int /*<<< orphan*/ ) ; 
+
+
+
+struct ena_adapter {int rx_buf_tag; int max_rx_sgl_size; int dma_width; int pdev; } ;
+
+
+ int BUS_SPACE_MAXADDR ;
+ int ENA_DMA_BIT_MASK (int ) ;
+ int MJUM16BYTES ;
+ int bus_dma_tag_create (int ,int,int ,int ,int ,int *,int *,int ,int ,int ,int ,int *,int *,int *) ;
+ int bus_get_dma_tag (int ) ;
 
 __attribute__((used)) static int
 ena_setup_rx_dma_tag(struct ena_adapter *adapter)
 {
-	int ret;
+ int ret;
 
-	/* Create DMA tag for Rx buffers*/
-	ret = bus_dma_tag_create(bus_get_dma_tag(adapter->pdev), /* parent   */
-	    1, 0,				  /* alignment, bounds 	     */
-	    ENA_DMA_BIT_MASK(adapter->dma_width), /* lowaddr of excl window  */
-	    BUS_SPACE_MAXADDR, 			  /* highaddr of excl window */
-	    NULL, NULL,				  /* filter, filterarg 	     */
-	    MJUM16BYTES,			  /* maxsize 		     */
-	    adapter->max_rx_sgl_size,		  /* nsegments 		     */
-	    MJUM16BYTES,			  /* maxsegsize 	     */
-	    0,					  /* flags 		     */
-	    NULL,				  /* lockfunc 		     */
-	    NULL,				  /* lockarg 		     */
-	    &adapter->rx_buf_tag);
 
-	return (ret);
+ ret = bus_dma_tag_create(bus_get_dma_tag(adapter->pdev),
+     1, 0,
+     ENA_DMA_BIT_MASK(adapter->dma_width),
+     BUS_SPACE_MAXADDR,
+     ((void*)0), ((void*)0),
+     MJUM16BYTES,
+     adapter->max_rx_sgl_size,
+     MJUM16BYTES,
+     0,
+     ((void*)0),
+     ((void*)0),
+     &adapter->rx_buf_tag);
+
+ return (ret);
 }

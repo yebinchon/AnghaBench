@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int selected_item; int style; int nb_items; TYPE_2__* lphc; TYPE_1__* items; } ;
-struct TYPE_9__ {int /*<<< orphan*/  wState; } ;
-struct TYPE_8__ {int /*<<< orphan*/  selected; } ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_3__ LB_DESCR ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_9__ {int wState; } ;
+struct TYPE_8__ {int selected; } ;
+typedef int LRESULT ;
+typedef TYPE_3__ LB_DESCR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBF_SELCHANGE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LBN_SELCANCEL ; 
- int /*<<< orphan*/  LBN_SELCHANGE ; 
- int LBS_MULTIPLESEL ; 
- int LBS_NOSEL ; 
- int /*<<< orphan*/  LB_ERR ; 
- int /*<<< orphan*/  LB_OKAY ; 
- int /*<<< orphan*/  LISTBOX_RepaintItem (TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LISTBOX_SelectItemRange (TYPE_3__*,int,int,scalar_t__) ; 
- int /*<<< orphan*/  ODA_SELECT ; 
- int /*<<< orphan*/  SEND_NOTIFICATION (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int,int,char*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CBF_SELCHANGE ;
+ int FALSE ;
+ int LBN_SELCANCEL ;
+ int LBN_SELCHANGE ;
+ int LBS_MULTIPLESEL ;
+ int LBS_NOSEL ;
+ int LB_ERR ;
+ int LB_OKAY ;
+ int LISTBOX_RepaintItem (TYPE_3__*,int,int ) ;
+ int LISTBOX_SelectItemRange (TYPE_3__*,int,int,scalar_t__) ;
+ int ODA_SELECT ;
+ int SEND_NOTIFICATION (TYPE_3__*,int ) ;
+ int TRACE (char*,int,int,char*) ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT LISTBOX_SetSelection( LB_DESCR *descr, INT index,
                                      BOOL on, BOOL send_notify )
@@ -51,9 +51,9 @@ __attribute__((used)) static LRESULT LISTBOX_SetSelection( LB_DESCR *descr, INT 
     if ((index < -1) || (index >= descr->nb_items)) return LB_ERR;
     if (descr->style & LBS_MULTIPLESEL)
     {
-        if (index == -1)  /* Select all items */
+        if (index == -1)
             return LISTBOX_SelectItemRange( descr, 0, descr->nb_items, on );
-        else  /* Only one item */
+        else
             return LISTBOX_SelectItemRange( descr, index, index, on );
     }
     else
@@ -67,9 +67,9 @@ __attribute__((used)) static LRESULT LISTBOX_SetSelection( LB_DESCR *descr, INT 
         if (index != -1) LISTBOX_RepaintItem( descr, index, ODA_SELECT );
         if (send_notify && descr->nb_items) SEND_NOTIFICATION( descr,
                                (index != -1) ? LBN_SELCHANGE : LBN_SELCANCEL );
-	else
-	    if( descr->lphc ) /* set selection change flag for parent combo */
-		descr->lphc->wState |= CBF_SELCHANGE;
+ else
+     if( descr->lphc )
+  descr->lphc->wState |= CBF_SELCHANGE;
     }
     return LB_OKAY;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  listree_t ;
 
-/* Variables and functions */
- scalar_t__ R_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int listree_get_pos (int /*<<< orphan*/ *,int,int) ; 
- int listree_get_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  load_user_metafile (int) ; 
- int prepare_msg_sublist (int,int,int,int /*<<< orphan*/ **,int,int) ; 
 
-int get_msg_sublist_pos (int user_id, int and_mask, int xor_mask, int local_id) { // ???
+
+
+typedef int listree_t ;
+
+
+ scalar_t__ R_cnt ;
+ int assert (int) ;
+ int listree_get_pos (int *,int,int) ;
+ int listree_get_size (int *) ;
+ int load_user_metafile (int) ;
+ int prepare_msg_sublist (int,int,int,int **,int,int) ;
+
+int get_msg_sublist_pos (int user_id, int and_mask, int xor_mask, int local_id) {
   static listree_t *X;
   int S;
   static int rec_cnt = 0;

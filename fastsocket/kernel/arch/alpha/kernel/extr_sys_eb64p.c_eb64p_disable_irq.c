@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int cached_irq_mask ; 
- int /*<<< orphan*/  eb64p_update_irq_hw (unsigned int,int) ; 
+ int cached_irq_mask ;
+ int eb64p_update_irq_hw (unsigned int,int) ;
 
 __attribute__((used)) static void
 eb64p_disable_irq(unsigned int irq)
 {
-	eb64p_update_irq_hw(irq, cached_irq_mask |= 1 << irq);
+ eb64p_update_irq_hw(irq, cached_irq_mask |= 1 << irq);
 }

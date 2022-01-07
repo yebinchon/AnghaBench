@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_5__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  fs; int /*<<< orphan*/  hooks_env_path; } ;
-typedef  TYPE_1__ svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_fs_lock_target_t ;
-typedef  int /*<<< orphan*/ * (* svn_fs_lock_callback_t ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  svn_fs_access_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct lock_many_baton_t {TYPE_5__* paths; int /*<<< orphan*/ * pool; int /*<<< orphan*/ * cb_err; void* lock_baton; int /*<<< orphan*/ * (* lock_callback ) (void*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  need_lock; } ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+
+
+typedef struct TYPE_8__ TYPE_5__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int fs; int hooks_env_path; } ;
+typedef TYPE_1__ svn_repos_t ;
+typedef int svn_fs_lock_target_t ;
+typedef int * (* svn_fs_lock_callback_t ) (void*,char const*,int *,int *,int *) ;
+typedef int svn_fs_access_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct lock_many_baton_t {TYPE_5__* paths; int * pool; int * cb_err; void* lock_baton; int * (* lock_callback ) (void*,char const*,int *,int *,int *) ;int need_lock; } ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 struct TYPE_8__ {scalar_t__ nelts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_NO_USER ; 
- int /*<<< orphan*/  SVN_ERR_REPOS_POST_LOCK_HOOK_FAILED ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- TYPE_5__* apr_array_make (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- char* apr_hash_this_key (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock_many_cb ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_compose (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_access_get_username (char const**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_get_access (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_fs_lock_many (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct lock_many_baton_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_fs_lock_target_set_token (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_repos__hooks_post_lock (TYPE_1__*,int /*<<< orphan*/ *,TYPE_5__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_repos__hooks_pre_lock (TYPE_1__*,int /*<<< orphan*/ *,char const**,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos__parse_hooks_env (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_NO_USER ;
+ int SVN_ERR_REPOS_POST_LOCK_HOOK_FAILED ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ char* _ (char*) ;
+ TYPE_5__* apr_array_make (int *,int ,int) ;
+ int apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ char* apr_hash_this_key (int *) ;
+ int * apr_hash_this_val (int *) ;
+ int lock_many_cb ;
+ int svn_error_clear (int *) ;
+ int svn_error_compose (int *,int *) ;
+ int * svn_error_compose_create (int *,int *) ;
+ int * svn_error_create (int ,int *,char*) ;
+ int * svn_error_trace (int *) ;
+ int svn_fs_access_get_username (char const**,int *) ;
+ int svn_fs_get_access (int **,int ) ;
+ int * svn_fs_lock_many (int ,int *,char const*,int ,int ,int ,int ,struct lock_many_baton_t*,int *,int *) ;
+ int svn_fs_lock_target_set_token (int *,char const*) ;
+ int svn_hash_sets (int *,char const*,int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int * svn_repos__hooks_post_lock (TYPE_1__*,int *,TYPE_5__*,char const*,int *) ;
+ int * svn_repos__hooks_pre_lock (TYPE_1__*,int *,char const**,char const*,char const*,char const*,int ,int *) ;
+ int svn_repos__parse_hooks_env (int **,int ,int *,int *) ;
 
 svn_error_t *
 svn_repos_fs_lock_many(svn_repos_t *repos,
@@ -71,8 +71,8 @@ svn_repos_fs_lock_many(svn_repos_t *repos,
                        apr_pool_t *scratch_pool)
 {
   svn_error_t *err, *cb_err = SVN_NO_ERROR;
-  svn_fs_access_t *access_ctx = NULL;
-  const char *username = NULL;
+  svn_fs_access_t *access_ctx = ((void*)0);
+  const char *username = ((void*)0);
   apr_hash_t *hooks_env;
   apr_hash_t *pre_targets = apr_hash_make(scratch_pool);
   apr_hash_index_t *hi;
@@ -82,7 +82,7 @@ svn_repos_fs_lock_many(svn_repos_t *repos,
   if (!apr_hash_count(targets))
     return SVN_NO_ERROR;
 
-  /* Parse the hooks-env file (if any). */
+
   SVN_ERR(svn_repos__parse_hooks_env(&hooks_env, repos->hooks_env_path,
                                      scratch_pool, scratch_pool));
 
@@ -92,11 +92,11 @@ svn_repos_fs_lock_many(svn_repos_t *repos,
 
   if (! username)
     return svn_error_create
-      (SVN_ERR_FS_NO_USER, NULL,
+      (SVN_ERR_FS_NO_USER, ((void*)0),
        "Cannot lock path, no authenticated username available.");
 
-  /* Run pre-lock hook.  This could throw error, preventing
-     svn_fs_lock2() from happening for that path. */
+
+
   for (hi = apr_hash_first(scratch_pool, targets); hi; hi = apr_hash_next(hi))
     {
       const char *new_token;
@@ -110,7 +110,7 @@ svn_repos_fs_lock_many(svn_repos_t *repos,
       if (err)
         {
           if (!cb_err && lock_callback)
-            cb_err = lock_callback(lock_baton, path, NULL, err, iterpool);
+            cb_err = lock_callback(lock_baton, path, ((void*)0), err, iterpool);
           svn_error_clear(err);
 
           continue;
@@ -137,7 +137,7 @@ svn_repos_fs_lock_many(svn_repos_t *repos,
                          is_dav_comment, expiration_date, steal_lock,
                          lock_many_cb, &baton, result_pool, iterpool);
 
-  /* If there are locks run the post-lock even if there is an error. */
+
   if (baton.paths->nelts)
     {
       svn_error_t *perr = svn_repos__hooks_post_lock(repos, hooks_env,

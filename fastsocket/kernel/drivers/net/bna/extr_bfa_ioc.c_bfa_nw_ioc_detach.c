@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_ioc {int /*<<< orphan*/  notify_q; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOC_E_DETACH ; 
- int /*<<< orphan*/  bfa_fsm_send_event (struct bfa_ioc*,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_ioc {int notify_q; } ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ int IOC_E_DETACH ;
+ int bfa_fsm_send_event (struct bfa_ioc*,int ) ;
 
 void
 bfa_nw_ioc_detach(struct bfa_ioc *ioc)
 {
-	bfa_fsm_send_event(ioc, IOC_E_DETACH);
+ bfa_fsm_send_event(ioc, IOC_E_DETACH);
 
-	/* Done with detach, empty the notify_q. */
-	INIT_LIST_HEAD(&ioc->notify_q);
+
+ INIT_LIST_HEAD(&ioc->notify_q);
 }

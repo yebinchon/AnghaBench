@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ width; scalar_t__ height; int /*<<< orphan*/  use_argb; } ;
-typedef  TYPE_1__ WebPPicture ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ width; scalar_t__ height; int use_argb; } ;
+typedef TYPE_1__ WebPPicture ;
 struct TYPE_10__ {int x_offset_; int y_offset_; int width_; int height_; } ;
-typedef  TYPE_2__ FrameRectangle ;
+typedef TYPE_2__ FrameRectangle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MinimizeChangeRectangle (TYPE_1__ const* const,TYPE_1__ const* const,TYPE_2__*,int,float) ; 
- int /*<<< orphan*/  SnapToEvenOffsets (TYPE_2__*) ; 
- void* clip (int const,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int MinimizeChangeRectangle (TYPE_1__ const* const,TYPE_1__ const* const,TYPE_2__*,int,float) ;
+ int SnapToEvenOffsets (TYPE_2__*) ;
+ void* clip (int const,int ,scalar_t__) ;
 
 int WebPAnimEncoderRefineRect(
     const WebPPicture* const prev_canvas, const WebPPicture* const curr_canvas,
@@ -31,7 +31,7 @@ int WebPAnimEncoderRefineRect(
   const int left = clip(*x_offset, 0, curr_canvas->width - 1);
   const int bottom = clip(*y_offset + *height, 0, curr_canvas->height);
   const int top = clip(*y_offset, 0, curr_canvas->height - 1);
-  if (prev_canvas == NULL || curr_canvas == NULL ||
+  if (prev_canvas == ((void*)0) || curr_canvas == ((void*)0) ||
       prev_canvas->width != curr_canvas->width ||
       prev_canvas->height != curr_canvas->height ||
       !prev_canvas->use_argb || !curr_canvas->use_argb) {

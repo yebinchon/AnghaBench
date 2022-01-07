@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct crypto_ablkcipher {int dummy; } ;
 struct aes_ctx {int dummy; } ;
-struct ablkcipher_request {int /*<<< orphan*/  info; } ;
+struct ablkcipher_request {int info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_DIR_ENCRYPT ; 
- struct aes_ctx* crypto_ablkcipher_ctx (struct crypto_ablkcipher*) ; 
- struct crypto_ablkcipher* crypto_ablkcipher_reqtfm (struct ablkcipher_request*) ; 
- int lq_aes_queue_mgr (struct aes_ctx*,struct ablkcipher_request*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int CRYPTO_DIR_ENCRYPT ;
+ struct aes_ctx* crypto_ablkcipher_ctx (struct crypto_ablkcipher*) ;
+ struct crypto_ablkcipher* crypto_ablkcipher_reqtfm (struct ablkcipher_request*) ;
+ int lq_aes_queue_mgr (struct aes_ctx*,struct ablkcipher_request*,int ,int ,int) ;
 
 __attribute__((used)) static int cbc_aes_encrypt (struct ablkcipher_request *areq)
 {

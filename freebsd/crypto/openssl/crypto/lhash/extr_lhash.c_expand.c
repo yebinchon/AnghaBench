@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {unsigned int num_alloc_nodes; unsigned int p; unsigned int pmax; TYPE_1__** b; int /*<<< orphan*/  num_expands; int /*<<< orphan*/  num_nodes; int /*<<< orphan*/  num_expand_reallocs; int /*<<< orphan*/  error; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {unsigned int num_alloc_nodes; unsigned int p; unsigned int pmax; TYPE_1__** b; int num_expands; int num_nodes; int num_expand_reallocs; int error; } ;
 struct TYPE_7__ {unsigned long hash; struct TYPE_7__* next; } ;
-typedef  TYPE_1__ OPENSSL_LH_NODE ;
-typedef  TYPE_2__ OPENSSL_LHASH ;
+typedef TYPE_1__ OPENSSL_LH_NODE ;
+typedef TYPE_2__ OPENSSL_LHASH ;
 
-/* Variables and functions */
- TYPE_1__** OPENSSL_realloc (TYPE_1__**,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__**,int /*<<< orphan*/ ,int) ; 
+
+ TYPE_1__** OPENSSL_realloc (TYPE_1__**,int) ;
+ int memset (TYPE_1__**,int ,int) ;
 
 __attribute__((used)) static int expand(OPENSSL_LHASH *lh)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static int expand(OPENSSL_LHASH *lh)
     if (p + 1 >= pmax) {
         j = nni * 2;
         n = OPENSSL_realloc(lh->b, sizeof(OPENSSL_LH_NODE *) * j);
-        if (n == NULL) {
+        if (n == ((void*)0)) {
             lh->error++;
             return 0;
         }
@@ -51,11 +51,11 @@ __attribute__((used)) static int expand(OPENSSL_LHASH *lh)
     lh->num_expands++;
     n1 = &(lh->b[p]);
     n2 = &(lh->b[p + pmax]);
-    *n2 = NULL;
+    *n2 = ((void*)0);
 
-    for (np = *n1; np != NULL;) {
+    for (np = *n1; np != ((void*)0);) {
         hash = np->hash;
-        if ((hash % nni) != p) { /* move it */
+        if ((hash % nni) != p) {
             *n1 = (*n1)->next;
             np->next = *n2;
             *n2 = np;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* LUA_NUMBER_FMT ; 
- scalar_t__ LUA_TNUMBER ; 
- scalar_t__ fprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ fwrite (char const*,int,size_t,int /*<<< orphan*/ *) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- scalar_t__ luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tonumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int FILE ;
+
+
+ char* LUA_NUMBER_FMT ;
+ scalar_t__ LUA_TNUMBER ;
+ scalar_t__ fprintf (int *,char*,int ) ;
+ scalar_t__ fwrite (char const*,int,size_t,int *) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ scalar_t__ luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ int lua_pushboolean (int *,int) ;
+ int lua_tonumber (int *,int) ;
+ scalar_t__ lua_type (int *,int) ;
 
 __attribute__((used)) static int vlclua_io_file_write( lua_State *L )
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int vlclua_io_file_write( lua_State *L )
     if ( !*pp_file )
         return luaL_error( L, "Attempt to use a closed file" );
     int i_nb_args = lua_gettop( L );
-    bool b_success = true;
+    bool b_success = 1;
     for ( int i = 2; i <= i_nb_args; ++i )
     {
         bool i_res;

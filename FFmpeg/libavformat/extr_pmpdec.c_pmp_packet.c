@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ * pb; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int * pb; TYPE_1__* priv_data; } ;
 struct TYPE_9__ {int stream_index; } ;
-struct TYPE_8__ {int cur_stream; int audio_packets; int num_streams; size_t current_packet; int /*<<< orphan*/ * packet_sizes; int /*<<< orphan*/  packet_sizes_alloc; } ;
-typedef  TYPE_1__ PMPContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_8__ {int cur_stream; int audio_packets; int num_streams; size_t current_packet; int * packet_sizes; int packet_sizes_alloc; } ;
+typedef TYPE_1__ PMPContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_fast_malloc (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int) ; 
- int av_get_packet (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rl32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_skip (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_fast_malloc (int **,int *,int) ;
+ int av_get_packet (int *,TYPE_2__*,int ) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ scalar_t__ avio_feof (int *) ;
+ int avio_r8 (int *) ;
+ int avio_rl32 (int *) ;
+ int avio_skip (int *,int) ;
 
 __attribute__((used)) static int pmp_packet(AVFormatContext *s, AVPacket *pkt)
 {

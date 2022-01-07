@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int ULONG ;
-struct TYPE_6__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; scalar_t__ biClrImportant; scalar_t__ biClrUsed; scalar_t__ biYPelsPerMeter; scalar_t__ biXPelsPerMeter; scalar_t__ biSizeImage; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int buffer ;
+typedef int ULONG ;
+struct TYPE_6__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; scalar_t__ biClrImportant; scalar_t__ biClrUsed; scalar_t__ biYPelsPerMeter; scalar_t__ biXPelsPerMeter; scalar_t__ biSizeImage; int biCompression; } ;
 struct TYPE_8__ {TYPE_2__* bmiColors; TYPE_1__ bmiHeader; } ;
 struct TYPE_7__ {int rgbBlue; int rgbRed; scalar_t__ rgbGreen; } ;
-typedef  int /*<<< orphan*/  RGBQUAD ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_3__ BITMAPINFO ;
+typedef int RGBQUAD ;
+typedef int PVOID ;
+typedef int * HBITMAP ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_3__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/ * CreateDIBSection (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int SetDIBits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,char*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int BI_RGB ;
+ int * CreateDIBSection (int *,TYPE_3__*,int ,int *,int *,int ) ;
+ int DIB_RGB_COLORS ;
+ int DeleteObject (int *) ;
+ int SetDIBits (int *,int *,int ,int,char*,TYPE_3__*,int ) ;
+ int ZeroMemory (char*,int) ;
+ int ok (int,char*,...) ;
 
 void Test_SetDIBits()
 {
@@ -56,15 +56,15 @@ void Test_SetDIBits()
     pBMI->bmiHeader.biClrUsed=0;
     pBMI->bmiHeader.biClrImportant=0;
 
-    hbmp = CreateDIBSection(NULL, pBMI, DIB_RGB_COLORS, (PVOID*)&dibBuffer, NULL, 0);
-    ok(hbmp!=NULL, "Failed to create a DIB section\n");
+    hbmp = CreateDIBSection(((void*)0), pBMI, DIB_RGB_COLORS, (PVOID*)&dibBuffer, ((void*)0), 0);
+    ok(hbmp!=((void*)0), "Failed to create a DIB section\n");
 
     pBMI->bmiHeader.biBitCount = 1;
     pBMI->bmiColors[0].rgbBlue = 0xFF;
     pBMI->bmiColors[0].rgbGreen = 0;
     pBMI->bmiColors[0].rgbRed = 0xFF;
 
-    ret = SetDIBits(NULL, hbmp, 0, 1, bits1bpp, pBMI, DIB_RGB_COLORS);
+    ret = SetDIBits(((void*)0), hbmp, 0, 1, bits1bpp, pBMI, DIB_RGB_COLORS);
     ok(ret == 1, "Copied %i scanlines\n", ret);
 
     ok(dibBuffer[0] == 0, "Wrong color 0x%08x after SetDIBits\n", (unsigned int)dibBuffer[0]);

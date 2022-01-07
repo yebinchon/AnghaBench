@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_8__ ;
-typedef  struct TYPE_26__   TYPE_7__ ;
-typedef  struct TYPE_25__   TYPE_6__ ;
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_27__ TYPE_8__ ;
+typedef struct TYPE_26__ TYPE_7__ ;
+typedef struct TYPE_25__ TYPE_6__ ;
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_10__ ;
+
+
+typedef char u_char ;
+typedef size_t ngx_uint_t ;
 struct TYPE_19__ {char* data; int len; } ;
 struct TYPE_24__ {TYPE_10__ value; } ;
-typedef  TYPE_5__ ngx_table_elt_t ;
+typedef TYPE_5__ ngx_table_elt_t ;
 struct TYPE_25__ {int len; char* data; } ;
-typedef  TYPE_6__ ngx_str_t ;
-typedef  scalar_t__ ngx_int_t ;
-struct TYPE_26__ {int /*<<< orphan*/  push_preload; TYPE_1__* pushes; } ;
-typedef  TYPE_7__ ngx_http_v2_loc_conf_t ;
+typedef TYPE_6__ ngx_str_t ;
+typedef scalar_t__ ngx_int_t ;
+struct TYPE_26__ {int push_preload; TYPE_1__* pushes; } ;
+typedef TYPE_7__ ngx_http_v2_loc_conf_t ;
 struct TYPE_21__ {size_t nelts; TYPE_5__** elts; } ;
 struct TYPE_22__ {TYPE_2__ link; } ;
 struct TYPE_27__ {TYPE_4__* connection; TYPE_3__ headers_out; } ;
-typedef  TYPE_8__ ngx_http_request_t ;
-typedef  int /*<<< orphan*/  ngx_http_complex_value_t ;
-struct TYPE_23__ {int /*<<< orphan*/  log; } ;
-struct TYPE_20__ {size_t nelts; int /*<<< orphan*/ * elts; } ;
+typedef TYPE_8__ ngx_http_request_t ;
+typedef int ngx_http_complex_value_t ;
+struct TYPE_23__ {int log; } ;
+struct TYPE_20__ {size_t nelts; int * elts; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_ABORT ; 
- scalar_t__ NGX_ERROR ; 
- int NGX_HTTP_V2_PUSH_HEADERS ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_http_complex_value (TYPE_8__*,int /*<<< orphan*/ *,TYPE_6__*) ; 
- TYPE_7__* ngx_http_get_module_loc_conf (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_v2_module ; 
- scalar_t__ ngx_http_v2_push_resource (TYPE_8__*,TYPE_6__*,TYPE_6__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_10__*) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_6__*,int) ; 
- char* ngx_strlchr (char*,char*,char) ; 
- scalar_t__ ngx_strncasecmp (char*,char*,int) ; 
- scalar_t__ ngx_strncmp (char*,char*,int) ; 
+
+ scalar_t__ NGX_ABORT ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_V2_PUSH_HEADERS ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_http_complex_value (TYPE_8__*,int *,TYPE_6__*) ;
+ TYPE_7__* ngx_http_get_module_loc_conf (TYPE_8__*,int ) ;
+ int ngx_http_v2_module ;
+ scalar_t__ ngx_http_v2_push_resource (TYPE_8__*,TYPE_6__*,TYPE_6__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,TYPE_10__*) ;
+ int ngx_memzero (TYPE_6__*,int) ;
+ char* ngx_strlchr (char*,char*,char) ;
+ scalar_t__ ngx_strncasecmp (char*,char*,int) ;
+ scalar_t__ ngx_strncmp (char*,char*,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_v2_push_resources(ngx_http_request_t *r)
 {
-    u_char                     *start, *end, *last;
-    ngx_int_t                   rc;
-    ngx_str_t                   path;
-    ngx_uint_t                  i, push;
-    ngx_table_elt_t           **h;
-    ngx_http_v2_loc_conf_t     *h2lcf;
-    ngx_http_complex_value_t   *pushes;
-    ngx_str_t                   binary[NGX_HTTP_V2_PUSH_HEADERS];
+    u_char *start, *end, *last;
+    ngx_int_t rc;
+    ngx_str_t path;
+    ngx_uint_t i, push;
+    ngx_table_elt_t **h;
+    ngx_http_v2_loc_conf_t *h2lcf;
+    ngx_http_complex_value_t *pushes;
+    ngx_str_t binary[NGX_HTTP_V2_PUSH_HEADERS];
 
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
                    "http2 push resources");
@@ -100,7 +100,7 @@ ngx_http_v2_push_resources(ngx_http_request_t *r)
                 return NGX_OK;
             }
 
-            /* NGX_OK, NGX_DECLINED */
+
         }
     }
 
@@ -129,7 +129,7 @@ ngx_http_v2_push_resources(ngx_http_request_t *r)
         while (start < end && *start == ' ') { start++; }
 
         for (last = start; last < end && *last != '>'; last++) {
-            /* void */
+
         }
 
         if (last == start || last == end) {
@@ -158,7 +158,7 @@ ngx_http_v2_push_resources(ngx_http_request_t *r)
 
         last = ngx_strlchr(start, end, ',');
 
-        if (last == NULL) {
+        if (last == ((void*)0)) {
             last = end;
         }
 
@@ -239,7 +239,7 @@ ngx_http_v2_push_resources(ngx_http_request_t *r)
 
             start = ngx_strlchr(start, last, ';');
 
-            if (start == NULL) {
+            if (start == ((void*)0)) {
                 break;
             }
 
@@ -265,7 +265,7 @@ ngx_http_v2_push_resources(ngx_http_request_t *r)
                 return NGX_OK;
             }
 
-            /* NGX_OK, NGX_DECLINED */
+
         }
 
         if (last < end) {

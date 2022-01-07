@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int Flags; int /*<<< orphan*/  Type; } ;
-struct TYPE_9__ {int EmfPlusFlags; scalar_t__ LogicalDpiY; scalar_t__ LogicalDpiX; int /*<<< orphan*/  Version; TYPE_1__ Header; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Flags; int Type; } ;
+struct TYPE_9__ {int EmfPlusFlags; scalar_t__ LogicalDpiY; scalar_t__ LogicalDpiX; int Version; TYPE_1__ Header; } ;
 struct TYPE_8__ {scalar_t__ metafile_type; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_2__ GpMetafile ;
-typedef  TYPE_3__ EmfPlusHeader ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef TYPE_2__ GpMetafile ;
+typedef TYPE_3__ EmfPlusHeader ;
 
-/* Variables and functions */
- scalar_t__ DT_RASDISPLAY ; 
- int /*<<< orphan*/  EmfPlusRecordTypeHeader ; 
- scalar_t__ GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGPIXELSX ; 
- int /*<<< orphan*/  LOGPIXELSY ; 
- int /*<<< orphan*/  METAFILE_AllocateRecord (TYPE_2__*,int,void**) ; 
- int /*<<< orphan*/  METAFILE_WriteRecords (TYPE_2__*) ; 
- scalar_t__ MetafileTypeEmfPlusDual ; 
- scalar_t__ MetafileTypeEmfPlusOnly ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  TECHNOLOGY ; 
- int /*<<< orphan*/  VERSION_MAGIC2 ; 
+
+ scalar_t__ DT_RASDISPLAY ;
+ int EmfPlusRecordTypeHeader ;
+ scalar_t__ GetDeviceCaps (int ,int ) ;
+ int LOGPIXELSX ;
+ int LOGPIXELSY ;
+ int METAFILE_AllocateRecord (TYPE_2__*,int,void**) ;
+ int METAFILE_WriteRecords (TYPE_2__*) ;
+ scalar_t__ MetafileTypeEmfPlusDual ;
+ scalar_t__ MetafileTypeEmfPlusOnly ;
+ int Ok ;
+ int TECHNOLOGY ;
+ int VERSION_MAGIC2 ;
 
 __attribute__((used)) static GpStatus METAFILE_WriteHeader(GpMetafile *metafile, HDC hdc)
 {

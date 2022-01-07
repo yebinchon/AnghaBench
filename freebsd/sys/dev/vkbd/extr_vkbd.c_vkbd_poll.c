@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  ks_polling; } ;
-typedef  TYPE_1__ vkbd_state_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ks_polling; } ;
+typedef TYPE_1__ vkbd_state_t ;
 struct TYPE_7__ {scalar_t__ kb_data; } ;
-typedef  TYPE_2__ keyboard_t ;
+typedef TYPE_2__ keyboard_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VKBD_LOCK (TYPE_1__*) ; 
- int /*<<< orphan*/  VKBD_UNLOCK (TYPE_1__*) ; 
+
+ int VKBD_LOCK (TYPE_1__*) ;
+ int VKBD_UNLOCK (TYPE_1__*) ;
 
 __attribute__((used)) static int
 vkbd_poll(keyboard_t *kbd, int on)
 {
-	vkbd_state_t	*state = NULL;
+ vkbd_state_t *state = ((void*)0);
 
-	state = (vkbd_state_t *) kbd->kb_data;
+ state = (vkbd_state_t *) kbd->kb_data;
 
-	VKBD_LOCK(state);
+ VKBD_LOCK(state);
 
-	if (on)
-		state->ks_polling ++;
-	else
-		state->ks_polling --;
+ if (on)
+  state->ks_polling ++;
+ else
+  state->ks_polling --;
 
-	VKBD_UNLOCK(state);
+ VKBD_UNLOCK(state);
 
-	return (0);
+ return (0);
 }

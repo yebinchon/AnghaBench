@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double cmsUInt8Number ;
-typedef  size_t cmsUInt32Number ;
-typedef  int /*<<< orphan*/  cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/  cmsHPROFILE ;
-typedef  scalar_t__ cmsColorSpaceSignature ;
 
-/* Variables and functions */
- size_t BYTES_SH (int) ; 
- size_t CHANNELS_SH (size_t) ; 
- size_t COLORSPACE_SH (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DbgThread () ; 
- int /*<<< orphan*/  ErrorReportingFunction ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FatalErrorQuit ; 
- int /*<<< orphan*/  PT_ANY ; 
- int /*<<< orphan*/  PT_Lab ; 
- int /*<<< orphan*/  TYPE_BGR_8 ; 
- scalar_t__ T_BYTES (size_t) ; 
- scalar_t__ TrappedError ; 
- size_t cmsChannelsOf (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  cmsCloseProfile (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsCreateTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,size_t) ; 
- int /*<<< orphan*/  cmsCreate_sRGBProfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDeleteTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsDoTransform (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*,double*,int) ; 
- scalar_t__ cmsGetColorSpace (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsOpenProfileFromFile (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  cmsSetLogErrorHandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ cmsSigLabData ; 
+
+
+
+typedef double cmsUInt8Number ;
+typedef size_t cmsUInt32Number ;
+typedef int cmsHTRANSFORM ;
+typedef int cmsHPROFILE ;
+typedef scalar_t__ cmsColorSpaceSignature ;
+
+
+ size_t BYTES_SH (int) ;
+ size_t CHANNELS_SH (size_t) ;
+ size_t COLORSPACE_SH (int ) ;
+ int DbgThread () ;
+ int ErrorReportingFunction ;
+ scalar_t__ FALSE ;
+ int FatalErrorQuit ;
+ int PT_ANY ;
+ int PT_Lab ;
+ int TYPE_BGR_8 ;
+ scalar_t__ T_BYTES (size_t) ;
+ scalar_t__ TrappedError ;
+ size_t cmsChannelsOf (int ,scalar_t__) ;
+ int cmsCloseProfile (int ,int ) ;
+ int cmsCreateTransform (int ,int ,size_t,int ,int ,size_t,size_t) ;
+ int cmsCreate_sRGBProfile (int ) ;
+ int cmsDeleteTransform (int ,int ) ;
+ int cmsDoTransform (int ,int ,double*,double*,int) ;
+ scalar_t__ cmsGetColorSpace (int ,int ) ;
+ int cmsOpenProfileFromFile (int ,char*,char*) ;
+ int cmsSetLogErrorHandler (int ,int ) ;
+ scalar_t__ cmsSigLabData ;
 
 __attribute__((used)) static
 int CheckForgedMPE(void)
@@ -85,16 +85,16 @@ int CheckForgedMPE(void)
 
     cmsSetLogErrorHandler(DbgThread(), FatalErrorQuit);
 
-    // Should report error
+
     if (!TrappedError) return 0;
 
     TrappedError = FALSE;
 
-    // Transform should NOT be created
+
     if (!hTransform) return 1;
 
-    // Never should reach here
-    if (T_BYTES(srcFormat) == 0) {  // 0 means double
+
+    if (T_BYTES(srcFormat) == 0) {
         double input[128];
         for (i = 0; i < nSrcComponents; i++)
             input[i] = 0.5f;

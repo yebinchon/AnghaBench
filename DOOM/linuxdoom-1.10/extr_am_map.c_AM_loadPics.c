@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PU_STATIC ; 
- int /*<<< orphan*/  W_CacheLumpName (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * marknums ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+ int PU_STATIC ;
+ int W_CacheLumpName (char*,int ) ;
+ int * marknums ;
+ int sprintf (char*,char*,int) ;
 
 void AM_loadPics(void)
 {
     int i;
     char namebuf[9];
-  
+
     for (i=0;i<10;i++)
     {
-	sprintf(namebuf, "AMMNUM%d", i);
-	marknums[i] = W_CacheLumpName(namebuf, PU_STATIC);
+ sprintf(namebuf, "AMMNUM%d", i);
+ marknums[i] = W_CacheLumpName(namebuf, PU_STATIC);
     }
 
 }

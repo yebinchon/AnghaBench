@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * Redirections; struct TYPE_6__* Next; struct TYPE_6__* Subcommands; int /*<<< orphan*/  Type; } ;
-typedef  int /*<<< orphan*/  REDIRECTION ;
-typedef  TYPE_1__ PARSED_COMMAND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  C_BLOCK ; 
- int /*<<< orphan*/  C_OP_LOWEST ; 
- scalar_t__ CurrentTokenType ; 
- int /*<<< orphan*/  FreeCommand (TYPE_1__*) ; 
- int /*<<< orphan*/  FreeRedirection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InsideBlock ; 
- int /*<<< orphan*/  ParseChar () ; 
- TYPE_1__* ParseCommandOp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ParseError () ; 
- int /*<<< orphan*/  ParseRedirection (int /*<<< orphan*/ **) ; 
- scalar_t__ ParseToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STANDARD_SEPS ; 
- scalar_t__ TOK_END_BLOCK ; 
- scalar_t__ TOK_REDIRECTION ; 
- int /*<<< orphan*/  WARN (char*) ; 
- scalar_t__ bParseError ; 
- TYPE_1__* cmd_alloc (int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * Redirections; struct TYPE_6__* Next; struct TYPE_6__* Subcommands; int Type; } ;
+typedef int REDIRECTION ;
+typedef TYPE_1__ PARSED_COMMAND ;
+
+
+ int C_BLOCK ;
+ int C_OP_LOWEST ;
+ scalar_t__ CurrentTokenType ;
+ int FreeCommand (TYPE_1__*) ;
+ int FreeRedirection (int *) ;
+ int InsideBlock ;
+ int ParseChar () ;
+ TYPE_1__* ParseCommandOp (int ) ;
+ int ParseError () ;
+ int ParseRedirection (int **) ;
+ scalar_t__ ParseToken (int ,int ) ;
+ int STANDARD_SEPS ;
+ scalar_t__ TOK_END_BLOCK ;
+ scalar_t__ TOK_REDIRECTION ;
+ int WARN (char*) ;
+ scalar_t__ bParseError ;
+ TYPE_1__* cmd_alloc (int) ;
 
 __attribute__((used)) static PARSED_COMMAND *ParseBlock(REDIRECTION *RedirList)
 {
@@ -44,14 +44,14 @@ __attribute__((used)) static PARSED_COMMAND *ParseBlock(REDIRECTION *RedirList)
         WARN("Cannot allocate memory for Cmd!\n");
         ParseError();
         FreeRedirection(RedirList);
-        return NULL;
+        return ((void*)0);
     }
     Cmd->Type = C_BLOCK;
-    Cmd->Next = NULL;
-    Cmd->Subcommands = NULL;
+    Cmd->Next = ((void*)0);
+    Cmd->Subcommands = ((void*)0);
     Cmd->Redirections = RedirList;
 
-    /* Read the block contents */
+
     NextPtr = &Cmd->Subcommands;
     InsideBlock++;
     while (1)
@@ -66,24 +66,24 @@ __attribute__((used)) static PARSED_COMMAND *ParseBlock(REDIRECTION *RedirList)
         {
             InsideBlock--;
             FreeCommand(Cmd);
-            return NULL;
+            return ((void*)0);
         }
 
         if (CurrentTokenType == TOK_END_BLOCK)
             break;
 
-        /* Skip past the \n */
+
         ParseChar();
     }
     InsideBlock--;
 
-    /* Process any trailing redirections */
+
     while (ParseToken(0, STANDARD_SEPS) == TOK_REDIRECTION)
     {
         if (!ParseRedirection(&Cmd->Redirections))
         {
             FreeCommand(Cmd);
-            return NULL;
+            return ((void*)0);
         }
     }
     return Cmd;

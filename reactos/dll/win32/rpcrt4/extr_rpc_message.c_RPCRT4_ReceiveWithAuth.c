@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_7__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_18__ TYPE_7__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG ;
 struct TYPE_18__ {int ptype; scalar_t__ frag_len; scalar_t__ auth_len; unsigned short flags; } ;
-struct TYPE_17__ {scalar_t__ BufferLength; int /*<<< orphan*/ * Buffer; } ;
+struct TYPE_17__ {scalar_t__ BufferLength; int * Buffer; } ;
 struct TYPE_15__ {scalar_t__ alloc_hint; } ;
 struct TYPE_14__ {scalar_t__ alloc_hint; } ;
 struct TYPE_16__ {TYPE_7__ common; TYPE_2__ request; TYPE_1__ response; } ;
-typedef  TYPE_3__ RpcPktHdr ;
-typedef  int /*<<< orphan*/  RpcConnection ;
-typedef  int /*<<< orphan*/  RpcAuthVerifier ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  TYPE_4__* PRPC_MESSAGE ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_3__ RpcPktHdr ;
+typedef int RpcConnection ;
+typedef int RpcAuthVerifier ;
+typedef scalar_t__ RPC_STATUS ;
+typedef TYPE_4__* PRPC_MESSAGE ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- unsigned char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/ * I_RpcAllocate (scalar_t__) ; 
- int /*<<< orphan*/  I_RpcFree (int /*<<< orphan*/ *) ; 
- scalar_t__ I_RpcReAllocateBuffer (TYPE_4__*) ; 
-#define  PKT_REQUEST 129 
-#define  PKT_RESPONSE 128 
- int /*<<< orphan*/  RPCRT4_FreeHeader (TYPE_3__*) ; 
- scalar_t__ RPCRT4_GetHeaderSize (TYPE_3__*) ; 
- int /*<<< orphan*/  RPCRT4_SetThreadCurrentConnection (int /*<<< orphan*/ *) ; 
- scalar_t__ RPCRT4_receive_fragment (int /*<<< orphan*/ *,TYPE_3__**,void**) ; 
- unsigned int RPC_AUTH_VERIFIER_LEN (TYPE_7__*) ; 
- unsigned short RPC_FLG_FIRST ; 
- int RPC_FLG_LAST ; 
- scalar_t__ RPC_S_OK ; 
- scalar_t__ RPC_S_OUT_OF_RESOURCES ; 
- scalar_t__ RPC_S_PROTOCOL_ERROR ; 
- int /*<<< orphan*/  SECURE_PACKET_RECEIVE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*,unsigned int,...) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  packet_does_auth_negotiation (TYPE_3__*) ; 
- scalar_t__ rpcrt4_conn_is_authorized (int /*<<< orphan*/ *) ; 
- scalar_t__ rpcrt4_conn_secure_packet (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*,scalar_t__,unsigned char*,scalar_t__,int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
+
+ scalar_t__ ERROR_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ unsigned char* HeapAlloc (int ,int ,unsigned int) ;
+ int HeapFree (int ,int ,void*) ;
+ int * I_RpcAllocate (scalar_t__) ;
+ int I_RpcFree (int *) ;
+ scalar_t__ I_RpcReAllocateBuffer (TYPE_4__*) ;
+
+
+ int RPCRT4_FreeHeader (TYPE_3__*) ;
+ scalar_t__ RPCRT4_GetHeaderSize (TYPE_3__*) ;
+ int RPCRT4_SetThreadCurrentConnection (int *) ;
+ scalar_t__ RPCRT4_receive_fragment (int *,TYPE_3__**,void**) ;
+ unsigned int RPC_AUTH_VERIFIER_LEN (TYPE_7__*) ;
+ unsigned short RPC_FLG_FIRST ;
+ int RPC_FLG_LAST ;
+ scalar_t__ RPC_S_OK ;
+ scalar_t__ RPC_S_OUT_OF_RESOURCES ;
+ scalar_t__ RPC_S_PROTOCOL_ERROR ;
+ int SECURE_PACKET_RECEIVE ;
+ int TRACE (char*,...) ;
+ scalar_t__ TRUE ;
+ int WARN (char*,unsigned int,...) ;
+ int memcpy (unsigned char*,unsigned char*,unsigned int) ;
+ int packet_does_auth_negotiation (TYPE_3__*) ;
+ scalar_t__ rpcrt4_conn_is_authorized (int *) ;
+ scalar_t__ rpcrt4_conn_secure_packet (int *,int ,TYPE_3__*,scalar_t__,unsigned char*,scalar_t__,int *,unsigned char*,unsigned int) ;
 
 RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
                                   PRPC_MESSAGE pMsg,
@@ -68,13 +68,13 @@ RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
   ULONG data_length;
   ULONG buffer_length;
   ULONG auth_length = 0;
-  unsigned char *auth_data = NULL;
-  RpcPktHdr *CurrentHeader = NULL;
-  void *payload = NULL;
+  unsigned char *auth_data = ((void*)0);
+  RpcPktHdr *CurrentHeader = ((void*)0);
+  void *payload = ((void*)0);
 
-  *Header = NULL;
-  pMsg->Buffer = NULL;
-  if (auth_data_out) *auth_data_out = NULL;
+  *Header = ((void*)0);
+  pMsg->Buffer = ((void*)0);
+  if (auth_data_out) *auth_data_out = ((void*)0);
   if (auth_length_out) *auth_length_out = 0;
 
   TRACE("(%p, %p, %p, %p)\n", Connection, Header, pMsg, auth_data_out);
@@ -86,12 +86,12 @@ RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
 
   hdr_length = RPCRT4_GetHeaderSize(*Header);
 
-  /* read packet body */
+
   switch ((*Header)->common.ptype) {
-  case PKT_RESPONSE:
+  case 128:
     pMsg->BufferLength = (*Header)->response.alloc_hint;
     break;
-  case PKT_REQUEST:
+  case 129:
     pMsg->BufferLength = (*Header)->request.alloc_hint;
     break;
   default:
@@ -122,7 +122,7 @@ RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
   {
     unsigned int header_auth_len = RPC_AUTH_VERIFIER_LEN(&CurrentHeader->common);
 
-    /* verify header fields */
+
 
     if ((CurrentHeader->common.frag_len < hdr_length) ||
         (CurrentHeader->common.frag_len - hdr_length < header_auth_len)) {
@@ -164,15 +164,15 @@ RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
         goto fail;
       }
 
-      /* FIXME: we should accumulate authentication data for the bind,
-       * bind_ack, alter_context and alter_context_response if necessary.
-       * however, the details of how this is done is very sketchy in the
-       * DCE/RPC spec. for all other packet types that have authentication
-       * verifier data then it is just duplicated in all the fragments */
+
+
+
+
+
       memcpy(auth_data, (unsigned char *)payload + data_length, header_auth_len);
 
-      /* these packets are handled specially, not by the generic SecurePacket
-       * function */
+
+
       if (!packet_does_auth_negotiation(*Header) && rpcrt4_conn_is_authorized(Connection))
       {
         status = rpcrt4_conn_secure_packet(Connection, SECURE_PACKET_RECEIVE,
@@ -192,10 +192,10 @@ RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
       if (*Header != CurrentHeader)
       {
           RPCRT4_FreeHeader(CurrentHeader);
-          CurrentHeader = NULL;
+          CurrentHeader = ((void*)0);
       }
       HeapFree(GetProcessHeap(), 0, payload);
-      payload = NULL;
+      payload = ((void*)0);
 
       status = RPCRT4_receive_fragment(Connection, &CurrentHeader, &payload);
       if (status != RPC_S_OK) goto fail;
@@ -207,18 +207,18 @@ RPC_STATUS RPCRT4_ReceiveWithAuth(RpcConnection *Connection, RpcPktHdr **Header,
   }
   pMsg->BufferLength = buffer_length;
 
-  /* success */
+
   status = RPC_S_OK;
 
 fail:
-  RPCRT4_SetThreadCurrentConnection(NULL);
+  RPCRT4_SetThreadCurrentConnection(((void*)0));
   if (CurrentHeader != *Header)
     RPCRT4_FreeHeader(CurrentHeader);
   if (status != RPC_S_OK) {
     I_RpcFree(pMsg->Buffer);
-    pMsg->Buffer = NULL;
+    pMsg->Buffer = ((void*)0);
     RPCRT4_FreeHeader(*Header);
-    *Header = NULL;
+    *Header = ((void*)0);
   }
   if (auth_data_out && status == RPC_S_OK) {
     *auth_length_out = auth_length;

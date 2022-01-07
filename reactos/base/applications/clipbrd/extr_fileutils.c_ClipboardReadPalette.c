@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPLOGPALETTE ;
-typedef  int /*<<< orphan*/  HPALETTE ;
-typedef  int /*<<< orphan*/  HGLOBAL ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_PALETTE ; 
- int /*<<< orphan*/  ClipboardReadMemoryBlock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreatePalette (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalLock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalUnlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetClipboardData (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int LPLOGPALETTE ;
+typedef int HPALETTE ;
+typedef int HGLOBAL ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CF_PALETTE ;
+ int ClipboardReadMemoryBlock (int ,int ,int ) ;
+ int CreatePalette (int ) ;
+ int DeleteObject (int ) ;
+ int ERROR_OUTOFMEMORY ;
+ int FALSE ;
+ int GlobalFree (int ) ;
+ int GlobalLock (int ) ;
+ int GlobalUnlock (int ) ;
+ int SetClipboardData (int ,int ) ;
+ int SetLastError (int ) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL ClipboardReadPalette(HANDLE hFile, DWORD dwOffset, DWORD dwLength)
 {

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct socket {int dummy; } ;
 struct ndrv_cb {scalar_t__ nd_faddr; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOTCONN ; 
- int /*<<< orphan*/  ndrv_do_disconnect (struct ndrv_cb*) ; 
- struct ndrv_cb* sotondrvcb (struct socket*) ; 
+
+ int EINVAL ;
+ int ENOTCONN ;
+ int ndrv_do_disconnect (struct ndrv_cb*) ;
+ struct ndrv_cb* sotondrvcb (struct socket*) ;
 
 __attribute__((used)) static int
 ndrv_disconnect(struct socket *so)
 {
-	struct ndrv_cb *np = sotondrvcb(so);
+ struct ndrv_cb *np = sotondrvcb(so);
 
-	if (np == 0)
-		return EINVAL;
+ if (np == 0)
+  return EINVAL;
 
-	if (np->nd_faddr == 0)
-		return ENOTCONN;
+ if (np->nd_faddr == 0)
+  return ENOTCONN;
 
-	ndrv_do_disconnect(np);
-	return 0;
+ ndrv_do_disconnect(np);
+ return 0;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {void* PrimAlphaEnable; void* ZBuffering; void* DoubleBuffering; int /*<<< orphan*/  PSMZ; int /*<<< orphan*/  PSM; int /*<<< orphan*/  Height; int /*<<< orphan*/  Width; int /*<<< orphan*/  Field; int /*<<< orphan*/  Interlace; int /*<<< orphan*/  Mode; } ;
-typedef  TYPE_1__ GSGLOBAL ;
 
-/* Variables and functions */
- int DMA_CHANNEL_GIF ; 
- int /*<<< orphan*/  D_CTRL_MFD_OFF ; 
- int /*<<< orphan*/  D_CTRL_RCYC_8 ; 
- int /*<<< orphan*/  D_CTRL_RELE_OFF ; 
- int /*<<< orphan*/  D_CTRL_STD_OFF ; 
- int /*<<< orphan*/  D_CTRL_STS_UNSPEC ; 
- int /*<<< orphan*/  GS_BLACK ; 
- int /*<<< orphan*/  GS_FIELD ; 
- int /*<<< orphan*/  GS_INTERLACED ; 
- int /*<<< orphan*/  GS_MODE_NTSC ; 
- int /*<<< orphan*/  GS_ONESHOT ; 
- int /*<<< orphan*/  GS_PSMZ_16 ; 
- int /*<<< orphan*/  GS_PSM_CT16 ; 
- void* GS_SETTING_OFF ; 
- int /*<<< orphan*/  NTSC_HEIGHT ; 
- int /*<<< orphan*/  NTSC_WIDTH ; 
- int /*<<< orphan*/  dmaKit_chan_init (int) ; 
- int /*<<< orphan*/  dmaKit_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gsKit_clear (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* gsKit_init_global () ; 
- int /*<<< orphan*/  gsKit_init_screen (TYPE_1__*) ; 
- int /*<<< orphan*/  gsKit_mode_switch (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {void* PrimAlphaEnable; void* ZBuffering; void* DoubleBuffering; int PSMZ; int PSM; int Height; int Width; int Field; int Interlace; int Mode; } ;
+typedef TYPE_1__ GSGLOBAL ;
+
+
+ int DMA_CHANNEL_GIF ;
+ int D_CTRL_MFD_OFF ;
+ int D_CTRL_RCYC_8 ;
+ int D_CTRL_RELE_OFF ;
+ int D_CTRL_STD_OFF ;
+ int D_CTRL_STS_UNSPEC ;
+ int GS_BLACK ;
+ int GS_FIELD ;
+ int GS_INTERLACED ;
+ int GS_MODE_NTSC ;
+ int GS_ONESHOT ;
+ int GS_PSMZ_16 ;
+ int GS_PSM_CT16 ;
+ void* GS_SETTING_OFF ;
+ int NTSC_HEIGHT ;
+ int NTSC_WIDTH ;
+ int dmaKit_chan_init (int) ;
+ int dmaKit_init (int ,int ,int ,int ,int ,int) ;
+ int gsKit_clear (TYPE_1__*,int ) ;
+ TYPE_1__* gsKit_init_global () ;
+ int gsKit_init_screen (TYPE_1__*) ;
+ int gsKit_mode_switch (TYPE_1__*,int ) ;
 
 __attribute__((used)) static GSGLOBAL *init_GSGlobal(void)
 {
@@ -57,7 +57,7 @@ __attribute__((used)) static GSGLOBAL *init_GSGlobal(void)
    dmaKit_init(D_CTRL_RELE_OFF,D_CTRL_MFD_OFF, D_CTRL_STS_UNSPEC,
                D_CTRL_STD_OFF, D_CTRL_RCYC_8, 1 << DMA_CHANNEL_GIF);
 
-   /* Initialize the DMAC */
+
    dmaKit_chan_init(DMA_CHANNEL_GIF);
 
    gsKit_init_screen(gsGlobal);

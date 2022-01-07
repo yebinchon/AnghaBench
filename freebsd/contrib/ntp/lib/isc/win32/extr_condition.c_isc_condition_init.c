@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_result_t ;
-struct TYPE_3__ {int /*<<< orphan*/  threadlist; int /*<<< orphan*/ ** events; scalar_t__ waiters; } ;
-typedef  TYPE_1__ isc_condition_t ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  ISC_LIST_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISC_R_SUCCESS ; 
- int /*<<< orphan*/  ISC_R_UNEXPECTED ; 
- size_t LSIGNAL ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int isc_result_t ;
+struct TYPE_3__ {int threadlist; int ** events; scalar_t__ waiters; } ;
+typedef TYPE_1__ isc_condition_t ;
+typedef int * HANDLE ;
+
+
+ int * CreateEvent (int *,int ,int ,int *) ;
+ int FALSE ;
+ int ISC_LIST_INIT (int ) ;
+ int ISC_R_SUCCESS ;
+ int ISC_R_UNEXPECTED ;
+ size_t LSIGNAL ;
+ int REQUIRE (int ) ;
 
 isc_result_t
 isc_condition_init(isc_condition_t *cond) {
-	HANDLE h;
+ HANDLE h;
 
-	REQUIRE(cond != NULL);
+ REQUIRE(cond != ((void*)0));
 
-	cond->waiters = 0;
-	/*
-	 * This handle is shared across all threads
-	 */
-	h = CreateEvent(NULL, FALSE, FALSE, NULL);
-	if (h == NULL) {
-		/* XXX */
-		return (ISC_R_UNEXPECTED);
-	}
-	cond->events[LSIGNAL] = h;
+ cond->waiters = 0;
 
-	/*
-	 * The threadlist will hold the actual events needed
-	 * for the wait condition
-	 */
-	ISC_LIST_INIT(cond->threadlist);
 
-	return (ISC_R_SUCCESS);
+
+ h = CreateEvent(((void*)0), FALSE, FALSE, ((void*)0));
+ if (h == ((void*)0)) {
+
+  return (ISC_R_UNEXPECTED);
+ }
+ cond->events[LSIGNAL] = h;
+
+
+
+
+
+ ISC_LIST_INIT(cond->threadlist);
+
+ return (ISC_R_SUCCESS);
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/ * LPTSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_ENOUGH_MEMORY (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int KEY_MAX_LEN ; 
- int /*<<< orphan*/  _T (char) ; 
- int /*<<< orphan*/ * _tcschr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _tcscpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int _tcslen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * currentKeyName ; 
+
+
+
+typedef int TCHAR ;
+typedef int * LPTSTR ;
+
+
+ int CHECK_ENOUGH_MEMORY (int *) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int KEY_MAX_LEN ;
+ int _T (char) ;
+ int * _tcschr (int *,int ) ;
+ int _tcscpy (int *,int *) ;
+ int _tcslen (int *) ;
+ int * currentKeyName ;
 
 LPTSTR getRegKeyName(LPTSTR lpLine)
 {
   LPTSTR keyNameBeg;
-  TCHAR  lpLineCopy[KEY_MAX_LEN];
+  TCHAR lpLineCopy[KEY_MAX_LEN];
 
-  if (lpLine == NULL)
-    return NULL;
+  if (lpLine == ((void*)0))
+    return ((void*)0);
 
   _tcscpy(lpLineCopy, lpLine);
-  keyNameBeg = _tcschr(lpLineCopy, _T('\\'));    /* The key name start by '\' */
+  keyNameBeg = _tcschr(lpLineCopy, _T('\\'));
   if (keyNameBeg) {
       LPTSTR keyNameEnd;
 
-      keyNameBeg++;                             /* is not part of the name */
+      keyNameBeg++;
       keyNameEnd = _tcschr(lpLineCopy, _T(']'));
       if (keyNameEnd) {
-          *keyNameEnd = _T('\0');               /* remove ']' from the key name */
+          *keyNameEnd = _T('\0');
       }
   } else {
-      keyNameBeg = lpLineCopy + _tcslen(lpLineCopy); /* branch - empty string */
+      keyNameBeg = lpLineCopy + _tcslen(lpLineCopy);
   }
   currentKeyName = HeapAlloc(GetProcessHeap(), 0, (_tcslen(keyNameBeg)+1)*sizeof(TCHAR));
   CHECK_ENOUGH_MEMORY(currentKeyName);

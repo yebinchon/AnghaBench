@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct ssl_state {int /*<<< orphan*/  ctx; int /*<<< orphan*/  net_ctx; } ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbedtls_net_set_nonblock (int /*<<< orphan*/ *) ; 
- int mbedtls_ssl_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
+
+
+
+typedef int uint8_t ;
+struct ssl_state {int ctx; int net_ctx; } ;
+typedef int ssize_t ;
+
+
+ int mbedtls_net_set_nonblock (int *) ;
+ int mbedtls_ssl_write (int *,int const*,size_t) ;
 
 ssize_t ssl_socket_send_all_nonblocking(void *state_data, const void *data_, size_t size, bool no_signal)
 {

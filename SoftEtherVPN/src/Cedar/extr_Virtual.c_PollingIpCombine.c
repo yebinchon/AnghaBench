@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ Now; int /*<<< orphan*/ * IpCombine; } ;
-typedef  TYPE_1__ VH ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ Now; int * IpCombine; } ;
+typedef TYPE_1__ VH ;
+typedef scalar_t__ UINT ;
 struct TYPE_10__ {scalar_t__ Expire; } ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  TYPE_2__ IP_COMBINE ;
+typedef int LIST ;
+typedef TYPE_2__ IP_COMBINE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  Delete (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  FreeIpCombine (TYPE_1__*,TYPE_2__*) ; 
- TYPE_2__* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
+
+ int Add (int *,TYPE_2__*) ;
+ int Delete (int *,TYPE_2__*) ;
+ int FreeIpCombine (TYPE_1__*,TYPE_2__*) ;
+ TYPE_2__* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
 
 void PollingIpCombine(VH *v)
 {
-	LIST *o;
-	UINT i;
-	// Validate arguments
-	if (v == NULL)
-	{
-		return;
-	}
+ LIST *o;
+ UINT i;
 
-	// Discard the old combining object
-	o = NULL;
-	for (i = 0;i < LIST_NUM(v->IpCombine);i++)
-	{
-		IP_COMBINE *c = LIST_DATA(v->IpCombine, i);
+ if (v == ((void*)0))
+ {
+  return;
+ }
 
-		if (c->Expire < v->Now)
-		{
-			if (o == NULL)
-			{
-				o = NewListFast(NULL);
-			}
-			Add(o, c);
-		}
-	}
 
-	if (o != NULL)
-	{
-		for (i = 0;i < LIST_NUM(o);i++)
-		{
-			IP_COMBINE *c = LIST_DATA(o, i);
+ o = ((void*)0);
+ for (i = 0;i < LIST_NUM(v->IpCombine);i++)
+ {
+  IP_COMBINE *c = LIST_DATA(v->IpCombine, i);
 
-			// Remove from the list
-			Delete(v->IpCombine, c);
+  if (c->Expire < v->Now)
+  {
+   if (o == ((void*)0))
+   {
+    o = NewListFast(((void*)0));
+   }
+   Add(o, c);
+  }
+ }
 
-			// Release the memory
-			FreeIpCombine(v, c);
-		}
-		ReleaseList(o);
-	}
+ if (o != ((void*)0))
+ {
+  for (i = 0;i < LIST_NUM(o);i++)
+  {
+   IP_COMBINE *c = LIST_DATA(o, i);
+
+
+   Delete(v->IpCombine, c);
+
+
+   FreeIpCombine(v, c);
+  }
+  ReleaseList(o);
+ }
 }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int IDWTELEM ;
 
-/* Variables and functions */
- int W_AM ; 
- int W_AO ; 
- int W_AS ; 
- int W_BM ; 
- int W_BO ; 
- int W_BS ; 
- int W_CM ; 
- int W_CO ; 
- int W_CS ; 
- int W_DM ; 
- int W_DO ; 
- int W_DS ; 
+
+
+
+typedef int IDWTELEM ;
+
+
+ int W_AM ;
+ int W_AO ;
+ int W_AS ;
+ int W_BM ;
+ int W_BO ;
+ int W_BS ;
+ int W_CM ;
+ int W_CO ;
+ int W_CS ;
+ int W_DM ;
+ int W_DO ;
+ int W_DS ;
 
 void ff_snow_vertical_compose97i(IDWTELEM *b0, IDWTELEM *b1, IDWTELEM *b2,
                                  IDWTELEM *b3, IDWTELEM *b4, IDWTELEM *b5,

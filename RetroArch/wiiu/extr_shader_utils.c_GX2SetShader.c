@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ program; } ;
-struct TYPE_4__ {TYPE_3__ gs; int /*<<< orphan*/  fs; int /*<<< orphan*/  ps; int /*<<< orphan*/  vs; } ;
-typedef  TYPE_1__ GX2Shader ;
+struct TYPE_4__ {TYPE_3__ gs; int fs; int ps; int vs; } ;
+typedef TYPE_1__ GX2Shader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GX2SetFetchShader (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GX2SetGeometryShader (TYPE_3__*) ; 
- int /*<<< orphan*/  GX2SetPixelShader (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GX2SetVertexShader (int /*<<< orphan*/ *) ; 
+
+ int GX2SetFetchShader (int *) ;
+ int GX2SetGeometryShader (TYPE_3__*) ;
+ int GX2SetPixelShader (int *) ;
+ int GX2SetVertexShader (int *) ;
 
 void GX2SetShader(GX2Shader *shader)
 {

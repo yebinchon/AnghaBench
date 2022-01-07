@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct user_pass {int dummy; } ;
 
-/* Variables and functions */
- int get_user_pass_cr (struct user_pass*,char const*,char const*,unsigned int const,int /*<<< orphan*/ *) ; 
+
+ int get_user_pass_cr (struct user_pass*,char const*,char const*,unsigned int const,int *) ;
 
 __attribute__((used)) static inline bool
 get_user_pass(struct user_pass *up,
@@ -21,5 +21,5 @@ get_user_pass(struct user_pass *up,
               const char *prefix,
               const unsigned int flags)
 {
-    return get_user_pass_cr(up, auth_file, prefix, flags, NULL);
+    return get_user_pass_cr(up, auth_file, prefix, flags, ((void*)0));
 }

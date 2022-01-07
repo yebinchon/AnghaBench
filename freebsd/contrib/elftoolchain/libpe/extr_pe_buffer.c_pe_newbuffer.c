@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int pe_flags; } ;
 struct TYPE_10__ {int ps_flags; TYPE_3__* ps_pe; } ;
 struct TYPE_9__ {int sb_flags; } ;
-typedef  TYPE_1__ PE_SecBuf ;
-typedef  TYPE_2__ PE_Scn ;
-typedef  int /*<<< orphan*/  PE_Buffer ;
-typedef  TYPE_3__ PE ;
+typedef TYPE_1__ PE_SecBuf ;
+typedef TYPE_2__ PE_Scn ;
+typedef int PE_Buffer ;
+typedef TYPE_3__ PE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EACCES ; 
- int /*<<< orphan*/  EINVAL ; 
- int LIBPE_F_FD_DONE ; 
- int LIBPE_F_LOAD_SECTION ; 
- int PE_F_DIRTY ; 
- int /*<<< orphan*/  errno ; 
- TYPE_1__* libpe_alloc_buffer (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ libpe_load_section (TYPE_3__*,TYPE_2__*) ; 
+
+ int EACCES ;
+ int EINVAL ;
+ int LIBPE_F_FD_DONE ;
+ int LIBPE_F_LOAD_SECTION ;
+ int PE_F_DIRTY ;
+ int errno ;
+ TYPE_1__* libpe_alloc_buffer (TYPE_2__*,int ) ;
+ scalar_t__ libpe_load_section (TYPE_3__*,TYPE_2__*) ;
 
 PE_Buffer *
 pe_newbuffer(PE_Scn *ps)
 {
-	PE *pe;
-	PE_SecBuf *sb;
+ PE *pe;
+ PE_SecBuf *sb;
 
-	if (ps == NULL) {
-		errno = EINVAL;
-		return (NULL);
-	}
+ if (ps == ((void*)0)) {
+  errno = EINVAL;
+  return (((void*)0));
+ }
 
-	pe = ps->ps_pe;
+ pe = ps->ps_pe;
 
-	if (pe->pe_flags & LIBPE_F_FD_DONE) {
-		errno = EACCES;
-		return (NULL);
-	}
+ if (pe->pe_flags & LIBPE_F_FD_DONE) {
+  errno = EACCES;
+  return (((void*)0));
+ }
 
-	if ((ps->ps_flags & LIBPE_F_LOAD_SECTION) == 0) {
-		if (libpe_load_section(pe, ps) < 0)
-			return (NULL);
-	}
+ if ((ps->ps_flags & LIBPE_F_LOAD_SECTION) == 0) {
+  if (libpe_load_section(pe, ps) < 0)
+   return (((void*)0));
+ }
 
-	if ((sb = libpe_alloc_buffer(ps, 0)) == NULL)
-		return (NULL);
+ if ((sb = libpe_alloc_buffer(ps, 0)) == ((void*)0))
+  return (((void*)0));
 
-	sb->sb_flags |= PE_F_DIRTY;
-	ps->ps_flags |= PE_F_DIRTY;
+ sb->sb_flags |= PE_F_DIRTY;
+ ps->ps_flags |= PE_F_DIRTY;
 
-	return ((PE_Buffer *) sb);
+ return ((PE_Buffer *) sb);
 }

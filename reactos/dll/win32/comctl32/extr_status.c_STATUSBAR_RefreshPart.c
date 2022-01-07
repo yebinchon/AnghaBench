@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ right; scalar_t__ left; } ;
 struct TYPE_11__ {TYPE_7__ bound; } ;
-struct TYPE_10__ {scalar_t__ clrBk; int /*<<< orphan*/  Self; } ;
-typedef  TYPE_1__ STATUS_INFO ;
-typedef  TYPE_2__ STATUSWINDOWPART ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  HTHEME ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  HBRUSH ;
+struct TYPE_10__ {scalar_t__ clrBk; int Self; } ;
+typedef TYPE_1__ STATUS_INFO ;
+typedef TYPE_2__ STATUSWINDOWPART ;
+typedef int RECT ;
+typedef int HTHEME ;
+typedef int HDC ;
+typedef int HBRUSH ;
 
-/* Variables and functions */
- scalar_t__ CLR_DEFAULT ; 
- int /*<<< orphan*/  COLOR_3DFACE ; 
- int /*<<< orphan*/  CreateSolidBrush (scalar_t__) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DrawThemeBackground (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_7__*) ; 
- int /*<<< orphan*/  FillRect (int /*<<< orphan*/ ,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetSysColorBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetWindowTheme (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RectVisible (int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  STATUSBAR_DrawPart (TYPE_1__ const*,int /*<<< orphan*/ ,TYPE_2__ const*,int) ; 
- int /*<<< orphan*/  TRACE (char*,int) ; 
+
+ scalar_t__ CLR_DEFAULT ;
+ int COLOR_3DFACE ;
+ int CreateSolidBrush (scalar_t__) ;
+ int DeleteObject (int ) ;
+ int DrawThemeBackground (int ,int ,int ,int ,int *,TYPE_7__*) ;
+ int FillRect (int ,TYPE_7__*,int ) ;
+ int GetClientRect (int ,int *) ;
+ int GetSysColorBrush (int ) ;
+ int GetWindowTheme (int ) ;
+ int RectVisible (int ,TYPE_7__*) ;
+ int STATUSBAR_DrawPart (TYPE_1__ const*,int ,TYPE_2__ const*,int) ;
+ int TRACE (char*,int) ;
 
 __attribute__((used)) static void
 STATUSBAR_RefreshPart (const STATUS_INFO *infoPtr, HDC hdc, const STATUSWINDOWPART *part, int itemID)

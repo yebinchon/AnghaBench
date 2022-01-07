@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xsltStylesheetPtr ;
-typedef  int /*<<< orphan*/ * xsltSecurityPrefsPtr ;
-typedef  int /*<<< orphan*/ * xmlDocPtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XSLT_LOAD_START ; 
- int /*<<< orphan*/  XSLT_PARSE_OPTIONS ; 
- int /*<<< orphan*/  xmlFreeDoc (int /*<<< orphan*/ *) ; 
- int xsltCheckRead (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * xsltDocDefaultLoader (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xsltGenericDebug (int /*<<< orphan*/ ,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  xsltGenericDebugContext ; 
- int /*<<< orphan*/ * xsltGetDefaultSecurityPrefs () ; 
- int /*<<< orphan*/  xsltInitGlobals () ; 
- int /*<<< orphan*/ * xsltParseStylesheetDoc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xsltTransformError (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int * xsltStylesheetPtr ;
+typedef int * xsltSecurityPrefsPtr ;
+typedef int * xmlDocPtr ;
+typedef int xmlChar ;
+
+
+ int XSLT_LOAD_START ;
+ int XSLT_PARSE_OPTIONS ;
+ int xmlFreeDoc (int *) ;
+ int xsltCheckRead (int *,int *,int const*) ;
+ int * xsltDocDefaultLoader (int const*,int *,int ,int *,int ) ;
+ int xsltGenericDebug (int ,char*,int const*) ;
+ int xsltGenericDebugContext ;
+ int * xsltGetDefaultSecurityPrefs () ;
+ int xsltInitGlobals () ;
+ int * xsltParseStylesheetDoc (int *) ;
+ int xsltTransformError (int *,int *,int *,char*,int const*) ;
 
 xsltStylesheetPtr
 xsltParseStylesheetFile(const xmlChar* filename) {
@@ -36,41 +36,32 @@ xsltParseStylesheetFile(const xmlChar* filename) {
 
     xsltInitGlobals();
 
-    if (filename == NULL)
-	return(NULL);
-
-#ifdef WITH_XSLT_DEBUG_PARSING
-    xsltGenericDebug(xsltGenericDebugContext,
-	    "xsltParseStylesheetFile : parse %s\n", filename);
-#endif
-
-    /*
-     * Security framework check
-     */
+    if (filename == ((void*)0))
+ return(((void*)0));
     sec = xsltGetDefaultSecurityPrefs();
-    if (sec != NULL) {
-	int res;
+    if (sec != ((void*)0)) {
+ int res;
 
-	res = xsltCheckRead(sec, NULL, filename);
-	if (res == 0) {
-	    xsltTransformError(NULL, NULL, NULL,
-		 "xsltParseStylesheetFile: read rights for %s denied\n",
-			     filename);
-	    return(NULL);
-	}
+ res = xsltCheckRead(sec, ((void*)0), filename);
+ if (res == 0) {
+     xsltTransformError(((void*)0), ((void*)0), ((void*)0),
+   "xsltParseStylesheetFile: read rights for %s denied\n",
+        filename);
+     return(((void*)0));
+ }
     }
 
-    doc = xsltDocDefaultLoader(filename, NULL, XSLT_PARSE_OPTIONS,
-                               NULL, XSLT_LOAD_START);
-    if (doc == NULL) {
-	xsltTransformError(NULL, NULL, NULL,
-		"xsltParseStylesheetFile : cannot parse %s\n", filename);
-	return(NULL);
+    doc = xsltDocDefaultLoader(filename, ((void*)0), XSLT_PARSE_OPTIONS,
+                               ((void*)0), XSLT_LOAD_START);
+    if (doc == ((void*)0)) {
+ xsltTransformError(((void*)0), ((void*)0), ((void*)0),
+  "xsltParseStylesheetFile : cannot parse %s\n", filename);
+ return(((void*)0));
     }
     ret = xsltParseStylesheetDoc(doc);
-    if (ret == NULL) {
-	xmlFreeDoc(doc);
-	return(NULL);
+    if (ret == ((void*)0)) {
+ xmlFreeDoc(doc);
+ return(((void*)0));
     }
 
     return(ret);

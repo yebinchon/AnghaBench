@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct archive_read {int /*<<< orphan*/  archive; } ;
-typedef  size_t ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_ERRNO_FILE_FORMAT ; 
- int ARCHIVE_FATAL ; 
- int ARCHIVE_OK ; 
- int /*<<< orphan*/  RAR_SIGNATURE ; 
- void* __archive_read_ahead (struct archive_read*,size_t,size_t*) ; 
- int /*<<< orphan*/  __archive_read_consume (struct archive_read*,size_t) ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ memcmp (char const*,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct archive_read {int archive; } ;
+typedef size_t ssize_t ;
+
+
+ int ARCHIVE_ERRNO_FILE_FORMAT ;
+ int ARCHIVE_FATAL ;
+ int ARCHIVE_OK ;
+ int RAR_SIGNATURE ;
+ void* __archive_read_ahead (struct archive_read*,size_t,size_t*) ;
+ int __archive_read_consume (struct archive_read*,size_t) ;
+ int archive_set_error (int *,int ,char*) ;
+ scalar_t__ memcmp (char const*,int ,int) ;
 
 __attribute__((used)) static int
 skip_sfx(struct archive_read *a)
@@ -35,11 +35,11 @@ skip_sfx(struct archive_read *a)
   window = 4096;
   while (total + window <= (1024 * 128)) {
     h = __archive_read_ahead(a, window, &bytes);
-    if (h == NULL) {
-      /* Remaining bytes are less than window. */
+    if (h == ((void*)0)) {
+
       window >>= 1;
       if (window < 0x40)
-      	goto fatal;
+       goto fatal;
       continue;
     }
     if (bytes < 0x40)
@@ -47,21 +47,21 @@ skip_sfx(struct archive_read *a)
     p = h;
     q = p + bytes;
 
-    /*
-     * Scan ahead until we find something that looks
-     * like the RAR header.
-     */
+
+
+
+
     while (p + 7 < q) {
       if (memcmp(p, RAR_SIGNATURE, 7) == 0) {
-      	skip = p - (const char *)h;
-      	__archive_read_consume(a, skip);
-      	return (ARCHIVE_OK);
+       skip = p - (const char *)h;
+       __archive_read_consume(a, skip);
+       return (ARCHIVE_OK);
       }
       p += 0x10;
     }
     skip = p - (const char *)h;
     __archive_read_consume(a, skip);
-	total += skip;
+ total += skip;
   }
 fatal:
   archive_set_error(&a->archive, ARCHIVE_ERRNO_FILE_FORMAT,

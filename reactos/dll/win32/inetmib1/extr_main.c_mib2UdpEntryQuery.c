@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct GenericTable {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_14__ {int /*<<< orphan*/  dwLocalPort; int /*<<< orphan*/  dwLocalAddr; } ;
+typedef int UINT ;
+struct TYPE_14__ {int dwLocalPort; int dwLocalAddr; } ;
 struct TYPE_13__ {TYPE_6__* table; } ;
-struct TYPE_12__ {int idLength; int /*<<< orphan*/ * ids; } ;
-struct TYPE_11__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ SnmpVarBind ;
-typedef  int /*<<< orphan*/  MIB_UDPROW ;
-typedef  int BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  TYPE_2__ AsnObjectIdentifier ;
-typedef  int /*<<< orphan*/  AsnInteger32 ;
+struct TYPE_12__ {int idLength; int * ids; } ;
+struct TYPE_11__ {int name; } ;
+typedef TYPE_1__ SnmpVarBind ;
+typedef int MIB_UDPROW ;
+typedef int BYTE ;
+typedef int BOOL ;
+typedef TYPE_2__ AsnObjectIdentifier ;
+typedef int AsnInteger32 ;
 
-/* Variables and functions */
- TYPE_2__ DEFINE_OID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEFINE_SIZEOF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  SNMP_ERRORSTATUS_NOSUCHNAME ; 
- int /*<<< orphan*/  SNMP_ERRORSTATUS_READONLY ; 
-#define  SNMP_PDU_GET 130 
-#define  SNMP_PDU_GETNEXT 129 
-#define  SNMP_PDU_SET 128 
- int /*<<< orphan*/  SnmpUtilOidAppend (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  SnmpUtilOidToA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compareUdpRow ; 
- int /*<<< orphan*/  getItemAndInstanceFromTable (int /*<<< orphan*/ *,TYPE_2__*,int,int,struct GenericTable*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mapStructEntryToValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_6__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  mib2UdpEntry ; 
- int /*<<< orphan*/  mib2UdpEntryMap ; 
- int /*<<< orphan*/  oidToUdpRow ; 
- int /*<<< orphan*/  setOidWithItemAndIpAddr (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* udpTable ; 
+
+ TYPE_2__ DEFINE_OID (int ) ;
+ int DEFINE_SIZEOF (int ) ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int SNMP_ERRORSTATUS_NOSUCHNAME ;
+ int SNMP_ERRORSTATUS_READONLY ;
+
+
+
+ int SnmpUtilOidAppend (int *,TYPE_2__*) ;
+ int SnmpUtilOidToA (int *) ;
+ int TRACE (char*,int,int ,int *) ;
+ int TRUE ;
+ int assert (int ) ;
+ int compareUdpRow ;
+ int getItemAndInstanceFromTable (int *,TYPE_2__*,int,int,struct GenericTable*,int,int ,int ,int *,int *) ;
+ int mapStructEntryToValue (int ,int ,TYPE_6__*,int ,TYPE_1__*) ;
+ int mib2UdpEntry ;
+ int mib2UdpEntryMap ;
+ int oidToUdpRow ;
+ int setOidWithItemAndIpAddr (int *,TYPE_2__*,int ,int ) ;
+ TYPE_3__* udpTable ;
 
 __attribute__((used)) static BOOL mib2UdpEntryQuery(BYTE bPduType, SnmpVarBind *pVarBind,
     AsnInteger32 *pErrorStatus)
@@ -62,8 +62,8 @@ __attribute__((used)) static BOOL mib2UdpEntryQuery(BYTE bPduType, SnmpVarBind *
 
     switch (bPduType)
     {
-    case SNMP_PDU_GET:
-    case SNMP_PDU_GETNEXT:
+    case 130:
+    case 129:
         if (!udpTable)
             *pErrorStatus = SNMP_ERRORSTATUS_NOSUCHNAME;
         else
@@ -81,7 +81,7 @@ __attribute__((used)) static BOOL mib2UdpEntryQuery(BYTE bPduType, SnmpVarBind *
                 *pErrorStatus = mapStructEntryToValue(mib2UdpEntryMap,
                     DEFINE_SIZEOF(mib2UdpEntryMap),
                     &udpTable->table[tableIndex - 1], item, pVarBind);
-                if (!*pErrorStatus && bPduType == SNMP_PDU_GETNEXT)
+                if (!*pErrorStatus && bPduType == 129)
                 {
                     AsnObjectIdentifier oid;
 
@@ -97,7 +97,7 @@ __attribute__((used)) static BOOL mib2UdpEntryQuery(BYTE bPduType, SnmpVarBind *
             }
         }
         break;
-    case SNMP_PDU_SET:
+    case 128:
         *pErrorStatus = SNMP_ERRORSTATUS_READONLY;
         ret = FALSE;
         break;

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct config {int dummy; } ;
 struct TYPE_6__ {scalar_t__ type; int elements; } ;
-typedef  TYPE_1__ redisReply ;
-typedef  int /*<<< orphan*/  redisContext ;
+typedef TYPE_1__ redisReply ;
+typedef int redisContext ;
 
-/* Variables and functions */
- scalar_t__ REDIS_OK ; 
- scalar_t__ REDIS_REPLY_ARRAY ; 
- scalar_t__ REDIS_REPLY_INTEGER ; 
- scalar_t__ REDIS_REPLY_STATUS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  disconnect (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * do_connect (struct config) ; 
- int /*<<< orphan*/  free (TYPE_1__**) ; 
- int /*<<< orphan*/  freeReplyObject (TYPE_1__*) ; 
- TYPE_1__** malloc (int) ; 
- int /*<<< orphan*/  printf (char*,int,long long) ; 
- int /*<<< orphan*/  redisAppendCommand (int /*<<< orphan*/ *,char*,...) ; 
- TYPE_1__* redisCommand (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ redisGetReply (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  test (char*) ; 
- long long usec () ; 
+
+ scalar_t__ REDIS_OK ;
+ scalar_t__ REDIS_REPLY_ARRAY ;
+ scalar_t__ REDIS_REPLY_INTEGER ;
+ scalar_t__ REDIS_REPLY_STATUS ;
+ int assert (int) ;
+ int disconnect (int *,int ) ;
+ int * do_connect (struct config) ;
+ int free (TYPE_1__**) ;
+ int freeReplyObject (TYPE_1__*) ;
+ TYPE_1__** malloc (int) ;
+ int printf (char*,int,long long) ;
+ int redisAppendCommand (int *,char*,...) ;
+ TYPE_1__* redisCommand (int *,char*,...) ;
+ scalar_t__ redisGetReply (int *,void*) ;
+ int test (char*) ;
+ long long usec () ;
 
 __attribute__((used)) static void test_throughput(struct config config) {
     redisContext *c = do_connect(config);
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_throughput(struct config config) {
     t1 = usec();
     for (i = 0; i < num; i++) {
         replies[i] = redisCommand(c,"PING");
-        assert(replies[i] != NULL && replies[i]->type == REDIS_REPLY_STATUS);
+        assert(replies[i] != ((void*)0) && replies[i]->type == REDIS_REPLY_STATUS);
     }
     t2 = usec();
     for (i = 0; i < num; i++) freeReplyObject(replies[i]);
@@ -60,8 +60,8 @@ __attribute__((used)) static void test_throughput(struct config config) {
     t1 = usec();
     for (i = 0; i < num; i++) {
         replies[i] = redisCommand(c,"LRANGE mylist 0 499");
-        assert(replies[i] != NULL && replies[i]->type == REDIS_REPLY_ARRAY);
-        assert(replies[i] != NULL && replies[i]->elements == 500);
+        assert(replies[i] != ((void*)0) && replies[i]->type == REDIS_REPLY_ARRAY);
+        assert(replies[i] != ((void*)0) && replies[i]->elements == 500);
     }
     t2 = usec();
     for (i = 0; i < num; i++) freeReplyObject(replies[i]);
@@ -72,7 +72,7 @@ __attribute__((used)) static void test_throughput(struct config config) {
     t1 = usec();
     for (i = 0; i < num; i++) {
         replies[i] = redisCommand(c, "INCRBY incrkey %d", 1000000);
-        assert(replies[i] != NULL && replies[i]->type == REDIS_REPLY_INTEGER);
+        assert(replies[i] != ((void*)0) && replies[i]->type == REDIS_REPLY_INTEGER);
     }
     t2 = usec();
     for (i = 0; i < num; i++) freeReplyObject(replies[i]);
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_throughput(struct config config) {
     t1 = usec();
     for (i = 0; i < num; i++) {
         assert(redisGetReply(c, (void*)&replies[i]) == REDIS_OK);
-        assert(replies[i] != NULL && replies[i]->type == REDIS_REPLY_STATUS);
+        assert(replies[i] != ((void*)0) && replies[i]->type == REDIS_REPLY_STATUS);
     }
     t2 = usec();
     for (i = 0; i < num; i++) freeReplyObject(replies[i]);
@@ -99,8 +99,8 @@ __attribute__((used)) static void test_throughput(struct config config) {
     t1 = usec();
     for (i = 0; i < num; i++) {
         assert(redisGetReply(c, (void*)&replies[i]) == REDIS_OK);
-        assert(replies[i] != NULL && replies[i]->type == REDIS_REPLY_ARRAY);
-        assert(replies[i] != NULL && replies[i]->elements == 500);
+        assert(replies[i] != ((void*)0) && replies[i]->type == REDIS_REPLY_ARRAY);
+        assert(replies[i] != ((void*)0) && replies[i]->elements == 500);
     }
     t2 = usec();
     for (i = 0; i < num; i++) freeReplyObject(replies[i]);
@@ -113,7 +113,7 @@ __attribute__((used)) static void test_throughput(struct config config) {
     t1 = usec();
     for (i = 0; i < num; i++) {
         assert(redisGetReply(c, (void*)&replies[i]) == REDIS_OK);
-        assert(replies[i] != NULL && replies[i]->type == REDIS_REPLY_INTEGER);
+        assert(replies[i] != ((void*)0) && replies[i]->type == REDIS_REPLY_INTEGER);
     }
     t2 = usec();
     for (i = 0; i < num; i++) freeReplyObject(replies[i]);

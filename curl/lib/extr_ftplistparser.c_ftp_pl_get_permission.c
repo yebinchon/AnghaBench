@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FTP_LP_MALFORMATED_PERM ; 
+ int FTP_LP_MALFORMATED_PERM ;
 
 __attribute__((used)) static int ftp_pl_get_permission(const char *str)
 {
   int permissions = 0;
-  /* USER */
+
   if(str[0] == 'r')
     permissions |= 1 << 8;
   else if(str[0] != '-')
@@ -37,7 +29,7 @@ __attribute__((used)) static int ftp_pl_get_permission(const char *str)
     permissions |= 1 << 11;
   else if(str[2] != '-')
     permissions |= FTP_LP_MALFORMATED_PERM;
-  /* GROUP */
+
   if(str[3] == 'r')
     permissions |= 1 << 5;
   else if(str[3] != '-')
@@ -56,7 +48,7 @@ __attribute__((used)) static int ftp_pl_get_permission(const char *str)
     permissions |= 1 << 10;
   else if(str[5] != '-')
     permissions |= FTP_LP_MALFORMATED_PERM;
-  /* others */
+
   if(str[6] == 'r')
     permissions |= 1 << 2;
   else if(str[6] != '-')

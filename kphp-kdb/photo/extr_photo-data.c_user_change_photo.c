@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int id; int /*<<< orphan*/  album_by_photo; } ;
-typedef  TYPE_1__ user ;
-struct TYPE_14__ {int /*<<< orphan*/ * e; int /*<<< orphan*/  tp; } ;
-typedef  TYPE_2__ my_change ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int id; int album_by_photo; } ;
+typedef TYPE_1__ user ;
+struct TYPE_14__ {int * e; int tp; } ;
+typedef TYPE_2__ my_change ;
 struct TYPE_15__ {scalar_t__ v_fid; int v_int; } ;
-typedef  TYPE_3__ field ;
-typedef  int /*<<< orphan*/  event ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  change ;
-struct TYPE_16__ {int /*<<< orphan*/ * obj; int /*<<< orphan*/  dyn; } ;
-typedef  TYPE_4__ actual_object ;
+typedef TYPE_3__ field ;
+typedef int event ;
+typedef int data ;
+typedef int change ;
+struct TYPE_16__ {int * obj; int dyn; } ;
+typedef TYPE_4__ actual_object ;
 
-/* Variables and functions */
- scalar_t__ GET_MAX_PHOTOS (int) ; 
- int /*<<< orphan*/  PHOTO_TYPE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  ch_event ; 
- int /*<<< orphan*/  check_album_id (int) ; 
- int /*<<< orphan*/  data_add_change (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int data_add_object (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  data_del (int /*<<< orphan*/ *,int) ; 
- scalar_t__ data_get_actual_object (int /*<<< orphan*/ *,int,TYPE_4__*) ; 
- scalar_t__ data_get_cnt (int /*<<< orphan*/ *) ; 
- scalar_t__ data_get_hidden_state (int /*<<< orphan*/ *,int) ; 
- int data_get_local_id_by_id (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  dbg (char*,int,int,int) ; 
- int /*<<< orphan*/ * event_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * event_update_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lookup_set (int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ photo_type_album_id ; 
- scalar_t__ photo_type_id ; 
- scalar_t__ photo_type_owner_id ; 
- int user_change_data (int /*<<< orphan*/ *,int,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  user_create_album_force (TYPE_1__*,int) ; 
- int user_get_aid_by_pid (TYPE_1__*,int) ; 
- int /*<<< orphan*/ * user_get_photo_data (TYPE_1__*,int) ; 
- int user_loaded (TYPE_1__*) ; 
- scalar_t__ write_only ; 
+
+ scalar_t__ GET_MAX_PHOTOS (int) ;
+ int PHOTO_TYPE ;
+ int assert (int) ;
+ int ch_event ;
+ int check_album_id (int) ;
+ int data_add_change (int *,int *,int) ;
+ int data_add_object (int *,int) ;
+ int data_del (int *,int) ;
+ scalar_t__ data_get_actual_object (int *,int,TYPE_4__*) ;
+ scalar_t__ data_get_cnt (int *) ;
+ scalar_t__ data_get_hidden_state (int *,int) ;
+ int data_get_local_id_by_id (int *,int) ;
+ int dbg (char*,int,int,int) ;
+ int * event_dup (int *) ;
+ int * event_update_event (int *,int ,int ) ;
+ int lookup_set (int *,int,int) ;
+ scalar_t__ photo_type_album_id ;
+ scalar_t__ photo_type_id ;
+ scalar_t__ photo_type_owner_id ;
+ int user_change_data (int *,int,TYPE_3__*,int,int ) ;
+ int user_create_album_force (TYPE_1__*,int) ;
+ int user_get_aid_by_pid (TYPE_1__*,int) ;
+ int * user_get_photo_data (TYPE_1__*,int) ;
+ int user_loaded (TYPE_1__*) ;
+ scalar_t__ write_only ;
 
 int user_change_photo (user *u, int pid, field *field_changes, int field_changes_n) {
   dbg ("user_change_photo %d: photo_id = %d, field_changes_n = %d\n", u->id, pid, field_changes_n);
@@ -67,7 +67,7 @@ int user_change_photo (user *u, int pid, field *field_changes, int field_changes
     return 0;
   }
   data *d = user_get_photo_data (u, aid);
-  if (d == NULL) {
+  if (d == ((void*)0)) {
     return 0;
   }
 
@@ -79,7 +79,7 @@ int user_change_photo (user *u, int pid, field *field_changes, int field_changes
   for (i = 0; i < field_changes_n; i++) {
     assert (field_changes[i].v_fid != photo_type_id && field_changes[i].v_fid != photo_type_owner_id);
 
-    // change album
+
     if (field_changes[i].v_fid == photo_type_album_id) {
       int naid = field_changes[i].v_int;
       if (aid == naid) {
@@ -97,7 +97,7 @@ int user_change_photo (user *u, int pid, field *field_changes, int field_changes
       }
 
       data *da = user_get_photo_data (u, naid);
-      if (da == NULL) {
+      if (da == ((void*)0)) {
         return 0;
       }
 
@@ -130,7 +130,7 @@ int user_change_photo (user *u, int pid, field *field_changes, int field_changes
 
       d = da;
 
-//      dbg ("Move (photo_id = %d) to (album_id = %d) (field_changes_n = %d)\n", pid, field_changes[i].v_int, field_changes_n);
+
     }
   }
 

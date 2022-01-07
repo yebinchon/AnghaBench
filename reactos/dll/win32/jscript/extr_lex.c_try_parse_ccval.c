@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {char* ptr; TYPE_1__* script; } ;
-typedef  TYPE_2__ parser_ctx_t ;
-typedef  int /*<<< orphan*/  ccval_t ;
-struct TYPE_12__ {int /*<<< orphan*/  val; } ;
-typedef  TYPE_3__ cc_var_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_10__ {int /*<<< orphan*/  cc; } ;
+typedef TYPE_2__ parser_ctx_t ;
+typedef int ccval_t ;
+struct TYPE_12__ {int val; } ;
+typedef TYPE_3__ cc_var_t ;
+typedef int WCHAR ;
+struct TYPE_10__ {int cc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- double NAN ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ccval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ccval_num (double) ; 
- int /*<<< orphan*/  check_keyword (TYPE_2__*,char*,int /*<<< orphan*/ *) ; 
- TYPE_3__* find_cc_var (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,unsigned int) ; 
- scalar_t__ iswdigit (char) ; 
- int /*<<< orphan*/  parse_cc_identifier (TYPE_2__*,int /*<<< orphan*/  const**,unsigned int*) ; 
- int /*<<< orphan*/  parse_numeric_literal (TYPE_2__*,double*) ; 
- int /*<<< orphan*/  skip_spaces (TYPE_2__*) ; 
+
+ int FALSE ;
+ double NAN ;
+ int TRUE ;
+ int ccval_bool (int ) ;
+ int ccval_num (double) ;
+ int check_keyword (TYPE_2__*,char*,int *) ;
+ TYPE_3__* find_cc_var (int ,int const*,unsigned int) ;
+ scalar_t__ iswdigit (char) ;
+ int parse_cc_identifier (TYPE_2__*,int const**,unsigned int*) ;
+ int parse_numeric_literal (TYPE_2__*,double*) ;
+ int skip_spaces (TYPE_2__*) ;
 
 int try_parse_ccval(parser_ctx_t *ctx, ccval_t *r)
 {
@@ -62,12 +62,12 @@ int try_parse_ccval(parser_ctx_t *ctx, ccval_t *r)
         return 1;
     }
 
-    if(!check_keyword(ctx, L"true", NULL)) {
+    if(!check_keyword(ctx, L"true", ((void*)0))) {
         *r = ccval_bool(TRUE);
         return 1;
     }
 
-    if(!check_keyword(ctx, L"false", NULL)) {
+    if(!check_keyword(ctx, L"false", ((void*)0))) {
         *r = ccval_bool(FALSE);
         return 1;
     }

@@ -1,52 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* JSON_SkipValue (char const*,char const*) ; 
+ char* JSON_SkipValue (char const*,char const*) ;
 
 unsigned int JSON_ValueGetString(const char *json, const char *jsonEnd, char *outString, unsigned int stringLen)
 {
-	const char *stringEnd, *stringStart;
+ const char *stringEnd, *stringStart;
 
-	if (!json)
-	{
-		*outString = '\0';
-		return 0;
-	}
+ if (!json)
+ {
+  *outString = '\0';
+  return 0;
+ }
 
-	stringStart = json;
-	stringEnd = JSON_SkipValue(stringStart, jsonEnd);
-	if (stringEnd >= jsonEnd)
-	{
-		*outString = '\0';
-		return 0;
-	}
+ stringStart = json;
+ stringEnd = JSON_SkipValue(stringStart, jsonEnd);
+ if (stringEnd >= jsonEnd)
+ {
+  *outString = '\0';
+  return 0;
+ }
 
-	// skip enclosing quotes if they exist
-	if (*stringStart == '"')
-		stringStart++;
 
-	if (*(stringEnd - 1) == '"')
-		stringEnd--;
+ if (*stringStart == '"')
+  stringStart++;
 
-	stringLen--;
-	if (stringLen > stringEnd - stringStart)
-		stringLen = stringEnd - stringStart;
+ if (*(stringEnd - 1) == '"')
+  stringEnd--;
 
-	json = stringStart;
-	while (stringLen--)
-		*outString++ = *json++;
-	*outString = '\0';
+ stringLen--;
+ if (stringLen > stringEnd - stringStart)
+  stringLen = stringEnd - stringStart;
 
-	return stringEnd - stringStart;
+ json = stringStart;
+ while (stringLen--)
+  *outString++ = *json++;
+ *outString = '\0';
+
+ return stringEnd - stringStart;
 }

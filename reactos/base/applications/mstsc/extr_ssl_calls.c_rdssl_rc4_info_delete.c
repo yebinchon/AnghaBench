@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rc4_state {scalar_t__ hCryptProv; scalar_t__ hKey; } ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CryptDestroyKey (scalar_t__) ; 
- scalar_t__ CryptReleaseContext (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (void*) ; 
+
+ scalar_t__ CryptDestroyKey (scalar_t__) ;
+ scalar_t__ CryptReleaseContext (scalar_t__,int ) ;
+ int GetLastError () ;
+ scalar_t__ TRUE ;
+ int error (char*,int ) ;
+ int g_free (void*) ;
 
 void
 rdssl_rc4_info_delete(void* rc4_info)
@@ -30,7 +30,7 @@ rdssl_rc4_info_delete(void* rc4_info)
     DWORD dwErr;
     if (!info)
     {
-        //error("rdssl_rc4_info_delete rc4_info is null\n");
+
         return;
     }
     if (info->hKey)

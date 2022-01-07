@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dht; int /*<<< orphan*/  net; } ;
-typedef  TYPE_1__ Onion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  do_DHT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  networking_poll (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dht; int net; } ;
+typedef TYPE_1__ Onion ;
+
+
+ int do_DHT (int ) ;
+ int networking_poll (int ) ;
 
 void do_onion(Onion *onion)
 {

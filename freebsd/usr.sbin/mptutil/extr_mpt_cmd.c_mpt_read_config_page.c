@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int PageLength; void* PageNumber; void* PageType; } ;
-struct mpt_cfg_page_req {int len; int /*<<< orphan*/  ioc_status; TYPE_1__ header; void* buf; int /*<<< orphan*/  page_address; } ;
-typedef  int /*<<< orphan*/  req ;
-typedef  void* U8 ;
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  U16 ;
+struct mpt_cfg_page_req {int len; int ioc_status; TYPE_1__ header; void* buf; int page_address; } ;
+typedef int req ;
+typedef void* U8 ;
+typedef int U32 ;
+typedef int U16 ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  IOC_STATUS_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MPI_IOCSTATUS_SUCCESS ; 
- int /*<<< orphan*/  MPTIO_READ_CFG_HEADER ; 
- int /*<<< orphan*/  MPTIO_READ_CFG_PAGE ; 
- int /*<<< orphan*/  bcopy (TYPE_1__*,void*,int) ; 
- int /*<<< orphan*/  bzero (struct mpt_cfg_page_req*,int) ; 
- int errno ; 
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct mpt_cfg_page_req*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  mpt_ioc_status (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warnx (char*,int /*<<< orphan*/ ) ; 
+
+ int EIO ;
+ int IOC_STATUS_SUCCESS (int ) ;
+ int MPI_IOCSTATUS_SUCCESS ;
+ int MPTIO_READ_CFG_HEADER ;
+ int MPTIO_READ_CFG_PAGE ;
+ int bcopy (TYPE_1__*,void*,int) ;
+ int bzero (struct mpt_cfg_page_req*,int) ;
+ int errno ;
+ int free (void*) ;
+ scalar_t__ ioctl (int,int ,struct mpt_cfg_page_req*) ;
+ void* malloc (int) ;
+ int mpt_ioc_status (int ) ;
+ int warnx (char*,int ) ;
 
 void *
 mpt_read_config_page(int fd, U8 PageType, U8 PageNumber, U32 PageAddress,
     U16 *IOCStatus)
 {
-	struct mpt_cfg_page_req req;
-	void *buf;
-	int error;
+ struct mpt_cfg_page_req req;
+ void *buf;
+ int error;
 
-	if (IOCStatus != NULL)
-		*IOCStatus = MPI_IOCSTATUS_SUCCESS;
-	bzero(&req, sizeof(req));
-	req.header.PageType = PageType;
-	req.header.PageNumber = PageNumber;
-	req.page_address = PageAddress;
-	if (ioctl(fd, MPTIO_READ_CFG_HEADER, &req) < 0)
-		return (NULL);
-	if (!IOC_STATUS_SUCCESS(req.ioc_status)) {
-		if (IOCStatus != NULL)
-			*IOCStatus = req.ioc_status;
-		else
-			warnx("Reading config page header failed: %s",
-			    mpt_ioc_status(req.ioc_status));
-		errno = EIO;
-		return (NULL);
-	}
-	req.len = req.header.PageLength * 4;
-	buf = malloc(req.len);
-	req.buf = buf;
-	bcopy(&req.header, buf, sizeof(req.header));
-	if (ioctl(fd, MPTIO_READ_CFG_PAGE, &req) < 0) {
-		error = errno;
-		free(buf);
-		errno = error;
-		return (NULL);
-	}
-	if (!IOC_STATUS_SUCCESS(req.ioc_status)) {
-		if (IOCStatus != NULL)
-			*IOCStatus = req.ioc_status;
-		else
-			warnx("Reading config page failed: %s",
-			    mpt_ioc_status(req.ioc_status));
-		free(buf);
-		errno = EIO;
-		return (NULL);
-	}
-	return (buf);
+ if (IOCStatus != ((void*)0))
+  *IOCStatus = MPI_IOCSTATUS_SUCCESS;
+ bzero(&req, sizeof(req));
+ req.header.PageType = PageType;
+ req.header.PageNumber = PageNumber;
+ req.page_address = PageAddress;
+ if (ioctl(fd, MPTIO_READ_CFG_HEADER, &req) < 0)
+  return (((void*)0));
+ if (!IOC_STATUS_SUCCESS(req.ioc_status)) {
+  if (IOCStatus != ((void*)0))
+   *IOCStatus = req.ioc_status;
+  else
+   warnx("Reading config page header failed: %s",
+       mpt_ioc_status(req.ioc_status));
+  errno = EIO;
+  return (((void*)0));
+ }
+ req.len = req.header.PageLength * 4;
+ buf = malloc(req.len);
+ req.buf = buf;
+ bcopy(&req.header, buf, sizeof(req.header));
+ if (ioctl(fd, MPTIO_READ_CFG_PAGE, &req) < 0) {
+  error = errno;
+  free(buf);
+  errno = error;
+  return (((void*)0));
+ }
+ if (!IOC_STATUS_SUCCESS(req.ioc_status)) {
+  if (IOCStatus != ((void*)0))
+   *IOCStatus = req.ioc_status;
+  else
+   warnx("Reading config page failed: %s",
+       mpt_ioc_status(req.ioc_status));
+  free(buf);
+  errno = EIO;
+  return (((void*)0));
+ }
+ return (buf);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BACKUP_LABEL_FILE ; 
- scalar_t__ stat (int /*<<< orphan*/ ,struct stat*) ; 
+
+ int BACKUP_LABEL_FILE ;
+ scalar_t__ stat (int ,struct stat*) ;
 
 bool
 BackupInProgress(void)
 {
-	struct stat stat_buf;
+ struct stat stat_buf;
 
-	return (stat(BACKUP_LABEL_FILE, &stat_buf) == 0);
+ return (stat(BACKUP_LABEL_FILE, &stat_buf) == 0);
 }

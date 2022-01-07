@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_10__ {scalar_t__ MediaType; scalar_t__ PartitionType; int /*<<< orphan*/  BytesPerSector; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_10__ {scalar_t__ MediaType; scalar_t__ PartitionType; int BytesPerSector; } ;
 struct TYPE_8__ {scalar_t__* Unused0; scalar_t__* Unused3; int BytesPerSector; int SectorsPerCluster; } ;
-struct TYPE_9__ {TYPE_1__ BPB; int /*<<< orphan*/  OEMID; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  PDEVICE_OBJECT ;
-typedef  TYPE_2__* PBOOT_SECTOR ;
-typedef  TYPE_3__ PARTITION_INFORMATION ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_3__ DISK_GEOMETRY ;
+struct TYPE_9__ {TYPE_1__ BPB; int OEMID; } ;
+typedef int PVOID ;
+typedef int PDEVICE_OBJECT ;
+typedef TYPE_2__* PBOOT_SECTOR ;
+typedef TYPE_3__ PARTITION_INFORMATION ;
+typedef int NTSTATUS ;
+typedef TYPE_3__ DISK_GEOMETRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- TYPE_2__* ExAllocatePoolWithTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (TYPE_2__*) ; 
- scalar_t__ FixedMedia ; 
- int /*<<< orphan*/  IOCTL_DISK_GET_DRIVE_GEOMETRY ; 
- int /*<<< orphan*/  IOCTL_DISK_GET_PARTITION_INFO ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  NtfsDeviceIoControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NtfsReadSectors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ PARTITION_IFS ; 
- int RtlCompareMemory (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_UNRECOGNIZED_VOLUME ; 
- int /*<<< orphan*/  TAG_NTFS ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int DPRINT (char*) ;
+ int DPRINT1 (char*,...) ;
+ TYPE_2__* ExAllocatePoolWithTag (int ,int ,int ) ;
+ int ExFreePool (TYPE_2__*) ;
+ scalar_t__ FixedMedia ;
+ int IOCTL_DISK_GET_DRIVE_GEOMETRY ;
+ int IOCTL_DISK_GET_PARTITION_INFO ;
+ int NT_SUCCESS (int ) ;
+ int NonPagedPool ;
+ int NtfsDeviceIoControl (int ,int ,int *,int ,TYPE_3__*,int*,int ) ;
+ int NtfsReadSectors (int ,int ,int,int ,int ,int ) ;
+ scalar_t__ PARTITION_IFS ;
+ int RtlCompareMemory (int ,char*,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_UNRECOGNIZED_VOLUME ;
+ int TAG_NTFS ;
+ int TRUE ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -58,7 +58,7 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
     Size = sizeof(DISK_GEOMETRY);
     Status = NtfsDeviceIoControl(DeviceToMount,
                                  IOCTL_DISK_GET_DRIVE_GEOMETRY,
-                                 NULL,
+                                 ((void*)0),
                                  0,
                                  &DiskGeometry,
                                  &Size,
@@ -71,11 +71,11 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
 
     if (DiskGeometry.MediaType == FixedMedia)
     {
-        /* We have found a hard disk */
+
         Size = sizeof(PARTITION_INFORMATION);
         Status = NtfsDeviceIoControl(DeviceToMount,
                                      IOCTL_DISK_GET_PARTITION_INFO,
-                                     NULL,
+                                     ((void*)0),
                                      0,
                                      &PartitionInfo,
                                      &Size,
@@ -97,7 +97,7 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
     BootSector = ExAllocatePoolWithTag(NonPagedPool,
                                        DiskGeometry.BytesPerSector,
                                        TAG_NTFS);
-    if (BootSector == NULL)
+    if (BootSector == ((void*)0))
     {
         return STATUS_INSUFFICIENT_RESOURCES;
     }
@@ -113,12 +113,12 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
         goto ByeBye;
     }
 
-    /*
-     * Check values of different fields. If those fields have not expected
-     * values, we fail, to avoid mounting partitions that Windows won't mount.
-     */
 
-    /* OEMID: this field must be NTFS */
+
+
+
+
+
     if (RtlCompareMemory(BootSector->OEMID, "NTFS    ", 8) != 8)
     {
         DPRINT1("Failed with NTFS-identifier: [%.8s]\n", BootSector->OEMID);
@@ -126,7 +126,7 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
         goto ByeBye;
     }
 
-    /* Unused0: this field must be COMPLETELY null */
+
     for (k = 0; k < 7; k++)
     {
         if (BootSector->BPB.Unused0[k] != 0)
@@ -137,7 +137,7 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
         }
     }
 
-    /* Unused3: this field must be COMPLETELY null */
+
     for (k = 0; k < 4; k++)
     {
         if (BootSector->BPB.Unused3[k] != 0)
@@ -148,9 +148,9 @@ NtfsHasFileSystem(PDEVICE_OBJECT DeviceToMount)
         }
     }
 
-    /* Check cluster size */
+
     ClusterSize = BootSector->BPB.BytesPerSector * BootSector->BPB.SectorsPerCluster;
-    if (ClusterSize != 512 && ClusterSize != 1024 && 
+    if (ClusterSize != 512 && ClusterSize != 1024 &&
         ClusterSize != 2048 && ClusterSize != 4096 &&
         ClusterSize != 8192 && ClusterSize != 16384 &&
         ClusterSize != 32768 && ClusterSize != 65536)

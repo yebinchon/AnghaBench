@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  handle; } ;
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int handle; } ;
 struct TYPE_8__ {TYPE_1__ x11; } ;
-typedef  TYPE_3__ _GLFWwindow ;
-struct TYPE_7__ {scalar_t__ NET_WM_STATE_MAXIMIZED_VERT; scalar_t__ NET_WM_STATE_MAXIMIZED_HORZ; int /*<<< orphan*/  NET_WM_STATE; } ;
+typedef TYPE_3__ _GLFWwindow ;
+struct TYPE_7__ {scalar_t__ NET_WM_STATE_MAXIMIZED_VERT; scalar_t__ NET_WM_STATE_MAXIMIZED_HORZ; int NET_WM_STATE; } ;
 struct TYPE_9__ {TYPE_2__ x11; } ;
-typedef  int GLFWbool ;
-typedef  scalar_t__ Atom ;
+typedef int GLFWbool ;
+typedef scalar_t__ Atom ;
 
-/* Variables and functions */
- int GLFW_FALSE ; 
- int GLFW_TRUE ; 
- int /*<<< orphan*/  XA_ATOM ; 
- int /*<<< orphan*/  XFree (scalar_t__*) ; 
- TYPE_5__ _glfw ; 
- unsigned long _glfwGetWindowPropertyX11 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char**) ; 
+
+ int GLFW_FALSE ;
+ int GLFW_TRUE ;
+ int XA_ATOM ;
+ int XFree (scalar_t__*) ;
+ TYPE_5__ _glfw ;
+ unsigned long _glfwGetWindowPropertyX11 (int ,int ,int ,unsigned char**) ;
 
 int _glfwPlatformWindowMaximized(_GLFWwindow* window)
 {
@@ -49,7 +49,7 @@ int _glfwPlatformWindowMaximized(_GLFWwindow* window)
                                   XA_ATOM,
                                   (unsigned char**) &states);
 
-    for (i = 0;  i < count;  i++)
+    for (i = 0; i < count; i++)
     {
         if (states[i] == _glfw.x11.NET_WM_STATE_MAXIMIZED_VERT ||
             states[i] == _glfw.x11.NET_WM_STATE_MAXIMIZED_HORZ)

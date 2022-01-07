@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  freeText; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int freeText; } ;
 struct TYPE_4__ {TYPE_2__* hdr; } ;
-typedef  TYPE_1__ CMP_HDR_TEST_FIXTURE ;
-typedef  int /*<<< orphan*/  ASN1_UTF8STRING ;
+typedef TYPE_1__ CMP_HDR_TEST_FIXTURE ;
+typedef int ASN1_UTF8STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STRING_set (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/ * ASN1_UTF8STRING_new () ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int) ; 
- int /*<<< orphan*/  ossl_cmp_hdr_push0_freeText (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sk_ASN1_UTF8STRING_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASN1_STRING_set (int *,char*,int) ;
+ int * ASN1_UTF8STRING_new () ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int) ;
+ int ossl_cmp_hdr_push0_freeText (TYPE_2__*,int *) ;
+ int * sk_ASN1_UTF8STRING_value (int ,int ) ;
 
 __attribute__((used)) static int execute_HDR_push0_freeText_test(CMP_HDR_TEST_FIXTURE *fixture)
 {

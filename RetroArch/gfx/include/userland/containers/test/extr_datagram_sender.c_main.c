@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int vc_container_net_status_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_NET_T ;
 
-/* Variables and functions */
- scalar_t__ fgets (char*,size_t,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (size_t) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  vc_container_net_close (int /*<<< orphan*/ *) ; 
- size_t vc_container_net_maximum_datagram_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vc_container_net_open (char*,char*,int /*<<< orphan*/ ,int*) ; 
- int vc_container_net_status (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vc_container_net_write (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vc_container_net_status_t ;
+typedef int VC_CONTAINER_NET_T ;
+
+
+ scalar_t__ fgets (char*,size_t,int ) ;
+ scalar_t__ malloc (size_t) ;
+ int printf (char*,...) ;
+ int stdin ;
+ int strlen (char*) ;
+ int vc_container_net_close (int *) ;
+ size_t vc_container_net_maximum_datagram_size (int *) ;
+ int * vc_container_net_open (char*,char*,int ,int*) ;
+ int vc_container_net_status (int *) ;
+ int vc_container_net_write (int *,char*,int ) ;
 
 int main(int argc, char **argv)
 {

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  backtrace_handler ; 
- int /*<<< orphan*/  compare (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_external_function (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int jerry_get_array_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_get_global_object () ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_array (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  run (char*,char const*) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_INIT_EMPTY ;
+ int TEST_ASSERT (int) ;
+ int backtrace_handler ;
+ int compare (int ,int,char*) ;
+ int jerry_cleanup () ;
+ int jerry_create_external_function (int ) ;
+ int jerry_create_string (int const*) ;
+ int jerry_get_array_length (int ) ;
+ int jerry_get_global_object () ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_set_property (int ,int ,int ) ;
+ scalar_t__ jerry_value_is_array (int ) ;
+ int jerry_value_is_error (int ) ;
+ int run (char*,char const*) ;
 
 __attribute__((used)) static void
 test_get_backtrace_api_call (void)
@@ -76,7 +76,7 @@ test_get_backtrace_api_call (void)
 
   jerry_release_value (backtrace);
 
-  /* Depth set to 2 this time. */
+
 
   source = ("function f() {\n"
             "  return backtrace(2);\n"

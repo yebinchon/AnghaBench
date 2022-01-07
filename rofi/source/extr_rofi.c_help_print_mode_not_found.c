@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ gboolean ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  GString ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- TYPE_1__** available_modi ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (char*) ; 
- int /*<<< orphan*/  g_string_printf (int /*<<< orphan*/ *,char*,char const*) ; 
- TYPE_1__** modi ; 
- unsigned int num_available_modi ; 
- unsigned int num_modi ; 
- int /*<<< orphan*/  rofi_add_error_message (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ gboolean ;
+struct TYPE_3__ {int name; } ;
+typedef int GString ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ TYPE_1__** available_modi ;
+ int g_string_append_printf (int *,char*,char*,int ) ;
+ int * g_string_new (char*) ;
+ int g_string_printf (int *,char*,char const*) ;
+ TYPE_1__** modi ;
+ unsigned int num_available_modi ;
+ unsigned int num_modi ;
+ int rofi_add_error_message (int *) ;
 
 __attribute__((used)) static void help_print_mode_not_found ( const char *mode )
 {

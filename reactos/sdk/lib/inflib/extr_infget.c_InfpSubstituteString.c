@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__* PWSTR ;
-typedef  int /*<<< orphan*/  PINFCACHE ;
-typedef  char* PCWSTR ;
 
-/* Variables and functions */
- char* InfpGetSubstitutionString (int /*<<< orphan*/ ,char const*,size_t*,int) ; 
- int MAX_INF_STRING_LENGTH ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,char const*,size_t) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__* PWSTR ;
+typedef int PINFCACHE ;
+typedef char* PCWSTR ;
+
+
+ char* InfpGetSubstitutionString (int ,char const*,size_t*,int) ;
+ int MAX_INF_STRING_LENGTH ;
+ int memcpy (scalar_t__*,char const*,size_t) ;
 
 __attribute__((used)) static size_t
 InfpSubstituteString(PINFCACHE Inf,
@@ -35,7 +35,7 @@ InfpSubstituteString(PINFCACHE Inf,
     {
         if (*p != '%') continue;
         inside = !inside;
-        if (inside)  /* start of a %xx% string */
+        if (inside)
         {
             len = (p - start);
             if (len > size - 1) len = size - 1;
@@ -44,7 +44,7 @@ InfpSubstituteString(PINFCACHE Inf,
             size -= len;
             start = p;
         }
-        else /* end of the %xx% string, find substitution */
+        else
         {
             len = (p - start - 1);
             subst = InfpGetSubstitutionString( Inf, start + 1, &len, p[1] == '\\' );
@@ -61,7 +61,7 @@ InfpSubstituteString(PINFCACHE Inf,
         }
     }
 
-    if (start != p) /* unfinished string, copy it */
+    if (start != p)
     {
         len = (unsigned int)(p - start);
         if (len > size - 1) len = size - 1;

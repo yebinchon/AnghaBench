@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct c_declspecs {int declspecs_seen_p; int /*<<< orphan*/  attrs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  chainon (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+struct c_declspecs {int declspecs_seen_p; int attrs; } ;
+
+
+ int chainon (int ,int ) ;
 
 struct c_declspecs *
 declspecs_add_attrs (struct c_declspecs *specs, tree attrs)
 {
   specs->attrs = chainon (attrs, specs->attrs);
-  specs->declspecs_seen_p = true;
+  specs->declspecs_seen_p = 1;
   return specs;
 }

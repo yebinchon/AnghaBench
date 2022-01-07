@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int BASE_ADDR ; 
- int TARGET_SIZE_2 ; 
- int /*<<< orphan*/  __clear_cache (void*,void*) ; 
- int* needs_clear_cache ; 
+
+
+
+typedef int u32 ;
+
+
+ int BASE_ADDR ;
+ int TARGET_SIZE_2 ;
+ int __clear_cache (void*,void*) ;
+ int* needs_clear_cache ;
 
 void do_clear_cache()
 {
@@ -26,7 +26,7 @@ void do_clear_cache()
     u32 bitmap=needs_clear_cache[i];
     if(bitmap) {
       u32 start,end;
-      for(j=0;j<32;j++) 
+      for(j=0;j<32;j++)
       {
         if(bitmap&(1<<j)) {
           start=BASE_ADDR+i*131072+j*4096;

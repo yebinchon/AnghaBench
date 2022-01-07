@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  StringInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CitusRemoveDirectory (int /*<<< orphan*/ ) ; 
- int CreatedResultsDirectory ; 
- int /*<<< orphan*/  IntermediateResultsDirectory () ; 
- int /*<<< orphan*/  appendStringInfoString (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  makeStringInfo () ; 
+
+
+
+typedef int StringInfo ;
+
+
+ int CitusRemoveDirectory (int ) ;
+ int CreatedResultsDirectory ;
+ int IntermediateResultsDirectory () ;
+ int appendStringInfoString (int ,int ) ;
+ int makeStringInfo () ;
 
 void
 RemoveIntermediateResultsDirectory(void)
 {
-	if (CreatedResultsDirectory)
-	{
-		StringInfo resultsDirectory = makeStringInfo();
-		appendStringInfoString(resultsDirectory, IntermediateResultsDirectory());
+ if (CreatedResultsDirectory)
+ {
+  StringInfo resultsDirectory = makeStringInfo();
+  appendStringInfoString(resultsDirectory, IntermediateResultsDirectory());
 
-		CitusRemoveDirectory(resultsDirectory);
+  CitusRemoveDirectory(resultsDirectory);
 
-		CreatedResultsDirectory = false;
-	}
+  CreatedResultsDirectory = 0;
+ }
 }

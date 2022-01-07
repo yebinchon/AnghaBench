@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_6__ {int /*<<< orphan*/  verbs; } ;
-struct TYPE_5__ {int /*<<< orphan*/  entry; int /*<<< orphan*/  Argument; int /*<<< orphan*/  Command; int /*<<< orphan*/  Sequence; int /*<<< orphan*/  Verb; } ;
-typedef  TYPE_1__ MSIVERB ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  TYPE_2__ MSIEXTENSION ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_OUTOFMEMORY ; 
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSI_RecordGetInteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  MSI_RecordGetString (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  deformat_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* load_given_extension (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* msi_alloc_zero (int) ; 
- int /*<<< orphan*/  msi_dup_record_field (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_6__ {int verbs; } ;
+struct TYPE_5__ {int entry; int Argument; int Command; int Sequence; int Verb; } ;
+typedef TYPE_1__ MSIVERB ;
+typedef int MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef TYPE_2__ MSIEXTENSION ;
+typedef int * LPVOID ;
+typedef int LPCWSTR ;
+
+
+ int ERR (char*,int ) ;
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ int MSI_RecordGetInteger (int *,int) ;
+ int MSI_RecordGetString (int *,int) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (int ) ;
+ int deformat_string (int *,int ,int *) ;
+ int list_add_tail (int *,int *) ;
+ TYPE_2__* load_given_extension (int *,int ) ;
+ TYPE_1__* msi_alloc_zero (int) ;
+ int msi_dup_record_field (int *,int) ;
 
 __attribute__((used)) static UINT iterate_load_verb(MSIRECORD *row, LPVOID param)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static UINT iterate_load_verb(MSIRECORD *row, LPVOID param
         return ERROR_SUCCESS;
     }
 
-    /* fill in the data */
+
 
     verb = msi_alloc_zero( sizeof(MSIVERB) );
     if (!verb)
@@ -67,8 +67,8 @@ __attribute__((used)) static UINT iterate_load_verb(MSIRECORD *row, LPVOID param
     buffer = MSI_RecordGetString(row,5);
     deformat_string(package,buffer,&verb->Argument);
 
-    /* associate the verb with the correct extension */
+
     list_add_tail( &extension->verbs, &verb->entry );
-    
+
     return ERROR_SUCCESS;
 }

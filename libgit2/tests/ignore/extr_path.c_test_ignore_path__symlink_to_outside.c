@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert_is_ignored (int,char*) ; 
- int /*<<< orphan*/  cl_git_mkfile (char*,char*) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_rewritefile (char*,char*) ; 
- int /*<<< orphan*/  cl_skip () ; 
- int /*<<< orphan*/  p_symlink (char*,char*) ; 
+ int assert_is_ignored (int,char*) ;
+ int cl_git_mkfile (char*,char*) ;
+ int cl_git_pass (int ) ;
+ int cl_git_rewritefile (char*,char*) ;
+ int cl_skip () ;
+ int p_symlink (char*,char*) ;
 
 void test_ignore_path__symlink_to_outside(void)
 {
-#ifdef GIT_WIN32
-	cl_skip();
-#endif
 
-	cl_git_rewritefile("attr/.gitignore", "symlink\n");
-	cl_git_mkfile("target", "target");
-	cl_git_pass(p_symlink("../target", "attr/symlink"));
-	assert_is_ignored(true, "symlink");
-	assert_is_ignored(true, "lala/../symlink");
+
+
+
+ cl_git_rewritefile("attr/.gitignore", "symlink\n");
+ cl_git_mkfile("target", "target");
+ cl_git_pass(p_symlink("../target", "attr/symlink"));
+ assert_is_ignored(1, "symlink");
+ assert_is_ignored(1, "lala/../symlink");
 }

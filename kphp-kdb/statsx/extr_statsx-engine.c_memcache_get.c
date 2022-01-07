@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void counter ;
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeCnt ; 
- int MAX_RECORD_WORDS ; 
- int /*<<< orphan*/ * NewAllocations ; 
- int Q_raw ; 
- int /*<<< orphan*/  SplitBlocks ; 
- int /*<<< orphan*/  UsedCnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int counter_serialize (void*,char*) ; 
- int /*<<< orphan*/  debug_error (char*,char*,char const*,int) ; 
- int /*<<< orphan*/  debug_key (char const*,int) ; 
- int disable_counter (long long,int /*<<< orphan*/ ) ; 
- int enable_counter (long long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int get_at_prefix_length (char const*,int) ; 
- int get_counter_serialized (char*,long long,int) ; 
- int get_counter_versions (char*,long long) ; 
- int get_counter_views (long long) ; 
- int get_counter_views_given_version (long long,int) ; 
- int get_counter_visitors (long long) ; 
- int get_counter_visitors_given_version (long long,int) ; 
- void* get_counters_sum (int,int,int) ; 
- int get_monthly_views_serialized (char*,long long) ; 
- int get_monthly_visitors_serialized (char*,long long) ; 
- int get_timezone (long long) ; 
- int memcache_wait (struct connection*) ; 
- int not_found (struct connection*) ; 
- int /*<<< orphan*/  parse_countid_with_version (char const*,long long*,int*) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  return_one_key_list (struct connection*,char const*,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int set_timezone (long long,int,int /*<<< orphan*/ ) ; 
- int sprintf (char*,char*,...) ; 
- int sscanf (char const*,char*,...) ; 
- char* stats_buff ; 
- int stats_prepare_stats (struct connection*) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- long long strtoll (char const*,char**,int) ; 
- int verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+typedef void counter ;
+struct connection {int Out; } ;
+
+
+ int FreeCnt ;
+ int MAX_RECORD_WORDS ;
+ int * NewAllocations ;
+ int Q_raw ;
+ int SplitBlocks ;
+ int UsedCnt ;
+ int assert (int) ;
+ int counter_serialize (void*,char*) ;
+ int debug_error (char*,char*,char const*,int) ;
+ int debug_key (char const*,int) ;
+ int disable_counter (long long,int ) ;
+ int enable_counter (long long,int ) ;
+ int fprintf (int ,char*,...) ;
+ int get_at_prefix_length (char const*,int) ;
+ int get_counter_serialized (char*,long long,int) ;
+ int get_counter_versions (char*,long long) ;
+ int get_counter_views (long long) ;
+ int get_counter_views_given_version (long long,int) ;
+ int get_counter_visitors (long long) ;
+ int get_counter_visitors_given_version (long long,int) ;
+ void* get_counters_sum (int,int,int) ;
+ int get_monthly_views_serialized (char*,long long) ;
+ int get_monthly_visitors_serialized (char*,long long) ;
+ int get_timezone (long long) ;
+ int memcache_wait (struct connection*) ;
+ int not_found (struct connection*) ;
+ int parse_countid_with_version (char const*,long long*,int*) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int ,int ,int) ;
+ int set_timezone (long long,int,int ) ;
+ int sprintf (char*,char*,...) ;
+ int sscanf (char const*,char*,...) ;
+ char* stats_buff ;
+ int stats_prepare_stats (struct connection*) ;
+ int stderr ;
+ int strlen (char const*) ;
+ int strncmp (char const*,char*,int) ;
+ long long strtoll (char const*,char**,int) ;
+ int verbosity ;
+ int write_out (int *,char*,int) ;
 
 int memcache_get (struct connection *c, const char *key, int len) {
   char *ptr;
-  //char timezone[32];
+
   long long cnt_id;
   if (verbosity >= 4) {
     fprintf (stderr, "memcache_get (key = \"");
@@ -83,13 +83,13 @@ int memcache_get (struct connection *c, const char *key, int len) {
       debug_error ("get", "couldn't parse count_id&version", key, len);
       return not_found (c);
     }
-    //int res = get_counter_views(cnt_d, ver); TODO!!!
+
     int res = (ver == -1) ? get_counter_views (cnt_id) : get_counter_views_given_version (cnt_id,ver);
     if (res == -2) {
       return memcache_wait (c);
     }
     if (res >= 0) {
-      //int return_one_key (struct connection *c, const char *key, char *val, int vlen) {
+
       if (!Q_raw) {
         return_one_key (c, key - dog_len, stats_buff, sprintf (stats_buff, "%d", res));
       } else {
@@ -106,13 +106,13 @@ int memcache_get (struct connection *c, const char *key, int len) {
       debug_error ("get","couldn't parse count_id&version",key, len);
       return not_found(c);
     }
-    //int res = get_counter_visitors(cnt_id, ver); TODO !!!
+
     int res = (ver == -1) ? get_counter_visitors (cnt_id) : get_counter_visitors_given_version (cnt_id, ver);
     if (res == -2) {
       return memcache_wait (c);
     }
     if (res >= 0) {
-      //int return_one_key (struct connection *c, const char *key, char *val, int vlen) {
+
       if (!Q_raw) {
         return_one_key (c, key - dog_len, stats_buff, sprintf (stats_buff, "%d", res));
       } else {
@@ -155,7 +155,7 @@ int memcache_get (struct connection *c, const char *key, int len) {
 
   if (len > 12 && !strncmp(key, "set_timezone", 12)) {
     int tz = 0;
-    //if (2 == sscanf(key+12,"%d#%31s",&cnt_id,timezone)) {
+
     if (2 == sscanf(key + 12,"%lld#%d", &cnt_id, &tz)) {
       tz = tz + 12 + 4;
       if (tz < 0) {
@@ -243,7 +243,7 @@ int memcache_get (struct connection *c, const char *key, int len) {
     int to_serialize = key[strlen(key) - 1] != '?';
     if (sscanf (key, "counters_sum%d_%d_%d", &id, &start_id, &finish_id)) {
       struct counter *C = get_counters_sum (id, start_id, finish_id);
-      if (C == (void *)-2l) { 
+      if (C == (void *)-2l) {
         return memcache_wait (c);
       }
       if (C) {
@@ -259,32 +259,6 @@ int memcache_get (struct connection *c, const char *key, int len) {
       }
     }
   }
-  /*
-  if (len > 7 && !strncmp (key, "counter", 7)) {
-    int cnt_id, subcnt_id = -1, ver = 0;
-    if (sscanf (key, "counter%d:%d@%d", &cnt_id, &subcnt_id, &ver) >= 2) {
-      //int res = get_counter_serialized (stats_buff, cnt_id, subcnt_id, ver); TODO !!!
-      int res = get_counter_serialized (stats_buff, cnt_id, ver);
-      if (res > 0) {
-        write_out (&c->Out, stats_buff+res, sprintf (stats_buff+res, "VALUE %s 1 %d\r\n", key, res));
-        write_out (&c->Out, stats_buff, res);
-        write_out (&c->Out, "\r\n", 2);
-      }
-      return 0;
-    }
-    if (sscanf (key, "counter%d@%d", &cnt_id, &ver) == 2) {
-      //int res = get_counter_serialized (stats_buff, cnt_id, -1, ver); TODO !!!
-      int res = get_counter_serialized (stats_buff, cnt_id, ver);
-      if (res > 0) {
-        write_out (&c->Out, stats_buff+res, sprintf (stats_buff+res, "VALUE %s 1 %d\r\n", key, res));
-        write_out (&c->Out, stats_buff, res);
-        write_out (&c->Out, "\r\n", 2);
-      }
-      return 0;
-    }
-  }
-  */
-
   if (len > 8 && !strncmp (key, "versions", 8)) {
     cnt_id = strtoll (key + 8, &ptr, 10);
     if (ptr > key+8 && !*ptr) {

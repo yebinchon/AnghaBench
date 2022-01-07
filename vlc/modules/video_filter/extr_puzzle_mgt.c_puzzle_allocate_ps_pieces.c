@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  int /*<<< orphan*/  piece_t ;
-typedef  int /*<<< orphan*/  piece_in_plane_t ;
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef int piece_t ;
+typedef int piece_in_plane_t ;
+typedef int int32_t ;
 struct TYPE_8__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ filter_t ;
+typedef TYPE_2__ filter_t ;
 struct TYPE_7__ {int i_pieces_nbr; int i_rows; int i_cols; int i_planes; } ;
 struct TYPE_9__ {TYPE_6__* ps_pieces_tmp; TYPE_6__* ps_pieces; TYPE_1__ s_allocated; void* pi_group_qty; } ;
-typedef  TYPE_3__ filter_sys_t ;
+typedef TYPE_3__ filter_sys_t ;
 struct TYPE_10__ {struct TYPE_10__* ps_piece_in_plane; } ;
 
-/* Variables and functions */
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (TYPE_6__*) ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  puzzle_free_ps_pieces (TYPE_2__*) ; 
+
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int free (TYPE_6__*) ;
+ void* malloc (int) ;
+ int puzzle_free_ps_pieces (TYPE_2__*) ;
 
 int puzzle_allocate_ps_pieces( filter_t *p_filter)
 {
@@ -46,7 +46,7 @@ int puzzle_allocate_ps_pieces( filter_t *p_filter)
             for (uint32_t i=0;i<p;i++)
                 free(p_sys->ps_pieces[i].ps_piece_in_plane);
             free(p_sys->ps_pieces);
-            p_sys->ps_pieces = NULL;
+            p_sys->ps_pieces = ((void*)0);
             return VLC_ENOMEM;
         }
     }
@@ -56,7 +56,7 @@ int puzzle_allocate_ps_pieces( filter_t *p_filter)
         for (uint32_t i=0;i<p_sys->s_allocated.i_pieces_nbr;i++)
             free(p_sys->ps_pieces[i].ps_piece_in_plane);
         free(p_sys->ps_pieces);
-        p_sys->ps_pieces = NULL;
+        p_sys->ps_pieces = ((void*)0);
         return VLC_ENOMEM;
     }
     p_sys->pi_group_qty = malloc( sizeof( int32_t ) * (p_sys->s_allocated.i_pieces_nbr));
@@ -64,9 +64,9 @@ int puzzle_allocate_ps_pieces( filter_t *p_filter)
         for (uint32_t i=0;i<p_sys->s_allocated.i_pieces_nbr;i++)
             free(p_sys->ps_pieces[i].ps_piece_in_plane);
         free(p_sys->ps_pieces);
-        p_sys->ps_pieces = NULL;
+        p_sys->ps_pieces = ((void*)0);
         free(p_sys->ps_pieces_tmp);
-        p_sys->ps_pieces_tmp = NULL;
+        p_sys->ps_pieces_tmp = ((void*)0);
         return VLC_ENOMEM;
     }
     return VLC_SUCCESS;

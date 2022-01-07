@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int rendered; int /*<<< orphan*/  prev_zs; int /*<<< orphan*/  prev_target; } ;
-typedef  TYPE_1__ gs_texrender_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gs_matrix_pop () ; 
- int /*<<< orphan*/  gs_projection_pop () ; 
- int /*<<< orphan*/  gs_set_render_target (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gs_viewport_pop () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int rendered; int prev_zs; int prev_target; } ;
+typedef TYPE_1__ gs_texrender_t ;
+
+
+ int gs_matrix_pop () ;
+ int gs_projection_pop () ;
+ int gs_set_render_target (int ,int ) ;
+ int gs_viewport_pop () ;
 
 void gs_texrender_end(gs_texrender_t *texrender)
 {
-	if (!texrender)
-		return;
+ if (!texrender)
+  return;
 
-	gs_set_render_target(texrender->prev_target, texrender->prev_zs);
+ gs_set_render_target(texrender->prev_target, texrender->prev_zs);
 
-	gs_matrix_pop();
-	gs_projection_pop();
-	gs_viewport_pop();
+ gs_matrix_pop();
+ gs_projection_pop();
+ gs_viewport_pop();
 
-	texrender->rendered = true;
+ texrender->rendered = 1;
 }

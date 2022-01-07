@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  THIS_MODULE ; 
- int /*<<< orphan*/  kgdb_connected ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+ int THIS_MODULE ;
+ int kgdb_connected ;
+ int try_module_get (int ) ;
 
 __attribute__((used)) static void kgdbts_pre_exp_handler(void)
 {
-	/* Increment the module count when the debugger is active */
-	if (!kgdb_connected)
-		try_module_get(THIS_MODULE);
+
+ if (!kgdb_connected)
+  try_module_get(THIS_MODULE);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scpi_drvinfo {int num_chans; TYPE_1__* channels; } ;
-struct TYPE_2__ {int /*<<< orphan*/  chan; } ;
+struct TYPE_2__ {int chan; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mbox_free_channel (int /*<<< orphan*/ ) ; 
+
+ int mbox_free_channel (int ) ;
 
 __attribute__((used)) static void scpi_free_channels(void *data)
 {
-	struct scpi_drvinfo *info = data;
-	int i;
+ struct scpi_drvinfo *info = data;
+ int i;
 
-	for (i = 0; i < info->num_chans; i++)
-		mbox_free_channel(info->channels[i].chan);
+ for (i = 0; i < info->num_chans; i++)
+  mbox_free_channel(info->channels[i].chan);
 }

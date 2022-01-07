@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int DumpBuf (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  FreeBuf (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ReadDump (char*) ; 
- int /*<<< orphan*/  SeekBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BUF ;
+
+
+ int DumpBuf (int *,char*) ;
+ int FreeBuf (int *) ;
+ int * ReadDump (char*) ;
+ int SeekBuf (int *,int ,int ) ;
 
 bool FileCopy(char *src, char *dst)
 {
-	BUF *b;
-	bool ret = false;
-	// Validate arguments
-	if (src == NULL || dst == NULL)
-	{
-		return false;
-	}
+ BUF *b;
+ bool ret = 0;
 
-	b = ReadDump(src);
-	if (b == NULL)
-	{
-		return false;
-	}
+ if (src == ((void*)0) || dst == ((void*)0))
+ {
+  return 0;
+ }
 
-	SeekBuf(b, 0, 0);
+ b = ReadDump(src);
+ if (b == ((void*)0))
+ {
+  return 0;
+ }
 
-	ret = DumpBuf(b, dst);
+ SeekBuf(b, 0, 0);
 
-	FreeBuf(b);
+ ret = DumpBuf(b, dst);
 
-	return ret;
+ FreeBuf(b);
+
+ return ret;
 }

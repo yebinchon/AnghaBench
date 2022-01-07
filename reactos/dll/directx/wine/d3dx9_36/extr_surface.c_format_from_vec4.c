@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vec4 {int dummy; } ;
-struct pixel_format_desc {int* bits; scalar_t__ type; int* shift; int /*<<< orphan*/  bytes_per_pixel; } ;
-typedef  unsigned int DWORD ;
-typedef  unsigned int BYTE ;
+struct pixel_format_desc {int* bits; scalar_t__ type; int* shift; int bytes_per_pixel; } ;
+typedef unsigned int DWORD ;
+typedef unsigned int BYTE ;
 
-/* Variables and functions */
- scalar_t__ FORMAT_ARGBF ; 
- scalar_t__ FORMAT_ARGBF16 ; 
- unsigned int float_32_to_16 (float const) ; 
- int /*<<< orphan*/  memset (unsigned int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FORMAT_ARGBF ;
+ scalar_t__ FORMAT_ARGBF16 ;
+ unsigned int float_32_to_16 (float const) ;
+ int memset (unsigned int*,int ,int ) ;
 
 __attribute__((used)) static void format_from_vec4(const struct pixel_format_desc *format, const struct vec4 *src, BYTE *dst)
 {

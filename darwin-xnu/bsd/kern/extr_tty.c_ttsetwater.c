@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tty {int t_ospeed; unsigned int t_lowat; int /*<<< orphan*/  t_hiwat; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBSIZE ; 
- unsigned int CLAMP (unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TTMAXHIWAT ; 
- int /*<<< orphan*/  TTMAXLOWAT ; 
- int /*<<< orphan*/  TTMINHIWAT ; 
- int /*<<< orphan*/  TTMINLOWAT ; 
- int /*<<< orphan*/  TTY_LOCK_OWNED (struct tty*) ; 
- int /*<<< orphan*/  roundup (unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+struct tty {int t_ospeed; unsigned int t_lowat; int t_hiwat; } ;
+
+
+ int CBSIZE ;
+ unsigned int CLAMP (unsigned int,int ,int ) ;
+ int TTMAXHIWAT ;
+ int TTMAXLOWAT ;
+ int TTMINHIWAT ;
+ int TTMINLOWAT ;
+ int TTY_LOCK_OWNED (struct tty*) ;
+ int roundup (unsigned int,int ) ;
 
 void
 ttsetwater(struct tty *tp)
 {
-	int cps;
-	unsigned int x;
+ int cps;
+ unsigned int x;
 
-	TTY_LOCK_OWNED(tp);	/* debug assert */
+ TTY_LOCK_OWNED(tp);
 
-#define CLAMP(x, h, l)	((x) > h ? h : ((x) < l) ? l : (x))
 
-	cps = tp->t_ospeed / 10;
-	tp->t_lowat = x = CLAMP(cps / 2, TTMAXLOWAT, TTMINLOWAT);
-	x += cps;
-	x = CLAMP(x, TTMAXHIWAT, TTMINHIWAT);
-	tp->t_hiwat = roundup(x, CBSIZE);
-#undef	CLAMP
+
+ cps = tp->t_ospeed / 10;
+ tp->t_lowat = x = ((cps / 2) > TTMAXLOWAT ? TTMAXLOWAT : ((cps / 2) < TTMINLOWAT) ? TTMINLOWAT : (cps / 2));
+ x += cps;
+ x = ((x) > TTMAXHIWAT ? TTMAXHIWAT : ((x) < TTMINHIWAT) ? TTMINHIWAT : (x));
+ tp->t_hiwat = roundup(x, CBSIZE);
+
 }

@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int XXX ;
+ char* malloc (int,int ,int ) ;
+ int memcpy (char*,char const*,int) ;
+ int strlen (char const*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  XXX ; 
- char* malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int strlen (char const*) ; 
-
-char   *
+char *
 usb_strdup(const char *str)
 {
-	char *tmp;
-	int len;
+ char *tmp;
+ int len;
 
-	len = 1 + strlen(str);
+ len = 1 + strlen(str);
 
-	tmp = malloc(len,XXX,XXX);
-	if (tmp == NULL)
-		return (NULL);
+ tmp = malloc(len,XXX,XXX);
+ if (tmp == ((void*)0))
+  return (((void*)0));
 
-	memcpy(tmp, str, len);
-	return (tmp);
+ memcpy(tmp, str, len);
+ return (tmp);
 }

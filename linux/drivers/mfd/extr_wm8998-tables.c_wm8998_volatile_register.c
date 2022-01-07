@@ -1,110 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
-
-/* Variables and functions */
-#define  ARIZONA_AOD_IRQ1 170 
-#define  ARIZONA_AOD_IRQ2 169 
-#define  ARIZONA_AOD_IRQ_RAW_STATUS 168 
-#define  ARIZONA_AOD_WKUP_AND_TRIG 167 
-#define  ARIZONA_ASRC_STATUS 166 
-#define  ARIZONA_ASYNC_SAMPLE_RATE_1_STATUS 165 
-#define  ARIZONA_ASYNC_SAMPLE_RATE_2_STATUS 164 
-#define  ARIZONA_DEVICE_REVISION 163 
-#define  ARIZONA_FX_CTRL2 162 
-#define  ARIZONA_HAPTICS_STATUS 161 
-#define  ARIZONA_HEADPHONE_DETECT_2 160 
-#define  ARIZONA_INPUT_ENABLES_STATUS 159 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_2 158 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_3 157 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_4 156 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_5 155 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_6 154 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_7 153 
-#define  ARIZONA_INTERRUPT_RAW_STATUS_8 152 
-#define  ARIZONA_INTERRUPT_STATUS_1 151 
-#define  ARIZONA_INTERRUPT_STATUS_2 150 
-#define  ARIZONA_INTERRUPT_STATUS_3 149 
-#define  ARIZONA_INTERRUPT_STATUS_4 148 
-#define  ARIZONA_INTERRUPT_STATUS_5 147 
-#define  ARIZONA_IRQ2_STATUS_1 146 
-#define  ARIZONA_IRQ2_STATUS_2 145 
-#define  ARIZONA_IRQ2_STATUS_3 144 
-#define  ARIZONA_IRQ2_STATUS_4 143 
-#define  ARIZONA_IRQ2_STATUS_5 142 
-#define  ARIZONA_IRQ_PIN_STATUS 141 
-#define  ARIZONA_MIC_DETECT_3 140 
-#define  ARIZONA_MIC_DETECT_4 139 
-#define  ARIZONA_OUTPUT_STATUS_1 138 
-#define  ARIZONA_RAW_OUTPUT_STATUS_1 137 
-#define  ARIZONA_SAMPLE_RATE_1_STATUS 136 
-#define  ARIZONA_SAMPLE_RATE_2_STATUS 135 
-#define  ARIZONA_SAMPLE_RATE_3_STATUS 134 
-#define  ARIZONA_SLIMBUS_RX_PORT_STATUS 133 
-#define  ARIZONA_SLIMBUS_TX_PORT_STATUS 132 
-#define  ARIZONA_SOFTWARE_RESET 131 
-#define  ARIZONA_WRITE_SEQUENCER_CTRL_0 130 
-#define  ARIZONA_WRITE_SEQUENCER_CTRL_1 129 
-#define  ARIZONA_WRITE_SEQUENCER_CTRL_2 128 
-
 __attribute__((used)) static bool wm8998_volatile_register(struct device *dev, unsigned int reg)
 {
-	switch (reg) {
-	case ARIZONA_SOFTWARE_RESET:
-	case ARIZONA_DEVICE_REVISION:
-	case ARIZONA_WRITE_SEQUENCER_CTRL_0:
-	case ARIZONA_WRITE_SEQUENCER_CTRL_1:
-	case ARIZONA_WRITE_SEQUENCER_CTRL_2:
-	case ARIZONA_HAPTICS_STATUS:
-	case ARIZONA_SAMPLE_RATE_1_STATUS:
-	case ARIZONA_SAMPLE_RATE_2_STATUS:
-	case ARIZONA_SAMPLE_RATE_3_STATUS:
-	case ARIZONA_ASYNC_SAMPLE_RATE_1_STATUS:
-	case ARIZONA_ASYNC_SAMPLE_RATE_2_STATUS:
-	case ARIZONA_MIC_DETECT_3:
-	case ARIZONA_MIC_DETECT_4:
-	case ARIZONA_HEADPHONE_DETECT_2:
-	case ARIZONA_INPUT_ENABLES_STATUS:
-	case ARIZONA_OUTPUT_STATUS_1:
-	case ARIZONA_RAW_OUTPUT_STATUS_1:
-	case ARIZONA_SLIMBUS_RX_PORT_STATUS:
-	case ARIZONA_SLIMBUS_TX_PORT_STATUS:
-	case ARIZONA_INTERRUPT_STATUS_1:
-	case ARIZONA_INTERRUPT_STATUS_2:
-	case ARIZONA_INTERRUPT_STATUS_3:
-	case ARIZONA_INTERRUPT_STATUS_4:
-	case ARIZONA_INTERRUPT_STATUS_5:
-	case ARIZONA_IRQ2_STATUS_1:
-	case ARIZONA_IRQ2_STATUS_2:
-	case ARIZONA_IRQ2_STATUS_3:
-	case ARIZONA_IRQ2_STATUS_4:
-	case ARIZONA_IRQ2_STATUS_5:
-	case ARIZONA_INTERRUPT_RAW_STATUS_2:
-	case ARIZONA_INTERRUPT_RAW_STATUS_3:
-	case ARIZONA_INTERRUPT_RAW_STATUS_4:
-	case ARIZONA_INTERRUPT_RAW_STATUS_5:
-	case ARIZONA_INTERRUPT_RAW_STATUS_6:
-	case ARIZONA_INTERRUPT_RAW_STATUS_7:
-	case ARIZONA_INTERRUPT_RAW_STATUS_8:
-	case ARIZONA_IRQ_PIN_STATUS:
-	case ARIZONA_AOD_WKUP_AND_TRIG:
-	case ARIZONA_AOD_IRQ1:
-	case ARIZONA_AOD_IRQ2:
-	case ARIZONA_AOD_IRQ_RAW_STATUS:
-	case ARIZONA_FX_CTRL2:
-	case ARIZONA_ASRC_STATUS:
-		return true;
-	default:
-		return false;
-	}
+ switch (reg) {
+ case 131:
+ case 163:
+ case 130:
+ case 129:
+ case 128:
+ case 161:
+ case 136:
+ case 135:
+ case 134:
+ case 165:
+ case 164:
+ case 140:
+ case 139:
+ case 160:
+ case 159:
+ case 138:
+ case 137:
+ case 133:
+ case 132:
+ case 151:
+ case 150:
+ case 149:
+ case 148:
+ case 147:
+ case 146:
+ case 145:
+ case 144:
+ case 143:
+ case 142:
+ case 158:
+ case 157:
+ case 156:
+ case 155:
+ case 154:
+ case 153:
+ case 152:
+ case 141:
+ case 167:
+ case 170:
+ case 169:
+ case 168:
+ case 162:
+ case 166:
+  return 1;
+ default:
+  return 0;
+ }
 }

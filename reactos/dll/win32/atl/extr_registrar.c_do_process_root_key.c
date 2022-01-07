@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char* str; int /*<<< orphan*/  len; } ;
-typedef  TYPE_1__ strbuf ;
-struct TYPE_8__ {int /*<<< orphan*/  key; int /*<<< orphan*/  name; } ;
-typedef  scalar_t__* LPCOLESTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_3__*) ; 
- int /*<<< orphan*/  DISP_E_EXCEPTION ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  do_process_key (scalar_t__**,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_word (scalar_t__**,TYPE_1__*) ; 
- int /*<<< orphan*/  lstrcmpiW (char*,int /*<<< orphan*/ ) ; 
- TYPE_3__* root_keys ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char* str; int len; } ;
+typedef TYPE_1__ strbuf ;
+struct TYPE_8__ {int key; int name; } ;
+typedef scalar_t__* LPCOLESTR ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_3__*) ;
+ int DISP_E_EXCEPTION ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,char*) ;
+ int WARN (char*,...) ;
+ int debugstr_w (char*) ;
+ int do_process_key (scalar_t__**,int ,TYPE_1__*,int ) ;
+ int get_word (scalar_t__**,TYPE_1__*) ;
+ int lstrcmpiW (char*,int ) ;
+ TYPE_3__* root_keys ;
+ int strbuf_init (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT do_process_root_key(LPCOLESTR data, BOOL do_register)
 {

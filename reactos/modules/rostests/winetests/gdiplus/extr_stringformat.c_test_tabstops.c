@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  double REAL ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  GpStringFormat ;
-typedef  int GpStatus ;
 
-/* Variables and functions */
- int GdipCreateStringFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int GdipDeleteStringFormat (int /*<<< orphan*/ *) ; 
- int GdipGetStringFormatTabStopCount (int /*<<< orphan*/ *,int*) ; 
- int GdipGetStringFormatTabStops (int /*<<< orphan*/ *,int,double*,double*) ; 
- int GdipSetStringFormatTabStops (int /*<<< orphan*/ *,double,int,int /*<<< orphan*/ *) ; 
- int InvalidParameter ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int NotImplemented ; 
- int Ok ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (double,double) ; 
- int /*<<< orphan*/ * tabstops ; 
+
+
+
+typedef double REAL ;
+typedef int INT ;
+typedef int GpStringFormat ;
+typedef int GpStatus ;
+
+
+ int GdipCreateStringFormat (int ,int ,int **) ;
+ int GdipDeleteStringFormat (int *) ;
+ int GdipGetStringFormatTabStopCount (int *,int*) ;
+ int GdipGetStringFormatTabStops (int *,int,double*,double*) ;
+ int GdipSetStringFormatTabStops (int *,double,int,int *) ;
+ int InvalidParameter ;
+ int LANG_NEUTRAL ;
+ int NotImplemented ;
+ int Ok ;
+ int expect (int,int) ;
+ int expectf (double,double) ;
+ int * tabstops ;
 
 __attribute__((used)) static void test_tabstops(void)
 {
@@ -40,39 +40,39 @@ __attribute__((used)) static void test_tabstops(void)
     stat = GdipCreateStringFormat(0, LANG_NEUTRAL, &format);
     expect(Ok, stat);
 
-    /* NULL */
-    stat = GdipGetStringFormatTabStopCount(NULL, NULL);
+
+    stat = GdipGetStringFormatTabStopCount(((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStopCount(NULL, &count);
+    stat = GdipGetStringFormatTabStopCount(((void*)0), &count);
     expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStopCount(format, NULL);
+    stat = GdipGetStringFormatTabStopCount(format, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipSetStringFormatTabStops(NULL, 0.0, 0, NULL);
+    stat = GdipSetStringFormatTabStops(((void*)0), 0.0, 0, ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipSetStringFormatTabStops(format, 0.0, 0, NULL);
+    stat = GdipSetStringFormatTabStops(format, 0.0, 0, ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipSetStringFormatTabStops(NULL, 0.0, 0, tabstops);
-    expect(InvalidParameter, stat);
-
-    stat = GdipGetStringFormatTabStops(NULL, 0, NULL, NULL);
-    expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStops(format, 0, NULL, NULL);
-    expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStops(NULL, 0, &firsttab, NULL);
-    expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStops(NULL, 0, NULL, tabs);
-    expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStops(format, 0, &firsttab, NULL);
-    expect(InvalidParameter, stat);
-    stat = GdipGetStringFormatTabStops(format, 0, NULL, tabs);
+    stat = GdipSetStringFormatTabStops(((void*)0), 0.0, 0, tabstops);
     expect(InvalidParameter, stat);
 
-    /* not NULL */
+    stat = GdipGetStringFormatTabStops(((void*)0), 0, ((void*)0), ((void*)0));
+    expect(InvalidParameter, stat);
+    stat = GdipGetStringFormatTabStops(format, 0, ((void*)0), ((void*)0));
+    expect(InvalidParameter, stat);
+    stat = GdipGetStringFormatTabStops(((void*)0), 0, &firsttab, ((void*)0));
+    expect(InvalidParameter, stat);
+    stat = GdipGetStringFormatTabStops(((void*)0), 0, ((void*)0), tabs);
+    expect(InvalidParameter, stat);
+    stat = GdipGetStringFormatTabStops(format, 0, &firsttab, ((void*)0));
+    expect(InvalidParameter, stat);
+    stat = GdipGetStringFormatTabStops(format, 0, ((void*)0), tabs);
+    expect(InvalidParameter, stat);
+
+
     stat = GdipGetStringFormatTabStopCount(format, &count);
     expect(Ok, stat);
     expect(0, count);
-    /* negative tabcount */
+
     stat = GdipSetStringFormatTabStops(format, 0.0, -1, tabstops);
     expect(Ok, stat);
     count = -1;
@@ -105,10 +105,10 @@ __attribute__((used)) static void test_tabstops(void)
     tabs[0] = tabs[1] = tabs[2] = -1.0;
     stat = GdipGetStringFormatTabStops(format, 3, &firsttab, tabs);
     expect(Ok, stat);
-    expectf(0.0,  tabs[0]);
+    expectf(0.0, tabs[0]);
     expectf(10.0, tabs[1]);
-    expectf(2.0,  tabs[2]);
-    expectf(0.0,  firsttab);
+    expectf(2.0, tabs[2]);
+    expectf(0.0, firsttab);
 
     stat = GdipSetStringFormatTabStops(format, 10.0, 3, tabstops);
     expect(Ok, stat);
@@ -121,7 +121,7 @@ __attribute__((used)) static void test_tabstops(void)
     expectf(-1.0, tabs[2]);
     expectf(10.0, firsttab);
 
-    /* zero tabcount, after valid setting to 3 */
+
     stat = GdipSetStringFormatTabStops(format, 0.0, 0, tabstops);
     expect(Ok, stat);
     count = 0;

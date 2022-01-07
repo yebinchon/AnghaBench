@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vmctx {int dummy; } ;
 struct vm_exit {scalar_t__ inst_length; } ;
-struct TYPE_2__ {int /*<<< orphan*/  vmexit_mtrap; } ;
+struct TYPE_2__ {int vmexit_mtrap; } ;
 
-/* Variables and functions */
- int VMEXIT_CONTINUE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  gdb_cpu_mtrap (int) ; 
- TYPE_1__ stats ; 
+
+ int VMEXIT_CONTINUE ;
+ int assert (int) ;
+ int gdb_cpu_mtrap (int) ;
+ TYPE_1__ stats ;
 
 __attribute__((used)) static int
 vmexit_mtrap(struct vmctx *ctx, struct vm_exit *vmexit, int *pvcpu)
 {
 
-	assert(vmexit->inst_length == 0);
+ assert(vmexit->inst_length == 0);
 
-	stats.vmexit_mtrap++;
+ stats.vmexit_mtrap++;
 
-	gdb_cpu_mtrap(*pvcpu);
+ gdb_cpu_mtrap(*pvcpu);
 
-	return (VMEXIT_CONTINUE);
+ return (VMEXIT_CONTINUE);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned int sh2irqs; unsigned int* sh2irqi; int* sh2irq_mask; } ;
-typedef  int /*<<< orphan*/  SH2 ;
+typedef int SH2 ;
 
-/* Variables and functions */
- unsigned int P32XI_VRES ; 
- TYPE_1__ Pico32x ; 
- int /*<<< orphan*/  p32x_update_irls (int /*<<< orphan*/ *,int) ; 
+
+ unsigned int P32XI_VRES ;
+ TYPE_1__ Pico32x ;
+ int p32x_update_irls (int *,int) ;
 
 void p32x_trigger_irq(SH2 *sh2, int m68k_cycles, unsigned int mask)
 {

@@ -1,211 +1,200 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
-#define  BACKLIT 143 
-#define  COLEMAK 142 
-#define  DVORAK 141 
-#define  EXT_PLV 140 
- int /*<<< orphan*/  KC_RSFT ; 
-#define  LOWER 139 
- int /*<<< orphan*/  PLAY_SONG (int /*<<< orphan*/ ) ; 
-#define  PLOVER 138 
-#define  QWERTY 137 
-#define  RAISE 136 
-#define  RGBLED_DECREASE_HUE 135 
-#define  RGBLED_DECREASE_SAT 134 
-#define  RGBLED_DECREASE_VAL 133 
-#define  RGBLED_INCREASE_HUE 132 
-#define  RGBLED_INCREASE_SAT 131 
-#define  RGBLED_INCREASE_VAL 130 
-#define  RGBLED_STEP_MODE 129 
-#define  RGBLED_TOGGLE 128 
- int /*<<< orphan*/  _ADJUST ; 
- unsigned long _COLEMAK ; 
- unsigned long _DVORAK ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _PLOVER ; 
- unsigned long _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  backlight_step () ; 
- int /*<<< orphan*/  breathing_period_set (int) ; 
- int /*<<< orphan*/  breathing_pulse () ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  persistent_default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rgblight_decrease_hue () ; 
- int /*<<< orphan*/  rgblight_decrease_sat () ; 
- int /*<<< orphan*/  rgblight_decrease_val () ; 
- int /*<<< orphan*/  rgblight_increase_hue () ; 
- int /*<<< orphan*/  rgblight_increase_sat () ; 
- int /*<<< orphan*/  rgblight_increase_val () ; 
- int /*<<< orphan*/  rgblight_step () ; 
- int /*<<< orphan*/  rgblight_toggle () ; 
- int /*<<< orphan*/  stop_all_notes () ; 
- int /*<<< orphan*/  tone_colemak ; 
- int /*<<< orphan*/  tone_dvorak ; 
- int /*<<< orphan*/  tone_plover ; 
- int /*<<< orphan*/  tone_plover_gb ; 
- int /*<<< orphan*/  tone_qwerty ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int KC_RSFT ;
+
+ int PLAY_SONG (int ) ;
+ int _ADJUST ;
+ unsigned long _COLEMAK ;
+ unsigned long _DVORAK ;
+ int _LOWER ;
+ int _PLOVER ;
+ unsigned long _QWERTY ;
+ int _RAISE ;
+ int backlight_step () ;
+ int breathing_period_set (int) ;
+ int breathing_pulse () ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int persistent_default_layer_set (unsigned long) ;
+ int register_code (int ) ;
+ int rgblight_decrease_hue () ;
+ int rgblight_decrease_sat () ;
+ int rgblight_decrease_val () ;
+ int rgblight_increase_hue () ;
+ int rgblight_increase_sat () ;
+ int rgblight_increase_val () ;
+ int rgblight_step () ;
+ int rgblight_toggle () ;
+ int stop_all_notes () ;
+ int tone_colemak ;
+ int tone_dvorak ;
+ int tone_plover ;
+ int tone_plover_gb ;
+ int tone_qwerty ;
+ int unregister_code (int ) ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-        case QWERTY:
+        case 137:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_qwerty);
-            #endif
+
+
+
             persistent_default_layer_set(1UL<<_QWERTY);
           }
           break;
-      return false;
-        case COLEMAK:
+      return 0;
+        case 142:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_colemak);
-            #endif
+
+
+
             persistent_default_layer_set(1UL<<_COLEMAK);
           }
           break;
-      return false;
-        case DVORAK:
+      return 0;
+        case 141:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_dvorak);
-            #endif
+
+
+
             persistent_default_layer_set(1UL<<_DVORAK);
           }
           break;
-      return false;
-        case LOWER:
+      return 0;
+        case 139:
           if (record->event.pressed) {
             layer_on(_LOWER);
-            #ifdef BACKLIGHT_ENABLE
-                breathing_period_set(2);
-                breathing_pulse();
-            #endif
+
+
+
+
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           } else {
             layer_off(_LOWER);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           }
           break;
-      return false;
-        case RAISE:
+      return 0;
+        case 136:
           if (record->event.pressed) {
             layer_on(_RAISE);
-            #ifdef BACKLIGHT_ENABLE
-                breathing_period_set(2);
-                breathing_pulse();
-            #endif
+
+
+
+
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           } else {
             layer_off(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
           }
           break;
-      return false;
-        case BACKLIT:
+      return 0;
+        case 143:
           if (record->event.pressed) {
             register_code(KC_RSFT);
-            #ifdef BACKLIGHT_ENABLE
-              backlight_step();
-            #endif
+
+
+
           } else {
             unregister_code(KC_RSFT);
           }
         break;
-      return false;
-        case PLOVER:
+      return 0;
+        case 138:
           if (!record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              stop_all_notes();
-              PLAY_SONG(tone_plover);
-            #endif
+
+
+
+
             layer_on(_PLOVER);
           }
         break;
-      return false;
-        case EXT_PLV:
+      return 0;
+        case 140:
           if (record->event.pressed) {
-            #ifdef AUDIO_ENABLE
-              PLAY_SONG(tone_plover_gb);
-            #endif
+
+
+
             layer_off(_PLOVER);
           }
         break;
-      return false;
+      return 0;
 
-    case RGBLED_TOGGLE:
-      //led operations
+    case 128:
+
       if (record->event.pressed) {
         rgblight_toggle();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_INCREASE_HUE:
+    case 132:
       if (record->event.pressed) {
         rgblight_increase_hue();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_DECREASE_HUE:
+    case 135:
       if (record->event.pressed) {
         rgblight_decrease_hue();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_INCREASE_SAT:
+    case 131:
       if (record->event.pressed) {
         rgblight_increase_sat();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_DECREASE_SAT:
+    case 134:
       if (record->event.pressed) {
         rgblight_decrease_sat();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_INCREASE_VAL:
+    case 130:
       if (record->event.pressed) {
         rgblight_increase_val();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_DECREASE_VAL:
+    case 133:
       if (record->event.pressed) {
         rgblight_decrease_val();
       }
-      return false;
+      return 0;
       break;
-    case RGBLED_STEP_MODE:
+    case 129:
       if (record->event.pressed) {
         rgblight_step();
       }
-      return false;
+      return 0;
       break;
 
 
       }
-  return true;
+  return 1;
 }

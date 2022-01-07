@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int EVP_PKEY_DSA ; 
- int EVP_PKEY_RSA ; 
- int /*<<< orphan*/  EVP_PKEY_get0_DSA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_get0_RSA (int /*<<< orphan*/ *) ; 
- int EVP_PKEY_id (int /*<<< orphan*/ *) ; 
- unsigned int MS_KEYALG_DSS_SIGN ; 
- unsigned int MS_KEYALG_RSA_KEYX ; 
- int /*<<< orphan*/  MS_PRIVATEKEYBLOB ; 
- int /*<<< orphan*/  MS_PUBLICKEYBLOB ; 
- unsigned char* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  PEM_F_DO_I2B ; 
- int /*<<< orphan*/  PEMerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int blob_length (unsigned int,int,int) ; 
- unsigned int check_bitlen_dsa (int /*<<< orphan*/ ,int,unsigned int*) ; 
- unsigned int check_bitlen_rsa (int /*<<< orphan*/ ,int,unsigned int*) ; 
- int /*<<< orphan*/  write_dsa (unsigned char**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  write_ledword (unsigned char**,unsigned int) ; 
- int /*<<< orphan*/  write_rsa (unsigned char**,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int EVP_PKEY ;
+
+
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_PKEY_DSA ;
+ int EVP_PKEY_RSA ;
+ int EVP_PKEY_get0_DSA (int *) ;
+ int EVP_PKEY_get0_RSA (int *) ;
+ int EVP_PKEY_id (int *) ;
+ unsigned int MS_KEYALG_DSS_SIGN ;
+ unsigned int MS_KEYALG_RSA_KEYX ;
+ int MS_PRIVATEKEYBLOB ;
+ int MS_PUBLICKEYBLOB ;
+ unsigned char* OPENSSL_malloc (int) ;
+ int PEM_F_DO_I2B ;
+ int PEMerr (int ,int ) ;
+ int blob_length (unsigned int,int,int) ;
+ unsigned int check_bitlen_dsa (int ,int,unsigned int*) ;
+ unsigned int check_bitlen_rsa (int ,int,unsigned int*) ;
+ int write_dsa (unsigned char**,int ,int) ;
+ int write_ledword (unsigned char**,unsigned int) ;
+ int write_rsa (unsigned char**,int ,int) ;
 
 __attribute__((used)) static int do_i2b(unsigned char **out, EVP_PKEY *pk, int ispub)
 {
@@ -51,12 +51,12 @@ __attribute__((used)) static int do_i2b(unsigned char **out, EVP_PKEY *pk, int i
         return -1;
     outlen = 16 + blob_length(bitlen,
                               keyalg == MS_KEYALG_DSS_SIGN ? 1 : 0, ispub);
-    if (out == NULL)
+    if (out == ((void*)0))
         return outlen;
     if (*out)
         p = *out;
     else {
-        if ((p = OPENSSL_malloc(outlen)) == NULL) {
+        if ((p = OPENSSL_malloc(outlen)) == ((void*)0)) {
             PEMerr(PEM_F_DO_I2B, ERR_R_MALLOC_FAILURE);
             return -1;
         }

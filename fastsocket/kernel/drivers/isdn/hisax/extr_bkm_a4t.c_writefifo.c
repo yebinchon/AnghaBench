@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  writereg (unsigned int,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_char ;
+
+
+ int writereg (unsigned int,unsigned long,int ,int ) ;
 
 __attribute__((used)) static inline void
 writefifo(unsigned int ale, unsigned long adr, u_char off, u_char * data, int size)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < size; i++)
-		writereg(ale, adr, off, *data++);
+ for (i = 0; i < size; i++)
+  writereg(ale, adr, off, *data++);
 }

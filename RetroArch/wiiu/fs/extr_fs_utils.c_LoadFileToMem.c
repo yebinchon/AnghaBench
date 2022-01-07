@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  scalar_t__ u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (scalar_t__) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- int read (int,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int u8 ;
+typedef scalar_t__ u32 ;
+
+
+ int O_RDONLY ;
+ int SEEK_END ;
+ int SEEK_SET ;
+ int close (int) ;
+ int free (int *) ;
+ scalar_t__ lseek (int,int ,int ) ;
+ scalar_t__ malloc (scalar_t__) ;
+ int open (char const*,int ) ;
+ int read (int,int *,scalar_t__) ;
 
 int LoadFileToMem(const char *filepath, u8 **inbuffer, u32 *size)
 {
@@ -30,11 +30,11 @@ int LoadFileToMem(const char *filepath, u8 **inbuffer, u32 *size)
    u32 filesize;
    int iFd;
    u32 blocksize = 0x4000;
-   u32 done      = 0;
+   u32 done = 0;
    int readBytes = 0;
 
-   /* always initialze input */
-   *inbuffer     = NULL;
+
+   *inbuffer = ((void*)0);
 
    if (size)
       *size = 0;
@@ -47,7 +47,7 @@ int LoadFileToMem(const char *filepath, u8 **inbuffer, u32 *size)
    lseek(iFd, 0, SEEK_SET);
 
    buffer = (u8 *) malloc(filesize);
-   if (buffer == NULL)
+   if (buffer == ((void*)0))
    {
       close(iFd);
       return -2;
@@ -73,7 +73,7 @@ int LoadFileToMem(const char *filepath, u8 **inbuffer, u32 *size)
 
    *inbuffer = buffer;
 
-   /* sign is optional input */
+
    if (size)
       *size = filesize;
 

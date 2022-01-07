@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_3__ ;
-typedef  struct TYPE_28__   TYPE_2__ ;
-typedef  struct TYPE_27__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlNodePtr ;
+
+
+typedef struct TYPE_29__ TYPE_3__ ;
+typedef struct TYPE_28__ TYPE_2__ ;
+typedef struct TYPE_27__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlNodePtr ;
 struct TYPE_29__ {TYPE_2__* priv_data; } ;
 struct TYPE_28__ {void* adaptionset_bitstreamswitching_val; void* adaptionset_segmentalignment_val; void* adaptionset_maxframerate_val; void* adaptionset_minframerate_val; void* adaptionset_maxheight_val; void* adaptionset_minheight_val; void* adaptionset_maxwidth_val; void* adaptionset_minwidth_val; void* adaptionset_maxbw_val; void* adaptionset_minbw_val; void* adaptionset_lang_val; void* adaptionset_par_val; void* adaptionset_contenttype_val; } ;
-struct TYPE_27__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ DASHContext ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_27__ {int name; } ;
+typedef TYPE_2__ DASHContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_strcasecmp (int /*<<< orphan*/ ,char const*) ; 
- int parse_manifest_representation (TYPE_3__*,char const*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ; 
- TYPE_1__* xmlFirstElementChild (TYPE_1__*) ; 
- void* xmlGetProp (TYPE_1__*,char*) ; 
- TYPE_1__* xmlNextElementSibling (TYPE_1__*) ; 
+
+ int av_strcasecmp (int ,char const*) ;
+ int parse_manifest_representation (TYPE_3__*,char const*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*,TYPE_1__*) ;
+ TYPE_1__* xmlFirstElementChild (TYPE_1__*) ;
+ void* xmlGetProp (TYPE_1__*,char*) ;
+ TYPE_1__* xmlNextElementSibling (TYPE_1__*) ;
 
 __attribute__((used)) static int parse_manifest_adaptationset(AVFormatContext *s, const char *url,
                                         xmlNodePtr adaptionset_node,
@@ -36,12 +36,12 @@ __attribute__((used)) static int parse_manifest_adaptationset(AVFormatContext *s
 {
     int ret = 0;
     DASHContext *c = s->priv_data;
-    xmlNodePtr fragment_template_node = NULL;
-    xmlNodePtr content_component_node = NULL;
-    xmlNodePtr adaptionset_baseurl_node = NULL;
-    xmlNodePtr adaptionset_segmentlist_node = NULL;
-    xmlNodePtr adaptionset_supplementalproperty_node = NULL;
-    xmlNodePtr node = NULL;
+    xmlNodePtr fragment_template_node = ((void*)0);
+    xmlNodePtr content_component_node = ((void*)0);
+    xmlNodePtr adaptionset_baseurl_node = ((void*)0);
+    xmlNodePtr adaptionset_segmentlist_node = ((void*)0);
+    xmlNodePtr adaptionset_supplementalproperty_node = ((void*)0);
+    xmlNodePtr node = ((void*)0);
     c->adaptionset_contenttype_val = xmlGetProp(adaptionset_node, "contentType");
     c->adaptionset_par_val = xmlGetProp(adaptionset_node, "par");
     c->adaptionset_lang_val = xmlGetProp(adaptionset_node, "lang");

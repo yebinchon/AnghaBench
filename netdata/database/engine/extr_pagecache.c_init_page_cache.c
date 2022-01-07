@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct page_cache {int /*<<< orphan*/  pg_cache_rwlock; scalar_t__ populated_pages; scalar_t__ page_descriptors; } ;
+
+
+
+
+struct page_cache {int pg_cache_rwlock; scalar_t__ populated_pages; scalar_t__ page_descriptors; } ;
 struct rrdengine_instance {struct page_cache pg_cache; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  init_committed_page_index (struct rrdengine_instance*) ; 
- int /*<<< orphan*/  init_metrics_index (struct rrdengine_instance*) ; 
- int /*<<< orphan*/  init_replaceQ (struct rrdengine_instance*) ; 
- scalar_t__ uv_rwlock_init (int /*<<< orphan*/ *) ; 
+
+ int assert (int) ;
+ int init_committed_page_index (struct rrdengine_instance*) ;
+ int init_metrics_index (struct rrdengine_instance*) ;
+ int init_replaceQ (struct rrdengine_instance*) ;
+ scalar_t__ uv_rwlock_init (int *) ;
 
 void init_page_cache(struct rrdengine_instance *ctx)
 {

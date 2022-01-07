@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u_int ;
-typedef  int u_char ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u_int ;
+typedef int u_char ;
 struct stp_bpdu_ {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ndo_snapend; int /*<<< orphan*/  ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
+struct TYPE_5__ {int ndo_snapend; int ndo_vflag; } ;
+typedef TYPE_1__ netdissect_options ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTRACT_16BITS (int const*) ; 
- int /*<<< orphan*/  EXTRACT_32BITS (int const*) ; 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK_32BITS (int const*) ; 
- int SPB_BPDU_AGREEMENT_CON_OFFSET ; 
- int SPB_BPDU_AGREEMENT_DIGEST_OFFSET ; 
- int SPB_BPDU_AGREEMENT_EDGE_OFFSET ; 
- int SPB_BPDU_AGREEMENT_FORMAT_OFFSET ; 
- int SPB_BPDU_AGREEMENT_OFFSET ; 
- int SPB_BPDU_CONFIG_DIGEST_OFFSET ; 
- int SPB_BPDU_CONFIG_NAME_OFFSET ; 
- int SPB_BPDU_CONFIG_REV_OFFSET ; 
- scalar_t__ fn_printzp (TYPE_1__*,int const*,int,int /*<<< orphan*/ ) ; 
+
+ int EXTRACT_16BITS (int const*) ;
+ int EXTRACT_32BITS (int const*) ;
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK_32BITS (int const*) ;
+ int SPB_BPDU_AGREEMENT_CON_OFFSET ;
+ int SPB_BPDU_AGREEMENT_DIGEST_OFFSET ;
+ int SPB_BPDU_AGREEMENT_EDGE_OFFSET ;
+ int SPB_BPDU_AGREEMENT_FORMAT_OFFSET ;
+ int SPB_BPDU_AGREEMENT_OFFSET ;
+ int SPB_BPDU_CONFIG_DIGEST_OFFSET ;
+ int SPB_BPDU_CONFIG_NAME_OFFSET ;
+ int SPB_BPDU_CONFIG_REV_OFFSET ;
+ scalar_t__ fn_printzp (TYPE_1__*,int const*,int,int ) ;
 
 __attribute__((used)) static int
 stp_print_spb_bpdu(netdissect_options *ndo, const struct stp_bpdu_ *stp_bpdu,
@@ -38,9 +38,9 @@ stp_print_spb_bpdu(netdissect_options *ndo, const struct stp_bpdu_ *stp_bpdu,
 {
     const u_char *ptr;
 
-    /*
-     * in non-verbose mode don't print anything.
-     */
+
+
+
     if (!ndo->ndo_vflag) {
         return 1;
     }
@@ -51,8 +51,8 @@ stp_print_spb_bpdu(netdissect_options *ndo, const struct stp_bpdu_ *stp_bpdu,
     ND_PRINT((ndo, "\n\tv4len %d, ", EXTRACT_16BITS (ptr + offset)));
     ND_PRINT((ndo, "AUXMCID Name "));
     if (fn_printzp(ndo, ptr + offset + SPB_BPDU_CONFIG_NAME_OFFSET, 32,
-		   ndo->ndo_snapend))
-	goto trunc;
+     ndo->ndo_snapend))
+ goto trunc;
     ND_PRINT((ndo, ", Rev %u,\n\t\tdigest %08x%08x%08x%08x",
             EXTRACT_16BITS(ptr + offset + SPB_BPDU_CONFIG_REV_OFFSET),
             EXTRACT_32BITS(ptr + offset + SPB_BPDU_CONFIG_DIGEST_OFFSET),

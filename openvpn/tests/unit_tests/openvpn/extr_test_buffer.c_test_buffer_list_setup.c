@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct test_buffer_list_aggregate_ctx {void* empty_buffers; void* zero_length_strings; void* one_two_three; void* empty; } ;
 
-/* Variables and functions */
- void* buffer_list_new (int) ; 
- int /*<<< orphan*/  buffer_list_push (void*,char*) ; 
- int /*<<< orphan*/  buffer_list_push_data (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct test_buffer_list_aggregate_ctx* calloc (int,int) ; 
- char* teststr1 ; 
- char* teststr2 ; 
- char* teststr3 ; 
+
+ void* buffer_list_new (int) ;
+ int buffer_list_push (void*,char*) ;
+ int buffer_list_push_data (void*,int *,int ) ;
+ struct test_buffer_list_aggregate_ctx* calloc (int,int) ;
+ char* teststr1 ;
+ char* teststr2 ;
+ char* teststr3 ;
 
 __attribute__((used)) static int test_buffer_list_setup(void **state)
 {
-    struct test_buffer_list_aggregate_ctx *ctx  = calloc(1, sizeof(*ctx));
+    struct test_buffer_list_aggregate_ctx *ctx = calloc(1, sizeof(*ctx));
     ctx->empty = buffer_list_new(0);
 
     ctx->one_two_three = buffer_list_new(3);

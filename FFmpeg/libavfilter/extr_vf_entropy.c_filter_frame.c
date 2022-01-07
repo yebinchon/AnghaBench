@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  size_t uint16_t ;
-typedef  int /*<<< orphan*/  metabuf ;
-typedef  int /*<<< orphan*/  key ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef size_t uint16_t ;
+typedef int metabuf ;
+typedef int key ;
 struct TYPE_12__ {TYPE_1__* priv; TYPE_3__** outputs; } ;
 struct TYPE_11__ {TYPE_4__* dst; } ;
-struct TYPE_10__ {size_t** data; int* linesize; int /*<<< orphan*/  metadata; } ;
+struct TYPE_10__ {size_t** data; int* linesize; int metadata; } ;
 struct TYPE_9__ {int nb_planes; int* rgba_map; float* planewidth; float* planeheight; float* histogram; int depth; scalar_t__ mode; int* planenames; scalar_t__ is_rgb; } ;
-typedef  TYPE_1__ EntropyContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ EntropyContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- float FFABS (scalar_t__) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- float log2 (int) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
+
+ float FFABS (scalar_t__) ;
+ int av_dict_set (int *,char*,char*,int ) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ float log2 (int) ;
+ int memset (float*,int ,int) ;
+ int snprintf (char*,int,char*,...) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *in)
 {

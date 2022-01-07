@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int running; struct TYPE_3__* zeroBuffer; int /*<<< orphan*/ * worker_thread; struct TYPE_3__* buffer; scalar_t__ cond_lock; scalar_t__ fifo_lock; scalar_t__ cond; } ;
-typedef  TYPE_1__ psp_audio_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  scond_free (scalar_t__) ; 
- int /*<<< orphan*/  slock_free (scalar_t__) ; 
- int /*<<< orphan*/  sthread_join (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int running; struct TYPE_3__* zeroBuffer; int * worker_thread; struct TYPE_3__* buffer; scalar_t__ cond_lock; scalar_t__ fifo_lock; scalar_t__ cond; } ;
+typedef TYPE_1__ psp_audio_t ;
+
+
+ int free (TYPE_1__*) ;
+ int scond_free (scalar_t__) ;
+ int slock_free (scalar_t__) ;
+ int sthread_join (int *) ;
 
 __attribute__((used)) static void psp_audio_free(void *data)
 {
@@ -29,7 +29,7 @@ __attribute__((used)) static void psp_audio_free(void *data)
    if(psp->running){
       if (psp->worker_thread)
       {
-            psp->running = false;
+            psp->running = 0;
             sthread_join(psp->worker_thread);
       }
 
@@ -41,7 +41,7 @@ __attribute__((used)) static void psp_audio_free(void *data)
             slock_free(psp->cond_lock);
    }
    free(psp->buffer);
-   psp->worker_thread = NULL;
+   psp->worker_thread = ((void*)0);
    free(psp->zeroBuffer);
    free(psp);
 }

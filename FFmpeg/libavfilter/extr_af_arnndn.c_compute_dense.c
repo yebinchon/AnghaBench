@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int nb_neurons; int nb_inputs; float* bias; float const* input_weights; scalar_t__ activation; } ;
-typedef  TYPE_1__ DenseLayer ;
+typedef TYPE_1__ DenseLayer ;
 
-/* Variables and functions */
- scalar_t__ ACTIVATION_RELU ; 
- scalar_t__ ACTIVATION_SIGMOID ; 
- scalar_t__ ACTIVATION_TANH ; 
- float FFMAX (int /*<<< orphan*/ ,float) ; 
- float WEIGHTS_SCALE ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- float sigmoid_approx (float) ; 
- float tansig_approx (float) ; 
+
+ scalar_t__ ACTIVATION_RELU ;
+ scalar_t__ ACTIVATION_SIGMOID ;
+ scalar_t__ ACTIVATION_TANH ;
+ float FFMAX (int ,float) ;
+ float WEIGHTS_SCALE ;
+ int av_assert0 (int ) ;
+ float sigmoid_approx (float) ;
+ float tansig_approx (float) ;
 
 __attribute__((used)) static void compute_dense(const DenseLayer *layer, float *output, const float *input)
 {
     const int N = layer->nb_neurons, M = layer->nb_inputs, stride = N;
 
     for (int i = 0; i < N; i++) {
-        /* Compute update gate. */
+
         float sum = layer->bias[i];
 
         for (int j = 0; j < M; j++)

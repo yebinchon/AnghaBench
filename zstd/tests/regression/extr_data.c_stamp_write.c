@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hash ;
-typedef  int /*<<< orphan*/  data_t ;
-typedef  int /*<<< orphan*/  XXH64_canonical_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int EIO ; 
- int ENOMEM ; 
- int /*<<< orphan*/  XXH64_canonicalFromHash (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* cat3 (char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int fwrite (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kStampName ; 
- int /*<<< orphan*/  stamp_hash (int /*<<< orphan*/  const* const*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+
+
+typedef int hash ;
+typedef int data_t ;
+typedef int XXH64_canonical_t ;
+typedef int FILE ;
+
+
+ int EIO ;
+ int ENOMEM ;
+ int XXH64_canonicalFromHash (int *,int ) ;
+ char* cat3 (char const*,char*,int ) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int fwrite (int *,int,int,int *) ;
+ int kStampName ;
+ int stamp_hash (int const* const*) ;
+ int stderr ;
+ int unlink (char*) ;
 
 __attribute__((used)) static int
 stamp_write(char const* dir, data_t const* const* data, int const data_err) {
     char* stamp = cat3(dir, "/", kStampName);
-    FILE* stampfile = NULL;
+    FILE* stampfile = ((void*)0);
     int err = EIO;
 
-    if (stamp == NULL)
+    if (stamp == ((void*)0))
         return ENOMEM;
 
     if (data_err != 0) {
@@ -48,7 +48,7 @@ stamp_write(char const* dir, data_t const* const* data, int const data_err) {
     XXH64_canonicalFromHash(&hash, stamp_hash(data));
 
     stampfile = fopen(stamp, "wb");
-    if (stampfile == NULL)
+    if (stampfile == ((void*)0))
         goto out;
     if (fwrite(&hash, sizeof(hash), 1, stampfile) != 1)
         goto out;
@@ -56,10 +56,10 @@ stamp_write(char const* dir, data_t const* const* data, int const data_err) {
     fprintf(stderr, "stamped new data cache\n");
 out:
     if (err != 0)
-        /* Ignore errors. */
+
         unlink(stamp);
     free(stamp);
-    if (stampfile != NULL)
+    if (stampfile != ((void*)0))
         fclose(stampfile);
     return err;
 }

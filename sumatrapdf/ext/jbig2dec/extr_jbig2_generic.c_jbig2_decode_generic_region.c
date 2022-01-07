@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_36__   TYPE_3__ ;
-typedef  struct TYPE_35__   TYPE_2__ ;
-typedef  struct TYPE_34__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int8_t ;
-struct TYPE_36__ {int* gbat; int MMR; int GBTEMPLATE; int /*<<< orphan*/  USESKIP; scalar_t__ TPGDON; } ;
+
+
+typedef struct TYPE_36__ TYPE_3__ ;
+typedef struct TYPE_35__ TYPE_2__ ;
+typedef struct TYPE_34__ TYPE_1__ ;
+
+
+typedef int int8_t ;
+struct TYPE_36__ {int* gbat; int MMR; int GBTEMPLATE; int USESKIP; scalar_t__ TPGDON; } ;
 struct TYPE_35__ {int stride; int height; } ;
-struct TYPE_34__ {int data_length; int /*<<< orphan*/  number; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  TYPE_2__ Jbig2Image ;
-typedef  TYPE_3__ Jbig2GenericRegionParams ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
-typedef  int /*<<< orphan*/  Jbig2ArithState ;
-typedef  int /*<<< orphan*/  Jbig2ArithCx ;
+struct TYPE_34__ {int data_length; int number; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef TYPE_2__ Jbig2Image ;
+typedef TYPE_3__ Jbig2GenericRegionParams ;
+typedef int Jbig2Ctx ;
+typedef int Jbig2ArithState ;
+typedef int Jbig2ArithCx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_DEBUG ; 
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int jbig2_decode_generic_region_TPGDON (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template0 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template0_unopt (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template1 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template1_unopt (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template2 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template2_unopt (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template3 (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_decode_generic_template3_unopt (int /*<<< orphan*/ *,TYPE_1__*,TYPE_3__ const*,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int) ; 
+
+ int JBIG2_SEVERITY_DEBUG ;
+ int JBIG2_SEVERITY_FATAL ;
+ int jbig2_decode_generic_region_TPGDON (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template0 (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template0_unopt (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template1 (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template1_unopt (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template2 (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template2_unopt (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template3 (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_decode_generic_template3_unopt (int *,TYPE_1__*,TYPE_3__ const*,int *,TYPE_2__*,int *) ;
+ int jbig2_error (int *,int ,int ,char*,int,int) ;
 
 int
 jbig2_decode_generic_region(Jbig2Ctx *ctx,

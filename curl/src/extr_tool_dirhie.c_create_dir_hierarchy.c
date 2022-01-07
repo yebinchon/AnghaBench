@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mode_t ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLE_OK ; 
- int /*<<< orphan*/  CURLE_OUT_OF_MEMORY ; 
- int /*<<< orphan*/  CURLE_WRITE_ERROR ; 
- int /*<<< orphan*/  Curl_safefree (char*) ; 
- int /*<<< orphan*/  DIR_CHAR ; 
- scalar_t__ EEXIST ; 
- int /*<<< orphan*/  PATH_DELIMITERS ; 
- scalar_t__ errno ; 
- char* malloc (size_t) ; 
- int mkdir (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msnprintf (char*,size_t,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  show_dir_errno (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- char* strdup (char const*) ; 
- size_t strlen (char const*) ; 
- char* strtok (char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mode_t ;
+typedef int FILE ;
+typedef int CURLcode ;
+
+
+ int CURLE_OK ;
+ int CURLE_OUT_OF_MEMORY ;
+ int CURLE_WRITE_ERROR ;
+ int Curl_safefree (char*) ;
+ int DIR_CHAR ;
+ scalar_t__ EEXIST ;
+ int PATH_DELIMITERS ;
+ scalar_t__ errno ;
+ char* malloc (size_t) ;
+ int mkdir (char*,int ) ;
+ int msnprintf (char*,size_t,char*,int ,char*) ;
+ int show_dir_errno (int *,char*) ;
+ int strcpy (char*,char*) ;
+ char* strdup (char const*) ;
+ size_t strlen (char const*) ;
+ char* strtok (char*,int ) ;
 
 CURLcode create_dir_hierarchy(const char *outfile, FILE *errors)
 {
@@ -53,21 +53,21 @@ CURLcode create_dir_hierarchy(const char *outfile, FILE *errors)
   }
   dirbuildup[0] = '\0';
 
-  /* Allow strtok() here since this isn't used threaded */
-  /* !checksrc! disable BANNEDFUNC 2 */
+
+
   tempdir = strtok(outdup, PATH_DELIMITERS);
 
-  while(tempdir != NULL) {
-    tempdir2 = strtok(NULL, PATH_DELIMITERS);
-    /* since strtok returns a token for the last word even
-       if not ending with DIR_CHAR, we need to prune it */
-    if(tempdir2 != NULL) {
+  while(tempdir != ((void*)0)) {
+    tempdir2 = strtok(((void*)0), PATH_DELIMITERS);
+
+
+    if(tempdir2 != ((void*)0)) {
       size_t dlen = strlen(dirbuildup);
       if(dlen)
         msnprintf(&dirbuildup[dlen], outlen - dlen, "%s%s", DIR_CHAR, tempdir);
       else {
         if(outdup == tempdir)
-          /* the output string doesn't start with a separator */
+
           strcpy(dirbuildup, tempdir);
         else
           msnprintf(dirbuildup, outlen, "%s%s", DIR_CHAR, tempdir);
@@ -75,7 +75,7 @@ CURLcode create_dir_hierarchy(const char *outfile, FILE *errors)
       if((-1 == mkdir(dirbuildup, (mode_t)0000750)) && (errno != EEXIST)) {
         show_dir_errno(errors, dirbuildup);
         result = CURLE_WRITE_ERROR;
-        break; /* get out of loop */
+        break;
       }
     }
     tempdir = tempdir2;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-struct TYPE_10__ {int running_gain; int /*<<< orphan*/  sustain; } ;
-typedef  TYPE_1__ hdcd_state ;
-struct TYPE_11__ {int /*<<< orphan*/  bits_per_sample; int /*<<< orphan*/  analyze_mode; } ;
-typedef  TYPE_2__ HDCDContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_assert0 (int) ; 
- int hdcd_analyze (int /*<<< orphan*/ *,int,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  hdcd_analyze_prepare (TYPE_1__*,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  hdcd_control (TYPE_2__*,TYPE_1__*,int*,int*) ; 
- int hdcd_envelope (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,int,int,int) ; 
- int hdcd_scan (TYPE_2__*,TYPE_1__*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_10__ {int running_gain; int sustain; } ;
+typedef TYPE_1__ hdcd_state ;
+struct TYPE_11__ {int bits_per_sample; int analyze_mode; } ;
+typedef TYPE_2__ HDCDContext ;
+
+
+ int av_assert0 (int) ;
+ int hdcd_analyze (int *,int,int,int,int,int,int ,int ,int) ;
+ int hdcd_analyze_prepare (TYPE_1__*,int *,int,int) ;
+ int hdcd_control (TYPE_2__*,TYPE_1__*,int*,int*) ;
+ int hdcd_envelope (int *,int,int,int ,int,int,int) ;
+ int hdcd_scan (TYPE_2__*,TYPE_1__*,int,int *,int,int ) ;
 
 __attribute__((used)) static void hdcd_process(HDCDContext *ctx, hdcd_state *state, int32_t *samples, int count, int stride)
 {

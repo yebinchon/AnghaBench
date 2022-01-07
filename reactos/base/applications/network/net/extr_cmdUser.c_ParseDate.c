@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  dwHighDateTime; int /*<<< orphan*/  dwLowDateTime; } ;
-struct TYPE_10__ {int /*<<< orphan*/  HighPart; int /*<<< orphan*/  LowPart; } ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int dwHighDateTime; int dwLowDateTime; } ;
+struct TYPE_10__ {int HighPart; int LowPart; } ;
 struct TYPE_12__ {TYPE_1__ u; } ;
-struct TYPE_11__ {int wMonth; int wDay; int wYear; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ SYSTEMTIME ;
-typedef  int /*<<< orphan*/ * PWSTR ;
-typedef  int /*<<< orphan*/  PULONG ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  int INT ;
-typedef  TYPE_4__ FILETIME ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_11__ {int wMonth; int wDay; int wYear; int member_0; } ;
+typedef TYPE_2__ SYSTEMTIME ;
+typedef int * PWSTR ;
+typedef int PULONG ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef int INT ;
+typedef TYPE_4__ FILETIME ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetLocaleInfoW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  LOCALE_IDATE ; 
- int /*<<< orphan*/  LOCALE_USER_DEFAULT ; 
- int /*<<< orphan*/  LocalFileTimeToFileTime (TYPE_4__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ReadNumber (int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  ReadSeparator (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  RtlTimeToSecondsSince1970 (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SystemTimeToFileTime (TYPE_2__*,TYPE_4__*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ int GetLocaleInfoW (int ,int ,int *,int) ;
+ int LOCALE_IDATE ;
+ int LOCALE_USER_DEFAULT ;
+ int LocalFileTimeToFileTime (TYPE_4__*,TYPE_4__*) ;
+ int ReadNumber (int **,int*) ;
+ int ReadSeparator (int **) ;
+ int RtlTimeToSecondsSince1970 (TYPE_3__*,int ) ;
+ int SystemTimeToFileTime (TYPE_2__*,TYPE_4__*) ;
+ int TRUE ;
 
 __attribute__((used)) static
 BOOL
@@ -60,7 +60,7 @@ ParseDate(
 
     switch (nDateFormat)
     {
-        case 0: /* mmddyy */
+        case 0:
         default:
             if (!ReadNumber(&p, &SystemTime.wMonth))
                 return FALSE;
@@ -74,7 +74,7 @@ ParseDate(
                 return FALSE;
             break;
 
-        case 1: /* ddmmyy */
+        case 1:
             if (!ReadNumber(&p, &SystemTime.wDay))
                 return FALSE;
             if (!ReadSeparator(&p))
@@ -87,7 +87,7 @@ ParseDate(
                 return FALSE;
             break;
 
-        case 2: /* yymmdd */
+        case 2:
             if (!ReadNumber(&p, &SystemTime.wYear))
                 return FALSE;
             if (!ReadSeparator(&p))
@@ -101,9 +101,9 @@ ParseDate(
             break;
     }
 
-    /* if only entered two digits: */
-    /*   assume 2000's if value less than 80 */
-    /*   assume 1900's if value greater or equal 80 */
+
+
+
     if (SystemTime.wYear <= 99)
     {
         if (SystemTime.wYear >= 80)

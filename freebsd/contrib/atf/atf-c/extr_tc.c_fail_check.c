@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct context {scalar_t__ expect; int /*<<< orphan*/  fail_count; int /*<<< orphan*/  expect_fail_count; int /*<<< orphan*/  expect_reason; } ;
-typedef  int /*<<< orphan*/  atf_dynstr_t ;
 
-/* Variables and functions */
- scalar_t__ EXPECT_FAIL ; 
- scalar_t__ EXPECT_PASS ; 
- char* atf_dynstr_cstring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_dynstr_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  error_in_expect (struct context*,char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+struct context {scalar_t__ expect; int fail_count; int expect_fail_count; int expect_reason; } ;
+typedef int atf_dynstr_t ;
+
+
+ scalar_t__ EXPECT_FAIL ;
+ scalar_t__ EXPECT_PASS ;
+ char* atf_dynstr_cstring (int *) ;
+ int atf_dynstr_fini (int *) ;
+ int error_in_expect (struct context*,char*,char*) ;
+ int fprintf (int ,char*,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void
 fail_check(struct context *ctx, atf_dynstr_t *reason)

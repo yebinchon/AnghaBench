@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct dstr {char* array; int /*<<< orphan*/  member_0; } ;
-struct TYPE_3__ {int /*<<< orphan*/  unnamed_index; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct dstr {char* array; int member_0; } ;
+struct TYPE_3__ {int unnamed_index; } ;
 struct TYPE_4__ {TYPE_1__ data; } ;
 
-/* Variables and functions */
- char* bstrdup (char const*) ; 
- int /*<<< orphan*/  dstr_printf (struct dstr*,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* obs ; 
+
+ char* bstrdup (char const*) ;
+ int dstr_printf (struct dstr*,char*,int ) ;
+ TYPE_2__* obs ;
 
 __attribute__((used)) static inline char *dup_name(const char *name, bool private)
 {
-	if (private && !name)
-		return NULL;
+ if (private && !name)
+  return ((void*)0);
 
-	if (!name || !*name) {
-		struct dstr unnamed = {0};
-		dstr_printf(&unnamed, "__unnamed%04lld",
-			    obs->data.unnamed_index++);
+ if (!name || !*name) {
+  struct dstr unnamed = {0};
+  dstr_printf(&unnamed, "__unnamed%04lld",
+       obs->data.unnamed_index++);
 
-		return unnamed.array;
-	} else {
-		return bstrdup(name);
-	}
+  return unnamed.array;
+ } else {
+  return bstrdup(name);
+ }
 }

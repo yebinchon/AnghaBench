@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int reg_t ;
-typedef  int /*<<< orphan*/  pattern ;
-typedef  int U32 ;
-typedef  scalar_t__ const BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LZ4_NbCommonBytes (int const) ; 
- scalar_t__ LZ4_isLittleEndian () ; 
- int const LZ4_read_ARCH (scalar_t__ const*) ; 
- scalar_t__ likely (int) ; 
+
+
+
+typedef int reg_t ;
+typedef int pattern ;
+typedef int U32 ;
+typedef scalar_t__ const BYTE ;
+
+
+ int LZ4_NbCommonBytes (int const) ;
+ scalar_t__ LZ4_isLittleEndian () ;
+ int const LZ4_read_ARCH (scalar_t__ const*) ;
+ scalar_t__ likely (int) ;
 
 __attribute__((used)) static unsigned
 LZ4HC_countPattern(const BYTE* ip, const BYTE* const iEnd, U32 const pattern32)
@@ -39,7 +39,7 @@ LZ4HC_countPattern(const BYTE* ip, const BYTE* const iEnd, U32 const pattern32)
         while ((ip<iEnd) && (*ip == (BYTE)patternByte)) {
             ip++; patternByte >>= 8;
         }
-    } else {  /* big endian */
+    } else {
         U32 bitOffset = (sizeof(pattern)*8) - 8;
         while (ip < iEnd) {
             BYTE const byte = (BYTE)(pattern >> bitOffset);

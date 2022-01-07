@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_8__ {int cy; } ;
-struct TYPE_10__ {int iYStart; int /*<<< orphan*/ * hLrgWnd; int /*<<< orphan*/  hMapWnd; TYPE_1__ CellSize; int /*<<< orphan*/  NumRows; } ;
+struct TYPE_10__ {int iYStart; int * hLrgWnd; int hMapWnd; TYPE_1__ CellSize; int NumRows; } ;
 struct TYPE_9__ {int top; int bottom; } ;
-typedef  TYPE_2__ RECT ;
-typedef  TYPE_3__* PMAP ;
-typedef  int INT ;
+typedef TYPE_2__ RECT ;
+typedef TYPE_3__* PMAP ;
+typedef int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  InvalidateRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
-#define  SB_LINEDOWN 132 
-#define  SB_LINEUP 131 
-#define  SB_PAGEDOWN 130 
-#define  SB_PAGEUP 129 
-#define  SB_THUMBTRACK 128 
- int /*<<< orphan*/  SB_VERT ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SW_INVALIDATE ; 
- int /*<<< orphan*/  SW_SHOW ; 
- int /*<<< orphan*/  ScrollWindowEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_2__*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetScrollPos (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ YCELLS ; 
- scalar_t__ abs (int) ; 
- int max (int /*<<< orphan*/ ,int) ; 
- int min (int,int /*<<< orphan*/ ) ; 
+
+ int GetClientRect (int ,TYPE_2__*) ;
+ int InvalidateRect (int ,int *,int ) ;
+
+
+
+
+
+ int SB_VERT ;
+ int SW_HIDE ;
+ int SW_INVALIDATE ;
+ int SW_SHOW ;
+ int ScrollWindowEx (int ,int ,int,TYPE_2__*,TYPE_2__*,int *,int *,int ) ;
+ int SetScrollPos (int ,int ,int,int ) ;
+ int ShowWindow (int *,int ) ;
+ int TRUE ;
+ scalar_t__ YCELLS ;
+ scalar_t__ abs (int) ;
+ int max (int ,int) ;
+ int min (int,int ) ;
 
 __attribute__((used)) static
 VOID
@@ -52,23 +52,23 @@ OnVScroll(PMAP infoPtr,
 
     switch (Value)
     {
-        case SB_LINEUP:
-            infoPtr->iYStart -=  1;
+        case 131:
+            infoPtr->iYStart -= 1;
             break;
 
-        case SB_LINEDOWN:
-            infoPtr->iYStart +=  1;
+        case 132:
+            infoPtr->iYStart += 1;
             break;
 
-        case SB_PAGEUP:
+        case 129:
             infoPtr->iYStart -= YCELLS;
             break;
 
-        case SB_PAGEDOWN:
+        case 130:
             infoPtr->iYStart += YCELLS;
             break;
 
-        case SB_THUMBTRACK:
+        case 128:
             infoPtr->iYStart = Pos;
             break;
 
@@ -82,7 +82,7 @@ OnVScroll(PMAP infoPtr,
     iYDiff = iOldYStart - infoPtr->iYStart;
     if (iYDiff)
     {
-        if (infoPtr->hLrgWnd != NULL)
+        if (infoPtr->hLrgWnd != ((void*)0))
         {
             ShowWindow(infoPtr->hLrgWnd, SW_HIDE);
         }
@@ -103,18 +103,18 @@ OnVScroll(PMAP infoPtr,
                            iYDiff * infoPtr->CellSize.cy,
                            &rect,
                            &rect,
-                           NULL,
-                           NULL,
+                           ((void*)0),
+                           ((void*)0),
                            SW_INVALIDATE);
         }
         else
         {
             InvalidateRect(infoPtr->hMapWnd,
-                           NULL,
+                           ((void*)0),
                            TRUE);
         }
 
-        if (infoPtr->hLrgWnd != NULL)
+        if (infoPtr->hLrgWnd != ((void*)0))
         {
             ShowWindow(infoPtr->hLrgWnd, SW_SHOW);
         }

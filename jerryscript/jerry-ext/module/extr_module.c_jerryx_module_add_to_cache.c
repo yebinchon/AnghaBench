@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_set_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+
+
+ int jerry_release_value (int ) ;
+ int jerry_set_property (int ,int ,int ) ;
+ scalar_t__ jerry_value_is_error (int ) ;
 
 __attribute__((used)) static jerry_value_t
-jerryx_module_add_to_cache (jerry_value_t cache, /**< cache to which to add the module */
-                            jerry_value_t module_name, /**< key at which to cache the module */
-                            jerry_value_t module) /**< the module to cache */
+jerryx_module_add_to_cache (jerry_value_t cache,
+                            jerry_value_t module_name,
+                            jerry_value_t module)
 {
   jerry_value_t ret = jerry_set_property (cache, module_name, module);
 

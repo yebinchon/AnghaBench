@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* answers_list_ptr ;
-typedef  int /*<<< orphan*/  answers_list ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef TYPE_1__* answers_list_ptr ;
+typedef int answers_list ;
 struct TYPE_6__ {struct TYPE_6__* next; struct TYPE_6__* prev; struct TYPE_6__* E; } ;
 
-/* Variables and functions */
- TYPE_1__* answers ; 
- scalar_t__ answers_cnt ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dl_free (TYPE_1__*,int) ; 
- scalar_t__ dl_get_memory_used () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,long) ; 
- int get_lev_support_add_answer_size (TYPE_1__*) ; 
- int /*<<< orphan*/  key_words ; 
- int /*<<< orphan*/  map_int_int_free (int /*<<< orphan*/ *) ; 
- scalar_t__ map_int_int_used (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_int_set_int_free (int /*<<< orphan*/ *) ; 
- scalar_t__ map_int_set_int_used (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  map_int_vptr_free (int /*<<< orphan*/ *) ; 
- scalar_t__ map_int_vptr_used (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process_answer (TYPE_1__*,int) ; 
- int /*<<< orphan*/  q_cnt ; 
- int /*<<< orphan*/  set_int_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  user_id_to_answer ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  word_to_answers ; 
+
+ TYPE_1__* answers ;
+ scalar_t__ answers_cnt ;
+ int assert (int) ;
+ int dl_free (TYPE_1__*,int) ;
+ scalar_t__ dl_get_memory_used () ;
+ int fprintf (int ,char*,long) ;
+ int get_lev_support_add_answer_size (TYPE_1__*) ;
+ int key_words ;
+ int map_int_int_free (int *) ;
+ scalar_t__ map_int_int_used (int *) ;
+ int map_int_set_int_free (int *) ;
+ scalar_t__ map_int_set_int_used (int *) ;
+ int map_int_vptr_free (int *) ;
+ scalar_t__ map_int_vptr_used (int *) ;
+ int process_answer (TYPE_1__*,int) ;
+ int q_cnt ;
+ int set_int_free (int *) ;
+ int stderr ;
+ int user_id_to_answer ;
+ scalar_t__ verbosity ;
+ int word_to_answers ;
 
 void free_all (void) {
   if (verbosity) {

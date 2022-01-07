@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expdesc ;
+
+
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int expdesc ;
 struct TYPE_18__ {TYPE_1__* f; } ;
-struct TYPE_17__ {int /*<<< orphan*/  linenumber; } ;
-struct TYPE_16__ {int linedefined; int /*<<< orphan*/  lastlinedefined; } ;
-typedef  TYPE_2__ LexState ;
-typedef  TYPE_3__ FuncState ;
+struct TYPE_17__ {int linenumber; } ;
+struct TYPE_16__ {int linedefined; int lastlinedefined; } ;
+typedef TYPE_2__ LexState ;
+typedef TYPE_3__ FuncState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TK_END ; 
- int /*<<< orphan*/  TK_FUNCTION ; 
- int /*<<< orphan*/  adjustlocalvars (TYPE_2__*,int) ; 
- int /*<<< orphan*/  check_match (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  checknext (TYPE_2__*,char) ; 
- int /*<<< orphan*/  chunk (TYPE_2__*) ; 
- int /*<<< orphan*/  close_func (TYPE_2__*) ; 
- int /*<<< orphan*/  new_localvarliteral (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  open_func (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  parlist (TYPE_2__*) ; 
- int /*<<< orphan*/  pushclosure (TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int TK_END ;
+ int TK_FUNCTION ;
+ int adjustlocalvars (TYPE_2__*,int) ;
+ int check_match (TYPE_2__*,int ,int ,int) ;
+ int checknext (TYPE_2__*,char) ;
+ int chunk (TYPE_2__*) ;
+ int close_func (TYPE_2__*) ;
+ int new_localvarliteral (TYPE_2__*,char*,int ) ;
+ int open_func (TYPE_2__*,TYPE_3__*) ;
+ int parlist (TYPE_2__*) ;
+ int pushclosure (TYPE_2__*,TYPE_3__*,int *) ;
 
 __attribute__((used)) static void body(LexState*ls,expdesc*e,int needself,int line){
 FuncState new_fs;

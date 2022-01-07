@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  MultiConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FinishConnectionEstablishment (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * StartNodeUserDatabaseConnection (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,char const*) ; 
+
+
+
+typedef int uint32 ;
+typedef int int32 ;
+typedef int MultiConnection ;
+
+
+ int FinishConnectionEstablishment (int *) ;
+ int * StartNodeUserDatabaseConnection (int ,char const*,int ,char const*,char const*) ;
 
 MultiConnection *
 GetNodeUserDatabaseConnection(uint32 flags, const char *hostname, int32 port, const
-							  char *user, const char *database)
+         char *user, const char *database)
 {
-	MultiConnection *connection;
+ MultiConnection *connection;
 
-	connection = StartNodeUserDatabaseConnection(flags, hostname, port, user, database);
+ connection = StartNodeUserDatabaseConnection(flags, hostname, port, user, database);
 
-	FinishConnectionEstablishment(connection);
+ FinishConnectionEstablishment(connection);
 
-	return connection;
+ return connection;
 }

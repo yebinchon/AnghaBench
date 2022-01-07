@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct mesh_data {int num_poly_faces; int num_materials; int /*<<< orphan*/ * materials; void* material_indices; } ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct mesh_data {int num_poly_faces; int num_materials; int * materials; void* material_indices; } ;
 struct TYPE_13__ {TYPE_1__* lpVtbl; } ;
-struct TYPE_12__ {int /*<<< orphan*/  (* Unlock ) (TYPE_2__*) ;int /*<<< orphan*/  (* GetType ) (TYPE_2__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* GetChild ) (TYPE_2__*,int,TYPE_2__**) ;int /*<<< orphan*/  (* GetChildren ) (TYPE_2__*,int*) ;int /*<<< orphan*/  (* Lock ) (TYPE_2__*,int*,void const**) ;} ;
-typedef  int SIZE_T ;
-typedef  TYPE_2__ ID3DXFileData ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
+struct TYPE_12__ {int (* Unlock ) (TYPE_2__*) ;int (* GetType ) (TYPE_2__*,int *) ;int (* GetChild ) (TYPE_2__*,int,TYPE_2__**) ;int (* GetChildren ) (TYPE_2__*,int*) ;int (* Lock ) (TYPE_2__*,int*,void const**) ;} ;
+typedef int SIZE_T ;
+typedef TYPE_2__ ID3DXFileData ;
+typedef int HRESULT ;
+typedef int GUID ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IUnknown_Release (TYPE_2__*) ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TID_D3DRMMaterial ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  destroy_materials (struct mesh_data*) ; 
- int /*<<< orphan*/  memcpy (void*,int const*,int) ; 
- int /*<<< orphan*/  parse_material (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int*,void const**) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*,int*) ; 
- int /*<<< orphan*/  stub3 (TYPE_2__*,int,TYPE_2__**) ; 
- int /*<<< orphan*/  stub4 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_2__*) ; 
+
+ int D3D_OK ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int IUnknown_Release (TYPE_2__*) ;
+ scalar_t__ IsEqualGUID (int *,int *) ;
+ int TID_D3DRMMaterial ;
+ int WARN (char*,...) ;
+ int destroy_materials (struct mesh_data*) ;
+ int memcpy (void*,int const*,int) ;
+ int parse_material (TYPE_2__*,int *) ;
+ int stub1 (TYPE_2__*,int*,void const**) ;
+ int stub2 (TYPE_2__*,int*) ;
+ int stub3 (TYPE_2__*,int,TYPE_2__**) ;
+ int stub4 (TYPE_2__*,int *) ;
+ int stub5 (TYPE_2__*) ;
 
 __attribute__((used)) static HRESULT parse_material_list(ID3DXFileData *filedata, struct mesh_data *mesh)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static HRESULT parse_material_list(ID3DXFileData *filedata
     SIZE_T data_size;
     const DWORD *data, *in_ptr;
     GUID type;
-    ID3DXFileData *child = NULL;
+    ID3DXFileData *child = ((void*)0);
     DWORD num_materials;
     DWORD i;
     SIZE_T nb_children;
@@ -56,15 +56,6 @@ __attribute__((used)) static HRESULT parse_material_list(ID3DXFileData *filedata
 
     hr = filedata->lpVtbl->Lock(filedata, &data_size, (const void**)&data);
     if (FAILED(hr)) return hr;
-
-    /* template MeshMaterialList {
-     *     DWORD nMaterials;
-     *     DWORD nFaceIndexes;
-     *     array DWORD faceIndexes[nFaceIndexes];
-     *     [ Material ]
-     * }
-     */
-
     in_ptr = data;
     hr = E_FAIL;
 
@@ -132,7 +123,7 @@ __attribute__((used)) static HRESULT parse_material_list(ID3DXFileData *filedata
         }
 
         IUnknown_Release(child);
-        child = NULL;
+        child = ((void*)0);
     }
     if (num_materials != mesh->num_materials) {
         WARN("only %u of %u materials defined\n", num_materials, mesh->num_materials);

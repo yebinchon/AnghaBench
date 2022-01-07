@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 void eedi2_post_process_corner( int *x2, int *y2, int *xy, const int pitch, uint8_t * mskp, int msk_pitch, uint8_t * dstp, int dst_pitch, int height, int width, int field )
 {
@@ -33,8 +33,8 @@ void eedi2_post_process_corner( int *x2, int *y2, int *xy, const int pitch, uint
         for( x = 4; x < width - 4; ++x )
         {
             if( mskp[x] == 255 || mskp[x] == 128 ) continue;
-            const int c1 = (int)( x2[x]  *  y2[x] -  xy[x] * xy[x] - 0.09 *
-                                  ( x2[x]  + y2[x] )  * ( x2[x]  + y2[x] ) );
+            const int c1 = (int)( x2[x] * y2[x] - xy[x] * xy[x] - 0.09 *
+                                  ( x2[x] + y2[x] ) * ( x2[x] + y2[x] ) );
             const int c2 = (int)( x2n[x] * y2n[x] - xyn[x]* xyn[x] - 0.09 *
                                   ( x2n[x] + y2n[x] ) * ( x2n[x] + y2n[x] ) );
             if (c1 > 775 || c2 > 775)

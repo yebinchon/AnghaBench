@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_2__ {int carttype; scalar_t__ filename; scalar_t__ bupram; scalar_t__ rom; } ;
 
-/* Variables and functions */
-#define  CART_BACKUPRAM16MBIT 131 
-#define  CART_BACKUPRAM32MBIT 130 
-#define  CART_BACKUPRAM4MBIT 129 
-#define  CART_BACKUPRAM8MBIT 128 
- int CART_PAR ; 
- TYPE_1__* CartridgeArea ; 
- scalar_t__ T123Save (scalar_t__,int,int,scalar_t__) ; 
- int /*<<< orphan*/  YAB_ERR_FILEWRITE ; 
- int /*<<< orphan*/  YabSetError (int /*<<< orphan*/ ,void*) ; 
+
+
+
+
+
+ int CART_PAR ;
+ TYPE_1__* CartridgeArea ;
+ scalar_t__ T123Save (scalar_t__,int,int,scalar_t__) ;
+ int YAB_ERR_FILEWRITE ;
+ int YabSetError (int ,void*) ;
 
 void CartFlush(void){
    if (CartridgeArea)
@@ -43,22 +43,22 @@ void CartFlush(void){
 
          switch (CartridgeArea->carttype)
          {
-            case CART_BACKUPRAM4MBIT: // 4 Mbit Backup Ram
+            case 129:
             {
                size = 0x100000;
                break;
             }
-            case CART_BACKUPRAM8MBIT: // 8 Mbit Backup Ram
+            case 128:
             {
                size = 0x200000;
                break;
             }
-            case CART_BACKUPRAM16MBIT: // 16 Mbit Backup Ram
+            case 131:
             {
                size = 0x400000;
                break;
             }
-            case CART_BACKUPRAM32MBIT: // 32 Mbit Backup Ram
+            case 130:
             {
                size = 0x800000;
                break;

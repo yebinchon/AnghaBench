@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CalendarSpec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERANGE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  calendar_spec_from_string (char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  test_hourly_bug_4031 () ; 
- int /*<<< orphan*/  test_next (char*,char*,int,int) ; 
- int /*<<< orphan*/  test_one (char*,char*) ; 
- int /*<<< orphan*/  test_timestamp () ; 
+
+
+
+typedef int CalendarSpec ;
+
+
+ int ERANGE ;
+ int assert_se (int) ;
+ int calendar_spec_from_string (char*,int **) ;
+ int test_hourly_bug_4031 () ;
+ int test_next (char*,char*,int,int) ;
+ int test_one (char*,char*) ;
+ int test_timestamp () ;
 
 int main(int argc, char* argv[]) {
         CalendarSpec *c;
@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
         test_one("*:20..39/5", "*-*-* *:20..35/5:00");
         test_one("00:00:20..40/1", "*-*-* 00:00:20..40");
         test_one("*~03/1,03..05", "*-*~03/1,03..05 00:00:00");
-        /* UNIX timestamps are always UTC */
+
         test_one("@1493187147", "2017-04-26 06:12:27 UTC");
         test_one("@1493187147 UTC", "2017-04-26 06:12:27 UTC");
         test_one("@0", "1970-01-01 00:00:00 UTC");
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
         test_next("2016-03-27 03:17:00", "", 12345, 1459048620000000);
         test_next("2016-03-27 03:17:00", "CET", 12345, 1459041420000000);
         test_next("2016-03-27 03:17:00", "EET", 12345, -1);
-        test_next("2016-03-27 03:17:00 UTC", NULL, 12345, 1459048620000000);
+        test_next("2016-03-27 03:17:00 UTC", ((void*)0), 12345, 1459048620000000);
         test_next("2016-03-27 03:17:00 UTC", "", 12345, 1459048620000000);
         test_next("2016-03-27 03:17:00 UTC", "CET", 12345, 1459048620000000);
         test_next("2016-03-27 03:17:00 UTC", "EET", 12345, 1459048620000000);
@@ -110,13 +110,13 @@ int main(int argc, char* argv[]) {
         test_next("2017-08-06 9..17/2:00 UTC", "", 1502029800000000, 1502031600000000);
         test_next("2016-12-* 3..21/6:00 UTC", "", 1482613200000001, 1482634800000000);
         test_next("2017-09-24 03:30:00 Pacific/Auckland", "", 12345, 1506177000000000);
-        // Due to daylight saving time - 2017-09-24 02:30:00 does not exist
+
         test_next("2017-09-24 02:30:00 Pacific/Auckland", "", 12345, -1);
         test_next("2017-04-02 02:30:00 Pacific/Auckland", "", 12345, 1491053400000000);
-        // Confirm that even though it's a time change here (backward) 02:30 happens only once
+
         test_next("2017-04-02 02:30:00 Pacific/Auckland", "", 1491053400000000, -1);
         test_next("2017-04-02 03:30:00 Pacific/Auckland", "", 12345, 1491060600000000);
-        // Confirm that timezones in the Spec work regardless of current timezone
+
         test_next("2017-09-09 20:42:00 Pacific/Auckland", "", 12345, 1504946520000000);
         test_next("2017-09-09 20:42:00 Pacific/Auckland", "EET", 12345, 1504946520000000);
 

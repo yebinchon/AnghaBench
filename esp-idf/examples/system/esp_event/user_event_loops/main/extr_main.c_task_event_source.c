@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iteration ;
-typedef  scalar_t__ esp_event_loop_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  TASK_EVENTS ; 
- int TASK_ITERATIONS_COUNT ; 
- int /*<<< orphan*/  TASK_ITERATION_EVENT ; 
- int /*<<< orphan*/  TASK_PERIOD ; 
- int /*<<< orphan*/  esp_event_post_to (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ loop_with_task ; 
- scalar_t__ loop_without_task ; 
- int /*<<< orphan*/  pdMS_TO_TICKS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  vTaskDelay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int iteration ;
+typedef scalar_t__ esp_event_loop_handle_t ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_LOGI (int ,char*,...) ;
+ int TAG ;
+ int TASK_EVENTS ;
+ int TASK_ITERATIONS_COUNT ;
+ int TASK_ITERATION_EVENT ;
+ int TASK_PERIOD ;
+ int esp_event_post_to (scalar_t__,int ,int ,int*,int,int ) ;
+ scalar_t__ loop_with_task ;
+ scalar_t__ loop_without_task ;
+ int pdMS_TO_TICKS (int ) ;
+ int portMAX_DELAY ;
+ int vTaskDelay (int ) ;
+ int vTaskDelete (int *) ;
 
 __attribute__((used)) static void task_event_source(void* args)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static void task_event_source(void* args)
         esp_event_loop_handle_t loop_to_post_to;
 
         if (iteration % 2 == 0) {
-            // if even, post to the event loop with dedicated task
+
             loop_to_post_to = loop_with_task;
         } else {
-            // if odd, post to the event loop without a dedicated task
+
             loop_to_post_to = loop_without_task;
         }
 
@@ -55,5 +55,5 @@ __attribute__((used)) static void task_event_source(void* args)
 
     ESP_LOGI(TAG, "deleting task event source");
 
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

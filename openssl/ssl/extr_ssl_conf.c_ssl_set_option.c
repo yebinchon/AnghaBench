@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned long uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned long uint32_t ;
 struct TYPE_3__ {unsigned long* poptions; unsigned long* pcert_flags; unsigned long* pvfy_flags; } ;
-typedef  TYPE_1__ SSL_CONF_CTX ;
+typedef TYPE_1__ SSL_CONF_CTX ;
 
-/* Variables and functions */
-#define  SSL_TFLAG_CERT 130 
- unsigned int SSL_TFLAG_INV ; 
-#define  SSL_TFLAG_OPTION 129 
- unsigned int SSL_TFLAG_TYPE_MASK ; 
-#define  SSL_TFLAG_VFY 128 
+
+
+ unsigned int SSL_TFLAG_INV ;
+
+ unsigned int SSL_TFLAG_TYPE_MASK ;
+
 
 __attribute__((used)) static void ssl_set_option(SSL_CONF_CTX *cctx, unsigned int name_flags,
                            unsigned long option_value, int onoff)
 {
     uint32_t *pflags;
-    if (cctx->poptions == NULL)
+    if (cctx->poptions == ((void*)0))
         return;
     if (name_flags & SSL_TFLAG_INV)
         onoff ^= 1;
     switch (name_flags & SSL_TFLAG_TYPE_MASK) {
 
-    case SSL_TFLAG_CERT:
+    case 130:
         pflags = cctx->pcert_flags;
         break;
 
-    case SSL_TFLAG_VFY:
+    case 128:
         pflags = cctx->pvfy_flags;
         break;
 
-    case SSL_TFLAG_OPTION:
+    case 129:
         pflags = cctx->poptions;
         break;
 

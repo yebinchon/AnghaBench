@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int VOID ;
 struct TYPE_3__ {int right; int left; int bottom; int top; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int /*<<< orphan*/ * HWND ;
+typedef TYPE_1__ RECT ;
+typedef int * HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * GetDesktopWindow () ; 
- int /*<<< orphan*/ * GetParent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetWindowRect (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  HWND_TOP ; 
- int /*<<< orphan*/  SWP_NOSIZE ; 
- int /*<<< orphan*/  SetWindowPos (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int * GetDesktopWindow () ;
+ int * GetParent (int *) ;
+ int GetWindowRect (int *,TYPE_1__*) ;
+ int HWND_TOP ;
+ int SWP_NOSIZE ;
+ int SetWindowPos (int *,int ,int,int,int ,int ,int ) ;
 
 __attribute__((used)) static VOID
 CenterWindow(HWND hWnd)
@@ -32,7 +32,7 @@ CenterWindow(HWND hWnd)
     RECT rcWindow;
 
     hWndParent = GetParent(hWnd);
-    if (hWndParent == NULL)
+    if (hWndParent == ((void*)0))
         hWndParent = GetDesktopWindow();
 
     GetWindowRect(hWndParent, &rcParent);

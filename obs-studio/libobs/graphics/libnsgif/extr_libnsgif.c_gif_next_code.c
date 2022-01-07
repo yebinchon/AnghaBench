@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int curbit; int code_size; int lastbit; int get_done; unsigned char* buf; unsigned char* direct; int last_byte; unsigned char* gif_data; int buffer_position; int zero_data_block; scalar_t__ buffer_size; } ;
-typedef  TYPE_1__ gif_animation ;
+typedef TYPE_1__ gif_animation ;
 
-/* Variables and functions */
- int GIF_END_OF_FRAME ; 
- int GIF_INSUFFICIENT_FRAME_DATA ; 
- int* maskTbl ; 
+
+ int GIF_END_OF_FRAME ;
+ int GIF_INSUFFICIENT_FRAME_DATA ;
+ int* maskTbl ;
 
 __attribute__((used)) static int gif_next_code(gif_animation *gif, int code_size) {
     int i, j, end, count, ret;
@@ -32,13 +32,13 @@ __attribute__((used)) static int gif_next_code(gif_animation *gif, int code_size
         gif->buf[0] = gif->direct[gif->last_byte - 2];
         gif->buf[1] = gif->direct[gif->last_byte - 1];
 
-        /* get the next block */
+
         gif->direct = gif->gif_data + gif->buffer_position;
         gif->zero_data_block = ((count = gif->direct[0]) == 0);
         if ((gif->buffer_position + count) >= gif->buffer_size)
             return GIF_INSUFFICIENT_FRAME_DATA;
         if (count == 0)
-            gif->get_done = true;
+            gif->get_done = 1;
         else {
             gif->direct -= 1;
             gif->buf[2] = gif->direct[2];
@@ -46,7 +46,7 @@ __attribute__((used)) static int gif_next_code(gif_animation *gif, int code_size
         }
         gif->buffer_position += count + 1;
 
-        /* update our variables */
+
         gif->last_byte = 2 + count;
         gif->curbit = (gif->curbit - gif->lastbit) + 16;
         gif->lastbit = (2 + count) << 3;

@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tm ;
-typedef  int /*<<< orphan*/  name ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int tm ;
+typedef int name ;
 struct TYPE_6__ {scalar_t__ FontName; } ;
-typedef  TYPE_1__ fnt_res ;
+typedef TYPE_1__ fnt_res ;
 struct TYPE_8__ {char* ResourceName; TYPE_1__* res; } ;
-struct TYPE_7__ {int /*<<< orphan*/  tmCharSet; int /*<<< orphan*/  tmPitchAndFamily; int /*<<< orphan*/  tmStruckOut; int /*<<< orphan*/  tmUnderlined; int /*<<< orphan*/  tmItalic; int /*<<< orphan*/  tmBreakChar; int /*<<< orphan*/  tmDefaultChar; int /*<<< orphan*/  tmLastChar; int /*<<< orphan*/  tmFirstChar; int /*<<< orphan*/  tmDigitizedAspectY; int /*<<< orphan*/  tmDigitizedAspectX; int /*<<< orphan*/  tmOverhang; int /*<<< orphan*/  tmWeight; int /*<<< orphan*/  tmMaxCharWidth; int /*<<< orphan*/  tmAveCharWidth; int /*<<< orphan*/  tmExternalLeading; int /*<<< orphan*/  tmInternalLeading; int /*<<< orphan*/  tmDescent; int /*<<< orphan*/  tmAscent; int /*<<< orphan*/  tmHeight; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_2__ TEXTMETRICA ;
-typedef  int /*<<< orphan*/  HGDIOBJ ;
-typedef  int /*<<< orphan*/  HFONT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  scalar_t__ BOOL ;
+struct TYPE_7__ {int tmCharSet; int tmPitchAndFamily; int tmStruckOut; int tmUnderlined; int tmItalic; int tmBreakChar; int tmDefaultChar; int tmLastChar; int tmFirstChar; int tmDigitizedAspectY; int tmDigitizedAspectX; int tmOverhang; int tmWeight; int tmMaxCharWidth; int tmAveCharWidth; int tmExternalLeading; int tmInternalLeading; int tmDescent; int tmAscent; int tmHeight; int member_0; } ;
+typedef TYPE_2__ TEXTMETRICA ;
+typedef int HGDIOBJ ;
+typedef int HFONT ;
+typedef int HDC ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIP_DEFAULT_PRECIS ; 
- int /*<<< orphan*/  CreateFontA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  DEFAULT_CHARSET ; 
- int /*<<< orphan*/  DEFAULT_PITCH ; 
- int /*<<< orphan*/  DEFAULT_QUALITY ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FW_DONTCARE ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ GetTextFaceA (int /*<<< orphan*/ ,int,char*) ; 
- scalar_t__ GetTextMetricsA (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  OUT_DEFAULT_PRECIS ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,char const*,char const*,...) ; 
- int /*<<< orphan*/  ok_hex2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_int2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char*,scalar_t__) ; 
- TYPE_3__* test_data ; 
+
+ int CLIP_DEFAULT_PRECIS ;
+ int CreateFontA (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,scalar_t__) ;
+ int DEFAULT_CHARSET ;
+ int DEFAULT_PITCH ;
+ int DEFAULT_QUALITY ;
+ int DeleteObject (int ) ;
+ int FALSE ;
+ int FW_DONTCARE ;
+ int GetLastError () ;
+ scalar_t__ GetTextFaceA (int ,int,char*) ;
+ scalar_t__ GetTextMetricsA (int ,TYPE_2__*) ;
+ int OUT_DEFAULT_PRECIS ;
+ int SelectObject (int ,int ) ;
+ int SetLastError (int) ;
+ int memset (TYPE_2__*,int,int) ;
+ int ok (int,char*,char const*,char const*,...) ;
+ int ok_hex2 (int ) ;
+ int ok_int2 (int ) ;
+ int strcmp (char*,scalar_t__) ;
+ TYPE_3__* test_data ;
 
 __attribute__((used)) static void test_font_caps(HDC hdc, int test_index)
 {

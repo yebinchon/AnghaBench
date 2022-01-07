@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ vsync; } ;
-struct TYPE_5__ {int /*<<< orphan*/  renderer; int /*<<< orphan*/  window; TYPE_1__ video; } ;
-typedef  TYPE_2__ sdl2_video_t ;
+struct TYPE_5__ {int renderer; int window; TYPE_1__ video; } ;
+typedef TYPE_2__ sdl2_video_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RARCH_ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_ClearHints () ; 
- int /*<<< orphan*/  SDL_CreateRenderer (int /*<<< orphan*/ ,int,unsigned int) ; 
- int /*<<< orphan*/  SDL_GetError () ; 
- int /*<<< orphan*/  SDL_HINT_OVERRIDE ; 
- int /*<<< orphan*/  SDL_HINT_RENDER_VSYNC ; 
- unsigned int SDL_RENDERER_ACCELERATED ; 
- unsigned int SDL_RENDERER_PRESENTVSYNC ; 
- int /*<<< orphan*/  SDL_SetHintWithPriority (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_SetRenderDrawColor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int RARCH_ERR (char*,int ) ;
+ int SDL_ClearHints () ;
+ int SDL_CreateRenderer (int ,int,unsigned int) ;
+ int SDL_GetError () ;
+ int SDL_HINT_OVERRIDE ;
+ int SDL_HINT_RENDER_VSYNC ;
+ unsigned int SDL_RENDERER_ACCELERATED ;
+ unsigned int SDL_RENDERER_PRESENTVSYNC ;
+ int SDL_SetHintWithPriority (int ,char*,int ) ;
+ int SDL_SetRenderDrawColor (int ,int ,int ,int ,int) ;
 
 __attribute__((used)) static void sdl2_init_renderer(sdl2_video_t *vid)
 {

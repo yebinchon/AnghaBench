@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int mode_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_ISDIR (int) ; 
+
+
+
+typedef int mode_t ;
+
+
+ int S_ISDIR (int) ;
 
 __attribute__((used)) static mode_t process_mask_perms(mode_t mode, mode_t current) {
 
@@ -24,7 +24,7 @@ __attribute__((used)) static mode_t process_mask_perms(mode_t mode, mode_t curre
         if ((current & 0444) == 0)
                 mode &= ~0444;
         if (!S_ISDIR(current))
-                mode &= ~07000; /* remove sticky/sgid/suid bit, unless directory */
+                mode &= ~07000;
 
         return mode;
 }

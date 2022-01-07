@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_22__ {scalar_t__ encryption_scheme; int /*<<< orphan*/  encryption_kid; } ;
+
+
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int int64_t ;
+struct TYPE_22__ {scalar_t__ encryption_scheme; int encryption_kid; } ;
 struct TYPE_21__ {scalar_t__ tag; scalar_t__ mode; int timescale; int sample_size; scalar_t__ vos_len; TYPE_1__* par; scalar_t__ audio_vbr; } ;
 struct TYPE_20__ {int channels; scalar_t__ codec_id; int sample_rate; int bits_per_coded_sample; int bits_per_raw_sample; int frame_size; scalar_t__ codec_type; } ;
-typedef  TYPE_2__ MOVTrack ;
-typedef  TYPE_3__ MOVMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
+typedef TYPE_2__ MOVTrack ;
+typedef TYPE_3__ MOVMuxContext ;
+typedef int AVIOContext ;
+typedef int AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AVMEDIA_TYPE_AUDIO ; 
- scalar_t__ AV_CODEC_ID_AAC ; 
- scalar_t__ AV_CODEC_ID_AC3 ; 
- scalar_t__ AV_CODEC_ID_ADPCM_G726 ; 
- scalar_t__ AV_CODEC_ID_ADPCM_IMA_WAV ; 
- scalar_t__ AV_CODEC_ID_ADPCM_MS ; 
- scalar_t__ AV_CODEC_ID_ALAC ; 
- scalar_t__ AV_CODEC_ID_AMR_NB ; 
- scalar_t__ AV_CODEC_ID_EAC3 ; 
- scalar_t__ AV_CODEC_ID_FLAC ; 
- scalar_t__ AV_CODEC_ID_OPUS ; 
- scalar_t__ AV_CODEC_ID_PCM_S8 ; 
- scalar_t__ AV_CODEC_ID_PCM_U8 ; 
- scalar_t__ AV_CODEC_ID_QDM2 ; 
- scalar_t__ AV_CODEC_ID_TRUEHD ; 
- scalar_t__ AV_CODEC_ID_WMAPRO ; 
- scalar_t__ AV_RL32 (char*) ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- scalar_t__ MODE_MOV ; 
- scalar_t__ MOV_ENC_NONE ; 
- int UINT16_MAX ; 
- int /*<<< orphan*/  av_double2int (int) ; 
- int av_get_bits_per_sample (scalar_t__) ; 
- int /*<<< orphan*/  avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ *,scalar_t__) ; 
- int ff_mov_cenc_write_sinf_tag (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
- int get_samples_per_packet (TYPE_2__*) ; 
- int mov_get_lpcm_flags (scalar_t__) ; 
- scalar_t__ mov_pcm_be_gt16 (scalar_t__) ; 
- scalar_t__ mov_pcm_le_gt16 (scalar_t__) ; 
- int mov_write_ac3_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_amr_tag (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_chan_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_dfla_tag (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_dmlp_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_dops_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_eac3_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_esds_tag (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_extradata_tag (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_glbl_tag (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_wave_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int mov_write_wfex_tag (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int update_size (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AVMEDIA_TYPE_AUDIO ;
+ scalar_t__ AV_CODEC_ID_AAC ;
+ scalar_t__ AV_CODEC_ID_AC3 ;
+ scalar_t__ AV_CODEC_ID_ADPCM_G726 ;
+ scalar_t__ AV_CODEC_ID_ADPCM_IMA_WAV ;
+ scalar_t__ AV_CODEC_ID_ADPCM_MS ;
+ scalar_t__ AV_CODEC_ID_ALAC ;
+ scalar_t__ AV_CODEC_ID_AMR_NB ;
+ scalar_t__ AV_CODEC_ID_EAC3 ;
+ scalar_t__ AV_CODEC_ID_FLAC ;
+ scalar_t__ AV_CODEC_ID_OPUS ;
+ scalar_t__ AV_CODEC_ID_PCM_S8 ;
+ scalar_t__ AV_CODEC_ID_PCM_U8 ;
+ scalar_t__ AV_CODEC_ID_QDM2 ;
+ scalar_t__ AV_CODEC_ID_TRUEHD ;
+ scalar_t__ AV_CODEC_ID_WMAPRO ;
+ scalar_t__ AV_RL32 (char*) ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ scalar_t__ MODE_MOV ;
+ scalar_t__ MOV_ENC_NONE ;
+ int UINT16_MAX ;
+ int av_double2int (int) ;
+ int av_get_bits_per_sample (scalar_t__) ;
+ int avio_tell (int *) ;
+ int avio_wb16 (int *,int) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wb64 (int *,int ) ;
+ int avio_wl32 (int *,scalar_t__) ;
+ int ff_mov_cenc_write_sinf_tag (TYPE_2__*,int *,int ) ;
+ int ffio_wfourcc (int *,char*) ;
+ int get_samples_per_packet (TYPE_2__*) ;
+ int mov_get_lpcm_flags (scalar_t__) ;
+ scalar_t__ mov_pcm_be_gt16 (scalar_t__) ;
+ scalar_t__ mov_pcm_le_gt16 (scalar_t__) ;
+ int mov_write_ac3_tag (int *,int *,TYPE_2__*) ;
+ int mov_write_amr_tag (int *,TYPE_2__*) ;
+ int mov_write_chan_tag (int *,int *,TYPE_2__*) ;
+ int mov_write_dfla_tag (int *,TYPE_2__*) ;
+ int mov_write_dmlp_tag (int *,int *,TYPE_2__*) ;
+ int mov_write_dops_tag (int *,int *,TYPE_2__*) ;
+ int mov_write_eac3_tag (int *,int *,TYPE_2__*) ;
+ int mov_write_esds_tag (int *,TYPE_2__*) ;
+ int mov_write_extradata_tag (int *,TYPE_2__*) ;
+ int mov_write_glbl_tag (int *,TYPE_2__*) ;
+ int mov_write_wave_tag (int *,int *,TYPE_2__*) ;
+ int mov_write_wfex_tag (int *,int *,TYPE_2__*) ;
+ int update_size (int *,int ) ;
 
 __attribute__((used)) static int mov_write_audio_tag(AVFormatContext *s, AVIOContext *pb, MOVMuxContext *mov, MOVTrack *track)
 {
@@ -93,20 +93,20 @@ __attribute__((used)) static int mov_write_audio_tag(AVFormatContext *s, AVIOCon
         }
     }
 
-    avio_wb32(pb, 0); /* size */
+    avio_wb32(pb, 0);
     if (mov->encryption_scheme != MOV_ENC_NONE) {
         ffio_wfourcc(pb, "enca");
     } else {
-        avio_wl32(pb, tag); // store it byteswapped
+        avio_wl32(pb, tag);
     }
-    avio_wb32(pb, 0); /* Reserved */
-    avio_wb16(pb, 0); /* Reserved */
-    avio_wb16(pb, 1); /* Data-reference index, XXX  == 1 */
+    avio_wb32(pb, 0);
+    avio_wb16(pb, 0);
+    avio_wb16(pb, 1);
 
-    /* SoundDescription */
-    avio_wb16(pb, version); /* Version */
-    avio_wb16(pb, 0); /* Revision level */
-    avio_wb32(pb, 0); /* Reserved */
+
+    avio_wb16(pb, version);
+    avio_wb16(pb, 0);
+    avio_wb32(pb, 0);
 
     if (version == 2) {
         avio_wb16(pb, 3);
@@ -127,13 +127,13 @@ __attribute__((used)) static int mov_write_audio_tag(AVFormatContext *s, AVIOCon
             avio_wb16(pb, track->par->channels);
             if (track->par->codec_id == AV_CODEC_ID_PCM_U8 ||
                 track->par->codec_id == AV_CODEC_ID_PCM_S8)
-                avio_wb16(pb, 8); /* bits per sample */
+                avio_wb16(pb, 8);
             else if (track->par->codec_id == AV_CODEC_ID_ADPCM_G726)
                 avio_wb16(pb, track->par->bits_per_coded_sample);
             else
                 avio_wb16(pb, 16);
-            avio_wb16(pb, track->audio_vbr ? -2 : 0); /* compression ID */
-        } else { /* reserved for mp4/3gp */
+            avio_wb16(pb, track->audio_vbr ? -2 : 0);
+        } else {
             if (track->par->codec_id == AV_CODEC_ID_FLAC ||
                 track->par->codec_id == AV_CODEC_ID_ALAC ||
                 track->par->codec_id == AV_CODEC_ID_OPUS) {
@@ -150,7 +150,7 @@ __attribute__((used)) static int mov_write_audio_tag(AVFormatContext *s, AVIOCon
             avio_wb16(pb, 0);
         }
 
-        avio_wb16(pb, 0); /* packet size (= 0) */
+        avio_wb16(pb, 0);
         if (track->par->codec_id == AV_CODEC_ID_OPUS)
             avio_wb16(pb, 48000);
         else if (track->par->codec_id == AV_CODEC_ID_TRUEHD)
@@ -160,29 +160,29 @@ __attribute__((used)) static int mov_write_audio_tag(AVFormatContext *s, AVIOCon
                           track->par->sample_rate : 0);
 
         if (track->par->codec_id != AV_CODEC_ID_TRUEHD)
-            avio_wb16(pb, 0); /* Reserved */
+            avio_wb16(pb, 0);
     }
 
-    if (version == 1) { /* SoundDescription V1 extended info */
+    if (version == 1) {
         if (mov_pcm_le_gt16(track->par->codec_id) ||
             mov_pcm_be_gt16(track->par->codec_id))
-            avio_wb32(pb, 1); /*  must be 1 for  uncompressed formats */
+            avio_wb32(pb, 1);
         else
-            avio_wb32(pb, track->par->frame_size); /* Samples per packet */
-        avio_wb32(pb, track->sample_size / track->par->channels); /* Bytes per packet */
-        avio_wb32(pb, track->sample_size); /* Bytes per frame */
-        avio_wb32(pb, 2); /* Bytes per sample */
+            avio_wb32(pb, track->par->frame_size);
+        avio_wb32(pb, track->sample_size / track->par->channels);
+        avio_wb32(pb, track->sample_size);
+        avio_wb32(pb, 2);
     }
 
     if (track->mode == MODE_MOV &&
-        (track->par->codec_id == AV_CODEC_ID_AAC           ||
-         track->par->codec_id == AV_CODEC_ID_AC3           ||
-         track->par->codec_id == AV_CODEC_ID_EAC3          ||
-         track->par->codec_id == AV_CODEC_ID_AMR_NB        ||
-         track->par->codec_id == AV_CODEC_ID_ALAC          ||
-         track->par->codec_id == AV_CODEC_ID_ADPCM_MS      ||
+        (track->par->codec_id == AV_CODEC_ID_AAC ||
+         track->par->codec_id == AV_CODEC_ID_AC3 ||
+         track->par->codec_id == AV_CODEC_ID_EAC3 ||
+         track->par->codec_id == AV_CODEC_ID_AMR_NB ||
+         track->par->codec_id == AV_CODEC_ID_ALAC ||
+         track->par->codec_id == AV_CODEC_ID_ADPCM_MS ||
          track->par->codec_id == AV_CODEC_ID_ADPCM_IMA_WAV ||
-         track->par->codec_id == AV_CODEC_ID_QDM2          ||
+         track->par->codec_id == AV_CODEC_ID_QDM2 ||
          (mov_pcm_le_gt16(track->par->codec_id) && version==1) ||
          (mov_pcm_be_gt16(track->par->codec_id) && version==1)))
         ret = mov_write_wave_tag(s, pb, track);

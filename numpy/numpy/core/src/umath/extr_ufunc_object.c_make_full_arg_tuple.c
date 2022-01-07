@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * out; int /*<<< orphan*/ * in; } ;
-typedef  TYPE_1__ ufunc_full_args ;
-typedef  int npy_intp ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PyDict_GetItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_GET_ITEM (int /*<<< orphan*/ *,int) ; 
- int PyTuple_GET_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyTuple_GetSlice (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- void* PyTuple_New (int) ; 
- int /*<<< orphan*/  PyTuple_SET_ITEM (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  npy_um_str_out ; 
- scalar_t__ tuple_all_none (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * out; int * in; } ;
+typedef TYPE_1__ ufunc_full_args ;
+typedef int npy_intp ;
+typedef int PyObject ;
+
+
+ int * PyDict_GetItem (int *,int ) ;
+ scalar_t__ PyTuple_Check (int *) ;
+ int * PyTuple_GET_ITEM (int *,int) ;
+ int PyTuple_GET_SIZE (int *) ;
+ int * PyTuple_GetSlice (int *,int ,int) ;
+ void* PyTuple_New (int) ;
+ int PyTuple_SET_ITEM (int *,int,int *) ;
+ int Py_DECREF (int *) ;
+ int Py_INCREF (int *) ;
+ int * Py_None ;
+ int Py_XDECREF (int *) ;
+ int assert (int) ;
+ int npy_um_str_out ;
+ scalar_t__ tuple_all_none (int *) ;
 
 __attribute__((used)) static int
 make_full_arg_tuple(
@@ -38,27 +38,27 @@ make_full_arg_tuple(
         npy_intp nin, npy_intp nout,
         PyObject *args, PyObject *kwds)
 {
-    PyObject *out_kwd = NULL;
+    PyObject *out_kwd = ((void*)0);
     npy_intp nargs = PyTuple_GET_SIZE(args);
     npy_intp i;
 
-    /* This should have been checked by the caller */
+
     assert(nin <= nargs && nargs <= nin + nout);
 
-    /* Initialize so we can XDECREF safely */
-    full_args->in = NULL;
-    full_args->out = NULL;
 
-    /* Get the input arguments*/
+    full_args->in = ((void*)0);
+    full_args->out = ((void*)0);
+
+
     full_args->in = PyTuple_GetSlice(args, 0, nin);
-    if (full_args->in == NULL) {
+    if (full_args->in == ((void*)0)) {
         goto fail;
     }
 
-    /* Look for output keyword arguments */
-    out_kwd = kwds ? PyDict_GetItem(kwds, npy_um_str_out) : NULL;
 
-    if (out_kwd != NULL) {
+    out_kwd = kwds ? PyDict_GetItem(kwds, npy_um_str_out) : ((void*)0);
+
+    if (out_kwd != ((void*)0)) {
         assert(nargs == nin);
         if (out_kwd == Py_None) {
             return 0;
@@ -73,9 +73,9 @@ make_full_arg_tuple(
             return 0;
         }
         else {
-            /* A single argument x is promoted to (x, None, None ...) */
+
             full_args->out = PyTuple_New(nout);
-            if (full_args->out == NULL) {
+            if (full_args->out == ((void*)0)) {
                 goto fail;
             }
             Py_INCREF(out_kwd);
@@ -88,13 +88,13 @@ make_full_arg_tuple(
         }
     }
 
-    /* No outputs in kwargs; if also none in args, we're done */
+
     if (nargs == nin) {
         return 0;
     }
-    /* copy across positional output arguments, adding trailing Nones */
+
     full_args->out = PyTuple_New(nout);
-    if (full_args->out == NULL) {
+    if (full_args->out == ((void*)0)) {
         goto fail;
     }
     for (i = nin; i < nargs; ++i) {
@@ -107,10 +107,10 @@ make_full_arg_tuple(
         PyTuple_SET_ITEM(full_args->out, i - nin, Py_None);
     }
 
-    /* don't return a tuple full of None */
+
     if (tuple_all_none(full_args->out)) {
         Py_DECREF(full_args->out);
-        full_args->out = NULL;
+        full_args->out = ((void*)0);
     }
     return 0;
 

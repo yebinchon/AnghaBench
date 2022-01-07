@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_ccache ;
-typedef  scalar_t__ kadm5_ret_t ;
-struct TYPE_3__ {int /*<<< orphan*/  ccache; int /*<<< orphan*/  client_name; int /*<<< orphan*/  context; int /*<<< orphan*/  realm; } ;
-typedef  TYPE_1__ kadm5_ad_context ;
 
-/* Variables and functions */
- scalar_t__ ENOMEM ; 
- int /*<<< orphan*/  KRB5_TGS_NAME ; 
- scalar_t__ _kadm5_c_get_cred_cache (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  asprintf (char**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  krb5_prompter_posix ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int krb5_ccache ;
+typedef scalar_t__ kadm5_ret_t ;
+struct TYPE_3__ {int ccache; int client_name; int context; int realm; } ;
+typedef TYPE_1__ kadm5_ad_context ;
+
+
+ scalar_t__ ENOMEM ;
+ int KRB5_TGS_NAME ;
+ scalar_t__ _kadm5_c_get_cred_cache (int ,int ,char*,char const*,int ,int *,int *,int *) ;
+ int asprintf (char**,char*,int ,int ,int ) ;
+ int free (char*) ;
+ int krb5_prompter_posix ;
 
 __attribute__((used)) static kadm5_ret_t
 ad_get_cred(kadm5_ad_context *context, const char *password)
@@ -32,21 +32,21 @@ ad_get_cred(kadm5_ad_context *context, const char *password)
     char *service;
 
     if (context->ccache)
-	return 0;
+ return 0;
 
     asprintf(&service, "%s/%s@%s", KRB5_TGS_NAME,
-	     context->realm, context->realm);
-    if (service == NULL)
-	return ENOMEM;
+      context->realm, context->realm);
+    if (service == ((void*)0))
+ return ENOMEM;
 
     ret = _kadm5_c_get_cred_cache(context->context,
-				  context->client_name,
-				  service,
-				  password, krb5_prompter_posix,
-				  NULL, NULL, &cc);
+      context->client_name,
+      service,
+      password, krb5_prompter_posix,
+      ((void*)0), ((void*)0), &cc);
     free(service);
     if(ret)
-	return ret; /* XXX */
+ return ret;
     context->ccache = cc;
     return 0;
 }

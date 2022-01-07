@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BIT_CALL ; 
- int /*<<< orphan*/  BIT_RESPONSE (int) ; 
- int COUNT ; 
- int /*<<< orphan*/  TEST_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  done_sem ; 
- int /*<<< orphan*/  eg ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xEventGroupSetBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xEventGroupWaitBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+ int BIT_CALL ;
+ int BIT_RESPONSE (int) ;
+ int COUNT ;
+ int TEST_ASSERT (int ) ;
+ int done_sem ;
+ int eg ;
+ int portMAX_DELAY ;
+ int printf (char*,int) ;
+ int vTaskDelete (int *) ;
+ int xEventGroupSetBits (int ,int ) ;
+ int xEventGroupWaitBits (int ,int ,int,int,int ) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void task_event_group_call_response(void *param)
 {
@@ -32,15 +24,15 @@ __attribute__((used)) static void task_event_group_call_response(void *param)
     printf("Started %d\n", task_num);
 
     for (int i = 0; i < COUNT; i++) {
-        /* Wait until the common "call" bit is set, starts off all tasks
-           (clear on return) */
-        TEST_ASSERT( xEventGroupWaitBits(eg, BIT_CALL, true, false, portMAX_DELAY) );
 
-        /* Set our individual "response" bit */
+
+        TEST_ASSERT( xEventGroupWaitBits(eg, BIT_CALL, 1, 0, portMAX_DELAY) );
+
+
         xEventGroupSetBits(eg, BIT_RESPONSE(task_num));
     }
 
     printf("Task %d done\n", task_num);
     xSemaphoreGive(done_sem);
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

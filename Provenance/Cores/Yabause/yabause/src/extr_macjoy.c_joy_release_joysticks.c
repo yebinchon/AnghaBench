@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int free (int *) ;
+ int joy_close_joystick (int *) ;
+ int joy_count ;
+ int joy_release_joystick (int *) ;
+ int * joys ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  joy_close_joystick (int /*<<< orphan*/ *) ; 
- int joy_count ; 
- int /*<<< orphan*/  joy_release_joystick (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * joys ; 
-
-void joy_release_joysticks(void)    {
+void joy_release_joysticks(void) {
     int i;
 
-    for(i = 0; i < joy_count; ++i)  {
+    for(i = 0; i < joy_count; ++i) {
         joy_close_joystick(joys + i);
         joy_release_joystick(joys + i);
     }
 
-    if(joys != NULL)    {
+    if(joys != ((void*)0)) {
         free(joys);
-        joys = NULL;
+        joys = ((void*)0);
     }
 
     joy_count = 0;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dx_parameter {scalar_t__ type; scalar_t__ class; unsigned int columns; unsigned int rows; scalar_t__ element_count; int /*<<< orphan*/  name; int /*<<< orphan*/ * data; } ;
+
+
+
+
+struct d3dx_parameter {scalar_t__ type; scalar_t__ class; unsigned int columns; unsigned int rows; scalar_t__ element_count; int name; int * data; } ;
 struct d3dx_const_tab {int const_set_count; struct d3dx_const_param_eval_output* const_set; } ;
 struct d3dx_const_param_eval_output {int table; int register_index; int register_count; int element_count; scalar_t__ direct_copy; struct d3dx_parameter* param; } ;
-typedef  enum pres_reg_tables { ____Placeholder_pres_reg_tables } pres_reg_tables ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef enum pres_reg_tables { ____Placeholder_pres_reg_tables } pres_reg_tables ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
- scalar_t__ D3DXPC_STRUCT ; 
- scalar_t__ D3DXPT_VOID ; 
- int /*<<< orphan*/  D3D_OK ; 
- scalar_t__ PRES_VT_COUNT ; 
- int /*<<< orphan*/  TRACE (char*,unsigned int,int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  debugstr_a (int /*<<< orphan*/ ) ; 
- unsigned int get_offset_reg (int,int) ; 
- int get_reg_offset (int,unsigned int) ; 
- int /*<<< orphan*/  memmove (struct d3dx_const_param_eval_output*,struct d3dx_const_param_eval_output*,int) ; 
- scalar_t__ table_type_from_param_type (scalar_t__) ; 
+
+ int D3DERR_INVALIDCALL ;
+ scalar_t__ D3DXPC_STRUCT ;
+ scalar_t__ D3DXPT_VOID ;
+ int D3D_OK ;
+ scalar_t__ PRES_VT_COUNT ;
+ int TRACE (char*,unsigned int,int ,int,...) ;
+ int debugstr_a (int ) ;
+ unsigned int get_offset_reg (int,int) ;
+ int get_reg_offset (int,unsigned int) ;
+ int memmove (struct d3dx_const_param_eval_output*,struct d3dx_const_param_eval_output*,int) ;
+ scalar_t__ table_type_from_param_type (scalar_t__) ;
 
 __attribute__((used)) static HRESULT merge_const_set_entries(struct d3dx_const_tab *const_tab,
         struct d3dx_parameter *param, unsigned int index)

@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  FIFO ;
 
-/* Variables and functions */
- scalar_t__ FifoPtr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FifoSize (int /*<<< orphan*/ *) ; 
- scalar_t__ MIN (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCpy (char*,scalar_t__,char*) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int FIFO ;
+
+
+ scalar_t__ FifoPtr (int *) ;
+ int FifoSize (int *) ;
+ scalar_t__ MIN (scalar_t__,int ) ;
+ int StrCpy (char*,scalar_t__,char*) ;
 
 UINT OvsPeekStringFromFifo(FIFO *f, char *str, UINT str_size)
 {
-	UINT i;
-	bool ok = false;
-	// Validate arguments
-	if (f == NULL || str == NULL || str_size == 0)
-	{
-		return 0;
-	}
+ UINT i;
+ bool ok = 0;
 
-	StrCpy(str, str_size, "");
+ if (f == ((void*)0) || str == ((void*)0) || str_size == 0)
+ {
+  return 0;
+ }
 
-	for (i = 0;i < MIN(str_size, FifoSize(f));i++)
-	{
-		char c = *(((char *)FifoPtr(f)) + i);
+ StrCpy(str, str_size, "");
 
-		if (c != 0)
-		{
-			str[i] = c;
-		}
-		else
-		{
-			str[i] = 0;
-			i++;
-			ok = true;
-			break;
-		}
-	}
+ for (i = 0;i < MIN(str_size, FifoSize(f));i++)
+ {
+  char c = *(((char *)FifoPtr(f)) + i);
 
-	if (ok == false)
-	{
-		return 0;
-	}
+  if (c != 0)
+  {
+   str[i] = c;
+  }
+  else
+  {
+   str[i] = 0;
+   i++;
+   ok = 1;
+   break;
+  }
+ }
 
-	return i;
+ if (ok == 0)
+ {
+  return 0;
+ }
+
+ return i;
 }

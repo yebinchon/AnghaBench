@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_http_request_t ;
-struct TYPE_10__ {int /*<<< orphan*/  uthreads; TYPE_2__* cur_co_ctx; } ;
-typedef  TYPE_1__ ngx_http_lua_ctx_t ;
-struct TYPE_11__ {scalar_t__ pending_subreqs; int co_status; struct TYPE_11__* parent_co_ctx; int /*<<< orphan*/  is_uthread; } ;
-typedef  TYPE_2__ ngx_http_lua_co_ctx_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int NGX_HTTP_LUA_CONTEXT_ACCESS ; 
- int NGX_HTTP_LUA_CONTEXT_CONTENT ; 
- int NGX_HTTP_LUA_CONTEXT_REWRITE ; 
- int NGX_HTTP_LUA_CONTEXT_SSL_CERT ; 
- int NGX_HTTP_LUA_CONTEXT_TIMER ; 
-#define  NGX_HTTP_LUA_CO_DEAD 129 
-#define  NGX_HTTP_LUA_CO_ZOMBIE 128 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushliteral (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lua_tothread (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* ngx_http_get_module_ctx (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_check_context (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  ngx_http_lua_cleanup_pending_operation (TYPE_2__*) ; 
- int /*<<< orphan*/  ngx_http_lua_del_thread (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- TYPE_2__* ngx_http_lua_get_co_ctx (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * ngx_http_lua_get_req (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_module ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ngx_http_request_t ;
+struct TYPE_10__ {int uthreads; TYPE_2__* cur_co_ctx; } ;
+typedef TYPE_1__ ngx_http_lua_ctx_t ;
+struct TYPE_11__ {scalar_t__ pending_subreqs; int co_status; struct TYPE_11__* parent_co_ctx; int is_uthread; } ;
+typedef TYPE_2__ ngx_http_lua_co_ctx_t ;
+typedef int lua_State ;
+
+
+ int NGX_HTTP_LUA_CONTEXT_ACCESS ;
+ int NGX_HTTP_LUA_CONTEXT_CONTENT ;
+ int NGX_HTTP_LUA_CONTEXT_REWRITE ;
+ int NGX_HTTP_LUA_CONTEXT_SSL_CERT ;
+ int NGX_HTTP_LUA_CONTEXT_TIMER ;
+
+
+ int luaL_argcheck (int *,int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_pushliteral (int *,char*) ;
+ int lua_pushnil (int *) ;
+ int * lua_tothread (int *,int) ;
+ TYPE_1__* ngx_http_get_module_ctx (int *,int ) ;
+ int ngx_http_lua_check_context (int *,TYPE_1__*,int) ;
+ int ngx_http_lua_cleanup_pending_operation (TYPE_2__*) ;
+ int ngx_http_lua_del_thread (int *,int *,TYPE_1__*,TYPE_2__*) ;
+ TYPE_2__* ngx_http_lua_get_co_ctx (int *,TYPE_1__*) ;
+ int * ngx_http_lua_get_req (int *) ;
+ int ngx_http_lua_module ;
 
 __attribute__((used)) static int
 ngx_http_lua_uthread_kill(lua_State *L)
 {
-    lua_State                   *sub_co;
-    ngx_http_request_t          *r;
-    ngx_http_lua_ctx_t          *ctx;
-    ngx_http_lua_co_ctx_t       *coctx, *sub_coctx;
+    lua_State *sub_co;
+    ngx_http_request_t *r;
+    ngx_http_lua_ctx_t *ctx;
+    ngx_http_lua_co_ctx_t *coctx, *sub_coctx;
 
     r = ngx_http_lua_get_req(L);
-    if (r == NULL) {
+    if (r == ((void*)0)) {
         return luaL_error(L, "no request found");
     }
 
     ctx = ngx_http_get_module_ctx(r, ngx_http_lua_module);
-    if (ctx == NULL) {
+    if (ctx == ((void*)0)) {
         return luaL_error(L, "no request ctx found");
     }
 
@@ -72,7 +72,7 @@ ngx_http_lua_uthread_kill(lua_State *L)
 
     sub_coctx = ngx_http_lua_get_co_ctx(sub_co, ctx);
 
-    if (sub_coctx == NULL) {
+    if (sub_coctx == ((void*)0)) {
         return luaL_error(L, "no co ctx found");
     }
 
@@ -95,7 +95,7 @@ ngx_http_lua_uthread_kill(lua_State *L)
     }
 
     switch (sub_coctx->co_status) {
-    case NGX_HTTP_LUA_CO_ZOMBIE:
+    case 128:
         ngx_http_lua_del_thread(r, L, ctx, sub_coctx);
         ctx->uthreads--;
 
@@ -103,7 +103,7 @@ ngx_http_lua_uthread_kill(lua_State *L)
         lua_pushliteral(L, "already terminated");
         return 2;
 
-    case NGX_HTTP_LUA_CO_DEAD:
+    case 129:
         lua_pushnil(L);
         lua_pushliteral(L, "already waited or killed");
         return 2;
@@ -117,5 +117,5 @@ ngx_http_lua_uthread_kill(lua_State *L)
         return 1;
     }
 
-    /* not reacheable */
+
 }

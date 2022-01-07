@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  p_input_item; int /*<<< orphan*/  p_libvlc_instance; } ;
-typedef  TYPE_1__ libvlc_media_t ;
-struct TYPE_11__ {TYPE_1__* p_md; int /*<<< orphan*/  player; } ;
-typedef  TYPE_2__ libvlc_media_player_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- TYPE_2__* libvlc_media_player_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_media_release (TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_media_retain (TYPE_1__*) ; 
- int /*<<< orphan*/  media_attach_preparsed_event (TYPE_1__*) ; 
- int /*<<< orphan*/  media_detach_preparsed_event (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_player_Lock (int /*<<< orphan*/ ) ; 
- int vlc_player_SetCurrentMedia (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_player_Unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int p_input_item; int p_libvlc_instance; } ;
+typedef TYPE_1__ libvlc_media_t ;
+struct TYPE_11__ {TYPE_1__* p_md; int player; } ;
+typedef TYPE_2__ libvlc_media_player_t ;
+
+
+ int VLC_SUCCESS ;
+ TYPE_2__* libvlc_media_player_new (int ) ;
+ int libvlc_media_release (TYPE_1__*) ;
+ int libvlc_media_retain (TYPE_1__*) ;
+ int media_attach_preparsed_event (TYPE_1__*) ;
+ int media_detach_preparsed_event (TYPE_1__*) ;
+ int vlc_player_Lock (int ) ;
+ int vlc_player_SetCurrentMedia (int ,int ) ;
+ int vlc_player_Unlock (int ) ;
 
 libvlc_media_player_t *
 libvlc_media_player_new_from_media( libvlc_media_t * p_md )
@@ -35,7 +35,7 @@ libvlc_media_player_new_from_media( libvlc_media_t * p_md )
 
     p_mi = libvlc_media_player_new( p_md->p_libvlc_instance );
     if( !p_mi )
-        return NULL;
+        return ((void*)0);
 
     libvlc_media_retain( p_md );
     p_mi->p_md = p_md;
@@ -49,8 +49,8 @@ libvlc_media_player_new_from_media( libvlc_media_t * p_md )
     {
         media_detach_preparsed_event(p_md);
         libvlc_media_release(p_md);
-        p_mi->p_md = NULL;
-        return NULL;
+        p_mi->p_md = ((void*)0);
+        return ((void*)0);
     }
 
     return p_mi;

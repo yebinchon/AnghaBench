@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int stemv; int italic_angle; int /*<<< orphan*/  flags; int /*<<< orphan*/  attr; } ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  TYPE_1__* HPDF_FontDef ;
-typedef  scalar_t__ HPDF_BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_FONT_FOURCE_BOLD ; 
- int /*<<< orphan*/  HPDF_FONT_ITALIC ; 
- int /*<<< orphan*/  HPDF_INVALID_FONTDEF_DATA ; 
- int /*<<< orphan*/  HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int stemv; int italic_angle; int flags; int attr; } ;
+typedef int HPDF_STATUS ;
+typedef TYPE_1__* HPDF_FontDef ;
+typedef scalar_t__ HPDF_BOOL ;
+
+
+ int HPDF_FONT_FOURCE_BOLD ;
+ int HPDF_FONT_ITALIC ;
+ int HPDF_INVALID_FONTDEF_DATA ;
+ int HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
 
 HPDF_STATUS
-HPDF_CIDFontDef_ChangeStyle  (HPDF_FontDef   fontdef,
-                              HPDF_BOOL      bold,
-                              HPDF_BOOL      italic)
+HPDF_CIDFontDef_ChangeStyle (HPDF_FontDef fontdef,
+                              HPDF_BOOL bold,
+                              HPDF_BOOL italic)
 {
     HPDF_PTRACE ((" HPDF_CIDFontDef_ChangeStyle\n"));
 

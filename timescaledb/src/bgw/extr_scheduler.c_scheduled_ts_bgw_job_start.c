@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* register_background_worker_callback_type ) (int /*<<< orphan*/ *) ;
-typedef  int /*<<< orphan*/  pid_t ;
-struct TYPE_4__ {scalar_t__ state; int /*<<< orphan*/ * handle; } ;
-typedef  TYPE_1__ ScheduledBgwJob ;
-typedef  int BgwHandleStatus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
-#define  BGWH_NOT_YET_STARTED 131 
-#define  BGWH_POSTMASTER_DIED 130 
-#define  BGWH_STARTED 129 
-#define  BGWH_STOPPED 128 
- int /*<<< orphan*/  CommitTransactionCommand () ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ JOB_STATE_SCHEDULED ; 
- scalar_t__ JOB_STATE_STARTED ; 
- int /*<<< orphan*/  StartTransactionCommand () ; 
- int WaitForBackgroundWorkerStartup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bgw_scheduler_on_postmaster_death () ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  scheduled_bgw_job_transition_state_to (TYPE_1__*,scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int (* register_background_worker_callback_type ) (int *) ;
+typedef int pid_t ;
+struct TYPE_4__ {scalar_t__ state; int * handle; } ;
+typedef TYPE_1__ ScheduledBgwJob ;
+typedef int BgwHandleStatus ;
+
+
+ int Assert (int ) ;
+
+
+
+
+ int CommitTransactionCommand () ;
+ int ERROR ;
+ scalar_t__ JOB_STATE_SCHEDULED ;
+ scalar_t__ JOB_STATE_STARTED ;
+ int StartTransactionCommand () ;
+ int WaitForBackgroundWorkerStartup (int *,int *) ;
+ int bgw_scheduler_on_postmaster_death () ;
+ int elog (int ,char*,int) ;
+ int scheduled_bgw_job_transition_state_to (TYPE_1__*,scalar_t__) ;
 
 __attribute__((used)) static void
 scheduled_ts_bgw_job_start(ScheduledBgwJob *sjob,
-						   register_background_worker_callback_type bgw_register)
+         register_background_worker_callback_type bgw_register)
 {
-	pid_t pid;
-	BgwHandleStatus status;
+ pid_t pid;
+ BgwHandleStatus status;
 
-	scheduled_bgw_job_transition_state_to(sjob, JOB_STATE_STARTED);
+ scheduled_bgw_job_transition_state_to(sjob, JOB_STATE_STARTED);
 
-	if (sjob->state != JOB_STATE_STARTED)
-		return;
+ if (sjob->state != JOB_STATE_STARTED)
+  return;
 
-	Assert(sjob->handle != NULL);
-	if (bgw_register != NULL)
-		bgw_register(sjob->handle);
+ Assert(sjob->handle != ((void*)0));
+ if (bgw_register != ((void*)0))
+  bgw_register(sjob->handle);
 
-	status = WaitForBackgroundWorkerStartup(sjob->handle, &pid);
-	switch (status)
-	{
-		case BGWH_POSTMASTER_DIED:
-			bgw_scheduler_on_postmaster_death();
-			break;
-		case BGWH_STARTED:
-			/* all good */
-			break;
-		case BGWH_STOPPED:
-			StartTransactionCommand();
-			scheduled_bgw_job_transition_state_to(sjob, JOB_STATE_SCHEDULED);
-			CommitTransactionCommand();
-			break;
-		case BGWH_NOT_YET_STARTED:
-			/* should not be possible */
-			elog(ERROR, "unexpected bgworker state %d", status);
-			break;
-	}
+ status = WaitForBackgroundWorkerStartup(sjob->handle, &pid);
+ switch (status)
+ {
+  case 130:
+   bgw_scheduler_on_postmaster_death();
+   break;
+  case 129:
+
+   break;
+  case 128:
+   StartTransactionCommand();
+   scheduled_bgw_job_transition_state_to(sjob, JOB_STATE_SCHEDULED);
+   CommitTransactionCommand();
+   break;
+  case 131:
+
+   elog(ERROR, "unexpected bgworker state %d", status);
+   break;
+ }
 }

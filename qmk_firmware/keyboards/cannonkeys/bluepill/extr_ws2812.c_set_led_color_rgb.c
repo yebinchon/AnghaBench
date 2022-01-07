@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  b; int /*<<< orphan*/  r; int /*<<< orphan*/  g; } ;
-typedef  TYPE_1__ LED_TYPE ;
 
-/* Variables and functions */
- int BYTES_FOR_LED ; 
- int BYTES_FOR_LED_BYTE ; 
- int PREAMBLE_SIZE ; 
- int /*<<< orphan*/  get_protocol_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * txbuf ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int b; int r; int g; } ;
+typedef TYPE_1__ LED_TYPE ;
+
+
+ int BYTES_FOR_LED ;
+ int BYTES_FOR_LED_BYTE ;
+ int PREAMBLE_SIZE ;
+ int get_protocol_eq (int ,int) ;
+ int * txbuf ;
 
 void set_led_color_rgb(LED_TYPE color, int pos){
   for(int j = 0; j < 4; j++)

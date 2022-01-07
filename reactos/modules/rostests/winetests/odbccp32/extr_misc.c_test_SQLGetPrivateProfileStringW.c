@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  testingvalue ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegDeleteKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SQLGetPrivateProfileStringW (char*,char*,char*,char*,int,char*) ; 
- int SQLWritePrivateProfileString (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  abcd_key ; 
- int /*<<< orphan*/  abcdini_key ; 
- int /*<<< orphan*/  lstrcmpW (char*,char*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int lstrlenW (char*) ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  wine_dbgstr_w (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_wn (char*,int) ; 
+
+
+
+typedef int testingvalue ;
+typedef char WCHAR ;
+typedef int LONG ;
+typedef int HKEY ;
+
+
+ int ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ int RegDeleteKeyW (int ,int ) ;
+ int RegOpenKeyExW (int ,int ,int ,int ,int *) ;
+ int SQLGetPrivateProfileStringW (char*,char*,char*,char*,int,char*) ;
+ int SQLWritePrivateProfileString (char*,char*,char*,char*) ;
+ int abcd_key ;
+ int abcdini_key ;
+ int lstrcmpW (char*,char*) ;
+ int lstrcpyW (char*,char*) ;
+ int lstrlenW (char*) ;
+ int memcmp (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ int wine_dbgstr_w (char*) ;
+ int wine_dbgstr_wn (char*,int) ;
 
 __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
 {
@@ -53,17 +53,17 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
     LONG reg_ret;
 
     lstrcpyW(buffer, wine);
-    ret = SQLGetPrivateProfileStringW(NULL, testing , defaultval, buffer, 256, odbcini);
+    ret = SQLGetPrivateProfileStringW(((void*)0), testing , defaultval, buffer, 256, odbcini);
     ok(ret == 0, "SQLGetPrivateProfileStringW returned %d\n", ret);
     ok(!lstrcmpW(buffer, wine), "incorrect string '%s'\n", wine_dbgstr_w(buffer));
 
     lstrcpyW(buffer, wine);
-    ret = SQLGetPrivateProfileStringW(wineodbc, NULL , defaultval, buffer, 256, odbcini);
+    ret = SQLGetPrivateProfileStringW(wineodbc, ((void*)0) , defaultval, buffer, 256, odbcini);
     ok(ret == 0, "SQLGetPrivateProfileStringW returned %d\n", ret);
     ok(!lstrcmpW(buffer, empty), "incorrect string '%s'\n", wine_dbgstr_w(buffer));
 
     lstrcpyW(buffer, value);
-    ret = SQLGetPrivateProfileStringW(wineodbc, testing , NULL, buffer, 256, odbcini);
+    ret = SQLGetPrivateProfileStringW(wineodbc, testing , ((void*)0), buffer, 256, odbcini);
     ok(ret == 0, "SQLGetPrivateProfileStringW returned %d\n", ret);
     ok(!lstrcmpW(buffer, empty), "incorrect string '%s'\n", wine_dbgstr_w(buffer));
 
@@ -79,7 +79,7 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
     ok(ret == lstrlenW(defaultX), "SQLGetPrivateProfileStringW returned %d\n", ret);
     ok(!lstrcmpW(buffer, defaultX), "incorrect string '%s'\n", wine_dbgstr_w(buffer));
 
-    ret = SQLGetPrivateProfileStringW(wineodbc, testing , defaultX, NULL, 256, odbcini);
+    ret = SQLGetPrivateProfileStringW(wineodbc, testing , defaultX, ((void*)0), 256, odbcini);
     ok(ret == 0, "SQLGetPrivateProfileStringW returned %d\n", ret);
 
     lstrcpyW(buffer, value);
@@ -97,14 +97,14 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
         ok(ret == lstrlenW(value0), "SQLGetPrivateProfileStringW returned %d\n", ret);
         ok(!lstrcmpW(buffer, value0), "incorrect string '%s'\n", wine_dbgstr_w(buffer));
 
-        ret = SQLGetPrivateProfileStringW(wineodbc, testing , defaultX, NULL, 0, abcdini);
+        ret = SQLGetPrivateProfileStringW(wineodbc, testing , defaultX, ((void*)0), 0, abcdini);
         ok(ret == 0, "SQLGetPrivateProfileStringW returned %d\n", ret);
 
         ret = SQLGetPrivateProfileStringW(wineodbc, testing , defaultX, buffer, 7, abcdini);
         ok(ret == 6, "SQLGetPrivateProfileStringW returned %d\n", ret);
 
         lstrcpyW(buffer, wine);
-        ret = SQLGetPrivateProfileStringW(wineodbc, NULL , empty, buffer, 10, abcdini);
+        ret = SQLGetPrivateProfileStringW(wineodbc, ((void*)0) , empty, buffer, 10, abcdini);
         ok(ret == lstrlenW(testing)+1, "SQLGetPrivateProfileStringW returned %d\n", ret);
         ok(!lstrcmpW(buffer, testing), "incorrect string '%s'\n", wine_dbgstr_w(buffer));
 
@@ -112,7 +112,7 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
         ok(ret, "SQLWritePrivateProfileString failed\n");
 
         lstrcpyW(buffer, wine);
-        ret = SQLGetPrivateProfileStringW(wineodbc, NULL , empty, buffer, 256, abcdini);
+        ret = SQLGetPrivateProfileStringW(wineodbc, ((void*)0) , empty, buffer, 256, abcdini);
         ok(ret == (lstrlenW(testing) + lstrlenW(value)+2), "SQLGetPrivateProfileStringW returned %d\n", ret);
         if(ret == (lstrlenW(testing) + lstrlenW(value)+2))
         {
@@ -121,7 +121,7 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
         }
 
         lstrcpyW(buffer, value);
-        ret = SQLGetPrivateProfileStringW(wineodbc, NULL , empty, buffer, 10, abcdini);
+        ret = SQLGetPrivateProfileStringW(wineodbc, ((void*)0) , empty, buffer, 10, abcdini);
         ok(ret == lstrlenW(testing)+1, "SQLGetPrivateProfileStringW returned %d\n", ret);
         if(ret >= lstrlenW(testing)+1)
         {
@@ -129,7 +129,7 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
         }
 
         lstrcpyW(buffer, value);
-        ret = SQLGetPrivateProfileStringW(wineodbc, NULL , empty, buffer, 2, abcdini);
+        ret = SQLGetPrivateProfileStringW(wineodbc, ((void*)0) , empty, buffer, 2, abcdini);
         ok(ret == 0, "SQLGetPrivateProfileStringW returned %d\n", ret);
 
         reg_ret = RegOpenKeyExW(HKEY_CURRENT_USER, abcd_key, 0, KEY_READ, &hkey);
@@ -142,7 +142,7 @@ __attribute__((used)) static void test_SQLGetPrivateProfileStringW(void)
             RegCloseKey(hkey);
         }
 
-        /* Cleanup key */
+
         reg_ret = RegDeleteKeyW(HKEY_CURRENT_USER, abcdini_key);
         ok(reg_ret == ERROR_SUCCESS, "RegDeleteKeyW failed\n");
     }

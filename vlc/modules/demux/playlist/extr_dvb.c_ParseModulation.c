@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct mod   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tab ;
+
+
+typedef struct mod TYPE_1__ ;
+
+
+typedef int tab ;
 struct mod {char* dvb; char* vlc; } ;
 
-/* Variables and functions */
- struct mod* bsearch (char const*,TYPE_1__ const*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmp ; 
+
+ struct mod* bsearch (char const*,TYPE_1__ const*,int,int,int ) ;
+ int cmp ;
 
 __attribute__((used)) static const char *ParseModulation(const char *str)
 {
@@ -33,10 +33,10 @@ __attribute__((used)) static const char *ParseModulation(const char *str)
          { "VSB_16", "16VSB" }, { "VSB_8", "8VSB" }
      };
 
-     if( str == NULL )
-         return NULL;
+     if( str == ((void*)0) )
+         return ((void*)0);
 
      const struct mod *m = bsearch(str, tab, sizeof (tab) / sizeof(tab[0]),
                                    sizeof (tab[0]), cmp);
-     return (m != NULL) ? m->vlc : NULL;
+     return (m != ((void*)0)) ? m->vlc : ((void*)0);
 }

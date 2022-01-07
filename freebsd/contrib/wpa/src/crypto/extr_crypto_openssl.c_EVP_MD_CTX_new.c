@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_MD_CTX_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * os_zalloc (int) ; 
+
+
+
+typedef int EVP_MD_CTX ;
+
+
+ int EVP_MD_CTX_init (int *) ;
+ int * os_zalloc (int) ;
 
 __attribute__((used)) static EVP_MD_CTX * EVP_MD_CTX_new(void)
 {
-	EVP_MD_CTX *ctx;
+ EVP_MD_CTX *ctx;
 
-	ctx = os_zalloc(sizeof(*ctx));
-	if (ctx)
-		EVP_MD_CTX_init(ctx);
-	return ctx;
+ ctx = os_zalloc(sizeof(*ctx));
+ if (ctx)
+  EVP_MD_CTX_init(ctx);
+ return ctx;
 }

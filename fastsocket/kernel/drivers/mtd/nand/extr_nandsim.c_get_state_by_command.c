@@ -1,81 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
-#define  NAND_CMD_ERASE1 141 
-#define  NAND_CMD_ERASE2 140 
-#define  NAND_CMD_PAGEPROG 139 
-#define  NAND_CMD_READ0 138 
-#define  NAND_CMD_READ1 137 
-#define  NAND_CMD_READID 136 
-#define  NAND_CMD_READOOB 135 
-#define  NAND_CMD_READSTART 134 
-#define  NAND_CMD_RESET 133 
-#define  NAND_CMD_RNDOUT 132 
-#define  NAND_CMD_RNDOUTSTART 131 
-#define  NAND_CMD_SEQIN 130 
-#define  NAND_CMD_STATUS 129 
-#define  NAND_CMD_STATUS_MULTI 128 
- int /*<<< orphan*/  NS_ERR (char*) ; 
- int /*<<< orphan*/  STATE_CMD_ERASE1 ; 
- int /*<<< orphan*/  STATE_CMD_ERASE2 ; 
- int /*<<< orphan*/  STATE_CMD_PAGEPROG ; 
- int /*<<< orphan*/  STATE_CMD_READ0 ; 
- int /*<<< orphan*/  STATE_CMD_READ1 ; 
- int /*<<< orphan*/  STATE_CMD_READID ; 
- int /*<<< orphan*/  STATE_CMD_READOOB ; 
- int /*<<< orphan*/  STATE_CMD_READSTART ; 
- int /*<<< orphan*/  STATE_CMD_RESET ; 
- int /*<<< orphan*/  STATE_CMD_RNDOUT ; 
- int /*<<< orphan*/  STATE_CMD_RNDOUTSTART ; 
- int /*<<< orphan*/  STATE_CMD_SEQIN ; 
- int /*<<< orphan*/  STATE_CMD_STATUS ; 
- int /*<<< orphan*/  STATE_CMD_STATUS_M ; 
+
+
+
+typedef int uint32_t ;
+ int NS_ERR (char*) ;
+ int STATE_CMD_ERASE1 ;
+ int STATE_CMD_ERASE2 ;
+ int STATE_CMD_PAGEPROG ;
+ int STATE_CMD_READ0 ;
+ int STATE_CMD_READ1 ;
+ int STATE_CMD_READID ;
+ int STATE_CMD_READOOB ;
+ int STATE_CMD_READSTART ;
+ int STATE_CMD_RESET ;
+ int STATE_CMD_RNDOUT ;
+ int STATE_CMD_RNDOUTSTART ;
+ int STATE_CMD_SEQIN ;
+ int STATE_CMD_STATUS ;
+ int STATE_CMD_STATUS_M ;
 
 __attribute__((used)) static uint32_t get_state_by_command(unsigned command)
 {
-	switch (command) {
-		case NAND_CMD_READ0:
-			return STATE_CMD_READ0;
-		case NAND_CMD_READ1:
-			return STATE_CMD_READ1;
-		case NAND_CMD_PAGEPROG:
-			return STATE_CMD_PAGEPROG;
-		case NAND_CMD_READSTART:
-			return STATE_CMD_READSTART;
-		case NAND_CMD_READOOB:
-			return STATE_CMD_READOOB;
-		case NAND_CMD_ERASE1:
-			return STATE_CMD_ERASE1;
-		case NAND_CMD_STATUS:
-			return STATE_CMD_STATUS;
-		case NAND_CMD_STATUS_MULTI:
-			return STATE_CMD_STATUS_M;
-		case NAND_CMD_SEQIN:
-			return STATE_CMD_SEQIN;
-		case NAND_CMD_READID:
-			return STATE_CMD_READID;
-		case NAND_CMD_ERASE2:
-			return STATE_CMD_ERASE2;
-		case NAND_CMD_RESET:
-			return STATE_CMD_RESET;
-		case NAND_CMD_RNDOUT:
-			return STATE_CMD_RNDOUT;
-		case NAND_CMD_RNDOUTSTART:
-			return STATE_CMD_RNDOUTSTART;
-	}
+ switch (command) {
+  case 138:
+   return STATE_CMD_READ0;
+  case 137:
+   return STATE_CMD_READ1;
+  case 139:
+   return STATE_CMD_PAGEPROG;
+  case 134:
+   return STATE_CMD_READSTART;
+  case 135:
+   return STATE_CMD_READOOB;
+  case 141:
+   return STATE_CMD_ERASE1;
+  case 129:
+   return STATE_CMD_STATUS;
+  case 128:
+   return STATE_CMD_STATUS_M;
+  case 130:
+   return STATE_CMD_SEQIN;
+  case 136:
+   return STATE_CMD_READID;
+  case 140:
+   return STATE_CMD_ERASE2;
+  case 133:
+   return STATE_CMD_RESET;
+  case 132:
+   return STATE_CMD_RNDOUT;
+  case 131:
+   return STATE_CMD_RNDOUTSTART;
+ }
 
-	NS_ERR("get_state_by_command: unknown command, BUG\n");
-	return 0;
+ NS_ERR("get_state_by_command: unknown command, BUG\n");
+ return 0;
 }

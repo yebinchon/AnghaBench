@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  obuf; TYPE_1__* funcs; scalar_t__ err; } ;
-typedef  TYPE_2__ redisContext ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int obuf; TYPE_1__* funcs; scalar_t__ err; } ;
+typedef TYPE_2__ redisContext ;
 struct TYPE_5__ {int (* write ) (TYPE_2__*) ;} ;
 
-/* Variables and functions */
- int REDIS_ERR ; 
- int REDIS_OK ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- scalar_t__ sdslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsrange (int /*<<< orphan*/ ,int,int) ; 
- int stub1 (TYPE_2__*) ; 
+
+ int REDIS_ERR ;
+ int REDIS_OK ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ scalar_t__ sdslen (int ) ;
+ int sdsrange (int ,int,int) ;
+ int stub1 (TYPE_2__*) ;
 
 int redisBufferWrite(redisContext *c, int *done) {
 
-    /* Return early when the context has seen an error. */
+
     if (c->err)
         return REDIS_ERR;
 
@@ -44,6 +44,6 @@ int redisBufferWrite(redisContext *c, int *done) {
             }
         }
     }
-    if (done != NULL) *done = (sdslen(c->obuf) == 0);
+    if (done != ((void*)0)) *done = (sdslen(c->obuf) == 0);
     return REDIS_OK;
 }

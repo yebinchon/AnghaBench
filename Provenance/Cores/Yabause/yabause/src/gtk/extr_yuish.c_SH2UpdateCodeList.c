@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  sh2regs_struct ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int sh2regs_struct ;
 struct TYPE_5__ {unsigned int addr; } ;
-typedef  TYPE_1__ codebreakpoint_struct ;
-struct TYPE_6__ {int lastCode; int /*<<< orphan*/  store; int /*<<< orphan*/  debugsh; } ;
-typedef  TYPE_2__ YuiSh ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
+typedef TYPE_1__ codebreakpoint_struct ;
+struct TYPE_6__ {int lastCode; int store; int debugsh; } ;
+typedef TYPE_2__ YuiSh ;
+typedef int GtkTreeIter ;
 
-/* Variables and functions */
- char* GTK_STOCK_GO_FORWARD ; 
- char* GTK_STOCK_STOP ; 
- int MAX_BREAKPOINTS ; 
- int /*<<< orphan*/  MappedMemoryReadWord (int) ; 
- int /*<<< orphan*/  SH2Disasm (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* SH2GetBreakpointList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SH2GetRegisters (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_append (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_list_store_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,unsigned int*,char*) ; 
+
+ char* GTK_STOCK_GO_FORWARD ;
+ char* GTK_STOCK_STOP ;
+ int MAX_BREAKPOINTS ;
+ int MappedMemoryReadWord (int) ;
+ int SH2Disasm (int,int ,int ,int *,char*) ;
+ TYPE_1__* SH2GetBreakpointList (int ) ;
+ int SH2GetRegisters (int ,int *) ;
+ int gtk_list_store_append (int ,int *) ;
+ int gtk_list_store_clear (int ) ;
+ int gtk_list_store_set (int ,int *,int,char*,int) ;
+ int sprintf (char*,char*,unsigned int) ;
+ int sscanf (char*,char*,unsigned int*,char*) ;
 
 __attribute__((used)) static void SH2UpdateCodeList( YuiSh *sh2, u32 addr) {
-  /* refresh the assembler view. <addr> points the line to be highlighted. */
+
 
   int i, j;
   char lineBuf[64];

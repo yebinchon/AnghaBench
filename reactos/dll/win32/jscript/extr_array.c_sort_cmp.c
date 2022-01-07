@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPATCH_METHOD ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- double get_number (int /*<<< orphan*/ ) ; 
- scalar_t__ is_number (int /*<<< orphan*/ ) ; 
- scalar_t__ is_undefined (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_call_value (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int jsstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  to_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int INT ;
+typedef int HRESULT ;
+
+
+ int DISPATCH_METHOD ;
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ double get_number (int ) ;
+ scalar_t__ is_number (int ) ;
+ scalar_t__ is_undefined (int ) ;
+ int jsdisp_call_value (int *,int *,int ,int,int *,int *) ;
+ int jsstr_cmp (int *,int *) ;
+ int jsstr_release (int *) ;
+ int jsval_release (int ) ;
+ int to_number (int *,int ,double*) ;
+ int to_string (int *,int ,int **) ;
 
 __attribute__((used)) static HRESULT sort_cmp(script_ctx_t *ctx, jsdisp_t *cmp_func, jsval_t v1, jsval_t v2, INT *cmp)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static HRESULT sort_cmp(script_ctx_t *ctx, jsdisp_t *cmp_f
         args[0] = v1;
         args[1] = v2;
 
-        hres = jsdisp_call_value(cmp_func, NULL, DISPATCH_METHOD, 2, args, &res);
+        hres = jsdisp_call_value(cmp_func, ((void*)0), DISPATCH_METHOD, 2, args, &res);
         if(FAILED(hres))
             return hres;
 

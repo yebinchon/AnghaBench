@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dirty_cnt; int /*<<< orphan*/ * g; int /*<<< orphan*/ * q; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_1__ DSA ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dirty_cnt; int * g; int * q; int * p; } ;
+typedef TYPE_1__ DSA ;
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
 
 int DSA_set0_pqg(DSA *d, BIGNUM *p, BIGNUM *q, BIGNUM *g)
 {
-    /* If the fields p, q and g in d are NULL, the corresponding input
-     * parameters MUST be non-NULL.
-     */
-    if ((d->p == NULL && p == NULL)
-        || (d->q == NULL && q == NULL)
-        || (d->g == NULL && g == NULL))
+
+
+
+    if ((d->p == ((void*)0) && p == ((void*)0))
+        || (d->q == ((void*)0) && q == ((void*)0))
+        || (d->g == ((void*)0) && g == ((void*)0)))
         return 0;
 
-    if (p != NULL) {
+    if (p != ((void*)0)) {
         BN_free(d->p);
         d->p = p;
     }
-    if (q != NULL) {
+    if (q != ((void*)0)) {
         BN_free(d->q);
         d->q = q;
     }
-    if (g != NULL) {
+    if (g != ((void*)0)) {
         BN_free(d->g);
         d->g = g;
     }

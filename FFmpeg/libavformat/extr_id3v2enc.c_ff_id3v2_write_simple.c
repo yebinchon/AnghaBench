@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct AVFormatContext {int /*<<< orphan*/  metadata_header_padding; int /*<<< orphan*/  pb; } ;
-struct TYPE_5__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ ID3v2EncContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_id3v2_finish (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_id3v2_start (TYPE_1__*,int /*<<< orphan*/ ,int,char const*) ; 
- int ff_id3v2_write_metadata (struct AVFormatContext*,TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct AVFormatContext {int metadata_header_padding; int pb; } ;
+struct TYPE_5__ {int member_0; } ;
+typedef TYPE_1__ ID3v2EncContext ;
+
+
+ int ff_id3v2_finish (TYPE_1__*,int ,int ) ;
+ int ff_id3v2_start (TYPE_1__*,int ,int,char const*) ;
+ int ff_id3v2_write_metadata (struct AVFormatContext*,TYPE_1__*) ;
 
 int ff_id3v2_write_simple(struct AVFormatContext *s, int id3v2_version,
                           const char *magic)

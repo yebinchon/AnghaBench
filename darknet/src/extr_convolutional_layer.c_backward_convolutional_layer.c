@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {float* workspace; float* input; float* delta; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_8__ {int n; int groups; int size; int c; int out_w; int out_h; int outputs; int batch; float* delta; float* weight_updates; int nweights; int h; int w; float* weights; int /*<<< orphan*/  pad; int /*<<< orphan*/  stride; int /*<<< orphan*/  bias_updates; scalar_t__ batch_normalize; int /*<<< orphan*/  activation; int /*<<< orphan*/  output; } ;
-typedef  TYPE_2__ convolutional_layer ;
+typedef TYPE_1__ network ;
+struct TYPE_8__ {int n; int groups; int size; int c; int out_w; int out_h; int outputs; int batch; float* delta; float* weight_updates; int nweights; int h; int w; float* weights; int pad; int stride; int bias_updates; scalar_t__ batch_normalize; int activation; int output; } ;
+typedef TYPE_2__ convolutional_layer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  backward_batchnorm_layer (TYPE_2__,TYPE_1__) ; 
- int /*<<< orphan*/  backward_bias (int /*<<< orphan*/ ,float*,int,int,int) ; 
- int /*<<< orphan*/  col2im_cpu (float*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  gemm (int,int,int,int,int,int,float*,int,float*,int,int,float*,int) ; 
- int /*<<< orphan*/  gradient_array (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  im2col_cpu (float*,int,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*) ; 
+
+ int backward_batchnorm_layer (TYPE_2__,TYPE_1__) ;
+ int backward_bias (int ,float*,int,int,int) ;
+ int col2im_cpu (float*,int,int,int,int,int ,int ,float*) ;
+ int gemm (int,int,int,int,int,int,float*,int,float*,int,int,float*,int) ;
+ int gradient_array (int ,int,int ,float*) ;
+ int im2col_cpu (float*,int,int,int,int,int ,int ,float*) ;
 
 void backward_convolutional_layer(convolutional_layer l, network net)
 {
@@ -46,13 +46,13 @@ void backward_convolutional_layer(convolutional_layer l, network net)
             float *b = net.workspace;
             float *c = l.weight_updates + j*l.nweights/l.groups;
 
-            float *im  = net.input + (i*l.groups + j)*l.c/l.groups*l.h*l.w;
+            float *im = net.input + (i*l.groups + j)*l.c/l.groups*l.h*l.w;
             float *imd = net.delta + (i*l.groups + j)*l.c/l.groups*l.h*l.w;
 
             if(l.size == 1){
                 b = im;
             } else {
-                im2col_cpu(im, l.c/l.groups, l.h, l.w, 
+                im2col_cpu(im, l.c/l.groups, l.h, l.w,
                         l.size, l.stride, l.pad, b);
             }
 

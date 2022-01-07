@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
-typedef  int /*<<< orphan*/  HashTable ;
 
-/* Variables and functions */
- scalar_t__ IS_OBJECT ; 
- int /*<<< orphan*/ * Z_ARRVAL_P (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Z_OBJPROP_P (int /*<<< orphan*/ *) ; 
- scalar_t__ Z_TYPE_P (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/ * zend_hash_str_update (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zval ;
+typedef int HashTable ;
+
+
+ scalar_t__ IS_OBJECT ;
+ int * Z_ARRVAL_P (int *) ;
+ int * Z_OBJPROP_P (int *) ;
+ scalar_t__ Z_TYPE_P (int *) ;
+ int strlen (char*) ;
+ int * zend_hash_str_update (int *,char*,int ,int *) ;
 
 __attribute__((used)) static zval *add_assoc_object(zval *arg, char *key, zval *tmp)
 {
-	HashTable *symtable;
+ HashTable *symtable;
 
-	if (Z_TYPE_P(arg) == IS_OBJECT) {
-		symtable = Z_OBJPROP_P(arg);
-	} else {
-		symtable = Z_ARRVAL_P(arg);
-	}
-	return zend_hash_str_update(symtable, key, strlen(key), tmp);
+ if (Z_TYPE_P(arg) == IS_OBJECT) {
+  symtable = Z_OBJPROP_P(arg);
+ } else {
+  symtable = Z_ARRVAL_P(arg);
+ }
+ return zend_hash_str_update(symtable, key, strlen(key), tmp);
 }

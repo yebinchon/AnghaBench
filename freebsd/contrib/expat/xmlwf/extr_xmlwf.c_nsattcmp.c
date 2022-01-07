@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XML_Char ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NSSEP ; 
- int tcscmp (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ tcsrchr (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int XML_Char ;
+
+
+ int NSSEP ;
+ int tcscmp (int const*,int const*) ;
+ scalar_t__ tcsrchr (int const*,int ) ;
 
 __attribute__((used)) static int
 nsattcmp(const void *p1, const void *p2)

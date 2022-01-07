@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  build; int /*<<< orphan*/  minor; int /*<<< orphan*/  major; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int revision; int build; int minor; int major; } ;
 struct assembly_identity {char const* arch; char const* public_key; char const* language; char const* name; TYPE_1__ version; } ;
-typedef  int /*<<< orphan*/  mskeyW ;
-typedef  char WCHAR ;
-typedef  int SIZE_T ;
+typedef int mskeyW ;
+typedef char WCHAR ;
+typedef int SIZE_T ;
 
-/* Variables and functions */
- char* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  sprintfW (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcatW (char*,char const*) ; 
- int /*<<< orphan*/  strcpyW (char*,char const*) ; 
- int strlenW (char const*) ; 
- int /*<<< orphan*/  version_formatW ; 
+
+ char* RtlAllocateHeap (int ,int ,int) ;
+ int RtlGetProcessHeap () ;
+ int sprintfW (char*,int ,int ,int ,int ,int ) ;
+ int strcatW (char*,char const*) ;
+ int strcpyW (char*,char const*) ;
+ int strlenW (char const*) ;
+ int version_formatW ;
 
 __attribute__((used)) static WCHAR *build_assembly_dir(struct assembly_identity* ai)
 {
@@ -37,10 +37,10 @@ __attribute__((used)) static WCHAR *build_assembly_dir(struct assembly_identity*
     const WCHAR *lang = ai->language ? ai->language : noneW;
     const WCHAR *name = ai->name ? ai->name : noneW;
     SIZE_T size = (strlenW(arch) + 1 + strlenW(name) + 1 + strlenW(key) + 24 + 1 +
-		    strlenW(lang) + 1) * sizeof(WCHAR) + sizeof(mskeyW);
+      strlenW(lang) + 1) * sizeof(WCHAR) + sizeof(mskeyW);
     WCHAR *ret;
 
-    if (!(ret = RtlAllocateHeap( RtlGetProcessHeap(), 0, size ))) return NULL;
+    if (!(ret = RtlAllocateHeap( RtlGetProcessHeap(), 0, size ))) return ((void*)0);
 
     strcpyW( ret, arch );
     strcatW( ret, undW );

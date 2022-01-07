@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int width; int height; } ;
 struct TYPE_5__ {int* crop; TYPE_1__ geometry; } ;
-typedef  TYPE_2__ hb_title_t ;
-typedef  int gint ;
-typedef  scalar_t__ gboolean ;
-typedef  int /*<<< orphan*/  GhbValue ;
+typedef TYPE_2__ hb_title_t ;
+typedef int gint ;
+typedef scalar_t__ gboolean ;
+typedef int GhbValue ;
 
-/* Variables and functions */
- int EVEN (int) ; 
- int MOD_DOWN (int,int) ; 
- scalar_t__ ghb_dict_get_bool (int /*<<< orphan*/ *,char*) ; 
- int ghb_dict_get_int (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ghb_dict_set_int (int /*<<< orphan*/ *,char*,int) ; 
- int ghb_settings_combo_int (int /*<<< orphan*/ *,char*) ; 
+
+ int EVEN (int) ;
+ int MOD_DOWN (int,int) ;
+ scalar_t__ ghb_dict_get_bool (int *,char*) ;
+ int ghb_dict_get_int (int *,char*) ;
+ int ghb_dict_set_int (int *,char*,int) ;
+ int ghb_settings_combo_int (int *,char*) ;
 
 void
 ghb_apply_crop(GhbValue *settings, const hb_title_t * title)
@@ -34,8 +34,8 @@ ghb_apply_crop(GhbValue *settings, const hb_title_t * title)
     gint crop[4] = {0,};
 
     autocrop = ghb_dict_get_bool(settings, "PictureAutoCrop");
-    // "PictureLooseCrop" is a flag that says we prefer to crop extra to
-    // satisfy alignment constraints rather than scaling to satisfy them.
+
+
     loosecrop = ghb_dict_get_bool(settings, "PictureLooseCrop");
 
     if (autocrop)
@@ -62,7 +62,7 @@ ghb_apply_crop(GhbValue *settings, const hb_title_t * title)
         if (mod <= 0)
             mod = 16;
 
-        // Adjust the cropping to accomplish the desired width and height
+
         crop_width = title->geometry.width - crop[2] - crop[3];
         crop_height = title->geometry.height - crop[0] - crop[1];
         width = MOD_DOWN(crop_width, mod);
@@ -77,7 +77,7 @@ ghb_apply_crop(GhbValue *settings, const hb_title_t * title)
         crop[2] += need1;
         crop[3] += need2;
     }
-    // Prevent crop from creating too small an image
+
     if (title->geometry.height - crop[0] -crop[1] < 16)
     {
         crop[0] = title->geometry.height - crop[1] - 16;

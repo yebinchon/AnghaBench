@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int menu_texture_enable; int menu_texture_full_screen; } ;
-typedef  TYPE_1__ gl_t ;
+typedef TYPE_1__ gl_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void gl2_set_texture_enable(void *data, bool state, bool full_screen)
 {
-   gl_t *gl                     = (gl_t*)data;
+   gl_t *gl = (gl_t*)data;
 
    if (!gl)
       return;
 
-   gl->menu_texture_enable      = state;
+   gl->menu_texture_enable = state;
    gl->menu_texture_full_screen = full_screen;
 }

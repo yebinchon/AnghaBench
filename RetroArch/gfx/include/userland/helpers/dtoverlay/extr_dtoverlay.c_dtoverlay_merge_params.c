@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct fdt_property {char* data; } ;
-struct TYPE_7__ {int /*<<< orphan*/  fdt; } ;
-struct TYPE_6__ {char* param; int /*<<< orphan*/  len; int /*<<< orphan*/  b; } ;
-typedef  TYPE_1__ DTOVERLAY_PARAM_T ;
-typedef  TYPE_2__ DTBLOB_T ;
+struct TYPE_7__ {int fdt; } ;
+struct TYPE_6__ {char* param; int len; int b; } ;
+typedef TYPE_1__ DTOVERLAY_PARAM_T ;
+typedef TYPE_2__ DTBLOB_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FDT_ERR_BADPATH ; 
- int NON_FATAL (int /*<<< orphan*/ ) ; 
- int dtoverlay_create_node (TYPE_2__*,char const*,int) ; 
- int fdt_appendprop (int /*<<< orphan*/ ,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct fdt_property* fdt_get_property_w (int /*<<< orphan*/ ,int,char const*,int*) ; 
- int fdt_setprop (int /*<<< orphan*/ ,int,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strrchr (char const*,char) ; 
+
+ int FDT_ERR_BADPATH ;
+ int NON_FATAL (int ) ;
+ int dtoverlay_create_node (TYPE_2__*,char const*,int) ;
+ int fdt_appendprop (int ,int,char const*,int ,int ) ;
+ struct fdt_property* fdt_get_property_w (int ,int,char const*,int*) ;
+ int fdt_setprop (int ,int,char const*,int ,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strrchr (char const*,char) ;
 
 int dtoverlay_merge_params(DTBLOB_T *dtb, const DTOVERLAY_PARAM_T *params,
                            unsigned int num_params)
@@ -49,13 +49,13 @@ int dtoverlay_merge_params(DTBLOB_T *dtb, const DTOVERLAY_PARAM_T *params,
          break;
       }
 
-      // Ensure that root properties ("/xxx") work
+
       if (slash == node_name)
          path_len = 1;
       else
          path_len = slash - node_name;
 
-      // find node, create if it does not exist yet
+
       node_off = dtoverlay_create_node(dtb, node_name, path_len);
       if (node_off >= 0)
       {
@@ -64,7 +64,7 @@ int dtoverlay_merge_params(DTBLOB_T *dtb, const DTOVERLAY_PARAM_T *params,
          struct fdt_property *prop;
 
          if ((strcmp(prop_name, "bootargs") == 0) &&
-            ((prop = fdt_get_property_w(dtb->fdt, node_off, prop_name, &prop_len)) != NULL) &&
+            ((prop = fdt_get_property_w(dtb->fdt, node_off, prop_name, &prop_len)) != ((void*)0)) &&
             (prop_len > 0) && *prop->data)
          {
             prop->data[prop_len - 1] = ' ';

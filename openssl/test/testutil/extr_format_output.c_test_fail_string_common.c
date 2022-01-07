@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_STRING_WIDTH ; 
- scalar_t__ isprint (unsigned char) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int subtest_level () ; 
- int /*<<< orphan*/  test_diff_header (char const*,char const*) ; 
- int /*<<< orphan*/  test_fail_message_prefix (char const*,char const*,int,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  test_flush_stderr () ; 
- int /*<<< orphan*/  test_printf_stderr (char*,...) ; 
- int /*<<< orphan*/  test_string_null_empty (char const*,char) ; 
+ int MAX_STRING_WIDTH ;
+ scalar_t__ isprint (unsigned char) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int subtest_level () ;
+ int test_diff_header (char const*,char const*) ;
+ int test_fail_message_prefix (char const*,char const*,int,char const*,char const*,char const*,char const*) ;
+ int test_flush_stderr () ;
+ int test_printf_stderr (char*,...) ;
+ int test_string_null_empty (char const*,char) ;
 
 __attribute__((used)) static void test_fail_string_common(const char *prefix, const char *file,
                                     int line, const char *type,
@@ -35,12 +27,12 @@ __attribute__((used)) static void test_fail_string_common(const char *prefix, co
     unsigned int cnt = 0, diff;
 
     test_fail_message_prefix(prefix, file, line, type, left, right, op);
-    if (m1 == NULL)
+    if (m1 == ((void*)0))
         l1 = 0;
-    if (m2 == NULL)
+    if (m2 == ((void*)0))
         l2 = 0;
     if (l1 == 0 && l2 == 0) {
-        if ((m1 == NULL) == (m2 == NULL)) {
+        if ((m1 == ((void*)0)) == (m2 == ((void*)0))) {
             test_string_null_empty(m1, ' ');
         } else {
             test_diff_header(left, right);
@@ -82,11 +74,11 @@ __attribute__((used)) static void test_fail_string_common(const char *prefix, co
         if (n1 == n2 && !diff) {
             test_printf_stderr("%4u:  '%s'\n", cnt, n2 > n1 ? b2 : b1);
         } else {
-            if (cnt == 0 && (m1 == NULL || *m1 == '\0'))
+            if (cnt == 0 && (m1 == ((void*)0) || *m1 == '\0'))
                 test_string_null_empty(m1, '-');
             else if (n1 > 0)
                 test_printf_stderr("%4u:- '%s'\n", cnt, b1);
-            if (cnt == 0 && (m2 == NULL || *m2 == '\0'))
+            if (cnt == 0 && (m2 == ((void*)0) || *m2 == '\0'))
                test_string_null_empty(m2, '+');
             else if (n2 > 0)
                 test_printf_stderr("%4u:+ '%s'\n", cnt, b2);

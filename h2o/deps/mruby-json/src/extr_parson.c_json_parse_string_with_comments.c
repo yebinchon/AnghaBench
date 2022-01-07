@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Value ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * parse_value (char const**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parson_free (char*) ; 
- char* parson_strdup (char const*) ; 
- int /*<<< orphan*/  remove_comments (char*,char*,char*) ; 
+
+
+
+typedef int JSON_Value ;
+
+
+ int * parse_value (char const**,int ) ;
+ int parson_free (char*) ;
+ char* parson_strdup (char const*) ;
+ int remove_comments (char*,char*,char*) ;
 
 JSON_Value * json_parse_string_with_comments(const char *string) {
-    JSON_Value *result = NULL;
-    char *string_mutable_copy = NULL, *string_mutable_copy_ptr = NULL;
+    JSON_Value *result = ((void*)0);
+    char *string_mutable_copy = ((void*)0), *string_mutable_copy_ptr = ((void*)0);
     string_mutable_copy = parson_strdup(string);
-    if (string_mutable_copy == NULL) {
-        return NULL;
+    if (string_mutable_copy == ((void*)0)) {
+        return ((void*)0);
     }
     remove_comments(string_mutable_copy, "/*", "*/");
     remove_comments(string_mutable_copy, "//", "\n");

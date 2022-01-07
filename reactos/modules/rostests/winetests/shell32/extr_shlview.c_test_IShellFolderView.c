@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IShellView ;
-typedef  int /*<<< orphan*/  IShellFolderView ;
-typedef  int /*<<< orphan*/  IShellFolder ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int E_FAIL ; 
- int E_NOTIMPL ; 
- int /*<<< orphan*/ * IDataObjectImpl_Construct () ; 
- int /*<<< orphan*/  IDataObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IShellFolderView ; 
- int /*<<< orphan*/  IID_IShellView ; 
- int IShellFolderView_MoveIcons (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int IShellFolderView_QuerySupport (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IShellFolderView_Release (int /*<<< orphan*/ *) ; 
- int IShellFolderView_RemoveObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int IShellFolderView_SetRedraw (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IShellFolder_CreateViewObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellFolder_Release (int /*<<< orphan*/ *) ; 
- int IShellView_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IShellView_Release (int /*<<< orphan*/ *) ; 
- int SHGetDesktopFolder (int /*<<< orphan*/ **) ; 
- int S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int UINT ;
+typedef int IShellView ;
+typedef int IShellFolderView ;
+typedef int IShellFolder ;
+typedef int IDataObject ;
+typedef int HRESULT ;
+
+
+ int E_FAIL ;
+ int E_NOTIMPL ;
+ int * IDataObjectImpl_Construct () ;
+ int IDataObject_Release (int *) ;
+ int IID_IShellFolderView ;
+ int IID_IShellView ;
+ int IShellFolderView_MoveIcons (int *,int *) ;
+ int IShellFolderView_QuerySupport (int *,int*) ;
+ int IShellFolderView_Release (int *) ;
+ int IShellFolderView_RemoveObject (int *,int *,int*) ;
+ int IShellFolderView_SetRedraw (int *,int ) ;
+ int IShellFolder_CreateViewObject (int *,int *,int *,void**) ;
+ int IShellFolder_Release (int *) ;
+ int IShellView_QueryInterface (int *,int *,void**) ;
+ int IShellView_Release (int *) ;
+ int SHGetDesktopFolder (int **) ;
+ int S_OK ;
+ int TRUE ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_IShellFolderView(void)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static void test_IShellFolderView(void)
     hr = SHGetDesktopFolder(&desktop);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
 
-    hr = IShellFolder_CreateViewObject(desktop, NULL, &IID_IShellView, (void**)&view);
+    hr = IShellFolder_CreateViewObject(desktop, ((void*)0), &IID_IShellView, (void**)&view);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
 
     hr = IShellView_QueryInterface(view, &IID_IShellFolderView, (void**)&folderview);
@@ -64,29 +64,29 @@ __attribute__((used)) static void test_IShellFolderView(void)
         return;
     }
 
-    /* ::MoveIcons */
+
     obj = IDataObjectImpl_Construct();
     hr = IShellFolderView_MoveIcons(folderview, obj);
-    ok(hr == E_NOTIMPL || broken(hr == S_OK) /* W98 */, "got (0x%08x)\n", hr);
+    ok(hr == E_NOTIMPL || broken(hr == S_OK) , "got (0x%08x)\n", hr);
     IDataObject_Release(obj);
 
-    /* ::SetRedraw without list created */
+
     hr = IShellFolderView_SetRedraw(folderview, TRUE);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
 
-    /* ::QuerySupport */
-    hr = IShellFolderView_QuerySupport(folderview, NULL);
+
+    hr = IShellFolderView_QuerySupport(folderview, ((void*)0));
     ok(hr == S_OK, "got (0x%08x)\n", hr);
     i = 0xdeadbeef;
     hr = IShellFolderView_QuerySupport(folderview, &i);
     ok(hr == S_OK, "got (0x%08x)\n", hr);
     ok(i == 0xdeadbeef, "got %d\n", i);
 
-    /* ::RemoveObject */
+
     i = 0xdeadbeef;
-    hr = IShellFolderView_RemoveObject(folderview, NULL, &i);
+    hr = IShellFolderView_RemoveObject(folderview, ((void*)0), &i);
     ok(hr == S_OK || hr == E_FAIL, "got (0x%08x)\n", hr);
-    if (hr == S_OK) ok(i == 0 || broken(i == 0xdeadbeef) /* Vista, 2k8 */,
+    if (hr == S_OK) ok(i == 0 || broken(i == 0xdeadbeef) ,
                        "got %d\n", i);
 
     IShellFolderView_Release(folderview);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct option {char* name; int has_arg; char val; } ;
 struct lwan_straitjacket {char const* user_name; char* chroot_path; } ;
 struct lwan_config {char* config_file_path; char* listener; } ;
-typedef  enum args { ____Placeholder_args } args ;
+typedef enum args { ____Placeholder_args } args ;
 
-/* Variables and functions */
- int ARGS_FAILED ; 
- int ARGS_SERVE_FILES ; 
- int ARGS_USE_CONFIG ; 
- size_t PATH_MAX ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,size_t) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getopt_long (int,char**,char*,struct option const*,int*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  print_handler_info () ; 
- int /*<<< orphan*/  print_help (char*,struct lwan_config*) ; 
- int /*<<< orphan*/  print_module_info () ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- void* strdup (int /*<<< orphan*/ ) ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
+
+ int ARGS_FAILED ;
+ int ARGS_SERVE_FILES ;
+ int ARGS_USE_CONFIG ;
+ size_t PATH_MAX ;
+ int fprintf (int ,char*,size_t) ;
+ int free (char*) ;
+ int getopt_long (int,char**,char*,struct option const*,int*) ;
+ int memcpy (char*,int ,size_t) ;
+ int optarg ;
+ int print_handler_info () ;
+ int print_help (char*,struct lwan_config*) ;
+ int print_module_info () ;
+ int printf (char*,char*) ;
+ int stderr ;
+ void* strdup (int ) ;
+ size_t strlen (int ) ;
 
 __attribute__((used)) static enum args
 parse_args(int argc, char *argv[], struct lwan_config *config, char *root,

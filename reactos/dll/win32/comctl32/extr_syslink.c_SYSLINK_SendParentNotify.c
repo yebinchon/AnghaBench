@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_10__ {int /*<<< orphan*/  szUrl; int /*<<< orphan*/  szID; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_10__ {int szUrl; int szID; } ;
 struct TYPE_11__ {TYPE_1__ Link; } ;
 struct TYPE_16__ {TYPE_2__ u; } ;
-struct TYPE_13__ {int /*<<< orphan*/  idFrom; int /*<<< orphan*/  code; int /*<<< orphan*/  hwndFrom; } ;
+struct TYPE_13__ {int idFrom; int code; int hwndFrom; } ;
 struct TYPE_12__ {int iLink; scalar_t__* szUrl; scalar_t__* szID; scalar_t__ stateMask; scalar_t__ state; scalar_t__ mask; } ;
 struct TYPE_15__ {TYPE_4__ hdr; TYPE_3__ item; } ;
-struct TYPE_14__ {int /*<<< orphan*/  Notify; int /*<<< orphan*/  Self; } ;
-typedef  TYPE_5__ SYSLINK_INFO ;
-typedef  TYPE_6__ NMLINK ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  TYPE_7__ DOC_ITEM ;
+struct TYPE_14__ {int Notify; int Self; } ;
+typedef TYPE_5__ SYSLINK_INFO ;
+typedef TYPE_6__ NMLINK ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef TYPE_7__ DOC_ITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GWLP_ID ; 
- int /*<<< orphan*/  GetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_NOTIFY ; 
- int /*<<< orphan*/  lstrcpyW (scalar_t__*,int /*<<< orphan*/ ) ; 
+
+ int GWLP_ID ;
+ int GetWindowLongPtrW (int ,int ) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int WM_NOTIFY ;
+ int lstrcpyW (scalar_t__*,int ) ;
 
 __attribute__((used)) static LRESULT SYSLINK_SendParentNotify (const SYSLINK_INFO *infoPtr, UINT code, const DOC_ITEM *Link, int iLink)
 {

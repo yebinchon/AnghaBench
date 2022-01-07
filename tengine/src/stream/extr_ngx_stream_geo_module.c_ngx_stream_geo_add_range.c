@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u_short ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_12__ {int /*<<< orphan*/  value; void* end; void* start; } ;
-typedef  TYPE_2__ ngx_stream_geo_range_t ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef void* u_short ;
+typedef size_t ngx_uint_t ;
+struct TYPE_12__ {int value; void* end; void* start; } ;
+typedef TYPE_2__ ngx_stream_geo_range_t ;
 struct TYPE_11__ {TYPE_2__** low; } ;
-struct TYPE_13__ {int /*<<< orphan*/  value; int /*<<< orphan*/  net; TYPE_1__ high; int /*<<< orphan*/  temp_pool; } ;
-typedef  TYPE_3__ ngx_stream_geo_conf_ctx_t ;
-typedef  int /*<<< orphan*/  ngx_conf_t ;
+struct TYPE_13__ {int value; int net; TYPE_1__ high; int temp_pool; } ;
+typedef TYPE_3__ ngx_stream_geo_conf_ctx_t ;
+typedef int ngx_conf_t ;
 struct TYPE_14__ {size_t nelts; TYPE_2__* elts; } ;
-typedef  TYPE_4__ ngx_array_t ;
-typedef  int in_addr_t ;
+typedef TYPE_4__ ngx_array_t ;
+typedef int in_addr_t ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  NGX_LOG_WARN ; 
- TYPE_4__* ngx_array_create (int /*<<< orphan*/ ,int,int) ; 
- TYPE_2__* ngx_array_push (TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,size_t,size_t,...) ; 
- int /*<<< orphan*/  ngx_memmove (TYPE_2__*,TYPE_2__*,int) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ int NGX_LOG_EMERG ;
+ int NGX_LOG_WARN ;
+ TYPE_4__* ngx_array_create (int ,int,int) ;
+ TYPE_2__* ngx_array_push (TYPE_4__*) ;
+ int ngx_conf_log_error (int ,int *,int ,char*,int ,size_t,size_t,...) ;
+ int ngx_memmove (TYPE_2__*,TYPE_2__*,int) ;
 
 __attribute__((used)) static char *
 ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
     in_addr_t start, in_addr_t end)
 {
-    in_addr_t                n;
-    ngx_uint_t               h, i, s, e;
-    ngx_array_t             *a;
-    ngx_stream_geo_range_t  *range;
+    in_addr_t n;
+    ngx_uint_t h, i, s, e;
+    ngx_array_t *a;
+    ngx_stream_geo_range_t *range;
 
     for (n = start; n <= end; n = (n + 0x10000) & 0xffff0000) {
 
@@ -64,10 +64,10 @@ ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
 
         a = (ngx_array_t *) ctx->high.low[h];
 
-        if (a == NULL) {
+        if (a == ((void*)0)) {
             a = ngx_array_create(ctx->temp_pool, 64,
                                  sizeof(ngx_stream_geo_range_t));
-            if (a == NULL) {
+            if (a == ((void*)0)) {
                 return NGX_CONF_ERROR;
             }
 
@@ -87,10 +87,10 @@ ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
 
             if (s > (ngx_uint_t) range[i].end) {
 
-                /* add after the range */
+
 
                 range = ngx_array_push(a);
-                if (range == NULL) {
+                if (range == ((void*)0)) {
                     return NGX_CONF_ERROR;
                 }
 
@@ -121,15 +121,15 @@ ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
             if (s > (ngx_uint_t) range[i].start
                 && e < (ngx_uint_t) range[i].end)
             {
-                /* split the range and insert the new one */
+
 
                 range = ngx_array_push(a);
-                if (range == NULL) {
+                if (range == ((void*)0)) {
                     return NGX_CONF_ERROR;
                 }
 
                 range = ngx_array_push(a);
-                if (range == NULL) {
+                if (range == ((void*)0)) {
                     return NGX_CONF_ERROR;
                 }
 
@@ -154,10 +154,10 @@ ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
             if (s == (ngx_uint_t) range[i].start
                 && e < (ngx_uint_t) range[i].end)
             {
-                /* shift the range start and insert the new range */
+
 
                 range = ngx_array_push(a);
-                if (range == NULL) {
+                if (range == ((void*)0)) {
                     return NGX_CONF_ERROR;
                 }
 
@@ -178,10 +178,10 @@ ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
             if (s > (ngx_uint_t) range[i].start
                 && e == (ngx_uint_t) range[i].end)
             {
-                /* shift the range end and insert the new range */
+
 
                 range = ngx_array_push(a);
-                if (range == NULL) {
+                if (range == ((void*)0)) {
                     return NGX_CONF_ERROR;
                 }
 
@@ -211,10 +211,10 @@ ngx_stream_geo_add_range(ngx_conf_t *cf, ngx_stream_geo_conf_ctx_t *ctx,
             return NGX_CONF_ERROR;
         }
 
-        /* add the first range */
+
 
         range = ngx_array_push(a);
-        if (range == NULL) {
+        if (range == ((void*)0)) {
             return NGX_CONF_ERROR;
         }
 

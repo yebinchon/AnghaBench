@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  block_size; } ;
-struct TYPE_8__ {int /*<<< orphan*/  status; int /*<<< orphan*/  graph; } ;
-struct TYPE_7__ {scalar_t__ index; int /*<<< orphan*/ * oper; } ;
-typedef  TYPE_1__ TF_Output ;
-typedef  int /*<<< orphan*/  TF_OperationDescription ;
-typedef  int /*<<< orphan*/  TF_Operation ;
-typedef  TYPE_2__ TFModel ;
-typedef  TYPE_3__ DepthToSpaceParams ;
-typedef  int /*<<< orphan*/  DNNReturnType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DNN_ERROR ; 
- int /*<<< orphan*/  DNN_SUCCESS ; 
- int NAME_BUFFER_SIZE ; 
- int /*<<< orphan*/  TF_AddInput (int /*<<< orphan*/ *,TYPE_1__) ; 
- int /*<<< orphan*/  TF_FLOAT ; 
- int /*<<< orphan*/ * TF_FinishOperation (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ TF_GetCode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * TF_NewOperation (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ TF_OK ; 
- int /*<<< orphan*/  TF_SetAttrInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TF_SetAttrType (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int const) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int block_size; } ;
+struct TYPE_8__ {int status; int graph; } ;
+struct TYPE_7__ {scalar_t__ index; int * oper; } ;
+typedef TYPE_1__ TF_Output ;
+typedef int TF_OperationDescription ;
+typedef int TF_Operation ;
+typedef TYPE_2__ TFModel ;
+typedef TYPE_3__ DepthToSpaceParams ;
+typedef int DNNReturnType ;
+
+
+ int DNN_ERROR ;
+ int DNN_SUCCESS ;
+ int NAME_BUFFER_SIZE ;
+ int TF_AddInput (int *,TYPE_1__) ;
+ int TF_FLOAT ;
+ int * TF_FinishOperation (int *,int ) ;
+ scalar_t__ TF_GetCode (int ) ;
+ int * TF_NewOperation (int ,char*,char*) ;
+ scalar_t__ TF_OK ;
+ int TF_SetAttrInt (int *,char*,int ) ;
+ int TF_SetAttrType (int *,char*,int ) ;
+ int snprintf (char*,int,char*,int const) ;
 
 __attribute__((used)) static DNNReturnType add_depth_to_space_layer(TFModel *tf_model, TF_Operation **cur_op,
                                               DepthToSpaceParams *params, const int layer)

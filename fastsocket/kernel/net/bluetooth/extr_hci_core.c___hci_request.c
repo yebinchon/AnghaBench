@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hci_dev {int req_status; int req_result; int /*<<< orphan*/  name; int /*<<< orphan*/  req_wait_q; } ;
-typedef  int /*<<< orphan*/  __u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  DECLARE_WAITQUEUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int EINTR ; 
- int ETIMEDOUT ; 
-#define  HCI_REQ_CANCELED 129 
-#define  HCI_REQ_DONE 128 
- int HCI_REQ_PEND ; 
- int /*<<< orphan*/  TASK_INTERRUPTIBLE ; 
- int /*<<< orphan*/  add_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int bt_err (int) ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  schedule_timeout (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
- scalar_t__ signal_pending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait ; 
+
+
+
+struct hci_dev {int req_status; int req_result; int name; int req_wait_q; } ;
+typedef int __u32 ;
+
+
+ int BT_DBG (char*,int ,...) ;
+ int DECLARE_WAITQUEUE (int ,int ) ;
+ int EINTR ;
+ int ETIMEDOUT ;
+
+
+ int HCI_REQ_PEND ;
+ int TASK_INTERRUPTIBLE ;
+ int add_wait_queue (int *,int *) ;
+ int bt_err (int) ;
+ int current ;
+ int remove_wait_queue (int *,int *) ;
+ int schedule_timeout (int ) ;
+ int set_current_state (int ) ;
+ scalar_t__ signal_pending (int ) ;
+ int wait ;
 
 __attribute__((used)) static int __hci_request(struct hci_dev *hdev, void (*req)(struct hci_dev *hdev, unsigned long opt),
-				unsigned long opt, __u32 timeout)
+    unsigned long opt, __u32 timeout)
 {
-	DECLARE_WAITQUEUE(wait, current);
-	int err = 0;
+ DECLARE_WAITQUEUE(wait, current);
+ int err = 0;
 
-	BT_DBG("%s start", hdev->name);
+ BT_DBG("%s start", hdev->name);
 
-	hdev->req_status = HCI_REQ_PEND;
+ hdev->req_status = HCI_REQ_PEND;
 
-	add_wait_queue(&hdev->req_wait_q, &wait);
-	set_current_state(TASK_INTERRUPTIBLE);
+ add_wait_queue(&hdev->req_wait_q, &wait);
+ set_current_state(TASK_INTERRUPTIBLE);
 
-	req(hdev, opt);
-	schedule_timeout(timeout);
+ req(hdev, opt);
+ schedule_timeout(timeout);
 
-	remove_wait_queue(&hdev->req_wait_q, &wait);
+ remove_wait_queue(&hdev->req_wait_q, &wait);
 
-	if (signal_pending(current))
-		return -EINTR;
+ if (signal_pending(current))
+  return -EINTR;
 
-	switch (hdev->req_status) {
-	case HCI_REQ_DONE:
-		err = -bt_err(hdev->req_result);
-		break;
+ switch (hdev->req_status) {
+ case 128:
+  err = -bt_err(hdev->req_result);
+  break;
 
-	case HCI_REQ_CANCELED:
-		err = -hdev->req_result;
-		break;
+ case 129:
+  err = -hdev->req_result;
+  break;
 
-	default:
-		err = -ETIMEDOUT;
-		break;
-	}
+ default:
+  err = -ETIMEDOUT;
+  break;
+ }
 
-	hdev->req_status = hdev->req_result = 0;
+ hdev->req_status = hdev->req_result = 0;
 
-	BT_DBG("%s end: err %d", hdev->name, err);
+ BT_DBG("%s end: err %d", hdev->name, err);
 
-	return err;
+ return err;
 }

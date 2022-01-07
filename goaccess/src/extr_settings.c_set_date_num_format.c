@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* date_num_format; } ;
 
-/* Variables and functions */
- TYPE_1__ conf ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ is_date_abbreviated (char*) ; 
- char* set_format_date () ; 
- scalar_t__ snprintf (char*,int,char*) ; 
- int strlen (char*) ; 
- scalar_t__ strpbrk (char*,char*) ; 
- char* xcalloc (int,int) ; 
- char* xstrdup (char*) ; 
+
+ TYPE_1__ conf ;
+ int free (char*) ;
+ scalar_t__ is_date_abbreviated (char*) ;
+ char* set_format_date () ;
+ scalar_t__ snprintf (char*,int,char*) ;
+ int strlen (char*) ;
+ scalar_t__ strpbrk (char*,char*) ;
+ char* xcalloc (int,int) ;
+ char* xstrdup (char*) ;
 
 __attribute__((used)) static int
 set_date_num_format (void)
 {
-  char *fdate = NULL, *buf = NULL;
+  char *fdate = ((void*)0), *buf = ((void*)0);
   int buflen = 0, flen = 0;
 
   fdate = set_format_date ();

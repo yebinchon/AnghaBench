@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_cursor ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_2__ {int nBuf; int /*<<< orphan*/ * pCsr; void* pBuf; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ LsmDb ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  LSM_SEEK_EQ ; 
- int /*<<< orphan*/  lsm_csr_close (int /*<<< orphan*/ *) ; 
- int lsm_csr_open (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int lsm_csr_seek (int /*<<< orphan*/ *,void*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ lsm_csr_valid (int /*<<< orphan*/ *) ; 
- int lsm_csr_value (int /*<<< orphan*/ *,void const**,int*) ; 
- int /*<<< orphan*/  memcpy (void*,void const*,int) ; 
- int /*<<< orphan*/  testFree (void*) ; 
- void* testMalloc (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int lsm_cursor ;
+typedef int TestDb ;
+struct TYPE_2__ {int nBuf; int * pCsr; void* pBuf; int db; } ;
+typedef TYPE_1__ LsmDb ;
+
+
+ int LSM_OK ;
+ int LSM_SEEK_EQ ;
+ int lsm_csr_close (int *) ;
+ int lsm_csr_open (int ,int **) ;
+ int lsm_csr_seek (int *,void*,int,int ) ;
+ scalar_t__ lsm_csr_valid (int *) ;
+ int lsm_csr_value (int *,void const**,int*) ;
+ int memcpy (void*,void const*,int) ;
+ int testFree (void*) ;
+ void* testMalloc (int) ;
 
 __attribute__((used)) static int test_lsm_fetch(
-  TestDb *pTestDb, 
-  void *pKey, 
-  int nKey, 
-  void **ppVal, 
+  TestDb *pTestDb,
+  void *pKey,
+  int nKey,
+  void **ppVal,
   int *pnVal
 ){
   int rc;

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ParseState ;
-typedef  int /*<<< orphan*/  ParseExprKind ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT8OID ; 
- int /*<<< orphan*/  checkExprIsVarFree (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/ * coerce_to_specific_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * transformExpr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ParseState ;
+typedef int ParseExprKind ;
+typedef int Node ;
+
+
+ int INT8OID ;
+ int checkExprIsVarFree (int *,int *,char const*) ;
+ int * coerce_to_specific_type (int *,int *,int ,char const*) ;
+ int * transformExpr (int *,int *,int ) ;
 
 Node *
 transformLimitClause(ParseState *pstate, Node *clause,
-					 ParseExprKind exprKind, const char *constructName)
+      ParseExprKind exprKind, const char *constructName)
 {
-	Node	   *qual;
+ Node *qual;
 
-	if (clause == NULL)
-		return NULL;
+ if (clause == ((void*)0))
+  return ((void*)0);
 
-	qual = transformExpr(pstate, clause, exprKind);
+ qual = transformExpr(pstate, clause, exprKind);
 
-	qual = coerce_to_specific_type(pstate, qual, INT8OID, constructName);
+ qual = coerce_to_specific_type(pstate, qual, INT8OID, constructName);
 
-	/* LIMIT can't refer to any variables of the current query */
-	checkExprIsVarFree(pstate, qual, constructName);
 
-	return qual;
+ checkExprIsVarFree(pstate, qual, constructName);
+
+ return qual;
 }

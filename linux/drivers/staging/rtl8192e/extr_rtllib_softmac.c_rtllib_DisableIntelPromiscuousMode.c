@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct rtllib_device {int bNetPromiscuousMode; int /*<<< orphan*/  (* SetHwRegHandler ) (struct net_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* AllowAllDestAddrHandler ) (struct net_device*,int,int) ;} ;
+
+
+
+
+typedef int u8 ;
+struct rtllib_device {int bNetPromiscuousMode; int (* SetHwRegHandler ) (struct net_device*,int ,int *) ;int (* AllowAllDestAddrHandler ) (struct net_device*,int,int) ;} ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HW_VAR_CECHK_BSSID ; 
- int /*<<< orphan*/  netdev_info (struct net_device*,char*) ; 
- struct rtllib_device* netdev_priv_rsl (struct net_device*) ; 
- int /*<<< orphan*/  stub1 (struct net_device*,int,int) ; 
- int /*<<< orphan*/  stub2 (struct net_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int HW_VAR_CECHK_BSSID ;
+ int netdev_info (struct net_device*,char*) ;
+ struct rtllib_device* netdev_priv_rsl (struct net_device*) ;
+ int stub1 (struct net_device*,int,int) ;
+ int stub2 (struct net_device*,int ,int *) ;
 
 void rtllib_DisableIntelPromiscuousMode(struct net_device *dev,
-		bool bInitState)
+  bool bInitState)
 {
-	bool bFilterOutNonAssociatedBSSID = true;
+ bool bFilterOutNonAssociatedBSSID = 1;
 
-	struct rtllib_device *ieee = netdev_priv_rsl(dev);
+ struct rtllib_device *ieee = netdev_priv_rsl(dev);
 
-	netdev_info(dev, "========>Exit Intel Promiscuous Mode\n");
+ netdev_info(dev, "========>Exit Intel Promiscuous Mode\n");
 
-	ieee->AllowAllDestAddrHandler(dev, false, !bInitState);
-	ieee->SetHwRegHandler(dev, HW_VAR_CECHK_BSSID,
-			     (u8 *)&bFilterOutNonAssociatedBSSID);
+ ieee->AllowAllDestAddrHandler(dev, 0, !bInitState);
+ ieee->SetHwRegHandler(dev, HW_VAR_CECHK_BSSID,
+        (u8 *)&bFilterOutNonAssociatedBSSID);
 
-	ieee->bNetPromiscuousMode = false;
+ ieee->bNetPromiscuousMode = 0;
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct key_source {int /*<<< orphan*/  random2; int /*<<< orphan*/  random1; int /*<<< orphan*/  pre_master; } ;
+
+
+
+
+struct key_source {int random2; int random1; int pre_master; } ;
 struct key_source2 {struct key_source server; struct key_source client; } ;
 struct buffer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR (struct key_source) ; 
- int /*<<< orphan*/  buf_read (struct buffer*,int /*<<< orphan*/ ,int) ; 
+
+ int CLEAR (struct key_source) ;
+ int buf_read (struct buffer*,int ,int) ;
 
 __attribute__((used)) static int
 key_source2_read(struct key_source2 *k2,

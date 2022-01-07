@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- double luaL_checknumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,char const*) ; 
- char* luaL_optstring (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char*) ; 
- char* mp_format_time_fmt (char const*,double) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
+
+
+
+typedef int lua_State ;
+
+
+ double luaL_checknumber (int *,int) ;
+ int luaL_error (int *,char*,char const*) ;
+ char* luaL_optstring (int *,int,char*) ;
+ int lua_pushstring (int *,char*) ;
+ char* mp_format_time_fmt (char const*,double) ;
+ int talloc_free (char*) ;
 
 __attribute__((used)) static int script_format_time(lua_State *L)
 {

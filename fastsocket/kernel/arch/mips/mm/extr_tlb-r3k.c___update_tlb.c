@@ -1,72 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vm_area_struct {scalar_t__ vm_mm; } ;
-typedef  int /*<<< orphan*/  pte_t ;
+typedef int pte_t ;
 struct TYPE_2__ {scalar_t__ active_mm; } ;
 
-/* Variables and functions */
- int ASID_MASK ; 
- int /*<<< orphan*/  BARRIER ; 
- unsigned long PAGE_MASK ; 
- int /*<<< orphan*/  cpu ; 
- int cpu_context (int /*<<< orphan*/ ,scalar_t__) ; 
- TYPE_1__* current ; 
- int /*<<< orphan*/  local_irq_restore (unsigned long) ; 
- int /*<<< orphan*/  local_irq_save (unsigned long) ; 
- int /*<<< orphan*/  printk (char*,int,int) ; 
- int /*<<< orphan*/  pte_val (int /*<<< orphan*/ ) ; 
- int read_c0_entryhi () ; 
- int read_c0_index () ; 
- int /*<<< orphan*/  tlb_probe () ; 
- int /*<<< orphan*/  tlb_write_indexed () ; 
- int /*<<< orphan*/  tlb_write_random () ; 
- int /*<<< orphan*/  write_c0_entryhi (int) ; 
- int /*<<< orphan*/  write_c0_entrylo0 (int /*<<< orphan*/ ) ; 
+
+ int ASID_MASK ;
+ int BARRIER ;
+ unsigned long PAGE_MASK ;
+ int cpu ;
+ int cpu_context (int ,scalar_t__) ;
+ TYPE_1__* current ;
+ int local_irq_restore (unsigned long) ;
+ int local_irq_save (unsigned long) ;
+ int printk (char*,int,int) ;
+ int pte_val (int ) ;
+ int read_c0_entryhi () ;
+ int read_c0_index () ;
+ int tlb_probe () ;
+ int tlb_write_indexed () ;
+ int tlb_write_random () ;
+ int write_c0_entryhi (int) ;
+ int write_c0_entrylo0 (int ) ;
 
 void __update_tlb(struct vm_area_struct *vma, unsigned long address, pte_t pte)
 {
-	unsigned long flags;
-	int idx, pid;
+ unsigned long flags;
+ int idx, pid;
 
-	/*
-	 * Handle debugger faulting in for debugee.
-	 */
-	if (current->active_mm != vma->vm_mm)
-		return;
 
-	pid = read_c0_entryhi() & ASID_MASK;
 
-#ifdef DEBUG_TLB
-	if ((pid != (cpu_context(cpu, vma->vm_mm) & ASID_MASK)) || (cpu_context(cpu, vma->vm_mm) == 0)) {
-		printk("update_mmu_cache: Wheee, bogus tlbpid mmpid=%lu tlbpid=%d\n",
-		       (cpu_context(cpu, vma->vm_mm)), pid);
-	}
-#endif
 
-	local_irq_save(flags);
-	address &= PAGE_MASK;
-	write_c0_entryhi(address | pid);
-	BARRIER;
-	tlb_probe();
-	idx = read_c0_index();
-	write_c0_entrylo0(pte_val(pte));
-	write_c0_entryhi(address | pid);
-	if (idx < 0) {					/* BARRIER */
-		tlb_write_random();
-	} else {
-		tlb_write_indexed();
-	}
-	write_c0_entryhi(pid);
-	local_irq_restore(flags);
+ if (current->active_mm != vma->vm_mm)
+  return;
+
+ pid = read_c0_entryhi() & ASID_MASK;
+ local_irq_save(flags);
+ address &= PAGE_MASK;
+ write_c0_entryhi(address | pid);
+ BARRIER;
+ tlb_probe();
+ idx = read_c0_index();
+ write_c0_entrylo0(pte_val(pte));
+ write_c0_entryhi(address | pid);
+ if (idx < 0) {
+  tlb_write_random();
+ } else {
+  tlb_write_indexed();
+ }
+ write_c0_entryhi(pid);
+ local_irq_restore(flags);
 }

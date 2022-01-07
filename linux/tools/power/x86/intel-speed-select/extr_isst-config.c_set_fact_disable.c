@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ cmd_help ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  for_each_online_package_in_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  for_each_online_target_cpu_in_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  isst_ctdp_display_information_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  isst_ctdp_display_information_start (int /*<<< orphan*/ ) ; 
- scalar_t__ max_target_cpus ; 
- int /*<<< orphan*/  outf ; 
- int /*<<< orphan*/  set_fact_for_cpu ; 
- int /*<<< orphan*/  stderr ; 
+ scalar_t__ cmd_help ;
+ int exit (int ) ;
+ int for_each_online_package_in_set (int ,int *,int *,int *,int*) ;
+ int for_each_online_target_cpu_in_set (int ,int *,int *,int *,int*) ;
+ int fprintf (int ,char*) ;
+ int isst_ctdp_display_information_end (int ) ;
+ int isst_ctdp_display_information_start (int ) ;
+ scalar_t__ max_target_cpus ;
+ int outf ;
+ int set_fact_for_cpu ;
+ int stderr ;
 
 __attribute__((used)) static void set_fact_disable(void)
 {
-	int status = 0;
+ int status = 0;
 
-	if (cmd_help) {
-		fprintf(stderr,
-			"Disable Intel Speed Select Technology turbo frequency feature\n");
-		fprintf(stderr,
-			"Optional: -t|--trl : Specify turbo ratio limit\n");
-		exit(0);
-	}
+ if (cmd_help) {
+  fprintf(stderr,
+   "Disable Intel Speed Select Technology turbo frequency feature\n");
+  fprintf(stderr,
+   "Optional: -t|--trl : Specify turbo ratio limit\n");
+  exit(0);
+ }
 
-	isst_ctdp_display_information_start(outf);
-	if (max_target_cpus)
-		for_each_online_target_cpu_in_set(set_fact_for_cpu, NULL, NULL,
-						  NULL, &status);
-	else
-		for_each_online_package_in_set(set_fact_for_cpu, NULL, NULL,
-					       NULL, &status);
-	isst_ctdp_display_information_end(outf);
+ isst_ctdp_display_information_start(outf);
+ if (max_target_cpus)
+  for_each_online_target_cpu_in_set(set_fact_for_cpu, ((void*)0), ((void*)0),
+        ((void*)0), &status);
+ else
+  for_each_online_package_in_set(set_fact_for_cpu, ((void*)0), ((void*)0),
+            ((void*)0), &status);
+ isst_ctdp_display_information_end(outf);
 }

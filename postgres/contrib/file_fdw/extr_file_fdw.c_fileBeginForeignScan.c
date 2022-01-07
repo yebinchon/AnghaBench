@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {char* filename; int is_program; int /*<<< orphan*/  cstate; int /*<<< orphan*/ * options; } ;
-struct TYPE_10__ {int /*<<< orphan*/  fdw_private; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_11__ {char* filename; int is_program; int cstate; int * options; } ;
+struct TYPE_10__ {int fdw_private; } ;
 struct TYPE_7__ {scalar_t__ plan; } ;
-struct TYPE_8__ {int /*<<< orphan*/  ss_currentRelation; TYPE_1__ ps; } ;
+struct TYPE_8__ {int ss_currentRelation; TYPE_1__ ps; } ;
 struct TYPE_9__ {void* fdw_state; TYPE_2__ ss; } ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_3__ ForeignScanState ;
-typedef  TYPE_4__ ForeignScan ;
-typedef  TYPE_5__ FileFdwExecutionState ;
-typedef  int /*<<< orphan*/  CopyState ;
+typedef int List ;
+typedef TYPE_3__ ForeignScanState ;
+typedef TYPE_4__ ForeignScan ;
+typedef TYPE_5__ FileFdwExecutionState ;
+typedef int CopyState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BeginCopyFrom (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int EXEC_FLAG_EXPLAIN_ONLY ; 
- int /*<<< orphan*/  NIL ; 
- int /*<<< orphan*/  RelationGetRelid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fileGetOptions (int /*<<< orphan*/ ,char**,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * list_concat (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ palloc (int) ; 
+
+ int BeginCopyFrom (int *,int ,char*,int,int *,int ,int *) ;
+ int EXEC_FLAG_EXPLAIN_ONLY ;
+ int NIL ;
+ int RelationGetRelid (int ) ;
+ int fileGetOptions (int ,char**,int*,int **) ;
+ int * list_concat (int *,int ) ;
+ scalar_t__ palloc (int) ;
 
 __attribute__((used)) static void
 fileBeginForeignScan(ForeignScanState *node, int eflags)
 {
-	ForeignScan *plan = (ForeignScan *) node->ss.ps.plan;
-	char	   *filename;
-	bool		is_program;
-	List	   *options;
-	CopyState	cstate;
-	FileFdwExecutionState *festate;
+ ForeignScan *plan = (ForeignScan *) node->ss.ps.plan;
+ char *filename;
+ bool is_program;
+ List *options;
+ CopyState cstate;
+ FileFdwExecutionState *festate;
 
-	/*
-	 * Do nothing in EXPLAIN (no ANALYZE) case.  node->fdw_state stays NULL.
-	 */
-	if (eflags & EXEC_FLAG_EXPLAIN_ONLY)
-		return;
 
-	/* Fetch options of foreign table */
-	fileGetOptions(RelationGetRelid(node->ss.ss_currentRelation),
-				   &filename, &is_program, &options);
 
-	/* Add any options from the plan (currently only convert_selectively) */
-	options = list_concat(options, plan->fdw_private);
 
-	/*
-	 * Create CopyState from FDW options.  We always acquire all columns, so
-	 * as to match the expected ScanTupleSlot signature.
-	 */
-	cstate = BeginCopyFrom(NULL,
-						   node->ss.ss_currentRelation,
-						   filename,
-						   is_program,
-						   NULL,
-						   NIL,
-						   options);
+ if (eflags & EXEC_FLAG_EXPLAIN_ONLY)
+  return;
 
-	/*
-	 * Save state in node->fdw_state.  We must save enough information to call
-	 * BeginCopyFrom() again.
-	 */
-	festate = (FileFdwExecutionState *) palloc(sizeof(FileFdwExecutionState));
-	festate->filename = filename;
-	festate->is_program = is_program;
-	festate->options = options;
-	festate->cstate = cstate;
 
-	node->fdw_state = (void *) festate;
+ fileGetOptions(RelationGetRelid(node->ss.ss_currentRelation),
+       &filename, &is_program, &options);
+
+
+ options = list_concat(options, plan->fdw_private);
+
+
+
+
+
+ cstate = BeginCopyFrom(((void*)0),
+         node->ss.ss_currentRelation,
+         filename,
+         is_program,
+         ((void*)0),
+         NIL,
+         options);
+
+
+
+
+
+ festate = (FileFdwExecutionState *) palloc(sizeof(FileFdwExecutionState));
+ festate->filename = filename;
+ festate->is_program = is_program;
+ festate->options = options;
+ festate->cstate = cstate;
+
+ node->fdw_state = (void *) festate;
 }

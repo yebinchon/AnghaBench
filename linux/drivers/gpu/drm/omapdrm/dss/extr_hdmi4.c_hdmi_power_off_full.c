@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pll; } ;
-struct omap_hdmi {TYPE_1__ pll; int /*<<< orphan*/  wp; int /*<<< orphan*/  output; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HDMI_IRQ_CORE ; 
- int /*<<< orphan*/  HDMI_PHYPWRCMD_OFF ; 
- int /*<<< orphan*/  dss_mgr_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dss_pll_disable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hdmi_power_off_core (struct omap_hdmi*) ; 
- int /*<<< orphan*/  hdmi_wp_clear_irqenable (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hdmi_wp_set_phy_pwr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hdmi_wp_video_stop (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pll; } ;
+struct omap_hdmi {TYPE_1__ pll; int wp; int output; } ;
+
+
+ int HDMI_IRQ_CORE ;
+ int HDMI_PHYPWRCMD_OFF ;
+ int dss_mgr_disable (int *) ;
+ int dss_pll_disable (int *) ;
+ int hdmi_power_off_core (struct omap_hdmi*) ;
+ int hdmi_wp_clear_irqenable (int *,int ) ;
+ int hdmi_wp_set_phy_pwr (int *,int ) ;
+ int hdmi_wp_video_stop (int *) ;
 
 __attribute__((used)) static void hdmi_power_off_full(struct omap_hdmi *hdmi)
 {
-	hdmi_wp_clear_irqenable(&hdmi->wp, ~HDMI_IRQ_CORE);
+ hdmi_wp_clear_irqenable(&hdmi->wp, ~HDMI_IRQ_CORE);
 
-	hdmi_wp_video_stop(&hdmi->wp);
+ hdmi_wp_video_stop(&hdmi->wp);
 
-	dss_mgr_disable(&hdmi->output);
+ dss_mgr_disable(&hdmi->output);
 
-	hdmi_wp_set_phy_pwr(&hdmi->wp, HDMI_PHYPWRCMD_OFF);
+ hdmi_wp_set_phy_pwr(&hdmi->wp, HDMI_PHYPWRCMD_OFF);
 
-	dss_pll_disable(&hdmi->pll.pll);
+ dss_pll_disable(&hdmi->pll.pll);
 
-	hdmi_power_off_core(hdmi);
+ hdmi_power_off_core(hdmi);
 }

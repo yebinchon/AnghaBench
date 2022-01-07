@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  URLContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int BLOCKSIZE ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/ * av_memdup (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int URLContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int BLOCKSIZE ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_log (int *,int ,char*,char const*,...) ;
+ int * av_memdup (int *,int) ;
 
 __attribute__((used)) static int set_aes_arg(URLContext *h, uint8_t **buf, int *buf_len,
                        uint8_t *default_buf, int default_buf_len,

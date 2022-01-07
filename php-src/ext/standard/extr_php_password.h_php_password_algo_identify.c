@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zend_string ;
-typedef  int /*<<< orphan*/  php_password_algo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  php_password_algo_default () ; 
- int /*<<< orphan*/  const* php_password_algo_identify_ex (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int zend_string ;
+typedef int php_password_algo ;
+
+
+ int php_password_algo_default () ;
+ int const* php_password_algo_identify_ex (int const*,int ) ;
 
 __attribute__((used)) static inline const php_password_algo* php_password_algo_identify(const zend_string *hash) {
-	return php_password_algo_identify_ex(hash, php_password_algo_default());
+ return php_password_algo_identify_ex(hash, php_password_algo_default());
 }

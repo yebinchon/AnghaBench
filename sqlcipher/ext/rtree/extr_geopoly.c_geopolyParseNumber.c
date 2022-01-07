@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned char* z; } ;
-typedef  TYPE_1__ GeoParse ;
-typedef  double GeoCoord ;
+typedef TYPE_1__ GeoParse ;
+typedef double GeoCoord ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- scalar_t__ atof (char const*) ; 
- char geopolySkipSpace (TYPE_1__*) ; 
- scalar_t__ safe_isdigit (char) ; 
- int /*<<< orphan*/  sqlite3AtoF (char const*,double*,int,int /*<<< orphan*/ ) ; 
+
+ int SQLITE_UTF8 ;
+ scalar_t__ atof (char const*) ;
+ char geopolySkipSpace (TYPE_1__*) ;
+ scalar_t__ safe_isdigit (char) ;
+ int sqlite3AtoF (char const*,double*,int,int ) ;
 
 __attribute__((used)) static int geopolyParseNumber(GeoParse *p, GeoCoord *pVal){
   char c = geopolySkipSpace(p);
@@ -58,15 +58,15 @@ __attribute__((used)) static int geopolyParseNumber(GeoParse *p, GeoCoord *pVal)
   }
   if( z[j-1]<'0' ) return 0;
   if( pVal ){
-#ifdef SQLITE_AMALGAMATION
-     /* The sqlite3AtoF() routine is much much faster than atof(), if it
-     ** is available */
-     double r;
-     (void)sqlite3AtoF((const char*)p->z, &r, j, SQLITE_UTF8);
-     *pVal = r;
-#else
+
+
+
+
+
+
+
      *pVal = (GeoCoord)atof((const char*)p->z);
-#endif
+
   }
   p->z += j;
   return 1;

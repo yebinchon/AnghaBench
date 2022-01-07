@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vibrato {int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
+
+
+
+
+struct vibrato {int right; int left; } ;
 struct dspfilter_output {float* samples; unsigned int frames; } ;
 struct dspfilter_input {float* samples; unsigned int frames; } ;
 
-/* Variables and functions */
- float vibratocore_core (int /*<<< orphan*/ *,float) ; 
+
+ float vibratocore_core (int *,float) ;
 
 __attribute__((used)) static void vibrato_process(void *data, struct dspfilter_output *output,
       const struct dspfilter_input *input)
@@ -24,9 +24,9 @@ __attribute__((used)) static void vibrato_process(void *data, struct dspfilter_o
    float *out;
    struct vibrato *vib = (struct vibrato*)data;
 
-   output->samples         = input->samples;
-   output->frames          = input->frames;
-   out                     = output->samples;
+   output->samples = input->samples;
+   output->frames = input->frames;
+   out = output->samples;
 
    for (i = 0; i < input->frames; i++, out += 2)
    {

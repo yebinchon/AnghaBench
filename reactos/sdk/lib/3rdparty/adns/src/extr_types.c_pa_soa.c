@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {TYPE_1__* qu; int /*<<< orphan*/ * dgram; } ;
-typedef  TYPE_2__ parseinfo ;
-typedef  int /*<<< orphan*/  byte ;
-typedef  scalar_t__ adns_status ;
-struct TYPE_9__ {int serial; int /*<<< orphan*/  rname; int /*<<< orphan*/  mname; } ;
-typedef  TYPE_3__ adns_rr_soa ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {TYPE_1__* qu; int * dgram; } ;
+typedef TYPE_2__ parseinfo ;
+typedef int byte ;
+typedef scalar_t__ adns_status ;
+struct TYPE_9__ {int serial; int rname; int mname; } ;
+typedef TYPE_3__ adns_rr_soa ;
 struct TYPE_7__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_W (int,int) ; 
- int adns_qf_quoteok_anshost ; 
- scalar_t__ adns_s_invaliddata ; 
- scalar_t__ adns_s_ok ; 
- scalar_t__ pap_domain (TYPE_2__ const*,int*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pap_mailbox (TYPE_2__ const*,int*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pdf_quoteok ; 
+
+ int GET_W (int,int) ;
+ int adns_qf_quoteok_anshost ;
+ scalar_t__ adns_s_invaliddata ;
+ scalar_t__ adns_s_ok ;
+ scalar_t__ pap_domain (TYPE_2__ const*,int*,int,int *,int ) ;
+ scalar_t__ pap_mailbox (TYPE_2__ const*,int*,int,int *) ;
+ int pdf_quoteok ;
 
 __attribute__((used)) static adns_status pa_soa(const parseinfo *pai, int cbyte, int max, void *datap) {
   adns_rr_soa *rrp= datap;
@@ -37,7 +37,7 @@ __attribute__((used)) static adns_status pa_soa(const parseinfo *pai, int cbyte,
   int msw, lsw, i;
 
   st= pap_domain(pai, &cbyte, max, &rrp->mname,
-		 pai->qu->flags & adns_qf_quoteok_anshost ? pdf_quoteok : 0);
+   pai->qu->flags & adns_qf_quoteok_anshost ? pdf_quoteok : 0);
   if (st) return st;
 
   st= pap_mailbox(pai, &cbyte, max, &rrp->rname);

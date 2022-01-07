@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,...) ; 
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 dump_binary(char *buf, int len, int ind)
 {
-	int i;
+ int i;
 
-	printf("len=%d, ind=%d, data=0x", len, ind);
-	for (i = 0; i < len; ++i)
-		printf("%02x", 0xff & buf[i]);
-	printf("\n");
+ printf("len=%d, ind=%d, data=0x", len, ind);
+ for (i = 0; i < len; ++i)
+  printf("%02x", 0xff & buf[i]);
+ printf("\n");
 }

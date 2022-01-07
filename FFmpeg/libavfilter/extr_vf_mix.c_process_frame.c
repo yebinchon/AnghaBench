@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_7__ ;
-typedef  struct TYPE_24__   TYPE_6__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
-typedef  struct TYPE_18__   TYPE_13__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_7__ ;
+typedef struct TYPE_24__ TYPE_6__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+typedef struct TYPE_18__ TYPE_13__ ;
+
+
 struct TYPE_20__ {TYPE_5__* out; TYPE_5__** in; } ;
-typedef  TYPE_2__ ThreadData ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_25__ {TYPE_1__* internal; TYPE_6__** outputs; } ;
-struct TYPE_24__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct TYPE_23__ {int /*<<< orphan*/  pts; } ;
+struct TYPE_24__ {int time_base; int h; int w; } ;
+struct TYPE_23__ {int pts; } ;
 struct TYPE_22__ {TYPE_3__* opaque; TYPE_7__* parent; } ;
-struct TYPE_18__ {int /*<<< orphan*/  time_base; int /*<<< orphan*/  pts; } ;
-struct TYPE_21__ {int nb_inputs; int /*<<< orphan*/ * height; TYPE_13__ fs; TYPE_5__** frames; } ;
-struct TYPE_19__ {int /*<<< orphan*/  (* execute ) (TYPE_7__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ MixContext ;
-typedef  TYPE_4__ FFFrameSync ;
-typedef  TYPE_5__ AVFrame ;
-typedef  TYPE_6__ AVFilterLink ;
-typedef  TYPE_7__ AVFilterContext ;
+struct TYPE_18__ {int time_base; int pts; } ;
+struct TYPE_21__ {int nb_inputs; int * height; TYPE_13__ fs; TYPE_5__** frames; } ;
+struct TYPE_19__ {int (* execute ) (TYPE_7__*,int ,TYPE_2__*,int *,int ) ;} ;
+typedef TYPE_3__ MixContext ;
+typedef TYPE_4__ FFFrameSync ;
+typedef TYPE_5__ AVFrame ;
+typedef TYPE_6__ AVFilterLink ;
+typedef TYPE_7__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_rescale_q (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_filter_frame (TYPE_6__*,TYPE_5__*) ; 
- int /*<<< orphan*/  ff_filter_get_nb_threads (TYPE_7__*) ; 
- int ff_framesync_get_frame (TYPE_13__*,int,TYPE_5__**,int /*<<< orphan*/ ) ; 
- TYPE_5__* ff_get_video_buffer (TYPE_6__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mix_frames ; 
- int /*<<< orphan*/  stub1 (TYPE_7__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMIN (int ,int ) ;
+ int av_rescale_q (int ,int ,int ) ;
+ int ff_filter_frame (TYPE_6__*,TYPE_5__*) ;
+ int ff_filter_get_nb_threads (TYPE_7__*) ;
+ int ff_framesync_get_frame (TYPE_13__*,int,TYPE_5__**,int ) ;
+ TYPE_5__* ff_get_video_buffer (TYPE_6__*,int ,int ) ;
+ int mix_frames ;
+ int stub1 (TYPE_7__*,int ,TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static int process_frame(FFFrameSync *fs)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static int process_frame(FFFrameSync *fs)
 
     td.in = in;
     td.out = out;
-    ctx->internal->execute(ctx, mix_frames, &td, NULL, FFMIN(s->height[0], ff_filter_get_nb_threads(ctx)));
+    ctx->internal->execute(ctx, mix_frames, &td, ((void*)0), FFMIN(s->height[0], ff_filter_get_nb_threads(ctx)));
 
     return ff_filter_frame(outlink, out);
 }

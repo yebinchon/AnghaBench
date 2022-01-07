@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_5__ {char** ppsz_keys; int /*<<< orphan*/ * global_map; int /*<<< orphan*/ * map; } ;
-typedef  TYPE_1__ vlc_actions_t ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  libvlc_int_t ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_5__ {char** ppsz_keys; int * global_map; int * map; } ;
+typedef TYPE_1__ vlc_actions_t ;
+typedef int name ;
+typedef int libvlc_int_t ;
 struct TYPE_7__ {TYPE_1__* actions; } ;
-struct TYPE_6__ {char* psz; int /*<<< orphan*/  id; } ;
+struct TYPE_6__ {char* psz; int id; } ;
 
-/* Variables and functions */
- int ACTIONS_COUNT ; 
- int /*<<< orphan*/  KEY_MOUSEWHEELDOWN ; 
- int /*<<< orphan*/  KEY_MOUSEWHEELLEFT ; 
- int /*<<< orphan*/  KEY_MOUSEWHEELRIGHT ; 
- int /*<<< orphan*/  KEY_MOUSEWHEELUP ; 
- int /*<<< orphan*/  MAXACTION ; 
- int VLC_ENOMEM ; 
- int /*<<< orphan*/ * VLC_OBJECT (int /*<<< orphan*/ *) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_VAR_INTEGER ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  add_wheel_mapping (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_action (int /*<<< orphan*/ *,int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ) ; 
- TYPE_4__* libvlc_priv (int /*<<< orphan*/ *) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,char*,char*) ; 
- TYPE_2__* s_names2actions ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_AddCallback (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  var_Create (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  var_InheritInteger (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_key_to_action ; 
+
+ int ACTIONS_COUNT ;
+ int KEY_MOUSEWHEELDOWN ;
+ int KEY_MOUSEWHEELLEFT ;
+ int KEY_MOUSEWHEELRIGHT ;
+ int KEY_MOUSEWHEELUP ;
+ int MAXACTION ;
+ int VLC_ENOMEM ;
+ int * VLC_OBJECT (int *) ;
+ int VLC_SUCCESS ;
+ int VLC_VAR_INTEGER ;
+ int abort () ;
+ int add_wheel_mapping (int **,int ,int ,int ) ;
+ int assert (int ) ;
+ int init_action (int *,int **,char*,int ) ;
+ TYPE_4__* libvlc_priv (int *) ;
+ TYPE_1__* malloc (int) ;
+ int msg_Err (int *,char*,char*,char*) ;
+ TYPE_2__* s_names2actions ;
+ int snprintf (char*,int,char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ unlikely (int ) ;
+ int var_AddCallback (int *,char*,int ,int **) ;
+ int var_Create (int *,char*,int ) ;
+ int var_InheritInteger (int *,char*) ;
+ int vlc_key_to_action ;
 
 int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
 {
-    assert(libvlc != NULL);
+    assert(libvlc != ((void*)0));
 
     vlc_object_t *obj = VLC_OBJECT(libvlc);
     vlc_actions_t *as = malloc (sizeof (*as) + (1 + ACTIONS_COUNT)
                       * sizeof (*as->ppsz_keys));
 
-    if (unlikely(as == NULL))
+    if (unlikely(as == ((void*)0)))
         return VLC_ENOMEM;
-    as->map = NULL;
-    as->global_map = NULL;
+    as->map = ((void*)0);
+    as->global_map = ((void*)0);
 
     var_Create (obj, "key-pressed", VLC_VAR_INTEGER);
     var_Create (obj, "global-key-pressed", VLC_VAR_INTEGER);
     var_Create (obj, "key-action", VLC_VAR_INTEGER);
 
-    /* Initialize from configuration */
+
     for (size_t i = 0; i < ACTIONS_COUNT; i++)
     {
-#ifndef NDEBUG
+
         if (i > 0
          && strcmp (s_names2actions[i-1].psz, s_names2actions[i].psz) >= 0)
         {
@@ -76,7 +76,7 @@ int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
                      s_names2actions[i-1].psz, s_names2actions[i].psz);
             abort ();
         }
-#endif
+
         as->ppsz_keys[i] = s_names2actions[i].psz;
 
         char name[12 + MAXACTION];
@@ -85,9 +85,9 @@ int libvlc_InternalActionsInit (libvlc_int_t *libvlc)
         init_action (obj, &as->map, name + 7, s_names2actions[i].id);
         init_action (obj, &as->global_map, name, s_names2actions[i].id);
     }
-    as->ppsz_keys[ACTIONS_COUNT] = NULL;
+    as->ppsz_keys[ACTIONS_COUNT] = ((void*)0);
 
-    /* Initialize mouse wheel events */
+
     add_wheel_mapping (&as->map, KEY_MOUSEWHEELRIGHT, KEY_MOUSEWHEELLEFT,
                          var_InheritInteger (obj, "hotkeys-x-wheel-mode"));
     add_wheel_mapping (&as->map, KEY_MOUSEWHEELUP, KEY_MOUSEWHEELDOWN,

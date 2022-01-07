@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_GENCB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_F_BN_GENCB_NEW ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/ * OPENSSL_malloc (int) ; 
+
+
+
+typedef int BN_GENCB ;
+
+
+ int BN_F_BN_GENCB_NEW ;
+ int BNerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int * OPENSSL_malloc (int) ;
 
 BN_GENCB *BN_GENCB_new(void)
 {
     BN_GENCB *ret;
 
-    if ((ret = OPENSSL_malloc(sizeof(*ret))) == NULL) {
+    if ((ret = OPENSSL_malloc(sizeof(*ret))) == ((void*)0)) {
         BNerr(BN_F_BN_GENCB_NEW, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
 
     return ret;

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_12__ {scalar_t__ pix_fmt; int width; int height; } ;
-struct TYPE_11__ {int key_frame; int** data; int* linesize; int /*<<< orphan*/  pict_type; } ;
-struct TYPE_10__ {int size; int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_11__ {int key_frame; int** data; int* linesize; int pict_type; } ;
+struct TYPE_10__ {int size; int data; } ;
+typedef int GetByteContext ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int ALIAS_HEADER_SIZE ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- scalar_t__ AV_PIX_FMT_BGR24 ; 
- scalar_t__ AV_PIX_FMT_GRAY8 ; 
- int /*<<< orphan*/  AV_WB24 (int*,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int bytestream2_get_be16u (int /*<<< orphan*/ *) ; 
- int bytestream2_get_be24 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  bytestream2_skipu (int /*<<< orphan*/ *,int) ; 
- int ff_get_buffer (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_3__*,int,int) ; 
+
+ int ALIAS_HEADER_SIZE ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ scalar_t__ AV_PIX_FMT_BGR24 ;
+ scalar_t__ AV_PIX_FMT_GRAY8 ;
+ int AV_WB24 (int*,int) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int bytestream2_get_be16u (int *) ;
+ int bytestream2_get_be24 (int *) ;
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
+ int bytestream2_init (int *,int ,int) ;
+ int bytestream2_skipu (int *,int) ;
+ int ff_get_buffer (TYPE_3__*,TYPE_2__*,int ) ;
+ int ff_set_dimensions (TYPE_3__*,int,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                         AVPacket *avpkt)
@@ -58,9 +58,9 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         return AVERROR_INVALIDDATA;
     }
 
-    width  = bytestream2_get_be16u(&gb);
+    width = bytestream2_get_be16u(&gb);
     height = bytestream2_get_be16u(&gb);
-    bytestream2_skipu(&gb, 4); // obsolete X, Y offset
+    bytestream2_skipu(&gb, 4);
     bits_pixel = bytestream2_get_be16u(&gb);
 
     if (bits_pixel == 24)
@@ -92,7 +92,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
     while (bytestream2_get_bytes_left(&gb) > 0) {
         int i;
 
-        /* set buffer at the right position at every new line */
+
         if (x == avctx->width) {
             x = 0;
             out_buf = f->data[0] + f->linesize[0] * y++;
@@ -104,7 +104,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
             }
         }
 
-        /* read packet and copy data */
+
         count = bytestream2_get_byteu(&gb);
         if (!count || x + count > avctx->width) {
             av_log(avctx, AV_LOG_ERROR, "Invalid run length %d.\n", count);
@@ -117,7 +117,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                 AV_WB24(out_buf, pixel);
                 out_buf += 3;
             }
-        } else { // AV_PIX_FMT_GRAY8
+        } else {
             pixel = bytestream2_get_byte(&gb);
             for (i = 0; i < count; i++)
                 *out_buf++ = pixel;

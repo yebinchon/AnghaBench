@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ PKCS7 ;
 
-/* Variables and functions */
-#define  NID_pkcs7_data 133 
-#define  NID_pkcs7_digest 132 
-#define  NID_pkcs7_encrypted 131 
-#define  NID_pkcs7_enveloped 130 
-#define  NID_pkcs7_signed 129 
-#define  NID_pkcs7_signedAndEnveloped 128 
- int OBJ_obj2nid (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int type; } ;
+typedef TYPE_1__ PKCS7 ;
+ int OBJ_obj2nid (int ) ;
 
 __attribute__((used)) static int PKCS7_type_is_other(PKCS7 *p7)
 {
@@ -30,12 +22,12 @@ __attribute__((used)) static int PKCS7_type_is_other(PKCS7 *p7)
     int nid = OBJ_obj2nid(p7->type);
 
     switch (nid) {
-    case NID_pkcs7_data:
-    case NID_pkcs7_signed:
-    case NID_pkcs7_enveloped:
-    case NID_pkcs7_signedAndEnveloped:
-    case NID_pkcs7_digest:
-    case NID_pkcs7_encrypted:
+    case 133:
+    case 129:
+    case 130:
+    case 128:
+    case 132:
+    case 131:
         isOther = 0;
         break;
     default:

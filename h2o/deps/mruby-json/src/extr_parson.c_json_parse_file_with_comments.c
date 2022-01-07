@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Value ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * json_parse_string_with_comments (char*) ; 
- int /*<<< orphan*/  parson_free (char*) ; 
- char* read_file (char const*) ; 
+
+
+
+typedef int JSON_Value ;
+
+
+ int * json_parse_string_with_comments (char*) ;
+ int parson_free (char*) ;
+ char* read_file (char const*) ;
 
 JSON_Value * json_parse_file_with_comments(const char *filename) {
     char *file_contents = read_file(filename);
-    JSON_Value *output_value = NULL;
-    if (file_contents == NULL) {
-        return NULL;
+    JSON_Value *output_value = ((void*)0);
+    if (file_contents == ((void*)0)) {
+        return ((void*)0);
     }
     output_value = json_parse_string_with_comments(file_contents);
     parson_free(file_contents);

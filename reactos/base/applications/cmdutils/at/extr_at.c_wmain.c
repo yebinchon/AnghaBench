@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  scalar_t__ ULONG ;
-typedef  scalar_t__ UCHAR ;
-typedef  int* PWSTR ;
-typedef  int INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int AddJob (int*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int*) ; 
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int DeleteJob (int*,scalar_t__,scalar_t__) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FreeDaysOfWeekArray () ; 
- scalar_t__ GetCurrentDayOfMonth () ; 
- int /*<<< orphan*/  IDS_USAGE ; 
- int /*<<< orphan*/  InitDaysOfWeekArray () ; 
- scalar_t__ ParseDaysOfMonth (int*,scalar_t__*) ; 
- scalar_t__ ParseDaysOfWeek (int*,scalar_t__*) ; 
- scalar_t__ ParseId (int*,scalar_t__*) ; 
- scalar_t__ ParseTime (int*,scalar_t__*,scalar_t__*) ; 
- int PrintAllJobs (int*) ; 
- int PrintJobDetails (int*,scalar_t__) ; 
- int /*<<< orphan*/  StdOut ; 
- scalar_t__ TRUE ; 
- scalar_t__ _wcsicmp (int*,char*) ; 
- scalar_t__ _wcsnicmp (int*,char*,int) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ ULONG ;
+typedef scalar_t__ UCHAR ;
+typedef int* PWSTR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int AddJob (int*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int*) ;
+ int ConInitStdStreams () ;
+ int ConResPuts (int ,int ) ;
+ int DeleteJob (int*,scalar_t__,scalar_t__) ;
+ scalar_t__ FALSE ;
+ int FreeDaysOfWeekArray () ;
+ scalar_t__ GetCurrentDayOfMonth () ;
+ int IDS_USAGE ;
+ int InitDaysOfWeekArray () ;
+ scalar_t__ ParseDaysOfMonth (int*,scalar_t__*) ;
+ scalar_t__ ParseDaysOfWeek (int*,scalar_t__*) ;
+ scalar_t__ ParseId (int*,scalar_t__*) ;
+ scalar_t__ ParseTime (int*,scalar_t__*,scalar_t__*) ;
+ int PrintAllJobs (int*) ;
+ int PrintJobDetails (int*,scalar_t__) ;
+ int StdOut ;
+ scalar_t__ TRUE ;
+ scalar_t__ _wcsicmp (int*,char*) ;
+ scalar_t__ _wcsnicmp (int*,char*,int) ;
 
 int wmain(int argc, WCHAR **argv)
 {
-    PWSTR pszComputerName = NULL;
-    PWSTR pszCommand = NULL;
+    PWSTR pszComputerName = ((void*)0);
+    PWSTR pszCommand = ((void*)0);
     ULONG ulJobId = (ULONG)-1;
     ULONG ulJobHour = (ULONG)-1;
     ULONG ulJobMinute = (ULONG)-1;
@@ -53,13 +53,13 @@ int wmain(int argc, WCHAR **argv)
     INT nResult = 0;
     INT i, minIdx;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
     if (!InitDaysOfWeekArray())
         return 1;
 
-    /* Parse the computer name */
+
     i = 1;
     minIdx = 1;
     if (i < argc &&
@@ -71,7 +71,7 @@ int wmain(int argc, WCHAR **argv)
         minIdx++;
     }
 
-    /* Parse the time or job id */
+
     if (i < argc && argv[i][0] != L'/')
     {
         if (ParseTime(argv[i], &ulJobHour, &ulJobMinute))
@@ -86,7 +86,7 @@ int wmain(int argc, WCHAR **argv)
         }
     }
 
-    /* Parse the options */
+
     for (; i < argc; i++)
     {
         if (argv[i][0] == L'/')
@@ -139,7 +139,7 @@ int wmain(int argc, WCHAR **argv)
         }
     }
 
-    /* Parse the command */
+
     if (argc > minIdx && argv[argc - 1][0] != L'/')
     {
         pszCommand = argv[argc - 1];
@@ -147,13 +147,13 @@ int wmain(int argc, WCHAR **argv)
 
     if (bDeleteJob == TRUE)
     {
-        /* Check for invalid options or arguments */
+
         if (bInteractiveJob == TRUE ||
             ulJobHour != (ULONG)-1 ||
             ulJobMinute != (ULONG)-1 ||
             ulDaysOfMonth != 0 ||
             ucDaysOfWeek != 0 ||
-            pszCommand != NULL)
+            pszCommand != ((void*)0))
         {
             bPrintUsage = TRUE;
             nResult = 1;
@@ -168,9 +168,9 @@ int wmain(int argc, WCHAR **argv)
     {
         if (ulJobHour != (ULONG)-1 && ulJobMinute != (ULONG)-1)
         {
-            /* Check for invalid options or arguments */
+
             if (bForceDelete == TRUE ||
-                pszCommand == NULL)
+                pszCommand == ((void*)0))
             {
                 bPrintUsage = TRUE;
                 nResult = 1;
@@ -188,12 +188,12 @@ int wmain(int argc, WCHAR **argv)
         }
         else
         {
-            /* Check for invalid options or arguments */
+
             if (bForceDelete == TRUE ||
                 bInteractiveJob == TRUE ||
                 ulDaysOfMonth != 0 ||
                 ucDaysOfWeek != 0 ||
-                pszCommand != NULL)
+                pszCommand != ((void*)0))
             {
                 bPrintUsage = TRUE;
                 nResult = 1;

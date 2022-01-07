@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  zfree; scalar_t__ opaque; int /*<<< orphan*/  zalloc; } ;
-typedef  TYPE_1__ z_stream ;
-typedef  scalar_t__ voidpf ;
-typedef  int uInt ;
-typedef  int /*<<< orphan*/  inflate_huft ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int inflate_trees_fixed (int*,int*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,TYPE_1__*) ; 
- int /*<<< orphan*/  maketree (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  zcalloc ; 
- int /*<<< orphan*/  zcfree ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int zfree; scalar_t__ opaque; int zalloc; } ;
+typedef TYPE_1__ z_stream ;
+typedef scalar_t__ voidpf ;
+typedef int uInt ;
+typedef int inflate_huft ;
+
+
+ int fprintf (int ,char*,int) ;
+ int inflate_trees_fixed (int*,int*,int **,int **,TYPE_1__*) ;
+ int maketree (int,int *) ;
+ int printf (char*,...) ;
+ int puts (char*) ;
+ int stderr ;
+ int zcalloc ;
+ int zcfree ;
 
 void main(void)
 {

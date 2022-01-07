@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct vfio_ccw_private {struct subchannel* sch; } ;
-struct TYPE_4__ {int /*<<< orphan*/  actl; } ;
+struct TYPE_4__ {int actl; } ;
 struct TYPE_5__ {TYPE_1__ cmd; } ;
 struct TYPE_6__ {TYPE_2__ scsw; } ;
-struct subchannel {int /*<<< orphan*/  lock; TYPE_3__ schib; int /*<<< orphan*/  schid; int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  ccode ;
+struct subchannel {int lock; TYPE_3__ schib; int schid; int dev; } ;
+typedef int ccode ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  SCSW_ACTL_CLEAR_PEND ; 
- int /*<<< orphan*/  VFIO_CCW_HEX_EVENT (int,int*,int) ; 
- int /*<<< orphan*/  VFIO_CCW_TRACE_EVENT (int,char*) ; 
- int csch (int /*<<< orphan*/ ) ; 
- char* dev_name (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
+
+ int ENODEV ;
+ int SCSW_ACTL_CLEAR_PEND ;
+ int VFIO_CCW_HEX_EVENT (int,int*,int) ;
+ int VFIO_CCW_TRACE_EVENT (int,char*) ;
+ int csch (int ) ;
+ char* dev_name (int *) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
 
 __attribute__((used)) static int fsm_do_clear(struct vfio_ccw_private *private)
 {
-	struct subchannel *sch;
-	unsigned long flags;
-	int ccode;
-	int ret;
+ struct subchannel *sch;
+ unsigned long flags;
+ int ccode;
+ int ret;
 
-	sch = private->sch;
+ sch = private->sch;
 
-	spin_lock_irqsave(sch->lock, flags);
+ spin_lock_irqsave(sch->lock, flags);
 
-	VFIO_CCW_TRACE_EVENT(2, "clearIO");
-	VFIO_CCW_TRACE_EVENT(2, dev_name(&sch->dev));
+ VFIO_CCW_TRACE_EVENT(2, "clearIO");
+ VFIO_CCW_TRACE_EVENT(2, dev_name(&sch->dev));
 
-	/* Issue "Clear Subchannel" */
-	ccode = csch(sch->schid);
 
-	VFIO_CCW_HEX_EVENT(2, &ccode, sizeof(ccode));
+ ccode = csch(sch->schid);
 
-	switch (ccode) {
-	case 0:
-		/*
-		 * Initialize device status information
-		 */
-		sch->schib.scsw.cmd.actl = SCSW_ACTL_CLEAR_PEND;
-		/* TODO: check what else we might need to clear */
-		ret = 0;
-		break;
-	case 3:		/* Device not operational */
-		ret = -ENODEV;
-		break;
-	default:
-		ret = ccode;
-	}
-	spin_unlock_irqrestore(sch->lock, flags);
-	return ret;
+ VFIO_CCW_HEX_EVENT(2, &ccode, sizeof(ccode));
+
+ switch (ccode) {
+ case 0:
+
+
+
+  sch->schib.scsw.cmd.actl = SCSW_ACTL_CLEAR_PEND;
+
+  ret = 0;
+  break;
+ case 3:
+  ret = -ENODEV;
+  break;
+ default:
+  ret = ccode;
+ }
+ spin_unlock_irqrestore(sch->lock, flags);
+ return ret;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {scalar_t__ state; int len_aad; int len_cipher; scalar_t__ buffer_used; int /*<<< orphan*/  Y; } ;
-typedef  TYPE_1__ ghash_ctx ;
 
-/* Variables and functions */
- scalar_t__ STATE_AAD ; 
- scalar_t__ STATE_CIPHER ; 
- scalar_t__ STATE_INVALID ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cf_gf128_tobytes_be (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghash_add (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ghash_add_pad (TYPE_1__*) ; 
- int /*<<< orphan*/  write64_be (int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {scalar_t__ state; int len_aad; int len_cipher; scalar_t__ buffer_used; int Y; } ;
+typedef TYPE_1__ ghash_ctx ;
+
+
+ scalar_t__ STATE_AAD ;
+ scalar_t__ STATE_CIPHER ;
+ scalar_t__ STATE_INVALID ;
+ int assert (int) ;
+ int cf_gf128_tobytes_be (int ,int *) ;
+ int ghash_add (TYPE_1__*,int *,int) ;
+ int ghash_add_pad (TYPE_1__*) ;
+ int write64_be (int,int *) ;
 
 __attribute__((used)) static void ghash_final(ghash_ctx *ctx, uint8_t out[16])
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void ghash_final(ghash_ctx *ctx, uint8_t out[16])
     ctx->state = STATE_INVALID;
   }
 
-  /* Add len(A) || len(C) */
+
   write64_be(ctx->len_aad * 8, lenbuf);
   ghash_add(ctx, lenbuf, sizeof lenbuf);
 

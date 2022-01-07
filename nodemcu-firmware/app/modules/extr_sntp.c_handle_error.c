@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ntp_err_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ntp_err_t ;
+typedef int lua_State ;
 struct TYPE_2__ {scalar_t__ err_cb_ref; } ;
 
-/* Variables and functions */
- scalar_t__ LUA_NOREF ; 
- scalar_t__ LUA_REFNIL ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  cleanup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  sntp_dbg (char*) ; 
- TYPE_1__* state ; 
+
+ scalar_t__ LUA_NOREF ;
+ scalar_t__ LUA_REFNIL ;
+ int LUA_REGISTRYINDEX ;
+ int cleanup (int *) ;
+ int lua_call (int *,int,int ) ;
+ int lua_pushinteger (int *,int ) ;
+ int lua_pushstring (int *,char const*) ;
+ int lua_rawgeti (int *,int ,scalar_t__) ;
+ int sntp_dbg (char*) ;
+ TYPE_1__* state ;
 
 __attribute__((used)) static void handle_error (lua_State *L, ntp_err_t err, const char *msg)
 {

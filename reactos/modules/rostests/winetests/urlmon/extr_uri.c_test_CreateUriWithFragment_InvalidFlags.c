@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ expected; int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  scalar_t__ HRESULT ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  http_urlW ; 
- TYPE_1__* invalid_flag_tests ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__,...) ; 
- scalar_t__ pCreateUriWithFragment (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ expected; int flags; } ;
+typedef int IUri ;
+typedef scalar_t__ HRESULT ;
+typedef size_t DWORD ;
+
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int http_urlW ;
+ TYPE_1__* invalid_flag_tests ;
+ int ok (int,char*,scalar_t__,...) ;
+ scalar_t__ pCreateUriWithFragment (int ,int *,int ,int ,int **) ;
 
 __attribute__((used)) static void test_CreateUriWithFragment_InvalidFlags(void) {
     DWORD i;
@@ -30,9 +30,9 @@ __attribute__((used)) static void test_CreateUriWithFragment_InvalidFlags(void) 
         HRESULT hr;
         IUri *uri = (void*) 0xdeadbeef;
 
-        hr = pCreateUriWithFragment(http_urlW, NULL, invalid_flag_tests[i].flags, 0, &uri);
+        hr = pCreateUriWithFragment(http_urlW, ((void*)0), invalid_flag_tests[i].flags, 0, &uri);
         ok(hr == invalid_flag_tests[i].expected, "Error: CreateUriWithFragment returned 0x%08x, expected 0x%08x. flags=0x%08x.\n",
             hr, invalid_flag_tests[i].expected, invalid_flag_tests[i].flags);
-        ok(uri == NULL, "Error: Expected uri to be NULL, but was %p instead.\n", uri);
+        ok(uri == ((void*)0), "Error: Expected uri to be NULL, but was %p instead.\n", uri);
     }
 }

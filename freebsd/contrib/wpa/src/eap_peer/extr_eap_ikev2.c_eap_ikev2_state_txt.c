@@ -1,37 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  DONE 132 
-#define  FAIL 131 
-#define  PROC_MSG 130 
-#define  WAIT_FRAG_ACK 129 
-#define  WAIT_START 128 
-
 __attribute__((used)) static const char * eap_ikev2_state_txt(int state)
 {
-	switch (state) {
-	case WAIT_START:
-		return "WAIT_START";
-	case PROC_MSG:
-		return "PROC_MSG";
-	case WAIT_FRAG_ACK:
-		return "WAIT_FRAG_ACK";
-	case DONE:
-		return "DONE";
-	case FAIL:
-		return "FAIL";
-	default:
-		return "?";
-	}
+ switch (state) {
+ case 128:
+  return "WAIT_START";
+ case 130:
+  return "PROC_MSG";
+ case 129:
+  return "WAIT_FRAG_ACK";
+ case 132:
+  return "DONE";
+ case 131:
+  return "FAIL";
+ default:
+  return "?";
+ }
 }

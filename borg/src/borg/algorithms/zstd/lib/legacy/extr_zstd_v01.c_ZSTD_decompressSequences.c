@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sequence ;
-typedef  int /*<<< orphan*/  seq_t ;
-struct TYPE_4__ {int prevOffset; int /*<<< orphan*/  DStream; int /*<<< orphan*/  stateML; int /*<<< orphan*/  stateOffb; int /*<<< orphan*/  stateLL; int /*<<< orphan*/  const* dumpsEnd; int /*<<< orphan*/  const* dumps; } ;
-typedef  TYPE_1__ seqState_t ;
-struct TYPE_5__ {scalar_t__ base; int /*<<< orphan*/ * OffTable; int /*<<< orphan*/ * MLTable; int /*<<< orphan*/ * LLTable; } ;
-typedef  TYPE_2__ dctx_t ;
-typedef  int /*<<< orphan*/  U32 ;
-typedef  int /*<<< orphan*/  const BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ FSE_DStream_completed ; 
- int /*<<< orphan*/  FSE_endOfDStream (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FSE_initDState (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t FSE_initDStream (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ FSE_isError (size_t) ; 
- scalar_t__ FSE_reloadDStream (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZSTD_decodeSequence (int /*<<< orphan*/ *,TYPE_1__*) ; 
- size_t ZSTD_execSequence (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int /*<<< orphan*/  const* const,int /*<<< orphan*/  const* const,int /*<<< orphan*/  const* const) ; 
- size_t ZSTDv01_decodeSeqHeaders (int*,int /*<<< orphan*/  const**,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ ZSTDv01_isError (size_t) ; 
- int /*<<< orphan*/  corruption_detected ; 
- int /*<<< orphan*/  dstSize_tooSmall ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sequence ;
+typedef int seq_t ;
+struct TYPE_4__ {int prevOffset; int DStream; int stateML; int stateOffb; int stateLL; int const* dumpsEnd; int const* dumps; } ;
+typedef TYPE_1__ seqState_t ;
+struct TYPE_5__ {scalar_t__ base; int * OffTable; int * MLTable; int * LLTable; } ;
+typedef TYPE_2__ dctx_t ;
+typedef int U32 ;
+typedef int const BYTE ;
+
+
+ size_t ERROR (int ) ;
+ scalar_t__ FSE_DStream_completed ;
+ int FSE_endOfDStream (int *) ;
+ int FSE_initDState (int *,int *,int *) ;
+ size_t FSE_initDStream (int *,int const*,int) ;
+ scalar_t__ FSE_isError (size_t) ;
+ scalar_t__ FSE_reloadDStream (int *) ;
+ int ZSTD_decodeSequence (int *,TYPE_1__*) ;
+ size_t ZSTD_execSequence (int const*,int ,int const**,int const* const,int const* const,int const* const) ;
+ size_t ZSTDv01_decodeSeqHeaders (int*,int const**,size_t*,int *,int *,int *,int const*,int) ;
+ scalar_t__ ZSTDv01_isError (size_t) ;
+ int corruption_detected ;
+ int dstSize_tooSmall ;
+ int memmove (int const*,int const*,size_t) ;
+ int memset (int *,int ,int) ;
 
 __attribute__((used)) static size_t ZSTD_decompressSequences(
                                void* ctx,
@@ -60,14 +60,14 @@ __attribute__((used)) static size_t ZSTD_decompressSequences(
     U32* DTableOffb = dctx->OffTable;
     BYTE* const base = (BYTE*) (dctx->base);
 
-    /* Build Decoding Tables */
+
     errorCode = ZSTDv01_decodeSeqHeaders(&nbSeq, &dumps, &dumpsLength,
                                       DTableLL, DTableML, DTableOffb,
                                       ip, iend-ip);
     if (ZSTDv01_isError(errorCode)) return errorCode;
     ip += errorCode;
 
-    /* Regen sequences */
+
     {
         seq_t sequence;
         seqState_t seqState;
@@ -92,11 +92,11 @@ __attribute__((used)) static size_t ZSTD_decompressSequences(
             op += oneSeqSize;
         }
 
-        /* check if reached exact end */
-        if ( !FSE_endOfDStream(&(seqState.DStream)) ) return ERROR(corruption_detected);   /* requested too much : data is corrupted */
-        if (nbSeq<0) return ERROR(corruption_detected);   /* requested too many sequences : data is corrupted */
 
-        /* last literal segment */
+        if ( !FSE_endOfDStream(&(seqState.DStream)) ) return ERROR(corruption_detected);
+        if (nbSeq<0) return ERROR(corruption_detected);
+
+
         {
             size_t lastLLSize = litEnd - litPtr;
             if (op+lastLLSize > oend) return ERROR(dstSize_tooSmall);

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const*,...) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+ int exit (int) ;
+ int fprintf (int ,char*,char const*,char const*,...) ;
+ int stderr ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 __attribute__((used)) static void test_compare(const char *in, const char *exp, const char *res)
 {
-    if (res == NULL)
+    if (res == ((void*)0))
     {
-        if (exp != NULL)
+        if (exp != ((void*)0))
             fprintf(stderr, "\"%s\" returned NULL, expected \"%s\"\n",
                     in, exp);
         else
@@ -29,7 +21,7 @@ __attribute__((used)) static void test_compare(const char *in, const char *exp, 
     }
     else
     {
-        if (exp == NULL)
+        if (exp == ((void*)0))
             fprintf(stderr, "\"%s\" returned \"%s\", expected NULL\n",
                     in, res);
         else

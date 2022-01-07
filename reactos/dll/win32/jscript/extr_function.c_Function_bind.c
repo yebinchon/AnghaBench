@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  FunctionInstance ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  JS_E_FUNCTION_EXPECTED ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  create_bind_function (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  debugstr_jsval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * function_this (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+typedef int FunctionInstance ;
+
+
+ int E_NOTIMPL ;
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int JS_E_FUNCTION_EXPECTED ;
+ int S_OK ;
+ int TRACE (char*) ;
+ int create_bind_function (int *,int *,int ,unsigned int,int *,int **) ;
+ int debugstr_jsval (int ) ;
+ int * function_this (int *) ;
+ int get_object (int ) ;
+ int is_object_instance (int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_obj (int *) ;
+ int throw_type_error (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT Function_bind(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
@@ -44,7 +44,7 @@ __attribute__((used)) static HRESULT Function_bind(script_ctx_t *ctx, vdisp_t *j
     TRACE("\n");
 
     if(!(function = function_this(jsthis)))
-        return throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_FUNCTION_EXPECTED, ((void*)0));
 
     if(argc < 1) {
         FIXME("no this argument\n");

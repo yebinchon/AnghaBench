@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_event_source ;
-typedef  int /*<<< orphan*/  sd_event ;
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPOLLIN ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  nspawn_dispatch_notify_fd ; 
- int sd_event_add_io (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sd_event_source_set_description (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int sd_event_source ;
+typedef int sd_event ;
+typedef int pid_t ;
+
+
+ int EPOLLIN ;
+ int log_error_errno (int,char*) ;
+ int nspawn_dispatch_notify_fd ;
+ int sd_event_add_io (int *,int **,int,int ,int ,int *) ;
+ int sd_event_source_set_description (int *,char*) ;
 
 __attribute__((used)) static int setup_sd_notify_parent(sd_event *event, int fd, pid_t *inner_child_pid, sd_event_source **notify_event_source) {
         int r;

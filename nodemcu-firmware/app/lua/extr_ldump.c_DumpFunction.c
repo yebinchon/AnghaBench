@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ strip; } ;
-struct TYPE_14__ {int /*<<< orphan*/  maxstacksize; int /*<<< orphan*/  is_vararg; int /*<<< orphan*/  numparams; int /*<<< orphan*/  nups; int /*<<< orphan*/  lastlinedefined; int /*<<< orphan*/  linedefined; int /*<<< orphan*/  const* source; } ;
-typedef  int /*<<< orphan*/  TString ;
-typedef  TYPE_1__ Proto ;
-typedef  TYPE_2__ DumpState ;
+struct TYPE_14__ {int maxstacksize; int is_vararg; int numparams; int nups; int lastlinedefined; int linedefined; int const* source; } ;
+typedef int TString ;
+typedef TYPE_1__ Proto ;
+typedef TYPE_2__ DumpState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DumpChar (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpCode (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpConstants (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpDebug (TYPE_1__ const*,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpInt (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  DumpString (int /*<<< orphan*/  const*,TYPE_2__*) ; 
+
+ int DumpChar (int ,TYPE_2__*) ;
+ int DumpCode (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpConstants (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpDebug (TYPE_1__ const*,TYPE_2__*) ;
+ int DumpInt (int ,TYPE_2__*) ;
+ int DumpString (int const*,TYPE_2__*) ;
 
 __attribute__((used)) static void DumpFunction(const Proto* f, const TString* p, DumpState* D)
 {
- DumpString((f->source==p || D->strip) ? NULL : f->source,D);
+ DumpString((f->source==p || D->strip) ? ((void*)0) : f->source,D);
  DumpInt(f->linedefined,D);
  DumpInt(f->lastlinedefined,D);
  DumpChar(f->nups,D);

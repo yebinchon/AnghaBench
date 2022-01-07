@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ pa_stream_state_t ;
-struct TYPE_3__ {int /*<<< orphan*/  mainloop; int /*<<< orphan*/  stream; } ;
-typedef  TYPE_1__ PulseData ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- scalar_t__ PA_STREAM_FAILED ; 
- scalar_t__ PA_STREAM_READY ; 
- scalar_t__ PA_STREAM_TERMINATED ; 
- scalar_t__ pa_stream_get_state (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pa_threaded_mainloop_wait (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ pa_stream_state_t ;
+struct TYPE_3__ {int mainloop; int stream; } ;
+typedef TYPE_1__ PulseData ;
+
+
+ int AVERROR_EXTERNAL ;
+ scalar_t__ PA_STREAM_FAILED ;
+ scalar_t__ PA_STREAM_READY ;
+ scalar_t__ PA_STREAM_TERMINATED ;
+ scalar_t__ pa_stream_get_state (int ) ;
+ int pa_threaded_mainloop_wait (int ) ;
 
 __attribute__((used)) static int pulse_stream_wait(PulseData *s)
 {

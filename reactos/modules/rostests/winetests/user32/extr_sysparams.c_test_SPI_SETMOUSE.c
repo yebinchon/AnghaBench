@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  req_change ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int req_change ;
 struct TYPE_4__ {int member_0; int member_1; } ;
-typedef  TYPE_1__ POINT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ POINT ;
+typedef int INT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  SPIF_UPDATEINIFILE ; 
- int /*<<< orphan*/  SPI_GETMOUSE ; 
- int /*<<< orphan*/  SPI_SETMOUSE ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SystemParametersInfoA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  run_spi_setmouse_test (int*,TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  test_error_msg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  trace (char*) ; 
 
-__attribute__((used)) static void test_SPI_SETMOUSE( void )                  /*      4 */
+ int GetLastError () ;
+ int SPIF_UPDATEINIFILE ;
+ int SPI_GETMOUSE ;
+ int SPI_SETMOUSE ;
+ int SetLastError (int) ;
+ int SystemParametersInfoA (int ,int ,int*,int ) ;
+ int ok (int ,char*,int ,int ) ;
+ int run_spi_setmouse_test (int*,TYPE_1__*,TYPE_1__*,int) ;
+ int test_error_msg (int ,char*) ;
+ int trace (char*) ;
+
+__attribute__((used)) static void test_SPI_SETMOUSE( void )
 {
     BOOL rc;
     INT old_mi[3];
 
-    /* win nt default values - 6, 10, 1 */
+
     INT curr_val[3] = {6, 10, 1};
 
-    /* requested and projected mouse movements */
-    POINT req_change[] =   { {6, 6}, { 7, 6}, { 8, 6}, {10, 10}, {11, 10}, {100, 100} };
+
+    POINT req_change[] = { {6, 6}, { 7, 6}, { 8, 6}, {10, 10}, {11, 10}, {100, 100} };
     POINT proj_change1[] = { {6, 6}, {14, 6}, {16, 6}, {20, 20}, {22, 20}, {200, 200} };
     POINT proj_change2[] = { {6, 6}, {14, 6}, {16, 6}, {20, 20}, {44, 20}, {400, 400} };
     POINT proj_change3[] = { {6, 6}, {14, 6}, {16, 6}, {20, 20}, {22, 20}, {200, 200} };
@@ -58,34 +58,34 @@ __attribute__((used)) static void test_SPI_SETMOUSE( void )                  /* 
 
     if (!run_spi_setmouse_test( curr_val, req_change, proj_change1, nchange )) return;
 
-    /* acceleration change */
+
     curr_val[2] = 2;
     run_spi_setmouse_test( curr_val, req_change, proj_change2, nchange );
 
-    /* acceleration change */
+
     curr_val[2] = 3;
     run_spi_setmouse_test( curr_val, req_change, proj_change3, nchange );
 
-    /* acceleration change */
+
     curr_val[2] = 0;
     run_spi_setmouse_test( curr_val, req_change, proj_change4, nchange );
 
-    /* threshold change */
+
     curr_val[2] = 1;
     curr_val[0] = 7;
     run_spi_setmouse_test( curr_val, req_change, proj_change5, nchange );
 
-    /* threshold change */
+
     curr_val[2] = 2;
     curr_val[0] = 6;
     curr_val[1] = 6;
     run_spi_setmouse_test( curr_val, req_change, proj_change6, nchange );
 
-    /* threshold change */
+
     curr_val[1] = 7;
     run_spi_setmouse_test( curr_val, req_change, proj_change7, nchange );
 
-    /* threshold change */
+
     curr_val[1] = 5;
     run_spi_setmouse_test( curr_val, req_change, proj_change8, nchange );
 

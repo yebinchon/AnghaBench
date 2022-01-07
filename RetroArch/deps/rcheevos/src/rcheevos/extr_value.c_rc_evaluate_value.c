@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {TYPE_2__* expressions; int /*<<< orphan*/  memrefs; } ;
-typedef  TYPE_1__ rc_value_t ;
-typedef  int /*<<< orphan*/  rc_peek_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {TYPE_2__* expressions; int memrefs; } ;
+typedef TYPE_1__ rc_value_t ;
+typedef int rc_peek_t ;
 struct TYPE_6__ {struct TYPE_6__* next; } ;
-typedef  TYPE_2__ rc_expression_t ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef TYPE_2__ rc_expression_t ;
+typedef int lua_State ;
 
-/* Variables and functions */
- unsigned int rc_evaluate_expression (TYPE_2__*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rc_update_memref_values (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+ unsigned int rc_evaluate_expression (TYPE_2__*,int ,void*,int *) ;
+ int rc_update_memref_values (int ,int ,void*) ;
 
 unsigned rc_evaluate_value(rc_value_t* self, rc_peek_t peek, void* ud, lua_State* L) {
   rc_expression_t* exp;

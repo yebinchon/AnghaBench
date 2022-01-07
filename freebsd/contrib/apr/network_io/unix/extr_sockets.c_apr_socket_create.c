@@ -1,100 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_status_t ;
-struct TYPE_5__ {int socketdes; int timeout; int /*<<< orphan*/  pool; scalar_t__ inherit; } ;
-typedef  TYPE_1__ apr_socket_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int APR_INET ; 
- int APR_INET6 ; 
-#define  APR_PROTO_SCTP 130 
-#define  APR_PROTO_TCP 129 
-#define  APR_PROTO_UDP 128 
- int /*<<< orphan*/  APR_SUCCESS ; 
- int APR_UNSPEC ; 
- int /*<<< orphan*/  EPROTONOSUPPORT ; 
- int FD_CLOEXEC ; 
- int /*<<< orphan*/  F_GETFD ; 
- int /*<<< orphan*/  F_SETFD ; 
- int IPPROTO_TCP ; 
- int IPPROTO_UDP ; 
- int SOCK_CLOEXEC ; 
- int /*<<< orphan*/  alloc_socket (TYPE_1__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_pool_cleanup_register (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int fcntl (int,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  set_socket_vars (TYPE_1__*,int,int,int) ; 
- void* socket (int,int,int) ; 
- int /*<<< orphan*/  socket_cleanup ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int apr_status_t ;
+struct TYPE_5__ {int socketdes; int timeout; int pool; scalar_t__ inherit; } ;
+typedef TYPE_1__ apr_socket_t ;
+typedef int apr_pool_t ;
+
+
+ int APR_INET ;
+ int APR_INET6 ;
+
+
+
+ int APR_SUCCESS ;
+ int APR_UNSPEC ;
+ int EPROTONOSUPPORT ;
+ int FD_CLOEXEC ;
+ int F_GETFD ;
+ int F_SETFD ;
+ int IPPROTO_TCP ;
+ int IPPROTO_UDP ;
+ int SOCK_CLOEXEC ;
+ int alloc_socket (TYPE_1__**,int *) ;
+ int apr_pool_cleanup_register (int ,void*,int ,int ) ;
+ int close (int) ;
+ int errno ;
+ int fcntl (int,int ,...) ;
+ int set_socket_vars (TYPE_1__*,int,int,int) ;
+ void* socket (int,int,int) ;
+ int socket_cleanup ;
 
 apr_status_t apr_socket_create(apr_socket_t **new, int ofamily, int type,
                                int protocol, apr_pool_t *cont)
 {
     int family = ofamily, flags = 0;
 
-#ifdef HAVE_SOCK_CLOEXEC
-    flags |= SOCK_CLOEXEC;
-#endif
+
+
+
 
     if (family == APR_UNSPEC) {
-#if APR_HAVE_IPV6
-        family = APR_INET6;
-#else
+
+
+
         family = APR_INET;
-#endif
+
     }
 
     alloc_socket(new, cont);
 
-#ifndef BEOS_R5
+
     (*new)->socketdes = socket(family, type|flags, protocol);
-#else
-    /* For some reason BeOS R5 has an unconventional protocol numbering,
-     * so we need to translate here. */
-    switch (protocol) {
-    case 0:
-        (*new)->socketdes = socket(family, type|flags, 0);
-        break;
-    case APR_PROTO_TCP:
-        (*new)->socketdes = socket(family, type|flags, IPPROTO_TCP);
-        break;
-    case APR_PROTO_UDP:
-        (*new)->socketdes = socket(family, type|flags, IPPROTO_UDP);
-        break;
-    case APR_PROTO_SCTP:
-    default:
-        errno = EPROTONOSUPPORT;
-        (*new)->socketdes = -1;
-        break;
-    }
-#endif /* BEOS_R5 */
-
-#if APR_HAVE_IPV6
-    if ((*new)->socketdes < 0 && ofamily == APR_UNSPEC) {
-        family = APR_INET;
-        (*new)->socketdes = socket(family, type|flags, protocol);
-    }
-#endif
-
     if ((*new)->socketdes < 0) {
         return errno;
     }
     set_socket_vars(*new, family, type, protocol);
 
-#ifndef HAVE_SOCK_CLOEXEC
+
     {
         int flags;
         apr_status_t rv;
@@ -114,7 +86,7 @@ apr_status_t apr_socket_create(apr_socket_t **new, int ofamily, int type,
             return rv;
         }
     }
-#endif
+
 
     (*new)->timeout = -1;
     (*new)->inherit = 0;

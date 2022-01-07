@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* iSelectedImage; void* iImage; } ;
-typedef  TYPE_1__* LPTVITEMW ;
-typedef  int /*<<< orphan*/ * LPITEMIDLIST ;
-typedef  int DWORD ;
+typedef TYPE_1__* LPTVITEMW ;
+typedef int * LPITEMIDLIST ;
+typedef int DWORD ;
 
-/* Variables and functions */
- void* GetIcon (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ILFree (int /*<<< orphan*/ *) ; 
- int SHGFI_OPENICON ; 
- int SHGFI_PIDL ; 
- int SHGFI_SMALLICON ; 
- int SHGFI_SYSICONINDEX ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/ * _ILCreateDesktop () ; 
+
+ void* GetIcon (int *,int) ;
+ int ILFree (int *) ;
+ int SHGFI_OPENICON ;
+ int SHGFI_PIDL ;
+ int SHGFI_SMALLICON ;
+ int SHGFI_SYSICONINDEX ;
+ int TRACE (char*,int *,TYPE_1__*) ;
+ int * _ILCreateDesktop () ;
 
 __attribute__((used)) static void GetNormalAndSelectedIcons(LPITEMIDLIST lpifq, LPTVITEMW lpTV_ITEM)
 {
-    LPITEMIDLIST pidlDesktop = NULL;
+    LPITEMIDLIST pidlDesktop = ((void*)0);
     DWORD flags;
 
     TRACE("%p %p\n",lpifq, lpTV_ITEM);

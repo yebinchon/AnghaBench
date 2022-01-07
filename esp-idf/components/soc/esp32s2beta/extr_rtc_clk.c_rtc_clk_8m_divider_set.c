@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLEAR_PERI_REG_MASK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_SET_FIELD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RTC_CNTL_CK8M_DIV_SEL ; 
- int /*<<< orphan*/  RTC_CNTL_CK8M_DIV_SEL_VLD ; 
- int /*<<< orphan*/  RTC_CNTL_CLK_CONF_REG ; 
- int /*<<< orphan*/  SET_PERI_REG_MASK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int CLEAR_PERI_REG_MASK (int ,int ) ;
+ int REG_SET_FIELD (int ,int ,int ) ;
+ int RTC_CNTL_CK8M_DIV_SEL ;
+ int RTC_CNTL_CK8M_DIV_SEL_VLD ;
+ int RTC_CNTL_CLK_CONF_REG ;
+ int SET_PERI_REG_MASK (int ,int ) ;
 
 void rtc_clk_8m_divider_set(uint32_t div)
 {

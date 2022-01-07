@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wc ;
-struct TYPE_4__ {int /*<<< orphan*/  lpszClassName; int /*<<< orphan*/  lpfnWndProc; int /*<<< orphan*/  hInstance; int /*<<< orphan*/  style; } ;
-typedef  TYPE_1__ WNDCLASSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CS_OWNDC ; 
- int /*<<< orphan*/  DefWindowProc ; 
- int /*<<< orphan*/  GetModuleHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOG_ERROR ; 
- int /*<<< orphan*/  RegisterClassA (TYPE_1__*) ; 
- int /*<<< orphan*/  blog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dummy_window_class ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int registered_dummy_window_class ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wc ;
+struct TYPE_4__ {int lpszClassName; int lpfnWndProc; int hInstance; int style; } ;
+typedef TYPE_1__ WNDCLASSA ;
+
+
+ int CS_OWNDC ;
+ int DefWindowProc ;
+ int GetModuleHandle (int *) ;
+ int LOG_ERROR ;
+ int RegisterClassA (TYPE_1__*) ;
+ int blog (int ,char*) ;
+ int dummy_window_class ;
+ int memset (TYPE_1__*,int ,int) ;
+ int registered_dummy_window_class ;
 
 __attribute__((used)) static bool gl_register_dummy_window_class(void)
 {
-	WNDCLASSA wc;
-	if (registered_dummy_window_class)
-		return true;
+ WNDCLASSA wc;
+ if (registered_dummy_window_class)
+  return 1;
 
-	memset(&wc, 0, sizeof(wc));
-	wc.style = CS_OWNDC;
-	wc.hInstance = GetModuleHandle(NULL);
-	wc.lpfnWndProc = DefWindowProc;
-	wc.lpszClassName = dummy_window_class;
+ memset(&wc, 0, sizeof(wc));
+ wc.style = CS_OWNDC;
+ wc.hInstance = GetModuleHandle(((void*)0));
+ wc.lpfnWndProc = DefWindowProc;
+ wc.lpszClassName = dummy_window_class;
 
-	if (!RegisterClassA(&wc)) {
-		blog(LOG_ERROR, "Could not create dummy window class");
-		return false;
-	}
+ if (!RegisterClassA(&wc)) {
+  blog(LOG_ERROR, "Could not create dummy window class");
+  return 0;
+ }
 
-	registered_dummy_window_class = true;
-	return true;
+ registered_dummy_window_class = 1;
+ return 1;
 }

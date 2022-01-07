@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- scalar_t__ arg_uid ; 
- scalar_t__ isempty (char const*) ; 
- char* strchr (char const*,char) ; 
- char* strdup (scalar_t__) ; 
- char* strndup (char const*,int) ; 
+ int EINVAL ;
+ int ENOMEM ;
+ scalar_t__ arg_uid ;
+ scalar_t__ isempty (char const*) ;
+ char* strchr (char const*,char) ;
+ char* strdup (scalar_t__) ;
+ char* strndup (char const*,int) ;
 
 __attribute__((used)) static int parse_machine_uid(const char *spec, const char **machine, char **uid) {
-        /*
-         * Whatever is specified in the spec takes priority over global arguments.
-         */
-        char *_uid = NULL;
-        const char *_machine = NULL;
+
+
+
+        char *_uid = ((void*)0);
+        const char *_machine = ((void*)0);
 
         if (spec) {
                 const char *at;
@@ -33,7 +25,7 @@ __attribute__((used)) static int parse_machine_uid(const char *spec, const char 
                 at = strchr(spec, '@');
                 if (at) {
                         if (at == spec)
-                                /* Do the same as ssh and refuse "@host". */
+
                                 return -EINVAL;
 
                         _machine = at + 1;

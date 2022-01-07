@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MCL_CURRENT ; 
- int MCL_FUTURE ; 
- int /*<<< orphan*/  assert (int) ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int disable_crc32 ; 
- int /*<<< orphan*/  dump_fields_str ; 
- int /*<<< orphan*/  dump_unimported_mode ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int index_mode ; 
- int max_memory ; 
- int /*<<< orphan*/  mlockall (int) ; 
- int /*<<< orphan*/  optarg ; 
- int repair_binlog_mode ; 
- int /*<<< orphan*/  stderr ; 
- int write_only ; 
+ int MCL_CURRENT ;
+ int MCL_FUTURE ;
+ int assert (int) ;
+ int atoi (int ) ;
+ int disable_crc32 ;
+ int dump_fields_str ;
+ int dump_unimported_mode ;
+ int fprintf (int ,char*) ;
+ int index_mode ;
+ int max_memory ;
+ int mlockall (int) ;
+ int optarg ;
+ int repair_binlog_mode ;
+ int stderr ;
+ int write_only ;
 
 int photo_parse_option (int val) {
   switch (val) {

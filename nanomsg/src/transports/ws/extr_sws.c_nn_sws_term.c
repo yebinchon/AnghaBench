@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nn_sws {int /*<<< orphan*/  fsm; int /*<<< orphan*/  handshaker; int /*<<< orphan*/  pipebase; int /*<<< orphan*/  inmsg_array; int /*<<< orphan*/  outmsg; int /*<<< orphan*/  done; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_SWS_STATE_IDLE ; 
- int /*<<< orphan*/  nn_assert_state (struct nn_sws*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_fsm_event_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_array_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_msg_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_pipebase_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_ws_handshake_term (int /*<<< orphan*/ *) ; 
+
+
+
+struct nn_sws {int fsm; int handshaker; int pipebase; int inmsg_array; int outmsg; int done; } ;
+
+
+ int NN_SWS_STATE_IDLE ;
+ int nn_assert_state (struct nn_sws*,int ) ;
+ int nn_fsm_event_term (int *) ;
+ int nn_fsm_term (int *) ;
+ int nn_msg_array_term (int *) ;
+ int nn_msg_term (int *) ;
+ int nn_pipebase_term (int *) ;
+ int nn_ws_handshake_term (int *) ;
 
 void nn_sws_term (struct nn_sws *self)
 {

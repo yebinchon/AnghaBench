@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  esp_http_client_handle_t ;
-struct TYPE_3__ {char* url; int /*<<< orphan*/  event_handler; } ;
-typedef  TYPE_1__ esp_http_client_config_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int MAX_HTTP_RECV_BUFFER ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  _http_event_handler ; 
- int /*<<< orphan*/  esp_err_to_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_cleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_close (int /*<<< orphan*/ ) ; 
- int esp_http_client_fetch_headers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_get_content_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_get_status_code (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_http_client_init (TYPE_1__*) ; 
- int /*<<< orphan*/  esp_http_client_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int esp_http_client_read (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int esp_http_client_handle_t ;
+struct TYPE_3__ {char* url; int event_handler; } ;
+typedef TYPE_1__ esp_http_client_config_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_LOGD (int ,char*,int) ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_LOGI (int ,char*,int ,int ) ;
+ int ESP_OK ;
+ int MAX_HTTP_RECV_BUFFER ;
+ int TAG ;
+ int _http_event_handler ;
+ int esp_err_to_name (int ) ;
+ int esp_http_client_cleanup (int ) ;
+ int esp_http_client_close (int ) ;
+ int esp_http_client_fetch_headers (int ) ;
+ int esp_http_client_get_content_length (int ) ;
+ int esp_http_client_get_status_code (int ) ;
+ int esp_http_client_init (TYPE_1__*) ;
+ int esp_http_client_open (int ,int ) ;
+ int esp_http_client_read (int ,char*,int) ;
+ int free (char*) ;
+ char* malloc (int) ;
 
 __attribute__((used)) static void http_perform_as_stream_reader(void)
 {
     char *buffer = malloc(MAX_HTTP_RECV_BUFFER + 1);
-    if (buffer == NULL) {
+    if (buffer == ((void*)0)) {
         ESP_LOGE(TAG, "Cannot malloc http receive buffer");
         return;
     }
@@ -54,7 +54,7 @@ __attribute__((used)) static void http_perform_as_stream_reader(void)
         free(buffer);
         return;
     }
-    int content_length =  esp_http_client_fetch_headers(client);
+    int content_length = esp_http_client_fetch_headers(client);
     int total_read_len = 0, read_len;
     if (total_read_len < content_length && content_length <= MAX_HTTP_RECV_BUFFER) {
         read_len = esp_http_client_read(client, buffer, content_length);

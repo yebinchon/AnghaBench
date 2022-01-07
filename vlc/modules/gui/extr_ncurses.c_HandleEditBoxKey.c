@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ intf_thread_t ;
+typedef TYPE_1__ intf_thread_t ;
 struct TYPE_7__ {char* search_chain; char* open_chain; void* box_type; } ;
-typedef  TYPE_2__ intf_sys_t ;
+typedef TYPE_2__ intf_sys_t ;
 
-/* Variables and functions */
- int BOX_OPEN ; 
- void* BOX_PLAYLIST ; 
- int BOX_SEARCH ; 
- int /*<<< orphan*/  ERR ; 
-#define  KEY_BACKSPACE 130 
-#define  KEY_CLEAR 129 
-#define  KEY_ENTER 128 
- int /*<<< orphan*/  OpenSelection (TYPE_1__*) ; 
- int /*<<< orphan*/  RemoveLastUTF8Entity (char*,size_t) ; 
- int /*<<< orphan*/  SearchPlaylist (TYPE_2__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  clear () ; 
- int /*<<< orphan*/  getch () ; 
- size_t strlen (char*) ; 
+
+ int BOX_OPEN ;
+ void* BOX_PLAYLIST ;
+ int BOX_SEARCH ;
+ int ERR ;
+
+
+
+ int OpenSelection (TYPE_1__*) ;
+ int RemoveLastUTF8Entity (char*,size_t) ;
+ int SearchPlaylist (TYPE_2__*) ;
+ int assert (int) ;
+ int clear () ;
+ int getch () ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static void HandleEditBoxKey(intf_thread_t *intf, int key, int box)
 {
@@ -44,10 +44,10 @@ __attribute__((used)) static void HandleEditBoxKey(intf_thread_t *intf, int key,
 
     switch(key)
     {
-    case 0x0c:  /* ^l */
-    case KEY_CLEAR:     clear(); return;
+    case 0x0c:
+    case 129: clear(); return;
 
-    case KEY_ENTER:
+    case 128:
     case '\r':
     case '\n':
         if (search)
@@ -58,26 +58,12 @@ __attribute__((used)) static void HandleEditBoxKey(intf_thread_t *intf, int key,
         sys->box_type = BOX_PLAYLIST;
         return;
 
-    case 0x1b: /* ESC */
-        /* Alt+key combinations return 2 keys in the terminal keyboard:
-         * ESC, and the 2nd key.
-         * If some other key is available immediately (where immediately
-         * means after getch() 1 second delay), that means that the
-         * ESC key was not pressed.
-         *
-         * man 3X curs_getch says:
-         *
-         * Use of the escape key by a programmer for a single
-         * character function is discouraged, as it will cause a delay
-         * of up to one second while the keypad code looks for a
-         * following function-key sequence.
-         *
-         */
+    case 0x1b:
         if (getch() == ERR)
             sys->box_type = BOX_PLAYLIST;
         return;
 
-    case KEY_BACKSPACE:
+    case 130:
     case 0x7f:
         RemoveLastUTF8Entity(str, len);
         break;

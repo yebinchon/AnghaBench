@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_12__ {int width; int height; } ;
-struct TYPE_10__ {int /*<<< orphan*/  table; } ;
-struct TYPE_9__ {int /*<<< orphan*/  (* bswap_buf ) (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,unsigned int) ;} ;
-struct TYPE_11__ {int last_dc; TYPE_8__* avctx; TYPE_2__ pre_vlc; int /*<<< orphan*/  pre_gb; int /*<<< orphan*/  const* bitstream_buffer; TYPE_1__ bbdsp; int /*<<< orphan*/  bitstream_buffer_size; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_3__ FourXContext ;
+struct TYPE_10__ {int table; } ;
+struct TYPE_9__ {int (* bswap_buf ) (int const*,int const*,unsigned int) ;} ;
+struct TYPE_11__ {int last_dc; TYPE_8__* avctx; TYPE_2__ pre_vlc; int pre_gb; int const* bitstream_buffer; TYPE_1__ bbdsp; int bitstream_buffer_size; int gb; } ;
+typedef TYPE_3__ FourXContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACDC_VLC_BITS ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RL32 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*,...) ; 
- int decode_i_mb (TYPE_3__*) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  idct_put (TYPE_3__*,int,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/ * read_huffman_tables (TYPE_3__*,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,unsigned int) ; 
+
+ int ACDC_VLC_BITS ;
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RL32 (int const*) ;
+ int ENOMEM ;
+ int av_assert0 (int) ;
+ int av_fast_padded_malloc (int const**,int *,unsigned int) ;
+ int av_log (TYPE_8__*,int ,char*,...) ;
+ int decode_i_mb (TYPE_3__*) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int idct_put (TYPE_3__*,int,int) ;
+ int init_get_bits (int *,int const*,int) ;
+ int * read_huffman_tables (TYPE_3__*,int const*,unsigned int) ;
+ int stub1 (int const*,int const*,unsigned int) ;
 
 __attribute__((used)) static int decode_i_frame(FourXContext *f, const uint8_t *buf, int length)
 {
     int x, y, ret;
-    const int width  = f->avctx->width;
+    const int width = f->avctx->width;
     const int height = f->avctx->height;
     const unsigned int bitstream_size = AV_RL32(buf);
     unsigned int prestream_size;
@@ -57,7 +57,7 @@ __attribute__((used)) static int decode_i_frame(FourXContext *f, const uint8_t *
     }
 
     prestream_size = 4 * AV_RL32(buf + bitstream_size + 4);
-    prestream      =             buf + bitstream_size + 12;
+    prestream = buf + bitstream_size + 12;
 
     if (prestream_size + bitstream_size + 12 != length
         || prestream_size > (1 << 26)) {

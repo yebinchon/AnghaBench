@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct RClass {int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_sym ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct RClass {int flags; } ;
+typedef int mrb_value ;
+typedef int mrb_sym ;
 struct TYPE_7__ {struct RClass* object_class; } ;
-typedef  TYPE_1__ mrb_state ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MRB_FL_CLASS_IS_INHERITED ; 
- int /*<<< orphan*/  mc_clear_by_class (TYPE_1__*,struct RClass*) ; 
- int /*<<< orphan*/  mrb_bob_init ; 
- int /*<<< orphan*/  mrb_func_basic_p (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_funcall_argv (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_intern_lit (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RClass*) ; 
+
+ int MRB_FL_CLASS_IS_INHERITED ;
+ int mc_clear_by_class (TYPE_1__*,struct RClass*) ;
+ int mrb_bob_init ;
+ int mrb_func_basic_p (TYPE_1__*,int ,int ,int ) ;
+ int mrb_funcall_argv (TYPE_1__*,int ,int ,int,int *) ;
+ int mrb_intern_lit (TYPE_1__*,char*) ;
+ int mrb_obj_value (struct RClass*) ;
 
 __attribute__((used)) static void
 mrb_class_inherited(mrb_state *mrb, struct RClass *super, struct RClass *klass)

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct instr_info {char* name; int length; } ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int D3DSPSM_NEG ; 
- int D3DSPSM_NONE ; 
- int D3DSP_SRCMOD_MASK ; 
- int D3DVS_ADDRESSMODE_MASK ; 
- int FALSE ; 
- int /*<<< orphan*/  add_modifier (char*,int) ; 
- int /*<<< orphan*/  add_register (char*,int,int,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+ int D3DSPSM_NEG ;
+ int D3DSPSM_NONE ;
+ int D3DSP_SRCMOD_MASK ;
+ int D3DVS_ADDRESSMODE_MASK ;
+ int FALSE ;
+ int add_modifier (char*,int) ;
+ int add_register (char*,int,int,int) ;
+ int sprintf (char*,char*,...) ;
 
 __attribute__((used)) static int instr_generic(const struct instr_info *info, DWORD **ptr, char *buffer, BOOL ps)
 {

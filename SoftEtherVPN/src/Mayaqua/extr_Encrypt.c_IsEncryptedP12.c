@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
-typedef  int /*<<< orphan*/  P12 ;
-typedef  int /*<<< orphan*/  K ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeK (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeX (int /*<<< orphan*/ *) ; 
- int ParseP12 (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int X ;
+typedef int P12 ;
+typedef int K ;
+
+
+ int FreeK (int *) ;
+ int FreeX (int *) ;
+ int ParseP12 (int *,int **,int **,int *) ;
 
 bool IsEncryptedP12(P12 *p12)
 {
-	X *x;
-	K *k;
-	// Validate arguments
-	if (p12 == NULL)
-	{
-		return false;
-	}
+ X *x;
+ K *k;
 
-	if (ParseP12(p12, &x, &k, NULL) == true)
-	{
-		FreeX(x);
-		FreeK(k);
-		return false;
-	}
+ if (p12 == ((void*)0))
+ {
+  return 0;
+ }
 
-	return true;
+ if (ParseP12(p12, &x, &k, ((void*)0)) == 1)
+ {
+  FreeX(x);
+  FreeK(k);
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {unsigned char* buf; } ;
-typedef  TYPE_1__ loopargs_t ;
+typedef TYPE_1__ loopargs_t ;
 
-/* Variables and functions */
- scalar_t__ COND (int /*<<< orphan*/ ) ; 
- size_t D_RAND ; 
- int /*<<< orphan*/  RAND_bytes (unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ ** c ; 
- int /*<<< orphan*/ * lengths ; 
- size_t testnum ; 
+
+ scalar_t__ COND (int ) ;
+ size_t D_RAND ;
+ int RAND_bytes (unsigned char*,int ) ;
+ int ** c ;
+ int * lengths ;
+ size_t testnum ;
 
 __attribute__((used)) static int RAND_bytes_loop(void *args)
 {

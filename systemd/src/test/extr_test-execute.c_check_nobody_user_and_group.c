@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct passwd {scalar_t__ pw_uid; scalar_t__ pw_gid; int /*<<< orphan*/  pw_name; } ;
-struct group {scalar_t__ gr_gid; int /*<<< orphan*/  gr_name; } ;
 
-/* Variables and functions */
- scalar_t__ GID_NOBODY ; 
- int /*<<< orphan*/  NOBODY_GROUP_NAME ; 
- int /*<<< orphan*/  NOBODY_USER_NAME ; 
- scalar_t__ UID_NOBODY ; 
- struct group* getgrgid (scalar_t__) ; 
- struct group* getgrnam (int /*<<< orphan*/ ) ; 
- struct passwd* getpwnam (int /*<<< orphan*/ ) ; 
- struct passwd* getpwuid (scalar_t__) ; 
- int /*<<< orphan*/  streq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  synthesize_nobody () ; 
+
+
+
+struct passwd {scalar_t__ pw_uid; scalar_t__ pw_gid; int pw_name; } ;
+struct group {scalar_t__ gr_gid; int gr_name; } ;
+
+
+ scalar_t__ GID_NOBODY ;
+ int NOBODY_GROUP_NAME ;
+ int NOBODY_USER_NAME ;
+ scalar_t__ UID_NOBODY ;
+ struct group* getgrgid (scalar_t__) ;
+ struct group* getgrnam (int ) ;
+ struct passwd* getpwnam (int ) ;
+ struct passwd* getpwuid (scalar_t__) ;
+ int streq (int ,int ) ;
+ int synthesize_nobody () ;
 
 __attribute__((used)) static bool check_nobody_user_and_group(void) {
         static int cache = -1;
@@ -63,9 +63,9 @@ __attribute__((used)) static bool check_nobody_user_and_group(void) {
                 goto invalid;
 
         cache = 1;
-        return true;
+        return 1;
 
 invalid:
         cache = 0;
-        return false;
+        return 0;
 }

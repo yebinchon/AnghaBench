@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mem_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mem_info__put (struct mem_info*) ; 
+
+ int mem_info__put (struct mem_info*) ;
 
 __attribute__((used)) static inline void __mem_info__zput(struct mem_info **mi)
 {
-	mem_info__put(*mi);
-	*mi = NULL;
+ mem_info__put(*mi);
+ *mi = ((void*)0);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* filename; int kind; char const* data; char const* encoder; char const* name; char const* type; scalar_t__ headers; struct TYPE_4__* prev; } ;
-typedef  TYPE_1__ tool_mime ;
+typedef TYPE_1__ tool_mime ;
 struct GlobalConfig {int dummy; } ;
-typedef  scalar_t__ CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
+typedef scalar_t__ CURLcode ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CODE0 (char*) ; 
- int /*<<< orphan*/  CODE1 (char*,...) ; 
- int /*<<< orphan*/  CODE2 (char*,int,...) ; 
- scalar_t__ CURLE_OK ; 
- int /*<<< orphan*/  CURL_ZERO_TERMINATED ; 
- int /*<<< orphan*/  Curl_safefree (char*) ; 
- int /*<<< orphan*/  NULL_CHECK (char*) ; 
-#define  TOOLMIME_DATA 133 
-#define  TOOLMIME_FILE 132 
-#define  TOOLMIME_FILEDATA 131 
-#define  TOOLMIME_PARTS 130 
-#define  TOOLMIME_STDIN 129 
-#define  TOOLMIME_STDINDATA 128 
- char* c_escape (char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ convert_to_network (char*,size_t) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ libcurl_generate_mime (int /*<<< orphan*/ *,struct GlobalConfig*,TYPE_1__*,int*) ; 
- scalar_t__ libcurl_generate_slist (scalar_t__,int*) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- size_t strlen (char const*) ; 
+
+ int CODE0 (char*) ;
+ int CODE1 (char*,...) ;
+ int CODE2 (char*,int,...) ;
+ scalar_t__ CURLE_OK ;
+ int CURL_ZERO_TERMINATED ;
+ int Curl_safefree (char*) ;
+ int NULL_CHECK (char*) ;
+
+
+
+
+
+
+ char* c_escape (char const*,int ) ;
+ scalar_t__ convert_to_network (char*,size_t) ;
+ int free (char*) ;
+ scalar_t__ libcurl_generate_mime (int *,struct GlobalConfig*,TYPE_1__*,int*) ;
+ scalar_t__ libcurl_generate_slist (scalar_t__,int*) ;
+ char* malloc (size_t) ;
+ int memcpy (char*,char const*,size_t) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static CURLcode libcurl_generate_mime_part(CURL *curl,
                                            struct GlobalConfig *config,
@@ -47,49 +47,32 @@ __attribute__((used)) static CURLcode libcurl_generate_mime_part(CURL *curl,
 {
   CURLcode ret = CURLE_OK;
   int submimeno = 0;
-  char *escaped = NULL;
-  const char *data = NULL;
+  char *escaped = ((void*)0);
+  const char *data = ((void*)0);
   const char *filename = part->filename;
 
-  /* Parts are linked in reverse order. */
+
   if(part->prev) {
     ret = libcurl_generate_mime_part(curl, config, part->prev, mimeno);
     if(ret)
       return ret;
   }
 
-  /* Create the part. */
+
   CODE2("part%d = curl_mime_addpart(mime%d);", mimeno, mimeno);
 
   switch(part->kind) {
-  case TOOLMIME_PARTS:
+  case 130:
     ret = libcurl_generate_mime(curl, config, part, &submimeno);
     if(!ret) {
       CODE2("curl_mime_subparts(part%d, mime%d);", mimeno, submimeno);
-      CODE1("mime%d = NULL;", submimeno);   /* Avoid freeing in CLEAN. */
+      CODE1("mime%d = NULL;", submimeno);
     }
     break;
 
-  case TOOLMIME_DATA:
-#ifdef CURL_DOES_CONVERSIONS
-    /* Data will be set in ASCII, thus issue a comment with clear text. */
-    escaped = c_escape(part->data, CURL_ZERO_TERMINATED);
-    NULL_CHECK(escaped);
-    CODE1("/* \"%s\" */", escaped);
-
-    /* Our data is always textual: convert it to ASCII. */
-    {
-      size_t size = strlen(part->data);
-      char *cp = malloc(size + 1);
-
-      NULL_CHECK(cp);
-      memcpy(cp, part->data, size + 1);
-      ret = convert_to_network(cp, size);
-      data = cp;
-    }
-#else
+  case 133:
     data = part->data;
-#endif
+
     if(!ret) {
       Curl_safefree(escaped);
       escaped = c_escape(data, CURL_ZERO_TERMINATED);
@@ -99,28 +82,28 @@ __attribute__((used)) static CURLcode libcurl_generate_mime_part(CURL *curl,
     }
     break;
 
-  case TOOLMIME_FILE:
-  case TOOLMIME_FILEDATA:
+  case 132:
+  case 131:
     escaped = c_escape(part->data, CURL_ZERO_TERMINATED);
     NULL_CHECK(escaped);
     CODE2("curl_mime_filedata(part%d, \"%s\");", mimeno, escaped);
-    if(part->kind == TOOLMIME_FILEDATA && !filename) {
+    if(part->kind == 131 && !filename) {
       CODE1("curl_mime_filename(part%d, NULL);", mimeno);
     }
     break;
 
-  case TOOLMIME_STDIN:
+  case 129:
     if(!filename)
       filename = "-";
-    /* FALLTHROUGH */
-  case TOOLMIME_STDINDATA:
-    /* Can only be reading stdin in the current context. */
+
+  case 128:
+
     CODE1("curl_mime_data_cb(part%d, -1, (curl_read_callback) fread, \\",
           mimeno);
     CODE0("                  (curl_seek_callback) fseek, NULL, stdin);");
     break;
   default:
-    /* Other cases not possible in this context. */
+
     break;
   }
 
@@ -158,15 +141,15 @@ __attribute__((used)) static CURLcode libcurl_generate_mime_part(CURL *curl,
     ret = libcurl_generate_slist(part->headers, &slistno);
     if(!ret) {
       CODE2("curl_mime_headers(part%d, slist%d, 1);", mimeno, slistno);
-      CODE1("slist%d = NULL;", slistno); /* Prevent CLEANing. */
+      CODE1("slist%d = NULL;", slistno);
     }
   }
 
 nomem:
-#ifdef CURL_DOES_CONVERSIONS
-  if(data)
-    free((char *) data);
-#endif
+
+
+
+
 
   Curl_safefree(escaped);
   return ret;

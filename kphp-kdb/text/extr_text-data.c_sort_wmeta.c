@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hash_t ;
 
-/* Variables and functions */
- int* QL ; 
- unsigned char** QW_mfile ; 
- int* QW_msize ; 
- int /*<<< orphan*/ * QWords ; 
+
+
+
+typedef int hash_t ;
+
+
+ int* QL ;
+ unsigned char** QW_mfile ;
+ int* QW_msize ;
+ int * QWords ;
 
 __attribute__((used)) static void sort_wmeta (int a, int b) {
   if (a >= b) {

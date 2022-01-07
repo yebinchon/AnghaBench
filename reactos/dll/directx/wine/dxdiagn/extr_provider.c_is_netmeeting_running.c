@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TRUE ; 
- size_t* enumerate_processes (size_t*) ; 
- scalar_t__ get_process_name_from_pid (size_t,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmpW (char const*,char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef size_t DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,size_t*) ;
+ int MAX_PATH ;
+ int TRUE ;
+ size_t* enumerate_processes (size_t*) ;
+ scalar_t__ get_process_name_from_pid (size_t,char*,int ) ;
+ int lstrcmpW (char const*,char*) ;
 
 __attribute__((used)) static BOOL is_netmeeting_running(void)
 {

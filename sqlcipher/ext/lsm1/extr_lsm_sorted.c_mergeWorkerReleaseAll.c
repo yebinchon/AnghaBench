@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int nHier; scalar_t__* apHier; } ;
 struct TYPE_7__ {TYPE_2__ hier; TYPE_1__* pDb; scalar_t__ pPage; } ;
-struct TYPE_5__ {int /*<<< orphan*/  pEnv; } ;
-typedef  TYPE_3__ MergeWorker ;
+struct TYPE_5__ {int pEnv; } ;
+typedef TYPE_3__ MergeWorker ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lsmFree (int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  lsmFsPageRelease (scalar_t__) ; 
+
+ int lsmFree (int ,scalar_t__*) ;
+ int lsmFsPageRelease (scalar_t__) ;
 
 __attribute__((used)) static void mergeWorkerReleaseAll(MergeWorker *pMW){
   int i;

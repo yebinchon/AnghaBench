@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct amdvi_softc {struct amdvi_ctrl* ctrl; } ;
 struct TYPE_2__ {int base; int size; } ;
 struct amdvi_ctrl {TYPE_1__ dte; } ;
 
-/* Variables and functions */
- int PAGE_SIZE ; 
- int /*<<< orphan*/  amdvi_dte ; 
- int vtophys (int /*<<< orphan*/ ) ; 
+
+ int PAGE_SIZE ;
+ int amdvi_dte ;
+ int vtophys (int ) ;
 
 __attribute__((used)) static int
 amdvi_init_dte(struct amdvi_softc *softc)
 {
-	struct amdvi_ctrl *ctrl;
+ struct amdvi_ctrl *ctrl;
 
-	ctrl = softc->ctrl;
-	ctrl->dte.base = vtophys(amdvi_dte) / PAGE_SIZE;
-	ctrl->dte.size = 0x1FF;		/* 2MB device table. */
+ ctrl = softc->ctrl;
+ ctrl->dte.base = vtophys(amdvi_dte) / PAGE_SIZE;
+ ctrl->dte.size = 0x1FF;
 
-	return (0);
+ return (0);
 }

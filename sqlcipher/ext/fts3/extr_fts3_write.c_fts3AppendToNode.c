@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int n; char* a; int nAlloc; } ;
-typedef  TYPE_1__ Blob ;
+typedef TYPE_1__ Blob ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  blobGrowBuffer (TYPE_1__*,int,int*) ; 
- int fts3PrefixCompress (char*,int,char const*,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- scalar_t__ sqlite3Fts3PutVarint (char*,int) ; 
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ int blobGrowBuffer (TYPE_1__*,int,int*) ;
+ int fts3PrefixCompress (char*,int,char const*,int) ;
+ int memcpy (char*,char const*,int) ;
+ scalar_t__ sqlite3Fts3PutVarint (char*,int) ;
 
 __attribute__((used)) static int fts3AppendToNode(
-  Blob *pNode,                    /* Current node image to append to */
-  Blob *pPrev,                    /* Buffer containing previous term written */
-  const char *zTerm,              /* New term to write */
-  int nTerm,                      /* Size of zTerm in bytes */
-  const char *aDoclist,           /* Doclist (or NULL) to write */
-  int nDoclist                    /* Size of aDoclist in bytes */ 
+  Blob *pNode,
+  Blob *pPrev,
+  const char *zTerm,
+  int nTerm,
+  const char *aDoclist,
+  int nDoclist
 ){
-  int rc = SQLITE_OK;             /* Return code */
-  int bFirst = (pPrev->n==0);     /* True if this is the first term written */
-  int nPrefix;                    /* Size of term prefix in bytes */
-  int nSuffix;                    /* Size of term suffix in bytes */
+  int rc = SQLITE_OK;
+  int bFirst = (pPrev->n==0);
+  int nPrefix;
+  int nSuffix;
 
-  /* Node must have already been started. There must be a doclist for a
-  ** leaf node, and there must not be a doclist for an internal node.  */
+
+
   assert( pNode->n>0 );
   assert( (pNode->a[0]=='\0')==(aDoclist!=0) );
 

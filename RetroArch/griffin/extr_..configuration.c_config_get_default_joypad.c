@@ -1,96 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum joypad_driver_enum { ____Placeholder_joypad_driver_enum } joypad_driver_enum ;
 
-/* Variables and functions */
-#define  JOYPAD_ANDROID 148 
-#define  JOYPAD_CTR 147 
- int JOYPAD_DEFAULT_DRIVER ; 
-#define  JOYPAD_DINPUT 146 
-#define  JOYPAD_DOS 145 
-#define  JOYPAD_GX 144 
-#define  JOYPAD_HID 143 
-#define  JOYPAD_LINUXRAW 142 
-#define  JOYPAD_MFI 141 
-#define  JOYPAD_NULL 140 
-#define  JOYPAD_PS2 139 
-#define  JOYPAD_PS3 138 
-#define  JOYPAD_PS4 137 
-#define  JOYPAD_PSP 136 
-#define  JOYPAD_QNX 135 
-#define  JOYPAD_RWEBPAD 134 
-#define  JOYPAD_SDL 133 
-#define  JOYPAD_SWITCH 132 
-#define  JOYPAD_UDEV 131 
-#define  JOYPAD_WIIU 130 
-#define  JOYPAD_XDK 129 
-#define  JOYPAD_XINPUT 128 
 
+
+
+typedef enum joypad_driver_enum { ____Placeholder_joypad_driver_enum } joypad_driver_enum ;
+
+
+
+
+ int JOYPAD_DEFAULT_DRIVER ;
 const char *config_get_default_joypad(void)
 {
    enum joypad_driver_enum default_driver = JOYPAD_DEFAULT_DRIVER;
 
    switch (default_driver)
    {
-      case JOYPAD_PS4:
+      case 137:
          return "ps4";
-      case JOYPAD_PS3:
+      case 138:
          return "ps3";
-      case JOYPAD_XINPUT:
+      case 128:
          return "xinput";
-      case JOYPAD_GX:
+      case 144:
          return "gx";
-      case JOYPAD_WIIU:
+      case 130:
          return "wiiu";
-      case JOYPAD_XDK:
+      case 129:
          return "xdk";
-      case JOYPAD_PSP:
-#ifdef VITA
-         return "vita";
-#else
+      case 136:
+
+
+
          return "psp";
-#endif
-      case JOYPAD_PS2:
+
+      case 139:
          return "ps2";
-      case JOYPAD_CTR:
+      case 147:
          return "ctr";
-      case JOYPAD_SWITCH:
+      case 132:
          return "switch";
-      case JOYPAD_DINPUT:
+      case 146:
          return "dinput";
-      case JOYPAD_UDEV:
+      case 131:
          return "udev";
-      case JOYPAD_LINUXRAW:
+      case 142:
          return "linuxraw";
-      case JOYPAD_ANDROID:
+      case 148:
          return "android";
-      case JOYPAD_SDL:
-#ifdef HAVE_SDL2
-         return "sdl2";
-#else
+      case 133:
+
+
+
          return "sdl";
-#endif
-      case JOYPAD_HID:
+
+      case 143:
          return "hid";
-      case JOYPAD_QNX:
+      case 135:
          return "qnx";
-      case JOYPAD_RWEBPAD:
+      case 134:
          return "rwebpad";
-      case JOYPAD_DOS:
+      case 145:
          return "dos";
-      case JOYPAD_MFI:
+      case 141:
          return "mfi";
-      case JOYPAD_NULL:
+      case 140:
          break;
    }
 

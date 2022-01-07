@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ len; int /*<<< orphan*/  data; } ;
-struct TYPE_9__ {scalar_t__ family; int port; int default_port; int /*<<< orphan*/  uri; TYPE_4__ host; TYPE_4__ port_text; scalar_t__ no_port; } ;
-typedef  TYPE_2__ ngx_url_t ;
-struct TYPE_8__ {int /*<<< orphan*/  len; } ;
-struct TYPE_10__ {int /*<<< orphan*/  uri; TYPE_1__ key_start; TYPE_4__ port; TYPE_4__ host_header; } ;
-typedef  TYPE_3__ ngx_http_proxy_vars_t ;
 
-/* Variables and functions */
- scalar_t__ AF_UNIX ; 
- int /*<<< orphan*/  ngx_str_null (TYPE_4__*) ; 
- int /*<<< orphan*/  ngx_str_set (TYPE_4__*,char*) ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ len; int data; } ;
+struct TYPE_9__ {scalar_t__ family; int port; int default_port; int uri; TYPE_4__ host; TYPE_4__ port_text; scalar_t__ no_port; } ;
+typedef TYPE_2__ ngx_url_t ;
+struct TYPE_8__ {int len; } ;
+struct TYPE_10__ {int uri; TYPE_1__ key_start; TYPE_4__ port; TYPE_4__ host_header; } ;
+typedef TYPE_3__ ngx_http_proxy_vars_t ;
+
+
+ scalar_t__ AF_UNIX ;
+ int ngx_str_null (TYPE_4__*) ;
+ int ngx_str_set (TYPE_4__*,char*) ;
 
 __attribute__((used)) static void
 ngx_http_proxy_set_vars(ngx_url_t *u, ngx_http_proxy_vars_t *v)

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ do_run_maintenance_thread ; 
- int /*<<< orphan*/  maintenance_cond ; 
- int /*<<< orphan*/  maintenance_lock ; 
- int /*<<< orphan*/  maintenance_tid ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_join (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ scalar_t__ do_run_maintenance_thread ;
+ int maintenance_cond ;
+ int maintenance_lock ;
+ int maintenance_tid ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_join (int ,int *) ;
 
 void stop_assoc_maintenance_thread() {
     mutex_lock(&maintenance_lock);
@@ -27,6 +19,6 @@ void stop_assoc_maintenance_thread() {
     pthread_cond_signal(&maintenance_cond);
     mutex_unlock(&maintenance_lock);
 
-    /* Wait for the maintenance thread to stop */
-    pthread_join(maintenance_tid, NULL);
+
+    pthread_join(maintenance_tid, ((void*)0));
 }

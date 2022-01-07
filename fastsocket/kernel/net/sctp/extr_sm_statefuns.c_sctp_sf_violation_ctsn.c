@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sctp_endpoint {int dummy; } ;
 struct sctp_association {int dummy; } ;
-typedef  int /*<<< orphan*/  sctp_subtype_t ;
-typedef  int /*<<< orphan*/  sctp_disposition_t ;
-typedef  int /*<<< orphan*/  sctp_cmd_seq_t ;
-typedef  int /*<<< orphan*/  err_str ;
+typedef int sctp_subtype_t ;
+typedef int sctp_disposition_t ;
+typedef int sctp_cmd_seq_t ;
+typedef int err_str ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sctp_sf_abort_violation (struct sctp_endpoint const*,struct sctp_association const*,void*,int /*<<< orphan*/ *,char const*,int) ; 
+
+ int sctp_sf_abort_violation (struct sctp_endpoint const*,struct sctp_association const*,void*,int *,char const*,int) ;
 
 __attribute__((used)) static sctp_disposition_t sctp_sf_violation_ctsn(
-				     const struct sctp_endpoint *ep,
-				     const struct sctp_association *asoc,
-				     const sctp_subtype_t type,
-				     void *arg,
-				     sctp_cmd_seq_t *commands)
+         const struct sctp_endpoint *ep,
+         const struct sctp_association *asoc,
+         const sctp_subtype_t type,
+         void *arg,
+         sctp_cmd_seq_t *commands)
 {
-	static const char err_str[]="The cumulative tsn ack beyond the max tsn currently sent:";
+ static const char err_str[]="The cumulative tsn ack beyond the max tsn currently sent:";
 
-	return sctp_sf_abort_violation(ep, asoc, arg, commands, err_str,
-					sizeof(err_str));
+ return sctp_sf_abort_violation(ep, asoc, arg, commands, err_str,
+     sizeof(err_str));
 }

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  _mc_fprs; int /*<<< orphan*/  _mc_gsr; int /*<<< orphan*/  _mc_fsr; int /*<<< orphan*/  mc_fp; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int _mc_fprs; int _mc_gsr; int _mc_fsr; int mc_fp; } ;
 struct TYPE_4__ {TYPE_2__ uc_mcontext; } ;
-typedef  TYPE_1__ ucontext_t ;
-struct fpreg {int /*<<< orphan*/  fr_gsr; int /*<<< orphan*/  fr_fsr; int /*<<< orphan*/  fr_regs; } ;
-typedef  TYPE_2__ mcontext_t ;
+typedef TYPE_1__ ucontext_t ;
+struct fpreg {int fr_gsr; int fr_fsr; int fr_regs; } ;
+typedef TYPE_2__ mcontext_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FPRS_FEF ; 
- int /*<<< orphan*/  MIN (int,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FPRS_FEF ;
+ int MIN (int,int) ;
+ int memcpy (int ,int ,int ) ;
 
 void
 pt_fpreg_to_ucontext(const struct fpreg* r, ucontext_t *uc)
 {
-	mcontext_t *mc = &uc->uc_mcontext;
+ mcontext_t *mc = &uc->uc_mcontext;
 
-	memcpy(mc->mc_fp, r->fr_regs, MIN(sizeof(mc->mc_fp),
-	    sizeof(r->fr_regs)));
-	mc->_mc_fsr = r->fr_fsr;
-	mc->_mc_gsr = r->fr_gsr;
-	mc->_mc_fprs |= FPRS_FEF;
+ memcpy(mc->mc_fp, r->fr_regs, MIN(sizeof(mc->mc_fp),
+     sizeof(r->fr_regs)));
+ mc->_mc_fsr = r->fr_fsr;
+ mc->_mc_gsr = r->fr_gsr;
+ mc->_mc_fprs |= FPRS_FEF;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ u32 ;
 
-/* Variables and functions */
- scalar_t__ GRANT_INVALID_REF ; 
- int /*<<< orphan*/  gnttab_end_foreign_access (scalar_t__,int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+typedef scalar_t__ u32 ;
+
+
+ scalar_t__ GRANT_INVALID_REF ;
+ int gnttab_end_foreign_access (scalar_t__,int ,unsigned long) ;
 
 __attribute__((used)) static void dmabuf_imp_end_foreign_access(u32 *refs, int count)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < count; i++)
-		if (refs[i] != GRANT_INVALID_REF)
-			gnttab_end_foreign_access(refs[i], 0, 0UL);
+ for (i = 0; i < count; i++)
+  if (refs[i] != GRANT_INVALID_REF)
+   gnttab_end_foreign_access(refs[i], 0, 0UL);
 }

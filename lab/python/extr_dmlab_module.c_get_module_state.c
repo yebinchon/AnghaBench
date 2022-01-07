@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  LabModuleState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  singleton_mod_state ; 
+
+
+
+typedef int PyObject ;
+typedef int LabModuleState ;
+
+
+ int singleton_mod_state ;
 
 __attribute__((used)) static LabModuleState* get_module_state(PyObject* module) {
   return &singleton_mod_state;

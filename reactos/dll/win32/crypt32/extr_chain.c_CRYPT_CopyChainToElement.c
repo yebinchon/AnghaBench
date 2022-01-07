@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int cElement; } ;
-struct TYPE_9__ {int cbSize; int cChain; TYPE_3__** rgpChain; scalar_t__ dwRevocationFreshnessTime; void* fHasRevocationFreshnessTime; int /*<<< orphan*/ * rgpLowerQualityChainContext; scalar_t__ cLowerQualityChainContext; TYPE_3__* TrustStatus; } ;
-struct TYPE_10__ {int ref; TYPE_1__ context; int /*<<< orphan*/  world; } ;
-typedef  int /*<<< orphan*/  PCERT_SIMPLE_CHAIN ;
-typedef  int DWORD ;
-typedef  TYPE_2__ CertificateChain ;
-typedef  int /*<<< orphan*/  CERT_TRUST_STATUS ;
-typedef  int /*<<< orphan*/  CERT_CHAIN_CONTEXT ;
-typedef  void* BOOL ;
+struct TYPE_9__ {int cbSize; int cChain; TYPE_3__** rgpChain; scalar_t__ dwRevocationFreshnessTime; void* fHasRevocationFreshnessTime; int * rgpLowerQualityChainContext; scalar_t__ cLowerQualityChainContext; TYPE_3__* TrustStatus; } ;
+struct TYPE_10__ {int ref; TYPE_1__ context; int world; } ;
+typedef int PCERT_SIMPLE_CHAIN ;
+typedef int DWORD ;
+typedef TYPE_2__ CertificateChain ;
+typedef int CERT_TRUST_STATUS ;
+typedef int CERT_CHAIN_CONTEXT ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- void* CRYPT_CopySimpleChainToElement (TYPE_3__*,int) ; 
- int /*<<< orphan*/  CRYPT_FreeChainContext (TYPE_2__*) ; 
- int /*<<< orphan*/  CertDuplicateStore (int /*<<< orphan*/ ) ; 
- void* CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (TYPE_2__*) ; 
- void* FALSE ; 
- void* TRUE ; 
- int /*<<< orphan*/  memset (TYPE_3__**,int /*<<< orphan*/ ,int) ; 
+
+ void* CRYPT_CopySimpleChainToElement (TYPE_3__*,int) ;
+ int CRYPT_FreeChainContext (TYPE_2__*) ;
+ int CertDuplicateStore (int ) ;
+ void* CryptMemAlloc (int) ;
+ int CryptMemFree (TYPE_2__*) ;
+ void* FALSE ;
+ void* TRUE ;
+ int memset (TYPE_3__**,int ,int) ;
 
 __attribute__((used)) static CertificateChain *CRYPT_CopyChainToElement(CertificateChain *chain,
  DWORD iChain, DWORD iElement)
@@ -43,12 +43,12 @@ __attribute__((used)) static CertificateChain *CRYPT_CopyChainToElement(Certific
         copy->ref = 1;
         copy->world = CertDuplicateStore(chain->world);
         copy->context.cbSize = sizeof(CERT_CHAIN_CONTEXT);
-        /* Leave the trust status of the copied chain unset, it'll get
-         * rechecked after the new chain is done.
-         */
+
+
+
         memset(&copy->context.TrustStatus, 0, sizeof(CERT_TRUST_STATUS));
         copy->context.cLowerQualityChainContext = 0;
-        copy->context.rgpLowerQualityChainContext = NULL;
+        copy->context.rgpLowerQualityChainContext = ((void*)0);
         copy->context.fHasRevocationFreshnessTime = FALSE;
         copy->context.dwRevocationFreshnessTime = 0;
         copy->context.rgpChain = CryptMemAlloc(
@@ -84,7 +84,7 @@ __attribute__((used)) static CertificateChain *CRYPT_CopyChainToElement(Certific
             if (!ret)
             {
                 CRYPT_FreeChainContext(copy);
-                copy = NULL;
+                copy = ((void*)0);
             }
             else
                 copy->context.cChain = iChain + 1;
@@ -92,7 +92,7 @@ __attribute__((used)) static CertificateChain *CRYPT_CopyChainToElement(Certific
         else
         {
             CryptMemFree(copy);
-            copy = NULL;
+            copy = ((void*)0);
         }
     }
     return copy;

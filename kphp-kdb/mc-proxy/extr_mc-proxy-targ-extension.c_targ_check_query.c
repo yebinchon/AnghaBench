@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int eat_at (char const*,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char const*,int) ; 
- int mct_add ; 
- int mct_get ; 
- int mct_replace ; 
- int mct_set ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- scalar_t__ verbosity ; 
+ int eat_at (char const*,int) ;
+ int fprintf (int ,char*,int,char const*,int) ;
+ int mct_add ;
+ int mct_get ;
+ int mct_replace ;
+ int mct_set ;
+ int stderr ;
+ int strncmp (char const*,char*,int) ;
+ scalar_t__ verbosity ;
 
 __attribute__((used)) static int targ_check_query (int type, const char *key, int key_len) {
   if (verbosity) {
@@ -30,7 +22,7 @@ __attribute__((used)) static int targ_check_query (int type, const char *key, in
   key += l;
   key_len -= l;
   if (type == mct_get) {
-    return (key_len >= 6 && !strncmp (key, "target", 6)) || 
+    return (key_len >= 6 && !strncmp (key, "target", 6)) ||
            (key_len >= 6 && !strncmp (key, "search", 6)) ||
            (key_len >= 6 && !strncmp (key, "prices", 6)) ||
            (key_len >= 11 && !strncmp (key, "deletegroup", 11)) ||

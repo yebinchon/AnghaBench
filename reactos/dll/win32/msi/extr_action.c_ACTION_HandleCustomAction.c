@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int INT ;
 
-/* Variables and functions */
- scalar_t__ ACTION_CustomAction (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int ACTION_ShowDialog (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_FUNCTION_NOT_CALLED ; 
- scalar_t__ ERROR_INSTALL_ALREADY_RUNNING ; 
- scalar_t__ ERROR_INSTALL_FAILURE ; 
- scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ; 
- scalar_t__ ERROR_INSTALL_SUSPEND ; 
- scalar_t__ ERROR_INSTALL_USEREXIT ; 
- scalar_t__ ERROR_INVALID_DATA ; 
- scalar_t__ ERROR_INVALID_HANDLE_STATE ; 
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int IDCANCEL ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ needs_ui_sequence (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ui_actioninfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int ui_actionstart (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int MSIPACKAGE ;
+typedef int LPCWSTR ;
+typedef int INT ;
+
+
+ scalar_t__ ACTION_CustomAction (int *,int ,scalar_t__) ;
+ int ACTION_ShowDialog (int *,int ) ;
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_FUNCTION_NOT_CALLED ;
+ scalar_t__ ERROR_INSTALL_ALREADY_RUNNING ;
+ scalar_t__ ERROR_INSTALL_FAILURE ;
+ scalar_t__ ERROR_INSTALL_PACKAGE_REJECTED ;
+ scalar_t__ ERROR_INSTALL_SUSPEND ;
+ scalar_t__ ERROR_INSTALL_USEREXIT ;
+ scalar_t__ ERROR_INVALID_DATA ;
+ scalar_t__ ERROR_INVALID_HANDLE_STATE ;
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int IDCANCEL ;
+ int TRUE ;
+ scalar_t__ needs_ui_sequence (int *) ;
+ int ui_actioninfo (int *,int ,int ,int) ;
+ int ui_actionstart (int *,int ,int *,int *) ;
 
 __attribute__((used)) static UINT ACTION_HandleCustomAction(MSIPACKAGE *package, LPCWSTR action, UINT script)
 {
     UINT arc;
     INT uirc;
 
-    uirc = ui_actionstart(package, action, NULL, NULL);
+    uirc = ui_actionstart(package, action, ((void*)0), ((void*)0));
     if (uirc == IDCANCEL)
         return ERROR_INSTALL_USEREXIT;
     ui_actioninfo(package, action, TRUE, 0);
@@ -54,7 +54,7 @@ __attribute__((used)) static UINT ACTION_HandleCustomAction(MSIPACKAGE *package,
         switch (uirc)
         {
         case -1:
-            return ERROR_SUCCESS; /* stop immediately */
+            return ERROR_SUCCESS;
         case 0: arc = ERROR_FUNCTION_NOT_CALLED; break;
         case 1: arc = ERROR_SUCCESS; break;
         case 2: arc = ERROR_INSTALL_USEREXIT; break;

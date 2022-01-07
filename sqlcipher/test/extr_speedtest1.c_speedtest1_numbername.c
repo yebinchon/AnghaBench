@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,...) ; 
- scalar_t__ strlen (char*) ; 
+ int sqlite3_snprintf (int,char*,char*,...) ;
+ scalar_t__ strlen (char*) ;
 
 int speedtest1_numbername(unsigned int n, char *zOut, int nOut){
-  static const char *ones[] = {  "zero", "one", "two", "three", "four", "five", 
-                  "six", "seven", "eight", "nine", "ten", "eleven", "twelve", 
+  static const char *ones[] = { "zero", "one", "two", "three", "four", "five",
+                  "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
                   "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
                   "eighteen", "nineteen" };
   static const char *tens[] = { "", "ten", "twenty", "thirty", "forty",

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ bLocalSystem; } ;
-typedef  TYPE_1__* PLOGONDATA ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ HWND ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PLOGONDATA ;
+typedef int LPARAM ;
+typedef scalar_t__ HWND ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWLP_MSGRESULT ; 
- scalar_t__ GetDlgItem (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_LOGON_SYSTEMACCOUNT ; 
- int /*<<< orphan*/  IDC_LOGON_THISACCOUNT ; 
- int /*<<< orphan*/  SetWindowLongPtr (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int DWLP_MSGRESULT ;
+ scalar_t__ GetDlgItem (scalar_t__,int ) ;
+ int IDC_LOGON_SYSTEMACCOUNT ;
+ int IDC_LOGON_THISACCOUNT ;
+ int SetWindowLongPtr (scalar_t__,int ,int ) ;
+ int TRUE ;
 
 __attribute__((used)) static
 BOOL

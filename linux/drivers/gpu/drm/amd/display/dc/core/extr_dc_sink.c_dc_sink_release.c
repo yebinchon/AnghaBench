@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dc_sink {int /*<<< orphan*/  refcount; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dc_sink_free ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct dc_sink {int refcount; } ;
+
+
+ int dc_sink_free ;
+ int kref_put (int *,int ) ;
 
 void dc_sink_release(struct dc_sink *sink)
 {
-	kref_put(&sink->refcount, dc_sink_free);
+ kref_put(&sink->refcount, dc_sink_free);
 }

@@ -1,50 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int r1; int r2; TYPE_2__* pKeyInfo; TYPE_1__* aMem; } ;
-typedef  TYPE_3__ UnpackedRecord ;
+typedef TYPE_3__ UnpackedRecord ;
 struct TYPE_6__ {int nAllField; scalar_t__* aColl; scalar_t__* aSortOrder; } ;
 struct TYPE_5__ {int flags; } ;
-typedef  int /*<<< orphan*/  RecordCompare ;
+typedef int RecordCompare ;
 
-/* Variables and functions */
- int MEM_Blob ; 
- int MEM_Int ; 
- int MEM_Null ; 
- int MEM_Real ; 
- int MEM_Str ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3VdbeRecordCompare ; 
- int /*<<< orphan*/  testcase (int) ; 
- int /*<<< orphan*/  vdbeRecordCompareInt ; 
- int /*<<< orphan*/  vdbeRecordCompareString ; 
+
+ int MEM_Blob ;
+ int MEM_Int ;
+ int MEM_Null ;
+ int MEM_Real ;
+ int MEM_Str ;
+ int assert (int) ;
+ int sqlite3VdbeRecordCompare ;
+ int testcase (int) ;
+ int vdbeRecordCompareInt ;
+ int vdbeRecordCompareString ;
 
 RecordCompare sqlite3VdbeFindCompare(UnpackedRecord *p){
-  /* varintRecordCompareInt() and varintRecordCompareString() both assume
-  ** that the size-of-header varint that occurs at the start of each record
-  ** fits in a single byte (i.e. is 127 or less). varintRecordCompareInt()
-  ** also assumes that it is safe to overread a buffer by at least the 
-  ** maximum possible legal header size plus 8 bytes. Because there is
-  ** guaranteed to be at least 74 (but not 136) bytes of padding following each
-  ** buffer passed to varintRecordCompareInt() this makes it convenient to
-  ** limit the size of the header to 64 bytes in cases where the first field
-  ** is an integer.
-  **
-  ** The easiest way to enforce this limit is to consider only records with
-  ** 13 fields or less. If the first field is an integer, the maximum legal
-  ** header size is (12*5 + 1 + 1) bytes.  */
   if( p->pKeyInfo->nAllField<=13 ){
     int flags = p->aMem[0].flags;
     if( p->pKeyInfo->aSortOrder[0] ){

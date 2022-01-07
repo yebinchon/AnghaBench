@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_context {int needs_set; int /*<<< orphan*/  device; scalar_t__ destroy_delayed; int /*<<< orphan*/ * restore_dc; int /*<<< orphan*/ * restore_ctx; int /*<<< orphan*/  gl_info; int /*<<< orphan*/  level; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,struct wined3d_context*,...) ; 
- int /*<<< orphan*/  WARN (char*,struct wined3d_context*) ; 
- scalar_t__ WARN_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_destroy (int /*<<< orphan*/ ,struct wined3d_context*) ; 
- struct wined3d_context* context_get_current () ; 
- int /*<<< orphan*/  context_restore_gl_context (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ context_restore_pixel_format (struct wined3d_context*) ; 
- int /*<<< orphan*/  d3d ; 
+
+
+
+struct wined3d_context {int needs_set; int device; scalar_t__ destroy_delayed; int * restore_dc; int * restore_ctx; int gl_info; int level; } ;
+
+
+ int TRACE (char*,struct wined3d_context*,...) ;
+ int WARN (char*,struct wined3d_context*) ;
+ scalar_t__ WARN_ON (int ) ;
+ int context_destroy (int ,struct wined3d_context*) ;
+ struct wined3d_context* context_get_current () ;
+ int context_restore_gl_context (int ,int *,int *) ;
+ scalar_t__ context_restore_pixel_format (struct wined3d_context*) ;
+ int d3d ;
 
 void context_release(struct wined3d_context *context)
 {
@@ -42,8 +42,8 @@ void context_release(struct wined3d_context *context)
         {
             TRACE("Restoring GL context %p on device context %p.\n", context->restore_ctx, context->restore_dc);
             context_restore_gl_context(context->gl_info, context->restore_dc, context->restore_ctx);
-            context->restore_ctx = NULL;
-            context->restore_dc = NULL;
+            context->restore_ctx = ((void*)0);
+            context->restore_dc = ((void*)0);
         }
 
         if (context->destroy_delayed)

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_OP_VERIFY ; 
- int evp_pkey_signature_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int EVP_PKEY_CTX ;
+
+
+ int EVP_PKEY_OP_VERIFY ;
+ int evp_pkey_signature_init (int *,int ) ;
 
 int EVP_PKEY_verify_init(EVP_PKEY_CTX *ctx)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  svn_subst_translate_string2 (TYPE_1__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__ const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int svn_subst_translate_string2 (TYPE_1__**,int *,int *,TYPE_1__ const*,char const*,int ,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 normalize_string(const svn_string_t **str,
@@ -36,16 +36,16 @@ normalize_string(const svn_string_t **str,
 
   *was_normalized = FALSE;
 
-  if (*str == NULL)
+  if (*str == ((void*)0))
     return SVN_NO_ERROR;
 
-  SVN_ERR_ASSERT((*str)->data != NULL);
+  SVN_ERR_ASSERT((*str)->data != ((void*)0));
 
-  if (source_prop_encoding == NULL)
+  if (source_prop_encoding == ((void*)0))
     source_prop_encoding = "UTF-8";
 
-  new_str = NULL;
-  SVN_ERR(svn_subst_translate_string2(&new_str, NULL, was_normalized,
+  new_str = ((void*)0);
+  SVN_ERR(svn_subst_translate_string2(&new_str, ((void*)0), was_normalized,
                                       *str, source_prop_encoding, TRUE,
                                       result_pool, scratch_pool));
   *str = new_str;

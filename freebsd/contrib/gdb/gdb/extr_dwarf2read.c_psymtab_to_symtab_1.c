@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct symtab {scalar_t__ language; } ;
 struct partial_symtab {int readin; struct symtab* symtab; struct objfile* objfile; } ;
-struct objfile {int /*<<< orphan*/  section_offsets; int /*<<< orphan*/ * obfd; } ;
-struct TYPE_2__ {unsigned long offset; int base_known; void* base_address; int /*<<< orphan*/ * dwarf2_abbrevs; } ;
-struct dwarf2_cu {scalar_t__ language; TYPE_1__ header; int /*<<< orphan*/ * list_in_scope; struct objfile* objfile; } ;
+struct objfile {int section_offsets; int * obfd; } ;
+struct TYPE_2__ {unsigned long offset; int base_known; void* base_address; int * dwarf2_abbrevs; } ;
+struct dwarf2_cu {scalar_t__ language; TYPE_1__ header; int * list_in_scope; struct objfile* objfile; } ;
 struct die_info {int dummy; } ;
 struct cleanup {int dummy; } ;
 struct attribute {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd ;
-typedef  scalar_t__ CORE_ADDR ;
+typedef int bfd ;
+typedef scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
- scalar_t__ ANOFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DWARF_ABBREV_BUFFER (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_ABBREV_SIZE (struct partial_symtab*) ; 
- char* DWARF_INFO_BUFFER (struct partial_symtab*) ; 
- unsigned long DWARF_INFO_OFFSET (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_LINE_BUFFER (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_LINE_SIZE (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_LOC_BUFFER (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_LOC_SIZE (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_MACINFO_BUFFER (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_MACINFO_SIZE (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_RANGES_BUFFER (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_RANGES_SIZE (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_STR_BUFFER (struct partial_symtab*) ; 
- int /*<<< orphan*/  DWARF_STR_SIZE (struct partial_symtab*) ; 
- void* DW_ADDR (struct attribute*) ; 
- int /*<<< orphan*/  DW_AT_entry_pc ; 
- int /*<<< orphan*/  DW_AT_low_pc ; 
- int /*<<< orphan*/  SECT_OFF_TEXT (struct objfile*) ; 
- int /*<<< orphan*/  buildsym_init () ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- struct attribute* dwarf2_attr (struct die_info*,int /*<<< orphan*/ ,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  dwarf2_empty_abbrev_table ; 
- int /*<<< orphan*/  dwarf2_free_tmp_obstack ; 
- int /*<<< orphan*/  dwarf2_read_abbrevs (int /*<<< orphan*/ *,struct dwarf2_cu*) ; 
- int /*<<< orphan*/  dwarf2_tmp_obstack ; 
- int /*<<< orphan*/  dwarf_abbrev_buffer ; 
- int /*<<< orphan*/  dwarf_abbrev_size ; 
- char* dwarf_info_buffer ; 
- int /*<<< orphan*/  dwarf_line_buffer ; 
- int /*<<< orphan*/  dwarf_line_size ; 
- int /*<<< orphan*/  dwarf_loc_buffer ; 
- int /*<<< orphan*/  dwarf_loc_size ; 
- int /*<<< orphan*/  dwarf_macinfo_buffer ; 
- int /*<<< orphan*/  dwarf_macinfo_size ; 
- int /*<<< orphan*/  dwarf_ranges_buffer ; 
- int /*<<< orphan*/  dwarf_ranges_size ; 
- int /*<<< orphan*/  dwarf_str_buffer ; 
- int /*<<< orphan*/  dwarf_str_size ; 
- struct symtab* end_symtab (scalar_t__,struct objfile*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  file_symbols ; 
- int /*<<< orphan*/  get_scope_pc_bounds (struct die_info*,scalar_t__*,scalar_t__*,struct dwarf2_cu*) ; 
- scalar_t__ language_c ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  make_cleanup_free_die_list (struct die_info*) ; 
- int /*<<< orphan*/  obstack_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  process_die (struct die_info*,struct dwarf2_cu*) ; 
- char* processing_current_prefix ; 
- struct die_info* read_comp_unit (char*,int /*<<< orphan*/ *,struct dwarf2_cu*) ; 
- char* read_comp_unit_head (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  really_free_pendings ; 
+
+ scalar_t__ ANOFFSET (int ,int ) ;
+ int DWARF_ABBREV_BUFFER (struct partial_symtab*) ;
+ int DWARF_ABBREV_SIZE (struct partial_symtab*) ;
+ char* DWARF_INFO_BUFFER (struct partial_symtab*) ;
+ unsigned long DWARF_INFO_OFFSET (struct partial_symtab*) ;
+ int DWARF_LINE_BUFFER (struct partial_symtab*) ;
+ int DWARF_LINE_SIZE (struct partial_symtab*) ;
+ int DWARF_LOC_BUFFER (struct partial_symtab*) ;
+ int DWARF_LOC_SIZE (struct partial_symtab*) ;
+ int DWARF_MACINFO_BUFFER (struct partial_symtab*) ;
+ int DWARF_MACINFO_SIZE (struct partial_symtab*) ;
+ int DWARF_RANGES_BUFFER (struct partial_symtab*) ;
+ int DWARF_RANGES_SIZE (struct partial_symtab*) ;
+ int DWARF_STR_BUFFER (struct partial_symtab*) ;
+ int DWARF_STR_SIZE (struct partial_symtab*) ;
+ void* DW_ADDR (struct attribute*) ;
+ int DW_AT_entry_pc ;
+ int DW_AT_low_pc ;
+ int SECT_OFF_TEXT (struct objfile*) ;
+ int buildsym_init () ;
+ int do_cleanups (struct cleanup*) ;
+ struct attribute* dwarf2_attr (struct die_info*,int ,struct dwarf2_cu*) ;
+ int dwarf2_empty_abbrev_table ;
+ int dwarf2_free_tmp_obstack ;
+ int dwarf2_read_abbrevs (int *,struct dwarf2_cu*) ;
+ int dwarf2_tmp_obstack ;
+ int dwarf_abbrev_buffer ;
+ int dwarf_abbrev_size ;
+ char* dwarf_info_buffer ;
+ int dwarf_line_buffer ;
+ int dwarf_line_size ;
+ int dwarf_loc_buffer ;
+ int dwarf_loc_size ;
+ int dwarf_macinfo_buffer ;
+ int dwarf_macinfo_size ;
+ int dwarf_ranges_buffer ;
+ int dwarf_ranges_size ;
+ int dwarf_str_buffer ;
+ int dwarf_str_size ;
+ struct symtab* end_symtab (scalar_t__,struct objfile*,int ) ;
+ int file_symbols ;
+ int get_scope_pc_bounds (struct die_info*,scalar_t__*,scalar_t__*,struct dwarf2_cu*) ;
+ scalar_t__ language_c ;
+ struct cleanup* make_cleanup (int ,int *) ;
+ int make_cleanup_free_die_list (struct die_info*) ;
+ int obstack_init (int *) ;
+ int process_die (struct die_info*,struct dwarf2_cu*) ;
+ char* processing_current_prefix ;
+ struct die_info* read_comp_unit (char*,int *,struct dwarf2_cu*) ;
+ char* read_comp_unit_head (TYPE_1__*,char*,int *) ;
+ int really_free_pendings ;
 
 __attribute__((used)) static void
 psymtab_to_symtab_1 (struct partial_symtab *pst)
@@ -91,7 +91,7 @@ psymtab_to_symtab_1 (struct partial_symtab *pst)
   struct attribute *attr;
   CORE_ADDR baseaddr;
 
-  /* Set local variables from the partial symbol table info.  */
+
   offset = DWARF_INFO_OFFSET (pst);
   dwarf_info_buffer = DWARF_INFO_BUFFER (pst);
   dwarf_abbrev_buffer = DWARF_ABBREV_BUFFER (pst);
@@ -109,21 +109,21 @@ psymtab_to_symtab_1 (struct partial_symtab *pst)
   info_ptr = dwarf_info_buffer + offset;
   baseaddr = ANOFFSET (objfile->section_offsets, SECT_OFF_TEXT (objfile));
 
-  /* We're in the global namespace.  */
+
   processing_current_prefix = "";
 
   obstack_init (&dwarf2_tmp_obstack);
-  back_to = make_cleanup (dwarf2_free_tmp_obstack, NULL);
+  back_to = make_cleanup (dwarf2_free_tmp_obstack, ((void*)0));
 
   buildsym_init ();
-  make_cleanup (really_free_pendings, NULL);
+  make_cleanup (really_free_pendings, ((void*)0));
 
   cu.objfile = objfile;
 
-  /* read in the comp_unit header  */
+
   info_ptr = read_comp_unit_head (&cu.header, info_ptr, abfd);
 
-  /* Read the abbrevs for this compilation unit  */
+
   dwarf2_read_abbrevs (abfd, &cu);
   make_cleanup (dwarf2_empty_abbrev_table, cu.header.dwarf2_abbrevs);
 
@@ -135,11 +135,11 @@ psymtab_to_symtab_1 (struct partial_symtab *pst)
 
   make_cleanup_free_die_list (dies);
 
-  /* Find the base address of the compilation unit for range lists and
-     location lists.  It will normally be specified by DW_AT_low_pc.
-     In DWARF-3 draft 4, the base address could be overridden by
-     DW_AT_entry_pc.  It's been removed, but GCC still uses this for
-     compilation units with discontinuous ranges.  */
+
+
+
+
+
 
   cu.header.base_known = 0;
   cu.header.base_address = 0;
@@ -154,26 +154,26 @@ psymtab_to_symtab_1 (struct partial_symtab *pst)
     {
       attr = dwarf2_attr (dies, DW_AT_low_pc, &cu);
       if (attr)
-	{
-	  cu.header.base_address = DW_ADDR (attr);
-	  cu.header.base_known = 1;
-	}
+ {
+   cu.header.base_address = DW_ADDR (attr);
+   cu.header.base_known = 1;
+ }
     }
 
-  /* Do line number decoding in read_file_scope () */
+
   process_die (dies, &cu);
 
-  /* Some compilers don't define a DW_AT_high_pc attribute for the
-     compilation unit.  If the DW_AT_high_pc is missing, synthesize
-     it, by scanning the DIE's below the compilation unit.  */
+
+
+
   get_scope_pc_bounds (dies, &lowpc, &highpc, &cu);
 
   symtab = end_symtab (highpc + baseaddr, objfile, SECT_OFF_TEXT (objfile));
 
-  /* Set symtab language to language from DW_AT_language.
-     If the compilation is from a C file generated by language preprocessors,
-     do not set the language if it was already deduced by start_subfile.  */
-  if (symtab != NULL
+
+
+
+  if (symtab != ((void*)0)
       && !(cu.language == language_c && symtab->language != language_c))
     {
       symtab->language = cu.language;

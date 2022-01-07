@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pblk_rl {int /*<<< orphan*/  werr_lines; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
+
+
+
+struct pblk_rl {int werr_lines; } ;
+
+
+ int atomic_dec (int *) ;
 
 void pblk_rl_werr_line_out(struct pblk_rl *rl)
 {
-	atomic_dec(&rl->werr_lines);
+ atomic_dec(&rl->werr_lines);
 }

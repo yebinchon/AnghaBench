@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  encoding; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int encoding; } ;
 struct TYPE_8__ {TYPE_2__* data; TYPE_2__* expected_err; } ;
-typedef  TYPE_1__ EVP_TEST ;
-typedef  TYPE_2__ ENCODE_DATA ;
+typedef TYPE_1__ EVP_TEST ;
+typedef TYPE_2__ ENCODE_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BASE64_CANONICAL_ENCODING ; 
- int /*<<< orphan*/  BASE64_INVALID_ENCODING ; 
- int /*<<< orphan*/  BASE64_VALID_ENCODING ; 
- int /*<<< orphan*/  OPENSSL_free (TYPE_2__*) ; 
- TYPE_2__* OPENSSL_strdup (char*) ; 
- TYPE_2__* OPENSSL_zalloc (int) ; 
- int /*<<< orphan*/  TEST_error (char*,char const*) ; 
- int /*<<< orphan*/  TEST_ptr (TYPE_2__*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+ int BASE64_CANONICAL_ENCODING ;
+ int BASE64_INVALID_ENCODING ;
+ int BASE64_VALID_ENCODING ;
+ int OPENSSL_free (TYPE_2__*) ;
+ TYPE_2__* OPENSSL_strdup (char*) ;
+ TYPE_2__* OPENSSL_zalloc (int) ;
+ int TEST_error (char*,char const*) ;
+ int TEST_ptr (TYPE_2__*) ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 __attribute__((used)) static int encode_test_init(EVP_TEST *t, const char *encoding)
 {

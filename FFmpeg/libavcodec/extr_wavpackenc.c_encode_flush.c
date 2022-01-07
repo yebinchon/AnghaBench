@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int zeros_acc; int holding_one; int pend_count; int pend_data; scalar_t__ holding_zero; } ;
-typedef  TYPE_1__ WavPackWords ;
-struct TYPE_5__ {int /*<<< orphan*/  pb; TYPE_1__ w; } ;
-typedef  TYPE_2__ WavPackEncodeContext ;
-typedef  int /*<<< orphan*/  PutBitContext ;
+typedef TYPE_1__ WavPackWords ;
+struct TYPE_5__ {int pb; TYPE_1__ w; } ;
+typedef TYPE_2__ WavPackEncodeContext ;
+typedef int PutBitContext ;
 
-/* Variables and functions */
- int count_bits (int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+ int count_bits (int) ;
+ int put_bits (int *,int,int) ;
 
 __attribute__((used)) static void encode_flush(WavPackEncodeContext *s)
 {

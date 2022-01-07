@@ -1,75 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  int u16_t ;
-struct zsBssInfo {int* rsnIe; int* wpaIe; int /*<<< orphan*/  securityType; int /*<<< orphan*/ * wscIe; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef int u8_t ;
+typedef int u16_t ;
+struct zsBssInfo {int* rsnIe; int* wpaIe; int securityType; int * wscIe; } ;
 struct TYPE_3__ {scalar_t__ ssidLen; int authMode; int currentAuthMode; void* wepStatus; } ;
 struct TYPE_4__ {TYPE_1__ sta; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
-#define  ZM_AUTH_MODE_AUTO 137 
-#define  ZM_AUTH_MODE_OPEN 136 
-#define  ZM_AUTH_MODE_SHARED_KEY 135 
-#define  ZM_AUTH_MODE_WPA 134 
-#define  ZM_AUTH_MODE_WPA2 133 
-#define  ZM_AUTH_MODE_WPA2PSK 132 
-#define  ZM_AUTH_MODE_WPAPSK 131 
-#define  ZM_AUTH_MODE_WPAPSK_AUTO 130 
-#define  ZM_AUTH_MODE_WPA_AUTO 129 
-#define  ZM_AUTH_MODE_WPA_NONE 128 
- void* ZM_ENCRYPTION_AES ; 
- void* ZM_ENCRYPTION_TKIP ; 
- int /*<<< orphan*/  ZM_SECURITY_TYPE_WPA ; 
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfCheckWPAAuth (int /*<<< orphan*/ *,struct zsBssInfo*) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int TRUE ;
+ void* ZM_ENCRYPTION_AES ;
+ void* ZM_ENCRYPTION_TKIP ;
+ int ZM_SECURITY_TYPE_WPA ;
+ TYPE_2__* wd ;
+ int zfCheckWPAAuth (int *,struct zsBssInfo*) ;
+ int zmw_get_wlan_dev (int *) ;
 
 u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
 {
-    u8_t   ret=TRUE;
-    u16_t  encAlgoType;
+    u8_t ret=TRUE;
+    u16_t encAlgoType;
     u16_t UnicastCipherNum;
 
     zmw_get_wlan_dev(dev);
 
-    /* Connecting to ANY has been checked */
+
     if ( wd->sta.ssidLen == 0 )
     {
         return ret;
     }
 
 
-	switch(wd->sta.authMode)
-	//switch(wd->ws.authMode)//Quickly reboot
+ switch(wd->sta.authMode)
+
     {
-        case ZM_AUTH_MODE_WPA_AUTO:
-        case ZM_AUTH_MODE_WPAPSK_AUTO:
+        case 129:
+        case 130:
             encAlgoType = 0;
             if(pBssInfo->rsnIe[1] != 0)
             {
                 UnicastCipherNum = (pBssInfo->rsnIe[8]) +
                                    (pBssInfo->rsnIe[9] << 8);
 
-                /* If there is only one unicast cipher */
+
                 if (UnicastCipherNum == 1)
                 {
                     encAlgoType = pBssInfo->rsnIe[13];
-                    //encAlgoType = pBssInfo->rsnIe[7];
+
                 }
                 else
                 {
@@ -77,7 +67,7 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
                     u16_t desiredCipher = 0;
                     u16_t IEOffSet = 13;
 
-                    /* Enumerate all the supported unicast cipher */
+
                     for (ii = 0; ii < UnicastCipherNum; ii++)
                     {
                         if (pBssInfo->rsnIe[IEOffSet+ii*4] > desiredCipher)
@@ -91,28 +81,28 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
 
                 if ( encAlgoType == 0x02 )
                 {
-    			    wd->sta.wepStatus = ZM_ENCRYPTION_TKIP;
+           wd->sta.wepStatus = ZM_ENCRYPTION_TKIP;
 
-    			    if ( wd->sta.authMode == ZM_AUTH_MODE_WPA_AUTO )
+           if ( wd->sta.authMode == 129 )
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPA2;
+                        wd->sta.currentAuthMode = 133;
                     }
-                    else //ZM_AUTH_MODE_WPAPSK_AUTO
+                    else
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPA2PSK;
+                        wd->sta.currentAuthMode = 132;
                     }
                 }
                 else if ( encAlgoType == 0x04 )
                 {
                     wd->sta.wepStatus = ZM_ENCRYPTION_AES;
 
-                    if ( wd->sta.authMode == ZM_AUTH_MODE_WPA_AUTO )
+                    if ( wd->sta.authMode == 129 )
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPA2;
+                        wd->sta.currentAuthMode = 133;
                     }
-                    else //ZM_AUTH_MODE_WPAPSK_AUTO
+                    else
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPA2PSK;
+                        wd->sta.currentAuthMode = 132;
                     }
                 }
                 else
@@ -125,11 +115,11 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
                 UnicastCipherNum = (pBssInfo->wpaIe[12]) +
                                    (pBssInfo->wpaIe[13] << 8);
 
-                /* If there is only one unicast cipher */
+
                 if (UnicastCipherNum == 1)
                 {
                     encAlgoType = pBssInfo->wpaIe[17];
-                    //encAlgoType = pBssInfo->wpaIe[11];
+
                 }
                 else
                 {
@@ -137,7 +127,7 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
                     u16_t desiredCipher = 0;
                     u16_t IEOffSet = 17;
 
-                    /* Enumerate all the supported unicast cipher */
+
                     for (ii = 0; ii < UnicastCipherNum; ii++)
                     {
                         if (pBssInfo->wpaIe[IEOffSet+ii*4] > desiredCipher)
@@ -151,28 +141,28 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
 
                 if ( encAlgoType == 0x02 )
                 {
-    			    wd->sta.wepStatus = ZM_ENCRYPTION_TKIP;
+           wd->sta.wepStatus = ZM_ENCRYPTION_TKIP;
 
-    			    if ( wd->sta.authMode == ZM_AUTH_MODE_WPA_AUTO )
+           if ( wd->sta.authMode == 129 )
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPA;
+                        wd->sta.currentAuthMode = 134;
                     }
-                    else //ZM_AUTH_MODE_WPAPSK_AUTO
+                    else
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPAPSK;
+                        wd->sta.currentAuthMode = 131;
                     }
                 }
                 else if ( encAlgoType == 0x04 )
                 {
                     wd->sta.wepStatus = ZM_ENCRYPTION_AES;
 
-                    if ( wd->sta.authMode == ZM_AUTH_MODE_WPA_AUTO )
+                    if ( wd->sta.authMode == 129 )
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPA;
+                        wd->sta.currentAuthMode = 134;
                     }
-                    else //ZM_AUTH_MODE_WPAPSK_AUTO
+                    else
                     {
-                        wd->sta.currentAuthMode = ZM_AUTH_MODE_WPAPSK;
+                        wd->sta.currentAuthMode = 131;
                     }
                 }
                 else
@@ -189,11 +179,11 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
 
             break;
 
-        case ZM_AUTH_MODE_WPA:
-        case ZM_AUTH_MODE_WPAPSK:
-        case ZM_AUTH_MODE_WPA_NONE:
-        case ZM_AUTH_MODE_WPA2:
-        case ZM_AUTH_MODE_WPA2PSK:
+        case 134:
+        case 131:
+        case 128:
+        case 133:
+        case 132:
             {
                 if ( pBssInfo->securityType != ZM_SECURITY_TYPE_WPA )
                 {
@@ -204,13 +194,13 @@ u8_t zfCheckAuthentication(zdev_t* dev, struct zsBssInfo* pBssInfo)
             }
             break;
 
-        case ZM_AUTH_MODE_OPEN:
-        case ZM_AUTH_MODE_SHARED_KEY:
-        case ZM_AUTH_MODE_AUTO:
+        case 136:
+        case 135:
+        case 137:
             {
                 if ( pBssInfo->wscIe[1] )
                 {
-                    // If the AP is a Jumpstart AP, it's ok!! Ray
+
                     break;
                 }
                 else if ( pBssInfo->securityType == ZM_SECURITY_TYPE_WPA )

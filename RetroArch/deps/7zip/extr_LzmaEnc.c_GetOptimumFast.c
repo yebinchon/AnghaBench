@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_6__ {unsigned char* (* GetPointerToCurrentPos ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_7__ {scalar_t__ additionalOffset; int longestMatchLength; int numPairs; int numAvail; unsigned char const** reps; int numFastBytes; int* matches; int /*<<< orphan*/  matchFinderObj; TYPE_1__ matchFinder; } ;
-typedef  TYPE_2__ CLzmaEnc ;
 
-/* Variables and functions */
- scalar_t__ ChangePair (int const,int) ; 
- int LZMA_MATCH_LEN_MAX ; 
- int LZMA_NUM_REPS ; 
- int /*<<< orphan*/  MovePos (TYPE_2__*,int) ; 
- void* ReadMatchDistances (TYPE_2__*,int*) ; 
- unsigned char* stub1 (int /*<<< orphan*/ ) ; 
- unsigned char* stub2 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_6__ {unsigned char* (* GetPointerToCurrentPos ) (int ) ;} ;
+struct TYPE_7__ {scalar_t__ additionalOffset; int longestMatchLength; int numPairs; int numAvail; unsigned char const** reps; int numFastBytes; int* matches; int matchFinderObj; TYPE_1__ matchFinder; } ;
+typedef TYPE_2__ CLzmaEnc ;
+
+
+ scalar_t__ ChangePair (int const,int) ;
+ int LZMA_MATCH_LEN_MAX ;
+ int LZMA_NUM_REPS ;
+ int MovePos (TYPE_2__*,int) ;
+ void* ReadMatchDistances (TYPE_2__*,int*) ;
+ unsigned char* stub1 (int ) ;
+ unsigned char* stub2 (int ) ;
 
 __attribute__((used)) static uint32_t GetOptimumFast(CLzmaEnc *p, uint32_t *backRes)
 {
@@ -77,7 +77,7 @@ __attribute__((used)) static uint32_t GetOptimumFast(CLzmaEnc *p, uint32_t *back
     return mainLen;
   }
 
-  mainDist = 0; /* for GCC */
+  mainDist = 0;
   if (mainLen >= 2)
   {
     mainDist = matches[numPairs - 1];

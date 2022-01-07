@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_10__ {int nb_streams; TYPE_3__** streams; TYPE_2__* priv_data; } ;
-struct TYPE_9__ {int /*<<< orphan*/  time_base; TYPE_1__* index_entries; } ;
+struct TYPE_9__ {int time_base; TYPE_1__* index_entries; } ;
 struct TYPE_8__ {int* index_pos; } ;
-struct TYPE_7__ {int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_2__ Rl2DemuxContext ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_7__ {int timestamp; } ;
+typedef TYPE_2__ Rl2DemuxContext ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVSEEK_FLAG_BACKWARD ; 
- int av_index_search_timestamp (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_rescale_q (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVSEEK_FLAG_BACKWARD ;
+ int av_index_search_timestamp (TYPE_3__*,int ,int) ;
+ int av_rescale_q (int ,int ,int ) ;
 
 __attribute__((used)) static int rl2_read_seek(AVFormatContext *s, int stream_index, int64_t timestamp, int flags)
 {

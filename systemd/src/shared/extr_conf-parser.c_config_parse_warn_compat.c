@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Disabled ;
 
-/* Variables and functions */
-#define  DISABLED_CONFIGURATION 130 
-#define  DISABLED_EXPERIMENTAL 129 
-#define  DISABLED_LEGACY 128 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_INFO ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+typedef int Disabled ;
+
+
+
+
+
+ int LOG_DEBUG ;
+ int LOG_INFO ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*) ;
 
 int config_parse_warn_compat(
                 const char *unit,
@@ -36,17 +36,17 @@ int config_parse_warn_compat(
 
         switch(reason) {
 
-        case DISABLED_CONFIGURATION:
+        case 130:
                 log_syntax(unit, LOG_DEBUG, filename, line, 0,
                            "Support for option %s= has been disabled at compile time and it is ignored", lvalue);
                 break;
 
-        case DISABLED_LEGACY:
+        case 128:
                 log_syntax(unit, LOG_INFO, filename, line, 0,
                            "Support for option %s= has been removed and it is ignored", lvalue);
                 break;
 
-        case DISABLED_EXPERIMENTAL:
+        case 129:
                 log_syntax(unit, LOG_INFO, filename, line, 0,
                            "Support for option %s= has not yet been enabled and it is ignored", lvalue);
                 break;

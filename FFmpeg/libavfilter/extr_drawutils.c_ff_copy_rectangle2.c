@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_4__ {int nb_planes; int* pixelstep; int /*<<< orphan*/ * vsub; int /*<<< orphan*/ * hsub; } ;
-typedef  TYPE_1__ FFDrawContext ;
 
-/* Variables and functions */
- int AV_CEIL_RSHIFT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * pointer_at (TYPE_1__*,int /*<<< orphan*/ **,int*,int,int,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_4__ {int nb_planes; int* pixelstep; int * vsub; int * hsub; } ;
+typedef TYPE_1__ FFDrawContext ;
+
+
+ int AV_CEIL_RSHIFT (int,int ) ;
+ int memcpy (int *,int *,int) ;
+ int * pointer_at (TYPE_1__*,int **,int*,int,int,int) ;
 
 void ff_copy_rectangle2(FFDrawContext *draw,
                         uint8_t *dst[], int dst_linesize[],

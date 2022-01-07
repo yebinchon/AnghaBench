@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int n; TYPE_2__* layers; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_7__ {scalar_t__ type; int n; int c; int size; int outputs; int inputs; int /*<<< orphan*/  weights; int /*<<< orphan*/  biases; int /*<<< orphan*/  rolling_variance; int /*<<< orphan*/  rolling_mean; int /*<<< orphan*/  scales; scalar_t__ batch_normalize; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_7__ {scalar_t__ type; int n; int c; int size; int outputs; int inputs; int weights; int biases; int rolling_variance; int rolling_mean; int scales; scalar_t__ batch_normalize; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- scalar_t__ CONNECTED ; 
- scalar_t__ CONVOLUTIONAL ; 
- int /*<<< orphan*/  axpy_cpu (int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int gpu_index ; 
- int /*<<< orphan*/  load_weights (TYPE_1__*,char*) ; 
- TYPE_1__* parse_network_cfg (char*) ; 
- int /*<<< orphan*/  save_weights (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  scal_cpu (int,int,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ CONNECTED ;
+ scalar_t__ CONVOLUTIONAL ;
+ int axpy_cpu (int,int,int ,int,int ,int) ;
+ int gpu_index ;
+ int load_weights (TYPE_1__*,char*) ;
+ TYPE_1__* parse_network_cfg (char*) ;
+ int save_weights (TYPE_1__*,char*) ;
+ int scal_cpu (int,int,int ,int) ;
 
 void average(int argc, char *argv[])
 {
@@ -35,13 +35,13 @@ void average(int argc, char *argv[])
     network *net = parse_network_cfg(cfgfile);
     network *sum = parse_network_cfg(cfgfile);
 
-    char *weightfile = argv[4];   
+    char *weightfile = argv[4];
     load_weights(sum, weightfile);
 
     int i, j;
     int n = argc - 5;
     for(i = 0; i < n; ++i){
-        weightfile = argv[i+5];   
+        weightfile = argv[i+5];
         load_weights(net, weightfile);
         for(j = 0; j < net->n; ++j){
             layer l = net->layers[j];

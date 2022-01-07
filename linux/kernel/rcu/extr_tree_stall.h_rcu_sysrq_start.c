@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int rcu_cpu_stall_suppress ; 
+ int rcu_cpu_stall_suppress ;
 
 void rcu_sysrq_start(void)
 {
-	if (!rcu_cpu_stall_suppress)
-		rcu_cpu_stall_suppress = 2;
+ if (!rcu_cpu_stall_suppress)
+  rcu_cpu_stall_suppress = 2;
 }

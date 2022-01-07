@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TCHAR ;
-typedef  scalar_t__* LPTSTR ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int KEY_MAX_LEN ; 
- int REG_CLASS_NUMBER ; 
- scalar_t__ _T (char) ; 
- scalar_t__* _tcschr (scalar_t__*,scalar_t__) ; 
- int /*<<< orphan*/  _tcscmp (scalar_t__*,int /*<<< orphan*/ ) ; 
- int _tcslen (scalar_t__*) ; 
- int /*<<< orphan*/  _tcsncpy (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/ * reg_class_keys ; 
- int /*<<< orphan*/ * reg_class_names ; 
+
+
+
+typedef scalar_t__ TCHAR ;
+typedef scalar_t__* LPTSTR ;
+typedef int HKEY ;
+
+
+ int ERROR_INVALID_PARAMETER ;
+ int KEY_MAX_LEN ;
+ int REG_CLASS_NUMBER ;
+ scalar_t__ _T (char) ;
+ scalar_t__* _tcschr (scalar_t__*,scalar_t__) ;
+ int _tcscmp (scalar_t__*,int ) ;
+ int _tcslen (scalar_t__*) ;
+ int _tcsncpy (scalar_t__*,scalar_t__*,int) ;
+ int * reg_class_keys ;
+ int * reg_class_names ;
 
 HKEY getRegClass(LPTSTR lpClass)
 {
@@ -34,19 +34,19 @@ HKEY getRegClass(LPTSTR lpClass)
 
   TCHAR lpClassCopy[KEY_MAX_LEN];
 
-  if (lpClass == NULL)
+  if (lpClass == ((void*)0))
     return (HKEY)ERROR_INVALID_PARAMETER;
 
   _tcsncpy(lpClassCopy, lpClass, KEY_MAX_LEN);
 
-  classNameEnd  = _tcschr(lpClassCopy, _T('\\'));    /* The class name ends by '\' */
-  if (!classNameEnd) {                          /* or the whole string */
+  classNameEnd = _tcschr(lpClassCopy, _T('\\'));
+  if (!classNameEnd) {
       classNameEnd = lpClassCopy + _tcslen(lpClassCopy);
       if (classNameEnd[-1] == _T(']')) {
           classNameEnd--;
       }
   }
-  *classNameEnd = _T('\0');                       /* Isolate the class name */
+  *classNameEnd = _T('\0');
   if (lpClassCopy[0] == _T('[')) {
       classNameBeg = lpClassCopy + 1;
   } else {

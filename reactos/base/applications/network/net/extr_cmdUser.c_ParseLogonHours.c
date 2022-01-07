@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szBuffer ;
-typedef  int WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int szBuffer ;
+typedef int WCHAR ;
 struct TYPE_3__ {int Bias; } ;
-typedef  TYPE_1__ TIME_ZONE_INFORMATION ;
-typedef  int* PWSTR ;
-typedef  int* PDWORD ;
-typedef  int* PBYTE ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HourBitmap ;
-typedef  int /*<<< orphan*/  DayBitmap ;
-typedef  int DWORD ;
-typedef  int BYTE ;
+typedef TYPE_1__ TIME_ZONE_INFORMATION ;
+typedef int* PWSTR ;
+typedef int* PDWORD ;
+typedef int* PBYTE ;
+typedef int * LPWSTR ;
+typedef scalar_t__ LONG ;
+typedef int HourBitmap ;
+typedef int DayBitmap ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int DAYS_PER_WEEK ; 
- int ERROR_OUTOFMEMORY ; 
- int ERROR_SUCCESS ; 
- int FORMAT_MESSAGE_ALLOCATE_BUFFER ; 
- int FORMAT_MESSAGE_FROM_HMODULE ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- int /*<<< orphan*/  FillMemory (int*,int,int) ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ GetBitValue (int*,int) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  GetTimeZoneInformation (TYPE_1__*) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int HOURS_PER_DAY ; 
- int* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  LANG_USER_DEFAULT ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int LocalToGmtHour (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ParseDay (int*,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int*) ; 
- int /*<<< orphan*/  ParseHour (int*,int /*<<< orphan*/ **,scalar_t__*) ; 
- int /*<<< orphan*/  SetBitValue (int*,int) ; 
- int UNICODE_NULL ; 
- int UNITS_PER_WEEK ; 
- int /*<<< orphan*/  ZeroMemory (int*,int) ; 
- int /*<<< orphan*/  hModuleNetMsg ; 
- scalar_t__ iswdigit (int) ; 
- scalar_t__ wcsicmp (int*,char*) ; 
+
+ int DAYS_PER_WEEK ;
+ int ERROR_OUTOFMEMORY ;
+ int ERROR_SUCCESS ;
+ int FORMAT_MESSAGE_ALLOCATE_BUFFER ;
+ int FORMAT_MESSAGE_FROM_HMODULE ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ int FillMemory (int*,int,int) ;
+ int FormatMessageW (int,int ,int,int ,int *,int ,int *) ;
+ scalar_t__ GetBitValue (int*,int) ;
+ int GetProcessHeap () ;
+ int GetTimeZoneInformation (TYPE_1__*) ;
+ int HEAP_ZERO_MEMORY ;
+ int HOURS_PER_DAY ;
+ int* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int LANG_USER_DEFAULT ;
+ int LocalFree (int *) ;
+ int LocalToGmtHour (scalar_t__,scalar_t__) ;
+ int ParseDay (int*,int **,int **,int*) ;
+ int ParseHour (int*,int **,scalar_t__*) ;
+ int SetBitValue (int*,int) ;
+ int UNICODE_NULL ;
+ int UNITS_PER_WEEK ;
+ int ZeroMemory (int*,int) ;
+ int hModuleNetMsg ;
+ scalar_t__ iswdigit (int) ;
+ scalar_t__ wcsicmp (int*,char*) ;
 
 __attribute__((used)) static
 DWORD
@@ -62,7 +62,7 @@ ParseLogonHours(
     PDWORD pdwUnitsPerWeek)
 {
     TIME_ZONE_INFORMATION TimeZoneInformation;
-    PBYTE pLogonBitmap = NULL;
+    PBYTE pLogonBitmap = ((void*)0);
     DWORD dwError = ERROR_SUCCESS;
     WCHAR szBuffer[32];
     PWSTR ptr1, ptr2;
@@ -71,9 +71,9 @@ ParseLogonHours(
     LONG lStartHour, lEndHour, lBias;
     BYTE DayBitmap;
     BYTE HourBitmap[6];
-    LPWSTR ShortDays[7] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL};
-    LPWSTR LongDays[7] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL};
-    LPWSTR AmPmArray[4] = {NULL, NULL, NULL, NULL};
+    LPWSTR ShortDays[7] = {((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0)};
+    LPWSTR LongDays[7] = {((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0)};
+    LPWSTR AmPmArray[4] = {((void*)0), ((void*)0), ((void*)0), ((void*)0)};
 
     GetTimeZoneInformation(&TimeZoneInformation);
     lBias = TimeZoneInformation.Bias / 60;
@@ -81,7 +81,7 @@ ParseLogonHours(
     pLogonBitmap = HeapAlloc(GetProcessHeap(),
                              HEAP_ZERO_MEMORY,
                              UNITS_PER_WEEK / 8);
-    if (pLogonBitmap == NULL)
+    if (pLogonBitmap == ((void*)0))
         return ERROR_OUTOFMEMORY;
 
     if (*pszParams == UNICODE_NULL)
@@ -105,7 +105,7 @@ ParseLogonHours(
                        LANG_USER_DEFAULT,
                        (LPWSTR)&ShortDays[i],
                        0,
-                       NULL);
+                       ((void*)0));
 
         FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER |
                        FORMAT_MESSAGE_FROM_HMODULE |
@@ -115,7 +115,7 @@ ParseLogonHours(
                        LANG_USER_DEFAULT,
                        (LPWSTR)&LongDays[i],
                        0,
-                       NULL);
+                       ((void*)0));
     }
 
     for (i = 0; i < 4; i++)
@@ -128,7 +128,7 @@ ParseLogonHours(
                        LANG_USER_DEFAULT,
                        (LPWSTR)&AmPmArray[i],
                        0,
-                       NULL);
+                       ((void*)0));
     }
 
     ZeroMemory(&DayBitmap, sizeof(DayBitmap));
@@ -153,10 +153,10 @@ ParseLogonHours(
 
             if (prevSep != L'-')
             {
-                /* Set first value */
+
                 if (iswdigit(szBuffer[0]))
                 {
-                    /* Parse hour */
+
                     if (!ParseHour(szBuffer, AmPmArray, &lStartHour))
                     {
                         dwError = 3769;
@@ -167,7 +167,7 @@ ParseLogonHours(
                 }
                 else
                 {
-                    /* Parse day */
+
                     if (!ParseDay(szBuffer, ShortDays, LongDays, &dwStartDay))
                     {
                         dwError = 3768;
@@ -179,10 +179,10 @@ ParseLogonHours(
             }
             else
             {
-                /* Set second value */
+
                 if (iswdigit(szBuffer[0]))
                 {
-                    /* Parse hour */
+
                     if (!ParseHour(szBuffer, AmPmArray, &lEndHour))
                     {
                         dwError = 3769;
@@ -197,7 +197,7 @@ ParseLogonHours(
                 }
                 else
                 {
-                    /* Parse day */
+
                     if (!ParseDay(szBuffer, ShortDays, LongDays, &dwEndDay))
                     {
                         dwError = 3768;
@@ -214,7 +214,7 @@ ParseLogonHours(
 
             if (*ptr1 == L';' || *ptr1 == UNICODE_NULL)
             {
-                /* Fill the logon hour bitmap */
+
                 for (i = 0; i < DAYS_PER_WEEK; i++)
                 {
                     if (GetBitValue(&DayBitmap, i))
@@ -227,7 +227,7 @@ ParseLogonHours(
                     }
                 }
 
-                /* Reset the Bitmaps */
+
                 ZeroMemory(&DayBitmap, sizeof(DayBitmap));
                 ZeroMemory(HourBitmap, sizeof(HourBitmap));
             }
@@ -261,9 +261,9 @@ done:
     }
     else
     {
-        if (pLogonBitmap != NULL)
+        if (pLogonBitmap != ((void*)0))
             HeapFree(GetProcessHeap(), 0, pLogonBitmap);
-        *ppLogonBitmap = NULL;
+        *ppLogonBitmap = ((void*)0);
         *pdwUnitsPerWeek = 0;
     }
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * _cl_repo ; 
- int /*<<< orphan*/  _cl_sandbox ; 
- int /*<<< orphan*/  cl_fixture_basename (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_repository_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_repository_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_repository ;
+
+
+ int * _cl_repo ;
+ int _cl_sandbox ;
+ int cl_fixture_basename (int ) ;
+ int cl_git_pass (int ) ;
+ int git_repository_free (int *) ;
+ int git_repository_open (int **,int ) ;
 
 git_repository *cl_git_sandbox_reopen(void)
 {
-	if (_cl_repo) {
-		git_repository_free(_cl_repo);
-		_cl_repo = NULL;
+ if (_cl_repo) {
+  git_repository_free(_cl_repo);
+  _cl_repo = ((void*)0);
 
-		cl_git_pass(git_repository_open(
-			&_cl_repo, cl_fixture_basename(_cl_sandbox)));
-	}
+  cl_git_pass(git_repository_open(
+   &_cl_repo, cl_fixture_basename(_cl_sandbox)));
+ }
 
-	return _cl_repo;
+ return _cl_repo;
 }

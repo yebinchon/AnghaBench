@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlParserInputPtr ;
-typedef  TYPE_1__* xmlParserCtxtPtr ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int * xmlParserInputPtr ;
+typedef TYPE_1__* xmlParserCtxtPtr ;
 struct TYPE_8__ {int linenumbers; char* directory; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  inputPush (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlCtxtUseOptionsInternal (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlErrMemory (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  xmlFreeParserCtxt (TYPE_1__*) ; 
- int /*<<< orphan*/ * xmlLoadExternalEntity (char const*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* xmlNewParserCtxt () ; 
- char* xmlParserGetDirectory (char const*) ; 
+
+ int inputPush (TYPE_1__*,int *) ;
+ int xmlCtxtUseOptionsInternal (TYPE_1__*,int,int *) ;
+ int xmlErrMemory (int *,char*) ;
+ int xmlFreeParserCtxt (TYPE_1__*) ;
+ int * xmlLoadExternalEntity (char const*,int *,TYPE_1__*) ;
+ TYPE_1__* xmlNewParserCtxt () ;
+ char* xmlParserGetDirectory (char const*) ;
 
 xmlParserCtxtPtr
 xmlCreateURLParserCtxt(const char *filename, int options)
 {
     xmlParserCtxtPtr ctxt;
     xmlParserInputPtr inputStream;
-    char *directory = NULL;
+    char *directory = ((void*)0);
 
     ctxt = xmlNewParserCtxt();
-    if (ctxt == NULL) {
-	xmlErrMemory(NULL, "cannot allocate parser context");
-	return(NULL);
+    if (ctxt == ((void*)0)) {
+ xmlErrMemory(((void*)0), "cannot allocate parser context");
+ return(((void*)0));
     }
 
     if (options)
-	xmlCtxtUseOptionsInternal(ctxt, options, NULL);
+ xmlCtxtUseOptionsInternal(ctxt, options, ((void*)0));
     ctxt->linenumbers = 1;
 
-    inputStream = xmlLoadExternalEntity(filename, NULL, ctxt);
-    if (inputStream == NULL) {
-	xmlFreeParserCtxt(ctxt);
-	return(NULL);
+    inputStream = xmlLoadExternalEntity(filename, ((void*)0), ctxt);
+    if (inputStream == ((void*)0)) {
+ xmlFreeParserCtxt(ctxt);
+ return(((void*)0));
     }
 
     inputPush(ctxt, inputStream);
-    if ((ctxt->directory == NULL) && (directory == NULL))
+    if ((ctxt->directory == ((void*)0)) && (directory == ((void*)0)))
         directory = xmlParserGetDirectory(filename);
-    if ((ctxt->directory == NULL) && (directory != NULL))
+    if ((ctxt->directory == ((void*)0)) && (directory != ((void*)0)))
         ctxt->directory = directory;
 
     return(ctxt);

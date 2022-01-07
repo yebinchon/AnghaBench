@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  marks; } ;
-typedef  int /*<<< orphan*/  SCR ;
-typedef  int /*<<< orphan*/  LMARK ;
-typedef  TYPE_1__ EXF ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SLIST_FIRST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SLIST_REMOVE_HEAD (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  q ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int marks; } ;
+typedef int SCR ;
+typedef int LMARK ;
+typedef TYPE_1__ EXF ;
+
+
+ int * SLIST_FIRST (int ) ;
+ int SLIST_REMOVE_HEAD (int ,int ) ;
+ int free (int *) ;
+ int q ;
 
 int
 mark_end(
-	SCR *sp,
-	EXF *ep)
+ SCR *sp,
+ EXF *ep)
 {
-	LMARK *lmp;
+ LMARK *lmp;
 
-	/*
-	 * !!!
-	 * ep MAY NOT BE THE SAME AS sp->ep, DON'T USE THE LATTER.
-	 */
-	while ((lmp = SLIST_FIRST(ep->marks)) != NULL) {
-		SLIST_REMOVE_HEAD(ep->marks, q);
-		free(lmp);
-	}
-	return (0);
+
+
+
+
+ while ((lmp = SLIST_FIRST(ep->marks)) != ((void*)0)) {
+  SLIST_REMOVE_HEAD(ep->marks, q);
+  free(lmp);
+ }
+ return (0);
 }

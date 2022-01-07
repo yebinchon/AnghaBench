@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {size_t iItem; int iSubItem; int /*<<< orphan*/ * pszText; scalar_t__ lParam; scalar_t__ iImage; int /*<<< orphan*/  mask; } ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  TYPE_1__ LV_ITEM ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  void* DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LVIF_TEXT ; 
- int /*<<< orphan*/  LVM_SETITEMTEXT ; 
- void** ListItems_Cmds ; 
- int* ListItems_Locations ; 
- void** ListItems_Params ; 
- size_t ListView_GetItemCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ListView_InsertItem (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  LoadString (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  hToolsListCtrl ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {size_t iItem; int iSubItem; int * pszText; scalar_t__ lParam; scalar_t__ iImage; int mask; } ;
+typedef int TCHAR ;
+typedef TYPE_1__ LV_ITEM ;
+typedef int LPARAM ;
+typedef void* DWORD ;
+
+
+ int LVIF_TEXT ;
+ int LVM_SETITEMTEXT ;
+ void** ListItems_Cmds ;
+ int* ListItems_Locations ;
+ void** ListItems_Params ;
+ size_t ListView_GetItemCount (int ) ;
+ int ListView_InsertItem (int ,TYPE_1__*) ;
+ int LoadString (int ,void*,int *,int) ;
+ int SendMessage (int ,int ,size_t,int ) ;
+ int hInst ;
+ int hToolsListCtrl ;
+ int memset (TYPE_1__*,int ,int) ;
 
 void AddItem ( DWORD name_id, DWORD descr_id, DWORD cmd_id , DWORD param_id, int csidl ) {
     TCHAR szTemp[256];

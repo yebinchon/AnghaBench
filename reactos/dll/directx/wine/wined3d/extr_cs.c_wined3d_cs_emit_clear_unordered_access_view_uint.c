@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_uvec4 {int dummy; } ;
-struct wined3d_unordered_access_view {int /*<<< orphan*/  resource; } ;
-struct wined3d_cs_clear_unordered_access_view {struct wined3d_uvec4 clear_value; struct wined3d_unordered_access_view* view; int /*<<< orphan*/  opcode; } ;
+struct wined3d_unordered_access_view {int resource; } ;
+struct wined3d_cs_clear_unordered_access_view {struct wined3d_uvec4 clear_value; struct wined3d_unordered_access_view* view; int opcode; } ;
 struct wined3d_cs {TYPE_1__* ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* submit ) (struct wined3d_cs*,int /*<<< orphan*/ ) ;struct wined3d_cs_clear_unordered_access_view* (* require_space ) (struct wined3d_cs*,int,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* submit ) (struct wined3d_cs*,int ) ;struct wined3d_cs_clear_unordered_access_view* (* require_space ) (struct wined3d_cs*,int,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WINED3D_CS_OP_CLEAR_UNORDERED_ACCESS_VIEW ; 
- int /*<<< orphan*/  WINED3D_CS_QUEUE_DEFAULT ; 
- struct wined3d_cs_clear_unordered_access_view* stub1 (struct wined3d_cs*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct wined3d_cs*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wined3d_resource_acquire (int /*<<< orphan*/ ) ; 
+
+ int WINED3D_CS_OP_CLEAR_UNORDERED_ACCESS_VIEW ;
+ int WINED3D_CS_QUEUE_DEFAULT ;
+ struct wined3d_cs_clear_unordered_access_view* stub1 (struct wined3d_cs*,int,int ) ;
+ int stub2 (struct wined3d_cs*,int ) ;
+ int wined3d_resource_acquire (int ) ;
 
 void wined3d_cs_emit_clear_unordered_access_view_uint(struct wined3d_cs *cs,
         struct wined3d_unordered_access_view *view, const struct wined3d_uvec4 *clear_value)

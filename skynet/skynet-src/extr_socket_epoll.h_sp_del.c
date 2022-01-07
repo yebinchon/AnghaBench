@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EPOLL_CTL_DEL ;
+ int epoll_ctl (int,int ,int,int *) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EPOLL_CTL_DEL ; 
- int /*<<< orphan*/  epoll_ctl (int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
-
-__attribute__((used)) static void 
+__attribute__((used)) static void
 sp_del(int efd, int sock) {
-	epoll_ctl(efd, EPOLL_CTL_DEL, sock , NULL);
+ epoll_ctl(efd, EPOLL_CTL_DEL, sock , ((void*)0));
 }

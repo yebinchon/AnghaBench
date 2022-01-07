@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  timeo ;
+
+
+
+
+typedef int uint64_t ;
+typedef int timeo ;
 struct nn_stopwatch {int dummy; } ;
-typedef  int /*<<< orphan*/  buf ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- scalar_t__ ETIMEDOUT ; 
- int /*<<< orphan*/  NN_PAIR ; 
- int /*<<< orphan*/  NN_RCVTIMEO ; 
- int /*<<< orphan*/  NN_SNDTIMEO ; 
- int /*<<< orphan*/  NN_SOL_SOCKET ; 
- int /*<<< orphan*/  errno_assert (int) ; 
- scalar_t__ nn_errno () ; 
- int nn_recv (int,char*,int,int /*<<< orphan*/ ) ; 
- int nn_send (int,char*,int,int /*<<< orphan*/ ) ; 
- int nn_setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  nn_stopwatch_init (struct nn_stopwatch*) ; 
- int /*<<< orphan*/  nn_stopwatch_term (struct nn_stopwatch*) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time_assert (int /*<<< orphan*/ ,int) ; 
+
+ int AF_SP ;
+ scalar_t__ ETIMEDOUT ;
+ int NN_PAIR ;
+ int NN_RCVTIMEO ;
+ int NN_SNDTIMEO ;
+ int NN_SOL_SOCKET ;
+ int errno_assert (int) ;
+ scalar_t__ nn_errno () ;
+ int nn_recv (int,char*,int,int ) ;
+ int nn_send (int,char*,int,int ) ;
+ int nn_setsockopt (int,int ,int ,int*,int) ;
+ int nn_stopwatch_init (struct nn_stopwatch*) ;
+ int nn_stopwatch_term (struct nn_stopwatch*) ;
+ int test_close (int) ;
+ int test_socket (int ,int ) ;
+ int time_assert (int ,int) ;
 
 int main ()
 {

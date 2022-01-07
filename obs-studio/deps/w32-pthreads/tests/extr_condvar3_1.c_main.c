@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
+
+
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int pthread_t ;
 struct TYPE_12__ {long tv_sec; int tv_nsec; } ;
 struct TYPE_11__ {char* nWaitersBlocked; char* nWaitersGone; char* nWaitersToUnblock; } ;
 struct TYPE_10__ {int const millitm; scalar_t__ time; } ;
-typedef  TYPE_1__ PTW32_STRUCT_TIMEB ;
-typedef  int DWORD ;
+typedef TYPE_1__ PTW32_STRUCT_TIMEB ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int NUMTHREADS ; 
- int /*<<< orphan*/  PTW32_FTIME (TYPE_1__*) ; 
- TYPE_8__ abstime ; 
- int /*<<< orphan*/  assert (int) ; 
- int awoken ; 
- TYPE_2__* cv ; 
- TYPE_2__* cv1 ; 
- char** error_string ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  mutex ; 
- int /*<<< orphan*/  mutex1 ; 
- int /*<<< orphan*/  mythread ; 
- int pthread_cond_destroy (TYPE_2__**) ; 
- scalar_t__ pthread_cond_init (TYPE_2__**,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_cond_signal (TYPE_2__**) ; 
- scalar_t__ pthread_cond_wait (TYPE_2__**,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- scalar_t__ pthread_join (int /*<<< orphan*/ ,void**) ; 
- scalar_t__ pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int signaled ; 
- int /*<<< orphan*/  stderr ; 
- int timedout ; 
- int waiting ; 
+
+ int NUMTHREADS ;
+ int PTW32_FTIME (TYPE_1__*) ;
+ TYPE_8__ abstime ;
+ int assert (int) ;
+ int awoken ;
+ TYPE_2__* cv ;
+ TYPE_2__* cv1 ;
+ char** error_string ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,...) ;
+ int mutex ;
+ int mutex1 ;
+ int mythread ;
+ int pthread_cond_destroy (TYPE_2__**) ;
+ scalar_t__ pthread_cond_init (TYPE_2__**,int *) ;
+ scalar_t__ pthread_cond_signal (TYPE_2__**) ;
+ scalar_t__ pthread_cond_wait (TYPE_2__**,int *) ;
+ scalar_t__ pthread_create (int *,int *,int ,void*) ;
+ scalar_t__ pthread_join (int ,void**) ;
+ scalar_t__ pthread_mutex_destroy (int *) ;
+ scalar_t__ pthread_mutex_init (int *,int *) ;
+ scalar_t__ pthread_mutex_lock (int *) ;
+ scalar_t__ pthread_mutex_unlock (int *) ;
+ int signaled ;
+ int stderr ;
+ int timedout ;
+ int waiting ;
 
 int
 main()
@@ -58,13 +58,13 @@ main()
   PTW32_STRUCT_TIMEB currSysTime;
   const DWORD NANOSEC_PER_MILLISEC = 1000000;
 
-  assert(pthread_cond_init(&cv, NULL) == 0);
-  assert(pthread_cond_init(&cv1, NULL) == 0);
+  assert(pthread_cond_init(&cv, ((void*)0)) == 0);
+  assert(pthread_cond_init(&cv1, ((void*)0)) == 0);
 
-  assert(pthread_mutex_init(&mutex, NULL) == 0);
-  assert(pthread_mutex_init(&mutex1, NULL) == 0);
+  assert(pthread_mutex_init(&mutex, ((void*)0)) == 0);
+  assert(pthread_mutex_init(&mutex1, ((void*)0)) == 0);
 
-  /* get current system time */
+
   PTW32_FTIME(&currSysTime);
 
   abstime.tv_sec = (long)currSysTime.time;
@@ -76,7 +76,7 @@ main()
 
   for (i = 1; i <= NUMTHREADS; i++)
     {
-      assert(pthread_create(&t[i], NULL, mythread, (void *)(size_t)i) == 0);
+      assert(pthread_create(&t[i], ((void*)0), mythread, (void *)(size_t)i) == 0);
     }
 
   do {
@@ -87,9 +87,9 @@ main()
 
   for (i = NUMTHREADS/3; i <= 2*NUMTHREADS/3; i++)
     {
-//      assert(pthread_mutex_lock(&mutex) == 0);
+
       assert(pthread_cond_signal(&cv) == 0);
-//      assert(pthread_mutex_unlock(&mutex) == 0);
+
 
       signaled++;
     }

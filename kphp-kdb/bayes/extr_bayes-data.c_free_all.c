@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  user ;
-typedef  int /*<<< orphan*/  entry_t ;
-typedef  int /*<<< orphan*/  black_list ;
-struct TYPE_14__ {int /*<<< orphan*/  cnt; } ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int user ;
+typedef int entry_t ;
+typedef int black_list ;
+struct TYPE_14__ {int cnt; } ;
 struct TYPE_13__ {int size; } ;
-struct TYPE_11__ {int /*<<< orphan*/  cnt; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * next; TYPE_1__ b; } ;
+struct TYPE_11__ {int cnt; } ;
+struct TYPE_12__ {int * next; TYPE_1__ b; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_2__* bl_head ; 
- int /*<<< orphan*/  black_list_do_delete (TYPE_2__*) ; 
- TYPE_2__* buff ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  free_header (int /*<<< orphan*/ *) ; 
- scalar_t__ get_memory_used () ; 
- TYPE_7__ global_bayes ; 
- int /*<<< orphan*/  header ; 
- scalar_t__ htbl_get_memory () ; 
- scalar_t__ index_mode ; 
- int /*<<< orphan*/  ltbl_free (TYPE_3__*) ; 
- int max_words ; 
- TYPE_2__* new_buff ; 
- int /*<<< orphan*/  qfree (TYPE_2__*,int) ; 
- int /*<<< orphan*/  qhtbl_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int user_LRU_unload () ; 
- TYPE_3__ user_table ; 
- TYPE_2__* users ; 
- scalar_t__ verbosity ; 
+
+ int assert (int) ;
+ TYPE_2__* bl_head ;
+ int black_list_do_delete (TYPE_2__*) ;
+ TYPE_2__* buff ;
+ int fprintf (int ,char*,scalar_t__) ;
+ int free_header (int *) ;
+ scalar_t__ get_memory_used () ;
+ TYPE_7__ global_bayes ;
+ int header ;
+ scalar_t__ htbl_get_memory () ;
+ scalar_t__ index_mode ;
+ int ltbl_free (TYPE_3__*) ;
+ int max_words ;
+ TYPE_2__* new_buff ;
+ int qfree (TYPE_2__*,int) ;
+ int qhtbl_free (int *) ;
+ int stderr ;
+ int user_LRU_unload () ;
+ TYPE_3__ user_table ;
+ TYPE_2__* users ;
+ scalar_t__ verbosity ;
 
 void free_all (void) {
   if (verbosity) {
@@ -61,7 +61,7 @@ void free_all (void) {
       qfree (new_buff, 4000000 * sizeof (entry_t));
     }
 
-    while (bl_head->next != NULL) {
+    while (bl_head->next != ((void*)0)) {
       black_list_do_delete (bl_head);
     }
     qfree (bl_head, sizeof (black_list));

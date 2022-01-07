@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  size_t ngx_uint_t ;
-struct TYPE_14__ {size_t min_shift; TYPE_1__* stats; TYPE_3__* pages; int /*<<< orphan*/ * start; int /*<<< orphan*/ * end; } ;
-typedef  TYPE_2__ ngx_slab_pool_t ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
+typedef int u_char ;
+typedef size_t ngx_uint_t ;
+struct TYPE_14__ {size_t min_shift; TYPE_1__* stats; TYPE_3__* pages; int * start; int * end; } ;
+typedef TYPE_2__ ngx_slab_pool_t ;
 struct TYPE_15__ {uintptr_t slab; uintptr_t prev; struct TYPE_15__* next; } ;
-typedef  TYPE_3__ ngx_slab_page_t ;
-struct TYPE_13__ {size_t total; int /*<<< orphan*/  used; } ;
-struct TYPE_12__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_3__ ngx_slab_page_t ;
+struct TYPE_13__ {size_t total; int used; } ;
+struct TYPE_12__ {int log; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_ALERT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_ALLOC ; 
-#define  NGX_SLAB_BIG 131 
- uintptr_t NGX_SLAB_BUSY ; 
-#define  NGX_SLAB_EXACT 130 
- int NGX_SLAB_MAP_MASK ; 
- int /*<<< orphan*/  NGX_SLAB_MAP_SHIFT ; 
-#define  NGX_SLAB_PAGE 129 
- uintptr_t NGX_SLAB_PAGE_BUSY ; 
- uintptr_t NGX_SLAB_PAGE_START ; 
- uintptr_t NGX_SLAB_SHIFT_MASK ; 
-#define  NGX_SLAB_SMALL 128 
- TYPE_11__* ngx_cycle ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,void*) ; 
- size_t ngx_pagesize ; 
- int ngx_pagesize_shift ; 
- int /*<<< orphan*/  ngx_slab_error (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- uintptr_t ngx_slab_exact_shift ; 
- size_t ngx_slab_exact_size ; 
- int /*<<< orphan*/  ngx_slab_free_pages (TYPE_2__*,TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  ngx_slab_junk (void*,size_t) ; 
- size_t ngx_slab_page_type (TYPE_3__*) ; 
- TYPE_3__* ngx_slab_slots (TYPE_2__*) ; 
+
+ int NGX_LOG_ALERT ;
+ int NGX_LOG_DEBUG_ALLOC ;
+
+ uintptr_t NGX_SLAB_BUSY ;
+
+ int NGX_SLAB_MAP_MASK ;
+ int NGX_SLAB_MAP_SHIFT ;
+
+ uintptr_t NGX_SLAB_PAGE_BUSY ;
+ uintptr_t NGX_SLAB_PAGE_START ;
+ uintptr_t NGX_SLAB_SHIFT_MASK ;
+
+ TYPE_11__* ngx_cycle ;
+ int ngx_log_debug1 (int ,int ,int ,char*,void*) ;
+ size_t ngx_pagesize ;
+ int ngx_pagesize_shift ;
+ int ngx_slab_error (TYPE_2__*,int ,char*) ;
+ uintptr_t ngx_slab_exact_shift ;
+ size_t ngx_slab_exact_size ;
+ int ngx_slab_free_pages (TYPE_2__*,TYPE_3__*,size_t) ;
+ int ngx_slab_junk (void*,size_t) ;
+ size_t ngx_slab_page_type (TYPE_3__*) ;
+ TYPE_3__* ngx_slab_slots (TYPE_2__*) ;
 
 void
 ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
 {
-    size_t            size;
-    uintptr_t         slab, m, *bitmap;
-    ngx_uint_t        i, n, type, slot, shift, map;
-    ngx_slab_page_t  *slots, *page;
+    size_t size;
+    uintptr_t slab, m, *bitmap;
+    ngx_uint_t i, n, type, slot, shift, map;
+    ngx_slab_page_t *slots, *page;
 
     ngx_log_debug1(NGX_LOG_DEBUG_ALLOC, ngx_cycle->log, 0, "slab free: %p", p);
 
@@ -70,7 +70,7 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
 
     switch (type) {
 
-    case NGX_SLAB_SMALL:
+    case 128:
 
         shift = slab & NGX_SLAB_SHIFT_MASK;
         size = (size_t) 1 << shift;
@@ -88,14 +88,14 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
         if (bitmap[n] & m) {
             slot = shift - pool->min_shift;
 
-            if (page->next == NULL) {
+            if (page->next == ((void*)0)) {
                 slots = ngx_slab_slots(pool);
 
                 page->next = slots[slot].next;
                 slots[slot].next = page;
 
-                page->prev = (uintptr_t) &slots[slot] | NGX_SLAB_SMALL;
-                page->next->prev = (uintptr_t) page | NGX_SLAB_SMALL;
+                page->prev = (uintptr_t) &slots[slot] | 128;
+                page->next->prev = (uintptr_t) page | 128;
             }
 
             bitmap[n] &= ~m;
@@ -130,7 +130,7 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
 
         goto chunk_already_free;
 
-    case NGX_SLAB_EXACT:
+    case 130:
 
         m = (uintptr_t) 1 <<
                 (((uintptr_t) p & (ngx_pagesize - 1)) >> ngx_slab_exact_shift);
@@ -149,8 +149,8 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
                 page->next = slots[slot].next;
                 slots[slot].next = page;
 
-                page->prev = (uintptr_t) &slots[slot] | NGX_SLAB_EXACT;
-                page->next->prev = (uintptr_t) page | NGX_SLAB_EXACT;
+                page->prev = (uintptr_t) &slots[slot] | 130;
+                page->next->prev = (uintptr_t) page | 130;
             }
 
             page->slab &= ~m;
@@ -168,7 +168,7 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
 
         goto chunk_already_free;
 
-    case NGX_SLAB_BIG:
+    case 131:
 
         shift = slab & NGX_SLAB_SHIFT_MASK;
         size = (size_t) 1 << shift;
@@ -183,14 +183,14 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
         if (slab & m) {
             slot = shift - pool->min_shift;
 
-            if (page->next == NULL) {
+            if (page->next == ((void*)0)) {
                 slots = ngx_slab_slots(pool);
 
                 page->next = slots[slot].next;
                 slots[slot].next = page;
 
-                page->prev = (uintptr_t) &slots[slot] | NGX_SLAB_BIG;
-                page->next->prev = (uintptr_t) page | NGX_SLAB_BIG;
+                page->prev = (uintptr_t) &slots[slot] | 131;
+                page->next->prev = (uintptr_t) page | 131;
             }
 
             page->slab &= ~m;
@@ -208,7 +208,7 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
 
         goto chunk_already_free;
 
-    case NGX_SLAB_PAGE:
+    case 129:
 
         if ((uintptr_t) p & (ngx_pagesize - 1)) {
             goto wrong_chunk;
@@ -235,7 +235,7 @@ ngx_slab_free_locked(ngx_slab_pool_t *pool, void *p)
         return;
     }
 
-    /* not reached */
+
 
     return;
 

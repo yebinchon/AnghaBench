@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  OpenVPNObfuscationMask; void* OpenVPNObfuscation; int /*<<< orphan*/  OpenVPNPortList; void* EnableSSTP; void* EnableOpenVPN; } ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_1__ OPENVPN_SSTP_CONFIG ;
 
-/* Variables and functions */
- void* PackGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PackGetStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int OpenVPNObfuscationMask; void* OpenVPNObfuscation; int OpenVPNPortList; void* EnableSSTP; void* EnableOpenVPN; } ;
+typedef int PACK ;
+typedef TYPE_1__ OPENVPN_SSTP_CONFIG ;
+
+
+ void* PackGetBool (int *,char*) ;
+ int PackGetStr (int *,char*,int ,int) ;
+ int Zero (TYPE_1__*,int) ;
 
 void InOpenVpnSstpConfig(OPENVPN_SSTP_CONFIG *t, PACK *p)
 {
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
 
-	Zero(t, sizeof(OPENVPN_SSTP_CONFIG));
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	t->EnableOpenVPN = PackGetBool(p, "EnableOpenVPN");
-	t->EnableSSTP = PackGetBool(p, "EnableSSTP");
-	PackGetStr(p, "OpenVPNPortList", t->OpenVPNPortList, sizeof(t->OpenVPNPortList));
-	t->OpenVPNObfuscation= PackGetBool(p, "OpenVPNObfuscation");
-	PackGetStr(p, "OpenVPNObfuscationMask", t->OpenVPNObfuscationMask, sizeof(t->OpenVPNObfuscationMask));
+ Zero(t, sizeof(OPENVPN_SSTP_CONFIG));
+
+ t->EnableOpenVPN = PackGetBool(p, "EnableOpenVPN");
+ t->EnableSSTP = PackGetBool(p, "EnableSSTP");
+ PackGetStr(p, "OpenVPNPortList", t->OpenVPNPortList, sizeof(t->OpenVPNPortList));
+ t->OpenVPNObfuscation= PackGetBool(p, "OpenVPNObfuscation");
+ PackGetStr(p, "OpenVPNObfuscationMask", t->OpenVPNObfuscationMask, sizeof(t->OpenVPNObfuscationMask));
 }

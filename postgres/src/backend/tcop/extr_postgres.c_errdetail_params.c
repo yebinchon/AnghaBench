@@ -1,99 +1,99 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  value; int /*<<< orphan*/  ptype; scalar_t__ isnull; } ;
-struct TYPE_10__ {scalar_t__ numParams; TYPE_3__* params; int /*<<< orphan*/ * paramFetch; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int value; int ptype; scalar_t__ isnull; } ;
+struct TYPE_10__ {scalar_t__ numParams; TYPE_3__* params; int * paramFetch; } ;
 struct TYPE_9__ {char* data; } ;
-typedef  TYPE_1__ StringInfoData ;
-typedef  TYPE_2__* ParamListInfo ;
-typedef  TYPE_3__ ParamExternData ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  MemoryContext ;
+typedef TYPE_1__ StringInfoData ;
+typedef TYPE_2__* ParamListInfo ;
+typedef TYPE_3__ ParamExternData ;
+typedef int Oid ;
+typedef int MemoryContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsAbortedTransactionBlockState () ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MessageContext ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- char* OidOutputFunctionCall (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,char*,char*,int) ; 
- int /*<<< orphan*/  appendStringInfoCharMacro (TYPE_1__*,char) ; 
- int /*<<< orphan*/  appendStringInfoString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  errdetail (char*,char*) ; 
- int /*<<< orphan*/  getTypeOutputInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  initStringInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  pfree (char*) ; 
+
+ int Assert (int ) ;
+ int IsAbortedTransactionBlockState () ;
+ int MemoryContextSwitchTo (int ) ;
+ int MessageContext ;
+ int OidIsValid (int ) ;
+ char* OidOutputFunctionCall (int ,int ) ;
+ int appendStringInfo (TYPE_1__*,char*,char*,int) ;
+ int appendStringInfoCharMacro (TYPE_1__*,char) ;
+ int appendStringInfoString (TYPE_1__*,char*) ;
+ int errdetail (char*,char*) ;
+ int getTypeOutputInfo (int ,int *,int*) ;
+ int initStringInfo (TYPE_1__*) ;
+ int pfree (char*) ;
 
 __attribute__((used)) static int
 errdetail_params(ParamListInfo params)
 {
-	/* We mustn't call user-defined I/O functions when in an aborted xact */
-	if (params && params->numParams > 0 && !IsAbortedTransactionBlockState())
-	{
-		StringInfoData param_str;
-		MemoryContext oldcontext;
 
-		/* This code doesn't support dynamic param lists */
-		Assert(params->paramFetch == NULL);
+ if (params && params->numParams > 0 && !IsAbortedTransactionBlockState())
+ {
+  StringInfoData param_str;
+  MemoryContext oldcontext;
 
-		/* Make sure any trash is generated in MessageContext */
-		oldcontext = MemoryContextSwitchTo(MessageContext);
 
-		initStringInfo(&param_str);
+  Assert(params->paramFetch == ((void*)0));
 
-		for (int paramno = 0; paramno < params->numParams; paramno++)
-		{
-			ParamExternData *prm = &params->params[paramno];
-			Oid			typoutput;
-			bool		typisvarlena;
-			char	   *pstring;
-			char	   *p;
 
-			appendStringInfo(&param_str, "%s$%d = ",
-							 paramno > 0 ? ", " : "",
-							 paramno + 1);
+  oldcontext = MemoryContextSwitchTo(MessageContext);
 
-			if (prm->isnull || !OidIsValid(prm->ptype))
-			{
-				appendStringInfoString(&param_str, "NULL");
-				continue;
-			}
+  initStringInfo(&param_str);
 
-			getTypeOutputInfo(prm->ptype, &typoutput, &typisvarlena);
+  for (int paramno = 0; paramno < params->numParams; paramno++)
+  {
+   ParamExternData *prm = &params->params[paramno];
+   Oid typoutput;
+   bool typisvarlena;
+   char *pstring;
+   char *p;
 
-			pstring = OidOutputFunctionCall(typoutput, prm->value);
+   appendStringInfo(&param_str, "%s$%d = ",
+        paramno > 0 ? ", " : "",
+        paramno + 1);
 
-			appendStringInfoCharMacro(&param_str, '\'');
-			for (p = pstring; *p; p++)
-			{
-				if (*p == '\'') /* double single quotes */
-					appendStringInfoCharMacro(&param_str, *p);
-				appendStringInfoCharMacro(&param_str, *p);
-			}
-			appendStringInfoCharMacro(&param_str, '\'');
+   if (prm->isnull || !OidIsValid(prm->ptype))
+   {
+    appendStringInfoString(&param_str, "NULL");
+    continue;
+   }
 
-			pfree(pstring);
-		}
+   getTypeOutputInfo(prm->ptype, &typoutput, &typisvarlena);
 
-		errdetail("parameters: %s", param_str.data);
+   pstring = OidOutputFunctionCall(typoutput, prm->value);
 
-		pfree(param_str.data);
+   appendStringInfoCharMacro(&param_str, '\'');
+   for (p = pstring; *p; p++)
+   {
+    if (*p == '\'')
+     appendStringInfoCharMacro(&param_str, *p);
+    appendStringInfoCharMacro(&param_str, *p);
+   }
+   appendStringInfoCharMacro(&param_str, '\'');
 
-		MemoryContextSwitchTo(oldcontext);
-	}
+   pfree(pstring);
+  }
 
-	return 0;
+  errdetail("parameters: %s", param_str.data);
+
+  pfree(param_str.data);
+
+  MemoryContextSwitchTo(oldcontext);
+ }
+
+ return 0;
 }

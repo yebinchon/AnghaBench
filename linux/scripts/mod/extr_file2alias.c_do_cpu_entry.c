@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DEF_FIELD (void*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  cpu_feature ; 
- int feature ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+ int DEF_FIELD (void*,int ,int) ;
+ int cpu_feature ;
+ int feature ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static int do_cpu_entry(const char *filename, void *symval, char *alias)
 {
-	DEF_FIELD(symval, cpu_feature, feature);
+ DEF_FIELD(symval, cpu_feature, feature);
 
-	sprintf(alias, "cpu:type:*:feature:*%04X*", feature);
-	return 1;
+ sprintf(alias, "cpu:type:*:feature:*%04X*", feature);
+ return 1;
 }

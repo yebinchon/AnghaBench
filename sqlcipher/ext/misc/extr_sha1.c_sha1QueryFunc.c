@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  double sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  SHA1Context ;
 
-/* Variables and functions */
-#define  SQLITE_BLOB 132 
-#define  SQLITE_FLOAT 131 
-#define  SQLITE_INTEGER 130 
-#define  SQLITE_NULL 129 
- scalar_t__ SQLITE_ROW ; 
-#define  SQLITE_TEXT 128 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  hash_finish (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hash_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hash_step (int /*<<< orphan*/ *,unsigned char const*,int) ; 
- int /*<<< orphan*/  hash_step_vformat (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  memcpy (int*,double*,int) ; 
- unsigned char* sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_count (int /*<<< orphan*/ *) ; 
- double sqlite3_column_double (int /*<<< orphan*/ *,int) ; 
- double sqlite3_column_int64 (int /*<<< orphan*/ *,int) ; 
- unsigned char* sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_type (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,...) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ **,char const**) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- char* sqlite3_sql (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_stmt_readonly (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_uint64 ;
+typedef int sqlite3_stmt ;
+typedef double sqlite3_int64 ;
+typedef int sqlite3_context ;
+typedef int sqlite3 ;
+typedef int SHA1Context ;
+
+
+
+
+
+
+ scalar_t__ SQLITE_ROW ;
+
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ int hash_finish (int *,char*) ;
+ int hash_init (int *) ;
+ int hash_step (int *,unsigned char const*,int) ;
+ int hash_step_vformat (int *,char*,int) ;
+ int memcpy (int*,double*,int) ;
+ unsigned char* sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ int sqlite3_column_count (int *) ;
+ double sqlite3_column_double (int *,int) ;
+ double sqlite3_column_int64 (int *,int) ;
+ unsigned char* sqlite3_column_text (int *,int) ;
+ int sqlite3_column_type (int *,int) ;
+ int * sqlite3_context_db_handle (int *) ;
+ int sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,...) ;
+ int sqlite3_prepare_v2 (int *,char const*,int,int **,char const**) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ char* sqlite3_sql (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int sqlite3_stmt_readonly (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static void sha1QueryFunc(
   sqlite3_context *context,
@@ -61,8 +61,8 @@ __attribute__((used)) static void sha1QueryFunc(
   sqlite3 *db = sqlite3_context_db_handle(context);
   const char *zSql = (const char*)sqlite3_value_text(argv[0]);
   sqlite3_stmt *pStmt = 0;
-  int nCol;                   /* Number of columns in the result set */
-  int i;                      /* Loop counter */
+  int nCol;
+  int i;
   int rc;
   int n;
   const char *z;
@@ -95,16 +95,16 @@ __attribute__((used)) static void sha1QueryFunc(
     hash_step_vformat(&cx,"S%d:",n);
     hash_step(&cx,(unsigned char*)z,n);
 
-    /* Compute a hash over the result of the query */
+
     while( SQLITE_ROW==sqlite3_step(pStmt) ){
       hash_step(&cx,(const unsigned char*)"R",1);
       for(i=0; i<nCol; i++){
         switch( sqlite3_column_type(pStmt,i) ){
-          case SQLITE_NULL: {
+          case 129: {
             hash_step(&cx, (const unsigned char*)"N",1);
             break;
           }
-          case SQLITE_INTEGER: {
+          case 130: {
             sqlite3_uint64 u;
             int j;
             unsigned char x[9];
@@ -118,7 +118,7 @@ __attribute__((used)) static void sha1QueryFunc(
             hash_step(&cx, x, 9);
             break;
           }
-          case SQLITE_FLOAT: {
+          case 131: {
             sqlite3_uint64 u;
             int j;
             unsigned char x[9];
@@ -132,14 +132,14 @@ __attribute__((used)) static void sha1QueryFunc(
             hash_step(&cx,x,9);
             break;
           }
-          case SQLITE_TEXT: {
+          case 128: {
             int n2 = sqlite3_column_bytes(pStmt, i);
             const unsigned char *z2 = sqlite3_column_text(pStmt, i);
             hash_step_vformat(&cx,"T%d:",n2);
             hash_step(&cx, z2, n2);
             break;
           }
-          case SQLITE_BLOB: {
+          case 132: {
             int n2 = sqlite3_column_bytes(pStmt, i);
             const unsigned char *z2 = sqlite3_column_blob(pStmt, i);
             hash_step_vformat(&cx,"B%d:",n2);

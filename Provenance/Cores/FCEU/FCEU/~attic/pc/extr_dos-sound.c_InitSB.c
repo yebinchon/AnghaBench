@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int DSPV ; 
- int /*<<< orphan*/  GetBLASTER () ; 
- int GetDSPVersion () ; 
- int IVector ; 
- int /*<<< orphan*/  KillDMABuffer () ; 
- int /*<<< orphan*/  MakeDMABuffer () ; 
- int PICMask ; 
- int /*<<< orphan*/  ProgramDMA () ; 
- scalar_t__ ReadPtr ; 
- int /*<<< orphan*/  ResetDSP () ; 
- int SBDMA ; 
- int SBDMA16 ; 
- int SBIRQ ; 
- int /*<<< orphan*/  SetVectors () ; 
- int /*<<< orphan*/  WaveBuffer ; 
- int /*<<< orphan*/  WriteDSP (int) ; 
- scalar_t__ WritePtr ; 
- int format ; 
- int frags ; 
- int fragsize ; 
- int fragtotal ; 
- int hbusy ; 
- int hsmode ; 
- int inportb (int) ; 
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  outportb (int,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
- int whichbuf ; 
+ int DSPV ;
+ int GetBLASTER () ;
+ int GetDSPVersion () ;
+ int IVector ;
+ int KillDMABuffer () ;
+ int MakeDMABuffer () ;
+ int PICMask ;
+ int ProgramDMA () ;
+ scalar_t__ ReadPtr ;
+ int ResetDSP () ;
+ int SBDMA ;
+ int SBDMA16 ;
+ int SBIRQ ;
+ int SetVectors () ;
+ int WaveBuffer ;
+ int WriteDSP (int) ;
+ scalar_t__ WritePtr ;
+ int format ;
+ int frags ;
+ int fragsize ;
+ int fragtotal ;
+ int hbusy ;
+ int hsmode ;
+ int inportb (int) ;
+ int malloc (int) ;
+ int memset (int ,int,int) ;
+ int outportb (int,int) ;
+ int printf (char*,...) ;
+ int puts (char*) ;
+ int whichbuf ;
 
 int InitSB(int Rate, int bittage)
 {
@@ -77,8 +69,8 @@ int InitSB(int Rate, int bittage)
 
  if(!GetBLASTER())
   return(0);
- 
- /* Disable IRQ line in PIC0 or PIC1 */
+
+
  if(SBIRQ>7)
  {
   PICMask=inportb(0xA1);
@@ -94,7 +86,7 @@ int InitSB(int Rate, int bittage)
   puts(" Error resetting the DSP.");
   return(0);
  }
- 
+
  if(!(DSPV=GetDSPVersion()))
  {
   puts(" Error getting the DSP version.");
@@ -126,7 +118,7 @@ int InitSB(int Rate, int bittage)
   return(0);
  }
 
- /* Reenable IRQ line. */
+
  if(SBIRQ>7)
   outportb(0xA1,PICMask&(~(1<<(SBIRQ&7))));
  else
@@ -134,30 +126,30 @@ int InitSB(int Rate, int bittage)
 
  ProgramDMA();
 
- /* Note that the speaker must always be turned on before the mode transfer
-    byte is sent to the DSP if we're going into high-speed mode, since
-    a real Sound Blaster(at least my SBPro) won't accept DSP commands(except
-    for the reset "command") after it goes into high-speed mode.
- */
- WriteDSP(0xD1);                 // Turn on DAC speaker
+
+
+
+
+
+ WriteDSP(0xD1);
 
  if(DSPV>=0x400)
  {
-  WriteDSP(0x41);                // Set sampling rate
-  WriteDSP(Rate>>8);             // High byte
-  WriteDSP(Rate&0xFF);           // Low byte
+  WriteDSP(0x41);
+  WriteDSP(Rate>>8);
+  WriteDSP(Rate&0xFF);
   if(!format)
   {
-   WriteDSP(0xC6);                // 8-bit output
-   WriteDSP(0x00);                // 8-bit mono unsigned PCM
+   WriteDSP(0xC6);
+   WriteDSP(0x00);
   }
   else
   {
-   WriteDSP(0xB6);                // 16-bit output
-   WriteDSP(0x10);                // 16-bit mono signed PCM
+   WriteDSP(0xB6);
+   WriteDSP(0x10);
   }
-  WriteDSP((fragsize-1)&0xFF);// Low byte of size
-  WriteDSP((fragsize-1)>>8);  // High byte of size
+  WriteDSP((fragsize-1)&0xFF);
+  WriteDSP((fragsize-1)>>8);
  }
  else
  {
@@ -166,25 +158,25 @@ int InitSB(int Rate, int bittage)
   {
    tc=(65536-(256000000/Rate))>>8;
    Rate=256000000/(65536-(tc<<8));
-   command=0x90;                  // High-speed auto-initialize DMA mode transfer
+   command=0x90;
    hsmode=1;
   }
   else
   {
    tc=256-(1000000/Rate);
    Rate=1000000/(256-tc);
-   command=0x1c;                  // Auto-initialize DMA mode transfer
+   command=0x1c;
   }
-  WriteDSP(0x40);       // Set DSP time constant
-  WriteDSP(tc);         // time constant
-  WriteDSP(0x48);       // Set DSP block transfer size
+  WriteDSP(0x40);
+  WriteDSP(tc);
+  WriteDSP(0x48);
   WriteDSP((fragsize-1)&0xFF);
   WriteDSP((fragsize-1)>>8);
 
   WriteDSP(command);
  }
 
- /* Enable DMA */
+
  if(format)
   outportb(0xd4,SBDMA16&3);
  else

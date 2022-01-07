@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mbox_chan {int msg_count; int msg_free; int /*<<< orphan*/  lock; void** msg_data; } ;
 
-/* Variables and functions */
- int ENOBUFS ; 
- int MBOX_TX_QUEUE_LEN ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct mbox_chan {int msg_count; int msg_free; int lock; void** msg_data; } ;
+
+
+ int ENOBUFS ;
+ int MBOX_TX_QUEUE_LEN ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int add_to_rbuf(struct mbox_chan *chan, void *mssg)
 {
-	int idx;
-	unsigned long flags;
+ int idx;
+ unsigned long flags;
 
-	spin_lock_irqsave(&chan->lock, flags);
+ spin_lock_irqsave(&chan->lock, flags);
 
-	/* See if there is any space left */
-	if (chan->msg_count == MBOX_TX_QUEUE_LEN) {
-		spin_unlock_irqrestore(&chan->lock, flags);
-		return -ENOBUFS;
-	}
 
-	idx = chan->msg_free;
-	chan->msg_data[idx] = mssg;
-	chan->msg_count++;
+ if (chan->msg_count == MBOX_TX_QUEUE_LEN) {
+  spin_unlock_irqrestore(&chan->lock, flags);
+  return -ENOBUFS;
+ }
 
-	if (idx == MBOX_TX_QUEUE_LEN - 1)
-		chan->msg_free = 0;
-	else
-		chan->msg_free++;
+ idx = chan->msg_free;
+ chan->msg_data[idx] = mssg;
+ chan->msg_count++;
 
-	spin_unlock_irqrestore(&chan->lock, flags);
+ if (idx == MBOX_TX_QUEUE_LEN - 1)
+  chan->msg_free = 0;
+ else
+  chan->msg_free++;
 
-	return idx;
+ spin_unlock_irqrestore(&chan->lock, flags);
+
+ return idx;
 }

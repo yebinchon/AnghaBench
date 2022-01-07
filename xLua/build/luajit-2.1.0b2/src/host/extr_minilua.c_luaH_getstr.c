@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Table ;
-typedef  int /*<<< orphan*/  TValue ;
-typedef  int /*<<< orphan*/  TString ;
-typedef  int /*<<< orphan*/  Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gkey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * gnext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* gval (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hashstr (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const luaO_nilobject_ ; 
- int /*<<< orphan*/ * rawtsvalue (int /*<<< orphan*/ ) ; 
- scalar_t__ ttisstring (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Table ;
+typedef int TValue ;
+typedef int TString ;
+typedef int Node ;
+
+
+ int gkey (int *) ;
+ int * gnext (int *) ;
+ int const* gval (int *) ;
+ int * hashstr (int *,int *) ;
+ int const luaO_nilobject_ ;
+ int * rawtsvalue (int ) ;
+ scalar_t__ ttisstring (int ) ;
 
 __attribute__((used)) static const TValue*luaH_getstr(Table*t,TString*key){
 Node*n=hashstr(t,key);

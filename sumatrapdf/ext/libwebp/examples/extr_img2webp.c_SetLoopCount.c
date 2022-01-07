@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ WebPMuxError ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ WebPMuxError ;
 struct TYPE_4__ {int loop_count; } ;
-typedef  TYPE_1__ WebPMuxAnimParams ;
-typedef  int /*<<< orphan*/  WebPMux ;
-typedef  int /*<<< orphan*/  WebPData ;
+typedef TYPE_1__ WebPMuxAnimParams ;
+typedef int WebPMux ;
+typedef int WebPData ;
 
-/* Variables and functions */
- int ANIMATION_FLAG ; 
- scalar_t__ WEBP_MUX_OK ; 
- int /*<<< orphan*/  WebPDataClear (int /*<<< orphan*/ * const) ; 
- scalar_t__ WebPMuxAssemble (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/ * WebPMuxCreate (int /*<<< orphan*/ * const,int) ; 
- int /*<<< orphan*/  WebPMuxDelete (int /*<<< orphan*/ * const) ; 
- scalar_t__ WebPMuxGetAnimationParams (int /*<<< orphan*/ * const,TYPE_1__*) ; 
- scalar_t__ WebPMuxGetFeatures (int /*<<< orphan*/ * const,int*) ; 
- scalar_t__ WebPMuxSetAnimationParams (int /*<<< orphan*/ * const,TYPE_1__*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int ANIMATION_FLAG ;
+ scalar_t__ WEBP_MUX_OK ;
+ int WebPDataClear (int * const) ;
+ scalar_t__ WebPMuxAssemble (int * const,int * const) ;
+ int * WebPMuxCreate (int * const,int) ;
+ int WebPMuxDelete (int * const) ;
+ scalar_t__ WebPMuxGetAnimationParams (int * const,TYPE_1__*) ;
+ scalar_t__ WebPMuxGetFeatures (int * const,int*) ;
+ scalar_t__ WebPMuxSetAnimationParams (int * const,TYPE_1__*) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static int SetLoopCount(int loop_count, WebPData* const webp_data) {
   int ok = 1;
@@ -37,7 +37,7 @@ __attribute__((used)) static int SetLoopCount(int loop_count, WebPData* const we
   uint32_t features;
   WebPMuxAnimParams new_params;
   WebPMux* const mux = WebPMuxCreate(webp_data, 1);
-  if (mux == NULL) return 0;
+  if (mux == ((void*)0)) return 0;
 
   err = WebPMuxGetFeatures(mux, &features);
   ok = (err == WEBP_MUX_OK);

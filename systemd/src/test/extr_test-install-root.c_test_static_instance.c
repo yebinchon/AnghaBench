@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UnitFileState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENOENT ; 
- scalar_t__ UNIT_FILE_DISABLED ; 
- scalar_t__ UNIT_FILE_STATIC ; 
- int /*<<< orphan*/  UNIT_FILE_SYSTEM ; 
- int /*<<< orphan*/  WRITE_STRING_FILE_CREATE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- char* strjoina (char const*,char*) ; 
- scalar_t__ symlink (char*,char const*) ; 
- int /*<<< orphan*/  unit_file_get_state (int /*<<< orphan*/ ,char const*,char*,scalar_t__*) ; 
- scalar_t__ write_string_file (char const*,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UnitFileState ;
+
+
+ int ENOENT ;
+ scalar_t__ UNIT_FILE_DISABLED ;
+ scalar_t__ UNIT_FILE_STATIC ;
+ int UNIT_FILE_SYSTEM ;
+ int WRITE_STRING_FILE_CREATE ;
+ int assert_se (int) ;
+ char* strjoina (char const*,char*) ;
+ scalar_t__ symlink (char*,char const*) ;
+ int unit_file_get_state (int ,char const*,char*,scalar_t__*) ;
+ scalar_t__ write_string_file (char const*,char*,int ) ;
 
 __attribute__((used)) static void test_static_instance(const char *root) {
         UnitFileState state;

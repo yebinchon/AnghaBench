@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct v4l2_subdev_pad_config {int dummy; } ;
-struct v4l2_subdev_mbus_code_enum {int pad; size_t index; int /*<<< orphan*/  code; } ;
+struct v4l2_subdev_mbus_code_enum {int pad; size_t index; int code; } ;
 struct v4l2_subdev {int dummy; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int EINVAL ; 
-#define  IPIPE_PAD_SINK 129 
-#define  IPIPE_PAD_SOURCE_VP 128 
- int /*<<< orphan*/  MEDIA_BUS_FMT_UYVY8_1X16 ; 
- int /*<<< orphan*/ * ipipe_fmts ; 
+
+ size_t ARRAY_SIZE (int *) ;
+ int EINVAL ;
+
+
+ int MEDIA_BUS_FMT_UYVY8_1X16 ;
+ int * ipipe_fmts ;
 
 __attribute__((used)) static int ipipe_enum_mbus_code(struct v4l2_subdev *sd,
-				struct v4l2_subdev_pad_config *cfg,
-				struct v4l2_subdev_mbus_code_enum *code)
+    struct v4l2_subdev_pad_config *cfg,
+    struct v4l2_subdev_mbus_code_enum *code)
 {
-	switch (code->pad) {
-	case IPIPE_PAD_SINK:
-		if (code->index >= ARRAY_SIZE(ipipe_fmts))
-			return -EINVAL;
+ switch (code->pad) {
+ case 129:
+  if (code->index >= ARRAY_SIZE(ipipe_fmts))
+   return -EINVAL;
 
-		code->code = ipipe_fmts[code->index];
-		break;
+  code->code = ipipe_fmts[code->index];
+  break;
 
-	case IPIPE_PAD_SOURCE_VP:
-		/* FIXME: Forced format conversion inside IPIPE ? */
-		if (code->index != 0)
-			return -EINVAL;
+ case 128:
 
-		code->code = MEDIA_BUS_FMT_UYVY8_1X16;
-		break;
+  if (code->index != 0)
+   return -EINVAL;
 
-	default:
-		return -EINVAL;
-	}
+  code->code = MEDIA_BUS_FMT_UYVY8_1X16;
+  break;
 
-	return 0;
+ default:
+  return -EINVAL;
+ }
+
+ return 0;
 }

@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  allow_nul () ; 
- int /*<<< orphan*/  decode_any () ; 
- int /*<<< orphan*/  decode_int_as_real () ; 
- int /*<<< orphan*/  disable_eof_check () ; 
- int /*<<< orphan*/  file_not_found () ; 
- int /*<<< orphan*/  load_wrong_args () ; 
- int /*<<< orphan*/  position () ; 
- int /*<<< orphan*/  reject_duplicates () ; 
- int /*<<< orphan*/  very_long_file_name () ; 
+ int allow_nul () ;
+ int decode_any () ;
+ int decode_int_as_real () ;
+ int disable_eof_check () ;
+ int file_not_found () ;
+ int load_wrong_args () ;
+ int position () ;
+ int reject_duplicates () ;
+ int very_long_file_name () ;
 
 __attribute__((used)) static void run_tests()
 {

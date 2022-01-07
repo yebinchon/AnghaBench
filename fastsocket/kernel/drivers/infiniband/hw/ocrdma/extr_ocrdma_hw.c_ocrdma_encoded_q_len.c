@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int fls (int) ; 
+
+
+
+typedef int u32 ;
+
+
+ int fls (int) ;
 
 __attribute__((used)) static u32 ocrdma_encoded_q_len(int q_len)
 {
-	u32 len_encoded = fls(q_len);	/* log2(len) + 1 */
+ u32 len_encoded = fls(q_len);
 
-	if (len_encoded == 16)
-		len_encoded = 0;
-	return len_encoded;
+ if (len_encoded == 16)
+  len_encoded = 0;
+ return len_encoded;
 }

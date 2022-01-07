@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int flag; int privilege; int /*<<< orphan*/  user; int /*<<< orphan*/  pass; } ;
-struct TYPE_13__ {int /*<<< orphan*/  thandle; TYPE_2__* pUser; scalar_t__ superAuth; TYPE_1__* pAcct; } ;
-struct TYPE_12__ {char* user; char* acct; int superAuth; int writeAuth; int /*<<< orphan*/  pass; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int flag; int privilege; int user; int pass; } ;
+struct TYPE_13__ {int thandle; TYPE_2__* pUser; scalar_t__ superAuth; TYPE_1__* pAcct; } ;
+struct TYPE_12__ {char* user; char* acct; int superAuth; int writeAuth; int pass; } ;
 struct TYPE_11__ {char* user; } ;
 struct TYPE_10__ {char* user; } ;
-typedef  TYPE_3__ SUserObj ;
-typedef  TYPE_4__ SConnObj ;
-typedef  TYPE_5__ SAlterUserMsg ;
+typedef TYPE_3__ SUserObj ;
+typedef TYPE_4__ SConnObj ;
+typedef TYPE_5__ SAlterUserMsg ;
 
-/* Variables and functions */
- int TSDB_ALTER_USER_PASSWD ; 
- int TSDB_ALTER_USER_PRIVILEGES ; 
- int TSDB_CODE_INVALID_USER ; 
- int TSDB_CODE_NO_RIGHTS ; 
- int /*<<< orphan*/  TSDB_MSG_TYPE_ALTER_USER_RSP ; 
- int /*<<< orphan*/  mLPrint (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mgmtCheckRedirectMsg (TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* mgmtGetUser (int /*<<< orphan*/ ) ; 
- int mgmtUpdateUser (TYPE_3__*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosEncryptPass (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosSendSimpleRsp (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int TSDB_ALTER_USER_PASSWD ;
+ int TSDB_ALTER_USER_PRIVILEGES ;
+ int TSDB_CODE_INVALID_USER ;
+ int TSDB_CODE_NO_RIGHTS ;
+ int TSDB_MSG_TYPE_ALTER_USER_RSP ;
+ int mLPrint (char*,int ,char*) ;
+ int memset (int ,int ,int) ;
+ scalar_t__ mgmtCheckRedirectMsg (TYPE_4__*,int ) ;
+ TYPE_3__* mgmtGetUser (int ) ;
+ int mgmtUpdateUser (TYPE_3__*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (int ) ;
+ int taosEncryptPass (int ,int ,int ) ;
+ int taosSendSimpleRsp (int ,int ,int) ;
 
 int mgmtProcessAlterUserMsg(char *pMsg, int msgLen, SConnObj *pConn) {
   SAlterUserMsg *pAlter = (SAlterUserMsg *)pMsg;
-  int            code = 0;
-  SUserObj *     pUser;
+  int code = 0;
+  SUserObj * pUser;
 
   if (mgmtCheckRedirectMsg(pConn, TSDB_MSG_TYPE_ALTER_USER_RSP) != 0) {
     return 0;
   }
 
   pUser = mgmtGetUser(pAlter->user);
-  if (pUser == NULL) {
+  if (pUser == ((void*)0)) {
     taosSendSimpleRsp(pConn->thandle, TSDB_MSG_TYPE_ALTER_USER_RSP, TSDB_CODE_INVALID_USER);
     return 0;
   }
@@ -65,15 +65,15 @@ int mgmtProcessAlterUserMsg(char *pMsg, int msgLen, SConnObj *pConn) {
       taosEncryptPass(pAlter->pass, strlen(pAlter->pass), pUser->pass);
     }
     if ((pAlter->flag & TSDB_ALTER_USER_PRIVILEGES) != 0) {
-      if (pAlter->privilege == 1) {  // super
+      if (pAlter->privilege == 1) {
         pUser->superAuth = 1;
         pUser->writeAuth = 1;
       }
-      if (pAlter->privilege == 2) {  // read
+      if (pAlter->privilege == 2) {
         pUser->superAuth = 0;
         pUser->writeAuth = 0;
       }
-      if (pAlter->privilege == 3) {  // write
+      if (pAlter->privilege == 3) {
         pUser->superAuth = 0;
         pUser->writeAuth = 1;
       }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {scalar_t__ data; } ;
-struct hci_rp_le_read_adv_tx_power {int /*<<< orphan*/  tx_power; scalar_t__ status; } ;
-struct hci_dev {int /*<<< orphan*/  adv_tx_power; int /*<<< orphan*/  name; } ;
+struct hci_rp_le_read_adv_tx_power {int tx_power; scalar_t__ status; } ;
+struct hci_dev {int adv_tx_power; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int BT_DBG (char*,int ,scalar_t__) ;
 
 __attribute__((used)) static void hci_cc_le_read_adv_tx_power(struct hci_dev *hdev,
-					struct sk_buff *skb)
+     struct sk_buff *skb)
 {
-	struct hci_rp_le_read_adv_tx_power *rp = (void *) skb->data;
+ struct hci_rp_le_read_adv_tx_power *rp = (void *) skb->data;
 
-	BT_DBG("%s status 0x%2.2x", hdev->name, rp->status);
+ BT_DBG("%s status 0x%2.2x", hdev->name, rp->status);
 
-	if (rp->status)
-		return;
+ if (rp->status)
+  return;
 
-	hdev->adv_tx_power = rp->tx_power;
+ hdev->adv_tx_power = rp->tx_power;
 }

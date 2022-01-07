@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int UCHAR ;
-typedef  int BOOLEAN ;
 
-/* Variables and functions */
- int FALSE ; 
-#define  VER_EQUAL 132 
-#define  VER_GREATER 131 
-#define  VER_GREATER_EQUAL 130 
-#define  VER_LESS 129 
-#define  VER_LESS_EQUAL 128 
+
+
+
+typedef int ULONG ;
+typedef int UCHAR ;
+typedef int BOOLEAN ;
+
+
+ int FALSE ;
+
+
+
+
+
 
 __attribute__((used)) static BOOLEAN
 RtlpVerCompare(ULONG left, ULONG right, UCHAR Condition)
 {
     switch (Condition)
     {
-        case VER_EQUAL:
+        case 132:
             return (left == right);
-        case VER_GREATER:
+        case 131:
             return (left > right);
-        case VER_GREATER_EQUAL:
+        case 130:
             return (left >= right);
-        case VER_LESS:
+        case 129:
             return (left < right);
-        case VER_LESS_EQUAL:
+        case 128:
             return (left <= right);
         default:
             break;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int extra_words; } ;
 
-/* Variables and functions */
- TYPE_1__ Root ; 
- int* arr ; 
- int check (TYPE_1__*) ; 
- int /*<<< orphan*/  count (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  dump (TYPE_1__*) ; 
- int ld ; 
- int lp ; 
- int nd ; 
- int np ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
- int /*<<< orphan*/  scanf (char*,int*) ; 
- int* sort (TYPE_1__*,int*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  tree23_delete (TYPE_1__*,int) ; 
- int /*<<< orphan*/  tree23_insert (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  tree23_lookup (TYPE_1__*,int) ; 
+
+ TYPE_1__ Root ;
+ int* arr ;
+ int check (TYPE_1__*) ;
+ int count (TYPE_1__*,int*) ;
+ int dump (TYPE_1__*) ;
+ int ld ;
+ int lp ;
+ int nd ;
+ int np ;
+ int printf (char*,...) ;
+ int puts (char*) ;
+ int scanf (char*,int*) ;
+ int* sort (TYPE_1__*,int*) ;
+ int strcmp (char const*,char*) ;
+ int tree23_delete (TYPE_1__*,int) ;
+ int tree23_insert (TYPE_1__*,int,int*) ;
+ int tree23_lookup (TYPE_1__*,int) ;
 
 int main (int argc, const char *argv[]) {
   int n, t, p, i, j;
@@ -67,7 +67,7 @@ int main (int argc, const char *argv[]) {
           tree23_delete (&Root, p);
         break;
     }
-    //dump (T);
+
     if (check (&Root) < 0) printf ("BAD TREE\n");
   }
   printf ("%d\n", check (&Root));

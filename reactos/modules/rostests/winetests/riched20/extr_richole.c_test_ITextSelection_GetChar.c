@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LPARAM ;
-typedef  char LONG ;
-typedef  int /*<<< orphan*/  ITextSelection ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  char HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- char CO_E_RELEASED ; 
- int /*<<< orphan*/  EM_SETSEL ; 
- char E_INVALIDARG ; 
- char ITextSelection_GetChar (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ITextSelection_Release (int /*<<< orphan*/ *) ; 
- char S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LPARAM ;
+typedef char LONG ;
+typedef int ITextSelection ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef char HRESULT ;
+typedef char CHAR ;
+
+
+ char CO_E_RELEASED ;
+ int EM_SETSEL ;
+ char E_INVALIDARG ;
+ char ITextSelection_GetChar (int *,char*) ;
+ int ITextSelection_Release (int *) ;
+ char S_OK ;
+ int SendMessageA (int ,int ,int,int) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int **) ;
+ int ok (int,char*,...) ;
+ int release_interfaces (int *,int **,int **,int *) ;
 
 __attribute__((used)) static void test_ITextSelection_GetChar(void)
 {
   HWND w;
-  IRichEditOle *reOle = NULL;
-  ITextDocument *txtDoc = NULL;
-  ITextSelection *txtSel = NULL;
+  IRichEditOle *reOle = ((void*)0);
+  ITextDocument *txtDoc = ((void*)0);
+  ITextSelection *txtSel = ((void*)0);
   HRESULT hres;
   LONG pch;
   int first, lim;
@@ -74,12 +74,12 @@ __attribute__((used)) static void test_ITextSelection_GetChar(void)
   ok(hres == S_OK, "ITextSelection_GetChar\n");
   ok(pch == '\r', "got wrong char: %c\n", pch);
 
-  hres = ITextSelection_GetChar(txtSel, NULL);
+  hres = ITextSelection_GetChar(txtSel, ((void*)0));
   ok(hres == E_INVALIDARG, "ITextSelection_GetChar\n");
 
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
-  hres = ITextSelection_GetChar(txtSel, NULL);
+  hres = ITextSelection_GetChar(txtSel, ((void*)0));
   ok(hres == CO_E_RELEASED, "got 0x%08x\n", hres);
 
   hres = ITextSelection_GetChar(txtSel, &pch);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  char* gpointer ;
-typedef  size_t SyncStatus ;
-typedef  int /*<<< orphan*/  GHashTableIter ;
-typedef  int /*<<< orphan*/  GHashTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_hash_table_iter_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ g_hash_table_iter_next (int /*<<< orphan*/ *,char**,char**) ; 
- int /*<<< orphan*/ * json_array () ; 
- int /*<<< orphan*/  json_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_string (char*) ; 
- char** path_status_tbl ; 
+
+
+
+typedef int json_t ;
+typedef char* gpointer ;
+typedef size_t SyncStatus ;
+typedef int GHashTableIter ;
+typedef int GHashTable ;
+
+
+ int g_hash_table_iter_init (int *,int *) ;
+ scalar_t__ g_hash_table_iter_next (int *,char**,char**) ;
+ int * json_array () ;
+ int json_array_append (int *,int *) ;
+ int * json_object () ;
+ int json_object_set (int *,char*,int ) ;
+ int json_string (char*) ;
+ char** path_status_tbl ;
 
 __attribute__((used)) static json_t *
 active_paths_to_json (GHashTable *paths)
 {
-    json_t *array = NULL, *obj = NULL;
+    json_t *array = ((void*)0), *obj = ((void*)0);
     GHashTableIter iter;
     gpointer key, value;
     char *path;

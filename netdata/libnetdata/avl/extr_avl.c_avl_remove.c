@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int (* compar ) (TYPE_2__*,TYPE_2__*) ;int /*<<< orphan*/  root; } ;
-typedef  TYPE_1__ avl_tree ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int (* compar ) (TYPE_2__*,TYPE_2__*) ;int root; } ;
+typedef TYPE_1__ avl_tree ;
 struct TYPE_9__ {int avl_balance; struct TYPE_9__** avl_link; } ;
-typedef  TYPE_2__ avl ;
+typedef TYPE_2__ avl ;
 
-/* Variables and functions */
- int AVL_MAX_HEIGHT ; 
- int stub1 (TYPE_2__*,TYPE_2__*) ; 
+
+ int AVL_MAX_HEIGHT ;
+ int stub1 (TYPE_2__*,TYPE_2__*) ;
 
 avl *avl_remove(avl_tree *tree, avl *item) {
-    /* Stack of nodes. */
-    avl *pa[AVL_MAX_HEIGHT]; /* Nodes. */
-    unsigned char da[AVL_MAX_HEIGHT];    /* |avl_link[]| indexes. */
-    int k;                               /* Stack pointer. */
 
-    avl *p;   /* Traverses tree to find node to delete. */
-    int cmp;              /* Result of comparison between |item| and |p|. */
+    avl *pa[AVL_MAX_HEIGHT];
+    unsigned char da[AVL_MAX_HEIGHT];
+    int k;
 
-    // assert (tree != NULL && item != NULL);
+    avl *p;
+    int cmp;
+
+
 
     k = 0;
     p = (avl *) &tree->root;
@@ -41,16 +41,16 @@ avl *avl_remove(avl_tree *tree, avl *item) {
         da[k++] = dir;
 
         p = p->avl_link[dir];
-        if(p == NULL) return NULL;
+        if(p == ((void*)0)) return ((void*)0);
     }
 
     item = p;
 
-    if (p->avl_link[1] == NULL)
+    if (p->avl_link[1] == ((void*)0))
         pa[k - 1]->avl_link[da[k - 1]] = p->avl_link[0];
     else {
         avl *r = p->avl_link[1];
-        if (r->avl_link[0] == NULL) {
+        if (r->avl_link[0] == ((void*)0)) {
             r->avl_link[0] = p->avl_link[0];
             r->avl_balance = p->avl_balance;
             pa[k - 1]->avl_link[da[k - 1]] = r;
@@ -65,7 +65,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
                 da[k] = 0;
                 pa[k++] = r;
                 s = r->avl_link[0];
-                if (s->avl_link[0] == NULL) break;
+                if (s->avl_link[0] == ((void*)0)) break;
 
                 r = s;
             }
@@ -81,7 +81,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
         }
     }
 
-    // assert (k > 0);
+
     while (--k > 0) {
         avl *y = pa[k];
 
@@ -92,7 +92,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
                 avl *x = y->avl_link[1];
                 if (x->avl_balance == -1) {
                     avl *w;
-                    // assert (x->avl_balance == -1);
+
                     w = x->avl_link[0];
                     x->avl_link[0] = w->avl_link[1];
                     w->avl_link[1] = x;
@@ -102,7 +102,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
                         x->avl_balance = 0, y->avl_balance = -1;
                     else if (w->avl_balance == 0)
                         x->avl_balance = y->avl_balance = 0;
-                    else /* |w->avl_balance == -1| */
+                    else
                         x->avl_balance = +1, y->avl_balance = 0;
                     w->avl_balance = 0;
                     pa[k - 1]->avl_link[da[k - 1]] = w;
@@ -128,7 +128,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
                 avl *x = y->avl_link[0];
                 if (x->avl_balance == +1) {
                     avl *w;
-                    // assert (x->avl_balance == +1);
+
                     w = x->avl_link[1];
                     x->avl_link[1] = w->avl_link[0];
                     w->avl_link[0] = x;
@@ -138,7 +138,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
                         x->avl_balance = 0, y->avl_balance = +1;
                     else if (w->avl_balance == 0)
                         x->avl_balance = y->avl_balance = 0;
-                    else /* |w->avl_balance == +1| */
+                    else
                         x->avl_balance = -1, y->avl_balance = 0;
                     w->avl_balance = 0;
                     pa[k - 1]->avl_link[da[k - 1]] = w;
@@ -158,7 +158,7 @@ avl *avl_remove(avl_tree *tree, avl *item) {
         }
     }
 
-    // tree->avl_count--;
-    // tree->avl_generation++;
+
+
     return item;
 }

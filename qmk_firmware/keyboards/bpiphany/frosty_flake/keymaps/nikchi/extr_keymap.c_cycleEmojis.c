@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int count; } ;
-typedef  TYPE_1__ qk_tap_dance_state_t ;
+typedef TYPE_1__ qk_tap_dance_state_t ;
 
-/* Variables and functions */
- size_t EMOTIS ; 
- int /*<<< orphan*/  KC_BSPC ; 
- scalar_t__ pgm_read_dword (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  register_hex32 (scalar_t__) ; 
- int /*<<< orphan*/  tap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unicode_input_finish () ; 
- int /*<<< orphan*/  unicode_input_start () ; 
- int /*<<< orphan*/ * unicode_map ; 
+
+ size_t EMOTIS ;
+ int KC_BSPC ;
+ scalar_t__ pgm_read_dword (int *) ;
+ int register_hex32 (scalar_t__) ;
+ int tap (int ) ;
+ int unicode_input_finish () ;
+ int unicode_input_start () ;
+ int * unicode_map ;
 
 void cycleEmojis(qk_tap_dance_state_t *state, void *user_data) {
   if(state->count == 1) {

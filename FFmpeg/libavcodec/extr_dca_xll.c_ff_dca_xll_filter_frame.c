@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_37__   TYPE_8__ ;
-typedef  struct TYPE_36__   TYPE_7__ ;
-typedef  struct TYPE_35__   TYPE_6__ ;
-typedef  struct TYPE_34__   TYPE_5__ ;
-typedef  struct TYPE_33__   TYPE_4__ ;
-typedef  struct TYPE_32__   TYPE_3__ ;
-typedef  struct TYPE_31__   TYPE_2__ ;
-typedef  struct TYPE_30__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-typedef  enum AVMatrixEncoding { ____Placeholder_AVMatrixEncoding } AVMatrixEncoding ;
-struct TYPE_37__ {int sample_rate; int bits_per_raw_sample; int channels; scalar_t__ bit_rate; int /*<<< orphan*/  profile; scalar_t__ sample_fmt; TYPE_6__* priv_data; } ;
+
+
+typedef struct TYPE_37__ TYPE_8__ ;
+typedef struct TYPE_36__ TYPE_7__ ;
+typedef struct TYPE_35__ TYPE_6__ ;
+typedef struct TYPE_34__ TYPE_5__ ;
+typedef struct TYPE_33__ TYPE_4__ ;
+typedef struct TYPE_32__ TYPE_3__ ;
+typedef struct TYPE_31__ TYPE_2__ ;
+typedef struct TYPE_30__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+typedef int int16_t ;
+typedef enum AVMatrixEncoding { ____Placeholder_AVMatrixEncoding } AVMatrixEncoding ;
+struct TYPE_37__ {int sample_rate; int bits_per_raw_sample; int channels; scalar_t__ bit_rate; int profile; scalar_t__ sample_fmt; TYPE_6__* priv_data; } ;
 struct TYPE_36__ {int nb_samples; scalar_t__ format; scalar_t__* extended_data; } ;
 struct TYPE_30__ {TYPE_5__* assets; } ;
 struct TYPE_35__ {int packet; int request_channel_layout; TYPE_1__ exss; } ;
-struct TYPE_34__ {scalar_t__ representation_type; int /*<<< orphan*/  one_to_one_map_ch_to_spkr; } ;
-struct TYPE_33__ {int residual_encode; int nchannels; int nfreqbands; int ch_mask; scalar_t__ dmix_type; int freq; int storage_bit_res; int /*<<< orphan*/  dmix_coeff; int /*<<< orphan*/  pcm_bit_res; scalar_t__ dmix_embedded; TYPE_2__* bands; int /*<<< orphan*/  primary_chset; } ;
-struct TYPE_32__ {int nchsets; int nactivechsets; int output_mask; int nfreqbands; int** output_samples; int nframesamples; int /*<<< orphan*/  dcadsp; TYPE_4__* chset; scalar_t__ scalable_lsbs; scalar_t__ fixed_lsb_width; TYPE_8__* avctx; } ;
+struct TYPE_34__ {scalar_t__ representation_type; int one_to_one_map_ch_to_spkr; } ;
+struct TYPE_33__ {int residual_encode; int nchannels; int nfreqbands; int ch_mask; scalar_t__ dmix_type; int freq; int storage_bit_res; int dmix_coeff; int pcm_bit_res; scalar_t__ dmix_embedded; TYPE_2__* bands; int primary_chset; } ;
+struct TYPE_32__ {int nchsets; int nactivechsets; int output_mask; int nfreqbands; int** output_samples; int nframesamples; int dcadsp; TYPE_4__* chset; scalar_t__ scalable_lsbs; scalar_t__ fixed_lsb_width; TYPE_8__* avctx; } ;
 struct TYPE_31__ {scalar_t__ dmix_embedded; } ;
-typedef  int SUINT ;
-typedef  TYPE_3__ DCAXllDecoder ;
-typedef  TYPE_4__ DCAXllChSet ;
-typedef  TYPE_5__ DCAExssAsset ;
-typedef  TYPE_6__ DCAContext ;
-typedef  TYPE_7__ AVFrame ;
-typedef  TYPE_8__ AVCodecContext ;
+typedef int SUINT ;
+typedef TYPE_3__ DCAXllDecoder ;
+typedef TYPE_4__ DCAXllChSet ;
+typedef TYPE_5__ DCAExssAsset ;
+typedef TYPE_6__ DCAContext ;
+typedef TYPE_7__ AVFrame ;
+typedef TYPE_8__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_MATRIX_ENCODING_DOLBY ; 
- int AV_MATRIX_ENCODING_DOLBYHEADPHONE ; 
- int AV_MATRIX_ENCODING_NONE ; 
- scalar_t__ AV_SAMPLE_FMT_S16P ; 
- scalar_t__ AV_SAMPLE_FMT_S32P ; 
- scalar_t__ DCA_DMIX_TYPE_LoRo ; 
- scalar_t__ DCA_DMIX_TYPE_LtRt ; 
- scalar_t__ DCA_HAS_STEREO (int) ; 
- int DCA_PACKET_RECOVERY ; 
- scalar_t__ DCA_REPR_TYPE_LhRh ; 
- scalar_t__ DCA_REPR_TYPE_LtRt ; 
- int DCA_SPEAKER_COUNT ; 
- int DCA_SPEAKER_LAYOUT_STEREO ; 
- size_t DCA_SPEAKER_Ls ; 
- size_t DCA_SPEAKER_Lss ; 
- int DCA_SPEAKER_MASK_Ls ; 
- int DCA_SPEAKER_MASK_Lss ; 
- int DCA_SPEAKER_MASK_Rs ; 
- int DCA_SPEAKER_MASK_Rss ; 
- size_t DCA_SPEAKER_Rs ; 
- size_t DCA_SPEAKER_Rss ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  FF_PROFILE_DTS_HD_MA ; 
- int /*<<< orphan*/  av_clip_int16 (int) ; 
- int chs_assemble_freq_bands (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  chs_assemble_msbs_lsbs (TYPE_3__*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  chs_filter_band_data (TYPE_3__*,TYPE_4__*,int) ; 
- int clip23 (int) ; 
- int combine_residual_frame (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  ff_dca_downmix_to_stereo_fixed (int /*<<< orphan*/ ,int**,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  ff_dca_set_channel_layout (TYPE_8__*,int*,int) ; 
- int ff_get_buffer (TYPE_8__*,TYPE_7__*,int /*<<< orphan*/ ) ; 
- int ff_side_data_update_matrix_encoding (TYPE_7__*,int) ; 
- int /*<<< orphan*/  force_lossy_output (TYPE_3__*,TYPE_4__*) ; 
- int /*<<< orphan*/  is_hier_dmix_chset (TYPE_4__*) ; 
- int /*<<< orphan*/  scale_down_mix (TYPE_3__*,TYPE_4__*,int) ; 
- int /*<<< orphan*/  undo_down_mix (TYPE_3__*,TYPE_4__*,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_MATRIX_ENCODING_DOLBY ;
+ int AV_MATRIX_ENCODING_DOLBYHEADPHONE ;
+ int AV_MATRIX_ENCODING_NONE ;
+ scalar_t__ AV_SAMPLE_FMT_S16P ;
+ scalar_t__ AV_SAMPLE_FMT_S32P ;
+ scalar_t__ DCA_DMIX_TYPE_LoRo ;
+ scalar_t__ DCA_DMIX_TYPE_LtRt ;
+ scalar_t__ DCA_HAS_STEREO (int) ;
+ int DCA_PACKET_RECOVERY ;
+ scalar_t__ DCA_REPR_TYPE_LhRh ;
+ scalar_t__ DCA_REPR_TYPE_LtRt ;
+ int DCA_SPEAKER_COUNT ;
+ int DCA_SPEAKER_LAYOUT_STEREO ;
+ size_t DCA_SPEAKER_Ls ;
+ size_t DCA_SPEAKER_Lss ;
+ int DCA_SPEAKER_MASK_Ls ;
+ int DCA_SPEAKER_MASK_Lss ;
+ int DCA_SPEAKER_MASK_Rs ;
+ int DCA_SPEAKER_MASK_Rss ;
+ size_t DCA_SPEAKER_Rs ;
+ size_t DCA_SPEAKER_Rss ;
+ int EINVAL ;
+ int FF_PROFILE_DTS_HD_MA ;
+ int av_clip_int16 (int) ;
+ int chs_assemble_freq_bands (TYPE_3__*,TYPE_4__*) ;
+ int chs_assemble_msbs_lsbs (TYPE_3__*,TYPE_4__*,int) ;
+ int chs_filter_band_data (TYPE_3__*,TYPE_4__*,int) ;
+ int clip23 (int) ;
+ int combine_residual_frame (TYPE_3__*,TYPE_4__*) ;
+ int ff_dca_downmix_to_stereo_fixed (int ,int**,int ,int,int) ;
+ int ff_dca_set_channel_layout (TYPE_8__*,int*,int) ;
+ int ff_get_buffer (TYPE_8__*,TYPE_7__*,int ) ;
+ int ff_side_data_update_matrix_encoding (TYPE_7__*,int) ;
+ int force_lossy_output (TYPE_3__*,TYPE_4__*) ;
+ int is_hier_dmix_chset (TYPE_4__*) ;
+ int scale_down_mix (TYPE_3__*,TYPE_4__*,int) ;
+ int undo_down_mix (TYPE_3__*,TYPE_4__*,int) ;
 
 int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
 {
@@ -87,7 +87,7 @@ int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
     int i, j, k, ret, shift, nsamples, request_mask;
     int ch_remap[DCA_SPEAKER_COUNT];
 
-    // Force lossy downmixed output during recovery
+
     if (dca->packet & DCA_PACKET_RECOVERY) {
         for (i = 0, c = s->chset; i < s->nchsets; i++, c++) {
             if (i < s->nactivechsets)
@@ -101,7 +101,7 @@ int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
         s->fixed_lsb_width = 0;
     }
 
-    // Filter frequency bands for active channel sets
+
     s->output_mask = 0;
     for (i = 0, c = s->chset; i < s->nactivechsets; i++, c++) {
         chs_filter_band_data(s, c, 0);
@@ -121,7 +121,7 @@ int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
         s->output_mask |= c->ch_mask;
     }
 
-    // Undo hierarchial downmix and/or apply scaling
+
     for (i = 1, c = &s->chset[1]; i < s->nchsets; i++, c++) {
         if (!is_hier_dmix_chset(c))
             continue;
@@ -138,14 +138,14 @@ int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
                 undo_down_mix(s, c, j);
     }
 
-    // Assemble frequency bands for active channel sets
+
     if (s->nfreqbands > 1) {
         for (i = 0; i < s->nactivechsets; i++)
             if ((ret = chs_assemble_freq_bands(s, &s->chset[i])) < 0)
                 return ret;
     }
 
-    // Normalize to regular 5.1 layout if downmixing
+
     if (dca->request_channel_layout) {
         if (s->output_mask & DCA_SPEAKER_MASK_Lss) {
             s->output_samples[DCA_SPEAKER_Ls] = s->output_samples[DCA_SPEAKER_Lss];
@@ -157,7 +157,7 @@ int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
         }
     }
 
-    // Handle downmixing to stereo request
+
     if (dca->request_channel_layout == DCA_SPEAKER_LAYOUT_STEREO
         && DCA_HAS_STEREO(s->output_mask) && p->dmix_embedded
         && (p->dmix_type == DCA_DMIX_TYPE_LoRo ||
@@ -192,7 +192,7 @@ int ff_dca_xll_filter_frame(DCAXllDecoder *s, AVFrame *frame)
     if ((ret = ff_get_buffer(avctx, frame, 0)) < 0)
         return ret;
 
-    // Downmix primary channel set to stereo
+
     if (request_mask != s->output_mask) {
         ff_dca_downmix_to_stereo_fixed(s->dcadsp, s->output_samples,
                                        p->dmix_coeff, nsamples,

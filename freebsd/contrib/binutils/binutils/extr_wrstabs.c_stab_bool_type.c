@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stab_write_handle {int dummy; } ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stab_push_defined_type (struct stab_write_handle*,long,unsigned int) ; 
+
+ int stab_push_defined_type (struct stab_write_handle*,long,unsigned int) ;
 
 __attribute__((used)) static bfd_boolean
 stab_bool_type (void *p, unsigned int size)

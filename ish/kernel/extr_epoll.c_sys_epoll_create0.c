@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sys_epoll_create (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int fd_t ;
+
+
+ int sys_epoll_create (int ) ;
 
 fd_t sys_epoll_create0() {
     return sys_epoll_create(0);

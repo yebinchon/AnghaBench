@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_HAS_SERVER_EXCLUDED_DESCENDANTS ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_AUTHZ_UNREADABLE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  path_for_error_message (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_HAS_SERVER_EXCLUDED_DESCENDANTS ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_AUTHZ_UNREADABLE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int path_for_error_message (TYPE_1__*,char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ char* svn_sqlite__column_text (int *,int ,int *) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 catch_copy_of_server_excluded(svn_wc__db_wcroot_t *wcroot,
@@ -51,7 +51,7 @@ catch_copy_of_server_excluded(svn_wc__db_wcroot_t *wcroot,
     server_excluded_relpath = svn_sqlite__column_text(stmt, 0, scratch_pool);
   SVN_ERR(svn_sqlite__reset(stmt));
   if (have_row)
-    return svn_error_createf(SVN_ERR_AUTHZ_UNREADABLE, NULL,
+    return svn_error_createf(SVN_ERR_AUTHZ_UNREADABLE, ((void*)0),
                              _("Cannot copy '%s' excluded by server"),
                              path_for_error_message(wcroot,
                                                     server_excluded_relpath,

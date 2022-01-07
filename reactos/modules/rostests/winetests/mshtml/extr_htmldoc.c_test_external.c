@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetExternal ; 
- scalar_t__ IHTMLDocument2_get_parentWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow2_get_external (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IHTMLWindow2 ;
+typedef int IHTMLDocument2 ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ int CHECK_CALLED (int ) ;
+ int GetExternal ;
+ scalar_t__ IHTMLDocument2_get_parentWindow (int *,int **) ;
+ int IHTMLWindow2_Release (int *) ;
+ scalar_t__ IHTMLWindow2_get_external (int *,int **) ;
+ int SET_EXPECT (int ) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_external(IHTMLDocument2 *doc, BOOL initialized)
 {
@@ -43,10 +43,10 @@ __attribute__((used)) static void test_external(IHTMLDocument2 *doc, BOOL initia
     if(initialized) {
         ok(hres == S_FALSE || hres == S_OK, "get_external failed: %08x\n", hres);
         CHECK_CALLED(GetExternal);
-        ok(external != NULL, "external == NULL\n");
+        ok(external != ((void*)0), "external == NULL\n");
     }else {
         ok(hres == S_OK, "get_external failed: %08x\n", hres);
-        ok(external == NULL, "external != NULL\n");
+        ok(external == ((void*)0), "external != NULL\n");
     }
 
     IHTMLWindow2_Release(htmlwin);

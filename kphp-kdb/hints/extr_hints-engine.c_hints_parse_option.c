@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rating ;
 
-/* Variables and functions */
- int MAX_CNT ; 
- void* MAX_RATING ; 
- int MAX_RATING_NORM ; 
- int MAX_RATING_NUM ; 
- int MCL_CURRENT ; 
- int MCL_FUTURE ; 
- int RATING_NORM ; 
- int /*<<< orphan*/  add_on_increment ; 
- int /*<<< orphan*/  assert (int) ; 
- void* atoi (int /*<<< orphan*/ ) ; 
- int check_type (int) ; 
- void* default_max_cnt_type ; 
- int dump_mode ; 
- int /*<<< orphan*/ * dump_type ; 
- void* estimate_users ; 
- int /*<<< orphan*/  fading ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int immediate_mode ; 
- int index_mode ; 
- int keep_not_alive ; 
- int* max_cnt_type ; 
- int max_memory ; 
- int /*<<< orphan*/  mlockall (int) ; 
- int /*<<< orphan*/  new_binlog_name ; 
- int no_changes ; 
- int /*<<< orphan*/  optarg ; 
- int rating_num ; 
- int sscanf (int /*<<< orphan*/ ,char*,int*,int*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  usage () ; 
- int write_only ; 
+
+
+
+typedef int rating ;
+
+
+ int MAX_CNT ;
+ void* MAX_RATING ;
+ int MAX_RATING_NORM ;
+ int MAX_RATING_NUM ;
+ int MCL_CURRENT ;
+ int MCL_FUTURE ;
+ int RATING_NORM ;
+ int add_on_increment ;
+ int assert (int) ;
+ void* atoi (int ) ;
+ int check_type (int) ;
+ void* default_max_cnt_type ;
+ int dump_mode ;
+ int * dump_type ;
+ void* estimate_users ;
+ int fading ;
+ int fprintf (int ,char*) ;
+ int immediate_mode ;
+ int index_mode ;
+ int keep_not_alive ;
+ int* max_cnt_type ;
+ int max_memory ;
+ int mlockall (int) ;
+ int new_binlog_name ;
+ int no_changes ;
+ int optarg ;
+ int rating_num ;
+ int sscanf (int ,char*,int*,int*) ;
+ int stderr ;
+ int usage () ;
+ int write_only ;
 
 int hints_parse_option (int val) {
   switch (val) {
@@ -54,9 +54,9 @@ int hints_parse_option (int val) {
         usage ();
         return 2;
       }
-#ifdef NOHINTS
-      assert (dump_type[d_type] == 0);
-#endif
+
+
+
       dump_type[d_type]++;
       break;
     }
@@ -106,11 +106,11 @@ int hints_parse_option (int val) {
     case 'f':
       no_changes = 1;
       break;
-#ifdef NOHINTS
-    case 'g':
-      add_on_increment = 0;
-      break;
-#endif
+
+
+
+
+
     case 'I':
       immediate_mode = 1;
       break;

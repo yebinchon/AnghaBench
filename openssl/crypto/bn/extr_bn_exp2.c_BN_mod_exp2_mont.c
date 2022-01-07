@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_29__ TYPE_1__ ;
+
+
 struct TYPE_29__ {int* d; scalar_t__ neg; } ;
-typedef  int /*<<< orphan*/  BN_MONT_CTX ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  TYPE_1__ const BIGNUM ;
+typedef int BN_MONT_CTX ;
+typedef int BN_CTX ;
+typedef TYPE_1__ const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- TYPE_1__ const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_F_BN_MOD_EXP2_MONT ; 
- int /*<<< orphan*/  BN_MONT_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_MONT_CTX_new () ; 
- int /*<<< orphan*/  BN_MONT_CTX_set (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_R_CALLED_WITH_EVEN_MODULUS ; 
- int /*<<< orphan*/  BN_from_montgomery (TYPE_1__ const*,TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_bit_set (TYPE_1__ const*,int) ; 
- scalar_t__ BN_is_zero (TYPE_1__ const*) ; 
- int /*<<< orphan*/  BN_mod (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_mod_mul_montgomery (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int BN_num_bits (TYPE_1__ const*) ; 
- int BN_one (TYPE_1__ const*) ; 
- int /*<<< orphan*/  BN_to_montgomery (TYPE_1__ const*,TYPE_1__ const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ BN_ucmp (TYPE_1__ const*,TYPE_1__ const*) ; 
- TYPE_1__ const* BN_value_one () ; 
- int BN_window_bits_for_exponent_size (int) ; 
- int /*<<< orphan*/  BN_zero (TYPE_1__ const*) ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TABLE_SIZE ; 
- int /*<<< orphan*/  bn_check_top (TYPE_1__ const*) ; 
+
+ int BN_CTX_end (int *) ;
+ TYPE_1__ const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_F_BN_MOD_EXP2_MONT ;
+ int BN_MONT_CTX_free (int *) ;
+ int * BN_MONT_CTX_new () ;
+ int BN_MONT_CTX_set (int *,TYPE_1__ const*,int *) ;
+ int BN_R_CALLED_WITH_EVEN_MODULUS ;
+ int BN_from_montgomery (TYPE_1__ const*,TYPE_1__ const*,int *,int *) ;
+ scalar_t__ BN_is_bit_set (TYPE_1__ const*,int) ;
+ scalar_t__ BN_is_zero (TYPE_1__ const*) ;
+ int BN_mod (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*,int *) ;
+ int BN_mod_mul_montgomery (TYPE_1__ const*,TYPE_1__ const*,TYPE_1__ const*,int *,int *) ;
+ int BN_num_bits (TYPE_1__ const*) ;
+ int BN_one (TYPE_1__ const*) ;
+ int BN_to_montgomery (TYPE_1__ const*,TYPE_1__ const*,int *,int *) ;
+ scalar_t__ BN_ucmp (TYPE_1__ const*,TYPE_1__ const*) ;
+ TYPE_1__ const* BN_value_one () ;
+ int BN_window_bits_for_exponent_size (int) ;
+ int BN_zero (TYPE_1__ const*) ;
+ int BNerr (int ,int ) ;
+ int TABLE_SIZE ;
+ int bn_check_top (TYPE_1__ const*) ;
 
 int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
                      const BIGNUM *a2, const BIGNUM *p2, const BIGNUM *m,
@@ -50,9 +50,9 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
     int r_is_one = 1;
     BIGNUM *d, *r;
     const BIGNUM *a_mod_m;
-    /* Tables of variables obtained from 'ctx' */
+
     BIGNUM *val1[TABLE_SIZE], *val2[TABLE_SIZE];
-    BN_MONT_CTX *mont = NULL;
+    BN_MONT_CTX *mont = ((void*)0);
 
     bn_check_top(a1);
     bn_check_top(p1);
@@ -78,13 +78,13 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
     r = BN_CTX_get(ctx);
     val1[0] = BN_CTX_get(ctx);
     val2[0] = BN_CTX_get(ctx);
-    if (val2[0] == NULL)
+    if (val2[0] == ((void*)0))
         goto err;
 
-    if (in_mont != NULL)
+    if (in_mont != ((void*)0))
         mont = in_mont;
     else {
-        if ((mont = BN_MONT_CTX_new()) == NULL)
+        if ((mont = BN_MONT_CTX_new()) == ((void*)0))
             goto err;
         if (!BN_MONT_CTX_set(mont, m, ctx))
             goto err;
@@ -93,9 +93,9 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
     window1 = BN_window_bits_for_exponent_size(bits1);
     window2 = BN_window_bits_for_exponent_size(bits2);
 
-    /*
-     * Build table for a1:   val1[i] := a1^(2*i + 1) mod m  for i = 0 .. 2^(window1-1)
-     */
+
+
+
     if (a1->neg || BN_ucmp(a1, m) >= 0) {
         if (!BN_mod(val1[0], a1, m, ctx))
             goto err;
@@ -116,15 +116,15 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
 
         j = 1 << (window1 - 1);
         for (i = 1; i < j; i++) {
-            if (((val1[i] = BN_CTX_get(ctx)) == NULL) ||
+            if (((val1[i] = BN_CTX_get(ctx)) == ((void*)0)) ||
                 !BN_mod_mul_montgomery(val1[i], val1[i - 1], d, mont, ctx))
                 goto err;
         }
     }
 
-    /*
-     * Build table for a2:   val2[i] := a2^(2*i + 1) mod m  for i = 0 .. 2^(window2-1)
-     */
+
+
+
     if (a2->neg || BN_ucmp(a2, m) >= 0) {
         if (!BN_mod(val2[0], a2, m, ctx))
             goto err;
@@ -144,20 +144,20 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
 
         j = 1 << (window2 - 1);
         for (i = 1; i < j; i++) {
-            if (((val2[i] = BN_CTX_get(ctx)) == NULL) ||
+            if (((val2[i] = BN_CTX_get(ctx)) == ((void*)0)) ||
                 !BN_mod_mul_montgomery(val2[i], val2[i - 1], d, mont, ctx))
                 goto err;
         }
     }
 
-    /* Now compute the power product, using independent windows. */
+
     r_is_one = 1;
-    wvalue1 = 0;                /* The 'value' of the first window */
-    wvalue2 = 0;                /* The 'value' of the second window */
-    wpos1 = 0;                  /* If wvalue1 > 0, the bottom bit of the
-                                 * first window */
-    wpos2 = 0;                  /* If wvalue2 > 0, the bottom bit of the
-                                 * second window */
+    wvalue1 = 0;
+    wvalue2 = 0;
+    wpos1 = 0;
+
+    wpos2 = 0;
+
 
     if (!BN_to_montgomery(r, BN_value_one(), mont, ctx))
         goto err;
@@ -169,11 +169,11 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
 
         if (!wvalue1)
             if (BN_is_bit_set(p1, b)) {
-                /*
-                 * consider bits b-window1+1 .. b for this window
-                 */
+
+
+
                 i = b - window1 + 1;
-                while (!BN_is_bit_set(p1, i)) /* works for i<0 */
+                while (!BN_is_bit_set(p1, i))
                     i++;
                 wpos1 = i;
                 wvalue1 = 1;
@@ -186,9 +186,9 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
 
         if (!wvalue2)
             if (BN_is_bit_set(p2, b)) {
-                /*
-                 * consider bits b-window2+1 .. b for this window
-                 */
+
+
+
                 i = b - window2 + 1;
                 while (!BN_is_bit_set(p2, i))
                     i++;
@@ -202,7 +202,7 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
             }
 
         if (wvalue1 && b == wpos1) {
-            /* wvalue1 is odd and < 2^window1 */
+
             if (!BN_mod_mul_montgomery(r, r, val1[wvalue1 >> 1], mont, ctx))
                 goto err;
             wvalue1 = 0;
@@ -210,7 +210,7 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
         }
 
         if (wvalue2 && b == wpos2) {
-            /* wvalue2 is odd and < 2^window2 */
+
             if (!BN_mod_mul_montgomery(r, r, val2[wvalue2 >> 1], mont, ctx))
                 goto err;
             wvalue2 = 0;
@@ -221,7 +221,7 @@ int BN_mod_exp2_mont(BIGNUM *rr, const BIGNUM *a1, const BIGNUM *p1,
         goto err;
     ret = 1;
  err:
-    if (in_mont == NULL)
+    if (in_mont == ((void*)0))
         BN_MONT_CTX_free(mont);
     BN_CTX_end(ctx);
     bn_check_top(rr);

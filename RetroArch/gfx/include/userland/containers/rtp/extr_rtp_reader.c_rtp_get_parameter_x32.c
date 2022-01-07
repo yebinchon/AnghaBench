@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINERS_LIST_T ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int VC_CONTAINERS_LIST_T ;
 struct TYPE_3__ {char const* name; char* value; } ;
-typedef  TYPE_1__ PARAMETER_T ;
+typedef TYPE_1__ PARAMETER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strtoul (char*,char**,int) ; 
- scalar_t__ vc_containers_list_find_entry (int /*<<< orphan*/  const*,TYPE_1__*) ; 
+
+ int strtoul (char*,char**,int) ;
+ scalar_t__ vc_containers_list_find_entry (int const*,TYPE_1__*) ;
 
 bool rtp_get_parameter_x32(const VC_CONTAINERS_LIST_T *param_list,
       const char *name,
@@ -35,5 +35,5 @@ bool rtp_get_parameter_x32(const VC_CONTAINERS_LIST_T *param_list,
       return (end != param.value) && (*end == '\0');
    }
 
-   return false;
+   return 0;
 }

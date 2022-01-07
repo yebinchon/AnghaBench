@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  iobuf ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int iobuf ;
 struct TYPE_6__ {int _bufsiz; } ;
-typedef  TYPE_1__ FILE ;
+typedef TYPE_1__ FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _IOFBF ; 
- char* _tempnam (char*,char*) ; 
- int /*<<< orphan*/  fclose (TYPE_1__*) ; 
- TYPE_1__* fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  setvbuf (TYPE_1__*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  test_write_flush_size (TYPE_1__*,int) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int _IOFBF ;
+ char* _tempnam (char*,char*) ;
+ int fclose (TYPE_1__*) ;
+ TYPE_1__* fopen (char*,char*) ;
+ int free (char*) ;
+ int ok (int,char*,...) ;
+ int setvbuf (TYPE_1__*,char*,int ,int) ;
+ int test_write_flush_size (TYPE_1__*,int) ;
+ int unlink (char*) ;
 
 __attribute__((used)) static void test_write_flush(void)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void test_write_flush(void)
 
     tempf = _tempnam(".","wne");
     file = fopen(tempf, "wb+");
-    ok(file != NULL, "unable to create test file\n");
+    ok(file != ((void*)0), "unable to create test file\n");
     iobuf[0] = 0;
     ok(file->_bufsiz == 4096, "incorrect default buffer size: %d\n", file->_bufsiz);
     test_write_flush_size(file, file->_bufsiz);

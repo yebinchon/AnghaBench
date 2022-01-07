@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Q_WATCHCAT ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- char* get_timestamp_key (char*,int,int,int,char*,int /*<<< orphan*/ ) ; 
- char* get_watchcat_s (long long) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int my_verbosity ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  update_watchcat (long long,int,char*) ; 
- long long watchcat_query_hash (char*) ; 
+ int Q_WATCHCAT ;
+ int fprintf (int ,char*,char*) ;
+ char* get_timestamp_key (char*,int,int,int,char*,int ) ;
+ char* get_watchcat_s (long long) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int my_verbosity ;
+ int stderr ;
+ int update_watchcat (long long,int,char*) ;
+ long long watchcat_query_hash (char*) ;
 
 char *get_watchcat_key (char *qname, int id, int ip, int timeout) {
   long long hid = watchcat_query_hash (qname);
   if (hid == -1) {
-    return NULL;
+    return ((void*)0);
   }
 
   char *sid = get_watchcat_s (hid);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct invept_desc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INVEPT_TYPE_SINGLE_CONTEXT ; 
- int /*<<< orphan*/  invept (int /*<<< orphan*/ ,struct invept_desc) ; 
+
+ int INVEPT_TYPE_SINGLE_CONTEXT ;
+ int invept (int ,struct invept_desc) ;
 
 __attribute__((used)) static void
 invept_single_context(void *arg)
 {
-	struct invept_desc desc = *(struct invept_desc *)arg;
+ struct invept_desc desc = *(struct invept_desc *)arg;
 
-	invept(INVEPT_TYPE_SINGLE_CONTEXT, desc);
+ invept(INVEPT_TYPE_SINGLE_CONTEXT, desc);
 }

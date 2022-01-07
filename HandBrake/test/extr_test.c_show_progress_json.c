@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_state_t ;
-typedef  int /*<<< orphan*/  hb_dict_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * hb_state_to_dict (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_value_free (int /*<<< orphan*/ **) ; 
- char* hb_value_get_json (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int hb_state_t ;
+typedef int hb_dict_t ;
+
+
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int * hb_state_to_dict (int *) ;
+ int hb_value_free (int **) ;
+ char* hb_value_get_json (int *) ;
+ int stderr ;
+ int stdout ;
 
 __attribute__((used)) static void show_progress_json(hb_state_t * state)
 {
     hb_dict_t * state_dict;
-    char      * state_json;
+    char * state_json;
 
     state_dict = hb_state_to_dict(state);
     state_json = hb_value_get_json(state_dict);

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int setcharset_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLFNM_CHSET_SIZE ; 
- size_t CURLFNM_NEGATE ; 
-#define  CURLFNM_SCHS_DEFAULT 130 
-#define  CURLFNM_SCHS_RIGHTBR 129 
-#define  CURLFNM_SCHS_RIGHTBRLEFTBR 128 
- int FALSE ; 
- int /*<<< orphan*/  ISPRINT (unsigned char) ; 
- int SETCHARSET_FAIL ; 
- int SETCHARSET_OK ; 
- int TRUE ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parsekeyword (unsigned char**,unsigned char*) ; 
- int /*<<< orphan*/  setcharorrange (unsigned char**,unsigned char*) ; 
+
+
+
+typedef int setcharset_state ;
+
+
+ int CURLFNM_CHSET_SIZE ;
+ size_t CURLFNM_NEGATE ;
+
+
+
+ int FALSE ;
+ int ISPRINT (unsigned char) ;
+ int SETCHARSET_FAIL ;
+ int SETCHARSET_OK ;
+ int TRUE ;
+ int memset (unsigned char*,int ,int ) ;
+ int parsekeyword (unsigned char**,unsigned char*) ;
+ int setcharorrange (unsigned char**,unsigned char*) ;
 
 __attribute__((used)) static int setcharset(unsigned char **p, unsigned char *charset)
 {
-  setcharset_state state = CURLFNM_SCHS_DEFAULT;
+  setcharset_state state = 130;
   bool something_found = FALSE;
   unsigned char c;
 
@@ -40,12 +40,12 @@ __attribute__((used)) static int setcharset(unsigned char **p, unsigned char *ch
       return SETCHARSET_FAIL;
 
     switch(state) {
-    case CURLFNM_SCHS_DEFAULT:
+    case 130:
       if(c == ']') {
         if(something_found)
           return SETCHARSET_OK;
         something_found = TRUE;
-        state = CURLFNM_SCHS_RIGHTBR;
+        state = 129;
         charset[c] = 1;
         (*p)++;
       }
@@ -67,7 +67,7 @@ __attribute__((used)) static int setcharset(unsigned char **p, unsigned char *ch
             something_found = TRUE;
           }
           else
-            charset[CURLFNM_NEGATE] = 1; /* negate charset */
+            charset[CURLFNM_NEGATE] = 1;
         }
         else
           charset[c] = 1;
@@ -86,9 +86,9 @@ __attribute__((used)) static int setcharset(unsigned char **p, unsigned char *ch
         something_found = TRUE;
       }
       break;
-    case CURLFNM_SCHS_RIGHTBR:
+    case 129:
       if(c == '[') {
-        state = CURLFNM_SCHS_RIGHTBRLEFTBR;
+        state = 128;
         charset[c] = 1;
         (*p)++;
       }
@@ -98,18 +98,18 @@ __attribute__((used)) static int setcharset(unsigned char **p, unsigned char *ch
       else if(ISPRINT(c)) {
         charset[c] = 1;
         (*p)++;
-        state = CURLFNM_SCHS_DEFAULT;
+        state = 130;
       }
       else
-        /* used 'goto fail' instead of 'return SETCHARSET_FAIL' to avoid a
-         * nonsense warning 'statement not reached' at end of the fnc when
-         * compiling on Solaris */
+
+
+
         goto fail;
       break;
-    case CURLFNM_SCHS_RIGHTBRLEFTBR:
+    case 128:
       if(c == ']')
         return SETCHARSET_OK;
-      state  = CURLFNM_SCHS_DEFAULT;
+      state = 130;
       charset[c] = 1;
       (*p)++;
       break;

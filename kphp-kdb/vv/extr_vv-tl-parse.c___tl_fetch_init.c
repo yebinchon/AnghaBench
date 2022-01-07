@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tl_in_methods {int /*<<< orphan*/  (* fetch_clear ) () ;} ;
-typedef  enum tl_type { ____Placeholder_tl_type } tl_type ;
-struct TYPE_2__ {int /*<<< orphan*/ * copy_through; } ;
 
-/* Variables and functions */
- scalar_t__ TL_ATTEMPT_NUM ; 
- int /*<<< orphan*/  TL_COPY_THROUGH ; 
- scalar_t__ TL_ERRNUM ; 
- scalar_t__ TL_ERROR ; 
- void* TL_IN ; 
- struct tl_in_methods* TL_IN_METHODS ; 
- scalar_t__ TL_IN_POS ; 
- int TL_IN_REMAINING ; 
- size_t TL_IN_TYPE ; 
- TYPE_1__* TL_OUT_METHODS ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  stub1 () ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tl_in_methods {int (* fetch_clear ) () ;} ;
+typedef enum tl_type { ____Placeholder_tl_type } tl_type ;
+struct TYPE_2__ {int * copy_through; } ;
+
+
+ scalar_t__ TL_ATTEMPT_NUM ;
+ int TL_COPY_THROUGH ;
+ scalar_t__ TL_ERRNUM ;
+ scalar_t__ TL_ERROR ;
+ void* TL_IN ;
+ struct tl_in_methods* TL_IN_METHODS ;
+ scalar_t__ TL_IN_POS ;
+ int TL_IN_REMAINING ;
+ size_t TL_IN_TYPE ;
+ TYPE_1__* TL_OUT_METHODS ;
+ int assert (void*) ;
+ int free (scalar_t__) ;
+ int stub1 () ;
 
 int __tl_fetch_init (void *in, void *in_extra, enum tl_type type, struct tl_in_methods *methods, int size) {
   if (TL_IN_METHODS && TL_IN_METHODS->fetch_clear) {

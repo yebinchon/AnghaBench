@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  int /*<<< orphan*/  OPENSSL_DIR_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * BIO_new_file (char*,char*) ; 
- int /*<<< orphan*/  CONF_F_PROCESS_INCLUDE ; 
- int /*<<< orphan*/  CONF_R_RECURSIVE_DIRECTORY_INCLUDE ; 
- int /*<<< orphan*/  CONFerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_LIB_SYS ; 
- int /*<<< orphan*/  ERR_add_error_data (int,char*) ; 
- int /*<<< orphan*/  ERR_raise_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * get_next_file (char*,int /*<<< orphan*/ **) ; 
- scalar_t__ stat (char*,struct stat*) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef int OPENSSL_DIR_CTX ;
+typedef int BIO ;
+
+
+ int * BIO_new_file (char*,char*) ;
+ int CONF_F_PROCESS_INCLUDE ;
+ int CONF_R_RECURSIVE_DIRECTORY_INCLUDE ;
+ int CONFerr (int ,int ) ;
+ int ERR_LIB_SYS ;
+ int ERR_add_error_data (int,char*) ;
+ int ERR_raise_data (int ,int ,char*,char*) ;
+ scalar_t__ S_ISDIR (int ) ;
+ int errno ;
+ int * get_next_file (char*,int **) ;
+ scalar_t__ stat (char*,struct stat*) ;
 
 __attribute__((used)) static BIO *process_include(char *include, OPENSSL_DIR_CTX **dirctx,
                             char **dirpath)
@@ -37,19 +37,19 @@ __attribute__((used)) static BIO *process_include(char *include, OPENSSL_DIR_CTX
         ERR_raise_data(ERR_LIB_SYS, errno,
                        "calling stat(%s)",
                        include);
-        /* missing include file is not fatal error */
-        return NULL;
+
+        return ((void*)0);
     }
 
     if (S_ISDIR(st.st_mode)) {
-        if (*dirctx != NULL) {
+        if (*dirctx != ((void*)0)) {
             CONFerr(CONF_F_PROCESS_INCLUDE,
                     CONF_R_RECURSIVE_DIRECTORY_INCLUDE);
             ERR_add_error_data(1, include);
-            return NULL;
+            return ((void*)0);
         }
-        /* a directory, load its contents */
-        if ((next = get_next_file(include, dirctx)) != NULL)
+
+        if ((next = get_next_file(include, dirctx)) != ((void*)0))
             *dirpath = include;
         return next;
     }

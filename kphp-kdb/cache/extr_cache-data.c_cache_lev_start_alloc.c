@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lev_start {int extra_bytes; scalar_t__ split_mod; scalar_t__ split_min; scalar_t__ split_max; int /*<<< orphan*/  str; int /*<<< orphan*/  schema_id; int /*<<< orphan*/  type; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CACHE_SCHEMA_V1 ; 
- int /*<<< orphan*/  LEV_START ; 
- int /*<<< orphan*/  assert (int) ; 
- struct lev_start* calloc (int,int) ; 
- void* log_split_min ; 
- scalar_t__ log_split_mod ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+struct lev_start {int extra_bytes; scalar_t__ split_mod; scalar_t__ split_min; scalar_t__ split_max; int str; int schema_id; int type; } ;
+
+
+ int CACHE_SCHEMA_V1 ;
+ int LEV_START ;
+ int assert (int) ;
+ struct lev_start* calloc (int,int) ;
+ void* log_split_min ;
+ scalar_t__ log_split_mod ;
+ int memcpy (int ,int*,int) ;
 
 struct lev_start *cache_lev_start_alloc (int cache_id, int *sz) {
   *sz = 28;

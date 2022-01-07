@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uval ;
-struct TYPE_5__ {int fastpath; int* input; int length; int replace_fallback_with_codepoint; int /*<<< orphan*/  input_size; scalar_t__ splittable; scalar_t__ has_sign; scalar_t__ inherited_storage; scalar_t__ fallback; int /*<<< orphan*/  dont_care; scalar_t__ depth; } ;
-typedef  TYPE_1__ table ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uval ;
+struct TYPE_5__ {int fastpath; int* input; int length; int replace_fallback_with_codepoint; int input_size; scalar_t__ splittable; scalar_t__ has_sign; scalar_t__ inherited_storage; scalar_t__ fallback; int dont_care; scalar_t__ depth; } ;
+typedef TYPE_1__ table ;
 struct TYPE_6__ {int lo; int hi; } ;
-typedef  TYPE_2__ char_range ;
+typedef TYPE_2__ char_range ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UVAL_DONT_CARE_DEFAULT ; 
- int /*<<< orphan*/  assert (char**) ; 
- TYPE_2__ get_range (char*) ; 
- int /*<<< orphan*/  optimize_table (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  size_for_max_number (int) ; 
- char* skip_semi (char*,int) ; 
- int stb_max (int,int) ; 
- char** stb_stringfile (char*,int*) ; 
- int strtol (char*,int /*<<< orphan*/ *,int) ; 
- int* unicode_table ; 
+
+ int UVAL_DONT_CARE_DEFAULT ;
+ int assert (char**) ;
+ TYPE_2__ get_range (char*) ;
+ int optimize_table (TYPE_1__*,char*) ;
+ int size_for_max_number (int) ;
+ char* skip_semi (char*,int) ;
+ int stb_max (int,int) ;
+ char** stb_stringfile (char*,int*) ;
+ int strtol (char*,int *,int) ;
+ int* unicode_table ;
 
 int main(int argc, char **argv)
 {
@@ -47,12 +47,12 @@ int main(int argc, char **argv)
          if (*t == ';' || *t == '\n' || *t == 0)
             v = 0;
          else {
-            v = strtol(t, NULL, 16);
+            v = strtol(t, ((void*)0), 16);
             if (v < 65536) {
                maxv = stb_max(v, maxv);
                for (j=cr.lo; j <= cr.hi; ++j) {
                   unicode_table[j] = v;
-                  //printf("%06x => %06x\n", j, v);
+
                }
             }
          }

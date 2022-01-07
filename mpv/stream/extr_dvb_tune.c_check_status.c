@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int time_t ;
+
+
+
+
+typedef int time_t ;
 struct pollfd {int fd; int events; int revents; } ;
-typedef  int int32_t ;
-typedef  int fe_status_t ;
-typedef  int /*<<< orphan*/  dvb_priv_t ;
+typedef int int32_t ;
+typedef int fe_status_t ;
+typedef int dvb_priv_t ;
 
-/* Variables and functions */
- int FE_HAS_LOCK ; 
- int /*<<< orphan*/  FE_READ_BER ; 
- int /*<<< orphan*/  FE_READ_SIGNAL_STRENGTH ; 
- int /*<<< orphan*/  FE_READ_SNR ; 
- int /*<<< orphan*/  FE_READ_STATUS ; 
- int /*<<< orphan*/  FE_READ_UNCORRECTED_BLOCKS ; 
- int FE_TIMEDOUT ; 
- int /*<<< orphan*/  MP_ERR (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  MP_VERBOSE (int /*<<< orphan*/ *,char*,...) ; 
- int POLLPRI ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  print_status (int /*<<< orphan*/ *,int) ; 
- int time (int*) ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int FE_HAS_LOCK ;
+ int FE_READ_BER ;
+ int FE_READ_SIGNAL_STRENGTH ;
+ int FE_READ_SNR ;
+ int FE_READ_STATUS ;
+ int FE_READ_UNCORRECTED_BLOCKS ;
+ int FE_TIMEDOUT ;
+ int MP_ERR (int *,char*,int) ;
+ int MP_VERBOSE (int *,char*,...) ;
+ int POLLPRI ;
+ scalar_t__ ioctl (int,int ,int*) ;
+ scalar_t__ poll (struct pollfd*,int,int) ;
+ int print_status (int *,int) ;
+ int time (int*) ;
+ int usleep (int) ;
 
 __attribute__((used)) static int check_status(dvb_priv_t *priv, int fd_frontend, int tmout)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static int check_status(dvb_priv_t *priv, int fd_frontend,
     pfd[0].events = POLLPRI;
 
     MP_VERBOSE(priv, "Getting frontend status\n");
-    tm1 = tm2 = time((time_t *) NULL);
+    tm1 = tm2 = time((time_t *) ((void*)0));
     while (!ok) {
         festatus = 0;
         if (poll(pfd, 1, tmout * 1000) > 0) {
@@ -57,7 +57,7 @@ __attribute__((used)) static int check_status(dvb_priv_t *priv, int fd_frontend,
             }
         }
         usleep(10000);
-        tm2 = time((time_t *) NULL);
+        tm2 = time((time_t *) ((void*)0));
         if ((festatus & FE_TIMEDOUT) || (locks >= 2) || (tm2 - tm1 >= tmout))
             ok = 1;
     }

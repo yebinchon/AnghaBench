@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct jv_parser {int tokenpos; int* tokenbuf; int /*<<< orphan*/  dtoa; } ;
-typedef  char* pfunc ;
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_INVALID ; 
- int /*<<< orphan*/  TRY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_false () ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_null () ; 
- int /*<<< orphan*/  jv_number (double) ; 
- int /*<<< orphan*/  jv_number_with_literal (char const*) ; 
- int /*<<< orphan*/  jv_true () ; 
- double jvp_strtod (int /*<<< orphan*/ *,char const*,char**) ; 
- int /*<<< orphan*/  value (struct jv_parser*,int /*<<< orphan*/ ) ; 
+
+
+
+struct jv_parser {int tokenpos; int* tokenbuf; int dtoa; } ;
+typedef char* pfunc ;
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_INVALID ;
+ int TRY (int ) ;
+ int jv_false () ;
+ scalar_t__ jv_get_kind (int ) ;
+ int jv_null () ;
+ int jv_number (double) ;
+ int jv_number_with_literal (char const*) ;
+ int jv_true () ;
+ double jvp_strtod (int *,char const*,char**) ;
+ int value (struct jv_parser*,int ) ;
 
 __attribute__((used)) static pfunc check_literal(struct jv_parser* p) {
   if (p->tokenpos == 0) return 0;
@@ -44,22 +44,22 @@ __attribute__((used)) static pfunc check_literal(struct jv_parser* p) {
         return "Invalid literal";
     TRY(value(p, v));
   } else {
-    // FIXME: better parser
+
     p->tokenbuf[p->tokenpos] = 0;
-#ifdef USE_DECNUM
-    jv number = jv_number_with_literal(p->tokenbuf);
-    if (jv_get_kind(number) == JV_KIND_INVALID) {
-      return "Invalid numeric literal";
-    }
-    TRY(value(p, number));
-#else
+
+
+
+
+
+
+
     char *end = 0;
     double d = jvp_strtod(&p->dtoa, p->tokenbuf, &end);
     if (end == 0 || *end != 0) {
       return "Invalid numeric literal";
     }
     TRY(value(p, jv_number(d)));
-#endif
+
   }
   p->tokenpos = 0;
   return 0;

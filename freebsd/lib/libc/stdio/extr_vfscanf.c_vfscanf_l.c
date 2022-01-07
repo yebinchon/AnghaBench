@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  locale_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIX_LOCALE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FLOCKFILE_CANCELSAFE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FUNLOCKFILE_CANCELSAFE () ; 
- int __svfscanf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int va_list ;
+typedef int locale_t ;
+typedef int FILE ;
+
+
+ int FIX_LOCALE (int ) ;
+ int FLOCKFILE_CANCELSAFE (int *) ;
+ int FUNLOCKFILE_CANCELSAFE () ;
+ int __svfscanf (int *,int ,char const*,int ) ;
 
 int
 vfscanf_l(FILE *fp, locale_t locale, char const *fmt0, va_list ap)
 {
-	int ret;
-	FIX_LOCALE(locale);
+ int ret;
+ FIX_LOCALE(locale);
 
-	FLOCKFILE_CANCELSAFE(fp);
-	ret = __svfscanf(fp, locale, fmt0, ap);
-	FUNLOCKFILE_CANCELSAFE();
-	return (ret);
+ FLOCKFILE_CANCELSAFE(fp);
+ ret = __svfscanf(fp, locale, fmt0, ap);
+ FUNLOCKFILE_CANCELSAFE();
+ return (ret);
 }

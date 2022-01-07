@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int ms_mode; scalar_t__* ms_mask; TYPE_2__* ch; scalar_t__ common_window; } ;
 struct TYPE_8__ {int num_windows; int* group_len; int num_swb; int max_sfb; } ;
 struct TYPE_6__ {scalar_t__ num_pulse; } ;
 struct TYPE_7__ {int* zeroes; TYPE_3__ ics; TYPE_1__ pulse; } ;
-typedef  TYPE_3__ IndividualChannelStream ;
-typedef  TYPE_4__ ChannelElement ;
+typedef TYPE_3__ IndividualChannelStream ;
+typedef TYPE_4__ ChannelElement ;
 
-/* Variables and functions */
- void* FFMAX (int,int) ; 
+
+ void* FFMAX (int,int) ;
 
 __attribute__((used)) static void adjust_frame_information(ChannelElement *cpe, int chans)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static void adjust_frame_information(ChannelElement *cpe, 
         maxsfb = 0;
         cpe->ch[ch].pulse.num_pulse = 0;
         for (w = 0; w < ics->num_windows; w += ics->group_len[w]) {
-            for (w2 =  0; w2 < ics->group_len[w]; w2++) {
+            for (w2 = 0; w2 < ics->group_len[w]; w2++) {
                 for (cmaxsfb = ics->num_swb; cmaxsfb > 0 && cpe->ch[ch].zeroes[w*16+cmaxsfb-1]; cmaxsfb--)
                     ;
                 maxsfb = FFMAX(maxsfb, cmaxsfb);
@@ -42,7 +42,7 @@ __attribute__((used)) static void adjust_frame_information(ChannelElement *cpe, 
         }
         ics->max_sfb = maxsfb;
 
-        //adjust zero bands for window groups
+
         for (w = 0; w < ics->num_windows; w += ics->group_len[w]) {
             for (g = 0; g < ics->max_sfb; g++) {
                 i = 1;

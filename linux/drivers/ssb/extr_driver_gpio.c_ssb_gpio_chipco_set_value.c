@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ssb_bus {int /*<<< orphan*/  chipco; } ;
+
+
+
+
+struct ssb_bus {int chipco; } ;
 struct gpio_chip {int dummy; } ;
 
-/* Variables and functions */
- struct ssb_bus* gpiochip_get_data (struct gpio_chip*) ; 
- int /*<<< orphan*/  ssb_chipco_gpio_out (int /*<<< orphan*/ *,int,int) ; 
+
+ struct ssb_bus* gpiochip_get_data (struct gpio_chip*) ;
+ int ssb_chipco_gpio_out (int *,int,int) ;
 
 __attribute__((used)) static void ssb_gpio_chipco_set_value(struct gpio_chip *chip, unsigned int gpio,
-				      int value)
+          int value)
 {
-	struct ssb_bus *bus = gpiochip_get_data(chip);
+ struct ssb_bus *bus = gpiochip_get_data(chip);
 
-	ssb_chipco_gpio_out(&bus->chipco, 1 << gpio, value ? 1 << gpio : 0);
+ ssb_chipco_gpio_out(&bus->chipco, 1 << gpio, value ? 1 << gpio : 0);
 }

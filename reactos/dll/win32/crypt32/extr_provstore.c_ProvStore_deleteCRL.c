@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  context_t ;
-struct TYPE_7__ {TYPE_4__* memStore; int /*<<< orphan*/  hStoreProv; scalar_t__ (* provDeleteCrl ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ WINE_PROVIDERSTORE ;
-typedef  int /*<<< orphan*/  WINECRYPT_CERTSTORE ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int context_t ;
+struct TYPE_7__ {TYPE_4__* memStore; int hStoreProv; scalar_t__ (* provDeleteCrl ) (int ,int ,int ) ;} ;
+typedef TYPE_3__ WINE_PROVIDERSTORE ;
+typedef int WINECRYPT_CERTSTORE ;
 struct TYPE_8__ {TYPE_1__* vtbl; } ;
-struct TYPE_6__ {scalar_t__ (* delete ) (TYPE_4__*,int /*<<< orphan*/ *) ;} ;
+struct TYPE_6__ {scalar_t__ (* delete ) (TYPE_4__*,int *) ;} ;
 struct TYPE_5__ {TYPE_2__ crls; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  context_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ stub2 (TYPE_4__*,int /*<<< orphan*/ *) ; 
+
+ int TRACE (char*,int *,int *) ;
+ scalar_t__ TRUE ;
+ int context_ptr (int *) ;
+ scalar_t__ stub1 (int ,int ,int ) ;
+ scalar_t__ stub2 (TYPE_4__*,int *) ;
 
 __attribute__((used)) static BOOL ProvStore_deleteCRL(WINECRYPT_CERTSTORE *store, context_t *crl)
 {

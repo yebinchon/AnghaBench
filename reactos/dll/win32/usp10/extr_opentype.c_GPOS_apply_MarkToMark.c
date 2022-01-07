@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_20__ {int /*<<< orphan*/ * Mark2Anchor; } ;
-struct TYPE_19__ {TYPE_4__* MarkRecord; int /*<<< orphan*/  MarkCount; } ;
-struct TYPE_18__ {int /*<<< orphan*/  PosFormat; int /*<<< orphan*/  Mark2Array; int /*<<< orphan*/  Mark1Array; int /*<<< orphan*/  ClassCount; int /*<<< orphan*/  Mark2Coverage; int /*<<< orphan*/  Mark1Coverage; } ;
-struct TYPE_17__ {int /*<<< orphan*/  MarkAnchor; int /*<<< orphan*/  Class; } ;
-struct TYPE_16__ {int /*<<< orphan*/  SubTableCount; } ;
+
+
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_20__ {int * Mark2Anchor; } ;
+struct TYPE_19__ {TYPE_4__* MarkRecord; int MarkCount; } ;
+struct TYPE_18__ {int PosFormat; int Mark2Array; int Mark1Array; int ClassCount; int Mark2Coverage; int Mark1Coverage; } ;
+struct TYPE_17__ {int MarkAnchor; int Class; } ;
+struct TYPE_16__ {int SubTableCount; } ;
 struct TYPE_15__ {scalar_t__ y; scalar_t__ x; } ;
-struct TYPE_14__ {int /*<<< orphan*/  fLogicalOrder; scalar_t__ fRTL; } ;
-typedef  TYPE_1__ SCRIPT_ANALYSIS ;
-typedef  TYPE_2__ POINT ;
-typedef  TYPE_3__ OT_LookupTable ;
-typedef  TYPE_4__ GPOS_MarkRecord ;
-typedef  TYPE_5__ GPOS_MarkMarkPosFormat1 ;
-typedef  TYPE_6__ GPOS_MarkArray ;
-typedef  TYPE_7__ GPOS_Mark2Record ;
-typedef  int /*<<< orphan*/  GPOS_Mark2Array ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct TYPE_14__ {int fLogicalOrder; scalar_t__ fRTL; } ;
+typedef TYPE_1__ SCRIPT_ANALYSIS ;
+typedef TYPE_2__ POINT ;
+typedef TYPE_3__ OT_LookupTable ;
+typedef TYPE_4__ GPOS_MarkRecord ;
+typedef TYPE_5__ GPOS_MarkMarkPosFormat1 ;
+typedef TYPE_6__ GPOS_MarkArray ;
+typedef TYPE_7__ GPOS_Mark2Record ;
+typedef int GPOS_Mark2Array ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GPOS_get_anchor_values (int /*<<< orphan*/  const*,TYPE_2__*,unsigned int) ; 
- scalar_t__ GPOS_get_subtable (TYPE_3__ const*,int) ; 
- int GSUB_is_glyph_covered (int /*<<< orphan*/  const*,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wine_dbgstr_point (TYPE_2__*) ; 
+
+ int ERR (char*) ;
+ int FALSE ;
+ int FIXME (char*,int) ;
+ int GET_BE_WORD (int ) ;
+ int GPOS_get_anchor_values (int const*,TYPE_2__*,unsigned int) ;
+ scalar_t__ GPOS_get_subtable (TYPE_3__ const*,int) ;
+ int GSUB_is_glyph_covered (int const*,int const) ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ int wine_dbgstr_point (TYPE_2__*) ;
 
 __attribute__((used)) static BOOL GPOS_apply_MarkToMark(const OT_LookupTable *look, const SCRIPT_ANALYSIS *analysis,
         const WORD *glyphs, unsigned int glyph_index, unsigned int glyph_count, unsigned int ppem, POINT *pt)

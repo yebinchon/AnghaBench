@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  cf_chash_ctx ;
-struct TYPE_3__ {size_t hashsz; size_t blocksz; int /*<<< orphan*/  (* digest ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* update ) (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ;int /*<<< orphan*/  (* init ) (int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ cf_chash ;
 
-/* Variables and functions */
- int CF_MAXHASH ; 
- int /*<<< orphan*/  TEST_CHECK (int) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int cf_chash_ctx ;
+struct TYPE_3__ {size_t hashsz; size_t blocksz; int (* digest ) (int *,int *) ;int (* update ) (int *,int const*,size_t) ;int (* init ) (int *) ;} ;
+typedef TYPE_1__ cf_chash ;
+
+
+ int CF_MAXHASH ;
+ int TEST_CHECK (int) ;
+ scalar_t__ memcmp (int *,char const*,size_t) ;
+ int stub1 (int *) ;
+ int stub2 (int *,int const*,int) ;
+ int stub3 (int *,int const*,size_t) ;
+ int stub4 (int *,int *) ;
+ int stub5 (int *) ;
+ int stub6 (int *,int const*,int) ;
+ int stub7 (int *,int const*,size_t) ;
+ int stub8 (int *,int *) ;
 
 __attribute__((used)) static void vector(const cf_chash *hash,
                    const void *vmsg, size_t nmsg,
@@ -40,7 +40,7 @@ __attribute__((used)) static void vector(const cf_chash *hash,
   cf_chash_ctx ctx;
   hash->init(&ctx);
 
-  /* Input in carefully chosen chunk sizes to exercise blockwise code. */
+
   if (nmsg)
   {
     hash->update(&ctx, msg, 1);
@@ -53,7 +53,7 @@ __attribute__((used)) static void vector(const cf_chash *hash,
   TEST_CHECK(nexpect == hash->hashsz);
   TEST_CHECK(memcmp(digest, expect, nexpect) == 0);
 
-  /* Now try with other arrangements. */
+
   msg = vmsg;
   nmsg = orig_nmsg;
 

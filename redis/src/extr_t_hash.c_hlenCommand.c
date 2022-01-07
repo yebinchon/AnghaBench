@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  robj ;
-struct TYPE_7__ {int /*<<< orphan*/ * argv; } ;
-typedef  TYPE_1__ client ;
-struct TYPE_8__ {int /*<<< orphan*/  czero; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OBJ_HASH ; 
- int /*<<< orphan*/  addReplyLongLong (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ checkType (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashTypeLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookupKeyReadOrReply (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__ shared ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int robj ;
+struct TYPE_7__ {int * argv; } ;
+typedef TYPE_1__ client ;
+struct TYPE_8__ {int czero; } ;
+
+
+ int OBJ_HASH ;
+ int addReplyLongLong (TYPE_1__*,int ) ;
+ scalar_t__ checkType (TYPE_1__*,int *,int ) ;
+ int hashTypeLength (int *) ;
+ int * lookupKeyReadOrReply (TYPE_1__*,int ,int ) ;
+ TYPE_2__ shared ;
 
 void hlenCommand(client *c) {
     robj *o;
 
-    if ((o = lookupKeyReadOrReply(c,c->argv[1],shared.czero)) == NULL ||
+    if ((o = lookupKeyReadOrReply(c,c->argv[1],shared.czero)) == ((void*)0) ||
         checkType(c,o,OBJ_HASH)) return;
 
     addReplyLongLong(c,hashTypeLength(o));

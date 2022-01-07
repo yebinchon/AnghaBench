@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EL_BUSREQ ; 
- scalar_t__ cycles_68k_to_z80 (int) ; 
- int /*<<< orphan*/  elprintf (int /*<<< orphan*/ ,char*,int,int,int,int,int) ; 
- unsigned int last_z80_sync ; 
- int /*<<< orphan*/  pprof_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pprof_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  z80 ; 
- int z80_cycle_aim ; 
- int z80_cycle_cnt ; 
- scalar_t__ z80_run (int) ; 
+ int EL_BUSREQ ;
+ scalar_t__ cycles_68k_to_z80 (int) ;
+ int elprintf (int ,char*,int,int,int,int,int) ;
+ unsigned int last_z80_sync ;
+ int pprof_end (int ) ;
+ int pprof_start (int ) ;
+ int z80 ;
+ int z80_cycle_aim ;
+ int z80_cycle_cnt ;
+ scalar_t__ z80_run (int) ;
 
 void PicoSyncZ80(unsigned int m68k_cycles_done)
 {

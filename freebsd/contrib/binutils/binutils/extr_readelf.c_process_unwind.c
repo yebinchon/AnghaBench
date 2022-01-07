@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int e_machine; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EM_IA_64 ; 
- int /*<<< orphan*/  EM_PARISC ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  do_unwind ; 
- TYPE_1__ elf_header ; 
- int /*<<< orphan*/  hppa_process_unwind ; 
- int /*<<< orphan*/  ia64_process_unwind ; 
- int /*<<< orphan*/  printf (char*) ; 
- int stub1 (int /*<<< orphan*/ *) ; 
+
+ int EM_IA_64 ;
+ int EM_PARISC ;
+ char* _ (char*) ;
+ int do_unwind ;
+ TYPE_1__ elf_header ;
+ int hppa_process_unwind ;
+ int ia64_process_unwind ;
+ int printf (char*) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static int
 process_unwind (FILE *file)
@@ -41,7 +41,7 @@ process_unwind (FILE *file)
   if (!do_unwind)
     return 1;
 
-  for (i = 0; handlers[i].handler != NULL; i++)
+  for (i = 0; handlers[i].handler != ((void*)0); i++)
     if (elf_header.e_machine == handlers[i].machtype)
       return handlers[i].handler (file);
 

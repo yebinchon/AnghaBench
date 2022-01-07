@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Dwarf_Unsigned ;
-typedef  int /*<<< orphan*/ * Dwarf_P_Debug ;
-typedef  int /*<<< orphan*/  Dwarf_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWARF_SET_ERROR (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DW_DLE_ARGUMENT ; 
- int DW_DLV_ERROR ; 
- int /*<<< orphan*/  DW_MACINFO_undef ; 
- int _dwarf_add_macro (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Dwarf_Unsigned ;
+typedef int * Dwarf_P_Debug ;
+typedef int Dwarf_Error ;
+
+
+ int DWARF_SET_ERROR (int *,int *,int ) ;
+ int DW_DLE_ARGUMENT ;
+ int DW_DLV_ERROR ;
+ int DW_MACINFO_undef ;
+ int _dwarf_add_macro (int *,int ,int ,int,char*,int *,int *) ;
 
 int
 dwarf_undef_macro(Dwarf_P_Debug dbg, Dwarf_Unsigned lineno, char *name,
     Dwarf_Error *error)
 {
 
-	if (dbg == NULL || name == NULL) {
-		DWARF_SET_ERROR(dbg, error, DW_DLE_ARGUMENT);
-		return (DW_DLV_ERROR);
-	}
+ if (dbg == ((void*)0) || name == ((void*)0)) {
+  DWARF_SET_ERROR(dbg, error, DW_DLE_ARGUMENT);
+  return (DW_DLV_ERROR);
+ }
 
-	return (_dwarf_add_macro(dbg, DW_MACINFO_undef, lineno, -1, name,
-	    NULL, error));
+ return (_dwarf_add_macro(dbg, DW_MACINFO_undef, lineno, -1, name,
+     ((void*)0), error));
 }

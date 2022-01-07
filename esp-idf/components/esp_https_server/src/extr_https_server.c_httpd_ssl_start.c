@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  server_port; int /*<<< orphan*/  open_fn; int /*<<< orphan*/  global_transport_ctx_free_fn; int /*<<< orphan*/ * global_transport_ctx; } ;
-struct httpd_ssl_config {scalar_t__ transport_mode; TYPE_1__ httpd; int /*<<< orphan*/  port_insecure; int /*<<< orphan*/  port_secure; } ;
-typedef  int /*<<< orphan*/ * httpd_handle_t ;
-typedef  int /*<<< orphan*/  esp_tls_cfg_server_t ;
-typedef  int esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,...) ; 
- int ESP_OK ; 
- scalar_t__ HTTPD_SSL_TRANSPORT_SECURE ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * create_secure_context (struct httpd_ssl_config*) ; 
- int /*<<< orphan*/  free_secure_context ; 
- int /*<<< orphan*/  httpd_ssl_open ; 
- int httpd_start (int /*<<< orphan*/ **,TYPE_1__*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int server_port; int open_fn; int global_transport_ctx_free_fn; int * global_transport_ctx; } ;
+struct httpd_ssl_config {scalar_t__ transport_mode; TYPE_1__ httpd; int port_insecure; int port_secure; } ;
+typedef int * httpd_handle_t ;
+typedef int esp_tls_cfg_server_t ;
+typedef int esp_err_t ;
+
+
+ int ESP_LOGD (int ,char*) ;
+ int ESP_LOGI (int ,char*,...) ;
+ int ESP_OK ;
+ scalar_t__ HTTPD_SSL_TRANSPORT_SECURE ;
+ int TAG ;
+ int assert (int ) ;
+ int * create_secure_context (struct httpd_ssl_config*) ;
+ int free_secure_context ;
+ int httpd_ssl_open ;
+ int httpd_start (int **,TYPE_1__*) ;
 
 esp_err_t httpd_ssl_start(httpd_handle_t *pHandle, struct httpd_ssl_config *config)
 {
-    assert(config != NULL);
-    assert(pHandle != NULL);
+    assert(config != ((void*)0));
+    assert(pHandle != ((void*)0));
 
     ESP_LOGI(TAG, "Starting server");
 
@@ -45,10 +45,10 @@ esp_err_t httpd_ssl_start(httpd_handle_t *pHandle, struct httpd_ssl_config *conf
 
         ESP_LOGD(TAG, "SSL context ready");
 
-        // set SSL specific config
+
         config->httpd.global_transport_ctx = esp_tls_cfg;
         config->httpd.global_transport_ctx_free_fn = free_secure_context;
-        config->httpd.open_fn = httpd_ssl_open; // the open function configures the created SSL sessions
+        config->httpd.open_fn = httpd_ssl_open;
 
         config->httpd.server_port = config->port_secure;
     } else {
@@ -56,7 +56,7 @@ esp_err_t httpd_ssl_start(httpd_handle_t *pHandle, struct httpd_ssl_config *conf
         config->httpd.server_port = config->port_insecure;
     }
 
-    httpd_handle_t handle = NULL;
+    httpd_handle_t handle = ((void*)0);
 
     esp_err_t ret = httpd_start(&handle, &config->httpd);
     if (ret != ESP_OK) return ret;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  deformat_string (int /*<<< orphan*/ *,char*,char**) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- size_t lstrlenW (char*) ; 
- int /*<<< orphan*/  msi_free (char*) ; 
- char* strchrW (char*,char) ; 
- size_t strlenW (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int MSIPACKAGE ;
+
+
+ int deformat_string (int *,char*,char**) ;
+ int lstrcpyW (char*,char*) ;
+ size_t lstrlenW (char*) ;
+ int msi_free (char*) ;
+ char* strchrW (char*,char) ;
+ size_t strlenW (char*) ;
 
 __attribute__((used)) static void ACTION_ExpandAnyPath(MSIPACKAGE *package, WCHAR *src, WCHAR *dst,
  size_t len)
@@ -34,7 +34,7 @@ __attribute__((used)) static void ACTION_ExpandAnyPath(MSIPACKAGE *package, WCHA
 
     dst[0] = '\0';
 
-    /* Ignore the short portion of the path */
+
     if ((ptr = strchrW(src, '|')))
         ptr++;
     else

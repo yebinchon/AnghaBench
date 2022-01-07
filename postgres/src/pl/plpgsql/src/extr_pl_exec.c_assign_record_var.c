@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  datum_context; } ;
-struct TYPE_5__ {scalar_t__ dtype; int /*<<< orphan*/ * erh; } ;
-typedef  TYPE_1__ PLpgSQL_rec ;
-typedef  TYPE_2__ PLpgSQL_execstate ;
-typedef  int /*<<< orphan*/  ExpandedRecordHeader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  DeleteExpandedObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExpandedRecordGetDatum (int /*<<< orphan*/ *) ; 
- scalar_t__ PLPGSQL_DTYPE_REC ; 
- int /*<<< orphan*/  TransferExpandedRecord (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int datum_context; } ;
+struct TYPE_5__ {scalar_t__ dtype; int * erh; } ;
+typedef TYPE_1__ PLpgSQL_rec ;
+typedef TYPE_2__ PLpgSQL_execstate ;
+typedef int ExpandedRecordHeader ;
+
+
+ int Assert (int) ;
+ int DeleteExpandedObject (int ) ;
+ int ExpandedRecordGetDatum (int *) ;
+ scalar_t__ PLPGSQL_DTYPE_REC ;
+ int TransferExpandedRecord (int *,int ) ;
 
 __attribute__((used)) static void
 assign_record_var(PLpgSQL_execstate *estate, PLpgSQL_rec *rec,
-				  ExpandedRecordHeader *erh)
+      ExpandedRecordHeader *erh)
 {
-	Assert(rec->dtype == PLPGSQL_DTYPE_REC);
+ Assert(rec->dtype == PLPGSQL_DTYPE_REC);
 
-	/* Transfer new record object into datum_context */
-	TransferExpandedRecord(erh, estate->datum_context);
 
-	/* Free the old value ... */
-	if (rec->erh)
-		DeleteExpandedObject(ExpandedRecordGetDatum(rec->erh));
+ TransferExpandedRecord(erh, estate->datum_context);
 
-	/* ... and install the new */
-	rec->erh = erh;
+
+ if (rec->erh)
+  DeleteExpandedObject(ExpandedRecordGetDatum(rec->erh));
+
+
+ rec->erh = erh;
 }

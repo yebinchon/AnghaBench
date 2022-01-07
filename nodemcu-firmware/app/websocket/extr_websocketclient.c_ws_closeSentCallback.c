@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int knownFailureCode; scalar_t__ isSecure; } ;
-typedef  TYPE_1__ ws_info ;
+typedef TYPE_1__ ws_info ;
 struct espconn {scalar_t__ reverse; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NODE_DBG (char*) ; 
- int /*<<< orphan*/  espconn_disconnect (struct espconn*) ; 
- int /*<<< orphan*/  espconn_secure_disconnect (struct espconn*) ; 
+
+ int NODE_DBG (char*) ;
+ int espconn_disconnect (struct espconn*) ;
+ int espconn_secure_disconnect (struct espconn*) ;
 
 __attribute__((used)) static void ws_closeSentCallback(void *arg) {
   NODE_DBG("ws_closeSentCallback \n");
   struct espconn *conn = (struct espconn *) arg;
   ws_info *ws = (ws_info *) conn->reverse;
 
-  if (ws == NULL) {
+  if (ws == ((void*)0)) {
     NODE_DBG("ws is unexpectly null\n");
     return;
   }

@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
 
-/* Variables and functions */
- int S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ stat (char const*,struct stat*) ; 
+
+
+
+struct stat {int st_mode; } ;
+
+
+ int S_ISDIR (int ) ;
+ scalar_t__ stat (char const*,struct stat*) ;
 
 int opt_isdir(const char *name)
 {
-# if defined(S_ISDIR)
-    struct stat st;
-
-    if (stat(name, &st) == 0)
-        return S_ISDIR(st.st_mode);
-    else
-        return -1;
-# else
     return -1;
-# endif
+
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct ev_loop {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  rstatus; } ;
-typedef  TYPE_1__ ev_child ;
-struct TYPE_5__ {int /*<<< orphan*/  pid; } ;
+struct TYPE_4__ {int rstatus; } ;
+typedef TYPE_1__ ev_child ;
+struct TYPE_5__ {int pid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ELOG (char*,int /*<<< orphan*/ ,int) ; 
- int WEXITSTATUS (int /*<<< orphan*/ ) ; 
- TYPE_3__ child ; 
- int /*<<< orphan*/  cleanup () ; 
- int /*<<< orphan*/  draw_bars (int) ; 
- int /*<<< orphan*/  set_statusline_error (char*,int) ; 
+
+ int ELOG (char*,int ,int) ;
+ int WEXITSTATUS (int ) ;
+ TYPE_3__ child ;
+ int cleanup () ;
+ int draw_bars (int) ;
+ int set_statusline_error (char*,int) ;
 
 __attribute__((used)) static void child_sig_cb(struct ev_loop *loop, ev_child *watcher, int revents) {
     int exit_status = WEXITSTATUS(watcher->rstatus);
@@ -32,8 +32,8 @@ __attribute__((used)) static void child_sig_cb(struct ev_loop *loop, ev_child *w
          child.pid,
          exit_status);
 
-    /* this error is most likely caused by a user giving a nonexecutable or
-     * nonexistent file, so we will handle those cases separately. */
+
+
     if (exit_status == 126)
         set_statusline_error("status_command is not executable (exit %d)", exit_status);
     else if (exit_status == 127)
@@ -42,5 +42,5 @@ __attribute__((used)) static void child_sig_cb(struct ev_loop *loop, ev_child *w
         set_statusline_error("status_command process exited unexpectedly (exit %d)", exit_status);
 
     cleanup();
-    draw_bars(false);
+    draw_bars(0);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct flexcop_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECM_PID ; 
- int /*<<< orphan*/  ECM_filter_sig ; 
- int /*<<< orphan*/  ECM_trans ; 
- int /*<<< orphan*/  pid_ctrl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pid_filter_308 ; 
+
+ int ECM_PID ;
+ int ECM_filter_sig ;
+ int ECM_trans ;
+ int pid_ctrl (int ,int ,int ,int ,int ) ;
+ int pid_filter_308 ;
 
 __attribute__((used)) static void flexcop_pid_ECM_PID_ctrl(struct flexcop_device *fc,
-		u16 pid, int onoff)
+  u16 pid, int onoff)
 {
-	pid_ctrl(pid_filter_308, ECM_PID, ECM_filter_sig, ECM_trans, 0);
+ pid_ctrl(pid_filter_308, ECM_PID, ECM_filter_sig, ECM_trans, 0);
 }

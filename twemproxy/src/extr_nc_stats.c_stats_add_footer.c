@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char uint8_t ;
+
+
+
+
+typedef char uint8_t ;
 struct stats_buffer {scalar_t__ len; scalar_t__ size; char* data; } ;
 struct stats {struct stats_buffer buf; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_ERROR ; 
- int /*<<< orphan*/  NC_OK ; 
+
+ int NC_ERROR ;
+ int NC_OK ;
 
 __attribute__((used)) static rstatus_t
 stats_add_footer(struct stats *st)
@@ -31,7 +31,7 @@ stats_add_footer(struct stats *st)
         return NC_ERROR;
     }
 
-    /* overwrite the last byte and add a new byte */
+
     pos = buf->data + buf->len - 1;
     pos[0] = '}';
     pos[1] = '\n';

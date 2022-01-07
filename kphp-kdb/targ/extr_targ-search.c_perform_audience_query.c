@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int Q_aux_num ; 
- int /*<<< orphan*/  R ; 
- int R_cnt ; 
- int R_position ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int perform_query (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  postprocess_res ; 
- int /*<<< orphan*/  postprocess_res_std ; 
- int /*<<< orphan*/  store_res ; 
- int /*<<< orphan*/  store_res_aud ; 
- int /*<<< orphan*/  vkprintf (int,char*,int) ; 
+ int Q_aux_num ;
+ int R ;
+ int R_cnt ;
+ int R_position ;
+ int memset (int ,int ,int) ;
+ int perform_query (int ) ;
+ int postprocess_res ;
+ int postprocess_res_std ;
+ int store_res ;
+ int store_res_aud ;
+ int vkprintf (int,char*,int) ;
 
 int perform_audience_query (void) {
   vkprintf (1, "perform audience query() for %d auxiliary queries\n", Q_aux_num);

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  size_t ULONG ;
 
-/* Variables and functions */
- int* crctable ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef size_t ULONG ;
+
+
+ int* crctable ;
 
 __attribute__((used)) static uint32_t calc_crc32c(uint32_t seed, uint8_t* msg, ULONG msglen) {
     uint32_t rem;

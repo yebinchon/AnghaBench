@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int FATAL (char*) ;
+ int cleanfld (int,int) ;
+ int growfldtab (int) ;
+ int lastfld ;
+ int nfields ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FATAL (char*) ; 
- int /*<<< orphan*/  cleanfld (int,int) ; 
- int /*<<< orphan*/  growfldtab (int) ; 
- int lastfld ; 
- int nfields ; 
-
-void setlastfld(int n)	/* set lastfld cleaning fldtab cells if necessary */
+void setlastfld(int n)
 {
-	if (n < 0)
-		FATAL("cannot set NF to a negative value");
-	if (n > nfields)
-		growfldtab(n);
+ if (n < 0)
+  FATAL("cannot set NF to a negative value");
+ if (n > nfields)
+  growfldtab(n);
 
-	if (lastfld < n)
-	    cleanfld(lastfld+1, n);
-	else
-	    cleanfld(n+1, lastfld);
+ if (lastfld < n)
+     cleanfld(lastfld+1, n);
+ else
+     cleanfld(n+1, lastfld);
 
-	lastfld = n;
+ lastfld = n;
 }

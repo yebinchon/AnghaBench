@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  render_radius; int /*<<< orphan*/  fov; int /*<<< orphan*/  height; int /*<<< orphan*/  width; } ;
-struct TYPE_10__ {int /*<<< orphan*/  timer; int /*<<< orphan*/  sampler; int /*<<< orphan*/  matrix; int /*<<< orphan*/  program; } ;
-struct TYPE_8__ {int /*<<< orphan*/  ry; int /*<<< orphan*/  rx; } ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int render_radius; int fov; int height; int width; } ;
+struct TYPE_10__ {int timer; int sampler; int matrix; int program; } ;
+struct TYPE_8__ {int ry; int rx; } ;
 struct TYPE_9__ {TYPE_1__ state; } ;
-typedef  TYPE_1__ State ;
-typedef  TYPE_2__ Player ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  TYPE_3__ Attrib ;
+typedef TYPE_1__ State ;
+typedef TYPE_2__ Player ;
+typedef int GLuint ;
+typedef TYPE_3__ Attrib ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_FALSE ; 
- int /*<<< orphan*/  draw_triangles_3d (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- TYPE_6__* g ; 
- int /*<<< orphan*/  glUniform1f (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glUniform1i (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  glUniformMatrix4fv (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,float*) ; 
- int /*<<< orphan*/  glUseProgram (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_matrix_3d (float*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time_of_day () ; 
+
+ int GL_FALSE ;
+ int draw_triangles_3d (TYPE_3__*,int ,int) ;
+ TYPE_6__* g ;
+ int glUniform1f (int ,int ) ;
+ int glUniform1i (int ,int) ;
+ int glUniformMatrix4fv (int ,int,int ,float*) ;
+ int glUseProgram (int ) ;
+ int set_matrix_3d (float*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int time_of_day () ;
 
 void render_sky(Attrib *attrib, Player *player, GLuint buffer) {
     State *s = &player->state;

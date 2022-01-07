@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct btrfsic_block {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_NOFS ; 
- int /*<<< orphan*/  btrfsic_block_init (struct btrfsic_block*) ; 
- struct btrfsic_block* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int GFP_NOFS ;
+ int btrfsic_block_init (struct btrfsic_block*) ;
+ struct btrfsic_block* kzalloc (int,int ) ;
 
 __attribute__((used)) static struct btrfsic_block *btrfsic_block_alloc(void)
 {
-	struct btrfsic_block *b;
+ struct btrfsic_block *b;
 
-	b = kzalloc(sizeof(*b), GFP_NOFS);
-	if (NULL != b)
-		btrfsic_block_init(b);
+ b = kzalloc(sizeof(*b), GFP_NOFS);
+ if (((void*)0) != b)
+  btrfsic_block_init(b);
 
-	return b;
+ return b;
 }

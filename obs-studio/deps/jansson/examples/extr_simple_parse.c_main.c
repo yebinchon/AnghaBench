@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int MAX_CHARS ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * load_json (char*) ; 
- int /*<<< orphan*/  print_json (int /*<<< orphan*/ *) ; 
- char* read_line (char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int json_t ;
+
+
+ int MAX_CHARS ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int json_decref (int *) ;
+ int * load_json (char*) ;
+ int print_json (int *) ;
+ char* read_line (char*,int) ;
+ int stderr ;
 
 int main(int argc, char *argv[]) {
     char line[MAX_CHARS];
@@ -30,13 +30,13 @@ int main(int argc, char *argv[]) {
         exit(-1);
     }
 
-    while (read_line(line, MAX_CHARS) != (char *)NULL) {
+    while (read_line(line, MAX_CHARS) != (char *)((void*)0)) {
 
-        /* parse text into JSON structure */
+
         json_t *root = load_json(line);
 
         if (root) {
-            /* print and release the JSON structure */
+
             print_json(root);
             json_decref(root);
         }

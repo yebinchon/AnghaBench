@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct object {int /*<<< orphan*/  oid; } ;
-struct fsck_options {int /*<<< orphan*/  skiplist; } ;
 
-/* Variables and functions */
- scalar_t__ oidset_contains (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct object {int oid; } ;
+struct fsck_options {int skiplist; } ;
+
+
+ scalar_t__ oidset_contains (int *,int *) ;
 
 __attribute__((used)) static int object_on_skiplist(struct fsck_options *opts, struct object *obj)
 {
-	return opts && obj && oidset_contains(&opts->skiplist, &obj->oid);
+ return opts && obj && oidset_contains(&opts->skiplist, &obj->oid);
 }

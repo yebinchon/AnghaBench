@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  ZIO ;
-struct TYPE_4__ {char const* name; int /*<<< orphan*/ * b; int /*<<< orphan*/ * Z; int /*<<< orphan*/ * L; } ;
-typedef  int /*<<< orphan*/  Proto ;
-typedef  int /*<<< orphan*/  Mbuffer ;
-typedef  TYPE_1__ LoadState ;
 
-/* Variables and functions */
- char const* LUA_SIGNATURE ; 
- int /*<<< orphan*/ * LoadFunction (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LoadHeader (TYPE_1__*) ; 
- int /*<<< orphan*/  luaS_newliteral (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int ZIO ;
+struct TYPE_4__ {char const* name; int * b; int * Z; int * L; } ;
+typedef int Proto ;
+typedef int Mbuffer ;
+typedef TYPE_1__ LoadState ;
+
+
+ char const* LUA_SIGNATURE ;
+ int * LoadFunction (TYPE_1__*,int ) ;
+ int LoadHeader (TYPE_1__*) ;
+ int luaS_newliteral (int *,char*) ;
 
 Proto* luaU_undump (lua_State* L, ZIO* Z, Mbuffer* buff, const char* name)
 {

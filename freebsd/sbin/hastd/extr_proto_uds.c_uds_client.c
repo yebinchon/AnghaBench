@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PJDLOG_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UDS_SIDE_CLIENT ; 
- int uds_common_setup (char const*,void**,int /*<<< orphan*/ ) ; 
+ int PJDLOG_ASSERT (int ) ;
+ int UDS_SIDE_CLIENT ;
+ int uds_common_setup (char const*,void**,int ) ;
 
 __attribute__((used)) static int
 uds_client(const char *srcaddr, const char *dstaddr, void **ctxp)
 {
-	int ret;
+ int ret;
 
-	ret = uds_common_setup(dstaddr, ctxp, UDS_SIDE_CLIENT);
-	if (ret != 0)
-		return (ret);
+ ret = uds_common_setup(dstaddr, ctxp, UDS_SIDE_CLIENT);
+ if (ret != 0)
+  return (ret);
 
-	PJDLOG_ASSERT(srcaddr == NULL);
+ PJDLOG_ASSERT(srcaddr == ((void*)0));
 
-	return (0);
+ return (0);
 }

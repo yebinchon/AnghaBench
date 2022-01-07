@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stbtt_pack_context ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITMAP_H ; 
- int /*<<< orphan*/  BITMAP_W ; 
- int /*<<< orphan*/  GL_ALPHA ; 
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- scalar_t__* chardata ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  font_tex ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fread (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glTexImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * scale ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
- char* stb_wingraph_commandline ; 
- int /*<<< orphan*/  stbtt_PackBegin (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stbtt_PackEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stbtt_PackFontRange (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,scalar_t__) ; 
- int /*<<< orphan*/  stbtt_PackSetOversampling (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * temp_bitmap ; 
- int /*<<< orphan*/  ttf_buffer ; 
+
+
+
+typedef int stbtt_pack_context ;
+typedef int FILE ;
+
+
+ int BITMAP_H ;
+ int BITMAP_W ;
+ int GL_ALPHA ;
+ int GL_LINEAR ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_UNSIGNED_BYTE ;
+ scalar_t__* chardata ;
+ int exit (int ) ;
+ int font_tex ;
+ int * fopen (char*,char*) ;
+ int fread (int ,int,int,int *) ;
+ char* getenv (char*) ;
+ int glBindTexture (int ,int ) ;
+ int glGenTextures (int,int *) ;
+ int glTexImage2D (int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int * scale ;
+ int sprintf (char*,char*,char*) ;
+ char* stb_wingraph_commandline ;
+ int stbtt_PackBegin (int *,int ,int ,int ,int ,int,int *) ;
+ int stbtt_PackEnd (int *) ;
+ int stbtt_PackFontRange (int *,int ,int ,int ,int,int,scalar_t__) ;
+ int stbtt_PackSetOversampling (int *,int,int) ;
+ int * temp_bitmap ;
+ int ttf_buffer ;
 
 void load_fonts(void)
 {
@@ -49,11 +49,11 @@ void load_fonts(void)
    FILE *f;
    char filename[256];
    char *win = getenv("windir");
-   if (win == NULL) win = getenv("SystemRoot");
+   if (win == ((void*)0)) win = getenv("SystemRoot");
 
    f = fopen(stb_wingraph_commandline, "rb");
    if (!f) {
-      if (win == NULL)
+      if (win == ((void*)0))
          sprintf(filename, "arial.ttf", win);
       else
          sprintf(filename, "%s/fonts/arial.ttf", win);
@@ -63,7 +63,7 @@ void load_fonts(void)
 
    fread(ttf_buffer, 1, 1<<25, f);
 
-   stbtt_PackBegin(&pc, temp_bitmap[0], BITMAP_W, BITMAP_H, 0, 1, NULL);
+   stbtt_PackBegin(&pc, temp_bitmap[0], BITMAP_W, BITMAP_H, 0, 1, ((void*)0));
    for (i=0; i < 2; ++i) {
       stbtt_PackSetOversampling(&pc, 1, 1);
       stbtt_PackFontRange(&pc, ttf_buffer, 0, scale[i], 32, 95, chardata[i*3+0]+32);

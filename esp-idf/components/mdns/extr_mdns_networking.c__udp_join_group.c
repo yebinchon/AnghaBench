@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct netif {int dummy; } ;
 struct ip4_addr {int dummy; } ;
-typedef  scalar_t__ mdns_ip_protocol_t ;
-typedef  int /*<<< orphan*/  mdns_if_t ;
-struct TYPE_5__ {int /*<<< orphan*/  ip6; int /*<<< orphan*/  ip4; } ;
+typedef scalar_t__ mdns_ip_protocol_t ;
+typedef int mdns_if_t ;
+struct TYPE_5__ {int ip6; int ip4; } ;
 struct TYPE_6__ {TYPE_1__ u_addr; } ;
-typedef  TYPE_2__ ip_addr_t ;
-typedef  int /*<<< orphan*/  esp_netif_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+typedef TYPE_2__ ip_addr_t ;
+typedef int esp_netif_t ;
+typedef int esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_STATE ; 
- int /*<<< orphan*/  ESP_OK ; 
- TYPE_2__ IPADDR6_INIT (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IP_ADDR4 (TYPE_2__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ MDNS_IP_PROTOCOL_V4 ; 
- int /*<<< orphan*/ * _mdns_get_esp_netif (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (struct netif*) ; 
- struct netif* esp_netif_get_netif_impl (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_netif_is_netif_up (int /*<<< orphan*/ *) ; 
- scalar_t__ igmp_joingroup_netif (struct netif*,struct ip4_addr const*) ; 
- scalar_t__ igmp_leavegroup_netif (struct netif*,struct ip4_addr const*) ; 
- scalar_t__ mld6_joingroup_netif (struct netif*,int /*<<< orphan*/ *) ; 
- scalar_t__ mld6_leavegroup_netif (struct netif*,int /*<<< orphan*/ *) ; 
+
+ int ESP_ERR_INVALID_STATE ;
+ int ESP_OK ;
+ TYPE_2__ IPADDR6_INIT (int,int ,int ,int) ;
+ int IP_ADDR4 (TYPE_2__*,int,int ,int ,int) ;
+ scalar_t__ MDNS_IP_PROTOCOL_V4 ;
+ int * _mdns_get_esp_netif (int ) ;
+ int assert (struct netif*) ;
+ struct netif* esp_netif_get_netif_impl (int *) ;
+ int esp_netif_is_netif_up (int *) ;
+ scalar_t__ igmp_joingroup_netif (struct netif*,struct ip4_addr const*) ;
+ scalar_t__ igmp_leavegroup_netif (struct netif*,struct ip4_addr const*) ;
+ scalar_t__ mld6_joingroup_netif (struct netif*,int *) ;
+ scalar_t__ mld6_leavegroup_netif (struct netif*,int *) ;
 
 __attribute__((used)) static esp_err_t _udp_join_group(mdns_if_t if_inx, mdns_ip_protocol_t ip_protocol, bool join)
 {
-    struct netif * netif = NULL;
+    struct netif * netif = ((void*)0);
     esp_netif_t *tcpip_if = _mdns_get_esp_netif(if_inx);
 
     if (!esp_netif_is_netif_up(tcpip_if)) {
-        // Network interface went down before event propagated, skipping IGMP config
+
         return ESP_ERR_INVALID_STATE;
     }
 

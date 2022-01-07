@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct target_info {int /*<<< orphan*/  name; } ;
-typedef  int LONG ;
 
-/* Variables and functions */
- int ARRAY_SIZE (struct target_info const*) ; 
- int strcmp (char const*,int /*<<< orphan*/ ) ; 
- struct target_info const* targets_info ; 
+
+
+
+struct target_info {int name; } ;
+typedef int LONG ;
+
+
+ int ARRAY_SIZE (struct target_info const*) ;
+ int strcmp (char const*,int ) ;
+ struct target_info const* targets_info ;
 
 __attribute__((used)) static const struct target_info * get_target_info(const char *target)
 {
@@ -37,5 +37,5 @@ __attribute__((used)) static const struct target_info * get_target_info(const ch
             return &targets_info[cur];
     }
 
-    return NULL;
+    return ((void*)0);
 }

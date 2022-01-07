@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- char* GetMultiByteString (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrlenW (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int FILE ;
+typedef scalar_t__ BOOL ;
+
+
+ char* GetMultiByteString (int const*) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,char*) ;
+ int fputs (char*,int *) ;
+ int fwrite (int const*,int,int ,int *) ;
+ int lstrlenW (int const*) ;
 
 __attribute__((used)) static void REGPROC_write_line(FILE *file, const WCHAR* str, BOOL unicode)
 {

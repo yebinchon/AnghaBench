@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hwaccel_device; } ;
-typedef  TYPE_1__ InputStream ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_HWDEVICE_TYPE_QSV ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int av_dict_set (int /*<<< orphan*/ **,char*,scalar_t__,int /*<<< orphan*/ ) ; 
- int av_hwdevice_ctx_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hw_device_ctx ; 
- scalar_t__ qsv_device ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hwaccel_device; } ;
+typedef TYPE_1__ InputStream ;
+typedef int AVDictionary ;
+
+
+ int AV_HWDEVICE_TYPE_QSV ;
+ int AV_LOG_ERROR ;
+ int av_dict_free (int **) ;
+ int av_dict_set (int **,char*,scalar_t__,int ) ;
+ int av_hwdevice_ctx_create (int *,int ,int ,int *,int ) ;
+ int av_log (int *,int ,char*) ;
+ int hw_device_ctx ;
+ scalar_t__ qsv_device ;
 
 __attribute__((used)) static int qsv_device_init(InputStream *ist)
 {
     int err;
-    AVDictionary *dict = NULL;
+    AVDictionary *dict = ((void*)0);
 
     if (qsv_device) {
         err = av_dict_set(&dict, "child_device", qsv_device, 0);
@@ -39,7 +39,7 @@ __attribute__((used)) static int qsv_device_init(InputStream *ist)
     err = av_hwdevice_ctx_create(&hw_device_ctx, AV_HWDEVICE_TYPE_QSV,
                                  ist->hwaccel_device, dict, 0);
     if (err < 0) {
-        av_log(NULL, AV_LOG_ERROR, "Error creating a QSV device\n");
+        av_log(((void*)0), AV_LOG_ERROR, "Error creating a QSV device\n");
         goto err_out;
     }
 

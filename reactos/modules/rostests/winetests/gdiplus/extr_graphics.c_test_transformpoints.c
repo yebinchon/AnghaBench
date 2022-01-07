@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int X; int Y; } ;
 struct TYPE_5__ {double X; double Y; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  TYPE_2__ GpPoint ;
-typedef  int /*<<< orphan*/  GpGraphics ;
+typedef int HDC ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef TYPE_2__ GpPoint ;
+typedef int GpGraphics ;
 
-/* Variables and functions */
- int CoordinateSpaceDevice ; 
- int CoordinateSpacePage ; 
- int CoordinateSpaceWorld ; 
- int GdipCreateFromHDC (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int GdipSetPageScale (int /*<<< orphan*/ *,double) ; 
- int GdipSetPageUnit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int GdipTransformPoints (int /*<<< orphan*/ *,int,int,TYPE_1__*,int) ; 
- int GdipTransformPointsI (int /*<<< orphan*/ *,int,int,TYPE_2__*,int) ; 
- int GdipTranslateWorldTransform (int /*<<< orphan*/ *,double,double,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int InvalidParameter ; 
- int /*<<< orphan*/  MatrixOrderAppend ; 
- int Ok ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnitPixel ; 
- int /*<<< orphan*/  expect (int,int) ; 
- int /*<<< orphan*/  expectf (double,double) ; 
- int /*<<< orphan*/  hwnd ; 
+
+ int CoordinateSpaceDevice ;
+ int CoordinateSpacePage ;
+ int CoordinateSpaceWorld ;
+ int GdipCreateFromHDC (int ,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int GdipSetPageScale (int *,double) ;
+ int GdipSetPageUnit (int *,int ) ;
+ int GdipTransformPoints (int *,int,int,TYPE_1__*,int) ;
+ int GdipTransformPointsI (int *,int,int,TYPE_2__*,int) ;
+ int GdipTranslateWorldTransform (int *,double,double,int ) ;
+ int GetDC (int ) ;
+ int InvalidParameter ;
+ int MatrixOrderAppend ;
+ int Ok ;
+ int ReleaseDC (int ,int ) ;
+ int UnitPixel ;
+ int expect (int,int) ;
+ int expectf (double,double) ;
+ int hwnd ;
 
 __attribute__((used)) static void test_transformpoints(void)
 {
     GpStatus status;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC( hwnd );
     GpPointF ptf[2];
     GpPoint pt[2];
@@ -52,10 +52,10 @@ __attribute__((used)) static void test_transformpoints(void)
     status = GdipCreateFromHDC(hdc, &graphics);
     expect(Ok, status);
 
-    /* NULL arguments */
-    status = GdipTransformPoints(NULL, CoordinateSpacePage, CoordinateSpaceWorld, NULL, 0);
+
+    status = GdipTransformPoints(((void*)0), CoordinateSpacePage, CoordinateSpaceWorld, ((void*)0), 0);
     expect(InvalidParameter, status);
-    status = GdipTransformPoints(graphics, CoordinateSpacePage, CoordinateSpaceWorld, NULL, 0);
+    status = GdipTransformPoints(graphics, CoordinateSpacePage, CoordinateSpaceWorld, ((void*)0), 0);
     expect(InvalidParameter, status);
     status = GdipTransformPoints(graphics, CoordinateSpacePage, CoordinateSpaceWorld, ptf, 0);
     expect(InvalidParameter, status);

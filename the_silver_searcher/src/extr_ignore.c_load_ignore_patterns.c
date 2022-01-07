@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  ignores ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_ignore_pattern (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_debug (char*,char const*) ; 
+
+
+
+typedef int ssize_t ;
+typedef int ignores ;
+typedef int FILE ;
+
+
+ int add_ignore_pattern (int *,char*) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int free (char*) ;
+ int getline (char**,size_t*,int *) ;
+ int log_debug (char*,char const*) ;
 
 void load_ignore_patterns(ignores *ig, const char *path) {
-    FILE *fp = NULL;
+    FILE *fp = ((void*)0);
     fp = fopen(path, "r");
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         log_debug("Skipping ignore file %s: not readable", path);
         return;
     }
     log_debug("Loading ignore file %s.", path);
 
-    char *line = NULL;
+    char *line = ((void*)0);
     ssize_t line_len = 0;
     size_t line_cap = 0;
 
@@ -40,7 +40,7 @@ void load_ignore_patterns(ignores *ig, const char *path) {
             continue;
         }
         if (line[line_len - 1] == '\n') {
-            line[line_len - 1] = '\0'; /* kill the \n */
+            line[line_len - 1] = '\0';
         }
         add_ignore_pattern(ig, line);
     }

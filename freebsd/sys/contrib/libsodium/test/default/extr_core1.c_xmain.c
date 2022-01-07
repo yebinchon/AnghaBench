@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  c ; 
- int /*<<< orphan*/  crypto_core_hsalsa20 (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned int crypto_core_hsalsa20_constbytes () ; 
- unsigned int crypto_core_hsalsa20_inputbytes () ; 
- unsigned int crypto_core_hsalsa20_keybytes () ; 
- unsigned int crypto_core_hsalsa20_outputbytes () ; 
- scalar_t__* firstkey ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  shared ; 
- int /*<<< orphan*/  zero ; 
+ int assert (int) ;
+ int c ;
+ int crypto_core_hsalsa20 (scalar_t__*,int ,int ,int ) ;
+ unsigned int crypto_core_hsalsa20_constbytes () ;
+ unsigned int crypto_core_hsalsa20_inputbytes () ;
+ unsigned int crypto_core_hsalsa20_keybytes () ;
+ unsigned int crypto_core_hsalsa20_outputbytes () ;
+ scalar_t__* firstkey ;
+ int printf (char*,...) ;
+ int shared ;
+ int zero ;
 
 int
 main(void)

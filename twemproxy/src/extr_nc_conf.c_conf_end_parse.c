@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int type; } ;
-struct conf {scalar_t__ depth; TYPE_1__ event; int /*<<< orphan*/  parsed; scalar_t__ sound; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+struct conf {scalar_t__ depth; TYPE_1__ event; int parsed; scalar_t__ sound; } ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  LOG_VVERB ; 
- int /*<<< orphan*/  NC_OK ; 
- int /*<<< orphan*/  NOT_REACHED () ; 
-#define  YAML_DOCUMENT_END_EVENT 129 
-#define  YAML_STREAM_END_EVENT 128 
- int /*<<< orphan*/  conf_event_done (struct conf*) ; 
- int /*<<< orphan*/  conf_event_next (struct conf*) ; 
- int /*<<< orphan*/  conf_yaml_deinit (struct conf*) ; 
- int /*<<< orphan*/  log_debug (int /*<<< orphan*/ ,char*,int) ; 
+
+ int ASSERT (int) ;
+ int LOG_VVERB ;
+ int NC_OK ;
+ int NOT_REACHED () ;
+
+
+ int conf_event_done (struct conf*) ;
+ int conf_event_next (struct conf*) ;
+ int conf_yaml_deinit (struct conf*) ;
+ int log_debug (int ,char*,int) ;
 
 __attribute__((used)) static rstatus_t
 conf_end_parse(struct conf *cf)
@@ -36,7 +36,7 @@ conf_end_parse(struct conf *cf)
     ASSERT(cf->sound && !cf->parsed);
     ASSERT(cf->depth == 0);
 
-    done = false;
+    done = 0;
     do {
         status = conf_event_next(cf);
         if (status != NC_OK) {
@@ -46,11 +46,11 @@ conf_end_parse(struct conf *cf)
         log_debug(LOG_VVERB, "next end event %d", cf->event.type);
 
         switch (cf->event.type) {
-        case YAML_STREAM_END_EVENT:
-            done = true;
+        case 128:
+            done = 1;
             break;
 
-        case YAML_DOCUMENT_END_EVENT:
+        case 129:
             break;
 
         default:

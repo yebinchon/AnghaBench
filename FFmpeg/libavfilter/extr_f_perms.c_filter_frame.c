@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum perm { ____Placeholder_perm } perm ;
-struct TYPE_8__ {int /*<<< orphan*/ * outputs; TYPE_1__* priv; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum perm { ____Placeholder_perm } perm ;
+struct TYPE_8__ {int * outputs; TYPE_1__* priv; } ;
 struct TYPE_7__ {TYPE_3__* dst; } ;
-struct TYPE_6__ {int mode; int /*<<< orphan*/  lfg; } ;
-typedef  TYPE_1__ PermsContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+struct TYPE_6__ {int mode; int lfg; } ;
+typedef TYPE_1__ PermsContext ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  ENOMEM ; 
-#define  MODE_RANDOM 131 
-#define  MODE_RO 130 
-#define  MODE_RW 129 
-#define  MODE_TOGGLE 128 
- int RO ; 
- int RW ; 
- int /*<<< orphan*/ * av_frame_clone (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ **) ; 
- scalar_t__ av_frame_is_writable (int /*<<< orphan*/ *) ; 
- int av_frame_make_writable (int /*<<< orphan*/ *) ; 
- int av_lfg_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int ff_filter_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * perm_str ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_VERBOSE ;
+ int ENOMEM ;
+
+
+
+
+ int RO ;
+ int RW ;
+ int * av_frame_clone (int *) ;
+ int av_frame_free (int **) ;
+ scalar_t__ av_frame_is_writable (int *) ;
+ int av_frame_make_writable (int *) ;
+ int av_lfg_get (int *) ;
+ int av_log (TYPE_3__*,int ,char*,int ,int ,char*) ;
+ int ff_filter_frame (int ,int *) ;
+ int * perm_str ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *frame)
 {
@@ -51,11 +51,11 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *fra
     enum perm out_perm;
 
     switch (s->mode) {
-    case MODE_TOGGLE:   out_perm = in_perm == RO ? RW : RO;                 break;
-    case MODE_RANDOM:   out_perm = av_lfg_get(&s->lfg) & 1 ? RW : RO;       break;
-    case MODE_RO:       out_perm = RO;                                      break;
-    case MODE_RW:       out_perm = RW;                                      break;
-    default:            out_perm = in_perm;                                 break;
+    case 128: out_perm = in_perm == RO ? RW : RO; break;
+    case 131: out_perm = av_lfg_get(&s->lfg) & 1 ? RW : RO; break;
+    case 130: out_perm = RO; break;
+    case 129: out_perm = RW; break;
+    default: out_perm = in_perm; break;
     }
 
     av_log(ctx, AV_LOG_VERBOSE, "%s -> %s%s\n",

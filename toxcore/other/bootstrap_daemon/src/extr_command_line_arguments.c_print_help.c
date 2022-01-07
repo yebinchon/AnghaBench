@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  LOG_LEVEL_INFO ; 
- int /*<<< orphan*/  write_log (int /*<<< orphan*/ ,char*) ; 
+ int LOG_LEVEL_INFO ;
+ int write_log (int ,char*) ;
 
 void print_help()
 {
-    // 2 space ident
-    // make sure all lines fit into 80 columns
-    // make sure options are listed in alphabetical order
+
+
+
     write_log(LOG_LEVEL_INFO,
               "Usage: tox-bootstrapd [OPTION]... --config=FILE_PATH\n"
               "\n"

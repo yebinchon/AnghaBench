@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  IO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FileClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * FileOpenW (int /*<<< orphan*/ *,int) ; 
- int IsFileExistsW (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int IO ;
+
+
+ int FileClose (int *) ;
+ int * FileOpenW (int *,int) ;
+ int IsFileExistsW (int *) ;
 
 bool IsFileWriteLockedW(wchar_t *name)
 {
-	IO *io;
-	// Validate arguments
-	if (name == NULL)
-	{
-		return false;
-	}
+ IO *io;
 
-	if (IsFileExistsW(name) == false)
-	{
-		return false;
-	}
+ if (name == ((void*)0))
+ {
+  return 0;
+ }
 
-	io = FileOpenW(name, true);
-	if (io == NULL)
-	{
-		return true;
-	}
+ if (IsFileExistsW(name) == 0)
+ {
+  return 0;
+ }
 
-	FileClose(io);
+ io = FileOpenW(name, 1);
+ if (io == ((void*)0))
+ {
+  return 1;
+ }
 
-	return false;
+ FileClose(io);
+
+ return 0;
 }

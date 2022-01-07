@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-union cache_packed_local_copy_location {int /*<<< orphan*/  i; } ;
-struct lev_cache_set_new_local_copy_short {int /*<<< orphan*/  data; } ;
-struct lev_cache_set_new_local_copy_long {int /*<<< orphan*/  data; int /*<<< orphan*/  md5; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+union cache_packed_local_copy_location {int i; } ;
+struct lev_cache_set_new_local_copy_short {int data; } ;
+struct lev_cache_set_new_local_copy_long {int data; int md5; } ;
 struct cache_uri {char const uri_md5_h0; } ;
-struct cache_local_copy {int /*<<< orphan*/  packed_location; int /*<<< orphan*/  location; scalar_t__ flags; } ;
+struct cache_local_copy {int packed_location; int location; scalar_t__ flags; } ;
 struct TYPE_3__ {char const* const c; } ;
 struct TYPE_4__ {TYPE_1__ uri_md5; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CACHE_MAX_LOCAL_COPIES ; 
- struct cache_local_copy* LC ; 
- scalar_t__ LEV_CACHE_SET_NEW_LOCAL_COPY_LONG ; 
- scalar_t__ LEV_CACHE_SET_NEW_LOCAL_COPY_SHORT ; 
- void* alloc_log_event (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int cache_get_unique_md5_bytes (struct cache_uri*) ; 
- int /*<<< orphan*/  cache_local_copy_compute_packed_location (struct cache_local_copy*,union cache_packed_local_copy_location*) ; 
- int /*<<< orphan*/  cache_local_copy_init (struct cache_local_copy*) ; 
- int /*<<< orphan*/  cache_local_copy_try_pack_location (struct cache_uri*,struct cache_local_copy*) ; 
- int cache_local_copy_unpack (struct cache_uri*,struct cache_local_copy*,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  cache_uri_incr_monthly_stats (struct cache_uri*,struct cache_local_copy*) ; 
- int /*<<< orphan*/  cache_uri_incr_server_stats0 (struct cache_uri*,union cache_packed_local_copy_location) ; 
- int /*<<< orphan*/  cache_uri_update_local_copy (struct cache_uri*,struct cache_local_copy*,int,int) ; 
- int /*<<< orphan*/  compute_get_uri_f_last_md5 (struct cache_uri*) ; 
- struct cache_uri* get_uri_f (char const* const,int /*<<< orphan*/ ) ; 
- TYPE_2__ get_uri_f_last_md5 ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,char const* const,int const) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const* const) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char const* const) ; 
- int strlen (char const* const) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char const* const,...) ; 
+
+ int CACHE_MAX_LOCAL_COPIES ;
+ struct cache_local_copy* LC ;
+ scalar_t__ LEV_CACHE_SET_NEW_LOCAL_COPY_LONG ;
+ scalar_t__ LEV_CACHE_SET_NEW_LOCAL_COPY_SHORT ;
+ void* alloc_log_event (scalar_t__,int,int ) ;
+ int assert (int) ;
+ int cache_get_unique_md5_bytes (struct cache_uri*) ;
+ int cache_local_copy_compute_packed_location (struct cache_local_copy*,union cache_packed_local_copy_location*) ;
+ int cache_local_copy_init (struct cache_local_copy*) ;
+ int cache_local_copy_try_pack_location (struct cache_uri*,struct cache_local_copy*) ;
+ int cache_local_copy_unpack (struct cache_uri*,struct cache_local_copy*,int ,int,int*) ;
+ int cache_uri_incr_monthly_stats (struct cache_uri*,struct cache_local_copy*) ;
+ int cache_uri_incr_server_stats0 (struct cache_uri*,union cache_packed_local_copy_location) ;
+ int cache_uri_update_local_copy (struct cache_uri*,struct cache_local_copy*,int,int) ;
+ int compute_get_uri_f_last_md5 (struct cache_uri*) ;
+ struct cache_uri* get_uri_f (char const* const,int ) ;
+ TYPE_2__ get_uri_f_last_md5 ;
+ int memcpy (int ,char const* const,int const) ;
+ int strcmp (int ,char const* const) ;
+ int strcpy (int ,char const* const) ;
+ int strlen (char const* const) ;
+ int vkprintf (int,char*,char const* const,...) ;
 
 int cache_do_set_new_local_copy (const char *const global_uri, const char *const local_uri) {
   vkprintf (3, "cache_do_set_new_local_copy (%s, %s)\n", global_uri, local_uri);
   struct cache_uri *U = get_uri_f (global_uri, 0);
-  if (U == NULL) {
+  if (U == ((void*)0)) {
     return -1;
   }
   LC[0].flags = 0;
@@ -87,9 +87,9 @@ int cache_do_set_new_local_copy (const char *const global_uri, const char *const
     memcpy (E->data, local_uri, l);
   }
 
-#ifdef CACHE_FEATURE_MONTHLY_COUNTER_PERF_STATS
-  cache_uri_incr_monthly_stats (U, L);
-#endif
+
+
+
   cache_uri_incr_server_stats0 (U, u);
   cache_uri_update_local_copy (U, LC, n, old_len);
   return 0;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  suspend_state_t ;
-struct regulator_state {int /*<<< orphan*/  enabled; int /*<<< orphan*/  changeable; } ;
+
+
+
+
+typedef int suspend_state_t ;
+struct regulator_state {int enabled; int changeable; } ;
 struct regulator_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISABLE_IN_SUSPEND ; 
- int EINVAL ; 
- int /*<<< orphan*/  ENABLE_IN_SUSPEND ; 
- int EPERM ; 
- struct regulator_state* regulator_get_suspend_state (struct regulator_dev*,int /*<<< orphan*/ ) ; 
+
+ int DISABLE_IN_SUSPEND ;
+ int EINVAL ;
+ int ENABLE_IN_SUSPEND ;
+ int EPERM ;
+ struct regulator_state* regulator_get_suspend_state (struct regulator_dev*,int ) ;
 
 __attribute__((used)) static inline int regulator_suspend_toggle(struct regulator_dev *rdev,
-					   suspend_state_t state, bool en)
+        suspend_state_t state, bool en)
 {
-	struct regulator_state *rstate;
+ struct regulator_state *rstate;
 
-	rstate = regulator_get_suspend_state(rdev, state);
-	if (rstate == NULL)
-		return -EINVAL;
+ rstate = regulator_get_suspend_state(rdev, state);
+ if (rstate == ((void*)0))
+  return -EINVAL;
 
-	if (!rstate->changeable)
-		return -EPERM;
+ if (!rstate->changeable)
+  return -EPERM;
 
-	rstate->enabled = (en) ? ENABLE_IN_SUSPEND : DISABLE_IN_SUSPEND;
+ rstate->enabled = (en) ? ENABLE_IN_SUSPEND : DISABLE_IN_SUSPEND;
 
-	return 0;
+ return 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  sha256_buf ;
-typedef  int /*<<< orphan*/  XtExcFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  abort_called ; 
- int /*<<< orphan*/  doBacktrace (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  esp_ota_get_app_elf_sha256 (char*,int) ; 
- int /*<<< orphan*/ * other_core_frame ; 
- int /*<<< orphan*/  panicPutDec (int) ; 
- int /*<<< orphan*/  panicPutHex (int) ; 
- int /*<<< orphan*/  panicPutStr (char const*) ; 
- scalar_t__ xPortInterruptedFromISRContext () ; 
+
+
+
+typedef int uint32_t ;
+typedef int sha256_buf ;
+typedef int XtExcFrame ;
+
+
+ int abort_called ;
+ int doBacktrace (int *,int) ;
+ int esp_ota_get_app_elf_sha256 (char*,int) ;
+ int * other_core_frame ;
+ int panicPutDec (int) ;
+ int panicPutHex (int) ;
+ int panicPutStr (char const*) ;
+ scalar_t__ xPortInterruptedFromISRContext () ;
 
 __attribute__((used)) static void commonErrorHandler_dump(XtExcFrame *frame, int core_id)
 {
@@ -34,9 +34,9 @@ __attribute__((used)) static void commonErrorHandler_dump(XtExcFrame *frame, int
         "A14     ", "A15     ", "SAR     ", "EXCCAUSE", "EXCVADDR", "LBEG    ", "LEND    ", "LCOUNT  "
     };
 
-    /* only dump registers for 'real' crashes, if crashing via abort()
-       the register window is no longer useful.
-    */
+
+
+
     if (!abort_called) {
         panicPutStr("Core");
         panicPutDec(core_id);
@@ -55,11 +55,11 @@ __attribute__((used)) static void commonErrorHandler_dump(XtExcFrame *frame, int
         }
 
         if (xPortInterruptedFromISRContext()
-#if !CONFIG_FREERTOS_UNICORE
+
             && other_core_frame != frame
-#endif //!CONFIG_FREERTOS_UNICORE
+
             ) {
-            //If the core which triggers the interrupt watchdog was in ISR context, dump the epc registers.
+
             uint32_t __value;
             panicPutStr("Core");
             panicPutDec(core_id);
@@ -92,7 +92,7 @@ __attribute__((used)) static void commonErrorHandler_dump(XtExcFrame *frame, int
     panicPutStr(sha256_buf);
     panicPutStr("\r\n");
 
-    /* With windowed ABI backtracing is easy, let's do it. */
+
     doBacktrace(frame, 100);
 
     panicPutStr("\r\n");

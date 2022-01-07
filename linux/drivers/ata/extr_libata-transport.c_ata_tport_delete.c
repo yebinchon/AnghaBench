@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
-struct ata_port {int /*<<< orphan*/  link; struct device tdev; } ;
+struct ata_port {int link; struct device tdev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ata_tlink_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_del (struct device*) ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
- int /*<<< orphan*/  transport_destroy_device (struct device*) ; 
- int /*<<< orphan*/  transport_remove_device (struct device*) ; 
+
+ int ata_tlink_delete (int *) ;
+ int device_del (struct device*) ;
+ int put_device (struct device*) ;
+ int transport_destroy_device (struct device*) ;
+ int transport_remove_device (struct device*) ;
 
 void ata_tport_delete(struct ata_port *ap)
 {
-	struct device *dev = &ap->tdev;
+ struct device *dev = &ap->tdev;
 
-	ata_tlink_delete(&ap->link);
+ ata_tlink_delete(&ap->link);
 
-	transport_remove_device(dev);
-	device_del(dev);
-	transport_destroy_device(dev);
-	put_device(dev);
+ transport_remove_device(dev);
+ device_del(dev);
+ transport_destroy_device(dev);
+ put_device(dev);
 }

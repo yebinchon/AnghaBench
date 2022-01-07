@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  NPY_CLIPMODE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_RAISE ; 
- int /*<<< orphan*/  NpyArg_ParseKeywords (int /*<<< orphan*/ *,char*,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- scalar_t__ PyArray_Choose (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_ClipmodeConverter ; 
- int /*<<< orphan*/  PyArray_OutputConverter ; 
- int /*<<< orphan*/ * PyArray_Return (int /*<<< orphan*/ *) ; 
- int PyTuple_Size (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Py_ssize_t ;
+typedef int PyObject ;
+typedef int PyArrayObject ;
+typedef int NPY_CLIPMODE ;
+
+
+ int NPY_RAISE ;
+ int NpyArg_ParseKeywords (int *,char*,char**,int ,int **,int ,int *) ;
+ int PyArg_ParseTuple (int *,char*,int **) ;
+ scalar_t__ PyArray_Choose (int *,int *,int *,int ) ;
+ int PyArray_ClipmodeConverter ;
+ int PyArray_OutputConverter ;
+ int * PyArray_Return (int *) ;
+ int PyTuple_Size (int *) ;
 
 __attribute__((used)) static PyObject *
 array_choose(PyArrayObject *self, PyObject *args, PyObject *kwds)
 {
-    static char *keywords[] = {"out", "mode", NULL};
+    static char *keywords[] = {"out", "mode", ((void*)0)};
     PyObject *choices;
-    PyArrayObject *out = NULL;
+    PyArrayObject *out = ((void*)0);
     NPY_CLIPMODE clipmode = NPY_RAISE;
     Py_ssize_t n = PyTuple_Size(args);
 
     if (n <= 1) {
         if (!PyArg_ParseTuple(args, "O:choose", &choices)) {
-            return NULL;
+            return ((void*)0);
         }
     }
     else {
@@ -46,7 +46,7 @@ array_choose(PyArrayObject *self, PyObject *args, PyObject *kwds)
     if (!NpyArg_ParseKeywords(kwds, "|O&O&", keywords,
                 PyArray_OutputConverter, &out,
                 PyArray_ClipmodeConverter, &clipmode)) {
-        return NULL;
+        return ((void*)0);
     }
 
     return PyArray_Return((PyArrayObject *)PyArray_Choose(self, choices, out, clipmode));

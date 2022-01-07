@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int num; struct demangle_component* sub; } ;
 struct TYPE_4__ {TYPE_1__ s_unary_num; } ;
-struct demangle_component {TYPE_2__ u; int /*<<< orphan*/  type; } ;
+struct demangle_component {TYPE_2__ u; int type; } ;
 struct d_info {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEMANGLE_COMPONENT_LAMBDA ; 
- int /*<<< orphan*/  d_add_substitution (struct d_info*,struct demangle_component*) ; 
- int /*<<< orphan*/  d_check_char (struct d_info*,char) ; 
- int d_compact_number (struct d_info*) ; 
- struct demangle_component* d_make_empty (struct d_info*) ; 
- struct demangle_component* d_parmlist (struct d_info*) ; 
+
+ int DEMANGLE_COMPONENT_LAMBDA ;
+ int d_add_substitution (struct d_info*,struct demangle_component*) ;
+ int d_check_char (struct d_info*,char) ;
+ int d_compact_number (struct d_info*) ;
+ struct demangle_component* d_make_empty (struct d_info*) ;
+ struct demangle_component* d_parmlist (struct d_info*) ;
 
 __attribute__((used)) static struct demangle_component *
 d_lambda (struct d_info *di)
@@ -33,20 +33,20 @@ d_lambda (struct d_info *di)
   int num;
 
   if (! d_check_char (di, 'U'))
-    return NULL;
+    return ((void*)0);
   if (! d_check_char (di, 'l'))
-    return NULL;
+    return ((void*)0);
 
   tl = d_parmlist (di);
-  if (tl == NULL)
-    return NULL;
+  if (tl == ((void*)0))
+    return ((void*)0);
 
   if (! d_check_char (di, 'E'))
-    return NULL;
+    return ((void*)0);
 
   num = d_compact_number (di);
   if (num < 0)
-    return NULL;
+    return ((void*)0);
 
   ret = d_make_empty (di);
   if (ret)
@@ -57,7 +57,7 @@ d_lambda (struct d_info *di)
     }
 
   if (! d_add_substitution (di, ret))
-    return NULL;
+    return ((void*)0);
 
   return ret;
 }

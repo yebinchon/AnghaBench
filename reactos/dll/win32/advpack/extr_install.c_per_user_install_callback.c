@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_3__ {int /*<<< orphan*/  szStub; int /*<<< orphan*/  szLocale; int /*<<< orphan*/  szGUID; int /*<<< orphan*/  szCompID; scalar_t__ dwIsInstalled; int /*<<< orphan*/  szVersion; int /*<<< orphan*/  szDispName; int /*<<< orphan*/  bRollback; } ;
-typedef  int /*<<< orphan*/  PINT ;
-typedef  TYPE_1__ PERUSERSECTIONW ;
-typedef  int /*<<< orphan*/  PCWSTR ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SetPerUserSecValuesW (TYPE_1__*) ; 
- scalar_t__ SetupFindFirstLineW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetIntField (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetupGetLineTextW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_3__ {int szStub; int szLocale; int szGUID; int szCompID; scalar_t__ dwIsInstalled; int szVersion; int szDispName; int bRollback; } ;
+typedef int PINT ;
+typedef TYPE_1__ PERUSERSECTIONW ;
+typedef int PCWSTR ;
+typedef int INFCONTEXT ;
+typedef int HRESULT ;
+typedef int HINF ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (int ) ;
+ int FALSE ;
+ int SetPerUserSecValuesW (TYPE_1__*) ;
+ scalar_t__ SetupFindFirstLineW (int ,int ,char const*,int *) ;
+ int SetupGetIntField (int *,int,int ) ;
+ int SetupGetLineTextW (int *,int ,int ,char const*,int ,int ,int *) ;
 
 __attribute__((used)) static HRESULT per_user_install_callback(HINF hinf, PCWSTR field, const void *arg)
 {
@@ -46,22 +46,22 @@ __attribute__((used)) static HRESULT per_user_install_callback(HINF hinf, PCWSTR
     per_user.bRollback = FALSE;
     per_user.dwIsInstalled = 0;
 
-    SetupGetLineTextW(NULL, hinf, field, disp_name, per_user.szDispName, ARRAY_SIZE(per_user.szDispName), &size);
+    SetupGetLineTextW(((void*)0), hinf, field, disp_name, per_user.szDispName, ARRAY_SIZE(per_user.szDispName), &size);
 
-    SetupGetLineTextW(NULL, hinf, field, version, per_user.szVersion, ARRAY_SIZE(per_user.szVersion), &size);
+    SetupGetLineTextW(((void*)0), hinf, field, version, per_user.szVersion, ARRAY_SIZE(per_user.szVersion), &size);
 
     if (SetupFindFirstLineW(hinf, field, is_installed, &context))
     {
         SetupGetIntField(&context, 1, (PINT)&per_user.dwIsInstalled);
     }
 
-    SetupGetLineTextW(NULL, hinf, field, comp_id, per_user.szCompID, ARRAY_SIZE(per_user.szCompID), &size);
+    SetupGetLineTextW(((void*)0), hinf, field, comp_id, per_user.szCompID, ARRAY_SIZE(per_user.szCompID), &size);
 
-    SetupGetLineTextW(NULL, hinf, field, guid, per_user.szGUID, ARRAY_SIZE(per_user.szGUID), &size);
+    SetupGetLineTextW(((void*)0), hinf, field, guid, per_user.szGUID, ARRAY_SIZE(per_user.szGUID), &size);
 
-    SetupGetLineTextW(NULL, hinf, field, locale, per_user.szLocale, ARRAY_SIZE(per_user.szLocale), &size);
+    SetupGetLineTextW(((void*)0), hinf, field, locale, per_user.szLocale, ARRAY_SIZE(per_user.szLocale), &size);
 
-    SetupGetLineTextW(NULL, hinf, field, stub_path, per_user.szStub, ARRAY_SIZE(per_user.szStub), &size);
+    SetupGetLineTextW(((void*)0), hinf, field, stub_path, per_user.szStub, ARRAY_SIZE(per_user.szStub), &size);
 
     return SetPerUserSecValuesW(&per_user);
 }

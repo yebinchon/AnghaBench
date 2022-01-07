@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  dwContext; } ;
-struct TYPE_6__ {TYPE_1__ hdr; int /*<<< orphan*/  sndSocket; } ;
-typedef  TYPE_2__ ftp_session_t ;
-typedef  char WCHAR ;
-typedef  int INT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FTP_CMD_TYPE ; 
- int FTP_ReceiveResponse (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SendCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SetResponseError (int) ; 
- int INTERNET_FLAG_TRANSFER_ASCII ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int dwContext; } ;
+struct TYPE_6__ {TYPE_1__ hdr; int sndSocket; } ;
+typedef TYPE_2__ ftp_session_t ;
+typedef char WCHAR ;
+typedef int INT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FTP_CMD_TYPE ;
+ int FTP_ReceiveResponse (TYPE_2__*,int ) ;
+ int FTP_SendCommand (int ,int ,char*,int ,int ,int ) ;
+ int FTP_SetResponseError (int) ;
+ int INTERNET_FLAG_TRANSFER_ASCII ;
+ int TRACE (char*) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL FTP_SendType(ftp_session_t *lpwfs, DWORD dwType)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static BOOL FTP_SendType(ftp_session_t *lpwfs, DWORD dwTyp
     {
         if (nResCode == 2)
             bSuccess = TRUE;
-	else
+ else
             FTP_SetResponseError(nResCode);
     }
 

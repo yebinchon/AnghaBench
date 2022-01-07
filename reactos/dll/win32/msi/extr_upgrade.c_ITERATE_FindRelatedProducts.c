@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  product ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-struct TYPE_8__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int GUID_SIZE ; 
- int /*<<< orphan*/  INSTALLMESSAGE_ACTIONDATA ; 
- int /*<<< orphan*/  INSTALLPROPERTY_LANGUAGEW ; 
- int /*<<< orphan*/  INSTALLPROPERTY_VERSIONW ; 
- int /*<<< orphan*/  MSIINSTALLCONTEXT_MACHINE ; 
- int /*<<< orphan*/  MSIINSTALLCONTEXT_USERMANAGED ; 
- int /*<<< orphan*/  MSIINSTALLCONTEXT_USERUNMANAGED ; 
- scalar_t__ MSIREG_OpenProductKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ MSIREG_OpenUpgradeCodesKey (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ MSI_RecordGetInteger (TYPE_1__*,int) ; 
- scalar_t__ MSI_RecordGetString (TYPE_1__*,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_1__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__*) ; 
- int SQUASHED_GUID_SIZE ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  append_productcode (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  check_language (scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- scalar_t__ msi_version_str_to_dword (scalar_t__) ; 
- scalar_t__ msidbUpgradeAttributesVersionMaxInclusive ; 
- scalar_t__ msidbUpgradeAttributesVersionMinInclusive ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unsquash_guid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int product ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+struct TYPE_8__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef int * LPVOID ;
+typedef scalar_t__ LPCWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ INT ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int GUID_SIZE ;
+ int INSTALLMESSAGE_ACTIONDATA ;
+ int INSTALLPROPERTY_LANGUAGEW ;
+ int INSTALLPROPERTY_VERSIONW ;
+ int MSIINSTALLCONTEXT_MACHINE ;
+ int MSIINSTALLCONTEXT_USERMANAGED ;
+ int MSIINSTALLCONTEXT_USERUNMANAGED ;
+ scalar_t__ MSIREG_OpenProductKey (int *,int *,int ,int *,int ) ;
+ scalar_t__ MSIREG_OpenUpgradeCodesKey (scalar_t__,int *,int ) ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (int *,int ,TYPE_1__*) ;
+ scalar_t__ MSI_RecordGetInteger (TYPE_1__*,int) ;
+ scalar_t__ MSI_RecordGetString (TYPE_1__*,int) ;
+ int MSI_RecordSetStringW (TYPE_1__*,int,int *) ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumValueW (int ,scalar_t__,int *,scalar_t__*,int *,int *,int *,int *) ;
+ int RegQueryValueExW (int ,int ,int *,int *,int ,scalar_t__*) ;
+ int SQUASHED_GUID_SIZE ;
+ int TRACE (char*,...) ;
+ int append_productcode (int *,scalar_t__,int *) ;
+ int check_language (scalar_t__,scalar_t__,scalar_t__) ;
+ int debugstr_w (int *) ;
+ scalar_t__ msi_version_str_to_dword (scalar_t__) ;
+ scalar_t__ msidbUpgradeAttributesVersionMaxInclusive ;
+ scalar_t__ msidbUpgradeAttributesVersionMinInclusive ;
+ int msiobj_release (int *) ;
+ int unsquash_guid (int *,int *) ;
 
 __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LPVOID param)
 {
@@ -76,7 +76,7 @@ __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LP
 
     while (rc == ERROR_SUCCESS)
     {
-        rc = RegEnumValueW(hkey, index, product, &sz, NULL, NULL, NULL, NULL);
+        rc = RegEnumValueW(hkey, index, product, &sz, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         if (rc == ERROR_SUCCESS)
         {
             WCHAR productid[GUID_SIZE];
@@ -88,9 +88,9 @@ __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LP
             TRACE("Looking at index %u product %s\n", index, debugstr_w(product));
 
             unsquash_guid(product, productid);
-            if (MSIREG_OpenProductKey(productid, NULL, MSIINSTALLCONTEXT_USERMANAGED, &hukey, FALSE) &&
-                MSIREG_OpenProductKey(productid, NULL, MSIINSTALLCONTEXT_USERUNMANAGED, &hukey, FALSE) &&
-                MSIREG_OpenProductKey(productid, NULL, MSIINSTALLCONTEXT_MACHINE, &hukey, FALSE))
+            if (MSIREG_OpenProductKey(productid, ((void*)0), MSIINSTALLCONTEXT_USERMANAGED, &hukey, FALSE) &&
+                MSIREG_OpenProductKey(productid, ((void*)0), MSIINSTALLCONTEXT_USERUNMANAGED, &hukey, FALSE) &&
+                MSIREG_OpenProductKey(productid, ((void*)0), MSIINSTALLCONTEXT_MACHINE, &hukey, FALSE))
             {
                 TRACE("product key not found\n");
                 rc = ERROR_SUCCESS;
@@ -99,9 +99,9 @@ __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LP
             }
 
             sz = sizeof(DWORD);
-            RegQueryValueExW(hukey, INSTALLPROPERTY_VERSIONW, NULL, NULL, (LPBYTE)&check, &sz);
+            RegQueryValueExW(hukey, INSTALLPROPERTY_VERSIONW, ((void*)0), ((void*)0), (LPBYTE)&check, &sz);
 
-            /* check version minimum */
+
             ver = MSI_RecordGetString(rec,2);
             if (ver)
             {
@@ -116,7 +116,7 @@ __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LP
                 }
             }
 
-            /* check version maximum */
+
             ver = MSI_RecordGetString(rec,3);
             if (ver)
             {
@@ -131,9 +131,9 @@ __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LP
                 TRACE("version above maximum\n");
             }
 
-            /* check language */
+
             sz = sizeof(DWORD);
-            RegQueryValueExW(hukey, INSTALLPROPERTY_LANGUAGEW, NULL, NULL, (LPBYTE)&check, &sz);
+            RegQueryValueExW(hukey, INSTALLPROPERTY_LANGUAGEW, ((void*)0), ((void*)0), (LPBYTE)&check, &sz);
             RegCloseKey(hukey);
             language = MSI_RecordGetString(rec,4);
             if (!check_language(check, language, attributes))
@@ -153,6 +153,6 @@ __attribute__((used)) static UINT ITERATE_FindRelatedProducts(MSIRECORD *rec, LP
     }
     RegCloseKey(hkey);
     msiobj_release( &uirow->hdr);
-    
+
     return ERROR_SUCCESS;
 }

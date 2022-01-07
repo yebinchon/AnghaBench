@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPAND_BUILTIN_VA_START (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_CHAIN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  expand_builtin_next_arg () ; 
- scalar_t__ fold_builtin_next_arg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stabilize_va_list (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  std_expand_builtin_va_start (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int rtx ;
+
+
+ int EXPAND_BUILTIN_VA_START (int ,int ) ;
+ int TREE_CHAIN (int ) ;
+ int TREE_VALUE (int ) ;
+ int const0_rtx ;
+ int error (char*) ;
+ int expand_builtin_next_arg () ;
+ scalar_t__ fold_builtin_next_arg (int ) ;
+ int stabilize_va_list (int ,int) ;
+ int std_expand_builtin_va_start (int ,int ) ;
 
 __attribute__((used)) static rtx
 expand_builtin_va_start (tree arglist)
@@ -44,11 +44,11 @@ expand_builtin_va_start (tree arglist)
   nextarg = expand_builtin_next_arg ();
   valist = stabilize_va_list (TREE_VALUE (arglist), 1);
 
-#ifdef EXPAND_BUILTIN_VA_START
-  EXPAND_BUILTIN_VA_START (valist, nextarg);
-#else
+
+
+
   std_expand_builtin_va_start (valist, nextarg);
-#endif
+
 
   return const0_rtx;
 }

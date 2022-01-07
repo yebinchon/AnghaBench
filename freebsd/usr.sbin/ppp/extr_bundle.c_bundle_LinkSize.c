@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iovec {scalar_t__ iov_len; int /*<<< orphan*/ * iov_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogERROR ; 
- int SCATTER_SEGMENTS ; 
- int /*<<< orphan*/  Version ; 
- int datalink2iov (int /*<<< orphan*/ *,struct iovec*,int*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
+
+
+
+struct iovec {scalar_t__ iov_len; int * iov_base; } ;
+
+
+ int LogERROR ;
+ int SCATTER_SEGMENTS ;
+ int Version ;
+ int datalink2iov (int *,struct iovec*,int*,int,int *,int *) ;
+ int log_Printf (int ,char*) ;
+ scalar_t__ strlen (int ) ;
 
 int
 bundle_LinkSize()
@@ -27,9 +27,9 @@ bundle_LinkSize()
   int niov, expect, f;
 
   iov[0].iov_len = strlen(Version) + 1;
-  iov[0].iov_base = NULL;
+  iov[0].iov_base = ((void*)0);
   niov = 1;
-  if (datalink2iov(NULL, iov, &niov, SCATTER_SEGMENTS, NULL, NULL) == -1) {
+  if (datalink2iov(((void*)0), iov, &niov, SCATTER_SEGMENTS, ((void*)0), ((void*)0)) == -1) {
     log_Printf(LogERROR, "Cannot determine space required for link\n");
     return 0;
   }

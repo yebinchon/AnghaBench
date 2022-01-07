@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* gmc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_5__ {int (* gmc ) (int *,int *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ;} ;
 struct TYPE_7__ {int sprite_warping_accuracy; int linesize; int uvlinesize; int** sprite_offset; int** sprite_delta; int mb_x; int mb_y; int h_edge_pos; int v_edge_pos; scalar_t__ no_rounding; TYPE_1__ mdsp; TYPE_2__* avctx; } ;
 struct TYPE_6__ {int flags; } ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- int AV_CODEC_FLAG_GRAY ; 
- scalar_t__ CONFIG_GRAY ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ; 
+
+ int AV_CODEC_FLAG_GRAY ;
+ scalar_t__ CONFIG_GRAY ;
+ int stub1 (int *,int *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ;
+ int stub2 (int *,int *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ;
+ int stub3 (int *,int *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ;
+ int stub4 (int *,int *,int,int,int,int,int,int,int,int,int const,scalar_t__,int,int) ;
 
 __attribute__((used)) static void gmc_motion(MpegEncContext *s,
                        uint8_t *dest_y, uint8_t *dest_cb, uint8_t *dest_cr,
@@ -36,7 +36,7 @@ __attribute__((used)) static void gmc_motion(MpegEncContext *s,
     const int a = s->sprite_warping_accuracy;
     int ox, oy;
 
-    linesize   = s->linesize;
+    linesize = s->linesize;
     uvlinesize = s->uvlinesize;
 
     ptr = ref_picture[0];

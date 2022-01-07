@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* R ; 
+ int* R ;
 
 __attribute__((used)) static void sort_res (int a, int b) {
   int i, j, h, t;
@@ -26,7 +18,7 @@ __attribute__((used)) static void sort_res (int a, int b) {
     while (R[i] < h) { i++; }
     while (R[j] > h) { j--; }
     if (i <= j) {
-      t = R[i];  R[i++] = R[j];  R[j--] = t;
+      t = R[i]; R[i++] = R[j]; R[j--] = t;
     }
   } while (i <= j);
   sort_res (a, j);

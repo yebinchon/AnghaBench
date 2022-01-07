@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  errno_t ;
-typedef  TYPE_1__* buf_t ;
-struct TYPE_3__ {int /*<<< orphan*/  b_flags; int /*<<< orphan*/  b_error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_ERROR ; 
- int /*<<< orphan*/  CLR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int errno_t ;
+typedef TYPE_1__* buf_t ;
+struct TYPE_3__ {int b_flags; int b_error; } ;
+
+
+ int B_ERROR ;
+ int CLR (int ,int ) ;
+ int SET (int ,int ) ;
 
 void
 buf_seterror(buf_t bp, errno_t error) {
 
         if ((bp->b_error = error))
-	        SET(bp->b_flags, B_ERROR);
-	else
-	        CLR(bp->b_flags, B_ERROR);
+         SET(bp->b_flags, B_ERROR);
+ else
+         CLR(bp->b_flags, B_ERROR);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int cmsUInt32Number ;
-typedef  double cmsFloat64Number ;
-typedef  scalar_t__ cmsFloat32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
-struct TYPE_3__ {int /*<<< orphan*/  InputFormat; } ;
-typedef  TYPE_1__ _cmsTRANSFORM ;
 
-/* Variables and functions */
- scalar_t__ IsInkSpace (int /*<<< orphan*/ ) ; 
- int PixelSize (int /*<<< orphan*/ ) ; 
- int T_CHANNELS (int /*<<< orphan*/ ) ; 
- int T_DOSWAP (int /*<<< orphan*/ ) ; 
- int T_EXTRA (int /*<<< orphan*/ ) ; 
- int T_FLAVOR (int /*<<< orphan*/ ) ; 
- int T_PLANAR (int /*<<< orphan*/ ) ; 
- int T_SWAPFIRST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memmove (scalar_t__*,scalar_t__*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsUInt32Number ;
+typedef double cmsFloat64Number ;
+typedef scalar_t__ cmsFloat32Number ;
+typedef int cmsContext ;
+struct TYPE_3__ {int InputFormat; } ;
+typedef TYPE_1__ _cmsTRANSFORM ;
+
+
+ scalar_t__ IsInkSpace (int ) ;
+ int PixelSize (int ) ;
+ int T_CHANNELS (int ) ;
+ int T_DOSWAP (int ) ;
+ int T_EXTRA (int ) ;
+ int T_FLAVOR (int ) ;
+ int T_PLANAR (int ) ;
+ int T_SWAPFIRST (int ) ;
+ int memmove (scalar_t__*,scalar_t__*,int) ;
 
 __attribute__((used)) static
 cmsUInt8Number* UnrollDoublesToFloat(cmsContext ContextID, _cmsTRANSFORM* info,
@@ -37,13 +37,13 @@ cmsUInt8Number* UnrollDoublesToFloat(cmsContext ContextID, _cmsTRANSFORM* info,
                                     cmsUInt32Number Stride)
 {
 
-    cmsUInt32Number nChan  = T_CHANNELS(info -> InputFormat);
-    cmsUInt32Number DoSwap   = T_DOSWAP(info ->InputFormat);
-    cmsUInt32Number Reverse    = T_FLAVOR(info ->InputFormat);
-    cmsUInt32Number SwapFirst  = T_SWAPFIRST(info -> InputFormat);
-    cmsUInt32Number Extra   = T_EXTRA(info -> InputFormat);
+    cmsUInt32Number nChan = T_CHANNELS(info -> InputFormat);
+    cmsUInt32Number DoSwap = T_DOSWAP(info ->InputFormat);
+    cmsUInt32Number Reverse = T_FLAVOR(info ->InputFormat);
+    cmsUInt32Number SwapFirst = T_SWAPFIRST(info -> InputFormat);
+    cmsUInt32Number Extra = T_EXTRA(info -> InputFormat);
     cmsUInt32Number ExtraFirst = DoSwap ^ SwapFirst;
-    cmsUInt32Number Planar     = T_PLANAR(info -> InputFormat);
+    cmsUInt32Number Planar = T_PLANAR(info -> InputFormat);
     cmsFloat64Number v;
     cmsUInt32Number i, start = 0;
     cmsFloat64Number maximum = IsInkSpace(info ->InputFormat) ? 100.0 : 1.0;
@@ -58,7 +58,7 @@ cmsUInt8Number* UnrollDoublesToFloat(cmsContext ContextID, _cmsTRANSFORM* info,
         cmsUInt32Number index = DoSwap ? (nChan - i - 1) : i;
 
         if (Planar)
-            v = (cmsFloat64Number) ((cmsFloat64Number*) accum)[(i + start)  * Stride];
+            v = (cmsFloat64Number) ((cmsFloat64Number*) accum)[(i + start) * Stride];
         else
             v = (cmsFloat64Number) ((cmsFloat64Number*) accum)[i + start];
 

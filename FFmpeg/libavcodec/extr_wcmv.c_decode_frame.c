@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int int64_t ;
-struct TYPE_15__ {int avail_in; int avail_out; int /*<<< orphan*/ * next_out; scalar_t__ next_in; } ;
-struct TYPE_12__ {int bpp; TYPE_7__* prev_frame; TYPE_4__ zstream; int /*<<< orphan*/ * block_data; } ;
-typedef  TYPE_1__ WCMVContext ;
-struct TYPE_16__ {int* linesize; int key_frame; int /*<<< orphan*/  pict_type; int /*<<< orphan*/ ** data; } ;
-struct TYPE_14__ {int width; int height; int /*<<< orphan*/  pix_fmt; int /*<<< orphan*/  frame_number; TYPE_1__* priv_data; } ;
-struct TYPE_13__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_EXTERNAL ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- int FF_REGET_BUFFER_FLAG_READONLY ; 
- int INT_MAX ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  Z_FINISH ; 
- int Z_OK ; 
- int Z_STREAM_END ; 
- int /*<<< orphan*/  Z_SYNC_FLUSH ; 
- int av_frame_ref (int /*<<< orphan*/ *,TYPE_7__*) ; 
- int /*<<< orphan*/  av_image_fill_black (int /*<<< orphan*/ **,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,int) ; 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- long long bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le24 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
- int ff_reget_buffer (TYPE_3__*,TYPE_7__*,int) ; 
- int inflate (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int inflateReset (TYPE_4__*) ; 
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int int64_t ;
+struct TYPE_15__ {int avail_in; int avail_out; int * next_out; scalar_t__ next_in; } ;
+struct TYPE_12__ {int bpp; TYPE_7__* prev_frame; TYPE_4__ zstream; int * block_data; } ;
+typedef TYPE_1__ WCMVContext ;
+struct TYPE_16__ {int* linesize; int key_frame; int pict_type; int ** data; } ;
+struct TYPE_14__ {int width; int height; int pix_fmt; int frame_number; TYPE_1__* priv_data; } ;
+struct TYPE_13__ {int size; int * data; } ;
+typedef int GetByteContext ;
+typedef TYPE_2__ AVPacket ;
+typedef int AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+
+
+ int AVERROR_EXTERNAL ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int FF_REGET_BUFFER_FLAG_READONLY ;
+ int INT_MAX ;
+ int SEEK_SET ;
+ int Z_FINISH ;
+ int Z_OK ;
+ int Z_STREAM_END ;
+ int Z_SYNC_FLUSH ;
+ int av_frame_ref (int *,TYPE_7__*) ;
+ int av_image_fill_black (int **,int*,int ,int ,int,int) ;
+ int av_log (TYPE_3__*,int ,char*,int) ;
+ int bytestream2_get_byte (int *) ;
+ long long bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_le16 (int *) ;
+ int bytestream2_get_le24 (int *) ;
+ int bytestream2_init (int *,int *,int) ;
+ int bytestream2_seek (int *,int,int ) ;
+ int bytestream2_skip (int *,int) ;
+ int bytestream2_tell (int *) ;
+ int ff_reget_buffer (TYPE_3__*,TYPE_7__*,int) ;
+ int inflate (TYPE_4__*,int ) ;
+ int inflateReset (TYPE_4__*) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
                         void *data, int *got_frame,
@@ -96,9 +96,9 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
         if (size > avpkt->size - skip)
             return AVERROR_INVALIDDATA;
 
-        s->zstream.next_in  = avpkt->data + skip;
+        s->zstream.next_in = avpkt->data + skip;
         s->zstream.avail_in = size;
-        s->zstream.next_out  = s->block_data;
+        s->zstream.next_out = s->block_data;
         s->zstream.avail_out = sizeof(s->block_data);
 
         zret = inflate(&s->zstream, Z_FINISH);
@@ -137,7 +137,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
 
         skip = bytestream2_tell(&gb);
 
-        s->zstream.next_in  = avpkt->data + skip;
+        s->zstream.next_in = avpkt->data + skip;
         s->zstream.avail_in = avpkt->size - skip;
 
         bytestream2_init(&gb, s->block_data, blocks * 8);
@@ -166,7 +166,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
 
         skip = bytestream2_tell(&gb);
 
-        s->zstream.next_in  = avpkt->data + skip;
+        s->zstream.next_in = avpkt->data + skip;
         s->zstream.avail_in = avpkt->size - skip;
 
         bytestream2_seek(&gb, 2, SEEK_SET);
@@ -200,7 +200,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx,
 
         dst = s->prev_frame->data[0] + (avctx->height - y - 1) * s->prev_frame->linesize[0] + x * bpp;
         for (int i = 0; i < h; i++) {
-            s->zstream.next_out  = dst;
+            s->zstream.next_out = dst;
             s->zstream.avail_out = w * bpp;
 
             zret = inflate(&s->zstream, Z_SYNC_FLUSH);

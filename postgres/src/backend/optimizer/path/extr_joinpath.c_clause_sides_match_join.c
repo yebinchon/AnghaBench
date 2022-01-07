@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  relids; } ;
-struct TYPE_6__ {int outer_is_left; int /*<<< orphan*/  right_relids; int /*<<< orphan*/  left_relids; } ;
-typedef  TYPE_1__ RestrictInfo ;
-typedef  TYPE_2__ RelOptInfo ;
 
-/* Variables and functions */
- scalar_t__ bms_is_subset (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int relids; } ;
+struct TYPE_6__ {int outer_is_left; int right_relids; int left_relids; } ;
+typedef TYPE_1__ RestrictInfo ;
+typedef TYPE_2__ RelOptInfo ;
+
+
+ scalar_t__ bms_is_subset (int ,int ) ;
 
 __attribute__((used)) static inline bool
 clause_sides_match_join(RestrictInfo *rinfo, RelOptInfo *outerrel,
-						RelOptInfo *innerrel)
+      RelOptInfo *innerrel)
 {
-	if (bms_is_subset(rinfo->left_relids, outerrel->relids) &&
-		bms_is_subset(rinfo->right_relids, innerrel->relids))
-	{
-		/* lefthand side is outer */
-		rinfo->outer_is_left = true;
-		return true;
-	}
-	else if (bms_is_subset(rinfo->left_relids, innerrel->relids) &&
-			 bms_is_subset(rinfo->right_relids, outerrel->relids))
-	{
-		/* righthand side is outer */
-		rinfo->outer_is_left = false;
-		return true;
-	}
-	return false;				/* no good for these input relations */
+ if (bms_is_subset(rinfo->left_relids, outerrel->relids) &&
+  bms_is_subset(rinfo->right_relids, innerrel->relids))
+ {
+
+  rinfo->outer_is_left = 1;
+  return 1;
+ }
+ else if (bms_is_subset(rinfo->left_relids, innerrel->relids) &&
+    bms_is_subset(rinfo->right_relids, outerrel->relids))
+ {
+
+  rinfo->outer_is_left = 0;
+  return 1;
+ }
+ return 0;
 }

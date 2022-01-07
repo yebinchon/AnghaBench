@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ int8_t ;
 
-/* Variables and functions */
- scalar_t__ abs (scalar_t__) ; 
- int /*<<< orphan*/  draw_pixel (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  swap (scalar_t__,scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ int8_t ;
+
+
+ scalar_t__ abs (scalar_t__) ;
+ int draw_pixel (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int swap (scalar_t__,scalar_t__) ;
 
 void draw_line(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1, uint8_t color, uint8_t mode) {
     uint8_t steep = abs(y1 - y0) > abs(x1 - x0);

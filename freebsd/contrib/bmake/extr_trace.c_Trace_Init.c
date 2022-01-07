@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  VAR_GLOBAL ; 
- int /*<<< orphan*/  Var_Value (char*,int /*<<< orphan*/ ,char**) ; 
- int /*<<< orphan*/  fopen (char const*,char*) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  trfile ; 
- int /*<<< orphan*/  trpid ; 
- int /*<<< orphan*/  trwd ; 
+ int VAR_GLOBAL ;
+ int Var_Value (char*,int ,char**) ;
+ int fopen (char const*,char*) ;
+ int getpid () ;
+ int trfile ;
+ int trpid ;
+ int trwd ;
 
 void
 Trace_Init(const char *pathname)
 {
-	char *p1;
-	if (pathname != NULL) {
-		trpid = getpid();
-		trwd = Var_Value(".CURDIR", VAR_GLOBAL, &p1);
+ char *p1;
+ if (pathname != ((void*)0)) {
+  trpid = getpid();
+  trwd = Var_Value(".CURDIR", VAR_GLOBAL, &p1);
 
-		trfile = fopen(pathname, "a");
-	}
+  trfile = fopen(pathname, "a");
+ }
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct resource_list {int dummy; } ;
 struct bhnd_usb_devinfo {struct resource_list sdi_rl; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- struct bhnd_usb_devinfo* device_get_ivars (int /*<<< orphan*/ ) ; 
+
+ struct bhnd_usb_devinfo* device_get_ivars (int ) ;
 
 __attribute__((used)) static struct resource_list *
 bhnd_usb_get_reslist(device_t dev, device_t child)
 {
-	struct bhnd_usb_devinfo	*sdi;
+ struct bhnd_usb_devinfo *sdi;
 
-	sdi = device_get_ivars(child);
+ sdi = device_get_ivars(child);
 
-	return (&sdi->sdi_rl);
+ return (&sdi->sdi_rl);
 }

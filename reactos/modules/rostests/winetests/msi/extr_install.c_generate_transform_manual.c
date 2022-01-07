@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_7__ {size_t size; int /*<<< orphan*/  data; int /*<<< orphan*/  name; } ;
-struct TYPE_5__ {int member_0; int member_7; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_5; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_6__ {int member_0; TYPE_1__ member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  scalar_t__ HRESULT ;
-typedef  size_t DWORD ;
-typedef  TYPE_2__ CLSID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IStorage_CreateStream (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStorage_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IStorage_SetClass (int /*<<< orphan*/ *,TYPE_2__ const*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IStream_Write (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,size_t*) ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- size_t NUM_TRANSFORM_TABLES ; 
- size_t STGM_CREATE ; 
- size_t STGM_DIRECT ; 
- size_t STGM_READWRITE ; 
- size_t STGM_SHARE_EXCLUSIVE ; 
- size_t STGM_WRITE ; 
- scalar_t__ S_OK ; 
- scalar_t__ StgCreateDocfile (int /*<<< orphan*/ *,size_t const,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  mstfile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  set_transform_summary_info () ; 
- TYPE_3__* table_transform_data ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_7__ {size_t size; int data; int name; } ;
+struct TYPE_5__ {int member_0; int member_7; int member_6; int member_5; int member_4; int member_3; int member_2; int member_1; } ;
+struct TYPE_6__ {int member_0; TYPE_1__ member_3; int member_2; int member_1; } ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef scalar_t__ HRESULT ;
+typedef size_t DWORD ;
+typedef TYPE_2__ CLSID ;
+
+
+ int CP_ACP ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IStorage_CreateStream (int *,int ,size_t,int ,int ,int **) ;
+ int IStorage_Release (int *) ;
+ scalar_t__ IStorage_SetClass (int *,TYPE_2__ const*) ;
+ int IStream_Release (int *) ;
+ scalar_t__ IStream_Write (int *,int ,size_t,size_t*) ;
+ int MultiByteToWideChar (int ,int ,int ,int,int *,int) ;
+ size_t NUM_TRANSFORM_TABLES ;
+ size_t STGM_CREATE ;
+ size_t STGM_DIRECT ;
+ size_t STGM_READWRITE ;
+ size_t STGM_SHARE_EXCLUSIVE ;
+ size_t STGM_WRITE ;
+ scalar_t__ S_OK ;
+ scalar_t__ StgCreateDocfile (int *,size_t const,int ,int **) ;
+ int mstfile ;
+ int ok (int,char*,...) ;
+ int set_transform_summary_info () ;
+ TYPE_3__* table_transform_data ;
 
 __attribute__((used)) static void generate_transform_manual(void)
 {
-    IStorage *stg = NULL;
+    IStorage *stg = ((void*)0);
     IStream *stm;
     WCHAR name[0x20];
     HRESULT r;

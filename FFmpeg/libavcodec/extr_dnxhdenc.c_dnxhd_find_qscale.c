@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int qmax; int /*<<< orphan*/  (* execute2 ) (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;} ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int qmax; int (* execute2 ) (TYPE_4__*,int ,int *,int *,int) ;} ;
 struct TYPE_7__ {int mb_height; int mb_width; int mb_num; TYPE_4__* avctx; } ;
 struct TYPE_8__ {int qscale; int frame_bits; TYPE_2__ m; TYPE_1__* mb_rc; } ;
 struct TYPE_6__ {scalar_t__ bits; } ;
-typedef  TYPE_3__ DNXHDEncContext ;
+typedef TYPE_3__ DNXHDEncContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int FFMAX (int,int) ; 
- int FFMIN (int,int) ; 
- int INT_MAX ; 
- int /*<<< orphan*/  dnxhd_calc_bits_thread ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int FFMAX (int,int) ;
+ int FFMIN (int,int) ;
+ int INT_MAX ;
+ int dnxhd_calc_bits_thread ;
+ int stub1 (TYPE_4__*,int ,int *,int *,int) ;
 
 __attribute__((used)) static int dnxhd_find_qscale(DNXHDEncContext *ctx)
 {
@@ -43,13 +43,13 @@ __attribute__((used)) static int dnxhd_find_qscale(DNXHDEncContext *ctx)
     for (;;) {
         bits = 0;
         ctx->qscale = qscale;
-        // XXX avoid recalculating bits
+
         ctx->m.avctx->execute2(ctx->m.avctx, dnxhd_calc_bits_thread,
-                               NULL, NULL, ctx->m.mb_height);
+                               ((void*)0), ((void*)0), ctx->m.mb_height);
         for (y = 0; y < ctx->m.mb_height; y++) {
             for (x = 0; x < ctx->m.mb_width; x++)
                 bits += ctx->mb_rc[(qscale*ctx->m.mb_num) + (y*ctx->m.mb_width+x)].bits;
-            bits = (bits+31)&~31; // padding
+            bits = (bits+31)&~31;
             if (bits > ctx->frame_bits)
                 break;
         }

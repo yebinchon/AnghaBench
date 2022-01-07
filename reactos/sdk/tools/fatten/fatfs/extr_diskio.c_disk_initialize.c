@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  DSTATUS ;
-typedef  scalar_t__ BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STA_NOINIT ; 
+
+
+
+typedef int DSTATUS ;
+typedef scalar_t__ BYTE ;
+
+
+ int STA_NOINIT ;
 
 DSTATUS disk_initialize(
-    BYTE pdrv        /* Physical drive nmuber (0..) */
+    BYTE pdrv
     )
 {
-    if (pdrv == 0) /* only one drive (image file) supported atm. */
+    if (pdrv == 0)
     {
         return 0;
     }

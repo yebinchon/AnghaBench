@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  always_match ; 
- struct device* bus_find_device (int /*<<< orphan*/ *,struct device*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_device (struct device*) ; 
- int /*<<< orphan*/  scsi_bus_type ; 
+
+ int always_match ;
+ struct device* bus_find_device (int *,struct device*,int *,int ) ;
+ int put_device (struct device*) ;
+ int scsi_bus_type ;
 
 __attribute__((used)) static inline struct device *next_scsi_device(struct device *start)
 {
-	struct device *next = bus_find_device(&scsi_bus_type, start, NULL,
-					      always_match);
-	put_device(start);
-	return next;
+ struct device *next = bus_find_device(&scsi_bus_type, start, ((void*)0),
+           always_match);
+ put_device(start);
+ return next;
 }

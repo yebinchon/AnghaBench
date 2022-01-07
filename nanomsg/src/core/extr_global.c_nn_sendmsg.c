@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+
+
+typedef int uint8_t ;
 struct nn_sock {int dummy; } ;
 struct nn_msghdr {int msg_iovlen; unsigned char* msg_control; scalar_t__ msg_controllen; struct nn_iovec* msg_iov; } ;
-struct nn_msg {int /*<<< orphan*/  body; int /*<<< orphan*/  sphdr; int /*<<< orphan*/  hdrs; } ;
+struct nn_msg {int body; int sphdr; int hdrs; } ;
 struct nn_iovec {scalar_t__ iov_len; unsigned char* iov_base; } ;
 struct nn_cmsghdr {scalar_t__ cmsg_level; scalar_t__ cmsg_type; size_t cmsg_len; } ;
 
-/* Variables and functions */
- int EFAULT ; 
- int EINVAL ; 
- int EMSGSIZE ; 
- unsigned char* NN_CMSG_DATA (struct nn_cmsghdr*) ; 
- struct nn_cmsghdr* NN_CMSG_FIRSTHDR (struct nn_msghdr const*) ; 
- struct nn_cmsghdr* NN_CMSG_NXTHDR (struct nn_msghdr const*,struct nn_cmsghdr*) ; 
- size_t NN_CMSG_SPACE (int /*<<< orphan*/ ) ; 
- scalar_t__ NN_MSG ; 
- int /*<<< orphan*/  NN_STAT_BYTES_SENT ; 
- int /*<<< orphan*/  NN_STAT_MESSAGES_SENT ; 
- scalar_t__ PROTO_SP ; 
- scalar_t__ SP_HDR ; 
- int errno ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- size_t nn_chunk_size (void*) ; 
- int /*<<< orphan*/ * nn_chunkref_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_chunkref_init (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  nn_chunkref_init_chunk (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  nn_chunkref_term (int /*<<< orphan*/ *) ; 
- int nn_global_hold_socket (struct nn_sock**,int) ; 
- int /*<<< orphan*/  nn_global_rele_socket (struct nn_sock*) ; 
- int /*<<< orphan*/  nn_msg_init (struct nn_msg*,size_t) ; 
- int /*<<< orphan*/  nn_msg_init_chunk (struct nn_msg*,void*) ; 
- int /*<<< orphan*/  nn_msg_term (struct nn_msg*) ; 
- scalar_t__ nn_slow (int) ; 
- int nn_sock_send (struct nn_sock*,struct nn_msg*,int) ; 
- int /*<<< orphan*/  nn_sock_stat_increment (struct nn_sock*,int /*<<< orphan*/ ,size_t) ; 
+
+ int EFAULT ;
+ int EINVAL ;
+ int EMSGSIZE ;
+ unsigned char* NN_CMSG_DATA (struct nn_cmsghdr*) ;
+ struct nn_cmsghdr* NN_CMSG_FIRSTHDR (struct nn_msghdr const*) ;
+ struct nn_cmsghdr* NN_CMSG_NXTHDR (struct nn_msghdr const*,struct nn_cmsghdr*) ;
+ size_t NN_CMSG_SPACE (int ) ;
+ scalar_t__ NN_MSG ;
+ int NN_STAT_BYTES_SENT ;
+ int NN_STAT_MESSAGES_SENT ;
+ scalar_t__ PROTO_SP ;
+ scalar_t__ SP_HDR ;
+ int errno ;
+ int memcpy (int *,unsigned char*,size_t) ;
+ size_t nn_chunk_size (void*) ;
+ int * nn_chunkref_data (int *) ;
+ int nn_chunkref_init (int *,size_t) ;
+ int nn_chunkref_init_chunk (int *,void*) ;
+ int nn_chunkref_term (int *) ;
+ int nn_global_hold_socket (struct nn_sock**,int) ;
+ int nn_global_rele_socket (struct nn_sock*) ;
+ int nn_msg_init (struct nn_msg*,size_t) ;
+ int nn_msg_init_chunk (struct nn_msg*,void*) ;
+ int nn_msg_term (struct nn_msg*) ;
+ scalar_t__ nn_slow (int) ;
+ int nn_sock_send (struct nn_sock*,struct nn_msg*,int) ;
+ int nn_sock_stat_increment (struct nn_sock*,int ,size_t) ;
 
 int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
 {
@@ -77,7 +77,7 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
 
     if (msghdr->msg_iovlen == 1 && msghdr->msg_iov [0].iov_len == NN_MSG) {
         chunk = *(void**) msghdr->msg_iov [0].iov_base;
-        if (nn_slow (chunk == NULL)) {
+        if (nn_slow (chunk == ((void*)0))) {
             rc = -EFAULT;
             goto fail;
         }
@@ -87,7 +87,7 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
     }
     else {
 
-        /*  Compute the total size of the message. */
+
         sz = 0;
         for (i = 0; i != msghdr->msg_iovlen; ++i) {
             iov = &msghdr->msg_iov [i];
@@ -106,7 +106,7 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
             sz += iov->iov_len;
         }
 
-        /*  Create a message object from the supplied scatter array. */
+
         nn_msg_init (&msg, sz);
         sz = 0;
         for (i = 0; i != msghdr->msg_iovlen; ++i) {
@@ -119,11 +119,11 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
         nnmsg = 0;
     }
 
-    /*  Add ancillary data to the message. */
+
     if (msghdr->msg_control) {
 
-        /*  Copy all headers. */
-        /*  TODO: SP_HDR should not be copied here! */
+
+
         if (msghdr->msg_controllen == NN_MSG) {
             chunk = *((void**) msghdr->msg_control);
             nn_chunkref_term (&msg.hdrs);
@@ -136,7 +136,7 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
                 msghdr->msg_control, msghdr->msg_controllen);
         }
 
-        /* Search for SP_HDR property. */
+
         cmsg = NN_CMSG_FIRSTHDR (msghdr);
         while (cmsg) {
             if (cmsg->cmsg_level == PROTO_SP && cmsg->cmsg_type == SP_HDR) {
@@ -145,7 +145,7 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
                 if (clen > sizeof (size_t)) {
                     spsz = *(size_t *)(void *)ptr;
                     if (spsz <= (clen - sizeof (size_t))) {
-                        /*  Copy body of SP_HDR property into 'sphdr'. */
+
                         nn_chunkref_term (&msg.sphdr);
                         nn_chunkref_init (&msg.sphdr, spsz);
                          memcpy (nn_chunkref_data (&msg.sphdr),
@@ -158,12 +158,12 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
         }
     }
 
-    /*  Send it further down the stack. */
+
     rc = nn_sock_send (sock, &msg, flags);
     if (nn_slow (rc < 0)) {
 
-        /*  If we are dealing with user-supplied buffer, detach it from
-            the message object. */
+
+
         if (nnmsg)
             nn_chunkref_init (&msg.body, 0);
 
@@ -171,7 +171,7 @@ int nn_sendmsg (int s, const struct nn_msghdr *msghdr, int flags)
         goto fail;
     }
 
-    /*  Adjust the statistics. */
+
     nn_sock_stat_increment (sock, NN_STAT_MESSAGES_SENT, 1);
     nn_sock_stat_increment (sock, NN_STAT_BYTES_SENT, sz);
 

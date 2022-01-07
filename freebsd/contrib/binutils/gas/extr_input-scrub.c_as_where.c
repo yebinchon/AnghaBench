@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* logical_input_file ; 
- unsigned int logical_input_line ; 
- char* physical_input_file ; 
- unsigned int physical_input_line ; 
+ char* logical_input_file ;
+ unsigned int logical_input_line ;
+ char* physical_input_file ;
+ unsigned int physical_input_line ;
 
 void
 as_where (char **namep, unsigned int *linep)
 {
-  if (logical_input_file != NULL
-      && (linep == NULL || logical_input_line >= 0))
+  if (logical_input_file != ((void*)0)
+      && (linep == ((void*)0) || logical_input_line >= 0))
     {
       *namep = logical_input_file;
-      if (linep != NULL)
-	*linep = logical_input_line;
+      if (linep != ((void*)0))
+ *linep = logical_input_line;
     }
-  else if (physical_input_file != NULL)
+  else if (physical_input_file != ((void*)0))
     {
       *namep = physical_input_file;
-      if (linep != NULL)
-	*linep = physical_input_line;
+      if (linep != ((void*)0))
+ *linep = physical_input_line;
     }
   else
     {
       *namep = 0;
-      if (linep != NULL)
-	*linep = 0;
+      if (linep != ((void*)0))
+ *linep = 0;
     }
 }

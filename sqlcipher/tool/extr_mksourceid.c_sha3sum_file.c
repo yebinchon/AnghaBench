@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zBuf ;
-typedef  int /*<<< orphan*/  SHA3Context ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DigestToBase16 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  SHA3Final (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SHA3Init (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SHA3Update (int /*<<< orphan*/ *,unsigned char*,unsigned int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- scalar_t__ fread (char*,int,int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zBuf ;
+typedef int SHA3Context ;
+typedef int FILE ;
+
+
+ int DigestToBase16 (int ,char*,int) ;
+ int SHA3Final (int *) ;
+ int SHA3Init (int *,int) ;
+ int SHA3Update (int *,unsigned char*,unsigned int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ scalar_t__ fread (char*,int,int,int *) ;
 
 __attribute__((used)) static int sha3sum_file(const char *zFilename, int iSize, char *pCksum){
   FILE *in;

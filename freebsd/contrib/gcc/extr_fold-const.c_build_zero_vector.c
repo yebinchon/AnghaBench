@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NOP_EXPR ; 
- int /*<<< orphan*/  NULL_TREE ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int TYPE_VECTOR_SUBPARTS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  build_vector (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fold_convert_const (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  integer_zero_node ; 
- int /*<<< orphan*/  tree_cons (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int NOP_EXPR ;
+ int NULL_TREE ;
+ int TREE_TYPE (int ) ;
+ int TYPE_VECTOR_SUBPARTS (int ) ;
+ int build_vector (int ,int ) ;
+ int fold_convert_const (int ,int ,int ) ;
+ int integer_zero_node ;
+ int tree_cons (int ,int ,int ) ;
 
 __attribute__((used)) static tree
 build_zero_vector (tree type)
@@ -30,7 +30,7 @@ build_zero_vector (tree type)
 
   elem = fold_convert_const (NOP_EXPR, TREE_TYPE (type), integer_zero_node);
   units = TYPE_VECTOR_SUBPARTS (type);
-  
+
   list = NULL_TREE;
   for (i = 0; i < units; i++)
     list = tree_cons (NULL_TREE, elem, list);

@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EQ (unsigned int const,char) ; 
- int GE (int,char) ; 
- int LE (int,char) ; 
+ int EQ (unsigned int const,char) ;
+ int GE (int,char) ;
+ int LE (int,char) ;
 
 __attribute__((used)) static unsigned int
 b64_char_to_byte(int c)

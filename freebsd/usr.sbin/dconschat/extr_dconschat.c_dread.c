@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dcons_state {int type; int /*<<< orphan*/  kd; int /*<<< orphan*/  fd; } ;
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
-#define  TYPE_FW 129 
-#define  TYPE_KVM 128 
- int kvm_read (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,size_t) ; 
- int pread (int /*<<< orphan*/ ,void*,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+struct dcons_state {int type; int kd; int fd; } ;
+typedef int off_t ;
+
+
+
+
+ int kvm_read (int ,int ,void*,size_t) ;
+ int pread (int ,void*,size_t,int ) ;
 
 __attribute__((used)) static int
 dread(struct dcons_state *dc, void *buf, size_t n, off_t offset)
 {
-	switch (dc->type) {
-	case TYPE_FW:
-		return (pread(dc->fd, buf, n, offset));
-	case TYPE_KVM:
-		return (kvm_read(dc->kd, offset, buf, n));
-	}
-	return (-1);
+ switch (dc->type) {
+ case 129:
+  return (pread(dc->fd, buf, n, offset));
+ case 128:
+  return (kvm_read(dc->kd, offset, buf, n));
+ }
+ return (-1);
 }

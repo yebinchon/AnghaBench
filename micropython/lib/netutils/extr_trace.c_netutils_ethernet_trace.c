@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  mp_print_t ;
 
-/* Variables and functions */
- unsigned int NETUTILS_TRACE_IS_TX ; 
- unsigned int NETUTILS_TRACE_NEWLINE ; 
- unsigned int NETUTILS_TRACE_PAYLOAD ; 
- int /*<<< orphan*/  dump_hex_bytes (int /*<<< orphan*/  const*,size_t,int const*) ; 
- char* ethertype_str (int const) ; 
- void* get_be16 (int const*) ; 
- int get_be32 (int const*) ; 
- int /*<<< orphan*/  mp_hal_ticks_ms () ; 
- int /*<<< orphan*/  mp_printf (int /*<<< orphan*/  const*,char*,...) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int mp_print_t ;
+
+
+ unsigned int NETUTILS_TRACE_IS_TX ;
+ unsigned int NETUTILS_TRACE_NEWLINE ;
+ unsigned int NETUTILS_TRACE_PAYLOAD ;
+ int dump_hex_bytes (int const*,size_t,int const*) ;
+ char* ethertype_str (int const) ;
+ void* get_be16 (int const*) ;
+ int get_be32 (int const*) ;
+ int mp_hal_ticks_ms () ;
+ int mp_printf (int const*,char*,...) ;
 
 void netutils_ethernet_trace(const mp_print_t *print, size_t len, const uint8_t *buf, unsigned int flags) {
     mp_printf(print, "[% 8d] ETH%cX len=%u", mp_hal_ticks_ms(), flags & NETUTILS_TRACE_IS_TX ? 'T' : 'R', len);
@@ -41,7 +41,7 @@ void netutils_ethernet_trace(const mp_print_t *print, size_t len, const uint8_t 
         len -= 14;
         buf += 14;
         if (buf[-2] == 0x08 && buf[-1] == 0x00 && buf[0] == 0x45) {
-            // IPv4 packet
+
             len = get_be16(buf + 2);
             mp_printf(print, " srcip=%u.%u.%u.%u dstip=%u.%u.%u.%u",
                 buf[12], buf[13], buf[14], buf[15],
@@ -50,7 +50,7 @@ void netutils_ethernet_trace(const mp_print_t *print, size_t len, const uint8_t 
             buf += 20;
             len -= 20;
             if (prot == 6) {
-                // TCP packet
+
                 uint16_t srcport = get_be16(buf);
                 uint16_t dstport = get_be16(buf + 2);
                 uint32_t seqnum = get_be32(buf + 4);
@@ -69,14 +69,14 @@ void netutils_ethernet_trace(const mp_print_t *print, size_t len, const uint8_t 
                     len -= opts_len;
                 }
             } else if (prot == 17) {
-                // UDP packet
+
                 uint16_t srcport = get_be16(buf);
                 uint16_t dstport = get_be16(buf + 2);
                 mp_printf(print, " UDP srcport=%u dstport=%u", srcport, dstport);
                 len = get_be16(buf + 4);
                 buf += 8;
                 if ((srcport == 67 && dstport == 68) || (srcport == 68 && dstport == 67)) {
-                    // DHCP
+
                     if (srcport == 67) {
                         mp_printf(print, " DHCPS");
                     } else {
@@ -99,11 +99,11 @@ void netutils_ethernet_trace(const mp_print_t *print, size_t len, const uint8_t 
                     }
                 }
             } else {
-                // Non-UDP packet
+
                 mp_printf(print, " prot=%u", prot);
             }
         } else if (buf[-2] == 0x86 && buf[-1] == 0xdd && (buf[0] >> 4) == 6) {
-            // IPv6 packet
+
             uint32_t h = get_be32(buf);
             uint16_t l = get_be16(buf + 4);
             mp_printf(print, " tclass=%u flow=%u len=%u nexthdr=%u hoplimit=%u", (unsigned)((h >> 20) & 0xff), (unsigned)(h & 0xfffff), l, buf[6], buf[7]);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_3__ {int* words; } ;
-typedef  TYPE_1__* TCAesKeySched_t ;
+typedef TYPE_1__* TCAesKeySched_t ;
 
-/* Variables and functions */
- unsigned int Nb ; 
- unsigned int Nk ; 
- int Nr ; 
- int TC_CRYPTO_FAIL ; 
- int TC_CRYPTO_SUCCESS ; 
- int /*<<< orphan*/  rotword (unsigned int) ; 
- unsigned int const subword (int /*<<< orphan*/ ) ; 
+
+ unsigned int Nb ;
+ unsigned int Nk ;
+ int Nr ;
+ int TC_CRYPTO_FAIL ;
+ int TC_CRYPTO_SUCCESS ;
+ int rotword (unsigned int) ;
+ unsigned int const subword (int ) ;
 
 int tc_aes128_set_encrypt_key(TCAesKeySched_t s, const uint8_t *k)
 {

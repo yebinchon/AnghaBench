@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT32 ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t UINT32 ;
 struct TYPE_14__ {scalar_t__ Type; TYPE_2__* Object; } ;
 struct TYPE_13__ {TYPE_3__* Arguments; TYPE_5__* MethodNode; } ;
-struct TYPE_12__ {int /*<<< orphan*/ * Object; } ;
-struct TYPE_10__ {int /*<<< orphan*/  ParamCount; } ;
+struct TYPE_12__ {int * Object; } ;
+struct TYPE_10__ {int ParamCount; } ;
 struct TYPE_11__ {TYPE_1__ Method; } ;
-typedef  scalar_t__ BOOLEAN ;
-typedef  TYPE_4__ ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_OPERAND_OBJECT ;
-typedef  TYPE_5__ ACPI_NAMESPACE_NODE ;
+typedef scalar_t__ BOOLEAN ;
+typedef TYPE_4__ ACPI_WALK_STATE ;
+typedef int ACPI_OPERAND_OBJECT ;
+typedef TYPE_5__ ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- size_t ACPI_METHOD_NUM_ARGS ; 
- scalar_t__ ACPI_TYPE_METHOD ; 
- int /*<<< orphan*/  AcpiDbDisplayInternalObject (int /*<<< orphan*/ *,TYPE_4__*) ; 
- TYPE_5__* AcpiGbl_RootNode ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- size_t AcpiUtGetNodeName (TYPE_5__*) ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
+
+ size_t ACPI_METHOD_NUM_ARGS ;
+ scalar_t__ ACPI_TYPE_METHOD ;
+ int AcpiDbDisplayInternalObject (int *,TYPE_4__*) ;
+ TYPE_5__* AcpiGbl_RootNode ;
+ int AcpiOsPrintf (char*,...) ;
+ size_t AcpiUtGetNodeName (TYPE_5__*) ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
 
 void
 AcpiDbDecodeArguments (
-    ACPI_WALK_STATE         *WalkState)
+    ACPI_WALK_STATE *WalkState)
 {
-    UINT32                  i;
-    ACPI_OPERAND_OBJECT     *ObjDesc;
-    ACPI_NAMESPACE_NODE     *Node;
-    BOOLEAN                 DisplayArgs = FALSE;
+    UINT32 i;
+    ACPI_OPERAND_OBJECT *ObjDesc;
+    ACPI_NAMESPACE_NODE *Node;
+    BOOLEAN DisplayArgs = FALSE;
 
 
     Node = WalkState->MethodNode;
 
-    /* There are no arguments for the module-level code case */
+
 
     if (Node == AcpiGbl_RootNode)
     {
@@ -68,7 +68,7 @@ AcpiDbDecodeArguments (
         return;
     }
 
-    /* Are any arguments actually set? */
+
 
     for (i = 0; i < ACPI_METHOD_NUM_ARGS; i++)
     {
@@ -80,7 +80,7 @@ AcpiDbDecodeArguments (
         }
     }
 
-    /* If any are set, only display the ones that are set */
+
 
     if (DisplayArgs)
     {

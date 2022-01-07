@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint ;
-struct brcmf_sdio {int /*<<< orphan*/  dcmd_resp_wait; } ;
 
-/* Variables and functions */
- int DCMD_RESP_TIMEOUT ; 
- int /*<<< orphan*/  DECLARE_WAITQUEUE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TASK_INTERRUPTIBLE ; 
- int /*<<< orphan*/  TASK_RUNNING ; 
- int /*<<< orphan*/  add_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  remove_wait_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int schedule_timeout (int) ; 
- int /*<<< orphan*/  set_current_state (int /*<<< orphan*/ ) ; 
- scalar_t__ signal_pending (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wait ; 
+
+
+
+typedef int uint ;
+struct brcmf_sdio {int dcmd_resp_wait; } ;
+
+
+ int DCMD_RESP_TIMEOUT ;
+ int DECLARE_WAITQUEUE (int ,int ) ;
+ int TASK_INTERRUPTIBLE ;
+ int TASK_RUNNING ;
+ int add_wait_queue (int *,int *) ;
+ int current ;
+ int remove_wait_queue (int *,int *) ;
+ int schedule_timeout (int) ;
+ int set_current_state (int ) ;
+ scalar_t__ signal_pending (int ) ;
+ int wait ;
 
 __attribute__((used)) static int brcmf_sdio_dcmd_resp_wait(struct brcmf_sdio *bus, uint *condition,
-				     bool *pending)
+         bool *pending)
 {
-	DECLARE_WAITQUEUE(wait, current);
-	int timeout = DCMD_RESP_TIMEOUT;
+ DECLARE_WAITQUEUE(wait, current);
+ int timeout = DCMD_RESP_TIMEOUT;
 
-	/* Wait until control frame is available */
-	add_wait_queue(&bus->dcmd_resp_wait, &wait);
-	set_current_state(TASK_INTERRUPTIBLE);
 
-	while (!(*condition) && (!signal_pending(current) && timeout))
-		timeout = schedule_timeout(timeout);
+ add_wait_queue(&bus->dcmd_resp_wait, &wait);
+ set_current_state(TASK_INTERRUPTIBLE);
 
-	if (signal_pending(current))
-		*pending = true;
+ while (!(*condition) && (!signal_pending(current) && timeout))
+  timeout = schedule_timeout(timeout);
 
-	set_current_state(TASK_RUNNING);
-	remove_wait_queue(&bus->dcmd_resp_wait, &wait);
+ if (signal_pending(current))
+  *pending = 1;
 
-	return timeout;
+ set_current_state(TASK_RUNNING);
+ remove_wait_queue(&bus->dcmd_resp_wait, &wait);
+
+ return timeout;
 }

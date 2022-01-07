@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_4__ {scalar_t__ last_event_time; int timer_running; scalar_t__ longpress_delay_us; int lastpos; scalar_t__ click_delay_us; int /*<<< orphan*/  timer; scalar_t__ last_recent_event_was_release; scalar_t__ last_recent_event_was_press; } ;
-typedef  TYPE_1__ DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ROTARY_CLICK_INDEX ; 
- int /*<<< orphan*/  ROTARY_LONGPRESS_INDEX ; 
- int /*<<< orphan*/  callback_call (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,int,scalar_t__) ; 
- int /*<<< orphan*/  lua_getstate () ; 
- int /*<<< orphan*/  os_timer_arm (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  os_timer_disarm (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_4__ {scalar_t__ last_event_time; int timer_running; scalar_t__ longpress_delay_us; int lastpos; scalar_t__ click_delay_us; int timer; scalar_t__ last_recent_event_was_release; scalar_t__ last_recent_event_was_press; } ;
+typedef TYPE_1__ DATA ;
+
+
+ int ROTARY_CLICK_INDEX ;
+ int ROTARY_LONGPRESS_INDEX ;
+ int callback_call (int ,TYPE_1__*,int ,int,scalar_t__) ;
+ int lua_getstate () ;
+ int os_timer_arm (int *,int,int ) ;
+ int os_timer_disarm (int *) ;
 
 __attribute__((used)) static void lrotary_check_timer(DATA *d, uint32_t time_us, bool dotimer)
 {

@@ -1,69 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ len; scalar_t__ responses_end; } ;
-struct TYPE_6__ {TYPE_1__ gather; int /*<<< orphan*/ * app; void* request_logger; void* create_task; void* error_handler; void* matcher; int /*<<< orphan*/  pipeline; int /*<<< orphan*/  parser; void* feed_disconnect; void* feed; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_2__ Protocol ;
+struct TYPE_6__ {TYPE_1__ gather; int * app; void* request_logger; void* create_task; void* error_handler; void* matcher; int pipeline; int parser; void* feed_disconnect; void* feed; } ;
+typedef int PyObject ;
+typedef TYPE_2__ Protocol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Parser ; 
- int Parser_init (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int Pipeline_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Protocol_pipeline_ready ; 
- int /*<<< orphan*/  PyArg_ParseTuple (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * PyObject_CallFunctionObjArgs (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- void* PyObject_GetAttrString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_True ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
+
+ int Parser ;
+ int Parser_init (int *,TYPE_2__*) ;
+ int Pipeline_init (int *,int ,int *) ;
+ int Protocol_pipeline_ready ;
+ int PyArg_ParseTuple (int *,char*,int **) ;
+ int * PyObject_CallFunctionObjArgs (int ,int *,int *,int *,int *) ;
+ void* PyObject_GetAttrString (int *,char*) ;
+ int Py_INCREF (int *) ;
+ int * Py_True ;
+ int Py_XDECREF (int *) ;
 
 __attribute__((used)) static int
 Protocol_init(Protocol* self, PyObject *args, PyObject *kw)
 {
   int result = 0;
-  PyObject* loop = NULL;
-  PyObject* log_request = NULL;
-#ifdef PARSER_STANDALONE
-  PyObject* parser = NULL;
-
-  PyObject* on_headers = PyObject_GetAttrString((PyObject*)self, "on_headers");
-  if(!on_headers) // FIXME leak
-    goto error;
-  PyObject* on_body = PyObject_GetAttrString((PyObject*)self, "on_body");
-  if(!on_body) // FIXME leak
-    goto error;
-  PyObject* on_error = PyObject_GetAttrString((PyObject*)self, "on_error");
-  if(!on_error) // FIXME leak
-    goto error;
-
-  parser = PyObject_CallFunctionObjArgs(
-    Parser, on_headers, on_body, on_error, NULL);
-  if(!parser)
-    goto error;
-
-  self->feed = PyObject_GetAttrString(parser, "feed");
-  if(!self->feed)
-    goto error;
-
-  self->feed_disconnect = PyObject_GetAttrString(parser, "feed_disconnect");
-  if(!self->feed_disconnect)
-    goto error;
-#else
+  PyObject* loop = ((void*)0);
+  PyObject* log_request = ((void*)0);
   if(Parser_init(&self->parser, self) == -1)
     goto error;
-#endif
+
 
   if(Pipeline_init(&self->pipeline, Protocol_pipeline_ready, (PyObject*)self) == -1)
     goto error;
@@ -106,8 +80,8 @@ Protocol_init(Protocol* self, PyObject *args, PyObject *kw)
   finally:
   Py_XDECREF(log_request);
   Py_XDECREF(loop);
-#ifdef PARSER_STANDALONE
-  Py_XDECREF(parser);
-#endif
+
+
+
   return result;
 }

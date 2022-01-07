@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_6__ {int dwMajorVersion; int dwMinorVersion; int wFlags; } ;
-typedef  TYPE_1__ VersionLieInfo ;
-typedef  int /*<<< orphan*/ * PHOOKAPI ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int DWORD ;
+typedef TYPE_1__ VersionLieInfo ;
+typedef int * PHOOKAPI ;
+typedef int LPCSTR ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int FLAG_AlternateHookOrder ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int _WIN32_WINNT_WINXP ; 
- int /*<<< orphan*/  expect_shim (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  g_WinVersion ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/ * pGetHookAPIs (char*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  skip (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  verify_shim (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  verify_shima (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  verify_shimw (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/ ,int,int) ; 
+
+ int CP_ACP ;
+ int FLAG_AlternateHookOrder ;
+ int MultiByteToWideChar (int ,int ,int ,int,int *,int) ;
+ int _WIN32_WINNT_WINXP ;
+ int expect_shim (int *,char*,char*,int ,int*) ;
+ int g_WinVersion ;
+ int ok (int,char*,...) ;
+ int * pGetHookAPIs (char*,int *,int*) ;
+ int skip (char*,int ,int ) ;
+ int verify_shim (int *,TYPE_1__ const*,int ,int) ;
+ int verify_shima (int *,TYPE_1__ const*,int ,int) ;
+ int verify_shimw (int *,TYPE_1__ const*,int ,int,int) ;
 
 __attribute__((used)) static void run_test(LPCSTR shim, const VersionLieInfo* info)
 {
@@ -41,12 +41,12 @@ __attribute__((used)) static void run_test(LPCSTR shim, const VersionLieInfo* in
     MultiByteToWideChar(CP_ACP, 0, shim, -1, wide_shim, 50);
     hook = pGetHookAPIs("", wide_shim, &num_shims);
     ver = (info->dwMajorVersion << 8) | info->dwMinorVersion;
-    if (hook == NULL)
+    if (hook == ((void*)0))
     {
         skip("Skipping tests for layers (%s) not present in this os (0x%x)\n", shim, g_WinVersion);
         return;
     }
-    ok(hook != NULL, "Expected hook to be a valid pointer for %s\n", shim);
+    ok(hook != ((void*)0), "Expected hook to be a valid pointer for %s\n", shim);
     if (info->wFlags & FLAG_AlternateHookOrder)
     {
         ok(num_shims == 3, "Expected num_shims to be 3, was: %u for %s\n", num_shims, shim);

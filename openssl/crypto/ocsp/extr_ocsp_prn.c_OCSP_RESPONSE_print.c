@@ -1,88 +1,88 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_9__ ;
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_25__ TYPE_9__ ;
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_10__ ;
+
+
 struct TYPE_18__ {TYPE_4__* revoked; } ;
 struct TYPE_25__ {scalar_t__ type; TYPE_2__ value; } ;
-struct TYPE_24__ {int /*<<< orphan*/  responseType; } ;
-struct TYPE_17__ {int /*<<< orphan*/  byKey; int /*<<< orphan*/  byName; } ;
+struct TYPE_24__ {int responseType; } ;
+struct TYPE_17__ {int byKey; int byName; } ;
 struct TYPE_22__ {int type; TYPE_1__ value; } ;
-struct TYPE_23__ {int /*<<< orphan*/  responseExtensions; int /*<<< orphan*/  responses; scalar_t__ producedAt; TYPE_6__ responderId; int /*<<< orphan*/  version; } ;
+struct TYPE_23__ {int responseExtensions; int responses; scalar_t__ producedAt; TYPE_6__ responderId; int version; } ;
 struct TYPE_21__ {scalar_t__ responseStatus; TYPE_8__* responseBytes; } ;
 struct TYPE_20__ {scalar_t__ revocationReason; scalar_t__ revocationTime; } ;
-struct TYPE_19__ {int /*<<< orphan*/  singleExtensions; scalar_t__ nextUpdate; scalar_t__ thisUpdate; TYPE_9__* certStatus; int /*<<< orphan*/ * certId; } ;
-struct TYPE_16__ {int /*<<< orphan*/  certs; int /*<<< orphan*/  signature; int /*<<< orphan*/  signatureAlgorithm; TYPE_7__ tbsResponseData; } ;
-typedef  TYPE_3__ OCSP_SINGLERESP ;
-typedef  TYPE_4__ OCSP_REVOKEDINFO ;
-typedef  TYPE_5__ OCSP_RESPONSE ;
-typedef  TYPE_6__ OCSP_RESPID ;
-typedef  TYPE_7__ OCSP_RESPDATA ;
-typedef  TYPE_8__ OCSP_RESPBYTES ;
-typedef  TYPE_9__ OCSP_CERTSTATUS ;
-typedef  int /*<<< orphan*/  OCSP_CERTID ;
-typedef  TYPE_10__ OCSP_BASICRESP ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_19__ {int singleExtensions; scalar_t__ nextUpdate; scalar_t__ thisUpdate; TYPE_9__* certStatus; int * certId; } ;
+struct TYPE_16__ {int certs; int signature; int signatureAlgorithm; TYPE_7__ tbsResponseData; } ;
+typedef TYPE_3__ OCSP_SINGLERESP ;
+typedef TYPE_4__ OCSP_REVOKEDINFO ;
+typedef TYPE_5__ OCSP_RESPONSE ;
+typedef TYPE_6__ OCSP_RESPID ;
+typedef TYPE_7__ OCSP_RESPDATA ;
+typedef TYPE_8__ OCSP_RESPBYTES ;
+typedef TYPE_9__ OCSP_CERTSTATUS ;
+typedef int OCSP_CERTID ;
+typedef TYPE_10__ OCSP_BASICRESP ;
+typedef int BIO ;
 
-/* Variables and functions */
- long ASN1_ENUMERATED_get (scalar_t__) ; 
- int /*<<< orphan*/  ASN1_GENERALIZEDTIME_print (int /*<<< orphan*/ *,scalar_t__) ; 
- long ASN1_INTEGER_get (int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_printf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ BIO_puts (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ BIO_write (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ NID_id_pkix_OCSP_basic ; 
- scalar_t__ OBJ_obj2nid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OCSP_BASICRESP_free (TYPE_10__*) ; 
- int /*<<< orphan*/  OCSP_cert_status_str (scalar_t__) ; 
- int /*<<< orphan*/  OCSP_crl_reason_str (long) ; 
- TYPE_10__* OCSP_response_get1_basic (TYPE_5__*) ; 
- int /*<<< orphan*/  OCSP_response_status_str (long) ; 
- int /*<<< orphan*/  PEM_write_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ V_OCSP_CERTSTATUS_REVOKED ; 
-#define  V_OCSP_RESPID_KEY 129 
-#define  V_OCSP_RESPID_NAME 128 
- int /*<<< orphan*/  X509V3_extensions_print (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,unsigned long,int) ; 
- int /*<<< orphan*/  X509_NAME_print_ex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_print (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ X509_signature_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XN_FLAG_ONELINE ; 
- scalar_t__ i2a_ASN1_OBJECT (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2a_ASN1_STRING (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ocsp_certid_print (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int sk_OCSP_SINGLERESP_num (int /*<<< orphan*/ ) ; 
- TYPE_3__* sk_OCSP_SINGLERESP_value (int /*<<< orphan*/ ,int) ; 
- int sk_X509_num (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sk_X509_value (int /*<<< orphan*/ ,int) ; 
+
+ long ASN1_ENUMERATED_get (scalar_t__) ;
+ int ASN1_GENERALIZEDTIME_print (int *,scalar_t__) ;
+ long ASN1_INTEGER_get (int ) ;
+ scalar_t__ BIO_printf (int *,char*,...) ;
+ scalar_t__ BIO_puts (int *,char*) ;
+ scalar_t__ BIO_write (int *,char*,int) ;
+ scalar_t__ NID_id_pkix_OCSP_basic ;
+ scalar_t__ OBJ_obj2nid (int ) ;
+ int OCSP_BASICRESP_free (TYPE_10__*) ;
+ int OCSP_cert_status_str (scalar_t__) ;
+ int OCSP_crl_reason_str (long) ;
+ TYPE_10__* OCSP_response_get1_basic (TYPE_5__*) ;
+ int OCSP_response_status_str (long) ;
+ int PEM_write_bio_X509 (int *,int ) ;
+ scalar_t__ V_OCSP_CERTSTATUS_REVOKED ;
+
+
+ int X509V3_extensions_print (int *,char*,int ,unsigned long,int) ;
+ int X509_NAME_print_ex (int *,int ,int ,int ) ;
+ int X509_print (int *,int ) ;
+ scalar_t__ X509_signature_print (int *,int *,int ) ;
+ int XN_FLAG_ONELINE ;
+ scalar_t__ i2a_ASN1_OBJECT (int *,int ) ;
+ int i2a_ASN1_STRING (int *,int ,int ) ;
+ scalar_t__ ocsp_certid_print (int *,int *,int) ;
+ int sk_OCSP_SINGLERESP_num (int ) ;
+ TYPE_3__* sk_OCSP_SINGLERESP_value (int ,int) ;
+ int sk_X509_num (int ) ;
+ int sk_X509_value (int ,int) ;
 
 int OCSP_RESPONSE_print(BIO *bp, OCSP_RESPONSE *o, unsigned long flags)
 {
     int i, ret = 0;
     long l;
-    OCSP_CERTID *cid = NULL;
-    OCSP_BASICRESP *br = NULL;
-    OCSP_RESPID *rid = NULL;
-    OCSP_RESPDATA *rd = NULL;
-    OCSP_CERTSTATUS *cst = NULL;
-    OCSP_REVOKEDINFO *rev = NULL;
-    OCSP_SINGLERESP *single = NULL;
+    OCSP_CERTID *cid = ((void*)0);
+    OCSP_BASICRESP *br = ((void*)0);
+    OCSP_RESPID *rid = ((void*)0);
+    OCSP_RESPDATA *rd = ((void*)0);
+    OCSP_CERTSTATUS *cst = ((void*)0);
+    OCSP_REVOKEDINFO *rev = ((void*)0);
+    OCSP_SINGLERESP *single = ((void*)0);
     OCSP_RESPBYTES *rb = o->responseBytes;
 
     if (BIO_puts(bp, "OCSP Response Data:\n") <= 0)
@@ -91,7 +91,7 @@ int OCSP_RESPONSE_print(BIO *bp, OCSP_RESPONSE *o, unsigned long flags)
     if (BIO_printf(bp, "    OCSP Response Status: %s (0x%lx)\n",
                    OCSP_response_status_str(l), l) <= 0)
         goto err;
-    if (rb == NULL)
+    if (rb == ((void*)0))
         return 1;
     if (BIO_puts(bp, "    Response Type: ") <= 0)
         goto err;
@@ -102,7 +102,7 @@ int OCSP_RESPONSE_print(BIO *bp, OCSP_RESPONSE *o, unsigned long flags)
         return 1;
     }
 
-    if ((br = OCSP_response_get1_basic(o)) == NULL)
+    if ((br = OCSP_response_get1_basic(o)) == ((void*)0))
         goto err;
     rd = &br->tbsResponseData;
     l = ASN1_INTEGER_get(rd->version);
@@ -113,10 +113,10 @@ int OCSP_RESPONSE_print(BIO *bp, OCSP_RESPONSE *o, unsigned long flags)
 
     rid = &rd->responderId;
     switch (rid->type) {
-    case V_OCSP_RESPID_NAME:
+    case 128:
         X509_NAME_print_ex(bp, rid->value.byName, 0, XN_FLAG_ONELINE);
         break;
-    case V_OCSP_RESPID_KEY:
+    case 129:
         i2a_ASN1_STRING(bp, rid->value.byKey, 0);
         break;
     }

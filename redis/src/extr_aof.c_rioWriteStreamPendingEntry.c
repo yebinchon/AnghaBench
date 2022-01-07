@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  delivery_count; int /*<<< orphan*/  delivery_time; } ;
-typedef  TYPE_1__ streamNACK ;
-typedef  int /*<<< orphan*/  streamID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int delivery_count; int delivery_time; } ;
+typedef TYPE_1__ streamNACK ;
+typedef int streamID ;
 struct TYPE_6__ {char* name; } ;
-typedef  TYPE_2__ streamConsumer ;
-typedef  int /*<<< orphan*/  robj ;
-typedef  int /*<<< orphan*/  rio ;
+typedef TYPE_2__ streamConsumer ;
+typedef int robj ;
+typedef int rio ;
 
-/* Variables and functions */
- scalar_t__ rioWriteBulkCount (int /*<<< orphan*/ *,char,int) ; 
- scalar_t__ rioWriteBulkLongLong (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ rioWriteBulkObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ rioWriteBulkStreamID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ rioWriteBulkString (int /*<<< orphan*/ *,char const*,int) ; 
- int sdslen (char*) ; 
- int /*<<< orphan*/  streamDecodeID (unsigned char*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ rioWriteBulkCount (int *,char,int) ;
+ scalar_t__ rioWriteBulkLongLong (int *,int ) ;
+ scalar_t__ rioWriteBulkObject (int *,int *) ;
+ scalar_t__ rioWriteBulkStreamID (int *,int *) ;
+ scalar_t__ rioWriteBulkString (int *,char const*,int) ;
+ int sdslen (char*) ;
+ int streamDecodeID (unsigned char*,int *) ;
 
 int rioWriteStreamPendingEntry(rio *r, robj *key, const char *groupname, size_t groupname_len, streamConsumer *consumer, unsigned char *rawid, streamNACK *nack) {
-     /* XCLAIM <key> <group> <consumer> 0 <id> TIME <milliseconds-unix-time>
-               RETRYCOUNT <count> JUSTID FORCE. */
+
+
     streamID id;
     streamDecodeID(rawid,&id);
     if (rioWriteBulkCount(r,'*',12) == 0) return 0;

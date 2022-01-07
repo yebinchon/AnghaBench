@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_cmd {int dummy; } ;
-typedef  int /*<<< orphan*/  header ;
-typedef  int /*<<< orphan*/  format ;
-typedef  int /*<<< orphan*/  dvdstruct ;
-typedef  int /*<<< orphan*/  buffer ;
+typedef int header ;
+typedef int format ;
+typedef int dvdstruct ;
+typedef int buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEDIUM ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int cd_media ; 
- int /*<<< orphan*/  cd_media_cd_rom ; 
- scalar_t__ cd_media_dvd_plus_rw ; 
- scalar_t__ cd_media_dvd_plus_rw_dl ; 
- scalar_t__ cd_media_dvd_ram ; 
- scalar_t__ cd_media_dvd_rw_ro ; 
- unsigned char cd_media_session_count ; 
- unsigned char cd_media_session_next ; 
- char* cd_media_state ; 
- unsigned char cd_media_track_count ; 
- int /*<<< orphan*/  info_scsi_cmd_err (char*,int) ; 
- int /*<<< orphan*/  log_debug (char*,...) ; 
- int log_debug_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  scsi_cmd_init (struct scsi_cmd*) ; 
- int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ; 
- int /*<<< orphan*/  scsi_cmd_set (struct scsi_cmd*,int,int) ; 
+
+ int EINVAL ;
+ int ENOMEDIUM ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int cd_media ;
+ int cd_media_cd_rom ;
+ scalar_t__ cd_media_dvd_plus_rw ;
+ scalar_t__ cd_media_dvd_plus_rw_dl ;
+ scalar_t__ cd_media_dvd_ram ;
+ scalar_t__ cd_media_dvd_rw_ro ;
+ unsigned char cd_media_session_count ;
+ unsigned char cd_media_session_next ;
+ char* cd_media_state ;
+ unsigned char cd_media_track_count ;
+ int info_scsi_cmd_err (char*,int) ;
+ int log_debug (char*,...) ;
+ int log_debug_errno (int ,char*) ;
+ int scsi_cmd_init (struct scsi_cmd*) ;
+ int scsi_cmd_run (struct scsi_cmd*,int,unsigned char*,int) ;
+ int scsi_cmd_set (struct scsi_cmd*,int,int) ;
 
 __attribute__((used)) static int cd_media_info(int fd) {
         struct scsi_cmd sc;
@@ -62,26 +62,26 @@ __attribute__((used)) static int cd_media_info(int fd) {
         log_debug("disk type %02x", header[8]);
         log_debug("hardware reported media status: %s", media_status[header[2] & 3]);
 
-        /* exclude plain CDROM, some fake cdroms return 0 for "blank" media here */
+
         if (!cd_media_cd_rom)
                 cd_media_state = media_status[header[2] & 3];
 
-        /* fresh DVD-RW in restricted overwrite mode reports itself as
-         * "appendable"; change it to "blank" to make it consistent with what
-         * gets reported after blanking, and what userspace expects  */
+
+
+
         if (cd_media_dvd_rw_ro && (header[2] & 3) == 1)
                 cd_media_state = media_status[0];
 
-        /* DVD+RW discs (and DVD-RW in restricted mode) once formatted are
-         * always "complete", DVD-RAM are "other" or "complete" if the disc is
-         * write protected; we need to check the contents if it is blank */
+
+
+
         if ((cd_media_dvd_rw_ro || cd_media_dvd_plus_rw || cd_media_dvd_plus_rw_dl || cd_media_dvd_ram) && (header[2] & 3) > 1) {
                 unsigned char buffer[32 * 2048];
                 unsigned char len;
                 int offset;
 
                 if (cd_media_dvd_ram) {
-                        /* a write protected dvd-ram may report "complete" status */
+
 
                         unsigned char dvdstruct[8];
                         unsigned char format[12];
@@ -102,7 +102,7 @@ __attribute__((used)) static int cd_media_info(int fd) {
                                 goto determined;
                         }
 
-                        /* let's make sure we don't try to read unformatted media */
+
                         scsi_cmd_init(&sc);
                         scsi_cmd_set(&sc, 0, 0x23);
                         scsi_cmd_set(&sc, 8, sizeof(format));
@@ -121,11 +121,11 @@ __attribute__((used)) static int cd_media_info(int fd) {
                         switch(format[8] & 3) {
                             case 1:
                                 log_debug("unformatted DVD-RAM media inserted");
-                                /* This means that last format was interrupted
-                                 * or failed, blank dvd-ram discs are factory
-                                 * formatted. Take no action here as it takes
-                                 * quite a while to reformat a dvd-ram and it's
-                                 * not automatically started */
+
+
+
+
+
                                 goto determined;
 
                             case 2:
@@ -133,16 +133,16 @@ __attribute__((used)) static int cd_media_info(int fd) {
                                 break;
 
                             case 3:
-                                cd_media = 0; //return no media
+                                cd_media = 0;
                                 return log_debug_errno(SYNTHETIC_ERRNO(ENOMEDIUM),
                                                        "format capacities returned no media");
                         }
                 }
 
-                /* Take a closer look at formatted media (unformatted DVD+RW
-                 * has "blank" status", DVD-RAM was examined earlier) and check
-                 * for ISO and UDF PVDs or a fs superblock presence and do it
-                 * in one ioctl (we need just sectors 0 and 16) */
+
+
+
+
                 scsi_cmd_init(&sc);
                 scsi_cmd_set(&sc, 0, 0x28);
                 scsi_cmd_set(&sc, 5, 0);
@@ -155,9 +155,9 @@ __attribute__((used)) static int cd_media_info(int fd) {
                         return -1;
                 }
 
-                /* if any non-zero data is found in sector 16 (iso and udf) or
-                 * eventually 0 (fat32 boot sector, ext2 superblock, etc), disc
-                 * is assumed non-blank */
+
+
+
 
                 for (offset = 32768; offset < (32768 + 2048); offset++) {
                         if (buffer [offset]) {
@@ -178,8 +178,8 @@ __attribute__((used)) static int cd_media_info(int fd) {
         }
 
 determined:
-        /* "other" is e. g. DVD-RAM, can't append sessions there; DVDs in
-         * restricted overwrite mode can never append, only in sequential mode */
+
+
         if ((header[2] & 3) < 2 && !cd_media_dvd_rw_ro)
                 cd_media_session_next = header[10] << 8 | header[5];
         cd_media_session_count = header[9] << 8 | header[4];

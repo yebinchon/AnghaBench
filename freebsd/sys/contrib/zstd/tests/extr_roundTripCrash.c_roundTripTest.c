@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t MIN (int,size_t) ; 
- unsigned int XXH32 (void const*,size_t const,int /*<<< orphan*/ ) ; 
- size_t ZSTD_compress (void*,size_t,void const*,size_t,int const) ; 
- size_t ZSTD_decompress (void*,size_t,void*,size_t const) ; 
- char* ZSTD_getErrorName (size_t const) ; 
- scalar_t__ ZSTD_isError (size_t const) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
+ size_t MIN (int,size_t) ;
+ unsigned int XXH32 (void const*,size_t const,int ) ;
+ size_t ZSTD_compress (void*,size_t,void const*,size_t,int const) ;
+ size_t ZSTD_decompress (void*,size_t,void*,size_t const) ;
+ char* ZSTD_getErrorName (size_t const) ;
+ scalar_t__ ZSTD_isError (size_t const) ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
 
 __attribute__((used)) static size_t roundTripTest(void* resultBuff, size_t resultBuffCapacity,
                             void* compressedBuff, size_t compressedBuffCapacity,

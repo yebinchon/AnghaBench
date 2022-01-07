@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dnsc_env {int /*<<< orphan*/  nonces_cache_lock; void* nonces_cache; void* shared_secrets_cache; int /*<<< orphan*/  shared_secrets_cache_lock; int /*<<< orphan*/  provider_name; int /*<<< orphan*/  hash_key; } ;
-struct config_file {int /*<<< orphan*/  dnscrypt_nonce_cache_size; int /*<<< orphan*/  dnscrypt_nonce_cache_slabs; int /*<<< orphan*/  dnscrypt_shared_secret_cache_size; int /*<<< orphan*/  dnscrypt_shared_secret_cache_slabs; int /*<<< orphan*/  dnscrypt_provider; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASH_DEFAULT_STARTARRAY ; 
- scalar_t__ dnsc_load_local_data (struct dnsc_env*,struct config_file*) ; 
- int /*<<< orphan*/  dnsc_nonces_compfunc ; 
- int /*<<< orphan*/  dnsc_nonces_deldatafunc ; 
- int /*<<< orphan*/  dnsc_nonces_delkeyfunc ; 
- int /*<<< orphan*/  dnsc_nonces_sizefunc ; 
- scalar_t__ dnsc_parse_certs (struct dnsc_env*,struct config_file*) ; 
- scalar_t__ dnsc_parse_keys (struct dnsc_env*,struct config_file*) ; 
- int /*<<< orphan*/  dnsc_shared_secrets_compfunc ; 
- int /*<<< orphan*/  dnsc_shared_secrets_deldatafunc ; 
- int /*<<< orphan*/  dnsc_shared_secrets_delkeyfunc ; 
- int /*<<< orphan*/  dnsc_shared_secrets_sizefunc ; 
- int /*<<< orphan*/  fatal_exit (char*) ; 
- int /*<<< orphan*/  lock_basic_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lock_basic_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  randombytes_buf (int /*<<< orphan*/ ,int) ; 
- void* slabhash_create (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct dnsc_env {int nonces_cache_lock; void* nonces_cache; void* shared_secrets_cache; int shared_secrets_cache_lock; int provider_name; int hash_key; } ;
+struct config_file {int dnscrypt_nonce_cache_size; int dnscrypt_nonce_cache_slabs; int dnscrypt_shared_secret_cache_size; int dnscrypt_shared_secret_cache_slabs; int dnscrypt_provider; } ;
+
+
+ int HASH_DEFAULT_STARTARRAY ;
+ scalar_t__ dnsc_load_local_data (struct dnsc_env*,struct config_file*) ;
+ int dnsc_nonces_compfunc ;
+ int dnsc_nonces_deldatafunc ;
+ int dnsc_nonces_delkeyfunc ;
+ int dnsc_nonces_sizefunc ;
+ scalar_t__ dnsc_parse_certs (struct dnsc_env*,struct config_file*) ;
+ scalar_t__ dnsc_parse_keys (struct dnsc_env*,struct config_file*) ;
+ int dnsc_shared_secrets_compfunc ;
+ int dnsc_shared_secrets_deldatafunc ;
+ int dnsc_shared_secrets_delkeyfunc ;
+ int dnsc_shared_secrets_sizefunc ;
+ int fatal_exit (char*) ;
+ int lock_basic_lock (int *) ;
+ int lock_basic_unlock (int *) ;
+ int randombytes_buf (int ,int) ;
+ void* slabhash_create (int ,int ,int ,int ,int ,int ,int ,int *) ;
 
 int
 dnsc_apply_cfg(struct dnsc_env *env, struct config_file *cfg)
@@ -56,7 +56,7 @@ dnsc_apply_cfg(struct dnsc_env *env, struct config_file *cfg)
         dnsc_shared_secrets_compfunc,
         dnsc_shared_secrets_delkeyfunc,
         dnsc_shared_secrets_deldatafunc,
-        NULL
+        ((void*)0)
     );
     lock_basic_unlock(&env->shared_secrets_cache_lock);
     if(!env->shared_secrets_cache){
@@ -71,7 +71,7 @@ dnsc_apply_cfg(struct dnsc_env *env, struct config_file *cfg)
         dnsc_nonces_compfunc,
         dnsc_nonces_delkeyfunc,
         dnsc_nonces_deldatafunc,
-        NULL
+        ((void*)0)
     );
     lock_basic_unlock(&env->nonces_cache_lock);
     return 0;

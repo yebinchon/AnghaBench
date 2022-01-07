@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct d3drm_frame {int ref; int traversal_options; int /*<<< orphan*/ * d3drm; TYPE_3__ IDirect3DRMFrame3_iface; int /*<<< orphan*/  transform; int /*<<< orphan*/  obj; int /*<<< orphan*/  scenebackground; TYPE_2__ IDirect3DRMFrame2_iface; TYPE_1__ IDirect3DRMFrame_iface; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IDirect3DRMFrame3 ;
-typedef  int /*<<< orphan*/  IDirect3DRM ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int D3DRMFRAME_PICKENABLE ; 
- int D3DRMFRAME_RENDERENABLE ; 
- int /*<<< orphan*/  D3DRM_OK ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DRMFrame3_AddChild (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  IDirect3DRMFrame_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirect3DRMFrame_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DRM_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirect3DRMFrame3 ; 
- int /*<<< orphan*/  TRACE (char*,struct d3drm_frame**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d3drm_frame1_vtbl ; 
- int /*<<< orphan*/  d3drm_frame2_vtbl ; 
- int /*<<< orphan*/  d3drm_frame3_vtbl ; 
- int /*<<< orphan*/  d3drm_object_init (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  d3drm_set_color (int /*<<< orphan*/ *,float,float,float,float) ; 
- struct d3drm_frame* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (struct d3drm_frame*) ; 
- int /*<<< orphan*/  identity ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_5__ {int * lpVtbl; } ;
+struct TYPE_4__ {int * lpVtbl; } ;
+struct d3drm_frame {int ref; int traversal_options; int * d3drm; TYPE_3__ IDirect3DRMFrame3_iface; int transform; int obj; int scenebackground; TYPE_2__ IDirect3DRMFrame2_iface; TYPE_1__ IDirect3DRMFrame_iface; } ;
+typedef int IUnknown ;
+typedef int IDirect3DRMFrame3 ;
+typedef int IDirect3DRM ;
+typedef int HRESULT ;
+
+
+ int D3DRMFRAME_PICKENABLE ;
+ int D3DRMFRAME_RENDERENABLE ;
+ int D3DRM_OK ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int IDirect3DRMFrame3_AddChild (int *,TYPE_3__*) ;
+ int IDirect3DRMFrame_QueryInterface (int *,int *,void**) ;
+ int IDirect3DRMFrame_Release (int *) ;
+ int IDirect3DRM_AddRef (int *) ;
+ int IID_IDirect3DRMFrame3 ;
+ int TRACE (char*,struct d3drm_frame**,int *,int *) ;
+ int d3drm_frame1_vtbl ;
+ int d3drm_frame2_vtbl ;
+ int d3drm_frame3_vtbl ;
+ int d3drm_object_init (int *,char const*) ;
+ int d3drm_set_color (int *,float,float,float,float) ;
+ struct d3drm_frame* heap_alloc_zero (int) ;
+ int heap_free (struct d3drm_frame*) ;
+ int identity ;
 
 HRESULT d3drm_frame_create(struct d3drm_frame **frame, IUnknown *parent_frame, IDirect3DRM *d3drm)
 {

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ param1; int /*<<< orphan*/  property; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ param1; int property; } ;
 struct TYPE_8__ {float frame_rate; scalar_t__ scan_mode; scalar_t__ height; scalar_t__ width; } ;
 struct TYPE_9__ {TYPE_1__ hdmi; } ;
-struct TYPE_10__ {int /*<<< orphan*/  state; TYPE_2__ display; } ;
-typedef  TYPE_3__ TV_DISPLAY_STATE_T ;
-typedef  TYPE_4__ HDMI_PROPERTY_PARAM_T ;
+struct TYPE_10__ {int state; TYPE_2__ display; } ;
+typedef TYPE_3__ TV_DISPLAY_STATE_T ;
+typedef TYPE_4__ HDMI_PROPERTY_PARAM_T ;
 
-/* Variables and functions */
- scalar_t__ HDMI_PIXEL_CLOCK_TYPE_NTSC ; 
- int /*<<< orphan*/  HDMI_PROPERTY_PIXEL_CLOCK_TYPE ; 
- int /*<<< orphan*/  LOG_STD (char*,...) ; 
- int /*<<< orphan*/  status_mode (TYPE_3__*) ; 
- scalar_t__ vc_tv_get_display_state (TYPE_3__*) ; 
- int /*<<< orphan*/  vc_tv_hdmi_get_property (TYPE_4__*) ; 
+
+ scalar_t__ HDMI_PIXEL_CLOCK_TYPE_NTSC ;
+ int HDMI_PROPERTY_PIXEL_CLOCK_TYPE ;
+ int LOG_STD (char*,...) ;
+ int status_mode (TYPE_3__*) ;
+ scalar_t__ vc_tv_get_display_state (TYPE_3__*) ;
+ int vc_tv_hdmi_get_property (TYPE_4__*) ;
 
 __attribute__((used)) static int get_status( void )
 {
    TV_DISPLAY_STATE_T tvstate;
    if( vc_tv_get_display_state( &tvstate ) == 0) {
-      //The width/height parameters are in the same position in the union
-      //for HDMI and SDTV
+
+
       HDMI_PROPERTY_PARAM_T property;
       property.property = HDMI_PROPERTY_PIXEL_CLOCK_TYPE;
       vc_tv_hdmi_get_property(&property);

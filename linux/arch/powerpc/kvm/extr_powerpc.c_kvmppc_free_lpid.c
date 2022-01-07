@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (long,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lpid_inuse ; 
+ int clear_bit (long,int ) ;
+ int lpid_inuse ;
 
 void kvmppc_free_lpid(long lpid)
 {
-	clear_bit(lpid, lpid_inuse);
+ clear_bit(lpid, lpid_inuse);
 }

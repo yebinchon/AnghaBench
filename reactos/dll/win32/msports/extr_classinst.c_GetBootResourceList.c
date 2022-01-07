@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  PSP_DEVINFO_DATA ;
-typedef  int /*<<< orphan*/ * PCM_RESOURCE_LIST ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  HDEVINFO ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (char*) ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupDiGetDeviceInstanceIdW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
+
+
+
+typedef char WCHAR ;
+typedef int PSP_DEVINFO_DATA ;
+typedef int * PCM_RESOURCE_LIST ;
+typedef int * LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int * HKEY ;
+typedef int HDEVINFO ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int ARRAYSIZE (char*) ;
+ int ERR (char*,...) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int FIXME (char*) ;
+ int GetProcessHeap () ;
+ int * HKEY_LOCAL_MACHINE ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int KEY_QUERY_VALUE ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegOpenKeyExW (int *,char*,int ,int ,int **) ;
+ scalar_t__ RegQueryValueExW (int *,char*,int *,int *,int *,int *) ;
+ int SetupDiGetDeviceInstanceIdW (int ,int ,char*,int ,int *) ;
+ scalar_t__ TRUE ;
 
 BOOL
 GetBootResourceList(HDEVINFO DeviceInfoSet,
@@ -43,17 +43,17 @@ GetBootResourceList(HDEVINFO DeviceInfoSet,
                     PCM_RESOURCE_LIST *ppResourceList)
 {
     WCHAR DeviceInstanceIdBuffer[128];
-    HKEY hEnumKey = NULL;
-    HKEY hDeviceKey = NULL;
-    HKEY hConfigKey = NULL;
-    LPBYTE lpBuffer = NULL;
+    HKEY hEnumKey = ((void*)0);
+    HKEY hDeviceKey = ((void*)0);
+    HKEY hConfigKey = ((void*)0);
+    LPBYTE lpBuffer = ((void*)0);
     DWORD dwDataSize;
     LONG lError;
     BOOL ret = FALSE;
 
     FIXME("GetBootResourceList()\n");
 
-    *ppResourceList = NULL;
+    *ppResourceList = ((void*)0);
 
     if (!SetupDiGetDeviceInstanceIdW(DeviceInfoSet,
                                      DeviceInfoData,
@@ -98,12 +98,12 @@ GetBootResourceList(HDEVINFO DeviceInfoSet,
         goto done;
     }
 
-    /* Get the configuration data size */
+
     lError = RegQueryValueExW(hConfigKey,
                               L"BootConfig",
-                              NULL,
-                              NULL,
-                              NULL,
+                              ((void*)0),
+                              ((void*)0),
+                              ((void*)0),
                               &dwDataSize);
     if (lError != ERROR_SUCCESS)
     {
@@ -111,19 +111,19 @@ GetBootResourceList(HDEVINFO DeviceInfoSet,
         goto done;
     }
 
-    /* Allocate the buffer */
+
     lpBuffer = HeapAlloc(GetProcessHeap(), 0, dwDataSize);
-    if (lpBuffer == NULL)
+    if (lpBuffer == ((void*)0))
     {
         ERR("Failed to allocate the resource list buffer\n");
         goto done;
     }
 
-    /* Retrieve the configuration data */
+
     lError = RegQueryValueExW(hConfigKey,
                               L"BootConfig",
-                              NULL,
-                              NULL,
+                              ((void*)0),
+                              ((void*)0),
                              (LPBYTE)lpBuffer,
                               &dwDataSize);
     if (lError == ERROR_SUCCESS)
@@ -133,7 +133,7 @@ GetBootResourceList(HDEVINFO DeviceInfoSet,
     }
 
 done:
-    if (ret == FALSE && lpBuffer != NULL)
+    if (ret == FALSE && lpBuffer != ((void*)0))
         HeapFree(GetProcessHeap(), 0, lpBuffer);
 
     if (hConfigKey)

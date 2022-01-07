@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct in_addr {int /*<<< orphan*/  s_addr; } ;
-typedef  int /*<<< orphan*/  int32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct in_addr {int s_addr; } ;
+typedef int int32_t ;
 struct TYPE_3__ {char* base; int len; } ;
-typedef  TYPE_1__ h2o_iovec_t ;
+typedef TYPE_1__ h2o_iovec_t ;
 
-/* Variables and functions */
- char* fetch_aton_digit (char const*,char const*,unsigned char*) ; 
+
+ char* fetch_aton_digit (char const*,char const*,unsigned char*) ;
 
 int h2o_hostinfo_aton(h2o_iovec_t host, struct in_addr *addr)
 {
@@ -29,7 +29,7 @@ int h2o_hostinfo_aton(h2o_iovec_t host, struct in_addr *addr)
     size_t ndots = 0;
 
     while (1) {
-        if ((p = fetch_aton_digit(p, end, value.c + ndots)) == NULL)
+        if ((p = fetch_aton_digit(p, end, value.c + ndots)) == ((void*)0))
             return -1;
         if (ndots == 3)
             break;

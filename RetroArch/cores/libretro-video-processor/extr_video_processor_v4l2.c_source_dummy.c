@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_2__ {scalar_t__ field; } ;
 
-/* Variables and functions */
- int M_PI ; 
- scalar_t__ V4L2_FIELD_BOTTOM ; 
- scalar_t__ V4L2_FIELD_INTERLACED ; 
- scalar_t__ V4L2_FIELD_TOP ; 
- int clamp_float (float,int,int) ; 
- float dummy_pos ; 
- int* frame_cap ; 
- int sinf (float) ; 
- TYPE_1__ video_buf ; 
- int video_half_feed_rate ; 
+
+ int M_PI ;
+ scalar_t__ V4L2_FIELD_BOTTOM ;
+ scalar_t__ V4L2_FIELD_INTERLACED ;
+ scalar_t__ V4L2_FIELD_TOP ;
+ int clamp_float (float,int,int) ;
+ float dummy_pos ;
+ int* frame_cap ;
+ int sinf (float) ;
+ TYPE_1__ video_buf ;
+ int video_half_feed_rate ;
 
 void source_dummy(int width, int height) {
    int i, triangpos, triangpos_t=0, triangpos_b=0, offset=0;
-   bool field_ahead = false;
+   bool field_ahead = 0;
    uint8_t *src = frame_cap;
    float step = M_PI/64;
 
@@ -39,8 +39,8 @@ void source_dummy(int width, int height) {
    }
 
    dummy_pos += step;
-   /* no animation */
-   /* dummy_pos = M_PI/4; step = 0; */
+
+
    triangpos = (sinf(dummy_pos)+1)/2*width;
    if (video_buf.field == V4L2_FIELD_INTERLACED) {
       if (video_half_feed_rate == 0)
@@ -56,18 +56,18 @@ void source_dummy(int width, int height) {
       src[1] = 0x10 + color*0xE0;
       src[2] = 0x10 + color*0xE0;
 
-      /* End of a line */
+
       if ( ((i+1) % width) == 0 ) {
-         triangpos -= 2; /* offset should be half of this? */
+         triangpos -= 2;
          triangpos_t -= 1;
          triangpos_b -= 1;
          if (video_buf.field == V4L2_FIELD_INTERLACED) {
             if (field_ahead) {
                triangpos = triangpos_b;
-               field_ahead = false;
+               field_ahead = 0;
             } else {
                triangpos = triangpos_t;
-               field_ahead = true;
+               field_ahead = 1;
             }
          }
       }

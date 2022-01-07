@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fieldbus_dev {int /*<<< orphan*/  (* enable_get ) (struct fieldbus_dev*) ;} ;
+
+
+
+
+struct fieldbus_dev {int (* enable_get ) (struct fieldbus_dev*) ;} ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- struct fieldbus_dev* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  stub1 (struct fieldbus_dev*) ; 
- int /*<<< orphan*/  stub2 (struct fieldbus_dev*) ; 
+
+ int EINVAL ;
+ struct fieldbus_dev* dev_get_drvdata (struct device*) ;
+ int sprintf (char*,char*,int) ;
+ int stub1 (struct fieldbus_dev*) ;
+ int stub2 (struct fieldbus_dev*) ;
 
 __attribute__((used)) static ssize_t enabled_show(struct device *dev, struct device_attribute *attr,
-			    char *buf)
+       char *buf)
 {
-	struct fieldbus_dev *fb = dev_get_drvdata(dev);
+ struct fieldbus_dev *fb = dev_get_drvdata(dev);
 
-	if (!fb->enable_get)
-		return -EINVAL;
-	return sprintf(buf, "%d\n", !!fb->enable_get(fb));
+ if (!fb->enable_get)
+  return -EINVAL;
+ return sprintf(buf, "%d\n", !!fb->enable_get(fb));
 }

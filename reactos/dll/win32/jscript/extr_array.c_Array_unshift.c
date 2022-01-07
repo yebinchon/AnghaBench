@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  dispex; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int dispex; } ;
 struct TYPE_9__ {TYPE_1__ u; } ;
-typedef  TYPE_2__ vdisp_t ;
+typedef TYPE_2__ vdisp_t ;
 struct TYPE_10__ {int version; } ;
-typedef  TYPE_3__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  unsigned int DWORD ;
-typedef  int /*<<< orphan*/  DISPID ;
+typedef TYPE_3__ script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef unsigned int DWORD ;
+typedef int DISPID ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- scalar_t__ DISP_E_UNKNOWNNAME ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IDispatchEx_DeleteMemberByDispID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ get_length (TYPE_3__*,TYPE_2__*,int /*<<< orphan*/ **,unsigned int*) ; 
- int /*<<< orphan*/ * idx_to_str (unsigned int,int /*<<< orphan*/ *) ; 
- scalar_t__ jsdisp_get_id (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ jsdisp_propget (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ jsdisp_propput_idx (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_number (unsigned int) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_undefined () ; 
- scalar_t__ set_length (int /*<<< orphan*/ *,unsigned int) ; 
+
+ int ARRAY_SIZE (int *) ;
+ scalar_t__ DISP_E_UNKNOWNNAME ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IDispatchEx_DeleteMemberByDispID (int ,int ) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int TRACE (char*) ;
+ scalar_t__ get_length (TYPE_3__*,TYPE_2__*,int **,unsigned int*) ;
+ int * idx_to_str (unsigned int,int *) ;
+ scalar_t__ jsdisp_get_id (int *,int *,int ,int *) ;
+ scalar_t__ jsdisp_propget (int *,int ,int *) ;
+ scalar_t__ jsdisp_propput_idx (int *,unsigned int,int ) ;
+ int jsval_number (unsigned int) ;
+ int jsval_release (int ) ;
+ int jsval_undefined () ;
+ scalar_t__ set_length (int *,unsigned int) ;
 
 __attribute__((used)) static HRESULT Array_unshift(script_ctx_t *ctx, vdisp_t *vthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

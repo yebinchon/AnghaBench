@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log_set_callback (int /*<<< orphan*/ ) ; 
- char* av_strdup (char const*) ; 
- int /*<<< orphan*/  log_callback_help ; 
- int /*<<< orphan*/  show_help_bsf (char*) ; 
- int /*<<< orphan*/  show_help_codec (char*,int) ; 
- int /*<<< orphan*/  show_help_default (char*,char*) ; 
- int /*<<< orphan*/  show_help_demuxer (char*) ; 
- int /*<<< orphan*/  show_help_filter (char*) ; 
- int /*<<< orphan*/  show_help_muxer (char*) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_freep (char**) ;
+ int av_log_set_callback (int ) ;
+ char* av_strdup (char const*) ;
+ int log_callback_help ;
+ int show_help_bsf (char*) ;
+ int show_help_codec (char*,int) ;
+ int show_help_default (char*,char*) ;
+ int show_help_demuxer (char*) ;
+ int show_help_filter (char*) ;
+ int show_help_muxer (char*) ;
+ char* strchr (char*,char) ;
+ int strcmp (char*,char*) ;
 
 int show_help(void *optctx, const char *opt, const char *arg)
 {
@@ -49,10 +41,10 @@ int show_help(void *optctx, const char *opt, const char *arg)
         show_help_demuxer(par);
     } else if (!strcmp(topic, "muxer")) {
         show_help_muxer(par);
-#if CONFIG_AVFILTER
-    } else if (!strcmp(topic, "filter")) {
-        show_help_filter(par);
-#endif
+
+
+
+
     } else if (!strcmp(topic, "bsf")) {
         show_help_bsf(par);
     } else {

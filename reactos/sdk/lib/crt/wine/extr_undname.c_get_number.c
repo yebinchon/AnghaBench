@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct parsed_symbol {char* current; } ;
-typedef  scalar_t__ BOOL ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int) ; 
- char* und_alloc (struct parsed_symbol*,int) ; 
+
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ int sprintf (char*,char*,char*,int) ;
+ char* und_alloc (struct parsed_symbol*,int) ;
 
 __attribute__((used)) static const char* get_number(struct parsed_symbol* sym)
 {
-    char*       ptr;
-    BOOL        sgn = FALSE;
+    char* ptr;
+    BOOL sgn = FALSE;
 
     if (*sym->current == '?')
     {
@@ -55,12 +55,12 @@ __attribute__((used)) static const char* get_number(struct parsed_symbol* sym)
             ret *= 16;
             ret += *sym->current++ - 'A';
         }
-        if (*sym->current != '@') return NULL;
+        if (*sym->current != '@') return ((void*)0);
 
         ptr = und_alloc(sym, 17);
         sprintf(ptr, "%s%u", sgn ? "-" : "", ret);
         sym->current++;
     }
-    else return NULL;
+    else return ((void*)0);
     return ptr;
 }

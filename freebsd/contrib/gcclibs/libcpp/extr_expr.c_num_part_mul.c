@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cpp_num_part ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int cpp_num_part ;
 struct TYPE_3__ {int low; int high; int unsignedp; int overflow; } ;
-typedef  TYPE_1__ cpp_num ;
+typedef TYPE_1__ cpp_num ;
 
-/* Variables and functions */
- int HIGH_PART (int) ; 
- int LOW_PART (int) ; 
- int PART_PRECISION ; 
+
+ int HIGH_PART (int) ;
+ int LOW_PART (int) ;
+ int PART_PRECISION ;
 
 __attribute__((used)) static cpp_num
 num_part_mul (cpp_num_part lhs, cpp_num_part rhs)
@@ -44,8 +44,8 @@ num_part_mul (cpp_num_part lhs, cpp_num_part rhs)
 
   result.high += HIGH_PART (middle[0]);
   result.high += HIGH_PART (middle[1]);
-  result.unsignedp = true;
-  result.overflow = false;
+  result.unsignedp = 1;
+  result.overflow = 0;
 
   return result;
 }

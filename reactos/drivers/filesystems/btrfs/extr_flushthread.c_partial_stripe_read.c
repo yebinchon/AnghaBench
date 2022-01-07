@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  scalar_t__ uint16_t ;
-struct TYPE_14__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_4__ partial_stripe ;
+
+
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef scalar_t__ uint16_t ;
+struct TYPE_14__ {int * data; } ;
+typedef TYPE_4__ partial_stripe ;
 struct TYPE_11__ {int sector_size; } ;
 struct TYPE_15__ {TYPE_1__ superblock; } ;
-typedef  TYPE_5__ device_extension ;
+typedef TYPE_5__ device_extension ;
 struct TYPE_16__ {TYPE_2__* chunk_item; TYPE_3__** devices; } ;
-typedef  TYPE_6__ chunk ;
-typedef  scalar_t__ ULONG ;
+typedef TYPE_6__ chunk ;
+typedef scalar_t__ ULONG ;
 struct TYPE_17__ {scalar_t__ offset; } ;
-struct TYPE_13__ {int /*<<< orphan*/  fileobj; scalar_t__ devobj; } ;
+struct TYPE_13__ {int fileobj; scalar_t__ devobj; } ;
 struct TYPE_12__ {int stripe_length; scalar_t__ num_stripes; int type; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_7__ CHUNK_ITEM_STRIPE ;
+typedef int NTSTATUS ;
+typedef TYPE_7__ CHUNK_ITEM_STRIPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int BLOCK_FLAG_RAID5 ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  RtlCopyMemory (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_UNEXPECTED_IO_ERROR ; 
- int /*<<< orphan*/  do_xor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ min (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  raid6_recover2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sync_read_phys (scalar_t__,int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+ int ALLOC_TAG ;
+ int BLOCK_FLAG_RAID5 ;
+ int ERR (char*,...) ;
+ int * ExAllocatePoolWithTag (int ,int,int ) ;
+ int ExFreePool (int *) ;
+ int NT_SUCCESS (int ) ;
+ int NonPagedPool ;
+ int RtlCopyMemory (int *,int *,scalar_t__) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNEXPECTED_IO_ERROR ;
+ int do_xor (int *,int *,scalar_t__) ;
+ scalar_t__ min (scalar_t__,scalar_t__) ;
+ int raid6_recover2 (int *,int,scalar_t__,scalar_t__,scalar_t__,int *) ;
+ int sync_read_phys (scalar_t__,int ,scalar_t__,scalar_t__,int *,int) ;
 
 __attribute__((used)) static NTSTATUS partial_stripe_read(device_extension* Vcb, chunk* c, partial_stripe* ps, uint64_t startoff, uint16_t parity, ULONG offset, ULONG len) {
     NTSTATUS Status;
@@ -64,7 +64,7 @@ __attribute__((used)) static NTSTATUS partial_stripe_read(device_extension* Vcb,
 
         if (c->devices[stripe]->devobj) {
             Status = sync_read_phys(c->devices[stripe]->devobj, c->devices[stripe]->fileobj, cis[stripe].offset + startoff + ((offset % sl) * Vcb->superblock.sector_size),
-                                    readlen * Vcb->superblock.sector_size, ps->data + (offset * Vcb->superblock.sector_size), false);
+                                    readlen * Vcb->superblock.sector_size, ps->data + (offset * Vcb->superblock.sector_size), 0);
             if (!NT_SUCCESS(Status)) {
                 ERR("sync_read_phys returned %08x\n", Status);
                 return Status;
@@ -88,7 +88,7 @@ __attribute__((used)) static NTSTATUS partial_stripe_read(device_extension* Vcb,
 
                     if (i == 0 || (stripe == 0 && i == 1)) {
                         Status = sync_read_phys(c->devices[i]->devobj, c->devices[i]->fileobj, cis[i].offset + startoff + ((offset % sl) * Vcb->superblock.sector_size),
-                                                readlen * Vcb->superblock.sector_size, ps->data + (offset * Vcb->superblock.sector_size), false);
+                                                readlen * Vcb->superblock.sector_size, ps->data + (offset * Vcb->superblock.sector_size), 0);
                         if (!NT_SUCCESS(Status)) {
                             ERR("sync_read_phys returned %08x\n", Status);
                             ExFreePool(scratch);
@@ -96,7 +96,7 @@ __attribute__((used)) static NTSTATUS partial_stripe_read(device_extension* Vcb,
                         }
                     } else {
                         Status = sync_read_phys(c->devices[i]->devobj, c->devices[i]->fileobj, cis[i].offset + startoff + ((offset % sl) * Vcb->superblock.sector_size),
-                                                readlen * Vcb->superblock.sector_size, scratch, false);
+                                                readlen * Vcb->superblock.sector_size, scratch, 0);
                         if (!NT_SUCCESS(Status)) {
                             ERR("sync_read_phys returned %08x\n", Status);
                             ExFreePool(scratch);
@@ -124,7 +124,7 @@ __attribute__((used)) static NTSTATUS partial_stripe_read(device_extension* Vcb,
                 if (i != stripe) {
                     if (c->devices[i]->devobj) {
                         Status = sync_read_phys(c->devices[i]->devobj, c->devices[i]->fileobj, cis[i].offset + startoff + ((offset % sl) * Vcb->superblock.sector_size),
-                                                readlen * Vcb->superblock.sector_size, scratch + (k * readlen * Vcb->superblock.sector_size), false);
+                                                readlen * Vcb->superblock.sector_size, scratch + (k * readlen * Vcb->superblock.sector_size), 0);
                         if (!NT_SUCCESS(Status)) {
                             ERR("sync_read_phys returned %08x\n", Status);
                             num_errors++;

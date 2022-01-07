@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ QuadPart; } ;
-typedef  scalar_t__ LONGLONG ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  scalar_t__ HANDLE ;
+typedef scalar_t__ LONGLONG ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GetFileSizeEx (scalar_t__,TYPE_1__*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int,int *,int ,int ,int *) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ int GENERIC_READ ;
+ int GetFileSizeEx (scalar_t__,TYPE_1__*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
 
 __attribute__((used)) static LONGLONG get_file_size(char *path)
 {
@@ -33,7 +33,7 @@ __attribute__((used)) static LONGLONG get_file_size(char *path)
     LARGE_INTEGER size;
 
     file = CreateFileA(path, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE,
-                       NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+                       ((void*)0), OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, ((void*)0));
     if (file == INVALID_HANDLE_VALUE) return 0;
 
     if (!GetFileSizeEx(file, &size))

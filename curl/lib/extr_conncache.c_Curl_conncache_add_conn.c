@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct connectdata {scalar_t__ connection_id; struct Curl_easy* data; } ;
 struct connectbundle {int dummy; } ;
-struct conncache {int /*<<< orphan*/  num_conn; int /*<<< orphan*/  next_connection_id; } ;
-struct TYPE_2__ {int /*<<< orphan*/  conn_cache; } ;
+struct conncache {int num_conn; int next_connection_id; } ;
+struct TYPE_2__ {int conn_cache; } ;
 struct Curl_easy {TYPE_1__ state; } ;
-typedef  int /*<<< orphan*/  key ;
-typedef  scalar_t__ CURLcode ;
+typedef int key ;
+typedef scalar_t__ CURLcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONN_UNLOCK (struct Curl_easy*) ; 
- scalar_t__ CURLE_OK ; 
- scalar_t__ CURLE_OUT_OF_MEMORY ; 
- struct connectbundle* Curl_conncache_find_bundle (struct connectdata*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DEBUGF (int /*<<< orphan*/ ) ; 
- int HASHKEY_SIZE ; 
- int /*<<< orphan*/  bundle_add_conn (struct connectbundle*,struct connectdata*) ; 
- scalar_t__ bundle_create (struct Curl_easy*,struct connectbundle**) ; 
- int /*<<< orphan*/  bundle_destroy (struct connectbundle*) ; 
- int conncache_add_bundle (int /*<<< orphan*/ ,char*,struct connectbundle*) ; 
- int /*<<< orphan*/  hashkey (struct connectdata*,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  infof (struct Curl_easy*,char*,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int CONN_UNLOCK (struct Curl_easy*) ;
+ scalar_t__ CURLE_OK ;
+ scalar_t__ CURLE_OUT_OF_MEMORY ;
+ struct connectbundle* Curl_conncache_find_bundle (struct connectdata*,int ,int *) ;
+ int DEBUGF (int ) ;
+ int HASHKEY_SIZE ;
+ int bundle_add_conn (struct connectbundle*,struct connectdata*) ;
+ scalar_t__ bundle_create (struct Curl_easy*,struct connectbundle**) ;
+ int bundle_destroy (struct connectbundle*) ;
+ int conncache_add_bundle (int ,char*,struct connectbundle*) ;
+ int hashkey (struct connectdata*,char*,int,int *) ;
+ int infof (struct Curl_easy*,char*,scalar_t__,int ) ;
 
 CURLcode Curl_conncache_add_conn(struct conncache *connc,
                                  struct connectdata *conn)
 {
   CURLcode result = CURLE_OK;
   struct connectbundle *bundle;
-  struct connectbundle *new_bundle = NULL;
+  struct connectbundle *new_bundle = ((void*)0);
   struct Curl_easy *data = conn->data;
 
-  /* *find_bundle() locks the connection cache */
-  bundle = Curl_conncache_find_bundle(conn, data->state.conn_cache, NULL);
+
+  bundle = Curl_conncache_find_bundle(conn, data->state.conn_cache, ((void*)0));
   if(!bundle) {
     int rc;
     char key[HASHKEY_SIZE];
@@ -52,7 +52,7 @@ CURLcode Curl_conncache_add_conn(struct conncache *connc,
       goto unlock;
     }
 
-    hashkey(conn, key, sizeof(key), NULL);
+    hashkey(conn, key, sizeof(key), ((void*)0));
     rc = conncache_add_bundle(data->state.conn_cache, key, new_bundle);
 
     if(!rc) {

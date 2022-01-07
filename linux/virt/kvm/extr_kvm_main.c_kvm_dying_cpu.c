@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  hardware_disable_nolock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kvm_count_lock ; 
- scalar_t__ kvm_usage_count ; 
- int /*<<< orphan*/  raw_spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  raw_spin_unlock (int /*<<< orphan*/ *) ; 
+ int hardware_disable_nolock (int *) ;
+ int kvm_count_lock ;
+ scalar_t__ kvm_usage_count ;
+ int raw_spin_lock (int *) ;
+ int raw_spin_unlock (int *) ;
 
 __attribute__((used)) static int kvm_dying_cpu(unsigned int cpu)
 {
-	raw_spin_lock(&kvm_count_lock);
-	if (kvm_usage_count)
-		hardware_disable_nolock(NULL);
-	raw_spin_unlock(&kvm_count_lock);
-	return 0;
+ raw_spin_lock(&kvm_count_lock);
+ if (kvm_usage_count)
+  hardware_disable_nolock(((void*)0));
+ raw_spin_unlock(&kvm_count_lock);
+ return 0;
 }

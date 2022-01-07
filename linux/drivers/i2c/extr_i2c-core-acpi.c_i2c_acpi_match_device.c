@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i2c_client {int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct i2c_client {int dev; } ;
 struct acpi_device_id {int dummy; } ;
 
-/* Variables and functions */
- struct acpi_device_id const* acpi_match_device (struct acpi_device_id const*,int /*<<< orphan*/ *) ; 
+
+ struct acpi_device_id const* acpi_match_device (struct acpi_device_id const*,int *) ;
 
 const struct acpi_device_id *
 i2c_acpi_match_device(const struct acpi_device_id *matches,
-		      struct i2c_client *client)
+        struct i2c_client *client)
 {
-	if (!(client && matches))
-		return NULL;
+ if (!(client && matches))
+  return ((void*)0);
 
-	return acpi_match_device(matches, &client->dev);
+ return acpi_match_device(matches, &client->dev);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hwnd; int /*<<< orphan*/  IOleClientSite_iface; int /*<<< orphan*/  document; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  IOleObject ;
-typedef  int /*<<< orphan*/  IHlinkTarget ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  TYPE_1__ DocHost ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  GetClientRect (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHlinkTarget_Navigate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHlinkTarget_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHlinkTarget ; 
- int /*<<< orphan*/  IID_IOleObject ; 
- int /*<<< orphan*/  IOleObject_DoVerb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleObject_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  OLEIVERB_SHOW ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hwnd; int IOleClientSite_iface; int document; } ;
+typedef int RECT ;
+typedef int IOleObject ;
+typedef int IHlinkTarget ;
+typedef int HRESULT ;
+typedef TYPE_1__ DocHost ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FIXME (char*,...) ;
+ int GetClientRect (int ,int *) ;
+ int IHlinkTarget_Navigate (int *,int ,int *) ;
+ int IHlinkTarget_Release (int *) ;
+ int IID_IHlinkTarget ;
+ int IID_IOleObject ;
+ int IOleObject_DoVerb (int *,int ,int *,int *,int,int ,int *) ;
+ int IOleObject_Release (int *) ;
+ int IUnknown_QueryInterface (int ,int *,void**) ;
+ int OLEIVERB_SHOW ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRACE (char*,...) ;
+ int WARN (char*) ;
 
 __attribute__((used)) static void object_available(DocHost *This)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void object_available(DocHost *This)
 
     hres = IUnknown_QueryInterface(This->document, &IID_IHlinkTarget, (void**)&hlink);
     if(SUCCEEDED(hres)) {
-        hres = IHlinkTarget_Navigate(hlink, 0, NULL);
+        hres = IHlinkTarget_Navigate(hlink, 0, ((void*)0));
         IHlinkTarget_Release(hlink);
         if(FAILED(hres))
             FIXME("Navigate failed\n");
@@ -65,7 +65,7 @@ __attribute__((used)) static void object_available(DocHost *This)
         }
 
         GetClientRect(This->hwnd, &rect);
-        hres = IOleObject_DoVerb(ole_object, OLEIVERB_SHOW, NULL, &This->IOleClientSite_iface, -1, This->hwnd, &rect);
+        hres = IOleObject_DoVerb(ole_object, OLEIVERB_SHOW, ((void*)0), &This->IOleClientSite_iface, -1, This->hwnd, &rect);
         IOleObject_Release(ole_object);
         if(FAILED(hres))
             FIXME("DoVerb failed: %08x\n", hres);

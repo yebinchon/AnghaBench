@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_BPRINT_SIZE_UNLIMITED ; 
- int /*<<< orphan*/  av_bprint_append_data (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_is_complete (int /*<<< orphan*/ *) ; 
- char* av_stristr (char const*,char const*) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int AVBPrint ;
+
+
+ int AV_BPRINT_SIZE_UNLIMITED ;
+ int av_bprint_append_data (int *,char const*,size_t) ;
+ int av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int,int ) ;
+ int av_bprint_is_complete (int *) ;
+ char* av_stristr (char const*,char const*) ;
+ size_t strlen (char const*) ;
 
 char *av_strireplace(const char *str, const char *from, const char *to)
 {
-    char *ret = NULL;
+    char *ret = ((void*)0);
     const char *pstr2, *pstr = str;
     size_t tolen = strlen(to), fromlen = strlen(from);
     AVBPrint pbuf;
@@ -36,7 +36,7 @@ char *av_strireplace(const char *str, const char *from, const char *to)
     }
     av_bprint_append_data(&pbuf, pstr, strlen(pstr));
     if (!av_bprint_is_complete(&pbuf)) {
-        av_bprint_finalize(&pbuf, NULL);
+        av_bprint_finalize(&pbuf, ((void*)0));
     } else {
         av_bprint_finalize(&pbuf, &ret);
     }

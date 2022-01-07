@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UI ;
 
-/* Variables and functions */
- int BUFSIZ ; 
- int /*<<< orphan*/  OPENSSL_cleanse (char*,int) ; 
- scalar_t__ UI_add_input_string (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,char*,int,int) ; 
- scalar_t__ UI_add_verify_string (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,char*,int,int,char*) ; 
- int /*<<< orphan*/  UI_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * UI_new () ; 
- int UI_process (int /*<<< orphan*/ *) ; 
- char* prompt_string ; 
+
+
+
+typedef int UI ;
+
+
+ int BUFSIZ ;
+ int OPENSSL_cleanse (char*,int) ;
+ scalar_t__ UI_add_input_string (int *,char const*,int ,char*,int,int) ;
+ scalar_t__ UI_add_verify_string (int *,char const*,int ,char*,int,int,char*) ;
+ int UI_free (int *) ;
+ int * UI_new () ;
+ int UI_process (int *) ;
+ char* prompt_string ;
 
 int EVP_read_pw_string_min(char *buf, int min, int len, const char *prompt,
                            int verify)
@@ -29,10 +29,10 @@ int EVP_read_pw_string_min(char *buf, int min, int len, const char *prompt,
     char buff[BUFSIZ];
     UI *ui;
 
-    if ((prompt == NULL) && (prompt_string[0] != '\0'))
+    if ((prompt == ((void*)0)) && (prompt_string[0] != '\0'))
         prompt = prompt_string;
     ui = UI_new();
-    if (ui == NULL)
+    if (ui == ((void*)0))
         return ret;
     if (UI_add_input_string(ui, prompt, 0, buf, min,
                             (len >= BUFSIZ) ? BUFSIZ - 1 : len) < 0

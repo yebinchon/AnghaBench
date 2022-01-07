@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  RecvFifo; } ;
-typedef  TYPE_1__ TCPSOCK ;
-typedef  int /*<<< orphan*/  SESSION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WriteFifo (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int RecvFifo; } ;
+typedef TYPE_1__ TCPSOCK ;
+typedef int SESSION ;
+
+
+ int WriteFifo (int ,void*,int ) ;
 
 void WriteRecvFifo(SESSION *s, TCPSOCK *ts, void *data, UINT size)
 {
-	// Validate arguments
-	if (s == NULL || ts == NULL || data == NULL)
-	{
-		return;
-	}
 
-	WriteFifo(ts->RecvFifo, data, size);
+ if (s == ((void*)0) || ts == ((void*)0) || data == ((void*)0))
+ {
+  return;
+ }
+
+ WriteFifo(ts->RecvFifo, data, size);
 }

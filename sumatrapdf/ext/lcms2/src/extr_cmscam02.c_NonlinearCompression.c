@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cmsUInt32Number ;
-typedef  double cmsFloat64Number ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int cmsUInt32Number ;
+typedef double cmsFloat64Number ;
 struct TYPE_6__ {double FL; double Nbb; } ;
-typedef  TYPE_1__ cmsCIECAM02 ;
+typedef TYPE_1__ cmsCIECAM02 ;
 struct TYPE_7__ {double* RGBp; double* RGBpa; double A; } ;
-typedef  TYPE_2__ CAM02COLOR ;
+typedef TYPE_2__ CAM02COLOR ;
 
-/* Variables and functions */
- double pow (double,double) ; 
+
+ double pow (double,double) ;
 
 __attribute__((used)) static
 CAM02COLOR NonlinearCompression(CAM02COLOR clr, cmsCIECAM02* pMod)

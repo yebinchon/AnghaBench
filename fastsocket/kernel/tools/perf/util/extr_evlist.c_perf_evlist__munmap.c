@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct perf_evlist {int nr_mmaps; TYPE_1__* mmap; int /*<<< orphan*/  mmap_len; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  munmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct perf_evlist {int nr_mmaps; TYPE_1__* mmap; int mmap_len; } ;
+struct TYPE_2__ {int * base; } ;
+
+
+ int free (TYPE_1__*) ;
+ int munmap (int *,int ) ;
 
 void perf_evlist__munmap(struct perf_evlist *evlist)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < evlist->nr_mmaps; i++) {
-		if (evlist->mmap[i].base != NULL) {
-			munmap(evlist->mmap[i].base, evlist->mmap_len);
-			evlist->mmap[i].base = NULL;
-		}
-	}
+ for (i = 0; i < evlist->nr_mmaps; i++) {
+  if (evlist->mmap[i].base != ((void*)0)) {
+   munmap(evlist->mmap[i].base, evlist->mmap_len);
+   evlist->mmap[i].base = ((void*)0);
+  }
+ }
 
-	free(evlist->mmap);
-	evlist->mmap = NULL;
+ free(evlist->mmap);
+ evlist->mmap = ((void*)0);
 }

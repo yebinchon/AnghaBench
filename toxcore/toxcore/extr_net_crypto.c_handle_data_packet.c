@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint16_t ;
-struct TYPE_3__ {scalar_t__ const* recv_nonce; int /*<<< orphan*/  shared_key; } ;
-typedef  int /*<<< orphan*/  Net_Crypto ;
-typedef  TYPE_1__ Crypto_Connection ;
 
-/* Variables and functions */
- int DATA_NUM_THRESHOLD ; 
- scalar_t__ MAX_CRYPTO_PACKET_SIZE ; 
- scalar_t__ crypto_box_MACBYTES ; 
- int crypto_box_NONCEBYTES ; 
- int decrypt_data_symmetric (int /*<<< orphan*/ ,scalar_t__*,scalar_t__ const*,scalar_t__,scalar_t__*) ; 
- TYPE_1__* get_crypto_connection (int /*<<< orphan*/  const*,int) ; 
- scalar_t__ get_nonce_uint16 (scalar_t__*) ; 
- int /*<<< orphan*/  increment_nonce_number (scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,int) ; 
- scalar_t__ ntohs (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint16_t ;
+struct TYPE_3__ {scalar_t__ const* recv_nonce; int shared_key; } ;
+typedef int Net_Crypto ;
+typedef TYPE_1__ Crypto_Connection ;
+
+
+ int DATA_NUM_THRESHOLD ;
+ scalar_t__ MAX_CRYPTO_PACKET_SIZE ;
+ scalar_t__ crypto_box_MACBYTES ;
+ int crypto_box_NONCEBYTES ;
+ int decrypt_data_symmetric (int ,scalar_t__*,scalar_t__ const*,scalar_t__,scalar_t__*) ;
+ TYPE_1__* get_crypto_connection (int const*,int) ;
+ scalar_t__ get_nonce_uint16 (scalar_t__*) ;
+ int increment_nonce_number (scalar_t__*,int) ;
+ int memcpy (scalar_t__*,scalar_t__ const*,int) ;
+ scalar_t__ ntohs (scalar_t__) ;
 
 __attribute__((used)) static int handle_data_packet(const Net_Crypto *c, int crypt_connection_id, uint8_t *data, const uint8_t *packet,
                               uint16_t length)

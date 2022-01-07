@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PauseConsole () ; 
- int /*<<< orphan*/  ShowConsole () ; 
- int /*<<< orphan*/  Usage (int /*<<< orphan*/ *,char const*) ; 
- char* _ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_help_on_full_help () ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  vlc_usage ; 
+
+
+
+typedef int vlc_object_t ;
+
+
+ int PauseConsole () ;
+ int ShowConsole () ;
+ int Usage (int *,char const*) ;
+ char* _ (int ) ;
+ int print_help_on_full_help () ;
+ int printf (char*,char*) ;
+ int strcmp (char const*,char*) ;
+ int vlc_usage ;
 
 __attribute__((used)) static void Help (vlc_object_t *p_this, char const *psz_help_name)
 {
@@ -35,13 +35,13 @@ __attribute__((used)) static void Help (vlc_object_t *p_this, char const *psz_he
     else if( psz_help_name && !strcmp( psz_help_name, "longhelp" ) )
     {
         printf(_(vlc_usage), "vlc");
-        Usage( p_this, NULL );
+        Usage( p_this, ((void*)0) );
         print_help_on_full_help();
     }
     else if( psz_help_name && !strcmp( psz_help_name, "full-help" ) )
     {
         printf(_(vlc_usage), "vlc");
-        Usage( p_this, NULL );
+        Usage( p_this, ((void*)0) );
     }
     else if( psz_help_name )
     {

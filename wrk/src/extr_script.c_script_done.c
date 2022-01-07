@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stats ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_call (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_getglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  script_push_stats (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int stats ;
+typedef int lua_State ;
+
+
+ int lua_call (int *,int,int ) ;
+ int lua_getglobal (int *,char*) ;
+ int lua_pop (int *,int) ;
+ int lua_pushvalue (int *,int) ;
+ int script_push_stats (int *,int *) ;
 
 void script_done(lua_State *L, stats *latency, stats *requests) {
     lua_getglobal(L, "done");

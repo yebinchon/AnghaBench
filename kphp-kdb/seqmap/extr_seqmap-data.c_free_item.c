@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct item {int key_len; int value_len; struct item* value; struct item* key; } ;
 struct TYPE_4__ {scalar_t__ size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* item_tree ; 
- scalar_t__ items_count ; 
- int items_memory ; 
- TYPE_1__* tree_delete (TYPE_1__*,int,struct item*) ; 
- int /*<<< orphan*/  zzfree (struct item*,int) ; 
+
+ int assert (int) ;
+ TYPE_1__* item_tree ;
+ scalar_t__ items_count ;
+ int items_memory ;
+ TYPE_1__* tree_delete (TYPE_1__*,int,struct item*) ;
+ int zzfree (struct item*,int) ;
 
 void free_item (struct item *I) {
   item_tree = tree_delete (item_tree, I->key_len, I->key);

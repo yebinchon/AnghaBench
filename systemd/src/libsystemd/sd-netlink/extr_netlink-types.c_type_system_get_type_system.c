@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  NLTypeSystem ;
-typedef  int /*<<< orphan*/  NLType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  type_get_type_system (int /*<<< orphan*/  const*,int /*<<< orphan*/  const**) ; 
- int type_system_get_type (int /*<<< orphan*/  const*,int /*<<< orphan*/  const**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+typedef int NLTypeSystem ;
+typedef int NLType ;
+
+
+ int assert (int const**) ;
+ int type_get_type_system (int const*,int const**) ;
+ int type_system_get_type (int const*,int const**,int ) ;
 
 int type_system_get_type_system(const NLTypeSystem *type_system, const NLTypeSystem **ret, uint16_t type) {
         const NLType *nl_type;

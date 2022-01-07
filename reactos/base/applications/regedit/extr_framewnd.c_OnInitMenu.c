@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  abValueData ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HMENU ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ COUNT_OF (int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FAVORITES_MENU_POSITION ; 
- int /*<<< orphan*/  GetMenu (int /*<<< orphan*/ ) ; 
- int GetMenuItemCount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSubMenu (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- scalar_t__ ID_FAVORITES_MIN ; 
- int /*<<< orphan*/  MF_BYPOSITION ; 
- int /*<<< orphan*/  MF_SEPARATOR ; 
- scalar_t__ REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ RemoveMenu (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  s_szFavoritesRegKey ; 
+
+
+
+typedef int abValueData ;
+typedef int WCHAR ;
+typedef scalar_t__ LONG ;
+typedef int HWND ;
+typedef int HMENU ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ int AppendMenu (int ,int ,scalar_t__,int *) ;
+ scalar_t__ COUNT_OF (int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ FALSE ;
+ int FAVORITES_MENU_POSITION ;
+ int GetMenu (int ) ;
+ int GetMenuItemCount (int ) ;
+ int GetSubMenu (int ,int ) ;
+ int HKEY_CURRENT_USER ;
+ scalar_t__ ID_FAVORITES_MIN ;
+ int MF_BYPOSITION ;
+ int MF_SEPARATOR ;
+ scalar_t__ REG_SZ ;
+ int RegCloseKey (int *) ;
+ scalar_t__ RegEnumValueW (int *,scalar_t__,int *,scalar_t__*,int *,scalar_t__*,int *,scalar_t__*) ;
+ scalar_t__ RegOpenKeyW (int ,int ,int **) ;
+ scalar_t__ RemoveMenu (int ,int,int ) ;
+ scalar_t__ TRUE ;
+ int s_szFavoritesRegKey ;
 
 __attribute__((used)) static void OnInitMenu(HWND hWnd)
 {
     LONG lResult;
-    HKEY hKey = NULL;
+    HKEY hKey = ((void*)0);
     DWORD dwIndex, cbValueName, cbValueData, dwType;
     WCHAR szValueName[256];
     BYTE abValueData[256];
@@ -52,7 +52,7 @@ __attribute__((used)) static void OnInitMenu(HWND hWnd)
     HMENU hMenu;
     BOOL bDisplayedAny = FALSE;
 
-    /* Find Favorites menu and clear it out */
+
     hMenu = GetSubMenu(GetMenu(hWnd), FAVORITES_MENU_POSITION);
     if (!hMenu)
         goto done;
@@ -74,12 +74,12 @@ __attribute__((used)) static void OnInitMenu(HWND hWnd)
     {
         cbValueName = COUNT_OF(szValueName);
         cbValueData = sizeof(abValueData);
-        lResult = RegEnumValueW(hKey, dwIndex, szValueName, &cbValueName, NULL, &dwType, abValueData, &cbValueData);
+        lResult = RegEnumValueW(hKey, dwIndex, szValueName, &cbValueName, ((void*)0), &dwType, abValueData, &cbValueData);
         if ((lResult == ERROR_SUCCESS) && (dwType == REG_SZ))
         {
             if (!bDisplayedAny)
             {
-                AppendMenu(hMenu, MF_SEPARATOR, 0, NULL);
+                AppendMenu(hMenu, MF_SEPARATOR, 0, ((void*)0));
                 bDisplayedAny = TRUE;
             }
             AppendMenu(hMenu, 0, ID_FAVORITES_MIN + GetMenuItemCount(hMenu), szValueName);

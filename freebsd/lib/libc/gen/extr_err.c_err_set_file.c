@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* err_file ; 
- void* stderr ; 
+ void* err_file ;
+ void* stderr ;
 
 void
 err_set_file(void *fp)
 {
-	if (fp)
-		err_file = fp;
-	else
-		err_file = stderr;
+ if (fp)
+  err_file = fp;
+ else
+  err_file = stderr;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {int dummy; } ;
-struct can_priv {int /*<<< orphan*/ ** echo_skb; } ;
+struct can_priv {int ** echo_skb; } ;
 
-/* Variables and functions */
- struct can_priv* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  netif_rx (int /*<<< orphan*/ *) ; 
+
+ struct can_priv* netdev_priv (struct net_device*) ;
+ int netif_rx (int *) ;
 
 void can_get_echo_skb(struct net_device *dev, int idx)
 {
-	struct can_priv *priv = netdev_priv(dev);
+ struct can_priv *priv = netdev_priv(dev);
 
-	if (priv->echo_skb[idx]) {
-		netif_rx(priv->echo_skb[idx]);
-		priv->echo_skb[idx] = NULL;
-	}
+ if (priv->echo_skb[idx]) {
+  netif_rx(priv->echo_skb[idx]);
+  priv->echo_skb[idx] = ((void*)0);
+ }
 }

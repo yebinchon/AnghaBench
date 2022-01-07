@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t threadnum; int started; int count; } ;
-typedef  TYPE_1__ bag_t ;
+typedef TYPE_1__ bag_t ;
 
-/* Variables and functions */
- scalar_t__ PTHREAD_CANCELED ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_DEFERRED ; 
- int /*<<< orphan*/  PTHREAD_CANCEL_ENABLE ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ pthread_setcancelstate (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_setcanceltype (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_testcancel () ; 
- TYPE_1__* threadbag ; 
+
+ scalar_t__ PTHREAD_CANCELED ;
+ int PTHREAD_CANCEL_DEFERRED ;
+ int PTHREAD_CANCEL_ENABLE ;
+ int Sleep (int) ;
+ int assert (int) ;
+ scalar_t__ pthread_setcancelstate (int ,int *) ;
+ scalar_t__ pthread_setcanceltype (int ,int *) ;
+ int pthread_testcancel () ;
+ TYPE_1__* threadbag ;
 
 void *
 mythread(void * arg)
@@ -35,16 +35,16 @@ mythread(void * arg)
   assert(bag->started == 0);
   bag->started = 1;
 
-  /* Set to known state and type */
 
-  assert(pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL) == 0);
 
-  assert(pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, NULL) == 0);
+  assert(pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, ((void*)0)) == 0);
 
-  /*
-   * We wait up to 10 seconds, waking every 0.1 seconds,
-   * for a cancelation to be applied to us.
-   */
+  assert(pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, ((void*)0)) == 0);
+
+
+
+
+
   for (bag->count = 0; bag->count < 100; bag->count++)
     {
       Sleep(100);

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int increment; scalar_t__ increment_min; scalar_t__ increment_max; scalar_t__ attack_mode; } ;
-typedef  TYPE_1__ user_options_t ;
-typedef  scalar_t__ u32 ;
-struct TYPE_8__ {scalar_t__ pw_min; scalar_t__ pw_max; int /*<<< orphan*/  opts_type; } ;
-typedef  TYPE_2__ hashconfig_t ;
+typedef TYPE_1__ user_options_t ;
+typedef scalar_t__ u32 ;
+struct TYPE_8__ {scalar_t__ pw_min; scalar_t__ pw_max; int opts_type; } ;
+typedef TYPE_2__ hashconfig_t ;
 struct TYPE_9__ {TYPE_1__* user_options; TYPE_2__* hashconfig; } ;
-typedef  TYPE_3__ hashcat_ctx_t ;
+typedef TYPE_3__ hashcat_ctx_t ;
 
-/* Variables and functions */
- scalar_t__ ATTACK_MODE_BF ; 
- scalar_t__ MAX (scalar_t__,scalar_t__ const) ; 
- scalar_t__ MIN (scalar_t__,scalar_t__ const) ; 
- int /*<<< orphan*/  hc_asprintf (char**,char*,char const*,char const*) ; 
- int /*<<< orphan*/  hcfree (char*) ; 
- scalar_t__ hcmalloc (int) ; 
- int mask_append_final (TYPE_3__*,char const*) ; 
- scalar_t__ mp_get_length (char const*,int /*<<< orphan*/ ) ; 
- int mp_get_truncated_mask (TYPE_3__*,char const*,int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+
+ scalar_t__ ATTACK_MODE_BF ;
+ scalar_t__ MAX (scalar_t__,scalar_t__ const) ;
+ scalar_t__ MIN (scalar_t__,scalar_t__ const) ;
+ int hc_asprintf (char**,char*,char const*,char const*) ;
+ int hcfree (char*) ;
+ scalar_t__ hcmalloc (int) ;
+ int mask_append_final (TYPE_3__*,char const*) ;
+ scalar_t__ mp_get_length (char const*,int ) ;
+ int mp_get_truncated_mask (TYPE_3__*,char const*,int ,scalar_t__,char*) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int mask_append (hashcat_ctx_t *hashcat_ctx, const char *mask, const char *prepend)
 {
-  hashconfig_t   *hashconfig   = hashcat_ctx->hashconfig;
+  hashconfig_t *hashconfig = hashcat_ctx->hashconfig;
   user_options_t *user_options = hashcat_ctx->user_options;
 
-  if (user_options->increment == true)
+  if (user_options->increment == 1)
   {
     const u32 mask_length = mp_get_length (mask, hashconfig->opts_type);
 
@@ -65,7 +65,7 @@ __attribute__((used)) static int mask_append (hashcat_ctx_t *hashcat_ctx, const 
 
       if (prepend)
       {
-        // this happens with maskfiles only
+
 
         mask_truncated_next += snprintf (mask_truncated, 256, "%s,", prepend);
       }
@@ -88,9 +88,9 @@ __attribute__((used)) static int mask_append (hashcat_ctx_t *hashcat_ctx, const 
   {
     if (prepend)
     {
-      // this happens with maskfiles only
 
-      char *prepend_mask = NULL;
+
+      char *prepend_mask = ((void*)0);
 
       hc_asprintf (&prepend_mask, "%s,%s", prepend, mask);
 

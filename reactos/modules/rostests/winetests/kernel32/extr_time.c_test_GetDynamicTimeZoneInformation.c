@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ Bias; scalar_t__* StandardName; scalar_t__ StandardBias; scalar_t__* DaylightName; scalar_t__* TimeZoneKeyName; int /*<<< orphan*/  DaylightDate; int /*<<< orphan*/  StandardDate; } ;
-struct TYPE_5__ {scalar_t__ Bias; scalar_t__* StandardName; scalar_t__ StandardBias; scalar_t__* DaylightName; int /*<<< orphan*/  DaylightDate; int /*<<< orphan*/  StandardDate; } ;
-typedef  TYPE_1__ TIME_ZONE_INFORMATION ;
-typedef  TYPE_2__ DYNAMIC_TIME_ZONE_INFORMATION ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ GetTimeZoneInformation (TYPE_1__*) ; 
- int /*<<< orphan*/  lstrcmpW (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pGetDynamicTimeZoneInformation (TYPE_2__*) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (scalar_t__*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ Bias; scalar_t__* StandardName; scalar_t__ StandardBias; scalar_t__* DaylightName; scalar_t__* TimeZoneKeyName; int DaylightDate; int StandardDate; } ;
+struct TYPE_5__ {scalar_t__ Bias; scalar_t__* StandardName; scalar_t__ StandardBias; scalar_t__* DaylightName; int DaylightDate; int StandardDate; } ;
+typedef TYPE_1__ TIME_ZONE_INFORMATION ;
+typedef TYPE_2__ DYNAMIC_TIME_ZONE_INFORMATION ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ GetTimeZoneInformation (TYPE_1__*) ;
+ int lstrcmpW (scalar_t__*,scalar_t__*) ;
+ int memcmp (int *,int *,int) ;
+ int ok (int,char*,...) ;
+ scalar_t__ pGetDynamicTimeZoneInformation (TYPE_2__*) ;
+ int trace (char*,int ) ;
+ int win_skip (char*) ;
+ int wine_dbgstr_w (scalar_t__*) ;
 
 __attribute__((used)) static void test_GetDynamicTimeZoneInformation(void)
 {

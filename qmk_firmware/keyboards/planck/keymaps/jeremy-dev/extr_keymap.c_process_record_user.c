@@ -1,144 +1,133 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_AMPR ; 
- int /*<<< orphan*/  KC_ASTR ; 
- int /*<<< orphan*/  KC_ENT ; 
- int /*<<< orphan*/  KC_EQL ; 
- int /*<<< orphan*/  KC_EXLM ; 
- int /*<<< orphan*/  KC_LABK ; 
- int /*<<< orphan*/  KC_LEFT ; 
- int /*<<< orphan*/  KC_LGUI ; 
- int /*<<< orphan*/  KC_LSFT ; 
- int /*<<< orphan*/  KC_MINS ; 
- int /*<<< orphan*/  KC_PIPE ; 
- int /*<<< orphan*/  KC_PLUS ; 
- int /*<<< orphan*/  KC_RABK ; 
- int /*<<< orphan*/  KC_RGHT ; 
- int /*<<< orphan*/  KC_SLSH ; 
- int /*<<< orphan*/  KC_UP ; 
-#define  MY_ABVE 138 
-#define  MY_BELW 137 
-#define  MY_DAMP 136 
-#define  MY_DEQL 135 
-#define  MY_DPIP 134 
-#define  MY_LTGT 133 
-#define  MY_MEQL 132 
-#define  MY_NEQL 131 
-#define  MY_PEQL 130 
-#define  MY_SEQL 129 
-#define  MY_TERM 128 
- int /*<<< orphan*/  press_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  press_three_keys (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  press_two_keys (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int KC_AMPR ;
+ int KC_ASTR ;
+ int KC_ENT ;
+ int KC_EQL ;
+ int KC_EXLM ;
+ int KC_LABK ;
+ int KC_LEFT ;
+ int KC_LGUI ;
+ int KC_LSFT ;
+ int KC_MINS ;
+ int KC_PIPE ;
+ int KC_PLUS ;
+ int KC_RABK ;
+ int KC_RGHT ;
+ int KC_SLSH ;
+ int KC_UP ;
+ int press_key (int ) ;
+ int press_three_keys (int ,int ,int ) ;
+ int press_two_keys (int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case MY_BELW:
+    case 137:
       if (record->event.pressed) {
         press_two_keys(KC_LGUI, KC_RGHT);
         press_key(KC_ENT);
       }
 
-      return false;
+      return 0;
 
-    case MY_ABVE:
+    case 138:
       if (record->event.pressed) {
         press_two_keys(KC_LGUI, KC_LEFT);
         press_key(KC_ENT);
         press_key(KC_UP);
       }
 
-      return false;
+      return 0;
 
-    case MY_TERM:
+    case 128:
       if (record->event.pressed) {
         press_three_keys(KC_LGUI, KC_LSFT, KC_ENT);
       }
 
-      return false;
+      return 0;
 
-    case MY_DEQL: // /=
+    case 135:
       if (record->event.pressed) {
         press_key(KC_SLSH);
         press_key(KC_EQL);
       }
 
-      return false;
+      return 0;
 
-    case MY_MEQL: // *=
+    case 132:
       if (record->event.pressed) {
         press_two_keys(KC_LSFT, KC_ASTR);
         press_key(KC_EQL);
       }
 
-      return false;
+      return 0;
 
-    case MY_SEQL: // -=
+    case 129:
       if (record->event.pressed) {
         press_key(KC_MINS);
         press_key(KC_EQL);
       }
 
-      return false;
+      return 0;
 
-    case MY_PEQL: // +=
+    case 130:
       if (record->event.pressed) {
         press_two_keys(KC_LSFT, KC_PLUS);
         press_key(KC_EQL);
       }
 
-      return false;
+      return 0;
 
-    case MY_NEQL: // !=
+    case 131:
       if (record->event.pressed) {
         press_two_keys(KC_LSFT, KC_EXLM);
         press_key(KC_EQL);
       }
 
-      return false;
+      return 0;
 
-    case MY_LTGT: // <>
+    case 133:
       if (record->event.pressed) {
         press_two_keys(KC_LSFT, KC_LABK);
         press_two_keys(KC_LSFT, KC_RABK);
       }
 
-      return false;
+      return 0;
 
-    case MY_DPIP: // ||
+    case 134:
       if (record->event.pressed) {
         press_two_keys(KC_LSFT, KC_PIPE);
         press_two_keys(KC_LSFT, KC_PIPE);
       }
 
-      return false;
+      return 0;
 
-    case MY_DAMP: // &&
+    case 136:
       if (record->event.pressed) {
         press_two_keys(KC_LSFT, KC_AMPR);
         press_two_keys(KC_LSFT, KC_AMPR);
       }
 
-      return false;
+      return 0;
   }
 
-  return true;
+  return 1;
 }

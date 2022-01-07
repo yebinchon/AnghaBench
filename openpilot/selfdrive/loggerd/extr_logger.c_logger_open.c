@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ refcnt; char* segment_path; char* log_path; char* qlog_path; char* lock_path; int /*<<< orphan*/ * log_file; int /*<<< orphan*/ * qlog_file; int /*<<< orphan*/  lock; void* bz_qlog; void* bz_file; } ;
-struct TYPE_6__ {char* route_name; int part; char* log_name; int /*<<< orphan*/  init_data_len; int /*<<< orphan*/  init_data; scalar_t__ has_qlog; TYPE_2__* handles; } ;
-typedef  TYPE_1__ LoggerState ;
-typedef  TYPE_2__ LoggerHandle ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BZ2_bzWrite (int*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* BZ2_bzWriteOpen (int*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int) ; 
- int BZ_OK ; 
- int /*<<< orphan*/  LOGE (char*) ; 
- int LOGGER_MAX_HANDLES ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- void* fopen (char*,char*) ; 
- int mkpath (char*) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*,...) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ refcnt; char* segment_path; char* log_path; char* qlog_path; char* lock_path; int * log_file; int * qlog_file; int lock; void* bz_qlog; void* bz_file; } ;
+struct TYPE_6__ {char* route_name; int part; char* log_name; int init_data_len; int init_data; scalar_t__ has_qlog; TYPE_2__* handles; } ;
+typedef TYPE_1__ LoggerState ;
+typedef TYPE_2__ LoggerHandle ;
+typedef int FILE ;
+
+
+ int BZ2_bzWrite (int*,void*,int ,int ) ;
+ void* BZ2_bzWriteOpen (int*,int *,int,int ,int) ;
+ int BZ_OK ;
+ int LOGE (char*) ;
+ int LOGGER_MAX_HANDLES ;
+ int assert (TYPE_2__*) ;
+ int fclose (int *) ;
+ void* fopen (char*,char*) ;
+ int mkpath (char*) ;
+ int pthread_mutex_init (int *,int *) ;
+ int snprintf (char*,int,char*,char const*,...) ;
 
 __attribute__((used)) static LoggerHandle* logger_open(LoggerState *s, const char* root_path) {
   int err;
 
-  LoggerHandle *h = NULL;
+  LoggerHandle *h = ((void*)0);
   for (int i=0; i<LOGGER_MAX_HANDLES; i++) {
     if (s->handles[i].refcnt == 0) {
       h = &s->handles[i];
@@ -51,18 +51,18 @@ __attribute__((used)) static LoggerHandle* logger_open(LoggerState *s, const cha
   snprintf(h->lock_path, sizeof(h->lock_path), "%s.lock", h->log_path);
 
   err = mkpath(h->log_path);
-  if (err) return NULL;
+  if (err) return ((void*)0);
 
   FILE* lock_file = fopen(h->lock_path, "wb");
-  if (lock_file == NULL) return NULL;
+  if (lock_file == ((void*)0)) return ((void*)0);
   fclose(lock_file);
 
   h->log_file = fopen(h->log_path, "wb");
-  if (h->log_file == NULL) goto fail;
+  if (h->log_file == ((void*)0)) goto fail;
 
   if (s->has_qlog) {
     h->qlog_file = fopen(h->qlog_path, "wb");
-    if (h->qlog_file == NULL) goto fail;
+    if (h->qlog_file == ((void*)0)) goto fail;
   }
 
   int bzerror;
@@ -79,18 +79,18 @@ __attribute__((used)) static LoggerHandle* logger_open(LoggerState *s, const cha
     if (bzerror != BZ_OK) goto fail;
 
     if (s->has_qlog) {
-      // init data goes in the qlog too
+
       BZ2_bzWrite(&bzerror, h->bz_qlog, s->init_data, s->init_data_len);
       if (bzerror != BZ_OK) goto fail;
     }
   }
 
-  pthread_mutex_init(&h->lock, NULL);
+  pthread_mutex_init(&h->lock, ((void*)0));
   h->refcnt++;
   return h;
 fail:
   LOGE("logger failed to open files");
   if (h->qlog_file) fclose(h->qlog_file);
   if (h->log_file) fclose(h->log_file);
-  return NULL;
+  return ((void*)0);
 }

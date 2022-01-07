@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_fpix {int /*<<< orphan*/ * work_thread; } ;
-struct gspca_dev {int /*<<< orphan*/  usb_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct usb_fpix {int * work_thread; } ;
+struct gspca_dev {int usb_lock; } ;
+
+
+ int destroy_workqueue (int *) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void sd_stop0(struct gspca_dev *gspca_dev)
 {
-	struct usb_fpix *dev = (struct usb_fpix *) gspca_dev;
+ struct usb_fpix *dev = (struct usb_fpix *) gspca_dev;
 
-	/* wait for the work queue to terminate */
-	mutex_unlock(&gspca_dev->usb_lock);
-	destroy_workqueue(dev->work_thread);
-	mutex_lock(&gspca_dev->usb_lock);
-	dev->work_thread = NULL;
+
+ mutex_unlock(&gspca_dev->usb_lock);
+ destroy_workqueue(dev->work_thread);
+ mutex_lock(&gspca_dev->usb_lock);
+ dev->work_thread = ((void*)0);
 }

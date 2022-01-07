@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_7__ ;
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  scalar_t__ ngx_uint_t ;
-struct TYPE_15__ {int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_3__ ngx_slab_pool_t ;
-struct TYPE_16__ {scalar_t__ key; struct TYPE_16__* right; struct TYPE_16__* left; int /*<<< orphan*/  color; } ;
-typedef  TYPE_4__ ngx_rbtree_node_t ;
-typedef  int /*<<< orphan*/  ngx_pool_t ;
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  scalar_t__ ngx_int_t ;
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_7__ ;
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int u_char ;
+typedef scalar_t__ ngx_uint_t ;
+struct TYPE_15__ {int mutex; } ;
+typedef TYPE_3__ ngx_slab_pool_t ;
+struct TYPE_16__ {scalar_t__ key; struct TYPE_16__* right; struct TYPE_16__* left; int color; } ;
+typedef TYPE_4__ ngx_rbtree_node_t ;
+typedef int ngx_pool_t ;
+typedef int ngx_log_t ;
+typedef scalar_t__ ngx_int_t ;
 struct TYPE_17__ {TYPE_2__* sh; TYPE_3__* shpool; } ;
-typedef  TYPE_5__ ngx_http_tfs_local_block_cache_ctx_t ;
-struct TYPE_18__ {int ds_count; int /*<<< orphan*/ * ds_addrs; } ;
-typedef  TYPE_6__ ngx_http_tfs_block_cache_value_t ;
-struct TYPE_19__ {int count; int /*<<< orphan*/  queue; int /*<<< orphan*/  data; int /*<<< orphan*/  key; } ;
-typedef  TYPE_7__ ngx_http_tfs_block_cache_node_t ;
-struct TYPE_20__ {int /*<<< orphan*/  block_id; int /*<<< orphan*/  ns_addr; } ;
-typedef  TYPE_8__ ngx_http_tfs_block_cache_key_t ;
+typedef TYPE_5__ ngx_http_tfs_local_block_cache_ctx_t ;
+struct TYPE_18__ {int ds_count; int * ds_addrs; } ;
+typedef TYPE_6__ ngx_http_tfs_block_cache_value_t ;
+struct TYPE_19__ {int count; int queue; int data; int key; } ;
+typedef TYPE_7__ ngx_http_tfs_block_cache_node_t ;
+struct TYPE_20__ {int block_id; int ns_addr; } ;
+typedef TYPE_8__ ngx_http_tfs_block_cache_key_t ;
 struct TYPE_13__ {TYPE_4__* sentinel; TYPE_4__* root; } ;
-struct TYPE_14__ {scalar_t__ hit_count; scalar_t__ miss_count; int /*<<< orphan*/  queue; TYPE_1__ rbtree; } ;
+struct TYPE_14__ {scalar_t__ hit_count; scalar_t__ miss_count; int queue; TYPE_1__ rbtree; } ;
 
-/* Variables and functions */
- scalar_t__ NGX_DECLINED ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_HTTP_TFS_BLOCK_CACHE_KEY_SIZE ; 
- scalar_t__ NGX_HTTP_TFS_BLOCK_CACHE_STAT_COUNT ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_http_tfs_block_cache_cmp (TYPE_8__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,double) ; 
- int /*<<< orphan*/  ngx_memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ ngx_murmur_hash2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ngx_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_queue_insert_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_queue_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_shmtx_unlock (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ NGX_DECLINED ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_HTTP_TFS_BLOCK_CACHE_KEY_SIZE ;
+ scalar_t__ NGX_HTTP_TFS_BLOCK_CACHE_STAT_COUNT ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_http_tfs_block_cache_cmp (TYPE_8__*,int *) ;
+ int ngx_log_debug2 (int ,int *,int ,char*,int ,int ) ;
+ int ngx_log_error (int ,int *,int ,char*,double) ;
+ int ngx_memcpy (int *,int ,int) ;
+ scalar_t__ ngx_murmur_hash2 (int *,int ) ;
+ int * ngx_pcalloc (int *,int) ;
+ int ngx_queue_insert_head (int *,int *) ;
+ int ngx_queue_remove (int *) ;
+ int ngx_shmtx_lock (int *) ;
+ int ngx_shmtx_unlock (int *) ;
 
 ngx_int_t
 ngx_http_tfs_local_block_cache_lookup(ngx_http_tfs_local_block_cache_ctx_t *ctx,
     ngx_pool_t *pool, ngx_log_t *log, ngx_http_tfs_block_cache_key_t* key,
     ngx_http_tfs_block_cache_value_t *value)
 {
-    double                            hit_ratio;
-    ngx_int_t                         rc;
-    ngx_uint_t                        hash;
-    ngx_slab_pool_t                  *shpool;
-    ngx_rbtree_node_t                *node, *sentinel;
-    ngx_http_tfs_block_cache_node_t  *bcn;
+    double hit_ratio;
+    ngx_int_t rc;
+    ngx_uint_t hash;
+    ngx_slab_pool_t *shpool;
+    ngx_rbtree_node_t *node, *sentinel;
+    ngx_http_tfs_block_cache_node_t *bcn;
 
     ngx_log_debug2(NGX_LOG_DEBUG_HTTP, log, 0,
                    "lookup local block cache, ns addr: %uL, block id: %uD",
@@ -94,14 +94,14 @@ ngx_http_tfs_local_block_cache_lookup(ngx_http_tfs_local_block_cache_ctx_t *ctx,
             continue;
         }
 
-        /* hash == node->key */
+
         bcn = (ngx_http_tfs_block_cache_node_t *) &node->color;
         rc = ngx_http_tfs_block_cache_cmp(key, &bcn->key);
         if (rc == 0) {
             value->ds_count = bcn->count;
             value->ds_addrs = ngx_pcalloc(pool,
                                           value->ds_count * sizeof(uint64_t));
-            if (value->ds_addrs == NULL) {
+            if (value->ds_addrs == ((void*)0)) {
                 ngx_shmtx_unlock(&shpool->mutex);
                 return NGX_ERROR;
             }

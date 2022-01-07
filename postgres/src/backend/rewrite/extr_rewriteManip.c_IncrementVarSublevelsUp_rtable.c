@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int delta_sublevels_up; int min_sublevels_up; } ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__ IncrementVarSublevelsUp_context ;
+typedef int List ;
+typedef TYPE_1__ IncrementVarSublevelsUp_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IncrementVarSublevelsUp_walker ; 
- int /*<<< orphan*/  QTW_EXAMINE_RTES_BEFORE ; 
- int /*<<< orphan*/  range_table_walker (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+ int IncrementVarSublevelsUp_walker ;
+ int QTW_EXAMINE_RTES_BEFORE ;
+ int range_table_walker (int *,int ,void*,int ) ;
 
 void
 IncrementVarSublevelsUp_rtable(List *rtable, int delta_sublevels_up,
-							   int min_sublevels_up)
+          int min_sublevels_up)
 {
-	IncrementVarSublevelsUp_context context;
+ IncrementVarSublevelsUp_context context;
 
-	context.delta_sublevels_up = delta_sublevels_up;
-	context.min_sublevels_up = min_sublevels_up;
+ context.delta_sublevels_up = delta_sublevels_up;
+ context.min_sublevels_up = min_sublevels_up;
 
-	range_table_walker(rtable,
-					   IncrementVarSublevelsUp_walker,
-					   (void *) &context,
-					   QTW_EXAMINE_RTES_BEFORE);
+ range_table_walker(rtable,
+        IncrementVarSublevelsUp_walker,
+        (void *) &context,
+        QTW_EXAMINE_RTES_BEFORE);
 }

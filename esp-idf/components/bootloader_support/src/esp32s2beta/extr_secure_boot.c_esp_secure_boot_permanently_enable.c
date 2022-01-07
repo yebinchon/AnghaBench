@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFUSE_PGM_DATA3_REG ; 
- int /*<<< orphan*/  EFUSE_SECURE_BOOT_EN ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int ESP_OK ; 
- int /*<<< orphan*/  ETS_EFUSE_BLOCK0 ; 
- int /*<<< orphan*/  REG_SET_BIT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  assert (scalar_t__) ; 
- int /*<<< orphan*/  ets_efuse_clear_program_registers () ; 
- int /*<<< orphan*/  ets_efuse_program (int /*<<< orphan*/ ) ; 
- scalar_t__ ets_efuse_secure_boot_enabled () ; 
- int ets_secure_boot_verify_bootloader (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int esp_err_t ;
+
+
+ int EFUSE_PGM_DATA3_REG ;
+ int EFUSE_SECURE_BOOT_EN ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_LOGI (int ,char*) ;
+ int ESP_OK ;
+ int ETS_EFUSE_BLOCK0 ;
+ int REG_SET_BIT (int ,int ) ;
+ int TAG ;
+ int assert (scalar_t__) ;
+ int ets_efuse_clear_program_registers () ;
+ int ets_efuse_program (int ) ;
+ scalar_t__ ets_efuse_secure_boot_enabled () ;
+ int ets_secure_boot_verify_bootloader (int *,int) ;
 
 esp_err_t esp_secure_boot_permanently_enable(void)
 {
@@ -39,7 +39,7 @@ esp_err_t esp_secure_boot_permanently_enable(void)
     }
 
     ESP_LOGI(TAG, "Verifying bootloader signature...\n");
-    int r = ets_secure_boot_verify_bootloader(hash, false);
+    int r = ets_secure_boot_verify_bootloader(hash, 0);
     if (r != ESP_OK) {
         ESP_LOGE(TAG, "Failed to verify bootloader signature");
         return r;

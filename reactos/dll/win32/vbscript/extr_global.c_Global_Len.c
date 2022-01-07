@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vbdisp_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SysStringLen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ VT_BSTR ; 
- scalar_t__ VT_NULL ; 
- int /*<<< orphan*/  V_BSTR (int /*<<< orphan*/ *) ; 
- scalar_t__ V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  return_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  return_null (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  to_string (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vbdisp_t ;
+typedef int VARIANT ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BSTR ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int SysFreeString (int ) ;
+ int SysStringLen (int ) ;
+ int TRACE (char*,int ) ;
+ scalar_t__ VT_BSTR ;
+ scalar_t__ VT_NULL ;
+ int V_BSTR (int *) ;
+ scalar_t__ V_VT (int *) ;
+ int debugstr_variant (int *) ;
+ int return_int (int *,int ) ;
+ int return_null (int *) ;
+ int to_string (int *,int *) ;
 
 __attribute__((used)) static HRESULT Global_Len(vbdisp_t *This, VARIANT *arg, unsigned args_cnt, VARIANT *res)
 {

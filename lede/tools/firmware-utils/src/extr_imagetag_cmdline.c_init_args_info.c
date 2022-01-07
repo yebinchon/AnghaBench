@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct gengetopt_args_info {void* align_rootfs_help; void* pad_help; void* kernel_file_has_header_help; void* reserved2_help; void* inactive_help; void* second_image_flag_help; void* rsa_signature_help; void* root_first_help; void* info2_help; void* altinfo_help; void* info1_help; void* layoutver_help; void* entry_help; void* load_addr_help; void* block_size_help; void* signature2_help; void* signature_help; void* tag_version_help; void* image_offset_help; void* flash_start_help; void* chipid_help; void* boardid_help; void* cfe_help; void* output_help; void* rootfs_help; void* kernel_help; void* version_help; void* help_help; } ;
 
-/* Variables and functions */
- void** gengetopt_args_info_help ; 
+
+ void** gengetopt_args_info_help ;
 
 __attribute__((used)) static
 void init_args_info(struct gengetopt_args_info *args_info)
@@ -48,5 +48,5 @@ void init_args_info(struct gengetopt_args_info *args_info)
   args_info->kernel_file_has_header_help = gengetopt_args_info_help[25] ;
   args_info->pad_help = gengetopt_args_info_help[26] ;
   args_info->align_rootfs_help = gengetopt_args_info_help[27] ;
-  
+
 }

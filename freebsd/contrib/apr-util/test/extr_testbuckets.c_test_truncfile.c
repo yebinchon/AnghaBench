@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  apr_bucket_brigade ;
-typedef  int /*<<< orphan*/  apr_bucket_alloc_t ;
-typedef  int /*<<< orphan*/  apr_bucket ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_ASSERT (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  APR_BLOCK_READ ; 
- int /*<<< orphan*/ * APR_BRIGADE_FIRST (int /*<<< orphan*/ *) ; 
- scalar_t__ APR_BRIGADE_SENTINEL (int /*<<< orphan*/ *) ; 
- scalar_t__ APR_BUCKET_NEXT (int /*<<< orphan*/ *) ; 
- scalar_t__ APR_EOF ; 
- int /*<<< orphan*/ * apr_brigade_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_brigade_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_brigade_insert_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_bucket_alloc_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_bucket_alloc_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_bucket_file_enable_mmap (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ apr_bucket_read (int /*<<< orphan*/ *,char const**,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apr_file_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_file_trunc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * make_test_file (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  p ; 
+
+
+
+typedef scalar_t__ apr_size_t ;
+typedef int apr_file_t ;
+typedef int apr_bucket_brigade ;
+typedef int apr_bucket_alloc_t ;
+typedef int apr_bucket ;
+typedef int abts_case ;
+
+
+ int ABTS_ASSERT (int *,char*,int) ;
+ int APR_BLOCK_READ ;
+ int * APR_BRIGADE_FIRST (int *) ;
+ scalar_t__ APR_BRIGADE_SENTINEL (int *) ;
+ scalar_t__ APR_BUCKET_NEXT (int *) ;
+ scalar_t__ APR_EOF ;
+ int * apr_brigade_create (int ,int *) ;
+ int apr_brigade_destroy (int *) ;
+ int apr_brigade_insert_file (int *,int *,int ,int,int ) ;
+ int * apr_bucket_alloc_create (int ) ;
+ int apr_bucket_alloc_destroy (int *) ;
+ int apr_bucket_file_enable_mmap (int *,int ) ;
+ scalar_t__ apr_bucket_read (int *,char const**,scalar_t__*,int ) ;
+ int apr_file_close (int *) ;
+ int apr_file_trunc (int *,int ) ;
+ int * make_test_file (int *,char*,char*) ;
+ int p ;
 
 __attribute__((used)) static void test_truncfile(abts_case *tc, void *data)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static void test_truncfile(abts_case *tc, void *data)
                 apr_bucket_read(e, &buf, &len, APR_BLOCK_READ) == APR_EOF);
 
     ABTS_ASSERT(tc, "read length 0", len == 0);
-    
+
     ABTS_ASSERT(tc, "still a single bucket in brigade",
                 APR_BUCKET_NEXT(e) == APR_BRIGADE_SENTINEL(bb));
 

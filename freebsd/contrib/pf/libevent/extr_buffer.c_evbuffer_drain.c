@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct evbuffer {size_t off; size_t buffer; size_t orig_buffer; int /*<<< orphan*/  cbarg; int /*<<< orphan*/  (* cb ) (struct evbuffer*,size_t,size_t,int /*<<< orphan*/ ) ;scalar_t__ misalign; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct evbuffer*,size_t,size_t,int /*<<< orphan*/ ) ; 
+
+
+
+struct evbuffer {size_t off; size_t buffer; size_t orig_buffer; int cbarg; int (* cb ) (struct evbuffer*,size_t,size_t,int ) ;scalar_t__ misalign; } ;
+
+
+ int stub1 (struct evbuffer*,size_t,size_t,int ) ;
 
 void
 evbuffer_drain(struct evbuffer *buf, size_t len)
 {
-	size_t oldoff = buf->off;
+ size_t oldoff = buf->off;
 
-	if (len >= buf->off) {
-		buf->off = 0;
-		buf->buffer = buf->orig_buffer;
-		buf->misalign = 0;
-		goto done;
-	}
+ if (len >= buf->off) {
+  buf->off = 0;
+  buf->buffer = buf->orig_buffer;
+  buf->misalign = 0;
+  goto done;
+ }
 
-	buf->buffer += len;
-	buf->misalign += len;
+ buf->buffer += len;
+ buf->misalign += len;
 
-	buf->off -= len;
+ buf->off -= len;
 
  done:
-	/* Tell someone about changes in this buffer */
-	if (buf->off != oldoff && buf->cb != NULL)
-		(*buf->cb)(buf, oldoff, buf->off, buf->cbarg);
+
+ if (buf->off != oldoff && buf->cb != ((void*)0))
+  (*buf->cb)(buf, oldoff, buf->off, buf->cbarg);
 
 }

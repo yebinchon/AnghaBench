@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_5__ {int /*<<< orphan*/  temp_filename; int /*<<< orphan*/  rtmp; } ;
-typedef  int /*<<< orphan*/  RTMP ;
-typedef  TYPE_2__ LibRTMPContext ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_5__ {int temp_filename; int rtmp; } ;
+typedef int RTMP ;
+typedef TYPE_2__ LibRTMPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTMP_Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
+
+ int RTMP_Close (int *) ;
+ int av_freep (int *) ;
 
 __attribute__((used)) static int rtmp_close(URLContext *s)
 {

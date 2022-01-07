@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int itunes_metadata; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MOVContext ;
+typedef int MOVAtom ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int mov_read_default (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int mov_read_default (TYPE_1__*,int *,int ) ;
 
 __attribute__((used)) static int mov_read_ilst(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {

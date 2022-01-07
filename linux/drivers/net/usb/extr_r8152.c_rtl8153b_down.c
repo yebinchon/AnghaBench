@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct r8152 {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTL8152_UNPLUG ; 
- int /*<<< orphan*/  r8153_aldps_en (struct r8152*,int) ; 
- int /*<<< orphan*/  r8153_enter_oob (struct r8152*) ; 
- int /*<<< orphan*/  r8153_u2p3en (struct r8152*,int) ; 
- int /*<<< orphan*/  r8153b_power_cut_en (struct r8152*,int) ; 
- int /*<<< orphan*/  r8153b_u1u2en (struct r8152*,int) ; 
- int /*<<< orphan*/  rtl_drop_queued_tx (struct r8152*) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct r8152 {int flags; } ;
+
+
+ int RTL8152_UNPLUG ;
+ int r8153_aldps_en (struct r8152*,int) ;
+ int r8153_enter_oob (struct r8152*) ;
+ int r8153_u2p3en (struct r8152*,int) ;
+ int r8153b_power_cut_en (struct r8152*,int) ;
+ int r8153b_u1u2en (struct r8152*,int) ;
+ int rtl_drop_queued_tx (struct r8152*) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static void rtl8153b_down(struct r8152 *tp)
 {
-	if (test_bit(RTL8152_UNPLUG, &tp->flags)) {
-		rtl_drop_queued_tx(tp);
-		return;
-	}
+ if (test_bit(RTL8152_UNPLUG, &tp->flags)) {
+  rtl_drop_queued_tx(tp);
+  return;
+ }
 
-	r8153b_u1u2en(tp, false);
-	r8153_u2p3en(tp, false);
-	r8153b_power_cut_en(tp, false);
-	r8153_aldps_en(tp, false);
-	r8153_enter_oob(tp);
-	r8153_aldps_en(tp, true);
+ r8153b_u1u2en(tp, 0);
+ r8153_u2p3en(tp, 0);
+ r8153b_power_cut_en(tp, 0);
+ r8153_aldps_en(tp, 0);
+ r8153_enter_oob(tp);
+ r8153_aldps_en(tp, 1);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct location_test {char* hostname; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  IHTMLLocation ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ E_POINTER ; 
- scalar_t__ IHTMLDocument2_get_domain (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLLocation_get_hostname (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,scalar_t__,...) ; 
- int str_eq_wa (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+struct location_test {char* hostname; int name; } ;
+typedef int IHTMLLocation ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ E_POINTER ;
+ scalar_t__ IHTMLDocument2_get_domain (int *,int *) ;
+ scalar_t__ IHTMLLocation_get_hostname (int *,int *) ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int ok (int,char*,int ,scalar_t__,...) ;
+ int str_eq_wa (int ,char*) ;
+ scalar_t__ wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_hostname(IHTMLLocation *loc, IHTMLDocument2 *doc, const struct location_test *test)
 {
     HRESULT hres;
     BSTR str;
 
-    hres = IHTMLLocation_get_hostname(loc, NULL);
+    hres = IHTMLLocation_get_hostname(loc, ((void*)0));
     ok(hres == E_POINTER,
             "%s: get_hostname should have failed with E_POINTER (0x%08x), was: 0x%08x\n",
             test->name, E_POINTER, hres);

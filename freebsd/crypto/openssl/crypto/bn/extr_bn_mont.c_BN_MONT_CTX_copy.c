@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * n0; int /*<<< orphan*/  ri; int /*<<< orphan*/  Ni; int /*<<< orphan*/  N; int /*<<< orphan*/  RR; } ;
-typedef  TYPE_1__ BN_MONT_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * n0; int ri; int Ni; int N; int RR; } ;
+typedef TYPE_1__ BN_MONT_CTX ;
+
+
+ int BN_copy (int *,int *) ;
 
 BN_MONT_CTX *BN_MONT_CTX_copy(BN_MONT_CTX *to, BN_MONT_CTX *from)
 {
@@ -23,11 +23,11 @@ BN_MONT_CTX *BN_MONT_CTX_copy(BN_MONT_CTX *to, BN_MONT_CTX *from)
         return to;
 
     if (!BN_copy(&(to->RR), &(from->RR)))
-        return NULL;
+        return ((void*)0);
     if (!BN_copy(&(to->N), &(from->N)))
-        return NULL;
+        return ((void*)0);
     if (!BN_copy(&(to->Ni), &(from->Ni)))
-        return NULL;
+        return ((void*)0);
     to->ri = from->ri;
     to->n0[0] = from->n0[0];
     to->n0[1] = from->n0[1];

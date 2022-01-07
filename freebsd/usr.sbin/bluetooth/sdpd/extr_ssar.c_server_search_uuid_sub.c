@@ -1,51 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int const uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint128_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int uint32_t ;
+typedef int uint128_t ;
 struct TYPE_5__ {int* b; } ;
-typedef  TYPE_1__ int128_t ;
-typedef  int /*<<< orphan*/  duuid ;
-
-/* Variables and functions */
-#define  SDP_DATA_BOOL 147 
-#define  SDP_DATA_INT128 146 
-#define  SDP_DATA_INT16 145 
-#define  SDP_DATA_INT32 144 
-#define  SDP_DATA_INT64 143 
-#define  SDP_DATA_INT8 142 
-#define  SDP_DATA_SEQ16 141 
-#define  SDP_DATA_SEQ32 140 
-#define  SDP_DATA_SEQ8 139 
-#define  SDP_DATA_STR16 138 
-#define  SDP_DATA_STR32 137 
-#define  SDP_DATA_STR8 136 
-#define  SDP_DATA_UINT128 135 
-#define  SDP_DATA_UINT16 134 
-#define  SDP_DATA_UINT32 133 
-#define  SDP_DATA_UINT64 132 
-#define  SDP_DATA_UINT8 131 
-#define  SDP_DATA_UUID128 130 
-#define  SDP_DATA_UUID16 129 
-#define  SDP_DATA_UUID32 128 
- int /*<<< orphan*/  SDP_GET16 (int,int const*) ; 
- int /*<<< orphan*/  SDP_GET32 (int,int const*) ; 
- int /*<<< orphan*/  SDP_GET8 (int const,int const*) ; 
- int /*<<< orphan*/  SDP_GET_UUID128 (TYPE_1__*,int const*) ; 
- int /*<<< orphan*/  memcmp (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  uuid_base ; 
+typedef TYPE_1__ int128_t ;
+typedef int duuid ;
+ int SDP_GET16 (int,int const*) ;
+ int SDP_GET32 (int,int const*) ;
+ int SDP_GET8 (int const,int const*) ;
+ int SDP_GET_UUID128 (TYPE_1__*,int const*) ;
+ int memcmp (TYPE_1__*,int const*,int) ;
+ int memcpy (TYPE_1__*,int *,int) ;
+ int uuid_base ;
 
 __attribute__((used)) static int
 server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t *uuid)
@@ -59,7 +37,7 @@ server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t 
                 SDP_GET8(type, buf);
 
                 switch (type) {
-                case SDP_DATA_UUID16:
+                case 129:
                         if (buf + 2 > eob)
                                 continue;
                         SDP_GET16(value, buf);
@@ -71,7 +49,7 @@ server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t 
                         if (memcmp(&duuid, uuid, sizeof(duuid)) == 0)
                                 return (0);
                         break;
-                case SDP_DATA_UUID32:
+                case 128:
                         if (buf + 4 > eob)
                                 continue;
                         SDP_GET32(value, buf);
@@ -84,7 +62,7 @@ server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t 
                         if (memcmp(&duuid, uuid, sizeof(duuid)) == 0)
                                 return (0);
                         break;
-                case SDP_DATA_UUID128:
+                case 130:
                         if (buf + 16 > eob)
                                 continue;
                         SDP_GET_UUID128(&duuid, buf);
@@ -92,36 +70,36 @@ server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t 
                         if (memcmp(&duuid, uuid, sizeof(duuid)) == 0)
                                 return (0);
                         break;
-                case SDP_DATA_UINT8:
-                case SDP_DATA_INT8:
-                case SDP_DATA_SEQ8:
+                case 131:
+                case 142:
+                case 139:
                         buf++;
                         break;
-                case SDP_DATA_UINT16:
-                case SDP_DATA_INT16:
-                case SDP_DATA_SEQ16:
+                case 134:
+                case 145:
+                case 141:
                         buf += 2;
                         break;
-                case SDP_DATA_UINT32:
-                case SDP_DATA_INT32:
-                case SDP_DATA_SEQ32:
+                case 133:
+                case 144:
+                case 140:
                         buf += 4;
                         break;
-                case SDP_DATA_UINT64:
-                case SDP_DATA_INT64:
+                case 132:
+                case 143:
                         buf += 8;
                         break;
-                case SDP_DATA_UINT128:
-                case SDP_DATA_INT128:
+                case 135:
+                case 146:
                         buf += 16;
                         break;
-                case SDP_DATA_STR8:
+                case 136:
                         if (buf + 1 > eob)
                                 continue;
                         SDP_GET8(value, buf);
                         buf += value;
                         break;
-                case SDP_DATA_STR16:
+                case 138:
                         if (buf + 2 > eob)
                                 continue;
                         SDP_GET16(value, buf);
@@ -129,7 +107,7 @@ server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t 
                                 return (1);
                         buf += value;
                         break;
-                case SDP_DATA_STR32:
+                case 137:
                         if (buf + 4 > eob)
                                 continue;
                         SDP_GET32(value, buf);
@@ -137,7 +115,7 @@ server_search_uuid_sub(uint8_t *buf, uint8_t const * const eob, const uint128_t 
                                 return (1);
                         buf += value;
                         break;
-                case SDP_DATA_BOOL:
+                case 147:
                         buf += 1;
                         break;
                 default:

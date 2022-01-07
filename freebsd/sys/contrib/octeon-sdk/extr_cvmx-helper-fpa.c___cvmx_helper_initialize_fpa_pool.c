@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int CVMX_CACHE_LINE_SIZE ; 
- int /*<<< orphan*/  CVMX_FPA_QUEX_AVAILABLE (int) ; 
- void* cvmx_bootmem_alloc (int,int) ; 
- int /*<<< orphan*/  cvmx_dprintf (char*,int,char const*,...) ; 
- int /*<<< orphan*/  cvmx_fpa_setup_pool (int,char const*,void*,int,int) ; 
- int cvmx_read_csr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int CVMX_CACHE_LINE_SIZE ;
+ int CVMX_FPA_QUEX_AVAILABLE (int) ;
+ void* cvmx_bootmem_alloc (int,int) ;
+ int cvmx_dprintf (char*,int,char const*,...) ;
+ int cvmx_fpa_setup_pool (int,char const*,void*,int,int) ;
+ int cvmx_read_csr (int ) ;
 
 __attribute__((used)) static int __cvmx_helper_initialize_fpa_pool(int pool, uint64_t buffer_size,
                                            uint64_t buffers, const char *name)
@@ -27,7 +27,7 @@ __attribute__((used)) static int __cvmx_helper_initialize_fpa_pool(int pool, uin
     void *memory;
     uint64_t align = CVMX_CACHE_LINE_SIZE;
 
-    /* Align the allocation so that power of 2 size buffers are naturally aligned */
+
     while (align < buffer_size)
         align = align << 1;
 
@@ -43,7 +43,7 @@ __attribute__((used)) static int __cvmx_helper_initialize_fpa_pool(int pool, uin
     }
 
     memory = cvmx_bootmem_alloc(buffer_size * buffers, align);
-    if (memory == NULL)
+    if (memory == ((void*)0))
     {
         cvmx_dprintf("Out of memory initializing fpa pool %d(%s).\n", pool, name);
         return -1;

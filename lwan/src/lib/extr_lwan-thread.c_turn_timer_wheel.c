@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ timeout_t ;
+
+
+
+
+typedef scalar_t__ timeout_t ;
 struct timespec {int tv_sec; int tv_nsec; } ;
 struct timeout_queue {int dummy; } ;
-struct lwan_thread {int /*<<< orphan*/  wheel; } ;
-typedef  scalar_t__ int64_t ;
+struct lwan_thread {int wheel; } ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
- scalar_t__ UNLIKELY (int) ; 
- scalar_t__ clock_gettime (int /*<<< orphan*/ ,struct timespec*) ; 
- int /*<<< orphan*/  lwan_status_critical (char*) ; 
- int /*<<< orphan*/  monotonic_clock_id ; 
- int /*<<< orphan*/  process_pending_timers (struct timeout_queue*,struct lwan_thread*,int) ; 
- scalar_t__ timeouts_timeout (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timeouts_update (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ UNLIKELY (int) ;
+ scalar_t__ clock_gettime (int ,struct timespec*) ;
+ int lwan_status_critical (char*) ;
+ int monotonic_clock_id ;
+ int process_pending_timers (struct timeout_queue*,struct lwan_thread*,int) ;
+ scalar_t__ timeouts_timeout (int ) ;
+ int timeouts_update (int ,scalar_t__) ;
 
 __attribute__((used)) static int
 turn_timer_wheel(struct timeout_queue *tq, struct lwan_thread *t, int epoll_fd)

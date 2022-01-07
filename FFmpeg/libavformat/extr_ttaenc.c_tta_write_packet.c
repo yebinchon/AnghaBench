@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {TYPE_1__* priv_data; } ;
-struct TYPE_9__ {scalar_t__ duration; int /*<<< orphan*/  size; } ;
-struct TYPE_8__ {scalar_t__ frame_size; scalar_t__ last_frame; int /*<<< orphan*/  nb_samples; int /*<<< orphan*/  seek_table; int /*<<< orphan*/  queue_end; int /*<<< orphan*/  queue; } ;
-typedef  TYPE_1__ TTAMuxContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_9__ {scalar_t__ duration; int size; } ;
+struct TYPE_8__ {scalar_t__ frame_size; scalar_t__ last_frame; int nb_samples; int seek_table; int queue_end; int queue; } ;
+typedef TYPE_1__ TTAMuxContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  FF_PACKETLIST_FLAG_REF_PACKET ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avio_wl32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_packet_list_put (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FF_PACKETLIST_FLAG_REF_PACKET ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int avio_wl32 (int ,int ) ;
+ int ff_packet_list_put (int *,int *,TYPE_2__*,int ) ;
 
 __attribute__((used)) static int tta_write_packet(AVFormatContext *s, AVPacket *pkt)
 {
@@ -44,15 +44,15 @@ __attribute__((used)) static int tta_write_packet(AVFormatContext *s, AVPacket *
 
     if (tta->frame_size != pkt->duration) {
         if (tta->last_frame) {
-            /* Two frames with a different duration than the default frame
-               size means the TTA stream comes from a faulty container, and
-               there's no way the last frame duration will be correct. */
+
+
+
             av_log(s, AV_LOG_ERROR, "Invalid frame durations\n");
 
             return AVERROR_INVALIDDATA;
         }
-        /* First frame with a different duration than the default frame size.
-           Assume it's the last frame in the stream and continue. */
+
+
         tta->last_frame++;
     }
 

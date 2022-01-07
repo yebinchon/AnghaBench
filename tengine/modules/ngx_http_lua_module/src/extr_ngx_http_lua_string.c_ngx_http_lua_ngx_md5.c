@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_md5_t ;
-typedef  int /*<<< orphan*/  md5_buf ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  hex_buf ;
 
-/* Variables and functions */
- int MD5_DIGEST_LENGTH ; 
- scalar_t__ luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int lua_gettop (int /*<<< orphan*/ *) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushlstring (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  ngx_hex_dump (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ngx_md5_final (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_md5_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_md5_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int u_char ;
+typedef int ngx_md5_t ;
+typedef int md5_buf ;
+typedef int lua_State ;
+typedef int hex_buf ;
+
+
+ int MD5_DIGEST_LENGTH ;
+ scalar_t__ luaL_checklstring (int *,int,size_t*) ;
+ int luaL_error (int *,char*) ;
+ int lua_gettop (int *) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ int lua_pushlstring (int *,char*,int) ;
+ int ngx_hex_dump (int *,int *,int) ;
+ int ngx_md5_final (int *,int *) ;
+ int ngx_md5_init (int *) ;
+ int ngx_md5_update (int *,int *,size_t) ;
 
 __attribute__((used)) static int
 ngx_http_lua_ngx_md5(lua_State *L)
 {
-    u_char                  *src;
-    size_t                   slen;
+    u_char *src;
+    size_t slen;
 
-    ngx_md5_t                md5;
-    u_char                   md5_buf[MD5_DIGEST_LENGTH];
-    u_char                   hex_buf[2 * sizeof(md5_buf)];
+    ngx_md5_t md5;
+    u_char md5_buf[MD5_DIGEST_LENGTH];
+    u_char hex_buf[2 * sizeof(md5_buf)];
 
     if (lua_gettop(L) != 1) {
         return luaL_error(L, "expecting one argument");

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_mode; } ;
-typedef  size_t ssize_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  S_ISCHR (int /*<<< orphan*/ ) ; 
- int UV_EIO ; 
- int UV__ERR (scalar_t__) ; 
- scalar_t__ errno ; 
- scalar_t__ fstat (int,struct stat*) ; 
- size_t read (int,char*,size_t) ; 
- int /*<<< orphan*/  uv__close (int) ; 
- int uv__open_cloexec (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct stat {int st_mode; } ;
+typedef size_t ssize_t ;
+
+
+ scalar_t__ EINTR ;
+ int O_RDONLY ;
+ int S_ISCHR (int ) ;
+ int UV_EIO ;
+ int UV__ERR (scalar_t__) ;
+ scalar_t__ errno ;
+ scalar_t__ fstat (int,struct stat*) ;
+ size_t read (int,char*,size_t) ;
+ int uv__close (int) ;
+ int uv__open_cloexec (char const*,int ) ;
 
 int uv__random_readpath(const char* path, void* buf, size_t buflen) {
   struct stat s;

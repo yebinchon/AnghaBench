@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_2__ {int CR; } ;
-typedef  scalar_t__ FunctionalState ;
+typedef scalar_t__ FunctionalState ;
 
-/* Variables and functions */
- TYPE_1__* DAC ; 
- scalar_t__ DISABLE ; 
- int /*<<< orphan*/  IS_DAC_CHANNEL (int) ; 
- int /*<<< orphan*/  IS_DAC_WAVE (int) ; 
- int /*<<< orphan*/  IS_FUNCTIONAL_STATE (scalar_t__) ; 
- int /*<<< orphan*/  assert_param (int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* DAC ;
+ scalar_t__ DISABLE ;
+ int IS_DAC_CHANNEL (int) ;
+ int IS_DAC_WAVE (int) ;
+ int IS_FUNCTIONAL_STATE (scalar_t__) ;
+ int assert_param (int ) ;
 
 void DAC_WaveGenerationCmd(uint32_t DAC_Channel, uint32_t DAC_Wave, FunctionalState NewState)
 {
-  /* Check the parameters */
+
   assert_param(IS_DAC_CHANNEL(DAC_Channel));
-  assert_param(IS_DAC_WAVE(DAC_Wave)); 
+  assert_param(IS_DAC_WAVE(DAC_Wave));
   assert_param(IS_FUNCTIONAL_STATE(NewState));
 
   if (NewState != DISABLE)
   {
-    /* Enable the selected wave generation for the selected DAC channel */
+
     DAC->CR |= DAC_Wave << DAC_Channel;
   }
   else
   {
-    /* Disable the selected wave generation for the selected DAC channel */
+
     DAC->CR &= ~(DAC_Wave << DAC_Channel);
   }
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hostapd_neighbor_entry {int /*<<< orphan*/  list; } ;
-struct hostapd_data {int /*<<< orphan*/  nr_db; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dl_list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- struct hostapd_neighbor_entry* os_zalloc (int) ; 
+
+
+
+struct hostapd_neighbor_entry {int list; } ;
+struct hostapd_data {int nr_db; } ;
+
+
+ int dl_list_add (int *,int *) ;
+ struct hostapd_neighbor_entry* os_zalloc (int) ;
 
 __attribute__((used)) static struct hostapd_neighbor_entry *
 hostapd_neighbor_add(struct hostapd_data *hapd)
 {
-	struct hostapd_neighbor_entry *nr;
+ struct hostapd_neighbor_entry *nr;
 
-	nr = os_zalloc(sizeof(struct hostapd_neighbor_entry));
-	if (!nr)
-		return NULL;
+ nr = os_zalloc(sizeof(struct hostapd_neighbor_entry));
+ if (!nr)
+  return ((void*)0);
 
-	dl_list_add(&hapd->nr_db, &nr->list);
+ dl_list_add(&hapd->nr_db, &nr->list);
 
-	return nr;
+ return nr;
 }

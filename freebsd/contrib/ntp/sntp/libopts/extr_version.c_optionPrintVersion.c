@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tOptions ;
-typedef  int /*<<< orphan*/  tOptDesc ;
 
-/* Variables and functions */
- scalar_t__ print_exit ; 
- int /*<<< orphan*/  print_ver (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int tOptions ;
+typedef int tOptDesc ;
+
+
+ scalar_t__ print_exit ;
+ int print_ver (int *,int *,int ,int) ;
+ int stderr ;
+ int stdout ;
 
 void
 optionPrintVersion(tOptions * opts, tOptDesc * od)
 {
-    print_ver(opts, od, print_exit ? stderr : stdout, true);
+    print_ver(opts, od, print_exit ? stderr : stdout, 1);
 }

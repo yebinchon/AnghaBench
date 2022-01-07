@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; struct priv* priv; TYPE_1__* owner; } ;
-struct priv_owner {int /*<<< orphan*/  egl_display; int /*<<< orphan*/  (* StreamConsumerReleaseKHR ) (int /*<<< orphan*/ ,scalar_t__) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ra_hwdec_mapper {int * tex; int ra; struct priv* priv; TYPE_1__* owner; } ;
+struct priv_owner {int egl_display; int (* StreamConsumerReleaseKHR ) (int ,scalar_t__) ;} ;
 struct priv {scalar_t__ egl_stream; } ;
 struct TYPE_2__ {struct priv_owner* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int ra_tex_free (int ,int *) ;
+ int stub1 (int ,scalar_t__) ;
 
 __attribute__((used)) static void mapper_unmap(struct ra_hwdec_mapper *mapper)
 {

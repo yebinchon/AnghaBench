@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  c_begin_compound_stmt (int) ; 
- int /*<<< orphan*/  keep_next_level () ; 
+
+
+
+typedef int tree ;
+
+
+ int c_begin_compound_stmt (int) ;
+ int keep_next_level () ;
 
 tree
 c_begin_omp_parallel (void)
@@ -22,7 +22,7 @@ c_begin_omp_parallel (void)
   tree block;
 
   keep_next_level ();
-  block = c_begin_compound_stmt (true);
+  block = c_begin_compound_stmt (1);
 
   return block;
 }

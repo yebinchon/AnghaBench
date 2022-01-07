@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,scalar_t__,...) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  E_UNEXPECTED ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__) ; 
- int /*<<< orphan*/  find_domain_name (scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ get_zone_for_scheme (int /*<<< orphan*/ ,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/ * heap_alloc (scalar_t__) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_strndupW (scalar_t__,scalar_t__) ; 
- scalar_t__ matches_domain_pattern (scalar_t__,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  strchrW (scalar_t__,scalar_t__) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ LPCWSTR ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int ERR (char*,int ,scalar_t__,...) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int E_OUTOFMEMORY ;
+ int E_UNEXPECTED ;
+ scalar_t__ FALSE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,scalar_t__,int *,scalar_t__*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyW (int ,scalar_t__,int *) ;
+ scalar_t__ RegQueryInfoKeyW (int ,int *,int *,int *,scalar_t__*,scalar_t__*,int *,int *,int *,int *,int *,int *) ;
+ int S_FALSE ;
+ int S_OK ;
+ scalar_t__ TRUE ;
+ int debugstr_w (scalar_t__) ;
+ int find_domain_name (scalar_t__,scalar_t__,int *) ;
+ scalar_t__ get_zone_for_scheme (int ,scalar_t__,scalar_t__*) ;
+ int * heap_alloc (scalar_t__) ;
+ int heap_free (int *) ;
+ int * heap_strndupW (scalar_t__,scalar_t__) ;
+ scalar_t__ matches_domain_pattern (scalar_t__,scalar_t__,scalar_t__,scalar_t__*) ;
+ int strchrW (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static HRESULT search_domain_for_zone(HKEY domains, LPCWSTR domain, DWORD domain_len, LPCWSTR schema,
                                       LPCWSTR host, DWORD host_len, DWORD *zone)
@@ -64,8 +64,8 @@ __attribute__((used)) static HRESULT search_domain_for_zone(HKEY domains, LPCWST
 
             find_domain_name(domain, domain_len, &domain_offset);
 
-            res = RegQueryInfoKeyW(domain_key, NULL, NULL, NULL, &subdomain_count, &subdomain_len,
-                                   NULL, NULL, NULL, NULL, NULL, NULL);
+            res = RegQueryInfoKeyW(domain_key, ((void*)0), ((void*)0), ((void*)0), &subdomain_count, &subdomain_len,
+                                   ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0));
             if(res != ERROR_SUCCESS) {
                 ERR("Unable to query info for key %s: %d\n", debugstr_w(domain), res);
                 RegCloseKey(domain_key);
@@ -94,7 +94,7 @@ __attribute__((used)) static HRESULT search_domain_for_zone(HKEY domains, LPCWST
                     DWORD len = subdomain_len+1;
                     const WCHAR *sub_matched;
 
-                    res = RegEnumKeyExW(domain_key, i, subdomain, &len, NULL, NULL, NULL, NULL);
+                    res = RegEnumKeyExW(domain_key, i, subdomain, &len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
                     if(res != ERROR_SUCCESS) {
                         heap_free(component);
                         heap_free(subdomain);
@@ -124,29 +124,6 @@ __attribute__((used)) static HRESULT search_domain_for_zone(HKEY domains, LPCWST
                 heap_free(subdomain);
                 heap_free(component);
             }
-
-            /* There's a chance that 'host' implicitly mapped into 'domain', in
-             * which case we check to see if 'domain' contains zone information.
-             *
-             * This can only happen if 'domain' is its own domain name.
-             *  Example:
-             *      "google.com" (domain name = "google.com")
-             *
-             *  So if:
-             *      host = "www.google.com"
-             *
-             *  Then host would map directly into the "google.com" domain key.
-             *
-             * If 'domain' has more than just its domain name, or it does not
-             * have a domain name, then we don't perform the check. The reason
-             * for this is that these domains don't allow implicit mappings.
-             *  Example:
-             *      domain = "org" (has no domain name)
-             *      host   = "www.org"
-             *
-             *  The mapping would only happen if the "org" key had an explicit subkey
-             *  called "www".
-             */
             if(check_domain && !domain_offset && !strchrW(host, matched-host-1))
                 found = get_zone_for_scheme(domain_key, schema, zone);
         }

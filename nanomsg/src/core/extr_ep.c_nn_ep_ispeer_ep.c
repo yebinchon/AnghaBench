@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct nn_ep {TYPE_2__* sock; } ;
 struct TYPE_4__ {TYPE_1__* socktype; } ;
-struct TYPE_3__ {int /*<<< orphan*/  protocol; } ;
+struct TYPE_3__ {int protocol; } ;
 
-/* Variables and functions */
- int nn_ep_ispeer (struct nn_ep*,int /*<<< orphan*/ ) ; 
+
+ int nn_ep_ispeer (struct nn_ep*,int ) ;
 
 int nn_ep_ispeer_ep (struct nn_ep *self, struct nn_ep *other)
 {

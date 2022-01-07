@@ -1,139 +1,139 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32 ;
-struct TYPE_18__ {int /*<<< orphan*/  rnode; int /*<<< orphan*/  blockNum; int /*<<< orphan*/  forkNum; } ;
-struct TYPE_21__ {TYPE_1__ tag; int /*<<< orphan*/  state; } ;
-struct TYPE_20__ {struct TYPE_20__* previous; void* arg; int /*<<< orphan*/  callback; } ;
-struct TYPE_19__ {int /*<<< orphan*/  rd_smgr; int /*<<< orphan*/  rd_node; } ;
-typedef  TYPE_2__* Relation ;
-typedef  char* Page ;
-typedef  TYPE_3__ ErrorContextCallback ;
-typedef  TYPE_4__ BufferDesc ;
 
-/* Variables and functions */
- int BM_DIRTY ; 
- int BM_JUST_DIRTIED ; 
- int BM_VALID ; 
- int /*<<< orphan*/  BufferDescriptorGetContentLock (TYPE_4__*) ; 
- int /*<<< orphan*/  CurrentResourceOwner ; 
- int /*<<< orphan*/  FlushBuffer (TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* GetBufferDescriptor (int) ; 
- TYPE_4__* GetLocalBufferDescriptor (int) ; 
- int /*<<< orphan*/  LWLockAcquire (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW_SHARED ; 
- scalar_t__ LocalBufHdrGetBlock (TYPE_4__*) ; 
- int LockBufHdr (TYPE_4__*) ; 
- int NBuffers ; 
- int NLocBuffer ; 
- int /*<<< orphan*/  PageSetChecksumInplace (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PinBuffer_Locked (TYPE_4__*) ; 
- scalar_t__ RelFileNodeEquals (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationOpenSmgr (TYPE_2__*) ; 
- scalar_t__ RelationUsesLocalBuffers (TYPE_2__*) ; 
- int /*<<< orphan*/  ReservePrivateRefCountEntry () ; 
- int /*<<< orphan*/  ResourceOwnerEnlargeBuffers (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockBufHdr (TYPE_4__*,int) ; 
- int /*<<< orphan*/  UnpinBuffer (TYPE_4__*,int) ; 
- TYPE_3__* error_context_stack ; 
- int /*<<< orphan*/  local_buffer_write_error_callback ; 
- int pg_atomic_read_u32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pg_atomic_unlocked_write_u32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  smgrwrite (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint32 ;
+struct TYPE_18__ {int rnode; int blockNum; int forkNum; } ;
+struct TYPE_21__ {TYPE_1__ tag; int state; } ;
+struct TYPE_20__ {struct TYPE_20__* previous; void* arg; int callback; } ;
+struct TYPE_19__ {int rd_smgr; int rd_node; } ;
+typedef TYPE_2__* Relation ;
+typedef char* Page ;
+typedef TYPE_3__ ErrorContextCallback ;
+typedef TYPE_4__ BufferDesc ;
+
+
+ int BM_DIRTY ;
+ int BM_JUST_DIRTIED ;
+ int BM_VALID ;
+ int BufferDescriptorGetContentLock (TYPE_4__*) ;
+ int CurrentResourceOwner ;
+ int FlushBuffer (TYPE_4__*,int ) ;
+ TYPE_4__* GetBufferDescriptor (int) ;
+ TYPE_4__* GetLocalBufferDescriptor (int) ;
+ int LWLockAcquire (int ,int ) ;
+ int LWLockRelease (int ) ;
+ int LW_SHARED ;
+ scalar_t__ LocalBufHdrGetBlock (TYPE_4__*) ;
+ int LockBufHdr (TYPE_4__*) ;
+ int NBuffers ;
+ int NLocBuffer ;
+ int PageSetChecksumInplace (char*,int ) ;
+ int PinBuffer_Locked (TYPE_4__*) ;
+ scalar_t__ RelFileNodeEquals (int ,int ) ;
+ int RelationOpenSmgr (TYPE_2__*) ;
+ scalar_t__ RelationUsesLocalBuffers (TYPE_2__*) ;
+ int ReservePrivateRefCountEntry () ;
+ int ResourceOwnerEnlargeBuffers (int ) ;
+ int UnlockBufHdr (TYPE_4__*,int) ;
+ int UnpinBuffer (TYPE_4__*,int) ;
+ TYPE_3__* error_context_stack ;
+ int local_buffer_write_error_callback ;
+ int pg_atomic_read_u32 (int *) ;
+ int pg_atomic_unlocked_write_u32 (int *,int) ;
+ int smgrwrite (int ,int ,int ,char*,int) ;
 
 void
 FlushRelationBuffers(Relation rel)
 {
-	int			i;
-	BufferDesc *bufHdr;
+ int i;
+ BufferDesc *bufHdr;
 
-	/* Open rel at the smgr level if not already done */
-	RelationOpenSmgr(rel);
 
-	if (RelationUsesLocalBuffers(rel))
-	{
-		for (i = 0; i < NLocBuffer; i++)
-		{
-			uint32		buf_state;
+ RelationOpenSmgr(rel);
 
-			bufHdr = GetLocalBufferDescriptor(i);
-			if (RelFileNodeEquals(bufHdr->tag.rnode, rel->rd_node) &&
-				((buf_state = pg_atomic_read_u32(&bufHdr->state)) &
-				 (BM_VALID | BM_DIRTY)) == (BM_VALID | BM_DIRTY))
-			{
-				ErrorContextCallback errcallback;
-				Page		localpage;
+ if (RelationUsesLocalBuffers(rel))
+ {
+  for (i = 0; i < NLocBuffer; i++)
+  {
+   uint32 buf_state;
 
-				localpage = (char *) LocalBufHdrGetBlock(bufHdr);
+   bufHdr = GetLocalBufferDescriptor(i);
+   if (RelFileNodeEquals(bufHdr->tag.rnode, rel->rd_node) &&
+    ((buf_state = pg_atomic_read_u32(&bufHdr->state)) &
+     (BM_VALID | BM_DIRTY)) == (BM_VALID | BM_DIRTY))
+   {
+    ErrorContextCallback errcallback;
+    Page localpage;
 
-				/* Setup error traceback support for ereport() */
-				errcallback.callback = local_buffer_write_error_callback;
-				errcallback.arg = (void *) bufHdr;
-				errcallback.previous = error_context_stack;
-				error_context_stack = &errcallback;
+    localpage = (char *) LocalBufHdrGetBlock(bufHdr);
 
-				PageSetChecksumInplace(localpage, bufHdr->tag.blockNum);
 
-				smgrwrite(rel->rd_smgr,
-						  bufHdr->tag.forkNum,
-						  bufHdr->tag.blockNum,
-						  localpage,
-						  false);
+    errcallback.callback = local_buffer_write_error_callback;
+    errcallback.arg = (void *) bufHdr;
+    errcallback.previous = error_context_stack;
+    error_context_stack = &errcallback;
 
-				buf_state &= ~(BM_DIRTY | BM_JUST_DIRTIED);
-				pg_atomic_unlocked_write_u32(&bufHdr->state, buf_state);
+    PageSetChecksumInplace(localpage, bufHdr->tag.blockNum);
 
-				/* Pop the error context stack */
-				error_context_stack = errcallback.previous;
-			}
-		}
+    smgrwrite(rel->rd_smgr,
+        bufHdr->tag.forkNum,
+        bufHdr->tag.blockNum,
+        localpage,
+        0);
 
-		return;
-	}
+    buf_state &= ~(BM_DIRTY | BM_JUST_DIRTIED);
+    pg_atomic_unlocked_write_u32(&bufHdr->state, buf_state);
 
-	/* Make sure we can handle the pin inside the loop */
-	ResourceOwnerEnlargeBuffers(CurrentResourceOwner);
 
-	for (i = 0; i < NBuffers; i++)
-	{
-		uint32		buf_state;
+    error_context_stack = errcallback.previous;
+   }
+  }
 
-		bufHdr = GetBufferDescriptor(i);
+  return;
+ }
 
-		/*
-		 * As in DropRelFileNodeBuffers, an unlocked precheck should be safe
-		 * and saves some cycles.
-		 */
-		if (!RelFileNodeEquals(bufHdr->tag.rnode, rel->rd_node))
-			continue;
 
-		ReservePrivateRefCountEntry();
+ ResourceOwnerEnlargeBuffers(CurrentResourceOwner);
 
-		buf_state = LockBufHdr(bufHdr);
-		if (RelFileNodeEquals(bufHdr->tag.rnode, rel->rd_node) &&
-			(buf_state & (BM_VALID | BM_DIRTY)) == (BM_VALID | BM_DIRTY))
-		{
-			PinBuffer_Locked(bufHdr);
-			LWLockAcquire(BufferDescriptorGetContentLock(bufHdr), LW_SHARED);
-			FlushBuffer(bufHdr, rel->rd_smgr);
-			LWLockRelease(BufferDescriptorGetContentLock(bufHdr));
-			UnpinBuffer(bufHdr, true);
-		}
-		else
-			UnlockBufHdr(bufHdr, buf_state);
-	}
+ for (i = 0; i < NBuffers; i++)
+ {
+  uint32 buf_state;
+
+  bufHdr = GetBufferDescriptor(i);
+
+
+
+
+
+  if (!RelFileNodeEquals(bufHdr->tag.rnode, rel->rd_node))
+   continue;
+
+  ReservePrivateRefCountEntry();
+
+  buf_state = LockBufHdr(bufHdr);
+  if (RelFileNodeEquals(bufHdr->tag.rnode, rel->rd_node) &&
+   (buf_state & (BM_VALID | BM_DIRTY)) == (BM_VALID | BM_DIRTY))
+  {
+   PinBuffer_Locked(bufHdr);
+   LWLockAcquire(BufferDescriptorGetContentLock(bufHdr), LW_SHARED);
+   FlushBuffer(bufHdr, rel->rd_smgr);
+   LWLockRelease(BufferDescriptorGetContentLock(bufHdr));
+   UnpinBuffer(bufHdr, 1);
+  }
+  else
+   UnlockBufHdr(bufHdr, buf_state);
+ }
 }

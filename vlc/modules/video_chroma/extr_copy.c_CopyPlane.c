@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- size_t __MIN (size_t,size_t) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t const) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+
+
+ size_t __MIN (size_t,size_t) ;
+ int memcpy (int *,int const*,size_t const) ;
 
 __attribute__((used)) static void CopyPlane(uint8_t *dst, size_t dst_pitch,
                       const uint8_t *src, size_t src_pitch,

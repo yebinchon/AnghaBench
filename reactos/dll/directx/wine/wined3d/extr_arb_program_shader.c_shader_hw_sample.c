@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_12__ ;
-typedef  struct TYPE_14__   TYPE_11__ ;
-typedef  struct TYPE_13__   TYPE_10__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_12__ ;
+typedef struct TYPE_14__ TYPE_11__ ;
+typedef struct TYPE_13__ TYPE_10__ ;
+
+
 struct wined3d_string_buffer {int dummy; } ;
 struct wined3d_shader_instruction {TYPE_8__* dst; TYPE_5__* ctx; } ;
 struct wined3d_shader {struct wined3d_device* device; } ;
-struct wined3d_gl_info {int /*<<< orphan*/ * supported; } ;
+struct wined3d_gl_info {int * supported; } ;
 struct wined3d_device {TYPE_2__* adapter; } ;
 struct shader_arb_ctx_priv {TYPE_12__* cur_ps_args; TYPE_10__* cur_np2fixup_info; TYPE_7__* cur_vs_args; } ;
 struct color_fixup_masks {scalar_t__ sign; scalar_t__ source; } ;
-typedef  enum wined3d_shader_resource_type { ____Placeholder_wined3d_shader_resource_type } wined3d_shader_resource_type ;
-typedef  int WORD ;
+typedef enum wined3d_shader_resource_type { ____Placeholder_wined3d_shader_resource_type } wined3d_shader_resource_type ;
+typedef int WORD ;
 struct TYPE_24__ {unsigned int active; unsigned char* idx; } ;
-struct TYPE_23__ {int modifiers; int /*<<< orphan*/  write_mask; } ;
+struct TYPE_23__ {int modifiers; int write_mask; } ;
 struct TYPE_21__ {size_t* samplers; } ;
 struct TYPE_22__ {TYPE_6__ vertex; } ;
 struct TYPE_20__ {TYPE_4__* reg_maps; struct wined3d_shader* shader; struct shader_arb_ctx_priv* backend_data; struct wined3d_string_buffer* buffer; } ;
-struct TYPE_18__ {int /*<<< orphan*/  type; } ;
+struct TYPE_18__ {int type; } ;
 struct TYPE_19__ {TYPE_3__ shader_version; TYPE_1__* resource_info; } ;
 struct TYPE_17__ {struct wined3d_gl_info gl_info; } ;
 struct TYPE_16__ {int type; } ;
-struct TYPE_14__ {unsigned int np2_fixup; int /*<<< orphan*/ * color_fixup; } ;
+struct TYPE_14__ {unsigned int np2_fixup; int * color_fixup; } ;
 struct TYPE_15__ {TYPE_11__ super; } ;
 struct TYPE_13__ {TYPE_9__ super; } ;
-typedef  size_t DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef size_t DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARB_ONE ; 
- size_t ARB_TEXTURE_RECTANGLE ; 
- int /*<<< orphan*/  ARB_TWO ; 
- int /*<<< orphan*/  ERR (char*,int) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- size_t MAX_FRAGMENT_SAMPLERS ; 
- int TEX_BIAS ; 
- int TEX_DERIV ; 
- int TEX_LOD ; 
- int TEX_PROJ ; 
- scalar_t__ TRUE ; 
- int WINED3DSPDM_SATURATE ; 
-#define  WINED3D_SHADER_RESOURCE_TEXTURE_1D 131 
-#define  WINED3D_SHADER_RESOURCE_TEXTURE_2D 130 
-#define  WINED3D_SHADER_RESOURCE_TEXTURE_3D 129 
-#define  WINED3D_SHADER_RESOURCE_TEXTURE_CUBE 128 
- int /*<<< orphan*/  WINED3D_SHADER_TYPE_PIXEL ; 
- int /*<<< orphan*/  arb_get_helper_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct color_fixup_masks calc_color_correction (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_color_correction (struct wined3d_string_buffer*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct color_fixup_masks) ; 
- int /*<<< orphan*/  shader_addline (struct wined3d_string_buffer*,char*,...) ; 
- scalar_t__ shader_is_pshader_version (int /*<<< orphan*/ ) ; 
+
+ int ARB_ONE ;
+ size_t ARB_TEXTURE_RECTANGLE ;
+ int ARB_TWO ;
+ int ERR (char*,int) ;
+ scalar_t__ FALSE ;
+ int FIXME (char*) ;
+ size_t MAX_FRAGMENT_SAMPLERS ;
+ int TEX_BIAS ;
+ int TEX_DERIV ;
+ int TEX_LOD ;
+ int TEX_PROJ ;
+ scalar_t__ TRUE ;
+ int WINED3DSPDM_SATURATE ;
+
+
+
+
+ int WINED3D_SHADER_TYPE_PIXEL ;
+ int arb_get_helper_value (int ,int ) ;
+ struct color_fixup_masks calc_color_correction (int ,int ) ;
+ int gen_color_correction (struct wined3d_string_buffer*,char const*,char const*,int ,int ,int ,struct color_fixup_masks) ;
+ int shader_addline (struct wined3d_string_buffer*,char*,...) ;
+ scalar_t__ shader_is_pshader_version (int ) ;
 
 __attribute__((used)) static void shader_hw_sample(const struct wined3d_shader_instruction *ins, DWORD sampler_idx,
         const char *dst_str, const char *coord_reg, WORD flags, const char *dsx, const char *dsy)
@@ -87,16 +87,16 @@ __attribute__((used)) static void shader_hw_sample(const struct wined3d_shader_i
     const char *tex_dst = dst_str;
     struct color_fixup_masks masks;
 
-    /* D3D vertex shader sampler IDs are vertex samplers(0-3), not global d3d samplers */
+
     if(!pshader) sampler_idx += MAX_FRAGMENT_SAMPLERS;
 
     switch (resource_type)
     {
-        case WINED3D_SHADER_RESOURCE_TEXTURE_1D:
+        case 131:
             tex_type = "1D";
             break;
 
-        case WINED3D_SHADER_RESOURCE_TEXTURE_2D:
+        case 130:
             shader = ins->ctx->shader;
             device = shader->device;
             gl_info = &device->adapter->gl_info;
@@ -116,11 +116,11 @@ __attribute__((used)) static void shader_hw_sample(const struct wined3d_shader_i
             }
             break;
 
-        case WINED3D_SHADER_RESOURCE_TEXTURE_3D:
+        case 129:
             tex_type = "3D";
             break;
 
-        case WINED3D_SHADER_RESOURCE_TEXTURE_CUBE:
+        case 128:
             tex_type = "CUBE";
             break;
 
@@ -129,13 +129,13 @@ __attribute__((used)) static void shader_hw_sample(const struct wined3d_shader_i
             tex_type = "";
     }
 
-    /* TEX, TXL, TXD and TXP do not support the "H" modifier,
-     * so don't use shader_arb_get_modifier
-     */
+
+
+
     if(ins->dst[0].modifiers & WINED3DSPDM_SATURATE) mod = "_SAT";
     else mod = "";
 
-    /* Fragment samplers always have indentity mapping */
+
     if(sampler_idx >= MAX_FRAGMENT_SAMPLERS)
     {
         sampler_idx = priv->cur_vs_args->vertex.samplers[sampler_idx - MAX_FRAGMENT_SAMPLERS];
@@ -166,9 +166,9 @@ __attribute__((used)) static void shader_hw_sample(const struct wined3d_shader_i
     }
     else if (flags & TEX_BIAS)
     {
-        /* Shouldn't be possible, but let's check for it */
+
         if(flags & TEX_PROJ) FIXME("Biased and Projected texture sampling\n");
-        /* TXB takes the 4th component of the source vector automatically, as d3d. Nothing more to do */
+
         shader_addline(buffer, "TXB%s %s, %s, texture[%u], %s;\n", mod, tex_dst, coord_reg, sampler_idx, tex_type);
     }
     else if (flags & TEX_PROJ)

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  is_streamed; int /*<<< orphan*/  protocol_blacklist; int /*<<< orphan*/  protocol_whitelist; int /*<<< orphan*/  interrupt_callback; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_15__ {int /*<<< orphan*/  is_streamed; } ;
-struct TYPE_14__ {TYPE_1__* opaque; int /*<<< orphan*/  callback; } ;
-struct TYPE_13__ {int /*<<< orphan*/  ring; TYPE_5__* inner; int /*<<< orphan*/  mutex; int /*<<< orphan*/  cond_wakeup_main; int /*<<< orphan*/  cond_wakeup_background; int /*<<< orphan*/  async_buffer_thread; int /*<<< orphan*/  logical_size; int /*<<< orphan*/  interrupt_callback; } ;
-typedef  TYPE_2__ Context ;
-typedef  TYPE_3__ AVIOInterruptCB ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  BUFFER_CAPACITY ; 
- int /*<<< orphan*/  READ_BACK_CAPACITY ; 
- int /*<<< orphan*/  async_buffer_task ; 
- int /*<<< orphan*/  async_check_interrupt ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  av_strstart (char const*,char*,char const**) ; 
- int /*<<< orphan*/  ffurl_close (TYPE_5__*) ; 
- int ffurl_open_whitelist (TYPE_5__**,char const*,int,TYPE_3__*,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ffurl_size (TYPE_5__*) ; 
- int /*<<< orphan*/  pthread_cond_destroy (int /*<<< orphan*/ *) ; 
- int pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  pthread_mutex_destroy (int /*<<< orphan*/ *) ; 
- int pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ring_destroy (int /*<<< orphan*/ *) ; 
- int ring_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int is_streamed; int protocol_blacklist; int protocol_whitelist; int interrupt_callback; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_15__ {int is_streamed; } ;
+struct TYPE_14__ {TYPE_1__* opaque; int callback; } ;
+struct TYPE_13__ {int ring; TYPE_5__* inner; int mutex; int cond_wakeup_main; int cond_wakeup_background; int async_buffer_thread; int logical_size; int interrupt_callback; } ;
+typedef TYPE_2__ Context ;
+typedef TYPE_3__ AVIOInterruptCB ;
+typedef int AVDictionary ;
+
+
+ int AV_LOG_ERROR ;
+ int BUFFER_CAPACITY ;
+ int READ_BACK_CAPACITY ;
+ int async_buffer_task ;
+ int async_check_interrupt ;
+ int av_err2str (int) ;
+ int av_log (TYPE_1__*,int ,char*,int ,...) ;
+ int av_strstart (char const*,char*,char const**) ;
+ int ffurl_close (TYPE_5__*) ;
+ int ffurl_open_whitelist (TYPE_5__**,char const*,int,TYPE_3__*,int **,int ,int ,TYPE_1__*) ;
+ int ffurl_size (TYPE_5__*) ;
+ int pthread_cond_destroy (int *) ;
+ int pthread_cond_init (int *,int *) ;
+ int pthread_create (int *,int *,int ,TYPE_1__*) ;
+ int pthread_mutex_destroy (int *) ;
+ int pthread_mutex_init (int *,int *) ;
+ int ring_destroy (int *) ;
+ int ring_init (int *,int ,int ) ;
 
 __attribute__((used)) static int async_open(URLContext *h, const char *arg, int flags, AVDictionary **options)
 {
-    Context         *c = h->priv_data;
-    int              ret;
-    AVIOInterruptCB  interrupt_callback = {.callback = async_check_interrupt, .opaque = h};
+    Context *c = h->priv_data;
+    int ret;
+    AVIOInterruptCB interrupt_callback = {.callback = async_check_interrupt, .opaque = h};
 
     av_strstart(arg, "async:", &arg);
 
@@ -55,7 +55,7 @@ __attribute__((used)) static int async_open(URLContext *h, const char *arg, int 
     if (ret < 0)
         goto fifo_fail;
 
-    /* wrap interrupt callback */
+
     c->interrupt_callback = h->interrupt_callback;
     ret = ffurl_open_whitelist(&c->inner, arg, flags, &interrupt_callback, options, h->protocol_whitelist, h->protocol_blacklist, h);
     if (ret != 0) {
@@ -64,27 +64,27 @@ __attribute__((used)) static int async_open(URLContext *h, const char *arg, int 
     }
 
     c->logical_size = ffurl_size(c->inner);
-    h->is_streamed  = c->inner->is_streamed;
+    h->is_streamed = c->inner->is_streamed;
 
-    ret = pthread_mutex_init(&c->mutex, NULL);
+    ret = pthread_mutex_init(&c->mutex, ((void*)0));
     if (ret != 0) {
         av_log(h, AV_LOG_ERROR, "pthread_mutex_init failed : %s\n", av_err2str(ret));
         goto mutex_fail;
     }
 
-    ret = pthread_cond_init(&c->cond_wakeup_main, NULL);
+    ret = pthread_cond_init(&c->cond_wakeup_main, ((void*)0));
     if (ret != 0) {
         av_log(h, AV_LOG_ERROR, "pthread_cond_init failed : %s\n", av_err2str(ret));
         goto cond_wakeup_main_fail;
     }
 
-    ret = pthread_cond_init(&c->cond_wakeup_background, NULL);
+    ret = pthread_cond_init(&c->cond_wakeup_background, ((void*)0));
     if (ret != 0) {
         av_log(h, AV_LOG_ERROR, "pthread_cond_init failed : %s\n", av_err2str(ret));
         goto cond_wakeup_background_fail;
     }
 
-    ret = pthread_create(&c->async_buffer_thread, NULL, async_buffer_task, h);
+    ret = pthread_create(&c->async_buffer_thread, ((void*)0), async_buffer_task, h);
     if (ret) {
         av_log(h, AV_LOG_ERROR, "pthread_create failed : %s\n", av_err2str(ret));
         goto thread_fail;

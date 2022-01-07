@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_Number ;
-typedef  int /*<<< orphan*/  const TValue ;
 
-/* Variables and functions */
- scalar_t__ luaO_str2d (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setnvalue (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svalue (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisnumber (int /*<<< orphan*/  const*) ; 
- scalar_t__ ttisstring (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int lua_Number ;
+typedef int const TValue ;
+
+
+ scalar_t__ luaO_str2d (int ,int *) ;
+ int setnvalue (int const*,int ) ;
+ int svalue (int const*) ;
+ scalar_t__ ttisnumber (int const*) ;
+ scalar_t__ ttisstring (int const*) ;
 
 const TValue *luaV_tonumber (const TValue *obj, TValue *n) {
   lua_Number num;
@@ -28,5 +28,5 @@ const TValue *luaV_tonumber (const TValue *obj, TValue *n) {
     return n;
   }
   else
-    return NULL;
+    return ((void*)0);
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ File ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CurrentResourceOwner ; 
- scalar_t__ ENOENT ; 
- int /*<<< orphan*/  ERROR ; 
- int O_RDONLY ; 
- int PG_BINARY ; 
- scalar_t__ PathNameOpenFile (char const*,int) ; 
- int /*<<< orphan*/  RegisterTemporaryFile (scalar_t__) ; 
- int /*<<< orphan*/  ResourceOwnerEnlargeFiles (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode_for_file_access () ; 
- int /*<<< orphan*/  errmsg (char*,char const*) ; 
- scalar_t__ errno ; 
+
+
+
+typedef scalar_t__ File ;
+
+
+ int CurrentResourceOwner ;
+ scalar_t__ ENOENT ;
+ int ERROR ;
+ int O_RDONLY ;
+ int PG_BINARY ;
+ scalar_t__ PathNameOpenFile (char const*,int) ;
+ int RegisterTemporaryFile (scalar_t__) ;
+ int ResourceOwnerEnlargeFiles (int ) ;
+ int ereport (int ,int ) ;
+ int errcode_for_file_access () ;
+ int errmsg (char*,char const*) ;
+ scalar_t__ errno ;
 
 File
 PathNameOpenTemporaryFile(const char *path)
 {
-	File		file;
+ File file;
 
-	ResourceOwnerEnlargeFiles(CurrentResourceOwner);
+ ResourceOwnerEnlargeFiles(CurrentResourceOwner);
 
-	/* We open the file read-only. */
-	file = PathNameOpenFile(path, O_RDONLY | PG_BINARY);
 
-	/* If no such file, then we don't raise an error. */
-	if (file <= 0 && errno != ENOENT)
-		ereport(ERROR,
-				(errcode_for_file_access(),
-				 errmsg("could not open temporary file \"%s\": %m",
-						path)));
+ file = PathNameOpenFile(path, O_RDONLY | PG_BINARY);
 
-	if (file > 0)
-	{
-		/* Register it for automatic close. */
-		RegisterTemporaryFile(file);
-	}
 
-	return file;
+ if (file <= 0 && errno != ENOENT)
+  ereport(ERROR,
+    (errcode_for_file_access(),
+     errmsg("could not open temporary file \"%s\": %m",
+      path)));
+
+ if (file > 0)
+ {
+
+  RegisterTemporaryFile(file);
+ }
+
+ return file;
 }

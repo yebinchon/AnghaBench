@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int bssid_set; int /*<<< orphan*/  bssid; int /*<<< orphan*/  password; int /*<<< orphan*/  ssid; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int bssid_set; int bssid; int password; int ssid; } ;
 struct TYPE_5__ {TYPE_1__ sta; } ;
-typedef  TYPE_2__ wifi_config_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ EventBits_t ;
+typedef TYPE_2__ wifi_config_t ;
+typedef int uint8_t ;
+typedef scalar_t__ EventBits_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_PWD ; 
- int /*<<< orphan*/  DEFAULT_SSID ; 
- scalar_t__ GOT_IP_EVENT ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WIFI_IF_STA ; 
- int /*<<< orphan*/  esp_wifi_connect () ; 
- int /*<<< orphan*/  esp_wifi_set_config (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  wifi_events ; 
- scalar_t__ xEventGroupWaitBits (int /*<<< orphan*/ ,scalar_t__,int,int /*<<< orphan*/ ,int) ; 
+
+ int DEFAULT_PWD ;
+ int DEFAULT_SSID ;
+ scalar_t__ GOT_IP_EVENT ;
+ int TEST_ASSERT (int) ;
+ int TEST_ESP_OK (int ) ;
+ int WIFI_IF_STA ;
+ int esp_wifi_connect () ;
+ int esp_wifi_set_config (int ,TYPE_2__*) ;
+ int memcpy (int ,int *,int) ;
+ int portTICK_RATE_MS ;
+ int wifi_events ;
+ scalar_t__ xEventGroupWaitBits (int ,scalar_t__,int,int ,int) ;
 
 __attribute__((used)) static void wifi_connect_by_bssid(uint8_t *bssid)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void wifi_connect_by_bssid(uint8_t *bssid)
     wifi_config_t w_config = {
         .sta.ssid = DEFAULT_SSID,
         .sta.password = DEFAULT_PWD,
-        .sta.bssid_set = true,
+        .sta.bssid_set = 1,
     };
 
     memcpy(w_config.sta.bssid, bssid, 6);

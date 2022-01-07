@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ uv_tcp_t ;
-typedef  int /*<<< orphan*/  uv_stream_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * data; } ;
+typedef TYPE_1__ uv_tcp_t ;
+typedef int uv_stream_t ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  after_read ; 
- int /*<<< orphan*/  alloc ; 
- int /*<<< orphan*/  check_sockname (struct sockaddr*,char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  connect_port ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  getpeernamecount ; 
- int /*<<< orphan*/  getsocknamecount ; 
- int /*<<< orphan*/  loop ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  server_port ; 
- int /*<<< orphan*/  stderr ; 
- int uv_accept (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* uv_err_name (int) ; 
- int uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_tcp_getpeername (TYPE_1__*,struct sockaddr*,int*) ; 
- int uv_tcp_getsockname (TYPE_1__*,struct sockaddr*,int*) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int ASSERT (int) ;
+ int after_read ;
+ int alloc ;
+ int check_sockname (struct sockaddr*,char*,int ,char*) ;
+ int connect_port ;
+ int fprintf (int ,char*,char*) ;
+ int getpeernamecount ;
+ int getsocknamecount ;
+ int loop ;
+ TYPE_1__* malloc (int) ;
+ int server_port ;
+ int stderr ;
+ int uv_accept (int *,int *) ;
+ char* uv_err_name (int) ;
+ int uv_read_start (int *,int ,int ) ;
+ int uv_tcp_getpeername (TYPE_1__*,struct sockaddr*,int*) ;
+ int uv_tcp_getsockname (TYPE_1__*,struct sockaddr*,int*) ;
+ int uv_tcp_init (int ,TYPE_1__*) ;
 
 __attribute__((used)) static void on_connection(uv_stream_t* server, int status) {
   struct sockaddr sockname, peername;
@@ -48,12 +48,12 @@ __attribute__((used)) static void on_connection(uv_stream_t* server, int status)
   ASSERT(status == 0);
 
   handle = malloc(sizeof(*handle));
-  ASSERT(handle != NULL);
+  ASSERT(handle != ((void*)0));
 
   r = uv_tcp_init(loop, handle);
   ASSERT(r == 0);
 
-  /* associate server with stream */
+
   handle->data = server;
 
   r = uv_accept(server, (uv_stream_t*)handle);

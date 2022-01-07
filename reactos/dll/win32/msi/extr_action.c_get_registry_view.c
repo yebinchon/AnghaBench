@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int Attributes; } ;
-typedef  int /*<<< orphan*/  REGSAM ;
-typedef  TYPE_1__ MSICOMPONENT ;
+typedef int REGSAM ;
+typedef TYPE_1__ MSICOMPONENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEY_WOW64_32KEY ; 
- int /*<<< orphan*/  KEY_WOW64_64KEY ; 
- scalar_t__ is_64bit ; 
- scalar_t__ is_wow64 ; 
- int msidbComponentAttributes64bit ; 
+
+ int KEY_WOW64_32KEY ;
+ int KEY_WOW64_64KEY ;
+ scalar_t__ is_64bit ;
+ scalar_t__ is_wow64 ;
+ int msidbComponentAttributes64bit ;
 
 __attribute__((used)) static inline REGSAM get_registry_view( const MSICOMPONENT *comp )
 {

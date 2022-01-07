@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_mode; } ;
-typedef  int /*<<< orphan*/  name_dir2_file ;
-typedef  int /*<<< orphan*/  name_dir2 ;
-typedef  int /*<<< orphan*/  name_dir1 ;
+typedef int name_dir2_file ;
+typedef int name_dir2 ;
+typedef int name_dir1 ;
 
-/* Variables and functions */
- int S_IFDIR ; 
- int S_IFREG ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT_FALSE (int) ; 
- int /*<<< orphan*/  TEST_ASSERT_TRUE (int) ; 
- int /*<<< orphan*/  mkdir (char*,int) ; 
- int /*<<< orphan*/  rmdir (char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  stat (char*,struct stat*) ; 
- int /*<<< orphan*/  test_fatfs_create_file_with_text (char*,char*) ; 
- int /*<<< orphan*/  unlink (char*) ; 
+
+ int S_IFDIR ;
+ int S_IFREG ;
+ int TEST_ASSERT_EQUAL (int,int ) ;
+ int TEST_ASSERT_FALSE (int) ;
+ int TEST_ASSERT_TRUE (int) ;
+ int mkdir (char*,int) ;
+ int rmdir (char*) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int stat (char*,struct stat*) ;
+ int test_fatfs_create_file_with_text (char*,char*) ;
+ int unlink (char*) ;
 
 void test_fatfs_mkdir_rmdir(const char* filename_prefix)
 {

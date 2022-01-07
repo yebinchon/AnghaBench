@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_MORE_DATA ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- int RRF_NOEXPAND ; 
- int RRF_RT_REG_SZ ; 
- scalar_t__ RegGetValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WINCODEC_ERR_INSUFFICIENTBUFFER ; 
+
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int LPCWSTR ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_MORE_DATA ;
+ int E_INVALIDARG ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ int RRF_NOEXPAND ;
+ int RRF_RT_REG_SZ ;
+ scalar_t__ RegGetValueW (int ,int *,int ,int,int *,int *,int*) ;
+ int S_OK ;
+ int WINCODEC_ERR_INSUFFICIENTBUFFER ;
 
 __attribute__((used)) static HRESULT ComponentInfo_GetStringValue(HKEY classkey, LPCWSTR value,
     UINT buffer_size, WCHAR *buffer, UINT *actual_size)
@@ -38,7 +38,7 @@ __attribute__((used)) static HRESULT ComponentInfo_GetStringValue(HKEY classkey,
     if (!actual_size)
         return E_INVALIDARG;
 
-    ret = RegGetValueW(classkey, NULL, value, RRF_RT_REG_SZ|RRF_NOEXPAND, NULL,
+    ret = RegGetValueW(classkey, ((void*)0), value, RRF_RT_REG_SZ|RRF_NOEXPAND, ((void*)0),
         buffer, &cbdata);
 
     if (ret == ERROR_FILE_NOT_FOUND)
@@ -51,7 +51,7 @@ __attribute__((used)) static HRESULT ComponentInfo_GetStringValue(HKEY classkey,
         *actual_size = cbdata/sizeof(WCHAR);
 
     if (!buffer && buffer_size != 0)
-        /* Yes, native returns the correct size in this case. */
+
         return E_INVALIDARG;
 
     if (ret == ERROR_MORE_DATA)

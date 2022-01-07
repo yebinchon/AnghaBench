@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ length; int /*<<< orphan*/  encoding; } ;
-typedef  TYPE_1__ intset ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTSET_ENC_INT16 ; 
- int /*<<< orphan*/  intrev32ifbe (int /*<<< orphan*/ ) ; 
- TYPE_1__* zmalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ length; int encoding; } ;
+typedef TYPE_1__ intset ;
+
+
+ int INTSET_ENC_INT16 ;
+ int intrev32ifbe (int ) ;
+ TYPE_1__* zmalloc (int) ;
 
 intset *intsetNew(void) {
     intset *is = zmalloc(sizeof(intset));

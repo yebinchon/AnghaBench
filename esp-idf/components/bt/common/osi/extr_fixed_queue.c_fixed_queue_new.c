@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t capacity; int /*<<< orphan*/  dequeue_sem; int /*<<< orphan*/  enqueue_sem; int /*<<< orphan*/  list; int /*<<< orphan*/  lock; } ;
-typedef  TYPE_1__ fixed_queue_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fixed_queue_free (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_new (int /*<<< orphan*/ *) ; 
- TYPE_1__* osi_calloc (int) ; 
- int /*<<< orphan*/  osi_mutex_new (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  osi_sem_new (int /*<<< orphan*/ *,size_t,size_t) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t capacity; int dequeue_sem; int enqueue_sem; int list; int lock; } ;
+typedef TYPE_1__ fixed_queue_t ;
+
+
+ int fixed_queue_free (TYPE_1__*,int *) ;
+ int list_new (int *) ;
+ TYPE_1__* osi_calloc (int) ;
+ int osi_mutex_new (int *) ;
+ int osi_sem_new (int *,size_t,size_t) ;
 
 fixed_queue_t *fixed_queue_new(size_t capacity)
 {
@@ -31,7 +31,7 @@ fixed_queue_t *fixed_queue_new(size_t capacity)
     osi_mutex_new(&ret->lock);
     ret->capacity = capacity;
 
-    ret->list = list_new(NULL);
+    ret->list = list_new(((void*)0));
     if (!ret->list) {
         goto error;
     }
@@ -50,6 +50,6 @@ fixed_queue_t *fixed_queue_new(size_t capacity)
     return ret;
 
 error:;
-    fixed_queue_free(ret, NULL);
-    return NULL;
+    fixed_queue_free(ret, ((void*)0));
+    return ((void*)0);
 }

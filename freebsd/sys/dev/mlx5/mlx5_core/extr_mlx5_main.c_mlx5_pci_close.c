@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mlx5_priv {int dummy; } ;
-struct mlx5_core_dev {int /*<<< orphan*/  pdev; int /*<<< orphan*/  iseg; } ;
+struct mlx5_core_dev {int pdev; int iseg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iounmap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mlx5_pci_disable_device (struct mlx5_core_dev*) ; 
- int /*<<< orphan*/  release_bar (int /*<<< orphan*/ ) ; 
+
+ int iounmap (int ) ;
+ int mlx5_pci_disable_device (struct mlx5_core_dev*) ;
+ int release_bar (int ) ;
 
 __attribute__((used)) static void mlx5_pci_close(struct mlx5_core_dev *dev, struct mlx5_priv *priv)
 {
-	iounmap(dev->iseg);
-	release_bar(dev->pdev);
-	mlx5_pci_disable_device(dev);
+ iounmap(dev->iseg);
+ release_bar(dev->pdev);
+ mlx5_pci_disable_device(dev);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  Vdbe ;
-typedef  int /*<<< orphan*/  Table ;
-struct TYPE_3__ {int /*<<< orphan*/ * pVdbe; } ;
-typedef  TYPE_1__ Parse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3ExprCodeGetColumnOfTable (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP5 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int Vdbe ;
+typedef int Table ;
+struct TYPE_3__ {int * pVdbe; } ;
+typedef TYPE_1__ Parse ;
+
+
+ int assert (int) ;
+ int sqlite3ExprCodeGetColumnOfTable (int *,int *,int,int,int) ;
+ int sqlite3VdbeChangeP5 (int *,int ) ;
 
 int sqlite3ExprCodeGetColumn(
-  Parse *pParse,   /* Parsing and code generating context */
-  Table *pTab,     /* Description of the table we are reading from */
-  int iColumn,     /* Index of the table column */
-  int iTable,      /* The cursor pointing to the table */
-  int iReg,        /* Store results here */
-  u8 p5            /* P5 value for OP_Column + FLAGS */
+  Parse *pParse,
+  Table *pTab,
+  int iColumn,
+  int iTable,
+  int iReg,
+  u8 p5
 ){
   Vdbe *v = pParse->pVdbe;
   assert( v!=0 );

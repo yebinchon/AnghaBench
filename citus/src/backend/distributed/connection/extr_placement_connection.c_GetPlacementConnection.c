@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  ShardPlacement ;
-typedef  int /*<<< orphan*/  MultiConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FinishConnectionEstablishment (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * StartPlacementConnection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int uint32 ;
+typedef int ShardPlacement ;
+typedef int MultiConnection ;
+
+
+ int FinishConnectionEstablishment (int *) ;
+ int * StartPlacementConnection (int ,int *,char const*) ;
 
 MultiConnection *
 GetPlacementConnection(uint32 flags, ShardPlacement *placement, const char *userName)
 {
-	MultiConnection *connection = StartPlacementConnection(flags, placement, userName);
+ MultiConnection *connection = StartPlacementConnection(flags, placement, userName);
 
-	FinishConnectionEstablishment(connection);
-	return connection;
+ FinishConnectionEstablishment(connection);
+ return connection;
 }

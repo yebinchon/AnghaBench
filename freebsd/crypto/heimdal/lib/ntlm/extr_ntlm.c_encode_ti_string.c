@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  krb5_storage ;
-typedef  int krb5_error_code ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_store_uint16 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  len_string (int,char*) ; 
- int /*<<< orphan*/  put_string (int /*<<< orphan*/ *,int,char*) ; 
+
+
+
+typedef int uint16_t ;
+typedef int krb5_storage ;
+typedef int krb5_error_code ;
+
+
+ int CHECK (int ,int ) ;
+ int krb5_store_uint16 (int *,int ) ;
+ int len_string (int,char*) ;
+ int put_string (int *,int,char*) ;
 
 __attribute__((used)) static int
 encode_ti_string(krb5_storage *out, uint16_t type, int ucs2, char *s)

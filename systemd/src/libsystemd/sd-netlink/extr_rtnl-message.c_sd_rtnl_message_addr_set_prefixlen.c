@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct ifaddrmsg {scalar_t__ ifa_family; unsigned char ifa_prefixlen; } ;
-struct TYPE_6__ {struct TYPE_6__* hdr; int /*<<< orphan*/  nlmsg_type; } ;
-typedef  TYPE_1__ sd_netlink_message ;
+struct TYPE_6__ {struct TYPE_6__* hdr; int nlmsg_type; } ;
+typedef TYPE_1__ sd_netlink_message ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int /*<<< orphan*/  EINVAL ; 
- int ERANGE ; 
- struct ifaddrmsg* NLMSG_DATA (TYPE_1__*) ; 
- int /*<<< orphan*/  assert_return (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* rtnl_message_type_is_addr (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int EINVAL ;
+ int ERANGE ;
+ struct ifaddrmsg* NLMSG_DATA (TYPE_1__*) ;
+ int assert_return (TYPE_1__*,int ) ;
+ TYPE_1__* rtnl_message_type_is_addr (int ) ;
 
 int sd_rtnl_message_addr_set_prefixlen(sd_netlink_message *m, unsigned char prefixlen) {
         struct ifaddrmsg *ifa;

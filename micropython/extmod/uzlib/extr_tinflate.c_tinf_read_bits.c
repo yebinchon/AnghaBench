@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TINF_DATA ;
 
-/* Variables and functions */
- scalar_t__ tinf_getbit (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int TINF_DATA ;
+
+
+ scalar_t__ tinf_getbit (int *) ;
 
 __attribute__((used)) static unsigned int tinf_read_bits(TINF_DATA *d, int num, int base)
 {
    unsigned int val = 0;
 
-   /* read num bits */
+
    if (num)
    {
       unsigned int limit = 1 << (num);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct xfs_inode {TYPE_1__* i_mount; } ;
-struct TYPE_2__ {int /*<<< orphan*/  m_sb; scalar_t__ m_always_cow; } ;
+struct TYPE_2__ {int m_sb; scalar_t__ m_always_cow; } ;
 
-/* Variables and functions */
- scalar_t__ xfs_sb_version_hasreflink (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ xfs_sb_version_hasreflink (int *) ;
 
 __attribute__((used)) static inline bool xfs_is_always_cow_inode(struct xfs_inode *ip)
 {
-	return ip->i_mount->m_always_cow &&
-		xfs_sb_version_hasreflink(&ip->i_mount->m_sb);
+ return ip->i_mount->m_always_cow &&
+  xfs_sb_version_hasreflink(&ip->i_mount->m_sb);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- int CHMOD (char*,size_t) ; 
- char* RSTRING_CSTR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (size_t) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,size_t*,int /*<<< orphan*/ **,size_t*) ; 
- int /*<<< orphan*/  mrb_locale_free (char*) ; 
- char* mrb_locale_from_utf8 (char const*,int) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char const*) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ int CHMOD (char*,size_t) ;
+ char* RSTRING_CSTR (int *,int ) ;
+ int mrb_fixnum_value (size_t) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ int mrb_get_args (int *,char*,size_t*,int **,size_t*) ;
+ int mrb_locale_free (char*) ;
+ char* mrb_locale_from_utf8 (char const*,int) ;
+ int mrb_sys_fail (int *,char const*) ;
 
 __attribute__((used)) static mrb_value
 mrb_file_s_chmod(mrb_state *mrb, mrb_value klass) {

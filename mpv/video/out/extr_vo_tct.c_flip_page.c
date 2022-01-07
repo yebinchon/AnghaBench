@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo {int /*<<< orphan*/  dheight; int /*<<< orphan*/  dwidth; struct priv* priv; } ;
-struct priv {TYPE_2__* opts; TYPE_1__* frame; int /*<<< orphan*/  sheight; int /*<<< orphan*/  swidth; } ;
-struct TYPE_4__ {scalar_t__ algo; int /*<<< orphan*/  term256; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * stride; int /*<<< orphan*/ * planes; } ;
 
-/* Variables and functions */
- scalar_t__ ALGO_PLAIN ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  write_half_blocks (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_plain (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo {int dheight; int dwidth; struct priv* priv; } ;
+struct priv {TYPE_2__* opts; TYPE_1__* frame; int sheight; int swidth; } ;
+struct TYPE_4__ {scalar_t__ algo; int term256; } ;
+struct TYPE_3__ {int * stride; int * planes; } ;
+
+
+ scalar_t__ ALGO_PLAIN ;
+ int fflush (int ) ;
+ int stdout ;
+ int write_half_blocks (int ,int ,int ,int ,int ,int ,int ) ;
+ int write_plain (int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void flip_page(struct vo *vo)
 {

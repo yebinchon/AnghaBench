@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mlxsw_afk_element_usage {int /*<<< orphan*/  usage; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLXSW_AFK_ELEMENT_MAX ; 
- int /*<<< orphan*/  bitmap_zero (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mlxsw_afk_element_usage {int usage; } ;
+
+
+ int MLXSW_AFK_ELEMENT_MAX ;
+ int bitmap_zero (int ,int ) ;
 
 __attribute__((used)) static inline void
 mlxsw_afk_element_usage_zero(struct mlxsw_afk_element_usage *elusage)
 {
-	bitmap_zero(elusage->usage, MLXSW_AFK_ELEMENT_MAX);
+ bitmap_zero(elusage->usage, MLXSW_AFK_ELEMENT_MAX);
 }

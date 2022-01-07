@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int first_t; int last_t; int usages; int flags; TYPE_1__* url; } ;
 struct TYPE_3__ {char* url; } ;
-typedef  TYPE_2__ REGISTRY_MACHINE_URL ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_2__ REGISTRY_MACHINE_URL ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_REGISTRY ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*) ; 
- int fprintf (int /*<<< orphan*/ *,char*,int,int,int,int,char*) ; 
+
+ int D_REGISTRY ;
+ int debug (int ,char*,char*) ;
+ int fprintf (int *,char*,int,int,int,int,char*) ;
 
 __attribute__((used)) static int registry_machine_save_url(void *entry, void *file) {
     REGISTRY_MACHINE_URL *mu = entry;
@@ -36,7 +36,7 @@ __attribute__((used)) static int registry_machine_save_url(void *entry, void *fi
             mu->url->url
     );
 
-    // error handling is done at registry_db_save()
+
 
     return ret;
 }

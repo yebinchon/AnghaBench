@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct alloc_cache {TYPE_2__* quar; } ;
-struct TYPE_6__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_6__ {int lock; } ;
 struct TYPE_7__ {TYPE_1__ entry; } ;
-typedef  TYPE_2__ alloc_special_type ;
+typedef TYPE_2__ alloc_special_type ;
 
-/* Variables and functions */
- TYPE_2__* alloc_special_next (TYPE_2__*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  lock_rw_destroy (int /*<<< orphan*/ *) ; 
+
+ TYPE_2__* alloc_special_next (TYPE_2__*) ;
+ int free (TYPE_2__*) ;
+ int lock_rw_destroy (int *) ;
 
 __attribute__((used)) static void
 alloc_clear_special_list(struct alloc_cache* alloc)
 {
-	alloc_special_type* p, *np;
-	/* free */
-	p = alloc->quar;
-	while(p) {
-		np = alloc_special_next(p);
-		/* deinit special type */
-		lock_rw_destroy(&p->entry.lock);
-		free(p);
-		p = np;
-	}
+ alloc_special_type* p, *np;
+
+ p = alloc->quar;
+ while(p) {
+  np = alloc_special_next(p);
+
+  lock_rw_destroy(&p->entry.lock);
+  free(p);
+  p = np;
+ }
 }

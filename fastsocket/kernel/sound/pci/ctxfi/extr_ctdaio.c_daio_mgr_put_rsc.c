@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 union daio_usage {int data; } ;
 struct rsc_mgr {scalar_t__ rscs; } ;
-typedef  enum DAIOTYP { ____Placeholder_DAIOTYP } DAIOTYP ;
+typedef enum DAIOTYP { ____Placeholder_DAIOTYP } DAIOTYP ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int daio_mgr_put_rsc(struct rsc_mgr *mgr, enum DAIOTYP type)
 {
-	((union daio_usage *)mgr->rscs)->data &= ~(0x1 << type);
+ ((union daio_usage *)mgr->rscs)->data &= ~(0x1 << type);
 
-	return 0;
+ return 0;
 }

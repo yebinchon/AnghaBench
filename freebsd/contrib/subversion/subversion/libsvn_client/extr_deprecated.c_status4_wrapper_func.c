@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_status3_t ;
-typedef  int /*<<< orphan*/  svn_wc_status2_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * backwards_compatibility_baton; } ;
-typedef  TYPE_1__ svn_client_status_t ;
-struct status4_wrapper_baton {int /*<<< orphan*/  old_baton; int /*<<< orphan*/ * (* old_func ) (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;int /*<<< orphan*/  wc_ctx; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__status2_from_3 (int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_wc_status3_t ;
+typedef int svn_wc_status2_t ;
+typedef int svn_error_t ;
+struct TYPE_3__ {int * backwards_compatibility_baton; } ;
+typedef TYPE_1__ svn_client_status_t ;
+struct status4_wrapper_baton {int old_baton; int * (* old_func ) (int ,char const*,int *,int *) ;int wc_ctx; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * stub1 (int ,char const*,int *,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_wc__status2_from_3 (int **,int const*,int ,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 status4_wrapper_func(void *baton,

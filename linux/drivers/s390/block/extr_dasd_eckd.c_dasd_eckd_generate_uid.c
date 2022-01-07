@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dasd_eckd_private {int /*<<< orphan*/  gneq; int /*<<< orphan*/  ned; } ;
-struct dasd_device {int /*<<< orphan*/  cdev; struct dasd_eckd_private* private; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  create_uid (struct dasd_eckd_private*) ; 
- int /*<<< orphan*/  get_ccwdev_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ ,unsigned long) ; 
+
+
+
+struct dasd_eckd_private {int gneq; int ned; } ;
+struct dasd_device {int cdev; struct dasd_eckd_private* private; } ;
+
+
+ int ENODEV ;
+ int create_uid (struct dasd_eckd_private*) ;
+ int get_ccwdev_lock (int ) ;
+ int spin_lock_irqsave (int ,unsigned long) ;
+ int spin_unlock_irqrestore (int ,unsigned long) ;
 
 __attribute__((used)) static int dasd_eckd_generate_uid(struct dasd_device *device)
 {
-	struct dasd_eckd_private *private = device->private;
-	unsigned long flags;
+ struct dasd_eckd_private *private = device->private;
+ unsigned long flags;
 
-	if (!private)
-		return -ENODEV;
-	if (!private->ned || !private->gneq)
-		return -ENODEV;
-	spin_lock_irqsave(get_ccwdev_lock(device->cdev), flags);
-	create_uid(private);
-	spin_unlock_irqrestore(get_ccwdev_lock(device->cdev), flags);
-	return 0;
+ if (!private)
+  return -ENODEV;
+ if (!private->ned || !private->gneq)
+  return -ENODEV;
+ spin_lock_irqsave(get_ccwdev_lock(device->cdev), flags);
+ create_uid(private);
+ spin_unlock_irqrestore(get_ccwdev_lock(device->cdev), flags);
+ return 0;
 }

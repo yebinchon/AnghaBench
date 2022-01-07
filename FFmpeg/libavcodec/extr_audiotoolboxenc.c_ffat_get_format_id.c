@@ -1,68 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
-typedef  int /*<<< orphan*/  UInt32 ;
 
-/* Variables and functions */
-#define  AV_CODEC_ID_AAC 138 
-#define  AV_CODEC_ID_ADPCM_IMA_QT 137 
-#define  AV_CODEC_ID_ALAC 136 
-#define  AV_CODEC_ID_ILBC 135 
-#define  AV_CODEC_ID_PCM_ALAW 134 
-#define  AV_CODEC_ID_PCM_MULAW 133 
-#define  FF_PROFILE_AAC_ELD 132 
-#define  FF_PROFILE_AAC_HE 131 
-#define  FF_PROFILE_AAC_HE_V2 130 
-#define  FF_PROFILE_AAC_LD 129 
-#define  FF_PROFILE_AAC_LOW 128 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  kAudioFormatALaw ; 
- int /*<<< orphan*/  kAudioFormatAppleIMA4 ; 
- int /*<<< orphan*/  kAudioFormatAppleLossless ; 
- int /*<<< orphan*/  kAudioFormatMPEG4AAC ; 
- int /*<<< orphan*/  kAudioFormatMPEG4AAC_ELD ; 
- int /*<<< orphan*/  kAudioFormatMPEG4AAC_HE ; 
- int /*<<< orphan*/  kAudioFormatMPEG4AAC_HE_V2 ; 
- int /*<<< orphan*/  kAudioFormatMPEG4AAC_LD ; 
- int /*<<< orphan*/  kAudioFormatULaw ; 
- int /*<<< orphan*/  kAudioFormatiLBC ; 
+
+
+
+typedef enum AVCodecID { ____Placeholder_AVCodecID } AVCodecID ;
+typedef int UInt32 ;
+ int av_assert0 (int) ;
+ int kAudioFormatALaw ;
+ int kAudioFormatAppleIMA4 ;
+ int kAudioFormatAppleLossless ;
+ int kAudioFormatMPEG4AAC ;
+ int kAudioFormatMPEG4AAC_ELD ;
+ int kAudioFormatMPEG4AAC_HE ;
+ int kAudioFormatMPEG4AAC_HE_V2 ;
+ int kAudioFormatMPEG4AAC_LD ;
+ int kAudioFormatULaw ;
+ int kAudioFormatiLBC ;
 
 __attribute__((used)) static UInt32 ffat_get_format_id(enum AVCodecID codec, int profile)
 {
     switch (codec) {
-    case AV_CODEC_ID_AAC:
+    case 138:
         switch (profile) {
-        case FF_PROFILE_AAC_LOW:
+        case 128:
         default:
             return kAudioFormatMPEG4AAC;
-        case FF_PROFILE_AAC_HE:
+        case 131:
             return kAudioFormatMPEG4AAC_HE;
-        case FF_PROFILE_AAC_HE_V2:
+        case 130:
             return kAudioFormatMPEG4AAC_HE_V2;
-        case FF_PROFILE_AAC_LD:
+        case 129:
             return kAudioFormatMPEG4AAC_LD;
-        case FF_PROFILE_AAC_ELD:
+        case 132:
             return kAudioFormatMPEG4AAC_ELD;
         }
-    case AV_CODEC_ID_ADPCM_IMA_QT:
+    case 137:
         return kAudioFormatAppleIMA4;
-    case AV_CODEC_ID_ALAC:
+    case 136:
         return kAudioFormatAppleLossless;
-    case AV_CODEC_ID_ILBC:
+    case 135:
         return kAudioFormatiLBC;
-    case AV_CODEC_ID_PCM_ALAW:
+    case 134:
         return kAudioFormatALaw;
-    case AV_CODEC_ID_PCM_MULAW:
+    case 133:
         return kAudioFormatULaw;
     default:
         av_assert0(!"Invalid codec ID!");

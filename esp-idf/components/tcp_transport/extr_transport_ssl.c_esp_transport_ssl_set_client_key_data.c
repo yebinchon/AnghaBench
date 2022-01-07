@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int clientkey_pem_bytes; void* clientkey_pem_buf; } ;
 struct TYPE_5__ {TYPE_1__ cfg; } ;
-typedef  TYPE_2__ transport_ssl_t ;
-typedef  scalar_t__ esp_transport_handle_t ;
+typedef TYPE_2__ transport_ssl_t ;
+typedef scalar_t__ esp_transport_handle_t ;
 
-/* Variables and functions */
- TYPE_2__* esp_transport_get_context_data (scalar_t__) ; 
+
+ TYPE_2__* esp_transport_get_context_data (scalar_t__) ;
 
 void esp_transport_ssl_set_client_key_data(esp_transport_handle_t t, const char *data, int len)
 {

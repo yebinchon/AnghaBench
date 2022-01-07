@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct SSchema {int dummy; } ;
-struct TYPE_4__ {scalar_t__ numOfTags; int /*<<< orphan*/  numOfColumns; } ;
-typedef  TYPE_1__ SMeterMeta ;
+struct TYPE_4__ {scalar_t__ numOfTags; int numOfColumns; } ;
+typedef TYPE_1__ SMeterMeta ;
 
-/* Variables and functions */
- struct SSchema* tsGetColumnSchema (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ struct SSchema* tsGetColumnSchema (TYPE_1__*,int ) ;
 
 struct SSchema* tsGetTagSchema(SMeterMeta* pMeta) {
-  if (pMeta == NULL || pMeta->numOfTags == 0) {
-    return NULL;
+  if (pMeta == ((void*)0) || pMeta->numOfTags == 0) {
+    return ((void*)0);
   }
 
   return tsGetColumnSchema(pMeta, pMeta->numOfColumns);

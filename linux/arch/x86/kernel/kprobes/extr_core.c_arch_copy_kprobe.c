@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  insn; int /*<<< orphan*/  if_modifier; } ;
-struct kprobe {TYPE_1__ ainsn; int /*<<< orphan*/  opcode; int /*<<< orphan*/  addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int insn; int if_modifier; } ;
+struct kprobe {TYPE_1__ ainsn; int opcode; int addr; } ;
 struct insn {int dummy; } ;
-typedef  int /*<<< orphan*/  kprobe_opcode_t ;
+typedef int kprobe_opcode_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int MAX_INSN_SIZE ; 
- int __copy_instruction (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct insn*) ; 
- int /*<<< orphan*/  is_IF_modifier (int /*<<< orphan*/ *) ; 
- int prepare_boost (int /*<<< orphan*/ *,struct kprobe*,struct insn*) ; 
- int /*<<< orphan*/  text_poke (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int EINVAL ;
+ int MAX_INSN_SIZE ;
+ int __copy_instruction (int *,int ,int ,struct insn*) ;
+ int is_IF_modifier (int *) ;
+ int prepare_boost (int *,struct kprobe*,struct insn*) ;
+ int text_poke (int ,int *,int) ;
 
 __attribute__((used)) static int arch_copy_kprobe(struct kprobe *p)
 {
-	struct insn insn;
-	kprobe_opcode_t buf[MAX_INSN_SIZE];
-	int len;
+ struct insn insn;
+ kprobe_opcode_t buf[MAX_INSN_SIZE];
+ int len;
 
-	/* Copy an instruction with recovering if other optprobe modifies it.*/
-	len = __copy_instruction(buf, p->addr, p->ainsn.insn, &insn);
-	if (!len)
-		return -EINVAL;
 
-	/*
-	 * __copy_instruction can modify the displacement of the instruction,
-	 * but it doesn't affect boostable check.
-	 */
-	len = prepare_boost(buf, p, &insn);
+ len = __copy_instruction(buf, p->addr, p->ainsn.insn, &insn);
+ if (!len)
+  return -EINVAL;
 
-	/* Check whether the instruction modifies Interrupt Flag or not */
-	p->ainsn.if_modifier = is_IF_modifier(buf);
 
-	/* Also, displacement change doesn't affect the first byte */
-	p->opcode = buf[0];
 
-	/* OK, write back the instruction(s) into ROX insn buffer */
-	text_poke(p->ainsn.insn, buf, len);
 
-	return 0;
+
+ len = prepare_boost(buf, p, &insn);
+
+
+ p->ainsn.if_modifier = is_IF_modifier(buf);
+
+
+ p->opcode = buf[0];
+
+
+ text_poke(p->ainsn.insn, buf, len);
+
+ return 0;
 }

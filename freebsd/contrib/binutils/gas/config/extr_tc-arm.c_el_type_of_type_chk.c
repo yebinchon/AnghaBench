@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum neon_type_mask { ____Placeholder_neon_type_mask } neon_type_mask ;
-typedef  enum neon_el_type { ____Placeholder_neon_el_type } neon_el_type ;
 
-/* Variables and functions */
- int FAIL ; 
- int NT_float ; 
- int NT_integer ; 
- int NT_poly ; 
- int NT_signed ; 
- int NT_unsigned ; 
- int NT_untyped ; 
- int N_16 ; 
- int N_32 ; 
- int N_64 ; 
- int N_8 ; 
- int N_EQK ; 
- int N_F32 ; 
- int N_F64 ; 
- int N_I16 ; 
- int N_I32 ; 
- int N_I64 ; 
- int N_I8 ; 
- int N_P16 ; 
- int N_P8 ; 
- int N_S16 ; 
- int N_S32 ; 
- int N_S64 ; 
- int N_S8 ; 
- int N_U16 ; 
- int N_U32 ; 
- int N_U64 ; 
- int N_U8 ; 
- int SUCCESS ; 
+
+
+
+typedef enum neon_type_mask { ____Placeholder_neon_type_mask } neon_type_mask ;
+typedef enum neon_el_type { ____Placeholder_neon_el_type } neon_el_type ;
+
+
+ int FAIL ;
+ int NT_float ;
+ int NT_integer ;
+ int NT_poly ;
+ int NT_signed ;
+ int NT_unsigned ;
+ int NT_untyped ;
+ int N_16 ;
+ int N_32 ;
+ int N_64 ;
+ int N_8 ;
+ int N_EQK ;
+ int N_F32 ;
+ int N_F64 ;
+ int N_I16 ;
+ int N_I32 ;
+ int N_I64 ;
+ int N_I8 ;
+ int N_P16 ;
+ int N_P8 ;
+ int N_S16 ;
+ int N_S32 ;
+ int N_S64 ;
+ int N_S8 ;
+ int N_U16 ;
+ int N_U32 ;
+ int N_U64 ;
+ int N_U8 ;
+ int SUCCESS ;
 
 __attribute__((used)) static int
 el_type_of_type_chk (enum neon_el_type *type, unsigned *size,
@@ -76,6 +76,6 @@ el_type_of_type_chk (enum neon_el_type *type, unsigned *size,
     *type = NT_float;
   else
     return FAIL;
-  
+
   return SUCCESS;
 }

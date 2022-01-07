@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fail (char*) ; 
- int /*<<< orphan*/ * json_copy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_loads (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * json_object_get (int /*<<< orphan*/ *,char const*) ; 
- void* json_object_iter (int /*<<< orphan*/ *) ; 
- char* json_object_iter_key (void*) ; 
- void* json_object_iter_next (int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/ * json_object_iter_value (void*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+
+
+typedef int json_t ;
+
+
+ int fail (char*) ;
+ int * json_copy (int *) ;
+ int json_decref (int *) ;
+ int json_equal (int *,int *) ;
+ int * json_loads (char const*,int ,int *) ;
+ int * json_object_get (int *,char const*) ;
+ void* json_object_iter (int *) ;
+ char* json_object_iter_key (void*) ;
+ void* json_object_iter_next (int *,void*) ;
+ int * json_object_iter_value (void*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 __attribute__((used)) static void test_copy_object(void)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static void test_copy_object(void)
     json_t *object, *copy;
     void *iter;
 
-    object = json_loads(json_object_text, 0, NULL);
+    object = json_loads(json_object_text, 0, ((void*)0));
     if(!object)
         fail("unable to parse an object");
 

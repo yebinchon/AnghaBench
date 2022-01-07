@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FALSE ; 
- scalar_t__ IS_DAKU (int) ; 
- scalar_t__ IS_HANDAKU (int) ; 
- int TRUE ; 
+ int FALSE ;
+ scalar_t__ IS_DAKU (int) ;
+ scalar_t__ IS_HANDAKU (int) ;
+ int TRUE ;
 
 __attribute__((used)) static void
 han2zen (int *p1, int *p2)
@@ -91,9 +83,9 @@ han2zen (int *p1, int *p2)
   };
 
   if (*p2 == 222 && IS_DAKU (*p1))
-    daku = TRUE;		/* Daku-ten */
+    daku = TRUE;
   else if (*p2 == 223 && IS_HANDAKU (*p1))
-    handaku = TRUE;		/* Han-daku-ten */
+    handaku = TRUE;
 
   *p1 = mtable[c - 161][0];
   *p2 = mtable[c - 161][1];
@@ -101,9 +93,9 @@ han2zen (int *p1, int *p2)
   if (daku)
     {
       if ((*p2 >= 74 && *p2 <= 103) || (*p2 >= 110 && *p2 <= 122))
-	(*p2)++;
+ (*p2)++;
       else if (*p2 == 131 || *p2 == 69)
-	*p2 = 148;
+ *p2 = 148;
     }
   else if (handaku && *p2 >= 110 && *p2 <= 122)
     (*p2) += 2;

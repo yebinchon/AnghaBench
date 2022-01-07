@@ -1,61 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int VARTYPE ;
-typedef  int /*<<< orphan*/  UINT_PTR ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VARTYPE ;
+typedef int UINT_PTR ;
 struct TYPE_4__ {int fFeatures; int cbElements; } ;
-typedef  int /*<<< orphan*/  SF_TYPE ;
-typedef  TYPE_1__ SAFEARRAY ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int SF_TYPE ;
+typedef TYPE_1__ SAFEARRAY ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int FADF_HAVEIID ; 
- int FADF_VARIANT ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SF_BSTR ; 
- int /*<<< orphan*/  SF_DISPATCH ; 
- int /*<<< orphan*/  SF_ERROR ; 
- int /*<<< orphan*/  SF_HAVEIID ; 
- int /*<<< orphan*/  SF_I1 ; 
- int /*<<< orphan*/  SF_I2 ; 
- int /*<<< orphan*/  SF_I4 ; 
- int /*<<< orphan*/  SF_I8 ; 
- int /*<<< orphan*/  SF_RECORD ; 
- int /*<<< orphan*/  SF_UNKNOWN ; 
- int /*<<< orphan*/  SF_VARIANT ; 
-#define  VT_BOOL 149 
-#define  VT_BSTR 148 
-#define  VT_CY 147 
-#define  VT_DATE 146 
-#define  VT_DISPATCH 145 
-#define  VT_I1 144 
-#define  VT_I2 143 
-#define  VT_I4 142 
-#define  VT_I8 141 
-#define  VT_INT 140 
-#define  VT_INT_PTR 139 
-#define  VT_R4 138 
-#define  VT_R8 137 
-#define  VT_RECORD 136 
-#define  VT_UI1 135 
-#define  VT_UI2 134 
-#define  VT_UI4 133 
-#define  VT_UI8 132 
-#define  VT_UINT 131 
-#define  VT_UINT_PTR 130 
-#define  VT_UNKNOWN 129 
-#define  VT_VARIANT 128 
- int /*<<< orphan*/  pSafeArrayGetVartype (TYPE_1__*,int*) ; 
+
+ int FADF_HAVEIID ;
+ int FADF_VARIANT ;
+ scalar_t__ FAILED (int ) ;
+ int SF_BSTR ;
+ int SF_DISPATCH ;
+ int SF_ERROR ;
+ int SF_HAVEIID ;
+ int SF_I1 ;
+ int SF_I2 ;
+ int SF_I4 ;
+ int SF_I8 ;
+ int SF_RECORD ;
+ int SF_UNKNOWN ;
+ int SF_VARIANT ;
+ int pSafeArrayGetVartype (TYPE_1__*,int*) ;
 
 __attribute__((used)) static inline SF_TYPE get_union_type(SAFEARRAY *psa)
 {
@@ -69,10 +47,10 @@ __attribute__((used)) static inline SF_TYPE get_union_type(SAFEARRAY *psa)
 
         switch(psa->cbElements)
         {
-        case 1: vt = VT_I1; break;
-        case 2: vt = VT_I2; break;
-        case 4: vt = VT_I4; break;
-        case 8: vt = VT_I8; break;
+        case 1: vt = 144; break;
+        case 2: vt = 143; break;
+        case 4: vt = 142; break;
+        case 8: vt = 141; break;
         default: return 0;
         }
     }
@@ -82,31 +60,31 @@ __attribute__((used)) static inline SF_TYPE get_union_type(SAFEARRAY *psa)
 
     switch (vt)
     {
-    case VT_I1:
-    case VT_UI1:      return SF_I1;
-    case VT_BOOL:
-    case VT_I2:
-    case VT_UI2:      return SF_I2;
-    case VT_INT:
-    case VT_UINT:
-    case VT_I4:
-    case VT_UI4:
-    case VT_R4:       return SF_I4;
-    case VT_DATE:
-    case VT_CY:
-    case VT_R8:
-    case VT_I8:
-    case VT_UI8:      return SF_I8;
-    case VT_INT_PTR:
-    case VT_UINT_PTR: return (sizeof(UINT_PTR) == 4 ? SF_I4 : SF_I8);
-    case VT_BSTR:     return SF_BSTR;
-    case VT_DISPATCH: return SF_DISPATCH;
-    case VT_VARIANT:  return SF_VARIANT;
-    case VT_UNKNOWN:  return SF_UNKNOWN;
-    /* Note: Return a non-zero size to indicate vt is valid. The actual size
-     * of a UDT is taken from the result of IRecordInfo_GetSize().
-     */
-    case VT_RECORD:   return SF_RECORD;
-    default:          return SF_ERROR;
+    case 144:
+    case 135: return SF_I1;
+    case 149:
+    case 143:
+    case 134: return SF_I2;
+    case 140:
+    case 131:
+    case 142:
+    case 133:
+    case 138: return SF_I4;
+    case 146:
+    case 147:
+    case 137:
+    case 141:
+    case 132: return SF_I8;
+    case 139:
+    case 130: return (sizeof(UINT_PTR) == 4 ? SF_I4 : SF_I8);
+    case 148: return SF_BSTR;
+    case 145: return SF_DISPATCH;
+    case 128: return SF_VARIANT;
+    case 129: return SF_UNKNOWN;
+
+
+
+    case 136: return SF_RECORD;
+    default: return SF_ERROR;
     }
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t styleid_t ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
-struct TYPE_5__ {int /*<<< orphan*/  name; } ;
-struct TYPE_4__ {int /*<<< orphan*/  nsstyle; } ;
-typedef  int /*<<< orphan*/  PRUnichar ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ HTMLStyle ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VARIANT_FALSE ; 
- int /*<<< orphan*/  VARIANT_TRUE ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_nsstyle_attr_nsval (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_GetData (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  nsAString_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ strcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- TYPE_2__* style_tbl ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t styleid_t ;
+typedef int nsAString ;
+typedef int VARIANT_BOOL ;
+struct TYPE_5__ {int name; } ;
+struct TYPE_4__ {int nsstyle; } ;
+typedef int PRUnichar ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ HTMLStyle ;
+typedef int HRESULT ;
+
+
+ int S_OK ;
+ int TRACE (char*,int ,int ) ;
+ int VARIANT_FALSE ;
+ int VARIANT_TRUE ;
+ int debugstr_w (int ) ;
+ int get_nsstyle_attr_nsval (int ,size_t,int *) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_GetData (int *,int const**) ;
+ int nsAString_Init (int *,int *) ;
+ scalar_t__ strcmpW (int const*,int ) ;
+ TYPE_2__* style_tbl ;
 
 __attribute__((used)) static HRESULT check_style_attr_value(HTMLStyle *This, styleid_t sid, LPCWSTR exval, VARIANT_BOOL *p)
 {
     nsAString str_value;
     const PRUnichar *value;
 
-    nsAString_Init(&str_value, NULL);
+    nsAString_Init(&str_value, ((void*)0));
 
     get_nsstyle_attr_nsval(This->nsstyle, sid, &str_value);
 

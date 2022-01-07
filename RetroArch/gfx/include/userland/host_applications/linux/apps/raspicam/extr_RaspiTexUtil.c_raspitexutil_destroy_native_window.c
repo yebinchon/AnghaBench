@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ disp; } ;
-typedef  TYPE_1__ RASPITEX_STATE ;
+typedef TYPE_1__ RASPITEX_STATE ;
 
-/* Variables and functions */
- scalar_t__ DISPMANX_NO_HANDLE ; 
- int /*<<< orphan*/  VCOS_FUNCTION ; 
- int /*<<< orphan*/  vc_dispmanx_display_close (scalar_t__) ; 
- int /*<<< orphan*/  vcos_log_trace (char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ DISPMANX_NO_HANDLE ;
+ int VCOS_FUNCTION ;
+ int vc_dispmanx_display_close (scalar_t__) ;
+ int vcos_log_trace (char*,int ) ;
 
 void raspitexutil_destroy_native_window(RASPITEX_STATE *raspitex_state)
 {

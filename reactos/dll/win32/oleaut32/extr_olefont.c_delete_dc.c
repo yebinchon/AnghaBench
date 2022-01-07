@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DeleteDC (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OLEFontImpl_csHFONTLIST ; 
- int /*<<< orphan*/ * olefont_hdc ; 
+ int DeleteDC (int *) ;
+ int EnterCriticalSection (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int OLEFontImpl_csHFONTLIST ;
+ int * olefont_hdc ;
 
 __attribute__((used)) static void delete_dc(void)
 {
@@ -24,7 +16,7 @@ __attribute__((used)) static void delete_dc(void)
     if(olefont_hdc)
     {
         DeleteDC(olefont_hdc);
-        olefont_hdc = NULL;
+        olefont_hdc = ((void*)0);
     }
     LeaveCriticalSection(&OLEFontImpl_csHFONTLIST);
 }

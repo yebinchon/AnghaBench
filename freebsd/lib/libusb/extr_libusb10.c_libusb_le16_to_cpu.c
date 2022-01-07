@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  le16toh (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int le16toh (int ) ;
 
 uint16_t
 libusb_le16_to_cpu(uint16_t x)
 {
-	return (le16toh(x));
+ return (le16toh(x));
 }

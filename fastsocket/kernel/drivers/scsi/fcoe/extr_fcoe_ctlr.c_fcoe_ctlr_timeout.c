@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fcoe_ctlr {int /*<<< orphan*/  timer_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+
+
+struct fcoe_ctlr {int timer_work; } ;
+
+
+ int schedule_work (int *) ;
 
 __attribute__((used)) static void fcoe_ctlr_timeout(unsigned long arg)
 {
-	struct fcoe_ctlr *fip = (struct fcoe_ctlr *)arg;
+ struct fcoe_ctlr *fip = (struct fcoe_ctlr *)arg;
 
-	schedule_work(&fip->timer_work);
+ schedule_work(&fip->timer_work);
 }

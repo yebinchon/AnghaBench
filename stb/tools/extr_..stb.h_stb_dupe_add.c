@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int stb_uint32 ;
-struct TYPE_3__ {int (* hash ) (void*,int /*<<< orphan*/ ) ;int hash_size; int /*<<< orphan*/  population; int /*<<< orphan*/ * hash_table; int /*<<< orphan*/  hash_shift; } ;
-typedef  TYPE_1__ stb_dupe ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stb_arr_push (int /*<<< orphan*/ ,void*) ; 
- int stub1 (void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int stb_uint32 ;
+struct TYPE_3__ {int (* hash ) (void*,int ) ;int hash_size; int population; int * hash_table; int hash_shift; } ;
+typedef TYPE_1__ stb_dupe ;
+
+
+ int stb_arr_push (int ,void*) ;
+ int stub1 (void*,int ) ;
 
 void stb_dupe_add(stb_dupe *sd, void *item)
 {

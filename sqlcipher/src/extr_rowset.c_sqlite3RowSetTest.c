@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct RowSetEntry {scalar_t__ v; struct RowSetEntry* pLeft; struct RowSetEntry* pRight; } ;
-typedef  scalar_t__ sqlite3_int64 ;
+typedef scalar_t__ sqlite3_int64 ;
 struct TYPE_4__ {int rsFlags; int iBatch; struct RowSetEntry* pForest; scalar_t__ pLast; struct RowSetEntry* pEntry; } ;
-typedef  TYPE_1__ RowSet ;
+typedef TYPE_1__ RowSet ;
 
-/* Variables and functions */
- int ROWSET_NEXT ; 
- int ROWSET_SORTED ; 
- int /*<<< orphan*/  assert (int) ; 
- struct RowSetEntry* rowSetEntryAlloc (TYPE_1__*) ; 
- struct RowSetEntry* rowSetEntryMerge (struct RowSetEntry*,struct RowSetEntry*) ; 
- struct RowSetEntry* rowSetEntrySort (struct RowSetEntry*) ; 
- void* rowSetListToTree (struct RowSetEntry*) ; 
- int /*<<< orphan*/  rowSetTreeToList (struct RowSetEntry*,struct RowSetEntry**,struct RowSetEntry**) ; 
+
+ int ROWSET_NEXT ;
+ int ROWSET_SORTED ;
+ int assert (int) ;
+ struct RowSetEntry* rowSetEntryAlloc (TYPE_1__*) ;
+ struct RowSetEntry* rowSetEntryMerge (struct RowSetEntry*,struct RowSetEntry*) ;
+ struct RowSetEntry* rowSetEntrySort (struct RowSetEntry*) ;
+ void* rowSetListToTree (struct RowSetEntry*) ;
+ int rowSetTreeToList (struct RowSetEntry*,struct RowSetEntry**,struct RowSetEntry**) ;
 
 int sqlite3RowSetTest(RowSet *pRowSet, int iBatch, sqlite3_int64 iRowid){
   struct RowSetEntry *p, *pTree;
 
-  /* This routine is never called after sqlite3RowSetNext() */
+
   assert( pRowSet!=0 && (pRowSet->rsFlags & ROWSET_NEXT)==0 );
 
-  /* Sort entries into the forest on the first test of a new batch.
-  ** To save unnecessary work, only do this when the batch number changes.
-  */
-  if( iBatch!=pRowSet->iBatch ){  /*OPTIMIZATION-IF-FALSE*/
+
+
+
+  if( iBatch!=pRowSet->iBatch ){
     p = pRowSet->pEntry;
     if( p ){
       struct RowSetEntry **ppPrevTree = &pRowSet->pForest;
-      if( (pRowSet->rsFlags & ROWSET_SORTED)==0 ){ /*OPTIMIZATION-IF-FALSE*/
-        /* Only sort the current set of entiries if they need it */
+      if( (pRowSet->rsFlags & ROWSET_SORTED)==0 ){
+
         p = rowSetEntrySort(p);
       }
       for(pTree = pRowSet->pForest; pTree; pTree=pTree->pRight){
@@ -70,9 +70,9 @@ int sqlite3RowSetTest(RowSet *pRowSet, int iBatch, sqlite3_int64 iRowid){
     pRowSet->iBatch = iBatch;
   }
 
-  /* Test to see if the iRowid value appears anywhere in the forest.
-  ** Return 1 if it does and 0 if not.
-  */
+
+
+
   for(pTree = pRowSet->pForest; pTree; pTree=pTree->pRight){
     p = pTree->pLeft;
     while( p ){

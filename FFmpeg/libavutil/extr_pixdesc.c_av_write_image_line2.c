@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned int uint32_t ;
-typedef  unsigned int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+typedef unsigned int uint16_t ;
 struct TYPE_5__ {int plane; int depth; int step; int offset; int shift; } ;
 struct TYPE_4__ {int flags; TYPE_2__* comp; } ;
-typedef  TYPE_1__ AVPixFmtDescriptor ;
-typedef  TYPE_2__ AVComponentDescriptor ;
+typedef TYPE_1__ AVPixFmtDescriptor ;
+typedef TYPE_2__ AVComponentDescriptor ;
 
-/* Variables and functions */
- int AV_PIX_FMT_FLAG_BE ; 
- int AV_PIX_FMT_FLAG_BITSTREAM ; 
- unsigned int AV_RB16 (int*) ; 
- unsigned int AV_RB32 (int*) ; 
- unsigned int AV_RL16 (int*) ; 
- unsigned int AV_RL32 (int*) ; 
- int /*<<< orphan*/  AV_WB16 (int*,unsigned int) ; 
- int /*<<< orphan*/  AV_WB32 (int*,unsigned int) ; 
- int /*<<< orphan*/  AV_WL16 (int*,unsigned int) ; 
- int /*<<< orphan*/  AV_WL32 (int*,unsigned int) ; 
+
+ int AV_PIX_FMT_FLAG_BE ;
+ int AV_PIX_FMT_FLAG_BITSTREAM ;
+ unsigned int AV_RB16 (int*) ;
+ unsigned int AV_RB32 (int*) ;
+ unsigned int AV_RL16 (int*) ;
+ unsigned int AV_RL32 (int*) ;
+ int AV_WB16 (int*,unsigned int) ;
+ int AV_WB32 (int*,unsigned int) ;
+ int AV_WL16 (int*,unsigned int) ;
+ int AV_WL32 (int*,unsigned int) ;
 
 void av_write_image_line2(const void *src,
                          uint8_t *data[4], const int linesize[4],
@@ -40,7 +40,7 @@ void av_write_image_line2(const void *src,
     AVComponentDescriptor comp = desc->comp[c];
     int plane = comp.plane;
     int depth = comp.depth;
-    int step  = comp.step;
+    int step = comp.step;
     int flags = desc->flags;
     const uint32_t *src32 = src;
     const uint16_t *src16 = src;

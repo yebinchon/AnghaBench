@@ -1,66 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int sizecode; int /*<<< orphan*/ * p; int /*<<< orphan*/ * k; int /*<<< orphan*/ * upvalues; int /*<<< orphan*/  sizeupvalues; scalar_t__* code; } ;
-typedef  TYPE_1__ Proto ;
-typedef  size_t OpCode ;
-typedef  scalar_t__ Instruction ;
 
-/* Variables and functions */
- int GETARG_A (scalar_t__) ; 
- int GETARG_B (scalar_t__) ; 
- int GETARG_Bx (scalar_t__) ; 
- int GETARG_C (scalar_t__) ; 
- int GETARG_sBx (scalar_t__) ; 
- size_t GET_OPCODE (scalar_t__) ; 
- int INDEXK (int) ; 
- int /*<<< orphan*/  ISK (int) ; 
-#define  OP_ADD 151 
-#define  OP_CLOSURE 150 
-#define  OP_DIV 149 
-#define  OP_EQ 148 
-#define  OP_FORLOOP 147 
-#define  OP_FORPREP 146 
-#define  OP_GETGLOBAL 145 
-#define  OP_GETTABLE 144 
-#define  OP_GETUPVAL 143 
-#define  OP_JMP 142 
-#define  OP_LE 141 
-#define  OP_LOADK 140 
-#define  OP_LT 139 
-#define  OP_MUL 138 
-#define  OP_POW 137 
-#define  OP_SELF 136 
-#define  OP_SETGLOBAL 135 
-#define  OP_SETLIST 134 
-#define  OP_SETTABLE 133 
-#define  OP_SETUPVAL 132 
-#define  OP_SUB 131 
- int /*<<< orphan*/  OpArgK ; 
- int /*<<< orphan*/  OpArgN ; 
- int /*<<< orphan*/  PrintConstant (TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  VOID (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getBMode (size_t) ; 
- int /*<<< orphan*/  getCMode (size_t) ; 
- int getOpMode (size_t) ; 
- int getline (TYPE_1__ const*,int) ; 
- char* getstr (int /*<<< orphan*/ ) ; 
-#define  iABC 130 
-#define  iABx 129 
-#define  iAsBx 128 
- char** luaP_opnames ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- char* svalue (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sizecode; int * p; int * k; int * upvalues; int sizeupvalues; scalar_t__* code; } ;
+typedef TYPE_1__ Proto ;
+typedef size_t OpCode ;
+typedef scalar_t__ Instruction ;
+
+
+ int GETARG_A (scalar_t__) ;
+ int GETARG_B (scalar_t__) ;
+ int GETARG_Bx (scalar_t__) ;
+ int GETARG_C (scalar_t__) ;
+ int GETARG_sBx (scalar_t__) ;
+ size_t GET_OPCODE (scalar_t__) ;
+ int INDEXK (int) ;
+ int ISK (int) ;
+ int OpArgK ;
+ int OpArgN ;
+ int PrintConstant (TYPE_1__ const*,int) ;
+ int VOID (int ) ;
+ int getBMode (size_t) ;
+ int getCMode (size_t) ;
+ int getOpMode (size_t) ;
+ int getline (TYPE_1__ const*,int) ;
+ char* getstr (int ) ;
+
+
+
+ char** luaP_opnames ;
+ int printf (char*,...) ;
+ char* svalue (int *) ;
 
 __attribute__((used)) static void PrintCode(const Proto* f)
 {
@@ -81,44 +60,44 @@ __attribute__((used)) static void PrintCode(const Proto* f)
   printf("%-9s\t",luaP_opnames[o]);
   switch (getOpMode(o))
   {
-   case iABC:
+   case 130:
     printf("%d",a);
     if (getBMode(o)!=OpArgN) printf(" %d",ISK(b) ? (-1-INDEXK(b)) : b);
     if (getCMode(o)!=OpArgN) printf(" %d",ISK(c) ? (-1-INDEXK(c)) : c);
     break;
-   case iABx:
+   case 129:
     if (getBMode(o)==OpArgK) printf("%d %d",a,-1-bx); else printf("%d %d",a,bx);
     break;
-   case iAsBx:
-    if (o==OP_JMP) printf("%d",sbx); else printf("%d %d",a,sbx);
+   case 128:
+    if (o==142) printf("%d",sbx); else printf("%d %d",a,sbx);
     break;
   }
   switch (o)
   {
-   case OP_LOADK:
+   case 140:
     printf("\t; "); PrintConstant(f,bx);
     break;
-   case OP_GETUPVAL:
-   case OP_SETUPVAL:
+   case 143:
+   case 132:
     printf("\t; %s", (f->sizeupvalues>0) ? getstr(f->upvalues[b]) : "-");
     break;
-   case OP_GETGLOBAL:
-   case OP_SETGLOBAL:
+   case 145:
+   case 135:
     printf("\t; %s",svalue(&f->k[bx]));
     break;
-   case OP_GETTABLE:
-   case OP_SELF:
+   case 144:
+   case 136:
     if (ISK(c)) { printf("\t; "); PrintConstant(f,INDEXK(c)); }
     break;
-   case OP_SETTABLE:
-   case OP_ADD:
-   case OP_SUB:
-   case OP_MUL:
-   case OP_DIV:
-   case OP_POW:
-   case OP_EQ:
-   case OP_LT:
-   case OP_LE:
+   case 133:
+   case 151:
+   case 131:
+   case 138:
+   case 149:
+   case 137:
+   case 148:
+   case 139:
+   case 141:
     if (ISK(b) || ISK(c))
     {
      printf("\t; ");
@@ -127,15 +106,15 @@ __attribute__((used)) static void PrintCode(const Proto* f)
      if (ISK(c)) PrintConstant(f,INDEXK(c)); else printf("-");
     }
     break;
-   case OP_JMP:
-   case OP_FORLOOP:
-   case OP_FORPREP:
+   case 142:
+   case 147:
+   case 146:
     printf("\t; to %d",sbx+pc+2);
     break;
-   case OP_CLOSURE:
+   case 150:
     printf("\t; %p",VOID(f->p[bx]));
     break;
-   case OP_SETLIST:
+   case 134:
     if (c==0) printf("\t; %d",(int)code[++pc]);
     else printf("\t; %d",c);
     break;

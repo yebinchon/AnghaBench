@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
 struct TYPE_7__ {char* name; scalar_t__ rate; } ;
-typedef  TYPE_2__ hb_rate_t ;
-typedef  double gdouble ;
-typedef  char gchar ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GtkListStore ;
-typedef  int /*<<< orphan*/  GtkComboBox ;
+typedef TYPE_2__ hb_rate_t ;
+typedef double gdouble ;
+typedef char gchar ;
+typedef int GtkTreeIter ;
+typedef int GtkListStore ;
+typedef int GtkComboBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * GTK_COMBO_BOX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GTK_LIST_STORE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_strdup_printf (char*,char*,char*) ; 
- int /*<<< orphan*/  gtk_combo_box_get_model (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,int,char*,int,double,int) ; 
- TYPE_2__* hb_video_framerate_get_next (TYPE_2__ const*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int GHB_WIDGET (int ,char const*) ;
+ int * GTK_COMBO_BOX (int ) ;
+ int * GTK_LIST_STORE (int ) ;
+ int TRUE ;
+ char* _ (char*) ;
+ int g_free (char*) ;
+ char* g_strdup_printf (char*,char*,char*) ;
+ int gtk_combo_box_get_model (int *) ;
+ int gtk_list_store_append (int *,int *) ;
+ int gtk_list_store_clear (int *) ;
+ int gtk_list_store_set (int *,int *,int ,char*,int,int ,int,char*,int,double,int) ;
+ TYPE_2__* hb_video_framerate_get_next (TYPE_2__ const*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void
 video_framerate_opts_set(signal_user_data_t *ud, const gchar *name,
                          void *opts, const void* data)
 {
-    (void)opts; // Silence "unused variable" warning
-    (void)data; // Silence "unused variable" warning
+    (void)opts;
+    (void)data;
     GtkTreeIter iter;
     GtkListStore *store;
 
     GtkComboBox *combo = GTK_COMBO_BOX(GHB_WIDGET(ud->builder, name));
     store = GTK_LIST_STORE(gtk_combo_box_get_model (combo));
     gtk_list_store_clear(store);
-    // Add an item for "Same As Source"
+
     gtk_list_store_append(store, &iter);
     gtk_list_store_set(store, &iter,
                        0, _("Same as source"),
@@ -59,7 +59,7 @@ video_framerate_opts_set(signal_user_data_t *ud, const gchar *name,
                        -1);
 
     const hb_rate_t *rate;
-    for (rate = hb_video_framerate_get_next(NULL); rate != NULL;
+    for (rate = hb_video_framerate_get_next(((void*)0)); rate != ((void*)0);
          rate = hb_video_framerate_get_next(rate))
     {
         gchar *desc = "";

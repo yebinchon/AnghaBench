@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
-typedef  struct TYPE_21__   TYPE_13__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_26__ {int width; int height; int /*<<< orphan*/  color_range; int /*<<< orphan*/  pix_fmt; TYPE_2__* priv_data; } ;
-struct TYPE_25__ {int key_frame; int /*<<< orphan*/  pict_type; } ;
+
+
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+typedef struct TYPE_21__ TYPE_13__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_26__ {int width; int height; int color_range; int pix_fmt; TYPE_2__* priv_data; } ;
+struct TYPE_25__ {int key_frame; int pict_type; } ;
 struct TYPE_24__ {int size; int* data; } ;
-struct TYPE_22__ {int /*<<< orphan*/  (* bswap_buf ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ;} ;
-struct TYPE_23__ {TYPE_13__* prev_frame; void* lo; void* hi; scalar_t__ bitstream; TYPE_1__ bdsp; int /*<<< orphan*/  bitstream_size; int /*<<< orphan*/  gb; } ;
-struct TYPE_21__ {int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ IMM4Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_3__ AVPacket ;
-typedef  TYPE_4__ AVFrame ;
-typedef  TYPE_5__ AVCodecContext ;
+struct TYPE_22__ {int (* bswap_buf ) (int *,int *,int) ;} ;
+struct TYPE_23__ {TYPE_13__* prev_frame; void* lo; void* hi; scalar_t__ bitstream; TYPE_1__ bdsp; int bitstream_size; int gb; } ;
+struct TYPE_21__ {int * data; } ;
+typedef TYPE_2__ IMM4Context ;
+typedef int GetBitContext ;
+typedef TYPE_3__ AVPacket ;
+typedef TYPE_4__ AVFrame ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVCOL_RANGE_JPEG ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_I ; 
- int /*<<< orphan*/  AV_PICTURE_TYPE_P ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV420P ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFALIGN (int,int) ; 
- int /*<<< orphan*/  av_fast_padded_malloc (scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int av_frame_ref (TYPE_13__*,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_13__*) ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_5__*,char*,unsigned int) ; 
- int decode_inter (TYPE_5__*,int /*<<< orphan*/ *,TYPE_4__*,TYPE_13__*) ; 
- int decode_intra (TYPE_5__*,int /*<<< orphan*/ *,TYPE_4__*) ; 
- int ff_get_buffer (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int ff_set_dimensions (TYPE_5__*,int,int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- unsigned int get_bits_long (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int AVCOL_RANGE_JPEG ;
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_ERROR ;
+ int AV_PICTURE_TYPE_I ;
+ int AV_PICTURE_TYPE_P ;
+ int AV_PIX_FMT_YUV420P ;
+ int ENOMEM ;
+ int FFALIGN (int,int) ;
+ int av_fast_padded_malloc (scalar_t__*,int *,int ) ;
+ int av_frame_ref (TYPE_13__*,TYPE_4__*) ;
+ int av_frame_unref (TYPE_13__*) ;
+ int av_log (TYPE_5__*,int ,char*) ;
+ int avpriv_request_sample (TYPE_5__*,char*,unsigned int) ;
+ int decode_inter (TYPE_5__*,int *,TYPE_4__*,TYPE_13__*) ;
+ int decode_intra (TYPE_5__*,int *,TYPE_4__*) ;
+ int ff_get_buffer (TYPE_5__*,TYPE_4__*,int ) ;
+ int ff_set_dimensions (TYPE_5__*,int,int) ;
+ void* get_bits (int *,int) ;
+ unsigned int get_bits_long (int *,int) ;
+ int init_get_bits8 (int *,scalar_t__,int ) ;
+ int skip_bits_long (int *,int) ;
+ int stub1 (int *,int *,int) ;
 
 __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
                         int *got_frame, AVPacket *avpkt)
@@ -138,7 +138,7 @@ __attribute__((used)) static int decode_frame(AVCodecContext *avctx, void *data,
         return AVERROR_PATCHWELCOME;
     }
 
-    if (avctx->width  != width ||
+    if (avctx->width != width ||
         avctx->height != height) {
         if (!frame->key_frame) {
             av_log(avctx, AV_LOG_ERROR, "Frame size change is unsupported.\n");

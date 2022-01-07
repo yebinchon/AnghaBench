@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tls_context {int /*<<< orphan*/  ssl; } ;
-typedef  int /*<<< orphan*/  outbuff ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int SSL_ERROR_WANT_READ ; 
- int SSL_ERROR_WANT_WRITE ; 
- int SSL_get_error (int /*<<< orphan*/ ,int) ; 
- int SSL_read (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  _bio_write (int /*<<< orphan*/ *,struct tls_context*,char const*,size_t) ; 
- struct tls_context* _check_context (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
+
+
+
+struct tls_context {int ssl; } ;
+typedef int outbuff ;
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+
+
+ int SSL_ERROR_WANT_READ ;
+ int SSL_ERROR_WANT_WRITE ;
+ int SSL_get_error (int ,int) ;
+ int SSL_read (int ,char*,int) ;
+ int _bio_write (int *,struct tls_context*,char const*,size_t) ;
+ struct tls_context* _check_context (int *,int) ;
+ int luaL_addlstring (int *,char*,int) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_error (int *,char*,int) ;
+ int luaL_pushresult (int *) ;
+ char* lua_tolstring (int *,int,size_t*) ;
 
 __attribute__((used)) static int
 _ltls_context_read(lua_State* L) {
@@ -34,7 +34,7 @@ _ltls_context_read(lua_State* L) {
     size_t slen = 0;
     const char* encrypted_data = lua_tolstring(L, 2, &slen);
 
-    // write encrypted data
+
     if(slen>0 && encrypted_data) {
         _bio_write(L, tls_p, encrypted_data, slen);
     }
@@ -57,7 +57,7 @@ _ltls_context_read(lua_State* L) {
         }else {
             luaL_error(L, "invalid SSL_read:%d", read);
         }
-    }while(true);
+    }while(1);
     luaL_pushresult(&b);
     return 1;
 }

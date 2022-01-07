@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct hevc_dxva2_picture_context {size_t slice_count; int /*<<< orphan*/ * slice_short; int /*<<< orphan*/  const* bitstream; int /*<<< orphan*/  bitstream_size; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct hevc_dxva2_picture_context {size_t slice_count; int * slice_short; int const* bitstream; int bitstream_size; } ;
 struct TYPE_7__ {TYPE_2__* priv_data; } ;
 struct TYPE_6__ {TYPE_1__* ref; } ;
 struct TYPE_5__ {struct hevc_dxva2_picture_context* hwaccel_picture_private; } ;
-typedef  TYPE_1__ HEVCFrame ;
-typedef  TYPE_2__ HEVCContext ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ HEVCFrame ;
+typedef TYPE_2__ HEVCContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- size_t MAX_SLICES ; 
- int /*<<< orphan*/  fill_slice_short (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ ) ; 
+
+ size_t MAX_SLICES ;
+ int fill_slice_short (int *,unsigned int,int ) ;
 
 __attribute__((used)) static int dxva2_hevc_decode_slice(AVCodecContext *avctx,
                                    const uint8_t *buffer,

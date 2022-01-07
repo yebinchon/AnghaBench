@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  time_t ;
-struct PreprocessedInfo {unsigned int port_src; unsigned int port_dst; int* ip_dst; int* ip_src; int transport_offset; int /*<<< orphan*/  mac_src; int /*<<< orphan*/  ip_ttl; } ;
+
+
+
+
+typedef int uint64_t ;
+typedef int time_t ;
+struct PreprocessedInfo {unsigned int port_src; unsigned int port_dst; int* ip_dst; int* ip_src; int transport_offset; int mac_src; int ip_ttl; } ;
 struct Output {int dummy; } ;
 struct DedupTable {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PortStatus_Closed ; 
- int /*<<< orphan*/  PortStatus_Open ; 
- int /*<<< orphan*/  Templ_ICMP_echo ; 
- struct DedupTable* dedup_create () ; 
- int /*<<< orphan*/  dedup_is_duplicate (struct DedupTable*,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  matches_me (struct Output*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  output_report_status (struct Output*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int parse_port_unreachable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  syn_cookie (unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int PortStatus_Closed ;
+ int PortStatus_Open ;
+ int Templ_ICMP_echo ;
+ struct DedupTable* dedup_create () ;
+ int dedup_is_duplicate (struct DedupTable*,unsigned int,int ,unsigned int,int ) ;
+ int matches_me (struct Output*,unsigned int,unsigned int) ;
+ int output_report_status (struct Output*,int ,int ,unsigned int,unsigned int,unsigned int,int ,int ,int ) ;
+ int parse_port_unreachable (int ,int ,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ;
+ int syn_cookie (unsigned int,int ,unsigned int,int ,int ) ;
 
 void
 handle_icmp(struct Output *out, time_t timestamp,
@@ -40,8 +40,8 @@ handle_icmp(struct Output *out, time_t timestamp,
     unsigned ip_them;
     unsigned cookie;
 
-    /* dedup ICMP echo replies as well as SYN/ACK replies */
-    static struct DedupTable *echo_reply_dedup = NULL;
+
+    static struct DedupTable *echo_reply_dedup = ((void*)0);
 
 
     if (!echo_reply_dedup)
@@ -58,44 +58,44 @@ handle_icmp(struct Output *out, time_t timestamp,
                 | px[parsed->transport_offset+7]<<0;
 
     switch (type) {
-    case 0: /* ICMP echo reply */
+    case 0:
         cookie = (unsigned)syn_cookie(ip_them, Templ_ICMP_echo, ip_me, 0, entropy);
         if ((cookie & 0xFFFFFFFF) != seqno_me)
-            return; /* not my response */
+            return;
 
         if (dedup_is_duplicate(echo_reply_dedup, ip_them, 0, ip_me, 0))
             break;
 
-        //if (syn_hash(ip_them, Templ_ICMP_echo) != seqno_me)
-        //    return; /* not my response */
 
-        /*
-         * Report "open" or "existence" of host
-         */
+
+
+
+
+
         output_report_status(
                             out,
                             timestamp,
                             PortStatus_Open,
                             ip_them,
-                            1, /* ip proto */
+                            1,
                             0,
                             0,
                             parsed->ip_ttl,
                             parsed->mac_src);
         break;
-    case 3: /* destination unreachable */
+    case 3:
         switch (code) {
-        case 0: /* net unreachable */
-            /* We get these a lot while port scanning, often a flood coming
-             * back from broken/misconfigured networks */
+        case 0:
+
+
             break;
-        case 1: /* host unreachable */
-            /* This means the router doesn't exist */
+        case 1:
+
             break;
-        case 2: /* protocol unreachable */
-            /* The host exists, but it doesn't support SCTP */
+        case 2:
+
             break;
-        case 3: /* port unreachable */
+        case 3:
             if (length - parsed->transport_offset > 8) {
                 unsigned ip_me2, ip_them2, port_me2, port_them2;
                 unsigned ip_proto;

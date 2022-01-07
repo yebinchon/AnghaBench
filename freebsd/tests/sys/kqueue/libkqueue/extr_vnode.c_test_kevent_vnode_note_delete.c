@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kevent {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVFILT_VNODE ; 
- int EV_ADD ; 
- int EV_ONESHOT ; 
- int /*<<< orphan*/  EV_SET (struct kevent*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NOTE_DELETE ; 
- int /*<<< orphan*/  err (int,char*,...) ; 
- scalar_t__ kevent (int /*<<< orphan*/ ,struct kevent*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kevent_cmp (struct kevent*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kevent_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kqfd ; 
- int /*<<< orphan*/  success () ; 
- int /*<<< orphan*/  test_begin (char const*) ; 
- scalar_t__ unlink (char*) ; 
- int /*<<< orphan*/  vnode_fd ; 
+
+ int EVFILT_VNODE ;
+ int EV_ADD ;
+ int EV_ONESHOT ;
+ int EV_SET (struct kevent*,int ,int ,int,int ,int ,int *) ;
+ int NOTE_DELETE ;
+ int err (int,char*,...) ;
+ scalar_t__ kevent (int ,struct kevent*,int,int *,int ,int *) ;
+ int kevent_cmp (struct kevent*,int ) ;
+ int kevent_get (int ) ;
+ int kqfd ;
+ int success () ;
+ int test_begin (char const*) ;
+ scalar_t__ unlink (char*) ;
+ int vnode_fd ;
 
 void
 test_kevent_vnode_note_delete(void)
@@ -36,8 +36,8 @@ test_kevent_vnode_note_delete(void)
 
     test_begin(test_id);
 
-    EV_SET(&kev, vnode_fd, EVFILT_VNODE, EV_ADD | EV_ONESHOT, NOTE_DELETE, 0, NULL);
-    if (kevent(kqfd, &kev, 1, NULL, 0, NULL) < 0)
+    EV_SET(&kev, vnode_fd, EVFILT_VNODE, EV_ADD | EV_ONESHOT, NOTE_DELETE, 0, ((void*)0));
+    if (kevent(kqfd, &kev, 1, ((void*)0), 0, ((void*)0)) < 0)
         err(1, "%s", test_id);
 
     if (unlink("./kqueue-test.tmp") < 0)

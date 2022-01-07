@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int code; } ;
 struct nfp_insn_meta {TYPE_1__ insn; } ;
 
-/* Variables and functions */
- int BPF_LDX ; 
- int BPF_MEM ; 
- int BPF_SIZE_MASK ; 
+
+ int BPF_LDX ;
+ int BPF_MEM ;
+ int BPF_SIZE_MASK ;
 
 __attribute__((used)) static inline bool is_mbpf_load(const struct nfp_insn_meta *meta)
 {
-	return (meta->insn.code & ~BPF_SIZE_MASK) == (BPF_LDX | BPF_MEM);
+ return (meta->insn.code & ~BPF_SIZE_MASK) == (BPF_LDX | BPF_MEM);
 }

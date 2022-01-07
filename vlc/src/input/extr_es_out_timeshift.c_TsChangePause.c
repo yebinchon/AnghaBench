@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ vlc_tick_t ;
-struct TYPE_3__ {scalar_t__ i_pause_date; int b_paused; int /*<<< orphan*/  lock; int /*<<< orphan*/  wait; int /*<<< orphan*/  i_cmd_delay; int /*<<< orphan*/  p_out; } ;
-typedef  TYPE_1__ ts_thread_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int es_out_SetPauseState (int /*<<< orphan*/ ,int,int,scalar_t__) ; 
- int /*<<< orphan*/  vlc_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ vlc_tick_t ;
+struct TYPE_3__ {scalar_t__ i_pause_date; int b_paused; int lock; int wait; int i_cmd_delay; int p_out; } ;
+typedef TYPE_1__ ts_thread_t ;
+
+
+ int assert (int) ;
+ int es_out_SetPauseState (int ,int,int,scalar_t__) ;
+ int vlc_cond_signal (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 __attribute__((used)) static int TsChangePause( ts_thread_t *p_ts, bool b_source_paused, bool b_paused, vlc_tick_t i_date )
 {
@@ -30,11 +30,11 @@ __attribute__((used)) static int TsChangePause( ts_thread_t *p_ts, bool b_source
     if( b_paused )
     {
         assert( !b_source_paused );
-        i_ret = es_out_SetPauseState( p_ts->p_out, true, true, i_date );
+        i_ret = es_out_SetPauseState( p_ts->p_out, 1, 1, i_date );
     }
     else
     {
-        i_ret = es_out_SetPauseState( p_ts->p_out, false, false, i_date );
+        i_ret = es_out_SetPauseState( p_ts->p_out, 0, 0, i_date );
     }
 
     if( !i_ret )

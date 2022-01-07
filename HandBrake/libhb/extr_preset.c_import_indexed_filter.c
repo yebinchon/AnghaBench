@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int index; char const* short_name; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ hb_filter_param_t ;
 
-/* Variables and functions */
- TYPE_1__* hb_filter_param_get_presets (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int index; char const* short_name; int * name; } ;
+typedef TYPE_1__ hb_filter_param_t ;
+
+
+ TYPE_1__* hb_filter_param_get_presets (int) ;
 
 __attribute__((used)) static const char* import_indexed_filter(int filter_id, int index)
 {
@@ -23,7 +23,7 @@ __attribute__((used)) static const char* import_indexed_filter(int filter_id, in
     filter_presets = hb_filter_param_get_presets(filter_id);
 
     int ii;
-    for (ii = 0; filter_presets[ii].name != NULL; ii++)
+    for (ii = 0; filter_presets[ii].name != ((void*)0); ii++)
     {
         if (filter_presets[ii].index == index)
             break;

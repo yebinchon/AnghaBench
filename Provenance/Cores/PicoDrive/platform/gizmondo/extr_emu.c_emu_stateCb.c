@@ -1,34 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Sleep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  blit (char*,char const*) ; 
- int /*<<< orphan*/  clearArea (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fb_lock (int) ; 
- int /*<<< orphan*/  fb_unlock () ; 
- int /*<<< orphan*/ * giz_screen ; 
+ int Sleep (int ) ;
+ int blit (char*,char const*) ;
+ int clearArea (int ) ;
+ int * fb_lock (int) ;
+ int fb_unlock () ;
+ int * giz_screen ;
 
 void emu_stateCb(const char *str)
 {
-	if (giz_screen != NULL) fb_unlock();
-	giz_screen = fb_lock(1);
+ if (giz_screen != ((void*)0)) fb_unlock();
+ giz_screen = fb_lock(1);
 
-	clearArea(0);
-	blit("", str);
+ clearArea(0);
+ blit("", str);
 
-	fb_unlock();
-	giz_screen = NULL;
+ fb_unlock();
+ giz_screen = ((void*)0);
 
-	Sleep(0); /* yield the CPU, the system may need it */
+ Sleep(0);
 }

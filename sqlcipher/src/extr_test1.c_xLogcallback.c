@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Tcl_Obj ;
-struct TYPE_2__ {int /*<<< orphan*/  pInterp; int /*<<< orphan*/  pObj; } ;
 
-/* Variables and functions */
- int TCL_EVAL_DIRECT ; 
- int TCL_EVAL_GLOBAL ; 
- int /*<<< orphan*/  Tcl_DecrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Tcl_DuplicateObj (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_EvalObjEx (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Tcl_IncrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Tcl_ListObjAppendElement (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Tcl_NewStringObj (char*,int) ; 
- TYPE_1__ logcallback ; 
- char* sqlite3ErrName (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int Tcl_Obj ;
+struct TYPE_2__ {int pInterp; int pObj; } ;
+
+
+ int TCL_EVAL_DIRECT ;
+ int TCL_EVAL_GLOBAL ;
+ int Tcl_DecrRefCount (int *) ;
+ int * Tcl_DuplicateObj (int ) ;
+ int Tcl_EvalObjEx (int ,int *,int) ;
+ int Tcl_IncrRefCount (int *) ;
+ int Tcl_ListObjAppendElement (int ,int *,int ) ;
+ int Tcl_NewStringObj (char*,int) ;
+ TYPE_1__ logcallback ;
+ char* sqlite3ErrName (int) ;
 
 __attribute__((used)) static void xLogcallback(void *unused, int err, char *zMsg){
   Tcl_Obj *pNew = Tcl_DuplicateObj(logcallback.pObj);

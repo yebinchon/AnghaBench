@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Size ;
-typedef  int /*<<< orphan*/  ComboCidKeyData ;
 
-/* Variables and functions */
- int add_size (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mul_size (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usedComboCids ; 
+
+
+
+typedef int Size ;
+typedef int ComboCidKeyData ;
+
+
+ int add_size (int,int ) ;
+ int mul_size (int,int ) ;
+ int usedComboCids ;
 
 Size
 EstimateComboCIDStateSpace(void)
 {
-	Size		size;
+ Size size;
 
-	/* Add space required for saving usedComboCids */
-	size = sizeof(int);
 
-	/* Add space required for saving the combocids key */
-	size = add_size(size, mul_size(sizeof(ComboCidKeyData), usedComboCids));
+ size = sizeof(int);
 
-	return size;
+
+ size = add_size(size, mul_size(sizeof(ComboCidKeyData), usedComboCids));
+
+ return size;
 }

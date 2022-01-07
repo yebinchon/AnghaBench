@@ -1,69 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int sfp_type; } ;
 struct ixgbe_hw {TYPE_1__ phy; } ;
-typedef  int /*<<< orphan*/  s32 ;
+typedef int s32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUGFUNC (char*) ; 
- int FALSE ; 
- int /*<<< orphan*/  IXGBE_ERR_SFP_NOT_PRESENT ; 
- int /*<<< orphan*/  IXGBE_ERR_SFP_NOT_SUPPORTED ; 
- int /*<<< orphan*/  IXGBE_SUCCESS ; 
- int TRUE ; 
-#define  ixgbe_sfp_type_1g_cu_core0 141 
-#define  ixgbe_sfp_type_1g_cu_core1 140 
-#define  ixgbe_sfp_type_1g_lx_core0 139 
-#define  ixgbe_sfp_type_1g_lx_core1 138 
-#define  ixgbe_sfp_type_1g_sx_core0 137 
-#define  ixgbe_sfp_type_1g_sx_core1 136 
-#define  ixgbe_sfp_type_da_act_lmt_core0 135 
-#define  ixgbe_sfp_type_da_act_lmt_core1 134 
-#define  ixgbe_sfp_type_da_cu_core0 133 
-#define  ixgbe_sfp_type_da_cu_core1 132 
-#define  ixgbe_sfp_type_not_present 131 
-#define  ixgbe_sfp_type_srlr_core0 130 
-#define  ixgbe_sfp_type_srlr_core1 129 
-#define  ixgbe_sfp_type_unknown 128 
 
+ int DEBUGFUNC (char*) ;
+ int FALSE ;
+ int IXGBE_ERR_SFP_NOT_PRESENT ;
+ int IXGBE_ERR_SFP_NOT_SUPPORTED ;
+ int IXGBE_SUCCESS ;
+ int TRUE ;
 __attribute__((used)) static s32 ixgbe_supported_sfp_modules_X550em(struct ixgbe_hw *hw, bool *linear)
 {
-	DEBUGFUNC("ixgbe_supported_sfp_modules_X550em");
+ DEBUGFUNC("ixgbe_supported_sfp_modules_X550em");
 
-	switch (hw->phy.sfp_type) {
-	case ixgbe_sfp_type_not_present:
-		return IXGBE_ERR_SFP_NOT_PRESENT;
-	case ixgbe_sfp_type_da_cu_core0:
-	case ixgbe_sfp_type_da_cu_core1:
-		*linear = TRUE;
-		break;
-	case ixgbe_sfp_type_srlr_core0:
-	case ixgbe_sfp_type_srlr_core1:
-	case ixgbe_sfp_type_da_act_lmt_core0:
-	case ixgbe_sfp_type_da_act_lmt_core1:
-	case ixgbe_sfp_type_1g_sx_core0:
-	case ixgbe_sfp_type_1g_sx_core1:
-	case ixgbe_sfp_type_1g_lx_core0:
-	case ixgbe_sfp_type_1g_lx_core1:
-		*linear = FALSE;
-		break;
-	case ixgbe_sfp_type_unknown:
-	case ixgbe_sfp_type_1g_cu_core0:
-	case ixgbe_sfp_type_1g_cu_core1:
-	default:
-		return IXGBE_ERR_SFP_NOT_SUPPORTED;
-	}
+ switch (hw->phy.sfp_type) {
+ case 131:
+  return IXGBE_ERR_SFP_NOT_PRESENT;
+ case 133:
+ case 132:
+  *linear = TRUE;
+  break;
+ case 130:
+ case 129:
+ case 135:
+ case 134:
+ case 137:
+ case 136:
+ case 139:
+ case 138:
+  *linear = FALSE;
+  break;
+ case 128:
+ case 141:
+ case 140:
+ default:
+  return IXGBE_ERR_SFP_NOT_SUPPORTED;
+ }
 
-	return IXGBE_SUCCESS;
+ return IXGBE_SUCCESS;
 }

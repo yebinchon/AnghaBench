@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_2__ {int /*<<< orphan*/  child_relid; } ;
-struct vmbus_channel {int /*<<< orphan*/  sig_event; int /*<<< orphan*/  sig_events; int /*<<< orphan*/  is_dedicated_interrupt; TYPE_1__ offermsg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HVCALL_SIGNAL_EVENT ; 
- int /*<<< orphan*/  hv_do_fast_hypercall8 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vmbus_send_interrupt (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_2__ {int child_relid; } ;
+struct vmbus_channel {int sig_event; int sig_events; int is_dedicated_interrupt; TYPE_1__ offermsg; } ;
+
+
+ int HVCALL_SIGNAL_EVENT ;
+ int hv_do_fast_hypercall8 (int ,int ) ;
+ int vmbus_send_interrupt (int ) ;
 
 void vmbus_set_event(struct vmbus_channel *channel)
 {
-	u32 child_relid = channel->offermsg.child_relid;
+ u32 child_relid = channel->offermsg.child_relid;
 
-	if (!channel->is_dedicated_interrupt)
-		vmbus_send_interrupt(child_relid);
+ if (!channel->is_dedicated_interrupt)
+  vmbus_send_interrupt(child_relid);
 
-	++channel->sig_events;
+ ++channel->sig_events;
 
-	hv_do_fast_hypercall8(HVCALL_SIGNAL_EVENT, channel->sig_event);
+ hv_do_fast_hypercall8(HVCALL_SIGNAL_EVENT, channel->sig_event);
 }

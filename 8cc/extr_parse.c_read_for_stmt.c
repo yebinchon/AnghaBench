@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-struct TYPE_15__ {int /*<<< orphan*/  ty; } ;
-typedef  TYPE_1__ Node ;
-typedef  int /*<<< orphan*/  Map ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RESTORE_JUMP_LABELS () ; 
- int /*<<< orphan*/  SET_JUMP_LABELS (char*,char*) ; 
- TYPE_1__* ast_compound_stmt (int /*<<< orphan*/ *) ; 
- TYPE_1__* ast_conv (int /*<<< orphan*/ ,TYPE_1__*) ; 
- TYPE_1__* ast_dest (char*) ; 
- TYPE_1__* ast_if (TYPE_1__*,int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_1__* ast_jump (char*) ; 
- int /*<<< orphan*/  expect (char) ; 
- scalar_t__ is_flotype (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * localenv ; 
- char* make_label () ; 
- int /*<<< orphan*/ * make_map_parent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * make_vector () ; 
- TYPE_1__* read_expr_opt () ; 
- TYPE_1__* read_opt_decl_or_stmt () ; 
- TYPE_1__* read_stmt () ; 
- int /*<<< orphan*/  type_bool ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef int Vector ;
+struct TYPE_15__ {int ty; } ;
+typedef TYPE_1__ Node ;
+typedef int Map ;
+
+
+ int RESTORE_JUMP_LABELS () ;
+ int SET_JUMP_LABELS (char*,char*) ;
+ TYPE_1__* ast_compound_stmt (int *) ;
+ TYPE_1__* ast_conv (int ,TYPE_1__*) ;
+ TYPE_1__* ast_dest (char*) ;
+ TYPE_1__* ast_if (TYPE_1__*,int *,TYPE_1__*) ;
+ TYPE_1__* ast_jump (char*) ;
+ int expect (char) ;
+ scalar_t__ is_flotype (int ) ;
+ int * localenv ;
+ char* make_label () ;
+ int * make_map_parent (int *) ;
+ int * make_vector () ;
+ TYPE_1__* read_expr_opt () ;
+ TYPE_1__* read_opt_decl_or_stmt () ;
+ TYPE_1__* read_stmt () ;
+ int type_bool ;
+ int vec_push (int *,TYPE_1__*) ;
 
 __attribute__((used)) static Node *read_for_stmt() {
     expect('(');
@@ -60,7 +60,7 @@ __attribute__((used)) static Node *read_for_stmt() {
         vec_push(v, init);
     vec_push(v, ast_dest(beg));
     if (cond)
-        vec_push(v, ast_if(cond, NULL, ast_jump(end)));
+        vec_push(v, ast_if(cond, ((void*)0), ast_jump(end)));
     if (body)
         vec_push(v, body);
     vec_push(v, ast_dest(mid));

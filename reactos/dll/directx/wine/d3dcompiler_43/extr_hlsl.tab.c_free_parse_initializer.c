@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parse_initializer {unsigned int args_count; int /*<<< orphan*/ * args; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  d3dcompiler_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free_instr (int /*<<< orphan*/ ) ; 
+
+
+
+struct parse_initializer {unsigned int args_count; int * args; } ;
+
+
+ int d3dcompiler_free (int *) ;
+ int free_instr (int ) ;
 
 __attribute__((used)) static void free_parse_initializer(struct parse_initializer *initializer)
 {

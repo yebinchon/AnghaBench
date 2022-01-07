@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RowSetEntry {struct RowSetEntry* pRight; struct RowSetEntry* pLeft; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- struct RowSetEntry* rowSetNDeepTree (struct RowSetEntry**,int) ; 
+
+ int assert (int) ;
+ struct RowSetEntry* rowSetNDeepTree (struct RowSetEntry**,int) ;
 
 __attribute__((used)) static struct RowSetEntry *rowSetListToTree(struct RowSetEntry *pList){
-  int iDepth;           /* Depth of the tree so far */
-  struct RowSetEntry *p;       /* Current tree root */
-  struct RowSetEntry *pLeft;   /* Left subtree */
+  int iDepth;
+  struct RowSetEntry *p;
+  struct RowSetEntry *pLeft;
 
   assert( pList!=0 );
   p = pList;

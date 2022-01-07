@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hashset_int {unsigned int size; int* h; int /*<<< orphan*/  filled; } ;
 
-/* Variables and functions */
+
+
+
+struct hashset_int {unsigned int size; int* h; int filled; } ;
+
+
 
 int hashset_int_insert (struct hashset_int *H, int id) {
   int h1, h2;

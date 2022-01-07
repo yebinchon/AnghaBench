@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CPpmd8 ;
-typedef  void Byte ;
 
-/* Variables and functions */
- unsigned int I2U (unsigned int) ; 
- int /*<<< orphan*/  InsertNode (int /*<<< orphan*/ *,void*,unsigned int) ; 
- int U2B (unsigned int) ; 
- unsigned int U2I (unsigned int) ; 
+
+
+
+typedef int CPpmd8 ;
+typedef void Byte ;
+
+
+ unsigned int I2U (unsigned int) ;
+ int InsertNode (int *,void*,unsigned int) ;
+ int U2B (unsigned int) ;
+ unsigned int U2I (unsigned int) ;
 
 __attribute__((used)) static void SplitBlock(CPpmd8 *p, void *ptr, unsigned oldIndx, unsigned newIndx)
 {

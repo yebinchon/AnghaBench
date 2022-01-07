@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_config_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_BAD_CONFIG_VALUE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  apr_strtoi64 (char const*,char**,int /*<<< orphan*/ ) ; 
- char* svn_config_get_server_setting (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int svn_error_t ;
+typedef int svn_config_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int SVN_ERR_BAD_CONFIG_VALUE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int apr_strtoi64 (char const*,char**,int ) ;
+ char* svn_config_get_server_setting (int *,char const*,char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
 
 svn_error_t*
 svn_config_get_server_setting_int(svn_config_t *cfg,
@@ -35,18 +35,18 @@ svn_config_get_server_setting_int(svn_config_t *cfg,
   char *end_pos;
 
   tmp_value = svn_config_get_server_setting(cfg, server_group,
-                                            option_name, NULL);
-  if (tmp_value == NULL)
+                                            option_name, ((void*)0));
+  if (tmp_value == ((void*)0))
     *result_value = default_value;
   else
     {
-      /* read tmp_value as an int now */
+
       *result_value = apr_strtoi64(tmp_value, &end_pos, 0);
 
       if (*end_pos != 0)
         {
           return svn_error_createf
-            (SVN_ERR_BAD_CONFIG_VALUE, NULL,
+            (SVN_ERR_BAD_CONFIG_VALUE, ((void*)0),
              _("Config error: invalid integer value '%s'"),
              tmp_value);
         }

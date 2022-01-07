@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct TYPE_3__ {int** pi_active_national_set; } ;
-typedef  TYPE_1__ decoder_sys_t ;
+typedef TYPE_1__ decoder_sys_t ;
 
-/* Variables and functions */
- int bytereverse (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char*) ; 
- int /*<<< orphan*/  to_utf8 (char*,int) ; 
+
+ int bytereverse (int const) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char*) ;
+ int to_utf8 (char*,int) ;
 
 __attribute__((used)) static void decode_string( char * res, int res_len,
                            decoder_sys_t *p_sys, int magazine,
@@ -37,7 +37,7 @@ __attribute__((used)) static void decode_string( char * res, int res_len,
 
         switch ( in )
         {
-        /* special national characters */
+
         case 0x23:
             out = p_sys->pi_active_national_set[magazine][0];
             break;
@@ -78,33 +78,33 @@ __attribute__((used)) static void decode_string( char * res, int res_len,
             out = p_sys->pi_active_national_set[magazine][12];
             break;
 
-        /* some special control characters (empirical) */
+
         case 0x0d:
-            /* apparently this starts a sequence that ends with 0xb 0xb */
+
             while ( i + 1 < len && (bytereverse( packet[i+1] ) & 0x7f) != 0x0b )
                 i++;
             i += 2;
             break;
-            /* goto skip; */
+
 
         default:
-            /* non documented national range 0x08 - 0x0f */
+
             if ( in >= 0x08 && in <= 0x0f )
             {
                 out = p_sys->pi_active_national_set[magazine][13 + in - 8];
                 break;
             }
 
-            /* normal ascii */
+
             if ( in > 32 && in < 0x7f )
                 out = in;
         }
 
-        /* handle undefined national characters */
+
         if ( out == 0 )
             out = 32;
 
-        /* convert to utf-8 */
+
         to_utf8( utf8, out );
         l = strlen( utf8 );
         if ( pt + l < res + res_len - 1 )
@@ -113,8 +113,8 @@ __attribute__((used)) static void decode_string( char * res, int res_len,
             pt += l;
         }
 
-        /* skip: ; */
+
     }
-    /* end: */
+
     *pt++ = 0;
 }

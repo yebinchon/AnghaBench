@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  alloc; scalar_t__ outBuf; int /*<<< orphan*/  mtCoder; int /*<<< orphan*/  allocBig; TYPE_1__* coders; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int alloc; scalar_t__ outBuf; int mtCoder; int allocBig; TYPE_1__* coders; } ;
 struct TYPE_3__ {scalar_t__ enc; } ;
-typedef  TYPE_1__ CLzma2EncInt ;
-typedef  scalar_t__ CLzma2EncHandle ;
-typedef  TYPE_2__ CLzma2Enc ;
+typedef TYPE_1__ CLzma2EncInt ;
+typedef scalar_t__ CLzma2EncHandle ;
+typedef TYPE_2__ CLzma2Enc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IAlloc_Free (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  LzmaEnc_Destroy (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MtCoder_Destruct (int /*<<< orphan*/ *) ; 
- unsigned int NUM_MT_CODER_THREADS_MAX ; 
+
+ int IAlloc_Free (int ,scalar_t__) ;
+ int LzmaEnc_Destroy (scalar_t__,int ,int ) ;
+ int MtCoder_Destruct (int *) ;
+ unsigned int NUM_MT_CODER_THREADS_MAX ;
 
 void Lzma2Enc_Destroy(CLzma2EncHandle pp)
 {
@@ -38,9 +38,9 @@ void Lzma2Enc_Destroy(CLzma2EncHandle pp)
     }
   }
 
-  #ifndef _7ZIP_ST
+
   MtCoder_Destruct(&p->mtCoder);
-  #endif
+
 
   IAlloc_Free(p->alloc, p->outBuf);
   IAlloc_Free(p->alloc, pp);

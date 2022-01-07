@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Debug ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ldbLog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldbLogStackValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* lua_getlocal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_getstack (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- int /*<<< orphan*/  strstr (char const*,char*) ; 
+
+
+
+typedef int sds ;
+typedef int lua_State ;
+typedef int lua_Debug ;
+
+
+ int ldbLog (int ) ;
+ int ldbLogStackValue (int *,int ) ;
+ char* lua_getlocal (int *,int *,int) ;
+ scalar_t__ lua_getstack (int *,int ,int *) ;
+ int lua_pop (int *,int) ;
+ int sdscatprintf (int ,char*,char const*) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int sdsnew (char*) ;
+ int strstr (char const*,char*) ;
 
 void ldbPrintAll(lua_State *lua) {
     lua_Debug ar;
@@ -32,8 +32,8 @@ void ldbPrintAll(lua_State *lua) {
 
     if (lua_getstack(lua,0,&ar) != 0) {
         const char *name;
-        int i = 1; /* Variable index. */
-        while((name = lua_getlocal(lua,&ar,i)) != NULL) {
+        int i = 1;
+        while((name = lua_getlocal(lua,&ar,i)) != ((void*)0)) {
             i++;
             if (!strstr(name,"(*temporary)")) {
                 sds prefix = sdscatprintf(sdsempty(),"<value> %s = ",name);

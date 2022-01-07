@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sQueue ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
+typedef int sqlite3_int64 ;
+typedef int sQueue ;
 struct TYPE_8__ {char* zErrMsg; } ;
-struct TYPE_9__ {char* zTableName; char* zIdColumn; char* zParentColumn; int /*<<< orphan*/  db; TYPE_1__ base; } ;
-typedef  TYPE_2__ closure_vtab ;
-typedef  int /*<<< orphan*/  closure_queue ;
-struct TYPE_10__ {int /*<<< orphan*/  pClosure; int /*<<< orphan*/  pCurrent; void* zParentColumn; void* zIdColumn; void* zTableName; TYPE_2__* pVtab; } ;
-typedef  TYPE_3__ closure_cursor ;
-struct TYPE_11__ {int iGeneration; int /*<<< orphan*/  id; } ;
-typedef  TYPE_4__ closure_avl ;
+struct TYPE_9__ {char* zTableName; char* zIdColumn; char* zParentColumn; int db; TYPE_1__ base; } ;
+typedef TYPE_2__ closure_vtab ;
+typedef int closure_queue ;
+struct TYPE_10__ {int pClosure; int pCurrent; void* zParentColumn; void* zIdColumn; void* zTableName; TYPE_2__* pVtab; } ;
+typedef TYPE_3__ closure_cursor ;
+struct TYPE_11__ {int iGeneration; int id; } ;
+typedef TYPE_4__ closure_avl ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_INTEGER ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  closureAvlFirst (int /*<<< orphan*/ ) ; 
- scalar_t__ closureAvlSearch (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closureClearCursor (TYPE_3__*) ; 
- int closureInsertNode (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* queuePull (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_column_int64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_column_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char const* sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- void* sqlite3_mprintf (char*,char const*,...) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ SQLITE_INTEGER ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int closureAvlFirst (int ) ;
+ scalar_t__ closureAvlSearch (int ,int ) ;
+ int closureClearCursor (TYPE_3__*) ;
+ int closureInsertNode (int *,TYPE_3__*,int ,int) ;
+ int memset (int *,int ,int) ;
+ TYPE_4__* queuePull (int *) ;
+ int sqlite3_bind_int64 (int *,int,int ) ;
+ int sqlite3_column_int64 (int *,int ) ;
+ scalar_t__ sqlite3_column_type (int *,int ) ;
+ char const* sqlite3_errmsg (int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ void* sqlite3_mprintf (char*,char const*,...) ;
+ int sqlite3_prepare_v2 (int ,char*,int,int **,int ) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int sqlite3_value_int (int *) ;
+ int sqlite3_value_int64 (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static int closureFilter(
-  sqlite3_vtab_cursor *pVtabCursor, 
+  sqlite3_vtab_cursor *pVtabCursor,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
@@ -71,12 +71,12 @@ __attribute__((used)) static int closureFilter(
   const char *zParentColumn = pVtab->zParentColumn;
   closure_queue sQueue;
 
-  (void)idxStr;  /* Unused parameter */
-  (void)argc;    /* Unused parameter */
+  (void)idxStr;
+  (void)argc;
   closureClearCursor(pCur);
   memset(&sQueue, 0, sizeof(sQueue));
   if( (idxNum & 1)==0 ){
-    /* No root=$root in the WHERE clause.  Return an empty set */
+
     return SQLITE_OK;
   }
   iRoot = sqlite3_value_int64(argv[0]);

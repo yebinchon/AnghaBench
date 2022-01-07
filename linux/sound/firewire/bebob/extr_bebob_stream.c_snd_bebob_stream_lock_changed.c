@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct snd_bebob {int dev_lock_changed; int /*<<< orphan*/  hwdep_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct snd_bebob {int dev_lock_changed; int hwdep_wait; } ;
+
+
+ int wake_up (int *) ;
 
 void snd_bebob_stream_lock_changed(struct snd_bebob *bebob)
 {
-	bebob->dev_lock_changed = true;
-	wake_up(&bebob->hwdep_wait);
+ bebob->dev_lock_changed = 1;
+ wake_up(&bebob->hwdep_wait);
 }

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cl_fixture_cleanup (char*) ; 
- int /*<<< orphan*/  git_repository_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * repo ; 
+ int cl_fixture_cleanup (char*) ;
+ int git_repository_free (int *) ;
+ int * repo ;
 
 void test_object_commit_commitstagedfile__cleanup(void)
 {
-	git_repository_free(repo);
-	repo = NULL;
+ git_repository_free(repo);
+ repo = ((void*)0);
 
-	cl_fixture_cleanup("treebuilder");
+ cl_fixture_cleanup("treebuilder");
 }

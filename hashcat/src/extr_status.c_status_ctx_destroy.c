@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  hashcat_status_final; int /*<<< orphan*/  mux_hwmon; int /*<<< orphan*/  mux_display; int /*<<< orphan*/  mux_counter; int /*<<< orphan*/  mux_dispatcher; } ;
-typedef  TYPE_1__ status_ctx_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int hashcat_status_final; int mux_hwmon; int mux_display; int mux_counter; int mux_dispatcher; } ;
+typedef TYPE_1__ status_ctx_t ;
 struct TYPE_6__ {TYPE_1__* status_ctx; } ;
-typedef  TYPE_2__ hashcat_ctx_t ;
+typedef TYPE_2__ hashcat_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hc_thread_mutex_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hcfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int hc_thread_mutex_delete (int ) ;
+ int hcfree (int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 void status_ctx_destroy (hashcat_ctx_t *hashcat_ctx)
 {

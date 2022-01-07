@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt8Number ;
-typedef  int /*<<< orphan*/  cmsUInt32Number ;
-typedef  int /*<<< orphan*/ * cmsHTRANSFORM ;
-typedef  int /*<<< orphan*/ * cmsHPROFILE ;
-typedef  int /*<<< orphan*/  TIFF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetInputPixelType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INTENT_RELATIVE_COLORIMETRIC ; 
- int /*<<< orphan*/  PrintProfileInformation (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TIFFGetField (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TIFFTAG_ICCPROFILE ; 
- int /*<<< orphan*/  TYPE_Lab_DBL ; 
- scalar_t__ Verbose ; 
- int /*<<< orphan*/ * cmsCreateTransform (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * cmsOpenProfileFromMem (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hLab ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int cmsUInt8Number ;
+typedef int cmsUInt32Number ;
+typedef int * cmsHTRANSFORM ;
+typedef int * cmsHPROFILE ;
+typedef int TIFF ;
+
+
+ int GetInputPixelType (int *) ;
+ int INTENT_RELATIVE_COLORIMETRIC ;
+ int PrintProfileInformation (int *,int *) ;
+ scalar_t__ TIFFGetField (int *,int ,int *,int **) ;
+ int TIFFTAG_ICCPROFILE ;
+ int TYPE_Lab_DBL ;
+ scalar_t__ Verbose ;
+ int * cmsCreateTransform (int *,int ,int ,int ,int ,int ) ;
+ int * cmsOpenProfileFromMem (int *,int ) ;
+ int fprintf (int ,char*) ;
+ int hLab ;
+ int stdout ;
 
 __attribute__((used)) static
 cmsUInt32Number OpenEmbedded(TIFF* tiff, cmsHPROFILE* PtrProfile, cmsHTRANSFORM* PtrXform)
@@ -37,8 +37,8 @@ cmsUInt32Number OpenEmbedded(TIFF* tiff, cmsHPROFILE* PtrProfile, cmsHTRANSFORM*
     cmsUInt32Number EmbedLen, dwFormat = 0;
     cmsUInt8Number* EmbedBuffer;
 
-    *PtrProfile = NULL;
-    *PtrXform   = NULL;
+    *PtrProfile = ((void*)0);
+    *PtrXform = ((void*)0);
 
     if (TIFFGetField(tiff, TIFFTAG_ICCPROFILE, &EmbedLen, &EmbedBuffer)) {
 
@@ -46,12 +46,12 @@ cmsUInt32Number OpenEmbedded(TIFF* tiff, cmsHPROFILE* PtrProfile, cmsHTRANSFORM*
 
               if (Verbose) {
 
-				  fprintf(stdout, "Embedded profile found:\n");
-				  PrintProfileInformation(NULL, *PtrProfile);
+      fprintf(stdout, "Embedded profile found:\n");
+      PrintProfileInformation(((void*)0), *PtrProfile);
 
               }
 
-              dwFormat  = GetInputPixelType(tiff);
+              dwFormat = GetInputPixelType(tiff);
               *PtrXform = cmsCreateTransform(*PtrProfile, dwFormat,
                                           hLab, TYPE_Lab_DBL, INTENT_RELATIVE_COLORIMETRIC, 0);
 

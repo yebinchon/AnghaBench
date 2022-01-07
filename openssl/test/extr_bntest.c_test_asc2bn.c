@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_asc2bn (int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  TEST_BN_abs_eq_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEST_BN_eq_word (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  TEST_BN_eq_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_ge_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_BN_lt_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_asc2bn (int **,char*) ;
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int TEST_BN_abs_eq_word (int *,int) ;
+ int TEST_BN_eq_word (int *,int) ;
+ int TEST_BN_eq_zero (int *) ;
+ int TEST_BN_ge_zero (int *) ;
+ int TEST_BN_lt_zero (int *) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
 
 __attribute__((used)) static int test_asc2bn(void)
 {
-    BIGNUM *bn = NULL;
+    BIGNUM *bn = ((void*)0);
     int st = 0;
 
     if (!TEST_ptr(bn = BN_new()))

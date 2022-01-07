@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_NAMEMAP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_LIB_EVP ; 
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  ERR_R_PASSED_NULL_PARAMETER ; 
- int /*<<< orphan*/  ERR_raise (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_raise_data (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  EVP_R_BAD_ALGORITHM_NAME ; 
- int /*<<< orphan*/  EVP_R_CONFLICTING_ALGORITHM_NAME ; 
- char const NAME_SEPARATOR ; 
- int ossl_namemap_add_n (int /*<<< orphan*/ *,int,char const*,size_t) ; 
- int ossl_namemap_name2num_n (int /*<<< orphan*/ *,char const*,size_t) ; 
- char* strchr (char const*,char const) ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int OSSL_NAMEMAP ;
+
+
+ int ERR_LIB_EVP ;
+ int ERR_R_INTERNAL_ERROR ;
+ int ERR_R_PASSED_NULL_PARAMETER ;
+ int ERR_raise (int ,int ) ;
+ int ERR_raise_data (int ,int ,char*,int,...) ;
+ int EVP_R_BAD_ALGORITHM_NAME ;
+ int EVP_R_CONFLICTING_ALGORITHM_NAME ;
+ char const NAME_SEPARATOR ;
+ int ossl_namemap_add_n (int *,int,char const*,size_t) ;
+ int ossl_namemap_name2num_n (int *,char const*,size_t) ;
+ char* strchr (char const*,char const) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static int add_names_to_namemap(OSSL_NAMEMAP *namemap,
                                 const char *names)
@@ -33,23 +33,23 @@ __attribute__((used)) static int add_names_to_namemap(OSSL_NAMEMAP *namemap,
     size_t l;
     int id = 0;
 
-    /* Check that we have a namemap and that there is at least one name */
-    if (namemap == NULL) {
+
+    if (namemap == ((void*)0)) {
         ERR_raise(ERR_LIB_EVP, ERR_R_PASSED_NULL_PARAMETER);
         return 0;
     }
 
-    /*
-     * Check that no name is an empty string, and that all names have at
-     * most one numeric identity together.
-     */
-    for (p = names; *p != '\0'; p = (q == NULL ? p + l : q + 1)) {
+
+
+
+
+    for (p = names; *p != '\0'; p = (q == ((void*)0) ? p + l : q + 1)) {
         int this_id;
 
-        if ((q = strchr(p, NAME_SEPARATOR)) == NULL)
-            l = strlen(p);       /* offset to \0 */
+        if ((q = strchr(p, NAME_SEPARATOR)) == ((void*)0))
+            l = strlen(p);
         else
-            l = q - p;           /* offset to the next separator */
+            l = q - p;
 
         this_id = ossl_namemap_name2num_n(namemap, p, l);
 
@@ -67,14 +67,14 @@ __attribute__((used)) static int add_names_to_namemap(OSSL_NAMEMAP *namemap,
         }
     }
 
-    /* Now that we have checked, register all names */
-    for (p = names; *p != '\0'; p = (q == NULL ? p + l : q + 1)) {
+
+    for (p = names; *p != '\0'; p = (q == ((void*)0) ? p + l : q + 1)) {
         int this_id;
 
-        if ((q = strchr(p, NAME_SEPARATOR)) == NULL)
-            l = strlen(p);       /* offset to \0 */
+        if ((q = strchr(p, NAME_SEPARATOR)) == ((void*)0))
+            l = strlen(p);
         else
-            l = q - p;           /* offset to the next separator */
+            l = q - p;
 
         this_id = ossl_namemap_add_n(namemap, id, p, l);
         if (id == 0)

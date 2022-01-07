@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct security_info {int restrict_address_family_inet; int restrict_address_family_unix; int restrict_address_family_netlink; int restrict_address_family_packet; int restrict_address_family_other; } ;
-typedef  char const sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  char const sd_bus ;
+typedef char const sd_bus_message ;
+typedef int sd_bus_error ;
+typedef char const sd_bus ;
 
-/* Variables and functions */
- scalar_t__ STR_IN_SET (char const*,char*,char*) ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int sd_bus_message_enter_container (char const*,char,char*) ; 
- int sd_bus_message_exit_container (char const*) ; 
- int sd_bus_message_read (char const*,char*,...) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+ scalar_t__ STR_IN_SET (char const*,char*,char*) ;
+ int assert (char const*) ;
+ int sd_bus_message_enter_container (char const*,char,char*) ;
+ int sd_bus_message_exit_container (char const*) ;
+ int sd_bus_message_read (char const*,char*,...) ;
+ scalar_t__ streq (char const*,char*) ;
 
 __attribute__((used)) static int property_read_restrict_address_families(
                 sd_bus *bus,

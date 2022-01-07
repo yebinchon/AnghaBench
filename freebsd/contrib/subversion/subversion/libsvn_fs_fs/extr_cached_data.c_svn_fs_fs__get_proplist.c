@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_6__ ;
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
+
+
+typedef struct TYPE_20__ TYPE_6__ ;
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_15__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_stream_t ;
 struct TYPE_16__ {TYPE_6__* fsap_data; } ;
-typedef  TYPE_2__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_17__ {int /*<<< orphan*/  revision; int /*<<< orphan*/  item_index; int /*<<< orphan*/  txn_id; } ;
-typedef  TYPE_3__ representation_t ;
-struct TYPE_18__ {int /*<<< orphan*/  second; int /*<<< orphan*/  revision; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_4__ pair_cache_key_t ;
-struct TYPE_19__ {int /*<<< orphan*/  id; TYPE_3__* prop_rep; } ;
-typedef  TYPE_5__ node_revision_t ;
+typedef TYPE_2__ svn_fs_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_17__ {int revision; int item_index; int txn_id; } ;
+typedef TYPE_3__ representation_t ;
+struct TYPE_18__ {int second; int revision; int member_0; } ;
+typedef TYPE_4__ pair_cache_key_t ;
+struct TYPE_19__ {int id; TYPE_3__* prop_rep; } ;
+typedef TYPE_5__ node_revision_t ;
 struct TYPE_20__ {scalar_t__ properties_cache; } ;
-typedef  TYPE_6__ fs_fs_data_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_6__ fs_fs_data_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_HASH_TERMINATOR ; 
- scalar_t__ SVN_IS_VALID_REVNUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__get (void**,scalar_t__*,scalar_t__,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_cache__set (scalar_t__,TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_quick_wrapf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  svn_fs_fs__get_contents (int /*<<< orphan*/ **,TYPE_2__*,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_fs_fs__id_txn_used (int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_fs_fs__id_unparse (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* svn_fs_fs__path_txn_node_props (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_hash_read2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_HASH_TERMINATOR ;
+ scalar_t__ SVN_IS_VALID_REVNUM (int ) ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * apr_hash_make (int *) ;
+ int svn_cache__get (void**,scalar_t__*,scalar_t__,TYPE_4__*,int *) ;
+ int svn_cache__set (scalar_t__,TYPE_4__*,int *,int *) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_error_quick_wrapf (int *,int ,int ,...) ;
+ int svn_fs_fs__get_contents (int **,TYPE_2__*,TYPE_3__*,int ,int *) ;
+ scalar_t__ svn_fs_fs__id_txn_used (int *) ;
+ TYPE_1__* svn_fs_fs__id_unparse (int ,int *) ;
+ char* svn_fs_fs__path_txn_node_props (TYPE_2__*,int ,int *) ;
+ int * svn_hash_read2 (int *,int *,int ,int *) ;
+ int svn_stream_close (int *) ;
+ int svn_stream_open_readonly (int **,char const*,int *,int *) ;
 
 svn_error_t *
 svn_fs_fs__get_proplist(apr_hash_t **proplist_p,
@@ -121,7 +121,7 @@ svn_fs_fs__get_proplist(apr_hash_t **proplist_p,
     }
   else
     {
-      /* return an empty prop list if the node doesn't have any props */
+
       proplist = apr_hash_make(pool);
     }
 

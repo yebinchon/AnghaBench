@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int width; int height; size_t profile; TYPE_1__* priv_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  is_interlaced; } ;
-typedef  TYPE_1__ ProresContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_5__ {int is_interlaced; } ;
+typedef TYPE_1__ ProresContext ;
+typedef int AVFrame ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WB16 (int*,int) ; 
- int /*<<< orphan*/  AV_WB32 (int*,int) ; 
- int DEFAULT_SLICE_MB_WIDTH ; 
- int av_log2 (int) ; 
- int /*<<< orphan*/  bytestream_put_be16 (int**,int) ; 
- int encode_slice (TYPE_2__*,int /*<<< orphan*/  const*,int,int,int,int*,int,int,int*,int /*<<< orphan*/ ,int const) ; 
- int* qp_start_table ; 
+
+ int AV_WB16 (int*,int) ;
+ int AV_WB32 (int*,int) ;
+ int DEFAULT_SLICE_MB_WIDTH ;
+ int av_log2 (int) ;
+ int bytestream_put_be16 (int**,int) ;
+ int encode_slice (TYPE_2__*,int const*,int,int,int,int*,int,int,int*,int ,int const) ;
+ int* qp_start_table ;
 
 __attribute__((used)) static int prores_encode_picture(AVCodecContext *avctx, const AVFrame *pic,
         uint8_t *buf, const int buf_size, const int picture_index, const int is_top_field)
@@ -39,7 +39,7 @@ __attribute__((used)) static int prores_encode_picture(AVCodecContext *avctx, co
     uint8_t *sl_data, *sl_data_sizes;
     int slice_per_line = 0, rem = mb_width;
 
-    if (!ctx->is_interlaced) { /* progressive encoding */
+    if (!ctx->is_interlaced) {
         mb_height = (avctx->height + 15) >> 4;
         unsafe_mb_height_limit = mb_height;
     } else {
@@ -78,16 +78,16 @@ __attribute__((used)) static int prores_encode_picture(AVCodecContext *avctx, co
             }
 
             bytestream_put_be16(&sl_data_sizes, sl_size);
-            sl_data           += sl_size;
-            sl_data_size      -= sl_size;
-            mb_x              += slice_mb_count;
+            sl_data += sl_size;
+            sl_data_size -= sl_size;
+            mb_x += slice_mb_count;
         }
     }
 
     buf[0] = hdr_size << 3;
     AV_WB32(buf + 1, sl_data - buf);
-    AV_WB16(buf + 5, slice_per_line * mb_height); /* picture size */
-    buf[7] = av_log2(DEFAULT_SLICE_MB_WIDTH) << 4; /* number of slices */
+    AV_WB16(buf + 5, slice_per_line * mb_height);
+    buf[7] = av_log2(DEFAULT_SLICE_MB_WIDTH) << 4;
 
     return sl_data - buf;
 }

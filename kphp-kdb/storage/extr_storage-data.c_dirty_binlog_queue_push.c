@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int dirty; struct TYPE_5__* fsync_next; } ;
-typedef  TYPE_1__ storage_binlog_file_t ;
+typedef TYPE_1__ storage_binlog_file_t ;
 
-/* Variables and functions */
- TYPE_1__* dirty_binlog_queue_head ; 
- TYPE_1__* dirty_binlog_queue_tail ; 
- int /*<<< orphan*/  mutex_dirty_binlog_queue ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* dirty_binlog_queue_head ;
+ TYPE_1__* dirty_binlog_queue_tail ;
+ int mutex_dirty_binlog_queue ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void dirty_binlog_queue_push (storage_binlog_file_t *B) {
   if (B->dirty) {
@@ -27,8 +27,8 @@ void dirty_binlog_queue_push (storage_binlog_file_t *B) {
   }
   B->dirty = 1;
   pthread_mutex_lock (&mutex_dirty_binlog_queue);
-  B->fsync_next = NULL;
-  if (dirty_binlog_queue_head == NULL) {
+  B->fsync_next = ((void*)0);
+  if (dirty_binlog_queue_head == ((void*)0)) {
     dirty_binlog_queue_head = dirty_binlog_queue_tail = B;
   } else {
     dirty_binlog_queue_tail = dirty_binlog_queue_tail->fsync_next = B;

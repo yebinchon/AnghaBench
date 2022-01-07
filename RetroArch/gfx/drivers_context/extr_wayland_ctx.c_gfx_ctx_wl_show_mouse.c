@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct wl_cursor_image {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  hotspot_y; int /*<<< orphan*/  hotspot_x; } ;
-struct TYPE_5__ {int visible; int /*<<< orphan*/  serial; int /*<<< orphan*/ * surface; TYPE_1__* default_cursor; } ;
-struct TYPE_6__ {TYPE_2__ cursor; int /*<<< orphan*/  wl_pointer; } ;
-typedef  TYPE_3__ gfx_ctx_wayland_data_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct wl_cursor_image {int height; int width; int hotspot_y; int hotspot_x; } ;
+struct TYPE_5__ {int visible; int serial; int * surface; TYPE_1__* default_cursor; } ;
+struct TYPE_6__ {TYPE_2__ cursor; int wl_pointer; } ;
+typedef TYPE_3__ gfx_ctx_wayland_data_t ;
 struct TYPE_4__ {struct wl_cursor_image** images; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wl_cursor_image_get_buffer (struct wl_cursor_image*) ; 
- int /*<<< orphan*/  wl_pointer_set_cursor (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_attach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wl_surface_commit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wl_surface_damage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int wl_cursor_image_get_buffer (struct wl_cursor_image*) ;
+ int wl_pointer_set_cursor (int ,int ,int *,int ,int ) ;
+ int wl_surface_attach (int *,int ,int ,int ) ;
+ int wl_surface_commit (int *) ;
+ int wl_surface_damage (int *,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void gfx_ctx_wl_show_mouse(void *data, bool state)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void gfx_ctx_wl_show_mouse(void *data, bool state)
       wl_surface_commit(wl->cursor.surface);
    }
    else
-      wl_pointer_set_cursor(wl->wl_pointer, wl->cursor.serial, NULL, 0, 0);
+      wl_pointer_set_cursor(wl->wl_pointer, wl->cursor.serial, ((void*)0), 0, 0);
 
    wl->cursor.visible = state;
 }

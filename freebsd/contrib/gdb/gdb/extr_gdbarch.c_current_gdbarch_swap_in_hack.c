@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct gdbarch_swap {TYPE_1__* source; int /*<<< orphan*/  swap; struct gdbarch_swap* next; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct gdbarch_swap {TYPE_1__* source; int swap; struct gdbarch_swap* next; } ;
 struct gdbarch {struct gdbarch_swap* swap; } ;
-struct TYPE_2__ {int /*<<< orphan*/  sizeof_data; int /*<<< orphan*/  data; } ;
+struct TYPE_2__ {int sizeof_data; int data; } ;
 
-/* Variables and functions */
- struct gdbarch* current_gdbarch ; 
- int /*<<< orphan*/  gdb_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ struct gdbarch* current_gdbarch ;
+ int gdb_assert (int ) ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static void
 current_gdbarch_swap_in_hack (struct gdbarch *new_gdbarch)
 {
   struct gdbarch_swap *curr;
 
-  gdb_assert (current_gdbarch == NULL);
+  gdb_assert (current_gdbarch == ((void*)0));
   for (curr = new_gdbarch->swap;
-       curr != NULL;
+       curr != ((void*)0);
        curr = curr->next)
     memcpy (curr->source->data, curr->swap, curr->source->sizeof_data);
   current_gdbarch = new_gdbarch;

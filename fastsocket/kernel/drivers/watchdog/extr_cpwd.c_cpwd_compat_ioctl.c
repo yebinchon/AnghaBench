@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int ENOIOCTLCMD ; 
-#define  WIOCGSTAT 130 
-#define  WIOCSTART 129 
-#define  WIOCSTOP 128 
- int cpwd_ioctl (struct file*,unsigned int,unsigned long) ; 
- int /*<<< orphan*/  lock_kernel () ; 
- int /*<<< orphan*/  unlock_kernel () ; 
+
+ int ENOIOCTLCMD ;
+
+
+
+ int cpwd_ioctl (struct file*,unsigned int,unsigned long) ;
+ int lock_kernel () ;
+ int unlock_kernel () ;
 
 __attribute__((used)) static long cpwd_compat_ioctl(struct file *file, unsigned int cmd,
-			      unsigned long arg)
+         unsigned long arg)
 {
-	int rval = -ENOIOCTLCMD;
+ int rval = -ENOIOCTLCMD;
 
-	switch (cmd) {
-	/* solaris ioctls are specific to this driver */
-	case WIOCSTART:
-	case WIOCSTOP:
-	case WIOCGSTAT:
-		lock_kernel();
-		rval = cpwd_ioctl(file, cmd, arg);
-		unlock_kernel();
-		break;
+ switch (cmd) {
 
-	/* everything else is handled by the generic compat layer */
-	default:
-		break;
-	}
+ case 129:
+ case 128:
+ case 130:
+  lock_kernel();
+  rval = cpwd_ioctl(file, cmd, arg);
+  unlock_kernel();
+  break;
 
-	return rval;
+
+ default:
+  break;
+ }
+
+ return rval;
 }

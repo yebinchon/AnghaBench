@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_7__ ;
-typedef  struct TYPE_19__   TYPE_6__ ;
-typedef  struct TYPE_18__   TYPE_5__ ;
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_7__ ;
+typedef struct TYPE_19__ TYPE_6__ ;
+typedef struct TYPE_18__ TYPE_5__ ;
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_21__ {int dwValidParams; int dwChannelGroups; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_16__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_14__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_19__ {int ref; int nrofgroups; scalar_t__ pLatencyClock; scalar_t__ synth_sink; scalar_t__ synth; TYPE_7__ IDirectMusicPort_iface; TYPE_5__* group; int /*<<< orphan*/  caps; TYPE_8__ params; int /*<<< orphan*/  active; int /*<<< orphan*/ * parent; TYPE_3__ IKsControl_iface; TYPE_2__ IDirectMusicThru_iface; TYPE_1__ IDirectMusicPortDownload_iface; } ;
+struct TYPE_20__ {int * lpVtbl; } ;
+struct TYPE_16__ {int * lpVtbl; } ;
+struct TYPE_15__ {int * lpVtbl; } ;
+struct TYPE_14__ {int * lpVtbl; } ;
+struct TYPE_19__ {int ref; int nrofgroups; scalar_t__ pLatencyClock; scalar_t__ synth_sink; scalar_t__ synth; TYPE_7__ IDirectMusicPort_iface; TYPE_5__* group; int caps; TYPE_8__ params; int active; int * parent; TYPE_3__ IKsControl_iface; TYPE_2__ IDirectMusicThru_iface; TYPE_1__ IDirectMusicPortDownload_iface; } ;
 struct TYPE_18__ {TYPE_4__* channel; } ;
-struct TYPE_17__ {int /*<<< orphan*/  priority; } ;
-typedef  TYPE_6__ SynthPortImpl ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  TYPE_7__ IDirectMusicPort ;
-typedef  int /*<<< orphan*/  IDirectMusic8Impl ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_8__ DMUS_PORTPARAMS ;
-typedef  int /*<<< orphan*/  DMUS_PORTCAPS ;
+struct TYPE_17__ {int priority; } ;
+typedef TYPE_6__ SynthPortImpl ;
+typedef int LPVOID ;
+typedef TYPE_7__ IDirectMusicPort ;
+typedef int IDirectMusic8Impl ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_8__ DMUS_PORTPARAMS ;
+typedef int DMUS_PORTCAPS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_DirectMusicSynth ; 
- int /*<<< orphan*/  CLSID_DirectMusicSynthSink ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  DAUD_CHAN10_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN11_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN12_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN13_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN14_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN15_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN16_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN1_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN2_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN3_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN4_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN5_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN6_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN7_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN8_DEF_VOICE_PRIORITY ; 
- int /*<<< orphan*/  DAUD_CHAN9_DEF_VOICE_PRIORITY ; 
- scalar_t__ DMUSIC_CreateReferenceClockImpl (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int DMUS_PORTPARAMS_CHANNELGROUPS ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_6__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_6__*) ; 
- int /*<<< orphan*/  IDirectMusicSynthSink_Release (scalar_t__) ; 
- scalar_t__ IDirectMusicSynthSink_SetMasterClock (scalar_t__,scalar_t__) ; 
- scalar_t__ IDirectMusicSynth_Open (scalar_t__,TYPE_8__*) ; 
- int /*<<< orphan*/  IDirectMusicSynth_Release (scalar_t__) ; 
- scalar_t__ IDirectMusicSynth_SetMasterClock (scalar_t__,scalar_t__) ; 
- scalar_t__ IDirectMusicSynth_SetSynthSink (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  IID_IDirectMusicSynth ; 
- int /*<<< orphan*/  IID_IDirectMusicSynthSink ; 
- int /*<<< orphan*/  IID_IReferenceClock ; 
- int /*<<< orphan*/  IReferenceClock_Release (scalar_t__) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SynthPortImpl_DirectMusicPortDownload_Vtbl ; 
- int /*<<< orphan*/  SynthPortImpl_DirectMusicPort_Vtbl ; 
- int /*<<< orphan*/  SynthPortImpl_DirectMusicThru_Vtbl ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  ikscontrol_vtbl ; 
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_DirectMusicSynth ;
+ int CLSID_DirectMusicSynthSink ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int DAUD_CHAN10_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN11_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN12_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN13_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN14_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN15_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN16_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN1_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN2_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN3_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN4_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN5_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN6_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN7_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN8_DEF_VOICE_PRIORITY ;
+ int DAUD_CHAN9_DEF_VOICE_PRIORITY ;
+ scalar_t__ DMUSIC_CreateReferenceClockImpl (int *,int *,int *) ;
+ int DMUS_PORTPARAMS_CHANNELGROUPS ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_6__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_6__*) ;
+ int IDirectMusicSynthSink_Release (scalar_t__) ;
+ scalar_t__ IDirectMusicSynthSink_SetMasterClock (scalar_t__,scalar_t__) ;
+ scalar_t__ IDirectMusicSynth_Open (scalar_t__,TYPE_8__*) ;
+ int IDirectMusicSynth_Release (scalar_t__) ;
+ scalar_t__ IDirectMusicSynth_SetMasterClock (scalar_t__,scalar_t__) ;
+ scalar_t__ IDirectMusicSynth_SetSynthSink (scalar_t__,scalar_t__) ;
+ int IID_IDirectMusicSynth ;
+ int IID_IDirectMusicSynthSink ;
+ int IID_IReferenceClock ;
+ int IReferenceClock_Release (scalar_t__) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int SynthPortImpl_DirectMusicPortDownload_Vtbl ;
+ int SynthPortImpl_DirectMusicPort_Vtbl ;
+ int SynthPortImpl_DirectMusicThru_Vtbl ;
+ int TRACE (char*,...) ;
+ int ikscontrol_vtbl ;
 
 HRESULT synth_port_create(IDirectMusic8Impl *parent, DMUS_PORTPARAMS *port_params,
         DMUS_PORTCAPS *port_caps, IDirectMusicPort **port)
@@ -91,7 +91,7 @@ HRESULT synth_port_create(IDirectMusic8Impl *parent, DMUS_PORTPARAMS *port_param
 
     TRACE("(%p, %p, %p)\n", port_params, port_caps, port);
 
-    *port = NULL;
+    *port = ((void*)0);
 
     obj = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(SynthPortImpl));
     if (!obj)
@@ -107,7 +107,7 @@ HRESULT synth_port_create(IDirectMusic8Impl *parent, DMUS_PORTPARAMS *port_param
     obj->params = *port_params;
     obj->caps = *port_caps;
 
-    hr = DMUSIC_CreateReferenceClockImpl(&IID_IReferenceClock, (LPVOID*)&obj->pLatencyClock, NULL);
+    hr = DMUSIC_CreateReferenceClockImpl(&IID_IReferenceClock, (LPVOID*)&obj->pLatencyClock, ((void*)0));
     if (hr != S_OK)
     {
         HeapFree(GetProcessHeap(), 0, obj);
@@ -115,10 +115,10 @@ HRESULT synth_port_create(IDirectMusic8Impl *parent, DMUS_PORTPARAMS *port_param
     }
 
     if (SUCCEEDED(hr))
-        hr = CoCreateInstance(&CLSID_DirectMusicSynth, NULL, CLSCTX_INPROC_SERVER, &IID_IDirectMusicSynth, (void**)&obj->synth);
+        hr = CoCreateInstance(&CLSID_DirectMusicSynth, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IDirectMusicSynth, (void**)&obj->synth);
 
     if (SUCCEEDED(hr))
-        hr = CoCreateInstance(&CLSID_DirectMusicSynthSink, NULL, CLSCTX_INPROC_SERVER, &IID_IDirectMusicSynthSink, (void**)&obj->synth_sink);
+        hr = CoCreateInstance(&CLSID_DirectMusicSynthSink, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IDirectMusicSynthSink, (void**)&obj->synth_sink);
 
     if (SUCCEEDED(hr))
         hr = IDirectMusicSynth_SetMasterClock(obj->synth, obj->pLatencyClock);
@@ -136,7 +136,7 @@ HRESULT synth_port_create(IDirectMusic8Impl *parent, DMUS_PORTPARAMS *port_param
     {
         if (port_params->dwValidParams & DMUS_PORTPARAMS_CHANNELGROUPS) {
             obj->nrofgroups = port_params->dwChannelGroups;
-            /* Setting default priorities */
+
             for (i = 0; i < obj->nrofgroups; i++) {
                 TRACE ("Setting default channel priorities on channel group %i\n", i + 1);
                 obj->group[i].channel[0].priority = DAUD_CHAN1_DEF_VOICE_PRIORITY;

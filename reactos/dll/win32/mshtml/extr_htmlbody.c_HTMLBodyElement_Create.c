@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMHTMLElement ;
-struct TYPE_10__ {int /*<<< orphan*/ * vtbl; } ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIDOMHTMLElement ;
+struct TYPE_10__ {int * vtbl; } ;
 struct TYPE_11__ {TYPE_2__ node; } ;
 struct TYPE_13__ {TYPE_3__ element; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_12__ {TYPE_7__ textcont; int /*<<< orphan*/  nsbody; TYPE_1__ IHTMLBodyElement_iface; } ;
-typedef  TYPE_3__ HTMLElement ;
-typedef  int /*<<< orphan*/  HTMLDocumentNode ;
-typedef  TYPE_4__ HTMLBodyElement ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct TYPE_12__ {TYPE_7__ textcont; int nsbody; TYPE_1__ IHTMLBodyElement_iface; } ;
+typedef TYPE_3__ HTMLElement ;
+typedef int HTMLDocumentNode ;
+typedef TYPE_4__ HTMLBodyElement ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  HTMLBodyElementImplVtbl ; 
- int /*<<< orphan*/  HTMLBodyElementVtbl ; 
- int /*<<< orphan*/  HTMLBodyElement_dispex ; 
- int /*<<< orphan*/  HTMLTextContainer_Init (TYPE_7__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_nsIDOMHTMLBodyElement ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_4__* heap_alloc_zero (int) ; 
- int /*<<< orphan*/  heap_free (TYPE_4__*) ; 
- int /*<<< orphan*/  nsIDOMHTMLElement_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
+
+ int ERR (char*,int ) ;
+ int E_OUTOFMEMORY ;
+ int HTMLBodyElementImplVtbl ;
+ int HTMLBodyElementVtbl ;
+ int HTMLBodyElement_dispex ;
+ int HTMLTextContainer_Init (TYPE_7__*,int *,int *,int *) ;
+ int IID_nsIDOMHTMLBodyElement ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ TYPE_4__* heap_alloc_zero (int) ;
+ int heap_free (TYPE_4__*) ;
+ int nsIDOMHTMLElement_QueryInterface (int *,int *,void**) ;
 
 HRESULT HTMLBodyElement_Create(HTMLDocumentNode *doc, nsIDOMHTMLElement *nselem, HTMLElement **elem)
 {

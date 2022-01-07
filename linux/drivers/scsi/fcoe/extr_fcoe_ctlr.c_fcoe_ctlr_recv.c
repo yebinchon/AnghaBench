@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sk_buff {int dummy; } ;
-struct fcoe_ctlr {int /*<<< orphan*/  recv_work; int /*<<< orphan*/  fip_recv_list; } ;
+struct fcoe_ctlr {int recv_work; int fip_recv_list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_ATOMIC ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  skb_queue_tail (int /*<<< orphan*/ *,struct sk_buff*) ; 
- struct sk_buff* skb_share_check (struct sk_buff*,int /*<<< orphan*/ ) ; 
+
+ int GFP_ATOMIC ;
+ int schedule_work (int *) ;
+ int skb_queue_tail (int *,struct sk_buff*) ;
+ struct sk_buff* skb_share_check (struct sk_buff*,int ) ;
 
 void fcoe_ctlr_recv(struct fcoe_ctlr *fip, struct sk_buff *skb)
 {
-	skb = skb_share_check(skb, GFP_ATOMIC);
-	if (!skb)
-		return;
-	skb_queue_tail(&fip->fip_recv_list, skb);
-	schedule_work(&fip->recv_work);
+ skb = skb_share_check(skb, GFP_ATOMIC);
+ if (!skb)
+  return;
+ skb_queue_tail(&fip->fip_recv_list, skb);
+ schedule_work(&fip->recv_work);
 }

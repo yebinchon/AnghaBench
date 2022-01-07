@@ -1,60 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ ** uint8_t ;
-typedef  int u_int ;
-typedef  int /*<<< orphan*/  u_char ;
-struct eigrp_tlv_sw_version_t {int /*<<< orphan*/  eigrp_minor; int /*<<< orphan*/  eigrp_major; int /*<<< orphan*/  ios_minor; int /*<<< orphan*/  ios_major; } ;
-struct eigrp_tlv_ip_int_t {int plen; int /*<<< orphan*/  load; int /*<<< orphan*/  reliability; int /*<<< orphan*/  hopcount; int /*<<< orphan*/  mtu; int /*<<< orphan*/ *** bandwidth; int /*<<< orphan*/ *** delay; int /*<<< orphan*/ *** nexthop; int /*<<< orphan*/  destination; } ;
-struct eigrp_tlv_ip_ext_t {int plen; int proto_id; int /*<<< orphan*/  load; int /*<<< orphan*/  reliability; int /*<<< orphan*/  hopcount; int /*<<< orphan*/  mtu; int /*<<< orphan*/ *** bandwidth; int /*<<< orphan*/ *** delay; int /*<<< orphan*/ **** metric; int /*<<< orphan*/ **** tag; int /*<<< orphan*/  flags; int /*<<< orphan*/ **** origin_as; int /*<<< orphan*/ **** origin_router; int /*<<< orphan*/ *** nexthop; int /*<<< orphan*/  destination; } ;
-struct eigrp_tlv_header {int /*<<< orphan*/ *** type; int /*<<< orphan*/ *** length; } ;
-struct eigrp_tlv_general_parm_t {int /*<<< orphan*/  k5; int /*<<< orphan*/  k4; int /*<<< orphan*/  k3; int /*<<< orphan*/  k2; int /*<<< orphan*/  k1; int /*<<< orphan*/ **** holdtime; } ;
-struct eigrp_tlv_at_int_t {int /*<<< orphan*/  load; int /*<<< orphan*/  reliability; int /*<<< orphan*/  hopcount; int /*<<< orphan*/  mtu; int /*<<< orphan*/ *** bandwidth; int /*<<< orphan*/ *** delay; int /*<<< orphan*/ **** nexthop; int /*<<< orphan*/ *** cable_end; int /*<<< orphan*/ *** cable_start; } ;
-struct eigrp_tlv_at_ext_t {int proto_id; int /*<<< orphan*/  load; int /*<<< orphan*/  reliability; int /*<<< orphan*/  hopcount; int /*<<< orphan*/  mtu; int /*<<< orphan*/ *** bandwidth; int /*<<< orphan*/ *** delay; int /*<<< orphan*/ **** metric; int /*<<< orphan*/ **** tag; int /*<<< orphan*/  flags; int /*<<< orphan*/ **** origin_as; int /*<<< orphan*/ **** origin_router; int /*<<< orphan*/ **** nexthop; int /*<<< orphan*/ *** cable_end; int /*<<< orphan*/ *** cable_start; } ;
-struct eigrp_tlv_at_cable_setup_t {int /*<<< orphan*/ *** router_id; int /*<<< orphan*/ *** cable_end; int /*<<< orphan*/ *** cable_start; } ;
-struct eigrp_common_header {scalar_t__ version; int opcode; int /*<<< orphan*/ *** asn; int /*<<< orphan*/ *** ack; int /*<<< orphan*/ *** seq; int /*<<< orphan*/ *** flags; int /*<<< orphan*/ *** checksum; } ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ** uint8_t ;
+typedef int u_int ;
+typedef int u_char ;
+struct eigrp_tlv_sw_version_t {int eigrp_minor; int eigrp_major; int ios_minor; int ios_major; } ;
+struct eigrp_tlv_ip_int_t {int plen; int load; int reliability; int hopcount; int mtu; int *** bandwidth; int *** delay; int *** nexthop; int destination; } ;
+struct eigrp_tlv_ip_ext_t {int plen; int proto_id; int load; int reliability; int hopcount; int mtu; int *** bandwidth; int *** delay; int **** metric; int **** tag; int flags; int **** origin_as; int **** origin_router; int *** nexthop; int destination; } ;
+struct eigrp_tlv_header {int *** type; int *** length; } ;
+struct eigrp_tlv_general_parm_t {int k5; int k4; int k3; int k2; int k1; int **** holdtime; } ;
+struct eigrp_tlv_at_int_t {int load; int reliability; int hopcount; int mtu; int *** bandwidth; int *** delay; int **** nexthop; int *** cable_end; int *** cable_start; } ;
+struct eigrp_tlv_at_ext_t {int proto_id; int load; int reliability; int hopcount; int mtu; int *** bandwidth; int *** delay; int **** metric; int **** tag; int flags; int **** origin_as; int **** origin_router; int **** nexthop; int *** cable_end; int *** cable_start; } ;
+struct eigrp_tlv_at_cable_setup_t {int *** router_id; int *** cable_end; int *** cable_start; } ;
+struct eigrp_common_header {scalar_t__ version; int opcode; int *** asn; int *** ack; int *** seq; int *** flags; int *** checksum; } ;
 struct TYPE_6__ {int ndo_vflag; } ;
-typedef  TYPE_1__ netdissect_options ;
-
-/* Variables and functions */
-#define  EIGRP_TLV_AT_CABLE_SETUP 139 
-#define  EIGRP_TLV_AT_EXT 138 
-#define  EIGRP_TLV_AT_INT 137 
-#define  EIGRP_TLV_AUTH 136 
-#define  EIGRP_TLV_GENERAL_PARM 135 
-#define  EIGRP_TLV_IPX_EXT 134 
-#define  EIGRP_TLV_IPX_INT 133 
-#define  EIGRP_TLV_IP_EXT 132 
-#define  EIGRP_TLV_IP_INT 131 
-#define  EIGRP_TLV_MCAST_SEQ 130 
-#define  EIGRP_TLV_SEQ 129 
-#define  EIGRP_TLV_SW_VERSION 128 
- scalar_t__ EIGRP_VERSION ; 
- int EXTRACT_16BITS (int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/  EXTRACT_24BITS (int /*<<< orphan*/ *) ; 
- int EXTRACT_32BITS (int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/  ND_PRINT (TYPE_1__*) ; 
- int /*<<< orphan*/  ND_TCHECK (struct eigrp_common_header const) ; 
- int /*<<< orphan*/  ND_TCHECK2 (int /*<<< orphan*/  const,int) ; 
- int /*<<< orphan*/  eigrp_common_header_flag_values ; 
- int /*<<< orphan*/  eigrp_ext_proto_id_values ; 
- int /*<<< orphan*/  eigrp_opcode_values ; 
- int /*<<< orphan*/  eigrp_tlv_values ; 
- int /*<<< orphan*/  ipaddr_string (TYPE_1__*,int /*<<< orphan*/ ***) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ***,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ***,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  print_unknown_data (TYPE_1__*,int /*<<< orphan*/  const*,char*,int) ; 
- int /*<<< orphan*/  tok2str (int /*<<< orphan*/ ,char*,int) ; 
+typedef TYPE_1__ netdissect_options ;
+ scalar_t__ EIGRP_VERSION ;
+ int EXTRACT_16BITS (int ***) ;
+ int EXTRACT_24BITS (int *) ;
+ int EXTRACT_32BITS (int ***) ;
+ int ND_PRINT (TYPE_1__*) ;
+ int ND_TCHECK (struct eigrp_common_header const) ;
+ int ND_TCHECK2 (int const,int) ;
+ int eigrp_common_header_flag_values ;
+ int eigrp_ext_proto_id_values ;
+ int eigrp_opcode_values ;
+ int eigrp_tlv_values ;
+ int ipaddr_string (TYPE_1__*,int ***) ;
+ int memcpy (int ***,int *,int) ;
+ int memset (int ***,int ,int) ;
+ int print_unknown_data (TYPE_1__*,int const*,char*,int) ;
+ int tok2str (int ,char*,int) ;
 
 void
 eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int len)
@@ -79,15 +65,15 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
     eigrp_com_header = (const struct eigrp_common_header *)pptr;
     ND_TCHECK(*eigrp_com_header);
 
-    /*
-     * Sanity checking of the header.
-     */
+
+
+
     if (eigrp_com_header->version != EIGRP_VERSION) {
-	ND_PRINT((ndo, "EIGRP version %u packet not supported",eigrp_com_header->version));
-	return;
+ ND_PRINT((ndo, "EIGRP version %u packet not supported",eigrp_com_header->version));
+ return;
     }
 
-    /* in non-verbose mode just lets print the basic Message Type*/
+
     if (ndo->ndo_vflag < 1) {
         ND_PRINT((ndo, "EIGRP %s, length: %u",
                tok2str(eigrp_opcode_values, "unknown (%u)",eigrp_com_header->opcode),
@@ -95,7 +81,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
         return;
     }
 
-    /* ok they seem to want to know everything - lets fully decode it */
+
 
     if (len < sizeof(struct eigrp_common_header)) {
         ND_PRINT((ndo, "EIGRP %s, length: %u (too short, < %u)",
@@ -105,7 +91,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
     }
     tlen=len-sizeof(struct eigrp_common_header);
 
-    /* FIXME print other header info */
+
     ND_PRINT((ndo, "\n\tEIGRP v%u, opcode: %s (%u), chksum: 0x%04x, Flags: [%s]\n\tseq: 0x%08x, ack: 0x%08x, AS: %u, length: %u",
            eigrp_com_header->version,
            tok2str(eigrp_opcode_values, "unknown, type: %u",eigrp_com_header->opcode),
@@ -122,7 +108,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
     tptr+=sizeof(const struct eigrp_common_header);
 
     while(tlen>0) {
-        /* did we capture enough for fully decoding the object header ? */
+
         ND_TCHECK2(*tptr, sizeof(struct eigrp_tlv_header));
 
         eigrp_tlv_header = (const struct eigrp_tlv_header *)tptr;
@@ -151,12 +137,12 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
         tlv_tptr=tptr+sizeof(struct eigrp_tlv_header);
         tlv_tlen=eigrp_tlv_len-sizeof(struct eigrp_tlv_header);
 
-        /* did we capture enough for fully decoding the object ? */
+
         ND_TCHECK2(*tptr, eigrp_tlv_len);
 
         switch(eigrp_tlv_type) {
 
-        case EIGRP_TLV_GENERAL_PARM:
+        case 135:
             tlv_ptr.eigrp_tlv_general_parm = (const struct eigrp_tlv_general_parm_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_general_parm)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -173,7 +159,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    tlv_ptr.eigrp_tlv_general_parm->k5));
             break;
 
-        case EIGRP_TLV_SW_VERSION:
+        case 128:
             tlv_ptr.eigrp_tlv_sw_version = (const struct eigrp_tlv_sw_version_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_sw_version)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -188,7 +174,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    tlv_ptr.eigrp_tlv_sw_version->eigrp_minor));
             break;
 
-        case EIGRP_TLV_IP_INT:
+        case 131:
             tlv_ptr.eigrp_tlv_ip_int = (const struct eigrp_tlv_ip_int_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_ip_int)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -201,7 +187,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                 ND_PRINT((ndo, "\n\t    illegal prefix length %u",bit_length));
                 break;
             }
-            byte_length = (bit_length + 7) / 8; /* variable length encoding */
+            byte_length = (bit_length + 7) / 8;
             memset(prefix, 0, 4);
             memcpy(prefix,&tlv_ptr.eigrp_tlv_ip_int->destination,byte_length);
 
@@ -222,7 +208,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    tlv_ptr.eigrp_tlv_ip_int->load));
             break;
 
-        case EIGRP_TLV_IP_EXT:
+        case 132:
             tlv_ptr.eigrp_tlv_ip_ext = (const struct eigrp_tlv_ip_ext_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_ip_ext)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -235,7 +221,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                 ND_PRINT((ndo, "\n\t    illegal prefix length %u",bit_length));
                 break;
             }
-            byte_length = (bit_length + 7) / 8; /* variable length encoding */
+            byte_length = (bit_length + 7) / 8;
             memset(prefix, 0, 4);
             memcpy(prefix,&tlv_ptr.eigrp_tlv_ip_ext->destination,byte_length);
 
@@ -264,7 +250,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    tlv_ptr.eigrp_tlv_ip_ext->load));
             break;
 
-        case EIGRP_TLV_AT_CABLE_SETUP:
+        case 139:
             tlv_ptr.eigrp_tlv_at_cable_setup = (const struct eigrp_tlv_at_cable_setup_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_at_cable_setup)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -278,7 +264,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    EXTRACT_32BITS(&tlv_ptr.eigrp_tlv_at_cable_setup->router_id)));
             break;
 
-        case EIGRP_TLV_AT_INT:
+        case 137:
             tlv_ptr.eigrp_tlv_at_int = (const struct eigrp_tlv_at_int_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_at_int)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -306,7 +292,7 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    tlv_ptr.eigrp_tlv_at_int->load));
             break;
 
-        case EIGRP_TLV_AT_EXT:
+        case 138:
             tlv_ptr.eigrp_tlv_at_ext = (const struct eigrp_tlv_at_ext_t *)tlv_tptr;
             if (tlv_tlen < sizeof(*tlv_ptr.eigrp_tlv_at_ext)) {
                 ND_PRINT((ndo, " (too short, < %u)",
@@ -342,23 +328,23 @@ eigrp_print(netdissect_options *ndo, register const u_char *pptr, register u_int
                    tlv_ptr.eigrp_tlv_at_ext->load));
             break;
 
-            /*
-             * FIXME those are the defined TLVs that lack a decoder
-             * you are welcome to contribute code ;-)
-             */
 
-        case EIGRP_TLV_AUTH:
-        case EIGRP_TLV_SEQ:
-        case EIGRP_TLV_MCAST_SEQ:
-        case EIGRP_TLV_IPX_INT:
-        case EIGRP_TLV_IPX_EXT:
+
+
+
+
+        case 136:
+        case 129:
+        case 130:
+        case 133:
+        case 134:
 
         default:
             if (ndo->ndo_vflag <= 1)
                 print_unknown_data(ndo,tlv_tptr,"\n\t    ",tlv_tlen);
             break;
         }
-        /* do we want to see an additionally hexdump ? */
+
         if (ndo->ndo_vflag > 1)
             print_unknown_data(ndo,tptr+sizeof(struct eigrp_tlv_header),"\n\t    ",
                                eigrp_tlv_len-sizeof(struct eigrp_tlv_header));

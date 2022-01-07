@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLFramesCollection2 ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IHTMLDocument2_get_frames (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLFramesCollection2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow2_get_frames (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * get_doc_elem_by_id (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * get_doc_window (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_elem_id (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_framebase (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_framebase_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_framebase_put_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_framebase_src (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_frames_collection (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLFramesCollection2 ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IHTMLDocument2_get_frames (int *,int **) ;
+ int IHTMLElement_Release (int *) ;
+ int IHTMLFramesCollection2_Release (int *) ;
+ int IHTMLWindow2_Release (int *) ;
+ scalar_t__ IHTMLWindow2_get_frames (int *,int **) ;
+ scalar_t__ S_OK ;
+ int * get_doc_elem_by_id (int *,char*) ;
+ int * get_doc_window (int *) ;
+ int ok (int,char*,scalar_t__) ;
+ int test_elem_id (int *,char*) ;
+ int test_framebase (int *) ;
+ int test_framebase_name (int *,char*) ;
+ int test_framebase_put_name (int *,char*) ;
+ int test_framebase_src (int *,char*) ;
+ int test_frames_collection (int *,char*) ;
 
 __attribute__((used)) static void test_frameset(IHTMLDocument2 *doc)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static void test_frameset(IHTMLDocument2 *doc)
 
     window = get_doc_window(doc);
 
-    /* test using IHTMLFramesCollection object */
+
 
     hres = IHTMLWindow2_get_frames(window, &frames);
     ok(hres == S_OK, "IHTMLWindow2_get_frames failed: 0x%08x\n", hres);
@@ -62,26 +62,26 @@ __attribute__((used)) static void test_frameset(IHTMLDocument2 *doc)
     test_frames_collection(frames, "fr1");
     IHTMLFramesCollection2_Release(frames);
 
-    /* test using IHTMLWindow2 inheritance */
+
     test_frames_collection((IHTMLFramesCollection2*)window, "fr2");
 
-    /* getElementById with node name attributes */
+
     elem = get_doc_elem_by_id(doc, "nm1");
     test_elem_id((IUnknown*)elem, "fr1");
 
     test_framebase((IUnknown*)elem);
     test_framebase_name(elem, "nm1");
     test_framebase_put_name(elem, "frame name");
-    test_framebase_put_name(elem, NULL);
+    test_framebase_put_name(elem, ((void*)0));
     test_framebase_put_name(elem, "nm1");
     test_framebase_src(elem, "about:blank");
     IHTMLElement_Release(elem);
 
-    /* get_name with no name attr */
+
     elem = get_doc_elem_by_id(doc, "fr3");
-    test_framebase_name(elem, NULL);
+    test_framebase_name(elem, ((void*)0));
     test_framebase_put_name(elem, "frame name");
-    test_framebase_put_name(elem, NULL);
+    test_framebase_put_name(elem, ((void*)0));
     IHTMLElement_Release(elem);
 
     IHTMLWindow2_Release(window);

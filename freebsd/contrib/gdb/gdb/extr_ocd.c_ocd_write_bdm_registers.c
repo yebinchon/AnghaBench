@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned char OCD_WRITE_REGS ; 
- unsigned char* alloca (int) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  ocd_error (char*,int) ; 
- unsigned char* ocd_get_packet (unsigned char,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ocd_put_packet (unsigned char*,int) ; 
- int /*<<< orphan*/  remote_timeout ; 
+ unsigned char OCD_WRITE_REGS ;
+ unsigned char* alloca (int) ;
+ int error (char*) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int ocd_error (char*,int) ;
+ unsigned char* ocd_get_packet (unsigned char,int*,int ) ;
+ int ocd_put_packet (unsigned char*,int) ;
+ int remote_timeout ;
 
 void
 ocd_write_bdm_registers (int first_bdm_regno, unsigned char *regptr, int reglen)

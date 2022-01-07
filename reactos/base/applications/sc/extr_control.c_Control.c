@@ -1,53 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ dwServiceFlags; scalar_t__ dwProcessId; } ;
-typedef  int /*<<< orphan*/  Status ;
-typedef  TYPE_1__ SERVICE_STATUS_PROCESS ;
-typedef  int /*<<< orphan*/  SERVICE_STATUS ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int LPCTSTR ;
-typedef  scalar_t__ INT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int Status ;
+typedef TYPE_1__ SERVICE_STATUS_PROCESS ;
+typedef int SERVICE_STATUS ;
+typedef int * SC_HANDLE ;
+typedef int LPCTSTR ;
+typedef scalar_t__ INT ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ControlService (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CopyMemory (TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetLastError () ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  PrintService (int,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
-#define  SERVICE_CONTROL_CONTINUE 136 
-#define  SERVICE_CONTROL_INTERROGATE 135 
-#define  SERVICE_CONTROL_NETBINDADD 134 
-#define  SERVICE_CONTROL_NETBINDDISABLE 133 
-#define  SERVICE_CONTROL_NETBINDENABLE 132 
-#define  SERVICE_CONTROL_NETBINDREMOVE 131 
-#define  SERVICE_CONTROL_PARAMCHANGE 130 
-#define  SERVICE_CONTROL_PAUSE 129 
-#define  SERVICE_CONTROL_STOP 128 
- int SERVICE_INTERROGATE ; 
- int SERVICE_PAUSE_CONTINUE ; 
- int SERVICE_STOP ; 
- int SERVICE_USER_DEFINED_CONTROL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
+
+ int CloseServiceHandle (int *) ;
+ int ControlService (int *,int,int *) ;
+ int CopyMemory (TYPE_1__*,int *,int) ;
+ int FALSE ;
+ int GetLastError () ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int * OpenService (int *,int,int) ;
+ int PrintService (int,int *,TYPE_1__*,int ) ;
+ int ReportLastError () ;
+ int SC_MANAGER_CONNECT ;
+ int SERVICE_INTERROGATE ;
+ int SERVICE_PAUSE_CONTINUE ;
+ int SERVICE_STOP ;
+ int SERVICE_USER_DEFINED_CONTROL ;
+ int TRUE ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
 
 BOOL
 Control(DWORD Control,
@@ -55,45 +46,29 @@ Control(DWORD Control,
         LPCTSTR *Args,
         INT ArgCount)
 {
-    SC_HANDLE hSCManager = NULL;
-    SC_HANDLE hService = NULL;
+    SC_HANDLE hSCManager = ((void*)0);
+    SC_HANDLE hService = ((void*)0);
     SERVICE_STATUS Status;
     DWORD dwDesiredAccess = 0;
     BOOL bResult = TRUE;
     SERVICE_STATUS_PROCESS StatusEx;
-
-#ifdef SCDBG
-    LPCTSTR *TmpArgs = Args;
-    INT TmpCnt = ArgCount;
-    _tprintf(_T("service to control - %s\n"), ServiceName);
-    _tprintf(_T("command - %lu\n"), Control);
-    _tprintf(_T("Arguments:\n"));
-    while (TmpCnt)
-    {
-        _tprintf(_T("  %s\n"), *TmpArgs);
-        TmpArgs++;
-        TmpCnt--;
-    }
-    _tprintf(_T("\n"));
-#endif /* SCDBG */
-
     switch (Control)
     {
-        case SERVICE_CONTROL_STOP:
+        case 128:
             dwDesiredAccess = SERVICE_STOP;
             break;
 
-        case SERVICE_CONTROL_PAUSE:
-        case SERVICE_CONTROL_CONTINUE:
-        case SERVICE_CONTROL_PARAMCHANGE:
-        case SERVICE_CONTROL_NETBINDADD:
-        case SERVICE_CONTROL_NETBINDREMOVE:
-        case SERVICE_CONTROL_NETBINDENABLE:
-        case SERVICE_CONTROL_NETBINDDISABLE:
+        case 129:
+        case 136:
+        case 130:
+        case 134:
+        case 131:
+        case 132:
+        case 133:
             dwDesiredAccess = SERVICE_PAUSE_CONTINUE;
             break;
 
-        case SERVICE_CONTROL_INTERROGATE:
+        case 135:
             dwDesiredAccess = SERVICE_INTERROGATE;
             break;
 
@@ -105,10 +80,10 @@ Control(DWORD Control,
             break;
     }
 
-    hSCManager = OpenSCManager(NULL,
-                               NULL,
+    hSCManager = OpenSCManager(((void*)0),
+                               ((void*)0),
                                SC_MANAGER_CONNECT);
-    if (hSCManager == NULL)
+    if (hSCManager == ((void*)0))
     {
         _tprintf(_T("[SC] OpenSCManager FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -118,7 +93,7 @@ Control(DWORD Control,
     hService = OpenService(hSCManager,
                            ServiceName,
                            dwDesiredAccess);
-    if (hService == NULL)
+    if (hService == ((void*)0))
     {
         _tprintf(_T("[SC] OpenService FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -134,13 +109,13 @@ Control(DWORD Control,
         goto done;
     }
 
-    /* FIXME: lazy hack ;) */
+
     CopyMemory(&StatusEx, &Status, sizeof(Status));
     StatusEx.dwProcessId = 0;
     StatusEx.dwServiceFlags = 0;
 
     PrintService(ServiceName,
-                 NULL,
+                 ((void*)0),
                  &StatusEx,
                  FALSE);
 

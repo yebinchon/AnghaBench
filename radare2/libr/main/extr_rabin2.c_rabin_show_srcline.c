@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bin ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* r_bin_addr2text (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int ut64 ;
+
+
+ int bin ;
+ int free (char*) ;
+ int printf (char*,char*) ;
+ char* r_bin_addr2text (int ,int ,int) ;
 
 __attribute__((used)) static int rabin_show_srcline(ut64 at) {
-	char *srcline;
-	if ((srcline = r_bin_addr2text (bin, at, true))) {
-		printf ("%s\n", srcline);
-		free (srcline);
-		return true;
-	}
-	return false;
+ char *srcline;
+ if ((srcline = r_bin_addr2text (bin, at, 1))) {
+  printf ("%s\n", srcline);
+  free (srcline);
+  return 1;
+ }
+ return 0;
 }

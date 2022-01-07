@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ExecOutput ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXEC_OUTPUT_FILE ; 
- int /*<<< orphan*/  EXEC_OUTPUT_FILE_APPEND ; 
- int /*<<< orphan*/  EXEC_OUTPUT_NAMED_FD ; 
- int /*<<< orphan*/  EXEC_OUTPUT_SOCKET ; 
- scalar_t__ IN_SET (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOG_ERR ; 
- int /*<<< orphan*/  assert (void*) ; 
- scalar_t__ exec_output_from_string (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+typedef scalar_t__ ExecOutput ;
+
+
+ int EXEC_OUTPUT_FILE ;
+ int EXEC_OUTPUT_FILE_APPEND ;
+ int EXEC_OUTPUT_NAMED_FD ;
+ int EXEC_OUTPUT_SOCKET ;
+ scalar_t__ IN_SET (scalar_t__,int ,int ,int ,int ) ;
+ int LOG_ERR ;
+ int assert (void*) ;
+ scalar_t__ exec_output_from_string (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*) ;
 
 int config_parse_output_restricted(
                 const char* unit,

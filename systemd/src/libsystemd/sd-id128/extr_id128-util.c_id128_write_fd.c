@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_id128_t ;
-typedef  scalar_t__ Id128Format ;
 
-/* Variables and functions */
- scalar_t__ ID128_UUID ; 
- scalar_t__ _ID128_FORMAT_MAX ; 
- int /*<<< orphan*/  assert (int) ; 
- int errno ; 
- scalar_t__ fsync (int) ; 
- int fsync_directory_of_file (int) ; 
- int /*<<< orphan*/  id128_to_uuid_string (int /*<<< orphan*/ ,char*) ; 
- int loop_write (int,char*,size_t,int) ; 
- int /*<<< orphan*/  sd_id128_to_string (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int sd_id128_t ;
+typedef scalar_t__ Id128Format ;
+
+
+ scalar_t__ ID128_UUID ;
+ scalar_t__ _ID128_FORMAT_MAX ;
+ int assert (int) ;
+ int errno ;
+ scalar_t__ fsync (int) ;
+ int fsync_directory_of_file (int) ;
+ int id128_to_uuid_string (int ,char*) ;
+ int loop_write (int,char*,size_t,int) ;
+ int sd_id128_to_string (int ,char*) ;
 
 int id128_write_fd(int fd, Id128Format f, sd_id128_t id, bool do_sync) {
         char buffer[36 + 2];
@@ -42,7 +42,7 @@ int id128_write_fd(int fd, Id128Format f, sd_id128_t id, bool do_sync) {
                 sz = 37;
         }
 
-        r = loop_write(fd, buffer, sz, false);
+        r = loop_write(fd, buffer, sz, 0);
         if (r < 0)
                 return r;
 

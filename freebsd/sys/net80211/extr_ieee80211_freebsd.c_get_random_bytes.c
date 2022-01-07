@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  arc4random () ; 
- int /*<<< orphan*/  bcopy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+
+
+ int arc4random () ;
+ int bcopy (int *,int *,int) ;
 
 void
 get_random_bytes(void *p, size_t n)
 {
-	uint8_t *dp = p;
+ uint8_t *dp = p;
 
-	while (n > 0) {
-		uint32_t v = arc4random();
-		size_t nb = n > sizeof(uint32_t) ? sizeof(uint32_t) : n;
-		bcopy(&v, dp, n > sizeof(uint32_t) ? sizeof(uint32_t) : n);
-		dp += sizeof(uint32_t), n -= nb;
-	}
+ while (n > 0) {
+  uint32_t v = arc4random();
+  size_t nb = n > sizeof(uint32_t) ? sizeof(uint32_t) : n;
+  bcopy(&v, dp, n > sizeof(uint32_t) ? sizeof(uint32_t) : n);
+  dp += sizeof(uint32_t), n -= nb;
+ }
 }

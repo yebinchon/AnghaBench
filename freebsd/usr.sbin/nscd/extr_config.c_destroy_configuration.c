@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct configuration {unsigned int entries_size; int /*<<< orphan*/  rwlock; struct configuration* entries; struct configuration* socket_path; struct configuration* pidfile_path; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE_IN (void (*) (struct configuration*)) ; 
- int /*<<< orphan*/  TRACE_OUT (void (*) (struct configuration*)) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_configuration_entry (struct configuration) ; 
- int /*<<< orphan*/  free (struct configuration*) ; 
- int /*<<< orphan*/  pthread_rwlock_destroy (int /*<<< orphan*/ *) ; 
+
+
+
+struct configuration {unsigned int entries_size; int rwlock; struct configuration* entries; struct configuration* socket_path; struct configuration* pidfile_path; } ;
+
+
+ int TRACE_IN (void (*) (struct configuration*)) ;
+ int TRACE_OUT (void (*) (struct configuration*)) ;
+ int assert (int ) ;
+ int destroy_configuration_entry (struct configuration) ;
+ int free (struct configuration*) ;
+ int pthread_rwlock_destroy (int *) ;
 
 void
 destroy_configuration(struct configuration *config)
 {
-	unsigned int i;
+ unsigned int i;
 
-	TRACE_IN(destroy_configuration);
-	assert(config != NULL);
-	free(config->pidfile_path);
-	free(config->socket_path);
+ TRACE_IN(destroy_configuration);
+ assert(config != ((void*)0));
+ free(config->pidfile_path);
+ free(config->socket_path);
 
-	for (i = 0; i < config->entries_size; ++i)
-		destroy_configuration_entry(config->entries[i]);
-	free(config->entries);
+ for (i = 0; i < config->entries_size; ++i)
+  destroy_configuration_entry(config->entries[i]);
+ free(config->entries);
 
-	pthread_rwlock_destroy(&config->rwlock);
-	free(config);
-	TRACE_OUT(destroy_configuration);
+ pthread_rwlock_destroy(&config->rwlock);
+ free(config);
+ TRACE_OUT(destroy_configuration);
 }

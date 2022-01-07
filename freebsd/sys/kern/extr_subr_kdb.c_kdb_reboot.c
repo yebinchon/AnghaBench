@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  shutdown_nice (int /*<<< orphan*/ ) ; 
+ int printf (char*) ;
+ int shutdown_nice (int ) ;
 
 void
 kdb_reboot(void)
 {
 
-	printf("KDB: reboot requested\n");
-	shutdown_nice(0);
+ printf("KDB: reboot requested\n");
+ shutdown_nice(0);
 }

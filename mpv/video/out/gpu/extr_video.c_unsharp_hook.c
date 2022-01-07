@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct image {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  unsharp; } ;
-struct gl_video {TYPE_1__ opts; int /*<<< orphan*/  sc; } ;
+struct TYPE_2__ {int unsharp; } ;
+struct gl_video {TYPE_1__ opts; int sc; } ;
 struct gl_transform {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pass_describe (struct gl_video*,char*) ; 
- int /*<<< orphan*/  pass_sample_unsharp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int pass_describe (struct gl_video*,char*) ;
+ int pass_sample_unsharp (int ,int ) ;
 
 __attribute__((used)) static void unsharp_hook(struct gl_video *p, struct image img,
                          struct gl_transform *trans, void *priv)

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int const bytestream_end; int const bytestream; } ;
-struct TYPE_10__ {int* run_buffer; TYPE_4__ c; int /*<<< orphan*/  avctx; } ;
-struct TYPE_9__ {int width; int height; int /*<<< orphan*/ ** state; TYPE_1__* parent; } ;
+struct TYPE_10__ {int* run_buffer; TYPE_4__ c; int avctx; } ;
+struct TYPE_9__ {int width; int height; int ** state; TYPE_1__* parent; } ;
 struct TYPE_8__ {int width; int height; } ;
-typedef  TYPE_2__ SubBand ;
-typedef  TYPE_3__ SnowContext ;
-typedef  int IDWTELEM ;
+typedef TYPE_2__ SubBand ;
+typedef TYPE_3__ SnowContext ;
+typedef int IDWTELEM ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFABS (int) ; 
- int /*<<< orphan*/  av_assert2 (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int av_log2 (int) ; 
- int* ff_quant3bA ; 
- int /*<<< orphan*/  put_rac (TYPE_4__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_symbol2 (TYPE_4__*,int /*<<< orphan*/ *,int,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int FFABS (int) ;
+ int av_assert2 (int) ;
+ int av_log (int ,int ,char*) ;
+ int av_log2 (int) ;
+ int* ff_quant3bA ;
+ int put_rac (TYPE_4__*,int *,int) ;
+ int put_symbol2 (TYPE_4__*,int *,int,int) ;
 
 __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b, const IDWTELEM *src, const IDWTELEM *parent, int stride, int orientation){
     const int w= b->width;
@@ -48,7 +48,7 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
         for(y=0; y<h; y++){
             for(x=0; x<w; x++){
                 int v, p=0;
-                int /*ll=0, */l=0, lt=0, t=0, rt=0;
+                int l=0, lt=0, t=0, rt=0;
                 v= src[x + y*stride];
 
                 if(y){
@@ -62,10 +62,10 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
                 }
                 if(x){
                     l= src[x - 1 + y*stride];
-                    /*if(x > 1){
-                        if(orientation==1) ll= src[y + (x-2)*stride];
-                        else               ll= src[x - 2 + y*stride];
-                    }*/
+
+
+
+
                 }
                 if(parent){
                     int px= x>>1;
@@ -73,7 +73,7 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
                     if(px<b->parent->width && py<b->parent->height)
                         p= parent[px + py*2*stride];
                 }
-                if(!(/*ll|*/l|lt|t|rt|p)){
+                if(!( l|lt|t|rt|p)){
                     if(v){
                         runs[run_index++]= run;
                         run=0;
@@ -99,7 +99,7 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
             }
             for(x=0; x<w; x++){
                 int v, p=0;
-                int /*ll=0, */l=0, lt=0, t=0, rt=0;
+                int l=0, lt=0, t=0, rt=0;
                 v= src[x + y*stride];
 
                 if(y){
@@ -113,10 +113,10 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
                 }
                 if(x){
                     l= src[x - 1 + y*stride];
-                    /*if(x > 1){
-                        if(orientation==1) ll= src[y + (x-2)*stride];
-                        else               ll= src[x - 2 + y*stride];
-                    }*/
+
+
+
+
                 }
                 if(parent){
                     int px= x>>1;
@@ -124,8 +124,8 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
                     if(px<b->parent->width && py<b->parent->height)
                         p= parent[px + py*2*stride];
                 }
-                if(/*ll|*/l|lt|t|rt|p){
-                    int context= av_log2(/*FFABS(ll) + */3*FFABS(l) + FFABS(lt) + 2*FFABS(t) + FFABS(rt) + FFABS(p));
+                if( l|lt|t|rt|p){
+                    int context= av_log2( 3*FFABS(l) + FFABS(lt) + 2*FFABS(t) + FFABS(rt) + FFABS(p));
 
                     put_rac(&s->c, &b->state[0][context], !!v);
                 }else{
@@ -141,7 +141,7 @@ __attribute__((used)) static int encode_subband_c0run(SnowContext *s, SubBand *b
                     }
                 }
                 if(v){
-                    int context= av_log2(/*FFABS(ll) + */3*FFABS(l) + FFABS(lt) + 2*FFABS(t) + FFABS(rt) + FFABS(p));
+                    int context= av_log2( 3*FFABS(l) + FFABS(lt) + 2*FFABS(t) + FFABS(rt) + FFABS(p));
                     int l2= 2*FFABS(l) + (l<0);
                     int t2= 2*FFABS(t) + (t<0);
 

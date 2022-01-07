@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  union in_addr_union {int dummy; } in_addr_union ;
-struct TYPE_4__ {int /*<<< orphan*/  dns; } ;
-typedef  TYPE_1__ Network ;
-typedef  int /*<<< orphan*/  Context ;
 
-/* Variables and functions */
- int in_addr_from_string_auto (char const*,int*,union in_addr_union*) ; 
- TYPE_1__* network_get (int /*<<< orphan*/ *,char const*) ; 
- int network_new (int /*<<< orphan*/ *,char const*,TYPE_1__**) ; 
- int strv_extend (int /*<<< orphan*/ *,char const*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef union in_addr_union {int dummy; } in_addr_union ;
+struct TYPE_4__ {int dns; } ;
+typedef TYPE_1__ Network ;
+typedef int Context ;
+
+
+ int in_addr_from_string_auto (char const*,int*,union in_addr_union*) ;
+ TYPE_1__* network_get (int *,char const*) ;
+ int network_new (int *,char const*,TYPE_1__**) ;
+ int strv_extend (int *,char const*) ;
 
 __attribute__((used)) static int network_set_dns(Context *context, const char *ifname, const char *dns) {
         union in_addr_union a;

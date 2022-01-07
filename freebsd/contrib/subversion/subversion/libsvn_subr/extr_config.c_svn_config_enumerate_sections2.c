@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  sections; } ;
-typedef  TYPE_1__ svn_config_t ;
-typedef  int /*<<< orphan*/  (* svn_config_section_enumerator2_t ) (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ;
-struct TYPE_6__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ cfg_section_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- TYPE_2__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int sections; } ;
+typedef TYPE_1__ svn_config_t ;
+typedef int (* svn_config_section_enumerator2_t ) (int ,void*,int *) ;
+struct TYPE_6__ {int name; } ;
+typedef TYPE_2__ cfg_section_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_index_t ;
+
+
+ int * apr_hash_first (int *,int ) ;
+ int * apr_hash_next (int *) ;
+ TYPE_2__* apr_hash_this_val (int *) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
 
 int
 svn_config_enumerate_sections2(svn_config_t *cfg,
@@ -39,7 +39,7 @@ svn_config_enumerate_sections2(svn_config_t *cfg,
 
   iteration_pool = svn_pool_create(pool);
   for (sec_ndx = apr_hash_first(pool, cfg->sections);
-       sec_ndx != NULL;
+       sec_ndx != ((void*)0);
        sec_ndx = apr_hash_next(sec_ndx))
     {
       cfg_section_t *sec = apr_hash_this_val(sec_ndx);

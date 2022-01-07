@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {TYPE_1__* last_added_dialogue; int /*<<< orphan*/  cache_size; TYPE_1__* dialogue_cache; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {TYPE_1__* last_added_dialogue; int cache_size; TYPE_1__* dialogue_cache; } ;
 struct TYPE_5__ {scalar_t__ readorder; struct TYPE_5__* next; struct TYPE_5__* prev; } ;
-typedef  TYPE_1__ DialogueLine ;
-typedef  TYPE_2__ ASSContext ;
+typedef TYPE_1__ DialogueLine ;
+typedef TYPE_2__ ASSContext ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void insert_dialogue(ASSContext *ass, DialogueLine *dialogue)
 {
-    DialogueLine *cur, *next = NULL, *prev = NULL;
+    DialogueLine *cur, *next = ((void*)0), *prev = ((void*)0);
 
-    /* from the last added to the end of the list */
+
     if (ass->last_added_dialogue) {
         for (cur = ass->last_added_dialogue; cur; cur = cur->next) {
             if (cur->readorder > dialogue->readorder)
@@ -33,7 +33,7 @@ __attribute__((used)) static void insert_dialogue(ASSContext *ass, DialogueLine 
         }
     }
 
-    /* from the beginning to the last one added */
+
     if (!prev) {
         next = ass->dialogue_cache;
         for (cur = next; cur != ass->last_added_dialogue; cur = cur->next) {

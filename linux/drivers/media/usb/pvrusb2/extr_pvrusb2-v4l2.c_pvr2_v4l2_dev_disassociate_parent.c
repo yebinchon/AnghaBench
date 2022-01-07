@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  dev; TYPE_1__* v4l2_dev; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dev; TYPE_1__* v4l2_dev; } ;
 struct pvr2_v4l2_dev {TYPE_2__ devbase; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * dev; } ;
+struct TYPE_3__ {int * dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPM_ORDER_NONE ; 
- int /*<<< orphan*/  device_move (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int DPM_ORDER_NONE ;
+ int device_move (int *,int *,int ) ;
 
 __attribute__((used)) static void pvr2_v4l2_dev_disassociate_parent(struct pvr2_v4l2_dev *dip)
 {
-	if (!dip) return;
-	if (!dip->devbase.v4l2_dev->dev) return;
-	dip->devbase.v4l2_dev->dev = NULL;
-	device_move(&dip->devbase.dev, NULL, DPM_ORDER_NONE);
+ if (!dip) return;
+ if (!dip->devbase.v4l2_dev->dev) return;
+ dip->devbase.v4l2_dev->dev = ((void*)0);
+ device_move(&dip->devbase.dev, ((void*)0), DPM_ORDER_NONE);
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  jerry_acquire_value (int /*<<< orphan*/  const) ; 
- scalar_t__ jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_has_property (int /*<<< orphan*/  const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+
+
+ int jerry_acquire_value (int const) ;
+ scalar_t__ jerry_get_boolean_value (int ) ;
+ int jerry_has_property (int const,int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_value_is_error (int ) ;
 
 __attribute__((used)) static bool
 find_test_object_by_property (const jerry_value_t candidate,
@@ -28,7 +28,7 @@ find_test_object_by_property (const jerry_value_t candidate,
 
   bool has_property = (!jerry_value_is_error (result) && jerry_get_boolean_value (result));
 
-  /* If the object has the desired property, store a new reference to it in args_p[1]. */
+
   if (has_property)
   {
     args_p[1] = jerry_acquire_value (candidate);
@@ -36,6 +36,6 @@ find_test_object_by_property (const jerry_value_t candidate,
 
   jerry_release_value (result);
 
-  /* Stop iterating if we've found our object. */
+
   return !has_property;
 }

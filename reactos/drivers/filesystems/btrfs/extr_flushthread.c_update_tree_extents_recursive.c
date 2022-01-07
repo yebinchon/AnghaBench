@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {struct TYPE_4__* parent; scalar_t__ has_address; int /*<<< orphan*/  updated_extents; } ;
-typedef  TYPE_1__ tree ;
-typedef  int /*<<< orphan*/  device_extension ;
-typedef  int /*<<< orphan*/  PIRP ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  LIST_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  update_tree_extents (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {struct TYPE_4__* parent; scalar_t__ has_address; int updated_extents; } ;
+typedef TYPE_1__ tree ;
+typedef int device_extension ;
+typedef int PIRP ;
+typedef int NTSTATUS ;
+typedef int LIST_ENTRY ;
+
+
+ int ERR (char*,int ) ;
+ int NT_SUCCESS (int ) ;
+ int STATUS_SUCCESS ;
+ int update_tree_extents (int *,TYPE_1__*,int ,int *) ;
 
 __attribute__((used)) static NTSTATUS update_tree_extents_recursive(device_extension* Vcb, tree* t, PIRP Irp, LIST_ENTRY* rollback) {
     NTSTATUS Status;

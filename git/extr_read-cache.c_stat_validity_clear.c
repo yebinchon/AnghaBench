@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat_validity {int /*<<< orphan*/  sd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE_AND_NULL (int /*<<< orphan*/ ) ; 
+
+
+
+struct stat_validity {int sd; } ;
+
+
+ int FREE_AND_NULL (int ) ;
 
 void stat_validity_clear(struct stat_validity *sv)
 {
-	FREE_AND_NULL(sv->sd);
+ FREE_AND_NULL(sv->sd);
 }

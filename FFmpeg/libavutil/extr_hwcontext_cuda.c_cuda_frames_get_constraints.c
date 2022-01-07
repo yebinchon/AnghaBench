@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void** valid_hw_formats; void** valid_sw_formats; } ;
-typedef  TYPE_1__ AVHWFramesConstraints ;
-typedef  int /*<<< orphan*/  AVHWDeviceContext ;
+typedef TYPE_1__ AVHWFramesConstraints ;
+typedef int AVHWDeviceContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- void* AV_PIX_FMT_CUDA ; 
- void* AV_PIX_FMT_NONE ; 
- int /*<<< orphan*/  ENOMEM ; 
- size_t FF_ARRAY_ELEMS (void**) ; 
- void* av_malloc_array (int,int) ; 
- void** supported_formats ; 
+
+ int AVERROR (int ) ;
+ void* AV_PIX_FMT_CUDA ;
+ void* AV_PIX_FMT_NONE ;
+ int ENOMEM ;
+ size_t FF_ARRAY_ELEMS (void**) ;
+ void* av_malloc_array (int,int) ;
+ void** supported_formats ;
 
 __attribute__((used)) static int cuda_frames_get_constraints(AVHWDeviceContext *ctx,
                                        const void *hwconfig,

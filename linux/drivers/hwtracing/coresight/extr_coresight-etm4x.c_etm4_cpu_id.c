@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct etmv4_drvdata {int cpu; } ;
-struct TYPE_2__ {int /*<<< orphan*/  parent; } ;
+struct TYPE_2__ {int parent; } ;
 struct coresight_device {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- struct etmv4_drvdata* dev_get_drvdata (int /*<<< orphan*/ ) ; 
+
+ struct etmv4_drvdata* dev_get_drvdata (int ) ;
 
 __attribute__((used)) static int etm4_cpu_id(struct coresight_device *csdev)
 {
-	struct etmv4_drvdata *drvdata = dev_get_drvdata(csdev->dev.parent);
+ struct etmv4_drvdata *drvdata = dev_get_drvdata(csdev->dev.parent);
 
-	return drvdata->cpu;
+ return drvdata->cpu;
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PCWSTR ;
-typedef  int /*<<< orphan*/ * PBYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVENPARITY ; 
- int /*<<< orphan*/  MARKPARITY ; 
- int /*<<< orphan*/  NOPARITY ; 
- int /*<<< orphan*/  ODDPARITY ; 
- int /*<<< orphan*/  SPACEPARITY ; 
- int towupper (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * PCWSTR ;
+typedef int * PBYTE ;
+
+
+ int EVENPARITY ;
+ int MARKPARITY ;
+ int NOPARITY ;
+ int ODDPARITY ;
+ int SPACEPARITY ;
+ int towupper (int ) ;
 
 __attribute__((used)) static PCWSTR
 ParseParity(PCWSTR argStr, PBYTE Parity)
@@ -47,7 +47,7 @@ ParseParity(PCWSTR argStr, PBYTE Parity)
             break;
 
         default:
-            return NULL;
+            return ((void*)0);
     }
 
     return argStr;

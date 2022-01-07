@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  propvar ;
-typedef  int /*<<< orphan*/  clsid ;
-struct TYPE_9__ {int lVal; int /*<<< orphan*/  puuid; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int propvar ;
+typedef int clsid ;
+struct TYPE_9__ {int lVal; int puuid; } ;
 struct TYPE_10__ {scalar_t__ vt; TYPE_1__ u; } ;
-typedef  TYPE_2__ PROPVARIANT ;
-typedef  scalar_t__ HRESULT ;
-typedef  TYPE_2__ GUID ;
+typedef TYPE_2__ PROPVARIANT ;
+typedef scalar_t__ HRESULT ;
+typedef TYPE_2__ GUID ;
 
-/* Variables and functions */
- scalar_t__ InitPropVariantFromCLSID (TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  IsEqualGUID (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_2__*) ; 
- scalar_t__ S_OK ; 
- scalar_t__ VT_CLSID ; 
- scalar_t__ VT_I4 ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ scalar_t__ InitPropVariantFromCLSID (TYPE_2__*,TYPE_2__*) ;
+ int IsEqualGUID (int ,TYPE_2__*) ;
+ int PropVariantClear (TYPE_2__*) ;
+ scalar_t__ S_OK ;
+ scalar_t__ VT_CLSID ;
+ scalar_t__ VT_I4 ;
+ int memset (TYPE_2__*,int,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_InitPropVariantFromCLSID(void)
 {

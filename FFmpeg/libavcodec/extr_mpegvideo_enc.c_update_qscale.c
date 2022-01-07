@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int q_scale_type; int lambda; int qscale; int lambda2; TYPE_1__* avctx; scalar_t__ vbv_ignore_qmax; } ;
 struct TYPE_4__ {int qmin; int qmax; } ;
-typedef  TYPE_2__ MpegEncContext ;
+typedef TYPE_2__ MpegEncContext ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int FF_ARRAY_ELEMS (int*) ; 
- int FF_LAMBDA_SCALE ; 
- int FF_LAMBDA_SHIFT ; 
- int INT_MAX ; 
- int av_clip (int,int,int) ; 
- int* ff_mpeg2_non_linear_qscale ; 
+
+ int FFABS (int) ;
+ int FF_ARRAY_ELEMS (int*) ;
+ int FF_LAMBDA_SCALE ;
+ int FF_LAMBDA_SHIFT ;
+ int INT_MAX ;
+ int av_clip (int,int,int) ;
+ int* ff_mpeg2_non_linear_qscale ;
 
 __attribute__((used)) static inline void update_qscale(MpegEncContext *s)
 {

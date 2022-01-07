@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_in {int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+
+
+struct sockaddr_in {int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  addr ;
+typedef int addr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  MSG_INFO ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- scalar_t__ bind (int,struct sockaddr*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  os_memset (struct sockaddr_in*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  radius_server_disable_pmtu_discovery (int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int MSG_INFO ;
+ int PF_INET ;
+ int SOCK_DGRAM ;
+ scalar_t__ bind (int,struct sockaddr*,int) ;
+ int close (int) ;
+ int errno ;
+ int htons (int) ;
+ int os_memset (struct sockaddr_in*,int ,int) ;
+ int radius_server_disable_pmtu_discovery (int) ;
+ int socket (int ,int ,int ) ;
+ int strerror (int ) ;
+ int wpa_printf (int ,char*,int ) ;
 
 __attribute__((used)) static int radius_server_open_socket(int port)
 {
-	int s;
-	struct sockaddr_in addr;
+ int s;
+ struct sockaddr_in addr;
 
-	s = socket(PF_INET, SOCK_DGRAM, 0);
-	if (s < 0) {
-		wpa_printf(MSG_INFO, "RADIUS: socket: %s", strerror(errno));
-		return -1;
-	}
+ s = socket(PF_INET, SOCK_DGRAM, 0);
+ if (s < 0) {
+  wpa_printf(MSG_INFO, "RADIUS: socket: %s", strerror(errno));
+  return -1;
+ }
 
-	radius_server_disable_pmtu_discovery(s);
+ radius_server_disable_pmtu_discovery(s);
 
-	os_memset(&addr, 0, sizeof(addr));
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(port);
-	if (bind(s, (struct sockaddr *) &addr, sizeof(addr)) < 0) {
-		wpa_printf(MSG_INFO, "RADIUS: bind: %s", strerror(errno));
-		close(s);
-		return -1;
-	}
+ os_memset(&addr, 0, sizeof(addr));
+ addr.sin_family = AF_INET;
+ addr.sin_port = htons(port);
+ if (bind(s, (struct sockaddr *) &addr, sizeof(addr)) < 0) {
+  wpa_printf(MSG_INFO, "RADIUS: bind: %s", strerror(errno));
+  close(s);
+  return -1;
+ }
 
-	return s;
+ return s;
 }

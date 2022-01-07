@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  info (char*,char const*,...) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ unlikely (int) ; 
- int uuid_parse (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uuid_unparse_lower (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uuid_t ;
+
+
+ int info (char*,char const*,...) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ unlikely (int) ;
+ int uuid_parse (char const*,int ) ;
+ int uuid_unparse_lower (int ,char*) ;
 
 int regenerate_guid(const char *guid, char *result) {
     uuid_t uuid;
@@ -28,10 +28,10 @@ int regenerate_guid(const char *guid, char *result) {
     else {
         uuid_unparse_lower(uuid, result);
 
-#ifdef NETDATA_INTERNAL_CHECKS
-        if(strcmp(guid, result) != 0)
-            info("GUID '%s' and re-generated GUID '%s' differ!", guid, result);
-#endif /* NETDATA_INTERNAL_CHECKS */
+
+
+
+
     }
 
     return 0;

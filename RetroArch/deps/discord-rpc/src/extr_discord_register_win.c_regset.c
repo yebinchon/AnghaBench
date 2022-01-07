@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LSTATUS ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  scalar_t__ HKEY ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_SUCCESS ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- int /*<<< orphan*/  RegCreateKeyExW (scalar_t__,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegSetValueExW (scalar_t__,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LSTATUS ;
+typedef scalar_t__* LPCWSTR ;
+typedef scalar_t__ HKEY ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int ERROR_SUCCESS ;
+ int KEY_ALL_ACCESS ;
+ int RegCloseKey (scalar_t__) ;
+ int RegCreateKeyExW (scalar_t__,scalar_t__*,int ,int ,int ,int ,int ,scalar_t__*,int ) ;
+ int RegSetValueExW (scalar_t__,scalar_t__*,int ,int ,int const*,int ) ;
 
 __attribute__((used)) static LSTATUS regset(HKEY hkey,
       LPCWSTR subkey,
@@ -30,7 +30,7 @@ __attribute__((used)) static LSTATUS regset(HKEY hkey,
       const void* data,
       DWORD len)
 {
-    HKEY htkey = hkey, hsubkey = NULL;
+    HKEY htkey = hkey, hsubkey = ((void*)0);
     LSTATUS ret;
     if (subkey && subkey[0])
     {

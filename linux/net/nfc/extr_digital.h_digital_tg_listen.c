@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u16 ;
 struct nfc_digital_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  nfc_digital_cmd_complete_t ;
+typedef int nfc_digital_cmd_complete_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIGITAL_CMD_TG_LISTEN ; 
- int digital_send_cmd (struct nfc_digital_dev*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
+
+ int DIGITAL_CMD_TG_LISTEN ;
+ int digital_send_cmd (struct nfc_digital_dev*,int ,int *,int *,int ,int ,void*) ;
 
 __attribute__((used)) static inline int digital_tg_listen(struct nfc_digital_dev *ddev, u16 timeout,
-				    nfc_digital_cmd_complete_t cb, void *arg)
+        nfc_digital_cmd_complete_t cb, void *arg)
 {
-	return digital_send_cmd(ddev, DIGITAL_CMD_TG_LISTEN, NULL, NULL,
-				timeout, cb, arg);
+ return digital_send_cmd(ddev, DIGITAL_CMD_TG_LISTEN, ((void*)0), ((void*)0),
+    timeout, cb, arg);
 }

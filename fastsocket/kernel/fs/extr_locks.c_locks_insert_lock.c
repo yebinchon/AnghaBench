@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_lock {struct file_lock* fl_next; int /*<<< orphan*/  fl_nspid; int /*<<< orphan*/  fl_link; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  current ; 
- int /*<<< orphan*/  file_lock_list ; 
- int /*<<< orphan*/  get_pid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  task_tgid (int /*<<< orphan*/ ) ; 
+
+
+
+struct file_lock {struct file_lock* fl_next; int fl_nspid; int fl_link; } ;
+
+
+ int current ;
+ int file_lock_list ;
+ int get_pid (int ) ;
+ int list_add (int *,int *) ;
+ int task_tgid (int ) ;
 
 __attribute__((used)) static void locks_insert_lock(struct file_lock **pos, struct file_lock *fl)
 {
-	list_add(&fl->fl_link, &file_lock_list);
+ list_add(&fl->fl_link, &file_lock_list);
 
-	fl->fl_nspid = get_pid(task_tgid(current));
+ fl->fl_nspid = get_pid(task_tgid(current));
 
-	/* insert into file's list */
-	fl->fl_next = *pos;
-	*pos = fl;
+
+ fl->fl_next = *pos;
+ *pos = fl;
 }

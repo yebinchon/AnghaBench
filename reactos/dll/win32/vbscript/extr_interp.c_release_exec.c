@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__* stack; scalar_t__* vars; scalar_t__* args; int /*<<< orphan*/  heap; scalar_t__* arrays; TYPE_1__* func; scalar_t__ this_obj; int /*<<< orphan*/  dynamic_vars; scalar_t__ ret_val; } ;
-typedef  TYPE_2__ exec_ctx_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__* stack; scalar_t__* vars; scalar_t__* args; int heap; scalar_t__* arrays; TYPE_1__* func; scalar_t__ this_obj; int dynamic_vars; scalar_t__ ret_val; } ;
+typedef TYPE_2__ exec_ctx_t ;
 struct TYPE_4__ {unsigned int arg_cnt; unsigned int var_cnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDispatch_Release (scalar_t__) ; 
- int /*<<< orphan*/  SafeArrayDestroy (scalar_t__) ; 
- int /*<<< orphan*/  VariantClear (scalar_t__*) ; 
- int /*<<< orphan*/  heap_free (scalar_t__*) ; 
- int /*<<< orphan*/  heap_pool_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_dynamic_vars (int /*<<< orphan*/ ) ; 
+
+ int IDispatch_Release (scalar_t__) ;
+ int SafeArrayDestroy (scalar_t__) ;
+ int VariantClear (scalar_t__*) ;
+ int heap_free (scalar_t__*) ;
+ int heap_pool_free (int *) ;
+ int release_dynamic_vars (int ) ;
 
 __attribute__((used)) static void release_exec(exec_ctx_t *ctx)
 {

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int /*<<< orphan*/  fs; } ;
-typedef  TYPE_1__ trail_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_fs_id_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int fs; } ;
+typedef TYPE_1__ trail_t ;
+typedef int svn_fs_t ;
+typedef int svn_fs_id_t ;
+typedef int svn_error_t ;
 struct TYPE_14__ {int mergeinfo_count; } ;
-typedef  TYPE_2__ node_revision_t ;
+typedef TYPE_2__ node_revision_t ;
 struct TYPE_15__ {scalar_t__ kind; } ;
-typedef  TYPE_3__ dag_node_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  scalar_t__ apr_int64_t ;
+typedef TYPE_3__ dag_node_t ;
+typedef int apr_pool_t ;
+typedef scalar_t__ apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_INT64_T_FMT ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/  SVN_ERR_FS_NOT_MUTABLE ; 
- int /*<<< orphan*/  SVN_FS_BASE__MIN_MERGEINFO_FORMAT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  apr_psprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  svn_fs_base__dag_check_mutable (TYPE_3__*,char const*) ; 
- int /*<<< orphan*/ * svn_fs_base__dag_get_fs (TYPE_3__*) ; 
- int /*<<< orphan*/ * svn_fs_base__dag_get_id (TYPE_3__*) ; 
- int /*<<< orphan*/  svn_fs_base__test_required_feature_format (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_fs_bdb__get_node_revision (TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_fs_bdb__put_node_revision (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
+
+ int APR_INT64_T_FMT ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_CORRUPT ;
+ int SVN_ERR_FS_NOT_MUTABLE ;
+ int SVN_FS_BASE__MIN_MERGEINFO_FORMAT ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int apr_psprintf (int *,int ,int ) ;
+ int * svn_error_createf (int ,int *,int ,...) ;
+ int svn_fs_base__dag_check_mutable (TYPE_3__*,char const*) ;
+ int * svn_fs_base__dag_get_fs (TYPE_3__*) ;
+ int * svn_fs_base__dag_get_id (TYPE_3__*) ;
+ int svn_fs_base__test_required_feature_format (int ,char*,int ) ;
+ int svn_fs_bdb__get_node_revision (TYPE_2__**,int *,int const*,TYPE_1__*,int *) ;
+ int * svn_fs_bdb__put_node_revision (int *,int const*,TYPE_2__*,TYPE_1__*,int *) ;
+ scalar_t__ svn_node_file ;
 
 svn_error_t *
 svn_fs_base__dag_adjust_mergeinfo_count(dag_node_t *node,
@@ -58,7 +58,7 @@ svn_fs_base__dag_adjust_mergeinfo_count(dag_node_t *node,
           (trail->fs, "mergeinfo", SVN_FS_BASE__MIN_MERGEINFO_FORMAT));
 
   if (! svn_fs_base__dag_check_mutable(node, txn_id))
-    return svn_error_createf(SVN_ERR_FS_NOT_MUTABLE, NULL,
+    return svn_error_createf(SVN_ERR_FS_NOT_MUTABLE, ((void*)0),
                              _("Attempted mergeinfo count change on "
                                "immutable node"));
 
@@ -69,7 +69,7 @@ svn_fs_base__dag_adjust_mergeinfo_count(dag_node_t *node,
   node_rev->mergeinfo_count = node_rev->mergeinfo_count + count_delta;
   if ((node_rev->mergeinfo_count < 0)
       || ((node->kind == svn_node_file) && (node_rev->mergeinfo_count > 1)))
-    return svn_error_createf(SVN_ERR_FS_CORRUPT, NULL,
+    return svn_error_createf(SVN_ERR_FS_CORRUPT, ((void*)0),
                              apr_psprintf(pool,
                                           _("Invalid value (%%%s) for node "
                                             "revision mergeinfo count"),

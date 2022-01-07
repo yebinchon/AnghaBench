@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  sd_radv ;
-typedef  int /*<<< orphan*/  sd_event_source ;
-typedef  int /*<<< orphan*/  sd_event ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int* advertisement ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int read (int /*<<< orphan*/ ,unsigned char**,int) ; 
- int /*<<< orphan*/  sd_event_exit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sd_radv_get_event (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_radv_stop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * test_fd ; 
- int test_stopped ; 
+
+
+
+typedef int uint32_t ;
+typedef int sd_radv ;
+typedef int sd_event_source ;
+typedef int sd_event ;
+typedef int buf ;
+
+
+ int* advertisement ;
+ int assert_se (int) ;
+ int printf (char*,...) ;
+ int read (int ,unsigned char**,int) ;
+ int sd_event_exit (int *,int ) ;
+ int * sd_radv_get_event (int *) ;
+ scalar_t__ sd_radv_stop (int *) ;
+ int * test_fd ;
+ int test_stopped ;
 
 __attribute__((used)) static int radv_recv(sd_event_source *s, int fd, uint32_t revents, void *userdata) {
         sd_radv *ra = userdata;
@@ -34,7 +34,7 @@ __attribute__((used)) static int radv_recv(sd_event_source *s, int fd, uint32_t 
 
         assert_se(read(test_fd[0], &buf, sizeof(buf)) == sizeof(buf));
 
-        /* router lifetime must be zero when test is stopped */
+
         if (test_stopped) {
                 advertisement[6] = 0x00;
                 advertisement[7] = 0x00;
@@ -43,7 +43,7 @@ __attribute__((used)) static int radv_recv(sd_event_source *s, int fd, uint32_t 
         printf ("Received Router Advertisement with lifetime %u\n",
                 (advertisement[6] << 8) + advertisement[7]);
 
-        /* test only up to buf size, rest is not yet implemented */
+
         for (i = 0; i < sizeof(buf); i++) {
                 if (!(i % 8))
                         printf("%3zd: ", i);
@@ -68,7 +68,7 @@ __attribute__((used)) static int radv_recv(sd_event_source *s, int fd, uint32_t 
         }
 
         assert_se(sd_radv_stop(ra) >= 0);
-        test_stopped = true;
+        test_stopped = 1;
 
         return 0;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int resp; } ;
-typedef  TYPE_1__ client ;
-typedef  int /*<<< orphan*/  buf ;
+typedef TYPE_1__ client ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  addReplyBulkCBuffer (TYPE_1__*,char const*,size_t) ; 
- int /*<<< orphan*/  addReplyProto (TYPE_1__*,char const*,int) ; 
- size_t snprintf (char*,int,char*,size_t) ; 
+
+ int addReplyBulkCBuffer (TYPE_1__*,char const*,size_t) ;
+ int addReplyProto (TYPE_1__*,char const*,int) ;
+ size_t snprintf (char*,int,char*,size_t) ;
 
 void addReplyVerbatim(client *c, const char *s, size_t len, const char *ext) {
     if (c->resp == 2) {

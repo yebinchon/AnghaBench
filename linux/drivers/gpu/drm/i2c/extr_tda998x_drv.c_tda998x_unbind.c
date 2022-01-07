@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tda998x_priv {int /*<<< orphan*/  encoder; } ;
+
+
+
+
+struct tda998x_priv {int encoder; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct tda998x_priv* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  drm_encoder_cleanup (int /*<<< orphan*/ *) ; 
+
+ struct tda998x_priv* dev_get_drvdata (struct device*) ;
+ int drm_encoder_cleanup (int *) ;
 
 __attribute__((used)) static void tda998x_unbind(struct device *dev, struct device *master,
-			   void *data)
+      void *data)
 {
-	struct tda998x_priv *priv = dev_get_drvdata(dev);
+ struct tda998x_priv *priv = dev_get_drvdata(dev);
 
-	drm_encoder_cleanup(&priv->encoder);
+ drm_encoder_cleanup(&priv->encoder);
 }

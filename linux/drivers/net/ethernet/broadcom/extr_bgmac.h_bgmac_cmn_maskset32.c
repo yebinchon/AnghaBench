@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  u16 ;
-struct bgmac {int /*<<< orphan*/  (* cmn_maskset32 ) (struct bgmac*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct bgmac*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+typedef int u16 ;
+struct bgmac {int (* cmn_maskset32 ) (struct bgmac*,int ,int ,int ) ;} ;
+
+
+ int stub1 (struct bgmac*,int ,int ,int ) ;
 
 __attribute__((used)) static inline void bgmac_cmn_maskset32(struct bgmac *bgmac, u16 offset,
-				       u32 mask, u32 set)
+           u32 mask, u32 set)
 {
-	bgmac->cmn_maskset32(bgmac, offset, mask, set);
+ bgmac->cmn_maskset32(bgmac, offset, mask, set);
 }

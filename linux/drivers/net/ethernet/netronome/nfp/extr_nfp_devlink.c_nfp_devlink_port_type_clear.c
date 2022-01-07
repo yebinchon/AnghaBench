@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfp_port {int /*<<< orphan*/  dl_port; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devlink_port_type_clear (int /*<<< orphan*/ *) ; 
+
+
+
+struct nfp_port {int dl_port; } ;
+
+
+ int devlink_port_type_clear (int *) ;
 
 void nfp_devlink_port_type_clear(struct nfp_port *port)
 {
-	devlink_port_type_clear(&port->dl_port);
+ devlink_port_type_clear(&port->dl_port);
 }

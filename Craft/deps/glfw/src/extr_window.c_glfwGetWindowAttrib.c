@@ -1,44 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int api; int major; int minor; int revision; int robustness; int forward; int debug; int profile; int release; } ;
 struct TYPE_7__ {int resizable; int decorated; int floating; TYPE_1__ context; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWwindow ;
+typedef TYPE_2__ _GLFWwindow ;
+typedef int GLFWwindow ;
+ int GLFW_INVALID_ENUM ;
 
-/* Variables and functions */
-#define  GLFW_CLIENT_API 142 
-#define  GLFW_CONTEXT_RELEASE_BEHAVIOR 141 
-#define  GLFW_CONTEXT_REVISION 140 
-#define  GLFW_CONTEXT_ROBUSTNESS 139 
-#define  GLFW_CONTEXT_VERSION_MAJOR 138 
-#define  GLFW_CONTEXT_VERSION_MINOR 137 
-#define  GLFW_DECORATED 136 
-#define  GLFW_FLOATING 135 
-#define  GLFW_FOCUSED 134 
-#define  GLFW_ICONIFIED 133 
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
-#define  GLFW_OPENGL_DEBUG_CONTEXT 132 
-#define  GLFW_OPENGL_FORWARD_COMPAT 131 
-#define  GLFW_OPENGL_PROFILE 130 
-#define  GLFW_RESIZABLE 129 
-#define  GLFW_VISIBLE 128 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int _glfwPlatformWindowFocused (TYPE_2__*) ; 
- int _glfwPlatformWindowIconified (TYPE_2__*) ; 
- int _glfwPlatformWindowVisible (TYPE_2__*) ; 
+
+
+
+
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int ) ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwPlatformWindowFocused (TYPE_2__*) ;
+ int _glfwPlatformWindowIconified (TYPE_2__*) ;
+ int _glfwPlatformWindowVisible (TYPE_2__*) ;
 
 int glfwGetWindowAttrib(GLFWwindow* handle, int attrib)
 {
@@ -48,35 +36,35 @@ int glfwGetWindowAttrib(GLFWwindow* handle, int attrib)
 
     switch (attrib)
     {
-        case GLFW_FOCUSED:
+        case 134:
             return _glfwPlatformWindowFocused(window);
-        case GLFW_ICONIFIED:
+        case 133:
             return _glfwPlatformWindowIconified(window);
-        case GLFW_VISIBLE:
+        case 128:
             return _glfwPlatformWindowVisible(window);
-        case GLFW_RESIZABLE:
+        case 129:
             return window->resizable;
-        case GLFW_DECORATED:
+        case 136:
             return window->decorated;
-        case GLFW_FLOATING:
+        case 135:
             return window->floating;
-        case GLFW_CLIENT_API:
+        case 142:
             return window->context.api;
-        case GLFW_CONTEXT_VERSION_MAJOR:
+        case 138:
             return window->context.major;
-        case GLFW_CONTEXT_VERSION_MINOR:
+        case 137:
             return window->context.minor;
-        case GLFW_CONTEXT_REVISION:
+        case 140:
             return window->context.revision;
-        case GLFW_CONTEXT_ROBUSTNESS:
+        case 139:
             return window->context.robustness;
-        case GLFW_OPENGL_FORWARD_COMPAT:
+        case 131:
             return window->context.forward;
-        case GLFW_OPENGL_DEBUG_CONTEXT:
+        case 132:
             return window->context.debug;
-        case GLFW_OPENGL_PROFILE:
+        case 130:
             return window->context.profile;
-        case GLFW_CONTEXT_RELEASE_BEHAVIOR:
+        case 141:
             return window->context.release;
     }
 

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  buf; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int buf; int len; } ;
 struct mg_connection {TYPE_1__ send_mbuf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_EQ (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  init_test_connection (struct mg_connection*) ; 
- int /*<<< orphan*/  mbuf_free (TYPE_1__*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  mg_printf_http_chunk (struct mg_connection*,char*,int,char*) ; 
- int /*<<< orphan*/  mg_send_http_chunk (struct mg_connection*,char*,int /*<<< orphan*/ ) ; 
+
+ int ASSERT_EQ (int ,int) ;
+ int init_test_connection (struct mg_connection*) ;
+ int mbuf_free (TYPE_1__*) ;
+ int memcmp (int ,char*,int) ;
+ int mg_printf_http_chunk (struct mg_connection*,char*,int,char*) ;
+ int mg_send_http_chunk (struct mg_connection*,char*,int ) ;
 
 __attribute__((used)) static const char *test_http_chunk(void) {
   struct mg_connection nc;
@@ -36,5 +36,5 @@ __attribute__((used)) static const char *test_http_chunk(void) {
   ASSERT_EQ(memcmp(nc.send_mbuf.buf, "0\r\n\r\n", 3), 0);
   mbuf_free(&nc.send_mbuf);
 
-  return NULL;
+  return ((void*)0);
 }

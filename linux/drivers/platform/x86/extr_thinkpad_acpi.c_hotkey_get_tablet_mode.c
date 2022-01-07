@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int hotkey_tablet; } ;
 
-/* Variables and functions */
- int EIO ; 
- int TP_HOTKEY_TABLET_MASK ; 
-#define  TP_HOTKEY_TABLET_USES_GMMS 129 
-#define  TP_HOTKEY_TABLET_USES_MHKG 128 
- int /*<<< orphan*/  acpi_evalf (int /*<<< orphan*/ ,int*,char*,char*,...) ; 
- int /*<<< orphan*/  hkey_handle ; 
- int hotkey_gmms_get_tablet_mode (int,int /*<<< orphan*/ *) ; 
- TYPE_1__ tp_features ; 
+
+ int EIO ;
+ int TP_HOTKEY_TABLET_MASK ;
+
+
+ int acpi_evalf (int ,int*,char*,char*,...) ;
+ int hkey_handle ;
+ int hotkey_gmms_get_tablet_mode (int,int *) ;
+ TYPE_1__ tp_features ;
 
 __attribute__((used)) static int hotkey_get_tablet_mode(int *status)
 {
-	int s;
+ int s;
 
-	switch (tp_features.hotkey_tablet) {
-	case TP_HOTKEY_TABLET_USES_MHKG:
-		if (!acpi_evalf(hkey_handle, &s, "MHKG", "d"))
-			return -EIO;
+ switch (tp_features.hotkey_tablet) {
+ case 128:
+  if (!acpi_evalf(hkey_handle, &s, "MHKG", "d"))
+   return -EIO;
 
-		*status = ((s & TP_HOTKEY_TABLET_MASK) != 0);
-		break;
-	case TP_HOTKEY_TABLET_USES_GMMS:
-		if (!acpi_evalf(hkey_handle, &s, "GMMS", "dd", 0))
-			return -EIO;
+  *status = ((s & TP_HOTKEY_TABLET_MASK) != 0);
+  break;
+ case 129:
+  if (!acpi_evalf(hkey_handle, &s, "GMMS", "dd", 0))
+   return -EIO;
 
-		*status = hotkey_gmms_get_tablet_mode(s, NULL);
-		break;
-	default:
-		break;
-	}
+  *status = hotkey_gmms_get_tablet_mode(s, ((void*)0));
+  break;
+ default:
+  break;
+ }
 
-	return 0;
+ return 0;
 }

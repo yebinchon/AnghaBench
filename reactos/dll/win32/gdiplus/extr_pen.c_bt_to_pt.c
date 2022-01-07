@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpPenType ;
-typedef  int GpBrushType ;
 
-/* Variables and functions */
-#define  BrushTypeHatchFill 132 
-#define  BrushTypeLinearGradient 131 
-#define  BrushTypePathGradient 130 
-#define  BrushTypeSolidColor 129 
-#define  BrushTypeTextureFill 128 
- int /*<<< orphan*/  PenTypeHatchFill ; 
- int /*<<< orphan*/  PenTypeLinearGradient ; 
- int /*<<< orphan*/  PenTypePathGradient ; 
- int /*<<< orphan*/  PenTypeSolidColor ; 
- int /*<<< orphan*/  PenTypeTextureFill ; 
- int /*<<< orphan*/  PenTypeUnknown ; 
+
+
+
+typedef int GpPenType ;
+typedef int GpBrushType ;
+
+
+
+
+
+
+
+ int PenTypeHatchFill ;
+ int PenTypeLinearGradient ;
+ int PenTypePathGradient ;
+ int PenTypeSolidColor ;
+ int PenTypeTextureFill ;
+ int PenTypeUnknown ;
 
 __attribute__((used)) static GpPenType bt_to_pt(GpBrushType bt)
 {
     switch(bt){
-        case BrushTypeSolidColor:
+        case 129:
             return PenTypeSolidColor;
-        case BrushTypeHatchFill:
+        case 132:
             return PenTypeHatchFill;
-        case BrushTypeTextureFill:
+        case 128:
             return PenTypeTextureFill;
-        case BrushTypePathGradient:
+        case 130:
             return PenTypePathGradient;
-        case BrushTypeLinearGradient:
+        case 131:
             return PenTypeLinearGradient;
         default:
             return PenTypeUnknown;

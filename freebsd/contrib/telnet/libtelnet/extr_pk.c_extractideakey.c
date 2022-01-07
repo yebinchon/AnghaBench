@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MINT ;
-typedef  int /*<<< orphan*/  IdeaData ;
 
-/* Variables and functions */
- int KEYSIZE ; 
- int /*<<< orphan*/ * mp_itom (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_madd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_mfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_sdiv (int /*<<< orphan*/ *,short,int /*<<< orphan*/ *,short*) ; 
+
+
+
+typedef int MINT ;
+typedef int IdeaData ;
+
+
+ int KEYSIZE ;
+ int * mp_itom (int ) ;
+ int mp_madd (int *,int *,int *) ;
+ int mp_mfree (int *) ;
+ int mp_sdiv (int *,short,int *,short*) ;
 
 __attribute__((used)) static void
 extractideakey(MINT *ck, IdeaData *ideakey)
@@ -41,6 +41,6 @@ extractideakey(MINT *ck, IdeaData *ideakey)
                 mp_sdiv(a, base, a, &r);
                 *k++ = r;
         }
-	mp_mfree(z);
+ mp_mfree(z);
         mp_mfree(a);
 }

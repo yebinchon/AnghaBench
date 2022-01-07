@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int int16_t ;
 struct TYPE_6__ {int* sample_buffer; TYPE_1__* avctx; scalar_t__ packed_at_lsb; scalar_t__ run_index; } ;
 struct TYPE_5__ {int bits_per_raw_sample; } ;
-typedef  TYPE_2__ FFV1Context ;
+typedef TYPE_2__ FFV1Context ;
 
-/* Variables and functions */
- int decode_line (TYPE_2__*,int,int**,int,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ int decode_line (TYPE_2__*,int,int**,int,int) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static int decode_plane(FFV1Context *s, uint8_t *src,
                          int w, int h, int stride, int plane_index,
@@ -37,15 +37,15 @@ __attribute__((used)) static int decode_plane(FFV1Context *s, uint8_t *src,
     memset(s->sample_buffer, 0, 2 * (w + 6) * sizeof(*s->sample_buffer));
 
     for (y = 0; y < h; y++) {
-        int16_t *temp = sample[0]; // FIXME: try a normal buffer
+        int16_t *temp = sample[0];
 
         sample[0] = sample[1];
         sample[1] = temp;
 
         sample[1][-1] = sample[0][0];
-        sample[0][w]  = sample[0][w - 1];
+        sample[0][w] = sample[0][w - 1];
 
-// { START_TIMER
+
         if (s->avctx->bits_per_raw_sample <= 8) {
             int ret = decode_line(s, w, sample, plane_index, 8);
             if (ret < 0)
@@ -66,7 +66,7 @@ __attribute__((used)) static int decode_plane(FFV1Context *s, uint8_t *src,
                 }
             }
         }
-// STOP_TIMER("decode-line") }
+
     }
     return 0;
 }

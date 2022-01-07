@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ro_spine {int count; int /*<<< orphan*/ * nodes; int /*<<< orphan*/  info; } ;
-typedef  int /*<<< orphan*/  dm_block_t ;
 
-/* Variables and functions */
- int bn_read_lock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int unlock_block (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct ro_spine {int count; int * nodes; int info; } ;
+typedef int dm_block_t ;
+
+
+ int bn_read_lock (int ,int ,int *) ;
+ int unlock_block (int ,int ) ;
 
 int ro_step(struct ro_spine *s, dm_block_t new_child)
 {
-	int r;
+ int r;
 
-	if (s->count == 2) {
-		r = unlock_block(s->info, s->nodes[0]);
-		if (r < 0)
-			return r;
-		s->nodes[0] = s->nodes[1];
-		s->count--;
-	}
+ if (s->count == 2) {
+  r = unlock_block(s->info, s->nodes[0]);
+  if (r < 0)
+   return r;
+  s->nodes[0] = s->nodes[1];
+  s->count--;
+ }
 
-	r = bn_read_lock(s->info, new_child, s->nodes + s->count);
-	if (!r)
-		s->count++;
+ r = bn_read_lock(s->info, new_child, s->nodes + s->count);
+ if (!r)
+  s->count++;
 
-	return r;
+ return r;
 }

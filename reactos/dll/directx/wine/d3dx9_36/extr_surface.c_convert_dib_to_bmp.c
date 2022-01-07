@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+typedef int UINT ;
 struct TYPE_6__ {int bcBitCount; } ;
 struct TYPE_5__ {int bfType; int bfSize; int bfOffBits; scalar_t__ bfReserved2; scalar_t__ bfReserved1; } ;
 struct TYPE_4__ {int biClrUsed; int biBitCount; int biSize; scalar_t__ biCompression; } ;
-typedef  int /*<<< orphan*/  RGBTRIPLE ;
-typedef  int /*<<< orphan*/  RGBQUAD ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  int /*<<< orphan*/  BITMAPV5HEADER ;
-typedef  int /*<<< orphan*/  BITMAPV4HEADER ;
-typedef  TYPE_1__ BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPFILEHEADER ;
-typedef  TYPE_3__ BITMAPCOREHEADER ;
+typedef int RGBTRIPLE ;
+typedef int RGBQUAD ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
+typedef int BITMAPV5HEADER ;
+typedef int BITMAPV4HEADER ;
+typedef TYPE_1__ BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPFILEHEADER ;
+typedef TYPE_3__ BITMAPCOREHEADER ;
 
-/* Variables and functions */
- scalar_t__ BI_BITFIELDS ; 
- int /*<<< orphan*/  CopyMemory (int /*<<< orphan*/ *,void*,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ scalar_t__ BI_BITFIELDS ;
+ int CopyMemory (int *,void*,int) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int TRACE (char*) ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL convert_dib_to_bmp(void **data, UINT *size)
 {
@@ -53,9 +53,9 @@ __attribute__((used)) static BOOL convert_dib_to_bmp(void **data, UINT *size)
     if ((header_size == sizeof(BITMAPINFOHEADER)) ||
         (header_size == sizeof(BITMAPV4HEADER)) ||
         (header_size == sizeof(BITMAPV5HEADER)) ||
-        (header_size == 64 /* sizeof(BITMAPCOREHEADER2) */))
+        (header_size == 64 ))
     {
-        /* All structures begin with the same memory layout as BITMAPINFOHEADER */
+
         BITMAPINFOHEADER *info_header = (BITMAPINFOHEADER*)*data;
         count = info_header->biClrUsed;
 
@@ -64,7 +64,7 @@ __attribute__((used)) static BOOL convert_dib_to_bmp(void **data, UINT *size)
 
         offset = sizeof(BITMAPFILEHEADER) + header_size + sizeof(RGBQUAD) * count;
 
-        /* For BITMAPINFOHEADER with BI_BITFIELDS compression, there are 3 additional color masks after header */
+
         if ((info_header->biSize == sizeof(BITMAPINFOHEADER)) && (info_header->biCompression == BI_BITFIELDS))
             offset += 3 * sizeof(DWORD);
     }
@@ -88,15 +88,15 @@ __attribute__((used)) static BOOL convert_dib_to_bmp(void **data, UINT *size)
     new_data = HeapAlloc(GetProcessHeap(), 0, new_size);
     CopyMemory(new_data + sizeof(BITMAPFILEHEADER), *data, *size);
 
-    /* Add BMP header */
+
     header = (BITMAPFILEHEADER*)new_data;
-    header->bfType = 0x4d42; /* BM */
+    header->bfType = 0x4d42;
     header->bfSize = new_size;
     header->bfReserved1 = 0;
     header->bfReserved2 = 0;
     header->bfOffBits = offset;
 
-    /* Update input data */
+
     *data = new_data;
     *size = new_size;
 

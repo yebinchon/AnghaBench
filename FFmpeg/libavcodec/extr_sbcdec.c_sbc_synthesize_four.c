@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sbc_frame {unsigned int*** sb_sample; } ;
 struct sbc_decoder_state {int** V; int** offset; } ;
-typedef  int int32_t ;
-struct TYPE_3__ {int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_1__ AVFrame ;
+typedef int int32_t ;
+struct TYPE_3__ {int ** data; } ;
+typedef TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_WN16A (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_clip_int16 (int) ; 
- unsigned int* ff_sbc_proto_4_40m0 ; 
- unsigned int* ff_sbc_proto_4_40m1 ; 
- scalar_t__** ff_synmatrix4 ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
+
+ int AV_WN16A (int *,int ) ;
+ int av_clip_int16 (int) ;
+ unsigned int* ff_sbc_proto_4_40m0 ;
+ unsigned int* ff_sbc_proto_4_40m1 ;
+ scalar_t__** ff_synmatrix4 ;
+ int memcpy (int*,int*,int) ;
 
 __attribute__((used)) static inline void sbc_synthesize_four(struct sbc_decoder_state *state,
                                        struct sbc_frame *frame,
@@ -34,14 +34,14 @@ __attribute__((used)) static inline void sbc_synthesize_four(struct sbc_decoder_
     int *offset = state->offset[ch];
 
     for (i = 0; i < 8; i++) {
-        /* Shifting */
+
         offset[i]--;
         if (offset[i] < 0) {
             offset[i] = 79;
             memcpy(v + 80, v, 9 * sizeof(*v));
         }
 
-        /* Distribute the new matrix value to the shifted position */
+
         v[offset[i]] =
             (int)( (unsigned)ff_synmatrix4[i][0] * frame->sb_sample[blk][ch][0] +
                    (unsigned)ff_synmatrix4[i][1] * frame->sb_sample[blk][ch][1] +
@@ -49,11 +49,11 @@ __attribute__((used)) static inline void sbc_synthesize_four(struct sbc_decoder_
                    (unsigned)ff_synmatrix4[i][3] * frame->sb_sample[blk][ch][3] ) >> 15;
     }
 
-    /* Compute the samples */
+
     for (idx = 0, i = 0; i < 4; i++, idx += 5) {
         k = (i + 4) & 0xf;
 
-        /* Store in output, Q0 */
+
         AV_WN16A(&output_frame->data[ch][blk * 8 + i * 2], av_clip_int16(
          (int)( (unsigned)v[offset[i] + 0] * ff_sbc_proto_4_40m0[idx + 0] +
                 (unsigned)v[offset[k] + 1] * ff_sbc_proto_4_40m1[idx + 0] +

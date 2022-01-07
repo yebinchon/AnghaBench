@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- char* strdup (char*) ; 
- char* strrchr (char*,char) ; 
+ int exit (int) ;
+ int perror (char*) ;
+ char* strdup (char*) ;
+ char* strrchr (char*,char) ;
 
 char *ssh_get_progname(char *argv0)
 {
-	char *p, *q;
-#ifdef HAVE___PROGNAME
-	extern char *__progname;
+ char *p, *q;
 
-	p = __progname;
-#else
-	if (argv0 == NULL)
-		return ("unknown");	/* XXX */
-	p = strrchr(argv0, '/');
-	if (p == NULL)
-		p = argv0;
-	else
-		p++;
-#endif
-	if ((q = strdup(p)) == NULL) {
-		perror("strdup");
-		exit(1);
-	}
-	return q;
+
+
+
+
+ if (argv0 == ((void*)0))
+  return ("unknown");
+ p = strrchr(argv0, '/');
+ if (p == ((void*)0))
+  p = argv0;
+ else
+  p++;
+
+ if ((q = strdup(p)) == ((void*)0)) {
+  perror("strdup");
+  exit(1);
+ }
+ return q;
 }

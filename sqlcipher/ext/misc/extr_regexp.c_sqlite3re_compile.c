@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {unsigned char* z; int i; int mx; } ;
-struct TYPE_12__ {scalar_t__* aOp; unsigned int* aArg; unsigned char* zInit; int nInit; char const* zErr; TYPE_1__ sIn; int /*<<< orphan*/  xNextChar; } ;
-typedef  TYPE_2__ ReCompiled ;
+struct TYPE_12__ {scalar_t__* aOp; unsigned int* aArg; unsigned char* zInit; int nInit; char const* zErr; TYPE_1__ sIn; int xNextChar; } ;
+typedef TYPE_2__ ReCompiled ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RE_EOF ; 
- scalar_t__ RE_OP_ACCEPT ; 
- scalar_t__ RE_OP_ANYSTAR ; 
- scalar_t__ RE_OP_MATCH ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- char rePeek (TYPE_2__*) ; 
- int /*<<< orphan*/  re_append (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  re_free (TYPE_2__*) ; 
- int /*<<< orphan*/  re_next_char ; 
- int /*<<< orphan*/  re_next_char_nocase ; 
- scalar_t__ re_resize (TYPE_2__*,int) ; 
- char* re_subcompile_re (TYPE_2__*) ; 
- TYPE_2__* sqlite3_malloc (int) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int RE_EOF ;
+ scalar_t__ RE_OP_ACCEPT ;
+ scalar_t__ RE_OP_ANYSTAR ;
+ scalar_t__ RE_OP_MATCH ;
+ int memset (TYPE_2__*,int ,int) ;
+ char rePeek (TYPE_2__*) ;
+ int re_append (TYPE_2__*,scalar_t__,int ) ;
+ int re_free (TYPE_2__*) ;
+ int re_next_char ;
+ int re_next_char_nocase ;
+ scalar_t__ re_resize (TYPE_2__*,int) ;
+ char* re_subcompile_re (TYPE_2__*) ;
+ TYPE_2__* sqlite3_malloc (int) ;
+ scalar_t__ strlen (char const*) ;
 
 const char *re_compile(ReCompiled **ppRe, const char *zIn, int noCase){
   ReCompiled *pRe;
@@ -72,15 +72,6 @@ const char *re_compile(ReCompiled **ppRe, const char *zIn, int noCase){
     re_free(pRe);
     return "unrecognized character";
   }
-
-  /* The following is a performance optimization.  If the regex begins with
-  ** ".*" (if the input regex lacks an initial "^") and afterwards there are
-  ** one or more matching characters, enter those matching characters into
-  ** zInit[].  The re_match() routine can then search ahead in the input 
-  ** string looking for the initial match without having to run the whole
-  ** regex engine over the string.  Do not worry able trying to match
-  ** unicode characters beyond plane 0 - those are very rare and this is
-  ** just an optimization. */
   if( pRe->aOp[0]==RE_OP_ANYSTAR ){
     for(j=0, i=1; j<sizeof(pRe->zInit)-2 && pRe->aOp[i]==RE_OP_MATCH; i++){
       unsigned x = pRe->aArg[i];

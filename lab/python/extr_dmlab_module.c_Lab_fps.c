@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  context; TYPE_1__* env_c_api; } ;
-struct TYPE_3__ {int /*<<< orphan*/  (* fps ) (int /*<<< orphan*/ ) ;} ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_2__ LabObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * PyInt_FromLong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int context; TYPE_1__* env_c_api; } ;
+struct TYPE_3__ {int (* fps ) (int ) ;} ;
+typedef int PyObject ;
+typedef TYPE_2__ LabObject ;
+
+
+ int * PyInt_FromLong (int ) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static PyObject* Lab_fps(PyObject* self, PyObject* no_arg) {
   return PyInt_FromLong(

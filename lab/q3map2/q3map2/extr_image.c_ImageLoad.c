@@ -1,166 +1,166 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int refCount; char* name; scalar_t__ width; scalar_t__ height; char* filename; int /*<<< orphan*/ * pixels; } ;
-typedef  TYPE_1__ image_t ;
-typedef  int /*<<< orphan*/  ddsPF_t ;
-typedef  int /*<<< orphan*/  ddsBuffer_t ;
-typedef  char byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DDSGetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Error (char*,int) ; 
- TYPE_1__* ImageFind (char*) ; 
- int /*<<< orphan*/  ImageInit () ; 
- int /*<<< orphan*/  LoadDDSBuffer (char*,int,int /*<<< orphan*/ **,scalar_t__*,scalar_t__*) ; 
- int LoadJPGBuff (char*,int,int /*<<< orphan*/ **,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  LoadPNGBuffer (char*,int,int /*<<< orphan*/ **,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  LoadTGABuffer (char*,char*,int /*<<< orphan*/ **,scalar_t__*,scalar_t__*) ; 
- int MAX_IMAGES ; 
- int /*<<< orphan*/  SYS_WRN ; 
- int /*<<< orphan*/  StripExtension (char*) ; 
- int /*<<< orphan*/  Sys_FPrintf (int /*<<< orphan*/ ,char*,unsigned char*) ; 
- int /*<<< orphan*/  Sys_Printf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteTGA (char*,int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  free (char*) ; 
- TYPE_1__* images ; 
- int /*<<< orphan*/  numImages ; 
- void* safe_malloc (scalar_t__) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- scalar_t__ strlen (char*) ; 
- int vfsLoadFile (char const*,void**,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int refCount; char* name; scalar_t__ width; scalar_t__ height; char* filename; int * pixels; } ;
+typedef TYPE_1__ image_t ;
+typedef int ddsPF_t ;
+typedef int ddsBuffer_t ;
+typedef char byte ;
+
+
+ int DDSGetInfo (int *,int *,int *,int *) ;
+ int Error (char*,int) ;
+ TYPE_1__* ImageFind (char*) ;
+ int ImageInit () ;
+ int LoadDDSBuffer (char*,int,int **,scalar_t__*,scalar_t__*) ;
+ int LoadJPGBuff (char*,int,int **,scalar_t__*,scalar_t__*) ;
+ int LoadPNGBuffer (char*,int,int **,scalar_t__*,scalar_t__*) ;
+ int LoadTGABuffer (char*,char*,int **,scalar_t__*,scalar_t__*) ;
+ int MAX_IMAGES ;
+ int SYS_WRN ;
+ int StripExtension (char*) ;
+ int Sys_FPrintf (int ,char*,unsigned char*) ;
+ int Sys_Printf (char*,int ) ;
+ int WriteTGA (char*,int *,scalar_t__,scalar_t__) ;
+ int free (char*) ;
+ TYPE_1__* images ;
+ int numImages ;
+ void* safe_malloc (scalar_t__) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char const*) ;
+ scalar_t__ strlen (char*) ;
+ int vfsLoadFile (char const*,void**,int ) ;
 
 image_t *ImageLoad( const char *filename ){
-	int i;
-	image_t     *image;
-	char name[ 1024 ];
-	int size;
-	byte        *buffer = NULL;
+ int i;
+ image_t *image;
+ char name[ 1024 ];
+ int size;
+ byte *buffer = ((void*)0);
 
 
-	/* init */
-	ImageInit();
 
-	/* dummy check */
-	if ( filename == NULL || filename[ 0 ] == '\0' ) {
-		return NULL;
-	}
+ ImageInit();
 
-	/* strip file extension off name */
-	strcpy( name, filename );
-	StripExtension( name );
 
-	/* try to find existing image */
-	image = ImageFind( name );
-	if ( image != NULL ) {
-		image->refCount++;
-		return image;
-	}
+ if ( filename == ((void*)0) || filename[ 0 ] == '\0' ) {
+  return ((void*)0);
+ }
 
-	/* none found, so find first non-null image */
-	image = NULL;
-	for ( i = 0; i < MAX_IMAGES; i++ )
-	{
-		if ( images[ i ].name == NULL ) {
-			image = &images[ i ];
-			break;
-		}
-	}
 
-	/* too many images? */
-	if ( image == NULL ) {
-		Error( "MAX_IMAGES (%d) exceeded, there are too many image files referenced by the map.", MAX_IMAGES );
-	}
+ strcpy( name, filename );
+ StripExtension( name );
 
-	/* set it up */
-	image->name = safe_malloc( strlen( name ) + 1 );
-	strcpy( image->name, name );
 
-	/* attempt to load tga */
-	StripExtension( name );
-	strcat( name, ".tga" );
-	size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
-	if ( size > 0 ) {
-		LoadTGABuffer( buffer, buffer + size, &image->pixels, &image->width, &image->height );
-	}
-	else
-	{
-		/* attempt to load png */
-		StripExtension( name );
-		strcat( name, ".png" );
-		size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
-		if ( size > 0 ) {
-			LoadPNGBuffer( buffer, size, &image->pixels, &image->width, &image->height );
-		}
-		else
-		{
-			/* attempt to load jpg */
-			StripExtension( name );
-			strcat( name, ".jpg" );
-			size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
-			if ( size > 0 ) {
-				if ( LoadJPGBuff( buffer, size, &image->pixels, &image->width, &image->height ) == -1 && image->pixels != NULL ) {
-					Sys_FPrintf( SYS_WRN, "WARNING: LoadJPGBuff: %s\n", (unsigned char*) image->pixels );
-				}
-			}
-			else
-			{
-				/* attempt to load dds */
-				StripExtension( name );
-				strcat( name, ".dds" );
-				size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
-				if ( size > 0 ) {
-					LoadDDSBuffer( buffer, size, &image->pixels, &image->width, &image->height );
+ image = ImageFind( name );
+ if ( image != ((void*)0) ) {
+  image->refCount++;
+  return image;
+ }
 
-					/* debug code */
-					#if 1
-					{
-						ddsPF_t pf;
-						DDSGetInfo( (ddsBuffer_t*) buffer, NULL, NULL, &pf );
-						Sys_Printf( "pf = %d\n", pf );
-						if ( image->width > 0 ) {
-							StripExtension( name );
-							strcat( name, "_converted.tga" );
-							WriteTGA( "C:\\games\\quake3\\baseq3\\textures\\rad\\dds_converted.tga", image->pixels, image->width, image->height );
-						}
-					}
-					#endif
-				}
-			}
-		}
-	}
 
-	/* free file buffer */
-	free( buffer );
+ image = ((void*)0);
+ for ( i = 0; i < MAX_IMAGES; i++ )
+ {
+  if ( images[ i ].name == ((void*)0) ) {
+   image = &images[ i ];
+   break;
+  }
+ }
 
-	/* make sure everything's kosher */
-	if ( size <= 0 || image->width <= 0 || image->height <= 0 || image->pixels == NULL ) {
-		//%	Sys_Printf( "size = %d  width = %d  height = %d  pixels = 0x%08x (%s)\n",
-		//%		size, image->width, image->height, image->pixels, name );
-		free( image->name );
-		image->name = NULL;
-		return NULL;
-	}
 
-	/* set filename */
-	image->filename = safe_malloc( strlen( name ) + 1 );
-	strcpy( image->filename, name );
+ if ( image == ((void*)0) ) {
+  Error( "MAX_IMAGES (%d) exceeded, there are too many image files referenced by the map.", MAX_IMAGES );
+ }
 
-	/* set count */
-	image->refCount = 1;
-	numImages++;
 
-	/* return the image */
-	return image;
+ image->name = safe_malloc( strlen( name ) + 1 );
+ strcpy( image->name, name );
+
+
+ StripExtension( name );
+ strcat( name, ".tga" );
+ size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
+ if ( size > 0 ) {
+  LoadTGABuffer( buffer, buffer + size, &image->pixels, &image->width, &image->height );
+ }
+ else
+ {
+
+  StripExtension( name );
+  strcat( name, ".png" );
+  size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
+  if ( size > 0 ) {
+   LoadPNGBuffer( buffer, size, &image->pixels, &image->width, &image->height );
+  }
+  else
+  {
+
+   StripExtension( name );
+   strcat( name, ".jpg" );
+   size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
+   if ( size > 0 ) {
+    if ( LoadJPGBuff( buffer, size, &image->pixels, &image->width, &image->height ) == -1 && image->pixels != ((void*)0) ) {
+     Sys_FPrintf( SYS_WRN, "WARNING: LoadJPGBuff: %s\n", (unsigned char*) image->pixels );
+    }
+   }
+   else
+   {
+
+    StripExtension( name );
+    strcat( name, ".dds" );
+    size = vfsLoadFile( (const char*) name, (void**) &buffer, 0 );
+    if ( size > 0 ) {
+     LoadDDSBuffer( buffer, size, &image->pixels, &image->width, &image->height );
+
+
+
+     {
+      ddsPF_t pf;
+      DDSGetInfo( (ddsBuffer_t*) buffer, ((void*)0), ((void*)0), &pf );
+      Sys_Printf( "pf = %d\n", pf );
+      if ( image->width > 0 ) {
+       StripExtension( name );
+       strcat( name, "_converted.tga" );
+       WriteTGA( "C:\\games\\quake3\\baseq3\\textures\\rad\\dds_converted.tga", image->pixels, image->width, image->height );
+      }
+     }
+
+    }
+   }
+  }
+ }
+
+
+ free( buffer );
+
+
+ if ( size <= 0 || image->width <= 0 || image->height <= 0 || image->pixels == ((void*)0) ) {
+
+
+  free( image->name );
+  image->name = ((void*)0);
+  return ((void*)0);
+ }
+
+
+ image->filename = safe_malloc( strlen( name ) + 1 );
+ strcpy( image->filename, name );
+
+
+ image->refCount = 1;
+ numImages++;
+
+
+ return image;
 }

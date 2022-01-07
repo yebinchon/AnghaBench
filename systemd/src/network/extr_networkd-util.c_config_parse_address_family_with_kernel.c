@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ AddressFamily ;
 
-/* Variables and functions */
- scalar_t__ ADDRESS_FAMILY_NO ; 
- int /*<<< orphan*/  LOG_ERR ; 
- scalar_t__ address_family_from_string (char const*) ; 
- int /*<<< orphan*/  assert (void*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int /*<<< orphan*/ ,char*,char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+
+
+
+typedef scalar_t__ AddressFamily ;
+
+
+ scalar_t__ ADDRESS_FAMILY_NO ;
+ int LOG_ERR ;
+ scalar_t__ address_family_from_string (char const*) ;
+ int assert (void*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int ,char*,char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int config_parse_address_family_with_kernel(
                 const char* unit,
@@ -38,15 +38,6 @@ int config_parse_address_family_with_kernel(
         assert(lvalue);
         assert(rvalue);
         assert(data);
-
-        /* This function is mostly obsolete now. It simply redirects
-         * "kernel" to "no". In older networkd versions we used to
-         * distinguish IPForward=off from IPForward=kernel, where the
-         * former would explicitly turn off forwarding while the
-         * latter would simply not touch the setting. But that logic
-         * is gone, hence silently accept the old setting, but turn it
-         * to "no". */
-
         s = address_family_from_string(rvalue);
         if (s < 0) {
                 if (streq(rvalue, "kernel"))

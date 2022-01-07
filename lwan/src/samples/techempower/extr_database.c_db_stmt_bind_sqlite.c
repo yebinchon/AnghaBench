@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct db_stmt_sqlite {int /*<<< orphan*/  sqlite; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct db_stmt_sqlite {int sqlite; } ;
 struct db_stmt {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  i; int /*<<< orphan*/  s; } ;
+struct TYPE_2__ {int i; int s; } ;
 struct db_row {char kind; TYPE_1__ u; } ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int sqlite3_bind_int (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int sqlite3_bind_text (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_clear_bindings (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ ) ; 
+
+ int SQLITE_OK ;
+ int sqlite3_bind_int (int ,int,int ) ;
+ int sqlite3_bind_text (int ,int,int ,int,int *) ;
+ int sqlite3_clear_bindings (int ) ;
+ int sqlite3_reset (int ) ;
 
 __attribute__((used)) static bool db_stmt_bind_sqlite(const struct db_stmt *stmt, struct db_row *rows, size_t n_rows)
 {
@@ -37,17 +37,17 @@ __attribute__((used)) static bool db_stmt_bind_sqlite(const struct db_stmt *stmt
         if (r->kind == '\0') break;
 
         if (r->kind == 's') {
-            ret = sqlite3_bind_text(stmt_sqlite->sqlite, (int)row, r->u.s, -1, NULL);
+            ret = sqlite3_bind_text(stmt_sqlite->sqlite, (int)row, r->u.s, -1, ((void*)0));
             if (ret != SQLITE_OK)
-                return false;
+                return 0;
         } else if (r->kind == 'i') {
             ret = sqlite3_bind_int(stmt_sqlite->sqlite, (int)row, r->u.i);
             if (ret != SQLITE_OK)
-                return false;
+                return 0;
         } else {
-            return false;
+            return 0;
         }
     }
 
-    return true;
+    return 1;
 }

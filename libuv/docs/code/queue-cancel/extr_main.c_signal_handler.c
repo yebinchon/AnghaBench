@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_signal_t ;
-typedef  int /*<<< orphan*/  uv_req_t ;
 
-/* Variables and functions */
- int FIB_UNTIL ; 
- int /*<<< orphan*/ * fib_reqs ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  uv_cancel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_signal_stop (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uv_signal_t ;
+typedef int uv_req_t ;
+
+
+ int FIB_UNTIL ;
+ int * fib_reqs ;
+ int printf (char*) ;
+ int uv_cancel (int *) ;
+ int uv_signal_stop (int *) ;
 
 void signal_handler(uv_signal_t *req, int signum)
 {

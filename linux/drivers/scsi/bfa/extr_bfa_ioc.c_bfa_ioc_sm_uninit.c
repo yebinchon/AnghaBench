@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bfa_ioc_s {int dummy; } ;
-typedef  enum ioc_event { ____Placeholder_ioc_event } ioc_event ;
+typedef enum ioc_event { ____Placeholder_ioc_event } ioc_event ;
 
-/* Variables and functions */
-#define  IOC_E_RESET 128 
- int /*<<< orphan*/  bfa_fsm_set_state (struct bfa_ioc_s*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bfa_ioc_sm_reset ; 
- int /*<<< orphan*/  bfa_sm_fault (struct bfa_ioc_s*,int) ; 
- int /*<<< orphan*/  bfa_trc (struct bfa_ioc_s*,int) ; 
+
+
+ int bfa_fsm_set_state (struct bfa_ioc_s*,int ) ;
+ int bfa_ioc_sm_reset ;
+ int bfa_sm_fault (struct bfa_ioc_s*,int) ;
+ int bfa_trc (struct bfa_ioc_s*,int) ;
 
 __attribute__((used)) static void
 bfa_ioc_sm_uninit(struct bfa_ioc_s *ioc, enum ioc_event event)
 {
-	bfa_trc(ioc, event);
+ bfa_trc(ioc, event);
 
-	switch (event) {
-	case IOC_E_RESET:
-		bfa_fsm_set_state(ioc, bfa_ioc_sm_reset);
-		break;
+ switch (event) {
+ case 128:
+  bfa_fsm_set_state(ioc, bfa_ioc_sm_reset);
+  break;
 
-	default:
-		bfa_sm_fault(ioc, event);
-	}
+ default:
+  bfa_sm_fault(ioc, event);
+ }
 }

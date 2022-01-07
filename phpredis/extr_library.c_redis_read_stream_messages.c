@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
-typedef  int /*<<< orphan*/  RedisSock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCORE_DECODE_NONE ; 
- int /*<<< orphan*/  UNSERIALIZE_VALS ; 
- int /*<<< orphan*/  add_assoc_zval_ex (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  array_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  array_zip_values_and_scores (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  efree (char*) ; 
- scalar_t__ read_mbulk_header (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  redis_mbulk_reply_loop (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- char* redis_sock_read (int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int zval ;
+typedef int RedisSock ;
+
+
+ int SCORE_DECODE_NONE ;
+ int UNSERIALIZE_VALS ;
+ int add_assoc_zval_ex (int *,char*,int,int *) ;
+ int array_init (int *) ;
+ int array_zip_values_and_scores (int *,int *,int ) ;
+ int efree (char*) ;
+ scalar_t__ read_mbulk_header (int *,int*) ;
+ int redis_mbulk_reply_loop (int *,int *,int,int ) ;
+ char* redis_sock_read (int *,int*) ;
 
 int
 redis_read_stream_messages(RedisSock *redis_sock, int count, zval *z_ret
@@ -30,15 +30,15 @@ redis_read_stream_messages(RedisSock *redis_sock, int count, zval *z_ret
 {
     zval z_message;
     int i, mhdr, fields;
-    char *id = NULL;
+    char *id = ((void*)0);
     int idlen;
 
-    /* Iterate over each message */
+
     for (i = 0; i < count; i++) {
-        /* Consume inner multi-bulk header, message ID itself and finaly
-         * the multi-bulk header for field and values */
+
+
         if ((read_mbulk_header(redis_sock, &mhdr) < 0 || mhdr != 2) ||
-            ((id = redis_sock_read(redis_sock, &idlen)) == NULL) ||
+            ((id = redis_sock_read(redis_sock, &idlen)) == ((void*)0)) ||
             (read_mbulk_header(redis_sock, &fields) < 0 || fields % 2 != 0))
         {
             if (id) efree(id);

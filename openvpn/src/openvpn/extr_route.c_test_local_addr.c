@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  addr; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int addr; } ;
 struct route_gateway_info {TYPE_1__ gateway; } ;
-typedef  int /*<<< orphan*/  in_addr_t ;
+typedef int in_addr_t ;
 
-/* Variables and functions */
- int TLA_LOCAL ; 
- int TLA_NONLOCAL ; 
- int TLA_NOT_IMPLEMENTED ; 
- scalar_t__ local_route (int /*<<< orphan*/  const,int,int /*<<< orphan*/ ,struct route_gateway_info const*) ; 
+
+ int TLA_LOCAL ;
+ int TLA_NONLOCAL ;
+ int TLA_NOT_IMPLEMENTED ;
+ scalar_t__ local_route (int const,int,int ,struct route_gateway_info const*) ;
 
 int
-test_local_addr(const in_addr_t addr, const struct route_gateway_info *rgi)  /* PLATFORM-SPECIFIC */
+test_local_addr(const in_addr_t addr, const struct route_gateway_info *rgi)
 {
     if (rgi)
     {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pos; } ;
-typedef  int /*<<< orphan*/  SrcPos ;
-typedef  int /*<<< orphan*/  Decl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DECL_STRUCT ; 
- int /*<<< orphan*/  DECL_UNION ; 
- int /*<<< orphan*/  TOKEN_POUND ; 
- int /*<<< orphan*/  const_keyword ; 
- int /*<<< orphan*/  enum_keyword ; 
- int /*<<< orphan*/  func_keyword ; 
- int /*<<< orphan*/  import_keyword ; 
- scalar_t__ match_keyword (int /*<<< orphan*/ ) ; 
- scalar_t__ match_token (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_aggregate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_const (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_enum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_func (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_import (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_note (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_typedef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * parse_decl_var (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  struct_keyword ; 
- TYPE_1__ token ; 
- int /*<<< orphan*/  typedef_keyword ; 
- int /*<<< orphan*/  union_keyword ; 
- int /*<<< orphan*/  var_keyword ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pos; } ;
+typedef int SrcPos ;
+typedef int Decl ;
+
+
+ int DECL_STRUCT ;
+ int DECL_UNION ;
+ int TOKEN_POUND ;
+ int const_keyword ;
+ int enum_keyword ;
+ int func_keyword ;
+ int import_keyword ;
+ scalar_t__ match_keyword (int ) ;
+ scalar_t__ match_token (int ) ;
+ int * parse_decl_aggregate (int ,int ) ;
+ int * parse_decl_const (int ) ;
+ int * parse_decl_enum (int ) ;
+ int * parse_decl_func (int ) ;
+ int * parse_decl_import (int ) ;
+ int * parse_decl_note (int ) ;
+ int * parse_decl_typedef (int ) ;
+ int * parse_decl_var (int ) ;
+ int struct_keyword ;
+ TYPE_1__ token ;
+ int typedef_keyword ;
+ int union_keyword ;
+ int var_keyword ;
 
 Decl *parse_decl_opt(void) {
     SrcPos pos = token.pos;
@@ -60,6 +60,6 @@ Decl *parse_decl_opt(void) {
     } else if (match_token(TOKEN_POUND)) {
         return parse_decl_note(pos);
     } else {
-        return NULL;
+        return ((void*)0);
     }
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FD ; 
- int /*<<< orphan*/  cour_disconnect () ; 
- int /*<<< orphan*/  cour_write (int /*<<< orphan*/ ,char*,int) ; 
+ int FD ;
+ int cour_disconnect () ;
+ int cour_write (int ,char*,int) ;
 
 void
 cour_abort(void)
 {
-	cour_write(FD, "\r", 1);	/* send anything to abort the call */
-	cour_disconnect();
+ cour_write(FD, "\r", 1);
+ cour_disconnect();
 }

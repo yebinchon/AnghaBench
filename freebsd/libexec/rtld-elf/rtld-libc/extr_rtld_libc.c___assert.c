@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  STDERR_FILENO ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  rtld_fdprintf (int /*<<< orphan*/ ,char*,char const*,char const*,...) ; 
+ int STDERR_FILENO ;
+ int abort () ;
+ int rtld_fdprintf (int ,char*,char const*,char const*,...) ;
 
 void
 __assert(const char *func, const char *file, int line, const char *failedexpr)
 {
 
-	if (func == NULL)
-		(void)rtld_fdprintf(STDERR_FILENO,
-		    "Assertion failed: (%s), file %s, line %d.\n", failedexpr,
-		    file, line);
-	else
-		(void)rtld_fdprintf(STDERR_FILENO,
-		    "Assertion failed: (%s), function %s, file %s, line %d.\n",
-		    failedexpr, func, file, line);
-	abort();
-	/* NOTREACHED */
+ if (func == ((void*)0))
+  (void)rtld_fdprintf(STDERR_FILENO,
+      "Assertion failed: (%s), file %s, line %d.\n", failedexpr,
+      file, line);
+ else
+  (void)rtld_fdprintf(STDERR_FILENO,
+      "Assertion failed: (%s), function %s, file %s, line %d.\n",
+      failedexpr, func, file, line);
+ abort();
+
 }

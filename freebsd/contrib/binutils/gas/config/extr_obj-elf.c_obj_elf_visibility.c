@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  symbolS ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int symbolS ;
 struct TYPE_5__ {int st_other; } ;
 struct TYPE_6__ {TYPE_1__ internal_elf_sym; } ;
-typedef  TYPE_2__ elf_symbol_type ;
-typedef  int /*<<< orphan*/  asymbol ;
+typedef TYPE_2__ elf_symbol_type ;
+typedef int asymbol ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SKIP_WHITESPACE () ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- int /*<<< orphan*/  bfd_asymbol_bfd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  demand_empty_rest_of_line () ; 
- TYPE_2__* elf_symbol_from (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int get_symbol_end () ; 
- char* input_line_pointer ; 
- int /*<<< orphan*/ * symbol_find_or_make (char*) ; 
- int /*<<< orphan*/ * symbol_get_bfdsym (int /*<<< orphan*/ *) ; 
+
+ int SKIP_WHITESPACE () ;
+ int assert (TYPE_2__*) ;
+ int bfd_asymbol_bfd (int *) ;
+ int demand_empty_rest_of_line () ;
+ TYPE_2__* elf_symbol_from (int ,int *) ;
+ int get_symbol_end () ;
+ char* input_line_pointer ;
+ int * symbol_find_or_make (char*) ;
+ int * symbol_get_bfdsym (int *) ;
 
 __attribute__((used)) static void
 obj_elf_visibility (int visibility)
@@ -56,14 +56,14 @@ obj_elf_visibility (int visibility)
       elfsym->internal_elf_sym.st_other |= visibility;
 
       if (c == ',')
-	{
-	  input_line_pointer ++;
+ {
+   input_line_pointer ++;
 
-	  SKIP_WHITESPACE ();
+   SKIP_WHITESPACE ();
 
-	  if (*input_line_pointer == '\n')
-	    c = '\n';
-	}
+   if (*input_line_pointer == '\n')
+     c = '\n';
+ }
     }
   while (c == ',');
 

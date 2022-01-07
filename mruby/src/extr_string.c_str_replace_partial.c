@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RString {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_RUNTIME_ERROR ; 
- scalar_t__ MRB_INT_MAX ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- char* RSTRING_PTR (int /*<<< orphan*/ ) ; 
- scalar_t__ RSTR_LEN (struct RString*) ; 
- char* RSTR_PTR (struct RString*) ; 
- int /*<<< orphan*/  RSTR_SET_LEN (struct RString*,scalar_t__) ; 
- int /*<<< orphan*/  memmove (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  mrb_fixnum_value (scalar_t__) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_str_modify (int /*<<< orphan*/ *,struct RString*) ; 
- struct RString* mrb_str_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  resize_capa (int /*<<< orphan*/ *,struct RString*,scalar_t__) ; 
- int /*<<< orphan*/  str_out_of_index (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int E_RUNTIME_ERROR ;
+ scalar_t__ MRB_INT_MAX ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ char* RSTRING_PTR (int ) ;
+ scalar_t__ RSTR_LEN (struct RString*) ;
+ char* RSTR_PTR (struct RString*) ;
+ int RSTR_SET_LEN (struct RString*,scalar_t__) ;
+ int memmove (char*,char*,scalar_t__) ;
+ int mrb_fixnum_value (scalar_t__) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_str_modify (int *,struct RString*) ;
+ struct RString* mrb_str_ptr (int ) ;
+ int resize_capa (int *,struct RString*,scalar_t__) ;
+ int str_out_of_index (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 str_replace_partial(mrb_state *mrb, mrb_value src, mrb_int pos, mrb_int end, mrb_value rep)
@@ -50,7 +50,7 @@ str_replace_partial(mrb_state *mrb, mrb_value src, mrb_int pos, mrb_int end, mrb
   replen = (mrb_nil_p(rep) ? 0 : RSTRING_LEN(rep));
   newlen = replen + len - (end - pos);
 
-  if (newlen >= MRB_INT_MAX || newlen < replen /* overflowed */) {
+  if (newlen >= MRB_INT_MAX || newlen < replen ) {
     mrb_raise(mrb, E_RUNTIME_ERROR, "string size too big");
   }
 

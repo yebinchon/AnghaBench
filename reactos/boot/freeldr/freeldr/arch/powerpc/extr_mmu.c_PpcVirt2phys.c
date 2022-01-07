@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ BatHit (int,int,int) ; 
- int BatTranslate (int,int,int) ; 
- int /*<<< orphan*/  GetBat (int,int,int*,int*) ; 
- int GetMSR () ; 
- int GetPhys (int) ; 
- int GetSDR1 () ; 
- int GetSR (int) ; 
+ scalar_t__ BatHit (int,int,int) ;
+ int BatTranslate (int,int,int) ;
+ int GetBat (int,int,int*,int*) ;
+ int GetMSR () ;
+ int GetPhys (int) ;
+ int GetSDR1 () ;
+ int GetSR (int) ;
 
 int PpcVirt2phys( int virt, int inst ) {
     int msr = GetMSR();
     int txmask = inst ? 0x20 : 0x10;
     int i, bath, batl, sr, sdr1, physbase, valo;
     int hash, hashmask, ptehi, ptelo, ptegaddr;
-    //int vahi, npteg;
+
     int vsid, pteh, ptevsid, pteapi;
 
     if( msr & txmask ) {
     sr = GetSR( virt >> 28 );
     vsid = sr & 0xfffffff;
-    //vahi = vsid >> 4;
+
     valo = (vsid << 28) | (virt & 0xfffffff);
     if( sr & 0x80000000 ) {
         return valo;
@@ -49,7 +41,7 @@ int PpcVirt2phys( int virt, int inst ) {
     physbase = sdr1 & ~0xffff;
     hashmask = ((sdr1 & 0x1ff) << 10) | 0x3ff;
     hash = (vsid & 0x7ffff) ^ ((valo >> 12) & 0xffff);
-    //npteg = hashmask + 1;
+
 
     for( pteh = 0; pteh < 0x80; pteh += 64, hash ^= 0x7ffff ) {
         ptegaddr = ((hashmask & hash) * 64) + physbase;

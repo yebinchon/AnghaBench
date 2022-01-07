@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fwdma_alloc {void* v_addr; int /*<<< orphan*/  bus_addr; int /*<<< orphan*/  dma_map; int /*<<< orphan*/  dma_tag; } ;
-struct firewire_comm {int /*<<< orphan*/  dmat; } ;
-typedef  int /*<<< orphan*/  bus_size_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_DMA_ALLOCNOW ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR ; 
- int /*<<< orphan*/  BUS_SPACE_MAXADDR_32BIT ; 
- int /*<<< orphan*/  BUS_SPACE_MAXSIZE_32BIT ; 
- int /*<<< orphan*/  FW_GMTX (struct firewire_comm*) ; 
- int bus_dma_tag_create (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_dmamap_load (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int bus_dmamem_alloc (int /*<<< orphan*/ ,void**,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  busdma_lock_mutex ; 
- int /*<<< orphan*/  fwdma_map_cb ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+struct fwdma_alloc {void* v_addr; int bus_addr; int dma_map; int dma_tag; } ;
+struct firewire_comm {int dmat; } ;
+typedef int bus_size_t ;
+
+
+ int BUS_DMA_ALLOCNOW ;
+ int BUS_SPACE_MAXADDR ;
+ int BUS_SPACE_MAXADDR_32BIT ;
+ int BUS_SPACE_MAXSIZE_32BIT ;
+ int FW_GMTX (struct firewire_comm*) ;
+ int bus_dma_tag_create (int ,int,int ,int ,int ,int *,int *,int ,int,int ,int ,int ,int ,int *) ;
+ int bus_dmamap_load (int ,int ,void*,int ,int ,int *,int ) ;
+ int bus_dmamem_alloc (int ,void**,int,int *) ;
+ int busdma_lock_mutex ;
+ int fwdma_map_cb ;
+ int printf (char*) ;
 
 void *
 fwdma_malloc(struct firewire_comm *fc, int alignment, bus_size_t size,
-	struct fwdma_alloc *dma, int flag)
+ struct fwdma_alloc *dma, int flag)
 {
-	int err;
+ int err;
 
-	dma->v_addr = NULL;
-	err = bus_dma_tag_create(
-		/*parent*/ fc->dmat,
-		/*alignment*/ alignment,
-		/*boundary*/ 0,
-		/*lowaddr*/ BUS_SPACE_MAXADDR_32BIT,
-		/*highaddr*/ BUS_SPACE_MAXADDR,
-		/*filter*/NULL, /*filterarg*/NULL,
-		/*maxsize*/ size,
-		/*nsegments*/ 1,
-		/*maxsegsz*/ BUS_SPACE_MAXSIZE_32BIT,
-		/*flags*/ BUS_DMA_ALLOCNOW,
-		/*lockfunc*/busdma_lock_mutex,
-		/*lockarg*/FW_GMTX(fc),
-		&dma->dma_tag);
-	if (err) {
-		printf("fwdma_malloc: failed(1)\n");
-		return (NULL);
-	}
+ dma->v_addr = ((void*)0);
+ err = bus_dma_tag_create(
+             fc->dmat,
+                alignment,
+               0,
+              BUS_SPACE_MAXADDR_32BIT,
+               BUS_SPACE_MAXADDR,
+            ((void*)0), ((void*)0),
+              size,
+                1,
+               BUS_SPACE_MAXSIZE_32BIT,
+            BUS_DMA_ALLOCNOW,
+              busdma_lock_mutex,
+             FW_GMTX(fc),
+  &dma->dma_tag);
+ if (err) {
+  printf("fwdma_malloc: failed(1)\n");
+  return (((void*)0));
+ }
 
-	err = bus_dmamem_alloc(dma->dma_tag, &dma->v_addr,
-		flag, &dma->dma_map);
-	if (err) {
-		printf("fwdma_malloc: failed(2)\n");
-		/* XXX destroy tag */
-		return (NULL);
-	}
+ err = bus_dmamem_alloc(dma->dma_tag, &dma->v_addr,
+  flag, &dma->dma_map);
+ if (err) {
+  printf("fwdma_malloc: failed(2)\n");
 
-	bus_dmamap_load(dma->dma_tag, dma->dma_map, dma->v_addr,
-		size, fwdma_map_cb, &dma->bus_addr, /*flags*/0);
+  return (((void*)0));
+ }
 
-	return (dma->v_addr);
+ bus_dmamap_load(dma->dma_tag, dma->dma_map, dma->v_addr,
+  size, fwdma_map_cb, &dma->bus_addr, 0);
+
+ return (dma->v_addr);
 }

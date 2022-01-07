@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  edge_iterator ;
-typedef  int /*<<< orphan*/ * edge ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ei_edge (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ei_end_p (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int edge_iterator ;
+typedef int * edge ;
+
+
+ int * ei_edge (int ) ;
+ int ei_end_p (int ) ;
 
 __attribute__((used)) static inline bool
 ei_cond (edge_iterator ei, edge *p)
@@ -27,7 +27,7 @@ ei_cond (edge_iterator ei, edge *p)
     }
   else
     {
-      *p = NULL;
+      *p = ((void*)0);
       return 0;
     }
 }

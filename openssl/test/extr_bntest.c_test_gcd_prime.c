@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_gcd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_generate_prime_ex (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_is_one (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int NUM0 ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ctx ; 
+
+
+
+typedef int BIGNUM ;
+
+
+ int BN_free (int *) ;
+ int BN_gcd (int *,int *,int *,int ) ;
+ int BN_generate_prime_ex (int *,int,int ,int *,int *,int *) ;
+ int BN_is_one (int *) ;
+ int * BN_new () ;
+ int NUM0 ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int ctx ;
 
 __attribute__((used)) static int test_gcd_prime(void)
 {
-    BIGNUM *a = NULL, *b = NULL, *gcd = NULL;
+    BIGNUM *a = ((void*)0), *b = ((void*)0), *gcd = ((void*)0);
     int i, st = 0;
 
     if (!TEST_ptr(a = BN_new())
@@ -33,11 +33,11 @@ __attribute__((used)) static int test_gcd_prime(void)
             || !TEST_ptr(gcd = BN_new()))
         goto err;
 
-    if (!TEST_true(BN_generate_prime_ex(a, 1024, 0, NULL, NULL, NULL)))
+    if (!TEST_true(BN_generate_prime_ex(a, 1024, 0, ((void*)0), ((void*)0), ((void*)0))))
             goto err;
     for (i = 0; i < NUM0; i++) {
         if (!TEST_true(BN_generate_prime_ex(b, 1024, 0,
-                                            NULL, NULL, NULL))
+                                            ((void*)0), ((void*)0), ((void*)0)))
                 || !TEST_true(BN_gcd(gcd, a, b, ctx))
                 || !TEST_true(BN_is_one(gcd)))
             goto err;

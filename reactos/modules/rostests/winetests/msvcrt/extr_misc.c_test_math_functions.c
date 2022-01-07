@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EDOM ; 
- int /*<<< orphan*/  INFINITY ; 
- int /*<<< orphan*/  NAN ; 
- int almost_equal (double,double) ; 
- int errno ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- double p_atan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  p_exp (int /*<<< orphan*/ ) ; 
- double p_tanh (int /*<<< orphan*/ ) ; 
+ int EDOM ;
+ int INFINITY ;
+ int NAN ;
+ int almost_equal (double,double) ;
+ int errno ;
+ int ok (int,char*,int) ;
+ double p_atan (int ) ;
+ int p_exp (int ) ;
+ double p_tanh (int ) ;
 
 __attribute__((used)) static void test_math_functions(void)
 {

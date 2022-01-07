@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct grub_minix_data {int dummy; } ;
-struct grub_file {int /*<<< orphan*/  size; struct grub_minix_data* data; TYPE_1__* device; } ;
-typedef  scalar_t__ grub_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  disk; } ;
+struct grub_file {int size; struct grub_minix_data* data; TYPE_1__* device; } ;
+typedef scalar_t__ grub_err_t ;
+struct TYPE_2__ {int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_BAD_FILENAME ; 
- scalar_t__ GRUB_ERR_NONE ; 
- int /*<<< orphan*/  GRUB_MINIX_INODE_SIZE (struct grub_minix_data*) ; 
- int /*<<< orphan*/  GRUB_MINIX_ROOT_INODE ; 
- scalar_t__ grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  grub_free (struct grub_minix_data*) ; 
- int /*<<< orphan*/  grub_minix_find_file (struct grub_minix_data*,char const*) ; 
- struct grub_minix_data* grub_minix_mount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_minix_read_inode (struct grub_minix_data*,int /*<<< orphan*/ ) ; 
+
+ int GRUB_ERR_BAD_FILENAME ;
+ scalar_t__ GRUB_ERR_NONE ;
+ int GRUB_MINIX_INODE_SIZE (struct grub_minix_data*) ;
+ int GRUB_MINIX_ROOT_INODE ;
+ scalar_t__ grub_errno ;
+ int grub_error (int ,char*) ;
+ int grub_free (struct grub_minix_data*) ;
+ int grub_minix_find_file (struct grub_minix_data*,char const*) ;
+ struct grub_minix_data* grub_minix_mount (int ) ;
+ int grub_minix_read_inode (struct grub_minix_data*,int ) ;
 
 __attribute__((used)) static grub_err_t
 grub_minix_open (struct grub_file *file, const char *name)
@@ -36,7 +36,7 @@ grub_minix_open (struct grub_file *file, const char *name)
   if (!data)
     return grub_errno;
 
-  /* Open the inode op the root directory.  */
+
   grub_minix_read_inode (data, GRUB_MINIX_ROOT_INODE);
   if (grub_errno)
     {
@@ -50,8 +50,8 @@ grub_minix_open (struct grub_file *file, const char *name)
       return grub_errno;
     }
 
-  /* Traverse the directory tree to the node that should be
-     opened.  */
+
+
   grub_minix_find_file (data, name);
   if (grub_errno)
     {

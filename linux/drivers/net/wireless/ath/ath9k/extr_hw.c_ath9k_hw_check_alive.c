@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct ath_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_CFG ; 
- int /*<<< orphan*/  AR_OBS_BUS_1 ; 
- scalar_t__ AR_SREV_9285_12_OR_LATER (struct ath_hw*) ; 
- scalar_t__ AR_SREV_9300 (struct ath_hw*) ; 
- int REG_READ (struct ath_hw*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ath9k_hw_detect_mac_hang (struct ath_hw*) ; 
- int /*<<< orphan*/  udelay (int) ; 
+
+ int AR_CFG ;
+ int AR_OBS_BUS_1 ;
+ scalar_t__ AR_SREV_9285_12_OR_LATER (struct ath_hw*) ;
+ scalar_t__ AR_SREV_9300 (struct ath_hw*) ;
+ int REG_READ (struct ath_hw*,int ) ;
+ int ath9k_hw_detect_mac_hang (struct ath_hw*) ;
+ int udelay (int) ;
 
 bool ath9k_hw_check_alive(struct ath_hw *ah)
 {
-	int count = 50;
-	u32 reg, last_val;
+ int count = 50;
+ u32 reg, last_val;
 
-	/* Check if chip failed to wake up */
-	if (REG_READ(ah, AR_CFG) == 0xdeadbeef)
-		return false;
 
-	if (AR_SREV_9300(ah))
-		return !ath9k_hw_detect_mac_hang(ah);
+ if (REG_READ(ah, AR_CFG) == 0xdeadbeef)
+  return 0;
 
-	if (AR_SREV_9285_12_OR_LATER(ah))
-		return true;
+ if (AR_SREV_9300(ah))
+  return !ath9k_hw_detect_mac_hang(ah);
 
-	last_val = REG_READ(ah, AR_OBS_BUS_1);
-	do {
-		reg = REG_READ(ah, AR_OBS_BUS_1);
-		if (reg != last_val)
-			return true;
+ if (AR_SREV_9285_12_OR_LATER(ah))
+  return 1;
 
-		udelay(1);
-		last_val = reg;
-		if ((reg & 0x7E7FFFEF) == 0x00702400)
-			continue;
+ last_val = REG_READ(ah, AR_OBS_BUS_1);
+ do {
+  reg = REG_READ(ah, AR_OBS_BUS_1);
+  if (reg != last_val)
+   return 1;
 
-		switch (reg & 0x7E000B00) {
-		case 0x1E000000:
-		case 0x52000B00:
-		case 0x18000B00:
-			continue;
-		default:
-			return true;
-		}
-	} while (count-- > 0);
+  udelay(1);
+  last_val = reg;
+  if ((reg & 0x7E7FFFEF) == 0x00702400)
+   continue;
 
-	return false;
+  switch (reg & 0x7E000B00) {
+  case 0x1E000000:
+  case 0x52000B00:
+  case 0x18000B00:
+   continue;
+  default:
+   return 1;
+  }
+ } while (count-- > 0);
+
+ return 0;
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/ * jstring ;
-typedef  scalar_t__ jsize ;
-typedef  int /*<<< orphan*/  jclass ;
-typedef  int /*<<< orphan*/  jbyteArray ;
-typedef  int /*<<< orphan*/  jbyte ;
-struct TYPE_7__ {scalar_t__ (* GetArrayLength ) (TYPE_1__**,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* ReleaseByteArrayElements ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * (* NewStringUTF ) (TYPE_1__**,char*) ;int /*<<< orphan*/ * (* GetByteArrayElements ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- int AV_BASE64_SIZE (scalar_t__) ; 
- int /*<<< orphan*/  JNI_ABORT ; 
- int /*<<< orphan*/  av_base64_encode (char*,int,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- scalar_t__ stub1 (TYPE_1__**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * stub2 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stub3 (TYPE_1__**,char*) ; 
- int /*<<< orphan*/  stub4 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int * jstring ;
+typedef scalar_t__ jsize ;
+typedef int jclass ;
+typedef int jbyteArray ;
+typedef int jbyte ;
+struct TYPE_7__ {scalar_t__ (* GetArrayLength ) (TYPE_1__**,int ) ;int (* ReleaseByteArrayElements ) (TYPE_1__**,int ,int *,int ) ;int * (* NewStringUTF ) (TYPE_1__**,char*) ;int * (* GetByteArrayElements ) (TYPE_1__**,int ,int *) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ int AV_BASE64_SIZE (scalar_t__) ;
+ int JNI_ABORT ;
+ int av_base64_encode (char*,int,int const*,scalar_t__) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ scalar_t__ stub1 (TYPE_1__**,int ) ;
+ int * stub2 (TYPE_1__**,int ,int *) ;
+ int * stub3 (TYPE_1__**,char*) ;
+ int stub4 (TYPE_1__**,int ,int *,int ) ;
 
 __attribute__((used)) static jstring
 FFmpegApi_av_base64_encode(JNIEnv *env, jclass clazz, jbyteArray in)
 {
-    jstring ret_string = NULL;
-    char*   out_buffer = 0;
-    int     out_size   = 0;
-    jbyte*  in_buffer  = 0;
-    jsize   in_size    = (*env)->GetArrayLength(env, in);
+    jstring ret_string = ((void*)0);
+    char* out_buffer = 0;
+    int out_size = 0;
+    jbyte* in_buffer = 0;
+    jsize in_size = (*env)->GetArrayLength(env, in);
     if (in_size <= 0)
         goto fail;
 
-    in_buffer = (*env)->GetByteArrayElements(env, in, NULL);
+    in_buffer = (*env)->GetByteArrayElements(env, in, ((void*)0));
     if (!in_buffer)
         goto fail;
 
@@ -59,11 +59,11 @@ FFmpegApi_av_base64_encode(JNIEnv *env, jclass clazz, jbyteArray in)
 fail:
     if (in_buffer) {
         (*env)->ReleaseByteArrayElements(env, in, in_buffer, JNI_ABORT);
-        in_buffer = NULL;
+        in_buffer = ((void*)0);
     }
     if (out_buffer) {
         free(out_buffer);
-        out_buffer = NULL;
+        out_buffer = ((void*)0);
     }
     return ret_string;
 }

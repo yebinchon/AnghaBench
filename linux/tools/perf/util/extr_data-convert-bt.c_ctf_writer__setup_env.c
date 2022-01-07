@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* hostname; char* os_release; char* version; char* arch; } ;
 struct perf_header {TYPE_1__ env; } ;
 struct perf_session {struct perf_header header; } ;
 struct ctf_writer {struct bt_ctf_writer* writer; } ;
 struct bt_ctf_writer {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD (char*,char*) ; 
+
+ int ADD (char*,char*) ;
 
 __attribute__((used)) static int ctf_writer__setup_env(struct ctf_writer *cw,
-				 struct perf_session *session)
+     struct perf_session *session)
 {
-	struct perf_header *header = &session->header;
-	struct bt_ctf_writer *writer = cw->writer;
+ struct perf_header *header = &session->header;
+ struct bt_ctf_writer *writer = cw->writer;
 
-#define ADD(__n, __v)							\
-do {									\
-	if (bt_ctf_writer_add_environment_field(writer, __n, __v))	\
-		return -1;						\
-} while (0)
 
-	ADD("host",    header->env.hostname);
-	ADD("sysname", "Linux");
-	ADD("release", header->env.os_release);
-	ADD("version", header->env.version);
-	ADD("machine", header->env.arch);
-	ADD("domain", "kernel");
-	ADD("tracer_name", "perf");
 
-#undef ADD
-	return 0;
+
+
+
+
+ do { if (bt_ctf_writer_add_environment_field(writer, "host", header->env.hostname)) return -1; } while (0);
+ do { if (bt_ctf_writer_add_environment_field(writer, "sysname", "Linux")) return -1; } while (0);
+ do { if (bt_ctf_writer_add_environment_field(writer, "release", header->env.os_release)) return -1; } while (0);
+ do { if (bt_ctf_writer_add_environment_field(writer, "version", header->env.version)) return -1; } while (0);
+ do { if (bt_ctf_writer_add_environment_field(writer, "machine", header->env.arch)) return -1; } while (0);
+ do { if (bt_ctf_writer_add_environment_field(writer, "domain", "kernel")) return -1; } while (0);
+ do { if (bt_ctf_writer_add_environment_field(writer, "tracer_name", "perf")) return -1; } while (0);
+
+
+ return 0;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sdmmc_card_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * ioctl; int /*<<< orphan*/ * write; int /*<<< orphan*/ * read; int /*<<< orphan*/ * status; int /*<<< orphan*/ * init; } ;
-typedef  TYPE_1__ ff_diskio_impl_t ;
-typedef  size_t BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_diskio_register (size_t,TYPE_1__ const*) ; 
- int /*<<< orphan*/  ff_sdmmc_initialize ; 
- int /*<<< orphan*/  ff_sdmmc_ioctl ; 
- int /*<<< orphan*/  ff_sdmmc_read ; 
- int /*<<< orphan*/  ff_sdmmc_status ; 
- int /*<<< orphan*/  ff_sdmmc_write ; 
- int /*<<< orphan*/ ** s_cards ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sdmmc_card_t ;
+struct TYPE_3__ {int * ioctl; int * write; int * read; int * status; int * init; } ;
+typedef TYPE_1__ ff_diskio_impl_t ;
+typedef size_t BYTE ;
+
+
+ int ff_diskio_register (size_t,TYPE_1__ const*) ;
+ int ff_sdmmc_initialize ;
+ int ff_sdmmc_ioctl ;
+ int ff_sdmmc_read ;
+ int ff_sdmmc_status ;
+ int ff_sdmmc_write ;
+ int ** s_cards ;
 
 void ff_diskio_register_sdmmc(BYTE pdrv, sdmmc_card_t* card)
 {

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_9__ ;
-typedef  struct TYPE_12__   TYPE_8__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  item_id; } ;
-typedef  TYPE_1__ item_t ;
-struct TYPE_13__ {int weight; int /*<<< orphan*/  p; } ;
+
+
+typedef struct TYPE_13__ TYPE_9__ ;
+typedef struct TYPE_12__ TYPE_8__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int item_id; } ;
+typedef TYPE_1__ item_t ;
+struct TYPE_13__ {int weight; int p; } ;
 struct TYPE_12__ {int p; int weight; } ;
 struct TYPE_11__ {double weight; double (* f ) (TYPE_1__*,TYPE_3__*) ;} ;
 
-/* Variables and functions */
- int FLAG_ONLY_TITLE_SEARCH ; 
- TYPE_9__ QRP ; 
- TYPE_8__ QRT ; 
- int QRT_min_creation_time ; 
- TYPE_3__* QRW ; 
- double Q_K_Opt_Tag ; 
- int /*<<< orphan*/  Q_Relevance_Power ; 
- scalar_t__ Q_optional_tags ; 
- int Q_order ; 
- scalar_t__ Q_relevance ; 
- int RELEVANCE_TABLE_SIZE ; 
- double exp (int) ; 
- void* get_rate_item_fast (TYPE_1__*,int) ; 
- double item_count_optional_tags_sum (TYPE_1__*) ; 
- int now ; 
- double optional_tags_mult_coeff ; 
- double pow (int,int /*<<< orphan*/ ) ; 
- int query_rate_weights ; 
- double stub1 (TYPE_1__*,TYPE_3__*) ; 
- double* tbl_relevance ; 
- int /*<<< orphan*/  vkprintf (int,char*,double,...) ; 
+
+ int FLAG_ONLY_TITLE_SEARCH ;
+ TYPE_9__ QRP ;
+ TYPE_8__ QRT ;
+ int QRT_min_creation_time ;
+ TYPE_3__* QRW ;
+ double Q_K_Opt_Tag ;
+ int Q_Relevance_Power ;
+ scalar_t__ Q_optional_tags ;
+ int Q_order ;
+ scalar_t__ Q_relevance ;
+ int RELEVANCE_TABLE_SIZE ;
+ double exp (int) ;
+ void* get_rate_item_fast (TYPE_1__*,int) ;
+ double item_count_optional_tags_sum (TYPE_1__*) ;
+ int now ;
+ double optional_tags_mult_coeff ;
+ double pow (int,int ) ;
+ int query_rate_weights ;
+ double stub1 (TYPE_1__*,TYPE_3__*) ;
+ double* tbl_relevance ;
+ int vkprintf (int,char*,double,...) ;
 
 __attribute__((used)) static int evaluate_relevance_search_rating (item_t *I, int priority) {
   int i;

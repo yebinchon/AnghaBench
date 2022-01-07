@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct protoent {int dummy; } ;
-struct protodata {int /*<<< orphan*/  data; int /*<<< orphan*/  proto; } ;
+struct protodata {int data; int proto; } ;
 
-/* Variables and functions */
- struct protodata* __protodata_init () ; 
- scalar_t__ getprotobyname_r (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,struct protoent**) ; 
+
+ struct protodata* __protodata_init () ;
+ scalar_t__ getprotobyname_r (char const*,int *,int ,int,struct protoent**) ;
 
 struct protoent *
 getprotobyname(const char *name)
 {
-	struct protodata *pd;
-	struct protoent *rval;
+ struct protodata *pd;
+ struct protoent *rval;
 
-	if ((pd = __protodata_init()) == NULL)
-		return (NULL);
-	if (getprotobyname_r(name, &pd->proto, pd->data, sizeof(pd->data),
-	    &rval) != 0)
-		return (NULL);
-	return (rval);
+ if ((pd = __protodata_init()) == ((void*)0))
+  return (((void*)0));
+ if (getprotobyname_r(name, &pd->proto, pd->data, sizeof(pd->data),
+     &rval) != 0)
+  return (((void*)0));
+ return (rval);
 }

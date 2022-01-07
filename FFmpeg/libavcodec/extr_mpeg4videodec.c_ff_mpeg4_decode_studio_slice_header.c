@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-struct TYPE_6__ {int mb_width; int mb_height; scalar_t__ mb_num; int /*<<< orphan*/  qscale; scalar_t__ mb_y; scalar_t__ mb_x; int /*<<< orphan*/  gb; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
+struct TYPE_6__ {int mb_width; int mb_height; scalar_t__ mb_num; int qscale; scalar_t__ mb_y; scalar_t__ mb_x; int gb; } ;
 struct TYPE_7__ {scalar_t__ shape; TYPE_1__ m; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  TYPE_2__ Mpeg4DecContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_1__ MpegEncContext ;
+typedef TYPE_2__ Mpeg4DecContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- scalar_t__ BIN_ONLY_SHAPE ; 
- scalar_t__ SLICE_START_CODE ; 
- int av_log2 (int) ; 
- scalar_t__ get_bits (int /*<<< orphan*/ *,unsigned int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- scalar_t__ get_bits_long (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mpeg_get_qscale (TYPE_1__*) ; 
- int /*<<< orphan*/  reset_studio_dc_predictors (TYPE_1__*) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ scalar_t__ BIN_ONLY_SHAPE ;
+ scalar_t__ SLICE_START_CODE ;
+ int av_log2 (int) ;
+ scalar_t__ get_bits (int *,unsigned int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ scalar_t__ get_bits_long (int *,int) ;
+ int mpeg_get_qscale (TYPE_1__*) ;
+ int reset_studio_dc_predictors (TYPE_1__*) ;
+ int skip_bits (int *,int) ;
+ int skip_bits1 (int *) ;
 
 int ff_mpeg4_decode_studio_slice_header(Mpeg4DecContext *ctx)
 {
@@ -53,12 +53,12 @@ int ff_mpeg4_decode_studio_slice_header(Mpeg4DecContext *ctx)
         if (ctx->shape != BIN_ONLY_SHAPE)
             s->qscale = mpeg_get_qscale(s);
 
-        if (get_bits1(gb)) {  /* slice_extension_flag */
-            skip_bits1(gb);   /* intra_slice */
-            skip_bits1(gb);   /* slice_VOP_id_enable */
-            skip_bits(gb, 6); /* slice_VOP_id */
-            while (get_bits1(gb)) /* extra_bit_slice */
-                skip_bits(gb, 8); /* extra_information_slice */
+        if (get_bits1(gb)) {
+            skip_bits1(gb);
+            skip_bits1(gb);
+            skip_bits(gb, 6);
+            while (get_bits1(gb))
+                skip_bits(gb, 8);
         }
 
         reset_studio_dc_predictors(s);

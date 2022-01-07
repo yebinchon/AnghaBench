@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct osd_state {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OSD_OSDWIN1MD ; 
- int /*<<< orphan*/  OSD_OSDWIN1MD_OASW ; 
- int /*<<< orphan*/  osd_set (struct osd_state*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int OSD_OSDWIN1MD ;
+ int OSD_OSDWIN1MD_OASW ;
+ int osd_set (struct osd_state*,int ,int ) ;
 
 __attribute__((used)) static void _osd_enable_attribute_mode(struct osd_state *sd)
 {
-	/* enable attribute mode for OSD1 */
-	osd_set(sd, OSD_OSDWIN1MD_OASW, OSD_OSDWIN1MD);
+
+ osd_set(sd, OSD_OSDWIN1MD_OASW, OSD_OSDWIN1MD);
 }

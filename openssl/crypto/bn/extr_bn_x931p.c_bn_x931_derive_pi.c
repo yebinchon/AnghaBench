@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_GENCB_call (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  BN_add_word (int /*<<< orphan*/ *,int) ; 
- int BN_check_prime (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_copy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  BN_is_odd (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int BN_GENCB ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_GENCB_call (int *,int,int) ;
+ int BN_add_word (int *,int) ;
+ int BN_check_prime (int *,int *,int *) ;
+ int BN_copy (int *,int const*) ;
+ int BN_is_odd (int *) ;
 
 __attribute__((used)) static int bn_x931_derive_pi(BIGNUM *pi, const BIGNUM *Xpi, BN_CTX *ctx,
                              BN_GENCB *cb)
@@ -32,7 +32,7 @@ __attribute__((used)) static int bn_x931_derive_pi(BIGNUM *pi, const BIGNUM *Xpi
     for (;;) {
         i++;
         BN_GENCB_call(cb, 0, i);
-        /* NB 27 MR is specified in X9.31 */
+
         is_prime = BN_check_prime(pi, ctx, cb);
         if (is_prime < 0)
             return 0;

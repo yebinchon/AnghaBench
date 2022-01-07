@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_LINEAR ; 
- int /*<<< orphan*/  GL_LUMINANCE ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glTexImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  glTexParameteri (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int rand () ; 
+
+
+
+typedef int GLuint ;
+
+
+ int GL_LINEAR ;
+ int GL_LUMINANCE ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_UNSIGNED_BYTE ;
+ int glBindTexture (int ,int ) ;
+ int glGenTextures (int,int *) ;
+ int glTexImage2D (int ,int ,int ,int,int,int ,int ,int ,char*) ;
+ int glTexParameteri (int ,int ,int ) ;
+ int rand () ;
 
 __attribute__((used)) static GLuint create_texture(void)
 {
@@ -34,9 +34,9 @@ __attribute__((used)) static GLuint create_texture(void)
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
 
-    for (y = 0;  y < 256;  y++)
+    for (y = 0; y < 256; y++)
     {
-        for (x = 0;  x < 256;  x++)
+        for (x = 0; x < 256; x++)
             pixels[y * 256 + x] = rand() % 256;
     }
 

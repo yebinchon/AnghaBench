@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct inotify_watch {int /*<<< orphan*/  wd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct inotify_watch {int wd; } ;
 struct inotify_handle {TYPE_1__* in_ops; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* handle_event ) (struct inotify_watch*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+struct TYPE_2__ {int (* handle_event ) (struct inotify_watch*,int ,int ,int ,int *,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IN_IGNORED ; 
- int /*<<< orphan*/  remove_watch_no_event (struct inotify_watch*,struct inotify_handle*) ; 
- int /*<<< orphan*/  stub1 (struct inotify_watch*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int IN_IGNORED ;
+ int remove_watch_no_event (struct inotify_watch*,struct inotify_handle*) ;
+ int stub1 (struct inotify_watch*,int ,int ,int ,int *,int *) ;
 
 void inotify_remove_watch_locked(struct inotify_handle *ih,
-				 struct inotify_watch *watch)
+     struct inotify_watch *watch)
 {
-	remove_watch_no_event(watch, ih);
-	ih->in_ops->handle_event(watch, watch->wd, IN_IGNORED, 0, NULL, NULL);
+ remove_watch_no_event(watch, ih);
+ ih->in_ops->handle_event(watch, watch->wd, IN_IGNORED, 0, ((void*)0), ((void*)0));
 }

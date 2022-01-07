@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* srcptr; } ;
 struct iplist {char* src; TYPE_1__ cur; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  iplist_setrange (struct iplist*,char*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int,char*) ; 
- char* strchr (char*,char) ; 
- int strlen (char*) ; 
+
+ int LogWARN ;
+ int iplist_setrange (struct iplist*,char*) ;
+ int log_Printf (int ,char*,int,char*) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 iplist_nextrange(struct iplist *list)
@@ -27,13 +27,13 @@ iplist_nextrange(struct iplist *list)
   char *ptr, *to, *end;
 
   ptr = list->cur.srcptr;
-  if (ptr != NULL && (ptr = strchr(ptr, ',')) != NULL)
+  if (ptr != ((void*)0) && (ptr = strchr(ptr, ',')) != ((void*)0))
     ptr++;
   else
     ptr = list->src;
 
   while (*ptr != '\0' && !iplist_setrange(list, ptr)) {
-    if ((end = strchr(ptr, ',')) == NULL)
+    if ((end = strchr(ptr, ',')) == ((void*)0))
       end = ptr + strlen(ptr);
     if (end == ptr)
       return 0;

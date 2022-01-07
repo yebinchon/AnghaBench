@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tty_port {unsigned char* xmit_buf; int /*<<< orphan*/  buf_mutex; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- scalar_t__ get_zeroed_page (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct tty_port {unsigned char* xmit_buf; int buf_mutex; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ scalar_t__ get_zeroed_page (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 int tty_port_alloc_xmit_buf(struct tty_port *port)
 {
-	/* We may sleep in get_zeroed_page() */
-	mutex_lock(&port->buf_mutex);
-	if (port->xmit_buf == NULL)
-		port->xmit_buf = (unsigned char *)get_zeroed_page(GFP_KERNEL);
-	mutex_unlock(&port->buf_mutex);
-	if (port->xmit_buf == NULL)
-		return -ENOMEM;
-	return 0;
+
+ mutex_lock(&port->buf_mutex);
+ if (port->xmit_buf == ((void*)0))
+  port->xmit_buf = (unsigned char *)get_zeroed_page(GFP_KERNEL);
+ mutex_unlock(&port->buf_mutex);
+ if (port->xmit_buf == ((void*)0))
+  return -ENOMEM;
+ return 0;
 }

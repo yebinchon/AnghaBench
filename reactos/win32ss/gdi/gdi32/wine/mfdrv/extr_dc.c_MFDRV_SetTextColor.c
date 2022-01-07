@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  int /*<<< orphan*/  COLORREF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLR_INVALID ; 
- int /*<<< orphan*/  HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  META_SETTEXTCOLOR ; 
- scalar_t__ MFDRV_MetaParam2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PHYSDEV ;
+typedef int COLORREF ;
+
+
+ int CLR_INVALID ;
+ int HIWORD (int ) ;
+ int LOWORD (int ) ;
+ int META_SETTEXTCOLOR ;
+ scalar_t__ MFDRV_MetaParam2 (int ,int ,int ,int ) ;
 
 COLORREF MFDRV_SetTextColor( PHYSDEV dev, COLORREF color )
 {

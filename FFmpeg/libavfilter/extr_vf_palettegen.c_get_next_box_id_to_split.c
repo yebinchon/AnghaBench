@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct range_box {int len; int variance; int start; int /*<<< orphan*/  color; } ;
-struct color_ref {int count; int /*<<< orphan*/  color; } ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct range_box {int len; int variance; int start; int color; } ;
+struct color_ref {int count; int color; } ;
+typedef int int64_t ;
 struct TYPE_3__ {int nb_boxes; int max_colors; int reserve_transparent; struct color_ref** refs; struct range_box* boxes; } ;
-typedef  TYPE_1__ PaletteGenContext ;
+typedef TYPE_1__ PaletteGenContext ;
 
-/* Variables and functions */
- int diff (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int diff (int ,int ) ;
 
 __attribute__((used)) static int get_next_box_id_to_split(PaletteGenContext *s)
 {

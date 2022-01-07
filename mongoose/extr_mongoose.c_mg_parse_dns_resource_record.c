@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_4__ {char* p; int len; } ;
 struct TYPE_3__ {char* p; int len; } ;
-struct mg_dns_resource_record {unsigned char rtype; unsigned char rclass; int ttl; TYPE_2__ rdata; int /*<<< orphan*/  kind; TYPE_1__ name; } ;
+struct mg_dns_resource_record {unsigned char rtype; unsigned char rclass; int ttl; TYPE_2__ rdata; int kind; TYPE_1__ name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MG_DNS_ANSWER ; 
- int /*<<< orphan*/  MG_DNS_QUESTION ; 
+
+ int MG_DNS_ANSWER ;
+ int MG_DNS_QUESTION ;
 
 __attribute__((used)) static unsigned char *mg_parse_dns_resource_record(
     unsigned char *data, unsigned char *end, struct mg_dns_resource_record *rr,
@@ -36,7 +36,7 @@ __attribute__((used)) static unsigned char *mg_parse_dns_resource_record(
   }
 
   if (data > end - 5) {
-    return NULL;
+    return ((void*)0);
   }
 
   rr->name.p = (char *) name;
@@ -52,7 +52,7 @@ __attribute__((used)) static unsigned char *mg_parse_dns_resource_record(
   rr->kind = reply ? MG_DNS_ANSWER : MG_DNS_QUESTION;
   if (reply) {
     if (data >= end - 6) {
-      return NULL;
+      return ((void*)0);
     }
 
     rr->ttl = (uint32_t) data[0] << 24 | (uint32_t) data[1] << 16 |

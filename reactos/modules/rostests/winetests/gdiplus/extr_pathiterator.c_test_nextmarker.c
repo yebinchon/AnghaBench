@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int INT ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpPathIterator ;
-typedef  int /*<<< orphan*/  GpPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathLine (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipAddPathRectangle (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePathIter (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePathIter (int /*<<< orphan*/ *) ; 
- int GdipPathIterNextMarker (int /*<<< orphan*/ *,int*,int*,int*) ; 
- int /*<<< orphan*/  GdipSetPathMarker (int /*<<< orphan*/ *) ; 
- int InvalidParameter ; 
- int Ok ; 
- int /*<<< orphan*/  expect (int,int) ; 
+
+
+
+typedef int INT ;
+typedef int GpStatus ;
+typedef int GpPathIterator ;
+typedef int GpPath ;
+
+
+ int FillModeAlternate ;
+ int GdipAddPathLine (int *,double,double,double,double) ;
+ int GdipAddPathRectangle (int *,double,double,double,double) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreatePathIter (int **,int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeletePathIter (int *) ;
+ int GdipPathIterNextMarker (int *,int*,int*,int*) ;
+ int GdipSetPathMarker (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int,int) ;
 
 __attribute__((used)) static void test_nextmarker(void)
 {
@@ -37,20 +37,20 @@ __attribute__((used)) static void test_nextmarker(void)
     INT start, end;
     INT result;
 
-    /* NULL args
-       BOOL out argument is local in wrapper class method,
-       so it always has not-NULL address */
-    stat = GdipPathIterNextMarker(NULL, &result, NULL, NULL);
+
+
+
+    stat = GdipPathIterNextMarker(((void*)0), &result, ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextMarker(NULL, &result, &start, NULL);
+    stat = GdipPathIterNextMarker(((void*)0), &result, &start, ((void*)0));
     expect(InvalidParameter, stat);
-    stat = GdipPathIterNextMarker(NULL, &result, NULL, &end);
+    stat = GdipPathIterNextMarker(((void*)0), &result, ((void*)0), &end);
     expect(InvalidParameter, stat);
 
     GdipCreatePath(FillModeAlternate, &path);
     GdipAddPathRectangle(path, 5.0, 5.0, 100.0, 50.0);
 
-    /* no markers */
+
     GdipCreatePathIter(&iter, path);
     start = end = result = (INT)0xdeadbeef;
     stat = GdipPathIterNextMarker(iter, &result, &start, &end);
@@ -61,13 +61,13 @@ __attribute__((used)) static void test_nextmarker(void)
     start = end = result = (INT)0xdeadbeef;
     stat = GdipPathIterNextMarker(iter, &result, &start, &end);
     expect(Ok, stat);
-    /* start/end remain unchanged */
+
     expect((INT)0xdeadbeef, start);
     expect((INT)0xdeadbeef, end);
     expect(0, result);
     GdipDeletePathIter(iter);
 
-    /* one marker */
+
     GdipSetPathMarker(path);
     GdipCreatePathIter(&iter, path);
     start = end = result = (INT)0xdeadbeef;
@@ -84,7 +84,7 @@ __attribute__((used)) static void test_nextmarker(void)
     expect(0, result);
     GdipDeletePathIter(iter);
 
-    /* two markers */
+
     GdipAddPathLine(path, 0.0, 0.0, 10.0, 30.0);
     GdipSetPathMarker(path);
     GdipCreatePathIter(&iter, path);

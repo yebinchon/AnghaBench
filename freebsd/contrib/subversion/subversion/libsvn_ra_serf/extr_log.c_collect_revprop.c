@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_RA_DAV_MALFORMED_DATA ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * apr_hash_pool_get (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/ * svn_base64_decode_string (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * svn_string_dup (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_string_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR_RA_DAV_MALFORMED_DATA ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * apr_hash_pool_get (int *) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int * svn_base64_decode_string (int const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_hash_sets (int *,char const*,int const*) ;
+ int * svn_string_dup (int const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 collect_revprop(apr_hash_t *revprops,
@@ -37,11 +37,11 @@ collect_revprop(apr_hash_t *revprops,
 
   if (encoding)
     {
-      /* Check for a known encoding type.  This is easy -- there's
-         only one.  */
+
+
       if (strcmp(encoding, "base64") != 0)
         {
-          return svn_error_createf(SVN_ERR_RA_DAV_MALFORMED_DATA, NULL,
+          return svn_error_createf(SVN_ERR_RA_DAV_MALFORMED_DATA, ((void*)0),
                                    _("Unsupported encoding '%s'"),
                                    encoding);
         }
@@ -53,7 +53,7 @@ collect_revprop(apr_hash_t *revprops,
       decoded = svn_string_dup(cdata, result_pool);
     }
 
-  /* Caller has ensured PROPNAME has sufficient lifetime.  */
+
   svn_hash_sets(revprops, propname, decoded);
 
   return SVN_NO_ERROR;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct TemplateSet {unsigned int count; struct TemplatePacket* pkts; } ;
-struct TemplatePacket {unsigned char* packet; unsigned int offset_ip; int /*<<< orphan*/  length; int /*<<< orphan*/  checksum_ip; } ;
+struct TemplatePacket {unsigned char* packet; unsigned int offset_ip; int length; int checksum_ip; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ip_header_checksum (unsigned char*,unsigned int,int /*<<< orphan*/ ) ; 
+
+ int ip_header_checksum (unsigned char*,unsigned int,int ) ;
 
 void
 template_set_ttl(struct TemplateSet *tmplset, unsigned ttl)
@@ -27,7 +27,7 @@ template_set_ttl(struct TemplateSet *tmplset, unsigned ttl)
         unsigned offset = tmpl->offset_ip;
 
         px[offset+8] = (unsigned char)(ttl);
-        tmpl->checksum_ip = ip_header_checksum(    tmpl->packet,
+        tmpl->checksum_ip = ip_header_checksum( tmpl->packet,
                                                     tmpl->offset_ip,
                                                     tmpl->length);
     }

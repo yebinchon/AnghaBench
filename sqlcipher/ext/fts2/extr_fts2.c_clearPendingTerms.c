@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nPendingData; int /*<<< orphan*/  pendingTerms; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-typedef  int /*<<< orphan*/  fts2HashElem ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  dlcDelete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fts2HashClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fts2HashData (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fts2HashFirst (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fts2HashNext (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nPendingData; int pendingTerms; } ;
+typedef TYPE_1__ fulltext_vtab ;
+typedef int fts2HashElem ;
+
+
+ int SQLITE_OK ;
+ int dlcDelete (int ) ;
+ int fts2HashClear (int *) ;
+ int fts2HashData (int *) ;
+ int * fts2HashFirst (int *) ;
+ int * fts2HashNext (int *) ;
 
 __attribute__((used)) static int clearPendingTerms(fulltext_vtab *v){
   if( v->nPendingData>=0 ){

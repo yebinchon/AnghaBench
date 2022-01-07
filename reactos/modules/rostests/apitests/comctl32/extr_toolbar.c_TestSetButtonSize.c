@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/ * HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateWindowExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- int MAKELONG (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SendMessageW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TB_GETBUTTONSIZE ; 
- int /*<<< orphan*/  TB_SETBUTTONSIZE ; 
- int /*<<< orphan*/  TOOLBARCLASSNAMEW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int LRESULT ;
+typedef int * HWND ;
+
+
+ int * CreateWindowExW (int ,int ,char*,int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ int DestroyWindow (int *) ;
+ int MAKELONG (int ,int ) ;
+ int SendMessageW (int *,int ,int ,int) ;
+ int TB_GETBUTTONSIZE ;
+ int TB_SETBUTTONSIZE ;
+ int TOOLBARCLASSNAMEW ;
+ int ok (int,char*,...) ;
 
 void TestSetButtonSize()
 {
     HWND hwnd;
     LRESULT bsize;
 
-    hwnd = CreateWindowExW(0, TOOLBARCLASSNAMEW, L"Test", 0, 0, 0, 0, 0, 0, 0, 0, NULL);
-    ok(hwnd != NULL, "CreateWindowEx failed\n");
+    hwnd = CreateWindowExW(0, TOOLBARCLASSNAMEW, L"Test", 0, 0, 0, 0, 0, 0, 0, 0, ((void*)0));
+    ok(hwnd != ((void*)0), "CreateWindowEx failed\n");
 
     bsize = SendMessageW(hwnd, TB_GETBUTTONSIZE, 0, 0);
     ok(bsize == 0x160017, "Expected 0x160017 got %lx\n", bsize);

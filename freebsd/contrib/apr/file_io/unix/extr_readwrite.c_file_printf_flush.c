@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ curpos; } ;
-struct apr_file_printf_data {scalar_t__ buf; TYPE_1__ vbuff; int /*<<< orphan*/  fptr; } ;
-typedef  int /*<<< orphan*/  apr_vformatter_buff_t ;
+struct apr_file_printf_data {scalar_t__ buf; TYPE_1__ vbuff; int fptr; } ;
+typedef int apr_vformatter_buff_t ;
 
-/* Variables and functions */
- scalar_t__ apr_file_write_full (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ apr_file_write_full (int ,scalar_t__,scalar_t__,int *) ;
 
 __attribute__((used)) static int file_printf_flush(apr_vformatter_buff_t *buff)
 {
     struct apr_file_printf_data *data = (struct apr_file_printf_data *)buff;
 
-    if (apr_file_write_full(data->fptr, data->buf, 
-                            data->vbuff.curpos - data->buf, NULL)) {
+    if (apr_file_write_full(data->fptr, data->buf,
+                            data->vbuff.curpos - data->buf, ((void*)0))) {
         return -1;
     }
 

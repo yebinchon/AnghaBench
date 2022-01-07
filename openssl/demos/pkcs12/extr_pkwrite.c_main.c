@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  PKCS12 ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_load_crypto_strings () ; 
- int /*<<< orphan*/  ERR_print_errors_fp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenSSL_add_all_algorithms () ; 
- int /*<<< orphan*/ * PEM_read_PrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PEM_read_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PKCS12_create (char*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PKCS12_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  i2d_PKCS12_fp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int X509 ;
+typedef int PKCS12 ;
+typedef int FILE ;
+typedef int EVP_PKEY ;
+
+
+ int ERR_load_crypto_strings () ;
+ int ERR_print_errors_fp (int ) ;
+ int OpenSSL_add_all_algorithms () ;
+ int * PEM_read_PrivateKey (int *,int *,int *,int *) ;
+ int * PEM_read_X509 (int *,int *,int *,int *) ;
+ int * PKCS12_create (char*,char*,int *,int *,int *,int ,int ,int ,int ,int ) ;
+ int PKCS12_free (int *) ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int i2d_PKCS12_fp (int *,int *) ;
+ int rewind (int *) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
@@ -43,21 +43,21 @@ int main(int argc, char **argv)
     }
     OpenSSL_add_all_algorithms();
     ERR_load_crypto_strings();
-    if ((fp = fopen(argv[1], "r")) == NULL) {
+    if ((fp = fopen(argv[1], "r")) == ((void*)0)) {
         fprintf(stderr, "Error opening file %s\n", argv[1]);
         exit(1);
     }
-    cert = PEM_read_X509(fp, NULL, NULL, NULL);
+    cert = PEM_read_X509(fp, ((void*)0), ((void*)0), ((void*)0));
     rewind(fp);
-    pkey = PEM_read_PrivateKey(fp, NULL, NULL, NULL);
+    pkey = PEM_read_PrivateKey(fp, ((void*)0), ((void*)0), ((void*)0));
     fclose(fp);
-    p12 = PKCS12_create(argv[2], argv[3], pkey, cert, NULL, 0, 0, 0, 0, 0);
+    p12 = PKCS12_create(argv[2], argv[3], pkey, cert, ((void*)0), 0, 0, 0, 0, 0);
     if (!p12) {
         fprintf(stderr, "Error creating PKCS#12 structure\n");
         ERR_print_errors_fp(stderr);
         exit(1);
     }
-    if ((fp = fopen(argv[4], "wb")) == NULL) {
+    if ((fp = fopen(argv[4], "wb")) == ((void*)0)) {
         fprintf(stderr, "Error opening file %s\n", argv[1]);
         ERR_print_errors_fp(stderr);
         exit(1);

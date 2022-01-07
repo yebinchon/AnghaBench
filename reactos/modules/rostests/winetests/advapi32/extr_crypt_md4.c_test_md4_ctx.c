@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  message ;
-typedef  int /*<<< orphan*/  expect ;
-typedef  int /*<<< orphan*/  ctx ;
-struct TYPE_11__ {int member_0; int /*<<< orphan*/  member_1; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int message ;
+typedef int expect ;
+typedef int ctx ;
+struct TYPE_11__ {int member_0; int member_1; } ;
 struct TYPE_10__ {int member_0; int member_1; int member_2; int member_3; } ;
-struct TYPE_12__ {int /*<<< orphan*/  digest; TYPE_2__ member_1; TYPE_1__ member_0; } ;
-typedef  TYPE_3__ MD4_CTX ;
+struct TYPE_12__ {int digest; TYPE_2__ member_1; TYPE_1__ member_0; } ;
+typedef TYPE_3__ MD4_CTX ;
 
-/* Variables and functions */
- int ctxcmp (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  pMD4Final (TYPE_3__*) ; 
- int /*<<< orphan*/  pMD4Init (TYPE_3__*) ; 
- int /*<<< orphan*/  pMD4Update (TYPE_3__*,unsigned char*,int) ; 
+
+ int ctxcmp (TYPE_3__*,TYPE_3__*) ;
+ int memcmp (int ,unsigned char*,int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int ok (int,char*) ;
+ int pMD4Final (TYPE_3__*) ;
+ int pMD4Init (TYPE_3__*) ;
+ int pMD4Update (TYPE_3__*,unsigned char*,int) ;
 
 __attribute__((used)) static void test_md4_ctx(void)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void test_md4_ctx(void)
     int size = sizeof(message) - 1;
 
     MD4_CTX ctx;
-    MD4_CTX ctx_initialized = 
+    MD4_CTX ctx_initialized =
     {
         { 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476 },
         { 0, 0 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sock {int dummy; } ;
-struct nr_sock {scalar_t__ t1; int /*<<< orphan*/  t1timer; } ;
+struct nr_sock {scalar_t__ t1; int t1timer; } ;
 
-/* Variables and functions */
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- struct nr_sock* nr_sk (struct sock*) ; 
+
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ struct nr_sock* nr_sk (struct sock*) ;
 
 void nr_start_t1timer(struct sock *sk)
 {
-	struct nr_sock *nr = nr_sk(sk);
+ struct nr_sock *nr = nr_sk(sk);
 
-	mod_timer(&nr->t1timer, jiffies + nr->t1);
+ mod_timer(&nr->t1timer, jiffies + nr->t1);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIO_METHOD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_TYPE_MEMPACKET_TEST ; 
- int /*<<< orphan*/ * BIO_meth_new (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  BIO_meth_set_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_ctrl (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_destroy (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_gets (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_puts (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_read (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BIO_meth_set_write (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mempacket_test_ctrl ; 
- int /*<<< orphan*/  mempacket_test_free ; 
- int /*<<< orphan*/  mempacket_test_gets ; 
- int /*<<< orphan*/  mempacket_test_new ; 
- int /*<<< orphan*/  mempacket_test_puts ; 
- int /*<<< orphan*/  mempacket_test_read ; 
- int /*<<< orphan*/  mempacket_test_write ; 
- int /*<<< orphan*/  const* meth_mem ; 
+
+
+
+typedef int BIO_METHOD ;
+
+
+ int BIO_TYPE_MEMPACKET_TEST ;
+ int * BIO_meth_new (int ,char*) ;
+ int BIO_meth_set_create (int const*,int ) ;
+ int BIO_meth_set_ctrl (int const*,int ) ;
+ int BIO_meth_set_destroy (int const*,int ) ;
+ int BIO_meth_set_gets (int const*,int ) ;
+ int BIO_meth_set_puts (int const*,int ) ;
+ int BIO_meth_set_read (int const*,int ) ;
+ int BIO_meth_set_write (int const*,int ) ;
+ int TEST_ptr (int const*) ;
+ int TEST_true (int ) ;
+ int mempacket_test_ctrl ;
+ int mempacket_test_free ;
+ int mempacket_test_gets ;
+ int mempacket_test_new ;
+ int mempacket_test_puts ;
+ int mempacket_test_read ;
+ int mempacket_test_write ;
+ int const* meth_mem ;
 
 const BIO_METHOD *bio_s_mempacket_test(void)
 {
-    if (meth_mem == NULL) {
+    if (meth_mem == ((void*)0)) {
         if (!TEST_ptr(meth_mem = BIO_meth_new(BIO_TYPE_MEMPACKET_TEST,
                                               "Mem Packet Test"))
             || !TEST_true(BIO_meth_set_write(meth_mem, mempacket_test_write))
@@ -45,7 +45,7 @@ const BIO_METHOD *bio_s_mempacket_test(void)
             || !TEST_true(BIO_meth_set_ctrl(meth_mem, mempacket_test_ctrl))
             || !TEST_true(BIO_meth_set_create(meth_mem, mempacket_test_new))
             || !TEST_true(BIO_meth_set_destroy(meth_mem, mempacket_test_free)))
-            return NULL;
+            return ((void*)0);
     }
     return meth_mem;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U64 ;
-typedef  int U32 ;
 
-/* Variables and functions */
- unsigned int COMPRESSIBILITY_DEFAULT ; 
- int /*<<< orphan*/  DISPLAYLEVEL (int,char*,...) ; 
- int /*<<< orphan*/  RDG_genStdout (int,double,double,int) ; 
- int SEED_DEFAULT ; 
- int SIZE_DEFAULT ; 
- int displayLevel ; 
- int usage (char const* const) ; 
+
+
+
+typedef int U64 ;
+typedef int U32 ;
+
+
+ unsigned int COMPRESSIBILITY_DEFAULT ;
+ int DISPLAYLEVEL (int,char*,...) ;
+ int RDG_genStdout (int,double,double,int) ;
+ int SEED_DEFAULT ;
+ int SIZE_DEFAULT ;
+ int displayLevel ;
+ int usage (char const* const) ;
 
 int main(int argc, const char** argv)
 {
@@ -34,9 +34,9 @@ int main(int argc, const char** argv)
     for(argNb=1; argNb<argc; argNb++) {
         const char* argument = argv[argNb];
 
-        if(!argument) continue;   /* Protection if argument empty */
+        if(!argument) continue;
 
-        /* Handle commands. Aggregated commands are allowed */
+
         if (*argument=='-') {
             argument++;
             while (*argument!=0) {
@@ -67,7 +67,7 @@ int main(int argc, const char** argv)
                         probaU32 *= 10, probaU32 += *argument++ - '0';
                     if (probaU32>100) probaU32 = 100;
                     break;
-                case 'L':   /* hidden argument : Literal distribution probability */
+                case 'L':
                     argument++;
                     litProba=0.;
                     while ((*argument>='0') && (*argument<='9'))
@@ -82,7 +82,7 @@ int main(int argc, const char** argv)
                 default:
                     return usage(programName);
                 }
-    }   }   }   /* for(argNb=1; argNb<argc; argNb++) */
+    } } }
 
     DISPLAYLEVEL(4, "Compressible data Generator \n");
     if (probaU32!=COMPRESSIBILITY_DEFAULT)

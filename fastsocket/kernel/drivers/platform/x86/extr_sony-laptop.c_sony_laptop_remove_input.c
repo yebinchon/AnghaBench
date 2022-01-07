@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  fifo; int /*<<< orphan*/  wq; int /*<<< orphan*/ * jog_dev; int /*<<< orphan*/ * key_dev; int /*<<< orphan*/  users; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec_and_test (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  destroy_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flush_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  input_unregister_device (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfifo_free (int /*<<< orphan*/ ) ; 
- TYPE_1__ sony_laptop_input ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int fifo; int wq; int * jog_dev; int * key_dev; int users; } ;
+
+
+ int atomic_dec_and_test (int *) ;
+ int destroy_workqueue (int ) ;
+ int flush_workqueue (int ) ;
+ int input_unregister_device (int *) ;
+ int kfifo_free (int ) ;
+ TYPE_1__ sony_laptop_input ;
 
 __attribute__((used)) static void sony_laptop_remove_input(void)
 {
-	/* cleanup only after the last user has gone */
-	if (!atomic_dec_and_test(&sony_laptop_input.users))
-		return;
 
-	/* flush workqueue first */
-	flush_workqueue(sony_laptop_input.wq);
+ if (!atomic_dec_and_test(&sony_laptop_input.users))
+  return;
 
-	/* destroy input devs */
-	input_unregister_device(sony_laptop_input.key_dev);
-	sony_laptop_input.key_dev = NULL;
 
-	if (sony_laptop_input.jog_dev) {
-		input_unregister_device(sony_laptop_input.jog_dev);
-		sony_laptop_input.jog_dev = NULL;
-	}
+ flush_workqueue(sony_laptop_input.wq);
 
-	destroy_workqueue(sony_laptop_input.wq);
-	kfifo_free(sony_laptop_input.fifo);
+
+ input_unregister_device(sony_laptop_input.key_dev);
+ sony_laptop_input.key_dev = ((void*)0);
+
+ if (sony_laptop_input.jog_dev) {
+  input_unregister_device(sony_laptop_input.jog_dev);
+  sony_laptop_input.jog_dev = ((void*)0);
+ }
+
+ destroy_workqueue(sony_laptop_input.wq);
+ kfifo_free(sony_laptop_input.fifo);
 }

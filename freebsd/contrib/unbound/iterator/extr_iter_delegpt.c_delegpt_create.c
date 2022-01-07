@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct regional {int dummy; } ;
 struct delegpt {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (struct delegpt*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ regional_alloc (struct regional*,int) ; 
 
-struct delegpt* 
+ int memset (struct delegpt*,int ,int) ;
+ scalar_t__ regional_alloc (struct regional*,int) ;
+
+struct delegpt*
 delegpt_create(struct regional* region)
 {
-	struct delegpt* dp=(struct delegpt*)regional_alloc(
-		region, sizeof(*dp));
-	if(!dp)
-		return NULL;
-	memset(dp, 0, sizeof(*dp));
-	return dp;
+ struct delegpt* dp=(struct delegpt*)regional_alloc(
+  region, sizeof(*dp));
+ if(!dp)
+  return ((void*)0);
+ memset(dp, 0, sizeof(*dp));
+ return dp;
 }

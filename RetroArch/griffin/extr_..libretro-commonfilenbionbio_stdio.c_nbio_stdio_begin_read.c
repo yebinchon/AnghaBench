@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nbio_stdio_t {scalar_t__ op; scalar_t__ progress; int /*<<< orphan*/  f; } ;
 
-/* Variables and functions */
- scalar_t__ NBIO_READ ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct nbio_stdio_t {scalar_t__ op; scalar_t__ progress; int f; } ;
+
+
+ scalar_t__ NBIO_READ ;
+ int SEEK_SET ;
+ int abort () ;
+ int fseek (int ,int ,int ) ;
 
 __attribute__((used)) static void nbio_stdio_begin_read(void *data)
 {
@@ -29,6 +29,6 @@ __attribute__((used)) static void nbio_stdio_begin_read(void *data)
 
    fseek(handle->f, 0, SEEK_SET);
 
-   handle->op       = NBIO_READ;
+   handle->op = NBIO_READ;
    handle->progress = 0;
 }

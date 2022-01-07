@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct trie_node_f {size_t children_count; int /*<<< orphan*/  values_count; int /*<<< orphan*/  prefix_off; } ;
-struct trie_child_entry_f {int /*<<< orphan*/  child_off; int /*<<< orphan*/  c; } ;
+
+
+
+
+struct trie_node_f {size_t children_count; int values_count; int prefix_off; } ;
+struct trie_child_entry_f {int child_off; int c; } ;
 struct linebuf {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_hwdb ;
+typedef int sd_hwdb ;
 
-/* Variables and functions */
- scalar_t__ fnmatch (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int hwdb_add_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- size_t le64toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  linebuf_add (struct linebuf*,char const*,size_t) ; 
- int /*<<< orphan*/  linebuf_add_char (struct linebuf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  linebuf_get (struct linebuf*) ; 
- int /*<<< orphan*/  linebuf_rem (struct linebuf*,size_t) ; 
- int /*<<< orphan*/  linebuf_rem_char (struct linebuf*) ; 
- size_t strlen (char const*) ; 
- struct trie_child_entry_f* trie_node_child (int /*<<< orphan*/ *,struct trie_node_f const*,size_t) ; 
- struct trie_node_f* trie_node_from_off (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trie_node_value (int /*<<< orphan*/ *,struct trie_node_f const*,size_t) ; 
- char* trie_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ fnmatch (int ,char const*,int ) ;
+ int hwdb_add_property (int *,int ) ;
+ size_t le64toh (int ) ;
+ int linebuf_add (struct linebuf*,char const*,size_t) ;
+ int linebuf_add_char (struct linebuf*,int ) ;
+ int linebuf_get (struct linebuf*) ;
+ int linebuf_rem (struct linebuf*,size_t) ;
+ int linebuf_rem_char (struct linebuf*) ;
+ size_t strlen (char const*) ;
+ struct trie_child_entry_f* trie_node_child (int *,struct trie_node_f const*,size_t) ;
+ struct trie_node_f* trie_node_from_off (int *,int ) ;
+ int trie_node_value (int *,struct trie_node_f const*,size_t) ;
+ char* trie_string (int *,int ) ;
 
 __attribute__((used)) static int trie_fnmatch_f(sd_hwdb *hwdb, const struct trie_node_f *node, size_t p,
                           struct linebuf *buf, const char *search) {

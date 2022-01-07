@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tOrderDescriptor ;
-typedef  int int32_t ;
-typedef  int (* __ext_compar_fn_t ) (void*,void*,int /*<<< orphan*/ *) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TSDB_DATA_TYPE_BINARY ; 
- int /*<<< orphan*/  median (void**,size_t,int,int,int /*<<< orphan*/ *,int (*) (void*,void*,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  tInsertSort (void**,size_t,int,int,int /*<<< orphan*/ *,int (*) (void*,void*,int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  tsDataSwap (void**,void**,int /*<<< orphan*/ ,size_t) ; 
+
+
+
+typedef int tOrderDescriptor ;
+typedef int int32_t ;
+typedef int (* __ext_compar_fn_t ) (void*,void*,int *) ;
+
+
+ int TSDB_DATA_TYPE_BINARY ;
+ int median (void**,size_t,int,int,int *,int (*) (void*,void*,int *)) ;
+ int tInsertSort (void**,size_t,int,int,int *,int (*) (void*,void*,int *)) ;
+ int tsDataSwap (void**,void**,int ,size_t) ;
 
 void tQSortEx(void **pMeterSids, size_t size, int32_t start, int32_t end, void *param, __ext_compar_fn_t compareFn) {
   tOrderDescriptor *pOrderDesc = (tOrderDescriptor *)param;
 
-  // short array sort, incur another sort procedure instead of quick sort process
+
   if (end - start + 1 <= 8) {
     tInsertSort(pMeterSids, size, start, end, pOrderDesc, compareFn);
     return;
@@ -41,9 +41,9 @@ void tQSortEx(void **pMeterSids, size_t size, int32_t start, int32_t end, void *
         break;
       }
 
-      /*
-       * move the data that equals to pivotal value to the right end of the list
-       */
+
+
+
       if (ret == 0 && e != endRightS) {
         tsDataSwap(&pMeterSids[e], &pMeterSids[endRightS--], TSDB_DATA_TYPE_BINARY, size);
       }

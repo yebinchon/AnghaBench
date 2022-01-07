@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct smb_rqst {TYPE_1__* rq_iov; } ;
-struct TYPE_2__ {int /*<<< orphan*/  iov_base; } ;
+struct TYPE_2__ {int iov_base; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cifs_small_buf_release (int /*<<< orphan*/ ) ; 
+
+ int cifs_small_buf_release (int ) ;
 
 void
 SMB2_close_free(struct smb_rqst *rqst)
 {
-	if (rqst && rqst->rq_iov)
-		cifs_small_buf_release(rqst->rq_iov[0].iov_base); /* request */
+ if (rqst && rqst->rq_iov)
+  cifs_small_buf_release(rqst->rq_iov[0].iov_base);
 }

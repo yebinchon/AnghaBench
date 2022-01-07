@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_desc {int status_use_accessors; } ;
 
-/* Variables and functions */
- int _IRQ_IS_POLLED ; 
+
+ int _IRQ_IS_POLLED ;
 
 __attribute__((used)) static inline bool irq_settings_is_polled(struct irq_desc *desc)
 {
-	return desc->status_use_accessors & _IRQ_IS_POLLED;
+ return desc->status_use_accessors & _IRQ_IS_POLLED;
 }

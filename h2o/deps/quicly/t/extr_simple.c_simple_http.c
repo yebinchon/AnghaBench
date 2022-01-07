@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  ingress; } ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int ingress; } ;
 struct TYPE_9__ {int reset_stream; } ;
 struct TYPE_11__ {int is_detached; TYPE_2__ super; TYPE_1__ error_received; } ;
-typedef  TYPE_3__ test_streambuf_t ;
-struct TYPE_12__ {scalar_t__ stream_id; int /*<<< orphan*/  recvstate; TYPE_3__* data; } ;
-typedef  TYPE_4__ quicly_stream_t ;
+typedef TYPE_3__ test_streambuf_t ;
+struct TYPE_12__ {scalar_t__ stream_id; int recvstate; TYPE_3__* data; } ;
+typedef TYPE_4__ quicly_stream_t ;
 
-/* Variables and functions */
- scalar_t__ QUICLY_DELAYED_ACK_TIMEOUT ; 
- int buffer_is (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  client ; 
- int /*<<< orphan*/  ok (int) ; 
- int /*<<< orphan*/  quic_now ; 
- TYPE_4__* quicly_get_stream (int /*<<< orphan*/ ,scalar_t__) ; 
- int quicly_num_streams (int /*<<< orphan*/ ) ; 
- int quicly_open_stream (int /*<<< orphan*/ ,TYPE_4__**,int /*<<< orphan*/ ) ; 
- int quicly_recvstate_transfer_complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quicly_streambuf_egress_shutdown (TYPE_4__*) ; 
- int /*<<< orphan*/  quicly_streambuf_egress_write (TYPE_4__*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  server ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  transmit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ QUICLY_DELAYED_ACK_TIMEOUT ;
+ int buffer_is (int *,char const*) ;
+ int client ;
+ int ok (int) ;
+ int quic_now ;
+ TYPE_4__* quicly_get_stream (int ,scalar_t__) ;
+ int quicly_num_streams (int ) ;
+ int quicly_open_stream (int ,TYPE_4__**,int ) ;
+ int quicly_recvstate_transfer_complete (int *) ;
+ int quicly_streambuf_egress_shutdown (TYPE_4__*) ;
+ int quicly_streambuf_egress_write (TYPE_4__*,char const*,int ) ;
+ int server ;
+ int strlen (char const*) ;
+ int transmit (int ,int ) ;
 
 __attribute__((used)) static void simple_http(void)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void simple_http(void)
     transmit(client, server);
 
     server_stream = quicly_get_stream(server, client_stream->stream_id);
-    ok(server_stream != NULL);
+    ok(server_stream != ((void*)0));
     server_streambuf = server_stream->data;
     ok(quicly_recvstate_transfer_complete(&server_stream->recvstate));
     ok(server_streambuf->error_received.reset_stream == -1);

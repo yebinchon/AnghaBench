@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct traverse_info {int /*<<< orphan*/  pathlen; } ;
 
-/* Variables and functions */
- size_t st_add (int /*<<< orphan*/ ,size_t) ; 
+
+
+
+struct traverse_info {int pathlen; } ;
+
+
+ size_t st_add (int ,size_t) ;
 
 __attribute__((used)) static inline size_t traverse_path_len(const struct traverse_info *info,
-				       size_t namelen)
+           size_t namelen)
 {
-	return st_add(info->pathlen, namelen);
+ return st_add(info->pathlen, namelen);
 }

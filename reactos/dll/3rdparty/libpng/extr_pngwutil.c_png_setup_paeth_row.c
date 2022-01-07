@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t png_uint_32 ;
-typedef  TYPE_1__* png_structrp ;
-typedef  int /*<<< orphan*/ * png_bytep ;
-typedef  void* png_byte ;
-struct TYPE_3__ {int /*<<< orphan*/ * prev_row; int /*<<< orphan*/ * row_buf; int /*<<< orphan*/ * try_row; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PNG_FILTER_VALUE_PAETH ; 
- int abs (int) ; 
 
-__attribute__((used)) static size_t /* PRIVATE */
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t png_uint_32 ;
+typedef TYPE_1__* png_structrp ;
+typedef int * png_bytep ;
+typedef void* png_byte ;
+struct TYPE_3__ {int * prev_row; int * row_buf; int * try_row; } ;
+
+
+ int PNG_FILTER_VALUE_PAETH ;
+ int abs (int) ;
+
+__attribute__((used)) static size_t
 png_setup_paeth_row(png_structrp png_ptr, png_uint_32 bpp,
     size_t row_bytes, size_t lmins)
 {
@@ -37,11 +37,11 @@ png_setup_paeth_row(png_structrp png_ptr, png_uint_32 bpp,
    {
       v = *dp++ = (png_byte)(((int)*rp++ - (int)*pp++) & 0xff);
 
-#ifdef PNG_USE_ABS
-      sum += 128 - abs((int)v - 128);
-#else
+
+
+
       sum += (v < 128) ? v : 256 - v;
-#endif
+
    }
 
    for (lp = png_ptr->row_buf + 1, cp = png_ptr->prev_row + 1; i < row_bytes;
@@ -56,27 +56,27 @@ png_setup_paeth_row(png_structrp png_ptr, png_uint_32 bpp,
       p = b - c;
       pc = a - c;
 
-#ifdef PNG_USE_ABS
-      pa = abs(p);
-      pb = abs(pc);
-      pc = abs(p + pc);
-#else
+
+
+
+
+
       pa = p < 0 ? -p : p;
       pb = pc < 0 ? -pc : pc;
       pc = (p + pc) < 0 ? -(p + pc) : p + pc;
-#endif
+
 
       p = (pa <= pb && pa <=pc) ? a : (pb <= pc) ? b : c;
 
       v = *dp++ = (png_byte)(((int)*rp++ - p) & 0xff);
 
-#ifdef PNG_USE_ABS
-      sum += 128 - abs((int)v - 128);
-#else
-      sum += (v < 128) ? v : 256 - v;
-#endif
 
-      if (sum > lmins)  /* We are already worse, don't continue. */
+
+
+      sum += (v < 128) ? v : 256 - v;
+
+
+      if (sum > lmins)
         break;
    }
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVExpr ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_expr_free (int /*<<< orphan*/ *) ; 
- int av_expr_parse (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- char* av_strdup (char const*) ; 
- int /*<<< orphan*/  var_names ; 
+
+
+
+typedef int AVExpr ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int av_expr_free (int *) ;
+ int av_expr_parse (int **,char const*,int ,int *,int *,int *,int *,int ,void*) ;
+ int av_free (char*) ;
+ int av_freep (char**) ;
+ int av_log (void*,int ,char*,char const*,char const*) ;
+ char* av_strdup (char const*) ;
+ int var_names ;
 
 __attribute__((used)) static int set_expr(AVExpr **pexpr_ptr, char **expr_ptr,
                     const char *expr, const char *option, void *log_ctx)
@@ -35,7 +35,7 @@ __attribute__((used)) static int set_expr(AVExpr **pexpr_ptr, char **expr_ptr,
     if (!new_expr)
         return AVERROR(ENOMEM);
     ret = av_expr_parse(&new_pexpr, expr, var_names,
-                        NULL, NULL, NULL, NULL, 0, log_ctx);
+                        ((void*)0), ((void*)0), ((void*)0), ((void*)0), 0, log_ctx);
     if (ret < 0) {
         av_log(log_ctx, AV_LOG_ERROR,
                "Error when evaluating the expression '%s' for %s\n",

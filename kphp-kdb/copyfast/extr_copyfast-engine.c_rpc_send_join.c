@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct rpc_join {int /*<<< orphan*/  protocol_version; int /*<<< orphan*/  binlog_position; scalar_t__ id; int /*<<< orphan*/  port; int /*<<< orphan*/  host; } ;
-struct connection {int /*<<< orphan*/  our_ip; } ;
-struct TYPE_3__ {int /*<<< orphan*/  joined_sent; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct rpc_join {int protocol_version; int binlog_position; scalar_t__ id; int port; int host; } ;
+struct connection {int our_ip; } ;
+struct TYPE_3__ {int joined_sent; } ;
 struct TYPE_4__ {TYPE_1__ structured; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BINLOG_POSITION ; 
- scalar_t__ CC ; 
- scalar_t__ CLUSTER_ID ; 
- scalar_t__* Clusters ; 
- scalar_t__ NODE_ID ; 
- int /*<<< orphan*/  PROTOCOL_VERSION ; 
- scalar_t__ Q ; 
- int /*<<< orphan*/  RPC_TYPE_JOIN ; 
- TYPE_2__* STATS ; 
- int /*<<< orphan*/  host ; 
- int max_cluster ; 
- int /*<<< orphan*/  port ; 
- scalar_t__ rpc_create_query (struct rpc_join*,int,struct connection*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_send_query (struct rpc_join*,struct connection*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,struct connection*) ; 
 
-int rpc_send_join (struct connection *c) {    
+ int BINLOG_POSITION ;
+ scalar_t__ CC ;
+ scalar_t__ CLUSTER_ID ;
+ scalar_t__* Clusters ;
+ scalar_t__ NODE_ID ;
+ int PROTOCOL_VERSION ;
+ scalar_t__ Q ;
+ int RPC_TYPE_JOIN ;
+ TYPE_2__* STATS ;
+ int host ;
+ int max_cluster ;
+ int port ;
+ scalar_t__ rpc_create_query (struct rpc_join*,int,struct connection*,int ) ;
+ int rpc_send_query (struct rpc_join*,struct connection*) ;
+ int vkprintf (int,char*,struct connection*) ;
+
+int rpc_send_join (struct connection *c) {
   vkprintf (2, "rpc_send_join: c = %p\n", c);
   int i;
   for (i = 0; i < max_cluster; i++) if (Clusters[i]) {

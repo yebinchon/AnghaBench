@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cover_back () ; 
- int /*<<< orphan*/  cover_fast () ; 
- int /*<<< orphan*/  cover_inflate () ; 
- int /*<<< orphan*/  cover_support () ; 
- int /*<<< orphan*/  cover_trees () ; 
- int /*<<< orphan*/  cover_wrap () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* zlibVersion () ; 
+ int cover_back () ;
+ int cover_fast () ;
+ int cover_inflate () ;
+ int cover_support () ;
+ int cover_trees () ;
+ int cover_wrap () ;
+ int fprintf (int ,char*,char*) ;
+ int stderr ;
+ char* zlibVersion () ;
 
 int main(void)
 {

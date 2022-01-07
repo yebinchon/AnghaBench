@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FRAC_BITS ; 
- int FRAC_ONE ; 
- int MAX_CHANNELS ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int int_cos (int) ; 
- int myrnd (unsigned int*,int) ; 
- int /*<<< orphan*/  outfile ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  put16 (int) ; 
- int /*<<< orphan*/  put_wav_header (int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strrchr (char*,char) ; 
+ int FRAC_BITS ;
+ int FRAC_ONE ;
+ int MAX_CHANNELS ;
+ void* atoi (char*) ;
+ int exit (int) ;
+ int fclose (int ) ;
+ int fopen (char*,char*) ;
+ int fprintf (int ,char*,int) ;
+ int int_cos (int) ;
+ int myrnd (unsigned int*,int) ;
+ int outfile ;
+ int perror (char*) ;
+ int printf (char*,char*) ;
+ int put16 (int) ;
+ int put_wav_header (int,int,int) ;
+ int stderr ;
+ int strcmp (char*,char*) ;
+ char* strrchr (char*,char) ;
 
 int main(int argc, char **argv)
 {
@@ -77,7 +69,7 @@ int main(int argc, char **argv)
     if ((ext = strrchr(argv[1], '.')) && !strcmp(ext, ".wav"))
         put_wav_header(sample_rate, nb_channels, 6 * sample_rate);
 
-    /* 1 second of single freq sine at 1000 Hz */
+
     a = 0;
     for (i = 0; i < 1 * sample_rate; i++) {
         v = (int_cos(a) * 10000) >> FRAC_BITS;
@@ -86,33 +78,33 @@ int main(int argc, char **argv)
         a += (1000 * FRAC_ONE) / sample_rate;
     }
 
-    /* 1 second of varying frequency between 100 and 10000 Hz */
+
     a = 0;
     for (i = 0; i < 1 * sample_rate; i++) {
         v = (int_cos(a) * 10000) >> FRAC_BITS;
         for (j = 0; j < nb_channels; j++)
             put16(v);
-        f  = 100 + (((10000 - 100) * i) / sample_rate);
+        f = 100 + (((10000 - 100) * i) / sample_rate);
         a += (f * FRAC_ONE) / sample_rate;
     }
 
-    /* 0.5 second of low amplitude white noise */
+
     for (i = 0; i < sample_rate / 2; i++) {
         v = myrnd(&seed, 20000) - 10000;
         for (j = 0; j < nb_channels; j++)
             put16(v);
     }
 
-    /* 0.5 second of high amplitude white noise */
+
     for (i = 0; i < sample_rate / 2; i++) {
         v = myrnd(&seed, 65535) - 32768;
         for (j = 0; j < nb_channels; j++)
             put16(v);
     }
 
-    /* 1 second of unrelated ramps for each channel */
+
     for (j = 0; j < nb_channels; j++) {
-        taba[j]  = 0;
+        taba[j] = 0;
         tabf1[j] = 100 + myrnd(&seed, 5000);
         tabf2[j] = 100 + myrnd(&seed, 5000);
     }
@@ -120,13 +112,13 @@ int main(int argc, char **argv)
         for (j = 0; j < nb_channels; j++) {
             v = (int_cos(taba[j]) * 10000) >> FRAC_BITS;
             put16(v);
-            f        = tabf1[j] + (((tabf2[j] - tabf1[j]) * i) / sample_rate);
+            f = tabf1[j] + (((tabf2[j] - tabf1[j]) * i) / sample_rate);
             taba[j] += (f * FRAC_ONE) / sample_rate;
         }
     }
 
-    /* 2 seconds of 500 Hz with varying volume */
-    a    = 0;
+
+    a = 0;
     ampa = 0;
     for (i = 0; i < 2 * sample_rate; i++) {
         for (j = 0; j < nb_channels; j++) {
@@ -135,7 +127,7 @@ int main(int argc, char **argv)
                 amp = 10000 - amp;
             v = (int_cos(a) * amp) >> FRAC_BITS;
             put16(v);
-            a    += (500 * FRAC_ONE) / sample_rate;
+            a += (500 * FRAC_ONE) / sample_rate;
             ampa += (2 * FRAC_ONE) / sample_rate;
         }
     }

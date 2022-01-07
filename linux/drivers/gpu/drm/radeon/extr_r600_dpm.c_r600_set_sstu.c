@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct radeon_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG_SSP ; 
- int /*<<< orphan*/  CG_SSTU (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_SSTU_MASK ; 
- int /*<<< orphan*/  WREG32_P (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CG_SSP ;
+ int CG_SSTU (int ) ;
+ int CG_SSTU_MASK ;
+ int WREG32_P (int ,int ,int ) ;
 
 void r600_set_sstu(struct radeon_device *rdev, u32 u)
 {
-	WREG32_P(CG_SSP, CG_SSTU(u), ~CG_SSTU_MASK);
+ WREG32_P(CG_SSP, CG_SSTU(u), ~CG_SSTU_MASK);
 }

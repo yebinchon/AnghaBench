@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_NOTIMPL ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSCLASS_FUNCTION ; 
-#define  JSV_BOOL 134 
-#define  JSV_NULL 133 
-#define  JSV_NUMBER 132 
-#define  JSV_OBJECT 131 
-#define  JSV_STRING 130 
-#define  JSV_UNDEFINED 129 
-#define  JSV_VARIANT 128 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * booleanW ; 
- int /*<<< orphan*/  debugstr_variant (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * functionW ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_variant (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int jsval_type (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * numberW ; 
- int /*<<< orphan*/ * objectW ; 
- int /*<<< orphan*/ * stringW ; 
- int /*<<< orphan*/ * undefinedW ; 
+
+
+
+typedef int jsval_t ;
+typedef int jsdisp_t ;
+typedef int WCHAR ;
+typedef int HRESULT ;
+
+
+ int E_NOTIMPL ;
+ int FIXME (char*,int ) ;
+ int JSCLASS_FUNCTION ;
+
+
+
+
+
+
+
+ int S_OK ;
+ int * booleanW ;
+ int debugstr_variant (int ) ;
+ int * functionW ;
+ int get_object (int ) ;
+ int get_variant (int ) ;
+ int * iface_to_jsdisp (int ) ;
+ int is_class (int *,int ) ;
+ int jsdisp_release (int *) ;
+ int jsval_type (int ) ;
+ int * numberW ;
+ int * objectW ;
+ int * stringW ;
+ int * undefinedW ;
 
 __attribute__((used)) static HRESULT typeof_string(jsval_t v, const WCHAR **ret)
 {
     switch(jsval_type(v)) {
-    case JSV_UNDEFINED:
+    case 129:
         *ret = undefinedW;
         break;
-    case JSV_NULL:
+    case 133:
         *ret = objectW;
         break;
-    case JSV_OBJECT: {
+    case 131: {
         jsdisp_t *dispex;
 
         if(get_object(v) && (dispex = iface_to_jsdisp(get_object(v)))) {
@@ -61,16 +61,16 @@ __attribute__((used)) static HRESULT typeof_string(jsval_t v, const WCHAR **ret)
         }
         break;
     }
-    case JSV_STRING:
+    case 130:
         *ret = stringW;
         break;
-    case JSV_NUMBER:
+    case 132:
         *ret = numberW;
         break;
-    case JSV_BOOL:
+    case 134:
         *ret = booleanW;
         break;
-    case JSV_VARIANT:
+    case 128:
         FIXME("unhandled variant %s\n", debugstr_variant(get_variant(v)));
         return E_NOTIMPL;
     }

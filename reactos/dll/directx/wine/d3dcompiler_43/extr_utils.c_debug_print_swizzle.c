@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
-#define  BWRITERVS_NOSWIZZLE 132 
- int BWRITERVS_SWIZZLE_SHIFT ; 
-#define  BWRITERVS_SWIZZLE_W 131 
-#define  BWRITERVS_SWIZZLE_X 130 
-#define  BWRITERVS_SWIZZLE_Y 129 
-#define  BWRITERVS_SWIZZLE_Z 128 
- char const* wine_dbg_sprintf (char*,char*) ; 
+
+
+
+typedef int DWORD ;
+
+
+
+ int BWRITERVS_SWIZZLE_SHIFT ;
+
+
+
+
+ char const* wine_dbg_sprintf (char*,char*) ;
 
 __attribute__((used)) static const char *debug_print_swizzle(DWORD arg)
 {
@@ -29,15 +29,15 @@ __attribute__((used)) static const char *debug_print_swizzle(DWORD arg)
 
     switch (arg)
     {
-        case BWRITERVS_NOSWIZZLE:
+        case 132:
             return "";
-        case BWRITERVS_SWIZZLE_X:
+        case 130:
             return ".x";
-        case BWRITERVS_SWIZZLE_Y:
+        case 129:
             return ".y";
-        case BWRITERVS_SWIZZLE_Z:
+        case 128:
             return ".z";
-        case BWRITERVS_SWIZZLE_W:
+        case 131:
             return ".w";
     }
 

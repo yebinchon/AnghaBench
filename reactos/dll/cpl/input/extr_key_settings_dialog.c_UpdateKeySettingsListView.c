@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  item ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int item ;
+typedef int WCHAR ;
+typedef int VOID ;
 struct TYPE_6__ {int dwLanguage; } ;
-struct TYPE_5__ {int mask; scalar_t__ iItem; int /*<<< orphan*/ * pszText; } ;
-typedef  TYPE_1__ LV_ITEM ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HWND ;
+struct TYPE_5__ {int mask; scalar_t__ iItem; int * pszText; } ;
+typedef TYPE_1__ LV_ITEM ;
+typedef int INT ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDS_CTRL_SHIFT ; 
- int /*<<< orphan*/  IDS_LEFT_ALT_SHIFT ; 
- int /*<<< orphan*/  IDS_NONE ; 
- int /*<<< orphan*/  IDS_SWITCH_BET_INLANG ; 
- int LVIF_PARAM ; 
- int LVIF_STATE ; 
- int LVIF_TEXT ; 
- int /*<<< orphan*/  ListView_DeleteAllItems (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ListView_InsertItem (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ListView_SetItemText (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MAX_STR_LEN ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- TYPE_2__ _KeySettings ; 
- int /*<<< orphan*/  hApplet ; 
+
+ int ARRAYSIZE (int *) ;
+ int IDS_CTRL_SHIFT ;
+ int IDS_LEFT_ALT_SHIFT ;
+ int IDS_NONE ;
+ int IDS_SWITCH_BET_INLANG ;
+ int LVIF_PARAM ;
+ int LVIF_STATE ;
+ int LVIF_TEXT ;
+ int ListView_DeleteAllItems (int ) ;
+ int ListView_InsertItem (int ,TYPE_1__*) ;
+ int ListView_SetItemText (int ,int ,int,int *) ;
+ int LoadStringW (int ,int ,int *,int ) ;
+ int MAX_STR_LEN ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ TYPE_2__ _KeySettings ;
+ int hApplet ;
 
 __attribute__((used)) static VOID
 UpdateKeySettingsListView(HWND hwndList)

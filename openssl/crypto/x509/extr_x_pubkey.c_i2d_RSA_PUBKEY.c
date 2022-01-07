@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * ptr; } ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * ptr; } ;
 struct TYPE_8__ {TYPE_1__ pkey; } ;
-typedef  int /*<<< orphan*/  RSA ;
-typedef  TYPE_2__ EVP_PKEY ;
+typedef int RSA ;
+typedef TYPE_2__ EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_F_I2D_RSA_PUBKEY ; 
- int /*<<< orphan*/  ASN1err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  EVP_PKEY_assign_RSA (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_free (TYPE_2__*) ; 
- TYPE_2__* EVP_PKEY_new () ; 
- int i2d_PUBKEY (TYPE_2__*,unsigned char**) ; 
+
+ int ASN1_F_I2D_RSA_PUBKEY ;
+ int ASN1err (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int EVP_PKEY_assign_RSA (TYPE_2__*,int *) ;
+ int EVP_PKEY_free (TYPE_2__*) ;
+ TYPE_2__* EVP_PKEY_new () ;
+ int i2d_PUBKEY (TYPE_2__*,unsigned char**) ;
 
 int i2d_RSA_PUBKEY(const RSA *a, unsigned char **pp)
 {
@@ -33,13 +33,13 @@ int i2d_RSA_PUBKEY(const RSA *a, unsigned char **pp)
     if (!a)
         return 0;
     pktmp = EVP_PKEY_new();
-    if (pktmp == NULL) {
+    if (pktmp == ((void*)0)) {
         ASN1err(ASN1_F_I2D_RSA_PUBKEY, ERR_R_MALLOC_FAILURE);
         return -1;
     }
     (void)EVP_PKEY_assign_RSA(pktmp, (RSA *)a);
     ret = i2d_PUBKEY(pktmp, pp);
-    pktmp->pkey.ptr = NULL;
+    pktmp->pkey.ptr = ((void*)0);
     EVP_PKEY_free(pktmp);
     return ret;
 }

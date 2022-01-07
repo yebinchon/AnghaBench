@@ -1,124 +1,124 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
-#define  OPTION_HELP 128 
- int STRBUFSZ ; 
- int /*<<< orphan*/  _IOLBF ; 
- scalar_t__ caph_enter () ; 
- scalar_t__ caph_limit_stdio () ; 
- char* demangle (char*) ; 
- int /*<<< orphan*/  err (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  errx (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int fgetc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  find_format (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format ; 
- int getopt_long (int,char**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ isalnum (int) ; 
- int /*<<< orphan*/  longopts ; 
- int noparam ; 
- int /*<<< orphan*/  optarg ; 
- scalar_t__ optind ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  putchar (int) ; 
- int /*<<< orphan*/  setvbuf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strchr (char*,int) ; 
- int stripus ; 
- int /*<<< orphan*/  usage () ; 
- int /*<<< orphan*/  version () ; 
- int /*<<< orphan*/  warnx (char*) ; 
+
+
+
+typedef int buf ;
+
+
+ int EOF ;
+ int EXIT_FAILURE ;
+
+ int STRBUFSZ ;
+ int _IOLBF ;
+ scalar_t__ caph_enter () ;
+ scalar_t__ caph_limit_stdio () ;
+ char* demangle (char*) ;
+ int err (int ,char*) ;
+ int errx (int ,char*,int ) ;
+ int exit (int ) ;
+ int fgetc (int ) ;
+ int find_format (int ) ;
+ int format ;
+ int getopt_long (int,char**,char*,int ,int *) ;
+ scalar_t__ isalnum (int) ;
+ int longopts ;
+ int noparam ;
+ int optarg ;
+ scalar_t__ optind ;
+ int printf (char*,char*) ;
+ int putchar (int) ;
+ int setvbuf (int ,int *,int ,int ) ;
+ int stdin ;
+ int stdout ;
+ scalar_t__ strchr (char*,int) ;
+ int stripus ;
+ int usage () ;
+ int version () ;
+ int warnx (char*) ;
 
 int
 main(int argc, char **argv)
 {
-	char *dem, buf[STRBUFSZ];
-	size_t p;
-	int c, n, opt;
+ char *dem, buf[STRBUFSZ];
+ size_t p;
+ int c, n, opt;
 
-	while ((opt = getopt_long(argc, argv, "_nps:V", longopts, NULL)) !=
-	    -1) {
-		switch (opt) {
-		case '_':
-			stripus = 1;
-			break;
-		case 'n':
-			stripus = 0;
-			break;
-		case 'p':
-			noparam = 1;
-			break;
-		case 's':
-			if ((format = find_format(optarg)) < 0)
-				errx(EXIT_FAILURE, "unsupported format: %s",
-				    optarg);
-			break;
-		case 'V':
-			version();
-			/* NOT REACHED */
-		case OPTION_HELP:
-		default:
-			usage();
-			/* NOT REACHED */
-		}
-	}
+ while ((opt = getopt_long(argc, argv, "_nps:V", longopts, ((void*)0))) !=
+     -1) {
+  switch (opt) {
+  case '_':
+   stripus = 1;
+   break;
+  case 'n':
+   stripus = 0;
+   break;
+  case 'p':
+   noparam = 1;
+   break;
+  case 's':
+   if ((format = find_format(optarg)) < 0)
+    errx(EXIT_FAILURE, "unsupported format: %s",
+        optarg);
+   break;
+  case 'V':
+   version();
 
-	argv += optind;
-	argc -= optind;
+  case 128:
+  default:
+   usage();
 
-	if (caph_limit_stdio() < 0)
-		err(EXIT_FAILURE, "failed to limit stdio rights");
-	if (caph_enter() < 0)
-		err(EXIT_FAILURE, "failed to enter capability mode");
+  }
+ }
 
-	if (*argv != NULL) {
-		for (n = 0; n < argc; n++) {
-			if ((dem = demangle(argv[n])) == NULL)
-				printf("%s\n", argv[n]);
-			else
-				printf("%s\n", dem);
-		}
-	} else {
-		p = 0;
-		for (;;) {
-			setvbuf(stdout, NULL, _IOLBF, 0);
-			c = fgetc(stdin);
-			if (c == EOF || !(isalnum(c) || strchr(".$_", c))) {
-				if (p > 0) {
-					buf[p] = '\0';
-					if ((dem = demangle(buf)) == NULL)
-						printf("%s", buf);
-					else
-						printf("%s", dem);
-					p = 0;
-				}
-				if (c == EOF)
-					break;
-				putchar(c);
-			} else {
-				if ((size_t) p >= sizeof(buf) - 1)
-					warnx("buffer overflowed");
-				else
-					buf[p++] = (char) c;
-			}
+ argv += optind;
+ argc -= optind;
 
-		}
-	}
+ if (caph_limit_stdio() < 0)
+  err(EXIT_FAILURE, "failed to limit stdio rights");
+ if (caph_enter() < 0)
+  err(EXIT_FAILURE, "failed to enter capability mode");
 
-	exit(0);
+ if (*argv != ((void*)0)) {
+  for (n = 0; n < argc; n++) {
+   if ((dem = demangle(argv[n])) == ((void*)0))
+    printf("%s\n", argv[n]);
+   else
+    printf("%s\n", dem);
+  }
+ } else {
+  p = 0;
+  for (;;) {
+   setvbuf(stdout, ((void*)0), _IOLBF, 0);
+   c = fgetc(stdin);
+   if (c == EOF || !(isalnum(c) || strchr(".$_", c))) {
+    if (p > 0) {
+     buf[p] = '\0';
+     if ((dem = demangle(buf)) == ((void*)0))
+      printf("%s", buf);
+     else
+      printf("%s", dem);
+     p = 0;
+    }
+    if (c == EOF)
+     break;
+    putchar(c);
+   } else {
+    if ((size_t) p >= sizeof(buf) - 1)
+     warnx("buffer overflowed");
+    else
+     buf[p++] = (char) c;
+   }
+
+  }
+ }
+
+ exit(0);
 }

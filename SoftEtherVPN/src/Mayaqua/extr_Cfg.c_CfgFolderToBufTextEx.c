@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CfgOutputFolderText (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  StrLen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG_CPYRIGHT ; 
- int /*<<< orphan*/  WriteBuf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FOLDER ;
+typedef int BUF ;
+
+
+ int CfgOutputFolderText (int *,int *,int ) ;
+ int * NewBuf () ;
+ int StrLen (int ) ;
+ int TAG_CPYRIGHT ;
+ int WriteBuf (int *,int ,int ) ;
 
 BUF *CfgFolderToBufTextEx(FOLDER *f, bool no_banner)
 {
-	BUF *b;
-	// Validate arguments
-	if (f == NULL)
-	{
-		return NULL;
-	}
+ BUF *b;
 
-	// Create a stream
-	b = NewBuf();
+ if (f == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	// Copyright notice
-	if (no_banner == false)
-	{
-		WriteBuf(b, TAG_CPYRIGHT, StrLen(TAG_CPYRIGHT));
-	}
 
-	// Output the root folder (recursive)
-	CfgOutputFolderText(b, f, 0);
+ b = NewBuf();
 
-	return b;
+
+ if (no_banner == 0)
+ {
+  WriteBuf(b, TAG_CPYRIGHT, StrLen(TAG_CPYRIGHT));
+ }
+
+
+ CfgOutputFolderText(b, f, 0);
+
+ return b;
 }

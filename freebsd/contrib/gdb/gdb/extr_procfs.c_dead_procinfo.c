@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* pathname; int pid; } ;
-typedef  TYPE_1__ procinfo ;
+typedef TYPE_1__ procinfo ;
 
-/* Variables and functions */
- int KILL ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  destroy_procinfo (TYPE_1__*) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  kill (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_sys_errmsg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+ int KILL ;
+ int SIGKILL ;
+ int destroy_procinfo (TYPE_1__*) ;
+ int errno ;
+ int error (char*) ;
+ int kill (int,int ) ;
+ int print_sys_errmsg (char*,int ) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static void
 dead_procinfo (procinfo *pi, char *msg, int kill_p)

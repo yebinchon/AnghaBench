@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
 
-/* Variables and functions */
- scalar_t__ TCP ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int,double) ; 
- double gbit (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  loop ; 
- int max_read_sockets ; 
- int /*<<< orphan*/  nrecv_total ; 
- scalar_t__ start_time ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ type ; 
- scalar_t__ uv_now (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  uv_update_time (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ int64_t ;
+
+
+ scalar_t__ TCP ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*,int,double) ;
+ double gbit (int ,scalar_t__) ;
+ int loop ;
+ int max_read_sockets ;
+ int nrecv_total ;
+ scalar_t__ start_time ;
+ int stderr ;
+ scalar_t__ type ;
+ scalar_t__ uv_now (int ) ;
+ int uv_update_time (int ) ;
 
 __attribute__((used)) static void read_show_stats(void) {
   int64_t diff;

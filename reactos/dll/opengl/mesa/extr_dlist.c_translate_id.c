@@ -1,38 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLvoid ;
-typedef  int /*<<< orphan*/  GLushort ;
-typedef  int GLuint ;
-typedef  int /*<<< orphan*/  GLubyte ;
-typedef  int GLsizei ;
-typedef  int /*<<< orphan*/  GLshort ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  int /*<<< orphan*/  GLfloat ;
-typedef  int GLenum ;
-typedef  int /*<<< orphan*/  GLbyte ;
 
-/* Variables and functions */
-#define  GL_2_BYTES 137 
-#define  GL_3_BYTES 136 
-#define  GL_4_BYTES 135 
-#define  GL_BYTE 134 
-#define  GL_FLOAT 133 
-#define  GL_INT 132 
-#define  GL_SHORT 131 
-#define  GL_UNSIGNED_BYTE 130 
-#define  GL_UNSIGNED_INT 129 
-#define  GL_UNSIGNED_SHORT 128 
 
+
+
+typedef int GLvoid ;
+typedef int GLushort ;
+typedef int GLuint ;
+typedef int GLubyte ;
+typedef int GLsizei ;
+typedef int GLshort ;
+typedef int GLint ;
+typedef int GLfloat ;
+typedef int GLenum ;
+typedef int GLbyte ;
 __attribute__((used)) static GLuint translate_id( GLsizei n, GLenum type, const GLvoid *list )
 {
    GLbyte *bptr;
@@ -44,36 +31,36 @@ __attribute__((used)) static GLuint translate_id( GLsizei n, GLenum type, const 
    GLfloat *fptr;
 
    switch (type) {
-      case GL_BYTE:
+      case 134:
          bptr = (GLbyte *) list;
          return (GLuint) *(bptr+n);
-      case GL_UNSIGNED_BYTE:
+      case 130:
          ubptr = (GLubyte *) list;
          return (GLuint) *(ubptr+n);
-      case GL_SHORT:
+      case 131:
          sptr = (GLshort *) list;
          return (GLuint) *(sptr+n);
-      case GL_UNSIGNED_SHORT:
+      case 128:
          usptr = (GLushort *) list;
          return (GLuint) *(usptr+n);
-      case GL_INT:
+      case 132:
          iptr = (GLint *) list;
          return (GLuint) *(iptr+n);
-      case GL_UNSIGNED_INT:
+      case 129:
          uiptr = (GLuint *) list;
          return (GLuint) *(uiptr+n);
-      case GL_FLOAT:
+      case 133:
          fptr = (GLfloat *) list;
          return (GLuint) *(fptr+n);
-      case GL_2_BYTES:
+      case 137:
          ubptr = ((GLubyte *) list) + 2*n;
          return (GLuint) *ubptr * 256 + (GLuint) *(ubptr+1);
-      case GL_3_BYTES:
+      case 136:
          ubptr = ((GLubyte *) list) + 3*n;
          return (GLuint) *ubptr * 65536
               + (GLuint) *(ubptr+1) * 256
               + (GLuint) *(ubptr+2);
-      case GL_4_BYTES:
+      case 135:
          ubptr = ((GLubyte *) list) + 4*n;
          return (GLuint) *ubptr * 16777216
               + (GLuint) *(ubptr+1) * 65536

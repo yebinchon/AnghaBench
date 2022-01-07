@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mips_arch_choice {int /*<<< orphan*/  hwr_names; int /*<<< orphan*/  cp0sel_names_len; int /*<<< orphan*/  cp0sel_names; int /*<<< orphan*/  cp0_names; } ;
-struct mips_abi_choice {int /*<<< orphan*/  fpr_names; int /*<<< orphan*/  gpr_names; } ;
 
-/* Variables and functions */
- struct mips_abi_choice* choose_abi_by_name (char const*,unsigned int) ; 
- struct mips_arch_choice* choose_arch_by_name (char const*,unsigned int) ; 
- int /*<<< orphan*/  mips_cp0_names ; 
- int /*<<< orphan*/  mips_cp0sel_names ; 
- int /*<<< orphan*/  mips_cp0sel_names_len ; 
- int /*<<< orphan*/  mips_fpr_names ; 
- int /*<<< orphan*/  mips_gpr_names ; 
- int /*<<< orphan*/  mips_hwr_names ; 
- unsigned int strlen (char*) ; 
- scalar_t__ strncmp (char*,char const*,unsigned int) ; 
+
+
+
+struct mips_arch_choice {int hwr_names; int cp0sel_names_len; int cp0sel_names; int cp0_names; } ;
+struct mips_abi_choice {int fpr_names; int gpr_names; } ;
+
+
+ struct mips_abi_choice* choose_abi_by_name (char const*,unsigned int) ;
+ struct mips_arch_choice* choose_arch_by_name (char const*,unsigned int) ;
+ int mips_cp0_names ;
+ int mips_cp0sel_names ;
+ int mips_cp0sel_names_len ;
+ int mips_fpr_names ;
+ int mips_gpr_names ;
+ int mips_hwr_names ;
+ unsigned int strlen (char*) ;
+ scalar_t__ strncmp (char*,char const*,unsigned int) ;
 
 __attribute__((used)) static void
 parse_mips_dis_option (const char *option, unsigned int len)
@@ -32,29 +32,20 @@ parse_mips_dis_option (const char *option, unsigned int len)
   const char *val;
   const struct mips_abi_choice *chosen_abi;
   const struct mips_arch_choice *chosen_arch;
-
-  /* Try to match options that are simple flags 
-  if (CONST_STRNEQ (option, "no-aliases"))
-    {
-      no_aliases = 1;
-      return;
-    } */
-  
-  /* Look for the = that delimits the end of the option name.  */
   for (i = 0; i < len; i++) {
-	  if (option[i] == '=') {
-		  break;
-	  }
+   if (option[i] == '=') {
+    break;
+   }
   }
 
-  if (i == 0) { /* Invalid option: no name before '='.  */
-	  return;
+  if (i == 0) {
+   return;
   }
-  if (i == len) { /* Invalid option: no '='.  */
-	  return;
+  if (i == len) {
+   return;
   }
-  if (i == (len - 1)) { /* Invalid option: no value after '='.  */
-	  return;
+  if (i == (len - 1)) {
+   return;
   }
 
   optionlen = i;
@@ -65,8 +56,8 @@ parse_mips_dis_option (const char *option, unsigned int len)
       && strlen ("gpr-names") == optionlen)
     {
       chosen_abi = choose_abi_by_name (val, vallen);
-      if (chosen_abi != NULL) {
-	      mips_gpr_names = chosen_abi->gpr_names;
+      if (chosen_abi != ((void*)0)) {
+       mips_gpr_names = chosen_abi->gpr_names;
       }
       return;
     }
@@ -75,8 +66,8 @@ parse_mips_dis_option (const char *option, unsigned int len)
       && strlen ("fpr-names") == optionlen)
     {
       chosen_abi = choose_abi_by_name (val, vallen);
-      if (chosen_abi != NULL) {
-	      mips_fpr_names = chosen_abi->fpr_names;
+      if (chosen_abi != ((void*)0)) {
+       mips_fpr_names = chosen_abi->fpr_names;
       }
       return;
     }
@@ -85,12 +76,12 @@ parse_mips_dis_option (const char *option, unsigned int len)
       && strlen ("cp0-names") == optionlen)
     {
       chosen_arch = choose_arch_by_name (val, vallen);
-      if (chosen_arch != NULL)
-	{
-	  mips_cp0_names = chosen_arch->cp0_names;
-	  mips_cp0sel_names = chosen_arch->cp0sel_names;
-	  mips_cp0sel_names_len = chosen_arch->cp0sel_names_len;
-	}
+      if (chosen_arch != ((void*)0))
+ {
+   mips_cp0_names = chosen_arch->cp0_names;
+   mips_cp0sel_names = chosen_arch->cp0sel_names;
+   mips_cp0sel_names_len = chosen_arch->cp0sel_names_len;
+ }
       return;
     }
 
@@ -98,8 +89,8 @@ parse_mips_dis_option (const char *option, unsigned int len)
       && strlen ("hwr-names") == optionlen)
     {
       chosen_arch = choose_arch_by_name (val, vallen);
-      if (chosen_arch != NULL) {
-	      mips_hwr_names = chosen_arch->hwr_names;
+      if (chosen_arch != ((void*)0)) {
+       mips_hwr_names = chosen_arch->hwr_names;
       }
       return;
     }
@@ -107,26 +98,26 @@ parse_mips_dis_option (const char *option, unsigned int len)
   if (strncmp ("reg-names", option, optionlen) == 0
       && strlen ("reg-names") == optionlen)
     {
-      /* We check both ABI and ARCH here unconditionally, so
-	 that "numeric" will do the desirable thing: select
-	 numeric register names for all registers.  Other than
-	 that, a given name probably won't match both.  */
+
+
+
+
       chosen_abi = choose_abi_by_name (val, vallen);
-      if (chosen_abi != NULL)
-	{
-	  mips_gpr_names = chosen_abi->gpr_names;
-	  mips_fpr_names = chosen_abi->fpr_names;
-	}
+      if (chosen_abi != ((void*)0))
+ {
+   mips_gpr_names = chosen_abi->gpr_names;
+   mips_fpr_names = chosen_abi->fpr_names;
+ }
       chosen_arch = choose_arch_by_name (val, vallen);
-      if (chosen_arch != NULL)
-	{
-	  mips_cp0_names = chosen_arch->cp0_names;
-	  mips_cp0sel_names = chosen_arch->cp0sel_names;
-	  mips_cp0sel_names_len = chosen_arch->cp0sel_names_len;
-	  mips_hwr_names = chosen_arch->hwr_names;
-	}
+      if (chosen_arch != ((void*)0))
+ {
+   mips_cp0_names = chosen_arch->cp0_names;
+   mips_cp0sel_names = chosen_arch->cp0sel_names;
+   mips_cp0sel_names_len = chosen_arch->cp0sel_names_len;
+   mips_hwr_names = chosen_arch->hwr_names;
+ }
       return;
     }
 
-  /* Invalid option.  */
+
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_lldp_callback_t ;
-typedef  int /*<<< orphan*/  sd_lldp ;
-typedef  int /*<<< orphan*/  sd_event ;
 
-/* Variables and functions */
- int sd_lldp_attach_event (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sd_lldp_new (int /*<<< orphan*/ **) ; 
- int sd_lldp_set_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int sd_lldp_set_ifindex (int /*<<< orphan*/ *,int) ; 
- int sd_lldp_start (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_lldp_callback_t ;
+typedef int sd_lldp ;
+typedef int sd_event ;
+
+
+ int sd_lldp_attach_event (int *,int *,int ) ;
+ int sd_lldp_new (int **) ;
+ int sd_lldp_set_callback (int *,int ,void*) ;
+ int sd_lldp_set_ifindex (int *,int) ;
+ int sd_lldp_start (int *) ;
 
 __attribute__((used)) static int start_lldp(sd_lldp **lldp, sd_event *e, sd_lldp_callback_t cb, void *cb_data) {
         int r;

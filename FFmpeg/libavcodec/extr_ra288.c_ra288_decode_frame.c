@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_15__ {int block_align; TYPE_1__* priv_data; } ;
 struct TYPE_14__ {int nb_samples; scalar_t__* data; } ;
-struct TYPE_13__ {int size; int /*<<< orphan*/ * data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  gain_lpc; int /*<<< orphan*/  gain_rec; int /*<<< orphan*/ * gain_hist; int /*<<< orphan*/  sp_lpc; int /*<<< orphan*/  sp_rec; int /*<<< orphan*/ * sp_hist; } ;
-typedef  TYPE_1__ RA288Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_13__ {int size; int * data; } ;
+struct TYPE_12__ {int gain_lpc; int gain_rec; int * gain_hist; int sp_lpc; int sp_rec; int * sp_hist; } ;
+typedef TYPE_1__ RA288Context ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int RA288_BLOCKS_PER_FRAME ; 
- int RA288_BLOCK_SIZE ; 
- float* amptable ; 
- int /*<<< orphan*/  av_log (TYPE_4__*,int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  backward_filter (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  decode (TYPE_1__*,float,int) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gain_bw_tab ; 
- int /*<<< orphan*/  gain_window ; 
- size_t get_bits (int /*<<< orphan*/ *,int) ; 
- int init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  memcpy (float*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  syn_bw_tab ; 
- int /*<<< orphan*/  syn_window ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int RA288_BLOCKS_PER_FRAME ;
+ int RA288_BLOCK_SIZE ;
+ float* amptable ;
+ int av_log (TYPE_4__*,int ,char*,int,int) ;
+ int backward_filter (TYPE_1__*,int *,int ,int ,int ,int ,int,int,int,int) ;
+ int decode (TYPE_1__*,float,int) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int gain_bw_tab ;
+ int gain_window ;
+ size_t get_bits (int *,int) ;
+ int init_get_bits8 (int *,int const*,int) ;
+ int memcpy (float*,int *,int) ;
+ int syn_bw_tab ;
+ int syn_window ;
 
 __attribute__((used)) static int ra288_decode_frame(AVCodecContext * avctx, void *data,
                               int *got_frame_ptr, AVPacket *avpkt)
 {
-    AVFrame *frame     = data;
+    AVFrame *frame = data;
     const uint8_t *buf = avpkt->data;
     int buf_size = avpkt->size;
     float *out;
@@ -65,7 +65,7 @@ __attribute__((used)) static int ra288_decode_frame(AVCodecContext * avctx, void
     if (ret < 0)
         return ret;
 
-    /* get output buffer */
+
     frame->nb_samples = RA288_BLOCK_SIZE * RA288_BLOCKS_PER_FRAME;
     if ((ret = ff_get_buffer(avctx, frame, 0)) < 0)
         return ret;

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CANCEL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Cancel (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseCancel (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int CANCEL ;
+
+
+ int Cancel (int *) ;
+ int DeleteAll (int *) ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int ReleaseCancel (int *) ;
 
 void CancelList(LIST *o)
 {
-	UINT i;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return;
-	}
+ UINT i;
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		CANCEL *c = LIST_DATA(o, i);
-		Cancel(c);
-		ReleaseCancel(c);
-	}
+ if (o == ((void*)0))
+ {
+  return;
+ }
 
-	DeleteAll(o);
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  CANCEL *c = LIST_DATA(o, i);
+  Cancel(c);
+  ReleaseCancel(c);
+ }
+
+ DeleteAll(o);
 }

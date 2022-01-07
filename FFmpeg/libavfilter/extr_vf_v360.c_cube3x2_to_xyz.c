@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {float fout_pad; float out_width; float out_pad; float out_height; } ;
-typedef  TYPE_1__ V360Context ;
+typedef TYPE_1__ V360Context ;
 
-/* Variables and functions */
- int const ceilf (float const) ; 
- int /*<<< orphan*/  cube_to_xyz (TYPE_1__ const*,float const,float const,int const,float*,float const,float const) ; 
- int floorf (int) ; 
+
+ int const ceilf (float const) ;
+ int cube_to_xyz (TYPE_1__ const*,float const,float const,int const,float*,float const,float const) ;
+ int floorf (int) ;
 
 __attribute__((used)) static void cube3x2_to_xyz(const V360Context *s,
                            int i, int j, int width, int height,
                            float *vec)
 {
-    const float scalew = s->fout_pad > 0 ? 1.f - s->fout_pad / (s->out_width  / 3.f) : 1.f - s->out_pad;
+    const float scalew = s->fout_pad > 0 ? 1.f - s->fout_pad / (s->out_width / 3.f) : 1.f - s->out_pad;
     const float scaleh = s->fout_pad > 0 ? 1.f - s->fout_pad / (s->out_height / 2.f) : 1.f - s->out_pad;
 
-    const float ew = width  / 3.f;
+    const float ew = width / 3.f;
     const float eh = height / 2.f;
 
     const int u_face = floorf(i / ew);

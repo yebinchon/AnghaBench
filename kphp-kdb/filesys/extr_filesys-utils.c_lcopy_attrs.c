@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  times ;
-struct timeval {int /*<<< orphan*/  tv_sec; } ;
-struct stat {int /*<<< orphan*/  st_mode; int /*<<< orphan*/  st_mtime; int /*<<< orphan*/  st_atime; int /*<<< orphan*/  st_gid; int /*<<< orphan*/  st_uid; } ;
 
-/* Variables and functions */
- int ENOSYS ; 
- int /*<<< orphan*/  S_ISLNK (int /*<<< orphan*/ ) ; 
- scalar_t__ chmod (char*,int /*<<< orphan*/ ) ; 
- int errno ; 
- scalar_t__ lchown (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ lutimes (char*,struct timeval*) ; 
- int /*<<< orphan*/  memset (struct timeval*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ utimes (char*,struct timeval*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
 
-int lcopy_attrs (char *filename, struct stat *S)  {
+
+
+typedef int times ;
+struct timeval {int tv_sec; } ;
+struct stat {int st_mode; int st_mtime; int st_atime; int st_gid; int st_uid; } ;
+
+
+ int ENOSYS ;
+ int S_ISLNK (int ) ;
+ scalar_t__ chmod (char*,int ) ;
+ int errno ;
+ scalar_t__ lchown (char*,int ,int ) ;
+ scalar_t__ lutimes (char*,struct timeval*) ;
+ int memset (struct timeval*,int ,int) ;
+ scalar_t__ utimes (char*,struct timeval*) ;
+ int vkprintf (int,char*,char*) ;
+
+int lcopy_attrs (char *filename, struct stat *S) {
   if (!S_ISLNK (S->st_mode)) {
     if (chmod (filename, S->st_mode) < 0) {
       vkprintf (1, "chmod for %s failed. %m\n", filename);

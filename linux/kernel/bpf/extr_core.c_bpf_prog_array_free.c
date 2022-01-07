@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct bpf_prog_array {int dummy; } ;
 struct TYPE_2__ {struct bpf_prog_array hdr; } ;
 
-/* Variables and functions */
- TYPE_1__ empty_prog_array ; 
- int /*<<< orphan*/  kfree_rcu (struct bpf_prog_array*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rcu ; 
+
+ TYPE_1__ empty_prog_array ;
+ int kfree_rcu (struct bpf_prog_array*,int ) ;
+ int rcu ;
 
 void bpf_prog_array_free(struct bpf_prog_array *progs)
 {
-	if (!progs || progs == &empty_prog_array.hdr)
-		return;
-	kfree_rcu(progs, rcu);
+ if (!progs || progs == &empty_prog_array.hdr)
+  return;
+ kfree_rcu(progs, rcu);
 }

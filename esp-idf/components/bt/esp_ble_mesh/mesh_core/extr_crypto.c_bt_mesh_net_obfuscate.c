@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8_t ;
-typedef  int /*<<< orphan*/  u32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  bt_hex (int const*,int) ; 
- int bt_mesh_encrypt_be (int const*,int*,int*) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  sys_put_be32 (int /*<<< orphan*/ ,int*) ; 
+
+
+
+typedef int u8_t ;
+typedef int u32_t ;
+
+
+ int BT_DBG (char*,int ,...) ;
+ int bt_hex (int const*,int) ;
+ int bt_mesh_encrypt_be (int const*,int*,int*) ;
+ int memcpy (int*,int*,int) ;
+ int sys_put_be32 (int ,int*) ;
 
 int bt_mesh_net_obfuscate(u8_t *pdu, u32_t iv_index,
                           const u8_t privacy_key[16])

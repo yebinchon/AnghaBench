@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ krb5_error_code ;
-typedef  int /*<<< orphan*/  krb5_context ;
-struct TYPE_7__ {int /*<<< orphan*/ * hdb__del; int /*<<< orphan*/ * hdb__put; int /*<<< orphan*/ * hdb__get; int /*<<< orphan*/  hdb_rename; int /*<<< orphan*/  hdb_destroy; int /*<<< orphan*/  hdb_remove; int /*<<< orphan*/  hdb_store; int /*<<< orphan*/  hdb_fetch_kvno; int /*<<< orphan*/  hdb_nextkey; int /*<<< orphan*/  hdb_firstkey; int /*<<< orphan*/  hdb_unlock; int /*<<< orphan*/  hdb_lock; int /*<<< orphan*/  hdb_close; int /*<<< orphan*/  hdb_open; scalar_t__ hdb_capability_flags; scalar_t__ hdb_openp; scalar_t__ hdb_master_key_set; struct TYPE_7__* hdb_db; } ;
-typedef  TYPE_1__ hdb_sqlite_db ;
-typedef  TYPE_1__ HDB ;
 
-/* Variables and functions */
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  hdb_sqlite_close ; 
- int /*<<< orphan*/  hdb_sqlite_destroy ; 
- int /*<<< orphan*/  hdb_sqlite_fetch_kvno ; 
- int /*<<< orphan*/  hdb_sqlite_firstkey ; 
- int /*<<< orphan*/  hdb_sqlite_lock ; 
- scalar_t__ hdb_sqlite_make_database (int /*<<< orphan*/ ,TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  hdb_sqlite_nextkey ; 
- int /*<<< orphan*/  hdb_sqlite_open ; 
- int /*<<< orphan*/  hdb_sqlite_remove ; 
- int /*<<< orphan*/  hdb_sqlite_rename ; 
- int /*<<< orphan*/  hdb_sqlite_store ; 
- int /*<<< orphan*/  hdb_sqlite_unlock ; 
- scalar_t__ krb5_enomem (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ krb5_error_code ;
+typedef int krb5_context ;
+struct TYPE_7__ {int * hdb__del; int * hdb__put; int * hdb__get; int hdb_rename; int hdb_destroy; int hdb_remove; int hdb_store; int hdb_fetch_kvno; int hdb_nextkey; int hdb_firstkey; int hdb_unlock; int hdb_lock; int hdb_close; int hdb_open; scalar_t__ hdb_capability_flags; scalar_t__ hdb_openp; scalar_t__ hdb_master_key_set; struct TYPE_7__* hdb_db; } ;
+typedef TYPE_1__ hdb_sqlite_db ;
+typedef TYPE_1__ HDB ;
+
+
+ TYPE_1__* calloc (int,int) ;
+ int free (TYPE_1__*) ;
+ int hdb_sqlite_close ;
+ int hdb_sqlite_destroy ;
+ int hdb_sqlite_fetch_kvno ;
+ int hdb_sqlite_firstkey ;
+ int hdb_sqlite_lock ;
+ scalar_t__ hdb_sqlite_make_database (int ,TYPE_1__*,char const*) ;
+ int hdb_sqlite_nextkey ;
+ int hdb_sqlite_open ;
+ int hdb_sqlite_remove ;
+ int hdb_sqlite_rename ;
+ int hdb_sqlite_store ;
+ int hdb_sqlite_unlock ;
+ scalar_t__ krb5_enomem (int ) ;
 
 krb5_error_code
 hdb_sqlite_create(krb5_context context, HDB **db, const char *argument)
@@ -41,19 +41,19 @@ hdb_sqlite_create(krb5_context context, HDB **db, const char *argument)
     hdb_sqlite_db *hsdb;
 
     *db = calloc(1, sizeof (**db));
-    if (*db == NULL)
-	return krb5_enomem(context);
+    if (*db == ((void*)0))
+ return krb5_enomem(context);
 
     hsdb = (hdb_sqlite_db*) calloc(1, sizeof (*hsdb));
-    if (hsdb == NULL) {
+    if (hsdb == ((void*)0)) {
         free(*db);
-        *db = NULL;
-	return krb5_enomem(context);
+        *db = ((void*)0);
+ return krb5_enomem(context);
     }
 
     (*db)->hdb_db = hsdb;
 
-    /* XXX make_database should make sure everything else is freed on error */
+
     ret = hdb_sqlite_make_database(context, *db, argument);
     if (ret) {
         free((*db)->hdb_db);
@@ -78,9 +78,9 @@ hdb_sqlite_create(krb5_context context, HDB **db, const char *argument)
     (*db)->hdb_remove = hdb_sqlite_remove;
     (*db)->hdb_destroy = hdb_sqlite_destroy;
     (*db)->hdb_rename = hdb_sqlite_rename;
-    (*db)->hdb__get = NULL;
-    (*db)->hdb__put = NULL;
-    (*db)->hdb__del = NULL;
+    (*db)->hdb__get = ((void*)0);
+    (*db)->hdb__put = ((void*)0);
+    (*db)->hdb__del = ((void*)0);
 
     return 0;
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  t_List ;
-typedef  TYPE_1__* t_Handle ;
-typedef  int /*<<< orphan*/  t_FmPcdModifyCcKeyAdditionalParams ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
+typedef int t_List ;
+typedef TYPE_1__* t_Handle ;
+typedef int t_FmPcdModifyCcKeyAdditionalParams ;
 struct TYPE_11__ {scalar_t__ numOfKeys; scalar_t__ maxNumOfKeys; scalar_t__ h_FmPcd; } ;
-typedef  TYPE_1__ t_FmPcdCcNode ;
-typedef  int /*<<< orphan*/  t_FmPcdCcNextEngineParams ;
-struct TYPE_12__ {int /*<<< orphan*/  shadowLock; int /*<<< orphan*/  h_ShadowSpinlock; } ;
-typedef  TYPE_3__ t_FmPcd ;
-typedef  scalar_t__ t_Error ;
+typedef TYPE_1__ t_FmPcdCcNode ;
+typedef int t_FmPcdCcNextEngineParams ;
+struct TYPE_12__ {int shadowLock; int h_ShadowSpinlock; } ;
+typedef TYPE_3__ t_FmPcd ;
+typedef scalar_t__ t_Error ;
 
-/* Variables and functions */
- scalar_t__ BuildNewNodeModifyNextEngine (TYPE_1__*,TYPE_1__*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ DoDynamicChange (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_BUSY ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- scalar_t__ E_INVALID_STATE ; 
- int /*<<< orphan*/  E_INVALID_VALUE ; 
- scalar_t__ E_OK ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  INIT_LIST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/ * ModifyNodeCommonPart (TYPE_1__*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRY_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XX_Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  e_MODIFY_STATE_CHANGE ; 
+
+ scalar_t__ BuildNewNodeModifyNextEngine (TYPE_1__*,TYPE_1__*,scalar_t__,int *,int *,int *,int *) ;
+ scalar_t__ DoDynamicChange (TYPE_3__*,int *,int *,int *,int ) ;
+ scalar_t__ ERROR_CODE (int ) ;
+ int E_BUSY ;
+ int E_INVALID_HANDLE ;
+ scalar_t__ E_INVALID_STATE ;
+ int E_INVALID_VALUE ;
+ scalar_t__ E_OK ;
+ int FALSE ;
+ int INIT_LIST (int *) ;
+ int MAJOR ;
+ int * ModifyNodeCommonPart (TYPE_1__*,scalar_t__,int ,int ,int ,int ) ;
+ char* NO_MSG ;
+ int RELEASE_LOCK (int ) ;
+ int RETURN_ERROR (int ,scalar_t__,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_1__*,int ) ;
+ int TRY_LOCK (int ,int *) ;
+ int XX_Free (int *) ;
+ int e_MODIFY_STATE_CHANGE ;
 
 __attribute__((used)) static t_Error ModifyNextEngineParamNode(
         t_Handle h_FmPcd, t_Handle h_FmPcdCcNode, uint16_t keyIndex,

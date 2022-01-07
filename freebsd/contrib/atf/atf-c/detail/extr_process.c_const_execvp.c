@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  UNCONST (char const* const*) ; 
- int execvp (char const*,int /*<<< orphan*/ ) ; 
+ int UNCONST (char const* const*) ;
+ int execvp (char const*,int ) ;
 
 __attribute__((used)) static
 int
 const_execvp(const char *file, const char *const *argv)
 {
-#define UNCONST(a) ((void *)(unsigned long)(const void *)(a))
-    return execvp(file, UNCONST(argv));
-#undef UNCONST
+
+    return execvp(file, ((void *)(unsigned long)(const void *)(argv)));
+
 }

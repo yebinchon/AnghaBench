@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  error; int /*<<< orphan*/  section; int /*<<< orphan*/  data; } ;
-typedef  int LONG ;
-typedef  scalar_t__ HINF ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  SetupCloseInfFile (scalar_t__) ; 
- int SetupGetLineCountA (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok (int,char*,unsigned int,int /*<<< orphan*/ ,...) ; 
- TYPE_1__* section_names ; 
- scalar_t__ test_file_contents (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*,scalar_t__,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_3__ {int error; int section; int data; } ;
+typedef int LONG ;
+typedef scalar_t__ HINF ;
+typedef int DWORD ;
+
+
+ unsigned int ARRAY_SIZE (TYPE_1__*) ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int SetLastError (int) ;
+ int SetupCloseInfFile (scalar_t__) ;
+ int SetupGetLineCountA (scalar_t__,int ) ;
+ int ok (int,char*,unsigned int,int ,...) ;
+ TYPE_1__* section_names ;
+ scalar_t__ test_file_contents (int ,int *) ;
+ int trace (char*,scalar_t__,int,int ) ;
 
 __attribute__((used)) static void test_section_names(void)
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_thread_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int vout_thread_t ;
 struct TYPE_6__ {float i_int; char* psz_string; float f_float; scalar_t__ b_bool; } ;
-typedef  TYPE_1__ vlc_value_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+typedef TYPE_1__ vlc_value_t ;
+typedef int vlc_object_t ;
 
-/* Variables and functions */
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_UNUSED (TYPE_1__) ; 
- int /*<<< orphan*/  VLC_VAR_FLOAT ; 
- int /*<<< orphan*/  VLC_VAR_STRING ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int var_GetInteger (int /*<<< orphan*/ *,char*) ; 
- char* var_GetString (int /*<<< orphan*/ *,char*) ; 
- int vout_osd_PrintVariableText (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,TYPE_1__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vouts_osd_Message (int /*<<< orphan*/ **,int,int /*<<< orphan*/ ,...) ; 
+
+ int VLC_SUCCESS ;
+ int VLC_UNUSED (TYPE_1__) ;
+ int VLC_VAR_FLOAT ;
+ int VLC_VAR_STRING ;
+ int _ (char*) ;
+ int free (char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int var_GetInteger (int *,char*) ;
+ char* var_GetString (int *,char*) ;
+ int vout_osd_PrintVariableText (int *,char const*,int ,TYPE_1__,int ) ;
+ int vouts_osd_Message (int **,int,int ,...) ;
 
 int
 vlc_player_vout_OSDCallback(vlc_object_t *this, const char *var,
@@ -90,7 +90,7 @@ vlc_player_vout_OSDCallback(vlc_object_t *this, const char *var,
             vouts_osd_Message(&vout, 1, _("Zooming reset"));
         else
         {
-            bool found =  vout_osd_PrintVariableText(vout, var, VLC_VAR_FLOAT,
+            bool found = vout_osd_PrintVariableText(vout, var, VLC_VAR_FLOAT,
                                                      newval, _("Zoom mode: %s"));
             if (!found)
                 vouts_osd_Message(&vout, 1, _("Zoom: x%f"), newval.f_float);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  size_t ULONG ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef size_t ULONG ;
 struct TYPE_2__ {scalar_t__ Address; } ;
-typedef  size_t* PULONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef size_t* PULONG ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- size_t GspSwBreakpointCount ; 
- TYPE_1__* GspSwBreakpoints ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int FALSE ;
+ size_t GspSwBreakpointCount ;
+ TYPE_1__* GspSwBreakpoints ;
+ int TRUE ;
 
 __attribute__((used)) static BOOLEAN
 GspFindSwBreakpoint(ULONG_PTR Address, PULONG PIndex)

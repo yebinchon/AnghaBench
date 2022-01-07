@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ra_swapchain {struct priv* priv; } ;
-struct priv {scalar_t__ main_fb; int /*<<< orphan*/  wrapped_fb; TYPE_1__* gl; } ;
-struct TYPE_2__ {int es; int mpgl_caps; int /*<<< orphan*/  (* BindFramebuffer ) (int /*<<< orphan*/ ,scalar_t__) ;int /*<<< orphan*/  (* GetFramebufferAttachmentParameteriv ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ;scalar_t__ version; } ;
-typedef  int GLint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  TYPE_1__ GL ;
+struct priv {scalar_t__ main_fb; int wrapped_fb; TYPE_1__* gl; } ;
+struct TYPE_2__ {int es; int mpgl_caps; int (* BindFramebuffer ) (int ,scalar_t__) ;int (* GetFramebufferAttachmentParameteriv ) (int ,int ,int ,int*) ;scalar_t__ version; } ;
+typedef int GLint ;
+typedef int GLenum ;
+typedef TYPE_1__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_BACK ; 
- int /*<<< orphan*/  GL_BACK_LEFT ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER_ATTACHMENT_GREEN_SIZE ; 
- int MPGL_CAP_FB ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int GL_BACK ;
+ int GL_BACK_LEFT ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_FRAMEBUFFER ;
+ int GL_FRAMEBUFFER_ATTACHMENT_GREEN_SIZE ;
+ int MPGL_CAP_FB ;
+ int stub1 (int ,scalar_t__) ;
+ int stub2 (int ,int ,int ,int*) ;
+ int stub3 (int ,scalar_t__) ;
 
 int ra_gl_ctx_color_depth(struct ra_swapchain *sw)
 {

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADSP_STATE_READY_TIMEOUT_MS ; 
- scalar_t__ __q6core_is_adsp_ready (TYPE_1__*) ; 
- TYPE_1__* g_core ; 
- unsigned long jiffies ; 
- unsigned long msecs_to_jiffies (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  time_after (unsigned long,unsigned long) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lock; } ;
+
+
+ int ADSP_STATE_READY_TIMEOUT_MS ;
+ scalar_t__ __q6core_is_adsp_ready (TYPE_1__*) ;
+ TYPE_1__* g_core ;
+ unsigned long jiffies ;
+ unsigned long msecs_to_jiffies (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int time_after (unsigned long,unsigned long) ;
 
 bool q6core_is_adsp_ready(void)
 {
-	unsigned long  timeout;
-	bool ret = false;
+ unsigned long timeout;
+ bool ret = 0;
 
-	if (!g_core)
-		return false;
+ if (!g_core)
+  return 0;
 
-	mutex_lock(&g_core->lock);
-	timeout = jiffies + msecs_to_jiffies(ADSP_STATE_READY_TIMEOUT_MS);
-	for (;;) {
-		if (__q6core_is_adsp_ready(g_core)) {
-			ret = true;
-			break;
-		}
+ mutex_lock(&g_core->lock);
+ timeout = jiffies + msecs_to_jiffies(ADSP_STATE_READY_TIMEOUT_MS);
+ for (;;) {
+  if (__q6core_is_adsp_ready(g_core)) {
+   ret = 1;
+   break;
+  }
 
-		if (!time_after(timeout, jiffies)) {
-			ret = false;
-			break;
-		}
-	}
+  if (!time_after(timeout, jiffies)) {
+   ret = 0;
+   break;
+  }
+ }
 
-	mutex_unlock(&g_core->lock);
-	return ret;
+ mutex_unlock(&g_core->lock);
+ return ret;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Iterator ;
-typedef  int /*<<< orphan*/  FDSet ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/  MAKE_SET (int /*<<< orphan*/ *) ; 
- int PTR_TO_FD (void*) ; 
- int /*<<< orphan*/  set_iterate (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
+
+
+
+typedef int Iterator ;
+typedef int FDSet ;
+
+
+ int ENOENT ;
+ int MAKE_SET (int *) ;
+ int PTR_TO_FD (void*) ;
+ int set_iterate (int ,int *,void**) ;
 
 int fdset_iterate(FDSet *s, Iterator *i) {
         void *p;

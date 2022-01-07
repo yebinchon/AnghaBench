@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ata_pci_controller {int (* ch_suspend ) (int /*<<< orphan*/ ) ;} ;
-struct ata_channel {int /*<<< orphan*/  attached; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ata_suspend (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
- void* device_get_softc (int /*<<< orphan*/ ) ; 
- int stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct ata_pci_controller {int (* ch_suspend ) (int ) ;} ;
+struct ata_channel {int attached; } ;
+typedef int device_t ;
+
+
+ int ata_suspend (int ) ;
+ int device_get_parent (int ) ;
+ void* device_get_softc (int ) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static int
 ata_pcichannel_suspend(device_t dev)
@@ -28,13 +28,13 @@ ata_pcichannel_suspend(device_t dev)
     int error;
 
     if (!ch->attached)
-	return (0);
+ return (0);
 
     if ((error = ata_suspend(dev)))
-	return (error);
+ return (error);
 
-    if (ctlr->ch_suspend != NULL && (error = ctlr->ch_suspend(dev)))
-	return (error);
+    if (ctlr->ch_suspend != ((void*)0) && (error = ctlr->ch_suspend(dev)))
+ return (error);
 
     return (0);
 }

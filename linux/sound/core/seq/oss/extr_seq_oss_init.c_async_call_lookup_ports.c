@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct work_struct {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snd_seq_oss_midi_lookup_ports (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  system_client ; 
+
+ int snd_seq_oss_midi_lookup_ports (int ) ;
+ int system_client ;
 
 __attribute__((used)) static void async_call_lookup_ports(struct work_struct *work)
 {
-	snd_seq_oss_midi_lookup_ports(system_client);
+ snd_seq_oss_midi_lookup_ports(system_client);
 }

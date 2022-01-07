@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  UID ;
-struct TYPE_2__ {int local_tags_count; scalar_t__ local_tags; int /*<<< orphan*/  fc; } ;
-typedef  TYPE_1__ MXFContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  ENOMEM ; 
- scalar_t__ av_calloc (int,int) ; 
- int /*<<< orphan*/  av_free (scalar_t__) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_read (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int /*<<< orphan*/  avpriv_request_sample (int /*<<< orphan*/ *,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int UID ;
+struct TYPE_2__ {int local_tags_count; scalar_t__ local_tags; int fc; } ;
+typedef TYPE_1__ MXFContext ;
+typedef int AVIOContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ int ENOMEM ;
+ scalar_t__ av_calloc (int,int) ;
+ int av_free (scalar_t__) ;
+ int av_log (int ,int ,char*,...) ;
+ int avio_rb32 (int *) ;
+ int avio_read (int *,scalar_t__,int) ;
+ int avpriv_request_sample (int *,char*,int) ;
 
 __attribute__((used)) static int mxf_read_primer_pack(void *arg, AVIOContext *pb, int tag, int size, UID uid, int64_t klv_offset)
 {

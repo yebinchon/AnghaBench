@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
 struct TYPE_4__ {int dwFileAttributes; int* cFileName; } ;
-typedef  TYPE_1__ WIN32_FIND_DATAW ;
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  scalar_t__ LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HANDLE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ WIN32_FIND_DATAW ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int TCHAR ;
+typedef scalar_t__ LRESULT ;
+typedef int LPARAM ;
+typedef int HWND ;
+typedef scalar_t__ HANDLE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CB_ADDSTRING ; 
- scalar_t__ CB_ERR ; 
- int /*<<< orphan*/  CB_SETITEMDATA ; 
- int /*<<< orphan*/  ComboBox_AddString (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFileW (int*,TYPE_1__*) ; 
- scalar_t__ FindNextFileW (scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int GetWindowsDirectoryW (int*,int) ; 
- int /*<<< orphan*/  IDC_SOUND_LIST ; 
- int /*<<< orphan*/  IDS_NO_SOUND ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int MAX_PATH ; 
- scalar_t__ SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEXT (char) ; 
- int /*<<< orphan*/  TRUE ; 
- int _countof (int /*<<< orphan*/ *) ; 
- scalar_t__ _wcsdup (int*) ; 
- int /*<<< orphan*/  hApplet ; 
- int /*<<< orphan*/  wcscpy (int*,char*) ; 
- int* wcsrchr (int*,int) ; 
+
+ int CB_ADDSTRING ;
+ scalar_t__ CB_ERR ;
+ int CB_SETITEMDATA ;
+ int ComboBox_AddString (int ,int *) ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFileW (int*,TYPE_1__*) ;
+ scalar_t__ FindNextFileW (scalar_t__,TYPE_1__*) ;
+ int GetDlgItem (int ,int ) ;
+ int GetWindowsDirectoryW (int*,int) ;
+ int IDC_SOUND_LIST ;
+ int IDS_NO_SOUND ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ LoadString (int ,int ,int *,int) ;
+ int MAX_PATH ;
+ scalar_t__ SendDlgItemMessageW (int ,int ,int ,int ,int ) ;
+ int TEXT (char) ;
+ int TRUE ;
+ int _countof (int *) ;
+ scalar_t__ _wcsdup (int*) ;
+ int hApplet ;
+ int wcscpy (int*,char*) ;
+ int* wcsrchr (int*,int) ;
 
 BOOL
 LoadSoundFiles(HWND hwndDlg)
@@ -60,14 +60,14 @@ LoadSoundFiles(HWND hwndDlg)
     LRESULT lResult;
     UINT length;
 
-    /* Add no sound listview item */
+
     if (LoadString(hApplet, IDS_NO_SOUND, szList, _countof(szList)))
     {
         szList[_countof(szList) - 1] = TEXT('\0');
         ComboBox_AddString(GetDlgItem(hwndDlg, IDC_SOUND_LIST), szList);
     }
 
-    /* Load sound files */
+
     length = GetWindowsDirectoryW(szPath, MAX_PATH);
     if (length == 0 || length >= MAX_PATH - 9)
     {

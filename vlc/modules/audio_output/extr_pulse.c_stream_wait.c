@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pa_threaded_mainloop ;
-typedef  scalar_t__ pa_stream_state_t ;
-typedef  int /*<<< orphan*/  pa_stream ;
 
-/* Variables and functions */
- scalar_t__ PA_STREAM_FAILED ; 
- scalar_t__ PA_STREAM_READY ; 
- scalar_t__ PA_STREAM_TERMINATED ; 
- scalar_t__ pa_stream_get_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pa_threaded_mainloop_wait (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pa_threaded_mainloop ;
+typedef scalar_t__ pa_stream_state_t ;
+typedef int pa_stream ;
+
+
+ scalar_t__ PA_STREAM_FAILED ;
+ scalar_t__ PA_STREAM_READY ;
+ scalar_t__ PA_STREAM_TERMINATED ;
+ scalar_t__ pa_stream_get_state (int *) ;
+ int pa_threaded_mainloop_wait (int *) ;
 
 __attribute__((used)) static int stream_wait(pa_stream *stream, pa_threaded_mainloop *mainloop)
 {

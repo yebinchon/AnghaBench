@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  JSON_Object ;
-typedef  int /*<<< orphan*/  JSON_Array ;
 
-/* Variables and functions */
- int /*<<< orphan*/  json_object_get_value (int /*<<< orphan*/  const*,char const*) ; 
- int /*<<< orphan*/ * json_value_get_array (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int JSON_Object ;
+typedef int JSON_Array ;
+
+
+ int json_object_get_value (int const*,char const*) ;
+ int * json_value_get_array (int ) ;
 
 JSON_Array * json_object_get_array(const JSON_Object *object, const char *name) {
     return json_value_get_array(json_object_get_value(object, name));

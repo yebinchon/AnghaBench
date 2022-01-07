@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct b43_dmaring {TYPE_1__* ops; int /*<<< orphan*/  tx; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* tx_resume ) (struct b43_dmaring*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B43_WARN_ON (int) ; 
- int /*<<< orphan*/  stub1 (struct b43_dmaring*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct b43_dmaring {TYPE_1__* ops; int tx; } ;
+struct TYPE_2__ {int (* tx_resume ) (struct b43_dmaring*) ;} ;
+
+
+ int B43_WARN_ON (int) ;
+ int stub1 (struct b43_dmaring*) ;
 
 __attribute__((used)) static void b43_dma_tx_resume_ring(struct b43_dmaring *ring)
 {
-	B43_WARN_ON(!ring->tx);
-	ring->ops->tx_resume(ring);
+ B43_WARN_ON(!ring->tx);
+ ring->ops->tx_resume(ring);
 }

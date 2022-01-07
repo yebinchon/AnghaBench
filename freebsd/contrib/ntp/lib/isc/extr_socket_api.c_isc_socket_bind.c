@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* methods; } ;
-typedef  TYPE_2__ isc_socket_t ;
-typedef  int /*<<< orphan*/  isc_sockaddr_t ;
-typedef  int /*<<< orphan*/  isc_result_t ;
-struct TYPE_6__ {int /*<<< orphan*/  (* bind ) (TYPE_2__*,int /*<<< orphan*/ *,unsigned int) ;} ;
+typedef TYPE_2__ isc_socket_t ;
+typedef int isc_sockaddr_t ;
+typedef int isc_result_t ;
+struct TYPE_6__ {int (* bind ) (TYPE_2__*,int *,unsigned int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISCAPI_SOCKET_VALID (TYPE_2__*) ; 
- int /*<<< orphan*/  REQUIRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ *,unsigned int) ; 
+
+ int ISCAPI_SOCKET_VALID (TYPE_2__*) ;
+ int REQUIRE (int ) ;
+ int stub1 (TYPE_2__*,int *,unsigned int) ;
 
 isc_result_t
 isc_socket_bind(isc_socket_t *sock, isc_sockaddr_t *sockaddr,
-		unsigned int options)
+  unsigned int options)
 {
-	REQUIRE(ISCAPI_SOCKET_VALID(sock));
+ REQUIRE(ISCAPI_SOCKET_VALID(sock));
 
-	return (sock->methods->bind(sock, sockaddr, options));
+ return (sock->methods->bind(sock, sockaddr, options));
 }

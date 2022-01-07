@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_21__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
+
+
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+struct TYPE_21__ {int data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_stream_t ;
 struct TYPE_22__ {scalar_t__ kind; } ;
-typedef  TYPE_2__ svn_io_dirent2_t ;
+typedef TYPE_2__ svn_io_dirent2_t ;
 struct TYPE_23__ {scalar_t__ apr_err; } ;
-typedef  TYPE_3__ svn_error_t ;
-typedef  TYPE_3__* (* svn_config_auth_walk_func_t ) (scalar_t__*,void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
+typedef TYPE_3__ svn_error_t ;
+typedef TYPE_3__* (* svn_config_auth_walk_func_t ) (scalar_t__*,void*,char const*,int ,int *,int *) ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_STATUS_IS_ENOENT (scalar_t__) ; 
- scalar_t__ FALSE ; 
- char const* SVN_AUTH_CRED_SIMPLE ; 
- char const* SVN_AUTH_CRED_SSL_CLIENT_CERT ; 
- char const* SVN_AUTH_CRED_SSL_CLIENT_CERT_PW ; 
- char const* SVN_AUTH_CRED_SSL_SERVER_TRUST ; 
- char const* SVN_AUTH_CRED_USERNAME ; 
- int /*<<< orphan*/  SVN_CONFIG_REALMSTRING_KEY ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_3__*) ; 
- scalar_t__ SVN_ERR_CEASE_INVOCATION ; 
- int /*<<< orphan*/  SVN_HASH_TERMINATOR ; 
- TYPE_3__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN__APR_STATUS_IS_ENOTDIR (scalar_t__) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this_key (int /*<<< orphan*/ *) ; 
- TYPE_2__* apr_hash_this_val (int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_auth__file_path (char const**,char const*,char*,char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_3__*) ; 
- TYPE_3__* svn_error_compose_create (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* svn_error_trace (TYPE_3__*) ; 
- TYPE_1__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_3__* svn_hash_read2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_io_get_dirents3 (int /*<<< orphan*/ **,char const*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_io_remove_file2 (char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- TYPE_3__* svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int APR_STATUS_IS_ENOENT (scalar_t__) ;
+ scalar_t__ FALSE ;
+ char const* SVN_AUTH_CRED_SIMPLE ;
+ char const* SVN_AUTH_CRED_SSL_CLIENT_CERT ;
+ char const* SVN_AUTH_CRED_SSL_CLIENT_CERT_PW ;
+ char const* SVN_AUTH_CRED_SSL_SERVER_TRUST ;
+ char const* SVN_AUTH_CRED_USERNAME ;
+ int SVN_CONFIG_REALMSTRING_KEY ;
+ int SVN_ERR (TYPE_3__*) ;
+ scalar_t__ SVN_ERR_CEASE_INVOCATION ;
+ int SVN_HASH_TERMINATOR ;
+ TYPE_3__* SVN_NO_ERROR ;
+ int SVN__APR_STATUS_IS_ENOTDIR (scalar_t__) ;
+ scalar_t__ TRUE ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_make (int *) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_this_key (int *) ;
+ TYPE_2__* apr_hash_this_val (int *) ;
+ TYPE_3__* svn_auth__file_path (char const**,char const*,char*,char const*,int *) ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ char* svn_dirent_join (char const*,int ,int *) ;
+ int svn_error_clear (TYPE_3__*) ;
+ TYPE_3__* svn_error_compose_create (TYPE_3__*,int ) ;
+ TYPE_3__* svn_error_trace (TYPE_3__*) ;
+ TYPE_1__* svn_hash_gets (int *,int ) ;
+ TYPE_3__* svn_hash_read2 (int *,int *,int ,int *) ;
+ TYPE_3__* svn_io_get_dirents3 (int **,char const*,scalar_t__,int *,int *) ;
+ TYPE_3__* svn_io_remove_file2 (char const*,scalar_t__,int *) ;
+ scalar_t__ svn_node_file ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_stream_close (int *) ;
+ TYPE_3__* svn_stream_open_readonly (int **,char const*,int *,int *) ;
 
 svn_error_t *
 svn_config_walk_auth_data(const char *config_dir,
@@ -79,7 +79,7 @@ svn_config_walk_auth_data(const char *config_dir,
       SVN_AUTH_CRED_SSL_CLIENT_CERT,
       SVN_AUTH_CRED_SSL_CLIENT_CERT_PW,
       SVN_AUTH_CRED_SSL_SERVER_TRUST,
-      NULL
+      ((void*)0)
     };
 
   iterpool = svn_pool_create(scratch_pool);
@@ -137,7 +137,7 @@ svn_config_walk_auth_data(const char *config_dir,
                                          itempool, itempool);
           if (err)
             {
-              /* Ignore this file. There are no credentials in it anyway */
+
               svn_error_clear(err);
               continue;
             }
@@ -148,14 +148,14 @@ svn_config_walk_auth_data(const char *config_dir,
           err = svn_error_compose_create(err, svn_stream_close(stream));
           if (err)
             {
-              /* Ignore this file. There are no credentials in it anyway */
+
               svn_error_clear(err);
               continue;
             }
 
           realm = svn_hash_gets(creds_hash, SVN_CONFIG_REALMSTRING_KEY);
           if (! realm)
-            continue; /* Not an auth file */
+            continue;
 
           err = walk_func(&delete_file, walk_baton, cred_kinds[i],
                           realm->data, creds_hash, itempool);
@@ -169,7 +169,7 @@ svn_config_walk_auth_data(const char *config_dir,
 
           if (delete_file)
             {
-              /* Delete the file on disk */
+
               SVN_ERR(svn_io_remove_file2(item_path, TRUE, itempool));
             }
         }

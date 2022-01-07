@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ MaxCount; } ;
-typedef  TYPE_1__* PMIDL_STUB_MESSAGE ;
-typedef  scalar_t__* PFORMAT_STRING ;
-typedef  int /*<<< orphan*/  IID ;
+typedef TYPE_1__* PMIDL_STUB_MESSAGE ;
+typedef scalar_t__* PFORMAT_STRING ;
+typedef int IID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ComputeConformance (TYPE_1__*,unsigned char*,scalar_t__*,int /*<<< orphan*/ ) ; 
- scalar_t__ FC_CONSTANT_IID ; 
- scalar_t__ FC_IP ; 
- int /*<<< orphan*/  FIXME (char*,scalar_t__) ; 
- int /*<<< orphan*/  const IID_IUnknown ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,...) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/  const*) ; 
+
+ int ComputeConformance (TYPE_1__*,unsigned char*,scalar_t__*,int ) ;
+ scalar_t__ FC_CONSTANT_IID ;
+ scalar_t__ FC_IP ;
+ int FIXME (char*,scalar_t__) ;
+ int const IID_IUnknown ;
+ int TRACE (char*,scalar_t__,...) ;
+ int debugstr_guid (int const*) ;
 
 __attribute__((used)) static const IID* get_ip_iid(PMIDL_STUB_MESSAGE pStubMsg, unsigned char *pMemory, PFORMAT_STRING pFormat)
 {

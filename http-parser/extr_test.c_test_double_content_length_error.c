@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  http_parser ;
 
-/* Variables and functions */
- scalar_t__ HPE_UNEXPECTED_CONTENT_LENGTH ; 
- scalar_t__ HTTP_PARSER_ERRNO (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HTTP_REQUEST ; 
- int /*<<< orphan*/  HTTP_RESPONSE ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- size_t http_parser_execute (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  http_parser_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  settings_null ; 
- int /*<<< orphan*/  stderr ; 
- size_t strlen (char const*) ; 
+
+
+
+typedef int http_parser ;
+
+
+ scalar_t__ HPE_UNEXPECTED_CONTENT_LENGTH ;
+ scalar_t__ HTTP_PARSER_ERRNO (int *) ;
+ int HTTP_REQUEST ;
+ int HTTP_RESPONSE ;
+ int abort () ;
+ int assert (int) ;
+ int fprintf (int ,char*) ;
+ size_t http_parser_execute (int *,int *,char const*,size_t) ;
+ int http_parser_init (int *,int ) ;
+ int settings_null ;
+ int stderr ;
+ size_t strlen (char const*) ;
 
 void
 test_double_content_length_error (int req)

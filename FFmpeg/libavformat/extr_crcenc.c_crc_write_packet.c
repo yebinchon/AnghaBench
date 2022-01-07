@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct AVFormatContext {TYPE_1__* priv_data; } ;
-struct TYPE_5__ {int /*<<< orphan*/  size; int /*<<< orphan*/  data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  crcval; } ;
-typedef  TYPE_1__ CRCState ;
-typedef  TYPE_2__ AVPacket ;
+struct TYPE_5__ {int size; int data; } ;
+struct TYPE_4__ {int crcval; } ;
+typedef TYPE_1__ CRCState ;
+typedef TYPE_2__ AVPacket ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_adler32_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int av_adler32_update (int ,int ,int ) ;
 
 __attribute__((used)) static int crc_write_packet(struct AVFormatContext *s, AVPacket *pkt)
 {

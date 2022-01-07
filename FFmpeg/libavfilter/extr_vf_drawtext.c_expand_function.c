@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVFilterContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- unsigned int FF_ARRAY_ELEMS (char**) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_get_token (char const**,char*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int eval_function (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,unsigned int,char**) ; 
+
+
+
+typedef int AVFilterContext ;
+typedef int AVBPrint ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int ENOMEM ;
+ unsigned int FF_ARRAY_ELEMS (char**) ;
+ int av_freep (char**) ;
+ char* av_get_token (char const**,char*) ;
+ int av_log (int *,int ,char*,char const*) ;
+ int eval_function (int *,int *,char*,unsigned int,char**) ;
 
 __attribute__((used)) static int expand_function(AVFilterContext *ctx, AVBPrint *bp, char **rtext)
 {
     const char *text = *rtext;
-    char *argv[16] = { NULL };
+    char *argv[16] = { ((void*)0) };
     unsigned argc = 0, i;
     int ret;
 
@@ -47,7 +47,7 @@ __attribute__((used)) static int expand_function(AVFilterContext *ctx, AVBPrint 
             goto end;
         }
         if (argc == FF_ARRAY_ELEMS(argv))
-            av_freep(&argv[--argc]); /* error will be caught later */
+            av_freep(&argv[--argc]);
         if (*text == '}')
             break;
         text++;

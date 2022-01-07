@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  name ;
-typedef  int ULONG ;
-typedef  size_t UINT ;
-typedef  scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (scalar_t__*) ; 
- scalar_t__ ERROR_INVALID_PARAMETER ; 
- scalar_t__ ERROR_MORE_DATA ; 
- scalar_t__ ERROR_NONE_MAPPED ; 
- scalar_t__ ERROR_NO_SUCH_USER ; 
- scalar_t__ GetLastError () ; 
- scalar_t__ NameDnsDomain ; 
- scalar_t__ NameSamCompatible ; 
- scalar_t__ NameUnknown ; 
- int /*<<< orphan*/  ZeroMemory (char*,int) ; 
- scalar_t__ broken (int) ; 
- scalar_t__* formats ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ pGetUserNameExA (scalar_t__,char*,int*) ; 
+
+
+
+typedef int name ;
+typedef int ULONG ;
+typedef size_t UINT ;
+typedef scalar_t__ BOOLEAN ;
+
+
+ size_t ARRAY_SIZE (scalar_t__*) ;
+ scalar_t__ ERROR_INVALID_PARAMETER ;
+ scalar_t__ ERROR_MORE_DATA ;
+ scalar_t__ ERROR_NONE_MAPPED ;
+ scalar_t__ ERROR_NO_SUCH_USER ;
+ scalar_t__ GetLastError () ;
+ scalar_t__ NameDnsDomain ;
+ scalar_t__ NameSamCompatible ;
+ scalar_t__ NameUnknown ;
+ int ZeroMemory (char*,int) ;
+ scalar_t__ broken (int) ;
+ scalar_t__* formats ;
+ int ok (int,char*,...) ;
+ scalar_t__ pGetUserNameExA (scalar_t__,char*,int*) ;
 
 __attribute__((used)) static void testGetUserNameExA(void)
 {
@@ -52,18 +52,18 @@ __attribute__((used)) static void testGetUserNameExA(void)
            formats[i], GetLastError());
     }
 
-    if (0) /* Crashes on Windows */
-        pGetUserNameExA(NameSamCompatible, NULL, NULL);
+    if (0)
+        pGetUserNameExA(NameSamCompatible, ((void*)0), ((void*)0));
 
     size = 0;
-    rc = pGetUserNameExA(NameSamCompatible, NULL, &size);
+    rc = pGetUserNameExA(NameSamCompatible, ((void*)0), &size);
     ok(! rc && GetLastError() == ERROR_MORE_DATA, "Expected fail with ERROR_MORE_DATA, got %d with %u\n", rc, GetLastError());
     ok(size != 0, "Expected size to be set to required size\n");
 
-    if (0) /* Crashes on Windows with big enough size */
+    if (0)
     {
-        /* Returned size is already big enough */
-        pGetUserNameExA(NameSamCompatible, NULL, &size);
+
+        pGetUserNameExA(NameSamCompatible, ((void*)0), &size);
     }
 
     size = 0;

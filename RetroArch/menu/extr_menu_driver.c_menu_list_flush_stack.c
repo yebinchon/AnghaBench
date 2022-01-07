@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  menu_list_t ;
-typedef  int /*<<< orphan*/  file_list_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MENU_ENTRIES_CTL_SET_REFRESH ; 
- int /*<<< orphan*/  file_list_get_last (int /*<<< orphan*/ *,char const**,char const**,unsigned int*,size_t*) ; 
- size_t menu_driver_selection_ptr ; 
- int /*<<< orphan*/  menu_entries_ctl (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ menu_list_flush_stack_type (char const*,char const*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/ * menu_list_get (int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  menu_list_pop_stack (int /*<<< orphan*/ *,size_t,size_t*,int) ; 
+
+
+
+typedef int menu_list_t ;
+typedef int file_list_t ;
+
+
+ int MENU_ENTRIES_CTL_SET_REFRESH ;
+ int file_list_get_last (int *,char const**,char const**,unsigned int*,size_t*) ;
+ size_t menu_driver_selection_ptr ;
+ int menu_entries_ctl (int ,int*) ;
+ scalar_t__ menu_list_flush_stack_type (char const*,char const*,unsigned int,unsigned int) ;
+ int * menu_list_get (int *,unsigned int) ;
+ int menu_list_pop_stack (int *,size_t,size_t*,int) ;
 
 __attribute__((used)) static void menu_list_flush_stack(menu_list_t *list,
       size_t idx, const char *needle, unsigned final_type)
 {
-   bool refresh           = false;
-   const char *path       = NULL;
-   const char *label      = NULL;
-   unsigned type          = 0;
-   size_t entry_idx       = 0;
+   bool refresh = 0;
+   const char *path = ((void*)0);
+   const char *label = ((void*)0);
+   unsigned type = 0;
+   size_t entry_idx = 0;
    file_list_t *menu_list = menu_list_get(list, (unsigned)idx);
 
    menu_entries_ctl(MENU_ENTRIES_CTL_SET_REFRESH, &refresh);

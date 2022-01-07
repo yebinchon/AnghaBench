@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  IOleWindow ;
-typedef  int /*<<< orphan*/  IOleInPlaceSite ;
-typedef  int /*<<< orphan*/  IOleClientSite ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXPECT_REF (int /*<<< orphan*/ *,int) ; 
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  IID_IOleClientSite ; 
- int /*<<< orphan*/  IID_IOleInPlaceSite ; 
- int /*<<< orphan*/  IID_IOleWindow ; 
- int /*<<< orphan*/  IID_IRichEditOle ; 
- scalar_t__ IOleClientSite_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IOleClientSite_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IOleInPlaceSite_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IOleWindow_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IOleWindow_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IRichEditOle_GetClientSite (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ get_refcount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ LONG ;
+typedef int IUnknown ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int IOleWindow ;
+typedef int IOleInPlaceSite ;
+typedef int IOleClientSite ;
+typedef int HWND ;
+typedef scalar_t__ HRESULT ;
+
+
+ int EXPECT_REF (int *,int) ;
+ scalar_t__ E_NOINTERFACE ;
+ int IID_IOleClientSite ;
+ int IID_IOleInPlaceSite ;
+ int IID_IOleWindow ;
+ int IID_IRichEditOle ;
+ scalar_t__ IOleClientSite_QueryInterface (int *,int *,void**) ;
+ int IOleClientSite_Release (int *) ;
+ int IOleInPlaceSite_Release (int *) ;
+ scalar_t__ IOleWindow_QueryInterface (int *,int *,void**) ;
+ int IOleWindow_Release (int *) ;
+ scalar_t__ IRichEditOle_GetClientSite (int *,int **) ;
+ scalar_t__ S_OK ;
+ int create_interfaces (int *,int **,int **,int *) ;
+ scalar_t__ get_refcount (int *) ;
+ int ok (int,char*,...) ;
+ int release_interfaces (int *,int **,int **,int *) ;
 
 __attribute__((used)) static void test_GetClientSite(void)
 {
   HWND w;
-  IRichEditOle *reOle = NULL, *reOle1 = NULL;
-  ITextDocument *txtDoc = NULL;
-  IOleClientSite *clientSite = NULL, *clientSite1 = NULL, *clientSite2 = NULL;
-  IOleWindow *oleWin = NULL, *oleWin1 = NULL;
-  IOleInPlaceSite *olePlace = NULL, *olePlace1 = NULL;
+  IRichEditOle *reOle = ((void*)0), *reOle1 = ((void*)0);
+  ITextDocument *txtDoc = ((void*)0);
+  IOleClientSite *clientSite = ((void*)0), *clientSite1 = ((void*)0), *clientSite2 = ((void*)0);
+  IOleWindow *oleWin = ((void*)0), *oleWin1 = ((void*)0);
+  IOleInPlaceSite *olePlace = ((void*)0), *olePlace1 = ((void*)0);
   HRESULT hres;
   LONG refcount1, refcount2;
 
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   hres = IRichEditOle_GetClientSite(reOle, &clientSite);
   ok(hres == S_OK, "IRichEditOle_QueryInterface: 0x%08x\n", hres);
   EXPECT_REF(clientSite, 1);
@@ -68,7 +68,7 @@ __attribute__((used)) static void test_GetClientSite(void)
   ok(clientSite == clientSite1, "Should not return a new pointer.\n");
   EXPECT_REF(clientSite, 2);
 
-  /* IOleWindow interface */
+
   hres = IOleClientSite_QueryInterface(clientSite, &IID_IOleWindow, (void **)&oleWin);
   ok(hres == S_OK, "IOleClientSite_QueryInterface: 0x%08x\n", hres);
   refcount1 = get_refcount((IUnknown *)clientSite);
@@ -86,7 +86,7 @@ __attribute__((used)) static void test_GetClientSite(void)
   ok(hres == S_OK, "IOleWindow_QueryInterface: 0x%08x\n", hres);
   ok(clientSite2 == clientSite1, "got wrong pointer\n");
 
-  /* IOleInPlaceSite interface */
+
   hres = IOleClientSite_QueryInterface(clientSite, &IID_IOleInPlaceSite, (void **)&olePlace);
   ok(hres == S_OK, "IOleClientSite_QueryInterface: 0x%08x\n", hres);
   refcount1 = get_refcount((IUnknown *)olePlace);
@@ -111,5 +111,5 @@ __attribute__((used)) static void test_GetClientSite(void)
   IOleClientSite_Release(clientSite2);
   IOleClientSite_Release(clientSite1);
   IOleClientSite_Release(clientSite);
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 }

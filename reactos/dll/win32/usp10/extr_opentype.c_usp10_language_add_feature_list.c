@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_15__ {char tableType; int lookup_count; int* lookups; TYPE_4__ const* feature; int /*<<< orphan*/  tag; } ;
-struct TYPE_14__ {unsigned int feature_count; TYPE_6__* features; int /*<<< orphan*/  features_size; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * LookupListIndex; int /*<<< orphan*/  LookupCount; } ;
+
+
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_15__ {char tableType; int lookup_count; int* lookups; TYPE_4__ const* feature; int tag; } ;
+struct TYPE_14__ {unsigned int feature_count; TYPE_6__* features; int features_size; } ;
+struct TYPE_13__ {int * LookupListIndex; int LookupCount; } ;
 struct TYPE_12__ {TYPE_2__* FeatureRecord; } ;
-struct TYPE_11__ {int /*<<< orphan*/ * FeatureTag; int /*<<< orphan*/  Feature; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * FeatureIndex; int /*<<< orphan*/  FeatureCount; } ;
-typedef  TYPE_1__ OT_LangSys ;
-typedef  TYPE_2__ OT_FeatureRecord ;
-typedef  TYPE_3__ OT_FeatureList ;
-typedef  TYPE_4__ OT_Feature ;
-typedef  TYPE_5__ LoadedLanguage ;
-typedef  TYPE_6__ LoadedFeature ;
-typedef  int /*<<< orphan*/  BYTE ;
+struct TYPE_11__ {int * FeatureTag; int Feature; } ;
+struct TYPE_10__ {int * FeatureIndex; int FeatureCount; } ;
+typedef TYPE_1__ OT_LangSys ;
+typedef TYPE_2__ OT_FeatureRecord ;
+typedef TYPE_3__ OT_FeatureList ;
+typedef TYPE_4__ OT_Feature ;
+typedef TYPE_5__ LoadedLanguage ;
+typedef TYPE_6__ LoadedFeature ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MS_MAKE_TAG (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,char,unsigned int) ; 
- int* heap_calloc (int,int) ; 
- int /*<<< orphan*/  usp10_array_reserve (void**,int /*<<< orphan*/ *,unsigned int,int) ; 
+
+ int GET_BE_WORD (int ) ;
+ int MS_MAKE_TAG (int ,int ,int ,int ) ;
+ int TRACE (char*,char,unsigned int) ;
+ int* heap_calloc (int,int) ;
+ int usp10_array_reserve (void**,int *,unsigned int,int) ;
 
 __attribute__((used)) static void usp10_language_add_feature_list(LoadedLanguage *language, char table_type,
         const OT_LangSys *lang, const OT_FeatureList *feature_list)

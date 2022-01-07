@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RecurringTuplesType ;
-typedef  int /*<<< orphan*/  List ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HasRecurringTuples ; 
- int /*<<< orphan*/  QTW_EXAMINE_RTES_BEFORE ; 
- int range_table_walker (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int RecurringTuplesType ;
+typedef int List ;
+
+
+ int HasRecurringTuples ;
+ int QTW_EXAMINE_RTES_BEFORE ;
+ int range_table_walker (int *,int ,int *,int ) ;
 
 __attribute__((used)) static bool
 IsRecurringRangeTable(List *rangeTable, RecurringTuplesType *recurType)
 {
-	return range_table_walker(rangeTable, HasRecurringTuples, recurType,
-							  QTW_EXAMINE_RTES_BEFORE);
+ return range_table_walker(rangeTable, HasRecurringTuples, recurType,
+         QTW_EXAMINE_RTES_BEFORE);
 }

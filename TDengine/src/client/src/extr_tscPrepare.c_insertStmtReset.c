@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
-typedef  size_t int32_t ;
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
+typedef size_t int32_t ;
 struct TYPE_13__ {size_t numOfRows; } ;
 struct TYPE_12__ {int batchSize; scalar_t__ vnodeIdx; TYPE_2__* pDataBlocks; } ;
 struct TYPE_11__ {int size; scalar_t__ pData; } ;
 struct TYPE_10__ {TYPE_1__* pSql; } ;
 struct TYPE_9__ {size_t nSize; TYPE_4__** pData; } ;
 struct TYPE_8__ {TYPE_5__ cmd; } ;
-typedef  TYPE_3__ STscStmt ;
-typedef  TYPE_4__ STableDataBlocks ;
-typedef  TYPE_5__ SSqlCmd ;
-typedef  TYPE_6__ SShellSubmitBlock ;
+typedef TYPE_3__ STscStmt ;
+typedef TYPE_4__ STableDataBlocks ;
+typedef TYPE_5__ SSqlCmd ;
+typedef TYPE_6__ SShellSubmitBlock ;
 
-/* Variables and functions */
- int TSDB_CODE_SUCCESS ; 
+
+ int TSDB_CODE_SUCCESS ;
 
 __attribute__((used)) static int insertStmtReset(STscStmt* pStmt) {
   SSqlCmd* pCmd = &pStmt->pSql->cmd;

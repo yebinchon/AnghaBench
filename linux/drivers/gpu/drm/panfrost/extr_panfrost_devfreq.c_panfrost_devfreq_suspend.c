@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  devfreq; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int devfreq; } ;
 struct panfrost_device {TYPE_1__ devfreq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  devfreq_suspend_device (int /*<<< orphan*/ ) ; 
+
+ int devfreq_suspend_device (int ) ;
 
 void panfrost_devfreq_suspend(struct panfrost_device *pfdev)
 {
-	if (!pfdev->devfreq.devfreq)
-		return;
+ if (!pfdev->devfreq.devfreq)
+  return;
 
-	devfreq_suspend_device(pfdev->devfreq.devfreq);
+ devfreq_suspend_device(pfdev->devfreq.devfreq);
 }

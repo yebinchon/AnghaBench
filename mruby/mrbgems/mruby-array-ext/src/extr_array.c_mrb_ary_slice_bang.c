@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RArray {int dummy; } ;
-typedef  scalar_t__ mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
+typedef scalar_t__ mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
 
-/* Variables and functions */
- scalar_t__ ARY_LEN (struct RArray*) ; 
- scalar_t__* ARY_PTR (struct RArray*) ; 
- int /*<<< orphan*/  MRB_RANGE_OK ; 
-#define  MRB_TT_FIXNUM 129 
-#define  MRB_TT_RANGE 128 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  mrb_ary_modify (int /*<<< orphan*/ *,struct RArray*) ; 
- scalar_t__ mrb_ary_new (int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_ary_new_capa (int /*<<< orphan*/ *,scalar_t__) ; 
- struct RArray* mrb_ary_ptr (scalar_t__) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  mrb_ary_resize (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- scalar_t__ mrb_funcall (int /*<<< orphan*/ *,scalar_t__,char*,int,scalar_t__) ; 
- int mrb_get_argc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,scalar_t__*,scalar_t__*) ; 
- scalar_t__ mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_range_beg_len (int /*<<< orphan*/ *,scalar_t__,scalar_t__*,scalar_t__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int mrb_type (scalar_t__) ; 
+
+ scalar_t__ ARY_LEN (struct RArray*) ;
+ scalar_t__* ARY_PTR (struct RArray*) ;
+ int MRB_RANGE_OK ;
+
+
+ int TRUE ;
+ int mrb_ary_modify (int *,struct RArray*) ;
+ scalar_t__ mrb_ary_new (int *) ;
+ scalar_t__ mrb_ary_new_capa (int *,scalar_t__) ;
+ struct RArray* mrb_ary_ptr (scalar_t__) ;
+ int mrb_ary_push (int *,scalar_t__,scalar_t__) ;
+ int mrb_ary_resize (int *,scalar_t__,scalar_t__) ;
+ scalar_t__ mrb_funcall (int *,scalar_t__,char*,int,scalar_t__) ;
+ int mrb_get_argc (int *) ;
+ int mrb_get_args (int *,char*,scalar_t__*,scalar_t__*) ;
+ scalar_t__ mrb_nil_value () ;
+ int mrb_range_beg_len (int *,scalar_t__,scalar_t__*,scalar_t__*,scalar_t__,int ) ;
+ int mrb_type (scalar_t__) ;
 
 __attribute__((used)) static mrb_value
 mrb_ary_slice_bang(mrb_state *mrb, mrb_value self)
@@ -51,14 +51,14 @@ mrb_ary_slice_bang(mrb_state *mrb, mrb_value self)
 
     mrb_get_args(mrb, "o|i", &index, &len);
     switch (mrb_type(index)) {
-    case MRB_TT_RANGE:
+    case 128:
       if (mrb_range_beg_len(mrb, index, &i, &len, ARY_LEN(a), TRUE) == MRB_RANGE_OK) {
         goto delete_pos_len;
       }
       else {
         return mrb_nil_value();
       }
-    case MRB_TT_FIXNUM:
+    case 129:
       val = mrb_funcall(mrb, self, "delete_at", 1, index);
       return val;
     default:

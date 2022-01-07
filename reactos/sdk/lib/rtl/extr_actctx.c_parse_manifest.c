@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * ptr; int /*<<< orphan*/ * end; } ;
-typedef  TYPE_2__ xmlbuf_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * ptr; int * end; } ;
+typedef TYPE_2__ xmlbuf_t ;
 struct assembly_identity {int dummy; } ;
-struct TYPE_4__ {void* info; int /*<<< orphan*/  type; } ;
+struct TYPE_4__ {void* info; int type; } ;
 struct assembly {TYPE_1__ manifest; void* directory; } ;
-struct actctx_loader {int /*<<< orphan*/  actctx; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
-typedef  int SIZE_T ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  scalar_t__ BOOL ;
+struct actctx_loader {int actctx; } ;
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef int SIZE_T ;
+typedef int NTSTATUS ;
+typedef scalar_t__ LPCWSTR ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTIVATION_CONTEXT_PATH_TYPE_NONE ; 
- int /*<<< orphan*/  ACTIVATION_CONTEXT_PATH_TYPE_WIN32_FILE ; 
- int /*<<< orphan*/  ASSEMBLY_MANIFEST ; 
- int /*<<< orphan*/  ASSEMBLY_SHARED_MANIFEST ; 
- int /*<<< orphan*/  DPRINT (char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ) ; 
- int IS_TEXT_UNICODE_REVERSE_SIGNATURE ; 
- int IS_TEXT_UNICODE_SIGNATURE ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- scalar_t__ RtlIsTextUnicode (void const*,int,int*) ; 
- int /*<<< orphan*/  RtlMultiByteToUnicodeN (int /*<<< orphan*/ *,int,int*,void const*,int) ; 
- int /*<<< orphan*/  RtlMultiByteToUnicodeSize (int*,void const*,int) ; 
- int /*<<< orphan*/  RtlUshortByteSwap (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  STATUS_NO_MEMORY ; 
- int /*<<< orphan*/  STATUS_SXS_CANT_GEN_ACTCTX ; 
- struct assembly* add_assembly (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_manifest_buffer (struct actctx_loader*,struct assembly*,struct assembly_identity*,TYPE_2__*) ; 
- void* strdupW (scalar_t__) ; 
+
+ int ACTIVATION_CONTEXT_PATH_TYPE_NONE ;
+ int ACTIVATION_CONTEXT_PATH_TYPE_WIN32_FILE ;
+ int ASSEMBLY_MANIFEST ;
+ int ASSEMBLY_SHARED_MANIFEST ;
+ int DPRINT (char*,scalar_t__,scalar_t__) ;
+ int DPRINT1 (char*,int ) ;
+ int IS_TEXT_UNICODE_REVERSE_SIGNATURE ;
+ int IS_TEXT_UNICODE_SIGNATURE ;
+ int NT_SUCCESS (int ) ;
+ int * RtlAllocateHeap (int ,int ,int) ;
+ int RtlFreeHeap (int ,int ,int *) ;
+ int RtlGetProcessHeap () ;
+ scalar_t__ RtlIsTextUnicode (void const*,int,int*) ;
+ int RtlMultiByteToUnicodeN (int *,int,int*,void const*,int) ;
+ int RtlMultiByteToUnicodeSize (int*,void const*,int) ;
+ int RtlUshortByteSwap (int const) ;
+ int STATUS_NO_MEMORY ;
+ int STATUS_SXS_CANT_GEN_ACTCTX ;
+ struct assembly* add_assembly (int ,int ) ;
+ int parse_manifest_buffer (struct actctx_loader*,struct assembly*,struct assembly_identity*,TYPE_2__*) ;
+ void* strdupW (scalar_t__) ;
 
 __attribute__((used)) static NTSTATUS parse_manifest( struct actctx_loader* acl, struct assembly_identity* ai,
                                 LPCWSTR filename, LPCWSTR directory, BOOL shared,
@@ -65,7 +65,7 @@ __attribute__((used)) static NTSTATUS parse_manifest( struct actctx_loader* acl,
     if (directory && !(assembly->directory = strdupW(directory)))
         return STATUS_NO_MEMORY;
 
-    if (filename) assembly->manifest.info = strdupW( filename + 4 /* skip \??\ prefix */ );
+    if (filename) assembly->manifest.info = strdupW( filename + 4 );
     assembly->manifest.type = assembly->manifest.info ? ACTIVATION_CONTEXT_PATH_TYPE_WIN32_FILE
                                                       : ACTIVATION_CONTEXT_PATH_TYPE_NONE;
 
@@ -93,7 +93,7 @@ __attribute__((used)) static NTSTATUS parse_manifest( struct actctx_loader* acl,
     }
     else
     {
-        /* TODO: this doesn't handle arbitrary encodings */
+
         WCHAR *new_buff;
         ULONG sizeU;
 

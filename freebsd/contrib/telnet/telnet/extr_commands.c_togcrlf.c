@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ crlf ; 
- int /*<<< orphan*/  printf (char*) ; 
+ scalar_t__ crlf ;
+ int printf (char*) ;
 
 __attribute__((used)) static int
 togcrlf(void)
 {
     if (crlf) {
-	printf("Will send carriage returns as telnet <CR><LF>.\n");
+ printf("Will send carriage returns as telnet <CR><LF>.\n");
     } else {
-	printf("Will send carriage returns as telnet <CR><NUL>.\n");
+ printf("Will send carriage returns as telnet <CR><NUL>.\n");
     }
     return 1;
 }

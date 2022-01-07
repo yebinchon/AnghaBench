@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  AdapterIndex; } ;
-struct TYPE_10__ {int /*<<< orphan*/  dwSpeed; int /*<<< orphan*/  dwMtu; int /*<<< orphan*/  dwType; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int AdapterIndex; } ;
+struct TYPE_10__ {int dwSpeed; int dwMtu; int dwType; } ;
 struct TYPE_13__ {TYPE_1__ IfMib; } ;
-struct TYPE_11__ {int /*<<< orphan*/  Speed; int /*<<< orphan*/  Mtu; int /*<<< orphan*/  MediaType; int /*<<< orphan*/  AdapterIndex; } ;
+struct TYPE_11__ {int Speed; int Mtu; int MediaType; int AdapterIndex; } ;
 struct TYPE_12__ {int Reply; TYPE_2__ QueryHWInfo; } ;
-typedef  int /*<<< orphan*/  (* PipeSendFunc ) (TYPE_3__*) ;
-typedef  TYPE_4__* PDHCP_ADAPTER ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_5__ COMM_DHCP_REQ ;
-typedef  TYPE_3__ COMM_DHCP_REPLY ;
+typedef int (* PipeSendFunc ) (TYPE_3__*) ;
+typedef TYPE_4__* PDHCP_ADAPTER ;
+typedef int DWORD ;
+typedef TYPE_5__ COMM_DHCP_REQ ;
+typedef TYPE_3__ COMM_DHCP_REPLY ;
 
-/* Variables and functions */
- TYPE_4__* AdapterFindIndex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ApiLock () ; 
- int /*<<< orphan*/  ApiUnlock () ; 
+
+ TYPE_4__* AdapterFindIndex (int ) ;
+ int ApiLock () ;
+ int ApiUnlock () ;
 
 DWORD DSQueryHWInfo( PipeSendFunc Send, COMM_DHCP_REQ *Req ) {
     COMM_DHCP_REPLY Reply;

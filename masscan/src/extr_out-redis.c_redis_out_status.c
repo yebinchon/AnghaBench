@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  values ;
-typedef  scalar_t__ time_t ;
-struct TYPE_2__ {int /*<<< orphan*/  outstanding; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int values ;
+typedef scalar_t__ time_t ;
+struct TYPE_2__ {int outstanding; } ;
 struct Output {TYPE_1__ redis; } ;
-typedef  scalar_t__ ptrdiff_t ;
-typedef  int /*<<< orphan*/  port_string ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  ip_string ;
-typedef  int /*<<< orphan*/  SOCKET ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef scalar_t__ ptrdiff_t ;
+typedef int port_string ;
+typedef int line ;
+typedef int ip_string ;
+typedef int SOCKET ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  clean_response_queue (struct Output*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- char* name_from_ip_proto (unsigned int) ; 
- size_t send (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int sprintf_s (char*,int,char*,int,...) ; 
- size_t strlen (char*) ; 
+
+ int LOG (int ,char*) ;
+ int clean_response_queue (struct Output*,int ) ;
+ int exit (int) ;
+ char* name_from_ip_proto (unsigned int) ;
+ size_t send (int ,char*,int,int ) ;
+ int sprintf_s (char*,int,char*,int,...) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static void
 redis_out_status(struct Output *out, FILE *fp, time_t timestamp,
@@ -52,20 +52,6 @@ redis_out_status(struct Output *out, FILE *fp, time_t timestamp,
         (unsigned char)(ip>> 8),
         (unsigned char)(ip>> 0));
     port_string_length = sprintf_s(port_string, sizeof(port_string), "%u/%s", port, name_from_ip_proto(ip_proto));
-
-/**3
-$3
-SET
-$5
-mykey
-$7
-myvalue
-*/
-
-    /*
-     * KEY: "host"
-     * VALUE: ip
-     */
     sprintf_s(line, sizeof(line),
             "*3\r\n"
             "$4\r\nSADD\r\n"
@@ -83,10 +69,10 @@ myvalue
     }
     out->redis.outstanding++;
 
-    /*
-     * KEY: ip
-     * VALUE: port
-     */
+
+
+
+
     sprintf_s(line, sizeof(line),
             "*3\r\n"
             "$4\r\nSADD\r\n"
@@ -104,10 +90,10 @@ myvalue
     out->redis.outstanding++;
 
 
-    /*
-     * KEY: ip:port
-     * VALUE: timestamp:status:reason:ttl
-     */
+
+
+
+
     values_length = sprintf_s(values, sizeof(values), "%u:%u:%u:%u",
         (unsigned)timestamp, status, reason, ttl);
     line_length = sprintf_s(line, sizeof(line),

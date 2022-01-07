@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct BWCMessage {void* recv; void* lost; } ;
-typedef  int /*<<< orphan*/  p_msg ;
+typedef int p_msg ;
 struct TYPE_5__ {scalar_t__ lfu; int lost; int recv; scalar_t__ lsu; } ;
-struct TYPE_6__ {TYPE_1__ cycle; int /*<<< orphan*/  friend_number; int /*<<< orphan*/  m; } ;
-typedef  TYPE_2__ BWController ;
+struct TYPE_6__ {TYPE_1__ cycle; int friend_number; int m; } ;
+typedef TYPE_2__ BWController ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BWC_PACKET_ID ; 
- scalar_t__ BWC_REFRESH_INTERVAL_MS ; 
- scalar_t__ BWC_SEND_INTERVAL_MS ; 
- int /*<<< orphan*/  LOGGER_DEBUG (char*,TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  LOGGER_WARNING (char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ current_time_monotonic () ; 
- int /*<<< orphan*/  errno ; 
- void* htonl (int) ; 
- int send_custom_lossy_packet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+ int BWC_PACKET_ID ;
+ scalar_t__ BWC_REFRESH_INTERVAL_MS ;
+ scalar_t__ BWC_SEND_INTERVAL_MS ;
+ int LOGGER_DEBUG (char*,TYPE_2__*,int,int) ;
+ int LOGGER_WARNING (char*,int,int ) ;
+ scalar_t__ current_time_monotonic () ;
+ int errno ;
+ void* htonl (int) ;
+ int send_custom_lossy_packet (int ,int ,int *,int) ;
+ int strerror (int ) ;
 
 void send_update(BWController *bwc)
 {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nlast_block; int /*<<< orphan*/  last_block; int /*<<< orphan*/  k2; int /*<<< orphan*/  k1; int /*<<< orphan*/  tbl; int /*<<< orphan*/  cctx; } ;
-typedef  TYPE_1__ CMAC_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_CIPHER_CTX_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_MAX_BLOCK_LENGTH ; 
- int /*<<< orphan*/  OPENSSL_cleanse (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nlast_block; int last_block; int k2; int k1; int tbl; int cctx; } ;
+typedef TYPE_1__ CMAC_CTX ;
+
+
+ int EVP_CIPHER_CTX_reset (int ) ;
+ int EVP_MAX_BLOCK_LENGTH ;
+ int OPENSSL_cleanse (int ,int ) ;
 
 void CMAC_CTX_cleanup(CMAC_CTX *ctx)
 {

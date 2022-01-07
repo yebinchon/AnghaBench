@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u16 ;
-struct i40e_context_ele {int lsb; int offset; int /*<<< orphan*/  width; } ;
-typedef  int /*<<< orphan*/  dest_byte ;
 
-/* Variables and functions */
- int BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  I40E_DMA_TO_NONDMA ; 
- int /*<<< orphan*/  I40E_NONDMA_TO_DMA ; 
- int /*<<< orphan*/  i40e_memcpy (int*,int*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+struct i40e_context_ele {int lsb; int offset; int width; } ;
+typedef int dest_byte ;
+
+
+ int BIT (int ) ;
+ int I40E_DMA_TO_NONDMA ;
+ int I40E_NONDMA_TO_DMA ;
+ int i40e_memcpy (int*,int*,int,int ) ;
 
 __attribute__((used)) static void i40e_read_byte(u8 *hmc_bits,
-			   struct i40e_context_ele *ce_info,
-			   u8 *dest)
+      struct i40e_context_ele *ce_info,
+      u8 *dest)
 {
-	u8 dest_byte, mask;
-	u8 *src, *target;
-	u16 shift_width;
+ u8 dest_byte, mask;
+ u8 *src, *target;
+ u16 shift_width;
 
-	/* prepare the bits and mask */
-	shift_width = ce_info->lsb % 8;
-	mask = (u8)(BIT(ce_info->width) - 1);
 
-	/* shift to correct alignment */
-	mask <<= shift_width;
+ shift_width = ce_info->lsb % 8;
+ mask = (u8)(BIT(ce_info->width) - 1);
 
-	/* get the current bits from the src bit string */
-	src = hmc_bits + (ce_info->lsb / 8);
 
-	i40e_memcpy(&dest_byte, src, sizeof(dest_byte), I40E_DMA_TO_NONDMA);
+ mask <<= shift_width;
 
-	dest_byte &= ~(mask);
 
-	dest_byte >>= shift_width;
+ src = hmc_bits + (ce_info->lsb / 8);
 
-	/* get the address from the struct field */
-	target = dest + ce_info->offset;
+ i40e_memcpy(&dest_byte, src, sizeof(dest_byte), I40E_DMA_TO_NONDMA);
 
-	/* put it back in the struct */
-	i40e_memcpy(target, &dest_byte, sizeof(dest_byte), I40E_NONDMA_TO_DMA);
+ dest_byte &= ~(mask);
+
+ dest_byte >>= shift_width;
+
+
+ target = dest + ce_info->offset;
+
+
+ i40e_memcpy(target, &dest_byte, sizeof(dest_byte), I40E_NONDMA_TO_DMA);
 }

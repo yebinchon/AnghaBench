@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  str; } ;
-typedef  TYPE_1__ strbuf ;
-typedef  int /*<<< orphan*/  Registrar ;
-typedef  int /*<<< orphan*/  LPCOLESTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  do_preprocess (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  do_process_root_key (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int str; } ;
+typedef TYPE_1__ strbuf ;
+typedef int Registrar ;
+typedef int LPCOLESTR ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int ) ;
+ int TRACE (char*,int *,int ,scalar_t__) ;
+ int WARN (char*) ;
+ int debugstr_w (int ) ;
+ int do_preprocess (int *,int ,TYPE_1__*) ;
+ int do_process_root_key (int ,scalar_t__) ;
+ int strbuf_init (TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT string_register(Registrar *This, LPCOLESTR data, BOOL do_register)
 {

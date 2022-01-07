@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CE_NAMEMASK ; 
- int CE_STAGEMASK ; 
- int memcmp (char const*,char const*,int) ; 
+ int CE_NAMEMASK ;
+ int CE_STAGEMASK ;
+ int memcmp (char const*,char const*,int) ;
 
 int cache_name_compare(const char *name1, int flags1, const char *name2, int flags2)
 {
@@ -31,7 +23,7 @@ int cache_name_compare(const char *name1, int flags1, const char *name2, int fla
     if (len1 > len2)
         return 1;
 
-    /* Compare stages  */
+
     flags1 &= CE_STAGEMASK;
     flags2 &= CE_STAGEMASK;
 

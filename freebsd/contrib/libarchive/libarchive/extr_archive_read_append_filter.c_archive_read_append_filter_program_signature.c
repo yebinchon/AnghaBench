@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct archive_read_filter_bidder {int (* init ) (struct archive_read_filter*) ;scalar_t__ name; scalar_t__ data; } ;
 struct archive_read_filter {scalar_t__ name; struct archive_read_filter* upstream; struct archive_read* archive; struct archive_read_filter_bidder* bidder; } ;
-struct archive_read {int bypass_filter_bidding; struct archive_read_filter* filter; int /*<<< orphan*/  archive; struct archive_read_filter_bidder* bidders; } ;
+struct archive_read {int bypass_filter_bidding; struct archive_read_filter* filter; int archive; struct archive_read_filter_bidder* bidders; } ;
 struct archive {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARCHIVE_ERRNO_PROGRAMMER ; 
- int ARCHIVE_FATAL ; 
- scalar_t__ ARCHIVE_OK ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  __archive_read_free_filters (struct archive_read*) ; 
- scalar_t__ archive_read_support_filter_program_signature (struct archive*,char const*,void const*,size_t) ; 
- int /*<<< orphan*/  archive_set_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ calloc (int,int) ; 
- int stub1 (struct archive_read_filter*) ; 
+
+ int ARCHIVE_ERRNO_PROGRAMMER ;
+ int ARCHIVE_FATAL ;
+ scalar_t__ ARCHIVE_OK ;
+ int ENOMEM ;
+ int __archive_read_free_filters (struct archive_read*) ;
+ scalar_t__ archive_read_support_filter_program_signature (struct archive*,char const*,void const*,size_t) ;
+ int archive_set_error (int *,int ,char*) ;
+ scalar_t__ calloc (int,int) ;
+ int stub1 (struct archive_read_filter*) ;
 
 int
 archive_read_append_filter_program_signature(struct archive *_a,
@@ -44,7 +44,7 @@ archive_read_append_filter_program_signature(struct archive *_a,
   bidder = a->bidders;
   for (i = 0; i < number_bidders; i++, bidder++)
   {
-    /* Program bidder name set to filter name after initialization */
+
     if (bidder->data && !bidder->name)
       break;
   }
@@ -57,7 +57,7 @@ archive_read_append_filter_program_signature(struct archive *_a,
 
   filter
       = (struct archive_read_filter *)calloc(1, sizeof(*filter));
-  if (filter == NULL)
+  if (filter == ((void*)0))
   {
     archive_set_error(&a->archive, ENOMEM, "Out of memory");
     return (ARCHIVE_FATAL);

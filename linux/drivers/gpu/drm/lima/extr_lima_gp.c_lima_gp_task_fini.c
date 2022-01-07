@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct lima_sched_pipe {int /*<<< orphan*/ * processor; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lima_gp_soft_reset_async (int /*<<< orphan*/ ) ; 
+
+
+
+struct lima_sched_pipe {int * processor; } ;
+
+
+ int lima_gp_soft_reset_async (int ) ;
 
 __attribute__((used)) static void lima_gp_task_fini(struct lima_sched_pipe *pipe)
 {
-	lima_gp_soft_reset_async(pipe->processor[0]);
+ lima_gp_soft_reset_async(pipe->processor[0]);
 }

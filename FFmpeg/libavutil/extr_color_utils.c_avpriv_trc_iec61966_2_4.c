@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- double BT709_alpha ; 
- double BT709_beta ; 
- double const pow (double,double) ; 
+ double BT709_alpha ;
+ double BT709_beta ;
+ double const pow (double,double) ;
 
 __attribute__((used)) static double avpriv_trc_iec61966_2_4(double Lc)
 {
@@ -22,6 +14,6 @@ __attribute__((used)) static double avpriv_trc_iec61966_2_4(double Lc)
     const double b = BT709_beta;
 
     return (-b >= Lc) ? -a * pow(-Lc, 0.45) + (a - 1.0)
-         : ( b >  Lc) ? 4.500 * Lc
-         :               a * pow( Lc, 0.45) - (a - 1.0);
+         : ( b > Lc) ? 4.500 * Lc
+         : a * pow( Lc, 0.45) - (a - 1.0);
 }

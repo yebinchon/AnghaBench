@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int* table_mv_index; int* table_mv_bits; int* table_mv_code; int n; } ;
-struct TYPE_5__ {size_t mv_table_index; int /*<<< orphan*/  pb; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  TYPE_2__ MVTable ;
+struct TYPE_5__ {size_t mv_table_index; int pb; } ;
+typedef TYPE_1__ MpegEncContext ;
+typedef TYPE_2__ MVTable ;
 
-/* Variables and functions */
- TYPE_2__* ff_mv_tables ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
+
+ TYPE_2__* ff_mv_tables ;
+ int put_bits (int *,int,int) ;
 
 void ff_msmpeg4_encode_motion(MpegEncContext * s,
                                   int mx, int my)
@@ -27,9 +27,9 @@ void ff_msmpeg4_encode_motion(MpegEncContext * s,
     int code;
     MVTable *mv;
 
-    /* modulo encoding */
-    /* WARNING : you cannot reach all the MVs even with the modulo
-       encoding. This is a somewhat strange compromise they took !!!  */
+
+
+
     if (mx <= -64)
         mx += 64;
     else if (mx >= 64)
@@ -48,7 +48,7 @@ void ff_msmpeg4_encode_motion(MpegEncContext * s,
              mv->table_mv_bits[code],
              mv->table_mv_code[code]);
     if (code == mv->n) {
-        /* escape : code literally */
+
         put_bits(&s->pb, 6, mx);
         put_bits(&s->pb, 6, my);
     }

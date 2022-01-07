@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * handle; int /*<<< orphan*/  children; } ;
-typedef  TYPE_1__ object_header_t ;
-typedef  int ULONG_PTR ;
-typedef  int /*<<< orphan*/ * HINTERNET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int HANDLE_CHUNK_SIZE ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- TYPE_1__* addref_object (TYPE_1__*) ; 
- int /*<<< orphan*/  handle_cs ; 
- TYPE_1__** handles ; 
- TYPE_1__** heap_alloc_zero (int) ; 
- TYPE_1__** heap_realloc_zero (TYPE_1__**,int) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int max_handles ; 
- int next_handle ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * handle; int children; } ;
+typedef TYPE_1__ object_header_t ;
+typedef int ULONG_PTR ;
+typedef int * HINTERNET ;
+
+
+ int ERR (char*) ;
+ int EnterCriticalSection (int *) ;
+ int HANDLE_CHUNK_SIZE ;
+ int LeaveCriticalSection (int *) ;
+ TYPE_1__* addref_object (TYPE_1__*) ;
+ int handle_cs ;
+ TYPE_1__** handles ;
+ TYPE_1__** heap_alloc_zero (int) ;
+ TYPE_1__** heap_realloc_zero (TYPE_1__**,int) ;
+ int list_init (int *) ;
+ int max_handles ;
+ int next_handle ;
 
 HINTERNET alloc_handle( object_header_t *hdr )
 {
@@ -36,7 +36,7 @@ HINTERNET alloc_handle( object_header_t *hdr )
     ULONG_PTR handle, num;
 
     list_init( &hdr->children );
-    hdr->handle = NULL;
+    hdr->handle = ((void*)0);
 
     EnterCriticalSection( &handle_cs );
     if (!max_handles)

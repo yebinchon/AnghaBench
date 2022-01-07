@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_9__ ;
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+typedef struct TYPE_25__ TYPE_9__ ;
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_14__ ;
+
+
+typedef int u16 ;
 struct sqlite3_index_constraint_usage {int argvIndex; scalar_t__ omit; } ;
 struct sqlite3_index_constraint {size_t iTermOffset; int usable; } ;
 struct SrcList_item {TYPE_14__* pTab; scalar_t__ colUsed; } ;
-typedef  int /*<<< orphan*/  sqlite3_uint64 ;
-typedef  scalar_t__ sqlite3_int64 ;
-struct TYPE_21__ {int nConstraint; int needToFreeIdxStr; double estimatedCost; int estimatedRows; int idxFlags; scalar_t__ nOrderBy; scalar_t__ orderByConsumed; scalar_t__ idxStr; scalar_t__ idxNum; int /*<<< orphan*/  aConstraint; scalar_t__ colUsed; struct sqlite3_index_constraint_usage* aConstraintUsage; } ;
-typedef  TYPE_5__ sqlite3_index_info ;
-typedef  int /*<<< orphan*/  pUsage ;
-typedef  scalar_t__ i8 ;
+typedef int sqlite3_uint64 ;
+typedef scalar_t__ sqlite3_int64 ;
+struct TYPE_21__ {int nConstraint; int needToFreeIdxStr; double estimatedCost; int estimatedRows; int idxFlags; scalar_t__ nOrderBy; scalar_t__ orderByConsumed; scalar_t__ idxStr; scalar_t__ idxNum; int aConstraint; scalar_t__ colUsed; struct sqlite3_index_constraint_usage* aConstraintUsage; } ;
+typedef TYPE_5__ sqlite3_index_info ;
+typedef int pUsage ;
+typedef scalar_t__ i8 ;
 struct TYPE_22__ {int prereqRight; int eOperator; } ;
-typedef  TYPE_6__ WhereTerm ;
+typedef TYPE_6__ WhereTerm ;
 struct TYPE_23__ {TYPE_2__* pWInfo; TYPE_8__* pNew; TYPE_9__* pWC; } ;
-typedef  TYPE_7__ WhereLoopBuilder ;
+typedef TYPE_7__ WhereLoopBuilder ;
 struct TYPE_19__ {int omitMask; int needFree; scalar_t__ idxStr; scalar_t__ isOrdered; scalar_t__ idxNum; } ;
 struct TYPE_20__ {TYPE_3__ vtab; } ;
-struct TYPE_24__ {size_t iTab; int prereq; int nLSlot; int nLTerm; scalar_t__* aLTerm; TYPE_4__ u; int /*<<< orphan*/  wsFlags; int /*<<< orphan*/  nOut; int /*<<< orphan*/  rRun; scalar_t__ rSetup; } ;
-typedef  TYPE_8__ WhereLoop ;
+struct TYPE_24__ {size_t iTab; int prereq; int nLSlot; int nLTerm; scalar_t__* aLTerm; TYPE_4__ u; int wsFlags; int nOut; int rRun; scalar_t__ rSetup; } ;
+typedef TYPE_8__ WhereLoop ;
 struct TYPE_25__ {int nTerm; TYPE_6__* a; } ;
-typedef  TYPE_9__ WhereClause ;
-struct TYPE_18__ {TYPE_1__* pTabList; int /*<<< orphan*/ * pParse; } ;
+typedef TYPE_9__ WhereClause ;
+struct TYPE_18__ {TYPE_1__* pTabList; int * pParse; } ;
 struct TYPE_17__ {struct SrcList_item* a; } ;
-struct TYPE_16__ {int /*<<< orphan*/  zName; } ;
-typedef  int /*<<< orphan*/  Parse ;
-typedef  int Bitmask ;
+struct TYPE_16__ {int zName; } ;
+typedef int Parse ;
+typedef int Bitmask ;
 
-/* Variables and functions */
- double SQLITE_BIG_DBL ; 
- int SQLITE_CONSTRAINT ; 
- int SQLITE_ERROR ; 
- int SQLITE_INDEX_SCAN_UNIQUE ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  WHERETRACE (int,char*) ; 
- int /*<<< orphan*/  WHERE_ONEROW ; 
- int WO_IN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (struct sqlite3_index_constraint_usage*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3LogEst (int) ; 
- int /*<<< orphan*/  sqlite3LogEstFromDouble (double) ; 
- int /*<<< orphan*/  sqlite3_free (scalar_t__) ; 
- int /*<<< orphan*/  testcase (int) ; 
- int vtabBestIndex (int /*<<< orphan*/ *,TYPE_14__*,TYPE_5__*) ; 
- int whereLoopInsert (TYPE_7__*,TYPE_8__*) ; 
+
+ double SQLITE_BIG_DBL ;
+ int SQLITE_CONSTRAINT ;
+ int SQLITE_ERROR ;
+ int SQLITE_INDEX_SCAN_UNIQUE ;
+ int SQLITE_OK ;
+ int WHERETRACE (int,char*) ;
+ int WHERE_ONEROW ;
+ int WO_IN ;
+ int assert (int) ;
+ int memset (struct sqlite3_index_constraint_usage*,int ,int) ;
+ int sqlite3ErrorMsg (int *,char*,int ) ;
+ int sqlite3LogEst (int) ;
+ int sqlite3LogEstFromDouble (double) ;
+ int sqlite3_free (scalar_t__) ;
+ int testcase (int) ;
+ int vtabBestIndex (int *,TYPE_14__*,TYPE_5__*) ;
+ int whereLoopInsert (TYPE_7__*,TYPE_8__*) ;
 
 __attribute__((used)) static int whereLoopAddVirtualOne(
   WhereLoopBuilder *pBuilder,
-  Bitmask mPrereq,                /* Mask of tables that must be used. */
-  Bitmask mUsable,                /* Mask of usable tables */
-  u16 mExclude,                   /* Exclude terms using these operators */
-  sqlite3_index_info *pIdxInfo,   /* Populated object for xBestIndex */
-  u16 mNoOmit,                    /* Do not omit these constraints */
-  int *pbIn                       /* OUT: True if plan uses an IN(...) op */
+  Bitmask mPrereq,
+  Bitmask mUsable,
+  u16 mExclude,
+  sqlite3_index_info *pIdxInfo,
+  u16 mNoOmit,
+  int *pbIn
 ){
   WhereClause *pWC = pBuilder->pWC;
   struct sqlite3_index_constraint *pIdxCons;
@@ -89,20 +89,20 @@ __attribute__((used)) static int whereLoopAddVirtualOne(
   *pbIn = 0;
   pNew->prereq = mPrereq;
 
-  /* Set the usable flag on the subset of constraints identified by 
-  ** arguments mUsable and mExclude. */
+
+
   pIdxCons = *(struct sqlite3_index_constraint**)&pIdxInfo->aConstraint;
   for(i=0; i<nConstraint; i++, pIdxCons++){
     WhereTerm *pTerm = &pWC->a[pIdxCons->iTermOffset];
     pIdxCons->usable = 0;
-    if( (pTerm->prereqRight & mUsable)==pTerm->prereqRight 
+    if( (pTerm->prereqRight & mUsable)==pTerm->prereqRight
      && (pTerm->eOperator & mExclude)==0
     ){
       pIdxCons->usable = 1;
     }
   }
 
-  /* Initialize the output fields of the sqlite3_index_info structure */
+
   memset(pUsage, 0, sizeof(pUsage[0])*nConstraint);
   assert( pIdxInfo->needToFreeIdxStr==0 );
   pIdxInfo->idxStr = 0;
@@ -113,14 +113,14 @@ __attribute__((used)) static int whereLoopAddVirtualOne(
   pIdxInfo->idxFlags = 0;
   pIdxInfo->colUsed = (sqlite3_int64)pSrc->colUsed;
 
-  /* Invoke the virtual table xBestIndex() method */
+
   rc = vtabBestIndex(pParse, pSrc->pTab, pIdxInfo);
   if( rc ){
     if( rc==SQLITE_CONSTRAINT ){
-      /* If the xBestIndex method returns SQLITE_CONSTRAINT, that means
-      ** that the particular combination of parameters provided is unusable.
-      ** Make no entries in the loop table.
-      */
+
+
+
+
       WHERETRACE(0xffff, ("  ^^^^--- non-viable plan rejected!\n"));
       return SQLITE_OK;
     }
@@ -159,11 +159,11 @@ __attribute__((used)) static int whereLoopAddVirtualOne(
       testcase( iTerm==16 );
       if( iTerm<16 && pUsage[i].omit ) pNew->u.vtab.omitMask |= 1<<iTerm;
       if( (pTerm->eOperator & WO_IN)!=0 ){
-        /* A virtual table that is constrained by an IN clause may not
-        ** consume the ORDER BY clause because (1) the order of IN terms
-        ** is not necessarily related to the order of output terms and
-        ** (2) Multiple outputs from a single IN value will not merge
-        ** together.  */
+
+
+
+
+
         pIdxInfo->orderByConsumed = 0;
         pIdxInfo->idxFlags &= ~SQLITE_INDEX_SCAN_UNIQUE;
         *pbIn = 1; assert( (mExclude & WO_IN)==0 );
@@ -175,8 +175,8 @@ __attribute__((used)) static int whereLoopAddVirtualOne(
   pNew->nLTerm = mxTerm+1;
   for(i=0; i<=mxTerm; i++){
     if( pNew->aLTerm[i]==0 ){
-      /* The non-zero argvIdx values must be contiguous.  Raise an
-      ** error if they are not */
+
+
       sqlite3ErrorMsg(pParse,"%s.xBestIndex malfunction",pSrc->pTab->zName);
       testcase( pIdxInfo->needToFreeIdxStr );
       return SQLITE_ERROR;
@@ -193,8 +193,8 @@ __attribute__((used)) static int whereLoopAddVirtualOne(
   pNew->rRun = sqlite3LogEstFromDouble(pIdxInfo->estimatedCost);
   pNew->nOut = sqlite3LogEst(pIdxInfo->estimatedRows);
 
-  /* Set the WHERE_ONEROW flag if the xBestIndex() method indicated
-  ** that the scan will visit at most one row. Clear it otherwise. */
+
+
   if( pIdxInfo->idxFlags & SQLITE_INDEX_SCAN_UNIQUE ){
     pNew->wsFlags |= WHERE_ONEROW;
   }else{

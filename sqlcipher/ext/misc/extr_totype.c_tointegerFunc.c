@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
-#define  SQLITE_BLOB 131 
-#define  SQLITE_FLOAT 130 
-#define  SQLITE_INTEGER 129 
- int SQLITE_NULL ; 
-#define  SQLITE_TEXT 128 
- int /*<<< orphan*/  TOTYPE_BIGENDIAN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,unsigned char const*,int) ; 
- int /*<<< orphan*/  sqlite3_result_int64 (int /*<<< orphan*/ *,scalar_t__) ; 
- unsigned char* sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- double sqlite3_value_double (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  totypeAtoi64 (char const*,scalar_t__*,int) ; 
- int /*<<< orphan*/  totypeIsspace (unsigned char const) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3_context ;
+
+
+
+
+
+ int SQLITE_NULL ;
+
+ int TOTYPE_BIGENDIAN ;
+ int assert (int) ;
+ int memcpy (scalar_t__*,unsigned char const*,int) ;
+ int sqlite3_result_int64 (int *,scalar_t__) ;
+ unsigned char* sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ double sqlite3_value_double (int *) ;
+ scalar_t__ sqlite3_value_int64 (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
+ int totypeAtoi64 (char const*,scalar_t__*,int) ;
+ int totypeIsspace (unsigned char const) ;
 
 __attribute__((used)) static void tointegerFunc(
   sqlite3_context *context,
@@ -41,7 +41,7 @@ __attribute__((used)) static void tointegerFunc(
   assert( argc==1 );
   (void)argc;
   switch( sqlite3_value_type(argv[0]) ){
-    case SQLITE_FLOAT: {
+    case 130: {
       double rVal = sqlite3_value_double(argv[0]);
       sqlite3_int64 iVal = (sqlite3_int64)rVal;
       if( rVal==(double)iVal ){
@@ -49,11 +49,11 @@ __attribute__((used)) static void tointegerFunc(
       }
       break;
     }
-    case SQLITE_INTEGER: {
+    case 129: {
       sqlite3_result_int64(context, sqlite3_value_int64(argv[0]));
       break;
     }
-    case SQLITE_BLOB: {
+    case 131: {
       const unsigned char *zBlob = sqlite3_value_blob(argv[0]);
       if( zBlob ){
         int nBlob = sqlite3_value_bytes(argv[0]);
@@ -74,7 +74,7 @@ __attribute__((used)) static void tointegerFunc(
       }
       break;
     }
-    case SQLITE_TEXT: {
+    case 128: {
       const unsigned char *zStr = sqlite3_value_text(argv[0]);
       if( zStr ){
         int nStr = sqlite3_value_bytes(argv[0]);

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  BrotliDecoderState ;
-typedef  scalar_t__ BrotliDecoderResult ;
 
-/* Variables and functions */
- scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_INPUT ; 
- scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_OUTPUT ; 
- int /*<<< orphan*/ * BrotliDecoderCreateInstance (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ BrotliDecoderDecompressStream (int /*<<< orphan*/ *,size_t*,int const**,size_t*,int**,size_t*) ; 
- int /*<<< orphan*/  BrotliDecoderDestroyInstance (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int*) ; 
- scalar_t__ malloc (int const) ; 
+
+
+
+typedef int uint8_t ;
+typedef int BrotliDecoderState ;
+typedef scalar_t__ BrotliDecoderResult ;
+
+
+ scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_INPUT ;
+ scalar_t__ BROTLI_DECODER_RESULT_NEEDS_MORE_OUTPUT ;
+ int * BrotliDecoderCreateInstance (int ,int ,int ) ;
+ scalar_t__ BrotliDecoderDecompressStream (int *,size_t*,int const**,size_t*,int**,size_t*) ;
+ int BrotliDecoderDestroyInstance (int *) ;
+ int free (int*) ;
+ scalar_t__ malloc (int const) ;
 
 int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   size_t addend = 0;
@@ -32,11 +32,11 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   const int kBufferSize = 1024;
   uint8_t* buffer = (uint8_t*) malloc(kBufferSize);
   if (!buffer) {
-    // OOM is out-of-scope here.
+
     return 0;
   }
-  /* The biggest "magic number" in brotli is 16MiB - 16, so no need to check
-     the cases with much longer output. */
+
+
   const size_t total_out_limit = (addend == 0) ? (1 << 26) : (1 << 24);
   size_t total_out = 0;
 
@@ -44,7 +44,7 @@ int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
 
   if (addend == 0)
     addend = size;
-  /* Test both fast (addend == size) and slow (addend <= 7) decoding paths. */
+
   for (size_t i = 0; i < size;) {
     size_t next_i = i + addend;
     if (next_i > size)

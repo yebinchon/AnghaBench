@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vmnmi ;
-struct vmctx {int /*<<< orphan*/  fd; } ;
+
+
+
+
+typedef int vmnmi ;
+struct vmctx {int fd; } ;
 struct vm_nmi {int cpuid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VM_INJECT_NMI ; 
- int /*<<< orphan*/  bzero (struct vm_nmi*,int) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct vm_nmi*) ; 
+
+ int VM_INJECT_NMI ;
+ int bzero (struct vm_nmi*,int) ;
+ int ioctl (int ,int ,struct vm_nmi*) ;
 
 int
 vm_inject_nmi(struct vmctx *ctx, int vcpu)
 {
-	struct vm_nmi vmnmi;
+ struct vm_nmi vmnmi;
 
-	bzero(&vmnmi, sizeof(vmnmi));
-	vmnmi.cpuid = vcpu;
+ bzero(&vmnmi, sizeof(vmnmi));
+ vmnmi.cpuid = vcpu;
 
-	return (ioctl(ctx->fd, VM_INJECT_NMI, &vmnmi));
+ return (ioctl(ctx->fd, VM_INJECT_NMI, &vmnmi));
 }

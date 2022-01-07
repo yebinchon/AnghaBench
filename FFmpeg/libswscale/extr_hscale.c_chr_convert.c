@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_16__ {int /*<<< orphan*/ * pal; } ;
-struct TYPE_15__ {int /*<<< orphan*/  input_rgb2yuv_table; int /*<<< orphan*/  (* readChrPlanar ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* chrToYV12 ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_16__ {int * pal; } ;
+struct TYPE_15__ {int input_rgb2yuv_table; int (* readChrPlanar ) (int *,int *,int const**,int,int ) ;int (* chrToYV12 ) (int *,int *,int const*,int const*,int const*,int,int *) ;} ;
 struct TYPE_14__ {TYPE_4__* dst; TYPE_2__* src; TYPE_7__* instance; } ;
 struct TYPE_13__ {TYPE_3__* plane; } ;
-struct TYPE_12__ {int sliceY; int sliceH; int /*<<< orphan*/ ** line; } ;
-struct TYPE_11__ {int v_chr_sub_sample; TYPE_1__* plane; int /*<<< orphan*/  h_chr_sub_sample; int /*<<< orphan*/  width; } ;
-struct TYPE_10__ {int sliceY; int /*<<< orphan*/  const** line; } ;
-typedef  TYPE_5__ SwsFilterDescriptor ;
-typedef  TYPE_6__ SwsContext ;
-typedef  TYPE_7__ ColorContext ;
+struct TYPE_12__ {int sliceY; int sliceH; int ** line; } ;
+struct TYPE_11__ {int v_chr_sub_sample; TYPE_1__* plane; int h_chr_sub_sample; int width; } ;
+struct TYPE_10__ {int sliceY; int const** line; } ;
+typedef TYPE_5__ SwsFilterDescriptor ;
+typedef TYPE_6__ SwsContext ;
+typedef TYPE_7__ ColorContext ;
 
-/* Variables and functions */
- int AV_CEIL_RSHIFT (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const**,int,int /*<<< orphan*/ ) ; 
+
+ int AV_CEIL_RSHIFT (int ,int ) ;
+ int stub1 (int *,int *,int const*,int const*,int const*,int,int *) ;
+ int stub2 (int *,int *,int const**,int,int ) ;
 
 __attribute__((used)) static int chr_convert(SwsContext *c, SwsFilterDescriptor *desc, int sliceY, int sliceH)
 {

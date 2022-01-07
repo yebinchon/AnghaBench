@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int mdpth; int pdpth; int /*<<< orphan*/ * mtlsa; int /*<<< orphan*/ * mcert; int /*<<< orphan*/ * certs; int /*<<< orphan*/ * trecs; } ;
-typedef  TYPE_1__ SSL_DANE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sk_X509_pop_free (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *)) ; 
- int /*<<< orphan*/  sk_danetls_record_pop_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tlsa_free ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int mdpth; int pdpth; int * mtlsa; int * mcert; int * certs; int * trecs; } ;
+typedef TYPE_1__ SSL_DANE ;
+
+
+ int X509_free (int *) ;
+ int sk_X509_pop_free (int *,int (*) (int *)) ;
+ int sk_danetls_record_pop_free (int *,int ) ;
+ int tlsa_free ;
 
 __attribute__((used)) static void dane_final(SSL_DANE *dane)
 {
     sk_danetls_record_pop_free(dane->trecs, tlsa_free);
-    dane->trecs = NULL;
+    dane->trecs = ((void*)0);
 
     sk_X509_pop_free(dane->certs, X509_free);
-    dane->certs = NULL;
+    dane->certs = ((void*)0);
 
     X509_free(dane->mcert);
-    dane->mcert = NULL;
-    dane->mtlsa = NULL;
+    dane->mcert = ((void*)0);
+    dane->mtlsa = ((void*)0);
     dane->mdpth = -1;
     dane->pdpth = -1;
 }

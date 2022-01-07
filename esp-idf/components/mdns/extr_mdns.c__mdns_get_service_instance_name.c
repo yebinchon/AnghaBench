@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char const* instance; } ;
-typedef  TYPE_1__ mdns_service_t ;
+typedef TYPE_1__ mdns_service_t ;
 struct TYPE_5__ {char const* instance; char const* hostname; } ;
 
-/* Variables and functions */
- TYPE_2__* _mdns_server ; 
- int /*<<< orphan*/  _str_null_or_empty (char const*) ; 
+
+ TYPE_2__* _mdns_server ;
+ int _str_null_or_empty (char const*) ;
 
 __attribute__((used)) static const char * _mdns_get_service_instance_name(mdns_service_t * service)
 {
@@ -34,5 +34,5 @@ __attribute__((used)) static const char * _mdns_get_service_instance_name(mdns_s
         return _mdns_server->hostname;
     }
 
-    return NULL;
+    return ((void*)0);
 }

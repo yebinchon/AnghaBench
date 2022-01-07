@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct stack_t_ {int flags; scalar_t__ size; int /*<<< orphan*/  stack; } ;
-struct sighand {scalar_t__ altstack_size; int /*<<< orphan*/  lock; int /*<<< orphan*/  altstack; } ;
-typedef  int /*<<< orphan*/  dword_t ;
-typedef  scalar_t__ addr_t ;
-struct TYPE_3__ {int /*<<< orphan*/  esp; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct stack_t_ {int flags; scalar_t__ size; int stack; } ;
+struct sighand {scalar_t__ altstack_size; int lock; int altstack; } ;
+typedef int dword_t ;
+typedef scalar_t__ addr_t ;
+struct TYPE_3__ {int esp; } ;
 struct TYPE_4__ {TYPE_1__ cpu; struct sighand* sighand; } ;
 
-/* Variables and functions */
- scalar_t__ MINSIGSTKSZ_ ; 
- int SS_DISABLE_ ; 
- int /*<<< orphan*/  STRACE (char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  _EFAULT ; 
- int /*<<< orphan*/  _ENOMEM ; 
- int /*<<< orphan*/  _EPERM ; 
- int /*<<< orphan*/  altstack_to_user (struct sighand*,struct stack_t_*) ; 
- TYPE_2__* current ; 
- scalar_t__ is_on_altstack (int /*<<< orphan*/ ,struct sighand*) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ user_get (scalar_t__,struct stack_t_) ; 
- scalar_t__ user_put (scalar_t__,struct stack_t_) ; 
+
+ scalar_t__ MINSIGSTKSZ_ ;
+ int SS_DISABLE_ ;
+ int STRACE (char*,scalar_t__,scalar_t__) ;
+ int _EFAULT ;
+ int _ENOMEM ;
+ int _EPERM ;
+ int altstack_to_user (struct sighand*,struct stack_t_*) ;
+ TYPE_2__* current ;
+ scalar_t__ is_on_altstack (int ,struct sighand*) ;
+ int lock (int *) ;
+ int unlock (int *) ;
+ scalar_t__ user_get (scalar_t__,struct stack_t_) ;
+ scalar_t__ user_put (scalar_t__,struct stack_t_) ;
 
 dword_t sys_sigaltstack(addr_t ss_addr, addr_t old_ss_addr) {
     STRACE("sigaltstack(0x%x, 0x%x)", ss_addr, old_ss_addr);

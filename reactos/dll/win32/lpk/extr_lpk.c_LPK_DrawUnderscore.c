@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int cx; } ;
-typedef  TYPE_1__ SIZE ;
-typedef  int /*<<< orphan*/  SCRIPT_STRING_ANALYSIS ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HPEN ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ SIZE ;
+typedef int SCRIPT_STRING_ANALYSIS ;
+typedef int LPCWSTR ;
+typedef scalar_t__ HRESULT ;
+typedef int HPEN ;
+typedef int HDC ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreatePen (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int GetLayout (int /*<<< orphan*/ ) ; 
- int GetTextAlign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTextColor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetTextExtentPointW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int LAYOUT_RTL ; 
- int /*<<< orphan*/  LineTo (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  MoveToEx (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PS_SOLID ; 
- int /*<<< orphan*/  SIC_COMPLEX ; 
- int /*<<< orphan*/  SSA_GLYPHS ; 
- int /*<<< orphan*/  SSA_RTL ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- scalar_t__ ScriptIsComplex (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- scalar_t__ ScriptStringAnalyse (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ScriptStringCPtoX (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ScriptStringFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SelectObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TA_RTLREADING ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CreatePen (int ,int,int ) ;
+ int DeleteObject (int ) ;
+ int FALSE ;
+ int GetLayout (int ) ;
+ int GetTextAlign (int ) ;
+ int GetTextColor (int ) ;
+ int GetTextExtentPointW (int ,int ,int,TYPE_1__*) ;
+ int LAYOUT_RTL ;
+ int LineTo (int ,int,int) ;
+ int MoveToEx (int ,int,int,int *) ;
+ int PS_SOLID ;
+ int SIC_COMPLEX ;
+ int SSA_GLYPHS ;
+ int SSA_RTL ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ scalar_t__ ScriptIsComplex (int ,int,int ) ;
+ scalar_t__ ScriptStringAnalyse (int ,int ,int,int,int,int ,int,int *,int *,int *,int *,int *,int *) ;
+ int ScriptStringCPtoX (int ,int,int ,int*) ;
+ int ScriptStringFree (int *) ;
+ int SelectObject (int ,int ) ;
+ int TA_RTLREADING ;
+ int TRUE ;
 
 __attribute__((used)) static void LPK_DrawUnderscore(HDC hdc, int x, int y, LPCWSTR str, int count, int offset)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static void LPK_DrawUnderscore(HDC hdc, int x, int y, LPCW
             dwSSAFlags |= SSA_RTL;
 
         hr = ScriptStringAnalyse(hdc, str, count, (3 * count / 2 + 16),
-                                 -1, dwSSAFlags, -1, NULL, NULL, NULL, NULL, NULL, &ssa);
+                                 -1, dwSSAFlags, -1, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &ssa);
     }
 
     if (hr == S_OK)
@@ -86,7 +86,7 @@ __attribute__((used)) static void LPK_DrawUnderscore(HDC hdc, int x, int y, LPCW
     }
     hpen = CreatePen(PS_SOLID, 1, GetTextColor(hdc));
     oldPen = SelectObject(hdc, hpen);
-    MoveToEx(hdc, prefix_x, y, NULL);
+    MoveToEx(hdc, prefix_x, y, ((void*)0));
     LineTo(hdc, prefix_end, y);
     SelectObject(hdc, oldPen);
     DeleteObject(hpen);

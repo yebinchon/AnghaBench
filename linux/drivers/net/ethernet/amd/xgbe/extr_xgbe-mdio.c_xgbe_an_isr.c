@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xgbe_prv_data {int /*<<< orphan*/  tasklet_an; scalar_t__ isr_as_tasklet; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xgbe_an_isr_task (unsigned long) ; 
+
+
+
+struct xgbe_prv_data {int tasklet_an; scalar_t__ isr_as_tasklet; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int tasklet_schedule (int *) ;
+ int xgbe_an_isr_task (unsigned long) ;
 
 __attribute__((used)) static irqreturn_t xgbe_an_isr(int irq, void *data)
 {
-	struct xgbe_prv_data *pdata = (struct xgbe_prv_data *)data;
+ struct xgbe_prv_data *pdata = (struct xgbe_prv_data *)data;
 
-	if (pdata->isr_as_tasklet)
-		tasklet_schedule(&pdata->tasklet_an);
-	else
-		xgbe_an_isr_task((unsigned long)pdata);
+ if (pdata->isr_as_tasklet)
+  tasklet_schedule(&pdata->tasklet_an);
+ else
+  xgbe_an_isr_task((unsigned long)pdata);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

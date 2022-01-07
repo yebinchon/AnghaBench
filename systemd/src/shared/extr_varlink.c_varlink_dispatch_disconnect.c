@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ state; } ;
-typedef  TYPE_1__ Varlink ;
+typedef TYPE_1__ Varlink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VARLINK_ERROR_DISCONNECTED ; 
- scalar_t__ VARLINK_PENDING_DISCONNECT ; 
- int /*<<< orphan*/  VARLINK_PROCESSING_DISCONNECT ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  varlink_close (TYPE_1__*) ; 
- int /*<<< orphan*/  varlink_dispatch_local_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  varlink_set_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int VARLINK_ERROR_DISCONNECTED ;
+ scalar_t__ VARLINK_PENDING_DISCONNECT ;
+ int VARLINK_PROCESSING_DISCONNECT ;
+ int assert (TYPE_1__*) ;
+ int varlink_close (TYPE_1__*) ;
+ int varlink_dispatch_local_error (TYPE_1__*,int ) ;
+ int varlink_set_state (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int varlink_dispatch_disconnect(Varlink *v) {
         assert(v);

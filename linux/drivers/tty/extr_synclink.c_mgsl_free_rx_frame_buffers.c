@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mgsl_struct {unsigned int rx_buffer_count; unsigned int current_rx_buffer; TYPE_1__* rx_buffer_list; } ;
-struct TYPE_2__ {int /*<<< orphan*/  count; } ;
-typedef  TYPE_1__ DMABUFFERENTRY ;
+struct TYPE_2__ {int count; } ;
+typedef TYPE_1__ DMABUFFERENTRY ;
 
-/* Variables and functions */
- unsigned long DMABUFFERSIZE ; 
+
+ unsigned long DMABUFFERSIZE ;
 
 __attribute__((used)) static void mgsl_free_rx_frame_buffers( struct mgsl_struct *info, unsigned int StartIndex, unsigned int EndIndex )
 {
-	bool Done = false;
-	DMABUFFERENTRY *pBufEntry;
-	unsigned int Index;
+ bool Done = 0;
+ DMABUFFERENTRY *pBufEntry;
+ unsigned int Index;
 
-	/* Starting with 1st buffer entry of the frame clear the status */
-	/* field and set the count field to DMA Buffer Size. */
 
-	Index = StartIndex;
 
-	while( !Done ) {
-		pBufEntry = &(info->rx_buffer_list[Index]);
 
-		if ( Index == EndIndex ) {
-			/* This is the last buffer of the frame! */
-			Done = true;
-		}
+ Index = StartIndex;
 
-		/* reset current buffer for reuse */
-//		pBufEntry->status = 0;
-//		pBufEntry->count = DMABUFFERSIZE;
-		*((unsigned long *)&(pBufEntry->count)) = DMABUFFERSIZE;
+ while( !Done ) {
+  pBufEntry = &(info->rx_buffer_list[Index]);
 
-		/* advance to next buffer entry in linked list */
-		Index++;
-		if ( Index == info->rx_buffer_count )
-			Index = 0;
-	}
+  if ( Index == EndIndex ) {
 
-	/* set current buffer to next buffer after last buffer of frame */
-	info->current_rx_buffer = Index;
+   Done = 1;
+  }
+
+
+
+
+  *((unsigned long *)&(pBufEntry->count)) = DMABUFFERSIZE;
+
+
+  Index++;
+  if ( Index == info->rx_buffer_count )
+   Index = 0;
+ }
+
+
+ info->current_rx_buffer = Index;
 
 }

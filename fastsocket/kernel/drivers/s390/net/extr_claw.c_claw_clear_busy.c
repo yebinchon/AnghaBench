@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {scalar_t__ ml_priv; } ;
-struct claw_privbk {int /*<<< orphan*/  tbusy; } ;
+struct claw_privbk {int tbusy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eieio () ; 
- int /*<<< orphan*/  netif_wake_queue (struct net_device*) ; 
+
+ int clear_bit (int ,int *) ;
+ int eieio () ;
+ int netif_wake_queue (struct net_device*) ;
 
 __attribute__((used)) static inline void
 claw_clear_busy(struct net_device *dev)
 {
-	clear_bit(0, &(((struct claw_privbk *) dev->ml_priv)->tbusy));
-	netif_wake_queue(dev);
-	eieio();
+ clear_bit(0, &(((struct claw_privbk *) dev->ml_priv)->tbusy));
+ netif_wake_queue(dev);
+ eieio();
 }

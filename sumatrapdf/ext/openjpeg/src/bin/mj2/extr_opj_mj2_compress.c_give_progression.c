@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPJ_PROG_ORDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CPRL ; 
- int /*<<< orphan*/  LRCP ; 
- int /*<<< orphan*/  PCRL ; 
- int /*<<< orphan*/  PROG_UNKNOWN ; 
- int /*<<< orphan*/  RLCP ; 
- int /*<<< orphan*/  RPCL ; 
+
+
+
+typedef int OPJ_PROG_ORDER ;
+
+
+ int CPRL ;
+ int LRCP ;
+ int PCRL ;
+ int PROG_UNKNOWN ;
+ int RLCP ;
+ int RPCL ;
 
 __attribute__((used)) static OPJ_PROG_ORDER give_progression(const char progression[5])
 {

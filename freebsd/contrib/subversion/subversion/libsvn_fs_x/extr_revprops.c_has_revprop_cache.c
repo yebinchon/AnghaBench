@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * revprop_cache; } ;
-typedef  TYPE_1__ svn_fs_x__data_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * revprop_cache; } ;
+typedef TYPE_1__ svn_fs_x__data_t ;
 struct TYPE_5__ {TYPE_1__* fsap_data; } ;
-typedef  TYPE_2__ svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_fs_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static svn_boolean_t
 has_revprop_cache(svn_fs_t *fs,
@@ -27,6 +27,6 @@ has_revprop_cache(svn_fs_t *fs,
 {
   svn_fs_x__data_t *ffd = fs->fsap_data;
 
-  /* is the cache enabled? */
-  return ffd->revprop_cache != NULL;
+
+  return ffd->revprop_cache != ((void*)0);
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct Scsi_Host {int dummy; } ;
 struct TYPE_2__ {scalar_t__ CNTR; } ;
 
-/* Variables and functions */
- TYPE_1__* DMA (struct Scsi_Host*) ; 
- int /*<<< orphan*/  IRQ_AMIGA_PORTS ; 
- int /*<<< orphan*/  a3000_intr ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_mem_region (int,int) ; 
- int /*<<< orphan*/  wd33c93_release () ; 
+
+ TYPE_1__* DMA (struct Scsi_Host*) ;
+ int IRQ_AMIGA_PORTS ;
+ int a3000_intr ;
+ int free_irq (int ,int ) ;
+ int release_mem_region (int,int) ;
+ int wd33c93_release () ;
 
 __attribute__((used)) static int a3000_release(struct Scsi_Host *instance)
 {

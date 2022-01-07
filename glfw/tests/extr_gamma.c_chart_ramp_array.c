@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nk_context {int dummy; } ;
 struct nk_color {int dummy; } ;
-typedef  int /*<<< orphan*/  buffer ;
+typedef int buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NK_CHART_LINES ; 
- scalar_t__ nk_chart_begin_colored (struct nk_context*,int /*<<< orphan*/ ,struct nk_color,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  nk_chart_end (struct nk_context*) ; 
- scalar_t__ nk_chart_push (struct nk_context*,unsigned short) ; 
- int /*<<< orphan*/  nk_rgb (int,int,int) ; 
- int /*<<< orphan*/  nk_tooltip (struct nk_context*,char*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int,unsigned short,unsigned short) ; 
+
+ int NK_CHART_LINES ;
+ scalar_t__ nk_chart_begin_colored (struct nk_context*,int ,struct nk_color,int ,int,int ,int) ;
+ int nk_chart_end (struct nk_context*) ;
+ scalar_t__ nk_chart_push (struct nk_context*,unsigned short) ;
+ int nk_rgb (int,int,int) ;
+ int nk_tooltip (struct nk_context*,char*) ;
+ int snprintf (char*,int,char*,int,unsigned short,unsigned short) ;
 
 __attribute__((used)) static void chart_ramp_array(struct nk_context* nk,
                              struct nk_color color,
@@ -32,7 +32,7 @@ __attribute__((used)) static void chart_ramp_array(struct nk_context* nk,
                                count, 0, 65535))
     {
         int i;
-        for (i = 0;  i < count;  i++)
+        for (i = 0; i < count; i++)
         {
             char buffer[1024];
             if (nk_chart_push(nk, values[i]))

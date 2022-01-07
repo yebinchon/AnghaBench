@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int SizeT ;
-typedef  int Byte ;
 
-/* Variables and functions */
+
+
+
+typedef int UInt32 ;
+typedef int SizeT ;
+typedef int Byte ;
+
+
 
 SizeT SPARC_Convert(Byte *data, SizeT size, UInt32 ip, int encoding)
 {
@@ -33,14 +33,14 @@ SizeT SPARC_Convert(Byte *data, SizeT size, UInt32 ip, int encoding)
         ((UInt32)data[i + 2] << 8) |
         ((UInt32)data[i + 3]);
       UInt32 dest;
-      
+
       src <<= 2;
       if (encoding)
         dest = ip + i + src;
       else
         dest = src - (ip + i);
       dest >>= 2;
-      
+
       dest = (((0 - ((dest >> 22) & 1)) << 22) & 0x3FFFFFFF) | (dest & 0x3FFFFF) | 0x40000000;
 
       data[i + 0] = (Byte)(dest >> 24);

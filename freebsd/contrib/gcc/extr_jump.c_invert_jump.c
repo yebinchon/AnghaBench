@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JUMP_LABEL (int /*<<< orphan*/ ) ; 
- scalar_t__ apply_change_group () ; 
- int /*<<< orphan*/  cancel_changes (int /*<<< orphan*/ ) ; 
- scalar_t__ invert_jump_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  redirect_jump_2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+typedef int rtx ;
+
+
+ int JUMP_LABEL (int ) ;
+ scalar_t__ apply_change_group () ;
+ int cancel_changes (int ) ;
+ scalar_t__ invert_jump_1 (int ,int ) ;
+ int redirect_jump_2 (int ,int ,int ,int,int) ;
 
 int
 invert_jump (rtx jump, rtx nlabel, int delete_unused)

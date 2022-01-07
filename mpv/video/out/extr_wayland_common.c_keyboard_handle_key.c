@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xkb_mod_index_t ;
-typedef  int /*<<< orphan*/  xkb_keysym_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int xkb_mod_index_t ;
+typedef int xkb_keysym_t ;
+typedef scalar_t__ uint32_t ;
 struct wl_keyboard {int dummy; } ;
-struct vo_wayland_state {TYPE_1__* vo; int /*<<< orphan*/  xkb_state; int /*<<< orphan*/  xkb_keymap; } ;
-typedef  int /*<<< orphan*/  s ;
-struct TYPE_2__ {int /*<<< orphan*/  input_ctx; } ;
+struct vo_wayland_state {TYPE_1__* vo; int xkb_state; int xkb_keymap; } ;
+typedef int s ;
+struct TYPE_2__ {int input_ctx; } ;
 
-/* Variables and functions */
-#define  MP_KEY_MODIFIER_ALT 135 
-#define  MP_KEY_MODIFIER_CTRL 134 
-#define  MP_KEY_MODIFIER_META 133 
-#define  MP_KEY_MODIFIER_SHIFT 132 
- int MP_KEY_STATE_DOWN ; 
- int MP_KEY_STATE_UP ; 
- scalar_t__ WL_KEYBOARD_KEY_STATE_PRESSED ; 
-#define  XKB_MOD_NAME_ALT 131 
-#define  XKB_MOD_NAME_CTRL 130 
-#define  XKB_MOD_NAME_LOGO 129 
-#define  XKB_MOD_NAME_SHIFT 128 
- int /*<<< orphan*/  XKB_STATE_MODS_DEPRESSED ; 
- int /*<<< orphan*/  bstr0 (char*) ; 
- scalar_t__ code ; 
- int lookupkey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_input_put_key (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mp_input_put_key_utf8 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xkb_keymap_mod_get_index (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ xkb_keysym_to_utf8 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  xkb_state_key_get_one_sym (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ xkb_state_mod_index_is_active (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xkb_state_mod_index_is_consumed (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int MP_KEY_STATE_DOWN ;
+ int MP_KEY_STATE_UP ;
+ scalar_t__ WL_KEYBOARD_KEY_STATE_PRESSED ;
+
+
+
+
+ int XKB_STATE_MODS_DEPRESSED ;
+ int bstr0 (char*) ;
+ scalar_t__ code ;
+ int lookupkey (int ) ;
+ int mp_input_put_key (int ,int) ;
+ int mp_input_put_key_utf8 (int ,int,int ) ;
+ int xkb_keymap_mod_get_index (int ,char const*) ;
+ scalar_t__ xkb_keysym_to_utf8 (int ,char*,int) ;
+ int xkb_state_key_get_one_sym (int ,scalar_t__) ;
+ scalar_t__ xkb_state_mod_index_is_active (int ,int ,int ) ;
+ int xkb_state_mod_index_is_consumed (int ,scalar_t__,int ) ;
 
 __attribute__((used)) static void keyboard_handle_key(void *data, struct wl_keyboard *wl_keyboard,
                                 uint32_t serial, uint32_t time, uint32_t key,
@@ -56,18 +56,18 @@ __attribute__((used)) static void keyboard_handle_key(void *data, struct wl_keyb
                                                        : MP_KEY_STATE_UP;
 
     static const char *mod_names[] = {
-        XKB_MOD_NAME_SHIFT,
-        XKB_MOD_NAME_CTRL,
-        XKB_MOD_NAME_ALT,
-        XKB_MOD_NAME_LOGO,
+        128,
+        130,
+        131,
+        129,
         0,
     };
 
     static int mods[] = {
-        MP_KEY_MODIFIER_SHIFT,
-        MP_KEY_MODIFIER_CTRL,
-        MP_KEY_MODIFIER_ALT,
-        MP_KEY_MODIFIER_META,
+        132,
+        134,
+        135,
+        133,
         0,
     };
 

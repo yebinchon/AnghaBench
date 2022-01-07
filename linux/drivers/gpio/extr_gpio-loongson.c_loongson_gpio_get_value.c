@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct gpio_chip {int dummy; } ;
 
-/* Variables and functions */
- int BIT (unsigned int) ; 
- int LOONGSON_GPIODATA ; 
- unsigned int LOONGSON_GPIO_IN_OFFSET ; 
- int /*<<< orphan*/  gpio_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int BIT (unsigned int) ;
+ int LOONGSON_GPIODATA ;
+ unsigned int LOONGSON_GPIO_IN_OFFSET ;
+ int gpio_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static int loongson_gpio_get_value(struct gpio_chip *chip, unsigned gpio)
 {
-	u32 val;
+ u32 val;
 
-	spin_lock(&gpio_lock);
-	val = LOONGSON_GPIODATA;
-	spin_unlock(&gpio_lock);
+ spin_lock(&gpio_lock);
+ val = LOONGSON_GPIODATA;
+ spin_unlock(&gpio_lock);
 
-	return !!(val & BIT(gpio + LOONGSON_GPIO_IN_OFFSET));
+ return !!(val & BIT(gpio + LOONGSON_GPIO_IN_OFFSET));
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uchar ;
+
+
+
+
+typedef int uchar ;
 struct IN2000_hostdata {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IO_WD_ADDR ; 
- int /*<<< orphan*/  IO_WD_DATA ; 
- int /*<<< orphan*/  read1_io (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write1_io (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IO_WD_ADDR ;
+ int IO_WD_DATA ;
+ int read1_io (int ) ;
+ int write1_io (int ,int ) ;
 
 __attribute__((used)) static inline uchar read_3393(struct IN2000_hostdata *hostdata, uchar reg_num)
 {
-	write1_io(reg_num, IO_WD_ADDR);
-	return read1_io(IO_WD_DATA);
+ write1_io(reg_num, IO_WD_ADDR);
+ return read1_io(IO_WD_DATA);
 }

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UNICODE_STRING ;
+typedef int UINT ;
 struct TYPE_3__ {int QuadPart; } ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  HANDLE ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef scalar_t__ NTSTATUS ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GENERIC_ALL ; 
- int /*<<< orphan*/  NotificationTimer ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- int /*<<< orphan*/  SECTION_MAP_WRITE ; 
- int /*<<< orphan*/  SEC_COMMIT ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  pNtClose (int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateDirectoryObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtCreateEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateIoCompletion (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateJobObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtCreateKeyedEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateMutant (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateSection (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtCreateSemaphore (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- scalar_t__ pNtCreateSymbolicLinkObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtCreateTimer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pNtOpenDirectoryObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenIoCompletion (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenJobObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenKeyedEvent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenMutant (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenSection (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenSemaphore (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenSymbolicLinkObject (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pNtOpenTimer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pRtlCreateUnicodeStringFromAsciiz (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pRtlFreeUnicodeString (int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int GENERIC_ALL ;
+ int NotificationTimer ;
+ int PAGE_READWRITE ;
+ int SECTION_MAP_WRITE ;
+ int SEC_COMMIT ;
+ int ok (int,char*,int ,scalar_t__) ;
+ int pNtClose (int ) ;
+ scalar_t__ pNtCreateDirectoryObject (int *,int ,int *) ;
+ scalar_t__ pNtCreateEvent (int *,int ,int *,int,int ) ;
+ scalar_t__ pNtCreateIoCompletion (int *,int ,int *,int ) ;
+ scalar_t__ pNtCreateJobObject (int *,int ,int *) ;
+ scalar_t__ pNtCreateKeyedEvent (int *,int ,int *,int ) ;
+ scalar_t__ pNtCreateMutant (int *,int ,int *,int ) ;
+ scalar_t__ pNtCreateSection (int *,int ,int *,TYPE_1__*,int ,int ,int ) ;
+ scalar_t__ pNtCreateSemaphore (int *,int ,int *,int,int) ;
+ scalar_t__ pNtCreateSymbolicLinkObject (int *,int ,int *,int *) ;
+ scalar_t__ pNtCreateTimer (int *,int ,int *,int ) ;
+ scalar_t__ pNtOpenDirectoryObject (int *,int ,int *) ;
+ scalar_t__ pNtOpenEvent (int *,int ,int *) ;
+ scalar_t__ pNtOpenIoCompletion (int *,int ,int *) ;
+ scalar_t__ pNtOpenJobObject (int *,int ,int *) ;
+ scalar_t__ pNtOpenKeyedEvent (int *,int ,int *) ;
+ scalar_t__ pNtOpenMutant (int *,int ,int *) ;
+ scalar_t__ pNtOpenSection (int *,int ,int *) ;
+ scalar_t__ pNtOpenSemaphore (int *,int ,int *) ;
+ scalar_t__ pNtOpenSymbolicLinkObject (int *,int ,int *) ;
+ scalar_t__ pNtOpenTimer (int *,int ,int *) ;
+ int pRtlCreateUnicodeStringFromAsciiz (int *,char*) ;
+ int pRtlFreeUnicodeString (int *) ;
 
 __attribute__((used)) static void test_all_kernel_objects( UINT line, OBJECT_ATTRIBUTES *attr,
                                      NTSTATUS create_expect, NTSTATUS open_expect )

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int npy_uint64 ;
-typedef  int npy_uint32 ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int npy_uint64 ;
+typedef int npy_uint32 ;
 struct TYPE_6__ {int length; int* blocks; } ;
-typedef  TYPE_1__ BigInt ;
+typedef TYPE_1__ BigInt ;
 
-/* Variables and functions */
- scalar_t__ BigInt_Compare (TYPE_1__*,TYPE_1__ const*) ; 
- int /*<<< orphan*/  DEBUG_ASSERT (int) ; 
- int bitmask_u64 (int) ; 
+
+ scalar_t__ BigInt_Compare (TYPE_1__*,TYPE_1__ const*) ;
+ int DEBUG_ASSERT (int) ;
+ int bitmask_u64 (int) ;
 
 __attribute__((used)) static npy_uint32
 BigInt_DivideWithRemainder_MaxQuotient9(BigInt *dividend, const BigInt *divisor)
@@ -28,19 +28,19 @@ BigInt_DivideWithRemainder_MaxQuotient9(BigInt *dividend, const BigInt *divisor)
     const npy_uint32 *finalDivisorBlock;
     npy_uint32 *finalDividendBlock;
 
-    /*
-     * Check that the divisor has been correctly shifted into range and that it
-     * is not smaller than the dividend in length.
-     */
+
+
+
+
     DEBUG_ASSERT(!divisor->length == 0 &&
                 divisor->blocks[divisor->length-1] >= 8 &&
                 divisor->blocks[divisor->length-1] < bitmask_u64(32) &&
                 dividend->length <= divisor->length);
 
-    /*
-     * If the dividend is smaller than the divisor, the quotient is zero and the
-     * divisor is already the remainder.
-     */
+
+
+
+
     length = divisor->length;
     if (dividend->length < divisor->length) {
         return 0;
@@ -49,16 +49,16 @@ BigInt_DivideWithRemainder_MaxQuotient9(BigInt *dividend, const BigInt *divisor)
     finalDivisorBlock = divisor->blocks + length - 1;
     finalDividendBlock = dividend->blocks + length - 1;
 
-    /*
-     * Compute an estimated quotient based on the high block value. This will
-     * either match the actual quotient or undershoot by one.
-     */
+
+
+
+
     quotient = *finalDividendBlock / (*finalDivisorBlock + 1);
     DEBUG_ASSERT(quotient <= 9);
 
-    /* Divide out the estimated quotient */
+
     if (quotient != 0) {
-        /* dividend = dividend - divisor*quotient */
+
         const npy_uint32 *divisorCur = divisor->blocks;
         npy_uint32 *dividendCur = dividend->blocks;
 
@@ -80,7 +80,7 @@ BigInt_DivideWithRemainder_MaxQuotient9(BigInt *dividend, const BigInt *divisor)
             ++dividendCur;
         } while(divisorCur <= finalDivisorBlock);
 
-        /* remove all leading zero blocks from dividend */
+
         while (length > 0 && dividend->blocks[length - 1] == 0) {
             --length;
         }
@@ -88,13 +88,13 @@ BigInt_DivideWithRemainder_MaxQuotient9(BigInt *dividend, const BigInt *divisor)
         dividend->length = length;
     }
 
-    /*
-     * If the dividend is still larger than the divisor, we overshot our
-     * estimate quotient. To correct, we increment the quotient and subtract one
-     * more divisor from the dividend.
-     */
+
+
+
+
+
     if (BigInt_Compare(dividend, divisor) >= 0) {
-        /* dividend = dividend - divisor */
+
         const npy_uint32 *divisorCur = divisor->blocks;
         npy_uint32 *dividendCur = dividend->blocks;
         npy_uint64 borrow = 0;
@@ -112,7 +112,7 @@ BigInt_DivideWithRemainder_MaxQuotient9(BigInt *dividend, const BigInt *divisor)
             ++dividendCur;
         } while(divisorCur <= finalDivisorBlock);
 
-        /* remove all leading zero blocks from dividend */
+
         while (length > 0 && dividend->blocks[length - 1] == 0) {
             --length;
         }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  dependencyList; int /*<<< orphan*/  dependencySet; } ;
-typedef  TYPE_1__ ObjectAddressCollector ;
-typedef  int /*<<< orphan*/  ObjectAddress ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASH_ENTER ; 
- scalar_t__ hash_search (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  lappend (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int dependencyList; int dependencySet; } ;
+typedef TYPE_1__ ObjectAddressCollector ;
+typedef int ObjectAddress ;
+
+
+ int HASH_ENTER ;
+ scalar_t__ hash_search (int ,int const*,int ,int*) ;
+ int lappend (int ,int *) ;
 
 __attribute__((used)) static void
 CollectObjectAddress(ObjectAddressCollector *collector, const ObjectAddress *collect)
 {
-	ObjectAddress *address = NULL;
-	bool found = false;
+ ObjectAddress *address = ((void*)0);
+ bool found = 0;
 
-	/* add to set */
-	address = (ObjectAddress *) hash_search(collector->dependencySet, collect,
-											HASH_ENTER, &found);
 
-	if (!found)
-	{
-		/* copy object address in */
-		*address = *collect;
-	}
+ address = (ObjectAddress *) hash_search(collector->dependencySet, collect,
+           HASH_ENTER, &found);
 
-	/* add to list*/
-	collector->dependencyList = lappend(collector->dependencyList, address);
+ if (!found)
+ {
+
+  *address = *collect;
+ }
+
+
+ collector->dependencyList = lappend(collector->dependencyList, address);
 }

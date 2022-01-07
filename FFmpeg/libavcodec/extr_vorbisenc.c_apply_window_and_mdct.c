@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {float** win; int* log2_blocksize; int channels; float* samples; scalar_t__ coeffs; TYPE_3__* mdct; TYPE_2__* fdsp; } ;
-typedef  TYPE_1__ vorbis_enc_context ;
-struct TYPE_7__ {int /*<<< orphan*/  (* mdct_calc ) (TYPE_3__*,scalar_t__,float*) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  (* vector_fmul_scalar ) (float*,float*,int,int) ;int /*<<< orphan*/  (* vector_fmul_reverse ) (float*,float*,float const*,int) ;int /*<<< orphan*/  (* vector_fmul ) (float*,float*,float const*,int) ;} ;
-typedef  TYPE_2__ AVFloatDSPContext ;
+typedef TYPE_1__ vorbis_enc_context ;
+struct TYPE_7__ {int (* mdct_calc ) (TYPE_3__*,scalar_t__,float*) ;} ;
+struct TYPE_6__ {int (* vector_fmul_scalar ) (float*,float*,int,int) ;int (* vector_fmul_reverse ) (float*,float*,float const*,int) ;int (* vector_fmul ) (float*,float*,float const*,int) ;} ;
+typedef TYPE_2__ AVFloatDSPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (float*,float*,float const*,int) ; 
- int /*<<< orphan*/  stub2 (float*,float*,int,int) ; 
- int /*<<< orphan*/  stub3 (float*,float*,float const*,int) ; 
- int /*<<< orphan*/  stub4 (float*,float*,int,int) ; 
- int /*<<< orphan*/  stub5 (TYPE_3__*,scalar_t__,float*) ; 
+
+ int stub1 (float*,float*,float const*,int) ;
+ int stub2 (float*,float*,int,int) ;
+ int stub3 (float*,float*,float const*,int) ;
+ int stub4 (float*,float*,int,int) ;
+ int stub5 (TYPE_3__*,scalar_t__,float*) ;
 
 __attribute__((used)) static int apply_window_and_mdct(vorbis_enc_context *venc)
 {

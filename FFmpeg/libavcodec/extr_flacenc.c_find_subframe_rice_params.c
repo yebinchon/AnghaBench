@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_12__ {int coding_mode; } ;
-struct TYPE_9__ {int lpc_coeff_precision; int /*<<< orphan*/  exact_rice_parameters; int /*<<< orphan*/  max_partition_order; int /*<<< orphan*/  min_partition_order; } ;
-struct TYPE_8__ {int /*<<< orphan*/  blocksize; } ;
+struct TYPE_9__ {int lpc_coeff_precision; int exact_rice_parameters; int max_partition_order; int min_partition_order; } ;
+struct TYPE_8__ {int blocksize; } ;
 struct TYPE_11__ {TYPE_2__ options; TYPE_1__ frame; } ;
-struct TYPE_10__ {int obits; scalar_t__ type; int /*<<< orphan*/  residual; int /*<<< orphan*/  rc_sums; int /*<<< orphan*/  rc_udata; TYPE_7__ rc; } ;
-typedef  TYPE_3__ FlacSubframe ;
-typedef  TYPE_4__ FlacEncodeContext ;
+struct TYPE_10__ {int obits; scalar_t__ type; int residual; int rc_sums; int rc_udata; TYPE_7__ rc; } ;
+typedef TYPE_3__ FlacSubframe ;
+typedef TYPE_4__ FlacEncodeContext ;
 
-/* Variables and functions */
- scalar_t__ FLAC_SUBFRAME_LPC ; 
- scalar_t__ calc_rice_params (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int get_max_p_order (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ FLAC_SUBFRAME_LPC ;
+ scalar_t__ calc_rice_params (TYPE_7__*,int ,int ,int,int,int ,int ,int,int ) ;
+ int get_max_p_order (int ,int ,int) ;
 
 __attribute__((used)) static uint64_t find_subframe_rice_params(FlacEncodeContext *s,
                                           FlacSubframe *sub, int pred_order)

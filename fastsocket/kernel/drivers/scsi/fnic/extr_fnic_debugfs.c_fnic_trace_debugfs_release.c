@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct inode {int dummy; } ;
 struct file {TYPE_1__* private_data; } ;
-struct TYPE_3__ {int /*<<< orphan*/  buffer; } ;
-typedef  TYPE_1__ fnic_dbgfs_t ;
+struct TYPE_3__ {int buffer; } ;
+typedef TYPE_1__ fnic_dbgfs_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (TYPE_1__*) ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ ) ; 
+
+ int kfree (TYPE_1__*) ;
+ int vfree (int ) ;
 
 __attribute__((used)) static int fnic_trace_debugfs_release(struct inode *inode,
-					  struct file *file)
+       struct file *file)
 {
-	fnic_dbgfs_t *fnic_dbg_prt = file->private_data;
+ fnic_dbgfs_t *fnic_dbg_prt = file->private_data;
 
-	vfree(fnic_dbg_prt->buffer);
-	kfree(fnic_dbg_prt);
-	return 0;
+ vfree(fnic_dbg_prt->buffer);
+ kfree(fnic_dbg_prt);
+ return 0;
 }

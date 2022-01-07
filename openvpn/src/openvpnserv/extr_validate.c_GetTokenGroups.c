@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * PTOKEN_GROUPS ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_INSUFFICIENT_BUFFER ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetTokenInformation (int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  M_SYSERR ; 
- int /*<<< orphan*/  MsgToEventLog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TokenGroups ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int * PTOKEN_GROUPS ;
+typedef int HANDLE ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_INSUFFICIENT_BUFFER ;
+ scalar_t__ GetLastError () ;
+ int GetTokenInformation (int const,int ,int *,int ,int *) ;
+ int M_SYSERR ;
+ int MsgToEventLog (int ,char*) ;
+ int TokenGroups ;
+ int free (int *) ;
+ int * malloc (int ) ;
 
 __attribute__((used)) static PTOKEN_GROUPS
 GetTokenGroups(const HANDLE token)
 {
-    PTOKEN_GROUPS groups = NULL;
+    PTOKEN_GROUPS groups = ((void*)0);
     DWORD buf_size = 0;
 
     if (!GetTokenInformation(token, TokenGroups, groups, buf_size, &buf_size)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16_t ;
+
+
+
+
+typedef int u16_t ;
 struct bt_mesh_model {int dummy; } ;
 struct bt_mesh_elem {int model_count; int vnd_model_count; struct bt_mesh_model* vnd_models; struct bt_mesh_model* models; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * bt_mesh_model_find_group (struct bt_mesh_model*,int /*<<< orphan*/ ) ; 
+
+ int * bt_mesh_model_find_group (struct bt_mesh_model*,int ) ;
 
 __attribute__((used)) static struct bt_mesh_model *bt_mesh_elem_find_group(struct bt_mesh_elem *elem,
         u16_t group_addr)
@@ -42,5 +42,5 @@ __attribute__((used)) static struct bt_mesh_model *bt_mesh_elem_find_group(struc
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

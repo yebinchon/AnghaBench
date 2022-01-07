@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  str; } ;
-typedef  TYPE_1__ metastring ;
 
-/* Variables and functions */
- scalar_t__ strstr (int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int str; } ;
+typedef TYPE_1__ metastring ;
+
+
+ scalar_t__ strstr (int ,char*) ;
 
 __attribute__((used)) static int
 SlavoGermanic(metastring *s)
 {
-	if ((char *) strstr(s->str, "W"))
-		return 1;
-	else if ((char *) strstr(s->str, "K"))
-		return 1;
-	else if ((char *) strstr(s->str, "CZ"))
-		return 1;
-	else if ((char *) strstr(s->str, "WITZ"))
-		return 1;
-	else
-		return 0;
+ if ((char *) strstr(s->str, "W"))
+  return 1;
+ else if ((char *) strstr(s->str, "K"))
+  return 1;
+ else if ((char *) strstr(s->str, "CZ"))
+  return 1;
+ else if ((char *) strstr(s->str, "WITZ"))
+  return 1;
+ else
+  return 0;
 }

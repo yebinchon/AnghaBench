@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {scalar_t__ X_op; int /*<<< orphan*/  X_add_number; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {scalar_t__ X_op; int X_add_number; } ;
 struct TYPE_6__ {scalar_t__ pc_rel; TYPE_4__ exp; } ;
 struct TYPE_10__ {int instruction; char* error; int relax_inst; int relax_size; TYPE_1__ reloc; } ;
 struct TYPE_8__ {int bits; int* range; } ;
 struct TYPE_7__ {int value; } ;
 
-/* Variables and functions */
- char* BAD_ARGS ; 
- scalar_t__ FAIL ; 
- int INSN16_LBU ; 
- int INSN16_LH ; 
- int INSN16_LW ; 
- int INSN16_SB ; 
- int INSN16_SH ; 
- int INSN16_SW ; 
- unsigned int INSN_LB ; 
- unsigned int INSN_LBU ; 
- unsigned int INSN_LH ; 
- unsigned int INSN_LHU ; 
- unsigned int INSN_LW ; 
- int INSN_SB ; 
- int INSN_SH ; 
- int INSN_SW ; 
- int LDST_NOUPDATE ; 
- int LDST_POST ; 
- int OPC_PSEUDOLDST_MASK ; 
- scalar_t__ O_constant ; 
- int /*<<< orphan*/  REG_TYPE_SCORE ; 
- int /*<<< orphan*/  SET_INSN_ERROR (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCESS ; 
- char* _ (char*) ; 
- unsigned int _IMM10_RSHIFT_2 ; 
- unsigned int _IMM14 ; 
- unsigned int _IMM15 ; 
- unsigned int _IMM16 ; 
- unsigned int _IMM4 ; 
- unsigned int _IMM5 ; 
- unsigned int _IMM5_RSHIFT_1 ; 
- unsigned int _IMM5_RSHIFT_2 ; 
- unsigned int _IMM8 ; 
- size_t _SIMM12 ; 
- unsigned int _SIMM14_NEG ; 
- unsigned int _SIMM15 ; 
- unsigned int _SIMM16_LA ; 
- unsigned int _VALUE_HI16 ; 
- unsigned int _VALUE_LO16 ; 
- int end_of_line (char*) ; 
- char* err_msg ; 
- int exp_ldst_offset (char**,int,size_t) ; 
- TYPE_5__ inst ; 
- int my_get_expression (TYPE_4__*,char**) ; 
- int reg_required_here (char**,int,int /*<<< orphan*/ ) ; 
- TYPE_3__* score_df_range ; 
- TYPE_2__* score_ldst_insns ; 
- int skip_past_comma (char**) ; 
- int /*<<< orphan*/  skip_whitespace (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int,int) ; 
- int validate_immediate (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
+
+ char* BAD_ARGS ;
+ scalar_t__ FAIL ;
+ int INSN16_LBU ;
+ int INSN16_LH ;
+ int INSN16_LW ;
+ int INSN16_SB ;
+ int INSN16_SH ;
+ int INSN16_SW ;
+ unsigned int INSN_LB ;
+ unsigned int INSN_LBU ;
+ unsigned int INSN_LH ;
+ unsigned int INSN_LHU ;
+ unsigned int INSN_LW ;
+ int INSN_SB ;
+ int INSN_SH ;
+ int INSN_SW ;
+ int LDST_NOUPDATE ;
+ int LDST_POST ;
+ int OPC_PSEUDOLDST_MASK ;
+ scalar_t__ O_constant ;
+ int REG_TYPE_SCORE ;
+ int SET_INSN_ERROR (int *) ;
+ scalar_t__ SUCCESS ;
+ char* _ (char*) ;
+ unsigned int _IMM10_RSHIFT_2 ;
+ unsigned int _IMM14 ;
+ unsigned int _IMM15 ;
+ unsigned int _IMM16 ;
+ unsigned int _IMM4 ;
+ unsigned int _IMM5 ;
+ unsigned int _IMM5_RSHIFT_1 ;
+ unsigned int _IMM5_RSHIFT_2 ;
+ unsigned int _IMM8 ;
+ size_t _SIMM12 ;
+ unsigned int _SIMM14_NEG ;
+ unsigned int _SIMM15 ;
+ unsigned int _SIMM16_LA ;
+ unsigned int _VALUE_HI16 ;
+ unsigned int _VALUE_LO16 ;
+ int end_of_line (char*) ;
+ char* err_msg ;
+ int exp_ldst_offset (char**,int,size_t) ;
+ TYPE_5__ inst ;
+ int my_get_expression (TYPE_4__*,char**) ;
+ int reg_required_here (char**,int,int ) ;
+ TYPE_3__* score_df_range ;
+ TYPE_2__* score_ldst_insns ;
+ int skip_past_comma (char**) ;
+ int skip_whitespace (char*) ;
+ int sprintf (char*,char*,int,int,int) ;
+ int validate_immediate (int ,unsigned int,int ) ;
 
 __attribute__((used)) static void
 do_ldst_insn (char *str)
@@ -93,33 +93,33 @@ do_ldst_insn (char *str)
       || (skip_past_comma (&str) == (int) FAIL))
     return;
 
-  /* ld/sw rD, [rA, simm15]    ld/sw rD, [rA]+, simm12     ld/sw rD, [rA, simm12]+.  */
+
   if (*str == '[')
     {
       str++;
       skip_whitespace (str);
 
       if ((reg = reg_required_here (&str, 15, REG_TYPE_SCORE)) == (int) FAIL)
-	return;
+ return;
 
-      /* Conflicts can occur on stores as well as loads.  */
+
       conflict_reg = (conflict_reg == reg);
       skip_whitespace (str);
-      temp = str + 1;    /* The latter will process decimal/hex expression.  */
+      temp = str + 1;
 
-      /* ld/sw rD, [rA]+, simm12    ld/sw rD, [rA]+.  */
+
       if (*str == ']')
         {
           str++;
           if (*str == '+')
             {
               str++;
-              /* ld/sw rD, [rA]+, simm12.  */
+
               if (skip_past_comma (&str) == SUCCESS)
                 {
                   if ((exp_ldst_offset (&str, 3, _SIMM12) == (int) FAIL)
                       || (end_of_line (str) == (int) FAIL))
-		    return;
+      return;
 
                   if (conflict_reg)
                     {
@@ -140,21 +140,21 @@ do_ldst_insn (char *str)
                   inst.instruction &= ~OPC_PSEUDOLDST_MASK;
                   inst.instruction |= score_ldst_insns[ldst_idx * 3 + LDST_POST].value;
 
-                  /* lw rD, [rA]+, 4 convert to pop rD, [rA].  */
+
                   if ((inst.instruction & 0x3e000007) == 0x0e000000)
                     {
-                      /* rs =  r0-r7, offset = 4 */
+
                       if ((((inst.instruction >> 15) & 0x18) == 0)
                           && (((inst.instruction >> 3) & 0xfff) == 4))
                         {
-                          /* Relax to pophi.  */
+
                           if ((((inst.instruction >> 20) & 0x10) == 0x10))
                             {
                               inst.relax_inst = 0x0000200a | (((inst.instruction >> 20) & 0xf)
                                                               << 8) | 1 << 7 |
                                 (((inst.instruction >> 15) & 0x7) << 4);
                             }
-                          /* Relax to pop.  */
+
                           else
                             {
                               inst.relax_inst = 0x0000200a | (((inst.instruction >> 20) & 0xf)
@@ -166,10 +166,10 @@ do_ldst_insn (char *str)
                     }
                   return;
                 }
-              /* ld/sw rD, [rA]+ convert to ld/sw rD, [rA, 0]+.  */
+
               else
                 {
-                  SET_INSN_ERROR (NULL);
+                  SET_INSN_ERROR (((void*)0));
                   if (end_of_line (str) == (int) FAIL)
                     {
                       return;
@@ -186,17 +186,17 @@ do_ldst_insn (char *str)
                   return;
                 }
             }
-          /* ld/sw rD, [rA] convert to ld/sw rD, [rA, simm15].  */
+
           else
             {
               if (end_of_line (str) == (int) FAIL)
-		return;
+  return;
 
               ldst_idx = inst.instruction & OPC_PSEUDOLDST_MASK;
               inst.instruction &= ~OPC_PSEUDOLDST_MASK;
               inst.instruction |= score_ldst_insns[ldst_idx * 3 + LDST_NOUPDATE].value;
 
-              /* lbu rd, [rs] -> lbu! rd, [rs]  */
+
               if (ldst_idx == INSN_LBU)
                 {
                   inst.relax_inst = INSN16_LBU;
@@ -226,7 +226,7 @@ do_ldst_insn (char *str)
                   inst.relax_inst = 0x8000;
                 }
 
-              /* lw/lh/lbu/sw/sh/sb, offset = 0, relax to 16 bit instruction.  */
+
               if ((ldst_idx == INSN_LBU)
                   || (ldst_idx == INSN_LH)
                   || (ldst_idx == INSN_LW)
@@ -243,7 +243,7 @@ do_ldst_insn (char *str)
               return;
             }
         }
-      /* ld/sw rD, [rA, simm15]    ld/sw rD, [rA, simm12]+.  */
+
       else
         {
           if (skip_past_comma (&str) == (int) FAIL)
@@ -253,7 +253,7 @@ do_ldst_insn (char *str)
             }
 
           if (my_get_expression (&inst.reloc.exp, &str) == (int) FAIL)
-	    return;
+     return;
 
           skip_whitespace (str);
           if (*str++ != ']')
@@ -263,7 +263,7 @@ do_ldst_insn (char *str)
             }
 
           skip_whitespace (str);
-          /* ld/sw rD, [rA, simm12]+.  */
+
           if (*str == '+')
             {
               str++;
@@ -285,7 +285,7 @@ do_ldst_insn (char *str)
             }
 
           if (end_of_line (str) == (int) FAIL)
-	    return;
+     return;
 
           if (inst.reloc.exp.X_op == O_constant)
             {
@@ -343,21 +343,21 @@ do_ldst_insn (char *str)
               else
                 inst.instruction |= value;
 
-              /* lw rD, [rA, simm15]  */
+
               if ((inst.instruction & 0x3e000000) == 0x20000000)
                 {
-                  /* Both rD and rA are in [r0 - r15].  */
+
                   if ((((inst.instruction >> 15) & 0x10) == 0)
                       && (((inst.instruction >> 20) & 0x10) == 0))
                     {
-                      /* simm15 = 0, lw -> lw!.  */
+
                       if ((inst.instruction & 0x7fff) == 0)
                         {
                           inst.relax_inst |= (((inst.instruction >> 15) & 0xf) << 4)
                             | (((inst.instruction >> 20) & 0xf) << 8);
                           inst.relax_size = 2;
                         }
-                      /* rA = r2, lw -> lwp!.  */
+
                       else if ((((inst.instruction >> 15) & 0xf) == 2)
                                && ((inst.instruction & 0x3) == 0)
                                && ((inst.instruction & 0x7fff) < 128))
@@ -376,20 +376,20 @@ do_ldst_insn (char *str)
                       inst.relax_inst = 0x8000;
                     }
                 }
-              /* sw rD, [rA, simm15]  */
+
               else if ((inst.instruction & 0x3e000000) == 0x28000000)
                 {
-                  /* Both rD and rA are in [r0 - r15].  */
+
                   if ((((inst.instruction >> 15) & 0x10) == 0) && (((inst.instruction >> 20) & 0x10) == 0))
                     {
-                      /* simm15 = 0, sw -> sw!.  */
+
                       if ((inst.instruction & 0x7fff) == 0)
                         {
                           inst.relax_inst |= (((inst.instruction >> 15) & 0xf) << 4)
                             | (((inst.instruction >> 20) & 0xf) << 8);
                           inst.relax_size = 2;
                         }
-                      /* rA = r2, sw -> swp!.  */
+
                       else if ((((inst.instruction >> 15) & 0xf) == 2)
                                && ((inst.instruction & 0x3) == 0)
                                && ((inst.instruction & 0x7fff) < 128))
@@ -408,21 +408,21 @@ do_ldst_insn (char *str)
                       inst.relax_inst = 0x8000;
                     }
                 }
-              /* sw rD, [rA, simm15]+    sw pre.  */
+
               else if ((inst.instruction & 0x3e000007) == 0x06000004)
                 {
-                  /* rA is in [r0 - r7], and simm15 = -4.  */
+
                   if ((((inst.instruction >> 15) & 0x18) == 0)
                       && (((inst.instruction >> 3) & 0xfff) == 0xffc))
                     {
-                      /* sw -> pushhi!.  */
+
                       if ((((inst.instruction >> 20) & 0x10) == 0x10))
                         {
                           inst.relax_inst = 0x0000200e | (((inst.instruction >> 20) & 0xf) << 8)
                             | 1 << 7 | (((inst.instruction >> 15) & 0x7) << 4);
                           inst.relax_size = 2;
                         }
-                      /* sw -> push!.  */
+
                       else
                         {
                           inst.relax_inst = 0x0000200e | (((inst.instruction >> 20) & 0xf) << 8)
@@ -435,20 +435,20 @@ do_ldst_insn (char *str)
                       inst.relax_inst = 0x8000;
                     }
                 }
-              /* lh rD, [rA, simm15]  */
+
               else if ((inst.instruction & 0x3e000000) == 0x22000000)
                 {
-                  /* Both rD and rA are in [r0 - r15].  */
+
                   if ((((inst.instruction >> 15) & 0x10) == 0) && (((inst.instruction >> 20) & 0x10) == 0))
                     {
-                      /* simm15 = 0, lh -> lh!.  */
+
                       if ((inst.instruction & 0x7fff) == 0)
                         {
                           inst.relax_inst |= (((inst.instruction >> 15) & 0xf) << 4)
                             | (((inst.instruction >> 20) & 0xf) << 8);
                           inst.relax_size = 2;
                         }
-                      /* rA = r2, lh -> lhp!.  */
+
                       else if ((((inst.instruction >> 15) & 0xf) == 2)
                                && ((inst.instruction & 0x1) == 0)
                                && ((inst.instruction & 0x7fff) < 64))
@@ -467,20 +467,20 @@ do_ldst_insn (char *str)
                       inst.relax_inst = 0x8000;
                     }
                 }
-              /* sh rD, [rA, simm15]  */
+
               else if ((inst.instruction & 0x3e000000) == 0x2a000000)
                 {
-                  /* Both rD and rA are in [r0 - r15].  */
+
                   if ((((inst.instruction >> 15) & 0x10) == 0) && (((inst.instruction >> 20) & 0x10) == 0))
                     {
-                      /* simm15 = 0, sh -> sh!.  */
+
                       if ((inst.instruction & 0x7fff) == 0)
                         {
                           inst.relax_inst |= (((inst.instruction >> 15) & 0xf) << 4)
                             | (((inst.instruction >> 20) & 0xf) << 8);
                           inst.relax_size = 2;
                         }
-                      /* rA = r2, sh -> shp!.  */
+
                       else if ((((inst.instruction >> 15) & 0xf) == 2)
                                && ((inst.instruction & 0x1) == 0)
                                && ((inst.instruction & 0x7fff) < 64))
@@ -499,20 +499,20 @@ do_ldst_insn (char *str)
                       inst.relax_inst = 0x8000;
                     }
                 }
-              /* lbu rD, [rA, simm15]  */
+
               else if ((inst.instruction & 0x3e000000) == 0x2c000000)
                 {
-                  /* Both rD and rA are in [r0 - r15].  */
+
                   if ((((inst.instruction >> 15) & 0x10) == 0) && (((inst.instruction >> 20) & 0x10) == 0))
                     {
-                      /* simm15 = 0, lbu -> lbu!.  */
+
                       if ((inst.instruction & 0x7fff) == 0)
                         {
                           inst.relax_inst |= (((inst.instruction >> 15) & 0xf) << 4)
                             | (((inst.instruction >> 20) & 0xf) << 8);
                           inst.relax_size = 2;
                         }
-                      /* rA = r2, lbu -> lbup!.  */
+
                       else if ((((inst.instruction >> 15) & 0xf) == 2)
                                && ((inst.instruction & 0x7fff) < 32))
                         {
@@ -530,20 +530,20 @@ do_ldst_insn (char *str)
                       inst.relax_inst = 0x8000;
                     }
                 }
-              /* sb rD, [rA, simm15]  */
+
               else if ((inst.instruction & 0x3e000000) == 0x2e000000)
                 {
-                  /* Both rD and rA are in [r0 - r15].  */
+
                   if ((((inst.instruction >> 15) & 0x10) == 0) && (((inst.instruction >> 20) & 0x10) == 0))
                     {
-                      /* simm15 = 0, sb -> sb!.  */
+
                       if ((inst.instruction & 0x7fff) == 0)
                         {
                           inst.relax_inst |= (((inst.instruction >> 15) & 0xf) << 4)
                             | (((inst.instruction >> 20) & 0xf) << 8);
                           inst.relax_size = 2;
                         }
-                      /* rA = r2, sb -> sb!.  */
+
                       else if ((((inst.instruction >> 15) & 0xf) == 2)
                                && ((inst.instruction & 0x7fff) < 32))
                         {
@@ -570,7 +570,7 @@ do_ldst_insn (char *str)
             }
           else
             {
-              /* FIXME: may set error, for there is no ld/sw rD, [rA, label] */
+
               inst.reloc.pc_rel = 0;
             }
         }

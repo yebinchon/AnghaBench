@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct atm_dev {char const* type; int /*<<< orphan*/  lecs; int /*<<< orphan*/  local; int /*<<< orphan*/  lock; int /*<<< orphan*/  link_rate; int /*<<< orphan*/  signal; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATM_OC3_PCR ; 
- int /*<<< orphan*/  ATM_PHY_SIG_UNKNOWN ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct atm_dev* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct atm_dev {char const* type; int lecs; int local; int lock; int link_rate; int signal; } ;
+
+
+ int ATM_OC3_PCR ;
+ int ATM_PHY_SIG_UNKNOWN ;
+ int GFP_KERNEL ;
+ int INIT_LIST_HEAD (int *) ;
+ struct atm_dev* kzalloc (int,int ) ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static struct atm_dev *__alloc_atm_dev(const char *type)
 {
-	struct atm_dev *dev;
+ struct atm_dev *dev;
 
-	dev = kzalloc(sizeof(*dev), GFP_KERNEL);
-	if (!dev)
-		return NULL;
-	dev->type = type;
-	dev->signal = ATM_PHY_SIG_UNKNOWN;
-	dev->link_rate = ATM_OC3_PCR;
-	spin_lock_init(&dev->lock);
-	INIT_LIST_HEAD(&dev->local);
-	INIT_LIST_HEAD(&dev->lecs);
+ dev = kzalloc(sizeof(*dev), GFP_KERNEL);
+ if (!dev)
+  return ((void*)0);
+ dev->type = type;
+ dev->signal = ATM_PHY_SIG_UNKNOWN;
+ dev->link_rate = ATM_OC3_PCR;
+ spin_lock_init(&dev->lock);
+ INIT_LIST_HEAD(&dev->local);
+ INIT_LIST_HEAD(&dev->lecs);
 
-	return dev;
+ return dev;
 }

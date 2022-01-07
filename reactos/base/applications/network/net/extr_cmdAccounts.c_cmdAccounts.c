@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WCHAR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ WCHAR ;
+typedef int ULONG ;
 struct TYPE_5__ {int usrmod0_force_logoff; int usrmod0_min_passwd_len; int usrmod0_max_passwd_age; int usrmod0_min_passwd_age; int usrmod0_password_hist_len; int usrmod3_lockout_threshold; int usrmod3_lockout_duration; int usrmod3_lockout_observation_window; scalar_t__ usrmod1_role; } ;
-typedef  TYPE_1__* PUSER_MODALS_INFO_3 ;
-typedef  TYPE_1__* PUSER_MODALS_INFO_1 ;
-typedef  TYPE_1__* PUSER_MODALS_INFO_0 ;
-typedef  scalar_t__ NT_PRODUCT_TYPE ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  scalar_t__* LPWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  size_t INT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_1__* PUSER_MODALS_INFO_3 ;
+typedef TYPE_1__* PUSER_MODALS_INFO_1 ;
+typedef TYPE_1__* PUSER_MODALS_INFO_0 ;
+typedef scalar_t__ NT_PRODUCT_TYPE ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef scalar_t__* LPWSTR ;
+typedef int LPBYTE ;
+typedef size_t INT ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  MSG_ACCOUNTS_HELP ; 
- int /*<<< orphan*/  MSG_ACCOUNTS_SYNTAX ; 
- scalar_t__ NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferFree (TYPE_1__*) ; 
- scalar_t__ NetUserModalsGet (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ NetUserModalsSet (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ NtProductLanManNt ; 
- scalar_t__ NtProductServer ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintMessageStringV (int,char*) ; 
- int /*<<< orphan*/  PrintNetMessage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PrintPaddedMessageString (int,size_t) ; 
- int /*<<< orphan*/  RtlGetNtProductType (scalar_t__*) ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- int TIMEQ_FOREVER ; 
- scalar_t__ TRUE ; 
- scalar_t__ UAS_ROLE_PRIMARY ; 
- int ULONG_MAX ; 
- scalar_t__ _wcsicmp (scalar_t__*,char*) ; 
- scalar_t__ _wcsnicmp (scalar_t__*,char*,int) ; 
- scalar_t__ wcsicmp (scalar_t__*,char*) ; 
- int wcstoul (scalar_t__*,scalar_t__**,int) ; 
+
+ int ConPrintf (int ,char*,int) ;
+ int ConPuts (int ,char*) ;
+ scalar_t__ FALSE ;
+ int MSG_ACCOUNTS_HELP ;
+ int MSG_ACCOUNTS_SYNTAX ;
+ scalar_t__ NERR_Success ;
+ int NetApiBufferFree (TYPE_1__*) ;
+ scalar_t__ NetUserModalsGet (int *,int,int *) ;
+ scalar_t__ NetUserModalsSet (int *,int ,int ,int *) ;
+ scalar_t__ NtProductLanManNt ;
+ scalar_t__ NtProductServer ;
+ int PrintMessageString (int) ;
+ int PrintMessageStringV (int,char*) ;
+ int PrintNetMessage (int ) ;
+ int PrintPaddedMessageString (int,size_t) ;
+ int RtlGetNtProductType (scalar_t__*) ;
+ int StdErr ;
+ int StdOut ;
+ int TIMEQ_FOREVER ;
+ scalar_t__ TRUE ;
+ scalar_t__ UAS_ROLE_PRIMARY ;
+ int ULONG_MAX ;
+ scalar_t__ _wcsicmp (scalar_t__*,char*) ;
+ scalar_t__ _wcsnicmp (scalar_t__*,char*,int) ;
+ scalar_t__ wcsicmp (scalar_t__*,char*) ;
+ int wcstoul (scalar_t__*,scalar_t__**,int) ;
 
 INT
 cmdAccounts(
     INT argc,
     WCHAR **argv)
 {
-    PUSER_MODALS_INFO_0 Info0 = NULL;
-    PUSER_MODALS_INFO_1 Info1 = NULL;
-    PUSER_MODALS_INFO_3 Info3 = NULL;
+    PUSER_MODALS_INFO_0 Info0 = ((void*)0);
+    PUSER_MODALS_INFO_1 Info1 = ((void*)0);
+    PUSER_MODALS_INFO_3 Info3 = ((void*)0);
     NT_PRODUCT_TYPE ProductType;
     LPWSTR p;
     LPWSTR endptr;
@@ -68,9 +68,9 @@ cmdAccounts(
     ULONG value;
     INT i;
     BOOL Modified = FALSE;
-#if 0
-    BOOL Domain = FALSE;
-#endif
+
+
+
     INT nPaddedLength = 58;
     NET_API_STATUS Status;
     INT result = 0;
@@ -79,7 +79,7 @@ cmdAccounts(
     {
         if (_wcsicmp(argv[i], L"help") == 0)
         {
-            /* Print short syntax help */
+
             PrintMessageString(4381);
             ConPuts(StdOut, L"\n");
             PrintNetMessage(MSG_ACCOUNTS_SYNTAX);
@@ -88,7 +88,7 @@ cmdAccounts(
 
         if (_wcsicmp(argv[i], L"/help") == 0)
         {
-            /* Print full help text*/
+
             PrintMessageString(4381);
             ConPuts(StdOut, L"\n");
             PrintNetMessage(MSG_ACCOUNTS_SYNTAX);
@@ -99,13 +99,13 @@ cmdAccounts(
         if (_wcsicmp(argv[i], L"/domain") == 0)
         {
             ConPuts(StdErr, L"The /DOMAIN option is not supported yet.\n");
-#if 0
-            Domain = TRUE;
-#endif
+
+
+
         }
     }
 
-    Status = NetUserModalsGet(NULL, 0, (LPBYTE*)&Info0);
+    Status = NetUserModalsGet(((void*)0), 0, (LPBYTE*)&Info0);
     if (Status != NERR_Success)
         goto done;
 
@@ -202,17 +202,17 @@ cmdAccounts(
 
     if (Modified == TRUE)
     {
-        Status = NetUserModalsSet(NULL, 0, (LPBYTE)Info0, &ParamErr);
+        Status = NetUserModalsSet(((void*)0), 0, (LPBYTE)Info0, &ParamErr);
         if (Status != NERR_Success)
             goto done;
     }
     else
     {
-        Status = NetUserModalsGet(NULL, 1, (LPBYTE*)&Info1);
+        Status = NetUserModalsGet(((void*)0), 1, (LPBYTE*)&Info1);
         if (Status != NERR_Success)
             goto done;
 
-        Status = NetUserModalsGet(NULL, 3, (LPBYTE*)&Info3);
+        Status = NetUserModalsGet(((void*)0), 3, (LPBYTE*)&Info3);
         if (Status != NERR_Success)
             goto done;
 
@@ -278,13 +278,13 @@ cmdAccounts(
     }
 
 done:
-    if (Info3 != NULL)
+    if (Info3 != ((void*)0))
         NetApiBufferFree(Info3);
 
-    if (Info1 != NULL)
+    if (Info1 != ((void*)0))
         NetApiBufferFree(Info1);
 
-    if (Info0 != NULL)
+    if (Info0 != ((void*)0))
         NetApiBufferFree(Info0);
 
     return result;

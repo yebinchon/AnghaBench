@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct m_config_cache {int /*<<< orphan*/  wakeup_dispatch_cb_ctx; int /*<<< orphan*/  wakeup_dispatch_cb; int /*<<< orphan*/  wakeup_dispatch_queue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_dispatch_enqueue_notify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct m_config_cache {int wakeup_dispatch_cb_ctx; int wakeup_dispatch_cb; int wakeup_dispatch_queue; } ;
+
+
+ int assert (int ) ;
+ int mp_dispatch_enqueue_notify (int ,int ,int ) ;
 
 __attribute__((used)) static void dispatch_notify(void *p)
 {

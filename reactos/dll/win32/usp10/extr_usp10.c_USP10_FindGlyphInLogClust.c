@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WORD ;
-struct TYPE_3__ {scalar_t__ target; int /*<<< orphan*/  ascending; } ;
-typedef  size_t INT ;
-typedef  TYPE_1__ FindGlyph_struct ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__* bsearch (TYPE_1__*,scalar_t__ const*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compare_FindGlyph ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ WORD ;
+struct TYPE_3__ {scalar_t__ target; int ascending; } ;
+typedef size_t INT ;
+typedef TYPE_1__ FindGlyph_struct ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__* bsearch (TYPE_1__*,scalar_t__ const*,int,int,int ) ;
+ int compare_FindGlyph ;
 
 int USP10_FindGlyphInLogClust(const WORD* pwLogClust, int cChars, WORD target)
 {

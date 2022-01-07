@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  basic_block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BB_END (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bb_estimate_probability_locally (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  combine_predictions_for_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int basic_block ;
+
+
+ int BB_END (int ) ;
+ int bb_estimate_probability_locally (int ) ;
+ int combine_predictions_for_insn (int ,int ) ;
 
 void
 guess_outgoing_edge_probabilities (basic_block bb)

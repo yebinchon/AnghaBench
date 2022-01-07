@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct wndclass_redirect_data {int name_offset; } ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  WCHAR ;
+typedef int data ;
+typedef int WCHAR ;
 struct TYPE_4__ {int cbSize; scalar_t__ lpData; } ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
-typedef  TYPE_1__ ACTCTX_SECTION_KEYED_DATA ;
+typedef int BYTE ;
+typedef int BOOL ;
+typedef TYPE_1__ ACTCTX_SECTION_KEYED_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTIVATION_CONTEXT_SECTION_WINDOW_CLASS_REDIRECTION ; 
- int /*<<< orphan*/  FindActCtxSectionStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_1__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int ACTIVATION_CONTEXT_SECTION_WINDOW_CLASS_REDIRECTION ;
+ int FindActCtxSectionStringW (int ,int *,int ,int const*,TYPE_1__*) ;
+ int GetLastError () ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int ,char*,int ) ;
 
 __attribute__((used)) static WCHAR* get_versioned_classname(const WCHAR *name)
 {
@@ -34,7 +34,7 @@ __attribute__((used)) static WCHAR* get_versioned_classname(const WCHAR *name)
 
     memset(&data, 0, sizeof(data));
     data.cbSize = sizeof(data);
-    ret = FindActCtxSectionStringW(0, NULL, ACTIVATION_CONTEXT_SECTION_WINDOW_CLASS_REDIRECTION, name, &data);
+    ret = FindActCtxSectionStringW(0, ((void*)0), ACTIVATION_CONTEXT_SECTION_WINDOW_CLASS_REDIRECTION, name, &data);
     ok(ret, "Failed to find class redirection section, error %u\n", GetLastError());
     wnddata = (struct wndclass_redirect_data*)data.lpData;
     return (WCHAR*)((BYTE*)wnddata + wnddata->name_offset);

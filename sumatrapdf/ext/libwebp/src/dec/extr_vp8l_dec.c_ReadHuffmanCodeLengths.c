@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_11__ {scalar_t__ bit_pos_; } ;
-struct TYPE_10__ {int /*<<< orphan*/  status_; TYPE_2__ br_; } ;
-typedef  TYPE_1__ VP8LDecoder ;
-typedef  TYPE_2__ VP8LBitReader ;
+struct TYPE_10__ {int status_; TYPE_2__ br_; } ;
+typedef TYPE_1__ VP8LDecoder ;
+typedef TYPE_2__ VP8LBitReader ;
 struct TYPE_12__ {int value; scalar_t__ bits; } ;
-typedef  TYPE_3__ HuffmanCode ;
+typedef TYPE_3__ HuffmanCode ;
 
-/* Variables and functions */
- int DEFAULT_CODE_LENGTH ; 
- int LENGTHS_TABLE_BITS ; 
- size_t LENGTHS_TABLE_MASK ; 
- int /*<<< orphan*/  NUM_CODE_LENGTH_CODES ; 
- int /*<<< orphan*/  VP8LBuildHuffmanTable (TYPE_3__*,int,int const* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VP8LFillBitWindow (TYPE_2__* const) ; 
- size_t VP8LPrefetchBits (TYPE_2__* const) ; 
- int const VP8LReadBits (TYPE_2__* const,int const) ; 
- int /*<<< orphan*/  VP8LSetBitPos (TYPE_2__* const,scalar_t__) ; 
- int /*<<< orphan*/  VP8_STATUS_BITSTREAM_ERROR ; 
- int* kCodeLengthExtraBits ; 
- int kCodeLengthLiterals ; 
- int kCodeLengthRepeatCode ; 
- int* kCodeLengthRepeatOffsets ; 
+
+ int DEFAULT_CODE_LENGTH ;
+ int LENGTHS_TABLE_BITS ;
+ size_t LENGTHS_TABLE_MASK ;
+ int NUM_CODE_LENGTH_CODES ;
+ int VP8LBuildHuffmanTable (TYPE_3__*,int,int const* const,int ) ;
+ int VP8LFillBitWindow (TYPE_2__* const) ;
+ size_t VP8LPrefetchBits (TYPE_2__* const) ;
+ int const VP8LReadBits (TYPE_2__* const,int const) ;
+ int VP8LSetBitPos (TYPE_2__* const,scalar_t__) ;
+ int VP8_STATUS_BITSTREAM_ERROR ;
+ int* kCodeLengthExtraBits ;
+ int kCodeLengthLiterals ;
+ int kCodeLengthRepeatCode ;
+ int* kCodeLengthRepeatOffsets ;
 
 __attribute__((used)) static int ReadHuffmanCodeLengths(
     VP8LDecoder* const dec, const int* const code_length_code_lengths,
@@ -52,7 +52,7 @@ __attribute__((used)) static int ReadHuffmanCodeLengths(
     goto End;
   }
 
-  if (VP8LReadBits(br, 1)) {    // use length
+  if (VP8LReadBits(br, 1)) {
     const int length_nbits = 2 + 2 * VP8LReadBits(br, 3);
     max_symbol = 2 + VP8LReadBits(br, length_nbits);
     if (max_symbol > num_symbols) {

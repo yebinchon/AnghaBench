@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BTA_ID_DM ; 
- int /*<<< orphan*/  bta_sys_deregister (int /*<<< orphan*/ ) ; 
+ int BTA_ID_DM ;
+ int bta_sys_deregister (int ) ;
 
 void bta_dm_sm_disable(void)
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* next; } ;
-typedef  TYPE_1__ label_prologue_count ;
+typedef TYPE_1__ label_prologue_count ;
 struct TYPE_5__ {TYPE_1__* saved_prologue_counts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- TYPE_2__ unwind ; 
+
+ int free (TYPE_1__*) ;
+ TYPE_2__ unwind ;
 
 __attribute__((used)) static void
 free_saved_prologue_counts ()
@@ -26,12 +26,12 @@ free_saved_prologue_counts ()
   label_prologue_count *lpc = unwind.saved_prologue_counts;
   label_prologue_count *next;
 
-  while (lpc != NULL)
+  while (lpc != ((void*)0))
     {
       next = lpc->next;
       free (lpc);
       lpc = next;
     }
 
-  unwind.saved_prologue_counts = NULL;
+  unwind.saved_prologue_counts = ((void*)0);
 }

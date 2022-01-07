@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
-struct TYPE_4__ {scalar_t__ bigEndCksum; int /*<<< orphan*/  aSalt; int /*<<< orphan*/ * aFrameCksum; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+struct TYPE_4__ {scalar_t__ bigEndCksum; int aSalt; int * aFrameCksum; } ;
 struct TYPE_5__ {int szPage; TYPE_1__ hdr; } ;
-typedef  TYPE_2__ Wal ;
+typedef TYPE_2__ Wal ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_BIGENDIAN ; 
- int WAL_FRAME_HDRSIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3Put4byte (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  walChecksumBytes (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ SQLITE_BIGENDIAN ;
+ int WAL_FRAME_HDRSIZE ;
+ int assert (int) ;
+ int memcpy (int *,int ,int) ;
+ int sqlite3Put4byte (int *,int ) ;
+ int walChecksumBytes (int,int *,int,int *,int *) ;
 
 __attribute__((used)) static void walEncodeFrame(
-  Wal *pWal,                      /* The write-ahead log */
-  u32 iPage,                      /* Database page number for frame */
-  u32 nTruncate,                  /* New db size (or 0 for non-commit frames) */
-  u8 *aData,                      /* Pointer to page data */
-  u8 *aFrame                      /* OUT: Write encoded frame here */
+  Wal *pWal,
+  u32 iPage,
+  u32 nTruncate,
+  u8 *aData,
+  u8 *aFrame
 ){
-  int nativeCksum;                /* True for native byte-order checksums */
+  int nativeCksum;
   u32 *aCksum = pWal->hdr.aFrameCksum;
   assert( WAL_FRAME_HDRSIZE==24 );
   sqlite3Put4byte(&aFrame[0], iPage);

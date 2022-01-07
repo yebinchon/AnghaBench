@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int count; int alloc; TYPE_2__* calls; } ;
-typedef  TYPE_1__ call_trace_t ;
+typedef TYPE_1__ call_trace_t ;
 struct TYPE_7__ {int id; void const** args; } ;
-typedef  TYPE_2__ call_entry_t ;
+typedef TYPE_2__ call_entry_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int) ; 
+
+ int GetProcessHeap () ;
+ TYPE_2__* HeapReAlloc (int ,int ,TYPE_2__*,int) ;
 
 __attribute__((used)) static void add_call(call_trace_t *ctrace, int id, const void *arg0,
     const void *arg1, const void *arg2, const void *arg3, const void *arg4)

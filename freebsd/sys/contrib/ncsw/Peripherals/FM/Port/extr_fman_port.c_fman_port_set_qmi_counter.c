@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct fman_port {int dummy; } ;
-typedef  enum fman_port_qmi_counters { ____Placeholder_fman_port_qmi_counters } fman_port_qmi_counters ;
+typedef enum fman_port_qmi_counters { ____Placeholder_fman_port_qmi_counters } fman_port_qmi_counters ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_qmi_counter_reg (struct fman_port*,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  iowrite32be (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int get_qmi_counter_reg (struct fman_port*,int,int **) ;
+ int iowrite32be (int ,int *) ;
 
 void fman_port_set_qmi_counter(struct fman_port *port,
         enum fman_port_qmi_counters counter,
@@ -26,7 +26,7 @@ void fman_port_set_qmi_counter(struct fman_port *port,
 
     get_qmi_counter_reg(port, counter, &queue_reg);
 
-    if (queue_reg == NULL)
+    if (queue_reg == ((void*)0))
         return;
 
     iowrite32be(value, queue_reg);

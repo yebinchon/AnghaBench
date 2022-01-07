@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ len; scalar_t__ stop; } ;
-typedef  TYPE_1__ StopList ;
+typedef TYPE_1__ StopList ;
 
-/* Variables and functions */
- scalar_t__ bsearch (char**,scalar_t__,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pg_qsort_strcmp ; 
+
+ scalar_t__ bsearch (char**,scalar_t__,scalar_t__,int,int ) ;
+ int pg_qsort_strcmp ;
 
 bool
 searchstoplist(StopList *s, char *key)
 {
-	return (s->stop && s->len > 0 &&
-			bsearch(&key, s->stop, s->len,
-					sizeof(char *), pg_qsort_strcmp)) ? true : false;
+ return (s->stop && s->len > 0 &&
+   bsearch(&key, s->stop, s->len,
+     sizeof(char *), pg_qsort_strcmp)) ? 1 : 0;
 }

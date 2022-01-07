@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int numaudios; int dev; int caps; int /*<<< orphan*/  name; int /*<<< orphan*/  devnode; int /*<<< orphan*/  enabled; int /*<<< orphan*/  license; int /*<<< orphan*/  versionnum; int /*<<< orphan*/  version; int /*<<< orphan*/  product; } ;
-typedef  TYPE_1__ oss_sysinfo ;
-typedef  TYPE_1__ oss_audioinfo ;
-typedef  int /*<<< orphan*/  audio_output_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  O_WRONLY ; 
- int PCM_CAP_HIDDEN ; 
- int PCM_CAP_MODEM ; 
- int PCM_CAP_OUTPUT ; 
- int /*<<< orphan*/  SNDCTL_AUDIOINFO ; 
- int /*<<< orphan*/  SNDCTL_SYSINFO ; 
- int /*<<< orphan*/  aout_HotplugReport (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_close (int) ; 
- int vlc_open (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_strerror_c (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int numaudios; int dev; int caps; int name; int devnode; int enabled; int license; int versionnum; int version; int product; } ;
+typedef TYPE_1__ oss_sysinfo ;
+typedef TYPE_1__ oss_audioinfo ;
+typedef int audio_output_t ;
+
+
+ int O_WRONLY ;
+ int PCM_CAP_HIDDEN ;
+ int PCM_CAP_MODEM ;
+ int PCM_CAP_OUTPUT ;
+ int SNDCTL_AUDIOINFO ;
+ int SNDCTL_SYSINFO ;
+ int aout_HotplugReport (int *,int ,int ) ;
+ int errno ;
+ scalar_t__ ioctl (int,int ,TYPE_1__*) ;
+ int msg_Dbg (int *,char*,int ,int ,int ,int ) ;
+ int msg_Err (int *,char*,int ) ;
+ int msg_Warn (int *,char*,int,int ) ;
+ int vlc_close (int) ;
+ int vlc_open (char*,int ) ;
+ int vlc_strerror (int ) ;
+ int vlc_strerror_c (int ) ;
 
 __attribute__((used)) static int DevicesEnum (audio_output_t *aout)
 {

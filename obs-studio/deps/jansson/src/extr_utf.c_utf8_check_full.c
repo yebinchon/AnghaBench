@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
+
+
+
+typedef int int32_t ;
+
+
 
 size_t utf8_check_full(const char *buffer, size_t size, int32_t *codepoint)
 {
@@ -40,7 +40,7 @@ size_t utf8_check_full(const char *buffer, size_t size, int32_t *codepoint)
         u = (unsigned char)buffer[i];
 
         if(u < 0x80 || u > 0xBF) {
-            /* not a continuation byte */
+
             return 0;
         }
 
@@ -48,19 +48,19 @@ size_t utf8_check_full(const char *buffer, size_t size, int32_t *codepoint)
     }
 
     if(value > 0x10FFFF) {
-        /* not in Unicode range */
+
         return 0;
     }
 
     else if(0xD800 <= value && value <= 0xDFFF) {
-        /* invalid code point (UTF-16 surrogate halves) */
+
         return 0;
     }
 
     else if((size == 2 && value < 0x80) ||
             (size == 3 && value < 0x800) ||
             (size == 4 && value < 0x10000)) {
-        /* overlong encoding */
+
         return 0;
     }
 

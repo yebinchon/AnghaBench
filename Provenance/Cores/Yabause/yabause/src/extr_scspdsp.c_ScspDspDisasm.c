@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int coef; int masa; int ewa; int shift; int ysel; int ira; int iwa; int tra; int twa; int unknown3; scalar_t__ unknown2; scalar_t__ unknown; scalar_t__ twt; scalar_t__ iwt; scalar_t__ xsel; scalar_t__ bsel; scalar_t__ zero; scalar_t__ negb; scalar_t__ yrl; scalar_t__ frcl; scalar_t__ adrl; scalar_t__ ewt; scalar_t__ mrd; scalar_t__ mwt; scalar_t__ table; scalar_t__ nxadr; scalar_t__ adreb; scalar_t__ nofl; } ;
 union ScspDspInstruction {scalar_t__ all; TYPE_1__ part; } ;
-typedef  size_t u8 ;
+typedef size_t u8 ;
 struct TYPE_4__ {scalar_t__* mpro; } ;
 
-/* Variables and functions */
- TYPE_2__ scsp_dsp ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ TYPE_2__ scsp_dsp ;
+ int sprintf (char*,char*,...) ;
+ int strlen (char*) ;
 
 void ScspDspDisasm(u8 addr, char *outstring)
 {

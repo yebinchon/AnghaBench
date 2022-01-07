@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  caption; } ;
-typedef  TYPE_1__ Meter ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CRT_colors ; 
- int METER_BUFFER_LEN ; 
- size_t METER_TEXT ; 
- int /*<<< orphan*/  Meter_displayBuffer (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Meter_updateValues (TYPE_1__*,char*,int) ; 
- size_t RESET_COLOR ; 
- int /*<<< orphan*/  RichString_begin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RichString_end (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RichString_printVal (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  attrset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvaddstr (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  out ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int caption; } ;
+typedef TYPE_1__ Meter ;
+
+
+ int * CRT_colors ;
+ int METER_BUFFER_LEN ;
+ size_t METER_TEXT ;
+ int Meter_displayBuffer (TYPE_1__*,char*,int *) ;
+ int Meter_updateValues (TYPE_1__*,char*,int) ;
+ size_t RESET_COLOR ;
+ int RichString_begin (int ) ;
+ int RichString_end (int ) ;
+ int RichString_printVal (int ,int,int) ;
+ int attrset (int ) ;
+ int mvaddstr (int,int,int ) ;
+ int out ;
+ int strlen (int ) ;
 
 __attribute__((used)) static void TextMeterMode_draw(Meter* this, int x, int y, int w) {
    char buffer[METER_BUFFER_LEN];

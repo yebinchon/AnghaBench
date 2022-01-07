@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  size_t LONG ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int DWORD ;
-typedef  int BSTR ;
 
-/* Variables and functions */
- size_t ERROR_NO_MORE_ITEMS ; 
- size_t ERROR_SUCCESS ; 
- scalar_t__ E_OUTOFMEMORY ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- size_t RegEnumValueW (int /*<<< orphan*/ *,size_t,int*,int*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- size_t RegOpenKeyExW (int /*<<< orphan*/ *,int const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- size_t RegQueryInfoKeyW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ S_OK ; 
- int SysAllocString (int*) ; 
- int /*<<< orphan*/  SysFreeString (int) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VT_UI4 ; 
- int /*<<< orphan*/  debugstr_w (int const*) ; 
- int /*<<< orphan*/  free_bstr_array (int*,size_t) ; 
- int* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (int*) ; 
- int /*<<< orphan*/  set_variant (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ to_bstr_array (int*,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ to_i4_array (int*,size_t,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int VARIANT ;
+typedef size_t LONG ;
+typedef scalar_t__ HRESULT ;
+typedef int * HKEY ;
+typedef int DWORD ;
+typedef int BSTR ;
+
+
+ size_t ERROR_NO_MORE_ITEMS ;
+ size_t ERROR_SUCCESS ;
+ scalar_t__ E_OUTOFMEMORY ;
+ int KEY_QUERY_VALUE ;
+ int RegCloseKey (int *) ;
+ size_t RegEnumValueW (int *,size_t,int*,int*,int *,int*,int *,int *) ;
+ size_t RegOpenKeyExW (int *,int const*,int ,int ,int **) ;
+ size_t RegQueryInfoKeyW (int *,int *,int *,int *,int *,int *,int *,int*,int*,int *,int *,int *) ;
+ scalar_t__ S_OK ;
+ int SysAllocString (int*) ;
+ int SysFreeString (int) ;
+ int TRACE (char*,int *,int ) ;
+ int VT_UI4 ;
+ int debugstr_w (int const*) ;
+ int free_bstr_array (int*,size_t) ;
+ int* heap_alloc (int) ;
+ int heap_free (int*) ;
+ int set_variant (int ,size_t,int *,int *) ;
+ scalar_t__ to_bstr_array (int*,size_t,int *) ;
+ scalar_t__ to_i4_array (int*,size_t,int *) ;
 
 __attribute__((used)) static HRESULT enum_values( HKEY root, const WCHAR *subkey, VARIANT *names, VARIANT *types, VARIANT *retval )
 {
-    HKEY hkey = NULL;
+    HKEY hkey = ((void*)0);
     HRESULT hr = S_OK;
-    BSTR *value_names = NULL;
-    DWORD count, buflen, len, *value_types = NULL;
+    BSTR *value_names = ((void*)0);
+    DWORD count, buflen, len, *value_types = ((void*)0);
     LONG res, i = 0;
-    WCHAR *buf = NULL;
+    WCHAR *buf = ((void*)0);
 
     TRACE("%p, %s\n", root, debugstr_w(subkey));
 
     if ((res = RegOpenKeyExW( root, subkey, 0, KEY_QUERY_VALUE, &hkey ))) goto done;
-    if ((res = RegQueryInfoKeyW( hkey, NULL, NULL, NULL, NULL, NULL, NULL, &count, &buflen, NULL, NULL, NULL )))
+    if ((res = RegQueryInfoKeyW( hkey, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &count, &buflen, ((void*)0), ((void*)0), ((void*)0) )))
         goto done;
 
     hr = E_OUTOFMEMORY;
@@ -64,7 +64,7 @@ __attribute__((used)) static HRESULT enum_values( HKEY root, const WCHAR *subkey
     for (;;)
     {
         len = buflen + 1;
-        res = RegEnumValueW( hkey, i, buf, &len, NULL, &value_types[i], NULL, NULL );
+        res = RegEnumValueW( hkey, i, buf, &len, ((void*)0), &value_types[i], ((void*)0), ((void*)0) );
         if (res == ERROR_NO_MORE_ITEMS)
         {
             if (i) res = ERROR_SUCCESS;
@@ -87,7 +87,7 @@ __attribute__((used)) static HRESULT enum_values( HKEY root, const WCHAR *subkey
     }
 
 done:
-    set_variant( VT_UI4, res, NULL, retval );
+    set_variant( VT_UI4, res, ((void*)0), retval );
     RegCloseKey( hkey );
     heap_free( value_names );
     heap_free( value_types );

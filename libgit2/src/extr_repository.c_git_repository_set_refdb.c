@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_refdb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  set_refdb (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_refdb ;
+
+
+ int assert (int) ;
+ int set_refdb (int *,int *) ;
 
 void git_repository_set_refdb(git_repository *repo, git_refdb *refdb)
 {
-	assert(repo && refdb);
-	set_refdb(repo, refdb);
+ assert(repo && refdb);
+ set_refdb(repo, refdb);
 }

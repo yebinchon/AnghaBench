@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  pretty_printer ;
 
-/* Variables and functions */
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- scalar_t__ TREE_LIST ; 
- int /*<<< orphan*/  TREE_VALUE (scalar_t__) ; 
- scalar_t__ TYPE_ARG_TYPES (scalar_t__) ; 
- int /*<<< orphan*/  dump_generic_node (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- scalar_t__ error_mark_node ; 
- int /*<<< orphan*/  pp_character (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  pp_space (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_string (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int pretty_printer ;
+
+
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ scalar_t__ TREE_LIST ;
+ int TREE_VALUE (scalar_t__) ;
+ scalar_t__ TYPE_ARG_TYPES (scalar_t__) ;
+ int dump_generic_node (int *,int ,int,int,int) ;
+ scalar_t__ error_mark_node ;
+ int pp_character (int *,char) ;
+ int pp_space (int *) ;
+ int pp_string (int *,char*) ;
 
 __attribute__((used)) static void
 dump_function_declaration (pretty_printer *buffer, tree node,
-			   int spc, int flags)
+      int spc, int flags)
 {
-  bool wrote_arg = false;
+  bool wrote_arg = 0;
   tree arg;
 
   pp_space (buffer);
   pp_character (buffer, '(');
 
-  /* Print the argument types.  The last element in the list is a VOID_TYPE.
-     The following avoids printing the last element.  */
+
+
   arg = TYPE_ARG_TYPES (node);
   while (arg && TREE_CHAIN (arg) && arg != error_mark_node)
     {
-      wrote_arg = true;
-      dump_generic_node (buffer, TREE_VALUE (arg), spc, flags, false);
+      wrote_arg = 1;
+      dump_generic_node (buffer, TREE_VALUE (arg), spc, flags, 0);
       arg = TREE_CHAIN (arg);
       if (TREE_CHAIN (arg) && TREE_CODE (TREE_CHAIN (arg)) == TREE_LIST)
-	{
-	  pp_character (buffer, ',');
-	  pp_space (buffer);
-	}
+ {
+   pp_character (buffer, ',');
+   pp_space (buffer);
+ }
     }
 
   if (!wrote_arg)

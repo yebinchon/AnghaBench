@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qlcnic_adapter {int /*<<< orphan*/  tgt_mask_reg; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  writel (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct qlcnic_adapter {int tgt_mask_reg; } ;
+
+
+ int writel (int,int ) ;
 
 inline void qlcnic_83xx_set_legacy_intr_mask(struct qlcnic_adapter *adapter)
 {
-	writel(1, adapter->tgt_mask_reg);
+ writel(1, adapter->tgt_mask_reg);
 }

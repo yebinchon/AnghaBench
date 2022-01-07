@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int dwSize; int /*<<< orphan*/  ddRVal; int /*<<< orphan*/  lpvData; int /*<<< orphan*/  dwExpectedSize; int /*<<< orphan*/  guidInfo; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_1__ DD_GETDRIVERINFODATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  GUID_GetDriverInfo2 ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int dwSize; int ddRVal; int lpvData; int dwExpectedSize; int guidInfo; } ;
+typedef int LPVOID ;
+typedef int DWORD ;
+typedef TYPE_1__ DD_GETDRIVERINFODATA ;
+
+
+ int E_FAIL ;
+ int GUID_GetDriverInfo2 ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void PrepareDriverInfoData(DD_GETDRIVERINFODATA* DrvInfo, LPVOID pData, DWORD dwExpectedSize)
 {

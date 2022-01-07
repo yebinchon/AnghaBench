@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
-struct GlobalConfig {int /*<<< orphan*/  errors; int /*<<< orphan*/  mute; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISSPACE (char) ; 
- int /*<<< orphan*/  curl_free (char*) ; 
- char* curlx_mvaprintf (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,size_t,int,int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int va_list ;
+struct GlobalConfig {int errors; int mute; } ;
+
+
+ int ISSPACE (char) ;
+ int curl_free (char*) ;
+ char* curlx_mvaprintf (char const*,int ) ;
+ int fputs (char const*,int ) ;
+ int fwrite (char*,size_t,int,int ) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void voutf(struct GlobalConfig *config,
                   const char *prefix,
@@ -48,13 +48,13 @@ __attribute__((used)) static void voutf(struct GlobalConfig *config,
           cut--;
         }
         if(0 == cut)
-          /* not a single cutting position was found, just cut it at the
-             max text width then! */
+
+
           cut = width-1;
 
         (void)fwrite(ptr, cut + 1, 1, config->errors);
         fputs("\n", config->errors);
-        ptr += cut + 1; /* skip the space too */
+        ptr += cut + 1;
         len -= cut + 1;
       }
       else {

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_6__ {int sec_level; } ;
 struct TYPE_5__ {char* name; int algorithm_mkey; int algorithm_auth; int algorithm_enc; int algorithm_mac; int algo_strength; int id; int min_tls; scalar_t__ valid; } ;
-typedef  TYPE_1__ SSL_CIPHER ;
-typedef  int /*<<< orphan*/  CIPHER_ORDER ;
-typedef  TYPE_2__ CERT ;
+typedef TYPE_1__ SSL_CIPHER ;
+typedef int CIPHER_ORDER ;
+typedef TYPE_2__ CERT ;
 
-/* Variables and functions */
- int CIPHER_ADD ; 
- int CIPHER_DEL ; 
- int CIPHER_KILL ; 
- int CIPHER_ORD ; 
- int CIPHER_SPECIAL ; 
- scalar_t__ ITEM_SEP (char const) ; 
- int SSL_DEFAULT_MASK ; 
- int /*<<< orphan*/  SSL_F_SSL_CIPHER_PROCESS_RULESTR ; 
- int /*<<< orphan*/  SSL_R_INVALID_COMMAND ; 
- int SSL_STRONG_MASK ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ isalnum (unsigned char) ; 
- int /*<<< orphan*/  ssl_cipher_apply_rule (int,int,int,int,int,int,int,int,int,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int ssl_cipher_strength_sort (int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+
+ int CIPHER_ADD ;
+ int CIPHER_DEL ;
+ int CIPHER_KILL ;
+ int CIPHER_ORD ;
+ int CIPHER_SPECIAL ;
+ scalar_t__ ITEM_SEP (char const) ;
+ int SSL_DEFAULT_MASK ;
+ int SSL_F_SSL_CIPHER_PROCESS_RULESTR ;
+ int SSL_R_INVALID_COMMAND ;
+ int SSL_STRONG_MASK ;
+ int SSLerr (int ,int ) ;
+ scalar_t__ isalnum (unsigned char) ;
+ int ssl_cipher_apply_rule (int,int,int,int,int,int,int,int,int,int **,int **) ;
+ int ssl_cipher_strength_sort (int **,int **) ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str,
                                       CIPHER_ORDER **head_p,
@@ -54,7 +54,7 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
         ch = *l;
 
         if (ch == '\0')
-            break;              /* done */
+            break;
         if (ch == '-') {
             rule = CIPHER_DEL;
             l++;
@@ -87,26 +87,26 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
             ch = *l;
             buf = l;
             buflen = 0;
-#ifndef CHARSET_EBCDIC
+
             while (((ch >= 'A') && (ch <= 'Z')) ||
                    ((ch >= '0') && (ch <= '9')) ||
                    ((ch >= 'a') && (ch <= 'z')) ||
                    (ch == '-') || (ch == '.') || (ch == '='))
-#else
-            while (isalnum((unsigned char)ch) || (ch == '-') || (ch == '.')
-                   || (ch == '='))
-#endif
+
+
+
+
             {
                 ch = *(++l);
                 buflen++;
             }
 
             if (buflen == 0) {
-                /*
-                 * We hit something we cannot deal with,
-                 * it is no command or separator nor
-                 * alphanumeric, so we call this an error.
-                 */
+
+
+
+
+
                 SSLerr(SSL_F_SSL_CIPHER_PROCESS_RULESTR, SSL_R_INVALID_COMMAND);
                 retval = found = 0;
                 l++;
@@ -114,29 +114,17 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
             }
 
             if (rule == CIPHER_SPECIAL) {
-                found = 0;      /* unused -- avoid compiler warning */
-                break;          /* special treatment */
+                found = 0;
+                break;
             }
 
-            /* check for multi-part specification */
+
             if (ch == '+') {
                 multi = 1;
                 l++;
             } else {
                 multi = 0;
             }
-
-            /*
-             * Now search for the cipher alias in the ca_list. Be careful
-             * with the strncmp, because the "buflen" limitation
-             * will make the rule "ADH:SOME" and the cipher
-             * "ADH-MY-CIPHER" look like a match for buflen=3.
-             * So additionally check whether the cipher name found
-             * has the correct length. We can save a strlen() call:
-             * just checking for the '\0' at the right place is
-             * sufficient, we have to strncmp() anyway. (We cannot
-             * use strcmp(), because buf is not '\0' terminated.)
-             */
             j = found = 0;
             cipher_id = 0;
             while (ca_list[j]) {
@@ -149,7 +137,7 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
             }
 
             if (!found)
-                break;          /* ignore this entry */
+                break;
 
             if (ca_list[j]->algorithm_mkey) {
                 if (alg_mkey) {
@@ -229,17 +217,17 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
             }
 
             if (ca_list[j]->valid) {
-                /*
-                 * explicit ciphersuite found; its protocol version does not
-                 * become part of the search pattern!
-                 */
+
+
+
+
 
                 cipher_id = ca_list[j]->id;
             } else {
-                /*
-                 * not an explicit ciphersuite; only in this case, the
-                 * protocol version is considered part of the search pattern
-                 */
+
+
+
+
 
                 if (ca_list[j]->min_tls) {
                     if (min_tls != 0 && min_tls != ca_list[j]->min_tls) {
@@ -255,10 +243,10 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
                 break;
         }
 
-        /*
-         * Ok, we have the rule, now apply it
-         */
-        if (rule == CIPHER_SPECIAL) { /* special command */
+
+
+
+        if (rule == CIPHER_SPECIAL) {
             ok = 0;
             if ((buflen == 8) && strncmp(buf, "STRENGTH", 8) == 0) {
                 ok = ssl_cipher_strength_sort(head_p, tail_p);
@@ -276,12 +264,12 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
             }
             if (ok == 0)
                 retval = 0;
-            /*
-             * We do not support any "multi" options
-             * together with "@", so throw away the
-             * rest of the command, if any left, until
-             * end or ':' is found.
-             */
+
+
+
+
+
+
             while ((*l != '\0') && !ITEM_SEP(*l))
                 l++;
         } else if (found) {
@@ -294,7 +282,7 @@ __attribute__((used)) static int ssl_cipher_process_rulestr(const char *rule_str
                 l++;
         }
         if (*l == '\0')
-            break;              /* done */
+            break;
     }
 
     return retval;

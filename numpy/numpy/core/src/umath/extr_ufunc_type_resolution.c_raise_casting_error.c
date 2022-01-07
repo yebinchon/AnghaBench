@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_intp ;
-typedef  int /*<<< orphan*/  PyUFuncObject ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  NPY_CASTING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PyErr_SetObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_BuildValue (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * npy_casting_to_py_object (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int npy_intp ;
+typedef int PyUFuncObject ;
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int NPY_CASTING ;
+
+
+ int PyErr_SetObject (int *,int *) ;
+ int * Py_BuildValue (char*,int *,int *,int *,int *,int ) ;
+ int Py_DECREF (int *) ;
+ int * npy_casting_to_py_object (int ) ;
 
 __attribute__((used)) static int
 raise_casting_error(
@@ -35,7 +35,7 @@ raise_casting_error(
     PyObject *casting_value;
 
     casting_value = npy_casting_to_py_object(casting);
-    if (casting_value == NULL) {
+    if (casting_value == ((void*)0)) {
         return -1;
     }
 
@@ -47,7 +47,7 @@ raise_casting_error(
         (PyObject *)to,
         i
     );
-    if (exc_value == NULL){
+    if (exc_value == ((void*)0)){
         return -1;
     }
     PyErr_SetObject(exc_type, exc_value);

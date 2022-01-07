@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcan_pccard {int /*<<< orphan*/  led_timer; } ;
 
-/* Variables and functions */
- scalar_t__ HZ ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  timer_pending (int /*<<< orphan*/ *) ; 
+
+
+
+struct pcan_pccard {int led_timer; } ;
+
+
+ scalar_t__ HZ ;
+ scalar_t__ jiffies ;
+ int mod_timer (int *,scalar_t__) ;
+ int timer_pending (int *) ;
 
 __attribute__((used)) static void pcan_start_led_timer(struct pcan_pccard *card)
 {
-	if (!timer_pending(&card->led_timer))
-		mod_timer(&card->led_timer, jiffies + HZ);
+ if (!timer_pending(&card->led_timer))
+  mod_timer(&card->led_timer, jiffies + HZ);
 }

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ct_gif ; 
- int ct_jpeg ; 
- int ct_mov ; 
- int ct_mp3 ; 
- int ct_mp4 ; 
- int ct_pdf ; 
- int ct_png ; 
- int ct_unknown ; 
- int ct_webp ; 
- int /*<<< orphan*/  memcmp (unsigned char const*,char*,int) ; 
+ int ct_gif ;
+ int ct_jpeg ;
+ int ct_mov ;
+ int ct_mp3 ;
+ int ct_mp4 ;
+ int ct_pdf ;
+ int ct_png ;
+ int ct_unknown ;
+ int ct_webp ;
+ int memcmp (unsigned char const*,char*,int) ;
 
 int detect_content_type (const unsigned char *const buff, int size) {
   const unsigned int *a = (const unsigned int *) buff;

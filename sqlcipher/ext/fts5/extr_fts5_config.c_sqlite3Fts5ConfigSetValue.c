@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
 struct TYPE_3__ {int pgsz; int nHashSize; int nAutomerge; int nUsermerge; int nCrisisMerge; char* zRank; char* zRankArgs; } ;
-typedef  TYPE_1__ Fts5Config ;
+typedef TYPE_1__ Fts5Config ;
 
-/* Variables and functions */
- int FTS5_DEFAULT_AUTOMERGE ; 
- int FTS5_DEFAULT_CRISISMERGE ; 
- int FTS5_MAX_PAGE_SIZE ; 
- int SQLITE_ERROR ; 
- scalar_t__ SQLITE_INTEGER ; 
- int SQLITE_OK ; 
- int sqlite3Fts5ConfigParseRank (char const*,char**,char**) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- scalar_t__ sqlite3_stricmp (char const*,char*) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_numeric_type (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int FTS5_DEFAULT_AUTOMERGE ;
+ int FTS5_DEFAULT_CRISISMERGE ;
+ int FTS5_MAX_PAGE_SIZE ;
+ int SQLITE_ERROR ;
+ scalar_t__ SQLITE_INTEGER ;
+ int SQLITE_OK ;
+ int sqlite3Fts5ConfigParseRank (char const*,char**,char**) ;
+ int sqlite3_free (char*) ;
+ scalar_t__ sqlite3_stricmp (char const*,char*) ;
+ int sqlite3_value_int (int *) ;
+ scalar_t__ sqlite3_value_numeric_type (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 int sqlite3Fts5ConfigSetValue(
-  Fts5Config *pConfig, 
-  const char *zKey, 
+  Fts5Config *pConfig,
+  const char *zKey,
   sqlite3_value *pVal,
   int *pbBadkey
 ){

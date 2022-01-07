@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct sc_pcminfo {int /*<<< orphan*/  dev; } ;
-struct sc_chinfo {int /*<<< orphan*/  format; struct sc_pcminfo* parent; } ;
-typedef  int /*<<< orphan*/  kobj_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+struct sc_pcminfo {int dev; } ;
+struct sc_chinfo {int format; struct sc_pcminfo* parent; } ;
+typedef int kobj_t ;
+
+
+ int device_printf (int ,char*,int ) ;
 
 __attribute__((used)) static int
 hdspechan_setformat(kobj_t obj, void *data, uint32_t format)
 {
-	struct sc_chinfo *ch;
+ struct sc_chinfo *ch;
 
-	ch = data;
+ ch = data;
 
-#if 0
-	struct sc_pcminfo *scp = ch->parent;
-	device_printf(scp->dev, "hdspechan_setformat(%d)\n", format);
-#endif
 
-	ch->format = format;
 
-	return (0);
+
+
+
+ ch->format = format;
+
+ return (0);
 }

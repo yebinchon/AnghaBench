@@ -1,80 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const vlc_family_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int const vlc_family_t ;
 struct TYPE_8__ {TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ filter_t ;
-struct TYPE_9__ {int /*<<< orphan*/  family_map; int /*<<< orphan*/  p_families; } ;
-typedef  TYPE_2__ filter_sys_t ;
-typedef  int /*<<< orphan*/ * CTFontDescriptorRef ;
-typedef  int /*<<< orphan*/ * CTFontCollectionRef ;
-typedef  int /*<<< orphan*/ * CFStringRef ;
-typedef  int /*<<< orphan*/ * CFMutableDictionaryRef ;
-typedef  scalar_t__ CFIndex ;
-typedef  int /*<<< orphan*/ * CFArrayRef ;
+typedef TYPE_1__ filter_t ;
+struct TYPE_9__ {int family_map; int p_families; } ;
+typedef TYPE_2__ filter_sys_t ;
+typedef int * CTFontDescriptorRef ;
+typedef int * CTFontCollectionRef ;
+typedef int * CFStringRef ;
+typedef int * CFMutableDictionaryRef ;
+typedef scalar_t__ CFIndex ;
+typedef int * CFArrayRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CFArrayCreate (int /*<<< orphan*/ ,void const**,size_t const,int /*<<< orphan*/ *) ; 
- scalar_t__ CFArrayGetCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFArrayGetValueAtIndex (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CFDictionaryAddValue (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFDictionaryCreateMutable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CFRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CFStringCreateWithCString (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CTFontCollectionCreateMatchingFontDescriptors (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * CTFontCollectionCreateWithFontDescriptors (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CTFontDescriptorCreateWithAttributes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FREENULL (char*) ; 
- int /*<<< orphan*/  const* NewFamily (TYPE_1__*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- char* ToLower (char const*) ; 
- int /*<<< orphan*/  addNewFontToFamily (TYPE_1__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getPathForFontDescription (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kCFAllocatorDefault ; 
- int /*<<< orphan*/  kCFStringEncodingUTF8 ; 
- int /*<<< orphan*/ * kCTFontDisplayNameAttribute ; 
- int /*<<< orphan*/ * kCTFontFamilyNameAttribute ; 
- int /*<<< orphan*/ * kCTFontNameAttribute ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,char const*) ; 
- int /*<<< orphan*/  msg_Warn (TYPE_1__*,char*) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  const* vlc_dictionary_value_for_key (int /*<<< orphan*/ *,char*) ; 
+
+ int * CFArrayCreate (int ,void const**,size_t const,int *) ;
+ scalar_t__ CFArrayGetCount (int *) ;
+ int * CFArrayGetValueAtIndex (int *,scalar_t__) ;
+ int CFDictionaryAddValue (int *,int *,int *) ;
+ int * CFDictionaryCreateMutable (int ,int ,int *,int *) ;
+ int CFRelease (int *) ;
+ int * CFStringCreateWithCString (int ,char const*,int ) ;
+ int * CTFontCollectionCreateMatchingFontDescriptors (int *) ;
+ int * CTFontCollectionCreateWithFontDescriptors (int *,int ) ;
+ int * CTFontDescriptorCreateWithAttributes (int *) ;
+ int FREENULL (char*) ;
+ int const* NewFamily (TYPE_1__*,char*,int *,int *,char*) ;
+ char* ToLower (char const*) ;
+ int addNewFontToFamily (TYPE_1__*,int *,char*,int const*) ;
+ int free (char*) ;
+ char* getPathForFontDescription (int *) ;
+ int kCFAllocatorDefault ;
+ int kCFStringEncodingUTF8 ;
+ int * kCTFontDisplayNameAttribute ;
+ int * kCTFontFamilyNameAttribute ;
+ int * kCTFontNameAttribute ;
+ int msg_Dbg (TYPE_1__*,char*,char const*) ;
+ int msg_Warn (TYPE_1__*,char*) ;
+ scalar_t__ unlikely (int) ;
+ int const* vlc_dictionary_value_for_key (int *,char*) ;
 
 const vlc_family_t *CoreText_GetFamily(filter_t *p_filter, const char *psz_family)
 {
     filter_sys_t *p_sys = p_filter->p_sys;
 
-    if (unlikely(psz_family == NULL)) {
-        return NULL;
+    if (unlikely(psz_family == ((void*)0))) {
+        return ((void*)0);
     }
 
     char *psz_lc = ToLower(psz_family);
     if (unlikely(!psz_lc)) {
-        return NULL;
+        return ((void*)0);
     }
 
-    /* let's double check if we have parsed this family already */
+
     vlc_family_t *p_family = vlc_dictionary_value_for_key(&p_sys->family_map, psz_lc);
     if (p_family) {
         free(psz_lc);
         return p_family;
     }
 
-    CTFontCollectionRef coreTextFontCollection = NULL;
-    CFArrayRef matchedFontDescriptions = NULL;
+    CTFontCollectionRef coreTextFontCollection = ((void*)0);
+    CFArrayRef matchedFontDescriptions = ((void*)0);
 
-    /* we search for family name, display name and name to find them all */
+
     const size_t numberOfAttributes = 3;
     CTFontDescriptorRef coreTextFontDescriptors[numberOfAttributes];
     CFMutableDictionaryRef coreTextAttributes[numberOfAttributes];
@@ -84,40 +84,40 @@ const vlc_family_t *CoreText_GetFamily(filter_t *p_filter, const char *psz_famil
         kCTFontNameAttribute,
     };
 
-#ifndef NDEBUG
+
     msg_Dbg(p_filter, "Creating new family for '%s'", psz_family);
-#endif
+
 
     CFStringRef familyName = CFStringCreateWithCString(kCFAllocatorDefault,
                                                        psz_family,
                                                        kCFStringEncodingUTF8);
     for (size_t x = 0; x < numberOfAttributes; x++) {
-        coreTextAttributes[x] = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, NULL, NULL);
+        coreTextAttributes[x] = CFDictionaryCreateMutable(kCFAllocatorDefault, 0, ((void*)0), ((void*)0));
         CFDictionaryAddValue(coreTextAttributes[x], attributeNames[x], familyName);
         coreTextFontDescriptors[x] = CTFontDescriptorCreateWithAttributes(coreTextAttributes[x]);
     }
 
     CFArrayRef coreTextFontDescriptorsArray = CFArrayCreate(kCFAllocatorDefault,
                                                             (const void **)&coreTextFontDescriptors,
-                                                            numberOfAttributes, NULL);
+                                                            numberOfAttributes, ((void*)0));
 
     coreTextFontCollection = CTFontCollectionCreateWithFontDescriptors(coreTextFontDescriptorsArray, 0);
-    if (coreTextFontCollection == NULL) {
+    if (coreTextFontCollection == ((void*)0)) {
         msg_Warn(p_filter,"CTFontCollectionCreateWithFontDescriptors (1) failed!");
         goto end;
     }
 
     matchedFontDescriptions = CTFontCollectionCreateMatchingFontDescriptors(coreTextFontCollection);
-    if (matchedFontDescriptions == NULL) {
+    if (matchedFontDescriptions == ((void*)0)) {
         msg_Warn(p_filter, "CTFontCollectionCreateMatchingFontDescriptors (2) failed!");
         goto end;
     }
 
     CFIndex numberOfFoundFontDescriptions = CFArrayGetCount(matchedFontDescriptions);
 
-    char *path = NULL;
+    char *path = ((void*)0);
 
-    /* create a new family object */
+
     p_family = NewFamily(p_filter, psz_lc, &p_sys->p_families, &p_sys->family_map, psz_lc);
     if (unlikely(!p_family)) {
         goto end;
@@ -127,8 +127,8 @@ const vlc_family_t *CoreText_GetFamily(filter_t *p_filter, const char *psz_famil
         CTFontDescriptorRef iter = CFArrayGetValueAtIndex(matchedFontDescriptions, i);
         path = getPathForFontDescription(iter);
 
-        /* check if the path is empty, which can happen in rare circumstances */
-        if (path == NULL || *path == '\0') {
+
+        if (path == ((void*)0) || *path == '\0') {
             FREENULL(path);
             continue;
         }
@@ -137,10 +137,10 @@ const vlc_family_t *CoreText_GetFamily(filter_t *p_filter, const char *psz_famil
     }
 
 end:
-    if (matchedFontDescriptions != NULL) {
+    if (matchedFontDescriptions != ((void*)0)) {
         CFRelease(matchedFontDescriptions);
     }
-    if (coreTextFontCollection != NULL) {
+    if (coreTextFontCollection != ((void*)0)) {
         CFRelease(coreTextFontCollection);
     }
 

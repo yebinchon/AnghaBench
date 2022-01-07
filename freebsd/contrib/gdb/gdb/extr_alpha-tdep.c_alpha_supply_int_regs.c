@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ALPHA_PC_REGNUM ; 
- int ALPHA_UNIQUE_REGNUM ; 
- int ALPHA_ZERO_REGNUM ; 
- int /*<<< orphan*/  supply_register (int,void const*) ; 
+ int ALPHA_PC_REGNUM ;
+ int ALPHA_UNIQUE_REGNUM ;
+ int ALPHA_ZERO_REGNUM ;
+ int supply_register (int,void const*) ;
 
 void
 alpha_supply_int_regs (int regno, const void *r0_r30,
-		       const void *pc, const void *unique)
+         const void *pc, const void *unique)
 {
   int i;
 
@@ -28,7 +20,7 @@ alpha_supply_int_regs (int regno, const void *r0_r30,
       supply_register (i, (const char *)r0_r30 + i*8);
 
   if (regno == ALPHA_ZERO_REGNUM || regno == -1)
-    supply_register (ALPHA_ZERO_REGNUM, NULL);
+    supply_register (ALPHA_ZERO_REGNUM, ((void*)0));
 
   if (regno == ALPHA_PC_REGNUM || regno == -1)
     supply_register (ALPHA_PC_REGNUM, pc);

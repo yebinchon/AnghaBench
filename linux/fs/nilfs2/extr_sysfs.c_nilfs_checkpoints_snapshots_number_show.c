@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct the_nilfs {int /*<<< orphan*/  ns_sb; int /*<<< orphan*/  ns_segctor_sem; int /*<<< orphan*/  ns_cpfile; } ;
-struct nilfs_cpstat {int /*<<< orphan*/  cs_nsss; } ;
+
+
+
+
+struct the_nilfs {int ns_sb; int ns_segctor_sem; int ns_cpfile; } ;
+struct nilfs_cpstat {int cs_nsss; } ;
 struct nilfs_checkpoints_attr {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  __u64 ;
+typedef int ssize_t ;
+typedef int __u64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_ERR ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  down_read (int /*<<< orphan*/ *) ; 
- int nilfs_cpfile_get_stat (int /*<<< orphan*/ ,struct nilfs_cpstat*) ; 
- int /*<<< orphan*/  nilfs_msg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int snprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  up_read (int /*<<< orphan*/ *) ; 
+
+ int KERN_ERR ;
+ int PAGE_SIZE ;
+ int down_read (int *) ;
+ int nilfs_cpfile_get_stat (int ,struct nilfs_cpstat*) ;
+ int nilfs_msg (int ,int ,char*,int) ;
+ int snprintf (char*,int ,char*,int ) ;
+ int up_read (int *) ;
 
 __attribute__((used)) static ssize_t
 nilfs_checkpoints_snapshots_number_show(struct nilfs_checkpoints_attr *attr,
-					struct the_nilfs *nilfs,
-					char *buf)
+     struct the_nilfs *nilfs,
+     char *buf)
 {
-	__u64 nsnapshots;
-	struct nilfs_cpstat cpstat;
-	int err;
+ __u64 nsnapshots;
+ struct nilfs_cpstat cpstat;
+ int err;
 
-	down_read(&nilfs->ns_segctor_sem);
-	err = nilfs_cpfile_get_stat(nilfs->ns_cpfile, &cpstat);
-	up_read(&nilfs->ns_segctor_sem);
-	if (err < 0) {
-		nilfs_msg(nilfs->ns_sb, KERN_ERR,
-			  "unable to get checkpoint stat: err=%d", err);
-		return err;
-	}
+ down_read(&nilfs->ns_segctor_sem);
+ err = nilfs_cpfile_get_stat(nilfs->ns_cpfile, &cpstat);
+ up_read(&nilfs->ns_segctor_sem);
+ if (err < 0) {
+  nilfs_msg(nilfs->ns_sb, KERN_ERR,
+     "unable to get checkpoint stat: err=%d", err);
+  return err;
+ }
 
-	nsnapshots = cpstat.cs_nsss;
+ nsnapshots = cpstat.cs_nsss;
 
-	return snprintf(buf, PAGE_SIZE, "%llu\n", nsnapshots);
+ return snprintf(buf, PAGE_SIZE, "%llu\n", nsnapshots);
 }

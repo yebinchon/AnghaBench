@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct box {scalar_t__ score; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static struct box *find_box_max_score(struct box *b, int count)
 {
-    struct box *best = NULL;
+    struct box *best = ((void*)0);
     for (; count--; b++)
         if (b->score && (!best || b->score > best->score)) best = b;
     return best;

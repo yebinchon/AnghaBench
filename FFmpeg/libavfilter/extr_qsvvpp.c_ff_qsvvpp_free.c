@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {struct TYPE_4__* frame_infos; struct TYPE_4__* ext_buffers; struct TYPE_4__* surface_ptrs_out; struct TYPE_4__* surface_ptrs_in; int /*<<< orphan*/  out_frame_list; int /*<<< orphan*/  in_frame_list; scalar_t__ session; } ;
-typedef  TYPE_1__ QSVVPPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MFXClose (scalar_t__) ; 
- int /*<<< orphan*/  MFXVideoVPP_Close (scalar_t__) ; 
- int /*<<< orphan*/  av_freep (TYPE_1__**) ; 
- int /*<<< orphan*/  clear_frame_list (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {struct TYPE_4__* frame_infos; struct TYPE_4__* ext_buffers; struct TYPE_4__* surface_ptrs_out; struct TYPE_4__* surface_ptrs_in; int out_frame_list; int in_frame_list; scalar_t__ session; } ;
+typedef TYPE_1__ QSVVPPContext ;
+
+
+ int MFXClose (scalar_t__) ;
+ int MFXVideoVPP_Close (scalar_t__) ;
+ int av_freep (TYPE_1__**) ;
+ int clear_frame_list (int *) ;
 
 int ff_qsvvpp_free(QSVVPPContext **vpp)
 {
@@ -32,7 +32,7 @@ int ff_qsvvpp_free(QSVVPPContext **vpp)
         MFXClose(s->session);
     }
 
-    /* release all the resources */
+
     clear_frame_list(&s->in_frame_list);
     clear_frame_list(&s->out_frame_list);
     av_freep(&s->surface_ptrs_in);

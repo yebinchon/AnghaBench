@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ADD_ALL_TESTS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TOTAL_NUM_TESTS ; 
- int /*<<< orphan*/  sessionfile ; 
- int /*<<< orphan*/  test_client_hello ; 
- int /*<<< orphan*/  test_get_argument (int /*<<< orphan*/ ) ; 
+ int ADD_ALL_TESTS (int ,int ) ;
+ int TEST_ptr (int ) ;
+ int TOTAL_NUM_TESTS ;
+ int sessionfile ;
+ int test_client_hello ;
+ int test_get_argument (int ) ;
 
 int setup_tests(void)
 {

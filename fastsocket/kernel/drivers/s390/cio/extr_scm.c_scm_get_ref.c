@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  owner; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- TYPE_1__* eadm_ops ; 
- int /*<<< orphan*/  eadm_ops_mutex ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int owner; } ;
+
+
+ int ENOENT ;
+ TYPE_1__* eadm_ops ;
+ int eadm_ops_mutex ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int try_module_get (int ) ;
 
 int scm_get_ref(void)
 {
-	int ret = 0;
+ int ret = 0;
 
-	mutex_lock(&eadm_ops_mutex);
-	if (!eadm_ops || !try_module_get(eadm_ops->owner))
-		ret = -ENOENT;
-	mutex_unlock(&eadm_ops_mutex);
+ mutex_lock(&eadm_ops_mutex);
+ if (!eadm_ops || !try_module_get(eadm_ops->owner))
+  ret = -ENOENT;
+ mutex_unlock(&eadm_ops_mutex);
 
-	return ret;
+ return ret;
 }

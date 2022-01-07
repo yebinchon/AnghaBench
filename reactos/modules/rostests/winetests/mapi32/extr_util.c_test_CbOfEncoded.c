@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buff ;
-typedef  scalar_t__ ULONG ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (char*,char,unsigned int) ; 
- int /*<<< orphan*/  ok (int,char*,unsigned int,scalar_t__,scalar_t__) ; 
- scalar_t__ pCbOfEncoded (char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int buff ;
+typedef scalar_t__ ULONG ;
+
+
+ int memset (char*,char,unsigned int) ;
+ int ok (int,char*,unsigned int,scalar_t__,scalar_t__) ;
+ scalar_t__ pCbOfEncoded (char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_CbOfEncoded(void)
 {

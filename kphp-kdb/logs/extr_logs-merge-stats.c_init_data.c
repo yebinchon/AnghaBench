@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int engineF ; 
- int engineN ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ ** f ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  left_files ; 
- int snprintf (char*,int,char*,char*,int) ; 
- char* stat_name ; 
- int /*<<< orphan*/  stderr ; 
+ int engineF ;
+ int engineN ;
+ int exit (int) ;
+ int ** f ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int left_files ;
+ int snprintf (char*,int,char*,char*,int) ;
+ char* stat_name ;
+ int stderr ;
 
 void init_data (void) {
   char fname[100];
@@ -33,7 +25,7 @@ void init_data (void) {
       exit (1);
     }
     f[i] = fopen (fname, "r");
-    if (f[i] == NULL) {
+    if (f[i] == ((void*)0)) {
       fprintf (stderr, "File '%s' not found.\n", fname);
       exit (1);
     }

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IObjectWithSite ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IObjectWithSite ; 
- int /*<<< orphan*/  IObjectWithSite_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IObjectWithSite_SetSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/ * create_ax_site (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int IUnknown ;
+typedef int IObjectWithSite ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int IID_IObjectWithSite ;
+ int IObjectWithSite_Release (int *) ;
+ int IObjectWithSite_SetSite (int *,int *) ;
+ int IUnknown_QueryInterface (int *,int *,void**) ;
+ int IUnknown_Release (int *) ;
+ int S_OK ;
+ int * create_ax_site (int *) ;
 
 __attribute__((used)) static HRESULT set_object_site(script_ctx_t *ctx, IUnknown *obj)
 {

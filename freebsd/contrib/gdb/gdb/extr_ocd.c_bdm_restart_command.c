@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OCD_RESET_RUN ; 
- int /*<<< orphan*/  clear_proceed_status () ; 
- int /*<<< orphan*/  error (char*) ; 
- int last_run_status ; 
- int /*<<< orphan*/  normal_stop () ; 
- int /*<<< orphan*/  ocd_desc ; 
- int /*<<< orphan*/  ocd_do_command (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  wait_for_inferior () ; 
+ int OCD_RESET_RUN ;
+ int clear_proceed_status () ;
+ int error (char*) ;
+ int last_run_status ;
+ int normal_stop () ;
+ int ocd_desc ;
+ int ocd_do_command (int ,int*,int*) ;
+ int wait_for_inferior () ;
 
 __attribute__((used)) static void
 bdm_restart_command (char *args, int from_tty)

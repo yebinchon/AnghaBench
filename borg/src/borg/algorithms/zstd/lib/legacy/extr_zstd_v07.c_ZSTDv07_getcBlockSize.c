@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ blockType_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ blockType_t ;
 struct TYPE_3__ {scalar_t__ blockType; size_t origSize; } ;
-typedef  TYPE_1__ blockProperties_t ;
-typedef  size_t U32 ;
-typedef  int BYTE ;
+typedef TYPE_1__ blockProperties_t ;
+typedef size_t U32 ;
+typedef int BYTE ;
 
-/* Variables and functions */
- size_t ERROR (int /*<<< orphan*/ ) ; 
- size_t ZSTDv07_blockHeaderSize ; 
- scalar_t__ bt_end ; 
- scalar_t__ bt_rle ; 
- int /*<<< orphan*/  srcSize_wrong ; 
+
+ size_t ERROR (int ) ;
+ size_t ZSTDv07_blockHeaderSize ;
+ scalar_t__ bt_end ;
+ scalar_t__ bt_rle ;
+ int srcSize_wrong ;
 
 __attribute__((used)) static size_t ZSTDv07_getcBlockSize(const void* src, size_t srcSize, blockProperties_t* bpPtr)
 {

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int /*<<< orphan*/  APR_READ ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_NULL_DEVICE_NAME ; 
- int /*<<< orphan*/  SVN_REPOS__HOOK_POST_REVPROP_CHANGE ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* check_hook_cmd (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_temp_file (int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hook_symlink_error (char const*) ; 
- int /*<<< orphan*/  run_hook_cmd (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_dirent_local_style (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_file_open (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_repos_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_repos_post_revprop_change_hook (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
 
-svn_error_t  *
+
+
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_repos_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_file_t ;
+
+
+ int APR_OS_DEFAULT ;
+ int APR_READ ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_NULL_DEVICE_NAME ;
+ int SVN_REPOS__HOOK_POST_REVPROP_CHANGE ;
+ char* apr_psprintf (int *,char*,int ) ;
+ char* check_hook_cmd (char const*,scalar_t__*,int *) ;
+ int create_temp_file (int **,int const*,int *) ;
+ int * hook_symlink_error (char const*) ;
+ int run_hook_cmd (int *,int ,char const*,char const**,int *,int *,int *) ;
+ char* svn_dirent_local_style (int ,int *) ;
+ int svn_io_file_close (int *,int *) ;
+ int svn_io_file_open (int **,int ,int ,int ,int *) ;
+ int svn_repos_path (int *,int *) ;
+ char* svn_repos_post_revprop_change_hook (int *,int *) ;
+
+svn_error_t *
 svn_repos__hooks_post_revprop_change(svn_repos_t *repos,
                                      apr_hash_t *hooks_env,
                                      svn_revnum_t rev,
@@ -57,10 +57,10 @@ svn_repos__hooks_post_revprop_change(svn_repos_t *repos,
   else if (hook)
     {
       const char *args[7];
-      apr_file_t *stdin_handle = NULL;
+      apr_file_t *stdin_handle = ((void*)0);
       char action_string[2];
 
-      /* Pass the old value as stdin to hook */
+
       if (old_value)
         SVN_ERR(create_temp_file(&stdin_handle, old_value, pool));
       else
@@ -76,9 +76,9 @@ svn_repos__hooks_post_revprop_change(svn_repos_t *repos,
       args[3] = author ? author : "";
       args[4] = name;
       args[5] = action_string;
-      args[6] = NULL;
+      args[6] = ((void*)0);
 
-      SVN_ERR(run_hook_cmd(NULL, SVN_REPOS__HOOK_POST_REVPROP_CHANGE, hook,
+      SVN_ERR(run_hook_cmd(((void*)0), SVN_REPOS__HOOK_POST_REVPROP_CHANGE, hook,
                            args, hooks_env, stdin_handle, pool));
 
       SVN_ERR(svn_io_file_close(stdin_handle, pool));

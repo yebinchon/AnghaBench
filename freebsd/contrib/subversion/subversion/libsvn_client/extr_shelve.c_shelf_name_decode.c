@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR_BAD_CHANGELIST_NAME ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int sscanf (char const*,char*,int*,int*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_stringbuf_appendbyte (TYPE_1__*,int) ; 
- TYPE_1__* svn_stringbuf_create_ensure (int,int /*<<< orphan*/ *) ; 
+
+ int SVN_ERR_BAD_CHANGELIST_NAME ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int sscanf (char const*,char*,int*,int*) ;
+ int strlen (char const*) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int svn_stringbuf_appendbyte (TYPE_1__*,int) ;
+ TYPE_1__* svn_stringbuf_create_ensure (int,int *) ;
 
 __attribute__((used)) static svn_error_t *
 shelf_name_decode(char **decoded_name_p,
@@ -42,7 +42,7 @@ shelf_name_decode(char **decoded_name_p,
       int nitems = sscanf(input, "%02x%n", &c, &nchars);
 
       if (nitems != 1 || nchars != 2)
-        return svn_error_createf(SVN_ERR_BAD_CHANGELIST_NAME, NULL,
+        return svn_error_createf(SVN_ERR_BAD_CHANGELIST_NAME, ((void*)0),
                                  _("Shelve: Bad encoded name '%s'"), codename);
       svn_stringbuf_appendbyte(sb, c);
       input += 2;

@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec3_t ;
-struct TYPE_3__ {scalar_t__ entityNum; int fraction; int /*<<< orphan*/  startsolid; } ;
-typedef  TYPE_1__ trace_t ;
-typedef  int /*<<< orphan*/  qboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AngleVectors (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CG_Trace (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CONTENTS_SOLID ; 
- scalar_t__ ENTITYNUM_WORLD ; 
- int EXTRUDE_DIST ; 
- int /*<<< orphan*/  VectorMA (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VectorSet (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qtrue ; 
- int /*<<< orphan*/  vectoangles (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vec3_t ;
+struct TYPE_3__ {scalar_t__ entityNum; int fraction; int startsolid; } ;
+typedef TYPE_1__ trace_t ;
+typedef int qboolean ;
+
+
+ int AngleVectors (int ,int *,int ,int ) ;
+ int CG_Trace (TYPE_1__*,int ,int *,int *,int ,int,int ) ;
+ int CONTENTS_SOLID ;
+ scalar_t__ ENTITYNUM_WORLD ;
+ int EXTRUDE_DIST ;
+ int VectorMA (int ,int,int ,int ) ;
+ int VectorSet (int ,int ,int ,int) ;
+ int qfalse ;
+ int qtrue ;
+ int vectoangles (int ,int ) ;
 
 qboolean ValidBloodPool (vec3_t start)
 {
-#define EXTRUDE_DIST	0.5
 
-	vec3_t	angles;
-	vec3_t	right, up;
-	vec3_t	this_pos, x_pos, center_pos, end_pos;
-	int		x, y;
-	int		fwidth, fheight;
-	trace_t	trace;
-	vec3_t	normal;
 
-	fwidth = 16;
-	fheight = 16;
+ vec3_t angles;
+ vec3_t right, up;
+ vec3_t this_pos, x_pos, center_pos, end_pos;
+ int x, y;
+ int fwidth, fheight;
+ trace_t trace;
+ vec3_t normal;
 
-	VectorSet (normal, 0, 0, 1);
+ fwidth = 16;
+ fheight = 16;
 
-	vectoangles (normal, angles);
-	AngleVectors (angles, NULL, right, up);
+ VectorSet (normal, 0, 0, 1);
 
-	VectorMA (start, EXTRUDE_DIST, normal, center_pos);
+ vectoangles (normal, angles);
+ AngleVectors (angles, ((void*)0), right, up);
 
-	for (x= -fwidth/2; x<fwidth; x+= fwidth)
-	{
-		VectorMA (center_pos, x, right, x_pos);
+ VectorMA (start, 0.5, normal, center_pos);
 
-		for (y= -fheight/2; y<fheight; y+= fheight)
-		{
-			VectorMA (x_pos, y, up, this_pos);
-			VectorMA (this_pos, -EXTRUDE_DIST*2, normal, end_pos);
-			
-			CG_Trace (&trace, this_pos, NULL, NULL, end_pos, -1, CONTENTS_SOLID);
+ for (x= -fwidth/2; x<fwidth; x+= fwidth)
+ {
+  VectorMA (center_pos, x, right, x_pos);
 
-			
-			if (trace.entityNum < ENTITYNUM_WORLD) // may only land on world
-				return qfalse;
+  for (y= -fheight/2; y<fheight; y+= fheight)
+  {
+   VectorMA (x_pos, y, up, this_pos);
+   VectorMA (this_pos, -0.5*2, normal, end_pos);
 
-			if (!(!trace.startsolid && trace.fraction < 1))
-				return qfalse;
-		
-		}
-	}
+   CG_Trace (&trace, this_pos, ((void*)0), ((void*)0), end_pos, -1, CONTENTS_SOLID);
 
-	return qtrue;
+
+   if (trace.entityNum < ENTITYNUM_WORLD)
+    return qfalse;
+
+   if (!(!trace.startsolid && trace.fraction < 1))
+    return qfalse;
+
+  }
+ }
+
+ return qtrue;
 }

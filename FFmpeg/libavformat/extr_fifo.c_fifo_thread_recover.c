@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_12__ {TYPE_3__* priv_data; } ;
-struct TYPE_11__ {scalar_t__ drop_pkts_on_overflow; scalar_t__ recovery_wait_time; int /*<<< orphan*/  recovery_wait_streamtime; } ;
-struct TYPE_10__ {scalar_t__ type; int /*<<< orphan*/  pkt; } ;
+struct TYPE_11__ {scalar_t__ drop_pkts_on_overflow; scalar_t__ recovery_wait_time; int recovery_wait_streamtime; } ;
+struct TYPE_10__ {scalar_t__ type; int pkt; } ;
 struct TYPE_9__ {scalar_t__ recovery_nr; scalar_t__ last_recovery_ts; TYPE_4__* avf; } ;
-typedef  TYPE_1__ FifoThreadContext ;
-typedef  TYPE_2__ FifoMessage ;
-typedef  TYPE_3__ FifoContext ;
-typedef  TYPE_4__ AVFormatContext ;
+typedef TYPE_1__ FifoThreadContext ;
+typedef TYPE_2__ FifoMessage ;
+typedef TYPE_3__ FifoContext ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EAGAIN ; 
- scalar_t__ FFMAX (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  FFMIN (int,scalar_t__) ; 
- scalar_t__ FIFO_WRITE_PACKET ; 
- scalar_t__ av_gettime_relative () ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_usleep (int /*<<< orphan*/ ) ; 
- int fifo_thread_attempt_recovery (TYPE_1__*,TYPE_2__*,int) ; 
+
+ int AVERROR (int ) ;
+ int EAGAIN ;
+ scalar_t__ FFMAX (int ,scalar_t__) ;
+ int FFMIN (int,scalar_t__) ;
+ scalar_t__ FIFO_WRITE_PACKET ;
+ scalar_t__ av_gettime_relative () ;
+ int av_packet_unref (int *) ;
+ int av_usleep (int ) ;
+ int fifo_thread_attempt_recovery (TYPE_1__*,TYPE_2__*,int) ;
 
 __attribute__((used)) static int fifo_thread_recover(FifoThreadContext *ctx, FifoMessage *msg, int err_no)
 {

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int FF_ARRAY_ELEMS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * color_transfer_names ; 
- size_t strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncmp (int /*<<< orphan*/ ,char const*,size_t) ; 
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int FF_ARRAY_ELEMS (int *) ;
+ int * color_transfer_names ;
+ size_t strlen (int ) ;
+ int strncmp (int ,char const*,size_t) ;
 
 int av_color_transfer_from_name(const char *name)
 {

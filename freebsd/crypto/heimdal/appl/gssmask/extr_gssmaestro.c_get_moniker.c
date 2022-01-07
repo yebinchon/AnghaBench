@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct client {int dummy; } ;
-typedef  int /*<<< orphan*/  int32_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GSMERR_OK ; 
- int /*<<< orphan*/  eGetMoniker ; 
- int /*<<< orphan*/  put32 (struct client*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  retstring (struct client*,char*) ; 
+
+ int GSMERR_OK ;
+ int eGetMoniker ;
+ int put32 (struct client*,int ) ;
+ int retstring (struct client*,char*) ;
 
 __attribute__((used)) static int32_t
 get_moniker(struct client *client,
-	    char **moniker)
+     char **moniker)
 {
     put32(client, eGetMoniker);
     retstring(client, *moniker);

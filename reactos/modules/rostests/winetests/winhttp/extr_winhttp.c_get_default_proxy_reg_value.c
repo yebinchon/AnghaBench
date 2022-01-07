@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Connections ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  WinHttpSettings ; 
+
+
+
+typedef int LONG ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+
+
+ int Connections ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ int RegOpenKeyExW (int ,int ,int ,int ,int *) ;
+ int RegQueryValueExW (int ,int ,int *,scalar_t__*,int *,scalar_t__*) ;
+ int WinHttpSettings ;
 
 __attribute__((used)) static DWORD get_default_proxy_reg_value( BYTE *buf, DWORD len, DWORD *type )
 {
@@ -35,11 +35,11 @@ __attribute__((used)) static DWORD get_default_proxy_reg_value( BYTE *buf, DWORD
     {
         DWORD size = 0;
 
-        l = RegQueryValueExW( key, WinHttpSettings, NULL, type, NULL, &size );
+        l = RegQueryValueExW( key, WinHttpSettings, ((void*)0), type, ((void*)0), &size );
         if (!l)
         {
             if (size <= len)
-                l = RegQueryValueExW( key, WinHttpSettings, NULL, type, buf,
+                l = RegQueryValueExW( key, WinHttpSettings, ((void*)0), type, buf,
                     &size );
             if (!l)
                 ret = size;

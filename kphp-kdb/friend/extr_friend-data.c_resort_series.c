@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int* P ; 
- int PL ; 
- int PL_M_CAT ; 
- int /*<<< orphan*/  privacy_resort (int,int,int) ; 
+ int* P ;
+ int PL ;
+ int PL_M_CAT ;
+ int privacy_resort (int,int,int) ;
 
 __attribute__((used)) static int resort_series (void) {
   int a = 0, b;
@@ -36,7 +28,7 @@ __attribute__((used)) static int resort_series (void) {
     b = a;
     while (P[a] != -1) {
       if (P[a] > 0) {
-	P[b++] = P[a];
+ P[b++] = P[a];
       }
       a++;
     }

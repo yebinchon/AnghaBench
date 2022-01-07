@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  PEXT2_FILESYS ;
 
-/* Variables and functions */
- int BLOCK_BITS ; 
- int EXT2_NDIR_BLOCKS ; 
+
+
+
+typedef int ULONG ;
+typedef int PEXT2_FILESYS ;
+
+
+ int BLOCK_BITS ;
+ int EXT2_NDIR_BLOCKS ;
 
 ULONG
 Ext2DataBlocks(PEXT2_FILESYS Ext2Sys, ULONG TotalBlocks)
 {
-    ULONG   dwData[4] = {1, 1, 1, 1};
-    ULONG   dwMeta[4] = {0, 0, 0, 0};
-    ULONG   DataBlocks = 0;
-    ULONG   i, j;
+    ULONG dwData[4] = {1, 1, 1, 1};
+    ULONG dwMeta[4] = {0, 0, 0, 0};
+    ULONG DataBlocks = 0;
+    ULONG i, j;
 
     if (TotalBlocks <= EXT2_NDIR_BLOCKS)
     {
@@ -47,12 +47,12 @@ Ext2DataBlocks(PEXT2_FILESYS Ext2Sys, ULONG TotalBlocks)
         if (TotalBlocks >= (dwData[i] + dwMeta[i]))
         {
             TotalBlocks -= (dwData[i] + dwMeta[i]);
-            DataBlocks  += dwData[i];
+            DataBlocks += dwData[i];
         }
         else
         {
-            ULONG   dwDivide = 0;
-            ULONG   dwRemain = 0;
+            ULONG dwDivide = 0;
+            ULONG dwRemain = 0;
 
             for (j=i; (j > 0) && (TotalBlocks > 0); j--)
             {

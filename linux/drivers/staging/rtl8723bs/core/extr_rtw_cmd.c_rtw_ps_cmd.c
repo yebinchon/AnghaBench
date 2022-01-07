@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-struct drvextra_cmd_parm {int /*<<< orphan*/ * pbuf; scalar_t__ size; scalar_t__ type; int /*<<< orphan*/  ec_id; } ;
+
+
+
+
+typedef int u8 ;
+struct drvextra_cmd_parm {int * pbuf; scalar_t__ size; scalar_t__ type; int ec_id; } ;
 struct cmd_priv {int dummy; } ;
 struct cmd_obj {int dummy; } ;
 struct adapter {struct cmd_priv cmdpriv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_CMD_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  POWER_SAVING_CTRL_WK_CID ; 
- int /*<<< orphan*/  _FAIL ; 
- int /*<<< orphan*/  _SUCCESS ; 
- int /*<<< orphan*/  _Set_Drv_Extra ; 
- int /*<<< orphan*/  init_h2fwcmd_w_parm_no_rsp (struct cmd_obj*,struct drvextra_cmd_parm*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kfree (struct cmd_obj*) ; 
- int /*<<< orphan*/  rtw_enqueue_cmd (struct cmd_priv*,struct cmd_obj*) ; 
- void* rtw_zmalloc (int) ; 
+
+ int GEN_CMD_CODE (int ) ;
+ int POWER_SAVING_CTRL_WK_CID ;
+ int _FAIL ;
+ int _SUCCESS ;
+ int _Set_Drv_Extra ;
+ int init_h2fwcmd_w_parm_no_rsp (struct cmd_obj*,struct drvextra_cmd_parm*,int ) ;
+ int kfree (struct cmd_obj*) ;
+ int rtw_enqueue_cmd (struct cmd_priv*,struct cmd_obj*) ;
+ void* rtw_zmalloc (int) ;
 
 u8 rtw_ps_cmd(struct adapter *padapter)
 {
-	struct cmd_obj		*ppscmd;
-	struct drvextra_cmd_parm	*pdrvextra_cmd_parm;
-	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
-	u8 res = _SUCCESS;
+ struct cmd_obj *ppscmd;
+ struct drvextra_cmd_parm *pdrvextra_cmd_parm;
+ struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+ u8 res = _SUCCESS;
 
-	ppscmd = rtw_zmalloc(sizeof(struct cmd_obj));
-	if (ppscmd == NULL) {
-		res = _FAIL;
-		goto exit;
-	}
+ ppscmd = rtw_zmalloc(sizeof(struct cmd_obj));
+ if (ppscmd == ((void*)0)) {
+  res = _FAIL;
+  goto exit;
+ }
 
-	pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
-	if (pdrvextra_cmd_parm == NULL) {
-		kfree(ppscmd);
-		res = _FAIL;
-		goto exit;
-	}
+ pdrvextra_cmd_parm = rtw_zmalloc(sizeof(struct drvextra_cmd_parm));
+ if (pdrvextra_cmd_parm == ((void*)0)) {
+  kfree(ppscmd);
+  res = _FAIL;
+  goto exit;
+ }
 
-	pdrvextra_cmd_parm->ec_id = POWER_SAVING_CTRL_WK_CID;
-	pdrvextra_cmd_parm->type = 0;
-	pdrvextra_cmd_parm->size = 0;
-	pdrvextra_cmd_parm->pbuf = NULL;
-	init_h2fwcmd_w_parm_no_rsp(ppscmd, pdrvextra_cmd_parm, GEN_CMD_CODE(_Set_Drv_Extra));
+ pdrvextra_cmd_parm->ec_id = POWER_SAVING_CTRL_WK_CID;
+ pdrvextra_cmd_parm->type = 0;
+ pdrvextra_cmd_parm->size = 0;
+ pdrvextra_cmd_parm->pbuf = ((void*)0);
+ init_h2fwcmd_w_parm_no_rsp(ppscmd, pdrvextra_cmd_parm, GEN_CMD_CODE(_Set_Drv_Extra));
 
-	res = rtw_enqueue_cmd(pcmdpriv, ppscmd);
+ res = rtw_enqueue_cmd(pcmdpriv, ppscmd);
 
 exit:
-	return res;
+ return res;
 }

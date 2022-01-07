@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  INFCONTEXT ;
-typedef  int /*<<< orphan*/  HINF ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int*) ; 
- int /*<<< orphan*/  CreateShortcut (int /*<<< orphan*/ ,int*,int*,int*,int,int*) ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetupFindFirstLine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ SetupFindNextLine (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int SetupGetFieldCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetupGetIntField (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  SetupGetStringFieldW (int /*<<< orphan*/ *,int,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  wcscat (int*,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef int INFCONTEXT ;
+typedef int HINF ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int ARRAYSIZE (int*) ;
+ int CreateShortcut (int ,int*,int*,int*,int,int*) ;
+ int FALSE ;
+ int MAX_PATH ;
+ int SetupFindFirstLine (int ,int ,int *,int *) ;
+ scalar_t__ SetupFindNextLine (int *,int *) ;
+ int SetupGetFieldCount (int *) ;
+ int SetupGetIntField (int *,int,int*) ;
+ int SetupGetStringFieldW (int *,int,int*,int ,int *) ;
+ int TRUE ;
+ int wcscat (int*,char*) ;
 
 __attribute__((used)) static BOOL CreateShortcutsFromSection(HINF hinf, LPWSTR pszSection, LPCWSTR pszFolder)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static BOOL CreateShortcutsFromSection(HINF hinf, LPWSTR p
     WCHAR szDescription[MAX_PATH];
     WCHAR szDirectory[MAX_PATH];
 
-    if (!SetupFindFirstLine(hinf, pszSection, NULL, &Context))
+    if (!SetupFindFirstLine(hinf, pszSection, ((void*)0), &Context))
         return FALSE;
 
     do
@@ -51,19 +51,19 @@ __attribute__((used)) static BOOL CreateShortcutsFromSection(HINF hinf, LPWSTR p
         if (dwFieldCount < 3)
             continue;
 
-        if (!SetupGetStringFieldW(&Context, 1, szCommand, ARRAYSIZE(szCommand), NULL))
+        if (!SetupGetStringFieldW(&Context, 1, szCommand, ARRAYSIZE(szCommand), ((void*)0)))
             continue;
 
-        if (!SetupGetStringFieldW(&Context, 2, szName, ARRAYSIZE(szName), NULL))
+        if (!SetupGetStringFieldW(&Context, 2, szName, ARRAYSIZE(szName), ((void*)0)))
             continue;
 
-        if (!SetupGetStringFieldW(&Context, 3, szDescription, ARRAYSIZE(szDescription), NULL))
+        if (!SetupGetStringFieldW(&Context, 3, szDescription, ARRAYSIZE(szDescription), ((void*)0)))
             continue;
 
         if (dwFieldCount < 4 || !SetupGetIntField(&Context, 4, &iIconNr))
-            iIconNr = -1; /* Special value to indicate no icon */
+            iIconNr = -1;
 
-        if (dwFieldCount < 5 || !SetupGetStringFieldW(&Context, 5, szDirectory, ARRAYSIZE(szDirectory), NULL))
+        if (dwFieldCount < 5 || !SetupGetStringFieldW(&Context, 5, szDirectory, ARRAYSIZE(szDirectory), ((void*)0)))
             szDirectory[0] = L'\0';
 
         wcscat(szName, L".lnk");

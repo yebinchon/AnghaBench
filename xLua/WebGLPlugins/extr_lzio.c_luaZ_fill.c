@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {char* (* reader ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ;size_t n; char const* p; int /*<<< orphan*/  data; int /*<<< orphan*/ * L; } ;
-typedef  TYPE_1__ ZIO ;
 
-/* Variables and functions */
- int EOZ ; 
- int cast_uchar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_unlock (int /*<<< orphan*/ *) ; 
- char* stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {char* (* reader ) (int *,int ,size_t*) ;size_t n; char const* p; int data; int * L; } ;
+typedef TYPE_1__ ZIO ;
+
+
+ int EOZ ;
+ int cast_uchar (int ) ;
+ int lua_lock (int *) ;
+ int lua_unlock (int *) ;
+ char* stub1 (int *,int ,size_t*) ;
 
 int luaZ_fill (ZIO *z) {
   size_t size;
@@ -29,9 +29,9 @@ int luaZ_fill (ZIO *z) {
   lua_unlock(L);
   buff = z->reader(L, z->data, &size);
   lua_lock(L);
-  if (buff == NULL || size == 0)
+  if (buff == ((void*)0) || size == 0)
     return EOZ;
-  z->n = size - 1;  /* discount char being returned */
+  z->n = size - 1;
   z->p = buff;
   return cast_uchar(*(z->p++));
 }

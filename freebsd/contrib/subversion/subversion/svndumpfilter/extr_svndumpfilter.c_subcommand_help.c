@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct svndumpfilter_opt_state {int /*<<< orphan*/  quiet; int /*<<< orphan*/  version; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_getopt_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  cmd_table ; 
- int /*<<< orphan*/  options_table ; 
- int /*<<< orphan*/  svn_opt_print_help4 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_error_t ;
+struct svndumpfilter_opt_state {int quiet; int version; } ;
+typedef int apr_pool_t ;
+typedef int apr_getopt_t ;
+
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ char* _ (char*) ;
+ int cmd_table ;
+ int options_table ;
+ int svn_opt_print_help4 (int *,char*,int ,int ,int ,int *,char const*,int ,int ,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 subcommand_help(apr_getopt_t *os, void *baton, apr_pool_t *pool)
@@ -40,9 +40,9 @@ subcommand_help(apr_getopt_t *os, void *baton, apr_pool_t *pool)
   SVN_ERR(svn_opt_print_help4(os, "svndumpfilter",
                               opt_state ? opt_state->version : FALSE,
                               opt_state ? opt_state->quiet : FALSE,
-                              /*###opt_state ? opt_state->verbose :*/ FALSE,
-                              NULL, header, cmd_table, options_table,
-                              NULL, NULL, pool));
+                                                                      FALSE,
+                              ((void*)0), header, cmd_table, options_table,
+                              ((void*)0), ((void*)0), pool));
 
   return SVN_NO_ERROR;
 }

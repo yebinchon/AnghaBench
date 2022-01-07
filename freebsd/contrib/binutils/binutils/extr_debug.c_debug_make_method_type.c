@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {struct debug_method_type* kmethod; } ;
 struct debug_type {TYPE_1__ u; } ;
-struct debug_method_type {int /*<<< orphan*/  varargs; struct debug_type** arg_types; struct debug_type* domain_type; struct debug_type* return_type; } ;
+struct debug_method_type {int varargs; struct debug_type** arg_types; struct debug_type* domain_type; struct debug_type* return_type; } ;
 struct debug_handle {int dummy; } ;
-typedef  struct debug_type* debug_type ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef struct debug_type* debug_type ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_KIND_METHOD ; 
- struct debug_type* DEBUG_TYPE_NULL ; 
- struct debug_type* debug_make_type (struct debug_handle*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct debug_method_type*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ xmalloc (int) ; 
+
+ int DEBUG_KIND_METHOD ;
+ struct debug_type* DEBUG_TYPE_NULL ;
+ struct debug_type* debug_make_type (struct debug_handle*,int ,int ) ;
+ int memset (struct debug_method_type*,int ,int) ;
+ scalar_t__ xmalloc (int) ;
 
 debug_type
 debug_make_method_type (void *handle, debug_type return_type,
-			debug_type domain_type, debug_type *arg_types,
-			bfd_boolean varargs)
+   debug_type domain_type, debug_type *arg_types,
+   bfd_boolean varargs)
 {
   struct debug_handle *info = (struct debug_handle *) handle;
   struct debug_type *t;
   struct debug_method_type *m;
 
-  if (return_type == NULL)
+  if (return_type == ((void*)0))
     return DEBUG_TYPE_NULL;
 
   t = debug_make_type (info, DEBUG_KIND_METHOD, 0);
-  if (t == NULL)
+  if (t == ((void*)0))
     return DEBUG_TYPE_NULL;
 
   m = (struct debug_method_type *) xmalloc (sizeof *m);

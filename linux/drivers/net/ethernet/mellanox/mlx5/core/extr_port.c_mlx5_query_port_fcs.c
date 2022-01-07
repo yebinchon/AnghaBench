@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct mlx5_core_dev {int dummy; } ;
-typedef  int /*<<< orphan*/  out ;
+typedef int out ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLX5_CAP_GEN (struct mlx5_core_dev*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MLX5_GET (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MLX5_ST_SZ_DW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fcs_cap ; 
- int /*<<< orphan*/  fcs_chk ; 
- scalar_t__ mlx5_query_ports_check (struct mlx5_core_dev*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  pcmr_reg ; 
- int /*<<< orphan*/  ports_check ; 
+
+ int MLX5_CAP_GEN (struct mlx5_core_dev*,int ) ;
+ int MLX5_GET (int ,int *,int ) ;
+ int MLX5_ST_SZ_DW (int ) ;
+ int fcs_cap ;
+ int fcs_chk ;
+ scalar_t__ mlx5_query_ports_check (struct mlx5_core_dev*,int *,int) ;
+ int pcmr_reg ;
+ int ports_check ;
 
 void mlx5_query_port_fcs(struct mlx5_core_dev *mdev, bool *supported,
-			 bool *enabled)
+    bool *enabled)
 {
-	u32 out[MLX5_ST_SZ_DW(pcmr_reg)];
-	/* Default values for FW which do not support MLX5_REG_PCMR */
-	*supported = false;
-	*enabled = true;
+ u32 out[MLX5_ST_SZ_DW(pcmr_reg)];
 
-	if (!MLX5_CAP_GEN(mdev, ports_check))
-		return;
+ *supported = 0;
+ *enabled = 1;
 
-	if (mlx5_query_ports_check(mdev, out, sizeof(out)))
-		return;
+ if (!MLX5_CAP_GEN(mdev, ports_check))
+  return;
 
-	*supported = !!(MLX5_GET(pcmr_reg, out, fcs_cap));
-	*enabled = !!(MLX5_GET(pcmr_reg, out, fcs_chk));
+ if (mlx5_query_ports_check(mdev, out, sizeof(out)))
+  return;
+
+ *supported = !!(MLX5_GET(pcmr_reg, out, fcs_cap));
+ *enabled = !!(MLX5_GET(pcmr_reg, out, fcs_chk));
 }

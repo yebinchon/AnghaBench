@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- unsigned int AV_OPT_FLAG_IMPLICIT_KEY ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (char*) ; 
- char* av_get_token (char const**,char const*) ; 
- int get_key (char const**,char const*,char**) ; 
+ int AVERROR (int ) ;
+ unsigned int AV_OPT_FLAG_IMPLICIT_KEY ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_free (char*) ;
+ char* av_get_token (char const**,char const*) ;
+ int get_key (char const**,char const*,char**) ;
 
 int av_opt_get_key_value(const char **ropts,
                          const char *key_val_sep, const char *pairs_sep,
@@ -26,7 +18,7 @@ int av_opt_get_key_value(const char **ropts,
                          char **rkey, char **rval)
 {
     int ret;
-    char *key = NULL, *val;
+    char *key = ((void*)0), *val;
     const char *opts = *ropts;
 
     if ((ret = get_key(&opts, key_val_sep, &key)) < 0 &&
@@ -37,7 +29,7 @@ int av_opt_get_key_value(const char **ropts,
         return AVERROR(ENOMEM);
     }
     *ropts = opts;
-    *rkey  = key;
-    *rval  = val;
+    *rkey = key;
+    *rval = val;
     return 0;
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fmt_str ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int fmt_str ;
 struct TYPE_7__ {TYPE_1__* priv; } ;
-struct TYPE_6__ {int /*<<< orphan*/  prng; int /*<<< orphan*/  var_values; } ;
-typedef  TYPE_1__ DrawTextContext ;
-typedef  TYPE_2__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVBPrint ;
+struct TYPE_6__ {int prng; int var_values; } ;
+typedef TYPE_1__ DrawTextContext ;
+typedef TYPE_2__ AVFilterContext ;
+typedef int AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  FE_ALL_EXCEPT ; 
- int FE_INVALID ; 
- int FE_OVERFLOW ; 
- int FE_UNDERFLOW ; 
- int /*<<< orphan*/  av_bprintf (int /*<<< orphan*/ *,char*,int) ; 
- int av_expr_parse_and_eval (double*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_strlcatf (char*,int,char*,char) ; 
- int /*<<< orphan*/  feclearexcept (int /*<<< orphan*/ ) ; 
- int fetestexcept (int) ; 
- int /*<<< orphan*/  fun2 ; 
- int /*<<< orphan*/  fun2_names ; 
- int sscanf (char*,char*,unsigned int*) ; 
- int /*<<< orphan*/  strchr (char*,char) ; 
- int /*<<< orphan*/  var_names ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int FE_ALL_EXCEPT ;
+ int FE_INVALID ;
+ int FE_OVERFLOW ;
+ int FE_UNDERFLOW ;
+ int av_bprintf (int *,char*,int) ;
+ int av_expr_parse_and_eval (double*,char*,int ,int ,int *,int *,int ,int ,int *,int ,TYPE_2__*) ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ int av_strlcatf (char*,int,char*,char) ;
+ int feclearexcept (int ) ;
+ int fetestexcept (int) ;
+ int fun2 ;
+ int fun2_names ;
+ int sscanf (char*,char*,unsigned int*) ;
+ int strchr (char*,char) ;
+ int var_names ;
 
 __attribute__((used)) static int func_eval_expr_int_format(AVFilterContext *ctx, AVBPrint *bp,
                           char *fct, unsigned argc, char **argv, int tag)
@@ -50,14 +50,14 @@ __attribute__((used)) static int func_eval_expr_int_format(AVFilterContext *ctx,
     unsigned int positions = 0;
     char fmt_str[30] = "%";
 
-    /*
-     * argv[0] expression to be converted to `int`
-     * argv[1] format: 'x', 'X', 'd' or 'u'
-     * argv[2] positions printed (optional)
-     */
+
+
+
+
+
 
     ret = av_expr_parse_and_eval(&res, argv[0], var_names, s->var_values,
-                                 NULL, NULL, fun2_names, fun2,
+                                 ((void*)0), ((void*)0), fun2_names, fun2,
                                  &s->prng, 0, ctx);
     if (ret < 0) {
         av_log(ctx, AV_LOG_ERROR,

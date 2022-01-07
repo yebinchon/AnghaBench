@@ -1,59 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int buttons; int hwid; } ;
-struct psm_softc {TYPE_1__ hw; int /*<<< orphan*/  kbdc; } ;
-typedef  enum probearg { ____Placeholder_probearg } probearg ;
-typedef  int /*<<< orphan*/  KBDC ;
+struct psm_softc {TYPE_1__ hw; int kbdc; } ;
+typedef enum probearg { ____Placeholder_probearg } probearg ;
+typedef int KBDC ;
 
-/* Variables and functions */
- int FALSE ; 
- int PROBE ; 
-#define  PSM_4DPLUS_ID 129 
-#define  PSM_4DPLUS_RFSW35_ID 128 
- int TRUE ; 
- int get_aux_id (int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int PROBE ;
+
+
+ int TRUE ;
+ int get_aux_id (int ) ;
 
 __attribute__((used)) static int
 enable_4dplus(struct psm_softc *sc, enum probearg arg)
 {
-	KBDC kbdc = sc->kbdc;
-	int id;
+ KBDC kbdc = sc->kbdc;
+ int id;
+ id = get_aux_id(kbdc);
+ switch (id) {
+ case 129:
+  break;
+ case 128:
+  break;
+ default:
+  return (FALSE);
+ }
 
-	/*
-	 * enable_4dmouse() already issued the following ID sequence...
-	static u_char rate[] = { 200, 100, 80, 60, 40, 20 };
-	int i;
+ if (arg == PROBE) {
+  sc->hw.buttons = (id == 129) ? 4 : 3;
+  sc->hw.hwid = id;
+ }
 
-	for (i = 0; i < sizeof(rate)/sizeof(rate[0]); ++i)
-		if (set_mouse_sampling_rate(kbdc, rate[i]) != rate[i])
-			return (FALSE);
-	*/
-
-	id = get_aux_id(kbdc);
-	switch (id) {
-	case PSM_4DPLUS_ID:
-		break;
-	case PSM_4DPLUS_RFSW35_ID:
-		break;
-	default:
-		return (FALSE);
-	}
-
-	if (arg == PROBE) {
-		sc->hw.buttons = (id == PSM_4DPLUS_ID) ? 4 : 3;
-		sc->hw.hwid = id;
-	}
-
-	return (TRUE);
+ return (TRUE);
 }

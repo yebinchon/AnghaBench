@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int16_t ;
+
+
+
+
+typedef int u_int16_t ;
 struct mp_header {int begin; int end; int seq; } ;
 struct mp {scalar_t__ local_is12bit; } ;
 struct mbuf {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  MBUF_CTOP (struct mbuf*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ua_ntohl (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  ua_ntohs (int /*<<< orphan*/ ,int*) ; 
+
+ int LogWARN ;
+ int MBUF_CTOP (struct mbuf*) ;
+ int log_Printf (int ,char*) ;
+ int ua_ntohl (int ,int*) ;
+ int ua_ntohs (int ,int*) ;
 
 __attribute__((used)) static int
 mp_ReadHeader(struct mp *mp, struct mbuf *m, struct mp_header *header)

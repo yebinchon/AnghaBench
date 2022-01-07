@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_4__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileW (int /*<<< orphan*/ ) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/ * LoadImageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ MSI_RecordStreamToFile (TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_create_temp_file (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ) ; 
- TYPE_1__* msi_get_binary_record (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_4__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef int MSIDATABASE ;
+typedef int LPWSTR ;
+typedef int LPCWSTR ;
+typedef int * HANDLE ;
+
+
+ int DeleteFileW (int ) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int * LoadImageW (int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ MSI_RecordStreamToFile (TYPE_1__*,int,int ) ;
+ int TRACE (char*,int *,int ,scalar_t__,scalar_t__,scalar_t__) ;
+ int debugstr_w (int ) ;
+ int msi_create_temp_file (int *) ;
+ int msi_free (int ) ;
+ TYPE_1__* msi_get_binary_record (int *,int ) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static HANDLE msi_load_image( MSIDATABASE *db, LPCWSTR name, UINT type,
                               UINT cx, UINT cy, UINT flags )
 {
     MSIRECORD *rec;
-    HANDLE himage = NULL;
+    HANDLE himage = ((void*)0);
     LPWSTR tmp;
     UINT r;
 
     TRACE("%p %s %u %u %08x\n", db, debugstr_w(name), cx, cy, flags);
 
-    if (!(tmp = msi_create_temp_file( db ))) return NULL;
+    if (!(tmp = msi_create_temp_file( db ))) return ((void*)0);
 
     rec = msi_get_binary_record( db, name );
     if( rec )

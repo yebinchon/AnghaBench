@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cred {int /*<<< orphan*/  security; } ;
 
-/* Variables and functions */
+
+
+
+struct cred {int security; } ;
+
+
 
 __attribute__((used)) static void tomoyo_cred_transfer(struct cred *new, const struct cred *old)
 {
-	/*
-	 * Since "struct tomoyo_domain_info *" is a sharable pointer,
-	 * we don't need to duplicate.
-	 */
-	new->security = old->security;
+
+
+
+
+ new->security = old->security;
 }

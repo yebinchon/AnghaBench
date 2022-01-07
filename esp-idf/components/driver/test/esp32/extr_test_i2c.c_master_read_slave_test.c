@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  i2c_config_t ;
-typedef  int /*<<< orphan*/  i2c_cmd_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACK_CHECK_EN ; 
- int /*<<< orphan*/  ACK_VAL ; 
- int /*<<< orphan*/  DATA_LENGTH ; 
- int ESP_SLAVE_ADDR ; 
- int /*<<< orphan*/  I2C_MASTER_NUM ; 
- int /*<<< orphan*/  I2C_MASTER_RX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MASTER_TX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MODE_MASTER ; 
- int /*<<< orphan*/  NACK_VAL ; 
- int READ_BIT ; 
- int RW_TEST_LENGTH ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  i2c_cmd_link_create () ; 
- int /*<<< orphan*/  i2c_cmd_link_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_install (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_cmd_begin (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  i2c_master_init () ; 
- int /*<<< orphan*/  i2c_master_read (int /*<<< orphan*/ ,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_read_byte (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_write_byte (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_param_config (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- int /*<<< orphan*/  unity_send_signal (char*) ; 
- int /*<<< orphan*/  unity_wait_for_signal (char*) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int i2c_config_t ;
+typedef int i2c_cmd_handle_t ;
+
+
+ int ACK_CHECK_EN ;
+ int ACK_VAL ;
+ int DATA_LENGTH ;
+ int ESP_SLAVE_ADDR ;
+ int I2C_MASTER_NUM ;
+ int I2C_MASTER_RX_BUF_DISABLE ;
+ int I2C_MASTER_TX_BUF_DISABLE ;
+ int I2C_MODE_MASTER ;
+ int NACK_VAL ;
+ int READ_BIT ;
+ int RW_TEST_LENGTH ;
+ int TEST_ASSERT (int) ;
+ int TEST_ESP_OK (int ) ;
+ int free (int*) ;
+ int i2c_cmd_link_create () ;
+ int i2c_cmd_link_delete (int ) ;
+ int i2c_driver_delete (int ) ;
+ int i2c_driver_install (int ,int ,int ,int ,int ) ;
+ int i2c_master_cmd_begin (int ,int ,int) ;
+ int i2c_master_init () ;
+ int i2c_master_read (int ,int*,int,int ) ;
+ int i2c_master_read_byte (int ,int*,int ) ;
+ int i2c_master_start (int ) ;
+ int i2c_master_stop (int ) ;
+ int i2c_master_write_byte (int ,int,int ) ;
+ int i2c_param_config (int ,int *) ;
+ scalar_t__ malloc (int ) ;
+ int memset (int*,int ,int ) ;
+ int portTICK_RATE_MS ;
+ int printf (char*,int) ;
+ int unity_send_signal (char*) ;
+ int unity_wait_for_signal (char*) ;
+ int vTaskDelay (int) ;
 
 __attribute__((used)) static void master_read_slave_test(void)
 {

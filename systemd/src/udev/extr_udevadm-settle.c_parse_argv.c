@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct option {char* member_0; char member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/  const member_1; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int) ; 
- int /*<<< orphan*/  arg_exists ; 
- int /*<<< orphan*/  arg_timeout ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int getopt_long (int,char**,char*,struct option const*,int /*<<< orphan*/ *) ; 
- int help () ; 
- int log_error_errno (int,char*,int /*<<< orphan*/ ) ; 
- int log_info_errno (int /*<<< orphan*/ ,char*,int) ; 
-#define  no_argument 129 
- int /*<<< orphan*/  optarg ; 
- int parse_sec (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int print_version () ; 
-#define  required_argument 128 
+
+
+
+struct option {char* member_0; char member_3; int * member_2; int const member_1; } ;
+
+
+ int EINVAL ;
+ int SYNTHETIC_ERRNO (int) ;
+ int arg_exists ;
+ int arg_timeout ;
+ int assert_not_reached (char*) ;
+ int getopt_long (int,char**,char*,struct option const*,int *) ;
+ int help () ;
+ int log_error_errno (int,char*,int ) ;
+ int log_info_errno (int ,char*,int) ;
+
+ int optarg ;
+ int parse_sec (int ,int *) ;
+ int print_version () ;
+
 
 __attribute__((used)) static int parse_argv(int argc, char *argv[]) {
         static const struct option options[] = {
-                { "timeout",        required_argument, NULL, 't' },
-                { "exit-if-exists", required_argument, NULL, 'E' },
-                { "version",        no_argument,       NULL, 'V' },
-                { "help",           no_argument,       NULL, 'h' },
-                { "seq-start",      required_argument, NULL, 's' }, /* removed */
-                { "seq-end",        required_argument, NULL, 'e' }, /* removed */
-                { "quiet",          no_argument,       NULL, 'q' }, /* removed */
+                { "timeout", 128, ((void*)0), 't' },
+                { "exit-if-exists", 128, ((void*)0), 'E' },
+                { "version", 129, ((void*)0), 'V' },
+                { "help", 129, ((void*)0), 'h' },
+                { "seq-start", 128, ((void*)0), 's' },
+                { "seq-end", 128, ((void*)0), 'e' },
+                { "quiet", 129, ((void*)0), 'q' },
                 {}
         };
 
         int c, r;
 
-        while ((c = getopt_long(argc, argv, "t:E:Vhs:e:q", options, NULL)) >= 0) {
+        while ((c = getopt_long(argc, argv, "t:E:Vhs:e:q", options, ((void*)0))) >= 0) {
                 switch (c) {
                 case 't':
                         r = parse_sec(optarg, &arg_timeout);

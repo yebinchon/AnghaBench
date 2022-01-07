@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct bmp_map {int red; int green; int blue; } ;
 struct bmp_dib {scalar_t__ y; scalar_t__ x; int depth; } ;
-typedef  scalar_t__ UINTN ;
-typedef  int UINT8 ;
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int UINT16 ;
+typedef scalar_t__ UINTN ;
+typedef int UINT8 ;
+typedef int UINT32 ;
+typedef int UINT16 ;
 struct TYPE_3__ {int Red; int Green; int Blue; } ;
-typedef  int /*<<< orphan*/  EFI_STATUS ;
-typedef  TYPE_1__ EFI_GRAPHICS_OUTPUT_BLT_PIXEL ;
+typedef int EFI_STATUS ;
+typedef TYPE_1__ EFI_GRAPHICS_OUTPUT_BLT_PIXEL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EFI_SUCCESS ; 
- int /*<<< orphan*/  pixel_blend (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EFI_SUCCESS ;
+ int pixel_blend (int *,int ) ;
 
 EFI_STATUS bmp_to_blt(EFI_GRAPHICS_OUTPUT_BLT_PIXEL *buf,
                       struct bmp_dib *dib, struct bmp_map *map,
@@ -31,7 +31,7 @@ EFI_STATUS bmp_to_blt(EFI_GRAPHICS_OUTPUT_BLT_PIXEL *buf,
         UINT8 *in;
         UINTN y;
 
-        /* transform and copy pixels */
+
         in = pixmap;
         for (y = 0; y < dib->y; y++) {
                 EFI_GRAPHICS_OUTPUT_BLT_PIXEL *out;
@@ -108,7 +108,7 @@ EFI_STATUS bmp_to_blt(EFI_GRAPHICS_OUTPUT_BLT_PIXEL *buf,
                         }
                 }
 
-                /* add row padding; new lines always start at 32 bit boundary */
+
                 row_size = in - pixmap;
                 in += ((row_size + 3) & ~3) - row_size;
         }

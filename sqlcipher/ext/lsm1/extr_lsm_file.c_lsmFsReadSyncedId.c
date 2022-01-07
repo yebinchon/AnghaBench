@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_9__ {TYPE_3__* pFS; } ;
-typedef  TYPE_1__ lsm_db ;
-typedef  scalar_t__ i64 ;
+typedef TYPE_1__ lsm_db ;
+typedef scalar_t__ i64 ;
 struct TYPE_11__ {scalar_t__ nMapLimit; scalar_t__ pMap; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * aData; } ;
-typedef  TYPE_2__ MetaPage ;
-typedef  TYPE_3__ FileSystem ;
+struct TYPE_10__ {int * aData; } ;
+typedef TYPE_2__ MetaPage ;
+typedef TYPE_3__ FileSystem ;
 
-/* Variables and functions */
- int LSM_META_PAGE_SIZE ; 
- int LSM_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fsGrowMapping (TYPE_3__*,int,int*) ; 
- int lsmFsMetaPageGet (TYPE_3__*,int /*<<< orphan*/ ,int,TYPE_2__**) ; 
- int /*<<< orphan*/  lsmFsMetaPageRelease (TYPE_2__*) ; 
- scalar_t__ lsmGetU64 (int /*<<< orphan*/ *) ; 
+
+ int LSM_META_PAGE_SIZE ;
+ int LSM_OK ;
+ int assert (int) ;
+ int fsGrowMapping (TYPE_3__*,int,int*) ;
+ int lsmFsMetaPageGet (TYPE_3__*,int ,int,TYPE_2__**) ;
+ int lsmFsMetaPageRelease (TYPE_2__*) ;
+ scalar_t__ lsmGetU64 (int *) ;
 
 int lsmFsReadSyncedId(lsm_db *db, int iMeta, i64 *piVal){
   FileSystem *pFS = db->pFS;

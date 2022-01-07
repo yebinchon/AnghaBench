@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int BS_PUSHBUTTON ; 
- int /*<<< orphan*/  CreateWindow (char*,char const*,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LongToHandle (int) ; 
- int WS_CHILD ; 
- int /*<<< orphan*/  g_hInst ; 
- int /*<<< orphan*/  g_hwnd ; 
- int /*<<< orphan*/  xButPos ; 
- int yButPos ; 
+
+
+
+typedef int HWND ;
+typedef int DWORD ;
+
+
+ int BS_PUSHBUTTON ;
+ int CreateWindow (char*,char const*,int,int ,int,int,int,int ,int ,int ,int *) ;
+ int LongToHandle (int) ;
+ int WS_CHILD ;
+ int g_hInst ;
+ int g_hwnd ;
+ int xButPos ;
+ int yButPos ;
 
 HWND
 CreatePushButton(const char* lpWindowName, DWORD xSize, DWORD id,DWORD Style)
@@ -30,14 +30,14 @@ CreatePushButton(const char* lpWindowName, DWORD xSize, DWORD id,DWORD Style)
     HWND h = CreateWindow("BUTTON",
         lpWindowName,
         WS_CHILD | BS_PUSHBUTTON | Style,
-        xButPos, /* x */
-        yButPos, /* y */
-        xSize,   /* nWidth */
-        20,      /* nHeight */
+        xButPos,
+        yButPos,
+        xSize,
+        20,
         g_hwnd,
         LongToHandle(id),
         g_hInst,
-        NULL
+        ((void*)0)
         );
 
     yButPos += 21;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct psmouse {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EIO ; 
- scalar_t__ fsp_page_reg_read (struct psmouse*,int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+ int EIO ;
+ scalar_t__ fsp_page_reg_read (struct psmouse*,int*) ;
+ int sprintf (char*,char*,int) ;
 
 __attribute__((used)) static ssize_t fsp_attr_show_pagereg(struct psmouse *psmouse,
-					void *data, char *buf)
+     void *data, char *buf)
 {
-	int val = 0;
+ int val = 0;
 
-	if (fsp_page_reg_read(psmouse, &val))
-		return -EIO;
+ if (fsp_page_reg_read(psmouse, &val))
+  return -EIO;
 
-	return sprintf(buf, "%02x\n", val);
+ return sprintf(buf, "%02x\n", val);
 }

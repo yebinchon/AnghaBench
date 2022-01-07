@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unused ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  dvd_reader_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DVDClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * DVDOpen (char*) ; 
- scalar_t__ DVDUDFVolumeInfo (int /*<<< orphan*/ *,char*,int,unsigned char*,int) ; 
+
+
+
+typedef int unused ;
+typedef int name ;
+typedef int dvd_reader_t ;
+
+
+ int DVDClose (int *) ;
+ int * DVDOpen (char*) ;
+ scalar_t__ DVDUDFVolumeInfo (int *,char*,int,unsigned char*,int) ;
 
 __attribute__((used)) static char * hb_dvdread_name( char * path )
 {
@@ -28,14 +28,14 @@ __attribute__((used)) static char * hb_dvdread_name( char * path )
     reader = DVDOpen( path );
     if( !reader )
     {
-        return NULL;
+        return ((void*)0);
     }
 
     if( DVDUDFVolumeInfo( reader, name, sizeof( name ),
                           unused, sizeof( unused ) ) )
     {
         DVDClose( reader );
-        return NULL;
+        return ((void*)0);
     }
 
     DVDClose( reader );

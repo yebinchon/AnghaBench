@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int UInt64 ;
-typedef  int /*<<< orphan*/  UInt32 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef unsigned int UInt64 ;
+typedef int UInt32 ;
 struct TYPE_5__ {size_t totalSize; size_t unpackSize; } ;
 struct TYPE_4__ {size_t numBlocks; int flags; TYPE_2__* blocks; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISeqOutStream ;
-typedef  TYPE_1__ CXzStream ;
-typedef  TYPE_2__ CXzBlockSizes ;
-typedef  scalar_t__ Byte ;
+typedef int SRes ;
+typedef int ISeqOutStream ;
+typedef TYPE_1__ CXzStream ;
+typedef TYPE_2__ CXzBlockSizes ;
+typedef scalar_t__ Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRC_GET_DIGEST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CRC_INIT_VAL ; 
- int /*<<< orphan*/  CrcCalc (scalar_t__*,int) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetUi32 (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBytes (int /*<<< orphan*/ *,scalar_t__*,int) ; 
- int /*<<< orphan*/  WriteBytesAndCrc (int /*<<< orphan*/ *,scalar_t__*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XZ_FOOTER_SIG ; 
- int /*<<< orphan*/  XZ_FOOTER_SIG_SIZE ; 
- unsigned int Xz_WriteVarInt (scalar_t__*,size_t) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CRC_GET_DIGEST (int ) ;
+ int CRC_INIT_VAL ;
+ int CrcCalc (scalar_t__*,int) ;
+ int RINOK (int ) ;
+ int SetUi32 (scalar_t__*,int ) ;
+ int WriteBytes (int *,scalar_t__*,int) ;
+ int WriteBytesAndCrc (int *,scalar_t__*,int,int *) ;
+ int XZ_FOOTER_SIG ;
+ int XZ_FOOTER_SIG_SIZE ;
+ unsigned int Xz_WriteVarInt (scalar_t__*,size_t) ;
+ int memcpy (scalar_t__*,int ,int ) ;
 
 SRes Xz_WriteFooter(CXzStream *p, ISeqOutStream *s)
 {

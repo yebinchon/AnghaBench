@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int PT_BEZIERTO ; 
- int PT_CLOSEFIGURE ; 
- int PT_LINETO ; 
- int PT_MOVETO ; 
-#define  PathPointTypeBezier 130 
- int PathPointTypeCloseSubpath ; 
-#define  PathPointTypeLine 129 
- int PathPointTypePathTypeMask ; 
-#define  PathPointTypeStart 128 
+
+
+
+typedef int BYTE ;
+
+
+ int ERR (char*) ;
+ int PT_BEZIERTO ;
+ int PT_CLOSEFIGURE ;
+ int PT_LINETO ;
+ int PT_MOVETO ;
+
+ int PathPointTypeCloseSubpath ;
+
+ int PathPointTypePathTypeMask ;
+
 
 __attribute__((used)) static BYTE convert_path_point_type(BYTE type)
 {
     BYTE ret;
 
     switch(type & PathPointTypePathTypeMask){
-        case PathPointTypeBezier:
+        case 130:
             ret = PT_BEZIERTO;
             break;
-        case PathPointTypeLine:
+        case 129:
             ret = PT_LINETO;
             break;
-        case PathPointTypeStart:
+        case 128:
             ret = PT_MOVETO;
             break;
         default:

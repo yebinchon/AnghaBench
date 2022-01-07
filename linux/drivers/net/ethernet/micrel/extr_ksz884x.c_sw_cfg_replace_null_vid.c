@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ksz_hw {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KS8842_SWITCH_CTRL_3_OFFSET ; 
- int /*<<< orphan*/  SWITCH_REPLACE_NULL_VID ; 
- int /*<<< orphan*/  sw_cfg (struct ksz_hw*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int KS8842_SWITCH_CTRL_3_OFFSET ;
+ int SWITCH_REPLACE_NULL_VID ;
+ int sw_cfg (struct ksz_hw*,int ,int ,int) ;
 
 __attribute__((used)) static void sw_cfg_replace_null_vid(struct ksz_hw *hw, int set)
 {
-	sw_cfg(hw, KS8842_SWITCH_CTRL_3_OFFSET, SWITCH_REPLACE_NULL_VID, set);
+ sw_cfg(hw, KS8842_SWITCH_CTRL_3_OFFSET, SWITCH_REPLACE_NULL_VID, set);
 }

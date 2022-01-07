@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct stmpe {int /*<<< orphan*/  domain; TYPE_1__* pdata; int /*<<< orphan*/  dev; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct stmpe {int domain; TYPE_1__* pdata; int dev; } ;
 struct mfd_cell {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  id; } ;
+struct TYPE_2__ {int id; } ;
 
-/* Variables and functions */
- int mfd_add_devices (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mfd_cell const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int mfd_add_devices (int ,int ,struct mfd_cell const*,int,int *,int ,int ) ;
 
 __attribute__((used)) static int stmpe_add_device(struct stmpe *stmpe, const struct mfd_cell *cell)
 {
-	return mfd_add_devices(stmpe->dev, stmpe->pdata->id, cell, 1,
-			       NULL, 0, stmpe->domain);
+ return mfd_add_devices(stmpe->dev, stmpe->pdata->id, cell, 1,
+          ((void*)0), 0, stmpe->domain);
 }

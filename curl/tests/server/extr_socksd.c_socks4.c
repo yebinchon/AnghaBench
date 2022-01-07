@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int send ;
-typedef  scalar_t__ curl_socket_t ;
-struct TYPE_2__ {unsigned short port; int /*<<< orphan*/  addr; } ;
 
-/* Variables and functions */
- scalar_t__ CURL_SOCKET_BAD ; 
- size_t SOCKS4_CD ; 
- size_t SOCKS4_DSTPORT ; 
- TYPE_1__ config ; 
- int /*<<< orphan*/  loghex (unsigned char*,int) ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  sclose (scalar_t__) ; 
- scalar_t__ socksconnect (unsigned short,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
+typedef int send ;
+typedef scalar_t__ curl_socket_t ;
+struct TYPE_2__ {unsigned short port; int addr; } ;
+
+
+ scalar_t__ CURL_SOCKET_BAD ;
+ size_t SOCKS4_CD ;
+ size_t SOCKS4_DSTPORT ;
+ TYPE_1__ config ;
+ int loghex (unsigned char*,int) ;
+ int logmsg (char*,...) ;
+ int memcpy (unsigned char*,unsigned char*,int) ;
+ int sclose (scalar_t__) ;
+ scalar_t__ socksconnect (unsigned short,int ) ;
 
 __attribute__((used)) static curl_socket_t socks4(curl_socket_t fd,
                             unsigned char *buffer,
@@ -52,16 +52,16 @@ __attribute__((used)) static curl_socket_t socks4(curl_socket_t fd,
 
   connfd = socksconnect(s4port, config.addr);
   if(connfd == CURL_SOCKET_BAD) {
-    /* failed */
+
     cd = 91;
   }
   else {
-    /* success */
+
     cd = 90;
   }
-  response[0] = 0; /* reply version 0 */
-  response[1] = cd; /* result */
-  /* copy port and address from connect request */
+  response[0] = 0;
+  response[1] = cd;
+
   memcpy(&response[2], &buffer[SOCKS4_DSTPORT], 6);
   rc = (send)(fd, (char *)response, 8, 0);
   if(rc != 8) {
@@ -72,7 +72,7 @@ __attribute__((used)) static curl_socket_t socks4(curl_socket_t fd,
   loghex(response, rc);
 
   if(cd == 90)
-    /* now do the transfer */
+
     return connfd;
 
   if(connfd != CURL_SOCKET_BAD)

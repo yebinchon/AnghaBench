@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {char* token; int /*<<< orphan*/  value; } ;
-struct TYPE_5__ {int video_depth; int skip; void* remap; int /*<<< orphan*/  joy_driver; void* swap; void* sndrate; void* sndcard; void* sound; void* throttle; void* vsync; void* scale; void* scanlines; void* video_height; void* video_width; int /*<<< orphan*/  video_driver; } ;
-struct TYPE_4__ {char* token; int /*<<< orphan*/  value; } ;
 
-/* Variables and functions */
- void* atoi (char*) ; 
- void* check_bool (char*) ; 
- TYPE_3__* joy_driver_table ; 
- TYPE_2__ option ; 
- scalar_t__ stricmp (char*,char*) ; 
- TYPE_1__* video_driver_table ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_6__ {char* token; int value; } ;
+struct TYPE_5__ {int video_depth; int skip; void* remap; int joy_driver; void* swap; void* sndrate; void* sndcard; void* sound; void* throttle; void* vsync; void* scale; void* scanlines; void* video_height; void* video_width; int video_driver; } ;
+struct TYPE_4__ {char* token; int value; } ;
+
+
+ void* atoi (char*) ;
+ void* check_bool (char*) ;
+ TYPE_3__* joy_driver_table ;
+ TYPE_2__ option ;
+ scalar_t__ stricmp (char*,char*) ;
+ TYPE_1__* video_driver_table ;
 
 void parse_args(int argc, char **argv)
 {
@@ -33,7 +33,7 @@ void parse_args(int argc, char **argv)
     {
         if(stricmp("-vdriver", argv[i]) == 0)
         {
-            for(j = 0; video_driver_table[j].token != NULL; j += 1)
+            for(j = 0; video_driver_table[j].token != ((void*)0); j += 1)
             {
                 if(stricmp(argv[i+1], video_driver_table[j].token) == 0)
                 {
@@ -106,7 +106,7 @@ void parse_args(int argc, char **argv)
 
         if(stricmp("-joy", argv[i]) == 0)
         {
-            for(j = 0; joy_driver_table[j].token != NULL; j += 1)
+            for(j = 0; joy_driver_table[j].token != ((void*)0); j += 1)
             {
                 if(stricmp(argv[i+1], joy_driver_table[j].token) == 0)
                 {

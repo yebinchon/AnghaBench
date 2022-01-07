@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_opt_subcommand_desc2_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int svn_opt_subcommand_desc2_t ;
+typedef int apr_pool_t ;
 struct TYPE_6__ {int optch; char* name; } ;
-typedef  TYPE_1__ apr_getopt_option_t ;
+typedef TYPE_1__ apr_getopt_option_t ;
 
-/* Variables and functions */
- TYPE_1__* svn_opt_get_option_from_code2 (int,TYPE_1__ const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+ TYPE_1__* svn_opt_get_option_from_code2 (int,TYPE_1__ const*,int const*,int *) ;
 
 __attribute__((used)) static const apr_getopt_option_t *
 get_option_from_code(const char **long_alias,
@@ -30,8 +30,8 @@ get_option_from_code(const char **long_alias,
   const apr_getopt_option_t *opt
     = svn_opt_get_option_from_code2(code, option_table, command, pool);
 
-  /* Find a long alias in the table, if there is one. */
-  *long_alias = NULL;
+
+  *long_alias = ((void*)0);
   for (i = option_table; i->optch; i++)
     {
       if (i->optch == code && i->name != opt->name)

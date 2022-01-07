@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
-struct ecap_pwm_chip {int /*<<< orphan*/  chip; } ;
 
-/* Variables and functions */
- struct ecap_pwm_chip* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  pm_runtime_disable (int /*<<< orphan*/ *) ; 
- int pwmchip_remove (int /*<<< orphan*/ *) ; 
+
+
+
+struct platform_device {int dev; } ;
+struct ecap_pwm_chip {int chip; } ;
+
+
+ struct ecap_pwm_chip* platform_get_drvdata (struct platform_device*) ;
+ int pm_runtime_disable (int *) ;
+ int pwmchip_remove (int *) ;
 
 __attribute__((used)) static int ecap_pwm_remove(struct platform_device *pdev)
 {
-	struct ecap_pwm_chip *pc = platform_get_drvdata(pdev);
+ struct ecap_pwm_chip *pc = platform_get_drvdata(pdev);
 
-	pm_runtime_disable(&pdev->dev);
+ pm_runtime_disable(&pdev->dev);
 
-	return pwmchip_remove(&pc->chip);
+ return pwmchip_remove(&pc->chip);
 }

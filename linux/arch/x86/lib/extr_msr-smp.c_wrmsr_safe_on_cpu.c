@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef void* u32 ;
 struct TYPE_2__ {void* h; void* l; } ;
 struct msr_info {int err; TYPE_1__ reg; void* msr_no; } ;
-typedef  int /*<<< orphan*/  rv ;
+typedef int rv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __wrmsr_safe_on_cpu ; 
- int /*<<< orphan*/  memset (struct msr_info*,int /*<<< orphan*/ ,int) ; 
- int smp_call_function_single (unsigned int,int /*<<< orphan*/ ,struct msr_info*,int) ; 
+
+ int __wrmsr_safe_on_cpu ;
+ int memset (struct msr_info*,int ,int) ;
+ int smp_call_function_single (unsigned int,int ,struct msr_info*,int) ;
 
 int wrmsr_safe_on_cpu(unsigned int cpu, u32 msr_no, u32 l, u32 h)
 {
-	int err;
-	struct msr_info rv;
+ int err;
+ struct msr_info rv;
 
-	memset(&rv, 0, sizeof(rv));
+ memset(&rv, 0, sizeof(rv));
 
-	rv.msr_no = msr_no;
-	rv.reg.l = l;
-	rv.reg.h = h;
-	err = smp_call_function_single(cpu, __wrmsr_safe_on_cpu, &rv, 1);
+ rv.msr_no = msr_no;
+ rv.reg.l = l;
+ rv.reg.h = h;
+ err = smp_call_function_single(cpu, __wrmsr_safe_on_cpu, &rv, 1);
 
-	return err ? err : rv.err;
+ return err ? err : rv.err;
 }

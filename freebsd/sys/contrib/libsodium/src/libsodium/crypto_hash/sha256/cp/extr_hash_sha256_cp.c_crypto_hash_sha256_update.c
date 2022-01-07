@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_3__ {int count; unsigned char* buf; int /*<<< orphan*/  state; } ;
-typedef  TYPE_1__ crypto_hash_sha256_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA256_Transform (int /*<<< orphan*/ ,unsigned char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sodium_memzero (void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct TYPE_3__ {int count; unsigned char* buf; int state; } ;
+typedef TYPE_1__ crypto_hash_sha256_state ;
+
+
+ int SHA256_Transform (int ,unsigned char const*,int *,int *) ;
+ int sodium_memzero (void*,int) ;
 
 int
 crypto_hash_sha256_update(crypto_hash_sha256_state *state,
                           const unsigned char *in, unsigned long long inlen)
 {
-    uint32_t           tmp32[64 + 8];
+    uint32_t tmp32[64 + 8];
     unsigned long long i;
     unsigned long long r;
 

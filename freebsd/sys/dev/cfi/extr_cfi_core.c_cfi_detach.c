@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cfi_softc {int /*<<< orphan*/  sc_res; int /*<<< orphan*/  sc_rid; int /*<<< orphan*/  sc_region; int /*<<< orphan*/  sc_nod; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_TEMP ; 
- int /*<<< orphan*/  SYS_RES_MEMORY ; 
- int /*<<< orphan*/  bus_release_resource (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destroy_dev (int /*<<< orphan*/ ) ; 
- struct cfi_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct cfi_softc {int sc_res; int sc_rid; int sc_region; int sc_nod; } ;
+typedef int device_t ;
+
+
+ int M_TEMP ;
+ int SYS_RES_MEMORY ;
+ int bus_release_resource (int ,int ,int ,int ) ;
+ int destroy_dev (int ) ;
+ struct cfi_softc* device_get_softc (int ) ;
+ int free (int ,int ) ;
 
 int
 cfi_detach(device_t dev)
 {
-	struct cfi_softc *sc;
+ struct cfi_softc *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	destroy_dev(sc->sc_nod);
-	free(sc->sc_region, M_TEMP);
-	bus_release_resource(dev, SYS_RES_MEMORY, sc->sc_rid, sc->sc_res);
-	return (0);
+ destroy_dev(sc->sc_nod);
+ free(sc->sc_region, M_TEMP);
+ bus_release_resource(dev, SYS_RES_MEMORY, sc->sc_rid, sc->sc_res);
+ return (0);
 }

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct edit_baton {int /*<<< orphan*/  db; int /*<<< orphan*/  use_commit_times; int /*<<< orphan*/  cancel_baton; int /*<<< orphan*/  cancel_func; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_KEYWORDS ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_del_none ; 
- int /*<<< orphan*/  svn_stream_copy3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_temp_wcroot_tempdir (char const**,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wq_add (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__internal_file_modified_p (scalar_t__*,int /*<<< orphan*/ ,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_install (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wq_build_file_remove (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_wc__wq_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_skel_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct edit_baton {int db; int use_commit_times; int cancel_baton; int cancel_func; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_KEYWORDS ;
+ scalar_t__ TRUE ;
+ int * svn_hash_gets (int *,int ) ;
+ int svn_io_file_del_none ;
+ int svn_stream_copy3 (int *,int *,int ,int ,int *) ;
+ int svn_stream_open_readonly (int **,char const*,int *,int *) ;
+ int svn_stream_open_unique (int **,char const**,char const*,int ,int *,int *) ;
+ int svn_wc__db_temp_wcroot_tempdir (char const**,int ,char const*,int *,int *) ;
+ int svn_wc__db_wq_add (int ,char const*,int *,int *) ;
+ int svn_wc__internal_file_modified_p (scalar_t__*,int ,char const*,scalar_t__,int *) ;
+ int svn_wc__wq_build_file_install (int **,int ,char const*,char const*,int ,scalar_t__,int *,int *) ;
+ int svn_wc__wq_build_file_remove (int **,int ,char const*,char const*,int *,int *) ;
+ int * svn_wc__wq_merge (int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 update_keywords_after_switch_cb(void *baton,
@@ -78,7 +78,7 @@ update_keywords_after_switch_cb(void *baton,
     }
   else
     {
-      install_from = NULL;
+      install_from = ((void*)0);
       record_fileinfo = TRUE;
     }
 

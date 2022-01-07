@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ButtonConfigBegin () ; 
- int /*<<< orphan*/  ButtonConfigEnd () ; 
-#define  FCFGD_GAMEPAD 131 
-#define  FCFGD_HYPERSHOT 130 
-#define  FCFGD_POWERPAD 129 
-#define  FCFGD_QUIZKING 128 
- int /*<<< orphan*/ ** GamePadConfig ; 
- int /*<<< orphan*/ * HyperShotButtons ; 
- int /*<<< orphan*/ * QuizKingButtons ; 
- int /*<<< orphan*/ ** powerpadsc ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ *,char*,int,...) ; 
- int /*<<< orphan*/  subcon (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8 ;
+
+
+ int ButtonConfigBegin () ;
+ int ButtonConfigEnd () ;
+
+
+
+
+ int ** GamePadConfig ;
+ int * HyperShotButtons ;
+ int * QuizKingButtons ;
+ int ** powerpadsc ;
+ int sprintf (int *,char*,int,...) ;
+ int subcon (int *,int *) ;
 
 void ConfigDevice(int which, int arg)
 {
@@ -34,21 +34,21 @@ void ConfigDevice(int which, int arg)
  ButtonConfigBegin();
  switch(which)
  {
-  case FCFGD_QUIZKING:
+  case 128:
    for(x=0;x<6;x++)
    {
     sprintf(buf,"Quiz King Buzzer #%d", x+1);
     subcon(buf,&QuizKingButtons[x]);
    }
    break;
-  case FCFGD_HYPERSHOT:
+  case 130:
    for(x=0;x<4;x++)
    {
     sprintf(buf,"Hyper Shot %d: %s",((x&2)>>1)+1,(x&1)?"JUMP":"RUN");
     subcon(buf,&HyperShotButtons[x]);
-   } 
+   }
    break;
-  case FCFGD_POWERPAD:
+  case 129:
    for(x=0;x<12;x++)
    {
     sprintf(buf,"PowerPad %d: %d", (arg&1)+1,x+11);
@@ -56,7 +56,7 @@ void ConfigDevice(int which, int arg)
    }
    break;
 
-  case FCFGD_GAMEPAD:
+  case 131:
   {
    char *str[10]={"A","B","SELECT","START","UP","DOWN","LEFT","RIGHT","Rapid A","Rapid B"};
    for(x=0;x<10;x++)

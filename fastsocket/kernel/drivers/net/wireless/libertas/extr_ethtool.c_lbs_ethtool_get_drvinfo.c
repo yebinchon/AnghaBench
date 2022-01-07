@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct net_device {struct lbs_private* ml_priv; } ;
 struct lbs_private {int fwrelease; } ;
-struct ethtool_drvinfo {int /*<<< orphan*/  version; int /*<<< orphan*/  driver; int /*<<< orphan*/  fw_version; } ;
+struct ethtool_drvinfo {int version; int driver; int fw_version; } ;
 
-/* Variables and functions */
- char* lbs_driver_version ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,int,int,int,int) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
+
+ char* lbs_driver_version ;
+ int snprintf (int ,int,char*,int,int,int,int) ;
+ int strcpy (int ,char*) ;
 
 __attribute__((used)) static void lbs_ethtool_get_drvinfo(struct net_device *dev,
-					 struct ethtool_drvinfo *info)
+      struct ethtool_drvinfo *info)
 {
-	struct lbs_private *priv = dev->ml_priv;
+ struct lbs_private *priv = dev->ml_priv;
 
-	snprintf(info->fw_version, 32, "%u.%u.%u.p%u",
-		priv->fwrelease >> 24 & 0xff,
-		priv->fwrelease >> 16 & 0xff,
-		priv->fwrelease >>  8 & 0xff,
-		priv->fwrelease       & 0xff);
-	strcpy(info->driver, "libertas");
-	strcpy(info->version, lbs_driver_version);
+ snprintf(info->fw_version, 32, "%u.%u.%u.p%u",
+  priv->fwrelease >> 24 & 0xff,
+  priv->fwrelease >> 16 & 0xff,
+  priv->fwrelease >> 8 & 0xff,
+  priv->fwrelease & 0xff);
+ strcpy(info->driver, "libertas");
+ strcpy(info->version, lbs_driver_version);
 }

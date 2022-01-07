@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int HDCD_ANA_CDT ; 
- int HDCD_ANA_LLE ; 
- int HDCD_ANA_PE ; 
- int HDCD_ANA_TGM ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int hdcd_analyze_gen (int,int,int const) ; 
+
+
+
+typedef int int32_t ;
+
+
+ int FFMIN (int,int) ;
+ int HDCD_ANA_CDT ;
+ int HDCD_ANA_LLE ;
+ int HDCD_ANA_PE ;
+ int HDCD_ANA_TGM ;
+ int av_assert0 (int) ;
+ int hdcd_analyze_gen (int,int,int const) ;
 
 __attribute__((used)) static int hdcd_analyze(int32_t *samples, int count, int stride, int gain, int target_gain, int extend, int mode, int cdt_active, int tg_mismatch)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int hdcd_analyze(int32_t *samples, int count, int s
 
     if (gain <= target_gain) {
         int len = FFMIN(count, target_gain - gain);
-        /* attenuate slowly */
+
         for (i = 0; i < len; i++) {
             ++gain;
             if (mode == HDCD_ANA_LLE)
@@ -51,7 +51,7 @@ __attribute__((used)) static int hdcd_analyze(int32_t *samples, int count, int s
         count -= len;
     } else {
         int len = FFMIN(count, (gain - target_gain) >> 3);
-        /* amplify quickly */
+
         for (i = 0; i < len; i++) {
             gain -= 8;
             if (mode == HDCD_ANA_LLE)
@@ -63,7 +63,7 @@ __attribute__((used)) static int hdcd_analyze(int32_t *samples, int count, int s
         count -= len;
     }
 
-    /* hold a steady level */
+
     if (gain == 0) {
         if (count > 0)
             samples += count * stride;

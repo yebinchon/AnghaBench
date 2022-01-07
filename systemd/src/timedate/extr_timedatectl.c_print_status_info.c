@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ time_t ;
 struct tm {int dummy; } ;
 struct TYPE_4__ {char* timezone; int time; int rtc_time; scalar_t__ rtc_local; scalar_t__ ntp_active; scalar_t__ ntp_capable; scalar_t__ ntp_synced; } ;
-typedef  TYPE_1__ StatusInfo ;
+typedef TYPE_1__ StatusInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_TRANSPORT_LOCAL ; 
- int /*<<< orphan*/  BUS_TRANSPORT_MACHINE ; 
- scalar_t__ IN_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int LINE_MAX ; 
- int USEC_PER_SEC ; 
- char* ansi_highlight () ; 
- char* ansi_normal () ; 
- int /*<<< orphan*/  arg_transport ; 
- int /*<<< orphan*/  assert (TYPE_1__ const*) ; 
- int /*<<< orphan*/  errno ; 
- char* getenv (char*) ; 
- int /*<<< orphan*/  gmtime_r (scalar_t__*,struct tm*) ; 
- scalar_t__ isempty (char*) ; 
- int /*<<< orphan*/  localtime_r (scalar_t__*,struct tm*) ; 
- int /*<<< orphan*/  log_warning (char*) ; 
- int /*<<< orphan*/  log_warning_errno (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
- int setenv (char*,char const*,int) ; 
- char* strdupa (char const*) ; 
- size_t strftime (char*,int,char*,int /*<<< orphan*/ ) ; 
- char* strjoina (char*,char*) ; 
- char* strna (char*) ; 
- scalar_t__ time (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tzset () ; 
- int unsetenv (char*) ; 
- char* yes_no (scalar_t__) ; 
+
+ int BUS_TRANSPORT_LOCAL ;
+ int BUS_TRANSPORT_MACHINE ;
+ scalar_t__ IN_SET (int ,int ,int ) ;
+ int LINE_MAX ;
+ int USEC_PER_SEC ;
+ char* ansi_highlight () ;
+ char* ansi_normal () ;
+ int arg_transport ;
+ int assert (TYPE_1__ const*) ;
+ int errno ;
+ char* getenv (char*) ;
+ int gmtime_r (scalar_t__*,struct tm*) ;
+ scalar_t__ isempty (char*) ;
+ int localtime_r (scalar_t__*,struct tm*) ;
+ int log_warning (char*) ;
+ int log_warning_errno (int ,char*) ;
+ int printf (char*,char*,...) ;
+ int setenv (char*,char const*,int) ;
+ char* strdupa (char const*) ;
+ size_t strftime (char*,int,char*,int ) ;
+ char* strjoina (char*,char*) ;
+ char* strna (char*) ;
+ scalar_t__ time (int *) ;
+ int tzset () ;
+ int unsetenv (char*) ;
+ char* yes_no (scalar_t__) ;
 
 __attribute__((used)) static void print_status_info(const StatusInfo *i) {
-        const char *old_tz = NULL, *tz, *tz_colon;
-        bool have_time = false;
+        const char *old_tz = ((void*)0), *tz, *tz_colon;
+        bool have_time = 0;
         char a[LINE_MAX];
         struct tm tm;
         time_t sec;
@@ -55,24 +55,24 @@ __attribute__((used)) static void print_status_info(const StatusInfo *i) {
 
         assert(i);
 
-        /* Save the old $TZ */
+
         tz = getenv("TZ");
         if (tz)
                 old_tz = strdupa(tz);
 
-        /* Set the new $TZ */
+
         tz_colon = strjoina(":", isempty(i->timezone) ? "UTC" : i->timezone);
-        if (setenv("TZ", tz_colon, true) < 0)
+        if (setenv("TZ", tz_colon, 1) < 0)
                 log_warning_errno(errno, "Failed to set TZ environment variable, ignoring: %m");
         else
                 tzset();
 
         if (i->time != 0) {
                 sec = (time_t) (i->time / USEC_PER_SEC);
-                have_time = true;
+                have_time = 1;
         } else if (IN_SET(arg_transport, BUS_TRANSPORT_LOCAL, BUS_TRANSPORT_MACHINE)) {
-                sec = time(NULL);
-                have_time = true;
+                sec = time(((void*)0));
+                have_time = 1;
         } else
                 log_warning("Could not get time from timedated and not operating locally, ignoring.");
 
@@ -99,9 +99,9 @@ __attribute__((used)) static void print_status_info(const StatusInfo *i) {
         if (have_time)
                 n = strftime(a, sizeof a, "%Z, %z", localtime_r(&sec, &tm));
 
-        /* Restore the $TZ */
+
         if (old_tz)
-                r = setenv("TZ", old_tz, true);
+                r = setenv("TZ", old_tz, 1);
         else
                 r = unsetenv("TZ");
         if (r < 0)

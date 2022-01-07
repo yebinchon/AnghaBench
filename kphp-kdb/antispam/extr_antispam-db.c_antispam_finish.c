@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SIMPLIFY_TYPE_COUNT ; 
- int /*<<< orphan*/  antispam_db_request ; 
- int /*<<< orphan*/  heap_pattern ; 
- int /*<<< orphan*/  id_to_pattern ; 
- int /*<<< orphan*/  id_to_pattern_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_pattern_clear ; 
- int /*<<< orphan*/ * root ; 
- int /*<<< orphan*/  st_vec_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trie_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  triple_to_pattern ; 
- int /*<<< orphan*/  triple_to_patterns_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  triple_to_patterns_foreach (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+ int SIMPLIFY_TYPE_COUNT ;
+ int antispam_db_request ;
+ int heap_pattern ;
+ int id_to_pattern ;
+ int id_to_pattern_clear (int ) ;
+ int list_pattern_clear ;
+ int * root ;
+ int st_vec_destroy (int ) ;
+ int trie_free (int ) ;
+ int triple_to_pattern ;
+ int triple_to_patterns_clear (int ) ;
+ int triple_to_patterns_foreach (int ,int ) ;
 
 void antispam_finish (void) {
   triple_to_patterns_foreach (triple_to_pattern, list_pattern_clear);

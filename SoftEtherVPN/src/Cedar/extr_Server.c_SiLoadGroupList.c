@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_4__ {size_t NumTokens; char** Token; } ;
-typedef  TYPE_1__ TOKEN_LIST ;
-typedef  int /*<<< orphan*/  HUB ;
-typedef  int /*<<< orphan*/  FOLDER ;
+typedef TYPE_1__ TOKEN_LIST ;
+typedef int HUB ;
+typedef int FOLDER ;
 
-/* Variables and functions */
- TYPE_1__* CfgEnumFolderToTokenList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CfgGetFolder (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  FreeToken (TYPE_1__*) ; 
- int /*<<< orphan*/  SiLoadGroupCfg (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* CfgEnumFolderToTokenList (int *) ;
+ int CfgGetFolder (int *,char*) ;
+ int FreeToken (TYPE_1__*) ;
+ int SiLoadGroupCfg (int *,int ) ;
 
 void SiLoadGroupList(HUB *h, FOLDER *f)
 {
-	TOKEN_LIST *t;
-	UINT i;
-	char *name;
-	// Validate arguments
-	if (f == NULL || h == NULL)
-	{
-		return;
-	}
+ TOKEN_LIST *t;
+ UINT i;
+ char *name;
 
-	t = CfgEnumFolderToTokenList(f);
+ if (f == ((void*)0) || h == ((void*)0))
+ {
+  return;
+ }
 
-	for (i = 0;i < t->NumTokens;i++)
-	{
-		name = t->Token[i];
-		SiLoadGroupCfg(h, CfgGetFolder(f, name));
-	}
+ t = CfgEnumFolderToTokenList(f);
 
-	FreeToken(t);
+ for (i = 0;i < t->NumTokens;i++)
+ {
+  name = t->Token[i];
+  SiLoadGroupCfg(h, CfgGetFolder(f, name));
+ }
+
+ FreeToken(t);
 }

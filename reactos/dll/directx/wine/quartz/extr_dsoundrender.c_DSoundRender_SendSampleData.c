@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {scalar_t__ state; } ;
-struct TYPE_9__ {TYPE_2__ filter; TYPE_1__* pInputPin; int /*<<< orphan*/  csRenderLock; } ;
-struct TYPE_10__ {int in_loop; scalar_t__ buf_size; scalar_t__ writepos; int /*<<< orphan*/  dsbuffer; TYPE_3__ renderer; int /*<<< orphan*/  blocked; } ;
+struct TYPE_9__ {TYPE_2__ filter; TYPE_1__* pInputPin; int csRenderLock; } ;
+struct TYPE_10__ {int in_loop; scalar_t__ buf_size; scalar_t__ writepos; int dsbuffer; TYPE_3__ renderer; int blocked; } ;
 struct TYPE_7__ {scalar_t__ flushing; } ;
-typedef  int REFERENCE_TIME ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DWORD ;
-typedef  TYPE_4__ DSoundRenderImpl ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef int REFERENCE_TIME ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DWORD ;
+typedef TYPE_4__ DSoundRenderImpl ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ DS_OK ; 
- scalar_t__ DSoundRender_GetWritePos (TYPE_4__*,scalar_t__*,int,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FIXME (char*,scalar_t__,scalar_t__) ; 
- scalar_t__ IDirectSoundBuffer_Lock (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,void**,scalar_t__*,void**,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirectSoundBuffer_Unlock (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- scalar_t__ State_Paused ; 
- scalar_t__ State_Running ; 
- scalar_t__ State_Stopped ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ VFW_E_WRONG_STATE ; 
- scalar_t__ WAIT_TIMEOUT ; 
- scalar_t__ WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  min (scalar_t__,scalar_t__) ; 
+
+ scalar_t__ DS_OK ;
+ scalar_t__ DSoundRender_GetWritePos (TYPE_4__*,scalar_t__*,int,scalar_t__*,scalar_t__*) ;
+ int ERR (char*,scalar_t__) ;
+ int EnterCriticalSection (int *) ;
+ int FIXME (char*,scalar_t__,scalar_t__) ;
+ scalar_t__ IDirectSoundBuffer_Lock (int ,scalar_t__,int ,void**,scalar_t__*,void**,scalar_t__*,int ) ;
+ int IDirectSoundBuffer_Unlock (int ,int *,scalar_t__,int *,scalar_t__) ;
+ int LeaveCriticalSection (int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ scalar_t__ State_Paused ;
+ scalar_t__ State_Running ;
+ scalar_t__ State_Stopped ;
+ int TRACE (char*,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ VFW_E_WRONG_STATE ;
+ scalar_t__ WAIT_TIMEOUT ;
+ scalar_t__ WaitForSingleObject (int ,int) ;
+ int memcpy (int *,int const*,scalar_t__) ;
+ int min (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static HRESULT DSoundRender_SendSampleData(DSoundRenderImpl* This, REFERENCE_TIME tStart, REFERENCE_TIME tStop, const BYTE *data, DWORD size)
 {

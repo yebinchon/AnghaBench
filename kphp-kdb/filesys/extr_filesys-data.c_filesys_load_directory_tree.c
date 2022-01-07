@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct filesys_directory_node {int mode; int uid; int gid; int modification_time; int inode; int* name; struct filesys_directory_node* next; struct filesys_directory_node* head; struct filesys_directory_node* parent; } ;
-typedef  int /*<<< orphan*/  l ;
-typedef  int inode_id_t ;
+typedef int l ;
+typedef int inode_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bread (int*,int) ; 
- int /*<<< orphan*/  tot_directory_nodes ; 
- int /*<<< orphan*/  vkprintf (int,char*,int*) ; 
- int* zmalloc (int) ; 
- struct filesys_directory_node* zmalloc0 (int) ; 
+
+ int assert (int) ;
+ int bread (int*,int) ;
+ int tot_directory_nodes ;
+ int vkprintf (int,char*,int*) ;
+ int* zmalloc (int) ;
+ struct filesys_directory_node* zmalloc0 (int) ;
 
 __attribute__((used)) static struct filesys_directory_node *filesys_load_directory_tree (struct filesys_directory_node *parent) {
   inode_id_t inode;
   bread (&inode, sizeof (inode_id_t));
   assert (inode >= -2);
   if (inode == -2LL) {
-    return NULL;
+    return ((void*)0);
   }
   tot_directory_nodes++;
   struct filesys_directory_node *T = zmalloc0 (sizeof (struct filesys_directory_node));
@@ -40,8 +40,8 @@ __attribute__((used)) static struct filesys_directory_node *filesys_load_directo
   T->inode = inode;
   T->parent = parent;
   T->name = zmalloc (l + 1);
-  T->head = NULL;
-  struct filesys_directory_node *tail = NULL;
+  T->head = ((void*)0);
+  struct filesys_directory_node *tail = ((void*)0);
   bread (T->name, l);
   T->name[l] = 0;
 
@@ -49,8 +49,8 @@ __attribute__((used)) static struct filesys_directory_node *filesys_load_directo
 
   if (T->inode < 0) {
     struct filesys_directory_node *P;
-    while ((P = filesys_load_directory_tree (T)) != NULL ) {
-      if (T->head == NULL) {
+    while ((P = filesys_load_directory_tree (T)) != ((void*)0) ) {
+      if (T->head == ((void*)0)) {
         T->head = tail = P;
       } else {
         tail->next = P;

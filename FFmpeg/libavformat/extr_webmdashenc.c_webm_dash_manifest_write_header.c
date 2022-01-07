@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int nb_as; int /*<<< orphan*/  is_live; } ;
-typedef  TYPE_1__ WebMDashMuxContext ;
-struct TYPE_11__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  avio_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  free_adaptation_sets (TYPE_2__*) ; 
- int /*<<< orphan*/  get_duration (TYPE_2__*) ; 
- int parse_adaptation_sets (TYPE_2__*) ; 
- int write_adaptation_set (TYPE_2__*,int) ; 
- int /*<<< orphan*/  write_footer (TYPE_2__*) ; 
- int write_header (TYPE_2__*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int nb_as; int is_live; } ;
+typedef TYPE_1__ WebMDashMuxContext ;
+struct TYPE_11__ {int pb; TYPE_1__* priv_data; } ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int avio_printf (int ,char*,...) ;
+ int free_adaptation_sets (TYPE_2__*) ;
+ int get_duration (TYPE_2__*) ;
+ int parse_adaptation_sets (TYPE_2__*) ;
+ int write_adaptation_set (TYPE_2__*,int) ;
+ int write_footer (TYPE_2__*) ;
+ int write_header (TYPE_2__*) ;
 
 __attribute__((used)) static int webm_dash_manifest_write_header(AVFormatContext *s)
 {

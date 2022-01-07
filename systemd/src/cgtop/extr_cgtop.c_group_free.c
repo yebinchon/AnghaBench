@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  path; } ;
-typedef  TYPE_1__ Group ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int path; } ;
+typedef TYPE_1__ Group ;
+
+
+ int free (int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
 
 __attribute__((used)) static Group *group_free(Group *g) {
         if (!g)
-                return NULL;
+                return ((void*)0);
 
         free(g->path);
         return mfree(g);

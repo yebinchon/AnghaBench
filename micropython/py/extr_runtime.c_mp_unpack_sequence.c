@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ mp_obj_t ;
-typedef  int /*<<< orphan*/  mp_obj_iter_buf_t ;
 
-/* Variables and functions */
- scalar_t__ MICROPY_ERROR_REPORTING ; 
- scalar_t__ MICROPY_ERROR_REPORTING_TERSE ; 
- scalar_t__ MP_OBJ_STOP_ITERATION ; 
- scalar_t__ mp_getiter (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ mp_iternext (scalar_t__) ; 
- int /*<<< orphan*/  mp_obj_get_array (scalar_t__,size_t*,scalar_t__**) ; 
- scalar_t__ mp_obj_is_type (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_obj_new_exception_msg_varg (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  mp_raise_ValueError (char*) ; 
- int /*<<< orphan*/  mp_type_ValueError ; 
- int /*<<< orphan*/  mp_type_list ; 
- int /*<<< orphan*/  mp_type_tuple ; 
- int /*<<< orphan*/  nlr_raise (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ mp_obj_t ;
+typedef int mp_obj_iter_buf_t ;
+
+
+ scalar_t__ MICROPY_ERROR_REPORTING ;
+ scalar_t__ MICROPY_ERROR_REPORTING_TERSE ;
+ scalar_t__ MP_OBJ_STOP_ITERATION ;
+ scalar_t__ mp_getiter (scalar_t__,int *) ;
+ scalar_t__ mp_iternext (scalar_t__) ;
+ int mp_obj_get_array (scalar_t__,size_t*,scalar_t__**) ;
+ scalar_t__ mp_obj_is_type (scalar_t__,int *) ;
+ int mp_obj_new_exception_msg_varg (int *,char*,int) ;
+ int mp_raise_ValueError (char*) ;
+ int mp_type_ValueError ;
+ int mp_type_list ;
+ int mp_type_tuple ;
+ int nlr_raise (int ) ;
 
 void mp_unpack_sequence(mp_obj_t seq_in, size_t num, mp_obj_t *items) {
     size_t seq_len;

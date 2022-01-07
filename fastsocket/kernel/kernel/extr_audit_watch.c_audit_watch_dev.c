@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct audit_watch {int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  dev_t ;
 
-/* Variables and functions */
+
+
+
+struct audit_watch {int dev; } ;
+typedef int dev_t ;
+
+
 
 dev_t audit_watch_dev(struct audit_watch *watch)
 {
-	return watch->dev;
+ return watch->dev;
 }

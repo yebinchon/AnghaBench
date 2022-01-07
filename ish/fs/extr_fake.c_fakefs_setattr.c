@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mount {int dummy; } ;
 struct ish_stat {int dummy; } ;
 struct attr {scalar_t__ type; } ;
-typedef  int /*<<< orphan*/  ino_t ;
+typedef int ino_t ;
 struct TYPE_2__ {int (* setattr ) (struct mount*,char const*,struct attr) ;} ;
 
-/* Variables and functions */
- int _ENOENT ; 
- scalar_t__ attr_size ; 
- int /*<<< orphan*/  db_begin (struct mount*) ; 
- int /*<<< orphan*/  db_commit (struct mount*) ; 
- int /*<<< orphan*/  db_rollback (struct mount*) ; 
- int /*<<< orphan*/  fake_stat_setattr (struct ish_stat*,struct attr) ; 
- int /*<<< orphan*/  inode_write_stat (struct mount*,int /*<<< orphan*/ ,struct ish_stat*) ; 
- int /*<<< orphan*/  path_read_stat (struct mount*,char const*,struct ish_stat*,int /*<<< orphan*/ *) ; 
- TYPE_1__ realfs ; 
- int stub1 (struct mount*,char const*,struct attr) ; 
+
+ int _ENOENT ;
+ scalar_t__ attr_size ;
+ int db_begin (struct mount*) ;
+ int db_commit (struct mount*) ;
+ int db_rollback (struct mount*) ;
+ int fake_stat_setattr (struct ish_stat*,struct attr) ;
+ int inode_write_stat (struct mount*,int ,struct ish_stat*) ;
+ int path_read_stat (struct mount*,char const*,struct ish_stat*,int *) ;
+ TYPE_1__ realfs ;
+ int stub1 (struct mount*,char const*,struct attr) ;
 
 __attribute__((used)) static int fakefs_setattr(struct mount *mount, const char *path, struct attr attr) {
     if (attr.type == attr_size)

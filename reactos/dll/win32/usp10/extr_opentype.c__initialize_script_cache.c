@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  ScriptList; } ;
-struct TYPE_7__ {int /*<<< orphan*/  ScriptList; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int ScriptList; } ;
+struct TYPE_7__ {int ScriptList; } ;
 struct TYPE_6__ {scalar_t__ scripts_initialized; TYPE_3__* GPOS_Table; TYPE_2__* GSUB_Table; } ;
-typedef  TYPE_1__ ScriptCache ;
-typedef  int /*<<< orphan*/  OT_ScriptList ;
-typedef  TYPE_2__ GSUB_Header ;
-typedef  TYPE_3__ GPOS_Header ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_1__ ScriptCache ;
+typedef int OT_ScriptList ;
+typedef TYPE_2__ GSUB_Header ;
+typedef TYPE_3__ GPOS_Header ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  USP10_SCRIPT_TABLE_GPOS ; 
- int /*<<< orphan*/  USP10_SCRIPT_TABLE_GSUB ; 
- int /*<<< orphan*/  usp10_script_cache_add_script_list (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
+
+ int GET_BE_WORD (int ) ;
+ scalar_t__ TRUE ;
+ int USP10_SCRIPT_TABLE_GPOS ;
+ int USP10_SCRIPT_TABLE_GSUB ;
+ int usp10_script_cache_add_script_list (TYPE_1__*,int ,int const*) ;
 
 __attribute__((used)) static void _initialize_script_cache(ScriptCache *script_cache)
 {

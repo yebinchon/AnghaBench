@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  metrics ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int metrics ;
 struct TYPE_3__ {int dwMask; int cxPad; int cbSize; int cyPad; int cxButtonSpacing; int cyButtonSpacing; } ;
-typedef  TYPE_1__ TBMETRICS ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  int /*<<< orphan*/ * HWND ;
+typedef TYPE_1__ TBMETRICS ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef int * HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateWindowExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SendMessageW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int TBMF_BARPAD ; 
- int TBMF_BUTTONSPACING ; 
- int TBMF_PAD ; 
- int /*<<< orphan*/  TB_GETMETRICS ; 
- int /*<<< orphan*/  TOOLBARCLASSNAMEW ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int * CreateWindowExW (int ,int ,char*,int ,int ,int ,int ,int ,int ,int ,int ,int *) ;
+ int SendMessageW (int *,int ,int ,int ) ;
+ int TBMF_BARPAD ;
+ int TBMF_BUTTONSPACING ;
+ int TBMF_PAD ;
+ int TB_GETMETRICS ;
+ int TOOLBARCLASSNAMEW ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,...) ;
 
 void TestButtonSpacing()
 {
@@ -35,8 +35,8 @@ void TestButtonSpacing()
     TBMETRICS metrics;
     LRESULT lres;
 
-    hwnd = CreateWindowExW(0, TOOLBARCLASSNAMEW, L"Test", 0, 0, 0, 0, 0, 0, 0, 0, NULL);
-    ok(hwnd != NULL, "CreateWindowEx failed\n");
+    hwnd = CreateWindowExW(0, TOOLBARCLASSNAMEW, L"Test", 0, 0, 0, 0, 0, 0, 0, 0, ((void*)0));
+    ok(hwnd != ((void*)0), "CreateWindowEx failed\n");
 
     memset(&metrics, 0, sizeof(metrics));
     lres = SendMessageW(hwnd, TB_GETMETRICS, 0, (LPARAM)&metrics);

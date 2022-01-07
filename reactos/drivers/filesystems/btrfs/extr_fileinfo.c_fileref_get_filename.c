@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_13__ {struct TYPE_13__* parent; TYPE_4__* dc; TYPE_2__* fcb; } ;
-typedef  TYPE_5__ file_ref ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int USHORT ;
-typedef  int ULONG ;
+typedef TYPE_5__ file_ref ;
+typedef int WCHAR ;
+typedef int USHORT ;
+typedef int ULONG ;
 struct TYPE_14__ {int MaximumLength; char* Buffer; int Length; } ;
-struct TYPE_11__ {int Length; int /*<<< orphan*/  Buffer; } ;
+struct TYPE_11__ {int Length; int Buffer; } ;
 struct TYPE_12__ {TYPE_3__ name; } ;
 struct TYPE_10__ {scalar_t__ ads; TYPE_1__* Vcb; } ;
 struct TYPE_9__ {TYPE_5__* root_fileref; } ;
-typedef  TYPE_6__* PUNICODE_STRING ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_6__* PUNICODE_STRING ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RtlCopyMemory (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlMoveMemory (char*,char*,int) ; 
- int /*<<< orphan*/  STATUS_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  STATUS_INTERNAL_ERROR ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  min (int,int) ; 
+
+ int RtlCopyMemory (char*,int ,int ) ;
+ int RtlMoveMemory (char*,char*,int) ;
+ int STATUS_BUFFER_OVERFLOW ;
+ int STATUS_INTERNAL_ERROR ;
+ int STATUS_SUCCESS ;
+ int min (int,int) ;
 
 NTSTATUS fileref_get_filename(file_ref* fileref, PUNICODE_STRING fn, USHORT* name_offset, ULONG* preqlen) {
     file_ref* fr;
     NTSTATUS Status;
     ULONG reqlen = 0;
     USHORT offset;
-    bool overflow = false;
+    bool overflow = 0;
 
-    // FIXME - we need a lock on filerefs' filepart
+
 
     if (fileref == fileref->fcb->Vcb->root_fileref) {
         if (fn->MaximumLength >= sizeof(WCHAR)) {
@@ -75,7 +75,7 @@ NTSTATUS fileref_get_filename(file_ref* fileref, PUNICODE_STRING fn, USHORT* nam
 
         if (!overflow) {
             if (fr->dc->name.Length + sizeof(WCHAR) + fn->Length > fn->MaximumLength)
-                overflow = true;
+                overflow = 1;
         }
 
         if (overflow)
@@ -99,7 +99,7 @@ NTSTATUS fileref_get_filename(file_ref* fileref, PUNICODE_STRING fn, USHORT* nam
 
             if (fn->Length > fn->MaximumLength) {
                 fn->Length = fn->MaximumLength;
-                overflow = true;
+                overflow = 1;
             }
         }
 

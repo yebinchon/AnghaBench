@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-struct TYPE_2__ {int /*<<< orphan*/  channel; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  alloc_cb ; 
- TYPE_1__ ctx2 ; 
- int /*<<< orphan*/  read_cb ; 
- scalar_t__ uv_is_closing (int /*<<< orphan*/ *) ; 
- int uv_is_readable (int /*<<< orphan*/ *) ; 
- int uv_is_writable (int /*<<< orphan*/ *) ; 
- int uv_read_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uv_stream_t ;
+typedef int uv_handle_t ;
+struct TYPE_2__ {int channel; } ;
+
+
+ int ASSERT (int) ;
+ int alloc_cb ;
+ TYPE_1__ ctx2 ;
+ int read_cb ;
+ scalar_t__ uv_is_closing (int *) ;
+ int uv_is_readable (int *) ;
+ int uv_is_writable (int *) ;
+ int uv_read_start (int *,int ,int ) ;
 
 __attribute__((used)) static void send_recv_start(void) {
   int r;

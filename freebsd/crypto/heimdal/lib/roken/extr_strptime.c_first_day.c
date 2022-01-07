@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ is_leap_year (int) ; 
+ scalar_t__ is_leap_year (int) ;
 
 __attribute__((used)) static int
 first_day (int year)
@@ -20,6 +12,6 @@ first_day (int year)
     int ret = 4;
 
     for (; year > 1970; --year)
-	ret = (ret + (is_leap_year (year) ? 366 : 365)) % 7;
+ ret = (ret + (is_leap_year (year) ? 366 : 365)) % 7;
     return ret;
 }

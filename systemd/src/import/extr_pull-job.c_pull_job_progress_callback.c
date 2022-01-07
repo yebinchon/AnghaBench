@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  y ;
-typedef  scalar_t__ usec_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  scalar_t__ curl_off_t ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_4__ {scalar_t__ last_status_usec; unsigned int progress_percent; scalar_t__ start_usec; int /*<<< orphan*/  (* on_progress ) (TYPE_1__*) ;int /*<<< orphan*/  url; } ;
-typedef  TYPE_1__ PullJob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- int FORMAT_BYTES_MAX ; 
- int FORMAT_TIMESPAN_MAX ; 
- scalar_t__ USEC_PER_SEC ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  format_bytes (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format_timespan (char*,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  log_info (char*,unsigned int,int /*<<< orphan*/ ,...) ; 
- scalar_t__ now (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int y ;
+typedef scalar_t__ usec_t ;
+typedef int uint64_t ;
+typedef scalar_t__ curl_off_t ;
+typedef int buf ;
+struct TYPE_4__ {scalar_t__ last_status_usec; unsigned int progress_percent; scalar_t__ start_usec; int (* on_progress ) (TYPE_1__*) ;int url; } ;
+typedef TYPE_1__ PullJob ;
+
+
+ int CLOCK_MONOTONIC ;
+ int FORMAT_BYTES_MAX ;
+ int FORMAT_TIMESPAN_MAX ;
+ scalar_t__ USEC_PER_SEC ;
+ int assert (TYPE_1__*) ;
+ int format_bytes (char*,int,int ) ;
+ int format_timespan (char*,int,scalar_t__,scalar_t__) ;
+ int log_info (char*,unsigned int,int ,...) ;
+ scalar_t__ now (int ) ;
+ int stub1 (TYPE_1__*) ;
 
 __attribute__((used)) static int pull_job_progress_callback(void *userdata, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow) {
         PullJob *j = userdata;

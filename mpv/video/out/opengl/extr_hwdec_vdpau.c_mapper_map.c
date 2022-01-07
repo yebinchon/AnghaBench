@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct vdp_functions {int /*<<< orphan*/  (* video_surface_get_parameters ) (intptr_t,int /*<<< orphan*/ *,int*,int*) ;} ;
-struct ra_tex_params {int dimensions; int w; int h; int d; int render_src; int src_linear; int /*<<< orphan*/  format; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct vdp_functions {int (* video_surface_get_parameters ) (intptr_t,int *,int*,int*) ;} ;
+struct ra_tex_params {int dimensions; int w; int h; int d; int render_src; int src_linear; int format; } ;
 struct TYPE_7__ {int w; int h; } ;
-struct ra_hwdec_mapper {void** tex; int /*<<< orphan*/  ra; TYPE_2__ src_params; TYPE_4__* src; struct priv* priv; } ;
+struct ra_hwdec_mapper {void** tex; int ra; TYPE_2__ src_params; TYPE_4__* src; struct priv* priv; } ;
 struct TYPE_6__ {int chroma_w; int chroma_h; } ;
-struct priv {int mapped; int /*<<< orphan*/ * gl_textures; int /*<<< orphan*/  vdpgl_surface; int /*<<< orphan*/  vdp_surface; int /*<<< orphan*/  mixer; TYPE_1__ direct_desc; scalar_t__ direct_mode; int /*<<< orphan*/  preemption_counter; TYPE_5__* ctx; TYPE_3__* gl; } ;
-typedef  intptr_t VdpVideoSurface ;
-typedef  int /*<<< orphan*/  VdpStatus ;
-typedef  int /*<<< orphan*/  VdpChromaType ;
+struct priv {int mapped; int * gl_textures; int vdpgl_surface; int vdp_surface; int mixer; TYPE_1__ direct_desc; scalar_t__ direct_mode; int preemption_counter; TYPE_5__* ctx; TYPE_3__* gl; } ;
+typedef intptr_t VdpVideoSurface ;
+typedef int VdpStatus ;
+typedef int VdpChromaType ;
 struct TYPE_10__ {struct vdp_functions vdp; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * planes; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* VDPAUMapSurfacesNV ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* VDPAUSurfaceAccessNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* VDPAURegisterVideoSurfaceNV ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ GL ;
+struct TYPE_9__ {int * planes; } ;
+struct TYPE_8__ {int (* VDPAUMapSurfacesNV ) (int,int *) ;int (* VDPAUSurfaceAccessNV ) (int ,int ) ;int (* VDPAURegisterVideoSurfaceNV ) (int ,int ,int,int *) ;} ;
+typedef TYPE_3__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BRAINDEATH (intptr_t) ; 
- int /*<<< orphan*/  CHECK_VDP_ERROR (struct ra_hwdec_mapper*,char*) ; 
- int /*<<< orphan*/  GL_READ_ONLY ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- scalar_t__ mapper_init (struct ra_hwdec_mapper*) ; 
- int /*<<< orphan*/  mapper_uninit (struct ra_hwdec_mapper*) ; 
- int /*<<< orphan*/  mark_vdpau_objects_uninitialized (struct ra_hwdec_mapper*) ; 
- int mp_vdpau_handle_preemption (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_vdpau_mixer_render (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ *) ; 
- void* ra_create_wrapped_tex (int /*<<< orphan*/ ,struct ra_tex_params*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_find_unorm_format (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  stub1 (intptr_t,int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (int,int /*<<< orphan*/ *) ; 
+
+ int BRAINDEATH (intptr_t) ;
+ int CHECK_VDP_ERROR (struct ra_hwdec_mapper*,char*) ;
+ int GL_READ_ONLY ;
+ int GL_TEXTURE_2D ;
+ scalar_t__ mapper_init (struct ra_hwdec_mapper*) ;
+ int mapper_uninit (struct ra_hwdec_mapper*) ;
+ int mark_vdpau_objects_uninitialized (struct ra_hwdec_mapper*) ;
+ int mp_vdpau_handle_preemption (TYPE_5__*,int *) ;
+ int mp_vdpau_mixer_render (int ,int *,int ,int *,TYPE_4__*,int *) ;
+ void* ra_create_wrapped_tex (int ,struct ra_tex_params*,int ) ;
+ int ra_find_unorm_format (int ,int,int) ;
+ int stub1 (intptr_t,int *,int*,int*) ;
+ int stub2 (int ,int ,int,int *) ;
+ int stub3 (int ,int ) ;
+ int stub4 (int,int *) ;
+ int stub5 (int,int *) ;
 
 __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
     if (p->direct_mode) {
         VdpVideoSurface surface = (intptr_t)mapper->src->planes[3];
 
-        // We need the uncropped size.
+
         VdpChromaType s_chroma_type;
         uint32_t s_w, s_h;
         vdp_st = vdp->video_surface_get_parameters(surface, &s_chroma_type, &s_w, &s_h);
@@ -83,7 +83,7 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
         gl->VDPAUSurfaceAccessNV(p->vdpgl_surface, GL_READ_ONLY);
         gl->VDPAUMapSurfacesNV(1, &p->vdpgl_surface);
 
-        p->mapped = true;
+        p->mapped = 1;
 
         for (int n = 0; n < 4; n++) {
             bool chroma = n >= 2;
@@ -96,7 +96,7 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
                 .h = s_h / h_scale,
                 .d = 1,
                 .format = ra_find_unorm_format(mapper->ra, 1, chroma ? 2 : 1),
-                .render_src = true,
+                .render_src = 1,
             };
 
             if (!params.format)
@@ -111,12 +111,12 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
         if (!p->vdpgl_surface)
             return -1;
 
-        mp_vdpau_mixer_render(p->mixer, NULL, p->vdp_surface, NULL, mapper->src,
-                              NULL);
+        mp_vdpau_mixer_render(p->mixer, ((void*)0), p->vdp_surface, ((void*)0), mapper->src,
+                              ((void*)0));
 
         gl->VDPAUMapSurfacesNV(1, &p->vdpgl_surface);
 
-        p->mapped = true;
+        p->mapped = 1;
 
         struct ra_tex_params params = {
             .dimensions = 2,
@@ -124,8 +124,8 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
             .h = mapper->src_params.h,
             .d = 1,
             .format = ra_find_unorm_format(mapper->ra, 1, 4),
-            .render_src = true,
-            .src_linear = true,
+            .render_src = 1,
+            .src_linear = 1,
         };
 
         if (!params.format)

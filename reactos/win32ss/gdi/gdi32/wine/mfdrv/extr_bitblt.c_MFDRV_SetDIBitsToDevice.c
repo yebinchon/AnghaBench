@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  void* UINT ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef void* UINT ;
 struct TYPE_12__ {int biSizeImage; } ;
 struct TYPE_14__ {TYPE_1__ bmiHeader; } ;
-struct TYPE_13__ {int rdSize; void** rdParm; int /*<<< orphan*/  rdFunction; } ;
-typedef  int /*<<< orphan*/  PHYSDEV ;
-typedef  TYPE_2__ METARECORD ;
-typedef  TYPE_3__* LPCVOID ;
-typedef  void* INT16 ;
-typedef  void* INT ;
-typedef  int DWORD ;
-typedef  TYPE_3__ BITMAPINFO ;
+struct TYPE_13__ {int rdSize; void** rdParm; int rdFunction; } ;
+typedef int PHYSDEV ;
+typedef TYPE_2__ METARECORD ;
+typedef TYPE_3__* LPCVOID ;
+typedef void* INT16 ;
+typedef void* INT ;
+typedef int DWORD ;
+typedef TYPE_3__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  META_SETDIBTODEV ; 
- int /*<<< orphan*/  MFDRV_WriteRecord (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int get_dib_info_size (TYPE_3__*,void*) ; 
- int /*<<< orphan*/  memcpy (void**,TYPE_3__*,int) ; 
+
+ int GetProcessHeap () ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_2__*) ;
+ int META_SETDIBTODEV ;
+ int MFDRV_WriteRecord (int ,TYPE_2__*,int) ;
+ int get_dib_info_size (TYPE_3__*,void*) ;
+ int memcpy (void**,TYPE_3__*,int) ;
 
 INT MFDRV_SetDIBitsToDevice( PHYSDEV dev, INT xDst, INT yDst, DWORD cx,
                              DWORD cy, INT xSrc, INT ySrc, UINT startscan,

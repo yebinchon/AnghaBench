@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  a2bstr (char const*) ; 
- int /*<<< orphan*/  parse_htmlscript (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HRESULT ;
+typedef int BSTR ;
+
+
+ int SysFreeString (int ) ;
+ int a2bstr (char const*) ;
+ int parse_htmlscript (int ) ;
 
 __attribute__((used)) static HRESULT parse_htmlscript_a(const char *src)
 {

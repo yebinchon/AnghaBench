@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Thread* var ;
-struct Thread {scalar_t__ tls; int /*<<< orphan*/  func; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Table ; 
- int /*<<< orphan*/  Thread ; 
- scalar_t__ alloc_raw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assign (scalar_t__,scalar_t__) ; 
- struct Thread* cast (struct Thread*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef struct Thread* var ;
+struct Thread {scalar_t__ tls; int func; } ;
+
+
+ int Table ;
+ int Thread ;
+ scalar_t__ alloc_raw (int ) ;
+ int assign (scalar_t__,scalar_t__) ;
+ struct Thread* cast (struct Thread*,int ) ;
 
 __attribute__((used)) static void Thread_Assign(var self, var obj) {
   struct Thread* t = self;

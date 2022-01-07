@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint32_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef size_t uint32_t ;
 struct TYPE_8__ {int width; int height; TYPE_1__* priv_data; } ;
-struct TYPE_7__ {int nbcount; int* blocks; int nby; int nbx; int /*<<< orphan*/ * run_model; int /*<<< orphan*/ * op_model; int /*<<< orphan*/ * mv_model; int /*<<< orphan*/ * sxy_model; int /*<<< orphan*/  last_frame; int /*<<< orphan*/  current_frame; int /*<<< orphan*/  count_model; int /*<<< orphan*/  fill_model; int /*<<< orphan*/  range_model; int /*<<< orphan*/  rc; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ SCPRContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_7__ {int nbcount; int* blocks; int nby; int nbx; int * run_model; int * op_model; int * mv_model; int * sxy_model; int last_frame; int current_frame; int count_model; int fill_model; int range_model; int rc; int gb; } ;
+typedef TYPE_1__ SCPRContext ;
+typedef int GetByteContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int av_frame_copy (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int decode_run_p (TYPE_2__*,size_t,int,int,int,size_t,size_t*,size_t*,int,int,int*,int*,int,int,int,int*,int*) ; 
- int decode_units (TYPE_1__*,size_t*,size_t*,size_t*,int*,int*) ; 
- int decode_value (TYPE_1__*,int /*<<< orphan*/ ,int,int,...) ; 
- int /*<<< orphan*/  init_rangecoder (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int av_frame_copy (int ,int ) ;
+ scalar_t__ bytestream2_get_byte (int *) ;
+ int bytestream2_skip (int *,int) ;
+ int decode_run_p (TYPE_2__*,size_t,int,int,int,size_t,size_t*,size_t*,int,int,int*,int*,int,int,int,int*,int*) ;
+ int decode_units (TYPE_1__*,size_t*,size_t*,size_t*,int*,int*) ;
+ int decode_value (TYPE_1__*,int ,int,int,...) ;
+ int init_rangecoder (int *,int *) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static int decompress_p(AVCodecContext *avctx,
                         uint32_t *dst, int linesize,
@@ -44,13 +44,13 @@ __attribute__((used)) static int decompress_p(AVCodecContext *avctx,
     bytestream2_skip(gb, 1);
     init_rangecoder(&s->rc, gb);
 
-    ret  = decode_value(s, s->range_model, 256, 1, &min);
+    ret = decode_value(s, s->range_model, 256, 1, &min);
     ret |= decode_value(s, s->range_model, 256, 1, &temp);
     if (ret < 0)
         return ret;
 
     min += temp << 8;
-    ret  = decode_value(s, s->range_model, 256, 1, &max);
+    ret = decode_value(s, s->range_model, 256, 1, &max);
     ret |= decode_value(s, s->range_model, 256, 1, &temp);
     if (ret < 0)
         return ret;
@@ -64,7 +64,7 @@ __attribute__((used)) static int decompress_p(AVCodecContext *avctx,
     while (min <= max) {
         int fill, count;
 
-        ret  = decode_value(s, s->fill_model,  5,   10, &fill);
+        ret = decode_value(s, s->fill_model, 5, 10, &fill);
         ret |= decode_value(s, s->count_model, 256, 20, &count);
         if (ret < 0)
             return ret;
@@ -88,7 +88,7 @@ __attribute__((used)) static int decompress_p(AVCodecContext *avctx,
                 continue;
 
             if (((s->blocks[y * s->nbx + x] - 1) & 1) > 0) {
-                ret  = decode_value(s, s->sxy_model[0], 16, 100, &sx1);
+                ret = decode_value(s, s->sxy_model[0], 16, 100, &sx1);
                 ret |= decode_value(s, s->sxy_model[1], 16, 100, &sy1);
                 ret |= decode_value(s, s->sxy_model[2], 16, 100, &sx2);
                 ret |= decode_value(s, s->sxy_model[3], 16, 100, &sy2);
@@ -102,7 +102,7 @@ __attribute__((used)) static int decompress_p(AVCodecContext *avctx,
                 int i, j, by = y * 16, bx = x * 16;
                 int mvx, mvy;
 
-                ret  = decode_value(s, s->mv_model[0], 512, 100, &mvx);
+                ret = decode_value(s, s->mv_model[0], 512, 100, &mvx);
                 ret |= decode_value(s, s->mv_model[1], 512, 100, &mvy);
                 if (ret < 0)
                     return ret;

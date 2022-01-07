@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct cmdargs {int argc; int argn; int /*<<< orphan*/  bundle; TYPE_1__* cx; int /*<<< orphan*/ * argv; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct cmdargs {int argc; int argn; int bundle; TYPE_1__* cx; int * argv; } ;
 struct TYPE_4__ {int bandwidth; } ;
 struct TYPE_3__ {scalar_t__ state; TYPE_2__ mp; } ;
 
-/* Variables and functions */
- scalar_t__ DATALINK_OPEN ; 
- int /*<<< orphan*/  LogWARN ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bundle_CalculateBandwidth (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ DATALINK_OPEN ;
+ int LogWARN ;
+ int atoi (int ) ;
+ int bundle_CalculateBandwidth (int ) ;
+ int log_Printf (int ,char*) ;
 
 int
 mp_SetDatalinkBandwidth(struct cmdargs const *arg)

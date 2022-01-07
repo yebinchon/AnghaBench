@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const sd_event ;
-typedef  char const sd_bus ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  name_owner_change_callback ; 
- int sd_bus_add_match_async (char const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char const*) ; 
- int sd_bus_get_unique_name (char const*,char const**) ; 
- int sd_bus_release_name_async (char const*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* strjoina (char*,char const*,char*,char*,char const*,char*,char*) ; 
+
+
+
+typedef char const sd_event ;
+typedef char const sd_bus ;
+
+
+ int assert (char const*) ;
+ int name_owner_change_callback ;
+ int sd_bus_add_match_async (char const*,int *,char const*,int ,int *,char const*) ;
+ int sd_bus_get_unique_name (char const*,char const**) ;
+ int sd_bus_release_name_async (char const*,int *,char const*,int *,int *) ;
+ char* strjoina (char*,char const*,char*,char*,char const*,char*,char*) ;
 
 int bus_async_unregister_and_exit(sd_event *e, sd_bus *bus, const char *name) {
         const char *match;
@@ -30,10 +30,10 @@ int bus_async_unregister_and_exit(sd_event *e, sd_bus *bus, const char *name) {
         assert(bus);
         assert(name);
 
-        /* We unregister the name here and then wait for the
-         * NameOwnerChanged signal for this event to arrive before we
-         * quit. We do this in order to make sure that any queued
-         * requests are still processed before we really exit. */
+
+
+
+
 
         r = sd_bus_get_unique_name(bus, &unique);
         if (r < 0)
@@ -49,11 +49,11 @@ int bus_async_unregister_and_exit(sd_event *e, sd_bus *bus, const char *name) {
                         "arg1='", unique, "',",
                         "arg2=''");
 
-        r = sd_bus_add_match_async(bus, NULL, match, name_owner_change_callback, NULL, e);
+        r = sd_bus_add_match_async(bus, ((void*)0), match, name_owner_change_callback, ((void*)0), e);
         if (r < 0)
                 return r;
 
-        r = sd_bus_release_name_async(bus, NULL, name, NULL, NULL);
+        r = sd_bus_release_name_async(bus, ((void*)0), name, ((void*)0), ((void*)0));
         if (r < 0)
                 return r;
 

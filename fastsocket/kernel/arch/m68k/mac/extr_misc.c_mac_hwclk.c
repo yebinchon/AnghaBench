@@ -1,97 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct rtc_time {int /*<<< orphan*/  tm_sec; int /*<<< orphan*/  tm_min; int /*<<< orphan*/  tm_hour; int /*<<< orphan*/  tm_mday; int /*<<< orphan*/  tm_mon; int /*<<< orphan*/  tm_year; scalar_t__ tm_wday; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct rtc_time {int tm_sec; int tm_min; int tm_hour; int tm_mday; int tm_mon; int tm_year; scalar_t__ tm_wday; } ;
 struct TYPE_2__ {int adb_type; } ;
-
-/* Variables and functions */
-#define  MAC_ADB_CUDA 133 
-#define  MAC_ADB_II 132 
-#define  MAC_ADB_IISI 131 
-#define  MAC_ADB_IOP 130 
-#define  MAC_ADB_PB1 129 
-#define  MAC_ADB_PB2 128 
- unsigned long cuda_read_time () ; 
- int /*<<< orphan*/  cuda_write_time (unsigned long) ; 
- unsigned long maciisi_read_time () ; 
- int /*<<< orphan*/  maciisi_write_time (unsigned long) ; 
- TYPE_1__* macintosh_config ; 
- unsigned long mktime (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned long pmu_read_time () ; 
- int /*<<< orphan*/  pmu_write_time (unsigned long) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unmktime (unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- unsigned long via_read_time () ; 
- int /*<<< orphan*/  via_write_time (unsigned long) ; 
+ unsigned long cuda_read_time () ;
+ int cuda_write_time (unsigned long) ;
+ unsigned long maciisi_read_time () ;
+ int maciisi_write_time (unsigned long) ;
+ TYPE_1__* macintosh_config ;
+ unsigned long mktime (int ,int ,int ,int ,int ,int ) ;
+ unsigned long pmu_read_time () ;
+ int pmu_write_time (unsigned long) ;
+ int printk (char*,int ,int ,int ,int ,int ,int ) ;
+ int unmktime (unsigned long,int ,int *,int *,int *,int *,int *,int *) ;
+ unsigned long via_read_time () ;
+ int via_write_time (unsigned long) ;
 
 int mac_hwclk(int op, struct rtc_time *t)
 {
-	unsigned long now;
+ unsigned long now;
 
-	if (!op) { /* read */
-		switch (macintosh_config->adb_type) {
-		case MAC_ADB_II:
-		case MAC_ADB_IOP:
-			now = via_read_time();
-			break;
-		case MAC_ADB_IISI:
-			now = maciisi_read_time();
-			break;
-		case MAC_ADB_PB1:
-		case MAC_ADB_PB2:
-			now = pmu_read_time();
-			break;
-		case MAC_ADB_CUDA:
-			now = cuda_read_time();
-			break;
-		default:
-			now = 0;
-		}
+ if (!op) {
+  switch (macintosh_config->adb_type) {
+  case 132:
+  case 130:
+   now = via_read_time();
+   break;
+  case 131:
+   now = maciisi_read_time();
+   break;
+  case 129:
+  case 128:
+   now = pmu_read_time();
+   break;
+  case 133:
+   now = cuda_read_time();
+   break;
+  default:
+   now = 0;
+  }
 
-		t->tm_wday = 0;
-		unmktime(now, 0,
-			 &t->tm_year, &t->tm_mon, &t->tm_mday,
-			 &t->tm_hour, &t->tm_min, &t->tm_sec);
-#if 0
-		printk("mac_hwclk: read %04d-%02d-%-2d %02d:%02d:%02d\n",
-			t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
-			t->tm_hour, t->tm_min, t->tm_sec);
-#endif
-	} else { /* write */
-#if 0
-		printk("mac_hwclk: tried to write %04d-%02d-%-2d %02d:%02d:%02d\n",
-			t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
-			t->tm_hour, t->tm_min, t->tm_sec);
-#endif
+  t->tm_wday = 0;
+  unmktime(now, 0,
+    &t->tm_year, &t->tm_mon, &t->tm_mday,
+    &t->tm_hour, &t->tm_min, &t->tm_sec);
 
-		now = mktime(t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
-			     t->tm_hour, t->tm_min, t->tm_sec);
 
-		switch (macintosh_config->adb_type) {
-		case MAC_ADB_II:
-		case MAC_ADB_IOP:
-			via_write_time(now);
-			break;
-		case MAC_ADB_CUDA:
-			cuda_write_time(now);
-			break;
-		case MAC_ADB_PB1:
-		case MAC_ADB_PB2:
-			pmu_write_time(now);
-			break;
-		case MAC_ADB_IISI:
-			maciisi_write_time(now);
-		}
-	}
-	return 0;
+
+
+
+ } else {
+
+
+
+
+
+
+  now = mktime(t->tm_year + 1900, t->tm_mon + 1, t->tm_mday,
+        t->tm_hour, t->tm_min, t->tm_sec);
+
+  switch (macintosh_config->adb_type) {
+  case 132:
+  case 130:
+   via_write_time(now);
+   break;
+  case 133:
+   cuda_write_time(now);
+   break;
+  case 129:
+  case 128:
+   pmu_write_time(now);
+   break;
+  case 131:
+   maciisi_write_time(now);
+  }
+ }
+ return 0;
 }

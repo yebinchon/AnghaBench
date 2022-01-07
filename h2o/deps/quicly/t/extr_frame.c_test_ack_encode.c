@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  quicly_ranges_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int const uint8_t ;
+typedef int quicly_ranges_t ;
 struct TYPE_3__ {int ack_delay; int num_gaps; int largest_acknowledged; int* ack_block_lengths; int* gaps; } ;
-typedef  TYPE_1__ quicly_ack_frame_t ;
-typedef  int /*<<< orphan*/  buf ;
+typedef TYPE_1__ quicly_ack_frame_t ;
+typedef int buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ok (int) ; 
- scalar_t__ quicly_decode_ack_frame (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* quicly_encode_ack_frame (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  quicly_ranges_add (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  quicly_ranges_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  quicly_ranges_init (int /*<<< orphan*/ *) ; 
+
+ int ok (int) ;
+ scalar_t__ quicly_decode_ack_frame (int const**,int const*,TYPE_1__*,int ) ;
+ int const* quicly_encode_ack_frame (int const*,int const*,int *,int) ;
+ int quicly_ranges_add (int *,int,int) ;
+ int quicly_ranges_clear (int *) ;
+ int quicly_ranges_init (int *) ;
 
 __attribute__((used)) static void test_ack_encode(void)
 {
@@ -35,10 +35,10 @@ __attribute__((used)) static void test_ack_encode(void)
     quicly_ranges_init(&ranges);
     quicly_ranges_add(&ranges, 0x12, 0x14);
 
-    /* encode */
+
     end = quicly_encode_ack_frame(buf, buf + sizeof(buf), &ranges, 63);
     ok(end - buf == 5);
-    /* decode */
+
     src = buf + 1;
     ok(quicly_decode_ack_frame(&src, end, &decoded, 0) == 0);
     ok(src == end);
@@ -49,10 +49,10 @@ __attribute__((used)) static void test_ack_encode(void)
 
     quicly_ranges_add(&ranges, 0x10, 0x11);
 
-    /* encode */
+
     end = quicly_encode_ack_frame(buf, buf + sizeof(buf), &ranges, 63);
     ok(end - buf == 7);
-    /* decode */
+
     src = buf + 1;
     ok(quicly_decode_ack_frame(&src, end, &decoded, 0) == 0);
     ok(src == end);

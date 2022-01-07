@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void (* handler ) () ;struct TYPE_4__* next; } ;
-typedef  TYPE_1__ OPENSSL_INIT_STOP ;
-typedef  int /*<<< orphan*/ * HMODULE ;
-typedef  int /*<<< orphan*/  DSO ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ OPENSSL_INIT_STOP ;
+typedef int * HMODULE ;
+typedef int DSO ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_F_OPENSSL_ATEXIT ; 
- int /*<<< orphan*/  CRYPTOerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSO_FLAG_NO_UNLOAD_ON_FREE ; 
- int /*<<< orphan*/ * DSO_dsobyaddr (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DSO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  ERR_pop_to_mark () ; 
- int /*<<< orphan*/  ERR_set_mark () ; 
- int GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS ; 
- int GET_MODULE_HANDLE_EX_FLAG_PIN ; 
- int /*<<< orphan*/  GetModuleHandleEx (int,void*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  INIT ; 
- TYPE_1__* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  OSSL_TRACE1 (int /*<<< orphan*/ ,char*,char*) ; 
- TYPE_1__* stop_handlers ; 
+
+ int CRYPTO_F_OPENSSL_ATEXIT ;
+ int CRYPTOerr (int ,int ) ;
+ int DSO_FLAG_NO_UNLOAD_ON_FREE ;
+ int * DSO_dsobyaddr (void*,int ) ;
+ int DSO_free (int *) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int ERR_pop_to_mark () ;
+ int ERR_set_mark () ;
+ int GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS ;
+ int GET_MODULE_HANDLE_EX_FLAG_PIN ;
+ int GetModuleHandleEx (int,void*,int **) ;
+ int INIT ;
+ TYPE_1__* OPENSSL_malloc (int) ;
+ int OSSL_TRACE1 (int ,char*,char*) ;
+ TYPE_1__* stop_handlers ;
 
 int OPENSSL_atexit(void (*handler)(void))
 {
     OPENSSL_INIT_STOP *newhand;
 
-#if !defined(OPENSSL_USE_NODELETE)\
-    && !defined(OPENSSL_NO_PINSHARED)
+
+
     {
         union {
             void *sym;
@@ -47,46 +47,23 @@ int OPENSSL_atexit(void (*handler)(void))
         } handlersym;
 
         handlersym.func = handler;
-# if defined(DSO_WIN32) && !defined(_WIN32_WCE)
         {
-            HMODULE handle = NULL;
-            BOOL ret;
-
-            /*
-             * We don't use the DSO route for WIN32 because there is a better
-             * way
-             */
-            ret = GetModuleHandleEx(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS
-                                    | GET_MODULE_HANDLE_EX_FLAG_PIN,
-                                    handlersym.sym, &handle);
-
-            if (!ret)
-                return 0;
-        }
-# elif !defined(DSO_NONE)
-        /*
-         * Deliberately leak a reference to the handler. This will force the
-         * library/code containing the handler to remain loaded until we run the
-         * atexit handler. If -znodelete has been used then this is
-         * unnecessary.
-         */
-        {
-            DSO *dso = NULL;
+            DSO *dso = ((void*)0);
 
             ERR_set_mark();
             dso = DSO_dsobyaddr(handlersym.sym, DSO_FLAG_NO_UNLOAD_ON_FREE);
-            /* See same code above in ossl_init_base() for an explanation. */
+
             OSSL_TRACE1(INIT,
                        "atexit: obtained DSO reference? %s\n",
-                       (dso == NULL ? "No!" : "Yes."));
+                       (dso == ((void*)0) ? "No!" : "Yes."));
             DSO_free(dso);
             ERR_pop_to_mark();
         }
-# endif
-    }
-#endif
 
-    if ((newhand = OPENSSL_malloc(sizeof(*newhand))) == NULL) {
+    }
+
+
+    if ((newhand = OPENSSL_malloc(sizeof(*newhand))) == ((void*)0)) {
         CRYPTOerr(CRYPTO_F_OPENSSL_ATEXIT, ERR_R_MALLOC_FAILURE);
         return 0;
     }

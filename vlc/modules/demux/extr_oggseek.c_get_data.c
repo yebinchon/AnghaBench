@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_5__ {int /*<<< orphan*/  s; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_6__ {scalar_t__ i_total_length; scalar_t__ i_input_position; int /*<<< orphan*/  oy; } ;
-typedef  TYPE_2__ demux_sys_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT_MAX ; 
- scalar_t__ __MIN (scalar_t__,int /*<<< orphan*/ ) ; 
- char* ogg_sync_buffer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ogg_sync_wrote (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  seek_byte (TYPE_1__*,scalar_t__) ; 
- scalar_t__ vlc_stream_Read (int /*<<< orphan*/ ,char*,scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_5__ {int s; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_6__ {scalar_t__ i_total_length; scalar_t__ i_input_position; int oy; } ;
+typedef TYPE_2__ demux_sys_t ;
+
+
+ int INT_MAX ;
+ scalar_t__ __MIN (scalar_t__,int ) ;
+ char* ogg_sync_buffer (int *,scalar_t__) ;
+ int ogg_sync_wrote (int *,scalar_t__) ;
+ int seek_byte (TYPE_1__*,scalar_t__) ;
+ scalar_t__ vlc_stream_Read (int ,char*,scalar_t__) ;
 
 __attribute__((used)) static int64_t get_data( demux_t *p_demux, int64_t i_bytes_to_read )
 {
-    demux_sys_t *p_sys  = p_demux->p_sys;
+    demux_sys_t *p_sys = p_demux->p_sys;
 
     char *buf;
     int64_t i_result;

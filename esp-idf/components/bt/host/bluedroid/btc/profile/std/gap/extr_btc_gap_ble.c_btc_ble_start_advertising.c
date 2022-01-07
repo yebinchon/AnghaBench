@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* tBTA_START_ADV_CMPL_CBACK ) (scalar_t__) ;
-struct TYPE_5__ {int /*<<< orphan*/  type; int /*<<< orphan*/  bda; } ;
-typedef  TYPE_1__ tBLE_BD_ADDR ;
-typedef  scalar_t__ esp_bt_status_t ;
-struct TYPE_6__ {scalar_t__ adv_type; scalar_t__ adv_filter_policy; int channel_map; int /*<<< orphan*/  own_addr_type; int /*<<< orphan*/  adv_int_max; int /*<<< orphan*/  adv_int_min; int /*<<< orphan*/  peer_addr_type; int /*<<< orphan*/  peer_addr; } ;
-typedef  TYPE_2__ esp_ble_adv_params_t ;
 
-/* Variables and functions */
- int ADV_CHNL_ALL ; 
- scalar_t__ ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY ; 
- scalar_t__ ADV_FILTER_ALLOW_SCAN_WLST_CON_WLST ; 
- scalar_t__ ADV_TYPE_DIRECT_IND_LOW ; 
- scalar_t__ ADV_TYPE_IND ; 
- int /*<<< orphan*/  BLE_ADDR_TYPE_PUBLIC ; 
- int /*<<< orphan*/  BLE_ADDR_TYPE_RANDOM ; 
- int /*<<< orphan*/  BLE_ISVALID_PARAM (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BTA_DmSetBleAdvParamsAll (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,scalar_t__,TYPE_1__*,int /*<<< orphan*/  (*) (scalar_t__)) ; 
- int /*<<< orphan*/  BTC_TRACE_DEBUG (char*) ; 
- int /*<<< orphan*/  BTC_TRACE_ERROR (char*) ; 
- int /*<<< orphan*/  BTM_BLE_ADV_INT_MAX ; 
- int /*<<< orphan*/  BTM_BLE_ADV_INT_MIN ; 
- int /*<<< orphan*/  ESP_BD_ADDR_LEN ; 
- scalar_t__ ESP_BT_STATUS_PARM_INVALID ; 
- scalar_t__ ESP_BT_STATUS_SUCCESS ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int (* tBTA_START_ADV_CMPL_CBACK ) (scalar_t__) ;
+struct TYPE_5__ {int type; int bda; } ;
+typedef TYPE_1__ tBLE_BD_ADDR ;
+typedef scalar_t__ esp_bt_status_t ;
+struct TYPE_6__ {scalar_t__ adv_type; scalar_t__ adv_filter_policy; int channel_map; int own_addr_type; int adv_int_max; int adv_int_min; int peer_addr_type; int peer_addr; } ;
+typedef TYPE_2__ esp_ble_adv_params_t ;
+
+
+ int ADV_CHNL_ALL ;
+ scalar_t__ ADV_FILTER_ALLOW_SCAN_ANY_CON_ANY ;
+ scalar_t__ ADV_FILTER_ALLOW_SCAN_WLST_CON_WLST ;
+ scalar_t__ ADV_TYPE_DIRECT_IND_LOW ;
+ scalar_t__ ADV_TYPE_IND ;
+ int BLE_ADDR_TYPE_PUBLIC ;
+ int BLE_ADDR_TYPE_RANDOM ;
+ int BLE_ISVALID_PARAM (int ,int ,int ) ;
+ int BTA_DmSetBleAdvParamsAll (int ,int ,scalar_t__,int ,int,scalar_t__,TYPE_1__*,int (*) (scalar_t__)) ;
+ int BTC_TRACE_DEBUG (char*) ;
+ int BTC_TRACE_ERROR (char*) ;
+ int BTM_BLE_ADV_INT_MAX ;
+ int BTM_BLE_ADV_INT_MIN ;
+ int ESP_BD_ADDR_LEN ;
+ scalar_t__ ESP_BT_STATUS_PARM_INVALID ;
+ scalar_t__ ESP_BT_STATUS_SUCCESS ;
+ int memcpy (int ,int ,int ) ;
 
 __attribute__((used)) static void btc_ble_start_advertising (esp_ble_adv_params_t *ble_adv_params, tBTA_START_ADV_CMPL_CBACK start_adv_cback)
 {

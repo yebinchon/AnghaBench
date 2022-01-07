@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sctp_shared_key {int /*<<< orphan*/  key_id; int /*<<< orphan*/  refcnt; int /*<<< orphan*/  key_list; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
-typedef  int /*<<< orphan*/  __u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT_LIST_HEAD (int /*<<< orphan*/ *) ; 
- struct sctp_shared_key* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  refcount_set (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct sctp_shared_key {int key_id; int refcnt; int key_list; } ;
+typedef int gfp_t ;
+typedef int __u16 ;
+
+
+ int INIT_LIST_HEAD (int *) ;
+ struct sctp_shared_key* kzalloc (int,int ) ;
+ int refcount_set (int *,int) ;
 
 struct sctp_shared_key *sctp_auth_shkey_create(__u16 key_id, gfp_t gfp)
 {
-	struct sctp_shared_key *new;
+ struct sctp_shared_key *new;
 
-	/* Allocate the shared key container */
-	new = kzalloc(sizeof(struct sctp_shared_key), gfp);
-	if (!new)
-		return NULL;
 
-	INIT_LIST_HEAD(&new->key_list);
-	refcount_set(&new->refcnt, 1);
-	new->key_id = key_id;
+ new = kzalloc(sizeof(struct sctp_shared_key), gfp);
+ if (!new)
+  return ((void*)0);
 
-	return new;
+ INIT_LIST_HEAD(&new->key_list);
+ refcount_set(&new->refcnt, 1);
+ new->key_id = key_id;
+
+ return new;
 }

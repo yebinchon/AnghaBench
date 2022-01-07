@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int* LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fwprintf (int /*<<< orphan*/ ,char*,char*) ; 
- char* getAppName () ; 
- scalar_t__ iswspace (int) ; 
- int /*<<< orphan*/  memcpy (int*,int*,size_t) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int WCHAR ;
+typedef int* LPWSTR ;
+
+
+ int exit (int) ;
+ int fwprintf (int ,char*,char*) ;
+ char* getAppName () ;
+ scalar_t__ iswspace (int) ;
+ int memcpy (int*,int*,size_t) ;
+ int stderr ;
 
 void get_file_name(LPWSTR *command_line, LPWSTR file_name)
 {
     WCHAR *s = *command_line;
-    size_t pos = 0; /* position of pointer "s" in *command_line */
+    size_t pos = 0;
     file_name[0] = 0;
 
     if (!s[0])
@@ -56,7 +56,7 @@ void get_file_name(LPWSTR *command_line, LPWSTR file_name)
         }
     }
     memcpy(file_name, *command_line, pos * sizeof(WCHAR));
-    /* remove the last backslash */
+
     if (file_name[pos - 1] == L'\\')
     {
         file_name[pos - 1] = L'\0';

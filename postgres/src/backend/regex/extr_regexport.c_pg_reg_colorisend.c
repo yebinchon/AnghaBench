@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct cnfa {int* eos; } ;
 struct guts {struct cnfa search; } ;
 struct TYPE_3__ {scalar_t__ re_magic; scalar_t__ re_guts; } ;
-typedef  TYPE_1__ regex_t ;
+typedef TYPE_1__ regex_t ;
 
-/* Variables and functions */
- scalar_t__ REMAGIC ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ REMAGIC ;
+ int assert (int) ;
 
 int
 pg_reg_colorisend(const regex_t *regex, int co)
 {
-	struct cnfa *cnfa;
+ struct cnfa *cnfa;
 
-	assert(regex != NULL && regex->re_magic == REMAGIC);
-	cnfa = &((struct guts *) regex->re_guts)->search;
+ assert(regex != ((void*)0) && regex->re_magic == REMAGIC);
+ cnfa = &((struct guts *) regex->re_guts)->search;
 
-	if (co == cnfa->eos[0] || co == cnfa->eos[1])
-		return true;
-	else
-		return false;
+ if (co == cnfa->eos[0] || co == cnfa->eos[1])
+  return 1;
+ else
+  return 0;
 }

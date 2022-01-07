@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * sys_mutex_t ;
-typedef  int /*<<< orphan*/  err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_MEM ; 
- int /*<<< orphan*/  ERR_OK ; 
- int /*<<< orphan*/  ESP_THREAD_SAFE_DEBUG ; 
- int /*<<< orphan*/  LWIP_DEBUGF (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * xSemaphoreCreateMutex () ; 
+
+
+
+typedef int * sys_mutex_t ;
+typedef int err_t ;
+
+
+ int ERR_MEM ;
+ int ERR_OK ;
+ int ESP_THREAD_SAFE_DEBUG ;
+ int LWIP_DEBUGF (int ,char*) ;
+ int * xSemaphoreCreateMutex () ;
 
 err_t
 sys_mutex_new(sys_mutex_t *pxMutex)
 {
   *pxMutex = xSemaphoreCreateMutex();
-  if (*pxMutex == NULL) {
+  if (*pxMutex == ((void*)0)) {
     LWIP_DEBUGF(ESP_THREAD_SAFE_DEBUG, ("sys_mutex_new: out of mem\r\n"));
     return ERR_MEM;
   }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int connectionState; int knownFailureCode; scalar_t__ isSecure; } ;
-typedef  TYPE_1__ ws_info ;
-typedef  int /*<<< orphan*/  uint8_t ;
+typedef TYPE_1__ ws_info ;
+typedef int uint8_t ;
 struct espconn {scalar_t__ reverse; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NODE_DBG (char*,...) ; 
- char* calloc (int,int) ; 
- int /*<<< orphan*/  espconn_disconnect (struct espconn*) ; 
- int /*<<< orphan*/  espconn_secure_disconnect (struct espconn*) ; 
- int /*<<< orphan*/  espconn_secure_send (struct espconn*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  espconn_send (struct espconn*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,unsigned short) ; 
- int /*<<< orphan*/  os_free (char*) ; 
- scalar_t__ os_random () ; 
+
+ int NODE_DBG (char*,...) ;
+ char* calloc (int,int) ;
+ int espconn_disconnect (struct espconn*) ;
+ int espconn_secure_disconnect (struct espconn*) ;
+ int espconn_secure_send (struct espconn*,int *,int) ;
+ int espconn_send (struct espconn*,int *,int) ;
+ int memcpy (char*,char const*,unsigned short) ;
+ int os_free (char*) ;
+ scalar_t__ os_random () ;
 
 __attribute__((used)) static void ws_sendFrame(struct espconn *conn, int opCode, const char *data, unsigned short len) {
   NODE_DBG("ws_sendFrame %d %d\n", opCode, len);
@@ -39,8 +39,8 @@ __attribute__((used)) static void ws_sendFrame(struct espconn *conn, int opCode,
     return;
   }
 
-  char *b = calloc(1,10 + len); // 10 bytes = worst case scenario for framming
-  if (b == NULL) {
+  char *b = calloc(1,10 + len);
+  if (b == ((void*)0)) {
     NODE_DBG("Out of memory when receiving message, disconnecting...\n");
 
     ws->knownFailureCode = -16;
@@ -51,9 +51,9 @@ __attribute__((used)) static void ws_sendFrame(struct espconn *conn, int opCode,
     return;
   }
 
-  b[0] = 1 << 7; // has fin
+  b[0] = 1 << 7;
   b[0] += opCode;
-  b[1] = 1 << 7; // has mask
+  b[1] = 1 << 7;
   int bufOffset;
   if (len < 126) {
     b[1] += len;
@@ -72,17 +72,17 @@ __attribute__((used)) static void ws_sendFrame(struct espconn *conn, int opCode,
     bufOffset = 6;
   }
 
-  // Random mask:
+
   b[bufOffset] = (char) os_random();
   b[bufOffset + 1] = (char) os_random();
   b[bufOffset + 2] = (char) os_random();
   b[bufOffset + 3] = (char) os_random();
   bufOffset += 4;
 
-  // Copy data to buffer
+
   memcpy(b + bufOffset, data, len);
 
-  // Apply mask to encode payload
+
   int i;
   for (i = 0; i < len; i++) {
     b[bufOffset + i] ^= b[bufOffset - 4 + i % 4];

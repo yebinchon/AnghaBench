@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_19__ {int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ v16u8 ;
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVER_UB4_UB (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ; 
- int /*<<< orphan*/  INSERT_D2_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__) ; 
- int /*<<< orphan*/  LD4 (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ST_D8 (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/  const*,int) ; 
+
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+struct TYPE_19__ {int member_0; } ;
+typedef TYPE_1__ v16u8 ;
+typedef int const uint8_t ;
+typedef int uint64_t ;
+typedef int ptrdiff_t ;
+
+
+ int AVER_UB4_UB (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__) ;
+ int INSERT_D2_UB (int ,int ,TYPE_1__) ;
+ int LD4 (int const*,int,int ,int ,int ,int ) ;
+ int ST_D8 (TYPE_1__,TYPE_1__,TYPE_1__,TYPE_1__,int ,int,int ,int,int ,int,int ,int,int const*,int) ;
 
 void ff_avg_h264_qpel8_mc00_msa(uint8_t *dst, const uint8_t *src,
                                 ptrdiff_t stride)

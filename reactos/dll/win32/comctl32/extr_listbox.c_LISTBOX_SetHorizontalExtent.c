@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  info ;
-struct TYPE_7__ {int style; scalar_t__ horz_extent; scalar_t__ horz_pos; scalar_t__ width; int /*<<< orphan*/  self; } ;
-struct TYPE_6__ {int cbSize; scalar_t__ nMax; int /*<<< orphan*/  fMask; scalar_t__ nMin; } ;
-typedef  TYPE_1__ SCROLLINFO ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  TYPE_2__ LB_DESCR ;
-typedef  scalar_t__ INT ;
 
-/* Variables and functions */
- int LBS_DISABLENOSCROLL ; 
- int LBS_MULTICOLUMN ; 
- int /*<<< orphan*/  LB_OKAY ; 
- int /*<<< orphan*/  LISTBOX_SetHorizontalPos (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  SB_HORZ ; 
- int /*<<< orphan*/  SIF_DISABLENOSCROLL ; 
- int /*<<< orphan*/  SIF_RANGE ; 
- int /*<<< orphan*/  SetScrollInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int WS_HSCROLL ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int info ;
+struct TYPE_7__ {int style; scalar_t__ horz_extent; scalar_t__ horz_pos; scalar_t__ width; int self; } ;
+struct TYPE_6__ {int cbSize; scalar_t__ nMax; int fMask; scalar_t__ nMin; } ;
+typedef TYPE_1__ SCROLLINFO ;
+typedef int LRESULT ;
+typedef TYPE_2__ LB_DESCR ;
+typedef scalar_t__ INT ;
+
+
+ int LBS_DISABLENOSCROLL ;
+ int LBS_MULTICOLUMN ;
+ int LB_OKAY ;
+ int LISTBOX_SetHorizontalPos (TYPE_2__*,scalar_t__) ;
+ int SB_HORZ ;
+ int SIF_DISABLENOSCROLL ;
+ int SIF_RANGE ;
+ int SetScrollInfo (int ,int ,TYPE_1__*,int ) ;
+ int TRACE (char*,int ,scalar_t__) ;
+ int TRUE ;
+ int WS_HSCROLL ;
 
 __attribute__((used)) static LRESULT LISTBOX_SetHorizontalExtent( LB_DESCR *descr, INT extent )
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static LRESULT LISTBOX_SetHorizontalExtent( LB_DESCR *desc
     if (descr->style & WS_HSCROLL) {
         SCROLLINFO info;
         info.cbSize = sizeof(info);
-        info.nMin  = 0;
+        info.nMin = 0;
         info.nMax = descr->horz_extent ? descr->horz_extent - 1 : 0;
         info.fMask = SIF_RANGE;
         if (descr->style & LBS_DISABLENOSCROLL)

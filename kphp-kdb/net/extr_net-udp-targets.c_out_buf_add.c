@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  h_idx; } ;
-struct udp_target {int send_num; int max_confirmed; TYPE_1__ tx_timer; int /*<<< orphan*/  sent; } ;
-struct udp_msg {int prev_next; scalar_t__ msg_num; int /*<<< orphan*/  raw; void* S; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int h_idx; } ;
+struct udp_target {int send_num; int max_confirmed; TYPE_1__ tx_timer; int sent; } ;
+struct udp_msg {int prev_next; scalar_t__ msg_num; int raw; void* S; } ;
 struct raw_message {scalar_t__ total_bytes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __out_buf_add (struct raw_message*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  lrand48 () ; 
- int out_buf_next ; 
- scalar_t__ out_buf_next_last ; 
- int out_buf_prev ; 
- scalar_t__ out_buf_prev_last ; 
- void* out_buf_target ; 
- int /*<<< orphan*/  rwm_clone (int /*<<< orphan*/ *,struct raw_message*) ; 
- int /*<<< orphan*/  start_tx_timer (struct udp_target*) ; 
- int /*<<< orphan*/  tree_insert_udp_msg (int /*<<< orphan*/ ,struct udp_msg*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,scalar_t__) ; 
- struct udp_msg* zmalloc (int) ; 
+
+ int __out_buf_add (struct raw_message*,int) ;
+ int assert (int) ;
+ int lrand48 () ;
+ int out_buf_next ;
+ scalar_t__ out_buf_next_last ;
+ int out_buf_prev ;
+ scalar_t__ out_buf_prev_last ;
+ void* out_buf_target ;
+ int rwm_clone (int *,struct raw_message*) ;
+ int start_tx_timer (struct udp_target*) ;
+ int tree_insert_udp_msg (int ,struct udp_msg*,int ) ;
+ int vkprintf (int,char*,scalar_t__) ;
+ struct udp_msg* zmalloc (int) ;
 
 void out_buf_add (struct raw_message *raw) {
   assert (raw->total_bytes > 0);

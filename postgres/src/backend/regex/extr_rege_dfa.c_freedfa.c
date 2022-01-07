@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dfa {int /*<<< orphan*/ * mallocarea; int /*<<< orphan*/ * incarea; int /*<<< orphan*/ * outsarea; int /*<<< orphan*/ * statesarea; int /*<<< orphan*/ * ssets; scalar_t__ cptsmalloced; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ *) ; 
+
+
+
+struct dfa {int * mallocarea; int * incarea; int * outsarea; int * statesarea; int * ssets; scalar_t__ cptsmalloced; } ;
+
+
+ int FREE (int *) ;
 
 __attribute__((used)) static void
 freedfa(struct dfa *d)
 {
-	if (d->cptsmalloced)
-	{
-		if (d->ssets != NULL)
-			FREE(d->ssets);
-		if (d->statesarea != NULL)
-			FREE(d->statesarea);
-		if (d->outsarea != NULL)
-			FREE(d->outsarea);
-		if (d->incarea != NULL)
-			FREE(d->incarea);
-	}
+ if (d->cptsmalloced)
+ {
+  if (d->ssets != ((void*)0))
+   FREE(d->ssets);
+  if (d->statesarea != ((void*)0))
+   FREE(d->statesarea);
+  if (d->outsarea != ((void*)0))
+   FREE(d->outsarea);
+  if (d->incarea != ((void*)0))
+   FREE(d->incarea);
+ }
 
-	if (d->mallocarea != NULL)
-		FREE(d->mallocarea);
+ if (d->mallocarea != ((void*)0))
+  FREE(d->mallocarea);
 }

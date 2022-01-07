@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  dwContext; } ;
-struct TYPE_9__ {int lstnSocket; TYPE_1__ hdr; int /*<<< orphan*/  sndSocket; } ;
-typedef  TYPE_2__ ftp_session_t ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FTP_CMD_RETR ; 
- int /*<<< orphan*/  FTP_InitListenSocket (TYPE_2__*) ; 
- int FTP_ReceiveResponse (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SendCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SendPortOrPasv (TYPE_2__*) ; 
- int /*<<< orphan*/  FTP_SendType (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FTP_SetResponseError (int) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  closesocket (int) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int dwContext; } ;
+struct TYPE_9__ {int lstnSocket; TYPE_1__ hdr; int sndSocket; } ;
+typedef TYPE_2__ ftp_session_t ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FTP_CMD_RETR ;
+ int FTP_InitListenSocket (TYPE_2__*) ;
+ int FTP_ReceiveResponse (TYPE_2__*,int ) ;
+ int FTP_SendCommand (int ,int ,int ,int ,int ,int ) ;
+ int FTP_SendPortOrPasv (TYPE_2__*) ;
+ int FTP_SendType (TYPE_2__*,int ) ;
+ int FTP_SetResponseError (int) ;
+ int TRACE (char*) ;
+ int closesocket (int) ;
 
 __attribute__((used)) static BOOL FTP_SendRetrieve(ftp_session_t *lpwfs, LPCWSTR lpszRemoteFile, DWORD dwType)
 {
@@ -52,9 +52,9 @@ __attribute__((used)) static BOOL FTP_SendRetrieve(ftp_session_t *lpwfs, LPCWSTR
 
     nResCode = FTP_ReceiveResponse(lpwfs, lpwfs->hdr.dwContext);
     if ((nResCode != 125) && (nResCode != 150)) {
-	/* That means that we got an error getting the file. */
+
         FTP_SetResponseError(nResCode);
-	ret = FALSE;
+ ret = FALSE;
     }
 
 lend:

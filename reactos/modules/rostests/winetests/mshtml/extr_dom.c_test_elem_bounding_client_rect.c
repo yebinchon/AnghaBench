@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLRect ;
-typedef  int /*<<< orphan*/  IHTMLElement2 ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IHTMLElement2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLElement2_getBoundingClientRect (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLRect_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLRect_get_bottom (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ IHTMLRect_get_left (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ IHTMLRect_get_right (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ IHTMLRect_get_top (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IID_IHTMLRect ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * get_elem2_iface (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int IHTMLRect ;
+typedef int IHTMLElement2 ;
+typedef scalar_t__ HRESULT ;
+
+
+ int IHTMLElement2_Release (int *) ;
+ scalar_t__ IHTMLElement2_getBoundingClientRect (int *,int **) ;
+ int IHTMLRect_Release (int *) ;
+ scalar_t__ IHTMLRect_get_bottom (int *,int*) ;
+ scalar_t__ IHTMLRect_get_left (int *,int*) ;
+ scalar_t__ IHTMLRect_get_right (int *,int*) ;
+ scalar_t__ IHTMLRect_get_top (int *,int*) ;
+ int IID_IHTMLRect ;
+ scalar_t__ S_OK ;
+ int * get_elem2_iface (int *) ;
+ int ok (int,char*,...) ;
+ int test_disp (int *,int *,char*) ;
 
 __attribute__((used)) static void test_elem_bounding_client_rect(IUnknown *unk)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_elem_bounding_client_rect(IUnknown *unk)
     hres = IHTMLElement2_getBoundingClientRect(elem2, &rect2);
     IHTMLElement2_Release(elem2);
     ok(hres == S_OK, "getBoundingClientRect failed: %08x\n", hres);
-    ok(rect != NULL, "rect == NULL\n");
+    ok(rect != ((void*)0), "rect == NULL\n");
     ok(rect != rect2, "rect == rect2\n");
     IHTMLRect_Release(rect2);
 

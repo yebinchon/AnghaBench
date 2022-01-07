@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct st_h2o_http3client_req_t {TYPE_1__* quic; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * data; int /*<<< orphan*/ * callbacks; } ;
+struct TYPE_2__ {int * data; int * callbacks; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  quicly_stream_noop_callbacks ; 
+
+ int quicly_stream_noop_callbacks ;
 
 __attribute__((used)) static void detach_stream(struct st_h2o_http3client_req_t *req)
 {
     req->quic->callbacks = &quicly_stream_noop_callbacks;
-    req->quic->data = NULL;
-    req->quic = NULL;
+    req->quic->data = ((void*)0);
+    req->quic = ((void*)0);
 }

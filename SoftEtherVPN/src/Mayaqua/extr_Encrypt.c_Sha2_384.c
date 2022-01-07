@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA2_384 ; 
- int /*<<< orphan*/  Sha (int /*<<< orphan*/ ,void*,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+
+
+ int SHA2_384 ;
+ int Sha (int ,void*,void*,int ) ;
 
 void Sha2_384(void *dst, void *src, UINT size)
 {
-	Sha(SHA2_384, dst, src, size);
+ Sha(SHA2_384, dst, src, size);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct aead_tfm {int /*<<< orphan*/  aead; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_free_aead (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  crypto_put_default_null_skcipher () ; 
- int /*<<< orphan*/  kfree (struct aead_tfm*) ; 
+
+
+
+struct aead_tfm {int aead; } ;
+
+
+ int crypto_free_aead (int ) ;
+ int crypto_put_default_null_skcipher () ;
+ int kfree (struct aead_tfm*) ;
 
 __attribute__((used)) static void aead_release(void *private)
 {
-	struct aead_tfm *tfm = private;
+ struct aead_tfm *tfm = private;
 
-	crypto_free_aead(tfm->aead);
-	crypto_put_default_null_skcipher();
-	kfree(tfm);
+ crypto_free_aead(tfm->aead);
+ crypto_put_default_null_skcipher();
+ kfree(tfm);
 }

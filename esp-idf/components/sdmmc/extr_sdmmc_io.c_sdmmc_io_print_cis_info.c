@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_4__ {scalar_t__ (* func ) (TYPE_1__ const*,int*,int /*<<< orphan*/ *) ;scalar_t__ code; } ;
-typedef  TYPE_1__ cis_tuple_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ CISTPL_CODE_END ; 
- int /*<<< orphan*/  ESP_LOG_BUFFER_HEXDUMP (char*,int*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOG_DEBUG ; 
- scalar_t__ ESP_OK ; 
- scalar_t__ cis_tuple_func_default (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- TYPE_1__* get_tuple (int) ; 
- int /*<<< orphan*/ * stdout ; 
- scalar_t__ stub1 (TYPE_1__ const*,int*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_4__ {scalar_t__ (* func ) (TYPE_1__ const*,int*,int *) ;scalar_t__ code; } ;
+typedef TYPE_1__ cis_tuple_t ;
+typedef int FILE ;
+
+
+ scalar_t__ CISTPL_CODE_END ;
+ int ESP_LOG_BUFFER_HEXDUMP (char*,int*,size_t,int ) ;
+ int ESP_LOG_DEBUG ;
+ scalar_t__ ESP_OK ;
+ scalar_t__ cis_tuple_func_default (int *,int*,int *) ;
+ TYPE_1__* get_tuple (int) ;
+ int * stdout ;
+ scalar_t__ stub1 (TYPE_1__ const*,int*,int *) ;
 
 esp_err_t sdmmc_io_print_cis_info(uint8_t* buffer, size_t buffer_size, FILE* fp)
 {
@@ -40,7 +40,7 @@ esp_err_t sdmmc_io_print_cis_info(uint8_t* buffer, size_t buffer_size, FILE* fp)
         if (tuple) {
             ret = tuple->func(tuple, cis, fp);
         } else {
-            ret = cis_tuple_func_default(NULL, cis, fp);
+            ret = cis_tuple_func_default(((void*)0), cis, fp);
         }
         if (ret != ESP_OK) return ret;
         cis += 2 + size;

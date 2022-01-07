@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _pico_ptr_free_file (void*) ; 
- int /*<<< orphan*/  free (void*) ; 
+ int _pico_ptr_free_file (void*) ;
+ int free (void*) ;
 
 void _pico_free_file( void *buffer ){
-	/* sanity checks */
-	if ( buffer == NULL ) {
-		return;
-	}
 
-	/* use default free */
-	if ( _pico_ptr_free_file == NULL ) {
-		free( buffer );
-		return;
-	}
-	/* free the allocated file */
-	_pico_ptr_free_file( buffer );
+ if ( buffer == ((void*)0) ) {
+  return;
+ }
+
+
+ if ( _pico_ptr_free_file == ((void*)0) ) {
+  free( buffer );
+  return;
+ }
+
+ _pico_ptr_free_file( buffer );
 }

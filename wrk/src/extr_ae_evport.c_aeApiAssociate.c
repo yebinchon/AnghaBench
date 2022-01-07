@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AE_READABLE ; 
- int AE_WRITABLE ; 
- int EAGAIN ; 
- int POLLIN ; 
- int POLLOUT ; 
- int /*<<< orphan*/  PORT_SOURCE_FD ; 
- int errno ; 
- scalar_t__ evport_debug ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int port_associate (int,int /*<<< orphan*/ ,int,int,void*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int) ; 
+ int AE_READABLE ;
+ int AE_WRITABLE ;
+ int EAGAIN ;
+ int POLLIN ;
+ int POLLOUT ;
+ int PORT_SOURCE_FD ;
+ int errno ;
+ scalar_t__ evport_debug ;
+ int fprintf (int ,char*,...) ;
+ int port_associate (int,int ,int,int,void*) ;
+ int stderr ;
+ char* strerror (int) ;
 
 __attribute__((used)) static int aeApiAssociate(const char *where, int portfd, int fd, int mask) {
     int events = 0;

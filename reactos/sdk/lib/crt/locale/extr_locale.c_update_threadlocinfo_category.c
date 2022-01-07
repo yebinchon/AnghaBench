@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_3__* locinfo; } ;
-struct TYPE_8__ {TYPE_2__* lc_category; int /*<<< orphan*/ * lc_handle; TYPE_1__* lc_id; } ;
+struct TYPE_8__ {TYPE_2__* lc_category; int * lc_handle; TYPE_1__* lc_id; } ;
 struct TYPE_7__ {int* locale; int* refcount; } ;
 struct TYPE_6__ {int wLanguage; char wCountry; unsigned short wCodePage; } ;
-typedef  TYPE_4__* MSVCRT__locale_t ;
-typedef  int /*<<< orphan*/  LCID ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_4__* MSVCRT__locale_t ;
+typedef int LCID ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLocaleInfoA (int /*<<< orphan*/ ,int,char*,int) ; 
- int LOCALE_ILANGUAGE ; 
- int LOCALE_NOUSEROVERRIDE ; 
- int LOCALE_SENGCOUNTRY ; 
- int LOCALE_SENGLANGUAGE ; 
- int /*<<< orphan*/  MSVCRT_free (int*) ; 
- void* MSVCRT_malloc (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (int*,char*,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned short) ; 
- scalar_t__ strlen (char*) ; 
+
+ int FALSE ;
+ scalar_t__ GetLocaleInfoA (int ,int,char*,int) ;
+ int LOCALE_ILANGUAGE ;
+ int LOCALE_NOUSEROVERRIDE ;
+ int LOCALE_SENGCOUNTRY ;
+ int LOCALE_SENGLANGUAGE ;
+ int MSVCRT_free (int*) ;
+ void* MSVCRT_malloc (int) ;
+ int TRUE ;
+ int memcpy (int*,char*,int) ;
+ int sprintf (char*,char*,unsigned short) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static BOOL update_threadlocinfo_category(LCID lcid, unsigned short cp,
         MSVCRT__locale_t loc, int category)
@@ -81,8 +81,8 @@ __attribute__((used)) static BOOL update_threadlocinfo_category(LCID lcid, unsig
             || !loc->locinfo->lc_category[category].refcount) {
         MSVCRT_free(loc->locinfo->lc_category[category].locale);
         MSVCRT_free(loc->locinfo->lc_category[category].refcount);
-        loc->locinfo->lc_category[category].locale = NULL;
-        loc->locinfo->lc_category[category].refcount = NULL;
+        loc->locinfo->lc_category[category].locale = ((void*)0);
+        loc->locinfo->lc_category[category].refcount = ((void*)0);
         return TRUE;
     }
     memcpy(loc->locinfo->lc_category[category].locale, buf, len);

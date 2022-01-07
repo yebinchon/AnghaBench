@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  req ;
-typedef  int /*<<< orphan*/  reply ;
-struct TYPE_4__ {int /*<<< orphan*/  component_name; int /*<<< orphan*/  result; int /*<<< orphan*/  stats; } ;
-typedef  TYPE_1__ mmal_worker_get_core_stats_for_port_reply ;
-struct TYPE_5__ {unsigned int component_index; unsigned int port_index; int /*<<< orphan*/  header; int /*<<< orphan*/  dir; int /*<<< orphan*/  reset; int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ mmal_worker_get_core_stats_for_port ;
-typedef  scalar_t__ MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_STATS_RESULT_T ;
-typedef  int /*<<< orphan*/  MMAL_PORT_TYPE_T ;
-typedef  int /*<<< orphan*/  MMAL_CORE_STATS_DIR ;
-typedef  int /*<<< orphan*/  MMAL_CORE_STATISTICS_T ;
-typedef  int /*<<< orphan*/  MMAL_BOOL_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MMAL_FALSE ; 
- scalar_t__ MMAL_SUCCESS ; 
- int /*<<< orphan*/  MMAL_WORKER_GET_CORE_STATS_FOR_PORT ; 
- int /*<<< orphan*/  mmal_vc_get_client () ; 
- scalar_t__ mmal_vc_sendwait_message (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,TYPE_1__*,size_t*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int req ;
+typedef int reply ;
+struct TYPE_4__ {int component_name; int result; int stats; } ;
+typedef TYPE_1__ mmal_worker_get_core_stats_for_port_reply ;
+struct TYPE_5__ {unsigned int component_index; unsigned int port_index; int header; int dir; int reset; int type; } ;
+typedef TYPE_2__ mmal_worker_get_core_stats_for_port ;
+typedef scalar_t__ MMAL_STATUS_T ;
+typedef int MMAL_STATS_RESULT_T ;
+typedef int MMAL_PORT_TYPE_T ;
+typedef int MMAL_CORE_STATS_DIR ;
+typedef int MMAL_CORE_STATISTICS_T ;
+typedef int MMAL_BOOL_T ;
+
+
+ int MMAL_FALSE ;
+ scalar_t__ MMAL_SUCCESS ;
+ int MMAL_WORKER_GET_CORE_STATS_FOR_PORT ;
+ int mmal_vc_get_client () ;
+ scalar_t__ mmal_vc_sendwait_message (int ,int *,int,int ,TYPE_1__*,size_t*,int ) ;
+ int strncpy (char*,int ,size_t) ;
+ int vcos_assert (int) ;
 
 MMAL_STATUS_T mmal_vc_get_core_stats(MMAL_CORE_STATISTICS_T *stats,
                                      MMAL_STATS_RESULT_T *result,

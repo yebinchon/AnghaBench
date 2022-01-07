@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ png_uint_32 ;
-typedef  TYPE_1__* png_row_infop ;
-typedef  void** png_bytep ;
-typedef  void* png_byte ;
-struct TYPE_3__ {scalar_t__ width; int bit_depth; int color_type; int channels; void* pixel_depth; int /*<<< orphan*/  rowbytes; } ;
 
-/* Variables and functions */
- int PNG_COLOR_MASK_COLOR ; 
- int PNG_COLOR_TYPE_GRAY ; 
- int PNG_COLOR_TYPE_GRAY_ALPHA ; 
- int /*<<< orphan*/  PNG_ROWBYTES (void*,scalar_t__) ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ png_uint_32 ;
+typedef TYPE_1__* png_row_infop ;
+typedef void** png_bytep ;
+typedef void* png_byte ;
+struct TYPE_3__ {scalar_t__ width; int bit_depth; int color_type; int channels; void* pixel_depth; int rowbytes; } ;
+
+
+ int PNG_COLOR_MASK_COLOR ;
+ int PNG_COLOR_TYPE_GRAY ;
+ int PNG_COLOR_TYPE_GRAY_ALPHA ;
+ int PNG_ROWBYTES (void*,scalar_t__) ;
+ int png_debug (int,char*) ;
 
 __attribute__((used)) static void
 png_do_gray_to_rgb(png_row_infop row_info, png_bytep row)
@@ -39,9 +39,9 @@ png_do_gray_to_rgb(png_row_infop row_info, png_bytep row)
       {
          if (row_info->bit_depth == 8)
          {
-            /* This changes G to RGB */
+
             png_bytep sp = row + (size_t)row_width - 1;
-            png_bytep dp = sp  + (size_t)row_width * 2;
+            png_bytep dp = sp + (size_t)row_width * 2;
             for (i = 0; i < row_width; i++)
             {
                *(dp--) = *sp;
@@ -52,9 +52,9 @@ png_do_gray_to_rgb(png_row_infop row_info, png_bytep row)
 
          else
          {
-            /* This changes GG to RRGGBB */
+
             png_bytep sp = row + (size_t)row_width * 2 - 1;
-            png_bytep dp = sp  + (size_t)row_width * 4;
+            png_bytep dp = sp + (size_t)row_width * 4;
             for (i = 0; i < row_width; i++)
             {
                *(dp--) = *sp;
@@ -71,9 +71,9 @@ png_do_gray_to_rgb(png_row_infop row_info, png_bytep row)
       {
          if (row_info->bit_depth == 8)
          {
-            /* This changes GA to RGBA */
+
             png_bytep sp = row + (size_t)row_width * 2 - 1;
-            png_bytep dp = sp  + (size_t)row_width * 2;
+            png_bytep dp = sp + (size_t)row_width * 2;
             for (i = 0; i < row_width; i++)
             {
                *(dp--) = *(sp--);
@@ -85,9 +85,9 @@ png_do_gray_to_rgb(png_row_infop row_info, png_bytep row)
 
          else
          {
-            /* This changes GGAA to RRGGBBAA */
+
             png_bytep sp = row + (size_t)row_width * 4 - 1;
-            png_bytep dp = sp  + (size_t)row_width * 4;
+            png_bytep dp = sp + (size_t)row_width * 4;
             for (i = 0; i < row_width; i++)
             {
                *(dp--) = *(sp--);

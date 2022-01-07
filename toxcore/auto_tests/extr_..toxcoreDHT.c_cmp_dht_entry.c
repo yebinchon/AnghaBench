@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  hardening; int /*<<< orphan*/  timestamp; } ;
-struct TYPE_5__ {int /*<<< orphan*/  hardening; int /*<<< orphan*/  timestamp; } ;
-struct TYPE_7__ {int /*<<< orphan*/  public_key; TYPE_2__ assoc6; TYPE_1__ assoc4; } ;
-typedef  TYPE_3__ Client_data ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BAD_NODE_TIMEOUT ; 
- scalar_t__ HARDENING_ALL_OK ; 
- int /*<<< orphan*/  cmp_public_key ; 
- scalar_t__ hardening_correct (int /*<<< orphan*/ *) ; 
- int id_closest (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (TYPE_3__*,void const*,int) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int hardening; int timestamp; } ;
+struct TYPE_5__ {int hardening; int timestamp; } ;
+struct TYPE_7__ {int public_key; TYPE_2__ assoc6; TYPE_1__ assoc4; } ;
+typedef TYPE_3__ Client_data ;
+
+
+ int BAD_NODE_TIMEOUT ;
+ scalar_t__ HARDENING_ALL_OK ;
+ int cmp_public_key ;
+ scalar_t__ hardening_correct (int *) ;
+ int id_closest (int ,int ,int ) ;
+ scalar_t__ is_timeout (int ,int ) ;
+ int memcpy (TYPE_3__*,void const*,int) ;
 
 __attribute__((used)) static int cmp_dht_entry(const void *a, const void *b)
 {

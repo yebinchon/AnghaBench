@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  string; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int string; } ;
 struct spu_stub_hash_entry {scalar_t__ target_off; TYPE_2__ root; TYPE_1__* target_section; } ;
-typedef  scalar_t__ bfd_signed_vma ;
+typedef scalar_t__ bfd_signed_vma ;
 struct TYPE_8__ {scalar_t__ vma; } ;
 struct TYPE_7__ {int ovl_index; } ;
 struct TYPE_5__ {scalar_t__ output_offset; TYPE_4__* output_section; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFD_ASSERT (int) ; 
- TYPE_3__* spu_elf_section_data (TYPE_4__*) ; 
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int BFD_ASSERT (int) ;
+ TYPE_3__* spu_elf_section_data (TYPE_4__*) ;
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 sort_stubs (const void *a, const void *b)
@@ -48,7 +48,7 @@ sort_stubs (const void *a, const void *b)
   if (d != 0)
     return d < 0 ? -1 : 1;
 
-  /* Two functions at the same address.  Aliases perhaps.  */
+
   i = strcmp ((*sb)->root.string, (*sa)->root.string);
   BFD_ASSERT (i != 0);
   return i;

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ nCharOfs; int nFlags; scalar_t__ len; } ;
-typedef  int /*<<< orphan*/  ME_TextEditor ;
-typedef  TYPE_1__ ME_Run ;
+typedef int ME_TextEditor ;
+typedef TYPE_1__ ME_Run ;
 
-/* Variables and functions */
- int MERF_ENDWHITE ; 
- int MERF_HIDDEN ; 
- int MERF_NOTEXT ; 
- int MERF_SPLITTABLE ; 
- int MERF_STARTWHITE ; 
- int MERF_TABLESTART ; 
- int MERF_WHITESPACE ; 
- scalar_t__ ME_IsWSpace (int /*<<< orphan*/ ) ; 
- scalar_t__ RUN_IS_HIDDEN (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * get_text (TYPE_1__*,scalar_t__) ; 
- scalar_t__ run_is_entirely_ws (TYPE_1__*) ; 
- scalar_t__ run_is_splittable (TYPE_1__*) ; 
+
+ int MERF_ENDWHITE ;
+ int MERF_HIDDEN ;
+ int MERF_NOTEXT ;
+ int MERF_SPLITTABLE ;
+ int MERF_STARTWHITE ;
+ int MERF_TABLESTART ;
+ int MERF_WHITESPACE ;
+ scalar_t__ ME_IsWSpace (int ) ;
+ scalar_t__ RUN_IS_HIDDEN (TYPE_1__*) ;
+ int assert (int) ;
+ int * get_text (TYPE_1__*,scalar_t__) ;
+ scalar_t__ run_is_entirely_ws (TYPE_1__*) ;
+ scalar_t__ run_is_splittable (TYPE_1__*) ;
 
 void ME_UpdateRunFlags(ME_TextEditor *editor, ME_Run *run)
 {

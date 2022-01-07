@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned char byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Com_Printf (char*) ; 
- scalar_t__ Sys_RandomBytes (unsigned char*,int) ; 
- int rand () ; 
+
+
+
+typedef unsigned char byte ;
+
+
+ int Com_Printf (char*) ;
+ scalar_t__ Sys_RandomBytes (unsigned char*,int) ;
+ int rand () ;
 
 void Com_RandomBytes( byte *string, int len )
 {
-	int i;
+ int i;
 
-	if( Sys_RandomBytes( string, len ) )
-		return;
+ if( Sys_RandomBytes( string, len ) )
+  return;
 
-	Com_Printf( "Com_RandomBytes: using weak randomization\n" );
-	for( i = 0; i < len; i++ )
-		string[i] = (unsigned char)( rand() % 256 );
+ Com_Printf( "Com_RandomBytes: using weak randomization\n" );
+ for( i = 0; i < len; i++ )
+  string[i] = (unsigned char)( rand() % 256 );
 }

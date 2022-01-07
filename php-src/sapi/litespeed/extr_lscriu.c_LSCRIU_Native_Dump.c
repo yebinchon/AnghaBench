@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
-struct TYPE_4__ {int /*<<< orphan*/  m_chSocketDir; int /*<<< orphan*/  m_chImageDirectory; int /*<<< orphan*/  m_iPidToDump; } ;
-typedef  TYPE_1__ criu_native_dump_t ;
-typedef  int /*<<< orphan*/  criu_native_dump ;
 
-/* Variables and functions */
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  lscriu_dbg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lscriu_err (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  s_pid ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char*,int) ; 
- char* strrchr (int /*<<< orphan*/ ,char) ; 
- int write (int,TYPE_1__*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int pid_t ;
+struct TYPE_4__ {int m_chSocketDir; int m_chImageDirectory; int m_iPidToDump; } ;
+typedef TYPE_1__ criu_native_dump_t ;
+typedef int criu_native_dump ;
+
+
+ int errno ;
+ int lscriu_dbg (char*,int ) ;
+ int lscriu_err (char*,int ,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int s_pid ;
+ int strerror (int ) ;
+ int strncpy (int ,char*,int) ;
+ char* strrchr (int ,char) ;
+ int write (int,TYPE_1__*,int) ;
 
 __attribute__((used)) static int LSCRIU_Native_Dump(pid_t iPid,
-                              char  *pchImagePath,
-                              int   iFdNative) {
+                              char *pchImagePath,
+                              int iFdNative) {
     criu_native_dump_t criu_native_dump;
     char *pchLastSlash;
 

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ utf8_char_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- size_t fread (scalar_t__*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (scalar_t__*,char,size_t) ; 
+
+
+
+typedef scalar_t__ utf8_char_t ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ size_t fread (scalar_t__*,int,size_t,int *) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ scalar_t__ malloc (int) ;
+ int memset (scalar_t__*,char,size_t) ;
 
 utf8_char_t* utf8_load_text_file(const char* path, size_t* size)
 {
-    utf8_char_t* data = NULL;
+    utf8_char_t* data = ((void*)0);
     FILE* file = fopen(path, "r");
 
     if (file) {

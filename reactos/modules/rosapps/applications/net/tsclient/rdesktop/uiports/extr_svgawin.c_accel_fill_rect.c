@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
-typedef  int uint16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCEL_FILLBOX ; 
- int /*<<< orphan*/  ACCEL_SETFGCOLOR ; 
- int /*<<< orphan*/  copy_mem (int*,int*,int) ; 
- int g_server_Bpp ; 
- int /*<<< orphan*/  g_server_bpp ; 
- int g_width ; 
- int* get_ptr (int,int,scalar_t__,int,int /*<<< orphan*/ ) ; 
- scalar_t__ has_fill_box ; 
- scalar_t__ sdata ; 
- int /*<<< orphan*/  vga_accel (int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  vga_drawscansegment (int*,int,int,int) ; 
- int /*<<< orphan*/  xfree (int*) ; 
- int* xmalloc (int) ; 
+
+
+
+typedef int uint8 ;
+typedef int uint16 ;
+
+
+ int ACCEL_FILLBOX ;
+ int ACCEL_SETFGCOLOR ;
+ int copy_mem (int*,int*,int) ;
+ int g_server_Bpp ;
+ int g_server_bpp ;
+ int g_width ;
+ int* get_ptr (int,int,scalar_t__,int,int ) ;
+ scalar_t__ has_fill_box ;
+ scalar_t__ sdata ;
+ int vga_accel (int ,int,...) ;
+ int vga_drawscansegment (int*,int,int,int) ;
+ int xfree (int*) ;
+ int* xmalloc (int) ;
 
 void accel_fill_rect(int x, int y, int cx, int cy, int color)
 {

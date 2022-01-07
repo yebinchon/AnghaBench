@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IA64_DEFAULT_GVALUE ; 
- scalar_t__ INL_MAX_THR ; 
- scalar_t__ INL_MIN_LAT ; 
- int /*<<< orphan*/  MASK_CONST_GP ; 
- scalar_t__ TARGET_AUTO_PIC ; 
- scalar_t__ TARGET_INLINE_SQRT ; 
- scalar_t__ flag_schedule_insns_after_reload ; 
- scalar_t__ g_switch_set ; 
- int /*<<< orphan*/  g_switch_value ; 
- scalar_t__ ia64_flag_schedule_insns2 ; 
- int /*<<< orphan*/  ia64_init_machine_status ; 
- int /*<<< orphan*/  ia64_section_threshold ; 
- int /*<<< orphan*/  init_machine_status ; 
- int /*<<< orphan*/  target_flags ; 
- int /*<<< orphan*/  warning (int /*<<< orphan*/ ,char*) ; 
+ int IA64_DEFAULT_GVALUE ;
+ scalar_t__ INL_MAX_THR ;
+ scalar_t__ INL_MIN_LAT ;
+ int MASK_CONST_GP ;
+ scalar_t__ TARGET_AUTO_PIC ;
+ scalar_t__ TARGET_INLINE_SQRT ;
+ scalar_t__ flag_schedule_insns_after_reload ;
+ scalar_t__ g_switch_set ;
+ int g_switch_value ;
+ scalar_t__ ia64_flag_schedule_insns2 ;
+ int ia64_init_machine_status ;
+ int ia64_section_threshold ;
+ int init_machine_status ;
+ int target_flags ;
+ int warning (int ,char*) ;
 
 void
 ia64_override_options (void)

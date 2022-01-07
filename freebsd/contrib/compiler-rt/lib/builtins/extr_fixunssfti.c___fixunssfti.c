@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tu_int ;
-typedef  int /*<<< orphan*/  fp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __fixuint (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tu_int ;
+typedef int fp_t ;
+
+
+ int __fixuint (int ) ;
 
 tu_int __fixunssfti(fp_t a) { return __fixuint(a); }

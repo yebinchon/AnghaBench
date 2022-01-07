@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct rndis_params {int /*<<< orphan*/  v; int /*<<< orphan*/  (* resp_avail ) (int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct rndis_params {int v; int (* resp_avail ) (int ) ;} ;
 struct TYPE_4__ {scalar_t__ buf; } ;
-typedef  TYPE_1__ rndis_resp_t ;
-typedef  int /*<<< orphan*/  rndis_reset_msg_type ;
+typedef TYPE_1__ rndis_resp_t ;
+typedef int rndis_reset_msg_type ;
 struct TYPE_5__ {void* AddressingReset; void* Status; void* MessageLength; void* MessageType; } ;
-typedef  TYPE_2__ rndis_reset_cmplt_type ;
+typedef TYPE_2__ rndis_reset_cmplt_type ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int REMOTE_NDIS_RESET_CMPLT ; 
- int RNDIS_STATUS_SUCCESS ; 
- void* cpu_to_le32 (int) ; 
- TYPE_1__* rndis_add_response (int,int) ; 
- struct rndis_params* rndis_per_dev_params ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int REMOTE_NDIS_RESET_CMPLT ;
+ int RNDIS_STATUS_SUCCESS ;
+ void* cpu_to_le32 (int) ;
+ TYPE_1__* rndis_add_response (int,int) ;
+ struct rndis_params* rndis_per_dev_params ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static int rndis_reset_response (int configNr, rndis_reset_msg_type *buf)
 {
-	rndis_reset_cmplt_type	*resp;
-	rndis_resp_t		*r;
-	struct rndis_params	*params = rndis_per_dev_params + configNr;
+ rndis_reset_cmplt_type *resp;
+ rndis_resp_t *r;
+ struct rndis_params *params = rndis_per_dev_params + configNr;
 
-	r = rndis_add_response (configNr, sizeof (rndis_reset_cmplt_type));
-	if (!r)
-		return -ENOMEM;
-	resp = (rndis_reset_cmplt_type *) r->buf;
+ r = rndis_add_response (configNr, sizeof (rndis_reset_cmplt_type));
+ if (!r)
+  return -ENOMEM;
+ resp = (rndis_reset_cmplt_type *) r->buf;
 
-	resp->MessageType = cpu_to_le32 (REMOTE_NDIS_RESET_CMPLT);
-	resp->MessageLength = cpu_to_le32 (16);
-	resp->Status = cpu_to_le32 (RNDIS_STATUS_SUCCESS);
-	/* resent information */
-	resp->AddressingReset = cpu_to_le32 (1);
+ resp->MessageType = cpu_to_le32 (REMOTE_NDIS_RESET_CMPLT);
+ resp->MessageLength = cpu_to_le32 (16);
+ resp->Status = cpu_to_le32 (RNDIS_STATUS_SUCCESS);
 
-	params->resp_avail(params->v);
-	return 0;
+ resp->AddressingReset = cpu_to_le32 (1);
+
+ params->resp_avail(params->v);
+ return 0;
 }

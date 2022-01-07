@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REALVIEW_FLASHCTRL ; 
- int /*<<< orphan*/  REALVIEW_FLASHPROG_FLVPPEN ; 
- int /*<<< orphan*/  __raw_readl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __raw_writel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ int REALVIEW_FLASHCTRL ;
+ int REALVIEW_FLASHPROG_FLVPPEN ;
+ int __raw_readl (int ) ;
+ int __raw_writel (int ,int ) ;
 
 __attribute__((used)) static void realview_flash_exit(void)
 {
-	u32 val;
+ u32 val;
 
-	val = __raw_readl(REALVIEW_FLASHCTRL);
-	val &= ~REALVIEW_FLASHPROG_FLVPPEN;
-	__raw_writel(val, REALVIEW_FLASHCTRL);
+ val = __raw_readl(REALVIEW_FLASHCTRL);
+ val &= ~REALVIEW_FLASHPROG_FLVPPEN;
+ __raw_writel(val, REALVIEW_FLASHCTRL);
 }

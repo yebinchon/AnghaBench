@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lock; scalar_t__ p_meta; } ;
-typedef  TYPE_1__ input_item_t ;
 
-/* Variables and functions */
- int ITEM_ART_NOTFOUND ; 
- int vlc_meta_GetStatus (scalar_t__) ; 
- scalar_t__ vlc_meta_New () ; 
- int /*<<< orphan*/  vlc_meta_SetStatus (scalar_t__,int) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lock; scalar_t__ p_meta; } ;
+typedef TYPE_1__ input_item_t ;
+
+
+ int ITEM_ART_NOTFOUND ;
+ int vlc_meta_GetStatus (scalar_t__) ;
+ scalar_t__ vlc_meta_New () ;
+ int vlc_meta_SetStatus (scalar_t__,int) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void input_item_SetArtNotFound( input_item_t *p_i, bool b_not_found )
 {

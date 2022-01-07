@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FT_USHORT_MAX ; 
- scalar_t__* a2i ; 
- int /*<<< orphan*/  ddigits ; 
- scalar_t__ sbitset (int /*<<< orphan*/ ,char) ; 
+ int FT_USHORT_MAX ;
+ scalar_t__* a2i ;
+ int ddigits ;
+ scalar_t__ sbitset (int ,char) ;
 
 __attribute__((used)) static unsigned short
-  _bdf_atous( char*  s )
+  _bdf_atous( char* s )
   {
-    unsigned short  v;
+    unsigned short v;
 
 
     if ( s == 0 || *s == 0 )

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_4__ {int state; scalar_t__ hItem; } ;
 struct TYPE_5__ {TYPE_1__ itemNew; } ;
-typedef  TYPE_2__ NMTREEVIEW ;
-typedef  scalar_t__* LPWSTR ;
-typedef  scalar_t__* LPCWSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  HCURSOR ;
-typedef  int DWORD ;
-typedef  int BOOL ;
+typedef TYPE_2__ NMTREEVIEW ;
+typedef scalar_t__* LPWSTR ;
+typedef scalar_t__* LPCWSTR ;
+typedef int LPARAM ;
+typedef scalar_t__ LONG ;
+typedef int HWND ;
+typedef int HKEY ;
+typedef int HCURSOR ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddEntryToTree (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int /*<<< orphan*/ *,int) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- scalar_t__* GetItemPath (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  IDC_WAIT ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  LoadCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,int,scalar_t__*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetCursor (int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int TVIS_EXPANDEDONCE ; 
- int /*<<< orphan*/  TVM_SORTCHILDREN ; 
- int /*<<< orphan*/  WM_SETREDRAW ; 
+
+ int AddEntryToTree (int ,scalar_t__,scalar_t__*,int *,int) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ scalar_t__* GetItemPath (int ,scalar_t__,int *) ;
+ int GetProcessHeap () ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,scalar_t__*) ;
+ int IDC_WAIT ;
+ int KEY_QUERY_VALUE ;
+ int KEY_READ ;
+ int LoadCursor (int *,int ) ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,int,scalar_t__*,int*,int ,int ,int ,int ) ;
+ scalar_t__ RegOpenKeyExW (int ,scalar_t__*,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKeyW (int ,int ,int ,int ,int*,int*,int ,int ,int ,int ,int ,int ) ;
+ int SendMessageW (int ,int ,int,int ) ;
+ int SetCursor (int ) ;
+ int TRUE ;
+ int TVIS_EXPANDEDONCE ;
+ int TVM_SORTCHILDREN ;
+ int WM_SETREDRAW ;
 
 BOOL OnTreeExpanding(HWND hwndTV, NMTREEVIEW* pnmtv)
 {
@@ -65,7 +65,7 @@ BOOL OnTreeExpanding(HWND hwndTV, NMTREEVIEW* pnmtv)
         return TRUE;
     }
     expanding = TRUE;
-    hcursorOld = SetCursor(LoadCursor(NULL, IDC_WAIT));
+    hcursorOld = SetCursor(LoadCursor(((void*)0), IDC_WAIT));
     SendMessageW(hwndTV, WM_SETREDRAW, FALSE, 0);
 
     keyPath = GetItemPath(hwndTV, pnmtv->itemNew.hItem, &hRoot);
@@ -83,7 +83,7 @@ BOOL OnTreeExpanding(HWND hwndTV, NMTREEVIEW* pnmtv)
 
     errCode = RegQueryInfoKeyW(hNewKey, 0, 0, 0, &dwCount, &dwMaxSubKeyLen, 0, 0, 0, 0, 0, 0);
     if (errCode != ERROR_SUCCESS) goto done;
-    dwMaxSubKeyLen++; /* account for the \0 terminator */
+    dwMaxSubKeyLen++;
     Name = HeapAlloc(GetProcessHeap(), 0, dwMaxSubKeyLen * sizeof(WCHAR));
     if (!Name) goto done;
 
@@ -100,7 +100,7 @@ BOOL OnTreeExpanding(HWND hwndTV, NMTREEVIEW* pnmtv)
             RegCloseKey(hKey);
         }
         if (errCode != ERROR_SUCCESS) dwSubCount = 0;
-        AddEntryToTree(hwndTV, pnmtv->itemNew.hItem, Name, NULL, dwSubCount);
+        AddEntryToTree(hwndTV, pnmtv->itemNew.hItem, Name, ((void*)0), dwSubCount);
     }
 
     SendMessageW(hwndTV, TVM_SORTCHILDREN, 0, (LPARAM)pnmtv->itemNew.hItem);

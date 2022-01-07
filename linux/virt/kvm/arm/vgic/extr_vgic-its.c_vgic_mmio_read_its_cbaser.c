@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vgic_its {int /*<<< orphan*/  cbaser; } ;
+
+
+
+
+struct vgic_its {int cbaser; } ;
 struct kvm {int dummy; } ;
-typedef  int gpa_t ;
+typedef int gpa_t ;
 
-/* Variables and functions */
- unsigned long extract_bytes (int /*<<< orphan*/ ,int,unsigned int) ; 
+
+ unsigned long extract_bytes (int ,int,unsigned int) ;
 
 __attribute__((used)) static unsigned long vgic_mmio_read_its_cbaser(struct kvm *kvm,
-					       struct vgic_its *its,
-					       gpa_t addr, unsigned int len)
+            struct vgic_its *its,
+            gpa_t addr, unsigned int len)
 {
-	return extract_bytes(its->cbaser, addr & 7, len);
+ return extract_bytes(its->cbaser, addr & 7, len);
 }

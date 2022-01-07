@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  DefaultContainerData ;
-typedef  int DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
-#define  COOKIE_CACHE_ENTRY 133 
- int /*<<< orphan*/  CP_ACP ; 
-#define  CSIDL_COOKIES 132 
-#define  CSIDL_HISTORY 131 
-#define  CSIDL_INTERNET_CACHE 130 
- int /*<<< orphan*/  ERR (char*,...) ; 
- scalar_t__ ERROR_ENVVAR_NOT_FOUND ; 
- scalar_t__ GetEnvironmentVariableW (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetLastError () ; 
- int GetShortPathNameW (char*,char*,int) ; 
- int MAX_PATH ; 
-#define  NORMAL_CACHE_ENTRY 129 
- int /*<<< orphan*/  SHGetSpecialFolderPathW (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
-#define  URLHISTORY_CACHE_ENTRY 128 
- int /*<<< orphan*/  WC_NO_BEST_FIT_CHARS ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  bDefaultContainersAdded ; 
- int /*<<< orphan*/  cache_containers_add (char const*,char*,int,char*) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  strcpyW (char*,char*) ; 
- int strlenW (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int DefaultContainerData ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+
+ int CP_ACP ;
+
+
+
+ int ERR (char*,...) ;
+ scalar_t__ ERROR_ENVVAR_NOT_FOUND ;
+ scalar_t__ GetEnvironmentVariableW (char const*,int *,int ) ;
+ scalar_t__ GetLastError () ;
+ int GetShortPathNameW (char*,char*,int) ;
+ int MAX_PATH ;
+
+ int SHGetSpecialFolderPathW (int *,char*,int,int ) ;
+ int TRUE ;
+
+ int WC_NO_BEST_FIT_CHARS ;
+ int WideCharToMultiByte (int ,int ,char*,int,int *,int ,int *,scalar_t__*) ;
+ int bDefaultContainersAdded ;
+ int cache_containers_add (char const*,char*,int,char*) ;
+ int memcpy (char*,char*,int) ;
+ int strcpyW (char*,char*) ;
+ int strlenW (char*) ;
 
 __attribute__((used)) static void cache_containers_init(void)
 {
     static const WCHAR UrlSuffix[] = {'C','o','n','t','e','n','t','.','I','E','5',0};
     static const WCHAR HistorySuffix[] = {'H','i','s','t','o','r','y','.','I','E','5',0};
     static const WCHAR CookieSuffix[] = {0};
-    /* ReactOS r50916 */
+
     static const WCHAR UserProfile[] = {'U','S','E','R','P','R','O','F','I','L','E',0};
     static const struct
     {
-        int nFolder; /* CSIDL_* constant */
-        const WCHAR *shpath_suffix; /* suffix on path returned by SHGetSpecialFolderPath */
-        const char *cache_prefix; /* prefix used to reference the container */
+        int nFolder;
+        const WCHAR *shpath_suffix;
+        const char *cache_prefix;
         DWORD default_entry_type;
-    } DefaultContainerData[] = 
+    } DefaultContainerData[] =
     {
-        { CSIDL_INTERNET_CACHE, UrlSuffix, "", NORMAL_CACHE_ENTRY },
-        { CSIDL_HISTORY, HistorySuffix, "Visited:", URLHISTORY_CACHE_ENTRY },
-        { CSIDL_COOKIES, CookieSuffix, "Cookie:", COOKIE_CACHE_ENTRY },
+        { 130, UrlSuffix, "", 129 },
+        { 131, HistorySuffix, "Visited:", 128 },
+        { 132, CookieSuffix, "Cookie:", 133 },
     };
     DWORD i;
 
-    /* ReactOS r50916 */
-    if (GetEnvironmentVariableW(UserProfile, NULL, 0) == 0 && GetLastError() == ERROR_ENVVAR_NOT_FOUND)
+
+    if (GetEnvironmentVariableW(UserProfile, ((void*)0), 0) == 0 && GetLastError() == ERROR_ENVVAR_NOT_FOUND)
     {
         ERR("Environment variable 'USERPROFILE' does not exist!\n");
         return;
@@ -74,7 +74,7 @@ __attribute__((used)) static void cache_containers_init(void)
         int path_len, suffix_len;
         BOOL def_char;
 
-        if (!SHGetSpecialFolderPathW(NULL, wszCachePath, DefaultContainerData[i].nFolder, TRUE))
+        if (!SHGetSpecialFolderPathW(((void*)0), wszCachePath, DefaultContainerData[i].nFolder, TRUE))
         {
             ERR("Couldn't get path for default container %u\n", i);
             continue;
@@ -92,7 +92,7 @@ __attribute__((used)) static void cache_containers_init(void)
         wszCachePath[path_len+1] = 0;
 
         strcpyW(wszMutexName, wszCachePath);
-        
+
         if (suffix_len)
         {
             memcpy(wszCachePath + path_len + 1, DefaultContainerData[i].shpath_suffix, (suffix_len + 1) * sizeof(WCHAR));
@@ -101,14 +101,14 @@ __attribute__((used)) static void cache_containers_init(void)
         }
 
         if (!WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, wszCachePath, path_len,
-                    NULL, 0, NULL, &def_char) || def_char)
+                    ((void*)0), 0, ((void*)0), &def_char) || def_char)
         {
             WCHAR tmp[MAX_PATH];
 
-            /* cannot convert path to ANSI code page */
+
             if (!(path_len = GetShortPathNameW(wszCachePath, tmp, MAX_PATH)) ||
                 !WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, tmp, path_len,
-                    NULL, 0, NULL, &def_char) || def_char)
+                    ((void*)0), 0, ((void*)0), &def_char) || def_char)
                 ERR("Can't create container path accessible by ANSI functions\n");
             else
                 memcpy(wszCachePath, tmp, (path_len+1)*sizeof(WCHAR));
@@ -118,7 +118,7 @@ __attribute__((used)) static void cache_containers_init(void)
                 DefaultContainerData[i].default_entry_type, wszMutexName);
     }
 
-#ifdef __REACTOS__
-    bDefaultContainersAdded = TRUE;
-#endif
+
+
+
 }

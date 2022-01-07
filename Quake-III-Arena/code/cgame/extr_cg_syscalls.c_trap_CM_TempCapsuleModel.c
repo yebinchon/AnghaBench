@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vec3_t ;
-typedef  int /*<<< orphan*/  clipHandle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CG_CM_TEMPCAPSULEMODEL ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
+
+
+
+typedef int vec3_t ;
+typedef int clipHandle_t ;
+
+
+ int CG_CM_TEMPCAPSULEMODEL ;
+ int syscall (int ,int const,int const) ;
 
 clipHandle_t trap_CM_TempCapsuleModel( const vec3_t mins, const vec3_t maxs ) {
-	return syscall( CG_CM_TEMPCAPSULEMODEL, mins, maxs );
+ return syscall( CG_CM_TEMPCAPSULEMODEL, mins, maxs );
 }

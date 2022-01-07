@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ word ;
-typedef  int /*<<< orphan*/  dword ;
-typedef  int byte ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ word ;
+typedef int dword ;
+typedef int byte ;
 struct TYPE_5__ {scalar_t__ State; } ;
-typedef  TYPE_1__ PLCI ;
-typedef  int /*<<< orphan*/  DIVA_CAPI_ADAPTER ;
-typedef  int /*<<< orphan*/  APPL ;
-typedef  int /*<<< orphan*/  API_PARSE ;
+typedef TYPE_1__ PLCI ;
+typedef int DIVA_CAPI_ADAPTER ;
+typedef int APPL ;
+typedef int API_PARSE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CALL_ALERT ; 
- int CONFIRM ; 
- scalar_t__ INC_CON_ALERT ; 
- scalar_t__ INC_CON_PENDING ; 
- scalar_t__ _ALERT_IGNORED ; 
- int _ALERT_R ; 
- scalar_t__ _WRONG_IDENTIFIER ; 
- scalar_t__ _WRONG_STATE ; 
- int /*<<< orphan*/  add_ai (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbug (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintf (char*) ; 
- int /*<<< orphan*/  sendf (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,scalar_t__,char*,scalar_t__) ; 
- int /*<<< orphan*/  sig_req (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CALL_ALERT ;
+ int CONFIRM ;
+ scalar_t__ INC_CON_ALERT ;
+ scalar_t__ INC_CON_PENDING ;
+ scalar_t__ _ALERT_IGNORED ;
+ int _ALERT_R ;
+ scalar_t__ _WRONG_IDENTIFIER ;
+ scalar_t__ _WRONG_STATE ;
+ int add_ai (TYPE_1__*,int *) ;
+ int dbug (int,int ) ;
+ int dprintf (char*) ;
+ int sendf (int *,int,int ,scalar_t__,char*,scalar_t__) ;
+ int sig_req (TYPE_1__*,int ,int ) ;
 
 __attribute__((used)) static byte alert_req(dword Id, word Number, DIVA_CAPI_ADAPTER *a,
-		      PLCI *plci, APPL *appl, API_PARSE *msg)
+        PLCI *plci, APPL *appl, API_PARSE *msg)
 {
   word Info;
   byte ret;
@@ -44,7 +44,7 @@ __attribute__((used)) static byte alert_req(dword Id, word Number, DIVA_CAPI_ADA
   dbug(1,dprintf("alert_req"));
 
   Info = _WRONG_IDENTIFIER;
-  ret = false;
+  ret = 0;
   if(plci) {
     Info = _ALERT_IGNORED;
     if(plci->State!=INC_CON_ALERT) {

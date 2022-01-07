@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int Flags; char* Name; struct TYPE_3__* Next; } ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  TYPE_1__ ACPI_INTERFACE_INFO ;
+typedef int ACPI_STATUS ;
+typedef TYPE_1__ ACPI_INTERFACE_INFO ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int ACPI_OSI_INVALID ; 
- int /*<<< orphan*/  ACPI_WAIT_FOREVER ; 
- int /*<<< orphan*/  AcpiFormatException (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGbl_OsiMutex ; 
- TYPE_1__* AcpiGbl_SupportedInterfaces ; 
- int /*<<< orphan*/  AcpiInstallInterface (char*) ; 
- int /*<<< orphan*/  AcpiOsAcquireMutex (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiOsReleaseMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiRemoveInterface (char*) ; 
- int /*<<< orphan*/  AcpiUtStrupr (char*) ; 
- char* strstr (char*,char*) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_OSI_INVALID ;
+ int ACPI_WAIT_FOREVER ;
+ int AcpiFormatException (int ) ;
+ int AcpiGbl_OsiMutex ;
+ TYPE_1__* AcpiGbl_SupportedInterfaces ;
+ int AcpiInstallInterface (char*) ;
+ int AcpiOsAcquireMutex (int ,int ) ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiOsReleaseMutex (int ) ;
+ int AcpiRemoveInterface (char*) ;
+ int AcpiUtStrupr (char*) ;
+ char* strstr (char*,char*) ;
 
 void
 AcpiDbDisplayInterfaces (
-    char                    *ActionArg,
-    char                    *InterfaceNameArg)
+    char *ActionArg,
+    char *InterfaceNameArg)
 {
-    ACPI_INTERFACE_INFO     *NextInterface;
-    char                    *SubString;
-    ACPI_STATUS             Status;
+    ACPI_INTERFACE_INFO *NextInterface;
+    char *SubString;
+    ACPI_STATUS Status;
 
 
-    /* If no arguments, just display current interface list */
+
 
     if (!ActionArg)
     {
@@ -61,7 +61,7 @@ AcpiDbDisplayInterfaces (
         return;
     }
 
-    /* If ActionArg exists, so must InterfaceNameArg */
+
 
     if (!InterfaceNameArg)
     {
@@ -69,11 +69,11 @@ AcpiDbDisplayInterfaces (
         return;
     }
 
-    /* Uppercase the action for match below */
+
 
     AcpiUtStrupr (ActionArg);
 
-    /* Install - install an interface */
+
 
     SubString = strstr ("INSTALL", ActionArg);
     if (SubString)
@@ -87,7 +87,7 @@ AcpiDbDisplayInterfaces (
         return;
     }
 
-    /* Remove - remove an interface */
+
 
     SubString = strstr ("REMOVE", ActionArg);
     if (SubString)
@@ -101,7 +101,7 @@ AcpiDbDisplayInterfaces (
         return;
     }
 
-    /* Invalid ActionArg */
+
 
     AcpiOsPrintf ("Invalid action argument: %s\n", ActionArg);
     return;

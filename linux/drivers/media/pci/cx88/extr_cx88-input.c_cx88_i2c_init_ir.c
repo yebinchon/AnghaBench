@@ -1,97 +1,89 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct i2c_board_info {int type; char* name; unsigned short addr; struct i2c_board_info* platform_data; int /*<<< orphan*/  internal_get_key_func; int /*<<< orphan*/  ir_codes; int /*<<< orphan*/  get_key; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct i2c_board_info {int type; char* name; unsigned short addr; struct i2c_board_info* platform_data; int internal_get_key_func; int ir_codes; int get_key; } ;
 struct TYPE_2__ {char* name; } ;
-struct cx88_core {scalar_t__ i2c_rc; int boardnr; int /*<<< orphan*/  i2c_adap; struct i2c_board_info init_data; TYPE_1__ board; } ;
+struct cx88_core {scalar_t__ i2c_rc; int boardnr; int i2c_adap; struct i2c_board_info init_data; TYPE_1__ board; } ;
 
-/* Variables and functions */
-#define  CX88_BOARD_LEADTEK_PVR2000 129 
-#define  I2C_CLIENT_END 128 
- int /*<<< orphan*/  I2C_NAME_SIZE ; 
- int /*<<< orphan*/  I2C_SMBUS_QUICK ; 
- int /*<<< orphan*/  I2C_SMBUS_READ ; 
- int /*<<< orphan*/  IR_KBD_GET_KEY_HAUP_XVR ; 
- int /*<<< orphan*/  RC_MAP_EMPTY ; 
- int /*<<< orphan*/  RC_MAP_HAUPPAUGE ; 
- int RC_PROTO_BIT_RC5 ; 
- int RC_PROTO_BIT_RC6_6A_32 ; 
- int RC_PROTO_BIT_RC6_MCE ; 
- int RC_PROTO_BIT_UNKNOWN ; 
- int /*<<< orphan*/  get_key_pvr2000 ; 
- int /*<<< orphan*/  i2c_new_device (int /*<<< orphan*/ *,struct i2c_board_info*) ; 
- scalar_t__ i2c_smbus_xfer (int /*<<< orphan*/ *,unsigned short const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (struct i2c_board_info*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strscpy (int,char*,int /*<<< orphan*/ ) ; 
+
+
+
+ int I2C_NAME_SIZE ;
+ int I2C_SMBUS_QUICK ;
+ int I2C_SMBUS_READ ;
+ int IR_KBD_GET_KEY_HAUP_XVR ;
+ int RC_MAP_EMPTY ;
+ int RC_MAP_HAUPPAUGE ;
+ int RC_PROTO_BIT_RC5 ;
+ int RC_PROTO_BIT_RC6_6A_32 ;
+ int RC_PROTO_BIT_RC6_MCE ;
+ int RC_PROTO_BIT_UNKNOWN ;
+ int get_key_pvr2000 ;
+ int i2c_new_device (int *,struct i2c_board_info*) ;
+ scalar_t__ i2c_smbus_xfer (int *,unsigned short const,int ,int ,int ,int ,int *) ;
+ int memset (struct i2c_board_info*,int ,int) ;
+ int strscpy (int,char*,int ) ;
 
 void cx88_i2c_init_ir(struct cx88_core *core)
 {
-	struct i2c_board_info info;
-	static const unsigned short default_addr_list[] = {
-		0x18, 0x6b, 0x71,
-		I2C_CLIENT_END
-	};
-	static const unsigned short pvr2000_addr_list[] = {
-		0x18, 0x1a,
-		I2C_CLIENT_END
-	};
-	const unsigned short *addr_list = default_addr_list;
-	const unsigned short *addrp;
-	/* Instantiate the IR receiver device, if present */
-	if (core->i2c_rc != 0)
-		return;
+ struct i2c_board_info info;
+ static const unsigned short default_addr_list[] = {
+  0x18, 0x6b, 0x71,
+  128
+ };
+ static const unsigned short pvr2000_addr_list[] = {
+  0x18, 0x1a,
+  128
+ };
+ const unsigned short *addr_list = default_addr_list;
+ const unsigned short *addrp;
 
-	memset(&info, 0, sizeof(struct i2c_board_info));
-	strscpy(info.type, "ir_video", I2C_NAME_SIZE);
+ if (core->i2c_rc != 0)
+  return;
 
-	switch (core->boardnr) {
-	case CX88_BOARD_LEADTEK_PVR2000:
-		addr_list = pvr2000_addr_list;
-		core->init_data.name = "cx88 Leadtek PVR 2000 remote";
-		core->init_data.type = RC_PROTO_BIT_UNKNOWN;
-		core->init_data.get_key = get_key_pvr2000;
-		core->init_data.ir_codes = RC_MAP_EMPTY;
-		break;
-	}
+ memset(&info, 0, sizeof(struct i2c_board_info));
+ strscpy(info.type, "ir_video", I2C_NAME_SIZE);
 
-	/*
-	 * We can't call i2c_new_probed_device() because it uses
-	 * quick writes for probing and at least some RC receiver
-	 * devices only reply to reads.
-	 * Also, Hauppauge XVR needs to be specified, as address 0x71
-	 * conflicts with another remote type used with saa7134
-	 */
-	for (addrp = addr_list; *addrp != I2C_CLIENT_END; addrp++) {
-		info.platform_data = NULL;
-		memset(&core->init_data, 0, sizeof(core->init_data));
+ switch (core->boardnr) {
+ case 129:
+  addr_list = pvr2000_addr_list;
+  core->init_data.name = "cx88 Leadtek PVR 2000 remote";
+  core->init_data.type = RC_PROTO_BIT_UNKNOWN;
+  core->init_data.get_key = get_key_pvr2000;
+  core->init_data.ir_codes = RC_MAP_EMPTY;
+  break;
+ }
+ for (addrp = addr_list; *addrp != 128; addrp++) {
+  info.platform_data = ((void*)0);
+  memset(&core->init_data, 0, sizeof(core->init_data));
 
-		if (*addrp == 0x71) {
-			/* Hauppauge Z8F0811 */
-			strscpy(info.type, "ir_z8f0811_haup", I2C_NAME_SIZE);
-			core->init_data.name = core->board.name;
-			core->init_data.ir_codes = RC_MAP_HAUPPAUGE;
-			core->init_data.type = RC_PROTO_BIT_RC5 |
-				RC_PROTO_BIT_RC6_MCE | RC_PROTO_BIT_RC6_6A_32;
-			core->init_data.internal_get_key_func = IR_KBD_GET_KEY_HAUP_XVR;
+  if (*addrp == 0x71) {
 
-			info.platform_data = &core->init_data;
-		}
-		if (i2c_smbus_xfer(&core->i2c_adap, *addrp, 0,
-				   I2C_SMBUS_READ, 0,
-				   I2C_SMBUS_QUICK, NULL) >= 0) {
-			info.addr = *addrp;
-			i2c_new_device(&core->i2c_adap, &info);
-			break;
-		}
-	}
+   strscpy(info.type, "ir_z8f0811_haup", I2C_NAME_SIZE);
+   core->init_data.name = core->board.name;
+   core->init_data.ir_codes = RC_MAP_HAUPPAUGE;
+   core->init_data.type = RC_PROTO_BIT_RC5 |
+    RC_PROTO_BIT_RC6_MCE | RC_PROTO_BIT_RC6_6A_32;
+   core->init_data.internal_get_key_func = IR_KBD_GET_KEY_HAUP_XVR;
+
+   info.platform_data = &core->init_data;
+  }
+  if (i2c_smbus_xfer(&core->i2c_adap, *addrp, 0,
+       I2C_SMBUS_READ, 0,
+       I2C_SMBUS_QUICK, ((void*)0)) >= 0) {
+   info.addr = *addrp;
+   i2c_new_device(&core->i2c_adap, &info);
+   break;
+  }
+ }
 }

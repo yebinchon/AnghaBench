@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  STopBotInfo ;
-typedef  int /*<<< orphan*/  SQLFunctionCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buildTopBotStruct (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  function_setup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * getTopBotOutputInfo (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int STopBotInfo ;
+typedef int SQLFunctionCtx ;
+
+
+ int buildTopBotStruct (int *,int *) ;
+ int function_setup (int *) ;
+ int * getTopBotOutputInfo (int *) ;
 
 __attribute__((used)) static bool top_bottom_function_setup(SQLFunctionCtx *pCtx) {
   if (!function_setup(pCtx)) {
-    return false;
+    return 0;
   }
 
   STopBotInfo *pInfo = getTopBotOutputInfo(pCtx);
   buildTopBotStruct(pInfo, pCtx);
 
-  return true;
+  return 1;
 }

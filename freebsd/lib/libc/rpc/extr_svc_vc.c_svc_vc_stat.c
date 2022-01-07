@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct cf_conn {scalar_t__ strm_stat; int /*<<< orphan*/  xdrs; } ;
-typedef  enum xprt_stat { ____Placeholder_xprt_stat } xprt_stat ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct cf_conn {scalar_t__ strm_stat; int xdrs; } ;
+typedef enum xprt_stat { ____Placeholder_xprt_stat } xprt_stat ;
 struct TYPE_3__ {scalar_t__ xp_p1; } ;
-typedef  TYPE_1__ SVCXPRT ;
+typedef TYPE_1__ SVCXPRT ;
 
-/* Variables and functions */
- scalar_t__ XPRT_DIED ; 
- int XPRT_IDLE ; 
- int XPRT_MOREREQS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xdrrec_eof (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ XPRT_DIED ;
+ int XPRT_IDLE ;
+ int XPRT_MOREREQS ;
+ int assert (int ) ;
+ int xdrrec_eof (int *) ;
 
 __attribute__((used)) static enum xprt_stat
 svc_vc_stat(SVCXPRT *xprt)
 {
-	struct cf_conn *cd;
+ struct cf_conn *cd;
 
-	assert(xprt != NULL);
+ assert(xprt != ((void*)0));
 
-	cd = (struct cf_conn *)(xprt->xp_p1);
+ cd = (struct cf_conn *)(xprt->xp_p1);
 
-	if (cd->strm_stat == XPRT_DIED)
-		return (XPRT_DIED);
-	if (! xdrrec_eof(&(cd->xdrs)))
-		return (XPRT_MOREREQS);
-	return (XPRT_IDLE);
+ if (cd->strm_stat == XPRT_DIED)
+  return (XPRT_DIED);
+ if (! xdrrec_eof(&(cd->xdrs)))
+  return (XPRT_MOREREQS);
+ return (XPRT_IDLE);
 }

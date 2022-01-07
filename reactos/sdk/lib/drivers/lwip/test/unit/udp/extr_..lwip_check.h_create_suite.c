@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TFun ;
-typedef  int /*<<< orphan*/  TCase ;
-typedef  int /*<<< orphan*/  Suite ;
-typedef  int /*<<< orphan*/ * SFun ;
 
-/* Variables and functions */
- int /*<<< orphan*/  suite_add_tcase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * suite_create (char const*) ; 
- int /*<<< orphan*/  tcase_add_checked_fixture (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tcase_add_test (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * tcase_create (char*) ; 
+
+
+
+typedef int TFun ;
+typedef int TCase ;
+typedef int Suite ;
+typedef int * SFun ;
+
+
+ int suite_add_tcase (int *,int *) ;
+ int * suite_create (char const*) ;
+ int tcase_add_checked_fixture (int *,int *,int *) ;
+ int tcase_add_test (int *,int ) ;
+ int * tcase_create (char*) ;
 
 __attribute__((used)) static Suite* create_suite(const char* name, TFun *tests, size_t num_tests, SFun setup, SFun teardown)
 {
@@ -28,9 +28,9 @@ __attribute__((used)) static Suite* create_suite(const char* name, TFun *tests, 
   Suite *s = suite_create(name);
 
   for(i = 0; i < num_tests; i++) {
-    /* Core test case */
+
     TCase *tc_core = tcase_create("Core");
-    if ((setup != NULL) || (teardown != NULL)) {
+    if ((setup != ((void*)0)) || (teardown != ((void*)0))) {
       tcase_add_checked_fixture(tc_core, setup, teardown);
     }
     tcase_add_test(tc_core, tests[i]);

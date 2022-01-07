@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct pollfd {int events; int /*<<< orphan*/  fd; } ;
-struct connection {scalar_t__ basic_type; int /*<<< orphan*/  fd; int /*<<< orphan*/  In; int /*<<< orphan*/  crypto; scalar_t__ error; } ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct pollfd {int events; int fd; } ;
+struct connection {scalar_t__ basic_type; int fd; int In; int crypto; scalar_t__ error; } ;
 struct TYPE_3__ {double finish_time; struct connection* conn; } ;
-typedef  TYPE_1__ php_worker ;
+typedef TYPE_1__ php_worker ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EINTR ; 
- int EWOULDBLOCK ; 
- int POLLIN ; 
- int POLLPRI ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ ct_pipe ; 
- int errno ; 
- int get_total_ready_bytes (int /*<<< orphan*/ *) ; 
- double get_utime_monotonic () ; 
- int poll (struct pollfd*,int,int) ; 
- int read_in (int /*<<< orphan*/ *,char*,int) ; 
- int recv (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+ int EAGAIN ;
+ int EINTR ;
+ int EWOULDBLOCK ;
+ int POLLIN ;
+ int POLLPRI ;
+ int assert (int) ;
+ scalar_t__ ct_pipe ;
+ int errno ;
+ int get_total_ready_bytes (int *) ;
+ double get_utime_monotonic () ;
+ int poll (struct pollfd*,int,int) ;
+ int read_in (int *,char*,int) ;
+ int recv (int ,char*,int,int ) ;
 
 int php_worker_http_load_post_impl (php_worker *worker, char *buf, int min_len, int max_len) {
-  assert (worker != NULL);
+  assert (worker != ((void*)0));
 
   struct connection *c = worker->conn;
   double precise_now = get_utime_monotonic();
 
-//  fprintf (stderr, "Trying to load data of len [%d;%d] at %.6lf\n", min_len, max_len, precise_now - worker->start_time);
+
 
   if (worker->finish_time < precise_now + 0.01) {
     return -1;
   }
 
-  if (c == NULL || c->error) {
+  if (c == ((void*)0) || c->error) {
     return -1;
   }
 
@@ -82,13 +82,13 @@ int php_worker_http_load_post_impl (php_worker *worker, char *buf, int min_len, 
 
       r = recv (c->fd, buf + read, max_len - read, 0);
       err = errno;
-/*
-      if (r < 0) {
-        fprintf (stderr, "Error recv: %m\n");
-      } else {
-        fprintf (stderr, "Received %d bytes at %.6lf\n", r, precise_now - worker->start_time);
-      }
-*/
+
+
+
+
+
+
+
       if (r > 0) {
         read += r;
       } else {
@@ -105,13 +105,13 @@ int php_worker_http_load_post_impl (php_worker *worker, char *buf, int min_len, 
         return -1;
       }
 
-//      fprintf (stderr, "Error poll: %m\n");
+
       if (err != EINTR) {
         return -1;
       }
     }
   }
 
-//  fprintf (stderr, "%d bytes loaded\n", read);
+
   return read;
 }

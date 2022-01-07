@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct counter {long long counter_id; int created_at; int last_month_unique_visitors; int long_unique_visitors; int last_week_unique_visitors; int valid_until; int /*<<< orphan*/  type; struct counter* prev; int /*<<< orphan*/  timezone; } ;
 
-/* Variables and functions */
- scalar_t__ FORCE_COUNTER_TYPE ; 
- scalar_t__ auto_create_new_versions ; 
- int /*<<< orphan*/  copy_ancestor (struct counter*,struct counter*) ; 
- scalar_t__ create_day_start ; 
- scalar_t__ custom_version_names ; 
- int /*<<< orphan*/  default_timezone ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  get_cnt_type (long long) ; 
- int incr_version ; 
- int now ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tot_counters_allocated ; 
- int tz_offset (int /*<<< orphan*/ ) ; 
- int verbosity ; 
- struct counter* zzmalloc0 (int) ; 
+
+
+
+struct counter {long long counter_id; int created_at; int last_month_unique_visitors; int long_unique_visitors; int last_week_unique_visitors; int valid_until; int type; struct counter* prev; int timezone; } ;
+
+
+ scalar_t__ FORCE_COUNTER_TYPE ;
+ scalar_t__ auto_create_new_versions ;
+ int copy_ancestor (struct counter*,struct counter*) ;
+ scalar_t__ create_day_start ;
+ scalar_t__ custom_version_names ;
+ int default_timezone ;
+ int fprintf (int ,char*) ;
+ int get_cnt_type (long long) ;
+ int incr_version ;
+ int now ;
+ int stderr ;
+ int tot_counters_allocated ;
+ int tz_offset (int ) ;
+ int verbosity ;
+ struct counter* zzmalloc0 (int) ;
 
 __attribute__((used)) static struct counter *malloc_counter (struct counter *D, long long cnt_id) {
   if (verbosity >= 4) {

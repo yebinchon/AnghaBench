@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gs_sampler_state {int ref; int /*<<< orphan*/ * device; } ;
+
+
+
+
+struct gs_sampler_state {int ref; int * device; } ;
 struct gs_sampler_info {int dummy; } ;
-typedef  struct gs_sampler_state gs_samplerstate_t ;
-typedef  int /*<<< orphan*/  gs_device_t ;
+typedef struct gs_sampler_state gs_samplerstate_t ;
+typedef int gs_device_t ;
 
-/* Variables and functions */
- struct gs_sampler_state* bzalloc (int) ; 
- int /*<<< orphan*/  convert_sampler_info (struct gs_sampler_state*,struct gs_sampler_info const*) ; 
+
+ struct gs_sampler_state* bzalloc (int) ;
+ int convert_sampler_info (struct gs_sampler_state*,struct gs_sampler_info const*) ;
 
 gs_samplerstate_t *
 device_samplerstate_create(gs_device_t *device,
-			   const struct gs_sampler_info *info)
+      const struct gs_sampler_info *info)
 {
-	struct gs_sampler_state *sampler;
+ struct gs_sampler_state *sampler;
 
-	sampler = bzalloc(sizeof(struct gs_sampler_state));
-	sampler->device = device;
-	sampler->ref = 1;
+ sampler = bzalloc(sizeof(struct gs_sampler_state));
+ sampler->device = device;
+ sampler->ref = 1;
 
-	convert_sampler_info(sampler, info);
-	return sampler;
+ convert_sampler_info(sampler, info);
+ return sampler;
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nvlist_t ;
-typedef  int /*<<< orphan*/  fds ;
 
-/* Variables and functions */
- int* nv_malloc (int) ; 
- size_t nvlist_ndescriptors (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nvlist_xdescriptors (int /*<<< orphan*/  const*,int*) ; 
+
+
+
+typedef int nvlist_t ;
+typedef int fds ;
+
+
+ int* nv_malloc (int) ;
+ size_t nvlist_ndescriptors (int const*) ;
+ int nvlist_xdescriptors (int const*,int*) ;
 
 int *
 nvlist_descriptors(const nvlist_t *nvl, size_t *nitemsp)
 {
-	size_t nitems;
-	int *fds;
+ size_t nitems;
+ int *fds;
 
-	nitems = nvlist_ndescriptors(nvl);
-	fds = nv_malloc(sizeof(fds[0]) * (nitems + 1));
-	if (fds == NULL)
-		return (NULL);
-	if (nitems > 0)
-		nvlist_xdescriptors(nvl, fds);
-	fds[nitems] = -1;
-	if (nitemsp != NULL)
-		*nitemsp = nitems;
-	return (fds);
+ nitems = nvlist_ndescriptors(nvl);
+ fds = nv_malloc(sizeof(fds[0]) * (nitems + 1));
+ if (fds == ((void*)0))
+  return (((void*)0));
+ if (nitems > 0)
+  nvlist_xdescriptors(nvl, fds);
+ fds[nitems] = -1;
+ if (nitemsp != ((void*)0))
+  *nitemsp = nitems;
+ return (fds);
 }

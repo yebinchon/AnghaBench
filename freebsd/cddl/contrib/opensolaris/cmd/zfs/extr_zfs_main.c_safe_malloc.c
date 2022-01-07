@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* calloc (int,size_t) ; 
- int /*<<< orphan*/  nomem () ; 
+ void* calloc (int,size_t) ;
+ int nomem () ;
 
 void *
 safe_malloc(size_t size)
 {
-	void *data;
+ void *data;
 
-	if ((data = calloc(1, size)) == NULL)
-		nomem();
+ if ((data = calloc(1, size)) == ((void*)0))
+  nomem();
 
-	return (data);
+ return (data);
 }

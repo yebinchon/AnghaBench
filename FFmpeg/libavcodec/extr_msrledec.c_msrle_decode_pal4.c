@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int height; int width; } ;
 struct TYPE_6__ {unsigned char** data; int* linesize; } ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_1__ AVFrame ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef int GetByteContext ;
+typedef TYPE_1__ AVFrame ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- unsigned char bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- char bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- unsigned char bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ unsigned char bytestream2_get_byte (int *) ;
+ char bytestream2_get_bytes_left (int *) ;
+ unsigned char bytestream2_get_byteu (int *) ;
+ int bytestream2_skip (int *,int) ;
 
 __attribute__((used)) static int msrle_decode_pal4(AVCodecContext *avctx, AVFrame *pic,
                              GetByteContext *gb)
@@ -46,24 +46,24 @@ __attribute__((used)) static int msrle_decode_pal4(AVCodecContext *avctx, AVFram
         }
         rle_code = stream_byte = bytestream2_get_byteu(gb);
         if (rle_code == 0) {
-            /* fetch the next byte to see how to handle escape code */
+
             stream_byte = bytestream2_get_byte(gb);
             if (stream_byte == 0) {
-                /* line is done, goto the next one */
+
                 line--;
                 pixel_ptr = 0;
             } else if (stream_byte == 1) {
-                /* decode is done */
+
                 return 0;
             } else if (stream_byte == 2) {
-                /* reposition frame decode coordinates */
+
                 stream_byte = bytestream2_get_byte(gb);
                 pixel_ptr += stream_byte;
                 stream_byte = bytestream2_get_byte(gb);
                 line -= stream_byte;
             } else {
-                // copy pixels from encoded stream
-                odd_pixel =  stream_byte & 1;
+
+                odd_pixel = stream_byte & 1;
                 rle_code = (stream_byte + 1) / 2;
                 extra_byte = rle_code & 0x01;
                 if (pixel_ptr + 2*rle_code - odd_pixel > avctx->width ||
@@ -87,12 +87,12 @@ __attribute__((used)) static int msrle_decode_pal4(AVCodecContext *avctx, AVFram
                     pixel_ptr++;
                 }
 
-                // if the RLE code is odd, skip a byte in the stream
+
                 if (extra_byte)
                     bytestream2_skip(gb, 1);
             }
         } else {
-            // decode a run of data
+
             if (pixel_ptr + rle_code > avctx->width + 1) {
                 av_log(avctx, AV_LOG_ERROR,
                        "MS RLE: frame ptr just went out of bounds (run) %d %d %d\n", pixel_ptr, rle_code, avctx->width);
@@ -111,7 +111,7 @@ __attribute__((used)) static int msrle_decode_pal4(AVCodecContext *avctx, AVFram
         }
     }
 
-    /* one last sanity check on the way out */
+
     if (bytestream2_get_bytes_left(gb)) {
         av_log(avctx, AV_LOG_ERROR,
                "MS RLE: ended frame decode with %d bytes left over\n",

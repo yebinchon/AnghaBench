@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tg3 {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RX_CPU_BASE ; 
- int /*<<< orphan*/  tg3_resume_cpu (struct tg3*,int /*<<< orphan*/ ) ; 
+
+ int RX_CPU_BASE ;
+ int tg3_resume_cpu (struct tg3*,int ) ;
 
 __attribute__((used)) static void tg3_rxcpu_resume(struct tg3 *tp)
 {
-	tg3_resume_cpu(tp, RX_CPU_BASE);
+ tg3_resume_cpu(tp, RX_CPU_BASE);
 }

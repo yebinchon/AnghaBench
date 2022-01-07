@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct SwrContext {int in_buffer_count; int in_sample_rate; TYPE_1__* resample; } ;
-typedef  int int64_t ;
+typedef int int64_t ;
 struct TYPE_2__ {int filter_length; int phase_count; int src_incr; scalar_t__ frac; scalar_t__ index; } ;
-typedef  TYPE_1__ ResampleContext ;
+typedef TYPE_1__ ResampleContext ;
 
-/* Variables and functions */
- int av_rescale (int,int,int) ; 
+
+ int av_rescale (int,int,int) ;
 
 __attribute__((used)) static int64_t get_delay(struct SwrContext *s, int64_t base){
     ResampleContext *c = s->resample;

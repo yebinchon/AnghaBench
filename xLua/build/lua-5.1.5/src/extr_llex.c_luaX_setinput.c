@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  ZIO ;
-struct TYPE_5__ {int /*<<< orphan*/  token; } ;
-struct TYPE_6__ {char decpoint; int linenumber; int lastline; int /*<<< orphan*/  buff; int /*<<< orphan*/ * L; int /*<<< orphan*/ * source; int /*<<< orphan*/ * fs; int /*<<< orphan*/ * z; TYPE_1__ lookahead; } ;
-typedef  int /*<<< orphan*/  TString ;
-typedef  TYPE_2__ LexState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_MINBUFFER ; 
- int /*<<< orphan*/  TK_EOS ; 
- int /*<<< orphan*/  luaZ_resizebuffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  next (TYPE_2__*) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+typedef int ZIO ;
+struct TYPE_5__ {int token; } ;
+struct TYPE_6__ {char decpoint; int linenumber; int lastline; int buff; int * L; int * source; int * fs; int * z; TYPE_1__ lookahead; } ;
+typedef int TString ;
+typedef TYPE_2__ LexState ;
+
+
+ int LUA_MINBUFFER ;
+ int TK_EOS ;
+ int luaZ_resizebuffer (int *,int ,int ) ;
+ int next (TYPE_2__*) ;
 
 void luaX_setinput (lua_State *L, LexState *ls, ZIO *z, TString *source) {
   ls->decpoint = '.';
   ls->L = L;
-  ls->lookahead.token = TK_EOS;  /* no look-ahead token */
+  ls->lookahead.token = TK_EOS;
   ls->z = z;
-  ls->fs = NULL;
+  ls->fs = ((void*)0);
   ls->linenumber = 1;
   ls->lastline = 1;
   ls->source = source;
-  luaZ_resizebuffer(ls->L, ls->buff, LUA_MINBUFFER);  /* initialize buffer */
-  next(ls);  /* read first char */
+  luaZ_resizebuffer(ls->L, ls->buff, LUA_MINBUFFER);
+  next(ls);
 }

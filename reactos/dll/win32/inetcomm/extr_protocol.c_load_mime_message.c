@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IMimeMessage ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMimeMessage_InitNew (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMimeMessage_Load (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMimeMessage_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MimeMessage_create (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  S_OK ; 
+
+
+
+typedef int IStream ;
+typedef int IMimeMessage ;
+typedef int HRESULT ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int IMimeMessage_InitNew (int *) ;
+ int IMimeMessage_Load (int *,int *) ;
+ int IMimeMessage_Release (int *) ;
+ int MimeMessage_create (int *,void**) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT load_mime_message(IStream *stream, IMimeMessage **ret)
 {
     IMimeMessage *mime_message;
     HRESULT hres;
 
-    hres = MimeMessage_create(NULL, (void**)&mime_message);
+    hres = MimeMessage_create(((void*)0), (void**)&mime_message);
     if(FAILED(hres))
         return hres;
 

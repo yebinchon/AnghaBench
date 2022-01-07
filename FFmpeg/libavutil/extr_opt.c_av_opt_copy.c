@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_4__ {int offset; scalar_t__ type; } ;
-typedef  TYPE_1__ AVOption ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  int /*<<< orphan*/  const AVClass ;
+typedef TYPE_1__ AVOption ;
+typedef int AVDictionary ;
+typedef int const AVClass ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_OPT_TYPE_BINARY ; 
- scalar_t__ AV_OPT_TYPE_CONST ; 
- scalar_t__ AV_OPT_TYPE_DICT ; 
- scalar_t__ AV_OPT_TYPE_STRING ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_dict_copy (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ av_dict_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_memdup (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* av_opt_next (void const*,TYPE_1__ const*) ; 
- int /*<<< orphan*/ * av_strdup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int) ; 
- int opt_size (scalar_t__) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_OPT_TYPE_BINARY ;
+ scalar_t__ AV_OPT_TYPE_CONST ;
+ scalar_t__ AV_OPT_TYPE_DICT ;
+ scalar_t__ AV_OPT_TYPE_STRING ;
+ int EINVAL ;
+ int ENOMEM ;
+ int av_dict_copy (int **,int *,int ) ;
+ scalar_t__ av_dict_count (int *) ;
+ int av_dict_free (int **) ;
+ int av_freep (int **) ;
+ int * av_memdup (int *,int) ;
+ TYPE_1__* av_opt_next (void const*,TYPE_1__ const*) ;
+ int * av_strdup (int *) ;
+ int memcpy (void*,void*,int) ;
+ int opt_size (scalar_t__) ;
 
 int av_opt_copy(void *dst, const void *src)
 {
-    const AVOption *o = NULL;
+    const AVOption *o = ((void*)0);
     const AVClass *c;
     int ret = 0;
 
@@ -71,13 +71,13 @@ int av_opt_copy(void *dst, const void *src)
             }
             *(int *)(field_dst8 + 1) = len;
         } else if (o->type == AV_OPT_TYPE_CONST) {
-            // do nothing
+
         } else if (o->type == AV_OPT_TYPE_DICT) {
             AVDictionary **sdict = (AVDictionary **) field_src;
             AVDictionary **ddict = (AVDictionary **) field_dst;
             if (*sdict != *ddict)
                 av_dict_free(ddict);
-            *ddict = NULL;
+            *ddict = ((void*)0);
             av_dict_copy(ddict, *sdict, 0);
             if (av_dict_count(*sdict) != av_dict_count(*ddict))
                 ret = AVERROR(ENOMEM);

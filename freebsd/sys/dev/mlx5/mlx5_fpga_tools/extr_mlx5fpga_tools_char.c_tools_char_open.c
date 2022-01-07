@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tools_context {int /*<<< orphan*/  access_type; int /*<<< orphan*/  tdev; } ;
+
+
+
+
+struct tools_context {int access_type; int tdev; } ;
 struct thread {int dummy; } ;
-struct cdev {int /*<<< orphan*/  si_drv1; } ;
+struct cdev {int si_drv1; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MLX5_FPGA_ACCESS_TYPE_DONTCARE ; 
- int /*<<< orphan*/  M_DEVBUF ; 
- int /*<<< orphan*/  M_WAITOK ; 
- int /*<<< orphan*/  devfs_set_cdevpriv (struct tools_context*,int /*<<< orphan*/ ) ; 
- struct tools_context* malloc (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tools_char_ctx_dtor ; 
+
+ int MLX5_FPGA_ACCESS_TYPE_DONTCARE ;
+ int M_DEVBUF ;
+ int M_WAITOK ;
+ int devfs_set_cdevpriv (struct tools_context*,int ) ;
+ struct tools_context* malloc (int,int ,int ) ;
+ int tools_char_ctx_dtor ;
 
 __attribute__((used)) static int
 tools_char_open(struct cdev *dev, int oflags, int devtype, struct thread *td)
 {
-	struct tools_context *context;
+ struct tools_context *context;
 
-	context = malloc(sizeof(*context), M_DEVBUF, M_WAITOK);
-	context->tdev = dev->si_drv1;
-	context->access_type = MLX5_FPGA_ACCESS_TYPE_DONTCARE;
-	devfs_set_cdevpriv(context, tools_char_ctx_dtor);
-	return (0);
+ context = malloc(sizeof(*context), M_DEVBUF, M_WAITOK);
+ context->tdev = dev->si_drv1;
+ context->access_type = MLX5_FPGA_ACCESS_TYPE_DONTCARE;
+ devfs_set_cdevpriv(context, tools_char_ctx_dtor);
+ return (0);
 }

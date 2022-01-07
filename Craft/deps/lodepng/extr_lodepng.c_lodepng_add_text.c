@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char** text_keys; int text_num; char** text_strings; } ;
-typedef  TYPE_1__ LodePNGInfo ;
+typedef TYPE_1__ LodePNGInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lodepng_free (char**) ; 
- scalar_t__ lodepng_realloc (char**,int) ; 
- int /*<<< orphan*/  string_init (char**) ; 
- int /*<<< orphan*/  string_set (char**,char const*) ; 
+
+ int lodepng_free (char**) ;
+ scalar_t__ lodepng_realloc (char**,int) ;
+ int string_init (char**) ;
+ int string_set (char**,char const*) ;
 
 unsigned lodepng_add_text(LodePNGInfo* info, const char* key, const char* str)
 {
@@ -28,7 +28,7 @@ unsigned lodepng_add_text(LodePNGInfo* info, const char* key, const char* str)
   {
     lodepng_free(new_keys);
     lodepng_free(new_strings);
-    return 83; /*alloc fail*/
+    return 83;
   }
 
   info->text_num++;

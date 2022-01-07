@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  kobj; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int kobj; } ;
 struct TYPE_4__ {TYPE_1__ dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sysfs_notify (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- TYPE_2__* tpacpi_pdev ; 
+
+ int sysfs_notify (int *,int *,char*) ;
+ TYPE_2__* tpacpi_pdev ;
 
 __attribute__((used)) static void hotkey_wakeup_reason_notify_change(void)
 {
-	sysfs_notify(&tpacpi_pdev->dev.kobj, NULL,
-		     "wakeup_reason");
+ sysfs_notify(&tpacpi_pdev->dev.kobj, ((void*)0),
+       "wakeup_reason");
 }

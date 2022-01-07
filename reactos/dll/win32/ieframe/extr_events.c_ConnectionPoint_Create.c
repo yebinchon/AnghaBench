@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_6__ {int /*<<< orphan*/  iid; int /*<<< orphan*/ * container; scalar_t__ sinks_size; int /*<<< orphan*/ * sinks; TYPE_1__ IConnectionPoint_iface; } ;
-typedef  int /*<<< orphan*/ * REFIID ;
-typedef  int /*<<< orphan*/  IConnectionPointContainer ;
-typedef  TYPE_2__ ConnectionPoint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConnectionPointVtbl ; 
- TYPE_2__* heap_alloc (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * lpVtbl; } ;
+struct TYPE_6__ {int iid; int * container; scalar_t__ sinks_size; int * sinks; TYPE_1__ IConnectionPoint_iface; } ;
+typedef int * REFIID ;
+typedef int IConnectionPointContainer ;
+typedef TYPE_2__ ConnectionPoint ;
+
+
+ int ConnectionPointVtbl ;
+ TYPE_2__* heap_alloc (int) ;
 
 __attribute__((used)) static void ConnectionPoint_Create(REFIID riid, ConnectionPoint **cp,
                                    IConnectionPointContainer *container)
@@ -29,7 +29,7 @@ __attribute__((used)) static void ConnectionPoint_Create(REFIID riid, Connection
 
     ret->IConnectionPoint_iface.lpVtbl = &ConnectionPointVtbl;
 
-    ret->sinks = NULL;
+    ret->sinks = ((void*)0);
     ret->sinks_size = 0;
     ret->container = container;
 

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int CopyFileW (char*,char*,int /*<<< orphan*/ ) ; 
- int DeleteFileW (char*) ; 
- scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ; 
- scalar_t__ ERROR_FILE_EXISTS ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ GetLastError () ; 
- int GetTempFileNameW (char*,char const*,int /*<<< orphan*/ ,char*) ; 
- int GetTempPathW (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int DWORD ;
+
+
+ int CopyFileW (char*,char*,int ) ;
+ int DeleteFileW (char*) ;
+ scalar_t__ ERROR_CALL_NOT_IMPLEMENTED ;
+ scalar_t__ ERROR_FILE_EXISTS ;
+ int FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetTempFileNameW (char*,char const*,int ,char*) ;
+ int GetTempPathW (int,char*) ;
+ int MAX_PATH ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_CopyFileW(void)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Tracks {int video_track; int audio_track; int /*<<< orphan*/  nb_tracks; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  output_prefix_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clean_tracks (struct Tracks*) ; 
- scalar_t__ handle_file (struct Tracks*,char*,int,int,char const*,char const*) ; 
- int /*<<< orphan*/  output_client_manifest (struct Tracks*,char const*,char const*,int) ; 
- int /*<<< orphan*/  output_server_manifest (struct Tracks*,char const*,char const*,char const*,char const*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int strlen (char const*) ; 
- int usage (char*,int) ; 
+
+
+
+struct Tracks {int video_track; int audio_track; int nb_tracks; int member_0; } ;
+typedef int output_prefix_buf ;
+
+
+ int clean_tracks (struct Tracks*) ;
+ scalar_t__ handle_file (struct Tracks*,char*,int,int,char const*,char const*) ;
+ int output_client_manifest (struct Tracks*,char const*,char const*,int) ;
+ int output_server_manifest (struct Tracks*,char const*,char const*,char const*,char const*) ;
+ int snprintf (char*,int,char*,char const*) ;
+ int strcmp (char*,char*) ;
+ int strlen (char const*) ;
+ int usage (char*,int) ;
 
 int main(int argc, char **argv)
 {
-    const char *basename = NULL;
+    const char *basename = ((void*)0);
     const char *path_prefix = "", *ismc_prefix = "";
     const char *output_prefix = "";
     char output_prefix_buf[2048];

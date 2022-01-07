@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  off_t ;
 
-/* Variables and functions */
- int FD_CLOEXEC ; 
- int /*<<< orphan*/  F_GETFD ; 
- int /*<<< orphan*/  F_SETFD ; 
- int LOCK_EX ; 
- int LOCK_NB ; 
- int O_CREAT ; 
- int O_RDWR ; 
- int S_IRUSR ; 
- int S_IWUSR ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fcntl (int,int /*<<< orphan*/ ,int,...) ; 
- int flock (int,int) ; 
- scalar_t__ ftruncate (int,int /*<<< orphan*/ ) ; 
- int g_open (char const*,int,int) ; 
- int /*<<< orphan*/  g_strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_warning (char*,...) ; 
- int getpid () ; 
- int /*<<< orphan*/  remove_pid_file (int) ; 
- int snprintf (char*,int,char*,int) ; 
- scalar_t__ write (int,char*,int) ; 
+
+
+
+typedef int ssize_t ;
+typedef int off_t ;
+
+
+ int FD_CLOEXEC ;
+ int F_GETFD ;
+ int F_SETFD ;
+ int LOCK_EX ;
+ int LOCK_NB ;
+ int O_CREAT ;
+ int O_RDWR ;
+ int S_IRUSR ;
+ int S_IWUSR ;
+ int errno ;
+ scalar_t__ fcntl (int,int ,int,...) ;
+ int flock (int,int) ;
+ scalar_t__ ftruncate (int,int ) ;
+ int g_open (char const*,int,int) ;
+ int g_strerror (int ) ;
+ int g_warning (char*,...) ;
+ int getpid () ;
+ int remove_pid_file (int) ;
+ int snprintf (char*,int,char*,int) ;
+ scalar_t__ write (int,char*,int) ;
 
 int create_pid_file ( const char *pidfile )
 {
-    if ( pidfile == NULL ) {
+    if ( pidfile == ((void*)0) ) {
         return -1;
     }
 
@@ -46,15 +46,15 @@ int create_pid_file ( const char *pidfile )
         g_warning ( "Failed to create pid file: '%s'.", pidfile );
         return -1;
     }
-    // Set it to close the File Descriptor on exit.
-    int flags = fcntl ( fd, F_GETFD, NULL );
+
+    int flags = fcntl ( fd, F_GETFD, ((void*)0) );
     flags = flags | FD_CLOEXEC;
-    if ( fcntl ( fd, F_SETFD, flags, NULL ) < 0 ) {
+    if ( fcntl ( fd, F_SETFD, flags, ((void*)0) ) < 0 ) {
         g_warning ( "Failed to set CLOEXEC on pidfile." );
         remove_pid_file ( fd );
         return -1;
     }
-    // Try to get exclusive write lock on FD
+
     int retv = flock ( fd, LOCK_EX | LOCK_NB );
     if ( retv != 0 ) {
         g_warning ( "Failed to set lock on pidfile: Rofi already running?" );
@@ -63,10 +63,10 @@ int create_pid_file ( const char *pidfile )
         return -1;
     }
     if ( ftruncate ( fd, (off_t) 0 ) == 0 ) {
-        // Write pid, not needed, but for completeness sake.
-        char    buffer[64];
-        int     length = snprintf ( buffer, 64, "%i", getpid () );
-        ssize_t l      = 0;
+
+        char buffer[64];
+        int length = snprintf ( buffer, 64, "%i", getpid () );
+        ssize_t l = 0;
         while ( l < length ) {
             l += write ( fd, &buffer[l], length - l );
         }

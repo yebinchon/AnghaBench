@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-struct file_baton_t {int /*<<< orphan*/ * pool; int /*<<< orphan*/  local_abspath; struct dir_baton_t* pb; struct edit_baton_t* eb; } ;
-struct edit_baton_t {int /*<<< orphan*/  anchor_abspath; } ;
-struct dir_baton_t {int /*<<< orphan*/  users; int /*<<< orphan*/  pool; struct edit_baton_t* eb; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_OBSTRUCTED_UPDATE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- struct file_baton_t* apr_pcalloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_dirent_is_under_root (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+struct file_baton_t {int * pool; int local_abspath; struct dir_baton_t* pb; struct edit_baton_t* eb; } ;
+struct edit_baton_t {int anchor_abspath; } ;
+struct dir_baton_t {int users; int pool; struct edit_baton_t* eb; } ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_OBSTRUCTED_UPDATE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ struct file_baton_t* apr_pcalloc (int *,int) ;
+ int svn_dirent_is_under_root (int *,int *,int ,char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_pool_create (int ) ;
 
 __attribute__((used)) static svn_error_t *
 file_add(const char *path,
@@ -54,7 +54,7 @@ file_add(const char *path,
   if (! under_root)
     {
       return svn_error_createf(
-                    SVN_ERR_WC_OBSTRUCTED_UPDATE, NULL,
+                    SVN_ERR_WC_OBSTRUCTED_UPDATE, ((void*)0),
                     _("Path '%s' is not in the working copy"),
                     svn_dirent_local_style(path, fb->pool));
     }

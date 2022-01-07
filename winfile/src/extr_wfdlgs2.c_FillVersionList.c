@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  size_t UINT ;
-struct TYPE_2__ {int /*<<< orphan*/  idString; scalar_t__ pszName; } ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__ LPTSTR ;
-typedef  long LPARAM ;
-typedef  scalar_t__ INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- void* CHAR_NULL ; 
- int /*<<< orphan*/  COUNTOF (scalar_t__) ; 
- int /*<<< orphan*/  GET_WM_COMMAND_MPS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDD_VERSION_KEY ; 
- int /*<<< orphan*/  IDS_VN_LANGUAGE ; 
- int /*<<< orphan*/  IDS_VN_LANGUAGES ; 
- int /*<<< orphan*/  LBN_SELCHANGE ; 
- int /*<<< orphan*/  LB_ADDSTRING ; 
- scalar_t__ LB_ERR ; 
- int /*<<< orphan*/  LB_SETCURSEL ; 
- int /*<<< orphan*/  LB_SETITEMDATA ; 
- scalar_t__ LoadString (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- size_t MAX_VERNAMES ; 
- int /*<<< orphan*/  PostMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SendMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,long) ; 
- int /*<<< orphan*/  TEXT (char*) ; 
- int VER_KEY_END ; 
- size_t VerLanguageName (int /*<<< orphan*/ ,void**,size_t) ; 
- scalar_t__ VerQueryValueIndexW (int /*<<< orphan*/ ,void**,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WM_COMMAND ; 
- int cXlate ; 
- size_t cchXlateString ; 
- int /*<<< orphan*/  hAppInstance ; 
- int /*<<< orphan*/  lpVersionBuffer ; 
- int /*<<< orphan*/ * lpXlate ; 
- int /*<<< orphan*/  lstrcat (void**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcmp (scalar_t__,scalar_t__) ; 
- size_t lstrlen (void**) ; 
- void** pszXlate ; 
- scalar_t__ szFileVersion ; 
- scalar_t__ szLegalCopyright ; 
- scalar_t__ szMessage ; 
- void** szVersionKey ; 
- TYPE_1__* vernames ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef size_t UINT ;
+struct TYPE_2__ {int idString; scalar_t__ pszName; } ;
+typedef int LPVOID ;
+typedef scalar_t__ LPTSTR ;
+typedef long LPARAM ;
+typedef scalar_t__ INT ;
+typedef int HWND ;
+typedef int DWORD ;
+
+
+ void* CHAR_NULL ;
+ int COUNTOF (scalar_t__) ;
+ int GET_WM_COMMAND_MPS (int ,int *,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDD_VERSION_KEY ;
+ int IDS_VN_LANGUAGE ;
+ int IDS_VN_LANGUAGES ;
+ int LBN_SELCHANGE ;
+ int LB_ADDSTRING ;
+ scalar_t__ LB_ERR ;
+ int LB_SETCURSEL ;
+ int LB_SETITEMDATA ;
+ scalar_t__ LoadString (int ,int ,scalar_t__,int ) ;
+ size_t MAX_VERNAMES ;
+ int PostMessage (int ,int ,int ) ;
+ scalar_t__ SendMessage (int ,int ,scalar_t__,long) ;
+ int TEXT (char*) ;
+ int VER_KEY_END ;
+ size_t VerLanguageName (int ,void**,size_t) ;
+ scalar_t__ VerQueryValueIndexW (int ,void**,size_t,int *,int *,int *) ;
+ int WM_COMMAND ;
+ int cXlate ;
+ size_t cchXlateString ;
+ int hAppInstance ;
+ int lpVersionBuffer ;
+ int * lpXlate ;
+ int lstrcat (void**,int ) ;
+ int lstrcmp (scalar_t__,scalar_t__) ;
+ size_t lstrlen (void**) ;
+ void** pszXlate ;
+ scalar_t__ szFileVersion ;
+ scalar_t__ szLegalCopyright ;
+ scalar_t__ szMessage ;
+ void** szVersionKey ;
+ TYPE_1__* vernames ;
 
 VOID
 FillVersionList(HWND hDlg)
@@ -70,14 +70,14 @@ FillVersionList(HWND hDlg)
 
    hwndLB = GetDlgItem(hDlg, IDD_VERSION_KEY);
 
-   szVersionKey[VER_KEY_END - 1] = CHAR_NULL;        // strip the backslash
+   szVersionKey[VER_KEY_END - 1] = CHAR_NULL;
 
    for (j=0; VerQueryValueIndexW(lpVersionBuffer,
                                 szVersionKey,
                                 j,
                                 (LPVOID*)&lpszKey,
                                 (LPVOID*)&lpszValue,
-                                &cbValue);  j++) {
+                                &cbValue); j++) {
 
       if (!lstrcmp(lpszKey, szFileVersion) ||
           !lstrcmp(lpszKey, szLegalCopyright)) {
@@ -94,20 +94,20 @@ FillVersionList(HWND hDlg)
 
       idx = (INT)SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)lpszKey);
 
-      //
-      // Only add if the value len isn't zero.
-      // This is checked in the SendMessage 4th parm.
-      //
+
+
+
+
       if (idx != LB_ERR)
          SendMessage(hwndLB, LB_SETITEMDATA, idx, (LPARAM)lpszValue);
    }
 
-   //
-   // Now look at the \VarFileInfo\Translations section and add an
-   // item for the language(s) this file supports.
-   //
 
-   if (lpXlate == NULL || pszXlate == NULL)
+
+
+
+
+   if (lpXlate == ((void*)0) || pszXlate == ((void*)0))
       goto Done;
 
    if (!LoadString(hAppInstance, (cXlate == 1) ? IDS_VN_LANGUAGE : IDS_VN_LANGUAGES,
@@ -145,5 +145,5 @@ FillVersionList(HWND hDlg)
 Done:
 
    SendMessage(hwndLB, LB_SETCURSEL, 0, 0L);
-   PostMessage(hDlg, WM_COMMAND, GET_WM_COMMAND_MPS(IDD_VERSION_KEY, NULL, LBN_SELCHANGE));
+   PostMessage(hDlg, WM_COMMAND, GET_WM_COMMAND_MPS(IDD_VERSION_KEY, ((void*)0), LBN_SELCHANGE));
 }

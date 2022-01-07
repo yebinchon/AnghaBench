@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* result; char* Buffer; int /*<<< orphan*/  MaximumLength; int /*<<< orphan*/  base; int /*<<< orphan*/  value; } ;
-typedef  TYPE_1__ int2str_t ;
-typedef  char* NTSTATUS ;
 
-/* Variables and functions */
- int STRI_BUFFER_LENGTH ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  memset (char*,char,int) ; 
- int /*<<< orphan*/  ok (int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*) ; 
- char* pRtlIntegerToChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* result; char* Buffer; int MaximumLength; int base; int value; } ;
+typedef TYPE_1__ int2str_t ;
+typedef char* NTSTATUS ;
+
+
+ int STRI_BUFFER_LENGTH ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int memset (char*,char,int) ;
+ int ok (int,char*,int,int ,int ,int ,char*,char*) ;
+ char* pRtlIntegerToChar (int ,int ,int ,char*) ;
 
 __attribute__((used)) static void one_RtlIntegerToChar_test(int test_num, const int2str_t *int2str)
 {

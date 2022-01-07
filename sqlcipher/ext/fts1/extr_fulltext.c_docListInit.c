@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int nData; scalar_t__ iLastOffset; scalar_t__ iLastPos; int /*<<< orphan*/  iType; int /*<<< orphan*/ * pData; } ;
-typedef  int /*<<< orphan*/  DocListType ;
-typedef  TYPE_1__ DocList ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,char const*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int nData; scalar_t__ iLastOffset; scalar_t__ iLastPos; int iType; int * pData; } ;
+typedef int DocListType ;
+typedef TYPE_1__ DocList ;
+
+
+ int * malloc (int) ;
+ int memcpy (int *,char const*,int) ;
 
 __attribute__((used)) static void docListInit(DocList *d, DocListType iType,
                         const char *pData, int nData){
@@ -26,7 +26,7 @@ __attribute__((used)) static void docListInit(DocList *d, DocListType iType,
     d->pData = malloc(nData);
     memcpy(d->pData, pData, nData);
   } else {
-    d->pData = NULL;
+    d->pData = ((void*)0);
   }
   d->iType = iType;
   d->iLastPos = 0;

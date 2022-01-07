@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wchar_t ;
-typedef  unsigned int __int64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EDOM ; 
- int /*<<< orphan*/  _set_errno (int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (int) ; 
+
+
+
+typedef scalar_t__ wchar_t ;
+typedef unsigned int __int64 ;
+
+
+ int EDOM ;
+ int _set_errno (int ) ;
+ scalar_t__ malloc (int) ;
 
 wchar_t* _i64tow(__int64 value, wchar_t* string, int radix)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int csty; int prg; int numlayers; int mct; TYPE_3__* tccps; } ;
-typedef  TYPE_2__ opj_tcp_t ;
+typedef TYPE_2__ opj_tcp_t ;
 struct TYPE_7__ {int csty; int numresolutions; int cblkw; int cblkh; int cblksty; int qmfbid; int* prcw; int* prch; int qntsty; int numgbits; int roishift; TYPE_1__* stepsizes; } ;
-typedef  TYPE_3__ opj_tccp_t ;
+typedef TYPE_3__ opj_tccp_t ;
 struct TYPE_5__ {int mant; int expn; } ;
-typedef  size_t OPJ_UINT32 ;
-typedef  size_t OPJ_INT32 ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef size_t OPJ_UINT32 ;
+typedef size_t OPJ_INT32 ;
+typedef int FILE ;
 
-/* Variables and functions */
- int J2K_CCP_QNTSTY_SIQNT ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
+
+ int J2K_CCP_QNTSTY_SIQNT ;
+ int fprintf (int *,char*,...) ;
 
 __attribute__((used)) static void opj_j2k_dump_tile_info(opj_tcp_t * l_default_tile,
                                    OPJ_INT32 numcomps, FILE* out_stream)
@@ -43,7 +43,7 @@ __attribute__((used)) static void opj_j2k_dump_tile_info(opj_tcp_t * l_default_t
             OPJ_UINT32 resno;
             OPJ_INT32 bandno, numbands;
 
-            /* coding style*/
+
             fprintf(out_stream, "\t\t comp %d {\n", compno);
             fprintf(out_stream, "\t\t\t csty=%#x\n", l_tccp->csty);
             fprintf(out_stream, "\t\t\t numresolutions=%d\n", l_tccp->numresolutions);
@@ -58,7 +58,7 @@ __attribute__((used)) static void opj_j2k_dump_tile_info(opj_tcp_t * l_default_t
             }
             fprintf(out_stream, "\n");
 
-            /* quantization style*/
+
             fprintf(out_stream, "\t\t\t qntsty=%d\n", l_tccp->qntsty);
             fprintf(out_stream, "\t\t\t numgbits=%d\n", l_tccp->numgbits);
             fprintf(out_stream, "\t\t\t stepsizes (m,e)=");
@@ -70,11 +70,11 @@ __attribute__((used)) static void opj_j2k_dump_tile_info(opj_tcp_t * l_default_t
             }
             fprintf(out_stream, "\n");
 
-            /* RGN value*/
+
             fprintf(out_stream, "\t\t\t roishift=%d\n", l_tccp->roishift);
 
             fprintf(out_stream, "\t\t }\n");
-        } /*end of component of default tile*/
-        fprintf(out_stream, "\t }\n"); /*end of default tile*/
+        }
+        fprintf(out_stream, "\t }\n");
     }
 }

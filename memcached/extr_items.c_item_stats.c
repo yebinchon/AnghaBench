@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_5__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_5__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct thread_stats {scalar_t__* lru_hits; } ;
 struct TYPE_6__ {unsigned long long evicted_time; scalar_t__ hits_to_temp; scalar_t__ hits_to_cold; scalar_t__ hits_to_warm; scalar_t__ hits_to_hot; scalar_t__ direct_reclaims; scalar_t__ moves_within_lru; scalar_t__ moves_to_warm; scalar_t__ moves_to_cold; scalar_t__ lrutail_reflocked; scalar_t__ crawler_items_checked; scalar_t__ crawler_reclaimed; scalar_t__ evicted_active; scalar_t__ evicted_unfetched; scalar_t__ expired_unfetched; scalar_t__ reclaimed; scalar_t__ tailrepairs; scalar_t__ outofmemory; scalar_t__ evicted_nonzero; scalar_t__ evicted; scalar_t__ mem_requested; } ;
-typedef  TYPE_1__ itemstats_t ;
+typedef TYPE_1__ itemstats_t ;
 struct TYPE_9__ {unsigned long long evicted_time; scalar_t__ direct_reclaims; scalar_t__ moves_within_lru; scalar_t__ moves_to_warm; scalar_t__ moves_to_cold; scalar_t__ lrutail_reflocked; scalar_t__ crawler_items_checked; scalar_t__ crawler_reclaimed; scalar_t__ evicted_active; scalar_t__ evicted_unfetched; scalar_t__ expired_unfetched; scalar_t__ reclaimed; scalar_t__ tailrepairs; scalar_t__ outofmemory; scalar_t__ evicted_nonzero; scalar_t__ evicted; } ;
 struct TYPE_8__ {scalar_t__ lru_maintainer_thread; scalar_t__ temp_lru; } ;
 struct TYPE_7__ {unsigned int time; } ;
-typedef  int /*<<< orphan*/  (* ADD_STAT ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ;
+typedef int (* ADD_STAT ) (int *,int ,int *,int ,void*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPEND_NUM_FMT_STAT (char const*,int,char*,char*,unsigned long long) ; 
-#define  COLD_LRU 131 
-#define  HOT_LRU 130 
- int MAX_NUMBER_OF_SLAB_CLASSES ; 
- int STAT_KEY_LEN ; 
- int STAT_VAL_LEN ; 
-#define  TEMP_LRU 129 
-#define  WARM_LRU 128 
- unsigned int current_time ; 
- TYPE_5__* itemstats ; 
- int /*<<< orphan*/ * lru_locks ; 
- int* lru_type_map ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_3__ settings ; 
- unsigned int* sizes ; 
- scalar_t__* sizes_bytes ; 
- TYPE_2__** tails ; 
- int /*<<< orphan*/  threadlocal_stats_aggregate (struct thread_stats*) ; 
+
+ int APPEND_NUM_FMT_STAT (char const*,int,char*,char*,unsigned long long) ;
+
+
+ int MAX_NUMBER_OF_SLAB_CLASSES ;
+ int STAT_KEY_LEN ;
+ int STAT_VAL_LEN ;
+
+
+ unsigned int current_time ;
+ TYPE_5__* itemstats ;
+ int * lru_locks ;
+ int* lru_type_map ;
+ int memset (TYPE_1__*,int ,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ TYPE_3__ settings ;
+ unsigned int* sizes ;
+ scalar_t__* sizes_bytes ;
+ TYPE_2__** tails ;
+ int threadlocal_stats_aggregate (struct thread_stats*) ;
 
 void item_stats(ADD_STAT add_stats, void *c) {
     struct thread_stats thread_stats;
@@ -54,7 +54,7 @@ void item_stats(ADD_STAT add_stats, void *c) {
         int x;
         int i;
         unsigned int size = 0;
-        unsigned int age  = 0;
+        unsigned int age = 0;
         unsigned int age_hot = 0;
         unsigned int age_warm = 0;
         unsigned int lru_size_map[4];
@@ -83,26 +83,26 @@ void item_stats(ADD_STAT add_stats, void *c) {
             totals.mem_requested += sizes_bytes[i];
             size += sizes[i];
             lru_size_map[x] = sizes[i];
-            if (lru_type_map[x] == COLD_LRU && tails[i] != NULL) {
+            if (lru_type_map[x] == 131 && tails[i] != ((void*)0)) {
                 age = current_time - tails[i]->time;
-            } else if (lru_type_map[x] == HOT_LRU && tails[i] != NULL) {
+            } else if (lru_type_map[x] == 130 && tails[i] != ((void*)0)) {
                 age_hot = current_time - tails[i]->time;
-            } else if (lru_type_map[x] == WARM_LRU && tails[i] != NULL) {
+            } else if (lru_type_map[x] == 128 && tails[i] != ((void*)0)) {
                 age_warm = current_time - tails[i]->time;
             }
-            if (lru_type_map[x] == COLD_LRU)
+            if (lru_type_map[x] == 131)
                 totals.evicted_time = itemstats[i].evicted_time;
             switch (lru_type_map[x]) {
-                case HOT_LRU:
+                case 130:
                     totals.hits_to_hot = thread_stats.lru_hits[i];
                     break;
-                case WARM_LRU:
+                case 128:
                     totals.hits_to_warm = thread_stats.lru_hits[i];
                     break;
-                case COLD_LRU:
+                case 131:
                     totals.hits_to_cold = thread_stats.lru_hits[i];
                     break;
-                case TEMP_LRU:
+                case 129:
                     totals.hits_to_temp = thread_stats.lru_hits[i];
                     break;
             }
@@ -173,6 +173,6 @@ void item_stats(ADD_STAT add_stats, void *c) {
         }
     }
 
-    /* getting here means both ascii and binary terminators fit */
-    add_stats(NULL, 0, NULL, 0, c);
+
+    add_stats(((void*)0), 0, ((void*)0), 0, c);
 }

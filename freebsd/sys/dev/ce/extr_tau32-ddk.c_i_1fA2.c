@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_9__ ;
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_29__ TYPE_9__ ;
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
 struct TYPE_26__ {TYPE_9__* WHQ_F1; TYPE_9__* pBSeu3; } ;
 struct TYPE_27__ {scalar_t__ DL14H3; scalar_t__ jXwP42; TYPE_6__ CUhqx4; } ;
-typedef  TYPE_7__ kWMzp1 ;
+typedef TYPE_7__ kWMzp1 ;
 struct TYPE_25__ {TYPE_9__* OXCDa4; TYPE_9__* neQ2f1; } ;
 struct TYPE_29__ {TYPE_5__ woMv11; TYPE_8__* a02Gz4; } ;
 struct TYPE_23__ {int r9yJB; int Avyuu1; scalar_t__ n1IfW3; } ;
@@ -29,15 +29,15 @@ struct TYPE_22__ {scalar_t__ Avyuu1; scalar_t__ Fcabx; scalar_t__ BLFVJ4; } ;
 struct TYPE_21__ {int LigBO2; } ;
 struct TYPE_24__ {TYPE_3__ JI0PC2; TYPE_2__ uwYQG1; TYPE_1__ NNh015; } ;
 struct TYPE_28__ {unsigned long j5MYx; scalar_t__ JbjvO4; unsigned int QvZLK; TYPE_9__* bPudJ3; TYPE_4__ NpyOc1; } ;
-typedef  TYPE_8__ QDNE6 ;
-typedef  TYPE_9__ DCf0T2 ;
+typedef TYPE_8__ QDNE6 ;
+typedef TYPE_9__ DCf0T2 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G7h9S3 (TYPE_7__*,TYPE_9__*) ; 
- TYPE_9__* ITvPG2 (TYPE_7__*) ; 
- int /*<<< orphan*/  WQjAp4 (TYPE_7__*,TYPE_8__*,TYPE_9__*) ; 
- int /*<<< orphan*/  YBrPF4 (TYPE_7__*) ; 
- int /*<<< orphan*/  yoLEn3 (TYPE_7__*) ; 
+
+ int G7h9S3 (TYPE_7__*,TYPE_9__*) ;
+ TYPE_9__* ITvPG2 (TYPE_7__*) ;
+ int WQjAp4 (TYPE_7__*,TYPE_8__*,TYPE_9__*) ;
+ int YBrPF4 (TYPE_7__*) ;
+ int yoLEn3 (TYPE_7__*) ;
 
 __attribute__((used)) static int i_1fA2(kWMzp1*J7Iki4,QDNE6*a02Gz4
 ){int VpYRo1=0;DCf0T2*esWTk2;a02Gz4->j5MYx=0;a02Gz4->bPudJ3=0;{if(!(

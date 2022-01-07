@@ -1,30 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  format ;
 
-/* Variables and functions */
-#define  BMP_DFMT 137 
-#define  J2K_CFMT 136 
-#define  JP2_CFMT 135 
-#define  PGX_DFMT 134 
-#define  PNG_DFMT 133 
-#define  PXM_DFMT 132 
-#define  RAWL_DFMT 131 
-#define  RAW_DFMT 130 
-#define  TGA_DFMT 129 
-#define  TIF_DFMT 128 
- scalar_t__ strcasecmp (char*,char const*) ; 
- char* strrchr (char*,char) ; 
+
+
+
+typedef int format ;
+ scalar_t__ strcasecmp (char*,char const*) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static int get_file_format(char *filename)
 {
@@ -33,10 +21,10 @@ __attribute__((used)) static int get_file_format(char *filename)
         "pgx", "pnm", "pgm", "ppm", "pbm", "pam", "bmp", "tif", "raw", "rawl", "tga", "png", "j2k", "jp2", "j2c", "jpc"
     };
     static const int format[] = {
-        PGX_DFMT, PXM_DFMT, PXM_DFMT, PXM_DFMT, PXM_DFMT, PXM_DFMT, BMP_DFMT, TIF_DFMT, RAW_DFMT, RAWL_DFMT, TGA_DFMT, PNG_DFMT, J2K_CFMT, JP2_CFMT, J2K_CFMT, J2K_CFMT
+        134, 132, 132, 132, 132, 132, 137, 128, 130, 131, 129, 133, 136, 135, 136, 136
     };
     char * ext = strrchr(filename, '.');
-    if (ext == NULL) {
+    if (ext == ((void*)0)) {
         return -1;
     }
     ext++;

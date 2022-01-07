@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  predicate ;
 
-/* Variables and functions */
- scalar_t__ MAX_CONDITION_LEN ; 
- int MAX_PREDICATES ; 
- int* close_bracket ; 
- scalar_t__ i_cmp ; 
- scalar_t__ i_logical ; 
- int /*<<< orphan*/ * predicate_parce (char*,int /*<<< orphan*/ ,scalar_t__,int) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  wrn (char*,char*) ; 
+
+
+
+typedef int predicate ;
+
+
+ scalar_t__ MAX_CONDITION_LEN ;
+ int MAX_PREDICATES ;
+ int* close_bracket ;
+ scalar_t__ i_cmp ;
+ scalar_t__ i_logical ;
+ int * predicate_parce (char*,int ,scalar_t__,int) ;
+ scalar_t__ strlen (char*) ;
+ int wrn (char*,char*) ;
 
 predicate *predicate_init (char *condition, int type_id) {
-  if (condition == NULL || condition[0] == 0 || strlen (condition) + 1 > MAX_CONDITION_LEN) {
-    return NULL;
+  if (condition == ((void*)0) || condition[0] == 0 || strlen (condition) + 1 > MAX_CONDITION_LEN) {
+    return ((void*)0);
   }
 
   int i;
@@ -37,7 +37,7 @@ predicate *predicate_init (char *condition, int type_id) {
       stack_pos[stack_n++] = i;
     } else if (condition[i] == ')') {
       if (stack_n == 0) {
-        return NULL;
+        return ((void*)0);
       }
       close_bracket[stack_pos[--stack_n]] = i;
     } else {
@@ -49,10 +49,10 @@ predicate *predicate_init (char *condition, int type_id) {
   }
   if (condition[i]) {
     wrn("MAX_PREDICATES exceeded on condition %s\n", condition);
-    return NULL;
+    return ((void*)0);
   }
   if (stack_n != 0) {
-    return NULL;
+    return ((void*)0);
   }
 
   i_cmp = i_logical = 0;

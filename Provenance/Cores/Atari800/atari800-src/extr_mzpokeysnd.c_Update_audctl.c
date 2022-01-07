@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int mdivk; int c1_f0; int c3_f2; int c0_hf; int c2_hf; unsigned int c0divpos; int c1divpos; unsigned int c2divpos; int c3divpos; int c0sw4; int c1sw4; } ;
-typedef  TYPE_1__ PokeyState ;
+typedef TYPE_1__ PokeyState ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void Update_audctl(PokeyState* ps, unsigned char val)
 {

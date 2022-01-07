@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {long long item_id; } ;
-typedef  TYPE_1__ item_t ;
-typedef  int get_item_f_mode ;
+typedef TYPE_1__ item_t ;
+typedef int get_item_f_mode ;
 
-/* Variables and functions */
-#define  ADD_NOT_FOUND_ITEM 129 
- long long ITEMS_HASH_PRIME ; 
- int /*<<< orphan*/  ITEM_DELETED (TYPE_1__*) ; 
- TYPE_1__** Items ; 
- int /*<<< orphan*/  MAX_ITEMS ; 
-#define  ONLY_FIND 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tot_freed_deleted_items ; 
- int /*<<< orphan*/  tot_items ; 
- int /*<<< orphan*/  zfree (TYPE_1__*,int) ; 
- TYPE_1__* zmalloc0 (int) ; 
+
+
+ long long ITEMS_HASH_PRIME ;
+ int ITEM_DELETED (TYPE_1__*) ;
+ TYPE_1__** Items ;
+ int MAX_ITEMS ;
+
+ int assert (int ) ;
+ int tot_freed_deleted_items ;
+ int tot_items ;
+ int zfree (TYPE_1__*,int) ;
+ TYPE_1__* zmalloc0 (int) ;
 
 __attribute__((used)) static item_t *get_item_f (long long item_id, get_item_f_mode force) {
   int h1, h2;
@@ -36,7 +36,7 @@ __attribute__((used)) static item_t *get_item_f (long long item_id, get_item_f_m
   h2 = 1 + (item_id % (ITEMS_HASH_PRIME - 1));
 
   switch (force) {
-    case ONLY_FIND:
+    case 128:
       while ((D = Items[h1]) != 0) {
         if (D->item_id == item_id) {
           return D;
@@ -45,7 +45,7 @@ __attribute__((used)) static item_t *get_item_f (long long item_id, get_item_f_m
         if (h1 >= ITEMS_HASH_PRIME) { h1 -= ITEMS_HASH_PRIME; }
       }
       return 0;
-    case ADD_NOT_FOUND_ITEM:
+    case 129:
       while ((D = Items[h1]) != 0) {
         if (ITEM_DELETED(D)) {
           break;

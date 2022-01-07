@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_DISCONNECTED ; 
- int /*<<< orphan*/  PackGetInt (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int PACK ;
+
+
+ int ERR_DISCONNECTED ;
+ int PackGetInt (int *,char*) ;
 
 UINT RpcGetError(PACK *p)
 {
-	// Validate arguments
-	if (p == NULL)
-	{
-		return ERR_DISCONNECTED;
-	}
 
-	return PackGetInt(p, "error_code");
+ if (p == ((void*)0))
+ {
+  return ERR_DISCONNECTED;
+ }
+
+ return PackGetInt(p, "error_code");
 }

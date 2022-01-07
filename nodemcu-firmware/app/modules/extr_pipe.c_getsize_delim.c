@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int CHAR_DELIM ; 
- int CHAR_DELIM_KEEP ; 
- scalar_t__ LUA_TNUMBER ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnil (int /*<<< orphan*/ *,int) ; 
- char* lua_tolstring (int /*<<< orphan*/ *,int,size_t*) ; 
- scalar_t__ lua_type (int /*<<< orphan*/ *,int) ; 
 
-__attribute__((used)) static char getsize_delim (lua_State *L, int ndx, int *len) {     // [-0, +0, v]
+
+
+typedef int lua_State ;
+
+
+ int CHAR_DELIM ;
+ int CHAR_DELIM_KEEP ;
+ scalar_t__ LUA_TNUMBER ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_checkinteger (int *,int) ;
+ scalar_t__ lua_isnil (int *,int) ;
+ char* lua_tolstring (int *,int,size_t*) ;
+ scalar_t__ lua_type (int *,int) ;
+
+__attribute__((used)) static char getsize_delim (lua_State *L, int ndx, int *len) {
   char delim;
-  int  n;
+  int n;
   if( lua_type( L, ndx ) == LUA_TNUMBER ) {
     n = luaL_checkinteger( L, ndx );
     luaL_argcheck(L, n > 0, ndx, "invalid chunk size");

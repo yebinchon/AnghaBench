@@ -1,96 +1,96 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  userlist_entry_t ;
-struct TYPE_6__ {int user_id; scalar_t__ list_cnt; scalar_t__ hash_cnt; int /*<<< orphan*/  magic; } ;
+
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int userlist_entry_t ;
+struct TYPE_6__ {int user_id; scalar_t__ list_cnt; scalar_t__ hash_cnt; int magic; } ;
 struct TYPE_5__ {int delmsg_cnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ CurH ; 
- scalar_t__ CurL ; 
- int DEFAULT_CUTOFF_SECONDS ; 
- int /*<<< orphan*/  FILE_BUFFER_SIZE ; 
- int /*<<< orphan*/  MAIL_INDEX_BLOCK_MAGIC ; 
- unsigned int MAX_USER_ID ; 
- int M_cnt ; 
- int /*<<< orphan*/ * MetaB ; 
- int /*<<< orphan*/ ** MetaP ; 
- int PRIME ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_4__ User ; 
- TYPE_1__* UserMod ; 
- TYPE_1__** UserModHeaders ; 
- int* Users ; 
- int /*<<< orphan*/  assert (int) ; 
- int atoi (void*) ; 
- scalar_t__ binlog_load_time ; 
- scalar_t__ binlog_loaded_size ; 
- void* binlog_suffix ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int cutoff_seconds ; 
- int /*<<< orphan*/  do_merge () ; 
- scalar_t__ dyn_cur ; 
- scalar_t__ dyn_first ; 
- scalar_t__ dyn_last ; 
- int /*<<< orphan*/  dyn_purge_all_deleted_messages () ; 
- TYPE_1__* dyn_user_header (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__* fd ; 
- int /*<<< orphan*/  flush_out () ; 
- char** fnames ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int* fsize ; 
- scalar_t__ get_utime (int /*<<< orphan*/ ) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- scalar_t__ load_next_user () ; 
- scalar_t__ log_cutoff_pos ; 
- scalar_t__ log_pos ; 
- scalar_t__ log_wpos ; 
- scalar_t__ lseek (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- void* metaindex_suffix ; 
- int /*<<< orphan*/  my_sort (int /*<<< orphan*/ ,int) ; 
- char* new_logname ; 
- char* new_metaindexname ; 
- int now ; 
- int /*<<< orphan*/ * obuff ; 
- char* old_logname ; 
- int /*<<< orphan*/  open_file (int,char*,int) ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_stats () ; 
- char* progname ; 
- int purged_msgs_cnt ; 
- int read (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  replay_log (int) ; 
- scalar_t__ rpos ; 
- int /*<<< orphan*/  set_log_data (scalar_t__,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,void*) ; 
- int start_time ; 
- int /*<<< orphan*/  stderr ; 
- int time (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- int /*<<< orphan*/  users_added ; 
- int /*<<< orphan*/  users_dropped ; 
- int verbosity ; 
- scalar_t__ wpos ; 
- int write (scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+ int CLOCK_MONOTONIC ;
+ scalar_t__ CurH ;
+ scalar_t__ CurL ;
+ int DEFAULT_CUTOFF_SECONDS ;
+ int FILE_BUFFER_SIZE ;
+ int MAIL_INDEX_BLOCK_MAGIC ;
+ unsigned int MAX_USER_ID ;
+ int M_cnt ;
+ int * MetaB ;
+ int ** MetaP ;
+ int PRIME ;
+ int SEEK_SET ;
+ TYPE_4__ User ;
+ TYPE_1__* UserMod ;
+ TYPE_1__** UserModHeaders ;
+ int* Users ;
+ int assert (int) ;
+ int atoi (void*) ;
+ scalar_t__ binlog_load_time ;
+ scalar_t__ binlog_loaded_size ;
+ void* binlog_suffix ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int close (scalar_t__) ;
+ int cutoff_seconds ;
+ int do_merge () ;
+ scalar_t__ dyn_cur ;
+ scalar_t__ dyn_first ;
+ scalar_t__ dyn_last ;
+ int dyn_purge_all_deleted_messages () ;
+ TYPE_1__* dyn_user_header (int,int ) ;
+ int exit (int) ;
+ scalar_t__* fd ;
+ int flush_out () ;
+ char** fnames ;
+ int fprintf (int ,char*,...) ;
+ int* fsize ;
+ scalar_t__ get_utime (int ) ;
+ int getopt (int,char**,char*) ;
+ int init_dyn_data () ;
+ scalar_t__ load_next_user () ;
+ scalar_t__ log_cutoff_pos ;
+ scalar_t__ log_pos ;
+ scalar_t__ log_wpos ;
+ scalar_t__ lseek (scalar_t__,scalar_t__,int ) ;
+ void* metaindex_suffix ;
+ int my_sort (int ,int) ;
+ char* new_logname ;
+ char* new_metaindexname ;
+ int now ;
+ int * obuff ;
+ char* old_logname ;
+ int open_file (int,char*,int) ;
+ void* optarg ;
+ int optind ;
+ int output_stats () ;
+ char* progname ;
+ int purged_msgs_cnt ;
+ int read (scalar_t__,int *,int ) ;
+ int replay_log (int) ;
+ scalar_t__ rpos ;
+ int set_log_data (scalar_t__,int) ;
+ int snprintf (char*,int,char*,char*,void*) ;
+ int start_time ;
+ int stderr ;
+ int time (int ) ;
+ int usage () ;
+ char* username ;
+ int users_added ;
+ int users_dropped ;
+ int verbosity ;
+ scalar_t__ wpos ;
+ int write (scalar_t__,int *,int) ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -116,7 +116,7 @@ int main (int argc, char *argv[]) {
     case 'c':
       cutoff_seconds = atoi(optarg);
       if (cutoff_seconds > 1000000 || cutoff_seconds < 0) {
-	cutoff_seconds = DEFAULT_CUTOFF_SECONDS;
+ cutoff_seconds = DEFAULT_CUTOFF_SECONDS;
       }
     }
   }
@@ -177,8 +177,8 @@ int main (int argc, char *argv[]) {
     }
 
     if (verbosity) {
-      fprintf (stderr, "replay binlog file: done, pos=%lld, cutoff_pos=%lld, alloc_mem=%ld out of %ld, time %.06lfs\n", 
-	       (long long) log_pos, (long long) log_cutoff_pos, (long) (dyn_cur - dyn_first), (long) (dyn_last - dyn_first), binlog_load_time);
+      fprintf (stderr, "replay binlog file: done, pos=%lld, cutoff_pos=%lld, alloc_mem=%ld out of %ld, time %.06lfs\n",
+        (long long) log_pos, (long long) log_cutoff_pos, (long) (dyn_cur - dyn_first), (long) (dyn_last - dyn_first), binlog_load_time);
     }
   }
 
@@ -194,13 +194,13 @@ int main (int argc, char *argv[]) {
     if (User.user_id && (unsigned) User.user_id < MAX_USER_ID) {
       UserMod = dyn_user_header (User.user_id, 0);
       if (UserMod && UserMod->delmsg_cnt == -239) {
-	fprintf (stderr, "duplicate user id %d in file %s at position %lld\n", User.user_id, fnames[0], (long long) rpos);
+ fprintf (stderr, "duplicate user id %d in file %s at position %lld\n", User.user_id, fnames[0], (long long) rpos);
       } else {
-	// fprintf (stderr, "processing user %ld\n", User.user_id);
-	do_merge ();
-	if (UserMod) {
-	  UserMod->delmsg_cnt = -239;
-	}
+
+ do_merge ();
+ if (UserMod) {
+   UserMod->delmsg_cnt = -239;
+ }
       }
     } else {
       users_dropped++;
@@ -220,20 +220,20 @@ int main (int argc, char *argv[]) {
       User.user_id = Users[i];
       users_added++;
       if (User.user_id && (unsigned) User.user_id < MAX_USER_ID) {
-	User.hash_cnt = User.list_cnt = 0;
-	CurH = 0;
-	CurL = 0;
-	if (verbosity > 1) {
-	  fprintf (stderr, "adding new user %d\n", User.user_id);
-	}
-	do_merge ();
+ User.hash_cnt = User.list_cnt = 0;
+ CurH = 0;
+ CurL = 0;
+ if (verbosity > 1) {
+   fprintf (stderr, "adding new user %d\n", User.user_id);
+ }
+ do_merge ();
       } else {
-	users_dropped++;
-	fprintf (stderr, "ignoring messages of new user %d (user_id out of bounds)\n", User.user_id);
+ users_dropped++;
+ fprintf (stderr, "ignoring messages of new user %d (user_id out of bounds)\n", User.user_id);
       }
     }
   }
- 
+
   flush_out();
 
   if (verbosity) {

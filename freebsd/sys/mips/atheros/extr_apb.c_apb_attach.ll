@@ -1,0 +1,203 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/mips/atheros/extr_apb.c_apb_attach.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/mips/atheros/extr_apb.c_apb_attach.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.apb_softc = type { i32*, i32, i32*, %struct.TYPE_3__, %struct.TYPE_3__ }
+%struct.TYPE_3__ = type { i8*, i8* }
+
+@.str = private unnamed_addr constant [15 x i8] c"APB Bus bridge\00", align 1
+@RMAN_ARRAY = common dso_local global i8* null, align 8
+@.str.1 = private unnamed_addr constant [18 x i8] c"APB memory window\00", align 1
+@AR71XX_APB_BASE = common dso_local global i64 0, align 8
+@AR71XX_APB_SIZE = common dso_local global i64 0, align 8
+@.str.2 = private unnamed_addr constant [41 x i8] c"apb_attach: failed to set up memory rman\00", align 1
+@.str.3 = private unnamed_addr constant [8 x i8] c"APB IRQ\00", align 1
+@APB_IRQ_BASE = common dso_local global i64 0, align 8
+@APB_IRQ_END = common dso_local global i64 0, align 8
+@.str.4 = private unnamed_addr constant [38 x i8] c"apb_attach: failed to set up IRQ rman\00", align 1
+@SYS_RES_IRQ = common dso_local global i32 0, align 4
+@RF_SHAREABLE = common dso_local global i32 0, align 4
+@RF_ACTIVE = common dso_local global i32 0, align 4
+@.str.5 = private unnamed_addr constant [33 x i8] c"unable to allocate IRQ resource\0A\00", align 1
+@ENXIO = common dso_local global i32 0, align 4
+@INTR_TYPE_MISC = common dso_local global i32 0, align 4
+@apb_filter = common dso_local global i32 0, align 4
+@.str.6 = private unnamed_addr constant [47 x i8] c"WARNING: unable to register interrupt handler\0A\00", align 1
+@APB_INTR_PMC = common dso_local global i64 0, align 8
+@.str.7 = private unnamed_addr constant [14 x i8] c"apb irq5: pmc\00", align 1
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (i32)* @apb_attach to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @apb_attach(i32 %0) #0 {
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.apb_softc*, align 8
+  %5 = alloca i32, align 4
+  store i32 %0, i32* %3, align 4
+  %6 = load i32, i32* %3, align 4
+  %7 = call %struct.apb_softc* @device_get_softc(i32 %6)
+  store %struct.apb_softc* %7, %struct.apb_softc** %4, align 8
+  store i32 0, i32* %5, align 4
+  %8 = load i32, i32* %3, align 4
+  %9 = call i32 @device_set_desc(i32 %8, i8* getelementptr inbounds ([15 x i8], [15 x i8]* @.str, i64 0, i64 0))
+  %10 = load i8*, i8** @RMAN_ARRAY, align 8
+  %11 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %12 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %11, i32 0, i32 4
+  %13 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %12, i32 0, i32 1
+  store i8* %10, i8** %13, align 8
+  %14 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %15 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %14, i32 0, i32 4
+  %16 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %15, i32 0, i32 0
+  store i8* getelementptr inbounds ([18 x i8], [18 x i8]* @.str.1, i64 0, i64 0), i8** %16, align 8
+  %17 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %18 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %17, i32 0, i32 4
+  %19 = call i64 @rman_init(%struct.TYPE_3__* %18)
+  %20 = icmp ne i64 %19, 0
+  br i1 %20, label %31, label %21
+
+21:                                               ; preds = %1
+  %22 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %23 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %22, i32 0, i32 4
+  %24 = load i64, i64* @AR71XX_APB_BASE, align 8
+  %25 = load i64, i64* @AR71XX_APB_BASE, align 8
+  %26 = load i64, i64* @AR71XX_APB_SIZE, align 8
+  %27 = add nsw i64 %25, %26
+  %28 = sub nsw i64 %27, 1
+  %29 = call i64 @rman_manage_region(%struct.TYPE_3__* %23, i64 %24, i64 %28)
+  %30 = icmp ne i64 %29, 0
+  br i1 %30, label %31, label %33
+
+31:                                               ; preds = %21, %1
+  %32 = call i32 @panic(i8* getelementptr inbounds ([41 x i8], [41 x i8]* @.str.2, i64 0, i64 0))
+  br label %33
+
+33:                                               ; preds = %31, %21
+  %34 = load i8*, i8** @RMAN_ARRAY, align 8
+  %35 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %36 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %35, i32 0, i32 3
+  %37 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %36, i32 0, i32 1
+  store i8* %34, i8** %37, align 8
+  %38 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %39 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %38, i32 0, i32 3
+  %40 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %39, i32 0, i32 0
+  store i8* getelementptr inbounds ([8 x i8], [8 x i8]* @.str.3, i64 0, i64 0), i8** %40, align 8
+  %41 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %42 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %41, i32 0, i32 3
+  %43 = call i64 @rman_init(%struct.TYPE_3__* %42)
+  %44 = icmp ne i64 %43, 0
+  br i1 %44, label %52, label %45
+
+45:                                               ; preds = %33
+  %46 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %47 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %46, i32 0, i32 3
+  %48 = load i64, i64* @APB_IRQ_BASE, align 8
+  %49 = load i64, i64* @APB_IRQ_END, align 8
+  %50 = call i64 @rman_manage_region(%struct.TYPE_3__* %47, i64 %48, i64 %49)
+  %51 = icmp ne i64 %50, 0
+  br i1 %51, label %52, label %54
+
+52:                                               ; preds = %45, %33
+  %53 = call i32 @panic(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str.4, i64 0, i64 0))
+  br label %54
+
+54:                                               ; preds = %52, %45
+  %55 = load i32, i32* %3, align 4
+  %56 = load i32, i32* @SYS_RES_IRQ, align 4
+  %57 = load i32, i32* @RF_SHAREABLE, align 4
+  %58 = load i32, i32* @RF_ACTIVE, align 4
+  %59 = or i32 %57, %58
+  %60 = call i32* @bus_alloc_resource_any(i32 %55, i32 %56, i32* %5, i32 %59)
+  %61 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %62 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %61, i32 0, i32 2
+  store i32* %60, i32** %62, align 8
+  %63 = icmp eq i32* %60, null
+  br i1 %63, label %64, label %68
+
+64:                                               ; preds = %54
+  %65 = load i32, i32* %3, align 4
+  %66 = call i32 @device_printf(i32 %65, i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.5, i64 0, i64 0))
+  %67 = load i32, i32* @ENXIO, align 4
+  store i32 %67, i32* %2, align 4
+  br label %100
+
+68:                                               ; preds = %54
+  %69 = load i32, i32* %3, align 4
+  %70 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %71 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %70, i32 0, i32 2
+  %72 = load i32*, i32** %71, align 8
+  %73 = load i32, i32* @INTR_TYPE_MISC, align 4
+  %74 = load i32, i32* @apb_filter, align 4
+  %75 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %76 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %77 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %76, i32 0, i32 1
+  %78 = call i64 @bus_setup_intr(i32 %69, i32* %72, i32 %73, i32 %74, i32* null, %struct.apb_softc* %75, i32* %77)
+  %79 = icmp ne i64 %78, 0
+  br i1 %79, label %80, label %84
+
+80:                                               ; preds = %68
+  %81 = load i32, i32* %3, align 4
+  %82 = call i32 @device_printf(i32 %81, i8* getelementptr inbounds ([47 x i8], [47 x i8]* @.str.6, i64 0, i64 0))
+  %83 = load i32, i32* @ENXIO, align 4
+  store i32 %83, i32* %2, align 4
+  br label %100
+
+84:                                               ; preds = %68
+  %85 = load i32, i32* %3, align 4
+  %86 = call i32 @bus_generic_probe(i32 %85)
+  %87 = load i32, i32* %3, align 4
+  %88 = call i32 @bus_enumerate_hinted_children(i32 %87)
+  %89 = load i32, i32* %3, align 4
+  %90 = call i32 @bus_generic_attach(i32 %89)
+  %91 = load i64, i64* @APB_INTR_PMC, align 8
+  %92 = inttoptr i64 %91 to i8*
+  %93 = call i32 @apb_unmask_irq(i8* %92)
+  %94 = call i32 @mips_intrcnt_create(i8* getelementptr inbounds ([14 x i8], [14 x i8]* @.str.7, i64 0, i64 0))
+  %95 = load %struct.apb_softc*, %struct.apb_softc** %4, align 8
+  %96 = getelementptr inbounds %struct.apb_softc, %struct.apb_softc* %95, i32 0, i32 0
+  %97 = load i32*, i32** %96, align 8
+  %98 = load i64, i64* @APB_INTR_PMC, align 8
+  %99 = getelementptr inbounds i32, i32* %97, i64 %98
+  store i32 %94, i32* %99, align 4
+  store i32 0, i32* %2, align 4
+  br label %100
+
+100:                                              ; preds = %84, %80, %64
+  %101 = load i32, i32* %2, align 4
+  ret i32 %101
+}
+
+declare dso_local %struct.apb_softc* @device_get_softc(i32) #1
+
+declare dso_local i32 @device_set_desc(i32, i8*) #1
+
+declare dso_local i64 @rman_init(%struct.TYPE_3__*) #1
+
+declare dso_local i64 @rman_manage_region(%struct.TYPE_3__*, i64, i64) #1
+
+declare dso_local i32 @panic(i8*) #1
+
+declare dso_local i32* @bus_alloc_resource_any(i32, i32, i32*, i32) #1
+
+declare dso_local i32 @device_printf(i32, i8*) #1
+
+declare dso_local i64 @bus_setup_intr(i32, i32*, i32, i32, i32*, %struct.apb_softc*, i32*) #1
+
+declare dso_local i32 @bus_generic_probe(i32) #1
+
+declare dso_local i32 @bus_enumerate_hinted_children(i32) #1
+
+declare dso_local i32 @bus_generic_attach(i32) #1
+
+declare dso_local i32 @apb_unmask_irq(i8*) #1
+
+declare dso_local i32 @mips_intrcnt_create(i8*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

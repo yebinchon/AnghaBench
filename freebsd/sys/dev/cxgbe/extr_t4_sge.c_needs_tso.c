@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int csum_flags; } ;
 struct mbuf {TYPE_1__ m_pkthdr; } ;
 
-/* Variables and functions */
- int CSUM_TSO ; 
- int /*<<< orphan*/  M_ASSERTPKTHDR (struct mbuf*) ; 
+
+ int CSUM_TSO ;
+ int M_ASSERTPKTHDR (struct mbuf*) ;
 
 __attribute__((used)) static inline int
 needs_tso(struct mbuf *m)
 {
 
-	M_ASSERTPKTHDR(m);
+ M_ASSERTPKTHDR(m);
 
-	return (m->m_pkthdr.csum_flags & CSUM_TSO);
+ return (m->m_pkthdr.csum_flags & CSUM_TSO);
 }

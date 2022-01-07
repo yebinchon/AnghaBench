@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int int64_t ;
-struct TYPE_4__ {int phase_count_compensation; int phase_count; int dst_incr_mod; int filter_alloc; int felem_size; int filter_shift; int src_incr; int dst_incr; int ideal_dst_incr; int dst_incr_div; int index; int /*<<< orphan*/ * filter_bank; int /*<<< orphan*/  kaiser_beta; int /*<<< orphan*/  filter_type; int /*<<< orphan*/  filter_length; int /*<<< orphan*/  factor; int /*<<< orphan*/  frac; } ;
-typedef  TYPE_1__ ResampleContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT32_MAX ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/ * av_calloc (int,int) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_reduce (int*,int*,int,int,int) ; 
- int build_filter (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+struct TYPE_4__ {int phase_count_compensation; int phase_count; int dst_incr_mod; int filter_alloc; int felem_size; int filter_shift; int src_incr; int dst_incr; int ideal_dst_incr; int dst_incr_div; int index; int * filter_bank; int kaiser_beta; int filter_type; int filter_length; int factor; int frac; } ;
+typedef TYPE_1__ ResampleContext ;
+
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ int ENOMEM ;
+ int INT32_MAX ;
+ int av_assert0 (int) ;
+ int * av_calloc (int,int) ;
+ int av_freep (int **) ;
+ int av_reduce (int*,int*,int,int,int) ;
+ int build_filter (TYPE_1__*,int *,int ,int ,int,int,int,int ,int ) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static int rebuild_filter_bank_with_compensation(ResampleContext *c)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int rebuild_filter_bank_with_compensation(ResampleC
         return ret;
     }
     memcpy(new_filter_bank + (c->filter_alloc*phase_count+1)*c->felem_size, new_filter_bank, (c->filter_alloc-1)*c->felem_size);
-    memcpy(new_filter_bank + (c->filter_alloc*phase_count  )*c->felem_size, new_filter_bank + (c->filter_alloc - 1)*c->felem_size, c->felem_size);
+    memcpy(new_filter_bank + (c->filter_alloc*phase_count )*c->felem_size, new_filter_bank + (c->filter_alloc - 1)*c->felem_size, c->felem_size);
 
     if (!av_reduce(&new_src_incr, &new_dst_incr, c->src_incr,
                    c->dst_incr * (int64_t)(phase_count/c->phase_count), INT32_MAX/2))
@@ -67,10 +67,10 @@ __attribute__((used)) static int rebuild_filter_bank_with_compensation(ResampleC
         c->src_incr *= 2;
     }
     c->ideal_dst_incr = c->dst_incr;
-    c->dst_incr_div   = c->dst_incr / c->src_incr;
-    c->dst_incr_mod   = c->dst_incr % c->src_incr;
-    c->index         *= phase_count / c->phase_count;
-    c->phase_count    = phase_count;
+    c->dst_incr_div = c->dst_incr / c->src_incr;
+    c->dst_incr_mod = c->dst_incr % c->src_incr;
+    c->index *= phase_count / c->phase_count;
+    c->phase_count = phase_count;
     av_freep(&c->filter_bank);
     c->filter_bank = new_filter_bank;
     return 0;

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  GUID ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSIDFromString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_FILE_NOT_FOUND ; 
- scalar_t__ ERROR_NO_MORE_ITEMS ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  S_OK ; 
+
+
+
+typedef int WCHAR ;
+typedef size_t UINT ;
+typedef int LPCWSTR ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef int HKEY ;
+typedef int GUID ;
+typedef int DWORD ;
+
+
+ int CLSIDFromString (int *,int *) ;
+ scalar_t__ ERROR_FILE_NOT_FOUND ;
+ scalar_t__ ERROR_NO_MORE_ITEMS ;
+ scalar_t__ ERROR_SUCCESS ;
+ int E_FAIL ;
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int ) ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyExW (int ,size_t,int *,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int ,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKeyW (int ,int *,int *,int *,size_t*,int *,int *,int *,int *,int *,int *,int *) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT ComponentInfo_GetGuidList(HKEY classkey, LPCWSTR subkeyname,
     UINT buffersize, GUID *buffer, UINT *actual_size)
@@ -63,7 +63,7 @@ __attribute__((used)) static HRESULT ComponentInfo_GetGuidList(HKEY classkey, LP
         while (items_returned < buffersize)
         {
             ret = RegEnumKeyExW(subkey, items_returned, guid_string,
-                &guid_string_size, NULL, NULL, NULL, NULL);
+                &guid_string_size, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
 
             if (ret != ERROR_SUCCESS)
             {
@@ -92,7 +92,7 @@ __attribute__((used)) static HRESULT ComponentInfo_GetGuidList(HKEY classkey, LP
     }
     else
     {
-        ret = RegQueryInfoKeyW(subkey, NULL, NULL, NULL, actual_size, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+        ret = RegQueryInfoKeyW(subkey, ((void*)0), ((void*)0), ((void*)0), actual_size, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         if (ret != ERROR_SUCCESS)
             hr = HRESULT_FROM_WIN32(ret);
     }

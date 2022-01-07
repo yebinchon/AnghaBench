@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int CAP_AUDIT_CONTROL ; 
- int CAP_CHOWN ; 
- int CAP_DAC_OVERRIDE ; 
- int CAP_DAC_READ_SEARCH ; 
- int CAP_FOWNER ; 
- int CAP_MAC_OVERRIDE ; 
- int CAP_SETGID ; 
- int CAP_SETUID ; 
- int CAP_SYSLOG ; 
- int CAP_SYS_ADMIN ; 
- int CAP_SYS_PTRACE ; 
- int UINT64_C (int) ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int capability_list_length () ; 
- scalar_t__ capability_set_from_string (char*,int*) ; 
- int /*<<< orphan*/  test_capability_set_one (int,char*) ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int CAP_AUDIT_CONTROL ;
+ int CAP_CHOWN ;
+ int CAP_DAC_OVERRIDE ;
+ int CAP_DAC_READ_SEARCH ;
+ int CAP_FOWNER ;
+ int CAP_MAC_OVERRIDE ;
+ int CAP_SETGID ;
+ int CAP_SETUID ;
+ int CAP_SYSLOG ;
+ int CAP_SYS_ADMIN ;
+ int CAP_SYS_PTRACE ;
+ int UINT64_C (int) ;
+ int assert_se (int) ;
+ int capability_list_length () ;
+ scalar_t__ capability_set_from_string (char*,int*) ;
+ int test_capability_set_one (int,char*) ;
 
 __attribute__((used)) static void test_capability_set(void) {
         uint64_t c;
 
-        assert_se(capability_set_from_string(NULL, &c) == 0);
+        assert_se(capability_set_from_string(((void*)0), &c) == 0);
         assert_se(c == 0);
 
         assert_se(capability_set_from_string("", &c) == 0);

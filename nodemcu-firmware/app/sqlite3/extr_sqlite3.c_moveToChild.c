@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_6__ {scalar_t__ nSize; } ;
-struct TYPE_7__ {scalar_t__ eState; int iPage; int curFlags; int /*<<< orphan*/  curPagerFlags; int /*<<< orphan*/ * apPage; scalar_t__ ix; scalar_t__* aiIdx; TYPE_1__ info; int /*<<< orphan*/ * pBt; } ;
-typedef  int /*<<< orphan*/  BtShared ;
-typedef  TYPE_2__ BtCursor ;
+struct TYPE_7__ {scalar_t__ eState; int iPage; int curFlags; int curPagerFlags; int * apPage; scalar_t__ ix; scalar_t__* aiIdx; TYPE_1__ info; int * pBt; } ;
+typedef int BtShared ;
+typedef TYPE_2__ BtCursor ;
 
-/* Variables and functions */
- int BTCF_ValidNKey ; 
- int BTCF_ValidOvfl ; 
- int BTCURSOR_MAX_DEPTH ; 
- scalar_t__ CURSOR_VALID ; 
- int SQLITE_CORRUPT_BKPT ; 
- int /*<<< orphan*/  assert (int) ; 
- int cursorOwnsBtShared (TYPE_2__*) ; 
- int getAndInitPage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int BTCF_ValidNKey ;
+ int BTCF_ValidOvfl ;
+ int BTCURSOR_MAX_DEPTH ;
+ scalar_t__ CURSOR_VALID ;
+ int SQLITE_CORRUPT_BKPT ;
+ int assert (int) ;
+ int cursorOwnsBtShared (TYPE_2__*) ;
+ int getAndInitPage (int *,int ,int *,TYPE_2__*,int ) ;
 
 __attribute__((used)) static int moveToChild(BtCursor *pCur, u32 newPgno){
   BtShared *pBt = pCur->pBt;

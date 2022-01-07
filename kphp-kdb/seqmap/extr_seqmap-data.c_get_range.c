@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Z ;
 
-/* Variables and functions */
- int* B ; 
- scalar_t__ Bpos ; 
- int Bsize ; 
- int* RR ; 
- int R_MAX ; 
- int Rmax ; 
- scalar_t__ Rpos ; 
- scalar_t__ Rt ; 
- int /*<<< orphan*/  __array_report ; 
- int /*<<< orphan*/  __tree_report ; 
- int /*<<< orphan*/  array_ifwrite ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cmp ; 
- int get_index_pos (int,int const*) ; 
- int index_entries ; 
- int /*<<< orphan*/  item_tree ; 
- scalar_t__ key_cmp (int,int const*,int,int*) ; 
- int listree_iterator (int,int const*,int,int*,int,int) ; 
- int lrand48 () ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  qsort (int*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_count (int /*<<< orphan*/ ,int,int const*,int,int*,int*) ; 
- int /*<<< orphan*/  tree_ifwrite ; 
+
+
+
+typedef int Z ;
+
+
+ int* B ;
+ scalar_t__ Bpos ;
+ int Bsize ;
+ int* RR ;
+ int R_MAX ;
+ int Rmax ;
+ scalar_t__ Rpos ;
+ scalar_t__ Rt ;
+ int __array_report ;
+ int __tree_report ;
+ int array_ifwrite ;
+ int assert (int) ;
+ int cmp ;
+ int get_index_pos (int,int const*) ;
+ int index_entries ;
+ int item_tree ;
+ scalar_t__ key_cmp (int,int const*,int,int*) ;
+ int listree_iterator (int,int const*,int,int*,int,int) ;
+ int lrand48 () ;
+ int memset (int*,int ,int) ;
+ int qsort (int*,int,int,int ) ;
+ int tree_count (int ,int,int const*,int,int*,int*) ;
+ int tree_ifwrite ;
 
 int get_range (int left_len, const int *left, int right_len, int *right, int limit, int *R, int size, int *cnt, int *total) {
   if (left_len && right_len && key_cmp (left_len, left, right_len, right) > 0) {
@@ -65,7 +65,7 @@ int get_range (int left_len, const int *left, int right_len, int *right, int lim
   for (i = 0; i < d; i++) {
     if (i < Rmax) {
       RR[i] = i;
-    } else {      
+    } else {
       int k = lrand48 () % (i + 1);
       if (k < Rmax) {
         RR[k] = i;

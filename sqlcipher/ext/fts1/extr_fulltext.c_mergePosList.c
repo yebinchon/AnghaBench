@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
 struct TYPE_7__ {scalar_t__ iType; } ;
-struct TYPE_6__ {int iOffset; TYPE_3__* pOut; int /*<<< orphan*/  in; } ;
-typedef  int /*<<< orphan*/  DocListReader ;
-typedef  TYPE_1__ DocListMerge ;
+struct TYPE_6__ {int iOffset; TYPE_3__* pOut; int in; } ;
+typedef int DocListReader ;
+typedef TYPE_1__ DocListMerge ;
 
-/* Variables and functions */
- scalar_t__ DL_POSITIONS ; 
- int /*<<< orphan*/  docListAddDocid (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  docListAddEndPos (TYPE_3__*) ; 
- int /*<<< orphan*/  docListAddPos (TYPE_3__*,int) ; 
- int readPosition (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ DL_POSITIONS ;
+ int docListAddDocid (TYPE_3__*,int ) ;
+ int docListAddEndPos (TYPE_3__*) ;
+ int docListAddPos (TYPE_3__*,int) ;
+ int readPosition (int *) ;
 
 __attribute__((used)) static void mergePosList(DocListMerge *m, sqlite_int64 iDocid,
                   DocListReader *pBlockReader){

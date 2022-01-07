@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assem_debug (char*,int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  emit_mov (int,int) ; 
- int /*<<< orphan*/  emit_shrimm (int,unsigned int,int) ; 
- int /*<<< orphan*/  output_byte (unsigned int) ; 
- int /*<<< orphan*/  output_modrm (int,int,int) ; 
- int /*<<< orphan*/  output_rex (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * regname ; 
+ int assem_debug (char*,int ,unsigned int) ;
+ int assert (int) ;
+ int emit_mov (int,int) ;
+ int emit_shrimm (int,unsigned int,int) ;
+ int output_byte (unsigned int) ;
+ int output_modrm (int,int,int) ;
+ int output_rex (int,int ,int ,int) ;
+ int * regname ;
 
 void emit_shrimm64(int rs,unsigned int imm,int rt)
 {

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {int class; int bytes; int columns; scalar_t__ data; int /*<<< orphan*/  type; int /*<<< orphan*/  element_count; } ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct d3dx_parameter {int class; int bytes; int columns; scalar_t__ data; int type; int element_count; } ;
 struct d3dx9_base_effect {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  w; int /*<<< orphan*/  x; int /*<<< orphan*/  y; int /*<<< orphan*/  z; } ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  TYPE_1__ D3DXVECTOR4 ;
-typedef  int /*<<< orphan*/  D3DXHANDLE ;
+struct TYPE_5__ {int w; int x; int y; int z; } ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ D3DXVECTOR4 ;
+typedef int D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D3DERR_INVALIDCALL ; 
-#define  D3DXPC_MATRIX_ROWS 132 
-#define  D3DXPC_OBJECT 131 
-#define  D3DXPC_SCALAR 130 
-#define  D3DXPC_STRUCT 129 
-#define  D3DXPC_VECTOR 128 
- int /*<<< orphan*/  D3DXPT_FLOAT ; 
- int /*<<< orphan*/  D3DXPT_INT ; 
- int /*<<< orphan*/  D3D_OK ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int INT_FLOAT_MULTI ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  debug_d3dxparameter_class (int) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ ) ; 
- int max (int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,TYPE_1__ const*,int) ; 
- int /*<<< orphan*/  min (int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  set_dirty (struct d3dx_parameter*) ; 
- int /*<<< orphan*/  set_vector (struct d3dx_parameter*,TYPE_1__ const*) ; 
+
+ int D3DERR_INVALIDCALL ;
+
+
+
+
+
+ int D3DXPT_FLOAT ;
+ int D3DXPT_INT ;
+ int D3D_OK ;
+ int FIXME (char*,int ) ;
+ int INT_FLOAT_MULTI ;
+ int TRACE (char*,...) ;
+ int WARN (char*) ;
+ int debug_d3dxparameter_class (int) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int ) ;
+ int max (int ,float) ;
+ int memcpy (scalar_t__,TYPE_1__ const*,int) ;
+ int min (int ,float) ;
+ int set_dirty (struct d3dx_parameter*) ;
+ int set_vector (struct d3dx_parameter*,TYPE_1__ const*) ;
 
 __attribute__((used)) static HRESULT d3dx9_base_effect_set_vector(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, const D3DXVECTOR4 *vector)
@@ -53,8 +53,8 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_set_vector(struct d3dx9_b
 
         switch (param->class)
         {
-            case D3DXPC_SCALAR:
-            case D3DXPC_VECTOR:
+            case 130:
+            case 128:
                 set_dirty(param);
                 if (param->type == D3DXPT_INT && param->bytes == 4)
                 {
@@ -78,9 +78,9 @@ __attribute__((used)) static HRESULT d3dx9_base_effect_set_vector(struct d3dx9_b
                 set_vector(param, vector);
                 return D3D_OK;
 
-            case D3DXPC_MATRIX_ROWS:
-            case D3DXPC_OBJECT:
-            case D3DXPC_STRUCT:
+            case 132:
+            case 131:
+            case 129:
                 break;
 
             default:

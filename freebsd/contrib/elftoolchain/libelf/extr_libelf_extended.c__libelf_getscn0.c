@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  e_scn; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int e_scn; } ;
 struct TYPE_7__ {TYPE_1__ e_elf; } ;
 struct TYPE_8__ {TYPE_2__ e_u; } ;
-typedef  int /*<<< orphan*/  Elf_Scn ;
-typedef  TYPE_3__ Elf ;
+typedef int Elf_Scn ;
+typedef TYPE_3__ Elf ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * RB_MIN (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SHN_UNDEF ; 
- int /*<<< orphan*/ * _libelf_allocate_scn (TYPE_3__*,size_t) ; 
- int /*<<< orphan*/  scntree ; 
+
+ int * RB_MIN (int ,int *) ;
+ scalar_t__ SHN_UNDEF ;
+ int * _libelf_allocate_scn (TYPE_3__*,size_t) ;
+ int scntree ;
 
 __attribute__((used)) static Elf_Scn *
 _libelf_getscn0(Elf *e)
 {
-	Elf_Scn *s;
+ Elf_Scn *s;
 
-	if ((s = RB_MIN(scntree, &e->e_u.e_elf.e_scn)) != NULL)
-		return (s);
+ if ((s = RB_MIN(scntree, &e->e_u.e_elf.e_scn)) != ((void*)0))
+  return (s);
 
-	return (_libelf_allocate_scn(e, (size_t) SHN_UNDEF));
+ return (_libelf_allocate_scn(e, (size_t) SHN_UNDEF));
 }

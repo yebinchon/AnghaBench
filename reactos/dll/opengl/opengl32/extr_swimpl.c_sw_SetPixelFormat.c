@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wgl_dc_data {struct sw_framebuffer* sw_data; } ;
-struct sw_framebuffer {int /*<<< orphan*/  Hdc; int /*<<< orphan*/  gl_visual; int /*<<< orphan*/  gl_buffer; struct pixel_format const* pixel_format; } ;
-struct pixel_format {scalar_t__ iPixelType; unsigned long cAlphaBits; int dwFlags; unsigned long cRedBits; unsigned long cGreenBits; unsigned long cBlueBits; int /*<<< orphan*/  cColorBits; int /*<<< orphan*/  cAccumAlphaBits; int /*<<< orphan*/  cAccumBlueBits; int /*<<< orphan*/  cAccumGreenBits; int /*<<< orphan*/  cAccumRedBits; int /*<<< orphan*/  cDepthBits; } ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  BOOL ;
+struct sw_framebuffer {int Hdc; int gl_visual; int gl_buffer; struct pixel_format const* pixel_format; } ;
+struct pixel_format {scalar_t__ iPixelType; unsigned long cAlphaBits; int dwFlags; unsigned long cRedBits; unsigned long cGreenBits; unsigned long cBlueBits; int cColorBits; int cAccumAlphaBits; int cAccumBlueBits; int cAccumGreenBits; int cAccumRedBits; int cDepthBits; } ;
+typedef int INT ;
+typedef int HDC ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct sw_framebuffer* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct sw_framebuffer*) ; 
- int PFD_DOUBLEBUFFER ; 
- scalar_t__ PFD_TYPE_COLORINDEX ; 
- scalar_t__ PFD_TYPE_RGBA ; 
- int /*<<< orphan*/  STENCIL_BITS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- struct pixel_format* get_format (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl_create_framebuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_create_visual (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long) ; 
- int /*<<< orphan*/  gl_destroy_visual (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  max (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ERR (char*) ;
+ int FALSE ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct sw_framebuffer* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct sw_framebuffer*) ;
+ int PFD_DOUBLEBUFFER ;
+ scalar_t__ PFD_TYPE_COLORINDEX ;
+ scalar_t__ PFD_TYPE_RGBA ;
+ int STENCIL_BITS ;
+ int TRACE (char*,int ,int ) ;
+ int TRUE ;
+ struct pixel_format* get_format (int ,int *) ;
+ int gl_create_framebuffer (int ) ;
+ int gl_create_visual (int,int,int,int ,int ,int ,int ,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long,unsigned long) ;
+ int gl_destroy_visual (int ) ;
+ int max (int ,int ) ;
 
 BOOL sw_SetPixelFormat(HDC hdc, struct wgl_dc_data* dc_data, INT format)
 {
     struct sw_framebuffer* fb;
     const struct pixel_format *pixel_format;
 
-    /* So, someone is crazy enough to ask for sw implementation. Announce it. */
+
     TRACE("OpenGL software implementation START for hdc %p, format %i!\n", hdc, format);
-    
-    pixel_format = get_format(format, NULL);
+
+    pixel_format = get_format(format, ((void*)0));
     if (!pixel_format)
         return FALSE;
 
-    /* allocate our structure */
+
     fb = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*fb));
     if(!fb)
     {
         ERR("HeapAlloc FAILED!\n");
         return FALSE;
     }
-    /* Set the format */
+
     fb->pixel_format = pixel_format;
 
     fb->gl_visual = gl_create_visual(
@@ -74,15 +74,15 @@ BOOL sw_SetPixelFormat(HDC hdc, struct wgl_dc_data* dc_data, INT format)
             pixel_format->cGreenBits,
             pixel_format->cBlueBits,
             pixel_format->cAlphaBits);
-    
+
     if(!fb->gl_visual)
     {
         ERR("Failed to allocate a GL visual.\n");
         HeapFree(GetProcessHeap(), 0, fb);
         return FALSE;
     }
-    
-    /* Allocate the framebuffer structure */
+
+
     fb->gl_buffer = gl_create_framebuffer(fb->gl_visual);
     if (!fb->gl_buffer) {
         ERR("Failed to allocate the mesa framebuffer structure.\n");
@@ -91,10 +91,10 @@ BOOL sw_SetPixelFormat(HDC hdc, struct wgl_dc_data* dc_data, INT format)
         return FALSE;
     }
 
-    /* Save our DC */
+
     fb->Hdc = hdc;
 
-    /* Everything went fine */
+
     dc_data->sw_data = fb;
     return TRUE;
 }

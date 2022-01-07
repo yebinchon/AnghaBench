@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IHTMLTableRow ;
-typedef  int /*<<< orphan*/  IHTMLTableCell ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLTableCell_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLTableRow_deleteCell (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IHTMLTableRow_insertCell (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IHTMLTableCell ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_tr_possess (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,char*) ; 
+
+
+
+typedef int IHTMLTableRow ;
+typedef int IHTMLTableCell ;
+typedef int IHTMLElement ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+
+
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IDispatch_Release (int *) ;
+ int IHTMLTableCell_Release (int *) ;
+ scalar_t__ IHTMLTableRow_deleteCell (int *,int ) ;
+ scalar_t__ IHTMLTableRow_insertCell (int *,int ,int **) ;
+ int IID_IHTMLTableCell ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,...) ;
+ int test_tr_possess (int *,int *,int,char*) ;
 
 __attribute__((used)) static void test_tr_modify(IHTMLElement *elem, IHTMLTableRow *row)
 {
@@ -40,10 +40,10 @@ __attribute__((used)) static void test_tr_modify(IHTMLElement *elem, IHTMLTableR
 
     hres = IHTMLTableRow_insertCell(row, 0, &disp);
     ok(hres == S_OK, "insertCell failed: %08x\n", hres);
-    ok(disp != NULL, "disp == NULL\n");
+    ok(disp != ((void*)0), "disp == NULL\n");
     hres = IDispatch_QueryInterface(disp, &IID_IHTMLTableCell, (void **)&cell);
     ok(hres == S_OK, "Could not get IID_IHTMLTableCell interface: %08x\n", hres);
-    ok(cell != NULL, "cell == NULL\n");
+    ok(cell != ((void*)0), "cell == NULL\n");
     if (SUCCEEDED(hres))
         IHTMLTableCell_Release(cell);
     test_tr_possess(elem, row, 2, "td2");

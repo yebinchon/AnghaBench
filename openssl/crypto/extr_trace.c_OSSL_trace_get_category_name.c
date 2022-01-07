@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int num; char const* name; } ;
 
-/* Variables and functions */
- size_t OSSL_NELEM (TYPE_1__*) ; 
- TYPE_1__* trace_categories ; 
+
+ size_t OSSL_NELEM (TYPE_1__*) ;
+ TYPE_1__* trace_categories ;
 
 const char *OSSL_trace_get_category_name(int num)
 {
@@ -24,5 +24,5 @@ const char *OSSL_trace_get_category_name(int num)
     for (i = 0; i < OSSL_NELEM(trace_categories); i++)
         if (trace_categories[i].num == num)
             return trace_categories[i].name;
-    return NULL; /* not found */
+    return ((void*)0);
 }

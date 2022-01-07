@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_fpix {int /*<<< orphan*/  work_struct; int /*<<< orphan*/  work_thread; } ;
-struct gspca_dev {TYPE_1__** urb; int /*<<< orphan*/  dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  pipe; int /*<<< orphan*/  transfer_buffer; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FPIX_MAX_TRANSFER ; 
- int /*<<< orphan*/  FPIX_TIMEOUT ; 
- int /*<<< orphan*/  MODULE_NAME ; 
- int command (struct gspca_dev*,int) ; 
- int /*<<< orphan*/  create_singlethread_workqueue (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  err (char*,int) ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int usb_bulk_msg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usb_clear_halt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct usb_fpix {int work_struct; int work_thread; } ;
+struct gspca_dev {TYPE_1__** urb; int dev; } ;
+struct TYPE_2__ {int pipe; int transfer_buffer; } ;
+
+
+ int FPIX_MAX_TRANSFER ;
+ int FPIX_TIMEOUT ;
+ int MODULE_NAME ;
+ int command (struct gspca_dev*,int) ;
+ int create_singlethread_workqueue (int ) ;
+ int err (char*,int) ;
+ int queue_work (int ,int *) ;
+ int usb_bulk_msg (int ,int ,int ,int ,int*,int ) ;
+ int usb_clear_halt (int ,int ) ;
 
 __attribute__((used)) static int sd_start(struct gspca_dev *gspca_dev)
 {
-	struct usb_fpix *dev = (struct usb_fpix *) gspca_dev;
-	int ret, len;
+ struct usb_fpix *dev = (struct usb_fpix *) gspca_dev;
+ int ret, len;
 
-	/* Init the device */
-	ret = command(gspca_dev, 0);
-	if (ret < 0) {
-		err("init failed %d", ret);
-		return ret;
-	}
 
-	/* Read the result of the command. Ignore the result, for it
-	 * varies with the device. */
-	ret = usb_bulk_msg(gspca_dev->dev,
-			gspca_dev->urb[0]->pipe,
-			gspca_dev->urb[0]->transfer_buffer,
-			FPIX_MAX_TRANSFER, &len,
-			FPIX_TIMEOUT);
-	if (ret < 0) {
-		err("usb_bulk_msg failed %d", ret);
-		return ret;
-	}
+ ret = command(gspca_dev, 0);
+ if (ret < 0) {
+  err("init failed %d", ret);
+  return ret;
+ }
 
-	/* Request a frame, but don't read it */
-	ret = command(gspca_dev, 1);
-	if (ret < 0) {
-		err("frame request failed %d", ret);
-		return ret;
-	}
 
-	/* Again, reset bulk in endpoint */
-	usb_clear_halt(gspca_dev->dev, gspca_dev->urb[0]->pipe);
 
-	/* Start the workqueue function to do the streaming */
-	dev->work_thread = create_singlethread_workqueue(MODULE_NAME);
-	queue_work(dev->work_thread, &dev->work_struct);
+ ret = usb_bulk_msg(gspca_dev->dev,
+   gspca_dev->urb[0]->pipe,
+   gspca_dev->urb[0]->transfer_buffer,
+   FPIX_MAX_TRANSFER, &len,
+   FPIX_TIMEOUT);
+ if (ret < 0) {
+  err("usb_bulk_msg failed %d", ret);
+  return ret;
+ }
 
-	return 0;
+
+ ret = command(gspca_dev, 1);
+ if (ret < 0) {
+  err("frame request failed %d", ret);
+  return ret;
+ }
+
+
+ usb_clear_halt(gspca_dev->dev, gspca_dev->urb[0]->pipe);
+
+
+ dev->work_thread = create_singlethread_workqueue(MODULE_NAME);
+ queue_work(dev->work_thread, &dev->work_struct);
+
+ return 0;
 }

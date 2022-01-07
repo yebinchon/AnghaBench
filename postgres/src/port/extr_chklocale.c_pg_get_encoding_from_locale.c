@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PG_SQL_ASCII ; 
+ int PG_SQL_ASCII ;
 
 int
 pg_get_encoding_from_locale(const char *ctype, bool write_message)
 {
-	return PG_SQL_ASCII;
+ return PG_SQL_ASCII;
 }

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {scalar_t__ extradata; int /*<<< orphan*/  codec_id; } ;
-struct TYPE_13__ {scalar_t__ nb_decompose_unit_types; int /*<<< orphan*/  decompose_unit_types; } ;
-struct TYPE_12__ {int /*<<< orphan*/  par_out; TYPE_6__* par_in; TYPE_1__* priv_data; } ;
-struct TYPE_11__ {TYPE_4__* cbc; int /*<<< orphan*/  fragment; int /*<<< orphan*/  type_list; int /*<<< orphan*/  nb_types; scalar_t__ remove_types; int /*<<< orphan*/  mode; scalar_t__ pass_types; } ;
-typedef  TYPE_1__ FilterUnitsContext ;
-typedef  int /*<<< orphan*/  CodedBitstreamFragment ;
-typedef  TYPE_2__ AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  PASS ; 
- int /*<<< orphan*/  REMOVE ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_cbs_fragment_reset (TYPE_4__*,int /*<<< orphan*/ *) ; 
- int ff_cbs_init (TYPE_4__**,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int ff_cbs_read_extradata (TYPE_4__*,int /*<<< orphan*/ *,TYPE_6__*) ; 
- int ff_cbs_write_extradata (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int filter_units_make_type_list (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_14__ {scalar_t__ extradata; int codec_id; } ;
+struct TYPE_13__ {scalar_t__ nb_decompose_unit_types; int decompose_unit_types; } ;
+struct TYPE_12__ {int par_out; TYPE_6__* par_in; TYPE_1__* priv_data; } ;
+struct TYPE_11__ {TYPE_4__* cbc; int fragment; int type_list; int nb_types; scalar_t__ remove_types; int mode; scalar_t__ pass_types; } ;
+typedef TYPE_1__ FilterUnitsContext ;
+typedef int CodedBitstreamFragment ;
+typedef TYPE_2__ AVBSFContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int PASS ;
+ int REMOVE ;
+ int av_log (TYPE_2__*,int ,char*) ;
+ int ff_cbs_fragment_reset (TYPE_4__*,int *) ;
+ int ff_cbs_init (TYPE_4__**,int ,TYPE_2__*) ;
+ int ff_cbs_read_extradata (TYPE_4__*,int *,TYPE_6__*) ;
+ int ff_cbs_write_extradata (TYPE_4__*,int ,int *) ;
+ int filter_units_make_type_list (scalar_t__,int *,int *) ;
 
 __attribute__((used)) static int filter_units_init(AVBSFContext *bsf)
 {
@@ -70,8 +70,8 @@ __attribute__((used)) static int filter_units_init(AVBSFContext *bsf)
     if (err < 0)
         return err;
 
-    // Don't actually decompose anything, we only want the unit data.
-    ctx->cbc->decompose_unit_types    = ctx->type_list;
+
+    ctx->cbc->decompose_unit_types = ctx->type_list;
     ctx->cbc->nb_decompose_unit_types = 0;
 
     if (bsf->par_in->extradata) {

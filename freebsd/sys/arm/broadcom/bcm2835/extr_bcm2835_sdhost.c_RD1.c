@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct bcm_sdhost_softc {int dummy; } ;
-typedef  int bus_size_t ;
+typedef int bus_size_t ;
 
-/* Variables and functions */
- int RD4 (struct bcm_sdhost_softc*,int) ; 
+
+ int RD4 (struct bcm_sdhost_softc*,int) ;
 
 __attribute__((used)) static inline uint8_t
 RD1(struct bcm_sdhost_softc *sc, bus_size_t off)
 {
-	uint32_t val;
+ uint32_t val;
 
-	val = RD4(sc, off & ~3);
+ val = RD4(sc, off & ~3);
 
-	return ((val >> (off & 3)*8) & 0xff);
+ return ((val >> (off & 3)*8) & 0xff);
 }

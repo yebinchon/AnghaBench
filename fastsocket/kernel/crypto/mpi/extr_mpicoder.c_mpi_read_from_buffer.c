@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int mpi_limb_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int mpi_limb_t ;
 struct TYPE_5__ {unsigned int nbits; int nlimbs; int* d; scalar_t__ sign; } ;
-typedef  TYPE_1__* MPI ;
+typedef TYPE_1__* MPI ;
 
-/* Variables and functions */
- unsigned int BYTES_PER_MPI_LIMB ; 
- unsigned int MAX_EXTERN_MPI_BITS ; 
- TYPE_1__* MPI_NULL ; 
- TYPE_1__* mpi_alloc (unsigned int) ; 
- int /*<<< orphan*/  printk (char*,unsigned int,...) ; 
+
+ unsigned int BYTES_PER_MPI_LIMB ;
+ unsigned int MAX_EXTERN_MPI_BITS ;
+ TYPE_1__* MPI_NULL ;
+ TYPE_1__* mpi_alloc (unsigned int) ;
+ int printk (char*,unsigned int,...) ;
 
 MPI
 mpi_read_from_buffer(const void *xbuffer, unsigned *ret_nread)
@@ -47,7 +47,7 @@ mpi_read_from_buffer(const void *xbuffer, unsigned *ret_nread)
   nlimbs = (nbytes+BYTES_PER_MPI_LIMB-1) / BYTES_PER_MPI_LIMB;
   val = mpi_alloc( nlimbs );
   if (!val)
-	  return MPI_NULL;
+   return MPI_NULL;
   i = BYTES_PER_MPI_LIMB - nbytes % BYTES_PER_MPI_LIMB;
   i %= BYTES_PER_MPI_LIMB;
   val->nbits = nbits;
@@ -57,8 +57,8 @@ mpi_read_from_buffer(const void *xbuffer, unsigned *ret_nread)
     a = 0;
     for(; i < BYTES_PER_MPI_LIMB; i++ ) {
       if( ++nread > *ret_nread ) {
-	printk("MPI: mpi larger than buffer nread=%d ret_nread=%d\n", nread, *ret_nread);
-	goto leave;
+ printk("MPI: mpi larger than buffer nread=%d ret_nread=%d\n", nread, *ret_nread);
+ goto leave;
       }
       a <<= 8;
       a |= *buffer++;

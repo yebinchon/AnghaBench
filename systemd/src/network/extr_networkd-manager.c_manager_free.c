@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct in6_addr {int dummy; } ;
 struct TYPE_15__ {scalar_t__ dhcp6_client; } ;
-struct TYPE_14__ {struct TYPE_14__* dynamic_hostname; struct TYPE_14__* dynamic_timezone; int /*<<< orphan*/  bus; int /*<<< orphan*/  polkit_registry; int /*<<< orphan*/  device_monitor; int /*<<< orphan*/  event; int /*<<< orphan*/  speed_meter_event_source; int /*<<< orphan*/  resolve; int /*<<< orphan*/  genl; int /*<<< orphan*/  rtnl; void* rules_saved; void* rules_foreign; void* rules; int /*<<< orphan*/ * address_pools; void* netdevs; int /*<<< orphan*/  networks; int /*<<< orphan*/  duids_requesting_uuid; void* links; void* links_requesting_uuid; void* dirty_links; int /*<<< orphan*/  dhcp6_prefixes; struct TYPE_14__* state_file; } ;
-typedef  TYPE_1__ Manager ;
-typedef  TYPE_2__ Link ;
-typedef  int /*<<< orphan*/  AddressPool ;
+struct TYPE_14__ {struct TYPE_14__* dynamic_hostname; struct TYPE_14__* dynamic_timezone; int bus; int polkit_registry; int device_monitor; int event; int speed_meter_event_source; int resolve; int genl; int rtnl; void* rules_saved; void* rules_foreign; void* rules; int * address_pools; void* netdevs; int networks; int duids_requesting_uuid; void* links; void* links_requesting_uuid; void* dirty_links; int dhcp6_prefixes; struct TYPE_14__* state_file; } ;
+typedef TYPE_1__ Manager ;
+typedef TYPE_2__ Link ;
+typedef int AddressPool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  address_pool_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bus_verify_polkit_async_registry_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dhcp6_lease_pd_prefix_lost (scalar_t__,TYPE_2__*) ; 
- int /*<<< orphan*/  dhcp6_prefix_remove (TYPE_1__*,struct in6_addr*) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- struct in6_addr* hashmap_first_key (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashmap_free (int /*<<< orphan*/ ) ; 
- void* hashmap_free_with_destructor (void*,int /*<<< orphan*/  (*) (TYPE_2__*)) ; 
- TYPE_2__* hashmap_steal_first (void*) ; 
- int /*<<< orphan*/  link_stop_clients (TYPE_2__*,int) ; 
- int /*<<< orphan*/  link_unref (TYPE_2__*) ; 
- int /*<<< orphan*/  netdev_unref (TYPE_2__*) ; 
- int /*<<< orphan*/  network_unref ; 
- int /*<<< orphan*/  ordered_hashmap_free_with_destructor (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  routing_policy_rule_free (TYPE_2__*) ; 
- int /*<<< orphan*/  sd_bus_flush_close_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_device_monitor_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_netlink_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_resolve_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_free (int /*<<< orphan*/ ) ; 
- void* set_free_with_destructor (void*,int /*<<< orphan*/  (*) (TYPE_2__*)) ; 
+
+ int address_pool_free (int *) ;
+ int bus_verify_polkit_async_registry_free (int ) ;
+ int dhcp6_lease_pd_prefix_lost (scalar_t__,TYPE_2__*) ;
+ int dhcp6_prefix_remove (TYPE_1__*,struct in6_addr*) ;
+ int free (TYPE_1__*) ;
+ struct in6_addr* hashmap_first_key (int ) ;
+ int hashmap_free (int ) ;
+ void* hashmap_free_with_destructor (void*,int (*) (TYPE_2__*)) ;
+ TYPE_2__* hashmap_steal_first (void*) ;
+ int link_stop_clients (TYPE_2__*,int) ;
+ int link_unref (TYPE_2__*) ;
+ int netdev_unref (TYPE_2__*) ;
+ int network_unref ;
+ int ordered_hashmap_free_with_destructor (int ,int ) ;
+ int routing_policy_rule_free (TYPE_2__*) ;
+ int sd_bus_flush_close_unref (int ) ;
+ int sd_device_monitor_unref (int ) ;
+ int sd_event_source_unref (int ) ;
+ int sd_event_unref (int ) ;
+ int sd_netlink_unref (int ) ;
+ int sd_resolve_unref (int ) ;
+ int set_free (int ) ;
+ void* set_free_with_destructor (void*,int (*) (TYPE_2__*)) ;
 
 void manager_free(Manager *m) {
         struct in6_addr *a;
@@ -62,7 +62,7 @@ void manager_free(Manager *m) {
                 if (link->dhcp6_client)
                         (void) dhcp6_lease_pd_prefix_lost(link->dhcp6_client, link);
 
-                (void) link_stop_clients(link, true);
+                (void) link_stop_clients(link, 1);
 
                 link_unref(link);
         }
@@ -79,8 +79,8 @@ void manager_free(Manager *m) {
         while ((pool = m->address_pools))
                 address_pool_free(pool);
 
-        /* routing_policy_rule_free() access m->rules and m->rules_foreign.
-         * So, it is necessary to set NULL after the sets are freed. */
+
+
         m->rules = set_free_with_destructor(m->rules, routing_policy_rule_free);
         m->rules_foreign = set_free_with_destructor(m->rules_foreign, routing_policy_rule_free);
         set_free_with_destructor(m->rules_saved, routing_policy_rule_free);

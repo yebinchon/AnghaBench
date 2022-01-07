@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct perf_event {int dummy; } ;
-struct file {struct perf_event const* private_data; int /*<<< orphan*/ * f_op; } ;
+struct file {struct perf_event const* private_data; int * f_op; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- struct perf_event const* ERR_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  perf_fops ; 
+
+ int EINVAL ;
+ struct perf_event const* ERR_PTR (int ) ;
+ int perf_fops ;
 
 const struct perf_event *perf_get_event(struct file *file)
 {
-	if (file->f_op != &perf_fops)
-		return ERR_PTR(-EINVAL);
+ if (file->f_op != &perf_fops)
+  return ERR_PTR(-EINVAL);
 
-	return file->private_data;
+ return file->private_data;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  VP8EncIterator ;
-struct TYPE_2__ {int /*<<< orphan*/  delta_progress; int /*<<< orphan*/  uv_alpha; int /*<<< orphan*/  alpha; int /*<<< orphan*/  alphas; } ;
-typedef  TYPE_1__ SegmentJob ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBAnalyze (int /*<<< orphan*/ * const,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VP8IteratorImport (int /*<<< orphan*/ * const,int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  VP8IteratorIsDone (int /*<<< orphan*/ * const) ; 
- scalar_t__ VP8IteratorNext (int /*<<< orphan*/ * const) ; 
- int VP8IteratorProgress (int /*<<< orphan*/ * const,int /*<<< orphan*/ ) ; 
- scalar_t__ WEBP_ALIGN (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WEBP_ALIGN_CST ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int VP8EncIterator ;
+struct TYPE_2__ {int delta_progress; int uv_alpha; int alpha; int alphas; } ;
+typedef TYPE_1__ SegmentJob ;
+
+
+ int MBAnalyze (int * const,int ,int *,int *) ;
+ int VP8IteratorImport (int * const,int * const) ;
+ int VP8IteratorIsDone (int * const) ;
+ scalar_t__ VP8IteratorNext (int * const) ;
+ int VP8IteratorProgress (int * const,int ) ;
+ scalar_t__ WEBP_ALIGN (int *) ;
+ int WEBP_ALIGN_CST ;
 
 __attribute__((used)) static int DoSegmentsJob(void* arg1, void* arg2) {
   SegmentJob* const job = (SegmentJob*)arg1;
@@ -33,7 +33,7 @@ __attribute__((used)) static int DoSegmentsJob(void* arg1, void* arg2) {
     uint8_t tmp[32 + WEBP_ALIGN_CST];
     uint8_t* const scratch = (uint8_t*)WEBP_ALIGN(tmp);
     do {
-      // Let's pretend we have perfect lossless reconstruction.
+
       VP8IteratorImport(it, scratch);
       MBAnalyze(it, job->alphas, &job->alpha, &job->uv_alpha);
       ok = VP8IteratorProgress(it, job->delta_progress);

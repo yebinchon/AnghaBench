@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  med ;
-typedef  int /*<<< orphan*/  ULARGE_INTEGER ;
-struct TYPE_16__ {int /*<<< orphan*/  tymed; } ;
+
+
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int med ;
+typedef int ULARGE_INTEGER ;
+struct TYPE_16__ {int tymed; } ;
 struct TYPE_15__ {scalar_t__ QuadPart; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * pstm; } ;
-struct TYPE_14__ {TYPE_1__ u; int /*<<< orphan*/ * pUnkForRelease; int /*<<< orphan*/  tymed; } ;
-typedef  TYPE_2__ STGMEDIUM ;
-typedef  TYPE_3__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IDataObject ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/ * HGLOBAL ;
-typedef  TYPE_4__ FORMATETC ;
+struct TYPE_13__ {int * pstm; } ;
+struct TYPE_14__ {TYPE_1__ u; int * pUnkForRelease; int tymed; } ;
+typedef TYPE_2__ STGMEDIUM ;
+typedef TYPE_3__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int IDataObject ;
+typedef int HRESULT ;
+typedef int * HGLOBAL ;
+typedef TYPE_4__ FORMATETC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateStreamOnHGlobal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int GMEM_DDESHARE ; 
- int GMEM_MOVEABLE ; 
- int /*<<< orphan*/ * GlobalAlloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GlobalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDataObject_GetData (int /*<<< orphan*/ *,TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  IDataObject_GetDataHere (int /*<<< orphan*/ *,TYPE_4__*,TYPE_2__*) ; 
- int /*<<< orphan*/  IStream_CopyTo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_3__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseStgMedium (TYPE_2__*) ; 
- int /*<<< orphan*/  STREAM_SEEK_CUR ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TYMED_ISTREAM ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int CreateStreamOnHGlobal (int *,int ,int **) ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int GMEM_DDESHARE ;
+ int GMEM_MOVEABLE ;
+ int * GlobalAlloc (int,int ) ;
+ int GlobalFree (int *) ;
+ int IDataObject_GetData (int *,TYPE_4__*,TYPE_2__*) ;
+ int IDataObject_GetDataHere (int *,TYPE_4__*,TYPE_2__*) ;
+ int IStream_CopyTo (int *,int *,int ,int *,int *) ;
+ int IStream_Release (int *) ;
+ int IStream_Seek (int *,TYPE_3__,int ,int *) ;
+ int ReleaseStgMedium (TYPE_2__*) ;
+ int STREAM_SEEK_CUR ;
+ int STREAM_SEEK_SET ;
+ int S_OK ;
+ int TYMED_ISTREAM ;
+ int memset (TYPE_2__*,int ,int) ;
 
 __attribute__((used)) static HRESULT get_data_from_stream(IDataObject *data, FORMATETC *fmt, HGLOBAL *mem)
 {
     HGLOBAL h;
-    IStream *stm = NULL;
+    IStream *stm = ((void*)0);
     HRESULT hr;
     FORMATETC stm_fmt;
     STGMEDIUM med;
 
-    *mem = NULL;
+    *mem = ((void*)0);
 
     h = GlobalAlloc( GMEM_DDESHARE|GMEM_MOVEABLE, 0 );
     if(!h) return E_OUTOFMEMORY;
@@ -68,7 +68,7 @@ __attribute__((used)) static HRESULT get_data_from_stream(IDataObject *data, FOR
     stm_fmt = *fmt;
     med.tymed = stm_fmt.tymed = TYMED_ISTREAM;
     med.u.pstm = stm;
-    med.pUnkForRelease = NULL;
+    med.pUnkForRelease = ((void*)0);
 
     hr = IDataObject_GetDataHere(data, &stm_fmt, &med);
     if(FAILED(hr))
@@ -82,8 +82,8 @@ __attribute__((used)) static HRESULT get_data_from_stream(IDataObject *data, FOR
 
         offs.QuadPart = 0;
         IStream_Seek(med.u.pstm, offs, STREAM_SEEK_CUR, &pos);
-        IStream_Seek(med.u.pstm, offs, STREAM_SEEK_SET, NULL);
-        hr = IStream_CopyTo(med.u.pstm, stm, pos, NULL, NULL);
+        IStream_Seek(med.u.pstm, offs, STREAM_SEEK_SET, ((void*)0));
+        hr = IStream_CopyTo(med.u.pstm, stm, pos, ((void*)0), ((void*)0));
         ReleaseStgMedium(&med);
         if(FAILED(hr)) goto error;
     }

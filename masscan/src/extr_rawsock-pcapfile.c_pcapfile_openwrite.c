@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct PcapFile {unsigned int linktype; int /*<<< orphan*/  byte_order; int /*<<< orphan*/ * fp; int /*<<< orphan*/  filename; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAPFILE_LITTLEENDIAN ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int fwrite (char*,int,int,int /*<<< orphan*/ *) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memset (struct PcapFile*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char const*) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char const*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+struct PcapFile {unsigned int linktype; int byte_order; int * fp; int filename; } ;
+typedef int FILE ;
+
+
+ int CAPFILE_LITTLEENDIAN ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*) ;
+ int fwrite (char*,int,int,int *) ;
+ scalar_t__ malloc (int) ;
+ int memset (struct PcapFile*,int ,int) ;
+ int perror (char const*) ;
+ int snprintf (int ,int,char*,char const*) ;
+ int stderr ;
 
 struct PcapFile *pcapfile_openwrite(const char *capfilename, unsigned linktype)
 {
@@ -39,7 +39,7 @@ struct PcapFile *pcapfile_openwrite(const char *capfilename, unsigned linktype)
 
 
     fp = fopen(capfilename, "wb");
-    if (fp == NULL) {
+    if (fp == ((void*)0)) {
         fprintf(stderr, "Could not open capture file\n");
         perror(capfilename);
         return 0;
@@ -56,7 +56,7 @@ struct PcapFile *pcapfile_openwrite(const char *capfilename, unsigned linktype)
     {
         struct PcapFile *capfile = 0;
         capfile = (struct PcapFile*)malloc(sizeof(*capfile));
-        if (capfile == NULL)
+        if (capfile == ((void*)0))
             exit(1);
         memset(capfile,0,sizeof(*capfile));
 

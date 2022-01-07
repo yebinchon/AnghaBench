@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CM_CLKSEL2 ; 
- int /*<<< orphan*/  PLL_MOD ; 
- int /*<<< orphan*/  omap2_cm_read_mod_reg (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+
+
+ int CM_CLKSEL2 ;
+ int PLL_MOD ;
+ int omap2_cm_read_mod_reg (int ,int ) ;
 
 u32 omap2xxx_cm_get_core_pll_config(void)
 {
-	return omap2_cm_read_mod_reg(PLL_MOD, CM_CLKSEL2);
+ return omap2_cm_read_mod_reg(PLL_MOD, CM_CLKSEL2);
 }

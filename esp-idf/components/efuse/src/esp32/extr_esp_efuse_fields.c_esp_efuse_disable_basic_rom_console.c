@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_EARLY_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_EFUSE_CONSOLE_DEBUG_DISABLE ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_efuse_read_field_blob (int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  esp_efuse_write_field_cnt (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ int ESP_EARLY_LOGI (int ,char*) ;
+ int ESP_EFUSE_CONSOLE_DEBUG_DISABLE ;
+ int TAG ;
+ int esp_efuse_read_field_blob (int ,scalar_t__*,int) ;
+ int esp_efuse_write_field_cnt (int ,int) ;
 
 void esp_efuse_disable_basic_rom_console(void)
 {

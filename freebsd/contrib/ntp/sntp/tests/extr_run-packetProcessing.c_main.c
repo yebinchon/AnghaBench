@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RUN_TEST (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UnityBegin (char*) ; 
- int UnityEnd () ; 
- char* progname ; 
- int /*<<< orphan*/  suite_setup () ; 
- int /*<<< orphan*/  test_AcceptNoSentPacketBroadcastMode ; 
- int /*<<< orphan*/  test_AuthenticatedPacketInvalid ; 
- int /*<<< orphan*/  test_AuthenticatedPacketUnknownKey ; 
- int /*<<< orphan*/  test_CorrectAuthenticatedPacketCMAC ; 
- int /*<<< orphan*/  test_CorrectAuthenticatedPacketMD5 ; 
- int /*<<< orphan*/  test_CorrectAuthenticatedPacketSHA1 ; 
- int /*<<< orphan*/  test_CorrectUnauthenticatedPacket ; 
- int /*<<< orphan*/  test_CryptoNAKPacketReject ; 
- int /*<<< orphan*/  test_KoDDeny ; 
- int /*<<< orphan*/  test_KoDRate ; 
- int /*<<< orphan*/  test_LengthNotMultipleOfFour ; 
- int /*<<< orphan*/  test_NonWantedMode ; 
- int /*<<< orphan*/  test_RejectUnsyncedServer ; 
- int /*<<< orphan*/  test_RejectWrongResponseServerMode ; 
- int /*<<< orphan*/  test_ServerVersionTooNew ; 
- int /*<<< orphan*/  test_ServerVersionTooOld ; 
- int /*<<< orphan*/  test_TooShortExtensionFieldLength ; 
- int /*<<< orphan*/  test_TooShortLength ; 
- int /*<<< orphan*/  test_UnauthenticatedPacketReject ; 
+ int RUN_TEST (int ,int) ;
+ int UnityBegin (char*) ;
+ int UnityEnd () ;
+ char* progname ;
+ int suite_setup () ;
+ int test_AcceptNoSentPacketBroadcastMode ;
+ int test_AuthenticatedPacketInvalid ;
+ int test_AuthenticatedPacketUnknownKey ;
+ int test_CorrectAuthenticatedPacketCMAC ;
+ int test_CorrectAuthenticatedPacketMD5 ;
+ int test_CorrectAuthenticatedPacketSHA1 ;
+ int test_CorrectUnauthenticatedPacket ;
+ int test_CryptoNAKPacketReject ;
+ int test_KoDDeny ;
+ int test_KoDRate ;
+ int test_LengthNotMultipleOfFour ;
+ int test_NonWantedMode ;
+ int test_RejectUnsyncedServer ;
+ int test_RejectWrongResponseServerMode ;
+ int test_ServerVersionTooNew ;
+ int test_ServerVersionTooOld ;
+ int test_TooShortExtensionFieldLength ;
+ int test_TooShortLength ;
+ int test_UnauthenticatedPacketReject ;
 
 int main(int argc, char *argv[])
 {

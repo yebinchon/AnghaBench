@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int QLC_BC_FLR ; 
+
+
+
+typedef int u32 ;
+
+
+ int QLC_BC_FLR ;
 
 __attribute__((used)) static inline bool qlcnic_sriov_flr_check(u32 val)
 {
-	return (val & (1 << QLC_BC_FLR)) ? true : false;
+ return (val & (1 << QLC_BC_FLR)) ? 1 : 0;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint16_t ;
 struct mg_str {scalar_t__ p; } ;
 struct TYPE_2__ {int len; scalar_t__ p; } ;
 struct mg_dns_message {TYPE_1__ pkt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (char*,unsigned char const*,int) ; 
+
+ int memcpy (char*,unsigned char const*,int) ;
 
 size_t mg_dns_uncompress_name(struct mg_dns_message *msg, struct mg_str *name,
                               char *dst, int dst_len) {
@@ -41,7 +41,7 @@ size_t mg_dns_uncompress_name(struct mg_dns_message *msg, struct mg_str *name,
       if (off >= msg->pkt.len) {
         return 0;
       }
-      /* Basic circular loop avoidance: allow up to 16 pointer hops. */
+
       if (++num_ptrs > 15) {
         return 0;
       }

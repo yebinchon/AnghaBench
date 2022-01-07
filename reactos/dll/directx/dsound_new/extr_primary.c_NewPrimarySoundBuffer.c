@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WAVEFORMATEX ;
-struct TYPE_4__ {int cbSize; int nChannels; int nSamplesPerSec; int wBitsPerSample; int nBlockAlign; int nAvgBytesPerSec; int /*<<< orphan*/  wFormatTag; } ;
-struct TYPE_5__ {int ref; int /*<<< orphan*/ * lpVtbl; int /*<<< orphan*/  Lock; TYPE_1__ Format; int /*<<< orphan*/ * hPin; int /*<<< orphan*/  VolumePan; int /*<<< orphan*/  Volume; scalar_t__ dwFrequency; void* dwFlags; void* dwLevel; int /*<<< orphan*/  Filter; } ;
-typedef  int /*<<< orphan*/  LPFILTERINFO ;
-typedef  scalar_t__ LPDIRECTSOUNDBUFFER8 ;
-typedef  TYPE_2__* LPCDirectSoundBuffer ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  void* DWORD ;
-typedef  int /*<<< orphan*/  CDirectSoundBuffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSBPAN_CENTER ; 
- int /*<<< orphan*/  DSBVOLUME_MAX ; 
- int /*<<< orphan*/  DSERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  DS_OK ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_2__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  InitializeCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- int /*<<< orphan*/  vt_DirectSoundBuffer8 ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WAVEFORMATEX ;
+struct TYPE_4__ {int cbSize; int nChannels; int nSamplesPerSec; int wBitsPerSample; int nBlockAlign; int nAvgBytesPerSec; int wFormatTag; } ;
+struct TYPE_5__ {int ref; int * lpVtbl; int Lock; TYPE_1__ Format; int * hPin; int VolumePan; int Volume; scalar_t__ dwFrequency; void* dwFlags; void* dwLevel; int Filter; } ;
+typedef int LPFILTERINFO ;
+typedef scalar_t__ LPDIRECTSOUNDBUFFER8 ;
+typedef TYPE_2__* LPCDirectSoundBuffer ;
+typedef int HRESULT ;
+typedef void* DWORD ;
+typedef int CDirectSoundBuffer ;
+
+
+ int DSBPAN_CENTER ;
+ int DSBVOLUME_MAX ;
+ int DSERR_OUTOFMEMORY ;
+ int DS_OK ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_2__* HeapAlloc (int ,int ,int) ;
+ int InitializeCriticalSection (int *) ;
+ int WAVE_FORMAT_PCM ;
+ int vt_DirectSoundBuffer8 ;
 
 HRESULT
 NewPrimarySoundBuffer(
@@ -45,7 +45,7 @@ NewPrimarySoundBuffer(
 
     if (!This)
     {
-        /* not enough memory */
+
         return DSERR_OUTOFMEMORY;
     }
 
@@ -57,9 +57,9 @@ NewPrimarySoundBuffer(
     This->dwFrequency = 0;
     This->Volume = DSBVOLUME_MAX;
     This->VolumePan = DSBPAN_CENTER;
-    This->hPin = NULL;
+    This->hPin = ((void*)0);
 
-    /* FIXME: determine default format for audio device */
+
     This->Format.cbSize = sizeof(WAVEFORMATEX);
     This->Format.nChannels = 2;
     This->Format.nSamplesPerSec = 44100;

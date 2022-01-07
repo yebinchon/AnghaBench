@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_3__ {int /*<<< orphan*/ * wszWebCharset; int /*<<< orphan*/ * wszHeaderCharset; int /*<<< orphan*/ * wszBodyCharset; } ;
-typedef  int /*<<< orphan*/  MIMECSETINFO ;
-typedef  TYPE_1__ MIMECPINFO ;
-typedef  int /*<<< orphan*/  IMultiLanguage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int CHARSETTYPE ;
 
-/* Variables and functions */
-#define  CHARSET_BODY 130 
-#define  CHARSET_HEADER 129 
-#define  CHARSET_WEB 128 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMultiLanguage_GetCharsetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMultiLanguage_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_mlang (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  mlang_getcodepageinfo (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int UINT ;
+struct TYPE_3__ {int * wszWebCharset; int * wszHeaderCharset; int * wszBodyCharset; } ;
+typedef int MIMECSETINFO ;
+typedef TYPE_1__ MIMECPINFO ;
+typedef int IMultiLanguage ;
+typedef int HRESULT ;
+typedef int CHARSETTYPE ;
+
+
+
+
+
+ scalar_t__ FAILED (int ) ;
+ int IMultiLanguage_GetCharsetInfo (int *,int *,int *) ;
+ int IMultiLanguage_Release (int *) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int get_mlang (int **) ;
+ int mlang_getcodepageinfo (int ,TYPE_1__*) ;
 
 __attribute__((used)) static HRESULT mlang_getcsetinfo_from_cp(UINT cp, CHARSETTYPE charset_type, MIMECSETINFO *mlang_info)
 {
@@ -43,13 +43,13 @@ __attribute__((used)) static HRESULT mlang_getcsetinfo_from_cp(UINT cp, CHARSETT
 
     switch(charset_type)
     {
-    case CHARSET_BODY:
+    case 130:
         charset_name = mlang_cp_info.wszBodyCharset;
         break;
-    case CHARSET_HEADER:
+    case 129:
         charset_name = mlang_cp_info.wszHeaderCharset;
         break;
-    case CHARSET_WEB:
+    case 128:
         charset_name = mlang_cp_info.wszWebCharset;
         break;
     }

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zone_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Binlog ; 
- int add_logevents ; 
- scalar_t__ append_to_binlog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- char* atoi (void*) ; 
- int /*<<< orphan*/  binlog_disabled ; 
- int /*<<< orphan*/ * binlog_load (char*,int) ; 
- int binlogname ; 
- scalar_t__ change_user (char*) ; 
- int delete_logevents ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  flush_binlog_last () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- scalar_t__ log_readto_pos ; 
- void* logname ; 
- char* maxconn ; 
- void* optarg ; 
- int optind ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  sync_binlog (int) ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  zones_merge (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int zone_t ;
+
+
+ int Binlog ;
+ int add_logevents ;
+ scalar_t__ append_to_binlog (int ) ;
+ int assert (int) ;
+ char* atoi (void*) ;
+ int binlog_disabled ;
+ int * binlog_load (char*,int) ;
+ int binlogname ;
+ scalar_t__ change_user (char*) ;
+ int delete_logevents ;
+ int exit (int) ;
+ int flush_binlog_last () ;
+ int fprintf (int ,char*,int) ;
+ int getopt (int,char**,char*) ;
+ int kprintf (char*,char*) ;
+ scalar_t__ log_readto_pos ;
+ void* logname ;
+ char* maxconn ;
+ void* optarg ;
+ int optind ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (char*) ;
+ int stderr ;
+ int stdout ;
+ int sync_binlog (int) ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
+ int zones_merge (int *,int *) ;
 
 int main (int argc, char *argv[]) {
   int c;
@@ -82,8 +82,8 @@ int main (int argc, char *argv[]) {
     exit (1);
   }
 
-  //dynamic_data_buffer_size = 64 << 20;
-  //init_dyn_data ();
+
+
   zone_t *new_zones = binlog_load (argv[optind], 1);
   assert (new_zones);
   zone_t *old_zones = binlog_load (argv[optind+1], 0);

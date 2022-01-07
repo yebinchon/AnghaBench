@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct loopinfo {scalar_t__ type; scalar_t__ ensure_level; int pc3; int /*<<< orphan*/  acc; struct loopinfo* prev; } ;
-typedef  int /*<<< orphan*/  node ;
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct loopinfo {scalar_t__ type; scalar_t__ ensure_level; int pc3; int acc; struct loopinfo* prev; } ;
+typedef int node ;
 struct TYPE_10__ {scalar_t__ ensure_level; struct loopinfo* loop; } ;
-typedef  TYPE_1__ codegen_scope ;
+typedef TYPE_1__ codegen_scope ;
 
-/* Variables and functions */
- scalar_t__ LOOP_BEGIN ; 
- scalar_t__ LOOP_NORMAL ; 
- scalar_t__ LOOP_RESCUE ; 
- int /*<<< orphan*/  NOVAL ; 
- int /*<<< orphan*/  OP_BREAK ; 
- int /*<<< orphan*/  OP_EPOP ; 
- int /*<<< orphan*/  OP_JMP ; 
- int /*<<< orphan*/  OP_LOADNIL ; 
- int /*<<< orphan*/  OP_POPERR ; 
- int /*<<< orphan*/  codegen (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int cursp () ; 
- int /*<<< orphan*/  gen_move (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_return (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  gen_retval (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int genjmp (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  genop_1 (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  raise_error (TYPE_1__*,char*) ; 
+
+ scalar_t__ LOOP_BEGIN ;
+ scalar_t__ LOOP_NORMAL ;
+ scalar_t__ LOOP_RESCUE ;
+ int NOVAL ;
+ int OP_BREAK ;
+ int OP_EPOP ;
+ int OP_JMP ;
+ int OP_LOADNIL ;
+ int OP_POPERR ;
+ int codegen (TYPE_1__*,int *,int ) ;
+ int cursp () ;
+ int gen_move (TYPE_1__*,int ,int,int ) ;
+ int gen_return (TYPE_1__*,int ,int) ;
+ int gen_retval (TYPE_1__*,int *) ;
+ int genjmp (TYPE_1__*,int ,int) ;
+ int genop_1 (TYPE_1__*,int ,int) ;
+ int raise_error (TYPE_1__*,char*) ;
 
 __attribute__((used)) static void
 loop_break(codegen_scope *s, node *tree)

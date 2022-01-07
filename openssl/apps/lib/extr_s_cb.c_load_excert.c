@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  chain; int /*<<< orphan*/ * chainfile; int /*<<< orphan*/ * key; int /*<<< orphan*/  certform; int /*<<< orphan*/ * certfile; int /*<<< orphan*/  keyform; int /*<<< orphan*/ * keyfile; int /*<<< orphan*/ * cert; struct TYPE_4__* next; } ;
-typedef  TYPE_1__ SSL_EXCERT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  FORMAT_PEM ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * load_cert (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  load_certs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- void* load_key (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ssl_excert_free (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int chain; int * chainfile; int * key; int certform; int * certfile; int keyform; int * keyfile; int * cert; struct TYPE_4__* next; } ;
+typedef TYPE_1__ SSL_EXCERT ;
+
+
+ int BIO_printf (int ,char*) ;
+ int FORMAT_PEM ;
+ int bio_err ;
+ int * load_cert (int *,int ,char*) ;
+ int load_certs (int *,int *,int ,int *,char*) ;
+ void* load_key (int *,int ,int ,int *,int *,char*) ;
+ int ssl_excert_free (TYPE_1__*) ;
 
 int load_excert(SSL_EXCERT **pexc)
 {
     SSL_EXCERT *exc = *pexc;
-    if (exc == NULL)
+    if (exc == ((void*)0))
         return 1;
-    /* If nothing in list, free and set to NULL */
-    if (exc->certfile == NULL && exc->next == NULL) {
+
+    if (exc->certfile == ((void*)0) && exc->next == ((void*)0)) {
         ssl_excert_free(exc);
-        *pexc = NULL;
+        *pexc = ((void*)0);
         return 1;
     }
     for (; exc; exc = exc->next) {
-        if (exc->certfile == NULL) {
+        if (exc->certfile == ((void*)0)) {
             BIO_printf(bio_err, "Missing filename\n");
             return 0;
         }
         exc->cert = load_cert(exc->certfile, exc->certform,
                               "Server Certificate");
-        if (exc->cert == NULL)
+        if (exc->cert == ((void*)0))
             return 0;
-        if (exc->keyfile != NULL) {
+        if (exc->keyfile != ((void*)0)) {
             exc->key = load_key(exc->keyfile, exc->keyform,
-                                0, NULL, NULL, "Server Key");
+                                0, ((void*)0), ((void*)0), "Server Key");
         } else {
             exc->key = load_key(exc->certfile, exc->certform,
-                                0, NULL, NULL, "Server Key");
+                                0, ((void*)0), ((void*)0), "Server Key");
         }
-        if (exc->key == NULL)
+        if (exc->key == ((void*)0))
             return 0;
-        if (exc->chainfile != NULL) {
-            if (!load_certs(exc->chainfile, &exc->chain, FORMAT_PEM, NULL,
+        if (exc->chainfile != ((void*)0)) {
+            if (!load_certs(exc->chainfile, &exc->chain, FORMAT_PEM, ((void*)0),
                             "Server Chain"))
                 return 0;
         }

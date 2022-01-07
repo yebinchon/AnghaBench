@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tcp_ulp_ops {int /*<<< orphan*/  list; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int EEXIST ; 
- int /*<<< orphan*/  list_add_tail_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ tcp_ulp_find (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tcp_ulp_list ; 
- int /*<<< orphan*/  tcp_ulp_list_lock ; 
+
+
+
+struct tcp_ulp_ops {int list; int name; } ;
+
+
+ int EEXIST ;
+ int list_add_tail_rcu (int *,int *) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ scalar_t__ tcp_ulp_find (int ) ;
+ int tcp_ulp_list ;
+ int tcp_ulp_list_lock ;
 
 int tcp_register_ulp(struct tcp_ulp_ops *ulp)
 {
-	int ret = 0;
+ int ret = 0;
 
-	spin_lock(&tcp_ulp_list_lock);
-	if (tcp_ulp_find(ulp->name))
-		ret = -EEXIST;
-	else
-		list_add_tail_rcu(&ulp->list, &tcp_ulp_list);
-	spin_unlock(&tcp_ulp_list_lock);
+ spin_lock(&tcp_ulp_list_lock);
+ if (tcp_ulp_find(ulp->name))
+  ret = -EEXIST;
+ else
+  list_add_tail_rcu(&ulp->list, &tcp_ulp_list);
+ spin_unlock(&tcp_ulp_list_lock);
 
-	return ret;
+ return ret;
 }

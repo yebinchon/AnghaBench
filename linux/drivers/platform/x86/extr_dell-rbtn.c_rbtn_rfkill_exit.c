@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rbtn_data {int /*<<< orphan*/ * rfkill; } ;
+
+
+
+
+struct rbtn_data {int * rfkill; } ;
 struct acpi_device {struct rbtn_data* driver_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rfkill_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rfkill_unregister (int /*<<< orphan*/ *) ; 
+
+ int rfkill_destroy (int *) ;
+ int rfkill_unregister (int *) ;
 
 __attribute__((used)) static void rbtn_rfkill_exit(struct acpi_device *device)
 {
-	struct rbtn_data *rbtn_data = device->driver_data;
+ struct rbtn_data *rbtn_data = device->driver_data;
 
-	if (!rbtn_data->rfkill)
-		return;
+ if (!rbtn_data->rfkill)
+  return;
 
-	rfkill_unregister(rbtn_data->rfkill);
-	rfkill_destroy(rbtn_data->rfkill);
-	rbtn_data->rfkill = NULL;
+ rfkill_unregister(rbtn_data->rfkill);
+ rfkill_destroy(rbtn_data->rfkill);
+ rbtn_data->rfkill = ((void*)0);
 }

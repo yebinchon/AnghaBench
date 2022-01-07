@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exec_rand ; 
- int /*<<< orphan*/  exec_rnorm ; 
- int /*<<< orphan*/  exec_sample ; 
- int /*<<< orphan*/  rand_seed ; 
- int /*<<< orphan*/  strm_cfunc_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_var_def (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_state ;
+
+
+ int exec_rand ;
+ int exec_rnorm ;
+ int exec_sample ;
+ int rand_seed ;
+ int strm_cfunc_value (int ) ;
+ int strm_var_def (int *,char*,int ) ;
 
 void
 strm_rand_init(strm_state* state)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vmci_handle {int dummy; } ;
 struct vmci_hash_entry {scalar_t__ ref_count; struct vmci_handle handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct vmci_hash_entry*) ; 
+
+ int ASSERT (struct vmci_hash_entry*) ;
 
 void
 vmci_hashtable_init_entry(struct vmci_hash_entry *entry,
     struct vmci_handle handle)
 {
 
-	ASSERT(entry);
-	entry->handle = handle;
-	entry->ref_count = 0;
+ ASSERT(entry);
+ entry->handle = handle;
+ entry->ref_count = 0;
 }

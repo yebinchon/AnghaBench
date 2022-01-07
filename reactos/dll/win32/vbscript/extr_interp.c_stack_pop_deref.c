@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * v; int /*<<< orphan*/  owned; } ;
-typedef  TYPE_1__ variant_val_t ;
-typedef  int /*<<< orphan*/  exec_ctx_t ;
-typedef  int /*<<< orphan*/  VARIANT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int VT_BYREF ; 
- int VT_VARIANT ; 
- int /*<<< orphan*/ * V_VARIANTREF (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * stack_pop (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * v; int owned; } ;
+typedef TYPE_1__ variant_val_t ;
+typedef int exec_ctx_t ;
+typedef int VARIANT ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int VT_BYREF ;
+ int VT_VARIANT ;
+ int * V_VARIANTREF (int *) ;
+ int V_VT (int *) ;
+ int * stack_pop (int *) ;
 
 __attribute__((used)) static void stack_pop_deref(exec_ctx_t *ctx, variant_val_t *r)
 {

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int INPUT ;
+ int OUTPUT ;
+ int PERIPH_RMT_MODULE ;
+ scalar_t__ RMT_SIG_IN0_IDX ;
+ scalar_t__ RMT_SIG_OUT0_IDX ;
+ int periph_enabled ;
+ int periph_module_enable (int ) ;
+ int pinMatrixInAttach (int,scalar_t__,int ) ;
+ int pinMatrixOutAttach (int,scalar_t__,int ,int ) ;
+ int pinMode (int,int ) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  INPUT ; 
- int /*<<< orphan*/  OUTPUT ; 
- int /*<<< orphan*/  PERIPH_RMT_MODULE ; 
- scalar_t__ RMT_SIG_IN0_IDX ; 
- scalar_t__ RMT_SIG_OUT0_IDX ; 
- int periph_enabled ; 
- int /*<<< orphan*/  periph_module_enable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pinMatrixInAttach (int,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pinMatrixOutAttach (int,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pinMode (int,int /*<<< orphan*/ ) ; 
-
-__attribute__((used)) static void _initPin(int pin, int channel, bool tx_not_rx) 
+__attribute__((used)) static void _initPin(int pin, int channel, bool tx_not_rx)
 {
     if (!periph_enabled) {
-        periph_enabled = true;
+        periph_enabled = 1;
         periph_module_enable( PERIPH_RMT_MODULE );
     }
     if (tx_not_rx) {

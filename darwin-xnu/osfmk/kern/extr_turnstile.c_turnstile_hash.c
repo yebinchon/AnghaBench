@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  key ;
 
-/* Variables and functions */
- int jenkins_hash (char*,int) ; 
- int ts_htable_buckets ; 
 
-__attribute__((used)) static inline uint32_t 
+
+
+typedef int uint32_t ;
+typedef int key ;
+
+
+ int jenkins_hash (char*,int) ;
+ int ts_htable_buckets ;
+
+__attribute__((used)) static inline uint32_t
 turnstile_hash(uintptr_t proprietor)
 {
-	char *key = (char *)&proprietor;
-	uint32_t hash = jenkins_hash(key, sizeof(key));
-	hash &= (ts_htable_buckets - 1);
-	return hash;
+ char *key = (char *)&proprietor;
+ uint32_t hash = jenkins_hash(key, sizeof(key));
+ hash &= (ts_htable_buckets - 1);
+ return hash;
 }

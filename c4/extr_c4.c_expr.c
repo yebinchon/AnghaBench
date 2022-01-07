@@ -1,94 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ADD ; 
- int ADJ ; 
- int AND ; 
- char Add ; 
- char And ; 
- char Assign ; 
- int BNZ ; 
- int BZ ; 
- char Brak ; 
- int CHAR ; 
- char Char ; 
- size_t Class ; 
- char Cond ; 
- int DIV ; 
- char Dec ; 
- char Div ; 
- int EQ ; 
- char Eq ; 
- int Fun ; 
- int GE ; 
- int GT ; 
- char Ge ; 
- int Glo ; 
- char Gt ; 
- int IMM ; 
- int INT ; 
- char Id ; 
- char Inc ; 
- char Int ; 
- int JMP ; 
- int JSR ; 
- int LC ; 
- int LE ; 
- int LEA ; 
- int LI ; 
- int LT ; 
- char Lan ; 
- char Le ; 
- int Loc ; 
- char Lor ; 
- char Lt ; 
- int MOD ; 
- int MUL ; 
- char Mod ; 
- char Mul ; 
- int NE ; 
- char Ne ; 
- char Num ; 
- int OR ; 
- char Or ; 
- int PSH ; 
- int PTR ; 
- int SC ; 
- int SHL ; 
- int SHR ; 
- int SI ; 
- int SUB ; 
- char Shl ; 
- char Shr ; 
- char Sizeof ; 
- char Sub ; 
- int Sys ; 
- size_t Type ; 
- size_t Val ; 
- int XOR ; 
- char Xor ; 
- char* data ; 
- int* e ; 
- int /*<<< orphan*/  exit (int) ; 
- int* id ; 
- int ival ; 
- int line ; 
- int loc ; 
- int /*<<< orphan*/  next () ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- char tk ; 
- int ty ; 
+ int ADD ;
+ int ADJ ;
+ int AND ;
+ char Add ;
+ char And ;
+ char Assign ;
+ int BNZ ;
+ int BZ ;
+ char Brak ;
+ int CHAR ;
+ char Char ;
+ size_t Class ;
+ char Cond ;
+ int DIV ;
+ char Dec ;
+ char Div ;
+ int EQ ;
+ char Eq ;
+ int Fun ;
+ int GE ;
+ int GT ;
+ char Ge ;
+ int Glo ;
+ char Gt ;
+ int IMM ;
+ int INT ;
+ char Id ;
+ char Inc ;
+ char Int ;
+ int JMP ;
+ int JSR ;
+ int LC ;
+ int LE ;
+ int LEA ;
+ int LI ;
+ int LT ;
+ char Lan ;
+ char Le ;
+ int Loc ;
+ char Lor ;
+ char Lt ;
+ int MOD ;
+ int MUL ;
+ char Mod ;
+ char Mul ;
+ int NE ;
+ char Ne ;
+ char Num ;
+ int OR ;
+ char Or ;
+ int PSH ;
+ int PTR ;
+ int SC ;
+ int SHL ;
+ int SHR ;
+ int SI ;
+ int SUB ;
+ char Shl ;
+ char Shr ;
+ char Sizeof ;
+ char Sub ;
+ int Sys ;
+ size_t Type ;
+ size_t Val ;
+ int XOR ;
+ char Xor ;
+ char* data ;
+ int* e ;
+ int exit (int) ;
+ int* id ;
+ int ival ;
+ int line ;
+ int loc ;
+ int next () ;
+ int printf (char*,int,...) ;
+ char tk ;
+ int ty ;
 
 void expr(int lev)
 {
@@ -174,7 +166,7 @@ void expr(int lev)
   }
   else { printf("%d: bad expression\n", line); exit(-1); }
 
-  while (tk >= lev) { // "precedence climbing" or "Top Down Operator Precedence" method
+  while (tk >= lev) {
     t = ty;
     if (tk == Assign) {
       next();
@@ -191,21 +183,21 @@ void expr(int lev)
       *d = (int)(e + 1);
     }
     else if (tk == Lor) { next(); *++e = BNZ; d = ++e; expr(Lan); *d = (int)(e + 1); ty = INT; }
-    else if (tk == Lan) { next(); *++e = BZ;  d = ++e; expr(Or);  *d = (int)(e + 1); ty = INT; }
-    else if (tk == Or)  { next(); *++e = PSH; expr(Xor); *++e = OR;  ty = INT; }
+    else if (tk == Lan) { next(); *++e = BZ; d = ++e; expr(Or); *d = (int)(e + 1); ty = INT; }
+    else if (tk == Or) { next(); *++e = PSH; expr(Xor); *++e = OR; ty = INT; }
     else if (tk == Xor) { next(); *++e = PSH; expr(And); *++e = XOR; ty = INT; }
-    else if (tk == And) { next(); *++e = PSH; expr(Eq);  *++e = AND; ty = INT; }
-    else if (tk == Eq)  { next(); *++e = PSH; expr(Lt);  *++e = EQ;  ty = INT; }
-    else if (tk == Ne)  { next(); *++e = PSH; expr(Lt);  *++e = NE;  ty = INT; }
-    else if (tk == Lt)  { next(); *++e = PSH; expr(Shl); *++e = LT;  ty = INT; }
-    else if (tk == Gt)  { next(); *++e = PSH; expr(Shl); *++e = GT;  ty = INT; }
-    else if (tk == Le)  { next(); *++e = PSH; expr(Shl); *++e = LE;  ty = INT; }
-    else if (tk == Ge)  { next(); *++e = PSH; expr(Shl); *++e = GE;  ty = INT; }
+    else if (tk == And) { next(); *++e = PSH; expr(Eq); *++e = AND; ty = INT; }
+    else if (tk == Eq) { next(); *++e = PSH; expr(Lt); *++e = EQ; ty = INT; }
+    else if (tk == Ne) { next(); *++e = PSH; expr(Lt); *++e = NE; ty = INT; }
+    else if (tk == Lt) { next(); *++e = PSH; expr(Shl); *++e = LT; ty = INT; }
+    else if (tk == Gt) { next(); *++e = PSH; expr(Shl); *++e = GT; ty = INT; }
+    else if (tk == Le) { next(); *++e = PSH; expr(Shl); *++e = LE; ty = INT; }
+    else if (tk == Ge) { next(); *++e = PSH; expr(Shl); *++e = GE; ty = INT; }
     else if (tk == Shl) { next(); *++e = PSH; expr(Add); *++e = SHL; ty = INT; }
     else if (tk == Shr) { next(); *++e = PSH; expr(Add); *++e = SHR; ty = INT; }
     else if (tk == Add) {
       next(); *++e = PSH; expr(Mul);
-      if ((ty = t) > PTR) { *++e = PSH; *++e = IMM; *++e = sizeof(int); *++e = MUL;  }
+      if ((ty = t) > PTR) { *++e = PSH; *++e = IMM; *++e = sizeof(int); *++e = MUL; }
       *++e = ADD;
     }
     else if (tk == Sub) {
@@ -231,7 +223,7 @@ void expr(int lev)
     else if (tk == Brak) {
       next(); *++e = PSH; expr(Assign);
       if (tk == ']') next(); else { printf("%d: close bracket expected\n", line); exit(-1); }
-      if (t > PTR) { *++e = PSH; *++e = IMM; *++e = sizeof(int); *++e = MUL;  }
+      if (t > PTR) { *++e = PSH; *++e = IMM; *++e = sizeof(int); *++e = MUL; }
       else if (t < PTR) { printf("%d: pointer type expected\n", line); exit(-1); }
       *++e = ADD;
       *++e = ((ty = t - PTR) == CHAR) ? LC : LI;

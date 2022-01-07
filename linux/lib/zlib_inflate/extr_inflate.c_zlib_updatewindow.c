@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* z_streamp ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* z_streamp ;
 struct inflate_state {unsigned int wsize; unsigned int write; unsigned int whave; scalar_t__ window; } ;
 struct TYPE_3__ {unsigned int avail_out; scalar_t__ next_out; scalar_t__ state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,unsigned int) ; 
+
+ int memcpy (scalar_t__,scalar_t__,unsigned int) ;
 
 __attribute__((used)) static void zlib_updatewindow(z_streamp strm, unsigned out)
 {
@@ -25,7 +25,7 @@ __attribute__((used)) static void zlib_updatewindow(z_streamp strm, unsigned out
 
     state = (struct inflate_state *)strm->state;
 
-    /* copy state->wsize or less output bytes into the circular window */
+
     copy = out - strm->avail_out;
     if (copy >= state->wsize) {
         memcpy(state->window, strm->next_out - state->wsize, state->wsize);

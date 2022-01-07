@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vo_internal {int /*<<< orphan*/  lock; int /*<<< orphan*/  req_frames; int /*<<< orphan*/  flip_queue_offset; } ;
+
+
+
+
+struct vo_internal {int lock; int req_frames; int flip_queue_offset; } ;
 struct vo {struct vo_internal* in; } ;
-typedef  int /*<<< orphan*/  int64_t ;
+typedef int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MPCLAMP (int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VO_MAX_REQ_FRAMES ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int MPCLAMP (int,int,int ) ;
+ int VO_MAX_REQ_FRAMES ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 void vo_set_queue_params(struct vo *vo, int64_t offset_us, int num_req_frames)
 {

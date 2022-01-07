@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t styleid_t ;
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIDOMCSSStyleDeclaration ;
-typedef  int /*<<< orphan*/  nsAString ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_2__ {int /*<<< orphan*/  const* name; } ;
-typedef  int /*<<< orphan*/  const* LPWSTR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ATTR_FIX_PX ; 
- int ATTR_FIX_URL ; 
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  const* emptyW ; 
- int /*<<< orphan*/ * fix_px_value (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * fix_url_value (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  heap_free (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsAString_Finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsAString_InitDepend (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  nsIDOMCSSStyleDeclaration_SetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* style_tbl ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t styleid_t ;
+typedef int nsresult ;
+typedef int nsIDOMCSSStyleDeclaration ;
+typedef int nsAString ;
+typedef int WCHAR ;
+struct TYPE_2__ {int const* name; } ;
+typedef int const* LPWSTR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int ATTR_FIX_PX ;
+ int ATTR_FIX_URL ;
+ int ERR (char*,int ) ;
+ scalar_t__ NS_FAILED (int ) ;
+ int S_OK ;
+ int const* emptyW ;
+ int * fix_px_value (int const*) ;
+ int * fix_url_value (int const*) ;
+ int heap_free (int const*) ;
+ int nsAString_Finish (int *) ;
+ int nsAString_InitDepend (int *,int const*) ;
+ int nsIDOMCSSStyleDeclaration_SetProperty (int *,int *,int *,int *) ;
+ TYPE_1__* style_tbl ;
 
 HRESULT set_nsstyle_attr(nsIDOMCSSStyleDeclaration *nsstyle, styleid_t sid, const WCHAR *value, DWORD flags)
 {
     nsAString str_name, str_value, str_empty;
-    LPWSTR val = NULL;
+    LPWSTR val = ((void*)0);
     nsresult nsres;
 
     if(value) {

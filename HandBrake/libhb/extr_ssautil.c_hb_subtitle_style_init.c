@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ssa_style_indicies_t ;
-typedef  int /*<<< orphan*/  hb_subtitle_style_context_t ;
 
-/* Variables and functions */
- scalar_t__ add_style (int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * calloc (int,int) ; 
- int /*<<< orphan*/  fill_field_indicies (char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- char** get_fields (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_str_vfree (char**) ; 
- char* sgetline (char*) ; 
- int /*<<< orphan*/  ssa_style_reset (int /*<<< orphan*/ *) ; 
- char* strchr (char*,char) ; 
- char* strstr (char const*,char*) ; 
+
+
+
+typedef int ssa_style_indicies_t ;
+typedef int hb_subtitle_style_context_t ;
+
+
+ scalar_t__ add_style (int *,char**,int *) ;
+ int * calloc (int,int) ;
+ int fill_field_indicies (char**,int *) ;
+ int free (char*) ;
+ char** get_fields (char*,int ) ;
+ int hb_str_vfree (char**) ;
+ char* sgetline (char*) ;
+ int ssa_style_reset (int *) ;
+ char* strchr (char*,char) ;
+ char* strstr (char const*,char*) ;
 
 hb_subtitle_style_context_t * hb_subtitle_style_init(const char * ssa_header)
 {
     hb_subtitle_style_context_t * ctx;
 
     ctx = calloc(1, sizeof(*ctx));
-    if (ctx == NULL)
+    if (ctx == ((void*)0))
     {
-        return NULL;
+        return ((void*)0);
     }
-    if (ssa_header != NULL)
+    if (ssa_header != ((void*)0))
     {
-        // Find beginning of styles
-        char *  pos = strstr(ssa_header, "[V4");
 
-        if (pos != NULL)
+        char * pos = strstr(ssa_header, "[V4");
+
+        if (pos != ((void*)0))
         {
             pos = strstr(pos, "\nFormat:");
-            if (pos != NULL)
+            if (pos != ((void*)0))
             {
                 char ** fields;
-                int     next = 7;
-                char  * line = sgetline(pos + 8);
+                int next = 7;
+                char * line = sgetline(pos + 8);
 
                 fields = get_fields(line, 0);
                 free(line);
 
-                if (fields != NULL)
+                if (fields != ((void*)0))
                 {
                     ssa_style_indicies_t field_indices;
 
                     fill_field_indicies(fields, &field_indices);
 
-                    pos    = strstr(pos, "\nStyle:");
-                    while (pos != NULL)
+                    pos = strstr(pos, "\nStyle:");
+                    while (pos != ((void*)0))
                     {
                         char ** style;
 

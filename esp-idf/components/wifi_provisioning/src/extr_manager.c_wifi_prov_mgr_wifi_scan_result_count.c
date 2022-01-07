@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint16_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * ap_list_sorted; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACQUIRE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- size_t MAX_SCAN_RESULTS ; 
- int /*<<< orphan*/  RELEASE_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TAG ; 
- TYPE_1__* prov_ctx ; 
- int /*<<< orphan*/  prov_ctx_lock ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef size_t uint16_t ;
+struct TYPE_2__ {int * ap_list_sorted; } ;
+
+
+ int ACQUIRE_LOCK (int ) ;
+ int ESP_LOGE (int ,char*) ;
+ size_t MAX_SCAN_RESULTS ;
+ int RELEASE_LOCK (int ) ;
+ int TAG ;
+ TYPE_1__* prov_ctx ;
+ int prov_ctx_lock ;
 
 uint16_t wifi_prov_mgr_wifi_scan_result_count(void)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- char* device_get_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,char const*) ; 
+
+
+
+typedef int device_t ;
+
+
+ char* device_get_name (int ) ;
+ int device_printf (int ,char*,char const*) ;
 
 __attribute__((used)) static void
 bwn_pci_probe_nomatch(device_t dev, device_t child)
 {
-	const char *name;
+ const char *name;
 
-	name = device_get_name(child);
-	if (name == NULL)
-		name = "unknown device";
+ name = device_get_name(child);
+ if (name == ((void*)0))
+  name = "unknown device";
 
-	device_printf(dev, "<%s> (no driver attached)\n", name);
+ device_printf(dev, "<%s> (no driver attached)\n", name);
 }

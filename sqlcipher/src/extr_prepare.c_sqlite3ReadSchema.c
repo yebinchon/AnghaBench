@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  busy; } ;
-struct TYPE_7__ {int /*<<< orphan*/  mDbFlags; scalar_t__ noSharedCache; TYPE_1__ init; int /*<<< orphan*/  mutex; } ;
-typedef  TYPE_2__ sqlite3 ;
-struct TYPE_8__ {int rc; int /*<<< orphan*/  nErr; int /*<<< orphan*/  zErrMsg; TYPE_2__* db; } ;
-typedef  TYPE_3__ Parse ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBFLAG_SchemaKnownOk ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int sqlite3Init (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_mutex_held (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int busy; } ;
+struct TYPE_7__ {int mDbFlags; scalar_t__ noSharedCache; TYPE_1__ init; int mutex; } ;
+typedef TYPE_2__ sqlite3 ;
+struct TYPE_8__ {int rc; int nErr; int zErrMsg; TYPE_2__* db; } ;
+typedef TYPE_3__ Parse ;
+
+
+ int DBFLAG_SchemaKnownOk ;
+ int SQLITE_OK ;
+ int assert (int ) ;
+ int sqlite3Init (TYPE_2__*,int *) ;
+ int sqlite3_mutex_held (int ) ;
 
 int sqlite3ReadSchema(Parse *pParse){
   int rc = SQLITE_OK;

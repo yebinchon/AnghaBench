@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {struct TYPE_3__* prcButtons; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
- TYPE_1__* tbsize_results ; 
- int tbsize_results_num ; 
+
+ int heap_free (TYPE_1__*) ;
+ TYPE_1__* tbsize_results ;
+ int tbsize_results_num ;
 
 __attribute__((used)) static void free_tbsize_results(void) {
     int i;
@@ -24,5 +24,5 @@ __attribute__((used)) static void free_tbsize_results(void) {
     for (i = 0; i < tbsize_results_num; i++)
         heap_free(tbsize_results[i].prcButtons);
     heap_free(tbsize_results);
-    tbsize_results = NULL;
+    tbsize_results = ((void*)0);
 }

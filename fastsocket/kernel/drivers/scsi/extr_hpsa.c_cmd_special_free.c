@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  upper; int /*<<< orphan*/  lower; } ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int upper; int lower; } ;
 union u64bit {scalar_t__ val; TYPE_1__ val32; } ;
-struct ctlr_info {int /*<<< orphan*/  pdev; } ;
-struct TYPE_5__ {int /*<<< orphan*/  upper; int /*<<< orphan*/  lower; } ;
+struct ctlr_info {int pdev; } ;
+struct TYPE_5__ {int upper; int lower; } ;
 struct TYPE_6__ {TYPE_2__ Addr; } ;
 struct CommandList {int busaddr; struct CommandList* err_info; TYPE_3__ ErrDesc; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- int DIRECT_LOOKUP_MASK ; 
- int /*<<< orphan*/  pci_free_consistent (int /*<<< orphan*/ ,int,struct CommandList*,int /*<<< orphan*/ ) ; 
+
+ int DIRECT_LOOKUP_MASK ;
+ int pci_free_consistent (int ,int,struct CommandList*,int ) ;
 
 __attribute__((used)) static void cmd_special_free(struct ctlr_info *h, struct CommandList *c)
 {
-	union u64bit temp64;
+ union u64bit temp64;
 
-	temp64.val32.lower = c->ErrDesc.Addr.lower;
-	temp64.val32.upper = c->ErrDesc.Addr.upper;
-	pci_free_consistent(h->pdev, sizeof(*c->err_info),
-			    c->err_info, (dma_addr_t) temp64.val);
-	pci_free_consistent(h->pdev, sizeof(*c),
-			    c, (dma_addr_t) (c->busaddr & DIRECT_LOOKUP_MASK));
+ temp64.val32.lower = c->ErrDesc.Addr.lower;
+ temp64.val32.upper = c->ErrDesc.Addr.upper;
+ pci_free_consistent(h->pdev, sizeof(*c->err_info),
+       c->err_info, (dma_addr_t) temp64.val);
+ pci_free_consistent(h->pdev, sizeof(*c),
+       c, (dma_addr_t) (c->busaddr & DIRECT_LOOKUP_MASK));
 }

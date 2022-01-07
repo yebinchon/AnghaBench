@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float const M_PI ; 
- double QCELP_BANDWIDTH_EXPANSION_COEFF ; 
- double cos (float const) ; 
- int /*<<< orphan*/  ff_acelp_lspd2lpc (double*,float*,int) ; 
+ float const M_PI ;
+ double QCELP_BANDWIDTH_EXPANSION_COEFF ;
+ double cos (float const) ;
+ int ff_acelp_lspd2lpc (double*,float*,int) ;
 
 __attribute__((used)) static void lspf2lpc(const float *lspf, float *lpc)
 {
@@ -29,7 +21,7 @@ __attribute__((used)) static void lspf2lpc(const float *lspf, float *lpc)
     ff_acelp_lspd2lpc(lsp, lpc, 5);
 
     for (i = 0; i < 10; i++) {
-        lpc[i]                    *= bandwidth_expansion_coeff;
+        lpc[i] *= bandwidth_expansion_coeff;
         bandwidth_expansion_coeff *= QCELP_BANDWIDTH_EXPANSION_COEFF;
     }
 }

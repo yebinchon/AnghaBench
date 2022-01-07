@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  common_vt_4t_8x2_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  common_vt_4t_8x4mult_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  common_vt_4t_8x6_msa (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+
+
+ int common_vt_4t_8x2_msa (int *,int,int *,int,int const*) ;
+ int common_vt_4t_8x4mult_msa (int *,int,int *,int,int const*,int) ;
+ int common_vt_4t_8x6_msa (int *,int,int *,int,int const*) ;
 
 __attribute__((used)) static void common_vt_4t_8w_msa(uint8_t *src, int32_t src_stride,
                                 uint8_t *dst, int32_t dst_stride,

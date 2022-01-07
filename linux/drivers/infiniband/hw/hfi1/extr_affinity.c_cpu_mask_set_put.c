@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpu_mask_set {int /*<<< orphan*/  used; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cpu_mask_set_gen_dec (struct cpu_mask_set*) ; 
- int /*<<< orphan*/  cpumask_clear_cpu (int,int /*<<< orphan*/ *) ; 
+
+
+
+struct cpu_mask_set {int used; } ;
+
+
+ int _cpu_mask_set_gen_dec (struct cpu_mask_set*) ;
+ int cpumask_clear_cpu (int,int *) ;
 
 __attribute__((used)) static void cpu_mask_set_put(struct cpu_mask_set *set, int cpu)
 {
-	if (!set)
-		return;
+ if (!set)
+  return;
 
-	cpumask_clear_cpu(cpu, &set->used);
-	_cpu_mask_set_gen_dec(set);
+ cpumask_clear_cpu(cpu, &set->used);
+ _cpu_mask_set_gen_dec(set);
 }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct in_addr {int dummy; } ;
 struct ifa_cacheinfo {int dummy; } ;
-typedef  int /*<<< orphan*/  sd_netlink_message ;
-typedef  int /*<<< orphan*/  sd_netlink ;
+typedef int sd_netlink_message ;
+typedef int sd_netlink ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  IFA_ADDRESS ; 
- int /*<<< orphan*/  IFA_CACHEINFO ; 
- int /*<<< orphan*/  IFA_LABEL ; 
- int /*<<< orphan*/  IFA_LOCAL ; 
- int /*<<< orphan*/  RTM_GETADDR ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int sd_netlink_call (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- scalar_t__ sd_netlink_message_read_cache_info (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct ifa_cacheinfo*) ; 
- scalar_t__ sd_netlink_message_read_in_addr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,struct in_addr*) ; 
- scalar_t__ sd_netlink_message_read_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const**) ; 
- int /*<<< orphan*/ * sd_netlink_message_unref (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_rtnl_message_new_addr (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int AF_INET ;
+ int IFA_ADDRESS ;
+ int IFA_CACHEINFO ;
+ int IFA_LABEL ;
+ int IFA_LOCAL ;
+ int RTM_GETADDR ;
+ int assert_se (int) ;
+ int sd_netlink_call (int *,int *,int,int **) ;
+ scalar_t__ sd_netlink_message_read_cache_info (int *,int ,struct ifa_cacheinfo*) ;
+ scalar_t__ sd_netlink_message_read_in_addr (int *,int ,struct in_addr*) ;
+ scalar_t__ sd_netlink_message_read_string (int *,int ,char const**) ;
+ int * sd_netlink_message_unref (int *) ;
+ scalar_t__ sd_rtnl_message_new_addr (int *,int **,int ,int,int ) ;
 
 __attribute__((used)) static void test_address_get(sd_netlink *rtnl, int ifindex) {
         sd_netlink_message *m;
@@ -47,7 +47,7 @@ __attribute__((used)) static void test_address_get(sd_netlink *rtnl, int ifindex
         assert_se(sd_netlink_message_read_string(r, IFA_LABEL, &label) == 0);
         assert_se(sd_netlink_message_read_cache_info(r, IFA_CACHEINFO, &cache) == 0);
 
-        assert_se((m = sd_netlink_message_unref(m)) == NULL);
-        assert_se((r = sd_netlink_message_unref(r)) == NULL);
+        assert_se((m = sd_netlink_message_unref(m)) == ((void*)0));
+        assert_se((r = sd_netlink_message_unref(r)) == ((void*)0));
 
 }

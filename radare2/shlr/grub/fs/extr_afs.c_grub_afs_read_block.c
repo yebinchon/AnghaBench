@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct grub_afs_sblock {int block_size; } ;
 struct grub_afs_blockrun {int len; } ;
-struct grub_afs_datastream {struct grub_afs_blockrun double_indirect; int /*<<< orphan*/  max_indirect_range; struct grub_afs_blockrun indirect; int /*<<< orphan*/  max_direct_range; struct grub_afs_blockrun* direct; } ;
-typedef  int /*<<< orphan*/  indir ;
-typedef  TYPE_3__* grub_fshelp_node_t ;
-typedef  scalar_t__ grub_disk_addr_t ;
-typedef  int grub_afs_off_t ;
+struct grub_afs_datastream {struct grub_afs_blockrun double_indirect; int max_indirect_range; struct grub_afs_blockrun indirect; int max_direct_range; struct grub_afs_blockrun* direct; } ;
+typedef int indir ;
+typedef TYPE_3__* grub_fshelp_node_t ;
+typedef scalar_t__ grub_disk_addr_t ;
+typedef int grub_afs_off_t ;
 struct TYPE_5__ {struct grub_afs_datastream stream; } ;
 struct TYPE_7__ {TYPE_2__* data; TYPE_1__ inode; } ;
-struct TYPE_6__ {int /*<<< orphan*/  disk; struct grub_afs_sblock sblock; } ;
+struct TYPE_6__ {int disk; struct grub_afs_sblock sblock; } ;
 
-/* Variables and functions */
- int GRUB_AFS_BLOCKS_PER_DI_RUN ; 
- int GRUB_AFS_DIRECT_BLOCK_COUNT ; 
- int GRUB_DISK_SECTOR_BITS ; 
- int grub_afs_run_to_num (struct grub_afs_sblock*,struct grub_afs_blockrun*) ; 
- scalar_t__ grub_afs_to_cpu16 (int) ; 
- scalar_t__ grub_afs_to_cpu64 (int /*<<< orphan*/ ) ; 
- scalar_t__ grub_disk_read (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,struct grub_afs_blockrun*) ; 
+
+ int GRUB_AFS_BLOCKS_PER_DI_RUN ;
+ int GRUB_AFS_DIRECT_BLOCK_COUNT ;
+ int GRUB_DISK_SECTOR_BITS ;
+ int grub_afs_run_to_num (struct grub_afs_sblock*,struct grub_afs_blockrun*) ;
+ scalar_t__ grub_afs_to_cpu16 (int) ;
+ scalar_t__ grub_afs_to_cpu64 (int ) ;
+ scalar_t__ grub_disk_read (int ,int,int ,int,struct grub_afs_blockrun*) ;
 
 __attribute__((used)) static grub_disk_addr_t
 grub_afs_read_block (grub_fshelp_node_t node, grub_disk_addr_t fileblock)
@@ -82,7 +82,7 @@ grub_afs_read_block (grub_fshelp_node_t node, grub_disk_addr_t fileblock)
       int ptrs_per_blk = sb->block_size / sizeof (struct grub_afs_blockrun);
       struct grub_afs_blockrun indir[ptrs_per_blk];
 
-      /* ([idblk][idptr]) ([dblk][dptr]) [blk]  */
+
       int cur_pos = fileblock - grub_afs_to_cpu64 (ds->max_indirect_range);
 
       int dptr_size = GRUB_AFS_BLOCKS_PER_DI_RUN;

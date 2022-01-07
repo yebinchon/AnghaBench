@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {scalar_t__ vo_dev; scalar_t__ device_ctx; scalar_t__ video_dev; scalar_t__ video_ctx; int /*<<< orphan*/  pool; int /*<<< orphan*/  queue; } ;
+
+
+
+
+struct priv {scalar_t__ vo_dev; scalar_t__ device_ctx; scalar_t__ video_dev; scalar_t__ video_ctx; int pool; int queue; } ;
 struct mp_filter {struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ID3D11DeviceContext_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11Device_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11VideoContext_Release (scalar_t__) ; 
- int /*<<< orphan*/  ID3D11VideoDevice_Release (scalar_t__) ; 
- int /*<<< orphan*/  destroy_video_proc (struct mp_filter*) ; 
- int /*<<< orphan*/  flush_frames (struct mp_filter*) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
+
+ int ID3D11DeviceContext_Release (scalar_t__) ;
+ int ID3D11Device_Release (scalar_t__) ;
+ int ID3D11VideoContext_Release (scalar_t__) ;
+ int ID3D11VideoDevice_Release (scalar_t__) ;
+ int destroy_video_proc (struct mp_filter*) ;
+ int flush_frames (struct mp_filter*) ;
+ int talloc_free (int ) ;
 
 __attribute__((used)) static void uninit(struct mp_filter *vf)
 {

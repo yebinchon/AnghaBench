@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ func; scalar_t__ irep; } ;
 struct RProc {TYPE_1__ body; } ;
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IV_GET (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ MRB_PROC_CFUNC_P (struct RProc*) ; 
- scalar_t__ mrb_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_equal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_obj_is_instance_of (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- struct RProc* mrb_proc_ptr (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_symbol (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_true_value () ; 
+
+ int IV_GET (int ,char*) ;
+ scalar_t__ MRB_PROC_CFUNC_P (struct RProc*) ;
+ scalar_t__ mrb_class (int *,int ) ;
+ struct RClass* mrb_class_ptr (int ) ;
+ int mrb_false_value () ;
+ int mrb_get_args (int *,char*,int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_obj_equal (int *,int ,int ) ;
+ int mrb_obj_is_instance_of (int *,int ,scalar_t__) ;
+ struct RProc* mrb_proc_ptr (int ) ;
+ scalar_t__ mrb_symbol (int ) ;
+ int mrb_true_value () ;
 
 __attribute__((used)) static mrb_value
 method_eql(mrb_state *mrb, mrb_value self)

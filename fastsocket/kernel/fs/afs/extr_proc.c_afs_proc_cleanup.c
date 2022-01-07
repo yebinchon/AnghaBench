@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * proc_afs ; 
- int /*<<< orphan*/  remove_proc_entry (char*,int /*<<< orphan*/ *) ; 
+ int * proc_afs ;
+ int remove_proc_entry (char*,int *) ;
 
 void afs_proc_cleanup(void)
 {
-	remove_proc_entry("rootcell", proc_afs);
-	remove_proc_entry("cells", proc_afs);
-	remove_proc_entry("fs/afs", NULL);
+ remove_proc_entry("rootcell", proc_afs);
+ remove_proc_entry("cells", proc_afs);
+ remove_proc_entry("fs/afs", ((void*)0));
 }

@@ -1,34 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int AUDIO_BUF ;
+ int OTHER_BUF ;
 
-/* Forward declarations */
+ int SUBTITLE_BUF ;
 
-/* Type definitions */
-
-/* Variables and functions */
-#define  A 130 
- int AUDIO_BUF ; 
- int OTHER_BUF ; 
-#define  S 129 
- int SUBTITLE_BUF ; 
-#define  V 128 
- int VIDEO_BUF ; 
+ int VIDEO_BUF ;
 
 __attribute__((used)) static int stream_kind_to_buf_type(int kind)
 {
     switch (kind)
     {
-        case A:
+        case 130:
             return AUDIO_BUF;
-        case V:
+        case 128:
             return VIDEO_BUF;
-        case S:
+        case 129:
             return SUBTITLE_BUF;
         default:
             return OTHER_BUF;

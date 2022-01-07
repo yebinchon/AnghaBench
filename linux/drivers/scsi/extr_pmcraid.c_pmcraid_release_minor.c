@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  __clear_bit (unsigned short,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pmcraid_minor ; 
+ int __clear_bit (unsigned short,int ) ;
+ int pmcraid_minor ;
 
 __attribute__((used)) static void pmcraid_release_minor(unsigned short minor)
 {
-	__clear_bit(minor, pmcraid_minor);
+ __clear_bit(minor, pmcraid_minor);
 }

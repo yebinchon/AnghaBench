@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int N_S16 ; 
- int N_S32 ; 
- int /*<<< orphan*/  N_SU_32 ; 
- int N_U16 ; 
- int N_U32 ; 
- int /*<<< orphan*/  neon_mac_reg_scalar_long (int,int /*<<< orphan*/ ) ; 
+ int N_S16 ;
+ int N_S32 ;
+ int N_SU_32 ;
+ int N_U16 ;
+ int N_U32 ;
+ int neon_mac_reg_scalar_long (int,int ) ;
 
 __attribute__((used)) static void
 do_neon_mac_maybe_scalar_long (void)

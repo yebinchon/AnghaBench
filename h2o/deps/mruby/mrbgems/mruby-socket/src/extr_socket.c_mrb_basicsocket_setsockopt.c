@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uc ;
-typedef  int /*<<< orphan*/  socklen_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int /*<<< orphan*/  i ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int IP_MULTICAST_LOOP ; 
- int IP_MULTICAST_TTL ; 
- scalar_t__ MRB_TT_FALSE ; 
- scalar_t__ MRB_TT_TRUE ; 
- scalar_t__ RSTRING_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int mrb_fixnum (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_fixnum_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_obj_classname (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_raisef (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_new (int /*<<< orphan*/ *,char*,int) ; 
- scalar_t__ mrb_string_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ mrb_test (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_type (int /*<<< orphan*/ ) ; 
- int setsockopt (int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int socket_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int uc ;
+typedef int socklen_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int i ;
+
+
+ int E_ARGUMENT_ERROR ;
+ int IP_MULTICAST_LOOP ;
+ int IP_MULTICAST_TTL ;
+ scalar_t__ MRB_TT_FALSE ;
+ scalar_t__ MRB_TT_TRUE ;
+ scalar_t__ RSTRING_LEN (int ) ;
+ int RSTRING_PTR (int ) ;
+ int mrb_fixnum (int ) ;
+ scalar_t__ mrb_fixnum_p (int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_funcall (int *,int ,char*,int ) ;
+ int mrb_get_args (int *,char*,int *,int*,int *) ;
+ int mrb_obj_classname (int *,int ) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_raisef (int *,int ,char*,int ) ;
+ int mrb_str_new (int *,char*,int) ;
+ scalar_t__ mrb_string_p (int ) ;
+ int mrb_sys_fail (int *,char*) ;
+ scalar_t__ mrb_test (int ) ;
+ scalar_t__ mrb_type (int ) ;
+ int setsockopt (int,int,int,int ,int ) ;
+ int socket_fd (int *,int ) ;
+ scalar_t__ strcmp (int ,char*) ;
 
 __attribute__((used)) static mrb_value
 mrb_basicsocket_setsockopt(mrb_state *mrb, mrb_value self)
@@ -56,7 +56,7 @@ mrb_basicsocket_setsockopt(mrb_state *mrb, mrb_value self)
     }
     level = mrb_fixnum(so);
     if (mrb_string_p(optval)) {
-      /* that's good */
+
     } else if (mrb_type(optval) == MRB_TT_TRUE || mrb_type(optval) == MRB_TT_FALSE) {
       mrb_int i = mrb_test(optval) ? 1 : 0;
       optval = mrb_str_new(mrb, (char*)&i, sizeof(i));

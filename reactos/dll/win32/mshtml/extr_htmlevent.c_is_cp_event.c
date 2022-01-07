@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__* ids; int id_cnt; int /*<<< orphan*/  tid; } ;
-typedef  TYPE_1__ cp_static_data_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DISPID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  get_dispids (int /*<<< orphan*/ ,int*,scalar_t__**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__* ids; int id_cnt; int tid; } ;
+typedef TYPE_1__ cp_static_data_t ;
+typedef int HRESULT ;
+typedef scalar_t__ DISPID ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int TRUE ;
+ int get_dispids (int ,int*,scalar_t__**) ;
 
 __attribute__((used)) static BOOL is_cp_event(cp_static_data_t *data, DISPID dispid)
 {

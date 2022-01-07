@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ CAST_LONG ;
-typedef  int /*<<< orphan*/  CAST_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAST_encrypt (scalar_t__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  l2n (scalar_t__,...) ; 
- int /*<<< orphan*/  n2l (unsigned char*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ CAST_LONG ;
+typedef int CAST_KEY ;
+
+
+ int CAST_encrypt (scalar_t__*,int const*) ;
+ int l2n (scalar_t__,...) ;
+ int n2l (unsigned char*,scalar_t__) ;
 
 void CAST_ofb64_encrypt(const unsigned char *in, unsigned char *out,
                         long length, const CAST_KEY *schedule,

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_OPEN_READONLY ; 
- scalar_t__ SQLITE_ROW ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sqlite3_bind_text (int /*<<< orphan*/ *,int,char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- int sqlite3_column_int (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int sqlite3_exec (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*) ; 
- int sqlite3_open_v2 (char*,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_reset (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_strnicmp (char const*,char const*,int) ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strstr (char const*,char*) ; 
- int strtol (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage (char*) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int SQLITE_OPEN_READONLY ;
+ scalar_t__ SQLITE_ROW ;
+ int SQLITE_STATIC ;
+ int exit (int ) ;
+ int fflush (int ) ;
+ int printf (char*,...) ;
+ int sqlite3_bind_text (int *,int,char const*,int,int ) ;
+ int sqlite3_close (int *) ;
+ int sqlite3_column_int (int *,int) ;
+ char* sqlite3_column_text (int *,int) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_exec (int *,char*,int ,int ,int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*) ;
+ int sqlite3_open_v2 (char*,int **,int ,int ) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ int sqlite3_reset (int *) ;
+ scalar_t__ sqlite3_step (int *) ;
+ scalar_t__ sqlite3_strnicmp (char const*,char const*,int) ;
+ int stdout ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strstr (char const*,char*) ;
+ int strtol (char*,int ,int ) ;
+ int usage (char*) ;
 
 int main(int argc, char **argv){
-  sqlite3 *db = 0;          /* The main database */
-  sqlite3_stmt *pStmt = 0;  /* a query */
+  sqlite3 *db = 0;
+  sqlite3_stmt *pStmt = 0;
   char *zSql;
   int nErr = 0;
   int rc;
@@ -103,7 +103,7 @@ int main(int argc, char **argv){
   }
   sqlite3_finalize(pStmt);
   pStmt = 0;
-  rc = sqlite3_exec(db, 
+  rc = sqlite3_exec(db,
      "CREATE TABLE temp.idxu(\n"
      "  tbl TEXT COLLATE nocase,\n"
      "  idx TEXT COLLATE nocase,\n"
@@ -120,7 +120,7 @@ int main(int argc, char **argv){
      " SELECT tbl_name, name, 0 FROM sqlite_master"
      " WHERE type='index' AND sql IS NOT NULL", 0, 0, 0);
 
-  /* Open the LOG database */
+
   zSql = sqlite3_mprintf("ATTACH %Q AS log", argv[2]);
   rc = sqlite3_exec(db, zSql, 0, 0, 0);
   sqlite3_free(zSql);
@@ -148,7 +148,7 @@ int main(int argc, char **argv){
     goto errorOut;
   }
 
-  /* Update the counts based on LOG */
+
   while( sqlite3_step(pStmt)==SQLITE_ROW ){
     const char *zLog = (const char*)sqlite3_column_text(pStmt, 0);
     sqlite3_stmt *pS2;
@@ -173,7 +173,7 @@ int main(int argc, char **argv){
         const char *zExplain = (const char*)sqlite3_column_text(pS2,3);
         const char *z1, *z2;
         int n;
-        /* printf("EXPLAIN: %s\n", zExplain); */
+
         z1 = strstr(zExplain, " USING INDEX ");
         if( z1==0 ) continue;
         z1 += 13;
@@ -192,7 +192,7 @@ int main(int argc, char **argv){
   }
   sqlite3_finalize(pStmt);
 
-  /* Generate the report */
+
   rc = sqlite3_prepare_v2(db,
      "SELECT tbl, idx, cnt, "
      "   (SELECT group_concat(name,',') FROM pragma_index_info(idx))"
@@ -207,7 +207,7 @@ int main(int argc, char **argv){
     goto errorOut;
   }
   while( sqlite3_step(pStmt)==SQLITE_ROW ){
-    printf("%10d %s on %s(%s)\n", 
+    printf("%10d %s on %s(%s)\n",
        sqlite3_column_int(pStmt, 2),
        sqlite3_column_text(pStmt, 1),
        sqlite3_column_text(pStmt, 0),

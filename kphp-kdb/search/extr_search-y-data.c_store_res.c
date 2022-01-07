@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  item_t ;
-struct TYPE_2__ {int minr; int maxr; int /*<<< orphan*/  idx; } ;
 
-/* Variables and functions */
- int FLAG_REVERSE_SEARCH ; 
- scalar_t__ MAX_RATES ; 
- scalar_t__ Q_limit ; 
- int Q_order ; 
- TYPE_1__* Q_range ; 
- scalar_t__ Q_type ; 
- int /*<<< orphan*/ ** R ; 
- int* RV ; 
- scalar_t__ R_cnt ; 
- int /*<<< orphan*/  R_tot ; 
- int evaluate_rating (int /*<<< orphan*/ *) ; 
- int get_rate_item (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int n_ranges ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,...) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int item_t ;
+struct TYPE_2__ {int minr; int maxr; int idx; } ;
+
+
+ int FLAG_REVERSE_SEARCH ;
+ scalar_t__ MAX_RATES ;
+ scalar_t__ Q_limit ;
+ int Q_order ;
+ TYPE_1__* Q_range ;
+ scalar_t__ Q_type ;
+ int ** R ;
+ int* RV ;
+ scalar_t__ R_cnt ;
+ int R_tot ;
+ int evaluate_rating (int *) ;
+ int get_rate_item (int *,int ) ;
+ int n_ranges ;
+ int vkprintf (int,char*,int,...) ;
 
 __attribute__((used)) static int store_res (item_t *I) {
   vkprintf (3, "store_res!!, n_ranges = %d\n", n_ranges);
@@ -46,7 +46,7 @@ __attribute__((used)) static int store_res (item_t *I) {
     return 1;
   }
 
-  if (Q_type == MAX_RATES) { //sort by id
+  if (Q_type == MAX_RATES) {
     if ((Q_order & FLAG_REVERSE_SEARCH) && R_cnt == Q_limit) {
       R_cnt = 0;
     }

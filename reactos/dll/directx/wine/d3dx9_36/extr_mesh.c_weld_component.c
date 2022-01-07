@@ -1,118 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FLOAT ;
-typedef  int D3DDECLTYPE ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
-#define  D3DDECLTYPE_D3DCOLOR 145 
-#define  D3DDECLTYPE_DEC3N 144 
-#define  D3DDECLTYPE_FLOAT1 143 
-#define  D3DDECLTYPE_FLOAT16_2 142 
-#define  D3DDECLTYPE_FLOAT16_4 141 
-#define  D3DDECLTYPE_FLOAT2 140 
-#define  D3DDECLTYPE_FLOAT3 139 
-#define  D3DDECLTYPE_FLOAT4 138 
-#define  D3DDECLTYPE_SHORT2 137 
-#define  D3DDECLTYPE_SHORT2N 136 
-#define  D3DDECLTYPE_SHORT4 135 
-#define  D3DDECLTYPE_SHORT4N 134 
-#define  D3DDECLTYPE_UBYTE4 133 
-#define  D3DDECLTYPE_UBYTE4N 132 
-#define  D3DDECLTYPE_UDEC3 131 
-#define  D3DDECLTYPE_UNUSED 130 
-#define  D3DDECLTYPE_USHORT2N 129 
-#define  D3DDECLTYPE_USHORT4N 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FIXME (char*,...) ; 
- int /*<<< orphan*/  weld_d3dcolor (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_dec3n (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_float1 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_float16_2 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_float16_4 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_float2 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_float3 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_float4 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_short2 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_short2n (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_short4 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_short4n (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_ubyte4 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_ubyte4n (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_udec3 (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_ushort2n (void*,void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  weld_ushort4n (void*,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int FLOAT ;
+typedef int D3DDECLTYPE ;
+typedef int BOOL ;
+ int FALSE ;
+ int FIXME (char*,...) ;
+ int weld_d3dcolor (void*,void*,int ) ;
+ int weld_dec3n (void*,void*,int ) ;
+ int weld_float1 (void*,void*,int ) ;
+ int weld_float16_2 (void*,void*,int ) ;
+ int weld_float16_4 (void*,void*,int ) ;
+ int weld_float2 (void*,void*,int ) ;
+ int weld_float3 (void*,void*,int ) ;
+ int weld_float4 (void*,void*,int ) ;
+ int weld_short2 (void*,void*,int ) ;
+ int weld_short2n (void*,void*,int ) ;
+ int weld_short4 (void*,void*,int ) ;
+ int weld_short4n (void*,void*,int ) ;
+ int weld_ubyte4 (void*,void*,int ) ;
+ int weld_ubyte4n (void*,void*,int ) ;
+ int weld_udec3 (void*,void*,int ) ;
+ int weld_ushort2n (void*,void*,int ) ;
+ int weld_ushort4n (void*,void*,int ) ;
 
 __attribute__((used)) static BOOL weld_component(void *to, void *from, D3DDECLTYPE type, FLOAT epsilon)
 {
-    /* Quiet FIXMEs as this is in a loop with potentially thousand of iterations. */
+
     BOOL fixme_once_unused = FALSE;
     BOOL fixme_once_unknown = FALSE;
 
     switch (type)
     {
-        case D3DDECLTYPE_FLOAT1:
+        case 143:
             return weld_float1(to, from, epsilon);
 
-        case D3DDECLTYPE_FLOAT2:
+        case 140:
             return weld_float2(to, from, epsilon);
 
-        case D3DDECLTYPE_FLOAT3:
+        case 139:
             return weld_float3(to, from, epsilon);
 
-        case D3DDECLTYPE_FLOAT4:
+        case 138:
             return weld_float4(to, from, epsilon);
 
-        case D3DDECLTYPE_D3DCOLOR:
+        case 145:
             return weld_d3dcolor(to, from, epsilon);
 
-        case D3DDECLTYPE_UBYTE4:
+        case 133:
             return weld_ubyte4(to, from, epsilon);
 
-        case D3DDECLTYPE_SHORT2:
+        case 137:
             return weld_short2(to, from, epsilon);
 
-        case D3DDECLTYPE_SHORT4:
+        case 135:
             return weld_short4(to, from, epsilon);
 
-        case D3DDECLTYPE_UBYTE4N:
+        case 132:
             return weld_ubyte4n(to, from, epsilon);
 
-        case D3DDECLTYPE_SHORT2N:
+        case 136:
             return weld_short2n(to, from, epsilon);
 
-        case D3DDECLTYPE_SHORT4N:
+        case 134:
             return weld_short4n(to, from, epsilon);
 
-        case D3DDECLTYPE_USHORT2N:
+        case 129:
             return weld_ushort2n(to, from, epsilon);
 
-        case D3DDECLTYPE_USHORT4N:
+        case 128:
             return weld_ushort4n(to, from, epsilon);
 
-        case D3DDECLTYPE_UDEC3:
+        case 131:
             return weld_udec3(to, from, epsilon);
 
-        case D3DDECLTYPE_DEC3N:
+        case 144:
             return weld_dec3n(to, from, epsilon);
 
-        case D3DDECLTYPE_FLOAT16_2:
+        case 142:
             return weld_float16_2(to, from, epsilon);
 
-        case D3DDECLTYPE_FLOAT16_4:
+        case 141:
             return weld_float16_4(to, from, epsilon);
 
-        case D3DDECLTYPE_UNUSED:
+        case 130:
             if (!fixme_once_unused++)
                 FIXME("D3DDECLTYPE_UNUSED welding not implemented.\n");
             break;

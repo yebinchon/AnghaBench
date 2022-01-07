@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ direct_reclaims; scalar_t__ moves_within_lru; scalar_t__ moves_to_warm; scalar_t__ moves_to_cold; scalar_t__ lrutail_reflocked; scalar_t__ crawler_items_checked; scalar_t__ crawler_reclaimed; scalar_t__ reclaimed; scalar_t__ evicted; scalar_t__ evicted_active; scalar_t__ evicted_unfetched; scalar_t__ expired_unfetched; } ;
-typedef  TYPE_1__ itemstats_t ;
+typedef TYPE_1__ itemstats_t ;
 struct TYPE_7__ {scalar_t__ direct_reclaims; scalar_t__ moves_within_lru; scalar_t__ moves_to_warm; scalar_t__ moves_to_cold; scalar_t__ lrutail_reflocked; scalar_t__ crawler_items_checked; scalar_t__ crawler_reclaimed; scalar_t__ reclaimed; scalar_t__ evicted; scalar_t__ evicted_active; scalar_t__ evicted_unfetched; scalar_t__ expired_unfetched; } ;
 struct TYPE_6__ {scalar_t__ lru_maintainer_thread; } ;
-typedef  int /*<<< orphan*/  ADD_STAT ;
+typedef int ADD_STAT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPEND_STAT (char*,char*,unsigned long long) ; 
- int MAX_NUMBER_OF_SLAB_CLASSES ; 
- TYPE_4__* itemstats ; 
- int /*<<< orphan*/ * lru_locks ; 
- scalar_t__ lru_total_bumps_dropped () ; 
- int* lru_type_map ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- TYPE_2__ settings ; 
+
+ int APPEND_STAT (char*,char*,unsigned long long) ;
+ int MAX_NUMBER_OF_SLAB_CLASSES ;
+ TYPE_4__* itemstats ;
+ int * lru_locks ;
+ scalar_t__ lru_total_bumps_dropped () ;
+ int* lru_type_map ;
+ int memset (TYPE_1__*,int ,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ TYPE_2__ settings ;
 
 void item_stats_totals(ADD_STAT add_stats, void *c) {
     itemstats_t totals;

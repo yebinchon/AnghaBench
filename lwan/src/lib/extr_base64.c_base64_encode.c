@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void** base64_table ; 
- unsigned char* malloc (size_t) ; 
+ void** base64_table ;
+ unsigned char* malloc (size_t) ;
 
 unsigned char *
 base64_encode(const unsigned char *src, size_t len, size_t *out_len)
@@ -23,14 +15,14 @@ base64_encode(const unsigned char *src, size_t len, size_t *out_len)
     size_t olen;
     int line_len;
 
-    olen = len * 4 / 3 + 4; /* 3-byte blocks to 4-byte */
-    olen += olen / 72;      /* line feeds */
-    olen++;                 /* nul termination */
+    olen = len * 4 / 3 + 4;
+    olen += olen / 72;
+    olen++;
     if (olen < len)
-        return NULL; /* integer overflow */
+        return ((void*)0);
     out = malloc(olen);
-    if (out == NULL)
-        return NULL;
+    if (out == ((void*)0))
+        return ((void*)0);
 
     end = src + len;
     in = src;

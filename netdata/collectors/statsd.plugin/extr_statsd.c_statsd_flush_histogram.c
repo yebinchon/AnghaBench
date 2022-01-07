@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  STATSD_METRIC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  statsd_flush_timer_or_histogram (int /*<<< orphan*/ *,char*,char*,char*) ; 
+
+
+
+typedef int STATSD_METRIC ;
+
+
+ int statsd_flush_timer_or_histogram (int *,char*,char*,char*) ;
 
 __attribute__((used)) static inline void statsd_flush_histogram(STATSD_METRIC *m) {
     statsd_flush_timer_or_histogram(m, "histogram", "histograms", "value");

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct string_list {unsigned int size; TYPE_1__* elems; } ;
-typedef  int int32_t ;
-typedef  int UINT32 ;
-struct TYPE_2__ {int /*<<< orphan*/  data; } ;
-typedef  int /*<<< orphan*/  IMMDeviceEnumerator ;
-typedef  int /*<<< orphan*/  IMMDeviceCollection ;
-typedef  int /*<<< orphan*/  IMMDevice ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int int32_t ;
+typedef int UINT32 ;
+struct TYPE_2__ {int data; } ;
+typedef int IMMDeviceEnumerator ;
+typedef int IMMDeviceCollection ;
+typedef int IMMDevice ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_ALL ; 
- int /*<<< orphan*/ **** CLSID_MMDeviceEnumerator ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *****,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *****,void**) ; 
- int /*<<< orphan*/  DEVICE_STATE_ACTIVE ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IFACE_RELEASE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ **** IID_IMMDeviceEnumerator ; 
- int /*<<< orphan*/  RARCH_ERR (char*) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
- int /*<<< orphan*/  RARCH_WARN (char*) ; 
- int /*<<< orphan*/  _IMMDeviceCollection_GetCount (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  _IMMDeviceCollection_Item (int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  _IMMDeviceEnumerator_EnumAudioEndpoints (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  _IMMDeviceEnumerator_GetDefaultAudioEndpoint (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  eConsole ; 
- int /*<<< orphan*/  eRender ; 
- scalar_t__ isdigit (char const) ; 
- scalar_t__ mmdevice_list_new (int /*<<< orphan*/ *) ; 
- scalar_t__ string_is_equal (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  string_list_free (struct string_list*) ; 
- int strtoul (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int CLSCTX_ALL ;
+ int **** CLSID_MMDeviceEnumerator ;
+ int CoCreateInstance (int *****,int *,int ,int *****,void**) ;
+ int DEVICE_STATE_ACTIVE ;
+ scalar_t__ FAILED (int ) ;
+ int IFACE_RELEASE (int *) ;
+ int **** IID_IMMDeviceEnumerator ;
+ int RARCH_ERR (char*) ;
+ int RARCH_LOG (char*,...) ;
+ int RARCH_WARN (char*) ;
+ int _IMMDeviceCollection_GetCount (int *,int*) ;
+ int _IMMDeviceCollection_Item (int *,int,int **) ;
+ int _IMMDeviceEnumerator_EnumAudioEndpoints (int *,int ,int ,int **) ;
+ int _IMMDeviceEnumerator_GetDefaultAudioEndpoint (int *,int ,int ,int **) ;
+ int eConsole ;
+ int eRender ;
+ scalar_t__ isdigit (char const) ;
+ scalar_t__ mmdevice_list_new (int *) ;
+ scalar_t__ string_is_equal (char const*,int ) ;
+ int string_list_free (struct string_list*) ;
+ int strtoul (char const*,int *,int ) ;
 
 __attribute__((used)) static IMMDevice *wasapi_init_device(const char *id)
 {
    HRESULT hr;
    UINT32 dev_count, i;
-   IMMDeviceEnumerator *enumerator = NULL;
-   IMMDevice *device               = NULL;
-   IMMDeviceCollection *collection = NULL;
+   IMMDeviceEnumerator *enumerator = ((void*)0);
+   IMMDevice *device = ((void*)0);
+   IMMDeviceCollection *collection = ((void*)0);
 
    if (id)
    {
@@ -60,22 +60,22 @@ __attribute__((used)) static IMMDevice *wasapi_init_device(const char *id)
       RARCH_LOG("[WASAPI]: Initializing default device.. \n");
    }
 
-#ifdef __cplusplus
-   hr = CoCreateInstance(CLSID_MMDeviceEnumerator, NULL, CLSCTX_ALL,
-         IID_IMMDeviceEnumerator, (void **)&enumerator);
-#else
-   hr = CoCreateInstance(&CLSID_MMDeviceEnumerator, NULL, CLSCTX_ALL,
+
+
+
+
+   hr = CoCreateInstance(&CLSID_MMDeviceEnumerator, ((void*)0), CLSCTX_ALL,
          &IID_IMMDeviceEnumerator, (void **)&enumerator);
-#endif
+
    if (FAILED(hr))
       goto error;
 
    if (id)
    {
-      int32_t idx_found        = -1;
-      struct string_list *list = (struct string_list*)mmdevice_list_new(NULL);
+      int32_t idx_found = -1;
+      struct string_list *list = (struct string_list*)mmdevice_list_new(((void*)0));
 
-      /* Search for device name first */
+
       if (list)
       {
          if (list->elems)
@@ -90,12 +90,12 @@ __attribute__((used)) static IMMDevice *wasapi_init_device(const char *id)
                   break;
                }
             }
-            /* Index was not found yet based on name string,
-             * just assume id is a one-character number index. */
+
+
 
             if (idx_found == -1 && isdigit(id[0]))
             {
-               idx_found = strtoul(id, NULL, 0);
+               idx_found = strtoul(id, ((void*)0), 0);
                RARCH_LOG("[WASAPI]: Fallback, device index is a single number index instead: %d.\n", idx_found);
 
             }
@@ -156,5 +156,5 @@ error:
       RARCH_ERR("[WASAPI]: Failed to initialize device.\n");
    }
 
-   return NULL;
+   return ((void*)0);
 }

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int set_el_t ;
-typedef  int* reserv_sets_t ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
- int els_in_reservs ; 
+
+
+
+typedef int set_el_t ;
+typedef int* reserv_sets_t ;
+
+
+ int CHAR_BIT ;
+ int els_in_reservs ;
 
 __attribute__((used)) static unsigned
 reserv_sets_hash_value (reserv_sets_t reservs)
@@ -33,10 +33,10 @@ reserv_sets_hash_value (reserv_sets_t reservs)
     {
       reservs_num--;
       hash_value += ((*reserv_ptr >> i)
-		     | (*reserv_ptr << (sizeof (set_el_t) * CHAR_BIT - i)));
+       | (*reserv_ptr << (sizeof (set_el_t) * CHAR_BIT - i)));
       i++;
       if (i == sizeof (set_el_t) * CHAR_BIT)
-	i = 0;
+ i = 0;
       reserv_ptr++;
     }
   if (sizeof (set_el_t) <= sizeof (unsigned))

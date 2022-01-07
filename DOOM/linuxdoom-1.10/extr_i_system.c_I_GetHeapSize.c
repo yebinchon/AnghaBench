@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int mb_used ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int mb_used ; 
-
-int  I_GetHeapSize (void)
+int I_GetHeapSize (void)
 {
     return mb_used*1024*1024;
 }

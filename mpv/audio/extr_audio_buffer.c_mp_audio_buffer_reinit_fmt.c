@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_chmap {int num; } ;
-struct mp_audio_buffer {int format; int srate; int sstride; int num_planes; struct mp_chmap channels; scalar_t__ num_samples; scalar_t__ allocated; int /*<<< orphan*/ * data; } ;
+struct mp_audio_buffer {int format; int srate; int sstride; int num_planes; struct mp_chmap channels; scalar_t__ num_samples; scalar_t__ allocated; int * data; } ;
 
-/* Variables and functions */
- int MP_NUM_CHANNELS ; 
- int /*<<< orphan*/  TA_FREEP (int /*<<< orphan*/ *) ; 
- scalar_t__ af_fmt_is_planar (int) ; 
- int af_fmt_to_bytes (int) ; 
+
+ int MP_NUM_CHANNELS ;
+ int TA_FREEP (int *) ;
+ scalar_t__ af_fmt_is_planar (int) ;
+ int af_fmt_to_bytes (int) ;
 
 void mp_audio_buffer_reinit_fmt(struct mp_audio_buffer *ab, int format,
                                 const struct mp_chmap *channels, int srate)

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct seq_file {int /*<<< orphan*/  private; } ;
-struct inode {int /*<<< orphan*/  i_private; } ;
+
+
+
+
+struct seq_file {int private; } ;
+struct inode {int i_private; } ;
 struct file {scalar_t__ private_data; } ;
 
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/  GOSSIP_DEBUGFS_DEBUG ; 
- int /*<<< orphan*/  gossip_debug (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  help_debug_ops ; 
- scalar_t__ orangefs_debug_disabled ; 
- int seq_open (struct file*,int /*<<< orphan*/ *) ; 
+
+ int ENODEV ;
+ int GOSSIP_DEBUGFS_DEBUG ;
+ int gossip_debug (int ,char*,...) ;
+ int help_debug_ops ;
+ scalar_t__ orangefs_debug_disabled ;
+ int seq_open (struct file*,int *) ;
 
 __attribute__((used)) static int orangefs_debug_help_open(struct inode *inode, struct file *file)
 {
-	int rc = -ENODEV;
-	int ret;
+ int rc = -ENODEV;
+ int ret;
 
-	gossip_debug(GOSSIP_DEBUGFS_DEBUG,
-		     "orangefs_debug_help_open: start\n");
+ gossip_debug(GOSSIP_DEBUGFS_DEBUG,
+       "orangefs_debug_help_open: start\n");
 
-	if (orangefs_debug_disabled)
-		goto out;
+ if (orangefs_debug_disabled)
+  goto out;
 
-	ret = seq_open(file, &help_debug_ops);
-	if (ret)
-		goto out;
+ ret = seq_open(file, &help_debug_ops);
+ if (ret)
+  goto out;
 
-	((struct seq_file *)(file->private_data))->private = inode->i_private;
+ ((struct seq_file *)(file->private_data))->private = inode->i_private;
 
-	rc = 0;
+ rc = 0;
 
 out:
-	gossip_debug(GOSSIP_DEBUGFS_DEBUG,
-		     "orangefs_debug_help_open: rc:%d:\n",
-		     rc);
-	return rc;
+ gossip_debug(GOSSIP_DEBUGFS_DEBUG,
+       "orangefs_debug_help_open: rc:%d:\n",
+       rc);
+ return rc;
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_1__* impl; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* Name ) () ;} ;
-typedef  TYPE_1__ PROTO_IMPL ;
-typedef  TYPE_2__ PROTO ;
+struct TYPE_6__ {int (* Name ) () ;} ;
+typedef TYPE_1__ PROTO_IMPL ;
+typedef TYPE_2__ PROTO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  Debug (char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* Malloc (int) ; 
- int /*<<< orphan*/ * protocols ; 
- int /*<<< orphan*/  stub1 () ; 
+
+ int Add (int *,TYPE_2__*) ;
+ int Debug (char*,int ) ;
+ TYPE_2__* Malloc (int) ;
+ int * protocols ;
+ int stub1 () ;
 
 bool ProtoAdd(PROTO_IMPL *impl)
 {
-	PROTO *proto;
+ PROTO *proto;
 
-	if (protocols == NULL || impl == NULL)
-	{
-		return false;
-	}
+ if (protocols == ((void*)0) || impl == ((void*)0))
+ {
+  return 0;
+ }
 
-	proto = Malloc(sizeof(PROTO));
-	proto->impl = impl;
+ proto = Malloc(sizeof(PROTO));
+ proto->impl = impl;
 
-	Add(protocols, proto);
+ Add(protocols, proto);
 
-	Debug("ProtoAdd(): added %s\n", proto->impl->Name());
+ Debug("ProtoAdd(): added %s\n", proto->impl->Name());
 
-	return true;
+ return 1;
 }

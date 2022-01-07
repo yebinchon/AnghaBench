@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int gf ;
-typedef  int /*<<< orphan*/  dtype ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int KK ; 
- int NB_DATA ; 
- int NN ; 
- int SECTOR_SIZE ; 
- int eras_dec_rs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int*,int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  generate_gf (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * kmalloc (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int gf ;
+typedef int dtype ;
+
+
+ int GFP_KERNEL ;
+ int KK ;
+ int NB_DATA ;
+ int NN ;
+ int SECTOR_SIZE ;
+ int eras_dec_rs (int *,int *,int*,int*,int*,int ) ;
+ int generate_gf (int *,int *) ;
+ int kfree (int *) ;
+ int * kmalloc (int,int ) ;
 
 int doc_decode_ecc(unsigned char sector[SECTOR_SIZE], unsigned char ecc1[6])
 {
@@ -32,7 +32,7 @@ int doc_decode_ecc(unsigned char sector[SECTOR_SIZE], unsigned char ecc1[6])
     int error_pos[NN-KK], pos, bitpos, index, val;
     dtype *Alpha_to, *Index_of;
 
-    /* init log and exp tables here to save memory. However, it is slower */
+
     Alpha_to = kmalloc((NN + 1) * sizeof(dtype), GFP_KERNEL);
     if (!Alpha_to)
         return -1;
@@ -47,7 +47,7 @@ int doc_decode_ecc(unsigned char sector[SECTOR_SIZE], unsigned char ecc1[6])
 
     parity = ecc1[1];
 
-    bb[0] =  (ecc1[4] & 0xff) | ((ecc1[5] & 0x03) << 8);
+    bb[0] = (ecc1[4] & 0xff) | ((ecc1[5] & 0x03) << 8);
     bb[1] = ((ecc1[5] & 0xfc) >> 2) | ((ecc1[2] & 0x0f) << 6);
     bb[2] = ((ecc1[2] & 0xf0) >> 4) | ((ecc1[3] & 0x3f) << 4);
     bb[3] = ((ecc1[3] & 0xc0) >> 6) | ((ecc1[0] & 0xff) << 2);
@@ -57,7 +57,7 @@ int doc_decode_ecc(unsigned char sector[SECTOR_SIZE], unsigned char ecc1[6])
     if (nb_errors <= 0)
         goto the_end;
 
-    /* correct the errors */
+
     for(i=0;i<nb_errors;i++) {
         pos = error_pos[i];
         if (pos >= NB_DATA && pos < KK) {
@@ -65,10 +65,10 @@ int doc_decode_ecc(unsigned char sector[SECTOR_SIZE], unsigned char ecc1[6])
             goto the_end;
         }
         if (pos < NB_DATA) {
-            /* extract bit position (MSB first) */
+
             pos = 10 * (NB_DATA - 1 - pos) - 6;
-            /* now correct the following 10 bits. At most two bytes
-               can be modified since pos is even */
+
+
             index = (pos >> 3) ^ 1;
             bitpos = pos & 7;
             if ((index >= 0 && index < SECTOR_SIZE) ||
@@ -92,7 +92,7 @@ int doc_decode_ecc(unsigned char sector[SECTOR_SIZE], unsigned char ecc1[6])
         }
     }
 
-    /* use parity to test extra errors */
+
     if ((parity & 0xff) != 0)
         nb_errors = -1;
 

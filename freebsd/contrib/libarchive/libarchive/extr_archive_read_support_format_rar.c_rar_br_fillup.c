@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-struct rar_br {int cache_avail; int avail_in; int cache_buffer; int /*<<< orphan*/ * next_in; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct rar_br {int cache_avail; int avail_in; int cache_buffer; int * next_in; } ;
 struct rar {scalar_t__ bytes_unconsumed; scalar_t__ bytes_remaining; } ;
 struct archive_read {TYPE_1__* format; } ;
 struct TYPE_2__ {scalar_t__ data; } ;
 
-/* Variables and functions */
- int CACHE_BITS ; 
- int /*<<< orphan*/  __archive_read_consume (struct archive_read*,scalar_t__) ; 
- int /*<<< orphan*/ * rar_read_ahead (struct archive_read*,int,scalar_t__*) ; 
+
+ int CACHE_BITS ;
+ int __archive_read_consume (struct archive_read*,scalar_t__) ;
+ int * rar_read_ahead (struct archive_read*,int,scalar_t__*) ;
 
 __attribute__((used)) static int
 rar_br_fillup(struct archive_read *a, struct rar_br *br)
@@ -88,8 +88,8 @@ rar_br_fillup(struct archive_read *a, struct rar_br *br)
       }
       break;
     case 0:
-      /* We have enough compressed data in
-       * the cache buffer.*/
+
+
       return (1);
     default:
       break;
@@ -97,13 +97,13 @@ rar_br_fillup(struct archive_read *a, struct rar_br *br)
     if (br->avail_in <= 0) {
 
       if (rar->bytes_unconsumed > 0) {
-        /* Consume as much as the decompressor
-         * actually used. */
+
+
         __archive_read_consume(a, rar->bytes_unconsumed);
         rar->bytes_unconsumed = 0;
       }
       br->next_in = rar_read_ahead(a, 1, &(br->avail_in));
-      if (br->next_in == NULL)
+      if (br->next_in == ((void*)0))
         return (0);
       if (br->avail_in == 0)
         return (0);

@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IMediaStream ;
-typedef  int /*<<< orphan*/  IDirectDrawSurface ;
-typedef  int /*<<< orphan*/  IDirectDrawStreamSample ;
-typedef  int /*<<< orphan*/  IDirectDrawMediaStream ;
-typedef  int /*<<< orphan*/  IAMMultiMediaStream ;
-typedef  int /*<<< orphan*/ * HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMMSF_ADDDEFAULTRENDERER ; 
- int /*<<< orphan*/  EXPECT_REF (int /*<<< orphan*/ *,int) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IAMMultiMediaStream_AddMediaStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IAMMultiMediaStream_GetMediaStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * IAMMultiMediaStream_Initialize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IAMMultiMediaStream_OpenFile (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAMMultiMediaStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDirectDrawMediaStream_CreateSample (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDirectDrawMediaStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDirectDrawStreamSample_GetSurface (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectDrawStreamSample_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * IDirectDrawSurface7_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDirectDrawSurface_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirectDrawMediaStream ; 
- int /*<<< orphan*/  IID_IDirectDrawSurface ; 
- int /*<<< orphan*/ * IMediaStream_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMediaStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MSPID_PrimaryAudio ; 
- int /*<<< orphan*/  MSPID_PrimaryVideo ; 
- int /*<<< orphan*/  STREAMTYPE_READ ; 
- int /*<<< orphan*/ * S_OK ; 
- int /*<<< orphan*/ * create_ammultimediastream () ; 
- int /*<<< orphan*/  create_directdraw () ; 
- int /*<<< orphan*/  filenameW ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ pdd7 ; 
- int /*<<< orphan*/  pdds7 ; 
- int /*<<< orphan*/  release_directdraw () ; 
+
+
+
+typedef int RECT ;
+typedef int LPVOID ;
+typedef int IUnknown ;
+typedef int IMediaStream ;
+typedef int IDirectDrawSurface ;
+typedef int IDirectDrawStreamSample ;
+typedef int IDirectDrawMediaStream ;
+typedef int IAMMultiMediaStream ;
+typedef int * HRESULT ;
+
+
+ int AMMSF_ADDDEFAULTRENDERER ;
+ int EXPECT_REF (int *,int) ;
+ scalar_t__ FAILED (int *) ;
+ int * IAMMultiMediaStream_AddMediaStream (int *,int *,int *,int ,int *) ;
+ int * IAMMultiMediaStream_GetMediaStream (int *,int *,int **) ;
+ int * IAMMultiMediaStream_Initialize (int *,int ,int ,int *) ;
+ int * IAMMultiMediaStream_OpenFile (int *,int ,int ) ;
+ int IAMMultiMediaStream_Release (int *) ;
+ int * IDirectDrawMediaStream_CreateSample (int *,int *,int *,int ,int **) ;
+ int IDirectDrawMediaStream_Release (int *) ;
+ int * IDirectDrawStreamSample_GetSurface (int *,int **,int *) ;
+ int IDirectDrawStreamSample_Release (int *) ;
+ int * IDirectDrawSurface7_QueryInterface (int ,int *,void**) ;
+ int IDirectDrawSurface_Release (int *) ;
+ int IID_IDirectDrawMediaStream ;
+ int IID_IDirectDrawSurface ;
+ int * IMediaStream_QueryInterface (int *,int *,int *) ;
+ int IMediaStream_Release (int *) ;
+ int MSPID_PrimaryAudio ;
+ int MSPID_PrimaryVideo ;
+ int STREAMTYPE_READ ;
+ int * S_OK ;
+ int * create_ammultimediastream () ;
+ int create_directdraw () ;
+ int filenameW ;
+ int ok (int,char*,int *) ;
+ scalar_t__ pdd7 ;
+ int pdds7 ;
+ int release_directdraw () ;
 
 __attribute__((used)) static void test_renderfile(void)
 {
     IAMMultiMediaStream *pams;
     HRESULT hr;
-    IMediaStream *pvidstream = NULL;
-    IDirectDrawMediaStream *pddstream = NULL;
-    IDirectDrawStreamSample *pddsample = NULL;
+    IMediaStream *pvidstream = ((void*)0);
+    IDirectDrawMediaStream *pddstream = ((void*)0);
+    IDirectDrawStreamSample *pddsample = ((void*)0);
     IDirectDrawSurface *surface;
     RECT rect;
 
@@ -69,13 +69,13 @@ __attribute__((used)) static void test_renderfile(void)
         return;
     }
 
-    hr = IAMMultiMediaStream_Initialize(pams, STREAMTYPE_READ, 0, NULL);
+    hr = IAMMultiMediaStream_Initialize(pams, STREAMTYPE_READ, 0, ((void*)0));
     ok(hr==S_OK, "IAMMultiMediaStream_Initialize returned: %x\n", hr);
 
-    hr = IAMMultiMediaStream_AddMediaStream(pams, (IUnknown*)pdd7, &MSPID_PrimaryVideo, 0, NULL);
+    hr = IAMMultiMediaStream_AddMediaStream(pams, (IUnknown*)pdd7, &MSPID_PrimaryVideo, 0, ((void*)0));
     ok(hr==S_OK, "IAMMultiMediaStream_AddMediaStream returned: %x\n", hr);
 
-    hr = IAMMultiMediaStream_AddMediaStream(pams, NULL, &MSPID_PrimaryAudio, AMMSF_ADDDEFAULTRENDERER, NULL);
+    hr = IAMMultiMediaStream_AddMediaStream(pams, ((void*)0), &MSPID_PrimaryAudio, AMMSF_ADDDEFAULTRENDERER, ((void*)0));
     ok(hr==S_OK, "IAMMultiMediaStream_AddMediaStream returned: %x\n", hr);
 
     hr = IAMMultiMediaStream_OpenFile(pams, filenameW, 0);
@@ -89,20 +89,20 @@ __attribute__((used)) static void test_renderfile(void)
     ok(hr==S_OK, "IMediaStream_QueryInterface returned: %x\n", hr);
     if (FAILED(hr)) goto error;
 
-    hr = IDirectDrawMediaStream_CreateSample(pddstream, NULL, NULL, 0, &pddsample);
+    hr = IDirectDrawMediaStream_CreateSample(pddstream, ((void*)0), ((void*)0), 0, &pddsample);
     ok(hr == S_OK, "IDirectDrawMediaStream_CreateSample returned: %x\n", hr);
 
-    surface = NULL;
+    surface = ((void*)0);
     hr = IDirectDrawStreamSample_GetSurface(pddsample, &surface, &rect);
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    ok(surface == NULL, "got %p\n", surface);
+    ok(surface == ((void*)0), "got %p\n", surface);
     IDirectDrawStreamSample_Release(pddsample);
 
     hr = IDirectDrawSurface7_QueryInterface(pdds7, &IID_IDirectDrawSurface, (void**)&surface);
     ok(hr == S_OK, "got 0x%08x\n", hr);
 
     EXPECT_REF(surface, 1);
-    hr = IDirectDrawMediaStream_CreateSample(pddstream, surface, NULL, 0, &pddsample);
+    hr = IDirectDrawMediaStream_CreateSample(pddstream, surface, ((void*)0), 0, &pddsample);
     ok(hr == S_OK, "IDirectDrawMediaStream_CreateSample returned: %x\n", hr);
     EXPECT_REF(surface, 2);
     IDirectDrawStreamSample_Release(pddsample);

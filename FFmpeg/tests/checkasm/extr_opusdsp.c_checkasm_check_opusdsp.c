@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  deemphasis; int /*<<< orphan*/  postfilter; } ;
-typedef  TYPE_1__ OpusDSP ;
 
-/* Variables and functions */
- scalar_t__ check_func (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ff_opus_dsp_init (TYPE_1__*) ; 
- int /*<<< orphan*/  report (char*) ; 
- int /*<<< orphan*/  test_deemphasis () ; 
- int /*<<< orphan*/  test_postfilter (int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int deemphasis; int postfilter; } ;
+typedef TYPE_1__ OpusDSP ;
+
+
+ scalar_t__ check_func (int ,char*) ;
+ int ff_opus_dsp_init (TYPE_1__*) ;
+ int report (char*) ;
+ int test_deemphasis () ;
+ int test_postfilter (int) ;
 
 void checkasm_check_opusdsp(void)
 {

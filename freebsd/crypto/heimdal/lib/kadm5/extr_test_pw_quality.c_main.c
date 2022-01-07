@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  krb5_principal ;
-typedef  scalar_t__ krb5_error_code ;
-struct TYPE_3__ {int /*<<< orphan*/  length; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_1__ krb5_data ;
-typedef  int /*<<< orphan*/  krb5_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  args ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ help_flag ; 
- scalar_t__ kadm5_add_passwd_quality_verifier (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- char* kadm5_check_password_quality (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  kadm5_setup_passwd_quality_check (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_errx (int /*<<< orphan*/ ,int,char*,...) ; 
- int /*<<< orphan*/  krb5_free_context (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  krb5_free_principal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ krb5_parse_name (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_program_setup (int /*<<< orphan*/ *,int,char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  krb5_std_usage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  num_args ; 
- int /*<<< orphan*/ * password ; 
- char const* principal ; 
- int /*<<< orphan*/  print_version (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ *) ; 
- scalar_t__ version_flag ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int krb5_principal ;
+typedef scalar_t__ krb5_error_code ;
+struct TYPE_3__ {int length; int * data; } ;
+typedef TYPE_1__ krb5_data ;
+typedef int krb5_context ;
+
+
+ int args ;
+ int exit (int ) ;
+ scalar_t__ help_flag ;
+ scalar_t__ kadm5_add_passwd_quality_verifier (int ,int *) ;
+ char* kadm5_check_password_quality (int ,int ,TYPE_1__*) ;
+ int kadm5_setup_passwd_quality_check (int ,int *,int *) ;
+ int krb5_errx (int ,int,char*,...) ;
+ int krb5_free_context (int ) ;
+ int krb5_free_principal (int ,int ) ;
+ scalar_t__ krb5_parse_name (int ,char const*,int *) ;
+ int krb5_program_setup (int *,int,char**,int ,int ,int *) ;
+ int krb5_std_usage (int ,int ,int ) ;
+ int num_args ;
+ int * password ;
+ char const* principal ;
+ int print_version (int *) ;
+ int strlen (int *) ;
+ scalar_t__ version_flag ;
 
 int
 main(int argc, char **argv)
@@ -46,35 +46,35 @@ main(int argc, char **argv)
     const char *s;
     krb5_data pw_data;
 
-    krb5_program_setup(&context, argc, argv, args, num_args, NULL);
+    krb5_program_setup(&context, argc, argv, args, num_args, ((void*)0));
 
     if(help_flag)
-	krb5_std_usage(0, args, num_args);
+ krb5_std_usage(0, args, num_args);
     if(version_flag) {
-	print_version(NULL);
-	exit(0);
+ print_version(((void*)0));
+ exit(0);
     }
 
-    if (principal == NULL)
-	krb5_errx(context, 1, "no principal given");
-    if (password == NULL)
-	krb5_errx(context, 1, "no password given");
+    if (principal == ((void*)0))
+ krb5_errx(context, 1, "no principal given");
+    if (password == ((void*)0))
+ krb5_errx(context, 1, "no password given");
 
     ret = krb5_parse_name(context, principal, &p);
     if (ret)
-	krb5_errx(context, 1, "krb5_parse_name: %s", principal);
+ krb5_errx(context, 1, "krb5_parse_name: %s", principal);
 
     pw_data.data = password;
     pw_data.length = strlen(password);
 
-    kadm5_setup_passwd_quality_check (context, NULL, NULL);
-    ret = kadm5_add_passwd_quality_verifier(context, NULL);
+    kadm5_setup_passwd_quality_check (context, ((void*)0), ((void*)0));
+    ret = kadm5_add_passwd_quality_verifier(context, ((void*)0));
     if (ret)
-	krb5_errx(context, 1, "kadm5_add_passwd_quality_verifier");
+ krb5_errx(context, 1, "kadm5_add_passwd_quality_verifier");
 
     s = kadm5_check_password_quality (context, p, &pw_data);
     if (s)
-	krb5_errx(context, 1, "kadm5_check_password_quality:\n%s", s);
+ krb5_errx(context, 1, "kadm5_check_password_quality:\n%s", s);
 
     krb5_free_principal(context, p);
     krb5_free_context(context);

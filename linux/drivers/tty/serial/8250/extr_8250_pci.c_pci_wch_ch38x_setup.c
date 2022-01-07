@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  type; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int type; int flags; } ;
 struct uart_8250_port {TYPE_1__ port; } ;
 struct serial_private {int dummy; } ;
 struct pciserial_board {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PORT_16850 ; 
- int /*<<< orphan*/  UPF_FIXED_TYPE ; 
- int pci_default_setup (struct serial_private*,struct pciserial_board const*,struct uart_8250_port*,int) ; 
+
+ int PORT_16850 ;
+ int UPF_FIXED_TYPE ;
+ int pci_default_setup (struct serial_private*,struct pciserial_board const*,struct uart_8250_port*,int) ;
 
 __attribute__((used)) static int
 pci_wch_ch38x_setup(struct serial_private *priv,
-		    const struct pciserial_board *board,
-		    struct uart_8250_port *port, int idx)
+      const struct pciserial_board *board,
+      struct uart_8250_port *port, int idx)
 {
-	port->port.flags |= UPF_FIXED_TYPE;
-	port->port.type = PORT_16850;
-	return pci_default_setup(priv, board, port, idx);
+ port->port.flags |= UPF_FIXED_TYPE;
+ port->port.type = PORT_16850;
+ return pci_default_setup(priv, board, port, idx);
 }

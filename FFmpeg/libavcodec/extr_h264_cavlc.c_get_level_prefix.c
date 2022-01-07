@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOSE_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- unsigned int GET_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LAST_SKIP_BITS (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  OPEN_READER (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UPDATE_CACHE (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int av_log2 (unsigned int) ; 
- int /*<<< orphan*/  re ; 
+
+
+
+typedef int GetBitContext ;
+
+
+ int CLOSE_READER (int ,int *) ;
+ unsigned int GET_CACHE (int ,int *) ;
+ int LAST_SKIP_BITS (int ,int *,int) ;
+ int OPEN_READER (int ,int *) ;
+ int UPDATE_CACHE (int ,int *) ;
+ int av_log2 (unsigned int) ;
+ int re ;
 
 __attribute__((used)) static inline int get_level_prefix(GetBitContext *gb){
     unsigned int buf;

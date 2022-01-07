@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {int /*<<< orphan*/  sa_handler; int /*<<< orphan*/  sa_mask; scalar_t__ sa_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SIGTERM ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  exit_process ; 
- int sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ ) ; 
- int sigemptyset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  twarn (char*) ; 
+
+
+
+struct sigaction {int sa_handler; int sa_mask; scalar_t__ sa_flags; } ;
+
+
+ int SIGTERM ;
+ int exit (int) ;
+ int exit_process ;
+ int sigaction (int ,struct sigaction*,int ) ;
+ int sigemptyset (int *) ;
+ int twarn (char*) ;
 
 __attribute__((used)) static void
 set_sig_handler()
@@ -32,7 +32,7 @@ set_sig_handler()
         exit(111);
     }
 
-    // This is required to trigger gcov on exit. See issue #443.
+
     sa.sa_handler = exit_process;
     r = sigaction(SIGTERM, &sa, 0);
     if (r == -1) {

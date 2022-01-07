@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ strategy; scalar_t__ targetLength; scalar_t__ searchLength; scalar_t__ searchLog; scalar_t__ chainLog; scalar_t__ hashLog; scalar_t__ windowLog; } ;
-typedef  TYPE_3__ ZSTD_compressionParameters ;
+typedef TYPE_3__ ZSTD_compressionParameters ;
 struct TYPE_12__ {scalar_t__ strategy; scalar_t__ targetLength; scalar_t__ searchLength; scalar_t__ searchLog; scalar_t__ chainLog; scalar_t__ hashLog; scalar_t__ windowLog; } ;
 struct TYPE_11__ {scalar_t__ enableLdm; } ;
-struct TYPE_14__ {TYPE_2__ cParams; TYPE_1__ ldmParams; int /*<<< orphan*/  compressionLevel; } ;
-typedef  TYPE_4__ ZSTD_CCtx_params ;
-typedef  int /*<<< orphan*/  U64 ;
+struct TYPE_14__ {TYPE_2__ cParams; TYPE_1__ ldmParams; int compressionLevel; } ;
+typedef TYPE_4__ ZSTD_CCtx_params ;
+typedef int U64 ;
 
-/* Variables and functions */
- scalar_t__ ZSTD_LDM_DEFAULT_WINDOW_LOG ; 
- TYPE_3__ ZSTD_adjustCParams_internal (TYPE_3__,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  ZSTD_checkCParams (TYPE_3__) ; 
- TYPE_3__ ZSTD_getCParams (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ scalar_t__ ZSTD_LDM_DEFAULT_WINDOW_LOG ;
+ TYPE_3__ ZSTD_adjustCParams_internal (TYPE_3__,int ,size_t) ;
+ int ZSTD_checkCParams (TYPE_3__) ;
+ TYPE_3__ ZSTD_getCParams (int ,int ,size_t) ;
+ int assert (int) ;
 
 ZSTD_compressionParameters ZSTD_getCParamsFromCCtxParams(
         const ZSTD_CCtx_params* CCtxParams, U64 srcSizeHint, size_t dictSize)

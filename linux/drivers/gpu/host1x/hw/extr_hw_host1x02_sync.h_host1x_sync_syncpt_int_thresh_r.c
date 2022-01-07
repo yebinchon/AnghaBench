@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- unsigned int REGISTER_STRIDE ; 
+
+
+
+typedef int u32 ;
+
+
+ unsigned int REGISTER_STRIDE ;
 
 __attribute__((used)) static inline u32 host1x_sync_syncpt_int_thresh_r(unsigned int id)
 {
-	return 0x500 + id * REGISTER_STRIDE;
+ return 0x500 + id * REGISTER_STRIDE;
 }

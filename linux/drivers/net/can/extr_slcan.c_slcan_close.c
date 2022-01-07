@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tty_struct {int /*<<< orphan*/ * disc_data; } ;
-struct slcan {scalar_t__ magic; int /*<<< orphan*/  dev; int /*<<< orphan*/  tx_work; int /*<<< orphan*/  lock; struct tty_struct* tty; } ;
 
-/* Variables and functions */
- scalar_t__ SLCAN_MAGIC ; 
- int /*<<< orphan*/  flush_work (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unregister_netdev (int /*<<< orphan*/ ) ; 
+
+
+
+struct tty_struct {int * disc_data; } ;
+struct slcan {scalar_t__ magic; int dev; int tx_work; int lock; struct tty_struct* tty; } ;
+
+
+ scalar_t__ SLCAN_MAGIC ;
+ int flush_work (int *) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
+ int unregister_netdev (int ) ;
 
 __attribute__((used)) static void slcan_close(struct tty_struct *tty)
 {
-	struct slcan *sl = (struct slcan *) tty->disc_data;
+ struct slcan *sl = (struct slcan *) tty->disc_data;
 
-	/* First make sure we're connected. */
-	if (!sl || sl->magic != SLCAN_MAGIC || sl->tty != tty)
-		return;
 
-	spin_lock_bh(&sl->lock);
-	tty->disc_data = NULL;
-	sl->tty = NULL;
-	spin_unlock_bh(&sl->lock);
+ if (!sl || sl->magic != SLCAN_MAGIC || sl->tty != tty)
+  return;
 
-	flush_work(&sl->tx_work);
+ spin_lock_bh(&sl->lock);
+ tty->disc_data = ((void*)0);
+ sl->tty = ((void*)0);
+ spin_unlock_bh(&sl->lock);
 
-	/* Flush network side */
-	unregister_netdev(sl->dev);
-	/* This will complete via sl_free_netdev */
+ flush_work(&sl->tx_work);
+
+
+ unregister_netdev(sl->dev);
+
 }

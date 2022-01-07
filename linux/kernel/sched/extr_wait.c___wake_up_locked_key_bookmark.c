@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_queue_entry_t ;
+
+
+
+
+typedef int wait_queue_entry_t ;
 struct wait_queue_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __wake_up_common (struct wait_queue_head*,unsigned int,int,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ int __wake_up_common (struct wait_queue_head*,unsigned int,int,int ,void*,int *) ;
 
 void __wake_up_locked_key_bookmark(struct wait_queue_head *wq_head,
-		unsigned int mode, void *key, wait_queue_entry_t *bookmark)
+  unsigned int mode, void *key, wait_queue_entry_t *bookmark)
 {
-	__wake_up_common(wq_head, mode, 1, 0, key, bookmark);
+ __wake_up_common(wq_head, mode, 1, 0, key, bookmark);
 }

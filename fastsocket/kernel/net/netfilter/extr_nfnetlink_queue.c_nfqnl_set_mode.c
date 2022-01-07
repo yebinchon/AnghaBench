@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfqnl_instance {unsigned char copy_mode; int copy_range; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  NFQNL_COPY_META 130 
-#define  NFQNL_COPY_NONE 129 
-#define  NFQNL_COPY_PACKET 128 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+
+
+struct nfqnl_instance {unsigned char copy_mode; int copy_range; int lock; } ;
+
+
+ int EINVAL ;
+
+
+
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 __attribute__((used)) static int
 nfqnl_set_mode(struct nfqnl_instance *queue,
-	       unsigned char mode, unsigned int range)
+        unsigned char mode, unsigned int range)
 {
-	int status = 0;
+ int status = 0;
 
-	spin_lock_bh(&queue->lock);
-	switch (mode) {
-	case NFQNL_COPY_NONE:
-	case NFQNL_COPY_META:
-		queue->copy_mode = mode;
-		queue->copy_range = 0;
-		break;
+ spin_lock_bh(&queue->lock);
+ switch (mode) {
+ case 129:
+ case 130:
+  queue->copy_mode = mode;
+  queue->copy_range = 0;
+  break;
 
-	case NFQNL_COPY_PACKET:
-		queue->copy_mode = mode;
-		/* we're using struct nlattr which has 16bit nla_len */
-		if (range > 0xffff)
-			queue->copy_range = 0xffff;
-		else
-			queue->copy_range = range;
-		break;
+ case 128:
+  queue->copy_mode = mode;
 
-	default:
-		status = -EINVAL;
+  if (range > 0xffff)
+   queue->copy_range = 0xffff;
+  else
+   queue->copy_range = range;
+  break;
 
-	}
-	spin_unlock_bh(&queue->lock);
+ default:
+  status = -EINVAL;
 
-	return status;
+ }
+ spin_unlock_bh(&queue->lock);
+
+ return status;
 }

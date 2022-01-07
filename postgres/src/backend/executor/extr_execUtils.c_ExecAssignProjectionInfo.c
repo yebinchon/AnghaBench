@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleDesc ;
-struct TYPE_6__ {int /*<<< orphan*/  ps_ResultTupleSlot; int /*<<< orphan*/  ps_ExprContext; TYPE_1__* plan; int /*<<< orphan*/  ps_ProjInfo; } ;
-struct TYPE_5__ {int /*<<< orphan*/  targetlist; } ;
-typedef  TYPE_2__ PlanState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExecBuildProjectionInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int TupleDesc ;
+struct TYPE_6__ {int ps_ResultTupleSlot; int ps_ExprContext; TYPE_1__* plan; int ps_ProjInfo; } ;
+struct TYPE_5__ {int targetlist; } ;
+typedef TYPE_2__ PlanState ;
+
+
+ int ExecBuildProjectionInfo (int ,int ,int ,TYPE_2__*,int ) ;
 
 void
 ExecAssignProjectionInfo(PlanState *planstate,
-						 TupleDesc inputDesc)
+       TupleDesc inputDesc)
 {
-	planstate->ps_ProjInfo =
-		ExecBuildProjectionInfo(planstate->plan->targetlist,
-								planstate->ps_ExprContext,
-								planstate->ps_ResultTupleSlot,
-								planstate,
-								inputDesc);
+ planstate->ps_ProjInfo =
+  ExecBuildProjectionInfo(planstate->plan->targetlist,
+        planstate->ps_ExprContext,
+        planstate->ps_ResultTupleSlot,
+        planstate,
+        inputDesc);
 }

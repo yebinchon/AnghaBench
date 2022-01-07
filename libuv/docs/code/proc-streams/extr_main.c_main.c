@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int fd; } ;
 struct TYPE_6__ {TYPE_1__ data; void* flags; } ;
-typedef  TYPE_2__ uv_stdio_container_t ;
-struct TYPE_7__ {int stdio_count; char* file; char** args; int /*<<< orphan*/  exit_cb; TYPE_2__* stdio; } ;
+typedef TYPE_2__ uv_stdio_container_t ;
+struct TYPE_7__ {int stdio_count; char* file; char** args; int exit_cb; TYPE_2__* stdio; } ;
 
-/* Variables and functions */
- void* UV_IGNORE ; 
- void* UV_INHERIT_FD ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  child_req ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  loop ; 
- int /*<<< orphan*/  on_exit ; 
- TYPE_3__ options ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- int /*<<< orphan*/  uv_exepath (char*,size_t*) ; 
- int uv_run (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_spawn (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_3__*) ; 
- char* uv_strerror (int) ; 
+
+ void* UV_IGNORE ;
+ void* UV_INHERIT_FD ;
+ int UV_RUN_DEFAULT ;
+ int child_req ;
+ int fprintf (int ,char*,char*) ;
+ int loop ;
+ int on_exit ;
+ TYPE_3__ options ;
+ int stderr ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int uv_default_loop () ;
+ int uv_exepath (char*,size_t*) ;
+ int uv_run (int ,int ) ;
+ int uv_spawn (int ,int *,TYPE_3__*) ;
+ char* uv_strerror (int) ;
 
 int main() {
     loop = uv_default_loop();
@@ -46,9 +46,9 @@ int main() {
 
     char* args[2];
     args[0] = path;
-    args[1] = NULL;
+    args[1] = ((void*)0);
 
-    /* ... */
+
 
     options.stdio_count = 3;
     uv_stdio_container_t child_stdio[3];

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * snapmap; } ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * snapmap; } ;
 struct TYPE_8__ {TYPE_1__ cur; } ;
-typedef  TYPE_2__ jit_State ;
-struct TYPE_10__ {int /*<<< orphan*/  t; } ;
+typedef TYPE_2__ jit_State ;
+struct TYPE_10__ {int t; } ;
 struct TYPE_9__ {size_t mapofs; size_t nent; } ;
-typedef  TYPE_3__ SnapShot ;
-typedef  int /*<<< orphan*/  SnapEntry ;
-typedef  size_t MSize ;
-typedef  int /*<<< orphan*/  IRRef ;
+typedef TYPE_3__ SnapShot ;
+typedef int SnapEntry ;
+typedef size_t MSize ;
+typedef int IRRef ;
 
-/* Variables and functions */
- TYPE_6__* IR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irref_isk (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  irt_setmark (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snap_ref (int /*<<< orphan*/ ) ; 
+
+ TYPE_6__* IR (int ) ;
+ int irref_isk (int ) ;
+ int irt_setmark (int ) ;
+ int snap_ref (int ) ;
 
 __attribute__((used)) static void sink_mark_snap(jit_State *J, SnapShot *snap)
 {

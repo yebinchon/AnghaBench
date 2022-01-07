@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int bus_generic_attach (int /*<<< orphan*/ ) ; 
- int mv_pcib_ofw_bus_attach (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int bus_generic_attach (int ) ;
+ int mv_pcib_ofw_bus_attach (int ) ;
 
 __attribute__((used)) static int
 mv_pcib_ctrl_attach(device_t dev)
 {
-	int err;
+ int err;
 
-	err = mv_pcib_ofw_bus_attach(dev);
-	if (err != 0)
-		return (err);
+ err = mv_pcib_ofw_bus_attach(dev);
+ if (err != 0)
+  return (err);
 
-	return (bus_generic_attach(dev));
+ return (bus_generic_attach(dev));
 }

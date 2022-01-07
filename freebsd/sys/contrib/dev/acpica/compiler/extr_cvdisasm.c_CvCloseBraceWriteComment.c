@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AML_COMMENT_CLOSE_BRACE ; 
- int /*<<< orphan*/  AML_COMMENT_ENDBLK ; 
- int /*<<< orphan*/  AcpiGbl_CaptureComments ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*) ; 
- int /*<<< orphan*/  CvPrintOneCommentType (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT32 ;
+typedef int ACPI_PARSE_OBJECT ;
+
+
+ int AML_COMMENT_CLOSE_BRACE ;
+ int AML_COMMENT_ENDBLK ;
+ int AcpiGbl_CaptureComments ;
+ int AcpiOsPrintf (char*) ;
+ int CvPrintOneCommentType (int *,int ,int *,int ) ;
 
 void
 CvCloseBraceWriteComment(
-    ACPI_PARSE_OBJECT       *Op,
-    UINT32                  Level)
+    ACPI_PARSE_OBJECT *Op,
+    UINT32 Level)
 {
 
     if (!AcpiGbl_CaptureComments)
@@ -32,7 +32,7 @@ CvCloseBraceWriteComment(
         return;
     }
 
-    CvPrintOneCommentType (Op, AML_COMMENT_ENDBLK, NULL, Level);
+    CvPrintOneCommentType (Op, AML_COMMENT_ENDBLK, ((void*)0), Level);
     AcpiOsPrintf ("}");
-    CvPrintOneCommentType (Op, AML_COMMENT_CLOSE_BRACE, NULL, Level);
+    CvPrintOneCommentType (Op, AML_COMMENT_CLOSE_BRACE, ((void*)0), Level);
 }

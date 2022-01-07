@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct propagate_block_info {int dummy; } ;
-typedef  int /*<<< orphan*/  rtx ;
+typedef int rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_CODE (int /*<<< orphan*/ ) ; 
- scalar_t__ GET_RTX_CLASS (int /*<<< orphan*/ ) ; 
- scalar_t__ RTX_AUTOINC ; 
- int /*<<< orphan*/  XEXP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  invalidate_mems_from_set (struct propagate_block_info*,int /*<<< orphan*/ ) ; 
+
+ int GET_CODE (int ) ;
+ scalar_t__ GET_RTX_CLASS (int ) ;
+ scalar_t__ RTX_AUTOINC ;
+ int XEXP (int ,int ) ;
+ int invalidate_mems_from_set (struct propagate_block_info*,int ) ;
 
 __attribute__((used)) static int
 invalidate_mems_from_autoinc (rtx *px, void *data)

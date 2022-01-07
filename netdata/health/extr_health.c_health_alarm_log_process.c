@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  scalar_t__ time_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef scalar_t__ time_t ;
 struct TYPE_12__ {scalar_t__ unique_id; int flags; scalar_t__ delay_up_to_timestamp; struct TYPE_12__* next; } ;
-struct TYPE_10__ {int count; int max; int /*<<< orphan*/  alarm_log_rwlock; TYPE_3__* alarms; } ;
+struct TYPE_10__ {int count; int max; int alarm_log_rwlock; TYPE_3__* alarms; } ;
 struct TYPE_11__ {scalar_t__ health_last_processed_id; TYPE_1__ health_log; } ;
-typedef  TYPE_2__ RRDHOST ;
-typedef  TYPE_3__ ALARM_ENTRY ;
+typedef TYPE_2__ RRDHOST ;
+typedef TYPE_3__ ALARM_ENTRY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HEALTH ; 
- int HEALTH_ENTRY_FLAG_PROCESSED ; 
- int HEALTH_ENTRY_FLAG_UPDATED ; 
- int /*<<< orphan*/  alarm_entry_isrepeating (TYPE_2__*,TYPE_3__*) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  health_alarm_log_free_one_nochecks_nounlink (TYPE_3__*) ; 
- int /*<<< orphan*/  health_process_notifications (TYPE_2__*,TYPE_3__*) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/  netdata_rwlock_rdlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdata_rwlock_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdata_rwlock_wrlock (int /*<<< orphan*/ *) ; 
- scalar_t__ now_realtime_sec () ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_HEALTH ;
+ int HEALTH_ENTRY_FLAG_PROCESSED ;
+ int HEALTH_ENTRY_FLAG_UPDATED ;
+ int alarm_entry_isrepeating (TYPE_2__*,TYPE_3__*) ;
+ int debug (int ,char*,scalar_t__) ;
+ int health_alarm_log_free_one_nochecks_nounlink (TYPE_3__*) ;
+ int health_process_notifications (TYPE_2__*,TYPE_3__*) ;
+ scalar_t__ likely (int) ;
+ int netdata_rwlock_rdlock (int *) ;
+ int netdata_rwlock_unlock (int *) ;
+ int netdata_rwlock_wrlock (int *) ;
+ scalar_t__ now_realtime_sec () ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline void health_alarm_log_process(RRDHOST *host) {
     uint32_t first_waiting = (host->health_log.alarms)?host->health_log.alarms->unique_id:0;
@@ -58,7 +58,7 @@ __attribute__((used)) static inline void health_alarm_log_process(RRDHOST *host)
         }
     }
 
-    // remember this for the next iteration
+
     host->health_last_processed_id = first_waiting;
 
     netdata_rwlock_unlock(&host->health_log.alarm_log_rwlock);
@@ -66,17 +66,17 @@ __attribute__((used)) static inline void health_alarm_log_process(RRDHOST *host)
     if(host->health_log.count <= host->health_log.max)
         return;
 
-    // cleanup excess entries in the log
+
     netdata_rwlock_wrlock(&host->health_log.alarm_log_rwlock);
 
-    ALARM_ENTRY *last = NULL;
+    ALARM_ENTRY *last = ((void*)0);
     unsigned int count = host->health_log.max * 2 / 3;
     for(ae = host->health_log.alarms; ae && count ; count--, last = ae, ae = ae->next) ;
 
     if(ae && last && last->next == ae)
-        last->next = NULL;
+        last->next = ((void*)0);
     else
-        ae = NULL;
+        ae = ((void*)0);
 
     while(ae) {
         debug(D_HEALTH, "Health removing alarm log entry with id: %u", ae->unique_id);

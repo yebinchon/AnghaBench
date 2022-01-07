@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  tv_sec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_set_cmd (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_show_from_set (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  add_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_support ; 
- int /*<<< orphan*/  init_vx_ops () ; 
- int /*<<< orphan*/  init_vx_run_ops () ; 
- TYPE_1__ rpcTimeout ; 
- int /*<<< orphan*/  setlist ; 
- int /*<<< orphan*/  showlist ; 
- int /*<<< orphan*/  var_uinteger ; 
- int /*<<< orphan*/  vx_ops ; 
- int /*<<< orphan*/  vx_run_ops ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int tv_sec; } ;
+
+
+ int add_set_cmd (char*,int ,int ,char*,char*,int *) ;
+ int add_show_from_set (int ,int *) ;
+ int add_target (int *) ;
+ int class_support ;
+ int init_vx_ops () ;
+ int init_vx_run_ops () ;
+ TYPE_1__ rpcTimeout ;
+ int setlist ;
+ int showlist ;
+ int var_uinteger ;
+ int vx_ops ;
+ int vx_run_ops ;
 
 void
 _initialize_vx (void)
@@ -37,8 +37,8 @@ _initialize_vx (void)
 
   add_show_from_set
     (add_set_cmd ("vxworks-timeout", class_support, var_uinteger,
-		  (char *) &rpcTimeout.tv_sec,
-		  "Set seconds to wait for rpc calls to return.\n\
-Set the number of seconds to wait for rpc calls to return.", &setlist),
+    (char *) &rpcTimeout.tv_sec,
+    "Set seconds to wait for rpc calls to return.\nSet the number of seconds to wait for rpc calls to return.", &setlist),
+
      &showlist);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct mp_tags {int dummy; } ;
 struct mp_output_chain {int dummy; } ;
-struct mp_filter_command {struct mp_tags** res; int /*<<< orphan*/  type; } ;
+struct mp_filter_command {struct mp_tags** res; int type; } ;
 struct m_property_action_arg {char* key; int action; struct m_property_action_arg* arg; } ;
 struct m_property {char* priv; } ;
-typedef  int /*<<< orphan*/  bstr ;
+typedef int bstr ;
 struct TYPE_6__ {TYPE_2__* ao_chain; TYPE_1__* vo_chain; } ;
 struct TYPE_5__ {struct mp_output_chain* filter; } ;
 struct TYPE_4__ {struct mp_output_chain* filter; } ;
-typedef  TYPE_3__ MPContext ;
+typedef TYPE_3__ MPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_FILTER_COMMAND_GET_META ; 
- int M_PROPERTY_ERROR ; 
- int M_PROPERTY_GET_TYPE ; 
- int M_PROPERTY_KEY_ACTION ; 
- int M_PROPERTY_NOT_IMPLEMENTED ; 
- int M_PROPERTY_UNAVAILABLE ; 
- int /*<<< orphan*/  m_property_split_path (char*,int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  mp_output_chain_command (struct mp_output_chain*,int /*<<< orphan*/ ,struct mp_filter_command*) ; 
- int /*<<< orphan*/  mp_tprintf (int,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int tag_property (int,struct m_property_action_arg*,struct mp_tags*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_tags*) ; 
+
+ int BSTR_P (int ) ;
+ int MP_FILTER_COMMAND_GET_META ;
+ int M_PROPERTY_ERROR ;
+ int M_PROPERTY_GET_TYPE ;
+ int M_PROPERTY_KEY_ACTION ;
+ int M_PROPERTY_NOT_IMPLEMENTED ;
+ int M_PROPERTY_UNAVAILABLE ;
+ int m_property_split_path (char*,int *,char**) ;
+ int mp_output_chain_command (struct mp_output_chain*,int ,struct mp_filter_command*) ;
+ int mp_tprintf (int,char*,int ) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int tag_property (int,struct m_property_action_arg*,struct mp_tags*) ;
+ int talloc_free (struct mp_tags*) ;
 
 __attribute__((used)) static int mp_property_filter_metadata(void *ctx, struct m_property *prop,
                                        int action, void *arg)
@@ -51,12 +51,12 @@ __attribute__((used)) static int mp_property_filter_metadata(void *ctx, struct m
         bstr key;
         char *rem;
         m_property_split_path(ka->key, &key, &rem);
-        struct mp_tags *metadata = NULL;
-        struct mp_output_chain *chain = NULL;
+        struct mp_tags *metadata = ((void*)0);
+        struct mp_output_chain *chain = ((void*)0);
         if (strcmp(type, "vf") == 0) {
-            chain = mpctx->vo_chain ? mpctx->vo_chain->filter : NULL;
+            chain = mpctx->vo_chain ? mpctx->vo_chain->filter : ((void*)0);
         } else if (strcmp(type, "af") == 0) {
-            chain = mpctx->ao_chain ? mpctx->ao_chain->filter : NULL;
+            chain = mpctx->ao_chain ? mpctx->ao_chain->filter : ((void*)0);
         }
         if (!chain)
             return M_PROPERTY_UNAVAILABLE;

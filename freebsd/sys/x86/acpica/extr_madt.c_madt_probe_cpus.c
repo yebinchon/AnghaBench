@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  Length; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int Length; } ;
 struct TYPE_6__ {TYPE_1__ Header; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_SIG_MADT ; 
- int /*<<< orphan*/  KASSERT (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* acpi_map_table (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_unmap_table (TYPE_2__*) ; 
- TYPE_2__* madt ; 
- int /*<<< orphan*/  madt_length ; 
- int /*<<< orphan*/  madt_physaddr ; 
- int /*<<< orphan*/  madt_probe_cpus_handler ; 
- int /*<<< orphan*/  madt_walk_table (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ACPI_SIG_MADT ;
+ int KASSERT (int ,char*) ;
+ TYPE_2__* acpi_map_table (int ,int ) ;
+ int acpi_unmap_table (TYPE_2__*) ;
+ TYPE_2__* madt ;
+ int madt_length ;
+ int madt_physaddr ;
+ int madt_probe_cpus_handler ;
+ int madt_walk_table (int ,int *) ;
 
 __attribute__((used)) static int
 madt_probe_cpus(void)
 {
 
-	madt = acpi_map_table(madt_physaddr, ACPI_SIG_MADT);
-	madt_length = madt->Header.Length;
-	KASSERT(madt != NULL, ("Unable to re-map MADT"));
-	madt_walk_table(madt_probe_cpus_handler, NULL);
-	acpi_unmap_table(madt);
-	madt = NULL;
-	return (0);
+ madt = acpi_map_table(madt_physaddr, ACPI_SIG_MADT);
+ madt_length = madt->Header.Length;
+ KASSERT(madt != ((void*)0), ("Unable to re-map MADT"));
+ madt_walk_table(madt_probe_cpus_handler, ((void*)0));
+ acpi_unmap_table(madt);
+ madt = ((void*)0);
+ return (0);
 }

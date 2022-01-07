@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int errno ; 
- int write (int,void*,size_t) ; 
+ int errno ;
+ int write (int,void*,size_t) ;
 
 __attribute__((used)) static int
 image_copyout_memory(int fd, size_t size, void *ptr)
 {
 
-	if (write(fd, ptr, size) == -1)
-		return (errno);
-	return (0);
+ if (write(fd, ptr, size) == -1)
+  return (errno);
+ return (0);
 }

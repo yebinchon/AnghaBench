@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int sa_len; } ;
-typedef  int /*<<< orphan*/ * socket_t ;
-typedef  int errno_t ;
+typedef int * socket_t ;
+typedef int errno_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  FREE (struct sockaddr*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_SONAME ; 
- int /*<<< orphan*/  memcpy (struct sockaddr*,struct sockaddr*,int) ; 
- int /*<<< orphan*/  socket_lock (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  socket_unlock (int /*<<< orphan*/ *,int) ; 
- int sogetaddr_locked (int /*<<< orphan*/ *,struct sockaddr**,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int FREE (struct sockaddr*,int ) ;
+ int M_SONAME ;
+ int memcpy (struct sockaddr*,struct sockaddr*,int) ;
+ int socket_lock (int *,int) ;
+ int socket_unlock (int *,int) ;
+ int sogetaddr_locked (int *,struct sockaddr**,int ) ;
 
 errno_t
-sock_getsockname(socket_t sock, struct sockaddr	*sockname, int socknamelen)
+sock_getsockname(socket_t sock, struct sockaddr *sockname, int socknamelen)
 {
-	int error;
-	struct sockaddr	*sa = NULL;
+ int error;
+ struct sockaddr *sa = ((void*)0);
 
-	if (sock == NULL || sockname == NULL || socknamelen < 0)
-		return (EINVAL);
+ if (sock == ((void*)0) || sockname == ((void*)0) || socknamelen < 0)
+  return (EINVAL);
 
-	socket_lock(sock, 1);
-	error = sogetaddr_locked(sock, &sa, 0);
-	socket_unlock(sock, 1);
-	if (error == 0) {
-		if (socknamelen > sa->sa_len)
-			socknamelen = sa->sa_len;
-		memcpy(sockname, sa, socknamelen);
-		FREE(sa, M_SONAME);
-	}
-	return (error);
+ socket_lock(sock, 1);
+ error = sogetaddr_locked(sock, &sa, 0);
+ socket_unlock(sock, 1);
+ if (error == 0) {
+  if (socknamelen > sa->sa_len)
+   socknamelen = sa->sa_len;
+  memcpy(sockname, sa, socknamelen);
+  FREE(sa, M_SONAME);
+ }
+ return (error);
 }

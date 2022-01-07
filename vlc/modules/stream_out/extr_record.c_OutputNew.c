@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  p_sout; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ sout_stream_t ;
-struct TYPE_8__ {int i_id; int /*<<< orphan*/  p_out; TYPE_3__** id; } ;
-typedef  TYPE_2__ sout_stream_sys_t ;
-struct TYPE_9__ {int /*<<< orphan*/  id; int /*<<< orphan*/  fmt; } ;
-typedef  TYPE_3__ sout_stream_id_sys_t ;
 
-/* Variables and functions */
- scalar_t__ asprintf (char**,char*,char const*,char*,...) ; 
- char* config_StringEscape (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,char*) ; 
- int /*<<< orphan*/  sout_StreamChainNew (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sout_StreamIdAdd (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  var_SetString (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  vlc_object_instance (TYPE_1__*) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int p_sout; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ sout_stream_t ;
+struct TYPE_8__ {int i_id; int p_out; TYPE_3__** id; } ;
+typedef TYPE_2__ sout_stream_sys_t ;
+struct TYPE_9__ {int id; int fmt; } ;
+typedef TYPE_3__ sout_stream_id_sys_t ;
+
+
+ scalar_t__ asprintf (char**,char*,char const*,char*,...) ;
+ char* config_StringEscape (char*) ;
+ int free (char*) ;
+ int msg_Dbg (TYPE_1__*,char*,char*) ;
+ int sout_StreamChainNew (int ,char*,int *,int *) ;
+ int sout_StreamIdAdd (int ,int *) ;
+ int var_SetString (int ,char*,char*) ;
+ int vlc_object_instance (TYPE_1__*) ;
 
 __attribute__((used)) static int OutputNew( sout_stream_t *p_stream,
-                      const char *psz_muxer, const char *psz_prefix, const char *psz_extension  )
+                      const char *psz_muxer, const char *psz_prefix, const char *psz_extension )
 {
     sout_stream_sys_t *p_sys = p_stream->p_sys;
-    char *psz_file = NULL, *psz_tmp = NULL;
-    char *psz_output = NULL;
+    char *psz_file = ((void*)0), *psz_tmp = ((void*)0);
+    char *psz_output = ((void*)0);
     int i_count;
 
     if( asprintf( &psz_tmp, "%s%s%s",
@@ -56,19 +56,19 @@ __attribute__((used)) static int OutputNew( sout_stream_t *p_stream,
                   "std{access=file{no-append,no-format,no-overwrite},"
                   "mux=%s,dst='%s'}", psz_muxer, psz_file ) < 0 )
     {
-        psz_output = NULL;
+        psz_output = ((void*)0);
         goto error;
     }
 
-    /* Create the output */
+
     msg_Dbg( p_stream, "Using record output `%s'", psz_output );
 
-    p_sys->p_out = sout_StreamChainNew( p_stream->p_sout, psz_output, NULL, NULL );
+    p_sys->p_out = sout_StreamChainNew( p_stream->p_sout, psz_output, ((void*)0), ((void*)0) );
 
     if( !p_sys->p_out )
         goto error;
 
-    /* Add es */
+
     i_count = 0;
     for( int i = 0; i < p_sys->i_id; i++ )
     {

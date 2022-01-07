@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_ALGOR ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int X509_ALGOR ;
 struct TYPE_5__ {TYPE_1__* mac; } ;
-struct TYPE_4__ {int /*<<< orphan*/ * iter; int /*<<< orphan*/ * salt; int /*<<< orphan*/  dinfo; } ;
-typedef  TYPE_2__ PKCS12 ;
-typedef  int /*<<< orphan*/  ASN1_OCTET_STRING ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
+struct TYPE_4__ {int * iter; int * salt; int dinfo; } ;
+typedef TYPE_2__ PKCS12 ;
+typedef int ASN1_OCTET_STRING ;
+typedef int ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  X509_SIG_get0 (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int /*<<< orphan*/  const**) ; 
+
+ int X509_SIG_get0 (int ,int const**,int const**) ;
 
 void PKCS12_get0_mac(const ASN1_OCTET_STRING **pmac,
                      const X509_ALGOR **pmacalg,
@@ -36,12 +36,12 @@ void PKCS12_get0_mac(const ASN1_OCTET_STRING **pmac,
             *piter = p12->mac->iter;
     } else {
         if (pmac)
-            *pmac = NULL;
+            *pmac = ((void*)0);
         if (pmacalg)
-            *pmacalg = NULL;
+            *pmacalg = ((void*)0);
         if (psalt)
-            *psalt = NULL;
+            *psalt = ((void*)0);
         if (piter)
-            *piter = NULL;
+            *piter = ((void*)0);
     }
 }

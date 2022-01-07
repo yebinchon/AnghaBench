@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cifs_fscache_netfs ; 
- int /*<<< orphan*/  fscache_unregister_netfs (int /*<<< orphan*/ *) ; 
+ int cifs_fscache_netfs ;
+ int fscache_unregister_netfs (int *) ;
 
 void cifs_fscache_unregister(void)
 {
-	fscache_unregister_netfs(&cifs_fscache_netfs);
+ fscache_unregister_netfs(&cifs_fscache_netfs);
 }

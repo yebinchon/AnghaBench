@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BConfig (int) ; 
- int /*<<< orphan*/  getchar () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+ int BConfig (int) ;
+ int getchar () ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void ConfigJoystick(void)
 {
@@ -26,7 +18,7 @@ __attribute__((used)) static void ConfigJoystick(void)
  printf("   and the configuration will continue.\n\n");
  printf("   Press enter to continue...\n");
  getchar();
-                                                        
+
  printf("%s\"Select\".\n",genb);
  BConfig(2);
 
@@ -41,7 +33,7 @@ __attribute__((used)) static void ConfigJoystick(void)
 
  printf("%s\"Rapid fire B\".\n",genb);
  BConfig(5);
- 
+
  printf("%s\"Rapid fire A\".\n",genb);
  BConfig(4);
 

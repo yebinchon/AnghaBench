@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  find_new_referenced_vars_1 ; 
- int /*<<< orphan*/  walk_tree (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+
+
+ int find_new_referenced_vars_1 ;
+ int walk_tree (int *,int ,int *,int *) ;
 
 void
 find_new_referenced_vars (tree *stmt_p)
 {
-  walk_tree (stmt_p, find_new_referenced_vars_1, NULL, NULL);
+  walk_tree (stmt_p, find_new_referenced_vars_1, ((void*)0), ((void*)0));
 }

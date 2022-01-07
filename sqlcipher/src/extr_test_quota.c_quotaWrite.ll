@@ -1,0 +1,176 @@
+; ModuleID = '/home/carl/AnghaBench/sqlcipher/src/extr_test_quota.c_quotaWrite.c'
+source_filename = "/home/carl/AnghaBench/sqlcipher/src/extr_test_quota.c_quotaWrite.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_11__ = type { %struct.TYPE_10__* }
+%struct.TYPE_10__ = type { {}* }
+%struct.TYPE_14__ = type { %struct.TYPE_13__* }
+%struct.TYPE_13__ = type { i64, i32, %struct.TYPE_12__* }
+%struct.TYPE_12__ = type { i64, i64, i32, i32 (i32, i64*, i64, i32)* }
+
+@SQLITE_FULL = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_11__*, i8*, i32, i64)* @quotaWrite to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @quotaWrite(%struct.TYPE_11__* %0, i8* %1, i32 %2, i64 %3) #0 {
+  %5 = alloca i32, align 4
+  %6 = alloca %struct.TYPE_11__*, align 8
+  %7 = alloca i8*, align 8
+  %8 = alloca i32, align 4
+  %9 = alloca i64, align 8
+  %10 = alloca %struct.TYPE_14__*, align 8
+  %11 = alloca %struct.TYPE_11__*, align 8
+  %12 = alloca i64, align 8
+  %13 = alloca %struct.TYPE_12__*, align 8
+  %14 = alloca %struct.TYPE_13__*, align 8
+  %15 = alloca i64, align 8
+  store %struct.TYPE_11__* %0, %struct.TYPE_11__** %6, align 8
+  store i8* %1, i8** %7, align 8
+  store i32 %2, i32* %8, align 4
+  store i64 %3, i64* %9, align 8
+  %16 = load %struct.TYPE_11__*, %struct.TYPE_11__** %6, align 8
+  %17 = bitcast %struct.TYPE_11__* %16 to %struct.TYPE_14__*
+  store %struct.TYPE_14__* %17, %struct.TYPE_14__** %10, align 8
+  %18 = load %struct.TYPE_11__*, %struct.TYPE_11__** %6, align 8
+  %19 = call %struct.TYPE_11__* @quotaSubOpen(%struct.TYPE_11__* %18)
+  store %struct.TYPE_11__* %19, %struct.TYPE_11__** %11, align 8
+  %20 = load i64, i64* %9, align 8
+  %21 = load i32, i32* %8, align 4
+  %22 = sext i32 %21 to i64
+  %23 = add nsw i64 %20, %22
+  store i64 %23, i64* %12, align 8
+  %24 = load %struct.TYPE_14__*, %struct.TYPE_14__** %10, align 8
+  %25 = getelementptr inbounds %struct.TYPE_14__, %struct.TYPE_14__* %24, i32 0, i32 0
+  %26 = load %struct.TYPE_13__*, %struct.TYPE_13__** %25, align 8
+  store %struct.TYPE_13__* %26, %struct.TYPE_13__** %14, align 8
+  %27 = load %struct.TYPE_13__*, %struct.TYPE_13__** %14, align 8
+  %28 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %27, i32 0, i32 0
+  %29 = load i64, i64* %28, align 8
+  %30 = load i64, i64* %12, align 8
+  %31 = icmp slt i64 %29, %30
+  br i1 %31, label %32, label %98
+
+32:                                               ; preds = %4
+  %33 = load %struct.TYPE_13__*, %struct.TYPE_13__** %14, align 8
+  %34 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %33, i32 0, i32 2
+  %35 = load %struct.TYPE_12__*, %struct.TYPE_12__** %34, align 8
+  store %struct.TYPE_12__* %35, %struct.TYPE_12__** %13, align 8
+  %36 = call i32 (...) @quotaEnter()
+  %37 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %38 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %37, i32 0, i32 0
+  %39 = load i64, i64* %38, align 8
+  %40 = load %struct.TYPE_13__*, %struct.TYPE_13__** %14, align 8
+  %41 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %40, i32 0, i32 0
+  %42 = load i64, i64* %41, align 8
+  %43 = sub nsw i64 %39, %42
+  %44 = load i64, i64* %12, align 8
+  %45 = add nsw i64 %43, %44
+  store i64 %45, i64* %15, align 8
+  %46 = load i64, i64* %15, align 8
+  %47 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %48 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %47, i32 0, i32 1
+  %49 = load i64, i64* %48, align 8
+  %50 = icmp sgt i64 %46, %49
+  br i1 %50, label %51, label %90
+
+51:                                               ; preds = %32
+  %52 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %53 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %52, i32 0, i32 1
+  %54 = load i64, i64* %53, align 8
+  %55 = icmp sgt i64 %54, 0
+  br i1 %55, label %56, label %90
+
+56:                                               ; preds = %51
+  %57 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %58 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %57, i32 0, i32 3
+  %59 = load i32 (i32, i64*, i64, i32)*, i32 (i32, i64*, i64, i32)** %58, align 8
+  %60 = icmp ne i32 (i32, i64*, i64, i32)* %59, null
+  br i1 %60, label %61, label %75
+
+61:                                               ; preds = %56
+  %62 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %63 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %62, i32 0, i32 3
+  %64 = load i32 (i32, i64*, i64, i32)*, i32 (i32, i64*, i64, i32)** %63, align 8
+  %65 = load %struct.TYPE_13__*, %struct.TYPE_13__** %14, align 8
+  %66 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %65, i32 0, i32 1
+  %67 = load i32, i32* %66, align 8
+  %68 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %69 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %68, i32 0, i32 1
+  %70 = load i64, i64* %15, align 8
+  %71 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %72 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %71, i32 0, i32 2
+  %73 = load i32, i32* %72, align 8
+  %74 = call i32 %64(i32 %67, i64* %69, i64 %70, i32 %73)
+  br label %75
+
+75:                                               ; preds = %61, %56
+  %76 = load i64, i64* %15, align 8
+  %77 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %78 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %77, i32 0, i32 1
+  %79 = load i64, i64* %78, align 8
+  %80 = icmp sgt i64 %76, %79
+  br i1 %80, label %81, label %89
+
+81:                                               ; preds = %75
+  %82 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %83 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %82, i32 0, i32 1
+  %84 = load i64, i64* %83, align 8
+  %85 = icmp sgt i64 %84, 0
+  br i1 %85, label %86, label %89
+
+86:                                               ; preds = %81
+  %87 = call i32 (...) @quotaLeave()
+  %88 = load i32, i32* @SQLITE_FULL, align 4
+  store i32 %88, i32* %5, align 4
+  br label %110
+
+89:                                               ; preds = %81, %75
+  br label %90
+
+90:                                               ; preds = %89, %51, %32
+  %91 = load i64, i64* %15, align 8
+  %92 = load %struct.TYPE_12__*, %struct.TYPE_12__** %13, align 8
+  %93 = getelementptr inbounds %struct.TYPE_12__, %struct.TYPE_12__* %92, i32 0, i32 0
+  store i64 %91, i64* %93, align 8
+  %94 = load i64, i64* %12, align 8
+  %95 = load %struct.TYPE_13__*, %struct.TYPE_13__** %14, align 8
+  %96 = getelementptr inbounds %struct.TYPE_13__, %struct.TYPE_13__* %95, i32 0, i32 0
+  store i64 %94, i64* %96, align 8
+  %97 = call i32 (...) @quotaLeave()
+  br label %98
+
+98:                                               ; preds = %90, %4
+  %99 = load %struct.TYPE_11__*, %struct.TYPE_11__** %11, align 8
+  %100 = getelementptr inbounds %struct.TYPE_11__, %struct.TYPE_11__* %99, i32 0, i32 0
+  %101 = load %struct.TYPE_10__*, %struct.TYPE_10__** %100, align 8
+  %102 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %101, i32 0, i32 0
+  %103 = bitcast {}** %102 to i32 (%struct.TYPE_11__*, i8*, i32, i64)**
+  %104 = load i32 (%struct.TYPE_11__*, i8*, i32, i64)*, i32 (%struct.TYPE_11__*, i8*, i32, i64)** %103, align 8
+  %105 = load %struct.TYPE_11__*, %struct.TYPE_11__** %11, align 8
+  %106 = load i8*, i8** %7, align 8
+  %107 = load i32, i32* %8, align 4
+  %108 = load i64, i64* %9, align 8
+  %109 = call i32 %104(%struct.TYPE_11__* %105, i8* %106, i32 %107, i64 %108)
+  store i32 %109, i32* %5, align 4
+  br label %110
+
+110:                                              ; preds = %98, %86
+  %111 = load i32, i32* %5, align 4
+  ret i32 %111
+}
+
+declare dso_local %struct.TYPE_11__* @quotaSubOpen(%struct.TYPE_11__*) #1
+
+declare dso_local i32 @quotaEnter(...) #1
+
+declare dso_local i32 @quotaLeave(...) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

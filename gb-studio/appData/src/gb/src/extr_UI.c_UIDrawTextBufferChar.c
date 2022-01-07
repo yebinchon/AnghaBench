@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UWORD ;
-typedef  size_t UBYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- size_t FONT_BANK ; 
- int FONT_BANK_OFFSET ; 
- int /*<<< orphan*/  SetBankedBkgData (size_t,size_t,int,int) ; 
- size_t TEXT_BUFFER_START ; 
- int /*<<< orphan*/  TRUE ; 
- int avatar_enabled ; 
- scalar_t__* bank_data_ptrs ; 
- int menu_enabled ; 
- int /*<<< orphan*/  set_win_tiles (int,int,int,int,size_t*) ; 
- size_t strlen (int*) ; 
- size_t text_count ; 
- scalar_t__ text_draw_speed ; 
- int /*<<< orphan*/  text_drawn ; 
- int* text_lines ; 
- int text_num_lines ; 
- int text_tile_count ; 
- int text_wait ; 
- int text_x ; 
- int text_y ; 
- scalar_t__ win_speed ; 
+
+
+
+typedef int UWORD ;
+typedef size_t UBYTE ;
+
+
+ int FALSE ;
+ size_t FONT_BANK ;
+ int FONT_BANK_OFFSET ;
+ int SetBankedBkgData (size_t,size_t,int,int) ;
+ size_t TEXT_BUFFER_START ;
+ int TRUE ;
+ int avatar_enabled ;
+ scalar_t__* bank_data_ptrs ;
+ int menu_enabled ;
+ int set_win_tiles (int,int,int,int,size_t*) ;
+ size_t strlen (int*) ;
+ size_t text_count ;
+ scalar_t__ text_draw_speed ;
+ int text_drawn ;
+ int* text_lines ;
+ int text_num_lines ;
+ int text_tile_count ;
+ int text_wait ;
+ int text_x ;
+ int text_y ;
+ scalar_t__ win_speed ;
 
 void UIDrawTextBufferChar()
 {
@@ -63,10 +63,10 @@ void UIDrawTextBufferChar()
 
     letter = text_lines[text_count] - 32;
 
-    // Clear tile data ready for text
+
     ptr = ((UWORD)bank_data_ptrs[FONT_BANK]) + FONT_BANK_OFFSET;
 
-    // Determine if text can fit on line
+
     text_remaining = 18 - text_x;
     word_len = 0;
     for (i = text_count; i != text_size; i++)

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ ms_rb_ds; scalar_t__ ms_rb_color; scalar_t__ ms_fbo; } ;
-typedef  TYPE_1__ fft_t ;
+typedef TYPE_1__ fft_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_DEPTH24_STENCIL8 ; 
- int /*<<< orphan*/  GL_DEPTH_STENCIL_ATTACHMENT ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- scalar_t__ GL_FRAMEBUFFER_COMPLETE ; 
- int /*<<< orphan*/  GL_RENDERBUFFER ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  glBindFramebuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glBindRenderbuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ glCheckFramebufferStatus (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDeleteFramebuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glDeleteRenderbuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glFramebufferRenderbuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  glGenFramebuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glGenRenderbuffers (int,scalar_t__*) ; 
- int /*<<< orphan*/  glRenderbufferStorageMultisample (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
+
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_DEPTH24_STENCIL8 ;
+ int GL_DEPTH_STENCIL_ATTACHMENT ;
+ int GL_FRAMEBUFFER ;
+ scalar_t__ GL_FRAMEBUFFER_COMPLETE ;
+ int GL_RENDERBUFFER ;
+ int GL_RGBA8 ;
+ int glBindFramebuffer (int ,scalar_t__) ;
+ int glBindRenderbuffer (int ,scalar_t__) ;
+ scalar_t__ glCheckFramebufferStatus (int ) ;
+ int glDeleteFramebuffers (int,scalar_t__*) ;
+ int glDeleteRenderbuffers (int,scalar_t__*) ;
+ int glFramebufferRenderbuffer (int ,int ,int ,scalar_t__) ;
+ int glGenFramebuffers (int,scalar_t__*) ;
+ int glGenRenderbuffers (int,scalar_t__*) ;
+ int glRenderbufferStorageMultisample (int ,unsigned int,int ,unsigned int,unsigned int) ;
 
 void fft_init_multisample(fft_t *fft, unsigned width, unsigned height, unsigned samples)
 {
@@ -39,10 +39,10 @@ void fft_init_multisample(fft_t *fft, unsigned width, unsigned height, unsigned 
    fft->ms_rb_color = 0;
    if (fft->ms_rb_ds)
       glDeleteRenderbuffers(1, &fft->ms_rb_ds);
-   fft->ms_rb_ds    = 0;
+   fft->ms_rb_ds = 0;
    if (fft->ms_fbo)
       glDeleteFramebuffers(1, &fft->ms_fbo);
-   fft->ms_fbo      = 0;
+   fft->ms_fbo = 0;
 
    if (samples > 1)
    {

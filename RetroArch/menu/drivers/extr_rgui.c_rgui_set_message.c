@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* msgbox; int force_redraw; } ;
-typedef  TYPE_1__ rgui_t ;
+typedef TYPE_1__ rgui_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  string_is_empty (char const*) ; 
- int /*<<< orphan*/  strlcpy (char*,char const*,int) ; 
+
+ int string_is_empty (char const*) ;
+ int strlcpy (char*,char const*,int) ;
 
 __attribute__((used)) static void rgui_set_message(void *data, const char *message)
 {
-   rgui_t           *rgui = (rgui_t*)data;
+   rgui_t *rgui = (rgui_t*)data;
 
    if (!rgui || !message)
       return;
@@ -30,5 +30,5 @@ __attribute__((used)) static void rgui_set_message(void *data, const char *messa
    if (!string_is_empty(message))
       strlcpy(rgui->msgbox, message, sizeof(rgui->msgbox));
 
-   rgui->force_redraw = true;
+   rgui->force_redraw = 1;
 }

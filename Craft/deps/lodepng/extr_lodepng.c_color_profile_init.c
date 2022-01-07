@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int sixteenbit_done; int colored_done; int alpha_done; unsigned char* palette; int maxnumcolors; int greybits; int greybits_done; scalar_t__ numcolors_done; int /*<<< orphan*/  tree; scalar_t__ numcolors; scalar_t__ alpha; scalar_t__ key; scalar_t__ colored; scalar_t__ sixteenbit; } ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int sixteenbit_done; int colored_done; int alpha_done; unsigned char* palette; int maxnumcolors; int greybits; int greybits_done; scalar_t__ numcolors_done; int tree; scalar_t__ numcolors; scalar_t__ alpha; scalar_t__ key; scalar_t__ colored; scalar_t__ sixteenbit; } ;
 struct TYPE_8__ {int bitdepth; } ;
-typedef  TYPE_1__ LodePNGColorMode ;
-typedef  TYPE_2__ ColorProfile ;
+typedef TYPE_1__ LodePNGColorMode ;
+typedef TYPE_2__ ColorProfile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  color_tree_init (int /*<<< orphan*/ *) ; 
- scalar_t__ lodepng_can_have_alpha (TYPE_1__ const*) ; 
- int lodepng_get_bpp (TYPE_1__ const*) ; 
- scalar_t__ lodepng_is_greyscale_type (TYPE_1__ const*) ; 
- scalar_t__ lodepng_malloc (int) ; 
+
+ int color_tree_init (int *) ;
+ scalar_t__ lodepng_can_have_alpha (TYPE_1__ const*) ;
+ int lodepng_get_bpp (TYPE_1__ const*) ;
+ scalar_t__ lodepng_is_greyscale_type (TYPE_1__ const*) ;
+ scalar_t__ lodepng_malloc (int) ;
 
 __attribute__((used)) static void color_profile_init(ColorProfile* profile, const LodePNGColorMode* mode)
 {

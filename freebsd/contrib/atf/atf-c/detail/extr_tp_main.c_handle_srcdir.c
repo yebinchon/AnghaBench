@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct params {int /*<<< orphan*/  m_config; int /*<<< orphan*/  m_srcdir; } ;
-typedef  int /*<<< orphan*/  atf_fs_path_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
-typedef  int /*<<< orphan*/  atf_dynstr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atf_dynstr_fini (int /*<<< orphan*/ *) ; 
- int atf_equal_dynstr_cstring (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  atf_fs_exists (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  atf_fs_path_append_fmt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_fs_path_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_cstring (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_is_absolute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_leaf_name (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_fs_path_to_absolute (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_map_insert (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  progname ; 
- int /*<<< orphan*/  srcdir_strip_libtool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  user_error (char*,int /*<<< orphan*/ ) ; 
+
+
+
+struct params {int m_config; int m_srcdir; } ;
+typedef int atf_fs_path_t ;
+typedef int atf_error_t ;
+typedef int atf_dynstr_t ;
+
+
+ int atf_dynstr_fini (int *) ;
+ int atf_equal_dynstr_cstring (int *,char*) ;
+ int atf_fs_exists (int *,int*) ;
+ int atf_fs_path_append_fmt (int *,char*,int ) ;
+ int atf_fs_path_copy (int *,int *) ;
+ int atf_fs_path_cstring (int *) ;
+ int atf_fs_path_fini (int *) ;
+ int atf_fs_path_is_absolute (int *) ;
+ int atf_fs_path_leaf_name (int *,int *) ;
+ int atf_fs_path_to_absolute (int *,int *) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_map_insert (int *,char*,int ,int) ;
+ int progname ;
+ int srcdir_strip_libtool (int *) ;
+ int strdup (int ) ;
+ int user_error (char*,int ) ;
 
 __attribute__((used)) static
 atf_error_t
@@ -83,7 +83,7 @@ handle_srcdir(struct params *p)
     if (!atf_is_error(err)) {
         if (b) {
             err = atf_map_insert(&p->m_config, "srcdir",
-                                 strdup(atf_fs_path_cstring(&srcdir)), true);
+                                 strdup(atf_fs_path_cstring(&srcdir)), 1);
         } else {
             err = user_error("Cannot find the test program in the source "
                              "directory `%s'", atf_fs_path_cstring(&srcdir));

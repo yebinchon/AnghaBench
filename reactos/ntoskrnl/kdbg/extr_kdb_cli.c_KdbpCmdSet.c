@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  char* PCHAR ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  KDB_ENTER_CONDITION ;
-typedef  int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int FALSE ; 
- int /*<<< orphan*/  KDB_ENTER_CONDITION_TO_STRING (int /*<<< orphan*/ ) ; 
- int KdbBreakOnModuleLoad ; 
- int /*<<< orphan*/  KdbDoNotEnter ; 
- int /*<<< orphan*/  KdbEnterAlways ; 
- int /*<<< orphan*/  KdbEnterFromKmode ; 
- int /*<<< orphan*/  KdbEnterFromUmode ; 
- int KdbUseIntelSyntax ; 
- int /*<<< orphan*/  KdbpGetEnterCondition (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KdbpPrint (char*,...) ; 
- int /*<<< orphan*/  KdbpSetEnterCondition (int,int,int /*<<< orphan*/ ) ; 
- int RTL_NUMBER_OF (char* const*) ; 
- int TRUE ; 
- scalar_t__ _stricmp (char* const,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int strtoul (char*,char**,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ULONG ;
+typedef char* PCHAR ;
+typedef int LONG ;
+typedef int KDB_ENTER_CONDITION ;
+typedef int BOOLEAN ;
+
+
+ int ASSERT (int) ;
+ int FALSE ;
+ int KDB_ENTER_CONDITION_TO_STRING (int ) ;
+ int KdbBreakOnModuleLoad ;
+ int KdbDoNotEnter ;
+ int KdbEnterAlways ;
+ int KdbEnterFromKmode ;
+ int KdbEnterFromUmode ;
+ int KdbUseIntelSyntax ;
+ int KdbpGetEnterCondition (int,int,int *) ;
+ int KdbpPrint (char*,...) ;
+ int KdbpSetEnterCondition (int,int,int ) ;
+ int RTL_NUMBER_OF (char* const*) ;
+ int TRUE ;
+ scalar_t__ _stricmp (char* const,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strtoul (char*,char**,int ) ;
 
 __attribute__((used)) static BOOLEAN
 KdbpCmdSet(
@@ -105,7 +105,7 @@ KdbpCmdSet(
         }
         else
         {
-            if (Argc >= 5 && strcmp(Argv[2], "*") == 0) /* Allow * only when setting condition */
+            if (Argc >= 5 && strcmp(Argv[2], "*") == 0)
             {
                 l = -1;
             }
@@ -166,7 +166,7 @@ KdbpCmdSet(
                         KdbpPrint("Couldn't change condition for all exceptions\n", l);
                 }
             }
-            else /* Argc >= 3 */
+            else
             {
                 if (!KdbpGetEnterCondition(l, TRUE, &ConditionFirst))
                     ASSERT(FALSE);

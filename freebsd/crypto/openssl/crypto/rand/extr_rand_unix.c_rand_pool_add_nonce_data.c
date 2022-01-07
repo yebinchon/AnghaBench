@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  RAND_POOL ;
-typedef  int /*<<< orphan*/  CRYPTO_THREAD_ID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CRYPTO_THREAD_get_current_id () ; 
- int /*<<< orphan*/  get_time_stamp () ; 
- int /*<<< orphan*/  getpid () ; 
- int rand_pool_add (int /*<<< orphan*/ *,unsigned char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int pid_t ;
+typedef int data ;
+typedef int RAND_POOL ;
+typedef int CRYPTO_THREAD_ID ;
+
+
+ int CRYPTO_THREAD_get_current_id () ;
+ int get_time_stamp () ;
+ int getpid () ;
+ int rand_pool_add (int *,unsigned char*,int,int ) ;
 
 int rand_pool_add_nonce_data(RAND_POOL *pool)
 {
@@ -30,11 +30,11 @@ int rand_pool_add_nonce_data(RAND_POOL *pool)
         uint64_t time;
     } data = { 0 };
 
-    /*
-     * Add process id, thread id, and a high resolution timestamp to
-     * ensure that the nonce is unique with high probability for
-     * different process instances.
-     */
+
+
+
+
+
     data.pid = getpid();
     data.tid = CRYPTO_THREAD_get_current_id();
     data.time = get_time_stamp();

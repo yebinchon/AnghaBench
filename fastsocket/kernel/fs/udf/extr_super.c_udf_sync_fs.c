@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct udf_sb_info {int /*<<< orphan*/  s_alloc_mutex; scalar_t__ s_lvid_dirty; int /*<<< orphan*/  s_lvid_bh; } ;
+
+
+
+
+struct udf_sb_info {int s_alloc_mutex; scalar_t__ s_lvid_dirty; int s_lvid_bh; } ;
 struct super_block {scalar_t__ s_dirt; } ;
 
-/* Variables and functions */
- struct udf_sb_info* UDF_SB (struct super_block*) ; 
- int /*<<< orphan*/  mark_buffer_dirty (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ struct udf_sb_info* UDF_SB (struct super_block*) ;
+ int mark_buffer_dirty (int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static int udf_sync_fs(struct super_block *sb, int wait)
 {
-	struct udf_sb_info *sbi = UDF_SB(sb);
+ struct udf_sb_info *sbi = UDF_SB(sb);
 
-	mutex_lock(&sbi->s_alloc_mutex);
-	if (sbi->s_lvid_dirty) {
-		/*
-		 * Blockdevice will be synced later so we don't have to submit
-		 * the buffer for IO
-		 */
-		mark_buffer_dirty(sbi->s_lvid_bh);
-		sb->s_dirt = 0;
-		sbi->s_lvid_dirty = 0;
-	}
-	mutex_unlock(&sbi->s_alloc_mutex);
+ mutex_lock(&sbi->s_alloc_mutex);
+ if (sbi->s_lvid_dirty) {
 
-	return 0;
+
+
+
+  mark_buffer_dirty(sbi->s_lvid_bh);
+  sb->s_dirt = 0;
+  sbi->s_lvid_dirty = 0;
+ }
+ mutex_unlock(&sbi->s_alloc_mutex);
+
+ return 0;
 }

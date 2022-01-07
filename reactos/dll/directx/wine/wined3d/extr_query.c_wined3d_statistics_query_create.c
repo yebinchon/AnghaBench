@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_query_data_so_statistics {int member_0; int member_1; } ;
 struct wined3d_query {int dummy; } ;
 struct wined3d_parent_ops {int dummy; } ;
 struct wined3d_device {int dummy; } ;
-typedef  int /*<<< orphan*/  statistics ;
-typedef  enum wined3d_query_type { ____Placeholder_wined3d_query_type } wined3d_query_type ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int statistics ;
+typedef enum wined3d_query_type { ____Placeholder_wined3d_query_type } wined3d_query_type ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*,struct wined3d_device*,int,void*,struct wined3d_query**) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct wined3d_query* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,struct wined3d_query*) ; 
- int /*<<< orphan*/  WINED3D_OK ; 
- int /*<<< orphan*/  statistics_query_ops ; 
- int /*<<< orphan*/  wined3d_query_init (struct wined3d_query*,struct wined3d_device*,int,struct wined3d_query_data_so_statistics const*,int,int /*<<< orphan*/ *,void*,struct wined3d_parent_ops const*) ; 
+
+ int E_OUTOFMEMORY ;
+ int FIXME (char*,struct wined3d_device*,int,void*,struct wined3d_query**) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct wined3d_query* HeapAlloc (int ,int ,int) ;
+ int TRACE (char*,struct wined3d_query*) ;
+ int WINED3D_OK ;
+ int statistics_query_ops ;
+ int wined3d_query_init (struct wined3d_query*,struct wined3d_device*,int,struct wined3d_query_data_so_statistics const*,int,int *,void*,struct wined3d_parent_ops const*) ;
 
 __attribute__((used)) static HRESULT wined3d_statistics_query_create(struct wined3d_device *device,
         enum wined3d_query_type type, void *parent, const struct wined3d_parent_ops *parent_ops,

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  ss ;
-typedef  int socklen_t ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  fsize_t ;
+typedef int ssize_t ;
+typedef int ss ;
+typedef int socklen_t ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int fsize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  mrb_str_buf_new (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int recvfrom (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct sockaddr*,int*) ; 
- int /*<<< orphan*/  sa2addrlist (int /*<<< orphan*/ *,struct sockaddr*,int) ; 
- int socket_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int RSTRING_PTR (int ) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_get_args (int *,char*,scalar_t__*,scalar_t__*) ;
+ int mrb_str_buf_new (int *,scalar_t__) ;
+ int mrb_str_resize (int *,int ,scalar_t__) ;
+ int mrb_sys_fail (int *,char*) ;
+ int recvfrom (int,int ,int ,int,struct sockaddr*,int*) ;
+ int sa2addrlist (int *,struct sockaddr*,int) ;
+ int socket_fd (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_ipsocket_recvfrom(mrb_state *mrb, mrb_value self)
@@ -48,7 +48,7 @@ mrb_ipsocket_recvfrom(mrb_state *mrb, mrb_value self)
   buf = mrb_str_buf_new(mrb, maxlen);
   socklen = sizeof(ss);
   n = recvfrom(fd, RSTRING_PTR(buf), (fsize_t)maxlen, (int)flags,
-  	       (struct sockaddr *)&ss, &socklen);
+          (struct sockaddr *)&ss, &socklen);
   if (n == -1) {
     mrb_sys_fail(mrb, "recvfrom");
   }

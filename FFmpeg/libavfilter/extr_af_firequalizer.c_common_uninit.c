@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  conv_idx; int /*<<< orphan*/  conv_buf; int /*<<< orphan*/  cepstrum_buf; int /*<<< orphan*/  kernel_buf; int /*<<< orphan*/  kernel_tmp_buf; int /*<<< orphan*/  dump_buf; int /*<<< orphan*/  analysis_buf; int /*<<< orphan*/ * cepstrum_irdft; int /*<<< orphan*/ * cepstrum_rdft; int /*<<< orphan*/ * fft_ctx; int /*<<< orphan*/ * irdft; int /*<<< orphan*/ * rdft; int /*<<< orphan*/ * analysis_irdft; int /*<<< orphan*/ * analysis_rdft; } ;
-typedef  TYPE_1__ FIREqualizerContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_fft_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_rdft_end (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int conv_idx; int conv_buf; int cepstrum_buf; int kernel_buf; int kernel_tmp_buf; int dump_buf; int analysis_buf; int * cepstrum_irdft; int * cepstrum_rdft; int * fft_ctx; int * irdft; int * rdft; int * analysis_irdft; int * analysis_rdft; } ;
+typedef TYPE_1__ FIREqualizerContext ;
+
+
+ int av_fft_end (int *) ;
+ int av_freep (int *) ;
+ int av_rdft_end (int *) ;
 
 __attribute__((used)) static void common_uninit(FIREqualizerContext *s)
 {
@@ -28,10 +28,10 @@ __attribute__((used)) static void common_uninit(FIREqualizerContext *s)
     av_fft_end(s->fft_ctx);
     av_rdft_end(s->cepstrum_rdft);
     av_rdft_end(s->cepstrum_irdft);
-    s->analysis_rdft = s->analysis_irdft = s->rdft = s->irdft = NULL;
-    s->fft_ctx = NULL;
-    s->cepstrum_rdft = NULL;
-    s->cepstrum_irdft = NULL;
+    s->analysis_rdft = s->analysis_irdft = s->rdft = s->irdft = ((void*)0);
+    s->fft_ctx = ((void*)0);
+    s->cepstrum_rdft = ((void*)0);
+    s->cepstrum_irdft = ((void*)0);
 
     av_freep(&s->analysis_buf);
     av_freep(&s->dump_buf);

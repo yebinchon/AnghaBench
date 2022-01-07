@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ ** aNode; int /*<<< orphan*/ * aPoint; } ;
-typedef  int /*<<< orphan*/  RtreeSearchPoint ;
-typedef  int /*<<< orphan*/  RtreeNode ;
-typedef  TYPE_1__ RtreeCursor ;
 
-/* Variables and functions */
- int RTREE_CACHE_SZ ; 
- int /*<<< orphan*/  RTREE_OF_CURSOR (TYPE_1__*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  nodeRelease (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ** aNode; int * aPoint; } ;
+typedef int RtreeSearchPoint ;
+typedef int RtreeNode ;
+typedef TYPE_1__ RtreeCursor ;
+
+
+ int RTREE_CACHE_SZ ;
+ int RTREE_OF_CURSOR (TYPE_1__*) ;
+ int assert (int) ;
+ int nodeRelease (int ,int *) ;
 
 __attribute__((used)) static void rtreeSearchPointSwap(RtreeCursor *p, int i, int j){
   RtreeSearchPoint t = p->aPoint[i];

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ WebPMuxError ;
-typedef  int /*<<< orphan*/  WebPMux ;
-typedef  int WebPFeatureFlags ;
-struct TYPE_2__ {int /*<<< orphan*/  id; } ;
-typedef  size_t CHUNK_INDEX ;
 
-/* Variables and functions */
- scalar_t__ IsNotCompatible (int,int) ; 
- int NO_FLAG ; 
- scalar_t__ WEBP_MUX_INVALID_ARGUMENT ; 
- scalar_t__ const WEBP_MUX_OK ; 
- scalar_t__ WebPMuxNumChunks (int /*<<< orphan*/  const* const,int /*<<< orphan*/ ,int*) ; 
- TYPE_1__* kChunks ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ WebPMuxError ;
+typedef int WebPMux ;
+typedef int WebPFeatureFlags ;
+struct TYPE_2__ {int id; } ;
+typedef size_t CHUNK_INDEX ;
+
+
+ scalar_t__ IsNotCompatible (int,int) ;
+ int NO_FLAG ;
+ scalar_t__ WEBP_MUX_INVALID_ARGUMENT ;
+ scalar_t__ const WEBP_MUX_OK ;
+ scalar_t__ WebPMuxNumChunks (int const* const,int ,int*) ;
+ TYPE_1__* kChunks ;
 
 __attribute__((used)) static WebPMuxError ValidateChunk(const WebPMux* const mux, CHUNK_INDEX idx,
                                   WebPFeatureFlags feature,

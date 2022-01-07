@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  setTypeIterator ;
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  robj ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  dictIterator ;
-typedef  int /*<<< orphan*/  dictEntry ;
-typedef  int /*<<< orphan*/  dict ;
-struct TYPE_13__ {size_t resp; int /*<<< orphan*/ * argv; } ;
-typedef  TYPE_1__ client ;
-struct TYPE_14__ {int /*<<< orphan*/ * emptyset; } ;
 
-/* Variables and functions */
- scalar_t__ C_OK ; 
- int DICT_ERR ; 
- int DICT_OK ; 
- int OBJ_ENCODING_INTSET ; 
- int /*<<< orphan*/  OBJ_SET ; 
- int /*<<< orphan*/  SET_OP_UNION ; 
- unsigned long SRANDMEMBER_SUB_STRATEGY_MUL ; 
- int /*<<< orphan*/  addReply (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulk (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulkCBuffer (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulkLongLong (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplySetLen (TYPE_1__*,unsigned long) ; 
- scalar_t__ checkType (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * createStringObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * createStringObjectFromLongLong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decrRefCount (int /*<<< orphan*/ *) ; 
- int dictAdd (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictCreate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictDelete (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * dictGetIterator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictGetKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictGetRandomKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dictNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictRelease (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictReleaseIterator (int /*<<< orphan*/ *) ; 
- unsigned long dictSize (int /*<<< orphan*/ *) ; 
- scalar_t__ getLongFromObjectOrReply (TYPE_1__*,int /*<<< orphan*/ ,long*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * lookupKeyReadOrReply (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  objectKeyPointerValueDictType ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverAssert (int) ; 
- int /*<<< orphan*/ * setTypeInitIterator (int /*<<< orphan*/ *) ; 
- int setTypeNext (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int setTypeRandomElement (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  setTypeReleaseIterator (int /*<<< orphan*/ *) ; 
- unsigned long setTypeSize (int /*<<< orphan*/ *) ; 
- TYPE_4__ shared ; 
- int /*<<< orphan*/  sunionDiffGenericCommand (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int setTypeIterator ;
+typedef int sds ;
+typedef int robj ;
+typedef int int64_t ;
+typedef int dictIterator ;
+typedef int dictEntry ;
+typedef int dict ;
+struct TYPE_13__ {size_t resp; int * argv; } ;
+typedef TYPE_1__ client ;
+struct TYPE_14__ {int * emptyset; } ;
+
+
+ scalar_t__ C_OK ;
+ int DICT_ERR ;
+ int DICT_OK ;
+ int OBJ_ENCODING_INTSET ;
+ int OBJ_SET ;
+ int SET_OP_UNION ;
+ unsigned long SRANDMEMBER_SUB_STRATEGY_MUL ;
+ int addReply (TYPE_1__*,int ) ;
+ int addReplyBulk (TYPE_1__*,int ) ;
+ int addReplyBulkCBuffer (TYPE_1__*,int ,int ) ;
+ int addReplyBulkLongLong (TYPE_1__*,int ) ;
+ int addReplySetLen (TYPE_1__*,unsigned long) ;
+ scalar_t__ checkType (TYPE_1__*,int *,int ) ;
+ int * createStringObject (int ,int ) ;
+ int * createStringObjectFromLongLong (int ) ;
+ int decrRefCount (int *) ;
+ int dictAdd (int *,int *,int *) ;
+ int * dictCreate (int *,int *) ;
+ int dictDelete (int *,int ) ;
+ int * dictGetIterator (int *) ;
+ int dictGetKey (int *) ;
+ int * dictGetRandomKey (int *) ;
+ int * dictNext (int *) ;
+ int dictRelease (int *) ;
+ int dictReleaseIterator (int *) ;
+ unsigned long dictSize (int *) ;
+ scalar_t__ getLongFromObjectOrReply (TYPE_1__*,int ,long*,int *) ;
+ int * lookupKeyReadOrReply (TYPE_1__*,int ,int ) ;
+ int objectKeyPointerValueDictType ;
+ int sdslen (int ) ;
+ int serverAssert (int) ;
+ int * setTypeInitIterator (int *) ;
+ int setTypeNext (int *,int *,int *) ;
+ int setTypeRandomElement (int *,int *,int *) ;
+ int setTypeReleaseIterator (int *) ;
+ unsigned long setTypeSize (int *) ;
+ TYPE_4__ shared ;
+ int sunionDiffGenericCommand (TYPE_1__*,int *,int,int *,int ) ;
 
 void srandmemberWithCountCommand(client *c) {
     long l;
@@ -74,30 +74,30 @@ void srandmemberWithCountCommand(client *c) {
 
     dict *d;
 
-    if (getLongFromObjectOrReply(c,c->argv[2],&l,NULL) != C_OK) return;
+    if (getLongFromObjectOrReply(c,c->argv[2],&l,((void*)0)) != C_OK) return;
     if (l >= 0) {
         count = (unsigned long) l;
     } else {
-        /* A negative count means: return the same elements multiple times
-         * (i.e. don't remove the extracted element after every extraction). */
+
+
         count = -l;
         uniq = 0;
     }
 
     if ((set = lookupKeyReadOrReply(c,c->argv[1],shared.emptyset[c->resp]))
-        == NULL || checkType(c,set,OBJ_SET)) return;
+        == ((void*)0) || checkType(c,set,OBJ_SET)) return;
     size = setTypeSize(set);
 
-    /* If count is zero, serve it ASAP to avoid special cases later. */
+
     if (count == 0) {
         addReply(c,shared.emptyset[c->resp]);
         return;
     }
 
-    /* CASE 1: The count was negative, so the extraction method is just:
-     * "return N random elements" sampling the whole set every time.
-     * This case is trivial and can be served without auxiliary data
-     * structures. */
+
+
+
+
     if (!uniq) {
         addReplySetLen(c,count);
         while(count--) {
@@ -111,45 +111,35 @@ void srandmemberWithCountCommand(client *c) {
         return;
     }
 
-    /* CASE 2:
-     * The number of requested elements is greater than the number of
-     * elements inside the set: simply return the whole set. */
+
+
+
     if (count >= size) {
-        sunionDiffGenericCommand(c,c->argv+1,1,NULL,SET_OP_UNION);
+        sunionDiffGenericCommand(c,c->argv+1,1,((void*)0),SET_OP_UNION);
         return;
     }
 
-    /* For CASE 3 and CASE 4 we need an auxiliary dictionary. */
-    d = dictCreate(&objectKeyPointerValueDictType,NULL);
 
-    /* CASE 3:
-     * The number of elements inside the set is not greater than
-     * SRANDMEMBER_SUB_STRATEGY_MUL times the number of requested elements.
-     * In this case we create a set from scratch with all the elements, and
-     * subtract random elements to reach the requested number of elements.
-     *
-     * This is done because if the number of requsted elements is just
-     * a bit less than the number of elements in the set, the natural approach
-     * used into CASE 3 is highly inefficient. */
+    d = dictCreate(&objectKeyPointerValueDictType,((void*)0));
     if (count*SRANDMEMBER_SUB_STRATEGY_MUL > size) {
         setTypeIterator *si;
 
-        /* Add all the elements into the temporary dictionary. */
+
         si = setTypeInitIterator(set);
         while((encoding = setTypeNext(si,&ele,&llele)) != -1) {
             int retval = DICT_ERR;
 
             if (encoding == OBJ_ENCODING_INTSET) {
-                retval = dictAdd(d,createStringObjectFromLongLong(llele),NULL);
+                retval = dictAdd(d,createStringObjectFromLongLong(llele),((void*)0));
             } else {
-                retval = dictAdd(d,createStringObject(ele,sdslen(ele)),NULL);
+                retval = dictAdd(d,createStringObject(ele,sdslen(ele)),((void*)0));
             }
             serverAssert(retval == DICT_OK);
         }
         setTypeReleaseIterator(si);
         serverAssert(dictSize(d) == size);
 
-        /* Remove random elements to reach the right count. */
+
         while(size > count) {
             dictEntry *de;
 
@@ -159,10 +149,10 @@ void srandmemberWithCountCommand(client *c) {
         }
     }
 
-    /* CASE 4: We have a big set compared to the requested number of elements.
-     * In this case we can simply get random elements from the set and add
-     * to the temporary set, trying to eventually get enough unique elements
-     * to reach the specified count. */
+
+
+
+
     else {
         unsigned long added = 0;
         robj *objele;
@@ -174,24 +164,24 @@ void srandmemberWithCountCommand(client *c) {
             } else {
                 objele = createStringObject(ele,sdslen(ele));
             }
-            /* Try to add the object to the dictionary. If it already exists
-             * free it, otherwise increment the number of objects we have
-             * in the result dictionary. */
-            if (dictAdd(d,objele,NULL) == DICT_OK)
+
+
+
+            if (dictAdd(d,objele,((void*)0)) == DICT_OK)
                 added++;
             else
                 decrRefCount(objele);
         }
     }
 
-    /* CASE 3 & 4: send the result to the user. */
+
     {
         dictIterator *di;
         dictEntry *de;
 
         addReplySetLen(c,count);
         di = dictGetIterator(d);
-        while((de = dictNext(di)) != NULL)
+        while((de = dictNext(di)) != ((void*)0))
             addReplyBulk(c,dictGetKey(de));
         dictReleaseIterator(di);
         dictRelease(d);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int result_ref; int /*<<< orphan*/  complete; } ;
-typedef  TYPE_1__ JSN_DATA ;
 
-/* Variables and functions */
- int LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_rawgeti (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  lua_remove (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int result_ref; int complete; } ;
+typedef TYPE_1__ JSN_DATA ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int luaL_error (int *,char*) ;
+ int lua_rawgeti (int *,int,int) ;
+ int lua_remove (int *,int) ;
 
 __attribute__((used)) static int sjson_decoder_result_int(lua_State *L, JSN_DATA *data) {
   if (!data->complete) {

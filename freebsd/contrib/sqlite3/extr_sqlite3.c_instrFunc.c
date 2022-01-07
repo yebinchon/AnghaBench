@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- int SQLITE_BLOB ; 
- int SQLITE_NULL ; 
- int /*<<< orphan*/  UNUSED_PARAMETER (int) ; 
- scalar_t__ memcmp (unsigned char const*,unsigned char const*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_int (int /*<<< orphan*/ *,int) ; 
- unsigned char* sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * sqlite3_value_dup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_free (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ int SQLITE_BLOB ;
+ int SQLITE_NULL ;
+ int UNUSED_PARAMETER (int) ;
+ scalar_t__ memcmp (unsigned char const*,unsigned char const*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_int (int *,int) ;
+ unsigned char* sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int * sqlite3_value_dup (int *) ;
+ int sqlite3_value_free (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void instrFunc(
   sqlite3_context *context,

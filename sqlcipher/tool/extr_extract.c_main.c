@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- size_t fread (char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fwrite (char*,int,int,int /*<<< orphan*/ ) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int FILE ;
+
+
+ int SEEK_SET ;
+ int atoi (char*) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,...) ;
+ size_t fread (char*,int,int,int *) ;
+ int fseek (int *,int,int ) ;
+ int fwrite (char*,int,int,int ) ;
+ char* malloc (int) ;
+ int stderr ;
+ int stdout ;
 
 int main(int argc, char **argv){
   FILE *f;

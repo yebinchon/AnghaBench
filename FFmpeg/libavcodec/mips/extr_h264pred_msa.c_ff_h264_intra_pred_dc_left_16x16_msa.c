@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v16u8 ;
-typedef  int uint8_t ;
-typedef  int uint32_t ;
-typedef  size_t ptrdiff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int*,size_t) ; 
- scalar_t__ __msa_fill_b (int) ; 
+
+
+
+typedef scalar_t__ v16u8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef size_t ptrdiff_t ;
+
+
+ int ST_UB8 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int*,size_t) ;
+ scalar_t__ __msa_fill_b (int) ;
 
 void ff_h264_intra_pred_dc_left_16x16_msa(uint8_t *src, ptrdiff_t stride)
 {
@@ -26,7 +26,7 @@ void ff_h264_intra_pred_dc_left_16x16_msa(uint8_t *src, ptrdiff_t stride)
     uint32_t addition;
     v16u8 out;
 
-    addition  = src_left[ 0 * stride];
+    addition = src_left[ 0 * stride];
     addition += src_left[ 1 * stride];
     addition += src_left[ 2 * stride];
     addition += src_left[ 3 * stride];

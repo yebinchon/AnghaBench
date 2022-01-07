@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct host_object_params {int /*<<< orphan*/  stream; int /*<<< orphan*/  iid; int /*<<< orphan*/  clsid; int /*<<< orphan*/  apartment_threaded; int /*<<< orphan*/  regdata; } ;
+
+
+
+
+struct host_object_params {int stream; int iid; int clsid; int apartment_threaded; int regdata; } ;
 struct apartment {int dummy; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int WCHAR ;
+typedef int LARGE_INTEGER ;
+typedef int IUnknown ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CoMarshalInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ ,int /*<<< orphan*/  const,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_PATH ; 
- int /*<<< orphan*/  MSHCTX_INPROC ; 
- int /*<<< orphan*/  MSHLFLAGS_NORMAL ; 
- int /*<<< orphan*/  REGDB_E_CLASSNOTREG ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  apartment_getclassobject (struct apartment*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  debugstr_guid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_object_dll_path (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ARRAY_SIZE (int *) ;
+ int CoMarshalInterface (int ,int *,int *,int ,int *,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int IStream_Seek (int ,int const,int ,int *) ;
+ int IUnknown_Release (int *) ;
+ int MAX_PATH ;
+ int MSHCTX_INPROC ;
+ int MSHLFLAGS_NORMAL ;
+ int REGDB_E_CLASSNOTREG ;
+ int STREAM_SEEK_SET ;
+ int TRACE (char*,int ,int ) ;
+ int WARN (char*,int ) ;
+ int apartment_getclassobject (struct apartment*,int *,int ,int *,int *,void**) ;
+ int debugstr_guid (int *) ;
+ int get_object_dll_path (int *,int *,int ) ;
 
 __attribute__((used)) static HRESULT apartment_hostobject(struct apartment *apt,
                                     const struct host_object_params *params)
@@ -46,7 +46,7 @@ __attribute__((used)) static HRESULT apartment_hostobject(struct apartment *apt,
 
     if (!get_object_dll_path(&params->regdata, dllpath, ARRAY_SIZE(dllpath)))
     {
-        /* failure: CLSID is not found in registry */
+
         WARN("class %s not registered inproc\n", debugstr_guid(&params->clsid));
         return REGDB_E_CLASSNOTREG;
     }
@@ -56,10 +56,10 @@ __attribute__((used)) static HRESULT apartment_hostobject(struct apartment *apt,
     if (FAILED(hr))
         return hr;
 
-    hr = CoMarshalInterface(params->stream, &params->iid, object, MSHCTX_INPROC, NULL, MSHLFLAGS_NORMAL);
+    hr = CoMarshalInterface(params->stream, &params->iid, object, MSHCTX_INPROC, ((void*)0), MSHLFLAGS_NORMAL);
     if (FAILED(hr))
         IUnknown_Release(object);
-    IStream_Seek(params->stream, llZero, STREAM_SEEK_SET, NULL);
+    IStream_Seek(params->stream, llZero, STREAM_SEEK_SET, ((void*)0));
 
     return hr;
 }

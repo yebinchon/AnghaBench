@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* next; } ;
-typedef  TYPE_1__ dev_info_t ;
+typedef TYPE_1__ dev_info_t ;
 
-/* Variables and functions */
+
 
 void
 add_device(dev_info_t **devinfop, dev_info_t *devinfo)
 {
-	dev_info_t *dev;
+ dev_info_t *dev;
 
-	if (*devinfop == NULL) {
-		*devinfop = devinfo;
-		return;
-	}
+ if (*devinfop == ((void*)0)) {
+  *devinfop = devinfo;
+  return;
+ }
 
-	for (dev = *devinfop; dev->next != NULL; dev = dev->next)
-		;
+ for (dev = *devinfop; dev->next != ((void*)0); dev = dev->next)
+  ;
 
-	dev->next = devinfo;
+ dev->next = devinfo;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct greth_private {TYPE_1__* regs; } ;
-struct TYPE_2__ {int /*<<< orphan*/  control; } ;
+struct TYPE_2__ {int control; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRETH_REGORIN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GRETH_TXEN ; 
- int /*<<< orphan*/  wmb () ; 
+
+ int GRETH_REGORIN (int ,int ) ;
+ int GRETH_TXEN ;
+ int wmb () ;
 
 __attribute__((used)) static inline void greth_enable_tx(struct greth_private *greth)
 {
-	wmb();
-	GRETH_REGORIN(greth->regs->control, GRETH_TXEN);
+ wmb();
+ GRETH_REGORIN(greth->regs->control, GRETH_TXEN);
 }

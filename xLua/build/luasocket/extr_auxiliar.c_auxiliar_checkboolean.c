@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_TBOOLEAN ; 
- int /*<<< orphan*/  auxiliar_typeerror (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_isboolean (int /*<<< orphan*/ *,int) ; 
- int lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_typename (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int lua_State ;
+
+
+ int LUA_TBOOLEAN ;
+ int auxiliar_typeerror (int *,int,int ) ;
+ int lua_isboolean (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_typename (int *,int ) ;
 
 int auxiliar_checkboolean(lua_State *L, int objidx) {
     if (!lua_isboolean(L, objidx))

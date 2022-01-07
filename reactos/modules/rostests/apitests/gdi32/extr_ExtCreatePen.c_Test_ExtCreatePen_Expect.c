@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG_PTR ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG_PTR ;
+typedef scalar_t__ UINT ;
 struct TYPE_3__ {int elpPenStyle; int elpWidth; int elpHatch; int elpNumEntries; scalar_t__ elpColor; scalar_t__ elpBrushStyle; } ;
-typedef  TYPE_1__* PEXTLOGPEN ;
-typedef  scalar_t__* PDWORD ;
-typedef  int /*<<< orphan*/ * PBOOL ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* PEXTLOGPEN ;
+typedef scalar_t__* PDWORD ;
+typedef int * PBOOL ;
+typedef int LONG ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ BS_DIBPATTERN ; 
- scalar_t__ BS_DIBPATTERNPT ; 
- scalar_t__ BS_HATCHED ; 
- scalar_t__ BS_NULL ; 
- scalar_t__ BS_PATTERN ; 
- scalar_t__ BS_SOLID ; 
- int /*<<< orphan*/  FALSE ; 
- int HS_API_MAX ; 
- int PS_ALTERNATE ; 
- int PS_COSMETIC ; 
- int PS_ENDCAP_MASK ; 
- int PS_INSIDEFRAME ; 
- int PS_JOIN_MASK ; 
- int PS_NULL ; 
- int PS_SOLID ; 
- int PS_STYLE_MASK ; 
- int PS_TYPE_MASK ; 
- int PS_USERSTYLE ; 
- scalar_t__ RGB (int,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int abs (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BS_DIBPATTERN ;
+ scalar_t__ BS_DIBPATTERNPT ;
+ scalar_t__ BS_HATCHED ;
+ scalar_t__ BS_NULL ;
+ scalar_t__ BS_PATTERN ;
+ scalar_t__ BS_SOLID ;
+ int FALSE ;
+ int HS_API_MAX ;
+ int PS_ALTERNATE ;
+ int PS_COSMETIC ;
+ int PS_ENDCAP_MASK ;
+ int PS_INSIDEFRAME ;
+ int PS_JOIN_MASK ;
+ int PS_NULL ;
+ int PS_SOLID ;
+ int PS_STYLE_MASK ;
+ int PS_TYPE_MASK ;
+ int PS_USERSTYLE ;
+ scalar_t__ RGB (int,int,int) ;
+ int TRUE ;
+ int abs (int ) ;
 
 BOOL
 Test_ExtCreatePen_Expect(
@@ -59,14 +59,14 @@ Test_ExtCreatePen_Expect(
 
     if ((dwPenStyle & PS_STYLE_MASK) == PS_USERSTYLE)
     {
-        if (pdwStyles == NULL)
+        if (pdwStyles == ((void*)0))
         {
             return FALSE;
         }
     }
     else
     {
-        if ((dwStyleCount != 0) || (pdwStyles != NULL))
+        if ((dwStyleCount != 0) || (pdwStyles != ((void*)0)))
         {
             return FALSE;
         }
@@ -218,7 +218,7 @@ Test_ExtCreatePen_Expect(
     pelpExpect->elpColor = RGB(1,2,3);
     pelpExpect->elpHatch = lbHatch;
     pelpExpect->elpNumEntries = dwStyleCount;
-    //pelpExpect->elpStyleEntry[1];
+
 
     return TRUE;
 }

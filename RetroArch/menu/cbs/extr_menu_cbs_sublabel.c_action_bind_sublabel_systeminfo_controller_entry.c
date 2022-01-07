@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  file_list_t ;
 
-/* Variables and functions */
- unsigned int MAX_USERS ; 
- int input_autoconfigure_get_device_name_index (unsigned int) ; 
- char* input_config_get_device_config_name (unsigned int) ; 
- char* input_config_get_device_display_name (unsigned int) ; 
- char* input_config_get_device_name (unsigned int) ; 
- int input_config_get_pid (unsigned int) ; 
- int input_config_get_vid (unsigned int) ; 
- scalar_t__ input_is_autoconfigured (unsigned int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,...) ; 
- scalar_t__ string_is_equal (char const*,char*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,size_t) ; 
+
+
+
+typedef int tmp ;
+typedef int file_list_t ;
+
+
+ unsigned int MAX_USERS ;
+ int input_autoconfigure_get_device_name_index (unsigned int) ;
+ char* input_config_get_device_config_name (unsigned int) ;
+ char* input_config_get_device_display_name (unsigned int) ;
+ char* input_config_get_device_name (unsigned int) ;
+ int input_config_get_pid (unsigned int) ;
+ int input_config_get_vid (unsigned int) ;
+ scalar_t__ input_is_autoconfigured (unsigned int) ;
+ int snprintf (char*,int,char*,...) ;
+ scalar_t__ string_is_equal (char const*,char*) ;
+ int strlcpy (char*,char*,size_t) ;
 
 __attribute__((used)) static int action_bind_sublabel_systeminfo_controller_entry(
       file_list_t *list,

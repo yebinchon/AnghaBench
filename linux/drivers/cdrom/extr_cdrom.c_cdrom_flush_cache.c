@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct packet_command {int timeout; int /*<<< orphan*/ * cmd; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct packet_command {int timeout; int * cmd; } ;
 struct cdrom_device_info {TYPE_1__* ops; } ;
 struct TYPE_2__ {int (* generic_packet ) (struct cdrom_device_info*,struct packet_command*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGC_DATA_NONE ; 
- int /*<<< orphan*/  GPCMD_FLUSH_CACHE ; 
- int HZ ; 
- int /*<<< orphan*/  init_cdrom_command (struct packet_command*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub1 (struct cdrom_device_info*,struct packet_command*) ; 
+
+ int CGC_DATA_NONE ;
+ int GPCMD_FLUSH_CACHE ;
+ int HZ ;
+ int init_cdrom_command (struct packet_command*,int *,int ,int ) ;
+ int stub1 (struct cdrom_device_info*,struct packet_command*) ;
 
 __attribute__((used)) static int cdrom_flush_cache(struct cdrom_device_info *cdi)
 {
-	struct packet_command cgc;
+ struct packet_command cgc;
 
-	init_cdrom_command(&cgc, NULL, 0, CGC_DATA_NONE);
-	cgc.cmd[0] = GPCMD_FLUSH_CACHE;
+ init_cdrom_command(&cgc, ((void*)0), 0, CGC_DATA_NONE);
+ cgc.cmd[0] = GPCMD_FLUSH_CACHE;
 
-	cgc.timeout = 5 * 60 * HZ;
+ cgc.timeout = 5 * 60 * HZ;
 
-	return cdi->ops->generic_packet(cdi, &cgc);
+ return cdi->ops->generic_packet(cdi, &cgc);
 }

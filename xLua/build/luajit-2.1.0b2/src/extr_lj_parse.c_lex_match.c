@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ linenumber; int /*<<< orphan*/  tok; } ;
-typedef  int /*<<< orphan*/  LexToken ;
-typedef  TYPE_1__ LexState ;
-typedef  scalar_t__ BCLine ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_ERR_XMATCH ; 
- int /*<<< orphan*/  err_token (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lex_opt (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lj_lex_error (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,char const*,scalar_t__) ; 
- char* lj_lex_token2str (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ linenumber; int tok; } ;
+typedef int LexToken ;
+typedef TYPE_1__ LexState ;
+typedef scalar_t__ BCLine ;
+
+
+ int LJ_ERR_XMATCH ;
+ int err_token (TYPE_1__*,int ) ;
+ int lex_opt (TYPE_1__*,int ) ;
+ int lj_lex_error (TYPE_1__*,int ,int ,char const*,char const*,scalar_t__) ;
+ char* lj_lex_token2str (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void lex_match(LexState *ls, LexToken what, LexToken who, BCLine line)
 {

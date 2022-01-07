@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* trp_node_ptr ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* trp_node_ptr ;
 struct TYPE_4__ {struct TYPE_4__* l; struct TYPE_4__* r; } ;
 
-/* Variables and functions */
- TYPE_1__* free_nodes ; 
- int /*<<< orphan*/  free_nodes_cnt ; 
+
+ TYPE_1__* free_nodes ;
+ int free_nodes_cnt ;
 
 void trp_free (trp_node_ptr v) {
-  if (v == NULL) {
+  if (v == ((void*)0)) {
     return;
   }
   trp_free (v->l);
   trp_free (v->r);
-  v->r = NULL;
+  v->r = ((void*)0);
   v->l = free_nodes;
   free_nodes = v;
 

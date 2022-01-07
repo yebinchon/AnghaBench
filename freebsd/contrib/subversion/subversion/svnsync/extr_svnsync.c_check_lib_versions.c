@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* member_0; int /*<<< orphan*/ * member_1; } ;
-typedef  TYPE_1__ svn_version_checklist_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_VERSION_DEFINE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_version ; 
-#define  svn_delta_version 130 
-#define  svn_ra_version 129 
-#define  svn_subr_version 128 
- int /*<<< orphan*/ * svn_ver_check_list2 (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ver_equal ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* member_0; int * member_1; } ;
+typedef TYPE_1__ svn_version_checklist_t ;
+typedef int svn_error_t ;
+
+
+ int SVN_VERSION_DEFINE (int ) ;
+ int my_version ;
+
+
+
+ int * svn_ver_check_list2 (int *,TYPE_1__ const*,int ) ;
+ int svn_ver_equal ;
 
 __attribute__((used)) static svn_error_t *
 check_lib_versions(void)
 {
   static const svn_version_checklist_t checklist[] =
     {
-      { "svn_subr",  svn_subr_version },
-      { "svn_delta", svn_delta_version },
-      { "svn_ra",    svn_ra_version },
-      { NULL, NULL }
+      { "svn_subr", 128 },
+      { "svn_delta", 130 },
+      { "svn_ra", 129 },
+      { ((void*)0), ((void*)0) }
     };
   SVN_VERSION_DEFINE(my_version);
 

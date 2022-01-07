@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iova_domain {int dummy; } ;
 struct iova {int dummy; } ;
 
-/* Variables and functions */
- int __alloc_and_insert_iova_range (struct iova_domain*,unsigned long,unsigned long,struct iova*,int) ; 
- struct iova* alloc_iova_mem () ; 
- int /*<<< orphan*/  free_iova_mem (struct iova*) ; 
+
+ int __alloc_and_insert_iova_range (struct iova_domain*,unsigned long,unsigned long,struct iova*,int) ;
+ struct iova* alloc_iova_mem () ;
+ int free_iova_mem (struct iova*) ;
 
 struct iova *
 alloc_iova(struct iova_domain *iovad, unsigned long size,
-	unsigned long limit_pfn,
-	bool size_aligned)
+ unsigned long limit_pfn,
+ bool size_aligned)
 {
-	struct iova *new_iova;
-	int ret;
+ struct iova *new_iova;
+ int ret;
 
-	new_iova = alloc_iova_mem();
-	if (!new_iova)
-		return NULL;
+ new_iova = alloc_iova_mem();
+ if (!new_iova)
+  return ((void*)0);
 
-	ret = __alloc_and_insert_iova_range(iovad, size, limit_pfn + 1,
-			new_iova, size_aligned);
+ ret = __alloc_and_insert_iova_range(iovad, size, limit_pfn + 1,
+   new_iova, size_aligned);
 
-	if (ret) {
-		free_iova_mem(new_iova);
-		return NULL;
-	}
+ if (ret) {
+  free_iova_mem(new_iova);
+  return ((void*)0);
+ }
 
-	return new_iova;
+ return new_iova;
 }

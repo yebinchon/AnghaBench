@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct xvctx {int cfg_xv_adaptor; unsigned int adaptors; scalar_t__ xv_port; int /*<<< orphan*/  formats; int /*<<< orphan*/  fo; int /*<<< orphan*/  max_height; int /*<<< orphan*/  max_width; TYPE_1__* ai; } ;
-struct vo_x11_state {int /*<<< orphan*/  display; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct xvctx {int cfg_xv_adaptor; unsigned int adaptors; scalar_t__ xv_port; int formats; int fo; int max_height; int max_width; TYPE_1__* ai; } ;
+struct vo_x11_state {int display; } ;
 struct vo {struct vo_x11_state* x11; struct xvctx* priv; } ;
-typedef  scalar_t__ XvPortID ;
-struct TYPE_2__ {int type; scalar_t__ base_id; scalar_t__ num_ports; int /*<<< orphan*/  name; } ;
+typedef scalar_t__ XvPortID ;
+struct TYPE_2__ {int type; scalar_t__ base_id; scalar_t__ num_ports; int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CurrentTime ; 
- int /*<<< orphan*/  DefaultRootWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_ERR (struct vo*,char*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct vo*,char*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_WARN (struct vo*,char*,...) ; 
- scalar_t__ Success ; 
- scalar_t__ XvGrabPort (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int XvImageMask ; 
- int XvInputMask ; 
- int /*<<< orphan*/  XvListImageFormats (int /*<<< orphan*/ ,scalar_t__,int*) ; 
- scalar_t__ XvQueryAdaptors (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int*,TYPE_1__**) ; 
- scalar_t__ XvQueryExtension (int /*<<< orphan*/ ,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ; 
- int /*<<< orphan*/  uninit (struct vo*) ; 
- int /*<<< orphan*/  vo_x11_create_vo_window (struct vo*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vo_x11_init (struct vo*) ; 
- int /*<<< orphan*/  xv_enable_vsync (struct vo*) ; 
- int /*<<< orphan*/  xv_get_max_img_dim (struct vo*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xv_init_colorkey (struct vo*) ; 
+
+ int CurrentTime ;
+ int DefaultRootWindow (int ) ;
+ int MP_ERR (struct vo*,char*) ;
+ int MP_VERBOSE (struct vo*,char*,unsigned int,int ) ;
+ int MP_WARN (struct vo*,char*,...) ;
+ scalar_t__ Success ;
+ scalar_t__ XvGrabPort (int ,scalar_t__,int ) ;
+ int XvImageMask ;
+ int XvInputMask ;
+ int XvListImageFormats (int ,scalar_t__,int*) ;
+ scalar_t__ XvQueryAdaptors (int ,int ,unsigned int*,TYPE_1__**) ;
+ scalar_t__ XvQueryExtension (int ,unsigned int*,unsigned int*,unsigned int*,unsigned int*,unsigned int*) ;
+ int uninit (struct vo*) ;
+ int vo_x11_create_vo_window (struct vo*,int *,char*) ;
+ int vo_x11_init (struct vo*) ;
+ int xv_enable_vsync (struct vo*) ;
+ int xv_get_max_img_dim (struct vo*,int *,int *) ;
+ int xv_init_colorkey (struct vo*) ;
 
 __attribute__((used)) static int preinit(struct vo *vo)
 {
@@ -48,19 +48,19 @@ __attribute__((used)) static int preinit(struct vo *vo)
     if (!vo_x11_init(vo))
         return -1;
 
-    if (!vo_x11_create_vo_window(vo, NULL, "xv"))
+    if (!vo_x11_create_vo_window(vo, ((void*)0), "xv"))
         goto error;
 
     struct vo_x11_state *x11 = vo->x11;
 
-    /* check for Xvideo extension */
+
     unsigned int ver, rel, req, ev, err;
     if (Success != XvQueryExtension(x11->display, &ver, &rel, &req, &ev, &err)) {
         MP_ERR(vo, "Xv not supported by this X11 version/driver\n");
         goto error;
     }
 
-    /* check for Xvideo support */
+
     if (Success !=
         XvQueryAdaptors(x11->display, DefaultRootWindow(x11->display),
                         &ctx->adaptors, &ctx->ai)) {
@@ -68,7 +68,7 @@ __attribute__((used)) static int preinit(struct vo *vo)
         goto error;
     }
 
-    /* check adaptors */
+
     if (ctx->xv_port) {
         int port_found;
 
@@ -95,7 +95,7 @@ __attribute__((used)) static int preinit(struct vo *vo)
     }
 
     for (i = 0; i < ctx->adaptors && ctx->xv_port == 0; i++) {
-        /* check if adaptor number has been specified */
+
         if (xv_adaptor != -1 && xv_adaptor != i)
             continue;
 
@@ -122,7 +122,7 @@ __attribute__((used)) static int preinit(struct vo *vo)
     }
 
     if (!xv_init_colorkey(vo)) {
-        goto error;             // bail out, colorkey setup failed
+        goto error;
     }
     xv_enable_vsync(vo);
     xv_get_max_img_dim(vo, &ctx->max_width, &ctx->max_height);
@@ -136,6 +136,6 @@ __attribute__((used)) static int preinit(struct vo *vo)
     return 0;
 
   error:
-    uninit(vo);                 // free resources
+    uninit(vo);
     return -1;
 }

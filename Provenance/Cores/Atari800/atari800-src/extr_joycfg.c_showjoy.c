@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ BACKGROUND ; 
- scalar_t__ MENUHEADER ; 
- scalar_t__ MENUITEM ; 
- int /*<<< orphan*/  cprintf (char*,int) ; 
- int /*<<< orphan*/  cputs (char*) ; 
- int /*<<< orphan*/  gotoxy (int,int) ; 
- size_t** keysets ; 
- scalar_t__* pressed ; 
- int /*<<< orphan*/  putch (char) ; 
- int /*<<< orphan*/  textattr (scalar_t__) ; 
+ scalar_t__ BACKGROUND ;
+ scalar_t__ MENUHEADER ;
+ scalar_t__ MENUITEM ;
+ int cprintf (char*,int) ;
+ int cputs (char*) ;
+ int gotoxy (int,int) ;
+ size_t** keysets ;
+ scalar_t__* pressed ;
+ int putch (char) ;
+ int textattr (scalar_t__) ;
 
 void showjoy(int x,int y,int num)
 {

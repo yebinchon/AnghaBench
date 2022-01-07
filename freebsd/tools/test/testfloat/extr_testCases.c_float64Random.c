@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  float64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  float64RandomQInfP3 () ; 
- int /*<<< orphan*/  float64RandomQInfPInf () ; 
- int /*<<< orphan*/  float64RandomQOutP3 () ; 
- int /*<<< orphan*/  float64RandomQOutPInf () ; 
- int randomUint8 () ; 
+
+
+
+typedef int float64 ;
+
+
+ int float64RandomQInfP3 () ;
+ int float64RandomQInfPInf () ;
+ int float64RandomQOutP3 () ;
+ int float64RandomQOutPInf () ;
+ int randomUint8 () ;
 
 __attribute__((used)) static float64 float64Random( void )
 {

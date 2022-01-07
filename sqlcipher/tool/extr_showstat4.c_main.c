@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  r ;
-typedef  int i64 ;
 
-/* Variables and functions */
- scalar_t__ ISPRINT (char) ; 
- int SQLITE_OK ; 
- scalar_t__ SQLITE_ROW ; 
- int decodeVarint (unsigned char const*,int*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  memcpy (double*,int*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  putchar (char) ; 
- int /*<<< orphan*/  sqlite3_close (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_column_blob (int /*<<< orphan*/ *,int) ; 
- int sqlite3_column_bytes (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- char* sqlite3_errmsg (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,char const*,...) ; 
- int sqlite3_open (char*,int /*<<< orphan*/ **) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char const*) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+typedef int r ;
+typedef int i64 ;
+
+
+ scalar_t__ ISPRINT (char) ;
+ int SQLITE_OK ;
+ scalar_t__ SQLITE_ROW ;
+ int decodeVarint (unsigned char const*,int*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*) ;
+ int memcpy (double*,int*,int) ;
+ int printf (char*,...) ;
+ int putchar (char) ;
+ int sqlite3_close (int *) ;
+ unsigned char* sqlite3_column_blob (int *,int) ;
+ int sqlite3_column_bytes (int *,int) ;
+ char* sqlite3_column_text (int *,int) ;
+ char* sqlite3_errmsg (int *) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,char const*,...) ;
+ int sqlite3_open (char*,int **) ;
+ int sqlite3_prepare_v2 (int *,char*,int,int **,int ) ;
+ scalar_t__ sqlite3_step (int *) ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char const*) ;
 
 int main(int argc, char **argv){
   sqlite3 *db;
@@ -99,19 +99,19 @@ int main(int argc, char **argv){
       if( x>mxHdr ) break;
       if( iVal<0 ) break;
       switch( iVal ){
-        case 0:  sz = 0;  break;
-        case 1:  sz = 1;  break;
-        case 2:  sz = 2;  break;
-        case 3:  sz = 3;  break;
-        case 4:  sz = 4;  break;
-        case 5:  sz = 6;  break;
-        case 6:  sz = 8;  break;
-        case 7:  sz = 8;  break;
-        case 8:  sz = 0;  break;
-        case 9:  sz = 0;  break;
+        case 0: sz = 0; break;
+        case 1: sz = 1; break;
+        case 2: sz = 2; break;
+        case 3: sz = 3; break;
+        case 4: sz = 4; break;
+        case 5: sz = 6; break;
+        case 6: sz = 8; break;
+        case 7: sz = 8; break;
+        case 8: sz = 0; break;
+        case 9: sz = 0; break;
         case 10:
-        case 11: sz = 0;  break;
-        default: sz = (int)(iVal-12)/2;  break;
+        case 11: sz = 0; break;
+        default: sz = (int)(iVal-12)/2; break;
       }
       if( y+sz>nSample ) break;
       if( iVal==0 ){

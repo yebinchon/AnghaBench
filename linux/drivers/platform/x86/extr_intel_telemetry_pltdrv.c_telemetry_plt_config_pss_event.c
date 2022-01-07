@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IPC_PUNIT_BIOS_WRITE_TELE_EVENT ; 
- int TELEM_EVENT_ENABLE ; 
- int intel_punit_ipc_command (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int u32 ;
+
+
+ int IPC_PUNIT_BIOS_WRITE_TELE_EVENT ;
+ int TELEM_EVENT_ENABLE ;
+ int intel_punit_ipc_command (int ,int,int ,int*,int *) ;
 
 __attribute__((used)) static inline int telemetry_plt_config_pss_event(u32 evt_id, int index)
 {
-	u32 write_buf;
-	int ret;
+ u32 write_buf;
+ int ret;
 
-	write_buf = evt_id | TELEM_EVENT_ENABLE;
-	ret = intel_punit_ipc_command(IPC_PUNIT_BIOS_WRITE_TELE_EVENT,
-				      index, 0, &write_buf, NULL);
+ write_buf = evt_id | TELEM_EVENT_ENABLE;
+ ret = intel_punit_ipc_command(IPC_PUNIT_BIOS_WRITE_TELE_EVENT,
+          index, 0, &write_buf, ((void*)0));
 
-	return ret;
+ return ret;
 }

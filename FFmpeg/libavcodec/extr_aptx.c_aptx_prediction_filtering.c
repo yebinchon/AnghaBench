@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int int32_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int int32_t ;
 struct TYPE_4__ {int predicted_sample; int* s_weight; int previous_reconstructed_sample; int* d_weight; int predicted_difference; } ;
-typedef  TYPE_1__ Prediction ;
+typedef TYPE_1__ Prediction ;
 
-/* Variables and functions */
- int FFDIFFSIGN (int,int /*<<< orphan*/ ) ; 
- int FF_SIGNBIT (int) ; 
- int MUL64 (int,int) ; 
- int* aptx_reconstructed_differences_update (TYPE_1__*,int,int) ; 
- void* av_clip_intp2 (int,int) ; 
- int rshift32 (int,int) ; 
+
+ int FFDIFFSIGN (int,int ) ;
+ int FF_SIGNBIT (int) ;
+ int MUL64 (int,int) ;
+ int* aptx_reconstructed_differences_update (TYPE_1__*,int,int) ;
+ void* av_clip_intp2 (int,int) ;
+ int rshift32 (int,int) ;
 
 __attribute__((used)) static void aptx_prediction_filtering(Prediction *prediction,
                                       int32_t reconstructed_difference,

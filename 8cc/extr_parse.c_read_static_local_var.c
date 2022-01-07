@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Type ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  Map ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ast_decl (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ast_static_lvar (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * localenv ; 
- scalar_t__ next_token (char) ; 
- int /*<<< orphan*/ * read_decl_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  toplevels ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Vector ;
+typedef int Type ;
+typedef int Node ;
+typedef int Map ;
+
+
+ int ast_decl (int *,int *) ;
+ int * ast_static_lvar (int *,char*) ;
+ int * localenv ;
+ scalar_t__ next_token (char) ;
+ int * read_decl_init (int *) ;
+ int toplevels ;
+ int vec_push (int ,int ) ;
 
 __attribute__((used)) static void read_static_local_var(Type *ty, char *name) {
     Node *var = ast_static_lvar(ty, name);
-    Vector *init = NULL;
+    Vector *init = ((void*)0);
     if (next_token('=')) {
         Map *orig = localenv;
-        localenv = NULL;
+        localenv = ((void*)0);
         init = read_decl_init(ty);
         localenv = orig;
     }

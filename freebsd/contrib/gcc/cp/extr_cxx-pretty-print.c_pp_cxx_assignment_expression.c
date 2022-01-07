@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  cxx_pretty_printer ;
 
-/* Variables and functions */
-#define  INIT_EXPR 131 
-#define  MODIFY_EXPR 130 
-#define  MODOP_EXPR 129 
-#define  THROW_EXPR 128 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pp_c_base (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_c_logical_or_expression (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_assignment_operator (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_conditional_expression (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_cxx_identifier (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pp_equal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_space (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree ;
+typedef int cxx_pretty_printer ;
+
+
+
+
+
+
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int pp_c_base (int *) ;
+ int pp_c_logical_or_expression (int ,int ) ;
+ int pp_cxx_assignment_operator (int *,int ) ;
+ int pp_cxx_conditional_expression (int *,int ) ;
+ int pp_cxx_identifier (int *,char*) ;
+ int pp_equal (int *) ;
+ int pp_space (int *) ;
 
 __attribute__((used)) static void
 pp_cxx_assignment_expression (cxx_pretty_printer *pp, tree e)
 {
   switch (TREE_CODE (e))
     {
-    case MODIFY_EXPR:
-    case INIT_EXPR:
+    case 130:
+    case 131:
       pp_c_logical_or_expression (pp_c_base (pp), TREE_OPERAND (e, 0));
       pp_space (pp);
       pp_equal (pp);
@@ -42,13 +42,13 @@ pp_cxx_assignment_expression (cxx_pretty_printer *pp, tree e)
       pp_cxx_assignment_expression (pp, TREE_OPERAND (e, 1));
       break;
 
-    case THROW_EXPR:
+    case 128:
       pp_cxx_identifier (pp, "throw");
       if (TREE_OPERAND (e, 0))
-	pp_cxx_assignment_expression (pp, TREE_OPERAND (e, 0));
+ pp_cxx_assignment_expression (pp, TREE_OPERAND (e, 0));
       break;
 
-    case MODOP_EXPR:
+    case 129:
       pp_c_logical_or_expression (pp_c_base (pp), TREE_OPERAND (e, 0));
       pp_cxx_assignment_operator (pp, TREE_OPERAND (e, 1));
       pp_cxx_assignment_expression (pp, TREE_OPERAND (e, 2));

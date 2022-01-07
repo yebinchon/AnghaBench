@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tws_softc {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TWS_TRACE_DEBUG (struct tws_softc*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct tws_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tws_init_connect (struct tws_softc*,int) ; 
- int /*<<< orphan*/  tws_turn_off_interrupts (struct tws_softc*) ; 
+
+ int TWS_TRACE_DEBUG (struct tws_softc*,char*,int ,int ) ;
+ struct tws_softc* device_get_softc (int ) ;
+ int tws_init_connect (struct tws_softc*,int) ;
+ int tws_turn_off_interrupts (struct tws_softc*) ;
 
 __attribute__((used)) static int
 tws_shutdown(device_t dev)

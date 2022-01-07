@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  enum action { ____Placeholder_action } action ;
 
-/* Variables and functions */
- int ACTION_EXIT ; 
- int /*<<< orphan*/  ACTION_HALT ; 
- int /*<<< orphan*/  ACTION_HIBERNATE ; 
- int /*<<< orphan*/  ACTION_HYBRID_SLEEP ; 
- int ACTION_KEXEC ; 
- int /*<<< orphan*/  ACTION_POWEROFF ; 
- int ACTION_REBOOT ; 
- int /*<<< orphan*/  ACTION_SUSPEND ; 
- int /*<<< orphan*/  ACTION_SUSPEND_THEN_HIBERNATE ; 
- int EINPROGRESS ; 
- int ENOENT ; 
- int EOPNOTSUPP ; 
- int ETIMEDOUT ; 
- int IN_SET (int,int,int,...) ; 
- int arg_force ; 
- int arg_no_block ; 
- int /*<<< orphan*/  assert (char**) ; 
- int halt_now (int) ; 
- int load_kexec_kernel () ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  log_notice (char*) ; 
- int logind_check_inhibitors (int) ; 
- int logind_reboot (int) ; 
- int must_be_root () ; 
- int prepare_boot_loader_entry () ; 
- int prepare_boot_loader_menu () ; 
- int prepare_firmware_setup () ; 
- int safe_atou8 (char*,int /*<<< orphan*/ *) ; 
- int set_exit_code (int /*<<< orphan*/ ) ; 
- int start_unit (int,char**,void*) ; 
- int trivial_method (int,char**,void*) ; 
- int update_reboot_parameter_and_warn (char*,int) ; 
- int verb_to_action (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef enum action { ____Placeholder_action } action ;
+
+
+ int ACTION_EXIT ;
+ int ACTION_HALT ;
+ int ACTION_HIBERNATE ;
+ int ACTION_HYBRID_SLEEP ;
+ int ACTION_KEXEC ;
+ int ACTION_POWEROFF ;
+ int ACTION_REBOOT ;
+ int ACTION_SUSPEND ;
+ int ACTION_SUSPEND_THEN_HIBERNATE ;
+ int EINPROGRESS ;
+ int ENOENT ;
+ int EOPNOTSUPP ;
+ int ETIMEDOUT ;
+ int IN_SET (int,int,int,...) ;
+ int arg_force ;
+ int arg_no_block ;
+ int assert (char**) ;
+ int halt_now (int) ;
+ int load_kexec_kernel () ;
+ int log_error_errno (int,char*) ;
+ int log_notice (char*) ;
+ int logind_check_inhibitors (int) ;
+ int logind_reboot (int) ;
+ int must_be_root () ;
+ int prepare_boot_loader_entry () ;
+ int prepare_boot_loader_menu () ;
+ int prepare_firmware_setup () ;
+ int safe_atou8 (char*,int *) ;
+ int set_exit_code (int ) ;
+ int start_unit (int,char**,void*) ;
+ int trivial_method (int,char**,void*) ;
+ int update_reboot_parameter_and_warn (char*,int) ;
+ int verb_to_action (char*) ;
 
 __attribute__((used)) static int start_special(int argc, char *argv[], void *userdata) {
         enum action a;
         int r;
-        bool termination_action; /* an action that terminates the manager,
-                                  * can be performed also by signal. */
+        bool termination_action;
+
 
         assert(argv);
 
@@ -81,7 +81,7 @@ __attribute__((used)) static int start_special(int argc, char *argv[], void *use
                 return r;
 
         if (a == ACTION_REBOOT && argc > 1) {
-                r = update_reboot_parameter_and_warn(argv[1], false);
+                r = update_reboot_parameter_and_warn(argv[1], 0);
                 if (r < 0)
                         return r;
 
@@ -95,9 +95,9 @@ __attribute__((used)) static int start_special(int argc, char *argv[], void *use
         } else if (a == ACTION_EXIT && argc > 1) {
                 uint8_t code;
 
-                /* If the exit code is not given on the command line,
-                 * don't reset it to zero: just keep it as it might
-                 * have been set previously. */
+
+
+
 
                 r = safe_atou8(argv[1], &code);
                 if (r < 0)
@@ -119,7 +119,7 @@ __attribute__((used)) static int start_special(int argc, char *argv[], void *use
             (termination_action || IN_SET(a, ACTION_KEXEC, ACTION_EXIT)))
                 r = trivial_method(argc, argv, userdata);
         else {
-                /* First try logind, to allow authentication with polkit */
+
                 if (IN_SET(a,
                            ACTION_POWEROFF,
                            ACTION_REBOOT,
@@ -133,19 +133,19 @@ __attribute__((used)) static int start_special(int argc, char *argv[], void *use
                         if (r >= 0)
                                 return r;
                         if (IN_SET(r, -EOPNOTSUPP, -EINPROGRESS))
-                                /* requested operation is not supported or already in progress */
+
                                 return r;
 
-                        /* On all other errors, try low-level operation. In order to minimize the difference between
-                         * operation with and without logind, we explicitly enable non-blocking mode for this, as
-                         * logind's shutdown operations are always non-blocking. */
 
-                        arg_no_block = true;
+
+
+
+                        arg_no_block = 1;
 
                 } else if (IN_SET(a, ACTION_EXIT, ACTION_KEXEC))
-                        /* Since exit/kexec are so close in behaviour to power-off/reboot, let's also make them
-                         * asynchronous, in order to not confuse the user needlessly with unexpected behaviour. */
-                        arg_no_block = true;
+
+
+                        arg_no_block = 1;
 
                 r = start_unit(argc, argv, userdata);
         }

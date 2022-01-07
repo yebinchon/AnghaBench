@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int* scalefactors; size_t q_unit_cnt; int* codebookset; } ;
 struct TYPE_5__ {int samplerate_idx; } ;
-typedef  TYPE_1__ ATRAC9Context ;
-typedef  TYPE_2__ ATRAC9ChannelData ;
-typedef  int /*<<< orphan*/  ATRAC9BlockData ;
+typedef TYPE_1__ ATRAC9Context ;
+typedef TYPE_2__ ATRAC9ChannelData ;
+typedef int ATRAC9BlockData ;
 
-/* Variables and functions */
- int FFMIN (int const,int const) ; 
- int* at9_q_unit_to_coeff_cnt ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+ int FFMIN (int const,int const) ;
+ int* at9_q_unit_to_coeff_cnt ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static inline void calc_codebook_idx(ATRAC9Context *s, ATRAC9BlockData *b,
                                      ATRAC9ChannelData *c)
@@ -46,9 +46,9 @@ __attribute__((used)) static inline void calc_codebook_idx(ATRAC9Context *s, ATR
 
     for (int i = 8; i < c->q_unit_cnt; i++) {
         const int prev = c->scalefactors[i - 1];
-        const int cur  = c->scalefactors[i    ];
+        const int cur = c->scalefactors[i ];
         const int next = c->scalefactors[i + 1];
-        const int min  = FFMIN(prev, next);
+        const int min = FFMIN(prev, next);
         if ((cur - min >= 3 || 2*cur - prev - next >= 3))
             c->codebookset[i] = 1;
     }

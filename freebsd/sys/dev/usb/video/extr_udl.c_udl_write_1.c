@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct udl_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UDL_CTRL_CMD_WRITE_1 ; 
- int /*<<< orphan*/  UT_WRITE_VENDOR_DEVICE ; 
- int udl_ctrl_msg (struct udl_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
+
+ int UDL_CTRL_CMD_WRITE_1 ;
+ int UT_WRITE_VENDOR_DEVICE ;
+ int udl_ctrl_msg (struct udl_softc*,int ,int ,int ,int,int *,int) ;
 
 __attribute__((used)) static int
 udl_write_1(struct udl_softc *sc, uint16_t addr, uint8_t buf)
 {
-	int error;
+ int error;
 
-	error = udl_ctrl_msg(sc, UT_WRITE_VENDOR_DEVICE,
-	    UDL_CTRL_CMD_WRITE_1, addr, 0x0000, &buf, 1);
-	return (error);
+ error = udl_ctrl_msg(sc, UT_WRITE_VENDOR_DEVICE,
+     UDL_CTRL_CMD_WRITE_1, addr, 0x0000, &buf, 1);
+ return (error);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct IUnknown {int dummy; } ;
-typedef  int /*<<< orphan*/  WF_IDropTarget ;
-typedef  int /*<<< orphan*/  LPDROPTARGET ;
-typedef  int /*<<< orphan*/  HWND ;
+typedef int WF_IDropTarget ;
+typedef int LPDROPTARGET ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoLockObjectExternal (struct IUnknown*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateDropTarget (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  RegisterDragDrop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+ int CoLockObjectExternal (struct IUnknown*,int ,int ) ;
+ int CreateDropTarget (int ,int **) ;
+ int FALSE ;
+ int RegisterDragDrop (int ,int ) ;
+ int TRUE ;
 
 void RegisterDropWindow(HWND hwnd, WF_IDropTarget **ppDropTarget)
 {
-	WF_IDropTarget *pDropTarget;
-	
-	CreateDropTarget(hwnd, &pDropTarget);
+ WF_IDropTarget *pDropTarget;
 
-	// acquire a strong lock
-	CoLockObjectExternal((struct IUnknown*)pDropTarget, TRUE, FALSE);
+ CreateDropTarget(hwnd, &pDropTarget);
 
-	// tell OLE that the window is a drop target
-	RegisterDragDrop(hwnd, (LPDROPTARGET)pDropTarget);
 
-	*ppDropTarget = pDropTarget;
+ CoLockObjectExternal((struct IUnknown*)pDropTarget, TRUE, FALSE);
+
+
+ RegisterDragDrop(hwnd, (LPDROPTARGET)pDropTarget);
+
+ *ppDropTarget = pDropTarget;
 }

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct perf_event {scalar_t__ id; scalar_t__ disabled; } ;
 
-/* Variables and functions */
- size_t EV_ID_ALIGNMENT_FAULTS ; 
- size_t EV_ID_BRANCH_INSTRUCTIONS ; 
- size_t EV_ID_BRANCH_MISSES ; 
- size_t EV_ID_BUS_CYCLES ; 
- size_t EV_ID_CACHE_MISSES ; 
- size_t EV_ID_CACHE_REFERENCES ; 
- size_t EV_ID_CPU_CYCLES ; 
- size_t EV_ID_CPU_MIGRATIONS ; 
- size_t EV_ID_DTLB_READ_ACCESS ; 
- size_t EV_ID_DTLB_READ_MISS ; 
- size_t EV_ID_DTLB_WRITE_ACCESS ; 
- size_t EV_ID_DTLB_WRITE_MISS ; 
- size_t EV_ID_EMULATION_FAULTS ; 
- scalar_t__ EV_ID_END ; 
- size_t EV_ID_INSTRUCTIONS ; 
- size_t EV_ID_ITLB_READ_ACCESS ; 
- size_t EV_ID_ITLB_READ_MISS ; 
- size_t EV_ID_L1D_PREFETCH_ACCESS ; 
- size_t EV_ID_L1D_READ_ACCESS ; 
- size_t EV_ID_L1D_READ_MISS ; 
- size_t EV_ID_L1D_WRITE_ACCESS ; 
- size_t EV_ID_L1D_WRITE_MISS ; 
- size_t EV_ID_L1I_READ_ACCESS ; 
- size_t EV_ID_L1I_READ_MISS ; 
- size_t EV_ID_LL_READ_ACCESS ; 
- size_t EV_ID_LL_READ_MISS ; 
- size_t EV_ID_LL_WRITE_ACCESS ; 
- size_t EV_ID_LL_WRITE_MISS ; 
- size_t EV_ID_PBU_READ_ACCESS ; 
- size_t EV_ID_REF_CPU_CYCLES ; 
- size_t EV_ID_STALLED_CYCLES_BACKEND ; 
- size_t EV_ID_STALLED_CYCLES_FRONTEND ; 
- char* VERSION ; 
- int debug ; 
- int /*<<< orphan*/  error (char*,char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,int) ; 
- int freq ; 
- int /*<<< orphan*/  info (char*) ; 
- scalar_t__ isdigit (char) ; 
- struct perf_event* perf_events ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int str2i (char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int update_every ; 
+
+ size_t EV_ID_ALIGNMENT_FAULTS ;
+ size_t EV_ID_BRANCH_INSTRUCTIONS ;
+ size_t EV_ID_BRANCH_MISSES ;
+ size_t EV_ID_BUS_CYCLES ;
+ size_t EV_ID_CACHE_MISSES ;
+ size_t EV_ID_CACHE_REFERENCES ;
+ size_t EV_ID_CPU_CYCLES ;
+ size_t EV_ID_CPU_MIGRATIONS ;
+ size_t EV_ID_DTLB_READ_ACCESS ;
+ size_t EV_ID_DTLB_READ_MISS ;
+ size_t EV_ID_DTLB_WRITE_ACCESS ;
+ size_t EV_ID_DTLB_WRITE_MISS ;
+ size_t EV_ID_EMULATION_FAULTS ;
+ scalar_t__ EV_ID_END ;
+ size_t EV_ID_INSTRUCTIONS ;
+ size_t EV_ID_ITLB_READ_ACCESS ;
+ size_t EV_ID_ITLB_READ_MISS ;
+ size_t EV_ID_L1D_PREFETCH_ACCESS ;
+ size_t EV_ID_L1D_READ_ACCESS ;
+ size_t EV_ID_L1D_READ_MISS ;
+ size_t EV_ID_L1D_WRITE_ACCESS ;
+ size_t EV_ID_L1D_WRITE_MISS ;
+ size_t EV_ID_L1I_READ_ACCESS ;
+ size_t EV_ID_L1I_READ_MISS ;
+ size_t EV_ID_LL_READ_ACCESS ;
+ size_t EV_ID_LL_READ_MISS ;
+ size_t EV_ID_LL_WRITE_ACCESS ;
+ size_t EV_ID_LL_WRITE_MISS ;
+ size_t EV_ID_PBU_READ_ACCESS ;
+ size_t EV_ID_REF_CPU_CYCLES ;
+ size_t EV_ID_STALLED_CYCLES_BACKEND ;
+ size_t EV_ID_STALLED_CYCLES_FRONTEND ;
+ char* VERSION ;
+ int debug ;
+ int error (char*,char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,char*,int) ;
+ int freq ;
+ int info (char*) ;
+ scalar_t__ isdigit (char) ;
+ struct perf_event* perf_events ;
+ int printf (char*,...) ;
+ int stderr ;
+ int str2i (char*) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int update_every ;
 
 void parse_command_line(int argc, char **argv) {
     int i, plugin_enabled = 0;
@@ -76,7 +76,7 @@ void parse_command_line(int argc, char **argv) {
             exit(0);
         }
         else if(strcmp("all", argv[i]) == 0) {
-            struct perf_event *current_event = NULL;
+            struct perf_event *current_event = ((void*)0);
 
             for(current_event = &perf_events[0]; current_event->id != EV_ID_END; current_event++)
                 current_event->disabled = 0;

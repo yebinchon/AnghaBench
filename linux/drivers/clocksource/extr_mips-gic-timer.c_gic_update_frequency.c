@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  clockevents_update_freq (int /*<<< orphan*/ ,unsigned long) ; 
- int /*<<< orphan*/  gic_clockevent_device ; 
- int /*<<< orphan*/  this_cpu_ptr (int /*<<< orphan*/ *) ; 
+ int clockevents_update_freq (int ,unsigned long) ;
+ int gic_clockevent_device ;
+ int this_cpu_ptr (int *) ;
 
 __attribute__((used)) static void gic_update_frequency(void *data)
 {
-	unsigned long rate = (unsigned long)data;
+ unsigned long rate = (unsigned long)data;
 
-	clockevents_update_freq(this_cpu_ptr(&gic_clockevent_device), rate);
+ clockevents_update_freq(this_cpu_ptr(&gic_clockevent_device), rate);
 }

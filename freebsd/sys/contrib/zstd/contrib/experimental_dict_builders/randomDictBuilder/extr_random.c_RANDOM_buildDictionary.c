@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int notificationLevel; } ;
 struct TYPE_8__ {TYPE_1__ zParams; } ;
-typedef  TYPE_2__ ZDICT_random_params_t ;
-typedef  int /*<<< orphan*/  U32 ;
+typedef TYPE_2__ ZDICT_random_params_t ;
+typedef int U32 ;
 struct TYPE_9__ {int end; int begin; } ;
-typedef  TYPE_3__ RANDOM_segment_t ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_3__ RANDOM_segment_t ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAYUPDATE (int,char*,int /*<<< orphan*/ ) ; 
- size_t MIN (int,size_t) ; 
- TYPE_3__ RANDOM_selectSegment (size_t const,TYPE_2__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ * const,int /*<<< orphan*/  const*,size_t) ; 
+
+ int DISPLAYUPDATE (int,char*,int ) ;
+ size_t MIN (int,size_t) ;
+ TYPE_3__ RANDOM_selectSegment (size_t const,TYPE_2__) ;
+ int memcpy (int * const,int const*,size_t) ;
 
 __attribute__((used)) static size_t RANDOM_buildDictionary(const size_t totalSamplesSize, const BYTE *samples,
                                     void *dictBuffer, size_t dictBufferCapacity,
@@ -35,7 +35,7 @@ __attribute__((used)) static size_t RANDOM_buildDictionary(const size_t totalSam
     const int displayLevel = parameters.zParams.notificationLevel;
     while (tail > 0) {
 
-      /* Select a segment */
+
       RANDOM_segment_t segment = RANDOM_selectSegment(totalSamplesSize, parameters);
 
       size_t segmentSize;

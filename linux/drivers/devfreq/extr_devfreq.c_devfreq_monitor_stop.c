@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct devfreq {int /*<<< orphan*/  work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cancel_delayed_work_sync (int /*<<< orphan*/ *) ; 
+
+
+
+struct devfreq {int work; } ;
+
+
+ int cancel_delayed_work_sync (int *) ;
 
 void devfreq_monitor_stop(struct devfreq *devfreq)
 {
-	cancel_delayed_work_sync(&devfreq->work);
+ cancel_delayed_work_sync(&devfreq->work);
 }

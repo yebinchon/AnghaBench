@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int /*<<< orphan*/  column; int /*<<< orphan*/  line; } ;
-struct TYPE_19__ {int /*<<< orphan*/  column; int /*<<< orphan*/  line; } ;
+
+
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+struct TYPE_20__ {int column; int line; } ;
+struct TYPE_19__ {int column; int line; } ;
 struct TYPE_21__ {scalar_t__ type; int error; int problem_value; char* problem; int problem_offset; char* context; TYPE_2__ problem_mark; TYPE_1__ context_mark; } ;
-typedef  TYPE_3__ yaml_parser_t ;
-typedef  TYPE_3__ yaml_event_t ;
-typedef  TYPE_3__ yaml_emitter_t ;
-typedef  int /*<<< orphan*/  parser ;
-typedef  int /*<<< orphan*/  event ;
-typedef  int /*<<< orphan*/  emitter ;
+typedef TYPE_3__ yaml_parser_t ;
+typedef TYPE_3__ yaml_event_t ;
+typedef TYPE_3__ yaml_emitter_t ;
+typedef int parser ;
+typedef int event ;
+typedef int emitter ;
 
-/* Variables and functions */
-#define  YAML_EMITTER_ERROR 133 
-#define  YAML_MEMORY_ERROR 132 
-#define  YAML_PARSER_ERROR 131 
-#define  YAML_READER_ERROR 130 
-#define  YAML_SCANNER_ERROR 129 
- scalar_t__ YAML_STREAM_END_EVENT ; 
-#define  YAML_WRITER_ERROR 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  yaml_emitter_delete (TYPE_3__*) ; 
- int /*<<< orphan*/  yaml_emitter_emit (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  yaml_emitter_initialize (TYPE_3__*) ; 
- int /*<<< orphan*/  yaml_emitter_set_canonical (TYPE_3__*,int) ; 
- int /*<<< orphan*/  yaml_emitter_set_output_file (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  yaml_emitter_set_unicode (TYPE_3__*,int) ; 
- int /*<<< orphan*/  yaml_parser_delete (TYPE_3__*) ; 
- int /*<<< orphan*/  yaml_parser_initialize (TYPE_3__*) ; 
- int /*<<< orphan*/  yaml_parser_parse (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  yaml_parser_set_input_file (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+
+ scalar_t__ YAML_STREAM_END_EVENT ;
+
+ int fprintf (int ,char*,...) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int printf (char*,char*,char*) ;
+ int stderr ;
+ int stdin ;
+ int stdout ;
+ scalar_t__ strcmp (char*,char*) ;
+ int yaml_emitter_delete (TYPE_3__*) ;
+ int yaml_emitter_emit (TYPE_3__*,TYPE_3__*) ;
+ int yaml_emitter_initialize (TYPE_3__*) ;
+ int yaml_emitter_set_canonical (TYPE_3__*,int) ;
+ int yaml_emitter_set_output_file (TYPE_3__*,int ) ;
+ int yaml_emitter_set_unicode (TYPE_3__*,int) ;
+ int yaml_parser_delete (TYPE_3__*) ;
+ int yaml_parser_initialize (TYPE_3__*) ;
+ int yaml_parser_parse (TYPE_3__*,TYPE_3__*) ;
+ int yaml_parser_set_input_file (TYPE_3__*,int ) ;
 
 int
 main(int argc, char *argv[])
@@ -62,13 +62,13 @@ main(int argc, char *argv[])
     yaml_emitter_t emitter;
     yaml_event_t event;
 
-    /* Clear the objects. */
+
 
     memset(&parser, 0, sizeof(parser));
     memset(&emitter, 0, sizeof(emitter));
     memset(&event, 0, sizeof(event));
 
-    /* Analyze command line options. */
+
 
     for (k = 1; k < argc; k ++)
     {
@@ -95,7 +95,7 @@ main(int argc, char *argv[])
         }
     }
 
-    /* Display the help string. */
+
 
     if (help)
     {
@@ -108,7 +108,7 @@ main(int argc, char *argv[])
         return 0;
     }
 
-    /* Initialize the parser and emitter objects. */
+
 
     if (!yaml_parser_initialize(&parser))
         goto parser_error;
@@ -116,33 +116,33 @@ main(int argc, char *argv[])
     if (!yaml_emitter_initialize(&emitter))
         goto emitter_error;
 
-    /* Set the parser parameters. */
+
 
     yaml_parser_set_input_file(&parser, stdin);
 
-    /* Set the emitter parameters. */
+
 
     yaml_emitter_set_output_file(&emitter, stdout);
 
     yaml_emitter_set_canonical(&emitter, canonical);
     yaml_emitter_set_unicode(&emitter, unicode);
 
-    /* The main loop. */
+
 
     while (!done)
     {
-        /* Get the next event. */
+
 
         if (!yaml_parser_parse(&parser, &event))
             goto parser_error;
 
-        /* Check if this is the stream end. */
+
 
         if (event.type == YAML_STREAM_END_EVENT) {
             done = 1;
         }
 
-        /* Emit the event. */
+
 
         if (!yaml_emitter_emit(&emitter, &event))
             goto emitter_error;
@@ -155,15 +155,15 @@ main(int argc, char *argv[])
 
 parser_error:
 
-    /* Display a parser error message. */
+
 
     switch (parser.error)
     {
-        case YAML_MEMORY_ERROR:
+        case 132:
             fprintf(stderr, "Memory error: Not enough memory for parsing\n");
             break;
 
-        case YAML_READER_ERROR:
+        case 130:
             if (parser.problem_value != -1) {
                 fprintf(stderr, "Reader error: %s: #%X at %d\n", parser.problem,
                         parser.problem_value, parser.problem_offset);
@@ -174,7 +174,7 @@ parser_error:
             }
             break;
 
-        case YAML_SCANNER_ERROR:
+        case 129:
             if (parser.context) {
                 fprintf(stderr, "Scanner error: %s at line %d, column %d\n"
                         "%s at line %d, column %d\n", parser.context,
@@ -189,7 +189,7 @@ parser_error:
             }
             break;
 
-        case YAML_PARSER_ERROR:
+        case 131:
             if (parser.context) {
                 fprintf(stderr, "Parser error: %s at line %d, column %d\n"
                         "%s at line %d, column %d\n", parser.context,
@@ -205,7 +205,7 @@ parser_error:
             break;
 
         default:
-            /* Couldn't happen. */
+
             fprintf(stderr, "Internal error\n");
             break;
     }
@@ -217,24 +217,24 @@ parser_error:
 
 emitter_error:
 
-    /* Display an emitter error message. */
+
 
     switch (emitter.error)
     {
-        case YAML_MEMORY_ERROR:
+        case 132:
             fprintf(stderr, "Memory error: Not enough memory for emitting\n");
             break;
 
-        case YAML_WRITER_ERROR:
+        case 128:
             fprintf(stderr, "Writer error: %s\n", emitter.problem);
             break;
 
-        case YAML_EMITTER_ERROR:
+        case 133:
             fprintf(stderr, "Emitter error: %s\n", emitter.problem);
             break;
 
         default:
-            /* Couldn't happen. */
+
             fprintf(stderr, "Internal error\n");
             break;
     }

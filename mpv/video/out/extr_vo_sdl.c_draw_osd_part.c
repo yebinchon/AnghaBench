@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {struct priv* priv; } ;
-struct priv {int /*<<< orphan*/  renderer; struct osd_bitmap_surface* osd_surfaces; } ;
-struct osd_target {int /*<<< orphan*/  dest; int /*<<< orphan*/  source; scalar_t__ tex2; scalar_t__ tex; } ;
+struct priv {int renderer; struct osd_bitmap_surface* osd_surfaces; } ;
+struct osd_target {int dest; int source; scalar_t__ tex2; scalar_t__ tex; } ;
 struct osd_bitmap_surface {int num_targets; struct osd_target* targets; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_RenderCopy (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int SDL_RenderCopy (int ,scalar_t__,int *,int *) ;
 
 __attribute__((used)) static void draw_osd_part(struct vo *vo, int index)
 {

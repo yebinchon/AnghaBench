@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ txt_errno; void* txt_data; } ;
-typedef  TYPE_1__ tmap_info_t ;
+typedef TYPE_1__ tmap_info_t ;
 
-/* Variables and functions */
- void* MAP_FAILED_PTR ; 
- int /*<<< orphan*/  close_mmap_files (TYPE_1__*) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  load_text_file (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  validate_mmap (char const*,int,int,TYPE_1__*) ; 
+
+ void* MAP_FAILED_PTR ;
+ int close_mmap_files (TYPE_1__*) ;
+ scalar_t__ errno ;
+ int load_text_file (TYPE_1__*,char const*) ;
+ int validate_mmap (char const*,int,int,TYPE_1__*) ;
 
 void *
 text_mmap(char const * pzFile, int prot, int flags, tmap_info_t * mi)

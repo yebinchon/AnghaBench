@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wait_result_t ;
-typedef  int /*<<< orphan*/  thread_t ;
-typedef  int /*<<< orphan*/  spl_t ;
-typedef  int /*<<< orphan*/  kern_return_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clear_wait_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  splsched () ; 
- int /*<<< orphan*/  splx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  thread_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  thread_unlock (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int wait_result_t ;
+typedef int thread_t ;
+typedef int spl_t ;
+typedef int kern_return_t ;
+
+
+ int clear_wait_internal (int ,int ) ;
+ int splsched () ;
+ int splx (int ) ;
+ int thread_lock (int ) ;
+ int thread_unlock (int ) ;
 
 kern_return_t
 clear_wait(
-	thread_t		thread,
-	wait_result_t	result)
+ thread_t thread,
+ wait_result_t result)
 {
-	kern_return_t ret;
-	spl_t		s;
+ kern_return_t ret;
+ spl_t s;
 
-	s = splsched();
-	thread_lock(thread);
-	ret = clear_wait_internal(thread, result);
-	thread_unlock(thread);
-	splx(s);
-	return ret;
+ s = splsched();
+ thread_lock(thread);
+ ret = clear_wait_internal(thread, result);
+ thread_unlock(thread);
+ splx(s);
+ return ret;
 }

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_11__ {int mb_var_sum_temp; } ;
 struct TYPE_10__ {int* mb_var; int* mb_mean; } ;
-struct TYPE_9__ {int (* pix_sum ) (int /*<<< orphan*/ *,int) ;unsigned int (* pix_norm1 ) (int /*<<< orphan*/ *,int) ;} ;
+struct TYPE_9__ {int (* pix_sum ) (int *,int) ;unsigned int (* pix_norm1 ) (int *,int) ;} ;
 struct TYPE_8__ {TYPE_1__* f; } ;
 struct TYPE_12__ {int start_mb_y; int end_mb_y; int mb_width; int linesize; int mb_stride; TYPE_5__ me; TYPE_4__ current_picture; TYPE_3__ mpvencdsp; TYPE_2__ new_picture; } ;
-struct TYPE_7__ {int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_6__ MpegEncContext ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
+struct TYPE_7__ {int ** data; } ;
+typedef TYPE_6__ MpegEncContext ;
+typedef int AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_check_alignment () ; 
- int stub1 (int /*<<< orphan*/ *,int) ; 
- unsigned int stub2 (int /*<<< orphan*/ *,int) ; 
+
+ int ff_check_alignment () ;
+ int stub1 (int *,int) ;
+ unsigned int stub2 (int *,int) ;
 
 __attribute__((used)) static int mb_var_thread(AVCodecContext *c, void *arg){
     MpegEncContext *s= *(void**)arg;
@@ -50,7 +50,7 @@ __attribute__((used)) static int mb_var_thread(AVCodecContext *c, void *arg){
 
             s->current_picture.mb_var [s->mb_stride * mb_y + mb_x] = varc;
             s->current_picture.mb_mean[s->mb_stride * mb_y + mb_x] = (sum+128)>>8;
-            s->me.mb_var_sum_temp    += varc;
+            s->me.mb_var_sum_temp += varc;
         }
     }
     return 0;

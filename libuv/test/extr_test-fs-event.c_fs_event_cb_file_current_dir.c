@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {TYPE_2__* data; } ;
-typedef  TYPE_1__ uv_timer_t ;
-struct TYPE_8__ {int /*<<< orphan*/  loop; } ;
-typedef  TYPE_2__ uv_fs_event_t ;
+typedef TYPE_1__ uv_timer_t ;
+struct TYPE_8__ {int loop; } ;
+typedef TYPE_2__ uv_fs_event_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int UV_CHANGE ; 
- TYPE_2__ fs_event ; 
- scalar_t__ fs_event_cb_called ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int /*<<< orphan*/  timer_cb_close_handle ; 
- int /*<<< orphan*/  uv_timer_init (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  uv_timer_start (TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int UV_CHANGE ;
+ TYPE_2__ fs_event ;
+ scalar_t__ fs_event_cb_called ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int timer_cb_close_handle ;
+ int uv_timer_init (int ,TYPE_1__*) ;
+ int uv_timer_start (TYPE_1__*,int ,int,int ) ;
 
 __attribute__((used)) static void fs_event_cb_file_current_dir(uv_fs_event_t* handle,
   const char* filename, int events, int status) {
@@ -35,13 +35,13 @@ __attribute__((used)) static void fs_event_cb_file_current_dir(uv_fs_event_t* ha
   ASSERT(handle == &fs_event);
   ASSERT(status == 0);
   ASSERT(events == UV_CHANGE);
-  #if defined(__APPLE__) || defined(_WIN32) || defined(__linux__)
-  ASSERT(strcmp(filename, "watch_file") == 0);
-  #else
-  ASSERT(filename == NULL || strcmp(filename, "watch_file") == 0);
-  #endif
 
-  /* Regression test for SunOS: touch should generate just one event. */
+  ASSERT(strcmp(filename, "watch_file") == 0);
+
+
+
+
+
   {
     static uv_timer_t timer;
     uv_timer_init(handle->loop, &timer);

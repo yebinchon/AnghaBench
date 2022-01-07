@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nlmsghdr {scalar_t__ nlmsg_pid; int nlmsg_seq; scalar_t__ nlmsg_type; scalar_t__ nlmsg_len; } ;
 struct nlmsgerr {int error; } ;
-typedef  scalar_t__ pid_t ;
+typedef scalar_t__ pid_t ;
 
-/* Variables and functions */
- int EIO ; 
- int MSG_TRUNC ; 
- scalar_t__ NLMSG_DATA (struct nlmsghdr*) ; 
- scalar_t__ NLMSG_DONE ; 
- scalar_t__ NLMSG_ERROR ; 
- scalar_t__ NLMSG_LENGTH (int) ; 
- scalar_t__ NLMSG_NEXT (struct nlmsghdr*,int) ; 
- scalar_t__ NLMSG_OK (struct nlmsghdr*,int) ; 
- int /*<<< orphan*/  __set_errno (int) ; 
- int errno ; 
- int /*<<< orphan*/  free (void*) ; 
- scalar_t__ getpid () ; 
- int nl_recvmsg (int,int,int,void*,size_t,int*) ; 
- void* realloc (void*,size_t) ; 
+
+ int EIO ;
+ int MSG_TRUNC ;
+ scalar_t__ NLMSG_DATA (struct nlmsghdr*) ;
+ scalar_t__ NLMSG_DONE ;
+ scalar_t__ NLMSG_ERROR ;
+ scalar_t__ NLMSG_LENGTH (int) ;
+ scalar_t__ NLMSG_NEXT (struct nlmsghdr*,int) ;
+ scalar_t__ NLMSG_OK (struct nlmsghdr*,int) ;
+ int __set_errno (int) ;
+ int errno ;
+ int free (void*) ;
+ scalar_t__ getpid () ;
+ int nl_recvmsg (int,int,int,void*,size_t,int*) ;
+ void* realloc (void*,size_t) ;
 
 __attribute__((used)) static int
 nl_getmsg(int sd, int request, int seq,
-	  struct nlmsghdr **nlhp,
-	  int *done)
+   struct nlmsghdr **nlhp,
+   int *done)
 {
   struct nlmsghdr *nh;
   size_t bufsize = 65536, lastbufsize = 0;
-  void *buff = NULL;
+  void *buff = ((void*)0);
   int result = 0, read_size;
   int msg_flags;
   pid_t pid = getpid();
   for (;;){
     void *newbuff = realloc(buff, bufsize);
-    if (newbuff == NULL || bufsize < lastbufsize) {
+    if (newbuff == ((void*)0) || bufsize < lastbufsize) {
       result = -1;
       break;
     }
@@ -57,23 +57,23 @@ nl_getmsg(int sd, int request, int seq,
     if (read_size == 0) break;
     nh = (struct nlmsghdr *)buff;
     for (nh = (struct nlmsghdr *)buff;
-	 NLMSG_OK(nh, read_size);
-	 nh = (struct nlmsghdr *)NLMSG_NEXT(nh, read_size)){
+  NLMSG_OK(nh, read_size);
+  nh = (struct nlmsghdr *)NLMSG_NEXT(nh, read_size)){
       if (nh->nlmsg_pid != pid ||
-	  nh->nlmsg_seq != seq)
-	continue;
+   nh->nlmsg_seq != seq)
+ continue;
       if (nh->nlmsg_type == NLMSG_DONE){
-	(*done)++;
-	break; /* ok */
+ (*done)++;
+ break;
       }
       if (nh->nlmsg_type == NLMSG_ERROR){
-	struct nlmsgerr *nlerr = (struct nlmsgerr *)NLMSG_DATA(nh);
-	result = -1;
-	if (nh->nlmsg_len < NLMSG_LENGTH(sizeof(struct nlmsgerr)))
-	  __set_errno(EIO);
-	else
-	  __set_errno(-nlerr->error);
-	break;
+ struct nlmsgerr *nlerr = (struct nlmsgerr *)NLMSG_DATA(nh);
+ result = -1;
+ if (nh->nlmsg_len < NLMSG_LENGTH(sizeof(struct nlmsgerr)))
+   __set_errno(EIO);
+ else
+   __set_errno(-nlerr->error);
+ break;
       }
     }
     break;

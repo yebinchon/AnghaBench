@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ npy_intp ;
-typedef  int npy_int64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ npy_intp ;
+typedef int npy_int64 ;
 struct TYPE_2__ {int num; int denom; } ;
-typedef  TYPE_1__ _strided_datetime_cast_data ;
-typedef  int /*<<< orphan*/  NpyAuxData ;
+typedef TYPE_1__ _strided_datetime_cast_data ;
+typedef int NpyAuxData ;
 
-/* Variables and functions */
- int NPY_DATETIME_NAT ; 
+
+ int NPY_DATETIME_NAT ;
 
 __attribute__((used)) static void
 _aligned_strided_to_strided_datetime_cast(char *dst,
@@ -35,7 +35,7 @@ _aligned_strided_to_strided_datetime_cast(char *dst,
         dt = *(npy_int64 *)src;
 
         if (dt != NPY_DATETIME_NAT) {
-            /* Apply the scaling */
+
             if (dt < 0) {
                 dt = (dt * num - (denom - 1)) / denom;
             }

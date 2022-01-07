@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long LONG_MAX ; 
+ unsigned long LONG_MAX ;
 
 __attribute__((used)) static int asn1_get_length(const unsigned char **pp, int *inf, long *rl,
                            long max)
@@ -32,7 +24,7 @@ __attribute__((used)) static int asn1_get_length(const unsigned char **pp, int *
         if (*p++ & 0x80) {
             if (max < i + 1)
                 return 0;
-            /* Skip leading zeroes */
+
             while (i > 0 && *p == 0) {
                 p++;
                 i--;

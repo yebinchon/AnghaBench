@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct wined3d_shader_semantic {int usage; int usage_idx; int /*<<< orphan*/  reg; int /*<<< orphan*/  resource_data_type; int /*<<< orphan*/  resource_type; } ;
-typedef  enum wined3d_sm1_resource_type { ____Placeholder_wined3d_sm1_resource_type } wined3d_sm1_resource_type ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  WINED3D_DATA_FLOAT ; 
- int /*<<< orphan*/  WINED3D_SHADER_RESOURCE_NONE ; 
- int WINED3D_SM1_DCL_USAGE_INDEX_MASK ; 
- int WINED3D_SM1_DCL_USAGE_INDEX_SHIFT ; 
- int WINED3D_SM1_DCL_USAGE_MASK ; 
- int WINED3D_SM1_DCL_USAGE_SHIFT ; 
- int WINED3D_SM1_RESOURCE_TYPE_MASK ; 
- int WINED3D_SM1_RESOURCE_TYPE_SHIFT ; 
- int /*<<< orphan*/ * resource_type_table ; 
- int /*<<< orphan*/  shader_parse_dst_param (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct wined3d_shader_semantic {int usage; int usage_idx; int reg; int resource_data_type; int resource_type; } ;
+typedef enum wined3d_sm1_resource_type { ____Placeholder_wined3d_sm1_resource_type } wined3d_sm1_resource_type ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (int *) ;
+ int FIXME (char*,int) ;
+ int WINED3D_DATA_FLOAT ;
+ int WINED3D_SHADER_RESOURCE_NONE ;
+ int WINED3D_SM1_DCL_USAGE_INDEX_MASK ;
+ int WINED3D_SM1_DCL_USAGE_INDEX_SHIFT ;
+ int WINED3D_SM1_DCL_USAGE_MASK ;
+ int WINED3D_SM1_DCL_USAGE_SHIFT ;
+ int WINED3D_SM1_RESOURCE_TYPE_MASK ;
+ int WINED3D_SM1_RESOURCE_TYPE_SHIFT ;
+ int * resource_type_table ;
+ int shader_parse_dst_param (int,int *,int *) ;
 
 __attribute__((used)) static void shader_sm1_read_semantic(const DWORD **ptr, struct wined3d_shader_semantic *semantic)
 {
@@ -47,5 +47,5 @@ __attribute__((used)) static void shader_sm1_read_semantic(const DWORD **ptr, st
         semantic->resource_type = resource_type_table[resource_type];
     }
     semantic->resource_data_type = WINED3D_DATA_FLOAT;
-    shader_parse_dst_param(dst_token, NULL, &semantic->reg);
+    shader_parse_dst_param(dst_token, ((void*)0), &semantic->reg);
 }

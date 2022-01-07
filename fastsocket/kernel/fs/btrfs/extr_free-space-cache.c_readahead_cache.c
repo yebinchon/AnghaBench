@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode {int /*<<< orphan*/  i_mapping; } ;
+
+
+
+
+struct inode {int i_mapping; } ;
 struct file_ra_state {int dummy; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_NOFS ; 
- int PAGE_CACHE_SHIFT ; 
- int /*<<< orphan*/  file_ra_state_init (struct file_ra_state*,int /*<<< orphan*/ ) ; 
- int i_size_read (struct inode*) ; 
- int /*<<< orphan*/  kfree (struct file_ra_state*) ; 
- struct file_ra_state* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  page_cache_sync_readahead (int /*<<< orphan*/ ,struct file_ra_state*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned long) ; 
+
+ int ENOMEM ;
+ int GFP_NOFS ;
+ int PAGE_CACHE_SHIFT ;
+ int file_ra_state_init (struct file_ra_state*,int ) ;
+ int i_size_read (struct inode*) ;
+ int kfree (struct file_ra_state*) ;
+ struct file_ra_state* kzalloc (int,int ) ;
+ int page_cache_sync_readahead (int ,struct file_ra_state*,int *,int ,unsigned long) ;
 
 __attribute__((used)) static int readahead_cache(struct inode *inode)
 {
-	struct file_ra_state *ra;
-	unsigned long last_index;
+ struct file_ra_state *ra;
+ unsigned long last_index;
 
-	ra = kzalloc(sizeof(*ra), GFP_NOFS);
-	if (!ra)
-		return -ENOMEM;
+ ra = kzalloc(sizeof(*ra), GFP_NOFS);
+ if (!ra)
+  return -ENOMEM;
 
-	file_ra_state_init(ra, inode->i_mapping);
-	last_index = (i_size_read(inode) - 1) >> PAGE_CACHE_SHIFT;
+ file_ra_state_init(ra, inode->i_mapping);
+ last_index = (i_size_read(inode) - 1) >> PAGE_CACHE_SHIFT;
 
-	page_cache_sync_readahead(inode->i_mapping, ra, NULL, 0, last_index);
+ page_cache_sync_readahead(inode->i_mapping, ra, ((void*)0), 0, last_index);
 
-	kfree(ra);
+ kfree(ra);
 
-	return 0;
+ return 0;
 }

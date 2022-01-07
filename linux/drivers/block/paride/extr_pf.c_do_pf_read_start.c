@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  pi; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATAPI_READ_10 ; 
- int /*<<< orphan*/  BLK_STS_IOERR ; 
- scalar_t__ PF_MAX_RETRIES ; 
- int /*<<< orphan*/  PF_TMO ; 
- int /*<<< orphan*/  STAT_DRQ ; 
- int /*<<< orphan*/  do_pf_read_drq ; 
- int /*<<< orphan*/  next_request (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nice ; 
- int /*<<< orphan*/  pf_block ; 
- int pf_busy ; 
- TYPE_1__* pf_current ; 
- int /*<<< orphan*/  pf_mask ; 
- int /*<<< orphan*/  pf_ready ; 
- scalar_t__ pf_retries ; 
- int /*<<< orphan*/  pf_run ; 
- scalar_t__ pf_start (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pi_disconnect (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pi_do_claimed (int /*<<< orphan*/ ,void (*) ()) ; 
- int /*<<< orphan*/  ps_set_intr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int pi; } ;
+
+
+ int ATAPI_READ_10 ;
+ int BLK_STS_IOERR ;
+ scalar_t__ PF_MAX_RETRIES ;
+ int PF_TMO ;
+ int STAT_DRQ ;
+ int do_pf_read_drq ;
+ int next_request (int ) ;
+ int nice ;
+ int pf_block ;
+ int pf_busy ;
+ TYPE_1__* pf_current ;
+ int pf_mask ;
+ int pf_ready ;
+ scalar_t__ pf_retries ;
+ int pf_run ;
+ scalar_t__ pf_start (TYPE_1__*,int ,int ,int ) ;
+ int pi_disconnect (int ) ;
+ int pi_do_claimed (int ,void (*) ()) ;
+ int ps_set_intr (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void do_pf_read_start(void)
 {
-	pf_busy = 1;
+ pf_busy = 1;
 
-	if (pf_start(pf_current, ATAPI_READ_10, pf_block, pf_run)) {
-		pi_disconnect(pf_current->pi);
-		if (pf_retries < PF_MAX_RETRIES) {
-			pf_retries++;
-			pi_do_claimed(pf_current->pi, do_pf_read_start);
-			return;
-		}
-		next_request(BLK_STS_IOERR);
-		return;
-	}
-	pf_mask = STAT_DRQ;
-	ps_set_intr(do_pf_read_drq, pf_ready, PF_TMO, nice);
+ if (pf_start(pf_current, ATAPI_READ_10, pf_block, pf_run)) {
+  pi_disconnect(pf_current->pi);
+  if (pf_retries < PF_MAX_RETRIES) {
+   pf_retries++;
+   pi_do_claimed(pf_current->pi, do_pf_read_start);
+   return;
+  }
+  next_request(BLK_STS_IOERR);
+  return;
+ }
+ pf_mask = STAT_DRQ;
+ ps_set_intr(do_pf_read_drq, pf_ready, PF_TMO, nice);
 }

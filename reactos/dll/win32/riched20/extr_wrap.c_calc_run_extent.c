@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int nFlags; scalar_t__ nWidth; int /*<<< orphan*/  nDescent; int /*<<< orphan*/  nAscent; int /*<<< orphan*/  len; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int nFlags; scalar_t__ nWidth; int nDescent; int nAscent; int len; } ;
 struct TYPE_6__ {scalar_t__ cx; } ;
-typedef  TYPE_1__ SIZE ;
-typedef  TYPE_2__ ME_Run ;
-typedef  int /*<<< orphan*/  ME_Paragraph ;
-typedef  int /*<<< orphan*/  ME_Context ;
+typedef TYPE_1__ SIZE ;
+typedef TYPE_2__ ME_Run ;
+typedef int ME_Paragraph ;
+typedef int ME_Context ;
 
-/* Variables and functions */
- int MERF_HIDDEN ; 
- TYPE_1__ ME_GetRunSizeCommon (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,TYPE_2__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int MERF_HIDDEN ;
+ TYPE_1__ ME_GetRunSizeCommon (int *,int const*,TYPE_2__*,int ,int,int *,int *) ;
 
 __attribute__((used)) static void calc_run_extent(ME_Context *c, const ME_Paragraph *para, int startx, ME_Run *run)
 {

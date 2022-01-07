@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  (* to_create_inferior ) (char*,char*,char**) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  deactivate_uw_thread () ; 
- int /*<<< orphan*/  find_main () ; 
- TYPE_1__ procfs_ops ; 
- int /*<<< orphan*/  stub1 (char*,char*,char**) ; 
- int /*<<< orphan*/  thr_infpid (int /*<<< orphan*/ *) ; 
- scalar_t__ uw_thread_active ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int (* to_create_inferior ) (char*,char*,char**) ;} ;
+
+
+ int deactivate_uw_thread () ;
+ int find_main () ;
+ TYPE_1__ procfs_ops ;
+ int stub1 (char*,char*,char**) ;
+ int thr_infpid (int *) ;
+ scalar_t__ uw_thread_active ;
 
 __attribute__((used)) static void
 uw_thread_create_inferior (char *exec_file, char *allargs, char **env)
@@ -31,6 +31,6 @@ uw_thread_create_inferior (char *exec_file, char *allargs, char **env)
   if (uw_thread_active)
     {
       find_main ();
-      thr_infpid (NULL);
+      thr_infpid (((void*)0));
     }
 }

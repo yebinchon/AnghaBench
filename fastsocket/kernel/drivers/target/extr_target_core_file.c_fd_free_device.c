@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct se_device {int dummy; } ;
-struct fd_dev {int /*<<< orphan*/ * fd_file; } ;
+struct fd_dev {int * fd_file; } ;
 
-/* Variables and functions */
- struct fd_dev* FD_DEV (struct se_device*) ; 
- int /*<<< orphan*/  filp_close (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct fd_dev*) ; 
+
+ struct fd_dev* FD_DEV (struct se_device*) ;
+ int filp_close (int *,int *) ;
+ int kfree (struct fd_dev*) ;
 
 __attribute__((used)) static void fd_free_device(struct se_device *dev)
 {
-	struct fd_dev *fd_dev = FD_DEV(dev);
+ struct fd_dev *fd_dev = FD_DEV(dev);
 
-	if (fd_dev->fd_file) {
-		filp_close(fd_dev->fd_file, NULL);
-		fd_dev->fd_file = NULL;
-	}
+ if (fd_dev->fd_file) {
+  filp_close(fd_dev->fd_file, ((void*)0));
+  fd_dev->fd_file = ((void*)0);
+ }
 
-	kfree(fd_dev);
+ kfree(fd_dev);
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ ** inputs; int /*<<< orphan*/ ** outputs; TYPE_2__* priv; } ;
-struct TYPE_9__ {int eof_hrirs; int nb_inputs; int /*<<< orphan*/  size; int /*<<< orphan*/  have_hrirs; TYPE_1__* in; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int ** inputs; int ** outputs; TYPE_2__* priv; } ;
+struct TYPE_9__ {int eof_hrirs; int nb_inputs; int size; int have_hrirs; TYPE_1__* in; } ;
 struct TYPE_8__ {int eof; } ;
-typedef  TYPE_2__ HeadphoneContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_2__ HeadphoneContext ;
+typedef int AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- scalar_t__ AVERROR_EOF ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK_ALL (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int check_ir (int /*<<< orphan*/ *,int) ; 
- int convert_coeffs (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int ff_inlink_consume_samples (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_inlink_request_frame (int /*<<< orphan*/ *) ; 
- scalar_t__ ff_outlink_frame_wanted (int /*<<< orphan*/ *) ; 
- scalar_t__ ff_outlink_get_status (int /*<<< orphan*/ *) ; 
- int headphone_frame (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AVERROR_EOF ;
+ int FF_FILTER_FORWARD_STATUS (int *,int *) ;
+ int FF_FILTER_FORWARD_STATUS_BACK_ALL (int *,TYPE_3__*) ;
+ int check_ir (int *,int) ;
+ int convert_coeffs (TYPE_3__*,int *) ;
+ int ff_inlink_consume_samples (int *,int ,int ,int **) ;
+ int ff_inlink_request_frame (int *) ;
+ scalar_t__ ff_outlink_frame_wanted (int *) ;
+ scalar_t__ ff_outlink_get_status (int *) ;
+ int headphone_frame (TYPE_2__*,int *,int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
     HeadphoneContext *s = ctx->priv;
     AVFilterLink *inlink = ctx->inputs[0];
     AVFilterLink *outlink = ctx->outputs[0];
-    AVFrame *in = NULL;
+    AVFrame *in = ((void*)0);
     int i, ret;
 
     FF_FILTER_FORWARD_STATUS_BACK_ALL(ctx->outputs[0], ctx);

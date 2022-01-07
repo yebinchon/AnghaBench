@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct TYPE_5__ {scalar_t__ (* startcode_find_candidate ) (int const*,int) ;} ;
 struct TYPE_6__ {int state; int frame_start_found; } ;
 struct TYPE_7__ {int nal_length_size; unsigned int parse_last_mb; int* parse_history; int parse_history_count; scalar_t__ is_avc; TYPE_1__ h264dsp; TYPE_2__ pc; } ;
-typedef  TYPE_2__ ParseContext ;
-typedef  TYPE_3__ H264ParseContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_2__ ParseContext ;
+typedef TYPE_3__ H264ParseContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int END_NOT_FOUND ; 
- int H264_NAL_AUD ; 
- int H264_NAL_DPA ; 
- int H264_NAL_IDR_SLICE ; 
- int H264_NAL_PPS ; 
- int H264_NAL_SEI ; 
- int H264_NAL_SLICE ; 
- int H264_NAL_SPS ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ get_bits_left (int /*<<< orphan*/ *) ; 
- unsigned int get_ue_golomb_long (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,int*,int) ; 
- scalar_t__ stub1 (int const*,int) ; 
+
+ int AV_LOG_ERROR ;
+ int END_NOT_FOUND ;
+ int H264_NAL_AUD ;
+ int H264_NAL_DPA ;
+ int H264_NAL_IDR_SLICE ;
+ int H264_NAL_PPS ;
+ int H264_NAL_SEI ;
+ int H264_NAL_SLICE ;
+ int H264_NAL_SPS ;
+ int av_log (void*,int ,char*,...) ;
+ scalar_t__ get_bits_left (int *) ;
+ unsigned int get_ue_golomb_long (int *) ;
+ int init_get_bits (int *,int*,int) ;
+ scalar_t__ stub1 (int const*,int) ;
 
 __attribute__((used)) static int h264_find_frame_end(H264ParseContext *p, const uint8_t *buf,
                                int buf_size, void *logctx)
@@ -46,7 +46,7 @@ __attribute__((used)) static int h264_find_frame_end(H264ParseContext *p, const 
     ParseContext *pc = &p->pc;
 
     int next_avc = p->is_avc ? 0 : buf_size;
-//    mb_addr= pc->mb_addr - 1;
+
     state = pc->state;
     if (state > 13)
         state = 7;
@@ -65,7 +65,7 @@ __attribute__((used)) static int h264_find_frame_end(H264ParseContext *p, const 
                 return buf_size;
             }
             next_avc = i + nalsize;
-            state    = 5;
+            state = 5;
         }
 
         if (state == 7) {
@@ -74,11 +74,11 @@ __attribute__((used)) static int h264_find_frame_end(H264ParseContext *p, const 
                 state = 2;
         } else if (state <= 2) {
             if (buf[i] == 1)
-                state ^= 5;            // 2->7, 1->4, 0->5
+                state ^= 5;
             else if (buf[i])
                 state = 7;
             else
-                state >>= 1;           // 2->1, 1->0, 0->0
+                state >>= 1;
         } else if (state <= 5) {
             int nalu_type = buf[i] & 0x1F;
             if (nalu_type == H264_NAL_SEI || nalu_type == H264_NAL_SPS ||
@@ -121,7 +121,7 @@ __attribute__((used)) static int h264_find_frame_end(H264ParseContext *p, const 
     return END_NOT_FOUND;
 
 found:
-    pc->state             = 7;
+    pc->state = 7;
     pc->frame_start_found = 0;
     if (p->is_avc)
         return next_avc;

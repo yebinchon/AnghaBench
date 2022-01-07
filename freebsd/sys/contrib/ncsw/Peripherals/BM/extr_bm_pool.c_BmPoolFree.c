@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  t_Handle ;
-typedef  int /*<<< orphan*/  t_Error ;
-struct TYPE_9__ {int /*<<< orphan*/  h_BufferPool; int /*<<< orphan*/  (* f_PutBuf ) (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_10__ {int flags; struct TYPE_10__* sp; int /*<<< orphan*/  bpid; int /*<<< orphan*/  h_Bm; TYPE_1__ bufferPoolInfo; int /*<<< orphan*/  h_BmPortal; int /*<<< orphan*/  shadowMode; } ;
-typedef  TYPE_2__ t_BmPool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_COND (TYPE_2__*) ; 
- int BMAN_POOL_FLAG_DEPLETION ; 
- void* BM_POOL_GetBuf (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BM_POOL_GetBufferContext (TYPE_2__*,void*) ; 
- int /*<<< orphan*/  BmBpidPut (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BmUnSetPoolThresholds (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_OK ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  XX_Free (TYPE_2__*) ; 
- int /*<<< orphan*/  depletion_unlink (TYPE_2__*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int t_Handle ;
+typedef int t_Error ;
+struct TYPE_9__ {int h_BufferPool; int (* f_PutBuf ) (int ,void*,int ) ;} ;
+struct TYPE_10__ {int flags; struct TYPE_10__* sp; int bpid; int h_Bm; TYPE_1__ bufferPoolInfo; int h_BmPortal; int shadowMode; } ;
+typedef TYPE_2__ t_BmPool ;
+
+
+ int ASSERT_COND (TYPE_2__*) ;
+ int BMAN_POOL_FLAG_DEPLETION ;
+ void* BM_POOL_GetBuf (TYPE_2__*,int ) ;
+ int BM_POOL_GetBufferContext (TYPE_2__*,void*) ;
+ int BmBpidPut (int ,int ) ;
+ int BmUnSetPoolThresholds (int ,int ) ;
+ int E_OK ;
+ scalar_t__ TRUE ;
+ int XX_Free (TYPE_2__*) ;
+ int depletion_unlink (TYPE_2__*) ;
+ int stub1 (int ,void*,int ) ;
 
 __attribute__((used)) static t_Error BmPoolFree(t_BmPool *p_BmPool, bool discardBuffers)
 {
-    t_Handle    h_BufContext;
-    void        *p_Data;
+    t_Handle h_BufContext;
+    void *p_Data;
 
     ASSERT_COND(p_BmPool);
 

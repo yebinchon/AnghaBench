@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int idx_docs; unsigned long long* Md5_Pos; int /*<<< orphan*/ * Md5_Docs; } ;
-typedef  TYPE_1__ volume_t ;
-struct TYPE_6__ {unsigned long long offset; struct TYPE_6__* right; int /*<<< orphan*/ * x; struct TYPE_6__* left; } ;
-typedef  TYPE_2__ md5_tree_t ;
 
-/* Variables and functions */
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int idx_docs; unsigned long long* Md5_Pos; int * Md5_Docs; } ;
+typedef TYPE_1__ volume_t ;
+struct TYPE_6__ {unsigned long long offset; struct TYPE_6__* right; int * x; struct TYPE_6__* left; } ;
+typedef TYPE_2__ md5_tree_t ;
+
+
+ scalar_t__ memcmp (int *,int *,int) ;
+ int memcpy (unsigned char*,int *,int) ;
 
 __attribute__((used)) static void md5_merge_tree_with_index (volume_t *V, unsigned char *new_md5_docs, unsigned long long *new_md5_pos, int *pos_new_idx, int *pos_idx, md5_tree_t *T) {
   if (T->left) {

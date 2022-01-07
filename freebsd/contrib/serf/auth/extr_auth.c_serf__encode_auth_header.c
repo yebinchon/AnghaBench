@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  apr_base64_encode (char*,char const*,scalar_t__) ; 
- scalar_t__ apr_base64_encode_len (scalar_t__) ; 
- int /*<<< orphan*/  apr_cpystrn (char*,char const*,scalar_t__) ; 
- char* apr_palloc (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ apr_size_t ;
+typedef int apr_pool_t ;
+
+
+ int apr_base64_encode (char*,char const*,scalar_t__) ;
+ scalar_t__ apr_base64_encode_len (scalar_t__) ;
+ int apr_cpystrn (char*,char const*,scalar_t__) ;
+ char* apr_palloc (int *,scalar_t__) ;
+ scalar_t__ strlen (char const*) ;
 
 void serf__encode_auth_header(const char **header,
                               const char *scheme,

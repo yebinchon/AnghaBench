@@ -1,93 +1,80 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_17__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_env ;
-struct TYPE_25__ {int eType; int /*<<< orphan*/  flags; int /*<<< orphan*/  val; int /*<<< orphan*/  key; TYPE_1__* pDb; } ;
-struct TYPE_24__ {scalar_t__ iPtr; int nCell; int eType; scalar_t__ iPgPtr; scalar_t__ pPg; int /*<<< orphan*/  nVal; int /*<<< orphan*/  pVal; int /*<<< orphan*/  nKey; int /*<<< orphan*/  pKey; TYPE_17__* pSeg; } ;
-struct TYPE_23__ {int (* xCmp ) (void*,int,void*,int) ;int /*<<< orphan*/ * pEnv; } ;
+
+
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_17__ ;
+
+
+typedef int lsm_env ;
+struct TYPE_25__ {int eType; int flags; int val; int key; TYPE_1__* pDb; } ;
+struct TYPE_24__ {scalar_t__ iPtr; int nCell; int eType; scalar_t__ iPgPtr; scalar_t__ pPg; int nVal; int pVal; int nKey; int pKey; TYPE_17__* pSeg; } ;
+struct TYPE_23__ {int (* xCmp ) (void*,int,void*,int) ;int * pEnv; } ;
 struct TYPE_22__ {int nSize; } ;
-typedef  TYPE_2__ SegmentPtr ;
-typedef  TYPE_3__ MultiCursor ;
-typedef  scalar_t__ LsmPgno ;
+typedef TYPE_2__ SegmentPtr ;
+typedef TYPE_3__ MultiCursor ;
+typedef scalar_t__ LsmPgno ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURSOR_SEEK_EQ ; 
- int LSM_END_DELETE ; 
- int LSM_INSERT ; 
- int LSM_MAX (int,int) ; 
- int LSM_OK ; 
- int LSM_POINT_DELETE ; 
-#define  LSM_SEEK_EQ 130 
-#define  LSM_SEEK_GE 129 
-#define  LSM_SEEK_LE 128 
- int /*<<< orphan*/  LSM_SEGMENTPTR_FREE_THRESHOLD ; 
- int LSM_START_DELETE ; 
- int /*<<< orphan*/  assert (int) ; 
- int assertKeyLocation (TYPE_3__*,TYPE_2__*,void*,int) ; 
- scalar_t__ assertSeekResult (TYPE_3__*,TYPE_2__*,int,void*,int,int) ; 
- scalar_t__ lsmFsDbPageIsLast (TYPE_17__*,scalar_t__) ; 
- scalar_t__ rtIsSeparator (int) ; 
- int rtTopic (int) ; 
- int segmentPtrAdvance (TYPE_3__*,TYPE_2__*,int) ; 
- int segmentPtrFwdPointer (TYPE_3__*,TYPE_2__*,scalar_t__*) ; 
- scalar_t__ segmentPtrIgnoreSeparators (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  segmentPtrKey (TYPE_2__*,void**,int*) ; 
- int segmentPtrLoadCell (TYPE_2__*,int) ; 
- int /*<<< orphan*/  segmentPtrReset (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int segmentPtrSearchOversized (TYPE_3__*,TYPE_2__*,int,void*,int) ; 
- int sortedBlobSet (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sortedKeyCompare (int (*) (void*,int,void*,int),int,void*,int,int,void*,int) ; 
+
+ int CURSOR_SEEK_EQ ;
+ int LSM_END_DELETE ;
+ int LSM_INSERT ;
+ int LSM_MAX (int,int) ;
+ int LSM_OK ;
+ int LSM_POINT_DELETE ;
+
+
+
+ int LSM_SEGMENTPTR_FREE_THRESHOLD ;
+ int LSM_START_DELETE ;
+ int assert (int) ;
+ int assertKeyLocation (TYPE_3__*,TYPE_2__*,void*,int) ;
+ scalar_t__ assertSeekResult (TYPE_3__*,TYPE_2__*,int,void*,int,int) ;
+ scalar_t__ lsmFsDbPageIsLast (TYPE_17__*,scalar_t__) ;
+ scalar_t__ rtIsSeparator (int) ;
+ int rtTopic (int) ;
+ int segmentPtrAdvance (TYPE_3__*,TYPE_2__*,int) ;
+ int segmentPtrFwdPointer (TYPE_3__*,TYPE_2__*,scalar_t__*) ;
+ scalar_t__ segmentPtrIgnoreSeparators (TYPE_3__*,TYPE_2__*) ;
+ int segmentPtrKey (TYPE_2__*,void**,int*) ;
+ int segmentPtrLoadCell (TYPE_2__*,int) ;
+ int segmentPtrReset (TYPE_2__*,int ) ;
+ int segmentPtrSearchOversized (TYPE_3__*,TYPE_2__*,int,void*,int) ;
+ int sortedBlobSet (int *,int *,int ,int ) ;
+ int sortedKeyCompare (int (*) (void*,int,void*,int),int,void*,int,int,void*,int) ;
 
 __attribute__((used)) static int segmentPtrSeek(
-  MultiCursor *pCsr,              /* Cursor context */
-  SegmentPtr *pPtr,               /* Pointer to seek */
-  int iTopic,                     /* Key topic to seek to */
-  void *pKey, int nKey,           /* Key to seek to */
-  int eSeek,                      /* Search bias - see above */
-  int *piPtr,                     /* OUT: FC pointer */
+  MultiCursor *pCsr,
+  SegmentPtr *pPtr,
+  int iTopic,
+  void *pKey, int nKey,
+  int eSeek,
+  int *piPtr,
   int *pbStop
 ){
   int (*xCmp)(void *, int, void *, int) = pCsr->pDb->xCmp;
-  int res = 0;                        /* Result of comparison operation */
+  int res = 0;
   int rc = LSM_OK;
   int iMin;
   int iMax;
   LsmPgno iPtrOut = 0;
 
-  /* If the current page contains an oversized entry, then there are no
-  ** pointers to one or more of the subsequent pages in the sorted run.
-  ** The following call ensures that the segment-ptr points to the correct 
-  ** page in this case.  */
+
+
+
+
   rc = segmentPtrSearchOversized(pCsr, pPtr, iTopic, pKey, nKey);
   iPtrOut = pPtr->iPtr;
-
-  /* Assert that this page is the right page of this segment for the key
-  ** that we are searching for. Do this by loading page (iPg-1) and testing
-  ** that pKey/nKey is greater than all keys on that page, and then by 
-  ** loading (iPg+1) and testing that pKey/nKey is smaller than all
-  ** the keys it houses.  
-  **
-  ** TODO: With range-deletes in the tree, the test described above may fail.
-  */
-#if 0
-  assert( assertKeyLocation(pCsr, pPtr, pKey, nKey) );
-#endif
-
-  assert( pPtr->nCell>0 
-       || pPtr->pSeg->nSize==1 
+  assert( pPtr->nCell>0
+       || pPtr->pSeg->nSize==1
        || lsmFsDbPageIsLast(pPtr->pSeg, pPtr->pPg)
   );
   if( pPtr->nCell==0 ){
@@ -98,7 +85,7 @@ __attribute__((used)) static int segmentPtrSeek(
 
     while( 1 ){
       int iTry = (iMin+iMax)/2;
-      void *pKeyT; int nKeyT;       /* Key for cell iTry */
+      void *pKeyT; int nKeyT;
       int iTopicT;
 
       assert( iTry<iMax || iMin==iMax );
@@ -132,7 +119,7 @@ __attribute__((used)) static int segmentPtrSeek(
 
       if( rc==LSM_OK ){
         switch( eSeek ){
-          case LSM_SEEK_EQ: {
+          case 130: {
             int eType = pPtr->eType;
             if( (res<0 && (eType & LSM_START_DELETE))
              || (res>0 && (eType & LSM_END_DELETE))
@@ -152,13 +139,13 @@ __attribute__((used)) static int segmentPtrSeek(
             segmentPtrReset(pPtr, LSM_SEGMENTPTR_FREE_THRESHOLD);
             break;
           }
-          case LSM_SEEK_LE:
+          case 128:
             if( res>0 ) rc = segmentPtrAdvance(pCsr, pPtr, 1);
             break;
-          case LSM_SEEK_GE: {
-            /* Figure out if we need to 'skip' the pointer forward or not */
-            if( (res<=0 && (pPtr->eType & LSM_START_DELETE)) 
-             || (res>0  && (pPtr->eType & LSM_END_DELETE)) 
+          case 129: {
+
+            if( (res<=0 && (pPtr->eType & LSM_START_DELETE))
+             || (res>0 && (pPtr->eType & LSM_END_DELETE))
             ){
               rc = segmentPtrFwdPointer(pCsr, pPtr, &iPtrOut);
             }
@@ -171,14 +158,14 @@ __attribute__((used)) static int segmentPtrSeek(
       }
     }
 
-    /* If the cursor seek has found a separator key, and this cursor is
-    ** supposed to ignore separators keys, advance to the next entry.  */
+
+
     if( rc==LSM_OK && pPtr->pPg
-     && segmentPtrIgnoreSeparators(pCsr, pPtr) 
+     && segmentPtrIgnoreSeparators(pCsr, pPtr)
      && rtIsSeparator(pPtr->eType)
     ){
-      assert( eSeek!=LSM_SEEK_EQ );
-      rc = segmentPtrAdvance(pCsr, pPtr, eSeek==LSM_SEEK_LE);
+      assert( eSeek!=130 );
+      rc = segmentPtrAdvance(pCsr, pPtr, eSeek==128);
     }
   }
 

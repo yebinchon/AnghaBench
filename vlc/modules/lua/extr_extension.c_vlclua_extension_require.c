@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int /*<<< orphan*/  psz_name; } ;
-typedef  TYPE_1__ extension_t ;
 
-/* Variables and functions */
- int asprintf (char**,char*,char*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- int luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char const*) ; 
- char* strdup (int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- char* strrchr (char*,char) ; 
- int vlclua_dofile (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- TYPE_1__* vlclua_extension_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vlclua_get_this (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int lua_State ;
+struct TYPE_3__ {int psz_name; } ;
+typedef TYPE_1__ extension_t ;
+
+
+ int asprintf (char**,char*,char*,char const*) ;
+ int free (char*) ;
+ char* luaL_checkstring (int *,int) ;
+ int luaL_error (int *,char*,...) ;
+ int msg_Dbg (int *,char*,char const*) ;
+ char* strdup (int ) ;
+ int strlen (char*) ;
+ char* strrchr (char*,char) ;
+ int vlclua_dofile (int *,int *,char*) ;
+ TYPE_1__* vlclua_extension_get (int *) ;
+ int * vlclua_get_this (int *) ;
 
 __attribute__((used)) static int vlclua_extension_require( lua_State *L )
 {
@@ -54,7 +54,7 @@ __attribute__((used)) static int vlclua_extension_require( lua_State *L )
     int i_ret = vlclua_dofile( p_this, L, psz_fullpath );
     if( i_ret != 0 )
     {
-        // Remove trailing 'c' --> try with .lua script
+
         psz_fullpath[ strlen( psz_fullpath ) - 1 ] = '\0';
         i_ret = vlclua_dofile( p_this, L, psz_fullpath );
     }

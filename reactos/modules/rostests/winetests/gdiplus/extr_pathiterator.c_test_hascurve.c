@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpPathIterator ;
-typedef  int /*<<< orphan*/  GpPath ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathEllipse (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipAddPathRectangle (int /*<<< orphan*/ *,double,double,double,double) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreatePathIter (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipDeletePathIter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipPathIterHasCurve (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GpStatus ;
+typedef int GpPathIterator ;
+typedef int GpPath ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathEllipse (int *,double,double,double,double) ;
+ int GdipAddPathRectangle (int *,double,double,double,double) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipCreatePathIter (int **,int *) ;
+ int GdipDeletePath (int *) ;
+ int GdipDeletePathIter (int *) ;
+ int GdipPathIterHasCurve (int *,int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int TRUE ;
+ int expect (int ,int ) ;
 
 __attribute__((used)) static void test_hascurve(void)
 {
@@ -43,13 +43,13 @@ __attribute__((used)) static void test_hascurve(void)
     stat = GdipCreatePathIter(&iter, path);
     expect(Ok, stat);
 
-    /* NULL args
-       BOOL out argument is local in wrapper class method,
-       so it always has not-NULL address */
-    stat = GdipPathIterHasCurve(NULL, &hasCurve);
+
+
+
+    stat = GdipPathIterHasCurve(((void*)0), &hasCurve);
     expect(InvalidParameter, stat);
 
-    /* valid args */
+
     stat = GdipPathIterHasCurve(iter, &hasCurve);
     expect(Ok, stat);
     expect(FALSE, hasCurve);

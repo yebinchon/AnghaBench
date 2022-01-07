@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  i2c_cmd_handle_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACK_CHECK_EN ; 
- scalar_t__ ESP_ERR_TIMEOUT ; 
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  I2C_MASTER_RX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MASTER_TX_BUF_DISABLE ; 
- int /*<<< orphan*/  I2C_MODE_MASTER ; 
- int WRITE_BIT ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_cmd_link_create () ; 
- int /*<<< orphan*/  i2c_cmd_link_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_driver_install (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ i2c_master_cmd_begin (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  i2c_master_driver_initialize () ; 
- int /*<<< orphan*/  i2c_master_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_stop (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_master_write_byte (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i2c_port ; 
- int portTICK_RATE_MS ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int uint8_t ;
+typedef int i2c_cmd_handle_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ int ACK_CHECK_EN ;
+ scalar_t__ ESP_ERR_TIMEOUT ;
+ scalar_t__ ESP_OK ;
+ int I2C_MASTER_RX_BUF_DISABLE ;
+ int I2C_MASTER_TX_BUF_DISABLE ;
+ int I2C_MODE_MASTER ;
+ int WRITE_BIT ;
+ int fflush (int ) ;
+ int i2c_cmd_link_create () ;
+ int i2c_cmd_link_delete (int ) ;
+ int i2c_driver_delete (int ) ;
+ int i2c_driver_install (int ,int ,int ,int ,int ) ;
+ scalar_t__ i2c_master_cmd_begin (int ,int ,int) ;
+ int i2c_master_driver_initialize () ;
+ int i2c_master_start (int ) ;
+ int i2c_master_stop (int ) ;
+ int i2c_master_write_byte (int ,int,int ) ;
+ int i2c_port ;
+ int portTICK_RATE_MS ;
+ int printf (char*,...) ;
+ int stdout ;
 
 __attribute__((used)) static int do_i2cdetect_cmd(int argc, char **argv)
 {

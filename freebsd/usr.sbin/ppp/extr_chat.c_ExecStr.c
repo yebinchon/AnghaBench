@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct physical {int fd; TYPE_1__* dl; } ;
-typedef  int /*<<< orphan*/  pid_t ;
-struct TYPE_2__ {int /*<<< orphan*/  bundle; } ;
+typedef int pid_t ;
+struct TYPE_2__ {int bundle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_SETFD ; 
- int /*<<< orphan*/  ID0realuid () ; 
- int /*<<< orphan*/  LogCHAT ; 
- int /*<<< orphan*/  LogWARN ; 
- int MAXARGS ; 
- int MakeArgs (char*,char**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  O_RDWR ; 
- int PARSE_NOHASH ; 
- int PARSE_REDUCE ; 
- int STDERR_FILENO ; 
- int STDIN_FILENO ; 
- int STDOUT_FILENO ; 
- int /*<<< orphan*/  VECSIZE (char**) ; 
- int WEXITSTATUS (int) ; 
- scalar_t__ WIFEXITED (int) ; 
- scalar_t__ WIFSIGNALED (int) ; 
- int /*<<< orphan*/  WNOHANG ; 
- int /*<<< orphan*/  WTERMSIG (int) ; 
- int /*<<< orphan*/  _PATH_DEVNULL ; 
- int /*<<< orphan*/  _PATH_TTY ; 
- int /*<<< orphan*/  _exit (int) ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  command_Expand (char**,int,char const* const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int dup (int) ; 
- int /*<<< orphan*/  dup2 (int,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  execvp (char*,char**) ; 
- int /*<<< orphan*/  fcntl (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  fork () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int getdtablesize () ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ pipe (int*) ; 
- int read (int,char*,int) ; 
- int /*<<< orphan*/  setuid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- char* strdup (char*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_TermService () ; 
- int /*<<< orphan*/  waitpid (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ ) ; 
+
+ int F_SETFD ;
+ int ID0realuid () ;
+ int LogCHAT ;
+ int LogWARN ;
+ int MAXARGS ;
+ int MakeArgs (char*,char**,int ,int) ;
+ int O_RDWR ;
+ int PARSE_NOHASH ;
+ int PARSE_REDUCE ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int VECSIZE (char**) ;
+ int WEXITSTATUS (int) ;
+ scalar_t__ WIFEXITED (int) ;
+ scalar_t__ WIFSIGNALED (int) ;
+ int WNOHANG ;
+ int WTERMSIG (int) ;
+ int _PATH_DEVNULL ;
+ int _PATH_TTY ;
+ int _exit (int) ;
+ int close (int) ;
+ int command_Expand (char**,int,char const* const*,int ,int ,int ) ;
+ int dup (int) ;
+ int dup2 (int,int) ;
+ int errno ;
+ int execvp (char*,char**) ;
+ int fcntl (int,int ,int) ;
+ int fork () ;
+ int fprintf (int ,char*,char*,char*) ;
+ int free (char*) ;
+ int getdtablesize () ;
+ int getpid () ;
+ int log_Printf (int ,char*,...) ;
+ int open (int ,int ) ;
+ scalar_t__ pipe (int*) ;
+ int read (int,char*,int) ;
+ int setuid (int ) ;
+ int stderr ;
+ char* strdup (char*) ;
+ char* strerror (int ) ;
+ int timer_TermService () ;
+ int waitpid (int ,int*,int ) ;
 
 __attribute__((used)) static void
 ExecStr(struct physical *physical, char *command, char *out, int olen)
@@ -79,7 +79,7 @@ ExecStr(struct physical *physical, char *command, char *out, int olen)
 
   if (pipe(fids) < 0) {
     log_Printf(LogCHAT, "Unable to create pipe in ExecStr: %s\n",
-	      strerror(errno));
+       strerror(errno));
     *out = '\0';
     return;
   }
@@ -95,12 +95,12 @@ ExecStr(struct physical *physical, char *command, char *out, int olen)
     dup2(STDIN_FILENO, STDOUT_FILENO);
     close(3);
     if (open(_PATH_TTY, O_RDWR) != 3)
-      open(_PATH_DEVNULL, O_RDWR);	/* Leave it closed if it fails... */
+      open(_PATH_DEVNULL, O_RDWR);
     for (i = getdtablesize(); i > 3; i--)
       fcntl(i, F_SETFD, 1);
-#ifndef NOSUID
+
     setuid(ID0realuid());
-#endif
+
     execvp(argv[0], argv);
     fprintf(stderr, "execvp: %s: %s\n", argv[0], strerror(errno));
     _exit(127);
@@ -113,7 +113,7 @@ ExecStr(struct physical *physical, char *command, char *out, int olen)
     while (out < endout) {
       nb = read(fids[0], out, 1);
       if (nb <= 0)
-	break;
+ break;
       out++;
     }
     *out = '\0';

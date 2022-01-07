@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  state2 ;
-typedef  int /*<<< orphan*/  state ;
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+typedef int uint8_t ;
+typedef int state2 ;
+typedef int state ;
 struct TYPE_12__ {int bytestream_end; scalar_t__* one_state; } ;
-struct TYPE_13__ {int version; int micro_version; int ac; int colorspace; int chroma_h_shift; int chroma_v_shift; int num_h_slices; int num_v_slices; int quant_table_count; int* context_count; int*** initial_states; int ec; int intra; void* transparency; void* chroma_planes; TYPE_10__* avctx; int /*<<< orphan*/ * quant_tables; scalar_t__ height; scalar_t__ width; scalar_t__ plane_count; scalar_t__* state_transition; TYPE_1__ c; } ;
-struct TYPE_11__ {int extradata_size; int bits_per_raw_sample; int debug; int /*<<< orphan*/  extradata; } ;
-typedef  TYPE_1__ RangeCoder ;
-typedef  TYPE_2__ FFV1Context ;
+struct TYPE_13__ {int version; int micro_version; int ac; int colorspace; int chroma_h_shift; int chroma_v_shift; int num_h_slices; int num_v_slices; int quant_table_count; int* context_count; int*** initial_states; int ec; int intra; void* transparency; void* chroma_planes; TYPE_10__* avctx; int * quant_tables; scalar_t__ height; scalar_t__ width; scalar_t__ plane_count; scalar_t__* state_transition; TYPE_1__ c; } ;
+struct TYPE_11__ {int extradata_size; int bits_per_raw_sample; int debug; int extradata; } ;
+typedef TYPE_1__ RangeCoder ;
+typedef TYPE_2__ FFV1Context ;
 
-/* Variables and functions */
- int AC_RANGE_CUSTOM_TAB ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_CRC_32_IEEE ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- unsigned int AV_RB32 (scalar_t__) ; 
- int CONTEXT_SIZE ; 
- int FF_DEBUG_PICT_INFO ; 
- scalar_t__ MAX_QUANT_TABLES ; 
- unsigned int av_crc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_crc_get_table (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_10__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ff_build_rac_states (TYPE_1__* const,double,int) ; 
- int ff_ffv1_allocate_initial_states (TYPE_2__*) ; 
- int /*<<< orphan*/  ff_init_range_decoder (TYPE_1__* const,int /*<<< orphan*/ ,int) ; 
- void* get_rac (TYPE_1__* const,int /*<<< orphan*/ *) ; 
- int get_symbol (TYPE_1__* const,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int,int) ; 
- int read_quant_tables (TYPE_1__* const,int /*<<< orphan*/ ) ; 
+
+ int AC_RANGE_CUSTOM_TAB ;
+ int AVERROR_INVALIDDATA ;
+ int AV_CRC_32_IEEE ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ unsigned int AV_RB32 (scalar_t__) ;
+ int CONTEXT_SIZE ;
+ int FF_DEBUG_PICT_INFO ;
+ scalar_t__ MAX_QUANT_TABLES ;
+ unsigned int av_crc (int ,int ,int ,int) ;
+ int av_crc_get_table (int ) ;
+ int av_log (TYPE_10__*,int ,char*,...) ;
+ int ff_build_rac_states (TYPE_1__* const,double,int) ;
+ int ff_ffv1_allocate_initial_states (TYPE_2__*) ;
+ int ff_init_range_decoder (TYPE_1__* const,int ,int) ;
+ void* get_rac (TYPE_1__* const,int *) ;
+ int get_symbol (TYPE_1__* const,int *,int) ;
+ int memset (int *,int,int) ;
+ int read_quant_tables (TYPE_1__* const,int ) ;
 
 __attribute__((used)) static int read_extra_header(FFV1Context *f)
 {
@@ -75,15 +75,15 @@ __attribute__((used)) static int read_extra_header(FFV1Context *f)
             f->state_transition[i] = get_symbol(c, state, 1) + c->one_state[i];
     }
 
-    f->colorspace                 = get_symbol(c, state, 0); //YUV cs type
+    f->colorspace = get_symbol(c, state, 0);
     f->avctx->bits_per_raw_sample = get_symbol(c, state, 0);
-    f->chroma_planes              = get_rac(c, state);
-    f->chroma_h_shift             = get_symbol(c, state, 0);
-    f->chroma_v_shift             = get_symbol(c, state, 0);
-    f->transparency               = get_rac(c, state);
-    f->plane_count                = 1 + (f->chroma_planes || f->version<4) + f->transparency;
-    f->num_h_slices               = 1 + get_symbol(c, state, 0);
-    f->num_v_slices               = 1 + get_symbol(c, state, 0);
+    f->chroma_planes = get_rac(c, state);
+    f->chroma_h_shift = get_symbol(c, state, 0);
+    f->chroma_v_shift = get_symbol(c, state, 0);
+    f->transparency = get_rac(c, state);
+    f->plane_count = 1 + (f->chroma_planes || f->version<4) + f->transparency;
+    f->num_h_slices = 1 + get_symbol(c, state, 0);
+    f->num_v_slices = 1 + get_symbol(c, state, 0);
 
     if (f->chroma_h_shift > 4U || f->chroma_v_shift > 4U) {
         av_log(f->avctx, AV_LOG_ERROR, "chroma shift parameters %d %d are invalid\n",
@@ -91,7 +91,7 @@ __attribute__((used)) static int read_extra_header(FFV1Context *f)
         return AVERROR_INVALIDDATA;
     }
 
-    if (f->num_h_slices > (unsigned)f->width  || !f->num_h_slices ||
+    if (f->num_h_slices > (unsigned)f->width || !f->num_h_slices ||
         f->num_v_slices > (unsigned)f->height || !f->num_v_slices
        ) {
         av_log(f->avctx, AV_LOG_ERROR, "slice count invalid\n");

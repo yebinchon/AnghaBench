@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int attenuation; size_t lfo_pos; scalar_t__ output; } ;
-struct TYPE_4__ {int alfows; int alfos; int /*<<< orphan*/  tl; } ;
+struct TYPE_4__ {int alfows; int alfos; int tl; } ;
 struct Slot {TYPE_2__ state; TYPE_1__ regs; } ;
-typedef  scalar_t__ s16 ;
+typedef scalar_t__ s16 ;
 struct TYPE_6__ {int* saw_table; int* square_table; int* tri_table; int* noise_table; } ;
 
-/* Variables and functions */
- TYPE_3__ alfo ; 
- scalar_t__ apply_volume (int /*<<< orphan*/ ,int,scalar_t__) ; 
+
+ TYPE_3__ alfo ;
+ scalar_t__ apply_volume (int ,int,scalar_t__) ;
 
 void op5(struct Slot * slot)
 {

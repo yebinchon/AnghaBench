@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  found_entry; } ;
-typedef  TYPE_1__ MMDB_lookup_result_s ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FATAL (char*,int /*<<< orphan*/ ) ; 
- int MMDB_SUCCESS ; 
- TYPE_1__ MMDB_lookup_string (int /*<<< orphan*/ ,char const*,int*,int*) ; 
- int /*<<< orphan*/  MMDB_strerror (int) ; 
- int /*<<< orphan*/  mmdb ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int found_entry; } ;
+typedef TYPE_1__ MMDB_lookup_result_s ;
+
+
+ int FATAL (char*,int ) ;
+ int MMDB_SUCCESS ;
+ TYPE_1__ MMDB_lookup_string (int ,char const*,int*,int*) ;
+ int MMDB_strerror (int) ;
+ int mmdb ;
 
 __attribute__((used)) static int
 geoip_lookup (MMDB_lookup_result_s * res, const char *ip)

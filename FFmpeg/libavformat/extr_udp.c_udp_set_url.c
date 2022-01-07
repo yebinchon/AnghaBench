@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_storage {int dummy; } ;
-struct addrinfo {int ai_addrlen; int /*<<< orphan*/  ai_addr; } ;
-typedef  int /*<<< orphan*/  URLContext ;
+struct addrinfo {int ai_addrlen; int ai_addr; } ;
+typedef int URLContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- struct addrinfo* ff_ip_resolve_host (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- int /*<<< orphan*/  memcpy (struct sockaddr_storage*,int /*<<< orphan*/ ,int) ; 
+
+ int AF_UNSPEC ;
+ int AVERROR (int ) ;
+ int EIO ;
+ int SOCK_DGRAM ;
+ struct addrinfo* ff_ip_resolve_host (int *,char const*,int,int ,int ,int ) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ int memcpy (struct sockaddr_storage*,int ,int) ;
 
 __attribute__((used)) static int udp_set_url(URLContext *h,
                        struct sockaddr_storage *addr,

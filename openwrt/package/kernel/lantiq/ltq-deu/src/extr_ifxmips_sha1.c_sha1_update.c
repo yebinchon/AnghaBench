@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u8 ;
+typedef int u32 ;
 struct shash_desc {int dummy; } ;
-struct sha1_ctx {int count; int /*<<< orphan*/ * buffer; int /*<<< orphan*/  state; } ;
+struct sha1_ctx {int count; int * buffer; int state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,unsigned int) ; 
- int /*<<< orphan*/  sha1_transform (struct sha1_ctx*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- struct sha1_ctx* shash_desc_ctx (struct shash_desc*) ; 
+
+ int memcpy (int *,int const*,unsigned int) ;
+ int sha1_transform (struct sha1_ctx*,int ,int const*) ;
+ struct sha1_ctx* shash_desc_ctx (struct shash_desc*) ;
 
 __attribute__((used)) static int sha1_update(struct shash_desc * desc, const u8 *data,
             unsigned int len)

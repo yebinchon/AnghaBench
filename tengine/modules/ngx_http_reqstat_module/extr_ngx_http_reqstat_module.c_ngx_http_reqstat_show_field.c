@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_6__ ;
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  size_t ngx_uint_t ;
+
+
+typedef struct TYPE_18__ TYPE_6__ ;
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
+typedef size_t ngx_uint_t ;
 struct TYPE_16__ {char* data; scalar_t__ len; } ;
-typedef  TYPE_4__ ngx_str_t ;
-typedef  int ngx_int_t ;
-struct TYPE_17__ {TYPE_2__* user_defined_str; int /*<<< orphan*/ * user_select; } ;
-typedef  TYPE_5__ ngx_http_reqstat_conf_t ;
-struct TYPE_18__ {int /*<<< orphan*/  log; TYPE_1__* args; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_6__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
+typedef TYPE_4__ ngx_str_t ;
+typedef int ngx_int_t ;
+struct TYPE_17__ {TYPE_2__* user_defined_str; int * user_select; } ;
+typedef TYPE_5__ ngx_http_reqstat_conf_t ;
+struct TYPE_18__ {int log; TYPE_1__* args; int pool; } ;
+typedef TYPE_6__ ngx_conf_t ;
+typedef int ngx_command_t ;
 struct TYPE_15__ {scalar_t__ len; char* data; } ;
 struct TYPE_14__ {size_t nelts; TYPE_4__* elts; } ;
 struct TYPE_13__ {int nelts; TYPE_4__* elts; } ;
 struct TYPE_12__ {scalar_t__ index; TYPE_3__ name; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- size_t NGX_HTTP_REQSTAT_RSRV ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- TYPE_11__* REQSTAT_RSRV_VARIABLES ; 
- int /*<<< orphan*/ * ngx_array_create (int /*<<< orphan*/ ,int,int) ; 
- int* ngx_array_push_n (int /*<<< orphan*/ *,int) ; 
- TYPE_5__* ngx_http_conf_get_module_main_conf (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_reqstat_module ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_4__*) ; 
- scalar_t__ ngx_strncmp (char*,char*,scalar_t__) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ size_t NGX_HTTP_REQSTAT_RSRV ;
+ int NGX_LOG_EMERG ;
+ TYPE_11__* REQSTAT_RSRV_VARIABLES ;
+ int * ngx_array_create (int ,int,int) ;
+ int* ngx_array_push_n (int *,int) ;
+ TYPE_5__* ngx_http_conf_get_module_main_conf (TYPE_6__*,int ) ;
+ int ngx_http_reqstat_module ;
+ int ngx_log_error (int ,int ,int ,char*,TYPE_4__*) ;
+ scalar_t__ ngx_strncmp (char*,char*,scalar_t__) ;
 
 __attribute__((used)) static char *
 ngx_http_reqstat_show_field(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    ngx_int_t                  valid, *index;
-    ngx_str_t                 *value, *user;
-    ngx_uint_t                 i, j;
-    ngx_http_reqstat_conf_t   *rmcf, *rlcf;
+    ngx_int_t valid, *index;
+    ngx_str_t *value, *user;
+    ngx_uint_t i, j;
+    ngx_http_reqstat_conf_t *rmcf, *rlcf;
 
     rlcf = conf;
     rmcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_reqstat_module);
 
     rlcf->user_select = ngx_array_create(cf->pool, cf->args->nelts - 1,
                                          sizeof(ngx_int_t));
-    if (rlcf->user_select == NULL) {
+    if (rlcf->user_select == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 
     index = ngx_array_push_n(rlcf->user_select, cf->args->nelts - 1);
-    if (index == NULL) {
+    if (index == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

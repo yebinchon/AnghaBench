@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  nestVal; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int nestVal; } ;
 struct TYPE_6__ {scalar_t__ valType; TYPE_1__ v; } ;
-typedef  TYPE_2__ tOptionValue ;
+typedef TYPE_2__ tOptionValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AGFREE (TYPE_2__ const*) ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ OPARG_TYPE_HIERARCHY ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  unload_arg_list (int /*<<< orphan*/ ) ; 
+
+ int AGFREE (TYPE_2__ const*) ;
+ int EINVAL ;
+ scalar_t__ OPARG_TYPE_HIERARCHY ;
+ int errno ;
+ int unload_arg_list (int ) ;
 
 void
 optionUnloadNested(tOptionValue const * opt_val)
 {
-    if (opt_val == NULL) return;
+    if (opt_val == ((void*)0)) return;
     if (opt_val->valType != OPARG_TYPE_HIERARCHY) {
         errno = EINVAL;
         return;

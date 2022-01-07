@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct sock {int /*<<< orphan*/  (* sk_data_ready ) (struct sock*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  sk_receive_queue; } ;
-struct sk_buff {int /*<<< orphan*/  len; int /*<<< orphan*/  truesize; scalar_t__ data; } ;
-struct TYPE_4__ {int /*<<< orphan*/  eg_info; } ;
-struct k_message {TYPE_1__ content; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct sock {int (* sk_data_ready ) (struct sock*,int ) ;int sk_receive_queue; } ;
+struct sk_buff {int len; int truesize; scalar_t__ data; } ;
+struct TYPE_4__ {int eg_info; } ;
+struct k_message {TYPE_1__ content; int type; } ;
 struct atm_vcc {int dummy; } ;
-struct TYPE_5__ {int /*<<< orphan*/  ctrl_info; } ;
-typedef  TYPE_2__ eg_cache_entry ;
+struct TYPE_5__ {int ctrl_info; } ;
+typedef TYPE_2__ eg_cache_entry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA_PLANE_PURGE ; 
- int /*<<< orphan*/  GFP_ATOMIC ; 
- struct sk_buff* alloc_skb (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atm_force_charge (struct atm_vcc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dprintk (char*) ; 
- int /*<<< orphan*/  memset (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printk (char*) ; 
- struct sock* sk_atm (struct atm_vcc*) ; 
- int /*<<< orphan*/  skb_put (struct sk_buff*,int) ; 
- int /*<<< orphan*/  skb_queue_tail (int /*<<< orphan*/ *,struct sk_buff*) ; 
- int /*<<< orphan*/  stub1 (struct sock*,int /*<<< orphan*/ ) ; 
+
+ int DATA_PLANE_PURGE ;
+ int GFP_ATOMIC ;
+ struct sk_buff* alloc_skb (int,int ) ;
+ int atm_force_charge (struct atm_vcc*,int ) ;
+ int dprintk (char*) ;
+ int memset (scalar_t__,int ,int) ;
+ int printk (char*) ;
+ struct sock* sk_atm (struct atm_vcc*) ;
+ int skb_put (struct sk_buff*,int) ;
+ int skb_queue_tail (int *,struct sk_buff*) ;
+ int stub1 (struct sock*,int ) ;
 
 __attribute__((used)) static void purge_egress_shortcut(struct atm_vcc *vcc, eg_cache_entry *entry)
 {
-	struct sock *sk;
-	struct k_message *purge_msg;
-	struct sk_buff *skb;
+ struct sock *sk;
+ struct k_message *purge_msg;
+ struct sk_buff *skb;
 
-	dprintk("mpoa: purge_egress_shortcut: entering\n");
-	if (vcc == NULL) {
-		printk("mpoa: purge_egress_shortcut: vcc == NULL\n");
-		return;
-	}
+ dprintk("mpoa: purge_egress_shortcut: entering\n");
+ if (vcc == ((void*)0)) {
+  printk("mpoa: purge_egress_shortcut: vcc == NULL\n");
+  return;
+ }
 
-	skb = alloc_skb(sizeof(struct k_message), GFP_ATOMIC);
-	if (skb == NULL) {
-		 printk("mpoa: purge_egress_shortcut: out of memory\n");
-		return;
-	}
+ skb = alloc_skb(sizeof(struct k_message), GFP_ATOMIC);
+ if (skb == ((void*)0)) {
+   printk("mpoa: purge_egress_shortcut: out of memory\n");
+  return;
+ }
 
-	skb_put(skb, sizeof(struct k_message));
-	memset(skb->data, 0, sizeof(struct k_message));
-	purge_msg = (struct k_message *)skb->data;
-	purge_msg->type = DATA_PLANE_PURGE;
-	if (entry != NULL)
-		purge_msg->content.eg_info = entry->ctrl_info;
+ skb_put(skb, sizeof(struct k_message));
+ memset(skb->data, 0, sizeof(struct k_message));
+ purge_msg = (struct k_message *)skb->data;
+ purge_msg->type = DATA_PLANE_PURGE;
+ if (entry != ((void*)0))
+  purge_msg->content.eg_info = entry->ctrl_info;
 
-	atm_force_charge(vcc, skb->truesize);
+ atm_force_charge(vcc, skb->truesize);
 
-	sk = sk_atm(vcc);
-	skb_queue_tail(&sk->sk_receive_queue, skb);
-	sk->sk_data_ready(sk, skb->len);
-	dprintk("mpoa: purge_egress_shortcut: exiting:\n");
+ sk = sk_atm(vcc);
+ skb_queue_tail(&sk->sk_receive_queue, skb);
+ sk->sk_data_ready(sk, skb->len);
+ dprintk("mpoa: purge_egress_shortcut: exiting:\n");
 
-	return;
+ return;
 }

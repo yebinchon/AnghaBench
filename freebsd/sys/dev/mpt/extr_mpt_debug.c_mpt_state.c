@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int32_t ;
 
-/* Variables and functions */
-#define  MPT_DB_STATE_FAULT 131 
-#define  MPT_DB_STATE_READY 130 
-#define  MPT_DB_STATE_RESET 129 
-#define  MPT_DB_STATE_RUNNING 128 
- int MPT_STATE (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int32_t ;
+
+
+
+
+
+
+ int MPT_STATE (int ) ;
 
 __attribute__((used)) static const char *
 mpt_state(u_int32_t mb)
 {
-	const char *text;
+ const char *text;
 
-	switch (MPT_STATE(mb)) {
-		case MPT_DB_STATE_RESET:  text = "Reset";   break;
-		case MPT_DB_STATE_READY:  text = "Ready";   break;
-		case MPT_DB_STATE_RUNNING:text = "Running"; break;
-		case MPT_DB_STATE_FAULT:  text = "Fault";   break;
-		default: 		  text = "Unknown"; break;
-	}
-	return text;
+ switch (MPT_STATE(mb)) {
+  case 129: text = "Reset"; break;
+  case 130: text = "Ready"; break;
+  case 128:text = "Running"; break;
+  case 131: text = "Fault"; break;
+  default: text = "Unknown"; break;
+ }
+ return text;
 }

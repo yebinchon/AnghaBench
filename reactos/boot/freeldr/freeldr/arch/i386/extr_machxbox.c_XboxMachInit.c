@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_2__ {int /*<<< orphan*/  HwIdle; int /*<<< orphan*/  HwDetect; int /*<<< orphan*/  InitializeBootDevices; int /*<<< orphan*/  GetTime; int /*<<< orphan*/  DiskGetCacheableBlockCount; int /*<<< orphan*/  DiskGetDriveGeometry; int /*<<< orphan*/  DiskReadLogicalSectors; int /*<<< orphan*/  GetFloppyCount; int /*<<< orphan*/  GetExtendedBIOSData; int /*<<< orphan*/  GetMemoryMap; int /*<<< orphan*/  PrepareForReactOS; int /*<<< orphan*/  Beep; int /*<<< orphan*/  VideoSync; int /*<<< orphan*/  VideoGetPaletteColor; int /*<<< orphan*/  VideoSetPaletteColor; int /*<<< orphan*/  VideoIsPaletteFixed; int /*<<< orphan*/  VideoCopyOffScreenBufferToVRAM; int /*<<< orphan*/  VideoPutChar; int /*<<< orphan*/  VideoHideShowTextCursor; int /*<<< orphan*/  VideoSetTextCursorPosition; int /*<<< orphan*/  VideoGetFontsFromFirmware; int /*<<< orphan*/  VideoGetBufferSize; int /*<<< orphan*/  VideoGetDisplaySize; int /*<<< orphan*/  VideoSetDisplayMode; int /*<<< orphan*/  VideoClearScreen; int /*<<< orphan*/  ConsGetCh; int /*<<< orphan*/  ConsKbHit; int /*<<< orphan*/  ConsPutChar; } ;
 
-/* Variables and functions */
- TYPE_1__ MachVtbl ; 
- int /*<<< orphan*/  PcBeep ; 
- int /*<<< orphan*/  PcInitializeBootDevices ; 
- int /*<<< orphan*/  XboxConsGetCh ; 
- int /*<<< orphan*/  XboxConsKbHit ; 
- int /*<<< orphan*/  XboxConsPutChar ; 
- int /*<<< orphan*/  XboxDiskGetCacheableBlockCount ; 
- int /*<<< orphan*/  XboxDiskGetDriveGeometry ; 
- int /*<<< orphan*/  XboxDiskReadLogicalSectors ; 
- int /*<<< orphan*/  XboxGetExtendedBIOSData ; 
- int /*<<< orphan*/  XboxGetFloppyCount ; 
- int /*<<< orphan*/  XboxGetTime ; 
- int /*<<< orphan*/  XboxHwDetect ; 
- int /*<<< orphan*/  XboxHwIdle ; 
- int /*<<< orphan*/  XboxMemGetMemoryMap ; 
- int /*<<< orphan*/  XboxMemInit () ; 
- int /*<<< orphan*/  XboxPrepareForReactOS ; 
- int /*<<< orphan*/  XboxSetLED (char*) ; 
- int /*<<< orphan*/  XboxVideoClearScreen ; 
- int /*<<< orphan*/  XboxVideoCopyOffScreenBufferToVRAM ; 
- int /*<<< orphan*/  XboxVideoGetBufferSize ; 
- int /*<<< orphan*/  XboxVideoGetDisplaySize ; 
- int /*<<< orphan*/  XboxVideoGetFontsFromFirmware ; 
- int /*<<< orphan*/  XboxVideoGetPaletteColor ; 
- int /*<<< orphan*/  XboxVideoHideShowTextCursor ; 
- int /*<<< orphan*/  XboxVideoInit () ; 
- int /*<<< orphan*/  XboxVideoIsPaletteFixed ; 
- int /*<<< orphan*/  XboxVideoPutChar ; 
- int /*<<< orphan*/  XboxVideoSetDisplayMode ; 
- int /*<<< orphan*/  XboxVideoSetPaletteColor ; 
- int /*<<< orphan*/  XboxVideoSetTextCursorPosition ; 
- int /*<<< orphan*/  XboxVideoSync ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_2__ {int HwIdle; int HwDetect; int InitializeBootDevices; int GetTime; int DiskGetCacheableBlockCount; int DiskGetDriveGeometry; int DiskReadLogicalSectors; int GetFloppyCount; int GetExtendedBIOSData; int GetMemoryMap; int PrepareForReactOS; int Beep; int VideoSync; int VideoGetPaletteColor; int VideoSetPaletteColor; int VideoIsPaletteFixed; int VideoCopyOffScreenBufferToVRAM; int VideoPutChar; int VideoHideShowTextCursor; int VideoSetTextCursorPosition; int VideoGetFontsFromFirmware; int VideoGetBufferSize; int VideoGetDisplaySize; int VideoSetDisplayMode; int VideoClearScreen; int ConsGetCh; int ConsKbHit; int ConsPutChar; } ;
+
+
+ TYPE_1__ MachVtbl ;
+ int PcBeep ;
+ int PcInitializeBootDevices ;
+ int XboxConsGetCh ;
+ int XboxConsKbHit ;
+ int XboxConsPutChar ;
+ int XboxDiskGetCacheableBlockCount ;
+ int XboxDiskGetDriveGeometry ;
+ int XboxDiskReadLogicalSectors ;
+ int XboxGetExtendedBIOSData ;
+ int XboxGetFloppyCount ;
+ int XboxGetTime ;
+ int XboxHwDetect ;
+ int XboxHwIdle ;
+ int XboxMemGetMemoryMap ;
+ int XboxMemInit () ;
+ int XboxPrepareForReactOS ;
+ int XboxSetLED (char*) ;
+ int XboxVideoClearScreen ;
+ int XboxVideoCopyOffScreenBufferToVRAM ;
+ int XboxVideoGetBufferSize ;
+ int XboxVideoGetDisplaySize ;
+ int XboxVideoGetFontsFromFirmware ;
+ int XboxVideoGetPaletteColor ;
+ int XboxVideoHideShowTextCursor ;
+ int XboxVideoInit () ;
+ int XboxVideoIsPaletteFixed ;
+ int XboxVideoPutChar ;
+ int XboxVideoSetDisplayMode ;
+ int XboxVideoSetPaletteColor ;
+ int XboxVideoSetTextCursorPosition ;
+ int XboxVideoSync ;
 
 VOID
 XboxMachInit(const char *CmdLine)
 {
-    /* Set LEDs to red before anything is initialized */
+
     XboxSetLED("rrrr");
 
-    /* Initialize our stuff */
+
     XboxMemInit();
     XboxVideoInit();
 
-    /* Setup vtbl */
+
     MachVtbl.ConsPutChar = XboxConsPutChar;
     MachVtbl.ConsKbHit = XboxConsKbHit;
     MachVtbl.ConsGetCh = XboxConsGetCh;
@@ -88,6 +88,6 @@ XboxMachInit(const char *CmdLine)
     MachVtbl.HwDetect = XboxHwDetect;
     MachVtbl.HwIdle = XboxHwIdle;
 
-    /* Set LEDs to orange after init */
+
     XboxSetLED("oooo");
 }

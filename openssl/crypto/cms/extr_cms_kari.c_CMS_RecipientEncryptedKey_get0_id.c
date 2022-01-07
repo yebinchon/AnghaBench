@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_NAME ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int X509_NAME ;
 struct TYPE_9__ {TYPE_2__* rKeyId; TYPE_1__* issuerAndSerialNumber; } ;
 struct TYPE_11__ {scalar_t__ type; TYPE_3__ d; } ;
 struct TYPE_10__ {TYPE_5__* rid; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * other; int /*<<< orphan*/ * date; int /*<<< orphan*/ * subjectKeyIdentifier; } ;
-struct TYPE_7__ {int /*<<< orphan*/ * serialNumber; int /*<<< orphan*/ * issuer; } ;
-typedef  TYPE_4__ CMS_RecipientEncryptedKey ;
-typedef  int /*<<< orphan*/  CMS_OtherKeyAttribute ;
-typedef  TYPE_5__ CMS_KeyAgreeRecipientIdentifier ;
-typedef  int /*<<< orphan*/  ASN1_OCTET_STRING ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
-typedef  int /*<<< orphan*/  ASN1_GENERALIZEDTIME ;
+struct TYPE_8__ {int * other; int * date; int * subjectKeyIdentifier; } ;
+struct TYPE_7__ {int * serialNumber; int * issuer; } ;
+typedef TYPE_4__ CMS_RecipientEncryptedKey ;
+typedef int CMS_OtherKeyAttribute ;
+typedef TYPE_5__ CMS_KeyAgreeRecipientIdentifier ;
+typedef int ASN1_OCTET_STRING ;
+typedef int ASN1_INTEGER ;
+typedef int ASN1_GENERALIZEDTIME ;
 
-/* Variables and functions */
- scalar_t__ CMS_REK_ISSUER_SERIAL ; 
- scalar_t__ CMS_REK_KEYIDENTIFIER ; 
+
+ scalar_t__ CMS_REK_ISSUER_SERIAL ;
+ scalar_t__ CMS_REK_KEYIDENTIFIER ;
 
 int CMS_RecipientEncryptedKey_get0_id(CMS_RecipientEncryptedKey *rek,
                                       ASN1_OCTET_STRING **keyid,
@@ -45,11 +45,11 @@ int CMS_RecipientEncryptedKey_get0_id(CMS_RecipientEncryptedKey *rek,
         if (sno)
             *sno = rid->d.issuerAndSerialNumber->serialNumber;
         if (keyid)
-            *keyid = NULL;
+            *keyid = ((void*)0);
         if (tm)
-            *tm = NULL;
+            *tm = ((void*)0);
         if (other)
-            *other = NULL;
+            *other = ((void*)0);
     } else if (rid->type == CMS_REK_KEYIDENTIFIER) {
         if (keyid)
             *keyid = rid->d.rKeyId->subjectKeyIdentifier;
@@ -58,9 +58,9 @@ int CMS_RecipientEncryptedKey_get0_id(CMS_RecipientEncryptedKey *rek,
         if (other)
             *other = rid->d.rKeyId->other;
         if (issuer)
-            *issuer = NULL;
+            *issuer = ((void*)0);
         if (sno)
-            *sno = NULL;
+            *sno = ((void*)0);
     } else
         return 0;
     return 1;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timeval {long tv_usec; int /*<<< orphan*/  tv_sec; } ;
 
-/* Variables and functions */
- scalar_t__ isdigit (char) ; 
- int /*<<< orphan*/  strtol (char const*,char**,int) ; 
+
+
+
+struct timeval {long tv_usec; int tv_sec; } ;
+
+
+ scalar_t__ isdigit (char) ;
+ int strtol (char const*,char**,int) ;
 
 __attribute__((used)) static char * strtotimeval(const char *str, struct timeval *tv)
 {
   char *s;
-  long fs;			/* Fractional seconds */
+  long fs;
   int i;
 
   tv->tv_sec = strtol(str, &s, 10);
@@ -30,7 +30,7 @@ __attribute__((used)) static char * strtotimeval(const char *str, struct timeval
 
     for ( i = 0 ; i < 6 ; i++ ) {
       if ( !isdigit(*s) )
-	break;
+ break;
 
       fs *= 10;
       fs += *s++ - '0';

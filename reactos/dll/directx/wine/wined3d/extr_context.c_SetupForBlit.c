@@ -1,127 +1,127 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  (* p_glDisable ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glColorMask ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glLoadIdentity ) () ;int /*<<< orphan*/  (* p_glMatrixMode ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glTexEnvf ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float) ;int /*<<< orphan*/  (* p_glTexEnvi ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int (* p_glDisable ) (int ) ;int (* p_glColorMask ) (int ,int ,int ,int ) ;int (* p_glLoadIdentity ) () ;int (* p_glMatrixMode ) (int ) ;int (* p_glTexEnvf ) (int ,int ,float) ;int (* p_glTexEnvi ) (int ,int ,int ) ;} ;
 struct TYPE_10__ {TYPE_3__ gl; } ;
 struct TYPE_8__ {int textures; } ;
 struct wined3d_gl_info {scalar_t__* supported; TYPE_4__ gl_ops; TYPE_2__ limits; } ;
-struct wined3d_device {int /*<<< orphan*/  shader_priv; TYPE_1__* shader_backend; } ;
+struct wined3d_device {int shader_priv; TYPE_1__* shader_backend; } ;
 struct wined3d_context {scalar_t__ blit_w; scalar_t__ blit_h; scalar_t__* rev_tex_unit_map; void* last_was_rhw; void* last_was_blit; struct wined3d_gl_info* gl_info; } ;
 struct TYPE_11__ {scalar_t__ cx; scalar_t__ cy; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* shader_disable ) (int /*<<< orphan*/ ,struct wined3d_context*) ;} ;
-typedef  TYPE_5__ SIZE ;
-typedef  scalar_t__ DWORD ;
+struct TYPE_7__ {int (* shader_disable ) (int ,struct wined3d_context*) ;} ;
+typedef TYPE_5__ SIZE ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- size_t ARB_CLIP_CONTROL ; 
- size_t ARB_POINT_SPRITE ; 
- size_t ARB_SAMPLER_OBJECTS ; 
- size_t ARB_TEXTURE_CUBE_MAP ; 
- size_t ARB_TEXTURE_RECTANGLE ; 
- size_t EXT_SECONDARY_COLOR ; 
- size_t EXT_TEXTURE_LOD_BIAS ; 
- int /*<<< orphan*/  GL_ALPHA_TEST ; 
- int /*<<< orphan*/  GL_BLEND ; 
- int /*<<< orphan*/  GL_COLOR_SUM_EXT ; 
- int /*<<< orphan*/  GL_CULL_FACE ; 
- int /*<<< orphan*/  GL_DEPTH_TEST ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FOG ; 
- int /*<<< orphan*/  GL_LIGHTING ; 
- int /*<<< orphan*/  GL_LOWER_LEFT ; 
- int /*<<< orphan*/  GL_MODELVIEW ; 
- int /*<<< orphan*/  GL_NEGATIVE_ONE_TO_ONE ; 
- int /*<<< orphan*/  GL_POINT_SPRITE_ARB ; 
- int /*<<< orphan*/  GL_REPLACE ; 
- int /*<<< orphan*/  GL_SCISSOR_TEST ; 
- int /*<<< orphan*/  GL_STENCIL_TEST ; 
- int /*<<< orphan*/  GL_TEXTURE ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_3D ; 
- int /*<<< orphan*/  GL_TEXTURE_CUBE_MAP_ARB ; 
- int /*<<< orphan*/  GL_TEXTURE_ENV ; 
- int /*<<< orphan*/  GL_TEXTURE_ENV_MODE ; 
- int /*<<< orphan*/  GL_TEXTURE_FILTER_CONTROL_EXT ; 
- int /*<<< orphan*/  GL_TEXTURE_LOD_BIAS_EXT ; 
- int /*<<< orphan*/  GL_TEXTURE_RECTANGLE_ARB ; 
- int /*<<< orphan*/  GL_TRUE ; 
- int MAX_RENDER_TARGETS ; 
- scalar_t__ MAX_TEXTURES ; 
- int /*<<< orphan*/  STATE_RENDER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_SAMPLER (scalar_t__) ; 
- int /*<<< orphan*/  STATE_TEXTURESTAGE (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATE_TRANSFORM (scalar_t__) ; 
- int /*<<< orphan*/  STATE_VDECL ; 
- int /*<<< orphan*/  STATE_VIEWPORT ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- void* TRUE ; 
- size_t WINED3D_GL_LEGACY_CONTEXT ; 
- int /*<<< orphan*/  WINED3D_RS_ALPHABLENDENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_ALPHATESTENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_CLIPPING ; 
- int /*<<< orphan*/  WINED3D_RS_COLORWRITE (int) ; 
- int /*<<< orphan*/  WINED3D_RS_CULLMODE ; 
- int /*<<< orphan*/  WINED3D_RS_FOGENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_LIGHTING ; 
- int /*<<< orphan*/  WINED3D_RS_POINTSPRITEENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_SCISSORTESTENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_SPECULARENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_STENCILENABLE ; 
- int /*<<< orphan*/  WINED3D_RS_ZENABLE ; 
- int /*<<< orphan*/  WINED3D_TSS_COLOR_OP ; 
- scalar_t__ WINED3D_TS_PROJECTION ; 
- scalar_t__ WINED3D_TS_TEXTURE0 ; 
- scalar_t__ WINED3D_TS_WORLD_MATRIX (int /*<<< orphan*/ ) ; 
- scalar_t__ WINED3D_UNMAPPED_STAGE ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  context_active_texture (struct wined3d_context*,struct wined3d_gl_info const*,int) ; 
- int /*<<< orphan*/  context_enable_clip_distances (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  context_get_rt_size (struct wined3d_context*,TYPE_5__*) ; 
- int /*<<< orphan*/  context_invalidate_state (struct wined3d_context*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindSampler (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glClipControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glDisableWINE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_blit_dimension (struct wined3d_gl_info const*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub10 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub11 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub12 () ; 
- int /*<<< orphan*/  stub13 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float) ; 
- int /*<<< orphan*/  stub14 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub15 () ; 
- int /*<<< orphan*/  stub16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub17 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub18 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub19 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub20 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub21 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub22 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub23 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub24 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub25 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub26 (int /*<<< orphan*/ ,struct wined3d_context*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub5 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int /*<<< orphan*/ ) ; 
+
+ size_t ARB_CLIP_CONTROL ;
+ size_t ARB_POINT_SPRITE ;
+ size_t ARB_SAMPLER_OBJECTS ;
+ size_t ARB_TEXTURE_CUBE_MAP ;
+ size_t ARB_TEXTURE_RECTANGLE ;
+ size_t EXT_SECONDARY_COLOR ;
+ size_t EXT_TEXTURE_LOD_BIAS ;
+ int GL_ALPHA_TEST ;
+ int GL_BLEND ;
+ int GL_COLOR_SUM_EXT ;
+ int GL_CULL_FACE ;
+ int GL_DEPTH_TEST ;
+ int GL_EXTCALL (int ) ;
+ int GL_FOG ;
+ int GL_LIGHTING ;
+ int GL_LOWER_LEFT ;
+ int GL_MODELVIEW ;
+ int GL_NEGATIVE_ONE_TO_ONE ;
+ int GL_POINT_SPRITE_ARB ;
+ int GL_REPLACE ;
+ int GL_SCISSOR_TEST ;
+ int GL_STENCIL_TEST ;
+ int GL_TEXTURE ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_3D ;
+ int GL_TEXTURE_CUBE_MAP_ARB ;
+ int GL_TEXTURE_ENV ;
+ int GL_TEXTURE_ENV_MODE ;
+ int GL_TEXTURE_FILTER_CONTROL_EXT ;
+ int GL_TEXTURE_LOD_BIAS_EXT ;
+ int GL_TEXTURE_RECTANGLE_ARB ;
+ int GL_TRUE ;
+ int MAX_RENDER_TARGETS ;
+ scalar_t__ MAX_TEXTURES ;
+ int STATE_RENDER (int ) ;
+ int STATE_SAMPLER (scalar_t__) ;
+ int STATE_TEXTURESTAGE (scalar_t__,int ) ;
+ int STATE_TRANSFORM (scalar_t__) ;
+ int STATE_VDECL ;
+ int STATE_VIEWPORT ;
+ int TRACE (char*,...) ;
+ void* TRUE ;
+ size_t WINED3D_GL_LEGACY_CONTEXT ;
+ int WINED3D_RS_ALPHABLENDENABLE ;
+ int WINED3D_RS_ALPHATESTENABLE ;
+ int WINED3D_RS_CLIPPING ;
+ int WINED3D_RS_COLORWRITE (int) ;
+ int WINED3D_RS_CULLMODE ;
+ int WINED3D_RS_FOGENABLE ;
+ int WINED3D_RS_LIGHTING ;
+ int WINED3D_RS_POINTSPRITEENABLE ;
+ int WINED3D_RS_SCISSORTESTENABLE ;
+ int WINED3D_RS_SPECULARENABLE ;
+ int WINED3D_RS_STENCILENABLE ;
+ int WINED3D_RS_ZENABLE ;
+ int WINED3D_TSS_COLOR_OP ;
+ scalar_t__ WINED3D_TS_PROJECTION ;
+ scalar_t__ WINED3D_TS_TEXTURE0 ;
+ scalar_t__ WINED3D_TS_WORLD_MATRIX (int ) ;
+ scalar_t__ WINED3D_UNMAPPED_STAGE ;
+ int checkGLcall (char*) ;
+ int context_active_texture (struct wined3d_context*,struct wined3d_gl_info const*,int) ;
+ int context_enable_clip_distances (struct wined3d_context*,int ) ;
+ int context_get_rt_size (struct wined3d_context*,TYPE_5__*) ;
+ int context_invalidate_state (struct wined3d_context*,int ) ;
+ int glBindSampler (int ,int ) ;
+ int glClipControl (int ,int ) ;
+ int glDisableWINE (int ) ;
+ int set_blit_dimension (struct wined3d_gl_info const*,scalar_t__,scalar_t__) ;
+ int stub1 (int ) ;
+ int stub10 (int ,int ,int ) ;
+ int stub11 (int ) ;
+ int stub12 () ;
+ int stub13 (int ,int ,float) ;
+ int stub14 (int ) ;
+ int stub15 () ;
+ int stub16 (int ) ;
+ int stub17 (int ) ;
+ int stub18 (int ) ;
+ int stub19 (int ) ;
+ int stub2 (int ) ;
+ int stub20 (int ) ;
+ int stub21 (int ) ;
+ int stub22 (int ) ;
+ int stub23 (int ) ;
+ int stub24 (int ,int ,int ,int ) ;
+ int stub25 (int ) ;
+ int stub26 (int ,struct wined3d_context*) ;
+ int stub3 (int ) ;
+ int stub4 (int ) ;
+ int stub5 (int ,int ,int ) ;
+ int stub6 (int ) ;
+ int stub7 (int ) ;
+ int stub8 (int ) ;
+ int stub9 (int ) ;
 
 __attribute__((used)) static void SetupForBlit(const struct wined3d_device *device, struct wined3d_context *context)
 {
@@ -141,8 +141,8 @@ __attribute__((used)) static void SetupForBlit(const struct wined3d_device *devi
             set_blit_dimension(gl_info, rt_size.cx, rt_size.cy);
             context->blit_w = rt_size.cx;
             context->blit_h = rt_size.cy;
-            /* No need to dirtify here, the states are still dirtified because
-             * they weren't applied since the last SetupForBlit() call. */
+
+
         }
         TRACE("Context is already set up for blitting, nothing to do\n");
         return;
@@ -151,12 +151,12 @@ __attribute__((used)) static void SetupForBlit(const struct wined3d_device *devi
 
     if (gl_info->supported[WINED3D_GL_LEGACY_CONTEXT])
     {
-        /* Disable all textures. The caller can then bind a texture it wants to blit
-         * from
-         *
-         * The blitting code uses (for now) the fixed function pipeline, so make sure to reset all fixed
-         * function texture unit. No need to care for higher samplers
-         */
+
+
+
+
+
+
         for (i = gl_info->limits.textures - 1; i > 0 ; --i)
         {
             sampler = context->rev_tex_unit_map[i];
@@ -218,14 +218,14 @@ __attribute__((used)) static void SetupForBlit(const struct wined3d_device *devi
             checkGLcall("glTexEnvf GL_TEXTURE_LOD_BIAS_EXT ...");
         }
 
-        /* Setup transforms */
+
         gl_info->gl_ops.gl.p_glMatrixMode(GL_MODELVIEW);
         checkGLcall("glMatrixMode(GL_MODELVIEW)");
         gl_info->gl_ops.gl.p_glLoadIdentity();
         checkGLcall("glLoadIdentity()");
         context_invalidate_state(context, STATE_TRANSFORM(WINED3D_TS_WORLD_MATRIX(0)));
 
-        /* Other misc states */
+
         gl_info->gl_ops.gl.p_glDisable(GL_ALPHA_TEST);
         checkGLcall("glDisable(GL_ALPHA_TEST)");
         context_invalidate_state(context, STATE_RENDER(WINED3D_RS_ALPHATESTENABLE));
@@ -252,7 +252,7 @@ __attribute__((used)) static void SetupForBlit(const struct wined3d_device *devi
         context_invalidate_state(context, STATE_SAMPLER(sampler));
     }
 
-    /* Other misc states */
+
     gl_info->gl_ops.gl.p_glDisable(GL_DEPTH_TEST);
     checkGLcall("glDisable GL_DEPTH_TEST");
     context_invalidate_state(context, STATE_RENDER(WINED3D_RS_ZENABLE));
@@ -286,18 +286,18 @@ __attribute__((used)) static void SetupForBlit(const struct wined3d_device *devi
     }
 
     context->last_was_rhw = TRUE;
-    context_invalidate_state(context, STATE_VDECL); /* because of last_was_rhw = TRUE */
+    context_invalidate_state(context, STATE_VDECL);
 
     context_enable_clip_distances(context, 0);
     context_invalidate_state(context, STATE_RENDER(WINED3D_RS_CLIPPING));
 
-    /* FIXME: Make draw_textured_quad() able to work with a upper left origin. */
+
     if (gl_info->supported[ARB_CLIP_CONTROL])
         GL_EXTCALL(glClipControl(GL_LOWER_LEFT, GL_NEGATIVE_ONE_TO_ONE));
 
     set_blit_dimension(gl_info, rt_size.cx, rt_size.cy);
 
-    /* Disable shaders */
+
     device->shader_backend->shader_disable(device->shader_priv, context);
 
     context->blit_w = rt_size.cx;

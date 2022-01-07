@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct script_ctx {int /*<<< orphan*/ * state; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushcclosure (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  main_fns ; 
- int /*<<< orphan*/  push_module_table (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  register_package_fns (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  script_get_property ; 
- int /*<<< orphan*/  utils_fns ; 
+
+
+
+struct script_ctx {int * state; } ;
+typedef int lua_State ;
+
+
+ int lua_pop (int *,int) ;
+ int lua_pushcclosure (int *,int ,int) ;
+ int lua_pushinteger (int *,int) ;
+ int lua_setfield (int *,int,char*) ;
+ int main_fns ;
+ int push_module_table (int *,char*) ;
+ int register_package_fns (int *,char*,int ) ;
+ int script_get_property ;
+ int utils_fns ;
 
 __attribute__((used)) static void add_functions(struct script_ctx *ctx)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static void add_functions(struct script_ctx *ctx)
 
     register_package_fns(L, "mp", main_fns);
 
-    push_module_table(L, "mp"); // mp
+    push_module_table(L, "mp");
 
     lua_pushinteger(L, 0);
     lua_pushcclosure(L, script_get_property, 1);
@@ -40,7 +40,7 @@ __attribute__((used)) static void add_functions(struct script_ctx *ctx)
     lua_pushcclosure(L, script_get_property, 1);
     lua_setfield(L, -2, "get_property_osd");
 
-    lua_pop(L, 1); // -
+    lua_pop(L, 1);
 
     register_package_fns(L, "mp.utils", utils_fns);
 }

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WSADATA ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WSADATA ;
+typedef int WCHAR ;
+typedef int ULONG ;
 struct TYPE_5__ {int Ttl; } ;
-struct TYPE_4__ {scalar_t__ ai_addrlen; int /*<<< orphan*/  ai_addr; } ;
-typedef  int DWORD ;
+struct TYPE_4__ {scalar_t__ ai_addrlen; int ai_addr; } ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ AF_INET6 ; 
- int Address ; 
- scalar_t__* CanonName ; 
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  ConsoleCtrlHandler ; 
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ Family ; 
- int /*<<< orphan*/  FreeAddrInfoW (TYPE_1__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  IDS_PINGING_ADDRESS ; 
- int /*<<< orphan*/  IDS_PINGING_HOSTNAME ; 
- int /*<<< orphan*/  IDS_PING_SIZE ; 
- int /*<<< orphan*/  IDS_WINSOCK_FAIL ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- scalar_t__ Icmp6CreateFile () ; 
- int /*<<< orphan*/  IcmpCloseHandle (scalar_t__) ; 
- scalar_t__ IcmpCreateFile () ; 
- TYPE_2__ IpOptions ; 
- int /*<<< orphan*/  MAKEWORD (int,int) ; 
- int /*<<< orphan*/  ParseCmdLine (int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  Ping () ; 
- int PingCount ; 
- int /*<<< orphan*/  PingForever ; 
- int /*<<< orphan*/  PrintStats () ; 
- int RequestSize ; 
- int /*<<< orphan*/  ResolveTarget (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetConsoleCtrlHandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* Target ; 
- int /*<<< orphan*/  TargetName ; 
- scalar_t__ WSAAddressToStringW (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  WSACleanup () ; 
- int /*<<< orphan*/  WSAGetLastError () ; 
- int WSAStartup (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ hIcmpFile ; 
+
+ scalar_t__ AF_INET6 ;
+ int Address ;
+ scalar_t__* CanonName ;
+ int ConInitStdStreams () ;
+ int ConResPrintf (int ,int ,int,...) ;
+ int ConsoleCtrlHandler ;
+ int DPRINT (char*,int ) ;
+ scalar_t__ Family ;
+ int FreeAddrInfoW (TYPE_1__*) ;
+ int GetLastError () ;
+ int IDS_PINGING_ADDRESS ;
+ int IDS_PINGING_HOSTNAME ;
+ int IDS_PING_SIZE ;
+ int IDS_WINSOCK_FAIL ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ scalar_t__ Icmp6CreateFile () ;
+ int IcmpCloseHandle (scalar_t__) ;
+ scalar_t__ IcmpCreateFile () ;
+ TYPE_2__ IpOptions ;
+ int MAKEWORD (int,int) ;
+ int ParseCmdLine (int,int **) ;
+ int Ping () ;
+ int PingCount ;
+ int PingForever ;
+ int PrintStats () ;
+ int RequestSize ;
+ int ResolveTarget (int ) ;
+ int SetConsoleCtrlHandler (int ,int ) ;
+ int Sleep (int) ;
+ int StdErr ;
+ int StdOut ;
+ int TRUE ;
+ TYPE_1__* Target ;
+ int TargetName ;
+ scalar_t__ WSAAddressToStringW (int ,int,int *,int,int*) ;
+ int WSACleanup () ;
+ int WSAGetLastError () ;
+ int WSAStartup (int ,int *) ;
+ scalar_t__ hIcmpFile ;
 
 int
 wmain(int argc, WCHAR *argv[])
@@ -68,7 +68,7 @@ wmain(int argc, WCHAR *argv[])
     DWORD StrLen = 46;
     int Status;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
     IpOptions.Ttl = 128;
@@ -95,7 +95,7 @@ wmain(int argc, WCHAR *argv[])
         return 1;
     }
 
-    if (WSAAddressToStringW(Target->ai_addr, (DWORD)Target->ai_addrlen, NULL, Address, &StrLen) != 0)
+    if (WSAAddressToStringW(Target->ai_addr, (DWORD)Target->ai_addrlen, ((void*)0), Address, &StrLen) != 0)
     {
         DPRINT("WSAAddressToStringW failed: %d\n", WSAGetLastError());
         FreeAddrInfoW(Target);

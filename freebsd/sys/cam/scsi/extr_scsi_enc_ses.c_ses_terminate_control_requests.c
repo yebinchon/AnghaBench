@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int result; } ;
-typedef  TYPE_1__ ses_control_request_t ;
-typedef  int /*<<< orphan*/  ses_control_reqlist_t ;
+typedef TYPE_1__ ses_control_request_t ;
+typedef int ses_control_reqlist_t ;
 
-/* Variables and functions */
- TYPE_1__* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  links ; 
- int /*<<< orphan*/  wakeup (TYPE_1__*) ; 
+
+ TYPE_1__* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,TYPE_1__*,int ) ;
+ int links ;
+ int wakeup (TYPE_1__*) ;
 
 __attribute__((used)) static void
 ses_terminate_control_requests(ses_control_reqlist_t *reqlist, int result)
 {
-	ses_control_request_t *req;
+ ses_control_request_t *req;
 
-	while ((req = TAILQ_FIRST(reqlist)) != NULL) {
-		TAILQ_REMOVE(reqlist, req, links);
-		req->result = result;
-		wakeup(req);
-	}
+ while ((req = TAILQ_FIRST(reqlist)) != ((void*)0)) {
+  TAILQ_REMOVE(reqlist, req, links);
+  req->result = result;
+  wakeup(req);
+ }
 }

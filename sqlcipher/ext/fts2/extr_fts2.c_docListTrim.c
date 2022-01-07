@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PLWriter ;
-typedef  int /*<<< orphan*/  PLReader ;
-typedef  int /*<<< orphan*/  DocListType ;
-typedef  int /*<<< orphan*/  DataBuffer ;
-typedef  int /*<<< orphan*/  DLWriter ;
-typedef  int /*<<< orphan*/  DLReader ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dlrAtEnd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlrDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlrDocid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlrInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  dlrStep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlwDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dlwInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrAtEnd (int /*<<< orphan*/ *) ; 
- int plrColumn (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrEndOffset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrPosition (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrStartOffset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plrStep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwAdd (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plwDestroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  plwInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  plwTerminate (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int PLWriter ;
+typedef int PLReader ;
+typedef int DocListType ;
+typedef int DataBuffer ;
+typedef int DLWriter ;
+typedef int DLReader ;
+
+
+ int assert (int) ;
+ int dlrAtEnd (int *) ;
+ int dlrDestroy (int *) ;
+ int dlrDocid (int *) ;
+ int dlrInit (int *,int ,char const*,int) ;
+ int dlrStep (int *) ;
+ int dlwDestroy (int *) ;
+ int dlwInit (int *,int ,int *) ;
+ int plrAtEnd (int *) ;
+ int plrColumn (int *) ;
+ int plrDestroy (int *) ;
+ int plrEndOffset (int *) ;
+ int plrInit (int *,int *) ;
+ int plrPosition (int *) ;
+ int plrStartOffset (int *) ;
+ int plrStep (int *) ;
+ int plwAdd (int *,int,int ,int ,int ) ;
+ int plwDestroy (int *) ;
+ int plwInit (int *,int *,int ) ;
+ int plwTerminate (int *) ;
 
 __attribute__((used)) static void docListTrim(DocListType iType, const char *pData, int nData,
                         int iColumn, DocListType iOutType, DataBuffer *out){

@@ -1,45 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  EXCEPTION_ACCESS_VIOLATION 132 
-#define  EXCEPTION_ARRAY_BOUNDS_EXCEEDED 131 
-#define  EXCEPTION_ILLEGAL_INSTRUCTION 130 
-#define  EXCEPTION_INT_DIVIDE_BY_ZERO 129 
-#define  EXCEPTION_STACK_OVERFLOW 128 
-
 __attribute__((used)) static char *get_w32_excep_name(unsigned long code) {
-	char *desc;
-	switch (code) {
-	/* fatal exceptions */
-	case EXCEPTION_ACCESS_VIOLATION:
-		desc = "access violation";
-		break;
-	case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
-		desc = "array bounds exceeded";
-		break;
-	case EXCEPTION_ILLEGAL_INSTRUCTION:
-		desc = "illegal instruction";
-		break;
-	case EXCEPTION_INT_DIVIDE_BY_ZERO:
-		desc = "divide by zero";
-		break;
-	case EXCEPTION_STACK_OVERFLOW:
-		desc = "stack overflow";
-		break;
-	default:
-		desc = "unknown";
-	}
+ char *desc;
+ switch (code) {
 
-	return desc;
+ case 132:
+  desc = "access violation";
+  break;
+ case 131:
+  desc = "array bounds exceeded";
+  break;
+ case 130:
+  desc = "illegal instruction";
+  break;
+ case 129:
+  desc = "divide by zero";
+  break;
+ case 128:
+  desc = "stack overflow";
+  break;
+ default:
+  desc = "unknown";
+ }
+
+ return desc;
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hist_entry {int unfolded; int /*<<< orphan*/  has_children; } ;
 
-/* Variables and functions */
+
+
+
+struct hist_entry {int unfolded; int has_children; } ;
+
+
 
 __attribute__((used)) static bool hist_entry__toggle_fold(struct hist_entry *he)
 {
-	if (!he)
-		return false;
+ if (!he)
+  return 0;
 
-	if (!he->has_children)
-		return false;
+ if (!he->has_children)
+  return 0;
 
-	he->unfolded = !he->unfolded;
-	return true;
+ he->unfolded = !he->unfolded;
+ return 1;
 }

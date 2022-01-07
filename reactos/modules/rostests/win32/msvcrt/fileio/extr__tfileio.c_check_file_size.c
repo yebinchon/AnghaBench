@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _TEOF ; 
- int /*<<< orphan*/  _THEX_FORMAT ; 
- int /*<<< orphan*/  _fgettc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * _tfopen (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ status_flagged ; 
- scalar_t__ verbose_flagged ; 
+
+
+
+typedef int TCHAR ;
+typedef int FILE ;
+
+
+ int _T (char*) ;
+ int _TEOF ;
+ int _THEX_FORMAT ;
+ int _fgettc (int *) ;
+ int * _tfopen (int *,int *) ;
+ int _tprintf (int ,int *,...) ;
+ int fclose (int *) ;
+ int ferror (int *) ;
+ int perror (char*) ;
+ scalar_t__ status_flagged ;
+ scalar_t__ verbose_flagged ;
 
 __attribute__((used)) static int check_file_size(TCHAR* file_name, TCHAR* file_mode, int expected)
 {
@@ -34,11 +34,11 @@ __attribute__((used)) static int check_file_size(TCHAR* file_name, TCHAR* file_m
     int error_code;
 
     if (status_flagged) {
-        //_tprintf(_T("STATUS: (%s) checking for %d bytes in %s mode\n"), file_name, expected, _tcschr(file_mode, _T('b')) ? _T("binary") : _T("text"));
+
         _tprintf(_T("STATUS: (%s) checking for %d bytes with mode %s\n"), file_name, expected, file_mode);
     }
     file = _tfopen(file_name, file_mode);
-    if (file == NULL) {
+    if (file == ((void*)0)) {
         _tprintf(_T("ERROR: (%s) failed to open file for reading\n"), file_name);
         return 1;
     }
@@ -55,7 +55,7 @@ __attribute__((used)) static int check_file_size(TCHAR* file_name, TCHAR* file_m
     }
 
     if (verbose_flagged) {
-//        _puttc(_T('\n'), stdout);
+
     }
     fclose(file);
     if (count == expected) {

@@ -1,0 +1,272 @@
+; ModuleID = '/home/carl/AnghaBench/fastsocket/kernel/drivers/infiniband/hw/nes/extr_nes_verbs.c_nes_mmap.c'
+source_filename = "/home/carl/AnghaBench/fastsocket/kernel/drivers/infiniband/hw/nes/extr_nes_verbs.c_nes_mmap.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ib_ucontext = type { i32 }
+%struct.vm_area_struct = type { i32, %struct.nes_ucontext*, i32, i64, i64 }
+%struct.nes_ucontext = type { i32, i32*, i32, %struct.TYPE_4__, %struct.nes_ucontext**, i32 }
+%struct.TYPE_4__ = type { i32 }
+%struct.nes_vnic = type { %struct.nes_device* }
+%struct.nes_device = type { i32, i32, %struct.TYPE_3__* }
+%struct.TYPE_3__ = type { i32 }
+%struct.nes_qp = type { i32, i32*, i32, %struct.TYPE_4__, %struct.nes_qp**, i32 }
+
+@PAGE_SIZE = common dso_local global i32 0, align 4
+@NES_DBG_MMAP = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [22 x i8] c"wq %lu not allocated\0A\00", align 1
+@EFAULT = common dso_local global i32 0, align 4
+@.str.1 = private unnamed_addr constant [28 x i8] c"wq %lu has a NULL QP base.\0A\00", align 1
+@PAGE_SHIFT = common dso_local global i32 0, align 4
+@.str.2 = private unnamed_addr constant [25 x i8] c"remap_pfn_range failed.\0A\00", align 1
+@EAGAIN = common dso_local global i32 0, align 4
+@ENOSYS = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.ib_ucontext*, %struct.vm_area_struct*)* @nes_mmap to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @nes_mmap(%struct.ib_ucontext* %0, %struct.vm_area_struct* %1) #0 {
+  %3 = alloca i32, align 4
+  %4 = alloca %struct.ib_ucontext*, align 8
+  %5 = alloca %struct.vm_area_struct*, align 8
+  %6 = alloca i64, align 8
+  %7 = alloca %struct.nes_vnic*, align 8
+  %8 = alloca %struct.nes_device*, align 8
+  %9 = alloca %struct.nes_ucontext*, align 8
+  %10 = alloca %struct.nes_qp*, align 8
+  store %struct.ib_ucontext* %0, %struct.ib_ucontext** %4, align 8
+  store %struct.vm_area_struct* %1, %struct.vm_area_struct** %5, align 8
+  %11 = load %struct.ib_ucontext*, %struct.ib_ucontext** %4, align 8
+  %12 = getelementptr inbounds %struct.ib_ucontext, %struct.ib_ucontext* %11, i32 0, i32 0
+  %13 = load i32, i32* %12, align 4
+  %14 = call %struct.nes_vnic* @to_nesvnic(i32 %13)
+  store %struct.nes_vnic* %14, %struct.nes_vnic** %7, align 8
+  %15 = load %struct.nes_vnic*, %struct.nes_vnic** %7, align 8
+  %16 = getelementptr inbounds %struct.nes_vnic, %struct.nes_vnic* %15, i32 0, i32 0
+  %17 = load %struct.nes_device*, %struct.nes_device** %16, align 8
+  store %struct.nes_device* %17, %struct.nes_device** %8, align 8
+  %18 = load %struct.ib_ucontext*, %struct.ib_ucontext** %4, align 8
+  %19 = call %struct.nes_ucontext* @to_nesucontext(%struct.ib_ucontext* %18)
+  store %struct.nes_ucontext* %19, %struct.nes_ucontext** %9, align 8
+  %20 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %21 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %20, i32 0, i32 0
+  %22 = load i32, i32* %21, align 8
+  %23 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %24 = getelementptr inbounds %struct.nes_ucontext, %struct.nes_ucontext* %23, i32 0, i32 0
+  %25 = load i32, i32* %24, align 8
+  %26 = icmp sge i32 %22, %25
+  br i1 %26, label %27, label %119
+
+27:                                               ; preds = %2
+  %28 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %29 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %28, i32 0, i32 0
+  %30 = load i32, i32* %29, align 8
+  %31 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %32 = getelementptr inbounds %struct.nes_ucontext, %struct.nes_ucontext* %31, i32 0, i32 0
+  %33 = load i32, i32* %32, align 8
+  %34 = sub nsw i32 %30, %33
+  %35 = load i32, i32* @PAGE_SIZE, align 4
+  %36 = mul nsw i32 %34, %35
+  %37 = sext i32 %36 to i64
+  store i64 %37, i64* %6, align 8
+  %38 = load %struct.nes_device*, %struct.nes_device** %8, align 8
+  %39 = getelementptr inbounds %struct.nes_device, %struct.nes_device* %38, i32 0, i32 2
+  %40 = load %struct.TYPE_3__*, %struct.TYPE_3__** %39, align 8
+  %41 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %40, i32 0, i32 0
+  %42 = load i32, i32* %41, align 4
+  %43 = sext i32 %42 to i64
+  %44 = mul i64 4, %43
+  %45 = mul i64 %44, 2
+  %46 = load i32, i32* @PAGE_SIZE, align 4
+  %47 = sext i32 %46 to i64
+  %48 = add i64 %45, %47
+  %49 = sub i64 %48, 1
+  %50 = load i32, i32* @PAGE_SIZE, align 4
+  %51 = sub nsw i32 %50, 1
+  %52 = xor i32 %51, -1
+  %53 = sext i32 %52 to i64
+  %54 = and i64 %49, %53
+  %55 = load i64, i64* %6, align 8
+  %56 = udiv i64 %55, %54
+  store i64 %56, i64* %6, align 8
+  %57 = load i64, i64* %6, align 8
+  %58 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %59 = getelementptr inbounds %struct.nes_ucontext, %struct.nes_ucontext* %58, i32 0, i32 5
+  %60 = load i32, i32* %59, align 8
+  %61 = call i32 @test_bit(i64 %57, i32 %60)
+  %62 = icmp ne i32 %61, 0
+  br i1 %62, label %69, label %63
+
+63:                                               ; preds = %27
+  %64 = load i32, i32* @NES_DBG_MMAP, align 4
+  %65 = load i64, i64* %6, align 8
+  %66 = call i32 (i32, i8*, ...) @nes_debug(i32 %64, i8* getelementptr inbounds ([22 x i8], [22 x i8]* @.str, i64 0, i64 0), i64 %65)
+  %67 = load i32, i32* @EFAULT, align 4
+  %68 = sub nsw i32 0, %67
+  store i32 %68, i32* %3, align 4
+  br label %174
+
+69:                                               ; preds = %27
+  %70 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %71 = getelementptr inbounds %struct.nes_ucontext, %struct.nes_ucontext* %70, i32 0, i32 4
+  %72 = load %struct.nes_ucontext**, %struct.nes_ucontext*** %71, align 8
+  %73 = load i64, i64* %6, align 8
+  %74 = getelementptr inbounds %struct.nes_ucontext*, %struct.nes_ucontext** %72, i64 %73
+  %75 = load %struct.nes_ucontext*, %struct.nes_ucontext** %74, align 8
+  %76 = bitcast %struct.nes_ucontext* %75 to %struct.nes_qp*
+  store %struct.nes_qp* %76, %struct.nes_qp** %10, align 8
+  %77 = load %struct.nes_qp*, %struct.nes_qp** %10, align 8
+  %78 = icmp eq %struct.nes_qp* %77, null
+  br i1 %78, label %79, label %85
+
+79:                                               ; preds = %69
+  %80 = load i32, i32* @NES_DBG_MMAP, align 4
+  %81 = load i64, i64* %6, align 8
+  %82 = call i32 (i32, i8*, ...) @nes_debug(i32 %80, i8* getelementptr inbounds ([28 x i8], [28 x i8]* @.str.1, i64 0, i64 0), i64 %81)
+  %83 = load i32, i32* @EFAULT, align 4
+  %84 = sub nsw i32 0, %83
+  store i32 %84, i32* %3, align 4
+  br label %174
+
+85:                                               ; preds = %69
+  %86 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %87 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %88 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %87, i32 0, i32 3
+  %89 = load i64, i64* %88, align 8
+  %90 = load %struct.nes_qp*, %struct.nes_qp** %10, align 8
+  %91 = getelementptr inbounds %struct.nes_qp, %struct.nes_qp* %90, i32 0, i32 3
+  %92 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %91, i32 0, i32 0
+  %93 = load i32, i32* %92, align 4
+  %94 = call i32 @virt_to_phys(i32 %93)
+  %95 = load i32, i32* @PAGE_SHIFT, align 4
+  %96 = ashr i32 %94, %95
+  %97 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %98 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %97, i32 0, i32 4
+  %99 = load i64, i64* %98, align 8
+  %100 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %101 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %100, i32 0, i32 3
+  %102 = load i64, i64* %101, align 8
+  %103 = sub nsw i64 %99, %102
+  %104 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %105 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %104, i32 0, i32 2
+  %106 = load i32, i32* %105, align 8
+  %107 = call i64 @remap_pfn_range(%struct.vm_area_struct* %86, i64 %89, i32 %96, i64 %103, i32 %106)
+  %108 = icmp ne i64 %107, 0
+  br i1 %108, label %109, label %114
+
+109:                                              ; preds = %85
+  %110 = load i32, i32* @NES_DBG_MMAP, align 4
+  %111 = call i32 (i32, i8*, ...) @nes_debug(i32 %110, i8* getelementptr inbounds ([25 x i8], [25 x i8]* @.str.2, i64 0, i64 0))
+  %112 = load i32, i32* @EAGAIN, align 4
+  %113 = sub nsw i32 0, %112
+  store i32 %113, i32* %3, align 4
+  br label %174
+
+114:                                              ; preds = %85
+  %115 = load %struct.nes_qp*, %struct.nes_qp** %10, align 8
+  %116 = bitcast %struct.nes_qp* %115 to %struct.nes_ucontext*
+  %117 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %118 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %117, i32 0, i32 1
+  store %struct.nes_ucontext* %116, %struct.nes_ucontext** %118, align 8
+  store i32 0, i32* %3, align 4
+  br label %174
+
+119:                                              ; preds = %2
+  %120 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %121 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %120, i32 0, i32 0
+  %122 = load i32, i32* %121, align 8
+  %123 = sext i32 %122 to i64
+  store i64 %123, i64* %6, align 8
+  %124 = load i64, i64* %6, align 8
+  %125 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %126 = getelementptr inbounds %struct.nes_ucontext, %struct.nes_ucontext* %125, i32 0, i32 2
+  %127 = load i32, i32* %126, align 8
+  %128 = call i32 @test_bit(i64 %124, i32 %127)
+  %129 = icmp ne i32 %128, 0
+  br i1 %129, label %133, label %130
+
+130:                                              ; preds = %119
+  %131 = load i32, i32* @EFAULT, align 4
+  %132 = sub nsw i32 0, %131
+  store i32 %132, i32* %3, align 4
+  br label %174
+
+133:                                              ; preds = %119
+  %134 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %135 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %134, i32 0, i32 2
+  %136 = load i32, i32* %135, align 8
+  %137 = call i32 @pgprot_noncached(i32 %136)
+  %138 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %139 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %138, i32 0, i32 2
+  store i32 %137, i32* %139, align 8
+  %140 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %141 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %142 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %141, i32 0, i32 3
+  %143 = load i64, i64* %142, align 8
+  %144 = load %struct.nes_device*, %struct.nes_device** %8, align 8
+  %145 = getelementptr inbounds %struct.nes_device, %struct.nes_device* %144, i32 0, i32 0
+  %146 = load i32, i32* %145, align 8
+  %147 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %148 = getelementptr inbounds %struct.nes_ucontext, %struct.nes_ucontext* %147, i32 0, i32 1
+  %149 = load i32*, i32** %148, align 8
+  %150 = load i64, i64* %6, align 8
+  %151 = getelementptr inbounds i32, i32* %149, i64 %150
+  %152 = load i32, i32* %151, align 4
+  %153 = load %struct.nes_device*, %struct.nes_device** %8, align 8
+  %154 = getelementptr inbounds %struct.nes_device, %struct.nes_device* %153, i32 0, i32 1
+  %155 = load i32, i32* %154, align 4
+  %156 = sub nsw i32 %152, %155
+  %157 = mul nsw i32 %156, 4096
+  %158 = add nsw i32 %146, %157
+  %159 = load i32, i32* @PAGE_SHIFT, align 4
+  %160 = ashr i32 %158, %159
+  %161 = load i32, i32* @PAGE_SIZE, align 4
+  %162 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %163 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %162, i32 0, i32 2
+  %164 = load i32, i32* %163, align 8
+  %165 = call i64 @io_remap_pfn_range(%struct.vm_area_struct* %140, i64 %143, i32 %160, i32 %161, i32 %164)
+  %166 = icmp ne i64 %165, 0
+  br i1 %166, label %167, label %170
+
+167:                                              ; preds = %133
+  %168 = load i32, i32* @EAGAIN, align 4
+  %169 = sub nsw i32 0, %168
+  store i32 %169, i32* %3, align 4
+  br label %174
+
+170:                                              ; preds = %133
+  %171 = load %struct.nes_ucontext*, %struct.nes_ucontext** %9, align 8
+  %172 = load %struct.vm_area_struct*, %struct.vm_area_struct** %5, align 8
+  %173 = getelementptr inbounds %struct.vm_area_struct, %struct.vm_area_struct* %172, i32 0, i32 1
+  store %struct.nes_ucontext* %171, %struct.nes_ucontext** %173, align 8
+  store i32 0, i32* %3, align 4
+  br label %174
+
+174:                                              ; preds = %170, %167, %130, %114, %109, %79, %63
+  %175 = load i32, i32* %3, align 4
+  ret i32 %175
+}
+
+declare dso_local %struct.nes_vnic* @to_nesvnic(i32) #1
+
+declare dso_local %struct.nes_ucontext* @to_nesucontext(%struct.ib_ucontext*) #1
+
+declare dso_local i32 @test_bit(i64, i32) #1
+
+declare dso_local i32 @nes_debug(i32, i8*, ...) #1
+
+declare dso_local i64 @remap_pfn_range(%struct.vm_area_struct*, i64, i32, i64, i32) #1
+
+declare dso_local i32 @virt_to_phys(i32) #1
+
+declare dso_local i32 @pgprot_noncached(i32) #1
+
+declare dso_local i64 @io_remap_pfn_range(%struct.vm_area_struct*, i64, i32, i32, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

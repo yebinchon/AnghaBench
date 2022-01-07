@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ analysisp; } ;
-typedef  TYPE_1__ vorbis_dsp_state ;
-struct TYPE_8__ {int ampmax; int /*<<< orphan*/ ** packetblob; } ;
-typedef  TYPE_2__ vorbis_block_internal ;
-struct TYPE_9__ {int /*<<< orphan*/  opb; TYPE_2__* internal; int /*<<< orphan*/ * localstore; scalar_t__ localalloc; TYPE_1__* vd; } ;
-typedef  TYPE_3__ vorbis_block ;
-typedef  int /*<<< orphan*/  oggpack_buffer ;
+typedef TYPE_1__ vorbis_dsp_state ;
+struct TYPE_8__ {int ampmax; int ** packetblob; } ;
+typedef TYPE_2__ vorbis_block_internal ;
+struct TYPE_9__ {int opb; TYPE_2__* internal; int * localstore; scalar_t__ localalloc; TYPE_1__* vd; } ;
+typedef TYPE_3__ vorbis_block ;
+typedef int oggpack_buffer ;
 
-/* Variables and functions */
- int PACKETBLOBS ; 
- void* _ogg_calloc (int,int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  oggpack_writeinit (int /*<<< orphan*/ *) ; 
+
+ int PACKETBLOBS ;
+ void* _ogg_calloc (int,int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int oggpack_writeinit (int *) ;
 
 int vorbis_block_init(vorbis_dsp_state *v, vorbis_block *vb){
   int i;
   memset(vb,0,sizeof(*vb));
   vb->vd=v;
   vb->localalloc=0;
-  vb->localstore=NULL;
+  vb->localstore=((void*)0);
   if(v->analysisp){
     vorbis_block_internal *vbi=
       vb->internal=_ogg_calloc(1,sizeof(vorbis_block_internal));

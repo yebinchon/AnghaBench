@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ sds ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ sds ;
 struct TYPE_2__ {char* acl_filename; } ;
 
-/* Variables and functions */
- scalar_t__ ACLLoadConfiguredUsers () ; 
- scalar_t__ ACLLoadFromFile (char*) ; 
- scalar_t__ C_ERR ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  UsersToLoad ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ listLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsfree (scalar_t__) ; 
- TYPE_1__ server ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,...) ; 
+
+ scalar_t__ ACLLoadConfiguredUsers () ;
+ scalar_t__ ACLLoadFromFile (char*) ;
+ scalar_t__ C_ERR ;
+ int LL_WARNING ;
+ int UsersToLoad ;
+ int exit (int) ;
+ scalar_t__ listLength (int ) ;
+ int sdsfree (scalar_t__) ;
+ TYPE_1__ server ;
+ int serverLog (int ,char*,...) ;
 
 void ACLLoadUsersAtStartup(void) {
     if (server.acl_filename[0] != '\0' && listLength(UsersToLoad) != 0) {

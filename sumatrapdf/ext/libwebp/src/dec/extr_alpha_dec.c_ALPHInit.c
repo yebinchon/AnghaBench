@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ WEBP_FILTER_TYPE ;
-struct TYPE_8__ {size_t width; size_t height; int /*<<< orphan*/  crop_bottom; int /*<<< orphan*/  crop_top; int /*<<< orphan*/  crop_right; int /*<<< orphan*/  crop_left; int /*<<< orphan*/  use_cropping; TYPE_2__* opaque; } ;
-typedef  TYPE_1__ VP8Io ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ WEBP_FILTER_TYPE ;
+struct TYPE_8__ {size_t width; size_t height; int crop_bottom; int crop_top; int crop_right; int crop_left; int use_cropping; TYPE_2__* opaque; } ;
+typedef TYPE_1__ VP8Io ;
 struct TYPE_9__ {int* output_; size_t width_; size_t height_; int method_; scalar_t__ filter_; int pre_processing_; TYPE_1__ io_; } ;
-typedef  TYPE_2__ ALPHDecoder ;
+typedef TYPE_2__ ALPHDecoder ;
 
-/* Variables and functions */
- size_t ALPHA_HEADER_LEN ; 
- int ALPHA_LOSSLESS_COMPRESSION ; 
- int ALPHA_NO_COMPRESSION ; 
- int ALPHA_PREPROCESSED_LEVELS ; 
- int /*<<< orphan*/  VP8FiltersInit () ; 
- int /*<<< orphan*/  VP8InitIo (TYPE_1__* const) ; 
- int VP8LDecodeAlphaHeader (TYPE_2__* const,int const* const,size_t const) ; 
- scalar_t__ WEBP_FILTER_LAST ; 
- int /*<<< orphan*/  WebPInitCustomIo (int /*<<< orphan*/ *,TYPE_1__* const) ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ size_t ALPHA_HEADER_LEN ;
+ int ALPHA_LOSSLESS_COMPRESSION ;
+ int ALPHA_NO_COMPRESSION ;
+ int ALPHA_PREPROCESSED_LEVELS ;
+ int VP8FiltersInit () ;
+ int VP8InitIo (TYPE_1__* const) ;
+ int VP8LDecodeAlphaHeader (TYPE_2__* const,int const* const,size_t const) ;
+ scalar_t__ WEBP_FILTER_LAST ;
+ int WebPInitCustomIo (int *,TYPE_1__* const) ;
+ int assert (int) ;
 
 __attribute__((used)) static int ALPHInit(ALPHDecoder* const dec, const uint8_t* data,
                     size_t data_size, const VP8Io* const src_io,
@@ -40,7 +40,7 @@ __attribute__((used)) static int ALPHInit(ALPHDecoder* const dec, const uint8_t*
   int rsrv;
   VP8Io* const io = &dec->io_;
 
-  assert(data != NULL && output != NULL && src_io != NULL);
+  assert(data != ((void*)0) && output != ((void*)0) && src_io != ((void*)0));
 
   VP8FiltersInit();
   dec->output_ = output;
@@ -64,9 +64,9 @@ __attribute__((used)) static int ALPHInit(ALPHDecoder* const dec, const uint8_t*
     return 0;
   }
 
-  // Copy the necessary parameters from src_io to io
+
   VP8InitIo(io);
-  WebPInitCustomIo(NULL, io);
+  WebPInitCustomIo(((void*)0), io);
   io->opaque = dec;
   io->width = src_io->width;
   io->height = src_io->height;
@@ -76,7 +76,7 @@ __attribute__((used)) static int ALPHInit(ALPHDecoder* const dec, const uint8_t*
   io->crop_right = src_io->crop_right;
   io->crop_top = src_io->crop_top;
   io->crop_bottom = src_io->crop_bottom;
-  // No need to copy the scaling parameters.
+
 
   if (dec->method_ == ALPHA_NO_COMPRESSION) {
     const size_t alpha_decoded_size = dec->width_ * dec->height_;

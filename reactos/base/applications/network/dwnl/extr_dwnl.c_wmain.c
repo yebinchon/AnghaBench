@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDS_USAGE ; 
- int /*<<< orphan*/  StdOut ; 
- int download_file (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int print_err (int) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int ConInitStdStreams () ;
+ int ConResPrintf (int ,int ) ;
+ int IDS_USAGE ;
+ int StdOut ;
+ int download_file (int *,int *) ;
+ int print_err (int) ;
 
 int wmain(int argc, WCHAR **argv)
 {
     int iErr, iRet = 0;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
     if(argc != 2 && argc != 3)
@@ -33,7 +33,7 @@ int wmain(int argc, WCHAR **argv)
         return 2;
     }
 
-    iErr = download_file(argv[1], argc == 3 ? argv[2] : NULL);
+    iErr = download_file(argv[1], argc == 3 ? argv[2] : ((void*)0));
     if (iErr <= 0)
         iRet = print_err(iErr);
 

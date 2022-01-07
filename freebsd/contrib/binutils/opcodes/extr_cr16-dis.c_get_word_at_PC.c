@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ wordU ;
-struct disassemble_info {int (* read_memory_func ) (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,struct disassemble_info*) ;} ;
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_byte ;
 
-/* Variables and functions */
- scalar_t__ bfd_getl16 (int /*<<< orphan*/ *) ; 
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,struct disassemble_info*) ; 
+
+
+
+typedef scalar_t__ wordU ;
+struct disassemble_info {int (* read_memory_func ) (int ,int *,int,struct disassemble_info*) ;} ;
+typedef int bfd_vma ;
+typedef int bfd_byte ;
+
+
+ scalar_t__ bfd_getl16 (int *) ;
+ int stub1 (int ,int *,int,struct disassemble_info*) ;
 
 __attribute__((used)) static wordU
 get_word_at_PC (bfd_vma memaddr, struct disassemble_info *info)

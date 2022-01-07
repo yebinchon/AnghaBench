@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint16_t ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef size_t uint16_t ;
 struct TYPE_11__ {size_t num_friends; unsigned int path_nodes_index; TYPE_2__* friends_list; TYPE_1__* path_nodes; } ;
-struct TYPE_10__ {scalar_t__ timestamp; scalar_t__ last_pinged; int /*<<< orphan*/  public_key; int /*<<< orphan*/  ip_port; } ;
-struct TYPE_9__ {scalar_t__ status; scalar_t__ run_count; scalar_t__ last_dht_pk_onion_sent; scalar_t__ last_dht_pk_dht_sent; int /*<<< orphan*/  is_online; TYPE_3__* clients_list; } ;
-struct TYPE_8__ {int /*<<< orphan*/  public_key; int /*<<< orphan*/  ip_port; } ;
-typedef  TYPE_3__ Onion_Node ;
-typedef  TYPE_4__ Onion_Client ;
+struct TYPE_10__ {scalar_t__ timestamp; scalar_t__ last_pinged; int public_key; int ip_port; } ;
+struct TYPE_9__ {scalar_t__ status; scalar_t__ run_count; scalar_t__ last_dht_pk_onion_sent; scalar_t__ last_dht_pk_dht_sent; int is_online; TYPE_3__* clients_list; } ;
+struct TYPE_8__ {int public_key; int ip_port; } ;
+typedef TYPE_3__ Onion_Node ;
+typedef TYPE_4__ Onion_Client ;
 
-/* Variables and functions */
- unsigned int ANNOUNCE_FRIEND ; 
- unsigned int ANNOUNCE_FRIEND_BEGINNING ; 
- unsigned int DHT_DHTPK_SEND_INTERVAL ; 
- unsigned int FRIEND_ONION_NODE_TIMEOUT ; 
- unsigned int MAX_ONION_CLIENTS ; 
- unsigned int MAX_PATH_NODES ; 
- unsigned int ONION_DHTPK_SEND_INTERVAL ; 
- scalar_t__ RUN_COUNT_FRIEND_ANNOUNCE_BEGINNING ; 
- scalar_t__ client_send_announce_request (TYPE_4__*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ is_timeout (scalar_t__,unsigned int) ; 
- unsigned int rand () ; 
- int send_dhtpk_announce (TYPE_4__*,size_t,int) ; 
- void* unix_time () ; 
+
+ unsigned int ANNOUNCE_FRIEND ;
+ unsigned int ANNOUNCE_FRIEND_BEGINNING ;
+ unsigned int DHT_DHTPK_SEND_INTERVAL ;
+ unsigned int FRIEND_ONION_NODE_TIMEOUT ;
+ unsigned int MAX_ONION_CLIENTS ;
+ unsigned int MAX_PATH_NODES ;
+ unsigned int ONION_DHTPK_SEND_INTERVAL ;
+ scalar_t__ RUN_COUNT_FRIEND_ANNOUNCE_BEGINNING ;
+ scalar_t__ client_send_announce_request (TYPE_4__*,size_t,int ,int ,int ,int ) ;
+ scalar_t__ is_timeout (scalar_t__,unsigned int) ;
+ unsigned int rand () ;
+ int send_dhtpk_announce (TYPE_4__*,size_t,int) ;
+ void* unix_time () ;
 
 __attribute__((used)) static void do_friend(Onion_Client *onion_c, uint16_t friendnum)
 {
@@ -96,7 +96,7 @@ __attribute__((used)) static void do_friend(Onion_Client *onion_c, uint16_t frie
             ++onion_c->friends_list[friendnum].run_count;
         }
 
-        /* send packets to friend telling them our DHT public key. */
+
         if (is_timeout(onion_c->friends_list[friendnum].last_dht_pk_onion_sent, ONION_DHTPK_SEND_INTERVAL))
             if (send_dhtpk_announce(onion_c, friendnum, 0) >= 1)
                 onion_c->friends_list[friendnum].last_dht_pk_onion_sent = unix_time();

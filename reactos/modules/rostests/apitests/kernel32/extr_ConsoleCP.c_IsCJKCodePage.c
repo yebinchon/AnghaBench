@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int GetOEMCP () ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int GetOEMCP () ;
+ int TRUE ;
 
 __attribute__((used)) static BOOL IsCJKCodePage(void)
 {
     switch (GetOEMCP())
     {
-    case 936:   // Chinese PRC
-    case 932:   // Japanese
-    case 949:   // Korean
-    case 1361:  // Korean (Johab)
-    case 950:   // Taiwan
+    case 936:
+    case 932:
+    case 949:
+    case 1361:
+    case 950:
         return TRUE;
     }
     return FALSE;

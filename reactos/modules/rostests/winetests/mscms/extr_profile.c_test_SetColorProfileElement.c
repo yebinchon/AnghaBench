@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  data ;
-typedef  int /*<<< orphan*/  buffer ;
-struct TYPE_3__ {char* pProfileData; int /*<<< orphan*/  cbDataSize; int /*<<< orphan*/  dwType; } ;
-typedef  int TAGTYPE ;
-typedef  TYPE_1__ PROFILE ;
-typedef  int /*<<< orphan*/ * HPROFILE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  PROFILE_FILENAME ; 
- int /*<<< orphan*/  PROFILE_READ ; 
- int /*<<< orphan*/  PROFILE_READWRITE ; 
- int /*<<< orphan*/  memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pCloseColorProfile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pGetColorProfileElement (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * pOpenColorProfileA (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pSetColorProfileElement (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int data ;
+typedef int buffer ;
+struct TYPE_3__ {char* pProfileData; int cbDataSize; int dwType; } ;
+typedef int TAGTYPE ;
+typedef TYPE_1__ PROFILE ;
+typedef int * HPROFILE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int GetLastError () ;
+ int OPEN_EXISTING ;
+ int PROFILE_FILENAME ;
+ int PROFILE_READ ;
+ int PROFILE_READWRITE ;
+ int memcmp (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ int pCloseColorProfile (int *) ;
+ int pGetColorProfileElement (int *,int,int ,int*,char*,int *) ;
+ int * pOpenColorProfileA (TYPE_1__*,int ,int ,int ) ;
+ int pSetColorProfileElement (int *,int,int ,int*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void test_SetColorProfileElement( char *testprofile )
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static void test_SetColorProfileElement( char *testprofile
         DWORD size;
         BOOL ret, ref;
 
-        TAGTYPE tag = 0x63707274;  /* 'cprt' */
+        TAGTYPE tag = 0x63707274;
         static char data[] = "(c) The Wine Project";
         static char buffer[51];
 
@@ -51,10 +51,10 @@ __attribute__((used)) static void test_SetColorProfileElement( char *testprofile
         profile.pProfileData = testprofile;
         profile.cbDataSize = strlen(testprofile);
 
-        /* Parameter checks */
+
 
         handle = pOpenColorProfileA( &profile, PROFILE_READ, 0, OPEN_EXISTING );
-        ok( handle != NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle != ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
         ret = pSetColorProfileElement( handle, tag, 0, &size, data );
         ok( !ret, "SetColorProfileElement() succeeded (%d)\n", GetLastError() );
@@ -62,21 +62,21 @@ __attribute__((used)) static void test_SetColorProfileElement( char *testprofile
         pCloseColorProfile( handle );
 
         handle = pOpenColorProfileA( &profile, PROFILE_READWRITE, 0, OPEN_EXISTING );
-        ok( handle != NULL, "OpenColorProfileA() failed (%d)\n", GetLastError() );
+        ok( handle != ((void*)0), "OpenColorProfileA() failed (%d)\n", GetLastError() );
 
-        ret = pSetColorProfileElement( NULL, 0, 0, NULL, NULL );
+        ret = pSetColorProfileElement( ((void*)0), 0, 0, ((void*)0), ((void*)0) );
         ok( !ret, "SetColorProfileElement() succeeded (%d)\n", GetLastError() );
 
-        ret = pSetColorProfileElement( handle, 0, 0, NULL, NULL );
+        ret = pSetColorProfileElement( handle, 0, 0, ((void*)0), ((void*)0) );
         ok( !ret, "SetColorProfileElement() succeeded (%d)\n", GetLastError() );
 
-        ret = pSetColorProfileElement( handle, tag, 0, NULL, NULL );
+        ret = pSetColorProfileElement( handle, tag, 0, ((void*)0), ((void*)0) );
         ok( !ret, "SetColorProfileElement() succeeded (%d)\n", GetLastError() );
 
-        ret = pSetColorProfileElement( handle, tag, 0, &size, NULL );
+        ret = pSetColorProfileElement( handle, tag, 0, &size, ((void*)0) );
         ok( !ret, "SetColorProfileElement() succeeded (%d)\n", GetLastError() );
 
-        /* Functional checks */
+
 
         size = sizeof(data);
         ret = pSetColorProfileElement( handle, tag, 0, &size, data );

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  Tox ;
-struct TYPE_2__ {int filenumber; int /*<<< orphan*/  friendnum; int /*<<< orphan*/ * file; } ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  TOX_FILE_KIND_DATA ; 
- TYPE_1__* file_senders ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ftell (int /*<<< orphan*/ *) ; 
- size_t numfilesenders ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int tox_file_send (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int Tox ;
+struct TYPE_2__ {int filenumber; int friendnum; int * file; } ;
+typedef int FILE ;
+
+
+ int SEEK_END ;
+ int SEEK_SET ;
+ int TOX_FILE_KIND_DATA ;
+ TYPE_1__* file_senders ;
+ int * fopen (char*,char*) ;
+ int fseek (int *,int ,int ) ;
+ int ftell (int *) ;
+ size_t numfilesenders ;
+ int strlen (char*) ;
+ int tox_file_send (int *,int ,int ,int ,int ,int *,int ,int ) ;
 
 uint32_t add_filesender(Tox *m, uint16_t friendnum, char *filename)
 {

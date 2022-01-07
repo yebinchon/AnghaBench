@@ -1,92 +1,92 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u16 ;
-struct il_priv {int /*<<< orphan*/  mutex; int /*<<< orphan*/  status; TYPE_1__* cfg; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16 ;
+struct il_priv {int mutex; int status; TYPE_1__* cfg; } ;
 struct ieee80211_vif {int dummy; } ;
-struct ieee80211_sta {int /*<<< orphan*/  addr; } ;
+struct ieee80211_sta {int addr; } ;
 struct ieee80211_hw {struct il_priv* priv; } ;
-struct ieee80211_ampdu_params {int action; int /*<<< orphan*/  ssn; int /*<<< orphan*/  tid; struct ieee80211_sta* sta; } ;
-typedef  enum ieee80211_ampdu_mlme_action { ____Placeholder_ieee80211_ampdu_mlme_action } ieee80211_ampdu_mlme_action ;
+struct ieee80211_ampdu_params {int action; int ssn; int tid; struct ieee80211_sta* sta; } ;
+typedef enum ieee80211_ampdu_mlme_action { ____Placeholder_ieee80211_ampdu_mlme_action } ieee80211_ampdu_mlme_action ;
 struct TYPE_2__ {int sku; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_HT (char*,...) ; 
- int EACCES ; 
- int EINVAL ; 
-#define  IEEE80211_AMPDU_RX_START 134 
-#define  IEEE80211_AMPDU_RX_STOP 133 
-#define  IEEE80211_AMPDU_TX_OPERATIONAL 132 
-#define  IEEE80211_AMPDU_TX_START 131 
-#define  IEEE80211_AMPDU_TX_STOP_CONT 130 
-#define  IEEE80211_AMPDU_TX_STOP_FLUSH 129 
-#define  IEEE80211_AMPDU_TX_STOP_FLUSH_CONT 128 
- int IL_SKU_N ; 
- int /*<<< orphan*/  S_EXIT_PENDING ; 
- int il4965_sta_rx_agg_start (struct il_priv*,struct ieee80211_sta*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int il4965_sta_rx_agg_stop (struct il_priv*,struct ieee80211_sta*,int /*<<< orphan*/ ) ; 
- int il4965_tx_agg_start (struct il_priv*,struct ieee80211_vif*,struct ieee80211_sta*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int il4965_tx_agg_stop (struct il_priv*,struct ieee80211_vif*,struct ieee80211_sta*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int D_HT (char*,...) ;
+ int EACCES ;
+ int EINVAL ;
+
+
+
+
+
+
+
+ int IL_SKU_N ;
+ int S_EXIT_PENDING ;
+ int il4965_sta_rx_agg_start (struct il_priv*,struct ieee80211_sta*,int ,int ) ;
+ int il4965_sta_rx_agg_stop (struct il_priv*,struct ieee80211_sta*,int ) ;
+ int il4965_tx_agg_start (struct il_priv*,struct ieee80211_vif*,struct ieee80211_sta*,int ,int *) ;
+ int il4965_tx_agg_stop (struct il_priv*,struct ieee80211_vif*,struct ieee80211_sta*,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int test_bit (int ,int *) ;
 
 int
 il4965_mac_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-			struct ieee80211_ampdu_params *params)
+   struct ieee80211_ampdu_params *params)
 {
-	struct il_priv *il = hw->priv;
-	int ret = -EINVAL;
-	struct ieee80211_sta *sta = params->sta;
-	enum ieee80211_ampdu_mlme_action action = params->action;
-	u16 tid = params->tid;
-	u16 *ssn = &params->ssn;
+ struct il_priv *il = hw->priv;
+ int ret = -EINVAL;
+ struct ieee80211_sta *sta = params->sta;
+ enum ieee80211_ampdu_mlme_action action = params->action;
+ u16 tid = params->tid;
+ u16 *ssn = &params->ssn;
 
-	D_HT("A-MPDU action on addr %pM tid %d\n", sta->addr, tid);
+ D_HT("A-MPDU action on addr %pM tid %d\n", sta->addr, tid);
 
-	if (!(il->cfg->sku & IL_SKU_N))
-		return -EACCES;
+ if (!(il->cfg->sku & IL_SKU_N))
+  return -EACCES;
 
-	mutex_lock(&il->mutex);
+ mutex_lock(&il->mutex);
 
-	switch (action) {
-	case IEEE80211_AMPDU_RX_START:
-		D_HT("start Rx\n");
-		ret = il4965_sta_rx_agg_start(il, sta, tid, *ssn);
-		break;
-	case IEEE80211_AMPDU_RX_STOP:
-		D_HT("stop Rx\n");
-		ret = il4965_sta_rx_agg_stop(il, sta, tid);
-		if (test_bit(S_EXIT_PENDING, &il->status))
-			ret = 0;
-		break;
-	case IEEE80211_AMPDU_TX_START:
-		D_HT("start Tx\n");
-		ret = il4965_tx_agg_start(il, vif, sta, tid, ssn);
-		break;
-	case IEEE80211_AMPDU_TX_STOP_CONT:
-	case IEEE80211_AMPDU_TX_STOP_FLUSH:
-	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
-		D_HT("stop Tx\n");
-		ret = il4965_tx_agg_stop(il, vif, sta, tid);
-		if (test_bit(S_EXIT_PENDING, &il->status))
-			ret = 0;
-		break;
-	case IEEE80211_AMPDU_TX_OPERATIONAL:
-		ret = 0;
-		break;
-	}
-	mutex_unlock(&il->mutex);
+ switch (action) {
+ case 134:
+  D_HT("start Rx\n");
+  ret = il4965_sta_rx_agg_start(il, sta, tid, *ssn);
+  break;
+ case 133:
+  D_HT("stop Rx\n");
+  ret = il4965_sta_rx_agg_stop(il, sta, tid);
+  if (test_bit(S_EXIT_PENDING, &il->status))
+   ret = 0;
+  break;
+ case 131:
+  D_HT("start Tx\n");
+  ret = il4965_tx_agg_start(il, vif, sta, tid, ssn);
+  break;
+ case 130:
+ case 129:
+ case 128:
+  D_HT("stop Tx\n");
+  ret = il4965_tx_agg_stop(il, vif, sta, tid);
+  if (test_bit(S_EXIT_PENDING, &il->status))
+   ret = 0;
+  break;
+ case 132:
+  ret = 0;
+  break;
+ }
+ mutex_unlock(&il->mutex);
 
-	return ret;
+ return ret;
 }

@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  char LONG ;
-typedef  int /*<<< orphan*/  ITextRange ;
-typedef  int /*<<< orphan*/  ITextDocument ;
-typedef  int /*<<< orphan*/  IRichEditOle ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  char HRESULT ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- char CO_E_RELEASED ; 
- char E_INVALIDARG ; 
- char ITextDocument_Range (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **) ; 
- char ITextRange_GetChar (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ITextRange_Release (int /*<<< orphan*/ *) ; 
- char S_OK ; 
- int /*<<< orphan*/  SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_SETTEXT ; 
- int /*<<< orphan*/  create_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  release_interfaces (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int LPARAM ;
+typedef char LONG ;
+typedef int ITextRange ;
+typedef int ITextDocument ;
+typedef int IRichEditOle ;
+typedef int HWND ;
+typedef char HRESULT ;
+typedef char CHAR ;
+
+
+ char CO_E_RELEASED ;
+ char E_INVALIDARG ;
+ char ITextDocument_Range (int *,int,int,int **) ;
+ char ITextRange_GetChar (int *,char*) ;
+ int ITextRange_Release (int *) ;
+ char S_OK ;
+ int SendMessageA (int ,int ,int ,int ) ;
+ int WM_SETTEXT ;
+ int create_interfaces (int *,int **,int **,int *) ;
+ int ok (int,char*,...) ;
+ int release_interfaces (int *,int **,int **,int *) ;
 
 __attribute__((used)) static void test_ITextRange_GetChar(void)
 {
   HWND w;
-  IRichEditOle *reOle = NULL;
-  ITextDocument *txtDoc = NULL;
-  ITextRange *txtRge = NULL;
+  IRichEditOle *reOle = ((void*)0);
+  ITextDocument *txtDoc = ((void*)0);
+  ITextRange *txtRge = ((void*)0);
   HRESULT hres;
   LONG pch;
   int first, lim;
   static const CHAR test_text1[] = "TestSomeText";
 
   first = 0, lim = 4;
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   SendMessageA(w, WM_SETTEXT, 0, (LPARAM)test_text1);
   hres = ITextDocument_Range(txtDoc, first, lim, &txtRge);
   ok(hres == S_OK, "got 0x%08x\n", hres);
@@ -53,10 +53,10 @@ __attribute__((used)) static void test_ITextRange_GetChar(void)
   ok(hres == S_OK, "ITextRange_GetChar\n");
   ok(pch == 'T', "got wrong char: %c\n", pch);
   ITextRange_Release(txtRge);
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
   first = 0, lim = 0;
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   SendMessageA(w, WM_SETTEXT, 0, (LPARAM)test_text1);
   hres = ITextDocument_Range(txtDoc, first, lim, &txtRge);
   ok(hres == S_OK, "got 0x%08x\n", hres);
@@ -65,10 +65,10 @@ __attribute__((used)) static void test_ITextRange_GetChar(void)
   ok(hres == S_OK, "ITextRange_GetChar\n");
   ok(pch == 'T', "got wrong char: %c\n", pch);
   ITextRange_Release(txtRge);
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
   first = 12, lim = 12;
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   SendMessageA(w, WM_SETTEXT, 0, (LPARAM)test_text1);
   hres = ITextDocument_Range(txtDoc, first, lim, &txtRge);
   ok(hres == S_OK, "got 0x%08x\n", hres);
@@ -77,10 +77,10 @@ __attribute__((used)) static void test_ITextRange_GetChar(void)
   ok(hres == S_OK, "ITextRange_GetChar\n");
   ok(pch == '\r', "got wrong char: %c\n", pch);
   ITextRange_Release(txtRge);
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
   first = 13, lim = 13;
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   SendMessageA(w, WM_SETTEXT, 0, (LPARAM)test_text1);
   hres = ITextDocument_Range(txtDoc, first, lim, &txtRge);
   ok(hres == S_OK, "got 0x%08x\n", hres);
@@ -89,19 +89,19 @@ __attribute__((used)) static void test_ITextRange_GetChar(void)
   ok(hres == S_OK, "ITextRange_GetChar\n");
   ok(pch == '\r', "got wrong char: %c\n", pch);
   ITextRange_Release(txtRge);
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
-  create_interfaces(&w, &reOle, &txtDoc, NULL);
+  create_interfaces(&w, &reOle, &txtDoc, ((void*)0));
   SendMessageA(w, WM_SETTEXT, 0, (LPARAM)test_text1);
   first = 12, lim = 12;
   hres = ITextDocument_Range(txtDoc, first, lim, &txtRge);
   ok(hres == S_OK, "got 0x%08x\n", hres);
-  hres = ITextRange_GetChar(txtRge, NULL);
+  hres = ITextRange_GetChar(txtRge, ((void*)0));
   ok(hres == E_INVALIDARG, "ITextRange_GetChar\n");
 
-  release_interfaces(&w, &reOle, &txtDoc, NULL);
+  release_interfaces(&w, &reOle, &txtDoc, ((void*)0));
 
-  hres = ITextRange_GetChar(txtRge, NULL);
+  hres = ITextRange_GetChar(txtRge, ((void*)0));
   ok(hres == CO_E_RELEASED, "got 0x%08x\n", hres);
 
   hres = ITextRange_GetChar(txtRge, &pch);

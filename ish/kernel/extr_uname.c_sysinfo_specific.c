@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sysinfo {int /*<<< orphan*/  mem_unit; int /*<<< orphan*/  freehigh; int /*<<< orphan*/  totalhigh; int /*<<< orphan*/  procs; int /*<<< orphan*/  freeswap; int /*<<< orphan*/  totalswap; int /*<<< orphan*/  sharedram; int /*<<< orphan*/  freeram; int /*<<< orphan*/  totalram; } ;
-struct sys_info {int /*<<< orphan*/  mem_unit; int /*<<< orphan*/  freehigh; int /*<<< orphan*/  totalhigh; int /*<<< orphan*/  procs; int /*<<< orphan*/  freeswap; int /*<<< orphan*/  totalswap; int /*<<< orphan*/  sharedram; int /*<<< orphan*/  freeram; int /*<<< orphan*/  totalram; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  sysinfo (struct sysinfo*) ; 
+
+
+
+struct sysinfo {int mem_unit; int freehigh; int totalhigh; int procs; int freeswap; int totalswap; int sharedram; int freeram; int totalram; } ;
+struct sys_info {int mem_unit; int freehigh; int totalhigh; int procs; int freeswap; int totalswap; int sharedram; int freeram; int totalram; } ;
+
+
+ int sysinfo (struct sysinfo*) ;
 
 __attribute__((used)) static void sysinfo_specific(struct sys_info *info) {
     struct sysinfo host_info;

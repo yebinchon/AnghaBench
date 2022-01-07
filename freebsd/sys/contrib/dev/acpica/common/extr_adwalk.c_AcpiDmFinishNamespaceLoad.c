@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  Type; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * WalkState; scalar_t__ Level; scalar_t__ Flags; } ;
-typedef  int /*<<< orphan*/  ACPI_WALK_STATE ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
-typedef  int /*<<< orphan*/  ACPI_PARSE_OBJECT ;
-typedef  int /*<<< orphan*/  ACPI_OWNER_ID ;
-typedef  TYPE_1__ ACPI_OP_WALK_INFO ;
-typedef  TYPE_2__ ACPI_NAMESPACE_NODE ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FREE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiDmCommonAscendingOp ; 
- int /*<<< orphan*/  AcpiDmLoadDescendingOp ; 
- int /*<<< orphan*/  AcpiDmWalkParseTree (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * AcpiDsCreateWalkState (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AcpiDsScopeStackPush (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Type; } ;
+struct TYPE_6__ {int * WalkState; scalar_t__ Level; scalar_t__ Flags; } ;
+typedef int ACPI_WALK_STATE ;
+typedef int ACPI_STATUS ;
+typedef int ACPI_PARSE_OBJECT ;
+typedef int ACPI_OWNER_ID ;
+typedef TYPE_1__ ACPI_OP_WALK_INFO ;
+typedef TYPE_2__ ACPI_NAMESPACE_NODE ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FREE (int *) ;
+ int AcpiDmCommonAscendingOp ;
+ int AcpiDmLoadDescendingOp ;
+ int AcpiDmWalkParseTree (int *,int ,int ,TYPE_1__*) ;
+ int * AcpiDsCreateWalkState (int ,int *,int *,int *) ;
+ int AcpiDsScopeStackPush (TYPE_2__*,int ,int *) ;
 
 void
 AcpiDmFinishNamespaceLoad (
-    ACPI_PARSE_OBJECT       *ParseTreeRoot,
-    ACPI_NAMESPACE_NODE     *NamespaceRoot,
-    ACPI_OWNER_ID           OwnerId)
+    ACPI_PARSE_OBJECT *ParseTreeRoot,
+    ACPI_NAMESPACE_NODE *NamespaceRoot,
+    ACPI_OWNER_ID OwnerId)
 {
-    ACPI_STATUS             Status;
-    ACPI_OP_WALK_INFO       Info;
-    ACPI_WALK_STATE         *WalkState;
+    ACPI_STATUS Status;
+    ACPI_OP_WALK_INFO Info;
+    ACPI_WALK_STATE *WalkState;
 
 
     if (!ParseTreeRoot)
@@ -46,9 +46,9 @@ AcpiDmFinishNamespaceLoad (
         return;
     }
 
-    /* Create and initialize a new walk state */
 
-    WalkState = AcpiDsCreateWalkState (OwnerId, ParseTreeRoot, NULL, NULL);
+
+    WalkState = AcpiDsCreateWalkState (OwnerId, ParseTreeRoot, ((void*)0), ((void*)0));
     if (!WalkState)
     {
         return;

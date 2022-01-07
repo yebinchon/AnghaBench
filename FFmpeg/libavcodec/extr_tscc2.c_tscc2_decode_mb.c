@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_6__ {int /*<<< orphan*/  table; } ;
-struct TYPE_9__ {int* block; TYPE_3__* ac_vlc; TYPE_2__* nc_vlc; TYPE_1__ dc_vlc; int /*<<< orphan*/  gb; } ;
-struct TYPE_8__ {int /*<<< orphan*/  table; } ;
-struct TYPE_7__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_4__ TSCC2Context ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- size_t* ff_zigzag_scan ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  memset (int*,int,int) ; 
- int sign_extend (int,int) ; 
- int /*<<< orphan*/  tscc2_idct4_put (int*,int*,int*,int) ; 
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_6__ {int table; } ;
+struct TYPE_9__ {int* block; TYPE_3__* ac_vlc; TYPE_2__* nc_vlc; TYPE_1__ dc_vlc; int gb; } ;
+struct TYPE_8__ {int table; } ;
+struct TYPE_7__ {int table; } ;
+typedef TYPE_4__ TSCC2Context ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ size_t* ff_zigzag_scan ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int,int) ;
+ int memset (int*,int,int) ;
+ int sign_extend (int,int) ;
+ int tscc2_idct4_put (int*,int*,int*,int) ;
 
 __attribute__((used)) static int tscc2_decode_mb(TSCC2Context *c, int *q, int vlc_set,
                            uint8_t *dst, int stride, int plane)
@@ -69,8 +69,8 @@ __attribute__((used)) static int tscc2_decode_mb(TSCC2Context *c, int *q, int vl
                 if (dc == 0x100)
                     dc = get_bits(gb, 8);
             }
-            dc          = (dc + prev_dc) & 0xFF;
-            prev_dc     = dc;
+            dc = (dc + prev_dc) & 0xFF;
+            prev_dc = dc;
             c->block[0] = dc;
 
             nc = get_vlc2(gb, c->nc_vlc[vlc_set].table, 9, 1);

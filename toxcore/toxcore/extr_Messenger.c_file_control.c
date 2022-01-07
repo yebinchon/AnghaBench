@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
 struct File_Transfers {scalar_t__ status; int paused; } ;
-typedef  size_t int32_t ;
+typedef size_t int32_t ;
 struct TYPE_7__ {TYPE_1__* friendlist; } ;
-struct TYPE_6__ {scalar_t__ status; int /*<<< orphan*/  num_sending_files; struct File_Transfers* file_sending; struct File_Transfers* file_receiving; } ;
-typedef  TYPE_2__ Messenger ;
+struct TYPE_6__ {scalar_t__ status; int num_sending_files; struct File_Transfers* file_sending; struct File_Transfers* file_receiving; } ;
+typedef TYPE_2__ Messenger ;
 
-/* Variables and functions */
- unsigned int FILECONTROL_ACCEPT ; 
- unsigned int FILECONTROL_KILL ; 
- unsigned int FILECONTROL_PAUSE ; 
- scalar_t__ FILESTATUS_NONE ; 
- scalar_t__ FILESTATUS_NOT_ACCEPTED ; 
- scalar_t__ FILESTATUS_TRANSFERRING ; 
- int FILE_PAUSE_OTHER ; 
- int FILE_PAUSE_US ; 
- scalar_t__ FRIEND_ONLINE ; 
- int MAX_CONCURRENT_FILE_PIPES ; 
- scalar_t__ friend_not_valid (TYPE_2__ const*,size_t) ; 
- scalar_t__ send_file_control_packet (TYPE_2__ const*,size_t,int,int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ unsigned int FILECONTROL_ACCEPT ;
+ unsigned int FILECONTROL_KILL ;
+ unsigned int FILECONTROL_PAUSE ;
+ scalar_t__ FILESTATUS_NONE ;
+ scalar_t__ FILESTATUS_NOT_ACCEPTED ;
+ scalar_t__ FILESTATUS_TRANSFERRING ;
+ int FILE_PAUSE_OTHER ;
+ int FILE_PAUSE_US ;
+ scalar_t__ FRIEND_ONLINE ;
+ int MAX_CONCURRENT_FILE_PIPES ;
+ scalar_t__ friend_not_valid (TYPE_2__ const*,size_t) ;
+ scalar_t__ send_file_control_packet (TYPE_2__ const*,size_t,int,int,unsigned int,int ,int ) ;
 
 int file_control(const Messenger *m, int32_t friendnumber, uint32_t filenumber, unsigned int control)
 {
@@ -106,7 +106,7 @@ int file_control(const Messenger *m, int32_t friendnumber, uint32_t filenumber, 
             ft->status = FILESTATUS_TRANSFERRING;
 
             if (ft->paused & FILE_PAUSE_US) {
-                ft->paused ^=  FILE_PAUSE_US;
+                ft->paused ^= FILE_PAUSE_US;
             }
         }
     } else {

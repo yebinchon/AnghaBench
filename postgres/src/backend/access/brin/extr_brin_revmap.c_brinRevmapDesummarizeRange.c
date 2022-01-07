@@ -1,203 +1,190 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {scalar_t__ regOffset; int /*<<< orphan*/  heapBlk; int /*<<< orphan*/  pagesPerRange; } ;
-typedef  TYPE_1__ xl_brin_desummarize ;
-typedef  int /*<<< orphan*/  XLogRecPtr ;
-struct TYPE_10__ {int /*<<< orphan*/  rm_pagesPerRange; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * rm_tids; } ;
-typedef  TYPE_2__ RevmapContents ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  scalar_t__ OffsetNumber ;
-typedef  int /*<<< orphan*/  ItemPointerData ;
-typedef  int /*<<< orphan*/  ItemId ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  int /*<<< orphan*/  BrinTuple ;
-typedef  TYPE_3__ BrinRevmap ;
-typedef  int /*<<< orphan*/  BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BRIN_IS_REGULAR_PAGE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BUFFER_LOCK_EXCLUSIVE ; 
- int /*<<< orphan*/  BUFFER_LOCK_UNLOCK ; 
- int /*<<< orphan*/  BlockNumberIsValid (int /*<<< orphan*/ ) ; 
- scalar_t__ BrinTupleIsPlaceholder (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BufferGetPage (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  END_CRIT_SECTION () ; 
- int /*<<< orphan*/  ERRCODE_INDEX_CORRUPTED ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ HEAPBLK_TO_REVMAP_INDEX (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ItemIdIsUsed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ItemPointerGetBlockNumber (int /*<<< orphan*/ *) ; 
- scalar_t__ ItemPointerGetOffsetNumber (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ItemPointerIsValid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ItemPointerSetInvalid (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LockBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MarkBufferDirty (int /*<<< orphan*/ ) ; 
- scalar_t__ PageGetContents (int /*<<< orphan*/ ) ; 
- scalar_t__ PageGetItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageGetItemId (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ PageGetMaxOffsetNumber (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PageIndexTupleDeleteNoCompact (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  PageSetLSN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REGBUF_STANDARD ; 
- int /*<<< orphan*/  RM_BRIN_ID ; 
- int /*<<< orphan*/  ReadBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetRelationName (int /*<<< orphan*/ ) ; 
- scalar_t__ RelationNeedsWAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  START_CRIT_SECTION () ; 
- int /*<<< orphan*/  SizeOfBrinDesummarize ; 
- int /*<<< orphan*/  UnlockReleaseBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARNING ; 
- int /*<<< orphan*/  XLOG_BRIN_DESUMMARIZE ; 
- int /*<<< orphan*/  XLogBeginInsert () ; 
- int /*<<< orphan*/  XLogInsert (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLogRegisterBuffer (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XLogRegisterData (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  brinLockRevmapPageForUpdate (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* brinRevmapInitialize (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  brinRevmapTerminate (TYPE_3__*) ; 
- int /*<<< orphan*/  brinSetHeapBlockItemptr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,...) ; 
- int /*<<< orphan*/  revmap_get_blkno (TYPE_3__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {scalar_t__ regOffset; int heapBlk; int pagesPerRange; } ;
+typedef TYPE_1__ xl_brin_desummarize ;
+typedef int XLogRecPtr ;
+struct TYPE_10__ {int rm_pagesPerRange; } ;
+struct TYPE_9__ {int * rm_tids; } ;
+typedef TYPE_2__ RevmapContents ;
+typedef int Relation ;
+typedef int Page ;
+typedef scalar_t__ OffsetNumber ;
+typedef int ItemPointerData ;
+typedef int ItemId ;
+typedef int Buffer ;
+typedef int BrinTuple ;
+typedef TYPE_3__ BrinRevmap ;
+typedef int BlockNumber ;
+
+
+ int BRIN_IS_REGULAR_PAGE (int ) ;
+ int BUFFER_LOCK_EXCLUSIVE ;
+ int BUFFER_LOCK_UNLOCK ;
+ int BlockNumberIsValid (int ) ;
+ scalar_t__ BrinTupleIsPlaceholder (int *) ;
+ int BufferGetPage (int ) ;
+ int END_CRIT_SECTION () ;
+ int ERRCODE_INDEX_CORRUPTED ;
+ int ERROR ;
+ scalar_t__ HEAPBLK_TO_REVMAP_INDEX (int ,int ) ;
+ int ItemIdIsUsed (int ) ;
+ int ItemPointerGetBlockNumber (int *) ;
+ scalar_t__ ItemPointerGetOffsetNumber (int *) ;
+ int ItemPointerIsValid (int *) ;
+ int ItemPointerSetInvalid (int *) ;
+ int LockBuffer (int ,int ) ;
+ int MarkBufferDirty (int ) ;
+ scalar_t__ PageGetContents (int ) ;
+ scalar_t__ PageGetItem (int ,int ) ;
+ int PageGetItemId (int ,scalar_t__) ;
+ scalar_t__ PageGetMaxOffsetNumber (int ) ;
+ int PageIndexTupleDeleteNoCompact (int ,scalar_t__) ;
+ int PageSetLSN (int ,int ) ;
+ int REGBUF_STANDARD ;
+ int RM_BRIN_ID ;
+ int ReadBuffer (int ,int ) ;
+ int RelationGetRelationName (int ) ;
+ scalar_t__ RelationNeedsWAL (int ) ;
+ int START_CRIT_SECTION () ;
+ int SizeOfBrinDesummarize ;
+ int UnlockReleaseBuffer (int ) ;
+ int WARNING ;
+ int XLOG_BRIN_DESUMMARIZE ;
+ int XLogBeginInsert () ;
+ int XLogInsert (int ,int ) ;
+ int XLogRegisterBuffer (int,int ,int ) ;
+ int XLogRegisterData (char*,int ) ;
+ int brinLockRevmapPageForUpdate (TYPE_3__*,int ) ;
+ TYPE_3__* brinRevmapInitialize (int ,int *,int *) ;
+ int brinRevmapTerminate (TYPE_3__*) ;
+ int brinSetHeapBlockItemptr (int ,int ,int ,int ) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,...) ;
+ int revmap_get_blkno (TYPE_3__*,int ) ;
 
 bool
 brinRevmapDesummarizeRange(Relation idxrel, BlockNumber heapBlk)
 {
-	BrinRevmap *revmap;
-	BlockNumber pagesPerRange;
-	RevmapContents *contents;
-	ItemPointerData *iptr;
-	ItemPointerData invalidIptr;
-	BlockNumber revmapBlk;
-	Buffer		revmapBuf;
-	Buffer		regBuf;
-	Page		revmapPg;
-	Page		regPg;
-	OffsetNumber revmapOffset;
-	OffsetNumber regOffset;
-	ItemId		lp;
-	BrinTuple  *tup;
+ BrinRevmap *revmap;
+ BlockNumber pagesPerRange;
+ RevmapContents *contents;
+ ItemPointerData *iptr;
+ ItemPointerData invalidIptr;
+ BlockNumber revmapBlk;
+ Buffer revmapBuf;
+ Buffer regBuf;
+ Page revmapPg;
+ Page regPg;
+ OffsetNumber revmapOffset;
+ OffsetNumber regOffset;
+ ItemId lp;
+ BrinTuple *tup;
 
-	revmap = brinRevmapInitialize(idxrel, &pagesPerRange, NULL);
+ revmap = brinRevmapInitialize(idxrel, &pagesPerRange, ((void*)0));
 
-	revmapBlk = revmap_get_blkno(revmap, heapBlk);
-	if (!BlockNumberIsValid(revmapBlk))
-	{
-		/* revmap page doesn't exist: range not summarized, we're done */
-		brinRevmapTerminate(revmap);
-		return true;
-	}
+ revmapBlk = revmap_get_blkno(revmap, heapBlk);
+ if (!BlockNumberIsValid(revmapBlk))
+ {
 
-	/* Lock the revmap page, obtain the index tuple pointer from it */
-	revmapBuf = brinLockRevmapPageForUpdate(revmap, heapBlk);
-	revmapPg = BufferGetPage(revmapBuf);
-	revmapOffset = HEAPBLK_TO_REVMAP_INDEX(revmap->rm_pagesPerRange, heapBlk);
+  brinRevmapTerminate(revmap);
+  return 1;
+ }
 
-	contents = (RevmapContents *) PageGetContents(revmapPg);
-	iptr = contents->rm_tids;
-	iptr += revmapOffset;
 
-	if (!ItemPointerIsValid(iptr))
-	{
-		/* no index tuple: range not summarized, we're done */
-		LockBuffer(revmapBuf, BUFFER_LOCK_UNLOCK);
-		brinRevmapTerminate(revmap);
-		return true;
-	}
+ revmapBuf = brinLockRevmapPageForUpdate(revmap, heapBlk);
+ revmapPg = BufferGetPage(revmapBuf);
+ revmapOffset = HEAPBLK_TO_REVMAP_INDEX(revmap->rm_pagesPerRange, heapBlk);
 
-	regBuf = ReadBuffer(idxrel, ItemPointerGetBlockNumber(iptr));
-	LockBuffer(regBuf, BUFFER_LOCK_EXCLUSIVE);
-	regPg = BufferGetPage(regBuf);
+ contents = (RevmapContents *) PageGetContents(revmapPg);
+ iptr = contents->rm_tids;
+ iptr += revmapOffset;
 
-	/* if this is no longer a regular page, tell caller to start over */
-	if (!BRIN_IS_REGULAR_PAGE(regPg))
-	{
-		LockBuffer(revmapBuf, BUFFER_LOCK_UNLOCK);
-		LockBuffer(regBuf, BUFFER_LOCK_UNLOCK);
-		brinRevmapTerminate(revmap);
-		return false;
-	}
+ if (!ItemPointerIsValid(iptr))
+ {
 
-	regOffset = ItemPointerGetOffsetNumber(iptr);
-	if (regOffset > PageGetMaxOffsetNumber(regPg))
-		ereport(ERROR,
-				(errcode(ERRCODE_INDEX_CORRUPTED),
-				 errmsg("corrupted BRIN index: inconsistent range map")));
+  LockBuffer(revmapBuf, BUFFER_LOCK_UNLOCK);
+  brinRevmapTerminate(revmap);
+  return 1;
+ }
 
-	lp = PageGetItemId(regPg, regOffset);
-	if (!ItemIdIsUsed(lp))
-		ereport(ERROR,
-				(errcode(ERRCODE_INDEX_CORRUPTED),
-				 errmsg("corrupted BRIN index: inconsistent range map")));
-	tup = (BrinTuple *) PageGetItem(regPg, lp);
-	/* XXX apply sanity checks?  Might as well delete a bogus tuple ... */
+ regBuf = ReadBuffer(idxrel, ItemPointerGetBlockNumber(iptr));
+ LockBuffer(regBuf, BUFFER_LOCK_EXCLUSIVE);
+ regPg = BufferGetPage(regBuf);
 
-	/*
-	 * We're only removing data, not reading it, so there's no need to
-	 * TestForOldSnapshot here.
-	 */
 
-	/*
-	 * Because of ShareUpdateExclusive lock, this function shouldn't run
-	 * concurrently with summarization.  Placeholder tuples can only exist as
-	 * leftovers from crashed summarization, so if we detect any, we complain
-	 * but proceed.
-	 */
-	if (BrinTupleIsPlaceholder(tup))
-		ereport(WARNING,
-				(errmsg("leftover placeholder tuple detected in BRIN index \"%s\", deleting",
-						RelationGetRelationName(idxrel))));
+ if (!BRIN_IS_REGULAR_PAGE(regPg))
+ {
+  LockBuffer(revmapBuf, BUFFER_LOCK_UNLOCK);
+  LockBuffer(regBuf, BUFFER_LOCK_UNLOCK);
+  brinRevmapTerminate(revmap);
+  return 0;
+ }
 
-	START_CRIT_SECTION();
+ regOffset = ItemPointerGetOffsetNumber(iptr);
+ if (regOffset > PageGetMaxOffsetNumber(regPg))
+  ereport(ERROR,
+    (errcode(ERRCODE_INDEX_CORRUPTED),
+     errmsg("corrupted BRIN index: inconsistent range map")));
 
-	ItemPointerSetInvalid(&invalidIptr);
-	brinSetHeapBlockItemptr(revmapBuf, revmap->rm_pagesPerRange, heapBlk,
-							invalidIptr);
-	PageIndexTupleDeleteNoCompact(regPg, regOffset);
-	/* XXX record free space in FSM? */
+ lp = PageGetItemId(regPg, regOffset);
+ if (!ItemIdIsUsed(lp))
+  ereport(ERROR,
+    (errcode(ERRCODE_INDEX_CORRUPTED),
+     errmsg("corrupted BRIN index: inconsistent range map")));
+ tup = (BrinTuple *) PageGetItem(regPg, lp);
+ if (BrinTupleIsPlaceholder(tup))
+  ereport(WARNING,
+    (errmsg("leftover placeholder tuple detected in BRIN index \"%s\", deleting",
+      RelationGetRelationName(idxrel))));
 
-	MarkBufferDirty(regBuf);
-	MarkBufferDirty(revmapBuf);
+ START_CRIT_SECTION();
 
-	if (RelationNeedsWAL(idxrel))
-	{
-		xl_brin_desummarize xlrec;
-		XLogRecPtr	recptr;
+ ItemPointerSetInvalid(&invalidIptr);
+ brinSetHeapBlockItemptr(revmapBuf, revmap->rm_pagesPerRange, heapBlk,
+       invalidIptr);
+ PageIndexTupleDeleteNoCompact(regPg, regOffset);
 
-		xlrec.pagesPerRange = revmap->rm_pagesPerRange;
-		xlrec.heapBlk = heapBlk;
-		xlrec.regOffset = regOffset;
 
-		XLogBeginInsert();
-		XLogRegisterData((char *) &xlrec, SizeOfBrinDesummarize);
-		XLogRegisterBuffer(0, revmapBuf, 0);
-		XLogRegisterBuffer(1, regBuf, REGBUF_STANDARD);
-		recptr = XLogInsert(RM_BRIN_ID, XLOG_BRIN_DESUMMARIZE);
-		PageSetLSN(revmapPg, recptr);
-		PageSetLSN(regPg, recptr);
-	}
+ MarkBufferDirty(regBuf);
+ MarkBufferDirty(revmapBuf);
 
-	END_CRIT_SECTION();
+ if (RelationNeedsWAL(idxrel))
+ {
+  xl_brin_desummarize xlrec;
+  XLogRecPtr recptr;
 
-	UnlockReleaseBuffer(regBuf);
-	LockBuffer(revmapBuf, BUFFER_LOCK_UNLOCK);
-	brinRevmapTerminate(revmap);
+  xlrec.pagesPerRange = revmap->rm_pagesPerRange;
+  xlrec.heapBlk = heapBlk;
+  xlrec.regOffset = regOffset;
 
-	return true;
+  XLogBeginInsert();
+  XLogRegisterData((char *) &xlrec, SizeOfBrinDesummarize);
+  XLogRegisterBuffer(0, revmapBuf, 0);
+  XLogRegisterBuffer(1, regBuf, REGBUF_STANDARD);
+  recptr = XLogInsert(RM_BRIN_ID, XLOG_BRIN_DESUMMARIZE);
+  PageSetLSN(revmapPg, recptr);
+  PageSetLSN(regPg, recptr);
+ }
+
+ END_CRIT_SECTION();
+
+ UnlockReleaseBuffer(regBuf);
+ LockBuffer(revmapBuf, BUFFER_LOCK_UNLOCK);
+ brinRevmapTerminate(revmap);
+
+ return 1;
 }

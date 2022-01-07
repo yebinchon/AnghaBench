@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int X ;
 struct TYPE_5__ {TYPE_1__* HubDb; } ;
-struct TYPE_4__ {int /*<<< orphan*/  CrlList; } ;
-typedef  TYPE_2__ HUB ;
+struct TYPE_4__ {int CrlList; } ;
+typedef TYPE_2__ HUB ;
 
-/* Variables and functions */
- int IsCertMatchCrlList (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+ int IsCertMatchCrlList (int *,int ) ;
+ int LockList (int ) ;
+ int UnlockList (int ) ;
 
 bool IsValidCertInHub(HUB *h, X *x)
 {
-	bool ret;
-	// Validate arguments
-	if (h == NULL || x == NULL)
-	{
-		return false;
-	}
+ bool ret;
 
-	if (h->HubDb == NULL)
-	{
-		return false;
-	}
+ if (h == ((void*)0) || x == ((void*)0))
+ {
+  return 0;
+ }
 
-	LockList(h->HubDb->CrlList);
-	{
-		ret = IsCertMatchCrlList(x, h->HubDb->CrlList);
-	}
-	UnlockList(h->HubDb->CrlList);
+ if (h->HubDb == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (ret)
-	{
-		// This is invalid because it was matched
-		return false;
-	}
+ LockList(h->HubDb->CrlList);
+ {
+  ret = IsCertMatchCrlList(x, h->HubDb->CrlList);
+ }
+ UnlockList(h->HubDb->CrlList);
 
-	// This is valid because it wasn't matched
-	return true;
+ if (ret)
+ {
+
+  return 0;
+ }
+
+
+ return 1;
 }

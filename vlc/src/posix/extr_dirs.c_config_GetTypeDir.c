@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int asprintf (char**,char*,char const*,...) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* getenv (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- char* malloc (size_t const) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t const) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strncmp (char*,char const*,size_t const) ; 
- int /*<<< orphan*/  strspn (char*,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ int asprintf (char**,char*,char const*,...) ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int free (char*) ;
+ char* getenv (char*) ;
+ int getline (char**,size_t*,int *) ;
+ char* malloc (size_t const) ;
+ int memcpy (char*,char const*,size_t const) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strncmp (char*,char const*,size_t const) ;
+ int strspn (char*,char*) ;
 
 __attribute__((used)) static char *config_GetTypeDir (const char *xdg_name)
 {
@@ -34,9 +34,9 @@ __attribute__((used)) static char *config_GetTypeDir (const char *xdg_name)
     const char *dir = getenv ("XDG_CONFIG_HOME");
     const char *file = "user-dirs.dirs";
 
-    if (home == NULL)
-        return NULL;
-    if (dir == NULL)
+    if (home == ((void*)0))
+        return ((void*)0);
+    if (dir == ((void*)0))
     {
         dir = home;
         file = ".config/user-dirs.dirs";
@@ -44,53 +44,53 @@ __attribute__((used)) static char *config_GetTypeDir (const char *xdg_name)
 
     char *path;
     if (asprintf (&path, "%s/%s", dir, file) == -1)
-        return NULL;
+        return ((void*)0);
 
     FILE *stream = fopen (path, "rte");
     free (path);
-    path = NULL;
-    if (stream != NULL)
+    path = ((void*)0);
+    if (stream != ((void*)0))
     {
-        char *linebuf = NULL;
+        char *linebuf = ((void*)0);
         size_t linelen = 0;
 
         while (getline (&linebuf, &linelen, stream) != -1)
         {
             char *ptr = linebuf;
-            ptr += strspn (ptr, " \t"); /* Skip whites */
+            ptr += strspn (ptr, " \t");
             if (strncmp (ptr, "XDG_", 4))
                 continue;
-            ptr += 4; /* Skip XDG_ */
+            ptr += 4;
             if (strncmp (ptr, xdg_name, namelen))
                 continue;
-            ptr += namelen; /* Skip XDG type name */
+            ptr += namelen;
             if (strncmp (ptr, "_DIR", 4))
                 continue;
-            ptr += 4; /* Skip _DIR */
-            ptr += strspn (ptr, " \t"); /* Skip whites */
+            ptr += 4;
+            ptr += strspn (ptr, " \t");
             if (*ptr != '=')
                 continue;
-            ptr++; /* Skip equality sign */
-            ptr += strspn (ptr, " \t"); /* Skip whites */
+            ptr++;
+            ptr += strspn (ptr, " \t");
             if (*ptr != '"')
                 continue;
-            ptr++; /* Skip quote */
+            ptr++;
             linelen -= ptr - linebuf;
 
             char *out;
             if (strncmp (ptr, "$HOME", 5))
             {
                 path = malloc (linelen);
-                if (path == NULL)
+                if (path == ((void*)0))
                     continue;
                 out = path;
             }
             else
-            {   /* Prefix with $HOME */
+            {
                 const size_t homelen = strlen (home);
                 ptr += 5;
                 path = malloc (homelen + linelen - 5);
-                if (path == NULL)
+                if (path == ((void*)0))
                     continue;
                 memcpy (path, home, homelen);
                 out = path + homelen;
@@ -103,12 +103,12 @@ __attribute__((used)) static char *config_GetTypeDir (const char *xdg_name)
                 if (*ptr == '\0')
                 {
                     free (path);
-                    path = NULL;
+                    path = ((void*)0);
                     break;
                 }
                 *(out++) = *(ptr++);
             }
-            if (path != NULL)
+            if (path != ((void*)0))
                 *out = '\0';
             break;
         }
@@ -116,13 +116,13 @@ __attribute__((used)) static char *config_GetTypeDir (const char *xdg_name)
         fclose (stream);
     }
 
-    /* Default! */
-    if (path == NULL)
+
+    if (path == ((void*)0))
     {
         if (strcmp (xdg_name, "DESKTOP") == 0)
         {
             if (asprintf (&path, "%s/Desktop", home) == -1)
-                return NULL;
+                return ((void*)0);
         }
         else
             path = strdup (home);

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bytea ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  FmgrInfo ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SendFunctionCall (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fmgr_info (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int bytea ;
+typedef int Oid ;
+typedef int FmgrInfo ;
+typedef int Datum ;
+
+
+ int * SendFunctionCall (int *,int ) ;
+ int fmgr_info (int ,int *) ;
 
 bytea *
 OidSendFunctionCall(Oid functionId, Datum val)
 {
-	FmgrInfo	flinfo;
+ FmgrInfo flinfo;
 
-	fmgr_info(functionId, &flinfo);
-	return SendFunctionCall(&flinfo, val);
+ fmgr_info(functionId, &flinfo);
+ return SendFunctionCall(&flinfo, val);
 }

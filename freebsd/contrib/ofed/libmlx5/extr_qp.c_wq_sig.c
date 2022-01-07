@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct mlx5_wqe_ctrl_seg {int /*<<< orphan*/  qpn_ds; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  be32toh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  calc_sig (struct mlx5_wqe_ctrl_seg*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+struct mlx5_wqe_ctrl_seg {int qpn_ds; } ;
+
+
+ int be32toh (int ) ;
+ int calc_sig (struct mlx5_wqe_ctrl_seg*,int ) ;
 
 __attribute__((used)) static uint8_t wq_sig(struct mlx5_wqe_ctrl_seg *ctrl)
 {
-	return calc_sig(ctrl, be32toh(ctrl->qpn_ds));
+ return calc_sig(ctrl, be32toh(ctrl->qpn_ds));
 }

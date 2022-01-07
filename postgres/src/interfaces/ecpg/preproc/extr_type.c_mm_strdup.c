@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OUT_OF_MEMORY ; 
- int /*<<< orphan*/  mmfatal (int /*<<< orphan*/ ,char*) ; 
- char* strdup (char const*) ; 
+ int OUT_OF_MEMORY ;
+ int mmfatal (int ,char*) ;
+ char* strdup (char const*) ;
 
 char *
 mm_strdup(const char *string)
 {
-	char	   *new = strdup(string);
+ char *new = strdup(string);
 
-	if (new == NULL)
-		mmfatal(OUT_OF_MEMORY, "out of memory");
+ if (new == ((void*)0))
+  mmfatal(OUT_OF_MEMORY, "out of memory");
 
-	return new;
+ return new;
 }

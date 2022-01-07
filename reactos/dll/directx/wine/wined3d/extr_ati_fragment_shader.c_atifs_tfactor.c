@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_state {int /*<<< orphan*/ * render_states; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_state {int * render_states; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct atifs_context_private_data* fragment_pipe_data; struct wined3d_gl_info* gl_info; } ;
-struct wined3d_color {int /*<<< orphan*/  r; } ;
+struct wined3d_color {int r; } ;
 struct atifs_context_private_data {TYPE_1__* last_shader; } ;
 struct TYPE_2__ {scalar_t__* constants; } ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ATIFS_CONSTANT_TFACTOR ; 
- size_t ATIFS_CONST_TFACTOR ; 
- size_t GL_CON_0_ATI ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- size_t WINED3D_RS_TEXTUREFACTOR ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glSetFragmentShaderConstantATI (size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_color_from_d3dcolor (struct wined3d_color*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ATIFS_CONSTANT_TFACTOR ;
+ size_t ATIFS_CONST_TFACTOR ;
+ size_t GL_CON_0_ATI ;
+ int GL_EXTCALL (int ) ;
+ size_t WINED3D_RS_TEXTUREFACTOR ;
+ int checkGLcall (char*) ;
+ int glSetFragmentShaderConstantATI (size_t,int *) ;
+ int wined3d_color_from_d3dcolor (struct wined3d_color*,int ) ;
 
 __attribute__((used)) static void atifs_tfactor(struct wined3d_context *context, const struct wined3d_state *state, DWORD state_id)
 {

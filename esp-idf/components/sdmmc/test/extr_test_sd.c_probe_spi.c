@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int gpio_miso; int gpio_mosi; int gpio_sck; int gpio_cs; } ;
-typedef  TYPE_1__ sdspi_slot_config_t ;
-struct TYPE_8__ {int /*<<< orphan*/  slot; } ;
-typedef  TYPE_2__ sdmmc_host_t ;
-typedef  int /*<<< orphan*/  sdmmc_card_t ;
+typedef TYPE_1__ sdspi_slot_config_t ;
+struct TYPE_8__ {int slot; } ;
+typedef TYPE_2__ sdmmc_host_t ;
+typedef int sdmmc_card_t ;
 
-/* Variables and functions */
- TYPE_2__ SDSPI_HOST_DEFAULT () ; 
- TYPE_1__ SDSPI_SLOT_CONFIG_DEFAULT () ; 
- int /*<<< orphan*/  TEST_ASSERT_NOT_NULL (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  sd_test_board_power_off () ; 
- int /*<<< orphan*/  sd_test_board_power_on () ; 
- int /*<<< orphan*/  sdmmc_card_init (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdmmc_card_print_info (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdspi_host_deinit () ; 
- int /*<<< orphan*/  sdspi_host_init () ; 
- int /*<<< orphan*/  sdspi_host_init_slot (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  stdout ; 
+
+ TYPE_2__ SDSPI_HOST_DEFAULT () ;
+ TYPE_1__ SDSPI_SLOT_CONFIG_DEFAULT () ;
+ int TEST_ASSERT_NOT_NULL (int *) ;
+ int TEST_ESP_OK (int ) ;
+ int free (int *) ;
+ int * malloc (int) ;
+ int sd_test_board_power_off () ;
+ int sd_test_board_power_on () ;
+ int sdmmc_card_init (TYPE_2__*,int *) ;
+ int sdmmc_card_print_info (int ,int *) ;
+ int sdspi_host_deinit () ;
+ int sdspi_host_init () ;
+ int sdspi_host_init_slot (int ,TYPE_1__*) ;
+ int stdout ;
 
 __attribute__((used)) static void probe_spi(int freq_khz, int pin_miso, int pin_mosi, int pin_sck, int pin_cs)
 {

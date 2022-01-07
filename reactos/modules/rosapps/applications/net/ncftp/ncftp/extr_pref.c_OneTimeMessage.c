@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ HasSeenOneTimeMessage (char const* const) ; 
- int /*<<< orphan*/  SetSeenOneTimeMessage (char const* const) ; 
+ scalar_t__ HasSeenOneTimeMessage (char const* const) ;
+ int SetSeenOneTimeMessage (char const* const) ;
 
 int
 OneTimeMessage(const char *const msg)
 {
-	if (HasSeenOneTimeMessage(msg))
-		return (0);
-	SetSeenOneTimeMessage(msg);
-	return (1);
+ if (HasSeenOneTimeMessage(msg))
+  return (0);
+ SetSeenOneTimeMessage(msg);
+ return (1);
 }

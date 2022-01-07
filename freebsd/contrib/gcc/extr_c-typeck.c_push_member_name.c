@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-struct TYPE_2__ {int /*<<< orphan*/  s; } ;
 
-/* Variables and functions */
- scalar_t__ DECL_NAME (int /*<<< orphan*/ ) ; 
- char* IDENTIFIER_POINTER (scalar_t__) ; 
- int /*<<< orphan*/  PUSH_SPELLING (int /*<<< orphan*/ ,char const* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPELLING_MEMBER ; 
- TYPE_1__ u ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int tree ;
+struct TYPE_2__ {int s; } ;
+
+
+ scalar_t__ DECL_NAME (int ) ;
+ char* IDENTIFIER_POINTER (scalar_t__) ;
+ int PUSH_SPELLING (int ,char const* const,int ) ;
+ int SPELLING_MEMBER ;
+ TYPE_1__ u ;
 
 __attribute__((used)) static void
 push_member_name (tree decl)

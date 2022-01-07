@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPDCB ;
-typedef  int /*<<< orphan*/  LPCOMMTIMEOUTS ;
-typedef  char* INT ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,...) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_ACCESS_DENIED ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- int /*<<< orphan*/  GENERIC_WRITE ; 
- scalar_t__ GetCommState (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetCommTimeouts (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  IDS_ERROR_DEVICE_NOT_AVAILABLE ; 
- int /*<<< orphan*/  IDS_ERROR_ILLEGAL_DEVICE_NAME ; 
- int /*<<< orphan*/  IDS_ERROR_STATUS_GET_DEVICE ; 
- int /*<<< orphan*/  IDS_ERROR_STATUS_SET_DEVICE ; 
- int /*<<< orphan*/  IDS_ERROR_TIMEOUT_GET_DEVICE ; 
- int /*<<< orphan*/  IDS_ERROR_TIMEOUT_SET_DEVICE ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PORTNAME_LEN ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- scalar_t__ SetCommState (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ SetCommTimeouts (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  swprintf (int /*<<< orphan*/ *,char*,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPDCB ;
+typedef int LPCOMMTIMEOUTS ;
+typedef char* INT ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int ASSERT (int ) ;
+ int CloseHandle (scalar_t__) ;
+ int ConResPrintf (int ,int ,int *,...) ;
+ scalar_t__ CreateFileW (int *,int ,int ,int *,int ,int ,int *) ;
+ scalar_t__ ERROR_ACCESS_DENIED ;
+ scalar_t__ FALSE ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ scalar_t__ GetCommState (scalar_t__,int ) ;
+ scalar_t__ GetCommTimeouts (scalar_t__,int ) ;
+ scalar_t__ GetLastError () ;
+ int IDS_ERROR_DEVICE_NOT_AVAILABLE ;
+ int IDS_ERROR_ILLEGAL_DEVICE_NAME ;
+ int IDS_ERROR_STATUS_GET_DEVICE ;
+ int IDS_ERROR_STATUS_SET_DEVICE ;
+ int IDS_ERROR_TIMEOUT_GET_DEVICE ;
+ int IDS_ERROR_TIMEOUT_SET_DEVICE ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PORTNAME_LEN ;
+ int OPEN_EXISTING ;
+ scalar_t__ SetCommState (scalar_t__,int ) ;
+ scalar_t__ SetCommTimeouts (scalar_t__,int ) ;
+ int StdErr ;
+ int swprintf (int *,char*,char*) ;
 
 __attribute__((used)) static BOOL
 SerialPortQuery(INT nPortNum, LPDCB pDCB, LPCOMMTIMEOUTS pCommTimeouts, BOOL bWrite)
@@ -57,11 +57,11 @@ SerialPortQuery(INT nPortNum, LPDCB pDCB, LPCOMMTIMEOUTS pCommTimeouts, BOOL bWr
     swprintf(szPortName, L"COM%d", nPortNum);
     hPort = CreateFileW(szPortName,
                         bWrite ? GENERIC_WRITE : GENERIC_READ,
-                        0,     // exclusive
-                        NULL,  // sec attr
+                        0,
+                        ((void*)0),
                         OPEN_EXISTING,
-                        0,     // no attributes
-                        NULL); // no template
+                        0,
+                        ((void*)0));
 
     if (hPort == INVALID_HANDLE_VALUE)
     {

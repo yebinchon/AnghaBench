@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  func_uploadTexture; int /*<<< orphan*/  func_getBufferWidth; int /*<<< orphan*/  func_use; int /*<<< orphan*/  program; int /*<<< orphan*/ * us2_sampler; } ;
-typedef  TYPE_1__ IJK_GLES2_Renderer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGI (char*) ; 
- TYPE_1__* IJK_GLES2_Renderer_create_base (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IJK_GLES2_Renderer_free (TYPE_1__*) ; 
- int /*<<< orphan*/  IJK_GLES2_checkError_TRACE (char*) ; 
- int /*<<< orphan*/  IJK_GLES2_getFragmentShader_rgb () ; 
- int /*<<< orphan*/  glGetUniformLocation (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  rgb_use ; 
- int /*<<< orphan*/  rgbx8888_getBufferWidth ; 
- int /*<<< orphan*/  rgbx8888_uploadTexture ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int func_uploadTexture; int func_getBufferWidth; int func_use; int program; int * us2_sampler; } ;
+typedef TYPE_1__ IJK_GLES2_Renderer ;
+
+
+ int ALOGI (char*) ;
+ TYPE_1__* IJK_GLES2_Renderer_create_base (int ) ;
+ int IJK_GLES2_Renderer_free (TYPE_1__*) ;
+ int IJK_GLES2_checkError_TRACE (char*) ;
+ int IJK_GLES2_getFragmentShader_rgb () ;
+ int glGetUniformLocation (int ,char*) ;
+ int rgb_use ;
+ int rgbx8888_getBufferWidth ;
+ int rgbx8888_uploadTexture ;
 
 IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_rgbx8888()
 {
@@ -34,12 +34,12 @@ IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_rgbx8888()
 
     renderer->us2_sampler[0] = glGetUniformLocation(renderer->program, "us2_SamplerX"); IJK_GLES2_checkError_TRACE("glGetUniformLocation(us2_SamplerX)");
 
-    renderer->func_use            = rgb_use;
+    renderer->func_use = rgb_use;
     renderer->func_getBufferWidth = rgbx8888_getBufferWidth;
-    renderer->func_uploadTexture  = rgbx8888_uploadTexture;
+    renderer->func_uploadTexture = rgbx8888_uploadTexture;
 
     return renderer;
 fail:
     IJK_GLES2_Renderer_free(renderer);
-    return NULL;
+    return ((void*)0);
 }

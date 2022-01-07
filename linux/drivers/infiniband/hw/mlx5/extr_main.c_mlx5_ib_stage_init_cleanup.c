@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  memic_alloc_pages; } ;
-struct mlx5_ib_dev {TYPE_1__ dm; int /*<<< orphan*/  mr_srcu; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_INFINIBAND_ON_DEMAND_PAGING ; 
- scalar_t__ IS_ENABLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MLX5_MAX_MEMIC_PAGES ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int /*<<< orphan*/  bitmap_empty (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cleanup_srcu_struct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mlx5_ib_cleanup_multiport_master (struct mlx5_ib_dev*) ; 
- int /*<<< orphan*/  srcu_barrier (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int memic_alloc_pages; } ;
+struct mlx5_ib_dev {TYPE_1__ dm; int mr_srcu; } ;
+
+
+ int CONFIG_INFINIBAND_ON_DEMAND_PAGING ;
+ scalar_t__ IS_ENABLED (int ) ;
+ int MLX5_MAX_MEMIC_PAGES ;
+ int WARN_ON (int) ;
+ int bitmap_empty (int ,int ) ;
+ int cleanup_srcu_struct (int *) ;
+ int mlx5_ib_cleanup_multiport_master (struct mlx5_ib_dev*) ;
+ int srcu_barrier (int *) ;
 
 __attribute__((used)) static void mlx5_ib_stage_init_cleanup(struct mlx5_ib_dev *dev)
 {
-	mlx5_ib_cleanup_multiport_master(dev);
-	if (IS_ENABLED(CONFIG_INFINIBAND_ON_DEMAND_PAGING)) {
-		srcu_barrier(&dev->mr_srcu);
-		cleanup_srcu_struct(&dev->mr_srcu);
-	}
+ mlx5_ib_cleanup_multiport_master(dev);
+ if (IS_ENABLED(CONFIG_INFINIBAND_ON_DEMAND_PAGING)) {
+  srcu_barrier(&dev->mr_srcu);
+  cleanup_srcu_struct(&dev->mr_srcu);
+ }
 
-	WARN_ON(!bitmap_empty(dev->dm.memic_alloc_pages, MLX5_MAX_MEMIC_PAGES));
+ WARN_ON(!bitmap_empty(dev->dm.memic_alloc_pages, MLX5_MAX_MEMIC_PAGES));
 }

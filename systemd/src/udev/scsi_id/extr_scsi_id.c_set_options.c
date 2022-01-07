@@ -1,68 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- char* GIT_VERSION ; 
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_TARGET_CONSOLE ; 
- int /*<<< orphan*/  MAX_PATH_LEN ; 
- int /*<<< orphan*/  PAGE_80 ; 
- int /*<<< orphan*/  PAGE_83 ; 
- int /*<<< orphan*/  PAGE_83_PRE_SPC3 ; 
- int /*<<< orphan*/  SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int all_good ; 
- int /*<<< orphan*/  assert_not_reached (char*) ; 
- int atoi (char*) ; 
- char* config_file ; 
- int /*<<< orphan*/  default_page_code ; 
- int dev_specified ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int export ; 
- int getopt_long (int,char**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  help () ; 
- int log_error_errno (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  log_open () ; 
- int /*<<< orphan*/  log_set_max_level (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_set_target (int /*<<< orphan*/ ) ; 
- char* optarg ; 
- int optind ; 
- int /*<<< orphan*/  options ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int reformat_serial ; 
- int sg_version ; 
- int /*<<< orphan*/  streq (char*,char*) ; 
- int /*<<< orphan*/  strscpy (char*,int /*<<< orphan*/ ,char*) ; 
+ int EINVAL ;
+ int EXIT_SUCCESS ;
+ char* GIT_VERSION ;
+ int LOG_DEBUG ;
+ int LOG_TARGET_CONSOLE ;
+ int MAX_PATH_LEN ;
+ int PAGE_80 ;
+ int PAGE_83 ;
+ int PAGE_83_PRE_SPC3 ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int all_good ;
+ int assert_not_reached (char*) ;
+ int atoi (char*) ;
+ char* config_file ;
+ int default_page_code ;
+ int dev_specified ;
+ int exit (int ) ;
+ int export ;
+ int getopt_long (int,char**,char*,int ,int *) ;
+ int help () ;
+ int log_error_errno (int ,char*,char*) ;
+ int log_open () ;
+ int log_set_max_level (int ) ;
+ int log_set_target (int ) ;
+ char* optarg ;
+ int optind ;
+ int options ;
+ int printf (char*,char*) ;
+ int reformat_serial ;
+ int sg_version ;
+ int streq (char*,char*) ;
+ int strscpy (char*,int ,char*) ;
 
 __attribute__((used)) static int set_options(int argc, char **argv,
                        char *maj_min_dev) {
         int option;
 
-        /*
-         * optind is a global extern used by getopt. Since we can call
-         * set_options twice (once for command line, and once for config
-         * file) we have to reset this back to 1.
-         */
+
+
+
+
+
         optind = 1;
-        while ((option = getopt_long(argc, argv, "d:f:gp:uvVxhbs:", options, NULL)) >= 0)
+        while ((option = getopt_long(argc, argv, "d:f:gp:uvVxhbs:", options, ((void*)0))) >= 0)
                 switch (option) {
                 case 'b':
-                        all_good = false;
+                        all_good = 0;
                         break;
 
                 case 'd':
-                        dev_specified = true;
+                        dev_specified = 1;
                         strscpy(maj_min_dev, MAX_PATH_LEN, optarg);
                         break;
 
@@ -71,7 +63,7 @@ __attribute__((used)) static int set_options(int argc, char **argv,
                         break;
 
                 case 'g':
-                        all_good = true;
+                        all_good = 1;
                         break;
 
                 case 'h':
@@ -100,7 +92,7 @@ __attribute__((used)) static int set_options(int argc, char **argv,
                         break;
 
                 case 'u':
-                        reformat_serial = true;
+                        reformat_serial = 1;
                         break;
 
                 case 'v':
@@ -114,7 +106,7 @@ __attribute__((used)) static int set_options(int argc, char **argv,
                         exit(EXIT_SUCCESS);
 
                 case 'x':
-                        export = true;
+                        export = 1;
                         break;
 
                 case '?':
@@ -125,7 +117,7 @@ __attribute__((used)) static int set_options(int argc, char **argv,
                 }
 
         if (optind < argc && !dev_specified) {
-                dev_specified = true;
+                dev_specified = 1;
                 strscpy(maj_min_dev, MAX_PATH_LEN, argv[optind]);
         }
 

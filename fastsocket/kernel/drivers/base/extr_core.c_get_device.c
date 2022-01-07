@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/  kobj; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kobject_get (int /*<<< orphan*/ *) ; 
- struct device* to_dev (int /*<<< orphan*/ ) ; 
+
+
+
+struct device {int kobj; } ;
+
+
+ int kobject_get (int *) ;
+ struct device* to_dev (int ) ;
 
 struct device *get_device(struct device *dev)
 {
-	return dev ? to_dev(kobject_get(&dev->kobj)) : NULL;
+ return dev ? to_dev(kobject_get(&dev->kobj)) : ((void*)0);
 }

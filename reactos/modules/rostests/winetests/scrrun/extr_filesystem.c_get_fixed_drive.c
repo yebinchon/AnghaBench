@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IEnumVARIANT ;
-typedef  int /*<<< orphan*/  IDriveCollection ;
-typedef  int /*<<< orphan*/  IDrive ;
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ DriveTypeConst ;
 
-/* Variables and functions */
- scalar_t__ Fixed ; 
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDriveCollection_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDriveCollection_get__NewEnum (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDrive_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IDrive_get_DriveType (int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IEnumVARIANT_Next (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IEnumVARIANT_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IFileSystem3_get_Drives (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IDrive ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  V_DISPATCH (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fs3 ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
+
+
+
+typedef int VARIANT ;
+typedef int IUnknown ;
+typedef int IEnumVARIANT ;
+typedef int IDriveCollection ;
+typedef int IDrive ;
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ DriveTypeConst ;
+
+
+ scalar_t__ Fixed ;
+ scalar_t__ IDispatch_QueryInterface (int ,int *,void**) ;
+ int IDriveCollection_Release (int *) ;
+ scalar_t__ IDriveCollection_get__NewEnum (int *,int **) ;
+ int IDrive_Release (int *) ;
+ scalar_t__ IDrive_get_DriveType (int *,scalar_t__*) ;
+ scalar_t__ IEnumVARIANT_Next (int *,int,int *,int *) ;
+ int IEnumVARIANT_Release (int *) ;
+ scalar_t__ IFileSystem3_get_Drives (int ,int **) ;
+ int IID_IDrive ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int V_DISPATCH (int *) ;
+ int VariantClear (int *) ;
+ int fs3 ;
+ int ok (int,char*,scalar_t__) ;
 
 __attribute__((used)) static IDrive *get_fixed_drive(void)
 {
@@ -54,9 +54,9 @@ __attribute__((used)) static IDrive *get_fixed_drive(void)
         DriveTypeConst type;
         VARIANT var;
 
-        hr = IEnumVARIANT_Next(iter, 1, &var, NULL);
+        hr = IEnumVARIANT_Next(iter, 1, &var, ((void*)0));
         if (hr == S_FALSE) {
-            drive = NULL;
+            drive = ((void*)0);
             break;
         }
         ok(hr == S_OK, "got 0x%08x\n", hr);

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int Reg ;
-typedef  int /*<<< orphan*/  IRIns ;
-typedef  int /*<<< orphan*/  ASMState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CC_NE ; 
- int REX_64 ; 
- int RID_NONE ; 
- int /*<<< orphan*/  RSET_GPR ; 
- int /*<<< orphan*/  XO_ARITHi8 ; 
- int /*<<< orphan*/  XO_MOV ; 
- int XOg_CMP ; 
- int XOg_SAR ; 
- int /*<<< orphan*/  asm_guardcc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_i8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  emit_rr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  emit_shifti (int /*<<< orphan*/ *,int,int,int) ; 
- int ra_dest (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int ra_scratch (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_used (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rset_exclude (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int Reg ;
+typedef int IRIns ;
+typedef int ASMState ;
+
+
+ int CC_NE ;
+ int REX_64 ;
+ int RID_NONE ;
+ int RSET_GPR ;
+ int XO_ARITHi8 ;
+ int XO_MOV ;
+ int XOg_CMP ;
+ int XOg_SAR ;
+ int asm_guardcc (int *,int ) ;
+ int emit_i8 (int *,int) ;
+ int emit_rr (int *,int ,int,int) ;
+ int emit_shifti (int *,int,int,int) ;
+ int ra_dest (int *,int *,int ) ;
+ int ra_scratch (int *,int ) ;
+ scalar_t__ ra_used (int *) ;
+ int rset_exclude (int ,int) ;
 
 __attribute__((used)) static Reg asm_load_lightud64(ASMState *as, IRIns *ir, int typecheck)
 {

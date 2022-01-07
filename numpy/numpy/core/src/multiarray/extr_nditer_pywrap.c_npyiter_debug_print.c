@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * iter; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ NewNpyArrayIterObject ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NpyIter_DebugPrint (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_RETURN_NONE ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * iter; } ;
+typedef int PyObject ;
+typedef TYPE_1__ NewNpyArrayIterObject ;
+
+
+ int NpyIter_DebugPrint (int *) ;
+ int Py_RETURN_NONE ;
+ int printf (char*) ;
 
 __attribute__((used)) static PyObject *
 npyiter_debug_print(NewNpyArrayIterObject *self)
 {
-    if (self->iter != NULL) {
+    if (self->iter != ((void*)0)) {
         NpyIter_DebugPrint(self->iter);
     }
     else {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int float64 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int float64 ;
 struct TYPE_3__ {int sign; int high; scalar_t__ low; } ;
-typedef  TYPE_1__ commonNaNT ;
+typedef TYPE_1__ commonNaNT ;
 
-/* Variables and functions */
- scalar_t__ float64_is_signaling_nan (int) ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- int /*<<< orphan*/  float_raise (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ float64_is_signaling_nan (int) ;
+ int float_flag_invalid ;
+ int float_raise (int ) ;
 
 __attribute__((used)) static commonNaNT float64ToCommonNaN( float64 a )
 {

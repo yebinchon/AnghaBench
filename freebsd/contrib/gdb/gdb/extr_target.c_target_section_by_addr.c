@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct target_ops {struct section_table* to_sections_end; struct section_table* to_sections; } ;
 struct section_table {scalar_t__ addr; scalar_t__ endaddr; } ;
-typedef  scalar_t__ CORE_ADDR ;
+typedef scalar_t__ CORE_ADDR ;
 
-/* Variables and functions */
+
 
 struct section_table *
 target_section_by_addr (struct target_ops *target, CORE_ADDR addr)
@@ -25,7 +25,7 @@ target_section_by_addr (struct target_ops *target, CORE_ADDR addr)
        secp++)
     {
       if (addr >= secp->addr && addr < secp->endaddr)
-	return secp;
+ return secp;
     }
-  return NULL;
+  return ((void*)0);
 }

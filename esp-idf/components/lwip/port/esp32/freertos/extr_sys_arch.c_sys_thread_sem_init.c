@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sys_sem_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ mem_malloc (int) ; 
- int /*<<< orphan*/  pthread_setspecific (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sys_thread_sem_key ; 
- int /*<<< orphan*/  xSemaphoreCreateBinary () ; 
+
+
+
+typedef int sys_sem_t ;
+
+
+ int ESP_LOGE (int ,char*) ;
+ int TAG ;
+ int free (int *) ;
+ scalar_t__ mem_malloc (int) ;
+ int pthread_setspecific (int ,int *) ;
+ int sys_thread_sem_key ;
+ int xSemaphoreCreateBinary () ;
 
 sys_sem_t*
 sys_thread_sem_init(void)

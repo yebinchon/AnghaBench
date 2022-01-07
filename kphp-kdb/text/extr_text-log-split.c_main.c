@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char* replica_prefix; } ;
 struct TYPE_7__ {TYPE_1__* info; } ;
-struct TYPE_6__ {char* filename; int /*<<< orphan*/  file_size; } ;
+struct TYPE_6__ {char* filename; int file_size; } ;
 
-/* Variables and functions */
- TYPE_2__* Binlog ; 
- int O_APPEND ; 
- int O_CREAT ; 
- int O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- scalar_t__ atoll (void*) ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  copy_mod ; 
- int /*<<< orphan*/  copy_rem ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_3__* engine_replica ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ fdatasync (int) ; 
- int /*<<< orphan*/  flush_out () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  init_log_data (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_text_data (int /*<<< orphan*/ ) ; 
- scalar_t__ jump_log_pos ; 
- scalar_t__ keep_log_limit_pos ; 
- int /*<<< orphan*/  load_map () ; 
- scalar_t__ log_limit_pos ; 
- scalar_t__ log_readto_pos ; 
- scalar_t__ lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- void* map_filename ; 
- int open (char*,int,int) ; 
- TYPE_2__* open_binlog (TYPE_3__*,scalar_t__) ; 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  output_stats () ; 
- char* progname ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int sscanf (void*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int targ_existed ; 
- int targ_fd ; 
- char* targ_fname ; 
- scalar_t__ targ_orig_size ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- scalar_t__ verbosity ; 
+
+ TYPE_2__* Binlog ;
+ int O_APPEND ;
+ int O_CREAT ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ scalar_t__ atoll (void*) ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int close (int) ;
+ int copy_mod ;
+ int copy_rem ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_3__* engine_replica ;
+ int exit (int) ;
+ scalar_t__ fdatasync (int) ;
+ int flush_out () ;
+ int fprintf (int ,char*,...) ;
+ int getopt (int,char**,char*) ;
+ int init_log_data (scalar_t__,int ,int ) ;
+ int init_text_data (int ) ;
+ scalar_t__ jump_log_pos ;
+ scalar_t__ keep_log_limit_pos ;
+ int load_map () ;
+ scalar_t__ log_limit_pos ;
+ scalar_t__ log_readto_pos ;
+ scalar_t__ lseek (int,int ,int ) ;
+ void* map_filename ;
+ int open (char*,int,int) ;
+ TYPE_2__* open_binlog (TYPE_3__*,scalar_t__) ;
+ void* optarg ;
+ int optind ;
+ int output_stats () ;
+ char* progname ;
+ int replay_log (int ,int) ;
+ int sscanf (void*,char*,int *,int *) ;
+ int stderr ;
+ int targ_existed ;
+ int targ_fd ;
+ char* targ_fname ;
+ scalar_t__ targ_orig_size ;
+ int usage () ;
+ char* username ;
+ scalar_t__ verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;
@@ -79,8 +79,8 @@ int main (int argc, char *argv[]) {
       break;
     case 'm':
       if (sscanf (optarg, "%d,%d", &copy_rem, &copy_mod) != 2 || copy_rem < 0 || copy_rem >= copy_mod) {
-	usage();
-	return 2;
+ usage();
+ return 2;
       }
       break;
     case 'g':
@@ -139,7 +139,7 @@ int main (int argc, char *argv[]) {
 
   if (map_filename) {
     load_map ();
-  }    
+  }
 
   if (optind + 1 < argc) {
     targ_fname = argv[optind+1];

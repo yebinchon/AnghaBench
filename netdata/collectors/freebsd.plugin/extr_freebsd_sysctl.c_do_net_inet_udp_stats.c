@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  usec_t ;
+
+
+
+
+typedef int usec_t ;
 struct udpstat {scalar_t__ udps_filtermcast; scalar_t__ udps_nosum; scalar_t__ udps_badsum; scalar_t__ udps_fullsock; scalar_t__ udps_noport; scalar_t__ udps_badlen; scalar_t__ udps_hdrops; scalar_t__ udps_opackets; scalar_t__ udps_ipackets; } ;
-typedef  int /*<<< orphan*/  RRDSET ;
-typedef  int /*<<< orphan*/  RRDDIM ;
+typedef int RRDSET ;
+typedef int RRDDIM ;
 
-/* Variables and functions */
- int GETSYSCTL_SIMPLE (char*,int*,struct udpstat) ; 
- int /*<<< orphan*/  RRDSET_FLAG_DETAIL ; 
- int /*<<< orphan*/  RRDSET_TYPE_LINE ; 
- int /*<<< orphan*/  RRD_ALGORITHM_INCREMENTAL ; 
- int config_get_boolean (char*,char*,int) ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ likely (int) ; 
- int /*<<< orphan*/ * rrddim_add (int /*<<< orphan*/ *,char*,char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrddim_set_by_pointer (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/ * rrdset_create_localhost (char*,char*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char*,char*,char*,char*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_done (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrdset_flag_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rrdset_next (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
+
+ int GETSYSCTL_SIMPLE (char*,int*,struct udpstat) ;
+ int RRDSET_FLAG_DETAIL ;
+ int RRDSET_TYPE_LINE ;
+ int RRD_ALGORITHM_INCREMENTAL ;
+ int config_get_boolean (char*,char*,int) ;
+ int error (char*) ;
+ scalar_t__ likely (int) ;
+ int * rrddim_add (int *,char*,char*,int,int,int ) ;
+ int rrddim_set_by_pointer (int *,int *,scalar_t__) ;
+ int * rrdset_create_localhost (char*,char*,int *,char*,int *,char*,char*,char*,char*,int,int,int ) ;
+ int rrdset_done (int *) ;
+ int rrdset_flag_set (int *,int ) ;
+ int rrdset_next (int *) ;
+ scalar_t__ unlikely (int) ;
 
 int do_net_inet_udp_stats(int update_every, usec_t dt) {
     (void)dt;
@@ -37,10 +37,10 @@ int do_net_inet_udp_stats(int update_every, usec_t dt) {
 
     if (unlikely(do_udp_packets == -1)) {
         do_udp_packets = config_get_boolean("plugin:freebsd:net.inet.udp.stats", "ipv4 UDP packets", 1);
-        do_udp_errors  = config_get_boolean("plugin:freebsd:net.inet.udp.stats", "ipv4 UDP errors", 1);
+        do_udp_errors = config_get_boolean("plugin:freebsd:net.inet.udp.stats", "ipv4 UDP errors", 1);
     }
 
-    // see http://net-snmp.sourceforge.net/docs/mibs/udp.html
+
     if (likely(do_udp_packets || do_udp_errors)) {
         static int mib[4] = {0, 0, 0, 0};
         struct udpstat udpstat;
@@ -54,19 +54,19 @@ int do_net_inet_udp_stats(int update_every, usec_t dt) {
             return 1;
         } else {
 
-            // --------------------------------------------------------------------
+
 
             if (likely(do_udp_packets)) {
-                static RRDSET *st = NULL;
-                static RRDDIM *rd_in = NULL, *rd_out = NULL;
+                static RRDSET *st = ((void*)0);
+                static RRDDIM *rd_in = ((void*)0), *rd_out = ((void*)0);
 
                 if (unlikely(!st)) {
                     st = rrdset_create_localhost(
                             "ipv4",
                             "udppackets",
-                            NULL,
+                            ((void*)0),
                             "udp",
-                            NULL,
+                            ((void*)0),
                             "IPv4 UDP Packets",
                             "packets/s",
                             "freebsd.plugin",
@@ -76,30 +76,30 @@ int do_net_inet_udp_stats(int update_every, usec_t dt) {
                             RRDSET_TYPE_LINE
                     );
 
-                    rd_in  = rrddim_add(st, "InDatagrams",  "received", 1, 1, RRD_ALGORITHM_INCREMENTAL);
-                    rd_out = rrddim_add(st, "OutDatagrams", "sent",    -1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_in = rrddim_add(st, "InDatagrams", "received", 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_out = rrddim_add(st, "OutDatagrams", "sent", -1, 1, RRD_ALGORITHM_INCREMENTAL);
                 } else
                     rrdset_next(st);
 
-                rrddim_set_by_pointer(st, rd_in,  udpstat.udps_ipackets);
+                rrddim_set_by_pointer(st, rd_in, udpstat.udps_ipackets);
                 rrddim_set_by_pointer(st, rd_out, udpstat.udps_opackets);
                 rrdset_done(st);
             }
 
-            // --------------------------------------------------------------------
+
 
             if (likely(do_udp_errors)) {
-                static RRDSET *st = NULL;
-                static RRDDIM *rd_in_errors = NULL, *rd_no_ports = NULL, *rd_recv_buf_errors = NULL,
-                              *rd_in_csum_errors = NULL, *rd_ignored_multi = NULL;
+                static RRDSET *st = ((void*)0);
+                static RRDDIM *rd_in_errors = ((void*)0), *rd_no_ports = ((void*)0), *rd_recv_buf_errors = ((void*)0),
+                              *rd_in_csum_errors = ((void*)0), *rd_ignored_multi = ((void*)0);
 
                 if (unlikely(!st)) {
                     st = rrdset_create_localhost(
                             "ipv4",
                             "udperrors",
-                            NULL,
+                            ((void*)0),
                             "udp",
-                            NULL,
+                            ((void*)0),
                             "IPv4 UDP Errors",
                             "events/s",
                             "freebsd.plugin",
@@ -111,19 +111,19 @@ int do_net_inet_udp_stats(int update_every, usec_t dt) {
 
                     rrdset_flag_set(st, RRDSET_FLAG_DETAIL);
 
-                    rd_in_errors       = rrddim_add(st, "InErrors",     NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-                    rd_no_ports        = rrddim_add(st, "NoPorts",      NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-                    rd_recv_buf_errors = rrddim_add(st, "RcvbufErrors", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-                    rd_in_csum_errors  = rrddim_add(st, "InCsumErrors", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
-                    rd_ignored_multi   = rrddim_add(st, "IgnoredMulti", NULL, 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_in_errors = rrddim_add(st, "InErrors", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_no_ports = rrddim_add(st, "NoPorts", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_recv_buf_errors = rrddim_add(st, "RcvbufErrors", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_in_csum_errors = rrddim_add(st, "InCsumErrors", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
+                    rd_ignored_multi = rrddim_add(st, "IgnoredMulti", ((void*)0), 1, 1, RRD_ALGORITHM_INCREMENTAL);
                 } else
                     rrdset_next(st);
 
-                rrddim_set_by_pointer(st, rd_in_errors,       udpstat.udps_hdrops + udpstat.udps_badlen);
-                rrddim_set_by_pointer(st, rd_no_ports,        udpstat.udps_noport);
+                rrddim_set_by_pointer(st, rd_in_errors, udpstat.udps_hdrops + udpstat.udps_badlen);
+                rrddim_set_by_pointer(st, rd_no_ports, udpstat.udps_noport);
                 rrddim_set_by_pointer(st, rd_recv_buf_errors, udpstat.udps_fullsock);
-                rrddim_set_by_pointer(st, rd_in_csum_errors,  udpstat.udps_badsum + udpstat.udps_nosum);
-                rrddim_set_by_pointer(st, rd_ignored_multi,   udpstat.udps_filtermcast);
+                rrddim_set_by_pointer(st, rd_in_csum_errors, udpstat.udps_badsum + udpstat.udps_nosum);
+                rrddim_set_by_pointer(st, rd_ignored_multi, udpstat.udps_filtermcast);
                 rrdset_done(st);
             }
         }

@@ -1,0 +1,153 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/pinctrl/intel/extr_pinctrl-merrifield.c_mrfld_pinmux_set_mux.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/pinctrl/intel/extr_pinctrl-merrifield.c_mrfld_pinmux_set_mux.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.pinctrl_dev = type { i32 }
+%struct.mrfld_pinctrl = type { i32, %struct.intel_pingroup* }
+%struct.intel_pingroup = type { i32, i32, i32* }
+
+@BUFCFG_PINMODE_SHIFT = common dso_local global i32 0, align 4
+@BUFCFG_PINMODE_MASK = common dso_local global i32 0, align 4
+@EBUSY = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.pinctrl_dev*, i32, i32)* @mrfld_pinmux_set_mux to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @mrfld_pinmux_set_mux(%struct.pinctrl_dev* %0, i32 %1, i32 %2) #0 {
+  %4 = alloca i32, align 4
+  %5 = alloca %struct.pinctrl_dev*, align 8
+  %6 = alloca i32, align 4
+  %7 = alloca i32, align 4
+  %8 = alloca %struct.mrfld_pinctrl*, align 8
+  %9 = alloca %struct.intel_pingroup*, align 8
+  %10 = alloca i32, align 4
+  %11 = alloca i32, align 4
+  %12 = alloca i64, align 8
+  %13 = alloca i32, align 4
+  store %struct.pinctrl_dev* %0, %struct.pinctrl_dev** %5, align 8
+  store i32 %1, i32* %6, align 4
+  store i32 %2, i32* %7, align 4
+  %14 = load %struct.pinctrl_dev*, %struct.pinctrl_dev** %5, align 8
+  %15 = call %struct.mrfld_pinctrl* @pinctrl_dev_get_drvdata(%struct.pinctrl_dev* %14)
+  store %struct.mrfld_pinctrl* %15, %struct.mrfld_pinctrl** %8, align 8
+  %16 = load %struct.mrfld_pinctrl*, %struct.mrfld_pinctrl** %8, align 8
+  %17 = getelementptr inbounds %struct.mrfld_pinctrl, %struct.mrfld_pinctrl* %16, i32 0, i32 1
+  %18 = load %struct.intel_pingroup*, %struct.intel_pingroup** %17, align 8
+  %19 = load i32, i32* %7, align 4
+  %20 = zext i32 %19 to i64
+  %21 = getelementptr inbounds %struct.intel_pingroup, %struct.intel_pingroup* %18, i64 %20
+  store %struct.intel_pingroup* %21, %struct.intel_pingroup** %9, align 8
+  %22 = load %struct.intel_pingroup*, %struct.intel_pingroup** %9, align 8
+  %23 = getelementptr inbounds %struct.intel_pingroup, %struct.intel_pingroup* %22, i32 0, i32 0
+  %24 = load i32, i32* %23, align 8
+  %25 = load i32, i32* @BUFCFG_PINMODE_SHIFT, align 4
+  %26 = shl i32 %24, %25
+  store i32 %26, i32* %10, align 4
+  %27 = load i32, i32* @BUFCFG_PINMODE_MASK, align 4
+  store i32 %27, i32* %11, align 4
+  store i32 0, i32* %13, align 4
+  br label %28
+
+28:                                               ; preds = %49, %3
+  %29 = load i32, i32* %13, align 4
+  %30 = load %struct.intel_pingroup*, %struct.intel_pingroup** %9, align 8
+  %31 = getelementptr inbounds %struct.intel_pingroup, %struct.intel_pingroup* %30, i32 0, i32 1
+  %32 = load i32, i32* %31, align 4
+  %33 = icmp ult i32 %29, %32
+  br i1 %33, label %34, label %52
+
+34:                                               ; preds = %28
+  %35 = load %struct.mrfld_pinctrl*, %struct.mrfld_pinctrl** %8, align 8
+  %36 = load %struct.intel_pingroup*, %struct.intel_pingroup** %9, align 8
+  %37 = getelementptr inbounds %struct.intel_pingroup, %struct.intel_pingroup* %36, i32 0, i32 2
+  %38 = load i32*, i32** %37, align 8
+  %39 = load i32, i32* %13, align 4
+  %40 = zext i32 %39 to i64
+  %41 = getelementptr inbounds i32, i32* %38, i64 %40
+  %42 = load i32, i32* %41, align 4
+  %43 = call i32 @mrfld_buf_available(%struct.mrfld_pinctrl* %35, i32 %42)
+  %44 = icmp ne i32 %43, 0
+  br i1 %44, label %48, label %45
+
+45:                                               ; preds = %34
+  %46 = load i32, i32* @EBUSY, align 4
+  %47 = sub nsw i32 0, %46
+  store i32 %47, i32* %4, align 4
+  br label %83
+
+48:                                               ; preds = %34
+  br label %49
+
+49:                                               ; preds = %48
+  %50 = load i32, i32* %13, align 4
+  %51 = add i32 %50, 1
+  store i32 %51, i32* %13, align 4
+  br label %28
+
+52:                                               ; preds = %28
+  %53 = load %struct.mrfld_pinctrl*, %struct.mrfld_pinctrl** %8, align 8
+  %54 = getelementptr inbounds %struct.mrfld_pinctrl, %struct.mrfld_pinctrl* %53, i32 0, i32 0
+  %55 = load i64, i64* %12, align 8
+  %56 = call i32 @raw_spin_lock_irqsave(i32* %54, i64 %55)
+  store i32 0, i32* %13, align 4
+  br label %57
+
+57:                                               ; preds = %75, %52
+  %58 = load i32, i32* %13, align 4
+  %59 = load %struct.intel_pingroup*, %struct.intel_pingroup** %9, align 8
+  %60 = getelementptr inbounds %struct.intel_pingroup, %struct.intel_pingroup* %59, i32 0, i32 1
+  %61 = load i32, i32* %60, align 4
+  %62 = icmp ult i32 %58, %61
+  br i1 %62, label %63, label %78
+
+63:                                               ; preds = %57
+  %64 = load %struct.mrfld_pinctrl*, %struct.mrfld_pinctrl** %8, align 8
+  %65 = load %struct.intel_pingroup*, %struct.intel_pingroup** %9, align 8
+  %66 = getelementptr inbounds %struct.intel_pingroup, %struct.intel_pingroup* %65, i32 0, i32 2
+  %67 = load i32*, i32** %66, align 8
+  %68 = load i32, i32* %13, align 4
+  %69 = zext i32 %68 to i64
+  %70 = getelementptr inbounds i32, i32* %67, i64 %69
+  %71 = load i32, i32* %70, align 4
+  %72 = load i32, i32* %10, align 4
+  %73 = load i32, i32* %11, align 4
+  %74 = call i32 @mrfld_update_bufcfg(%struct.mrfld_pinctrl* %64, i32 %71, i32 %72, i32 %73)
+  br label %75
+
+75:                                               ; preds = %63
+  %76 = load i32, i32* %13, align 4
+  %77 = add i32 %76, 1
+  store i32 %77, i32* %13, align 4
+  br label %57
+
+78:                                               ; preds = %57
+  %79 = load %struct.mrfld_pinctrl*, %struct.mrfld_pinctrl** %8, align 8
+  %80 = getelementptr inbounds %struct.mrfld_pinctrl, %struct.mrfld_pinctrl* %79, i32 0, i32 0
+  %81 = load i64, i64* %12, align 8
+  %82 = call i32 @raw_spin_unlock_irqrestore(i32* %80, i64 %81)
+  store i32 0, i32* %4, align 4
+  br label %83
+
+83:                                               ; preds = %78, %45
+  %84 = load i32, i32* %4, align 4
+  ret i32 %84
+}
+
+declare dso_local %struct.mrfld_pinctrl* @pinctrl_dev_get_drvdata(%struct.pinctrl_dev*) #1
+
+declare dso_local i32 @mrfld_buf_available(%struct.mrfld_pinctrl*, i32) #1
+
+declare dso_local i32 @raw_spin_lock_irqsave(i32*, i64) #1
+
+declare dso_local i32 @mrfld_update_bufcfg(%struct.mrfld_pinctrl*, i32, i32, i32) #1
+
+declare dso_local i32 @raw_spin_unlock_irqrestore(i32*, i64) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

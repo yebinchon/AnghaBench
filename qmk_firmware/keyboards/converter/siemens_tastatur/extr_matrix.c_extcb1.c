@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  expchannel_t ;
-typedef  int /*<<< orphan*/  EXTDriver ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXTD1 ; 
- int /*<<< orphan*/  GPIOA ; 
- int /*<<< orphan*/  GPIOB ; 
- int /*<<< orphan*/  chSysLockFromISR () ; 
- int /*<<< orphan*/  chSysUnlockFromISR () ; 
- int /*<<< orphan*/  extChannelDisable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  extChannelEnable (int /*<<< orphan*/ *,int) ; 
- void* palReadPort (int /*<<< orphan*/ ) ; 
- void* porta_buffer ; 
- void* portb_buffer ; 
+
+
+
+typedef int expchannel_t ;
+typedef int EXTDriver ;
+
+
+ int EXTD1 ;
+ int GPIOA ;
+ int GPIOB ;
+ int chSysLockFromISR () ;
+ int chSysUnlockFromISR () ;
+ int extChannelDisable (int *,int) ;
+ int extChannelEnable (int *,int) ;
+ void* palReadPort (int ) ;
+ void* porta_buffer ;
+ void* portb_buffer ;
 
 __attribute__((used)) static void extcb1(EXTDriver *extp, expchannel_t channel) {
 
@@ -32,7 +32,7 @@ __attribute__((used)) static void extcb1(EXTDriver *extp, expchannel_t channel) 
     chSysLockFromISR();
     porta_buffer = palReadPort(GPIOA);
     portb_buffer = palReadPort(GPIOB);
-    //Disable further interrupts that might occur on same button press.
+
     extChannelDisable(&EXTD1,0);
     extChannelDisable(&EXTD1,1);
     extChannelDisable(&EXTD1,2);

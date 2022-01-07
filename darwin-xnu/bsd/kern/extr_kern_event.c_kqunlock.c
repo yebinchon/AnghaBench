@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* kq; } ;
-typedef  TYPE_2__ kqueue_t ;
-struct TYPE_4__ {int /*<<< orphan*/  kq_lock; } ;
+typedef TYPE_2__ kqueue_t ;
+struct TYPE_4__ {int kq_lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lck_spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int lck_spin_unlock (int *) ;
 
 __attribute__((used)) static inline void
 kqunlock(kqueue_t kqu)
 {
-	lck_spin_unlock(&kqu.kq->kq_lock);
+ lck_spin_unlock(&kqu.kq->kq_lock);
 }

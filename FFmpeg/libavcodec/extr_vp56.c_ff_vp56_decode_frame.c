@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_13__ {void** frames; int (* parse_header ) (TYPE_1__*,int /*<<< orphan*/  const*,int) ;scalar_t__ discard_frame; TYPE_6__* alpha_context; scalar_t__ has_alpha; } ;
-typedef  TYPE_1__ VP56Context ;
-struct TYPE_16__ {void* const* frames; int (* parse_header ) (TYPE_6__*,int /*<<< orphan*/  const*,int) ;} ;
-struct TYPE_15__ {scalar_t__ pix_fmt; int width; int height; int coded_width; int coded_height; int /*<<< orphan*/  (* execute2 ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ;TYPE_1__* priv_data; } ;
-struct TYPE_14__ {int size; int /*<<< orphan*/ * data; } ;
-typedef  TYPE_2__ AVPacket ;
-typedef  void AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_GET_BUFFER_FLAG_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_PIX_FMT_YUVA420P ; 
- size_t VP56_FRAME_CURRENT ; 
- int VP56_SIZE_CHANGE ; 
- int av_frame_ref (void*,void* const) ; 
- int /*<<< orphan*/  av_frame_unref (void* const) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int bytestream_get_be24 (int /*<<< orphan*/  const**) ; 
- int ff_get_buffer (TYPE_3__*,void* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_set_dimensions (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_vp56_decode_mbs ; 
- int stub1 (TYPE_1__*,int /*<<< orphan*/  const*,int) ; 
- int stub2 (TYPE_6__*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ vp56_size_changed (TYPE_1__*) ; 
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_13__ {void** frames; int (* parse_header ) (TYPE_1__*,int const*,int) ;scalar_t__ discard_frame; TYPE_6__* alpha_context; scalar_t__ has_alpha; } ;
+typedef TYPE_1__ VP56Context ;
+struct TYPE_16__ {void* const* frames; int (* parse_header ) (TYPE_6__*,int const*,int) ;} ;
+struct TYPE_15__ {scalar_t__ pix_fmt; int width; int height; int coded_width; int coded_height; int (* execute2 ) (TYPE_3__*,int ,int ,int ,int) ;TYPE_1__* priv_data; } ;
+struct TYPE_14__ {int size; int * data; } ;
+typedef TYPE_2__ AVPacket ;
+typedef void AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_GET_BUFFER_FLAG_REF ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_PIX_FMT_YUVA420P ;
+ size_t VP56_FRAME_CURRENT ;
+ int VP56_SIZE_CHANGE ;
+ int av_frame_ref (void*,void* const) ;
+ int av_frame_unref (void* const) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int bytestream_get_be24 (int const**) ;
+ int ff_get_buffer (TYPE_3__*,void* const,int ) ;
+ int ff_set_dimensions (TYPE_3__*,int ,int ) ;
+ int ff_vp56_decode_mbs ;
+ int stub1 (TYPE_1__*,int const*,int) ;
+ int stub2 (TYPE_6__*,int const*,int) ;
+ int stub3 (TYPE_3__*,int ,int ,int ,int) ;
+ scalar_t__ vp56_size_changed (TYPE_1__*) ;
 
 int ff_vp56_decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
                          AVPacket *avpkt)
@@ -111,9 +111,9 @@ int ff_vp56_decode_frame(AVCodecContext *avctx, void *data, int *got_frame,
         if (res != 0) {
             if(res==VP56_SIZE_CHANGE) {
                 av_log(avctx, AV_LOG_ERROR, "Alpha reconfiguration\n");
-                avctx->width  = bak_w;
+                avctx->width = bak_w;
                 avctx->height = bak_h;
-                avctx->coded_width  = bak_cw;
+                avctx->coded_width = bak_cw;
                 avctx->coded_height = bak_ch;
             }
             av_frame_unref(p);

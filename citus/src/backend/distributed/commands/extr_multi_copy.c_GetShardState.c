@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64 ;
-typedef  int /*<<< orphan*/  HTAB ;
-typedef  int /*<<< orphan*/  CopyShardState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HASH_ENTER ; 
- int /*<<< orphan*/  InitializeCopyShardState (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ hash_search (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
+
+
+
+typedef int uint64 ;
+typedef int HTAB ;
+typedef int CopyShardState ;
+
+
+ int HASH_ENTER ;
+ int InitializeCopyShardState (int *,int *,int ,int) ;
+ scalar_t__ hash_search (int *,int *,int ,int*) ;
 
 __attribute__((used)) static CopyShardState *
 GetShardState(uint64 shardId, HTAB *shardStateHash,
-			  HTAB *connectionStateHash, bool stopOnFailure, bool *found)
+     HTAB *connectionStateHash, bool stopOnFailure, bool *found)
 {
-	CopyShardState *shardState = NULL;
+ CopyShardState *shardState = ((void*)0);
 
-	shardState = (CopyShardState *) hash_search(shardStateHash, &shardId,
-												HASH_ENTER, found);
-	if (!*found)
-	{
-		InitializeCopyShardState(shardState, connectionStateHash,
-								 shardId, stopOnFailure);
-	}
+ shardState = (CopyShardState *) hash_search(shardStateHash, &shardId,
+            HASH_ENTER, found);
+ if (!*found)
+ {
+  InitializeCopyShardState(shardState, connectionStateHash,
+         shardId, stopOnFailure);
+ }
 
-	return shardState;
+ return shardState;
 }

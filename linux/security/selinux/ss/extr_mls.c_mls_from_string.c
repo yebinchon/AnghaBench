@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct policydb {int /*<<< orphan*/  mls_enabled; } ;
+
+
+
+
+struct policydb {int mls_enabled; } ;
 struct context {int dummy; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
+typedef int gfp_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- int ENOMEM ; 
- int /*<<< orphan*/  SECSID_NULL ; 
- int /*<<< orphan*/  kfree (char*) ; 
- char* kstrdup (char*,int /*<<< orphan*/ ) ; 
- int mls_context_to_sid (struct policydb*,char,char*,struct context*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int ENOMEM ;
+ int SECSID_NULL ;
+ int kfree (char*) ;
+ char* kstrdup (char*,int ) ;
+ int mls_context_to_sid (struct policydb*,char,char*,struct context*,int *,int ) ;
 
 int mls_from_string(struct policydb *p, char *str, struct context *context,
-		    gfp_t gfp_mask)
+      gfp_t gfp_mask)
 {
-	char *tmpstr;
-	int rc;
+ char *tmpstr;
+ int rc;
 
-	if (!p->mls_enabled)
-		return -EINVAL;
+ if (!p->mls_enabled)
+  return -EINVAL;
 
-	tmpstr = kstrdup(str, gfp_mask);
-	if (!tmpstr) {
-		rc = -ENOMEM;
-	} else {
-		rc = mls_context_to_sid(p, ':', tmpstr, context,
-					NULL, SECSID_NULL);
-		kfree(tmpstr);
-	}
+ tmpstr = kstrdup(str, gfp_mask);
+ if (!tmpstr) {
+  rc = -ENOMEM;
+ } else {
+  rc = mls_context_to_sid(p, ':', tmpstr, context,
+     ((void*)0), SECSID_NULL);
+  kfree(tmpstr);
+ }
 
-	return rc;
+ return rc;
 }

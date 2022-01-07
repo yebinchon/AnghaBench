@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_3__* esp_http_client_handle_t ;
-typedef  int esp_err_t ;
-struct TYPE_11__ {int first_line_prepared; int data_written_index; int data_write_left; int buffer_size_tx; int post_len; int /*<<< orphan*/  state; int /*<<< orphan*/  timeout_ms; TYPE_2__* request; int /*<<< orphan*/  transport; int /*<<< orphan*/  header_index; scalar_t__ is_async; } ;
-struct TYPE_10__ {TYPE_1__* buffer; int /*<<< orphan*/  headers; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef TYPE_3__* esp_http_client_handle_t ;
+typedef int esp_err_t ;
+struct TYPE_11__ {int first_line_prepared; int data_written_index; int data_write_left; int buffer_size_tx; int post_len; int state; int timeout_ms; TYPE_2__* request; int transport; int header_index; scalar_t__ is_async; } ;
+struct TYPE_10__ {TYPE_1__* buffer; int headers; } ;
 struct TYPE_9__ {scalar_t__* data; } ;
 
-/* Variables and functions */
- int ESP_ERR_HTTP_WRITE_DATA ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int ESP_OK ; 
- int /*<<< orphan*/  HTTP_EVENT_HEADERS_SENT ; 
- int /*<<< orphan*/  HTTP_STATE_REQ_COMPLETE_HEADER ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  esp_http_client_close (TYPE_3__*) ; 
- int esp_http_client_write (TYPE_3__*,scalar_t__*,int) ; 
- int esp_transport_write (int /*<<< orphan*/ ,scalar_t__*,int,int /*<<< orphan*/ ) ; 
- int http_client_prepare_first_line (TYPE_3__*,int) ; 
- int /*<<< orphan*/  http_dispatch_event (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  http_header_generate_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int*) ; 
+
+ int ESP_ERR_HTTP_WRITE_DATA ;
+ int ESP_LOGD (int ,char*,int ,scalar_t__*) ;
+ int ESP_LOGE (int ,char*) ;
+ int ESP_OK ;
+ int HTTP_EVENT_HEADERS_SENT ;
+ int HTTP_STATE_REQ_COMPLETE_HEADER ;
+ int TAG ;
+ int esp_http_client_close (TYPE_3__*) ;
+ int esp_http_client_write (TYPE_3__*,scalar_t__*,int) ;
+ int esp_transport_write (int ,scalar_t__*,int,int ) ;
+ int http_client_prepare_first_line (TYPE_3__*,int) ;
+ int http_dispatch_event (TYPE_3__*,int ,int *,int ) ;
+ int http_header_generate_string (int ,int ,scalar_t__*,int*) ;
 
 __attribute__((used)) static esp_err_t esp_http_client_request_send(esp_http_client_handle_t client, int write_len)
 {
@@ -41,14 +41,14 @@ __attribute__((used)) static esp_err_t esp_http_client_request_send(esp_http_cli
         if ((first_line_len = http_client_prepare_first_line(client, write_len)) < 0) {
             return first_line_len;
         }
-        client->first_line_prepared = true;
+        client->first_line_prepared = 1;
         client->header_index = 0;
         client->data_written_index = 0;
         client->data_write_left = 0;
     }
 
     if (client->data_write_left > 0) {
-        /* sending leftover data from previous call to esp_http_client_request_send() API */
+
         int wret = 0;
         if (((wret = esp_http_client_write(client, client->request->buffer->data + client->data_written_index, client->data_write_left)) < 0)) {
             ESP_LOGE(TAG, "Error write request");
@@ -57,8 +57,8 @@ __attribute__((used)) static esp_err_t esp_http_client_request_send(esp_http_cli
         client->data_write_left -= wret;
         client->data_written_index += wret;
         if (client->is_async && client->data_write_left > 0) {
-            return ESP_ERR_HTTP_WRITE_DATA;      /* In case of EAGAIN error, we return ESP_ERR_HTTP_WRITE_DATA,
-                                                 and the handling of EAGAIN should be done in the higher level APIs. */
+            return ESP_ERR_HTTP_WRITE_DATA;
+
         }
     }
 
@@ -91,7 +91,7 @@ __attribute__((used)) static esp_err_t esp_http_client_request_send(esp_http_cli
 
     client->data_written_index = 0;
     client->data_write_left = client->post_len;
-    http_dispatch_event(client, HTTP_EVENT_HEADERS_SENT, NULL, 0);
+    http_dispatch_event(client, HTTP_EVENT_HEADERS_SENT, ((void*)0), 0);
     client->state = HTTP_STATE_REQ_COMPLETE_HEADER;
     return ESP_OK;
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EINTR ; 
- int errno ; 
- scalar_t__ got_exit_signal ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- int /*<<< orphan*/  strerror (int) ; 
- scalar_t__ verbose ; 
- int write (int,unsigned char const*,size_t) ; 
+
+
+
+typedef int ssize_t ;
+
+
+ int EAGAIN ;
+ int EINTR ;
+ int errno ;
+ scalar_t__ got_exit_signal ;
+ int logmsg (char*,...) ;
+ int strerror (int) ;
+ scalar_t__ verbose ;
+ int write (int,unsigned char const*,size_t) ;
 
 __attribute__((used)) static ssize_t fullwrite(int filedes, const void *buffer, size_t nbytes)
 {

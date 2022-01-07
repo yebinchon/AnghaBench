@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cf_chash ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cf_sha3_224 ; 
- int /*<<< orphan*/  cf_sha3_224_digest_final ; 
- int /*<<< orphan*/  vector (int /*<<< orphan*/  const*,char*,int,char*,int) ; 
- int /*<<< orphan*/  vector_abc_final (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  vector_length (int /*<<< orphan*/  const*,int,char*,int) ; 
+
+
+
+typedef int cf_chash ;
+
+
+ int cf_sha3_224 ;
+ int cf_sha3_224_digest_final ;
+ int vector (int const*,char*,int,char*,int) ;
+ int vector_abc_final (int const*,int ,char*,int) ;
+ int vector_length (int const*,int,char*,int) ;
 
 __attribute__((used)) static void test_sha3_224(void)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void test_sha3_224(void)
   vector(H, "abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu", 112,
          "\x54\x3e\x68\x68\xe1\x66\x6c\x1a\x64\x36\x30\xdf\x77\x36\x7a\xe5\xa6\x2a\x85\x07\x0a\x51\xc1\x4c\xbf\x66\x5c\xbc", 28);
 
-  /* Artificial exercise for len(msg) = rate_bytes - 1 codepath */
+
   vector(H, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 143,
          "\x73\xb1\xb2\x2b\x54\xf5\x15\xf6\x26\xa6\xab\xdd\xe6\xaf\x25\xcd\x48\x01\xdc\x6e\x9d\xc7\xfa\x3f\x77\xe1\xc1\x22", 28);
 

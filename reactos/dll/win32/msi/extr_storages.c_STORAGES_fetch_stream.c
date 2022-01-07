@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  scalar_t__ UINT ;
+typedef scalar_t__ UINT ;
 struct TYPE_2__ {scalar_t__ num_rows; } ;
-typedef  TYPE_1__ MSISTORAGESVIEW ;
-typedef  int /*<<< orphan*/  IStream ;
+typedef TYPE_1__ MSISTORAGESVIEW ;
+typedef int IStream ;
 
-/* Variables and functions */
- scalar_t__ ERROR_FUNCTION_FAILED ; 
- scalar_t__ ERROR_INVALID_DATA ; 
- int /*<<< orphan*/  TRACE (char*,struct tagMSIVIEW*,scalar_t__,scalar_t__,int /*<<< orphan*/ **) ; 
+
+ scalar_t__ ERROR_FUNCTION_FAILED ;
+ scalar_t__ ERROR_INVALID_DATA ;
+ int TRACE (char*,struct tagMSIVIEW*,scalar_t__,scalar_t__,int **) ;
 
 __attribute__((used)) static UINT STORAGES_fetch_stream(struct tagMSIVIEW *view, UINT row, UINT col, IStream **stm)
 {

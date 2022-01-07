@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int SHF_ALLOC ; 
- int SHF_EXECINSTR ; 
- int SHF_TLS ; 
- int SHF_WRITE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  as_warn (int /*<<< orphan*/ ) ; 
- int md_elf_section_word (char*,size_t) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+ int SHF_ALLOC ;
+ int SHF_EXECINSTR ;
+ int SHF_TLS ;
+ int SHF_WRITE ;
+ int _ (char*) ;
+ int as_warn (int ) ;
+ int md_elf_section_word (char*,size_t) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 __attribute__((used)) static int
 obj_elf_section_word (char *str, size_t len)
@@ -32,15 +24,6 @@ obj_elf_section_word (char *str, size_t len)
     return SHF_EXECINSTR;
   if (len == 3 && strncmp (str, "tls", 3) == 0)
     return SHF_TLS;
-
-#ifdef md_elf_section_word
-  {
-    int md_attr = md_elf_section_word (str, len);
-    if (md_attr >= 0)
-      return md_attr;
-  }
-#endif
-
   as_warn (_("unrecognized section attribute"));
   return 0;
 }

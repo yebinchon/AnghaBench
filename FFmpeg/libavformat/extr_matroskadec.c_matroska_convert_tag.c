@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  key ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int key ;
 struct TYPE_5__ {int nb_elem; TYPE_1__* elem; } ;
-struct TYPE_4__ {char* lang; char* name; TYPE_2__ sub; int /*<<< orphan*/  string; scalar_t__ def; } ;
-typedef  TYPE_1__ MatroskaTag ;
-typedef  TYPE_2__ EbmlList ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
+struct TYPE_4__ {char* lang; char* name; TYPE_2__ sub; int string; scalar_t__ def; } ;
+typedef TYPE_1__ MatroskaTag ;
+typedef TYPE_2__ EbmlList ;
+typedef int AVFormatContext ;
+typedef int AVDictionary ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_strlcat (char*,char const*,int) ; 
- int /*<<< orphan*/  av_strlcpy (char*,char*,int) ; 
- int /*<<< orphan*/  ff_metadata_conv (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_mkv_metadata_conv ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+ int AV_LOG_WARNING ;
+ int av_dict_set (int **,char*,int ,int ) ;
+ int av_log (int *,int ,char*) ;
+ int av_strlcat (char*,char const*,int) ;
+ int av_strlcpy (char*,char*,int) ;
+ int ff_metadata_conv (int **,int *,int ) ;
+ int ff_mkv_metadata_conv ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static void matroska_convert_tag(AVFormatContext *s, EbmlList *list,
                                  AVDictionary **metadata, char *prefix)
@@ -40,7 +40,7 @@ __attribute__((used)) static void matroska_convert_tag(AVFormatContext *s, EbmlL
 
     for (i = 0; i < list->nb_elem; i++) {
         const char *lang = tags[i].lang &&
-                           strcmp(tags[i].lang, "und") ? tags[i].lang : NULL;
+                           strcmp(tags[i].lang, "und") ? tags[i].lang : ((void*)0);
 
         if (!tags[i].name) {
             av_log(s, AV_LOG_WARNING, "Skipping invalid tag with no TagName.\n");
@@ -63,5 +63,5 @@ __attribute__((used)) static void matroska_convert_tag(AVFormatContext *s, EbmlL
                 matroska_convert_tag(s, &tags[i].sub, metadata, key);
         }
     }
-    ff_metadata_conv(metadata, NULL, ff_mkv_metadata_conv);
+    ff_metadata_conv(metadata, ((void*)0), ff_mkv_metadata_conv);
 }

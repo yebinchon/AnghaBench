@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_6__ {TYPE_1__* prot; } ;
-typedef  TYPE_2__ URLContext ;
-struct TYPE_5__ {int /*<<< orphan*/  (* url_seek ) (TYPE_2__*,int /*<<< orphan*/ ,int) ;} ;
+typedef TYPE_2__ URLContext ;
+struct TYPE_5__ {int (* url_seek ) (TYPE_2__*,int ,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVERROR (int /*<<< orphan*/ ) ; 
- int AVSEEK_FORCE ; 
- int /*<<< orphan*/  ENOSYS ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+ int AVERROR (int ) ;
+ int AVSEEK_FORCE ;
+ int ENOSYS ;
+ int stub1 (TYPE_2__*,int ,int) ;
 
 int64_t ffurl_seek(URLContext *h, int64_t pos, int whence)
 {

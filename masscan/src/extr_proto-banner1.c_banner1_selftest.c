@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tcb_state ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int tcb_state ;
 struct ProtocolState {int dummy; } ;
-struct InteractiveData {int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
+struct InteractiveData {int member_1; int member_0; } ;
 struct BannerOutput {int dummy; } ;
 struct Banner1 {int dummy; } ;
 struct TYPE_10__ {int (* selftest ) () ;} ;
@@ -26,31 +26,31 @@ struct TYPE_8__ {int (* selftest ) () ;} ;
 struct TYPE_7__ {int (* selftest ) () ;} ;
 struct TYPE_6__ {int (* selftest ) () ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROTO_HTTP ; 
- struct Banner1* banner1_create () ; 
- int /*<<< orphan*/  banner1_destroy (struct Banner1*) ; 
- int /*<<< orphan*/  banner1_parse (struct Banner1*,struct ProtocolState*,unsigned char const*,unsigned int,struct BannerOutput*,struct InteractiveData*) ; 
- TYPE_5__ banner_http ; 
- TYPE_4__ banner_rdp ; 
- TYPE_3__ banner_smb1 ; 
- TYPE_2__ banner_ssl ; 
- TYPE_1__ banner_telnet ; 
- int /*<<< orphan*/  banout_init (struct BannerOutput*) ; 
- int /*<<< orphan*/  banout_release (struct BannerOutput*) ; 
- scalar_t__ banout_selftest () ; 
- unsigned char* banout_string (struct BannerOutput*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ memcmp (unsigned char const*,char*,int) ; 
- int /*<<< orphan*/  memset (struct ProtocolState*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strlen (char const*) ; 
- int stub1 () ; 
- int stub2 () ; 
- int stub3 () ; 
- int stub4 () ; 
- int stub5 () ; 
+
+ int PROTO_HTTP ;
+ struct Banner1* banner1_create () ;
+ int banner1_destroy (struct Banner1*) ;
+ int banner1_parse (struct Banner1*,struct ProtocolState*,unsigned char const*,unsigned int,struct BannerOutput*,struct InteractiveData*) ;
+ TYPE_5__ banner_http ;
+ TYPE_4__ banner_rdp ;
+ TYPE_3__ banner_smb1 ;
+ TYPE_2__ banner_ssl ;
+ TYPE_1__ banner_telnet ;
+ int banout_init (struct BannerOutput*) ;
+ int banout_release (struct BannerOutput*) ;
+ scalar_t__ banout_selftest () ;
+ unsigned char* banout_string (struct BannerOutput*,int ) ;
+ int fprintf (int ,char*) ;
+ scalar_t__ memcmp (unsigned char const*,char*,int) ;
+ int memset (struct ProtocolState*,int ,int) ;
+ int printf (char*) ;
+ int stderr ;
+ scalar_t__ strlen (char const*) ;
+ int stub1 () ;
+ int stub2 () ;
+ int stub3 () ;
+ int stub4 () ;
+ int stub5 () ;
 
 int
 banner1_selftest()
@@ -77,18 +77,18 @@ banner1_selftest()
     length = (unsigned)strlen(http_header);
 
 
-    /*
-     * First, test the "banout" subsystem
-     */
+
+
+
     if (banout_selftest() != 0) {
         fprintf(stderr, "banout: failed\n");
         return 1;
     }
 
 
-    /*
-     * Test one character at a time
-     */
+
+
+
     b = banner1_create();
     banout_init(banout);
 
@@ -116,9 +116,9 @@ banner1_selftest()
     banout_release(banout);
     banner1_destroy(b);
 
-    /*
-     * Test whole buffer
-     */
+
+
+
     b = banner1_create();
 
     memset(tcb_state, 0, sizeof(tcb_state[0]));
@@ -130,10 +130,10 @@ banner1_selftest()
                     banout,
                     0);
     banner1_destroy(b);
-    /*if (memcmp(banner, "Via:HTTP/1.1", 11) != 0) {
-        printf("banner1: test failed\n");
-        return 1;
-    }*/
+
+
+
+
 
 
     {
@@ -144,31 +144,31 @@ banner1_selftest()
             fprintf(stderr, "SSL banner: selftest failed\n");
             return 1;
         }
-        
+
         x = banner_smb1.selftest();
         if (x) {
             fprintf(stderr, "SMB banner: selftest failed\n");
             return 1;
         }
-        
+
         x = banner_http.selftest();
         if (x) {
             fprintf(stderr, "HTTP banner: selftest failed\n");
             return 1;
         }
-        
+
         x = banner_telnet.selftest();
         if (x) {
             fprintf(stderr, "Telnet banner: selftest failed\n");
             return 1;
         }
-        
+
         x = banner_rdp.selftest();
         if (x) {
             fprintf(stderr, "RDP banner: selftest failed\n");
             return 1;
         }
-        
+
         return x;
     }
 }

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int channels; } ;
-struct TYPE_6__ {double makeup; double attack_coeff; double release_coeff; int link; double lin_slope; double lin_knee_start; double lin_knee_stop; scalar_t__ mode; int /*<<< orphan*/  range; int /*<<< orphan*/  knee_stop; int /*<<< orphan*/  knee_start; int /*<<< orphan*/  knee; int /*<<< orphan*/  thres; int /*<<< orphan*/  ratio; scalar_t__ detection; } ;
-typedef  TYPE_1__ AudioGateContext ;
-typedef  TYPE_2__ AVFilterLink ;
+struct TYPE_6__ {double makeup; double attack_coeff; double release_coeff; int link; double lin_slope; double lin_knee_start; double lin_knee_stop; scalar_t__ mode; int range; int knee_stop; int knee_start; int knee; int thres; int ratio; scalar_t__ detection; } ;
+typedef TYPE_1__ AudioGateContext ;
+typedef TYPE_2__ AVFilterLink ;
 
-/* Variables and functions */
- double FFMAX (double,double) ; 
- double fabs (double const) ; 
- double output_gain (double,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
+
+ double FFMAX (double,double) ;
+ double fabs (double const) ;
+ double output_gain (double,int ,int ,int ,int ,int ,int ,scalar_t__) ;
 
 __attribute__((used)) static void gate(AudioGateContext *s,
                  const double *src, double *dst, const double *scsrc,

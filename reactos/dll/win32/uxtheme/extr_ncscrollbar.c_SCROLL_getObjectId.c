@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  OBJID_HSCROLL ; 
- int /*<<< orphan*/  OBJID_VSCROLL ; 
-#define  SB_HORZ 129 
-#define  SB_VERT 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int LONG ;
+typedef int INT ;
+
+
+ int FALSE ;
+ int OBJID_HSCROLL ;
+ int OBJID_VSCROLL ;
+
+
+ int assert (int ) ;
 
 __attribute__((used)) static LONG SCROLL_getObjectId(INT nBar)
 {
     switch(nBar)
     {
-    case SB_HORZ:
+    case 129:
         return OBJID_HSCROLL;
-    case SB_VERT:
+    case 128:
         return OBJID_VSCROLL;
     default:
         assert(FALSE);

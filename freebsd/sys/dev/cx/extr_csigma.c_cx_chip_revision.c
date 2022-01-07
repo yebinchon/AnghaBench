@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  port_t ;
 
-/* Variables and functions */
- int BSR_VAR_MASK ; 
- int CRONYX_400 ; 
- int /*<<< orphan*/  CS0 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CS1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GFRCR (int /*<<< orphan*/ ) ; 
- int inb (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int port_t ;
+
+
+ int BSR_VAR_MASK ;
+ int CRONYX_400 ;
+ int CS0 (int ) ;
+ int CS1 (int ) ;
+ int GFRCR (int ) ;
+ int inb (int ) ;
 
 __attribute__((used)) static int cx_chip_revision (port_t port, int rev)
 {
-	int count;
+ int count;
 
-	/* Model 400 has no first chip. */
-	port = ((rev & BSR_VAR_MASK) != CRONYX_400) ? CS0(port) : CS1(port);
 
-	/* Wait up to 10 msec for revision code to appear after reset. */
-	for (count=0; inb(GFRCR(port))==0; ++count)
-		if (count >= 20000)
-			return (0); /* reset failed */
+ port = ((rev & BSR_VAR_MASK) != CRONYX_400) ? CS0(port) : CS1(port);
 
-	return inb (GFRCR (port));
+
+ for (count=0; inb(GFRCR(port))==0; ++count)
+  if (count >= 20000)
+   return (0);
+
+ return inb (GFRCR (port));
 }

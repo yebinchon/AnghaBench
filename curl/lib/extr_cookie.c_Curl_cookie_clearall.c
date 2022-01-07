@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct CookieInfo {scalar_t__ numcookies; int /*<<< orphan*/ ** cookies; } ;
 
-/* Variables and functions */
- unsigned int COOKIE_HASH_SIZE ; 
- int /*<<< orphan*/  Curl_cookie_freelist (int /*<<< orphan*/ *) ; 
+
+
+
+struct CookieInfo {scalar_t__ numcookies; int ** cookies; } ;
+
+
+ unsigned int COOKIE_HASH_SIZE ;
+ int Curl_cookie_freelist (int *) ;
 
 void Curl_cookie_clearall(struct CookieInfo *cookies)
 {
@@ -22,7 +22,7 @@ void Curl_cookie_clearall(struct CookieInfo *cookies)
     unsigned int i;
     for(i = 0; i < COOKIE_HASH_SIZE; i++) {
       Curl_cookie_freelist(cookies->cookies[i]);
-      cookies->cookies[i] = NULL;
+      cookies->cookies[i] = ((void*)0);
     }
     cookies->numcookies = 0;
   }

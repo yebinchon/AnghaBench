@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 int UTF8_getc(const unsigned char *str, int len, unsigned long *val)
 {
     const unsigned char *p;
@@ -22,7 +13,7 @@ int UTF8_getc(const unsigned char *str, int len, unsigned long *val)
         return 0;
     p = str;
 
-    /* Check syntax and work out the encoded value (if correct) */
+
     if ((*p & 0x80) == 0) {
         value = *p++ & 0x7f;
         ret = 1;

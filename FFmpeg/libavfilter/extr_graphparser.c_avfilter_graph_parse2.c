@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/ * filters; scalar_t__ nb_filters; } ;
-typedef  int /*<<< orphan*/  AVFilterInOut ;
-typedef  TYPE_1__ AVFilterGraph ;
-typedef  int /*<<< orphan*/  AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  WHITESPACES ; 
- int /*<<< orphan*/  append_inout (int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  avfilter_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avfilter_inout_free (int /*<<< orphan*/ **) ; 
- int link_filter_inouts (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,TYPE_1__*) ; 
- int parse_filter (int /*<<< orphan*/ **,char const**,TYPE_1__*,int,TYPE_1__*) ; 
- int parse_inputs (char const**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,TYPE_1__*) ; 
- int parse_outputs (char const**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ **,TYPE_1__*) ; 
- int parse_sws_flags (char const**,TYPE_1__*) ; 
- int /*<<< orphan*/  strspn (char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int * filters; scalar_t__ nb_filters; } ;
+typedef int AVFilterInOut ;
+typedef TYPE_1__ AVFilterGraph ;
+typedef int AVFilterContext ;
+
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int WHITESPACES ;
+ int append_inout (int **,int **) ;
+ int av_freep (int **) ;
+ int av_log (TYPE_1__*,int ,char*,char const*) ;
+ int avfilter_free (int ) ;
+ int avfilter_inout_free (int **) ;
+ int link_filter_inouts (int *,int **,int **,TYPE_1__*) ;
+ int parse_filter (int **,char const**,TYPE_1__*,int,TYPE_1__*) ;
+ int parse_inputs (char const**,int **,int **,TYPE_1__*) ;
+ int parse_outputs (char const**,int **,int **,int **,TYPE_1__*) ;
+ int parse_sws_flags (char const**,TYPE_1__*) ;
+ int strspn (char const*,int ) ;
 
 int avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,
                           AVFilterInOut **inputs,
@@ -40,7 +40,7 @@ int avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,
     int index = 0, ret = 0;
     char chr = 0;
 
-    AVFilterInOut *curr_inputs = NULL, *open_inputs = NULL, *open_outputs = NULL;
+    AVFilterInOut *curr_inputs = ((void*)0), *open_inputs = ((void*)0), *open_outputs = ((void*)0);
 
     filters += strspn(filters, WHITESPACES);
 
@@ -83,7 +83,7 @@ int avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,
     append_inout(&open_outputs, &curr_inputs);
 
 
-    *inputs  = open_inputs;
+    *inputs = open_inputs;
     *outputs = open_outputs;
     return 0;
 
@@ -95,8 +95,8 @@ int avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,
     avfilter_inout_free(&open_outputs);
     avfilter_inout_free(&curr_inputs);
 
-    *inputs  = NULL;
-    *outputs = NULL;
+    *inputs = ((void*)0);
+    *outputs = ((void*)0);
 
     return ret;
 }

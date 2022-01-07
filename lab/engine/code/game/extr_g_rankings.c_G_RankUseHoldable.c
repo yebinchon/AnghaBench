@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ warmupTime; } ;
 
-/* Variables and functions */
-#define  HI_MEDKIT 129 
-#define  HI_TELEPORTER 128 
- int /*<<< orphan*/  QGR_KEY_MEDKIT_USE ; 
- int /*<<< orphan*/  QGR_KEY_TELEPORTER_USE ; 
- TYPE_1__ level ; 
- int /*<<< orphan*/  trap_RankReportInt (int,int,int /*<<< orphan*/ ,int,int) ; 
+
+
+
+ int QGR_KEY_MEDKIT_USE ;
+ int QGR_KEY_TELEPORTER_USE ;
+ TYPE_1__ level ;
+ int trap_RankReportInt (int,int,int ,int,int) ;
 
 void G_RankUseHoldable( int self, int holdable )
 {
-	if( level.warmupTime != 0 )
-	{
-		// no reports during warmup period
-		return;
-	}
-	
-	switch( holdable )
-	{
-	case HI_MEDKIT:
-		trap_RankReportInt( self, -1, QGR_KEY_MEDKIT_USE, 1, 1 );
-		break;
-	case HI_TELEPORTER:
-		trap_RankReportInt( self, -1, QGR_KEY_TELEPORTER_USE, 1, 1 );
-		break;
-	default:
-		break;
-	}
+ if( level.warmupTime != 0 )
+ {
+
+  return;
+ }
+
+ switch( holdable )
+ {
+ case 129:
+  trap_RankReportInt( self, -1, QGR_KEY_MEDKIT_USE, 1, 1 );
+  break;
+ case 128:
+  trap_RankReportInt( self, -1, QGR_KEY_TELEPORTER_USE, 1, 1 );
+  break;
+ default:
+  break;
+ }
 }

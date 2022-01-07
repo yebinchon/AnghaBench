@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSAPI_reset_server_state () ; 
- int /*<<< orphan*/  LSCRIU_CloudLinux_Checkpoint () ; 
- int LSCRIU_Native_Dump (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LSCRIU_Restored_Error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  LSCRIU_Set_Initial_Start_Reqs (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LSCRIU_Wait_Dump_Finsh_Or_Restored (int) ; 
- int /*<<< orphan*/  close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
- int fork () ; 
- int getpid () ; 
- int getppid () ; 
- int /*<<< orphan*/  lscriu_dbg (char*,int) ; 
- int /*<<< orphan*/  lscriu_err (char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  s_criu_image_path ; 
- int /*<<< orphan*/  s_fd_native ; 
- int /*<<< orphan*/  s_native ; 
- int s_restored ; 
- int s_tried_checkpoint ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int LSAPI_reset_server_state () ;
+ int LSCRIU_CloudLinux_Checkpoint () ;
+ int LSCRIU_Native_Dump (int,int ,int ) ;
+ int LSCRIU_Restored_Error (int ,char*) ;
+ int LSCRIU_Set_Initial_Start_Reqs (int ) ;
+ int LSCRIU_Wait_Dump_Finsh_Or_Restored (int) ;
+ int close (int ) ;
+ int errno ;
+ int fork () ;
+ int getpid () ;
+ int getppid () ;
+ int lscriu_dbg (char*,int) ;
+ int lscriu_err (char*,int,int ) ;
+ int s_criu_image_path ;
+ int s_fd_native ;
+ int s_native ;
+ int s_restored ;
+ int s_tried_checkpoint ;
+ int setsid () ;
+ int strerror (int ) ;
 
 __attribute__((used)) static void LSCRIU_try_checkpoint(int *forked_pid)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static void LSCRIU_try_checkpoint(int *forked_pid)
         return;
     }
     if (iPid == 0) {
-        pid_t   iPidParent = getppid();
+        pid_t iPidParent = getppid();
 
         setsid();
         iRet = LSCRIU_Native_Dump(iPidDump,

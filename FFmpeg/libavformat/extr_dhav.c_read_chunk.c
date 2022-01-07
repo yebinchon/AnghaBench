@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pb; TYPE_1__* priv_data; } ;
-struct TYPE_5__ {int last_good_pos; int type; int /*<<< orphan*/  timestamp; void* date; void* frame_number; void* frame_subnumber; void* channel; void* subtype; } ;
-typedef  TYPE_1__ DHAVContext ;
-typedef  TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- void* MKTAG (char,char,char,char) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- scalar_t__ avio_feof (int /*<<< orphan*/ ) ; 
- void* avio_r8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_rl16 (int /*<<< orphan*/ ) ; 
- void* avio_rl32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int avio_skip (int /*<<< orphan*/ ,int) ; 
- int avio_tell (int /*<<< orphan*/ ) ; 
- int parse_ext (TYPE_2__*,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_6__ {int pb; TYPE_1__* priv_data; } ;
+struct TYPE_5__ {int last_good_pos; int type; int timestamp; void* date; void* frame_number; void* frame_subnumber; void* channel; void* subtype; } ;
+typedef TYPE_1__ DHAVContext ;
+typedef TYPE_2__ AVFormatContext ;
+
+
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ void* MKTAG (char,char,char,char) ;
+ int SEEK_SET ;
+ scalar_t__ avio_feof (int ) ;
+ void* avio_r8 (int ) ;
+ int avio_rl16 (int ) ;
+ void* avio_rl32 (int ) ;
+ int avio_seek (int ,int,int ) ;
+ int avio_skip (int ,int) ;
+ int avio_tell (int ) ;
+ int parse_ext (TYPE_2__*,int) ;
 
 __attribute__((used)) static int read_chunk(AVFormatContext *s)
 {
@@ -75,7 +75,7 @@ __attribute__((used)) static int read_chunk(AVFormatContext *s)
     dhav->date = avio_rl32(s->pb);
     dhav->timestamp = avio_rl16(s->pb);
     ext_length = avio_r8(s->pb);
-    avio_skip(s->pb, 1); // checksum
+    avio_skip(s->pb, 1);
 
     ret = parse_ext(s, ext_length);
     if (ret < 0)

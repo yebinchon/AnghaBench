@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* uint32_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- void* RTC_DEFAULT_TAGCOUNT ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_isnone (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_isnumber (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- void* lua_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rtc_fifo_prepare (int /*<<< orphan*/ ,void*,void*) ; 
- int /*<<< orphan*/  rtc_fifo_put_loc (int,int,void*) ; 
+
+
+
+typedef void* uint32_t ;
+typedef int lua_State ;
+
+
+ void* RTC_DEFAULT_TAGCOUNT ;
+ int luaL_error (int *,char*) ;
+ int lua_getfield (int *,int,char*) ;
+ int lua_isnone (int *,int) ;
+ scalar_t__ lua_isnumber (int *,int) ;
+ scalar_t__ lua_istable (int *,int) ;
+ int lua_pop (int *,int) ;
+ void* lua_tonumber (int *,int) ;
+ int rtc_fifo_prepare (int ,void*,void*) ;
+ int rtc_fifo_put_loc (int,int,void*) ;
 
 __attribute__((used)) static int rtcfifo_prepare (lua_State *L)
 {
@@ -33,12 +33,12 @@ __attribute__((used)) static int rtcfifo_prepare (lua_State *L)
 
   if (lua_istable (L, 1))
   {
-#ifdef LUA_USE_MODULES_RTCTIME
-    lua_getfield (L, 1, "interval_us");
-    if (lua_isnumber (L, -1))
-      interval_us = lua_tonumber (L, -1);
-    lua_pop (L, 1);
-#endif
+
+
+
+
+
+
 
     lua_getfield (L, 1, "sensor_count");
     if (lua_isnumber (L, -1))

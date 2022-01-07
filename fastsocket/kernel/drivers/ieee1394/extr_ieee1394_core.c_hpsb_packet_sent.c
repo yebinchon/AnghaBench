@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hpsb_packet {int ack_code; scalar_t__ state; scalar_t__ sendtime; int /*<<< orphan*/  queue; int /*<<< orphan*/  expect_response; int /*<<< orphan*/  refcnt; scalar_t__ no_waiter; } ;
-struct hpsb_host {scalar_t__ timeout_interval; int /*<<< orphan*/  timeout; } ;
 
-/* Variables and functions */
- int ACK_PENDING ; 
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- scalar_t__ hpsb_complete ; 
- int /*<<< orphan*/  hpsb_free_packet (struct hpsb_packet*) ; 
- scalar_t__ hpsb_pending ; 
- scalar_t__ jiffies ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mod_timer (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  pending_packets_lock ; 
- int /*<<< orphan*/  queue_packet_complete (struct hpsb_packet*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct hpsb_packet {int ack_code; scalar_t__ state; scalar_t__ sendtime; int queue; int expect_response; int refcnt; scalar_t__ no_waiter; } ;
+struct hpsb_host {scalar_t__ timeout_interval; int timeout; } ;
+
+
+ int ACK_PENDING ;
+ int atomic_dec (int *) ;
+ scalar_t__ hpsb_complete ;
+ int hpsb_free_packet (struct hpsb_packet*) ;
+ scalar_t__ hpsb_pending ;
+ scalar_t__ jiffies ;
+ int list_del_init (int *) ;
+ int mod_timer (int *,scalar_t__) ;
+ int pending_packets_lock ;
+ int queue_packet_complete (struct hpsb_packet*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void hpsb_packet_sent(struct hpsb_host *host, struct hpsb_packet *packet,
-		      int ackcode)
+        int ackcode)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&pending_packets_lock, flags);
+ spin_lock_irqsave(&pending_packets_lock, flags);
 
-	packet->ack_code = ackcode;
+ packet->ack_code = ackcode;
 
-	if (packet->no_waiter || packet->state == hpsb_complete) {
-		/* if packet->no_waiter, must not have a tlabel allocated */
-		spin_unlock_irqrestore(&pending_packets_lock, flags);
-		hpsb_free_packet(packet);
-		return;
-	}
+ if (packet->no_waiter || packet->state == hpsb_complete) {
 
-	atomic_dec(&packet->refcnt);	/* drop HC's reference */
-	/* here the packet must be on the host->pending_packets queue */
+  spin_unlock_irqrestore(&pending_packets_lock, flags);
+  hpsb_free_packet(packet);
+  return;
+ }
 
-	if (ackcode != ACK_PENDING || !packet->expect_response) {
-		packet->state = hpsb_complete;
-		list_del_init(&packet->queue);
-		spin_unlock_irqrestore(&pending_packets_lock, flags);
-		queue_packet_complete(packet);
-		return;
-	}
+ atomic_dec(&packet->refcnt);
 
-	packet->state = hpsb_pending;
-	packet->sendtime = jiffies;
 
-	spin_unlock_irqrestore(&pending_packets_lock, flags);
+ if (ackcode != ACK_PENDING || !packet->expect_response) {
+  packet->state = hpsb_complete;
+  list_del_init(&packet->queue);
+  spin_unlock_irqrestore(&pending_packets_lock, flags);
+  queue_packet_complete(packet);
+  return;
+ }
 
-	mod_timer(&host->timeout, jiffies + host->timeout_interval);
+ packet->state = hpsb_pending;
+ packet->sendtime = jiffies;
+
+ spin_unlock_irqrestore(&pending_packets_lock, flags);
+
+ mod_timer(&host->timeout, jiffies + host->timeout_interval);
 }

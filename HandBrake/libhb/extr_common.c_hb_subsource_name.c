@@ -1,47 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  CC608SUB 136 
-#define  CC708SUB 135 
-#define  IMPORTSRT 134 
-#define  IMPORTSSA 133 
-#define  PGSSUB 132 
-#define  SSASUB 131 
-#define  TX3GSUB 130 
-#define  UTF8SUB 129 
-#define  VOBSUB 128 
-
 const char * hb_subsource_name( int source )
 {
     switch (source)
     {
-        case VOBSUB:
+        case 128:
             return "VOBSUB";
-        case IMPORTSRT:
+        case 134:
             return "SRT";
-        case CC608SUB:
+        case 136:
             return "CC608";
-        case CC708SUB:
+        case 135:
             return "CC708";
-        case UTF8SUB:
+        case 129:
             return "UTF-8";
-        case TX3GSUB:
+        case 130:
             return "TX3G";
-        case IMPORTSSA:
-        case SSASUB:
+        case 133:
+        case 131:
             return "SSA";
-        case PGSSUB:
+        case 132:
             return "PGS";
         default:
             return "Unknown";

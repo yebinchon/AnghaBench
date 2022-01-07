@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* data; } ;
-typedef  TYPE_1__ uv_stream_t ;
-typedef  int /*<<< orphan*/  uv_loop_t ;
-struct ipc_client_ctx {int /*<<< orphan*/  ipc_pipe; int /*<<< orphan*/  connect_req; TYPE_1__* server_handle; } ;
+typedef TYPE_1__ uv_stream_t ;
+typedef int uv_loop_t ;
+struct ipc_client_ctx {int ipc_pipe; int connect_req; TYPE_1__* server_handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  IPC_PIPE_NAME ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  ipc_connect_cb ; 
- int /*<<< orphan*/  uv_pipe_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ uv_pipe_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ uv_run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int IPC_PIPE_NAME ;
+ int UV_RUN_DEFAULT ;
+ int ipc_connect_cb ;
+ int uv_pipe_connect (int *,int *,int ,int ) ;
+ scalar_t__ uv_pipe_init (int *,int *,int) ;
+ scalar_t__ uv_run (int *,int ) ;
 
 __attribute__((used)) static void get_listen_handle(uv_loop_t* loop, uv_stream_t* server_handle) {
   struct ipc_client_ctx ctx;

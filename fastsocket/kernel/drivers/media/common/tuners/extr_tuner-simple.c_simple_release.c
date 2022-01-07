@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tuner_simple_priv {int dummy; } ;
 struct dvb_frontend {struct tuner_simple_priv* tuner_priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  hybrid_tuner_release_state (struct tuner_simple_priv*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tuner_simple_list_mutex ; 
+
+ int hybrid_tuner_release_state (struct tuner_simple_priv*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int tuner_simple_list_mutex ;
 
 __attribute__((used)) static int simple_release(struct dvb_frontend *fe)
 {
-	struct tuner_simple_priv *priv = fe->tuner_priv;
+ struct tuner_simple_priv *priv = fe->tuner_priv;
 
-	mutex_lock(&tuner_simple_list_mutex);
+ mutex_lock(&tuner_simple_list_mutex);
 
-	if (priv)
-		hybrid_tuner_release_state(priv);
+ if (priv)
+  hybrid_tuner_release_state(priv);
 
-	mutex_unlock(&tuner_simple_list_mutex);
+ mutex_unlock(&tuner_simple_list_mutex);
 
-	fe->tuner_priv = NULL;
+ fe->tuner_priv = ((void*)0);
 
-	return 0;
+ return 0;
 }

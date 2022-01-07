@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  byte ;
-struct TYPE_2__ {int /*<<< orphan*/ * write; int /*<<< orphan*/  stream_o; } ;
 
-/* Variables and functions */
- TYPE_1__* MP_STATE_PORT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_call_method_n_kw (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ mp_obj_is_type (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_obj_new_str_of_type (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,size_t) ; 
- int /*<<< orphan*/  mp_type_str ; 
- int /*<<< orphan*/  os_term_dup_obj ; 
- int /*<<< orphan*/  pyb_uart_type ; 
- int /*<<< orphan*/  telnet_tx_strn (char const*,size_t) ; 
- int /*<<< orphan*/  uart_tx_strn (int /*<<< orphan*/ ,char const*,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int byte ;
+struct TYPE_2__ {int * write; int stream_o; } ;
+
+
+ TYPE_1__* MP_STATE_PORT (int ) ;
+ int mp_call_method_n_kw (int,int ,int *) ;
+ scalar_t__ mp_obj_is_type (int ,int *) ;
+ int mp_obj_new_str_of_type (int *,int const*,size_t) ;
+ int mp_type_str ;
+ int os_term_dup_obj ;
+ int pyb_uart_type ;
+ int telnet_tx_strn (char const*,size_t) ;
+ int uart_tx_strn (int ,char const*,size_t) ;
 
 void mp_hal_stdout_tx_strn(const char *str, size_t len) {
     if (MP_STATE_PORT(os_term_dup_obj)) {
@@ -34,6 +34,6 @@ void mp_hal_stdout_tx_strn(const char *str, size_t len) {
             mp_call_method_n_kw(1, 0, MP_STATE_PORT(os_term_dup_obj)->write);
         }
     }
-    // and also to telnet
+
     telnet_tx_strn(str, len);
 }

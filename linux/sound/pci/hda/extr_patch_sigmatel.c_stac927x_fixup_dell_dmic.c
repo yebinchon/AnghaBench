@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sigmatel_spec {int eapd_mask; int gpio_mask; int gpio_dir; int gpio_data; int volknob_init; } ;
 struct hda_fixup {int dummy; } ;
 struct TYPE_2__ {int subsystem_id; } ;
 struct hda_codec {TYPE_1__ core; struct sigmatel_spec* spec; } ;
 
-/* Variables and functions */
- int HDA_FIXUP_ACT_PRE_PROBE ; 
- int /*<<< orphan*/  dell_3st_core_init ; 
- int /*<<< orphan*/  snd_hda_add_verbs (struct hda_codec*,int /*<<< orphan*/ ) ; 
+
+ int HDA_FIXUP_ACT_PRE_PROBE ;
+ int dell_3st_core_init ;
+ int snd_hda_add_verbs (struct hda_codec*,int ) ;
 
 __attribute__((used)) static void stac927x_fixup_dell_dmic(struct hda_codec *codec,
-				     const struct hda_fixup *fix, int action)
+         const struct hda_fixup *fix, int action)
 {
-	struct sigmatel_spec *spec = codec->spec;
+ struct sigmatel_spec *spec = codec->spec;
 
-	if (action != HDA_FIXUP_ACT_PRE_PROBE)
-		return;
+ if (action != HDA_FIXUP_ACT_PRE_PROBE)
+  return;
 
-	if (codec->core.subsystem_id != 0x1028022f) {
-		/* GPIO2 High = Enable EAPD */
-		spec->eapd_mask = spec->gpio_mask = 0x04;
-		spec->gpio_dir = spec->gpio_data = 0x04;
-	}
+ if (codec->core.subsystem_id != 0x1028022f) {
 
-	snd_hda_add_verbs(codec, dell_3st_core_init);
-	spec->volknob_init = 1;
+  spec->eapd_mask = spec->gpio_mask = 0x04;
+  spec->gpio_dir = spec->gpio_data = 0x04;
+ }
+
+ snd_hda_add_verbs(codec, dell_3st_core_init);
+ spec->volknob_init = 1;
 }

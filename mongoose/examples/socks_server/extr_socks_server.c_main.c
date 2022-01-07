@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mg_mgr {int dummy; } ;
 struct mg_connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- struct mg_connection* mg_bind (struct mg_mgr*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mgr_free (struct mg_mgr*) ; 
- int /*<<< orphan*/  mg_mgr_init (struct mg_mgr*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mg_mgr_poll (struct mg_mgr*,int) ; 
- int /*<<< orphan*/  mg_set_protocol_socks (struct mg_connection*) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* s_listening_addr ; 
- int /*<<< orphan*/  stderr ; 
+
+ int EXIT_FAILURE ;
+ int exit (int ) ;
+ int fprintf (int ,char*,char*) ;
+ struct mg_connection* mg_bind (struct mg_mgr*,char*,int *) ;
+ int mg_mgr_free (struct mg_mgr*) ;
+ int mg_mgr_init (struct mg_mgr*,int *) ;
+ int mg_mgr_poll (struct mg_mgr*,int) ;
+ int mg_set_protocol_socks (struct mg_connection*) ;
+ int printf (char*,char*) ;
+ char* s_listening_addr ;
+ int stderr ;
 
 int main(void) {
   struct mg_mgr mgr;
   struct mg_connection *c;
 
-  mg_mgr_init(&mgr, NULL);
+  mg_mgr_init(&mgr, ((void*)0));
 
-  if ((c = mg_bind(&mgr, s_listening_addr, NULL)) == NULL) {
+  if ((c = mg_bind(&mgr, s_listening_addr, ((void*)0))) == ((void*)0)) {
     fprintf(stderr, "mg_bind(%s) failed\n", s_listening_addr);
     exit(EXIT_FAILURE);
   }

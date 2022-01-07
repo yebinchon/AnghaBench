@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  guchar ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SeafBlockManager ;
-typedef  int /*<<< orphan*/  GChecksum ;
-typedef  int /*<<< orphan*/  BlockHandle ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_READ ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  G_CHECKSUM_SHA1 ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_checksum_free (int /*<<< orphan*/ *) ; 
- char* g_checksum_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_checksum_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_checksum_update (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  seaf_block_manager_block_handle_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_block_manager_close_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * seaf_block_manager_open_block (int /*<<< orphan*/ *,char const*,int,char const*,int /*<<< orphan*/ ) ; 
- int seaf_block_manager_read_block (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  seaf_warning (char*,char const*,char const*) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
+
+
+
+typedef int guchar ;
+typedef int gboolean ;
+typedef int buf ;
+typedef int SeafBlockManager ;
+typedef int GChecksum ;
+typedef int BlockHandle ;
+
+
+ int BLOCK_READ ;
+ int FALSE ;
+ int G_CHECKSUM_SHA1 ;
+ int TRUE ;
+ int g_checksum_free (int *) ;
+ char* g_checksum_get_string (int *) ;
+ int * g_checksum_new (int ) ;
+ int g_checksum_update (int *,int *,int) ;
+ int seaf_block_manager_block_handle_free (int *,int *) ;
+ int seaf_block_manager_close_block (int *,int *) ;
+ int * seaf_block_manager_open_block (int *,char const*,int,char const*,int ) ;
+ int seaf_block_manager_read_block (int *,int *,char*,int) ;
+ int seaf_warning (char*,char const*,char const*) ;
+ scalar_t__ strcmp (char const*,char const*) ;
 
 gboolean
 seaf_block_manager_verify_block (SeafBlockManager *mgr,

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  sample_fmt; } ;
-struct TYPE_4__ {int internal_ftype; int channels; int** offset; TYPE_3__* avctx; int /*<<< orphan*/  nmean; } ;
-typedef  TYPE_1__ ShortenContext ;
 
-/* Variables and functions */
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_S16P ; 
- int /*<<< orphan*/  AV_SAMPLE_FMT_U8P ; 
- int FFMAX (int,int /*<<< orphan*/ ) ; 
-#define  TYPE_S16HL 130 
-#define  TYPE_S16LH 129 
-#define  TYPE_U8 128 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int32_t ;
+struct TYPE_5__ {int sample_fmt; } ;
+struct TYPE_4__ {int internal_ftype; int channels; int** offset; TYPE_3__* avctx; int nmean; } ;
+typedef TYPE_1__ ShortenContext ;
+
+
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int AV_SAMPLE_FMT_S16P ;
+ int AV_SAMPLE_FMT_U8P ;
+ int FFMAX (int,int ) ;
+
+
+
+ int av_log (TYPE_3__*,int ,char*) ;
 
 __attribute__((used)) static int init_offset(ShortenContext *s)
 {
     int32_t mean = 0;
     int chan, i;
     int nblock = FFMAX(1, s->nmean);
-    /* initialise offset */
+
     switch (s->internal_ftype) {
-    case TYPE_U8:
+    case 128:
         s->avctx->sample_fmt = AV_SAMPLE_FMT_U8P;
         mean = 0x80;
         break;
-    case TYPE_S16HL:
-    case TYPE_S16LH:
+    case 130:
+    case 129:
         s->avctx->sample_fmt = AV_SAMPLE_FMT_S16P;
         break;
     default:

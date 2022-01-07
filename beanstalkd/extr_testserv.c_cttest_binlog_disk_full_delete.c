@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int use; int filesize; int wantsync; scalar_t__ syncrate; int /*<<< orphan*/  dir; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int use; int filesize; int wantsync; scalar_t__ syncrate; int dir; } ;
 struct TYPE_4__ {TYPE_1__ wal; } ;
 
-/* Variables and functions */
- int SERVER () ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ckresp (int,char*) ; 
- int /*<<< orphan*/  ctdir () ; 
- int /*<<< orphan*/  exist (char*) ; 
- int /*<<< orphan*/ * falloc ; 
- int* fallocpat ; 
- char* fmtalloc (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int mustdiallocal (int) ; 
- int /*<<< orphan*/  mustsend (int,char*) ; 
- int size ; 
- TYPE_2__ srv ; 
- int /*<<< orphan*/  wrapfalloc ; 
+
+ int SERVER () ;
+ int assert (int ) ;
+ int ckresp (int,char*) ;
+ int ctdir () ;
+ int exist (char*) ;
+ int * falloc ;
+ int* fallocpat ;
+ char* fmtalloc (char*,int ) ;
+ int free (char*) ;
+ int mustdiallocal (int) ;
+ int mustsend (int,char*) ;
+ int size ;
+ TYPE_2__ srv ;
+ int wrapfalloc ;
 
 void
 cttest_binlog_disk_full_delete()

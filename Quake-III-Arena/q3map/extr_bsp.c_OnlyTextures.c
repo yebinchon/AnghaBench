@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int Error (char*) ;
+ int LoadBSPFile (char*) ;
+ int LoadMapFile (int ) ;
+ int WriteBSPFile (char*) ;
+ int name ;
+ int numDrawSurfaces ;
+ char* source ;
+ int sprintf (char*,char*,char*) ;
 
-/* Forward declarations */
+void OnlyTextures( void ) {
+ char out[1024];
+ int i;
 
-/* Type definitions */
+ Error( "-onlytextures isn't working now..." );
 
-/* Variables and functions */
- int /*<<< orphan*/  Error (char*) ; 
- int /*<<< orphan*/  LoadBSPFile (char*) ; 
- int /*<<< orphan*/  LoadMapFile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WriteBSPFile (char*) ; 
- int /*<<< orphan*/  name ; 
- int numDrawSurfaces ; 
- char* source ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+ sprintf (out, "%s.bsp", source);
 
-void OnlyTextures( void ) {		// FIXME!!!
-	char	out[1024];
-	int		i;
+ LoadMapFile (name);
 
-	Error( "-onlytextures isn't working now..." );
+ LoadBSPFile (out);
 
-	sprintf (out, "%s.bsp", source);
 
-	LoadMapFile (name);
+ for ( i = 0 ; i < numDrawSurfaces ; i++ ) {
+ }
 
-	LoadBSPFile (out);
-
-	// replace all the drawsurface shader names
-	for ( i = 0 ; i < numDrawSurfaces ; i++ ) {
-	}
-
-	WriteBSPFile (out);
+ WriteBSPFile (out);
 }

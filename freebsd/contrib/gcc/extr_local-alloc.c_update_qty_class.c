@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum reg_class { ____Placeholder_reg_class } reg_class ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef enum reg_class { ____Placeholder_reg_class } reg_class ;
 struct TYPE_2__ {int min_class; int alternate_class; } ;
 
-/* Variables and functions */
- TYPE_1__* qty ; 
- int reg_alternate_class (int) ; 
- scalar_t__ reg_class_subset_p (int,int) ; 
- int reg_preferred_class (int) ; 
+
+ TYPE_1__* qty ;
+ int reg_alternate_class (int) ;
+ scalar_t__ reg_class_subset_p (int,int) ;
+ int reg_preferred_class (int) ;
 
 __attribute__((used)) static void
 update_qty_class (int qtyno, int reg)

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct timespec {scalar_t__ tv_sec; scalar_t__ tv_nsec; } ;
-struct TYPE_2__ {int /*<<< orphan*/  lock; } ;
+struct TYPE_2__ {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __timekeeping_inject_sleeptime (struct timespec*) ; 
- int /*<<< orphan*/  clock_was_set () ; 
- int /*<<< orphan*/  read_persistent_clock (struct timespec*) ; 
- TYPE_1__ timekeeper ; 
- int /*<<< orphan*/  timekeeping_forward_now () ; 
- int /*<<< orphan*/  timekeeping_update (int) ; 
- int /*<<< orphan*/  write_seqlock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  write_sequnlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int __timekeeping_inject_sleeptime (struct timespec*) ;
+ int clock_was_set () ;
+ int read_persistent_clock (struct timespec*) ;
+ TYPE_1__ timekeeper ;
+ int timekeeping_forward_now () ;
+ int timekeeping_update (int) ;
+ int write_seqlock_irqsave (int *,unsigned long) ;
+ int write_sequnlock_irqrestore (int *,unsigned long) ;
 
 void timekeeping_inject_sleeptime(struct timespec *delta)
 {
-	unsigned long flags;
-	struct timespec ts;
+ unsigned long flags;
+ struct timespec ts;
 
-	/* Make sure we don't set the clock twice */
-	read_persistent_clock(&ts);
-	if (!(ts.tv_sec == 0 && ts.tv_nsec == 0))
-		return;
 
-	write_seqlock_irqsave(&timekeeper.lock, flags);
+ read_persistent_clock(&ts);
+ if (!(ts.tv_sec == 0 && ts.tv_nsec == 0))
+  return;
 
-	timekeeping_forward_now();
+ write_seqlock_irqsave(&timekeeper.lock, flags);
 
-	__timekeeping_inject_sleeptime(delta);
+ timekeeping_forward_now();
 
-	timekeeping_update(true);
+ __timekeeping_inject_sleeptime(delta);
 
-	write_sequnlock_irqrestore(&timekeeper.lock, flags);
+ timekeeping_update(1);
 
-	/* signal hrtimers about time change */
-	clock_was_set();
+ write_sequnlock_irqrestore(&timekeeper.lock, flags);
+
+
+ clock_was_set();
 }

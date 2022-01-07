@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned long LENGTH ; 
- int /*<<< orphan*/  check_bytes (char*) ; 
- int /*<<< orphan*/  printf (char*,unsigned long) ; 
+ unsigned long LENGTH ;
+ int check_bytes (char*) ;
+ int printf (char*,unsigned long) ;
 
 void read_bytes(char *addr)
 {
-	unsigned long i;
+ unsigned long i;
 
-	check_bytes(addr);
-	for (i = 0; i < LENGTH; i++)
-		if (*(addr + i) != (char)i) {
-			printf("Mismatch at %lu\n", i);
-			break;
-		}
+ check_bytes(addr);
+ for (i = 0; i < LENGTH; i++)
+  if (*(addr + i) != (char)i) {
+   printf("Mismatch at %lu\n", i);
+   break;
+  }
 }

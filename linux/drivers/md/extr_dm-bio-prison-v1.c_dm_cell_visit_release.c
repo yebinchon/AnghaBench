@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_bio_prison_cell {int /*<<< orphan*/  node; } ;
-struct dm_bio_prison {int /*<<< orphan*/  lock; int /*<<< orphan*/  cells; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rb_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+
+
+struct dm_bio_prison_cell {int node; } ;
+struct dm_bio_prison {int lock; int cells; } ;
+
+
+ int rb_erase (int *,int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void dm_cell_visit_release(struct dm_bio_prison *prison,
-			   void (*visit_fn)(void *, struct dm_bio_prison_cell *),
-			   void *context,
-			   struct dm_bio_prison_cell *cell)
+      void (*visit_fn)(void *, struct dm_bio_prison_cell *),
+      void *context,
+      struct dm_bio_prison_cell *cell)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&prison->lock, flags);
-	visit_fn(context, cell);
-	rb_erase(&cell->node, &prison->cells);
-	spin_unlock_irqrestore(&prison->lock, flags);
+ spin_lock_irqsave(&prison->lock, flags);
+ visit_fn(context, cell);
+ rb_erase(&cell->node, &prison->cells);
+ spin_unlock_irqrestore(&prison->lock, flags);
 }

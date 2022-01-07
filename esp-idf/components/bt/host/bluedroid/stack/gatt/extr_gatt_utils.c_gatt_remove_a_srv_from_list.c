@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  count; TYPE_1__* p_last; TYPE_2__* p_first; } ;
-typedef  TYPE_3__ tGATT_SRV_LIST_INFO ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int count; TYPE_1__* p_last; TYPE_2__* p_first; } ;
+typedef TYPE_3__ tGATT_SRV_LIST_INFO ;
 struct TYPE_11__ {TYPE_2__* p_next; TYPE_1__* p_prev; } ;
-typedef  TYPE_4__ tGATT_SRV_LIST_ELEM ;
+typedef TYPE_4__ tGATT_SRV_LIST_ELEM ;
 struct TYPE_9__ {TYPE_1__* p_prev; } ;
 struct TYPE_8__ {TYPE_2__* p_next; } ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GATT_TRACE_DEBUG (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  gatt_update_last_pri_srv_info (TYPE_3__*) ; 
+
+ int FALSE ;
+ int GATT_TRACE_DEBUG (char*) ;
+ int TRUE ;
+ int gatt_update_last_pri_srv_info (TYPE_3__*) ;
 
 BOOLEAN gatt_remove_a_srv_from_list(tGATT_SRV_LIST_INFO *p_list, tGATT_SRV_LIST_ELEM *p_remove)
 {
@@ -35,14 +35,14 @@ BOOLEAN gatt_remove_a_srv_from_list(tGATT_SRV_LIST_INFO *p_list, tGATT_SRV_LIST_
         return FALSE;
     }
 
-    if (p_remove->p_prev == NULL) {
-        p_list->p_first             = p_remove->p_next;
+    if (p_remove->p_prev == ((void*)0)) {
+        p_list->p_first = p_remove->p_next;
         if (p_remove->p_next) {
-            p_remove->p_next->p_prev    = NULL;
+            p_remove->p_next->p_prev = ((void*)0);
         }
-    } else if (p_remove->p_next == NULL) {
-        p_list->p_last              = p_remove->p_prev;
-        p_remove->p_prev->p_next    = NULL;
+    } else if (p_remove->p_next == ((void*)0)) {
+        p_list->p_last = p_remove->p_prev;
+        p_remove->p_prev->p_next = ((void*)0);
     } else {
         p_remove->p_next->p_prev = p_remove->p_prev;
         p_remove->p_prev->p_next = p_remove->p_next;

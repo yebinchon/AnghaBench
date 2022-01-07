@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_process_stream_t ;
-typedef  int /*<<< orphan*/  atf_fs_path_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_process_stream_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_sb (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int atf_process_stream_t ;
+typedef int atf_fs_path_t ;
+typedef int atf_error_t ;
+
+
+ scalar_t__ atf_is_error (int ) ;
+ int atf_process_stream_fini (int *) ;
+ int init_sb (int const*,int *) ;
 
 __attribute__((used)) static
 atf_error_t

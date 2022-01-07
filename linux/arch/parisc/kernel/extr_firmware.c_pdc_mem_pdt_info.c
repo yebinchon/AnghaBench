@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pdc_mem_retinfo {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PDC_MEM ; 
- int /*<<< orphan*/  PDC_MEM_MEMINFO ; 
- int /*<<< orphan*/  __pa (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_to_wide (int /*<<< orphan*/ ) ; 
- int mem_pdc_call (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (struct pdc_mem_retinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  pdc_lock ; 
- int /*<<< orphan*/  pdc_result ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int PDC_MEM ;
+ int PDC_MEM_MEMINFO ;
+ int __pa (int ) ;
+ int convert_to_wide (int ) ;
+ int mem_pdc_call (int ,int ,int ,int ) ;
+ int memcpy (struct pdc_mem_retinfo*,int ,int) ;
+ int pdc_lock ;
+ int pdc_result ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 int pdc_mem_pdt_info(struct pdc_mem_retinfo *rinfo)
 {
-	int retval;
-	unsigned long flags;
+ int retval;
+ unsigned long flags;
 
-	spin_lock_irqsave(&pdc_lock, flags);
-	retval = mem_pdc_call(PDC_MEM, PDC_MEM_MEMINFO, __pa(pdc_result), 0);
-	convert_to_wide(pdc_result);
-	memcpy(rinfo, pdc_result, sizeof(*rinfo));
-	spin_unlock_irqrestore(&pdc_lock, flags);
+ spin_lock_irqsave(&pdc_lock, flags);
+ retval = mem_pdc_call(PDC_MEM, PDC_MEM_MEMINFO, __pa(pdc_result), 0);
+ convert_to_wide(pdc_result);
+ memcpy(rinfo, pdc_result, sizeof(*rinfo));
+ spin_unlock_irqrestore(&pdc_lock, flags);
 
-	return retval;
+ return retval;
 }

@@ -1,51 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlChar ;
-struct TYPE_3__ {void* plist; int /*<<< orphan*/ * key; int /*<<< orphan*/  stack; int /*<<< orphan*/  tag_stack; int /*<<< orphan*/ * value; scalar_t__ closed_top; } ;
-typedef  TYPE_1__ parse_data_t ;
-typedef  scalar_t__ hb_value_type_t ;
-typedef  void hb_value_t ;
-struct TYPE_4__ {int id; int /*<<< orphan*/  tag; } ;
 
-/* Variables and functions */
- scalar_t__ HB_VALUE_TYPE_ARRAY ; 
- scalar_t__ HB_VALUE_TYPE_DICT ; 
-#define  P_ARRAY 138 
-#define  P_DATA 137 
-#define  P_DATE 136 
-#define  P_DICT 135 
-#define  P_FALSE 134 
-#define  P_INTEGER 133 
-#define  P_KEY 132 
-#define  P_PLIST 131 
-#define  P_REAL 130 
-#define  P_STRING 129 
-#define  P_TRUE 128 
- int TAG_MAP_SZ ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- void* hb_dict_init () ; 
- int /*<<< orphan*/  hb_dict_set (void*,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  hb_error (char*,...) ; 
- int /*<<< orphan*/  hb_value_array_append (void*,void*) ; 
- void* hb_value_array_init () ; 
- int /*<<< orphan*/  hb_value_free (void**) ; 
- scalar_t__ hb_value_type (void*) ; 
- void* queue_peek_head (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  queue_push_head (int /*<<< orphan*/ ,void*) ; 
- scalar_t__ strcmp (char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* tag_map ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int xmlChar ;
+struct TYPE_3__ {void* plist; int * key; int stack; int tag_stack; int * value; scalar_t__ closed_top; } ;
+typedef TYPE_1__ parse_data_t ;
+typedef scalar_t__ hb_value_type_t ;
+typedef void hb_value_t ;
+struct TYPE_4__ {int id; int tag; } ;
+
+
+ scalar_t__ HB_VALUE_TYPE_ARRAY ;
+ scalar_t__ HB_VALUE_TYPE_DICT ;
+ int TAG_MAP_SZ ;
+ int free (int *) ;
+ void* hb_dict_init () ;
+ int hb_dict_set (void*,int *,void*) ;
+ int hb_error (char*,...) ;
+ int hb_value_array_append (void*,void*) ;
+ void* hb_value_array_init () ;
+ int hb_value_free (void**) ;
+ scalar_t__ hb_value_type (void*) ;
+ void* queue_peek_head (int ) ;
+ int queue_push_head (int ,void*) ;
+ scalar_t__ strcmp (char*,int ) ;
+ TYPE_2__* tag_map ;
 
 __attribute__((used)) static void
 start_element(
@@ -62,8 +51,8 @@ start_element(
     } id;
     int ii;
 
-    // Check to see if the first element found has been closed
-    // If so, ignore any junk following it.
+
+
     if (pd->closed_top)
         return;
 
@@ -83,58 +72,58 @@ start_element(
     if (pd->value)
     {
         free(pd->value);
-        pd->value = NULL;
+        pd->value = ((void*)0);
     }
     queue_push_head(pd->tag_stack, id.pid);
     hb_value_type_t gtype = 0;
-    hb_value_t *gval = NULL;
+    hb_value_t *gval = ((void*)0);
     hb_value_t *current = queue_peek_head(pd->stack);
     switch (id.id)
     {
-        case P_PLIST:
-        { // Ignore
+        case 131:
+        {
         } break;
-        case P_KEY:
+        case 132:
         {
             if (pd->key) free(pd->key);
-            pd->key = NULL;
+            pd->key = ((void*)0);
         } break;
-        case P_DICT:
+        case 135:
         {
             gval = hb_dict_init();
             queue_push_head(pd->stack, gval);
         } break;
-        case P_ARRAY:
+        case 138:
         {
             gval = hb_value_array_init();
             queue_push_head(pd->stack, gval);
         } break;
-        case P_INTEGER:
+        case 133:
         {
         } break;
-        case P_REAL:
+        case 130:
         {
         } break;
-        case P_STRING:
+        case 129:
         {
         } break;
-        case P_DATE:
+        case 136:
         {
         } break;
-        case P_TRUE:
+        case 128:
         {
         } break;
-        case P_FALSE:
+        case 134:
         {
         } break;
-        case P_DATA:
+        case 137:
         {
         } break;
     }
-    // Add the element to the current container
+
     if (gval)
-    { // There's an element to add
-        if (current == NULL)
+    {
+        if (current == ((void*)0))
         {
             pd->plist = gval;
             return;
@@ -146,7 +135,7 @@ start_element(
         }
         else if (gtype == HB_VALUE_TYPE_DICT)
         {
-            if (pd->key == NULL)
+            if (pd->key == ((void*)0))
             {
                 hb_error("No key for dictionary item");
                 hb_value_free(&gval);

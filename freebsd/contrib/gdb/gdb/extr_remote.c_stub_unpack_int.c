@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int stubhex (int /*<<< orphan*/ ) ; 
+ int stubhex (int ) ;
 
 __attribute__((used)) static int
 stub_unpack_int (char *buff, int fieldlength)
@@ -26,7 +18,7 @@ stub_unpack_int (char *buff, int fieldlength)
       retval |= nibble;
       fieldlength--;
       if (fieldlength)
-	retval = retval << 4;
+ retval = retval << 4;
     }
   return retval;
 }

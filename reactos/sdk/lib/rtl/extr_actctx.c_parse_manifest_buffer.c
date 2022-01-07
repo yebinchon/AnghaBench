@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int xmlstr_t ;
 struct TYPE_8__ {scalar_t__ ptr; scalar_t__ end; } ;
-typedef  TYPE_2__ xmlbuf_t ;
+typedef TYPE_2__ xmlbuf_t ;
 struct assembly_identity {int dummy; } ;
-struct TYPE_7__ {int /*<<< orphan*/  info; } ;
+struct TYPE_7__ {int info; } ;
 struct assembly {TYPE_1__ manifest; } ;
 struct actctx_loader {int dummy; } ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef int UNICODE_STRING ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_SXS_CANT_GEN_ACTCTX ; 
- int /*<<< orphan*/  asmv1W ; 
- int /*<<< orphan*/  assemblyW ; 
- int /*<<< orphan*/  g_xmlW ; 
- scalar_t__ next_xml_elem (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_assembly_elem (TYPE_2__*,struct actctx_loader*,struct assembly*,struct assembly_identity*) ; 
- int /*<<< orphan*/  parse_xml_header (TYPE_2__*) ; 
- int /*<<< orphan*/  xml_elem_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int DPRINT1 (char*,...) ;
+ int STATUS_SUCCESS ;
+ int STATUS_SXS_CANT_GEN_ACTCTX ;
+ int asmv1W ;
+ int assemblyW ;
+ int g_xmlW ;
+ scalar_t__ next_xml_elem (TYPE_2__*,int *) ;
+ int parse_assembly_elem (TYPE_2__*,struct actctx_loader*,struct assembly*,struct assembly_identity*) ;
+ int parse_xml_header (TYPE_2__*) ;
+ int xml_elem_cmp (int *,int ,int ) ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,int ) ;
 
 __attribute__((used)) static NTSTATUS parse_manifest_buffer( struct actctx_loader* acl, struct assembly *assembly,
                                        struct assembly_identity* ai, xmlbuf_t *xmlbuf )

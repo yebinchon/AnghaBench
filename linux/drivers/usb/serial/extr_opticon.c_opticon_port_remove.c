@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_serial_port {int dummy; } ;
 struct opticon_private {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct opticon_private*) ; 
- struct opticon_private* usb_get_serial_port_data (struct usb_serial_port*) ; 
+
+ int kfree (struct opticon_private*) ;
+ struct opticon_private* usb_get_serial_port_data (struct usb_serial_port*) ;
 
 __attribute__((used)) static int opticon_port_remove(struct usb_serial_port *port)
 {
-	struct opticon_private *priv = usb_get_serial_port_data(port);
+ struct opticon_private *priv = usb_get_serial_port_data(port);
 
-	kfree(priv);
+ kfree(priv);
 
-	return 0;
+ return 0;
 }

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MBSTRING_ASC ; 
- int MBSTRING_BMP ; 
- int MBSTRING_UNIV ; 
- int UTF8_getc (unsigned char const*,int,unsigned long*) ; 
+ int MBSTRING_ASC ;
+ int MBSTRING_BMP ;
+ int MBSTRING_UNIV ;
+ int UTF8_getc (unsigned char const*,int,unsigned long*) ;
 
 __attribute__((used)) static int traverse_string(const unsigned char *p, int len, int inform,
                            int (*rfunc) (unsigned long value, void *in),

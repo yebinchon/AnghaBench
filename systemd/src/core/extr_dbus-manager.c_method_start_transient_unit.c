@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  Unit ;
-typedef  int /*<<< orphan*/  Manager ;
-typedef  scalar_t__ JobMode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JOB_START ; 
- int /*<<< orphan*/  SD_BUS_ERROR_INVALID_ARGS ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int bus_unit_queue_job (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int bus_verify_manage_units_async (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ job_mode_from_string (char const*) ; 
- int mac_selinux_access_check (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,char const**,char const**) ; 
- int transient_aux_units_from_message (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int transient_unit_from_message (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int Unit ;
+typedef int Manager ;
+typedef scalar_t__ JobMode ;
+
+
+ int JOB_START ;
+ int SD_BUS_ERROR_INVALID_ARGS ;
+ int assert (int *) ;
+ int bus_unit_queue_job (int *,int *,int ,scalar_t__,int ,int *) ;
+ int bus_verify_manage_units_async (int *,int *,int *) ;
+ scalar_t__ job_mode_from_string (char const*) ;
+ int mac_selinux_access_check (int *,char*,int *) ;
+ int sd_bus_error_setf (int *,int ,char*,char const*) ;
+ int sd_bus_message_read (int *,char*,char const**,char const**) ;
+ int transient_aux_units_from_message (int *,int *,int *) ;
+ int transient_unit_from_message (int *,int *,char const*,int **,int *) ;
 
 __attribute__((used)) static int method_start_transient_unit(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         const char *name, *smode;
@@ -55,7 +55,7 @@ __attribute__((used)) static int method_start_transient_unit(sd_bus_message *mes
         if (r < 0)
                 return r;
         if (r == 0)
-                return 1; /* No authorization for now, but the async polkit stuff will call us again when it has it */
+                return 1;
 
         r = transient_unit_from_message(m, message, name, &u, error);
         if (r < 0)
@@ -65,6 +65,6 @@ __attribute__((used)) static int method_start_transient_unit(sd_bus_message *mes
         if (r < 0)
                 return r;
 
-        /* Finally, start it */
+
         return bus_unit_queue_job(message, u, JOB_START, mode, 0, error);
 }

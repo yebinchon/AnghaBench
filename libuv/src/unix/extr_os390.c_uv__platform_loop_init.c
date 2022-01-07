@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * ep; } ;
-typedef  TYPE_1__ uv_loop_t ;
-typedef  int /*<<< orphan*/  uv__os390_epoll ;
 
-/* Variables and functions */
- int UV__ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * epoll_create1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errno ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * ep; } ;
+typedef TYPE_1__ uv_loop_t ;
+typedef int uv__os390_epoll ;
+
+
+ int UV__ERR (int ) ;
+ int * epoll_create1 (int ) ;
+ int errno ;
 
 int uv__platform_loop_init(uv_loop_t* loop) {
   uv__os390_epoll* ep;
 
   ep = epoll_create1(0);
   loop->ep = ep;
-  if (ep == NULL)
+  if (ep == ((void*)0))
     return UV__ERR(errno);
 
   return 0;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint64_t ;
 struct TYPE_3__ {int linesize; int mb_size; scalar_t__* data_cur; scalar_t__* data_ref; } ;
-typedef  TYPE_1__ AVMotionEstContext ;
+typedef TYPE_1__ AVMotionEstContext ;
 
-/* Variables and functions */
- scalar_t__ FFABS (scalar_t__) ; 
+
+ scalar_t__ FFABS (scalar_t__) ;
 
 uint64_t ff_me_cmp_sad(AVMotionEstContext *me_ctx, int x_mb, int y_mb, int x_mv, int y_mv)
 {

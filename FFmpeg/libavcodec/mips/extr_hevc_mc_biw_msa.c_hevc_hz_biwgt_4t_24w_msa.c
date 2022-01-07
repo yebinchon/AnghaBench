@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ v8i16 ;
-typedef  int /*<<< orphan*/  v4i32 ;
-typedef  scalar_t__ v16i8 ;
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  int8_t ;
-typedef  int int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HEVC_BIW_RND_CLIP2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  HEVC_BIW_RND_CLIP4 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ HEVC_FILT_4TAP_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_SB (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LD_SB2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- scalar_t__ LD_SH (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  LD_SH2 (int /*<<< orphan*/ *,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  PCKEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SPLATI_H2_SH (scalar_t__,int /*<<< orphan*/ ,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ST_D2 (scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ST_SH2 (scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  __msa_fill_w (int) ; 
- scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/ * ff_hevc_mask_arr ; 
+
+
+
+typedef scalar_t__ v8i16 ;
+typedef int v4i32 ;
+typedef scalar_t__ v16i8 ;
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int int8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int HEVC_BIW_RND_CLIP2 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,scalar_t__,scalar_t__) ;
+ int HEVC_BIW_RND_CLIP4 (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,int ,int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ HEVC_FILT_4TAP_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_SB (int *) ;
+ int LD_SB2 (int *,int,scalar_t__,scalar_t__) ;
+ scalar_t__ LD_SH (int const*) ;
+ int LD_SH2 (int *,int,scalar_t__,scalar_t__) ;
+ int PCKEV_B2_SH (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int SPLATI_H2_SH (scalar_t__,int ,int,scalar_t__,scalar_t__) ;
+ int ST_D2 (scalar_t__,int ,int,int *,int) ;
+ int ST_SH2 (scalar_t__,scalar_t__,int *,int) ;
+ int VSHF_B2_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int XORI_B4_128_SB (scalar_t__,scalar_t__,scalar_t__,scalar_t__) ;
+ int __msa_fill_w (int) ;
+ scalar_t__ __msa_pckev_b (scalar_t__,scalar_t__) ;
+ int * ff_hevc_mask_arr ;
 
 __attribute__((used)) static void hevc_hz_biwgt_4t_24w_msa(uint8_t *src0_ptr,
                                      int32_t src_stride,
@@ -109,7 +109,7 @@ __attribute__((used)) static void hevc_hz_biwgt_4t_24w_msa(uint8_t *src0_ptr,
         PCKEV_B2_SH(dst1, dst0, dst3, dst2, dst0, dst1);
         ST_SH2(dst0, dst1, dst, dst_stride);
 
-        /* 8 width */
+
         VSHF_B2_SB(src1, src1, src1, src1, mask0, mask1, vec0, vec1);
         dst0 = HEVC_FILT_4TAP_SH(vec0, vec1, filt0, filt1);
         VSHF_B2_SB(src3, src3, src3, src3, mask0, mask1, vec0, vec1);

@@ -1,72 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  USBD_StatusTypeDef ;
+
+
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int USBD_StatusTypeDef ;
 struct TYPE_11__ {int bRequest; } ;
-typedef  TYPE_1__ USBD_SetupReqTypedef ;
-typedef  int /*<<< orphan*/  USBD_HandleTypeDef ;
+typedef TYPE_1__ USBD_SetupReqTypedef ;
+typedef int USBD_HandleTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USBD_ClrFeature (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_CtlError (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_GetConfig (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_GetDescriptor (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_GetStatus (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_OK ; 
- int /*<<< orphan*/  USBD_SetAddress (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_SetConfig (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  USBD_SetFeature (int /*<<< orphan*/ *,TYPE_1__*) ; 
-#define  USB_REQ_CLEAR_FEATURE 134 
-#define  USB_REQ_GET_CONFIGURATION 133 
-#define  USB_REQ_GET_DESCRIPTOR 132 
-#define  USB_REQ_GET_STATUS 131 
-#define  USB_REQ_SET_ADDRESS 130 
-#define  USB_REQ_SET_CONFIGURATION 129 
-#define  USB_REQ_SET_FEATURE 128 
 
-USBD_StatusTypeDef  USBD_StdDevReq (USBD_HandleTypeDef *pdev , USBD_SetupReqTypedef  *req)
+ int USBD_ClrFeature (int *,TYPE_1__*) ;
+ int USBD_CtlError (int *,TYPE_1__*) ;
+ int USBD_GetConfig (int *,TYPE_1__*) ;
+ int USBD_GetDescriptor (int *,TYPE_1__*) ;
+ int USBD_GetStatus (int *,TYPE_1__*) ;
+ int USBD_OK ;
+ int USBD_SetAddress (int *,TYPE_1__*) ;
+ int USBD_SetConfig (int *,TYPE_1__*) ;
+ int USBD_SetFeature (int *,TYPE_1__*) ;
+USBD_StatusTypeDef USBD_StdDevReq (USBD_HandleTypeDef *pdev , USBD_SetupReqTypedef *req)
 {
   USBD_StatusTypeDef ret = USBD_OK;
 
   switch (req->bRequest)
   {
-  case USB_REQ_GET_DESCRIPTOR:
+  case 132:
 
     USBD_GetDescriptor (pdev, req) ;
     break;
 
-  case USB_REQ_SET_ADDRESS:
+  case 130:
     USBD_SetAddress(pdev, req);
     break;
 
-  case USB_REQ_SET_CONFIGURATION:
+  case 129:
     USBD_SetConfig (pdev , req);
     break;
 
-  case USB_REQ_GET_CONFIGURATION:
+  case 133:
     USBD_GetConfig (pdev , req);
     break;
 
-  case USB_REQ_GET_STATUS:
+  case 131:
     USBD_GetStatus (pdev , req);
     break;
 
 
-  case USB_REQ_SET_FEATURE:
+  case 128:
     USBD_SetFeature (pdev , req);
     break;
 
-  case USB_REQ_CLEAR_FEATURE:
+  case 134:
     USBD_ClrFeature (pdev , req);
     break;
 

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * fh; } ;
-typedef  int /*<<< orphan*/  PAVIFILE ;
-typedef  TYPE_1__ COMMON_AVI_HEADERS ;
 
-/* Variables and functions */
- int AVIFileOpenA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,long) ; 
- scalar_t__ DeleteFileA (char*) ; 
- int /*<<< orphan*/  GetTempPathA (int,char*) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  OF_SHARE_DENY_WRITE ; 
- int /*<<< orphan*/  create_avi_file (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  init_test_struct (TYPE_1__*) ; 
- int /*<<< orphan*/  mmioFOURCC (char,char,char,char) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcpy (char*,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  testfilename ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * fh; } ;
+typedef int PAVIFILE ;
+typedef TYPE_1__ COMMON_AVI_HEADERS ;
+
+
+ int AVIFileOpenA (int *,char*,int ,long) ;
+ scalar_t__ DeleteFileA (char*) ;
+ int GetTempPathA (int,char*) ;
+ int MAX_PATH ;
+ int OF_SHARE_DENY_WRITE ;
+ int create_avi_file (TYPE_1__*,char*) ;
+ int init_test_struct (TYPE_1__*) ;
+ int mmioFOURCC (char,char,char,char) ;
+ int ok (int,char*,...) ;
+ int strcpy (char*,int ) ;
+ int strlen (char*) ;
+ int testfilename ;
 
 __attribute__((used)) static void test_amh_corruption(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_amh_corruption(void)
     GetTempPathA(MAX_PATH, filename);
     strcpy(filename+strlen(filename), testfilename);
 
-    /* Make sure only AVI files with the proper headers will be loaded */
+
     init_test_struct(&cah);
     cah.fh[3] = mmioFOURCC('A', 'V', 'i', ' ');
 

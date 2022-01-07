@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ stdio_out; } ;
-typedef  TYPE_1__ process_info_t ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef TYPE_1__ process_info_t ;
+typedef int buf ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int _O_RDONLY ; 
- int _O_TEXT ; 
- int /*<<< orphan*/  _close (int) ; 
- int /*<<< orphan*/ * _fdopen (int,char*) ; 
- int _open_osfhandle (intptr_t,int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_lines (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int SEEK_SET ;
+ int _O_RDONLY ;
+ int _O_TEXT ;
+ int _close (int) ;
+ int * _fdopen (int,char*) ;
+ int _open_osfhandle (intptr_t,int) ;
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fgets (char*,int,int *) ;
+ int fseek (int *,int ,int ) ;
+ int print_lines (char*,int ,int *) ;
+ int strlen (char*) ;
 
 int process_copy_output(process_info_t* p, FILE* stream) {
   char buf[1024];
@@ -39,7 +39,7 @@ int process_copy_output(process_info_t* p, FILE* stream) {
   if (fd == -1)
     return -1;
   f = _fdopen(fd, "rt");
-  if (f == NULL) {
+  if (f == ((void*)0)) {
     _close(fd);
     return -1;
   }
@@ -48,7 +48,7 @@ int process_copy_output(process_info_t* p, FILE* stream) {
   if (r < 0)
     return -1;
 
-  while (fgets(buf, sizeof(buf), f) != NULL)
+  while (fgets(buf, sizeof(buf), f) != ((void*)0))
     print_lines(buf, strlen(buf), stream);
 
   if (ferror(f))

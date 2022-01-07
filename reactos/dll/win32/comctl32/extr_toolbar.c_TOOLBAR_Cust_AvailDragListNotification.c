@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int uNotification; int /*<<< orphan*/  ptCursor; } ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int /*<<< orphan*/  LRESULT ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  TYPE_1__ DRAGLISTINFO ;
-typedef  int /*<<< orphan*/  CUSTDLG_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChildWindowFromPoint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
-#define  DL_BEGINDRAG 131 
-#define  DL_CANCELDRAG 130 
- int /*<<< orphan*/  DL_COPYCURSOR ; 
-#define  DL_DRAGGING 129 
-#define  DL_DROPPED 128 
- int /*<<< orphan*/  DL_STOPCURSOR ; 
- int /*<<< orphan*/  DrawInsert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_AVAILBTN_LBOX ; 
- int /*<<< orphan*/  IDC_TOOLBARBTN_LBOX ; 
- int LBItemFromPt (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LB_GETCOUNT ; 
- int /*<<< orphan*/  LB_GETCURSEL ; 
- int /*<<< orphan*/  MapWindowPoints (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TOOLBAR_Cust_AddButton (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  TRUE ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int uNotification; int ptCursor; } ;
+typedef int POINT ;
+typedef int LRESULT ;
+typedef int INT ;
+typedef int HWND ;
+typedef TYPE_1__ DRAGLISTINFO ;
+typedef int CUSTDLG_INFO ;
+
+
+ int ChildWindowFromPoint (int ,int ) ;
+
+
+ int DL_COPYCURSOR ;
+
+
+ int DL_STOPCURSOR ;
+ int DrawInsert (int ,int ,int) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_AVAILBTN_LBOX ;
+ int IDC_TOOLBARBTN_LBOX ;
+ int LBItemFromPt (int ,int ,int ) ;
+ int LB_GETCOUNT ;
+ int LB_GETCURSEL ;
+ int MapWindowPoints (int *,int ,int *,int) ;
+ int SendDlgItemMessageW (int ,int ,int ,int ,int ) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int TOOLBAR_Cust_AddButton (int const*,int ,int,int) ;
+ int TRUE ;
 
 __attribute__((used)) static LRESULT TOOLBAR_Cust_AvailDragListNotification(const CUSTDLG_INFO *custInfo, HWND hwnd,
                                                       const DRAGLISTINFO *pDLI)
@@ -46,50 +46,50 @@ __attribute__((used)) static LRESULT TOOLBAR_Cust_AvailDragListNotification(cons
     HWND hwndList = GetDlgItem(hwnd, IDC_TOOLBARBTN_LBOX);
     switch (pDLI->uNotification)
     {
-    case DL_BEGINDRAG:
+    case 131:
         return TRUE;
-    case DL_DRAGGING:
+    case 129:
     {
         INT nCurrentItem = LBItemFromPt(hwndList, pDLI->ptCursor, TRUE);
         INT nCount = SendMessageW(hwndList, LB_GETCOUNT, 0, 0);
-        /* no dragging past last item (separator) */
+
         if ((nCurrentItem >= 0) && (nCurrentItem < nCount))
         {
             DrawInsert(hwnd, hwndList, nCurrentItem);
-            /* FIXME: native uses "move button" cursor */
+
             return DL_COPYCURSOR;
         }
 
-        /* not over toolbar buttons list */
+
         if (nCurrentItem < 0)
         {
             POINT ptWindow = pDLI->ptCursor;
             HWND hwndListAvail = GetDlgItem(hwnd, IDC_AVAILBTN_LBOX);
-            MapWindowPoints(NULL, hwnd, &ptWindow, 1);
-            /* over available buttons list? */
+            MapWindowPoints(((void*)0), hwnd, &ptWindow, 1);
+
             if (ChildWindowFromPoint(hwnd, ptWindow) == hwndListAvail)
-                /* FIXME: native uses "move button" cursor */
+
                 return DL_COPYCURSOR;
         }
-        /* clear drag arrow */
+
         DrawInsert(hwnd, hwndList, -1);
         return DL_STOPCURSOR;
     }
-    case DL_DROPPED:
+    case 128:
     {
         INT nIndexTo = LBItemFromPt(hwndList, pDLI->ptCursor, TRUE);
         INT nCount = SendMessageW(hwndList, LB_GETCOUNT, 0, 0);
         INT nIndexFrom = SendDlgItemMessageW(hwnd, IDC_AVAILBTN_LBOX, LB_GETCURSEL, 0, 0);
         if ((nIndexTo >= 0) && (nIndexTo < nCount))
         {
-            /* clear drag arrow */
+
             DrawInsert(hwnd, hwndList, -1);
-            /* add item */
+
             TOOLBAR_Cust_AddButton(custInfo, hwnd, nIndexFrom, nIndexTo);
         }
     }
-    case DL_CANCELDRAG:
-        /* Clear drag arrow */
+    case 130:
+
         DrawInsert(hwnd, hwndList, -1);
         break;
     }

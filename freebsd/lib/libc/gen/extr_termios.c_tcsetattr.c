@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct termios {int /*<<< orphan*/  c_cflag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CIGNORE ; 
- int /*<<< orphan*/  EINVAL ; 
-#define  TCSADRAIN 130 
-#define  TCSAFLUSH 129 
-#define  TCSANOW 128 
- int TCSASOFT ; 
- int /*<<< orphan*/  TIOCSETA ; 
- int /*<<< orphan*/  TIOCSETAF ; 
- int /*<<< orphan*/  TIOCSETAW ; 
- int _ioctl (int,int /*<<< orphan*/ ,struct termios const*) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+struct termios {int c_cflag; } ;
+
+
+ int CIGNORE ;
+ int EINVAL ;
+
+
+
+ int TCSASOFT ;
+ int TIOCSETA ;
+ int TIOCSETAF ;
+ int TIOCSETAW ;
+ int _ioctl (int,int ,struct termios const*) ;
+ int errno ;
 
 int
 tcsetattr(int fd, int opt, const struct termios *t)
 {
-	struct termios localterm;
+ struct termios localterm;
 
-	if (opt & TCSASOFT) {
-		localterm = *t;
-		localterm.c_cflag |= CIGNORE;
-		t = &localterm;
-	}
-	switch (opt & ~TCSASOFT) {
-	case TCSANOW:
-		return (_ioctl(fd, TIOCSETA, t));
-	case TCSADRAIN:
-		return (_ioctl(fd, TIOCSETAW, t));
-	case TCSAFLUSH:
-		return (_ioctl(fd, TIOCSETAF, t));
-	default:
-		errno = EINVAL;
-		return (-1);
-	}
+ if (opt & TCSASOFT) {
+  localterm = *t;
+  localterm.c_cflag |= CIGNORE;
+  t = &localterm;
+ }
+ switch (opt & ~TCSASOFT) {
+ case 128:
+  return (_ioctl(fd, TIOCSETA, t));
+ case 130:
+  return (_ioctl(fd, TIOCSETAW, t));
+ case 129:
+  return (_ioctl(fd, TIOCSETAF, t));
+ default:
+  errno = EINVAL;
+  return (-1);
+ }
 }

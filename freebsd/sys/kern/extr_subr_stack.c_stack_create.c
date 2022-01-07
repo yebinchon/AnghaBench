@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stack {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_STACK ; 
- int M_ZERO ; 
- struct stack* malloc (int,int /*<<< orphan*/ ,int) ; 
+
+ int M_STACK ;
+ int M_ZERO ;
+ struct stack* malloc (int,int ,int) ;
 
 struct stack *
 stack_create(int flags)
 {
-	struct stack *st;
+ struct stack *st;
 
-	st = malloc(sizeof(*st), M_STACK, flags | M_ZERO);
-	return (st);
+ st = malloc(sizeof(*st), M_STACK, flags | M_ZERO);
+ return (st);
 }

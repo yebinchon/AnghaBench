@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_8__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_21__ {int nb_samples; scalar_t__* extended_data; int /*<<< orphan*/  pts; } ;
-struct TYPE_20__ {int /*<<< orphan*/  format; } ;
-struct TYPE_19__ {int nb_inputs; TYPE_5__** inputs; int /*<<< orphan*/ * outputs; TYPE_2__* priv; } ;
-struct TYPE_18__ {scalar_t__* extended_data; int /*<<< orphan*/  pts; } ;
-struct TYPE_17__ {int channels; int planes; TYPE_8__** frames; TYPE_1__* fdsp; int /*<<< orphan*/  samples_align; } ;
-struct TYPE_16__ {int /*<<< orphan*/  (* vector_dmul ) (double*,double const*,double const*,int) ;int /*<<< orphan*/  (* vector_fmul ) (float*,float const*,float const*,int) ;} ;
-typedef  TYPE_2__ AudioMultiplyContext ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_SAMPLE_FMT_FLT ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFALIGN (int,int /*<<< orphan*/ ) ; 
- int FFMIN (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK_ALL (int /*<<< orphan*/ ,TYPE_4__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_8__**) ; 
- scalar_t__ av_get_packed_sample_fmt (int /*<<< orphan*/ ) ; 
- scalar_t__ av_sample_fmt_is_planar (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emms_c () ; 
- int ff_filter_frame (int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_3__* ff_get_audio_buffer (int /*<<< orphan*/ ,int) ; 
- scalar_t__ ff_inlink_acknowledge_status (TYPE_5__*,int*,int /*<<< orphan*/ *) ; 
- scalar_t__ ff_inlink_check_available_samples (TYPE_5__*,int) ; 
- int ff_inlink_consume_samples (TYPE_5__*,int,int,TYPE_8__**) ; 
- scalar_t__ ff_inlink_queued_samples (TYPE_5__*) ; 
- int /*<<< orphan*/  ff_inlink_request_frame (TYPE_5__*) ; 
- scalar_t__ ff_outlink_frame_wanted (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (float*,float const*,float const*,int) ; 
- int /*<<< orphan*/  stub2 (double*,double const*,double const*,int) ; 
+
+typedef struct TYPE_21__ TYPE_8__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_21__ {int nb_samples; scalar_t__* extended_data; int pts; } ;
+struct TYPE_20__ {int format; } ;
+struct TYPE_19__ {int nb_inputs; TYPE_5__** inputs; int * outputs; TYPE_2__* priv; } ;
+struct TYPE_18__ {scalar_t__* extended_data; int pts; } ;
+struct TYPE_17__ {int channels; int planes; TYPE_8__** frames; TYPE_1__* fdsp; int samples_align; } ;
+struct TYPE_16__ {int (* vector_dmul ) (double*,double const*,double const*,int) ;int (* vector_fmul ) (float*,float const*,float const*,int) ;} ;
+typedef TYPE_2__ AudioMultiplyContext ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterContext ;
+
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_SAMPLE_FMT_FLT ;
+ int ENOMEM ;
+ int FFALIGN (int,int ) ;
+ int FFMIN (scalar_t__,scalar_t__) ;
+ int FF_FILTER_FORWARD_STATUS_BACK_ALL (int ,TYPE_4__*) ;
+ int av_frame_free (TYPE_8__**) ;
+ scalar_t__ av_get_packed_sample_fmt (int ) ;
+ scalar_t__ av_sample_fmt_is_planar (int ) ;
+ int emms_c () ;
+ int ff_filter_frame (int ,TYPE_3__*) ;
+ TYPE_3__* ff_get_audio_buffer (int ,int) ;
+ scalar_t__ ff_inlink_acknowledge_status (TYPE_5__*,int*,int *) ;
+ scalar_t__ ff_inlink_check_available_samples (TYPE_5__*,int) ;
+ int ff_inlink_consume_samples (TYPE_5__*,int,int,TYPE_8__**) ;
+ scalar_t__ ff_inlink_queued_samples (TYPE_5__*) ;
+ int ff_inlink_request_frame (TYPE_5__*) ;
+ scalar_t__ ff_outlink_frame_wanted (int ) ;
+ int ff_outlink_set_status (int ,int,int ) ;
+ int stub1 (float*,float const*,float const*,int) ;
+ int stub2 (double*,double const*,double const*,int) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {

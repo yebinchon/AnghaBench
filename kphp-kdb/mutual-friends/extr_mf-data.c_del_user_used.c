@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* next_used; TYPE_1__* prev_used; } ;
-typedef  TYPE_3__ user ;
+typedef TYPE_3__ user ;
 struct TYPE_7__ {TYPE_1__* prev_used; } ;
 struct TYPE_6__ {TYPE_2__* next_used; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dump_lru (char*,int) ; 
- int ltbl_get_rev (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  user_table ; 
- TYPE_3__* users ; 
- int verbosity ; 
+
+ int assert (int ) ;
+ int dump_lru (char*,int) ;
+ int ltbl_get_rev (int *,int) ;
+ int sprintf (char*,char*,int) ;
+ int user_table ;
+ TYPE_3__* users ;
+ int verbosity ;
 
 void del_user_used (user *u) {
   if (verbosity > 3) {
@@ -33,14 +33,14 @@ void del_user_used (user *u) {
     sprintf (tmp, "?(-%d)", ltbl_get_rev (&user_table, (int)(u - users)));
     dump_lru (tmp, -ltbl_get_rev (&user_table, (int)(u - users)));
   }
-  assert (u->prev_used != NULL);
-  assert (u->next_used != NULL);
+  assert (u->prev_used != ((void*)0));
+  assert (u->next_used != ((void*)0));
 
   u->next_used->prev_used = u->prev_used;
   u->prev_used->next_used = u->next_used;
 
-  u->prev_used = NULL;
-  u->next_used = NULL;
+  u->prev_used = ((void*)0);
+  u->next_used = ((void*)0);
   if (verbosity > 3) {
     dump_lru ("!", 0);
   }

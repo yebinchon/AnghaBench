@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int major; int (* extensionSupported ) (char const*) ;scalar_t__ (* GetString ) (int /*<<< orphan*/ ) ;scalar_t__ (* GetStringi ) (int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  (* GetIntegerv ) (int /*<<< orphan*/ ,int*) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int major; int (* extensionSupported ) (char const*) ;scalar_t__ (* GetString ) (int ) ;scalar_t__ (* GetStringi ) (int ,int) ;int (* GetIntegerv ) (int ,int*) ;} ;
 struct TYPE_6__ {TYPE_1__ context; } ;
-typedef  TYPE_2__ _GLFWwindow ;
-struct TYPE_7__ {int /*<<< orphan*/  contextSlot; } ;
-typedef  int GLint ;
+typedef TYPE_2__ _GLFWwindow ;
+struct TYPE_7__ {int contextSlot; } ;
+typedef int GLint ;
 
-/* Variables and functions */
- int GLFW_FALSE ; 
- int /*<<< orphan*/  GLFW_INVALID_VALUE ; 
- int /*<<< orphan*/  GLFW_NO_CURRENT_CONTEXT ; 
- int /*<<< orphan*/  GLFW_PLATFORM_ERROR ; 
- int GLFW_TRUE ; 
- int /*<<< orphan*/  GL_EXTENSIONS ; 
- int /*<<< orphan*/  GL_NUM_EXTENSIONS ; 
- int /*<<< orphan*/  _GLFW_REQUIRE_INIT_OR_RETURN (int) ; 
- TYPE_4__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* _glfwPlatformGetTls (int /*<<< orphan*/ *) ; 
- scalar_t__ _glfwStringInExtensionString (char const*,char const*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char const*,char const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ stub2 (int /*<<< orphan*/ ,int) ; 
- scalar_t__ stub3 (int /*<<< orphan*/ ) ; 
- int stub4 (char const*) ; 
+
+ int GLFW_FALSE ;
+ int GLFW_INVALID_VALUE ;
+ int GLFW_NO_CURRENT_CONTEXT ;
+ int GLFW_PLATFORM_ERROR ;
+ int GLFW_TRUE ;
+ int GL_EXTENSIONS ;
+ int GL_NUM_EXTENSIONS ;
+ int _GLFW_REQUIRE_INIT_OR_RETURN (int) ;
+ TYPE_4__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ TYPE_2__* _glfwPlatformGetTls (int *) ;
+ scalar_t__ _glfwStringInExtensionString (char const*,char const*) ;
+ int assert (int ) ;
+ scalar_t__ strcmp (char const*,char const*) ;
+ int stub1 (int ,int*) ;
+ scalar_t__ stub2 (int ,int) ;
+ scalar_t__ stub3 (int ) ;
+ int stub4 (char const*) ;
 
 int glfwExtensionSupported(const char* extension)
 {
     _GLFWwindow* window;
-    assert(extension != NULL);
+    assert(extension != ((void*)0));
 
     _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
 
@@ -65,11 +65,11 @@ int glfwExtensionSupported(const char* extension)
         int i;
         GLint count;
 
-        // Check if extension is in the modern OpenGL extensions string list
+
 
         window->context.GetIntegerv(GL_NUM_EXTENSIONS, &count);
 
-        for (i = 0;  i < count;  i++)
+        for (i = 0; i < count; i++)
         {
             const char* en = (const char*)
                 window->context.GetStringi(GL_EXTENSIONS, i);
@@ -86,7 +86,7 @@ int glfwExtensionSupported(const char* extension)
     }
     else
     {
-        // Check if extension is in the old style OpenGL extensions string
+
 
         const char* extensions = (const char*)
             window->context.GetString(GL_EXTENSIONS);
@@ -101,6 +101,6 @@ int glfwExtensionSupported(const char* extension)
             return GLFW_TRUE;
     }
 
-    // Check if extension is in the platform-specific string
+
     return window->context.extensionSupported(extension);
 }

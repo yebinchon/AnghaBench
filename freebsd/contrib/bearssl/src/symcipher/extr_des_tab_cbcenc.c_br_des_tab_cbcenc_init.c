@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  skey; int /*<<< orphan*/  num_rounds; int /*<<< orphan*/ * vtable; } ;
-typedef  TYPE_1__ br_des_tab_cbcenc_keys ;
 
-/* Variables and functions */
- int /*<<< orphan*/  br_des_tab_cbcenc_vtable ; 
- int /*<<< orphan*/  br_des_tab_keysched (int /*<<< orphan*/ ,void const*,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int skey; int num_rounds; int * vtable; } ;
+typedef TYPE_1__ br_des_tab_cbcenc_keys ;
+
+
+ int br_des_tab_cbcenc_vtable ;
+ int br_des_tab_keysched (int ,void const*,size_t) ;
 
 void
 br_des_tab_cbcenc_init(br_des_tab_cbcenc_keys *ctx,
-	const void *key, size_t len)
+ const void *key, size_t len)
 {
-	ctx->vtable = &br_des_tab_cbcenc_vtable;
-	ctx->num_rounds = br_des_tab_keysched(ctx->skey, key, len);
+ ctx->vtable = &br_des_tab_cbcenc_vtable;
+ ctx->num_rounds = br_des_tab_keysched(ctx->skey, key, len);
 }

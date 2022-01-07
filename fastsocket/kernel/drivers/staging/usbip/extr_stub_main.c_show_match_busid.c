@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device_driver {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int MAX_BUSID ; 
- char** busid_table ; 
- int /*<<< orphan*/  busid_table_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+ int MAX_BUSID ;
+ char** busid_table ;
+ int busid_table_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int sprintf (char*,char*,...) ;
 
 __attribute__((used)) static ssize_t show_match_busid(struct device_driver *drv, char *buf)
 {
-	int i;
-	char *out = buf;
+ int i;
+ char *out = buf;
 
-	spin_lock(&busid_table_lock);
+ spin_lock(&busid_table_lock);
 
-	for (i = 0; i < MAX_BUSID; i++)
-		if (busid_table[i][0])
-			out += sprintf(out, "%s ", busid_table[i]);
+ for (i = 0; i < MAX_BUSID; i++)
+  if (busid_table[i][0])
+   out += sprintf(out, "%s ", busid_table[i]);
 
-	spin_unlock(&busid_table_lock);
+ spin_unlock(&busid_table_lock);
 
-	out += sprintf(out, "\n");
+ out += sprintf(out, "\n");
 
-	return out - buf;
+ return out - buf;
 }

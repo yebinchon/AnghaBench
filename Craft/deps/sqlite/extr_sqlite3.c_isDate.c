@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  scalar_t__ sqlite3_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef scalar_t__ sqlite3_int64 ;
+typedef int sqlite3_context ;
 struct TYPE_7__ {int validJD; scalar_t__ iJD; } ;
-typedef  TYPE_1__ DateTime ;
+typedef TYPE_1__ DateTime ;
 
-/* Variables and functions */
- int SQLITE_FLOAT ; 
- int SQLITE_INTEGER ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ parseDateOrTime (int /*<<< orphan*/ *,char*,TYPE_1__*) ; 
- scalar_t__ parseModifier (int /*<<< orphan*/ *,char*,TYPE_1__*) ; 
- int setDateTimeToCurrent (int /*<<< orphan*/ *,TYPE_1__*) ; 
- double sqlite3_value_double (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_FLOAT ;
+ int SQLITE_INTEGER ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ parseDateOrTime (int *,char*,TYPE_1__*) ;
+ scalar_t__ parseModifier (int *,char*,TYPE_1__*) ;
+ int setDateTimeToCurrent (int *,TYPE_1__*) ;
+ double sqlite3_value_double (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
 
 __attribute__((used)) static int isDate(
-  sqlite3_context *context, 
-  int argc, 
-  sqlite3_value **argv, 
+  sqlite3_context *context,
+  int argc,
+  sqlite3_value **argv,
   DateTime *p
 ){
   int i;

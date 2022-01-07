@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  nr_entries; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int nr_entries; } ;
 struct pyrf_evlist {TYPE_1__ evlist; } ;
-typedef  int /*<<< orphan*/  Py_ssize_t ;
-typedef  int /*<<< orphan*/  PyObject ;
+typedef int Py_ssize_t ;
+typedef int PyObject ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static Py_ssize_t pyrf_evlist__length(PyObject *obj)
 {
-	struct pyrf_evlist *pevlist = (void *)obj;
+ struct pyrf_evlist *pevlist = (void *)obj;
 
-	return pevlist->evlist.nr_entries;
+ return pevlist->evlist.nr_entries;
 }

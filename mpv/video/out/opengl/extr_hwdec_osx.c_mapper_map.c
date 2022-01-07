@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_tex_params {int dimensions; int d; int render_src; int src_linear; int non_normalized; struct ra_format const* format; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; TYPE_1__* src; struct priv* priv; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct ra_tex_params {int dimensions; int d; int render_src; int src_linear; int non_normalized; struct ra_format const* format; int h; int w; } ;
+struct ra_hwdec_mapper {int * tex; int ra; TYPE_1__* src; struct priv* priv; } ;
 struct ra_format {int dummy; } ;
 struct TYPE_6__ {int const num_planes; struct ra_format** planes; } ;
-struct priv {int /*<<< orphan*/ * gl_planes; TYPE_2__ desc; scalar_t__ pbuf; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* GetError ) () ;int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct priv {int * gl_planes; TYPE_2__ desc; scalar_t__ pbuf; } ;
+struct TYPE_7__ {int (* GetError ) () ;int (* BindTexture ) (int ,int ) ;} ;
 struct TYPE_5__ {scalar_t__* planes; } ;
-typedef  int /*<<< orphan*/  IOSurfaceRef ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  int /*<<< orphan*/  GLenum ;
-typedef  TYPE_3__ GL ;
-typedef  scalar_t__ CVPixelBufferRef ;
-typedef  scalar_t__ CGLError ;
+typedef int IOSurfaceRef ;
+typedef int GLint ;
+typedef int GLenum ;
+typedef TYPE_3__ GL ;
+typedef scalar_t__ CVPixelBufferRef ;
+typedef scalar_t__ CGLError ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGLErrorString (scalar_t__) ; 
- int /*<<< orphan*/  CGLGetCurrentContext () ; 
- scalar_t__ CGLTexImageIOSurface2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  CVPixelBufferGetIOSurface (scalar_t__) ; 
- int CVPixelBufferGetPlaneCount (scalar_t__) ; 
- int CVPixelBufferIsPlanar (scalar_t__) ; 
- int /*<<< orphan*/  CVPixelBufferRelease (scalar_t__) ; 
- int /*<<< orphan*/  CVPixelBufferRetain (scalar_t__) ; 
- int /*<<< orphan*/  GL_TEXTURE_RECTANGLE ; 
- int /*<<< orphan*/  IOSurfaceGetHeightOfPlane (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IOSurfaceGetWidthOfPlane (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MP_ERR (struct ra_hwdec_mapper*,char*,...) ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ kCGLNoError ; 
- int /*<<< orphan*/  ra_create_wrapped_tex (int /*<<< orphan*/ ,struct ra_tex_params*,int /*<<< orphan*/ ) ; 
- TYPE_3__* ra_gl_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_gl_get_format (struct ra_format const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub3 () ; 
+
+ int CGLErrorString (scalar_t__) ;
+ int CGLGetCurrentContext () ;
+ scalar_t__ CGLTexImageIOSurface2D (int ,int ,int ,int ,int ,int ,int ,int ,int) ;
+ int CVPixelBufferGetIOSurface (scalar_t__) ;
+ int CVPixelBufferGetPlaneCount (scalar_t__) ;
+ int CVPixelBufferIsPlanar (scalar_t__) ;
+ int CVPixelBufferRelease (scalar_t__) ;
+ int CVPixelBufferRetain (scalar_t__) ;
+ int GL_TEXTURE_RECTANGLE ;
+ int IOSurfaceGetHeightOfPlane (int ,int) ;
+ int IOSurfaceGetWidthOfPlane (int ,int) ;
+ int MP_ERR (struct ra_hwdec_mapper*,char*,...) ;
+ int assert (int) ;
+ scalar_t__ kCGLNoError ;
+ int ra_create_wrapped_tex (int ,struct ra_tex_params*,int ) ;
+ TYPE_3__* ra_gl_get (int ) ;
+ int ra_gl_get_format (struct ra_format const*,int *,int *,int *) ;
+ int stub1 (int ,int ) ;
+ int stub2 (int ,int ) ;
+ int stub3 () ;
 
 __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
 {
@@ -64,7 +64,7 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
     }
 
     const bool planar = CVPixelBufferIsPlanar(p->pbuf);
-    const int planes  = CVPixelBufferGetPlaneCount(p->pbuf);
+    const int planes = CVPixelBufferGetPlaneCount(p->pbuf);
     assert((planar && planes == p->desc.num_planes) || p->desc.num_planes == 1);
 
     GLenum gl_target = GL_TEXTURE_RECTANGLE;
@@ -101,8 +101,8 @@ __attribute__((used)) static int mapper_map(struct ra_hwdec_mapper *mapper)
             .h = IOSurfaceGetHeightOfPlane(surface, i),
             .d = 1,
             .format = fmt,
-            .render_src = true,
-            .src_linear = true,
+            .render_src = 1,
+            .src_linear = 1,
             .non_normalized = gl_target == GL_TEXTURE_RECTANGLE,
         };
 

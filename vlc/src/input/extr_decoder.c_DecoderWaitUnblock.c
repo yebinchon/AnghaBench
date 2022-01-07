@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct decoder_owner {int /*<<< orphan*/  lock; int /*<<< orphan*/  wait_request; int /*<<< orphan*/  b_has_data; int /*<<< orphan*/  b_waiting; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_assert (int /*<<< orphan*/ *) ; 
+
+
+
+struct decoder_owner {int lock; int wait_request; int b_has_data; int b_waiting; } ;
+
+
+ int vlc_cond_wait (int *,int *) ;
+ int vlc_mutex_assert (int *) ;
 
 __attribute__((used)) static void DecoderWaitUnblock( struct decoder_owner *p_owner )
 {

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ KERNEL_SIZE ; 
- int KERNEL_START ; 
- char* app_name ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- scalar_t__ fwrite (unsigned char*,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ KERNEL_SIZE ;
+ int KERNEL_START ;
+ char* app_name ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,char*) ;
+ scalar_t__ fwrite (unsigned char*,int,scalar_t__,int *) ;
+ int perror (char*) ;
+ int stderr ;
 
 void write_kernel(unsigned char* img, const char *fname)
 {
   FILE *fp;
 
   fp = fopen(fname, "wb");
-  if (fp == NULL) {
+  if (fp == ((void*)0)) {
     perror(app_name);
     exit(-1);
   }
-  
+
   if (fwrite(img+KERNEL_START, 1, KERNEL_SIZE, fp) != KERNEL_SIZE) {
     fprintf(stderr, "%s: can't write kernel file\n", app_name);
     fclose(fp);

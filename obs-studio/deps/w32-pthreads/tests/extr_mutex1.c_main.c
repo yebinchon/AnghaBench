@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * mutex ; 
- scalar_t__ pthread_mutex_destroy (int /*<<< orphan*/ **) ; 
- scalar_t__ pthread_mutex_init (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_mutex_lock (int /*<<< orphan*/ **) ; 
- scalar_t__ pthread_mutex_unlock (int /*<<< orphan*/ **) ; 
+ int assert (int) ;
+ int * mutex ;
+ scalar_t__ pthread_mutex_destroy (int **) ;
+ scalar_t__ pthread_mutex_init (int **,int *) ;
+ scalar_t__ pthread_mutex_lock (int **) ;
+ scalar_t__ pthread_mutex_unlock (int **) ;
 
 int
 main()
 {
-  assert(mutex == NULL);
+  assert(mutex == ((void*)0));
 
-  assert(pthread_mutex_init(&mutex, NULL) == 0);
+  assert(pthread_mutex_init(&mutex, ((void*)0)) == 0);
 
-  assert(mutex != NULL);
+  assert(mutex != ((void*)0));
 
   assert(pthread_mutex_lock(&mutex) == 0);
 
@@ -34,7 +26,7 @@ main()
 
   assert(pthread_mutex_destroy(&mutex) == 0);
 
-  assert(mutex == NULL);
+  assert(mutex == ((void*)0));
 
   return 0;
 }

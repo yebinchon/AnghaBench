@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int16_t ;
 
-/* Variables and functions */
- size_t MA_NP ; 
- int*** cb_ma_predictor ; 
- int** cb_ma_predictor_sum_inv ; 
+
+
+
+typedef int int16_t ;
+
+
+ size_t MA_NP ;
+ int*** cb_ma_predictor ;
+ int** cb_ma_predictor_sum_inv ;
 
 __attribute__((used)) static void lsf_restore_from_previous(int16_t* lsfq,
                                       int16_t* past_quantizer_outputs[MA_NP + 1],

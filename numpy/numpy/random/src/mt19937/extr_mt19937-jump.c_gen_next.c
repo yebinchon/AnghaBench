@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int pos; unsigned long* key; } ;
-typedef  TYPE_1__ mt19937_state ;
+typedef TYPE_1__ mt19937_state ;
 
-/* Variables and functions */
- unsigned long LOWER_MASK ; 
- int M ; 
-#define  MATRIX_A 128 
- int N ; 
- unsigned long UPPER_MASK ; 
+
+ unsigned long LOWER_MASK ;
+ int M ;
+
+ int N ;
+ unsigned long UPPER_MASK ;
 
 void gen_next(mt19937_state *state) {
   int num;
   unsigned long y;
-  static unsigned long mag02[2] = {0x0ul, MATRIX_A};
+  static unsigned long mag02[2] = {0x0ul, 128};
 
   num = state->pos;
   if (num < N - M) {

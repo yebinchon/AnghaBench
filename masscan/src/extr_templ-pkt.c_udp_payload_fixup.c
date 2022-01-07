@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct TemplatePacket {unsigned char* packet; int offset_app; int length; int /*<<< orphan*/  payloads; } ;
-typedef  scalar_t__ (* SET_COOKIE ) (unsigned char*,unsigned int,unsigned int) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UNUSEDPARM (unsigned int) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,unsigned int) ; 
- int /*<<< orphan*/  payloads_udp_lookup (int /*<<< orphan*/ ,unsigned int,unsigned char const**,unsigned int*,unsigned int*,int /*<<< orphan*/ *,scalar_t__ (*) (unsigned char*,unsigned int,unsigned int)) ; 
+
+
+
+typedef int uint64_t ;
+struct TemplatePacket {unsigned char* packet; int offset_app; int length; int payloads; } ;
+typedef scalar_t__ (* SET_COOKIE ) (unsigned char*,unsigned int,unsigned int) ;
+
+
+ int UNUSEDPARM (unsigned int) ;
+ int memcpy (unsigned char*,unsigned char const*,unsigned int) ;
+ int payloads_udp_lookup (int ,unsigned int,unsigned char const**,unsigned int*,unsigned int*,int *,scalar_t__ (*) (unsigned char*,unsigned int,unsigned int)) ;
 
 __attribute__((used)) static void
 udp_payload_fixup(struct TemplatePacket *tmpl, unsigned port, unsigned seqno)

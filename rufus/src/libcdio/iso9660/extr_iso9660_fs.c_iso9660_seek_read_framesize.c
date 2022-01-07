@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int lsn_t ;
-struct TYPE_3__ {int i_fuzzy_offset; int i_datastart; int /*<<< orphan*/  stream; scalar_t__ i_framesize; } ;
-typedef  TYPE_1__ iso9660_t ;
-typedef  int int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- long cdio_stream_read (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,long) ; 
- long cdio_stream_seek (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int lsn_t ;
+struct TYPE_3__ {int i_fuzzy_offset; int i_datastart; int stream; scalar_t__ i_framesize; } ;
+typedef TYPE_1__ iso9660_t ;
+typedef int int64_t ;
+
+
+ int SEEK_SET ;
+ long cdio_stream_read (int ,void*,int ,long) ;
+ long cdio_stream_seek (int ,int,int ) ;
 
 __attribute__((used)) static long int
 iso9660_seek_read_framesize (const iso9660_t *p_iso, void *ptr,
-			     lsn_t start, long int size,
-			     uint16_t i_framesize)
+        lsn_t start, long int size,
+        uint16_t i_framesize)
 {
   long int ret;
   int64_t i_byte_offset;

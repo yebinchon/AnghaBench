@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  bta_dm_eir_url; int /*<<< orphan*/  bta_dm_eir_url_len; int /*<<< orphan*/  bta_dm_eir_manufac_spec; int /*<<< orphan*/  bta_dm_eir_manufac_spec_len; int /*<<< orphan*/  bta_dm_eir_flags; int /*<<< orphan*/  bta_dm_eir_included_uuid; int /*<<< orphan*/  bta_dm_eir_included_tx_power; int /*<<< orphan*/  bta_dm_eir_fec_required; } ;
-typedef  TYPE_2__ tBTA_DM_EIR_CONF ;
-struct TYPE_9__ {int /*<<< orphan*/  p_url; int /*<<< orphan*/  url_len; int /*<<< orphan*/  p_manufacturer_data; int /*<<< orphan*/  manufacturer_len; int /*<<< orphan*/  flag; int /*<<< orphan*/  include_uuid; int /*<<< orphan*/  include_txpower; int /*<<< orphan*/  fec_required; } ;
-typedef  TYPE_3__ esp_bt_eir_data_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int bta_dm_eir_url; int bta_dm_eir_url_len; int bta_dm_eir_manufac_spec; int bta_dm_eir_manufac_spec_len; int bta_dm_eir_flags; int bta_dm_eir_included_uuid; int bta_dm_eir_included_tx_power; int bta_dm_eir_fec_required; } ;
+typedef TYPE_2__ tBTA_DM_EIR_CONF ;
+struct TYPE_9__ {int p_url; int url_len; int p_manufacturer_data; int manufacturer_len; int flag; int include_uuid; int include_txpower; int fec_required; } ;
+typedef TYPE_3__ esp_bt_eir_data_t ;
 struct TYPE_7__ {TYPE_3__ eir_data; } ;
 struct TYPE_10__ {TYPE_1__ config_eir; } ;
-typedef  TYPE_4__ btc_gap_bt_args_t ;
+typedef TYPE_4__ btc_gap_bt_args_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTA_DmConfigEir (TYPE_2__*) ; 
+
+ int BTA_DmConfigEir (TYPE_2__*) ;
 
 __attribute__((used)) static void btc_gap_bt_config_eir(btc_gap_bt_args_t *arg)
 {

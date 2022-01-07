@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ size; scalar_t__ capacity; int wait_full; int /*<<< orphan*/  lock; int /*<<< orphan*/  cond_full; } ;
-typedef  TYPE_1__ hb_fifo_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIFO_TIMEOUT ; 
- int /*<<< orphan*/  hb_cond_timedwait (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ size; scalar_t__ capacity; int wait_full; int lock; int cond_full; } ;
+typedef TYPE_1__ hb_fifo_t ;
+
+
+ int FIFO_TIMEOUT ;
+ int hb_cond_timedwait (int ,int ,int ) ;
+ int hb_lock (int ) ;
+ int hb_unlock (int ) ;
 
 int hb_fifo_full_wait( hb_fifo_t * f )
 {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct cronent_desc {int dummy; } ;
-typedef  int /*<<< orphan*/  lua_State ;
+typedef int lua_State ;
 struct TYPE_4__ {struct cronent_desc desc; } ;
-typedef  TYPE_1__ cronent_ud_t ;
+typedef TYPE_1__ cronent_ud_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int cronent_count ; 
- int /*<<< orphan*/ * cronent_list ; 
- size_t lcron_findindex (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  lcron_parsedesc (int /*<<< orphan*/ *,char*,struct cronent_desc*) ; 
- scalar_t__ luaL_checkstring (int /*<<< orphan*/ *,int) ; 
- TYPE_1__* luaL_checkudata (int /*<<< orphan*/ *,int,char*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* os_realloc (int /*<<< orphan*/ *,int) ; 
+
+ int LUA_REGISTRYINDEX ;
+ int cronent_count ;
+ int * cronent_list ;
+ size_t lcron_findindex (int *,TYPE_1__*) ;
+ int lcron_parsedesc (int *,char*,struct cronent_desc*) ;
+ scalar_t__ luaL_checkstring (int *,int) ;
+ TYPE_1__* luaL_checkudata (int *,int,char*) ;
+ int luaL_error (int *,char*) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_ref (int *,int ) ;
+ void* os_realloc (int *,int) ;
 
 __attribute__((used)) static int lcron_schedule(lua_State *L) {
   cronent_ud_t *ud = luaL_checkudata(L, 1, "cron.entry");
@@ -39,7 +39,7 @@ __attribute__((used)) static int lcron_schedule(lua_State *L) {
   if (i == -1) {
     void *newlist;
     newlist = os_realloc(cronent_list, sizeof(int) * (cronent_count + 1));
-    if (newlist == NULL) {
+    if (newlist == ((void*)0)) {
       return luaL_error(L, "out of memory");
     }
     cronent_list = newlist;

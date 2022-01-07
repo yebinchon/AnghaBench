@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct set_name_fn {int /*<<< orphan*/  (* fn ) (int /*<<< orphan*/ *,char const* const) ;int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  X509 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TEST_info (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * make_cert () ; 
- struct set_name_fn* name_fns ; 
- char** names ; 
- int /*<<< orphan*/  run_cert (int /*<<< orphan*/ *,char const* const,struct set_name_fn const*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,char const* const) ; 
+
+
+
+struct set_name_fn {int (* fn ) (int *,char const* const) ;int name; } ;
+typedef int X509 ;
+
+
+ int TEST_info (char*,int ) ;
+ int TEST_ptr (int *) ;
+ int TEST_true (int ) ;
+ int X509_free (int *) ;
+ int * make_cert () ;
+ struct set_name_fn* name_fns ;
+ char** names ;
+ int run_cert (int *,char const* const,struct set_name_fn const*) ;
+ int stub1 (int *,char const* const) ;
 
 __attribute__((used)) static int call_run_cert(int i)
 {
@@ -32,7 +32,7 @@ __attribute__((used)) static int call_run_cert(int i)
     const char *const *pname;
 
     TEST_info("%s", pfn->name);
-    for (pname = names; *pname != NULL; pname++) {
+    for (pname = names; *pname != ((void*)0); pname++) {
         if (!TEST_ptr(crt = make_cert())
              || !TEST_true(pfn->fn(crt, *pname))
              || !run_cert(crt, *pname, pfn))

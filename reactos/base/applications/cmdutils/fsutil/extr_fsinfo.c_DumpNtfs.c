@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* PVOID ;
-typedef  void* PNTFS_STATISTICS ;
-typedef  void* PFILESYSTEM_STATISTICS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BitmapReadBytes ; 
- int /*<<< orphan*/  BitmapReads ; 
- int /*<<< orphan*/  BitmapWriteBytes ; 
- int /*<<< orphan*/  BitmapWrites ; 
- int /*<<< orphan*/  DUMP_VALUE (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DumpBase (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogFileReadBytes ; 
- int /*<<< orphan*/  LogFileReads ; 
- int /*<<< orphan*/  LogFileWriteBytes ; 
- int /*<<< orphan*/  LogFileWrites ; 
- int /*<<< orphan*/  Mft2WriteBytes ; 
- int /*<<< orphan*/  Mft2Writes ; 
- int /*<<< orphan*/  MftBitmapReadBytes ; 
- int /*<<< orphan*/  MftBitmapReads ; 
- int /*<<< orphan*/  MftBitmapWriteBytes ; 
- int /*<<< orphan*/  MftBitmapWrites ; 
- int /*<<< orphan*/  MftReadBytes ; 
- int /*<<< orphan*/  MftReads ; 
- int /*<<< orphan*/  MftWriteBytes ; 
- int /*<<< orphan*/  MftWrites ; 
- int /*<<< orphan*/  RootIndexReadBytes ; 
- int /*<<< orphan*/  RootIndexReads ; 
- int /*<<< orphan*/  RootIndexWriteBytes ; 
- int /*<<< orphan*/  RootIndexWrites ; 
- int /*<<< orphan*/  UserIndexReadBytes ; 
- int /*<<< orphan*/  UserIndexReads ; 
- int /*<<< orphan*/  UserIndexWriteBytes ; 
- int /*<<< orphan*/  UserIndexWrites ; 
- int /*<<< orphan*/  _T (char*) ; 
+
+
+
+typedef void* PVOID ;
+typedef void* PNTFS_STATISTICS ;
+typedef void* PFILESYSTEM_STATISTICS ;
+
+
+ int BitmapReadBytes ;
+ int BitmapReads ;
+ int BitmapWriteBytes ;
+ int BitmapWrites ;
+ int DUMP_VALUE (void*,int ) ;
+ int DumpBase (void*,int ) ;
+ int LogFileReadBytes ;
+ int LogFileReads ;
+ int LogFileWriteBytes ;
+ int LogFileWrites ;
+ int Mft2WriteBytes ;
+ int Mft2Writes ;
+ int MftBitmapReadBytes ;
+ int MftBitmapReads ;
+ int MftBitmapWriteBytes ;
+ int MftBitmapWrites ;
+ int MftReadBytes ;
+ int MftReads ;
+ int MftWriteBytes ;
+ int MftWrites ;
+ int RootIndexReadBytes ;
+ int RootIndexReads ;
+ int RootIndexWriteBytes ;
+ int RootIndexWrites ;
+ int UserIndexReadBytes ;
+ int UserIndexReads ;
+ int UserIndexWriteBytes ;
+ int UserIndexWrites ;
+ int _T (char*) ;
 
 __attribute__((used)) static void
 DumpNtfs(PVOID Statistics, PVOID Specific)
@@ -54,10 +54,10 @@ DumpNtfs(PVOID Statistics, PVOID Specific)
     Base = Statistics;
     Ntfs = Specific;
 
-    /* First, display the generic stats */
+
     DumpBase(Base, _T("NTFS"));
 
-    /* Then, display the NTFS specific ones */
+
     DUMP_VALUE(Ntfs, MftReads);
     DUMP_VALUE(Ntfs, MftReadBytes);
     DUMP_VALUE(Ntfs, MftWrites);

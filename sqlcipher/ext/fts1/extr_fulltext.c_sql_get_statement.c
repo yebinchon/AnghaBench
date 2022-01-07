@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_3__ {int /*<<< orphan*/ ** pFulltextStatements; int /*<<< orphan*/  zName; int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ fulltext_vtab ;
-typedef  size_t fulltext_statement ;
 
-/* Variables and functions */
- size_t MAX_STMT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * fulltext_zStatement ; 
- int sql_prepare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int sqlite3_reset (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_3__ {int ** pFulltextStatements; int zName; int db; } ;
+typedef TYPE_1__ fulltext_vtab ;
+typedef size_t fulltext_statement ;
+
+
+ size_t MAX_STMT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int * fulltext_zStatement ;
+ int sql_prepare (int ,int ,int **,int ) ;
+ int sqlite3_reset (int *) ;
 
 __attribute__((used)) static int sql_get_statement(fulltext_vtab *v, fulltext_statement iStmt,
                              sqlite3_stmt **ppStmt){
   assert( iStmt<MAX_STMT );
-  if( v->pFulltextStatements[iStmt]==NULL ){
+  if( v->pFulltextStatements[iStmt]==((void*)0) ){
     int rc = sql_prepare(v->db, v->zName, &v->pFulltextStatements[iStmt],
                          fulltext_zStatement[iStmt]);
     if( rc!=SQLITE_OK ) return rc;

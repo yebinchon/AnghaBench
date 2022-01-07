@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_pcm_substream {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ams_delta_digital_mute (int /*<<< orphan*/ *,int) ; 
+
+ int ams_delta_digital_mute (int *,int) ;
 
 __attribute__((used)) static void ams_delta_shutdown(struct snd_pcm_substream *substream)
 {
-	ams_delta_digital_mute(NULL, 1);
+ ams_delta_digital_mute(((void*)0), 1);
 }

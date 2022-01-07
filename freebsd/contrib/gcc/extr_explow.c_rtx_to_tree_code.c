@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum tree_code { ____Placeholder_tree_code } tree_code ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
 
-/* Variables and functions */
-#define  DIV 133 
- int LAST_AND_UNUSED_TREE_CODE ; 
- int MAX_EXPR ; 
-#define  MINUS 132 
- int MINUS_EXPR ; 
- int MIN_EXPR ; 
-#define  MULT 131 
- int MULT_EXPR ; 
-#define  PLUS 130 
- int PLUS_EXPR ; 
- int RDIV_EXPR ; 
-#define  SMAX 129 
-#define  SMIN 128 
+
+
+
+typedef enum tree_code { ____Placeholder_tree_code } tree_code ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+
+
+
+ int LAST_AND_UNUSED_TREE_CODE ;
+ int MAX_EXPR ;
+
+ int MINUS_EXPR ;
+ int MIN_EXPR ;
+
+ int MULT_EXPR ;
+
+ int PLUS_EXPR ;
+ int RDIV_EXPR ;
+
+
 
 int
 rtx_to_tree_code (enum rtx_code code)
@@ -35,22 +35,22 @@ rtx_to_tree_code (enum rtx_code code)
 
   switch (code)
     {
-    case PLUS:
+    case 130:
       tcode = PLUS_EXPR;
       break;
-    case MINUS:
+    case 132:
       tcode = MINUS_EXPR;
       break;
-    case MULT:
+    case 131:
       tcode = MULT_EXPR;
       break;
-    case DIV:
+    case 133:
       tcode = RDIV_EXPR;
       break;
-    case SMIN:
+    case 128:
       tcode = MIN_EXPR;
       break;
-    case SMAX:
+    case 129:
       tcode = MAX_EXPR;
       break;
     default:

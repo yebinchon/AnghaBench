@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/ * array; } ;
-typedef  TYPE_1__ adns_rr_strpair ;
-typedef  int /*<<< orphan*/  adns_query ;
 
-/* Variables and functions */
- int /*<<< orphan*/  adns__makefinal_str (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int * array; } ;
+typedef TYPE_1__ adns_rr_strpair ;
+typedef int adns_query ;
+
+
+ int adns__makefinal_str (int ,int *) ;
 
 __attribute__((used)) static void mf_strpair(adns_query qu, void *datap) {
   adns_rr_strpair *rrp= datap;

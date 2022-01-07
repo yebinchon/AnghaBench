@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_4__ {int num; scalar_t__* p; int pos; scalar_t__ base; int L; } ;
-typedef  TYPE_1__ primegen ;
+typedef TYPE_1__ primegen ;
 
-/* Variables and functions */
- int B ; 
- int B32 ; 
- int /*<<< orphan*/  primegen_fill (TYPE_1__*) ; 
+
+ int B ;
+ int B32 ;
+ int primegen_fill (TYPE_1__*) ;
 
 void primegen_skipto(primegen *pg,uint64_t to)
 {

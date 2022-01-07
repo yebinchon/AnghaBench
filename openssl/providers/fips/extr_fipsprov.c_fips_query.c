@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OSSL_PROVIDER ;
-typedef  int /*<<< orphan*/  OSSL_ALGORITHM ;
 
-/* Variables and functions */
-#define  OSSL_OP_CIPHER 131 
-#define  OSSL_OP_DIGEST 130 
-#define  OSSL_OP_KDF 129 
-#define  OSSL_OP_MAC 128 
- int /*<<< orphan*/  const* fips_ciphers ; 
- int /*<<< orphan*/  const* fips_digests ; 
- int /*<<< orphan*/  const* fips_kdfs ; 
- int /*<<< orphan*/  const* fips_macs ; 
+
+
+
+typedef int OSSL_PROVIDER ;
+typedef int OSSL_ALGORITHM ;
+
+
+
+
+
+
+ int const* fips_ciphers ;
+ int const* fips_digests ;
+ int const* fips_kdfs ;
+ int const* fips_macs ;
 
 __attribute__((used)) static const OSSL_ALGORITHM *fips_query(OSSL_PROVIDER *prov,
                                          int operation_id,
@@ -29,14 +29,14 @@ __attribute__((used)) static const OSSL_ALGORITHM *fips_query(OSSL_PROVIDER *pro
 {
     *no_cache = 0;
     switch (operation_id) {
-    case OSSL_OP_DIGEST:
+    case 130:
         return fips_digests;
-    case OSSL_OP_CIPHER:
+    case 131:
         return fips_ciphers;
-    case OSSL_OP_MAC:
+    case 128:
         return fips_macs;
-    case OSSL_OP_KDF:
+    case 129:
         return fips_kdfs;
     }
-    return NULL;
+    return ((void*)0);
 }

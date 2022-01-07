@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u8 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t u8 ;
 struct TYPE_4__ {TYPE_1__* slot; } ;
-struct TYPE_3__ {int ssctl; int sbctl; int lpctl; int /*<<< orphan*/  efpan; int /*<<< orphan*/  efsdl; int /*<<< orphan*/  dipan; int /*<<< orphan*/  disdl; int /*<<< orphan*/  isel; int /*<<< orphan*/  imxl; int /*<<< orphan*/  alfos; int /*<<< orphan*/  alfows; int /*<<< orphan*/  plfos; int /*<<< orphan*/  plfows; int /*<<< orphan*/  lfof; scalar_t__ lfore; int /*<<< orphan*/  fns; int /*<<< orphan*/  oct; int /*<<< orphan*/  mdy; int /*<<< orphan*/  mdx; int /*<<< orphan*/  mdl; int /*<<< orphan*/  tl; scalar_t__ sdir; scalar_t__ stwinh; int /*<<< orphan*/  rr; int /*<<< orphan*/  sl; int /*<<< orphan*/  krs; scalar_t__ lpslnk; int /*<<< orphan*/  ar; scalar_t__ eghold; int /*<<< orphan*/  sr; int /*<<< orphan*/  dr; int /*<<< orphan*/  lea; int /*<<< orphan*/  lsa; scalar_t__ sa; scalar_t__ pcm8b; } ;
+struct TYPE_3__ {int ssctl; int sbctl; int lpctl; int efpan; int efsdl; int dipan; int disdl; int isel; int imxl; int alfos; int alfows; int plfos; int plfows; int lfof; scalar_t__ lfore; int fns; int oct; int mdy; int mdx; int mdl; int tl; scalar_t__ sdir; scalar_t__ stwinh; int rr; int sl; int krs; scalar_t__ lpslnk; int ar; scalar_t__ eghold; int sr; int dr; int lea; int lsa; scalar_t__ sa; scalar_t__ pcm8b; } ;
 
-/* Variables and functions */
- char* AddSoundLFO (char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* AddSoundLevel (char*,int /*<<< orphan*/ ) ; 
- char* AddSoundPan (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AddString (char*,char*,...) ; 
- TYPE_2__ scsp ; 
+
+ char* AddSoundLFO (char*,char*,int ,int ) ;
+ char* AddSoundLevel (char*,int ) ;
+ char* AddSoundPan (char*,int ) ;
+ int AddString (char*,char*,...) ;
+ TYPE_2__ scsp ;
 
 void ScspSlotDebugStats(u8 slotnum, char *outstring)
 {
@@ -74,7 +74,7 @@ void ScspSlotDebugStats(u8 slotnum, char *outstring)
       }
    }
 
-   // Loop Control
+
    AddString(outstring, "Loop Mode = ");
    switch (scsp.slot[slotnum].lpctl)
    {
@@ -99,7 +99,7 @@ void ScspSlotDebugStats(u8 slotnum, char *outstring)
          break;
       }
    }
-   // PCM8B
+
    if (scsp.slot[slotnum].pcm8b)
    {
       AddString(outstring, "8-bit samples\r\n");

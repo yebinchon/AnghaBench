@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsresult ;
-typedef  int /*<<< orphan*/  nsIWebBrowserSetup ;
-typedef  int /*<<< orphan*/  nsIScrollable ;
-struct TYPE_4__ {int /*<<< orphan*/  webbrowser; int /*<<< orphan*/  nsIURIContentListener_iface; int /*<<< orphan*/  window; int /*<<< orphan*/  hwnd; int /*<<< orphan*/  focus; int /*<<< orphan*/  navigation; int /*<<< orphan*/  nsIWebBrowserChrome_iface; } ;
-typedef  TYPE_1__ NSContainer ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateWindowExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetDesktopWindow () ; 
- int /*<<< orphan*/  IID_nsIBaseWindow ; 
- int /*<<< orphan*/  IID_nsIScrollable ; 
- int /*<<< orphan*/  IID_nsIWebBrowser ; 
- int /*<<< orphan*/  IID_nsIWebBrowserFocus ; 
- int /*<<< orphan*/  IID_nsIWebBrowserSetup ; 
- int /*<<< orphan*/  IID_nsIWebNavigation ; 
- scalar_t__ NS_FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ NS_SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NS_WEBBROWSER_CONTRACTID ; 
- int /*<<< orphan*/  SETUP_IS_CHROME_WRAPPER ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  ScrollOrientation_X ; 
- int /*<<< orphan*/  ScrollOrientation_Y ; 
- int /*<<< orphan*/  Scrollbar_Always ; 
- int /*<<< orphan*/  Scrollbar_Auto ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int WS_CHILD ; 
- int WS_CLIPCHILDREN ; 
- int WS_CLIPSIBLINGS ; 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  nsIBaseWindow_Create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIBaseWindow_InitWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  nsIBaseWindow_SetEnabled (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIBaseWindow_SetVisibility (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIComponentManager_CreateInstanceByContractID (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIScrollable_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIScrollable_SetDefaultScrollbarPreferences (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIWebBrowserSetup_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIWebBrowserSetup_SetProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nsIWebBrowser_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  nsIWebBrowser_SetContainerWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIWebBrowser_SetParentURIContentListener (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nscontainer_class ; 
- int /*<<< orphan*/  pCompMgr ; 
- int /*<<< orphan*/  register_nscontainer_class () ; 
- int /*<<< orphan*/  wszNsContainer ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int nsresult ;
+typedef int nsIWebBrowserSetup ;
+typedef int nsIScrollable ;
+struct TYPE_4__ {int webbrowser; int nsIURIContentListener_iface; int window; int hwnd; int focus; int navigation; int nsIWebBrowserChrome_iface; } ;
+typedef TYPE_1__ NSContainer ;
+typedef int HRESULT ;
+
+
+ int CreateWindowExW (int ,int ,int *,int,int ,int ,int,int,int ,int *,int ,TYPE_1__*) ;
+ int ERR (char*,...) ;
+ int E_FAIL ;
+ int FALSE ;
+ int GetDesktopWindow () ;
+ int IID_nsIBaseWindow ;
+ int IID_nsIScrollable ;
+ int IID_nsIWebBrowser ;
+ int IID_nsIWebBrowserFocus ;
+ int IID_nsIWebBrowserSetup ;
+ int IID_nsIWebNavigation ;
+ scalar_t__ NS_FAILED (int ) ;
+ scalar_t__ NS_SUCCEEDED (int ) ;
+ int NS_WEBBROWSER_CONTRACTID ;
+ int SETUP_IS_CHROME_WRAPPER ;
+ int S_OK ;
+ int ScrollOrientation_X ;
+ int ScrollOrientation_Y ;
+ int Scrollbar_Always ;
+ int Scrollbar_Auto ;
+ int WARN (char*,...) ;
+ int WS_CHILD ;
+ int WS_CLIPCHILDREN ;
+ int WS_CLIPSIBLINGS ;
+ int hInst ;
+ int nsIBaseWindow_Create (int ) ;
+ int nsIBaseWindow_InitWindow (int ,int ,int *,int ,int ,int,int) ;
+ int nsIBaseWindow_SetEnabled (int ,int ) ;
+ int nsIBaseWindow_SetVisibility (int ,int ) ;
+ int nsIComponentManager_CreateInstanceByContractID (int ,int ,int *,int *,void**) ;
+ int nsIScrollable_Release (int *) ;
+ int nsIScrollable_SetDefaultScrollbarPreferences (int *,int ,int ) ;
+ int nsIWebBrowserSetup_Release (int *) ;
+ int nsIWebBrowserSetup_SetProperty (int *,int ,int ) ;
+ int nsIWebBrowser_QueryInterface (int ,int *,void**) ;
+ int nsIWebBrowser_SetContainerWindow (int ,int *) ;
+ int nsIWebBrowser_SetParentURIContentListener (int ,int *) ;
+ int nscontainer_class ;
+ int pCompMgr ;
+ int register_nscontainer_class () ;
+ int wszNsContainer ;
 
 __attribute__((used)) static HRESULT init_nscontainer(NSContainer *nscontainer)
 {
@@ -68,7 +68,7 @@ __attribute__((used)) static HRESULT init_nscontainer(NSContainer *nscontainer)
     nsresult nsres;
 
     nsres = nsIComponentManager_CreateInstanceByContractID(pCompMgr, NS_WEBBROWSER_CONTRACTID,
-            NULL, &IID_nsIWebBrowser, (void**)&nscontainer->webbrowser);
+            ((void*)0), &IID_nsIWebBrowser, (void**)&nscontainer->webbrowser);
     if(NS_FAILED(nsres)) {
         ERR("Creating WebBrowser failed: %08x\n", nsres);
         return E_FAIL;
@@ -121,15 +121,15 @@ __attribute__((used)) static HRESULT init_nscontainer(NSContainer *nscontainer)
             return E_FAIL;
     }
 
-    nscontainer->hwnd = CreateWindowExW(0, wszNsContainer, NULL,
+    nscontainer->hwnd = CreateWindowExW(0, wszNsContainer, ((void*)0),
             WS_CHILD | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, 0, 0, 100, 100,
-            GetDesktopWindow(), NULL, hInst, nscontainer);
+            GetDesktopWindow(), ((void*)0), hInst, nscontainer);
     if(!nscontainer->hwnd) {
         WARN("Could not create window\n");
         return E_FAIL;
     }
 
-    nsres = nsIBaseWindow_InitWindow(nscontainer->window, nscontainer->hwnd, NULL, 0, 0, 100, 100);
+    nsres = nsIBaseWindow_InitWindow(nscontainer->window, nscontainer->hwnd, ((void*)0), 0, 0, 100, 100);
     if(NS_SUCCEEDED(nsres)) {
         nsres = nsIBaseWindow_Create(nscontainer->window);
         if(NS_FAILED(nsres)) {

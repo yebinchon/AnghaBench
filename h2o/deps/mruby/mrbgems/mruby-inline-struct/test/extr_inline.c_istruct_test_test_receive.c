@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_TYPE_ERROR ; 
- int /*<<< orphan*/  mrb_bool_value (int) ; 
- scalar_t__ mrb_class_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_istruct_ptr (int /*<<< orphan*/ ) ; 
- scalar_t__ mrb_obj_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int E_TYPE_ERROR ;
+ int mrb_bool_value (int) ;
+ scalar_t__ mrb_class_get (int *,char*) ;
+ int mrb_get_args (int *,char*,int *) ;
+ scalar_t__ mrb_istruct_ptr (int ) ;
+ scalar_t__ mrb_obj_class (int *,int ) ;
+ int mrb_raise (int *,int ,char*) ;
 
 __attribute__((used)) static mrb_value
 istruct_test_test_receive(mrb_state *mrb, mrb_value self)

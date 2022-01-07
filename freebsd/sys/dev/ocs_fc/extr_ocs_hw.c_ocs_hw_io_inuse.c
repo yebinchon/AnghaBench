@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  ocs_hw_t ;
-struct TYPE_3__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ ocs_hw_io_t ;
 
-/* Variables and functions */
- scalar_t__ ocs_ref_read_count (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ocs_hw_t ;
+struct TYPE_3__ {int ref; } ;
+typedef TYPE_1__ ocs_hw_io_t ;
+
+
+ scalar_t__ ocs_ref_read_count (int *) ;
 
 uint8_t
 ocs_hw_io_inuse(ocs_hw_t *hw, ocs_hw_io_t *io)
 {
-	return (ocs_ref_read_count(&io->ref) > 0);
+ return (ocs_ref_read_count(&io->ref) > 0);
 }

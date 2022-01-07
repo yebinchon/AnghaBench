@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t r; size_t g; size_t b; int a; } ;
-typedef  TYPE_1__ Pixel ;
-typedef  int /*<<< orphan*/  Background ;
+typedef TYPE_1__ Pixel ;
+typedef int Background ;
 
-/* Variables and functions */
- int YfromRGB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ilinear (size_t) ; 
- int /*<<< orphan*/ * sRGB_to_d ; 
- size_t u16d (int) ; 
+
+ int YfromRGB (int ,int ,int ) ;
+ size_t ilinear (size_t) ;
+ int * sRGB_to_d ;
+ size_t u16d (int) ;
 
 __attribute__((used)) static void
 gpc_glin(Pixel *out, const Pixel *in, const Background *back)

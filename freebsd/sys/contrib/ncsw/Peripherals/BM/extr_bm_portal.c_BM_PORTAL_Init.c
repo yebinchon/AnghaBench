@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ t_Handle ;
-typedef  scalar_t__ t_Error ;
-struct TYPE_10__ {scalar_t__ irq; TYPE_2__* p_BmPortalLow; scalar_t__ cpu; TYPE_5__* p_BmPortalDriverParams; int /*<<< orphan*/  h_Bm; } ;
-typedef  TYPE_3__ t_BmPortal ;
-typedef  int /*<<< orphan*/  e_DpaaSwPortal ;
-struct TYPE_11__ {int hwExtStructsMemAttr; int /*<<< orphan*/  mask; } ;
-struct TYPE_8__ {int /*<<< orphan*/  addr_ci; int /*<<< orphan*/  addr_ce; } ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef scalar_t__ t_Handle ;
+typedef scalar_t__ t_Error ;
+struct TYPE_10__ {scalar_t__ irq; TYPE_2__* p_BmPortalLow; scalar_t__ cpu; TYPE_5__* p_BmPortalDriverParams; int h_Bm; } ;
+typedef TYPE_3__ t_BmPortal ;
+typedef int e_DpaaSwPortal ;
+struct TYPE_11__ {int hwExtStructsMemAttr; int mask; } ;
+struct TYPE_8__ {int addr_ci; int addr_ce; } ;
 struct TYPE_9__ {TYPE_1__ addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BMAN_PORTAL_FLAG_CACHE ; 
- scalar_t__ BMAN_PORTAL_FLAG_IRQ ; 
- int /*<<< orphan*/  BM_PORTAL_Free (TYPE_3__*) ; 
- int /*<<< orphan*/  BmSetPortalHandle (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DBG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_NULL_POINTER ; 
- scalar_t__ E_OK ; 
- int /*<<< orphan*/  MAJOR ; 
- int MEMORY_ATTR_CACHEABLE ; 
- scalar_t__ NO_IRQ ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE ; 
- int /*<<< orphan*/  XX_Free (TYPE_5__*) ; 
- scalar_t__ XX_VirtToPhys (int /*<<< orphan*/ ) ; 
- scalar_t__ bman_create_portal (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int BMAN_PORTAL_FLAG_CACHE ;
+ scalar_t__ BMAN_PORTAL_FLAG_IRQ ;
+ int BM_PORTAL_Free (TYPE_3__*) ;
+ int BmSetPortalHandle (int ,scalar_t__,int ) ;
+ int DBG (int ,char*) ;
+ int E_INVALID_HANDLE ;
+ int E_NULL_POINTER ;
+ scalar_t__ E_OK ;
+ int MAJOR ;
+ int MEMORY_ATTR_CACHEABLE ;
+ scalar_t__ NO_IRQ ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_3__*,int ) ;
+ int TRACE ;
+ int XX_Free (TYPE_5__*) ;
+ scalar_t__ XX_VirtToPhys (int ) ;
+ scalar_t__ bman_create_portal (TYPE_3__*,int ,int *) ;
 
 t_Error BM_PORTAL_Init(t_Handle h_BmPortal)
 {
-    t_BmPortal          *p_BmPortal = (t_BmPortal *)h_BmPortal;
-    uint32_t            flags;
+    t_BmPortal *p_BmPortal = (t_BmPortal *)h_BmPortal;
+    uint32_t flags;
 
     SANITY_CHECK_RETURN_ERROR(p_BmPortal, E_INVALID_HANDLE);
 
@@ -63,7 +63,7 @@ t_Error BM_PORTAL_Init(t_Handle h_BmPortal)
     BmSetPortalHandle(p_BmPortal->h_Bm, (t_Handle)p_BmPortal, (e_DpaaSwPortal)p_BmPortal->cpu);
 
     XX_Free(p_BmPortal->p_BmPortalDriverParams);
-    p_BmPortal->p_BmPortalDriverParams = NULL;
+    p_BmPortal->p_BmPortalDriverParams = ((void*)0);
 
     DBG(TRACE,("Bman-Portal (%d) @ %p:%p\n",
                p_BmPortal->cpu,

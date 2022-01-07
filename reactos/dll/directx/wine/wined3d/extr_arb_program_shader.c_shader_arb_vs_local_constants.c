@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct wined3d_state {TYPE_1__* vs_consts_i; } ;
 struct wined3d_gl_info {int dummy; } ;
 struct wined3d_context {struct wined3d_gl_info* gl_info; } ;
-struct arb_vs_compiled_shader {scalar_t__ pos_fixup; scalar_t__* int_consts; int /*<<< orphan*/  num_int_consts; } ;
+struct arb_vs_compiled_shader {scalar_t__ pos_fixup; scalar_t__* int_consts; int num_int_consts; } ;
 struct TYPE_2__ {scalar_t__ z; scalar_t__ y; scalar_t__ x; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_VERTEX_PROGRAM_ARB ; 
- scalar_t__ WINED3D_CONST_NUM_UNUSED ; 
- unsigned char WINED3D_MAX_CONSTS_I ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glProgramLocalParameter4fvARB (int /*<<< orphan*/ ,scalar_t__,float*) ; 
- int /*<<< orphan*/  shader_get_position_fixup (struct wined3d_context const*,struct wined3d_state const*,float*) ; 
+
+ int GL_EXTCALL (int ) ;
+ int GL_VERTEX_PROGRAM_ARB ;
+ scalar_t__ WINED3D_CONST_NUM_UNUSED ;
+ unsigned char WINED3D_MAX_CONSTS_I ;
+ int checkGLcall (char*) ;
+ int glProgramLocalParameter4fvARB (int ,scalar_t__,float*) ;
+ int shader_get_position_fixup (struct wined3d_context const*,struct wined3d_state const*,float*) ;
 
 __attribute__((used)) static void shader_arb_vs_local_constants(const struct arb_vs_compiled_shader *gl_shader,
         const struct wined3d_context *context, const struct wined3d_state *state)
@@ -33,7 +33,7 @@ __attribute__((used)) static void shader_arb_vs_local_constants(const struct arb
     float position_fixup[4];
     unsigned char i;
 
-    /* Upload the position fixup */
+
     shader_get_position_fixup(context, state, position_fixup);
     GL_EXTCALL(glProgramLocalParameter4fvARB(GL_VERTEX_PROGRAM_ARB, gl_shader->pos_fixup, position_fixup));
 

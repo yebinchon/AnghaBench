@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_SETCHECK ; 
- int /*<<< orphan*/  BST_CHECKED ; 
- int /*<<< orphan*/  BST_UNCHECKED ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  IDC_AUTOSYNC ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SendDlgItemMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ wcscmp (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int VOID ;
+typedef int LPBYTE ;
+typedef int HWND ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int BM_SETCHECK ;
+ int BST_CHECKED ;
+ int BST_UNCHECKED ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int IDC_AUTOSYNC ;
+ int KEY_QUERY_VALUE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int *,int *,int ,int*) ;
+ int SendDlgItemMessageW (int ,int ,int ,int ,int ) ;
+ scalar_t__ wcscmp (int *,char*) ;
 
 __attribute__((used)) static VOID
 GetSyncSetting(HWND hwnd)
@@ -47,8 +47,8 @@ GetSyncSetting(HWND hwnd)
         dwSize = 8 * sizeof(WCHAR);
         if (RegQueryValueExW(hKey,
                              L"Type",
-                             NULL,
-                             NULL,
+                             ((void*)0),
+                             ((void*)0),
                              (LPBYTE)szData,
                              &dwSize) == ERROR_SUCCESS)
         {

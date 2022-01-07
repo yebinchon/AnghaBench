@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
-typedef  int /*<<< orphan*/  AVCodec ;
 
-/* Variables and functions */
- int AV_CH_LAYOUT_5POINT1_BACK ; 
- int AV_CH_LAYOUT_STEREO ; 
- int AV_CH_LAYOUT_STEREO_DOWNMIX ; 
- int AV_CH_LAYOUT_SURROUND ; 
- int /*<<< orphan*/  AV_CODEC_ID_FLAC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_ARRAY_ELEMS (int*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * avcodec_find_decoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * avcodec_find_encoder (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_decoder (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  close_encoder (int /*<<< orphan*/ **) ; 
- scalar_t__ init_decoder (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- scalar_t__ init_encoder (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int) ; 
- scalar_t__ run_test (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+typedef int AVCodecContext ;
+typedef int AVCodec ;
+
+
+ int AV_CH_LAYOUT_5POINT1_BACK ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CH_LAYOUT_STEREO_DOWNMIX ;
+ int AV_CH_LAYOUT_SURROUND ;
+ int AV_CODEC_ID_FLAC ;
+ int AV_LOG_ERROR ;
+ int FF_ARRAY_ELEMS (int*) ;
+ int av_log (int *,int ,char*) ;
+ int * avcodec_find_decoder (int ) ;
+ int * avcodec_find_encoder (int ) ;
+ int close_decoder (int **) ;
+ int close_encoder (int **) ;
+ scalar_t__ init_decoder (int *,int **,int) ;
+ scalar_t__ init_encoder (int *,int **,int,int) ;
+ scalar_t__ run_test (int *,int *,int *,int *) ;
 
 int main(void)
 {
-    AVCodec *enc = NULL, *dec = NULL;
-    AVCodecContext *enc_ctx = NULL, *dec_ctx = NULL;
+    AVCodec *enc = ((void*)0), *dec = ((void*)0);
+    AVCodecContext *enc_ctx = ((void*)0), *dec_ctx = ((void*)0);
     uint64_t channel_layouts[] = {AV_CH_LAYOUT_STEREO, AV_CH_LAYOUT_5POINT1_BACK, AV_CH_LAYOUT_SURROUND, AV_CH_LAYOUT_STEREO_DOWNMIX};
     int sample_rates[] = {8000, 44100, 48000, 192000};
     int cl, sr;
 
     enc = avcodec_find_encoder(AV_CODEC_ID_FLAC);
     if (!enc) {
-        av_log(NULL, AV_LOG_ERROR, "Can't find encoder\n");
+        av_log(((void*)0), AV_LOG_ERROR, "Can't find encoder\n");
         return 1;
     }
 
     dec = avcodec_find_decoder(AV_CODEC_ID_FLAC);
     if (!dec) {
-        av_log(NULL, AV_LOG_ERROR, "Can't find decoder\n");
+        av_log(((void*)0), AV_LOG_ERROR, "Can't find decoder\n");
         return 1;
     }
 

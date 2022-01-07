@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT8 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT8 ;
 struct TYPE_4__ {int Length; } ;
-typedef  TYPE_1__ ACPI_TABLE_HEADER ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
+typedef TYPE_1__ ACPI_TABLE_HEADER ;
+typedef int ACPI_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- int /*<<< orphan*/  AE_NOT_EXIST ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  AcpiDmDisassemble (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ AcpiGbl_DmOpt_Listing ; 
- int /*<<< orphan*/  AcpiGbl_ParseOpRoot ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,...) ; 
- int /*<<< orphan*/  AcpiUtDebugDumpBuffer (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AdCreateTableHeader (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  DB_BYTE_DISPLAY ; 
- int /*<<< orphan*/  MpEmitMappingInfo () ; 
+
+ int ACPI_UINT32_MAX ;
+ int AE_NOT_EXIST ;
+ int AE_OK ;
+ int AcpiDmDisassemble (int *,int ,int ) ;
+ scalar_t__ AcpiGbl_DmOpt_Listing ;
+ int AcpiGbl_ParseOpRoot ;
+ int AcpiOsPrintf (char*,...) ;
+ int AcpiUtDebugDumpBuffer (int *,int,int ,int ) ;
+ int AdCreateTableHeader (char*,TYPE_1__*) ;
+ int DB_BYTE_DISPLAY ;
+ int MpEmitMappingInfo () ;
 
 ACPI_STATUS
 AdDisplayTables (
-    char                    *Filename,
-    ACPI_TABLE_HEADER       *Table)
+    char *Filename,
+    ACPI_TABLE_HEADER *Table)
 {
 
 
@@ -46,7 +46,7 @@ AdDisplayTables (
         AdCreateTableHeader (Filename, Table);
     }
 
-    AcpiDmDisassemble (NULL, AcpiGbl_ParseOpRoot, ACPI_UINT32_MAX);
+    AcpiDmDisassemble (((void*)0), AcpiGbl_ParseOpRoot, ACPI_UINT32_MAX);
     MpEmitMappingInfo ();
 
     if (AcpiGbl_DmOpt_Listing)

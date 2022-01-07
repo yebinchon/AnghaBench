@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ INSTALLSTATE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ INSTALLSTATE_INVALIDARG ; 
- scalar_t__ INSTALLSTATE_UNKNOWN ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ pMsiGetComponentPathA (char*,char*,char*,int*) ; 
+
+
+
+typedef scalar_t__ INSTALLSTATE ;
+typedef int DWORD ;
+
+
+ scalar_t__ INSTALLSTATE_INVALIDARG ;
+ scalar_t__ INSTALLSTATE_UNKNOWN ;
+ int ok (int,char*) ;
+ scalar_t__ pMsiGetComponentPathA (char*,char*,char*,int*) ;
 
 __attribute__((used)) static void test_getcomponentpath(void)
 {
@@ -28,13 +28,13 @@ __attribute__((used)) static void test_getcomponentpath(void)
     if(!pMsiGetComponentPathA)
         return;
 
-    r = pMsiGetComponentPathA( NULL, NULL, NULL, NULL );
+    r = pMsiGetComponentPathA( ((void*)0), ((void*)0), ((void*)0), ((void*)0) );
     ok( r == INSTALLSTATE_INVALIDARG, "wrong return value\n");
 
-    r = pMsiGetComponentPathA( "bogus", "bogus", NULL, NULL );
+    r = pMsiGetComponentPathA( "bogus", "bogus", ((void*)0), ((void*)0) );
     ok( r == INSTALLSTATE_INVALIDARG, "wrong return value\n");
 
-    r = pMsiGetComponentPathA( "bogus", "{00000000-0000-0000-000000000000}", NULL, NULL );
+    r = pMsiGetComponentPathA( "bogus", "{00000000-0000-0000-000000000000}", ((void*)0), ((void*)0) );
     ok( r == INSTALLSTATE_INVALIDARG, "wrong return value\n");
 
     sz = sizeof buffer;

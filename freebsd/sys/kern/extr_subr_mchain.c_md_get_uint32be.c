@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct mdchain {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  be32toh (int /*<<< orphan*/ ) ; 
- int md_get_uint32 (struct mdchain*,int /*<<< orphan*/ *) ; 
+
+ int be32toh (int ) ;
+ int md_get_uint32 (struct mdchain*,int *) ;
 
 int
 md_get_uint32be(struct mdchain *mdp, uint32_t *x)
 {
-	uint32_t v;
-	int error;
+ uint32_t v;
+ int error;
 
-	error = md_get_uint32(mdp, &v);
-	if (x != NULL)
-		*x = be32toh(v);
-	return (error);
+ error = md_get_uint32(mdp, &v);
+ if (x != ((void*)0))
+  *x = be32toh(v);
+ return (error);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rand_state ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
-typedef  int /*<<< orphan*/  mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_ary_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- size_t mrb_fixnum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_nil_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int rand_uint32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  random_check (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * random_default_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * random_ptr (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rand_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
+typedef int mrb_bool ;
+
+
+ int E_ARGUMENT_ERROR ;
+ int RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_ary_set (int *,int ,int,int ) ;
+ size_t mrb_fixnum (int ) ;
+ int mrb_fixnum_value (int) ;
+ int mrb_get_args (int *,char*,int*,int *,int *) ;
+ scalar_t__ mrb_nil_p (int ) ;
+ int mrb_nil_value () ;
+ int mrb_raise (int *,int ,char*) ;
+ int rand_uint32 (int *) ;
+ int random_check (int *,int ) ;
+ int * random_default_state (int *) ;
+ int * random_ptr (int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_ary_sample(mrb_state *mrb, mrb_value ary)
@@ -52,7 +52,7 @@ mrb_ary_sample(mrb_state *mrb, mrb_value ary)
     random = random_ptr(r);
   }
   len = RARRAY_LEN(ary);
-  if (!given) {                 /* pick one element */
+  if (!given) {
     switch (len) {
     case 0:
       return mrb_nil_value();
@@ -78,7 +78,7 @@ mrb_ary_sample(mrb_state *mrb, mrb_value ary)
 
         for (j=0; j<i; j++) {
           if (mrb_fixnum(RARRAY_PTR(result)[j]) == r) {
-            goto retry;         /* retry if duplicate */
+            goto retry;
           }
         }
         break;

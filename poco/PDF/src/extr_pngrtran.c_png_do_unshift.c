@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int png_uint_32 ;
-typedef  int png_uint_16 ;
-typedef  TYPE_1__* png_row_infop ;
-typedef  TYPE_2__* png_color_8p ;
-typedef  int* png_bytep ;
-typedef  int png_byte ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int png_uint_32 ;
+typedef int png_uint_16 ;
+typedef TYPE_1__* png_row_infop ;
+typedef TYPE_2__* png_color_8p ;
+typedef int* png_bytep ;
+typedef int png_byte ;
 struct TYPE_6__ {int red; int green; int blue; int gray; int alpha; } ;
 struct TYPE_5__ {int color_type; int width; int bit_depth; int rowbytes; } ;
 
-/* Variables and functions */
- int PNG_COLOR_MASK_ALPHA ; 
- int PNG_COLOR_MASK_COLOR ; 
- int PNG_COLOR_TYPE_PALETTE ; 
- int /*<<< orphan*/  png_debug (int,char*) ; 
 
-void /* PRIVATE */
+ int PNG_COLOR_MASK_ALPHA ;
+ int PNG_COLOR_MASK_COLOR ;
+ int PNG_COLOR_TYPE_PALETTE ;
+ int png_debug (int,char*) ;
+
+void
 png_do_unshift(png_row_infop row_info, png_bytep row, png_color_8p sig_bits)
 {
    png_debug(1, "in png_do_unshift\n");
    if (
-#if defined(PNG_USELESS_TESTS_SUPPORTED)
-       row != NULL && row_info != NULL && sig_bits != NULL &&
-#endif
+
+
+
        row_info->color_type != PNG_COLOR_TYPE_PALETTE)
    {
       int shift[4];

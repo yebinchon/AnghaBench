@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int v ;
+typedef int buf ;
 struct TYPE_2__ {unsigned long long volume_id; } ;
 
-/* Variables and functions */
- TYPE_1__** HOSTS ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned long long* calloc (int,int) ; 
- int /*<<< orphan*/  cmp_unsigned_long_long ; 
- int /*<<< orphan*/  free (unsigned long long*) ; 
- int hosts ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  qsort (unsigned long long*,int,int,int /*<<< orphan*/ ) ; 
- int snprintf (char*,int,char*,unsigned long long) ; 
- int /*<<< orphan*/  sprintf (char*,char*,unsigned long long) ; 
- char* strdup (char*) ; 
+
+ TYPE_1__** HOSTS ;
+ int assert (int) ;
+ unsigned long long* calloc (int,int) ;
+ int cmp_unsigned_long_long ;
+ int free (unsigned long long*) ;
+ int hosts ;
+ char* malloc (int) ;
+ int qsort (unsigned long long*,int,int,int ) ;
+ int snprintf (char*,int,char*,unsigned long long) ;
+ int sprintf (char*,char*,unsigned long long) ;
+ char* strdup (char*) ;
 
 char *get_volumes (void) {
   char buf[32];

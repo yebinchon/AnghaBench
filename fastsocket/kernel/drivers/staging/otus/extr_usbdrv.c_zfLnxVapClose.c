@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u16_t ;
-struct net_device {int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u16_t ;
+struct net_device {int name; } ;
 struct TYPE_2__ {int openFlag; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  netif_stop_queue (struct net_device*) ; 
- int /*<<< orphan*/  printk (char*,int,...) ; 
- TYPE_1__* vap ; 
- int zfLnxGetVapId (struct net_device*) ; 
+
+ int netif_stop_queue (struct net_device*) ;
+ int printk (char*,int,...) ;
+ TYPE_1__* vap ;
+ int zfLnxGetVapId (struct net_device*) ;
 
 int zfLnxVapClose(struct net_device *dev)
 {
@@ -41,5 +41,5 @@ int zfLnxVapClose(struct net_device *dev)
             printk("VAP port was not opened : vap ID=%d\n", vapId);
         }
     }
-	return 0;
+ return 0;
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ SOCKET ;
 
-/* Variables and functions */
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  closesocket (scalar_t__) ; 
- scalar_t__ connected ; 
- scalar_t__ proxflag ; 
- int /*<<< orphan*/  pswitch (int) ; 
- int /*<<< orphan*/  shutdown (int,int) ; 
+
+
+
+typedef scalar_t__ SOCKET ;
+
+
+ int close (int) ;
+ int closesocket (scalar_t__) ;
+ scalar_t__ connected ;
+ scalar_t__ proxflag ;
+ int pswitch (int) ;
+ int shutdown (int,int) ;
 
 void lostpeer(void)
 {
@@ -40,7 +40,7 @@ void lostpeer(void)
    pswitch(1);
    if (connected) {
       if (cout) {
-						closesocket(cout);
+      closesocket(cout);
          cout = 0;
       }
       connected = 0;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* input; } ;
-typedef  TYPE_2__ h2o_socket_t ;
-struct TYPE_5__ {int /*<<< orphan*/  size; int /*<<< orphan*/  bytes; } ;
+typedef TYPE_2__ h2o_socket_t ;
+struct TYPE_5__ {int size; int bytes; } ;
 
-/* Variables and functions */
- int exit_loop ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  fwrite (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_socket_close (TYPE_2__*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
+
+ int exit_loop ;
+ int fprintf (int ,char*,char const*) ;
+ int fwrite (int ,int,int ,int ) ;
+ int h2o_socket_close (TYPE_2__*) ;
+ int stderr ;
+ int stdout ;
 
 __attribute__((used)) static void on_read(h2o_socket_t *sock, const char *err)
 {
-    if (err != NULL) {
-        /* read failed */
+    if (err != ((void*)0)) {
+
         fprintf(stderr, "read failed:%s\n", err);
         h2o_socket_close(sock);
         exit_loop = 1;

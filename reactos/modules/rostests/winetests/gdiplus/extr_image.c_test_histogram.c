@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT ;
-typedef  int HistogramFormat ;
-typedef  size_t GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int*) ; 
- int /*<<< orphan*/  GdipBitmapSetPixel (int /*<<< orphan*/ *,size_t,int,int) ; 
- size_t GdipCreateBitmapFromScan0 (size_t const,size_t const,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int HistogramFormatA ; 
- int HistogramFormatARGB ; 
- int HistogramFormatB ; 
- int HistogramFormatG ; 
- int HistogramFormatGray ; 
- int HistogramFormatPARGB ; 
- int HistogramFormatR ; 
- int HistogramFormatRGB ; 
- int InvalidParameter ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat24bppRGB ; 
- int /*<<< orphan*/  expect (int,size_t) ; 
- int /*<<< orphan*/  ok (int,char*,size_t) ; 
- size_t pGdipBitmapGetHistogram (int /*<<< orphan*/ *,int,int,size_t*,size_t*,size_t*,size_t*) ; 
- size_t pGdipBitmapGetHistogramSize (int,size_t*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef size_t UINT ;
+typedef int HistogramFormat ;
+typedef size_t GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+
+
+ size_t ARRAY_SIZE (int*) ;
+ int GdipBitmapSetPixel (int *,size_t,int,int) ;
+ size_t GdipCreateBitmapFromScan0 (size_t const,size_t const,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int HistogramFormatA ;
+ int HistogramFormatARGB ;
+ int HistogramFormatB ;
+ int HistogramFormatG ;
+ int HistogramFormatGray ;
+ int HistogramFormatPARGB ;
+ int HistogramFormatR ;
+ int HistogramFormatRGB ;
+ int InvalidParameter ;
+ int Ok ;
+ int PixelFormat24bppRGB ;
+ int expect (int,size_t) ;
+ int ok (int,char*,size_t) ;
+ size_t pGdipBitmapGetHistogram (int *,int,int,size_t*,size_t*,size_t*,size_t*) ;
+ size_t pGdipBitmapGetHistogramSize (int,size_t*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_histogram(void)
 {
@@ -63,10 +63,10 @@ __attribute__((used)) static void test_histogram(void)
         return;
     }
 
-    stat = pGdipBitmapGetHistogramSize(HistogramFormatARGB, NULL);
+    stat = pGdipBitmapGetHistogramSize(HistogramFormatARGB, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogramSize(0xff, NULL);
+    stat = pGdipBitmapGetHistogramSize(0xff, ((void*)0));
     expect(InvalidParameter, stat);
 
     num = 123;
@@ -82,11 +82,11 @@ __attribute__((used)) static void test_histogram(void)
         expect(256, num);
     }
 
-    bm = NULL;
-    stat = GdipCreateBitmapFromScan0(WIDTH, HEIGHT, 0, PixelFormat24bppRGB, NULL, &bm);
+    bm = ((void*)0);
+    stat = GdipCreateBitmapFromScan0(WIDTH, HEIGHT, 0, PixelFormat24bppRGB, ((void*)0), &bm);
     expect(Ok, stat);
 
-    /* Three solid rgb rows, next three rows are rgb shades. */
+
     for (x = 0; x < WIDTH; x++)
     {
         GdipBitmapSetPixel(bm, x, 0, 0xffff0000);
@@ -98,33 +98,33 @@ __attribute__((used)) static void test_histogram(void)
         GdipBitmapSetPixel(bm, x, 5, 0xff000020);
     }
 
-    stat = pGdipBitmapGetHistogram(NULL, HistogramFormatRGB, 256, ch0, ch1, ch2, ch3);
+    stat = pGdipBitmapGetHistogram(((void*)0), HistogramFormatRGB, 256, ch0, ch1, ch2, ch3);
     expect(InvalidParameter, stat);
 
     stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, ch1, ch2, ch3);
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, ch1, ch2, NULL);
+    stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, ch1, ch2, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, ch1, NULL, NULL);
+    stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, ch1, ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, NULL, NULL, NULL);
+    stat = pGdipBitmapGetHistogram(bm, 123, 256, ch0, ((void*)0), ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
 
-    /* Requested format matches bitmap format */
+
     stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 256, ch0, ch1, ch2, ch3);
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 100, ch0, ch1, ch2, NULL);
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 100, ch0, ch1, ch2, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 257, ch0, ch1, ch2, NULL);
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 257, ch0, ch1, ch2, ((void*)0));
     expect(InvalidParameter, stat);
 
-    /* Channel 3 is not used, must be NULL */
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 256, ch0, ch1, ch2, NULL);
+
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatRGB, 256, ch0, ch1, ch2, ((void*)0));
     expect(Ok, stat);
 
     ok(ch0[0xff] == WIDTH, "Got red (0xff) %u\n", ch0[0xff]);
@@ -134,8 +134,8 @@ __attribute__((used)) static void test_histogram(void)
     ok(ch1[0x3f] == WIDTH, "Got green (0x3f) %u\n", ch1[0x3f]);
     ok(ch2[0x20] == WIDTH, "Got blue (0x20) %u\n", ch1[0x20]);
 
-    /* ARGB histogram from RGB data. */
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatARGB, 256, ch0, ch1, ch2, NULL);
+
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatARGB, 256, ch0, ch1, ch2, ((void*)0));
     expect(InvalidParameter, stat);
 
     stat = pGdipBitmapGetHistogram(bm, HistogramFormatARGB, 256, ch0, ch1, ch2, ch3);
@@ -150,17 +150,17 @@ __attribute__((used)) static void test_histogram(void)
 
     ok(ch0[0xff] == WIDTH * HEIGHT, "Got alpha (0xff) %u\n", ch0[0xff]);
 
-    /* Request grayscale histogram from RGB bitmap. */
+
     stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, ch1, ch2, ch3);
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, ch1, ch2, NULL);
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, ch1, ch2, ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, ch1, NULL, NULL);
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, ch1, ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, NULL, NULL, NULL);
+    stat = pGdipBitmapGetHistogram(bm, HistogramFormatGray, 256, ch0, ((void*)0), ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     GdipDisposeImage((GpImage*)bm);

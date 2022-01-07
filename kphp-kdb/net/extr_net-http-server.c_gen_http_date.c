@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int* dd ; 
- char* dows ; 
- char* months ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int,char*,int,int,int,int) ; 
+ int assert (int) ;
+ int* dd ;
+ char* dows ;
+ char* months ;
+ int sprintf (char*,char*,char*,int,char*,int,int,int,int) ;
 
 void gen_http_date (char date_buffer[29], int time) {
   int day, mon, year, hour, min, sec, xd, i, dow;
@@ -61,7 +53,7 @@ void gen_http_date (char date_buffer[29], int time) {
   assert (day >= 1 && day <= 31 && mon >=0 && mon <= 11 &&
       year >= 1970 && year <= 2039);
 
-  sprintf (date_buffer, "%.3s, %.2d %.3s %d %.2d:%.2d:%.2d GM", 
+  sprintf (date_buffer, "%.3s, %.2d %.3s %d %.2d:%.2d:%.2d GM",
       dows + dow * 3, day, months + mon * 3, year,
       hour, min, sec);
   date_buffer[28] = 'T';

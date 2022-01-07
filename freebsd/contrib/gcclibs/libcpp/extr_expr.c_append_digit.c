@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int cpp_num_part ;
-struct TYPE_8__ {unsigned int high; unsigned int low; int overflow; int /*<<< orphan*/  unsignedp; } ;
-typedef  TYPE_1__ cpp_num ;
 
-/* Variables and functions */
- unsigned int PART_PRECISION ; 
- int /*<<< orphan*/  num_eq (TYPE_1__,TYPE_1__) ; 
- TYPE_1__ num_trim (TYPE_1__,size_t) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int cpp_num_part ;
+struct TYPE_8__ {unsigned int high; unsigned int low; int overflow; int unsignedp; } ;
+typedef TYPE_1__ cpp_num ;
+
+
+ unsigned int PART_PRECISION ;
+ int num_eq (TYPE_1__,TYPE_1__) ;
+ TYPE_1__ num_trim (TYPE_1__,size_t) ;
 
 __attribute__((used)) static cpp_num
 append_digit (cpp_num num, int digit, int base, size_t precision)
@@ -28,8 +28,8 @@ append_digit (cpp_num num, int digit, int base, size_t precision)
   bool overflow;
   cpp_num_part add_high, add_low;
 
-  /* Multiply by 2, 8 or 16.  Catching this overflow here means we don't
-     need to worry about add_high overflowing.  */
+
+
   switch (base)
     {
     case 2:
@@ -64,19 +64,19 @@ append_digit (cpp_num num, int digit, int base, size_t precision)
   if (result.low + add_low < result.low)
     add_high++;
   if (result.high + add_high < result.high)
-    overflow = true;
+    overflow = 1;
 
   result.low += add_low;
   result.high += add_high;
   result.overflow = overflow;
 
-  /* The above code catches overflow of a cpp_num type.  This catches
-     overflow of the (possibly shorter) target precision.  */
+
+
   num.low = result.low;
   num.high = result.high;
   result = num_trim (result, precision);
   if (!num_eq (result, num))
-    result.overflow = true;
+    result.overflow = 1;
 
   return result;
 }

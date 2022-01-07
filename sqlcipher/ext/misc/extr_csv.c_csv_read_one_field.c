@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {size_t n; int cTerm; int nLine; char* z; scalar_t__ bNotFirst; } ;
-typedef  TYPE_1__ CsvReader ;
+typedef TYPE_1__ CsvReader ;
 
-/* Variables and functions */
- int EOF ; 
- scalar_t__ csv_append (TYPE_1__*,char) ; 
- int /*<<< orphan*/  csv_errmsg (TYPE_1__*,char*,int,char) ; 
- int csv_getc (TYPE_1__*) ; 
+
+ int EOF ;
+ scalar_t__ csv_append (TYPE_1__*,char) ;
+ int csv_errmsg (TYPE_1__*,char*,int,char) ;
+ int csv_getc (TYPE_1__*) ;
 
 __attribute__((used)) static char *csv_read_one_field(CsvReader *p){
   int c;
@@ -67,8 +67,8 @@ __attribute__((used)) static char *csv_read_one_field(CsvReader *p){
       pc = c;
     }
   }else{
-    /* If this is the first field being parsed and it begins with the
-    ** UTF-8 BOM  (0xEF BB BF) then skip the BOM */
+
+
     if( (c&0xff)==0xef && p->bNotFirst==0 ){
       csv_append(p, (char)c);
       c = csv_getc(p);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct nn_list {int dummy; } ;
-struct nn_hash {int slots; int /*<<< orphan*/ * array; scalar_t__ items; } ;
+struct nn_hash {int slots; int * array; scalar_t__ items; } ;
 
-/* Variables and functions */
- int NN_HASH_INITIAL_SLOTS ; 
- int /*<<< orphan*/  alloc_assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * nn_alloc (int,char*) ; 
- int /*<<< orphan*/  nn_list_init (int /*<<< orphan*/ *) ; 
+
+ int NN_HASH_INITIAL_SLOTS ;
+ int alloc_assert (int *) ;
+ int * nn_alloc (int,char*) ;
+ int nn_list_init (int *) ;
 
 void nn_hash_init (struct nn_hash *self)
 {

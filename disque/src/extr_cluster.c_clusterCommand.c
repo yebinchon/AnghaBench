@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  robj ;
-struct TYPE_20__ {int flags; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ clusterNode ;
+
+
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int sds ;
+typedef int robj ;
+struct TYPE_20__ {int flags; int name; } ;
+typedef TYPE_2__ clusterNode ;
 struct TYPE_21__ {int argc; TYPE_7__** argv; } ;
-typedef  TYPE_3__ client ;
+typedef TYPE_3__ client ;
 struct TYPE_24__ {scalar_t__ ptr; } ;
 struct TYPE_23__ {TYPE_1__* cluster; } ;
-struct TYPE_22__ {int /*<<< orphan*/  ok; int /*<<< orphan*/  syntaxerr; } ;
-struct TYPE_19__ {size_t state; int /*<<< orphan*/  stats_bus_messages_received; int /*<<< orphan*/  stats_bus_messages_sent; int /*<<< orphan*/  size; int /*<<< orphan*/  reachable_nodes_count; int /*<<< orphan*/  nodes; } ;
+struct TYPE_22__ {int ok; int syntaxerr; } ;
+struct TYPE_19__ {size_t state; int stats_bus_messages_received; int stats_bus_messages_sent; int size; int reachable_nodes_count; int nodes; } ;
 
-/* Variables and functions */
- scalar_t__ CLUSTER_NAMELEN ; 
- int CLUSTER_NODE_LEAVING ; 
- int CLUSTER_TODO_SAVE_CONFIG ; 
- int CLUSTER_TODO_UPDATE_STATE ; 
- scalar_t__ C_OK ; 
- scalar_t__ EINVAL ; 
- int /*<<< orphan*/  OBJ_STRING ; 
- int /*<<< orphan*/  addReply (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyBulk (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  addReplyBulkCBuffer (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  addReplyBulkSds (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyError (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  addReplyErrorFormat (TYPE_3__*,char*,char*,...) ; 
- int /*<<< orphan*/  addReplySds (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  clusterBlacklistAddNode (TYPE_2__*) ; 
- int /*<<< orphan*/  clusterDelNode (TYPE_2__*) ; 
- int /*<<< orphan*/  clusterDoBeforeSleep (int) ; 
- int /*<<< orphan*/  clusterGenNodesDescription (int /*<<< orphan*/ ) ; 
- TYPE_2__* clusterLookupNode (scalar_t__) ; 
- int /*<<< orphan*/  clusterReset (int) ; 
- int clusterSaveConfig (int) ; 
- scalar_t__ clusterStartHandshake (scalar_t__,long long) ; 
- int /*<<< orphan*/  clusterUpdateReachableNodes () ; 
- int /*<<< orphan*/ * createObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decrRefCount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dictSize (int /*<<< orphan*/ ) ; 
- scalar_t__ errno ; 
- scalar_t__ getLongLongFromObject (TYPE_7__*,long long*) ; 
- TYPE_2__* myself ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsempty () ; 
- scalar_t__ sdslen (scalar_t__) ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- TYPE_5__ server ; 
- TYPE_4__ shared ; 
- int /*<<< orphan*/  strcasecmp (scalar_t__,char*) ; 
- char* strerror (scalar_t__) ; 
+
+ scalar_t__ CLUSTER_NAMELEN ;
+ int CLUSTER_NODE_LEAVING ;
+ int CLUSTER_TODO_SAVE_CONFIG ;
+ int CLUSTER_TODO_UPDATE_STATE ;
+ scalar_t__ C_OK ;
+ scalar_t__ EINVAL ;
+ int OBJ_STRING ;
+ int addReply (TYPE_3__*,int ) ;
+ int addReplyBulk (TYPE_3__*,int *) ;
+ int addReplyBulkCBuffer (TYPE_3__*,int ,scalar_t__) ;
+ int addReplyBulkSds (TYPE_3__*,int ) ;
+ int addReplyError (TYPE_3__*,char*) ;
+ int addReplyErrorFormat (TYPE_3__*,char*,char*,...) ;
+ int addReplySds (TYPE_3__*,int ) ;
+ int clusterBlacklistAddNode (TYPE_2__*) ;
+ int clusterDelNode (TYPE_2__*) ;
+ int clusterDoBeforeSleep (int) ;
+ int clusterGenNodesDescription (int ) ;
+ TYPE_2__* clusterLookupNode (scalar_t__) ;
+ int clusterReset (int) ;
+ int clusterSaveConfig (int) ;
+ scalar_t__ clusterStartHandshake (scalar_t__,long long) ;
+ int clusterUpdateReachableNodes () ;
+ int * createObject (int ,int ) ;
+ int decrRefCount (int *) ;
+ int dictSize (int ) ;
+ scalar_t__ errno ;
+ scalar_t__ getLongLongFromObject (TYPE_7__*,long long*) ;
+ TYPE_2__* myself ;
+ int sdscatprintf (int ,char*,char*,int ,int ,int ,int ,int ) ;
+ int sdsempty () ;
+ scalar_t__ sdslen (scalar_t__) ;
+ int sdsnew (char*) ;
+ TYPE_5__ server ;
+ TYPE_4__ shared ;
+ int strcasecmp (scalar_t__,char*) ;
+ char* strerror (scalar_t__) ;
 
 void clusterCommand(client *c) {
     if (!strcasecmp(c->argv[1]->ptr,"meet") && c->argc == 4) {
@@ -85,7 +85,7 @@ void clusterCommand(client *c) {
             addReply(c,shared.ok);
         }
     } else if (!strcasecmp(c->argv[1]->ptr,"nodes") && c->argc == 2) {
-        /* CLUSTER NODES */
+
         robj *o;
         sds ci = clusterGenNodesDescription(0);
 
@@ -93,10 +93,10 @@ void clusterCommand(client *c) {
         addReplyBulk(c,o);
         decrRefCount(o);
     } else if (!strcasecmp(c->argv[1]->ptr,"myid") && c->argc == 2) {
-        /* CLUSTER MYID */
+
         addReplyBulkCBuffer(c,myself->name, CLUSTER_NAMELEN);
     } else if (!strcasecmp(c->argv[1]->ptr,"info") && c->argc == 2) {
-        /* CLUSTER INFO */
+
         char *statestr[] = {"ok","fail","needhelp"};
 
         sds info = sdscatprintf(sdsempty(),
@@ -123,7 +123,7 @@ void clusterCommand(client *c) {
             addReplyErrorFormat(c,"error saving the cluster node config: %s",
                 strerror(errno));
     } else if (!strcasecmp(c->argv[1]->ptr,"forget") && c->argc == 3) {
-        /* CLUSTER FORGET <NODE ID> */
+
         clusterNode *n;
 
         if (sdslen(c->argv[2]->ptr) != CLUSTER_NAMELEN) {
@@ -149,10 +149,10 @@ void clusterCommand(client *c) {
     } else if (!strcasecmp(c->argv[1]->ptr,"reset") &&
                (c->argc == 2 || c->argc == 3))
     {
-        /* CLUSTER RESET [SOFT|HARD] */
+
         int hard = 0;
 
-        /* Parse soft/hard argument. Default is soft. */
+
         if (c->argc == 3) {
             if (!strcasecmp(c->argv[2]->ptr,"hard")) {
                 hard = 1;
@@ -169,7 +169,7 @@ void clusterCommand(client *c) {
     } else if (!strcasecmp(c->argv[1]->ptr,"leaving") &&
                (c->argc == 2 || c->argc == 3))
     {
-        /* CLUSTER LEAVING [yes|no] */
+
         if (c->argc == 3) {
             int oldflags = myself->flags;
             if (!strcasecmp(c->argv[2]->ptr,"yes")) {

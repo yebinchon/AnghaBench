@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  network ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int network ;
 struct TYPE_3__ {int row; int col; } ;
-typedef  TYPE_1__ move ;
-typedef  int /*<<< orphan*/  mcts_tree ;
+typedef TYPE_1__ move ;
+typedef int mcts_tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  board_to_string (char*,float*) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  copy_cpu (int,float*,int,float*,int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flip_board (float*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,float,float) ; 
- int /*<<< orphan*/ * load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  load_weights (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  memset (float*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  move_go (float*,int,int,int) ; 
- int /*<<< orphan*/ * move_mcts (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * parse_network_cfg (char*) ; 
- TYPE_1__ pick_move (int /*<<< orphan*/ *,float,int) ; 
- int /*<<< orphan*/ * run_mcts (int /*<<< orphan*/ *,int /*<<< orphan*/ *,float*,float*,int,int,float,int /*<<< orphan*/ ) ; 
- float score_game (float*) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ ) ; 
+
+ int board_to_string (char*,float*) ;
+ void* calloc (int,int) ;
+ int copy_cpu (int,float*,int,float*,int) ;
+ int fflush (int ) ;
+ int flip_board (float*) ;
+ int fprintf (int ,char*,int,float,float) ;
+ int * load_network (char*,char*,int ) ;
+ int load_weights (int *,char*) ;
+ int memset (float*,int ,int) ;
+ int move_go (float*,int,int,int) ;
+ int * move_mcts (int *,int) ;
+ int * parse_network_cfg (char*) ;
+ TYPE_1__ pick_move (int *,float,int) ;
+ int * run_mcts (int *,int *,float*,float*,int,int,float,int ) ;
+ float score_game (float*) ;
+ int sleep (int) ;
+ int srand (int ) ;
+ int stderr ;
+ int stdout ;
+ int time (int ) ;
 
 void self_go(char *filename, char *weightfile, char *f2, char *w2, int multi)
 {
     mcts_tree *tree1 = 0;
     mcts_tree *tree2 = 0;
     network *net = load_network(filename, weightfile, 0);
-    //set_batch_network(net, 1);
+
 
     network *net2;
     if (f2) {
@@ -58,8 +58,8 @@ void self_go(char *filename, char *weightfile, char *f2, char *w2, int multi)
     srand(time(0));
     char boards[600][93];
     int count = 0;
-    //set_batch_network(net, 1);
-    //set_batch_network(net2, 1);
+
+
     float *board = calloc(19*19*3, sizeof(float));
     flip_board(board);
     float *one = calloc(19*19*3, sizeof(float));
@@ -82,16 +82,6 @@ void self_go(char *filename, char *weightfile, char *f2, char *w2, int multi)
             ++total;
             fprintf(stderr, "Total: %d, Player 1: %f, Player 2: %f\n", total, (float)p1/total, (float)p2/total);
             sleep(1);
-            /*
-               int i = (score > 0)? 0 : 1;
-               int j;
-               for(; i < count; i += 2){
-               for(j = 0; j < 93; ++j){
-               printf("%c", boards[i][j]);
-               }
-               printf("\n");
-               }
-             */
             memset(board, 0, 3*19*19*sizeof(float));
             flip_board(board);
             player = 1;
@@ -100,14 +90,14 @@ void self_go(char *filename, char *weightfile, char *f2, char *w2, int multi)
             fflush(stdout);
             fflush(stderr);
         }
-        //print_board(stderr, board, 1, 0);
-        //sleep(1);
+
+
 
         if ((total%2==0) == (player==1)){
-            //mcts_iters = 4500;   
+
             cpuct = 5;
         } else {
-            //mcts_iters = 500;
+
             cpuct = 1;
         }
         network *use = ((total%2==0) == (player==1)) ? net : net2;

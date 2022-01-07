@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int DCC_STATUS_TX ; 
- int __dcc_getstatus () ; 
- int /*<<< orphan*/  __dcc_putchar (char const) ; 
- int /*<<< orphan*/  cpu_relax () ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int DCC_STATUS_TX ;
+ int __dcc_getstatus () ;
+ int __dcc_putchar (char const) ;
+ int cpu_relax () ;
 
 __attribute__((used)) static int hvc_dcc_put_chars(uint32_t vt, const char *buf, int count)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < count; i++) {
-		while (__dcc_getstatus() & DCC_STATUS_TX)
-			cpu_relax();
+ for (i = 0; i < count; i++) {
+  while (__dcc_getstatus() & DCC_STATUS_TX)
+   cpu_relax();
 
-		__dcc_putchar(buf[i]);
-	}
+  __dcc_putchar(buf[i]);
+ }
 
-	return count;
+ return count;
 }

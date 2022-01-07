@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int width; int height; int /*<<< orphan*/  avctx; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int width; int height; int avctx; } ;
 struct TYPE_9__ {TYPE_1__ s; } ;
 struct TYPE_8__ {int type; int width; int height; void* start; void* pts; void* vlc_set; void* quant; } ;
-typedef  TYPE_2__ SliceInfo ;
-typedef  TYPE_3__ RV34DecContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_2__ SliceInfo ;
+typedef TYPE_3__ RV34DecContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int av_image_check_size (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ff_rv34_get_start_offset (int /*<<< orphan*/ *,int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  rv40_parse_picture_size (int /*<<< orphan*/ *,int*,int*) ; 
- int /*<<< orphan*/  skip_bits1 (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int av_image_check_size (int,int,int ,int ) ;
+ int ff_rv34_get_start_offset (int *,int) ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int rv40_parse_picture_size (int *,int*,int*) ;
+ int skip_bits1 (int *) ;
 
 __attribute__((used)) static int rv40_parse_slice_header(RV34DecContext *r, GetBitContext *gb, SliceInfo *si)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static int rv40_parse_slice_header(RV34DecContext *r, GetB
         rv40_parse_picture_size(gb, &w, &h);
     if ((ret = av_image_check_size(w, h, 0, r->s.avctx)) < 0)
         return ret;
-    si->width  = w;
+    si->width = w;
     si->height = h;
     mb_size = ((w + 15) >> 4) * ((h + 15) >> 4);
     mb_bits = ff_rv34_get_start_offset(gb, mb_size);

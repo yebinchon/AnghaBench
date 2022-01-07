@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SOCK_CLOEXEC ; 
- int accept4 (int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  connection_count ; 
- int /*<<< orphan*/  proxy_client_process (int) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- int /*<<< orphan*/  vlc_close (int) ; 
- int /*<<< orphan*/  vlc_restorecancel (int) ; 
- int vlc_savecancel () ; 
+ int SOCK_CLOEXEC ;
+ int accept4 (int,int *,int *,int ) ;
+ int connection_count ;
+ int proxy_client_process (int) ;
+ int vlc_assert_unreachable () ;
+ int vlc_close (int) ;
+ int vlc_restorecancel (int) ;
+ int vlc_savecancel () ;
 
 __attribute__((used)) static void *proxy_thread(void *data)
 {
@@ -27,7 +19,7 @@ __attribute__((used)) static void *proxy_thread(void *data)
 
     for (;;)
     {
-        int cfd = accept4(*lfd, NULL, NULL, SOCK_CLOEXEC);
+        int cfd = accept4(*lfd, ((void*)0), ((void*)0), SOCK_CLOEXEC);
         if (cfd == -1)
             continue;
 

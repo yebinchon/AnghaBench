@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int nRxDescs0; int nRxDescs1; int* nTxDescs; } ;
-struct TYPE_5__ {int /*<<< orphan*/  tx_bufs_dma0; scalar_t__ tx0_bufs; TYPE_1__ sOpts; int /*<<< orphan*/  pcid; int /*<<< orphan*/  pool_dma; scalar_t__ aRD0Ring; } ;
-typedef  int /*<<< orphan*/  STxDesc ;
-typedef  int /*<<< orphan*/  SRxDesc ;
-typedef  TYPE_2__* PSDevice ;
+struct TYPE_5__ {int tx_bufs_dma0; scalar_t__ tx0_bufs; TYPE_1__ sOpts; int pcid; int pool_dma; scalar_t__ aRD0Ring; } ;
+typedef int STxDesc ;
+typedef int SRxDesc ;
+typedef TYPE_2__* PSDevice ;
 
-/* Variables and functions */
- int CB_BEACON_BUF_SIZE ; 
- int CB_MAX_BUF_SIZE ; 
- int PKT_BUF_SZ ; 
- int /*<<< orphan*/  pci_free_consistent (int /*<<< orphan*/ ,int,scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int CB_BEACON_BUF_SIZE ;
+ int CB_MAX_BUF_SIZE ;
+ int PKT_BUF_SZ ;
+ int pci_free_consistent (int ,int,scalar_t__,int ) ;
 
 __attribute__((used)) static void device_free_rings(PSDevice pDevice) {
 

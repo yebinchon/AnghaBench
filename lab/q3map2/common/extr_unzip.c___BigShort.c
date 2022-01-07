@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int byte ;
 
-/* Variables and functions */
 
-short   __BigShort (short l)
+
+
+typedef int byte ;
+
+
+
+short __BigShort (short l)
 {
-	byte    b1,b2;
+ byte b1,b2;
 
-	b1 = l&255;
-	b2 = (l>>8)&255;
+ b1 = l&255;
+ b2 = (l>>8)&255;
 
-	return (b1<<8) + b2;
+ return (b1<<8) + b2;
 }

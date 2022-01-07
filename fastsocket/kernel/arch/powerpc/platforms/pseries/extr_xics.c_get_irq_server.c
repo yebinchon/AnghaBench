@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cpumask_t ;
 
-/* Variables and functions */
- int default_server ; 
+
+
+
+typedef int cpumask_t ;
+
+
+ int default_server ;
 
 __attribute__((used)) static int get_irq_server(unsigned int virq, cpumask_t cpumask,
-			  unsigned int strict_check)
+     unsigned int strict_check)
 {
-	return default_server;
+ return default_server;
 }

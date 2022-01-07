@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  use_dma; int /*<<< orphan*/  mode; int /*<<< orphan*/  hw; int /*<<< orphan*/  tx_lsbfirst; int /*<<< orphan*/  rx_lsbfirst; } ;
-typedef  TYPE_1__ spi_slave_hal_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  spi_ll_set_rx_lsbfirst (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spi_ll_set_tx_lsbfirst (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spi_ll_slave_set_mode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int use_dma; int mode; int hw; int tx_lsbfirst; int rx_lsbfirst; } ;
+typedef TYPE_1__ spi_slave_hal_context_t ;
+
+
+ int spi_ll_set_rx_lsbfirst (int ,int ) ;
+ int spi_ll_set_tx_lsbfirst (int ,int ) ;
+ int spi_ll_slave_set_mode (int ,int ,int ) ;
 
 void spi_slave_hal_setup_device(const spi_slave_hal_context_t *hal)
 {

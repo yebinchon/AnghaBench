@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_datasource_e ;
-struct fns_wrapper_baton {int /*<<< orphan*/  old_baton; TYPE_1__* vtable; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * (* datasource_close ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+typedef int svn_diff_datasource_e ;
+struct fns_wrapper_baton {int old_baton; TYPE_1__* vtable; } ;
+struct TYPE_2__ {int * (* datasource_close ) (int ,int ) ;} ;
+
+
+ int * stub1 (int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 datasource_close(void *baton,

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_host {int dummy; } ;
-typedef  int /*<<< orphan*/  irq_hw_number_t ;
+typedef int irq_hw_number_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  handle_level_irq ; 
- int /*<<< orphan*/  mpc8xx_pic ; 
- int /*<<< orphan*/  pr_debug (char*,unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_irq_chip_and_handler (unsigned int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int handle_level_irq ;
+ int mpc8xx_pic ;
+ int pr_debug (char*,unsigned int,int ) ;
+ int set_irq_chip_and_handler (unsigned int,int *,int ) ;
 
 __attribute__((used)) static int mpc8xx_pic_host_map(struct irq_host *h, unsigned int virq,
-			  irq_hw_number_t hw)
+     irq_hw_number_t hw)
 {
-	pr_debug("mpc8xx_pic_host_map(%d, 0x%lx)\n", virq, hw);
+ pr_debug("mpc8xx_pic_host_map(%d, 0x%lx)\n", virq, hw);
 
-	/* Set default irq handle */
-	set_irq_chip_and_handler(virq, &mpc8xx_pic, handle_level_irq);
-	return 0;
+
+ set_irq_chip_and_handler(virq, &mpc8xx_pic, handle_level_irq);
+ return 0;
 }

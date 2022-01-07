@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct venus_hfi_device {int /*<<< orphan*/  lock; } ;
-struct venus_core {int /*<<< orphan*/ * ops; int /*<<< orphan*/ * priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct venus_hfi_device*) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- struct venus_hfi_device* to_hfi_priv (struct venus_core*) ; 
- int /*<<< orphan*/  venus_interface_queues_release (struct venus_hfi_device*) ; 
+
+
+
+struct venus_hfi_device {int lock; } ;
+struct venus_core {int * ops; int * priv; } ;
+
+
+ int kfree (struct venus_hfi_device*) ;
+ int mutex_destroy (int *) ;
+ struct venus_hfi_device* to_hfi_priv (struct venus_core*) ;
+ int venus_interface_queues_release (struct venus_hfi_device*) ;
 
 void venus_hfi_destroy(struct venus_core *core)
 {
-	struct venus_hfi_device *hdev = to_hfi_priv(core);
+ struct venus_hfi_device *hdev = to_hfi_priv(core);
 
-	venus_interface_queues_release(hdev);
-	mutex_destroy(&hdev->lock);
-	kfree(hdev);
-	core->priv = NULL;
-	core->ops = NULL;
+ venus_interface_queues_release(hdev);
+ mutex_destroy(&hdev->lock);
+ kfree(hdev);
+ core->priv = ((void*)0);
+ core->ops = ((void*)0);
 }

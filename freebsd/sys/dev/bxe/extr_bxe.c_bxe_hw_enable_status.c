@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
+
+
+
+
+typedef int uint32_t ;
 struct bxe_softc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOGD (struct bxe_softc*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFC_REG_WEAK_ENABLE_PF ; 
- int /*<<< orphan*/  DBG_LOAD ; 
- int /*<<< orphan*/  IGU_REG_PCI_PF_MSIX_EN ; 
- int /*<<< orphan*/  IGU_REG_PCI_PF_MSIX_FUNC_MASK ; 
- int /*<<< orphan*/  IGU_REG_PCI_PF_MSI_EN ; 
- int /*<<< orphan*/  PBF_REG_DISABLE_PF ; 
- int /*<<< orphan*/  PGLUE_B_REG_FLR_REQUEST_PF_7_0_CLR ; 
- int /*<<< orphan*/  PGLUE_B_REG_INTERNAL_PFID_ENABLE_MASTER ; 
- int /*<<< orphan*/  PGLUE_B_REG_SHADOW_BME_PF_7_0_CLR ; 
- int /*<<< orphan*/  REG_RD (struct bxe_softc*,int /*<<< orphan*/ ) ; 
+
+ int BLOGD (struct bxe_softc*,int ,char*,int ) ;
+ int CFC_REG_WEAK_ENABLE_PF ;
+ int DBG_LOAD ;
+ int IGU_REG_PCI_PF_MSIX_EN ;
+ int IGU_REG_PCI_PF_MSIX_FUNC_MASK ;
+ int IGU_REG_PCI_PF_MSI_EN ;
+ int PBF_REG_DISABLE_PF ;
+ int PGLUE_B_REG_FLR_REQUEST_PF_7_0_CLR ;
+ int PGLUE_B_REG_INTERNAL_PFID_ENABLE_MASTER ;
+ int PGLUE_B_REG_SHADOW_BME_PF_7_0_CLR ;
+ int REG_RD (struct bxe_softc*,int ) ;
 
 __attribute__((used)) static void
 bxe_hw_enable_status(struct bxe_softc *sc)

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  va_list ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PrintArgs (char*,int /*<<< orphan*/ ) ; 
- int g_debug ; 
+
+
+
+typedef int va_list ;
+
+
+ int PrintArgs (char*,int ) ;
+ int g_debug ;
 
 void DebugArgs(char *fmt, va_list args)
 {
-	// Validate arguments
-	if (fmt == NULL)
-	{
-		return;
-	}
-	if (g_debug == false)
-	{
-		return;
-	}
 
-	PrintArgs(fmt, args);
+ if (fmt == ((void*)0))
+ {
+  return;
+ }
+ if (g_debug == 0)
+ {
+  return;
+ }
+
+ PrintArgs(fmt, args);
 }

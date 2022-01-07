@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  char* LPCSTR ;
-typedef  int INT_PTR ;
-typedef  int ATOM ;
 
-/* Variables and functions */
- int AddAtomA (char*) ; 
- int AddAtomW (int /*<<< orphan*/ ) ; 
- int ERROR_CALL_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  FOOBARW ; 
- int FindAtomA (char*) ; 
- int FindAtomW (int /*<<< orphan*/ ) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _foobarW ; 
- int /*<<< orphan*/  foobarW ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  trace (char*) ; 
- scalar_t__ unicode_OS ; 
+
+
+
+typedef int LPCWSTR ;
+typedef char* LPCSTR ;
+typedef int INT_PTR ;
+typedef int ATOM ;
+
+
+ int AddAtomA (char*) ;
+ int AddAtomW (int ) ;
+ int ERROR_CALL_NOT_IMPLEMENTED ;
+ int FOOBARW ;
+ int FindAtomA (char*) ;
+ int FindAtomW (int ) ;
+ int GetLastError () ;
+ int SetLastError (int) ;
+ scalar_t__ TRUE ;
+ int _foobarW ;
+ int foobarW ;
+ int ok (int,char*,...) ;
+ int trace (char*) ;
+ scalar_t__ unicode_OS ;
 
 __attribute__((used)) static void test_local_add_atom(void)
 {
@@ -41,13 +41,13 @@ __attribute__((used)) static void test_local_add_atom(void)
     ok( atom >= 0xc000, "bad atom id %x\n", atom );
     ok( GetLastError() == 0xdeadbeef, "AddAtomA set last error\n" );
 
-    /* Verify that it can be found (or not) appropriately */
+
     ok( FindAtomA( "foobar" ) == atom, "could not find atom foobar\n" );
     ok( FindAtomA( "FOOBAR" ) == atom, "could not find atom FOOBAR\n" );
     ok( !FindAtomA( "_foobar" ), "found _foobar\n" );
 
-    /* Add the same atom, specifying string as unicode; should
-     * find the first one, not add a new one */
+
+
     SetLastError( 0xdeadbeef );
     w_atom = AddAtomW( foobarW );
     if (w_atom && GetLastError() != ERROR_CALL_NOT_IMPLEMENTED)
@@ -61,7 +61,7 @@ __attribute__((used)) static void test_local_add_atom(void)
         ok( GetLastError() == 0xdeadbeef, "AddAtomW set last error\n" );
     }
 
-    /* Verify that it can be found (or not) appropriately via unicode name */
+
     if (unicode_OS)
     {
         ok( FindAtomW( foobarW ) == atom, "could not find atom foobar\n" );
@@ -69,9 +69,9 @@ __attribute__((used)) static void test_local_add_atom(void)
         ok( !FindAtomW( _foobarW ), "found _foobar\n" );
     }
 
-    /* Test integer atoms
-     * (0x0001 .. 0xbfff) should be valid;
-     * (0xc000 .. 0xffff) should be invalid */
+
+
+
 
     SetLastError( 0xdeadbeef );
     ok( AddAtomA(0) == 0 && GetLastError() == 0xdeadbeef, "succeeded to add atom 0\n" );

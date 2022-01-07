@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int errno ; 
- int nn_chunk_realloc (size_t,void**) ; 
+ int errno ;
+ int nn_chunk_realloc (size_t,void**) ;
 
 void *nn_reallocmsg (void *msg, size_t size)
 {
@@ -23,5 +15,5 @@ void *nn_reallocmsg (void *msg, size_t size)
     if (rc == 0)
         return msg;
     errno = -rc;
-    return NULL;
+    return ((void*)0);
 }

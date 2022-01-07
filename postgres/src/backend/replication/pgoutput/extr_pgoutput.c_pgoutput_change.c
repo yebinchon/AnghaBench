@@ -1,134 +1,134 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_9__ ;
-typedef  struct TYPE_25__   TYPE_8__ ;
-typedef  struct TYPE_24__   TYPE_7__ ;
-typedef  struct TYPE_23__   TYPE_6__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_26__ {int /*<<< orphan*/  out; scalar_t__ output_plugin_private; } ;
-struct TYPE_25__ {int /*<<< orphan*/  context; } ;
-struct TYPE_18__ {int /*<<< orphan*/  pubdelete; int /*<<< orphan*/  pubupdate; int /*<<< orphan*/  pubinsert; } ;
+
+
+typedef struct TYPE_26__ TYPE_9__ ;
+typedef struct TYPE_25__ TYPE_8__ ;
+typedef struct TYPE_24__ TYPE_7__ ;
+typedef struct TYPE_23__ TYPE_6__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+struct TYPE_26__ {int out; scalar_t__ output_plugin_private; } ;
+struct TYPE_25__ {int context; } ;
+struct TYPE_18__ {int pubdelete; int pubupdate; int pubinsert; } ;
 struct TYPE_24__ {TYPE_1__ pubactions; } ;
 struct TYPE_21__ {TYPE_3__* oldtuple; TYPE_2__* newtuple; } ;
 struct TYPE_22__ {TYPE_4__ tp; } ;
 struct TYPE_23__ {int action; TYPE_5__ data; } ;
-struct TYPE_20__ {int /*<<< orphan*/  tuple; } ;
-struct TYPE_19__ {int /*<<< orphan*/  tuple; } ;
-typedef  int /*<<< orphan*/  ReorderBufferTXN ;
-typedef  TYPE_6__ ReorderBufferChange ;
-typedef  TYPE_7__ RelationSyncEntry ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  TYPE_8__ PGOutputData ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  TYPE_9__ LogicalDecodingContext ;
-typedef  int /*<<< orphan*/ * HeapTuple ;
+struct TYPE_20__ {int tuple; } ;
+struct TYPE_19__ {int tuple; } ;
+typedef int ReorderBufferTXN ;
+typedef TYPE_6__ ReorderBufferChange ;
+typedef TYPE_7__ RelationSyncEntry ;
+typedef int Relation ;
+typedef TYPE_8__ PGOutputData ;
+typedef int MemoryContext ;
+typedef TYPE_9__ LogicalDecodingContext ;
+typedef int * HeapTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  DEBUG1 ; 
- int /*<<< orphan*/  MemoryContextReset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OutputPluginPrepareWrite (TYPE_9__*,int) ; 
- int /*<<< orphan*/  OutputPluginWrite (TYPE_9__*,int) ; 
-#define  REORDER_BUFFER_CHANGE_DELETE 130 
-#define  REORDER_BUFFER_CHANGE_INSERT 129 
-#define  REORDER_BUFFER_CHANGE_UPDATE 128 
- int /*<<< orphan*/  RelationGetRelid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
- TYPE_7__* get_rel_sync_entry (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_publishable_relation (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  logicalrep_write_delete (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  logicalrep_write_insert (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  logicalrep_write_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  maybe_send_schema (TYPE_9__*,int /*<<< orphan*/ ,TYPE_7__*) ; 
+
+ int Assert (int) ;
+ int DEBUG1 ;
+ int MemoryContextReset (int ) ;
+ int MemoryContextSwitchTo (int ) ;
+ int OutputPluginPrepareWrite (TYPE_9__*,int) ;
+ int OutputPluginWrite (TYPE_9__*,int) ;
+
+
+
+ int RelationGetRelid (int ) ;
+ int elog (int ,char*) ;
+ TYPE_7__* get_rel_sync_entry (TYPE_8__*,int ) ;
+ int is_publishable_relation (int ) ;
+ int logicalrep_write_delete (int ,int ,int *) ;
+ int logicalrep_write_insert (int ,int ,int *) ;
+ int logicalrep_write_update (int ,int ,int *,int *) ;
+ int maybe_send_schema (TYPE_9__*,int ,TYPE_7__*) ;
 
 __attribute__((used)) static void
 pgoutput_change(LogicalDecodingContext *ctx, ReorderBufferTXN *txn,
-				Relation relation, ReorderBufferChange *change)
+    Relation relation, ReorderBufferChange *change)
 {
-	PGOutputData *data = (PGOutputData *) ctx->output_plugin_private;
-	MemoryContext old;
-	RelationSyncEntry *relentry;
+ PGOutputData *data = (PGOutputData *) ctx->output_plugin_private;
+ MemoryContext old;
+ RelationSyncEntry *relentry;
 
-	if (!is_publishable_relation(relation))
-		return;
+ if (!is_publishable_relation(relation))
+  return;
 
-	relentry = get_rel_sync_entry(data, RelationGetRelid(relation));
+ relentry = get_rel_sync_entry(data, RelationGetRelid(relation));
 
-	/* First check the table filter */
-	switch (change->action)
-	{
-		case REORDER_BUFFER_CHANGE_INSERT:
-			if (!relentry->pubactions.pubinsert)
-				return;
-			break;
-		case REORDER_BUFFER_CHANGE_UPDATE:
-			if (!relentry->pubactions.pubupdate)
-				return;
-			break;
-		case REORDER_BUFFER_CHANGE_DELETE:
-			if (!relentry->pubactions.pubdelete)
-				return;
-			break;
-		default:
-			Assert(false);
-	}
 
-	/* Avoid leaking memory by using and resetting our own context */
-	old = MemoryContextSwitchTo(data->context);
+ switch (change->action)
+ {
+  case 129:
+   if (!relentry->pubactions.pubinsert)
+    return;
+   break;
+  case 128:
+   if (!relentry->pubactions.pubupdate)
+    return;
+   break;
+  case 130:
+   if (!relentry->pubactions.pubdelete)
+    return;
+   break;
+  default:
+   Assert(0);
+ }
 
-	maybe_send_schema(ctx, relation, relentry);
 
-	/* Send the data */
-	switch (change->action)
-	{
-		case REORDER_BUFFER_CHANGE_INSERT:
-			OutputPluginPrepareWrite(ctx, true);
-			logicalrep_write_insert(ctx->out, relation,
-									&change->data.tp.newtuple->tuple);
-			OutputPluginWrite(ctx, true);
-			break;
-		case REORDER_BUFFER_CHANGE_UPDATE:
-			{
-				HeapTuple	oldtuple = change->data.tp.oldtuple ?
-				&change->data.tp.oldtuple->tuple : NULL;
+ old = MemoryContextSwitchTo(data->context);
 
-				OutputPluginPrepareWrite(ctx, true);
-				logicalrep_write_update(ctx->out, relation, oldtuple,
-										&change->data.tp.newtuple->tuple);
-				OutputPluginWrite(ctx, true);
-				break;
-			}
-		case REORDER_BUFFER_CHANGE_DELETE:
-			if (change->data.tp.oldtuple)
-			{
-				OutputPluginPrepareWrite(ctx, true);
-				logicalrep_write_delete(ctx->out, relation,
-										&change->data.tp.oldtuple->tuple);
-				OutputPluginWrite(ctx, true);
-			}
-			else
-				elog(DEBUG1, "didn't send DELETE change because of missing oldtuple");
-			break;
-		default:
-			Assert(false);
-	}
+ maybe_send_schema(ctx, relation, relentry);
 
-	/* Cleanup */
-	MemoryContextSwitchTo(old);
-	MemoryContextReset(data->context);
+
+ switch (change->action)
+ {
+  case 129:
+   OutputPluginPrepareWrite(ctx, 1);
+   logicalrep_write_insert(ctx->out, relation,
+         &change->data.tp.newtuple->tuple);
+   OutputPluginWrite(ctx, 1);
+   break;
+  case 128:
+   {
+    HeapTuple oldtuple = change->data.tp.oldtuple ?
+    &change->data.tp.oldtuple->tuple : ((void*)0);
+
+    OutputPluginPrepareWrite(ctx, 1);
+    logicalrep_write_update(ctx->out, relation, oldtuple,
+          &change->data.tp.newtuple->tuple);
+    OutputPluginWrite(ctx, 1);
+    break;
+   }
+  case 130:
+   if (change->data.tp.oldtuple)
+   {
+    OutputPluginPrepareWrite(ctx, 1);
+    logicalrep_write_delete(ctx->out, relation,
+          &change->data.tp.oldtuple->tuple);
+    OutputPluginWrite(ctx, 1);
+   }
+   else
+    elog(DEBUG1, "didn't send DELETE change because of missing oldtuple");
+   break;
+  default:
+   Assert(0);
+ }
+
+
+ MemoryContextSwitchTo(old);
+ MemoryContextReset(data->context);
 }

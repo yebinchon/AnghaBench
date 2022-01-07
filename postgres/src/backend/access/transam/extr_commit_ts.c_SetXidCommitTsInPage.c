@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TransactionId ;
-typedef  int /*<<< orphan*/  TimestampTz ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int TransactionId ;
+typedef int TimestampTz ;
 struct TYPE_5__ {TYPE_1__* shared; } ;
 struct TYPE_4__ {int* page_dirty; } ;
-typedef  int /*<<< orphan*/  RepOriginId ;
+typedef int RepOriginId ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CommitTsControlLock ; 
- TYPE_2__* CommitTsCtl ; 
- int /*<<< orphan*/  LWLockAcquire (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LWLockRelease (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LW_EXCLUSIVE ; 
- int SimpleLruReadPage (TYPE_2__*,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TransactionIdSetCommitTs (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+ int CommitTsControlLock ;
+ TYPE_2__* CommitTsCtl ;
+ int LWLockAcquire (int ,int ) ;
+ int LWLockRelease (int ) ;
+ int LW_EXCLUSIVE ;
+ int SimpleLruReadPage (TYPE_2__*,int,int,int ) ;
+ int TransactionIdSetCommitTs (int ,int ,int ,int) ;
 
 __attribute__((used)) static void
 SetXidCommitTsInPage(TransactionId xid, int nsubxids,
-					 TransactionId *subxids, TimestampTz ts,
-					 RepOriginId nodeid, int pageno)
+      TransactionId *subxids, TimestampTz ts,
+      RepOriginId nodeid, int pageno)
 {
-	int			slotno;
-	int			i;
+ int slotno;
+ int i;
 
-	LWLockAcquire(CommitTsControlLock, LW_EXCLUSIVE);
+ LWLockAcquire(CommitTsControlLock, LW_EXCLUSIVE);
 
-	slotno = SimpleLruReadPage(CommitTsCtl, pageno, true, xid);
+ slotno = SimpleLruReadPage(CommitTsCtl, pageno, 1, xid);
 
-	TransactionIdSetCommitTs(xid, ts, nodeid, slotno);
-	for (i = 0; i < nsubxids; i++)
-		TransactionIdSetCommitTs(subxids[i], ts, nodeid, slotno);
+ TransactionIdSetCommitTs(xid, ts, nodeid, slotno);
+ for (i = 0; i < nsubxids; i++)
+  TransactionIdSetCommitTs(subxids[i], ts, nodeid, slotno);
 
-	CommitTsCtl->shared->page_dirty[slotno] = true;
+ CommitTsCtl->shared->page_dirty[slotno] = 1;
 
-	LWLockRelease(CommitTsControlLock);
+ LWLockRelease(CommitTsControlLock);
 }

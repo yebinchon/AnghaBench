@@ -1,122 +1,122 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  c ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_14__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_13__ {int /*<<< orphan*/  RemoteClient; } ;
-struct TYPE_12__ {int /*<<< orphan*/  StartupAccount; int /*<<< orphan*/  ServerCert; int /*<<< orphan*/  RetryOnServerCert; int /*<<< orphan*/  CheckServerCert; TYPE_1__* ClientOption; int /*<<< orphan*/  ClientAuth; int /*<<< orphan*/  AccountName; } ;
-struct TYPE_11__ {int /*<<< orphan*/  HubName; int /*<<< orphan*/  Hostname; scalar_t__ Port; } ;
-typedef  TYPE_2__ RPC_CLIENT_GET_ACCOUNT ;
-typedef  TYPE_2__ RPC_CLIENT_CREATE_ACCOUNT ;
-typedef  TYPE_4__ PC ;
-typedef  TYPE_5__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CONSOLE ;
 
-/* Variables and functions */
- scalar_t__ CcGetAccount (int /*<<< orphan*/ ,TYPE_2__*) ; 
- scalar_t__ CcSetAccount (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  CiFreeClientGetAccount (TYPE_2__*) ; 
- int /*<<< orphan*/  CmdEvalHostAndPort ; 
- int /*<<< orphan*/  CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdEvalSafe ; 
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- char* GetParamStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  GetParamUniStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,TYPE_5__*,int) ; 
- int /*<<< orphan*/  ParseHostPort (char*,char**,scalar_t__*,int) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_2__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef int c ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_14__ {char* member_0; int * member_4; int member_3; int member_2; int member_1; } ;
+struct TYPE_13__ {int RemoteClient; } ;
+struct TYPE_12__ {int StartupAccount; int ServerCert; int RetryOnServerCert; int CheckServerCert; TYPE_1__* ClientOption; int ClientAuth; int AccountName; } ;
+struct TYPE_11__ {int HubName; int Hostname; scalar_t__ Port; } ;
+typedef TYPE_2__ RPC_CLIENT_GET_ACCOUNT ;
+typedef TYPE_2__ RPC_CLIENT_CREATE_ACCOUNT ;
+typedef TYPE_4__ PC ;
+typedef TYPE_5__ PARAM ;
+typedef int LIST ;
+typedef int CONSOLE ;
+
+
+ scalar_t__ CcGetAccount (int ,TYPE_2__*) ;
+ scalar_t__ CcSetAccount (int ,TYPE_2__*) ;
+ int CiFreeClientGetAccount (TYPE_2__*) ;
+ int CmdEvalHostAndPort ;
+ int CmdEvalNotEmpty ;
+ int CmdEvalSafe ;
+ int CmdPrintError (int *,scalar_t__) ;
+ int CmdPrompt ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int Free (char*) ;
+ int FreeParamValueList (int *) ;
+ char* GetParamStr (int *,char*) ;
+ int GetParamUniStr (int *,char*) ;
+ int * ParseCommandList (int *,char*,int *,TYPE_5__*,int) ;
+ int ParseHostPort (char*,char**,scalar_t__*,int) ;
+ int StrCpy (int ,int,char*) ;
+ int UniStrCpy (int ,int,int ) ;
+ int Zero (TYPE_2__*,int) ;
+ int _UU (char*) ;
 
 UINT PcAccountSet(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PC *pc = (PC *)param;
-	UINT ret = ERR_NO_ERROR;
-	RPC_CLIENT_GET_ACCOUNT t;
-	char *host = NULL;
-	UINT port = 443;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		{"[name]", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Name"), CmdEvalNotEmpty, NULL},
-		{"SERVER", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Server"), CmdEvalHostAndPort, NULL},
-		{"HUB", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Hub"), CmdEvalSafe, NULL},
-	};
+ LIST *o;
+ PC *pc = (PC *)param;
+ UINT ret = ERR_NO_ERROR;
+ RPC_CLIENT_GET_ACCOUNT t;
+ char *host = ((void*)0);
+ UINT port = 443;
 
-	// Get the parameter list
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
+  {"[name]", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Name"), CmdEvalNotEmpty, ((void*)0)},
+  {"SERVER", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Server"), CmdEvalHostAndPort, ((void*)0)},
+  {"HUB", CmdPrompt, _UU("CMD_AccountCreate_Prompt_Hub"), CmdEvalSafe, ((void*)0)},
+ };
 
-	// RPC call
-	Zero(&t, sizeof(t));
 
-	ParseHostPort(GetParamStr(o, "SERVER"), &host, &port, 443);
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-	Zero(&t, sizeof(t));
-	UniStrCpy(t.AccountName, sizeof(t.AccountName), GetParamUniStr(o, "[name]"));
 
-	ret = CcGetAccount(pc->RemoteClient, &t);
+ Zero(&t, sizeof(t));
 
-	if (ret == ERR_NO_ERROR)
-	{
-		RPC_CLIENT_CREATE_ACCOUNT c;
-		// Success
-		t.ClientOption->Port = port;
-		StrCpy(t.ClientOption->Hostname, sizeof(t.ClientOption->Hostname), host);
-		StrCpy(t.ClientOption->HubName, sizeof(t.ClientOption->HubName), GetParamStr(o, "HUB"));
+ ParseHostPort(GetParamStr(o, "SERVER"), &host, &port, 443);
 
-		Zero(&c, sizeof(c));
+ Zero(&t, sizeof(t));
+ UniStrCpy(t.AccountName, sizeof(t.AccountName), GetParamUniStr(o, "[name]"));
 
-		c.ClientAuth = t.ClientAuth;
-		c.ClientOption = t.ClientOption;
-		c.CheckServerCert = t.CheckServerCert;
-		c.RetryOnServerCert = t.RetryOnServerCert;
-		c.ServerCert = t.ServerCert;
-		c.StartupAccount = t.StartupAccount;
+ ret = CcGetAccount(pc->RemoteClient, &t);
 
-		ret = CcSetAccount(pc->RemoteClient, &c);
-	}
+ if (ret == ERR_NO_ERROR)
+ {
+  RPC_CLIENT_CREATE_ACCOUNT c;
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// Error has occurred
-		CmdPrintError(c, ret);
-	}
+  t.ClientOption->Port = port;
+  StrCpy(t.ClientOption->Hostname, sizeof(t.ClientOption->Hostname), host);
+  StrCpy(t.ClientOption->HubName, sizeof(t.ClientOption->HubName), GetParamStr(o, "HUB"));
 
-	CiFreeClientGetAccount(&t);
+  Zero(&c, sizeof(c));
 
-	// Release of the parameter list
-	FreeParamValueList(o);
+  c.ClientAuth = t.ClientAuth;
+  c.ClientOption = t.ClientOption;
+  c.CheckServerCert = t.CheckServerCert;
+  c.RetryOnServerCert = t.RetryOnServerCert;
+  c.ServerCert = t.ServerCert;
+  c.StartupAccount = t.StartupAccount;
 
-	Free(host);
+  ret = CcSetAccount(pc->RemoteClient, &c);
+ }
 
-	return ret;
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+ }
+
+ CiFreeClientGetAccount(&t);
+
+
+ FreeParamValueList(o);
+
+ Free(host);
+
+ return ret;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int x; int /*<<< orphan*/ * p; } ;
-typedef  TYPE_1__ pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
-typedef  int /*<<< orphan*/  LPLONG ;
 
-/* Variables and functions */
- int InterlockedExchangeAdd (int /*<<< orphan*/ ,long) ; 
- int NUMTHREADS ; 
- int /*<<< orphan*/  PTHREAD_CREATE_DETACHED ; 
- int /*<<< orphan*/  Sleep (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  done ; 
- int /*<<< orphan*/  func ; 
- int /*<<< orphan*/  printf (char*,unsigned int) ; 
- scalar_t__ pthread_attr_init (int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_attr_setdetachstate (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ pthread_create (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int x; int * p; } ;
+typedef TYPE_1__ pthread_t ;
+typedef int pthread_attr_t ;
+typedef int LPLONG ;
+
+
+ int InterlockedExchangeAdd (int ,long) ;
+ int NUMTHREADS ;
+ int PTHREAD_CREATE_DETACHED ;
+ int Sleep (int) ;
+ int assert (int) ;
+ int done ;
+ int func ;
+ int printf (char*,unsigned int) ;
+ scalar_t__ pthread_attr_init (int *) ;
+ scalar_t__ pthread_attr_setdetachstate (int *,int ) ;
+ scalar_t__ pthread_create (TYPE_1__*,int *,int ,int *) ;
 
 int
 main()
@@ -36,16 +36,16 @@ main()
   pthread_attr_t attr;
   int i;
   unsigned int notUnique = 0,
-	       totalHandles = 0,
-	       reuseMax = 0,
-	       reuseMin = NUMTHREADS;
+        totalHandles = 0,
+        reuseMax = 0,
+        reuseMin = NUMTHREADS;
 
   assert(pthread_attr_init(&attr) == 0);
   assert(pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED) == 0);
 
   for (i = 0; i < NUMTHREADS; i++)
     {
-      while(pthread_create(&t[i], &attr, func, NULL) != 0)
+      while(pthread_create(&t[i], &attr, func, ((void*)0)) != 0)
         Sleep(1);
     }
 
@@ -54,13 +54,13 @@ main()
 
   Sleep(100);
 
-  /*
-   * Analyse reuse by computing min and max number of times pthread_create()
-   * returned the same pthread_t value.
-   */
+
+
+
+
   for (i = 0; i < NUMTHREADS; i++)
     {
-      if (t[i].p != NULL)
+      if (t[i].p != ((void*)0))
         {
           unsigned int j, thisMax;
 
@@ -69,11 +69,11 @@ main()
           for (j = i+1; j < NUMTHREADS; j++)
             if (t[i].p == t[j].p)
               {
-		if (t[i].x == t[j].x)
-		  notUnique++;
+  if (t[i].x == t[j].x)
+    notUnique++;
                 if (thisMax < t[j].x)
                   thisMax = t[j].x;
-                t[j].p = NULL;
+                t[j].p = ((void*)0);
               }
 
           if (reuseMin > thisMax)
@@ -85,13 +85,13 @@ main()
     }
 
   for (i = 0; i < NUMTHREADS; i++)
-    if (t[i].p != NULL)
+    if (t[i].p != ((void*)0))
       totalHandles++;
 
-  /*
-   * pthread_t reuse counts start at 0, so we need to add 1
-   * to the max and min values derived above.
-   */
+
+
+
+
   printf("For %d total threads:\n", NUMTHREADS);
   printf("Non-unique IDs = %d\n", notUnique);
   printf("Reuse maximum  = %d\n", reuseMax + 1);

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ ycbcr_matrix; scalar_t__ transfer_function; scalar_t__ color_primaries; } ;
-typedef  TYPE_1__ VTEncContext ;
+typedef TYPE_1__ VTEncContext ;
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-typedef  int /*<<< orphan*/  CFMutableDictionaryRef ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef int CFMutableDictionaryRef ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFDictionarySetValue (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  kCVImageBufferColorPrimariesKey ; 
- int /*<<< orphan*/  kCVImageBufferTransferFunctionKey ; 
- int /*<<< orphan*/  kCVImageBufferYCbCrMatrixKey ; 
+
+ int CFDictionarySetValue (int ,int ,scalar_t__) ;
+ int kCVImageBufferColorPrimariesKey ;
+ int kCVImageBufferTransferFunctionKey ;
+ int kCVImageBufferYCbCrMatrixKey ;
 
 __attribute__((used)) static void add_color_attr(AVCodecContext *avctx, CFMutableDictionaryRef dict) {
     VTEncContext *vtctx = avctx->priv_data;

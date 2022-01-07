@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ capacity_in_blocks; scalar_t__ blocks_in_use; int /*<<< orphan*/  allocation_table; } ;
-typedef  TYPE_1__ urlcache_header ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ capacity_in_blocks; scalar_t__ blocks_in_use; int allocation_table; } ;
+typedef TYPE_1__ urlcache_header ;
 struct TYPE_6__ {scalar_t__ blocks_used; } ;
-typedef  TYPE_2__ entry_header ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
+typedef TYPE_2__ entry_header ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- scalar_t__ BLOCKSIZE ; 
- int ENTRY_START_OFFSET ; 
- scalar_t__ ERROR_HANDLE_DISK_FULL ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__,int) ; 
- int /*<<< orphan*/  urlcache_block_alloc (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ urlcache_block_is_free (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ scalar_t__ BLOCKSIZE ;
+ int ENTRY_START_OFFSET ;
+ scalar_t__ ERROR_HANDLE_DISK_FULL ;
+ scalar_t__ ERROR_SUCCESS ;
+ int TRACE (char*,scalar_t__,int) ;
+ int urlcache_block_alloc (int ,scalar_t__) ;
+ scalar_t__ urlcache_block_is_free (int ,scalar_t__) ;
 
 __attribute__((used)) static DWORD urlcache_entry_alloc(urlcache_header *header, DWORD blocks_needed, entry_header **entry)
 {

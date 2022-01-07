@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  UINT_PTR ;
-typedef  void* UINT ;
-struct TYPE_6__ {void* bRestored; scalar_t__ iStartBmp; scalar_t__ idBitmap; int /*<<< orphan*/ * hbmButtons; void* bUnicode; scalar_t__ hMenu; scalar_t__ hModule; void* Delta; scalar_t__ (* ExtProc ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct TYPE_5__ {int dwSize; int /*<<< orphan*/  szMenuName; scalar_t__ hMenu; void* wMenuDelta; } ;
-struct TYPE_4__ {int dwSize; int /*<<< orphan*/  szMenuName; scalar_t__ hMenu; void* wMenuDelta; } ;
-typedef  scalar_t__ TCHAR ;
-typedef  scalar_t__* LPTSTR ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ INT ;
-typedef  scalar_t__ HMENU ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ (* FM_EXT_PROC ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;
-typedef  TYPE_1__ FMS_LOADW ;
-typedef  TYPE_2__ FMS_LOADA ;
-typedef  void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  BiasMenu (scalar_t__,void*) ; 
- int /*<<< orphan*/  COUNTOF (scalar_t__*) ; 
- void* FALSE ; 
- int /*<<< orphan*/  FMEVENT_LOAD ; 
- int /*<<< orphan*/  FM_EXT_PROC_ENTRYA ; 
- int /*<<< orphan*/  FM_EXT_PROC_ENTRYW ; 
- int /*<<< orphan*/  FreeLibrary (scalar_t__) ; 
- scalar_t__ GetMenu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetPrivateProfileString (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ GetProcAddress (scalar_t__,int /*<<< orphan*/ ) ; 
- int IDM_EXTENSIONS ; 
- int /*<<< orphan*/  InsertMenuA (scalar_t__,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InsertMenuW (scalar_t__,scalar_t__,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ LoadLibrary (scalar_t__*) ; 
- int MAXPATHLEN ; 
- int MAX_EXTENSIONS ; 
- int MF_BYPOSITION ; 
- int MF_POPUP ; 
- scalar_t__ MapIDMToMenuPos (int) ; 
- int PROFILE_STRING_SIZ ; 
- void* TRUE ; 
- int /*<<< orphan*/  bSecMenuDeleted ; 
- TYPE_3__* extensions ; 
- int /*<<< orphan*/  hwndFrame ; 
- int iNumExtensions ; 
- scalar_t__ lstrlen (scalar_t__*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szAddons ; 
- int /*<<< orphan*/  szNULL ; 
- int /*<<< orphan*/  szTheINIFile ; 
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int UINT_PTR ;
+typedef void* UINT ;
+struct TYPE_6__ {void* bRestored; scalar_t__ iStartBmp; scalar_t__ idBitmap; int * hbmButtons; void* bUnicode; scalar_t__ hMenu; scalar_t__ hModule; void* Delta; scalar_t__ (* ExtProc ) (int ,int ,int ) ;} ;
+struct TYPE_5__ {int dwSize; int szMenuName; scalar_t__ hMenu; void* wMenuDelta; } ;
+struct TYPE_4__ {int dwSize; int szMenuName; scalar_t__ hMenu; void* wMenuDelta; } ;
+typedef scalar_t__ TCHAR ;
+typedef scalar_t__* LPTSTR ;
+typedef int LPARAM ;
+typedef scalar_t__ INT ;
+typedef scalar_t__ HMENU ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ (* FM_EXT_PROC ) (int ,int ,int ) ;
+typedef TYPE_1__ FMS_LOADW ;
+typedef TYPE_2__ FMS_LOADA ;
+typedef void* BOOL ;
+
+
+ int ASSERT (int) ;
+ int BiasMenu (scalar_t__,void*) ;
+ int COUNTOF (scalar_t__*) ;
+ void* FALSE ;
+ int FMEVENT_LOAD ;
+ int FM_EXT_PROC_ENTRYA ;
+ int FM_EXT_PROC_ENTRYW ;
+ int FreeLibrary (scalar_t__) ;
+ scalar_t__ GetMenu (int ) ;
+ int GetPrivateProfileString (int ,scalar_t__*,int ,scalar_t__*,int ,int ) ;
+ scalar_t__ GetProcAddress (scalar_t__,int ) ;
+ int IDM_EXTENSIONS ;
+ int InsertMenuA (scalar_t__,scalar_t__,int,int ,int ) ;
+ int InsertMenuW (scalar_t__,scalar_t__,int,int ,int ) ;
+ scalar_t__ LoadLibrary (scalar_t__*) ;
+ int MAXPATHLEN ;
+ int MAX_EXTENSIONS ;
+ int MF_BYPOSITION ;
+ int MF_POPUP ;
+ scalar_t__ MapIDMToMenuPos (int) ;
+ int PROFILE_STRING_SIZ ;
+ void* TRUE ;
+ int bSecMenuDeleted ;
+ TYPE_3__* extensions ;
+ int hwndFrame ;
+ int iNumExtensions ;
+ scalar_t__ lstrlen (scalar_t__*) ;
+ scalar_t__ stub1 (int ,int ,int ) ;
+ int szAddons ;
+ int szNULL ;
+ int szTheINIFile ;
 
 VOID
 InitExtensions()
@@ -82,7 +82,7 @@ InitExtensions()
    ASSERT(!bSecMenuDeleted);
    iMenuBase = MapIDMToMenuPos(IDM_EXTENSIONS);
 
-   GetPrivateProfileString(szAddons, NULL, szNULL, szBuf, COUNTOF(szBuf), szTheINIFile);
+   GetPrivateProfileString(szAddons, ((void*)0), szNULL, szBuf, COUNTOF(szBuf), szTheINIFile);
 
    for (p = szBuf; *p && iNumExtensions < MAX_EXTENSIONS; p += lstrlen(p) + 1) {
 
@@ -105,17 +105,6 @@ InitExtensions()
             FMS_LOADW lsW;
 
             bias = ((IDM_EXTENSIONS + iNumExtensions + 1)*100);
-
-            // We are now going to bias each menu, since extensions
-            // don't know about each other and may clash IDM_xx if
-            // we don't.
-
-            // Our system is as follow:  IDMs 100 - 699 are reserved
-            // for us (menus 0 - 5 inclusive).  Thus, IDMs
-            // 700 - 1699 is reserved for extensions.
-            // This is why we added 1 in the above line to compute
-            // NOTE: IDMs 0000-0099 are not used for menu 0.
-
             if (bUnicode)
                lsW.wMenuDelta = bias;
             else
@@ -135,8 +124,8 @@ InitExtensions()
                extensions[iNumExtensions].hMenu = hMenu;
                extensions[iNumExtensions].bUnicode = bUnicode;
 
-               // these are set when FMEVENT_TOOLBARLOAD is called
-               extensions[iNumExtensions].hbmButtons = NULL;
+
+               extensions[iNumExtensions].hbmButtons = ((void*)0);
                extensions[iNumExtensions].idBitmap = 0;
                extensions[iNumExtensions].iStartBmp = 0;
                extensions[iNumExtensions].bRestored = FALSE;

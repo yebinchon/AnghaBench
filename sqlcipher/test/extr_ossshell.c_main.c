@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- unsigned int FUZZ_SHOW_ERRORS ; 
- unsigned int FUZZ_SHOW_MAX_DELAY ; 
- unsigned int FUZZ_SQL_TRACE ; 
- int /*<<< orphan*/  LLVMFuzzerTestOneInput (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  SEEK_END ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fopen (char const*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int fread (int /*<<< orphan*/ *,size_t,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fseek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t ftell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ossfuzz_set_debug_flags (unsigned int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/ * realloc (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  rewind (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- scalar_t__ strcmp (char const*,char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int FILE ;
+
+
+ unsigned int FUZZ_SHOW_ERRORS ;
+ unsigned int FUZZ_SHOW_MAX_DELAY ;
+ unsigned int FUZZ_SQL_TRACE ;
+ int LLVMFuzzerTestOneInput (int *,size_t) ;
+ int SEEK_END ;
+ int exit (int) ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int * fopen (char const*,char*) ;
+ int fprintf (int ,char*,...) ;
+ int fread (int *,size_t,int,int *) ;
+ int free (int *) ;
+ int fseek (int *,int ,int ) ;
+ size_t ftell (int *) ;
+ int ossfuzz_set_debug_flags (unsigned int) ;
+ int printf (char*,...) ;
+ int * realloc (int *,size_t) ;
+ int rewind (int *) ;
+ int stderr ;
+ int stdout ;
+ scalar_t__ strcmp (char const*,char*) ;
 
 int main(int argc, char **argv){
   FILE *in;

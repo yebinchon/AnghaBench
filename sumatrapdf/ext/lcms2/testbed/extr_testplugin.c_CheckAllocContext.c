@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DebugMemDontCheckThis (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DupContext (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PluginMemHandler () ; 
- int /*<<< orphan*/  cmsCreateContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsDeleteContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cmsPlugin (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cmsInt32Number ;
+typedef int cmsContext ;
+
+
+ int DebugMemDontCheckThis (int ) ;
+ int DupContext (int ,int *) ;
+ int * PluginMemHandler () ;
+ int cmsCreateContext (int *,int *) ;
+ int cmsDeleteContext (int ) ;
+ int cmsPlugin (int ,int *) ;
 
 cmsInt32Number CheckAllocContext(void)
 {
      cmsContext c1, c2, c3, c4;
 
-     c1 = cmsCreateContext(NULL, NULL);                 // This creates a context by using the normal malloc
+     c1 = cmsCreateContext(((void*)0), ((void*)0));
      DebugMemDontCheckThis(c1);
      cmsDeleteContext(c1);
 
-     c2 = cmsCreateContext(PluginMemHandler(), NULL);   // This creates a context by using the debug malloc
+     c2 = cmsCreateContext(PluginMemHandler(), ((void*)0));
      DebugMemDontCheckThis(c2);
      cmsDeleteContext(c2);
 
-     c1 = cmsCreateContext(NULL, NULL);
+     c1 = cmsCreateContext(((void*)0), ((void*)0));
      DebugMemDontCheckThis(c1);
 
-     c2 = cmsCreateContext(PluginMemHandler(), NULL);
+     c2 = cmsCreateContext(PluginMemHandler(), ((void*)0));
      DebugMemDontCheckThis(c2);
 
-     cmsPlugin(c1, PluginMemHandler()); // Now the context have custom allocators
+     cmsPlugin(c1, PluginMemHandler());
 
-     c3 = DupContext(c1, NULL);
-     c4 = DupContext(c2, NULL);
+     c3 = DupContext(c1, ((void*)0));
+     c4 = DupContext(c2, ((void*)0));
 
-     cmsDeleteContext(c1);  // Should be deleted by using nomal malloc
-     cmsDeleteContext(c2);  // Should be deleted by using debug malloc
-     cmsDeleteContext(c3);  // Should be deleted by using nomal malloc
-     cmsDeleteContext(c4);  // Should be deleted by using debug malloc
+     cmsDeleteContext(c1);
+     cmsDeleteContext(c2);
+     cmsDeleteContext(c3);
+     cmsDeleteContext(c4);
 
      return 1;
 }

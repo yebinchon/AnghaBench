@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct task_struct {int dummy; } ;
 struct siginfo {int dummy; } ;
-struct TYPE_2__ {int (* task_kill ) (struct task_struct*,struct siginfo*,int,int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* task_kill ) (struct task_struct*,struct siginfo*,int,int ) ;} ;
 
-/* Variables and functions */
- TYPE_1__* security_ops ; 
- int stub1 (struct task_struct*,struct siginfo*,int,int /*<<< orphan*/ ) ; 
+
+ TYPE_1__* security_ops ;
+ int stub1 (struct task_struct*,struct siginfo*,int,int ) ;
 
 int security_task_kill(struct task_struct *p, struct siginfo *info,
-			int sig, u32 secid)
+   int sig, u32 secid)
 {
-	return security_ops->task_kill(p, info, sig, secid);
+ return security_ops->task_kill(p, info, sig, secid);
 }

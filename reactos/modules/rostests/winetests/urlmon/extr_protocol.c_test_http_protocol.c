@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- int BINDF_ASYNCHRONOUS ; 
- int BINDF_ASYNCSTORAGE ; 
- int BINDF_FROMURLMON ; 
- int BINDF_NEEDFILE ; 
- int BINDF_NOWRITECACHE ; 
- int BINDF_PULLDATA ; 
- int /*<<< orphan*/  CLSID_HttpProtocol ; 
- int /*<<< orphan*/  CLSID_HttpSProtocol ; 
- int /*<<< orphan*/  HTTP_TEST ; 
- int TEST_ABORT ; 
- int TEST_ASYNCREQ ; 
- int TEST_DIRECT_READ ; 
- int TEST_DISABLEAUTOREDIRECT ; 
- int TEST_EMPTY ; 
- int TEST_FIRST_HTTP ; 
- int TEST_FROMCACHE ; 
- int TEST_POST ; 
- int TEST_REDIRECT ; 
- int TEST_USEIURI ; 
- int /*<<< orphan*/  TYMED_HGLOBAL ; 
- int /*<<< orphan*/  TYMED_ISTREAM ; 
- int /*<<< orphan*/  TYMED_NULL ; 
- int bindf ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  test_early_abort (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_http_protocol_url (char const*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+
+
+typedef char WCHAR ;
+
+
+ int BINDF_ASYNCHRONOUS ;
+ int BINDF_ASYNCSTORAGE ;
+ int BINDF_FROMURLMON ;
+ int BINDF_NEEDFILE ;
+ int BINDF_NOWRITECACHE ;
+ int BINDF_PULLDATA ;
+ int CLSID_HttpProtocol ;
+ int CLSID_HttpSProtocol ;
+ int HTTP_TEST ;
+ int TEST_ABORT ;
+ int TEST_ASYNCREQ ;
+ int TEST_DIRECT_READ ;
+ int TEST_DISABLEAUTOREDIRECT ;
+ int TEST_EMPTY ;
+ int TEST_FIRST_HTTP ;
+ int TEST_FROMCACHE ;
+ int TEST_POST ;
+ int TEST_REDIRECT ;
+ int TEST_USEIURI ;
+ int TYMED_HGLOBAL ;
+ int TYMED_ISTREAM ;
+ int TYMED_NULL ;
+ int bindf ;
+ scalar_t__ broken (int) ;
+ int test_early_abort (int *) ;
+ int test_http_protocol_url (char const*,int ,int,int ) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_http_protocol(void)
 {
@@ -95,11 +95,11 @@ __attribute__((used)) static void test_http_protocol(void)
     bindf = BINDF_ASYNCHRONOUS | BINDF_ASYNCSTORAGE | BINDF_PULLDATA | BINDF_FROMURLMON | BINDF_NOWRITECACHE;
     test_http_protocol_url(empty_url, HTTP_TEST, TEST_EMPTY, TYMED_NULL);
 
-    /* This is a bit ugly. We unconditionally disable this test on Wine. This won't work until we have
-     * support for reading from cache via HTTP layer in wininet. Until then, Wine will fail badly, affecting
-     * other, unrelated, tests. Working around it is not worth the trouble, we may simply make sure those
-     * tests work on Windows and have them around for the future.
-     */
+
+
+
+
+
     if(broken(1)) {
     trace("Testing http protocol (from cache)...\n");
     bindf = BINDF_ASYNCHRONOUS | BINDF_ASYNCSTORAGE | BINDF_PULLDATA | BINDF_FROMURLMON;

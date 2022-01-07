@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ mode; } ;
-struct game_capture {int /*<<< orphan*/  deactivate_hook; TYPE_1__ config; } ;
-typedef  int /*<<< orphan*/  obs_hotkey_t ;
-typedef  int /*<<< orphan*/  obs_hotkey_pair_id ;
+struct game_capture {int deactivate_hook; TYPE_1__ config; } ;
+typedef int obs_hotkey_t ;
+typedef int obs_hotkey_pair_id ;
 
-/* Variables and functions */
- scalar_t__ CAPTURE_MODE_HOTKEY ; 
- int /*<<< orphan*/  info (char*) ; 
- int /*<<< orphan*/  os_atomic_set_bool (int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ CAPTURE_MODE_HOTKEY ;
+ int info (char*) ;
+ int os_atomic_set_bool (int *,int) ;
 
 __attribute__((used)) static bool hotkey_stop(void *data, obs_hotkey_pair_id id, obs_hotkey_t *hotkey,
-			bool pressed)
+   bool pressed)
 {
-	struct game_capture *gc = data;
+ struct game_capture *gc = data;
 
-	if (pressed && gc->config.mode == CAPTURE_MODE_HOTKEY) {
-		info("Deactivate hotkey pressed");
-		os_atomic_set_bool(&gc->deactivate_hook, true);
-	}
+ if (pressed && gc->config.mode == CAPTURE_MODE_HOTKEY) {
+  info("Deactivate hotkey pressed");
+  os_atomic_set_bool(&gc->deactivate_hook, 1);
+ }
 
-	return true;
+ return 1;
 }

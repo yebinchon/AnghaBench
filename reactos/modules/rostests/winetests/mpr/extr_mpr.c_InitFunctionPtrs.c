@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- int /*<<< orphan*/  MPR_GET_PROC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WNetCachePassword ; 
- int /*<<< orphan*/  WNetEnumCachedPasswords ; 
- int /*<<< orphan*/  WNetGetCachedPassword ; 
- int /*<<< orphan*/  WNetRemoveCachedPassword ; 
- int /*<<< orphan*/  WNetUseConnectionA ; 
+
+
+
+typedef int HMODULE ;
+
+
+ int GetModuleHandleA (char*) ;
+ int MPR_GET_PROC (int ) ;
+ int WNetCachePassword ;
+ int WNetEnumCachedPasswords ;
+ int WNetGetCachedPassword ;
+ int WNetRemoveCachedPassword ;
+ int WNetUseConnectionA ;
 
 __attribute__((used)) static void InitFunctionPtrs(void)
 {

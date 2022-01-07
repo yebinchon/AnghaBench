@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  objs; int /*<<< orphan*/  ptrs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  free_alloc_pool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  htab_delete (int /*<<< orphan*/ ) ; 
- TYPE_1__* ref_table ; 
- int /*<<< orphan*/ * ref_table_alloc_pool ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int objs; int ptrs; } ;
+
+
+ int free (TYPE_1__*) ;
+ int free_alloc_pool (int *) ;
+ int htab_delete (int ) ;
+ TYPE_1__* ref_table ;
+ int * ref_table_alloc_pool ;
 
 __attribute__((used)) static void
 maybe_free_reference_table (void)
@@ -28,12 +28,12 @@ maybe_free_reference_table (void)
       htab_delete (ref_table->ptrs);
       htab_delete (ref_table->objs);
       free (ref_table);
-      ref_table = NULL;
+      ref_table = ((void*)0);
     }
 
   if (ref_table_alloc_pool)
     {
       free_alloc_pool (ref_table_alloc_pool);
-      ref_table_alloc_pool = NULL;
+      ref_table_alloc_pool = ((void*)0);
     }
 }

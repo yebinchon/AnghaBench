@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_RAND_BOTTOM_ANY ; 
- int /*<<< orphan*/  BN_RAND_TOP_ANY ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
- int /*<<< orphan*/  BN_rand (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_to_ASN1_INTEGER (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SERIAL_RAND_BITS ; 
+
+
+
+typedef int BIGNUM ;
+typedef int ASN1_INTEGER ;
+
+
+ int BN_RAND_BOTTOM_ANY ;
+ int BN_RAND_TOP_ANY ;
+ int BN_free (int *) ;
+ int * BN_new () ;
+ int BN_rand (int *,int ,int ,int ) ;
+ int BN_to_ASN1_INTEGER (int *,int *) ;
+ int SERIAL_RAND_BITS ;
 
 int rand_serial(BIGNUM *b, ASN1_INTEGER *ai)
 {
     BIGNUM *btmp;
     int ret = 0;
 
-    btmp = b == NULL ? BN_new() : b;
-    if (btmp == NULL)
+    btmp = b == ((void*)0) ? BN_new() : b;
+    if (btmp == ((void*)0))
         return 0;
 
     if (!BN_rand(btmp, SERIAL_RAND_BITS, BN_RAND_TOP_ANY, BN_RAND_BOTTOM_ANY))

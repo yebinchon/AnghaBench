@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_13__ {char* xmlns_uri; scalar_t__ guid; } ;
-typedef  TYPE_6__ namespace_as_attribute_t ;
-typedef  int /*<<< orphan*/  VARIANT_BOOL ;
+typedef TYPE_6__ namespace_as_attribute_t ;
+typedef int VARIANT_BOOL ;
 struct TYPE_12__ {char* member_0; char* member_1; char* member_2; } ;
-struct TYPE_11__ {char* member_0; char* member_2; int /*<<< orphan*/ * member_1; } ;
+struct TYPE_11__ {char* member_0; char* member_2; int * member_1; } ;
 struct TYPE_10__ {char* member_0; char* member_1; char* member_2; } ;
-struct TYPE_9__ {char* member_0; char* member_2; int /*<<< orphan*/ * member_1; } ;
+struct TYPE_9__ {char* member_0; char* member_2; int * member_1; } ;
 struct TYPE_8__ {char* member_0; char* member_1; char* member_2; } ;
-typedef  size_t LONG ;
-typedef  int /*<<< orphan*/  IXMLDOMNode ;
-typedef  int /*<<< orphan*/  IXMLDOMNamedNodeMap ;
-typedef  int /*<<< orphan*/  IXMLDOMDocument ;
-typedef  size_t HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
+typedef size_t LONG ;
+typedef int IXMLDOMNode ;
+typedef int IXMLDOMNamedNodeMap ;
+typedef int IXMLDOMDocument ;
+typedef size_t HRESULT ;
+typedef int * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- size_t CoCreateInstance (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IXMLDOMDocument2 ; 
- int /*<<< orphan*/  IXMLDOMDocument_Release (int /*<<< orphan*/ *) ; 
- size_t IXMLDOMDocument_loadXML (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- size_t IXMLDOMDocument_selectSingleNode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IXMLDOMNamedNodeMap_Release (int /*<<< orphan*/ *) ; 
- size_t IXMLDOMNamedNodeMap_get_item (int /*<<< orphan*/ *,size_t,int /*<<< orphan*/ **) ; 
- size_t IXMLDOMNamedNodeMap_get_length (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  IXMLDOMNode_Release (int /*<<< orphan*/ *) ; 
- size_t IXMLDOMNode_get_attributes (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t IXMLDOMNode_get_baseName (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t IXMLDOMNode_get_namespaceURI (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t IXMLDOMNode_get_nodeName (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t IXMLDOMNode_get_prefix (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- size_t IXMLDOMNode_get_text (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int SUCCEEDED (size_t) ; 
- size_t S_FALSE ; 
- size_t S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _bstr_ (char*) ; 
- int /*<<< orphan*/  free_bstrs () ; 
- int /*<<< orphan*/  is_clsid_supported (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcmpW (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_6__* namespace_as_attribute_test_data ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  wine_dbgstr_guid (scalar_t__) ; 
- size_t wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+ int CLSCTX_INPROC_SERVER ;
+ size_t CoCreateInstance (scalar_t__,int *,int ,int *,void**) ;
+ int IID_IXMLDOMDocument2 ;
+ int IXMLDOMDocument_Release (int *) ;
+ size_t IXMLDOMDocument_loadXML (int *,int ,int *) ;
+ size_t IXMLDOMDocument_selectSingleNode (int *,int ,int **) ;
+ int IXMLDOMNamedNodeMap_Release (int *) ;
+ size_t IXMLDOMNamedNodeMap_get_item (int *,size_t,int **) ;
+ size_t IXMLDOMNamedNodeMap_get_length (int *,size_t*) ;
+ int IXMLDOMNode_Release (int *) ;
+ size_t IXMLDOMNode_get_attributes (int *,int **) ;
+ size_t IXMLDOMNode_get_baseName (int *,int **) ;
+ size_t IXMLDOMNode_get_namespaceURI (int *,int **) ;
+ size_t IXMLDOMNode_get_nodeName (int *,int **) ;
+ size_t IXMLDOMNode_get_prefix (int *,int **) ;
+ size_t IXMLDOMNode_get_text (int *,int **) ;
+ int SUCCEEDED (size_t) ;
+ size_t S_FALSE ;
+ size_t S_OK ;
+ int SysFreeString (int *) ;
+ int _bstr_ (char*) ;
+ int free_bstrs () ;
+ int is_clsid_supported (scalar_t__,int *) ;
+ int lstrcmpW (int *,int ) ;
+ TYPE_6__* namespace_as_attribute_test_data ;
+ int ok (int,char*,...) ;
+ int strcmp (char*,char*) ;
+ int wine_dbgstr_guid (scalar_t__) ;
+ size_t wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static void test_namespaces_as_attributes(void)
 {
@@ -77,36 +77,36 @@ __attribute__((used)) static void test_namespaces_as_attributes(void)
     static const struct test tests[] = {
         {
             "<a ns:b=\"b attr\" d=\"d attr\" xmlns:ns=\"nshref\" />", 3,
-            { "ns:b",   "d",     "xmlns:ns" },  /* nodeName */
-            { "ns",     NULL,     "xmlns" },    /* prefix */
-            { "b",      "d",      "ns" },       /* baseName */
-            { "nshref", NULL,     "" },         /* namespaceURI */
-            { "b attr", "d attr", "nshref" },   /* text */
+            { "ns:b", "d", "xmlns:ns" },
+            { "ns", ((void*)0), "xmlns" },
+            { "b", "d", "ns" },
+            { "nshref", ((void*)0), "" },
+            { "b attr", "d attr", "nshref" },
         },
-        /* property only */
+
         {
             "<a d=\"d attr\" />", 1,
-            { "d" },        /* nodeName */
-            { NULL },       /* prefix */
-            { "d" },        /* baseName */
-            { NULL },       /* namespaceURI */
-            { "d attr" },   /* text */
+            { "d" },
+            { ((void*)0) },
+            { "d" },
+            { ((void*)0) },
+            { "d attr" },
         },
-        /* namespace only */
+
         {
             "<a xmlns:ns=\"nshref\" />", 1,
-            { "xmlns:ns" }, /* nodeName */
-            { "xmlns" },    /* prefix */
-            { "ns" },       /* baseName */
-            { "" },         /* namespaceURI */
-            { "nshref" },   /* text */
+            { "xmlns:ns" },
+            { "xmlns" },
+            { "ns" },
+            { "" },
+            { "nshref" },
         },
-        /* no properties or namespaces */
+
         {
             "<a />", 0,
         },
 
-        { NULL }
+        { ((void*)0) }
     };
     const struct test *test;
     IXMLDOMNamedNodeMap *map;
@@ -127,13 +127,13 @@ __attribute__((used)) static void test_namespaces_as_attributes(void)
 
         test = tests;
         while (test->xml) {
-            hr = CoCreateInstance(entry->guid, NULL, CLSCTX_INPROC_SERVER, &IID_IXMLDOMDocument2, (void **)&doc);
+            hr = CoCreateInstance(entry->guid, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IXMLDOMDocument2, (void **)&doc);
             ok(SUCCEEDED(hr), "Failed to create document %s, hr %#x.\n", wine_dbgstr_guid(entry->guid), hr);
 
             hr = IXMLDOMDocument_loadXML(doc, _bstr_(test->xml), &b);
             ok(hr == S_OK, "Failed to load xml, hr %#x.\n", hr);
 
-            node = NULL;
+            node = ((void*)0);
             hr = IXMLDOMDocument_selectSingleNode(doc, _bstr_("a"), &node);
             ok(SUCCEEDED(hr), "Failed to select a node, hr %#x.\n", hr);
 
@@ -145,24 +145,24 @@ __attribute__((used)) static void test_namespaces_as_attributes(void)
             ok(SUCCEEDED(hr), "Failed to get map length, hr %#x.\n", hr);
             ok(len == test->explen, "got %d\n", len);
 
-            item = NULL;
+            item = ((void*)0);
             hr = IXMLDOMNamedNodeMap_get_item(map, test->explen+1, &item);
             ok(hr == S_FALSE, "Failed to get item, hr %#x.\n", hr);
             ok(!item, "Item should be NULL\n");
 
             for (i = 0; i < len; i++)
             {
-                item = NULL;
+                item = ((void*)0);
                 hr = IXMLDOMNamedNodeMap_get_item(map, i, &item);
                 ok(SUCCEEDED(hr), "Failed to get item, hr %#x.\n", hr);
 
-                str = NULL;
+                str = ((void*)0);
                 hr = IXMLDOMNode_get_nodeName(item, &str);
                 ok(SUCCEEDED(hr), "Failed to get node name, hr %#x.\n", hr);
                 ok(!lstrcmpW(str, _bstr_(test->names[i])), "got %s\n", wine_dbgstr_w(str));
                 SysFreeString(str);
 
-                str = NULL;
+                str = ((void*)0);
                 hr = IXMLDOMNode_get_prefix(item, &str);
                 if (test->prefixes[i])
                 {
@@ -173,13 +173,13 @@ __attribute__((used)) static void test_namespaces_as_attributes(void)
                 else
                     ok(hr == S_FALSE, "Failed to get node name, hr %#x.\n", hr);
 
-                str = NULL;
+                str = ((void*)0);
                 hr = IXMLDOMNode_get_baseName(item, &str);
                 ok(SUCCEEDED(hr), "Failed to get base name, hr %#x.\n", hr);
                 ok(!lstrcmpW(str, _bstr_(test->basenames[i])), "got %s\n", wine_dbgstr_w(str));
                 SysFreeString(str);
 
-                str = NULL;
+                str = ((void*)0);
                 hr = IXMLDOMNode_get_namespaceURI(item, &str);
                 if (test->uris[i])
                 {
@@ -193,7 +193,7 @@ __attribute__((used)) static void test_namespaces_as_attributes(void)
                 else
                     ok(hr == S_FALSE, "Failed to get node name, hr %#x.\n", hr);
 
-                str = NULL;
+                str = ((void*)0);
                 hr = IXMLDOMNode_get_text(item, &str);
                 ok(SUCCEEDED(hr), "Failed to get node text, hr %#x.\n", hr);
                 ok(!lstrcmpW(str, _bstr_(test->texts[i])), "got %s\n", wine_dbgstr_w(str));

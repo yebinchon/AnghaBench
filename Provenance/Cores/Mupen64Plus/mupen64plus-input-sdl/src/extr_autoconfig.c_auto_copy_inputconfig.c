@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  pSrc; int /*<<< orphan*/  pDst; } ;
-typedef  TYPE_1__ SCopySection ;
 
-/* Variables and functions */
- scalar_t__ ConfigListParameters (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
- scalar_t__ ConfigOpenSection (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ ConfigSetParameter (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  CopyParamCallback ; 
- int /*<<< orphan*/  DebugMessage (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ M64ERR_SUCCESS ; 
- int /*<<< orphan*/  M64MSG_ERROR ; 
- int /*<<< orphan*/  M64TYPE_STRING ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int pSrc; int pDst; } ;
+typedef TYPE_1__ SCopySection ;
+
+
+ scalar_t__ ConfigListParameters (int ,void*,int ) ;
+ scalar_t__ ConfigOpenSection (char const*,int *) ;
+ scalar_t__ ConfigSetParameter (int ,char*,int ,char const*) ;
+ int CopyParamCallback ;
+ int DebugMessage (int ,char*,...) ;
+ scalar_t__ M64ERR_SUCCESS ;
+ int M64MSG_ERROR ;
+ int M64TYPE_STRING ;
 
 int auto_copy_inputconfig(const char *pccSourceSectionName, const char *pccDestSectionName, const char *sdlJoyName)
 {
@@ -40,8 +40,8 @@ int auto_copy_inputconfig(const char *pccSourceSectionName, const char *pccDestS
         return 0;
     }
 
-    // set the 'name' parameter
-    if (sdlJoyName != NULL)
+
+    if (sdlJoyName != ((void*)0))
     {
         if (ConfigSetParameter(cpyContext.pDst, "name", M64TYPE_STRING, sdlJoyName) != M64ERR_SUCCESS)
         {
@@ -50,7 +50,7 @@ int auto_copy_inputconfig(const char *pccSourceSectionName, const char *pccDestS
         }
     }
 
-    // the copy gets done by the callback function
+
     if (ConfigListParameters(cpyContext.pSrc, (void *) &cpyContext, CopyParamCallback) != M64ERR_SUCCESS)
     {
         DebugMessage(M64MSG_ERROR, "auto_copy_inputconfig: parameter list copy failed");

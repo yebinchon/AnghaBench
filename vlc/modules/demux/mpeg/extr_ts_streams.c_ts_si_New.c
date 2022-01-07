@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int i_version; int /*<<< orphan*/ * cdtpid; int /*<<< orphan*/ * tdtpid; int /*<<< orphan*/ * eitpid; int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ ts_si_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  handle_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* malloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_version; int * cdtpid; int * tdtpid; int * eitpid; int handle; } ;
+typedef TYPE_1__ ts_si_t ;
+typedef int demux_t ;
+
+
+ int free (TYPE_1__*) ;
+ int handle_Init (int *,int *) ;
+ TYPE_1__* malloc (int) ;
 
 ts_si_t *ts_si_New( demux_t *p_demux )
 {
     ts_si_t *si = malloc( sizeof( ts_si_t ) );
     if( !si )
-        return NULL;
+        return ((void*)0);
 
     if( !handle_Init( p_demux, &si->handle ) )
     {
         free( si );
-        return NULL;
+        return ((void*)0);
     }
 
-    si->i_version  = -1;
-    si->eitpid = NULL;
-    si->tdtpid = NULL;
-    si->cdtpid = NULL;
+    si->i_version = -1;
+    si->eitpid = ((void*)0);
+    si->tdtpid = ((void*)0);
+    si->cdtpid = ((void*)0);
 
     return si;
 }

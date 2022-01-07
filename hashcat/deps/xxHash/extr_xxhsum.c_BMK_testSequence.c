@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XXH32_state_t ;
-typedef  int /*<<< orphan*/  U32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BMK_checkResult (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XXH32 (void const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XXH32_digest (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XXH32_reset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XXH32_update (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+typedef int XXH32_state_t ;
+typedef int U32 ;
+
+
+ int BMK_checkResult (int ,int ) ;
+ int XXH32 (void const*,size_t,int ) ;
+ int XXH32_digest (int *) ;
+ int XXH32_reset (int *,int ) ;
+ int XXH32_update (int *,char const*,int) ;
 
 __attribute__((used)) static void BMK_testSequence(const void* sequence, size_t len, U32 seed, U32 Nresult)
 {

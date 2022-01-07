@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mat3 ;
-typedef  int /*<<< orphan*/  cl_mem ;
-typedef  int /*<<< orphan*/  cl_command_queue ;
-struct TYPE_3__ {int /*<<< orphan*/  net_input_size; int /*<<< orphan*/  net_input; int /*<<< orphan*/  transformed_v_cl; int /*<<< orphan*/  transformed_u_cl; int /*<<< orphan*/  transformed_y_cl; int /*<<< orphan*/  loadyuv; int /*<<< orphan*/  transformed_height; int /*<<< orphan*/  transformed_width; int /*<<< orphan*/  transform; } ;
-typedef  TYPE_1__ ModelInput ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CL_MAP_READ ; 
- int /*<<< orphan*/  CL_TRUE ; 
- scalar_t__ clEnqueueMapBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  clFinish (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  loadyuv_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transform_queue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mat3 ;
+typedef int cl_mem ;
+typedef int cl_command_queue ;
+struct TYPE_3__ {int net_input_size; int net_input; int transformed_v_cl; int transformed_u_cl; int transformed_y_cl; int loadyuv; int transformed_height; int transformed_width; int transform; } ;
+typedef TYPE_1__ ModelInput ;
+
+
+ int CL_MAP_READ ;
+ int CL_TRUE ;
+ scalar_t__ clEnqueueMapBuffer (int ,int ,int ,int ,int ,int ,int ,int *,int *,int*) ;
+ int clFinish (int ) ;
+ int loadyuv_queue (int *,int ,int ,int ,int ,int ) ;
+ int transform_queue (int *,int ,int ,int,int,int ,int ,int ,int ,int ,int ) ;
 
 float *model_input_prepare(ModelInput* s, cl_command_queue q,
                            cl_mem yuv_cl, int width, int height,
@@ -40,7 +40,7 @@ float *model_input_prepare(ModelInput* s, cl_command_queue q,
                 s->net_input);
   float *net_input_buf = (float *)clEnqueueMapBuffer(q, s->net_input, CL_TRUE,
                                             CL_MAP_READ, 0, s->net_input_size,
-                                            0, NULL, NULL, &err);
+                                            0, ((void*)0), ((void*)0), &err);
   clFinish(q);
   return net_input_buf;
 }

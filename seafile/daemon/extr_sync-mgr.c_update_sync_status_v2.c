@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_12__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int /*<<< orphan*/  commit_id; } ;
-struct TYPE_19__ {int /*<<< orphan*/  id; int /*<<< orphan*/  name; } ;
-struct TYPE_18__ {int /*<<< orphan*/  head_commit; scalar_t__ deleted_on_relay; scalar_t__ repo_corrupted; int /*<<< orphan*/  repo_id; } ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_12__ ;
+
+
+struct TYPE_20__ {int commit_id; } ;
+struct TYPE_19__ {int id; int name; } ;
+struct TYPE_18__ {int head_commit; scalar_t__ deleted_on_relay; scalar_t__ repo_corrupted; int repo_id; } ;
 struct TYPE_17__ {TYPE_2__* info; TYPE_3__* repo; } ;
-struct TYPE_16__ {int /*<<< orphan*/  job_mgr; int /*<<< orphan*/  branch_mgr; } ;
-typedef  TYPE_1__ SyncTask ;
-typedef  TYPE_2__ SyncInfo ;
-typedef  TYPE_3__ SeafRepo ;
-typedef  TYPE_4__ SeafBranch ;
+struct TYPE_16__ {int job_mgr; int branch_mgr; } ;
+typedef TYPE_1__ SyncTask ;
+typedef TYPE_2__ SyncInfo ;
+typedef TYPE_3__ SeafRepo ;
+typedef TYPE_4__ SeafBranch ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYNC_ERROR_ID_LOCAL_DATA_CORRUPT ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_SERVER_REPO_CORRUPT ; 
- int /*<<< orphan*/  SYNC_STATE_DONE ; 
- int /*<<< orphan*/  on_repo_deleted_on_server (TYPE_1__*,TYPE_3__*) ; 
- int /*<<< orphan*/  remove_blocks_done ; 
- int /*<<< orphan*/  remove_repo_blocks ; 
- scalar_t__ repo_block_store_exists (TYPE_3__*) ; 
- TYPE_12__* seaf ; 
- TYPE_4__* seaf_branch_manager_get_branch (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  seaf_branch_unref (TYPE_4__*) ; 
- int /*<<< orphan*/  seaf_job_manager_schedule_job (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  seaf_message (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_task_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  start_fetch_if_necessary (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transition_sync_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int SYNC_ERROR_ID_LOCAL_DATA_CORRUPT ;
+ int SYNC_ERROR_ID_SERVER_REPO_CORRUPT ;
+ int SYNC_STATE_DONE ;
+ int on_repo_deleted_on_server (TYPE_1__*,TYPE_3__*) ;
+ int remove_blocks_done ;
+ int remove_repo_blocks ;
+ scalar_t__ repo_block_store_exists (TYPE_3__*) ;
+ TYPE_12__* seaf ;
+ TYPE_4__* seaf_branch_manager_get_branch (int ,int ,char*) ;
+ int seaf_branch_unref (TYPE_4__*) ;
+ int seaf_job_manager_schedule_job (int ,int ,int ,TYPE_1__*) ;
+ int seaf_message (char*,int ,int ) ;
+ int seaf_warning (char*,int ,int ) ;
+ int set_task_error (TYPE_1__*,int ) ;
+ int start_fetch_if_necessary (TYPE_1__*,int ) ;
+ scalar_t__ strcmp (int ,int ) ;
+ int transition_sync_state (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void
 update_sync_status_v2 (SyncTask *task)
 {
     SyncInfo *info = task->info;
     SeafRepo *repo = task->repo;
-    SeafBranch *master = NULL, *local = NULL;
+    SeafBranch *master = ((void*)0), *local = ((void*)0);
 
     local = seaf_branch_manager_get_branch (
         seaf->branch_mgr, info->repo_id, "local");
@@ -74,11 +74,11 @@ update_sync_status_v2 (SyncTask *task)
     } else if (info->deleted_on_relay) {
         on_repo_deleted_on_server (task, repo);
     } else {
-        /* If local head is the same as remote head, already in sync. */
+
         if (strcmp (local->commit_id, info->head_commit) == 0) {
-            /* As long as the repo is synced with the server. All the local
-             * blocks are not useful any more.
-             */
+
+
+
             if (repo_block_store_exists (repo)) {
                 seaf_message ("Removing blocks for repo %s(%.8s).\n",
                               repo->name, repo->id);

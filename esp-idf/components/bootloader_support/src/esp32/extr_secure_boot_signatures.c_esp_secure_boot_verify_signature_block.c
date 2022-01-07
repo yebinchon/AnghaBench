@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ ptrdiff_t ;
-struct TYPE_3__ {int /*<<< orphan*/  signature; scalar_t__ version; } ;
-typedef  TYPE_1__ esp_secure_boot_sig_block_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DIGEST_LEN ; 
- int /*<<< orphan*/  ESP_ERR_IMAGE_INVALID ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ESP_OK ; 
- scalar_t__ SIGNATURE_VERIFICATION_KEYLEN ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ signature_verification_key_end ; 
- scalar_t__ signature_verification_key_start ; 
- int /*<<< orphan*/  uECC_secp256r1 () ; 
- int uECC_verify (scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ ptrdiff_t ;
+struct TYPE_3__ {int signature; scalar_t__ version; } ;
+typedef TYPE_1__ esp_secure_boot_sig_block_t ;
+typedef int esp_err_t ;
+
+
+ int DIGEST_LEN ;
+ int ESP_ERR_IMAGE_INVALID ;
+ int ESP_FAIL ;
+ int ESP_LOGD (int ,char*,...) ;
+ int ESP_LOGE (int ,char*,scalar_t__) ;
+ int ESP_OK ;
+ scalar_t__ SIGNATURE_VERIFICATION_KEYLEN ;
+ int TAG ;
+ scalar_t__ signature_verification_key_end ;
+ scalar_t__ signature_verification_key_start ;
+ int uECC_secp256r1 () ;
+ int uECC_verify (scalar_t__,int const*,int ,int ,int ) ;
 
 esp_err_t esp_secure_boot_verify_signature_block(const esp_secure_boot_sig_block_t *sig_block, const uint8_t *image_digest)
 {

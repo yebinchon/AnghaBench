@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ispsoftc_t ;
-struct TYPE_4__ {int /*<<< orphan*/  parameter; int /*<<< orphan*/  rx_id; int /*<<< orphan*/  ox_id; int /*<<< orphan*/  seq_cnt; int /*<<< orphan*/  df_ctl; int /*<<< orphan*/  seq_id; int /*<<< orphan*/ * f_ctl; int /*<<< orphan*/  type; int /*<<< orphan*/ * s_id; int /*<<< orphan*/  cs_ctl; int /*<<< orphan*/ * d_id; int /*<<< orphan*/  r_ctl; } ;
-typedef  TYPE_1__ fc_hdr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ISP_IOZGET_16 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISP_IOZGET_32 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISP_IOZGET_8 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int ispsoftc_t ;
+struct TYPE_4__ {int parameter; int rx_id; int ox_id; int seq_cnt; int df_ctl; int seq_id; int * f_ctl; int type; int * s_id; int cs_ctl; int * d_id; int r_ctl; } ;
+typedef TYPE_1__ fc_hdr_t ;
+
+
+ int ISP_IOZGET_16 (int *,int *,int ) ;
+ int ISP_IOZGET_32 (int *,int *,int ) ;
+ int ISP_IOZGET_8 (int *,int *,int ) ;
 
 void
 isp_get_fc_hdr(ispsoftc_t *isp, fc_hdr_t *src, fc_hdr_t *dst)

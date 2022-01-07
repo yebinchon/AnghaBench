@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dm_region_hash {int max_recovery; int /*<<< orphan*/  recovery_count; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  down (int /*<<< orphan*/ *) ; 
+
+
+
+struct dm_region_hash {int max_recovery; int recovery_count; } ;
+
+
+ int down (int *) ;
 
 void dm_rh_stop_recovery(struct dm_region_hash *rh)
 {
-	int i;
+ int i;
 
-	/* wait for any recovering regions */
-	for (i = 0; i < rh->max_recovery; i++)
-		down(&rh->recovery_count);
+
+ for (i = 0; i < rh->max_recovery; i++)
+  down(&rh->recovery_count);
 }

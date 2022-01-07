@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int val; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ token_t ;
 
-/* Variables and functions */
- scalar_t__ strcasecmp (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int val; int * name; } ;
+typedef TYPE_1__ token_t ;
+
+
+ scalar_t__ strcasecmp (int *,char*) ;
 
 int
 lookup(token_t *tbl, char *m)
 {
-     token_t	*tp;
+     token_t *tp;
 
-     for(tp = tbl; tp->name != NULL; tp++)
-	  if(strcasecmp(tp->name, m) == 0)
-	       return tp->val;
+     for(tp = tbl; tp->name != ((void*)0); tp++)
+   if(strcasecmp(tp->name, m) == 0)
+        return tp->val;
      return 0;
 }

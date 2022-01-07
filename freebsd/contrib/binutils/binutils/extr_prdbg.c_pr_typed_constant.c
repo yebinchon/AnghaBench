@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pr_handle {int /*<<< orphan*/  f; } ;
-typedef  int /*<<< orphan*/  bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char const*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  indent (struct pr_handle*) ; 
- char* pop_type (struct pr_handle*) ; 
- int /*<<< orphan*/  print_vma (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct pr_handle {int f; } ;
+typedef int bfd_vma ;
+typedef int bfd_boolean ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int fprintf (int ,char*,char*,char const*,char*) ;
+ int free (char*) ;
+ int indent (struct pr_handle*) ;
+ char* pop_type (struct pr_handle*) ;
+ int print_vma (int ,char*,int ,int ) ;
 
 __attribute__((used)) static bfd_boolean
 pr_typed_constant (void *p, const char *name, bfd_vma val)
@@ -31,7 +31,7 @@ pr_typed_constant (void *p, const char *name, bfd_vma val)
   char ab[20];
 
   t = pop_type (info);
-  if (t == NULL)
+  if (t == ((void*)0))
     return FALSE;
 
   indent (info);

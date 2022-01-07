@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct xfs_sb {int /*<<< orphan*/  sb_versionnum; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  XFS_SB_VERSION_ATTRBIT ; 
+
+
+
+struct xfs_sb {int sb_versionnum; } ;
+
+
+ int XFS_SB_VERSION_ATTRBIT ;
 
 __attribute__((used)) static inline void xfs_sb_version_addattr(struct xfs_sb *sbp)
 {
-	sbp->sb_versionnum |= XFS_SB_VERSION_ATTRBIT;
+ sbp->sb_versionnum |= XFS_SB_VERSION_ATTRBIT;
 }

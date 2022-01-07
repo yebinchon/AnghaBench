@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct ttydevice {int /*<<< orphan*/  mbits; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct ttydevice {int mbits; } ;
 struct termios {int c_cflag; } ;
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
+struct TYPE_4__ {int name; } ;
 struct TYPE_3__ {scalar_t__ rts_cts; } ;
-struct physical {scalar_t__ type; scalar_t__ fd; TYPE_2__ link; TYPE_1__ cfg; int /*<<< orphan*/  handler; } ;
+struct physical {scalar_t__ type; scalar_t__ fd; TYPE_2__ link; TYPE_1__ cfg; int handler; } ;
 
-/* Variables and functions */
- int CCTS_OFLOW ; 
- int CLOCAL ; 
- int CRTS_IFLOW ; 
- int /*<<< orphan*/  F_GETFL ; 
- int /*<<< orphan*/  F_SETFL ; 
- int HUPCL ; 
- int /*<<< orphan*/  LoadLineDiscipline (struct physical*) ; 
- int /*<<< orphan*/  LogDEBUG ; 
- int /*<<< orphan*/  LogWARN ; 
- int O_NONBLOCK ; 
- int /*<<< orphan*/  Online (struct ttydevice*) ; 
- scalar_t__ PHYS_DEDICATED ; 
- scalar_t__ PHYS_DIRECT ; 
- int /*<<< orphan*/  TCSANOW ; 
- int /*<<< orphan*/  cfmakeraw (struct termios*) ; 
- struct ttydevice* device2tty (int /*<<< orphan*/ ) ; 
- int fcntl (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  physical_IsSync (struct physical*) ; 
- int /*<<< orphan*/  tcgetattr (scalar_t__,struct termios*) ; 
- int tcsetattr (scalar_t__,int /*<<< orphan*/ ,struct termios*) ; 
+
+ int CCTS_OFLOW ;
+ int CLOCAL ;
+ int CRTS_IFLOW ;
+ int F_GETFL ;
+ int F_SETFL ;
+ int HUPCL ;
+ int LoadLineDiscipline (struct physical*) ;
+ int LogDEBUG ;
+ int LogWARN ;
+ int O_NONBLOCK ;
+ int Online (struct ttydevice*) ;
+ scalar_t__ PHYS_DEDICATED ;
+ scalar_t__ PHYS_DIRECT ;
+ int TCSANOW ;
+ int cfmakeraw (struct termios*) ;
+ struct ttydevice* device2tty (int ) ;
+ int fcntl (scalar_t__,int ,int) ;
+ int log_Printf (int ,char*,int ,...) ;
+ int physical_IsSync (struct physical*) ;
+ int tcgetattr (scalar_t__,struct termios*) ;
+ int tcsetattr (scalar_t__,int ,struct termios*) ;
 
 __attribute__((used)) static int
 tty_Raw(struct physical *p)
@@ -55,9 +55,9 @@ tty_Raw(struct physical *p)
               p->link.name, p->fd, dev->mbits);
 
   if (!physical_IsSync(p)) {
-#ifndef NONETGRAPH
+
     if (!LoadLineDiscipline(p))
-#endif
+
     {
       tcgetattr(p->fd, &ios);
       cfmakeraw(&ios);

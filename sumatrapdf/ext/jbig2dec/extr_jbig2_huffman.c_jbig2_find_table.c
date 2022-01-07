@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int referred_to_segment_count; int flags; int /*<<< orphan*/  number; scalar_t__ result; int /*<<< orphan*/ * referred_to_segments; } ;
-typedef  TYPE_1__ Jbig2Segment ;
-typedef  int /*<<< orphan*/  Jbig2HuffmanParams ;
-typedef  int /*<<< orphan*/  Jbig2Ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JBIG2_SEVERITY_FATAL ; 
- int /*<<< orphan*/  jbig2_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- TYPE_1__* jbig2_find_segment (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int referred_to_segment_count; int flags; int number; scalar_t__ result; int * referred_to_segments; } ;
+typedef TYPE_1__ Jbig2Segment ;
+typedef int Jbig2HuffmanParams ;
+typedef int Jbig2Ctx ;
+
+
+ int JBIG2_SEVERITY_FATAL ;
+ int jbig2_error (int *,int ,int ,char*,int) ;
+ TYPE_1__* jbig2_find_segment (int *,int ) ;
 
 const Jbig2HuffmanParams *
 jbig2_find_table(Jbig2Ctx *ctx, Jbig2Segment *segment, int index)
@@ -37,5 +37,5 @@ jbig2_find_table(Jbig2Ctx *ctx, Jbig2Segment *segment, int index)
     }
 
     jbig2_error(ctx, JBIG2_SEVERITY_FATAL, segment->number, "huffman table not found (%d)", index);
-    return NULL;
+    return ((void*)0);
 }

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pci_bus {int dummy; } ;
 struct device {int dummy; } ;
-struct dca_provider {int /*<<< orphan*/  node; } ;
-struct dca_domain {int /*<<< orphan*/  dca_providers; } ;
+struct dca_provider {int node; } ;
+struct dca_domain {int dca_providers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DCA_PROVIDER_REMOVE ; 
- int /*<<< orphan*/  blocking_notifier_call_chain (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct dca_domain* dca_find_domain (struct pci_bus*) ; 
- int /*<<< orphan*/  dca_free_domain (struct dca_domain*) ; 
- int /*<<< orphan*/  dca_lock ; 
- struct pci_bus* dca_pci_rc_from_dev (struct device*) ; 
- int /*<<< orphan*/  dca_provider_chain ; 
- int /*<<< orphan*/  dca_sysfs_remove_provider (struct dca_provider*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int DCA_PROVIDER_REMOVE ;
+ int blocking_notifier_call_chain (int *,int ,int *) ;
+ struct dca_domain* dca_find_domain (struct pci_bus*) ;
+ int dca_free_domain (struct dca_domain*) ;
+ int dca_lock ;
+ struct pci_bus* dca_pci_rc_from_dev (struct device*) ;
+ int dca_provider_chain ;
+ int dca_sysfs_remove_provider (struct dca_provider*) ;
+ int list_del (int *) ;
+ scalar_t__ list_empty (int *) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void unregister_dca_provider(struct dca_provider *dca, struct device *dev)
 {
-	unsigned long flags;
-	struct pci_bus *pci_rc;
-	struct dca_domain *domain;
+ unsigned long flags;
+ struct pci_bus *pci_rc;
+ struct dca_domain *domain;
 
-	blocking_notifier_call_chain(&dca_provider_chain,
-				     DCA_PROVIDER_REMOVE, NULL);
+ blocking_notifier_call_chain(&dca_provider_chain,
+         DCA_PROVIDER_REMOVE, ((void*)0));
 
-	spin_lock_irqsave(&dca_lock, flags);
+ spin_lock_irqsave(&dca_lock, flags);
 
-	list_del(&dca->node);
+ list_del(&dca->node);
 
-	pci_rc = dca_pci_rc_from_dev(dev);
-	domain = dca_find_domain(pci_rc);
-	if (list_empty(&domain->dca_providers))
-		dca_free_domain(domain);
+ pci_rc = dca_pci_rc_from_dev(dev);
+ domain = dca_find_domain(pci_rc);
+ if (list_empty(&domain->dca_providers))
+  dca_free_domain(domain);
 
-	spin_unlock_irqrestore(&dca_lock, flags);
+ spin_unlock_irqrestore(&dca_lock, flags);
 
-	dca_sysfs_remove_provider(dca);
+ dca_sysfs_remove_provider(dca);
 }

@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct TYPE_2__ {int agg_enable_bitmap; int candidate_tid_bitmap; } ;
-struct sta_info {int /*<<< orphan*/  hwaddr; int /*<<< orphan*/  lock; int /*<<< orphan*/  state; TYPE_1__ htpriv; } ;
+struct sta_info {int hwaddr; int lock; int state; TYPE_1__ htpriv; } ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _FW_LINKED ; 
- int bss_cap_update_on_sta_leave (struct adapter*,struct sta_info*) ; 
- int /*<<< orphan*/  issue_deauth (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  report_del_sta_event (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtw_cfg80211_indicate_sta_disassoc (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rtw_clearstakey_cmd (struct adapter*,struct sta_info*,int) ; 
- int /*<<< orphan*/  rtw_free_stainfo (struct adapter*,struct sta_info*) ; 
- int /*<<< orphan*/  send_delba (struct adapter*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock_bh (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock_bh (int /*<<< orphan*/ *) ; 
+
+ int _FW_LINKED ;
+ int bss_cap_update_on_sta_leave (struct adapter*,struct sta_info*) ;
+ int issue_deauth (struct adapter*,int ,int ) ;
+ int report_del_sta_event (struct adapter*,int ,int ) ;
+ int rtw_cfg80211_indicate_sta_disassoc (struct adapter*,int ,int ) ;
+ int rtw_clearstakey_cmd (struct adapter*,struct sta_info*,int) ;
+ int rtw_free_stainfo (struct adapter*,struct sta_info*) ;
+ int send_delba (struct adapter*,int,int ) ;
+ int spin_lock_bh (int *) ;
+ int spin_unlock_bh (int *) ;
 
 u8 ap_free_sta(
-	struct adapter *padapter,
-	struct sta_info *psta,
-	bool active,
-	u16 reason
+ struct adapter *padapter,
+ struct sta_info *psta,
+ bool active,
+ u16 reason
 )
 {
-	u8 beacon_updated = false;
+ u8 beacon_updated = 0;
 
-	if (!psta)
-		return beacon_updated;
+ if (!psta)
+  return beacon_updated;
 
-	if (active) {
-		/* tear down Rx AMPDU */
-		send_delba(padapter, 0, psta->hwaddr);/*  recipient */
+ if (active) {
 
-		/* tear down TX AMPDU */
-		send_delba(padapter, 1, psta->hwaddr);/*  // originator */
+  send_delba(padapter, 0, psta->hwaddr);
 
-		issue_deauth(padapter, psta->hwaddr, reason);
-	}
 
-	psta->htpriv.agg_enable_bitmap = 0x0;/* reset */
-	psta->htpriv.candidate_tid_bitmap = 0x0;/* reset */
+  send_delba(padapter, 1, psta->hwaddr);
 
-	/* report_del_sta_event(padapter, psta->hwaddr, reason); */
+  issue_deauth(padapter, psta->hwaddr, reason);
+ }
 
-	/* clear cam entry / key */
-	rtw_clearstakey_cmd(padapter, psta, true);
+ psta->htpriv.agg_enable_bitmap = 0x0;
+ psta->htpriv.candidate_tid_bitmap = 0x0;
 
-	spin_lock_bh(&psta->lock);
-	psta->state &= ~_FW_LINKED;
-	spin_unlock_bh(&psta->lock);
 
-	rtw_cfg80211_indicate_sta_disassoc(padapter, psta->hwaddr, reason);
 
-	report_del_sta_event(padapter, psta->hwaddr, reason);
 
-	beacon_updated = bss_cap_update_on_sta_leave(padapter, psta);
+ rtw_clearstakey_cmd(padapter, psta, 1);
 
-	rtw_free_stainfo(padapter, psta);
+ spin_lock_bh(&psta->lock);
+ psta->state &= ~_FW_LINKED;
+ spin_unlock_bh(&psta->lock);
 
-	return beacon_updated;
+ rtw_cfg80211_indicate_sta_disassoc(padapter, psta->hwaddr, reason);
+
+ report_del_sta_event(padapter, psta->hwaddr, reason);
+
+ beacon_updated = bss_cap_update_on_sta_leave(padapter, psta);
+
+ rtw_free_stainfo(padapter, psta);
+
+ return beacon_updated;
 }

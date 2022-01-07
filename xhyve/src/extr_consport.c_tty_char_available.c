@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timeval {scalar_t__ tv_usec; scalar_t__ tv_sec; } ;
-typedef  int /*<<< orphan*/  fd_set ;
+typedef int fd_set ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_SET (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FD_ZERO (int /*<<< orphan*/ *) ; 
- scalar_t__ STDIN_FILENO ; 
- scalar_t__ select (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct timeval*) ; 
+
+ int FD_SET (scalar_t__,int *) ;
+ int FD_ZERO (int *) ;
+ scalar_t__ STDIN_FILENO ;
+ scalar_t__ select (scalar_t__,int *,int *,int *,struct timeval*) ;
 
 __attribute__((used)) static bool
 tty_char_available(void)
 {
-	fd_set rfds;
-	struct timeval tv;
+ fd_set rfds;
+ struct timeval tv;
 
-	FD_ZERO(&rfds);
-	FD_SET(STDIN_FILENO, &rfds);
-	tv.tv_sec = 0;
-	tv.tv_usec = 0;
+ FD_ZERO(&rfds);
+ FD_SET(STDIN_FILENO, &rfds);
+ tv.tv_sec = 0;
+ tv.tv_usec = 0;
 
-	if (select(STDIN_FILENO + 1, &rfds, NULL, NULL, &tv) > 0) {
-		return (true);
-	} else {
-		return (false);
-	}
+ if (select(STDIN_FILENO + 1, &rfds, ((void*)0), ((void*)0), &tv) > 0) {
+  return (1);
+ } else {
+  return (0);
+ }
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct TYPE_2__ {scalar_t__** axes; int /*<<< orphan*/ * slots; } ;
-typedef  TYPE_1__ iohidmanager_hid_t ;
-typedef  scalar_t__ int16_t ;
 
-/* Variables and functions */
- size_t AXIS_NEG_GET (scalar_t__) ; 
- scalar_t__ AXIS_NONE ; 
- size_t AXIS_POS_GET (scalar_t__) ; 
- scalar_t__ pad_connection_get_axis (int /*<<< orphan*/ *,unsigned int,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+struct TYPE_2__ {scalar_t__** axes; int * slots; } ;
+typedef TYPE_1__ iohidmanager_hid_t ;
+typedef scalar_t__ int16_t ;
+
+
+ size_t AXIS_NEG_GET (scalar_t__) ;
+ scalar_t__ AXIS_NONE ;
+ size_t AXIS_POS_GET (scalar_t__) ;
+ scalar_t__ pad_connection_get_axis (int *,unsigned int,size_t) ;
 
 __attribute__((used)) static int16_t iohidmanager_hid_joypad_axis(void *data,
       unsigned port, uint32_t joyaxis)
 {
-   iohidmanager_hid_t   *hid = (iohidmanager_hid_t*)data;
-   int16_t               val = 0;
+   iohidmanager_hid_t *hid = (iohidmanager_hid_t*)data;
+   int16_t val = 0;
 
    if (joyaxis == AXIS_NONE)
       return 0;

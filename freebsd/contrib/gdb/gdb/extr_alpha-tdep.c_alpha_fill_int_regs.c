@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ALPHA_PC_REGNUM ; 
- int ALPHA_UNIQUE_REGNUM ; 
- int /*<<< orphan*/  regcache_collect (int,void*) ; 
+ int ALPHA_PC_REGNUM ;
+ int ALPHA_UNIQUE_REGNUM ;
+ int regcache_collect (int,void*) ;
 
 void
 alpha_fill_int_regs (int regno, void *r0_r30, void *pc, void *unique)

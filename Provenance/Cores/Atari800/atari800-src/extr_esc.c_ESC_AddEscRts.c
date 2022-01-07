@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UWORD ;
-typedef  size_t UBYTE ;
-typedef  int /*<<< orphan*/  ESC_FunctionType ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMORY_dPutByte (scalar_t__,int) ; 
- scalar_t__* esc_address ; 
- int /*<<< orphan*/ * esc_function ; 
+
+
+
+typedef scalar_t__ UWORD ;
+typedef size_t UBYTE ;
+typedef int ESC_FunctionType ;
+
+
+ int MEMORY_dPutByte (scalar_t__,int) ;
+ scalar_t__* esc_address ;
+ int * esc_function ;
 
 void ESC_AddEscRts(UWORD address, UBYTE esc_code, ESC_FunctionType function)
 {
-	esc_address[esc_code] = address;
-	esc_function[esc_code] = function;
-	MEMORY_dPutByte(address, 0xf2);			/* ESC */
-	MEMORY_dPutByte(address + 1, esc_code);	/* ESC CODE */
-	MEMORY_dPutByte(address + 2, 0x60);		/* RTS */
+ esc_address[esc_code] = address;
+ esc_function[esc_code] = function;
+ MEMORY_dPutByte(address, 0xf2);
+ MEMORY_dPutByte(address + 1, esc_code);
+ MEMORY_dPutByte(address + 2, 0x60);
 }

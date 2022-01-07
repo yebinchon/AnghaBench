@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char const** names; size_t names_len; int abs_path_len; char const** slash_names; size_t slash_names_len; size_t slash_regexes_len; char const** slash_regexes; size_t invert_regexes_len; char const** invert_regexes; size_t regexes_len; char const** regexes; int /*<<< orphan*/  abs_path; } ;
-typedef  TYPE_1__ ignores ;
 
-/* Variables and functions */
- int ackmate_dir_match (char*) ; 
- int /*<<< orphan*/  ag_asprintf (char**,char*,char const*,char const*) ; 
- int binary_search (char const*,char const**,int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ fnmatch (char const*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fnmatch_flags ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  log_debug (char*,char const*,char const*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
- scalar_t__ strncmp (char*,int /*<<< orphan*/ ,int) ; 
- char* strstr (char*,char const*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char const** names; size_t names_len; int abs_path_len; char const** slash_names; size_t slash_names_len; size_t slash_regexes_len; char const** slash_regexes; size_t invert_regexes_len; char const** invert_regexes; size_t regexes_len; char const** regexes; int abs_path; } ;
+typedef TYPE_1__ ignores ;
+
+
+ int ackmate_dir_match (char*) ;
+ int ag_asprintf (char**,char*,char const*,char const*) ;
+ int binary_search (char const*,char const**,int ,size_t) ;
+ scalar_t__ fnmatch (char const*,char const*,int ) ;
+ int fnmatch_flags ;
+ int free (char*) ;
+ int log_debug (char*,char const*,char const*) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (char*,int ,int) ;
+ char* strstr (char*,char const*) ;
 
 __attribute__((used)) static int path_ignore_search(const ignores *ig, const char *path, const char *filename) {
     char *temp;

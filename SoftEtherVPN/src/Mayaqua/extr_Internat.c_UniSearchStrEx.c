@@ -1,126 +1,126 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int INFINITE ; 
- int /*<<< orphan*/ * Malloc (int) ; 
- scalar_t__ UniStrCmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ UniStrCmpi (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int UniStrLen (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrUpper (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wcsncmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int wchar_t ;
+typedef int UINT ;
+
+
+ int Free (int *) ;
+ int INFINITE ;
+ int * Malloc (int) ;
+ scalar_t__ UniStrCmp (int *,int *) ;
+ scalar_t__ UniStrCmpi (int *,int *) ;
+ int UniStrCpy (int *,int,int *) ;
+ int UniStrLen (int *) ;
+ int UniStrUpper (int *) ;
+ int wcsncmp (int *,int *,int) ;
 
 UINT UniSearchStrEx(wchar_t *string, wchar_t *keyword, UINT start, bool case_sensitive)
 {
-	UINT len_string, len_keyword;
-	UINT i;
-	wchar_t *cmp_string, *cmp_keyword;
-	bool found;
-	// Validate arguments
-	if (string == NULL || keyword == NULL)
-	{
-		return INFINITE;
-	}
+ UINT len_string, len_keyword;
+ UINT i;
+ wchar_t *cmp_string, *cmp_keyword;
+ bool found;
 
-	// Get the length of string
-	len_string = UniStrLen(string);
-	if (len_string <= start)
-	{
-		// Value of start is invalid
-		return INFINITE;
-	}
+ if (string == ((void*)0) || keyword == ((void*)0))
+ {
+  return INFINITE;
+ }
 
-	// Get the length of the keyword
-	len_keyword = UniStrLen(keyword);
-	if (len_keyword == 0)
-	{
-		// There is no keyword
-		return INFINITE;
-	}
 
-	if (len_string < len_keyword)
-	{
-		return INFINITE;
-	}
+ len_string = UniStrLen(string);
+ if (len_string <= start)
+ {
 
-	if (len_string == len_keyword)
-	{
-		if (case_sensitive)
-		{
-			if (UniStrCmp(string, keyword) == 0)
-			{
-				return 0;
-			}
-			else
-			{
-				return INFINITE;
-			}
-		}
-		else
-		{
-			if (UniStrCmpi(string, keyword) == 0)
-			{
-				return 0;
-			}
-			else
-			{
-				return INFINITE;
-			}
-		}
-	}
+  return INFINITE;
+ }
 
-	if (case_sensitive)
-	{
-		cmp_string = string;
-		cmp_keyword = keyword;
-	}
-	else
-	{
-		cmp_string = Malloc((len_string + 1) * sizeof(wchar_t));
-		UniStrCpy(cmp_string, (len_string + 1) * sizeof(wchar_t), string);
-		cmp_keyword = Malloc((len_keyword + 1) * sizeof(wchar_t));
-		UniStrCpy(cmp_keyword, (len_keyword + 1) * sizeof(wchar_t), keyword);
-		UniStrUpper(cmp_string);
-		UniStrUpper(cmp_keyword);
-	}
 
-	// Search
-	found = false;
-	for (i = start;i < (len_string - len_keyword + 1);i++)
-	{
-		// Compare
-		if (!wcsncmp(&cmp_string[i], cmp_keyword, len_keyword))
-		{
-			// Found
-			found = true;
-			break;
-		}
-	}
+ len_keyword = UniStrLen(keyword);
+ if (len_keyword == 0)
+ {
 
-	if (case_sensitive == false)
-	{
-		// Memory release
-		Free(cmp_keyword);
-		Free(cmp_string);
-	}
+  return INFINITE;
+ }
 
-	if (found == false)
-	{
-		return INFINITE;
-	}
-	return i;
+ if (len_string < len_keyword)
+ {
+  return INFINITE;
+ }
+
+ if (len_string == len_keyword)
+ {
+  if (case_sensitive)
+  {
+   if (UniStrCmp(string, keyword) == 0)
+   {
+    return 0;
+   }
+   else
+   {
+    return INFINITE;
+   }
+  }
+  else
+  {
+   if (UniStrCmpi(string, keyword) == 0)
+   {
+    return 0;
+   }
+   else
+   {
+    return INFINITE;
+   }
+  }
+ }
+
+ if (case_sensitive)
+ {
+  cmp_string = string;
+  cmp_keyword = keyword;
+ }
+ else
+ {
+  cmp_string = Malloc((len_string + 1) * sizeof(wchar_t));
+  UniStrCpy(cmp_string, (len_string + 1) * sizeof(wchar_t), string);
+  cmp_keyword = Malloc((len_keyword + 1) * sizeof(wchar_t));
+  UniStrCpy(cmp_keyword, (len_keyword + 1) * sizeof(wchar_t), keyword);
+  UniStrUpper(cmp_string);
+  UniStrUpper(cmp_keyword);
+ }
+
+
+ found = 0;
+ for (i = start;i < (len_string - len_keyword + 1);i++)
+ {
+
+  if (!wcsncmp(&cmp_string[i], cmp_keyword, len_keyword))
+  {
+
+   found = 1;
+   break;
+  }
+ }
+
+ if (case_sensitive == 0)
+ {
+
+  Free(cmp_keyword);
+  Free(cmp_string);
+ }
+
+ if (found == 0)
+ {
+  return INFINITE;
+ }
+ return i;
 }

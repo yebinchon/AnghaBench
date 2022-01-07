@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_CONFIG_BLOCK_SIZE ; 
- int /*<<< orphan*/  LSM_CONFIG_PAGE_SIZE ; 
- int /*<<< orphan*/  lsm_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int lsm_new (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int lsm_open (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  tdb_lsm_env () ; 
+
+
+
+typedef int lsm_db ;
+
+
+ int LSM_CONFIG_BLOCK_SIZE ;
+ int LSM_CONFIG_PAGE_SIZE ;
+ int lsm_config (int *,int ,int*) ;
+ int lsm_new (int ,int **) ;
+ int lsm_open (int *,char*) ;
+ int tdb_lsm_env () ;
 
 __attribute__((used)) static lsm_db *newLsmConnection(
-  const char *zDb, 
-  int nPgsz, 
+  const char *zDb,
+  int nPgsz,
   int nBlksz,
   int *pRc
 ){

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_6__ {int total_freq; int* lookup; int* freq; } ;
-struct TYPE_5__ {int (* get_freq ) (int /*<<< orphan*/ *,int,int*) ;int (* decode ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ;int cbits; int /*<<< orphan*/  rc; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ SCPRContext ;
-typedef  int /*<<< orphan*/  RangeCoder ;
-typedef  TYPE_2__ PixelModel ;
-typedef  int /*<<< orphan*/  GetByteContext ;
+struct TYPE_5__ {int (* get_freq ) (int *,int,int*) ;int (* decode ) (int *,int *,int,int,int) ;int cbits; int rc; int gb; } ;
+typedef TYPE_1__ SCPRContext ;
+typedef int RangeCoder ;
+typedef TYPE_2__ PixelModel ;
+typedef int GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int BOT ; 
- int stub1 (int /*<<< orphan*/ *,int,int*) ; 
- int stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int BOT ;
+ int stub1 (int *,int,int*) ;
+ int stub2 (int *,int *,int,int,int) ;
 
 __attribute__((used)) static int decode_unit(SCPRContext *s, PixelModel *pixel, uint32_t step, uint32_t *rval)
 {

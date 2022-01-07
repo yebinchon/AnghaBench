@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  root; int /*<<< orphan*/  lock; } ;
 
-/* Variables and functions */
- int class_register (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  class_unregister (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugfs_create_dir (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugfs_remove_recursive (int /*<<< orphan*/ ) ; 
- TYPE_1__ gb_dev ; 
- int /*<<< orphan*/  gb_loopback_driver ; 
- int greybus_register (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  loopback_class ; 
- int /*<<< orphan*/  spin_lock_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int root; int lock; } ;
+
+
+ int class_register (int *) ;
+ int class_unregister (int *) ;
+ int debugfs_create_dir (char*,int *) ;
+ int debugfs_remove_recursive (int ) ;
+ TYPE_1__ gb_dev ;
+ int gb_loopback_driver ;
+ int greybus_register (int *) ;
+ int loopback_class ;
+ int spin_lock_init (int *) ;
 
 __attribute__((used)) static int loopback_init(void)
 {
-	int retval;
+ int retval;
 
-	spin_lock_init(&gb_dev.lock);
-	gb_dev.root = debugfs_create_dir("gb_loopback", NULL);
+ spin_lock_init(&gb_dev.lock);
+ gb_dev.root = debugfs_create_dir("gb_loopback", ((void*)0));
 
-	retval = class_register(&loopback_class);
-	if (retval)
-		goto err;
+ retval = class_register(&loopback_class);
+ if (retval)
+  goto err;
 
-	retval = greybus_register(&gb_loopback_driver);
-	if (retval)
-		goto err_unregister;
+ retval = greybus_register(&gb_loopback_driver);
+ if (retval)
+  goto err_unregister;
 
-	return 0;
+ return 0;
 
 err_unregister:
-	class_unregister(&loopback_class);
+ class_unregister(&loopback_class);
 err:
-	debugfs_remove_recursive(gb_dev.root);
-	return retval;
+ debugfs_remove_recursive(gb_dev.root);
+ return retval;
 }

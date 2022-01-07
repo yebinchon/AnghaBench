@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  scanrel; int /*<<< orphan*/  tuple; } ;
-typedef  TYPE_1__ TupleInfo ;
-typedef  int /*<<< orphan*/  TimestampTz ;
-struct TYPE_5__ {int /*<<< orphan*/  next_start; } ;
-typedef  int /*<<< orphan*/  ScanTupleResult ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_2__ FormData_bgw_job_stat ;
 
-/* Variables and functions */
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SCAN_DONE ; 
- int /*<<< orphan*/  heap_copytuple (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_freetuple (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ts_catalog_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int scanrel; int tuple; } ;
+typedef TYPE_1__ TupleInfo ;
+typedef int TimestampTz ;
+struct TYPE_5__ {int next_start; } ;
+typedef int ScanTupleResult ;
+typedef int HeapTuple ;
+typedef TYPE_2__ FormData_bgw_job_stat ;
+
+
+ scalar_t__ GETSTRUCT (int ) ;
+ int SCAN_DONE ;
+ int heap_copytuple (int ) ;
+ int heap_freetuple (int ) ;
+ int ts_catalog_update (int ,int ) ;
 
 __attribute__((used)) static ScanTupleResult
 bgw_job_stat_tuple_set_next_start(TupleInfo *ti, void *const data)
 {
-	TimestampTz *next_start = data;
-	HeapTuple tuple = heap_copytuple(ti->tuple);
-	FormData_bgw_job_stat *fd = (FormData_bgw_job_stat *) GETSTRUCT(tuple);
+ TimestampTz *next_start = data;
+ HeapTuple tuple = heap_copytuple(ti->tuple);
+ FormData_bgw_job_stat *fd = (FormData_bgw_job_stat *) GETSTRUCT(tuple);
 
-	fd->next_start = *next_start;
+ fd->next_start = *next_start;
 
-	ts_catalog_update(ti->scanrel, tuple);
-	heap_freetuple(tuple);
+ ts_catalog_update(ti->scanrel, tuple);
+ heap_freetuple(tuple);
 
-	return SCAN_DONE;
+ return SCAN_DONE;
 }

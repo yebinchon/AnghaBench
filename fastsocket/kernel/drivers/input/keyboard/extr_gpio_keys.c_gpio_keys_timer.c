@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gpio_button_data {int /*<<< orphan*/  work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+
+
+struct gpio_button_data {int work; } ;
+
+
+ int schedule_work (int *) ;
 
 __attribute__((used)) static void gpio_keys_timer(unsigned long _data)
 {
-	struct gpio_button_data *data = (struct gpio_button_data *)_data;
+ struct gpio_button_data *data = (struct gpio_button_data *)_data;
 
-	schedule_work(&data->work);
+ schedule_work(&data->work);
 }

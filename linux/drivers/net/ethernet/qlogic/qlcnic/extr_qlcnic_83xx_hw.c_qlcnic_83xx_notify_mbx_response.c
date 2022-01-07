@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qlcnic_mailbox {int /*<<< orphan*/  completion; int /*<<< orphan*/  rsp_status; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  QLC_83XX_MBX_RESPONSE_ARRIVED ; 
- int /*<<< orphan*/  complete (int /*<<< orphan*/ *) ; 
+
+
+
+struct qlcnic_mailbox {int completion; int rsp_status; } ;
+
+
+ int QLC_83XX_MBX_RESPONSE_ARRIVED ;
+ int complete (int *) ;
 
 __attribute__((used)) static inline void qlcnic_83xx_notify_mbx_response(struct qlcnic_mailbox *mbx)
 {
-	mbx->rsp_status = QLC_83XX_MBX_RESPONSE_ARRIVED;
-	complete(&mbx->completion);
+ mbx->rsp_status = QLC_83XX_MBX_RESPONSE_ARRIVED;
+ complete(&mbx->completion);
 }

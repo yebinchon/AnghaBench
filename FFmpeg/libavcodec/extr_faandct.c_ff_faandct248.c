@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
-typedef  int FLOAT ;
 
-/* Variables and functions */
- int A1 ; 
- int /*<<< orphan*/  emms_c () ; 
- int /*<<< orphan*/  lrintf (int) ; 
- int* postscale ; 
- int /*<<< orphan*/  row_fdct (int*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int int16_t ;
+typedef int FLOAT ;
+
+
+ int A1 ;
+ int emms_c () ;
+ int lrintf (int) ;
+ int* postscale ;
+ int row_fdct (int*,int *) ;
 
 void ff_faandct248(int16_t *data)
 {

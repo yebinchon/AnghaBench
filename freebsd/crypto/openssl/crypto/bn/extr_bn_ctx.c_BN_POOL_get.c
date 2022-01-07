@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int used; int size; TYPE_1__* current; TYPE_1__* head; TYPE_1__* tail; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * vals; struct TYPE_5__* next; struct TYPE_5__* prev; } ;
-typedef  TYPE_1__ BN_POOL_ITEM ;
-typedef  TYPE_2__ BN_POOL ;
-typedef  int /*<<< orphan*/  BIGNUM ;
+struct TYPE_5__ {int * vals; struct TYPE_5__* next; struct TYPE_5__* prev; } ;
+typedef TYPE_1__ BN_POOL_ITEM ;
+typedef TYPE_2__ BN_POOL ;
+typedef int BIGNUM ;
 
-/* Variables and functions */
- int BN_CTX_POOL_SIZE ; 
- int BN_FLG_SECURE ; 
- int /*<<< orphan*/  BN_F_BN_POOL_GET ; 
- int /*<<< orphan*/  BN_set_flags (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- TYPE_1__* OPENSSL_malloc (int) ; 
- int /*<<< orphan*/  bn_init (int /*<<< orphan*/ *) ; 
+
+ int BN_CTX_POOL_SIZE ;
+ int BN_FLG_SECURE ;
+ int BN_F_BN_POOL_GET ;
+ int BN_set_flags (int *,int) ;
+ int BNerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ TYPE_1__* OPENSSL_malloc (int) ;
+ int bn_init (int *) ;
 
 __attribute__((used)) static BIGNUM *BN_POOL_get(BN_POOL *p, int flag)
 {
     BIGNUM *bn;
     unsigned int loop;
 
-    /* Full; allocate a new pool item and link it in. */
+
     if (p->used == p->size) {
         BN_POOL_ITEM *item;
 
-        if ((item = OPENSSL_malloc(sizeof(*item))) == NULL) {
+        if ((item = OPENSSL_malloc(sizeof(*item))) == ((void*)0)) {
             BNerr(BN_F_BN_POOL_GET, ERR_R_MALLOC_FAILURE);
-            return NULL;
+            return ((void*)0);
         }
         for (loop = 0, bn = item->vals; loop++ < BN_CTX_POOL_SIZE; bn++) {
             bn_init(bn);
@@ -47,9 +47,9 @@ __attribute__((used)) static BIGNUM *BN_POOL_get(BN_POOL *p, int flag)
                 BN_set_flags(bn, BN_FLG_SECURE);
         }
         item->prev = p->tail;
-        item->next = NULL;
+        item->next = ((void*)0);
 
-        if (p->head == NULL)
+        if (p->head == ((void*)0))
             p->head = p->current = p->tail = item;
         else {
             p->tail->next = item;
@@ -58,7 +58,7 @@ __attribute__((used)) static BIGNUM *BN_POOL_get(BN_POOL *p, int flag)
         }
         p->size += BN_CTX_POOL_SIZE;
         p->used++;
-        /* Return the first bignum from the new pool */
+
         return item->vals;
     }
 

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  readbuf ;
 
-/* Variables and functions */
- int EAGAIN ; 
- int EINTR ; 
- int* addrtextbuf ; 
- scalar_t__ bracket ; 
- int* bytes ; 
- int cbyte ; 
- int /*<<< orphan*/  inbuf ; 
- int inbyte ; 
- int inputeof ; 
- int /*<<< orphan*/  isalnum (int) ; 
- int /*<<< orphan*/  procaddr () ; 
- int /*<<< orphan*/  queueoutchar (int) ; 
- int read (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  restartbuf () ; 
- int /*<<< orphan*/  startaddr () ; 
- int /*<<< orphan*/  sysfail (char*) ; 
+
+
+
+typedef int readbuf ;
+
+
+ int EAGAIN ;
+ int EINTR ;
+ int* addrtextbuf ;
+ scalar_t__ bracket ;
+ int* bytes ;
+ int cbyte ;
+ int inbuf ;
+ int inbyte ;
+ int inputeof ;
+ int isalnum (int) ;
+ int procaddr () ;
+ int queueoutchar (int) ;
+ int read (int ,char*,int) ;
+ int restartbuf () ;
+ int startaddr () ;
+ int sysfail (char*) ;
 
 __attribute__((used)) static void readstdin(void) {
   char readbuf[512], *p;
@@ -48,7 +48,7 @@ __attribute__((used)) static void readstdin(void) {
       queueoutchar(c);
       startaddr();
     } else if (cbyte>=0 && inbyte<3 && c>='0' && c<='9' &&
-	       (nbyte= bytes[cbyte]*10 + (c-'0')) <= 255) {
+        (nbyte= bytes[cbyte]*10 + (c-'0')) <= 255) {
       bytes[cbyte]= nbyte;
       addrtextbuf[inbuf++]= c;
       inbyte++;

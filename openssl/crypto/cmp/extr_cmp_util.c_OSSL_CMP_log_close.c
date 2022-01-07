@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int OSSL_TRACE_CATEGORY_CMP ;
+ int OSSL_trace_set_channel (int ,int *) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  OSSL_TRACE_CATEGORY_CMP ; 
- int /*<<< orphan*/  OSSL_trace_set_channel (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
-
-void OSSL_CMP_log_close(void) /* is designed to be idempotent */
+void OSSL_CMP_log_close(void)
 {
-    (void)OSSL_trace_set_channel(OSSL_TRACE_CATEGORY_CMP, NULL);
+    (void)OSSL_trace_set_channel(OSSL_TRACE_CATEGORY_CMP, ((void*)0));
 }

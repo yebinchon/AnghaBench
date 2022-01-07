@@ -1,167 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int apr_status_t ;
 
-/* Variables and functions */
-#define  APR_ANONYMOUS 172 
-#define  APR_BADARG 171 
-#define  APR_BADCH 170 
-#define  APR_CHILD_DONE 169 
-#define  APR_CHILD_NOTDONE 168 
-#define  APR_DETACH 167 
-#define  APR_EABOVEROOT 166 
-#define  APR_EABSOLUTE 165 
-#define  APR_EBADDATE 164 
-#define  APR_EBADIP 163 
-#define  APR_EBADMASK 162 
-#define  APR_EBADPATH 161 
-#define  APR_EBUSY 160 
-#define  APR_EDSOOPEN 159 
-#define  APR_EGENERAL 158 
-#define  APR_EINCOMPLETE 157 
-#define  APR_EINIT 156 
-#define  APR_EINVALSOCK 155 
-#define  APR_EMISMATCH 154 
-#define  APR_ENODIR 153 
-#define  APR_ENOLOCK 152 
-#define  APR_ENOPOLL 151 
-#define  APR_ENOPOOL 150 
-#define  APR_ENOPROC 149 
-#define  APR_ENOSHMAVAIL 148 
-#define  APR_ENOSOCKET 147 
-#define  APR_ENOSTAT 146 
-#define  APR_ENOTENOUGHENTROPY 145 
-#define  APR_ENOTHDKEY 144 
-#define  APR_ENOTHREAD 143 
-#define  APR_ENOTIME 142 
-#define  APR_ENOTIMPL 141 
-#define  APR_EOF 140 
-#define  APR_EPATHWILD 139 
-#define  APR_EPROC_UNKNOWN 138 
-#define  APR_ERELATIVE 137 
-#define  APR_ESYMNOTFOUND 136 
-#define  APR_FILEBASED 135 
-#define  APR_INCHILD 134 
-#define  APR_INCOMPLETE 133 
-#define  APR_INPARENT 132 
-#define  APR_KEYBASED 131 
-#define  APR_NOTDETACH 130 
-#define  APR_NOTFOUND 129 
-#define  APR_TIMEUP 128 
- char* dlerror () ; 
+
+
+
+typedef int apr_status_t ;
+ char* dlerror () ;
 
 __attribute__((used)) static char *apr_error_string(apr_status_t statcode)
 {
     switch (statcode) {
-    case APR_ENOSTAT:
+    case 146:
         return "Could not perform a stat on the file.";
-    case APR_ENOPOOL:
+    case 150:
         return "A new pool could not be created.";
-    case APR_EBADDATE:
+    case 164:
         return "An invalid date has been provided";
-    case APR_EINVALSOCK:
+    case 155:
         return "An invalid socket was returned";
-    case APR_ENOPROC:
+    case 149:
         return "No process was provided and one was required.";
-    case APR_ENOTIME:
+    case 142:
         return "No time was provided and one was required.";
-    case APR_ENODIR:
+    case 153:
         return "No directory was provided and one was required.";
-    case APR_ENOLOCK:
+    case 152:
         return "No lock was provided and one was required.";
-    case APR_ENOPOLL:
+    case 151:
         return "No poll structure was provided and one was required.";
-    case APR_ENOSOCKET:
+    case 147:
         return "No socket was provided and one was required.";
-    case APR_ENOTHREAD:
+    case 143:
         return "No thread was provided and one was required.";
-    case APR_ENOTHDKEY:
+    case 144:
         return "No thread key structure was provided and one was required.";
-    case APR_ENOSHMAVAIL:
+    case 148:
         return "No shared memory is currently available";
-    case APR_EDSOOPEN:
-#if APR_HAS_DSO && defined(HAVE_LIBDL)
-        return dlerror();
-#else
+    case 159:
+
+
+
         return "DSO load failed";
-#endif /* HAVE_LIBDL */
-    case APR_EBADIP:
+
+    case 163:
         return "The specified IP address is invalid.";
-    case APR_EBADMASK:
+    case 162:
         return "The specified network mask is invalid.";
-    case APR_ESYMNOTFOUND:
+    case 136:
         return "Could not find the requested symbol.";
-    case APR_ENOTENOUGHENTROPY:
+    case 145:
         return "Not enough entropy to continue.";
-    case APR_INCHILD:
+    case 134:
         return
-	    "Your code just forked, and you are currently executing in the "
-	    "child process";
-    case APR_INPARENT:
+     "Your code just forked, and you are currently executing in the "
+     "child process";
+    case 132:
         return
-	    "Your code just forked, and you are currently executing in the "
-	    "parent process";
-    case APR_DETACH:
+     "Your code just forked, and you are currently executing in the "
+     "parent process";
+    case 167:
         return "The specified thread is detached";
-    case APR_NOTDETACH:
+    case 130:
         return "The specified thread is not detached";
-    case APR_CHILD_DONE:
+    case 169:
         return "The specified child process is done executing";
-    case APR_CHILD_NOTDONE:
+    case 168:
         return "The specified child process is not done executing";
-    case APR_TIMEUP:
+    case 128:
         return "The timeout specified has expired";
-    case APR_INCOMPLETE:
+    case 133:
         return "Partial results are valid but processing is incomplete";
-    case APR_BADCH:
+    case 170:
         return "Bad character specified on command line";
-    case APR_BADARG:
+    case 171:
         return "Missing parameter for the specified command line option";
-    case APR_EOF:
+    case 140:
         return "End of file found";
-    case APR_NOTFOUND:
+    case 129:
         return "Could not find specified socket in poll list.";
-    case APR_ANONYMOUS:
+    case 172:
         return "Shared memory is implemented anonymously";
-    case APR_FILEBASED:
+    case 135:
         return "Shared memory is implemented using files";
-    case APR_KEYBASED:
+    case 131:
         return "Shared memory is implemented using a key system";
-    case APR_EINIT:
+    case 156:
         return
-	    "There is no error, this value signifies an initialized "
-	    "error code";
-    case APR_ENOTIMPL:
+     "There is no error, this value signifies an initialized "
+     "error code";
+    case 141:
         return "This function has not been implemented on this platform";
-    case APR_EMISMATCH:
+    case 154:
         return "passwords do not match";
-    case APR_EABSOLUTE:
+    case 165:
         return "The given path is absolute";
-    case APR_ERELATIVE:
+    case 137:
         return "The given path is relative";
-    case APR_EINCOMPLETE:
+    case 157:
         return "The given path is incomplete";
-    case APR_EABOVEROOT:
+    case 166:
         return "The given path was above the root path";
-    case APR_EBADPATH:
+    case 161:
         return "The given path is misformatted or contained invalid characters";
-    case APR_EPATHWILD:
+    case 139:
         return "The given path contained wildcard characters";
-    case APR_EBUSY:
+    case 160:
         return "The given lock was busy.";
-    case APR_EPROC_UNKNOWN:
+    case 138:
         return "The process is not recognized.";
-    case APR_EGENERAL:
+    case 158:
         return "Internal error (specific information not available)";
     default:
         return "Error string not specified yet";

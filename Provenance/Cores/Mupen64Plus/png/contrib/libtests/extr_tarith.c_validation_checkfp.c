@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int at_start; int limit; int is_zero; scalar_t__ number_was_valid; scalar_t__ is_negative; scalar_t__ state; scalar_t__ cdigits_in_state; int /*<<< orphan*/  check_state; scalar_t__ cnumber; } ;
-typedef  TYPE_1__ checkfp_control ;
-struct TYPE_6__ {int limit; int ctimes; int cmillions; int cinvalid; scalar_t__ cnoaccept; int /*<<< orphan*/  verbose; scalar_t__* number; } ;
-typedef  TYPE_2__ checkfp_command ;
 
-/* Variables and functions */
- int atoi (char*) ; 
- int check_all_characters (TYPE_2__*,TYPE_1__) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,char*,int,int,int,int,int) ; 
- int /*<<< orphan*/  start ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  verbose ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int at_start; int limit; int is_zero; scalar_t__ number_was_valid; scalar_t__ is_negative; scalar_t__ state; scalar_t__ cdigits_in_state; int check_state; scalar_t__ cnumber; } ;
+typedef TYPE_1__ checkfp_control ;
+struct TYPE_6__ {int limit; int ctimes; int cmillions; int cinvalid; scalar_t__ cnoaccept; int verbose; scalar_t__* number; } ;
+typedef TYPE_2__ checkfp_command ;
+
+
+ int atoi (char*) ;
+ int check_all_characters (TYPE_2__*,TYPE_1__) ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,char*,int,int,int,int,int) ;
+ int start ;
+ int stderr ;
+ scalar_t__ strcmp (char*,char*) ;
+ int verbose ;
 
 int validation_checkfp(int count, int argc, char **argv)
 {

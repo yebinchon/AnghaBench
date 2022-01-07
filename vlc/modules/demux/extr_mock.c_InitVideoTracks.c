@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ plane_count; } ;
-typedef  TYPE_2__ vlc_chroma_description_t ;
-struct demux_sys {scalar_t__ video_chroma; scalar_t__ video_frame_rate; scalar_t__ video_frame_rate_base; scalar_t__ video_width; scalar_t__ video_height; int /*<<< orphan*/  video_packetized; } ;
-struct TYPE_11__ {scalar_t__ i_width; scalar_t__ i_visible_width; scalar_t__ i_height; scalar_t__ i_visible_height; scalar_t__ i_frame_rate; scalar_t__ i_frame_rate_base; int /*<<< orphan*/  i_chroma; } ;
-struct TYPE_13__ {TYPE_1__ video; int /*<<< orphan*/  i_codec; } ;
-typedef  TYPE_3__ es_format_t ;
+typedef TYPE_2__ vlc_chroma_description_t ;
+struct demux_sys {scalar_t__ video_chroma; scalar_t__ video_frame_rate; scalar_t__ video_frame_rate_base; scalar_t__ video_width; scalar_t__ video_height; int video_packetized; } ;
+struct TYPE_11__ {scalar_t__ i_width; scalar_t__ i_visible_width; scalar_t__ i_height; scalar_t__ i_visible_height; scalar_t__ i_frame_rate; scalar_t__ i_frame_rate_base; int i_chroma; } ;
+struct TYPE_13__ {TYPE_1__ video; int i_codec; } ;
+typedef TYPE_3__ es_format_t ;
 struct TYPE_14__ {struct demux_sys* p_sys; } ;
-typedef  TYPE_4__ demux_t ;
+typedef TYPE_4__ demux_t ;
 
-/* Variables and functions */
- scalar_t__ AppendMockTrack (TYPE_4__*,TYPE_3__*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ UINT_MAX ; 
- int /*<<< orphan*/  VIDEO_ES ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  es_format_Init (TYPE_3__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  msg_Err (TYPE_4__*,char*) ; 
- TYPE_2__* vlc_fourcc_GetChromaDescription (scalar_t__) ; 
+
+ scalar_t__ AppendMockTrack (TYPE_4__*,TYPE_3__*,int,int ) ;
+ scalar_t__ UINT_MAX ;
+ int VIDEO_ES ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int es_format_Init (TYPE_3__*,int ,scalar_t__) ;
+ int msg_Err (TYPE_4__*,char*) ;
+ TYPE_2__* vlc_fourcc_GetChromaDescription (scalar_t__) ;
 
 __attribute__((used)) static int
 InitVideoTracks(demux_t *demux, int group, size_t count)

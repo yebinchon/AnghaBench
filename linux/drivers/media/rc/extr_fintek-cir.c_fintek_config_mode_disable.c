@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fintek_dev {int /*<<< orphan*/  cr_ip; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONFIG_REG_DISABLE ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct fintek_dev {int cr_ip; } ;
+
+
+ int CONFIG_REG_DISABLE ;
+ int outb (int ,int ) ;
 
 __attribute__((used)) static inline void fintek_config_mode_disable(struct fintek_dev *fintek)
 {
-	outb(CONFIG_REG_DISABLE, fintek->cr_ip);
+ outb(CONFIG_REG_DISABLE, fintek->cr_ip);
 }

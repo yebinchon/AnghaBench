@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  offset; int /*<<< orphan*/  tag; } ;
-typedef  TYPE_1__ tt_table_directory ;
-struct TYPE_8__ {int /*<<< orphan*/  string_offset; int /*<<< orphan*/  count; } ;
-typedef  TYPE_2__ tt_name_table ;
-struct TYPE_9__ {int /*<<< orphan*/  language_id; int /*<<< orphan*/  platform_id; int /*<<< orphan*/  name_id; int /*<<< orphan*/  offset; int /*<<< orphan*/  length; } ;
-typedef  TYPE_3__ tt_name_record ;
-struct TYPE_10__ {int /*<<< orphan*/  minor_version; int /*<<< orphan*/  major_version; int /*<<< orphan*/  tables_no; } ;
-typedef  TYPE_4__ tt_header ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LANGID ;
-typedef  int DWORD_PTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int GET_BE_DWORD (int /*<<< orphan*/ ) ; 
- int GET_BE_WORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetSystemDefaultLangID () ; 
- int /*<<< orphan*/  TRACE (char*,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * copy_name_table_string (TYPE_3__ const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int match_name_table_language (TYPE_3__ const*,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,char*,int) ; 
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int offset; int tag; } ;
+typedef TYPE_1__ tt_table_directory ;
+struct TYPE_8__ {int string_offset; int count; } ;
+typedef TYPE_2__ tt_name_table ;
+struct TYPE_9__ {int language_id; int platform_id; int name_id; int offset; int length; } ;
+typedef TYPE_3__ tt_name_record ;
+struct TYPE_10__ {int minor_version; int major_version; int tables_no; } ;
+typedef TYPE_4__ tt_header ;
+typedef int WCHAR ;
+typedef int LANGID ;
+typedef int DWORD_PTR ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int GET_BE_DWORD (int ) ;
+ int GET_BE_WORD (int ) ;
+ int GetSystemDefaultLangID () ;
+ int TRACE (char*,int,int,int,int ) ;
+ int * copy_name_table_string (TYPE_3__ const*,int const*) ;
+ int debugstr_w (int *) ;
+ int match_name_table_language (TYPE_3__ const*,int ) ;
+ scalar_t__ memcmp (int ,char*,int) ;
 
 __attribute__((used)) static WCHAR *load_ttf_name_id( const BYTE *mem, DWORD_PTR size, DWORD id )
 {
@@ -48,12 +48,12 @@ __attribute__((used)) static WCHAR *load_ttf_name_id( const BYTE *mem, DWORD_PTR
     int i, res, best_lang = 0, best_index = -1;
 
     if (sizeof(tt_header) > size)
-        return NULL;
+        return ((void*)0);
     header = (const tt_header*)mem;
     count = GET_BE_WORD(header->tables_no);
 
     if (GET_BE_WORD(header->major_version) != 1 || GET_BE_WORD(header->minor_version) != 0)
-        return NULL;
+        return ((void*)0);
 
     pos = sizeof(*header);
     for (i = 0; i < count; i++)
@@ -67,27 +67,27 @@ __attribute__((used)) static WCHAR *load_ttf_name_id( const BYTE *mem, DWORD_PTR
         }
     }
     if (i >= count)
-        return NULL;
+        return ((void*)0);
 
     if (ofs >= size)
-        return NULL;
+        return ((void*)0);
     pos = ofs + sizeof(*name_table);
     if (pos > size)
-        return NULL;
+        return ((void*)0);
     name_table = (const tt_name_table*)&mem[ofs];
-    count =  GET_BE_WORD(name_table->count);
-    if (GET_BE_WORD(name_table->string_offset) >= size - ofs) return NULL;
+    count = GET_BE_WORD(name_table->count);
+    if (GET_BE_WORD(name_table->string_offset) >= size - ofs) return ((void*)0);
     ofs += GET_BE_WORD(name_table->string_offset);
     for (i=0; i<count; i++)
     {
         name_record = (const tt_name_record*)&mem[pos];
         pos += sizeof(*name_record);
         if (pos > size)
-            return NULL;
+            return ((void*)0);
 
         if (GET_BE_WORD(name_record->name_id) != id) continue;
-        if (GET_BE_WORD(name_record->offset) >= size - ofs) return NULL;
-        if (GET_BE_WORD(name_record->length) > size - ofs - GET_BE_WORD(name_record->offset)) return NULL;
+        if (GET_BE_WORD(name_record->offset) >= size - ofs) return ((void*)0);
+        if (GET_BE_WORD(name_record->length) > size - ofs - GET_BE_WORD(name_record->offset)) return ((void*)0);
 
         res = match_name_table_language( name_record, lang );
         if (res > best_lang)
@@ -106,5 +106,5 @@ __attribute__((used)) static WCHAR *load_ttf_name_id( const BYTE *mem, DWORD_PTR
                 GET_BE_WORD(name_record->platform_id), GET_BE_WORD(name_record->language_id), debugstr_w( ret ));
         return ret;
     }
-    return NULL;
+    return ((void*)0);
 }

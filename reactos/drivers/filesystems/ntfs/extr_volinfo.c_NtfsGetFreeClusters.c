@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int ULONGLONG ;
-typedef  int ULONG ;
+
+
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+typedef int ULONGLONG ;
+typedef int ULONG ;
 struct TYPE_12__ {int ClusterCount; int BytesPerSector; int SectorsPerCluster; } ;
-struct TYPE_14__ {int /*<<< orphan*/  FileRecLookasideList; TYPE_1__ NtfsInfo; } ;
-struct TYPE_13__ {int /*<<< orphan*/  pRecord; } ;
-typedef  int /*<<< orphan*/  RTL_BITMAP ;
-typedef  int /*<<< orphan*/  PULONG ;
-typedef  TYPE_2__* PNTFS_ATTR_CONTEXT ;
-typedef  int /*<<< orphan*/ * PFILE_RECORD_HEADER ;
-typedef  TYPE_3__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/ * PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+struct TYPE_14__ {int FileRecLookasideList; TYPE_1__ NtfsInfo; } ;
+struct TYPE_13__ {int pRecord; } ;
+typedef int RTL_BITMAP ;
+typedef int PULONG ;
+typedef TYPE_2__* PNTFS_ATTR_CONTEXT ;
+typedef int * PFILE_RECORD_HEADER ;
+typedef TYPE_3__* PDEVICE_EXTENSION ;
+typedef int * PCHAR ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  AttributeData ; 
- int AttributeDataLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_3__*) ; 
- int /*<<< orphan*/  DPRINT1 (char*,int) ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindAttribute (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,TYPE_2__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NTFS_FILE_BITMAP ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  ROUND_UP (int,int) ; 
- int /*<<< orphan*/  ReadAttribute (TYPE_3__*,TYPE_2__*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReadFileRecord (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_2__*) ; 
- int /*<<< orphan*/  RtlInitializeBitMap (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int RtlNumberOfClearBits (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAG_NTFS ; 
+
+ int ASSERT (int) ;
+ int AttributeData ;
+ int AttributeDataLength (int ) ;
+ int DPRINT (char*,TYPE_3__*) ;
+ int DPRINT1 (char*,int) ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int * ExAllocatePoolWithTag (int ,int ,int ) ;
+ int ExFreePoolWithTag (int *,int ) ;
+ int ExFreeToNPagedLookasideList (int *,int *) ;
+ int FindAttribute (TYPE_3__*,int *,int ,char*,int ,TYPE_2__**,int *) ;
+ int NTFS_FILE_BITMAP ;
+ int NT_SUCCESS (int ) ;
+ int NonPagedPool ;
+ int ROUND_UP (int,int) ;
+ int ReadAttribute (TYPE_3__*,TYPE_2__*,int,int *,int) ;
+ int ReadFileRecord (TYPE_3__*,int ,int *) ;
+ int ReleaseAttributeContext (TYPE_2__*) ;
+ int RtlInitializeBitMap (int *,int ,int) ;
+ int RtlNumberOfClearBits (int *) ;
+ int TAG_NTFS ;
 
 ULONGLONG
 NtfsGetFreeClusters(PDEVICE_EXTENSION DeviceExt)
@@ -64,7 +64,7 @@ NtfsGetFreeClusters(PDEVICE_EXTENSION DeviceExt)
     DPRINT("NtfsGetFreeClusters(%p)\n", DeviceExt);
 
     BitmapRecord = ExAllocateFromNPagedLookasideList(&DeviceExt->FileRecLookasideList);
-    if (BitmapRecord == NULL)
+    if (BitmapRecord == ((void*)0))
     {
         return 0;
     }
@@ -76,7 +76,7 @@ NtfsGetFreeClusters(PDEVICE_EXTENSION DeviceExt)
         return 0;
     }
 
-    Status = FindAttribute(DeviceExt, BitmapRecord, AttributeData, L"", 0, &DataContext, NULL);
+    Status = FindAttribute(DeviceExt, BitmapRecord, AttributeData, L"", 0, &DataContext, ((void*)0));
     if (!NT_SUCCESS(Status))
     {
         ExFreeToNPagedLookasideList(&DeviceExt->FileRecLookasideList, BitmapRecord);
@@ -86,14 +86,14 @@ NtfsGetFreeClusters(PDEVICE_EXTENSION DeviceExt)
     BitmapDataSize = AttributeDataLength(DataContext->pRecord);
     ASSERT((BitmapDataSize * 8) >= DeviceExt->NtfsInfo.ClusterCount);
     BitmapData = ExAllocatePoolWithTag(NonPagedPool, ROUND_UP(BitmapDataSize, DeviceExt->NtfsInfo.BytesPerSector), TAG_NTFS);
-    if (BitmapData == NULL)
+    if (BitmapData == ((void*)0))
     {
         ReleaseAttributeContext(DataContext);
         ExFreeToNPagedLookasideList(&DeviceExt->FileRecLookasideList, BitmapRecord);
         return 0;
     }
 
-    /* FIXME: Totally underoptimized! */
+
     for (; Read < BitmapDataSize; Read += DeviceExt->NtfsInfo.BytesPerSector)
     {
         ReadAttribute(DeviceExt, DataContext, Read, (PCHAR)((ULONG_PTR)BitmapData + Read), DeviceExt->NtfsInfo.BytesPerSector);

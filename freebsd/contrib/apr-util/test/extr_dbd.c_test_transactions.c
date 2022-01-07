@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_dbd_transaction_t ;
-typedef  int /*<<< orphan*/  apr_dbd_t ;
-typedef  int /*<<< orphan*/  apr_dbd_driver_t ;
 
-/* Variables and functions */
- char* apr_dbd_error (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int apr_dbd_query (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int*,char const*) ; 
- int apr_dbd_transaction_end (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int apr_dbd_transaction_start (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  select_sequential (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int apr_pool_t ;
+typedef int apr_dbd_transaction_t ;
+typedef int apr_dbd_t ;
+typedef int apr_dbd_driver_t ;
+
+
+ char* apr_dbd_error (int const*,int *,int) ;
+ int apr_dbd_query (int const*,int *,int*,char const*) ;
+ int apr_dbd_transaction_end (int const*,int *,int *) ;
+ int apr_dbd_transaction_start (int const*,int *,int *,int **) ;
+ int printf (char*,...) ;
+ int select_sequential (int *,int *,int const*) ;
 
 __attribute__((used)) static int test_transactions(apr_pool_t* pool, apr_dbd_t* handle,
                              const apr_dbd_driver_t* driver)
 {
     int rv = 0;
     int nrows;
-    apr_dbd_transaction_t *trans = NULL;
+    apr_dbd_transaction_t *trans = ((void*)0);
     const char* statement;
 
-    /* trans 1 - error out early */
+
     printf("Transaction 1\n");
     rv = apr_dbd_transaction_start(driver, pool, handle, &trans);
     if (rv) {
@@ -67,7 +67,7 @@ __attribute__((used)) static int test_transactions(apr_pool_t* pool, apr_dbd_t* 
            "A column of \"failed\" indicates transaction failed (no rollback)\n");
     select_sequential(pool, handle, driver);
 
-    /* trans 2 - complete successfully */
+
     printf("Transaction 2\n");
     rv = apr_dbd_transaction_start(driver, pool, handle, &trans);
     if (rv) {

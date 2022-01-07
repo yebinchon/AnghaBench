@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WORD ;
+typedef int WCHAR ;
+typedef scalar_t__ ULONG_PTR ;
+typedef int UINT ;
 struct TYPE_3__ {int Flags; scalar_t__ Text; } ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  TYPE_1__ MESSAGE_RESOURCE_ENTRY ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  scalar_t__ HMODULE ;
+typedef int NTSTATUS ;
+typedef TYPE_1__ MESSAGE_RESOURCE_ENTRY ;
+typedef int * LPWSTR ;
+typedef scalar_t__ HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ GetModuleHandleW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int MESSAGE_RESOURCE_UNICODE ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- scalar_t__ RT_MESSAGETABLE ; 
- int /*<<< orphan*/  RtlFindMessage (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__ const**) ; 
- int /*<<< orphan*/  RtlNtStatusToDosError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int strlenW (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  wine_dbgstr_w (int /*<<< orphan*/ *) ; 
+
+ int CP_ACP ;
+ scalar_t__ GetModuleHandleW (int *) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int MESSAGE_RESOURCE_UNICODE ;
+ int MultiByteToWideChar (int ,int ,char const*,int,int *,int) ;
+ int NT_SUCCESS (int ) ;
+ scalar_t__ RT_MESSAGETABLE ;
+ int RtlFindMessage (scalar_t__,scalar_t__,int ,int ,TYPE_1__ const**) ;
+ int RtlNtStatusToDosError (int ) ;
+ int STATUS_SUCCESS ;
+ int SetLastError (int ) ;
+ int TRACE (char*,int ,...) ;
+ int memcpy (int *,scalar_t__,int) ;
+ int strlenW (int const*) ;
+ int wine_dbgstr_w (int *) ;
 
 __attribute__((used)) static LPWSTR load_message( HMODULE module, UINT id, WORD lang )
 {
-#ifdef __REACTOS__
-    MESSAGE_RESOURCE_ENTRY *mre;
-#else
+
+
+
     const MESSAGE_RESOURCE_ENTRY *mre;
-#endif
+
     WCHAR *buffer;
     NTSTATUS status;
 
     TRACE("module = %p, id = %08x\n", module, id );
 
-    if (!module) module = GetModuleHandleW( NULL );
-#ifdef __REACTOS__
-    status = RtlFindMessage(module, (ULONG_PTR)RT_MESSAGETABLE, lang, id, &mre);
-    if (!NT_SUCCESS(status))
-#else
+    if (!module) module = GetModuleHandleW( ((void*)0) );
+
+
+
+
     if ((status = RtlFindMessage( module, RT_MESSAGETABLE, lang, id, &mre )) != STATUS_SUCCESS)
-#endif
+
     {
         SetLastError( RtlNtStatusToDosError(status) );
-        return NULL;
+        return ((void*)0);
     }
 
     if (mre->Flags & MESSAGE_RESOURCE_UNICODE)
     {
         int len = (strlenW( (const WCHAR *)mre->Text ) + 1) * sizeof(WCHAR);
-        if (!(buffer = HeapAlloc( GetProcessHeap(), 0, len ))) return NULL;
+        if (!(buffer = HeapAlloc( GetProcessHeap(), 0, len ))) return ((void*)0);
         memcpy( buffer, mre->Text, len );
     }
     else
     {
-        int len = MultiByteToWideChar( CP_ACP, 0, (const char *)mre->Text, -1, NULL, 0 );
-        if (!(buffer = HeapAlloc( GetProcessHeap(), 0, len * sizeof(WCHAR) ))) return NULL;
+        int len = MultiByteToWideChar( CP_ACP, 0, (const char *)mre->Text, -1, ((void*)0), 0 );
+        if (!(buffer = HeapAlloc( GetProcessHeap(), 0, len * sizeof(WCHAR) ))) return ((void*)0);
         MultiByteToWideChar( CP_ACP, 0, (const char*)mre->Text, -1, buffer, len );
     }
     TRACE("returning %s\n", wine_dbgstr_w(buffer));

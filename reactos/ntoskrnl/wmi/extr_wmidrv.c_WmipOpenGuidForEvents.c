@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WMI_OPEN_GUID_FOR_EVENTS ;
-typedef  int /*<<< orphan*/  WMIP_RESULT2 ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-typedef  int ULONG ;
-struct TYPE_8__ {int /*<<< orphan*/  Handle; } ;
-struct TYPE_7__ {int /*<<< orphan*/  DesiredAccess; int /*<<< orphan*/  ObjectAttributes; } ;
-typedef  TYPE_1__* PWMI_OPEN_GUID_FOR_EVENTS ;
-typedef  TYPE_2__* PWMIP_RESULT2 ;
-typedef  TYPE_1__* PVOID ;
-typedef  int* PULONG ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  KPROCESSOR_MODE ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExGetPreviousMode () ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ObDereferenceObject (TYPE_1__*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  STATUS_UNSUCCESSFUL ; 
- int /*<<< orphan*/  WmipCaptureGuidObjectAttributes (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WmipOpenGuidObjectByName (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__**) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int WMI_OPEN_GUID_FOR_EVENTS ;
+typedef int WMIP_RESULT2 ;
+typedef int WCHAR ;
+typedef int UNICODE_STRING ;
+typedef int ULONG ;
+struct TYPE_8__ {int Handle; } ;
+struct TYPE_7__ {int DesiredAccess; int ObjectAttributes; } ;
+typedef TYPE_1__* PWMI_OPEN_GUID_FOR_EVENTS ;
+typedef TYPE_2__* PWMIP_RESULT2 ;
+typedef TYPE_1__* PVOID ;
+typedef int* PULONG ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int KPROCESSOR_MODE ;
+typedef int HANDLE ;
+
+
+ int DPRINT1 (char*,int ) ;
+ int ExGetPreviousMode () ;
+ int NT_SUCCESS (int ) ;
+ int ObDereferenceObject (TYPE_1__*) ;
+ int STATUS_SUCCESS ;
+ int STATUS_UNSUCCESSFUL ;
+ int WmipCaptureGuidObjectAttributes (int ,int *,int *,int *,int ) ;
+ int WmipOpenGuidObjectByName (int *,int ,int ,int *,TYPE_1__**) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -61,7 +61,7 @@ WmipOpenGuidForEvents(
         return STATUS_UNSUCCESSFUL;
     }
 
-    /* Capture object attributes */
+
     PreviousMode = ExGetPreviousMode();
     Status = WmipCaptureGuidObjectAttributes(OpenGuidForEvents->ObjectAttributes,
                                              &LocalObjectAttributes,
@@ -74,7 +74,7 @@ WmipOpenGuidForEvents(
         return Status;
     }
 
-    /* Open a new GUID object */
+
     Status = WmipOpenGuidObjectByName(&LocalObjectAttributes,
                                       OpenGuidForEvents->DesiredAccess,
                                       PreviousMode,

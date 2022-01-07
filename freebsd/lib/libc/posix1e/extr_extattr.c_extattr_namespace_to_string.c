@@ -1,42 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int EINVAL ;
 
-/* Forward declarations */
+ int EXTATTR_NAMESPACE_SYSTEM_STRING ;
 
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
-#define  EXTATTR_NAMESPACE_SYSTEM 129 
- int /*<<< orphan*/  EXTATTR_NAMESPACE_SYSTEM_STRING ; 
-#define  EXTATTR_NAMESPACE_USER 128 
- int /*<<< orphan*/  EXTATTR_NAMESPACE_USER_STRING ; 
- int /*<<< orphan*/  errno ; 
- char* strdup (int /*<<< orphan*/ ) ; 
+ int EXTATTR_NAMESPACE_USER_STRING ;
+ int errno ;
+ char* strdup (int ) ;
 
 int
 extattr_namespace_to_string(int attrnamespace, char **string)
 {
 
-	switch(attrnamespace) {
-	case EXTATTR_NAMESPACE_USER:
-		if (string != NULL)
-			*string = strdup(EXTATTR_NAMESPACE_USER_STRING);
-		return (0);
+ switch(attrnamespace) {
+ case 128:
+  if (string != ((void*)0))
+   *string = strdup(EXTATTR_NAMESPACE_USER_STRING);
+  return (0);
 
-	case EXTATTR_NAMESPACE_SYSTEM:
-		if (string != NULL)
-			*string = strdup(EXTATTR_NAMESPACE_SYSTEM_STRING);
-		return (0);
+ case 129:
+  if (string != ((void*)0))
+   *string = strdup(EXTATTR_NAMESPACE_SYSTEM_STRING);
+  return (0);
 
-	default:
-		errno = EINVAL;
-		return (-1);
-	}
+ default:
+  errno = EINVAL;
+  return (-1);
+ }
 }

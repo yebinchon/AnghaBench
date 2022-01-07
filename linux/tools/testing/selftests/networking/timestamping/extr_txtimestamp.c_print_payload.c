@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+ int fprintf (int ,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static void print_payload(char *data, int len)
 {
-	int i;
+ int i;
 
-	if (!len)
-		return;
+ if (!len)
+  return;
 
-	if (len > 70)
-		len = 70;
+ if (len > 70)
+  len = 70;
 
-	fprintf(stderr, "payload: ");
-	for (i = 0; i < len; i++)
-		fprintf(stderr, "%02hhx ", data[i]);
-	fprintf(stderr, "\n");
+ fprintf(stderr, "payload: ");
+ for (i = 0; i < len; i++)
+  fprintf(stderr, "%02hhx ", data[i]);
+ fprintf(stderr, "\n");
 }

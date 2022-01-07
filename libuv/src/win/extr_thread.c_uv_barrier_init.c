@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {unsigned int n; int /*<<< orphan*/  mutex; int /*<<< orphan*/  turnstile1; int /*<<< orphan*/  turnstile2; scalar_t__ count; } ;
-typedef  TYPE_1__ uv_barrier_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uv_mutex_destroy (int /*<<< orphan*/ *) ; 
- int uv_mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uv_sem_destroy (int /*<<< orphan*/ *) ; 
- int uv_sem_init (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {unsigned int n; int mutex; int turnstile1; int turnstile2; scalar_t__ count; } ;
+typedef TYPE_1__ uv_barrier_t ;
+
+
+ int uv_mutex_destroy (int *) ;
+ int uv_mutex_init (int *) ;
+ int uv_sem_destroy (int *) ;
+ int uv_sem_init (int *,int) ;
 
 int uv_barrier_init(uv_barrier_t* barrier, unsigned int count) {
   int err;

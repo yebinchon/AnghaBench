@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- char* buf_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  buf_write (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  functions ; 
- int /*<<< orphan*/ * make_buffer () ; 
- int /*<<< orphan*/  vec_get (int /*<<< orphan*/ ,int) ; 
- int vec_len (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Buffer ;
+
+
+ char* buf_body (int *) ;
+ int buf_printf (int *,char*,...) ;
+ int buf_write (int *,char) ;
+ int functions ;
+ int * make_buffer () ;
+ int vec_get (int ,int) ;
+ int vec_len (int ) ;
 
 __attribute__((used)) static char *get_caller_list() {
     Buffer *b = make_buffer();

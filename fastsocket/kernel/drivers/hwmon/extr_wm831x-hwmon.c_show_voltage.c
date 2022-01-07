@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wm831x_hwmon {int /*<<< orphan*/  wm831x; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wm831x_hwmon {int wm831x; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 struct TYPE_2__ {int index; } ;
 
-/* Variables and functions */
- int DIV_ROUND_CLOSEST (int,int) ; 
- struct wm831x_hwmon* dev_get_drvdata (struct device*) ; 
- int sprintf (char*,char*,int) ; 
- TYPE_1__* to_sensor_dev_attr (struct device_attribute*) ; 
- int wm831x_auxadc_read_uv (int /*<<< orphan*/ ,int) ; 
+
+ int DIV_ROUND_CLOSEST (int,int) ;
+ struct wm831x_hwmon* dev_get_drvdata (struct device*) ;
+ int sprintf (char*,char*,int) ;
+ TYPE_1__* to_sensor_dev_attr (struct device_attribute*) ;
+ int wm831x_auxadc_read_uv (int ,int) ;
 
 __attribute__((used)) static ssize_t show_voltage(struct device *dev,
-			    struct device_attribute *attr, char *buf)
+       struct device_attribute *attr, char *buf)
 {
-	struct wm831x_hwmon *hwmon = dev_get_drvdata(dev);
-	int channel = to_sensor_dev_attr(attr)->index;
-	int ret;
+ struct wm831x_hwmon *hwmon = dev_get_drvdata(dev);
+ int channel = to_sensor_dev_attr(attr)->index;
+ int ret;
 
-	ret = wm831x_auxadc_read_uv(hwmon->wm831x, channel);
-	if (ret < 0)
-		return ret;
+ ret = wm831x_auxadc_read_uv(hwmon->wm831x, channel);
+ if (ret < 0)
+  return ret;
 
-	return sprintf(buf, "%d\n", DIV_ROUND_CLOSEST(ret, 1000));
+ return sprintf(buf, "%d\n", DIV_ROUND_CLOSEST(ret, 1000));
 }

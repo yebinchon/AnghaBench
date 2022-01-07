@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* bio_buffer_ptr ; 
- int /*<<< orphan*/  panic (char*) ; 
+ void* bio_buffer_ptr ;
+ int panic (char*) ;
 
 void
 bio_free(void *ptr, size_t size)
 {
 
-	if (ptr == NULL)
-		return;
+ if (ptr == ((void*)0))
+  return;
 
-	bio_buffer_ptr -= size;
-	if (bio_buffer_ptr != ptr)
-		panic("bio_alloc()/bio_free() mismatch\n");
+ bio_buffer_ptr -= size;
+ if (bio_buffer_ptr != ptr)
+  panic("bio_alloc()/bio_free() mismatch\n");
 }

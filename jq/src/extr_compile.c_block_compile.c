@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct symbol_table {int dummy; } ;
 struct locfile {int dummy; } ;
 struct cfunction {int dummy; } ;
-struct bytecode {TYPE_1__* globals; int /*<<< orphan*/  debuginfo; scalar_t__ nclosures; scalar_t__ parent; } ;
-typedef  int /*<<< orphan*/  jv ;
-typedef  int /*<<< orphan*/  block ;
-struct TYPE_2__ {int ncfunctions; int /*<<< orphan*/  cfunc_names; int /*<<< orphan*/  cfunctions; } ;
+struct bytecode {TYPE_1__* globals; int debuginfo; scalar_t__ nclosures; scalar_t__ parent; } ;
+typedef int jv ;
+typedef int block ;
+struct TYPE_2__ {int ncfunctions; int cfunc_names; int cfunctions; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  bytecode_free (struct bytecode*) ; 
- int compile (struct bytecode*,int /*<<< orphan*/ ,struct locfile*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int count_cfunctions (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_array () ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_invalid () ; 
- void* jv_mem_alloc (int) ; 
- int /*<<< orphan*/  jv_mem_calloc (int,int) ; 
- int /*<<< orphan*/  jv_null () ; 
- int /*<<< orphan*/  jv_object () ; 
- int /*<<< orphan*/  jv_object_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_string (char*) ; 
+
+ int assert (int) ;
+ int bytecode_free (struct bytecode*) ;
+ int compile (struct bytecode*,int ,struct locfile*,int ,int *) ;
+ int count_cfunctions (int ) ;
+ int jv_array () ;
+ int jv_free (int ) ;
+ int jv_invalid () ;
+ void* jv_mem_alloc (int) ;
+ int jv_mem_calloc (int,int) ;
+ int jv_null () ;
+ int jv_object () ;
+ int jv_object_set (int ,int ,int ) ;
+ int jv_string (char*) ;
 
 int block_compile(block b, struct bytecode** out, struct locfile* lf, jv args) {
   struct bytecode* bc = jv_mem_alloc(sizeof(struct bytecode));

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DISPID ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ DISP_E_UNKNOWNNAME ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JS_E_OBJECT_EXPECTED ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ disp_get_id (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- scalar_t__ stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ throw_type_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ to_flat_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/  const**) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int WCHAR ;
+typedef scalar_t__ HRESULT ;
+typedef int DISPID ;
+typedef int BOOL ;
+
+
+ scalar_t__ DISP_E_UNKNOWNNAME ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ int IDispatch_Release (int ) ;
+ int JS_E_OBJECT_EXPECTED ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ int TRACE (char*) ;
+ int TRUE ;
+ scalar_t__ disp_get_id (int *,int ,int const*,int *,int ,int *) ;
+ int get_object (int ) ;
+ int is_object_instance (int ) ;
+ int jsstr_release (int *) ;
+ int jsval_bool (int ) ;
+ int jsval_release (int ) ;
+ int stack_pop (int *) ;
+ scalar_t__ stack_push (int *,int ) ;
+ scalar_t__ throw_type_error (int *,int ,int *) ;
+ scalar_t__ to_flat_string (int *,int ,int **,int const**) ;
 
 __attribute__((used)) static HRESULT interp_in(script_ctx_t *ctx)
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static HRESULT interp_in(script_ctx_t *ctx)
     obj = stack_pop(ctx);
     if(!is_object_instance(obj) || !get_object(obj)) {
         jsval_release(obj);
-        return throw_type_error(ctx, JS_E_OBJECT_EXPECTED, NULL);
+        return throw_type_error(ctx, JS_E_OBJECT_EXPECTED, ((void*)0));
     }
 
     v = stack_pop(ctx);
@@ -63,7 +63,7 @@ __attribute__((used)) static HRESULT interp_in(script_ctx_t *ctx)
         return hres;
     }
 
-    hres = disp_get_id(ctx, get_object(obj), str, NULL, 0, &id);
+    hres = disp_get_id(ctx, get_object(obj), str, ((void*)0), 0, &id);
     IDispatch_Release(get_object(obj));
     jsstr_release(jsstr);
     if(SUCCEEDED(hres))

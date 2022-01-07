@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int learning_rate; double momentum; double decay; int* seen; int max_batches; int batch; int subdivisions; } ;
-typedef  TYPE_1__ network ;
+typedef TYPE_1__ network ;
 struct TYPE_14__ {int n; } ;
-typedef  TYPE_2__ moves ;
-typedef  int /*<<< orphan*/  data ;
+typedef TYPE_2__ moves ;
+typedef int data ;
 
-/* Variables and functions */
- char* basecfg (char*) ; 
- TYPE_1__** calloc (int,int) ; 
- int /*<<< orphan*/  cuda_set_device (int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  free_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_network (TYPE_1__*) ; 
- int get_current_batch (TYPE_1__*) ; 
- int /*<<< orphan*/  get_current_rate (TYPE_1__*) ; 
- TYPE_2__ load_go_moves (char*) ; 
- TYPE_1__* load_network (char*,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int rand () ; 
- int /*<<< orphan*/  random_go_moves (TYPE_2__,int) ; 
- int /*<<< orphan*/  save_weights (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char*,...) ; 
- int /*<<< orphan*/  srand (int) ; 
- int time (int /*<<< orphan*/ ) ; 
- float train_network (TYPE_1__*,int /*<<< orphan*/ ) ; 
- float train_networks (TYPE_1__**,int,int /*<<< orphan*/ ,int) ; 
- double what_time_is_it_now () ; 
+
+ char* basecfg (char*) ;
+ TYPE_1__** calloc (int,int) ;
+ int cuda_set_device (int) ;
+ int free (char*) ;
+ int free_data (int ) ;
+ int free_network (TYPE_1__*) ;
+ int get_current_batch (TYPE_1__*) ;
+ int get_current_rate (TYPE_1__*) ;
+ TYPE_2__ load_go_moves (char*) ;
+ TYPE_1__* load_network (char*,char*,int) ;
+ int printf (char*,...) ;
+ int rand () ;
+ int random_go_moves (TYPE_2__,int) ;
+ int save_weights (TYPE_1__*,char*) ;
+ int sprintf (char*,char*,char*,char*,...) ;
+ int srand (int) ;
+ int time (int ) ;
+ float train_network (TYPE_1__*,int ) ;
+ float train_networks (TYPE_1__**,int,int ,int) ;
+ double what_time_is_it_now () ;
 
 void train_go(char *cfgfile, char *weightfile, char *filename, int *gpus, int ngpus, int clear)
 {
@@ -53,9 +53,9 @@ void train_go(char *cfgfile, char *weightfile, char *filename, int *gpus, int ng
     int seed = rand();
     for(i = 0; i < ngpus; ++i){
         srand(seed);
-#ifdef GPU
-        cuda_set_device(gpus[i]);
-#endif
+
+
+
         nets[i] = load_network(cfgfile, weightfile, clear);
         nets[i]->learning_rate *= ngpus;
     }
@@ -66,7 +66,7 @@ void train_go(char *cfgfile, char *weightfile, char *filename, int *gpus, int ng
 
     char buff[256];
     moves m = load_go_moves(filename);
-    //moves m = load_go_moves("games.txt");
+
 
     int N = m.n;
     printf("Moves: %d\n", N);
@@ -79,15 +79,15 @@ void train_go(char *cfgfile, char *weightfile, char *filename, int *gpus, int ng
         time=what_time_is_it_now();
 
         float loss = 0;
-#ifdef GPU
-        if(ngpus == 1){
-            loss = train_network(net, train);
-        } else {
-            loss = train_networks(nets, ngpus, train, 10);
-        }
-#else
+
+
+
+
+
+
+
         loss = train_network(net, train);
-#endif
+
         free_data(train);
 
         if(avg_loss == -1) avg_loss = loss;

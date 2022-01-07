@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  init_mcp23017 () ; 
- int /*<<< orphan*/  left_scan () ; 
- int /*<<< orphan*/  print (char*) ; 
- int /*<<< orphan*/  wait_us (int) ; 
+ int init_mcp23017 () ;
+ int left_scan () ;
+ int print (char*) ;
+ int wait_us (int) ;
 
 void left_init(void)
 {
     init_mcp23017();
     left_scan();
-#if 0
-    while (1)
-    {
-        print("wait\n");
-        wait_us(1000000);
-    }
-#endif
+
+
+
+
+
+
+
 }

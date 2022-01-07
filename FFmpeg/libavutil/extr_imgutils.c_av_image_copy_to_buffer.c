@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_5__ {int nb_components; int log2_chroma_h; int flags; TYPE_1__* comp; } ;
-struct TYPE_4__ {int /*<<< orphan*/  plane; } ;
-typedef  TYPE_2__ AVPixFmtDescriptor ;
+struct TYPE_4__ {int plane; } ;
+typedef TYPE_2__ AVPixFmtDescriptor ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AV_PIX_FMT_FLAG_PAL ; 
- int /*<<< orphan*/  AV_RN32 (int /*<<< orphan*/  const* const) ; 
- int /*<<< orphan*/  AV_WL32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  FFALIGN (int,int) ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int av_image_fill_linesizes (int*,int,int) ; 
- int av_image_get_buffer_size (int,int,int,int) ; 
- TYPE_2__* av_pix_fmt_desc_get (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_PIX_FMT_FLAG_PAL ;
+ int AV_RN32 (int const* const) ;
+ int AV_WL32 (int *,int ) ;
+ int EINVAL ;
+ int FFALIGN (int,int) ;
+ int FFMAX (int ,int) ;
+ int av_assert0 (int) ;
+ int av_image_fill_linesizes (int*,int,int) ;
+ int av_image_get_buffer_size (int,int,int,int) ;
+ TYPE_2__* av_pix_fmt_desc_get (int) ;
+ int memcpy (int *,int const*,int) ;
 
 int av_image_copy_to_buffer(uint8_t *dst, int dst_size,
                             const uint8_t * const src_data[4],
@@ -53,7 +53,7 @@ int av_image_copy_to_buffer(uint8_t *dst, int dst_size,
     nb_planes++;
 
     ret = av_image_fill_linesizes(linesize, pix_fmt, width);
-    av_assert0(ret >= 0); // was checked previously
+    av_assert0(ret >= 0);
 
     for (i = 0; i < nb_planes; i++) {
         int h, shift = (i == 1 || i == 2) ? desc->log2_chroma_h : 0;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct nfs_subversion {int /*<<< orphan*/  rpc_vers; TYPE_1__* rpc_ops; int /*<<< orphan*/  list; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct nfs_subversion {int rpc_vers; TYPE_1__* rpc_ops; int list; } ;
 struct TYPE_2__ {size_t version; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  list_add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * nfs_version ; 
- int /*<<< orphan*/  nfs_version_lock ; 
- int /*<<< orphan*/  nfs_versions ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ int list_add (int *,int *) ;
+ int * nfs_version ;
+ int nfs_version_lock ;
+ int nfs_versions ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void register_nfs_version(struct nfs_subversion *nfs)
 {
-	spin_lock(&nfs_version_lock);
+ spin_lock(&nfs_version_lock);
 
-	list_add(&nfs->list, &nfs_versions);
-	nfs_version[nfs->rpc_ops->version] = nfs->rpc_vers;
+ list_add(&nfs->list, &nfs_versions);
+ nfs_version[nfs->rpc_ops->version] = nfs->rpc_vers;
 
-	spin_unlock(&nfs_version_lock);
+ spin_unlock(&nfs_version_lock);
 }

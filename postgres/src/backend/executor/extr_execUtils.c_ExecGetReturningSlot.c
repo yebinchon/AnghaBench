@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TupleTableSlot ;
-struct TYPE_7__ {int /*<<< orphan*/  es_query_cxt; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * ri_ReturningSlot; int /*<<< orphan*/  ri_RelationDesc; } ;
-typedef  TYPE_1__ ResultRelInfo ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  MemoryContext ;
-typedef  TYPE_2__ EState ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ExecInitExtraTupleSlot (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_slot_callbacks (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int TupleTableSlot ;
+struct TYPE_7__ {int es_query_cxt; } ;
+struct TYPE_6__ {int * ri_ReturningSlot; int ri_RelationDesc; } ;
+typedef TYPE_1__ ResultRelInfo ;
+typedef int Relation ;
+typedef int MemoryContext ;
+typedef TYPE_2__ EState ;
+
+
+ int * ExecInitExtraTupleSlot (TYPE_2__*,int ,int ) ;
+ int MemoryContextSwitchTo (int ) ;
+ int RelationGetDescr (int ) ;
+ int table_slot_callbacks (int ) ;
 
 TupleTableSlot *
 ExecGetReturningSlot(EState *estate, ResultRelInfo *relInfo)
 {
-	if (relInfo->ri_ReturningSlot == NULL)
-	{
-		Relation	rel = relInfo->ri_RelationDesc;
-		MemoryContext oldcontext = MemoryContextSwitchTo(estate->es_query_cxt);
+ if (relInfo->ri_ReturningSlot == ((void*)0))
+ {
+  Relation rel = relInfo->ri_RelationDesc;
+  MemoryContext oldcontext = MemoryContextSwitchTo(estate->es_query_cxt);
 
-		relInfo->ri_ReturningSlot =
-			ExecInitExtraTupleSlot(estate,
-								   RelationGetDescr(rel),
-								   table_slot_callbacks(rel));
+  relInfo->ri_ReturningSlot =
+   ExecInitExtraTupleSlot(estate,
+           RelationGetDescr(rel),
+           table_slot_callbacks(rel));
 
-		MemoryContextSwitchTo(oldcontext);
-	}
+  MemoryContextSwitchTo(oldcontext);
+ }
 
-	return relInfo->ri_ReturningSlot;
+ return relInfo->ri_ReturningSlot;
 }

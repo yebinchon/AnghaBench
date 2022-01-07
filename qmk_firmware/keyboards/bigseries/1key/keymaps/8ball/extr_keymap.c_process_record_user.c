@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ANSWERS ; 
-#define  KC_A 128 
- size_t NO_BREAK ; 
- int NUM_ANSWERS ; 
- int RAND_MAX ; 
- size_t UNCERTAIN_BREAK ; 
- int /*<<< orphan*/  lastTime ; 
- size_t rand () ; 
- int /*<<< orphan*/  rgblight_mode (int) ; 
- int /*<<< orphan*/  rgblight_setrgb_green () ; 
- int /*<<< orphan*/  rgblight_setrgb_red () ; 
- int /*<<< orphan*/  rgblight_setrgb_yellow () ; 
- int /*<<< orphan*/  send_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_read32 () ; 
+
+ int * ANSWERS ;
+
+ size_t NO_BREAK ;
+ int NUM_ANSWERS ;
+ int RAND_MAX ;
+ size_t UNCERTAIN_BREAK ;
+ int lastTime ;
+ size_t rand () ;
+ int rgblight_mode (int) ;
+ int rgblight_setrgb_green () ;
+ int rgblight_setrgb_red () ;
+ int rgblight_setrgb_yellow () ;
+ int send_string (int ) ;
+ int timer_read32 () ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-  case KC_A:
+  case 128:
     if (record->event.pressed) {
       uint8_t num = rand() / (RAND_MAX / NUM_ANSWERS + 1);
       rgblight_mode(1);
@@ -49,8 +49,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       send_string(ANSWERS[num]);
       lastTime = timer_read32();
-      return false;
+      return 0;
     }
   }
-  return true;
+  return 1;
 }

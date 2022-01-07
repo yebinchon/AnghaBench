@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_11__ {int /*<<< orphan*/  FileSize; TYPE_1__* Component; int /*<<< orphan*/  FileName; } ;
-struct TYPE_10__ {int /*<<< orphan*/  hdr; } ;
-struct TYPE_9__ {int /*<<< orphan*/  Directory; } ;
-typedef  TYPE_2__ MSIRECORD ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  TYPE_3__ MSIFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSTALLMESSAGE_ACTIONDATA ; 
- TYPE_2__* MSI_CreateRecord (int) ; 
- int /*<<< orphan*/  MSI_ProcessMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  MSI_RecordSetInteger (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_ui_progress (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_11__ {int FileSize; TYPE_1__* Component; int FileName; } ;
+struct TYPE_10__ {int hdr; } ;
+struct TYPE_9__ {int Directory; } ;
+typedef TYPE_2__ MSIRECORD ;
+typedef int MSIPACKAGE ;
+typedef TYPE_3__ MSIFILE ;
+
+
+ int INSTALLMESSAGE_ACTIONDATA ;
+ TYPE_2__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (int *,int ,TYPE_2__*) ;
+ int MSI_RecordSetInteger (TYPE_2__*,int,int ) ;
+ int MSI_RecordSetStringW (TYPE_2__*,int,int ) ;
+ int msi_ui_progress (int *,int,int ,int ,int ) ;
+ int msiobj_release (int *) ;
 
 __attribute__((used)) static void msi_file_update_ui( MSIPACKAGE *package, MSIFILE *f, const WCHAR *action )
 {

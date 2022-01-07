@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int COMPRESSIBILITY_DEFAULT ; 
- unsigned int DEFAULT_CLEVEL ; 
- int /*<<< orphan*/  DISPLAY (char*,...) ; 
- unsigned int NBLOOPS ; 
- scalar_t__ kSampleSizeDefault ; 
- int /*<<< orphan*/  usage (char const*) ; 
+ int COMPRESSIBILITY_DEFAULT ;
+ unsigned int DEFAULT_CLEVEL ;
+ int DISPLAY (char*,...) ;
+ unsigned int NBLOOPS ;
+ scalar_t__ kSampleSizeDefault ;
+ int usage (char const*) ;
 
 __attribute__((used)) static int usage_advanced(const char* exename)
 {

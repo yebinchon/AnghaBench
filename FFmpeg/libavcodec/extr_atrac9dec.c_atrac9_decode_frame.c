@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int avg_frame_size; int frame_log2; int /*<<< orphan*/ * block; TYPE_1__* block_config; int /*<<< orphan*/  frame_count; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int avg_frame_size; int frame_log2; int * block; TYPE_1__* block_config; int frame_count; } ;
 struct TYPE_15__ {int block_align; TYPE_5__* priv_data; } ;
 struct TYPE_14__ {int nb_samples; } ;
-struct TYPE_13__ {int size; int /*<<< orphan*/  data; } ;
+struct TYPE_13__ {int size; int data; } ;
 struct TYPE_12__ {int count; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
-typedef  TYPE_5__ ATRAC9Context ;
+typedef int GetBitContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
+typedef TYPE_5__ ATRAC9Context ;
 
-/* Variables and functions */
- int FFMIN (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  align_get_bits (int /*<<< orphan*/ *) ; 
- int atrac9_decode_block (TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*,int,int) ; 
- int ff_get_buffer (TYPE_4__*,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_get_bits8 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int FFMIN (int,int ) ;
+ int align_get_bits (int *) ;
+ int atrac9_decode_block (TYPE_5__*,int *,int *,TYPE_3__*,int,int) ;
+ int ff_get_buffer (TYPE_4__*,TYPE_3__*,int ) ;
+ int init_get_bits8 (int *,int ,int) ;
 
 __attribute__((used)) static int atrac9_decode_frame(AVCodecContext *avctx, void *data,
                                int *got_frame_ptr, AVPacket *avpkt)

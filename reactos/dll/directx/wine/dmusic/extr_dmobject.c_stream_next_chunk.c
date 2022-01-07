@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct chunk_entry {scalar_t__ id; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int IStream ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stream_get_chunk (int /*<<< orphan*/ *,struct chunk_entry*) ; 
- int /*<<< orphan*/  stream_skip_chunk (int /*<<< orphan*/ *,struct chunk_entry*) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int stream_get_chunk (int *,struct chunk_entry*) ;
+ int stream_skip_chunk (int *,struct chunk_entry*) ;
 
 HRESULT stream_next_chunk(IStream *stream, struct chunk_entry *chunk)
 {

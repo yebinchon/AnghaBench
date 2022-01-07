@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  hit; } ;
-typedef  TYPE_1__ SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_F_FINAL_SIG_ALGS ; 
- scalar_t__ SSL_IS_TLS13 (TYPE_1__*) ; 
- int /*<<< orphan*/  SSL_R_MISSING_SIGALGS_EXTENSION ; 
- int /*<<< orphan*/  SSLfatal (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS13_AD_MISSING_EXTENSION ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int hit; } ;
+typedef TYPE_1__ SSL ;
+
+
+ int SSL_F_FINAL_SIG_ALGS ;
+ scalar_t__ SSL_IS_TLS13 (TYPE_1__*) ;
+ int SSL_R_MISSING_SIGALGS_EXTENSION ;
+ int SSLfatal (TYPE_1__*,int ,int ,int ) ;
+ int TLS13_AD_MISSING_EXTENSION ;
 
 __attribute__((used)) static int final_sig_algs(SSL *s, unsigned int context, int sent)
 {

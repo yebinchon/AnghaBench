@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
 struct TYPE_13__ {TYPE_1__* priv_data; } ;
 struct TYPE_12__ {char* data; int size; } ;
 struct TYPE_11__ {int color_primaries; int transfer_characteristics; int matrix_coefficients; } ;
-typedef  TYPE_1__ ProresMetadataContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVBSFContext ;
+typedef TYPE_1__ ProresMetadataContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVBSFContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (char*) ; 
- scalar_t__ AV_RL32 (char*) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*) ; 
- int av_packet_make_writable (TYPE_2__*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_2__*) ; 
- int ff_bsf_get_packet_ref (TYPE_3__*,TYPE_2__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (char*) ;
+ scalar_t__ AV_RL32 (char*) ;
+ int av_log (TYPE_3__*,int ,char*) ;
+ int av_packet_make_writable (TYPE_2__*) ;
+ int av_packet_unref (TYPE_2__*) ;
+ int ff_bsf_get_packet_ref (TYPE_3__*,TYPE_2__*) ;
 
 __attribute__((used)) static int prores_metadata(AVBSFContext *bsf, AVPacket *pkt)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int prores_metadata(AVBSFContext *bsf, AVPacket *pk
     buf = pkt->data;
     buf_size = pkt->size;
 
-    /* check start of the prores frame */
+
     if (buf_size < 28) {
         av_log(bsf, AV_LOG_ERROR, "not enough data in prores frame\n");
         ret = AVERROR_INVALIDDATA;
@@ -68,7 +68,7 @@ __attribute__((used)) static int prores_metadata(AVBSFContext *bsf, AVPacket *pk
         goto fail;
     }
 
-    /* set the new values */
+
     if (ctx->color_primaries != -1)
         buf[8+14] = ctx->color_primaries;
     if (ctx->transfer_characteristics != -1)

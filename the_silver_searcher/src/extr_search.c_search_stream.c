@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ssize_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int ssize_t ;
 struct TYPE_2__ {size_t stream_line_num; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- TYPE_1__ opts ; 
- int /*<<< orphan*/  print_cleanup_context () ; 
- int /*<<< orphan*/  print_init_context () ; 
- int /*<<< orphan*/  print_trailing_context (char const*,char*,int) ; 
- int search_buf (char*,int,char const*) ; 
+
+ int free (char*) ;
+ int getline (char**,size_t*,int *) ;
+ TYPE_1__ opts ;
+ int print_cleanup_context () ;
+ int print_init_context () ;
+ int print_trailing_context (char const*,char*,int) ;
+ int search_buf (char*,int,char const*) ;
 
 ssize_t search_stream(FILE *stream, const char *path) {
-    char *line = NULL;
+    char *line = ((void*)0);
     ssize_t matches_count = 0;
     ssize_t line_len = 0;
     size_t line_cap = 0;

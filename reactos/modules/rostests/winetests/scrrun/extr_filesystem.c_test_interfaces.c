@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  scalar_t__ VARIANT_BOOL ;
-typedef  int /*<<< orphan*/  IObjectWithSite ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/ * BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSID_FileSystemObject ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ E_POINTER ; 
- int /*<<< orphan*/  GetSystemDirectoryW (char*,int) ; 
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IDispatch_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IFileSystem3_FileExists (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ IFileSystem3_FolderExists (int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  IFileSystem3_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IDispatch ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  IID_IObjectWithSite ; 
- int MAX_PATH ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/ * SysAllocString (char const*) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- scalar_t__ VARIANT_FALSE ; 
- scalar_t__ VARIANT_TRUE ; 
- int /*<<< orphan*/  fs3 ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_provideclassinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef char WCHAR ;
+typedef scalar_t__ VARIANT_BOOL ;
+typedef int IObjectWithSite ;
+typedef int IDispatchEx ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+typedef int * BSTR ;
+
+
+ int CLSID_FileSystemObject ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ E_POINTER ;
+ int GetSystemDirectoryW (char*,int) ;
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IDispatch_Release (int *) ;
+ scalar_t__ IFileSystem3_FileExists (int ,int *,scalar_t__*) ;
+ scalar_t__ IFileSystem3_FolderExists (int ,int *,scalar_t__*) ;
+ int IFileSystem3_QueryInterface (int ,int *,void**) ;
+ int IID_IDispatch ;
+ int IID_IDispatchEx ;
+ int IID_IObjectWithSite ;
+ int MAX_PATH ;
+ scalar_t__ S_OK ;
+ int * SysAllocString (char const*) ;
+ int SysFreeString (int *) ;
+ scalar_t__ VARIANT_FALSE ;
+ scalar_t__ VARIANT_TRUE ;
+ int fs3 ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcpyW (char*,char*) ;
+ int ok (int,char*,...) ;
+ int test_provideclassinfo (int *,int *) ;
 
 __attribute__((used)) static void test_interfaces(void)
 {
@@ -74,11 +74,11 @@ __attribute__((used)) static void test_interfaces(void)
     ok(hr == E_NOINTERFACE, "got 0x%08x, expected 0x%08x\n", hr, E_NOINTERFACE);
 
     b = VARIANT_TRUE;
-    hr = IFileSystem3_FileExists(fs3, NULL, &b);
+    hr = IFileSystem3_FileExists(fs3, ((void*)0), &b);
     ok(hr == S_OK, "got 0x%08x, expected 0x%08x\n", hr, S_OK);
     ok(b == VARIANT_FALSE, "got %x\n", b);
 
-    hr = IFileSystem3_FileExists(fs3, NULL, NULL);
+    hr = IFileSystem3_FileExists(fs3, ((void*)0), ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x, expected 0x%08x\n", hr, E_POINTER);
 
     path = SysAllocString(pathW);
@@ -102,8 +102,8 @@ __attribute__((used)) static void test_interfaces(void)
     ok(b == VARIANT_FALSE, "got %x\n", b);
     SysFreeString(path);
 
-    /* Folder Exists */
-    hr = IFileSystem3_FolderExists(fs3, NULL, NULL);
+
+    hr = IFileSystem3_FolderExists(fs3, ((void*)0), ((void*)0));
     ok(hr == E_POINTER, "got 0x%08x, expected 0x%08x\n", hr, E_POINTER);
 
     path = SysAllocString(windows_path);

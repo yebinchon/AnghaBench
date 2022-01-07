@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ kind; } ;
-typedef  TYPE_1__ svn_wc_notify_t ;
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct edit_baton {int /*<<< orphan*/  notify_baton; int /*<<< orphan*/  (* notify_func ) (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ;int /*<<< orphan*/  externals; scalar_t__ force; int /*<<< orphan*/  root_path; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
+typedef TYPE_1__ svn_wc_notify_t ;
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+struct edit_baton {int notify_baton; int (* notify_func ) (int ,TYPE_1__*,int *) ;int externals; scalar_t__ force; int root_path; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_NOT_WORKING_COPY ; 
- int /*<<< orphan*/  SVN_ERR_WC_OBSTRUCTED_UPDATE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EXTERNALS ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  add_externals (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_io_dir_make (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- TYPE_1__* svn_wc_create_notify (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_update_add ; 
+
+ int APR_OS_DEFAULT ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_WC_NOT_WORKING_COPY ;
+ int SVN_ERR_WC_OBSTRUCTED_UPDATE ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EXTERNALS ;
+ int _ (char*) ;
+ int add_externals (int ,char const*,int *) ;
+ int stub1 (int ,TYPE_1__*,int *) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_hash_gets (int *,int ) ;
+ int svn_io_check_path (char const*,scalar_t__*,int *) ;
+ int svn_io_dir_make (char const*,int ,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ TYPE_1__* svn_wc_create_notify (char const*,int ,int *) ;
+ int svn_wc_notify_update_add ;
 
 __attribute__((used)) static svn_error_t *
 add_directory_ev2(void *baton,
@@ -62,11 +62,11 @@ add_directory_ev2(void *baton,
   if (kind == svn_node_none)
     SVN_ERR(svn_io_dir_make(full_path, APR_OS_DEFAULT, scratch_pool));
   else if (kind == svn_node_file)
-    return svn_error_createf(SVN_ERR_WC_NOT_WORKING_COPY, NULL,
+    return svn_error_createf(SVN_ERR_WC_NOT_WORKING_COPY, ((void*)0),
                              _("'%s' exists and is not a directory"),
                              svn_dirent_local_style(full_path, scratch_pool));
   else if (! (kind == svn_node_dir && eb->force))
-    return svn_error_createf(SVN_ERR_WC_OBSTRUCTED_UPDATE, NULL,
+    return svn_error_createf(SVN_ERR_WC_OBSTRUCTED_UPDATE, ((void*)0),
                              _("'%s' already exists"),
                              svn_dirent_local_style(full_path, scratch_pool));
 

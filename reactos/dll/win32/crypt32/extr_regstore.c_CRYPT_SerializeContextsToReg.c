@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hash ;
-struct TYPE_3__ {void* (* enumContextsInStore ) (int /*<<< orphan*/ ,void const*) ;scalar_t__ (* serialize ) (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ;scalar_t__ (* getProp ) (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ;} ;
-typedef  TYPE_1__ WINE_CONTEXT_INTERFACE ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  HCERTSTORE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CERT_HASH_PROP_ID ; 
- scalar_t__ CRYPT_WriteSerializedToReg (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Context_Release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * CryptMemAlloc (int) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  context_from_ptr (void const*) ; 
- void* stub1 (int /*<<< orphan*/ ,void const*) ; 
- scalar_t__ stub2 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ stub3 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- scalar_t__ stub4 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hash ;
+struct TYPE_3__ {void* (* enumContextsInStore ) (int ,void const*) ;scalar_t__ (* serialize ) (void const*,int ,int *,int*) ;scalar_t__ (* getProp ) (void const*,int ,int *,int*) ;} ;
+typedef TYPE_1__ WINE_CONTEXT_INTERFACE ;
+typedef int * LPBYTE ;
+typedef int HKEY ;
+typedef int HCERTSTORE ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
+
+
+ int CERT_HASH_PROP_ID ;
+ scalar_t__ CRYPT_WriteSerializedToReg (int ,int,int *,int *,int) ;
+ int Context_Release (int ) ;
+ int * CryptMemAlloc (int) ;
+ int CryptMemFree (int *) ;
+ scalar_t__ TRUE ;
+ int context_from_ptr (void const*) ;
+ void* stub1 (int ,void const*) ;
+ scalar_t__ stub2 (void const*,int ,int *,int*) ;
+ scalar_t__ stub3 (void const*,int ,int *,int*) ;
+ scalar_t__ stub4 (void const*,int ,int *,int*) ;
 
 BOOL CRYPT_SerializeContextsToReg(HKEY key, DWORD flags,
  const WINE_CONTEXT_INTERFACE *contextInterface, HCERTSTORE memStore)
 {
-    const void *context = NULL;
+    const void *context = ((void*)0);
     BOOL ret;
 
     do {
@@ -52,9 +52,9 @@ BOOL CRYPT_SerializeContextsToReg(HKEY key, DWORD flags,
             if (ret)
             {
                 DWORD size = 0;
-                LPBYTE buf = NULL;
+                LPBYTE buf = ((void*)0);
 
-                ret = contextInterface->serialize(context, 0, NULL, &size);
+                ret = contextInterface->serialize(context, 0, ((void*)0), &size);
                 if (size)
                     buf = CryptMemAlloc(size);
                 if (buf)
@@ -68,7 +68,7 @@ BOOL CRYPT_SerializeContextsToReg(HKEY key, DWORD flags,
         }
         else
             ret = TRUE;
-    } while (ret && context != NULL);
+    } while (ret && context != ((void*)0));
     if (context)
         Context_Release(context_from_ptr(context));
     return ret;

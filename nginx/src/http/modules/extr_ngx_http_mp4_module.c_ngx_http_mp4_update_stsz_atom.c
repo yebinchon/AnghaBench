@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_13__ {int /*<<< orphan*/  entries; int /*<<< orphan*/  size; } ;
-typedef  TYPE_4__ ngx_mp4_stsz_atom_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
-struct TYPE_14__ {int sample_sizes_entries; int start_sample; int* start_chunk_samples; int end_sample; int* end_chunk_samples; size_t size; TYPE_3__* out; int /*<<< orphan*/  end_chunk_samples_size; int /*<<< orphan*/  start_chunk_samples_size; } ;
-typedef  TYPE_5__ ngx_http_mp4_trak_t ;
-struct TYPE_10__ {int /*<<< orphan*/  data; } ;
-struct TYPE_11__ {int /*<<< orphan*/  log; TYPE_1__ name; } ;
+
+
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_13__ {int entries; int size; } ;
+typedef TYPE_4__ ngx_mp4_stsz_atom_t ;
+typedef int ngx_int_t ;
+struct TYPE_14__ {int sample_sizes_entries; int start_sample; int* start_chunk_samples; int end_sample; int* end_chunk_samples; size_t size; TYPE_3__* out; int end_chunk_samples_size; int start_chunk_samples_size; } ;
+typedef TYPE_5__ ngx_http_mp4_trak_t ;
+struct TYPE_10__ {int data; } ;
+struct TYPE_11__ {int log; TYPE_1__ name; } ;
 struct TYPE_15__ {TYPE_2__ file; scalar_t__ length; } ;
-typedef  TYPE_6__ ngx_http_mp4_file_t ;
+typedef TYPE_6__ ngx_http_mp4_file_t ;
 struct TYPE_16__ {int pos; int last; } ;
-typedef  TYPE_7__ ngx_buf_t ;
+typedef TYPE_7__ ngx_buf_t ;
 struct TYPE_12__ {TYPE_7__* buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- size_t NGX_HTTP_MP4_STSZ_ATOM ; 
- size_t NGX_HTTP_MP4_STSZ_DATA ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_LOG_ERR ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_log_debug1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_mp4_get_32value (int*) ; 
- int /*<<< orphan*/  ngx_mp4_set_32value (int /*<<< orphan*/ ,int) ; 
+
+ int NGX_ERROR ;
+ size_t NGX_HTTP_MP4_STSZ_ATOM ;
+ size_t NGX_HTTP_MP4_STSZ_DATA ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_LOG_ERR ;
+ int NGX_OK ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_log_debug1 (int ,int ,int ,char*,int ) ;
+ int ngx_log_error (int ,int ,int ,char*,int ) ;
+ scalar_t__ ngx_mp4_get_32value (int*) ;
+ int ngx_mp4_set_32value (int ,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_mp4_update_stsz_atom(ngx_http_mp4_file_t *mp4,
     ngx_http_mp4_trak_t *trak)
 {
-    size_t                atom_size;
-    uint32_t             *pos, *end, entries;
-    ngx_buf_t            *atom, *data;
-    ngx_mp4_stsz_atom_t  *stsz_atom;
+    size_t atom_size;
+    uint32_t *pos, *end, entries;
+    ngx_buf_t *atom, *data;
+    ngx_mp4_stsz_atom_t *stsz_atom;
 
-    /*
-     * mdia.minf.stbl.stsz updating requires trak->start_sample
-     * from mdia.minf.stbl.stts which depends on value from mdia.mdhd
-     * atom which may reside after mdia.minf
-     */
+
+
+
+
+
 
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, mp4->file.log, 0,
                    "mp4 stsz atom update");

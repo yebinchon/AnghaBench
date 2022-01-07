@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* ptr; char const* end; } ;
-typedef  TYPE_1__ parser_ctx_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ parser_ctx_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  JS_E_MISSING_SEMICOLON ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int hex_to_int (char const) ; 
- scalar_t__ is_identifier_char (char const) ; 
- scalar_t__ iswdigit (char const) ; 
- int /*<<< orphan*/  lex_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_decimal (char const**,char const*,double*) ; 
+
+ int ERR (char*) ;
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int JS_E_MISSING_SEMICOLON ;
+ int TRUE ;
+ int WARN (char*,...) ;
+ int hex_to_int (char const) ;
+ scalar_t__ is_identifier_char (char const) ;
+ scalar_t__ iswdigit (char const) ;
+ int lex_error (TYPE_1__*,int ) ;
+ int parse_decimal (char const**,char const*,double*) ;
 
 __attribute__((used)) static BOOL parse_numeric_literal(parser_ctx_t *ctx, double *ret)
 {
@@ -76,7 +76,7 @@ __attribute__((used)) static BOOL parse_numeric_literal(parser_ctx_t *ctx, doubl
                 val = val*base + *ctx->ptr-'0';
             }while(++ctx->ptr < ctx->end && iswdigit(*ctx->ptr));
 
-            /* FIXME: Do we need it here? */
+
             if(ctx->ptr < ctx->end && (is_identifier_char(*ctx->ptr) || *ctx->ptr == '.')) {
                 WARN("wrong char after octal literal: '%c'\n", *ctx->ptr);
                 lex_error(ctx, JS_E_MISSING_SEMICOLON);

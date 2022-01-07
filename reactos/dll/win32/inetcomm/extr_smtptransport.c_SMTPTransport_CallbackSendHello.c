@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int dwFlags; } ;
 struct TYPE_13__ {TYPE_2__ ServerInfo; scalar_t__ pCallback; } ;
-struct TYPE_9__ {int /*<<< orphan*/  pszResponse; int /*<<< orphan*/  hrServerError; } ;
-struct TYPE_12__ {TYPE_1__ rIxpResult; int /*<<< orphan*/  command; int /*<<< orphan*/  member_0; } ;
+struct TYPE_9__ {int pszResponse; int hrServerError; } ;
+struct TYPE_12__ {TYPE_1__ rIxpResult; int command; int member_0; } ;
 struct TYPE_11__ {int fESMTP; TYPE_7__ InetTransport; } ;
-typedef  TYPE_3__ SMTPTransport ;
-typedef  TYPE_4__ SMTPRESPONSE ;
-typedef  int /*<<< orphan*/  ISMTPCallback ;
-typedef  int /*<<< orphan*/  IInternetTransport ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_3__ SMTPTransport ;
+typedef TYPE_4__ SMTPRESPONSE ;
+typedef int ISMTPCallback ;
+typedef int IInternetTransport ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int ISF_QUERYAUTHSUPPORT ; 
- int ISF_QUERYDSNSUPPORT ; 
- int ISF_SSLONSAMEPORT ; 
- int /*<<< orphan*/  ISMTPCallback_OnResponse (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/  InternetTransport_DoCommand (TYPE_7__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SMTPTransport_CallbackRecvHelloResp ; 
- int /*<<< orphan*/  SMTPTransport_ParseResponse (TYPE_3__*,char*,TYPE_4__*) ; 
- int /*<<< orphan*/  SMTP_BANNER ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
- int /*<<< orphan*/  strcat (char*,char const*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- size_t strlen (char const*) ; 
- scalar_t__ strstr (int /*<<< orphan*/ ,char*) ; 
+
+ int ERR (char*,int ) ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,size_t) ;
+ int HeapFree (int ,int ,char*) ;
+ int ISF_QUERYAUTHSUPPORT ;
+ int ISF_QUERYDSNSUPPORT ;
+ int ISF_SSLONSAMEPORT ;
+ int ISMTPCallback_OnResponse (int *,TYPE_4__*) ;
+ int InternetTransport_DoCommand (TYPE_7__*,char*,int ) ;
+ int SMTPTransport_CallbackRecvHelloResp ;
+ int SMTPTransport_ParseResponse (TYPE_3__*,char*,TYPE_4__*) ;
+ int SMTP_BANNER ;
+ int TRACE (char*,...) ;
+ int debugstr_a (char*) ;
+ int strcat (char*,char const*) ;
+ int strcpy (char*,char const*) ;
+ size_t strlen (char const*) ;
+ scalar_t__ strstr (int ,char*) ;
 
 __attribute__((used)) static void SMTPTransport_CallbackSendHello(IInternetTransport *iface, char *pBuffer, int cbBuffer)
 {
@@ -54,14 +54,14 @@ __attribute__((used)) static void SMTPTransport_CallbackSendHello(IInternetTrans
     HRESULT hr;
     const char *pszHello;
     char *pszCommand;
-    static const char szHostName[] = "localhost"; /* FIXME */
+    static const char szHostName[] = "localhost";
 
     TRACE("\n");
 
     hr = SMTPTransport_ParseResponse(This, pBuffer, &response);
     if (FAILED(hr))
     {
-        /* FIXME: handle error */
+
         return;
     }
 
@@ -71,7 +71,7 @@ __attribute__((used)) static void SMTPTransport_CallbackSendHello(IInternetTrans
     if (FAILED(response.rIxpResult.hrServerError))
     {
         ERR("server error: %s\n", debugstr_a(pBuffer));
-        /* FIXME: handle error */
+
         return;
     }
 

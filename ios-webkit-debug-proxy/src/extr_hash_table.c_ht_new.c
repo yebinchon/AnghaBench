@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct ht_struct {int dummy; } ;
-typedef  TYPE_1__* ht_t ;
-typedef  int /*<<< orphan*/  ht_entry_t ;
-typedef  enum ht_key_type { ____Placeholder_ht_key_type } ht_key_type ;
-struct TYPE_4__ {int /*<<< orphan*/  on_cmp; int /*<<< orphan*/  on_hash; int /*<<< orphan*/  num_buckets; int /*<<< orphan*/ * buckets; } ;
+typedef TYPE_1__* ht_t ;
+typedef int ht_entry_t ;
+typedef enum ht_key_type { ____Placeholder_ht_key_type } ht_key_type ;
+struct TYPE_4__ {int on_cmp; int on_hash; int num_buckets; int * buckets; } ;
 
-/* Variables and functions */
- int HT_STRING_KEYS ; 
- int /*<<< orphan*/  NUM_BUCKETS ; 
- scalar_t__ calloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  malloc (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  on_strcmp ; 
- int /*<<< orphan*/  on_strhash ; 
+
+ int HT_STRING_KEYS ;
+ int NUM_BUCKETS ;
+ scalar_t__ calloc (int ,int) ;
+ int malloc (int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int on_strcmp ;
+ int on_strhash ;
 
 ht_t ht_new(enum ht_key_type type) {
   ht_t self = (ht_t)malloc(sizeof(struct ht_struct));

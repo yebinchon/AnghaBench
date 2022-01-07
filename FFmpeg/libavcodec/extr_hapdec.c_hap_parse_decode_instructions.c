@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum HapSectionType { ____Placeholder_HapSectionType } HapSectionType ;
-struct TYPE_6__ {int chunk_count; TYPE_1__* chunks; int /*<<< orphan*/  gbc; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef enum HapSectionType { ____Placeholder_HapSectionType } HapSectionType ;
+struct TYPE_6__ {int chunk_count; TYPE_1__* chunks; int gbc; } ;
 struct TYPE_5__ {int compressor; size_t compressed_offset; void* compressed_size; } ;
-typedef  TYPE_2__ HapContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
+typedef TYPE_2__ HapContext ;
+typedef int GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
-#define  HAP_ST_COMPRESSOR_TABLE 130 
-#define  HAP_ST_OFFSET_TABLE 129 
-#define  HAP_ST_SIZE_TABLE 128 
- int bytestream2_get_byte (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- void* bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int ff_hap_parse_section_header (int /*<<< orphan*/ *,int*,int*) ; 
- int ff_hap_set_chunk_count (TYPE_2__*,int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+
+
+
+ int bytestream2_get_byte (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ void* bytestream2_get_le32 (int *) ;
+ int ff_hap_parse_section_header (int *,int*,int*) ;
+ int ff_hap_set_chunk_count (TYPE_2__*,int,int) ;
 
 __attribute__((used)) static int hap_parse_decode_instructions(HapContext *ctx, int size)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static int hap_parse_decode_instructions(HapContext *ctx, 
         size -= stream_remaining - bytestream2_get_bytes_left(gbc);
 
         switch (section_type) {
-            case HAP_ST_COMPRESSOR_TABLE:
+            case 130:
                 ret = ff_hap_set_chunk_count(ctx, section_size, is_first_table);
                 if (ret != 0)
                     return ret;
@@ -56,7 +56,7 @@ __attribute__((used)) static int hap_parse_decode_instructions(HapContext *ctx, 
                 had_compressors = 1;
                 is_first_table = 0;
                 break;
-            case HAP_ST_SIZE_TABLE:
+            case 128:
                 ret = ff_hap_set_chunk_count(ctx, section_size / 4, is_first_table);
                 if (ret != 0)
                     return ret;
@@ -66,7 +66,7 @@ __attribute__((used)) static int hap_parse_decode_instructions(HapContext *ctx, 
                 had_sizes = 1;
                 is_first_table = 0;
                 break;
-            case HAP_ST_OFFSET_TABLE:
+            case 129:
                 ret = ff_hap_set_chunk_count(ctx, section_size / 4, is_first_table);
                 if (ret != 0)
                     return ret;
@@ -85,8 +85,8 @@ __attribute__((used)) static int hap_parse_decode_instructions(HapContext *ctx, 
     if (!had_sizes || !had_compressors)
         return AVERROR_INVALIDDATA;
 
-    /* The offsets table is optional. If not present than calculate offsets by
-     * summing the sizes of preceding chunks. */
+
+
     if (!had_offsets) {
         size_t running_size = 0;
         for (i = 0; i < ctx->chunk_count; i++) {

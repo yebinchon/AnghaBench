@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
 
-/* Variables and functions */
- int memcmp (int /*<<< orphan*/  const,int /*<<< orphan*/  const,size_t) ; 
- size_t sdslen (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int sds ;
+
+
+ int memcmp (int const,int const,size_t) ;
+ size_t sdslen (int const) ;
 
 int sdscmp(const sds s1, const sds s2) {
     size_t l1, l2, minlen;

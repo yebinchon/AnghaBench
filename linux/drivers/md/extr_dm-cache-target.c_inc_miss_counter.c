@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  write_miss; int /*<<< orphan*/  read_miss; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int write_miss; int read_miss; } ;
 struct cache {TYPE_1__ stats; } ;
 struct bio {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ READ ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- scalar_t__ bio_data_dir (struct bio*) ; 
+
+ scalar_t__ READ ;
+ int atomic_inc (int *) ;
+ scalar_t__ bio_data_dir (struct bio*) ;
 
 __attribute__((used)) static void inc_miss_counter(struct cache *cache, struct bio *bio)
 {
-	atomic_inc(bio_data_dir(bio) == READ ?
-		   &cache->stats.read_miss : &cache->stats.write_miss);
+ atomic_inc(bio_data_dir(bio) == READ ?
+     &cache->stats.read_miss : &cache->stats.write_miss);
 }

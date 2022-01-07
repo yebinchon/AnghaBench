@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bt_status_t ;
-typedef  int /*<<< orphan*/  bt_bdaddr_t ;
-typedef  int /*<<< orphan*/  bdstr_t ;
-typedef  int /*<<< orphan*/  bdstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTC_STORAGE_LINK_KEY_STR ; 
- int /*<<< orphan*/  BTC_STORAGE_LINK_KEY_TYPE_STR ; 
- int /*<<< orphan*/  BTC_STORAGE_PIN_LENGTH_STR ; 
- int /*<<< orphan*/  BTC_TRACE_DEBUG (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BT_STATUS_FAIL ; 
- int /*<<< orphan*/  BT_STATUS_SUCCESS ; 
- int /*<<< orphan*/  bdaddr_to_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ btc_config_exist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btc_config_flush () ; 
- int /*<<< orphan*/  btc_config_lock () ; 
- int btc_config_remove (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  btc_config_unlock () ; 
+
+
+
+typedef int bt_status_t ;
+typedef int bt_bdaddr_t ;
+typedef int bdstr_t ;
+typedef int bdstr ;
+
+
+ int BTC_STORAGE_LINK_KEY_STR ;
+ int BTC_STORAGE_LINK_KEY_TYPE_STR ;
+ int BTC_STORAGE_PIN_LENGTH_STR ;
+ int BTC_TRACE_DEBUG (char*,int ) ;
+ int BT_STATUS_FAIL ;
+ int BT_STATUS_SUCCESS ;
+ int bdaddr_to_string (int *,int ,int) ;
+ scalar_t__ btc_config_exist (int ,int ) ;
+ int btc_config_flush () ;
+ int btc_config_lock () ;
+ int btc_config_remove (int ,int ) ;
+ int btc_config_unlock () ;
 
 bt_status_t btc_storage_remove_bonded_device(bt_bdaddr_t *remote_bd_addr)
 {
@@ -46,7 +46,7 @@ bt_status_t btc_storage_remove_bonded_device(bt_bdaddr_t *remote_bd_addr)
     if (btc_config_exist(bdstr, BTC_STORAGE_LINK_KEY_STR)) {
         ret &= btc_config_remove(bdstr, BTC_STORAGE_LINK_KEY_STR);
     }
-    /* write bonded info immediately */
+
     btc_config_flush();
     btc_config_unlock();
 

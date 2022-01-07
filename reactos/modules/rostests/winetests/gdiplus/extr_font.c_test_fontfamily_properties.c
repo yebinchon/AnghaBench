@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT16 ;
-typedef  scalar_t__ GpStatus ;
-typedef  int /*<<< orphan*/  GpFontFamily ;
 
-/* Variables and functions */
- scalar_t__ FontFamilyNotFound ; 
- int /*<<< orphan*/  FontStyleRegular ; 
- scalar_t__ GdipCreateFontFamilyFromName (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteFontFamily (int /*<<< orphan*/ *) ; 
- scalar_t__ GdipGetCellAscent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ GdipGetCellDescent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ GdipGetEmHeight (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- scalar_t__ GdipGetLineSpacing (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  Tahoma ; 
- int /*<<< orphan*/  TimesNewRoman ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int UINT16 ;
+typedef scalar_t__ GpStatus ;
+typedef int GpFontFamily ;
+
+
+ scalar_t__ FontFamilyNotFound ;
+ int FontStyleRegular ;
+ scalar_t__ GdipCreateFontFamilyFromName (int ,int *,int **) ;
+ int GdipDeleteFontFamily (int *) ;
+ scalar_t__ GdipGetCellAscent (int *,int ,int*) ;
+ scalar_t__ GdipGetCellDescent (int *,int ,int*) ;
+ scalar_t__ GdipGetEmHeight (int *,int ,int*) ;
+ scalar_t__ GdipGetLineSpacing (int *,int ,int*) ;
+ int Ok ;
+ int Tahoma ;
+ int TimesNewRoman ;
+ int expect (int ,scalar_t__) ;
+ int ok (int,char*,int) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_fontfamily_properties (void)
 {
-    GpFontFamily* FontFamily = NULL;
+    GpFontFamily* FontFamily = ((void*)0);
     GpStatus stat;
     UINT16 result = 0;
 
-    stat = GdipCreateFontFamilyFromName(Tahoma, NULL, &FontFamily);
+    stat = GdipCreateFontFamilyFromName(Tahoma, ((void*)0), &FontFamily);
     expect(Ok, stat);
 
     stat = GdipGetLineSpacing(FontFamily, FontStyleRegular, &result);
@@ -56,7 +56,7 @@ __attribute__((used)) static void test_fontfamily_properties (void)
     ok(result == 423, "Expected 423, got %d\n", result);
     GdipDeleteFontFamily(FontFamily);
 
-    stat = GdipCreateFontFamilyFromName(TimesNewRoman, NULL, &FontFamily);
+    stat = GdipCreateFontFamilyFromName(TimesNewRoman, ((void*)0), &FontFamily);
     if(stat == FontFamilyNotFound)
         skip("Times New Roman not installed\n");
     else

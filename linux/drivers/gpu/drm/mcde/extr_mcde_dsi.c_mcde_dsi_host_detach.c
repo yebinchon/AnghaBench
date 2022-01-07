@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mipi_dsi_host {int dummy; } ;
 struct mipi_dsi_device {int dummy; } ;
-struct mcde_dsi {TYPE_1__* mcde; int /*<<< orphan*/ * mdsi; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * mdsi; } ;
+struct mcde_dsi {TYPE_1__* mcde; int * mdsi; } ;
+struct TYPE_2__ {int * mdsi; } ;
 
-/* Variables and functions */
- struct mcde_dsi* host_to_mcde_dsi (struct mipi_dsi_host*) ; 
+
+ struct mcde_dsi* host_to_mcde_dsi (struct mipi_dsi_host*) ;
 
 __attribute__((used)) static int mcde_dsi_host_detach(struct mipi_dsi_host *host,
-				struct mipi_dsi_device *mdsi)
+    struct mipi_dsi_device *mdsi)
 {
-	struct mcde_dsi *d = host_to_mcde_dsi(host);
+ struct mcde_dsi *d = host_to_mcde_dsi(host);
 
-	d->mdsi = NULL;
-	if (d->mcde)
-		d->mcde->mdsi = NULL;
+ d->mdsi = ((void*)0);
+ if (d->mcde)
+  d->mcde->mdsi = ((void*)0);
 
-	return 0;
+ return 0;
 }

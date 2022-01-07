@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int32_t ;
-struct TYPE_2__ {int sensormode; int /*<<< orphan*/  pict_res; int /*<<< orphan*/  curr_res; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RES_CAPTURE ; 
- int /*<<< orphan*/  UPDATE_PERIODIC ; 
- TYPE_1__* mt9t013_ctrl ; 
- scalar_t__ mt9t013_setting (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ int32_t ;
+struct TYPE_2__ {int sensormode; int pict_res; int curr_res; } ;
+
+
+ int RES_CAPTURE ;
+ int UPDATE_PERIODIC ;
+ TYPE_1__* mt9t013_ctrl ;
+ scalar_t__ mt9t013_setting (int ,int ) ;
 
 __attribute__((used)) static int32_t mt9t013_snapshot_config(int mode)
 {
-	int32_t rc = 0;
+ int32_t rc = 0;
 
-	rc = mt9t013_setting(UPDATE_PERIODIC, RES_CAPTURE);
-	if (rc < 0)
-		return rc;
+ rc = mt9t013_setting(UPDATE_PERIODIC, RES_CAPTURE);
+ if (rc < 0)
+  return rc;
 
-	mt9t013_ctrl->curr_res = mt9t013_ctrl->pict_res;
-	mt9t013_ctrl->sensormode = mode;
-	return rc;
+ mt9t013_ctrl->curr_res = mt9t013_ctrl->pict_res;
+ mt9t013_ctrl->sensormode = mode;
+ return rc;
 }

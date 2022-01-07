@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct team_mode_item {struct team_mode* mode; } ;
-struct team_mode {int /*<<< orphan*/  owner; } ;
+struct team_mode {int owner; } ;
 
-/* Variables and functions */
- struct team_mode_item* __find_mode (char const*) ; 
- int /*<<< orphan*/  mode_list_lock ; 
- int /*<<< orphan*/  request_module (char*,char const*) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  try_module_get (int /*<<< orphan*/ ) ; 
+
+ struct team_mode_item* __find_mode (char const*) ;
+ int mode_list_lock ;
+ int request_module (char*,char const*) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int try_module_get (int ) ;
 
 __attribute__((used)) static const struct team_mode *team_mode_get(const char *kind)
 {
-	struct team_mode_item *mitem;
-	const struct team_mode *mode = NULL;
+ struct team_mode_item *mitem;
+ const struct team_mode *mode = ((void*)0);
 
-	spin_lock(&mode_list_lock);
-	mitem = __find_mode(kind);
-	if (!mitem) {
-		spin_unlock(&mode_list_lock);
-		request_module("team-mode-%s", kind);
-		spin_lock(&mode_list_lock);
-		mitem = __find_mode(kind);
-	}
-	if (mitem) {
-		mode = mitem->mode;
-		if (!try_module_get(mode->owner))
-			mode = NULL;
-	}
+ spin_lock(&mode_list_lock);
+ mitem = __find_mode(kind);
+ if (!mitem) {
+  spin_unlock(&mode_list_lock);
+  request_module("team-mode-%s", kind);
+  spin_lock(&mode_list_lock);
+  mitem = __find_mode(kind);
+ }
+ if (mitem) {
+  mode = mitem->mode;
+  if (!try_module_get(mode->owner))
+   mode = ((void*)0);
+ }
 
-	spin_unlock(&mode_list_lock);
-	return mode;
+ spin_unlock(&mode_list_lock);
+ return mode;
 }

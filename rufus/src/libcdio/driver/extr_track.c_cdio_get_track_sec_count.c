@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int track_t ;
-typedef  int /*<<< orphan*/  CdIo_t ;
 
-/* Variables and functions */
- int cdio_get_num_tracks (int /*<<< orphan*/  const*) ; 
- unsigned int cdio_get_track_lba (int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int track_t ;
+typedef int CdIo_t ;
+
+
+ int cdio_get_num_tracks (int const*) ;
+ unsigned int cdio_get_track_lba (int const*,int) ;
 
 unsigned int
 cdio_get_track_sec_count(const CdIo_t *p_cdio, track_t u_track)

@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ has_differences; size_t first_char; size_t last_char; int* differences; int /*<<< orphan*/ * unicode_map; int /*<<< orphan*/  base_encoding; } ;
-struct TYPE_4__ {int /*<<< orphan*/  attr; } ;
-typedef  int /*<<< orphan*/  HPDF_Stream ;
-typedef  scalar_t__ HPDF_STATUS ;
-typedef  size_t HPDF_INT ;
-typedef  TYPE_1__* HPDF_Encoder ;
-typedef  TYPE_2__* HPDF_BasicEncoderAttr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HPDF_ENCODING_FONT_SPECIFIC ; 
- char* HPDF_IToA (char*,size_t,char*) ; 
- scalar_t__ HPDF_OK ; 
- int /*<<< orphan*/  HPDF_PTRACE (char*) ; 
- scalar_t__ HPDF_StrCmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_StrCpy (char*,char const*,char*) ; 
- scalar_t__ HPDF_Stream_WriteEscapeName (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HPDF_Stream_WriteStr (int /*<<< orphan*/ ,char*) ; 
- int HPDF_TEXT_DEFAULT_LEN ; 
- scalar_t__ HPDF_TRUE ; 
- char* HPDF_UnicodeToGryphName (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ has_differences; size_t first_char; size_t last_char; int* differences; int * unicode_map; int base_encoding; } ;
+struct TYPE_4__ {int attr; } ;
+typedef int HPDF_Stream ;
+typedef scalar_t__ HPDF_STATUS ;
+typedef size_t HPDF_INT ;
+typedef TYPE_1__* HPDF_Encoder ;
+typedef TYPE_2__* HPDF_BasicEncoderAttr ;
+
+
+ int HPDF_ENCODING_FONT_SPECIFIC ;
+ char* HPDF_IToA (char*,size_t,char*) ;
+ scalar_t__ HPDF_OK ;
+ int HPDF_PTRACE (char*) ;
+ scalar_t__ HPDF_StrCmp (int ,int ) ;
+ scalar_t__ HPDF_StrCpy (char*,char const*,char*) ;
+ scalar_t__ HPDF_Stream_WriteEscapeName (int ,int ) ;
+ scalar_t__ HPDF_Stream_WriteStr (int ,char*) ;
+ int HPDF_TEXT_DEFAULT_LEN ;
+ scalar_t__ HPDF_TRUE ;
+ char* HPDF_UnicodeToGryphName (int ) ;
 
 HPDF_STATUS
-HPDF_BasicEncoder_Write  (HPDF_Encoder  encoder,
-                          HPDF_Stream   out)
+HPDF_BasicEncoder_Write (HPDF_Encoder encoder,
+                          HPDF_Stream out)
 {
     HPDF_STATUS ret;
     HPDF_BasicEncoderAttr attr = (HPDF_BasicEncoderAttr)encoder->attr;
 
     HPDF_PTRACE ((" HPDF_BasicEncoder_Write\n"));
 
-    /*  if HPDF_ENCODING_FONT_SPECIFIC is selected, no Encoding object will be "
-     *  written.
-     */
+
+
+
     if (HPDF_StrCmp (attr->base_encoding, HPDF_ENCODING_FONT_SPECIFIC) == 0)
         return HPDF_OK;
 
-    /* if encoder has differences-data, encoding object is written as
-       dictionary-object, otherwise it is written as name-object. */
+
+
     if (attr->has_differences == HPDF_TRUE) {
         ret = HPDF_Stream_WriteStr (out,
                 "/Encoding <<\012"
@@ -71,7 +71,7 @@ HPDF_BasicEncoder_Write  (HPDF_Encoder  encoder,
     if (ret != HPDF_OK)
         return ret;
 
-    /* write differences data */
+
     if (attr->has_differences == HPDF_TRUE) {
         HPDF_INT i;
 

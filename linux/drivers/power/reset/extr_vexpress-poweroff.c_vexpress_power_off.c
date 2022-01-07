@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  vexpress_power_off_device ; 
- int /*<<< orphan*/  vexpress_reset_do (int /*<<< orphan*/ ,char*) ; 
+ int vexpress_power_off_device ;
+ int vexpress_reset_do (int ,char*) ;
 
 __attribute__((used)) static void vexpress_power_off(void)
 {
-	vexpress_reset_do(vexpress_power_off_device, "power off");
+ vexpress_reset_do(vexpress_power_off_device, "power off");
 }

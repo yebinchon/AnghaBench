@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  volatile u32 ;
-struct TYPE_3__ {int nWiData; scalar_t__ exclusiveMode; int /*<<< orphan*/  volatile** apWiData; int /*<<< orphan*/  readOnly; int /*<<< orphan*/  writeLock; int /*<<< orphan*/  pDbFd; } ;
-typedef  TYPE_1__ Wal ;
 
-/* Variables and functions */
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int SQLITE_READONLY ; 
- int /*<<< orphan*/  WALINDEX_PGSZ ; 
- scalar_t__ WAL_HEAPMEMORY_MODE ; 
- int /*<<< orphan*/  WAL_SHM_RDONLY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (void*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3MallocZero (int /*<<< orphan*/ ) ; 
- int sqlite3OsShmMap (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void volatile**) ; 
- scalar_t__ sqlite3_realloc64 (void*,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int volatile u32 ;
+struct TYPE_3__ {int nWiData; scalar_t__ exclusiveMode; int volatile** apWiData; int readOnly; int writeLock; int pDbFd; } ;
+typedef TYPE_1__ Wal ;
+
+
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int SQLITE_READONLY ;
+ int WALINDEX_PGSZ ;
+ scalar_t__ WAL_HEAPMEMORY_MODE ;
+ int WAL_SHM_RDONLY ;
+ int assert (int) ;
+ int memset (void*,int ,int) ;
+ scalar_t__ sqlite3MallocZero (int ) ;
+ int sqlite3OsShmMap (int ,int,int ,int ,void volatile**) ;
+ scalar_t__ sqlite3_realloc64 (void*,int) ;
 
 __attribute__((used)) static int walIndexPage(Wal *pWal, int iPage, volatile u32 **ppPage){
   int rc = SQLITE_OK;
 
-  /* Enlarge the pWal->apWiData[] array if required */
+
   if( pWal->nWiData<=iPage ){
     int nByte = sizeof(u32*)*(iPage+1);
     volatile u32 **apNew;
@@ -46,7 +46,7 @@ __attribute__((used)) static int walIndexPage(Wal *pWal, int iPage, volatile u32
     pWal->nWiData = iPage+1;
   }
 
-  /* Request a pointer to the required page from the VFS */
+
   if( pWal->apWiData[iPage]==0 ){
     if( pWal->exclusiveMode==WAL_HEAPMEMORY_MODE ){
       pWal->apWiData[iPage] = (u32 volatile *)sqlite3MallocZero(WALINDEX_PGSZ);

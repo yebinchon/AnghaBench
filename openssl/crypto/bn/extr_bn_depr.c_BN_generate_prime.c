@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_GENCB ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_GENCB_set_old (int /*<<< orphan*/ *,void (*) (int,int,void*),void*) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_generate_prime_ex (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BN_new () ; 
+
+
+
+typedef int BN_GENCB ;
+typedef int BIGNUM ;
+
+
+ int BN_GENCB_set_old (int *,void (*) (int,int,void*),void*) ;
+ int BN_free (int *) ;
+ int BN_generate_prime_ex (int *,int,int,int const*,int const*,int *) ;
+ int * BN_new () ;
 
 BIGNUM *BN_generate_prime(BIGNUM *ret, int bits, int safe,
                           const BIGNUM *add, const BIGNUM *rem,
                           void (*callback) (int, int, void *), void *cb_arg)
 {
     BN_GENCB cb;
-    BIGNUM *rnd = NULL;
+    BIGNUM *rnd = ((void*)0);
 
     BN_GENCB_set_old(&cb, callback, cb_arg);
 
-    if (ret == NULL) {
-        if ((rnd = BN_new()) == NULL)
+    if (ret == ((void*)0)) {
+        if ((rnd = BN_new()) == ((void*)0))
             goto err;
     } else
         rnd = ret;
     if (!BN_generate_prime_ex(rnd, bits, safe, add, rem, &cb))
         goto err;
 
-    /* we have a prime :-) */
+
     return rnd;
  err:
     BN_free(rnd);
-    return NULL;
+    return ((void*)0);
 }

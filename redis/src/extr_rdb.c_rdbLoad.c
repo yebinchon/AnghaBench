@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rio ;
-typedef  int /*<<< orphan*/  rdbSaveInfo ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int rdbLoadRio (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rioInitWithFile (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  startLoadingFile (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  stopLoading (int) ; 
+
+
+
+typedef int rio ;
+typedef int rdbSaveInfo ;
+typedef int FILE ;
+
+
+ int C_ERR ;
+ int C_OK ;
+ int fclose (int *) ;
+ int * fopen (char*,char*) ;
+ int rdbLoadRio (int *,int,int *) ;
+ int rioInitWithFile (int *,int *) ;
+ int startLoadingFile (int *,char*,int) ;
+ int stopLoading (int) ;
 
 int rdbLoad(char *filename, rdbSaveInfo *rsi, int rdbflags) {
     FILE *fp;
     rio rdb;
     int retval;
 
-    if ((fp = fopen(filename,"r")) == NULL) return C_ERR;
+    if ((fp = fopen(filename,"r")) == ((void*)0)) return C_ERR;
     startLoadingFile(fp, filename,rdbflags);
     rioInitWithFile(&rdb,fp);
     retval = rdbLoadRio(&rdb,rdbflags,rsi);

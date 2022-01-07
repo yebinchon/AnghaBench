@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BM_SETCHECK ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  IDC_ASKME_RB ; 
- int /*<<< orphan*/  IDC_RESTART_RB ; 
- int /*<<< orphan*/  IDC_WITHOUTREBOOT_RB ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  SendDlgItemMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int _ttoi (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VOID ;
+typedef int TCHAR ;
+typedef int LPBYTE ;
+typedef int HWND ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int BM_SETCHECK ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int IDC_ASKME_RB ;
+ int IDC_RESTART_RB ;
+ int IDC_WITHOUTREBOOT_RB ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyEx (int ,int ,int ,int ,int *) ;
+ scalar_t__ RegQueryValueEx (int ,int ,int ,int *,int ,int*) ;
+ int SendDlgItemMessage (int ,int ,int ,int,int) ;
+ int _T (char*) ;
+ int _ttoi (int *) ;
 
 __attribute__((used)) static VOID
 InitRadioButtons(HWND hWnd)
@@ -44,7 +44,7 @@ InitRadioButtons(HWND hWnd)
         TCHAR szBuf[64];
         DWORD dwSize = 64;
 
-        if (RegQueryValueEx(hKey, _T("DynaSettingsChange"), 0, NULL,
+        if (RegQueryValueEx(hKey, _T("DynaSettingsChange"), 0, ((void*)0),
                             (LPBYTE)szBuf, &dwSize) == ERROR_SUCCESS)
         {
             switch (_ttoi(szBuf))

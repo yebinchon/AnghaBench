@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  digits; int /*<<< orphan*/  dscale; int /*<<< orphan*/  sign; int /*<<< orphan*/  weight; } ;
-typedef  TYPE_1__ NumericVar ;
-typedef  int /*<<< orphan*/  NumericDigit ;
-typedef  int /*<<< orphan*/  Numeric ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NUMERIC_DIGITS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NUMERIC_DSCALE (int /*<<< orphan*/ ) ; 
- int NUMERIC_NDIGITS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NUMERIC_SIGN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NUMERIC_WEIGHT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  alloc_var (TYPE_1__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int digits; int dscale; int sign; int weight; } ;
+typedef TYPE_1__ NumericVar ;
+typedef int NumericDigit ;
+typedef int Numeric ;
+
+
+ int NUMERIC_DIGITS (int ) ;
+ int NUMERIC_DSCALE (int ) ;
+ int NUMERIC_NDIGITS (int ) ;
+ int NUMERIC_SIGN (int ) ;
+ int NUMERIC_WEIGHT (int ) ;
+ int alloc_var (TYPE_1__*,int) ;
+ int memcpy (int ,int ,int) ;
 
 __attribute__((used)) static void
 set_var_from_num(Numeric num, NumericVar *dest)
 {
-	int			ndigits;
+ int ndigits;
 
-	ndigits = NUMERIC_NDIGITS(num);
+ ndigits = NUMERIC_NDIGITS(num);
 
-	alloc_var(dest, ndigits);
+ alloc_var(dest, ndigits);
 
-	dest->weight = NUMERIC_WEIGHT(num);
-	dest->sign = NUMERIC_SIGN(num);
-	dest->dscale = NUMERIC_DSCALE(num);
+ dest->weight = NUMERIC_WEIGHT(num);
+ dest->sign = NUMERIC_SIGN(num);
+ dest->dscale = NUMERIC_DSCALE(num);
 
-	memcpy(dest->digits, NUMERIC_DIGITS(num), ndigits * sizeof(NumericDigit));
+ memcpy(dest->digits, NUMERIC_DIGITS(num), ndigits * sizeof(NumericDigit));
 }

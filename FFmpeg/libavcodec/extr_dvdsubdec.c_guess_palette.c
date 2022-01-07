@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int uint32_t ;
 struct TYPE_3__ {size_t* colormap; size_t* alpha; int* palette; scalar_t__ has_palette; } ;
-typedef  TYPE_1__ DVDSubContext ;
+typedef TYPE_1__ DVDSubContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (size_t*,int /*<<< orphan*/ ,int) ; 
+
+ int memset (size_t*,int ,int) ;
 
 __attribute__((used)) static void guess_palette(DVDSubContext* ctx,
                           uint32_t *rgba_palette,
                           uint32_t subtitle_color)
 {
     static const uint8_t level_map[4][4] = {
-        // this configuration (full range, lowest to highest) in tests
-        // seemed most common, so assume this
+
+
         {0xff},
         {0x00, 0xff},
         {0x00, 0x80, 0xff},
@@ -60,7 +60,7 @@ __attribute__((used)) static void guess_palette(DVDSubContext* ctx,
     memset(color_used, 0, 16);
     for(i = 0; i < 4; i++) {
         if (alpha[i] != 0) {
-            if (!color_used[colormap[i]])  {
+            if (!color_used[colormap[i]]) {
                 level = level_map[nb_opaque_colors - 1][j];
                 r = (((subtitle_color >> 16) & 0xff) * level) >> 8;
                 g = (((subtitle_color >> 8) & 0xff) * level) >> 8;

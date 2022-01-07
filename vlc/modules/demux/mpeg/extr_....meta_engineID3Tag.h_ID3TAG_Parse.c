@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  size_t uint32_t ;
 
-/* Variables and functions */
- scalar_t__ ID3TAG_IsTag (int const*,int) ; 
- size_t ID3TAG_ReadSize (int const*,int const) ; 
- size_t VLC_FOURCC (int const,int const,int const,int const) ; 
- int VLC_SUCCESS ; 
+
+
+
+typedef int uint8_t ;
+typedef size_t uint32_t ;
+
+
+ scalar_t__ ID3TAG_IsTag (int const*,int) ;
+ size_t ID3TAG_ReadSize (int const*,int const) ;
+ size_t VLC_FOURCC (int const,int const,int const,int const) ;
+ int VLC_SUCCESS ;
 
 __attribute__((used)) static size_t ID3TAG_Parse( const uint8_t *p_peek, size_t i_peek,
                             int (*pf_callback)(uint32_t, const uint8_t *, size_t, void *), void *p_priv )
 {
     size_t i_total_size = 0;
     uint32_t i_ID3size = 0;
-    if( i_peek > 10 && ID3TAG_IsTag( p_peek, false ) )
+    if( i_peek > 10 && ID3TAG_IsTag( p_peek, 0 ) )
     {
         const bool b_syncsafe = p_peek[5] & 0x80;
-        i_ID3size = ID3TAG_ReadSize( &p_peek[6], true );
+        i_ID3size = ID3TAG_ReadSize( &p_peek[6], 1 );
         if( i_ID3size > i_peek - 10 )
             return 0;
         i_total_size = i_ID3size + 10;
@@ -48,9 +48,9 @@ __attribute__((used)) static size_t ID3TAG_Parse( const uint8_t *p_peek, size_t 
         }
     }
 
-    /* Count footer if any */
+
     if( i_total_size && i_peek - i_total_size >= 10 &&
-        ID3TAG_IsTag( &p_peek[i_total_size], true ) )
+        ID3TAG_IsTag( &p_peek[i_total_size], 1 ) )
     {
         i_total_size += 10;
     }

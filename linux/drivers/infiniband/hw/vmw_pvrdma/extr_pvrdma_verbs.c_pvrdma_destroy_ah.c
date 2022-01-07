@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct pvrdma_dev {int /*<<< orphan*/  num_ahs; } ;
-struct ib_ah {int /*<<< orphan*/  device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- struct pvrdma_dev* to_vdev (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct pvrdma_dev {int num_ahs; } ;
+struct ib_ah {int device; } ;
+
+
+ int atomic_dec (int *) ;
+ struct pvrdma_dev* to_vdev (int ) ;
 
 void pvrdma_destroy_ah(struct ib_ah *ah, u32 flags)
 {
-	struct pvrdma_dev *dev = to_vdev(ah->device);
+ struct pvrdma_dev *dev = to_vdev(ah->device);
 
-	atomic_dec(&dev->num_ahs);
+ atomic_dec(&dev->num_ahs);
 }

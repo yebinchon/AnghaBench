@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct fuse_file_info {int fh; } ;
-struct connection {int /*<<< orphan*/  Tmp; int /*<<< orphan*/  In; } ;
-typedef  int /*<<< orphan*/  size ;
-typedef  int inode_id_t ;
+struct connection {int Tmp; int In; } ;
+typedef int size ;
+typedef int inode_id_t ;
 
-/* Variables and functions */
- int MAX_VALUE_LEN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cmd_set ; 
- int ff_chmod (int*,int) ; 
- int ff_chown (int*,int,int) ; 
- int ff_mkdir (int*,int) ; 
- int ff_rmdir (int*) ; 
- int ff_unlink (int*) ; 
- int ff_write (int /*<<< orphan*/ *,int*,int,unsigned int,struct fuse_file_info*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  init_tmp_buffers (struct connection*) ; 
- int mct_set ; 
- int read_in (int /*<<< orphan*/ *,int*,int) ; 
- int sscanf (char const*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int* value_buff ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ ,int*,int) ; 
+
+ int MAX_VALUE_LEN ;
+ int assert (int) ;
+ int cmd_set ;
+ int ff_chmod (int*,int) ;
+ int ff_chown (int*,int,int) ;
+ int ff_mkdir (int*,int) ;
+ int ff_rmdir (int*) ;
+ int ff_unlink (int*) ;
+ int ff_write (int *,int*,int,unsigned int,struct fuse_file_info*) ;
+ int fprintf (int ,char*,int,int) ;
+ int init_tmp_buffers (struct connection*) ;
+ int mct_set ;
+ int read_in (int *,int*,int) ;
+ int sscanf (char const*,char*,...) ;
+ int stderr ;
+ int strcmp (char const*,char*) ;
+ int strncmp (char const*,char*,int) ;
+ int* value_buff ;
+ scalar_t__ verbosity ;
+ int write_out (int ,int*,int) ;
 
 int memcache_store (struct connection *c, int op, const char *key, int key_len, int flags, int delay, int size) {
   cmd_set++;
@@ -87,7 +87,7 @@ int memcache_store (struct connection *c, int op, const char *key, int key_len, 
           break;
         case 2:
           fi.fh = inode;
-          r = ff_write (NULL, value_buff, size, offset, &fi);
+          r = ff_write (((void*)0), value_buff, size, offset, &fi);
           if (r >= 0) {
             r = 0;
           }

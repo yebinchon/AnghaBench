@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lev_add_message {int peer_id; int text_len; char* text; scalar_t__ ua_hash; scalar_t__ front; scalar_t__ port; scalar_t__ ip; scalar_t__ date; scalar_t__ peer_msg_id; scalar_t__ legacy_id; scalar_t__ user_id; scalar_t__ type; } ;
 
-/* Variables and functions */
- scalar_t__* I ; 
- int* L ; 
- scalar_t__ LEV_TX_ADD_MESSAGE ; 
- scalar_t__ LEV_TX_ADD_MESSAGE_MF ; 
- char** S ; 
- scalar_t__ TXFS_SMS ; 
- int /*<<< orphan*/  adj_rec ; 
- scalar_t__ conv_uid (scalar_t__) ; 
- scalar_t__ list_id ; 
- size_t st_created ; 
- size_t st_id ; 
- size_t st_item_text ; 
- size_t st_user_id ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- struct lev_add_message* write_alloc (int) ; 
+
+ scalar_t__* I ;
+ int* L ;
+ scalar_t__ LEV_TX_ADD_MESSAGE ;
+ scalar_t__ LEV_TX_ADD_MESSAGE_MF ;
+ char** S ;
+ scalar_t__ TXFS_SMS ;
+ int adj_rec ;
+ scalar_t__ conv_uid (scalar_t__) ;
+ scalar_t__ list_id ;
+ size_t st_created ;
+ size_t st_id ;
+ size_t st_item_text ;
+ size_t st_user_id ;
+ int strcmp (char*,char*) ;
+ struct lev_add_message* write_alloc (int) ;
 
 void process_minifeed_row (void) {
   int i, len, skip = 0;
   char *ptr, *str;
-  list_id = I[st_user_id]; 
+  list_id = I[st_user_id];
   if (conv_uid (list_id) < 0 || list_id <= 0) {
     return;
   }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zdev_t ;
-typedef  scalar_t__ u8_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int zdev_t ;
+typedef scalar_t__ u8_t ;
 struct TYPE_3__ {scalar_t__ bSafeMode; } ;
 struct TYPE_4__ {TYPE_1__ sta; } ;
 
-/* Variables and functions */
- TYPE_2__* wd ; 
- int /*<<< orphan*/  zfStaDisableSWEncryption (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfStaEnableSWEncryption (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  zmw_get_wlan_dev (int /*<<< orphan*/ *) ; 
+
+ TYPE_2__* wd ;
+ int zfStaDisableSWEncryption (int *) ;
+ int zfStaEnableSWEncryption (int *,int) ;
+ int zmw_get_wlan_dev (int *) ;
 
 void zfiWlanSetSafeModeEnabled(zdev_t* dev, u8_t safeMode)
 {
@@ -30,7 +30,7 @@ void zfiWlanSetSafeModeEnabled(zdev_t* dev, u8_t safeMode)
     wd->sta.bSafeMode = safeMode;
 
     if ( safeMode )
-    	zfStaEnableSWEncryption(dev, 1);
+     zfStaEnableSWEncryption(dev, 1);
     else
         zfStaDisableSWEncryption(dev);
 }

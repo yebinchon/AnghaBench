@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char uint8_t ;
-typedef  int /*<<< orphan*/  ebml_master ;
-struct TYPE_3__ {char const* value; int /*<<< orphan*/  key; } ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LANG_ISO639_2_BIBL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  MATROSKA_ID_SIMPLETAG ; 
- int /*<<< orphan*/  MATROSKA_ID_TAGLANG ; 
- int /*<<< orphan*/  MATROSKA_ID_TAGNAME ; 
- int /*<<< orphan*/  MATROSKA_ID_TAGSTRING ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- char* av_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  end_ebml_master (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* ff_convert_lang_to (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  put_ebml_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  start_ebml_master (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* strrchr (char*,char) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef char uint8_t ;
+typedef int ebml_master ;
+struct TYPE_3__ {char const* value; int key; } ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVDictionaryEntry ;
+
+
+ int AVERROR (int ) ;
+ int AV_LANG_ISO639_2_BIBL ;
+ int ENOMEM ;
+ int MATROSKA_ID_SIMPLETAG ;
+ int MATROSKA_ID_TAGLANG ;
+ int MATROSKA_ID_TAGNAME ;
+ int MATROSKA_ID_TAGSTRING ;
+ int av_freep (char**) ;
+ char* av_strdup (int ) ;
+ int end_ebml_master (int *,int ) ;
+ char* ff_convert_lang_to (char*,int ) ;
+ int put_ebml_string (int *,int ,char const*) ;
+ int start_ebml_master (int *,int ,int ) ;
+ char* strrchr (char*,char) ;
 
 __attribute__((used)) static int mkv_write_simpletag(AVIOContext *pb, AVDictionaryEntry *t)
 {
     uint8_t *key = av_strdup(t->key);
-    uint8_t *p   = key;
-    const uint8_t *lang = NULL;
+    uint8_t *p = key;
+    const uint8_t *lang = ((void*)0);
     ebml_master tag;
 
     if (!key)

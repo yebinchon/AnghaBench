@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_connect_t ;
+
+
+
+
+typedef int uv_connect_t ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  TEST_PORT ; 
- int /*<<< orphan*/  client ; 
- int /*<<< orphan*/  connect_cb ; 
- int /*<<< orphan*/ * malloc (int) ; 
- int /*<<< orphan*/  uv_default_loop () ; 
- scalar_t__ uv_ip4_addr (char*,int /*<<< orphan*/ ,struct sockaddr_in*) ; 
- int uv_tcp_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct sockaddr const*,int /*<<< orphan*/ ) ; 
- int uv_tcp_init (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int ASSERT (int) ;
+ int TEST_PORT ;
+ int client ;
+ int connect_cb ;
+ int * malloc (int) ;
+ int uv_default_loop () ;
+ scalar_t__ uv_ip4_addr (char*,int ,struct sockaddr_in*) ;
+ int uv_tcp_connect (int *,int *,struct sockaddr const*,int ) ;
+ int uv_tcp_init (int ,int *) ;
 
 __attribute__((used)) static void client_connect(void) {
   struct sockaddr_in addr;
@@ -31,7 +31,7 @@ __attribute__((used)) static void client_connect(void) {
   int r;
 
   ASSERT(0 == uv_ip4_addr("127.0.0.1", TEST_PORT, &addr));
-  ASSERT(connect_req != NULL);
+  ASSERT(connect_req != ((void*)0));
 
   r = uv_tcp_init(uv_default_loop(), &client);
   ASSERT(r == 0);

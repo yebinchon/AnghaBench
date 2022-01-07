@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t center_mix_level; size_t surround_mix_level; int fbw_channels; size_t channel_mode; scalar_t__ output_mode; void*** downmix_coeffs; } ;
-typedef  TYPE_1__ AC3DecodeContext ;
+typedef TYPE_1__ AC3DecodeContext ;
 
-/* Variables and functions */
- int AC3_CHMODE_2F1R ; 
- int AC3_CHMODE_2F2R ; 
- int AC3_CHMODE_3F1R ; 
- int AC3_CHMODE_3F2R ; 
- scalar_t__ AC3_CHMODE_MONO ; 
- int AC3_MAX_CHANNELS ; 
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* FIXR12 (float) ; 
- float LEVEL_MINUS_3DB ; 
- size_t*** ac3_default_coeffs ; 
- void** av_malloc_array (int,int) ; 
- float* gain_levels ; 
+
+ int AC3_CHMODE_2F1R ;
+ int AC3_CHMODE_2F2R ;
+ int AC3_CHMODE_3F1R ;
+ int AC3_CHMODE_3F2R ;
+ scalar_t__ AC3_CHMODE_MONO ;
+ int AC3_MAX_CHANNELS ;
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ void* FIXR12 (float) ;
+ float LEVEL_MINUS_3DB ;
+ size_t*** ac3_default_coeffs ;
+ void** av_malloc_array (int,int) ;
+ float* gain_levels ;
 
 __attribute__((used)) static int set_downmix_coeffs(AC3DecodeContext *s)
 {
     int i;
-    float cmix = gain_levels[s->  center_mix_level];
+    float cmix = gain_levels[s-> center_mix_level];
     float smix = gain_levels[s->surround_mix_level];
     float norm0, norm1;
     float downmix_coeffs[2][AC3_MAX_CHANNELS];
@@ -61,7 +61,7 @@ __attribute__((used)) static int set_downmix_coeffs(AC3DecodeContext *s)
         downmix_coeffs[0][nf] = downmix_coeffs[1][nf+1] = smix;
     }
 
-    /* renormalize */
+
     norm0 = norm1 = 0.0;
     for (i = 0; i < s->fbw_channels; i++) {
         norm0 += downmix_coeffs[0][i];

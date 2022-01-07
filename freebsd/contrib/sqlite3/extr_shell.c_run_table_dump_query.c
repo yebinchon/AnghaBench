@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-struct TYPE_3__ {int /*<<< orphan*/  nErr; int /*<<< orphan*/  db; int /*<<< orphan*/  out; } ;
-typedef  TYPE_1__ ShellState ;
 
-/* Variables and functions */
- int SQLITE_CORRUPT ; 
- int SQLITE_OK ; 
- int SQLITE_ROW ; 
- int /*<<< orphan*/  raw_printf (int /*<<< orphan*/ ,char*) ; 
- int sqlite3_column_count (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_column_text (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sqlite3_errmsg (int /*<<< orphan*/ ) ; 
- int sqlite3_finalize (int /*<<< orphan*/ *) ; 
- int sqlite3_prepare_v2 (int /*<<< orphan*/ ,char const*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int sqlite3_step (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  utf8_printf (int /*<<< orphan*/ ,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_stmt ;
+struct TYPE_3__ {int nErr; int db; int out; } ;
+typedef TYPE_1__ ShellState ;
+
+
+ int SQLITE_CORRUPT ;
+ int SQLITE_OK ;
+ int SQLITE_ROW ;
+ int raw_printf (int ,char*) ;
+ int sqlite3_column_count (int *) ;
+ scalar_t__ sqlite3_column_text (int *,int) ;
+ int sqlite3_errmsg (int ) ;
+ int sqlite3_finalize (int *) ;
+ int sqlite3_prepare_v2 (int ,char const*,int,int **,int ) ;
+ int sqlite3_step (int *) ;
+ int utf8_printf (int ,char*,...) ;
 
 __attribute__((used)) static int run_table_dump_query(
-  ShellState *p,           /* Query context */
-  const char *zSelect,     /* SELECT statement to extract content */
-  const char *zFirstRow    /* Print before first row, if not NULL */
+  ShellState *p,
+  const char *zSelect,
+  const char *zFirstRow
 ){
   sqlite3_stmt *pSelect;
   int rc;

@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__* xo_effect_names ; 
- scalar_t__ xo_streq (scalar_t__,char const*) ; 
+ scalar_t__* xo_effect_names ;
+ scalar_t__ xo_streq (scalar_t__,char const*) ;
 
 __attribute__((used)) static int
 xo_effect_find (const char *str)
@@ -21,8 +13,8 @@ xo_effect_find (const char *str)
     int i;
 
     for (i = 0; xo_effect_names[i]; i++) {
-	if (xo_streq(xo_effect_names[i], str))
-	    return i;
+ if (xo_streq(xo_effect_names[i], str))
+     return i;
     }
 
     return -1;

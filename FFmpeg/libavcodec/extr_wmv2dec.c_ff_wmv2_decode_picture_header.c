@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Wmv2Context ;
-struct TYPE_3__ {scalar_t__ picture_number; scalar_t__ pict_type; int chroma_qscale; int qscale; int mb_width; int mb_height; int /*<<< orphan*/  gb; int /*<<< orphan*/  avctx; } ;
-typedef  TYPE_1__ MpegEncContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- scalar_t__ AV_PICTURE_TYPE_I ; 
- int FFMIN (int,int) ; 
- int FRAME_SKIPPED ; 
- int SKIP_TYPE_COL ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  decode_ext_header (int /*<<< orphan*/ * const) ; 
- int get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ show_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int Wmv2Context ;
+struct TYPE_3__ {scalar_t__ picture_number; scalar_t__ pict_type; int chroma_qscale; int qscale; int mb_width; int mb_height; int gb; int avctx; } ;
+typedef TYPE_1__ MpegEncContext ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ scalar_t__ AV_PICTURE_TYPE_I ;
+ int FFMIN (int,int) ;
+ int FRAME_SKIPPED ;
+ int SKIP_TYPE_COL ;
+ int av_log (int ,int ,char*,int) ;
+ int decode_ext_header (int * const) ;
+ int get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ scalar_t__ show_bits (int *,int) ;
 
 int ff_wmv2_decode_picture_header(MpegEncContext *s)
 {

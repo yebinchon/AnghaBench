@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BEGIN_RECURSION_PROTECT () ; 
- int /*<<< orphan*/  END_RECURSION_PROTECT () ; 
- int /*<<< orphan*/  LOCKTH () ; 
- int /*<<< orphan*/  UNLOCKTH () ; 
- int /*<<< orphan*/  __mfu_check (void*,size_t,int,char const*) ; 
+ int BEGIN_RECURSION_PROTECT () ;
+ int END_RECURSION_PROTECT () ;
+ int LOCKTH () ;
+ int UNLOCKTH () ;
+ int __mfu_check (void*,size_t,int,char const*) ;
 
 void __mf_check (void *ptr, size_t sz, int type, const char *location)
 {

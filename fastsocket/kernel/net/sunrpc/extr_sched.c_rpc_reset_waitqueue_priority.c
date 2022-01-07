@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_wait_queue {int /*<<< orphan*/  maxpriority; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rpc_set_waitqueue_owner (struct rpc_wait_queue*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_set_waitqueue_priority (struct rpc_wait_queue*,int /*<<< orphan*/ ) ; 
+
+
+
+struct rpc_wait_queue {int maxpriority; } ;
+
+
+ int rpc_set_waitqueue_owner (struct rpc_wait_queue*,int ) ;
+ int rpc_set_waitqueue_priority (struct rpc_wait_queue*,int ) ;
 
 __attribute__((used)) static void rpc_reset_waitqueue_priority(struct rpc_wait_queue *queue)
 {
-	rpc_set_waitqueue_priority(queue, queue->maxpriority);
-	rpc_set_waitqueue_owner(queue, 0);
+ rpc_set_waitqueue_priority(queue, queue->maxpriority);
+ rpc_set_waitqueue_owner(queue, 0);
 }

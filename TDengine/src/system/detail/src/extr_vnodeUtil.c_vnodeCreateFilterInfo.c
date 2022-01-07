@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_9__ ;
-typedef  struct TYPE_16__   TYPE_8__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-typedef  void* __filter_func_t ;
-struct TYPE_12__ {scalar_t__ numOfFilters; int /*<<< orphan*/  bytes; int /*<<< orphan*/  type; TYPE_2__* filters; } ;
+
+
+typedef struct TYPE_17__ TYPE_9__ ;
+typedef struct TYPE_16__ TYPE_8__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef size_t int32_t ;
+typedef int int16_t ;
+typedef void* __filter_func_t ;
+struct TYPE_12__ {scalar_t__ numOfFilters; int bytes; int type; TYPE_2__* filters; } ;
 struct TYPE_17__ {TYPE_3__ data; } ;
-struct TYPE_10__ {int /*<<< orphan*/ * filters; } ;
+struct TYPE_10__ {int * filters; } ;
 struct TYPE_16__ {TYPE_1__ data; } ;
 struct TYPE_11__ {size_t lowerRelOptr; size_t upperRelOptr; } ;
-struct TYPE_15__ {int /*<<< orphan*/  bytes; int /*<<< orphan*/ * fp; TYPE_2__ filterInfo; } ;
+struct TYPE_15__ {int bytes; int * fp; TYPE_2__ filterInfo; } ;
 struct TYPE_14__ {size_t numOfCols; int numOfFilterCols; TYPE_9__* colList; TYPE_4__* pFilterInfo; } ;
 struct TYPE_13__ {int numOfFilters; TYPE_6__* pFilters; TYPE_8__ info; } ;
-typedef  TYPE_4__ SSingleColumnFilterInfo ;
-typedef  TYPE_5__ SQuery ;
-typedef  int /*<<< orphan*/  SColumnInfoEx ;
-typedef  TYPE_6__ SColumnFilterElem ;
+typedef TYPE_4__ SSingleColumnFilterInfo ;
+typedef TYPE_5__ SQuery ;
+typedef int SColumnInfoEx ;
+typedef TYPE_6__ SColumnFilterElem ;
 
-/* Variables and functions */
- size_t TSDB_CODE_INVALID_QUERY_MSG ; 
- size_t TSDB_CODE_SUCCESS ; 
- size_t TSDB_RELATION_INVALID ; 
- size_t TSDB_RELATION_LARGE ; 
- size_t TSDB_RELATION_LARGE_EQUAL ; 
- size_t TSDB_RELATION_LESS ; 
- size_t TSDB_RELATION_LESS_EQUAL ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- void* calloc (int,int) ; 
- int /*<<< orphan*/  dError (char*,void*,...) ; 
- int /*<<< orphan*/  memcpy (TYPE_8__*,TYPE_9__*,int) ; 
- void** vnodeGetRangeFilterFuncArray (int /*<<< orphan*/ ) ; 
- void** vnodeGetValueFilterFuncArray (int /*<<< orphan*/ ) ; 
+
+ size_t TSDB_CODE_INVALID_QUERY_MSG ;
+ size_t TSDB_CODE_SUCCESS ;
+ size_t TSDB_RELATION_INVALID ;
+ size_t TSDB_RELATION_LARGE ;
+ size_t TSDB_RELATION_LARGE_EQUAL ;
+ size_t TSDB_RELATION_LESS ;
+ size_t TSDB_RELATION_LESS_EQUAL ;
+ int assert (int ) ;
+ void* calloc (int,int) ;
+ int dError (char*,void*,...) ;
+ int memcpy (TYPE_8__*,TYPE_9__*,int) ;
+ void** vnodeGetRangeFilterFuncArray (int ) ;
+ void** vnodeGetValueFilterFuncArray (int ) ;
 
 int32_t vnodeCreateFilterInfo(void* pQInfo, SQuery* pQuery) {
   for (int32_t i = 0; i < pQuery->numOfCols; ++i) {
@@ -67,7 +67,7 @@ int32_t vnodeCreateFilterInfo(void* pQInfo, SQuery* pQuery) {
       SSingleColumnFilterInfo* pFilterInfo = &pQuery->pFilterInfo[j];
 
       memcpy(&pFilterInfo->info, &pQuery->colList[i], sizeof(SColumnInfoEx));
-      pFilterInfo->info.data.filters = NULL;
+      pFilterInfo->info.data.filters = ((void*)0);
 
       pFilterInfo->numOfFilters = pQuery->colList[i].data.numOfFilters;
       pFilterInfo->pFilters = calloc(pFilterInfo->numOfFilters, sizeof(SColumnFilterElem));
@@ -90,7 +90,7 @@ int32_t vnodeCreateFilterInfo(void* pQInfo, SQuery* pQuery) {
         __filter_func_t *rangeFilterArray = vnodeGetRangeFilterFuncArray(type);
         __filter_func_t *filterArray = vnodeGetValueFilterFuncArray(type);
 
-        if (rangeFilterArray == NULL && filterArray == NULL) {
+        if (rangeFilterArray == ((void*)0) && filterArray == ((void*)0)) {
           dError("QInfo:%p failed to get filter function, invalid data type:%d", pQInfo, type);
           return TSDB_CODE_INVALID_QUERY_MSG;
         }
@@ -110,7 +110,7 @@ int32_t vnodeCreateFilterInfo(void* pQInfo, SQuery* pQuery) {
               pSingleColFilter->fp = rangeFilterArray[1];
             }
           }
-        } else {  // set callback filter function
+        } else {
           if (lower != TSDB_RELATION_INVALID) {
             pSingleColFilter->fp = filterArray[lower];
 
@@ -122,7 +122,7 @@ int32_t vnodeCreateFilterInfo(void* pQInfo, SQuery* pQuery) {
             pSingleColFilter->fp = filterArray[upper];
           }
         }
-        assert (pSingleColFilter->fp != NULL);
+        assert (pSingleColFilter->fp != ((void*)0));
         pSingleColFilter->bytes = bytes;
       }
 

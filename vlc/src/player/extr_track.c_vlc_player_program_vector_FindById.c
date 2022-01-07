@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {size_t size; struct vlc_player_program** data; } ;
-typedef  TYPE_1__ vlc_player_program_vector ;
+typedef TYPE_1__ vlc_player_program_vector ;
 struct vlc_player_program {int group_id; } ;
 
-/* Variables and functions */
+
 
 struct vlc_player_program *
 vlc_player_program_vector_FindById(vlc_player_program_vector *vec, int id,
@@ -31,5 +31,5 @@ vlc_player_program_vector_FindById(vlc_player_program_vector *vec, int id,
             return prgm;
         }
     }
-    return NULL;
+    return ((void*)0);
 }

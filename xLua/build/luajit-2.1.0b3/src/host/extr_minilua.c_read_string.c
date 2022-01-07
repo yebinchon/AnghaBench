@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int current; int /*<<< orphan*/  buff; } ;
-struct TYPE_11__ {int /*<<< orphan*/  ts; } ;
-typedef  TYPE_1__ SemInfo ;
-typedef  TYPE_2__ LexState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TK_EOS ; 
- int /*<<< orphan*/  TK_STRING ; 
- int UCHAR_MAX ; 
- int /*<<< orphan*/  inclinenumber (TYPE_2__*) ; 
- int /*<<< orphan*/  isdigit (int) ; 
- int /*<<< orphan*/  luaX_lexerror (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaX_newstring (TYPE_2__*,scalar_t__,scalar_t__) ; 
- scalar_t__ luaZ_buffer (int /*<<< orphan*/ ) ; 
- scalar_t__ luaZ_bufflen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  next (TYPE_2__*) ; 
- int /*<<< orphan*/  save (TYPE_2__*,int) ; 
- int /*<<< orphan*/  save_and_next (TYPE_2__*) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int current; int buff; } ;
+struct TYPE_11__ {int ts; } ;
+typedef TYPE_1__ SemInfo ;
+typedef TYPE_2__ LexState ;
+
+
+ int TK_EOS ;
+ int TK_STRING ;
+ int UCHAR_MAX ;
+ int inclinenumber (TYPE_2__*) ;
+ int isdigit (int) ;
+ int luaX_lexerror (TYPE_2__*,char*,int ) ;
+ int luaX_newstring (TYPE_2__*,scalar_t__,scalar_t__) ;
+ scalar_t__ luaZ_buffer (int ) ;
+ scalar_t__ luaZ_bufflen (int ) ;
+ int next (TYPE_2__*) ;
+ int save (TYPE_2__*,int) ;
+ int save_and_next (TYPE_2__*) ;
 
 __attribute__((used)) static void read_string(LexState*ls,int del,SemInfo*seminfo){
 save_and_next(ls);

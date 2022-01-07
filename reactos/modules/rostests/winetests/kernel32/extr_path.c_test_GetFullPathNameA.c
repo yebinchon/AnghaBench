@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  testset ;
-typedef  int /*<<< orphan*/  output ;
-typedef  int /*<<< orphan*/  invalid_parameters ;
-typedef  int UINT ;
-typedef  char* LPSTR ;
-typedef  char const* LPCSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ERROR_INVALID_NAME ; 
- int GetACP () ; 
- int GetFullPathNameA (char const*,int,char*,char**) ; 
- int GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  lstrcmpA (char*,char const*) ; 
- int /*<<< orphan*/  ok (int,char*,int,...) ; 
- int /*<<< orphan*/  skip (char*,int) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int testset ;
+typedef int output ;
+typedef int invalid_parameters ;
+typedef int UINT ;
+typedef char* LPSTR ;
+typedef char const* LPCSTR ;
+typedef int DWORD ;
+
+
+ int ERROR_INVALID_NAME ;
+ int GetACP () ;
+ int GetFullPathNameA (char const*,int,char*,char**) ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int SetLastError (int) ;
+ int lstrcmpA (char*,char const*) ;
+ int ok (int,char*,int,...) ;
+ int skip (char*,int) ;
+ int strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static void test_GetFullPathNameA(void)
 {
@@ -46,14 +46,14 @@ __attribute__((used)) static void test_GetFullPathNameA(void)
         LPSTR *lastpart;
     } invalid_parameters[] =
     {
-        {NULL, 0,        NULL,   NULL},
-        {NULL, MAX_PATH, NULL,   NULL},
-        {NULL, MAX_PATH, output, NULL},
-        {NULL, MAX_PATH, output, &filepart},
-        {"",   0,        NULL,   NULL},
-        {"",   MAX_PATH, NULL,   NULL},
-        {"",   MAX_PATH, output, NULL},
-        {"",   MAX_PATH, output, &filepart},
+        {((void*)0), 0, ((void*)0), ((void*)0)},
+        {((void*)0), MAX_PATH, ((void*)0), ((void*)0)},
+        {((void*)0), MAX_PATH, output, ((void*)0)},
+        {((void*)0), MAX_PATH, output, &filepart},
+        {"", 0, ((void*)0), ((void*)0)},
+        {"", MAX_PATH, ((void*)0), ((void*)0)},
+        {"", MAX_PATH, output, ((void*)0)},
+        {"", MAX_PATH, output, &filepart},
     };
 
     for (i = 0; i < sizeof(invalid_parameters)/sizeof(invalid_parameters[0]); i++)
@@ -69,7 +69,7 @@ __attribute__((used)) static void test_GetFullPathNameA(void)
         ok(!strcmp(output, "deadbeef"), "[%d] Expected the output buffer to be unchanged, got \"%s\"\n", i, output);
         ok(filepart == (char *)0xdeadbeef, "[%d] Expected output file part pointer to be untouched, got %p\n", i, filepart);
         ok(GetLastError() == 0xdeadbeef ||
-           GetLastError() == ERROR_INVALID_NAME, /* Win7 */
+           GetLastError() == ERROR_INVALID_NAME,
            "[%d] Expected GetLastError() to return 0xdeadbeef, got %u\n",
            i, GetLastError());
     }

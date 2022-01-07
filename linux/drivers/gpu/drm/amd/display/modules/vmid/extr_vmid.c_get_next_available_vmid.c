@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct core_vmid {int num_vmid; scalar_t__* ptb_assigned_to_vmid; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int get_next_available_vmid(struct core_vmid *core_vmid)
 {
-	int i;
+ int i;
 
-	for (i = 1; i < core_vmid->num_vmid; i++) {
-		if (core_vmid->ptb_assigned_to_vmid[i] == 0)
-			return i;
-	}
+ for (i = 1; i < core_vmid->num_vmid; i++) {
+  if (core_vmid->ptb_assigned_to_vmid[i] == 0)
+   return i;
+ }
 
-	return -1;
+ return -1;
 }

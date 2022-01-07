@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hvc_struct {size_t vtermno; } ;
-struct hvc_opal_priv {int /*<<< orphan*/  hvsi; } ;
+struct hvc_opal_priv {int hvsi; } ;
 
-/* Variables and functions */
- struct hvc_opal_priv** hvc_opal_privs ; 
- int /*<<< orphan*/  hvsilib_close (int /*<<< orphan*/ *,struct hvc_struct*) ; 
- int /*<<< orphan*/  notifier_del_irq (struct hvc_struct*,int) ; 
- int /*<<< orphan*/  pr_devel (char*,size_t) ; 
+
+ struct hvc_opal_priv** hvc_opal_privs ;
+ int hvsilib_close (int *,struct hvc_struct*) ;
+ int notifier_del_irq (struct hvc_struct*,int) ;
+ int pr_devel (char*,size_t) ;
 
 __attribute__((used)) static void hvc_opal_hvsi_close(struct hvc_struct *hp, int data)
 {
-	struct hvc_opal_priv *pv = hvc_opal_privs[hp->vtermno];
+ struct hvc_opal_priv *pv = hvc_opal_privs[hp->vtermno];
 
-	pr_devel("HVSI@%x: do close !\n", hp->vtermno);
+ pr_devel("HVSI@%x: do close !\n", hp->vtermno);
 
-	hvsilib_close(&pv->hvsi, hp);
+ hvsilib_close(&pv->hvsi, hp);
 
-	notifier_del_irq(hp, data);
+ notifier_del_irq(hp, data);
 }

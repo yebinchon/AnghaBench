@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  D3DPRESENT_PARAMETERS ;
 
-/* Variables and functions */
-#define  D3DERR_DEVICELOST 130 
-#define  D3DERR_DEVICENOTRESET 129 
-#define  D3DERR_DRIVERINTERNALERROR 128 
- int /*<<< orphan*/  RARCH_WARN (char*,...) ; 
- scalar_t__ d3d8_reset_internal (void*,int /*<<< orphan*/ *) ; 
- int d3d8_test_cooperative_level (void*) ; 
+
+
+
+typedef int D3DPRESENT_PARAMETERS ;
+
+
+
+
+
+ int RARCH_WARN (char*,...) ;
+ scalar_t__ d3d8_reset_internal (void*,int *) ;
+ int d3d8_test_cooperative_level (void*) ;
 
 bool d3d8_reset(void *dev, void *d3dpp)
 {
-   const char *err = NULL;
+   const char *err = ((void*)0);
 
    if (d3d8_reset_internal(dev, (D3DPRESENT_PARAMETERS*)d3dpp))
-      return true;
+      return 1;
 
    RARCH_WARN("[D3D]: Attempting to recover from dead state...\n");
 
-#ifndef _XBOX
-   /* Try to recreate the device completely. */
+
+
    switch (d3d8_test_cooperative_level(dev))
    {
-      case D3DERR_DEVICELOST:
+      case 130:
          err = "DEVICELOST";
          break;
 
-      case D3DERR_DEVICENOTRESET:
+      case 129:
          err = "DEVICENOTRESET";
          break;
 
-      case D3DERR_DRIVERINTERNALERROR:
+      case 128:
          err = "DRIVERINTERNALERROR";
          break;
 
@@ -49,7 +49,7 @@ bool d3d8_reset(void *dev, void *d3dpp)
          err = "Unknown";
    }
    RARCH_WARN("[D3D]: recovering from dead state: (%s).\n", err);
-#endif
 
-   return false;
+
+   return 0;
 }

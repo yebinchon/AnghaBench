@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * flags; } ;
 
-/* Variables and functions */
- int DRIVER_LED_TOTAL ; 
- scalar_t__ HAS_FLAGS (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED_FLAG_MODIFIER ; 
- TYPE_1__ g_led_config ; 
- int /*<<< orphan*/  rgb_matrix_set_color (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_2__ {int * flags; } ;
+
+
+ int DRIVER_LED_TOTAL ;
+ scalar_t__ HAS_FLAGS (int ,int ) ;
+ int LED_FLAG_MODIFIER ;
+ TYPE_1__ g_led_config ;
+ int rgb_matrix_set_color (int,int ,int ,int ) ;
 
 void rgb_matrix_layer_helper (uint8_t red, uint8_t green, uint8_t blue) {
   for (int i = 0; i < DRIVER_LED_TOTAL; i++) {

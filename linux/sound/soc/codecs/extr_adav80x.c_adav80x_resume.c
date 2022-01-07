@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snd_soc_component {int dummy; } ;
-struct adav80x {int /*<<< orphan*/  regmap; } ;
+struct adav80x {int regmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  regcache_sync (int /*<<< orphan*/ ) ; 
- struct adav80x* snd_soc_component_get_drvdata (struct snd_soc_component*) ; 
+
+ int regcache_sync (int ) ;
+ struct adav80x* snd_soc_component_get_drvdata (struct snd_soc_component*) ;
 
 __attribute__((used)) static int adav80x_resume(struct snd_soc_component *component)
 {
-	struct adav80x *adav80x = snd_soc_component_get_drvdata(component);
+ struct adav80x *adav80x = snd_soc_component_get_drvdata(component);
 
-	regcache_sync(adav80x->regmap);
+ regcache_sync(adav80x->regmap);
 
-	return 0;
+ return 0;
 }

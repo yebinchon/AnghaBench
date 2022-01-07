@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int i_options; int i_es; int i_epg; int i_categories; int i_slaves; int /*<<< orphan*/  lock; TYPE_2__** pp_slaves; TYPE_2__** pp_categories; TYPE_2__** pp_epg; TYPE_2__** es; TYPE_2__* optflagv; TYPE_2__** ppsz_options; TYPE_2__* opaques; int /*<<< orphan*/ * p_meta; TYPE_2__* p_stats; TYPE_2__* psz_uri; TYPE_2__* psz_name; int /*<<< orphan*/  event_manager; } ;
-typedef  TYPE_1__ input_item_t ;
-struct TYPE_14__ {struct TYPE_14__* next; int /*<<< orphan*/  rc; } ;
-typedef  TYPE_2__ input_item_owner_t ;
-typedef  TYPE_2__ input_item_opaque_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_CLEAN (int,TYPE_2__**) ; 
- int /*<<< orphan*/  es_format_Clean (TYPE_2__*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  info_category_Delete (TYPE_2__*) ; 
- int /*<<< orphan*/  input_item_slave_Delete (TYPE_2__*) ; 
- TYPE_2__* item_owner (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_atomic_rc_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_epg_Delete (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_event_manager_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_meta_Delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+struct TYPE_13__ {int i_options; int i_es; int i_epg; int i_categories; int i_slaves; int lock; TYPE_2__** pp_slaves; TYPE_2__** pp_categories; TYPE_2__** pp_epg; TYPE_2__** es; TYPE_2__* optflagv; TYPE_2__** ppsz_options; TYPE_2__* opaques; int * p_meta; TYPE_2__* p_stats; TYPE_2__* psz_uri; TYPE_2__* psz_name; int event_manager; } ;
+typedef TYPE_1__ input_item_t ;
+struct TYPE_14__ {struct TYPE_14__* next; int rc; } ;
+typedef TYPE_2__ input_item_owner_t ;
+typedef TYPE_2__ input_item_opaque_t ;
+
+
+ int TAB_CLEAN (int,TYPE_2__**) ;
+ int es_format_Clean (TYPE_2__*) ;
+ int free (TYPE_2__*) ;
+ int info_category_Delete (TYPE_2__*) ;
+ int input_item_slave_Delete (TYPE_2__*) ;
+ TYPE_2__* item_owner (TYPE_1__*) ;
+ int vlc_atomic_rc_dec (int *) ;
+ int vlc_epg_Delete (TYPE_2__*) ;
+ int vlc_event_manager_fini (int *) ;
+ int vlc_meta_Delete (int *) ;
+ int vlc_mutex_destroy (int *) ;
 
 void input_item_Release( input_item_t *p_item )
 {
@@ -44,10 +44,10 @@ void input_item_Release( input_item_t *p_item )
     free( p_item->psz_uri );
     free( p_item->p_stats );
 
-    if( p_item->p_meta != NULL )
+    if( p_item->p_meta != ((void*)0) )
         vlc_meta_Delete( p_item->p_meta );
 
-    for( input_item_opaque_t *o = p_item->opaques, *next; o != NULL; o = next )
+    for( input_item_opaque_t *o = p_item->opaques, *next; o != ((void*)0); o = next )
     {
         next = o->next;
         free( o );

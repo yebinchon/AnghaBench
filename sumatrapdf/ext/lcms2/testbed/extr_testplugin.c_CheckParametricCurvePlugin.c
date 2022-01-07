@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsToneCurve ;
-typedef  int cmsInt32Number ;
-typedef  double cmsFloat64Number ;
-typedef  int /*<<< orphan*/ * cmsContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CurvePluginSample ; 
- int /*<<< orphan*/  CurvePluginSample2 ; 
- int /*<<< orphan*/ * DupContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IsGoodVal (char*,int /*<<< orphan*/ ,double,double) ; 
- double M_PI ; 
- int /*<<< orphan*/  TYPE_COS ; 
- int /*<<< orphan*/  TYPE_SIN ; 
- int /*<<< orphan*/  TYPE_TAN ; 
- int /*<<< orphan*/ * WatchDogContext (int /*<<< orphan*/ *) ; 
- double acos (double) ; 
- double asin (double) ; 
- int /*<<< orphan*/ * cmsBuildParametricToneCurve (int /*<<< orphan*/ *,int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  cmsDeleteContext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsEvalToneCurveFloat (int /*<<< orphan*/ *,int /*<<< orphan*/ *,float) ; 
- int /*<<< orphan*/  cmsFreeToneCurve (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmsPlugin (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * cmsReverseToneCurve (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- double cos (double) ; 
- double sin (double) ; 
- double tan (double) ; 
+
+
+
+typedef int cmsToneCurve ;
+typedef int cmsInt32Number ;
+typedef double cmsFloat64Number ;
+typedef int * cmsContext ;
+
+
+ int CurvePluginSample ;
+ int CurvePluginSample2 ;
+ int * DupContext (int *,int *) ;
+ int IsGoodVal (char*,int ,double,double) ;
+ double M_PI ;
+ int TYPE_COS ;
+ int TYPE_SIN ;
+ int TYPE_TAN ;
+ int * WatchDogContext (int *) ;
+ double acos (double) ;
+ double asin (double) ;
+ int * cmsBuildParametricToneCurve (int *,int ,double*) ;
+ int cmsDeleteContext (int *) ;
+ int cmsEvalToneCurveFloat (int *,int *,float) ;
+ int cmsFreeToneCurve (int *,int *) ;
+ int cmsPlugin (int *,int *) ;
+ int * cmsReverseToneCurve (int *,int *) ;
+ double cos (double) ;
+ double sin (double) ;
+ double tan (double) ;
 
 cmsInt32Number CheckParametricCurvePlugin(void)
 {
-    cmsContext ctx = NULL;
-    cmsContext cpy = NULL;
+    cmsContext ctx = ((void*)0);
+    cmsContext cpy = ((void*)0);
     cmsToneCurve* sinus;
     cmsToneCurve* cosinus;
     cmsToneCurve* tangent;
@@ -48,11 +48,11 @@ cmsInt32Number CheckParametricCurvePlugin(void)
     cmsToneCurve* reverse_cosinus;
     cmsFloat64Number scale = 1.0;
 
-    ctx = WatchDogContext(NULL);
+    ctx = WatchDogContext(((void*)0));
 
     cmsPlugin(ctx, &CurvePluginSample);
 
-    cpy = DupContext(ctx, NULL);
+    cpy = DupContext(ctx, ((void*)0));
 
     cmsPlugin(cpy, &CurvePluginSample2);
 
@@ -102,7 +102,7 @@ Error:
      cmsFreeToneCurve(cpy, cosinus);
      cmsFreeToneCurve(cpy, reverse_cosinus);
 
-     if (ctx != NULL) cmsDeleteContext(ctx);
-     if (cpy != NULL) cmsDeleteContext(cpy);
+     if (ctx != ((void*)0)) cmsDeleteContext(ctx);
+     if (cpy != ((void*)0)) cmsDeleteContext(cpy);
      return 0;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ wronly_binlogs; int binlogs; long long log_readto_pos; TYPE_1__** B; } ;
-typedef  TYPE_2__ volume_t ;
-struct TYPE_4__ {scalar_t__ size; int fd_wronly; int /*<<< orphan*/  abs_filename; int /*<<< orphan*/  prefix; } ;
+typedef TYPE_2__ volume_t ;
+struct TYPE_4__ {scalar_t__ size; int fd_wronly; int abs_filename; int prefix; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_WRLCK ; 
- int /*<<< orphan*/  O_WRONLY ; 
- int /*<<< orphan*/  SEEK_END ; 
- int STORAGE_ERR_NO_WRONLY_BINLOGS ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ lock_whole_file (int,int /*<<< orphan*/ ) ; 
- long long lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,scalar_t__) ; 
+
+ int F_WRLCK ;
+ int O_WRONLY ;
+ int SEEK_END ;
+ int STORAGE_ERR_NO_WRONLY_BINLOGS ;
+ int close (int) ;
+ int exit (int) ;
+ int kprintf (char*,int ,...) ;
+ scalar_t__ lock_whole_file (int,int ) ;
+ long long lseek (int,int ,int ) ;
+ int open (int ,int ) ;
+ int vkprintf (int,char*,int,scalar_t__) ;
 
 int storage_append_to_binlog (volume_t *V) {
   int k;

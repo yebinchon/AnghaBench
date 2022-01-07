@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const* vlc_tick_t ;
-typedef  int /*<<< orphan*/  video_format_t ;
-typedef  int /*<<< orphan*/  const subpicture_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_UNUSED (int) ; 
+
+
+
+typedef int const* vlc_tick_t ;
+typedef int video_format_t ;
+typedef int const subpicture_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int VLC_UNUSED (int) ;
 
 __attribute__((used)) static int OSDEpgValidate(subpicture_t *subpic,
                           bool has_src_changed, const video_format_t *fmt_src,

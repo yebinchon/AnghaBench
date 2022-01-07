@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct value {int dummy; } ;
 struct symtab_and_line {int dummy; } ;
 struct frame_info {int dummy; } ;
 struct expression {int dummy; } ;
-struct breakpoint {struct breakpoint* related_breakpoint; TYPE_1__* loc; void* frame_id; int /*<<< orphan*/  disposition; int /*<<< orphan*/  enable_state; void* watchpoint_frame; void* cond_string; struct expression* cond; struct value* val; void* exp_string; struct block* exp_valid_block; struct expression* exp; scalar_t__ number; } ;
+struct breakpoint {struct breakpoint* related_breakpoint; TYPE_1__* loc; void* frame_id; int disposition; int enable_state; void* watchpoint_frame; void* cond_string; struct expression* cond; struct value* val; void* exp_string; struct block* exp_valid_block; struct expression* exp; scalar_t__ number; } ;
 struct block {int dummy; } ;
-typedef  enum bptype { ____Placeholder_bptype } bptype ;
-struct TYPE_2__ {int /*<<< orphan*/  requested_address; int /*<<< orphan*/  address; } ;
+typedef enum bptype { ____Placeholder_bptype } bptype ;
+struct TYPE_2__ {int requested_address; int address; } ;
 
-/* Variables and functions */
- int TARGET_CAN_USE_HARDWARE_WATCHPOINT (int,int,int) ; 
- scalar_t__ VALUE_LAZY (struct value*) ; 
- int /*<<< orphan*/  adjust_breakpoint_address (int /*<<< orphan*/ ) ; 
- struct frame_info* block_innermost_frame (struct block*) ; 
- int bp_access_watchpoint ; 
- int /*<<< orphan*/  bp_enabled ; 
- int bp_hardware_watchpoint ; 
- int bp_read_watchpoint ; 
- int bp_watchpoint ; 
- int /*<<< orphan*/  bp_watchpoint_scope ; 
- scalar_t__ breakpoint_count ; 
- int can_use_hardware_watchpoint (struct value*) ; 
- struct breakpoint* create_internal_breakpoint (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  disp_del ; 
- int /*<<< orphan*/  disp_donttouch ; 
- int /*<<< orphan*/  error (char*) ; 
- struct value* evaluate_expression (struct expression*) ; 
- void* get_frame_id (struct frame_info*) ; 
- int /*<<< orphan*/  get_frame_pc (struct frame_info*) ; 
- struct frame_info* get_prev_frame (struct frame_info*) ; 
- int hw_access ; 
- int hw_read ; 
- int hw_watchpoint_used_count (int,int*) ; 
- int /*<<< orphan*/  init_sal (struct symtab_and_line*) ; 
- struct block* innermost_block ; 
- int /*<<< orphan*/  memset (void**,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mention (struct breakpoint*) ; 
- struct expression* parse_exp_1 (char**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_value (struct value*) ; 
- void* savestring (char*,int) ; 
- int /*<<< orphan*/  set_breakpoint_count (scalar_t__) ; 
- struct breakpoint* set_raw_breakpoint (struct symtab_and_line,int) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int /*<<< orphan*/  target_has_execution ; 
- int /*<<< orphan*/  value_fetch_lazy (struct value*) ; 
- int /*<<< orphan*/  value_free_to_mark (struct value*) ; 
- struct value* value_mark () ; 
- int /*<<< orphan*/  warning (char*) ; 
+
+ int TARGET_CAN_USE_HARDWARE_WATCHPOINT (int,int,int) ;
+ scalar_t__ VALUE_LAZY (struct value*) ;
+ int adjust_breakpoint_address (int ) ;
+ struct frame_info* block_innermost_frame (struct block*) ;
+ int bp_access_watchpoint ;
+ int bp_enabled ;
+ int bp_hardware_watchpoint ;
+ int bp_read_watchpoint ;
+ int bp_watchpoint ;
+ int bp_watchpoint_scope ;
+ scalar_t__ breakpoint_count ;
+ int can_use_hardware_watchpoint (struct value*) ;
+ struct breakpoint* create_internal_breakpoint (int ,int ) ;
+ int disp_del ;
+ int disp_donttouch ;
+ int error (char*) ;
+ struct value* evaluate_expression (struct expression*) ;
+ void* get_frame_id (struct frame_info*) ;
+ int get_frame_pc (struct frame_info*) ;
+ struct frame_info* get_prev_frame (struct frame_info*) ;
+ int hw_access ;
+ int hw_read ;
+ int hw_watchpoint_used_count (int,int*) ;
+ int init_sal (struct symtab_and_line*) ;
+ struct block* innermost_block ;
+ int memset (void**,int ,int) ;
+ int mention (struct breakpoint*) ;
+ struct expression* parse_exp_1 (char**,int ,int ) ;
+ int release_value (struct value*) ;
+ void* savestring (char*,int) ;
+ int set_breakpoint_count (scalar_t__) ;
+ struct breakpoint* set_raw_breakpoint (struct symtab_and_line,int) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int target_has_execution ;
+ int value_fetch_lazy (struct value*) ;
+ int value_free_to_mark (struct value*) ;
+ struct value* value_mark () ;
+ int warning (char*) ;
 
 __attribute__((used)) static void
 watch_command_1 (char *arg, int accessflag, int from_tty)
@@ -69,22 +69,22 @@ watch_command_1 (char *arg, int accessflag, int from_tty)
   struct block *exp_valid_block;
   struct value *val, *mark;
   struct frame_info *frame;
-  struct frame_info *prev_frame = NULL;
-  char *exp_start = NULL;
-  char *exp_end = NULL;
+  struct frame_info *prev_frame = ((void*)0);
+  char *exp_start = ((void*)0);
+  char *exp_end = ((void*)0);
   char *tok, *end_tok;
   int toklen;
-  char *cond_start = NULL;
-  char *cond_end = NULL;
-  struct expression *cond = NULL;
+  char *cond_start = ((void*)0);
+  char *cond_end = ((void*)0);
+  struct expression *cond = ((void*)0);
   int i, other_type_used, target_resources_ok = 0;
   enum bptype bp_type;
   int mem_cnt = 0;
 
-  init_sal (&sal);		/* initialize to zeroes */
+  init_sal (&sal);
 
-  /* Parse arguments.  */
-  innermost_block = NULL;
+
+  innermost_block = ((void*)0);
   exp_start = arg;
   exp = parse_exp_1 (&arg, 0, 0);
   exp_end = arg;
@@ -126,44 +126,19 @@ watch_command_1 (char *arg, int accessflag, int from_tty)
   if (mem_cnt != 0)
     {
       i = hw_watchpoint_used_count (bp_type, &other_type_used);
-      target_resources_ok = 
-	TARGET_CAN_USE_HARDWARE_WATCHPOINT (bp_type, i + mem_cnt, 
-					    other_type_used);
+      target_resources_ok =
+ TARGET_CAN_USE_HARDWARE_WATCHPOINT (bp_type, i + mem_cnt,
+         other_type_used);
       if (target_resources_ok == 0 && bp_type != bp_hardware_watchpoint)
-	error ("Target does not support this type of hardware watchpoint.");
+ error ("Target does not support this type of hardware watchpoint.");
 
       if (target_resources_ok < 0 && bp_type != bp_hardware_watchpoint)
-	error ("Target can only support one kind of HW watchpoint at a time.");
+ error ("Target can only support one kind of HW watchpoint at a time.");
     }
-
-#if defined(HPUXHPPA)
-  /*  On HP-UX if you set a h/w
-     watchpoint before the "run" command, the inferior dies with a e.g.,
-     SIGILL once you start it.  I initially believed this was due to a
-     bad interaction between page protection traps and the initial
-     startup sequence by the dynamic linker.
-
-     However, I tried avoiding that by having HP-UX's implementation of
-     TARGET_CAN_USE_HW_WATCHPOINT return FALSE if there was no inferior_ptid
-     yet, which forced slow watches before a "run" or "attach", and it
-     still fails somewhere in the startup code.
-
-     Until I figure out what's happening, I'm disallowing watches altogether
-     before the "run" or "attach" command.  We'll tell the user they must
-     set watches after getting the program started. */
-  if (!target_has_execution)
-    {
-      warning ("can't do that without a running program; try \"break main\", \"run\" first");
-      return;
-    }
-#endif /* HPUXHPPA */
-
-  /* Change the type of breakpoint to an ordinary watchpoint if a hardware
-     watchpoint could not be set.  */
   if (!mem_cnt || target_resources_ok <= 0)
     bp_type = bp_watchpoint;
 
-  /* Now set up the breakpoint.  */
+
   b = set_raw_breakpoint (sal, bp_type);
   set_breakpoint_count (breakpoint_count + 1);
   b->number = breakpoint_count;
@@ -189,35 +164,35 @@ watch_command_1 (char *arg, int accessflag, int from_tty)
       memset (&b->watchpoint_frame, 0, sizeof (b->watchpoint_frame));
     }
 
-  /* If the expression is "local", then set up a "watchpoint scope"
-     breakpoint at the point where we've left the scope of the watchpoint
-     expression.  */
+
+
+
   if (innermost_block)
     {
       if (prev_frame)
-	{
-	  struct breakpoint *scope_breakpoint;
-	  scope_breakpoint = create_internal_breakpoint (get_frame_pc (prev_frame),
-							 bp_watchpoint_scope);
+ {
+   struct breakpoint *scope_breakpoint;
+   scope_breakpoint = create_internal_breakpoint (get_frame_pc (prev_frame),
+        bp_watchpoint_scope);
 
-	  scope_breakpoint->enable_state = bp_enabled;
+   scope_breakpoint->enable_state = bp_enabled;
 
-	  /* Automatically delete the breakpoint when it hits.  */
-	  scope_breakpoint->disposition = disp_del;
 
-	  /* Only break in the proper frame (help with recursion).  */
-	  scope_breakpoint->frame_id = get_frame_id (prev_frame);
+   scope_breakpoint->disposition = disp_del;
 
-	  /* Set the address at which we will stop.  */
-	  scope_breakpoint->loc->requested_address
-	    = get_frame_pc (prev_frame);
-	  scope_breakpoint->loc->address
-	    = adjust_breakpoint_address (scope_breakpoint->loc->requested_address);
 
-	  /* The scope breakpoint is related to the watchpoint.  We
-	     will need to act on them together.  */
-	  b->related_breakpoint = scope_breakpoint;
-	}
+   scope_breakpoint->frame_id = get_frame_id (prev_frame);
+
+
+   scope_breakpoint->loc->requested_address
+     = get_frame_pc (prev_frame);
+   scope_breakpoint->loc->address
+     = adjust_breakpoint_address (scope_breakpoint->loc->requested_address);
+
+
+
+   b->related_breakpoint = scope_breakpoint;
+ }
     }
   value_free_to_mark (mark);
   mention (b);

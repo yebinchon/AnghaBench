@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_5__ {int maxpos; int* freqs; int size; int* symbols; } ;
-typedef  TYPE_1__ PixelModel3 ;
+typedef TYPE_1__ PixelModel3 ;
 
-/* Variables and functions */
- int add_symbol (TYPE_1__*,int,int,int*,int) ; 
- int /*<<< orphan*/  rescale (TYPE_1__*,int*) ; 
+
+ int add_symbol (TYPE_1__*,int,int,int*,int) ;
+ int rescale (TYPE_1__*,int*) ;
 
 __attribute__((used)) static int decode_adaptive45(PixelModel3 *m, int rccode, uint32_t *value,
                              uint16_t *a, uint16_t *b, uint32_t *c, int max)

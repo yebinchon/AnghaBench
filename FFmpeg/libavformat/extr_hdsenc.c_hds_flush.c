@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_8__ ;
-typedef  struct TYPE_23__   TYPE_5__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  target_filename ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_24__ {int /*<<< orphan*/  file; } ;
+
+
+typedef struct TYPE_24__ TYPE_8__ ;
+typedef struct TYPE_23__ TYPE_5__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int target_filename ;
+typedef scalar_t__ int64_t ;
+struct TYPE_24__ {int file; } ;
 struct TYPE_23__ {char* url; TYPE_1__** streams; TYPE_4__* priv_data; } ;
 struct TYPE_22__ {int window_size; int extra_window_size; scalar_t__ remove_at_exit; } ;
-struct TYPE_21__ {size_t first_stream; int fragment_index; int nb_fragments; TYPE_8__** fragments; scalar_t__ frag_start_ts; int /*<<< orphan*/  temp_filename; scalar_t__ packets_written; TYPE_2__* ctx; } ;
-struct TYPE_20__ {int /*<<< orphan*/  pb; } ;
+struct TYPE_21__ {size_t first_stream; int fragment_index; int nb_fragments; TYPE_8__** fragments; scalar_t__ frag_start_ts; int temp_filename; scalar_t__ packets_written; TYPE_2__* ctx; } ;
+struct TYPE_20__ {int pb; } ;
 struct TYPE_19__ {int id; } ;
-typedef  TYPE_3__ OutputStream ;
-typedef  TYPE_4__ HDSContext ;
-typedef  TYPE_5__ AVFormatContext ;
+typedef TYPE_3__ OutputStream ;
+typedef TYPE_4__ HDSContext ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add_fragment (TYPE_3__*,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  av_freep (TYPE_8__**) ; 
- int /*<<< orphan*/  avio_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_file (TYPE_5__*,TYPE_3__*) ; 
- int ff_rename (int /*<<< orphan*/ ,char*,TYPE_5__*) ; 
- int init_file (TYPE_5__*,TYPE_3__*,scalar_t__) ; 
- int /*<<< orphan*/  memmove (TYPE_8__**,TYPE_8__**,int) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,int,int) ; 
- int /*<<< orphan*/  unlink (int /*<<< orphan*/ ) ; 
- int write_abst (TYPE_5__*,TYPE_3__*,int) ; 
+
+ int add_fragment (TYPE_3__*,char*,scalar_t__,scalar_t__) ;
+ int av_freep (TYPE_8__**) ;
+ int avio_flush (int ) ;
+ int close_file (TYPE_5__*,TYPE_3__*) ;
+ int ff_rename (int ,char*,TYPE_5__*) ;
+ int init_file (TYPE_5__*,TYPE_3__*,scalar_t__) ;
+ int memmove (TYPE_8__**,TYPE_8__**,int) ;
+ int snprintf (char*,int,char*,char*,int,int) ;
+ int unlink (int ) ;
+ int write_abst (TYPE_5__*,TYPE_3__*,int) ;
 
 __attribute__((used)) static int hds_flush(AVFormatContext *s, OutputStream *os, int final,
                      int64_t end_ts)

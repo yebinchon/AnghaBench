@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
 struct TYPE_13__ {int l30; TYPE_2__* k; } ;
-typedef  TYPE_1__ s ;
-struct TYPE_14__ {int f; unsigned long j; size_t v; scalar_t__ l31; scalar_t__ p; int l33; int l73; int /*<<< orphan*/  y; int /*<<< orphan*/  o; scalar_t__ l34; TYPE_1__* d; int /*<<< orphan*/  l38; int /*<<< orphan*/  l46; } ;
-typedef  TYPE_2__ e ;
+typedef TYPE_1__ s ;
+struct TYPE_14__ {int f; unsigned long j; size_t v; scalar_t__ l31; scalar_t__ p; int l33; int l73; int y; int o; scalar_t__ l34; TYPE_1__* d; int l38; int l46; } ;
+typedef TYPE_2__ e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cp_set_baud (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  i (TYPE_2__*,int,unsigned char) ; 
- int /*<<< orphan*/  l (TYPE_1__*,int,unsigned char) ; 
- int /*<<< orphan*/  l138 (TYPE_2__*) ; 
- int /*<<< orphan*/  l168 (TYPE_1__*) ; 
- int /*<<< orphan*/  l179 (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  l610 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  l686 (TYPE_2__*,int) ; 
- int /*<<< orphan*/  outb (int,int /*<<< orphan*/ ) ; 
- int u (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int cp_set_baud (TYPE_2__*,int ) ;
+ int i (TYPE_2__*,int,unsigned char) ;
+ int l (TYPE_1__*,int,unsigned char) ;
+ int l138 (TYPE_2__*) ;
+ int l168 (TYPE_1__*) ;
+ int l179 (TYPE_2__*,int *) ;
+ int l610 (TYPE_2__*,int) ;
+ int l686 (TYPE_2__*,int) ;
+ int outb (int,int ) ;
+ int u (TYPE_1__*,int ) ;
 
 void cp_set_ts(
 e*a,unsigned long j){s*b=a->d;e*h;int c;{if(!(a->f!=3&&a->f!=6))goto

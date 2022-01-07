@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_udp_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
-struct TYPE_3__ {int /*<<< orphan*/  base; } ;
-typedef  TYPE_1__ uv_buf_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uv_udp_t ;
+typedef int uv_handle_t ;
+struct TYPE_3__ {int base; } ;
+typedef TYPE_1__ uv_buf_t ;
 struct sockaddr_in6 {int dummy; } ;
 struct sockaddr {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  source_addr ;
+typedef int ssize_t ;
+typedef int source_addr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  CHECK_HANDLE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INTERFACE_ADDR ; 
- int /*<<< orphan*/  MULTICAST_ADDR ; 
- int /*<<< orphan*/  UV_JOIN_GROUP ; 
- int /*<<< orphan*/  UV_LEAVE_GROUP ; 
- int cl_recv_cb_called ; 
- int /*<<< orphan*/  close_cb ; 
- int do_send (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  req_ss ; 
- int /*<<< orphan*/  server ; 
- int /*<<< orphan*/  uv_close (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int uv_ip6_name (struct sockaddr_in6 const*,char*,int) ; 
- int uv_udp_set_membership (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int uv_udp_set_source_membership (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (int) ;
+ int CHECK_HANDLE (int *) ;
+ int INTERFACE_ADDR ;
+ int MULTICAST_ADDR ;
+ int UV_JOIN_GROUP ;
+ int UV_LEAVE_GROUP ;
+ int cl_recv_cb_called ;
+ int close_cb ;
+ int do_send (int *) ;
+ int memcmp (char*,int ,int) ;
+ int req_ss ;
+ int server ;
+ int uv_close (int *,int ) ;
+ int uv_ip6_name (struct sockaddr_in6 const*,char*,int) ;
+ int uv_udp_set_membership (int *,int ,int ,int ) ;
+ int uv_udp_set_source_membership (int *,int ,int ,char*,int ) ;
 
 __attribute__((used)) static void cl_recv_cb(uv_udp_t* handle,
                        ssize_t nread,
@@ -51,19 +51,19 @@ __attribute__((used)) static void cl_recv_cb(uv_udp_t* handle,
   }
 
   if (nread == 0) {
-    /* Returning unused buffer. Don't count towards cl_recv_cb_called */
-    ASSERT(addr == NULL);
+
+    ASSERT(addr == ((void*)0));
     return;
   }
 
-  ASSERT(addr != NULL);
+  ASSERT(addr != ((void*)0));
   ASSERT(nread == 4);
   ASSERT(!memcmp("PING", buf->base, nread));
 
   cl_recv_cb_called++;
 
   if (cl_recv_cb_called == 2) {
-    /* we are done with the server handle, we can close it */
+
     uv_close((uv_handle_t*) &server, close_cb);
   } else {
     int r;

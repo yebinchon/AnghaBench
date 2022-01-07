@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_5__ {int refs; TYPE_2__ IUnknown_iface; int /*<<< orphan*/ * typelib_base; } ;
-typedef  TYPE_1__ TLB_NEFile ;
-typedef  int /*<<< orphan*/  OFSTRUCT ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/ * LPVOID ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  TYPE_2__ IUnknown ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ HFILE ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ IMAGE_OS2_SIGNATURE ; 
- int /*<<< orphan*/  LZClose (scalar_t__) ; 
- scalar_t__ LZOpenFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int LZRead (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  LZSeek (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MAKEINTRESOURCEA (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OF_READ ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TLB_NEFile_Release (TYPE_2__*) ; 
- int /*<<< orphan*/  TLB_NEFile_Vtable ; 
- int /*<<< orphan*/  TYPE_E_CANTLOADLIBRARY ; 
- scalar_t__ find_ne_resource (scalar_t__,char*,int /*<<< orphan*/ ,int*,int*) ; 
- void* heap_alloc (int) ; 
- scalar_t__ read_xx_header (scalar_t__) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_5__ {int refs; TYPE_2__ IUnknown_iface; int * typelib_base; } ;
+typedef TYPE_1__ TLB_NEFile ;
+typedef int OFSTRUCT ;
+typedef int LPWSTR ;
+typedef int * LPVOID ;
+typedef scalar_t__ LPCWSTR ;
+typedef TYPE_2__ IUnknown ;
+typedef int INT ;
+typedef int HRESULT ;
+typedef scalar_t__ HFILE ;
+typedef int DWORD ;
+
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ IMAGE_OS2_SIGNATURE ;
+ int LZClose (scalar_t__) ;
+ scalar_t__ LZOpenFileW (int ,int *,int ) ;
+ int LZRead (scalar_t__,int *,int) ;
+ int LZSeek (scalar_t__,int,int ) ;
+ int MAKEINTRESOURCEA (int ) ;
+ int OF_READ ;
+ int SEEK_SET ;
+ int S_OK ;
+ int TLB_NEFile_Release (TYPE_2__*) ;
+ int TLB_NEFile_Vtable ;
+ int TYPE_E_CANTLOADLIBRARY ;
+ scalar_t__ find_ne_resource (scalar_t__,char*,int ,int*,int*) ;
+ void* heap_alloc (int) ;
+ scalar_t__ read_xx_header (scalar_t__) ;
 
 __attribute__((used)) static HRESULT TLB_NEFile_Open(LPCWSTR path, INT index, LPVOID *ppBase, DWORD *pdwTLBLength, IUnknown **ppFile){
 
@@ -55,7 +55,7 @@ __attribute__((used)) static HRESULT TLB_NEFile_Open(LPCWSTR path, INT index, LP
 
     This->IUnknown_iface.lpVtbl = &TLB_NEFile_Vtable;
     This->refs = 1;
-    This->typelib_base = NULL;
+    This->typelib_base = ((void*)0);
 
     lzfd = LZOpenFileW( (LPWSTR)path, &ofs, OF_READ );
     if ( lzfd >= 0 && read_xx_header( lzfd ) == IMAGE_OS2_SIGNATURE )

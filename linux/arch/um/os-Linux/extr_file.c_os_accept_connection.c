@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int accept (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int errno ; 
+ int accept (int,int *,int ) ;
+ int errno ;
 
 int os_accept_connection(int fd)
 {
-	int new;
+ int new;
 
-	new = accept(fd, NULL, 0);
-	if (new < 0)
-		return -errno;
-	return new;
+ new = accept(fd, ((void*)0), 0);
+ if (new < 0)
+  return -errno;
+ return new;
 }

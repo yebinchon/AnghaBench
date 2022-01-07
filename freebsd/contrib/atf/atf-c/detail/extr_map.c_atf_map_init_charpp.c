@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_map_t ;
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  INV (int /*<<< orphan*/ ) ; 
- scalar_t__ atf_is_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_libc_error (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  atf_map_fini (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_map_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atf_map_insert (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strdup (char const*) ; 
+
+
+
+typedef int atf_map_t ;
+typedef int atf_error_t ;
+
+
+ int EINVAL ;
+ int INV (int ) ;
+ scalar_t__ atf_is_error (int ) ;
+ int atf_libc_error (int ,char*,char const*) ;
+ int atf_map_fini (int *) ;
+ int atf_map_init (int *) ;
+ int atf_map_insert (int *,char const*,int ,int) ;
+ int strdup (char const*) ;
 
 atf_error_t
 atf_map_init_charpp(atf_map_t *m, const char *const *array)
@@ -30,22 +30,22 @@ atf_map_init_charpp(atf_map_t *m, const char *const *array)
     const char *const *ptr = array;
 
     err = atf_map_init(m);
-    if (array != NULL) {
-        while (!atf_is_error(err) && *ptr != NULL) {
+    if (array != ((void*)0)) {
+        while (!atf_is_error(err) && *ptr != ((void*)0)) {
             const char *key, *value;
 
             key = *ptr;
-            INV(key != NULL);
+            INV(key != ((void*)0));
             ptr++;
 
-            if ((value = *ptr) == NULL) {
+            if ((value = *ptr) == ((void*)0)) {
                 err = atf_libc_error(EINVAL, "List too short; no value for "
-                    "key '%s' provided", key);  /* XXX: Not really libc_error */
+                    "key '%s' provided", key);
                 break;
             }
             ptr++;
 
-            err = atf_map_insert(m, key, strdup(value), true);
+            err = atf_map_insert(m, key, strdup(value), 1);
         }
     }
 

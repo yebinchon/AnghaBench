@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  IFX_REG_W32 (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MBOX_IGU1_IER ; 
- int /*<<< orphan*/  MBOX_IGU1_ISRC ; 
- int /*<<< orphan*/  MBOX_IGU3_IER ; 
- int /*<<< orphan*/  MBOX_IGU3_ISRC ; 
+ int IFX_REG_W32 (int,int ) ;
+ int MBOX_IGU1_IER ;
+ int MBOX_IGU1_ISRC ;
+ int MBOX_IGU3_IER ;
+ int MBOX_IGU3_ISRC ;
 
 __attribute__((used)) static inline void init_mailbox(void)
 {

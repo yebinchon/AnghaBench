@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  void Aes ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AES_DECRYPTION ; 
- scalar_t__ TEST_FAIL () ; 
- int /*<<< orphan*/  os_free (void*) ; 
- void* os_malloc (int) ; 
- scalar_t__ wc_AesSetKey (void*,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u8 ;
+typedef void Aes ;
+
+
+ int AES_DECRYPTION ;
+ scalar_t__ TEST_FAIL () ;
+ int os_free (void*) ;
+ void* os_malloc (int) ;
+ scalar_t__ wc_AesSetKey (void*,int const*,size_t,int *,int ) ;
 
 void * aes_decrypt_init(const u8 *key, size_t len)
 {
-	Aes *aes;
+ Aes *aes;
 
-	if (TEST_FAIL())
-		return NULL;
+ if (TEST_FAIL())
+  return ((void*)0);
 
-	aes = os_malloc(sizeof(Aes));
-	if (!aes)
-		return NULL;
+ aes = os_malloc(sizeof(Aes));
+ if (!aes)
+  return ((void*)0);
 
-	if (wc_AesSetKey(aes, key, len, NULL, AES_DECRYPTION) < 0) {
-		os_free(aes);
-		return NULL;
-	}
+ if (wc_AesSetKey(aes, key, len, ((void*)0), AES_DECRYPTION) < 0) {
+  os_free(aes);
+  return ((void*)0);
+ }
 
-	return aes;
+ return aes;
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {scalar_t__ framedepth; int /*<<< orphan*/  pc; TYPE_1__* L; int /*<<< orphan*/ * baseslot; } ;
-typedef  TYPE_2__ jit_State ;
-typedef  int /*<<< orphan*/  cTValue ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {scalar_t__ framedepth; int pc; TYPE_1__* L; int * baseslot; } ;
+typedef TYPE_2__ jit_State ;
+typedef int cTValue ;
 struct TYPE_7__ {int framesize; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * top; int /*<<< orphan*/ * base; } ;
-typedef  int /*<<< orphan*/  SnapEntry ;
-typedef  scalar_t__ MSize ;
-typedef  int /*<<< orphan*/  GCfunc ;
-typedef  int /*<<< orphan*/  BCReg ;
+struct TYPE_5__ {int * top; int * base; } ;
+typedef int SnapEntry ;
+typedef scalar_t__ MSize ;
+typedef int GCfunc ;
+typedef int BCReg ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LJ_FR2 ; 
- int /*<<< orphan*/  SNAP_MKFTSZ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SNAP_MKPC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  frame_contpc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  frame_ftsz (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * frame_func (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  frame_isc (int /*<<< orphan*/ *) ; 
- scalar_t__ frame_iscont (int /*<<< orphan*/ *) ; 
- scalar_t__ frame_islua (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  frame_pc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * frame_prevd (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * frame_prevl (int /*<<< orphan*/ *) ; 
- TYPE_4__* funcproto (int /*<<< orphan*/ *) ; 
- scalar_t__ isluafunc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
+
+ int LJ_FR2 ;
+ int SNAP_MKFTSZ (int ) ;
+ int SNAP_MKPC (int ) ;
+ int frame_contpc (int *) ;
+ int frame_ftsz (int *) ;
+ int * frame_func (int *) ;
+ int frame_isc (int *) ;
+ scalar_t__ frame_iscont (int *) ;
+ scalar_t__ frame_islua (int *) ;
+ int frame_pc (int *) ;
+ int * frame_prevd (int *) ;
+ int * frame_prevl (int *) ;
+ TYPE_4__* funcproto (int *) ;
+ scalar_t__ isluafunc (int *) ;
+ int lua_assert (int) ;
 
 __attribute__((used)) static BCReg snapshot_framelinks(jit_State *J, SnapEntry *map)
 {
@@ -47,9 +47,9 @@ __attribute__((used)) static BCReg snapshot_framelinks(jit_State *J, SnapEntry *
   GCfunc *fn = frame_func(frame);
   cTValue *ftop = isluafunc(fn) ? (frame+funcproto(fn)->framesize) : J->L->top;
   MSize f = 0;
-  lua_assert(!LJ_FR2);  /* TODO_FR2: store 64 bit PCs. */
-  map[f++] = SNAP_MKPC(J->pc);  /* The current PC is always the first entry. */
-  while (frame > lim) {  /* Backwards traversal of all frames above base. */
+  lua_assert(!LJ_FR2);
+  map[f++] = SNAP_MKPC(J->pc);
+  while (frame > lim) {
     if (frame_islua(frame)) {
       map[f++] = SNAP_MKPC(frame_pc(frame));
       frame = frame_prevl(frame);

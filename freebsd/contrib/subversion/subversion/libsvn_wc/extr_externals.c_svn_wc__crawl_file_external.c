@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_4__ ;
-typedef  struct TYPE_26__   TYPE_3__ ;
-typedef  struct TYPE_25__   TYPE_2__ ;
-typedef  struct TYPE_24__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-struct TYPE_24__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-struct TYPE_25__ {int /*<<< orphan*/ * token; } ;
-typedef  TYPE_2__ svn_wc__db_lock_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-struct TYPE_26__ {TYPE_4__* (* finish_report ) (void*,int /*<<< orphan*/ *) ;TYPE_4__* (* link_path ) (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;TYPE_4__* (* set_path ) (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;TYPE_4__* (* delete_path ) (void*,char*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_3__ svn_ra_reporter3_t ;
-typedef  scalar_t__ svn_node_kind_t ;
+
+
+typedef struct TYPE_27__ TYPE_4__ ;
+typedef struct TYPE_26__ TYPE_3__ ;
+typedef struct TYPE_25__ TYPE_2__ ;
+typedef struct TYPE_24__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_func2_t ;
+struct TYPE_24__ {int * db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_wc__db_t ;
+struct TYPE_25__ {int * token; } ;
+typedef TYPE_2__ svn_wc__db_lock_t ;
+typedef int svn_revnum_t ;
+struct TYPE_26__ {TYPE_4__* (* finish_report ) (void*,int *) ;TYPE_4__* (* link_path ) (void*,char*,int ,int ,int ,int ,int *,int *) ;TYPE_4__* (* set_path ) (void*,char*,int ,int ,int ,int *,int *) ;TYPE_4__* (* delete_path ) (void*,char*,int *) ;} ;
+typedef TYPE_3__ svn_ra_reporter3_t ;
+typedef scalar_t__ svn_node_kind_t ;
 struct TYPE_27__ {scalar_t__ apr_err; } ;
-typedef  TYPE_4__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_4__ svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_4__*) ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- scalar_t__ SVN_ERR_WC_PATH_UNEXPECTED_STATUS ; 
- TYPE_4__* SVN_NO_ERROR ; 
- TYPE_4__* stub1 (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* stub2 (void*,char*,int /*<<< orphan*/ *) ; 
- TYPE_4__* stub3 (void*,int /*<<< orphan*/ *) ; 
- TYPE_4__* stub4 (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* stub5 (void*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* stub6 (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_4__*) ; 
- TYPE_4__* svn_error_trace (TYPE_4__*) ; 
- TYPE_4__* svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_none ; 
- int /*<<< orphan*/  svn_path_url_add_component2 (char const*,char const*,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_wc__db_base_get_info (int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_4__* svn_wc_restore (TYPE_1__*,char const*,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (TYPE_4__*) ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ scalar_t__ SVN_ERR_WC_PATH_UNEXPECTED_STATUS ;
+ TYPE_4__* SVN_NO_ERROR ;
+ TYPE_4__* stub1 (void*,char*,int ,int ,int ,int *,int *) ;
+ TYPE_4__* stub2 (void*,char*,int *) ;
+ TYPE_4__* stub3 (void*,int *) ;
+ TYPE_4__* stub4 (void*,char*,int ,int ,int ,int *,int *) ;
+ TYPE_4__* stub5 (void*,char*,int ,int ,int ,int ,int *,int *) ;
+ TYPE_4__* stub6 (void*,int *) ;
+ int svn_depth_infinity ;
+ int svn_error_clear (TYPE_4__*) ;
+ TYPE_4__* svn_error_trace (TYPE_4__*) ;
+ TYPE_4__* svn_io_check_path (char const*,scalar_t__*,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_none ;
+ int svn_path_url_add_component2 (char const*,char const*,int *) ;
+ TYPE_4__* svn_wc__db_base_get_info (int *,scalar_t__*,int *,char const**,char const**,int *,int *,int *,int *,int *,int *,int *,TYPE_2__**,int *,int *,scalar_t__*,int *,char const*,int *,int *) ;
+ TYPE_4__* svn_wc_restore (TYPE_1__*,char const*,scalar_t__,int *) ;
 
 svn_error_t *
 svn_wc__crawl_file_external(svn_wc_context_t *wc_ctx,
@@ -74,10 +74,10 @@ svn_wc__crawl_file_external(svn_wc_context_t *wc_ctx,
   const char *repos_relpath;
   svn_boolean_t update_root;
 
-  err = svn_wc__db_base_get_info(NULL, &kind, &revision,
-                                 &repos_relpath, &repos_root_url, NULL, NULL,
-                                 NULL, NULL, NULL, NULL, NULL, &lock,
-                                 NULL, NULL, &update_root,
+  err = svn_wc__db_base_get_info(((void*)0), &kind, &revision,
+                                 &repos_relpath, &repos_root_url, ((void*)0), ((void*)0),
+                                 ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), &lock,
+                                 ((void*)0), ((void*)0), &update_root,
                                  db, local_abspath,
                                  scratch_pool, scratch_pool);
 
@@ -90,18 +90,18 @@ svn_wc__crawl_file_external(svn_wc_context_t *wc_ctx,
 
       svn_error_clear(err);
 
-      /* We don't know about this node, so all we have to do is tell
-         the reporter that we don't know this node.
 
-         But first we have to start the report by sending some basic
-         information for the root. */
+
+
+
+
 
       SVN_ERR(reporter->set_path(report_baton, "", 0, svn_depth_infinity,
-                                 FALSE, NULL, scratch_pool));
+                                 FALSE, ((void*)0), scratch_pool));
       SVN_ERR(reporter->delete_path(report_baton, "", scratch_pool));
 
-      /* Finish the report, which causes the update editor to be
-         driven. */
+
+
       SVN_ERR(reporter->finish_report(report_baton, scratch_pool));
 
       return SVN_NO_ERROR;
@@ -128,23 +128,23 @@ svn_wc__crawl_file_external(svn_wc_context_t *wc_ctx,
             }
         }
 
-      /* Report that we know the path */
+
       SVN_ERR(reporter->set_path(report_baton, "", revision,
-                                 svn_depth_infinity, FALSE, NULL,
+                                 svn_depth_infinity, FALSE, ((void*)0),
                                  scratch_pool));
 
-      /* For compatibility with the normal update editor report we report
-         the target as switched.
 
-         ### We can probably report a parent url and unswitched later */
+
+
+
       SVN_ERR(reporter->link_path(report_baton, "",
                                   svn_path_url_add_component2(repos_root_url,
                                                               repos_relpath,
                                                               scratch_pool),
                                   revision,
                                   svn_depth_infinity,
-                                  FALSE /* start_empty*/,
-                                  lock ? lock->token : NULL,
+                                  FALSE ,
+                                  lock ? lock->token : ((void*)0),
                                   scratch_pool));
     }
 

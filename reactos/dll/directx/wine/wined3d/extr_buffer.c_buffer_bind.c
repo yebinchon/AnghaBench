@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_context {int dummy; } ;
-struct wined3d_buffer {int /*<<< orphan*/  buffer_object; int /*<<< orphan*/  buffer_type_hint; } ;
+struct wined3d_buffer {int buffer_object; int buffer_type_hint; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  context_bind_bo (struct wined3d_context*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int context_bind_bo (struct wined3d_context*,int ,int ) ;
 
 __attribute__((used)) static void buffer_bind(struct wined3d_buffer *buffer, struct wined3d_context *context)
 {

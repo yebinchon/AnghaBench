@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * alien ; 
- int /*<<< orphan*/  cl_git_sandbox_cleanup () ; 
- int /*<<< orphan*/ * d ; 
- int /*<<< orphan*/  git_blob_free (int /*<<< orphan*/ *) ; 
+ int * alien ;
+ int cl_git_sandbox_cleanup () ;
+ int * d ;
+ int git_blob_free (int *) ;
 
 void test_diff_blob__cleanup(void)
 {
-	git_blob_free(d);
-	d = NULL;
+ git_blob_free(d);
+ d = ((void*)0);
 
-	git_blob_free(alien);
-	alien = NULL;
+ git_blob_free(alien);
+ alien = ((void*)0);
 
-	cl_git_sandbox_cleanup();
+ cl_git_sandbox_cleanup();
 }

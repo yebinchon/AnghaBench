@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_13__ {int /*<<< orphan*/  ocap; int /*<<< orphan*/ * L; } ;
-struct TYPE_12__ {int /*<<< orphan*/  idx; } ;
-typedef  TYPE_1__ Capture ;
-typedef  TYPE_2__ CapState ;
 
-/* Variables and functions */
- scalar_t__ Cgroup ; 
- scalar_t__ captype (TYPE_1__*) ; 
- TYPE_1__* findopen (TYPE_1__*) ; 
- int /*<<< orphan*/  getfromktable (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ isclosecap (TYPE_1__*) ; 
- int /*<<< orphan*/  isfullcap (TYPE_1__*) ; 
- scalar_t__ lp_equal (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_13__ {int ocap; int * L; } ;
+struct TYPE_12__ {int idx; } ;
+typedef TYPE_1__ Capture ;
+typedef TYPE_2__ CapState ;
+
+
+ scalar_t__ Cgroup ;
+ scalar_t__ captype (TYPE_1__*) ;
+ TYPE_1__* findopen (TYPE_1__*) ;
+ int getfromktable (TYPE_2__*,int ) ;
+ scalar_t__ isclosecap (TYPE_1__*) ;
+ int isfullcap (TYPE_1__*) ;
+ scalar_t__ lp_equal (int *,int,int) ;
+ int luaL_error (int *,char*,int ) ;
+ int lua_pop (int *,int) ;
+ int lua_tostring (int *,int) ;
 
 __attribute__((used)) static Capture *findback (CapState *cs, Capture *cap) {
   lua_State *L = cs->L;
-  while (cap-- > cs->ocap) {  /* repeat until end of list */
+  while (cap-- > cs->ocap) {
     if (isclosecap(cap))
-      cap = findopen(cap);  /* skip nested captures */
+      cap = findopen(cap);
     else if (!isfullcap(cap))
-      continue; /* opening an enclosing capture: skip and get previous */
+      continue;
     if (captype(cap) == Cgroup) {
-      getfromktable(cs, cap->idx);  /* get group name */
-      if (lp_equal(L, -2, -1)) {  /* right group? */
-        lua_pop(L, 2);  /* remove reference name and group name */
+      getfromktable(cs, cap->idx);
+      if (lp_equal(L, -2, -1)) {
+        lua_pop(L, 2);
         return cap;
       }
-      else lua_pop(L, 1);  /* remove group name */
+      else lua_pop(L, 1);
     }
   }
   luaL_error(L, "back reference '%s' not found", lua_tostring(L, -1));
-  return NULL;  /* to avoid warnings */
+  return ((void*)0);
 }

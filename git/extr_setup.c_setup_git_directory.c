@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* setup_git_directory_gently (int /*<<< orphan*/ *) ; 
+ char const* setup_git_directory_gently (int *) ;
 
 const char *setup_git_directory(void)
 {
-	return setup_git_directory_gently(NULL);
+ return setup_git_directory_gently(((void*)0));
 }

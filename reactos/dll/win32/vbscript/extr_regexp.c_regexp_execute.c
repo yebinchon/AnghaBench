@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {int /*<<< orphan*/  parenCount; } ;
-typedef  TYPE_1__ regexp_t ;
-struct TYPE_12__ {int match_len; int /*<<< orphan*/  paren_count; int /*<<< orphan*/  const* cp; } ;
-typedef  TYPE_2__ match_state_t ;
-typedef  int /*<<< orphan*/  heap_pool_t ;
-typedef  int /*<<< orphan*/  const WCHAR ;
-struct TYPE_13__ {int start; int skipped; int /*<<< orphan*/  ok; int /*<<< orphan*/ * pool; int /*<<< orphan*/  const* cpend; int /*<<< orphan*/  const* cpbegin; } ;
-typedef  TYPE_3__ REGlobalData ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitMatch (TYPE_1__*,void*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- TYPE_2__* MatchRegExp (TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * heap_pool_mark (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_11__ {int parenCount; } ;
+typedef TYPE_1__ regexp_t ;
+struct TYPE_12__ {int match_len; int paren_count; int const* cp; } ;
+typedef TYPE_2__ match_state_t ;
+typedef int heap_pool_t ;
+typedef int const WCHAR ;
+struct TYPE_13__ {int start; int skipped; int ok; int * pool; int const* cpend; int const* cpbegin; } ;
+typedef TYPE_3__ REGlobalData ;
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int InitMatch (TYPE_1__*,void*,int *,TYPE_3__*) ;
+ TYPE_2__* MatchRegExp (TYPE_3__*,TYPE_2__*) ;
+ int S_FALSE ;
+ int S_OK ;
+ int WARN (char*) ;
+ int assert (int ) ;
+ int heap_pool_clear (int *) ;
+ int * heap_pool_mark (int *) ;
 
 HRESULT regexp_execute(regexp_t *regexp, void *cx, heap_pool_t *pool,
         const WCHAR *str, DWORD str_len, match_state_t *result)
@@ -45,7 +45,7 @@ HRESULT regexp_execute(regexp_t *regexp, void *cx, heap_pool_t *pool,
     const WCHAR *str_beg = result->cp;
     HRESULT hres;
 
-    assert(result->cp != NULL);
+    assert(result->cp != ((void*)0));
 
     gData.cpbegin = str;
     gData.cpend = str+str_len;

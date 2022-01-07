@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT32 ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT32 ;
 struct TYPE_5__ {int SectorsPerCluster; int DataSectorStart; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int* PUINT32 ;
-typedef  TYPE_1__* PFAT_VOLUME_INFO ;
-typedef  int BOOLEAN ;
+typedef int PVOID ;
+typedef int* PUINT32 ;
+typedef TYPE_1__* PFAT_VOLUME_INFO ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/  FAT_IS_END_CLUSTER (int) ; 
- int /*<<< orphan*/  FatGetFatEntry (TYPE_1__*,int,int*) ; 
- int /*<<< orphan*/  FatReadVolumeSectors (TYPE_1__*,int,int,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ int FAT_IS_END_CLUSTER (int) ;
+ int FatGetFatEntry (TYPE_1__*,int,int*) ;
+ int FatReadVolumeSectors (TYPE_1__*,int,int,int ) ;
 
 __attribute__((used)) static
 BOOLEAN FatReadAdjacentClusters(
@@ -46,7 +46,7 @@ BOOLEAN FatReadAdjacentClusters(
         return FALSE;
     }
 
-    // getting the number of adjacent clusters
+
     while (!FAT_IS_END_CLUSTER(NextClusterNumber) && ClustersToRead < MaxClusters && (NextClusterNumber == PrevClusterNumber + 1))
     {
         ClustersToRead++;

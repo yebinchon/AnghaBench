@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct window_attributes {int is_visible; int is_enabled; int is_groupbox; int is_httransparent; int is_extransparent; scalar_t__* class_name; } ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ DWORD ;
+typedef int HWND ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ BS_GROUPBOX ; 
- scalar_t__ BS_TYPEMASK ; 
- int /*<<< orphan*/  GWL_EXSTYLE ; 
- int /*<<< orphan*/  GWL_STYLE ; 
- int /*<<< orphan*/  GetClassNameA (int /*<<< orphan*/ ,scalar_t__*,int) ; 
- scalar_t__ GetWindowLongA (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ HTTRANSPARENT ; 
- scalar_t__ SendMessageA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_NCHITTEST ; 
- scalar_t__ WS_DISABLED ; 
- scalar_t__ WS_EX_TRANSPARENT ; 
- scalar_t__ WS_VISIBLE ; 
- int /*<<< orphan*/  lstrcmpiA (scalar_t__*,char*) ; 
+
+ scalar_t__ BS_GROUPBOX ;
+ scalar_t__ BS_TYPEMASK ;
+ int GWL_EXSTYLE ;
+ int GWL_STYLE ;
+ int GetClassNameA (int ,scalar_t__*,int) ;
+ scalar_t__ GetWindowLongA (int ,int ) ;
+ scalar_t__ HTTRANSPARENT ;
+ scalar_t__ SendMessageA (int ,int ,int ,int ) ;
+ int WM_NCHITTEST ;
+ scalar_t__ WS_DISABLED ;
+ scalar_t__ WS_EX_TRANSPARENT ;
+ scalar_t__ WS_VISIBLE ;
+ int lstrcmpiA (scalar_t__*,char*) ;
 
 __attribute__((used)) static void get_window_attributes(HWND hwnd, struct window_attributes *attrs)
 {

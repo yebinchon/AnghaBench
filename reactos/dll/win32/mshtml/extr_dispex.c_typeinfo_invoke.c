@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t tid; int /*<<< orphan*/  id; } ;
-typedef  TYPE_1__ func_info_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  VARIANT ;
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_6__ {int /*<<< orphan*/  outer; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  EXCEPINFO ;
-typedef  TYPE_2__ DispatchEx ;
-typedef  int /*<<< orphan*/  DISPPARAMS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  E_FAIL ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ITypeInfo_Invoke (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUnknown_QueryInterface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  IUnknown_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_mshtml_guid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_typeinfo (size_t,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * tid_ids ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t tid; int id; } ;
+typedef TYPE_1__ func_info_t ;
+typedef int WORD ;
+typedef int VARIANT ;
+typedef int UINT ;
+struct TYPE_6__ {int outer; } ;
+typedef int IUnknown ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+typedef int EXCEPINFO ;
+typedef TYPE_2__ DispatchEx ;
+typedef int DISPPARAMS ;
+
+
+ int ERR (char*,int ,...) ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int ) ;
+ int ITypeInfo_Invoke (int *,int *,int ,int ,int *,int *,int *,int *) ;
+ int IUnknown_QueryInterface (int ,int ,void**) ;
+ int IUnknown_Release (int *) ;
+ int debugstr_mshtml_guid (int ) ;
+ int get_typeinfo (size_t,int **) ;
+ int * tid_ids ;
 
 __attribute__((used)) static HRESULT typeinfo_invoke(DispatchEx *This, func_info_t *func, WORD flags, DISPPARAMS *dp, VARIANT *res,
         EXCEPINFO *ei)

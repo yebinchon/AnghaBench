@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int npyiter_opitflags ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  int /*<<< orphan*/  PyArray_Descr ;
-typedef  int /*<<< orphan*/  PyArrayObject ;
-typedef  int /*<<< orphan*/  NPY_CASTING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_IT_DBG_PRINT (char*) ; 
- int /*<<< orphan*/  NPY_IT_DBG_PRINT1 (char*,int) ; 
- int NPY_OP_ITFLAG_CAST ; 
- int NPY_OP_ITFLAG_READ ; 
- int NPY_OP_ITFLAG_WRITE ; 
- int /*<<< orphan*/  PyArray_CanCastArrayTo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PyArray_CanCastTypeTo (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ PyArray_DESCR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyArray_EquivTypes (scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyErr_SetObject (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyExc_TypeError ; 
- int /*<<< orphan*/  PyObject_Print (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * PyObject_Repr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyUString_ConcatAndDel (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PyUString_FromFormat (char*,int,...) ; 
- int /*<<< orphan*/ * PyUString_FromString (char*) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  npyiter_casting_to_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef int npyiter_opitflags ;
+typedef int PyObject ;
+typedef int PyArray_Descr ;
+typedef int PyArrayObject ;
+typedef int NPY_CASTING ;
+
+
+ int NPY_IT_DBG_PRINT (char*) ;
+ int NPY_IT_DBG_PRINT1 (char*,int) ;
+ int NPY_OP_ITFLAG_CAST ;
+ int NPY_OP_ITFLAG_READ ;
+ int NPY_OP_ITFLAG_WRITE ;
+ int PyArray_CanCastArrayTo (int *,int *,int ) ;
+ int PyArray_CanCastTypeTo (int *,scalar_t__,int ) ;
+ scalar_t__ PyArray_DESCR (int *) ;
+ int PyArray_EquivTypes (scalar_t__,int *) ;
+ int PyErr_SetObject (int ,int *) ;
+ int PyExc_TypeError ;
+ int PyObject_Print (int *,int ,int ) ;
+ int * PyObject_Repr (int *) ;
+ int PyUString_ConcatAndDel (int **,int *) ;
+ int * PyUString_FromFormat (char*,int,...) ;
+ int * PyUString_FromString (char*) ;
+ int Py_DECREF (int *) ;
+ int npyiter_casting_to_string (int ) ;
+ int printf (char*) ;
+ int stdout ;
 
 __attribute__((used)) static int
 npyiter_check_casting(int nop, PyArrayObject **op,
@@ -49,22 +49,9 @@ npyiter_check_casting(int nop, PyArrayObject **op,
     for(iop = 0; iop < nop; ++iop) {
         NPY_IT_DBG_PRINT1("Iterator: Checking casting for operand %d\n",
                             (int)iop);
-#if NPY_IT_DBG_TRACING
-        printf("op: ");
-        if (op[iop] != NULL) {
-            PyObject_Print((PyObject *)PyArray_DESCR(op[iop]), stdout, 0);
-        }
-        else {
-            printf("<null>");
-        }
-        printf(", iter: ");
-        PyObject_Print((PyObject *)op_dtype[iop], stdout, 0);
-        printf("\n");
-#endif
-        /* If the types aren't equivalent, a cast is necessary */
-        if (op[iop] != NULL && !PyArray_EquivTypes(PyArray_DESCR(op[iop]),
+        if (op[iop] != ((void*)0) && !PyArray_EquivTypes(PyArray_DESCR(op[iop]),
                                                      op_dtype[iop])) {
-            /* Check read (op -> temp) casting */
+
             if ((op_itflags[iop] & NPY_OP_ITFLAG_READ) &&
                         !PyArray_CanCastArrayTo(op[iop],
                                           op_dtype[iop],
@@ -86,7 +73,7 @@ npyiter_check_casting(int nop, PyArrayObject **op,
                 Py_DECREF(errmsg);
                 return 0;
             }
-            /* Check write (temp -> op) casting */
+
             if ((op_itflags[iop] & NPY_OP_ITFLAG_WRITE) &&
                         !PyArray_CanCastTypeTo(op_dtype[iop],
                                           PyArray_DESCR(op[iop]),
@@ -112,7 +99,7 @@ npyiter_check_casting(int nop, PyArrayObject **op,
 
             NPY_IT_DBG_PRINT("Iterator: Setting NPY_OP_ITFLAG_CAST "
                                 "because the types aren't equivalent\n");
-            /* Indicate that this operand needs casting */
+
             op_itflags[iop] |= NPY_OP_ITFLAG_CAST;
         }
     }

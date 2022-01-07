@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  vbarray_constr; int /*<<< orphan*/  global; int /*<<< orphan*/  string_constr; int /*<<< orphan*/  regexp_constr; int /*<<< orphan*/  number_constr; int /*<<< orphan*/  uri_error_constr; int /*<<< orphan*/  type_error_constr; int /*<<< orphan*/  syntax_error_constr; int /*<<< orphan*/  regexp_error_constr; int /*<<< orphan*/  reference_error_constr; int /*<<< orphan*/  range_error_constr; int /*<<< orphan*/  eval_error_constr; int /*<<< orphan*/  error_constr; int /*<<< orphan*/  enumerator_constr; int /*<<< orphan*/  date_constr; int /*<<< orphan*/  bool_constr; int /*<<< orphan*/  array_constr; int /*<<< orphan*/  object_constr; int /*<<< orphan*/  function_constr; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ArrayW ; 
- int /*<<< orphan*/  BooleanW ; 
- int /*<<< orphan*/  DateW ; 
- int /*<<< orphan*/  EnumeratorW ; 
- int /*<<< orphan*/  ErrorW ; 
- int /*<<< orphan*/  EvalErrorW ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FunctionW ; 
- int /*<<< orphan*/  NumberW ; 
- int /*<<< orphan*/  ObjectW ; 
- int /*<<< orphan*/  PROPF_WRITABLE ; 
- int /*<<< orphan*/  RangeErrorW ; 
- int /*<<< orphan*/  ReferenceErrorW ; 
- int /*<<< orphan*/  RegExpErrorW ; 
- int /*<<< orphan*/  RegExpW ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  StringW ; 
- int /*<<< orphan*/  SyntaxErrorW ; 
- int /*<<< orphan*/  TypeErrorW ; 
- int /*<<< orphan*/  URIErrorW ; 
- int /*<<< orphan*/  VBArrayW ; 
- int /*<<< orphan*/  create_array_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_bool_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_date_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_enumerator_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_number_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_object_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_regexp_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_string_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  create_vbarray_constr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_error_constr (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_function_constr (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsdisp_define_data_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_obj (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int vbarray_constr; int global; int string_constr; int regexp_constr; int number_constr; int uri_error_constr; int type_error_constr; int syntax_error_constr; int regexp_error_constr; int reference_error_constr; int range_error_constr; int eval_error_constr; int error_constr; int enumerator_constr; int date_constr; int bool_constr; int array_constr; int object_constr; int function_constr; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsdisp_t ;
+typedef int HRESULT ;
+
+
+ int ArrayW ;
+ int BooleanW ;
+ int DateW ;
+ int EnumeratorW ;
+ int ErrorW ;
+ int EvalErrorW ;
+ scalar_t__ FAILED (int ) ;
+ int FunctionW ;
+ int NumberW ;
+ int ObjectW ;
+ int PROPF_WRITABLE ;
+ int RangeErrorW ;
+ int ReferenceErrorW ;
+ int RegExpErrorW ;
+ int RegExpW ;
+ int S_OK ;
+ int StringW ;
+ int SyntaxErrorW ;
+ int TypeErrorW ;
+ int URIErrorW ;
+ int VBArrayW ;
+ int create_array_constr (TYPE_1__*,int *,int *) ;
+ int create_bool_constr (TYPE_1__*,int *,int *) ;
+ int create_date_constr (TYPE_1__*,int *,int *) ;
+ int create_enumerator_constr (TYPE_1__*,int *,int *) ;
+ int create_number_constr (TYPE_1__*,int *,int *) ;
+ int create_object_constr (TYPE_1__*,int *,int *) ;
+ int create_regexp_constr (TYPE_1__*,int *,int *) ;
+ int create_string_constr (TYPE_1__*,int *,int *) ;
+ int create_vbarray_constr (TYPE_1__*,int *,int *) ;
+ int init_error_constr (TYPE_1__*,int *) ;
+ int init_function_constr (TYPE_1__*,int *) ;
+ int jsdisp_define_data_property (int ,int ,int ,int ) ;
+ int jsval_obj (int ) ;
 
 __attribute__((used)) static HRESULT init_constructors(script_ctx_t *ctx, jsdisp_t *object_prototype)
 {

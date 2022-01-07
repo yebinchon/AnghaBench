@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {void** prevn; void* next; } ;
-typedef  TYPE_1__ stb__nochildren ;
+typedef TYPE_1__ stb__nochildren ;
 struct TYPE_4__ {void** prevn; void* next; void* child; } ;
-typedef  TYPE_2__ stb__alloc ;
+typedef TYPE_2__ stb__alloc ;
 
-/* Variables and functions */
-#define  STB__alloc 130 
-#define  STB__chunked 129 
-#define  STB__nochildren 128 
- int /*<<< orphan*/  assert (int) ; 
- int stb__identify (void*) ; 
- void*** stb__prevn (void*) ; 
+
+
+
+
+ int assert (int) ;
+ int stb__identify (void*) ;
+ void*** stb__prevn (void*) ;
 
 void stb_malloc_validate(void *p, void *parent)
 {
-   if (p == NULL) return;
+   if (p == ((void*)0)) return;
 
    switch(stb__identify(p)) {
-      case STB__chunked:
+      case 129:
          return;
-      case STB__nochildren: {
+      case 128: {
          stb__nochildren *n = (stb__nochildren *) p - 1;
          if (n->prevn)
             assert(*n->prevn == p);
@@ -42,7 +42,7 @@ void stb_malloc_validate(void *p, void *parent)
          }
          return;
       }
-      case STB__alloc: {
+      case 130: {
          stb__alloc *s = (stb__alloc *) p - 1;
 
          if (s->prevn)
@@ -60,6 +60,6 @@ void stb_malloc_validate(void *p, void *parent)
          return;
       }
       default:
-         assert(0); /* NOTREACHED */
+         assert(0);
    }
 }

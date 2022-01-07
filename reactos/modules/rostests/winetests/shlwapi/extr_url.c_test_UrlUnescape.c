@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szReturnUrl ;
-typedef  int /*<<< orphan*/  inplaceW ;
-typedef  int /*<<< orphan*/  inplace ;
-typedef  float WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int szReturnUrl ;
+typedef int inplaceW ;
+typedef int inplace ;
+typedef float WCHAR ;
 struct TYPE_3__ {char* url; char const* expect; } ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
-typedef  char CHAR ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef char CHAR ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_1__*) ; 
- int /*<<< orphan*/  CP_ACP ; 
- int E_INVALIDARG ; 
- int /*<<< orphan*/  FreeWideString (float*) ; 
- float* GetWideString (char const*) ; 
- int INTERNET_MAX_URL_LENGTH ; 
- int S_OK ; 
- TYPE_1__* TEST_URL_UNESCAPE ; 
- int /*<<< orphan*/  URL_UNESCAPE_INPLACE ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,float*,int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (char*,int) ; 
- scalar_t__ lstrcmpW (float*,float*) ; 
- int lstrlenW (float*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int pUrlUnescapeA (char*,char*,int*,int /*<<< orphan*/ ) ; 
- int pUrlUnescapeW (float*,float*,int*,int /*<<< orphan*/ ) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ size_t ARRAY_SIZE (TYPE_1__*) ;
+ int CP_ACP ;
+ int E_INVALIDARG ;
+ int FreeWideString (float*) ;
+ float* GetWideString (char const*) ;
+ int INTERNET_MAX_URL_LENGTH ;
+ int S_OK ;
+ TYPE_1__* TEST_URL_UNESCAPE ;
+ int URL_UNESCAPE_INPLACE ;
+ int WideCharToMultiByte (int ,int ,float*,int,char*,int,int ,int ) ;
+ int ZeroMemory (char*,int) ;
+ scalar_t__ lstrcmpW (float*,float*) ;
+ int lstrlenW (float*) ;
+ int ok (int,char*,...) ;
+ int pUrlUnescapeA (char*,char*,int*,int ) ;
+ int pUrlUnescapeW (float*,float*,int*,int ) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_UrlUnescape(void)
 {
@@ -68,8 +68,8 @@ __attribute__((used)) static void test_UrlUnescape(void)
         ok(strcmp(szReturnUrl,TEST_URL_UNESCAPE[i].expect)==0, "Expected \"%s\", but got \"%s\" from \"%s\"\n", TEST_URL_UNESCAPE[i].expect, szReturnUrl, TEST_URL_UNESCAPE[i].url);
 
         ZeroMemory(szReturnUrl, sizeof(szReturnUrl));
-        /* if we set the buffer pointer to NULL here, UrlUnescape fails and the string is not converted */
-        res = pUrlUnescapeA(TEST_URL_UNESCAPE[i].url, szReturnUrl, NULL, 0);
+
+        res = pUrlUnescapeA(TEST_URL_UNESCAPE[i].url, szReturnUrl, ((void*)0), 0);
         ok(res == E_INVALIDARG,
             "UrlUnescapeA returned 0x%x (expected E_INVALIDARG) for \"%s\"\n",
             res, TEST_URL_UNESCAPE[i].url);
@@ -94,24 +94,24 @@ __attribute__((used)) static void test_UrlUnescape(void)
     }
 
     dwEscaped = sizeof(inplace);
-    res = pUrlUnescapeA(inplace, NULL, &dwEscaped, URL_UNESCAPE_INPLACE);
+    res = pUrlUnescapeA(inplace, ((void*)0), &dwEscaped, URL_UNESCAPE_INPLACE);
     ok(res == S_OK, "UrlUnescapeA returned 0x%x (expected S_OK)\n", res);
     ok(!strcmp(inplace, expected), "got %s expected %s\n", inplace, expected);
     ok(dwEscaped == 27, "got %d expected 27\n", dwEscaped);
 
-    /* if we set the buffer pointer to NULL, the string apparently still gets converted (Google Lively does this) */
-    res = pUrlUnescapeA(another_inplace, NULL, NULL, URL_UNESCAPE_INPLACE);
+
+    res = pUrlUnescapeA(another_inplace, ((void*)0), ((void*)0), URL_UNESCAPE_INPLACE);
     ok(res == S_OK, "UrlUnescapeA returned 0x%x (expected S_OK)\n", res);
     ok(!strcmp(another_inplace, expected), "got %s expected %s\n", another_inplace, expected);
 
     if (pUrlUnescapeW) {
         dwEscaped = sizeof(inplaceW);
-        res = pUrlUnescapeW(inplaceW, NULL, &dwEscaped, URL_UNESCAPE_INPLACE);
+        res = pUrlUnescapeW(inplaceW, ((void*)0), &dwEscaped, URL_UNESCAPE_INPLACE);
         ok(res == S_OK, "UrlUnescapeW returned 0x%x (expected S_OK)\n", res);
         ok(dwEscaped == 50, "got %d expected 50\n", dwEscaped);
 
-        /* if we set the buffer pointer to NULL, the string apparently still gets converted (Google Lively does this) */
-        res = pUrlUnescapeW(another_inplaceW, NULL, NULL, URL_UNESCAPE_INPLACE);
+
+        res = pUrlUnescapeW(another_inplaceW, ((void*)0), ((void*)0), URL_UNESCAPE_INPLACE);
         ok(res == S_OK, "UrlUnescapeW returned 0x%x (expected S_OK)\n", res);
 
         ok(lstrlenW(another_inplaceW) == 24, "got %d expected 24\n", lstrlenW(another_inplaceW));

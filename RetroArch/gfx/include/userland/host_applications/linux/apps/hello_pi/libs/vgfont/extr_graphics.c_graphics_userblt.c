@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ int32_t ;
-typedef  int /*<<< orphan*/  VGImageFormat ;
-typedef  scalar_t__ VCOS_STATUS_T ;
-struct TYPE_5__ {int /*<<< orphan*/  pixmap; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ int32_t ;
+typedef int VGImageFormat ;
+typedef scalar_t__ VCOS_STATUS_T ;
+struct TYPE_5__ {int pixmap; } ;
 struct TYPE_6__ {scalar_t__ type; int const height; TYPE_1__ u; } ;
-typedef  int /*<<< orphan*/  GX_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  GRAPHICS_RESOURCE_TYPE_T ;
-typedef  TYPE_2__* GRAPHICS_RESOURCE_HANDLE ;
+typedef int GX_CLIENT_STATE_T ;
+typedef int GRAPHICS_RESOURCE_TYPE_T ;
+typedef TYPE_2__* GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- scalar_t__ GX_PBUFFER ; 
- scalar_t__ GX_WINDOW ; 
- scalar_t__ VCOS_EINVAL ; 
- scalar_t__ VCOS_SUCCESS ; 
- scalar_t__ convert_image_type (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  gx_priv_restore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gx_priv_save (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
- scalar_t__ vgGetError () ; 
- int /*<<< orphan*/  vgImageSubData (int /*<<< orphan*/ ,void const*,int const,int /*<<< orphan*/ ,int const,int const,int const,int const) ; 
- int /*<<< orphan*/  vgWritePixels (int /*<<< orphan*/ *,int const,int /*<<< orphan*/ ,int const,int const,int const,int const) ; 
+
+ scalar_t__ GX_PBUFFER ;
+ scalar_t__ GX_WINDOW ;
+ scalar_t__ VCOS_EINVAL ;
+ scalar_t__ VCOS_SUCCESS ;
+ scalar_t__ convert_image_type (int ,int *,int*) ;
+ int gx_priv_restore (int *) ;
+ int gx_priv_save (int *,TYPE_2__*) ;
+ int vcos_assert (int ) ;
+ scalar_t__ vgGetError () ;
+ int vgImageSubData (int ,void const*,int const,int ,int const,int const,int const,int const) ;
+ int vgWritePixels (int *,int const,int ,int const,int const,int const,int const) ;
 
 int32_t graphics_userblt(GRAPHICS_RESOURCE_TYPE_T src_type,
                          const void *src_data,
@@ -68,8 +68,8 @@ int32_t graphics_userblt(GRAPHICS_RESOURCE_TYPE_T src_type,
    }
    else if (dest->type == GX_WINDOW)
    {
-      // need to invert this as VG thinks zero is at the bottom
-      // while graphics_x thinks it is at the top.
+
+
       vgWritePixels((uint8_t*)src_data + pitch*(height-1),
                     -pitch,
                     vg_src_type,

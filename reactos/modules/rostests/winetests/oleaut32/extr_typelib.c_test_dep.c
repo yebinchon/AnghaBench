@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
 struct TYPE_7__ {int member_0; int member_1; int member_2; int member_3; int member_4; int member_5; int member_6; int member_7; } ;
 struct TYPE_8__ {int member_0; int member_1; int member_2; TYPE_1__ member_3; } ;
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  ICreateTypeLib2 ;
-typedef  int /*<<< orphan*/  ICreateTypeInfo ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  HREFTYPE ;
-typedef  TYPE_2__ GUID ;
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef int ICreateTypeLib2 ;
+typedef int ICreateTypeInfo ;
+typedef scalar_t__ HRESULT ;
+typedef int HREFTYPE ;
+typedef TYPE_2__ GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- scalar_t__ CreateTypeLib2 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  DeleteFileW (char*) ; 
- int /*<<< orphan*/  GetTempFileNameA (char*,char*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ICreateTypeInfo_AddImplType (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ICreateTypeInfo_AddRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ICreateTypeInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeInfo_SetGuid (int /*<<< orphan*/ *,TYPE_2__ const*) ; 
- scalar_t__ ICreateTypeInfo_SetTypeFlags (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ICreateTypeLib2_CreateTypeInfo (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ICreateTypeLib2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeLib2_SaveAllChanges (int /*<<< orphan*/ *) ; 
- scalar_t__ ICreateTypeLib2_SetGuid (int /*<<< orphan*/ *,TYPE_2__ const*) ; 
- scalar_t__ ICreateTypeLib2_SetLcid (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__ const IID_ISimpleIface ; 
- scalar_t__ ITypeInfo_GetRefTypeInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ ITypeInfo_GetRefTypeOfImplType (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITypeInfo_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ ITypeLib_GetTypeInfoOfGuid (int /*<<< orphan*/ *,TYPE_2__ const*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LOCALE_NEUTRAL ; 
- scalar_t__ LoadTypeLibEx (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int,char*,int) ; 
- int /*<<< orphan*/  REGKIND_NONE ; 
- int /*<<< orphan*/  SYS_WIN32 ; 
- int /*<<< orphan*/  SYS_WIN64 ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TKIND_INTERFACE ; 
- int /*<<< orphan*/  TYPEFLAG_FOLEAUTOMATION ; 
- scalar_t__ TYPE_E_CANTLOADLIBRARY ; 
- scalar_t__ broken (int) ; 
- char* create_test_typelib (int) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+ int CP_ACP ;
+ scalar_t__ CreateTypeLib2 (int ,char*,int **) ;
+ int DeleteFileW (char*) ;
+ int GetTempFileNameA (char*,char*,int ,char*) ;
+ scalar_t__ ICreateTypeInfo_AddImplType (int *,int ,int ) ;
+ scalar_t__ ICreateTypeInfo_AddRefTypeInfo (int *,int *,int *) ;
+ int ICreateTypeInfo_Release (int *) ;
+ scalar_t__ ICreateTypeInfo_SetGuid (int *,TYPE_2__ const*) ;
+ scalar_t__ ICreateTypeInfo_SetTypeFlags (int *,int ) ;
+ scalar_t__ ICreateTypeLib2_CreateTypeInfo (int *,char*,int ,int **) ;
+ int ICreateTypeLib2_Release (int *) ;
+ scalar_t__ ICreateTypeLib2_SaveAllChanges (int *) ;
+ scalar_t__ ICreateTypeLib2_SetGuid (int *,TYPE_2__ const*) ;
+ scalar_t__ ICreateTypeLib2_SetLcid (int *,int ) ;
+ TYPE_2__ const IID_ISimpleIface ;
+ scalar_t__ ITypeInfo_GetRefTypeInfo (int *,int ,int **) ;
+ scalar_t__ ITypeInfo_GetRefTypeOfImplType (int *,int ,int *) ;
+ int ITypeInfo_Release (int *) ;
+ scalar_t__ ITypeLib_GetTypeInfoOfGuid (int *,TYPE_2__ const*,int **) ;
+ int ITypeLib_Release (int *) ;
+ int LOCALE_NEUTRAL ;
+ scalar_t__ LoadTypeLibEx (char*,int ,int **) ;
+ int MAX_PATH ;
+ int MultiByteToWideChar (int ,int ,char const*,int,char*,int) ;
+ int REGKIND_NONE ;
+ int SYS_WIN32 ;
+ int SYS_WIN64 ;
+ scalar_t__ S_OK ;
+ int TKIND_INTERFACE ;
+ int TYPEFLAG_FOLEAUTOMATION ;
+ scalar_t__ TYPE_E_CANTLOADLIBRARY ;
+ scalar_t__ broken (int) ;
+ char* create_test_typelib (int) ;
+ int ok (int,char*,scalar_t__) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void test_dep(void) {
-    HRESULT          hr;
-    const char      *refFilename;
-    WCHAR            refFilenameW[MAX_PATH];
-    ITypeLib        *preftLib;
-    ITypeInfo       *preftInfo;
-    char             filename[MAX_PATH];
-    WCHAR            filenameW[MAX_PATH];
+    HRESULT hr;
+    const char *refFilename;
+    WCHAR refFilenameW[MAX_PATH];
+    ITypeLib *preftLib;
+    ITypeInfo *preftInfo;
+    char filename[MAX_PATH];
+    WCHAR filenameW[MAX_PATH];
     ICreateTypeLib2 *pctLib;
     ICreateTypeInfo *pctInfo;
-    ITypeLib        *ptLib;
-    ITypeInfo       *ptInfo;
-    ITypeInfo       *ptInfoExt = NULL;
-    HREFTYPE         refType;
+    ITypeLib *ptLib;
+    ITypeInfo *ptInfo;
+    ITypeInfo *ptInfoExt = ((void*)0);
+    HREFTYPE refType;
 
     static WCHAR ifacenameW[] = {'I','T','e','s','t','D','e','p',0};
 
@@ -145,7 +145,7 @@ __attribute__((used)) static void test_dep(void) {
     ok(hr == S_OK, "got: %x\n", hr);
 
     hr = ITypeInfo_GetRefTypeInfo(ptInfo, refType, &ptInfoExt);
-    ok(hr == S_OK || broken(hr == TYPE_E_CANTLOADLIBRARY) /* win 2000 */, "got: %x\n", hr);
+    ok(hr == S_OK || broken(hr == TYPE_E_CANTLOADLIBRARY) , "got: %x\n", hr);
 
     ITypeInfo_Release(ptInfo);
     if(ptInfoExt)

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HB_ERROR_CANCELED ; 
- int die ; 
- int /*<<< orphan*/  done_error ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ hb_get_date () ; 
- scalar_t__ i_die_date ; 
- int /*<<< orphan*/  stderr ; 
+ int HB_ERROR_CANCELED ;
+ int die ;
+ int done_error ;
+ int exit (int ) ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ hb_get_date () ;
+ scalar_t__ i_die_date ;
+ int stderr ;
 
 void SigHandler( int i_signal )
 {

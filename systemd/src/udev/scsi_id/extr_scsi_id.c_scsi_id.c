@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_id_device {char* serial; char* serial_short; char* wwn; char* wwn_vendor_extension; char* tgpt_group; char* unit_serial_number; } ;
-typedef  int /*<<< orphan*/  serial_str ;
+typedef int serial_str ;
 
-/* Variables and functions */
- int MAX_SERIAL_LEN ; 
- scalar_t__ export ; 
- char* model_enc_str ; 
- char* model_str ; 
- int /*<<< orphan*/  per_dev_options (struct scsi_id_device*,int*,int*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ reformat_serial ; 
- char* revision_str ; 
- int /*<<< orphan*/  scsi_get_serial (struct scsi_id_device*,char*,int,int) ; 
- scalar_t__ set_inq_values (struct scsi_id_device*,char*) ; 
- char* type_str ; 
- int /*<<< orphan*/  util_replace_chars (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  util_replace_whitespace (char*,char*,int) ; 
- char* vendor_enc_str ; 
- char* vendor_str ; 
+
+ int MAX_SERIAL_LEN ;
+ scalar_t__ export ;
+ char* model_enc_str ;
+ char* model_str ;
+ int per_dev_options (struct scsi_id_device*,int*,int*) ;
+ int printf (char*,...) ;
+ scalar_t__ reformat_serial ;
+ char* revision_str ;
+ int scsi_get_serial (struct scsi_id_device*,char*,int,int) ;
+ scalar_t__ set_inq_values (struct scsi_id_device*,char*) ;
+ char* type_str ;
+ int util_replace_chars (char*,int *) ;
+ int util_replace_whitespace (char*,char*,int) ;
+ char* vendor_enc_str ;
+ char* vendor_str ;
 
 __attribute__((used)) static int scsi_id(char *maj_min_dev) {
         struct scsi_id_device dev_scsi = {};
@@ -41,14 +41,14 @@ __attribute__((used)) static int scsi_id(char *maj_min_dev) {
                 goto out;
         }
 
-        /* get per device (vendor + model) options from the config file */
+
         per_dev_options(&dev_scsi, &good_dev, &page_code);
         if (!good_dev) {
                 retval = 1;
                 goto out;
         }
 
-        /* read serial number from mode pages (no values for optical drives) */
+
         scsi_get_serial(&dev_scsi, maj_min_dev, page_code, MAX_SERIAL_LEN);
 
         if (export) {
@@ -63,10 +63,10 @@ __attribute__((used)) static int scsi_id(char *maj_min_dev) {
                 printf("ID_TYPE=%s\n", type_str);
                 if (dev_scsi.serial[0] != '\0') {
                         util_replace_whitespace(dev_scsi.serial, serial_str, sizeof(serial_str)-1);
-                        util_replace_chars(serial_str, NULL);
+                        util_replace_chars(serial_str, ((void*)0));
                         printf("ID_SERIAL=%s\n", serial_str);
                         util_replace_whitespace(dev_scsi.serial_short, serial_str, sizeof(serial_str)-1);
-                        util_replace_chars(serial_str, NULL);
+                        util_replace_chars(serial_str, ((void*)0));
                         printf("ID_SERIAL_SHORT=%s\n", serial_str);
                 }
                 if (dev_scsi.wwn[0] != '\0') {
@@ -93,7 +93,7 @@ __attribute__((used)) static int scsi_id(char *maj_min_dev) {
                 char serial_str[MAX_SERIAL_LEN];
 
                 util_replace_whitespace(dev_scsi.serial, serial_str, sizeof(serial_str)-1);
-                util_replace_chars(serial_str, NULL);
+                util_replace_chars(serial_str, ((void*)0));
                 printf("%s\n", serial_str);
                 goto out;
         }

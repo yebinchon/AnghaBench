@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char const* name; } ;
-typedef  TYPE_1__ mark_t ;
-typedef  scalar_t__ mark_mode_t ;
-struct TYPE_10__ {int mark_changed; int /*<<< orphan*/  marks_head; } ;
-typedef  TYPE_2__ Con ;
+typedef TYPE_1__ mark_t ;
+typedef scalar_t__ mark_mode_t ;
+struct TYPE_10__ {int mark_changed; int marks_head; } ;
+typedef TYPE_2__ Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,...) ; 
- scalar_t__ MM_REPLACE ; 
- int /*<<< orphan*/  TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- TYPE_1__* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_INSERT_TAIL (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  con_unmark (TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  ipc_send_window_event (char*,TYPE_2__*) ; 
- int /*<<< orphan*/  marks ; 
- TYPE_1__* scalloc (int,int) ; 
- char const* sstrdup (char const*) ; 
+
+ int DLOG (char*,...) ;
+ scalar_t__ MM_REPLACE ;
+ int TAILQ_EMPTY (int *) ;
+ TYPE_1__* TAILQ_FIRST (int *) ;
+ int TAILQ_INSERT_TAIL (int *,TYPE_1__*,int ) ;
+ int assert (int ) ;
+ int con_unmark (TYPE_2__*,char const*) ;
+ int ipc_send_window_event (char*,TYPE_2__*) ;
+ int marks ;
+ TYPE_1__* scalloc (int,int) ;
+ char const* sstrdup (char const*) ;
 
 void con_mark(Con *con, const char *mark, mark_mode_t mode) {
-    assert(con != NULL);
+    assert(con != ((void*)0));
     DLOG("Setting mark \"%s\" on con = %p.\n", mark, con);
 
-    con_unmark(NULL, mark);
+    con_unmark(((void*)0), mark);
     if (mode == MM_REPLACE) {
         DLOG("Removing all existing marks on con = %p.\n", con);
 
@@ -51,5 +51,5 @@ void con_mark(Con *con, const char *mark, mark_mode_t mode) {
     TAILQ_INSERT_TAIL(&(con->marks_head), new, marks);
     ipc_send_window_event("mark", con);
 
-    con->mark_changed = true;
+    con->mark_changed = 1;
 }

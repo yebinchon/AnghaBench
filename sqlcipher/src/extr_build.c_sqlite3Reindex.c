@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_28__   TYPE_4__ ;
-typedef  struct TYPE_27__   TYPE_3__ ;
-typedef  struct TYPE_26__   TYPE_2__ ;
-typedef  struct TYPE_25__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_28__ TYPE_4__ ;
+typedef struct TYPE_27__ TYPE_3__ ;
+typedef struct TYPE_26__ TYPE_2__ ;
+typedef struct TYPE_25__ TYPE_1__ ;
+
+
 struct TYPE_26__ {TYPE_1__* aDb; } ;
-typedef  TYPE_2__ sqlite3 ;
+typedef TYPE_2__ sqlite3 ;
 struct TYPE_27__ {scalar_t__ z; } ;
-typedef  TYPE_3__ Token ;
-typedef  int /*<<< orphan*/  Table ;
+typedef TYPE_3__ Token ;
+typedef int Table ;
 struct TYPE_28__ {TYPE_2__* db; } ;
 struct TYPE_25__ {char* zDbSName; } ;
-typedef  TYPE_4__ Parse ;
-typedef  int /*<<< orphan*/  Index ;
-typedef  int /*<<< orphan*/  CollSeq ;
+typedef TYPE_4__ Parse ;
+typedef int Index ;
+typedef int CollSeq ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENC (TYPE_2__*) ; 
- scalar_t__ NEVER (int) ; 
- scalar_t__ SQLITE_OK ; 
- int /*<<< orphan*/  assert (scalar_t__) ; 
- int /*<<< orphan*/  reindexDatabases (TYPE_4__*,char*) ; 
- int /*<<< orphan*/  reindexTable (TYPE_4__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3BeginWriteOperation (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3DbFree (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (TYPE_4__*,char*) ; 
- int /*<<< orphan*/ * sqlite3FindCollSeq (TYPE_2__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * sqlite3FindIndex (TYPE_2__*,char*,char const*) ; 
- int /*<<< orphan*/ * sqlite3FindTable (TYPE_2__*,char*,char const*) ; 
- char* sqlite3NameFromToken (TYPE_2__*,TYPE_3__*) ; 
- scalar_t__ sqlite3ReadSchema (TYPE_4__*) ; 
- int /*<<< orphan*/  sqlite3RefillIndex (TYPE_4__*,int /*<<< orphan*/ *,int) ; 
- int sqlite3TwoPartName (TYPE_4__*,TYPE_3__*,TYPE_3__*,TYPE_3__**) ; 
+
+ int ENC (TYPE_2__*) ;
+ scalar_t__ NEVER (int) ;
+ scalar_t__ SQLITE_OK ;
+ int assert (scalar_t__) ;
+ int reindexDatabases (TYPE_4__*,char*) ;
+ int reindexTable (TYPE_4__*,int *,int ) ;
+ int sqlite3BeginWriteOperation (TYPE_4__*,int ,int) ;
+ int sqlite3DbFree (TYPE_2__*,char*) ;
+ int sqlite3ErrorMsg (TYPE_4__*,char*) ;
+ int * sqlite3FindCollSeq (TYPE_2__*,int ,char*,int ) ;
+ int * sqlite3FindIndex (TYPE_2__*,char*,char const*) ;
+ int * sqlite3FindTable (TYPE_2__*,char*,char const*) ;
+ char* sqlite3NameFromToken (TYPE_2__*,TYPE_3__*) ;
+ scalar_t__ sqlite3ReadSchema (TYPE_4__*) ;
+ int sqlite3RefillIndex (TYPE_4__*,int *,int) ;
+ int sqlite3TwoPartName (TYPE_4__*,TYPE_3__*,TYPE_3__*,TYPE_3__**) ;
 
 void sqlite3Reindex(Parse *pParse, Token *pName1, Token *pName2){
-  CollSeq *pColl;             /* Collating sequence to be reindexed, or NULL */
-  char *z;                    /* Name of a table or index */
-  const char *zDb;            /* Name of the database */
-  Table *pTab;                /* A table in the database */
-  Index *pIndex;              /* An index associated with pTab */
-  int iDb;                    /* The database index number */
-  sqlite3 *db = pParse->db;   /* The database connection */
-  Token *pObjName;            /* Name of the table or index to be reindexed */
+  CollSeq *pColl;
+  char *z;
+  const char *zDb;
+  Table *pTab;
+  Index *pIndex;
+  int iDb;
+  sqlite3 *db = pParse->db;
+  Token *pObjName;
 
-  /* Read the database schema. If an error occurs, leave an error message
-  ** and code in pParse and return NULL. */
+
+
   if( SQLITE_OK!=sqlite3ReadSchema(pParse) ){
     return;
   }

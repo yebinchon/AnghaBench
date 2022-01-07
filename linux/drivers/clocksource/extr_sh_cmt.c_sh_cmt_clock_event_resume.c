@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sh_cmt_channel {TYPE_2__* cmt; } ;
 struct clock_event_device {int dummy; } ;
-struct TYPE_4__ {TYPE_1__* pdev; int /*<<< orphan*/  clk; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
+struct TYPE_4__ {TYPE_1__* pdev; int clk; } ;
+struct TYPE_3__ {int dev; } ;
 
-/* Variables and functions */
- struct sh_cmt_channel* ced_to_sh_cmt (struct clock_event_device*) ; 
- int /*<<< orphan*/  clk_prepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm_genpd_syscore_poweron (int /*<<< orphan*/ *) ; 
+
+ struct sh_cmt_channel* ced_to_sh_cmt (struct clock_event_device*) ;
+ int clk_prepare (int ) ;
+ int pm_genpd_syscore_poweron (int *) ;
 
 __attribute__((used)) static void sh_cmt_clock_event_resume(struct clock_event_device *ced)
 {
-	struct sh_cmt_channel *ch = ced_to_sh_cmt(ced);
+ struct sh_cmt_channel *ch = ced_to_sh_cmt(ced);
 
-	clk_prepare(ch->cmt->clk);
-	pm_genpd_syscore_poweron(&ch->cmt->pdev->dev);
+ clk_prepare(ch->cmt->clk);
+ pm_genpd_syscore_poweron(&ch->cmt->pdev->dev);
 }

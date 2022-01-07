@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mdns_result_t ;
-typedef  int /*<<< orphan*/  mdns_action_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTION_SEARCH_ADD ; 
- int /*<<< orphan*/  GetLastItem (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MDNS_TYPE_PTR ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  mdns_test_execute_action (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mdns_test_search_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mdns_test_search_init (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ mdns_test_send_search_action (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  search ; 
+
+
+
+typedef int mdns_result_t ;
+typedef int mdns_action_t ;
+
+
+ int ACTION_SEARCH_ADD ;
+ int GetLastItem (int **) ;
+ int MDNS_TYPE_PTR ;
+ int abort () ;
+ int mdns_test_execute_action (int *) ;
+ int mdns_test_search_free (int ) ;
+ int mdns_test_search_init (int *,char const*,char const*,int ,int,int) ;
+ scalar_t__ mdns_test_send_search_action (int ,int ) ;
+ int search ;
 
 __attribute__((used)) static mdns_result_t* mdns_test_query(const char * service_name, const char * proto)
 {
-    search = mdns_test_search_init(NULL, service_name, proto, MDNS_TYPE_PTR, 3000, 20);
+    search = mdns_test_search_init(((void*)0), service_name, proto, MDNS_TYPE_PTR, 3000, 20);
     if (!search) {
         abort();
     }
@@ -36,8 +36,8 @@ __attribute__((used)) static mdns_result_t* mdns_test_query(const char * service
         abort();
     }
 
-    mdns_action_t * a = NULL;
+    mdns_action_t * a = ((void*)0);
     GetLastItem(&a);
     mdns_test_execute_action(a);
-    return NULL;
+    return ((void*)0);
 }

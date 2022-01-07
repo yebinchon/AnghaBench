@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct line_buffer {int /*<<< orphan*/  infile; } ;
 
-/* Variables and functions */
- int ferror (int /*<<< orphan*/ ) ; 
+
+
+
+struct line_buffer {int infile; } ;
+
+
+ int ferror (int ) ;
 
 int buffer_ferror(struct line_buffer *buf)
 {
-	return ferror(buf->infile);
+ return ferror(buf->infile);
 }

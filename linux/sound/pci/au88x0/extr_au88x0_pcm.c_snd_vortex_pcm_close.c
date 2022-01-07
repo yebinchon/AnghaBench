@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct snd_pcm_substream {TYPE_1__* runtime; } ;
-struct TYPE_4__ {scalar_t__ nr_ch; int /*<<< orphan*/ * substream; } ;
-typedef  TYPE_2__ stream_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * private_data; } ;
+struct TYPE_4__ {scalar_t__ nr_ch; int * substream; } ;
+typedef TYPE_2__ stream_t ;
+struct TYPE_3__ {int * private_data; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int snd_vortex_pcm_close(struct snd_pcm_substream *substream)
 {
-	//vortex_t *chip = snd_pcm_substream_chip(substream);
-	stream_t *stream = (stream_t *) substream->runtime->private_data;
 
-	// the hardware-specific codes will be here
-	if (stream != NULL) {
-		stream->substream = NULL;
-		stream->nr_ch = 0;
-	}
-	substream->runtime->private_data = NULL;
-	return 0;
+ stream_t *stream = (stream_t *) substream->runtime->private_data;
+
+
+ if (stream != ((void*)0)) {
+  stream->substream = ((void*)0);
+  stream->nr_ch = 0;
+ }
+ substream->runtime->private_data = ((void*)0);
+ return 0;
 }

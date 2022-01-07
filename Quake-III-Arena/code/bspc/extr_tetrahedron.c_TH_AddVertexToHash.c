@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {struct TYPE_4__* hashnext; int /*<<< orphan*/  v; } ;
-typedef  TYPE_1__ th_vertex_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {struct TYPE_4__* hashnext; int v; } ;
+typedef TYPE_1__ th_vertex_t ;
 struct TYPE_5__ {TYPE_1__** vertexhash; } ;
 
-/* Variables and functions */
- int TH_HashVec (int /*<<< orphan*/ ) ; 
- TYPE_2__ thworld ; 
+
+ int TH_HashVec (int ) ;
+ TYPE_2__ thworld ;
 
 void TH_AddVertexToHash(th_vertex_t *vertex)
 {
-	int hashvalue;
+ int hashvalue;
 
-	hashvalue = TH_HashVec(vertex->v);
-	vertex->hashnext = thworld.vertexhash[hashvalue];
-	thworld.vertexhash[hashvalue] = vertex;
+ hashvalue = TH_HashVec(vertex->v);
+ vertex->hashnext = thworld.vertexhash[hashvalue];
+ thworld.vertexhash[hashvalue] = vertex;
 }

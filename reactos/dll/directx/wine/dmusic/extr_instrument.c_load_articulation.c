@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int cConnections; } ;
 struct TYPE_8__ {TYPE_3__ connections_list; TYPE_3__* connections; } ;
-typedef  TYPE_1__ instrument_articulation ;
-typedef  int /*<<< orphan*/  ULONG ;
+typedef TYPE_1__ instrument_articulation ;
+typedef int ULONG ;
 struct TYPE_9__ {int nb_articulations; TYPE_1__* articulations; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  TYPE_2__ IDirectMusicInstrumentImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  CONNECTIONLIST ;
-typedef  int /*<<< orphan*/  CONNECTION ;
+typedef int IStream ;
+typedef TYPE_2__ IDirectMusicInstrumentImpl ;
+typedef int HRESULT ;
+typedef int CONNECTIONLIST ;
+typedef int CONNECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- TYPE_1__* HeapReAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  read_from_stream (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int /*<<< orphan*/  subtract_bytes (int /*<<< orphan*/ ,int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,TYPE_3__*) ;
+ TYPE_1__* HeapReAlloc (int ,int ,TYPE_1__*,int) ;
+ int S_OK ;
+ int read_from_stream (int *,TYPE_3__*,int) ;
+ int subtract_bytes (int ,int) ;
 
 __attribute__((used)) static HRESULT load_articulation(IDirectMusicInstrumentImpl *This, IStream *stream, ULONG length)
 {

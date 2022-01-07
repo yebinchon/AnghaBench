@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+
+
+typedef int vlc_object_t ;
 struct vlc_playlist_export {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DoExport (struct vlc_playlist_export*,int /*<<< orphan*/ ) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  msg_Dbg (struct vlc_playlist_export*,char*) ; 
- int /*<<< orphan*/  utf8_fprintf ; 
+
+ int DoExport (struct vlc_playlist_export*,int ) ;
+ int VLC_SUCCESS ;
+ int msg_Dbg (struct vlc_playlist_export*,char*) ;
+ int utf8_fprintf ;
 
 int Export_M3U( vlc_object_t *p_this )
 {

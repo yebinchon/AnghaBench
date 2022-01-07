@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int lua_Integer ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_R ; 
- int /*<<< orphan*/  addfield (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int aux_getn (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_addlstring (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- char* luaL_optlstring (int /*<<< orphan*/ *,int,char*,size_t*) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lua_State ;
+typedef int lua_Integer ;
+typedef int luaL_Buffer ;
+
+
+ int TAB_R ;
+ int addfield (int *,int *,int) ;
+ int aux_getn (int *,int,int ) ;
+ int luaL_addlstring (int *,char const*,size_t) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_optinteger (int *,int,int) ;
+ char* luaL_optlstring (int *,int,char*,size_t*) ;
+ int luaL_pushresult (int *) ;
 
 __attribute__((used)) static int tconcat (lua_State *L) {
   luaL_Buffer b;
@@ -36,7 +36,7 @@ __attribute__((used)) static int tconcat (lua_State *L) {
     addfield(L, &b, i);
     luaL_addlstring(&b, sep, lsep);
   }
-  if (i == last)  /* add last value (if interval was not empty) */
+  if (i == last)
     addfield(L, &b, i);
   luaL_pushresult(&b);
   return 1;

@@ -1,86 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int status; int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int status; int name; } ;
 struct TYPE_4__ {TYPE_2__* data; struct TYPE_4__* next; } ;
-typedef  int /*<<< orphan*/  GString ;
-typedef  TYPE_1__ GList ;
-typedef  TYPE_2__ DiffEntry ;
-
-/* Variables and functions */
-#define  DIFF_STATUS_ADDED 134 
-#define  DIFF_STATUS_DELETED 133 
-#define  DIFF_STATUS_DIR_ADDED 132 
-#define  DIFF_STATUS_DIR_DELETED 131 
-#define  DIFF_STATUS_DIR_RENAMED 130 
-#define  DIFF_STATUS_MODIFIED 129 
-#define  DIFF_STATUS_RENAMED 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  g_string_append_printf (int /*<<< orphan*/ *,char*,char*,...) ; 
- char* g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * g_string_new (char*) ; 
- char* get_basename (int /*<<< orphan*/ ) ; 
+typedef int GString ;
+typedef TYPE_1__ GList ;
+typedef TYPE_2__ DiffEntry ;
+ int FALSE ;
+ int g_string_append_printf (int *,char*,char*,...) ;
+ char* g_string_free (int *,int ) ;
+ int * g_string_new (char*) ;
+ char* get_basename (int ) ;
 
 char *
 diff_results_to_description (GList *results)
 {
     GList *p;
     DiffEntry *de;
-    char *add_mod_file = NULL, *removed_file = NULL;
-    char *renamed_file = NULL, *renamed_dir = NULL;
-    char *new_dir = NULL, *removed_dir = NULL;
+    char *add_mod_file = ((void*)0), *removed_file = ((void*)0);
+    char *renamed_file = ((void*)0), *renamed_dir = ((void*)0);
+    char *new_dir = ((void*)0), *removed_dir = ((void*)0);
     int n_add_mod = 0, n_removed = 0, n_renamed = 0;
     int n_new_dir = 0, n_removed_dir = 0, n_renamed_dir = 0;
     GString *desc;
 
-    if (results == NULL)
-        return NULL;
+    if (results == ((void*)0))
+        return ((void*)0);
 
-    for (p = results; p != NULL; p = p->next) {
+    for (p = results; p != ((void*)0); p = p->next) {
         de = p->data;
         switch (de->status) {
-        case DIFF_STATUS_ADDED:
+        case 134:
             if (n_add_mod == 0)
                 add_mod_file = get_basename(de->name);
             n_add_mod++;
             break;
-        case DIFF_STATUS_DELETED:
+        case 133:
             if (n_removed == 0)
                 removed_file = get_basename(de->name);
             n_removed++;
             break;
-        case DIFF_STATUS_RENAMED:
+        case 128:
             if (n_renamed == 0)
                 renamed_file = get_basename(de->name);
             n_renamed++;
             break;
-        case DIFF_STATUS_DIR_RENAMED:
+        case 130:
             if (n_renamed_dir == 0)
                 renamed_dir = get_basename(de->name);
             n_renamed_dir++;
             break;
-        case DIFF_STATUS_MODIFIED:
+        case 129:
             if (n_add_mod == 0)
                 add_mod_file = get_basename(de->name);
             n_add_mod++;
             break;
-        case DIFF_STATUS_DIR_ADDED:
+        case 132:
             if (n_new_dir == 0)
                 new_dir = get_basename(de->name);
             n_new_dir++;
             break;
-        case DIFF_STATUS_DIR_DELETED:
+        case 131:
             if (n_removed_dir == 0)
                 removed_dir = get_basename(de->name);
             n_removed_dir++;

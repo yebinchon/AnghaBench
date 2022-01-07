@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct string {int /*<<< orphan*/  data; int /*<<< orphan*/  len; } ;
-struct stats_buffer {int len; int size; int /*<<< orphan*/ * data; } ;
+
+
+
+
+typedef int uint8_t ;
+struct string {int data; int len; } ;
+struct stats_buffer {int len; int size; int * data; } ;
 struct stats {struct stats_buffer buf; } ;
-typedef  int /*<<< orphan*/  rstatus_t ;
+typedef int rstatus_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_ERROR ; 
- int /*<<< orphan*/  NC_OK ; 
- int nc_snprintf (int /*<<< orphan*/ *,size_t,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int NC_ERROR ;
+ int NC_OK ;
+ int nc_snprintf (int *,size_t,char*,int ,int ) ;
 
 __attribute__((used)) static rstatus_t
 stats_begin_nesting(struct stats *st, struct string *key)

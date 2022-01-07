@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {char const* ptr; int /*<<< orphan*/  cc_if_depth; int /*<<< orphan*/  ccval; } ;
-typedef  TYPE_1__ parser_ctx_t ;
-typedef  char WCHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JS_E_EXPECTED_CCEND ; 
- int /*<<< orphan*/  JS_E_MISSING_LBRACKET ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  check_keyword (TYPE_1__*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_ccbool (int /*<<< orphan*/ ) ; 
- int lex_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_cc_expr (TYPE_1__*) ; 
- int /*<<< orphan*/  skip_spaces (TYPE_1__*) ; 
- char* wcschr (char const*,char) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {char const* ptr; int cc_if_depth; int ccval; } ;
+typedef TYPE_1__ parser_ctx_t ;
+typedef char WCHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ int JS_E_EXPECTED_CCEND ;
+ int JS_E_MISSING_LBRACKET ;
+ int WARN (char*) ;
+ int check_keyword (TYPE_1__*,char*,int *) ;
+ int get_ccbool (int ) ;
+ int lex_error (TYPE_1__*,int ) ;
+ int parse_cc_expr (TYPE_1__*) ;
+ int skip_spaces (TYPE_1__*) ;
+ char* wcschr (char const*,char) ;
 
 __attribute__((used)) static int skip_code(parser_ctx_t *ctx, BOOL exec_else)
 {
@@ -40,13 +40,13 @@ __attribute__((used)) static int skip_code(parser_ctx_t *ctx, BOOL exec_else)
         }
         ctx->ptr = ptr+1;
 
-        if(!check_keyword(ctx, L"end", NULL)) {
+        if(!check_keyword(ctx, L"end", ((void*)0))) {
             if(--if_depth)
                 continue;
             return 0;
         }
 
-        if(exec_else && !check_keyword(ctx, L"elif", NULL)) {
+        if(exec_else && !check_keyword(ctx, L"elif", ((void*)0))) {
             if(if_depth > 1)
                 continue;
 
@@ -57,23 +57,23 @@ __attribute__((used)) static int skip_code(parser_ctx_t *ctx, BOOL exec_else)
                 return -1;
 
             if(!get_ccbool(ctx->ccval))
-                continue; /* skip block of code */
+                continue;
 
-            /* continue parsing */
+
             ctx->cc_if_depth++;
             return 0;
         }
 
-        if(exec_else && !check_keyword(ctx, L"else", NULL)) {
+        if(exec_else && !check_keyword(ctx, L"else", ((void*)0))) {
             if(if_depth > 1)
                 continue;
 
-            /* parse else block */
+
             ctx->cc_if_depth++;
             return 0;
         }
 
-        if(!check_keyword(ctx, L"if", NULL)) {
+        if(!check_keyword(ctx, L"if", ((void*)0))) {
             if_depth++;
             continue;
         }

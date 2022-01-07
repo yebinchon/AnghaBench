@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  size_t SizeT ;
-typedef  int const Byte ;
 
-/* Variables and functions */
- int GetUi32 (int const*) ; 
- int /*<<< orphan*/  SetUi32 (int const*,int) ; 
+
+
+
+typedef int UInt32 ;
+typedef size_t SizeT ;
+typedef int const Byte ;
+
+
+ int GetUi32 (int const*) ;
+ int SetUi32 (int const*,int) ;
 
 SizeT ARM_Convert(Byte *data, SizeT size, UInt32 ip, int encoding)
 {

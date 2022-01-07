@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct inode {int i_size; int i_file_acl; int /*<<< orphan*/  i_extra_isize; int /*<<< orphan*/  i_sb; int /*<<< orphan*/ * i_block; int /*<<< orphan*/  i_dtime; int /*<<< orphan*/  i_mtime; int /*<<< orphan*/  i_ctime; int /*<<< orphan*/  i_atime; int /*<<< orphan*/  i_mode; int /*<<< orphan*/  i_generation; int /*<<< orphan*/  i_nlink; int /*<<< orphan*/  i_gid; int /*<<< orphan*/  i_uid; int /*<<< orphan*/  i_flags; } ;
-struct TYPE_3__ {int /*<<< orphan*/  l_i_file_acl_high; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct inode {int i_size; int i_file_acl; int i_extra_isize; int i_sb; int * i_block; int i_dtime; int i_mtime; int i_ctime; int i_atime; int i_mode; int i_generation; int i_nlink; int i_gid; int i_uid; int i_flags; } ;
+struct TYPE_3__ {int l_i_file_acl_high; } ;
 struct TYPE_4__ {TYPE_1__ linux2; } ;
-struct ext3_inode {int /*<<< orphan*/  i_extra_isize; int /*<<< orphan*/ * i_block; int /*<<< orphan*/  i_dtime; int /*<<< orphan*/  i_mtime; int /*<<< orphan*/  i_ctime; int /*<<< orphan*/  i_atime; TYPE_2__ osd2; void* i_file_acl_lo; void* i_size_high; void* i_size; int /*<<< orphan*/  i_generation; int /*<<< orphan*/  i_links_count; int /*<<< orphan*/  i_gid; int /*<<< orphan*/  i_uid; int /*<<< orphan*/  i_flags; int /*<<< orphan*/  i_mode; } ;
-typedef  void* __u32 ;
-typedef  int /*<<< orphan*/  __u16 ;
+struct ext3_inode {int i_extra_isize; int * i_block; int i_dtime; int i_mtime; int i_ctime; int i_atime; TYPE_2__ osd2; void* i_file_acl_lo; void* i_size_high; void* i_size; int i_generation; int i_links_count; int i_gid; int i_uid; int i_flags; int i_mode; } ;
+typedef void* __u32 ;
+typedef int __u16 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- scalar_t__ EXT3_HAS_RO_COMPAT_FEATURE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXT4_FEATURE_RO_COMPAT_EXTRA_ISIZE ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ext3_inode_blocks_set (struct ext3_inode*,struct inode*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
 
-void Ext2EncodeInode(struct ext3_inode *dst,  struct inode *src)
+ int ASSERT (int ) ;
+ scalar_t__ EXT3_HAS_RO_COMPAT_FEATURE (int ,int ) ;
+ int EXT4_FEATURE_RO_COMPAT_EXTRA_ISIZE ;
+ scalar_t__ S_ISREG (int ) ;
+ int ext3_inode_blocks_set (struct ext3_inode*,struct inode*) ;
+ int memcpy (int *,int *,int) ;
+
+void Ext2EncodeInode(struct ext3_inode *dst, struct inode *src)
 {
     dst->i_mode = src->i_mode;
     dst->i_flags = src->i_flags;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ext2fs_inode_bitmap ;
-typedef  int /*<<< orphan*/  errcode_t ;
-typedef  int /*<<< orphan*/  __u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXT2_ET_MAGIC_INODE_BITMAP ; 
- int /*<<< orphan*/  ext2fs_resize_generic_bitmap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ext2fs_inode_bitmap ;
+typedef int errcode_t ;
+typedef int __u32 ;
+
+
+ int EXT2_ET_MAGIC_INODE_BITMAP ;
+ int ext2fs_resize_generic_bitmap (int ,int ,int ,int ) ;
 
 errcode_t ext2fs_resize_inode_bitmap(__u32 new_end, __u32 new_real_end,
-				     ext2fs_inode_bitmap bmap)
+         ext2fs_inode_bitmap bmap)
 {
-	return (ext2fs_resize_generic_bitmap(EXT2_ET_MAGIC_INODE_BITMAP,
-					     new_end, new_real_end, bmap));
+ return (ext2fs_resize_generic_bitmap(EXT2_ET_MAGIC_INODE_BITMAP,
+          new_end, new_real_end, bmap));
 }

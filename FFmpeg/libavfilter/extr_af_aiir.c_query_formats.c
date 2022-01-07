@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
-typedef  enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef enum AVSampleFormat { ____Placeholder_AVSampleFormat } AVSampleFormat ;
+typedef enum AVPixelFormat { ____Placeholder_AVPixelFormat } AVPixelFormat ;
 struct TYPE_10__ {TYPE_2__** outputs; TYPE_1__* priv; } ;
-struct TYPE_9__ {int /*<<< orphan*/  in_formats; } ;
+struct TYPE_9__ {int in_formats; } ;
 struct TYPE_8__ {int sample_format; scalar_t__ response; } ;
-typedef  TYPE_1__ AudioIIRContext ;
-typedef  TYPE_2__ AVFilterLink ;
-typedef  int /*<<< orphan*/  AVFilterFormats ;
-typedef  TYPE_3__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVFilterChannelLayouts ;
+typedef TYPE_1__ AudioIIRContext ;
+typedef TYPE_2__ AVFilterLink ;
+typedef int AVFilterFormats ;
+typedef TYPE_3__ AVFilterContext ;
+typedef int AVFilterChannelLayouts ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
-#define  AV_PIX_FMT_NONE 129 
-#define  AV_PIX_FMT_RGB0 128 
- int AV_SAMPLE_FMT_DBLP ; 
- int AV_SAMPLE_FMT_NONE ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/ * ff_all_channel_counts () ; 
- int /*<<< orphan*/ * ff_all_samplerates () ; 
- int ff_formats_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ff_make_format_list (int const*) ; 
- int ff_set_common_channel_layouts (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int ff_set_common_formats (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int ff_set_common_samplerates (TYPE_3__*,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+
+
+ int AV_SAMPLE_FMT_DBLP ;
+ int AV_SAMPLE_FMT_NONE ;
+ int ENOMEM ;
+ int * ff_all_channel_counts () ;
+ int * ff_all_samplerates () ;
+ int ff_formats_ref (int *,int *) ;
+ int * ff_make_format_list (int const*) ;
+ int ff_set_common_channel_layouts (TYPE_3__*,int *) ;
+ int ff_set_common_formats (TYPE_3__*,int *) ;
+ int ff_set_common_samplerates (TYPE_3__*,int *) ;
 
 __attribute__((used)) static int query_formats(AVFilterContext *ctx)
 {
@@ -49,8 +49,8 @@ __attribute__((used)) static int query_formats(AVFilterContext *ctx)
         AV_SAMPLE_FMT_NONE
     };
     static const enum AVPixelFormat pix_fmts[] = {
-        AV_PIX_FMT_RGB0,
-        AV_PIX_FMT_NONE
+        128,
+        129
     };
     int ret;
 

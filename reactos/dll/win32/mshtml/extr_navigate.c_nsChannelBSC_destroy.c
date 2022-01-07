@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_8__ {TYPE_2__* nsstream; scalar_t__ nscontext; scalar_t__ nslistener; TYPE_1__* nschannel; } ;
-typedef  TYPE_3__ nsChannelBSC ;
-struct TYPE_7__ {int /*<<< orphan*/  nsIInputStream_iface; } ;
-struct TYPE_6__ {int /*<<< orphan*/  nsIHttpChannel_iface; } ;
-typedef  int /*<<< orphan*/  BSCallback ;
+typedef TYPE_3__ nsChannelBSC ;
+struct TYPE_7__ {int nsIInputStream_iface; } ;
+struct TYPE_6__ {int nsIHttpChannel_iface; } ;
+typedef int BSCallback ;
 
-/* Variables and functions */
- int /*<<< orphan*/  heap_free (TYPE_3__*) ; 
- TYPE_3__* nsChannelBSC_from_BSCallback (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIHttpChannel_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIInputStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIStreamListener_Release (scalar_t__) ; 
- int /*<<< orphan*/  nsISupports_Release (scalar_t__) ; 
+
+ int heap_free (TYPE_3__*) ;
+ TYPE_3__* nsChannelBSC_from_BSCallback (int *) ;
+ int nsIHttpChannel_Release (int *) ;
+ int nsIInputStream_Release (int *) ;
+ int nsIStreamListener_Release (scalar_t__) ;
+ int nsISupports_Release (scalar_t__) ;
 
 __attribute__((used)) static void nsChannelBSC_destroy(BSCallback *bsc)
 {

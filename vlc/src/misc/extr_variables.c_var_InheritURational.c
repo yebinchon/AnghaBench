@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
 
-/* Variables and functions */
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  free (char*) ; 
- unsigned int strtoul (char*,char**,int) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  vlc_ureduce (unsigned int*,unsigned int*,unsigned int,unsigned int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vlc_object_t ;
+
+
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int free (char*) ;
+ unsigned int strtoul (char*,char**,int) ;
+ char* var_InheritString (int *,char const*) ;
+ int vlc_ureduce (unsigned int*,unsigned int*,unsigned int,unsigned int,int ) ;
 
 int (var_InheritURational)(vlc_object_t *object,
                            unsigned *num, unsigned *den,
                            const char *var)
 {
     char *str = var_InheritString(object, var);
-    if (str == NULL)
+    if (str == ((void*)0))
         goto error;
 
     char *sep;
@@ -34,20 +34,20 @@ int (var_InheritURational)(vlc_object_t *object,
 
     switch (*sep) {
         case '\0':
-            /* Decimal integer */
+
             d = 1;
             break;
 
         case ':':
         case '/':
-            /* Decimal fraction */
+
             d = strtoul(sep + 1, &sep, 10);
             if (*sep != '\0')
                 goto error;
             break;
 
         case '.': {
-            /* Decimal number */
+
             unsigned char c;
 
             d = 1;

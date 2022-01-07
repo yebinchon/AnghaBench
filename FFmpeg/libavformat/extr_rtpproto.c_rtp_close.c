@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_5__ {int /*<<< orphan*/  fec_hd; int /*<<< orphan*/  rtcp_hd; int /*<<< orphan*/  rtp_hd; int /*<<< orphan*/  filters; } ;
-typedef  TYPE_2__ RTPContext ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_5__ {int fec_hd; int rtcp_hd; int rtp_hd; int filters; } ;
+typedef TYPE_2__ RTPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ff_ip_reset_filters (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ffurl_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ffurl_closep (int /*<<< orphan*/ *) ; 
+
+ int ff_ip_reset_filters (int *) ;
+ int ffurl_close (int ) ;
+ int ffurl_closep (int *) ;
 
 __attribute__((used)) static int rtp_close(URLContext *h)
 {

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- unsigned int bytestream2_get_le16 (int /*<<< orphan*/ *) ; 
- int bytestream2_get_le32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int GetByteContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int SEEK_CUR ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ unsigned int bytestream2_get_le16 (int *) ;
+ int bytestream2_get_le32 (int *) ;
+ int bytestream2_seek (int *,int,int ) ;
+ int memset (int*,int ,int) ;
 
 __attribute__((used)) static int fill_ltable(GetByteContext *gb, uint32_t *table, int *nb_elements)
 {

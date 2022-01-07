@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cTValue ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gcV (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gc_mark_str (int /*<<< orphan*/ ) ; 
- scalar_t__ isfinalized (int /*<<< orphan*/ ) ; 
- scalar_t__ iswhite (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strV (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisgcv (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisstr (int /*<<< orphan*/ *) ; 
- scalar_t__ tvisudata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udataV (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int cTValue ;
+
+
+ int gcV (int *) ;
+ int gc_mark_str (int ) ;
+ scalar_t__ isfinalized (int ) ;
+ scalar_t__ iswhite (int ) ;
+ int strV (int *) ;
+ scalar_t__ tvisgcv (int *) ;
+ scalar_t__ tvisstr (int *) ;
+ scalar_t__ tvisudata (int *) ;
+ int udataV (int *) ;
 
 __attribute__((used)) static int gc_mayclear(cTValue *o, int val)
 {
-  if (tvisgcv(o)) {  /* Only collectable objects can be weak references. */
-    if (tvisstr(o)) {  /* But strings cannot be used as weak references. */
-      gc_mark_str(strV(o));  /* And need to be marked. */
+  if (tvisgcv(o)) {
+    if (tvisstr(o)) {
+      gc_mark_str(strV(o));
       return 0;
     }
     if (iswhite(gcV(o)))
-      return 1;  /* Object is about to be collected. */
+      return 1;
     if (tvisudata(o) && val && isfinalized(udataV(o)))
-      return 1;  /* Finalized userdata is dropped only from values. */
+      return 1;
   }
-  return 0;  /* Cannot clear. */
+  return 0;
 }

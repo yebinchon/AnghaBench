@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mqtt_message_t ;
-typedef  int /*<<< orphan*/  mqtt_connection_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MQTT_MSG_TYPE_UNSUBSCRIBE ; 
- int /*<<< orphan*/ * fini_message (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mqtt_message_t ;
+typedef int mqtt_connection_t ;
+
+
+ int MQTT_MSG_TYPE_UNSUBSCRIBE ;
+ int * fini_message (int *,int ,int ,int,int ) ;
 
 mqtt_message_t* mqtt_msg_unsubscribe_fini(mqtt_connection_t* connection)
 {

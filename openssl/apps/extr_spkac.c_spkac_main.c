@@ -1,143 +1,132 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_13__ {TYPE_1__* spkac; } ;
-struct TYPE_12__ {int /*<<< orphan*/  challenge; } ;
-typedef  int OPTION_CHOICE ;
-typedef  TYPE_2__ NETSCAPE_SPKI ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  ENGINE ;
-typedef  int /*<<< orphan*/  CONF ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_12__ {int challenge; } ;
+typedef int OPTION_CHOICE ;
+typedef TYPE_2__ NETSCAPE_SPKI ;
+typedef int EVP_PKEY ;
+typedef int ENGINE ;
+typedef int CONF ;
+typedef int BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_STRING_set (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  BIO_free_all (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  ERR_print_errors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_md5 () ; 
- int FORMAT_PEM ; 
- int /*<<< orphan*/  FORMAT_TEXT ; 
- int /*<<< orphan*/  NCONF_free (int /*<<< orphan*/ *) ; 
- char* NCONF_get_string (int /*<<< orphan*/ *,char const*,char const*) ; 
- TYPE_2__* NETSCAPE_SPKI_b64_decode (char*,int) ; 
- char* NETSCAPE_SPKI_b64_encode (TYPE_2__*) ; 
- int /*<<< orphan*/  NETSCAPE_SPKI_free (TYPE_2__*) ; 
- int /*<<< orphan*/ * NETSCAPE_SPKI_get_pubkey (TYPE_2__*) ; 
- TYPE_2__* NETSCAPE_SPKI_new () ; 
- int /*<<< orphan*/  NETSCAPE_SPKI_print (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  NETSCAPE_SPKI_set_pubkey (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NETSCAPE_SPKI_sign (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int NETSCAPE_SPKI_verify (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
-#define  OPT_CHALLENGE 142 
-#define  OPT_ENGINE 141 
-#define  OPT_EOF 140 
-#define  OPT_ERR 139 
- int /*<<< orphan*/  OPT_FMT_ANY ; 
-#define  OPT_HELP 138 
-#define  OPT_IN 137 
-#define  OPT_KEY 136 
-#define  OPT_KEYFORM 135 
-#define  OPT_NOOUT 134 
-#define  OPT_OUT 133 
-#define  OPT_PASSIN 132 
-#define  OPT_PUBKEY 131 
-#define  OPT_SPKAC 130 
-#define  OPT_SPKSECT 129 
-#define  OPT_VERIFY 128 
- int /*<<< orphan*/  PEM_write_bio_PUBKEY (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * app_load_config (char*) ; 
- int /*<<< orphan*/  app_passwd (char*,int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/ * bio_open_default (char*,char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * load_key (char*,int,int,char*,int /*<<< orphan*/ *,char*) ; 
- void* opt_arg () ; 
- int /*<<< orphan*/  opt_format (void*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  opt_help (int /*<<< orphan*/ ) ; 
- char* opt_init (int,char**,int /*<<< orphan*/ ) ; 
- int opt_next () ; 
- int opt_num_rest () ; 
- int /*<<< orphan*/  release_engine (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * setup_engine (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spkac_options ; 
- scalar_t__ strcmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ int ASN1_STRING_set (int ,char*,int) ;
+ int BIO_free_all (int *) ;
+ int BIO_printf (int ,char*,...) ;
+ int ERR_print_errors (int ) ;
+ int EVP_PKEY_free (int *) ;
+ int EVP_md5 () ;
+ int FORMAT_PEM ;
+ int FORMAT_TEXT ;
+ int NCONF_free (int *) ;
+ char* NCONF_get_string (int *,char const*,char const*) ;
+ TYPE_2__* NETSCAPE_SPKI_b64_decode (char*,int) ;
+ char* NETSCAPE_SPKI_b64_encode (TYPE_2__*) ;
+ int NETSCAPE_SPKI_free (TYPE_2__*) ;
+ int * NETSCAPE_SPKI_get_pubkey (TYPE_2__*) ;
+ TYPE_2__* NETSCAPE_SPKI_new () ;
+ int NETSCAPE_SPKI_print (int *,TYPE_2__*) ;
+ int NETSCAPE_SPKI_set_pubkey (TYPE_2__*,int *) ;
+ int NETSCAPE_SPKI_sign (TYPE_2__*,int *,int ) ;
+ int NETSCAPE_SPKI_verify (TYPE_2__*,int *) ;
+ int OPENSSL_free (char*) ;
+
+
+
+
+ int OPT_FMT_ANY ;
+ int PEM_write_bio_PUBKEY (int *,int *) ;
+ int * app_load_config (char*) ;
+ int app_passwd (char*,int *,char**,int *) ;
+ int bio_err ;
+ int * bio_open_default (char*,char,int ) ;
+ int * load_key (char*,int,int,char*,int *,char*) ;
+ void* opt_arg () ;
+ int opt_format (void*,int ,int*) ;
+ int opt_help (int ) ;
+ char* opt_init (int,char**,int ) ;
+ int opt_next () ;
+ int opt_num_rest () ;
+ int release_engine (int *) ;
+ int * setup_engine (void*,int ) ;
+ int spkac_options ;
+ scalar_t__ strcmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 int spkac_main(int argc, char **argv)
 {
-    BIO *out = NULL;
-    CONF *conf = NULL;
-    ENGINE *e = NULL;
-    EVP_PKEY *pkey = NULL;
-    NETSCAPE_SPKI *spki = NULL;
-    char *challenge = NULL, *keyfile = NULL;
-    char *infile = NULL, *outfile = NULL, *passinarg = NULL, *passin = NULL;
-    char *spkstr = NULL, *prog;
+    BIO *out = ((void*)0);
+    CONF *conf = ((void*)0);
+    ENGINE *e = ((void*)0);
+    EVP_PKEY *pkey = ((void*)0);
+    NETSCAPE_SPKI *spki = ((void*)0);
+    char *challenge = ((void*)0), *keyfile = ((void*)0);
+    char *infile = ((void*)0), *outfile = ((void*)0), *passinarg = ((void*)0), *passin = ((void*)0);
+    char *spkstr = ((void*)0), *prog;
     const char *spkac = "SPKAC", *spksect = "default";
     int i, ret = 1, verify = 0, noout = 0, pubkey = 0;
     int keyformat = FORMAT_PEM;
     OPTION_CHOICE o;
 
     prog = opt_init(argc, argv, spkac_options);
-    while ((o = opt_next()) != OPT_EOF) {
+    while ((o = opt_next()) != 140) {
         switch (o) {
-        case OPT_EOF:
-        case OPT_ERR:
+        case 140:
+        case 139:
  opthelp:
             BIO_printf(bio_err, "%s: Use -help for summary.\n", prog);
             goto end;
-        case OPT_HELP:
+        case 138:
             opt_help(spkac_options);
             ret = 0;
             goto end;
-        case OPT_IN:
+        case 137:
             infile = opt_arg();
             break;
-        case OPT_OUT:
+        case 133:
             outfile = opt_arg();
             break;
-        case OPT_NOOUT:
+        case 134:
             noout = 1;
             break;
-        case OPT_PUBKEY:
+        case 131:
             pubkey = 1;
             break;
-        case OPT_VERIFY:
+        case 128:
             verify = 1;
             break;
-        case OPT_PASSIN:
+        case 132:
             passinarg = opt_arg();
             break;
-        case OPT_KEY:
+        case 136:
             keyfile = opt_arg();
             break;
-        case OPT_KEYFORM:
+        case 135:
             if (!opt_format(opt_arg(), OPT_FMT_ANY, &keyformat))
                 goto opthelp;
             break;
-        case OPT_CHALLENGE:
+        case 142:
             challenge = opt_arg();
             break;
-        case OPT_SPKAC:
+        case 130:
             spkac = opt_arg();
             break;
-        case OPT_SPKSECT:
+        case 129:
             spksect = opt_arg();
             break;
-        case OPT_ENGINE:
+        case 141:
             e = setup_engine(opt_arg(), 0);
             break;
         }
@@ -146,30 +135,30 @@ int spkac_main(int argc, char **argv)
     if (argc != 0)
         goto opthelp;
 
-    if (!app_passwd(passinarg, NULL, &passin, NULL)) {
+    if (!app_passwd(passinarg, ((void*)0), &passin, ((void*)0))) {
         BIO_printf(bio_err, "Error getting password\n");
         goto end;
     }
 
-    if (keyfile != NULL) {
-        pkey = load_key(strcmp(keyfile, "-") ? keyfile : NULL,
+    if (keyfile != ((void*)0)) {
+        pkey = load_key(strcmp(keyfile, "-") ? keyfile : ((void*)0),
                         keyformat, 1, passin, e, "private key");
-        if (pkey == NULL)
+        if (pkey == ((void*)0))
             goto end;
         spki = NETSCAPE_SPKI_new();
-        if (spki == NULL)
+        if (spki == ((void*)0))
             goto end;
-        if (challenge != NULL)
+        if (challenge != ((void*)0))
             ASN1_STRING_set(spki->spkac->challenge,
                             challenge, (int)strlen(challenge));
         NETSCAPE_SPKI_set_pubkey(spki, pkey);
         NETSCAPE_SPKI_sign(spki, pkey, EVP_md5());
         spkstr = NETSCAPE_SPKI_b64_encode(spki);
-        if (spkstr == NULL)
+        if (spkstr == ((void*)0))
             goto end;
 
         out = bio_open_default(outfile, 'w', FORMAT_TEXT);
-        if (out == NULL) {
+        if (out == ((void*)0)) {
             OPENSSL_free(spkstr);
             goto end;
         }
@@ -179,12 +168,12 @@ int spkac_main(int argc, char **argv)
         goto end;
     }
 
-    if ((conf = app_load_config(infile)) == NULL)
+    if ((conf = app_load_config(infile)) == ((void*)0))
         goto end;
 
     spkstr = NCONF_get_string(conf, spksect, spkac);
 
-    if (spkstr == NULL) {
+    if (spkstr == ((void*)0)) {
         BIO_printf(bio_err, "Can't find SPKAC called \"%s\"\n", spkac);
         ERR_print_errors(bio_err);
         goto end;
@@ -192,14 +181,14 @@ int spkac_main(int argc, char **argv)
 
     spki = NETSCAPE_SPKI_b64_decode(spkstr, -1);
 
-    if (spki == NULL) {
+    if (spki == ((void*)0)) {
         BIO_printf(bio_err, "Error loading SPKAC\n");
         ERR_print_errors(bio_err);
         goto end;
     }
 
     out = bio_open_default(outfile, 'w', FORMAT_TEXT);
-    if (out == NULL)
+    if (out == ((void*)0))
         goto end;
 
     if (!noout)

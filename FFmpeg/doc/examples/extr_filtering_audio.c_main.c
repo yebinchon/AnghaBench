@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ stream_index; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  int /*<<< orphan*/  AVFrame ;
+typedef TYPE_1__ AVPacket ;
+typedef int AVFrame ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_BUFFERSRC_FLAG_KEEP_REF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EAGAIN ; 
- scalar_t__ audio_stream_index ; 
- int av_buffersink_get_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ av_buffersrc_add_frame_flags (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* av_err2str (int) ; 
- int /*<<< orphan*/ * av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_frame_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  av_packet_unref (TYPE_1__*) ; 
- int av_read_frame (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  avcodec_free_context (int /*<<< orphan*/ *) ; 
- int avcodec_receive_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int avcodec_send_packet (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  avfilter_graph_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avformat_close_input (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffersink_ctx ; 
- int /*<<< orphan*/  buffersrc_ctx ; 
- int /*<<< orphan*/  dec_ctx ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  filter_descr ; 
- int /*<<< orphan*/  filter_graph ; 
- int /*<<< orphan*/  fmt_ctx ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,...) ; 
- int init_filters (int /*<<< orphan*/ ) ; 
- int open_input_file (char*) ; 
- int /*<<< orphan*/  perror (char*) ; 
- char* player ; 
- int /*<<< orphan*/  print_frame (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_BUFFERSRC_FLAG_KEEP_REF ;
+ int AV_LOG_ERROR ;
+ int EAGAIN ;
+ scalar_t__ audio_stream_index ;
+ int av_buffersink_get_frame (int ,int *) ;
+ scalar_t__ av_buffersrc_add_frame_flags (int ,int *,int ) ;
+ char* av_err2str (int) ;
+ int * av_frame_alloc () ;
+ int av_frame_free (int **) ;
+ int av_frame_unref (int *) ;
+ int av_log (int *,int ,char*) ;
+ int av_packet_unref (TYPE_1__*) ;
+ int av_read_frame (int ,TYPE_1__*) ;
+ int avcodec_free_context (int *) ;
+ int avcodec_receive_frame (int ,int *) ;
+ int avcodec_send_packet (int ,TYPE_1__*) ;
+ int avfilter_graph_free (int *) ;
+ int avformat_close_input (int *) ;
+ int buffersink_ctx ;
+ int buffersrc_ctx ;
+ int dec_ctx ;
+ int exit (int) ;
+ int filter_descr ;
+ int filter_graph ;
+ int fmt_ctx ;
+ int fprintf (int ,char*,char*,...) ;
+ int init_filters (int ) ;
+ int open_input_file (char*) ;
+ int perror (char*) ;
+ char* player ;
+ int print_frame (int *) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     if ((ret = init_filters(filter_descr)) < 0)
         goto end;
 
-    /* read all packets */
+
     while (1) {
         if ((ret = av_read_frame(fmt_ctx, &packet)) < 0)
             break;
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         if (packet.stream_index == audio_stream_index) {
             ret = avcodec_send_packet(dec_ctx, &packet);
             if (ret < 0) {
-                av_log(NULL, AV_LOG_ERROR, "Error while sending a packet to the decoder\n");
+                av_log(((void*)0), AV_LOG_ERROR, "Error while sending a packet to the decoder\n");
                 break;
             }
 
@@ -89,18 +89,18 @@ int main(int argc, char **argv)
                 if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF) {
                     break;
                 } else if (ret < 0) {
-                    av_log(NULL, AV_LOG_ERROR, "Error while receiving a frame from the decoder\n");
+                    av_log(((void*)0), AV_LOG_ERROR, "Error while receiving a frame from the decoder\n");
                     goto end;
                 }
 
                 if (ret >= 0) {
-                    /* push the audio data from decoded frame into the filtergraph */
+
                     if (av_buffersrc_add_frame_flags(buffersrc_ctx, frame, AV_BUFFERSRC_FLAG_KEEP_REF) < 0) {
-                        av_log(NULL, AV_LOG_ERROR, "Error while feeding the audio filtergraph\n");
+                        av_log(((void*)0), AV_LOG_ERROR, "Error while feeding the audio filtergraph\n");
                         break;
                     }
 
-                    /* pull filtered audio from the filtergraph */
+
                     while (1) {
                         ret = av_buffersink_get_frame(buffersink_ctx, filt_frame);
                         if (ret == AVERROR(EAGAIN) || ret == AVERROR_EOF)

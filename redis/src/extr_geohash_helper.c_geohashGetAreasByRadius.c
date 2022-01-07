@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_10__ {double max; double min; } ;
 struct TYPE_9__ {double max; double min; } ;
 struct TYPE_13__ {TYPE_2__ longitude; TYPE_1__ latitude; } ;
-struct TYPE_12__ {int /*<<< orphan*/  north_east; int /*<<< orphan*/  south_east; int /*<<< orphan*/  east; int /*<<< orphan*/  north_west; int /*<<< orphan*/  south_west; int /*<<< orphan*/  west; int /*<<< orphan*/  north; int /*<<< orphan*/  south; } ;
-struct TYPE_11__ {TYPE_5__ area; TYPE_4__ neighbors; int /*<<< orphan*/  hash; } ;
-typedef  int /*<<< orphan*/  GeoHashRange ;
-typedef  TYPE_3__ GeoHashRadius ;
-typedef  TYPE_4__ GeoHashNeighbors ;
-typedef  int /*<<< orphan*/  GeoHashBits ;
-typedef  TYPE_5__ GeoHashArea ;
+struct TYPE_12__ {int north_east; int south_east; int east; int north_west; int south_west; int west; int north; int south; } ;
+struct TYPE_11__ {TYPE_5__ area; TYPE_4__ neighbors; int hash; } ;
+typedef int GeoHashRange ;
+typedef TYPE_3__ GeoHashRadius ;
+typedef TYPE_4__ GeoHashNeighbors ;
+typedef int GeoHashBits ;
+typedef TYPE_5__ GeoHashArea ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GZERO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  geohashBoundingBox (double,double,double,double*) ; 
- int /*<<< orphan*/  geohashDecode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__*) ; 
- int /*<<< orphan*/  geohashEncode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,double,double,int,int /*<<< orphan*/ *) ; 
- int geohashEstimateStepsByRadius (double,double) ; 
- int /*<<< orphan*/  geohashGetCoordRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- double geohashGetDistance (double,double,double,double) ; 
- int /*<<< orphan*/  geohashNeighbors (int /*<<< orphan*/ *,TYPE_4__*) ; 
+
+ int GZERO (int ) ;
+ int geohashBoundingBox (double,double,double,double*) ;
+ int geohashDecode (int ,int ,int ,TYPE_5__*) ;
+ int geohashEncode (int *,int *,double,double,int,int *) ;
+ int geohashEstimateStepsByRadius (double,double) ;
+ int geohashGetCoordRange (int *,int *) ;
+ double geohashGetDistance (double,double,double,double) ;
+ int geohashNeighbors (int *,TYPE_4__*) ;
 
 GeoHashRadius geohashGetAreasByRadius(double longitude, double latitude, double radius_meters) {
     GeoHashRange long_range, lat_range;
@@ -59,11 +59,11 @@ GeoHashRadius geohashGetAreasByRadius(double longitude, double latitude, double 
     geohashNeighbors(&hash,&neighbors);
     geohashDecode(long_range,lat_range,hash,&area);
 
-    /* Check if the step is enough at the limits of the covered area.
-     * Sometimes when the search area is near an edge of the
-     * area, the estimated step is not small enough, since one of the
-     * north / south / west / east square is too near to the search area
-     * to cover everything. */
+
+
+
+
+
     int decrease_step = 0;
     {
         GeoHashArea north, south, east, west;
@@ -90,7 +90,7 @@ GeoHashRadius geohashGetAreasByRadius(double longitude, double latitude, double 
         geohashDecode(long_range,lat_range,hash,&area);
     }
 
-    /* Exclude the search areas that are useless. */
+
     if (steps >= 2) {
         if (area.latitude.min < min_lat) {
             GZERO(neighbors.south);

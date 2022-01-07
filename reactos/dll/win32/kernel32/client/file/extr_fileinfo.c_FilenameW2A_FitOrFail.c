@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_3__ {int MaximumLength; int Length; scalar_t__ Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  scalar_t__ PWCHAR ;
-typedef  int /*<<< orphan*/  LPSTR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  DWORD ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef scalar_t__ PWCHAR ;
+typedef int LPSTR ;
+typedef scalar_t__ LPCWSTR ;
+typedef int INT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FilenameU2A_FitOrFail (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int wcslen (scalar_t__) ; 
+
+ int FilenameU2A_FitOrFail (int ,int,TYPE_1__*) ;
+ int wcslen (scalar_t__) ;
 
 DWORD
 FilenameW2A_FitOrFail(
-   LPSTR  DestA,
-   INT destLen, /* buffer size in TCHARS incl. nullchar */
+   LPSTR DestA,
+   INT destLen,
    LPCWSTR SourceW,
-   INT sourceLen /* buffer size in TCHARS incl. nullchar */
+   INT sourceLen
    )
 {
    UNICODE_STRING strW;

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct wined3d_shader_signature_element {scalar_t__ semantic_name; scalar_t__ semantic_idx; scalar_t__ sysval_semantic; scalar_t__ component_type; scalar_t__ register_idx; scalar_t__ mask; } ;
 struct wined3d_shader_signature {unsigned int element_count; struct wined3d_shader_signature_element* elements; } ;
 
-/* Variables and functions */
- int strcmp (scalar_t__,scalar_t__) ; 
+
+ int strcmp (scalar_t__,scalar_t__) ;
 
 __attribute__((used)) static int compare_sig(const struct wined3d_shader_signature *sig1, const struct wined3d_shader_signature *sig2)
 {
@@ -33,8 +33,8 @@ __attribute__((used)) static int compare_sig(const struct wined3d_shader_signatu
 
         if (!e1->semantic_name || !e2->semantic_name)
         {
-            /* Compare pointers, not contents. One string is NULL (element
-             * does not exist), the other one is not NULL. */
+
+
             if (e1->semantic_name != e2->semantic_name)
                 return e1->semantic_name < e2->semantic_name ? -1 : 1;
             continue;

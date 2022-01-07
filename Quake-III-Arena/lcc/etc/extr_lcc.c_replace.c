@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* strchr (char*,int) ; 
- char* strsave (char const*) ; 
+ char* strchr (char*,int) ;
+ char* strsave (char const*) ;
 
 char *replace(const char *str, int from, int to) {
-	char *s = strsave(str), *p = s;
+ char *s = strsave(str), *p = s;
 
-	for ( ; (p = strchr(p, from)) != NULL; p++)
-		*p = to;
-	return s;
+ for ( ; (p = strchr(p, from)) != ((void*)0); p++)
+  *p = to;
+ return s;
 }

@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BINLOG_NAME ; 
- int BINLOG_NAME_LEN ; 
- scalar_t__ BINLOG_POSITION ; 
- scalar_t__ EEXIST ; 
- scalar_t__ LAST_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int link (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  stderr ; 
- int unlink (char*) ; 
+ int BINLOG_NAME ;
+ int BINLOG_NAME_LEN ;
+ scalar_t__ BINLOG_POSITION ;
+ scalar_t__ EEXIST ;
+ scalar_t__ LAST_SIZE ;
+ int assert (int) ;
+ scalar_t__ errno ;
+ int fprintf (int ,char*,...) ;
+ int link (int ,char*) ;
+ int memcpy (char*,int ,int) ;
+ int stderr ;
+ int unlink (char*) ;
 
 void on_last_size (void) {
   if (BINLOG_POSITION > LAST_SIZE) {

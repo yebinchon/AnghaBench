@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u_int ;
 struct thread {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  ts_estcpu; } ;
+struct TYPE_2__ {int ts_estcpu; } ;
 
-/* Variables and functions */
- TYPE_1__* td_get_sched (struct thread*) ; 
+
+ TYPE_1__* td_get_sched (struct thread*) ;
 
 u_int
 sched_estcpu(struct thread *td)
 {
-	
-	return (td_get_sched(td)->ts_estcpu);
+
+ return (td_get_sched(td)->ts_estcpu);
 }

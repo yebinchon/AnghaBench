@@ -1,70 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum v4l2_mpeg_video_h264_level { ____Placeholder_v4l2_mpeg_video_h264_level } v4l2_mpeg_video_h264_level ;
 
-/* Variables and functions */
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_1B 143 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_1_0 142 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_1_1 141 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_1_2 140 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_1_3 139 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_2_0 138 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_2_1 137 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_2_2 136 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_3_0 135 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_3_1 134 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_3_2 133 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_4_0 132 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_4_1 131 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_4_2 130 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_5_0 129 
-#define  V4L2_MPEG_VIDEO_H264_LEVEL_5_1 128 
 
+
+
+typedef enum v4l2_mpeg_video_h264_level { ____Placeholder_v4l2_mpeg_video_h264_level } v4l2_mpeg_video_h264_level ;
 __attribute__((used)) static unsigned int maximum_cpb_size(enum v4l2_mpeg_video_h264_level level)
 {
-	switch (level) {
-	case V4L2_MPEG_VIDEO_H264_LEVEL_1_0:
-		return 175;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_1B:
-		return 350;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_1_1:
-		return 500;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_1_2:
-		return 1000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_1_3:
-		return 2000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_2_0:
-		return 2000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_2_1:
-		return 4000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_2_2:
-		return 4000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_3_0:
-		return 10000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_3_1:
-		return 14000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_3_2:
-		return 20000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_4_0:
-		return 25000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_4_1:
-		return 62500;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_4_2:
-		return 62500;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_5_0:
-		return 135000;
-	case V4L2_MPEG_VIDEO_H264_LEVEL_5_1:
-	default:
-		return 240000;
-	}
+ switch (level) {
+ case 142:
+  return 175;
+ case 143:
+  return 350;
+ case 141:
+  return 500;
+ case 140:
+  return 1000;
+ case 139:
+  return 2000;
+ case 138:
+  return 2000;
+ case 137:
+  return 4000;
+ case 136:
+  return 4000;
+ case 135:
+  return 10000;
+ case 134:
+  return 14000;
+ case 133:
+  return 20000;
+ case 132:
+  return 25000;
+ case 131:
+  return 62500;
+ case 130:
+  return 62500;
+ case 129:
+  return 135000;
+ case 128:
+ default:
+  return 240000;
+ }
 }

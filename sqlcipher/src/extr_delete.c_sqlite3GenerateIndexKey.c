@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vdbe ;
+
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int Vdbe ;
 struct TYPE_16__ {int nKeyCol; int nColumn; scalar_t__* aiColumn; TYPE_1__* pTable; scalar_t__ pPartIdxWhere; scalar_t__ uniqNotNull; } ;
-struct TYPE_15__ {int iSelfTab; int /*<<< orphan*/  db; int /*<<< orphan*/ * pVdbe; } ;
+struct TYPE_15__ {int iSelfTab; int db; int * pVdbe; } ;
 struct TYPE_14__ {scalar_t__ pSelect; } ;
-typedef  TYPE_2__ Parse ;
-typedef  TYPE_3__ Index ;
+typedef TYPE_2__ Parse ;
+typedef TYPE_3__ Index ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OP_MakeRecord ; 
- int /*<<< orphan*/  OP_RealAffinity ; 
- int /*<<< orphan*/  P4_TRANSIENT ; 
- int /*<<< orphan*/  SQLITE_JUMPIFNULL ; 
- scalar_t__ XN_EXPR ; 
- int /*<<< orphan*/  sqlite3ExprCodeLoadIndexColumn (TYPE_2__*,TYPE_3__*,int,int,int) ; 
- int /*<<< orphan*/  sqlite3ExprIfFalseDup (TYPE_2__*,scalar_t__,int,int /*<<< orphan*/ ) ; 
- int sqlite3GetTempRange (TYPE_2__*,int) ; 
- char* sqlite3IndexAffinityStr (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  sqlite3ReleaseTempRange (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeAddOp3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int,int) ; 
- int /*<<< orphan*/  sqlite3VdbeChangeP4 (int /*<<< orphan*/ *,int,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeDeletePriorOpcode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int sqlite3VdbeMakeLabel (TYPE_2__*) ; 
+
+ int OP_MakeRecord ;
+ int OP_RealAffinity ;
+ int P4_TRANSIENT ;
+ int SQLITE_JUMPIFNULL ;
+ scalar_t__ XN_EXPR ;
+ int sqlite3ExprCodeLoadIndexColumn (TYPE_2__*,TYPE_3__*,int,int,int) ;
+ int sqlite3ExprIfFalseDup (TYPE_2__*,scalar_t__,int,int ) ;
+ int sqlite3GetTempRange (TYPE_2__*,int) ;
+ char* sqlite3IndexAffinityStr (int ,TYPE_3__*) ;
+ int sqlite3ReleaseTempRange (TYPE_2__*,int,int) ;
+ int sqlite3VdbeAddOp3 (int *,int ,int,int,int) ;
+ int sqlite3VdbeChangeP4 (int *,int,char const*,int ) ;
+ int sqlite3VdbeDeletePriorOpcode (int *,int ) ;
+ int sqlite3VdbeMakeLabel (TYPE_2__*) ;
 
 int sqlite3GenerateIndexKey(
-  Parse *pParse,       /* Parsing context */
-  Index *pIdx,         /* The index for which to generate a key */
-  int iDataCur,        /* Cursor number from which to take column data */
-  int regOut,          /* Put the new key into this register if not 0 */
-  int prefixOnly,      /* Compute only a unique prefix of the key */
-  int *piPartIdxLabel, /* OUT: Jump to this label to skip partial index */
-  Index *pPrior,       /* Previously generated index key */
-  int regPrior         /* Register holding previous generated key */
+  Parse *pParse,
+  Index *pIdx,
+  int iDataCur,
+  int regOut,
+  int prefixOnly,
+  int *piPartIdxLabel,
+  Index *pPrior,
+  int regPrior
 ){
   Vdbe *v = pParse->pVdbe;
   int j;
@@ -55,7 +55,7 @@ int sqlite3GenerateIndexKey(
     if( pIdx->pPartIdxWhere ){
       *piPartIdxLabel = sqlite3VdbeMakeLabel(pParse);
       pParse->iSelfTab = iDataCur + 1;
-      sqlite3ExprIfFalseDup(pParse, pIdx->pPartIdxWhere, *piPartIdxLabel, 
+      sqlite3ExprIfFalseDup(pParse, pIdx->pPartIdxWhere, *piPartIdxLabel,
                             SQLITE_JUMPIFNULL);
       pParse->iSelfTab = 0;
     }else{
@@ -70,16 +70,16 @@ int sqlite3GenerateIndexKey(
      && pPrior->aiColumn[j]==pIdx->aiColumn[j]
      && pPrior->aiColumn[j]!=XN_EXPR
     ){
-      /* This column was already computed by the previous index */
+
       continue;
     }
     sqlite3ExprCodeLoadIndexColumn(pParse, pIdx, iDataCur, j, regBase+j);
-    /* If the column affinity is REAL but the number is an integer, then it
-    ** might be stored in the table as an integer (using a compact
-    ** representation) then converted to REAL by an OP_RealAffinity opcode.
-    ** But we are getting ready to store this value back into an index, where
-    ** it should be converted by to INTEGER again.  So omit the OP_RealAffinity
-    ** opcode if it is present */
+
+
+
+
+
+
     sqlite3VdbeDeletePriorOpcode(v, OP_RealAffinity);
   }
   if( regOut ){

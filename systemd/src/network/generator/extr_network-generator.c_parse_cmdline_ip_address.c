@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union in_addr_union {int dummy; } in_addr_union ;
-typedef  int /*<<< orphan*/  Context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int EINVAL ; 
- int /*<<< orphan*/  hostname_is_valid (char const*,int) ; 
- int network_set_address (int /*<<< orphan*/ *,char const*,int,unsigned char,union in_addr_union*,union in_addr_union*) ; 
- int network_set_dhcp_type (int /*<<< orphan*/ *,char const*,char const*) ; 
- int network_set_dns (int /*<<< orphan*/ *,char const*,char const*) ; 
- int network_set_hostname (int /*<<< orphan*/ *,char const*,char const*) ; 
- int network_set_route (int /*<<< orphan*/ *,char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,union in_addr_union*) ; 
- int parse_cmdline_ip_mtu_mac (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,char const*) ; 
- int parse_ip_address_one (int,char const**,union in_addr_union*) ; 
- int parse_netmask_or_prefixlen (int,char const**,unsigned char*) ; 
- char* strchr (char const*,char) ; 
- char* strndupa (char const*,int) ; 
+
+
+
+typedef union in_addr_union {int dummy; } in_addr_union ;
+typedef int Context ;
+
+
+ int AF_UNSPEC ;
+ int EINVAL ;
+ int hostname_is_valid (char const*,int) ;
+ int network_set_address (int *,char const*,int,unsigned char,union in_addr_union*,union in_addr_union*) ;
+ int network_set_dhcp_type (int *,char const*,char const*) ;
+ int network_set_dns (int *,char const*,char const*) ;
+ int network_set_hostname (int *,char const*,char const*) ;
+ int network_set_route (int *,char const*,int,int ,int *,union in_addr_union*) ;
+ int parse_cmdline_ip_mtu_mac (int *,char const*,int ,char const*) ;
+ int parse_ip_address_one (int,char const**,union in_addr_union*) ;
+ int parse_netmask_or_prefixlen (int,char const**,unsigned char*) ;
+ char* strchr (char const*,char) ;
+ char* strndupa (char const*,int) ;
 
 __attribute__((used)) static int parse_cmdline_ip_address(Context *context, int family, const char *value) {
         union in_addr_union addr = {}, peer = {}, gateway = {};
@@ -34,8 +34,8 @@ __attribute__((used)) static int parse_cmdline_ip_address(Context *context, int 
         unsigned char prefixlen;
         int r;
 
-        /* ip=<client-IP>:[<peer>]:<gateway-IP>:<netmask>:<client_hostname>:<interface>:{none|off|dhcp|on|any|dhcp6|auto6|ibft}[:[<mtu>][:<macaddr>]]
-         * ip=<client-IP>:[<peer>]:<gateway-IP>:<netmask>:<client_hostname>:<interface>:{none|off|dhcp|on|any|dhcp6|auto6|ibft}[:[<dns1>][:<dns2>]] */
+
+
 
         r = parse_ip_address_one(family, &value, &addr);
         if (r < 0)
@@ -50,18 +50,18 @@ __attribute__((used)) static int parse_cmdline_ip_address(Context *context, int 
         if (r < 0)
                 return r;
 
-        /* hostname */
+
         p = strchr(value, ':');
         if (!p)
                 return -EINVAL;
 
         hostname = strndupa(value, p - value);
-        if (!hostname_is_valid(hostname, false))
+        if (!hostname_is_valid(hostname, 0))
                 return -EINVAL;
 
         value = p + 1;
 
-        /* ifname */
+
         p = strchr(value, ':');
         if (!p)
                 return -EINVAL;
@@ -70,7 +70,7 @@ __attribute__((used)) static int parse_cmdline_ip_address(Context *context, int 
 
         value = p + 1;
 
-        /* dhcp_type */
+
         p = strchr(value, ':');
         if (!p)
                 dhcp_type = value;
@@ -81,7 +81,7 @@ __attribute__((used)) static int parse_cmdline_ip_address(Context *context, int 
         if (r < 0)
                 return r;
 
-        /* set values */
+
         r = network_set_hostname(context, ifname, hostname);
         if (r < 0)
                 return r;
@@ -90,19 +90,19 @@ __attribute__((used)) static int parse_cmdline_ip_address(Context *context, int 
         if (r < 0)
                 return r;
 
-        r = network_set_route(context, ifname, family, 0, NULL, &gateway);
+        r = network_set_route(context, ifname, family, 0, ((void*)0), &gateway);
         if (r < 0)
                 return r;
 
         if (!p)
                 return 0;
 
-        /* First, try [<mtu>][:<macaddr>] */
+
         r = parse_cmdline_ip_mtu_mac(context, ifname, AF_UNSPEC, p + 1);
         if (r >= 0)
                 return 0;
 
-        /* Next, try [<dns1>][:<dns2>] */
+
         value = p + 1;
         p = strchr(value, ':');
         if (!p) {

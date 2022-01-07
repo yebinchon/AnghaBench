@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TAB_APPEND (int,char**,char*) ; 
- int /*<<< orphan*/  lua_getfield (int /*<<< orphan*/ *,int,char*) ; 
- scalar_t__ lua_isstring (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_istable (int /*<<< orphan*/ *,int) ; 
- scalar_t__ lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  msg_Dbg (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*) ; 
- char* strdup (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int vlc_object_t ;
+typedef int lua_State ;
+
+
+ int TAB_APPEND (int,char**,char*) ;
+ int lua_getfield (int *,int,char*) ;
+ scalar_t__ lua_isstring (int *,int) ;
+ scalar_t__ lua_istable (int *,int) ;
+ scalar_t__ lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushnil (int *) ;
+ int lua_tostring (int *,int) ;
+ int msg_Dbg (int *,char*,char*) ;
+ int msg_Warn (int *,char*) ;
+ char* strdup (int ) ;
 
 void vlclua_read_options( vlc_object_t *p_this, lua_State *L,
                             int *pi_options, char ***pppsz_options )
@@ -45,8 +45,8 @@ void vlclua_read_options( vlc_object_t *p_this, lua_State *L,
             {
                 msg_Warn( p_this, "Option should be a string" );
             }
-            lua_pop( L, 1 ); /* pop option */
+            lua_pop( L, 1 );
         }
     }
-    lua_pop( L, 1 ); /* pop "options" */
+    lua_pop( L, 1 );
 }

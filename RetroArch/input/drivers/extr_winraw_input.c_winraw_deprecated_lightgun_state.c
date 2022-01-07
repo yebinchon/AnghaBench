@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  dlt_y; int /*<<< orphan*/  dlt_x; } ;
-typedef  TYPE_2__ winraw_mouse_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int dlt_y; int dlt_x; } ;
+typedef TYPE_2__ winraw_mouse_t ;
 struct TYPE_9__ {TYPE_2__* mice; } ;
-typedef  TYPE_3__ winraw_input_t ;
+typedef TYPE_3__ winraw_input_t ;
 struct TYPE_7__ {unsigned int* input_mouse_index; } ;
 struct TYPE_10__ {TYPE_1__ uints; } ;
-typedef  TYPE_4__ settings_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+typedef TYPE_4__ settings_t ;
+typedef int int16_t ;
 
-/* Variables and functions */
- unsigned int MAX_USERS ; 
-#define  RETRO_DEVICE_ID_LIGHTGUN_X 129 
-#define  RETRO_DEVICE_ID_LIGHTGUN_Y 128 
- TYPE_4__* config_get_ptr () ; 
- unsigned int g_mouse_cnt ; 
+
+ unsigned int MAX_USERS ;
+
+
+ TYPE_4__* config_get_ptr () ;
+ unsigned int g_mouse_cnt ;
 
 __attribute__((used)) static int16_t winraw_deprecated_lightgun_state(winraw_input_t *wr,
       unsigned port, unsigned id)
 {
    unsigned i;
-   settings_t *settings  = config_get_ptr();
-   winraw_mouse_t *mouse = NULL;
+   settings_t *settings = config_get_ptr();
+   winraw_mouse_t *mouse = ((void*)0);
 
    if (port >= MAX_USERS)
       return 0;
@@ -54,9 +54,9 @@ __attribute__((used)) static int16_t winraw_deprecated_lightgun_state(winraw_inp
 
    switch (id)
    {
-      case RETRO_DEVICE_ID_LIGHTGUN_X:
+      case 129:
          return mouse->dlt_x;
-      case RETRO_DEVICE_ID_LIGHTGUN_Y:
+      case 128:
          return mouse->dlt_y;
    }
 

@@ -1,107 +1,107 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_4__ ;
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_17__ {int /*<<< orphan*/  (* Write ) (TYPE_4__*,int /*<<< orphan*/ ) ;} ;
-struct TYPE_16__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_15__ {int /*<<< orphan*/  Rpc; int /*<<< orphan*/ * HubName; } ;
-struct TYPE_14__ {int /*<<< orphan*/  Status; int /*<<< orphan*/  AccountName; int /*<<< orphan*/  HubName; } ;
-typedef  TYPE_1__ RPC_LINK_STATUS ;
-typedef  TYPE_2__ PS ;
-typedef  TYPE_3__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CT ;
-typedef  TYPE_4__ CONSOLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdPrintError (TYPE_4__*,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrintStatusToListView (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- int /*<<< orphan*/  CtFree (int /*<<< orphan*/ *,TYPE_4__*) ; 
- int /*<<< orphan*/ * CtNewStandard () ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeRpcLinkStatus (TYPE_1__*) ; 
- int /*<<< orphan*/  GetParamUniStr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * ParseCommandList (TYPE_4__*,char*,int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- scalar_t__ ScGetLinkStatus (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniStrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_17__ TYPE_4__ ;
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_17__ {int (* Write ) (TYPE_4__*,int ) ;} ;
+struct TYPE_16__ {char* member_0; int * member_4; int member_3; int member_2; int member_1; } ;
+struct TYPE_15__ {int Rpc; int * HubName; } ;
+struct TYPE_14__ {int Status; int AccountName; int HubName; } ;
+typedef TYPE_1__ RPC_LINK_STATUS ;
+typedef TYPE_2__ PS ;
+typedef TYPE_3__ PARAM ;
+typedef int LIST ;
+typedef int CT ;
+typedef TYPE_4__ CONSOLE ;
+
+
+ int CmdEvalNotEmpty ;
+ int CmdPrintError (TYPE_4__*,scalar_t__) ;
+ int CmdPrintStatusToListView (int *,int *) ;
+ int CmdPrompt ;
+ int CtFree (int *,TYPE_4__*) ;
+ int * CtNewStandard () ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeParamValueList (int *) ;
+ int FreeRpcLinkStatus (TYPE_1__*) ;
+ int GetParamUniStr (int *,char*) ;
+ int * ParseCommandList (TYPE_4__*,char*,int *,TYPE_3__*,int) ;
+ scalar_t__ ScGetLinkStatus (int ,TYPE_1__*) ;
+ int StrCpy (int ,int,int *) ;
+ int UniStrCpy (int ,int,int ) ;
+ int Zero (TYPE_1__*,int) ;
+ int _UU (char*) ;
+ int stub1 (TYPE_4__*,int ) ;
 
 UINT PsCascadeStatusGet(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PS *ps = (PS *)param;
-	UINT ret = 0;
-	RPC_LINK_STATUS t;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		// "name", prompt_proc, prompt_param, eval_proc, eval_param
-		{"[name]", CmdPrompt, _UU("CMD_CascadeCreate_Prompt_Name"), CmdEvalNotEmpty, NULL},
-	};
-	
-	// If virtual HUB is not selected, it's an error
-	if (ps->HubName == NULL)
-	{
-		c->Write(c, _UU("CMD_Hub_Not_Selected"));
-		return ERR_INVALID_PARAMETER;
-	}
+ LIST *o;
+ PS *ps = (PS *)param;
+ UINT ret = 0;
+ RPC_LINK_STATUS t;
 
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
 
-	Zero(&t, sizeof(t));
-	StrCpy(t.HubName, sizeof(t.HubName), ps->HubName);
-	UniStrCpy(t.AccountName, sizeof(t.AccountName), GetParamUniStr(o, "[name]"));
+  {"[name]", CmdPrompt, _UU("CMD_CascadeCreate_Prompt_Name"), CmdEvalNotEmpty, ((void*)0)},
+ };
 
-	// RPC call
-	ret = ScGetLinkStatus(ps->Rpc, &t);
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// An error has occured
-		CmdPrintError(c, ret);
-		FreeParamValueList(o);
-		return ret;
-	}
-	else
-	{
-		// Get the cascade connection state
-		CT *ct = CtNewStandard();
+ if (ps->HubName == ((void*)0))
+ {
+  c->Write(c, _UU("CMD_Hub_Not_Selected"));
+  return ERR_INVALID_PARAMETER;
+ }
 
-		CmdPrintStatusToListView(ct, &t.Status);
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-		CtFree(ct, c);
+ Zero(&t, sizeof(t));
+ StrCpy(t.HubName, sizeof(t.HubName), ps->HubName);
+ UniStrCpy(t.AccountName, sizeof(t.AccountName), GetParamUniStr(o, "[name]"));
 
-		FreeRpcLinkStatus(&t);
-	}
 
-	FreeParamValueList(o);
+ ret = ScGetLinkStatus(ps->Rpc, &t);
 
-	return 0;
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+  FreeParamValueList(o);
+  return ret;
+ }
+ else
+ {
+
+  CT *ct = CtNewStandard();
+
+  CmdPrintStatusToListView(ct, &t.Status);
+
+  CtFree(ct, c);
+
+  FreeRpcLinkStatus(&t);
+ }
+
+ FreeParamValueList(o);
+
+ return 0;
 }

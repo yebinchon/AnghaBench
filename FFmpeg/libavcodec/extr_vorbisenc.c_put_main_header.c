@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int submaps; int coupling_steps; int* magnitude; int* angle; int* mux; int* floor; int* residue; } ;
-typedef  TYPE_2__ vorbis_enc_mapping ;
-struct TYPE_7__ {int channels; int* log2_blocksize; int ncodebooks; int nfloors; int nresidues; int nmappings; int nmodes; TYPE_1__* modes; TYPE_2__* mappings; int /*<<< orphan*/ * residues; int /*<<< orphan*/ * floors; int /*<<< orphan*/ * codebooks; int /*<<< orphan*/  sample_rate; } ;
-typedef  TYPE_3__ vorbis_enc_context ;
-typedef  int /*<<< orphan*/  uint8_t ;
+typedef TYPE_2__ vorbis_enc_mapping ;
+struct TYPE_7__ {int channels; int* log2_blocksize; int ncodebooks; int nfloors; int nresidues; int nmappings; int nmodes; TYPE_1__* modes; TYPE_2__* mappings; int * residues; int * floors; int * codebooks; int sample_rate; } ;
+typedef TYPE_3__ vorbis_enc_context ;
+typedef int uint8_t ;
 struct TYPE_5__ {int blockflag; int mapping; } ;
-typedef  int /*<<< orphan*/  PutBitContext ;
+typedef int PutBitContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * av_mallocz (int) ; 
- int /*<<< orphan*/  av_xiphlacing (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  flush_put_bits (int /*<<< orphan*/ *) ; 
- int ilog (int) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  put_bits (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  put_bits32 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_codebook_header (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_floor_header (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  put_residue_header (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_freep (int **) ;
+ int * av_mallocz (int) ;
+ int av_xiphlacing (int *,int) ;
+ int flush_put_bits (int *) ;
+ int ilog (int) ;
+ int init_put_bits (int *,int *,int) ;
+ int memcpy (int *,int *,int) ;
+ int put_bits (int *,int,int) ;
+ int put_bits32 (int *,int ) ;
+ int put_bits_count (int *) ;
+ int put_codebook_header (int *,int *) ;
+ int put_floor_header (int *,int *) ;
+ int put_residue_header (int *,int *) ;
 
 __attribute__((used)) static int put_main_header(vorbis_enc_context *venc, uint8_t **out)
 {
@@ -48,71 +48,71 @@ __attribute__((used)) static int put_main_header(vorbis_enc_context *venc, uint8
     if (!buffer)
         return AVERROR(ENOMEM);
 
-    // identification header
+
     init_put_bits(&pb, p, buffer_len);
-    put_bits(&pb, 8, 1); //magic
+    put_bits(&pb, 8, 1);
     for (i = 0; "vorbis"[i]; i++)
         put_bits(&pb, 8, "vorbis"[i]);
-    put_bits32(&pb, 0); // version
-    put_bits(&pb,  8, venc->channels);
+    put_bits32(&pb, 0);
+    put_bits(&pb, 8, venc->channels);
     put_bits32(&pb, venc->sample_rate);
-    put_bits32(&pb, 0); // bitrate
-    put_bits32(&pb, 0); // bitrate
-    put_bits32(&pb, 0); // bitrate
-    put_bits(&pb,  4, venc->log2_blocksize[0]);
-    put_bits(&pb,  4, venc->log2_blocksize[1]);
-    put_bits(&pb,  1, 1); // framing
+    put_bits32(&pb, 0);
+    put_bits32(&pb, 0);
+    put_bits32(&pb, 0);
+    put_bits(&pb, 4, venc->log2_blocksize[0]);
+    put_bits(&pb, 4, venc->log2_blocksize[1]);
+    put_bits(&pb, 1, 1);
 
     flush_put_bits(&pb);
     hlens[0] = put_bits_count(&pb) >> 3;
     buffer_len -= hlens[0];
     p += hlens[0];
 
-    // comment header
+
     init_put_bits(&pb, p, buffer_len);
-    put_bits(&pb, 8, 3); //magic
+    put_bits(&pb, 8, 3);
     for (i = 0; "vorbis"[i]; i++)
         put_bits(&pb, 8, "vorbis"[i]);
-    put_bits32(&pb, 0); // vendor length TODO
-    put_bits32(&pb, 0); // amount of comments
-    put_bits(&pb,  1, 1); // framing
+    put_bits32(&pb, 0);
+    put_bits32(&pb, 0);
+    put_bits(&pb, 1, 1);
 
     flush_put_bits(&pb);
     hlens[1] = put_bits_count(&pb) >> 3;
     buffer_len -= hlens[1];
     p += hlens[1];
 
-    // setup header
+
     init_put_bits(&pb, p, buffer_len);
-    put_bits(&pb, 8, 5); //magic
+    put_bits(&pb, 8, 5);
     for (i = 0; "vorbis"[i]; i++)
         put_bits(&pb, 8, "vorbis"[i]);
 
-    // codebooks
+
     put_bits(&pb, 8, venc->ncodebooks - 1);
     for (i = 0; i < venc->ncodebooks; i++)
         put_codebook_header(&pb, &venc->codebooks[i]);
 
-    // time domain, reserved, zero
-    put_bits(&pb,  6, 0);
+
+    put_bits(&pb, 6, 0);
     put_bits(&pb, 16, 0);
 
-    // floors
+
     put_bits(&pb, 6, venc->nfloors - 1);
     for (i = 0; i < venc->nfloors; i++)
         put_floor_header(&pb, &venc->floors[i]);
 
-    // residues
+
     put_bits(&pb, 6, venc->nresidues - 1);
     for (i = 0; i < venc->nresidues; i++)
         put_residue_header(&pb, &venc->residues[i]);
 
-    // mappings
+
     put_bits(&pb, 6, venc->nmappings - 1);
     for (i = 0; i < venc->nmappings; i++) {
         vorbis_enc_mapping *mc = &venc->mappings[i];
         int j;
-        put_bits(&pb, 16, 0); // mapping type
+        put_bits(&pb, 16, 0);
 
         put_bits(&pb, 1, mc->submaps > 1);
         if (mc->submaps > 1)
@@ -127,29 +127,29 @@ __attribute__((used)) static int put_main_header(vorbis_enc_context *venc, uint8
             }
         }
 
-        put_bits(&pb, 2, 0); // reserved
+        put_bits(&pb, 2, 0);
 
         if (mc->submaps > 1)
             for (j = 0; j < venc->channels; j++)
                 put_bits(&pb, 4, mc->mux[j]);
 
         for (j = 0; j < mc->submaps; j++) {
-            put_bits(&pb, 8, 0); // reserved time configuration
+            put_bits(&pb, 8, 0);
             put_bits(&pb, 8, mc->floor[j]);
             put_bits(&pb, 8, mc->residue[j]);
         }
     }
 
-    // modes
+
     put_bits(&pb, 6, venc->nmodes - 1);
     for (i = 0; i < venc->nmodes; i++) {
         put_bits(&pb, 1, venc->modes[i].blockflag);
-        put_bits(&pb, 16, 0); // reserved window type
-        put_bits(&pb, 16, 0); // reserved transform type
+        put_bits(&pb, 16, 0);
+        put_bits(&pb, 16, 0);
         put_bits(&pb, 8, venc->modes[i].mapping);
     }
 
-    put_bits(&pb, 1, 1); // framing
+    put_bits(&pb, 1, 1);
 
     flush_put_bits(&pb);
     hlens[2] = put_bits_count(&pb) >> 3;

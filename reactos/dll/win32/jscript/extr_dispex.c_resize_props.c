@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int buf_size; int prop_cnt; TYPE_2__* props; } ;
-typedef  TYPE_1__ jsdisp_t ;
-struct TYPE_8__ {int bucket_head; int bucket_next; int /*<<< orphan*/  hash; } ;
-typedef  TYPE_2__ dispex_prop_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ jsdisp_t ;
+struct TYPE_8__ {int bucket_head; int bucket_next; int hash; } ;
+typedef TYPE_2__ dispex_prop_t ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  S_OK ; 
- int get_props_idx (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_2__* heap_realloc (TYPE_2__*,int) ; 
+
+ int E_OUTOFMEMORY ;
+ int S_FALSE ;
+ int S_OK ;
+ int get_props_idx (TYPE_1__*,int ) ;
+ TYPE_2__* heap_realloc (TYPE_2__*,int) ;
 
 __attribute__((used)) static inline HRESULT resize_props(jsdisp_t *This)
 {

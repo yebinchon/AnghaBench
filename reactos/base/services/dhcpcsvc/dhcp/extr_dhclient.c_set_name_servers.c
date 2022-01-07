@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct iaddr {int len; int /*<<< orphan*/  iabuf; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct iaddr {int len; int iabuf; } ;
 struct client_lease {TYPE_2__* options; } ;
-typedef  int /*<<< orphan*/  ULONG ;
+typedef int ULONG ;
 struct TYPE_5__ {char* name; } ;
 struct TYPE_7__ {TYPE_1__ DhclientInfo; } ;
 struct TYPE_6__ {int len; scalar_t__ data; } ;
-typedef  TYPE_3__* PDHCP_ADAPTER ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  IP_ADDRESS_STRING ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  char CHAR ;
+typedef TYPE_3__* PDHCP_ADAPTER ;
+typedef int LPBYTE ;
+typedef int IP_ADDRESS_STRING ;
+typedef int HKEY ;
+typedef char CHAR ;
 
-/* Variables and functions */
- size_t DHO_DOMAIN_NAME_SERVERS ; 
- int /*<<< orphan*/  DH_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- int /*<<< orphan*/  MID_TRACE ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegDeleteValueW (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  free (char*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,scalar_t__,int) ; 
- char* piaddr (struct iaddr) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
+
+ size_t DHO_DOMAIN_NAME_SERVERS ;
+ int DH_DbgPrint (int ,char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_WRITE ;
+ int MID_TRACE ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ int RegDeleteValueW (int ,char*) ;
+ scalar_t__ RegOpenKeyExA (int ,char*,int ,int ,int *) ;
+ int RegSetValueExA (int ,char*,int ,int ,int ,scalar_t__) ;
+ int free (char*) ;
+ char* malloc (int) ;
+ int memcpy (int ,scalar_t__,int) ;
+ char* piaddr (struct iaddr) ;
+ int strcat (char*,char*) ;
+ scalar_t__ strlen (char*) ;
 
 void set_name_servers( PDHCP_ADAPTER Adapter, struct client_lease *new_lease ) {
     CHAR Buffer[200] = "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces\\";

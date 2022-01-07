@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* install_file; scalar_t__ callback; scalar_t__ uri; } ;
-typedef  TYPE_1__ install_ctx_t ;
+typedef TYPE_1__ install_ctx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IBindStatusCallback_Release (scalar_t__) ; 
- int /*<<< orphan*/  IUri_Release (scalar_t__) ; 
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
+
+ int IBindStatusCallback_Release (scalar_t__) ;
+ int IUri_Release (scalar_t__) ;
+ int heap_free (TYPE_1__*) ;
 
 __attribute__((used)) static void release_install_ctx(install_ctx_t *ctx)
 {

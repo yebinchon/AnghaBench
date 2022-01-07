@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct notifier_block {int dummy; } ;
 
-/* Variables and functions */
-#define  CPUFREQ_POLICY_NOTIFIER 129 
-#define  CPUFREQ_TRANSITION_NOTIFIER 128 
- int EINVAL ; 
- int /*<<< orphan*/  WARN_ON (int) ; 
- int blocking_notifier_chain_unregister (int /*<<< orphan*/ *,struct notifier_block*) ; 
- scalar_t__ cpufreq_disabled () ; 
- int /*<<< orphan*/  cpufreq_fast_switch_count ; 
- int /*<<< orphan*/  cpufreq_fast_switch_lock ; 
- int /*<<< orphan*/  cpufreq_policy_notifier_list ; 
- int /*<<< orphan*/  cpufreq_transition_notifier_list ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int srcu_notifier_chain_unregister (int /*<<< orphan*/ *,struct notifier_block*) ; 
+
+
+
+ int EINVAL ;
+ int WARN_ON (int) ;
+ int blocking_notifier_chain_unregister (int *,struct notifier_block*) ;
+ scalar_t__ cpufreq_disabled () ;
+ int cpufreq_fast_switch_count ;
+ int cpufreq_fast_switch_lock ;
+ int cpufreq_policy_notifier_list ;
+ int cpufreq_transition_notifier_list ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int srcu_notifier_chain_unregister (int *,struct notifier_block*) ;
 
 int cpufreq_unregister_notifier(struct notifier_block *nb, unsigned int list)
 {
-	int ret;
+ int ret;
 
-	if (cpufreq_disabled())
-		return -EINVAL;
+ if (cpufreq_disabled())
+  return -EINVAL;
 
-	switch (list) {
-	case CPUFREQ_TRANSITION_NOTIFIER:
-		mutex_lock(&cpufreq_fast_switch_lock);
+ switch (list) {
+ case 128:
+  mutex_lock(&cpufreq_fast_switch_lock);
 
-		ret = srcu_notifier_chain_unregister(
-				&cpufreq_transition_notifier_list, nb);
-		if (!ret && !WARN_ON(cpufreq_fast_switch_count >= 0))
-			cpufreq_fast_switch_count++;
+  ret = srcu_notifier_chain_unregister(
+    &cpufreq_transition_notifier_list, nb);
+  if (!ret && !WARN_ON(cpufreq_fast_switch_count >= 0))
+   cpufreq_fast_switch_count++;
 
-		mutex_unlock(&cpufreq_fast_switch_lock);
-		break;
-	case CPUFREQ_POLICY_NOTIFIER:
-		ret = blocking_notifier_chain_unregister(
-				&cpufreq_policy_notifier_list, nb);
-		break;
-	default:
-		ret = -EINVAL;
-	}
+  mutex_unlock(&cpufreq_fast_switch_lock);
+  break;
+ case 129:
+  ret = blocking_notifier_chain_unregister(
+    &cpufreq_policy_notifier_list, nb);
+  break;
+ default:
+  ret = -EINVAL;
+ }
 
-	return ret;
+ return ret;
 }

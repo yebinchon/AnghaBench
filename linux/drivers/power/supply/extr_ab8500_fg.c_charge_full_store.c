@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int max_mah; } ;
 struct ab8500_fg {TYPE_1__ bat_cap; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int kstrtoul (char const*,int,unsigned long*) ; 
+
+ int kstrtoul (char const*,int,unsigned long*) ;
 
 __attribute__((used)) static ssize_t charge_full_store(struct ab8500_fg *di, const char *buf,
-				 size_t count)
+     size_t count)
 {
-	unsigned long charge_full;
-	int ret;
+ unsigned long charge_full;
+ int ret;
 
-	ret = kstrtoul(buf, 10, &charge_full);
-	if (ret)
-		return ret;
+ ret = kstrtoul(buf, 10, &charge_full);
+ if (ret)
+  return ret;
 
-	di->bat_cap.max_mah = (int) charge_full;
-	return count;
+ di->bat_cap.max_mah = (int) charge_full;
+ return count;
 }

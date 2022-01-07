@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
-struct TYPE_2__ {int /*<<< orphan*/  timer_idx; int /*<<< orphan*/  timer_group; } ;
-typedef  TYPE_1__ timer_info_t ;
-typedef  int /*<<< orphan*/  timer_idx_t ;
-typedef  int /*<<< orphan*/  timer_group_t ;
 
-/* Variables and functions */
- double TIMER_SCALE ; 
- int alarm_flag ; 
- int /*<<< orphan*/  ets_printf (char*,double,...) ; 
- int /*<<< orphan*/  timer_get_alarm_value (int /*<<< orphan*/  const,int /*<<< orphan*/  const,scalar_t__*) ; 
- int /*<<< orphan*/  timer_get_counter_time_sec (int /*<<< orphan*/  const,int /*<<< orphan*/  const,double*) ; 
- int /*<<< orphan*/  timer_get_counter_value (int /*<<< orphan*/  const,int /*<<< orphan*/  const,scalar_t__*) ; 
- scalar_t__ timer_group_get_auto_reload_in_isr (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  timer_group_intr_clr_in_isr (int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
+struct TYPE_2__ {int timer_idx; int timer_group; } ;
+typedef TYPE_1__ timer_info_t ;
+typedef int timer_idx_t ;
+typedef int timer_group_t ;
+
+
+ double TIMER_SCALE ;
+ int alarm_flag ;
+ int ets_printf (char*,double,...) ;
+ int timer_get_alarm_value (int const,int const,scalar_t__*) ;
+ int timer_get_counter_time_sec (int const,int const,double*) ;
+ int timer_get_counter_value (int const,int const,scalar_t__*) ;
+ scalar_t__ timer_group_get_auto_reload_in_isr (int const,int const) ;
+ int timer_group_intr_clr_in_isr (int const,int const) ;
 
 __attribute__((used)) static void test_timer_group_isr(void *para)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void test_timer_group_isr(void *para)
     uint64_t timer_val;
     double time;
     uint64_t alarm_value;
-    alarm_flag = true;
+    alarm_flag = 1;
     if (timer_group_get_auto_reload_in_isr(timer_group, timer_idx)) {
         timer_group_intr_clr_in_isr(timer_group, timer_idx);
         ets_printf("This is TG%d timer[%d] reload-timer alarm!\n", timer_group, timer_idx);

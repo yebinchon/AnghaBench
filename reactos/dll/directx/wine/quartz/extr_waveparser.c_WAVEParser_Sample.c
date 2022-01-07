@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {scalar_t__ llStop; } ;
-struct TYPE_11__ {unsigned int cStreams; int /*<<< orphan*/ * ppPins; TYPE_1__ sourceSeeking; TYPE_4__* pInputPin; } ;
+struct TYPE_11__ {unsigned int cStreams; int * ppPins; TYPE_1__ sourceSeeking; TYPE_4__* pInputPin; } ;
 struct TYPE_12__ {scalar_t__ EndOfFile; TYPE_2__ Parser; } ;
-typedef  TYPE_3__ WAVEParserImpl ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_14__ {int /*<<< orphan*/  pin; int /*<<< orphan*/  dwSamplesProcessed; } ;
-struct TYPE_13__ {scalar_t__ rtNext; scalar_t__ rtStop; scalar_t__ rtCurrent; int /*<<< orphan*/  pReader; int /*<<< orphan*/  cbAlign; int /*<<< orphan*/  pAlloc; } ;
-typedef  scalar_t__ REFERENCE_TIME ;
-typedef  TYPE_4__ PullPin ;
-typedef  TYPE_5__ Parser_OutputPin ;
-typedef  TYPE_3__* LPVOID ;
-typedef  int /*<<< orphan*/ * LPBYTE ;
-typedef  scalar_t__ LONGLONG ;
-typedef  int /*<<< orphan*/  IPin ;
-typedef  int /*<<< orphan*/  IMediaSample ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DWORD_PTR ;
+typedef TYPE_3__ WAVEParserImpl ;
+typedef scalar_t__ ULONG ;
+struct TYPE_14__ {int pin; int dwSamplesProcessed; } ;
+struct TYPE_13__ {scalar_t__ rtNext; scalar_t__ rtStop; scalar_t__ rtCurrent; int pReader; int cbAlign; int pAlloc; } ;
+typedef scalar_t__ REFERENCE_TIME ;
+typedef TYPE_4__ PullPin ;
+typedef TYPE_5__ Parser_OutputPin ;
+typedef TYPE_3__* LPVOID ;
+typedef int * LPBYTE ;
+typedef scalar_t__ LONGLONG ;
+typedef int IPin ;
+typedef int IMediaSample ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD_PTR ;
 
-/* Variables and functions */
- scalar_t__ ALIGNUP (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BYTES_FROM_MEDIATIME (scalar_t__) ; 
- scalar_t__ BaseOutputPinImpl_Deliver (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERR (char*,scalar_t__) ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IAsyncReader_Request (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IMediaSample_GetActualDataLength (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMediaSample_GetPointer (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IMediaSample_GetSize (int /*<<< orphan*/ *) ; 
- scalar_t__ IMediaSample_GetTime (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  IMediaSample_SetDiscontinuity (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMediaSample_SetPreroll (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMediaSample_SetSyncPoint (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IMediaSample_SetTime (int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ IMemAllocator_GetBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ IPin_ConnectedTo (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IPin_EndOfStream (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPin_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ MEDIATIME_FROM_BYTES (scalar_t__) ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ VFW_E_NOT_CONNECTED ; 
- scalar_t__ VFW_E_WRONG_STATE ; 
- scalar_t__ bytepos_to_duration (TYPE_3__*,scalar_t__) ; 
- TYPE_5__* unsafe_impl_Parser_OutputPin_from_IPin (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ALIGNUP (int ,int ) ;
+ int BYTES_FROM_MEDIATIME (scalar_t__) ;
+ scalar_t__ BaseOutputPinImpl_Deliver (int *,int *) ;
+ int ERR (char*,scalar_t__) ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ IAsyncReader_Request (int ,int *,int ) ;
+ scalar_t__ IMediaSample_GetActualDataLength (int *) ;
+ int IMediaSample_GetPointer (int *,int **) ;
+ scalar_t__ IMediaSample_GetSize (int *) ;
+ scalar_t__ IMediaSample_GetTime (int *,scalar_t__*,scalar_t__*) ;
+ int IMediaSample_SetDiscontinuity (int *,int ) ;
+ int IMediaSample_SetPreroll (int *,int ) ;
+ int IMediaSample_SetSyncPoint (int *,int ) ;
+ int IMediaSample_SetTime (int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ IMemAllocator_GetBuffer (int ,int **,int *,int *,int ) ;
+ scalar_t__ IPin_ConnectedTo (int ,int **) ;
+ scalar_t__ IPin_EndOfStream (int *) ;
+ int IPin_Release (int *) ;
+ scalar_t__ MEDIATIME_FROM_BYTES (scalar_t__) ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,...) ;
+ int TRUE ;
+ scalar_t__ VFW_E_NOT_CONNECTED ;
+ scalar_t__ VFW_E_WRONG_STATE ;
+ scalar_t__ bytepos_to_duration (TYPE_3__*,scalar_t__) ;
+ TYPE_5__* unsafe_impl_Parser_OutputPin_from_IPin (int ) ;
 
 __attribute__((used)) static HRESULT WAVEParser_Sample(LPVOID iface, IMediaSample * pSample, DWORD_PTR cookie)
 {
     WAVEParserImpl *This = iface;
-    LPBYTE pbSrcStream = NULL;
+    LPBYTE pbSrcStream = ((void*)0);
     ULONG cbSrcStream = 0;
     REFERENCE_TIME tStart, tStop;
     HRESULT hr;
-    IMediaSample *newsample = NULL;
+    IMediaSample *newsample = ((void*)0);
     Parser_OutputPin *pOutputPin;
     PullPin *pin = This->Parser.pInputPin;
 
@@ -80,7 +80,7 @@ __attribute__((used)) static HRESULT WAVEParser_Sample(LPVOID iface, IMediaSampl
 
     cbSrcStream = IMediaSample_GetActualDataLength(pSample);
 
-    /* Flush occurring */
+
     if (cbSrcStream == 0)
     {
         TRACE(".. Why do I need you?\n");
@@ -90,12 +90,12 @@ __attribute__((used)) static HRESULT WAVEParser_Sample(LPVOID iface, IMediaSampl
     pOutputPin = unsafe_impl_Parser_OutputPin_from_IPin(This->Parser.ppPins[1]);
 
     if (SUCCEEDED(hr))
-        hr = IMemAllocator_GetBuffer(pin->pAlloc, &newsample, NULL, NULL, 0);
+        hr = IMemAllocator_GetBuffer(pin->pAlloc, &newsample, ((void*)0), ((void*)0), 0);
 
     if (SUCCEEDED(hr))
     {
         LONGLONG rtSampleStart = pin->rtNext;
-        /* Add 4 for the next header, which should hopefully work */
+
         LONGLONG rtSampleStop = rtSampleStart + MEDIATIME_FROM_BYTES(IMediaSample_GetSize(newsample));
 
         if (rtSampleStop > pin->rtStop)
@@ -129,7 +129,7 @@ __attribute__((used)) static HRESULT WAVEParser_Sample(LPVOID iface, IMediaSampl
         if (hr != S_OK && hr != S_FALSE && hr != VFW_E_WRONG_STATE)
             ERR("Error sending sample (%x)\n", hr);
         else if (hr != S_OK)
-            /* Unset progression if denied! */
+
             This->Parser.pInputPin->rtCurrent = tStart;
     }
 
@@ -159,7 +159,7 @@ __attribute__((used)) static HRESULT WAVEParser_Sample(LPVOID iface, IMediaSampl
             }
         }
 
-        /* Force the pullpin thread to stop */
+
         hr = S_FALSE;
     }
 

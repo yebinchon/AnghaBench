@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,int) ; 
- int nf10bmac_detach (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nf10bmac_detach_resources (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int device_printf (int ,char*,int) ;
+ int nf10bmac_detach (int ) ;
+ int nf10bmac_detach_resources (int ) ;
 
 int
 nf10bmac_detach_dev(device_t dev)
 {
-	int error;
+ int error;
 
-	error = nf10bmac_detach(dev);
-	if (error) {
-		/* We are basically in undefined state now. */
-		device_printf(dev, "nf10bmac_detach() failed: %d\n", error);
-		return (error);
-	}
+ error = nf10bmac_detach(dev);
+ if (error) {
 
-	nf10bmac_detach_resources(dev);
+  device_printf(dev, "nf10bmac_detach() failed: %d\n", error);
+  return (error);
+ }
 
-	return (0);
+ nf10bmac_detach_resources(dev);
+
+ return (0);
 }

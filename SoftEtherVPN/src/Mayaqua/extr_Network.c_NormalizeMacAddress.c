@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-struct TYPE_4__ {int Size; int /*<<< orphan*/  Buf; } ;
-typedef  TYPE_1__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BinToStr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_1__*) ; 
- TYPE_1__* StrToBin (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
+struct TYPE_4__ {int Size; int Buf; } ;
+typedef TYPE_1__ BUF ;
+
+
+ int BinToStr (char*,int ,int ,int) ;
+ int FreeBuf (TYPE_1__*) ;
+ TYPE_1__* StrToBin (char*) ;
 
 bool NormalizeMacAddress(char *dst, UINT size, char *src)
 {
-	BUF *b;
-	bool ret = false;
-	// Validate arguments
-	if (dst == NULL || src == NULL)
-	{
-		return false;
-	}
+ BUF *b;
+ bool ret = 0;
 
-	b = StrToBin(src);
+ if (dst == ((void*)0) || src == ((void*)0))
+ {
+  return 0;
+ }
 
-	if (b != NULL && b->Size == 6)
-	{
-		ret = true;
+ b = StrToBin(src);
 
-		BinToStr(dst, size, b->Buf, b->Size);
-	}
+ if (b != ((void*)0) && b->Size == 6)
+ {
+  ret = 1;
 
-	FreeBuf(b);
+  BinToStr(dst, size, b->Buf, b->Size);
+ }
 
-	return ret;
+ FreeBuf(b);
+
+ return ret;
 }

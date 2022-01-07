@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int VCOS_UNSIGNED ;
-struct TYPE_15__ {int /*<<< orphan*/  event; int /*<<< orphan*/  comp; int /*<<< orphan*/  sema; TYPE_3__* out_list; TYPE_3__* in_list; } ;
+
+
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int VCOS_UNSIGNED ;
+struct TYPE_15__ {int event; int comp; int sema; TYPE_3__* out_list; TYPE_3__* in_list; } ;
 struct TYPE_14__ {int nInputPortIndex; int nOutputPortIndex; struct TYPE_14__* pAppPrivate; void* pBuffer; } ;
-struct TYPE_12__ {int /*<<< orphan*/  nVersion; } ;
+struct TYPE_12__ {int nVersion; } ;
 struct TYPE_13__ {int nSize; int nPortIndex; scalar_t__ bEnabled; int nBufferCountActual; scalar_t__ nBufferSize; scalar_t__ eDir; TYPE_1__ nVersion; } ;
-typedef  int OMX_U32 ;
-typedef  TYPE_2__ OMX_PARAM_PORTDEFINITIONTYPE ;
-typedef  scalar_t__ OMX_ERRORTYPE ;
-typedef  TYPE_3__ OMX_BUFFERHEADERTYPE ;
-typedef  int /*<<< orphan*/  (* ILCLIENT_FREE_T ) (void*,void*) ;
-typedef  TYPE_4__ COMPONENT_T ;
+typedef int OMX_U32 ;
+typedef TYPE_2__ OMX_PARAM_PORTDEFINITIONTYPE ;
+typedef scalar_t__ OMX_ERRORTYPE ;
+typedef TYPE_3__ OMX_BUFFERHEADERTYPE ;
+typedef int (* ILCLIENT_FREE_T ) (void*,void*) ;
+typedef TYPE_4__ COMPONENT_T ;
 
-/* Variables and functions */
- int ILCLIENT_EMPTY_BUFFER_DONE ; 
- int ILCLIENT_EVENT_ERROR ; 
- int ILCLIENT_FILL_BUFFER_DONE ; 
- int ILCLIENT_PORT_DISABLED ; 
- int /*<<< orphan*/  OMX_CommandPortDisable ; 
- scalar_t__ OMX_DirInput ; 
- scalar_t__ OMX_ErrorNone ; 
- int /*<<< orphan*/  OMX_EventCmdComplete ; 
- int /*<<< orphan*/  OMX_EventError ; 
- scalar_t__ OMX_FreeBuffer (int /*<<< orphan*/ ,int,TYPE_3__*) ; 
- scalar_t__ OMX_GetParameter (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  OMX_IndexParamPortDefinition ; 
- scalar_t__ OMX_SendCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__ OMX_TRUE ; 
- int /*<<< orphan*/  OMX_VERSION ; 
- int /*<<< orphan*/  VCOS_OR_CONSUME ; 
- scalar_t__ ilclient_remove_event (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ ilclient_wait_for_command_complete (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vc_assert (int) ; 
- int /*<<< orphan*/  vcos_event_flags_get (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  vcos_free (void*) ; 
- int /*<<< orphan*/  vcos_semaphore_post (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_semaphore_wait (int /*<<< orphan*/ *) ; 
+
+ int ILCLIENT_EMPTY_BUFFER_DONE ;
+ int ILCLIENT_EVENT_ERROR ;
+ int ILCLIENT_FILL_BUFFER_DONE ;
+ int ILCLIENT_PORT_DISABLED ;
+ int OMX_CommandPortDisable ;
+ scalar_t__ OMX_DirInput ;
+ scalar_t__ OMX_ErrorNone ;
+ int OMX_EventCmdComplete ;
+ int OMX_EventError ;
+ scalar_t__ OMX_FreeBuffer (int ,int,TYPE_3__*) ;
+ scalar_t__ OMX_GetParameter (int ,int ,TYPE_2__*) ;
+ int OMX_IndexParamPortDefinition ;
+ scalar_t__ OMX_SendCommand (int ,int ,int,int *) ;
+ scalar_t__ OMX_TRUE ;
+ int OMX_VERSION ;
+ int VCOS_OR_CONSUME ;
+ scalar_t__ ilclient_remove_event (TYPE_4__*,int ,int ,int,int,int ) ;
+ scalar_t__ ilclient_wait_for_command_complete (TYPE_4__*,int ,int) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int vc_assert (int) ;
+ int vcos_event_flags_get (int *,int,int ,int,int*) ;
+ int vcos_free (void*) ;
+ int vcos_semaphore_post (int *) ;
+ int vcos_semaphore_wait (int *) ;
 
 void ilclient_disable_port_buffers(COMPONENT_T *comp, int portIndex,
                                    OMX_BUFFERHEADERTYPE *bufferList,
@@ -63,34 +63,34 @@ void ilclient_disable_port_buffers(COMPONENT_T *comp, int portIndex,
    OMX_PARAM_PORTDEFINITIONTYPE portdef;
    int num;
 
-   // get the buffers off the relevant queue
+
    memset(&portdef, 0, sizeof(OMX_PARAM_PORTDEFINITIONTYPE));
    portdef.nSize = sizeof(OMX_PARAM_PORTDEFINITIONTYPE);
    portdef.nVersion.nVersion = OMX_VERSION;
    portdef.nPortIndex = portIndex;
 
-   // work out buffer requirements, check port is in the right state
+
    error = OMX_GetParameter(comp->comp, OMX_IndexParamPortDefinition, &portdef);
    if(error != OMX_ErrorNone || portdef.bEnabled != OMX_TRUE || portdef.nBufferCountActual == 0 || portdef.nBufferSize == 0)
       return;
 
    num = portdef.nBufferCountActual;
 
-   error = OMX_SendCommand(comp->comp, OMX_CommandPortDisable, portIndex, NULL);
+   error = OMX_SendCommand(comp->comp, OMX_CommandPortDisable, portIndex, ((void*)0));
    vc_assert(error == OMX_ErrorNone);
 
    while(num > 0)
    {
       VCOS_UNSIGNED set;
 
-      if(list == NULL)
+      if(list == ((void*)0))
       {
          vcos_semaphore_wait(&comp->sema);
 
-         // take buffers for this port off the relevant queue
+
          head = portdef.eDir == OMX_DirInput ? &comp->in_list : &comp->out_list;
          clist = *head;
-         prev = NULL;
+         prev = ((void*)0);
 
          while(clist)
          {
@@ -138,7 +138,7 @@ void ilclient_disable_port_buffers(COMPONENT_T *comp, int portIndex,
          OMX_U32 mask = ILCLIENT_PORT_DISABLED | ILCLIENT_EVENT_ERROR;
          mask |= (portdef.eDir == OMX_DirInput ? ILCLIENT_EMPTY_BUFFER_DONE : ILCLIENT_FILL_BUFFER_DONE);
 
-         // also wait for command complete/error in case we didn't have all the buffers allocated
+
          vcos_event_flags_get(&comp->event, mask, VCOS_OR_CONSUME, -1, &set);
 
          if((set & ILCLIENT_EVENT_ERROR) && ilclient_remove_event(comp, OMX_EventError, 0, 1, 1, 0) >= 0)

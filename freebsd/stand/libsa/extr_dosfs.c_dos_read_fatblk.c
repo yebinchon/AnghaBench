@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* u_int ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void* u_int ;
 struct open_file {int dummy; } ;
-typedef  size_t daddr_t ;
-struct TYPE_3__ {void* fatbuf_blknum; int /*<<< orphan*/  fatbuf; scalar_t__ lsnfat; int /*<<< orphan*/  spf; } ;
-typedef  TYPE_1__ DOS_FS ;
+typedef size_t daddr_t ;
+struct TYPE_3__ {void* fatbuf_blknum; int fatbuf; scalar_t__ lsnfat; int spf; } ;
+typedef TYPE_1__ DOS_FS ;
 
-/* Variables and functions */
- size_t FATBLKSZ ; 
- scalar_t__ bytsec (size_t) ; 
- int ioget (struct open_file*,scalar_t__,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t) ; 
- size_t secbyt (int /*<<< orphan*/ ) ; 
+
+ size_t FATBLKSZ ;
+ scalar_t__ bytsec (size_t) ;
+ int ioget (struct open_file*,scalar_t__,int ,size_t) ;
+ int memset (int ,int ,size_t) ;
+ size_t secbyt (int ) ;
 
 __attribute__((used)) static int
 dos_read_fatblk(DOS_FS *fs, struct open_file *fd, u_int blknum)

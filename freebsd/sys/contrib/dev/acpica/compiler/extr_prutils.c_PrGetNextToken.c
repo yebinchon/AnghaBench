@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ strchr (char*,char) ; 
+ scalar_t__ strchr (char*,char) ;
 
 char *
 PrGetNextToken (
-    char                    *Buffer,
-    char                    *MatchString,
-    char                    **Next)
+    char *Buffer,
+    char *MatchString,
+    char **Next)
 {
-    char                    *TokenStart;
+    char *TokenStart;
 
 
     if (!Buffer)
     {
-        /* Use Next if it is valid */
+
 
         Buffer = *Next;
         if (!(*Next))
         {
-            return (NULL);
+            return (((void*)0));
         }
     }
 
-    /* Skip any leading delimiters */
+
 
     while (*Buffer)
     {
@@ -48,17 +40,17 @@ PrGetNextToken (
         }
     }
 
-    /* Anything left on the line? */
+
 
     if (!(*Buffer))
     {
-        *Next = NULL;
-        return (NULL);
+        *Next = ((void*)0);
+        return (((void*)0));
     }
 
     TokenStart = Buffer;
 
-    /* Find the end of this token */
+
 
     while (*Buffer)
     {
@@ -68,7 +60,7 @@ PrGetNextToken (
             *Next = Buffer+1;
             if (!**Next)
             {
-                *Next = NULL;
+                *Next = ((void*)0);
             }
 
             return (TokenStart);
@@ -77,6 +69,6 @@ PrGetNextToken (
         Buffer++;
     }
 
-    *Next = NULL;
+    *Next = ((void*)0);
     return (TokenStart);
 }

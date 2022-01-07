@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_12__ {int /*<<< orphan*/  data; } ;
-struct TYPE_11__ {int NumFolders; int /*<<< orphan*/  PackSizes; TYPE_1__* Folders; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+struct TYPE_12__ {int data; } ;
+struct TYPE_11__ {int NumFolders; int PackSizes; TYPE_1__* Folders; } ;
 struct TYPE_10__ {scalar_t__ UnpackCRC; scalar_t__ UnpackCRCDefined; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  int /*<<< orphan*/  ILookInStream ;
-typedef  TYPE_1__ CSzFolder ;
-typedef  int /*<<< orphan*/  CSzData ;
-typedef  TYPE_2__ CSzAr ;
-typedef  TYPE_3__ CBuf ;
+typedef int SRes ;
+typedef int ISzAlloc ;
+typedef int ILookInStream ;
+typedef TYPE_1__ CSzFolder ;
+typedef int CSzData ;
+typedef TYPE_2__ CSzAr ;
+typedef TYPE_3__ CBuf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Buf_Create (TYPE_3__*,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ CrcCalc (int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  LookInStream_SeekTo (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_ARCHIVE ; 
- int /*<<< orphan*/  SZ_ERROR_CRC ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  SzFolder_Decode (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- scalar_t__ SzFolder_GetUnpackSize (TYPE_1__*) ; 
- int /*<<< orphan*/  SzReadStreamsInfo (int /*<<< orphan*/ *,scalar_t__*,TYPE_2__*,int /*<<< orphan*/ *,scalar_t__**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int Buf_Create (TYPE_3__*,size_t,int *) ;
+ scalar_t__ CrcCalc (int ,size_t) ;
+ int LookInStream_SeekTo (int *,scalar_t__) ;
+ int RINOK (int ) ;
+ int SZ_ERROR_ARCHIVE ;
+ int SZ_ERROR_CRC ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
+ int SzFolder_Decode (TYPE_1__*,int ,int *,scalar_t__,int ,size_t,int *) ;
+ scalar_t__ SzFolder_GetUnpackSize (TYPE_1__*) ;
+ int SzReadStreamsInfo (int *,scalar_t__*,TYPE_2__*,int *,scalar_t__**,int **,int **,int *,int *) ;
 
 __attribute__((used)) static SRes SzReadAndDecodePackedStreams2(
       ILookInStream *inStream,
@@ -59,7 +59,7 @@ __attribute__((used)) static SRes SzReadAndDecodePackedStreams2(
    SRes res;
 
    RINOK(SzReadStreamsInfo(sd, &dataStartPos, p,
-            &numUnpackStreams,  unpackSizes, digestsDefined, digests,
+            &numUnpackStreams, unpackSizes, digestsDefined, digests,
             allocTemp, allocTemp));
 
    dataStartPos += baseOffset;

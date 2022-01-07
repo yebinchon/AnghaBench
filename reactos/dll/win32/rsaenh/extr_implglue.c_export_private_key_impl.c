@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  e; int /*<<< orphan*/  d; int /*<<< orphan*/  qP; int /*<<< orphan*/  dQ; int /*<<< orphan*/  dP; int /*<<< orphan*/  q; int /*<<< orphan*/  p; int /*<<< orphan*/  N; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int e; int d; int qP; int dQ; int dP; int q; int p; int N; } ;
 struct TYPE_5__ {TYPE_1__ rsa; } ;
-typedef  TYPE_2__ KEY_CONTEXT ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ KEY_CONTEXT ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mp_get_int (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_to_unsigned_bin (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int mp_unsigned_bin_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reverse_bytes (int /*<<< orphan*/ *,int) ; 
+
+ int TRUE ;
+ int memset (int *,int ,int) ;
+ scalar_t__ mp_get_int (int *) ;
+ int mp_to_unsigned_bin (int *,int *) ;
+ int mp_unsigned_bin_size (int *) ;
+ int reverse_bytes (int *,int) ;
 
 BOOL export_private_key_impl(BYTE *pbDest, const KEY_CONTEXT *pKeyContext, DWORD dwKeyLen,
                              DWORD *pdwPubExp)

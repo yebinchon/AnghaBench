@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct d3dcompiler_shader_signature {int /*<<< orphan*/  string_data; int /*<<< orphan*/  elements; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,struct d3dcompiler_shader_signature*) ; 
+
+
+
+struct d3dcompiler_shader_signature {int string_data; int elements; } ;
+
+
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int ) ;
+ int TRACE (char*,struct d3dcompiler_shader_signature*) ;
 
 __attribute__((used)) static void free_signature(struct d3dcompiler_shader_signature *sig)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int is_corner; int num_vary_x; int num_vary_y; void** num_color; void* short_side_len; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ stbhw_config ;
 
-/* Variables and functions */
- void* atoi (char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  fputs (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ malloc (int) ; 
- char* stbhw_get_last_error () ; 
- int /*<<< orphan*/  stbhw_get_template_size (TYPE_1__*,int*,int*) ; 
- scalar_t__ stbhw_make_template (TYPE_1__*,unsigned char*,int,int,int) ; 
- int /*<<< orphan*/  stbi_write_png (char*,int,int,int,unsigned char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int is_corner; int num_vary_x; int num_vary_y; void** num_color; void* short_side_len; int member_0; } ;
+typedef TYPE_1__ stbhw_config ;
+
+
+ void* atoi (char*) ;
+ int fprintf (int ,char*,char*) ;
+ int fputs (char*,int ) ;
+ scalar_t__ malloc (int) ;
+ char* stbhw_get_last_error () ;
+ int stbhw_get_template_size (TYPE_1__*,int*,int*) ;
+ scalar_t__ stbhw_make_template (TYPE_1__*,unsigned char*,int,int,int) ;
+ int stbi_write_png (char*,int,int,int,unsigned char*,int) ;
+ int stderr ;
 
 int main(int argc, char **argv)
 {
@@ -31,12 +31,12 @@ int main(int argc, char **argv)
    int w,h, num_colors,i;
    unsigned char *data;
 
-   if (argc == 1)  goto usage;
-   if (argc  < 3)  goto error;
+   if (argc == 1) goto usage;
+   if (argc < 3) goto error;
 
    switch (argv[2][0]) {
       case 'c':
-         if (argc <  8 || argc > 10)
+         if (argc < 8 || argc > 10)
             goto error;
          num_colors = 4;
          c.is_corner = 1;

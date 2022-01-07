@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- double INT_MAX ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,char const*) ; 
- double av_strtod (char const*,char**) ; 
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ double INT_MAX ;
+ int av_log (void*,int ,char*,char const*) ;
+ double av_strtod (char const*,char**) ;
 
 int ff_parse_sample_rate(int *ret, const char *arg, void *log_ctx)
 {

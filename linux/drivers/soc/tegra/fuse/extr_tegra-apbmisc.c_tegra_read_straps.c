@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  readl_relaxed (scalar_t__) ; 
- scalar_t__ strapping_base ; 
+
+
+
+typedef int u32 ;
+
+
+ int readl_relaxed (scalar_t__) ;
+ scalar_t__ strapping_base ;
 
 u32 tegra_read_straps(void)
 {
-	if (strapping_base)
-		return readl_relaxed(strapping_base);
-	else
-		return 0;
+ if (strapping_base)
+  return readl_relaxed(strapping_base);
+ else
+  return 0;
 }

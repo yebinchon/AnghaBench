@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct node_editor {struct node* end; struct node* begin; } ;
 struct node {struct node* next; struct node* prev; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void
 node_editor_push(struct node_editor *editor, struct node *node)
 {
     if (!editor->begin) {
-        node->next = NULL;
-        node->prev = NULL;
+        node->next = ((void*)0);
+        node->prev = ((void*)0);
         editor->begin = node;
         editor->end = node;
     } else {
         node->prev = editor->end;
         if (editor->end)
             editor->end->next = node;
-        node->next = NULL;
+        node->next = ((void*)0);
         editor->end = node;
     }
 }

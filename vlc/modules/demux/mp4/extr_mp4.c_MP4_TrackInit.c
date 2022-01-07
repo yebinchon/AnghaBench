@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_4__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int i_timescale; int /*<<< orphan*/  i_track_ID; int /*<<< orphan*/  const* p_track; int /*<<< orphan*/  fmt; } ;
-typedef  TYPE_1__ mp4_track_t ;
-struct TYPE_6__ {int /*<<< orphan*/  i_track_ID; } ;
-typedef  int /*<<< orphan*/  MP4_Box_t ;
 
-/* Variables and functions */
- TYPE_4__* BOXDATA (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * MP4_BoxGet (int /*<<< orphan*/  const*,char*) ; 
- int /*<<< orphan*/  UNKNOWN_ES ; 
- int /*<<< orphan*/  es_format_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ likely (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_4__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int i_timescale; int i_track_ID; int const* p_track; int fmt; } ;
+typedef TYPE_1__ mp4_track_t ;
+struct TYPE_6__ {int i_track_ID; } ;
+typedef int MP4_Box_t ;
+
+
+ TYPE_4__* BOXDATA (int const*) ;
+ int * MP4_BoxGet (int const*,char*) ;
+ int UNKNOWN_ES ;
+ int es_format_Init (int *,int ,int ) ;
+ scalar_t__ likely (int const*) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void MP4_TrackInit( mp4_track_t *p_track, const MP4_Box_t *p_trackbox )
 {

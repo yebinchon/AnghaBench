@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_fs_info {int /*<<< orphan*/  csum_shash; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_free_shash (int /*<<< orphan*/ ) ; 
+
+
+
+struct btrfs_fs_info {int csum_shash; } ;
+
+
+ int crypto_free_shash (int ) ;
 
 __attribute__((used)) static void btrfs_free_csum_hash(struct btrfs_fs_info *fs_info)
 {
-	crypto_free_shash(fs_info->csum_shash);
+ crypto_free_shash(fs_info->csum_shash);
 }

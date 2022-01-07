@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {char* key; char* value; } ;
-struct TYPE_8__ {int /*<<< orphan*/  metadata; } ;
-typedef  TYPE_1__ AVFormatContext ;
-typedef  TYPE_2__ AVDictionaryEntry ;
+struct TYPE_8__ {int metadata; } ;
+typedef TYPE_1__ AVFormatContext ;
+typedef TYPE_2__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_DICT_IGNORE_SUFFIX ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- TYPE_2__* av_dict_get (int /*<<< orphan*/ ,char*,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avformat_close_input (TYPE_1__**) ; 
- int avformat_find_stream_info (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int avformat_open_input (TYPE_1__**,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
+
+ int AV_DICT_IGNORE_SUFFIX ;
+ int AV_LOG_ERROR ;
+ TYPE_2__* av_dict_get (int ,char*,TYPE_2__*,int ) ;
+ int av_log (int *,int ,char*) ;
+ int avformat_close_input (TYPE_1__**) ;
+ int avformat_find_stream_info (TYPE_1__*,int *) ;
+ int avformat_open_input (TYPE_1__**,char*,int *,int *) ;
+ int printf (char*,char*,...) ;
 
 int main (int argc, char **argv)
 {
-    AVFormatContext *fmt_ctx = NULL;
-    AVDictionaryEntry *tag = NULL;
+    AVFormatContext *fmt_ctx = ((void*)0);
+    AVDictionaryEntry *tag = ((void*)0);
     int ret;
 
     if (argc != 2) {
@@ -40,11 +40,11 @@ int main (int argc, char **argv)
         return 1;
     }
 
-    if ((ret = avformat_open_input(&fmt_ctx, argv[1], NULL, NULL)))
+    if ((ret = avformat_open_input(&fmt_ctx, argv[1], ((void*)0), ((void*)0))))
         return ret;
 
-    if ((ret = avformat_find_stream_info(fmt_ctx, NULL)) < 0) {
-        av_log(NULL, AV_LOG_ERROR, "Cannot find stream information\n");
+    if ((ret = avformat_find_stream_info(fmt_ctx, ((void*)0))) < 0) {
+        av_log(((void*)0), AV_LOG_ERROR, "Cannot find stream information\n");
         return ret;
     }
 

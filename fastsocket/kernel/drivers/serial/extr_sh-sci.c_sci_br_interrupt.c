@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uart_port {int dummy; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  SCxSR ; 
- int /*<<< orphan*/  SCxSR_BREAK_CLEAR (struct uart_port*) ; 
- int /*<<< orphan*/  sci_handle_breaks (struct uart_port*) ; 
- int /*<<< orphan*/  sci_out (struct uart_port*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int IRQ_HANDLED ;
+ int SCxSR ;
+ int SCxSR_BREAK_CLEAR (struct uart_port*) ;
+ int sci_handle_breaks (struct uart_port*) ;
+ int sci_out (struct uart_port*,int ,int ) ;
 
 __attribute__((used)) static irqreturn_t sci_br_interrupt(int irq, void *ptr)
 {
-	struct uart_port *port = ptr;
+ struct uart_port *port = ptr;
 
-	/* Handle BREAKs */
-	sci_handle_breaks(port);
-	sci_out(port, SCxSR, SCxSR_BREAK_CLEAR(port));
 
-	return IRQ_HANDLED;
+ sci_handle_breaks(port);
+ sci_out(port, SCxSR, SCxSR_BREAK_CLEAR(port));
+
+ return IRQ_HANDLED;
 }

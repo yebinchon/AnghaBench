@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct comedi_device {int /*<<< orphan*/  minor; scalar_t__ iobase; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADQ12B_SIZE ; 
- int /*<<< orphan*/  devpriv ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_region (scalar_t__,int /*<<< orphan*/ ) ; 
+
+
+
+struct comedi_device {int minor; scalar_t__ iobase; } ;
+
+
+ int ADQ12B_SIZE ;
+ int devpriv ;
+ int kfree (int ) ;
+ int printk (char*,int ) ;
+ int release_region (scalar_t__,int ) ;
 
 __attribute__((used)) static int adq12b_detach(struct comedi_device *dev)
 {
-	if (dev->iobase)
-		release_region(dev->iobase, ADQ12B_SIZE);
+ if (dev->iobase)
+  release_region(dev->iobase, ADQ12B_SIZE);
 
-	kfree(devpriv);
+ kfree(devpriv);
 
-	printk("comedi%d: adq12b: removed\n", dev->minor);
+ printk("comedi%d: adq12b: removed\n", dev->minor);
 
-	return 0;
+ return 0;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ bom; scalar_t__ readed; } ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  int BYTE ;
-typedef  TYPE_1__ BSCallback ;
+typedef int IStream ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+typedef TYPE_1__ BSCallback ;
 
-/* Variables and functions */
- scalar_t__ BOM_NONE ; 
- scalar_t__ BOM_UTF16 ; 
- scalar_t__ BOM_UTF8 ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,void*,int,int*) ; 
- int /*<<< orphan*/  memmove (int*,int*,int) ; 
+
+ scalar_t__ BOM_NONE ;
+ scalar_t__ BOM_UTF16 ;
+ scalar_t__ BOM_UTF8 ;
+ int IStream_Read (int *,void*,int,int*) ;
+ int memmove (int*,int*,int) ;
 
 HRESULT read_stream(BSCallback *This, IStream *stream, void *buf, DWORD size, DWORD *ret_size)
 {

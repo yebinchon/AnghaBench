@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_ext_large_t ;
-struct tree_payload {int /*<<< orphan*/  date; int /*<<< orphan*/  value; int /*<<< orphan*/  flags; scalar_t__ text; int /*<<< orphan*/  global_id; } ;
-typedef  int /*<<< orphan*/  object_id_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * M_global_id_list ; 
- int /*<<< orphan*/  M_obj_id_list ; 
- int M_tot_entries ; 
- scalar_t__ NODE_TYPE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OARR_ENTRY (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  OTree ; 
- struct tree_payload* PAYLOAD (int /*<<< orphan*/ *) ; 
- scalar_t__ TF_ZERO ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * listree_replace_large (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  metafile_get_date (int) ; 
- int /*<<< orphan*/  metafile_get_flags (int) ; 
- int /*<<< orphan*/  metafile_get_value (int) ; 
+
+
+
+typedef int tree_ext_large_t ;
+struct tree_payload {int date; int value; int flags; scalar_t__ text; int global_id; } ;
+typedef int object_id_t ;
+
+
+ int * M_global_id_list ;
+ int M_obj_id_list ;
+ int M_tot_entries ;
+ scalar_t__ NODE_TYPE (int *) ;
+ int OARR_ENTRY (int ,int) ;
+ int OTree ;
+ struct tree_payload* PAYLOAD (int *) ;
+ scalar_t__ TF_ZERO ;
+ int assert (int) ;
+ int * listree_replace_large (int *,int ) ;
+ int metafile_get_date (int) ;
+ int metafile_get_flags (int) ;
+ int metafile_get_value (int) ;
 
 __attribute__((used)) static tree_ext_large_t *clone_metafile_entry (int temp_id) {
   assert (temp_id >= 0 && temp_id < M_tot_entries);

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bt_cursor ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_4__ {int /*<<< orphan*/  pBt; scalar_t__ bFastInsert; } ;
-typedef  TYPE_1__ BtDb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_CONTROL_FAST_INSERT_OP ; 
- int /*<<< orphan*/  BT_SEEK_GE ; 
- int /*<<< orphan*/  BT_SEEK_LE ; 
- int MIN (int,int) ; 
- int SQLITE4_INEXACT ; 
- int SQLITE4_NOTFOUND ; 
- int SQLITE4_OK ; 
- int btMinTransaction (TYPE_1__*,int,int*) ; 
- int btRestoreTransaction (TYPE_1__*,int,int) ; 
- int memcmp (void*,void const*,int) ; 
- int /*<<< orphan*/  sqlite4BtControl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite4BtCsrClose (int /*<<< orphan*/ *) ; 
- int sqlite4BtCsrData (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,void const**,int*) ; 
- int sqlite4BtCsrKey (int /*<<< orphan*/ *,void const**,int*) ; 
- int sqlite4BtCsrLast (int /*<<< orphan*/ *) ; 
- int sqlite4BtCsrNext (int /*<<< orphan*/ *) ; 
- int sqlite4BtCsrOpen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sqlite4BtCsrPrev (int /*<<< orphan*/ *) ; 
- int sqlite4BtCsrSeek (int /*<<< orphan*/ *,void*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int bt_cursor ;
+typedef int TestDb ;
+struct TYPE_4__ {int pBt; scalar_t__ bFastInsert; } ;
+typedef TYPE_1__ BtDb ;
+
+
+ int BT_CONTROL_FAST_INSERT_OP ;
+ int BT_SEEK_GE ;
+ int BT_SEEK_LE ;
+ int MIN (int,int) ;
+ int SQLITE4_INEXACT ;
+ int SQLITE4_NOTFOUND ;
+ int SQLITE4_OK ;
+ int btMinTransaction (TYPE_1__*,int,int*) ;
+ int btRestoreTransaction (TYPE_1__*,int,int) ;
+ int memcmp (void*,void const*,int) ;
+ int sqlite4BtControl (int ,int ,int ) ;
+ int sqlite4BtCsrClose (int *) ;
+ int sqlite4BtCsrData (int *,int ,int,void const**,int*) ;
+ int sqlite4BtCsrKey (int *,void const**,int*) ;
+ int sqlite4BtCsrLast (int *) ;
+ int sqlite4BtCsrNext (int *) ;
+ int sqlite4BtCsrOpen (int ,int ,int **) ;
+ int sqlite4BtCsrPrev (int *) ;
+ int sqlite4BtCsrSeek (int *,void*,int,int ) ;
 
 __attribute__((used)) static int bt_scan(
   TestDb *pTestDb,

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct usb_device_request {int /*<<< orphan*/  wLength; scalar_t__* wIndex; int /*<<< orphan*/  wValue; int /*<<< orphan*/  bRequest; int /*<<< orphan*/  bmRequestType; } ;
-struct uipaq_softc {int /*<<< orphan*/  sc_ucom; int /*<<< orphan*/  sc_udev; } ;
+
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint16_t ;
+struct usb_device_request {int wLength; scalar_t__* wIndex; int wValue; int bRequest; int bmRequestType; } ;
+struct uipaq_softc {int sc_ucom; int sc_udev; } ;
 struct ucom_softc {struct uipaq_softc* sc_parent; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UCDC_BREAK_OFF ; 
- int /*<<< orphan*/  UCDC_BREAK_ON ; 
- int /*<<< orphan*/  UCDC_SEND_BREAK ; 
- scalar_t__ UIPAQ_IFACE_INDEX ; 
- int /*<<< orphan*/  USETW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UT_WRITE_CLASS_INTERFACE ; 
- int /*<<< orphan*/  ucom_cfg_do_request (int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct usb_device_request*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int UCDC_BREAK_OFF ;
+ int UCDC_BREAK_ON ;
+ int UCDC_SEND_BREAK ;
+ scalar_t__ UIPAQ_IFACE_INDEX ;
+ int USETW (int ,int ) ;
+ int UT_WRITE_CLASS_INTERFACE ;
+ int ucom_cfg_do_request (int ,int *,struct usb_device_request*,int *,int ,int) ;
 
 __attribute__((used)) static void
 uipaq_cfg_set_break(struct ucom_softc *ucom, uint8_t onoff)
 {
-	struct uipaq_softc *sc = ucom->sc_parent;
-	struct usb_device_request req;
-	uint16_t temp;
+ struct uipaq_softc *sc = ucom->sc_parent;
+ struct usb_device_request req;
+ uint16_t temp;
 
-	temp = onoff ? UCDC_BREAK_ON : UCDC_BREAK_OFF;
+ temp = onoff ? UCDC_BREAK_ON : UCDC_BREAK_OFF;
 
-	req.bmRequestType = UT_WRITE_CLASS_INTERFACE;
-	req.bRequest = UCDC_SEND_BREAK;
-	USETW(req.wValue, temp);
-	req.wIndex[0] = UIPAQ_IFACE_INDEX;
-	req.wIndex[1] = 0;
-	USETW(req.wLength, 0);
+ req.bmRequestType = UT_WRITE_CLASS_INTERFACE;
+ req.bRequest = UCDC_SEND_BREAK;
+ USETW(req.wValue, temp);
+ req.wIndex[0] = UIPAQ_IFACE_INDEX;
+ req.wIndex[1] = 0;
+ USETW(req.wLength, 0);
 
-	ucom_cfg_do_request(sc->sc_udev, &sc->sc_ucom, 
-	    &req, NULL, 0, 1000);
+ ucom_cfg_do_request(sc->sc_udev, &sc->sc_ucom,
+     &req, ((void*)0), 0, 1000);
 }

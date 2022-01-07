@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int X; double Y; } ;
-typedef  int REAL ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_1__ GpPointF ;
-typedef  int /*<<< orphan*/  GpPath ;
+typedef int REAL ;
+typedef int INT ;
+typedef int GpStatus ;
+typedef TYPE_1__ GpPointF ;
+typedef int GpPath ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  FillModeAlternate ; 
- int /*<<< orphan*/  GdipAddPathLine2 (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  GdipClosePathFigure (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipCreatePath (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeletePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GdipReversePath (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_path (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reverse_path ; 
+
+ int ARRAY_SIZE (int ) ;
+ int FALSE ;
+ int FillModeAlternate ;
+ int GdipAddPathLine2 (int *,TYPE_1__*,int) ;
+ int GdipClosePathFigure (int *) ;
+ int GdipCreatePath (int ,int **) ;
+ int GdipDeletePath (int *) ;
+ int GdipReversePath (int *) ;
+ int InvalidParameter ;
+ int Ok ;
+ int expect (int ,int ) ;
+ int ok_path (int *,int ,int ,int ) ;
+ int reverse_path ;
 
 __attribute__((used)) static void test_reverse(void)
 {
@@ -47,11 +47,11 @@ __attribute__((used)) static void test_reverse(void)
 
     GdipCreatePath(FillModeAlternate, &path);
 
-    /* NULL argument */
-    status = GdipReversePath(NULL);
+
+    status = GdipReversePath(((void*)0));
     expect(InvalidParameter, status);
 
-    /* empty path */
+
     status = GdipReversePath(path);
     expect(Ok, status);
 

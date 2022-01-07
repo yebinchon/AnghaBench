@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
+
+
+
+
+struct connection {int Out; } ;
 struct conn_target {int custom_field; } ;
 
-/* Variables and functions */
- scalar_t__ MAX_CLUSTER_SERVERS ; 
- int /*<<< orphan*/  assert (int) ; 
- struct connection** get_connection ; 
- struct conn_target** get_target ; 
- struct connection* get_target_connection (struct conn_target*) ; 
- scalar_t__ get_targets ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+ scalar_t__ MAX_CLUSTER_SERVERS ;
+ int assert (int) ;
+ struct connection** get_connection ;
+ struct conn_target** get_target ;
+ struct connection* get_target_connection (struct conn_target*) ;
+ scalar_t__ get_targets ;
+ int write_out (int *,char*,int) ;
 
 struct connection *get_target_conn (struct conn_target *S) {
   struct connection *d;

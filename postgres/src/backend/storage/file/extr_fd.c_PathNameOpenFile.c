@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  File ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PathNameOpenFilePerm (char const*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pg_file_create_mode ; 
+
+
+
+typedef int File ;
+
+
+ int PathNameOpenFilePerm (char const*,int,int ) ;
+ int pg_file_create_mode ;
 
 File
 PathNameOpenFile(const char *fileName, int fileFlags)
 {
-	return PathNameOpenFilePerm(fileName, fileFlags, pg_file_create_mode);
+ return PathNameOpenFilePerm(fileName, fileFlags, pg_file_create_mode);
 }

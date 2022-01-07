@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct demuxer {scalar_t__ filesize; scalar_t__ filepos; } ;
 struct MPContext {double max_frames; TYPE_1__* opts; struct demuxer* demuxer; } ;
-typedef  scalar_t__ int64_t ;
+typedef scalar_t__ int64_t ;
 struct TYPE_2__ {scalar_t__ play_frames; } ;
 
-/* Variables and functions */
- double MPCLAMP (double,int /*<<< orphan*/ ,int) ; 
- double MPMAX (double,double) ; 
- double get_current_time (struct MPContext*) ; 
- double get_play_end_pts (struct MPContext*) ; 
- double get_play_start_pts (struct MPContext*) ; 
- double get_time_length (struct MPContext*) ; 
+
+ double MPCLAMP (double,int ,int) ;
+ double MPMAX (double,double) ;
+ double get_current_time (struct MPContext*) ;
+ double get_play_end_pts (struct MPContext*) ;
+ double get_play_start_pts (struct MPContext*) ;
+ double get_time_length (struct MPContext*) ;
 
 double get_current_pos_ratio(struct MPContext *mpctx, bool use_range)
 {

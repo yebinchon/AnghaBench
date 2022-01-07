@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct TYPE_9__ {TYPE_1__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
+typedef TYPE_3__ VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
 struct TYPE_8__ {int len; int num_segments; void* flags; void* sequence; void* timestamp; } ;
 struct TYPE_10__ {int* data; int data_len; int frame_len; int type; TYPE_2__ hdr; } ;
-typedef  TYPE_4__ VC_CONTAINER_MODULE_T ;
+typedef TYPE_4__ VC_CONTAINER_MODULE_T ;
 struct TYPE_7__ {TYPE_4__* module; } ;
 
-/* Variables and functions */
- void* BI16 (int*) ; 
- void* BI32 (int*) ; 
- int FRAME_HEADER_LEN ; 
- int MAX_NUM_SEGMENTS ; 
- int READ_BYTES (TYPE_3__*,int*,int) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_EOS ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_FORMAT_INVALID ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
+
+ void* BI16 (int*) ;
+ void* BI32 (int*) ;
+ int FRAME_HEADER_LEN ;
+ int MAX_NUM_SEGMENTS ;
+ int READ_BYTES (TYPE_3__*,int*,int) ;
+ int VC_CONTAINER_ERROR_EOS ;
+ int VC_CONTAINER_ERROR_FORMAT_INVALID ;
+ int VC_CONTAINER_SUCCESS ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T rv9_read_frame_header(VC_CONTAINER_T *p_ctx)
 {
@@ -51,10 +51,10 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T rv9_read_frame_header(VC_CONT
 
    module->frame_len = FRAME_HEADER_LEN + (module->hdr.num_segments * 8) + module->hdr.len;
 
-   // if we have space, we store up the segments in memory so we can tell the frame
-   // type, since most streams have their type byte as the first follow the segment information.
-   // if we don't have space, then we just don't know the frame type, so will not emit timestamp
-   // information as we don't know if it's reliable.
+
+
+
+
    if(module->hdr.num_segments <= MAX_NUM_SEGMENTS)
    {
       uint32_t i;
@@ -73,7 +73,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T rv9_read_frame_header(VC_CONT
          if (valid_seg && seg_offset > offset)
             seg_offset = offset;
 
-         // this boolean field should have only 0 or 1 values
+
          if(valid_seg > 1) return VC_CONTAINER_ERROR_FORMAT_INVALID;
 
          buffer += 8;

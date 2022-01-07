@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_6__ {int /*<<< orphan*/  cbData; int /*<<< orphan*/  pbData; } ;
-struct TYPE_9__ {scalar_t__ valueType; int /*<<< orphan*/  str; TYPE_1__ encoded; } ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_6__ {int cbData; int pbData; } ;
+struct TYPE_9__ {scalar_t__ valueType; int str; TYPE_1__ encoded; } ;
 struct TYPE_7__ {int cbData; scalar_t__ pbData; } ;
 struct TYPE_8__ {scalar_t__ dwValueType; TYPE_2__ Value; } ;
-typedef  TYPE_3__* PCERT_NAME_VALUE ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  size_t DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_3__* PCERT_NAME_VALUE ;
+typedef int LPWSTR ;
+typedef size_t DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (TYPE_4__*) ; 
- int /*<<< orphan*/  CRYPT_DECODE_ALLOC_FLAG ; 
- scalar_t__ CRYPT_E_NOT_CHAR_STRING ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_UNICODE_NAME_VALUE ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,size_t,...) ; 
- scalar_t__ pCryptDecodeObjectEx (size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,size_t*) ; 
- int /*<<< orphan*/  strncmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_4__* unicodeResults ; 
+
+ size_t ARRAY_SIZE (TYPE_4__*) ;
+ int CRYPT_DECODE_ALLOC_FLAG ;
+ scalar_t__ CRYPT_E_NOT_CHAR_STRING ;
+ scalar_t__ GetLastError () ;
+ int LocalFree (int *) ;
+ int X509_UNICODE_NAME_VALUE ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,size_t,...) ;
+ scalar_t__ pCryptDecodeObjectEx (size_t,int ,int ,int ,int ,int *,int **,size_t*) ;
+ int strncmpW (int ,int ,int) ;
+ TYPE_4__* unicodeResults ;
 
 __attribute__((used)) static void test_decodeUnicodeNameValue(DWORD dwEncoding)
 {
@@ -44,14 +44,14 @@ __attribute__((used)) static void test_decodeUnicodeNameValue(DWORD dwEncoding)
 
     for (i = 0; i < ARRAY_SIZE(unicodeResults); i++)
     {
-        BYTE *buf = NULL;
+        BYTE *buf = ((void*)0);
         BOOL ret;
         DWORD size = 0;
 
         ret = pCryptDecodeObjectEx(dwEncoding, X509_UNICODE_NAME_VALUE,
          unicodeResults[i].encoded.pbData, unicodeResults[i].encoded.cbData,
-         CRYPT_DECODE_ALLOC_FLAG, NULL, &buf, &size);
-        ok(ret || broken(GetLastError() == CRYPT_E_NOT_CHAR_STRING /* Win9x */),
+         CRYPT_DECODE_ALLOC_FLAG, ((void*)0), &buf, &size);
+        ok(ret || broken(GetLastError() == CRYPT_E_NOT_CHAR_STRING ),
          "CryptDecodeObjectEx failed: %08x\n", GetLastError());
         if (ret && buf)
         {

@@ -1,76 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_6__ {int /*<<< orphan*/ * lpModeInfo; int /*<<< orphan*/ * lpdwFourCC; int /*<<< orphan*/ * lpDDCBtmp; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * lpLcl; } ;
-typedef  TYPE_1__* LPDDRAWI_DIRECTDRAW_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DX_WINDBG_trace () ; 
- int /*<<< orphan*/  DdDeleteDirectDrawObject (TYPE_2__*) ; 
- int /*<<< orphan*/  DxHeapMemFree (int /*<<< orphan*/ *) ; 
- TYPE_2__ ddgbl ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_6__ {int * lpModeInfo; int * lpdwFourCC; int * lpDDCBtmp; } ;
+struct TYPE_5__ {int * lpLcl; } ;
+typedef TYPE_1__* LPDDRAWI_DIRECTDRAW_INT ;
+
+
+ int DX_WINDBG_trace () ;
+ int DdDeleteDirectDrawObject (TYPE_2__*) ;
+ int DxHeapMemFree (int *) ;
+ TYPE_2__ ddgbl ;
 
 VOID
 Cleanup(LPDDRAWI_DIRECTDRAW_INT This)
 {
     DX_WINDBG_trace();
 
-    if (ddgbl.lpDDCBtmp != NULL)
+    if (ddgbl.lpDDCBtmp != ((void*)0))
     {
         DxHeapMemFree(ddgbl.lpDDCBtmp);
     }
 
-    if (ddgbl.lpdwFourCC != NULL)
+    if (ddgbl.lpdwFourCC != ((void*)0))
     {
         DxHeapMemFree(ddgbl.lpdwFourCC);
     }
 
-    if (ddgbl.lpModeInfo != NULL)
+    if (ddgbl.lpModeInfo != ((void*)0))
     {
         DxHeapMemFree(ddgbl.lpModeInfo);
     }
 
     DdDeleteDirectDrawObject(&ddgbl);
-
-    /*
-       anything else to release?
-    */
-
-    /* release the linked interface */
-    //while (IsBadWritePtr( This->lpVtbl, sizeof( LPDDRAWI_DIRECTDRAW_INT )) )
-    //{
-    //    LPDDRAWI_DIRECTDRAW_INT newThis = This->lpVtbl;
-    //    if (This->lpLcl != NULL)
-    //    {
-    //        DeleteDC(This->lpLcl->hDC);
-    //        DxHeapMemFree(This->lpLcl);
-    //    }
-
-    //    DxHeapMemFree(This);
-    //    This = newThis;
-    //}
-
-    /* release unlinked interface */
-    if (This->lpLcl != NULL)
+    if (This->lpLcl != ((void*)0))
     {
         DxHeapMemFree(This->lpLcl);
     }
-    //if (This != NULL)
-    //{
-    //    DxHeapMemFree(This);
-    //}
+
+
+
+
 
 }

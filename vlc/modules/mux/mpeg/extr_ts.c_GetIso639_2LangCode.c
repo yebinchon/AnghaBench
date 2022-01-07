@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char const* psz_iso639_2T; } ;
-typedef  TYPE_1__ iso639_lang_t ;
+typedef TYPE_1__ iso639_lang_t ;
 
-/* Variables and functions */
- TYPE_1__* GetLang_1 (char const*) ; 
- TYPE_1__* GetLang_2B (char const*) ; 
- TYPE_1__* GetLang_2T (char const*) ; 
- int strlen (char const*) ; 
+
+ TYPE_1__* GetLang_1 (char const*) ;
+ TYPE_1__* GetLang_2B (char const*) ;
+ TYPE_1__* GetLang_2T (char const*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static const char *GetIso639_2LangCode(const char *lang)
 {
@@ -30,11 +30,11 @@ __attribute__((used)) static const char *GetIso639_2LangCode(const char *lang)
     }
     else
     {
-        pl = GetLang_2B(lang);      /* try native code first */
+        pl = GetLang_2B(lang);
         if (!*pl->psz_iso639_2T)
-            pl = GetLang_2T(lang);  /* else fallback to english code */
+            pl = GetLang_2T(lang);
 
     }
 
-    return pl->psz_iso639_2T;   /* returns the english code */
+    return pl->psz_iso639_2T;
 }

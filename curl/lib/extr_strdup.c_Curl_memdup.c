@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* malloc (size_t) ; 
- int /*<<< orphan*/  memcpy (void*,void const*,size_t) ; 
+ void* malloc (size_t) ;
+ int memcpy (void*,void const*,size_t) ;
 
 void *Curl_memdup(const void *src, size_t length)
 {
   void *buffer = malloc(length);
   if(!buffer)
-    return NULL; /* fail */
+    return ((void*)0);
 
   memcpy(buffer, src, length);
 

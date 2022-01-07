@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WARN_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  devm_acpi_dev_release_driver_gpios ; 
- int /*<<< orphan*/  devres_release (struct device*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int WARN_ON (int ) ;
+ int devm_acpi_dev_release_driver_gpios ;
+ int devres_release (struct device*,int ,int *,int *) ;
 
 void devm_acpi_dev_remove_driver_gpios(struct device *dev)
 {
-	WARN_ON(devres_release(dev, devm_acpi_dev_release_driver_gpios, NULL, NULL));
+ WARN_ON(devres_release(dev, devm_acpi_dev_release_driver_gpios, ((void*)0), ((void*)0)));
 }

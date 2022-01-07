@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_diff_callbacks4_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_tree_processor_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/ * svn_diff__tree_processor_copy_as_changed_create (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_wc__diff7 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__wrap_diff_callbacks (int /*<<< orphan*/  const**,int /*<<< orphan*/  const*,void*,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc_diff_callbacks4_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_tree_processor_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_ERR (int ) ;
+ scalar_t__ TRUE ;
+ int * svn_diff__tree_processor_copy_as_changed_create (int const*,int *) ;
+ int * svn_error_trace (int ) ;
+ int svn_wc__diff7 (int *,int *,int *,char const*,int ,scalar_t__,int const*,int const*,int ,void*,int *,int *) ;
+ int svn_wc__wrap_diff_callbacks (int const**,int const*,void*,scalar_t__,int *,int *) ;
 
 svn_error_t *
 svn_wc_diff6(svn_wc_context_t *wc_ctx,
@@ -58,7 +58,7 @@ svn_wc_diff6(svn_wc_context_t *wc_ctx,
     processor = svn_diff__tree_processor_copy_as_changed_create(processor,
                                                                 scratch_pool);
 
-  return svn_error_trace(svn_wc__diff7(NULL, NULL,
+  return svn_error_trace(svn_wc__diff7(((void*)0), ((void*)0),
                                        wc_ctx, local_abspath,
                                        depth,
                                        ignore_ancestry,

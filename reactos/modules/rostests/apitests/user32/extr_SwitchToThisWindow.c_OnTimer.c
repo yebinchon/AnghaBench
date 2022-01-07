@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/ * HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DestroyWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/ * GetActiveWindow () ; 
- int /*<<< orphan*/  GetDesktopWindow () ; 
- int /*<<< orphan*/ * GetFocus () ; 
- int /*<<< orphan*/ * GetForegroundWindow () ; 
- int /*<<< orphan*/  KillTimer (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SetActiveWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetForegroundWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetTimer (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SwitchToThisWindow (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TIMER_INTERVAL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  s_bTracing ; 
- int s_nWM_ACTIVATE ; 
- int s_nWM_NCACTIVATE ; 
- int s_nWM_SYSCOMMAND_NOT_SC_RESTORE ; 
- int s_nWM_SYSCOMMAND_SC_RESTORE ; 
- int s_nWM_WINDOWPOSCHANGING ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+
+
+typedef int UINT ;
+typedef int * HWND ;
+
+
+ int CloseWindow (int *) ;
+ int DestroyWindow (int *) ;
+ int FALSE ;
+ int * GetActiveWindow () ;
+ int GetDesktopWindow () ;
+ int * GetFocus () ;
+ int * GetForegroundWindow () ;
+ int KillTimer (int *,int) ;
+ int SetActiveWindow (int ) ;
+ int SetForegroundWindow (int ) ;
+ int SetTimer (int *,int,int ,int *) ;
+ int SwitchToThisWindow (int *,int ) ;
+ int TIMER_INTERVAL ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ int s_bTracing ;
+ int s_nWM_ACTIVATE ;
+ int s_nWM_NCACTIVATE ;
+ int s_nWM_SYSCOMMAND_NOT_SC_RESTORE ;
+ int s_nWM_SYSCOMMAND_SC_RESTORE ;
+ int s_nWM_WINDOWPOSCHANGING ;
+ int trace (char*) ;
 
 __attribute__((used)) static void
 OnTimer(HWND hwnd, UINT id)
@@ -43,21 +43,21 @@ OnTimer(HWND hwnd, UINT id)
     KillTimer(hwnd, id);
     switch (id)
     {
-        //
-        // SwitchToThisWindow(TRUE)
-        //
-        case 0: // minimize
+
+
+
+        case 0:
             SetForegroundWindow(GetDesktopWindow());
             SetActiveWindow(GetDesktopWindow());
-            ok(GetForegroundWindow() == NULL, "GetForegroundWindow() != NULL\n");
-            ok(GetActiveWindow() == NULL, "GetActiveWindow() != NULL\n");
-            ok(GetFocus() == NULL, "GetFocus() != NULL\n");
-            CloseWindow(hwnd);  // minimize
+            ok(GetForegroundWindow() == ((void*)0), "GetForegroundWindow() != NULL\n");
+            ok(GetActiveWindow() == ((void*)0), "GetActiveWindow() != NULL\n");
+            ok(GetFocus() == ((void*)0), "GetFocus() != NULL\n");
+            CloseWindow(hwnd);
             break;
-        case 1: // start tracing
-            ok(GetForegroundWindow() == NULL, "GetForegroundWindow() != NULL\n");
+        case 1:
+            ok(GetForegroundWindow() == ((void*)0), "GetForegroundWindow() != NULL\n");
             ok(GetActiveWindow() == hwnd, "GetActiveWindow() != hwnd\n");
-            ok(GetFocus() == NULL, "GetFocus() != NULL\n");
+            ok(GetFocus() == ((void*)0), "GetFocus() != NULL\n");
             s_nWM_SYSCOMMAND_SC_RESTORE = 0;
             s_nWM_SYSCOMMAND_NOT_SC_RESTORE = 0;
             s_nWM_NCACTIVATE = 0;
@@ -67,7 +67,7 @@ OnTimer(HWND hwnd, UINT id)
             SwitchToThisWindow(hwnd, TRUE);
             trace("SwitchToThisWindow(TRUE): tracing...\n");
             break;
-        case 2: // tracing done
+        case 2:
             s_bTracing = FALSE;
             trace("SwitchToThisWindow(TRUE): tracing done\n");
             ok(GetForegroundWindow() == hwnd, "GetForegroundWindow() != hwnd\n");
@@ -79,21 +79,21 @@ OnTimer(HWND hwnd, UINT id)
             ok(s_nWM_WINDOWPOSCHANGING == 2, "WM_WINDOWPOSCHANGING: %d\n", s_nWM_WINDOWPOSCHANGING);
             ok(s_nWM_ACTIVATE == 1, "WM_ACTIVATE: %d\n", s_nWM_ACTIVATE);
             break;
-        //
-        // SwitchToThisWindow(FALSE)
-        //
-        case 3: // minimize
+
+
+
+        case 3:
             SetForegroundWindow(GetDesktopWindow());
             SetActiveWindow(GetDesktopWindow());
-            ok(GetForegroundWindow() == NULL, "GetForegroundWindow() != NULL\n");
-            ok(GetActiveWindow() == NULL, "GetActiveWindow() != NULL\n");
-            ok(GetFocus() == NULL, "GetFocus() != NULL\n");
-            CloseWindow(hwnd);  // minimize
+            ok(GetForegroundWindow() == ((void*)0), "GetForegroundWindow() != NULL\n");
+            ok(GetActiveWindow() == ((void*)0), "GetActiveWindow() != NULL\n");
+            ok(GetFocus() == ((void*)0), "GetFocus() != NULL\n");
+            CloseWindow(hwnd);
             break;
-        case 4: // start tracing
-            ok(GetForegroundWindow() == NULL, "GetForegroundWindow() != NULL\n");
+        case 4:
+            ok(GetForegroundWindow() == ((void*)0), "GetForegroundWindow() != NULL\n");
             ok(GetActiveWindow() == hwnd, "GetActiveWindow() != hwnd\n");
-            ok(GetFocus() == NULL, "GetFocus() != NULL\n");
+            ok(GetFocus() == ((void*)0), "GetFocus() != NULL\n");
             s_nWM_SYSCOMMAND_SC_RESTORE = 0;
             s_nWM_SYSCOMMAND_NOT_SC_RESTORE = 0;
             s_nWM_NCACTIVATE = 0;
@@ -103,21 +103,21 @@ OnTimer(HWND hwnd, UINT id)
             SwitchToThisWindow(hwnd, FALSE);
             trace("SwitchToThisWindow(FALSE): tracing...\n");
             break;
-        case 5: // tracing done
+        case 5:
             s_bTracing = FALSE;
             trace("SwitchToThisWindow(FALSE): tracing done\n");
-            ok(GetForegroundWindow() == NULL, "GetForegroundWindow() != NULL\n");
+            ok(GetForegroundWindow() == ((void*)0), "GetForegroundWindow() != NULL\n");
             ok(GetActiveWindow() == hwnd, "GetActiveWindow() != hwnd\n");
-            ok(GetFocus() == NULL, "GetFocus() != NULL\n");
+            ok(GetFocus() == ((void*)0), "GetFocus() != NULL\n");
             ok(!s_nWM_SYSCOMMAND_SC_RESTORE, "WM_SYSCOMMAND SC_RESTORE: %d\n", s_nWM_SYSCOMMAND_SC_RESTORE);
             ok(!s_nWM_SYSCOMMAND_NOT_SC_RESTORE, "WM_SYSCOMMAND non-SC_RESTORE: %d\n", s_nWM_SYSCOMMAND_NOT_SC_RESTORE);
             ok(!s_nWM_NCACTIVATE, "WM_NCACTIVATE: %d\n", s_nWM_NCACTIVATE);
             ok(!s_nWM_WINDOWPOSCHANGING, "WM_WINDOWPOSCHANGING: %d\n", s_nWM_WINDOWPOSCHANGING);
             ok(!s_nWM_ACTIVATE, "WM_ACTIVATE: %d\n", s_nWM_ACTIVATE);
             break;
-        default: // finish
+        default:
             DestroyWindow(hwnd);
             return;
     }
-    SetTimer(hwnd, id + 1, TIMER_INTERVAL, NULL);
+    SetTimer(hwnd, id + 1, TIMER_INTERVAL, ((void*)0));
 }

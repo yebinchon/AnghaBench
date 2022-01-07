@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
 
-/* Variables and functions */
- int READ_U24 (int /*<<< orphan*/ *,char*) ; 
- int READ_U32 (int /*<<< orphan*/ *,char*) ; 
- int READ_U8 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SKIP_U24 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  STREAM_STATUS (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+
+
+ int READ_U24 (int *,char*) ;
+ int READ_U32 (int *,char*) ;
+ int READ_U8 (int *,char*) ;
+ int SKIP_U24 (int *,char*) ;
+ int STREAM_STATUS (int *) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T flv_read_tag_header(VC_CONTAINER_T *p_ctx, int *p_prev_size,
                                                  int *p_type, int *p_size, uint32_t *p_timestamp)

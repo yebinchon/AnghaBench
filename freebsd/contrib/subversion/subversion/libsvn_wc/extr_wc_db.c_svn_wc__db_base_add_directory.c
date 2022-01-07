@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  abspath; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_skel_t ;
-typedef  void* svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  scalar_t__ svn_boolean_t ;
-struct TYPE_11__ {char const* repos_root_url; char const* repos_uuid; char const* repos_relpath; char const* changed_author; int /*<<< orphan*/ * new_actual_props; int /*<<< orphan*/  update_actual_props; int /*<<< orphan*/  const* work_items; int /*<<< orphan*/  const* conflict; int /*<<< orphan*/ * dav_cache; int /*<<< orphan*/  depth; int /*<<< orphan*/  const* children; int /*<<< orphan*/  changed_date; void* changed_rev; int /*<<< orphan*/  const* props; int /*<<< orphan*/ * iprops; void* revision; int /*<<< orphan*/  kind; int /*<<< orphan*/  status; } ;
-typedef  TYPE_2__ insert_base_baton_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_IS_VALID_REVNUM (void*) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_WC__DB_WITH_TXN (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  blank_ibb (TYPE_2__*) ; 
- int /*<<< orphan*/  flush_entries (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  insert_base_node (TYPE_2__*,TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- char* svn_dirent_skip_ancestor (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_node_dir ; 
- int /*<<< orphan*/  svn_uri_is_canonical (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_status_normal ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int abspath; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_skel_t ;
+typedef void* svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef scalar_t__ svn_boolean_t ;
+struct TYPE_11__ {char const* repos_root_url; char const* repos_uuid; char const* repos_relpath; char const* changed_author; int * new_actual_props; int update_actual_props; int const* work_items; int const* conflict; int * dav_cache; int depth; int const* children; int changed_date; void* changed_rev; int const* props; int * iprops; void* revision; int kind; int status; } ;
+typedef TYPE_2__ insert_base_baton_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_IS_VALID_REVNUM (void*) ;
+ int * SVN_NO_ERROR ;
+ int SVN_WC__DB_WITH_TXN (int ,TYPE_1__*) ;
+ int TRUE ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int blank_ibb (TYPE_2__*) ;
+ int flush_entries (TYPE_1__*,char const*,int ,int *) ;
+ int insert_base_node (TYPE_2__*,TYPE_1__*,char const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ char* svn_dirent_skip_ancestor (int ,char const*) ;
+ int svn_node_dir ;
+ int svn_uri_is_canonical (char const*,int *) ;
+ int svn_wc__db_status_normal ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_base_add_directory(svn_wc__db_t *db,
@@ -72,15 +72,15 @@ svn_wc__db_base_add_directory(svn_wc__db_t *db,
   insert_base_baton_t ibb;
 
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
-  SVN_ERR_ASSERT(repos_relpath != NULL);
+  SVN_ERR_ASSERT(repos_relpath != ((void*)0));
   SVN_ERR_ASSERT(svn_uri_is_canonical(repos_root_url, scratch_pool));
-  SVN_ERR_ASSERT(repos_uuid != NULL);
+  SVN_ERR_ASSERT(repos_uuid != ((void*)0));
   SVN_ERR_ASSERT(SVN_IS_VALID_REVNUM(revision));
-  SVN_ERR_ASSERT(props != NULL);
+  SVN_ERR_ASSERT(props != ((void*)0));
   SVN_ERR_ASSERT(SVN_IS_VALID_REVNUM(changed_rev));
-#if 0
-  SVN_ERR_ASSERT(children != NULL);
-#endif
+
+
+
 
   SVN_ERR(svn_wc__db_wcroot_parse_local_abspath(&wcroot, &local_relpath, db,
                               wri_abspath, scratch_pool, scratch_pool));
@@ -89,7 +89,7 @@ svn_wc__db_base_add_directory(svn_wc__db_t *db,
 
   blank_ibb(&ibb);
 
-  /* Calculate repos_id in insert_base_node() to avoid extra transaction */
+
   ibb.repos_root_url = repos_root_url;
   ibb.repos_uuid = repos_uuid;
 
@@ -117,10 +117,10 @@ svn_wc__db_base_add_directory(svn_wc__db_t *db,
       ibb.new_actual_props = new_actual_props;
     }
 
-  /* Insert the directory and all its children transactionally.
 
-     Note: old children can stick around, even if they are no longer present
-     in this directory's revision.  */
+
+
+
   SVN_WC__DB_WITH_TXN(
             insert_base_node(&ibb, wcroot, local_relpath, scratch_pool),
             wcroot);

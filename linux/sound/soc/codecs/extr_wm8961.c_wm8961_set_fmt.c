@@ -1,106 +1,106 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u16 ;
+
+
+
+
+typedef int u16 ;
 struct snd_soc_dai {struct snd_soc_component* component; } ;
 struct snd_soc_component {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  SND_SOC_DAIFMT_CBM_CFM 138 
-#define  SND_SOC_DAIFMT_CBS_CFS 137 
-#define  SND_SOC_DAIFMT_DSP_A 136 
-#define  SND_SOC_DAIFMT_DSP_B 135 
- unsigned int SND_SOC_DAIFMT_FORMAT_MASK ; 
-#define  SND_SOC_DAIFMT_I2S 134 
-#define  SND_SOC_DAIFMT_IB_IF 133 
-#define  SND_SOC_DAIFMT_IB_NF 132 
- unsigned int SND_SOC_DAIFMT_INV_MASK ; 
-#define  SND_SOC_DAIFMT_LEFT_J 131 
- unsigned int SND_SOC_DAIFMT_MASTER_MASK ; 
-#define  SND_SOC_DAIFMT_NB_IF 130 
-#define  SND_SOC_DAIFMT_NB_NF 129 
-#define  SND_SOC_DAIFMT_RIGHT_J 128 
- int /*<<< orphan*/  WM8961_AUDIO_INTERFACE_0 ; 
- int WM8961_BCLKINV ; 
- int WM8961_FORMAT_MASK ; 
- int WM8961_LRP ; 
- int WM8961_MS ; 
- int snd_soc_component_read32 (struct snd_soc_component*,int /*<<< orphan*/ ) ; 
- int snd_soc_component_write (struct snd_soc_component*,int /*<<< orphan*/ ,int) ; 
+
+ int EINVAL ;
+
+
+
+
+ unsigned int SND_SOC_DAIFMT_FORMAT_MASK ;
+
+
+
+ unsigned int SND_SOC_DAIFMT_INV_MASK ;
+
+ unsigned int SND_SOC_DAIFMT_MASTER_MASK ;
+
+
+
+ int WM8961_AUDIO_INTERFACE_0 ;
+ int WM8961_BCLKINV ;
+ int WM8961_FORMAT_MASK ;
+ int WM8961_LRP ;
+ int WM8961_MS ;
+ int snd_soc_component_read32 (struct snd_soc_component*,int ) ;
+ int snd_soc_component_write (struct snd_soc_component*,int ,int) ;
 
 __attribute__((used)) static int wm8961_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
 {
-	struct snd_soc_component *component = dai->component;
-	u16 aif = snd_soc_component_read32(component, WM8961_AUDIO_INTERFACE_0);
+ struct snd_soc_component *component = dai->component;
+ u16 aif = snd_soc_component_read32(component, WM8961_AUDIO_INTERFACE_0);
 
-	aif &= ~(WM8961_BCLKINV | WM8961_LRP |
-		 WM8961_MS | WM8961_FORMAT_MASK);
+ aif &= ~(WM8961_BCLKINV | WM8961_LRP |
+   WM8961_MS | WM8961_FORMAT_MASK);
 
-	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-	case SND_SOC_DAIFMT_CBM_CFM:
-		aif |= WM8961_MS;
-		break;
-	case SND_SOC_DAIFMT_CBS_CFS:
-		break;
-	default:
-		return -EINVAL;
-	}
+ switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+ case 138:
+  aif |= WM8961_MS;
+  break;
+ case 137:
+  break;
+ default:
+  return -EINVAL;
+ }
 
-	switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
-	case SND_SOC_DAIFMT_RIGHT_J:
-		break;
+ switch (fmt & SND_SOC_DAIFMT_FORMAT_MASK) {
+ case 128:
+  break;
 
-	case SND_SOC_DAIFMT_LEFT_J:
-		aif |= 1;
-		break;
+ case 131:
+  aif |= 1;
+  break;
 
-	case SND_SOC_DAIFMT_I2S:
-		aif |= 2;
-		break;
+ case 134:
+  aif |= 2;
+  break;
 
-	case SND_SOC_DAIFMT_DSP_B:
-		aif |= WM8961_LRP;
-		/* fall through */
-	case SND_SOC_DAIFMT_DSP_A:
-		aif |= 3;
-		switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-		case SND_SOC_DAIFMT_NB_NF:
-		case SND_SOC_DAIFMT_IB_NF:
-			break;
-		default:
-			return -EINVAL;
-		}
-		break;
+ case 135:
+  aif |= WM8961_LRP;
 
-	default:
-		return -EINVAL;
-	}
+ case 136:
+  aif |= 3;
+  switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
+  case 129:
+  case 132:
+   break;
+  default:
+   return -EINVAL;
+  }
+  break;
 
-	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-	case SND_SOC_DAIFMT_NB_NF:
-		break;
-	case SND_SOC_DAIFMT_NB_IF:
-		aif |= WM8961_LRP;
-		break;
-	case SND_SOC_DAIFMT_IB_NF:
-		aif |= WM8961_BCLKINV;
-		break;
-	case SND_SOC_DAIFMT_IB_IF:
-		aif |= WM8961_BCLKINV | WM8961_LRP;
-		break;
-	default:
-		return -EINVAL;
-	}
+ default:
+  return -EINVAL;
+ }
 
-	return snd_soc_component_write(component, WM8961_AUDIO_INTERFACE_0, aif);
+ switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
+ case 129:
+  break;
+ case 130:
+  aif |= WM8961_LRP;
+  break;
+ case 132:
+  aif |= WM8961_BCLKINV;
+  break;
+ case 133:
+  aif |= WM8961_BCLKINV | WM8961_LRP;
+  break;
+ default:
+  return -EINVAL;
+ }
+
+ return snd_soc_component_write(component, WM8961_AUDIO_INTERFACE_0, aif);
 }

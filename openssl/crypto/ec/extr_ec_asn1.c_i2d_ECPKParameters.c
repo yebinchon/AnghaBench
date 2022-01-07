@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  ECPKPARAMETERS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECPKPARAMETERS_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_F_I2D_ECPKPARAMETERS ; 
- int /*<<< orphan*/ * EC_GROUP_get_ecpkparameters (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_R_GROUP2PKPARAMETERS_FAILURE ; 
- int /*<<< orphan*/  EC_R_I2D_ECPKPARAMETERS_FAILURE ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int i2d_ECPKPARAMETERS (int /*<<< orphan*/ *,unsigned char**) ; 
+
+
+
+typedef int EC_GROUP ;
+typedef int ECPKPARAMETERS ;
+
+
+ int ECPKPARAMETERS_free (int *) ;
+ int EC_F_I2D_ECPKPARAMETERS ;
+ int * EC_GROUP_get_ecpkparameters (int const*,int *) ;
+ int EC_R_GROUP2PKPARAMETERS_FAILURE ;
+ int EC_R_I2D_ECPKPARAMETERS_FAILURE ;
+ int ECerr (int ,int ) ;
+ int i2d_ECPKPARAMETERS (int *,unsigned char**) ;
 
 int i2d_ECPKParameters(const EC_GROUP *a, unsigned char **out)
 {
     int ret = 0;
-    ECPKPARAMETERS *tmp = EC_GROUP_get_ecpkparameters(a, NULL);
-    if (tmp == NULL) {
+    ECPKPARAMETERS *tmp = EC_GROUP_get_ecpkparameters(a, ((void*)0));
+    if (tmp == ((void*)0)) {
         ECerr(EC_F_I2D_ECPKPARAMETERS, EC_R_GROUP2PKPARAMETERS_FAILURE);
         return 0;
     }

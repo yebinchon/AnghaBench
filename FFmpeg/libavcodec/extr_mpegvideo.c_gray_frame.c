@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int height; int* linesize; int width; scalar_t__* data; int /*<<< orphan*/  format; } ;
-typedef  TYPE_1__ AVFrame ;
 
-/* Variables and functions */
- int AV_CEIL_RSHIFT (int,int) ; 
- int /*<<< orphan*/  av_pix_fmt_get_chroma_sub_sample (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  memset (scalar_t__,int,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int height; int* linesize; int width; scalar_t__* data; int format; } ;
+typedef TYPE_1__ AVFrame ;
+
+
+ int AV_CEIL_RSHIFT (int,int) ;
+ int av_pix_fmt_get_chroma_sub_sample (int ,int*,int*) ;
+ int memset (scalar_t__,int,int) ;
 
 __attribute__((used)) static void gray_frame(AVFrame *frame)
 {

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int bottom; int top; int right; int left; } ;
-typedef  TYPE_1__ RECT ;
-typedef  int LONG ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLScreen ;
-typedef  int /*<<< orphan*/  IDispatchEx ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  HDC ;
+typedef TYPE_1__ RECT ;
+typedef int LONG ;
+typedef int IUnknown ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLScreen ;
+typedef int IDispatchEx ;
+typedef int HRESULT ;
+typedef int HDC ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITSPIXEL ; 
- int /*<<< orphan*/  CreateICA (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DIID_DispHTMLScreen ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  E_NOINTERFACE ; 
- int GetDeviceCaps (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HORZRES ; 
- int /*<<< orphan*/  IDispatchEx_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLScreen_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLScreen_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLScreen_get_availHeight (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IHTMLScreen_get_availWidth (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IHTMLScreen_get_colorDepth (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IHTMLScreen_get_height (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IHTMLScreen_get_width (int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  IHTMLWindow2_get_screen (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IDispatchEx ; 
- int /*<<< orphan*/  SPI_GETWORKAREA ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SystemParametersInfoW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VERTRES ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  test_disp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
+
+ int BITSPIXEL ;
+ int CreateICA (char*,int *,int *,int *) ;
+ int DIID_DispHTMLScreen ;
+ int DeleteObject (int ) ;
+ int E_NOINTERFACE ;
+ int GetDeviceCaps (int ,int ) ;
+ int HORZRES ;
+ int IDispatchEx_Release (int *) ;
+ int IHTMLScreen_QueryInterface (int *,int *,void**) ;
+ int IHTMLScreen_Release (int *) ;
+ int IHTMLScreen_get_availHeight (int *,int*) ;
+ int IHTMLScreen_get_availWidth (int *,int*) ;
+ int IHTMLScreen_get_colorDepth (int *,int*) ;
+ int IHTMLScreen_get_height (int *,int*) ;
+ int IHTMLScreen_get_width (int *,int*) ;
+ int IHTMLWindow2_get_screen (int *,int **) ;
+ int IID_IDispatchEx ;
+ int SPI_GETWORKAREA ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int SystemParametersInfoW (int ,int ,TYPE_1__*,int ) ;
+ int VERTRES ;
+ scalar_t__ broken (int) ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int test_disp (int *,int *,char*) ;
 
 __attribute__((used)) static void test_screen(IHTMLWindow2 *window)
 {
@@ -58,15 +58,15 @@ __attribute__((used)) static void test_screen(IHTMLWindow2 *window)
     HDC hdc;
     HRESULT hres;
 
-    screen = NULL;
+    screen = ((void*)0);
     hres = IHTMLWindow2_get_screen(window, &screen);
     ok(hres == S_OK, "get_screen failed: %08x\n", hres);
-    ok(screen != NULL, "screen == NULL\n");
+    ok(screen != ((void*)0), "screen == NULL\n");
 
-    screen2 = NULL;
+    screen2 = ((void*)0);
     hres = IHTMLWindow2_get_screen(window, &screen2);
     ok(hres == S_OK, "get_screen failed: %08x\n", hres);
-    ok(screen2 != NULL, "screen == NULL\n");
+    ok(screen2 != ((void*)0), "screen == NULL\n");
     ok(iface_cmp((IUnknown*)screen2, (IUnknown*)screen), "screen2 != screen\n");
     IHTMLScreen_Release(screen2);
 
@@ -77,7 +77,7 @@ __attribute__((used)) static void test_screen(IHTMLWindow2 *window)
         IDispatchEx_Release(dispex);
     }
 
-    hdc = CreateICA("DISPLAY", NULL, NULL, NULL);
+    hdc = CreateICA("DISPLAY", ((void*)0), ((void*)0), ((void*)0));
 
     exl = GetDeviceCaps(hdc, HORZRES);
     l = 0xdeadbeef;

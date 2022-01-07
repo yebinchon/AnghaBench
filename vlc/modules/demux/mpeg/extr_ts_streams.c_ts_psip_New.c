@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int i_version; int /*<<< orphan*/  p_ctx; int /*<<< orphan*/ * p_eas_es; int /*<<< orphan*/  eit; int /*<<< orphan*/  handle; } ;
-typedef  TYPE_1__ ts_psip_t ;
-typedef  int /*<<< orphan*/  demux_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAY_INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  handle_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  ts_psip_Del (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  ts_psip_context_New () ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int i_version; int p_ctx; int * p_eas_es; int eit; int handle; } ;
+typedef TYPE_1__ ts_psip_t ;
+typedef int demux_t ;
+
+
+ int ARRAY_INIT (int ) ;
+ int free (TYPE_1__*) ;
+ int handle_Init (int *,int *) ;
+ TYPE_1__* malloc (int) ;
+ int ts_psip_Del (int *,TYPE_1__*) ;
+ int ts_psip_context_New () ;
 
 ts_psip_t *ts_psip_New( demux_t *p_demux )
 {
     ts_psip_t *psip = malloc( sizeof( ts_psip_t ) );
     if( !psip )
-        return NULL;
+        return ((void*)0);
 
     if( !handle_Init( p_demux, &psip->handle ) )
     {
         free( psip );
-        return NULL;
+        return ((void*)0);
     }
 
     ARRAY_INIT( psip->eit );
-    psip->i_version  = -1;
-    psip->p_eas_es = NULL;
+    psip->i_version = -1;
+    psip->p_eas_es = ((void*)0);
     psip->p_ctx = ts_psip_context_New();
     if( !psip->p_ctx )
     {
         ts_psip_Del( p_demux, psip );
-        psip = NULL;
+        psip = ((void*)0);
     }
 
     return psip;

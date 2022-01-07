@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/ * TxBlock ; 
- int /*<<< orphan*/ * TxLock ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
+ int * TxBlock ;
+ int * TxLock ;
+ int vfree (int *) ;
 
 void txExit(void)
 {
-	vfree(TxLock);
-	TxLock = NULL;
-	vfree(TxBlock);
-	TxBlock = NULL;
+ vfree(TxLock);
+ TxLock = ((void*)0);
+ vfree(TxBlock);
+ TxBlock = ((void*)0);
 }

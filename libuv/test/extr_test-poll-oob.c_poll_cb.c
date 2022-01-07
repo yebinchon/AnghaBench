@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_poll_t ;
-typedef  int /*<<< orphan*/  uv_handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ EINTR ; 
- scalar_t__ EINVAL ; 
- int /*<<< orphan*/  MSG_OOB ; 
- int UV_PRIORITIZED ; 
- int UV_READABLE ; 
- int UV_WRITABLE ; 
- int cli_pr_check ; 
- int cli_rd_check ; 
- int client_fd ; 
- scalar_t__ errno ; 
- int got_eagain () ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * poll_req ; 
- int recv (int,char**,int,int /*<<< orphan*/ ) ; 
- int send (int,char*,int,int /*<<< orphan*/ ) ; 
- int server_fd ; 
- int srv_rd_check ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- scalar_t__ uv_fileno (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ uv_poll_start (int /*<<< orphan*/ *,int,void (*) (int /*<<< orphan*/ *,int,int)) ; 
- scalar_t__ uv_poll_stop (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uv_poll_t ;
+typedef int uv_handle_t ;
+
+
+ int ASSERT (int) ;
+ scalar_t__ EINTR ;
+ scalar_t__ EINVAL ;
+ int MSG_OOB ;
+ int UV_PRIORITIZED ;
+ int UV_READABLE ;
+ int UV_WRITABLE ;
+ int cli_pr_check ;
+ int cli_rd_check ;
+ int client_fd ;
+ scalar_t__ errno ;
+ int got_eagain () ;
+ int memset (char*,int ,int) ;
+ int * poll_req ;
+ int recv (int,char**,int,int ) ;
+ int send (int,char*,int,int ) ;
+ int server_fd ;
+ int srv_rd_check ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ scalar_t__ uv_fileno (int *,int*) ;
+ scalar_t__ uv_poll_start (int *,int,void (*) (int *,int,int)) ;
+ scalar_t__ uv_poll_stop (int *) ;
 
 __attribute__((used)) static void poll_cb(uv_poll_t* handle, int status, int events) {
   char buffer[5];

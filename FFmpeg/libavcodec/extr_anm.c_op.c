@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const uint8_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  bytestream2_get_bufferu (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/  const*,int,int) ; 
+
+
+
+typedef int const uint8_t ;
+typedef int GetByteContext ;
+
+
+ int FFMIN (int,int) ;
+ int bytestream2_get_bufferu (int *,int const*,int) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int memset (int const*,int,int) ;
 
 __attribute__((used)) static inline int op(uint8_t **dst, const uint8_t *dst_end,
                      GetByteContext *gb,
@@ -33,12 +33,12 @@ __attribute__((used)) static inline int op(uint8_t **dst, const uint8_t *dst_end
             bytestream2_get_bufferu(gb, *dst, striplen);
         } else if (pixel >= 0)
             memset(*dst, pixel, striplen);
-        *dst      += striplen;
+        *dst += striplen;
         remaining -= striplen;
-        count     -= striplen;
+        count -= striplen;
         if (remaining <= 0) {
-            *dst      += linesize - width;
-            remaining  = width;
+            *dst += linesize - width;
+            remaining = width;
         }
         if (linesize > 0) {
             if (*dst >= dst_end) goto exhausted;

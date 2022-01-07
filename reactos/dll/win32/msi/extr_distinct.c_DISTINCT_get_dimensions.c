@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int /*<<< orphan*/  UINT ;
+typedef int UINT ;
 struct TYPE_7__ {TYPE_1__* ops; } ;
-struct TYPE_6__ {TYPE_3__* table; int /*<<< orphan*/  row_count; int /*<<< orphan*/  translation; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* get_dimensions ) (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ MSIDISTINCTVIEW ;
+struct TYPE_6__ {TYPE_3__* table; int row_count; int translation; } ;
+struct TYPE_5__ {int (* get_dimensions ) (TYPE_3__*,int *,int *) ;} ;
+typedef TYPE_2__ MSIDISTINCTVIEW ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR_FUNCTION_FAILED ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int ERROR_FUNCTION_FAILED ;
+ int TRACE (char*,TYPE_2__*,int *,int *) ;
+ int stub1 (TYPE_3__*,int *,int *) ;
 
 __attribute__((used)) static UINT DISTINCT_get_dimensions( struct tagMSIVIEW *view, UINT *rows, UINT *cols )
 {
@@ -41,5 +41,5 @@ __attribute__((used)) static UINT DISTINCT_get_dimensions( struct tagMSIVIEW *vi
         *rows = dv->row_count;
     }
 
-    return dv->table->ops->get_dimensions( dv->table, NULL, cols );
+    return dv->table->ops->get_dimensions( dv->table, ((void*)0), cols );
 }

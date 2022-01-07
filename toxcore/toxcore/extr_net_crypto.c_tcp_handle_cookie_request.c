@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  data ;
-struct TYPE_5__ {int /*<<< orphan*/  tcp_c; } ;
-typedef  TYPE_1__ Net_Crypto ;
 
-/* Variables and functions */
- int COOKIE_REQUEST_PLAIN_LENGTH ; 
- int COOKIE_RESPONSE_LENGTH ; 
- int create_cookie_response (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int crypto_box_BEFORENMBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- scalar_t__ handle_cookie_request (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int send_packet_tcp_connection (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int data ;
+struct TYPE_5__ {int tcp_c; } ;
+typedef TYPE_1__ Net_Crypto ;
+
+
+ int COOKIE_REQUEST_PLAIN_LENGTH ;
+ int COOKIE_RESPONSE_LENGTH ;
+ int create_cookie_response (TYPE_1__*,int *,int *,int *,int *) ;
+ int crypto_box_BEFORENMBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ scalar_t__ handle_cookie_request (TYPE_1__*,int *,int *,int *,int const*,int ) ;
+ int send_packet_tcp_connection (int ,int,int *,int) ;
 
 __attribute__((used)) static int tcp_handle_cookie_request(Net_Crypto *c, int connections_number, const uint8_t *packet, uint16_t length)
 {

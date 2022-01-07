@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int a0; int b0; } ;
 struct TYPE_4__ {TYPE_2__* section; } ;
-typedef  TYPE_1__ EqualizatorFilter ;
+typedef TYPE_1__ EqualizatorFilter ;
 
-/* Variables and functions */
- double M_PI ; 
- int /*<<< orphan*/  chebyshev1_fo_section (TYPE_2__*,double,double,double,double,double,double,double,double) ; 
- double cos (double) ; 
- double ff_exp10 (double) ; 
- double pow (double,double) ; 
- double sin (double) ; 
- double sqrt (int) ; 
- double tan (double) ; 
+
+ double M_PI ;
+ int chebyshev1_fo_section (TYPE_2__*,double,double,double,double,double,double,double,double) ;
+ double cos (double) ;
+ double ff_exp10 (double) ;
+ double pow (double,double) ;
+ double sin (double) ;
+ double sqrt (int) ;
+ double tan (double) ;
 
 __attribute__((used)) static void chebyshev1_bp_filter(EqualizatorFilter *f,
                                  int N, double w0, double wb,
@@ -32,7 +32,7 @@ __attribute__((used)) static void chebyshev1_bp_filter(EqualizatorFilter *f,
 {
     double a, b, c0, g0, alfa, beta, tetta_b;
     double epsilon;
-    int r =  N % 2;
+    int r = N % 2;
     int L = (N - r) / 2;
     int i;
 
@@ -44,13 +44,13 @@ __attribute__((used)) static void chebyshev1_bp_filter(EqualizatorFilter *f,
         return;
     }
 
-    G  = ff_exp10(G/20);
+    G = ff_exp10(G/20);
     Gb = ff_exp10(Gb/20);
     G0 = ff_exp10(G0/20);
 
     epsilon = sqrt((G*G - Gb*Gb) / (Gb*Gb - G0*G0));
     g0 = pow(G0,1.0/N);
-    alfa = pow(1.0/epsilon    + sqrt(1 + 1/(epsilon*epsilon)), 1.0/N);
+    alfa = pow(1.0/epsilon + sqrt(1 + 1/(epsilon*epsilon)), 1.0/N);
     beta = pow(G/epsilon + Gb * sqrt(1 + 1/(epsilon*epsilon)), 1.0/N);
     a = 0.5 * (alfa - 1.0/alfa);
     b = 0.5 * (beta - g0*g0*(1/beta));

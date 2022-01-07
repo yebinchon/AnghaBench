@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nd_region {int /*<<< orphan*/ * bb_state; int /*<<< orphan*/ * dax_seed; int /*<<< orphan*/ * pfn_seed; int /*<<< orphan*/ * btt_seed; int /*<<< orphan*/ * ns_seed; } ;
+
+
+
+
+struct nd_region {int * bb_state; int * dax_seed; int * pfn_seed; int * btt_seed; int * ns_seed; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  child_unregister ; 
- int /*<<< orphan*/  dev_set_drvdata (struct device*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_for_each_child (struct device*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nvdimm_bus_lock (struct device*) ; 
- int /*<<< orphan*/  nvdimm_bus_unlock (struct device*) ; 
- int /*<<< orphan*/  sysfs_put (int /*<<< orphan*/ *) ; 
- struct nd_region* to_nd_region (struct device*) ; 
+
+ int child_unregister ;
+ int dev_set_drvdata (struct device*,int *) ;
+ int device_for_each_child (struct device*,int *,int ) ;
+ int nvdimm_bus_lock (struct device*) ;
+ int nvdimm_bus_unlock (struct device*) ;
+ int sysfs_put (int *) ;
+ struct nd_region* to_nd_region (struct device*) ;
 
 __attribute__((used)) static int nd_region_remove(struct device *dev)
 {
-	struct nd_region *nd_region = to_nd_region(dev);
+ struct nd_region *nd_region = to_nd_region(dev);
 
-	device_for_each_child(dev, NULL, child_unregister);
+ device_for_each_child(dev, ((void*)0), child_unregister);
 
-	/* flush attribute readers and disable */
-	nvdimm_bus_lock(dev);
-	nd_region->ns_seed = NULL;
-	nd_region->btt_seed = NULL;
-	nd_region->pfn_seed = NULL;
-	nd_region->dax_seed = NULL;
-	dev_set_drvdata(dev, NULL);
-	nvdimm_bus_unlock(dev);
 
-	/*
-	 * Note, this assumes nd_device_lock() context to not race
-	 * nd_region_notify()
-	 */
-	sysfs_put(nd_region->bb_state);
-	nd_region->bb_state = NULL;
+ nvdimm_bus_lock(dev);
+ nd_region->ns_seed = ((void*)0);
+ nd_region->btt_seed = ((void*)0);
+ nd_region->pfn_seed = ((void*)0);
+ nd_region->dax_seed = ((void*)0);
+ dev_set_drvdata(dev, ((void*)0));
+ nvdimm_bus_unlock(dev);
 
-	return 0;
+
+
+
+
+ sysfs_put(nd_region->bb_state);
+ nd_region->bb_state = ((void*)0);
+
+ return 0;
 }

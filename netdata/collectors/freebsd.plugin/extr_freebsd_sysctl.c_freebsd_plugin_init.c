@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int GETSYSCTL_BY_NAME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  error (char*) ; 
- scalar_t__ getpagesize () ; 
- int /*<<< orphan*/  number_of_cpus ; 
- scalar_t__ system_pagesize ; 
- scalar_t__ unlikely (int) ; 
+ int GETSYSCTL_BY_NAME (char*,int ) ;
+ int error (char*) ;
+ scalar_t__ getpagesize () ;
+ int number_of_cpus ;
+ scalar_t__ system_pagesize ;
+ scalar_t__ unlikely (int) ;
 
 int freebsd_plugin_init()
 {

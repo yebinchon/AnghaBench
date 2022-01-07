@@ -1,93 +1,93 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct ti_pcl {int pcl_status; } ;
-struct TYPE_8__ {int /*<<< orphan*/  next; } ;
-struct TYPE_7__ {int /*<<< orphan*/  queue_lock; TYPE_4__ queue; int /*<<< orphan*/  data_dma; int /*<<< orphan*/  header_dma; TYPE_4__ pcl_queue; int /*<<< orphan*/  pcl; } ;
-struct TYPE_6__ {int /*<<< orphan*/  queue_lock; TYPE_4__ queue; int /*<<< orphan*/  data_dma; int /*<<< orphan*/  header_dma; TYPE_4__ pcl_queue; int /*<<< orphan*/  pcl; } ;
-struct TYPE_5__ {size_t next; int last; int /*<<< orphan*/  tq; int /*<<< orphan*/  lock; int /*<<< orphan*/  pcl_start; int /*<<< orphan*/  chan_count; int /*<<< orphan*/  used; void** stat; } ;
-struct ti_lynx {int selfid_size; int phy_reg0; int* rcv_page; int /*<<< orphan*/  rcv_pcl_start; int /*<<< orphan*/  id; TYPE_3__ iso_send; int /*<<< orphan*/  dev; TYPE_2__ async; TYPE_1__ iso_rcv; int /*<<< orphan*/  phy_reg_lock; struct hpsb_host* host; } ;
-struct hpsb_packet {scalar_t__ data_size; scalar_t__ header_size; int /*<<< orphan*/  driver_list; } ;
+struct TYPE_8__ {int next; } ;
+struct TYPE_7__ {int queue_lock; TYPE_4__ queue; int data_dma; int header_dma; TYPE_4__ pcl_queue; int pcl; } ;
+struct TYPE_6__ {int queue_lock; TYPE_4__ queue; int data_dma; int header_dma; TYPE_4__ pcl_queue; int pcl; } ;
+struct TYPE_5__ {size_t next; int last; int tq; int lock; int pcl_start; int chan_count; int used; void** stat; } ;
+struct ti_lynx {int selfid_size; int phy_reg0; int* rcv_page; int rcv_pcl_start; int id; TYPE_3__ iso_send; int dev; TYPE_2__ async; TYPE_1__ iso_rcv; int phy_reg_lock; struct hpsb_host* host; } ;
+struct hpsb_packet {scalar_t__ data_size; scalar_t__ header_size; int driver_list; } ;
 struct hpsb_host {scalar_t__ in_bus_reset; } ;
-typedef  int quadlet_t ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
+typedef int quadlet_t ;
+typedef int irqreturn_t ;
 
-/* Variables and functions */
- int ACKX_SEND_ERROR ; 
- int ACKX_TIMEOUT ; 
- int /*<<< orphan*/  CHANNEL_ASYNC_RCV ; 
- int /*<<< orphan*/  CHANNEL_ASYNC_SEND ; 
- int /*<<< orphan*/  CHANNEL_ISO_RCV ; 
- int /*<<< orphan*/  CHANNEL_ISO_SEND ; 
- int /*<<< orphan*/  DMA_CHAN_STAT (int /*<<< orphan*/ ) ; 
- int DMA_CHAN_STAT_PKTCMPL ; 
- int DMA_CHAN_STAT_SELFID ; 
- int DMA_CHAN_STAT_SPECIALACK ; 
- int /*<<< orphan*/  DMA_WORD1_CMP_ENABLE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FIFO_CONTROL ; 
- int FIFO_CONTROL_GRF_FLUSH ; 
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  IRQ_NONE ; 
- int /*<<< orphan*/  KERN_DEBUG ; 
- int /*<<< orphan*/  KERN_ERR ; 
- int /*<<< orphan*/  KERN_INFO ; 
- int /*<<< orphan*/  KERN_WARNING ; 
- int LINK_INT_ASYNC_STUCK ; 
- int LINK_INT_ATF_UNDERFLOW ; 
- int LINK_INT_GRF_OVERFLOW ; 
- int LINK_INT_ISO_STUCK ; 
- int LINK_INT_ITF_UNDERFLOW ; 
- int LINK_INT_PHY_BUSRESET ; 
- int LINK_INT_PHY_REG_RCVD ; 
- int LINK_INT_PHY_TIMEOUT ; 
- int LINK_INT_SENT_REJECT ; 
- int /*<<< orphan*/  LINK_INT_STATUS ; 
- int LINK_INT_TX_INVALID_TC ; 
- int /*<<< orphan*/  LINK_PHY ; 
- int NUM_ISORCV_PCL ; 
- int /*<<< orphan*/  PCI_DMA_TODEVICE ; 
- int PCI_INT_1394 ; 
- int PCI_INT_DMA_HLT (int /*<<< orphan*/ ) ; 
- int PCI_INT_INT_PEND ; 
- int /*<<< orphan*/  PCI_INT_STATUS ; 
- int /*<<< orphan*/  PRINT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  PRINTD (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int TCODE_READQ_RESPONSE ; 
- int TCODE_WRITEQ ; 
- int /*<<< orphan*/  cpu_to_be32s (int*) ; 
- struct hpsb_packet* driver_packet (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_pcl (struct ti_lynx*,int /*<<< orphan*/ ,struct ti_pcl*) ; 
- int /*<<< orphan*/  handle_selfid (struct ti_lynx*,struct hpsb_host*) ; 
- int /*<<< orphan*/  hpsb_async ; 
- int /*<<< orphan*/  hpsb_bus_reset (struct hpsb_host*) ; 
- int /*<<< orphan*/  hpsb_iso ; 
- int /*<<< orphan*/  hpsb_packet_received (struct hpsb_host*,int*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hpsb_packet_sent (struct hpsb_host*,struct hpsb_packet*,int) ; 
- int /*<<< orphan*/  list_del_init (int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (TYPE_4__*) ; 
- int /*<<< orphan*/  pci_unmap_single (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- void* reg_read (struct ti_lynx*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_write (struct ti_lynx*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  run_pcl (struct ti_lynx*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  run_sub_pcl (struct ti_lynx*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  send_next (struct ti_lynx*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tasklet_schedule (int /*<<< orphan*/ *) ; 
+
+ int ACKX_SEND_ERROR ;
+ int ACKX_TIMEOUT ;
+ int CHANNEL_ASYNC_RCV ;
+ int CHANNEL_ASYNC_SEND ;
+ int CHANNEL_ISO_RCV ;
+ int CHANNEL_ISO_SEND ;
+ int DMA_CHAN_STAT (int ) ;
+ int DMA_CHAN_STAT_PKTCMPL ;
+ int DMA_CHAN_STAT_SELFID ;
+ int DMA_CHAN_STAT_SPECIALACK ;
+ int DMA_WORD1_CMP_ENABLE (int ) ;
+ int FIFO_CONTROL ;
+ int FIFO_CONTROL_GRF_FLUSH ;
+ int IRQ_HANDLED ;
+ int IRQ_NONE ;
+ int KERN_DEBUG ;
+ int KERN_ERR ;
+ int KERN_INFO ;
+ int KERN_WARNING ;
+ int LINK_INT_ASYNC_STUCK ;
+ int LINK_INT_ATF_UNDERFLOW ;
+ int LINK_INT_GRF_OVERFLOW ;
+ int LINK_INT_ISO_STUCK ;
+ int LINK_INT_ITF_UNDERFLOW ;
+ int LINK_INT_PHY_BUSRESET ;
+ int LINK_INT_PHY_REG_RCVD ;
+ int LINK_INT_PHY_TIMEOUT ;
+ int LINK_INT_SENT_REJECT ;
+ int LINK_INT_STATUS ;
+ int LINK_INT_TX_INVALID_TC ;
+ int LINK_PHY ;
+ int NUM_ISORCV_PCL ;
+ int PCI_DMA_TODEVICE ;
+ int PCI_INT_1394 ;
+ int PCI_INT_DMA_HLT (int ) ;
+ int PCI_INT_INT_PEND ;
+ int PCI_INT_STATUS ;
+ int PRINT (int ,int ,char*,...) ;
+ int PRINTD (int ,int ,char*,...) ;
+ int TCODE_READQ_RESPONSE ;
+ int TCODE_WRITEQ ;
+ int cpu_to_be32s (int*) ;
+ struct hpsb_packet* driver_packet (int ) ;
+ int get_pcl (struct ti_lynx*,int ,struct ti_pcl*) ;
+ int handle_selfid (struct ti_lynx*,struct hpsb_host*) ;
+ int hpsb_async ;
+ int hpsb_bus_reset (struct hpsb_host*) ;
+ int hpsb_iso ;
+ int hpsb_packet_received (struct hpsb_host*,int*,int,int ) ;
+ int hpsb_packet_sent (struct hpsb_host*,struct hpsb_packet*,int) ;
+ int list_del_init (int *) ;
+ scalar_t__ list_empty (TYPE_4__*) ;
+ int pci_unmap_single (int ,int ,scalar_t__,int ) ;
+ void* reg_read (struct ti_lynx*,int ) ;
+ int reg_write (struct ti_lynx*,int ,int) ;
+ int run_pcl (struct ti_lynx*,int ,int ) ;
+ int run_sub_pcl (struct ti_lynx*,int ,int,int ) ;
+ int send_next (struct ti_lynx*,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int tasklet_schedule (int *) ;
 
 __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
 {
@@ -100,7 +100,7 @@ __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
         intmask = reg_read(lynx, PCI_INT_STATUS);
 
         if (!(intmask & PCI_INT_INT_PEND))
-		return IRQ_NONE;
+  return IRQ_NONE;
 
         PRINTD(KERN_DEBUG, lynx->id, "interrupt: 0x%08x / 0x%08x", intmask,
                linkint);
@@ -151,7 +151,7 @@ __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
                         PRINT(KERN_INFO, lynx->id, "invalid transaction code");
                 }
                 if (linkint & LINK_INT_GRF_OVERFLOW) {
-                        /* flush FIFO if overflow happens during reset */
+
                         if (host->in_bus_reset)
                                 reg_write(lynx, FIFO_CONTROL,
                                           FIFO_CONTROL_GRF_FLUSH);
@@ -187,7 +187,7 @@ __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
 
                 spin_unlock(&lynx->iso_rcv.lock);
 
-		tasklet_schedule(&lynx->iso_rcv.tq);
+  tasklet_schedule(&lynx->iso_rcv.tq);
         }
 
         if (intmask & PCI_INT_DMA_HLT(CHANNEL_ASYNC_SEND)) {
@@ -259,11 +259,11 @@ __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
                                 pci_unmap_single(lynx->dev, lynx->iso_send.data_dma,
                                                  packet->data_size, PCI_DMA_TODEVICE);
                         }
-#if 0 /* has been removed from ieee1394 core */
-                        if (!list_empty(&lynx->iso_send.queue)) {
-                                send_next(lynx, hpsb_iso);
-                        }
-#endif
+
+
+
+
+
                         spin_unlock(&lynx->iso_send.queue_lock);
 
                         if (pcl.pcl_status & DMA_CHAN_STAT_PKTCMPL) {
@@ -279,12 +279,12 @@ __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
                                 ack = ACKX_SEND_ERROR;
                         }
 
-                        hpsb_packet_sent(host, packet, ack); //FIXME: maybe we should just use ACK_COMPLETE and ACKX_SEND_ERROR
+                        hpsb_packet_sent(host, packet, ack);
                 }
         }
 
         if (intmask & PCI_INT_DMA_HLT(CHANNEL_ASYNC_RCV)) {
-                /* general receive DMA completed */
+
                 int stat = reg_read(lynx, DMA_CHAN_STAT(CHANNEL_ASYNC_RCV));
 
                 PRINTD(KERN_DEBUG, lynx->id, "received packet size %d",
@@ -305,5 +305,5 @@ __attribute__((used)) static irqreturn_t lynx_irq_handler(int irq, void *dev_id)
                 run_pcl(lynx, lynx->rcv_pcl_start, CHANNEL_ASYNC_RCV);
         }
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

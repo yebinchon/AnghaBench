@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcm_channel {int /*<<< orphan*/  bufhard; int /*<<< orphan*/  devinfo; int /*<<< orphan*/  methods; } ;
 
-/* Variables and functions */
- int CHANNEL_GETPTR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CHN_LOCKASSERT (struct pcm_channel*) ; 
- scalar_t__ CHN_STARTED (struct pcm_channel*) ; 
- int sndbuf_getalign (int /*<<< orphan*/ ) ; 
+
+
+
+struct pcm_channel {int bufhard; int devinfo; int methods; } ;
+
+
+ int CHANNEL_GETPTR (int ,int ) ;
+ int CHN_LOCKASSERT (struct pcm_channel*) ;
+ scalar_t__ CHN_STARTED (struct pcm_channel*) ;
+ int sndbuf_getalign (int ) ;
 
 int
 chn_getptr(struct pcm_channel *c)
 {
-	int hwptr;
+ int hwptr;
 
-	CHN_LOCKASSERT(c);
-	hwptr = (CHN_STARTED(c)) ? CHANNEL_GETPTR(c->methods, c->devinfo) : 0;
-	return (hwptr - (hwptr % sndbuf_getalign(c->bufhard)));
+ CHN_LOCKASSERT(c);
+ hwptr = (CHN_STARTED(c)) ? CHANNEL_GETPTR(c->methods, c->devinfo) : 0;
+ return (hwptr - (hwptr % sndbuf_getalign(c->bufhard)));
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cb_recall_any_args {int /*<<< orphan*/  target_highest_slotid; } ;
-typedef  int /*<<< orphan*/  bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBX_ERR (char*) ; 
- int /*<<< orphan*/  xdr_u_int32_t (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct cb_recall_any_args {int target_highest_slotid; } ;
+typedef int bool_t ;
+typedef int XDR ;
+
+
+ int CBX_ERR (char*) ;
+ int xdr_u_int32_t (int *,int *) ;
 
 __attribute__((used)) static bool_t op_cb_recall_any_args(XDR *xdr, struct cb_recall_any_args *res)
 {

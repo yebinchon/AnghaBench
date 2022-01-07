@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bnx2x_alloc_pool {int /*<<< orphan*/ * page; } ;
+
+
+
+
+struct bnx2x_alloc_pool {int * page; } ;
 struct bnx2x {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_page (int /*<<< orphan*/ *) ; 
+
+ int put_page (int *) ;
 
 __attribute__((used)) static inline void bnx2x_free_rx_mem_pool(struct bnx2x *bp,
-					  struct bnx2x_alloc_pool *pool)
+       struct bnx2x_alloc_pool *pool)
 {
-	if (!pool->page)
-		return;
+ if (!pool->page)
+  return;
 
-	put_page(pool->page);
+ put_page(pool->page);
 
-	pool->page = NULL;
+ pool->page = ((void*)0);
 }

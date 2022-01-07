@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  parseState; int /*<<< orphan*/  res; } ;
-typedef  TYPE_1__ JsonbInState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WJB_BEGIN_OBJECT ; 
- int /*<<< orphan*/  pushJsonbValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int parseState; int res; } ;
+typedef TYPE_1__ JsonbInState ;
+
+
+ int WJB_BEGIN_OBJECT ;
+ int pushJsonbValue (int *,int ,int *) ;
 
 __attribute__((used)) static void
 jsonb_in_object_start(void *pstate)
 {
-	JsonbInState *_state = (JsonbInState *) pstate;
+ JsonbInState *_state = (JsonbInState *) pstate;
 
-	_state->res = pushJsonbValue(&_state->parseState, WJB_BEGIN_OBJECT, NULL);
+ _state->res = pushJsonbValue(&_state->parseState, WJB_BEGIN_OBJECT, ((void*)0));
 }

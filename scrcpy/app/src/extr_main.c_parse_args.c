@@ -1,97 +1,97 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct option {char* member_0; char member_3; int /*<<< orphan*/ * member_2; int /*<<< orphan*/  const member_1; } ;
-struct args {int fullscreen; int help; int no_control; int no_display; int turn_screen_off; int show_touches; int always_on_top; int version; int render_expired_frames; void* record_filename; scalar_t__ record_format; void* push_target; void* window_title; void* serial; int /*<<< orphan*/  port; int /*<<< orphan*/  max_size; void* crop; int /*<<< orphan*/  bit_rate; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOGE (char*,...) ; 
-#define  OPT_PUSH_TARGET 132 
-#define  OPT_RENDER_EXPIRED_FRAMES 131 
-#define  OPT_WINDOW_TITLE 130 
- int getopt_long (int,char**,char*,struct option const*,int /*<<< orphan*/ *) ; 
- scalar_t__ guess_record_format (void*) ; 
-#define  no_argument 129 
- void* optarg ; 
- int optind ; 
- int /*<<< orphan*/  parse_bit_rate (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_max_size (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_port (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  parse_record_format (void*,scalar_t__*) ; 
-#define  required_argument 128 
+
+
+
+struct option {char* member_0; char member_3; int * member_2; int const member_1; } ;
+struct args {int fullscreen; int help; int no_control; int no_display; int turn_screen_off; int show_touches; int always_on_top; int version; int render_expired_frames; void* record_filename; scalar_t__ record_format; void* push_target; void* window_title; void* serial; int port; int max_size; void* crop; int bit_rate; } ;
+
+
+ int LOGE (char*,...) ;
+
+
+
+ int getopt_long (int,char**,char*,struct option const*,int *) ;
+ scalar_t__ guess_record_format (void*) ;
+
+ void* optarg ;
+ int optind ;
+ int parse_bit_rate (void*,int *) ;
+ int parse_max_size (void*,int *) ;
+ int parse_port (void*,int *) ;
+ int parse_record_format (void*,scalar_t__*) ;
+
 
 __attribute__((used)) static bool
 parse_args(struct args *args, int argc, char *argv[]) {
     static const struct option long_options[] = {
-        {"always-on-top",         no_argument,       NULL, 'T'},
-        {"bit-rate",              required_argument, NULL, 'b'},
-        {"crop",                  required_argument, NULL, 'c'},
-        {"fullscreen",            no_argument,       NULL, 'f'},
-        {"help",                  no_argument,       NULL, 'h'},
-        {"max-size",              required_argument, NULL, 'm'},
-        {"no-control",            no_argument,       NULL, 'n'},
-        {"no-display",            no_argument,       NULL, 'N'},
-        {"port",                  required_argument, NULL, 'p'},
-        {"push-target",           required_argument, NULL,
-                                                 OPT_PUSH_TARGET},
-        {"record",                required_argument, NULL, 'r'},
-        {"record-format",         required_argument, NULL, 'F'},
-        {"render-expired-frames", no_argument,       NULL,
-                                                 OPT_RENDER_EXPIRED_FRAMES},
-        {"serial",                required_argument, NULL, 's'},
-        {"show-touches",          no_argument,       NULL, 't'},
-        {"turn-screen-off",       no_argument,       NULL, 'S'},
-        {"version",               no_argument,       NULL, 'v'},
-        {"window-title",          required_argument, NULL,
-                                                 OPT_WINDOW_TITLE},
-        {NULL,                    0,                 NULL, 0  },
+        {"always-on-top", 129, ((void*)0), 'T'},
+        {"bit-rate", 128, ((void*)0), 'b'},
+        {"crop", 128, ((void*)0), 'c'},
+        {"fullscreen", 129, ((void*)0), 'f'},
+        {"help", 129, ((void*)0), 'h'},
+        {"max-size", 128, ((void*)0), 'm'},
+        {"no-control", 129, ((void*)0), 'n'},
+        {"no-display", 129, ((void*)0), 'N'},
+        {"port", 128, ((void*)0), 'p'},
+        {"push-target", 128, ((void*)0),
+                                                 132},
+        {"record", 128, ((void*)0), 'r'},
+        {"record-format", 128, ((void*)0), 'F'},
+        {"render-expired-frames", 129, ((void*)0),
+                                                 131},
+        {"serial", 128, ((void*)0), 's'},
+        {"show-touches", 129, ((void*)0), 't'},
+        {"turn-screen-off", 129, ((void*)0), 'S'},
+        {"version", 129, ((void*)0), 'v'},
+        {"window-title", 128, ((void*)0),
+                                                 130},
+        {((void*)0), 0, ((void*)0), 0 },
     };
     int c;
     while ((c = getopt_long(argc, argv, "b:c:fF:hm:nNp:r:s:StTv", long_options,
-                            NULL)) != -1) {
+                            ((void*)0))) != -1) {
         switch (c) {
             case 'b':
                 if (!parse_bit_rate(optarg, &args->bit_rate)) {
-                    return false;
+                    return 0;
                 }
                 break;
             case 'c':
                 args->crop = optarg;
                 break;
             case 'f':
-                args->fullscreen = true;
+                args->fullscreen = 1;
                 break;
             case 'F':
                 if (!parse_record_format(optarg, &args->record_format)) {
-                    return false;
+                    return 0;
                 }
                 break;
             case 'h':
-                args->help = true;
+                args->help = 1;
                 break;
             case 'm':
                 if (!parse_max_size(optarg, &args->max_size)) {
-                    return false;
+                    return 0;
                 }
                 break;
             case 'n':
-                args->no_control = true;
+                args->no_control = 1;
                 break;
             case 'N':
-                args->no_display = true;
+                args->no_display = 1;
                 break;
             case 'p':
                 if (!parse_port(optarg, &args->port)) {
-                    return false;
+                    return 0;
                 }
                 break;
             case 'r':
@@ -101,51 +101,51 @@ parse_args(struct args *args, int argc, char *argv[]) {
                 args->serial = optarg;
                 break;
             case 'S':
-                args->turn_screen_off = true;
+                args->turn_screen_off = 1;
                 break;
             case 't':
-                args->show_touches = true;
+                args->show_touches = 1;
                 break;
             case 'T':
-                args->always_on_top = true;
+                args->always_on_top = 1;
                 break;
             case 'v':
-                args->version = true;
+                args->version = 1;
                 break;
-            case OPT_RENDER_EXPIRED_FRAMES:
-                args->render_expired_frames = true;
+            case 131:
+                args->render_expired_frames = 1;
                 break;
-            case OPT_WINDOW_TITLE:
+            case 130:
                 args->window_title = optarg;
                 break;
-            case OPT_PUSH_TARGET:
+            case 132:
                 args->push_target = optarg;
                 break;
             default:
-                // getopt prints the error message on stderr
-                return false;
+
+                return 0;
         }
     }
 
     if (args->no_display && !args->record_filename) {
         LOGE("-N/--no-display requires screen recording (-r/--record)");
-        return false;
+        return 0;
     }
 
     if (args->no_display && args->fullscreen) {
         LOGE("-f/--fullscreen-window is incompatible with -N/--no-display");
-        return false;
+        return 0;
     }
 
     int index = optind;
     if (index < argc) {
         LOGE("Unexpected additional argument: %s", argv[index]);
-        return false;
+        return 0;
     }
 
     if (args->record_format && !args->record_filename) {
         LOGE("Record format specified without recording");
-        return false;
+        return 0;
     }
 
     if (args->record_filename && !args->record_format) {
@@ -153,14 +153,14 @@ parse_args(struct args *args, int argc, char *argv[]) {
         if (!args->record_format) {
             LOGE("No format specified for \"%s\" (try with -F mkv)",
                  args->record_filename);
-            return false;
+            return 0;
         }
     }
 
     if (args->no_control && args->turn_screen_off) {
         LOGE("Could not request to turn screen off if control is disabled");
-        return false;
+        return 0;
     }
 
-    return true;
+    return 1;
 }

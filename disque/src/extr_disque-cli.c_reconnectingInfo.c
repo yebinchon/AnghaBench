@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_6__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  redisReply ;
+
+
+typedef struct TYPE_8__ TYPE_6__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int redisReply ;
 struct TYPE_7__ {int err; char* errstr; } ;
-typedef  TYPE_1__ redisContext ;
-struct TYPE_8__ {int /*<<< orphan*/  hostport; int /*<<< orphan*/  hostip; } ;
+typedef TYPE_1__ redisContext ;
+struct TYPE_8__ {int hostport; int hostip; } ;
 
-/* Variables and functions */
- int REDIS_ERR_EOF ; 
- int REDIS_ERR_IO ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_6__ config ; 
- TYPE_1__* context ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/ * redisCommand (TYPE_1__*,char*) ; 
- TYPE_1__* redisConnect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  redisFree (TYPE_1__*) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int REDIS_ERR_EOF ;
+ int REDIS_ERR_IO ;
+ int assert (int) ;
+ TYPE_6__ config ;
+ TYPE_1__* context ;
+ int exit (int) ;
+ int fflush (int ) ;
+ int fprintf (int ,char*,char*) ;
+ int printf (char*,...) ;
+ int * redisCommand (TYPE_1__*,char*) ;
+ TYPE_1__* redisConnect (int ,int ) ;
+ int redisFree (TYPE_1__*) ;
+ int stderr ;
+ int stdout ;
+ int usleep (int) ;
 
 __attribute__((used)) static redisReply *reconnectingInfo(void) {
     redisContext *c = context;
-    redisReply *reply = NULL;
+    redisReply *reply = ((void*)0);
     int tries = 0;
 
     assert(!c->err);
-    while(reply == NULL) {
+    while(reply == ((void*)0)) {
         while (c->err & (REDIS_ERR_IO | REDIS_ERR_EOF)) {
             printf("Reconnecting (%d)...\r", ++tries);
             fflush(stdout);

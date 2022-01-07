@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vm_prot_t ;
-typedef  int /*<<< orphan*/  vm_page_t ;
-typedef  int /*<<< orphan*/  vm_offset_t ;
-typedef  int /*<<< orphan*/  pmap_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PMAP_LOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PMAP_UNLOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pmap_enter_quick_locked (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pvh_global_lock ; 
- int /*<<< orphan*/  rw_wlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rw_wunlock (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vm_prot_t ;
+typedef int vm_page_t ;
+typedef int vm_offset_t ;
+typedef int pmap_t ;
+
+
+ int PMAP_LOCK (int ) ;
+ int PMAP_UNLOCK (int ) ;
+ int pmap_enter_quick_locked (int ,int ,int ,int ,int *) ;
+ int pvh_global_lock ;
+ int rw_wlock (int *) ;
+ int rw_wunlock (int *) ;
 
 void
 pmap_enter_quick(pmap_t pmap, vm_offset_t va, vm_page_t m, vm_prot_t prot)
 {
 
-	rw_wlock(&pvh_global_lock);
-	PMAP_LOCK(pmap);
-	(void)pmap_enter_quick_locked(pmap, va, m, prot, NULL);
-	rw_wunlock(&pvh_global_lock);
-	PMAP_UNLOCK(pmap);
+ rw_wlock(&pvh_global_lock);
+ PMAP_LOCK(pmap);
+ (void)pmap_enter_quick_locked(pmap, va, m, prot, ((void*)0));
+ rw_wunlock(&pvh_global_lock);
+ PMAP_UNLOCK(pmap);
 }

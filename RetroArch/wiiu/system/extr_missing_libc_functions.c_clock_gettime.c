@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct timeval {int tv_usec; int /*<<< orphan*/  tv_sec; int /*<<< orphan*/  member_0; } ;
-struct timespec {int tv_nsec; int /*<<< orphan*/  tv_sec; } ;
-typedef  int clockid_t ;
-typedef  int /*<<< orphan*/  OSTime ;
 
-/* Variables and functions */
-#define  CLOCK_REALTIME 128 
- int /*<<< orphan*/  EFAULT ; 
- int /*<<< orphan*/  EINVAL ; 
- int _gettimeofday_r (int /*<<< orphan*/ *,struct timeval*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  errno ; 
+
+
+
+struct timeval {int tv_usec; int tv_sec; int member_0; } ;
+struct timespec {int tv_nsec; int tv_sec; } ;
+typedef int clockid_t ;
+typedef int OSTime ;
+
+
+
+ int EFAULT ;
+ int EINVAL ;
+ int _gettimeofday_r (int *,struct timeval*,int *) ;
+ int errno ;
 
 int clock_gettime(clockid_t clk_id, struct timespec* tp)
 {
@@ -28,15 +28,15 @@ int clock_gettime(clockid_t clk_id, struct timespec* tp)
    int ret = 0;
    OSTime cosTime;
 
-   if (tp == NULL) {
+   if (tp == ((void*)0)) {
       errno = EFAULT;
       return -1;
    }
 
    switch (clk_id) {
-      case CLOCK_REALTIME:
-         /* Just wrap gettimeofday. Cheating, I know. */
-         ret = _gettimeofday_r(NULL, &ptimeval, NULL);
+      case 128:
+
+         ret = _gettimeofday_r(((void*)0), &ptimeval, ((void*)0));
          if (ret) return -1;
 
          tp->tv_sec = ptimeval.tv_sec;

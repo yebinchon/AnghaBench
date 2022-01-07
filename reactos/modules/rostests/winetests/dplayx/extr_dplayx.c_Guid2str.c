@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPCSTR ;
-typedef  int /*<<< orphan*/  GUID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPAID_ComPort ; 
- int /*<<< orphan*/  DPAID_INet ; 
- int /*<<< orphan*/  DPAID_INetPort ; 
- int /*<<< orphan*/  DPAID_INetW ; 
- int /*<<< orphan*/  DPAID_LobbyProvider ; 
- int /*<<< orphan*/  DPAID_Modem ; 
- int /*<<< orphan*/  DPAID_ModemW ; 
- int /*<<< orphan*/  DPAID_Phone ; 
- int /*<<< orphan*/  DPAID_PhoneW ; 
- int /*<<< orphan*/  DPAID_ServiceProvider ; 
- int /*<<< orphan*/  DPAID_TotalSize ; 
- int /*<<< orphan*/  DPSPGUID_IPX ; 
- int /*<<< orphan*/  DPSPGUID_MODEM ; 
- int /*<<< orphan*/  DPSPGUID_SERIAL ; 
- int /*<<< orphan*/  DPSPGUID_TCPIP ; 
- scalar_t__ IsEqualGUID (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- char* wine_dbgstr_guid (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef char* LPCSTR ;
+typedef int GUID ;
+
+
+ int DPAID_ComPort ;
+ int DPAID_INet ;
+ int DPAID_INetPort ;
+ int DPAID_INetW ;
+ int DPAID_LobbyProvider ;
+ int DPAID_Modem ;
+ int DPAID_ModemW ;
+ int DPAID_Phone ;
+ int DPAID_PhoneW ;
+ int DPAID_ServiceProvider ;
+ int DPAID_TotalSize ;
+ int DPSPGUID_IPX ;
+ int DPSPGUID_MODEM ;
+ int DPSPGUID_SERIAL ;
+ int DPSPGUID_TCPIP ;
+ scalar_t__ IsEqualGUID (int const*,int *) ;
+ char* wine_dbgstr_guid (int const*) ;
 
 __attribute__((used)) static LPCSTR Guid2str(const GUID *guid)
 {
     if (!guid) return "(null)";
 
-    /* Service providers */
+
     if (IsEqualGUID(guid, &DPSPGUID_IPX))
         return "DPSPGUID_IPX";
     if (IsEqualGUID(guid, &DPSPGUID_TCPIP))
@@ -45,7 +45,7 @@ __attribute__((used)) static LPCSTR Guid2str(const GUID *guid)
         return "DPSPGUID_SERIAL";
     if (IsEqualGUID(guid, &DPSPGUID_MODEM))
         return "DPSPGUID_MODEM";
-    /* DirectPlay Address IDs */
+
     if (IsEqualGUID(guid, &DPAID_TotalSize))
         return "DPAID_TotalSize";
     if (IsEqualGUID(guid, &DPAID_ServiceProvider))

@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlSAXHandlerV1 ;
-typedef  TYPE_1__* xmlSAXHandlerPtr ;
-typedef  int /*<<< orphan*/  xmlSAXHandler ;
-typedef  int /*<<< orphan*/ * xmlParserInputPtr ;
-typedef  int /*<<< orphan*/ * xmlParserInputBufferPtr ;
-typedef  TYPE_2__* xmlParserCtxtPtr ;
-typedef  int /*<<< orphan*/ * xmlInputReadCallback ;
-typedef  int /*<<< orphan*/  (* xmlInputCloseCallback ) (void*) ;
-typedef  int /*<<< orphan*/  xmlCharEncoding ;
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int xmlSAXHandlerV1 ;
+typedef TYPE_1__* xmlSAXHandlerPtr ;
+typedef int xmlSAXHandler ;
+typedef int * xmlParserInputPtr ;
+typedef int * xmlParserInputBufferPtr ;
+typedef TYPE_2__* xmlParserCtxtPtr ;
+typedef int * xmlInputReadCallback ;
+typedef int (* xmlInputCloseCallback ) (void*) ;
+typedef int xmlCharEncoding ;
 struct TYPE_15__ {void* userData; TYPE_1__* sax; } ;
 struct TYPE_14__ {scalar_t__ initialized; } ;
 
-/* Variables and functions */
- scalar_t__ XML_SAX2_MAGIC ; 
- int /*<<< orphan*/  inputPush (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (TYPE_1__*,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  xmlDefaultSAXHandler ; 
- int /*<<< orphan*/  xmlErrMemory (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xmlFree (TYPE_1__*) ; 
- int /*<<< orphan*/  xmlFreeParserCtxt (TYPE_2__*) ; 
- int /*<<< orphan*/  xmlFreeParserInputBuffer (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlMalloc (int) ; 
- int /*<<< orphan*/ * xmlNewIOInputStream (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_2__* xmlNewParserCtxt () ; 
- int /*<<< orphan*/ * xmlParserInputBufferCreateIO (int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (void*),void*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ XML_SAX2_MAGIC ;
+ int inputPush (TYPE_2__*,int *) ;
+ int memcpy (TYPE_1__*,TYPE_1__*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int xmlDefaultSAXHandler ;
+ int xmlErrMemory (TYPE_2__*,int *) ;
+ int xmlFree (TYPE_1__*) ;
+ int xmlFreeParserCtxt (TYPE_2__*) ;
+ int xmlFreeParserInputBuffer (int *) ;
+ scalar_t__ xmlMalloc (int) ;
+ int * xmlNewIOInputStream (TYPE_2__*,int *,int ) ;
+ TYPE_2__* xmlNewParserCtxt () ;
+ int * xmlParserInputBufferCreateIO (int *,int (*) (void*),void*,int ) ;
 
 xmlParserCtxtPtr
 xmlCreateIOParserCtxt(xmlSAXHandlerPtr sax, void *user_data,
-	xmlInputReadCallback   ioread, xmlInputCloseCallback  ioclose,
-	void *ioctx, xmlCharEncoding enc) {
+ xmlInputReadCallback ioread, xmlInputCloseCallback ioclose,
+ void *ioctx, xmlCharEncoding enc) {
     xmlParserCtxtPtr ctxt;
     xmlParserInputPtr inputStream;
     xmlParserInputBufferPtr buf;
 
-    if (ioread == NULL) return(NULL);
+    if (ioread == ((void*)0)) return(((void*)0));
 
     buf = xmlParserInputBufferCreateIO(ioread, ioclose, ioctx, enc);
-    if (buf == NULL) {
-        if (ioclose != NULL)
+    if (buf == ((void*)0)) {
+        if (ioclose != ((void*)0))
             ioclose(ioctx);
-        return (NULL);
+        return (((void*)0));
     }
 
     ctxt = xmlNewParserCtxt();
-    if (ctxt == NULL) {
-	xmlFreeParserInputBuffer(buf);
-	return(NULL);
+    if (ctxt == ((void*)0)) {
+ xmlFreeParserInputBuffer(buf);
+ return(((void*)0));
     }
-    if (sax != NULL) {
-#ifdef LIBXML_SAX1_ENABLED
-	if (ctxt->sax != (xmlSAXHandlerPtr) &xmlDefaultSAXHandler)
-#endif /* LIBXML_SAX1_ENABLED */
-	    xmlFree(ctxt->sax);
-	ctxt->sax = (xmlSAXHandlerPtr) xmlMalloc(sizeof(xmlSAXHandler));
-	if (ctxt->sax == NULL) {
-	    xmlErrMemory(ctxt, NULL);
-	    xmlFreeParserCtxt(ctxt);
-	    return(NULL);
-	}
-	memset(ctxt->sax, 0, sizeof(xmlSAXHandler));
-	if (sax->initialized == XML_SAX2_MAGIC)
-	    memcpy(ctxt->sax, sax, sizeof(xmlSAXHandler));
-	else
-	    memcpy(ctxt->sax, sax, sizeof(xmlSAXHandlerV1));
-	if (user_data != NULL)
-	    ctxt->userData = user_data;
+    if (sax != ((void*)0)) {
+
+
+
+     xmlFree(ctxt->sax);
+ ctxt->sax = (xmlSAXHandlerPtr) xmlMalloc(sizeof(xmlSAXHandler));
+ if (ctxt->sax == ((void*)0)) {
+     xmlErrMemory(ctxt, ((void*)0));
+     xmlFreeParserCtxt(ctxt);
+     return(((void*)0));
+ }
+ memset(ctxt->sax, 0, sizeof(xmlSAXHandler));
+ if (sax->initialized == XML_SAX2_MAGIC)
+     memcpy(ctxt->sax, sax, sizeof(xmlSAXHandler));
+ else
+     memcpy(ctxt->sax, sax, sizeof(xmlSAXHandlerV1));
+ if (user_data != ((void*)0))
+     ctxt->userData = user_data;
     }
 
     inputStream = xmlNewIOInputStream(ctxt, buf, enc);
-    if (inputStream == NULL) {
-	xmlFreeParserCtxt(ctxt);
-	return(NULL);
+    if (inputStream == ((void*)0)) {
+ xmlFreeParserCtxt(ctxt);
+ return(((void*)0));
     }
     inputPush(ctxt, inputStream);
 

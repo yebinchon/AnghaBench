@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
-struct TYPE_6__ {int DataLength; scalar_t__ Type; int /*<<< orphan*/  Data; } ;
-typedef  TYPE_1__* PKEY_VALUE_PARTIAL_INFORMATION ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  KeyValueObject ;
-typedef  TYPE_1__ KEY_VALUE_PARTIAL_INFORMATION ;
-typedef  scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppCompatCacheValue ; 
- int /*<<< orphan*/  AppCompatKeyAttributes ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int /*<<< orphan*/  KeyValuePartialInformation ; 
- scalar_t__ NT_SUCCESS (scalar_t__) ; 
- int /*<<< orphan*/  NtClose (scalar_t__) ; 
- scalar_t__ NtOpenKey (scalar_t__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ NtQueryValueKey (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_1__*,int,int*) ; 
- scalar_t__ REG_BINARY ; 
- int RtlComputeCrc32 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ STATUS_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  hexdump (int /*<<< orphan*/ ,int) ; 
- TYPE_1__* malloc (int) ; 
- int /*<<< orphan*/  xprintf (char*,...) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_6__ {int DataLength; scalar_t__ Type; int Data; } ;
+typedef TYPE_1__* PKEY_VALUE_PARTIAL_INFORMATION ;
+typedef scalar_t__ NTSTATUS ;
+typedef int KeyValueObject ;
+typedef TYPE_1__ KEY_VALUE_PARTIAL_INFORMATION ;
+typedef scalar_t__ HANDLE ;
+
+
+ int AppCompatCacheValue ;
+ int AppCompatKeyAttributes ;
+ int KEY_QUERY_VALUE ;
+ int KeyValuePartialInformation ;
+ scalar_t__ NT_SUCCESS (scalar_t__) ;
+ int NtClose (scalar_t__) ;
+ scalar_t__ NtOpenKey (scalar_t__*,int ,int *) ;
+ scalar_t__ NtQueryValueKey (scalar_t__,int *,int ,TYPE_1__*,int,int*) ;
+ scalar_t__ REG_BINARY ;
+ int RtlComputeCrc32 (int ,int ,int) ;
+ scalar_t__ STATUS_BUFFER_OVERFLOW ;
+ int free (TYPE_1__*) ;
+ int hexdump (int ,int) ;
+ TYPE_1__* malloc (int) ;
+ int xprintf (char*,...) ;
 
 void DumpRegistryData(int IncludeDump)
 {
@@ -56,7 +56,7 @@ void DumpRegistryData(int IncludeDump)
     {
         KeyInfoSize = sizeof(KEY_VALUE_PARTIAL_INFORMATION) + KeyValueInformation->DataLength;
         KeyValueInformation = malloc(KeyInfoSize);
-        if (KeyValueInformation != NULL)
+        if (KeyValueInformation != ((void*)0))
         {
             Status = NtQueryValueKey(KeyHandle, &AppCompatCacheValue,
                         KeyValuePartialInformation, KeyValueInformation,

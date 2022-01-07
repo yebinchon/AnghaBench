@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ldns_rr ;
-typedef  int /*<<< orphan*/  ldns_pkt_section ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- int ldns_pkt_push_rr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_pkt_rr (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int ldns_rr ;
+typedef int ldns_pkt_section ;
+typedef int ldns_pkt ;
+
+
+ int ldns_pkt_push_rr (int *,int ,int *) ;
+ scalar_t__ ldns_pkt_rr (int *,int ,int *) ;
 
 bool
 ldns_pkt_safe_push_rr(ldns_pkt *pkt, ldns_pkt_section sec, ldns_rr *rr)
 {
 
-	/* check to see if its there */
-	if (ldns_pkt_rr(pkt, sec, rr)) {
-		/* already there */
-		return false;
-	}
-	return ldns_pkt_push_rr(pkt, sec, rr);
+
+ if (ldns_pkt_rr(pkt, sec, rr)) {
+
+  return 0;
+ }
+ return ldns_pkt_push_rr(pkt, sec, rr);
 }

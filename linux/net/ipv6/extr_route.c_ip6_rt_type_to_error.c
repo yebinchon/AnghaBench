@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u8 ;
 
-/* Variables and functions */
- int* fib6_prop ; 
+
+
+
+typedef size_t u8 ;
+
+
+ int* fib6_prop ;
 
 __attribute__((used)) static int ip6_rt_type_to_error(u8 fib6_type)
 {
-	return fib6_prop[fib6_type];
+ return fib6_prop[fib6_type];
 }

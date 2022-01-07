@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  scalar_t__ UINT ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int buf ;
+typedef scalar_t__ UINT ;
 struct TYPE_8__ {scalar_t__ QuadPart; } ;
 struct TYPE_7__ {scalar_t__ QuadPart; } ;
 struct TYPE_6__ {TYPE_4__ cbSize; } ;
-typedef  TYPE_1__ STATSTG ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ STATSTG ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int IStream ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALIDARG ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,char*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  IStream_Seek (int /*<<< orphan*/ *,TYPE_2__,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_SetSize (int /*<<< orphan*/ *,TYPE_4__) ; 
- int /*<<< orphan*/  IStream_Stat (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStream_Write (int /*<<< orphan*/ *,char*,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  STATFLAG_NONAME ; 
- int /*<<< orphan*/  STREAM_SEEK_SET ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ min (int,scalar_t__) ; 
+
+ int E_INVALIDARG ;
+ scalar_t__ FAILED (int ) ;
+ int IStream_Read (int *,char*,scalar_t__,scalar_t__*) ;
+ int IStream_Seek (int *,TYPE_2__,int ,int *) ;
+ int IStream_SetSize (int *,TYPE_4__) ;
+ int IStream_Stat (int *,TYPE_1__*,int ) ;
+ int IStream_Write (int *,char*,scalar_t__,scalar_t__*) ;
+ int STATFLAG_NONAME ;
+ int STREAM_SEEK_SET ;
+ int S_OK ;
+ int WARN (char*,int ) ;
+ scalar_t__ min (int,scalar_t__) ;
 
 __attribute__((used)) static HRESULT write_stream( IStream *dst, IStream *src )
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static HRESULT write_stream( IStream *dst, IStream *src )
     if (FAILED( hr )) return hr;
 
     pos.QuadPart = 0;
-    hr = IStream_Seek( dst, pos, STREAM_SEEK_SET, NULL );
+    hr = IStream_Seek( dst, pos, STREAM_SEEK_SET, ((void*)0) );
     if (FAILED( hr )) return hr;
 
     for (;;)

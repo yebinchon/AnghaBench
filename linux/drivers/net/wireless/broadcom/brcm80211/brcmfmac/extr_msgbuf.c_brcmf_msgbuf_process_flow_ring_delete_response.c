@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u16 ;
-struct TYPE_2__ {int /*<<< orphan*/  status; int /*<<< orphan*/  flow_ring_id; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ u16 ;
+struct TYPE_2__ {int status; int flow_ring_id; } ;
 struct msgbuf_flowring_delete_resp {TYPE_1__ compl_hdr; } ;
 struct brcmf_pub {int dummy; } ;
-struct brcmf_msgbuf {int /*<<< orphan*/  flow; struct brcmf_pub* drvr; } ;
+struct brcmf_msgbuf {int flow; struct brcmf_pub* drvr; } ;
 
-/* Variables and functions */
- scalar_t__ BRCMF_H2D_MSGRING_FLOWRING_IDSTART ; 
- int /*<<< orphan*/  MSGBUF ; 
- int /*<<< orphan*/  bphy_err (struct brcmf_pub*,char*,scalar_t__) ; 
- int /*<<< orphan*/  brcmf_dbg (int /*<<< orphan*/ ,char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  brcmf_flowring_delete (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  brcmf_msgbuf_remove_flowring (struct brcmf_msgbuf*,scalar_t__) ; 
- scalar_t__ le16_to_cpu (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BRCMF_H2D_MSGRING_FLOWRING_IDSTART ;
+ int MSGBUF ;
+ int bphy_err (struct brcmf_pub*,char*,scalar_t__) ;
+ int brcmf_dbg (int ,char*,scalar_t__,scalar_t__) ;
+ int brcmf_flowring_delete (int ,scalar_t__) ;
+ int brcmf_msgbuf_remove_flowring (struct brcmf_msgbuf*,scalar_t__) ;
+ scalar_t__ le16_to_cpu (int ) ;
 
 __attribute__((used)) static void
 brcmf_msgbuf_process_flow_ring_delete_response(struct brcmf_msgbuf *msgbuf,
-					       void *buf)
+            void *buf)
 {
-	struct brcmf_pub *drvr = msgbuf->drvr;
-	struct msgbuf_flowring_delete_resp *flowring_delete_resp;
-	u16 status;
-	u16 flowid;
+ struct brcmf_pub *drvr = msgbuf->drvr;
+ struct msgbuf_flowring_delete_resp *flowring_delete_resp;
+ u16 status;
+ u16 flowid;
 
-	flowring_delete_resp = (struct msgbuf_flowring_delete_resp *)buf;
+ flowring_delete_resp = (struct msgbuf_flowring_delete_resp *)buf;
 
-	flowid = le16_to_cpu(flowring_delete_resp->compl_hdr.flow_ring_id);
-	flowid -= BRCMF_H2D_MSGRING_FLOWRING_IDSTART;
-	status =  le16_to_cpu(flowring_delete_resp->compl_hdr.status);
+ flowid = le16_to_cpu(flowring_delete_resp->compl_hdr.flow_ring_id);
+ flowid -= BRCMF_H2D_MSGRING_FLOWRING_IDSTART;
+ status = le16_to_cpu(flowring_delete_resp->compl_hdr.status);
 
-	if (status) {
-		bphy_err(drvr, "Flowring deletion failed, code %d\n", status);
-		brcmf_flowring_delete(msgbuf->flow, flowid);
-		return;
-	}
-	brcmf_dbg(MSGBUF, "Flowring %d Delete response status %d\n", flowid,
-		  status);
+ if (status) {
+  bphy_err(drvr, "Flowring deletion failed, code %d\n", status);
+  brcmf_flowring_delete(msgbuf->flow, flowid);
+  return;
+ }
+ brcmf_dbg(MSGBUF, "Flowring %d Delete response status %d\n", flowid,
+    status);
 
-	brcmf_msgbuf_remove_flowring(msgbuf, flowid);
+ brcmf_msgbuf_remove_flowring(msgbuf, flowid);
 }

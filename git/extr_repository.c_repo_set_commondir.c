@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct strbuf {int dummy; } ;
-struct repository {int different_commondir; int /*<<< orphan*/  commondir; int /*<<< orphan*/  gitdir; } ;
+struct repository {int different_commondir; int commondir; int gitdir; } ;
 
-/* Variables and functions */
- struct strbuf STRBUF_INIT ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int get_common_dir_noenv (struct strbuf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strbuf_detach (struct strbuf*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xstrdup (char const*) ; 
+
+ struct strbuf STRBUF_INIT ;
+ int free (int ) ;
+ int get_common_dir_noenv (struct strbuf*,int ) ;
+ int strbuf_detach (struct strbuf*,int *) ;
+ int xstrdup (char const*) ;
 
 __attribute__((used)) static void repo_set_commondir(struct repository *repo,
-			       const char *commondir)
+          const char *commondir)
 {
-	struct strbuf sb = STRBUF_INIT;
+ struct strbuf sb = STRBUF_INIT;
 
-	free(repo->commondir);
+ free(repo->commondir);
 
-	if (commondir) {
-		repo->different_commondir = 1;
-		repo->commondir = xstrdup(commondir);
-		return;
-	}
+ if (commondir) {
+  repo->different_commondir = 1;
+  repo->commondir = xstrdup(commondir);
+  return;
+ }
 
-	repo->different_commondir = get_common_dir_noenv(&sb, repo->gitdir);
-	repo->commondir = strbuf_detach(&sb, NULL);
+ repo->different_commondir = get_common_dir_noenv(&sb, repo->gitdir);
+ repo->commondir = strbuf_detach(&sb, ((void*)0));
 }

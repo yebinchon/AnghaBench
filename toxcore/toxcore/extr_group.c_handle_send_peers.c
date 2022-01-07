@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  peer_num ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+typedef int peer_num ;
 struct TYPE_14__ {TYPE_2__* m; } ;
 struct TYPE_13__ {scalar_t__ status; int peer_number; } ;
-struct TYPE_12__ {int /*<<< orphan*/  name_length; int /*<<< orphan*/  name; TYPE_1__* net_crypto; } ;
-struct TYPE_11__ {int /*<<< orphan*/  self_public_key; } ;
-typedef  TYPE_3__ Group_c ;
-typedef  TYPE_4__ Group_Chats ;
+struct TYPE_12__ {int name_length; int name; TYPE_1__* net_crypto; } ;
+struct TYPE_11__ {int self_public_key; } ;
+typedef TYPE_3__ Group_c ;
+typedef TYPE_4__ Group_Chats ;
 
-/* Variables and functions */
- scalar_t__ GROUPCHAT_STATUS_CONNECTED ; 
- scalar_t__ GROUPCHAT_STATUS_VALID ; 
- int MAX_NAME_LENGTH ; 
- int addpeer (TYPE_4__*,int,int const*,int const*,int) ; 
- int crypto_box_PUBLICKEYBYTES ; 
- TYPE_3__* get_group_c (TYPE_4__*,int) ; 
- int /*<<< orphan*/  group_name_send (TYPE_4__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int*,int const*,int) ; 
- int ntohs (int) ; 
- scalar_t__ public_key_cmp (int const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setnick (TYPE_4__*,int,int,int const*,int) ; 
+
+ scalar_t__ GROUPCHAT_STATUS_CONNECTED ;
+ scalar_t__ GROUPCHAT_STATUS_VALID ;
+ int MAX_NAME_LENGTH ;
+ int addpeer (TYPE_4__*,int,int const*,int const*,int) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ TYPE_3__* get_group_c (TYPE_4__*,int) ;
+ int group_name_send (TYPE_4__*,int,int ,int ) ;
+ int memcpy (int*,int const*,int) ;
+ int ntohs (int) ;
+ scalar_t__ public_key_cmp (int const*,int ) ;
+ int setnick (TYPE_4__*,int,int,int const*,int) ;
 
 __attribute__((used)) static int handle_send_peers(Group_Chats *g_c, int groupnumber, const uint8_t *data, uint16_t length)
 {

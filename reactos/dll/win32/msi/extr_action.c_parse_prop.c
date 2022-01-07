@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum parse_state { ____Placeholder_parse_state } parse_state ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
-#define  state_quote 130 
-#define  state_token 129 
-#define  state_whitespace 128 
+
+
+
+typedef enum parse_state { ____Placeholder_parse_state } parse_state ;
+typedef char WCHAR ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+
+
+
 
 __attribute__((used)) static int parse_prop( const WCHAR *str, WCHAR *value, int *quotes )
 {
-    enum parse_state state = state_quote;
+    enum parse_state state = 130;
     const WCHAR *p;
     WCHAR *out = value;
     BOOL ignore, in_quotes = FALSE;
@@ -34,7 +34,7 @@ __attribute__((used)) static int parse_prop( const WCHAR *str, WCHAR *value, int
         ignore = FALSE;
         switch (state)
         {
-        case state_whitespace:
+        case 128:
             switch (*p)
             {
             case ' ':
@@ -43,28 +43,28 @@ __attribute__((used)) static int parse_prop( const WCHAR *str, WCHAR *value, int
                 len++;
                 break;
             case '"':
-                state = state_quote;
+                state = 130;
                 if (in_quotes && p[1] != '\"') count--;
                 else count++;
                 break;
             default:
-                state = state_token;
+                state = 129;
                 in_quotes = TRUE;
                 len++;
                 break;
             }
             break;
 
-        case state_token:
+        case 129:
             switch (*p)
             {
             case '"':
-                state = state_quote;
+                state = 130;
                 if (in_quotes) count--;
                 else count++;
                 break;
             case ' ':
-                state = state_whitespace;
+                state = 128;
                 if (!count) goto done;
                 in_quotes = TRUE;
                 len++;
@@ -76,7 +76,7 @@ __attribute__((used)) static int parse_prop( const WCHAR *str, WCHAR *value, int
             }
             break;
 
-        case state_quote:
+        case 130:
             switch (*p)
             {
             case '"':
@@ -84,13 +84,13 @@ __attribute__((used)) static int parse_prop( const WCHAR *str, WCHAR *value, int
                 else count++;
                 break;
             case ' ':
-                state = state_whitespace;
+                state = 128;
                 if (!count || (count > 1 && !len)) goto done;
                 in_quotes = TRUE;
                 len++;
                 break;
             default:
-                state = state_token;
+                state = 129;
                 if (count) in_quotes = TRUE;
                 len++;
                 break;

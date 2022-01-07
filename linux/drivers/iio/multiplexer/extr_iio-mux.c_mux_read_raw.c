@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mux {int /*<<< orphan*/  parent; struct iio_chan_spec const* chan; } ;
+
+
+
+
+struct mux {int parent; struct iio_chan_spec const* chan; } ;
 struct iio_dev {int dummy; } ;
 struct iio_chan_spec {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  IIO_CHAN_INFO_RAW 129 
-#define  IIO_CHAN_INFO_SCALE 128 
- int /*<<< orphan*/  iio_mux_deselect (struct mux*) ; 
- int iio_mux_select (struct mux*,int) ; 
- struct mux* iio_priv (struct iio_dev*) ; 
- int iio_read_channel_raw (int /*<<< orphan*/ ,int*) ; 
- int iio_read_channel_scale (int /*<<< orphan*/ ,int*,int*) ; 
+
+ int EINVAL ;
+
+
+ int iio_mux_deselect (struct mux*) ;
+ int iio_mux_select (struct mux*,int) ;
+ struct mux* iio_priv (struct iio_dev*) ;
+ int iio_read_channel_raw (int ,int*) ;
+ int iio_read_channel_scale (int ,int*,int*) ;
 
 __attribute__((used)) static int mux_read_raw(struct iio_dev *indio_dev,
-			struct iio_chan_spec const *chan,
-			int *val, int *val2, long mask)
+   struct iio_chan_spec const *chan,
+   int *val, int *val2, long mask)
 {
-	struct mux *mux = iio_priv(indio_dev);
-	int idx = chan - mux->chan;
-	int ret;
+ struct mux *mux = iio_priv(indio_dev);
+ int idx = chan - mux->chan;
+ int ret;
 
-	ret = iio_mux_select(mux, idx);
-	if (ret < 0)
-		return ret;
+ ret = iio_mux_select(mux, idx);
+ if (ret < 0)
+  return ret;
 
-	switch (mask) {
-	case IIO_CHAN_INFO_RAW:
-		ret = iio_read_channel_raw(mux->parent, val);
-		break;
+ switch (mask) {
+ case 129:
+  ret = iio_read_channel_raw(mux->parent, val);
+  break;
 
-	case IIO_CHAN_INFO_SCALE:
-		ret = iio_read_channel_scale(mux->parent, val, val2);
-		break;
+ case 128:
+  ret = iio_read_channel_scale(mux->parent, val, val2);
+  break;
 
-	default:
-		ret = -EINVAL;
-	}
+ default:
+  ret = -EINVAL;
+ }
 
-	iio_mux_deselect(mux);
+ iio_mux_deselect(mux);
 
-	return ret;
+ return ret;
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  g; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int g; } ;
 struct TYPE_5__ {int nguardbits; int quantsty; int* expn; int* mant; } ;
-typedef  TYPE_1__ Jpeg2000QuantStyle ;
-typedef  TYPE_2__ Jpeg2000DecoderContext ;
+typedef TYPE_1__ Jpeg2000QuantStyle ;
+typedef TYPE_2__ Jpeg2000DecoderContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int FFMAX (int /*<<< orphan*/ ,int) ; 
- int JPEG2000_MAX_DECLEVELS ; 
- int JPEG2000_QSTY_NONE ; 
- int JPEG2000_QSTY_SI ; 
- int bytestream2_get_be16u (int /*<<< orphan*/ *) ; 
- int bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int bytestream2_get_byteu (int /*<<< orphan*/ *) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int FFMAX (int ,int) ;
+ int JPEG2000_MAX_DECLEVELS ;
+ int JPEG2000_QSTY_NONE ;
+ int JPEG2000_QSTY_SI ;
+ int bytestream2_get_be16u (int *) ;
+ int bytestream2_get_bytes_left (int *) ;
+ int bytestream2_get_byteu (int *) ;
 
 __attribute__((used)) static int get_qcx(Jpeg2000DecoderContext *s, int n, Jpeg2000QuantStyle *q)
 {
@@ -34,10 +34,10 @@ __attribute__((used)) static int get_qcx(Jpeg2000DecoderContext *s, int n, Jpeg2
     if (bytestream2_get_bytes_left(&s->g) < 1)
         return AVERROR_INVALIDDATA;
 
-    x = bytestream2_get_byteu(&s->g); // Sqcd
+    x = bytestream2_get_byteu(&s->g);
 
     q->nguardbits = x >> 5;
-    q->quantsty   = x & 0x1f;
+    q->quantsty = x & 0x1f;
 
     if (q->quantsty == JPEG2000_QSTY_NONE) {
         n -= 3;
@@ -49,7 +49,7 @@ __attribute__((used)) static int get_qcx(Jpeg2000DecoderContext *s, int n, Jpeg2
     } else if (q->quantsty == JPEG2000_QSTY_SI) {
         if (bytestream2_get_bytes_left(&s->g) < 2)
             return AVERROR_INVALIDDATA;
-        x          = bytestream2_get_be16u(&s->g);
+        x = bytestream2_get_be16u(&s->g);
         q->expn[0] = x >> 11;
         q->mant[0] = x & 0x7ff;
         for (i = 1; i < JPEG2000_MAX_DECLEVELS * 3; i++) {
@@ -63,7 +63,7 @@ __attribute__((used)) static int get_qcx(Jpeg2000DecoderContext *s, int n, Jpeg2
             n > JPEG2000_MAX_DECLEVELS*3)
             return AVERROR_INVALIDDATA;
         for (i = 0; i < n; i++) {
-            x          = bytestream2_get_be16u(&s->g);
+            x = bytestream2_get_be16u(&s->g);
             q->expn[i] = x >> 11;
             q->mant[i] = x & 0x7ff;
         }

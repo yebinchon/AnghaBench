@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  unsigned int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int*,int const*,unsigned int) ; 
+
+
+
+typedef int uint8_t ;
+typedef unsigned int uint32_t ;
+
+
+ int memcpy (int*,int const*,unsigned int) ;
 
 __attribute__((used)) static size_t MakeUncompressedStream(
     const uint8_t* input, size_t input_size, uint8_t* output) {
@@ -25,8 +25,8 @@ __attribute__((used)) static size_t MakeUncompressedStream(
     output[0] = 6;
     return 1;
   }
-  output[result++] = 0x21;  /* window bits = 10, is_last = false */
-  output[result++] = 0x03;  /* empty metadata, padding */
+  output[result++] = 0x21;
+  output[result++] = 0x03;
   while (size > 0) {
     uint32_t nibbles = 0;
     uint32_t chunk_size;

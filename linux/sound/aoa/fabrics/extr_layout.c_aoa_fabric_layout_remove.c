@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  dev; } ;
-struct soundbus_dev {int pcmid; int /*<<< orphan*/ * pcmname; TYPE_1__ ofdev; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int dev; } ;
+struct soundbus_dev {int pcmid; int * pcmname; TYPE_1__ ofdev; } ;
 struct TYPE_8__ {TYPE_2__* methods; } ;
-struct layout_dev {TYPE_3__ gpio; int /*<<< orphan*/  sound; int /*<<< orphan*/  list; int /*<<< orphan*/ ** codecs; } ;
-struct TYPE_7__ {int /*<<< orphan*/  (* exit ) (TYPE_3__*) ;int /*<<< orphan*/  (* set_notify ) (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+struct layout_dev {TYPE_3__ gpio; int sound; int list; int ** codecs; } ;
+struct TYPE_7__ {int (* exit ) (TYPE_3__*) ;int (* set_notify ) (TYPE_3__*,int ,int *,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AOA_NOTIFY_HEADPHONE ; 
- int /*<<< orphan*/  AOA_NOTIFY_LINE_OUT ; 
- int MAX_CODECS_PER_BUS ; 
- int /*<<< orphan*/  aoa_fabric_unlink_codec (int /*<<< orphan*/ *) ; 
- struct layout_dev* dev_get_drvdata (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct layout_dev*) ; 
- int /*<<< orphan*/ * layout_device ; 
- int /*<<< orphan*/  layouts_list_items ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  of_node_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_3__*) ; 
+
+ int AOA_NOTIFY_HEADPHONE ;
+ int AOA_NOTIFY_LINE_OUT ;
+ int MAX_CODECS_PER_BUS ;
+ int aoa_fabric_unlink_codec (int *) ;
+ struct layout_dev* dev_get_drvdata (int *) ;
+ int kfree (struct layout_dev*) ;
+ int * layout_device ;
+ int layouts_list_items ;
+ int list_del (int *) ;
+ int of_node_put (int ) ;
+ int stub1 (TYPE_3__*,int ,int *,int *) ;
+ int stub2 (TYPE_3__*,int ,int *,int *) ;
+ int stub3 (TYPE_3__*) ;
 
 __attribute__((used)) static int aoa_fabric_layout_remove(struct soundbus_dev *sdev)
 {
-	struct layout_dev *ldev = dev_get_drvdata(&sdev->ofdev.dev);
-	int i;
+ struct layout_dev *ldev = dev_get_drvdata(&sdev->ofdev.dev);
+ int i;
 
-	for (i=0; i<MAX_CODECS_PER_BUS; i++) {
-		if (ldev->codecs[i]) {
-			aoa_fabric_unlink_codec(ldev->codecs[i]);
-		}
-		ldev->codecs[i] = NULL;
-	}
-	list_del(&ldev->list);
-	layouts_list_items--;
-	of_node_put(ldev->sound);
+ for (i=0; i<MAX_CODECS_PER_BUS; i++) {
+  if (ldev->codecs[i]) {
+   aoa_fabric_unlink_codec(ldev->codecs[i]);
+  }
+  ldev->codecs[i] = ((void*)0);
+ }
+ list_del(&ldev->list);
+ layouts_list_items--;
+ of_node_put(ldev->sound);
 
-	ldev->gpio.methods->set_notify(&ldev->gpio,
-				       AOA_NOTIFY_HEADPHONE,
-				       NULL,
-				       NULL);
-	ldev->gpio.methods->set_notify(&ldev->gpio,
-				       AOA_NOTIFY_LINE_OUT,
-				       NULL,
-				       NULL);
+ ldev->gpio.methods->set_notify(&ldev->gpio,
+           AOA_NOTIFY_HEADPHONE,
+           ((void*)0),
+           ((void*)0));
+ ldev->gpio.methods->set_notify(&ldev->gpio,
+           AOA_NOTIFY_LINE_OUT,
+           ((void*)0),
+           ((void*)0));
 
-	ldev->gpio.methods->exit(&ldev->gpio);
-	layout_device = NULL;
-	kfree(ldev);
-	sdev->pcmid = -1;
-	sdev->pcmname = NULL;
-	return 0;
+ ldev->gpio.methods->exit(&ldev->gpio);
+ layout_device = ((void*)0);
+ kfree(ldev);
+ sdev->pcmid = -1;
+ sdev->pcmname = ((void*)0);
+ return 0;
 }

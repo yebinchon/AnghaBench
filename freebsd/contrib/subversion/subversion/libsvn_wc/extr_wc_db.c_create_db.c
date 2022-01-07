@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_sqlite__db_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
-typedef  int /*<<< orphan*/  apr_int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_SQLITE__WITH_LOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_db (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__mode_rwcreate ; 
- int /*<<< orphan*/  svn_wc__db_util_open_db (int /*<<< orphan*/ **,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_sqlite__db_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+typedef int apr_int32_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int SVN_SQLITE__WITH_LOCK (int ,int *) ;
+ int init_db (int *,int *,int *,char const*,char const*,char const*,int ,int ,int *) ;
+ int svn_sqlite__mode_rwcreate ;
+ int svn_wc__db_util_open_db (int **,char const*,char const*,int ,int ,int ,int *,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 create_db(svn_sqlite__db_t **sdb,
@@ -46,7 +46,7 @@ create_db(svn_sqlite__db_t **sdb,
   SVN_ERR(svn_wc__db_util_open_db(sdb, dir_abspath, sdb_fname,
                                   svn_sqlite__mode_rwcreate, exclusive,
                                   timeout,
-                                  NULL /* my_statements */,
+                                  ((void*)0) ,
                                   result_pool, scratch_pool));
 
   SVN_SQLITE__WITH_LOCK(init_db(repos_id, wc_id,

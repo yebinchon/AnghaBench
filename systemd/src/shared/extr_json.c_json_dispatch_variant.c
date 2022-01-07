@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ **** JsonVariant ;
-typedef  int /*<<< orphan*/  JsonDispatchFlags ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ******) ; 
- int /*<<< orphan*/ ******* json_variant_ref (int /*<<< orphan*/ *****) ; 
- int /*<<< orphan*/  json_variant_unref (int /*<<< orphan*/ *****) ; 
+
+
+
+typedef int **** JsonVariant ;
+typedef int JsonDispatchFlags ;
+
+
+ int assert (int ******) ;
+ int ******* json_variant_ref (int *****) ;
+ int json_variant_unref (int *****) ;
 
 int json_dispatch_variant(const char *name, JsonVariant *variant, JsonDispatchFlags flags, void *userdata) {
         JsonVariant **p = userdata;

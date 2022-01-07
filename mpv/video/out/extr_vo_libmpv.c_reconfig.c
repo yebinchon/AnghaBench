@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo_priv {struct mpv_render_context* ctx; } ;
 struct vo {struct vo_priv* priv; } ;
 struct mp_image_params {int dummy; } ;
-struct mpv_render_context {int need_reconfig; int need_resize; int /*<<< orphan*/  lock; struct mp_image_params img_params; } ;
+struct mpv_render_context {int need_reconfig; int need_resize; int lock; struct mp_image_params img_params; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VOCTRL_RECONFIG ; 
- int /*<<< orphan*/  control (struct vo*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  forget_frames (struct mpv_render_context*,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int VOCTRL_RECONFIG ;
+ int control (struct vo*,int ,int *) ;
+ int forget_frames (struct mpv_render_context*,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
 
 __attribute__((used)) static int reconfig(struct vo *vo, struct mp_image_params *params)
 {
@@ -28,13 +28,13 @@ __attribute__((used)) static int reconfig(struct vo *vo, struct mp_image_params 
     struct mpv_render_context *ctx = p->ctx;
 
     pthread_mutex_lock(&ctx->lock);
-    forget_frames(ctx, true);
+    forget_frames(ctx, 1);
     ctx->img_params = *params;
-    ctx->need_reconfig = true;
-    ctx->need_resize = true;
+    ctx->need_reconfig = 1;
+    ctx->need_resize = 1;
     pthread_mutex_unlock(&ctx->lock);
 
-    control(vo, VOCTRL_RECONFIG, NULL);
+    control(vo, VOCTRL_RECONFIG, ((void*)0));
 
     return 0;
 }

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  ITravelLogClient ;
-typedef  int /*<<< orphan*/  IObjectIdentity ;
-typedef  int /*<<< orphan*/  IHTMLWindow4 ;
-typedef  int /*<<< orphan*/  IHTMLWindow2 ;
-typedef  int /*<<< orphan*/  IHTMLFrameBase ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  int /*<<< orphan*/  IDispatch ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ET_FRAME ; 
- scalar_t__ E_NOINTERFACE ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IDispatch_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLFrameBase_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLWindow2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow2_get_document (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLWindow2_get_parent (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ IHTMLWindow2_get_top (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLWindow4_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLWindow4_get_frameElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IID_IHTMLWindow2 ; 
- int /*<<< orphan*/  IID_IHTMLWindow4 ; 
- int /*<<< orphan*/  IID_IObjectIdentity ; 
- int /*<<< orphan*/  IID_ITravelLogClient ; 
- scalar_t__ IObjectIdentity_IsEqualObject (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IObjectIdentity_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ITravelLogClient_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  obj_ident_test ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_doc_title (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_elem_id (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  test_elem_type (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_frame_doc (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int IUnknown ;
+typedef int ITravelLogClient ;
+typedef int IObjectIdentity ;
+typedef int IHTMLWindow4 ;
+typedef int IHTMLWindow2 ;
+typedef int IHTMLFrameBase ;
+typedef int IHTMLDocument2 ;
+typedef int IDispatch ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ET_FRAME ;
+ scalar_t__ E_NOINTERFACE ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int FALSE ;
+ scalar_t__ IDispatch_QueryInterface (int *,int *,void**) ;
+ int IHTMLDocument2_Release (int *) ;
+ int IHTMLFrameBase_Release (int *) ;
+ scalar_t__ IHTMLWindow2_QueryInterface (int *,int *,void**) ;
+ int IHTMLWindow2_Release (int *) ;
+ scalar_t__ IHTMLWindow2_get_document (int *,int **) ;
+ scalar_t__ IHTMLWindow2_get_parent (int *,int **) ;
+ scalar_t__ IHTMLWindow2_get_top (int *,int **) ;
+ int IHTMLWindow4_Release (int *) ;
+ scalar_t__ IHTMLWindow4_get_frameElement (int *,int **) ;
+ int IID_IHTMLWindow2 ;
+ int IID_IHTMLWindow4 ;
+ int IID_IObjectIdentity ;
+ int IID_ITravelLogClient ;
+ scalar_t__ IObjectIdentity_IsEqualObject (int *,int *) ;
+ int IObjectIdentity_Release (int *) ;
+ int ITravelLogClient_Release (int *) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int obj_ident_test ;
+ int ok (int,char*,scalar_t__) ;
+ int test_doc_title (int *,char*) ;
+ int test_elem_id (int *,char const*) ;
+ int test_elem_type (int *,int ) ;
+ int test_frame_doc (int *,int ) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_frame(IDispatch *disp, const char *exp_id)
 {
@@ -95,7 +95,7 @@ __attribute__((used)) static void test_frame(IDispatch *disp, const char *exp_id
     hres = IHTMLWindow2_QueryInterface(frame2, &IID_ITravelLogClient, (void**)&tlc);
     if(hres == E_NOINTERFACE) {
         win_skip("IID_ITravelLogClient not available\n");
-        tlc = NULL;
+        tlc = ((void*)0);
     }else {
         ok(hres == S_OK, "Could not get ITravelLogClient interface: %08x\n", hres);
 
@@ -124,7 +124,7 @@ __attribute__((used)) static void test_frame(IDispatch *disp, const char *exp_id
     test_doc_title(parent_doc, "frameset test");
     IHTMLDocument2_Release(parent_doc);
 
-    /* test get_top */
+
     hres = IHTMLWindow2_get_top(frame2, &top);
     ok(hres == S_OK, "IHTMLWindow2_get_top failed: 0x%08x\n", hres);
     IHTMLWindow2_Release(frame2);

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct seg6_local_lwt {int /*<<< orphan*/  nh6; } ;
+struct seg6_local_lwt {int nh6; } ;
 struct ipv6_sr_hdr {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  daddr; } ;
+struct TYPE_2__ {int daddr; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  advance_nextseg (struct ipv6_sr_hdr*,int /*<<< orphan*/ *) ; 
- int dst_input (struct sk_buff*) ; 
- struct ipv6_sr_hdr* get_and_validate_srh (struct sk_buff*) ; 
- TYPE_1__* ipv6_hdr (struct sk_buff*) ; 
- int /*<<< orphan*/  kfree_skb (struct sk_buff*) ; 
- int /*<<< orphan*/  seg6_lookup_nexthop (struct sk_buff*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EINVAL ;
+ int advance_nextseg (struct ipv6_sr_hdr*,int *) ;
+ int dst_input (struct sk_buff*) ;
+ struct ipv6_sr_hdr* get_and_validate_srh (struct sk_buff*) ;
+ TYPE_1__* ipv6_hdr (struct sk_buff*) ;
+ int kfree_skb (struct sk_buff*) ;
+ int seg6_lookup_nexthop (struct sk_buff*,int *,int ) ;
 
 __attribute__((used)) static int input_action_end_x(struct sk_buff *skb, struct seg6_local_lwt *slwt)
 {
-	struct ipv6_sr_hdr *srh;
+ struct ipv6_sr_hdr *srh;
 
-	srh = get_and_validate_srh(skb);
-	if (!srh)
-		goto drop;
+ srh = get_and_validate_srh(skb);
+ if (!srh)
+  goto drop;
 
-	advance_nextseg(srh, &ipv6_hdr(skb)->daddr);
+ advance_nextseg(srh, &ipv6_hdr(skb)->daddr);
 
-	seg6_lookup_nexthop(skb, &slwt->nh6, 0);
+ seg6_lookup_nexthop(skb, &slwt->nh6, 0);
 
-	return dst_input(skb);
+ return dst_input(skb);
 
 drop:
-	kfree_skb(skb);
-	return -EINVAL;
+ kfree_skb(skb);
+ return -EINVAL;
 }

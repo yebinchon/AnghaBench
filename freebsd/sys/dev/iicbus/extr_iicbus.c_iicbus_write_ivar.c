@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct iicbus_ivar {uintptr_t addr; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int EINVAL ; 
- struct iicbus_ivar* IICBUS_IVAR (int /*<<< orphan*/ ) ; 
-#define  IICBUS_IVAR_ADDR 128 
+
+ int EINVAL ;
+ struct iicbus_ivar* IICBUS_IVAR (int ) ;
+
 
 __attribute__((used)) static int
 iicbus_write_ivar(device_t bus, device_t child, int which, uintptr_t value)
 {
-	struct iicbus_ivar *devi = IICBUS_IVAR(child);
+ struct iicbus_ivar *devi = IICBUS_IVAR(child);
 
-	switch (which) {
-	default:
-		return (EINVAL);
-	case IICBUS_IVAR_ADDR:
-		if (devi->addr != 0)
-			return (EINVAL);
-		devi->addr = value;
-	}
-	return (0);
+ switch (which) {
+ default:
+  return (EINVAL);
+ case 128:
+  if (devi->addr != 0)
+   return (EINVAL);
+  devi->addr = value;
+ }
+ return (0);
 }

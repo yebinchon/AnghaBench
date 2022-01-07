@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree_stmt_iterator ;
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  location_t ;
 
-/* Variables and functions */
-#define  BIND_EXPR 134 
- int /*<<< orphan*/  BIND_EXPR_BLOCK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CATCH_BODY (int /*<<< orphan*/ ) ; 
-#define  CATCH_EXPR 133 
-#define  COND_EXPR 132 
- int /*<<< orphan*/  COND_EXPR_COND (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COND_EXPR_ELSE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COND_EXPR_THEN (int /*<<< orphan*/ ) ; 
-#define  EH_FILTER_EXPR 131 
- int /*<<< orphan*/  EH_FILTER_FAILURE (int /*<<< orphan*/ ) ; 
- scalar_t__ EXPR_HAS_LOCATION (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EXPR_LOCATION (int /*<<< orphan*/ ) ; 
- scalar_t__ LOCATION_LINE (int /*<<< orphan*/ ) ; 
-#define  STATEMENT_LIST 130 
- int TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
-#define  TRY_CATCH_EXPR 129 
-#define  TRY_FINALLY_EXPR 128 
- int /*<<< orphan*/  tsi_end_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tsi_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tsi_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warning (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int tree_stmt_iterator ;
+typedef int tree ;
+typedef int location_t ;
+
+
+
+ int BIND_EXPR_BLOCK (int ) ;
+ int CATCH_BODY (int ) ;
+
+
+ int COND_EXPR_COND (int ) ;
+ int COND_EXPR_ELSE (int ) ;
+ int COND_EXPR_THEN (int ) ;
+
+ int EH_FILTER_FAILURE (int ) ;
+ scalar_t__ EXPR_HAS_LOCATION (int ) ;
+ int EXPR_LOCATION (int ) ;
+ scalar_t__ LOCATION_LINE (int ) ;
+
+ int TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+
+
+ int tsi_end_p (int ) ;
+ int tsi_next (int *) ;
+ int tsi_start (int ) ;
+ int tsi_stmt (int ) ;
+ int warning (int ,char*,int *) ;
 
 __attribute__((used)) static bool
 remove_useless_stmts_warn_notreached (tree stmt)
@@ -46,51 +46,51 @@ remove_useless_stmts_warn_notreached (tree stmt)
     {
       location_t loc = EXPR_LOCATION (stmt);
       if (LOCATION_LINE (loc) > 0)
-	{
-	  warning (0, "%Hwill never be executed", &loc);
-	  return true;
-	}
+ {
+   warning (0, "%Hwill never be executed", &loc);
+   return 1;
+ }
     }
 
   switch (TREE_CODE (stmt))
     {
-    case STATEMENT_LIST:
+    case 130:
       {
-	tree_stmt_iterator i;
-	for (i = tsi_start (stmt); !tsi_end_p (i); tsi_next (&i))
-	  if (remove_useless_stmts_warn_notreached (tsi_stmt (i)))
-	    return true;
+ tree_stmt_iterator i;
+ for (i = tsi_start (stmt); !tsi_end_p (i); tsi_next (&i))
+   if (remove_useless_stmts_warn_notreached (tsi_stmt (i)))
+     return 1;
       }
       break;
 
-    case COND_EXPR:
+    case 132:
       if (remove_useless_stmts_warn_notreached (COND_EXPR_COND (stmt)))
-	return true;
+ return 1;
       if (remove_useless_stmts_warn_notreached (COND_EXPR_THEN (stmt)))
-	return true;
+ return 1;
       if (remove_useless_stmts_warn_notreached (COND_EXPR_ELSE (stmt)))
-	return true;
+ return 1;
       break;
 
-    case TRY_FINALLY_EXPR:
-    case TRY_CATCH_EXPR:
+    case 128:
+    case 129:
       if (remove_useless_stmts_warn_notreached (TREE_OPERAND (stmt, 0)))
-	return true;
+ return 1;
       if (remove_useless_stmts_warn_notreached (TREE_OPERAND (stmt, 1)))
-	return true;
+ return 1;
       break;
 
-    case CATCH_EXPR:
+    case 133:
       return remove_useless_stmts_warn_notreached (CATCH_BODY (stmt));
-    case EH_FILTER_EXPR:
+    case 131:
       return remove_useless_stmts_warn_notreached (EH_FILTER_FAILURE (stmt));
-    case BIND_EXPR:
+    case 134:
       return remove_useless_stmts_warn_notreached (BIND_EXPR_BLOCK (stmt));
 
     default:
-      /* Not a live container.  */
+
       break;
     }
 
-  return false;
+  return 0;
 }

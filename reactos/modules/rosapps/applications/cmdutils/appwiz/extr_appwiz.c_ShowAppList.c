@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char TCHAR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int /*<<< orphan*/  FILETIME ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int APP_ONLY ; 
- int /*<<< orphan*/  CallUninstall (char*) ; 
- int /*<<< orphan*/  CharToOem (char*,char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int FALSE ; 
- int FOREGROUND_GREEN ; 
- int FOREGROUND_INTENSITY ; 
- int FOREGROUND_RED ; 
- int /*<<< orphan*/  GetStdHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int MAX_PATH ; 
- int REG_DWORD ; 
- int REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegEnumKeyEx (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKey (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueEx (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ ,int*) ; 
- int SHOW_ALL ; 
- int /*<<< orphan*/  STD_OUTPUT_HANDLE ; 
- int /*<<< orphan*/  SetConsoleTextAttribute (int /*<<< orphan*/ ,int) ; 
- int UPD_ONLY ; 
- char* _T (char*) ; 
- int /*<<< orphan*/  _getch () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  wsprintf (char*,char*,int,char*) ; 
+
+
+
+typedef char TCHAR ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef int HKEY ;
+typedef int HANDLE ;
+typedef int FILETIME ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int APP_ONLY ;
+ int CallUninstall (char*) ;
+ int CharToOem (char*,char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int FOREGROUND_GREEN ;
+ int FOREGROUND_INTENSITY ;
+ int FOREGROUND_RED ;
+ int GetStdHandle (int ) ;
+ int HKEY_LOCAL_MACHINE ;
+ int MAX_PATH ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegEnumKeyEx (int ,int,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKey (int ,char*,int *) ;
+ scalar_t__ RegQueryValueEx (int ,char*,int *,int*,int ,int*) ;
+ int SHOW_ALL ;
+ int STD_OUTPUT_HANDLE ;
+ int SetConsoleTextAttribute (int ,int) ;
+ int UPD_ONLY ;
+ char* _T (char*) ;
+ int _getch () ;
+ int printf (char*,...) ;
+ int wsprintf (char*,char*,int,char*) ;
 
 int ShowAppList(DWORD dwMode, INT iItem)
 {
@@ -73,7 +73,7 @@ int ShowAppList(DWORD dwMode, INT iItem)
     SetConsoleTextAttribute(hOutput, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 
     dwSize = MAX_PATH;
-    while (RegEnumKeyEx(hKey, iIndex, szName, &dwSize, NULL, NULL, NULL, &FileTime) == ERROR_SUCCESS)
+    while (RegEnumKeyEx(hKey, iIndex, szName, &dwSize, ((void*)0), ((void*)0), ((void*)0), &FileTime) == ERROR_SUCCESS)
     {
         if (RegOpenKey(hKey, szName, &hSubKey) == ERROR_SUCCESS)
         {
@@ -81,7 +81,7 @@ int ShowAppList(DWORD dwMode, INT iItem)
             dwSize = sizeof(DWORD);
 
             if (RegQueryValueEx(hSubKey, _T("SystemComponent"),
-                                NULL, &dwType,
+                                ((void*)0), &dwType,
                                 (LPBYTE)&dwValue, &dwSize) == ERROR_SUCCESS)
             {
                 bIsSystemComponent = (dwValue == 0x1);
@@ -95,12 +95,12 @@ int ShowAppList(DWORD dwMode, INT iItem)
             dwSize = MAX_PATH;
 
             bIsUpdate = (RegQueryValueEx(hSubKey, _T("ParentKeyName"),
-                                         NULL, &dwType,
+                                         ((void*)0), &dwType,
                                          (LPBYTE) szParentKeyName,
                                          &dwSize) == ERROR_SUCCESS);
             dwSize = MAX_PATH;
             if (RegQueryValueEx(hSubKey, _T("DisplayName"),
-                                NULL, &dwType,
+                                ((void*)0), &dwType,
                                 (LPBYTE) szDisplayName,
                                 &dwSize) == ERROR_SUCCESS)
             {
@@ -119,7 +119,7 @@ int ShowAppList(DWORD dwMode, INT iItem)
                             dwType = REG_SZ;
                             dwSize = MAX_PATH;
 
-                            if ((RegQueryValueEx(hSubKey, _T("UninstallString"), NULL, &dwType,
+                            if ((RegQueryValueEx(hSubKey, _T("UninstallString"), ((void*)0), &dwType,
                                                 (LPBYTE) szOutBuf, &dwSize) == ERROR_SUCCESS) && (iItem == iCount))
                             {
                                 CallUninstall(szOutBuf);

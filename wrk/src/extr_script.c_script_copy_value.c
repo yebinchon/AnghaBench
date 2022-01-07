@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
-#define  LUA_TBOOLEAN 132 
-#define  LUA_TNIL 131 
-#define  LUA_TNUMBER 130 
-#define  LUA_TSTRING 129 
-#define  LUA_TTABLE 128 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaL_typename (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_next (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pop (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushboolean (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_toboolean (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tonumber (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_tostring (int /*<<< orphan*/ *,int) ; 
- int lua_type (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+
+
+
+
+
+
+
+ int luaL_error (int *,char*,int ) ;
+ int luaL_typename (int *,int) ;
+ int lua_newtable (int *) ;
+ int lua_next (int *,int) ;
+ int lua_pop (int *,int) ;
+ int lua_pushboolean (int *,int ) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int ) ;
+ int lua_pushstring (int *,int ) ;
+ int lua_settable (int *,int) ;
+ int lua_toboolean (int *,int) ;
+ int lua_tonumber (int *,int) ;
+ int lua_tostring (int *,int) ;
+ int lua_type (int *,int) ;
 
 void script_copy_value(lua_State *src, lua_State *dst, int index) {
     switch (lua_type(src, index)) {
-        case LUA_TBOOLEAN:
+        case 132:
             lua_pushboolean(dst, lua_toboolean(src, index));
             break;
-        case LUA_TNIL:
+        case 131:
             lua_pushnil(dst);
             break;
-        case LUA_TNUMBER:
+        case 130:
             lua_pushnumber(dst, lua_tonumber(src, index));
             break;
-        case LUA_TSTRING:
+        case 129:
             lua_pushstring(dst, lua_tostring(src, index));
             break;
-        case LUA_TTABLE:
+        case 128:
             lua_newtable(dst);
             lua_pushnil(src);
             while (lua_next(src, index - 1)) {

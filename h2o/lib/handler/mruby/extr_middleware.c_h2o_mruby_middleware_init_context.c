@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
-struct TYPE_3__ {int /*<<< orphan*/  constants; int /*<<< orphan*/ * mrb; } ;
-typedef  TYPE_1__ h2o_mruby_shared_context_t ;
+typedef int mrb_state ;
+struct TYPE_3__ {int constants; int * mrb; } ;
+typedef TYPE_1__ h2o_mruby_shared_context_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  H2O_MRUBY_APP_INPUT_STREAM_CLASS ; 
- int /*<<< orphan*/  H2O_MRUBY_APP_REQUEST_CLASS ; 
- int /*<<< orphan*/  H2O_MRUBY_CODE_MIDDLEWARE ; 
- int /*<<< orphan*/  MRB_ARGS_ARG (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MRB_ARGS_NONE () ; 
- int /*<<< orphan*/  build_response_method ; 
- int /*<<< orphan*/  can_build_response_method ; 
- int /*<<< orphan*/  h2o_mruby_assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  h2o_mruby_define_callback (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  h2o_mruby_eval_expr (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  middleware_request_method ; 
- int /*<<< orphan*/  middleware_wait_chunk_callback ; 
- int /*<<< orphan*/  middleware_wait_response_callback ; 
- int /*<<< orphan*/  mrb_ary_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_class_get_under (int /*<<< orphan*/ *,struct RClass*,char*) ; 
- int /*<<< orphan*/  mrb_define_method (int /*<<< orphan*/ *,struct RClass*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_module (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RClass*) ; 
+
+ int H2O_MRUBY_APP_INPUT_STREAM_CLASS ;
+ int H2O_MRUBY_APP_REQUEST_CLASS ;
+ int H2O_MRUBY_CODE_MIDDLEWARE ;
+ int MRB_ARGS_ARG (int,int ) ;
+ int MRB_ARGS_NONE () ;
+ int build_response_method ;
+ int can_build_response_method ;
+ int h2o_mruby_assert (int *) ;
+ int h2o_mruby_define_callback (int *,char*,int ) ;
+ int h2o_mruby_eval_expr (int *,int ) ;
+ int middleware_request_method ;
+ int middleware_wait_chunk_callback ;
+ int middleware_wait_response_callback ;
+ int mrb_ary_set (int *,int ,int ,int ) ;
+ struct RClass* mrb_class_get_under (int *,struct RClass*,char*) ;
+ int mrb_define_method (int *,struct RClass*,char*,int ,int ) ;
+ struct RClass* mrb_define_module (int *,char*) ;
+ int mrb_obj_value (struct RClass*) ;
 
 void h2o_mruby_middleware_init_context(h2o_mruby_shared_context_t *shared_ctx)
 {

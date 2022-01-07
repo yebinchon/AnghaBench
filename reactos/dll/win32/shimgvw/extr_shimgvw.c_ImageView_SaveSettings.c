@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  bottom; int /*<<< orphan*/  right; int /*<<< orphan*/  top; int /*<<< orphan*/  left; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int bottom; int right; int top; int left; } ;
 struct TYPE_6__ {int length; int flags; TYPE_1__ rcNormalPosition; } ;
-typedef  TYPE_2__ WINDOWPLACEMENT ;
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_7__ {int Maximized; int /*<<< orphan*/  Bottom; int /*<<< orphan*/  Right; int /*<<< orphan*/  Top; int /*<<< orphan*/  Left; } ;
-typedef  int /*<<< orphan*/  SHIMGVW_SETTINGS ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HKEY ;
+typedef TYPE_2__ WINDOWPLACEMENT ;
+typedef int VOID ;
+struct TYPE_7__ {int Maximized; int Bottom; int Right; int Top; int Left; } ;
+typedef int SHIMGVW_SETTINGS ;
+typedef int LPBYTE ;
+typedef int HWND ;
+typedef int HKEY ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  GetWindowPlacement (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- scalar_t__ IsZoomed (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int WPF_RESTORETOMAXIMIZED ; 
- int /*<<< orphan*/  _T (char*) ; 
- TYPE_3__ shiSettings ; 
+
+ scalar_t__ ERROR_SUCCESS ;
+ int GetWindowPlacement (int ,TYPE_2__*) ;
+ int HKEY_CURRENT_USER ;
+ scalar_t__ IsZoomed (int ) ;
+ int KEY_WRITE ;
+ int REG_BINARY ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyEx (int ,int ,int ,int *,int ,int ,int *,int *,int *) ;
+ int RegSetValueEx (int ,int ,int ,int ,int ,int) ;
+ int SW_HIDE ;
+ int ShowWindow (int ,int ) ;
+ int WPF_RESTORETOMAXIMIZED ;
+ int _T (char*) ;
+ TYPE_3__ shiSettings ;
 
 __attribute__((used)) static VOID
 ImageView_SaveSettings(HWND hwnd)
@@ -51,13 +51,13 @@ ImageView_SaveSettings(HWND hwnd)
     GetWindowPlacement(hwnd, &wp);
 
     shiSettings.Left = wp.rcNormalPosition.left;
-    shiSettings.Top  = wp.rcNormalPosition.top;
-    shiSettings.Right  = wp.rcNormalPosition.right;
+    shiSettings.Top = wp.rcNormalPosition.top;
+    shiSettings.Right = wp.rcNormalPosition.right;
     shiSettings.Bottom = wp.rcNormalPosition.bottom;
     shiSettings.Maximized = (IsZoomed(hwnd) || (wp.flags & WPF_RESTORETOMAXIMIZED));
 
-    if (RegCreateKeyEx(HKEY_CURRENT_USER, _T("Software\\ReactOS\\shimgvw"), 0, NULL,
-        REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hKey, NULL) == ERROR_SUCCESS)
+    if (RegCreateKeyEx(HKEY_CURRENT_USER, _T("Software\\ReactOS\\shimgvw"), 0, ((void*)0),
+        REG_OPTION_NON_VOLATILE, KEY_WRITE, ((void*)0), &hKey, ((void*)0)) == ERROR_SUCCESS)
     {
         RegSetValueEx(hKey, _T("Settings"), 0, REG_BINARY, (LPBYTE)&shiSettings, sizeof(SHIMGVW_SETTINGS));
         RegCloseKey(hKey);

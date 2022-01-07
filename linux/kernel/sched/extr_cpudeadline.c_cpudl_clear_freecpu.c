@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cpudl {int /*<<< orphan*/  free_cpus; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpumask_clear_cpu (int,int /*<<< orphan*/ ) ; 
+
+
+
+struct cpudl {int free_cpus; } ;
+
+
+ int cpumask_clear_cpu (int,int ) ;
 
 void cpudl_clear_freecpu(struct cpudl *cp, int cpu)
 {
-	cpumask_clear_cpu(cpu, cp->free_cpus);
+ cpumask_clear_cpu(cpu, cp->free_cpus);
 }

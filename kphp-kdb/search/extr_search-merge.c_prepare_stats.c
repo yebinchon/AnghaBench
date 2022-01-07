@@ -1,35 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CSN ; 
- int NB_max ; 
- int NB_size ; 
- int NB_used ; 
- int /*<<< orphan*/  STATS_BUFF_SIZE ; 
- int active_connections ; 
- int active_gathers ; 
- int active_outbound_connections ; 
- int ev_heap_size ; 
- int maxconn ; 
- double netw_queries ; 
- int now ; 
- int outbound_connections ; 
- int /*<<< orphan*/  safe_div (double,int) ; 
- int snprintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int,int,int,int,int,int,int,int,int,int,int,int,double,int /*<<< orphan*/ ) ; 
- int start_time ; 
- int /*<<< orphan*/  stats_buff ; 
- int stats_buff_len ; 
+ int CSN ;
+ int NB_max ;
+ int NB_size ;
+ int NB_used ;
+ int STATS_BUFF_SIZE ;
+ int active_connections ;
+ int active_gathers ;
+ int active_outbound_connections ;
+ int ev_heap_size ;
+ int maxconn ;
+ double netw_queries ;
+ int now ;
+ int outbound_connections ;
+ int safe_div (double,int) ;
+ int snprintf (int ,int ,char*,int,int,int,int,int,int,int,int,int,int,int,int,int,double,int ) ;
+ int start_time ;
+ int stats_buff ;
+ int stats_buff_len ;
 
 int prepare_stats (void) {
   int uptime = now - start_time;

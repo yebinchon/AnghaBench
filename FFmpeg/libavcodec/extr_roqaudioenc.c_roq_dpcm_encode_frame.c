@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
 struct TYPE_13__ {int channels; int frame_size; TYPE_1__* priv_data; } ;
-struct TYPE_12__ {int /*<<< orphan*/  pts; scalar_t__* data; } ;
-struct TYPE_11__ {int duration; int /*<<< orphan*/  pts; int /*<<< orphan*/ * data; } ;
-struct TYPE_10__ {int input_frames; size_t buffered_samples; int* lastSample; int /*<<< orphan*/  first_pts; int /*<<< orphan*/ * frame_buffer; } ;
-typedef  TYPE_1__ ROQDPCMContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_12__ {int pts; scalar_t__* data; } ;
+struct TYPE_11__ {int duration; int pts; int * data; } ;
+struct TYPE_10__ {int input_frames; size_t buffered_samples; int* lastSample; int first_pts; int * frame_buffer; } ;
+typedef TYPE_1__ ROQDPCMContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int FFMAX (int,int) ; 
- scalar_t__ ROQ_HEADER_SIZE ; 
- int /*<<< orphan*/  bytestream_put_byte (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_le16 (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  bytestream_put_le32 (int /*<<< orphan*/ **,int) ; 
- int /*<<< orphan*/  dpcm_predict (int*,int /*<<< orphan*/ ) ; 
- int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
+
+ int FFMAX (int,int) ;
+ scalar_t__ ROQ_HEADER_SIZE ;
+ int bytestream_put_byte (int **,int) ;
+ int bytestream_put_le16 (int **,int) ;
+ int bytestream_put_le32 (int **,int) ;
+ int dpcm_predict (int*,int ) ;
+ int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,scalar_t__,int ) ;
+ int memcpy (int *,int const*,int) ;
 
 __attribute__((used)) static int roq_dpcm_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                                  const AVFrame *frame, int *got_packet_ptr)
 {
     int i, stereo, data_size, ret;
-    const int16_t *in = frame ? (const int16_t *)frame->data[0] : NULL;
+    const int16_t *in = frame ? (const int16_t *)frame->data[0] : ((void*)0);
     uint8_t *out;
     ROQDPCMContext *context = avctx->priv_data;
 
@@ -86,11 +86,11 @@ __attribute__((used)) static int roq_dpcm_encode_frame(AVCodecContext *avctx, AV
     } else
         bytestream_put_le16(&out, context->lastSample[0]);
 
-    /* Write the actual samples */
+
     for (i = 0; i < data_size; i++)
         *out++ = dpcm_predict(&context->lastSample[i & 1], *in++);
 
-    avpkt->pts      = context->input_frames <= 7 ? context->first_pts : frame->pts;
+    avpkt->pts = context->input_frames <= 7 ? context->first_pts : frame->pts;
     avpkt->duration = data_size / avctx->channels;
 
     context->input_frames++;

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GucSource ;
-typedef  int /*<<< orphan*/  GucContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SetConfigOption (char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GucSource ;
+typedef int GucContext ;
+
+
+ int SetConfigOption (char const*,char*,int ,int ) ;
 
 bool
 set_plan_disabling_options(const char *arg, GucContext context, GucSource source)
 {
-	const char *tmp = NULL;
+ const char *tmp = ((void*)0);
 
-	switch (arg[0])
-	{
-		case 's':				/* seqscan */
-			tmp = "enable_seqscan";
-			break;
-		case 'i':				/* indexscan */
-			tmp = "enable_indexscan";
-			break;
-		case 'o':				/* indexonlyscan */
-			tmp = "enable_indexonlyscan";
-			break;
-		case 'b':				/* bitmapscan */
-			tmp = "enable_bitmapscan";
-			break;
-		case 't':				/* tidscan */
-			tmp = "enable_tidscan";
-			break;
-		case 'n':				/* nestloop */
-			tmp = "enable_nestloop";
-			break;
-		case 'm':				/* mergejoin */
-			tmp = "enable_mergejoin";
-			break;
-		case 'h':				/* hashjoin */
-			tmp = "enable_hashjoin";
-			break;
-	}
-	if (tmp)
-	{
-		SetConfigOption(tmp, "false", context, source);
-		return true;
-	}
-	else
-		return false;
+ switch (arg[0])
+ {
+  case 's':
+   tmp = "enable_seqscan";
+   break;
+  case 'i':
+   tmp = "enable_indexscan";
+   break;
+  case 'o':
+   tmp = "enable_indexonlyscan";
+   break;
+  case 'b':
+   tmp = "enable_bitmapscan";
+   break;
+  case 't':
+   tmp = "enable_tidscan";
+   break;
+  case 'n':
+   tmp = "enable_nestloop";
+   break;
+  case 'm':
+   tmp = "enable_mergejoin";
+   break;
+  case 'h':
+   tmp = "enable_hashjoin";
+   break;
+ }
+ if (tmp)
+ {
+  SetConfigOption(tmp, "false", context, source);
+  return 1;
+ }
+ else
+  return 0;
 }

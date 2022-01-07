@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  Manager ;
-typedef  int /*<<< orphan*/  Job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUS_ERROR_NO_SUCH_JOB ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int bus_job_method_get_waiting_jobs (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * manager_get_job (int /*<<< orphan*/ *,scalar_t__) ; 
- int sd_bus_error_setf (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,unsigned int) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,scalar_t__*) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int Manager ;
+typedef int Job ;
+
+
+ int BUS_ERROR_NO_SUCH_JOB ;
+ int assert (int *) ;
+ int bus_job_method_get_waiting_jobs (int *,int *,int *) ;
+ int * manager_get_job (int *,scalar_t__) ;
+ int sd_bus_error_setf (int *,int ,char*,unsigned int) ;
+ int sd_bus_message_read (int *,char*,scalar_t__*) ;
 
 __attribute__((used)) static int method_get_job_waiting(sd_bus_message *message, void *userdata, sd_bus_error *error) {
         Manager *m = userdata;

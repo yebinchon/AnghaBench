@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int type; int value2; int value; int /*<<< orphan*/  max_res; struct TYPE_6__* right; } ;
-typedef  TYPE_1__ query_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFTY ; 
- int MAX_QUERY_NODES ; 
- TYPE_1__* Q ; 
- TYPE_1__* Qfree ; 
- scalar_t__ Qw ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int type; int value2; int value; int max_res; struct TYPE_6__* right; } ;
+typedef TYPE_1__ query_t ;
+
+
+ int INFTY ;
+ int MAX_QUERY_NODES ;
+ TYPE_1__* Q ;
+ TYPE_1__* Qfree ;
+ scalar_t__ Qw ;
+ int assert (int) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 query_t *new_qnode (int type, int val) {
   query_t *A;

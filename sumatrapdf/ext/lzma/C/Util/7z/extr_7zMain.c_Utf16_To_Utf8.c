@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UInt32 ;
-typedef  int UInt16 ;
-typedef  char Byte ;
-typedef  int /*<<< orphan*/  Bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  False ; 
- int /*<<< orphan*/  True ; 
- scalar_t__* kUtf8Limits ; 
+
+
+
+typedef int UInt32 ;
+typedef int UInt16 ;
+typedef char Byte ;
+typedef int Bool ;
+
+
+ int False ;
+ int True ;
+ scalar_t__* kUtf8Limits ;
 
 __attribute__((used)) static Bool Utf16_To_Utf8(Byte *dest, size_t *destLen, const UInt16 *src, size_t srcLen)
 {

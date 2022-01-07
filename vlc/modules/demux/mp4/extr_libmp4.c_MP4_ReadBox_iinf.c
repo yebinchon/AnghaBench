@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint64_t ;
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  stream_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint64_t ;
+typedef scalar_t__ uint32_t ;
+typedef int stream_t ;
 struct TYPE_11__ {TYPE_1__* p_iinf; } ;
 struct TYPE_12__ {int i_size; int i_pos; TYPE_2__ data; } ;
 struct TYPE_10__ {scalar_t__ i_entry_count; } ;
-typedef  TYPE_3__ MP4_Box_t ;
+typedef TYPE_3__ MP4_Box_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP4_BoxAddChild (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  MP4_BoxFree (TYPE_3__*) ; 
- int /*<<< orphan*/  MP4_Box_data_iinf_t ; 
- int /*<<< orphan*/  MP4_GET1BYTE (scalar_t__) ; 
- int /*<<< orphan*/  MP4_GET2BYTES (scalar_t__) ; 
- int /*<<< orphan*/  MP4_GET3BYTES (scalar_t__) ; 
- int /*<<< orphan*/  MP4_GET4BYTES (scalar_t__) ; 
- int /*<<< orphan*/  MP4_READBOX_ENTER_PARTIAL (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MP4_READBOX_EXIT (int) ; 
- TYPE_3__* MP4_ReadBox (int /*<<< orphan*/ *,TYPE_3__*) ; 
- scalar_t__ MP4_Seek (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VLC_UNUSED (scalar_t__) ; 
- int /*<<< orphan*/  assert (int) ; 
- int i_read ; 
- size_t vlc_stream_Peek (int /*<<< orphan*/ *,scalar_t__ const**,int) ; 
+
+ int MP4_BoxAddChild (TYPE_3__*,TYPE_3__*) ;
+ int MP4_BoxFree (TYPE_3__*) ;
+ int MP4_Box_data_iinf_t ;
+ int MP4_GET1BYTE (scalar_t__) ;
+ int MP4_GET2BYTES (scalar_t__) ;
+ int MP4_GET3BYTES (scalar_t__) ;
+ int MP4_GET4BYTES (scalar_t__) ;
+ int MP4_READBOX_ENTER_PARTIAL (int ,size_t,int *) ;
+ int MP4_READBOX_EXIT (int) ;
+ TYPE_3__* MP4_ReadBox (int *,TYPE_3__*) ;
+ scalar_t__ MP4_Seek (int *,int) ;
+ int VLC_UNUSED (scalar_t__) ;
+ int assert (int) ;
+ int i_read ;
+ size_t vlc_stream_Peek (int *,scalar_t__ const**,int) ;
 
 __attribute__((used)) static int MP4_ReadBox_iinf( stream_t *p_stream, MP4_Box_t *p_box )
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static int MP4_ReadBox_iinf( stream_t *p_stream, MP4_Box_t
         return 0;
 
     size_t i_header = 12 + (( p_versionpeek[8] == 0 ) ? 2 : 4);
-    MP4_READBOX_ENTER_PARTIAL( MP4_Box_data_iinf_t, i_header, NULL );
+    MP4_READBOX_ENTER_PARTIAL( MP4_Box_data_iinf_t, i_header, ((void*)0) );
     if( i_read + 8 < i_header )
         MP4_READBOX_EXIT( 0 );
 

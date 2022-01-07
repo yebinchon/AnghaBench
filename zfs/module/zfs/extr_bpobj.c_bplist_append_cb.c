@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dmu_tx_t ;
-typedef  int /*<<< orphan*/  bplist_t ;
-typedef  int /*<<< orphan*/  boolean_t ;
-typedef  int /*<<< orphan*/  blkptr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bplist_append (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int dmu_tx_t ;
+typedef int bplist_t ;
+typedef int boolean_t ;
+typedef int blkptr_t ;
+
+
+ int bplist_append (int *,int const*) ;
 
 int
 bplist_append_cb(void *arg, const blkptr_t *bp, boolean_t bp_freed,
     dmu_tx_t *tx)
 {
-	bplist_t *bpl = arg;
-	bplist_append(bpl, bp);
-	return (0);
+ bplist_t *bpl = arg;
+ bplist_append(bpl, bp);
+ return (0);
 }

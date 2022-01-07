@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
 struct TYPE_9__ {int width; int height; TYPE_1__* priv_data; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * run_model; int /*<<< orphan*/ * op_model; int /*<<< orphan*/  rc; int /*<<< orphan*/  gb; } ;
-typedef  TYPE_1__ SCPRContext ;
-typedef  int /*<<< orphan*/  GetByteContext ;
-typedef  TYPE_2__ AVCodecContext ;
+struct TYPE_8__ {int * run_model; int * op_model; int rc; int gb; } ;
+typedef TYPE_1__ SCPRContext ;
+typedef int GetByteContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  bytestream2_skip (int /*<<< orphan*/ *,int) ; 
- int decode_run_i (TYPE_2__*,int,int,int*,int*,int,int*,int,int*,int*,int,int,int*,int*) ; 
- int decode_units (TYPE_1__*,int*,int*,int*,int*,int*) ; 
- int decode_value (TYPE_1__*,int /*<<< orphan*/ ,int,int,int*) ; 
- int /*<<< orphan*/  init_rangecoder (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reinit_tables (TYPE_1__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int bytestream2_skip (int *,int) ;
+ int decode_run_i (TYPE_2__*,int,int,int*,int*,int,int*,int,int*,int*,int,int,int*,int*) ;
+ int decode_units (TYPE_1__*,int*,int*,int*,int*,int*) ;
+ int decode_value (TYPE_1__*,int ,int,int,int*) ;
+ int init_rangecoder (int *,int *) ;
+ int reinit_tables (TYPE_1__*) ;
 
 __attribute__((used)) static int decompress_i(AVCodecContext *avctx, uint32_t *dst, int linesize)
 {

@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xml_reader_t ;
-struct TYPE_6__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
-typedef  size_t qtl_loop_t ;
-typedef  size_t qtl_fullscreen_t ;
-typedef  int /*<<< orphan*/  input_item_t ;
-typedef  int /*<<< orphan*/  input_item_node_t ;
 
-/* Variables and functions */
- size_t FULLSCREEN_CURRENT ; 
- size_t FULLSCREEN_DOUBLE ; 
- size_t FULLSCREEN_FULL ; 
- size_t FULLSCREEN_HALF ; 
- size_t FULLSCREEN_NORMAL ; 
- size_t LOOP_FALSE ; 
- size_t LOOP_PALINDROME ; 
- size_t LOOP_TRUE ; 
- int ROOT_NODE_MAX_DEPTH ; 
- int /*<<< orphan*/  SADD_INFO (char*,char*) ; 
- scalar_t__ XML_READER_STARTELEM ; 
- char* _ (char*) ; 
- int atoi (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/ * input_item_New (char*,char*) ; 
- int /*<<< orphan*/  input_item_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  input_item_node_AppendItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_1__*,char*,...) ; 
- int /*<<< orphan*/  msg_Err (TYPE_1__*,char*) ; 
- int* ppsz_fullscreen ; 
- int* ppsz_loop ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- int /*<<< orphan*/  vlc_xml_decode (char*) ; 
- int /*<<< orphan*/ * xml_ReaderCreate (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xml_ReaderDelete (int /*<<< orphan*/ *) ; 
- char* xml_ReaderNextAttr (int /*<<< orphan*/ *,char const**) ; 
- scalar_t__ xml_ReaderNextNode (int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int xml_reader_t ;
+struct TYPE_6__ {int s; } ;
+typedef TYPE_1__ stream_t ;
+typedef size_t qtl_loop_t ;
+typedef size_t qtl_fullscreen_t ;
+typedef int input_item_t ;
+typedef int input_item_node_t ;
+
+
+ size_t FULLSCREEN_CURRENT ;
+ size_t FULLSCREEN_DOUBLE ;
+ size_t FULLSCREEN_FULL ;
+ size_t FULLSCREEN_HALF ;
+ size_t FULLSCREEN_NORMAL ;
+ size_t LOOP_FALSE ;
+ size_t LOOP_PALINDROME ;
+ size_t LOOP_TRUE ;
+ int ROOT_NODE_MAX_DEPTH ;
+ int SADD_INFO (char*,char*) ;
+ scalar_t__ XML_READER_STARTELEM ;
+ char* _ (char*) ;
+ int atoi (char const*) ;
+ int free (char*) ;
+ int * input_item_New (char*,char*) ;
+ int input_item_Release (int *) ;
+ int input_item_node_AppendItem (int *,int *) ;
+ int msg_Dbg (TYPE_1__*,char*,...) ;
+ int msg_Err (TYPE_1__*,char*) ;
+ int* ppsz_fullscreen ;
+ int* ppsz_loop ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ int vlc_xml_decode (char*) ;
+ int * xml_ReaderCreate (TYPE_1__*,int ) ;
+ int xml_ReaderDelete (int *) ;
+ char* xml_ReaderNextAttr (int *,char const**) ;
+ scalar_t__ xml_ReaderNextNode (int *,char const**) ;
 
 __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *p_subitems )
 {
@@ -55,27 +55,27 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
     input_item_t *p_input;
     int i_ret = -1;
 
-    /* List of all possible attributes. The only required one is "src" */
-    bool b_autoplay = false;
-    bool b_controller = true;
-    qtl_fullscreen_t fullscreen = false;
-    char *psz_href = NULL;
-    bool b_kioskmode = false;
+
+    bool b_autoplay = 0;
+    bool b_controller = 1;
+    qtl_fullscreen_t fullscreen = 0;
+    char *psz_href = ((void*)0);
+    bool b_kioskmode = 0;
     qtl_loop_t loop = LOOP_FALSE;
     int i_movieid = -1;
-    char *psz_moviename = NULL;
-    bool b_playeveryframe = false;
-    char *psz_qtnext = NULL;
-    bool b_quitwhendone = false;
-    char *psz_src = NULL;
-    char *psz_mimetype = NULL;
+    char *psz_moviename = ((void*)0);
+    bool b_playeveryframe = 0;
+    char *psz_qtnext = ((void*)0);
+    bool b_quitwhendone = 0;
+    char *psz_src = ((void*)0);
+    char *psz_mimetype = ((void*)0);
     int i_volume = 100;
 
     p_xml_reader = xml_ReaderCreate( p_demux, p_demux->s );
     if( !p_xml_reader )
         goto error;
 
-    for( int i = 0;; ++i ) /* locate root node */
+    for( int i = 0;; ++i )
     {
         const char *node;
         if( i == ROOT_NODE_MAX_DEPTH ||
@@ -86,14 +86,14 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
         }
 
         if( strcmp( node, "embed" ) == 0 )
-            break; /* found it */
+            break;
 
         msg_Dbg( p_demux, "invalid root node <%s>, trying next (%d / %d)",
                            node, i + 1, ROOT_NODE_MAX_DEPTH );
     }
 
     const char *attrname, *value;
-    while( (attrname = xml_ReaderNextAttr( p_xml_reader, &value )) != NULL )
+    while( (attrname = xml_ReaderNextAttr( p_xml_reader, &value )) != ((void*)0) )
     {
         if( !strcmp( attrname, "autoplay" ) )
             b_autoplay = !strcmp( value, "true" );
@@ -190,22 +190,22 @@ __attribute__((used)) static int ReadDir( stream_t *p_demux, input_item_node_t *
     else
     {
         p_input = input_item_New( psz_src, psz_moviename );
-#define SADD_INFO( type, field ) if( field ) { input_item_AddInfo( \
-                    p_input, "QuickTime Media Link", type, "%s", field ) ; }
-        SADD_INFO( "href", psz_href );
-        SADD_INFO( _("Mime"), psz_mimetype );
+
+
+        if( psz_href ) { input_item_AddInfo( p_input, "QuickTime Media Link", "href", "%s", psz_href ) ; };
+        if( psz_mimetype ) { input_item_AddInfo( p_input, "QuickTime Media Link", _("Mime"), "%s", psz_mimetype ) ; };
         input_item_node_AppendItem( p_subitems, p_input );
         input_item_Release( p_input );
         if( psz_qtnext )
         {
             vlc_xml_decode( psz_qtnext );
-            p_input = input_item_New( psz_qtnext, NULL );
+            p_input = input_item_New( psz_qtnext, ((void*)0) );
             input_item_node_AppendItem( p_subitems, p_input );
             input_item_Release( p_input );
         }
     }
 
-    i_ret = 0; /* Needed for correct operation of go back */
+    i_ret = 0;
 
 error:
     if( p_xml_reader )

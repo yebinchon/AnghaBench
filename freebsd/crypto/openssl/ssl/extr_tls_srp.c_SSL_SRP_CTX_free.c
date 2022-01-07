@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  strength; int /*<<< orphan*/  v; int /*<<< orphan*/  b; int /*<<< orphan*/  a; int /*<<< orphan*/  A; int /*<<< orphan*/  B; int /*<<< orphan*/  s; int /*<<< orphan*/  g; int /*<<< orphan*/  N; int /*<<< orphan*/  info; int /*<<< orphan*/  login; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int strength; int v; int b; int a; int A; int B; int s; int g; int N; int info; int login; } ;
 struct ssl_st {TYPE_1__ srp_ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPENSSL_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SRP_MINIMAL_N ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int BN_free (int ) ;
+ int OPENSSL_free (int ) ;
+ int SRP_MINIMAL_N ;
+ int memset (TYPE_1__*,int ,int) ;
 
 int SSL_SRP_CTX_free(struct ssl_st *s)
 {
-    if (s == NULL)
+    if (s == ((void*)0))
         return 0;
     OPENSSL_free(s->srp_ctx.login);
     OPENSSL_free(s->srp_ctx.info);

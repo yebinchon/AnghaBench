@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct school {int /*<<< orphan*/  spec; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  country; int /*<<< orphan*/  grad; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; int /*<<< orphan*/  school; int /*<<< orphan*/  city; } ;
-struct lev_school {scalar_t__* spec; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  country; int /*<<< orphan*/  grad; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; int /*<<< orphan*/  school; int /*<<< orphan*/  city; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TARG_SCH_ADD ; 
- struct lev_school* alloc_log_event (scalar_t__,int,int) ; 
- scalar_t__ conv_user_id (int) ; 
- int /*<<< orphan*/  filter_simple_text (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  store_school (struct lev_school*,int) ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+
+
+struct school {int spec; int sch_type; int sch_class; int country; int grad; int finish; int start; int school; int city; } ;
+struct lev_school {scalar_t__* spec; int sch_type; int sch_class; int country; int grad; int finish; int start; int school; int city; } ;
+
+
+ scalar_t__ LEV_TARG_SCH_ADD ;
+ struct lev_school* alloc_log_event (scalar_t__,int,int) ;
+ scalar_t__ conv_user_id (int) ;
+ int filter_simple_text (scalar_t__*,int ,int) ;
+ int store_school (struct lev_school*,int) ;
+ int strlen (int ) ;
 
 int do_set_school (int user_id, struct school *S) {
   int len = S->spec ? strlen (S->spec) : 0;

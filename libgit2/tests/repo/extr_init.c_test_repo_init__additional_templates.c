@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_BUF_INIT ; 
- int /*<<< orphan*/  _repo ; 
- int /*<<< orphan*/  cl_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_set_cleanup (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  cleanup_repository ; 
- int /*<<< orphan*/  ensure_repository_init (char*,int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  git_buf_cstr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_buf_dispose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_buf_joinpath (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  git_path_isdir (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_path_isfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_repository_path (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_buf ;
+
+
+ int GIT_BUF_INIT ;
+ int _repo ;
+ int cl_assert (int ) ;
+ int cl_git_pass (int ) ;
+ int cl_set_cleanup (int *,char*) ;
+ int cleanup_repository ;
+ int ensure_repository_init (char*,int ,char*,char*) ;
+ int git_buf_cstr (int *) ;
+ int git_buf_dispose (int *) ;
+ int git_buf_joinpath (int *,int ,char*) ;
+ int git_path_isdir (int ) ;
+ int git_path_isfile (int ) ;
+ int git_repository_path (int ) ;
 
 void test_repo_init__additional_templates(void)
 {
-	git_buf path = GIT_BUF_INIT;
+ git_buf path = GIT_BUF_INIT;
 
-	cl_set_cleanup(&cleanup_repository, "tester");
+ cl_set_cleanup(&cleanup_repository, "tester");
 
-	ensure_repository_init("tester", 0, "tester/.git/", "tester/");
+ ensure_repository_init("tester", 0, "tester/.git/", "tester/");
 
-	cl_git_pass(
-		git_buf_joinpath(&path, git_repository_path(_repo), "description"));
-	cl_assert(git_path_isfile(git_buf_cstr(&path)));
+ cl_git_pass(
+  git_buf_joinpath(&path, git_repository_path(_repo), "description"));
+ cl_assert(git_path_isfile(git_buf_cstr(&path)));
 
-	cl_git_pass(
-		git_buf_joinpath(&path, git_repository_path(_repo), "info/exclude"));
-	cl_assert(git_path_isfile(git_buf_cstr(&path)));
+ cl_git_pass(
+  git_buf_joinpath(&path, git_repository_path(_repo), "info/exclude"));
+ cl_assert(git_path_isfile(git_buf_cstr(&path)));
 
-	cl_git_pass(
-		git_buf_joinpath(&path, git_repository_path(_repo), "hooks"));
-	cl_assert(git_path_isdir(git_buf_cstr(&path)));
-	/* won't confirm specific contents of hooks dir since it may vary */
+ cl_git_pass(
+  git_buf_joinpath(&path, git_repository_path(_repo), "hooks"));
+ cl_assert(git_path_isdir(git_buf_cstr(&path)));
 
-	git_buf_dispose(&path);
+
+ git_buf_dispose(&path);
 }

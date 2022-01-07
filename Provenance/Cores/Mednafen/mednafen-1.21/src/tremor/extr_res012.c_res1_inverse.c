@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vorbis_look_residue ;
-typedef  int /*<<< orphan*/  vorbis_block ;
-typedef  int /*<<< orphan*/  ogg_int32_t ;
 
-/* Variables and functions */
- int _01inverse (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vorbis_book_decodev_add ; 
+
+
+
+typedef int vorbis_look_residue ;
+typedef int vorbis_block ;
+typedef int ogg_int32_t ;
+
+
+ int _01inverse (int *,int *,int **,int,int ) ;
+ int vorbis_book_decodev_add ;
 
 int res1_inverse(vorbis_block *vb,vorbis_look_residue *vl,
-		 ogg_int32_t **in,int *nonzero,int ch){
+   ogg_int32_t **in,int *nonzero,int ch){
   int i,used=0;
   for(i=0;i<ch;i++)
     if(nonzero[i])

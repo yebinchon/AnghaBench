@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CAPTUREPARMS ;
-typedef  int /*<<< orphan*/  AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVStreamMaster ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dstruct (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  dwAudioBufferSize ; 
- int /*<<< orphan*/  dwIndexSize ; 
- int /*<<< orphan*/  dwMCIStartTime ; 
- int /*<<< orphan*/  dwMCIStopTime ; 
- int /*<<< orphan*/  dwRequestMicroSecPerFrame ; 
- int /*<<< orphan*/  fAbortLeftMouse ; 
- int /*<<< orphan*/  fAbortRightMouse ; 
- int /*<<< orphan*/  fCaptureAudio ; 
- int /*<<< orphan*/  fDisableWriteCache ; 
- int /*<<< orphan*/  fLimitEnabled ; 
- int /*<<< orphan*/  fMCIControl ; 
- int /*<<< orphan*/  fMakeUserHitOKToCapture ; 
- int /*<<< orphan*/  fStepCaptureAt2x ; 
- int /*<<< orphan*/  fStepMCIDevice ; 
- int /*<<< orphan*/  fUsingDOSMemory ; 
- int /*<<< orphan*/  fYield ; 
- int /*<<< orphan*/  vKeyAbort ; 
- int /*<<< orphan*/  wChunkGranularity ; 
- int /*<<< orphan*/  wNumAudioRequested ; 
- int /*<<< orphan*/  wNumVideoRequested ; 
- int /*<<< orphan*/  wPercentDropForError ; 
- int /*<<< orphan*/  wStepCaptureAverageFrames ; 
- int /*<<< orphan*/  wTimeLimit ; 
+
+
+
+typedef int CAPTUREPARMS ;
+typedef int AVFormatContext ;
+
+
+ int AVStreamMaster ;
+ int AV_LOG_DEBUG ;
+ int av_log (int *,int ,char*) ;
+ int dstruct (int *,int *,int ,char*) ;
+ int dwAudioBufferSize ;
+ int dwIndexSize ;
+ int dwMCIStartTime ;
+ int dwMCIStopTime ;
+ int dwRequestMicroSecPerFrame ;
+ int fAbortLeftMouse ;
+ int fAbortRightMouse ;
+ int fCaptureAudio ;
+ int fDisableWriteCache ;
+ int fLimitEnabled ;
+ int fMCIControl ;
+ int fMakeUserHitOKToCapture ;
+ int fStepCaptureAt2x ;
+ int fStepMCIDevice ;
+ int fUsingDOSMemory ;
+ int fYield ;
+ int vKeyAbort ;
+ int wChunkGranularity ;
+ int wNumAudioRequested ;
+ int wNumVideoRequested ;
+ int wPercentDropForError ;
+ int wStepCaptureAverageFrames ;
+ int wTimeLimit ;
 
 __attribute__((used)) static void dump_captureparms(AVFormatContext *s, CAPTUREPARMS *cparms)
 {

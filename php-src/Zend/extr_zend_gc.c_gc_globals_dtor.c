@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  gc_globals ; 
- int /*<<< orphan*/  root_buffer_dtor (int /*<<< orphan*/ *) ; 
+ int gc_globals ;
+ int root_buffer_dtor (int *) ;
 
 void gc_globals_dtor(void)
 {
-#ifndef ZTS
-	root_buffer_dtor(&gc_globals);
-#endif
+
+ root_buffer_dtor(&gc_globals);
+
 }

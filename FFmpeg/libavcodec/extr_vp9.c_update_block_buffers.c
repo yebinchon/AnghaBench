@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_9__ {int /*<<< orphan*/ ** uveob_base; int /*<<< orphan*/ * eob_base; void** uvblock_base; void* block_base; void* b_base; } ;
-typedef  TYPE_3__ VP9TileData ;
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int16_t ;
+struct TYPE_9__ {int ** uveob_base; int * eob_base; void** uvblock_base; void* block_base; void* b_base; } ;
+typedef TYPE_3__ VP9TileData ;
 struct TYPE_8__ {TYPE_1__* frames; } ;
 struct TYPE_10__ {int bytesperpixel; scalar_t__ block_alloc_using_2pass; int ss_h; int ss_v; int sb_cols; int sb_rows; int cols; int rows; int active_tile_cols; TYPE_2__ s; TYPE_3__* td; } ;
-typedef  TYPE_4__ VP9Context ;
-typedef  int /*<<< orphan*/  VP9Block ;
+typedef TYPE_4__ VP9Context ;
+typedef int VP9Block ;
 struct TYPE_11__ {TYPE_4__* priv_data; } ;
 struct TYPE_7__ {scalar_t__ uses_2pass; } ;
-typedef  TYPE_5__ AVCodecContext ;
+typedef TYPE_5__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- size_t CUR_FRAME ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_free (void*) ; 
- void* av_malloc (int) ; 
- void* av_malloc_array (int,int) ; 
- void* av_mallocz (int) ; 
+
+ int AVERROR (int ) ;
+ size_t CUR_FRAME ;
+ int ENOMEM ;
+ int av_free (void*) ;
+ void* av_malloc (int) ;
+ void* av_malloc_array (int,int) ;
+ void* av_mallocz (int) ;
 
 __attribute__((used)) static int update_block_buffers(AVCodecContext *avctx)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int update_block_buffers(AVCodecContext *avctx)
     av_free(td->b_base);
     av_free(td->block_base);
     chroma_blocks = 64 * 64 >> (s->ss_h + s->ss_v);
-    chroma_eobs   = 16 * 16 >> (s->ss_h + s->ss_v);
+    chroma_eobs = 16 * 16 >> (s->ss_h + s->ss_v);
     if (s->s.frames[CUR_FRAME].uses_2pass) {
         int sbs = s->sb_cols * s->sb_rows;
 

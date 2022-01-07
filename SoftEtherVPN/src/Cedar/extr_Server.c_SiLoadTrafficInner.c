@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* UnicastBytes; void* UnicastCount; void* BroadcastBytes; void* BroadcastCount; } ;
-typedef  TYPE_1__ TRAFFIC_ENTRY ;
-typedef  int /*<<< orphan*/  FOLDER ;
+typedef TYPE_1__ TRAFFIC_ENTRY ;
+typedef int FOLDER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CfgGetFolder (int /*<<< orphan*/ *,char*) ; 
- void* CfgGetInt64 (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+ int * CfgGetFolder (int *,char*) ;
+ void* CfgGetInt64 (int *,char*) ;
+ int Zero (TYPE_1__*,int) ;
 
 void SiLoadTrafficInner(FOLDER *parent, char *name, TRAFFIC_ENTRY *e)
 {
-	FOLDER *f;
-	// Validate arguments
-	if (e != NULL)
-	{
-		Zero(e, sizeof(TRAFFIC_ENTRY));
-	}
-	if (parent == NULL || name == NULL || e == NULL)
-	{
-		return;
-	}
+ FOLDER *f;
 
-	f = CfgGetFolder(parent, name);
-	if (f == NULL)
-	{
-		return;
-	}
+ if (e != ((void*)0))
+ {
+  Zero(e, sizeof(TRAFFIC_ENTRY));
+ }
+ if (parent == ((void*)0) || name == ((void*)0) || e == ((void*)0))
+ {
+  return;
+ }
 
-	e->BroadcastCount = CfgGetInt64(f, "BroadcastCount");
-	e->BroadcastBytes = CfgGetInt64(f, "BroadcastBytes");
-	e->UnicastCount = CfgGetInt64(f, "UnicastCount");
-	e->UnicastBytes = CfgGetInt64(f, "UnicastBytes");
+ f = CfgGetFolder(parent, name);
+ if (f == ((void*)0))
+ {
+  return;
+ }
+
+ e->BroadcastCount = CfgGetInt64(f, "BroadcastCount");
+ e->BroadcastBytes = CfgGetInt64(f, "BroadcastBytes");
+ e->UnicastCount = CfgGetInt64(f, "UnicastCount");
+ e->UnicastBytes = CfgGetInt64(f, "UnicastBytes");
 }

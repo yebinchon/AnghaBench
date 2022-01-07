@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LogRealm ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG ; 
- int /*<<< orphan*/  LOG_REALM_PLUS_LEVEL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PROTECT_ERRNO ; 
- int /*<<< orphan*/  log_assert (int /*<<< orphan*/ ,char const*,char const*,int,char const*,char*) ; 
+
+
+
+typedef int LogRealm ;
+
+
+ int LOG_DEBUG ;
+ int LOG_REALM_PLUS_LEVEL (int ,int ) ;
+ int PROTECT_ERRNO ;
+ int log_assert (int ,char const*,char const*,int,char const*,char*) ;
 
 void log_assert_failed_return_realm(
                 LogRealm realm,

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct nk_context {int dummy; } ;
 struct media {TYPE_1__* font_22; } ;
-struct TYPE_2__ {int /*<<< orphan*/  handle; } ;
+struct TYPE_2__ {int handle; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NK_DYNAMIC ; 
- int /*<<< orphan*/  nk_layout_row (struct nk_context*,int /*<<< orphan*/ ,float,int,float const*) ; 
- int /*<<< orphan*/  nk_spacing (struct nk_context*,int) ; 
- int /*<<< orphan*/  nk_style_set_font (struct nk_context*,int /*<<< orphan*/ *) ; 
+
+ int NK_DYNAMIC ;
+ int nk_layout_row (struct nk_context*,int ,float,int,float const*) ;
+ int nk_spacing (struct nk_context*,int) ;
+ int nk_style_set_font (struct nk_context*,int *) ;
 
 __attribute__((used)) static void
 ui_widget_centered(struct nk_context *ctx, struct media *media, float height)

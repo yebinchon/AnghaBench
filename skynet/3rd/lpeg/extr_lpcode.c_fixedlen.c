@@ -1,70 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {int tag; } ;
-typedef  TYPE_1__ TTree ;
-
-/* Variables and functions */
-#define  TAnd 144 
-#define  TAny 143 
-#define  TBehind 142 
-#define  TCall 141 
-#define  TCapture 140 
-#define  TChar 139 
-#define  TChoice 138 
-#define  TFalse 137 
-#define  TGrammar 136 
-#define  TNot 135 
-#define  TOpenCall 134 
-#define  TRep 133 
-#define  TRule 132 
-#define  TRunTime 131 
-#define  TSeq 130 
-#define  TSet 129 
-#define  TTrue 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int callrecursive (TYPE_1__*,int (*) (TYPE_1__*),int) ; 
- TYPE_1__* sib1 (TYPE_1__*) ; 
- TYPE_1__* sib2 (TYPE_1__*) ; 
+typedef TYPE_1__ TTree ;
+ int assert (int ) ;
+ int callrecursive (TYPE_1__*,int (*) (TYPE_1__*),int) ;
+ TYPE_1__* sib1 (TYPE_1__*) ;
+ TYPE_1__* sib2 (TYPE_1__*) ;
 
 int fixedlen (TTree *tree) {
-  int len = 0;  /* to accumulate in tail calls */
+  int len = 0;
  tailcall:
   switch (tree->tag) {
-    case TChar: case TSet: case TAny:
+    case 139: case 129: case 143:
       return len + 1;
-    case TFalse: case TTrue: case TNot: case TAnd: case TBehind:
+    case 137: case 128: case 135: case 144: case 142:
       return len;
-    case TRep: case TRunTime: case TOpenCall:
+    case 133: case 131: case 134:
       return -1;
-    case TCapture: case TRule: case TGrammar:
-      /* return fixedlen(sib1(tree)); */
+    case 140: case 132: case 136:
+
       tree = sib1(tree); goto tailcall;
-    case TCall: {
+    case 141: {
       int n1 = callrecursive(tree, fixedlen, -1);
       if (n1 < 0)
         return -1;
       else
         return len + n1;
     }
-    case TSeq: {
+    case 130: {
       int n1 = fixedlen(sib1(tree));
       if (n1 < 0)
         return -1;
-      /* else return fixedlen(sib2(tree)) + len; */
+
       len += n1; tree = sib2(tree); goto tailcall;
     }
-    case TChoice: {
+    case 138: {
       int n1 = fixedlen(sib1(tree));
       int n2 = fixedlen(sib2(tree));
       if (n1 != n2 || n1 < 0)

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int peer_id; } ;
 struct TYPE_5__ {int max_dc_num; int dc_working_num; TYPE_1__ our_id; } ;
 
-/* Variables and functions */
- int DC_SERIALIZED_MAGIC ; 
- int O_CREAT ; 
- int O_RDWR ; 
- TYPE_2__* TLS ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ binlog_enabled ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  get_auth_key_filename () ; 
- int open (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  tgl_dc_iterator_ex (TYPE_2__*,int /*<<< orphan*/ ,int*) ; 
- int write (int,int*,int) ; 
- int /*<<< orphan*/  write_dc ; 
+
+ int DC_SERIALIZED_MAGIC ;
+ int O_CREAT ;
+ int O_RDWR ;
+ TYPE_2__* TLS ;
+ int assert (int) ;
+ scalar_t__ binlog_enabled ;
+ int close (int) ;
+ int get_auth_key_filename () ;
+ int open (int ,int,int) ;
+ int tgl_dc_iterator_ex (TYPE_2__*,int ,int*) ;
+ int write (int,int*,int) ;
+ int write_dc ;
 
 void write_auth_file (void) {
   if (binlog_enabled) { return; }

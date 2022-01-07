@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  cAlternateFileName; } ;
-typedef  TYPE_1__ WIN32_FIND_DATA ;
-typedef  int UCHAR ;
-typedef  int /*<<< orphan*/  ShortName ;
-typedef  scalar_t__ HANDLE ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_NEW ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateDirectory (char*,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateFile (char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DeleteFile (char*) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFile (char*,TYPE_1__*) ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- scalar_t__ GetCurrentDirectory (int,char*) ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MOVEFILE_REPLACE_EXISTING ; 
- scalar_t__ MoveFile (char*,char*) ; 
- scalar_t__ MoveFileEx (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RemoveDirectory (char*) ; 
- int /*<<< orphan*/  RtlCopyMemory (char*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ SetCurrentDirectory (char*) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int cAlternateFileName; } ;
+typedef TYPE_1__ WIN32_FIND_DATA ;
+typedef int UCHAR ;
+typedef int ShortName ;
+typedef scalar_t__ HANDLE ;
+typedef char CHAR ;
+
+
+ int CREATE_NEW ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateDirectory (char*,int *) ;
+ scalar_t__ CreateFile (char*,int,int ,int *,int ,int ,int *) ;
+ int DeleteFile (char*) ;
+ scalar_t__ FALSE ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFile (char*,TYPE_1__*) ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ scalar_t__ GetCurrentDirectory (int,char*) ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int MOVEFILE_REPLACE_EXISTING ;
+ scalar_t__ MoveFile (char*,char*) ;
+ scalar_t__ MoveFileEx (char*,char*,int ) ;
+ int RemoveDirectory (char*) ;
+ int RtlCopyMemory (char*,int ,int) ;
+ scalar_t__ SetCurrentDirectory (char*) ;
+ int ok (int,char*) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static
 void
@@ -54,18 +54,18 @@ Test_ShortTests(void)
     CHAR TestDir[] = "XTestDirTunnelCache";
     CHAR OldDir[MAX_PATH];
 
-    /* Create a blank test directory */
+
     if (GetCurrentDirectory(MAX_PATH, OldDir) == 0)
     {
         win_skip("No test directory available\n");
         return;
     }
 
-    /* Create a blank test directory */
+
     for (; i < 10; ++i)
     {
         TestDir[0] = '0' + i;
-        if (CreateDirectory(TestDir, NULL))
+        if (CreateDirectory(TestDir, ((void*)0)))
         {
             if (SetCurrentDirectory(TestDir) == 0)
             {
@@ -73,7 +73,7 @@ Test_ShortTests(void)
                 win_skip("No test directory available\n");
                 return;
             }
-	
+
             break;
         }
     }
@@ -86,10 +86,10 @@ Test_ShortTests(void)
 
     hFile = CreateFile("verylongfilename",
                        GENERIC_READ | GENERIC_WRITE,
-                       0, NULL,
+                       0, ((void*)0),
                        CREATE_NEW,
                        FILE_ATTRIBUTE_NORMAL,
-                       NULL);
+                       ((void*)0));
     ok(hFile != INVALID_HANDLE_VALUE, "CreateFile() failed\n");
     CloseHandle(hFile);
 
@@ -106,10 +106,10 @@ Test_ShortTests(void)
 
     hFile = CreateFile("randomfilename",
                        GENERIC_READ | GENERIC_WRITE,
-                       0, NULL,
+                       0, ((void*)0),
                        CREATE_NEW,
                        FILE_ATTRIBUTE_NORMAL,
-                       NULL);
+                       ((void*)0));
     ok(hFile != INVALID_HANDLE_VALUE, "CreateFile() failed\n");
     CloseHandle(hFile);
 

@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64 ;
-struct TYPE_13__ {int /*<<< orphan*/  reserved_ct; int /*<<< orphan*/  urgent_ct; } ;
+
+
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64 ;
+struct TYPE_13__ {int reserved_ct; int urgent_ct; } ;
 struct TYPE_9__ {scalar_t__ pri; } ;
-struct TYPE_12__ {TYPE_3__* tube; TYPE_1__ r; int /*<<< orphan*/  heap_index; } ;
-struct TYPE_10__ {int /*<<< orphan*/  urgent_ct; } ;
-struct TYPE_11__ {int /*<<< orphan*/  waiting_conns; TYPE_2__ stat; int /*<<< orphan*/  ready; } ;
-typedef  TYPE_4__ Job ;
-typedef  int /*<<< orphan*/  Conn ;
+struct TYPE_12__ {TYPE_3__* tube; TYPE_1__ r; int heap_index; } ;
+struct TYPE_10__ {int urgent_ct; } ;
+struct TYPE_11__ {int waiting_conns; TYPE_2__ stat; int ready; } ;
+typedef TYPE_4__ Job ;
+typedef int Conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_RESERVED ; 
- scalar_t__ URGENT_THRESHOLD ; 
- int /*<<< orphan*/  conn_reserve_job (int /*<<< orphan*/ *,TYPE_4__*) ; 
- TYPE_7__ global_stat ; 
- int /*<<< orphan*/  heapremove (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ms_take (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nanoseconds () ; 
- TYPE_4__* next_awaited_job (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ready_ct ; 
- int /*<<< orphan*/  remove_waiting_conn (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reply_job (int /*<<< orphan*/ *,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  twarnx (char*) ; 
+
+ int MSG_RESERVED ;
+ scalar_t__ URGENT_THRESHOLD ;
+ int conn_reserve_job (int *,TYPE_4__*) ;
+ TYPE_7__ global_stat ;
+ int heapremove (int *,int ) ;
+ int * ms_take (int *) ;
+ int nanoseconds () ;
+ TYPE_4__* next_awaited_job (int ) ;
+ int ready_ct ;
+ int remove_waiting_conn (int *) ;
+ int reply_job (int *,TYPE_4__*,int ) ;
+ int twarnx (char*) ;
 
 __attribute__((used)) static void
 process_queue()
 {
-    Job *j = NULL;
+    Job *j = ((void*)0);
     int64 now = nanoseconds();
 
     while ((j = next_awaited_job(now))) {
@@ -53,7 +53,7 @@ process_queue()
         }
 
         Conn *c = ms_take(&j->tube->waiting_conns);
-        if (c == NULL) {
+        if (c == ((void*)0)) {
             twarnx("waiting_conns is empty");
             continue;
         }

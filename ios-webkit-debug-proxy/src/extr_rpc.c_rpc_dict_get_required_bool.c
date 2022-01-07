@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int /*<<< orphan*/  rpc_status ;
-typedef  int /*<<< orphan*/  plist_t ;
 
-/* Variables and functions */
- scalar_t__ PLIST_BOOLEAN ; 
- int /*<<< orphan*/  RPC_ERROR ; 
- int /*<<< orphan*/  RPC_SUCCESS ; 
- int /*<<< orphan*/  plist_dict_get_item (int /*<<< orphan*/  const,char const*) ; 
- int /*<<< orphan*/  plist_get_bool_val (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ plist_get_node_type (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int rpc_status ;
+typedef int plist_t ;
+
+
+ scalar_t__ PLIST_BOOLEAN ;
+ int RPC_ERROR ;
+ int RPC_SUCCESS ;
+ int plist_dict_get_item (int const,char const*) ;
+ int plist_get_bool_val (int ,scalar_t__*) ;
+ scalar_t__ plist_get_node_type (int ) ;
 
 rpc_status rpc_dict_get_required_bool(const plist_t node, const char *key,
     bool *to_value) {
@@ -33,6 +33,6 @@ rpc_status rpc_dict_get_required_bool(const plist_t node, const char *key,
   }
   uint8_t value = 0;
   plist_get_bool_val(item, &value);
-  *to_value = (value ? true : false);
+  *to_value = (value ? 1 : 0);
   return RPC_SUCCESS;
 }

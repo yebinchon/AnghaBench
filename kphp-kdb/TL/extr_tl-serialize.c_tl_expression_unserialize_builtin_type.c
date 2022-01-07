@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {double d; int i; long long l; char* s; } ;
 struct tl_scheme_object {TYPE_1__ u; } ;
 struct tl_compiler {int dummy; } ;
 
-/* Variables and functions */
- int CODE_double ; 
- int CODE_int ; 
- int CODE_long ; 
- int CODE_string ; 
- int /*<<< orphan*/  isupper (char const) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int tl_failf (struct tl_compiler*,char*,...) ; 
- int tl_fetch_string (int*,int,char**,int /*<<< orphan*/ *,int) ; 
- struct tl_scheme_object* tl_scheme_object_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tlso_double ; 
- int /*<<< orphan*/  tlso_int ; 
- int /*<<< orphan*/  tlso_long ; 
- int /*<<< orphan*/  tlso_str ; 
- int tolower (char const) ; 
+
+ int CODE_double ;
+ int CODE_int ;
+ int CODE_long ;
+ int CODE_string ;
+ int isupper (char const) ;
+ int strcmp (char const*,char*) ;
+ int tl_failf (struct tl_compiler*,char*,...) ;
+ int tl_fetch_string (int*,int,char**,int *,int) ;
+ struct tl_scheme_object* tl_scheme_object_new (int ) ;
+ int tlso_double ;
+ int tlso_int ;
+ int tlso_long ;
+ int tlso_str ;
+ int tolower (char const) ;
 
 int tl_expression_unserialize_builtin_type (struct tl_compiler *C, int *input, int ilen, const char *name, struct tl_scheme_object **R) {
-  if (name == NULL) {
+  if (name == ((void*)0)) {
     return 0;
   }
   int i = 0;
@@ -111,7 +111,7 @@ int tl_expression_unserialize_builtin_type (struct tl_compiler *C, int *input, i
           return tl_failf (C, "not enough input to unserialize %s", name);
         }
         char *s;
-        int l = tl_fetch_string (input + i, ilen - i, &s, NULL, 1);
+        int l = tl_fetch_string (input + i, ilen - i, &s, ((void*)0), 1);
         if (l < 0) {
           return tl_failf (C, "tl_fetch_string fail");
         }

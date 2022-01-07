@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const mbedtls_ecp_point ;
-typedef  int /*<<< orphan*/  mbedtls_ecp_group ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMB_MAX_PRE ; 
- int /*<<< orphan*/  MBEDTLS_MPI_CHK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ecp_add_mixed (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ecp_double_jac (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ecp_normalize_jac_many (int /*<<< orphan*/  const*,int /*<<< orphan*/  const**,unsigned char) ; 
- int /*<<< orphan*/  mbedtls_ecp_copy (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int const mbedtls_ecp_point ;
+typedef int mbedtls_ecp_group ;
+
+
+ int COMB_MAX_PRE ;
+ int MBEDTLS_MPI_CHK (int ) ;
+ int ecp_add_mixed (int const*,int const*,int const*,int const*) ;
+ int ecp_double_jac (int const*,int const*,int const*) ;
+ int ecp_normalize_jac_many (int const*,int const**,unsigned char) ;
+ int mbedtls_ecp_copy (int const*,int const*) ;
 
 __attribute__((used)) static int ecp_precompute_comb( const mbedtls_ecp_group *grp,
                                 mbedtls_ecp_point T[], const mbedtls_ecp_point *P,
@@ -30,10 +30,10 @@ __attribute__((used)) static int ecp_precompute_comb( const mbedtls_ecp_group *g
     size_t j;
     mbedtls_ecp_point *cur, *TT[COMB_MAX_PRE - 1];
 
-    /*
-     * Set T[0] = P and
-     * T[2^{l-1}] = 2^{dl} P for l = 1 .. w-1 (this is not the final value)
-     */
+
+
+
+
     MBEDTLS_MPI_CHK( mbedtls_ecp_copy( &T[0], P ) );
 
     k = 0;
@@ -49,10 +49,10 @@ __attribute__((used)) static int ecp_precompute_comb( const mbedtls_ecp_group *g
 
     MBEDTLS_MPI_CHK( ecp_normalize_jac_many( grp, TT, k ) );
 
-    /*
-     * Compute the remaining ones using the minimal number of additions
-     * Be careful to update T[2^l] only after using it!
-     */
+
+
+
+
     k = 0;
     for( i = 1; i < ( 1U << ( w - 1 ) ); i <<= 1 )
     {

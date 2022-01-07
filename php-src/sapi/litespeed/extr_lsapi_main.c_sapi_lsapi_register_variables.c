@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zval ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int zval ;
 struct TYPE_2__ {char* request_uri; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSAPI_ForeachEnv (int /*<<< orphan*/  (*) (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LSAPI_ForeachHeader (int /*<<< orphan*/  (*) (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *),int /*<<< orphan*/ *) ; 
- TYPE_1__ SG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  add_variable (char*,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  litespeed_php_import_environment_variables (int /*<<< orphan*/ *) ; 
- scalar_t__ lsapi_mode ; 
- int /*<<< orphan*/  php_import_environment_variables (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  php_register_variable (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  request_info ; 
- char* script_filename ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int LSAPI_ForeachEnv (int (*) (char*,int,char*,int ,int *),int *) ;
+ int LSAPI_ForeachHeader (int (*) (char*,int,char*,int ,int *),int *) ;
+ TYPE_1__ SG (int ) ;
+ int add_variable (char*,int,char*,int ,int *) ;
+ int litespeed_php_import_environment_variables (int *) ;
+ scalar_t__ lsapi_mode ;
+ int php_import_environment_variables (int *) ;
+ int php_register_variable (char*,char*,int *) ;
+ int request_info ;
+ char* script_filename ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void sapi_lsapi_register_variables(zval *track_vars_array)
 {

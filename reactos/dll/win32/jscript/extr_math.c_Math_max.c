@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  unsigned int DWORD ;
-typedef  int /*<<< orphan*/  DOUBLE ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  INFINITY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ isnan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_number (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  to_number (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int vdisp_t ;
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int WORD ;
+typedef int HRESULT ;
+typedef unsigned int DWORD ;
+typedef int DOUBLE ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int INFINITY ;
+ int S_OK ;
+ int TRACE (char*) ;
+ scalar_t__ isnan (int ) ;
+ int jsval_number (int ) ;
+ int to_number (int *,int ,int *) ;
 
 __attribute__((used)) static HRESULT Math_max(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)

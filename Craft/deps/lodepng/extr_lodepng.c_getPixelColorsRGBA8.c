@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ colortype; int bitdepth; unsigned char const key_r; unsigned char key_g; unsigned char key_b; unsigned int palettesize; unsigned char* palette; scalar_t__ key_defined; } ;
-typedef  TYPE_1__ LodePNGColorMode ;
+typedef TYPE_1__ LodePNGColorMode ;
 
-/* Variables and functions */
- scalar_t__ LCT_GREY ; 
- scalar_t__ LCT_GREY_ALPHA ; 
- scalar_t__ LCT_PALETTE ; 
- scalar_t__ LCT_RGB ; 
- scalar_t__ LCT_RGBA ; 
- unsigned int readBitsFromReversedStream (size_t*,unsigned char const*,unsigned int) ; 
+
+ scalar_t__ LCT_GREY ;
+ scalar_t__ LCT_GREY_ALPHA ;
+ scalar_t__ LCT_PALETTE ;
+ scalar_t__ LCT_RGB ;
+ scalar_t__ LCT_RGBA ;
+ unsigned int readBitsFromReversedStream (size_t*,unsigned char const*,unsigned int) ;
 
 __attribute__((used)) static unsigned getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
                                     unsigned has_alpha, const unsigned char* in,
@@ -49,7 +49,7 @@ __attribute__((used)) static unsigned getPixelColorsRGBA8(unsigned char* buffer,
     }
     else
     {
-      unsigned highest = ((1U << mode->bitdepth) - 1U); /*highest possible value for this bit depth*/
+      unsigned highest = ((1U << mode->bitdepth) - 1U);
       size_t j = 0;
       for(i = 0; i < numpixels; i++, buffer += num_channels)
       {
@@ -97,8 +97,8 @@ __attribute__((used)) static unsigned getPixelColorsRGBA8(unsigned char* buffer,
 
       if(index >= mode->palettesize)
       {
-        /*This is an error according to the PNG spec, but fix_png can ignore it*/
-        if(!fix_png) return (mode->bitdepth == 8 ? 46 : 47); /*index out of palette*/
+
+        if(!fix_png) return (mode->bitdepth == 8 ? 46 : 47);
         buffer[0] = buffer[1] = buffer[2] = 0;
         if(has_alpha) buffer[3] = 255;
       }
@@ -154,5 +154,5 @@ __attribute__((used)) static unsigned getPixelColorsRGBA8(unsigned char* buffer,
     }
   }
 
-  return 0; /*no error*/
+  return 0;
 }

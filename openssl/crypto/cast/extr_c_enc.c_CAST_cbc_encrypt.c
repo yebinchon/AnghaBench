@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CAST_LONG ;
-typedef  int /*<<< orphan*/  CAST_KEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAST_decrypt (int*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  CAST_encrypt (int*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  l2n (int,unsigned char*) ; 
- int /*<<< orphan*/  l2nn (int,int,unsigned char*,long) ; 
- int /*<<< orphan*/  n2l (unsigned char const*,int) ; 
- int /*<<< orphan*/  n2ln (unsigned char const*,int,int,long) ; 
+
+
+
+typedef int CAST_LONG ;
+typedef int CAST_KEY ;
+
+
+ int CAST_decrypt (int*,int const*) ;
+ int CAST_encrypt (int*,int const*) ;
+ int l2n (int,unsigned char*) ;
+ int l2nn (int,int,unsigned char*,long) ;
+ int n2l (unsigned char const*,int) ;
+ int n2ln (unsigned char const*,int,int,long) ;
 
 void CAST_cbc_encrypt(const unsigned char *in, unsigned char *out,
                       long length, const CAST_KEY *ks, unsigned char *iv,

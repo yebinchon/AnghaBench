@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int sd_bus_message ;
 
-/* Variables and functions */
- int AF_UNSPEC ; 
- int /*<<< orphan*/  assert (unsigned int*) ; 
- int sd_bus_message_enter_container (unsigned int*,char,char*) ; 
- int sd_bus_message_exit_container (unsigned int*) ; 
- int sd_bus_message_read (unsigned int*,char*,int*) ; 
- int sd_bus_message_rewind (unsigned int*,int) ; 
- int sd_bus_message_skip (unsigned int*,char*) ; 
+
+
+
+typedef unsigned int sd_bus_message ;
+
+
+ int AF_UNSPEC ;
+ int assert (unsigned int*) ;
+ int sd_bus_message_enter_container (unsigned int*,char,char*) ;
+ int sd_bus_message_exit_container (unsigned int*) ;
+ int sd_bus_message_read (unsigned int*,char*,int*) ;
+ int sd_bus_message_rewind (unsigned int*,int) ;
+ int sd_bus_message_skip (unsigned int*,char*) ;
 
 __attribute__((used)) static int count_addresses(sd_bus_message *m, int af, unsigned *ret) {
         unsigned c = 0;
@@ -51,7 +51,7 @@ __attribute__((used)) static int count_addresses(sd_bus_message *m, int af, unsi
         if (r < 0)
                 return r;
 
-        r = sd_bus_message_rewind(m, false);
+        r = sd_bus_message_rewind(m, 0);
         if (r < 0)
                 return r;
 

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kernfs_open_file {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  loff_t ;
+typedef int ssize_t ;
+typedef int loff_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __cgroup1_procs_write (struct kernfs_open_file*,char*,size_t,int /*<<< orphan*/ ,int) ; 
+
+ int __cgroup1_procs_write (struct kernfs_open_file*,char*,size_t,int ,int) ;
 
 __attribute__((used)) static ssize_t cgroup1_tasks_write(struct kernfs_open_file *of,
-				   char *buf, size_t nbytes, loff_t off)
+       char *buf, size_t nbytes, loff_t off)
 {
-	return __cgroup1_procs_write(of, buf, nbytes, off, false);
+ return __cgroup1_procs_write(of, buf, nbytes, off, 0);
 }

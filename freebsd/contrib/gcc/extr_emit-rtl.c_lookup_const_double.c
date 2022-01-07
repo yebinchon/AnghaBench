@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSERT ; 
- int /*<<< orphan*/  const_double_htab ; 
- void** htab_find_slot (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef void* rtx ;
+
+
+ int INSERT ;
+ int const_double_htab ;
+ void** htab_find_slot (int ,void*,int ) ;
 
 __attribute__((used)) static rtx
 lookup_const_double (rtx real)

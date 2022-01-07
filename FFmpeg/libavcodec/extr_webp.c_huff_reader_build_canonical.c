@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {int nb_symbols; int* simple_symbols; int simple; int /*<<< orphan*/  vlc; } ;
-typedef  TYPE_1__ HuffReader ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFMAX (int,int) ; 
- int MAX_HUFFMAN_CODE_LENGTH ; 
- int /*<<< orphan*/  av_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * av_malloc_array (int,int) ; 
- int init_vlc (int /*<<< orphan*/ *,int,int,int*,int,int,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_3__ {int nb_symbols; int* simple_symbols; int simple; int vlc; } ;
+typedef TYPE_1__ HuffReader ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int EINVAL ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ int MAX_HUFFMAN_CODE_LENGTH ;
+ int av_free (int *) ;
+ int * av_malloc_array (int,int) ;
+ int init_vlc (int *,int,int,int*,int,int,int *,int,int,int ) ;
 
 __attribute__((used)) static int huff_reader_build_canonical(HuffReader *r, int *code_lengths,
                                        int alphabet_size)
@@ -33,7 +33,7 @@ __attribute__((used)) static int huff_reader_build_canonical(HuffReader *r, int 
     int max_code_length = 0;
     uint16_t *codes;
 
-    /* special-case 1 symbol since the vlc reader cannot handle it */
+
     for (sym = 0; sym < alphabet_size; sym++) {
         if (code_lengths[sym] > 0) {
             len++;

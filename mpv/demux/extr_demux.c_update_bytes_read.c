@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stream {scalar_t__ total_stream_seeks; scalar_t__ total_unbuffered_read_bytes; } ;
 struct demuxer {struct stream* stream; } ;
-struct demux_internal {int /*<<< orphan*/  byte_level_seeks; int /*<<< orphan*/  hack_unbuffered_read_bytes; int /*<<< orphan*/  cache_unbuffered_read_bytes; scalar_t__ slave_unbuffered_read_bytes; struct demuxer* d_thread; } ;
-typedef  scalar_t__ int64_t ;
+struct demux_internal {int byte_level_seeks; int hack_unbuffered_read_bytes; int cache_unbuffered_read_bytes; scalar_t__ slave_unbuffered_read_bytes; struct demuxer* d_thread; } ;
+typedef scalar_t__ int64_t ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static void update_bytes_read(struct demux_internal *in)
 {

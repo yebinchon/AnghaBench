@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  a ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- scalar_t__ close (int) ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  isspace (char) ; 
- int /*<<< orphan*/  memset (long long*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int read (int,char*,int) ; 
- int sscanf (char*,char*,long long*) ; 
- long long sysconf (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,char*) ; 
+
+
+
+typedef int buf ;
+typedef int a ;
+
+
+ scalar_t__ EINTR ;
+ int O_RDONLY ;
+ int _SC_PAGESIZE ;
+ scalar_t__ close (int) ;
+ scalar_t__ errno ;
+ int isspace (char) ;
+ int memset (long long*,int ,int) ;
+ int open (char*,int ) ;
+ int read (int,char*,int) ;
+ int sscanf (char*,char*,long long*) ;
+ long long sysconf (int ) ;
+ int vkprintf (int,char*,char*) ;
 
 int get_memory_usage (long long *a, int m) {
   memset (a, 0, sizeof (a[0]) * m);

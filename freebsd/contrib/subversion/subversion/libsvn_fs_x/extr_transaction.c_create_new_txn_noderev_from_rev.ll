@@ -1,0 +1,131 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/contrib/subversion/subversion/libsvn_fs_x/extr_transaction.c_create_new_txn_noderev_from_rev.c'
+source_filename = "/home/carl/AnghaBench/freebsd/contrib/subversion/subversion/libsvn_fs_x/extr_transaction.c_create_new_txn_noderev_from_rev.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_9__ = type { %struct.TYPE_10__, i32, i32*, i32, %struct.TYPE_10__, %struct.TYPE_8__, %struct.TYPE_7__ }
+%struct.TYPE_10__ = type { i32 }
+%struct.TYPE_8__ = type { i64 }
+%struct.TYPE_7__ = type { i64 }
+
+@SVN_ERR_FS_CORRUPT = common dso_local global i32 0, align 4
+@.str = private unnamed_addr constant [38 x i8] c"Copying from transactions not allowed\00", align 1
+@SVN_INVALID_REVNUM = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32* (i32*, i32, i32*, i32*)* @create_new_txn_noderev_from_rev to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32* @create_new_txn_noderev_from_rev(i32* %0, i32 %1, i32* %2, i32* %3) #0 {
+  %5 = alloca i32*, align 8
+  %6 = alloca i32*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32*, align 8
+  %9 = alloca i32*, align 8
+  %10 = alloca %struct.TYPE_9__*, align 8
+  store i32* %0, i32** %6, align 8
+  store i32 %1, i32* %7, align 4
+  store i32* %2, i32** %8, align 8
+  store i32* %3, i32** %9, align 8
+  %11 = load i32*, i32** %6, align 8
+  %12 = load i32*, i32** %8, align 8
+  %13 = load i32*, i32** %9, align 8
+  %14 = load i32*, i32** %9, align 8
+  %15 = call i32 @svn_fs_x__get_node_revision(%struct.TYPE_9__** %10, i32* %11, i32* %12, i32* %13, i32* %14)
+  %16 = call i32 @SVN_ERR(i32 %15)
+  %17 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %18 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %17, i32 0, i32 6
+  %19 = getelementptr inbounds %struct.TYPE_7__, %struct.TYPE_7__* %18, i32 0, i32 0
+  %20 = load i64, i64* %19, align 8
+  %21 = icmp eq i64 %20, 0
+  br i1 %21, label %22, label %28
+
+22:                                               ; preds = %4
+  %23 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %24 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %23, i32 0, i32 5
+  %25 = getelementptr inbounds %struct.TYPE_8__, %struct.TYPE_8__* %24, i32 0, i32 0
+  %26 = load i64, i64* %25, align 8
+  %27 = icmp eq i64 %26, 0
+  br label %28
+
+28:                                               ; preds = %22, %4
+  %29 = phi i1 [ false, %4 ], [ %27, %22 ]
+  %30 = zext i1 %29 to i32
+  %31 = call i32 @SVN_ERR_ASSERT(i32 %30)
+  %32 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %33 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %32, i32 0, i32 0
+  %34 = getelementptr inbounds %struct.TYPE_10__, %struct.TYPE_10__* %33, i32 0, i32 0
+  %35 = load i32, i32* %34, align 8
+  %36 = call i64 @svn_fs_x__is_txn(i32 %35)
+  %37 = icmp ne i64 %36, 0
+  br i1 %37, label %38, label %42
+
+38:                                               ; preds = %28
+  %39 = load i32, i32* @SVN_ERR_FS_CORRUPT, align 4
+  %40 = call i32 @_(i8* getelementptr inbounds ([38 x i8], [38 x i8]* @.str, i64 0, i64 0))
+  %41 = call i32* @svn_error_create(i32 %39, i32* null, i32 %40)
+  store i32* %41, i32** %5, align 8
+  br label %66
+
+42:                                               ; preds = %28
+  %43 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %44 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %43, i32 0, i32 4
+  %45 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %46 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %45, i32 0, i32 0
+  %47 = bitcast %struct.TYPE_10__* %44 to i8*
+  %48 = bitcast %struct.TYPE_10__* %46 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %47, i8* align 8 %48, i64 4, i1 false)
+  %49 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %50 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %49, i32 0, i32 3
+  %51 = load i32, i32* %50, align 8
+  %52 = add nsw i32 %51, 1
+  store i32 %52, i32* %50, align 8
+  %53 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %54 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %53, i32 0, i32 2
+  store i32* null, i32** %54, align 8
+  %55 = load i32, i32* @SVN_INVALID_REVNUM, align 4
+  %56 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %57 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %56, i32 0, i32 1
+  store i32 %55, i32* %57, align 4
+  %58 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %59 = getelementptr inbounds %struct.TYPE_9__, %struct.TYPE_9__* %58, i32 0, i32 0
+  %60 = load i32, i32* %7, align 4
+  %61 = call i32 @svn_fs_x__init_txn_root(%struct.TYPE_10__* %59, i32 %60)
+  %62 = load i32*, i32** %6, align 8
+  %63 = load %struct.TYPE_9__*, %struct.TYPE_9__** %10, align 8
+  %64 = load i32*, i32** %9, align 8
+  %65 = call i32* @svn_fs_x__put_node_revision(i32* %62, %struct.TYPE_9__* %63, i32* %64)
+  store i32* %65, i32** %5, align 8
+  br label %66
+
+66:                                               ; preds = %42, %38
+  %67 = load i32*, i32** %5, align 8
+  ret i32* %67
+}
+
+declare dso_local i32 @SVN_ERR(i32) #1
+
+declare dso_local i32 @svn_fs_x__get_node_revision(%struct.TYPE_9__**, i32*, i32*, i32*, i32*) #1
+
+declare dso_local i32 @SVN_ERR_ASSERT(i32) #1
+
+declare dso_local i64 @svn_fs_x__is_txn(i32) #1
+
+declare dso_local i32* @svn_error_create(i32, i32*, i32) #1
+
+declare dso_local i32 @_(i8*) #1
+
+; Function Attrs: argmemonly nounwind willreturn
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noalias nocapture readonly, i64, i1 immarg) #2
+
+declare dso_local i32 @svn_fs_x__init_txn_root(%struct.TYPE_10__*, i32) #1
+
+declare dso_local i32* @svn_fs_x__put_node_revision(i32*, %struct.TYPE_9__*, i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #2 = { argmemonly nounwind willreturn }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

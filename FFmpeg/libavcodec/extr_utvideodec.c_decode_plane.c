@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int uint32_t ;
-typedef  int ptrdiff_t ;
-struct TYPE_9__ {int /*<<< orphan*/  table; } ;
-typedef  TYPE_2__ VLC ;
-struct TYPE_8__ {int /*<<< orphan*/  (* bswap_buf ) (int*,int*,int) ;} ;
-struct TYPE_10__ {int slices; TYPE_7__* avctx; scalar_t__ slice_bits; TYPE_1__ bdsp; int /*<<< orphan*/ ** packed_stream_size; int /*<<< orphan*/ ** packed_stream; int /*<<< orphan*/ ** control_stream_size; int /*<<< orphan*/ ** control_stream; scalar_t__ pack; int /*<<< orphan*/  interlaced; } ;
-typedef  TYPE_3__ UtvideoContext ;
-struct TYPE_11__ {int /*<<< orphan*/  pix_fmt; } ;
-typedef  int /*<<< orphan*/  GetBitContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_INPUT_BUFFER_PADDING_SIZE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int AV_RL32 (int const*) ; 
- int /*<<< orphan*/  VLC_BITS ; 
- int /*<<< orphan*/  av_log (TYPE_7__*,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ build_huff (int const*,TYPE_2__*,int*) ; 
- int compute_cmask (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_free_vlc (TYPE_2__*) ; 
- int get_bits_le (int /*<<< orphan*/ *,int) ; 
- int get_bits_left (int /*<<< orphan*/ *) ; 
- int get_vlc2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  init_get_bits (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int init_get_bits8_le (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int*,int*,int) ; 
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint32_t ;
+typedef int ptrdiff_t ;
+struct TYPE_9__ {int table; } ;
+typedef TYPE_2__ VLC ;
+struct TYPE_8__ {int (* bswap_buf ) (int*,int*,int) ;} ;
+struct TYPE_10__ {int slices; TYPE_7__* avctx; scalar_t__ slice_bits; TYPE_1__ bdsp; int ** packed_stream_size; int ** packed_stream; int ** control_stream_size; int ** control_stream; scalar_t__ pack; int interlaced; } ;
+typedef TYPE_3__ UtvideoContext ;
+struct TYPE_11__ {int pix_fmt; } ;
+typedef int GetBitContext ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_INPUT_BUFFER_PADDING_SIZE ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_RL32 (int const*) ;
+ int VLC_BITS ;
+ int av_log (TYPE_7__*,int ,char*,...) ;
+ scalar_t__ build_huff (int const*,TYPE_2__*,int*) ;
+ int compute_cmask (int,int ,int ) ;
+ int ff_free_vlc (TYPE_2__*) ;
+ int get_bits_le (int *,int) ;
+ int get_bits_left (int *) ;
+ int get_vlc2 (int *,int ,int ,int) ;
+ int init_get_bits (int *,scalar_t__,int) ;
+ int init_get_bits8_le (int *,int ,int ) ;
+ int memset (int ,int ,int ) ;
+ int stub1 (int*,int*,int) ;
 
 __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
                         uint8_t *dst, ptrdiff_t stride,
@@ -72,8 +72,8 @@ __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
                 return ret;
 
             sstart = send;
-            send   = (height * (slice + 1) / c->slices) & cmask;
-            dest   = dst + sstart * stride;
+            send = (height * (slice + 1) / c->slices) & cmask;
+            dest = dst + sstart * stride;
 
             if (3 * ((dst + send * stride - dest + 7)/8) > get_bits_left(&cbit))
                 return AVERROR_INVALIDDATA;
@@ -108,14 +108,14 @@ __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
         av_log(c->avctx, AV_LOG_ERROR, "Cannot build Huffman codes\n");
         return AVERROR_INVALIDDATA;
     }
-    if (fsym >= 0) { // build_huff reported a symbol to fill slices with
+    if (fsym >= 0) {
         send = 0;
         for (slice = 0; slice < c->slices; slice++) {
             uint8_t *dest;
 
             sstart = send;
-            send   = (height * (slice + 1) / c->slices) & cmask;
-            dest   = dst + sstart * stride;
+            send = (height * (slice + 1) / c->slices) & cmask;
+            dest = dst + sstart * stride;
 
             prev = 0x80;
             for (j = sstart; j < send; j++) {
@@ -123,7 +123,7 @@ __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
                     pix = fsym;
                     if (use_pred) {
                         prev += pix;
-                        pix   = prev;
+                        pix = prev;
                     }
                     dest[i] = pix;
                 }
@@ -133,7 +133,7 @@ __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
         return 0;
     }
 
-    src      += 256;
+    src += 256;
 
     send = 0;
     for (slice = 0; slice < c->slices; slice++) {
@@ -141,13 +141,13 @@ __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
         int slice_data_start, slice_data_end, slice_size;
 
         sstart = send;
-        send   = (height * (slice + 1) / c->slices) & cmask;
-        dest   = dst + sstart * stride;
+        send = (height * (slice + 1) / c->slices) & cmask;
+        dest = dst + sstart * stride;
 
-        // slice offset and size validation was done earlier
+
         slice_data_start = slice ? AV_RL32(src + slice * 4 - 4) : 0;
-        slice_data_end   = AV_RL32(src + slice * 4);
-        slice_size       = slice_data_end - slice_data_start;
+        slice_data_end = AV_RL32(src + slice * 4);
+        slice_size = slice_data_end - slice_data_start;
 
         if (!slice_size) {
             av_log(c->avctx, AV_LOG_ERROR, "Plane has more than one symbol "
@@ -171,7 +171,7 @@ __attribute__((used)) static int decode_plane(UtvideoContext *c, int plane_no,
                 }
                 if (use_pred) {
                     prev += pix;
-                    pix   = prev;
+                    pix = prev;
                 }
                 dest[i] = pix;
             }

@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ESP_ERR_NO_MEM ; 
- int ESP_OK ; 
- int /*<<< orphan*/  MSG_DEBUG ; 
- int /*<<< orphan*/  MSG_ERROR ; 
- int /*<<< orphan*/  SIG_WPS_NUM ; 
- int /*<<< orphan*/  WPS_TASK_STACK_SIZE ; 
- int /*<<< orphan*/  os_bzero (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int pdPASS ; 
- int /*<<< orphan*/  portMAX_DELAY ; 
- void* s_wps_api_sem ; 
- int /*<<< orphan*/  s_wps_data_lock ; 
- int /*<<< orphan*/  s_wps_queue ; 
- int /*<<< orphan*/  s_wps_sig_cnt ; 
- int /*<<< orphan*/ * s_wps_task_create_sem ; 
- int /*<<< orphan*/  s_wps_task_hdl ; 
- int /*<<< orphan*/  vSemaphoreDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wpa_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  wps_rxq_init () ; 
- int /*<<< orphan*/  wps_task ; 
- int /*<<< orphan*/  wps_task_deinit () ; 
- int /*<<< orphan*/  xQueueCreate (int /*<<< orphan*/ ,int) ; 
- void* xSemaphoreCreateCounting (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xSemaphoreCreateRecursiveMutex () ; 
- int /*<<< orphan*/  xSemaphoreTake (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int xTaskCreate (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+ int ESP_ERR_NO_MEM ;
+ int ESP_OK ;
+ int MSG_DEBUG ;
+ int MSG_ERROR ;
+ int SIG_WPS_NUM ;
+ int WPS_TASK_STACK_SIZE ;
+ int os_bzero (int ,int ) ;
+ int pdPASS ;
+ int portMAX_DELAY ;
+ void* s_wps_api_sem ;
+ int s_wps_data_lock ;
+ int s_wps_queue ;
+ int s_wps_sig_cnt ;
+ int * s_wps_task_create_sem ;
+ int s_wps_task_hdl ;
+ int vSemaphoreDelete (int *) ;
+ int wpa_printf (int ,char*,...) ;
+ int wps_rxq_init () ;
+ int wps_task ;
+ int wps_task_deinit () ;
+ int xQueueCreate (int ,int) ;
+ void* xSemaphoreCreateCounting (int,int ) ;
+ int xSemaphoreCreateRecursiveMutex () ;
+ int xSemaphoreTake (int *,int ) ;
+ int xTaskCreate (int ,char*,int ,int *,int,int *) ;
 
 int wps_task_init(void)
 {
     int ret = 0;
 
-    /* Call wps_task_deinit() first in case esp_wifi_wps_disable() fails
-     */
+
+
     wps_task_deinit();
 
     s_wps_data_lock = xSemaphoreCreateRecursiveMutex();
@@ -73,7 +65,7 @@ int wps_task_init(void)
 
     wps_rxq_init();
 
-    ret = xTaskCreate(wps_task, "wpsT", WPS_TASK_STACK_SIZE, NULL, 2, &s_wps_task_hdl);
+    ret = xTaskCreate(wps_task, "wpsT", WPS_TASK_STACK_SIZE, ((void*)0), 2, &s_wps_task_hdl);
     if (pdPASS != ret) {
         wpa_printf(MSG_ERROR, "wps enable: failed to create task");
         goto _wps_no_mem;
@@ -81,7 +73,7 @@ int wps_task_init(void)
 
     xSemaphoreTake(s_wps_task_create_sem, portMAX_DELAY);
     vSemaphoreDelete(s_wps_task_create_sem);
-    s_wps_task_create_sem = NULL;
+    s_wps_task_create_sem = ((void*)0);
 
     wpa_printf(MSG_DEBUG, "wifi wps enable: task prio:%d, stack:%d", 2, WPS_TASK_STACK_SIZE);
     return ESP_OK;

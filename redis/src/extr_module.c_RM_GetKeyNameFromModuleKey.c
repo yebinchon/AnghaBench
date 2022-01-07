@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* key; } ;
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  TYPE_1__ RedisModuleKey ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* key; } ;
+typedef int RedisModuleString ;
+typedef TYPE_1__ RedisModuleKey ;
+
+
 
 const RedisModuleString *RM_GetKeyNameFromModuleKey(RedisModuleKey *key) {
-    return key ? key->key : NULL;
+    return key ? key->key : ((void*)0);
 }

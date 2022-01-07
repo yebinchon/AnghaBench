@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct rgbvec {int r; int g; int b; } ;
 struct TYPE_9__ {TYPE_2__* priv; } ;
 struct TYPE_7__ {void* b; void* g; void* r; } ;
 struct TYPE_8__ {TYPE_1__ scale; struct rgbvec* lut; } ;
-typedef  TYPE_2__ LUT3DContext ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_2__ LUT3DContext ;
+typedef int FILE ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  EINVAL ; 
- int MAX_LINE_SIZE ; 
- int /*<<< orphan*/  NEXT_LINE (int /*<<< orphan*/ ) ; 
- int allocate_3dlut (TYPE_3__*,int) ; 
- void* av_clipf (int,float,float) ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_sscanf (char*,char*,...) ; 
- int /*<<< orphan*/  skip_line (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
- int strtol (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int EINVAL ;
+ int MAX_LINE_SIZE ;
+ int NEXT_LINE (int ) ;
+ int allocate_3dlut (TYPE_3__*,int) ;
+ void* av_clipf (int,float,float) ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int av_sscanf (char*,char*,...) ;
+ int skip_line (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
+ int strtol (char*,int *,int ) ;
 
 __attribute__((used)) static int parse_cinespace(AVFilterContext *ctx, FILE *f)
 {
     LUT3DContext *lut3d = ctx->priv;
     char line[MAX_LINE_SIZE];
-    float in_min[3]  = {0.0, 0.0, 0.0};
-    float in_max[3]  = {1.0, 1.0, 1.0};
+    float in_min[3] = {0.0, 0.0, 0.0};
+    float in_max[3] = {1.0, 1.0, 1.0};
     float out_min[3] = {0.0, 0.0, 0.0};
     float out_max[3] = {1.0, 1.0, 1.0};
     int ret, inside_metadata = 0, size, size2;
@@ -74,7 +74,7 @@ __attribute__((used)) static int parse_cinespace(AVFilterContext *ctx, FILE *f)
             int size_r, size_g, size_b;
 
             for (int i = 0; i < 3; i++) {
-                int npoints = strtol(line, NULL, 0);
+                int npoints = strtol(line, ((void*)0), 0);
 
                 if (npoints != 2) {
                     av_log(ctx, AV_LOG_ERROR, "Unsupported number of pre-lut points.\n");

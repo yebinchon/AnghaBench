@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  id; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int id; } ;
 struct relative {int type; scalar_t__ binlog_position; scalar_t__ timestamp; size_t link_color; TYPE_1__ node; struct relative* next; } ;
 struct connection {int dummy; } ;
 struct TYPE_4__ {struct relative* next; } ;
 
-/* Variables and functions */
- scalar_t__ BINLOG_POSITION ; 
- scalar_t__ LAST_BINLOG_REQUEST_TIME ; 
- TYPE_2__ RELATIVES ; 
- scalar_t__ REQUEST_BINLOG_DELAY ; 
- scalar_t__* REQUEST_DELAY ; 
- int /*<<< orphan*/  assert (int) ; 
- struct connection* get_relative_connection (struct relative*) ; 
- int lrand48 () ; 
- scalar_t__ precise_now ; 
- int /*<<< orphan*/  rpc_send_binlog_request (struct connection*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ BINLOG_POSITION ;
+ scalar_t__ LAST_BINLOG_REQUEST_TIME ;
+ TYPE_2__ RELATIVES ;
+ scalar_t__ REQUEST_BINLOG_DELAY ;
+ scalar_t__* REQUEST_DELAY ;
+ int assert (int) ;
+ struct connection* get_relative_connection (struct relative*) ;
+ int lrand48 () ;
+ scalar_t__ precise_now ;
+ int rpc_send_binlog_request (struct connection*,int ,int) ;
 
 void request_binlog (void) {
   if (LAST_BINLOG_REQUEST_TIME + REQUEST_BINLOG_DELAY > precise_now) {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct lwan_lua_method_info {int /*<<< orphan*/ * func; int /*<<< orphan*/ * name; } ;
-typedef  int /*<<< orphan*/  lwan_lua_method ;
-struct TYPE_3__ {int /*<<< orphan*/ * func; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ luaL_reg ;
 
-/* Variables and functions */
- struct lwan_lua_method_info* __start_lwan_lua_method ; 
- struct lwan_lua_method_info const* __stop_lwan_lua_method ; 
- int /*<<< orphan*/  lua_methods ; 
- TYPE_1__* lwan_lua_method_array_append (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lwan_status_critical (char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct lwan_lua_method_info {int * func; int * name; } ;
+typedef int lwan_lua_method ;
+struct TYPE_3__ {int * func; int * name; } ;
+typedef TYPE_1__ luaL_reg ;
+
+
+ struct lwan_lua_method_info* __start_lwan_lua_method ;
+ struct lwan_lua_method_info const* __stop_lwan_lua_method ;
+ int lua_methods ;
+ TYPE_1__* lwan_lua_method_array_append (int *) ;
+ int lwan_status_critical (char*,...) ;
 
 __attribute__((used)) __attribute__((constructor))
 __attribute__((no_sanitize_address))
@@ -48,6 +48,6 @@ static void register_lua_methods(void)
     if (!r)
         lwan_status_critical("Could not add Lua method sentinel");
 
-    r->name = NULL;
-    r->func = NULL;
+    r->name = ((void*)0);
+    r->func = ((void*)0);
 }

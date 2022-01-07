@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct pair_hostid_result {scalar_t__ result; } ;
 
-/* Variables and functions */
+
 
 __attribute__((used)) static int cmp_pair_hostid_result (const void *a, const void *b) {
   const struct pair_hostid_result *x = (const struct pair_hostid_result *) a;
@@ -21,7 +21,7 @@ __attribute__((used)) static int cmp_pair_hostid_result (const void *a, const vo
     return -1;
   }
   if (x->result > y->result) {
-    return  1;
+    return 1;
   }
   return 0;
 }

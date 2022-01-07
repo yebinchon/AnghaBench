@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct afs_vlserver {int /*<<< orphan*/  rcu; int /*<<< orphan*/  usage; } ;
+
+
+
+
+struct afs_vlserver {int rcu; int usage; } ;
 struct afs_net {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  afs_vlserver_rcu ; 
- unsigned int atomic_dec_return (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  call_rcu (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int afs_vlserver_rcu ;
+ unsigned int atomic_dec_return (int *) ;
+ int call_rcu (int *,int ) ;
 
 void afs_put_vlserver(struct afs_net *net, struct afs_vlserver *vlserver)
 {
-	if (vlserver) {
-		unsigned int u = atomic_dec_return(&vlserver->usage);
-		//_debug("VL PUT %p{%u}", vlserver, u);
+ if (vlserver) {
+  unsigned int u = atomic_dec_return(&vlserver->usage);
 
-		if (u == 0)
-			call_rcu(&vlserver->rcu, afs_vlserver_rcu);
-	}
+
+  if (u == 0)
+   call_rcu(&vlserver->rcu, afs_vlserver_rcu);
+ }
 }

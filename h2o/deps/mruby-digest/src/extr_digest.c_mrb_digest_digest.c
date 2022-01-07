@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mrb_md {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
+typedef int mrb_value ;
+typedef int mrb_state ;
 
-/* Variables and functions */
- scalar_t__ DATA_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lib_md_digest (int /*<<< orphan*/ *,struct mrb_md*) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
+
+ scalar_t__ DATA_PTR (int ) ;
+ int lib_md_digest (int *,struct mrb_md*) ;
+ int mrb_nil_value () ;
 
 __attribute__((used)) static mrb_value
 mrb_digest_digest(mrb_state *mrb, mrb_value self)

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_8__ {int (* io_open ) (TYPE_2__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ;int flags; TYPE_1__* priv_data; } ;
-struct TYPE_7__ {char const* allowed_extensions; int /*<<< orphan*/  ctx; scalar_t__ http_persistent; } ;
-typedef  TYPE_1__ HLSContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_2__ AVFormatContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AVERROR_EXIT ; 
- int AVERROR_INVALIDDATA ; 
- int AVFMT_FLAG_CUSTOM_IO ; 
- int /*<<< orphan*/  AVIO_FLAG_READ ; 
- int /*<<< orphan*/  AV_DICT_DONT_STRDUP_VAL ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int /*<<< orphan*/  av_dict_copy (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_err2str (int) ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,char const*,...) ; 
- int /*<<< orphan*/  av_match_ext (char const*,char const*) ; 
- int /*<<< orphan*/  av_opt_get (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ av_strstart (char const*,char*,int /*<<< orphan*/ *) ; 
- char* avio_find_protocol_name (char const*) ; 
- int open_url_keepalive (int /*<<< orphan*/ ,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ **) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,char const*,int) ; 
- int stub1 (TYPE_2__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int stub2 (TYPE_2__*,int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_8__ {int (* io_open ) (TYPE_2__*,int **,char const*,int ,int **) ;int flags; TYPE_1__* priv_data; } ;
+struct TYPE_7__ {char const* allowed_extensions; int ctx; scalar_t__ http_persistent; } ;
+typedef TYPE_1__ HLSContext ;
+typedef int AVIOContext ;
+typedef TYPE_2__ AVFormatContext ;
+typedef int AVDictionary ;
+
+
+ int AVERROR_EOF ;
+ int AVERROR_EXIT ;
+ int AVERROR_INVALIDDATA ;
+ int AVFMT_FLAG_CUSTOM_IO ;
+ int AVIO_FLAG_READ ;
+ int AV_DICT_DONT_STRDUP_VAL ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int AV_OPT_SEARCH_CHILDREN ;
+ int av_dict_copy (int **,int *,int ) ;
+ int av_dict_free (int **) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int av_err2str (int) ;
+ int av_log (TYPE_2__*,int ,char*,char const*,...) ;
+ int av_match_ext (char const*,char const*) ;
+ int av_opt_get (int *,char*,int ,int **) ;
+ scalar_t__ av_strstart (char const*,char*,int *) ;
+ char* avio_find_protocol_name (char const*) ;
+ int open_url_keepalive (int ,int **,char const*,int **) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (char const*) ;
+ int strncmp (char const*,char const*,int) ;
+ int stub1 (TYPE_2__*,int **,char const*,int ,int **) ;
+ int stub2 (TYPE_2__*,int **,char const*,int ,int **) ;
 
 __attribute__((used)) static int open_url(AVFormatContext *s, AVIOContext **pb, const char *url,
                     AVDictionary *opts, AVDictionary *opts2, int *is_http_out)
 {
     HLSContext *c = s->priv_data;
-    AVDictionary *tmp = NULL;
-    const char *proto_name = NULL;
+    AVDictionary *tmp = ((void*)0);
+    const char *proto_name = ((void*)0);
     int ret;
     int is_http = 0;
 
-    if (av_strstart(url, "crypto", NULL)) {
+    if (av_strstart(url, "crypto", ((void*)0))) {
         if (url[6] == '+' || url[6] == ':')
             proto_name = avio_find_protocol_name(url + 7);
     }
@@ -66,8 +66,8 @@ __attribute__((used)) static int open_url(AVFormatContext *s, AVIOContext **pb, 
     if (!proto_name)
         return AVERROR_INVALIDDATA;
 
-    // only http(s) & file are allowed
-    if (av_strstart(proto_name, "file", NULL)) {
+
+    if (av_strstart(proto_name, "file", ((void*)0))) {
         if (strcmp(c->allowed_extensions, "ALL") && !av_match_ext(url, c->allowed_extensions)) {
             av_log(s, AV_LOG_ERROR,
                 "Filename extension of \'%s\' is not a common multimedia extension, blocked for security reasons.\n"
@@ -75,14 +75,14 @@ __attribute__((used)) static int open_url(AVFormatContext *s, AVIOContext **pb, 
                 url);
             return AVERROR_INVALIDDATA;
         }
-    } else if (av_strstart(proto_name, "http", NULL)) {
+    } else if (av_strstart(proto_name, "http", ((void*)0))) {
         is_http = 1;
     } else
         return AVERROR_INVALIDDATA;
 
     if (!strncmp(proto_name, url, strlen(proto_name)) && url[strlen(proto_name)] == ':')
         ;
-    else if (av_strstart(url, "crypto", NULL) && !strncmp(proto_name, url + 7, strlen(proto_name)) && url[7 + strlen(proto_name)] == ':')
+    else if (av_strstart(url, "crypto", ((void*)0)) && !strncmp(proto_name, url + 7, strlen(proto_name)) && url[7 + strlen(proto_name)] == ':')
         ;
     else if (strcmp(proto_name, "file") || !strncmp(url, "file,", 5))
         return AVERROR_INVALIDDATA;
@@ -106,8 +106,8 @@ __attribute__((used)) static int open_url(AVFormatContext *s, AVIOContext **pb, 
         ret = s->io_open(s, pb, url, AVIO_FLAG_READ, &tmp);
     }
     if (ret >= 0) {
-        // update cookies on http response with setcookies.
-        char *new_cookies = NULL;
+
+        char *new_cookies = ((void*)0);
 
         if (!(s->flags & AVFMT_FLAG_CUSTOM_IO))
             av_opt_get(*pb, "cookies", AV_OPT_SEARCH_CHILDREN, (uint8_t**)&new_cookies);

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tsdn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  config_prof ; 
- int /*<<< orphan*/  malloc_mutex_prefork (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ opt_tcache ; 
- int /*<<< orphan*/  tcaches_mtx ; 
+
+
+
+typedef int tsdn_t ;
+
+
+ int config_prof ;
+ int malloc_mutex_prefork (int *,int *) ;
+ scalar_t__ opt_tcache ;
+ int tcaches_mtx ;
 
 void
 tcache_prefork(tsdn_t *tsdn) {
-	if (!config_prof && opt_tcache) {
-		malloc_mutex_prefork(tsdn, &tcaches_mtx);
-	}
+ if (!config_prof && opt_tcache) {
+  malloc_mutex_prefork(tsdn, &tcaches_mtx);
+ }
 }

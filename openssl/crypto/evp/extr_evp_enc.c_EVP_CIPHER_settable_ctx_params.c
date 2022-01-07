@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  const* (* settable_ctx_params ) () ;} ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  TYPE_1__ EVP_CIPHER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  const* stub1 () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int const* (* settable_ctx_params ) () ;} ;
+typedef int OSSL_PARAM ;
+typedef TYPE_1__ EVP_CIPHER ;
+
+
+ int const* stub1 () ;
 
 const OSSL_PARAM *EVP_CIPHER_settable_ctx_params(const EVP_CIPHER *cipher)
 {
-    if (cipher != NULL && cipher->settable_ctx_params != NULL)
+    if (cipher != ((void*)0) && cipher->settable_ctx_params != ((void*)0))
         return cipher->settable_ctx_params();
-    return NULL;
+    return ((void*)0);
 }

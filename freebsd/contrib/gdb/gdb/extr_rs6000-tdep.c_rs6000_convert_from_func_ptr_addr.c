@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct target_ops {int dummy; } ;
 struct obj_section {TYPE_1__* the_bfd_section; } ;
 struct gdbarch {int dummy; } ;
-struct TYPE_4__ {int /*<<< orphan*/  wordsize; } ;
+struct TYPE_4__ {int wordsize; } ;
 struct TYPE_3__ {int flags; } ;
-typedef  int /*<<< orphan*/  CORE_ADDR ;
+typedef int CORE_ADDR ;
 
-/* Variables and functions */
- int SEC_CODE ; 
- int /*<<< orphan*/  current_gdbarch ; 
- struct obj_section* find_pc_section (int /*<<< orphan*/ ) ; 
- TYPE_2__* gdbarch_tdep (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  read_memory_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SEC_CODE ;
+ int current_gdbarch ;
+ struct obj_section* find_pc_section (int ) ;
+ TYPE_2__* gdbarch_tdep (int ) ;
+ int read_memory_addr (int ,int ) ;
 
 __attribute__((used)) static CORE_ADDR
 rs6000_convert_from_func_ptr_addr (struct gdbarch *gdbarch,
-				   CORE_ADDR addr,
-				   struct target_ops *targ)
+       CORE_ADDR addr,
+       struct target_ops *targ)
 {
   struct obj_section *s;
 
@@ -37,6 +37,6 @@ rs6000_convert_from_func_ptr_addr (struct gdbarch *gdbarch,
   if (s && s->the_bfd_section->flags & SEC_CODE)
     return addr;
 
-  /* ADDR is in the data space, so it's a special function pointer. */
+
   return read_memory_addr (addr, gdbarch_tdep (current_gdbarch)->wordsize);
 }

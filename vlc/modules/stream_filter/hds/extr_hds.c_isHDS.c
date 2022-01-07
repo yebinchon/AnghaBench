@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int /*<<< orphan*/  s; } ;
-typedef  TYPE_1__ stream_t ;
 
-/* Variables and functions */
- char* FromCharset (char*,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/  const*,char*,int) ; 
- char* strndup (char const*,int) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int s; } ;
+typedef TYPE_1__ stream_t ;
+
+
+ char* FromCharset (char*,int const*,int) ;
+ int free (char*) ;
+ int memcmp (int const*,char*,int) ;
+ char* strndup (char const*,int) ;
+ int * strstr (char*,char*) ;
+ int vlc_stream_Peek (int ,int const**,int) ;
 
 __attribute__((used)) static bool isHDS( stream_t *s )
 {
     const uint8_t *peek;
     int i_size = vlc_stream_Peek( s->s, &peek, 200 );
     if( i_size < 200 )
-        return false;
+        return 0;
 
     char *str;
 
@@ -43,10 +43,10 @@ __attribute__((used)) static bool isHDS( stream_t *s )
     else
         str = strndup( (const char *)peek, i_size );
 
-    if( str == NULL )
-        return false;
+    if( str == ((void*)0) )
+        return 0;
 
-    bool ret = strstr( str, "<manifest" ) != NULL;
+    bool ret = strstr( str, "<manifest" ) != ((void*)0);
     free( str );
     return ret;
 }

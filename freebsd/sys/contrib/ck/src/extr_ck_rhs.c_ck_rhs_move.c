@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ck_rhs {int /*<<< orphan*/ * compare; int /*<<< orphan*/ * hf; struct ck_malloc* m; int /*<<< orphan*/  load_factor; int /*<<< orphan*/  map; int /*<<< orphan*/  seed; int /*<<< orphan*/  mode; } ;
-struct ck_malloc {int /*<<< orphan*/ * free; int /*<<< orphan*/ * malloc; } ;
-typedef  int /*<<< orphan*/  ck_rhs_hash_cb_t ;
-typedef  int /*<<< orphan*/  ck_rhs_compare_cb_t ;
 
-/* Variables and functions */
+
+
+
+struct ck_rhs {int * compare; int * hf; struct ck_malloc* m; int load_factor; int map; int seed; int mode; } ;
+struct ck_malloc {int * free; int * malloc; } ;
+typedef int ck_rhs_hash_cb_t ;
+typedef int ck_rhs_compare_cb_t ;
+
+
 
 bool
 ck_rhs_move(struct ck_rhs *hs,
@@ -25,15 +25,15 @@ ck_rhs_move(struct ck_rhs *hs,
     struct ck_malloc *m)
 {
 
-	if (m == NULL || m->malloc == NULL || m->free == NULL || hf == NULL)
-		return false;
+ if (m == ((void*)0) || m->malloc == ((void*)0) || m->free == ((void*)0) || hf == ((void*)0))
+  return 0;
 
-	hs->mode = source->mode;
-	hs->seed = source->seed;
-	hs->map = source->map;
-	hs->load_factor = source->load_factor;
-	hs->m = m;
-	hs->hf = hf;
-	hs->compare = compare;
-	return true;
+ hs->mode = source->mode;
+ hs->seed = source->seed;
+ hs->map = source->map;
+ hs->load_factor = source->load_factor;
+ hs->m = m;
+ hs->hf = hf;
+ hs->compare = compare;
+ return 1;
 }

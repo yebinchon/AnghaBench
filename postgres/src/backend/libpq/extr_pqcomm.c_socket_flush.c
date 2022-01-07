@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int PqCommBusy ; 
- int internal_flush () ; 
- int /*<<< orphan*/  socket_set_nonblocking (int) ; 
+ int PqCommBusy ;
+ int internal_flush () ;
+ int socket_set_nonblocking (int) ;
 
 __attribute__((used)) static int
 socket_flush(void)
 {
-	int			res;
+ int res;
 
-	/* No-op if reentrant call */
-	if (PqCommBusy)
-		return 0;
-	PqCommBusy = true;
-	socket_set_nonblocking(false);
-	res = internal_flush();
-	PqCommBusy = false;
-	return res;
+
+ if (PqCommBusy)
+  return 0;
+ PqCommBusy = 1;
+ socket_set_nonblocking(0);
+ res = internal_flush();
+ PqCommBusy = 0;
+ return res;
 }

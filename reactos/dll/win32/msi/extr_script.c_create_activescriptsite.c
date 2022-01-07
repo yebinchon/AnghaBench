@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_7__ {int ref; int /*<<< orphan*/ * session; int /*<<< orphan*/ * installer; TYPE_1__ IActiveScriptSite_iface; } ;
-typedef  TYPE_2__ MsiActiveScriptSite ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__**) ; 
- int /*<<< orphan*/  activescriptsitevtbl ; 
- TYPE_2__* msi_alloc (int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * lpVtbl; } ;
+struct TYPE_7__ {int ref; int * session; int * installer; TYPE_1__ IActiveScriptSite_iface; } ;
+typedef TYPE_2__ MsiActiveScriptSite ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__**) ;
+ int activescriptsitevtbl ;
+ TYPE_2__* msi_alloc (int) ;
 
 __attribute__((used)) static HRESULT create_activescriptsite(MsiActiveScriptSite **obj)
 {
@@ -30,7 +30,7 @@ __attribute__((used)) static HRESULT create_activescriptsite(MsiActiveScriptSite
 
     TRACE("(%p)\n", obj);
 
-    *obj = NULL;
+    *obj = ((void*)0);
 
     object = msi_alloc( sizeof(MsiActiveScriptSite) );
     if (!object)
@@ -38,8 +38,8 @@ __attribute__((used)) static HRESULT create_activescriptsite(MsiActiveScriptSite
 
     object->IActiveScriptSite_iface.lpVtbl = &activescriptsitevtbl;
     object->ref = 1;
-    object->installer = NULL;
-    object->session = NULL;
+    object->installer = ((void*)0);
+    object->session = ((void*)0);
 
     *obj = object;
 

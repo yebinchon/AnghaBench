@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int portTICK_PERIOD_MS ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- int /*<<< orphan*/  uart1_deinit () ; 
- int /*<<< orphan*/  uart1_init () ; 
- int /*<<< orphan*/  uart_fd ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int write (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+typedef int buf ;
+
+
+ int ESP_LOGE (int ,char*) ;
+ int ESP_LOGI (int ,char*,int,char*) ;
+ int TAG ;
+ int portTICK_PERIOD_MS ;
+ int snprintf (char*,int,char*,int) ;
+ int strlen (char*) ;
+ int uart1_deinit () ;
+ int uart1_init () ;
+ int uart_fd ;
+ int vTaskDelay (int) ;
+ int vTaskDelete (int *) ;
+ int write (int ,char*,int ) ;
 
 __attribute__((used)) static void uart1_write_task(void *param)
 {
@@ -46,5 +46,5 @@ __attribute__((used)) static void uart1_write_task(void *param)
     }
 
     uart1_deinit();
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

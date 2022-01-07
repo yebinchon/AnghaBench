@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct i2c_client {int dummy; } ;
 struct cs4270_private {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * dev; } ;
+struct TYPE_2__ {int * dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * cs4270_codec ; 
- TYPE_1__ cs4270_dai ; 
- struct cs4270_private* i2c_get_clientdata (struct i2c_client*) ; 
- int /*<<< orphan*/  kfree (struct cs4270_private*) ; 
+
+ int * cs4270_codec ;
+ TYPE_1__ cs4270_dai ;
+ struct cs4270_private* i2c_get_clientdata (struct i2c_client*) ;
+ int kfree (struct cs4270_private*) ;
 
 __attribute__((used)) static int cs4270_i2c_remove(struct i2c_client *i2c_client)
 {
-	struct cs4270_private *cs4270 = i2c_get_clientdata(i2c_client);
+ struct cs4270_private *cs4270 = i2c_get_clientdata(i2c_client);
 
-	kfree(cs4270);
-	cs4270_codec = NULL;
-	cs4270_dai.dev = NULL;
+ kfree(cs4270);
+ cs4270_codec = ((void*)0);
+ cs4270_dai.dev = ((void*)0);
 
-	return 0;
+ return 0;
 }

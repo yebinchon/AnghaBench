@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int NPY_CASTING ;
 
-/* Variables and functions */
-#define  NPY_EQUIV_CASTING 132 
-#define  NPY_NO_CASTING 131 
-#define  NPY_SAFE_CASTING 130 
-#define  NPY_SAME_KIND_CASTING 129 
-#define  NPY_UNSAFE_CASTING 128 
 
+
+
+typedef int NPY_CASTING ;
 __attribute__((used)) static const char *
 npyiter_casting_to_string(NPY_CASTING casting)
 {
     switch (casting) {
-        case NPY_NO_CASTING:
+        case 131:
             return "'no'";
-        case NPY_EQUIV_CASTING:
+        case 132:
             return "'equiv'";
-        case NPY_SAFE_CASTING:
+        case 130:
             return "'safe'";
-        case NPY_SAME_KIND_CASTING:
+        case 129:
             return "'same_kind'";
-        case NPY_UNSAFE_CASTING:
+        case 128:
             return "'unsafe'";
         default:
             return "<unknown>";

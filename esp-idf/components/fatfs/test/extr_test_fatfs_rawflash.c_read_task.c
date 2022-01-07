@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-typedef  int /*<<< orphan*/  rval ;
-struct TYPE_2__ {size_t word_count; scalar_t__ val; int /*<<< orphan*/  done; int /*<<< orphan*/  result; int /*<<< orphan*/  seed; int /*<<< orphan*/  filename; } ;
-typedef  TYPE_1__ read_test_arg_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_NOT_FOUND ; 
- int /*<<< orphan*/  ESP_FAIL ; 
- int /*<<< orphan*/  ESP_OK ; 
- int /*<<< orphan*/  ets_printf (char*,size_t,int,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (int /*<<< orphan*/ ,char*) ; 
- int fread (scalar_t__*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  srand (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vTaskDelay (int) ; 
- int /*<<< orphan*/  vTaskDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  xSemaphoreGive (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint32_t ;
+typedef int rval ;
+struct TYPE_2__ {size_t word_count; scalar_t__ val; int done; int result; int seed; int filename; } ;
+typedef TYPE_1__ read_test_arg_t ;
+typedef int FILE ;
+
+
+ int ESP_ERR_NOT_FOUND ;
+ int ESP_FAIL ;
+ int ESP_OK ;
+ int ets_printf (char*,size_t,int,scalar_t__,scalar_t__) ;
+ int fclose (int *) ;
+ int * fopen (int ,char*) ;
+ int fread (scalar_t__*,int,int,int *) ;
+ int srand (int ) ;
+ int vTaskDelay (int) ;
+ int vTaskDelete (int *) ;
+ int xSemaphoreGive (int ) ;
 
 __attribute__((used)) static void read_task(void* param)
 {
     read_test_arg_t* args = (read_test_arg_t*) param;
     FILE* f = fopen(args->filename, "rb");
-    if (f == NULL) {
+    if (f == ((void*)0)) {
         args->result = ESP_ERR_NOT_FOUND;
         goto done;
     }
@@ -57,5 +57,5 @@ close:
 done:
     xSemaphoreGive(args->done);
     vTaskDelay(1);
-    vTaskDelete(NULL);
+    vTaskDelete(((void*)0));
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ proplist; } ;
-typedef  TYPE_1__ transaction_t ;
-typedef  int /*<<< orphan*/  trail_t ;
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_fs_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ transaction_t ;
+typedef int trail_t ;
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_fs_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_PROP_BASEVALUE_MISMATCH ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- scalar_t__ apr_hash_make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_rev_txn (TYPE_1__**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * put_txn (int /*<<< orphan*/ *,TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_hash_gets (scalar_t__,char const*) ; 
- int /*<<< orphan*/  svn_hash_sets (scalar_t__,char const*,int /*<<< orphan*/  const*) ; 
- scalar_t__ svn_string_compare (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_PROP_BASEVALUE_MISMATCH ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ scalar_t__ apr_hash_make (int *) ;
+ int get_rev_txn (TYPE_1__**,char const**,int *,int ,int *,int *) ;
+ int * put_txn (int *,TYPE_1__*,char const*,int *,int *) ;
+ int * svn_error_createf (int ,int *,int ,char const*) ;
+ int * svn_hash_gets (scalar_t__,char const*) ;
+ int svn_hash_sets (scalar_t__,char const*,int const*) ;
+ scalar_t__ svn_string_compare (int const*,int const*) ;
 
 svn_error_t *
 svn_fs_base__set_rev_prop(svn_fs_t *fs,
@@ -49,15 +49,15 @@ svn_fs_base__set_rev_prop(svn_fs_t *fs,
   SVN_ERR(get_rev_txn(&txn, &txn_id, fs, rev, trail, pool));
   present_value = svn_hash_gets(txn->proplist, name);
 
-  /* If there's no proplist, but we're just deleting a property, exit now. */
+
   if ((! txn->proplist) && (! value))
     return SVN_NO_ERROR;
 
-  /* Now, if there's no proplist, we know we need to make one. */
+
   if (! txn->proplist)
     txn->proplist = apr_hash_make(pool);
 
-  /* Set the property. */
+
   if (old_value_p)
     {
       const svn_string_t *wanted_value = *old_value_p;
@@ -65,16 +65,16 @@ svn_fs_base__set_rev_prop(svn_fs_t *fs,
           || (wanted_value && present_value
               && !svn_string_compare(wanted_value, present_value)))
         {
-          /* What we expected isn't what we found. */
-          return svn_error_createf(SVN_ERR_FS_PROP_BASEVALUE_MISMATCH, NULL,
+
+          return svn_error_createf(SVN_ERR_FS_PROP_BASEVALUE_MISMATCH, ((void*)0),
                                    _("revprop '%s' has unexpected value in "
                                      "filesystem"),
                                    name);
         }
-      /* Fall through. */
+
     }
 
-  /* If the prop-set is a no-op, skip the actual write. */
+
   if ((!present_value && !value)
       || (present_value && value
           && svn_string_compare(present_value, value)))
@@ -82,6 +82,6 @@ svn_fs_base__set_rev_prop(svn_fs_t *fs,
 
   svn_hash_sets(txn->proplist, name, value);
 
-  /* Overwrite the revision. */
+
   return put_txn(fs, txn, txn_id, trail, pool);
 }

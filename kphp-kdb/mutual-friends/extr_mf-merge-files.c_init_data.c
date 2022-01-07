@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MY_BUFF_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int engineN ; 
- int exceptionsI ; 
- char* exceptions_name ; 
- void** f_buff ; 
- void* f_buff_i ; 
- void* f_buff_r ; 
- void* f_buff_size ; 
- int** f_header ; 
- int* fd ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,long long,long long) ; 
- int friendsI ; 
- char* friends_name ; 
- long long* fsize ; 
- scalar_t__ open_file (int,char*,int) ; 
- void* qmalloc (int) ; 
- void* qmalloc0 (int) ; 
- int /*<<< orphan*/  read (int,...) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ strlen (char*) ; 
- int un ; 
+ int MY_BUFF_SIZE ;
+ int assert (int) ;
+ int engineN ;
+ int exceptionsI ;
+ char* exceptions_name ;
+ void** f_buff ;
+ void* f_buff_i ;
+ void* f_buff_r ;
+ void* f_buff_size ;
+ int** f_header ;
+ int* fd ;
+ int fprintf (int ,char*,char*,long long,long long) ;
+ int friendsI ;
+ char* friends_name ;
+ long long* fsize ;
+ scalar_t__ open_file (int,char*,int) ;
+ void* qmalloc (int) ;
+ void* qmalloc0 (int) ;
+ int read (int,...) ;
+ int sprintf (char*,char*,int) ;
+ int stderr ;
+ scalar_t__ strlen (char*) ;
+ int un ;
 
 void init_data (void) {
   char fname[50];

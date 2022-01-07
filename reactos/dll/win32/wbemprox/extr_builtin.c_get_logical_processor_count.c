@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG_PTR ;
-typedef  int ULONG ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ULONG_PTR ;
+typedef int ULONG ;
+typedef int UINT ;
 struct TYPE_5__ {scalar_t__ Relationship; int ProcessorMask; } ;
-typedef  TYPE_1__ SYSTEM_LOGICAL_PROCESSOR_INFORMATION ;
-typedef  scalar_t__ NTSTATUS ;
+typedef TYPE_1__ SYSTEM_LOGICAL_PROCESSOR_INFORMATION ;
+typedef scalar_t__ NTSTATUS ;
 
-/* Variables and functions */
- scalar_t__ NtQuerySystemInformation (int /*<<< orphan*/ ,TYPE_1__*,int,int*) ; 
- scalar_t__ RelationProcessorCore ; 
- scalar_t__ RelationProcessorPackage ; 
- scalar_t__ STATUS_INFO_LENGTH_MISMATCH ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  SystemLogicalProcessorInformation ; 
- int get_processor_count () ; 
- TYPE_1__* heap_alloc (int) ; 
- int /*<<< orphan*/  heap_free (TYPE_1__*) ; 
+
+ scalar_t__ NtQuerySystemInformation (int ,TYPE_1__*,int,int*) ;
+ scalar_t__ RelationProcessorCore ;
+ scalar_t__ RelationProcessorPackage ;
+ scalar_t__ STATUS_INFO_LENGTH_MISMATCH ;
+ scalar_t__ STATUS_SUCCESS ;
+ int SystemLogicalProcessorInformation ;
+ int get_processor_count () ;
+ TYPE_1__* heap_alloc (int) ;
+ int heap_free (TYPE_1__*) ;
 
 __attribute__((used)) static UINT get_logical_processor_count( UINT *num_cores )
 {
@@ -37,7 +37,7 @@ __attribute__((used)) static UINT get_logical_processor_count( UINT *num_cores )
     ULONG len;
 
     if (num_cores) *num_cores = get_processor_count();
-    status = NtQuerySystemInformation( SystemLogicalProcessorInformation, NULL, 0, &len );
+    status = NtQuerySystemInformation( SystemLogicalProcessorInformation, ((void*)0), 0, &len );
     if (status != STATUS_INFO_LENGTH_MISMATCH) return get_processor_count();
 
     if (!(info = heap_alloc( len ))) return get_processor_count();

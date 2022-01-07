@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
-typedef  int /*<<< orphan*/  pthread_attr_t ;
 
-/* Variables and functions */
- int BIO_NUM_OPS ; 
- size_t DISQUE_THREAD_STACK_SIZE ; 
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/  bioProcessBackgroundJobs ; 
- int /*<<< orphan*/ * bio_jobs ; 
- int /*<<< orphan*/ * bio_mutex ; 
- int /*<<< orphan*/ * bio_newjob_cond ; 
- scalar_t__* bio_pending ; 
- int /*<<< orphan*/ * bio_step_cond ; 
- int /*<<< orphan*/ * bio_threads ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  listCreate () ; 
- int /*<<< orphan*/  pthread_attr_getstacksize (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  pthread_attr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_attr_setstacksize (int /*<<< orphan*/ *,size_t) ; 
- int /*<<< orphan*/  pthread_cond_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ pthread_create (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  pthread_mutex_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int pthread_t ;
+typedef int pthread_attr_t ;
+
+
+ int BIO_NUM_OPS ;
+ size_t DISQUE_THREAD_STACK_SIZE ;
+ int LL_WARNING ;
+ int bioProcessBackgroundJobs ;
+ int * bio_jobs ;
+ int * bio_mutex ;
+ int * bio_newjob_cond ;
+ scalar_t__* bio_pending ;
+ int * bio_step_cond ;
+ int * bio_threads ;
+ int exit (int) ;
+ int listCreate () ;
+ int pthread_attr_getstacksize (int *,size_t*) ;
+ int pthread_attr_init (int *) ;
+ int pthread_attr_setstacksize (int *,size_t) ;
+ int pthread_cond_init (int *,int *) ;
+ scalar_t__ pthread_create (int *,int *,int ,void*) ;
+ int pthread_mutex_init (int *,int *) ;
+ int serverLog (int ,char*) ;
 
 void bioInit(void) {
     pthread_attr_t attr;
@@ -40,25 +40,25 @@ void bioInit(void) {
     size_t stacksize;
     int j;
 
-    /* Initialization of state vars and objects */
+
     for (j = 0; j < BIO_NUM_OPS; j++) {
-        pthread_mutex_init(&bio_mutex[j],NULL);
-        pthread_cond_init(&bio_newjob_cond[j],NULL);
-        pthread_cond_init(&bio_step_cond[j],NULL);
+        pthread_mutex_init(&bio_mutex[j],((void*)0));
+        pthread_cond_init(&bio_newjob_cond[j],((void*)0));
+        pthread_cond_init(&bio_step_cond[j],((void*)0));
         bio_jobs[j] = listCreate();
         bio_pending[j] = 0;
     }
 
-    /* Set the stack size as by default it may be small in some system */
+
     pthread_attr_init(&attr);
     pthread_attr_getstacksize(&attr,&stacksize);
-    if (!stacksize) stacksize = 1; /* The world is full of Solaris Fixes */
+    if (!stacksize) stacksize = 1;
     while (stacksize < DISQUE_THREAD_STACK_SIZE) stacksize *= 2;
     pthread_attr_setstacksize(&attr, stacksize);
 
-    /* Ready to spawn our threads. We use the single argument the thread
-     * function accepts in order to pass the job ID the thread is
-     * responsible of. */
+
+
+
     for (j = 0; j < BIO_NUM_OPS; j++) {
         void *arg = (void*)(unsigned long) j;
         if (pthread_create(&thread,&attr,bioProcessBackgroundJobs,arg) != 0) {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {scalar_t__ dwidth; scalar_t__ dheight; struct vdpctx* priv; } ;
-struct vdpctx {int /*<<< orphan*/ * output_surfaces; int /*<<< orphan*/  num_output_surfaces; int /*<<< orphan*/  surface_num; } ;
+struct vdpctx {int * output_surfaces; int num_output_surfaces; int surface_num; } ;
 struct mp_image {scalar_t__ w; scalar_t__ h; } ;
-typedef  int /*<<< orphan*/  VdpOutputSurface ;
+typedef int VdpOutputSurface ;
 
-/* Variables and functions */
- int WRAP_ADD (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_image_set_size (struct mp_image*,scalar_t__,scalar_t__) ; 
- struct mp_image* read_output_surface (struct vo*,int /*<<< orphan*/ ) ; 
+
+ int WRAP_ADD (int ,int,int ) ;
+ int mp_image_set_size (struct mp_image*,scalar_t__,scalar_t__) ;
+ struct mp_image* read_output_surface (struct vo*,int ) ;
 
 __attribute__((used)) static struct mp_image *get_window_screenshot(struct vo *vo)
 {

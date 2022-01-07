@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_vtab_cursor ;
-struct TYPE_3__ {int /*<<< orphan*/  iCell; } ;
-typedef  TYPE_1__ RtreeSearchPoint ;
-typedef  int /*<<< orphan*/  RtreeNode ;
-typedef  int /*<<< orphan*/  RtreeCursor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTREE_OF_CURSOR (int /*<<< orphan*/ *) ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  nodeGetRowid (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * rtreeNodeOfFirstSearchPoint (int /*<<< orphan*/ *,int*) ; 
- TYPE_1__* rtreeSearchPointFirst (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
+typedef int sqlite3_vtab_cursor ;
+struct TYPE_3__ {int iCell; } ;
+typedef TYPE_1__ RtreeSearchPoint ;
+typedef int RtreeNode ;
+typedef int RtreeCursor ;
+
+
+ int RTREE_OF_CURSOR (int *) ;
+ int SQLITE_OK ;
+ int nodeGetRowid (int ,int *,int ) ;
+ int * rtreeNodeOfFirstSearchPoint (int *,int*) ;
+ TYPE_1__* rtreeSearchPointFirst (int *) ;
 
 __attribute__((used)) static int rtreeRowid(sqlite3_vtab_cursor *pVtabCursor, sqlite_int64 *pRowid){
   RtreeCursor *pCsr = (RtreeCursor *)pVtabCursor;

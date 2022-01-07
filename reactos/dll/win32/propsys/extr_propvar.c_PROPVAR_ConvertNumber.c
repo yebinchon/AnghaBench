@@ -1,53 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int ULONGLONG ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+typedef int ULONGLONG ;
 struct TYPE_7__ {int QuadPart; } ;
 struct TYPE_6__ {int QuadPart; } ;
-struct TYPE_8__ {int cVal; int bVal; int iVal; int uiVal; int lVal; int ulVal; char* pszVal; int /*<<< orphan*/ * pwszVal; TYPE_2__ uhVal; TYPE_1__ hVal; } ;
+struct TYPE_8__ {int cVal; int bVal; int iVal; int uiVal; int lVal; int ulVal; char* pszVal; int * pwszVal; TYPE_2__ uhVal; TYPE_1__ hVal; } ;
 struct TYPE_9__ {int vt; TYPE_3__ u; } ;
-typedef  TYPE_4__* REFPROPVARIANT ;
-typedef  int LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_4__* REFPROPVARIANT ;
+typedef int LONGLONG ;
+typedef int HRESULT ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_TYPEMISMATCH ; 
- int /*<<< orphan*/  ERROR_ARITHMETIC_OVERFLOW ; 
- int /*<<< orphan*/  E_NOTIMPL ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- scalar_t__ TRUE ; 
-#define  VT_BSTR 139 
-#define  VT_EMPTY 138 
-#define  VT_I1 137 
-#define  VT_I2 136 
-#define  VT_I4 135 
-#define  VT_I8 134 
-#define  VT_LPSTR 133 
-#define  VT_LPWSTR 132 
-#define  VT_UI1 131 
-#define  VT_UI2 130 
-#define  VT_UI4 129 
-#define  VT_UI8 128 
- int _strtoi64 (char*,char**,int /*<<< orphan*/ ) ; 
- int strtolW (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
+
+ int DISP_E_TYPEMISMATCH ;
+ int ERROR_ARITHMETIC_OVERFLOW ;
+ int E_NOTIMPL ;
+ scalar_t__ FALSE ;
+ int FIXME (char*,int) ;
+ int HRESULT_FROM_WIN32 (int ) ;
+ int S_OK ;
+ scalar_t__ TRUE ;
+ int _strtoi64 (char*,char**,int ) ;
+ int strtolW (int *,int **,int ) ;
 
 __attribute__((used)) static HRESULT PROPVAR_ConvertNumber(REFPROPVARIANT pv, int dest_bits,
                                      BOOL dest_signed, LONGLONG *res)
@@ -56,43 +44,43 @@ __attribute__((used)) static HRESULT PROPVAR_ConvertNumber(REFPROPVARIANT pv, in
 
     switch (pv->vt)
     {
-    case VT_I1:
+    case 137:
         src_signed = TRUE;
         *res = pv->u.cVal;
         break;
-    case VT_UI1:
+    case 131:
         src_signed = FALSE;
         *res = pv->u.bVal;
         break;
-    case VT_I2:
+    case 136:
         src_signed = TRUE;
         *res = pv->u.iVal;
         break;
-    case VT_UI2:
+    case 130:
         src_signed = FALSE;
         *res = pv->u.uiVal;
         break;
-    case VT_I4:
+    case 135:
         src_signed = TRUE;
         *res = pv->u.lVal;
         break;
-    case VT_UI4:
+    case 129:
         src_signed = FALSE;
         *res = pv->u.ulVal;
         break;
-    case VT_I8:
+    case 134:
         src_signed = TRUE;
         *res = pv->u.hVal.QuadPart;
         break;
-    case VT_UI8:
+    case 128:
         src_signed = FALSE;
         *res = pv->u.uhVal.QuadPart;
         break;
-    case VT_EMPTY:
+    case 138:
         src_signed = FALSE;
         *res = 0;
         break;
-    case VT_LPSTR:
+    case 133:
     {
         char *end;
         *res = _strtoi64(pv->u.pszVal, &end, 0);
@@ -101,8 +89,8 @@ __attribute__((used)) static HRESULT PROPVAR_ConvertNumber(REFPROPVARIANT pv, in
         src_signed = *res < 0;
         break;
     }
-    case VT_LPWSTR:
-    case VT_BSTR:
+    case 132:
+    case 139:
     {
         WCHAR *end;
         *res = strtolW(pv->u.pwszVal, &end, 0);

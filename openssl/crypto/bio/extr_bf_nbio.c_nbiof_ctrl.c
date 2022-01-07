@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * next_bio; } ;
-typedef  TYPE_1__ BIO ;
 
-/* Variables and functions */
-#define  BIO_CTRL_DUP 129 
-#define  BIO_C_DO_STATE_MACHINE 128 
- int /*<<< orphan*/  BIO_clear_retry_flags (TYPE_1__*) ; 
- int /*<<< orphan*/  BIO_copy_next_retry (TYPE_1__*) ; 
- long BIO_ctrl (int /*<<< orphan*/ *,int,long,void*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * next_bio; } ;
+typedef TYPE_1__ BIO ;
+
+
+
+
+ int BIO_clear_retry_flags (TYPE_1__*) ;
+ int BIO_copy_next_retry (TYPE_1__*) ;
+ long BIO_ctrl (int *,int,long,void*) ;
 
 __attribute__((used)) static long nbiof_ctrl(BIO *b, int cmd, long num, void *ptr)
 {
     long ret;
 
-    if (b->next_bio == NULL)
+    if (b->next_bio == ((void*)0))
         return 0;
     switch (cmd) {
-    case BIO_C_DO_STATE_MACHINE:
+    case 128:
         BIO_clear_retry_flags(b);
         ret = BIO_ctrl(b->next_bio, cmd, num, ptr);
         BIO_copy_next_retry(b);
         break;
-    case BIO_CTRL_DUP:
+    case 129:
         ret = 0L;
         break;
     default:

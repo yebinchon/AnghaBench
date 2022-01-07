@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct scsi_device_handler {int dummy; } ;
 
-/* Variables and functions */
- struct scsi_device_handler* __scsi_dh_lookup (char const*) ; 
- int /*<<< orphan*/  request_module (char*,char const*) ; 
- scalar_t__ strlen (char const*) ; 
+
+ struct scsi_device_handler* __scsi_dh_lookup (char const*) ;
+ int request_module (char*,char const*) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static struct scsi_device_handler *scsi_dh_lookup(const char *name)
 {
-	struct scsi_device_handler *dh;
+ struct scsi_device_handler *dh;
 
-	if (!name || strlen(name) == 0)
-		return NULL;
+ if (!name || strlen(name) == 0)
+  return ((void*)0);
 
-	dh = __scsi_dh_lookup(name);
-	if (!dh) {
-		request_module("scsi_dh_%s", name);
-		dh = __scsi_dh_lookup(name);
-	}
+ dh = __scsi_dh_lookup(name);
+ if (!dh) {
+  request_module("scsi_dh_%s", name);
+  dh = __scsi_dh_lookup(name);
+ }
 
-	return dh;
+ return dh;
 }

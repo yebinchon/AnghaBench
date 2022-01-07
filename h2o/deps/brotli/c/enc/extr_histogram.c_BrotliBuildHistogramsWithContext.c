@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_9__ {size_t type_; } ;
-struct TYPE_8__ {int cmd_prefix_; size_t insert_len_; int /*<<< orphan*/  dist_prefix_; } ;
-typedef  int /*<<< orphan*/  HistogramLiteral ;
-typedef  int /*<<< orphan*/  HistogramDistance ;
-typedef  int /*<<< orphan*/  HistogramCommand ;
-typedef  int /*<<< orphan*/  ContextType ;
-typedef  TYPE_1__ Command ;
-typedef  TYPE_2__ BlockSplitIterator ;
-typedef  int /*<<< orphan*/  BlockSplit ;
+struct TYPE_8__ {int cmd_prefix_; size_t insert_len_; int dist_prefix_; } ;
+typedef int HistogramLiteral ;
+typedef int HistogramDistance ;
+typedef int HistogramCommand ;
+typedef int ContextType ;
+typedef TYPE_1__ Command ;
+typedef TYPE_2__ BlockSplitIterator ;
+typedef int BlockSplit ;
 
-/* Variables and functions */
- size_t BROTLI_DISTANCE_CONTEXT_BITS ; 
- size_t BROTLI_LITERAL_CONTEXT_BITS ; 
- int /*<<< orphan*/  BlockSplitIteratorNext (TYPE_2__*) ; 
- scalar_t__ CommandCopyLen (TYPE_1__ const*) ; 
- size_t CommandDistanceContext (TYPE_1__ const*) ; 
- size_t Context (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  HistogramAddCommand (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  HistogramAddDistance (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HistogramAddLiteral (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  InitBlockSplitIterator (TYPE_2__*,int /*<<< orphan*/  const*) ; 
+
+ size_t BROTLI_DISTANCE_CONTEXT_BITS ;
+ size_t BROTLI_LITERAL_CONTEXT_BITS ;
+ int BlockSplitIteratorNext (TYPE_2__*) ;
+ scalar_t__ CommandCopyLen (TYPE_1__ const*) ;
+ size_t CommandDistanceContext (TYPE_1__ const*) ;
+ size_t Context (int ,int ,int const) ;
+ int HistogramAddCommand (int *,int) ;
+ int HistogramAddDistance (int *,int ) ;
+ int HistogramAddLiteral (int *,int const) ;
+ int InitBlockSplitIterator (TYPE_2__*,int const*) ;
 
 void BrotliBuildHistogramsWithContext(
     const Command* cmds, const size_t num_commands,

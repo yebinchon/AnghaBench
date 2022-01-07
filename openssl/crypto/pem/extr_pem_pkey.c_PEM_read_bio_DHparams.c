@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pem_password_cb ;
-typedef  int /*<<< orphan*/  UI_METHOD ;
-typedef  int /*<<< orphan*/  OSSL_STORE_INFO ;
-typedef  int /*<<< orphan*/  OSSL_STORE_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
-typedef  int /*<<< orphan*/  DH ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- scalar_t__ EVP_PKEY_DH ; 
- scalar_t__ EVP_PKEY_DHX ; 
- int /*<<< orphan*/ * EVP_PKEY_get1_DH (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_id (int /*<<< orphan*/ *) ; 
- scalar_t__ OSSL_STORE_INFO_PARAMS ; 
- int /*<<< orphan*/  OSSL_STORE_INFO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OSSL_STORE_INFO_get0_PARAMS (int /*<<< orphan*/ *) ; 
- scalar_t__ OSSL_STORE_INFO_get_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OSSL_STORE_eof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * OSSL_STORE_load (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * UI_UTIL_wrap_read_pem_callback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_destroy_method (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ossl_store_attach_pem_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*) ; 
- int /*<<< orphan*/  ossl_store_detach_pem_bio (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pem_password_cb ;
+typedef int UI_METHOD ;
+typedef int OSSL_STORE_INFO ;
+typedef int OSSL_STORE_CTX ;
+typedef int EVP_PKEY ;
+typedef int DH ;
+typedef int BIO ;
+
+
+ scalar_t__ EVP_PKEY_DH ;
+ scalar_t__ EVP_PKEY_DHX ;
+ int * EVP_PKEY_get1_DH (int *) ;
+ scalar_t__ EVP_PKEY_id (int *) ;
+ scalar_t__ OSSL_STORE_INFO_PARAMS ;
+ int OSSL_STORE_INFO_free (int *) ;
+ int * OSSL_STORE_INFO_get0_PARAMS (int *) ;
+ scalar_t__ OSSL_STORE_INFO_get_type (int *) ;
+ int OSSL_STORE_eof (int *) ;
+ int * OSSL_STORE_load (int *) ;
+ int * UI_UTIL_wrap_read_pem_callback (int *,int ) ;
+ int UI_destroy_method (int *) ;
+ int * ossl_store_attach_pem_bio (int *,int *,void*) ;
+ int ossl_store_detach_pem_bio (int *) ;
 
 DH *PEM_read_bio_DHparams(BIO *bp, DH **x, pem_password_cb *cb, void *u)
 {
-    DH *ret = NULL;
-    EVP_PKEY *pkey = NULL;
-    OSSL_STORE_CTX *ctx = NULL;
-    OSSL_STORE_INFO *info = NULL;
-    UI_METHOD *ui_method = NULL;
+    DH *ret = ((void*)0);
+    EVP_PKEY *pkey = ((void*)0);
+    OSSL_STORE_CTX *ctx = ((void*)0);
+    OSSL_STORE_INFO *info = ((void*)0);
+    UI_METHOD *ui_method = ((void*)0);
 
-    if ((ui_method = UI_UTIL_wrap_read_pem_callback(cb, 0)) == NULL)
-        return NULL;
+    if ((ui_method = UI_UTIL_wrap_read_pem_callback(cb, 0)) == ((void*)0))
+        return ((void*)0);
 
-    if ((ctx = ossl_store_attach_pem_bio(bp, ui_method, u)) == NULL)
+    if ((ctx = ossl_store_attach_pem_bio(bp, ui_method, u)) == ((void*)0))
         goto err;
 
-    while (!OSSL_STORE_eof(ctx) && (info = OSSL_STORE_load(ctx)) != NULL) {
+    while (!OSSL_STORE_eof(ctx) && (info = OSSL_STORE_load(ctx)) != ((void*)0)) {
         if (OSSL_STORE_INFO_get_type(info) == OSSL_STORE_INFO_PARAMS) {
             pkey = OSSL_STORE_INFO_get0_PARAMS(info);
             if (EVP_PKEY_id(pkey) == EVP_PKEY_DHX
@@ -60,7 +60,7 @@ DH *PEM_read_bio_DHparams(BIO *bp, DH **x, pem_password_cb *cb, void *u)
         OSSL_STORE_INFO_free(info);
     }
 
-    if (ret != NULL && x != NULL)
+    if (ret != ((void*)0) && x != ((void*)0))
         *x = ret;
 
  err:

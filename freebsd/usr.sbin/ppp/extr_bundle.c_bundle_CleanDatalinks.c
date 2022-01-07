@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct datalink {scalar_t__ state; struct datalink* next; TYPE_1__* physical; } ;
 struct bundle {struct datalink* links; } ;
 struct TYPE_2__ {int type; } ;
 
-/* Variables and functions */
- scalar_t__ DATALINK_CLOSED ; 
- int PHYS_BACKGROUND ; 
- int PHYS_DIRECT ; 
- int PHYS_FOREGROUND ; 
- int /*<<< orphan*/  bundle_LinksRemoved (struct bundle*) ; 
- struct datalink* datalink_Destroy (struct datalink*) ; 
+
+ scalar_t__ DATALINK_CLOSED ;
+ int PHYS_BACKGROUND ;
+ int PHYS_DIRECT ;
+ int PHYS_FOREGROUND ;
+ int bundle_LinksRemoved (struct bundle*) ;
+ struct datalink* datalink_Destroy (struct datalink*) ;
 
 void
 bundle_CleanDatalinks(struct bundle *bundle)

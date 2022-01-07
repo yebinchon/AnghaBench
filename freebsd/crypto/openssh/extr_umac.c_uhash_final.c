@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* uhash_ctx_t ;
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  UINT8 ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  UINT32 ;
-struct TYPE_7__ {int msg_len; int /*<<< orphan*/  hash; } ;
 
-/* Variables and functions */
- int L1_KEY_LEN ; 
- int STREAMS ; 
- int /*<<< orphan*/  ip_long (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ip_short (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nh_final (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  poly_hash (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  uhash_reset (TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef TYPE_1__* uhash_ctx_t ;
+typedef int u_char ;
+typedef int UINT8 ;
+typedef int UINT64 ;
+typedef int UINT32 ;
+struct TYPE_7__ {int msg_len; int hash; } ;
+
+
+ int L1_KEY_LEN ;
+ int STREAMS ;
+ int ip_long (TYPE_1__*,int *) ;
+ int ip_short (TYPE_1__*,int *,int *) ;
+ int nh_final (int *,int *) ;
+ int poly_hash (TYPE_1__*,int *) ;
+ int uhash_reset (TYPE_1__*) ;
 
 __attribute__((used)) static int uhash_final(uhash_ctx_t ctx, u_char *res)
-/* Incorporate any pending data, pad, and generate tag */
+
 {
     UINT64 result_buf[STREAMS];
     UINT8 *nh_result = (UINT8 *)&result_buf;

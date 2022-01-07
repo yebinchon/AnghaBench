@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gboolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ find_arg (char*) ; 
- int /*<<< orphan*/  g_timeout_add (int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_warning (char*,int) ; 
- int /*<<< orphan*/  lazy_grab_keyboard ; 
- int /*<<< orphan*/  lazy_grab_pointer ; 
- int /*<<< orphan*/  take_keyboard (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  take_pointer (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  x11_create_visual_and_colormap () ; 
- int /*<<< orphan*/  xcb_stuff_get_root_window () ; 
+
+
+
+typedef int gboolean ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ find_arg (char*) ;
+ int g_timeout_add (int,int ,int *) ;
+ int g_warning (char*,int) ;
+ int lazy_grab_keyboard ;
+ int lazy_grab_pointer ;
+ int take_keyboard (int ,int) ;
+ int take_pointer (int ,int) ;
+ int x11_create_visual_and_colormap () ;
+ int xcb_stuff_get_root_window () ;
 
 gboolean display_late_setup ( void )
 {
     x11_create_visual_and_colormap ();
 
-    /**
-     * Create window (without showing)
-     */
-    // Try to grab the keyboard as early as possible.
-    // We grab this using the rootwindow (as dmenu does it).
-    // this seems to result in the smallest delay for most people.
+
+
+
+
+
+
     if ( find_arg ( "-normal-window" ) >= 0 ) {
         return TRUE;
     }
@@ -49,10 +49,10 @@ gboolean display_late_setup ( void )
     }
     else {
         if ( !take_keyboard ( xcb_stuff_get_root_window (), 0 ) ) {
-            g_timeout_add ( 1, lazy_grab_keyboard, NULL );
+            g_timeout_add ( 1, lazy_grab_keyboard, ((void*)0) );
         }
         if ( !take_pointer ( xcb_stuff_get_root_window (), 0 ) ) {
-            g_timeout_add ( 1, lazy_grab_pointer, NULL );
+            g_timeout_add ( 1, lazy_grab_pointer, ((void*)0) );
         }
     }
     return TRUE;

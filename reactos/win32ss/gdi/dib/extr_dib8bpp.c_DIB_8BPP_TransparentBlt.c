@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  XLATEOBJ ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONG ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int XLATEOBJ ;
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONG ;
 struct TYPE_11__ {scalar_t__ bottom; scalar_t__ top; scalar_t__ right; scalar_t__ left; } ;
 struct TYPE_9__ {scalar_t__ cx; scalar_t__ cy; } ;
 struct TYPE_10__ {int lDelta; TYPE_1__ sizlBitmap; scalar_t__ pvScan0; } ;
-typedef  TYPE_2__ SURFOBJ ;
-typedef  TYPE_3__ RECTL ;
-typedef  scalar_t__* PULONG ;
-typedef  int PBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  scalar_t__ BYTE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef TYPE_2__ SURFOBJ ;
+typedef TYPE_3__ RECTL ;
+typedef scalar_t__* PULONG ;
+typedef int PBYTE ;
+typedef scalar_t__ LONG ;
+typedef scalar_t__ BYTE ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ DIB_GetSourceIndex (TYPE_2__*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- int XLATEOBJ_iXlate (int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ DIB_GetSourceIndex (TYPE_2__*,scalar_t__,scalar_t__) ;
+ int TRUE ;
+ int XLATEOBJ_iXlate (int *,scalar_t__) ;
 
 BOOLEAN
 DIB_8BPP_TransparentBlt(SURFOBJ *DestSurf, SURFOBJ *SourceSurf,
-                        RECTL*  DestRect,  RECTL *SourceRect,
+                        RECTL* DestRect, RECTL *SourceRect,
                         XLATEOBJ *ColorTranslation, ULONG iTransColor)
 {
   LONG RoundedRight, X, Y, SourceX = 0, SourceY = 0;

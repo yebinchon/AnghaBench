@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct tl_expression {struct tl_expression* next; TYPE_1__* left; } ;
 struct TYPE_4__ {struct tl_expression* expr; } ;
 struct TYPE_3__ {char* text; } ;
 
-/* Variables and functions */
- size_t TL_SECTION_FUNCTIONS ; 
- TYPE_2__ compiler ; 
- char* strdup (char*) ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char*,char const*,int) ; 
+
+ size_t TL_SECTION_FUNCTIONS ;
+ TYPE_2__ compiler ;
+ char* strdup (char*) ;
+ int strlen (char const*) ;
+ int strncmp (char*,char const*,int) ;
 
 __attribute__((used)) static char *tl_command_generator (const char *text, int state) {
   static int len;
@@ -37,5 +37,5 @@ __attribute__((used)) static char *tl_command_generator (const char *text, int s
       return strdup (name);
     }
   }
-  return NULL;
+  return ((void*)0);
 }

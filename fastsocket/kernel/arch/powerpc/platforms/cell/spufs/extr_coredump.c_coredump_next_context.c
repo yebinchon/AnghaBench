@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct spu_context {int flags; } ;
-struct file {TYPE_1__* f_dentry; int /*<<< orphan*/ * f_op; } ;
-struct fdtable {int max_fds; int /*<<< orphan*/  open_fds; } ;
+struct file {TYPE_1__* f_dentry; int * f_op; } ;
+struct fdtable {int max_fds; int open_fds; } ;
 struct TYPE_6__ {struct spu_context* i_ctx; } ;
-struct TYPE_5__ {int /*<<< orphan*/  files; } ;
-struct TYPE_4__ {int /*<<< orphan*/  d_inode; } ;
+struct TYPE_5__ {int files; } ;
+struct TYPE_4__ {int d_inode; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FD_ISSET (int,int /*<<< orphan*/ ) ; 
- TYPE_3__* SPUFS_I (int /*<<< orphan*/ ) ; 
- int SPU_CREATE_NOSCHED ; 
- TYPE_2__* current ; 
- struct file* fcheck (int) ; 
- struct fdtable* files_fdtable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spufs_context_fops ; 
+
+ int FD_ISSET (int,int ) ;
+ TYPE_3__* SPUFS_I (int ) ;
+ int SPU_CREATE_NOSCHED ;
+ TYPE_2__* current ;
+ struct file* fcheck (int) ;
+ struct fdtable* files_fdtable (int ) ;
+ int spufs_context_fops ;
 
 __attribute__((used)) static struct spu_context *coredump_next_context(int *fd)
 {
-	struct fdtable *fdt = files_fdtable(current->files);
-	struct file *file;
-	struct spu_context *ctx = NULL;
+ struct fdtable *fdt = files_fdtable(current->files);
+ struct file *file;
+ struct spu_context *ctx = ((void*)0);
 
-	for (; *fd < fdt->max_fds; (*fd)++) {
-		if (!FD_ISSET(*fd, fdt->open_fds))
-			continue;
+ for (; *fd < fdt->max_fds; (*fd)++) {
+  if (!FD_ISSET(*fd, fdt->open_fds))
+   continue;
 
-		file = fcheck(*fd);
+  file = fcheck(*fd);
 
-		if (!file || file->f_op != &spufs_context_fops)
-			continue;
+  if (!file || file->f_op != &spufs_context_fops)
+   continue;
 
-		ctx = SPUFS_I(file->f_dentry->d_inode)->i_ctx;
-		if (ctx->flags & SPU_CREATE_NOSCHED)
-			continue;
+  ctx = SPUFS_I(file->f_dentry->d_inode)->i_ctx;
+  if (ctx->flags & SPU_CREATE_NOSCHED)
+   continue;
 
-		break;
-	}
+  break;
+ }
 
-	return ctx;
+ return ctx;
 }

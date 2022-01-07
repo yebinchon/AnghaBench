@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UWORD ;
-typedef  int UBYTE ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t UWORD ;
+typedef int UBYTE ;
 struct TYPE_3__ {size_t bank; size_t offset; } ;
-typedef  TYPE_1__ BANK_PTR ;
+typedef TYPE_1__ BANK_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DATA_PTRS_BANK ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ MENU_CLOSED_Y ; 
- int /*<<< orphan*/  MENU_LAYOUT_INITIAL_X ; 
- int MIN (char,int) ; 
- int /*<<< orphan*/  POP_BANK ; 
- int /*<<< orphan*/  PUSH_BANK (size_t) ; 
- int /*<<< orphan*/  ReadBankedBankPtr (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UIDrawDialogueFrame (int) ; 
- int /*<<< orphan*/  UIDrawFrame (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  UIMoveTo (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UISetPos (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__* bank_data_ptrs ; 
- scalar_t__ menu_layout ; 
- int* script_variables ; 
- int /*<<< orphan*/  strcat (char*,size_t) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/ * string_bank_ptrs ; 
- scalar_t__ text_count ; 
- int /*<<< orphan*/  text_drawn ; 
- int /*<<< orphan*/  text_in_speed ; 
- char* text_lines ; 
- int text_num_lines ; 
- scalar_t__ text_tile_count ; 
- scalar_t__ text_x ; 
- scalar_t__ text_y ; 
- char* tmp_text_lines ; 
+
+ int DATA_PTRS_BANK ;
+ int FALSE ;
+ scalar_t__ MENU_CLOSED_Y ;
+ int MENU_LAYOUT_INITIAL_X ;
+ int MIN (char,int) ;
+ int POP_BANK ;
+ int PUSH_BANK (size_t) ;
+ int ReadBankedBankPtr (int ,TYPE_1__*,int *) ;
+ int UIDrawDialogueFrame (int) ;
+ int UIDrawFrame (int ,int ,int,int) ;
+ int UIMoveTo (int ,scalar_t__,int ) ;
+ int UISetPos (int ,scalar_t__) ;
+ scalar_t__* bank_data_ptrs ;
+ scalar_t__ menu_layout ;
+ int* script_variables ;
+ int strcat (char*,size_t) ;
+ int strcpy (char*,char*) ;
+ int * string_bank_ptrs ;
+ scalar_t__ text_count ;
+ int text_drawn ;
+ int text_in_speed ;
+ char* text_lines ;
+ int text_num_lines ;
+ scalar_t__ text_tile_count ;
+ scalar_t__ text_x ;
+ scalar_t__ text_y ;
+ char* tmp_text_lines ;
 
 void UIShowText(UWORD line)
 {
@@ -64,7 +64,7 @@ void UIShowText(UWORD line)
 
   for (i = 1, k = 0; i < 81; i++)
   {
-    // Replace variable references in text
+
     if (tmp_text_lines[i] == '$')
     {
       if(tmp_text_lines[i + 3] == '$') {
@@ -86,7 +86,7 @@ void UIShowText(UWORD line)
       }
       else
       {
-        // itoa implementation
+
         while (value != 0)
         {
           value_string[j++] = '0' + (value % 10);
@@ -101,7 +101,7 @@ void UIShowText(UWORD line)
         }
         k--;
       }
-      // Jump though input past variable placeholder
+
       if(var_index >= 100) {
         i += 4;
       } else {
@@ -122,7 +122,7 @@ void UIShowText(UWORD line)
     UISetPos(MENU_LAYOUT_INITIAL_X, MENU_CLOSED_Y);
     UIMoveTo(MENU_LAYOUT_INITIAL_X, MENU_CLOSED_Y - ((text_num_lines + 2) << 3), text_in_speed);
   }
-  else 
+  else
   {
     text_num_lines = MIN(tmp_text_lines[0], 4);
     UIDrawDialogueFrame(text_num_lines);

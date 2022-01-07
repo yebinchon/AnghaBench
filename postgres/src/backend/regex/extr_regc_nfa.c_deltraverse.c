@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct state {scalar_t__ nouts; scalar_t__ nins; scalar_t__ no; struct state* tmp; struct arc* outs; } ;
 struct nfa {TYPE_1__* v; } ;
 struct arc {struct state* to; } ;
-struct TYPE_2__ {int /*<<< orphan*/  re; } ;
+struct TYPE_2__ {int re; } ;
 
-/* Variables and functions */
- scalar_t__ FREESTATE ; 
- int /*<<< orphan*/  NERR (int /*<<< orphan*/ ) ; 
- scalar_t__ NISERR () ; 
- int /*<<< orphan*/  REG_ETOOBIG ; 
- scalar_t__ STACK_TOO_DEEP (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  freearc (struct nfa*,struct arc*) ; 
- int /*<<< orphan*/  freestate (struct nfa*,struct state*) ; 
+
+ scalar_t__ FREESTATE ;
+ int NERR (int ) ;
+ scalar_t__ NISERR () ;
+ int REG_ETOOBIG ;
+ scalar_t__ STACK_TOO_DEEP (int ) ;
+ int assert (int) ;
+ int freearc (struct nfa*,struct arc*) ;
+ int freestate (struct nfa*,struct state*) ;
 
 __attribute__((used)) static void
 deltraverse(struct nfa *nfa,
-			struct state *leftend,
-			struct state *s)
+   struct state *leftend,
+   struct state *s)
 {
-	struct arc *a;
-	struct state *to;
+ struct arc *a;
+ struct state *to;
 
-	/* Since this is recursive, it could be driven to stack overflow */
-	if (STACK_TOO_DEEP(nfa->v->re))
-	{
-		NERR(REG_ETOOBIG);
-		return;
-	}
 
-	if (s->nouts == 0)
-		return;					/* nothing to do */
-	if (s->tmp != NULL)
-		return;					/* already in progress */
+ if (STACK_TOO_DEEP(nfa->v->re))
+ {
+  NERR(REG_ETOOBIG);
+  return;
+ }
 
-	s->tmp = s;					/* mark as in progress */
+ if (s->nouts == 0)
+  return;
+ if (s->tmp != ((void*)0))
+  return;
 
-	while ((a = s->outs) != NULL)
-	{
-		to = a->to;
-		deltraverse(nfa, leftend, to);
-		if (NISERR())
-			return;				/* asserts might not hold after failure */
-		assert(to->nouts == 0 || to->tmp != NULL);
-		freearc(nfa, a);
-		if (to->nins == 0 && to->tmp == NULL)
-		{
-			assert(to->nouts == 0);
-			freestate(nfa, to);
-		}
-	}
+ s->tmp = s;
 
-	assert(s->no != FREESTATE); /* we're still here */
-	assert(s == leftend || s->nins != 0);	/* and still reachable */
-	assert(s->nouts == 0);		/* but have no outarcs */
+ while ((a = s->outs) != ((void*)0))
+ {
+  to = a->to;
+  deltraverse(nfa, leftend, to);
+  if (NISERR())
+   return;
+  assert(to->nouts == 0 || to->tmp != ((void*)0));
+  freearc(nfa, a);
+  if (to->nins == 0 && to->tmp == ((void*)0))
+  {
+   assert(to->nouts == 0);
+   freestate(nfa, to);
+  }
+ }
 
-	s->tmp = NULL;				/* we're done here */
+ assert(s->no != FREESTATE);
+ assert(s == leftend || s->nins != 0);
+ assert(s->nouts == 0);
+
+ s->tmp = ((void*)0);
 }

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* str; int len; } ;
-typedef  TYPE_1__ strbuf ;
-typedef  int /*<<< orphan*/  dw ;
-typedef  char WCHAR ;
-typedef  char* PBYTE ;
-typedef  char* LPCOLESTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ HKEY ;
-typedef  int DWORD ;
-typedef  char BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__ strbuf ;
+typedef int dw ;
+typedef char WCHAR ;
+typedef char* PBYTE ;
+typedef char* LPCOLESTR ;
+typedef scalar_t__ LONG ;
+typedef int HRESULT ;
+typedef scalar_t__ HKEY ;
+typedef int DWORD ;
+typedef char BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISP_E_EXCEPTION ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HRESULT_FROM_WIN32 (scalar_t__) ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  REG_BINARY ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_SZ ; 
- int /*<<< orphan*/  RegCloseKey (scalar_t__) ; 
- scalar_t__ RegCreateKeyW (scalar_t__,char*,scalar_t__*) ; 
- int /*<<< orphan*/  RegDeleteKeyW (scalar_t__,char*) ; 
- int /*<<< orphan*/  RegDeleteTreeW (scalar_t__,char*) ; 
- scalar_t__ RegOpenKeyW (scalar_t__,char*,scalar_t__*) ; 
- scalar_t__ RegSetValueExW (scalar_t__,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  debugstr_w (char*) ; 
- int /*<<< orphan*/  get_word (char**,TYPE_1__*) ; 
- scalar_t__ iswspace (char) ; 
- int /*<<< orphan*/  iswxdigit (char) ; 
- int /*<<< orphan*/  lstrcmpiW (char*,char const*) ; 
- int /*<<< orphan*/  lstrlenW (char*) ; 
- int /*<<< orphan*/  strbuf_init (TYPE_1__*) ; 
- int /*<<< orphan*/  strbuf_write (char*,TYPE_1__*,int) ; 
- int wcstol (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  wcstoul (char*,int /*<<< orphan*/ *,int) ; 
+
+ int DISP_E_EXCEPTION ;
+ scalar_t__ ERROR_SUCCESS ;
+ int E_FAIL ;
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int GetProcessHeap () ;
+ int HRESULT_FROM_WIN32 (scalar_t__) ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int REG_BINARY ;
+ int REG_DWORD ;
+ int REG_SZ ;
+ int RegCloseKey (scalar_t__) ;
+ scalar_t__ RegCreateKeyW (scalar_t__,char*,scalar_t__*) ;
+ int RegDeleteKeyW (scalar_t__,char*) ;
+ int RegDeleteTreeW (scalar_t__,char*) ;
+ scalar_t__ RegOpenKeyW (scalar_t__,char*,scalar_t__*) ;
+ scalar_t__ RegSetValueExW (scalar_t__,char*,int ,int ,char*,int) ;
+ int SUCCEEDED (int ) ;
+ int TRACE (char*,int ,...) ;
+ int WARN (char*,...) ;
+ int debugstr_w (char*) ;
+ int get_word (char**,TYPE_1__*) ;
+ scalar_t__ iswspace (char) ;
+ int iswxdigit (char) ;
+ int lstrcmpiW (char*,char const*) ;
+ int lstrlenW (char*) ;
+ int strbuf_init (TYPE_1__*) ;
+ int strbuf_write (char*,TYPE_1__*,int) ;
+ int wcstol (char*,int *,int) ;
+ int wcstoul (char*,int *,int) ;
 
 __attribute__((used)) static HRESULT do_process_key(LPCOLESTR *pstr, HKEY parent_key, strbuf *buf, BOOL do_register)
 {
@@ -142,7 +142,7 @@ __attribute__((used)) static HRESULT do_process_key(LPCOLESTR *pstr, HKEY parent
                     hres = get_word(&iter, buf);
                     if(FAILED(hres))
                         break;
-                    lres = RegSetValueExW(hkey, name.len ? name.str :  NULL, 0, REG_SZ, (PBYTE)buf->str,
+                    lres = RegSetValueExW(hkey, name.len ? name.str : ((void*)0), 0, REG_SZ, (PBYTE)buf->str,
                             (lstrlenW(buf->str)+1)*sizeof(WCHAR));
                     if(lres != ERROR_SUCCESS) {
                         WARN("Could set value of key: %08x\n", lres);
@@ -155,8 +155,8 @@ __attribute__((used)) static HRESULT do_process_key(LPCOLESTR *pstr, HKEY parent
                     hres = get_word(&iter, buf);
                     if(FAILED(hres))
                         break;
-                    dw = wcstol(buf->str, NULL, 10);
-                    lres = RegSetValueExW(hkey, name.len ? name.str :  NULL, 0, REG_DWORD,
+                    dw = wcstol(buf->str, ((void*)0), 10);
+                    lres = RegSetValueExW(hkey, name.len ? name.str : ((void*)0), 0, REG_DWORD,
                             (PBYTE)&dw, sizeof(dw));
                     if(lres != ERROR_SUCCESS) {
                         WARN("Could set value of key: %08x\n", lres);
@@ -174,7 +174,7 @@ __attribute__((used)) static HRESULT do_process_key(LPCOLESTR *pstr, HKEY parent
                         break;
                     count = (lstrlenW(buf->str) + 1) / 2;
                     bytes = HeapAlloc(GetProcessHeap(), 0, count);
-                    if(bytes == NULL) {
+                    if(bytes == ((void*)0)) {
                         hres = E_OUTOFMEMORY;
                         break;
                     }
@@ -187,10 +187,10 @@ __attribute__((used)) static HRESULT do_process_key(LPCOLESTR *pstr, HKEY parent
                         digits[0] = buf->str[2*i];
                         digits[1] = buf->str[2*i + 1];
                         digits[2] = 0;
-                        bytes[i] = (BYTE) wcstoul(digits, NULL, 16);
+                        bytes[i] = (BYTE) wcstoul(digits, ((void*)0), 16);
                     }
                     if(SUCCEEDED(hres)) {
-                        lres = RegSetValueExW(hkey, name.len ? name.str :  NULL, 0, REG_BINARY,
+                        lres = RegSetValueExW(hkey, name.len ? name.str : ((void*)0), 0, REG_BINARY,
                             bytes, count);
                         if(lres != ERROR_SUCCESS) {
                             WARN("Could not set value of key: 0x%08x\n", lres);

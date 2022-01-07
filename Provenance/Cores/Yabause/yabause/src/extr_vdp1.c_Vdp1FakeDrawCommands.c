@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_6__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_8__ TYPE_6__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
 struct TYPE_7__ {int addr; int EDSR; int LOPR; int COPR; } ;
-typedef  TYPE_1__ Vdp1 ;
-struct TYPE_8__ {int /*<<< orphan*/  (* Vdp1DrawEnd ) () ;int /*<<< orphan*/  (* Vdp1LocalCoordinate ) (int /*<<< orphan*/ *,TYPE_1__*) ;int /*<<< orphan*/  (* Vdp1SystemClipping ) (int /*<<< orphan*/ *,TYPE_1__*) ;int /*<<< orphan*/  (* Vdp1UserClipping ) (int /*<<< orphan*/ *,TYPE_1__*) ;} ;
+typedef TYPE_1__ Vdp1 ;
+struct TYPE_8__ {int (* Vdp1DrawEnd ) () ;int (* Vdp1LocalCoordinate ) (int *,TYPE_1__*) ;int (* Vdp1SystemClipping ) (int *,TYPE_1__*) ;int (* Vdp1UserClipping ) (int *,TYPE_1__*) ;} ;
 
-/* Variables and functions */
- int T1ReadWord (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  VDP1LOG (char*,int) ; 
- TYPE_6__* VIDCore ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  stub4 () ; 
+
+ int T1ReadWord (int *,int) ;
+ int VDP1LOG (char*,int) ;
+ TYPE_6__* VIDCore ;
+ int stub1 (int *,TYPE_1__*) ;
+ int stub2 (int *,TYPE_1__*) ;
+ int stub3 (int *,TYPE_1__*) ;
+ int stub4 () ;
 
 void Vdp1FakeDrawCommands(u8 * ram, Vdp1 * regs)
 {
@@ -34,31 +34,31 @@ void Vdp1FakeDrawCommands(u8 * ram, Vdp1 * regs)
    u32 commandCounter = 0;
    u32 returnAddr = 0xffffffff;
 
-   while (!(command & 0x8000) && commandCounter < 2000) { // fix me
-      // First, process the command
-      if (!(command & 0x4000)) { // if (!skip)
+   while (!(command & 0x8000) && commandCounter < 2000) {
+
+      if (!(command & 0x4000)) {
          switch (command & 0x000F) {
-         case 0: // normal sprite draw
-         case 1: // scaled sprite draw
-         case 2: // distorted sprite draw
-         case 3: /* this one should be invalid, but some games
-                 (Hardcore 4x4 for instance) use it instead of 2 */
-         case 4: // polygon draw
-         case 5: // polyline draw
-         case 6: // line draw
-         case 7: // undocumented polyline draw mirror
+         case 0:
+         case 1:
+         case 2:
+         case 3:
+
+         case 4:
+         case 5:
+         case 6:
+         case 7:
             break;
-         case 8: // user clipping coordinates
-         case 11: // undocumented mirror
+         case 8:
+         case 11:
             VIDCore->Vdp1UserClipping(ram, regs);
             break;
-         case 9: // system clipping coordinates
+         case 9:
             VIDCore->Vdp1SystemClipping(ram, regs);
             break;
-         case 10: // local coordinate
+         case 10:
             VIDCore->Vdp1LocalCoordinate(ram, regs);
             break;
-         default: // Abort
+         default:
             VDP1LOG("vdp1\t: Bad command: %x\n", command);
             regs->EDSR |= 2;
             VIDCore->Vdp1DrawEnd();
@@ -68,21 +68,21 @@ void Vdp1FakeDrawCommands(u8 * ram, Vdp1 * regs)
          }
       }
 
-      // Next, determine where to go next
+
       switch ((command & 0x3000) >> 12) {
-      case 0: // NEXT, jump to following table
+      case 0:
          regs->addr += 0x20;
          break;
-      case 1: // ASSIGN, jump to CMDLINK
+      case 1:
          regs->addr = T1ReadWord(ram, regs->addr + 2) * 8;
          break;
-      case 2: // CALL, call a subroutine
+      case 2:
          if (returnAddr == 0xFFFFFFFF)
             returnAddr = regs->addr + 0x20;
 
          regs->addr = T1ReadWord(ram, regs->addr + 2) * 8;
          break;
-      case 3: // RETURN, return from subroutine
+      case 3:
          if (returnAddr != 0xFFFFFFFF) {
             regs->addr = returnAddr;
             returnAddr = 0xFFFFFFFF;

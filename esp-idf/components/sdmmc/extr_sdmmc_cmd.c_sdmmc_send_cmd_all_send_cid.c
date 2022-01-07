@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sdmmc_response_t ;
-struct TYPE_3__ {int flags; int /*<<< orphan*/  response; int /*<<< orphan*/  opcode; } ;
-typedef  TYPE_1__ sdmmc_command_t ;
-typedef  int /*<<< orphan*/  sdmmc_card_t ;
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- scalar_t__ ESP_OK ; 
- int /*<<< orphan*/  MMC_ALL_SEND_CID ; 
- int SCF_CMD_BCR ; 
- int SCF_RSP_R2 ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ sdmmc_send_cmd (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sdmmc_response_t ;
+struct TYPE_3__ {int flags; int response; int opcode; } ;
+typedef TYPE_1__ sdmmc_command_t ;
+typedef int sdmmc_card_t ;
+typedef scalar_t__ esp_err_t ;
+
+
+ scalar_t__ ESP_OK ;
+ int MMC_ALL_SEND_CID ;
+ int SCF_CMD_BCR ;
+ int SCF_RSP_R2 ;
+ int assert (int *) ;
+ int memcpy (int *,int *,int) ;
+ scalar_t__ sdmmc_send_cmd (int *,TYPE_1__*) ;
 
 esp_err_t sdmmc_send_cmd_all_send_cid(sdmmc_card_t* card, sdmmc_response_t* out_raw_cid)
 {

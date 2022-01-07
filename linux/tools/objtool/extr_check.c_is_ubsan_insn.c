@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct instruction {scalar_t__ type; TYPE_1__* call_dest; } ;
-struct TYPE_2__ {int /*<<< orphan*/  name; } ;
+struct TYPE_2__ {int name; } ;
 
-/* Variables and functions */
- scalar_t__ INSN_CALL ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char*) ; 
+
+ scalar_t__ INSN_CALL ;
+ int strcmp (int ,char*) ;
 
 __attribute__((used)) static bool is_ubsan_insn(struct instruction *insn)
 {
-	return (insn->type == INSN_CALL &&
-		!strcmp(insn->call_dest->name,
-			"__ubsan_handle_builtin_unreachable"));
+ return (insn->type == INSN_CALL &&
+  !strcmp(insn->call_dest->name,
+   "__ubsan_handle_builtin_unreachable"));
 }

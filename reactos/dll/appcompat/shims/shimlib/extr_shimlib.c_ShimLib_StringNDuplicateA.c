@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SIZE_T ;
-typedef  int /*<<< orphan*/  PSTR ;
-typedef  int /*<<< orphan*/  PCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ShimLib_ShimMalloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StringCchCopyA (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SIZE_T ;
+typedef int PSTR ;
+typedef int PCSTR ;
+
+
+ int ShimLib_ShimMalloc (int ) ;
+ int StringCchCopyA (int ,int ,int ) ;
 
 PCSTR ShimLib_StringNDuplicateA(PCSTR szString, SIZE_T stringLengthIncludingNullTerm)
 {

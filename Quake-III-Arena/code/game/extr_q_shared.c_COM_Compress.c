@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ qboolean ;
 
-/* Variables and functions */
- scalar_t__ qfalse ; 
- scalar_t__ qtrue ; 
+
+
+
+typedef scalar_t__ qboolean ;
+
+
+ scalar_t__ qfalse ;
+ scalar_t__ qtrue ;
 
 int COM_Compress( char *data_p ) {
-	char *in, *out;
-	int c;
-	qboolean newline = qfalse, whitespace = qfalse;
+ char *in, *out;
+ int c;
+ qboolean newline = qfalse, whitespace = qfalse;
 
-	in = out = data_p;
-	if (in) {
-		while ((c = *in) != 0) {
-			// skip double slash comments
-			if ( c == '/' && in[1] == '/' ) {
-				while (*in && *in != '\n') {
-					in++;
-				}
-			// skip /* */ comments
-			} else if ( c == '/' && in[1] == '*' ) {
-				while ( *in && ( *in != '*' || in[1] != '/' ) ) 
-					in++;
-				if ( *in ) 
-					in += 2;
-                        // record when we hit a newline
+ in = out = data_p;
+ if (in) {
+  while ((c = *in) != 0) {
+
+   if ( c == '/' && in[1] == '/' ) {
+    while (*in && *in != '\n') {
+     in++;
+    }
+
+   } else if ( c == '/' && in[1] == '*' ) {
+    while ( *in && ( *in != '*' || in[1] != '/' ) )
+     in++;
+    if ( *in )
+     in += 2;
+
                         } else if ( c == '\n' || c == '\r' ) {
                             newline = qtrue;
                             in++;
-                        // record when we hit whitespace
+
                         } else if ( c == ' ' || c == '\t') {
                             whitespace = qtrue;
                             in++;
-                        // an actual token
-			} else {
-                            // if we have a pending newline, emit it (and it counts as whitespace)
+
+   } else {
+
                             if (newline) {
                                 *out++ = '\n';
                                 newline = qfalse;
@@ -54,8 +54,8 @@ int COM_Compress( char *data_p ) {
                                 *out++ = ' ';
                                 whitespace = qfalse;
                             }
-                            
-                            // copy quoted strings unmolested
+
+
                             if (c == '"') {
                                     *out++ = c;
                                     in++;
@@ -77,9 +77,9 @@ int COM_Compress( char *data_p ) {
                                 out++;
                                 in++;
                             }
-			}
-		}
-	}
-	*out = 0;
-	return out - data_p;
+   }
+  }
+ }
+ *out = 0;
+ return out - data_p;
 }

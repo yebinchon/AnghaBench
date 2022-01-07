@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xo_ssize_t ;
-struct TYPE_14__ {int /*<<< orphan*/  xo_stack; } ;
-typedef  TYPE_1__ xo_handle_t ;
 
-/* Variables and functions */
- scalar_t__ XOF_ISSET (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XOF_NO_CLOSE ; 
- int /*<<< orphan*/  XOF_NO_TOP ; 
- int /*<<< orphan*/  XOF_PRETTY ; 
- int /*<<< orphan*/  XOIF_CLEAR (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XOIF_ISSET (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XOIF_MADE_OUTPUT ; 
- int /*<<< orphan*/  XOIF_TOP_EMITTED ; 
- int /*<<< orphan*/  XO_OP_FINISH ; 
-#define  XO_STYLE_ENCODER 129 
-#define  XO_STYLE_JSON 128 
- TYPE_1__* xo_default (TYPE_1__*) ; 
- int /*<<< orphan*/  xo_do_close_all (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xo_encoder_handle (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xo_flush_h (TYPE_1__*) ; 
- int /*<<< orphan*/  xo_indent (TYPE_1__*) ; 
- int /*<<< orphan*/  xo_printf (TYPE_1__*,char*,char const*,int /*<<< orphan*/ ,char*,char const*) ; 
- int xo_style (TYPE_1__*) ; 
+
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+typedef int xo_ssize_t ;
+struct TYPE_14__ {int xo_stack; } ;
+typedef TYPE_1__ xo_handle_t ;
+
+
+ scalar_t__ XOF_ISSET (TYPE_1__*,int ) ;
+ int XOF_NO_CLOSE ;
+ int XOF_NO_TOP ;
+ int XOF_PRETTY ;
+ int XOIF_CLEAR (TYPE_1__*,int ) ;
+ int XOIF_ISSET (TYPE_1__*,int ) ;
+ int XOIF_MADE_OUTPUT ;
+ int XOIF_TOP_EMITTED ;
+ int XO_OP_FINISH ;
+
+
+ TYPE_1__* xo_default (TYPE_1__*) ;
+ int xo_do_close_all (TYPE_1__*,int ) ;
+ int xo_encoder_handle (TYPE_1__*,int ,int *,int *,int ) ;
+ int xo_flush_h (TYPE_1__*) ;
+ int xo_indent (TYPE_1__*) ;
+ int xo_printf (TYPE_1__*,char*,char const*,int ,char*,char const*) ;
+ int xo_style (TYPE_1__*) ;
 
 xo_ssize_t
 xo_finish_h (xo_handle_t *xop)
@@ -42,28 +42,28 @@ xo_finish_h (xo_handle_t *xop)
     xop = xo_default(xop);
 
     if (!XOF_ISSET(xop, XOF_NO_CLOSE))
-	xo_do_close_all(xop, xop->xo_stack);
+ xo_do_close_all(xop, xop->xo_stack);
 
     switch (xo_style(xop)) {
-    case XO_STYLE_JSON:
-	if (!XOF_ISSET(xop, XOF_NO_TOP)) {
-	    const char *pre_nl = XOF_ISSET(xop, XOF_PRETTY) ? "\n" : "";
+    case 128:
+ if (!XOF_ISSET(xop, XOF_NO_TOP)) {
+     const char *pre_nl = XOF_ISSET(xop, XOF_PRETTY) ? "\n" : "";
 
-	    if (XOIF_ISSET(xop, XOIF_TOP_EMITTED))
-		XOIF_CLEAR(xop, XOIF_TOP_EMITTED); /* Turn off before output */
-	    else if (!XOIF_ISSET(xop, XOIF_MADE_OUTPUT)) {
-		open_if_empty = "{ ";
-		pre_nl = "";
-	    }
+     if (XOIF_ISSET(xop, XOIF_TOP_EMITTED))
+  XOIF_CLEAR(xop, XOIF_TOP_EMITTED);
+     else if (!XOIF_ISSET(xop, XOIF_MADE_OUTPUT)) {
+  open_if_empty = "{ ";
+  pre_nl = "";
+     }
 
-	    xo_printf(xop, "%s%*s%s}\n",
-		      pre_nl, xo_indent(xop), "", open_if_empty);
-	}
-	break;
+     xo_printf(xop, "%s%*s%s}\n",
+        pre_nl, xo_indent(xop), "", open_if_empty);
+ }
+ break;
 
-    case XO_STYLE_ENCODER:
-	xo_encoder_handle(xop, XO_OP_FINISH, NULL, NULL, 0);
-	break;
+    case 129:
+ xo_encoder_handle(xop, XO_OP_FINISH, ((void*)0), ((void*)0), 0);
+ break;
     }
 
     return xo_flush_h(xop);

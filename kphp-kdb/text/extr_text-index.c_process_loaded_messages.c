@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ user_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__* User ; 
- TYPE_1__** UserDirectory ; 
- int /*<<< orphan*/  assert (int) ; 
- int cur_max_uid ; 
- int cur_min_uid ; 
- char* dyn_cur ; 
- double get_utime (int /*<<< orphan*/ ) ; 
- double last_process_time ; 
- int /*<<< orphan*/  process_user_messages (TYPE_1__*,scalar_t__) ; 
- size_t processed_users ; 
- size_t tot_users ; 
- scalar_t__ unconv_uid (int) ; 
+
+ int CLOCK_MONOTONIC ;
+ scalar_t__* User ;
+ TYPE_1__** UserDirectory ;
+ int assert (int) ;
+ int cur_max_uid ;
+ int cur_min_uid ;
+ char* dyn_cur ;
+ double get_utime (int ) ;
+ double last_process_time ;
+ int process_user_messages (TYPE_1__*,scalar_t__) ;
+ size_t processed_users ;
+ size_t tot_users ;
+ scalar_t__ unconv_uid (int) ;
 
 void process_loaded_messages (void) {
   int i;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  Z; scalar_t__ Z_is_one; } ;
-typedef  TYPE_1__ EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int Z; scalar_t__ Z_is_one; } ;
+typedef TYPE_1__ EC_POINT ;
+typedef int EC_GROUP ;
+
+
+ int BN_zero (int ) ;
 
 int ec_GF2m_simple_point_set_to_infinity(const EC_GROUP *group,
                                          EC_POINT *point)

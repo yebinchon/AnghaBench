@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t strlen (char const*) ; 
- char* strncpy (char*,char const*,size_t) ; 
+ size_t strlen (char const*) ;
+ char* strncpy (char*,char const*,size_t) ;
 
 char * __php_stpncpy(char *dst, const char *src, size_t len)
 {
-	size_t n = strlen(src);
-	if (n > len) {
-		n = len;
-	}
-	return strncpy(dst, src, len) + n;
+ size_t n = strlen(src);
+ if (n > len) {
+  n = len;
+ }
+ return strncpy(dst, src, len) + n;
 }

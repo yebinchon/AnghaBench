@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int /*<<< orphan*/ * PWCHAR ;
-typedef  int /*<<< orphan*/  HLOCAL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LocalFree (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int VOID ;
+typedef int * PWCHAR ;
+typedef int HLOCAL ;
+
+
+ int LocalFree (int ) ;
 
 __attribute__((used)) static __inline VOID
 pCDevSettings_FreeString(PWCHAR *psz)
 {
-    if (*psz != NULL)
+    if (*psz != ((void*)0))
     {
         LocalFree((HLOCAL)*psz);
-        *psz = NULL;
+        *psz = ((void*)0);
     }
 }

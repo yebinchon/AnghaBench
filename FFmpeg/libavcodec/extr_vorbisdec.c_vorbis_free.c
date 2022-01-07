@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int residue_count; int codebook_count; int floor_count; int mapping_count; TYPE_6__* mappings; TYPE_6__* floors; TYPE_6__* codebooks; int /*<<< orphan*/ * mdct; TYPE_6__* modes; TYPE_6__* residues; TYPE_6__* fdsp; TYPE_6__* saved; TYPE_6__* channel_residues; } ;
-typedef  TYPE_4__ vorbis_context ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int residue_count; int codebook_count; int floor_count; int mapping_count; TYPE_6__* mappings; TYPE_6__* floors; TYPE_6__* codebooks; int * mdct; TYPE_6__* modes; TYPE_6__* residues; TYPE_6__* fdsp; TYPE_6__* saved; TYPE_6__* channel_residues; } ;
+typedef TYPE_4__ vorbis_context ;
 struct TYPE_8__ {TYPE_6__* list; } ;
 struct TYPE_7__ {TYPE_6__* lsp; TYPE_6__* book_list; TYPE_6__** map; } ;
 struct TYPE_9__ {TYPE_2__ t1; TYPE_1__ t0; } ;
-struct TYPE_11__ {scalar_t__ floor_type; struct TYPE_11__* mux; struct TYPE_11__* angle; struct TYPE_11__* magnitude; TYPE_3__ data; int /*<<< orphan*/  vlc; struct TYPE_11__* codevectors; struct TYPE_11__* classifs; } ;
+struct TYPE_11__ {scalar_t__ floor_type; struct TYPE_11__* mux; struct TYPE_11__* angle; struct TYPE_11__* magnitude; TYPE_3__ data; int vlc; struct TYPE_11__* codevectors; struct TYPE_11__* classifs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (TYPE_6__**) ; 
- int /*<<< orphan*/  ff_free_vlc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_mdct_end (int /*<<< orphan*/ *) ; 
+
+ int av_freep (TYPE_6__**) ;
+ int ff_free_vlc (int *) ;
+ int ff_mdct_end (int *) ;
 
 __attribute__((used)) static void vorbis_free(vorbis_context *vc)
 {

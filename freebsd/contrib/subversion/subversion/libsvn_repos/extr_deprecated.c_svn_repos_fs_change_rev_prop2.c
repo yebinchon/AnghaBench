@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_repos_t ;
-typedef  int /*<<< orphan*/  svn_repos_authz_func_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/ * svn_repos_fs_change_rev_prop3 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,char const*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_repos_t ;
+typedef int svn_repos_authz_func_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int TRUE ;
+ int * svn_repos_fs_change_rev_prop3 (int *,int ,char const*,char const*,int const*,int ,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_repos_fs_change_rev_prop2(svn_repos_t *repos,

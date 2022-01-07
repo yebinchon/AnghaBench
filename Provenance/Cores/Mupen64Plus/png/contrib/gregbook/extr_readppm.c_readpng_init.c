@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ulg ;
-typedef  char uch ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int bit_depth ; 
- int channels ; 
- int color_type ; 
- int /*<<< orphan*/  fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  height ; 
- int /*<<< orphan*/ * saved_infile ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  width ; 
+
+
+
+typedef int ulg ;
+typedef char uch ;
+typedef int FILE ;
+
+
+ int bit_depth ;
+ int channels ;
+ int color_type ;
+ int fgets (char*,int,int *) ;
+ int fprintf (int ,char*,...) ;
+ int height ;
+ int * saved_infile ;
+ int sscanf (char*,char*,int*,...) ;
+ int stderr ;
+ int width ;
 
 int readpng_init(FILE *infile, ulg *pWidth, ulg *pHeight)
 {
@@ -39,14 +39,14 @@ int readpng_init(FILE *infile, ulg *pWidth, ulg *pHeight)
         fprintf(stderr, "ERROR:  not a PPM file\n");
         return 1;
     }
-    /* possible color types:  P5 = grayscale (0), P6 = RGB (2), P8 = RGBA (6) */
+
     if (ppmline[1] == '6') {
         color_type = 2;
         channels = 3;
     } else if (ppmline[1] == '8') {
         color_type = 6;
         channels = 4;
-    } else /* if (ppmline[1] == '5') */ {
+    } else {
         color_type = 0;
         channels = 1;
     }

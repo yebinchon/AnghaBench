@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
 
-/* Variables and functions */
- int FORMAT_MESSAGE_FROM_SYSTEM ; 
- int FORMAT_MESSAGE_IGNORE_INSERTS ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- char* FromWide (int /*<<< orphan*/ *) ; 
- int GetLastError () ; 
- int /*<<< orphan*/  LANG_NEUTRAL ; 
- int /*<<< orphan*/  MAKELANGID (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SUBLANG_DEFAULT ; 
- int /*<<< orphan*/  snwprintf (int /*<<< orphan*/ *,int,char*,int) ; 
- int /*<<< orphan*/  wmemchr (char*,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int wchar_t ;
+
+
+ int FORMAT_MESSAGE_FROM_SYSTEM ;
+ int FORMAT_MESSAGE_IGNORE_INSERTS ;
+ int FormatMessageW (int,int *,int,int ,int *,int,int *) ;
+ char* FromWide (int *) ;
+ int GetLastError () ;
+ int LANG_NEUTRAL ;
+ int MAKELANGID (int ,int ) ;
+ int SUBLANG_DEFAULT ;
+ int snwprintf (int *,int,char*,int) ;
+ int wmemchr (char*,int ,int) ;
 
 char *vlc_dlerror(void)
 {
@@ -30,10 +30,10 @@ char *vlc_dlerror(void)
     int i = 0, i_error = GetLastError();
 
     FormatMessageW( FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-                    NULL, i_error, MAKELANGID (LANG_NEUTRAL, SUBLANG_DEFAULT),
-                    wmsg, 256, NULL );
+                    ((void*)0), i_error, MAKELANGID (LANG_NEUTRAL, SUBLANG_DEFAULT),
+                    wmsg, 256, ((void*)0) );
 
-    /* Go to the end of the string */
+
     while( !wmemchr( L"\r\n\0", wmsg[i], 3 ) )
         i++;
 

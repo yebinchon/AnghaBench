@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
+
+
+
+
+typedef int u32 ;
 struct nouveau_object {struct nouveau_object* parent; } ;
-struct nouveau_handle {int /*<<< orphan*/  object; } ;
+struct nouveau_handle {int object; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NV_NAMEDB_CLASS ; 
- struct nouveau_handle* nouveau_namedb_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nouveau_namedb_put (struct nouveau_handle*) ; 
- int /*<<< orphan*/  nouveau_object_ref (int /*<<< orphan*/ ,struct nouveau_object**) ; 
- int /*<<< orphan*/  nv_iclass (struct nouveau_object*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nv_namedb (struct nouveau_object*) ; 
+
+ int NV_NAMEDB_CLASS ;
+ struct nouveau_handle* nouveau_namedb_get (int ,int ) ;
+ int nouveau_namedb_put (struct nouveau_handle*) ;
+ int nouveau_object_ref (int ,struct nouveau_object**) ;
+ int nv_iclass (struct nouveau_object*,int ) ;
+ int nv_namedb (struct nouveau_object*) ;
 
 struct nouveau_object *
 nouveau_handle_ref(struct nouveau_object *parent, u32 name)
 {
-	struct nouveau_object *object = NULL;
-	struct nouveau_handle *handle;
+ struct nouveau_object *object = ((void*)0);
+ struct nouveau_handle *handle;
 
-	while (!nv_iclass(parent, NV_NAMEDB_CLASS))
-		parent = parent->parent;
+ while (!nv_iclass(parent, NV_NAMEDB_CLASS))
+  parent = parent->parent;
 
-	handle = nouveau_namedb_get(nv_namedb(parent), name);
-	if (handle) {
-		nouveau_object_ref(handle->object, &object);
-		nouveau_namedb_put(handle);
-	}
+ handle = nouveau_namedb_get(nv_namedb(parent), name);
+ if (handle) {
+  nouveau_object_ref(handle->object, &object);
+  nouveau_namedb_put(handle);
+ }
 
-	return object;
+ return object;
 }

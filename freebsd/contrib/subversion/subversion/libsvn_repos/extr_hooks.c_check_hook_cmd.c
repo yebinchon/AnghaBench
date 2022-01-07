@@ -1,49 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_VA_NULL ; 
- scalar_t__ TRUE ; 
- char const* apr_pstrcat (int /*<<< orphan*/ *,char const*,char const* const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_check_resolved_path (char const* const,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_check_special_path (char const* const,scalar_t__*,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
+
+
+
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ scalar_t__ FALSE ;
+ int SVN_VA_NULL ;
+ scalar_t__ TRUE ;
+ char const* apr_pstrcat (int *,char const*,char const* const,int ) ;
+ int svn_error_clear (int *) ;
+ int * svn_io_check_resolved_path (char const* const,scalar_t__*,int *) ;
+ int * svn_io_check_special_path (char const* const,scalar_t__*,scalar_t__*,int *) ;
+ scalar_t__ svn_node_file ;
 
 __attribute__((used)) static const char*
 check_hook_cmd(const char *hook, svn_boolean_t *broken_link, apr_pool_t *pool)
 {
   static const char* const check_extns[] = {
-#ifdef WIN32
-  /* For WIN32, we need to check with file name extension(s) added.
-
-     As Windows Scripting Host (.wsf) files can accommodate (at least)
-     JavaScript (.js) and VB Script (.vbs) code, extensions for the
-     corresponding file types need not be enumerated explicitly. */
-    ".exe", ".cmd", ".bat", ".wsf", /* ### Any other extensions? */
-#else
     "",
-#endif
-    NULL
+
+    ((void*)0)
   };
 
   const char *const *extn;
-  svn_error_t *err = NULL;
+  svn_error_t *err = ((void*)0);
   svn_boolean_t is_special;
   for (extn = check_extns; *extn; ++extn)
     {
@@ -67,5 +59,5 @@ check_hook_cmd(const char *hook, svn_boolean_t *broken_link, apr_pool_t *pool)
         }
       svn_error_clear(err);
     }
-  return NULL;
+  return ((void*)0);
 }

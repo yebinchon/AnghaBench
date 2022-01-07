@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct btrfs_root {scalar_t__ node; int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BTRFS_ROOT_IN_RADIX ; 
- scalar_t__ WARN_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_extent_buffer (scalar_t__) ; 
- int /*<<< orphan*/  kfree (struct btrfs_root*) ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct btrfs_root {scalar_t__ node; int state; } ;
+
+
+ int BTRFS_ROOT_IN_RADIX ;
+ scalar_t__ WARN_ON (int ) ;
+ int free_extent_buffer (scalar_t__) ;
+ int kfree (struct btrfs_root*) ;
+ int test_bit (int ,int *) ;
 
 void btrfs_free_dummy_root(struct btrfs_root *root)
 {
-	if (!root)
-		return;
-	/* Will be freed by btrfs_free_fs_roots */
-	if (WARN_ON(test_bit(BTRFS_ROOT_IN_RADIX, &root->state)))
-		return;
-	if (root->node) {
-		/* One for allocate_extent_buffer */
-		free_extent_buffer(root->node);
-	}
-	kfree(root);
+ if (!root)
+  return;
+
+ if (WARN_ON(test_bit(BTRFS_ROOT_IN_RADIX, &root->state)))
+  return;
+ if (root->node) {
+
+  free_extent_buffer(root->node);
+ }
+ kfree(root);
 }

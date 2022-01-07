@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  ExpandEnvironmentStringsW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- int MAX_PATH ; 
- scalar_t__ REG_EXPAND_SZ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExW (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  SetLastError (scalar_t__) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  wcscpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int LPWSTR ;
+typedef int LPBYTE ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int DPRINT (char*) ;
+ int DPRINT1 (char*) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int ExpandEnvironmentStringsW (int *,int ,int) ;
+ scalar_t__ FALSE ;
+ int HKEY_CURRENT_USER ;
+ int KEY_QUERY_VALUE ;
+ int MAX_PATH ;
+ scalar_t__ REG_EXPAND_SZ ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExW (int ,char*,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExW (int ,char*,int ,scalar_t__*,int ,scalar_t__*) ;
+ int SetLastError (scalar_t__) ;
+ scalar_t__ TRUE ;
+ int wcscpy (int ,int *) ;
 
 __attribute__((used)) static
 BOOL

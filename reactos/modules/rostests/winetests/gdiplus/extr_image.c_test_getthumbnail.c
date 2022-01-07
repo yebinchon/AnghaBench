@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int GpStatus ;
-typedef  int /*<<< orphan*/  GpImage ;
-typedef  int /*<<< orphan*/  GpBitmap ;
 
-/* Variables and functions */
- int GdipCreateBitmapFromScan0 (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDisposeImage (int /*<<< orphan*/ *) ; 
- int GdipGetImageHeight (int /*<<< orphan*/ *,int*) ; 
- int GdipGetImageThumbnail (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int GdipGetImageWidth (int /*<<< orphan*/ *,int*) ; 
- int InvalidParameter ; 
- int Ok ; 
- int /*<<< orphan*/  PixelFormat32bppRGB ; 
- int /*<<< orphan*/  expect (int,int) ; 
+
+
+
+typedef int UINT ;
+typedef int GpStatus ;
+typedef int GpImage ;
+typedef int GpBitmap ;
+
+
+ int GdipCreateBitmapFromScan0 (int,int,int ,int ,int *,int **) ;
+ int GdipDisposeImage (int *) ;
+ int GdipGetImageHeight (int *,int*) ;
+ int GdipGetImageThumbnail (int *,int,int,int **,int *,int *) ;
+ int GdipGetImageWidth (int *,int*) ;
+ int InvalidParameter ;
+ int Ok ;
+ int PixelFormat32bppRGB ;
+ int expect (int,int) ;
 
 __attribute__((used)) static void test_getthumbnail(void)
 {
@@ -32,16 +32,16 @@ __attribute__((used)) static void test_getthumbnail(void)
     GpImage *bitmap1, *bitmap2;
     UINT width, height;
 
-    stat = GdipGetImageThumbnail(NULL, 0, 0, &bitmap2, NULL, NULL);
+    stat = GdipGetImageThumbnail(((void*)0), 0, 0, &bitmap2, ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipCreateBitmapFromScan0(128, 128, 0, PixelFormat32bppRGB, NULL, (GpBitmap**)&bitmap1);
+    stat = GdipCreateBitmapFromScan0(128, 128, 0, PixelFormat32bppRGB, ((void*)0), (GpBitmap**)&bitmap1);
     expect(Ok, stat);
 
-    stat = GdipGetImageThumbnail(bitmap1, 0, 0, NULL, NULL, NULL);
+    stat = GdipGetImageThumbnail(bitmap1, 0, 0, ((void*)0), ((void*)0), ((void*)0));
     expect(InvalidParameter, stat);
 
-    stat = GdipGetImageThumbnail(bitmap1, 0, 0, &bitmap2, NULL, NULL);
+    stat = GdipGetImageThumbnail(bitmap1, 0, 0, &bitmap2, ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     if (stat == Ok)
@@ -60,10 +60,10 @@ __attribute__((used)) static void test_getthumbnail(void)
     GdipDisposeImage(bitmap1);
 
 
-    stat = GdipCreateBitmapFromScan0(64, 128, 0, PixelFormat32bppRGB, NULL, (GpBitmap**)&bitmap1);
+    stat = GdipCreateBitmapFromScan0(64, 128, 0, PixelFormat32bppRGB, ((void*)0), (GpBitmap**)&bitmap1);
     expect(Ok, stat);
 
-    stat = GdipGetImageThumbnail(bitmap1, 32, 32, &bitmap2, NULL, NULL);
+    stat = GdipGetImageThumbnail(bitmap1, 32, 32, &bitmap2, ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     if (stat == Ok)
@@ -79,7 +79,7 @@ __attribute__((used)) static void test_getthumbnail(void)
         GdipDisposeImage(bitmap2);
     }
 
-    stat = GdipGetImageThumbnail(bitmap1, 0, 0, &bitmap2, NULL, NULL);
+    stat = GdipGetImageThumbnail(bitmap1, 0, 0, &bitmap2, ((void*)0), ((void*)0));
     expect(Ok, stat);
 
     if (stat == Ok)

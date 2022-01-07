@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut64 ;
-typedef  int /*<<< orphan*/  ut32 ;
-typedef  int /*<<< orphan*/  RFlagItem ;
-typedef  int /*<<< orphan*/  RFlag ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_FLAGS_FS_FUNCTIONS ; 
- int /*<<< orphan*/ * r_flag_set (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  r_flag_space_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  r_flag_space_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ut64 ;
+typedef int ut32 ;
+typedef int RFlagItem ;
+typedef int RFlag ;
+
+
+ int R_FLAGS_FS_FUNCTIONS ;
+ int * r_flag_set (int *,char const*,int ,int ) ;
+ int r_flag_space_pop (int *) ;
+ int r_flag_space_push (int *,int ) ;
 
 __attribute__((used)) static RFlagItem *core_flg_fcn_set(RFlag *f, const char *name, ut64 addr, ut32 size) {
-	r_flag_space_push (f, R_FLAGS_FS_FUNCTIONS);
-	RFlagItem *res = r_flag_set (f, name, addr, size);
-	r_flag_space_pop (f);
-	return res;
+ r_flag_space_push (f, R_FLAGS_FS_FUNCTIONS);
+ RFlagItem *res = r_flag_set (f, name, addr, size);
+ r_flag_space_pop (f);
+ return res;
 }

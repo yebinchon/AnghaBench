@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ szCol; int /*<<< orphan*/  iCol; TYPE_1__* pStorage; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * pIndex; } ;
-typedef  TYPE_2__ Fts5InsertCtx ;
-typedef  int /*<<< orphan*/  Fts5Index ;
 
-/* Variables and functions */
- int FTS5_MAX_TOKEN_SIZE ; 
- int FTS5_TOKEN_COLOCATED ; 
- int /*<<< orphan*/  UNUSED_PARAM2 (int,int) ; 
- int sqlite3Fts5IndexWrite (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,char const*,int) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ szCol; int iCol; TYPE_1__* pStorage; } ;
+struct TYPE_3__ {int * pIndex; } ;
+typedef TYPE_2__ Fts5InsertCtx ;
+typedef int Fts5Index ;
+
+
+ int FTS5_MAX_TOKEN_SIZE ;
+ int FTS5_TOKEN_COLOCATED ;
+ int UNUSED_PARAM2 (int,int) ;
+ int sqlite3Fts5IndexWrite (int *,int ,scalar_t__,char const*,int) ;
 
 __attribute__((used)) static int fts5StorageInsertCallback(
-  void *pContext,                 /* Pointer to Fts5InsertCtx object */
+  void *pContext,
   int tflags,
-  const char *pToken,             /* Buffer containing token */
-  int nToken,                     /* Size of token in bytes */
-  int iUnused1,                   /* Start offset of token */
-  int iUnused2                    /* End offset of token */
+  const char *pToken,
+  int nToken,
+  int iUnused1,
+  int iUnused2
 ){
   Fts5InsertCtx *pCtx = (Fts5InsertCtx*)pContext;
   Fts5Index *pIdx = pCtx->pStorage->pIndex;

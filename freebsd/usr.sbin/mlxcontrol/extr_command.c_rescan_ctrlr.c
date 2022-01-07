@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  MLX_RESCAN_DRIVES ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  ctrlrname (int) ; 
- int /*<<< orphan*/  ctrlrpath (int) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ) ; 
- int open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warn (char*,int /*<<< orphan*/ ) ; 
+ int MLX_RESCAN_DRIVES ;
+ int close (int) ;
+ int ctrlrname (int) ;
+ int ctrlrpath (int) ;
+ scalar_t__ ioctl (int,int ) ;
+ int open (int ,int ) ;
+ int warn (char*,int ) ;
 
 __attribute__((used)) static void
 rescan_ctrlr(int unit, void *junk)
 {
-    int		fd;
-    
-    /* Get the device */
+    int fd;
+
+
     if ((fd = open(ctrlrpath(unit), 0)) < 0) {
-	warn("can't open %s", ctrlrpath(unit));
-	return;
+ warn("can't open %s", ctrlrpath(unit));
+ return;
     }
 
     if (ioctl(fd, MLX_RESCAN_DRIVES) < 0)
-	warn("can't rescan %s", ctrlrname(unit));
+ warn("can't rescan %s", ctrlrname(unit));
     close(fd);
 }

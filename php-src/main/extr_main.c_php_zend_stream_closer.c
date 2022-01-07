@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  php_stream ;
 
-/* Variables and functions */
- int /*<<< orphan*/  php_stream_close (int /*<<< orphan*/ *) ; 
 
-__attribute__((used)) static void php_zend_stream_closer(void *handle) /* {{{ */
+
+
+typedef int php_stream ;
+
+
+ int php_stream_close (int *) ;
+
+__attribute__((used)) static void php_zend_stream_closer(void *handle)
 {
-	php_stream_close((php_stream*)handle);
+ php_stream_close((php_stream*)handle);
 }

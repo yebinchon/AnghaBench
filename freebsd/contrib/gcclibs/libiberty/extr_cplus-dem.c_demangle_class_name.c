@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct work_stuff {int dummy; } ;
-typedef  int /*<<< orphan*/  string ;
+typedef int string ;
 
-/* Variables and functions */
- int consume_count (char const**) ; 
- int /*<<< orphan*/  demangle_arm_hp_template (struct work_stuff*,char const**,int,int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
+
+ int consume_count (char const**) ;
+ int demangle_arm_hp_template (struct work_stuff*,char const**,int,int *) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static int
 demangle_class_name (struct work_stuff *work, const char **mangled,

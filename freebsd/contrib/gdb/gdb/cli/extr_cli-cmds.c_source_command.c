@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct cleanup {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FOPEN_RT ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/ * fopen (char*,int /*<<< orphan*/ ) ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  perror_with_name (char*) ; 
- int /*<<< orphan*/  script_from_file (int /*<<< orphan*/ *,char*) ; 
- char* tilde_expand (char*) ; 
- int /*<<< orphan*/  xfree ; 
+
+ int FOPEN_RT ;
+ int do_cleanups (struct cleanup*) ;
+ int error (char*) ;
+ int * fopen (char*,int ) ;
+ struct cleanup* make_cleanup (int ,char*) ;
+ int perror_with_name (char*) ;
+ int script_from_file (int *,char*) ;
+ char* tilde_expand (char*) ;
+ int xfree ;
 
 void
 source_command (char *args, int from_tty)
@@ -31,7 +31,7 @@ source_command (char *args, int from_tty)
   struct cleanup *old_cleanups;
   char *file = args;
 
-  if (file == NULL)
+  if (file == ((void*)0))
     {
       error ("source command requires pathname of file to source.");
     }
@@ -43,9 +43,9 @@ source_command (char *args, int from_tty)
   if (!stream)
     {
       if (from_tty)
-	perror_with_name (file);
+ perror_with_name (file);
       else
-	return;
+ return;
     }
 
   script_from_file (stream, file);

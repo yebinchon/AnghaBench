@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ PFNGLWINDOWPOS3SVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3SPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3IVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3IPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3FVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3FPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3DVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS3DPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2SVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2SPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2IVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2IPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2FVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2FPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2DVPROC ;
-typedef  scalar_t__ PFNGLWINDOWPOS2DPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLORPOINTERPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3USVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3USPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3UIVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3UIPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3UBVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3UBPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3SVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3SPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3IVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3IPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3FVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3FPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3DVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3DPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3BVPROC ;
-typedef  scalar_t__ PFNGLSECONDARYCOLOR3BPROC ;
-typedef  scalar_t__ PFNGLPOINTPARAMETERIVPROC ;
-typedef  scalar_t__ PFNGLPOINTPARAMETERIPROC ;
-typedef  scalar_t__ PFNGLPOINTPARAMETERFVPROC ;
-typedef  scalar_t__ PFNGLPOINTPARAMETERFPROC ;
-typedef  scalar_t__ PFNGLMULTIDRAWELEMENTSPROC ;
-typedef  scalar_t__ PFNGLMULTIDRAWARRAYSPROC ;
-typedef  scalar_t__ PFNGLFOGCOORDPOINTERPROC ;
-typedef  scalar_t__ PFNGLFOGCOORDFVPROC ;
-typedef  scalar_t__ PFNGLFOGCOORDFPROC ;
-typedef  scalar_t__ PFNGLFOGCOORDDVPROC ;
-typedef  scalar_t__ PFNGLFOGCOORDDPROC ;
-typedef  scalar_t__ PFNGLBLENDFUNCSEPARATEPROC ;
-typedef  scalar_t__ PFNGLBLENDEQUATIONPROC ;
-typedef  scalar_t__ PFNGLBLENDCOLORPROC ;
-typedef  scalar_t__ (* GLADuserptrloadfunc ) (char*,void*) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLAD_GL_VERSION_1_4 ; 
- scalar_t__ glBlendColor ; 
- scalar_t__ glBlendEquation ; 
- scalar_t__ glBlendFuncSeparate ; 
- scalar_t__ glFogCoordPointer ; 
- scalar_t__ glFogCoordd ; 
- scalar_t__ glFogCoorddv ; 
- scalar_t__ glFogCoordf ; 
- scalar_t__ glFogCoordfv ; 
- scalar_t__ glMultiDrawArrays ; 
- scalar_t__ glMultiDrawElements ; 
- scalar_t__ glPointParameterf ; 
- scalar_t__ glPointParameterfv ; 
- scalar_t__ glPointParameteri ; 
- scalar_t__ glPointParameteriv ; 
- scalar_t__ glSecondaryColor3b ; 
- scalar_t__ glSecondaryColor3bv ; 
- scalar_t__ glSecondaryColor3d ; 
- scalar_t__ glSecondaryColor3dv ; 
- scalar_t__ glSecondaryColor3f ; 
- scalar_t__ glSecondaryColor3fv ; 
- scalar_t__ glSecondaryColor3i ; 
- scalar_t__ glSecondaryColor3iv ; 
- scalar_t__ glSecondaryColor3s ; 
- scalar_t__ glSecondaryColor3sv ; 
- scalar_t__ glSecondaryColor3ub ; 
- scalar_t__ glSecondaryColor3ubv ; 
- scalar_t__ glSecondaryColor3ui ; 
- scalar_t__ glSecondaryColor3uiv ; 
- scalar_t__ glSecondaryColor3us ; 
- scalar_t__ glSecondaryColor3usv ; 
- scalar_t__ glSecondaryColorPointer ; 
- scalar_t__ glWindowPos2d ; 
- scalar_t__ glWindowPos2dv ; 
- scalar_t__ glWindowPos2f ; 
- scalar_t__ glWindowPos2fv ; 
- scalar_t__ glWindowPos2i ; 
- scalar_t__ glWindowPos2iv ; 
- scalar_t__ glWindowPos2s ; 
- scalar_t__ glWindowPos2sv ; 
- scalar_t__ glWindowPos3d ; 
- scalar_t__ glWindowPos3dv ; 
- scalar_t__ glWindowPos3f ; 
- scalar_t__ glWindowPos3fv ; 
- scalar_t__ glWindowPos3i ; 
- scalar_t__ glWindowPos3iv ; 
- scalar_t__ glWindowPos3s ; 
- scalar_t__ glWindowPos3sv ; 
+
+
+
+typedef scalar_t__ PFNGLWINDOWPOS3SVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3SPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3IVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3IPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3FVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3FPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3DVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS3DPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2SVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2SPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2IVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2IPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2FVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2FPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2DVPROC ;
+typedef scalar_t__ PFNGLWINDOWPOS2DPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLORPOINTERPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3USVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3USPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3UIVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3UIPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3UBVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3UBPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3SVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3SPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3IVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3IPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3FVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3FPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3DVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3DPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3BVPROC ;
+typedef scalar_t__ PFNGLSECONDARYCOLOR3BPROC ;
+typedef scalar_t__ PFNGLPOINTPARAMETERIVPROC ;
+typedef scalar_t__ PFNGLPOINTPARAMETERIPROC ;
+typedef scalar_t__ PFNGLPOINTPARAMETERFVPROC ;
+typedef scalar_t__ PFNGLPOINTPARAMETERFPROC ;
+typedef scalar_t__ PFNGLMULTIDRAWELEMENTSPROC ;
+typedef scalar_t__ PFNGLMULTIDRAWARRAYSPROC ;
+typedef scalar_t__ PFNGLFOGCOORDPOINTERPROC ;
+typedef scalar_t__ PFNGLFOGCOORDFVPROC ;
+typedef scalar_t__ PFNGLFOGCOORDFPROC ;
+typedef scalar_t__ PFNGLFOGCOORDDVPROC ;
+typedef scalar_t__ PFNGLFOGCOORDDPROC ;
+typedef scalar_t__ PFNGLBLENDFUNCSEPARATEPROC ;
+typedef scalar_t__ PFNGLBLENDEQUATIONPROC ;
+typedef scalar_t__ PFNGLBLENDCOLORPROC ;
+typedef scalar_t__ (* GLADuserptrloadfunc ) (char*,void*) ;
+
+
+ int GLAD_GL_VERSION_1_4 ;
+ scalar_t__ glBlendColor ;
+ scalar_t__ glBlendEquation ;
+ scalar_t__ glBlendFuncSeparate ;
+ scalar_t__ glFogCoordPointer ;
+ scalar_t__ glFogCoordd ;
+ scalar_t__ glFogCoorddv ;
+ scalar_t__ glFogCoordf ;
+ scalar_t__ glFogCoordfv ;
+ scalar_t__ glMultiDrawArrays ;
+ scalar_t__ glMultiDrawElements ;
+ scalar_t__ glPointParameterf ;
+ scalar_t__ glPointParameterfv ;
+ scalar_t__ glPointParameteri ;
+ scalar_t__ glPointParameteriv ;
+ scalar_t__ glSecondaryColor3b ;
+ scalar_t__ glSecondaryColor3bv ;
+ scalar_t__ glSecondaryColor3d ;
+ scalar_t__ glSecondaryColor3dv ;
+ scalar_t__ glSecondaryColor3f ;
+ scalar_t__ glSecondaryColor3fv ;
+ scalar_t__ glSecondaryColor3i ;
+ scalar_t__ glSecondaryColor3iv ;
+ scalar_t__ glSecondaryColor3s ;
+ scalar_t__ glSecondaryColor3sv ;
+ scalar_t__ glSecondaryColor3ub ;
+ scalar_t__ glSecondaryColor3ubv ;
+ scalar_t__ glSecondaryColor3ui ;
+ scalar_t__ glSecondaryColor3uiv ;
+ scalar_t__ glSecondaryColor3us ;
+ scalar_t__ glSecondaryColor3usv ;
+ scalar_t__ glSecondaryColorPointer ;
+ scalar_t__ glWindowPos2d ;
+ scalar_t__ glWindowPos2dv ;
+ scalar_t__ glWindowPos2f ;
+ scalar_t__ glWindowPos2fv ;
+ scalar_t__ glWindowPos2i ;
+ scalar_t__ glWindowPos2iv ;
+ scalar_t__ glWindowPos2s ;
+ scalar_t__ glWindowPos2sv ;
+ scalar_t__ glWindowPos3d ;
+ scalar_t__ glWindowPos3dv ;
+ scalar_t__ glWindowPos3f ;
+ scalar_t__ glWindowPos3fv ;
+ scalar_t__ glWindowPos3i ;
+ scalar_t__ glWindowPos3iv ;
+ scalar_t__ glWindowPos3s ;
+ scalar_t__ glWindowPos3sv ;
 
 __attribute__((used)) static void glad_gl_load_GL_VERSION_1_4( GLADuserptrloadfunc load, void* userptr) {
     if(!GLAD_GL_VERSION_1_4) return;

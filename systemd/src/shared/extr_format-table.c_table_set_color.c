@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TableCell ;
-typedef  int /*<<< orphan*/  Table ;
-struct TYPE_2__ {int /*<<< orphan*/  color; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  empty_to_null (char const*) ; 
- int table_dedup_cell (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_1__* table_get_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int TableCell ;
+typedef int Table ;
+struct TYPE_2__ {int color; } ;
+
+
+ int assert (int *) ;
+ int empty_to_null (char const*) ;
+ int table_dedup_cell (int *,int *) ;
+ TYPE_1__* table_get_data (int *,int *) ;
 
 int table_set_color(Table *t, TableCell *cell, const char *color) {
         int r;

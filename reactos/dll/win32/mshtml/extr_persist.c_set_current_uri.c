@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * url; int /*<<< orphan*/ * uri_nofrag; int /*<<< orphan*/ * uri; } ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  TYPE_1__ HTMLOuterWindow ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  IUri_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUri_GetDisplayUri (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_uri_nofrag (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * url; int * uri_nofrag; int * uri; } ;
+typedef int IUri ;
+typedef TYPE_1__ HTMLOuterWindow ;
+
+
+ int FIXME (char*) ;
+ int IUri_AddRef (int *) ;
+ int IUri_GetDisplayUri (int *,int **) ;
+ int IUri_Release (int *) ;
+ int SysFreeString (int *) ;
+ int * get_uri_nofrag (int *) ;
 
 void set_current_uri(HTMLOuterWindow *window, IUri *uri)
 {
     if(window->uri) {
         IUri_Release(window->uri);
-        window->uri = NULL;
+        window->uri = ((void*)0);
     }
 
     if(window->uri_nofrag) {
         IUri_Release(window->uri_nofrag);
-        window->uri_nofrag = NULL;
+        window->uri_nofrag = ((void*)0);
     }
 
     SysFreeString(window->url);
-    window->url = NULL;
+    window->url = ((void*)0);
 
     if(!uri)
         return;

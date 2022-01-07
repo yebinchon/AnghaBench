@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  histo ;
 
-/* Variables and functions */
- int ARGB_BLACK ; 
- int /*<<< orphan*/  CopyImageWithPrediction (int,int,int,int* const,int* const,int* const,int,int const,int,int) ; 
- int GetBestPredictorForTile (int,int,int,int,int,int**,int* const,int* const,int const,int,int,int* const) ; 
- int VP8LNearLosslessBits (int) ; 
- int VP8LSubSampleSize (int,int) ; 
- int kPredLowEffort ; 
- int /*<<< orphan*/  memset (int**,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int histo ;
+
+
+ int ARGB_BLACK ;
+ int CopyImageWithPrediction (int,int,int,int* const,int* const,int* const,int,int const,int,int) ;
+ int GetBestPredictorForTile (int,int,int,int,int,int**,int* const,int* const,int const,int,int,int* const) ;
+ int VP8LNearLosslessBits (int) ;
+ int VP8LSubSampleSize (int,int) ;
+ int kPredLowEffort ;
+ int memset (int**,int ,int) ;
 
 void VP8LResidualImage(int width, int height, int bits, int low_effort,
                        uint32_t* const argb, uint32_t* const argb_scratch,

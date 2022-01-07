@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct mp_cmd_ctx {int /*<<< orphan*/  on_osd; scalar_t__ msg_osd; struct MPContext* mpctx; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct mp_cmd_ctx {int on_osd; scalar_t__ msg_osd; struct MPContext* mpctx; } ;
 struct MPContext {TYPE_1__* opts; } ;
 struct TYPE_2__ {int osd_duration; double* ab_loop; } ;
 
-/* Variables and functions */
- double MP_NOPTS_VALUE ; 
- int /*<<< orphan*/  M_PROPERTY_SET ; 
- int OSD_LEVEL_INVISIBLE ; 
- double get_current_time (struct MPContext*) ; 
- int /*<<< orphan*/  mp_property_do (char*,int /*<<< orphan*/ ,double*,struct MPContext*) ; 
- int /*<<< orphan*/  set_osd_msg (struct MPContext*,int,int,char*) ; 
- int /*<<< orphan*/  show_property_osd (struct MPContext*,char*,int /*<<< orphan*/ ) ; 
+
+ double MP_NOPTS_VALUE ;
+ int M_PROPERTY_SET ;
+ int OSD_LEVEL_INVISIBLE ;
+ double get_current_time (struct MPContext*) ;
+ int mp_property_do (char*,int ,double*,struct MPContext*) ;
+ int set_osd_msg (struct MPContext*,int,int,char*) ;
+ int show_property_osd (struct MPContext*,char*,int ) ;
 
 __attribute__((used)) static void cmd_ab_loop(void *p)
 {

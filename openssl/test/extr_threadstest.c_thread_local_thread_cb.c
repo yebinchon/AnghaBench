@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- void* CRYPTO_THREAD_get_local (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CRYPTO_THREAD_set_local (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr_eq (void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_ptr_null (void*) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  destructor_run_count ; 
- int /*<<< orphan*/  thread_local_key ; 
- int thread_local_thread_cb_ok ; 
+ void* CRYPTO_THREAD_get_local (int *) ;
+ int CRYPTO_THREAD_set_local (int *,int *) ;
+ int TEST_ptr_eq (void*,int *) ;
+ int TEST_ptr_null (void*) ;
+ int TEST_true (int ) ;
+ int destructor_run_count ;
+ int thread_local_key ;
+ int thread_local_thread_cb_ok ;
 
 __attribute__((used)) static void thread_local_thread_cb(void)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
 
-/* Variables and functions */
- int EBADE ; 
- int EOPNOTSUPP ; 
- scalar_t__ USER_NAMESPACE_NO ; 
- int /*<<< orphan*/  arg_uid_range ; 
- int /*<<< orphan*/  arg_uid_shift ; 
- int /*<<< orphan*/  arg_userns_chown ; 
- scalar_t__ arg_userns_mode ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int /*<<< orphan*/  log_debug (char*) ; 
- int log_error_errno (int,char*) ; 
- int path_patch_uid (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uid_t ;
+
+
+ int EBADE ;
+ int EOPNOTSUPP ;
+ scalar_t__ USER_NAMESPACE_NO ;
+ int arg_uid_range ;
+ int arg_uid_shift ;
+ int arg_userns_chown ;
+ scalar_t__ arg_userns_mode ;
+ int assert (char const*) ;
+ int log_debug (char*) ;
+ int log_error_errno (int,char*) ;
+ int path_patch_uid (char const*,int ,int ) ;
 
 __attribute__((used)) static int recursive_chown(const char *directory, uid_t shift, uid_t range) {
         int r;

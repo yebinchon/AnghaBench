@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  int /*<<< orphan*/  guint8 ;
-struct TYPE_3__ {int n_blocks; int /*<<< orphan*/  file_id; int /*<<< orphan*/ * blk_sha1s; int /*<<< orphan*/  file_size; int /*<<< orphan*/  version; } ;
-typedef  TYPE_1__ Seafile ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_SORT_KEYS ; 
- int /*<<< orphan*/  SEAF_METADATA_TYPE_FILE ; 
- int /*<<< orphan*/  calculate_sha1 (unsigned char*,char*,int) ; 
- int /*<<< orphan*/ * json_array () ; 
- int /*<<< orphan*/  json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_object () ; 
- int /*<<< orphan*/  json_object_set_int_member (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_object_set_new (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rawdata_to_hex (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int json_t ;
+typedef int guint8 ;
+struct TYPE_3__ {int n_blocks; int file_id; int * blk_sha1s; int file_size; int version; } ;
+typedef TYPE_1__ Seafile ;
+
+
+ int JSON_SORT_KEYS ;
+ int SEAF_METADATA_TYPE_FILE ;
+ int calculate_sha1 (unsigned char*,char*,int) ;
+ int * json_array () ;
+ int json_array_append_new (int *,int ) ;
+ int json_decref (int *) ;
+ char* json_dumps (int *,int ) ;
+ int * json_object () ;
+ int json_object_set_int_member (int *,char*,int ) ;
+ int json_object_set_new (int *,char*,int *) ;
+ int json_string (int ) ;
+ int rawdata_to_hex (unsigned char*,int ,int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static guint8 *
 seafile_to_json (Seafile *file, int *len)

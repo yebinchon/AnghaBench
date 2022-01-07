@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8 ;
 
-/* Variables and functions */
- int inportb (int) ; 
- int /*<<< orphan*/  outportb (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sleep (int) ; 
+
+
+
+typedef int uint8 ;
+
+
+ int inportb (int) ;
+ int outportb (int,int ) ;
+ int sleep (int) ;
 
 __attribute__((used)) static int DetectJoystick(void)
 {

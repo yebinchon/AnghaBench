@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {double last_updated; int paused; int /*<<< orphan*/  serial; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {double last_updated; int paused; int serial; } ;
 struct TYPE_6__ {int paused; } ;
-struct TYPE_7__ {int paused; scalar_t__ read_pause_return; TYPE_4__ extclk; TYPE_4__ vidclk; TYPE_1__ audclk; int /*<<< orphan*/  frame_timer; } ;
-typedef  TYPE_2__ VideoState ;
+struct TYPE_7__ {int paused; scalar_t__ read_pause_return; TYPE_4__ extclk; TYPE_4__ vidclk; TYPE_1__ audclk; int frame_timer; } ;
+typedef TYPE_2__ VideoState ;
 
-/* Variables and functions */
- scalar_t__ AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOSYS ; 
- double av_gettime_relative () ; 
- int /*<<< orphan*/  get_clock (TYPE_4__*) ; 
- int /*<<< orphan*/  set_clock (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AVERROR (int ) ;
+ int ENOSYS ;
+ double av_gettime_relative () ;
+ int get_clock (TYPE_4__*) ;
+ int set_clock (TYPE_4__*,int ,int ) ;
 
 __attribute__((used)) static void stream_toggle_pause(VideoState *is)
 {

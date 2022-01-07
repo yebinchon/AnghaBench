@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct mp_chmap {int /*<<< orphan*/  member_0; } ;
-struct m_channels {int set; int auto_safe; int /*<<< orphan*/  chmaps; int /*<<< orphan*/  num_chmaps; int /*<<< orphan*/  member_0; } ;
+struct mp_chmap {int member_0; } ;
+struct m_channels {int set; int auto_safe; int chmaps; int num_chmaps; int member_0; } ;
 struct bstr {scalar_t__ len; } ;
 struct TYPE_3__ {int min; } ;
-typedef  TYPE_1__ m_option_t ;
-typedef  struct bstr bstr ;
+typedef TYPE_1__ m_option_t ;
+typedef struct bstr bstr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BSTR_P (struct bstr) ; 
- int /*<<< orphan*/  MP_TARRAY_APPEND (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mp_chmap) ; 
- int M_OPT_EXIT ; 
- int M_OPT_INVALID ; 
- int bstr_equals0 (struct bstr,char*) ; 
- int /*<<< orphan*/  bstr_split_tok (struct bstr,char*,struct bstr*,struct bstr*) ; 
- int /*<<< orphan*/  mp_chmap_from_str (struct mp_chmap*,struct bstr) ; 
- int /*<<< orphan*/  mp_chmap_is_valid (struct mp_chmap*) ; 
- int /*<<< orphan*/  mp_chmap_print_help (struct mp_log*) ; 
- int /*<<< orphan*/  mp_err (struct mp_log*,char*,...) ; 
- int /*<<< orphan*/  mp_info (struct mp_log*,char*) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
+
+ int BSTR_P (struct bstr) ;
+ int MP_TARRAY_APPEND (int *,int ,int ,struct mp_chmap) ;
+ int M_OPT_EXIT ;
+ int M_OPT_INVALID ;
+ int bstr_equals0 (struct bstr,char*) ;
+ int bstr_split_tok (struct bstr,char*,struct bstr*,struct bstr*) ;
+ int mp_chmap_from_str (struct mp_chmap*,struct bstr) ;
+ int mp_chmap_is_valid (struct mp_chmap*) ;
+ int mp_chmap_print_help (struct mp_log*) ;
+ int mp_err (struct mp_log*,char*,...) ;
+ int mp_info (struct mp_log*,char*) ;
+ int talloc_free (int ) ;
 
 __attribute__((used)) static int parse_channels(struct mp_log *log, const m_option_t *opt,
                           struct bstr name, struct bstr param, void *dst)
 {
-    // see OPT_CHANNELS for semantics.
+
     bool limited = opt->min;
 
     struct m_channels res = {0};
@@ -57,7 +57,7 @@ __attribute__((used)) static int parse_channels(struct mp_log *log, const m_opti
             return M_OPT_INVALID;
         }
         param.len = 0;
-        res.set = true;
+        res.set = 1;
         res.auto_safe = auto_safe;
     }
 
@@ -77,8 +77,8 @@ __attribute__((used)) static int parse_channels(struct mp_log *log, const m_opti
             return M_OPT_INVALID;
         }
 
-        MP_TARRAY_APPEND(NULL, res.chmaps, res.num_chmaps, map);
-        res.set = true;
+        MP_TARRAY_APPEND(((void*)0), res.chmaps, res.num_chmaps, map);
+        res.set = 1;
     }
 
     if (dst) {

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_4__ ;
-typedef  struct TYPE_28__   TYPE_3__ ;
-typedef  struct TYPE_27__   TYPE_2__ ;
-typedef  struct TYPE_26__   TYPE_1__ ;
-typedef  struct TYPE_25__   TYPE_14__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_29__ TYPE_4__ ;
+typedef struct TYPE_28__ TYPE_3__ ;
+typedef struct TYPE_27__ TYPE_2__ ;
+typedef struct TYPE_26__ TYPE_1__ ;
+typedef struct TYPE_25__ TYPE_14__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_29__ {TYPE_1__* priv; TYPE_3__** outputs; TYPE_3__** inputs; } ;
 struct TYPE_25__ {scalar_t__ num; } ;
-struct TYPE_28__ {int /*<<< orphan*/  time_base; TYPE_14__ frame_rate; } ;
+struct TYPE_28__ {int time_base; TYPE_14__ frame_rate; } ;
 struct TYPE_27__ {scalar_t__ pts; } ;
 struct TYPE_26__ {scalar_t__ n; scalar_t__ reference_n; scalar_t__ duration; int frozen; TYPE_2__* reference_frame; } ;
-typedef  TYPE_1__ FreezeDetectContext ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVFilterLink ;
-typedef  TYPE_4__ AVFilterContext ;
+typedef TYPE_1__ FreezeDetectContext ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVFilterLink ;
+typedef TYPE_4__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  AV_TIME_BASE_Q ; 
- int /*<<< orphan*/  ENOMEM ; 
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_STATUS_BACK (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  FF_FILTER_FORWARD_WANTED (TYPE_3__*,TYPE_3__*) ; 
- TYPE_2__* av_frame_clone (TYPE_2__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_2__**) ; 
- int /*<<< orphan*/  av_inv_q (TYPE_14__) ; 
- scalar_t__ av_rescale_q (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_ts2timestr (scalar_t__,int /*<<< orphan*/ *) ; 
- int ff_filter_frame (TYPE_3__*,TYPE_2__*) ; 
- int ff_inlink_consume_frame (TYPE_3__*,TYPE_2__**) ; 
- int is_frozen (TYPE_1__*,TYPE_2__*,TYPE_2__*) ; 
- int /*<<< orphan*/  set_meta (TYPE_1__*,TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int AV_TIME_BASE_Q ;
+ int ENOMEM ;
+ int FFERROR_NOT_READY ;
+ int FF_FILTER_FORWARD_STATUS (TYPE_3__*,TYPE_3__*) ;
+ int FF_FILTER_FORWARD_STATUS_BACK (TYPE_3__*,TYPE_3__*) ;
+ int FF_FILTER_FORWARD_WANTED (TYPE_3__*,TYPE_3__*) ;
+ TYPE_2__* av_frame_clone (TYPE_2__*) ;
+ int av_frame_free (TYPE_2__**) ;
+ int av_inv_q (TYPE_14__) ;
+ scalar_t__ av_rescale_q (scalar_t__,int ,int ) ;
+ int av_ts2timestr (scalar_t__,int *) ;
+ int ff_filter_frame (TYPE_3__*,TYPE_2__*) ;
+ int ff_inlink_consume_frame (TYPE_3__*,TYPE_2__**) ;
+ int is_frozen (TYPE_1__*,TYPE_2__*,TYPE_2__*) ;
+ int set_meta (TYPE_1__*,TYPE_2__*,char*,int ) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
@@ -65,7 +65,7 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
 
         if (s->reference_frame) {
             int64_t duration;
-            if (s->reference_frame->pts == AV_NOPTS_VALUE || frame->pts == AV_NOPTS_VALUE || frame->pts < s->reference_frame->pts)     // Discontinuity?
+            if (s->reference_frame->pts == AV_NOPTS_VALUE || frame->pts == AV_NOPTS_VALUE || frame->pts < s->reference_frame->pts)
                 duration = inlink->frame_rate.num > 0 ? av_rescale_q(s->n - s->reference_n, av_inv_q(inlink->frame_rate), AV_TIME_BASE_Q) : 0;
             else
                 duration = av_rescale_q(frame->pts - s->reference_frame->pts, inlink->time_base, AV_TIME_BASE_Q);

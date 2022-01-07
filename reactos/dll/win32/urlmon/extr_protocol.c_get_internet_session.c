@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IInternetBindInfo ;
-typedef  int /*<<< orphan*/ * HINTERNET ;
 
-/* Variables and functions */
- scalar_t__ InterlockedCompareExchangePointer (void**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InternetCloseHandle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * create_internet_session (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * internet_session ; 
+
+
+
+typedef int IInternetBindInfo ;
+typedef int * HINTERNET ;
+
+
+ scalar_t__ InterlockedCompareExchangePointer (void**,int *,int *) ;
+ int InternetCloseHandle (int *) ;
+ int * create_internet_session (int *) ;
+ int * internet_session ;
 
 HINTERNET get_internet_session(IInternetBindInfo *bind_info)
 {
@@ -27,10 +27,10 @@ HINTERNET get_internet_session(IInternetBindInfo *bind_info)
         return internet_session;
 
     if(!bind_info)
-        return NULL;
+        return ((void*)0);
 
     new_session = create_internet_session(bind_info);
-    if(new_session && InterlockedCompareExchangePointer((void**)&internet_session, new_session, NULL))
+    if(new_session && InterlockedCompareExchangePointer((void**)&internet_session, new_session, ((void*)0)))
         InternetCloseHandle(new_session);
 
     return internet_session;

@@ -1,40 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int UMEM_DEFAULT ; 
- int UMEM_NOFAIL ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  assert (int) ; 
- void* calloc (int,size_t) ; 
- int /*<<< orphan*/  nofail_cb () ; 
+ int UMEM_DEFAULT ;
+ int UMEM_NOFAIL ;
+ int abort () ;
+ int assert (int) ;
+ void* calloc (int,size_t) ;
+ int nofail_cb () ;
 
 void *umem_zalloc(size_t size, int flags)
 {
-	assert(flags == UMEM_DEFAULT || flags == UMEM_NOFAIL);
+ assert(flags == UMEM_DEFAULT || flags == UMEM_NOFAIL);
 
-	if(size == 0)
-		return NULL;
+ if(size == 0)
+  return ((void*)0);
 
-	void *ret = calloc(1, size);
-	if(ret == NULL) {
-		if(!(flags & UMEM_NOFAIL))
-			return NULL;
+ void *ret = calloc(1, size);
+ if(ret == ((void*)0)) {
+  if(!(flags & UMEM_NOFAIL))
+   return ((void*)0);
 
-		if(nofail_cb != NULL)
-			nofail_cb();
-		abort();
-	}
+  if(nofail_cb != ((void*)0))
+   nofail_cb();
+  abort();
+ }
 
-	return ret;
+ return ret;
 }

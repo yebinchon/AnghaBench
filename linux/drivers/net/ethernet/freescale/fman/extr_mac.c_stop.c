@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mac_priv_s {int (* disable ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-struct mac_device {int /*<<< orphan*/  fman_mac; scalar_t__ phy_dev; struct mac_priv_s* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMM_MODE_RX_AND_TX ; 
- int /*<<< orphan*/  phy_stop (scalar_t__) ; 
- int stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct mac_priv_s {int (* disable ) (int ,int ) ;} ;
+struct mac_device {int fman_mac; scalar_t__ phy_dev; struct mac_priv_s* priv; } ;
+
+
+ int COMM_MODE_RX_AND_TX ;
+ int phy_stop (scalar_t__) ;
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static int stop(struct mac_device *mac_dev)
 {
-	struct mac_priv_s *priv = mac_dev->priv;
+ struct mac_priv_s *priv = mac_dev->priv;
 
-	if (mac_dev->phy_dev)
-		phy_stop(mac_dev->phy_dev);
+ if (mac_dev->phy_dev)
+  phy_stop(mac_dev->phy_dev);
 
-	return priv->disable(mac_dev->fman_mac, COMM_MODE_RX_AND_TX);
+ return priv->disable(mac_dev->fman_mac, COMM_MODE_RX_AND_TX);
 }

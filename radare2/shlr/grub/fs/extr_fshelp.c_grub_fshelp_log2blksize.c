@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_BAD_NUMBER ; 
- unsigned int GRUB_ERR_NONE ; 
- unsigned int grub_error (int /*<<< orphan*/ ,char*) ; 
+ int GRUB_ERR_BAD_NUMBER ;
+ unsigned int GRUB_ERR_NONE ;
+ unsigned int grub_error (int ,char*) ;
 
 unsigned int
 grub_fshelp_log2blksize (unsigned int blksize, unsigned int *pow)
@@ -27,10 +19,10 @@ grub_fshelp_log2blksize (unsigned int blksize, unsigned int *pow)
       mod = blksize - ((blksize >> 1) << 1);
       blksize >>= 1;
 
-      /* Check if it really is a power of two.  */
+
       if (mod)
-	return grub_error (GRUB_ERR_BAD_NUMBER,
-			   "the blocksize is not a power of two");
+ return grub_error (GRUB_ERR_BAD_NUMBER,
+      "the blocksize is not a power of two");
       (*pow)++;
     }
 

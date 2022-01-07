@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_4__ {int /*<<< orphan*/  repos_root_url; int /*<<< orphan*/  url; int /*<<< orphan*/  repos_uuid; int /*<<< orphan*/  rev; } ;
-typedef  TYPE_1__ svn_client__pathrev_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_path_url_add_component2 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__node_get_base (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_wc_context_t ;
+typedef int svn_error_t ;
+struct TYPE_4__ {int repos_root_url; int url; int repos_uuid; int rev; } ;
+typedef TYPE_1__ svn_client__pathrev_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ TYPE_1__* apr_palloc (int *,int) ;
+ int svn_path_url_add_component2 (int ,char const*,int *) ;
+ int svn_wc__node_get_base (int *,int *,char const**,int *,int *,int *,int *,char const*,int ,int *,int *) ;
 
 svn_error_t *
 svn_client__wc_node_get_base(svn_client__pathrev_t **base_p,
@@ -36,14 +36,14 @@ svn_client__wc_node_get_base(svn_client__pathrev_t **base_p,
 
   *base_p = apr_palloc(result_pool, sizeof(**base_p));
 
-  SVN_ERR(svn_wc__node_get_base(NULL,
+  SVN_ERR(svn_wc__node_get_base(((void*)0),
                                 &(*base_p)->rev,
                                 &relpath,
                                 &(*base_p)->repos_root_url,
                                 &(*base_p)->repos_uuid,
-                                NULL,
+                                ((void*)0),
                                 wc_ctx, wc_abspath,
-                                TRUE /* ignore_enoent */,
+                                TRUE ,
                                 result_pool, scratch_pool));
   if ((*base_p)->repos_root_url && relpath)
     {
@@ -52,7 +52,7 @@ svn_client__wc_node_get_base(svn_client__pathrev_t **base_p,
     }
   else
     {
-      *base_p = NULL;
+      *base_p = ((void*)0);
     }
   return SVN_NO_ERROR;
 }

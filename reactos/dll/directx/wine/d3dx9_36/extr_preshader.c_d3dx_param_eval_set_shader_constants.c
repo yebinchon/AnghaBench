@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct d3dx_regstore {int dummy; } ;
-struct d3dx_preshader {int /*<<< orphan*/  inputs; struct d3dx_regstore regs; } ;
-struct d3dx_param_eval {int /*<<< orphan*/  param_type; int /*<<< orphan*/  shader_inputs; int /*<<< orphan*/  version_counter; struct d3dx_preshader pres; } ;
+struct d3dx_preshader {int inputs; struct d3dx_regstore regs; } ;
+struct d3dx_param_eval {int param_type; int shader_inputs; int version_counter; struct d3dx_preshader pres; } ;
 struct IDirect3DDevice9 {int dummy; } ;
-typedef  int /*<<< orphan*/  ULONG64 ;
-typedef  int /*<<< orphan*/  ID3DXEffectStateManager ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int ULONG64 ;
+typedef int ID3DXEffectStateManager ;
+typedef int HRESULT ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRACE (char*,struct IDirect3DDevice9*,struct d3dx_param_eval*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ULONG64_MAX ; 
- int /*<<< orphan*/  execute_preshader (struct d3dx_preshader*) ; 
- scalar_t__ is_const_tab_input_dirty (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  next_update_version (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_constants (struct d3dx_regstore*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,struct IDirect3DDevice9*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ int FALSE ;
+ int TRACE (char*,struct IDirect3DDevice9*,struct d3dx_param_eval*,int ) ;
+ int TRUE ;
+ int ULONG64_MAX ;
+ int execute_preshader (struct d3dx_preshader*) ;
+ scalar_t__ is_const_tab_input_dirty (int *,int ) ;
+ int next_update_version (int ) ;
+ int set_constants (struct d3dx_regstore*,int *,int ,int *,struct IDirect3DDevice9*,int ,int ,int ) ;
 
 HRESULT d3dx_param_eval_set_shader_constants(ID3DXEffectStateManager *manager, struct IDirect3DDevice9 *device,
         struct d3dx_param_eval *peval, BOOL update_all)
@@ -44,7 +44,7 @@ HRESULT d3dx_param_eval_set_shader_constants(ID3DXEffectStateManager *manager, s
     if (is_const_tab_input_dirty(&pres->inputs, ULONG64_MAX))
     {
         set_constants(rs, &pres->inputs, new_update_version,
-                NULL, NULL, peval->param_type, FALSE, FALSE);
+                ((void*)0), ((void*)0), peval->param_type, FALSE, FALSE);
         if (FAILED(hr = execute_preshader(pres)))
             return hr;
         pres_dirty = TRUE;

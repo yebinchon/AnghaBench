@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stab_handle {int /*<<< orphan*/ ** xcoff_types; } ;
-typedef  int /*<<< orphan*/ * debug_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * DEBUG_TYPE_NULL ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int XCOFF_TYPE_COUNT ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/ * debug_make_bool_type (void*,int) ; 
- int /*<<< orphan*/ * debug_make_complex_type (void*,int) ; 
- int /*<<< orphan*/ * debug_make_float_type (void*,int) ; 
- int /*<<< orphan*/ * debug_make_int_type (void*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * debug_make_void_type (void*) ; 
- int /*<<< orphan*/ * debug_name_type (void*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+struct stab_handle {int ** xcoff_types; } ;
+typedef int * debug_type ;
+
+
+ int * DEBUG_TYPE_NULL ;
+ int FALSE ;
+ int TRUE ;
+ int XCOFF_TYPE_COUNT ;
+ char* _ (char*) ;
+ int abort () ;
+ int * debug_make_bool_type (void*,int) ;
+ int * debug_make_complex_type (void*,int) ;
+ int * debug_make_float_type (void*,int) ;
+ int * debug_make_int_type (void*,int,int ) ;
+ int * debug_make_void_type (void*) ;
+ int * debug_name_type (void*,char const*,int *) ;
+ int fprintf (int ,char*,int) ;
+ int stderr ;
 
 __attribute__((used)) static debug_type
 stab_xcoff_builtin_type (void *dhandle, struct stab_handle *info,
-			 int typenum)
+    int typenum)
 {
   debug_type rettype;
   const char *name;
@@ -41,14 +41,14 @@ stab_xcoff_builtin_type (void *dhandle, struct stab_handle *info,
       fprintf (stderr, _("Unrecognized XCOFF type %d\n"), typenum);
       return DEBUG_TYPE_NULL;
     }
-  if (info->xcoff_types[-typenum] != NULL)
+  if (info->xcoff_types[-typenum] != ((void*)0))
     return info->xcoff_types[-typenum];
 
   switch (-typenum)
     {
     case 1:
-      /* The size of this and all the other types are fixed, defined
-	 by the debugging format.  */
+
+
       name = "int";
       rettype = debug_make_int_type (dhandle, 4, FALSE);
       break;
@@ -92,19 +92,19 @@ stab_xcoff_builtin_type (void *dhandle, struct stab_handle *info,
       rettype = debug_make_void_type (dhandle);
       break;
     case 12:
-      /* IEEE single precision (32 bit).  */
+
       name = "float";
       rettype = debug_make_float_type (dhandle, 4);
       break;
     case 13:
-      /* IEEE double precision (64 bit).  */
+
       name = "double";
       rettype = debug_make_float_type (dhandle, 8);
       break;
     case 14:
-      /* This is an IEEE double on the RS/6000, and different machines
-	 with different sizes for "long double" should use different
-	 negative type numbers.  See stabs.texinfo.  */
+
+
+
       name = "long double";
       rettype = debug_make_float_type (dhandle, 8);
       break;
@@ -125,12 +125,12 @@ stab_xcoff_builtin_type (void *dhandle, struct stab_handle *info,
       rettype = debug_make_float_type (dhandle, 8);
       break;
     case 19:
-      /* FIXME */
+
       name = "stringptr";
-      rettype = NULL;
+      rettype = ((void*)0);
       break;
     case 20:
-      /* FIXME */
+
       name = "character";
       rettype = debug_make_int_type (dhandle, 1, TRUE);
       break;
@@ -151,12 +151,12 @@ stab_xcoff_builtin_type (void *dhandle, struct stab_handle *info,
       rettype = debug_make_bool_type (dhandle, 4);
       break;
     case 25:
-      /* Complex type consisting of two IEEE single precision values.  */
+
       name = "complex";
       rettype = debug_make_complex_type (dhandle, 8);
       break;
     case 26:
-      /* Complex type consisting of two IEEE double precision values.  */
+
       name = "double complex";
       rettype = debug_make_complex_type (dhandle, 16);
       break;
@@ -173,7 +173,7 @@ stab_xcoff_builtin_type (void *dhandle, struct stab_handle *info,
       rettype = debug_make_int_type (dhandle, 4, FALSE);
       break;
     case 30:
-      /* FIXME */
+
       name = "wchar";
       rettype = debug_make_int_type (dhandle, 2, FALSE);
       break;

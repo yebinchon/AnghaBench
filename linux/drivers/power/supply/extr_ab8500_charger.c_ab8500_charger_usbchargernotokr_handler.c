@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ab8500_charger {int /*<<< orphan*/  check_usbchgnotok_work; int /*<<< orphan*/  charger_wq; int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  irqreturn_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IRQ_HANDLED ; 
- int /*<<< orphan*/  dev_dbg (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  queue_delayed_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct ab8500_charger {int check_usbchgnotok_work; int charger_wq; int dev; } ;
+typedef int irqreturn_t ;
+
+
+ int IRQ_HANDLED ;
+ int dev_dbg (int ,char*) ;
+ int queue_delayed_work (int ,int *,int ) ;
 
 __attribute__((used)) static irqreturn_t ab8500_charger_usbchargernotokr_handler(int irq, void *_di)
 {
-	struct ab8500_charger *di = _di;
+ struct ab8500_charger *di = _di;
 
-	dev_dbg(di->dev, "Not allowed USB charger detected\n");
-	queue_delayed_work(di->charger_wq, &di->check_usbchgnotok_work, 0);
+ dev_dbg(di->dev, "Not allowed USB charger detected\n");
+ queue_delayed_work(di->charger_wq, &di->check_usbchgnotok_work, 0);
 
-	return IRQ_HANDLED;
+ return IRQ_HANDLED;
 }

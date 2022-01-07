@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  enum vect_var_kind { ____Placeholder_vect_var_kind } vect_var_kind ;
 
-/* Variables and functions */
- scalar_t__ SSA_NAME ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- scalar_t__ TREE_TYPE (scalar_t__) ; 
- int /*<<< orphan*/  add_referenced_var (scalar_t__) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- char* get_name (scalar_t__) ; 
- scalar_t__ vect_get_new_vect_var (scalar_t__,int,char const*) ; 
- int vect_scalar_var ; 
- int vect_simple_var ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef enum vect_var_kind { ____Placeholder_vect_var_kind } vect_var_kind ;
+
+
+ scalar_t__ SSA_NAME ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ scalar_t__ TREE_TYPE (scalar_t__) ;
+ int add_referenced_var (scalar_t__) ;
+ int gcc_assert (int) ;
+ char* get_name (scalar_t__) ;
+ scalar_t__ vect_get_new_vect_var (scalar_t__,int,char const*) ;
+ int vect_scalar_var ;
+ int vect_simple_var ;
 
 __attribute__((used)) static tree
 vect_create_destination_var (tree scalar_dest, tree vectype)

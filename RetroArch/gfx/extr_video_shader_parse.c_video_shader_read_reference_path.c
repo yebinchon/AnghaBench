@@ -1,63 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RFILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PATH_MAX_LENGTH ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_HINT_NONE ; 
- int /*<<< orphan*/  RETRO_VFS_FILE_ACCESS_READ ; 
- int STRLEN_CONST (char*) ; 
- int /*<<< orphan*/  filestream_close (int /*<<< orphan*/ *) ; 
- char* filestream_getline (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * filestream_open (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fill_pathname_resolve_relative (char*,char const*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ isspace (char) ; 
- scalar_t__ malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  path_is_absolute (char*) ; 
- int /*<<< orphan*/  path_is_valid (char const*) ; 
- scalar_t__ string_is_empty (char const*) ; 
- int /*<<< orphan*/  strlcpy (char*,char*,int /*<<< orphan*/ ) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+
+
+typedef int RFILE ;
+
+
+ int PATH_MAX_LENGTH ;
+ int RETRO_VFS_FILE_ACCESS_HINT_NONE ;
+ int RETRO_VFS_FILE_ACCESS_READ ;
+ int STRLEN_CONST (char*) ;
+ int filestream_close (int *) ;
+ char* filestream_getline (int *) ;
+ int * filestream_open (char const*,int ,int ) ;
+ int fill_pathname_resolve_relative (char*,char const*,char*,int ) ;
+ int free (char*) ;
+ scalar_t__ isspace (char) ;
+ scalar_t__ malloc (int ) ;
+ int path_is_absolute (char*) ;
+ int path_is_valid (char const*) ;
+ scalar_t__ string_is_empty (char const*) ;
+ int strlcpy (char*,char*,int ) ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
 
 char *video_shader_read_reference_path(const char *path)
 {
-   /* We want shader presets that point to other presets.
-    *
-    * While config_file_new_from_path_to_string() does support the
-    * #include directive, it will not rebase relative paths on
-    * the include path.
-    *
-    * There's a plethora of reasons why a general solution is hard:
-    *  - it's impossible to distinguish a generic string from a (relative) path
-    *  - config_file_new_from_path_to_string() doesn't return the include path,
-    *    so we cannot rebase afterwards
-    *  - #include is recursive, so we'd actually need to track the include path
-    *    for every setting
-    *
-    * So instead, we use a custom #reference directive, which is just a
-    * one-time/non-recursive redirection, e.g.
-    *
-    * #reference "<path to config>"
-    * or
-    * #reference <path to config>
-    *
-    * which we will load as config_file_new_from_path_to_string(<path to config>).
-    */
-   char *reference     = NULL;
-   RFILE *file         = NULL;
-   char *line          = NULL;
+   char *reference = ((void*)0);
+   RFILE *file = ((void*)0);
+   char *line = ((void*)0);
 
    if (string_is_empty(path))
      goto end;
@@ -76,7 +54,7 @@ char *video_shader_read_reference_path(const char *path)
    {
       char *ref_path = line + STRLEN_CONST("#reference");
 
-      /* have at least 1 whitespace */
+
       if (!isspace(*ref_path))
          goto end;
       ref_path++;
@@ -86,7 +64,7 @@ char *video_shader_read_reference_path(const char *path)
 
       if (*ref_path == '\"')
       {
-         /* remove "" */
+
          char *p;
          ref_path++;
 
@@ -100,7 +78,7 @@ char *video_shader_read_reference_path(const char *path)
          }
          else
          {
-            /* if there's no second ", remove whitespace at the end */
+
             p--;
             while (isspace(*p))
                *p-- = '\0';
@@ -108,7 +86,7 @@ char *video_shader_read_reference_path(const char *path)
       }
       else
       {
-         /* remove whitespace at the end (e.g. carriage return) */
+
          char *end = ref_path + strlen(ref_path) - 1;
          while (isspace(*end))
             *end-- = '\0';
@@ -122,7 +100,7 @@ char *video_shader_read_reference_path(const char *path)
       if (!reference)
          goto end;
 
-      /* rebase relative reference path */
+
       if (!path_is_absolute(ref_path))
       {
          fill_pathname_resolve_relative(reference,

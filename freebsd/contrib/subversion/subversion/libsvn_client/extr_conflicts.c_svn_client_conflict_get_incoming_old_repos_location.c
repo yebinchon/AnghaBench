@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_conflict_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_client_conflict_t ;
+typedef int apr_pool_t ;
 struct TYPE_4__ {TYPE_1__* src_left_version; } ;
-struct TYPE_3__ {char* path_in_repos; int /*<<< orphan*/  node_kind; int /*<<< orphan*/  peg_rev; } ;
+struct TYPE_3__ {char* path_in_repos; int node_kind; int peg_rev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_2__* get_conflict_desc2_t (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_node_none ; 
+
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ TYPE_2__* get_conflict_desc2_t (int *) ;
+ int svn_node_none ;
 
 svn_error_t *
 svn_client_conflict_get_incoming_old_repos_location(
@@ -41,7 +41,7 @@ svn_client_conflict_get_incoming_old_repos_location(
         *incoming_old_repos_relpath =
           get_conflict_desc2_t(conflict)->src_left_version->path_in_repos;
       else
-        *incoming_old_repos_relpath = NULL;
+        *incoming_old_repos_relpath = ((void*)0);
     }
 
   if (incoming_old_pegrev)

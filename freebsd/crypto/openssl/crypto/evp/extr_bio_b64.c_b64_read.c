@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {scalar_t__ encode; int buf_len; int buf_off; size_t tmp_len; int cont; unsigned char* tmp; int tmp_nl; int /*<<< orphan*/ * buf; int /*<<< orphan*/  base64; scalar_t__ start; } ;
-typedef  TYPE_1__ BIO_B64_CTX ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int B64_BLOCK_SIZE ; 
- scalar_t__ B64_DECODE ; 
- int BIO_FLAGS_BASE64_NO_NL ; 
- int /*<<< orphan*/  BIO_clear_retry_flags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_copy_next_retry (int /*<<< orphan*/ *) ; 
- scalar_t__ BIO_get_data (int /*<<< orphan*/ *) ; 
- int BIO_get_flags (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_next (int /*<<< orphan*/ *) ; 
- int BIO_read (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  BIO_should_retry (int /*<<< orphan*/ *) ; 
- int EVP_DecodeBlock (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  EVP_DecodeInit (int /*<<< orphan*/ ) ; 
- int EVP_DecodeUpdate (int /*<<< orphan*/ ,unsigned char*,int*,unsigned char*,int) ; 
- int /*<<< orphan*/  OPENSSL_assert (int) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {scalar_t__ encode; int buf_len; int buf_off; size_t tmp_len; int cont; unsigned char* tmp; int tmp_nl; int * buf; int base64; scalar_t__ start; } ;
+typedef TYPE_1__ BIO_B64_CTX ;
+typedef int BIO ;
+
+
+ int B64_BLOCK_SIZE ;
+ scalar_t__ B64_DECODE ;
+ int BIO_FLAGS_BASE64_NO_NL ;
+ int BIO_clear_retry_flags (int *) ;
+ int BIO_copy_next_retry (int *) ;
+ scalar_t__ BIO_get_data (int *) ;
+ int BIO_get_flags (int *) ;
+ int * BIO_next (int *) ;
+ int BIO_read (int *,unsigned char*,int) ;
+ int BIO_should_retry (int *) ;
+ int EVP_DecodeBlock (unsigned char*,unsigned char*,int) ;
+ int EVP_DecodeInit (int ) ;
+ int EVP_DecodeUpdate (int ,unsigned char*,int*,unsigned char*,int) ;
+ int OPENSSL_assert (int) ;
+ int memcpy (char*,int *,int) ;
+ int memmove (char*,char*,int) ;
 
 __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
 {
@@ -40,12 +40,12 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
     unsigned char *p, *q;
     BIO *next;
 
-    if (out == NULL)
+    if (out == ((void*)0))
         return 0;
     ctx = (BIO_B64_CTX *)BIO_get_data(b);
 
     next = BIO_next(b);
-    if ((ctx == NULL) || (next == NULL))
+    if ((ctx == ((void*)0)) || (next == ((void*)0)))
         return 0;
 
     BIO_clear_retry_flags(b);
@@ -58,7 +58,7 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
         EVP_DecodeInit(ctx->base64);
     }
 
-    /* First check if there are bytes decoded/encoded */
+
     if (ctx->buf_len > 0) {
         OPENSSL_assert(ctx->buf_len >= ctx->buf_off);
         i = ctx->buf_len - ctx->buf_off;
@@ -76,10 +76,10 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
         }
     }
 
-    /*
-     * At this point, we have room of outl bytes and an empty buffer, so we
-     * should read in some more.
-     */
+
+
+
+
 
     ret_code = 0;
     while (outl > 0) {
@@ -92,29 +92,29 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
         if (i <= 0) {
             ret_code = i;
 
-            /* Should we continue next time we are called? */
+
             if (!BIO_should_retry(next)) {
                 ctx->cont = i;
-                /* If buffer empty break */
+
                 if (ctx->tmp_len == 0)
                     break;
-                /* Fall through and process what we have */
+
                 else
                     i = 0;
             }
-            /* else we retry and add more data to buffer */
+
             else
                 break;
         }
         i += ctx->tmp_len;
         ctx->tmp_len = i;
 
-        /*
-         * We need to scan, a line at a time until we have a valid line if we
-         * are starting.
-         */
+
+
+
+
         if (ctx->start && (BIO_get_flags(b) & BIO_FLAGS_BASE64_NO_NL)) {
-            /* ctx->start=1; */
+
             ctx->tmp_len = 0;
         } else if (ctx->start) {
             q = p = (unsigned char *)ctx->tmp;
@@ -123,11 +123,11 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
                 if (*(q++) != '\n')
                     continue;
 
-                /*
-                 * due to a previous very long line, we need to keep on
-                 * scanning for a '\n' before we even start looking for
-                 * base64 encoded stuff.
-                 */
+
+
+
+
+
                 if (ctx->tmp_nl) {
                     p = q;
                     ctx->tmp_nl = 0;
@@ -154,41 +154,41 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
                 p = q;
             }
 
-            /* we fell off the end without starting */
+
             if ((j == i) && (num == 0)) {
-                /*
-                 * Is this is one long chunk?, if so, keep on reading until a
-                 * new line.
-                 */
+
+
+
+
                 if (p == (unsigned char *)&(ctx->tmp[0])) {
-                    /* Check buffer full */
+
                     if (i == B64_BLOCK_SIZE) {
                         ctx->tmp_nl = 1;
                         ctx->tmp_len = 0;
                     }
-                } else if (p != q) { /* finished on a '\n' */
+                } else if (p != q) {
                     n = q - p;
                     for (ii = 0; ii < n; ii++)
                         ctx->tmp[ii] = p[ii];
                     ctx->tmp_len = n;
                 }
-                /* else finished on a '\n' */
+
                 continue;
             } else {
                 ctx->tmp_len = 0;
             }
         } else if ((i < B64_BLOCK_SIZE) && (ctx->cont > 0)) {
-            /*
-             * If buffer isn't full and we can retry then restart to read in
-             * more data.
-             */
+
+
+
+
             continue;
         }
 
         if (BIO_get_flags(b) & BIO_FLAGS_BASE64_NO_NL) {
             int z, jj;
 
-            jj = i & ~3;        /* process per 4 */
+            jj = i & ~3;
             z = EVP_DecodeBlock((unsigned char *)ctx->buf,
                                 (unsigned char *)ctx->tmp, jj);
             if (jj > 2) {
@@ -198,9 +198,9 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
                         z--;
                 }
             }
-            /*
-             * z is now number of output bytes and jj is the number consumed
-             */
+
+
+
             if (jj != i) {
                 memmove(ctx->tmp, &ctx->tmp[jj], i - jj);
                 ctx->tmp_len = i - jj;
@@ -216,12 +216,12 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
                                  (unsigned char *)ctx->tmp, i);
             ctx->tmp_len = 0;
         }
-        /*
-         * If eof or an error was signalled, then the condition
-         * 'ctx->cont <= 0' will prevent b64_read() from reading
-         * more data on subsequent calls. This assignment was
-         * deleted accidentally in commit 5562cfaca4f3.
-         */
+
+
+
+
+
+
         ctx->cont = i;
 
         ctx->buf_off = 0;
@@ -246,7 +246,7 @@ __attribute__((used)) static int b64_read(BIO *b, char *out, int outl)
         outl -= i;
         out += i;
     }
-    /* BIO_clear_retry_flags(b); */
+
     BIO_copy_next_retry(b);
     return ((ret == 0) ? ret_code : ret);
 }

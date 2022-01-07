@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct cache_uri {scalar_t__ local_copy; int /*<<< orphan*/  last_access; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct cache_uri {scalar_t__ local_copy; int last_access; } ;
 struct TYPE_2__ {int cache_hits_files; int cache_hits_bytes; int cache_misses_files; int cache_misses_bytes; } ;
 
-/* Variables and functions */
- long long cache_get_uri_size (struct cache_uri*,int) ; 
- int /*<<< orphan*/  cache_incr (struct cache_uri*,int) ; 
- int /*<<< orphan*/  now ; 
- TYPE_1__ simulation_stats ; 
+
+ long long cache_get_uri_size (struct cache_uri*,int) ;
+ int cache_incr (struct cache_uri*,int) ;
+ int now ;
+ TYPE_1__ simulation_stats ;
 
 __attribute__((used)) static void uri_access (struct cache_uri *U, int t) {
-  if (U == NULL) {
+  if (U == ((void*)0)) {
     return;
   }
   U->last_access = now;

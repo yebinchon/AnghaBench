@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct mp_log {int dummy; } ;
-struct TYPE_3__ {char* name; int /*<<< orphan*/  attrib; } ;
-typedef  int EGLint ;
-typedef  int /*<<< orphan*/  EGLDisplay ;
-typedef  int /*<<< orphan*/  EGLConfig ;
+struct TYPE_3__ {char* name; int attrib; } ;
+typedef int EGLint ;
+typedef int EGLDisplay ;
+typedef int EGLConfig ;
 
-/* Variables and functions */
- int MP_ARRAY_SIZE (TYPE_1__*) ; 
- scalar_t__ eglGetConfigAttrib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- TYPE_1__* mp_egl_attribs ; 
- int /*<<< orphan*/  mp_msg (struct mp_log*,int,char*,char const*,...) ; 
+
+ int MP_ARRAY_SIZE (TYPE_1__*) ;
+ scalar_t__ eglGetConfigAttrib (int ,int ,int ,int*) ;
+ TYPE_1__* mp_egl_attribs ;
+ int mp_msg (struct mp_log*,int,char*,char const*,...) ;
 
 __attribute__((used)) static void dump_egl_config(struct mp_log *log, int msgl, EGLDisplay display,
                             EGLConfig config)

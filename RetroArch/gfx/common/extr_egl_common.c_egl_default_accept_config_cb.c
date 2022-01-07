@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int EGLint ;
-typedef  int /*<<< orphan*/  EGLDisplay ;
-typedef  int /*<<< orphan*/  EGLConfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_BLUE_SIZE ; 
- int /*<<< orphan*/  EGL_GREEN_SIZE ; 
- int /*<<< orphan*/  EGL_RED_SIZE ; 
- int /*<<< orphan*/  eglGetConfigAttrib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
+
+
+
+typedef int EGLint ;
+typedef int EGLDisplay ;
+typedef int EGLConfig ;
+
+
+ int EGL_BLUE_SIZE ;
+ int EGL_GREEN_SIZE ;
+ int EGL_RED_SIZE ;
+ int eglGetConfigAttrib (int ,int ,int ,int*) ;
 
 bool egl_default_accept_config_cb(void *display_data, EGLDisplay dpy, EGLConfig config)
 {
-   /* Makes sure we have 8 bit color. */
+
    EGLint r, g, b;
    if (!eglGetConfigAttrib(dpy, config, EGL_RED_SIZE, &r))
-      return false;
+      return 0;
    if (!eglGetConfigAttrib(dpy, config, EGL_GREEN_SIZE, &g))
-      return false;
+      return 0;
    if (!eglGetConfigAttrib(dpy, config, EGL_BLUE_SIZE, &b))
-      return false;
+      return 0;
 
    if (r != 8 || g != 8 || b != 8)
-      return false;
+      return 0;
 
-   return true;
+   return 1;
 }

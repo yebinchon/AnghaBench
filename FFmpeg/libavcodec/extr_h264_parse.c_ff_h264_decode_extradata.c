@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  H264ParamSets ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int AV_RB16 (int const*) ; 
- int /*<<< orphan*/  av_log (void*,int /*<<< orphan*/ ,char*,int) ; 
- int decode_extradata_ps (int const*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int decode_extradata_ps_mp4 (int const*,int,int /*<<< orphan*/ *,int,void*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int H264ParamSets ;
+
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int AV_RB16 (int const*) ;
+ int av_log (void*,int ,char*,int) ;
+ int decode_extradata_ps (int const*,int,int *,int ,void*) ;
+ int decode_extradata_ps_mp4 (int const*,int,int *,int,void*) ;
 
 int ff_h264_decode_extradata(const uint8_t *data, int size, H264ParamSets *ps,
                              int *is_avc, int *nal_length_size,
@@ -41,9 +41,9 @@ int ff_h264_decode_extradata(const uint8_t *data, int size, H264ParamSets *ps,
             return AVERROR_INVALIDDATA;
         }
 
-        // Decode sps from avcC
-        cnt = *(p + 5) & 0x1f; // Number of sps
-        p  += 6;
+
+        cnt = *(p + 5) & 0x1f;
+        p += 6;
         for (i = 0; i < cnt; i++) {
             nalsize = AV_RB16(p) + 2;
             if (nalsize > size - (p - data))
@@ -56,8 +56,8 @@ int ff_h264_decode_extradata(const uint8_t *data, int size, H264ParamSets *ps,
             }
             p += nalsize;
         }
-        // Decode pps from avcC
-        cnt = *(p++); // Number of pps
+
+        cnt = *(p++);
         for (i = 0; i < cnt; i++) {
             nalsize = AV_RB16(p) + 2;
             if (nalsize > size - (p - data))
@@ -70,7 +70,7 @@ int ff_h264_decode_extradata(const uint8_t *data, int size, H264ParamSets *ps,
             }
             p += nalsize;
         }
-        // Store right nal length size that will be used to parse all other nals
+
         *nal_length_size = (data[4] & 0x03) + 1;
     } else {
         *is_avc = 0;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct CUnreachableData {int /*<<< orphan*/  mLocation; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (struct CUnreachableData*) ; 
- int /*<<< orphan*/  DeserializeLocation (char*,int,int /*<<< orphan*/ *) ; 
- int LOCATION_MAXLEN ; 
- int /*<<< orphan*/  Report (int,char*,char*) ; 
- scalar_t__ isAlreadyReported (int /*<<< orphan*/ *) ; 
+
+
+
+struct CUnreachableData {int mLocation; } ;
+
+
+ int ASSERT (struct CUnreachableData*) ;
+ int DeserializeLocation (char*,int,int *) ;
+ int LOCATION_MAXLEN ;
+ int Report (int,char*,char*) ;
+ scalar_t__ isAlreadyReported (int *) ;
 
 __attribute__((used)) static void
 HandleMissingReturn(bool isFatal, struct CUnreachableData *pData)
 {
-	char szLocation[LOCATION_MAXLEN];
+ char szLocation[LOCATION_MAXLEN];
 
-	ASSERT(pData);
+ ASSERT(pData);
 
-	if (isAlreadyReported(&pData->mLocation))
-		return;
+ if (isAlreadyReported(&pData->mLocation))
+  return;
 
-	DeserializeLocation(szLocation, LOCATION_MAXLEN, &pData->mLocation);
+ DeserializeLocation(szLocation, LOCATION_MAXLEN, &pData->mLocation);
 
-	Report(isFatal, "UBSan: Undefined Behavior in %s, execution reached the end of a value-returning function without returning a value\n",
-	       szLocation);
+ Report(isFatal, "UBSan: Undefined Behavior in %s, execution reached the end of a value-returning function without returning a value\n",
+        szLocation);
 }

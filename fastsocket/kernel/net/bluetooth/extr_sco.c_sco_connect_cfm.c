@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sco_conn {int dummy; } ;
-struct hci_conn {scalar_t__ type; int /*<<< orphan*/  dst; } ;
-typedef  int /*<<< orphan*/  __u8 ;
+struct hci_conn {scalar_t__ type; int dst; } ;
+typedef int __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,struct hci_conn*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ESCO_LINK ; 
- scalar_t__ SCO_LINK ; 
- int /*<<< orphan*/  batostr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bt_err (int /*<<< orphan*/ ) ; 
- struct sco_conn* sco_conn_add (struct hci_conn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sco_conn_del (struct hci_conn*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sco_conn_ready (struct sco_conn*) ; 
+
+ int BT_DBG (char*,struct hci_conn*,int ,int ) ;
+ scalar_t__ ESCO_LINK ;
+ scalar_t__ SCO_LINK ;
+ int batostr (int *) ;
+ int bt_err (int ) ;
+ struct sco_conn* sco_conn_add (struct hci_conn*,int ) ;
+ int sco_conn_del (struct hci_conn*,int ) ;
+ int sco_conn_ready (struct sco_conn*) ;
 
 __attribute__((used)) static int sco_connect_cfm(struct hci_conn *hcon, __u8 status)
 {
-	BT_DBG("hcon %p bdaddr %s status %d", hcon, batostr(&hcon->dst), status);
+ BT_DBG("hcon %p bdaddr %s status %d", hcon, batostr(&hcon->dst), status);
 
-	if (hcon->type != SCO_LINK && hcon->type != ESCO_LINK)
-		return 0;
+ if (hcon->type != SCO_LINK && hcon->type != ESCO_LINK)
+  return 0;
 
-	if (!status) {
-		struct sco_conn *conn;
+ if (!status) {
+  struct sco_conn *conn;
 
-		conn = sco_conn_add(hcon, status);
-		if (conn)
-			sco_conn_ready(conn);
-	} else
-		sco_conn_del(hcon, bt_err(status));
+  conn = sco_conn_add(hcon, status);
+  if (conn)
+   sco_conn_ready(conn);
+ } else
+  sco_conn_del(hcon, bt_err(status));
 
-	return 0;
+ return 0;
 }

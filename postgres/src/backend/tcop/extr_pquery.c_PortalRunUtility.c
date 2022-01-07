@@ -1,110 +1,98 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/ * utilityStmt; } ;
-struct TYPE_6__ {int /*<<< orphan*/  portalContext; int /*<<< orphan*/  queryEnv; int /*<<< orphan*/  portalParams; int /*<<< orphan*/  sourceText; int /*<<< orphan*/ * holdSnapshot; } ;
-typedef  int /*<<< orphan*/ * Snapshot ;
-typedef  TYPE_1__* Portal ;
-typedef  TYPE_2__ PlannedStmt ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  DestReceiver ;
 
-/* Variables and functions */
- scalar_t__ ActiveSnapshotSet () ; 
- int /*<<< orphan*/  CheckPointStmt ; 
- int /*<<< orphan*/  ConstraintsSetStmt ; 
- int /*<<< orphan*/  FetchStmt ; 
- int /*<<< orphan*/ * GetActiveSnapshot () ; 
- int /*<<< orphan*/ * GetTransactionSnapshot () ; 
- scalar_t__ IsA (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ListenStmt ; 
- int /*<<< orphan*/  LockStmt ; 
- int /*<<< orphan*/  MemoryContextSwitchTo (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NotifyStmt ; 
- int /*<<< orphan*/  PROCESS_UTILITY_QUERY ; 
- int /*<<< orphan*/  PROCESS_UTILITY_TOPLEVEL ; 
- int /*<<< orphan*/  PopActiveSnapshot () ; 
- int /*<<< orphan*/  ProcessUtility (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PushActiveSnapshot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RegisterSnapshot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TransactionStmt ; 
- int /*<<< orphan*/  UnlistenStmt ; 
- int /*<<< orphan*/  VariableSetStmt ; 
- int /*<<< orphan*/  VariableShowStmt ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int * utilityStmt; } ;
+struct TYPE_6__ {int portalContext; int queryEnv; int portalParams; int sourceText; int * holdSnapshot; } ;
+typedef int * Snapshot ;
+typedef TYPE_1__* Portal ;
+typedef TYPE_2__ PlannedStmt ;
+typedef int Node ;
+typedef int DestReceiver ;
+
+
+ scalar_t__ ActiveSnapshotSet () ;
+ int CheckPointStmt ;
+ int ConstraintsSetStmt ;
+ int FetchStmt ;
+ int * GetActiveSnapshot () ;
+ int * GetTransactionSnapshot () ;
+ scalar_t__ IsA (int *,int ) ;
+ int ListenStmt ;
+ int LockStmt ;
+ int MemoryContextSwitchTo (int ) ;
+ int NotifyStmt ;
+ int PROCESS_UTILITY_QUERY ;
+ int PROCESS_UTILITY_TOPLEVEL ;
+ int PopActiveSnapshot () ;
+ int ProcessUtility (TYPE_2__*,int ,int ,int ,int ,int *,char*) ;
+ int PushActiveSnapshot (int *) ;
+ int * RegisterSnapshot (int *) ;
+ int TransactionStmt ;
+ int UnlistenStmt ;
+ int VariableSetStmt ;
+ int VariableShowStmt ;
 
 __attribute__((used)) static void
 PortalRunUtility(Portal portal, PlannedStmt *pstmt,
-				 bool isTopLevel, bool setHoldSnapshot,
-				 DestReceiver *dest, char *completionTag)
+     bool isTopLevel, bool setHoldSnapshot,
+     DestReceiver *dest, char *completionTag)
 {
-	Node	   *utilityStmt = pstmt->utilityStmt;
-	Snapshot	snapshot;
+ Node *utilityStmt = pstmt->utilityStmt;
+ Snapshot snapshot;
+ if (!(IsA(utilityStmt, TransactionStmt) ||
+    IsA(utilityStmt, LockStmt) ||
+    IsA(utilityStmt, VariableSetStmt) ||
+    IsA(utilityStmt, VariableShowStmt) ||
+    IsA(utilityStmt, ConstraintsSetStmt) ||
 
-	/*
-	 * Set snapshot if utility stmt needs one.  Most reliable way to do this
-	 * seems to be to enumerate those that do not need one; this is a short
-	 * list.  Transaction control, LOCK, and SET must *not* set a snapshot
-	 * since they need to be executable at the start of a transaction-snapshot
-	 * mode transaction without freezing a snapshot.  By extension we allow
-	 * SHOW not to set a snapshot.  The other stmts listed are just efficiency
-	 * hacks.  Beware of listing anything that can modify the database --- if,
-	 * say, it has to update an index with expressions that invoke
-	 * user-defined functions, then it had better have a snapshot.
-	 */
-	if (!(IsA(utilityStmt, TransactionStmt) ||
-		  IsA(utilityStmt, LockStmt) ||
-		  IsA(utilityStmt, VariableSetStmt) ||
-		  IsA(utilityStmt, VariableShowStmt) ||
-		  IsA(utilityStmt, ConstraintsSetStmt) ||
-	/* efficiency hacks from here down */
-		  IsA(utilityStmt, FetchStmt) ||
-		  IsA(utilityStmt, ListenStmt) ||
-		  IsA(utilityStmt, NotifyStmt) ||
-		  IsA(utilityStmt, UnlistenStmt) ||
-		  IsA(utilityStmt, CheckPointStmt)))
-	{
-		snapshot = GetTransactionSnapshot();
-		/* If told to, register the snapshot we're using and save in portal */
-		if (setHoldSnapshot)
-		{
-			snapshot = RegisterSnapshot(snapshot);
-			portal->holdSnapshot = snapshot;
-		}
-		PushActiveSnapshot(snapshot);
-		/* PushActiveSnapshot might have copied the snapshot */
-		snapshot = GetActiveSnapshot();
-	}
-	else
-		snapshot = NULL;
+    IsA(utilityStmt, FetchStmt) ||
+    IsA(utilityStmt, ListenStmt) ||
+    IsA(utilityStmt, NotifyStmt) ||
+    IsA(utilityStmt, UnlistenStmt) ||
+    IsA(utilityStmt, CheckPointStmt)))
+ {
+  snapshot = GetTransactionSnapshot();
 
-	ProcessUtility(pstmt,
-				   portal->sourceText,
-				   isTopLevel ? PROCESS_UTILITY_TOPLEVEL : PROCESS_UTILITY_QUERY,
-				   portal->portalParams,
-				   portal->queryEnv,
-				   dest,
-				   completionTag);
+  if (setHoldSnapshot)
+  {
+   snapshot = RegisterSnapshot(snapshot);
+   portal->holdSnapshot = snapshot;
+  }
+  PushActiveSnapshot(snapshot);
 
-	/* Some utility statements may change context on us */
-	MemoryContextSwitchTo(portal->portalContext);
+  snapshot = GetActiveSnapshot();
+ }
+ else
+  snapshot = ((void*)0);
 
-	/*
-	 * Some utility commands may pop the ActiveSnapshot stack from under us,
-	 * so be careful to only pop the stack if our snapshot is still at the
-	 * top.
-	 */
-	if (snapshot != NULL && ActiveSnapshotSet() &&
-		snapshot == GetActiveSnapshot())
-		PopActiveSnapshot();
+ ProcessUtility(pstmt,
+       portal->sourceText,
+       isTopLevel ? PROCESS_UTILITY_TOPLEVEL : PROCESS_UTILITY_QUERY,
+       portal->portalParams,
+       portal->queryEnv,
+       dest,
+       completionTag);
+
+
+ MemoryContextSwitchTo(portal->portalContext);
+
+
+
+
+
+
+ if (snapshot != ((void*)0) && ActiveSnapshotSet() &&
+  snapshot == GetActiveSnapshot())
+  PopActiveSnapshot();
 }

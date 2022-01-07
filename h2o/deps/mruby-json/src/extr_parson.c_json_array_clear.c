@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ count; } ;
-typedef  int /*<<< orphan*/  JSON_Status ;
-typedef  TYPE_1__ JSON_Array ;
+typedef int JSON_Status ;
+typedef TYPE_1__ JSON_Array ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSONFailure ; 
- int /*<<< orphan*/  JSONSuccess ; 
- size_t json_array_get_count (TYPE_1__*) ; 
- int /*<<< orphan*/  json_array_get_value (TYPE_1__*,size_t) ; 
- int /*<<< orphan*/  json_value_free (int /*<<< orphan*/ ) ; 
+
+ int JSONFailure ;
+ int JSONSuccess ;
+ size_t json_array_get_count (TYPE_1__*) ;
+ int json_array_get_value (TYPE_1__*,size_t) ;
+ int json_value_free (int ) ;
 
 JSON_Status json_array_clear(JSON_Array *array) {
     size_t i = 0;
-    if (array == NULL) {
+    if (array == ((void*)0)) {
         return JSONFailure;
     }
     for (i = 0; i < json_array_get_count(array); i++) {

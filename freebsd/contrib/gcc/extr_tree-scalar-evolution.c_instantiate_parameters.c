@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
+
+
+
+
+typedef int tree ;
 struct loop {int num; } ;
-typedef  int /*<<< orphan*/  htab_t ;
+typedef int htab_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSERT_SUPERLOOP_CHRECS ; 
- int TDF_DETAILS ; 
- int /*<<< orphan*/  del_scev_info ; 
- scalar_t__ dump_file ; 
- int dump_flags ; 
- int /*<<< orphan*/  eq_scev_info ; 
- int /*<<< orphan*/  fprintf (scalar_t__,char*,...) ; 
- int /*<<< orphan*/  hash_scev_info ; 
- int /*<<< orphan*/  htab_create (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  htab_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  instantiate_parameters_1 (struct loop*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  print_generic_expr (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int INSERT_SUPERLOOP_CHRECS ;
+ int TDF_DETAILS ;
+ int del_scev_info ;
+ scalar_t__ dump_file ;
+ int dump_flags ;
+ int eq_scev_info ;
+ int fprintf (scalar_t__,char*,...) ;
+ int hash_scev_info ;
+ int htab_create (int,int ,int ,int ) ;
+ int htab_delete (int ) ;
+ int instantiate_parameters_1 (struct loop*,int ,int ,int ,int ) ;
+ int print_generic_expr (scalar_t__,int ,int ) ;
 
 tree
 instantiate_parameters (struct loop *loop,
-			tree chrec)
+   tree chrec)
 {
   tree res;
   htab_t cache = htab_create (10, hash_scev_info, eq_scev_info, del_scev_info);
@@ -43,9 +43,9 @@ instantiate_parameters (struct loop *loop,
       print_generic_expr (dump_file, chrec, 0);
       fprintf (dump_file, ")\n");
     }
- 
+
   res = instantiate_parameters_1 (loop, chrec, INSERT_SUPERLOOP_CHRECS, cache,
-				  0);
+      0);
 
   if (dump_file && (dump_flags & TDF_DETAILS))
     {
@@ -55,6 +55,6 @@ instantiate_parameters (struct loop *loop,
     }
 
   htab_delete (cache);
-  
+
   return res;
 }

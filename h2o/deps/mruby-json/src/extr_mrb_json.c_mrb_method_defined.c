@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  scalar_t__ mrb_sym ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
-typedef  int /*<<< orphan*/  mrb_bool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- size_t RARRAY_LEN (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * RARRAY_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ mrb_array_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_false_value () ; 
- int /*<<< orphan*/  mrb_funcall (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_gc_arena_restore (int /*<<< orphan*/ *,int) ; 
- int mrb_gc_arena_save (int /*<<< orphan*/ *) ; 
- scalar_t__ mrb_intern_cstr (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ mrb_symbol (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef scalar_t__ mrb_sym ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+typedef int mrb_bool ;
+
+
+ int FALSE ;
+ size_t RARRAY_LEN (int ) ;
+ int * RARRAY_PTR (int ) ;
+ int TRUE ;
+ scalar_t__ mrb_array_p (int ) ;
+ int mrb_false_value () ;
+ int mrb_funcall (int *,int ,char*,int,int ) ;
+ int mrb_gc_arena_restore (int *,int) ;
+ int mrb_gc_arena_save (int *) ;
+ scalar_t__ mrb_intern_cstr (int *,char const*) ;
+ scalar_t__ mrb_symbol (int ) ;
 
 __attribute__((used)) static mrb_bool
 mrb_method_defined(mrb_state* mrb, mrb_value value, const char* name) {

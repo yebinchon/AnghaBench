@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TCHAR ;
-typedef  scalar_t__* LPTSTR ;
-typedef  int /*<<< orphan*/ * LPCTSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AddBackslash (scalar_t__*) ; 
- int /*<<< orphan*/  ERROR_DIRECTORY ; 
- int /*<<< orphan*/  FALSE ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int /*<<< orphan*/  GetCurrentDirectory (int,scalar_t__*) ; 
- int GetFileAttributes (scalar_t__*) ; 
- int /*<<< orphan*/  GetFullPathName (scalar_t__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  PrintError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _T (char) ; 
- scalar_t__* _tcsrchr (scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lstrcpyn (scalar_t__*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int TCHAR ;
+typedef scalar_t__* LPTSTR ;
+typedef int * LPCTSTR ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int AddBackslash (scalar_t__*) ;
+ int ERROR_DIRECTORY ;
+ int FALSE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int GetCurrentDirectory (int,scalar_t__*) ;
+ int GetFileAttributes (scalar_t__*) ;
+ int GetFullPathName (scalar_t__*,int,int *,int *) ;
+ int GetLastError () ;
+ int MAX_PATH ;
+ int PrintError (int ) ;
+ int TRUE ;
+ int _T (char) ;
+ scalar_t__* _tcsrchr (scalar_t__*,int ) ;
+ int lstrcpyn (scalar_t__*,int *,int) ;
 
 __attribute__((used)) static BOOL
 GetPathOfFile(LPTSTR FilePath, LPCTSTR pszFiles)
@@ -41,10 +41,10 @@ GetPathOfFile(LPTSTR FilePath, LPCTSTR pszFiles)
 
     lstrcpyn(FilePath, pszFiles, MAX_PATH);
     pch = _tcsrchr(FilePath, _T('\\'));
-    if (pch != NULL)
+    if (pch != ((void*)0))
     {
         *pch = 0;
-        if (!GetFullPathName(FilePath, MAX_PATH, FullPath, NULL))
+        if (!GetFullPathName(FilePath, MAX_PATH, FullPath, ((void*)0)))
         {
             PrintError(GetLastError());
             return FALSE;

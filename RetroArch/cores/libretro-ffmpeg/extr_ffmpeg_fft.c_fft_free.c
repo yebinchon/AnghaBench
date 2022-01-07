@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fft_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fft_context_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int fft_t ;
+
+
+ int fft_context_destroy (int *) ;
+ int free (int *) ;
 
 void fft_free(fft_t *fft)
 {
@@ -24,5 +24,5 @@ void fft_free(fft_t *fft)
    fft_context_destroy(fft);
    if (fft)
       free(fft);
-   fft = NULL;
+   fft = ((void*)0);
 }

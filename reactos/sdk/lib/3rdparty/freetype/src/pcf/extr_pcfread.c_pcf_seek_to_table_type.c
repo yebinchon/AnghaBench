@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ pos; } ;
 struct TYPE_5__ {size_t type; scalar_t__ offset; size_t size; size_t format; } ;
-typedef  TYPE_1__* PCF_Table ;
-typedef  size_t FT_ULong ;
-typedef  TYPE_2__* FT_Stream ;
-typedef  int /*<<< orphan*/  FT_Error ;
+typedef TYPE_1__* PCF_Table ;
+typedef size_t FT_ULong ;
+typedef TYPE_2__* FT_Stream ;
+typedef int FT_Error ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FT_Err_Ok ; 
- scalar_t__ FT_STREAM_SKIP (scalar_t__) ; 
- int /*<<< orphan*/  FT_THROW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Invalid_File_Format ; 
- int /*<<< orphan*/  Invalid_Stream_Skip ; 
+
+ int FT_ERR (int ) ;
+ int FT_Err_Ok ;
+ scalar_t__ FT_STREAM_SKIP (scalar_t__) ;
+ int FT_THROW (int ) ;
+ int Invalid_File_Format ;
+ int Invalid_Stream_Skip ;
 
 __attribute__((used)) static FT_Error
-  pcf_seek_to_table_type( FT_Stream  stream,
-                          PCF_Table  tables,
-                          FT_ULong   ntables, /* same as PCF_Toc->count */
-                          FT_ULong   type,
-                          FT_ULong  *aformat,
-                          FT_ULong  *asize )
+  pcf_seek_to_table_type( FT_Stream stream,
+                          PCF_Table tables,
+                          FT_ULong ntables,
+                          FT_ULong type,
+                          FT_ULong *aformat,
+                          FT_ULong *asize )
   {
-    FT_Error  error = FT_ERR( Invalid_File_Format );
-    FT_ULong  i;
+    FT_Error error = FT_ERR( Invalid_File_Format );
+    FT_ULong i;
 
 
     for ( i = 0; i < ntables; i++ )
@@ -54,7 +54,7 @@ __attribute__((used)) static FT_Error
           goto Fail;
         }
 
-        *asize   = tables[i].size;
+        *asize = tables[i].size;
         *aformat = tables[i].format;
 
         return FT_Err_Ok;

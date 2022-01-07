@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct section {struct section* next; int /*<<< orphan*/  name; int /*<<< orphan*/  values_index; int /*<<< orphan*/  mutex; int /*<<< orphan*/  hash; } ;
+
+
+
+
+struct section {struct section* next; int name; int values_index; int mutex; int hash; } ;
 struct config {struct section* sections; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  D_CONFIG ; 
- struct section* appconfig_index_add (struct config*,struct section*) ; 
- int /*<<< orphan*/  appconfig_option_compare ; 
- int /*<<< orphan*/  appconfig_unlock (struct config*) ; 
- int /*<<< orphan*/  appconfig_wrlock (struct config*) ; 
- int /*<<< orphan*/  avl_init_lock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct section* callocz (int,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char const*) ; 
- int /*<<< orphan*/  error (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netdata_mutex_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  simple_hash (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strdupz (char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+ int D_CONFIG ;
+ struct section* appconfig_index_add (struct config*,struct section*) ;
+ int appconfig_option_compare ;
+ int appconfig_unlock (struct config*) ;
+ int appconfig_wrlock (struct config*) ;
+ int avl_init_lock (int *,int ) ;
+ struct section* callocz (int,int) ;
+ int debug (int ,char*,char const*) ;
+ int error (char*,int ) ;
+ int netdata_mutex_init (int *) ;
+ int simple_hash (int ) ;
+ int strdupz (char const*) ;
+ scalar_t__ unlikely (int) ;
 
 __attribute__((used)) static inline struct section *appconfig_section_create(struct config *root, const char *section) {
     debug(D_CONFIG, "Creating section '%s'.", section);

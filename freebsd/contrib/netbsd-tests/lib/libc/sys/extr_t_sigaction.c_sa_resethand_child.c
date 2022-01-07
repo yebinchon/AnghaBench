@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {int sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/ * sa_handler; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  EXIT_SUCCESS ; 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  handler ; 
- scalar_t__ handler_called ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sigaction (int /*<<< orphan*/ ,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
+
+
+
+struct sigaction {int sa_flags; int sa_mask; int * sa_handler; } ;
+
+
+ int EXIT_FAILURE ;
+ int EXIT_SUCCESS ;
+ int SIGUSR1 ;
+ int exit (int ) ;
+ int getpid () ;
+ int handler ;
+ scalar_t__ handler_called ;
+ int kill (int ,int ) ;
+ int sigaction (int ,struct sigaction*,int *) ;
+ int sigemptyset (int *) ;
 
 __attribute__((used)) static void
 sa_resethand_child(const int flags)
@@ -33,7 +33,7 @@ sa_resethand_child(const int flags)
     sa.sa_handler = &handler;
     sigemptyset(&sa.sa_mask);
 
-    sigaction(SIGUSR1, &sa, NULL);
+    sigaction(SIGUSR1, &sa, ((void*)0));
     kill(getpid(), SIGUSR1);
     exit(handler_called ? EXIT_SUCCESS : EXIT_FAILURE);
 }

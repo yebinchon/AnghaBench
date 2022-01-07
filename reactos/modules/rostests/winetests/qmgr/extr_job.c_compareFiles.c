@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileW (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int /*<<< orphan*/  FILE_SHARE_READ ; 
- int /*<<< orphan*/  GENERIC_READ ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int ReadFile (scalar_t__,char*,int,scalar_t__*,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (char*,char*,scalar_t__) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileW (int *,int ,int ,int *,int ,int ,int *) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_SHARE_READ ;
+ int GENERIC_READ ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int OPEN_EXISTING ;
+ int ReadFile (scalar_t__,char*,int,scalar_t__*,int *) ;
+ scalar_t__ memcmp (char*,char*,scalar_t__) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void compareFiles(WCHAR *n1, WCHAR *n2)
 {
@@ -33,17 +33,17 @@ __attribute__((used)) static void compareFiles(WCHAR *n1, WCHAR *n2)
     DWORD s1, s2;
     HANDLE f1, f2;
 
-    f1 = CreateFileW(n1, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
-                     FILE_ATTRIBUTE_NORMAL, NULL);
+    f1 = CreateFileW(n1, GENERIC_READ, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING,
+                     FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(f1 != INVALID_HANDLE_VALUE, "CreateFile\n");
 
-    f2 = CreateFileW(n2, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
-                     FILE_ATTRIBUTE_NORMAL, NULL);
+    f2 = CreateFileW(n2, GENERIC_READ, FILE_SHARE_READ, ((void*)0), OPEN_EXISTING,
+                     FILE_ATTRIBUTE_NORMAL, ((void*)0));
     ok(f2 != INVALID_HANDLE_VALUE, "CreateFile\n");
 
-    /* Neither of these files is very big */
-    ok(ReadFile(f1, b1, sizeof b1, &s1, NULL), "ReadFile\n");
-    ok(ReadFile(f2, b2, sizeof b2, &s2, NULL), "ReadFile\n");
+
+    ok(ReadFile(f1, b1, sizeof b1, &s1, ((void*)0)), "ReadFile\n");
+    ok(ReadFile(f2, b2, sizeof b2, &s2, ((void*)0)), "ReadFile\n");
 
     CloseHandle(f1);
     CloseHandle(f2);

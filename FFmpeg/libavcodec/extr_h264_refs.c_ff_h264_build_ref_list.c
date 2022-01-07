@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_7__ ;
-typedef  struct TYPE_28__   TYPE_6__ ;
-typedef  struct TYPE_27__   TYPE_5__ ;
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_29__ {scalar_t__ pic_id; int reference; TYPE_3__* parent; int /*<<< orphan*/  poc; } ;
-struct TYPE_28__ {TYPE_7__* default_ref; int /*<<< orphan*/ * last_pocs; int /*<<< orphan*/  avctx; TYPE_5__** long_ref; TYPE_5__** short_ref; int /*<<< orphan*/  short_ref_count; } ;
+
+
+typedef struct TYPE_29__ TYPE_7__ ;
+typedef struct TYPE_28__ TYPE_6__ ;
+typedef struct TYPE_27__ TYPE_5__ ;
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+
+
+struct TYPE_29__ {scalar_t__ pic_id; int reference; TYPE_3__* parent; int poc; } ;
+struct TYPE_28__ {TYPE_7__* default_ref; int * last_pocs; int avctx; TYPE_5__** long_ref; TYPE_5__** short_ref; int short_ref_count; } ;
 struct TYPE_27__ {int reference; int long_ref; int frame_num; int pic_id; } ;
 struct TYPE_26__ {int list_count; int curr_pic_num; int* nb_ref_modifications; unsigned int const max_pic_num; int* ref_count; TYPE_7__** ref_list; TYPE_2__** ref_modifications; } ;
 struct TYPE_25__ {scalar_t__ long_ref; TYPE_1__* f; } ;
 struct TYPE_24__ {unsigned int op; unsigned int val; } ;
-struct TYPE_23__ {int /*<<< orphan*/ * buf; } ;
-typedef  TYPE_4__ H264SliceContext ;
-typedef  TYPE_5__ H264Picture ;
-typedef  TYPE_6__ H264Context ;
+struct TYPE_23__ {int * buf; } ;
+typedef TYPE_4__ H264SliceContext ;
+typedef TYPE_5__ H264Picture ;
+typedef TYPE_6__ H264Context ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_ARRAY_ELEMS (int /*<<< orphan*/ *) ; 
- scalar_t__ FIELD_PICTURE (TYPE_6__*) ; 
- scalar_t__ FRAME_MBAFF (TYPE_6__*) ; 
- int /*<<< orphan*/  INT_MIN ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- scalar_t__ av_buffer_get_ref_count (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  h264_fill_mbaff_ref_list (TYPE_4__*) ; 
- int /*<<< orphan*/  h264_initialise_ref_list (TYPE_6__*,TYPE_4__*) ; 
- int /*<<< orphan*/  memset (TYPE_7__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ mismatches_ref (TYPE_6__*,TYPE_5__*) ; 
- int /*<<< orphan*/  pic_as_field (TYPE_7__*,int) ; 
- int pic_num_extract (TYPE_6__*,unsigned int,int*) ; 
- int /*<<< orphan*/  print_long_term (TYPE_6__*) ; 
- int /*<<< orphan*/  print_short_term (TYPE_6__*) ; 
- int /*<<< orphan*/  ref_from_h264pic (TYPE_7__*,TYPE_5__*) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ int FF_ARRAY_ELEMS (int *) ;
+ scalar_t__ FIELD_PICTURE (TYPE_6__*) ;
+ scalar_t__ FRAME_MBAFF (TYPE_6__*) ;
+ int INT_MIN ;
+ int assert (int) ;
+ int av_assert0 (int) ;
+ scalar_t__ av_buffer_get_ref_count (int ) ;
+ int av_log (int ,int ,char*,...) ;
+ int h264_fill_mbaff_ref_list (TYPE_4__*) ;
+ int h264_initialise_ref_list (TYPE_6__*,TYPE_4__*) ;
+ int memset (TYPE_7__*,int ,int) ;
+ scalar_t__ mismatches_ref (TYPE_6__*,TYPE_5__*) ;
+ int pic_as_field (TYPE_7__*,int) ;
+ int pic_num_extract (TYPE_6__*,unsigned int,int*) ;
+ int print_long_term (TYPE_6__*) ;
+ int print_short_term (TYPE_6__*) ;
+ int ref_from_h264pic (TYPE_7__*,TYPE_5__*) ;
 
 int ff_h264_build_ref_list(H264Context *h, H264SliceContext *sl)
 {
@@ -63,10 +63,10 @@ int ff_h264_build_ref_list(H264Context *h, H264SliceContext *sl)
 
         for (index = 0; index < sl->nb_ref_modifications[list]; index++) {
             unsigned int modification_of_pic_nums_idc = sl->ref_modifications[list][index].op;
-            unsigned int                          val = sl->ref_modifications[list][index].val;
+            unsigned int val = sl->ref_modifications[list][index].val;
             unsigned int pic_id;
             int i;
-            H264Picture *ref = NULL;
+            H264Picture *ref = ((void*)0);
 
             switch (modification_of_pic_nums_idc) {
             case 0:
@@ -102,7 +102,7 @@ int ff_h264_build_ref_list(H264Context *h, H264SliceContext *sl)
             }
             case 2: {
                 int long_idx;
-                pic_id = val; // long_term_pic_idx
+                pic_id = val;
 
                 long_idx = pic_num_extract(h, pic_id, &pic_structure);
 
@@ -131,12 +131,12 @@ int ff_h264_build_ref_list(H264Context *h, H264SliceContext *sl)
                        i < 0 ? "reference picture missing during reorder\n" :
                                "mismatching reference\n"
                       );
-                memset(&sl->ref_list[list][index], 0, sizeof(sl->ref_list[0][0])); // FIXME
+                memset(&sl->ref_list[list][index], 0, sizeof(sl->ref_list[0][0]));
             } else {
                 for (i = index; i + 1 < sl->ref_count[list]; i++) {
                     if (sl->ref_list[list][i].parent &&
                         ref->long_ref == sl->ref_list[list][i].parent->long_ref &&
-                        ref->pic_id   == sl->ref_list[list][i].pic_id)
+                        ref->pic_id == sl->ref_list[list][i].pic_id)
                         break;
                 }
                 for (; i > index; i--) {
@@ -151,7 +151,7 @@ int ff_h264_build_ref_list(H264Context *h, H264SliceContext *sl)
     }
     for (list = 0; list < sl->list_count; list++) {
         for (index = 0; index < sl->ref_count[list]; index++) {
-            if (   !sl->ref_list[list][index].parent
+            if ( !sl->ref_list[list][index].parent
                 || (!FIELD_PICTURE(h) && (sl->ref_list[list][index].reference&3) != 3)) {
                 int i;
                 av_log(h->avctx, AV_LOG_ERROR, "Missing reference picture, default is %d\n", h->default_ref[list].poc);

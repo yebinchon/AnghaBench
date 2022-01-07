@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int* state; } ;
-typedef  TYPE_1__ SUM_CONTEXT ;
+typedef TYPE_1__ SUM_CONTEXT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void sha1_init(SUM_CONTEXT *ctx)
 {
-	memset(ctx, 0, sizeof(*ctx));
-	ctx->state[0] = 0x67452301;
-	ctx->state[1] = 0xefcdab89;
-	ctx->state[2] = 0x98badcfe;
-	ctx->state[3] = 0x10325476;
-	ctx->state[4] = 0xc3d2e1f0;
+ memset(ctx, 0, sizeof(*ctx));
+ ctx->state[0] = 0x67452301;
+ ctx->state[1] = 0xefcdab89;
+ ctx->state[2] = 0x98badcfe;
+ ctx->state[3] = 0x10325476;
+ ctx->state[4] = 0xc3d2e1f0;
 }

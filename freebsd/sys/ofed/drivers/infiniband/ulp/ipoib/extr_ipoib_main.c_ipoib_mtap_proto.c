@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct mbuf {int dummy; } ;
-struct ifnet {int /*<<< orphan*/  if_bpf; } ;
-struct ether_header {int /*<<< orphan*/  ether_dhost; int /*<<< orphan*/  ether_shost; int /*<<< orphan*/  ether_type; } ;
-typedef  int /*<<< orphan*/  eh ;
+struct ifnet {int if_bpf; } ;
+struct ether_header {int ether_dhost; int ether_shost; int ether_type; } ;
+typedef int eh ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETHER_ADDR_LEN ; 
- int /*<<< orphan*/  bpf_mtap2 (int /*<<< orphan*/ ,struct ether_header*,int,struct mbuf*) ; 
- int /*<<< orphan*/  bzero (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int ETHER_ADDR_LEN ;
+ int bpf_mtap2 (int ,struct ether_header*,int,struct mbuf*) ;
+ int bzero (int *,int ) ;
 
 void
 ipoib_mtap_proto(struct ifnet *ifp, struct mbuf *mb, uint16_t proto)
 {
-	struct ether_header eh;
+ struct ether_header eh;
 
-	eh.ether_type = proto;
-	bzero(&eh.ether_shost, ETHER_ADDR_LEN);
-	bzero(&eh.ether_dhost, ETHER_ADDR_LEN);
-	bpf_mtap2(ifp->if_bpf, &eh, sizeof(eh), mb);
+ eh.ether_type = proto;
+ bzero(&eh.ether_shost, ETHER_ADDR_LEN);
+ bzero(&eh.ether_dhost, ETHER_ADDR_LEN);
+ bpf_mtap2(ifp->if_bpf, &eh, sizeof(eh), mb);
 }

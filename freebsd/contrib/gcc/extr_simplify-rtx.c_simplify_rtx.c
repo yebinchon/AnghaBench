@@ -1,47 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int GET_CODE (int /*<<< orphan*/ *) ; 
- int GET_MODE (int /*<<< orphan*/ *) ; 
- int GET_RTX_CLASS (int) ; 
- int HIGH ; 
- int LO_SUM ; 
-#define  RTX_BIN_ARITH 136 
-#define  RTX_BITFIELD_OPS 135 
-#define  RTX_COMM_ARITH 134 
-#define  RTX_COMM_COMPARE 133 
-#define  RTX_COMPARE 132 
-#define  RTX_EXTRA 131 
-#define  RTX_OBJ 130 
-#define  RTX_TERNARY 129 
-#define  RTX_UNARY 128 
- int SUBREG ; 
- int /*<<< orphan*/  SUBREG_BYTE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SUBREG_REG (int /*<<< orphan*/ *) ; 
- int VOIDmode ; 
- int /*<<< orphan*/ * XEXP (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rtx_equal_p (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * simplify_binary_operation (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * simplify_gen_binary (int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * simplify_gen_subreg (int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * simplify_relational_operation (int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * simplify_ternary_operation (int,int,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * simplify_unary_operation (int,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  swap_commutative_operands_p (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GET_CODE (int *) ;
+ int GET_MODE (int *) ;
+ int GET_RTX_CLASS (int) ;
+ int HIGH ;
+ int LO_SUM ;
+ int SUBREG ;
+ int SUBREG_BYTE (int *) ;
+ int * SUBREG_REG (int *) ;
+ int VOIDmode ;
+ int * XEXP (int *,int) ;
+ int rtx_equal_p (int *,int *) ;
+ int * simplify_binary_operation (int,int,int *,int *) ;
+ int * simplify_gen_binary (int,int,int *,int *) ;
+ int * simplify_gen_subreg (int,int *,int,int ) ;
+ int * simplify_relational_operation (int,int,int,int *,int *) ;
+ int * simplify_ternary_operation (int,int,int,int *,int *,int *) ;
+ int * simplify_unary_operation (int,int,int *,int) ;
+ int swap_commutative_operands_p (int *,int *) ;
 
 rtx
 simplify_rtx (rtx x)
@@ -51,26 +42,26 @@ simplify_rtx (rtx x)
 
   switch (GET_RTX_CLASS (code))
     {
-    case RTX_UNARY:
+    case 128:
       return simplify_unary_operation (code, mode,
-				       XEXP (x, 0), GET_MODE (XEXP (x, 0)));
-    case RTX_COMM_ARITH:
+           XEXP (x, 0), GET_MODE (XEXP (x, 0)));
+    case 134:
       if (swap_commutative_operands_p (XEXP (x, 0), XEXP (x, 1)))
-	return simplify_gen_binary (code, mode, XEXP (x, 1), XEXP (x, 0));
+ return simplify_gen_binary (code, mode, XEXP (x, 1), XEXP (x, 0));
 
-      /* Fall through....  */
 
-    case RTX_BIN_ARITH:
+
+    case 136:
       return simplify_binary_operation (code, mode, XEXP (x, 0), XEXP (x, 1));
 
-    case RTX_TERNARY:
-    case RTX_BITFIELD_OPS:
+    case 129:
+    case 135:
       return simplify_ternary_operation (code, mode, GET_MODE (XEXP (x, 0)),
-					 XEXP (x, 0), XEXP (x, 1),
-					 XEXP (x, 2));
+      XEXP (x, 0), XEXP (x, 1),
+      XEXP (x, 2));
 
-    case RTX_COMPARE:
-    case RTX_COMM_COMPARE:
+    case 132:
+    case 133:
       return simplify_relational_operation (code, mode,
                                             ((GET_MODE (XEXP (x, 0))
                                              != VOIDmode)
@@ -79,25 +70,25 @@ simplify_rtx (rtx x)
                                             XEXP (x, 0),
                                             XEXP (x, 1));
 
-    case RTX_EXTRA:
+    case 131:
       if (code == SUBREG)
-	return simplify_gen_subreg (mode, SUBREG_REG (x),
-				    GET_MODE (SUBREG_REG (x)),
-				    SUBREG_BYTE (x));
+ return simplify_gen_subreg (mode, SUBREG_REG (x),
+        GET_MODE (SUBREG_REG (x)),
+        SUBREG_BYTE (x));
       break;
 
-    case RTX_OBJ:
+    case 130:
       if (code == LO_SUM)
-	{
-	  /* Convert (lo_sum (high FOO) FOO) to FOO.  */
-	  if (GET_CODE (XEXP (x, 0)) == HIGH
-	      && rtx_equal_p (XEXP (XEXP (x, 0), 0), XEXP (x, 1)))
-	  return XEXP (x, 1);
-	}
+ {
+
+   if (GET_CODE (XEXP (x, 0)) == HIGH
+       && rtx_equal_p (XEXP (XEXP (x, 0), 0), XEXP (x, 1)))
+   return XEXP (x, 1);
+ }
       break;
 
     default:
       break;
     }
-  return NULL;
+  return ((void*)0);
 }

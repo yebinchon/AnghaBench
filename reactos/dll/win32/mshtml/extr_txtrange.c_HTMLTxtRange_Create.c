@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  nsIDOMRange ;
-struct TYPE_11__ {int /*<<< orphan*/  range_list; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; } ;
-struct TYPE_10__ {int ref; TYPE_2__ IHTMLTxtRange_iface; int /*<<< orphan*/  entry; TYPE_4__* doc; int /*<<< orphan*/ * nsrange; TYPE_1__ IOleCommandTarget_iface; int /*<<< orphan*/  dispex; } ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  TYPE_2__ IHTMLTxtRange ;
-typedef  TYPE_3__ HTMLTxtRange ;
-typedef  TYPE_4__ HTMLDocumentNode ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  HTMLTxtRangeVtbl ; 
- int /*<<< orphan*/  HTMLTxtRange_dispex ; 
- int /*<<< orphan*/  OleCommandTargetVtbl ; 
- int /*<<< orphan*/  S_OK ; 
- TYPE_3__* heap_alloc (int) ; 
- int /*<<< orphan*/  init_dispex (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_add_head (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nsIDOMRange_AddRef (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int nsIDOMRange ;
+struct TYPE_11__ {int range_list; } ;
+struct TYPE_9__ {int * lpVtbl; } ;
+struct TYPE_8__ {int * lpVtbl; } ;
+struct TYPE_10__ {int ref; TYPE_2__ IHTMLTxtRange_iface; int entry; TYPE_4__* doc; int * nsrange; TYPE_1__ IOleCommandTarget_iface; int dispex; } ;
+typedef int IUnknown ;
+typedef TYPE_2__ IHTMLTxtRange ;
+typedef TYPE_3__ HTMLTxtRange ;
+typedef TYPE_4__ HTMLDocumentNode ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int HTMLTxtRangeVtbl ;
+ int HTMLTxtRange_dispex ;
+ int OleCommandTargetVtbl ;
+ int S_OK ;
+ TYPE_3__* heap_alloc (int) ;
+ int init_dispex (int *,int *,int *) ;
+ int list_add_head (int *,int *) ;
+ int nsIDOMRange_AddRef (int *) ;
 
 HRESULT HTMLTxtRange_Create(HTMLDocumentNode *doc, nsIDOMRange *nsrange, IHTMLTxtRange **p)
 {

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct hns3_enet_ring {TYPE_2__* desc; struct hns3_desc_cb* desc_cb; } ;
-struct hns3_desc_cb {int /*<<< orphan*/  dma; } ;
+struct hns3_desc_cb {int dma; } ;
 struct TYPE_3__ {scalar_t__ bd_base_info; } ;
-struct TYPE_4__ {TYPE_1__ rx; int /*<<< orphan*/  addr; } ;
+struct TYPE_4__ {TYPE_1__ rx; int addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_to_le64 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hns3_unmap_buffer (struct hns3_enet_ring*,struct hns3_desc_cb*) ; 
+
+ int cpu_to_le64 (int ) ;
+ int hns3_unmap_buffer (struct hns3_enet_ring*,struct hns3_desc_cb*) ;
 
 __attribute__((used)) static void hns3_replace_buffer(struct hns3_enet_ring *ring, int i,
-				struct hns3_desc_cb *res_cb)
+    struct hns3_desc_cb *res_cb)
 {
-	hns3_unmap_buffer(ring, &ring->desc_cb[i]);
-	ring->desc_cb[i] = *res_cb;
-	ring->desc[i].addr = cpu_to_le64(ring->desc_cb[i].dma);
-	ring->desc[i].rx.bd_base_info = 0;
+ hns3_unmap_buffer(ring, &ring->desc_cb[i]);
+ ring->desc_cb[i] = *res_cb;
+ ring->desc[i].addr = cpu_to_le64(ring->desc_cb[i].dma);
+ ring->desc[i].rx.bd_base_info = 0;
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-struct TYPE_2__ {int /*<<< orphan*/  data; int /*<<< orphan*/  (* wc_hook ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+struct TYPE_2__ {int data; int (* wc_hook ) (int ,int ) ;} ;
 struct conv_struct {TYPE_1__ hooks; } ;
-typedef  scalar_t__ iconv_t ;
+typedef scalar_t__ iconv_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int stub1 (int ,int ) ;
 
 __attribute__((used)) static size_t wchar_id_loop_convert (iconv_t icd,
                                      const char* * inbuf, size_t *inbytesleft,
@@ -35,10 +35,10 @@ __attribute__((used)) static size_t wchar_id_loop_convert (iconv_t icd,
     do {
       wchar_t wc = *inptr++;
       *outptr++ = wc;
-      #ifndef LIBICONV_PLUG
+
       if (cd->hooks.wc_hook)
         (*cd->hooks.wc_hook)(wc, cd->hooks.data);
-      #endif
+
     } while (--count > 0);
     *inbuf = (const char*) inptr;
     *outbuf = (char*) outptr;

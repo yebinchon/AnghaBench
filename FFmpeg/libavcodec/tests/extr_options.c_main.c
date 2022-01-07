@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  AVCodec ;
 
-/* Variables and functions */
- int FF_ARRAY_ELEMS (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avcodec_register (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dummy_v1_encoder ; 
- int /*<<< orphan*/  dummy_v2_encoder ; 
- int /*<<< orphan*/  dummy_v3_encoder ; 
- int /*<<< orphan*/  dummy_v4_encoder ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  test_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int AVCodec ;
+
+
+ int FF_ARRAY_ELEMS (int **) ;
+ int avcodec_register (int *) ;
+ int dummy_v1_encoder ;
+ int dummy_v2_encoder ;
+ int dummy_v3_encoder ;
+ int dummy_v4_encoder ;
+ int printf (char*) ;
+ int test_copy (int *,int *) ;
 
 int main(void)
 {
@@ -29,7 +29,7 @@ int main(void)
         &dummy_v2_encoder,
         &dummy_v3_encoder,
         &dummy_v4_encoder,
-        NULL,
+        ((void*)0),
     };
     int i, j;
 

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  md5_context ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t fread (unsigned char*,int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  md5_finish (int /*<<< orphan*/ *,unsigned char*) ; 
- int /*<<< orphan*/  md5_starts (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  md5_update (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int md5_context ;
+typedef int buf ;
+typedef int FILE ;
+
+
+ int fclose (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fopen (char*,char*) ;
+ size_t fread (unsigned char*,int,int,int *) ;
+ int md5_finish (int *,unsigned char*) ;
+ int md5_starts (int *) ;
+ int md5_update (int *,unsigned char*,int) ;
+ int memset (int *,int ,int) ;
 
 int md5_file( char *path, unsigned char output[16] )
 {
@@ -31,7 +31,7 @@ int md5_file( char *path, unsigned char output[16] )
     md5_context ctx;
     unsigned char buf[1024];
 
-    if( ( f = fopen( path, "rb" ) ) == NULL )
+    if( ( f = fopen( path, "rb" ) ) == ((void*)0) )
         return( 1 );
 
     md5_starts( &ctx );

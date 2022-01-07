@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  lock; int /*<<< orphan*/  flags; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int lock; int flags; } ;
 struct wiimote_data {TYPE_1__ state; } ;
 struct wiimod_ops {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WIIPROTO_FLAG_BUILTIN_MP ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int WIIPROTO_FLAG_BUILTIN_MP ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static int wiimod_builtin_mp_probe(const struct wiimod_ops *ops,
-				   struct wiimote_data *wdata)
+       struct wiimote_data *wdata)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	spin_lock_irqsave(&wdata->state.lock, flags);
-	wdata->state.flags |= WIIPROTO_FLAG_BUILTIN_MP;
-	spin_unlock_irqrestore(&wdata->state.lock, flags);
+ spin_lock_irqsave(&wdata->state.lock, flags);
+ wdata->state.flags |= WIIPROTO_FLAG_BUILTIN_MP;
+ spin_unlock_irqrestore(&wdata->state.lock, flags);
 
-	return 0;
+ return 0;
 }

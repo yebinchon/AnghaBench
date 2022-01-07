@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  bmih ;
-struct TYPE_5__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; scalar_t__ biSizeImage; int /*<<< orphan*/  biCompression; } ;
-struct TYPE_4__ {int /*<<< orphan*/  forecol; int /*<<< orphan*/  hatchstyle; int /*<<< orphan*/  backcol; } ;
-typedef  scalar_t__ HBITMAP ;
-typedef  TYPE_1__ GpHatch ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  TYPE_2__ BITMAPINFOHEADER ;
-typedef  int /*<<< orphan*/  BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- scalar_t__ CreateDIBSection (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,void**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ Ok ; 
- scalar_t__ get_hatch_data (int /*<<< orphan*/ ,char const**) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int bmih ;
+struct TYPE_5__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; scalar_t__ biSizeImage; int biCompression; } ;
+struct TYPE_4__ {int forecol; int hatchstyle; int backcol; } ;
+typedef scalar_t__ HBITMAP ;
+typedef TYPE_1__ GpHatch ;
+typedef int DWORD ;
+typedef TYPE_2__ BITMAPINFOHEADER ;
+typedef int BITMAPINFO ;
+
+
+ int BI_RGB ;
+ scalar_t__ CreateDIBSection (int ,int *,int ,void**,int *,int ) ;
+ int DIB_RGB_COLORS ;
+ int FIXME (char*,int ) ;
+ scalar_t__ Ok ;
+ scalar_t__ get_hatch_data (int ,char const**) ;
 
 __attribute__((used)) static HBITMAP create_hatch_bitmap(const GpHatch *hatch)
 {
@@ -44,7 +44,7 @@ __attribute__((used)) static HBITMAP create_hatch_bitmap(const GpHatch *hatch)
     bmih.biCompression = BI_RGB;
     bmih.biSizeImage = 0;
 
-    hbmp = CreateDIBSection(0, (BITMAPINFO *)&bmih, DIB_RGB_COLORS, (void **)&bits, NULL, 0);
+    hbmp = CreateDIBSection(0, (BITMAPINFO *)&bmih, DIB_RGB_COLORS, (void **)&bits, ((void*)0), 0);
     if (hbmp)
     {
         const char *hatch_data;

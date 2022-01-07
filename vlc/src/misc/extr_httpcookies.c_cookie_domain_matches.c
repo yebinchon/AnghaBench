@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char const* psz_domain; scalar_t__ b_host_only; } ;
-typedef  TYPE_1__ http_cookie_t ;
+typedef TYPE_1__ http_cookie_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * strchr (char const*,char) ; 
- size_t strlen (char const*) ; 
- size_t strspn (char const*,char*) ; 
- scalar_t__ vlc_ascii_strcasecmp (char const*,char const*) ; 
+
+ int * strchr (char const*,char) ;
+ size_t strlen (char const*) ;
+ size_t strspn (char const*,char*) ;
+ scalar_t__ vlc_ascii_strcasecmp (char const*,char const*) ;
 
 __attribute__((used)) static bool cookie_domain_matches( const http_cookie_t *cookie,
                                    const char *host )
 {
-    // TODO: should convert domain names to punycode before comparing
 
-    if (host == NULL)
-        return false;
+
+    if (host == ((void*)0))
+        return 0;
     if ( vlc_ascii_strcasecmp(cookie->psz_domain, host) == 0 )
-        return true;
+        return 1;
     else if ( cookie->b_host_only )
-        return false;
+        return 0;
 
     size_t host_len = strlen(host);
     size_t cookie_domain_len = strlen(cookie->psz_domain);
-    bool is_suffix = false, has_dot_before_suffix = false;
+    bool is_suffix = 0, has_dot_before_suffix = 0;
 
     if( host_len > cookie_domain_len )
     {
@@ -45,7 +45,7 @@ __attribute__((used)) static bool cookie_domain_matches( const http_cookie_t *co
     }
 
     bool host_is_ipv4 = strspn(host, "0123456789.") == host_len;
-    bool host_is_ipv6 = strchr(host, ':') != NULL;
+    bool host_is_ipv6 = strchr(host, ':') != ((void*)0);
     return is_suffix && has_dot_before_suffix &&
         !( host_is_ipv4 || host_is_ipv6 );
 }

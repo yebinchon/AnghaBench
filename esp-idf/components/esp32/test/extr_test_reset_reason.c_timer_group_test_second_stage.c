@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ t0; } ;
 struct TYPE_4__ {TYPE_1__ int_raw; } ;
-typedef  scalar_t__ RESET_REASON ;
+typedef scalar_t__ RESET_REASON ;
 
-/* Variables and functions */
- scalar_t__ SW_CPU_RESET ; 
- int /*<<< orphan*/  TEST_ASSERT_EQUAL (scalar_t__,scalar_t__) ; 
- TYPE_2__ TIMERG0 ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ rtc_get_reset_reason (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  timer_group_test_init () ; 
+
+ scalar_t__ SW_CPU_RESET ;
+ int TEST_ASSERT_EQUAL (scalar_t__,scalar_t__) ;
+ TYPE_2__ TIMERG0 ;
+ int printf (char*) ;
+ scalar_t__ rtc_get_reset_reason (int ) ;
+ int timer_group_test_init () ;
 
 __attribute__((used)) static void timer_group_test_second_stage(void)
 {
@@ -32,6 +32,6 @@ __attribute__((used)) static void timer_group_test_second_stage(void)
     }
     TEST_ASSERT_EQUAL(SW_CPU_RESET, rst_res);
     timer_group_test_init();
-    //After the timer_group is initialized, TIMERG0.int_raw.t0 should be cleared.
+
     TEST_ASSERT_EQUAL(0, TIMERG0.int_raw.t0);
 }

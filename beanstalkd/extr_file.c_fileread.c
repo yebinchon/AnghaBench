@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v ;
-struct TYPE_8__ {int /*<<< orphan*/  path; } ;
-typedef  int /*<<< orphan*/  Job ;
-typedef  TYPE_1__ File ;
 
-/* Variables and functions */
-#define  Walver 129 
-#define  Walver5 128 
- int /*<<< orphan*/  filedecref (TYPE_1__*) ; 
- int /*<<< orphan*/  fileincref (TYPE_1__*) ; 
- int /*<<< orphan*/  readfull (TYPE_1__*,int*,int,int*,char*) ; 
- int /*<<< orphan*/  readrec (TYPE_1__*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  readrec5 (TYPE_1__*,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  warnx (char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int v ;
+struct TYPE_8__ {int path; } ;
+typedef int Job ;
+typedef TYPE_1__ File ;
+
+
+
+
+ int filedecref (TYPE_1__*) ;
+ int fileincref (TYPE_1__*) ;
+ int readfull (TYPE_1__*,int*,int,int*,char*) ;
+ int readrec (TYPE_1__*,int *,int*) ;
+ int readrec5 (TYPE_1__*,int *,int*) ;
+ int warnx (char*,int ,int) ;
 
 int
 fileread(File *f, Job *list)
@@ -35,12 +35,12 @@ fileread(File *f, Job *list)
         return err;
     }
     switch (v) {
-    case Walver:
+    case 129:
         fileincref(f);
         while (readrec(f, list, &err));
         filedecref(f);
         return err;
-    case Walver5:
+    case 128:
         fileincref(f);
         while (readrec5(f, list, &err));
         filedecref(f);

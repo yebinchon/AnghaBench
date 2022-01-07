@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uni_msg {int dummy; } ;
 struct ccsig {scalar_t__ arg1; scalar_t__ has_msg; } ;
-struct ccdata {int /*<<< orphan*/  free_sigs; int /*<<< orphan*/  def_sigs; int /*<<< orphan*/  sigs; } ;
+struct ccdata {int free_sigs; int def_sigs; int sigs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCFREE (struct ccsig*) ; 
- struct ccsig* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct ccsig*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  link ; 
- int /*<<< orphan*/  uni_msg_destroy (struct uni_msg*) ; 
+
+ int CCFREE (struct ccsig*) ;
+ struct ccsig* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,struct ccsig*,int ) ;
+ int link ;
+ int uni_msg_destroy (struct uni_msg*) ;
 
 void
 cc_sig_flush_all(struct ccdata *cc)
 {
-	struct ccsig *s;
+ struct ccsig *s;
 
-	while ((s = TAILQ_FIRST(&cc->sigs)) != NULL) {
-		if (s->has_msg)
-			uni_msg_destroy((struct uni_msg *)s->arg1);
-		TAILQ_REMOVE(&cc->sigs, s, link);
-		CCFREE(s);
-	}
-	while ((s = TAILQ_FIRST(&cc->def_sigs)) != NULL) {
-		if (s->has_msg)
-			uni_msg_destroy((struct uni_msg *)s->arg1);
-		TAILQ_REMOVE(&cc->def_sigs, s, link);
-		CCFREE(s);
-	}
-	while ((s = TAILQ_FIRST(&cc->free_sigs)) != NULL) {
-		TAILQ_REMOVE(&cc->free_sigs, s, link);
-		CCFREE(s);
-	}
+ while ((s = TAILQ_FIRST(&cc->sigs)) != ((void*)0)) {
+  if (s->has_msg)
+   uni_msg_destroy((struct uni_msg *)s->arg1);
+  TAILQ_REMOVE(&cc->sigs, s, link);
+  CCFREE(s);
+ }
+ while ((s = TAILQ_FIRST(&cc->def_sigs)) != ((void*)0)) {
+  if (s->has_msg)
+   uni_msg_destroy((struct uni_msg *)s->arg1);
+  TAILQ_REMOVE(&cc->def_sigs, s, link);
+  CCFREE(s);
+ }
+ while ((s = TAILQ_FIRST(&cc->free_sigs)) != ((void*)0)) {
+  TAILQ_REMOVE(&cc->free_sigs, s, link);
+  CCFREE(s);
+ }
 }

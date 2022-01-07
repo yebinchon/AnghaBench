@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * aead; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * aead; } ;
 struct TYPE_3__ {TYPE_2__ egress; TYPE_2__ ingress; } ;
-struct st_quicly_handshake_space_t {int /*<<< orphan*/  super; TYPE_1__ cipher; } ;
+struct st_quicly_handshake_space_t {int super; TYPE_1__ cipher; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dispose_cipher (TYPE_2__*) ; 
- int /*<<< orphan*/  do_free_pn_space (int /*<<< orphan*/ *) ; 
+
+ int dispose_cipher (TYPE_2__*) ;
+ int do_free_pn_space (int *) ;
 
 __attribute__((used)) static void free_handshake_space(struct st_quicly_handshake_space_t **space)
 {
-    if (*space != NULL) {
-        if ((*space)->cipher.ingress.aead != NULL)
+    if (*space != ((void*)0)) {
+        if ((*space)->cipher.ingress.aead != ((void*)0))
             dispose_cipher(&(*space)->cipher.ingress);
-        if ((*space)->cipher.egress.aead != NULL)
+        if ((*space)->cipher.egress.aead != ((void*)0))
             dispose_cipher(&(*space)->cipher.egress);
         do_free_pn_space(&(*space)->super);
-        *space = NULL;
+        *space = ((void*)0);
     }
 }

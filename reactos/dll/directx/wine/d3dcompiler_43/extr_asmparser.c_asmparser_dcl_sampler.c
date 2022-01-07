@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct asm_parser {int /*<<< orphan*/  status; TYPE_1__* shader; int /*<<< orphan*/  line_no; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct asm_parser {int status; TYPE_1__* shader; int line_no; } ;
 struct TYPE_2__ {scalar_t__ version; } ;
-typedef  scalar_t__ DWORD ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ BWRITERPS_VERSION (int,int /*<<< orphan*/ ) ; 
- scalar_t__ BWRITERSPDM_MSAMPCENTROID ; 
- scalar_t__ BWRITERSPDM_PARTIALPRECISION ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  PARSE_ERR ; 
- int /*<<< orphan*/  asmparser_message (struct asm_parser*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  record_sampler (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  set_parse_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ BWRITERPS_VERSION (int,int ) ;
+ scalar_t__ BWRITERSPDM_MSAMPCENTROID ;
+ scalar_t__ BWRITERSPDM_PARTIALPRECISION ;
+ int ERR (char*) ;
+ int PARSE_ERR ;
+ int asmparser_message (struct asm_parser*,char*,int ) ;
+ int record_sampler (TYPE_1__*,scalar_t__,scalar_t__,scalar_t__) ;
+ int set_parse_status (int *,int ) ;
 
 __attribute__((used)) static void asmparser_dcl_sampler(struct asm_parser *This, DWORD samptype,
                                   DWORD mod, DWORD regnum,

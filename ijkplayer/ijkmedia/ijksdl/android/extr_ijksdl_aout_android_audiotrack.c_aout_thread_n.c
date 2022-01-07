@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_7__ {TYPE_2__* opaque; } ;
-struct TYPE_5__ {void* userdata; int /*<<< orphan*/  (* callback ) (void*,int /*<<< orphan*/ *,int) ;} ;
-struct TYPE_6__ {int need_flush; int /*<<< orphan*/  wakeup_mutex; int /*<<< orphan*/  speed; scalar_t__ speed_changed; int /*<<< orphan*/  right_volume; int /*<<< orphan*/  left_volume; scalar_t__ need_set_volume; scalar_t__ pause_on; int /*<<< orphan*/  abort_request; int /*<<< orphan*/  wakeup_cond; int /*<<< orphan*/ * buffer; TYPE_1__ spec; int /*<<< orphan*/ * atrack; } ;
-typedef  int /*<<< orphan*/  (* SDL_AudioCallback ) (void*,int /*<<< orphan*/ *,int) ;
-typedef  TYPE_2__ SDL_Aout_Opaque ;
-typedef  TYPE_3__ SDL_Aout ;
-typedef  int /*<<< orphan*/  SDL_Android_AudioTrack ;
-typedef  int /*<<< orphan*/  JNIEnv ;
+struct TYPE_5__ {void* userdata; int (* callback ) (void*,int *,int) ;} ;
+struct TYPE_6__ {int need_flush; int wakeup_mutex; int speed; scalar_t__ speed_changed; int right_volume; int left_volume; scalar_t__ need_set_volume; scalar_t__ pause_on; int abort_request; int wakeup_cond; int * buffer; TYPE_1__ spec; int * atrack; } ;
+typedef int (* SDL_AudioCallback ) (void*,int *,int) ;
+typedef TYPE_2__ SDL_Aout_Opaque ;
+typedef TYPE_3__ SDL_Aout ;
+typedef int SDL_Android_AudioTrack ;
+typedef int JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALOGW (char*,int,int) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_flush (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_pause (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_play (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_setSpeed (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_Android_AudioTrack_set_volume (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int SDL_Android_AudioTrack_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SDL_CondWaitTimeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  SDL_LockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_SetThreadPriority (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_THREAD_PRIORITY_HIGH ; 
- int /*<<< orphan*/  SDL_UnlockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
+
+ int ALOGW (char*,int,int) ;
+ int SDL_Android_AudioTrack_flush (int *,int *) ;
+ int SDL_Android_AudioTrack_free (int *,int *) ;
+ int SDL_Android_AudioTrack_pause (int *,int *) ;
+ int SDL_Android_AudioTrack_play (int *,int *) ;
+ int SDL_Android_AudioTrack_setSpeed (int *,int *,int ) ;
+ int SDL_Android_AudioTrack_set_volume (int *,int *,int ,int ) ;
+ int SDL_Android_AudioTrack_write (int *,int *,int *,int) ;
+ int SDL_CondWaitTimeout (int ,int ,int) ;
+ int SDL_LockMutex (int ) ;
+ int SDL_SetThreadPriority (int ) ;
+ int SDL_THREAD_PRIORITY_HIGH ;
+ int SDL_UnlockMutex (int ) ;
+ int assert (int *) ;
 
 __attribute__((used)) static int aout_thread_n(JNIEnv *env, SDL_Aout *aout)
 {
@@ -88,7 +88,7 @@ __attribute__((used)) static int aout_thread_n(JNIEnv *env, SDL_Aout *aout)
         audio_cblk(userdata, buffer, copy_size);
         if (opaque->need_flush) {
             SDL_Android_AudioTrack_flush(env, atrack);
-            opaque->need_flush = false;
+            opaque->need_flush = 0;
         }
 
         if (opaque->need_flush) {
@@ -101,7 +101,7 @@ __attribute__((used)) static int aout_thread_n(JNIEnv *env, SDL_Aout *aout)
             }
         }
 
-        // TODO: 1 if callback return -1 or 0
+
     }
 
     SDL_Android_AudioTrack_free(env, atrack);

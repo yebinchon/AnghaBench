@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ACPI_DB_CONSOLE_OUTPUT ; 
- int /*<<< orphan*/  ACPI_DB_DUPLICATE_OUTPUT ; 
- int /*<<< orphan*/  ACPI_DB_REDIRECTABLE_OUTPUT ; 
- int /*<<< orphan*/  ACPI_DISPLAY_SUMMARY ; 
- int /*<<< orphan*/  ACPI_OWNER_ID_MAX ; 
- int /*<<< orphan*/  ACPI_TYPE_ANY ; 
- int /*<<< orphan*/  ACPI_UINT32_MAX ; 
- int /*<<< orphan*/  AcpiDbSetOutputDestination (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGbl_RootNode ; 
- int /*<<< orphan*/  AcpiNsDumpObjectPaths (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*) ; 
+ int ACPI_DB_CONSOLE_OUTPUT ;
+ int ACPI_DB_DUPLICATE_OUTPUT ;
+ int ACPI_DB_REDIRECTABLE_OUTPUT ;
+ int ACPI_DISPLAY_SUMMARY ;
+ int ACPI_OWNER_ID_MAX ;
+ int ACPI_TYPE_ANY ;
+ int ACPI_UINT32_MAX ;
+ int AcpiDbSetOutputDestination (int ) ;
+ int AcpiGbl_RootNode ;
+ int AcpiNsDumpObjectPaths (int ,int ,int ,int ,int ) ;
+ int AcpiOsPrintf (char*) ;
 
 void
 AcpiDbDumpNamespacePaths (
@@ -32,7 +24,7 @@ AcpiDbDumpNamespacePaths (
     AcpiDbSetOutputDestination (ACPI_DB_DUPLICATE_OUTPUT);
     AcpiOsPrintf ("ACPI Namespace (from root):\n");
 
-    /* Display the entire namespace */
+
 
     AcpiDbSetOutputDestination (ACPI_DB_REDIRECTABLE_OUTPUT);
     AcpiNsDumpObjectPaths (ACPI_TYPE_ANY, ACPI_DISPLAY_SUMMARY,

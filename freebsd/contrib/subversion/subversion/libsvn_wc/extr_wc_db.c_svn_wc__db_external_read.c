@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  abspath; int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  void* svn_wc__db_status_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  void* svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_SELECT_EXTERNAL_INFO ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/  VERIFY_USABLE_WCROOT (TYPE_1__*) ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/  presence_map ; 
- char* svn_dirent_dirname (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_is_absolute (char const*) ; 
- int /*<<< orphan*/  svn_dirent_is_ancestor (int /*<<< orphan*/ ,char const*) ; 
- char* svn_dirent_join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- char* svn_dirent_skip_ancestor (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  svn_sqlite__column_int64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  svn_sqlite__column_revnum (int /*<<< orphan*/ *,int) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- void* svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_fetch_repos_info (char const**,char const**,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int abspath; int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef void* svn_wc__db_status_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_revnum_t ;
+typedef void* svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int STMT_SELECT_EXTERNAL_INFO ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int VERIFY_USABLE_WCROOT (TYPE_1__*) ;
+ int _ (char*) ;
+ int kind_map ;
+ int presence_map ;
+ char* svn_dirent_dirname (char const*,int *) ;
+ int svn_dirent_is_absolute (char const*) ;
+ int svn_dirent_is_ancestor (int ,char const*) ;
+ char* svn_dirent_join (int ,char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ char* svn_dirent_skip_ancestor (int ,char const*) ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_error_trace (int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*) ;
+ int svn_sqlite__column_int64 (int *,int) ;
+ int svn_sqlite__column_revnum (int *,int) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ void* svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc__db_fetch_repos_info (char const**,char const**,TYPE_1__*,int ,int *) ;
+ int svn_wc__db_wcroot_parse_local_abspath (TYPE_1__**,char const**,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__db_external_read(svn_wc__db_status_t *status,
@@ -71,7 +71,7 @@ svn_wc__db_external_read(svn_wc__db_status_t *status,
   const char *local_relpath;
   svn_sqlite__stmt_t *stmt;
   svn_boolean_t have_info;
-  svn_error_t *err = NULL;
+  svn_error_t *err = ((void*)0);
   SVN_ERR_ASSERT(svn_dirent_is_absolute(local_abspath));
 
   if (! wri_abspath)
@@ -100,7 +100,7 @@ svn_wc__db_external_read(svn_wc__db_status_t *status,
 
       if (definining_abspath)
         {
-          const char *record_relpath = svn_sqlite__column_text(stmt, 2, NULL);
+          const char *record_relpath = svn_sqlite__column_text(stmt, 2, ((void*)0));
 
           *definining_abspath = svn_dirent_join(wcroot->abspath,
                                                 record_relpath, result_pool);
@@ -131,7 +131,7 @@ svn_wc__db_external_read(svn_wc__db_status_t *status,
     }
   else
     {
-      err = svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+      err = svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                               _("The node '%s' is not an external."),
                               svn_dirent_local_style(local_abspath,
                                                      scratch_pool));

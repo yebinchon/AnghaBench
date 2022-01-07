@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  SColumnBaseInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  _cf_ensureSpace (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32_t ;
+typedef int SColumnBaseInfo ;
+
+
+ int _cf_ensureSpace (int *,int ) ;
 
 void tscColumnBaseInfoReserve(SColumnBaseInfo* pColumnBaseInfo, int32_t size) {
   _cf_ensureSpace(pColumnBaseInfo, size);

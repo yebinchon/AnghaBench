@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A_SG_CONTEXT_CMD ; 
- int /*<<< orphan*/  A_SG_CONTEXT_DATA0 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_DATA1 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_DATA2 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_DATA3 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_MASK0 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_MASK1 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_MASK2 ; 
- int /*<<< orphan*/  A_SG_CONTEXT_MASK3 ; 
- int /*<<< orphan*/  F_CONTEXT_CMD_BUSY ; 
- int /*<<< orphan*/  SG_CONTEXT_CMD_ATTEMPTS ; 
- unsigned int V_CONTEXT (unsigned int) ; 
- unsigned int V_CONTEXT_CMD_OPCODE (int) ; 
- int t3_wait_op_done (struct adapter*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  t3_write_reg (struct adapter*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int A_SG_CONTEXT_CMD ;
+ int A_SG_CONTEXT_DATA0 ;
+ int A_SG_CONTEXT_DATA1 ;
+ int A_SG_CONTEXT_DATA2 ;
+ int A_SG_CONTEXT_DATA3 ;
+ int A_SG_CONTEXT_MASK0 ;
+ int A_SG_CONTEXT_MASK1 ;
+ int A_SG_CONTEXT_MASK2 ;
+ int A_SG_CONTEXT_MASK3 ;
+ int F_CONTEXT_CMD_BUSY ;
+ int SG_CONTEXT_CMD_ATTEMPTS ;
+ unsigned int V_CONTEXT (unsigned int) ;
+ unsigned int V_CONTEXT_CMD_OPCODE (int) ;
+ int t3_wait_op_done (struct adapter*,int ,int ,int ,int ,int) ;
+ int t3_write_reg (struct adapter*,int ,unsigned int) ;
 
 __attribute__((used)) static int clear_sge_ctxt(struct adapter *adap, unsigned int id,
-			  unsigned int type)
+     unsigned int type)
 {
-	t3_write_reg(adap, A_SG_CONTEXT_DATA0, 0);
-	t3_write_reg(adap, A_SG_CONTEXT_DATA1, 0);
-	t3_write_reg(adap, A_SG_CONTEXT_DATA2, 0);
-	t3_write_reg(adap, A_SG_CONTEXT_DATA3, 0);
-	t3_write_reg(adap, A_SG_CONTEXT_MASK0, 0xffffffff);
-	t3_write_reg(adap, A_SG_CONTEXT_MASK1, 0xffffffff);
-	t3_write_reg(adap, A_SG_CONTEXT_MASK2, 0xffffffff);
-	t3_write_reg(adap, A_SG_CONTEXT_MASK3, 0xffffffff);
-	t3_write_reg(adap, A_SG_CONTEXT_CMD,
-		     V_CONTEXT_CMD_OPCODE(1) | type | V_CONTEXT(id));
-	return t3_wait_op_done(adap, A_SG_CONTEXT_CMD, F_CONTEXT_CMD_BUSY,
-			       0, SG_CONTEXT_CMD_ATTEMPTS, 1);
+ t3_write_reg(adap, A_SG_CONTEXT_DATA0, 0);
+ t3_write_reg(adap, A_SG_CONTEXT_DATA1, 0);
+ t3_write_reg(adap, A_SG_CONTEXT_DATA2, 0);
+ t3_write_reg(adap, A_SG_CONTEXT_DATA3, 0);
+ t3_write_reg(adap, A_SG_CONTEXT_MASK0, 0xffffffff);
+ t3_write_reg(adap, A_SG_CONTEXT_MASK1, 0xffffffff);
+ t3_write_reg(adap, A_SG_CONTEXT_MASK2, 0xffffffff);
+ t3_write_reg(adap, A_SG_CONTEXT_MASK3, 0xffffffff);
+ t3_write_reg(adap, A_SG_CONTEXT_CMD,
+       V_CONTEXT_CMD_OPCODE(1) | type | V_CONTEXT(id));
+ return t3_wait_op_done(adap, A_SG_CONTEXT_CMD, F_CONTEXT_CMD_BUSY,
+          0, SG_CONTEXT_CMD_ATTEMPTS, 1);
 }

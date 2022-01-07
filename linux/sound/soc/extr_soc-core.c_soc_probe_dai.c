@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct snd_soc_dai {int probed; int /*<<< orphan*/  name; int /*<<< orphan*/  dev; TYPE_1__* driver; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct snd_soc_dai {int probed; int name; int dev; TYPE_1__* driver; } ;
 struct TYPE_2__ {int probe_order; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int) ; 
- int snd_soc_dai_probe (struct snd_soc_dai*) ; 
+
+ int dev_err (int ,char*,int ,int) ;
+ int snd_soc_dai_probe (struct snd_soc_dai*) ;
 
 __attribute__((used)) static int soc_probe_dai(struct snd_soc_dai *dai, int order)
 {
-	int ret;
+ int ret;
 
-	if (dai->probed ||
-	    dai->driver->probe_order != order)
-		return 0;
+ if (dai->probed ||
+     dai->driver->probe_order != order)
+  return 0;
 
-	ret = snd_soc_dai_probe(dai);
-	if (ret < 0) {
-		dev_err(dai->dev, "ASoC: failed to probe DAI %s: %d\n",
-			dai->name, ret);
-		return ret;
-	}
+ ret = snd_soc_dai_probe(dai);
+ if (ret < 0) {
+  dev_err(dai->dev, "ASoC: failed to probe DAI %s: %d\n",
+   dai->name, ret);
+  return ret;
+ }
 
-	dai->probed = 1;
+ dai->probed = 1;
 
-	return 0;
+ return 0;
 }

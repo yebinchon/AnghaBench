@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RArray {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  int mrb_int ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef int mrb_int ;
 
-/* Variables and functions */
- int ARY_LEN (struct RArray*) ; 
- int ARY_MAX_SIZE ; 
- int /*<<< orphan*/ * ARY_PTR (struct RArray*) ; 
- int /*<<< orphan*/  ARY_SET_LEN (struct RArray*,int) ; 
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  array_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- struct RArray* ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_new (int /*<<< orphan*/ *) ; 
- struct RArray* mrb_ary_ptr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int*) ; 
- int /*<<< orphan*/  mrb_obj_value (struct RArray*) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+ int ARY_LEN (struct RArray*) ;
+ int ARY_MAX_SIZE ;
+ int * ARY_PTR (struct RArray*) ;
+ int ARY_SET_LEN (struct RArray*,int) ;
+ int E_ARGUMENT_ERROR ;
+ int array_copy (int *,int *,int) ;
+ struct RArray* ary_new_capa (int *,int) ;
+ int mrb_ary_new (int *) ;
+ struct RArray* mrb_ary_ptr (int ) ;
+ int mrb_get_args (int *,char*,int*) ;
+ int mrb_obj_value (struct RArray*) ;
+ int mrb_raise (int *,int ,char*) ;
 
 __attribute__((used)) static mrb_value
 mrb_ary_times(mrb_state *mrb, mrb_value self)

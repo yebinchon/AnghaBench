@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  match ;
-typedef  scalar_t__ esp_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  app_idx; int /*<<< orphan*/  net_idx; int /*<<< orphan*/  app_key; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APP_KEY_IDX ; 
- int /*<<< orphan*/  APP_KEY_OCTET ; 
- int /*<<< orphan*/  ESP_BLE_MESH_KEY_PRIMARY ; 
- int ESP_BLE_MESH_PROV_ADV ; 
- int ESP_BLE_MESH_PROV_GATT ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  composition ; 
- scalar_t__ esp_ble_mesh_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_ble_mesh_provisioner_add_local_app_key (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_ble_mesh_provisioner_prov_enable (int) ; 
- int /*<<< orphan*/  esp_ble_mesh_provisioner_set_dev_uuid_match (int*,int,int,int) ; 
- int /*<<< orphan*/  esp_ble_mesh_register_config_client_callback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_ble_mesh_register_generic_client_callback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_ble_mesh_register_prov_callback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  example_ble_mesh_config_client_cb ; 
- int /*<<< orphan*/  example_ble_mesh_generic_client_cb ; 
- int /*<<< orphan*/  example_ble_mesh_provisioning_cb ; 
- int /*<<< orphan*/  memset (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- TYPE_1__ prov_key ; 
- int /*<<< orphan*/  provision ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int match ;
+typedef scalar_t__ esp_err_t ;
+struct TYPE_2__ {int app_idx; int net_idx; int app_key; } ;
+
+
+ int APP_KEY_IDX ;
+ int APP_KEY_OCTET ;
+ int ESP_BLE_MESH_KEY_PRIMARY ;
+ int ESP_BLE_MESH_PROV_ADV ;
+ int ESP_BLE_MESH_PROV_GATT ;
+ int ESP_LOGE (int ,char*,scalar_t__) ;
+ int ESP_LOGI (int ,char*) ;
+ int TAG ;
+ int composition ;
+ scalar_t__ esp_ble_mesh_init (int *,int *) ;
+ int esp_ble_mesh_provisioner_add_local_app_key (int ,int ,int ) ;
+ int esp_ble_mesh_provisioner_prov_enable (int) ;
+ int esp_ble_mesh_provisioner_set_dev_uuid_match (int*,int,int,int) ;
+ int esp_ble_mesh_register_config_client_callback (int ) ;
+ int esp_ble_mesh_register_generic_client_callback (int ) ;
+ int esp_ble_mesh_register_prov_callback (int ) ;
+ int example_ble_mesh_config_client_cb ;
+ int example_ble_mesh_generic_client_cb ;
+ int example_ble_mesh_provisioning_cb ;
+ int memset (int ,int ,int) ;
+ TYPE_1__ prov_key ;
+ int provision ;
 
 __attribute__((used)) static esp_err_t ble_mesh_init(void)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static esp_err_t ble_mesh_init(void)
         return err;
     }
 
-    esp_ble_mesh_provisioner_set_dev_uuid_match(match, sizeof(match), 0x0, false);
+    esp_ble_mesh_provisioner_set_dev_uuid_match(match, sizeof(match), 0x0, 0);
 
     esp_ble_mesh_provisioner_prov_enable(ESP_BLE_MESH_PROV_ADV | ESP_BLE_MESH_PROV_GATT);
 

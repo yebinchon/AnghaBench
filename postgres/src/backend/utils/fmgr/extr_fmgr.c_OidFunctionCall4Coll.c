@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  FmgrInfo ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FunctionCall4Coll (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fmgr_info (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Oid ;
+typedef int FmgrInfo ;
+typedef int Datum ;
+
+
+ int FunctionCall4Coll (int *,int ,int ,int ,int ,int ) ;
+ int fmgr_info (int ,int *) ;
 
 Datum
 OidFunctionCall4Coll(Oid functionId, Oid collation, Datum arg1, Datum arg2,
-					 Datum arg3, Datum arg4)
+      Datum arg3, Datum arg4)
 {
-	FmgrInfo	flinfo;
+ FmgrInfo flinfo;
 
-	fmgr_info(functionId, &flinfo);
+ fmgr_info(functionId, &flinfo);
 
-	return FunctionCall4Coll(&flinfo, collation, arg1, arg2, arg3, arg4);
+ return FunctionCall4Coll(&flinfo, collation, arg1, arg2, arg3, arg4);
 }

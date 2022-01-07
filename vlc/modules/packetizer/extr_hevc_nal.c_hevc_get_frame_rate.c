@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_9__ {unsigned int vps_num_units_in_tick; unsigned int vps_time_scale; scalar_t__ vps_timing_info_present_flag; } ;
-typedef  TYPE_3__ hevc_video_parameter_set_t ;
+typedef TYPE_3__ hevc_video_parameter_set_t ;
 struct TYPE_7__ {unsigned int vui_num_units_in_tick; unsigned int vui_time_scale; } ;
 struct TYPE_8__ {TYPE_1__ timing; scalar_t__ vui_timing_info_present_flag; } ;
 struct TYPE_10__ {TYPE_2__ vui; scalar_t__ vui_parameters_present_flag; } ;
-typedef  TYPE_4__ hevc_sequence_parameter_set_t ;
+typedef TYPE_4__ hevc_sequence_parameter_set_t ;
 
-/* Variables and functions */
+
 
 bool hevc_get_frame_rate( const hevc_sequence_parameter_set_t *p_sps,
                           const hevc_video_parameter_set_t *p_vps,
@@ -39,5 +39,5 @@ bool hevc_get_frame_rate( const hevc_sequence_parameter_set_t *p_sps,
         *pi_num = p_vps->vps_time_scale;
         return (*pi_den && *pi_num);
     }
-    return false;
+    return 0;
 }

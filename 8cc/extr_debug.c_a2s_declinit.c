@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buf_printf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  node2s (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int Vector ;
+typedef int Node ;
+typedef int Buffer ;
+
+
+ int buf_printf (int *,char*,...) ;
+ int node2s (int *) ;
+ int * vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static void a2s_declinit(Buffer *b, Vector *initlist) {
     for (int i = 0; i < vec_len(initlist); i++) {

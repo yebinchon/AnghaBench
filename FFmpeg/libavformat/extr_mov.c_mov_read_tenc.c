@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_9__ ;
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {unsigned int crypt_byte_block; unsigned int skip_byte_block; int /*<<< orphan*/  iv; int /*<<< orphan*/  key_id; } ;
+
+
+typedef struct TYPE_16__ TYPE_9__ ;
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_16__ {unsigned int crypt_byte_block; unsigned int skip_byte_block; int iv; int key_id; } ;
 struct TYPE_15__ {int nb_streams; TYPE_5__** streams; } ;
 struct TYPE_14__ {TYPE_2__* priv_data; } ;
 struct TYPE_13__ {int size; } ;
 struct TYPE_12__ {TYPE_8__* fc; } ;
 struct TYPE_10__ {int per_sample_iv_size; TYPE_9__* default_encrypted_sample; scalar_t__ encryption_index; } ;
 struct TYPE_11__ {scalar_t__ pseudo_stream_id; TYPE_1__ cenc; } ;
-typedef  TYPE_2__ MOVStreamContext ;
-typedef  int /*<<< orphan*/  MOVEncryptionIndex ;
-typedef  TYPE_3__ MOVContext ;
-typedef  TYPE_4__ MOVAtom ;
-typedef  TYPE_5__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_2__ MOVStreamContext ;
+typedef int MOVEncryptionIndex ;
+typedef TYPE_3__ MOVContext ;
+typedef TYPE_4__ MOVAtom ;
+typedef TYPE_5__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_9__* av_encryption_info_alloc (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  av_log (TYPE_8__*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ av_mallocz (int) ; 
- void* avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb24 (int /*<<< orphan*/ *) ; 
- unsigned int avio_read (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ TYPE_9__* av_encryption_info_alloc (int ,int,int) ;
+ int av_log (TYPE_8__*,int ,char*) ;
+ scalar_t__ av_mallocz (int) ;
+ void* avio_r8 (int *) ;
+ int avio_rb24 (int *) ;
+ unsigned int avio_read (int *,int ,unsigned int) ;
 
 __attribute__((used)) static int mov_read_tenc(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -70,10 +70,10 @@ __attribute__((used)) static int mov_read_tenc(MOVContext *c, AVIOContext *pb, M
     if (atom.size < 20)
         return AVERROR_INVALIDDATA;
 
-    version = avio_r8(pb); /* version */
-    avio_rb24(pb); /* flags */
+    version = avio_r8(pb);
+    avio_rb24(pb);
 
-    avio_r8(pb); /* reserved */
+    avio_r8(pb);
     pattern = avio_r8(pb);
 
     if (version > 0) {
@@ -83,7 +83,7 @@ __attribute__((used)) static int mov_read_tenc(MOVContext *c, AVIOContext *pb, M
 
     is_protected = avio_r8(pb);
     if (is_protected && !sc->cenc.encryption_index) {
-        // The whole stream should be by-default encrypted.
+
         sc->cenc.encryption_index = av_mallocz(sizeof(MOVEncryptionIndex));
         if (!sc->cenc.encryption_index)
             return AVERROR(ENOMEM);

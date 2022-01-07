@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int sdmmc_status; scalar_t__ dma_status; } ;
-typedef  TYPE_1__ sdmmc_event_t ;
-typedef  scalar_t__ esp_err_t ;
+typedef TYPE_1__ sdmmc_event_t ;
+typedef scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,int,scalar_t__) ; 
- int /*<<< orphan*/  ESP_LOGV (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ESP_OK ; 
- int SDMMC_INTMASK_CD ; 
- int /*<<< orphan*/  TAG ; 
- scalar_t__ sdmmc_host_wait_for_event (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+ int ESP_LOGE (int ,char*,int,scalar_t__) ;
+ int ESP_LOGV (int ,char*) ;
+ scalar_t__ ESP_OK ;
+ int SDMMC_INTMASK_CD ;
+ int TAG ;
+ scalar_t__ sdmmc_host_wait_for_event (int ,TYPE_1__*) ;
 
 __attribute__((used)) static esp_err_t handle_idle_state_events(void)
 {
-    /* Handle any events which have happened in between transfers.
-     * Under current assumptions (no SDIO support) only card detect events
-     * can happen in the idle state.
-     */
+
+
+
+
     sdmmc_event_t evt;
     while (sdmmc_host_wait_for_event(0, &evt) == ESP_OK) {
         if (evt.sdmmc_status & SDMMC_INTMASK_CD) {

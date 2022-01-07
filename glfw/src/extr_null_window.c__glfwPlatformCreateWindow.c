@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  _GLFWwndconfig ;
-typedef  int /*<<< orphan*/  _GLFWwindow ;
-typedef  int /*<<< orphan*/  _GLFWfbconfig ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int _GLFWwndconfig ;
+typedef int _GLFWwindow ;
+typedef int _GLFWfbconfig ;
 struct TYPE_4__ {scalar_t__ client; scalar_t__ source; } ;
-typedef  TYPE_1__ _GLFWctxconfig ;
+typedef TYPE_1__ _GLFWctxconfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLFW_API_UNAVAILABLE ; 
- int GLFW_FALSE ; 
- scalar_t__ GLFW_NATIVE_CONTEXT_API ; 
- scalar_t__ GLFW_NO_API ; 
- scalar_t__ GLFW_OSMESA_CONTEXT_API ; 
- int GLFW_TRUE ; 
- int /*<<< orphan*/  _glfwCreateContextOSMesa (int /*<<< orphan*/ *,TYPE_1__ const*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  _glfwInitOSMesa () ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  createNativeWindow (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
+
+ int GLFW_API_UNAVAILABLE ;
+ int GLFW_FALSE ;
+ scalar_t__ GLFW_NATIVE_CONTEXT_API ;
+ scalar_t__ GLFW_NO_API ;
+ scalar_t__ GLFW_OSMESA_CONTEXT_API ;
+ int GLFW_TRUE ;
+ int _glfwCreateContextOSMesa (int *,TYPE_1__ const*,int const*) ;
+ int _glfwInitOSMesa () ;
+ int _glfwInputError (int ,char*) ;
+ int createNativeWindow (int *,int const*) ;
 
 int _glfwPlatformCreateWindow(_GLFWwindow* window,
                               const _GLFWwndconfig* wndconfig,

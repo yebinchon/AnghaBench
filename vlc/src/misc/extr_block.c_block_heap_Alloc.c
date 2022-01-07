@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  block_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * block_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void*,size_t) ; 
- int /*<<< orphan*/  block_heap_cbs ; 
- int /*<<< orphan*/  free (void*) ; 
- int /*<<< orphan*/ * malloc (int) ; 
+
+
+
+typedef int block_t ;
+
+
+ int * block_Init (int *,int *,void*,size_t) ;
+ int block_heap_cbs ;
+ int free (void*) ;
+ int * malloc (int) ;
 
 block_t *block_heap_Alloc (void *addr, size_t length)
 {
     block_t *block = malloc (sizeof (*block));
-    if (block == NULL)
+    if (block == ((void*)0))
     {
         free (addr);
-        return NULL;
+        return ((void*)0);
     }
 
     return block_Init(block, &block_heap_cbs, addr, length);

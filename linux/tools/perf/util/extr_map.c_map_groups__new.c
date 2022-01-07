@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct map_groups {int dummy; } ;
 struct machine {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  map_groups__init (struct map_groups*,struct machine*) ; 
- struct map_groups* zalloc (int) ; 
+
+ int map_groups__init (struct map_groups*,struct machine*) ;
+ struct map_groups* zalloc (int) ;
 
 struct map_groups *map_groups__new(struct machine *machine)
 {
-	struct map_groups *mg = zalloc(sizeof(*mg));
+ struct map_groups *mg = zalloc(sizeof(*mg));
 
-	if (mg != NULL)
-		map_groups__init(mg, machine);
+ if (mg != ((void*)0))
+  map_groups__init(mg, machine);
 
-	return mg;
+ return mg;
 }

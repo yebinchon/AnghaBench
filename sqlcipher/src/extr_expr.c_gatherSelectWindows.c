@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * pSelect; } ;
-struct TYPE_5__ {TYPE_1__ u; scalar_t__ pParse; scalar_t__ xSelectCallback2; int /*<<< orphan*/  xSelectCallback; int /*<<< orphan*/  xExprCallback; } ;
-typedef  TYPE_2__ Walker ;
-typedef  int /*<<< orphan*/  Select ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gatherSelectWindowsCallback ; 
- int /*<<< orphan*/  gatherSelectWindowsSelectCallback ; 
- int /*<<< orphan*/  sqlite3WalkSelect (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * pSelect; } ;
+struct TYPE_5__ {TYPE_1__ u; scalar_t__ pParse; scalar_t__ xSelectCallback2; int xSelectCallback; int xExprCallback; } ;
+typedef TYPE_2__ Walker ;
+typedef int Select ;
+
+
+ int gatherSelectWindowsCallback ;
+ int gatherSelectWindowsSelectCallback ;
+ int sqlite3WalkSelect (TYPE_2__*,int *) ;
 
 __attribute__((used)) static void gatherSelectWindows(Select *p){
   Walker w;

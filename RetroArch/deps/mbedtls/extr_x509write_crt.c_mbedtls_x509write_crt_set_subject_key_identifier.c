@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  subject_key; } ;
-typedef  TYPE_1__ mbedtls_x509write_cert ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBEDTLS_ASN1_CHK_ADD (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MBEDTLS_ASN1_OCTET_STRING ; 
- int MBEDTLS_MPI_MAX_SIZE ; 
- int /*<<< orphan*/  MBEDTLS_OID_SIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MBEDTLS_OID_SUBJECT_KEY_IDENTIFIER ; 
- int /*<<< orphan*/  mbedtls_asn1_write_len (unsigned char**,unsigned char*,size_t) ; 
- int /*<<< orphan*/  mbedtls_asn1_write_tag (unsigned char**,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_pk_write_pubkey (unsigned char**,unsigned char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mbedtls_sha1 (unsigned char*,size_t,unsigned char*) ; 
- int mbedtls_x509write_crt_set_extension (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int subject_key; } ;
+typedef TYPE_1__ mbedtls_x509write_cert ;
+typedef int buf ;
+
+
+ int MBEDTLS_ASN1_CHK_ADD (size_t,int ) ;
+ int MBEDTLS_ASN1_OCTET_STRING ;
+ int MBEDTLS_MPI_MAX_SIZE ;
+ int MBEDTLS_OID_SIZE (int ) ;
+ int MBEDTLS_OID_SUBJECT_KEY_IDENTIFIER ;
+ int mbedtls_asn1_write_len (unsigned char**,unsigned char*,size_t) ;
+ int mbedtls_asn1_write_tag (unsigned char**,unsigned char*,int ) ;
+ int mbedtls_pk_write_pubkey (unsigned char**,unsigned char*,int ) ;
+ int mbedtls_sha1 (unsigned char*,size_t,unsigned char*) ;
+ int mbedtls_x509write_crt_set_extension (TYPE_1__*,int ,int ,int ,unsigned char*,size_t) ;
+ int memset (unsigned char*,int ,int) ;
 
 int mbedtls_x509write_crt_set_subject_key_identifier( mbedtls_x509write_cert *ctx )
 {
     int ret;
-    unsigned char buf[MBEDTLS_MPI_MAX_SIZE * 2 + 20]; /* tag, length + 2xMPI */
+    unsigned char buf[MBEDTLS_MPI_MAX_SIZE * 2 + 20];
     unsigned char *c = buf + sizeof(buf);
     size_t len = 0;
 

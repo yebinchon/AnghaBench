@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  client ;
-struct TYPE_6__ {size_t postponed_arrays_count; int /*<<< orphan*/ * postponed_arrays; TYPE_1__* module; } ;
-struct TYPE_5__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LL_WARNING ; 
- int /*<<< orphan*/ * moduleGetReplyClient (TYPE_2__*) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setDeferredArrayLen (int /*<<< orphan*/ *,int /*<<< orphan*/ ,long) ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int client ;
+struct TYPE_6__ {size_t postponed_arrays_count; int * postponed_arrays; TYPE_1__* module; } ;
+struct TYPE_5__ {int name; } ;
+typedef TYPE_2__ RedisModuleCtx ;
+
+
+ int LL_WARNING ;
+ int * moduleGetReplyClient (TYPE_2__*) ;
+ int serverLog (int ,char*,int ) ;
+ int setDeferredArrayLen (int *,int ,long) ;
+ int zfree (int *) ;
 
 void RM_ReplySetArrayLength(RedisModuleCtx *ctx, long len) {
     client *c = moduleGetReplyClient(ctx);
-    if (c == NULL) return;
+    if (c == ((void*)0)) return;
     if (ctx->postponed_arrays_count == 0) {
         serverLog(LL_WARNING,
             "API misuse detected in module %s: "
@@ -41,6 +41,6 @@ void RM_ReplySetArrayLength(RedisModuleCtx *ctx, long len) {
             len);
     if (ctx->postponed_arrays_count == 0) {
         zfree(ctx->postponed_arrays);
-        ctx->postponed_arrays = NULL;
+        ctx->postponed_arrays = ((void*)0);
     }
 }

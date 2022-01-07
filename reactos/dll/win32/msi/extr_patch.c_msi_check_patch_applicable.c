@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  int /*<<< orphan*/  MSISUMMARYINFO ;
-typedef  TYPE_1__ MSIPACKAGE ;
-typedef  int /*<<< orphan*/ **** LPWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR (char*) ; 
- size_t ERROR_FUNCTION_FAILED ; 
- size_t ERROR_SUCCESS ; 
- int /*<<< orphan*/  PID_TEMPLATE ; 
- int /*<<< orphan*/ ****** msi_dup_property (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ ****) ; 
- int /*<<< orphan*/ ******* msi_split_string (int /*<<< orphan*/ ****,char) ; 
- int /*<<< orphan*/ ****** msi_suminfo_dup_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ****,int /*<<< orphan*/ ****) ; 
- int /*<<< orphan*/  szProductCode ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
+struct TYPE_3__ {int db; } ;
+typedef int MSISUMMARYINFO ;
+typedef TYPE_1__ MSIPACKAGE ;
+typedef int **** LPWSTR ;
+
+
+ int ERR (char*) ;
+ size_t ERROR_FUNCTION_FAILED ;
+ size_t ERROR_SUCCESS ;
+ int PID_TEMPLATE ;
+ int ****** msi_dup_property (int ,int ) ;
+ int msi_free (int ****) ;
+ int ******* msi_split_string (int ****,char) ;
+ int ****** msi_suminfo_dup_string (int *,int ) ;
+ int strcmpW (int ****,int ****) ;
+ int szProductCode ;
 
 UINT msi_check_patch_applicable( MSIPACKAGE *package, MSISUMMARYINFO *si )
 {
@@ -37,7 +37,7 @@ UINT msi_check_patch_applicable( MSIPACKAGE *package, MSISUMMARYINFO *si )
     product_code = msi_dup_property( package->db, szProductCode );
     if (!product_code)
     {
-        /* FIXME: the property ProductCode should be written into the DB somewhere */
+
         ERR("no product code to check\n");
         return ERROR_SUCCESS;
     }

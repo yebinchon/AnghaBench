@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atomic_dec (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bufAllocCount ; 
- int /*<<< orphan*/  cifs_req_poolp ; 
- int /*<<< orphan*/  mempool_free (void*,int /*<<< orphan*/ ) ; 
+ int atomic_dec (int *) ;
+ int bufAllocCount ;
+ int cifs_req_poolp ;
+ int mempool_free (void*,int ) ;
 
 void
 cifs_buf_release(void *buf_to_free)
 {
-	if (buf_to_free == NULL) {
-		/* cFYI(1, "Null buffer passed to cifs_buf_release");*/
-		return;
-	}
-	mempool_free(buf_to_free, cifs_req_poolp);
+ if (buf_to_free == ((void*)0)) {
 
-	atomic_dec(&bufAllocCount);
-	return;
+  return;
+ }
+ mempool_free(buf_to_free, cifs_req_poolp);
+
+ atomic_dec(&bufAllocCount);
+ return;
 }

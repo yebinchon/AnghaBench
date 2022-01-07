@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_52__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ucs4_t ;
-typedef  int /*<<< orphan*/  conv_t ;
+
+
+typedef struct TYPE_52__ TYPE_1__ ;
+
+
+typedef int ucs4_t ;
+typedef int conv_t ;
 struct TYPE_52__ {unsigned short used; unsigned short indx; } ;
-typedef  TYPE_1__ Summary16 ;
+typedef TYPE_1__ Summary16 ;
 
-/* Variables and functions */
- int RET_ILUNI ; 
- int RET_TOOSMALL ; 
- unsigned short* hkscs2004_2charset ; 
- TYPE_1__* hkscs2004_uni2indx_page201 ; 
- TYPE_1__* hkscs2004_uni2indx_page20a ; 
- TYPE_1__* hkscs2004_uni2indx_page21a ; 
- TYPE_1__* hkscs2004_uni2indx_page21d ; 
- TYPE_1__* hkscs2004_uni2indx_page221 ; 
- TYPE_1__* hkscs2004_uni2indx_page227 ; 
- TYPE_1__* hkscs2004_uni2indx_page232 ; 
- TYPE_1__* hkscs2004_uni2indx_page235 ; 
- TYPE_1__* hkscs2004_uni2indx_page23b ; 
- TYPE_1__* hkscs2004_uni2indx_page23e ; 
- TYPE_1__* hkscs2004_uni2indx_page242 ; 
- TYPE_1__* hkscs2004_uni2indx_page24b ; 
- TYPE_1__* hkscs2004_uni2indx_page254 ; 
- TYPE_1__* hkscs2004_uni2indx_page25a ; 
- TYPE_1__* hkscs2004_uni2indx_page26b ; 
- TYPE_1__* hkscs2004_uni2indx_page26e ; 
- TYPE_1__* hkscs2004_uni2indx_page270 ; 
- TYPE_1__* hkscs2004_uni2indx_page272 ; 
- TYPE_1__* hkscs2004_uni2indx_page27b ; 
- TYPE_1__* hkscs2004_uni2indx_page286 ; 
- TYPE_1__* hkscs2004_uni2indx_page289 ; 
- TYPE_1__* hkscs2004_uni2indx_page28b ; 
- TYPE_1__* hkscs2004_uni2indx_page290 ; 
- TYPE_1__* hkscs2004_uni2indx_page298 ; 
- TYPE_1__* hkscs2004_uni2indx_page29e ; 
- TYPE_1__* hkscs2004_uni2indx_page2a1 ; 
- TYPE_1__* hkscs2004_uni2indx_page2a3 ; 
- TYPE_1__* hkscs2004_uni2indx_page34 ; 
- TYPE_1__* hkscs2004_uni2indx_page36 ; 
- TYPE_1__* hkscs2004_uni2indx_page3b ; 
- TYPE_1__* hkscs2004_uni2indx_page3d ; 
- TYPE_1__* hkscs2004_uni2indx_page3f ; 
- TYPE_1__* hkscs2004_uni2indx_page43 ; 
- TYPE_1__* hkscs2004_uni2indx_page4a ; 
- TYPE_1__* hkscs2004_uni2indx_page4c ; 
- TYPE_1__* hkscs2004_uni2indx_page4f ; 
- TYPE_1__* hkscs2004_uni2indx_page56 ; 
- TYPE_1__* hkscs2004_uni2indx_page59 ; 
- TYPE_1__* hkscs2004_uni2indx_page5f ; 
- TYPE_1__* hkscs2004_uni2indx_page66 ; 
- TYPE_1__* hkscs2004_uni2indx_page6e ; 
- TYPE_1__* hkscs2004_uni2indx_page71 ; 
- TYPE_1__* hkscs2004_uni2indx_page74 ; 
- TYPE_1__* hkscs2004_uni2indx_page79 ; 
- TYPE_1__* hkscs2004_uni2indx_page7d ; 
- TYPE_1__* hkscs2004_uni2indx_page81 ; 
- TYPE_1__* hkscs2004_uni2indx_page85 ; 
- TYPE_1__* hkscs2004_uni2indx_page8a ; 
- TYPE_1__* hkscs2004_uni2indx_page97 ; 
- TYPE_1__* hkscs2004_uni2indx_page9f ; 
+
+ int RET_ILUNI ;
+ int RET_TOOSMALL ;
+ unsigned short* hkscs2004_2charset ;
+ TYPE_1__* hkscs2004_uni2indx_page201 ;
+ TYPE_1__* hkscs2004_uni2indx_page20a ;
+ TYPE_1__* hkscs2004_uni2indx_page21a ;
+ TYPE_1__* hkscs2004_uni2indx_page21d ;
+ TYPE_1__* hkscs2004_uni2indx_page221 ;
+ TYPE_1__* hkscs2004_uni2indx_page227 ;
+ TYPE_1__* hkscs2004_uni2indx_page232 ;
+ TYPE_1__* hkscs2004_uni2indx_page235 ;
+ TYPE_1__* hkscs2004_uni2indx_page23b ;
+ TYPE_1__* hkscs2004_uni2indx_page23e ;
+ TYPE_1__* hkscs2004_uni2indx_page242 ;
+ TYPE_1__* hkscs2004_uni2indx_page24b ;
+ TYPE_1__* hkscs2004_uni2indx_page254 ;
+ TYPE_1__* hkscs2004_uni2indx_page25a ;
+ TYPE_1__* hkscs2004_uni2indx_page26b ;
+ TYPE_1__* hkscs2004_uni2indx_page26e ;
+ TYPE_1__* hkscs2004_uni2indx_page270 ;
+ TYPE_1__* hkscs2004_uni2indx_page272 ;
+ TYPE_1__* hkscs2004_uni2indx_page27b ;
+ TYPE_1__* hkscs2004_uni2indx_page286 ;
+ TYPE_1__* hkscs2004_uni2indx_page289 ;
+ TYPE_1__* hkscs2004_uni2indx_page28b ;
+ TYPE_1__* hkscs2004_uni2indx_page290 ;
+ TYPE_1__* hkscs2004_uni2indx_page298 ;
+ TYPE_1__* hkscs2004_uni2indx_page29e ;
+ TYPE_1__* hkscs2004_uni2indx_page2a1 ;
+ TYPE_1__* hkscs2004_uni2indx_page2a3 ;
+ TYPE_1__* hkscs2004_uni2indx_page34 ;
+ TYPE_1__* hkscs2004_uni2indx_page36 ;
+ TYPE_1__* hkscs2004_uni2indx_page3b ;
+ TYPE_1__* hkscs2004_uni2indx_page3d ;
+ TYPE_1__* hkscs2004_uni2indx_page3f ;
+ TYPE_1__* hkscs2004_uni2indx_page43 ;
+ TYPE_1__* hkscs2004_uni2indx_page4a ;
+ TYPE_1__* hkscs2004_uni2indx_page4c ;
+ TYPE_1__* hkscs2004_uni2indx_page4f ;
+ TYPE_1__* hkscs2004_uni2indx_page56 ;
+ TYPE_1__* hkscs2004_uni2indx_page59 ;
+ TYPE_1__* hkscs2004_uni2indx_page5f ;
+ TYPE_1__* hkscs2004_uni2indx_page66 ;
+ TYPE_1__* hkscs2004_uni2indx_page6e ;
+ TYPE_1__* hkscs2004_uni2indx_page71 ;
+ TYPE_1__* hkscs2004_uni2indx_page74 ;
+ TYPE_1__* hkscs2004_uni2indx_page79 ;
+ TYPE_1__* hkscs2004_uni2indx_page7d ;
+ TYPE_1__* hkscs2004_uni2indx_page81 ;
+ TYPE_1__* hkscs2004_uni2indx_page85 ;
+ TYPE_1__* hkscs2004_uni2indx_page8a ;
+ TYPE_1__* hkscs2004_uni2indx_page97 ;
+ TYPE_1__* hkscs2004_uni2indx_page9f ;
 
 __attribute__((used)) static int
 hkscs2004_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
-    const Summary16 *summary = NULL;
+    const Summary16 *summary = ((void*)0);
     if (wc < 0x21a00) {
       if (wc < 0x6e00) {
         if (wc >= 0x3400 && wc < 0x3450)
@@ -190,9 +190,9 @@ hkscs2004_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
       unsigned int i = wc & 0x0f;
       if (used & ((unsigned short) 1 << i)) {
         unsigned short c;
-        /* Keep in `used' only the bits 0..i-1. */
+
         used &= ((unsigned short) 1 << i) - 1;
-        /* Add `summary->indx' and the number of bits set in `used'. */
+
         used = (used & 0x5555) + ((used & 0xaaaa) >> 1);
         used = (used & 0x3333) + ((used & 0xcccc) >> 2);
         used = (used & 0x0f0f) + ((used & 0xf0f0) >> 4);

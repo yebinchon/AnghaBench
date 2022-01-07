@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct LogicalDecodingContext {int prepared_write; int /*<<< orphan*/  write_xid; int /*<<< orphan*/  write_location; int /*<<< orphan*/  (* prepare_write ) (struct LogicalDecodingContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ;int /*<<< orphan*/  accept_writes; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (struct LogicalDecodingContext*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct LogicalDecodingContext {int prepared_write; int write_xid; int write_location; int (* prepare_write ) (struct LogicalDecodingContext*,int ,int ,int) ;int accept_writes; } ;
+
+
+ int ERROR ;
+ int elog (int ,char*) ;
+ int stub1 (struct LogicalDecodingContext*,int ,int ,int) ;
 
 void
 OutputPluginPrepareWrite(struct LogicalDecodingContext *ctx, bool last_write)
 {
-	if (!ctx->accept_writes)
-		elog(ERROR, "writes are only accepted in commit, begin and change callbacks");
+ if (!ctx->accept_writes)
+  elog(ERROR, "writes are only accepted in commit, begin and change callbacks");
 
-	ctx->prepare_write(ctx, ctx->write_location, ctx->write_xid, last_write);
-	ctx->prepared_write = true;
+ ctx->prepare_write(ctx, ctx->write_location, ctx->write_xid, last_write);
+ ctx->prepared_write = 1;
 }

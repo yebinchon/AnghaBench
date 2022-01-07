@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct reader_position {int dummy; } ;
 struct TYPE_10__ {struct reader_position position; } ;
-typedef  TYPE_1__ xmlreader ;
-typedef  int /*<<< orphan*/  strval ;
-typedef  enum attribute_flags { ____Placeholder_attribute_flags } attribute_flags ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ xmlreader ;
+typedef int strval ;
+typedef enum attribute_flags { ____Placeholder_attribute_flags } attribute_flags ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int ATTRIBUTE_DEFAULT_NS_DEFINITION ; 
- int ATTRIBUTE_NS_DEFINITION ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debug_strval (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_add_attr (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct reader_position*,int) ; 
- int /*<<< orphan*/  reader_parse_attvalue (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_parse_eq (TYPE_1__*) ; 
- int /*<<< orphan*/  reader_parse_qname (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  reader_push_ns (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ strval_eq (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strval_xmlns ; 
+
+ int ATTRIBUTE_DEFAULT_NS_DEFINITION ;
+ int ATTRIBUTE_NS_DEFINITION ;
+ scalar_t__ FAILED (int ) ;
+ int TRACE (char*,int ,int ) ;
+ int debug_strval (TYPE_1__*,int *) ;
+ int reader_add_attr (TYPE_1__*,int *,int *,int *,int *,struct reader_position*,int) ;
+ int reader_parse_attvalue (TYPE_1__*,int *) ;
+ int reader_parse_eq (TYPE_1__*) ;
+ int reader_parse_qname (TYPE_1__*,int *,int *,int *) ;
+ int reader_push_ns (TYPE_1__*,int *,int *,int) ;
+ scalar_t__ strval_eq (TYPE_1__*,int *,int *) ;
+ int strval_xmlns ;
 
 __attribute__((used)) static HRESULT reader_parse_attribute(xmlreader *reader)
 {

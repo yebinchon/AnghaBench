@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct s3c_cpufreq_config {TYPE_1__* info; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* set_divs ) (struct s3c_cpufreq_config*) ;} ;
+struct TYPE_2__ {int (* set_divs ) (struct s3c_cpufreq_config*) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct s3c_cpufreq_config*) ; 
+
+ int stub1 (struct s3c_cpufreq_config*) ;
 
 __attribute__((used)) static void s3c_cpufreq_setdivs(struct s3c_cpufreq_config *cfg)
 {
-	(cfg->info->set_divs)(cfg);
+ (cfg->info->set_divs)(cfg);
 }

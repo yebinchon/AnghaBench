@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HMODULE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetModuleHandleA (char*) ; 
- scalar_t__ GetProcAddress (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  hmod ; 
- int /*<<< orphan*/  myARGC ; 
- int /*<<< orphan*/  myARGV ; 
- void* pAddAccessAllowedAceEx ; 
- void* pAddAccessDeniedAceEx ; 
- void* pAddAuditAccessAceEx ; 
- void* pAddMandatoryAce ; 
- void* pCheckTokenMembership ; 
- void* pConvertSecurityDescriptorToStringSecurityDescriptorA ; 
- void* pConvertStringSecurityDescriptorToSecurityDescriptorA ; 
- void* pConvertStringSecurityDescriptorToSecurityDescriptorW ; 
- void* pConvertStringSidToSidA ; 
- void* pCreateRestrictedToken ; 
- void* pCreateWellKnownSid ; 
- void* pDuplicateTokenEx ; 
- void* pGetAce ; 
- void* pGetAclInformation ; 
- void* pGetExplicitEntriesFromAclW ; 
- void* pGetFileSecurityA ; 
- void* pGetNamedSecurityInfoA ; 
- void* pGetSecurityInfo ; 
- void* pGetSidIdentifierAuthority ; 
- void* pGetSidSubAuthority ; 
- void* pGetSidSubAuthorityCount ; 
- void* pGetWindowsAccountDomainSid ; 
- void* pIsValidSid ; 
- void* pMakeSelfRelativeSD ; 
- void* pNtAccessCheck ; 
- void* pNtCreateFile ; 
- void* pNtQueryObject ; 
- void* pNtSetSecurityObject ; 
- void* pRtlAnsiStringToUnicodeString ; 
- void* pRtlDosPathNameToNtPathName_U ; 
- void* pRtlFreeUnicodeString ; 
- void* pRtlInitAnsiString ; 
- void* pSetEntriesInAclA ; 
- void* pSetEntriesInAclW ; 
- void* pSetFileSecurityA ; 
- void* pSetNamedSecurityInfoA ; 
- void* pSetSecurityDescriptorControl ; 
- void* pSetSecurityInfo ; 
- int /*<<< orphan*/  winetest_get_mainargs (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int HMODULE ;
+
+
+ int GetModuleHandleA (char*) ;
+ scalar_t__ GetProcAddress (int ,char*) ;
+ int hmod ;
+ int myARGC ;
+ int myARGV ;
+ void* pAddAccessAllowedAceEx ;
+ void* pAddAccessDeniedAceEx ;
+ void* pAddAuditAccessAceEx ;
+ void* pAddMandatoryAce ;
+ void* pCheckTokenMembership ;
+ void* pConvertSecurityDescriptorToStringSecurityDescriptorA ;
+ void* pConvertStringSecurityDescriptorToSecurityDescriptorA ;
+ void* pConvertStringSecurityDescriptorToSecurityDescriptorW ;
+ void* pConvertStringSidToSidA ;
+ void* pCreateRestrictedToken ;
+ void* pCreateWellKnownSid ;
+ void* pDuplicateTokenEx ;
+ void* pGetAce ;
+ void* pGetAclInformation ;
+ void* pGetExplicitEntriesFromAclW ;
+ void* pGetFileSecurityA ;
+ void* pGetNamedSecurityInfoA ;
+ void* pGetSecurityInfo ;
+ void* pGetSidIdentifierAuthority ;
+ void* pGetSidSubAuthority ;
+ void* pGetSidSubAuthorityCount ;
+ void* pGetWindowsAccountDomainSid ;
+ void* pIsValidSid ;
+ void* pMakeSelfRelativeSD ;
+ void* pNtAccessCheck ;
+ void* pNtCreateFile ;
+ void* pNtQueryObject ;
+ void* pNtSetSecurityObject ;
+ void* pRtlAnsiStringToUnicodeString ;
+ void* pRtlDosPathNameToNtPathName_U ;
+ void* pRtlFreeUnicodeString ;
+ void* pRtlInitAnsiString ;
+ void* pSetEntriesInAclA ;
+ void* pSetEntriesInAclW ;
+ void* pSetFileSecurityA ;
+ void* pSetNamedSecurityInfoA ;
+ void* pSetSecurityDescriptorControl ;
+ void* pSetSecurityInfo ;
+ int winetest_get_mainargs (int *) ;
 
 __attribute__((used)) static void init(void)
 {

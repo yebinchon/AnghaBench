@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int required_for_online; scalar_t__ required_operstate_for_online; } ;
-typedef  TYPE_1__ Network ;
-typedef  scalar_t__ LinkOperationalState ;
+typedef TYPE_1__ Network ;
+typedef scalar_t__ LinkOperationalState ;
 
-/* Variables and functions */
- scalar_t__ LINK_OPERSTATE_DEGRADED ; 
- int /*<<< orphan*/  LOG_ERR ; 
- scalar_t__ isempty (char const*) ; 
- scalar_t__ link_operstate_from_string (char const*) ; 
- int /*<<< orphan*/  log_syntax (char const*,int /*<<< orphan*/ ,char const*,unsigned int,int,char*,char const*,char const*) ; 
- int parse_boolean (char const*) ; 
+
+ scalar_t__ LINK_OPERSTATE_DEGRADED ;
+ int LOG_ERR ;
+ scalar_t__ isempty (char const*) ;
+ scalar_t__ link_operstate_from_string (char const*) ;
+ int log_syntax (char const*,int ,char const*,unsigned int,int,char*,char const*,char const*) ;
+ int parse_boolean (char const*) ;
 
 int config_parse_required_for_online(
                 const char *unit,
@@ -37,11 +37,11 @@ int config_parse_required_for_online(
 
         Network *network = data;
         LinkOperationalState s;
-        bool required = true;
+        bool required = 1;
         int r;
 
         if (isempty(rvalue)) {
-                network->required_for_online = true;
+                network->required_for_online = 1;
                 network->required_operstate_for_online = LINK_OPERSTATE_DEGRADED;
                 return 0;
         }

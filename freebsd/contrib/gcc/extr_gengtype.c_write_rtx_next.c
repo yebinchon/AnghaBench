@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  outf_p ;
 
-/* Variables and functions */
- int NUM_RTX_CODE ; 
- int /*<<< orphan*/  get_output_file_with_visibility (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  oprintf (int /*<<< orphan*/ ,char*,...) ; 
- int* rtx_next_new ; 
+
+
+
+typedef int outf_p ;
+
+
+ int NUM_RTX_CODE ;
+ int get_output_file_with_visibility (int *) ;
+ int oprintf (int ,char*,...) ;
+ int* rtx_next_new ;
 
 __attribute__((used)) static void
 write_rtx_next (void)
 {
-  outf_p f = get_output_file_with_visibility (NULL);
+  outf_p f = get_output_file_with_visibility (((void*)0));
   int i;
 
   oprintf (f, "\n/* Used to implement the RTX_NEXT macro.  */\n");
@@ -31,7 +31,7 @@ write_rtx_next (void)
       oprintf (f, "  0,\n");
     else
       oprintf (f,
-	       "  RTX_HDR_SIZE + %d * sizeof (rtunion),\n",
-	       rtx_next_new[i]);
+        "  RTX_HDR_SIZE + %d * sizeof (rtunion),\n",
+        rtx_next_new[i]);
   oprintf (f, "};\n");
 }

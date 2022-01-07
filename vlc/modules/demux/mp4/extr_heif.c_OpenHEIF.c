@@ -1,74 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_8__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_9__ {int /*<<< orphan*/  fmt; } ;
-struct heif_private_t {int i_image_duration; TYPE_1__ current; TYPE_5__* p_title; int /*<<< orphan*/ * p_root; } ;
-struct TYPE_10__ {int i_time_offset; int /*<<< orphan*/  psz_name; } ;
-typedef  TYPE_2__ seekpoint_t ;
-struct TYPE_11__ {int /*<<< orphan*/  pf_control; int /*<<< orphan*/  pf_demux; void* p_sys; int /*<<< orphan*/  s; } ;
-typedef  TYPE_3__ demux_t ;
+
+
+typedef struct TYPE_13__ TYPE_8__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+typedef int uint8_t ;
+struct TYPE_9__ {int fmt; } ;
+struct heif_private_t {int i_image_duration; TYPE_1__ current; TYPE_5__* p_title; int * p_root; } ;
+struct TYPE_10__ {int i_time_offset; int psz_name; } ;
+typedef TYPE_2__ seekpoint_t ;
+struct TYPE_11__ {int pf_control; int pf_demux; void* p_sys; int s; } ;
+typedef TYPE_3__ demux_t ;
 struct TYPE_13__ {int i_flags; scalar_t__ psz_item_name; } ;
-struct TYPE_12__ {int i_seekpoint; int /*<<< orphan*/  seekpoint; } ;
-typedef  int /*<<< orphan*/  MP4_Box_t ;
+struct TYPE_12__ {int i_seekpoint; int seekpoint; } ;
+typedef int MP4_Box_t ;
 
-/* Variables and functions */
- int ATOM_ftyp ; 
- int /*<<< orphan*/  ATOM_infe ; 
- TYPE_8__* BOXDATA (int /*<<< orphan*/ *) ; 
-#define  BRAND_avci 138 
-#define  BRAND_avcs 137 
-#define  BRAND_avif 136 
-#define  BRAND_avis 135 
-#define  BRAND_heic 134 
-#define  BRAND_heix 133 
-#define  BRAND_hevc 132 
-#define  BRAND_hevx 131 
-#define  BRAND_jpeg 130 
-#define  BRAND_mif1 129 
-#define  BRAND_msf1 128 
- int /*<<< orphan*/  ControlHEIF ; 
- int /*<<< orphan*/  DemuxHEIF ; 
- int /*<<< orphan*/  HEIF_DEFAULT_DURATION ; 
- int /*<<< orphan*/  MP4_BoxDumpStructure (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * MP4_BoxGetRoot (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MatchPureImage (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NextAtom (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAB_APPEND (int,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  UNKNOWN_ES ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_FOURCC (int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const,int /*<<< orphan*/  const) ; 
- int VLC_SUCCESS ; 
- int VLC_TICK_FROM_SEC (int /*<<< orphan*/ ) ; 
- struct heif_private_t* calloc (int,int) ; 
- int /*<<< orphan*/  es_format_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (struct heif_private_t*) ; 
- int /*<<< orphan*/  strdup (scalar_t__) ; 
- int /*<<< orphan*/  var_InheritFloat (TYPE_3__*,char*) ; 
- TYPE_5__* vlc_input_title_New () ; 
- TYPE_2__* vlc_seekpoint_New () ; 
- int vlc_stream_Peek (int /*<<< orphan*/ ,int /*<<< orphan*/  const**,int) ; 
- int vlc_tick_from_sec (int /*<<< orphan*/ ) ; 
+
+ int ATOM_ftyp ;
+ int ATOM_infe ;
+ TYPE_8__* BOXDATA (int *) ;
+ int ControlHEIF ;
+ int DemuxHEIF ;
+ int HEIF_DEFAULT_DURATION ;
+ int MP4_BoxDumpStructure (int ,int *) ;
+ int * MP4_BoxGetRoot (int ) ;
+ int MatchPureImage (int *,int *) ;
+ int * NextAtom (int *,int ,char*,int *) ;
+ int TAB_APPEND (int,int ,TYPE_2__*) ;
+ int UNKNOWN_ES ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_FOURCC (int const,int const,int const,int const) ;
+ int VLC_SUCCESS ;
+ int VLC_TICK_FROM_SEC (int ) ;
+ struct heif_private_t* calloc (int,int) ;
+ int es_format_Init (int *,int ,int ) ;
+ int free (struct heif_private_t*) ;
+ int strdup (scalar_t__) ;
+ int var_InheritFloat (TYPE_3__*,char*) ;
+ TYPE_5__* vlc_input_title_New () ;
+ TYPE_2__* vlc_seekpoint_New () ;
+ int vlc_stream_Peek (int ,int const**,int) ;
+ int vlc_tick_from_sec (int ) ;
 
 int OpenHEIF( vlc_object_t * p_this )
 {
-    demux_t  *p_demux = (demux_t *)p_this;
+    demux_t *p_demux = (demux_t *)p_this;
     const uint8_t *p_peek;
 
     if( vlc_stream_Peek( p_demux->s, &p_peek, 12 ) < 12 )
@@ -79,18 +68,18 @@ int OpenHEIF( vlc_object_t * p_this )
 
     switch( VLC_FOURCC( p_peek[8], p_peek[9], p_peek[10], p_peek[11] ) )
     {
-        case BRAND_mif1:
-        case BRAND_heic:
-        case BRAND_heix:
-        case BRAND_jpeg:
-        case BRAND_avci:
-        case BRAND_avif:
+        case 129:
+        case 134:
+        case 133:
+        case 130:
+        case 138:
+        case 136:
             break;
-        case BRAND_msf1:
-        case BRAND_hevc:
-        case BRAND_hevx:
-        case BRAND_avcs:
-        case BRAND_avis:
+        case 128:
+        case 132:
+        case 131:
+        case 137:
+        case 135:
         default:
             return VLC_EGENERIC;
     }
@@ -115,7 +104,7 @@ int OpenHEIF( vlc_object_t * p_this )
     if( p_sys->i_image_duration <= 0 )
         p_sys->i_image_duration = VLC_TICK_FROM_SEC(HEIF_DEFAULT_DURATION);
 
-    MP4_Box_t *p_infe = NULL;
+    MP4_Box_t *p_infe = ((void*)0);
     while( (p_infe = NextAtom( p_root, ATOM_infe, "meta/iinf/infe", p_infe )) )
     {
         if( (BOXDATA(p_infe)->i_flags & 0x01) != 0x00 ||

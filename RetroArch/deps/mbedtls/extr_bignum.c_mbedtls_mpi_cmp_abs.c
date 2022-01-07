@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {size_t n; scalar_t__* p; } ;
-typedef  TYPE_1__ mbedtls_mpi ;
+typedef TYPE_1__ mbedtls_mpi ;
 
-/* Variables and functions */
+
 
 int mbedtls_mpi_cmp_abs( const mbedtls_mpi *X, const mbedtls_mpi *Y )
 {
@@ -31,12 +31,12 @@ int mbedtls_mpi_cmp_abs( const mbedtls_mpi *X, const mbedtls_mpi *Y )
     if( i == 0 && j == 0 )
         return( 0 );
 
-    if( i > j ) return(  1 );
+    if( i > j ) return( 1 );
     if( j > i ) return( -1 );
 
     for( ; i > 0; i-- )
     {
-        if( X->p[i - 1] > Y->p[i - 1] ) return(  1 );
+        if( X->p[i - 1] > Y->p[i - 1] ) return( 1 );
         if( X->p[i - 1] < Y->p[i - 1] ) return( -1 );
     }
 

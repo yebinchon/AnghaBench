@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ CopyFileW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ FALSE ; 
- scalar_t__ FILE_ATTRIBUTE_DIRECTORY ; 
- scalar_t__ GetFileAttributesW (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  MOVEFILE_REPLACE_EXISTING ; 
- scalar_t__ MoveFileExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int msidbMoveFileOptionsMove ; 
+
+
+
+typedef int LPCWSTR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ CopyFileW (int ,int ,scalar_t__) ;
+ scalar_t__ FALSE ;
+ scalar_t__ FILE_ATTRIBUTE_DIRECTORY ;
+ scalar_t__ GetFileAttributesW (int ) ;
+ int GetLastError () ;
+ int MOVEFILE_REPLACE_EXISTING ;
+ scalar_t__ MoveFileExW (int ,int ,int ) ;
+ int TRACE (char*,int ,int ) ;
+ scalar_t__ TRUE ;
+ int WARN (char*,...) ;
+ int debugstr_w (int ) ;
+ int msidbMoveFileOptionsMove ;
 
 __attribute__((used)) static BOOL msi_move_file(LPCWSTR source, LPCWSTR dest, int options)
 {

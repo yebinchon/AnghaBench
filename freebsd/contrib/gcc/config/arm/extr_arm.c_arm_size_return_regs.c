@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int DECL_MODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DECL_RESULT (int /*<<< orphan*/ ) ; 
- int GET_MODE (scalar_t__) ; 
- int GET_MODE_SIZE (int) ; 
- int /*<<< orphan*/  current_function_decl ; 
- scalar_t__ current_function_return_rtx ; 
+
+
+
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int DECL_MODE (int ) ;
+ int DECL_RESULT (int ) ;
+ int GET_MODE (scalar_t__) ;
+ int GET_MODE_SIZE (int) ;
+ int current_function_decl ;
+ scalar_t__ current_function_return_rtx ;
 
 __attribute__((used)) static int
 arm_size_return_regs (void)

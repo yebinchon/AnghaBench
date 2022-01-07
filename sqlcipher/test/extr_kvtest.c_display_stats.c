@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_HIT ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_MISS ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_USED ; 
- int /*<<< orphan*/  SQLITE_DBSTATUS_CACHE_WRITE ; 
- int /*<<< orphan*/  SQLITE_STATUS_MALLOC_COUNT ; 
- int /*<<< orphan*/  SQLITE_STATUS_MALLOC_SIZE ; 
- int /*<<< orphan*/  SQLITE_STATUS_MEMORY_USED ; 
- int /*<<< orphan*/  SQLITE_STATUS_PAGECACHE_OVERFLOW ; 
- int /*<<< orphan*/  SQLITE_STATUS_PAGECACHE_SIZE ; 
- int /*<<< orphan*/  SQLITE_STATUS_PAGECACHE_USED ; 
- int /*<<< orphan*/  displayLinuxIoStats (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  sqlite3_db_status (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/  sqlite3_status (int /*<<< orphan*/ ,int*,int*,int) ; 
- int /*<<< orphan*/ * stdout ; 
+
+
+
+typedef int sqlite3 ;
+typedef int FILE ;
+
+
+ int SQLITE_DBSTATUS_CACHE_HIT ;
+ int SQLITE_DBSTATUS_CACHE_MISS ;
+ int SQLITE_DBSTATUS_CACHE_USED ;
+ int SQLITE_DBSTATUS_CACHE_WRITE ;
+ int SQLITE_STATUS_MALLOC_COUNT ;
+ int SQLITE_STATUS_MALLOC_SIZE ;
+ int SQLITE_STATUS_MEMORY_USED ;
+ int SQLITE_STATUS_PAGECACHE_OVERFLOW ;
+ int SQLITE_STATUS_PAGECACHE_SIZE ;
+ int SQLITE_STATUS_PAGECACHE_USED ;
+ int displayLinuxIoStats (int *) ;
+ int fprintf (int *,char*,...) ;
+ int sqlite3_db_status (int *,int ,int*,int*,int) ;
+ int sqlite3_status (int ,int*,int*,int) ;
+ int * stdout ;
 
 __attribute__((used)) static int display_stats(
-  sqlite3 *db,                    /* Database to query */
-  int bReset                      /* True to reset SQLite stats */
+  sqlite3 *db,
+  int bReset
 ){
   int iCur;
   int iHiwtr;
@@ -83,9 +83,9 @@ __attribute__((used)) static int display_stats(
   fprintf(out, "Page cache writes:                   %d\n", iCur);
   iHiwtr = iCur = -1;
 
-#ifdef __linux__
+
   displayLinuxIoStats(out);
-#endif
+
 
   return 0;
 }

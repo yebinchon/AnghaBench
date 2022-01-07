@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int GetLastError () ; 
- int PRODUCT_ENTERPRISE_S_N_EVALUATION ; 
- int PRODUCT_UNDEFINED ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  ok (int,char*,int,int,...) ; 
- int pGetProductInfo (int,int,int,int,int*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef int DWORD ;
+
+
+ int GetLastError () ;
+ int PRODUCT_ENTERPRISE_S_N_EVALUATION ;
+ int PRODUCT_UNDEFINED ;
+ int SetLastError (int) ;
+ int ok (int,char*,int,int,...) ;
+ int pGetProductInfo (int,int,int,int,int*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetProductInfo(void)
 {
@@ -47,14 +47,14 @@ __attribute__((used)) static void test_GetProductInfo(void)
 
     if (!pGetProductInfo)
     {
-        /* Not present before Vista */
+
         win_skip("GetProductInfo() not available\n");
         return;
     }
 
     while (*entry)
     {
-        /* SetLastError() / GetLastError(): value is untouched */
+
         product = 0xdeadbeef;
         SetLastError(0xdeadbeef);
         res = pGetProductInfo(entry[0], entry[1], entry[2], entry[3], &product);
@@ -70,9 +70,9 @@ __attribute__((used)) static void test_GetProductInfo(void)
         entry+= 4;
     }
 
-    /* NULL pointer is not a problem */
+
     SetLastError(0xdeadbeef);
-    res = pGetProductInfo(6, 1, 0, 0, NULL);
+    res = pGetProductInfo(6, 1, 0, 0, ((void*)0));
     ok( (!res) && (GetLastError() == 0xdeadbeef),
         "got %d with 0x%x (expected FALSE with LastError untouched\n", res, GetLastError());
 }

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONGLONG ;
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_12__ {int /*<<< orphan*/ * NonResidentStart; int /*<<< orphan*/ * NonResidentEnd; int /*<<< orphan*/  Vcb; scalar_t__ OnlyResident; TYPE_1__* CurrAttr; } ;
-struct TYPE_11__ {int /*<<< orphan*/  pRecord; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int ULONGLONG ;
+typedef int ULONG ;
+struct TYPE_12__ {int * NonResidentStart; int * NonResidentEnd; int Vcb; scalar_t__ OnlyResident; TYPE_1__* CurrAttr; } ;
+struct TYPE_11__ {int pRecord; } ;
 struct TYPE_10__ {scalar_t__ Type; } ;
-typedef  TYPE_1__* PNTFS_ATTR_RECORD ;
-typedef  TYPE_2__* PNTFS_ATTR_CONTEXT ;
-typedef  int /*<<< orphan*/ * PNTFS_ATTRIBUTE_LIST_ITEM ;
-typedef  TYPE_3__* PFIND_ATTR_CONTXT ;
-typedef  scalar_t__ PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
+typedef TYPE_1__* PNTFS_ATTR_RECORD ;
+typedef TYPE_2__* PNTFS_ATTR_CONTEXT ;
+typedef int * PNTFS_ATTRIBUTE_LIST_ITEM ;
+typedef TYPE_3__* PFIND_ATTR_CONTXT ;
+typedef scalar_t__ PCHAR ;
+typedef int NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- scalar_t__ AttributeAttributeList ; 
- int AttributeDataLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_3__*) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- TYPE_2__* PrepareAttributeContext (TYPE_1__*) ; 
- int ReadAttribute (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_2__*) ; 
- int /*<<< orphan*/  STATUS_BUFFER_OVERFLOW ; 
- int /*<<< orphan*/  STATUS_FILE_CORRUPT_ERROR ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TAG_NTFS ; 
+
+ int ASSERT (int) ;
+ scalar_t__ AttributeAttributeList ;
+ int AttributeDataLength (int ) ;
+ int DPRINT (char*,TYPE_3__*) ;
+ int * ExAllocatePoolWithTag (int ,int ,int ) ;
+ int ExFreePoolWithTag (int *,int ) ;
+ int NonPagedPool ;
+ TYPE_2__* PrepareAttributeContext (TYPE_1__*) ;
+ int ReadAttribute (int ,TYPE_2__*,int ,scalar_t__,int ) ;
+ int ReleaseAttributeContext (TYPE_2__*) ;
+ int STATUS_BUFFER_OVERFLOW ;
+ int STATUS_FILE_CORRUPT_ERROR ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
+ int TAG_NTFS ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -57,12 +57,12 @@ InternalReadNonResidentAttributes(PFIND_ATTR_CONTXT Context)
 
     if (Context->OnlyResident)
     {
-        Context->NonResidentStart = NULL;
-        Context->NonResidentEnd = NULL;
+        Context->NonResidentStart = ((void*)0);
+        Context->NonResidentEnd = ((void*)0);
         return STATUS_SUCCESS;
     }
 
-    if (Context->NonResidentStart != NULL)
+    if (Context->NonResidentStart != ((void*)0))
     {
         return STATUS_FILE_CORRUPT_ERROR;
     }
@@ -76,7 +76,7 @@ InternalReadNonResidentAttributes(PFIND_ATTR_CONTXT Context)
     }
 
     Context->NonResidentStart = ExAllocatePoolWithTag(NonPagedPool, (ULONG)ListSize, TAG_NTFS);
-    if (Context->NonResidentStart == NULL)
+    if (Context->NonResidentStart == ((void*)0))
     {
         ReleaseAttributeContext(ListContext);
         return STATUS_INSUFFICIENT_RESOURCES;
@@ -85,7 +85,7 @@ InternalReadNonResidentAttributes(PFIND_ATTR_CONTXT Context)
     if (ReadAttribute(Context->Vcb, ListContext, 0, (PCHAR)Context->NonResidentStart, (ULONG)ListSize) != ListSize)
     {
         ExFreePoolWithTag(Context->NonResidentStart, TAG_NTFS);
-        Context->NonResidentStart = NULL;
+        Context->NonResidentStart = ((void*)0);
         ReleaseAttributeContext(ListContext);
         return STATUS_FILE_CORRUPT_ERROR;
     }

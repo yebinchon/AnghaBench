@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fcloop_nport {int /*<<< orphan*/  ref; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fcloop_nport_free ; 
- int /*<<< orphan*/  kref_put (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct fcloop_nport {int ref; } ;
+
+
+ int fcloop_nport_free ;
+ int kref_put (int *,int ) ;
 
 __attribute__((used)) static void
 fcloop_nport_put(struct fcloop_nport *nport)
 {
-	kref_put(&nport->ref, fcloop_nport_free);
+ kref_put(&nport->ref, fcloop_nport_free);
 }

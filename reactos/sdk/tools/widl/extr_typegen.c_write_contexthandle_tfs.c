@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  type_t ;
-typedef  int /*<<< orphan*/  attr_list_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FC_BIND_CONTEXT ; 
- int FC_RP ; 
- unsigned char NDR_CONTEXT_HANDLE_CANNOT_BE_NULL ; 
- unsigned char NDR_CONTEXT_HANDLE_NOSERIALIZE ; 
- unsigned char NDR_CONTEXT_HANDLE_SERIALIZE ; 
- unsigned char NDR_STRICT_CONTEXT_HANDLE ; 
- int /*<<< orphan*/  current_iface ; 
- int /*<<< orphan*/  get_context_handle_offset (int /*<<< orphan*/ *) ; 
- unsigned char get_contexthandle_flags (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int get_pointer_fc (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  print_file (int /*<<< orphan*/ *,int,char*,...) ; 
- int /*<<< orphan*/  print_start_tfs_comment (int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned int) ; 
- int /*<<< orphan*/  string_of_type (int) ; 
- int /*<<< orphan*/  update_tfsoff (int /*<<< orphan*/ *,unsigned int,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int type_t ;
+typedef int attr_list_t ;
+typedef int FILE ;
+
+
+ int FC_BIND_CONTEXT ;
+ int FC_RP ;
+ unsigned char NDR_CONTEXT_HANDLE_CANNOT_BE_NULL ;
+ unsigned char NDR_CONTEXT_HANDLE_NOSERIALIZE ;
+ unsigned char NDR_CONTEXT_HANDLE_SERIALIZE ;
+ unsigned char NDR_STRICT_CONTEXT_HANDLE ;
+ int current_iface ;
+ int get_context_handle_offset (int *) ;
+ unsigned char get_contexthandle_flags (int ,int const*,int *) ;
+ int get_pointer_fc (int *,int const*,int) ;
+ int print_file (int *,int,char*,...) ;
+ int print_start_tfs_comment (int *,int *,unsigned int) ;
+ int string_of_type (int) ;
+ int update_tfsoff (int *,unsigned int,int *) ;
 
 __attribute__((used)) static unsigned int write_contexthandle_tfs(FILE *file,
                                             const attr_list_t *attrs,
@@ -41,7 +41,7 @@ __attribute__((used)) static unsigned int write_contexthandle_tfs(FILE *file,
 
     print_start_tfs_comment(file, type, start_offset);
 
-    if (flags & 0x80)  /* via ptr */
+    if (flags & 0x80)
     {
         int pointer_type = get_pointer_fc( type, attrs, toplevel_param );
         if (!pointer_type) pointer_type = FC_RP;
@@ -53,7 +53,7 @@ __attribute__((used)) static unsigned int write_contexthandle_tfs(FILE *file,
 
     print_file(file, 2, "0x%02x,\t/* FC_BIND_CONTEXT */\n", FC_BIND_CONTEXT);
     print_file(file, 2, "0x%x,\t/* Context flags: ", flags);
-    /* return and can't be null values overlap */
+
     if (((flags & 0x21) != 0x21) && (flags & NDR_CONTEXT_HANDLE_CANNOT_BE_NULL))
         print_file(file, 0, "can't be null, ");
     if (flags & NDR_CONTEXT_HANDLE_SERIALIZE)

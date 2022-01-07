@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/ ** outputs; TYPE_3__* priv; } ;
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int ** outputs; TYPE_3__* priv; } ;
 struct TYPE_13__ {int pts; scalar_t__* extended_data; } ;
-struct TYPE_12__ {float factor; int channels; int start; int end; int win_size; int pts; TYPE_2__* buffer; int /*<<< orphan*/  phase; int /*<<< orphan*/  magnitude; scalar_t__ hop_size; TYPE_1__** fft_data; } ;
+struct TYPE_12__ {float factor; int channels; int start; int end; int win_size; int pts; TYPE_2__* buffer; int phase; int magnitude; scalar_t__ hop_size; TYPE_1__** fft_data; } ;
 struct TYPE_11__ {scalar_t__* extended_data; } ;
 struct TYPE_10__ {float re; } ;
-typedef  TYPE_3__ SpectrumSynthContext ;
-typedef  TYPE_4__ AVFrame ;
-typedef  int /*<<< orphan*/  AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
+typedef TYPE_3__ SpectrumSynthContext ;
+typedef TYPE_4__ AVFrame ;
+typedef int AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  av_frame_free (int /*<<< orphan*/ *) ; 
- int ff_filter_frame (int /*<<< orphan*/ *,TYPE_4__*) ; 
- TYPE_4__* ff_get_audio_buffer (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memmove (float*,float*,int) ; 
- int /*<<< orphan*/  synth_window (TYPE_5__*,int) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int av_frame_free (int *) ;
+ int ff_filter_frame (int *,TYPE_4__*) ;
+ TYPE_4__* ff_get_audio_buffer (int *,int) ;
+ int memmove (float*,float*,int) ;
+ int synth_window (TYPE_5__*,int) ;
 
 __attribute__((used)) static int try_push_frame(AVFilterContext *ctx, int x)
 {

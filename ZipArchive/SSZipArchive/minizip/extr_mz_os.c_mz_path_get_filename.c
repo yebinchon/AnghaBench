@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MZ_EXIST_ERROR ; 
- int /*<<< orphan*/  MZ_OK ; 
- int /*<<< orphan*/  MZ_PARAM_ERROR ; 
+
+
+
+typedef int int32_t ;
+
+
+ int MZ_EXIST_ERROR ;
+ int MZ_OK ;
+ int MZ_PARAM_ERROR ;
 
 int32_t mz_path_get_filename(const char *path, const char **filename)
 {
-    const char *match = NULL;
+    const char *match = ((void*)0);
 
-    if (path == NULL || filename == NULL)
+    if (path == ((void*)0) || filename == ((void*)0))
         return MZ_PARAM_ERROR;
 
-    *filename = NULL;
+    *filename = ((void*)0);
 
     for (match = path; *match != 0; match += 1)
     {
@@ -32,7 +32,7 @@ int32_t mz_path_get_filename(const char *path, const char **filename)
             *filename = match + 1;
     }
 
-    if (*filename == NULL)
+    if (*filename == ((void*)0))
         return MZ_EXIST_ERROR;
 
     return MZ_OK;

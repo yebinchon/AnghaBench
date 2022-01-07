@@ -1,77 +1,77 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct i2c_adapter {int dummy; } ;
 struct dvb_frontend_ops {int dummy; } ;
-struct dvb_frontend {struct bcm3510_state* demodulator_priv; int /*<<< orphan*/  ops; } ;
-struct bcm3510_state {struct dvb_frontend frontend; int /*<<< orphan*/  hab_mutex; struct i2c_adapter* i2c; struct bcm3510_config const* config; } ;
+struct dvb_frontend {struct bcm3510_state* demodulator_priv; int ops; } ;
+struct bcm3510_state {struct dvb_frontend frontend; int hab_mutex; struct i2c_adapter* i2c; struct bcm3510_config const* config; } ;
 struct bcm3510_config {int dummy; } ;
 struct TYPE_4__ {int REV; int LAYER; } ;
 struct TYPE_5__ {TYPE_1__ REVID_e0; } ;
-typedef  TYPE_2__ bcm3510_register_value ;
+typedef TYPE_2__ bcm3510_register_value ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  bcm3510_ops ; 
- int bcm3510_readB (struct bcm3510_state*,int,TYPE_2__*) ; 
- int /*<<< orphan*/  bcm3510_reset (struct bcm3510_state*) ; 
- int /*<<< orphan*/  deb_info (char*,int,int) ; 
- int /*<<< orphan*/  info (char*,int,int) ; 
- int /*<<< orphan*/  kfree (struct bcm3510_state*) ; 
- struct bcm3510_state* kzalloc (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mutex_init (int /*<<< orphan*/ *) ; 
+
+ int GFP_KERNEL ;
+ int bcm3510_ops ;
+ int bcm3510_readB (struct bcm3510_state*,int,TYPE_2__*) ;
+ int bcm3510_reset (struct bcm3510_state*) ;
+ int deb_info (char*,int,int) ;
+ int info (char*,int,int) ;
+ int kfree (struct bcm3510_state*) ;
+ struct bcm3510_state* kzalloc (int,int ) ;
+ int memcpy (int *,int *,int) ;
+ int mutex_init (int *) ;
 
 struct dvb_frontend* bcm3510_attach(const struct bcm3510_config *config,
-				   struct i2c_adapter *i2c)
+       struct i2c_adapter *i2c)
 {
-	struct bcm3510_state* state = NULL;
-	int ret;
-	bcm3510_register_value v;
+ struct bcm3510_state* state = ((void*)0);
+ int ret;
+ bcm3510_register_value v;
 
-	/* allocate memory for the internal state */
-	state = kzalloc(sizeof(struct bcm3510_state), GFP_KERNEL);
-	if (state == NULL)
-		goto error;
 
-	/* setup the state */
+ state = kzalloc(sizeof(struct bcm3510_state), GFP_KERNEL);
+ if (state == ((void*)0))
+  goto error;
 
-	state->config = config;
-	state->i2c = i2c;
 
-	/* create dvb_frontend */
-	memcpy(&state->frontend.ops, &bcm3510_ops, sizeof(struct dvb_frontend_ops));
-	state->frontend.demodulator_priv = state;
 
-	mutex_init(&state->hab_mutex);
+ state->config = config;
+ state->i2c = i2c;
 
-	if ((ret = bcm3510_readB(state,0xe0,&v)) < 0)
-		goto error;
 
-	deb_info("Revision: 0x%1x, Layer: 0x%1x.\n",v.REVID_e0.REV,v.REVID_e0.LAYER);
+ memcpy(&state->frontend.ops, &bcm3510_ops, sizeof(struct dvb_frontend_ops));
+ state->frontend.demodulator_priv = state;
 
-	if ((v.REVID_e0.REV != 0x1 && v.REVID_e0.LAYER != 0xb) && /* cold */
-		(v.REVID_e0.REV != 0x8 && v.REVID_e0.LAYER != 0x0))   /* warm */
-		goto error;
+ mutex_init(&state->hab_mutex);
 
-	info("Revision: 0x%1x, Layer: 0x%1x.",v.REVID_e0.REV,v.REVID_e0.LAYER);
+ if ((ret = bcm3510_readB(state,0xe0,&v)) < 0)
+  goto error;
 
-	bcm3510_reset(state);
+ deb_info("Revision: 0x%1x, Layer: 0x%1x.\n",v.REVID_e0.REV,v.REVID_e0.LAYER);
 
-	return &state->frontend;
+ if ((v.REVID_e0.REV != 0x1 && v.REVID_e0.LAYER != 0xb) &&
+  (v.REVID_e0.REV != 0x8 && v.REVID_e0.LAYER != 0x0))
+  goto error;
+
+ info("Revision: 0x%1x, Layer: 0x%1x.",v.REVID_e0.REV,v.REVID_e0.LAYER);
+
+ bcm3510_reset(state);
+
+ return &state->frontend;
 
 error:
-	kfree(state);
-	return NULL;
+ kfree(state);
+ return ((void*)0);
 }

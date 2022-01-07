@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct advert {int l_views; int l_clicked_old; scalar_t__ g_clicked_old; scalar_t__ g_views; } ;
 
-/* Variables and functions */
- int ADJ_VIEW_THRESHOLD ; 
- double INIT_L_CTR ; 
+
+ int ADJ_VIEW_THRESHOLD ;
+ double INIT_L_CTR ;
 
 __attribute__((used)) static void adjust_ctr_counters (struct advert *A) {
   if (A->l_views >= 2*ADJ_VIEW_THRESHOLD && (double) A->l_clicked_old / A->l_views > 1.5*INIT_L_CTR) {

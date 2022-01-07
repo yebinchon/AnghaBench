@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_6__ {char const* name; int mseconds; scalar_t__ lastKey; int numOfFields; int /*<<< orphan*/  result; int /*<<< orphan*/  fields; int /*<<< orphan*/ * taos; struct TYPE_6__* signature; } ;
-typedef  TYPE_1__ TAOS_SUB ;
-typedef  int /*<<< orphan*/  TAOS_FIELD ;
-typedef  TYPE_1__ SSub ;
 
-/* Variables and functions */
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char const*) ; 
- int /*<<< orphan*/  strcpy (char const*,char const*) ; 
- scalar_t__ taosGetTimestampMs () ; 
- int /*<<< orphan*/  taos_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * taos_connect (char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taos_errstr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  taos_fetch_fields (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taos_init () ; 
- int taos_num_fields (int /*<<< orphan*/ ) ; 
- int taos_query (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  taos_use_result (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tfree (TYPE_1__*) ; 
- int /*<<< orphan*/  tscError (char*,char const*) ; 
- int /*<<< orphan*/  tscTrace (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_6__ {char const* name; int mseconds; scalar_t__ lastKey; int numOfFields; int result; int fields; int * taos; struct TYPE_6__* signature; } ;
+typedef TYPE_1__ TAOS_SUB ;
+typedef int TAOS_FIELD ;
+typedef TYPE_1__ SSub ;
+
+
+ scalar_t__ malloc (int) ;
+ int memcpy (int ,int ,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int sprintf (char*,char*,char const*) ;
+ int strcpy (char const*,char const*) ;
+ scalar_t__ taosGetTimestampMs () ;
+ int taos_close (int *) ;
+ int * taos_connect (char const*,char const*,char const*,int *,int ) ;
+ int taos_errstr (int *) ;
+ int taos_fetch_fields (int ) ;
+ int taos_init () ;
+ int taos_num_fields (int ) ;
+ int taos_query (int *,char*) ;
+ int taos_use_result (int *) ;
+ int tfree (TYPE_1__*) ;
+ int tscError (char*,char const*) ;
+ int tscTrace (char*,int ) ;
 
 TAOS_SUB *taos_subscribe(const char *host, const char *user, const char *pass, const char *db, const char *name, int64_t time, int mseconds) {
   SSub *pSub;
 
   pSub = (SSub *)malloc(sizeof(SSub));
-  if (pSub == NULL) return NULL;
+  if (pSub == ((void*)0)) return ((void*)0);
   memset(pSub, 0, sizeof(SSub));
 
   pSub->signature = pSub;
@@ -52,8 +52,8 @@ TAOS_SUB *taos_subscribe(const char *host, const char *user, const char *pass, c
   }
 
   taos_init();
-  pSub->taos = taos_connect(host, user, pass, NULL, 0);
-  if (pSub->taos == NULL) {
+  pSub->taos = taos_connect(host, user, pass, ((void*)0), 0);
+  if (pSub->taos == ((void*)0)) {
     tfree(pSub);
   } else {
     char qstr[128];
@@ -69,7 +69,7 @@ TAOS_SUB *taos_subscribe(const char *host, const char *user, const char *pass, c
         tscTrace("failed to select, reason:%s", taos_errstr(pSub->taos));
         taos_close(pSub->taos);
         tfree(pSub);
-        return NULL;
+        return ((void*)0);
       }
       pSub->result = taos_use_result(pSub->taos);
       pSub->numOfFields = taos_num_fields(pSub->result);

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_fs_fs__id_part_t ;
-typedef  int /*<<< orphan*/  apr_uint64_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int SVN_INT64_BUFFER_SIZE ; 
- char const* apr_psprintf (int /*<<< orphan*/ *,char*,char const*,char*) ; 
- int /*<<< orphan*/  svn__ui64tobase36 (char*,int /*<<< orphan*/ ) ; 
- char* svn_fs_fs__id_txn_unparse (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_fs_fs__id_part_t ;
+typedef int apr_uint64_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_INT64_BUFFER_SIZE ;
+ char const* apr_psprintf (int *,char*,char const*,char*) ;
+ int svn__ui64tobase36 (char*,int ) ;
+ char* svn_fs_fs__id_txn_unparse (int const*,int *) ;
 
 __attribute__((used)) static const char *
 format_uniquifier(const svn_fs_fs__id_part_t *noderev_txn_id,

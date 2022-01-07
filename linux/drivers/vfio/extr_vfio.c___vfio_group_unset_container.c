@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct vfio_iommu_driver {TYPE_1__* ops; } ;
-struct vfio_group {int /*<<< orphan*/  container_next; int /*<<< orphan*/  container_q; struct vfio_container* container; int /*<<< orphan*/  iommu_group; } ;
-struct vfio_container {int /*<<< orphan*/  group_lock; int /*<<< orphan*/ * iommu_data; struct vfio_iommu_driver* iommu_driver; int /*<<< orphan*/  group_list; } ;
-struct TYPE_2__ {int /*<<< orphan*/  owner; int /*<<< orphan*/  (* release ) (int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* detach_group ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
+struct vfio_group {int container_next; int container_q; struct vfio_container* container; int iommu_group; } ;
+struct vfio_container {int group_lock; int * iommu_data; struct vfio_iommu_driver* iommu_driver; int group_list; } ;
+struct TYPE_2__ {int owner; int (* release ) (int *) ;int (* detach_group ) (int *,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  down_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  module_put (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  up_write (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vfio_container_put (struct vfio_container*) ; 
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+ int down_write (int *) ;
+ int list_del (int *) ;
+ scalar_t__ list_empty (int *) ;
+ int module_put (int ) ;
+ int stub1 (int *,int ) ;
+ int stub2 (int *) ;
+ int up_write (int *) ;
+ int vfio_container_put (struct vfio_container*) ;
+ int wake_up (int *) ;
 
 __attribute__((used)) static void __vfio_group_unset_container(struct vfio_group *group)
 {
-	struct vfio_container *container = group->container;
-	struct vfio_iommu_driver *driver;
+ struct vfio_container *container = group->container;
+ struct vfio_iommu_driver *driver;
 
-	down_write(&container->group_lock);
+ down_write(&container->group_lock);
 
-	driver = container->iommu_driver;
-	if (driver)
-		driver->ops->detach_group(container->iommu_data,
-					  group->iommu_group);
+ driver = container->iommu_driver;
+ if (driver)
+  driver->ops->detach_group(container->iommu_data,
+       group->iommu_group);
 
-	group->container = NULL;
-	wake_up(&group->container_q);
-	list_del(&group->container_next);
+ group->container = ((void*)0);
+ wake_up(&group->container_q);
+ list_del(&group->container_next);
 
-	/* Detaching the last group deprivileges a container, remove iommu */
-	if (driver && list_empty(&container->group_list)) {
-		driver->ops->release(container->iommu_data);
-		module_put(driver->ops->owner);
-		container->iommu_driver = NULL;
-		container->iommu_data = NULL;
-	}
 
-	up_write(&container->group_lock);
+ if (driver && list_empty(&container->group_list)) {
+  driver->ops->release(container->iommu_data);
+  module_put(driver->ops->owner);
+  container->iommu_driver = ((void*)0);
+  container->iommu_data = ((void*)0);
+ }
 
-	vfio_container_put(container);
+ up_write(&container->group_lock);
+
+ vfio_container_put(container);
 }

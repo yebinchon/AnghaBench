@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ type; int /*<<< orphan*/  max; int /*<<< orphan*/  min; } ;
-typedef  TYPE_1__ value_range_t ;
 
-/* Variables and functions */
- scalar_t__ VR_RANGE ; 
- scalar_t__ is_overflow_infinity (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ type; int max; int min; } ;
+typedef TYPE_1__ value_range_t ;
+
+
+ scalar_t__ VR_RANGE ;
+ scalar_t__ is_overflow_infinity (int ) ;
 
 __attribute__((used)) static inline bool
 overflow_infinity_range_p (value_range_t *vr)
 {
   return (vr->type == VR_RANGE
-	  && (is_overflow_infinity (vr->min)
-	      || is_overflow_infinity (vr->max)));
+   && (is_overflow_infinity (vr->min)
+       || is_overflow_infinity (vr->max)));
 }

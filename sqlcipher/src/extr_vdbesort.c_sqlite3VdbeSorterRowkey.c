@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VdbeSorter ;
-struct TYPE_8__ {int /*<<< orphan*/ * pSorter; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int VdbeSorter ;
+struct TYPE_8__ {int * pSorter; } ;
 struct TYPE_9__ {scalar_t__ eCurType; TYPE_1__ uc; } ;
-typedef  TYPE_2__ VdbeCursor ;
-struct TYPE_10__ {int n; int /*<<< orphan*/  z; } ;
-typedef  TYPE_3__ Mem ;
+typedef TYPE_2__ VdbeCursor ;
+struct TYPE_10__ {int n; int z; } ;
+typedef TYPE_3__ Mem ;
 
-/* Variables and functions */
- scalar_t__ CURTYPE_SORTER ; 
- int /*<<< orphan*/  MEM_Blob ; 
- int /*<<< orphan*/  MemSetTypeFlag (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int SQLITE_NOMEM_BKPT ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,void*,int) ; 
- scalar_t__ sqlite3VdbeMemClearAndResize (TYPE_3__*,int) ; 
- void* vdbeSorterRowkey (int /*<<< orphan*/ *,int*) ; 
+
+ scalar_t__ CURTYPE_SORTER ;
+ int MEM_Blob ;
+ int MemSetTypeFlag (TYPE_3__*,int ) ;
+ int SQLITE_NOMEM_BKPT ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ int memcpy (int ,void*,int) ;
+ scalar_t__ sqlite3VdbeMemClearAndResize (TYPE_3__*,int) ;
+ void* vdbeSorterRowkey (int *,int*) ;
 
 int sqlite3VdbeSorterRowkey(const VdbeCursor *pCsr, Mem *pOut){
   VdbeSorter *pSorter;
-  void *pKey; int nKey;           /* Sorter key to copy into pOut */
+  void *pKey; int nKey;
 
   assert( pCsr->eCurType==CURTYPE_SORTER );
   pSorter = pCsr->uc.pSorter;

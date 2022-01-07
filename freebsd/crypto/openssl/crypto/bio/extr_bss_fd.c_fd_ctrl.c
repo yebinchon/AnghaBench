@@ -1,34 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int num; int shutdown; int init; } ;
-typedef  TYPE_1__ BIO ;
-
-/* Variables and functions */
-#define  BIO_CTRL_DUP 139 
-#define  BIO_CTRL_FLUSH 138 
-#define  BIO_CTRL_GET_CLOSE 137 
-#define  BIO_CTRL_INFO 136 
-#define  BIO_CTRL_PENDING 135 
-#define  BIO_CTRL_RESET 134 
-#define  BIO_CTRL_SET_CLOSE 133 
-#define  BIO_CTRL_WPENDING 132 
-#define  BIO_C_FILE_SEEK 131 
-#define  BIO_C_FILE_TELL 130 
-#define  BIO_C_GET_FD 129 
-#define  BIO_C_SET_FD 128 
- scalar_t__ UP_lseek (int,long,int) ; 
- int /*<<< orphan*/  fd_free (TYPE_1__*) ; 
+typedef TYPE_1__ BIO ;
+ scalar_t__ UP_lseek (int,long,int) ;
+ int fd_free (TYPE_1__*) ;
 
 __attribute__((used)) static long fd_ctrl(BIO *b, int cmd, long num, void *ptr)
 {
@@ -36,43 +22,43 @@ __attribute__((used)) static long fd_ctrl(BIO *b, int cmd, long num, void *ptr)
     int *ip;
 
     switch (cmd) {
-    case BIO_CTRL_RESET:
+    case 134:
         num = 0;
-        /* fall thru */
-    case BIO_C_FILE_SEEK:
+
+    case 131:
         ret = (long)UP_lseek(b->num, num, 0);
         break;
-    case BIO_C_FILE_TELL:
-    case BIO_CTRL_INFO:
+    case 130:
+    case 136:
         ret = (long)UP_lseek(b->num, 0, 1);
         break;
-    case BIO_C_SET_FD:
+    case 128:
         fd_free(b);
         b->num = *((int *)ptr);
         b->shutdown = (int)num;
         b->init = 1;
         break;
-    case BIO_C_GET_FD:
+    case 129:
         if (b->init) {
             ip = (int *)ptr;
-            if (ip != NULL)
+            if (ip != ((void*)0))
                 *ip = b->num;
             ret = b->num;
         } else
             ret = -1;
         break;
-    case BIO_CTRL_GET_CLOSE:
+    case 137:
         ret = b->shutdown;
         break;
-    case BIO_CTRL_SET_CLOSE:
+    case 133:
         b->shutdown = (int)num;
         break;
-    case BIO_CTRL_PENDING:
-    case BIO_CTRL_WPENDING:
+    case 135:
+    case 132:
         ret = 0;
         break;
-    case BIO_CTRL_DUP:
-    case BIO_CTRL_FLUSH:
+    case 139:
+    case 138:
         ret = 1;
         break;
     default:

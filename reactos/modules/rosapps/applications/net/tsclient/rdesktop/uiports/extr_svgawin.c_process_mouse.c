@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int x; int y; } ;
 
-/* Variables and functions */
- int MOUSE_FLAG_BUTTON1 ; 
- int MOUSE_FLAG_BUTTON2 ; 
- int MOUSE_FLAG_BUTTON3 ; 
- int MOUSE_FLAG_DOWN ; 
- int MOUSE_FLAG_MOVE ; 
- int /*<<< orphan*/  RDP_INPUT_MOUSE ; 
- int /*<<< orphan*/  UpAndRunning ; 
- int /*<<< orphan*/  draw_cursor () ; 
- int /*<<< orphan*/  draw_cursor_under (int,int) ; 
- TYPE_1__ mcursor ; 
- int mouse_getbutton () ; 
- int mouse_getx () ; 
- int mouse_gety () ; 
- int mouseb ; 
- int mousex ; 
- int mousey ; 
- int /*<<< orphan*/  rdp_send_input (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int) ; 
+
+ int MOUSE_FLAG_BUTTON1 ;
+ int MOUSE_FLAG_BUTTON2 ;
+ int MOUSE_FLAG_BUTTON3 ;
+ int MOUSE_FLAG_DOWN ;
+ int MOUSE_FLAG_MOVE ;
+ int RDP_INPUT_MOUSE ;
+ int UpAndRunning ;
+ int draw_cursor () ;
+ int draw_cursor_under (int,int) ;
+ TYPE_1__ mcursor ;
+ int mouse_getbutton () ;
+ int mouse_getx () ;
+ int mouse_gety () ;
+ int mouseb ;
+ int mousex ;
+ int mousey ;
+ int rdp_send_input (int ,int ,int,int,int) ;
 
 void process_mouse(void)
 {
@@ -44,9 +44,9 @@ void process_mouse(void)
   mousey = mouse_gety() - mcursor.y;
   mouseb = mouse_getbutton();
 
-  if (mouseb != ob) // button
+  if (mouseb != ob)
   {
-    // right button
+
     if (mouseb & 1)
       if (!(ob & 1))
         rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_DOWN | MOUSE_FLAG_BUTTON2,
@@ -55,7 +55,7 @@ void process_mouse(void)
       if (!(mouseb & 1))
         rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_BUTTON2,
                        mousex + mcursor.x, mousey + mcursor.y);
-    // middle button
+
     if (mouseb & 2)
       if (!(ob & 2))
         rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_DOWN | MOUSE_FLAG_BUTTON3,
@@ -64,7 +64,7 @@ void process_mouse(void)
       if (!(mouseb & 2))
         rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_BUTTON3,
                        mousex + mcursor.x, mousey + mcursor.y);
-    // left button
+
     if (mouseb & 4)
       if (!(ob & 4))
         rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_DOWN | MOUSE_FLAG_BUTTON1,
@@ -74,7 +74,7 @@ void process_mouse(void)
         rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_BUTTON1,
                        mousex + mcursor.x, mousey + mcursor.y);
   }
-  if (mousex != ox || mousey != oy) // movement
+  if (mousex != ox || mousey != oy)
   {
     rdp_send_input(0, RDP_INPUT_MOUSE, MOUSE_FLAG_MOVE,
                    mousex + mcursor.x, mousey + mcursor.y);

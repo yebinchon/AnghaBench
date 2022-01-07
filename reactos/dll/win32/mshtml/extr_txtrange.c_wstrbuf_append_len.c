@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int len; int size; scalar_t__* buf; } ;
-typedef  TYPE_1__ wstrbuf_t ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+typedef TYPE_1__ wstrbuf_t ;
+typedef int WCHAR ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- scalar_t__* heap_realloc (scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__* heap_realloc (scalar_t__*,int) ;
+ int memcpy (scalar_t__*,int ,int) ;
 
 __attribute__((used)) static void wstrbuf_append_len(wstrbuf_t *buf, LPCWSTR str, int len)
 {

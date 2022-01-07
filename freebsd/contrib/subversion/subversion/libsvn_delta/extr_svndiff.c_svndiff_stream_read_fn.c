@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ read_pos; TYPE_2__* window_buffer; scalar_t__ hit_eof; int /*<<< orphan*/  handler_baton; int /*<<< orphan*/  (* handler ) (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;int /*<<< orphan*/  scratch_pool; int /*<<< orphan*/  txstream; } ;
-typedef  TYPE_1__ svndiff_stream_baton_t ;
-typedef  int /*<<< orphan*/  svn_txdelta_window_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ apr_size_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ read_pos; TYPE_2__* window_buffer; scalar_t__ hit_eof; int handler_baton; int (* handler ) (int *,int ) ;int scratch_pool; int txstream; } ;
+typedef TYPE_1__ svndiff_stream_baton_t ;
+typedef int svn_txdelta_window_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ apr_size_t ;
 struct TYPE_4__ {scalar_t__ len; scalar_t__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  memcpy (char*,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stringbuf_setempty (TYPE_2__*) ; 
- int /*<<< orphan*/  svn_txdelta_next_window (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ TRUE ;
+ int memcpy (char*,scalar_t__,scalar_t__) ;
+ int stub1 (int *,int ) ;
+ int svn_pool_clear (int ) ;
+ int svn_stringbuf_setempty (TYPE_2__*) ;
+ int svn_txdelta_next_window (int **,int ,int ) ;
 
 __attribute__((used)) static svn_error_t *
 svndiff_stream_read_fn(void *baton, char *buffer, apr_size_t *len)

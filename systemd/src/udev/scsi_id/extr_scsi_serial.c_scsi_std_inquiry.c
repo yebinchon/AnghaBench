@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct stat {int /*<<< orphan*/  st_rdev; } ;
-struct scsi_id_device {char* vendor; char* model; char* revision; int /*<<< orphan*/  type; int /*<<< orphan*/  kernel; } ;
 
-/* Variables and functions */
- int O_CLOEXEC ; 
- int O_NONBLOCK ; 
- int O_RDONLY ; 
- int SCSI_INQ_BUFF_LEN ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  errno ; 
- scalar_t__ fstat (int,struct stat*) ; 
- int /*<<< orphan*/  log_debug_errno (int /*<<< orphan*/ ,char*,char const*) ; 
- int major (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,unsigned char*,int) ; 
- int /*<<< orphan*/  memzero (unsigned char*,int) ; 
- int minor (int /*<<< orphan*/ ) ; 
- int open (char const*,int) ; 
- int scsi_inquiry (struct scsi_id_device*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,unsigned char,...) ; 
+
+
+
+struct stat {int st_rdev; } ;
+struct scsi_id_device {char* vendor; char* model; char* revision; int type; int kernel; } ;
+
+
+ int O_CLOEXEC ;
+ int O_NONBLOCK ;
+ int O_RDONLY ;
+ int SCSI_INQ_BUFF_LEN ;
+ int close (int) ;
+ int errno ;
+ scalar_t__ fstat (int,struct stat*) ;
+ int log_debug_errno (int ,char*,char const*) ;
+ int major (int ) ;
+ int memcpy (char*,unsigned char*,int) ;
+ int memzero (unsigned char*,int) ;
+ int minor (int ) ;
+ int open (char const*,int) ;
+ int scsi_inquiry (struct scsi_id_device*,int,int ,int ,unsigned char*,int) ;
+ int sprintf (int ,char*,unsigned char,...) ;
 
 int scsi_std_inquiry(struct scsi_id_device *dev_scsi, const char *devname) {
         int fd;

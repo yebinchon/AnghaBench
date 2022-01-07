@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IAMTimelineObj ;
-typedef  int /*<<< orphan*/  IAMTimelineGroup ;
-typedef  int /*<<< orphan*/  IAMTimeline ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_AMTimeline ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- scalar_t__ IAMTimelineGroup_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IAMTimelineGroup_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IAMTimelineObj_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IAMTimelineObj_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IAMTimeline_CreateEmptyNode (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IAMTimeline_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IAMTimeline ; 
- int /*<<< orphan*/  IID_IAMTimelineGroup ; 
- int /*<<< orphan*/  IID_IAMTimelineObj ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TIMELINE_MAJOR_TYPE_GROUP ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+
+
+typedef int IAMTimelineObj ;
+typedef int IAMTimelineGroup ;
+typedef int IAMTimeline ;
+typedef scalar_t__ HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_AMTimeline ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ scalar_t__ IAMTimelineGroup_QueryInterface (int *,int *,void**) ;
+ int IAMTimelineGroup_Release (int *) ;
+ scalar_t__ IAMTimelineObj_QueryInterface (int *,int *,void**) ;
+ int IAMTimelineObj_Release (int *) ;
+ scalar_t__ IAMTimeline_CreateEmptyNode (int *,int **,int ) ;
+ int IAMTimeline_Release (int *) ;
+ int IID_IAMTimeline ;
+ int IID_IAMTimelineGroup ;
+ int IID_IAMTimelineObj ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ scalar_t__ S_OK ;
+ int TIMELINE_MAJOR_TYPE_GROUP ;
+ scalar_t__ broken (int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_timelineobj_interfaces(void)
 {
     HRESULT hr;
-    IAMTimeline *timeline = NULL;
+    IAMTimeline *timeline = ((void*)0);
     IAMTimelineObj *obj;
 
-    hr = CoCreateInstance(&CLSID_AMTimeline, NULL, CLSCTX_INPROC_SERVER, &IID_IAMTimeline, (void **)&timeline);
+    hr = CoCreateInstance(&CLSID_AMTimeline, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IAMTimeline, (void **)&timeline);
     ok(hr == S_OK || broken(hr == REGDB_E_CLASSNOTREG), "CoCreateInstance failed: %08x\n", hr);
     if (!timeline)
         return;

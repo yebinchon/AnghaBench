@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct _Unwind_Context {int /*<<< orphan*/  psp; } ;
-typedef  int /*<<< orphan*/  _Unwind_Word ;
-typedef  int /*<<< orphan*/  _Unwind_Ptr ;
 
-/* Variables and functions */
+
+
+
+struct _Unwind_Context {int psp; } ;
+typedef int _Unwind_Word ;
+typedef int _Unwind_Ptr ;
+
+
 
 _Unwind_Word
 _Unwind_GetCFA (struct _Unwind_Context *context)

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct revision_baton_t {int /*<<< orphan*/  rev_orig; int /*<<< orphan*/  rev_actual; TYPE_1__* pb; int /*<<< orphan*/  original_headers; int /*<<< orphan*/  props; void* writing_begun; void* had_dropped_nodes; void* has_nodes; } ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
+struct revision_baton_t {int rev_orig; int rev_actual; TYPE_1__* pb; int original_headers; int props; void* writing_begun; void* had_dropped_nodes; void* has_nodes; } ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 struct TYPE_2__ {int rev_drop_count; scalar_t__ do_renumber_revs; } ;
 
-/* Variables and functions */
- void* FALSE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_REPOS_DUMPFILE_REVISION_NUMBER ; 
- int /*<<< orphan*/  SVN_STR_TO_REV (char const*) ; 
- int /*<<< orphan*/  apr_hash_make (int /*<<< orphan*/ *) ; 
- void* apr_palloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  headers_dup (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ void* FALSE ;
+ int * SVN_NO_ERROR ;
+ int SVN_REPOS_DUMPFILE_REVISION_NUMBER ;
+ int SVN_STR_TO_REV (char const*) ;
+ int apr_hash_make (int *) ;
+ void* apr_palloc (int *,int) ;
+ int headers_dup (int *,int *) ;
+ char* svn_hash_gets (int *,int ) ;
 
 __attribute__((used)) static svn_error_t *
 new_revision_record(void **revision_baton,

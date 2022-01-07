@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct speex_params {int seq; int packet_size; } ;
-struct ogg_stream {int pstart; int psize; struct speex_params* private; int /*<<< orphan*/ * buf; } ;
+struct ogg_stream {int pstart; int psize; struct speex_params* private; int * buf; } ;
 struct ogg {struct ogg_stream* streams; } ;
-typedef  int int64_t ;
-struct TYPE_11__ {scalar_t__ sample_rate; int channels; int /*<<< orphan*/  extradata_size; int /*<<< orphan*/  extradata; int /*<<< orphan*/  channel_layout; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
+typedef int int64_t ;
+struct TYPE_11__ {scalar_t__ sample_rate; int channels; int extradata_size; int extradata; int channel_layout; int codec_id; int codec_type; } ;
 struct TYPE_10__ {TYPE_1__** streams; struct ogg* priv_data; } ;
 struct TYPE_9__ {TYPE_6__* codecpar; } ;
-typedef  TYPE_1__ AVStream ;
-typedef  TYPE_2__ AVFormatContext ;
+typedef TYPE_1__ AVStream ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_AUDIO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_MONO ; 
- int /*<<< orphan*/  AV_CH_LAYOUT_STEREO ; 
- int /*<<< orphan*/  AV_CODEC_ID_SPEEX ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- void* AV_RL32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int INT32_MAX ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,...) ; 
- struct speex_params* av_mallocz (int) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_1__*,int,int,scalar_t__) ; 
- scalar_t__ ff_alloc_extradata (TYPE_6__*,int) ; 
- int /*<<< orphan*/  ff_vorbis_stream_comment (TYPE_2__*,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AVMEDIA_TYPE_AUDIO ;
+ int AV_CH_LAYOUT_MONO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_CODEC_ID_SPEEX ;
+ int AV_LOG_ERROR ;
+ void* AV_RL32 (int *) ;
+ int ENOMEM ;
+ int INT32_MAX ;
+ int av_log (TYPE_2__*,int ,char*,...) ;
+ struct speex_params* av_mallocz (int) ;
+ int avpriv_set_pts_info (TYPE_1__*,int,int,scalar_t__) ;
+ scalar_t__ ff_alloc_extradata (TYPE_6__*,int) ;
+ int ff_vorbis_stream_comment (TYPE_2__*,TYPE_1__*,int *,int) ;
+ int memcpy (int ,int *,int ) ;
 
 __attribute__((used)) static int speex_header(AVFormatContext *s, int idx) {
     struct ogg *ogg = s->priv_data;
@@ -82,8 +82,8 @@ __attribute__((used)) static int speex_header(AVFormatContext *s, int idx) {
         st->codecpar->channel_layout = st->codecpar->channels == 1 ? AV_CH_LAYOUT_MONO :
                                                                      AV_CH_LAYOUT_STEREO;
 
-        spxp->packet_size  = AV_RL32(p + 56);
-        frames_per_packet  = AV_RL32(p + 64);
+        spxp->packet_size = AV_RL32(p + 56);
+        frames_per_packet = AV_RL32(p + 64);
         if (spxp->packet_size < 0 ||
             frames_per_packet < 0 ||
             spxp->packet_size * (int64_t)frames_per_packet > INT32_MAX / 256) {

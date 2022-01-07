@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct aic7xxx_scb {TYPE_2__* hscb; } ;
 struct aic7xxx_host {TYPE_1__* scb_data; } ;
 struct TYPE_4__ {unsigned char tag; } ;
 struct TYPE_3__ {unsigned char maxhscbs; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCBPTR ; 
- unsigned char SCB_LIST_NULL ; 
- int /*<<< orphan*/  SCB_TAG ; 
- unsigned char aic_inb (struct aic7xxx_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  aic_outb (struct aic7xxx_host*,unsigned char,int /*<<< orphan*/ ) ; 
+
+ int SCBPTR ;
+ unsigned char SCB_LIST_NULL ;
+ int SCB_TAG ;
+ unsigned char aic_inb (struct aic7xxx_host*,int ) ;
+ int aic_outb (struct aic7xxx_host*,unsigned char,int ) ;
 
 __attribute__((used)) static unsigned char
 aic7xxx_find_scb(struct aic7xxx_host *p, struct aic7xxx_scb *scb)

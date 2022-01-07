@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct bfa_ioc {int /*<<< orphan*/  iocpf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOCPF_E_INITFAIL ; 
- int /*<<< orphan*/  bfa_fsm_send_event (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct bfa_ioc {int iocpf; } ;
+
+
+ int IOCPF_E_INITFAIL ;
+ int bfa_fsm_send_event (int *,int ) ;
 
 __attribute__((used)) static void
 bfa_iocpf_initfail(struct bfa_ioc *ioc)
 {
-	bfa_fsm_send_event(&ioc->iocpf, IOCPF_E_INITFAIL);
+ bfa_fsm_send_event(&ioc->iocpf, IOCPF_E_INITFAIL);
 }

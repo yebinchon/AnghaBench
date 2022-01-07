@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IHTMLElement ;
-typedef  int /*<<< orphan*/  IHTMLDocument3 ;
-typedef  int /*<<< orphan*/  IHTMLDocument2 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- scalar_t__ IHTMLDocument2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IHTMLDocument2_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument2_toString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IHTMLDocument3_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IHTMLDocument3_get_documentElement (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IHTMLElement_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IHTMLDocument3 ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_doc_node (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * get_owner_doc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  iface_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  strcmp_wa (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  test_elem_client_rect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_elem_tag (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  test_node_name (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * wine_dbgstr_w (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IHTMLElement ;
+typedef int IHTMLDocument3 ;
+typedef int IHTMLDocument2 ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ scalar_t__ IHTMLDocument2_QueryInterface (int *,int *,void**) ;
+ int IHTMLDocument2_Release (int *) ;
+ scalar_t__ IHTMLDocument2_toString (int *,int *) ;
+ int IHTMLDocument3_Release (int *) ;
+ scalar_t__ IHTMLDocument3_get_documentElement (int *,int **) ;
+ int IHTMLElement_Release (int *) ;
+ int IID_IHTMLDocument3 ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int * get_doc_node (int *) ;
+ int * get_owner_doc (int *) ;
+ int iface_cmp (int *,int *) ;
+ int ok (int,char*,...) ;
+ int strcmp_wa (int ,char*) ;
+ int test_elem_client_rect (int *) ;
+ int test_elem_tag (int *,char*) ;
+ int test_node_name (int *,char*) ;
+ int * wine_dbgstr_w (int ) ;
 
 __attribute__((used)) static void test_doc_elem(IHTMLDocument2 *doc)
 {

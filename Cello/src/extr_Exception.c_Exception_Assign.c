@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  struct Exception* var ;
-struct Exception {int /*<<< orphan*/  buffers; int /*<<< orphan*/  active; int /*<<< orphan*/  depth; int /*<<< orphan*/  msg; int /*<<< orphan*/  obj; } ;
-typedef  int /*<<< orphan*/  jmp_buf ;
 
-/* Variables and functions */
- int EXCEPTION_MAX_DEPTH ; 
- int /*<<< orphan*/  Exception ; 
- int /*<<< orphan*/  assign (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct Exception* cast (struct Exception*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef struct Exception* var ;
+struct Exception {int buffers; int active; int depth; int msg; int obj; } ;
+typedef int jmp_buf ;
+
+
+ int EXCEPTION_MAX_DEPTH ;
+ int Exception ;
+ int assign (int ,int ) ;
+ struct Exception* cast (struct Exception*,int ) ;
+ int memcpy (int ,int ,int) ;
 
 __attribute__((used)) static void Exception_Assign(var self, var obj) {
   struct Exception* e = self;

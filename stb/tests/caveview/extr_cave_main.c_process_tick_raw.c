@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- float DYNAMIC_FRICTION ; 
- float EFFECTIVE_ACCEL ; 
- float STATIC_FRICTION ; 
- float* cam_vel ; 
- float* camang ; 
- int /*<<< orphan*/  camera_to_worldspace (float*,float,float,int /*<<< orphan*/ ) ; 
- float* camloc ; 
- int controls ; 
- scalar_t__ fmod (float,int) ; 
- float pending_view_x ; 
- float pending_view_z ; 
- scalar_t__ pow (double,float) ; 
- scalar_t__ sqrt (float) ; 
- float stb_clamp (float,int,int) ; 
- float view_x_vel ; 
- float view_z_vel ; 
+ float DYNAMIC_FRICTION ;
+ float EFFECTIVE_ACCEL ;
+ float STATIC_FRICTION ;
+ float* cam_vel ;
+ float* camang ;
+ int camera_to_worldspace (float*,float,float,int ) ;
+ float* camloc ;
+ int controls ;
+ scalar_t__ fmod (float,int) ;
+ float pending_view_x ;
+ float pending_view_z ;
+ scalar_t__ pow (double,float) ;
+ scalar_t__ sqrt (float) ;
+ float stb_clamp (float,int,int) ;
+ float view_x_vel ;
+ float view_z_vel ;
 
 void process_tick_raw(float dt)
 {
@@ -35,13 +27,13 @@ void process_tick_raw(float dt)
    float thrust[3] = { 0,0,0 };
    float world_thrust[3];
 
-   // choose direction to apply thrust
 
-   thrust[0] = (controls &  3)== 1 ? EFFECTIVE_ACCEL : (controls &  3)== 2 ? -EFFECTIVE_ACCEL : 0;
+
+   thrust[0] = (controls & 3)== 1 ? EFFECTIVE_ACCEL : (controls & 3)== 2 ? -EFFECTIVE_ACCEL : 0;
    thrust[1] = (controls & 12)== 4 ? EFFECTIVE_ACCEL : (controls & 12)== 8 ? -EFFECTIVE_ACCEL : 0;
    thrust[2] = (controls & 48)==16 ? EFFECTIVE_ACCEL : (controls & 48)==32 ? -EFFECTIVE_ACCEL : 0;
 
-   // @TODO clamp thrust[0] & thrust[1] vector length to EFFECTIVE_ACCEL
+
 
    camera_to_worldspace(world_thrust, thrust[0], thrust[1], 0);
    world_thrust[2] += thrust[2];

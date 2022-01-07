@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct portal_group {int /*<<< orphan*/ * pg_redirection; int /*<<< orphan*/  pg_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * checked_strdup (char const*) ; 
- int /*<<< orphan*/  log_warnx (char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct portal_group {int * pg_redirection; int pg_name; } ;
+
+
+ int * checked_strdup (char const*) ;
+ int log_warnx (char*,char const*,int ) ;
 
 int
 portal_group_set_redirection(struct portal_group *pg, const char *addr)
 {
 
-	if (pg->pg_redirection != NULL) {
-		log_warnx("cannot set redirection to \"%s\" for "
-		    "portal-group \"%s\"; already defined",
-		    addr, pg->pg_name);
-		return (1);
-	}
+ if (pg->pg_redirection != ((void*)0)) {
+  log_warnx("cannot set redirection to \"%s\" for "
+      "portal-group \"%s\"; already defined",
+      addr, pg->pg_name);
+  return (1);
+ }
 
-	pg->pg_redirection = checked_strdup(addr);
+ pg->pg_redirection = checked_strdup(addr);
 
-	return (0);
+ return (0);
 }

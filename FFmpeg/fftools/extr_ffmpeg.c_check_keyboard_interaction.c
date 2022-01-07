@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef int buf ;
 struct TYPE_14__ {TYPE_2__* st; } ;
 struct TYPE_13__ {scalar_t__ graph; } ;
 struct TYPE_12__ {TYPE_3__* enc_ctx; } ;
 struct TYPE_11__ {int debug; } ;
 struct TYPE_10__ {TYPE_1__* codec; } ;
 struct TYPE_9__ {int debug; } ;
-typedef  TYPE_4__ OutputStream ;
-typedef  TYPE_5__ FilterGraph ;
+typedef TYPE_4__ OutputStream ;
+typedef TYPE_5__ FilterGraph ;
 
-/* Variables and functions */
- int AVERROR_EXIT ; 
- int AVERROR_PATCHWELCOME ; 
- int /*<<< orphan*/  AVFILTER_CMD_FLAG_ONE ; 
- scalar_t__ AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int FF_DEBUG_DCT_COEFF ; 
- int FF_DEBUG_VIS_MB_TYPE ; 
- int FF_DEBUG_VIS_QP ; 
- char* av_err2str (int) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ av_log_get_level () ; 
- int /*<<< orphan*/  av_log_set_level (scalar_t__) ; 
- int avfilter_graph_queue_command (scalar_t__,char*,char*,char*,int /*<<< orphan*/ ,double) ; 
- int avfilter_graph_send_command (scalar_t__,char*,char*,char*,char*,int,int /*<<< orphan*/ ) ; 
- int do_hex_dump ; 
- int do_pkt_dump ; 
- TYPE_5__** filtergraphs ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- TYPE_7__** input_streams ; 
- int nb_filtergraphs ; 
- int nb_input_streams ; 
- int nb_output_streams ; 
- TYPE_4__** output_streams ; 
- int qp_hist ; 
- int read_key () ; 
- scalar_t__ received_nb_signals ; 
- int /*<<< orphan*/  run_as_daemon ; 
- int /*<<< orphan*/  set_tty_echo (int) ; 
- int sscanf (char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int AVERROR_EXIT ;
+ int AVERROR_PATCHWELCOME ;
+ int AVFILTER_CMD_FLAG_ONE ;
+ scalar_t__ AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int FF_DEBUG_DCT_COEFF ;
+ int FF_DEBUG_VIS_MB_TYPE ;
+ int FF_DEBUG_VIS_QP ;
+ char* av_err2str (int) ;
+ int av_log (int *,int ,char*,...) ;
+ scalar_t__ av_log_get_level () ;
+ int av_log_set_level (scalar_t__) ;
+ int avfilter_graph_queue_command (scalar_t__,char*,char*,char*,int ,double) ;
+ int avfilter_graph_send_command (scalar_t__,char*,char*,char*,char*,int,int ) ;
+ int do_hex_dump ;
+ int do_pkt_dump ;
+ TYPE_5__** filtergraphs ;
+ int fprintf (int ,char*,...) ;
+ TYPE_7__** input_streams ;
+ int nb_filtergraphs ;
+ int nb_input_streams ;
+ int nb_output_streams ;
+ TYPE_4__** output_streams ;
+ int qp_hist ;
+ int read_key () ;
+ scalar_t__ received_nb_signals ;
+ int run_as_daemon ;
+ int set_tty_echo (int) ;
+ int sscanf (char*,char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static int check_keyboard_interaction(int64_t cur_time)
 {
@@ -65,9 +65,9 @@ __attribute__((used)) static int check_keyboard_interaction(int64_t cur_time)
     static int64_t last_time;
     if (received_nb_signals)
         return AVERROR_EXIT;
-    /* read_key() returns 0 on EOF */
+
     if(cur_time - last_time >= 100000 && !run_as_daemon){
-        key =  read_key();
+        key = read_key();
         last_time = cur_time;
     }else
         key = -1;
@@ -75,7 +75,7 @@ __attribute__((used)) static int check_keyboard_interaction(int64_t cur_time)
         return AVERROR_EXIT;
     if (key == '+') av_log_set_level(av_log_get_level()+10);
     if (key == '-') av_log_set_level(av_log_get_level()-10);
-    if (key == 's') qp_hist     ^= 1;
+    if (key == 's') qp_hist ^= 1;
     if (key == 'h'){
         if (do_hex_dump){
             do_hex_dump = do_pkt_dump = 0;
@@ -100,7 +100,7 @@ __attribute__((used)) static int check_keyboard_interaction(int64_t cur_time)
         fprintf(stderr, "\n");
         if (k > 0 &&
             (n = sscanf(buf, "%63[^ ] %lf %255[^ ] %255[^\n]", target, &time, command, arg)) >= 3) {
-            av_log(NULL, AV_LOG_DEBUG, "Processing command target:%s time:%f command:%s arg:%s",
+            av_log(((void*)0), AV_LOG_DEBUG, "Processing command target:%s time:%f command:%s arg:%s",
                    target, time, command, arg);
             for (i = 0; i < nb_filtergraphs; i++) {
                 FilterGraph *fg = filtergraphs[i];
@@ -120,7 +120,7 @@ __attribute__((used)) static int check_keyboard_interaction(int64_t cur_time)
                 }
             }
         } else {
-            av_log(NULL, AV_LOG_ERROR,
+            av_log(((void*)0), AV_LOG_ERROR,
                    "Parse error, at least 3 arguments were expected, "
                    "only %d given in string '%s'\n", n, buf);
         }
@@ -131,10 +131,10 @@ __attribute__((used)) static int check_keyboard_interaction(int64_t cur_time)
             debug = input_streams[0]->st->codec->debug<<1;
             if(!debug) debug = 1;
             while(debug & (FF_DEBUG_DCT_COEFF
-#if FF_API_DEBUG_MV
-                                             |FF_DEBUG_VIS_QP|FF_DEBUG_VIS_MB_TYPE
-#endif
-                                                                                  )) //unsupported, would just crash
+
+
+
+                                                                                  ))
                 debug += debug;
         }else{
             char buf[32];

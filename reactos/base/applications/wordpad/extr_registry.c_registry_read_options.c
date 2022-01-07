@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HKEY ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  key_options ; 
- int /*<<< orphan*/  key_settings ; 
- scalar_t__ registry_get_handle (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  registry_read_pagemargins (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  registry_read_previewpages (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * HKEY ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int RegCloseKey (int *) ;
+ int key_options ;
+ int key_settings ;
+ scalar_t__ registry_get_handle (int **,int ,int ) ;
+ int registry_read_pagemargins (int *) ;
+ int registry_read_previewpages (int *) ;
 
 void registry_read_options(void)
 {
     HKEY hKey;
 
     if(registry_get_handle(&hKey, 0, key_options) != ERROR_SUCCESS)
-        registry_read_pagemargins(NULL);
+        registry_read_pagemargins(((void*)0));
     else
     {
         registry_read_pagemargins(hKey);
@@ -34,7 +34,7 @@ void registry_read_options(void)
     }
 
     if(registry_get_handle(&hKey, 0, key_settings) != ERROR_SUCCESS) {
-        registry_read_previewpages(NULL);
+        registry_read_previewpages(((void*)0));
     } else {
         registry_read_previewpages(hKey);
         RegCloseKey(hKey);

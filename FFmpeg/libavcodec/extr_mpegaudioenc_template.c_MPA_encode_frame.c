@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int16_t ;
-struct TYPE_19__ {int /*<<< orphan*/  initial_padding; TYPE_1__* priv_data; } ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int int16_t ;
+struct TYPE_19__ {int initial_padding; TYPE_1__* priv_data; } ;
 struct TYPE_18__ {scalar_t__ pts; scalar_t__* data; } ;
-struct TYPE_17__ {int size; scalar_t__ pts; int /*<<< orphan*/  data; } ;
-struct TYPE_16__ {int nb_channels; int /*<<< orphan*/  pb; int /*<<< orphan*/  sblimit; int /*<<< orphan*/ * sb_samples; int /*<<< orphan*/ * scale_factors; int /*<<< orphan*/ * scale_code; } ;
-typedef  TYPE_1__ MpegAudioContext ;
-typedef  TYPE_2__ AVPacket ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+struct TYPE_17__ {int size; scalar_t__ pts; int data; } ;
+struct TYPE_16__ {int nb_channels; int pb; int sblimit; int * sb_samples; int * scale_factors; int * scale_code; } ;
+typedef TYPE_1__ MpegAudioContext ;
+typedef TYPE_2__ AVPacket ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_NOPTS_VALUE ; 
- int MPA_MAX_CHANNELS ; 
- int /*<<< orphan*/  MPA_MAX_CODED_FRAME_SIZE ; 
- int SBLIMIT ; 
- int /*<<< orphan*/  compute_bit_allocation (TYPE_1__*,short**,unsigned char**,int*) ; 
- int /*<<< orphan*/  compute_scale_factors (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  encode_frame (TYPE_1__*,unsigned char**,int) ; 
- int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ff_samples_to_time_base (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter (TYPE_1__*,int,int /*<<< orphan*/  const*,int) ; 
- int /*<<< orphan*/  init_put_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  psycho_acoustic_model (TYPE_1__*,short*) ; 
- int put_bits_count (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AV_NOPTS_VALUE ;
+ int MPA_MAX_CHANNELS ;
+ int MPA_MAX_CODED_FRAME_SIZE ;
+ int SBLIMIT ;
+ int compute_bit_allocation (TYPE_1__*,short**,unsigned char**,int*) ;
+ int compute_scale_factors (TYPE_1__*,int ,int ,int ,int ) ;
+ int encode_frame (TYPE_1__*,unsigned char**,int) ;
+ int ff_alloc_packet2 (TYPE_4__*,TYPE_2__*,int ,int ) ;
+ scalar_t__ ff_samples_to_time_base (TYPE_4__*,int ) ;
+ int filter (TYPE_1__*,int,int const*,int) ;
+ int init_put_bits (int *,int ,int) ;
+ int psycho_acoustic_model (TYPE_1__*,short*) ;
+ int put_bits_count (int *) ;
 
 __attribute__((used)) static int MPA_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
                             const AVFrame *frame, int *got_packet_ptr)

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_5__ ;
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_5__ ;
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ detail; scalar_t__ state; } ;
-typedef  TYPE_1__ xcb_key_press_event_t ;
+typedef TYPE_1__ xcb_key_press_event_t ;
 struct TYPE_10__ {int response_type; } ;
-typedef  TYPE_2__ xcb_generic_event_t ;
-typedef  int /*<<< orphan*/  xcb_connection_t ;
-struct pollfd {int fd; int /*<<< orphan*/  events; } ;
+typedef TYPE_2__ xcb_generic_event_t ;
+typedef int xcb_connection_t ;
+struct pollfd {int fd; int events; } ;
 struct TYPE_11__ {TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ intf_thread_t ;
-struct TYPE_12__ {int i_map; TYPE_5__* p_map; int /*<<< orphan*/ * p_connection; } ;
-typedef  TYPE_4__ intf_sys_t ;
-struct TYPE_13__ {scalar_t__* p_keys; scalar_t__ i_modifier; int /*<<< orphan*/  i_vlc; } ;
-typedef  TYPE_5__ hotkey_mapping_t ;
+typedef TYPE_3__ intf_thread_t ;
+struct TYPE_12__ {int i_map; TYPE_5__* p_map; int * p_connection; } ;
+typedef TYPE_4__ intf_sys_t ;
+struct TYPE_13__ {scalar_t__* p_keys; scalar_t__ i_modifier; int i_vlc; } ;
+typedef TYPE_5__ hotkey_mapping_t ;
 
-/* Variables and functions */
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  POLLIN ; 
- int XCB_KEY_PRESS ; 
- scalar_t__ XCB_NO_SYMBOL ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- scalar_t__ poll (struct pollfd*,int,int) ; 
- int /*<<< orphan*/  var_SetInteger (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_object_instance (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_restorecancel (int) ; 
- int vlc_savecancel () ; 
- int /*<<< orphan*/  xcb_flush (int /*<<< orphan*/ *) ; 
- int xcb_get_file_descriptor (int /*<<< orphan*/ *) ; 
- TYPE_2__* xcb_poll_for_event (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ EINTR ;
+ int POLLIN ;
+ int XCB_KEY_PRESS ;
+ scalar_t__ XCB_NO_SYMBOL ;
+ scalar_t__ errno ;
+ int free (TYPE_2__*) ;
+ scalar_t__ poll (struct pollfd*,int,int) ;
+ int var_SetInteger (int ,char*,int ) ;
+ int vlc_object_instance (TYPE_3__*) ;
+ int vlc_restorecancel (int) ;
+ int vlc_savecancel () ;
+ int xcb_flush (int *) ;
+ int xcb_get_file_descriptor (int *) ;
+ TYPE_2__* xcb_poll_for_event (int *) ;
 
 __attribute__((used)) static void *Thread( void *p_data )
 {
@@ -52,14 +52,14 @@ __attribute__((used)) static void *Thread( void *p_data )
 
     int canc = vlc_savecancel();
 
-    /* */
+
     xcb_flush( p_connection );
 
-    /* */
+
     int fd = xcb_get_file_descriptor( p_connection );
     for( ;; )
     {
-        /* Wait for x11 event */
+
         vlc_restorecancel( canc );
         struct pollfd fds = { .fd = fd, .events = POLLIN, };
         if( poll( &fds, 1, -1 ) < 0 )
@@ -100,5 +100,5 @@ __attribute__((used)) static void *Thread( void *p_data )
         }
     }
 
-    return NULL;
+    return ((void*)0);
 }

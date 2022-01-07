@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ppp_file {int kind; int /*<<< orphan*/  rwait; int /*<<< orphan*/  refcnt; int /*<<< orphan*/  rq; int /*<<< orphan*/  xq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_waitqueue_head (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  refcount_set (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skb_queue_head_init (int /*<<< orphan*/ *) ; 
+
+
+
+struct ppp_file {int kind; int rwait; int refcnt; int rq; int xq; } ;
+
+
+ int init_waitqueue_head (int *) ;
+ int refcount_set (int *,int) ;
+ int skb_queue_head_init (int *) ;
 
 __attribute__((used)) static void
 init_ppp_file(struct ppp_file *pf, int kind)
 {
-	pf->kind = kind;
-	skb_queue_head_init(&pf->xq);
-	skb_queue_head_init(&pf->rq);
-	refcount_set(&pf->refcnt, 1);
-	init_waitqueue_head(&pf->rwait);
+ pf->kind = kind;
+ skb_queue_head_init(&pf->xq);
+ skb_queue_head_init(&pf->rq);
+ refcount_set(&pf->refcnt, 1);
+ init_waitqueue_head(&pf->rwait);
 }

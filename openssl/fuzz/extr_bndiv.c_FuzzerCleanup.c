@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  b1 ; 
- int /*<<< orphan*/  b2 ; 
- int /*<<< orphan*/  b3 ; 
- int /*<<< orphan*/  b4 ; 
- int /*<<< orphan*/  b5 ; 
- int /*<<< orphan*/  ctx ; 
+ int BN_CTX_free (int ) ;
+ int BN_free (int ) ;
+ int b1 ;
+ int b2 ;
+ int b3 ;
+ int b4 ;
+ int b5 ;
+ int ctx ;
 
 void FuzzerCleanup(void)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ voidp ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ voidp ;
 struct svc_req {int dummy; } ;
-typedef  int ssize_t ;
-typedef  int /*<<< orphan*/  rv ;
-typedef  int /*<<< orphan*/  buf ;
-struct TYPE_7__ {int /*<<< orphan*/  au_etype; } ;
-typedef  TYPE_1__ amq_sync_umnt ;
+typedef int ssize_t ;
+typedef int rv ;
+typedef int buf ;
+struct TYPE_7__ {int au_etype; } ;
+typedef TYPE_1__ amq_sync_umnt ;
 struct TYPE_8__ {scalar_t__* am_fd; } ;
-typedef  TYPE_2__ am_node ;
+typedef TYPE_2__ am_node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AMQ_UMNT_READ ; 
- TYPE_2__* find_ap (char*) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int read (scalar_t__,TYPE_1__*,int) ; 
+
+ int AMQ_UMNT_READ ;
+ TYPE_2__* find_ap (char*) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int read (scalar_t__,TYPE_1__*,int) ;
 
 amq_sync_umnt *
 amqproc_sync_umnt_1_svc_child(voidp argp, struct svc_req *rqstp)

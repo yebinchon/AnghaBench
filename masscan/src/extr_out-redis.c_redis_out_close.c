@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct Output {int dummy; } ;
-typedef  scalar_t__ ptrdiff_t ;
-typedef  int /*<<< orphan*/  line ;
-typedef  int /*<<< orphan*/  SOCKET ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef scalar_t__ ptrdiff_t ;
+typedef int line ;
+typedef int SOCKET ;
+typedef int FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  UNUSEDPARM (struct Output*) ; 
- int /*<<< orphan*/  exit (int) ; 
- scalar_t__ memcmp (unsigned char*,char*,int) ; 
- size_t recv_line (int /*<<< orphan*/ ,unsigned char*,int) ; 
- size_t send (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+ int LOG (int ,char*,...) ;
+ int UNUSEDPARM (struct Output*) ;
+ int exit (int) ;
+ scalar_t__ memcmp (unsigned char*,char*,int) ;
+ size_t recv_line (int ,unsigned char*,int) ;
+ size_t send (int ,char*,int,int ) ;
 
 __attribute__((used)) static void
 redis_out_close(struct Output *out, FILE *fp)

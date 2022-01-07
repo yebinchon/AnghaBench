@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ time_t ;
+
+
+
+
+typedef scalar_t__ time_t ;
 struct vlc_http_msg {int dummy; } ;
 
-/* Variables and functions */
- unsigned long strtoul (char const*,char**,int) ; 
- int /*<<< orphan*/  time (scalar_t__*) ; 
- scalar_t__ vlc_http_mktime (char const*) ; 
- char* vlc_http_msg_get_header (struct vlc_http_msg const*,char*) ; 
+
+ unsigned long strtoul (char const*,char**,int) ;
+ int time (scalar_t__*) ;
+ scalar_t__ vlc_http_mktime (char const*) ;
+ char* vlc_http_msg_get_header (struct vlc_http_msg const*,char*) ;
 
 unsigned vlc_http_msg_get_retry_after(const struct vlc_http_msg *m)
 {
     const char *str = vlc_http_msg_get_header(m, "Retry-After");
-    if (str == NULL)
+    if (str == ((void*)0))
         return 0;
 
     char *end;

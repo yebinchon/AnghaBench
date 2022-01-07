@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int mouse_char; } ;
-struct mouse_info {TYPE_1__ u; int /*<<< orphan*/  operation; } ;
+struct mouse_info {TYPE_1__ u; int operation; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONS_MOUSECTL ; 
- int /*<<< orphan*/  MOUSE_MOUSECHAR ; 
- int UCHAR_MAX ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct mouse_info*) ; 
- int /*<<< orphan*/  revert () ; 
- long strtol (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warnx (char*,int) ; 
+
+ int CONS_MOUSECTL ;
+ int MOUSE_MOUSECHAR ;
+ int UCHAR_MAX ;
+ int err (int,char*) ;
+ int ioctl (int ,int ,struct mouse_info*) ;
+ int revert () ;
+ long strtol (char*,int *,int ) ;
+ int warnx (char*,int) ;
 
 __attribute__((used)) static void
 set_mouse_char(char *arg)
 {
-	struct mouse_info mouse;
-	long l;
+ struct mouse_info mouse;
+ long l;
 
-	l = strtol(arg, NULL, 0);
+ l = strtol(arg, ((void*)0), 0);
 
-	if ((l < 0) || (l > UCHAR_MAX - 3)) {
-		revert();
-		warnx("argument to -M must be 0 through %d", UCHAR_MAX - 3);
-		return;
-	}
+ if ((l < 0) || (l > UCHAR_MAX - 3)) {
+  revert();
+  warnx("argument to -M must be 0 through %d", UCHAR_MAX - 3);
+  return;
+ }
 
-	mouse.operation = MOUSE_MOUSECHAR;
-	mouse.u.mouse_char = (int)l;
+ mouse.operation = MOUSE_MOUSECHAR;
+ mouse.u.mouse_char = (int)l;
 
-	if (ioctl(0, CONS_MOUSECTL, &mouse) == -1) {
-		revert();
-		err(1, "setting mouse character");
-	}
+ if (ioctl(0, CONS_MOUSECTL, &mouse) == -1) {
+  revert();
+  err(1, "setting mouse character");
+ }
 }

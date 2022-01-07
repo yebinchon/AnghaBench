@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ TCHAR ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCurrentDirectory (int,scalar_t__*) ; 
- scalar_t__ _T (char) ; 
- int /*<<< orphan*/ * _tgetdcwd (int,scalar_t__*,int) ; 
+
+
+
+typedef scalar_t__ TCHAR ;
+typedef int INT ;
+
+
+ int GetCurrentDirectory (int,scalar_t__*) ;
+ scalar_t__ _T (char) ;
+ int * _tgetdcwd (int,scalar_t__*,int) ;
 
 INT GetRootPath(TCHAR *InPath,TCHAR *OutPath,INT size)
 {
@@ -40,9 +40,9 @@ INT GetRootPath(TCHAR *InPath,TCHAR *OutPath,INT size)
             t = (InPath[0] - _T('A')) +1;
         }
 
-        return _tgetdcwd(t,OutPath,size) == NULL;
+        return _tgetdcwd(t,OutPath,size) == ((void*)0);
     }
 
-    /* Get current directory */
+
     return !GetCurrentDirectory(size,OutPath);
 }

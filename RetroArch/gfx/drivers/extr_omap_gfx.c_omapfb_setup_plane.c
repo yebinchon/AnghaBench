@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct omapfb_plane_info {int pos_x; int pos_y; int out_width; int out_height; scalar_t__ enabled; int /*<<< orphan*/  member_0; } ;
-struct TYPE_8__ {int nat_w; int nat_h; int bpp; int num_pages; TYPE_2__* current_state; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_3__ omapfb_data_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct omapfb_plane_info {int pos_x; int pos_y; int out_width; int out_height; scalar_t__ enabled; int member_0; } ;
+struct TYPE_8__ {int nat_w; int nat_h; int bpp; int num_pages; TYPE_2__* current_state; int fd; } ;
+typedef TYPE_3__ omapfb_data_t ;
 struct TYPE_6__ {int size; } ;
 struct TYPE_7__ {struct omapfb_plane_info pi; TYPE_1__ mi; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OMAPFB_QUERY_PLANE ; 
- int /*<<< orphan*/  OMAPFB_SETUP_PLANE ; 
- int /*<<< orphan*/  RARCH_ERR (char*,...) ; 
- int /*<<< orphan*/  RARCH_LOG (char*,int,int,int,int) ; 
- scalar_t__ ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct omapfb_plane_info*) ; 
- float omapfb_scaling (TYPE_3__*,int,int) ; 
+
+ int OMAPFB_QUERY_PLANE ;
+ int OMAPFB_SETUP_PLANE ;
+ int RARCH_ERR (char*,...) ;
+ int RARCH_LOG (char*,int,int,int,int) ;
+ scalar_t__ ioctl (int ,int ,struct omapfb_plane_info*) ;
+ float omapfb_scaling (TYPE_3__*,int,int) ;
 
 __attribute__((used)) static int omapfb_setup_plane(omapfb_data_t *pdata, int width, int height)
 {
@@ -52,12 +52,12 @@ __attribute__((used)) static int omapfb_setup_plane(omapfb_data_t *pdata, int wi
       return -1;
    }
 
-   /* Disable the plane during setup to avoid garbage on screen. */
-   pi.pos_x      = x;
-   pi.pos_y      = y;
-   pi.out_width  = w;
+
+   pi.pos_x = x;
+   pi.pos_y = y;
+   pi.out_width = w;
    pi.out_height = h;
-   pi.enabled    = 0;
+   pi.enabled = 0;
 
    if (ioctl(pdata->fd, OMAPFB_SETUP_PLANE, &pi) != 0)
    {

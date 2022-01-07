@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * lpVtbl; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * lpVtbl; } ;
 struct TYPE_5__ {int refs; TYPE_2__ IRemUnknown_iface; } ;
-typedef  TYPE_1__ RemUnknown ;
-typedef  TYPE_2__ IRemUnknown ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef TYPE_1__ RemUnknown ;
+typedef TYPE_2__ IRemUnknown ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  RemUnknown_Vtbl ; 
- int /*<<< orphan*/  S_OK ; 
+
+ int E_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int RemUnknown_Vtbl ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT RemUnknown_Construct(IRemUnknown **ppRemUnknown)
 {

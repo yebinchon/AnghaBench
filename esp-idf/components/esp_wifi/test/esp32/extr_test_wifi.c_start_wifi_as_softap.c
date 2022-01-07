@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int nvs_enable; } ;
-typedef  TYPE_2__ wifi_init_config_t ;
-struct TYPE_7__ {int channel; int ssid_hidden; int max_connection; int beacon_interval; int /*<<< orphan*/  authmode; int /*<<< orphan*/  ssid_len; int /*<<< orphan*/  password; int /*<<< orphan*/  ssid; } ;
+typedef TYPE_2__ wifi_init_config_t ;
+struct TYPE_7__ {int channel; int ssid_hidden; int max_connection; int beacon_interval; int authmode; int ssid_len; int password; int ssid; } ;
 struct TYPE_9__ {TYPE_1__ ap; } ;
-typedef  TYPE_3__ wifi_config_t ;
+typedef TYPE_3__ wifi_config_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_PWD ; 
- int /*<<< orphan*/  DEFAULT_SSID ; 
- int /*<<< orphan*/  TEST_ESP_OK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WIFI_AUTH_WPA2_PSK ; 
- int /*<<< orphan*/  WIFI_IF_AP ; 
- TYPE_2__ WIFI_INIT_CONFIG_DEFAULT () ; 
- int /*<<< orphan*/  WIFI_MODE_AP ; 
- int /*<<< orphan*/  esp_wifi_init (TYPE_2__*) ; 
- int /*<<< orphan*/  esp_wifi_set_config (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  esp_wifi_set_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_wifi_start () ; 
- int /*<<< orphan*/  event_init () ; 
- int /*<<< orphan*/  unity_reset_leak_checks () ; 
- int /*<<< orphan*/ * wifi_events ; 
- int /*<<< orphan*/ * xEventGroupCreate () ; 
+
+ int DEFAULT_PWD ;
+ int DEFAULT_SSID ;
+ int TEST_ESP_OK (int ) ;
+ int WIFI_AUTH_WPA2_PSK ;
+ int WIFI_IF_AP ;
+ TYPE_2__ WIFI_INIT_CONFIG_DEFAULT () ;
+ int WIFI_MODE_AP ;
+ int esp_wifi_init (TYPE_2__*) ;
+ int esp_wifi_set_config (int ,TYPE_3__*) ;
+ int esp_wifi_set_mode (int ) ;
+ int esp_wifi_start () ;
+ int event_init () ;
+ int unity_reset_leak_checks () ;
+ int * wifi_events ;
+ int * xEventGroupCreate () ;
 
 __attribute__((used)) static void start_wifi_as_softap(void)
 {
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    cfg.nvs_enable = false;
+    cfg.nvs_enable = 0;
 
     wifi_config_t w_config = {
         .ap.ssid = DEFAULT_SSID,
@@ -47,17 +47,17 @@ __attribute__((used)) static void start_wifi_as_softap(void)
         .ap.ssid_len = 0,
         .ap.channel = 1,
         .ap.authmode = WIFI_AUTH_WPA2_PSK,
-        .ap.ssid_hidden = false,
+        .ap.ssid_hidden = 0,
         .ap.max_connection = 4,
         .ap.beacon_interval = 100,
     };
 
     event_init();
 
-    // can't deinit event loop, need to reset leak check
+
     unity_reset_leak_checks();
 
-    if (wifi_events == NULL) {
+    if (wifi_events == ((void*)0)) {
         wifi_events = xEventGroupCreate();
     }
 

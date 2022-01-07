@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  cmsUInt16Number ;
-typedef  int cmsInt32Number ;
-typedef  int /*<<< orphan*/  cmsFloat32Number ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Fail (char*,int,int) ; 
- int _cmsFloat2Half (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  _cmsHalf2Float (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  my_isfinite (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int cmsUInt16Number ;
+typedef int cmsInt32Number ;
+typedef int cmsFloat32Number ;
+
+
+ int Fail (char*,int,int) ;
+ int _cmsFloat2Half (int ) ;
+ int _cmsHalf2Float (int ) ;
+ int my_isfinite (int ) ;
 
 __attribute__((used)) static
 cmsInt32Number CheckFormattersHalf(void)
@@ -30,7 +30,7 @@ cmsInt32Number CheckFormattersHalf(void)
 
         cmsFloat32Number f = _cmsHalf2Float((cmsUInt16Number) i);
 
-        if (!my_isfinite(f))  {
+        if (!my_isfinite(f)) {
 
             j = _cmsFloat2Half(f);
 

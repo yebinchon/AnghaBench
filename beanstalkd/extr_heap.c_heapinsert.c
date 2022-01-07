@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {size_t len; size_t cap; void** data; } ;
-typedef  TYPE_1__ Heap ;
+typedef TYPE_1__ Heap ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (void**) ; 
- void** malloc (int) ; 
- int /*<<< orphan*/  memcpy (void**,void**,int) ; 
- int /*<<< orphan*/  set (TYPE_1__*,size_t,void*) ; 
- int /*<<< orphan*/  siftdown (TYPE_1__*,size_t) ; 
+
+ int free (void**) ;
+ void** malloc (int) ;
+ int memcpy (void**,void**,int) ;
+ int set (TYPE_1__*,size_t,void*) ;
+ int siftdown (TYPE_1__*,size_t) ;
 
 int
 heapinsert(Heap *h, void *x)
 {
     if (h->len == h->cap) {
         void **ndata;
-        size_t ncap = (h->len+1) * 2; /* allocate twice what we need */
+        size_t ncap = (h->len+1) * 2;
 
         ndata = malloc(sizeof(void*) * ncap);
         if (!ndata) {

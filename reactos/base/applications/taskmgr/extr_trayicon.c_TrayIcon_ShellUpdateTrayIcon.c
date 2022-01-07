@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szTemp ;
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_4__ {int cbSize; int uFlags; int /*<<< orphan*/  szTip; int /*<<< orphan*/ * hIcon; int /*<<< orphan*/  uCallbackMessage; scalar_t__ uID; int /*<<< orphan*/  hWnd; } ;
-typedef  TYPE_1__ NOTIFYICONDATAW ;
-typedef  int /*<<< orphan*/ * HICON ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyIcon (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDS_MSG_TRAYICONCPUUSAGE ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int NIF_ICON ; 
- int NIF_MESSAGE ; 
- int NIF_TIP ; 
- int /*<<< orphan*/  NIM_MODIFY ; 
- int /*<<< orphan*/  PerfDataGetProcessorUsage () ; 
- int /*<<< orphan*/  Shell_NotifyIconW (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * TrayIcon_GetProcessorUsageIcon () ; 
- int /*<<< orphan*/  WM_ONTRAYICON ; 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  hMainWnd ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  wsprintfW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int szTemp ;
+typedef int WCHAR ;
+struct TYPE_4__ {int cbSize; int uFlags; int szTip; int * hIcon; int uCallbackMessage; scalar_t__ uID; int hWnd; } ;
+typedef TYPE_1__ NOTIFYICONDATAW ;
+typedef int * HICON ;
+typedef int BOOL ;
+
+
+ int DestroyIcon (int *) ;
+ int IDS_MSG_TRAYICONCPUUSAGE ;
+ int LoadStringW (int ,int ,int *,int) ;
+ int NIF_ICON ;
+ int NIF_MESSAGE ;
+ int NIF_TIP ;
+ int NIM_MODIFY ;
+ int PerfDataGetProcessorUsage () ;
+ int Shell_NotifyIconW (int ,TYPE_1__*) ;
+ int * TrayIcon_GetProcessorUsageIcon () ;
+ int WM_ONTRAYICON ;
+ int hInst ;
+ int hMainWnd ;
+ int memset (TYPE_1__*,int ,int) ;
+ int wsprintfW (int ,int *,int ) ;
 
 BOOL TrayIcon_ShellUpdateTrayIcon(void)
 {
     NOTIFYICONDATAW nid;
-    HICON           hIcon = NULL;
-    BOOL            bRetVal;
-    WCHAR           szTemp[64];
+    HICON hIcon = ((void*)0);
+    BOOL bRetVal;
+    WCHAR szTemp[64];
 
     memset(&nid, 0, sizeof(NOTIFYICONDATAW));
 

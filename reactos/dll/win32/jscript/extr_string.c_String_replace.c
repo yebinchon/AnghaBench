@@ -1,78 +1,78 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vdisp_t ;
-struct TYPE_17__ {TYPE_4__* buf; int /*<<< orphan*/  len; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  TYPE_2__ strbuf_t ;
-struct TYPE_18__ {int last_match_index; int last_match_length; int /*<<< orphan*/ * last_match; } ;
-typedef  TYPE_3__ script_ctx_t ;
-struct TYPE_19__ {int const* cp; int match_len; int paren_count; TYPE_1__* parens; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_4__ match_state_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int WCHAR ;
+
+
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int vdisp_t ;
+struct TYPE_17__ {TYPE_4__* buf; int len; int member_2; int member_1; int * member_0; } ;
+typedef TYPE_2__ strbuf_t ;
+struct TYPE_18__ {int last_match_index; int last_match_length; int * last_match; } ;
+typedef TYPE_3__ script_ctx_t ;
+struct TYPE_19__ {int const* cp; int match_len; int paren_count; TYPE_1__* parens; int member_0; } ;
+typedef TYPE_4__ match_state_t ;
+typedef int jsval_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int WORD ;
+typedef int WCHAR ;
 struct TYPE_16__ {int index; int length; } ;
-typedef  scalar_t__ HRESULT ;
-typedef  int DWORD ;
+typedef scalar_t__ HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (int const*) ; 
- scalar_t__ E_OUTOFMEMORY ; 
- scalar_t__ FAILED (scalar_t__) ; 
- int /*<<< orphan*/  JSCLASS_FUNCTION ; 
- int /*<<< orphan*/  JSCLASS_REGEXP ; 
- int REM_ALLOC_RESULT ; 
- int REM_CHECK_GLOBAL ; 
- int REM_NO_CTX_UPDATE ; 
- scalar_t__ SUCCEEDED (scalar_t__) ; 
- scalar_t__ S_FALSE ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRACE (char*,...) ; 
- int /*<<< orphan*/  debugstr_jsstr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_object (int /*<<< orphan*/ ) ; 
- scalar_t__ get_string_flat_val (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int const**) ; 
- int /*<<< orphan*/  heap_free (TYPE_4__*) ; 
- int /*<<< orphan*/ * iface_to_jsdisp (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_class (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ is_object_instance (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iswdigit (int const) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_addref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc_len (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int jsstr_length (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- scalar_t__ regexp_match_next (TYPE_3__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,TYPE_4__**) ; 
- scalar_t__ rep_call (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const*,TYPE_4__*,int /*<<< orphan*/ **) ; 
- scalar_t__ strbuf_append (TYPE_2__*,int const*,...) ; 
- scalar_t__ strbuf_append_jsstr (TYPE_2__*,int /*<<< orphan*/ *) ; 
- scalar_t__ to_flat_string (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int const**) ; 
- int* wcschr (int const*,char) ; 
- int const* wcsstr (int const*,int const*) ; 
+
+ int ARRAY_SIZE (int const*) ;
+ scalar_t__ E_OUTOFMEMORY ;
+ scalar_t__ FAILED (scalar_t__) ;
+ int JSCLASS_FUNCTION ;
+ int JSCLASS_REGEXP ;
+ int REM_ALLOC_RESULT ;
+ int REM_CHECK_GLOBAL ;
+ int REM_NO_CTX_UPDATE ;
+ scalar_t__ SUCCEEDED (scalar_t__) ;
+ scalar_t__ S_FALSE ;
+ scalar_t__ S_OK ;
+ int TRACE (char*,...) ;
+ int debugstr_jsstr (int *) ;
+ int get_object (int ) ;
+ scalar_t__ get_string_flat_val (TYPE_3__*,int *,int **,int const**) ;
+ int heap_free (TYPE_4__*) ;
+ int * iface_to_jsdisp (int ) ;
+ int is_class (int *,int ) ;
+ scalar_t__ is_object_instance (int ) ;
+ int iswdigit (int const) ;
+ int jsdisp_release (int *) ;
+ int * jsstr_addref (int *) ;
+ int * jsstr_alloc_len (TYPE_4__*,int ) ;
+ int jsstr_length (int *) ;
+ int jsstr_release (int *) ;
+ int jsval_string (int *) ;
+ scalar_t__ regexp_match_next (TYPE_3__*,int *,int,int *,TYPE_4__**) ;
+ scalar_t__ rep_call (TYPE_3__*,int *,int *,int const*,TYPE_4__*,int **) ;
+ scalar_t__ strbuf_append (TYPE_2__*,int const*,...) ;
+ scalar_t__ strbuf_append_jsstr (TYPE_2__*,int *) ;
+ scalar_t__ to_flat_string (TYPE_3__*,int ,int **,int const**) ;
+ int* wcschr (int const*,char) ;
+ int const* wcsstr (int const*,int const*) ;
 
 __attribute__((used)) static HRESULT String_replace(script_ctx_t *ctx, vdisp_t *jsthis, WORD flags, unsigned argc, jsval_t *argv,
         jsval_t *r)
 {
-    const WCHAR *str, *match_str = NULL, *rep_str = NULL;
+    const WCHAR *str, *match_str = ((void*)0), *rep_str = ((void*)0);
     jsstr_t *rep_jsstr, *match_jsstr, *jsstr;
-    jsdisp_t *rep_func = NULL, *regexp = NULL;
-    match_state_t *match = NULL, last_match = {0};
-    strbuf_t ret = {NULL,0,0};
+    jsdisp_t *rep_func = ((void*)0), *regexp = ((void*)0);
+    match_state_t *match = ((void*)0), last_match = {0};
+    strbuf_t ret = {((void*)0),0,0};
     DWORD re_flags = REM_NO_CTX_UPDATE|REM_ALLOC_RESULT;
     DWORD rep_len=0;
     HRESULT hres = S_OK;
@@ -95,7 +95,7 @@ __attribute__((used)) static HRESULT String_replace(script_ctx_t *ctx, vdisp_t *
         regexp = iface_to_jsdisp(get_object(argv[0]));
         if(regexp && !is_class(regexp, JSCLASS_REGEXP)) {
             jsdisp_release(regexp);
-            regexp = NULL;
+            regexp = ((void*)0);
         }
     }
 
@@ -112,7 +112,7 @@ __attribute__((used)) static HRESULT String_replace(script_ctx_t *ctx, vdisp_t *
             rep_func = iface_to_jsdisp(get_object(argv[1]));
             if(rep_func && !is_class(rep_func, JSCLASS_FUNCTION)) {
                 jsdisp_release(rep_func);
-                rep_func = NULL;
+                rep_func = ((void*)0);
             }
         }
 

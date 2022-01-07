@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct bfe_softc {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BFE_LOCK (struct bfe_softc*) ; 
- int /*<<< orphan*/  BFE_UNLOCK (struct bfe_softc*) ; 
- int /*<<< orphan*/  bfe_stop (struct bfe_softc*) ; 
- struct bfe_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ int BFE_LOCK (struct bfe_softc*) ;
+ int BFE_UNLOCK (struct bfe_softc*) ;
+ int bfe_stop (struct bfe_softc*) ;
+ struct bfe_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 bfe_shutdown(device_t dev)
 {
-	struct bfe_softc *sc;
+ struct bfe_softc *sc;
 
-	sc = device_get_softc(dev);
-	BFE_LOCK(sc);
-	bfe_stop(sc);
+ sc = device_get_softc(dev);
+ BFE_LOCK(sc);
+ bfe_stop(sc);
 
-	BFE_UNLOCK(sc);
+ BFE_UNLOCK(sc);
 
-	return (0);
+ return (0);
 }

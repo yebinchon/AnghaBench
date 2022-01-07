@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ProtocolState {unsigned int state; } ;
-typedef  void const InteractiveData ;
+typedef void const InteractiveData ;
 struct BannerOutput {int dummy; } ;
-typedef  void Banner1 ;
+typedef void Banner1 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PROTO_SSH2 ; 
- int /*<<< orphan*/  UNUSEDPARM (void const*) ; 
- int /*<<< orphan*/  banout_append_char (struct BannerOutput*,int /*<<< orphan*/ ,unsigned char const) ; 
- int /*<<< orphan*/  isprint (unsigned char const) ; 
- int /*<<< orphan*/  tcp_close (void const*) ; 
+
+ int PROTO_SSH2 ;
+ int UNUSEDPARM (void const*) ;
+ int banout_append_char (struct BannerOutput*,int ,unsigned char const) ;
+ int isprint (unsigned char const) ;
+ int tcp_close (void const*) ;
 
 __attribute__((used)) static void
-ssh_parse(  const struct Banner1 *banner1,
+ssh_parse( const struct Banner1 *banner1,
         void *banner1_private,
         struct ProtocolState *pstate,
         const unsigned char *px, size_t length,

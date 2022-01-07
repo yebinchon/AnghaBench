@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ int32_t ;
-struct TYPE_6__ {size_t nreloc; scalar_t__ nrelocsym; int /*<<< orphan*/ * code; TYPE_1__* reloc; int /*<<< orphan*/ * relocsym; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef scalar_t__ int32_t ;
+struct TYPE_6__ {size_t nreloc; scalar_t__ nrelocsym; int * code; TYPE_1__* reloc; int * relocsym; } ;
 struct TYPE_5__ {int type; scalar_t__ sym; scalar_t__ ofs; } ;
-typedef  TYPE_2__ BuildCtx ;
+typedef TYPE_2__ BuildCtx ;
 
-/* Variables and functions */
- size_t BUILD_MAX_RELOC ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/ * extnames ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__* relocmap ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  sym_decorate (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
+
+ size_t BUILD_MAX_RELOC ;
+ int exit (int) ;
+ int * extnames ;
+ int fprintf (int ,char*) ;
+ scalar_t__* relocmap ;
+ int stderr ;
+ int sym_decorate (TYPE_2__*,char*,int ) ;
 
 __attribute__((used)) static int collect_reloc(BuildCtx *ctx, uint8_t *addr, int idx, int type)
 {
@@ -42,9 +42,9 @@ __attribute__((used)) static int collect_reloc(BuildCtx *ctx, uint8_t *addr, int
   ctx->reloc[ctx->nreloc].sym = relocmap[idx];
   ctx->reloc[ctx->nreloc].type = type;
   ctx->nreloc++;
-#if LJ_TARGET_XBOX360
-  return (int)(ctx->code - addr) + 4;  /* Encode symbol offset of .text. */
-#else
-  return 0;  /* Encode symbol offset of 0. */
-#endif
+
+
+
+  return 0;
+
 }

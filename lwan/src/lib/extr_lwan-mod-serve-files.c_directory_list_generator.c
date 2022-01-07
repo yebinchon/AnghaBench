@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct stat {int st_size; int /*<<< orphan*/  st_mode; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct stat {int st_size; int st_mode; } ;
 struct TYPE_2__ {char* icon; char* icon_alt; char* type; int size; char* unit; char* name; char const* zebra_class; } ;
-struct file_list {TYPE_1__ file_list; int /*<<< orphan*/  full_path; } ;
+struct file_list {TYPE_1__ file_list; int full_path; } ;
 struct dirent {char* d_name; } ;
 struct coro {int dummy; } ;
-typedef  int /*<<< orphan*/  DIR ;
+typedef int DIR ;
 
-/* Variables and functions */
- scalar_t__ S_ISDIR (int /*<<< orphan*/ ) ; 
- scalar_t__ S_ISREG (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  closedir (int /*<<< orphan*/ *) ; 
- scalar_t__ coro_yield (struct coro*,int) ; 
- int dirfd (int /*<<< orphan*/ *) ; 
- scalar_t__ fstatat (int,char*,struct stat*,int /*<<< orphan*/ ) ; 
- char* lwan_determine_mime_type_for_file_name (char*) ; 
- int /*<<< orphan*/ * opendir (int /*<<< orphan*/ ) ; 
- struct dirent* readdir (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ S_ISDIR (int ) ;
+ scalar_t__ S_ISREG (int ) ;
+ int closedir (int *) ;
+ scalar_t__ coro_yield (struct coro*,int) ;
+ int dirfd (int *) ;
+ scalar_t__ fstatat (int,char*,struct stat*,int ) ;
+ char* lwan_determine_mime_type_for_file_name (char*) ;
+ int * opendir (int ) ;
+ struct dirent* readdir (int *) ;
 
 __attribute__((used)) static int directory_list_generator(struct coro *coro, void *data)
 {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ R ; 
- scalar_t__ R_end ; 
- int /*<<< orphan*/  clear_result_buffer () ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,...) ; 
- int prepare_raw_notify_updates (int,int,int,int,int /*<<< orphan*/ ) ; 
- int return_one_key_list (struct connection*,char const*,int,int,int,scalar_t__,scalar_t__) ; 
- int sscanf (char const*,char*,int*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ scalar_t__ R ;
+ scalar_t__ R_end ;
+ int clear_result_buffer () ;
+ int fprintf (int ,char*,int,...) ;
+ int prepare_raw_notify_updates (int,int,int,int,int ) ;
+ int return_one_key_list (struct connection*,char const*,int,int,int,scalar_t__,scalar_t__) ;
+ int sscanf (char const*,char*,int*,int*,...) ;
+ int stderr ;
+ int verbosity ;
 
 __attribute__((used)) static int exec_get_raw_notification_updates (struct connection *c, const char *key, int key_len, int dog_len) {
   int user_id;
@@ -48,7 +48,7 @@ __attribute__((used)) static int exec_get_raw_notification_updates (struct conne
       fprintf (stderr, "prepare_raw_updates(%d) = %d\n", user_id, res);
     }
     if (res >= 0) {
-      return return_one_key_list (c, key-dog_len, dog_len + key_len, /*(R_end - R) / 9*/ 0x7fffffff, -raw, R, R_end - R);
+      return return_one_key_list (c, key-dog_len, dog_len + key_len, 0x7fffffff, -raw, R, R_end - R);
     }
   }
   return 0;

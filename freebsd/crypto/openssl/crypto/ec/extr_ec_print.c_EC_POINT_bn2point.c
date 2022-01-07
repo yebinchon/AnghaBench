@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_bn2bin (int /*<<< orphan*/  const*,unsigned char*) ; 
- size_t BN_num_bytes (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_F_EC_POINT_BN2POINT ; 
- int /*<<< orphan*/  EC_POINT_clear_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  EC_POINT_oct2point (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,unsigned char*,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ECerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_malloc (size_t) ; 
+
+
+
+typedef int EC_POINT ;
+typedef int EC_GROUP ;
+typedef int BN_CTX ;
+typedef int BIGNUM ;
+
+
+ int BN_bn2bin (int const*,unsigned char*) ;
+ size_t BN_num_bytes (int const*) ;
+ int EC_F_EC_POINT_BN2POINT ;
+ int EC_POINT_clear_free (int *) ;
+ int * EC_POINT_new (int const*) ;
+ int EC_POINT_oct2point (int const*,int *,unsigned char*,size_t,int *) ;
+ int ECerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_malloc (size_t) ;
 
 EC_POINT *EC_POINT_bn2point(const EC_GROUP *group,
                             const BIGNUM *bn, EC_POINT *point, BN_CTX *ctx)
@@ -35,21 +35,21 @@ EC_POINT *EC_POINT_bn2point(const EC_GROUP *group,
     EC_POINT *ret;
 
     if ((buf_len = BN_num_bytes(bn)) == 0)
-        return NULL;
-    if ((buf = OPENSSL_malloc(buf_len)) == NULL) {
+        return ((void*)0);
+    if ((buf = OPENSSL_malloc(buf_len)) == ((void*)0)) {
         ECerr(EC_F_EC_POINT_BN2POINT, ERR_R_MALLOC_FAILURE);
-        return NULL;
+        return ((void*)0);
     }
 
     if (!BN_bn2bin(bn, buf)) {
         OPENSSL_free(buf);
-        return NULL;
+        return ((void*)0);
     }
 
-    if (point == NULL) {
-        if ((ret = EC_POINT_new(group)) == NULL) {
+    if (point == ((void*)0)) {
+        if ((ret = EC_POINT_new(group)) == ((void*)0)) {
             OPENSSL_free(buf);
-            return NULL;
+            return ((void*)0);
         }
     } else
         ret = point;
@@ -58,7 +58,7 @@ EC_POINT *EC_POINT_bn2point(const EC_GROUP *group,
         if (ret != point)
             EC_POINT_clear_free(ret);
         OPENSSL_free(buf);
-        return NULL;
+        return ((void*)0);
     }
 
     OPENSSL_free(buf);

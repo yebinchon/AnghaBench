@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {size_t t_curscs; int /*<<< orphan*/ * t_scs; int /*<<< orphan*/  t_saved_curscs; int /*<<< orphan*/  t_curattr; int /*<<< orphan*/  t_saved_curattr; int /*<<< orphan*/  t_cursor; int /*<<< orphan*/  t_saved_cursor; } ;
-typedef  TYPE_1__ teken_t ;
 
-/* Variables and functions */
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {size_t t_curscs; int * t_scs; int t_saved_curscs; int t_curattr; int t_saved_curattr; int t_cursor; int t_saved_cursor; } ;
+typedef TYPE_1__ teken_t ;
+
+
 
 __attribute__((used)) static void
 teken_subr_save_cursor(teken_t *t)
 {
 
-	t->t_saved_cursor = t->t_cursor;
-	t->t_saved_curattr = t->t_curattr;
-	t->t_saved_curscs = t->t_scs[t->t_curscs];
+ t->t_saved_cursor = t->t_cursor;
+ t->t_saved_curattr = t->t_curattr;
+ t->t_saved_curscs = t->t_scs[t->t_curscs];
 }

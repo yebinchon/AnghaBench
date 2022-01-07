@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct autofs_dev_ioctl {int /*<<< orphan*/  ver_minor; int /*<<< orphan*/  ver_major; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct autofs_dev_ioctl {int ver_minor; int ver_major; } ;
 struct TYPE_4__ {scalar_t__ dev_autofs_fd; } ;
-typedef  TYPE_1__ Manager ;
+typedef TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AUTOFS_DEV_IOCTL_VERSION ; 
- int O_CLOEXEC ; 
- int O_RDONLY ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int errno ; 
- int /*<<< orphan*/  init_autofs_dev_ioctl (struct autofs_dev_ioctl*) ; 
- scalar_t__ ioctl (scalar_t__,int /*<<< orphan*/ ,struct autofs_dev_ioctl*) ; 
- int /*<<< orphan*/  label_fix (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_debug (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int log_error_errno (int,char*) ; 
- int open (char*,int) ; 
- scalar_t__ safe_close (scalar_t__) ; 
+
+ int AUTOFS_DEV_IOCTL_VERSION ;
+ int O_CLOEXEC ;
+ int O_RDONLY ;
+ int assert (TYPE_1__*) ;
+ int errno ;
+ int init_autofs_dev_ioctl (struct autofs_dev_ioctl*) ;
+ scalar_t__ ioctl (scalar_t__,int ,struct autofs_dev_ioctl*) ;
+ int label_fix (char*,int ) ;
+ int log_debug (char*,int ,int ) ;
+ int log_error_errno (int,char*) ;
+ int open (char*,int) ;
+ scalar_t__ safe_close (scalar_t__) ;
 
 __attribute__((used)) static int open_dev_autofs(Manager *m) {
         struct autofs_dev_ioctl param;

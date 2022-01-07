@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct lexer {char const* start; char const* pos; char const* end; } ;
 struct config_line {scalar_t__ type; } ;
-struct TYPE_4__ {int /*<<< orphan*/  strbuf; struct lexer lexer; } ;
-struct TYPE_3__ {scalar_t__ sz; int /*<<< orphan*/ * addr; } ;
+struct TYPE_4__ {int strbuf; struct lexer lexer; } ;
+struct TYPE_3__ {scalar_t__ sz; int * addr; } ;
 struct config {TYPE_2__ parser; TYPE_1__ mapped; } ;
 
-/* Variables and functions */
- scalar_t__ CONFIG_LINE_TYPE_SECTION ; 
- int /*<<< orphan*/  config_error (struct config*,char*) ; 
- int /*<<< orphan*/  find_section_end (struct config*) ; 
- int /*<<< orphan*/  free (struct config*) ; 
- int /*<<< orphan*/  lwan_strbuf_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lwan_strbuf_init (int /*<<< orphan*/ *) ; 
- struct config* malloc (int) ; 
- int /*<<< orphan*/  memcpy (struct config*,struct config*,int) ; 
+
+ scalar_t__ CONFIG_LINE_TYPE_SECTION ;
+ int config_error (struct config*,char*) ;
+ int find_section_end (struct config*) ;
+ int free (struct config*) ;
+ int lwan_strbuf_free (int *) ;
+ int lwan_strbuf_init (int *) ;
+ struct config* malloc (int) ;
+ int memcpy (struct config*,struct config*,int) ;
 
 struct config *config_isolate_section(struct config *current_conf,
                                       const struct config_line *current_line)
@@ -36,16 +36,16 @@ struct config *config_isolate_section(struct config *current_conf,
     const char *pos;
 
     if (current_line->type != CONFIG_LINE_TYPE_SECTION)
-        return NULL;
+        return ((void*)0);
 
     isolated = malloc(sizeof(*isolated));
     if (!isolated)
-        return NULL;
+        return ((void*)0);
 
     memcpy(isolated, current_conf, sizeof(*isolated));
     lwan_strbuf_init(&isolated->parser.strbuf);
 
-    isolated->mapped.addr = NULL;
+    isolated->mapped.addr = ((void*)0);
     isolated->mapped.sz = 0;
 
     lexer = &isolated->parser.lexer;
@@ -59,7 +59,7 @@ struct config *config_isolate_section(struct config *current_conf,
         config_error(current_conf,
                      "Could not find section end while trying to isolate");
 
-        return NULL;
+        return ((void*)0);
     }
 
     lexer->end = lexer->pos;

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {scalar_t__ tn; } ;
-typedef  TYPE_1__ event_dump ;
-typedef  int /*<<< orphan*/  event ;
+typedef TYPE_1__ event_dump ;
+typedef int event ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/ * create_event (TYPE_1__*) ; 
- int event_dump_from_event (TYPE_1__*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ event_dump_from_str (TYPE_1__*,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_dump_init (TYPE_1__*,int) ; 
- int /*<<< orphan*/  tmp_mem_init () ; 
+
+ int assert (int) ;
+ int * create_event (TYPE_1__*) ;
+ int event_dump_from_event (TYPE_1__*,int *,int,int *) ;
+ scalar_t__ event_dump_from_str (TYPE_1__*,char*,int,int *) ;
+ int event_dump_init (TYPE_1__*,int) ;
+ int tmp_mem_init () ;
 
 event *event_update_str (event *e, char *chg, int type_id) {
-  if (chg == NULL) {
+  if (chg == ((void*)0)) {
     return e;
   }
 
@@ -34,13 +34,13 @@ event *event_update_str (event *e, char *chg, int type_id) {
   event_dump_init (&d, type_id);
 
   if (event_dump_from_str (&d, chg, type_id, e) < 0) {
-    return NULL;
+    return ((void*)0);
   }
 
   if (d.tn) {
-    assert (event_dump_from_event (&d, e, type_id, NULL) > -1);
+    assert (event_dump_from_event (&d, e, type_id, ((void*)0)) > -1);
     e = create_event (&d);
-    assert (e != NULL);
+    assert (e != ((void*)0));
   }
   return e;
 }

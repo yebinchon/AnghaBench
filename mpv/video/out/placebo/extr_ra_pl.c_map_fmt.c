@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ra_format {struct pl_fmt const* priv; } ;
 struct ra {int num_formats; struct ra_format** formats; } ;
-struct pl_fmt {int /*<<< orphan*/  name; } ;
+struct pl_fmt {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct ra*,char*,int /*<<< orphan*/ ) ; 
+
+ int MP_ERR (struct ra*,char*,int ) ;
 
 __attribute__((used)) static struct ra_format *map_fmt(struct ra *ra, const struct pl_fmt *plfmt)
 {
@@ -25,5 +25,5 @@ __attribute__((used)) static struct ra_format *map_fmt(struct ra *ra, const stru
     }
 
     MP_ERR(ra, "Failed mapping pl_fmt '%s' to ra_fmt?\n", plfmt->name);
-    return NULL;
+    return ((void*)0);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_result_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int S_IRUSR ; 
- int S_IWUSR ; 
- int /*<<< orphan*/  isc_file_openuniquemode (char*,int,int /*<<< orphan*/ **) ; 
+
+
+
+typedef int isc_result_t ;
+typedef int FILE ;
+
+
+ int S_IRUSR ;
+ int S_IWUSR ;
+ int isc_file_openuniquemode (char*,int,int **) ;
 
 isc_result_t
 isc_file_openuniqueprivate(char *templet, FILE **fp) {
-	int mode = S_IWUSR|S_IRUSR;
-	return (isc_file_openuniquemode(templet, mode, fp));
+ int mode = S_IWUSR|S_IRUSR;
+ return (isc_file_openuniquemode(templet, mode, fp));
 }

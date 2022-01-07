@@ -1,18 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
+
+
+
+typedef int uint8_t ;
+
+
 
 void eedi2_gaussian_blur1( uint8_t * src, int src_pitch, uint8_t * tmp, int tmp_pitch, uint8_t * dst, int dst_pitch, int height, int width )
 {
@@ -39,7 +39,7 @@ void eedi2_gaussian_blur1( uint8_t * src, int src_pitch, uint8_t * tmp, int tmp_
         }
         dstp[x] = ( srcp[x-3] * 582 + ( srcp[x-2] + srcp[x+2] ) * 3539 +
                     ( srcp[x-1] + srcp[x+1] ) * 15862 +
-                    srcp[x]   * 26152 + 32768 ) >> 16;
+                    srcp[x] * 26152 + 32768 ) >> 16;
         ++x;
         dstp[x] = ( srcp[x-3] * 582 + srcp[x-2] * 7078 +
                     ( srcp[x-1] + srcp[x+1] ) * 15862 +
@@ -147,7 +147,7 @@ void eedi2_gaussian_blur1( uint8_t * src, int src_pitch, uint8_t * tmp, int tmp_
     dstp += dst_pitch;
     for( x = 0; x < width; ++x )
     {
-        dstp[x] = ( src3p[x] * 582   + src2p[x] * 7078 +
-                    srcpp[x] * 31724 +  srcp[x] * 26152 + 32768 ) >> 16;
+        dstp[x] = ( src3p[x] * 582 + src2p[x] * 7078 +
+                    srcpp[x] * 31724 + srcp[x] * 26152 + 32768 ) >> 16;
     }
 }

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  int /*<<< orphan*/  GLfloat ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gen_faces (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  make_character (int /*<<< orphan*/ *,float,float,float,float,char) ; 
- int /*<<< orphan*/ * malloc_faces (int,int) ; 
- int strlen (char*) ; 
+
+
+
+typedef int GLuint ;
+typedef int GLfloat ;
+
+
+ int gen_faces (int,int,int *) ;
+ int make_character (int *,float,float,float,float,char) ;
+ int * malloc_faces (int,int) ;
+ int strlen (char*) ;
 
 GLuint gen_text_buffer(float x, float y, float n, char *text) {
     int length = strlen(text);

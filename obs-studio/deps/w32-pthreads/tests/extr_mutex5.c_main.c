@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ FOIL (int) ; 
- int PTHREAD_MUTEX_DEFAULT ; 
- int PTHREAD_MUTEX_ERRORCHECK ; 
- scalar_t__ PTHREAD_MUTEX_ERRORCHECK_NP ; 
- scalar_t__ PTHREAD_MUTEX_FAST_NP ; 
- int PTHREAD_MUTEX_NORMAL ; 
- int PTHREAD_MUTEX_RECURSIVE ; 
- scalar_t__ PTHREAD_MUTEX_RECURSIVE_NP ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  mxAttr ; 
- scalar_t__ pthread_mutexattr_gettype (int /*<<< orphan*/ *,int*) ; 
- scalar_t__ pthread_mutexattr_init (int /*<<< orphan*/ *) ; 
+ scalar_t__ FOIL (int) ;
+ int PTHREAD_MUTEX_DEFAULT ;
+ int PTHREAD_MUTEX_ERRORCHECK ;
+ scalar_t__ PTHREAD_MUTEX_ERRORCHECK_NP ;
+ scalar_t__ PTHREAD_MUTEX_FAST_NP ;
+ int PTHREAD_MUTEX_NORMAL ;
+ int PTHREAD_MUTEX_RECURSIVE ;
+ scalar_t__ PTHREAD_MUTEX_RECURSIVE_NP ;
+ int assert (int) ;
+ int mxAttr ;
+ scalar_t__ pthread_mutexattr_gettype (int *,int*) ;
+ scalar_t__ pthread_mutexattr_init (int *) ;
 
 int
 main()

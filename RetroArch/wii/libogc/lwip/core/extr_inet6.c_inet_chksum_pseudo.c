@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8_t ;
-typedef  int u32_t ;
-typedef  int u16_t ;
-struct pbuf {int len; int /*<<< orphan*/  payload; struct pbuf* next; } ;
+
+
+
+
+typedef int u8_t ;
+typedef int u32_t ;
+typedef int u16_t ;
+struct pbuf {int len; int payload; struct pbuf* next; } ;
 struct ip_addr {scalar_t__ addr; } ;
 
-/* Variables and functions */
- scalar_t__ chksum (int /*<<< orphan*/ ,int) ; 
- scalar_t__ htons (int) ; 
+
+ scalar_t__ chksum (int ,int) ;
+ scalar_t__ htons (int) ;
 
 u16_t
 inet_chksum_pseudo(struct pbuf *p,
@@ -31,7 +31,7 @@ inet_chksum_pseudo(struct pbuf *p,
 
   acc = 0;
   swapped = 0;
-  for(q = p; q != NULL; q = q->next) {
+  for(q = p; q != ((void*)0); q = q->next) {
     acc += chksum(q->payload, q->len);
     while (acc >> 16) {
       acc = (acc & 0xffff) + (acc >> 16);

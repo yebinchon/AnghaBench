@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uid_t ;
-typedef  int /*<<< orphan*/  mode_t ;
 
-/* Variables and functions */
- int EEXIST ; 
- int /*<<< orphan*/  UID_INVALID ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int errno ; 
- scalar_t__ lchown (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int mkdir_errno_wrapper (char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uid_t ;
+typedef int mode_t ;
+
+
+ int EEXIST ;
+ int UID_INVALID ;
+ int assert (char const*) ;
+ int errno ;
+ scalar_t__ lchown (char const*,int ,int ) ;
+ int mkdir_errno_wrapper (char const*,int ) ;
 
 __attribute__((used)) static int mkdir_userns(const char *path, mode_t mode, uid_t uid_shift) {
         int r;

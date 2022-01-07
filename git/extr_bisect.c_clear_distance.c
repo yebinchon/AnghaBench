@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct commit_list {struct commit_list* next; struct commit* item; } ;
-struct TYPE_2__ {int /*<<< orphan*/  flags; } ;
+struct TYPE_2__ {int flags; } ;
 struct commit {TYPE_1__ object; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNTED ; 
+
+ int COUNTED ;
 
 __attribute__((used)) static void clear_distance(struct commit_list *list)
 {
-	while (list) {
-		struct commit *commit = list->item;
-		commit->object.flags &= ~COUNTED;
-		list = list->next;
-	}
+ while (list) {
+  struct commit *commit = list->item;
+  commit->object.flags &= ~COUNTED;
+  list = list->next;
+ }
 }

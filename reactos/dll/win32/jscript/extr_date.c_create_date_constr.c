@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DateConstr_info ; 
- int /*<<< orphan*/  DateConstr_value ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PROPF_CONSTR ; 
- int /*<<< orphan*/  create_builtin_constructor (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  create_date (int /*<<< orphan*/ *,int /*<<< orphan*/ *,double,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsdisp_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+
+
+ int DateConstr_info ;
+ int DateConstr_value ;
+ scalar_t__ FAILED (int ) ;
+ int PROPF_CONSTR ;
+ int create_builtin_constructor (int *,int ,char const*,int *,int,int *,int **) ;
+ int create_date (int *,int *,double,int **) ;
+ int jsdisp_release (int *) ;
 
 HRESULT create_date_constr(script_ctx_t *ctx, jsdisp_t *object_prototype, jsdisp_t **ret)
 {

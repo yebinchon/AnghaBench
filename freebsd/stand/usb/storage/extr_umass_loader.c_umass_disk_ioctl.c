@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int const u_long ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int const u_long ;
 struct open_file {scalar_t__ f_devdata; } ;
 struct disk_devdesc {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  device; } ;
+struct TYPE_2__ {int device; } ;
 
-/* Variables and functions */
-#define  DIOCGMEDIASIZE 129 
-#define  DIOCGSECTORSIZE 128 
- int EINVAL ; 
- int ENOTTY ; 
- int ENXIO ; 
- int disk_ioctl (struct disk_devdesc*,int const,void*) ; 
- TYPE_1__ umass_uaa ; 
- int /*<<< orphan*/  usb_msc_read_capacity (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+ int EINVAL ;
+ int ENOTTY ;
+ int ENXIO ;
+ int disk_ioctl (struct disk_devdesc*,int const,void*) ;
+ TYPE_1__ umass_uaa ;
+ int usb_msc_read_capacity (int ,int ,int *,int *) ;
 
 __attribute__((used)) static int
 umass_disk_ioctl(struct open_file *f, u_long cmd, void *buf)
 {
-	struct disk_devdesc *dev;
-	uint32_t nblock;
-	uint32_t blocksize;
-	int rc;
+ struct disk_devdesc *dev;
+ uint32_t nblock;
+ uint32_t blocksize;
+ int rc;
 
-	dev = (struct disk_devdesc *)(f->f_devdata);
-	if (dev == NULL)
-		return (EINVAL);
+ dev = (struct disk_devdesc *)(f->f_devdata);
+ if (dev == ((void*)0))
+  return (EINVAL);
 
-	rc = disk_ioctl(dev, cmd, buf);
-	if (rc != ENOTTY)
-		return (rc);
+ rc = disk_ioctl(dev, cmd, buf);
+ if (rc != ENOTTY)
+  return (rc);
 
-	switch (cmd) {
-	case DIOCGSECTORSIZE:
-	case DIOCGMEDIASIZE:
-		if (usb_msc_read_capacity(umass_uaa.device, 0,
-		    &nblock, &blocksize) != 0)
-			return (EINVAL);
+ switch (cmd) {
+ case 128:
+ case 129:
+  if (usb_msc_read_capacity(umass_uaa.device, 0,
+      &nblock, &blocksize) != 0)
+   return (EINVAL);
 
-		if (cmd == DIOCGMEDIASIZE)
-			*(uint64_t*)buf = nblock;
-		else
-			*(uint32_t*)buf = blocksize;
+  if (cmd == 129)
+   *(uint64_t*)buf = nblock;
+  else
+   *(uint32_t*)buf = blocksize;
 
-		return (0);
-	default:
-		return (ENXIO);
-	}
+  return (0);
+ default:
+  return (ENXIO);
+ }
 }

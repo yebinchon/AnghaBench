@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TableScanDesc ;
-struct TYPE_2__ {int /*<<< orphan*/  oid; } ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  TYPE_1__* Form_pg_tablespace ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  Anum_pg_tablespace_spcname ; 
- int /*<<< orphan*/  BTEqualStrategyNumber ; 
- int /*<<< orphan*/  CStringGetDatum (char const*) ; 
- int /*<<< orphan*/  ERRCODE_UNDEFINED_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  F_NAMEEQ ; 
- int /*<<< orphan*/  ForwardScanDirection ; 
- scalar_t__ GETSTRUCT (int /*<<< orphan*/ ) ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/  OidIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScanKeyInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TableSpaceRelationId ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char const*) ; 
- int /*<<< orphan*/  heap_getnext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_beginscan_catalog (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int TableScanDesc ;
+struct TYPE_2__ {int oid; } ;
+typedef int ScanKeyData ;
+typedef int Relation ;
+typedef int Oid ;
+typedef int HeapTuple ;
+typedef TYPE_1__* Form_pg_tablespace ;
+
+
+ int AccessShareLock ;
+ int Anum_pg_tablespace_spcname ;
+ int BTEqualStrategyNumber ;
+ int CStringGetDatum (char const*) ;
+ int ERRCODE_UNDEFINED_OBJECT ;
+ int ERROR ;
+ int F_NAMEEQ ;
+ int ForwardScanDirection ;
+ scalar_t__ GETSTRUCT (int ) ;
+ scalar_t__ HeapTupleIsValid (int ) ;
+ int InvalidOid ;
+ int OidIsValid (int ) ;
+ int ScanKeyInit (int *,int ,int ,int ,int ) ;
+ int TableSpaceRelationId ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,char const*) ;
+ int heap_getnext (int ,int ) ;
+ int table_beginscan_catalog (int ,int,int *) ;
+ int table_close (int ,int ) ;
+ int table_endscan (int ) ;
+ int table_open (int ,int ) ;
 
 Oid
 get_tablespace_oid(const char *tablespacename, bool missing_ok)
 {
-	Oid			result;
-	Relation	rel;
-	TableScanDesc scandesc;
-	HeapTuple	tuple;
-	ScanKeyData entry[1];
+ Oid result;
+ Relation rel;
+ TableScanDesc scandesc;
+ HeapTuple tuple;
+ ScanKeyData entry[1];
 
-	/*
-	 * Search pg_tablespace.  We use a heapscan here even though there is an
-	 * index on name, on the theory that pg_tablespace will usually have just
-	 * a few entries and so an indexed lookup is a waste of effort.
-	 */
-	rel = table_open(TableSpaceRelationId, AccessShareLock);
 
-	ScanKeyInit(&entry[0],
-				Anum_pg_tablespace_spcname,
-				BTEqualStrategyNumber, F_NAMEEQ,
-				CStringGetDatum(tablespacename));
-	scandesc = table_beginscan_catalog(rel, 1, entry);
-	tuple = heap_getnext(scandesc, ForwardScanDirection);
 
-	/* We assume that there can be at most one matching tuple */
-	if (HeapTupleIsValid(tuple))
-		result = ((Form_pg_tablespace) GETSTRUCT(tuple))->oid;
-	else
-		result = InvalidOid;
 
-	table_endscan(scandesc);
-	table_close(rel, AccessShareLock);
 
-	if (!OidIsValid(result) && !missing_ok)
-		ereport(ERROR,
-				(errcode(ERRCODE_UNDEFINED_OBJECT),
-				 errmsg("tablespace \"%s\" does not exist",
-						tablespacename)));
 
-	return result;
+ rel = table_open(TableSpaceRelationId, AccessShareLock);
+
+ ScanKeyInit(&entry[0],
+    Anum_pg_tablespace_spcname,
+    BTEqualStrategyNumber, F_NAMEEQ,
+    CStringGetDatum(tablespacename));
+ scandesc = table_beginscan_catalog(rel, 1, entry);
+ tuple = heap_getnext(scandesc, ForwardScanDirection);
+
+
+ if (HeapTupleIsValid(tuple))
+  result = ((Form_pg_tablespace) GETSTRUCT(tuple))->oid;
+ else
+  result = InvalidOid;
+
+ table_endscan(scandesc);
+ table_close(rel, AccessShareLock);
+
+ if (!OidIsValid(result) && !missing_ok)
+  ereport(ERROR,
+    (errcode(ERRCODE_UNDEFINED_OBJECT),
+     errmsg("tablespace \"%s\" does not exist",
+      tablespacename)));
+
+ return result;
 }

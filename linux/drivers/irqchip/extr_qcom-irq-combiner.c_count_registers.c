@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct platform_device {int /*<<< orphan*/  dev; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
-typedef  int /*<<< orphan*/  acpi_handle ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_HANDLE (int /*<<< orphan*/ *) ; 
- int EINVAL ; 
- int /*<<< orphan*/  METHOD_NAME__CRS ; 
- int /*<<< orphan*/  acpi_has_method (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_walk_resources (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  count_registers_cb ; 
+
+
+
+struct platform_device {int dev; } ;
+typedef int acpi_status ;
+typedef int acpi_handle ;
+
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_HANDLE (int *) ;
+ int EINVAL ;
+ int METHOD_NAME__CRS ;
+ int acpi_has_method (int ,int ) ;
+ int acpi_walk_resources (int ,int ,int ,int*) ;
+ int count_registers_cb ;
 
 __attribute__((used)) static int count_registers(struct platform_device *pdev)
 {
-	acpi_handle ahandle = ACPI_HANDLE(&pdev->dev);
-	acpi_status status;
-	int count = 0;
+ acpi_handle ahandle = ACPI_HANDLE(&pdev->dev);
+ acpi_status status;
+ int count = 0;
 
-	if (!acpi_has_method(ahandle, METHOD_NAME__CRS))
-		return -EINVAL;
+ if (!acpi_has_method(ahandle, METHOD_NAME__CRS))
+  return -EINVAL;
 
-	status = acpi_walk_resources(ahandle, METHOD_NAME__CRS,
-				     count_registers_cb, &count);
-	if (ACPI_FAILURE(status))
-		return -EINVAL;
-	return count;
+ status = acpi_walk_resources(ahandle, METHOD_NAME__CRS,
+         count_registers_cb, &count);
+ if (ACPI_FAILURE(status))
+  return -EINVAL;
+ return count;
 }

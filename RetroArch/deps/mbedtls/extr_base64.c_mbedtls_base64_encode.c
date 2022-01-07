@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BASE64_SIZE_T_MAX ; 
- int MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL ; 
- void** base64_enc_map ; 
+ int BASE64_SIZE_T_MAX ;
+ int MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL ;
+ void** base64_enc_map ;
 
 int mbedtls_base64_encode( unsigned char *dst, size_t dlen, size_t *olen,
                    const unsigned char *src, size_t slen )
@@ -39,7 +31,7 @@ int mbedtls_base64_encode( unsigned char *dst, size_t dlen, size_t *olen,
 
     n *= 4;
 
-    if( ( dlen < n + 1 ) || ( NULL == dst ) )
+    if( ( dlen < n + 1 ) || ( ((void*)0) == dst ) )
     {
         *olen = n + 1;
         return( MBEDTLS_ERR_BASE64_BUFFER_TOO_SMALL );
@@ -54,7 +46,7 @@ int mbedtls_base64_encode( unsigned char *dst, size_t dlen, size_t *olen,
         C3 = *src++;
 
         *p++ = base64_enc_map[(C1 >> 2) & 0x3F];
-        *p++ = base64_enc_map[(((C1 &  3) << 4) + (C2 >> 4)) & 0x3F];
+        *p++ = base64_enc_map[(((C1 & 3) << 4) + (C2 >> 4)) & 0x3F];
         *p++ = base64_enc_map[(((C2 & 15) << 2) + (C3 >> 6)) & 0x3F];
         *p++ = base64_enc_map[C3 & 0x3F];
     }

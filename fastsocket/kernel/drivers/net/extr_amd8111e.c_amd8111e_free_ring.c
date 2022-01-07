@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct amd8111e_tx_dr {int dummy; } ;
 struct amd8111e_rx_dr {int dummy; } ;
-struct amd8111e_priv {int /*<<< orphan*/ * tx_ring; int /*<<< orphan*/  tx_ring_dma_addr; int /*<<< orphan*/  pci_dev; int /*<<< orphan*/ * rx_ring; int /*<<< orphan*/  rx_ring_dma_addr; } ;
+struct amd8111e_priv {int * tx_ring; int tx_ring_dma_addr; int pci_dev; int * rx_ring; int rx_ring_dma_addr; } ;
 
-/* Variables and functions */
- int NUM_RX_RING_DR ; 
- int NUM_TX_RING_DR ; 
- int /*<<< orphan*/  pci_free_consistent (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int NUM_RX_RING_DR ;
+ int NUM_TX_RING_DR ;
+ int pci_free_consistent (int ,int,int *,int ) ;
 
 __attribute__((used)) static void amd8111e_free_ring(struct amd8111e_priv* lp)
 {
-	/* Free transmit and receive descriptor rings */
-	if(lp->rx_ring){
-		pci_free_consistent(lp->pci_dev,
-			sizeof(struct amd8111e_rx_dr)*NUM_RX_RING_DR,
-			lp->rx_ring, lp->rx_ring_dma_addr);
-		lp->rx_ring = NULL;
-	}
 
-	if(lp->tx_ring){
-		pci_free_consistent(lp->pci_dev,
-			sizeof(struct amd8111e_tx_dr)*NUM_TX_RING_DR,
-			lp->tx_ring, lp->tx_ring_dma_addr);
+ if(lp->rx_ring){
+  pci_free_consistent(lp->pci_dev,
+   sizeof(struct amd8111e_rx_dr)*NUM_RX_RING_DR,
+   lp->rx_ring, lp->rx_ring_dma_addr);
+  lp->rx_ring = ((void*)0);
+ }
 
-		lp->tx_ring = NULL;
-	}
+ if(lp->tx_ring){
+  pci_free_consistent(lp->pci_dev,
+   sizeof(struct amd8111e_tx_dr)*NUM_TX_RING_DR,
+   lp->tx_ring, lp->tx_ring_dma_addr);
+
+  lp->tx_ring = ((void*)0);
+ }
 
 }

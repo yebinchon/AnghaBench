@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int int32_t ;
 
-/* Variables and functions */
- int DSS_SP_FORMULA (int,int,int) ; 
- int av_clip_int16 (int) ; 
+
+
+
+typedef int int32_t ;
+
+
+ int DSS_SP_FORMULA (int,int,int) ;
+ int av_clip_int16 (int) ;
 
 __attribute__((used)) static void dss_sp_convert_coeffs(int32_t *lpc_filter, int32_t *coeffs)
 {
@@ -22,7 +22,7 @@ __attribute__((used)) static void dss_sp_convert_coeffs(int32_t *lpc_filter, int
 
     coeffs[0] = 0x2000;
     for (a = 0; a < 14; a++) {
-        a_plus         = a + 1;
+        a_plus = a + 1;
         coeffs[a_plus] = lpc_filter[a] >> 2;
         if (a_plus / 2 >= 1) {
             for (i = 1; i <= a_plus / 2; i++) {

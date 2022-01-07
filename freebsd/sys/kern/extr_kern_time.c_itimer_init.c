@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct itimer {int /*<<< orphan*/  it_mtx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MTX_DEF ; 
- int /*<<< orphan*/  mtx_init (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct itimer {int it_mtx; } ;
+
+
+ int MTX_DEF ;
+ int mtx_init (int *,char*,int *,int ) ;
 
 __attribute__((used)) static int
 itimer_init(void *mem, int size, int flags)
 {
-	struct itimer *it;
+ struct itimer *it;
 
-	it = (struct itimer *)mem;
-	mtx_init(&it->it_mtx, "itimer lock", NULL, MTX_DEF);
-	return (0);
+ it = (struct itimer *)mem;
+ mtx_init(&it->it_mtx, "itimer lock", ((void*)0), MTX_DEF);
+ return (0);
 }

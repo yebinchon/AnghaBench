@@ -1,67 +1,67 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  path ;
-typedef  int /*<<< orphan*/  host ;
-typedef  int /*<<< orphan*/  h_url ;
-typedef  int /*<<< orphan*/  auth ;
-struct TYPE_6__ {int /*<<< orphan*/  protocol_blacklist; int /*<<< orphan*/  protocol_whitelist; TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_7__ {char* name; char* description; char* url; char* genre; char* content_type; char* user_agent; char* pass; int /*<<< orphan*/  hd; scalar_t__ legacy_icecast; scalar_t__ public; } ;
-typedef  TYPE_2__ IcecastContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  int /*<<< orphan*/  AVBPrint ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVIO_FLAG_READ ; 
- int /*<<< orphan*/  AVIO_FLAG_READ_WRITE ; 
- int /*<<< orphan*/  AV_BPRINT_SIZE_AUTOMATIC ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- char* DEFAULT_ICE_USER ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  ENOSYS ; 
- scalar_t__ NOT_EMPTY (char*) ; 
- int /*<<< orphan*/  av_bprint_finalize (int /*<<< orphan*/ *,char**) ; 
- int /*<<< orphan*/  av_bprint_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_bprint_is_complete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_dict_free (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ **,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_freep (char**) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- void* av_strdup (char*) ; 
- int /*<<< orphan*/  av_url_split (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,char*,int,int*,char*,int,char const*) ; 
- int /*<<< orphan*/  cat_header (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  ff_url_join (char*,int,char*,char*,char*,int,char*,char*) ; 
- int ffurl_open_whitelist (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*,char*) ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char*,char*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int path ;
+typedef int host ;
+typedef int h_url ;
+typedef int auth ;
+struct TYPE_6__ {int protocol_blacklist; int protocol_whitelist; TYPE_2__* priv_data; } ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_7__ {char* name; char* description; char* url; char* genre; char* content_type; char* user_agent; char* pass; int hd; scalar_t__ legacy_icecast; scalar_t__ public; } ;
+typedef TYPE_2__ IcecastContext ;
+typedef int AVDictionary ;
+typedef int AVBPrint ;
+
+
+ int AVERROR (int ) ;
+ int AVIO_FLAG_READ ;
+ int AVIO_FLAG_READ_WRITE ;
+ int AV_BPRINT_SIZE_AUTOMATIC ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ char* DEFAULT_ICE_USER ;
+ int EIO ;
+ int ENOMEM ;
+ int ENOSYS ;
+ scalar_t__ NOT_EMPTY (char*) ;
+ int av_bprint_finalize (int *,char**) ;
+ int av_bprint_init (int *,int ,int ) ;
+ int av_bprint_is_complete (int *) ;
+ int av_dict_free (int **) ;
+ int av_dict_set (int **,char*,char*,int ) ;
+ int av_free (char*) ;
+ int av_freep (char**) ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ void* av_strdup (char*) ;
+ int av_url_split (int *,int ,char*,int,char*,int,int*,char*,int,char const*) ;
+ int cat_header (int *,char*,char*) ;
+ int ff_url_join (char*,int,char*,char*,char*,int,char*,char*) ;
+ int ffurl_open_whitelist (int *,char*,int ,int *,int **,int ,int ,TYPE_1__*) ;
+ int snprintf (char*,int,char*,char*,char*) ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char*,char*) ;
 
 __attribute__((used)) static int icecast_open(URLContext *h, const char *uri, int flags)
 {
     IcecastContext *s = h->priv_data;
 
-    // Dict to set options that we pass to the HTTP protocol
-    AVDictionary *opt_dict = NULL;
 
-    // URI part variables
+    AVDictionary *opt_dict = ((void*)0);
+
+
     char h_url[1024], host[1024], auth[1024], path[1024];
-    char *headers = NULL, *user = NULL;
+    char *headers = ((void*)0), *user = ((void*)0);
     int port, ret;
     AVBPrint bp;
 
@@ -70,7 +70,7 @@ __attribute__((used)) static int icecast_open(URLContext *h, const char *uri, in
 
     av_bprint_init(&bp, 0, AV_BPRINT_SIZE_AUTOMATIC);
 
-    // Build header strings
+
     cat_header(&bp, "Ice-Name", s->name);
     cat_header(&bp, "Ice-Description", s->description);
     cat_header(&bp, "Ice-URL", s->url);
@@ -82,7 +82,7 @@ __attribute__((used)) static int icecast_open(URLContext *h, const char *uri, in
     }
     av_bprint_finalize(&bp, &headers);
 
-    // Set options
+
     av_dict_set(&opt_dict, "method", s->legacy_icecast ? "SOURCE" : "PUT", 0);
     av_dict_set(&opt_dict, "auth_type", "basic", 0);
     av_dict_set(&opt_dict, "headers", headers, 0);
@@ -95,11 +95,11 @@ __attribute__((used)) static int icecast_open(URLContext *h, const char *uri, in
     if (NOT_EMPTY(s->user_agent))
         av_dict_set(&opt_dict, "user_agent", s->user_agent, 0);
 
-    // Parse URI
-    av_url_split(NULL, 0, auth, sizeof(auth), host, sizeof(host),
+
+    av_url_split(((void*)0), 0, auth, sizeof(auth), host, sizeof(host),
                  &port, path, sizeof(path), uri);
 
-    // Check for auth data in URI
+
     if (auth[0]) {
         char *sep = strchr(auth, ':');
         if (sep) {
@@ -120,23 +120,23 @@ __attribute__((used)) static int icecast_open(URLContext *h, const char *uri, in
         }
     }
 
-    // Build new authstring
+
     snprintf(auth, sizeof(auth),
              "%s:%s",
              user ? user : DEFAULT_ICE_USER,
              s->pass ? s->pass : "");
 
-    // Check for mountpoint (path)
+
     if (!path[0] || strcmp(path, "/") == 0) {
         av_log(h, AV_LOG_ERROR, "No mountpoint (path) specified!\n");
         ret = AVERROR(EIO);
         goto cleanup;
     }
 
-    // Build new URI for passing to http protocol
+
     ff_url_join(h_url, sizeof(h_url), "http", auth, host, port, "%s", path);
-    // Finally open http proto handler
-    ret = ffurl_open_whitelist(&s->hd, h_url, AVIO_FLAG_READ_WRITE, NULL,
+
+    ret = ffurl_open_whitelist(&s->hd, h_url, AVIO_FLAG_READ_WRITE, ((void*)0),
                                &opt_dict, h->protocol_whitelist, h->protocol_blacklist, h);
 
 cleanup:

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_ccm_context ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CCM_DECRYPT ; 
- int MBEDTLS_ERR_CCM_AUTH_FAILED ; 
- int ccm_auth_crypt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char const*,unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  mbedtls_zeroize (unsigned char*,size_t) ; 
+
+
+
+typedef int mbedtls_ccm_context ;
+
+
+ int CCM_DECRYPT ;
+ int MBEDTLS_ERR_CCM_AUTH_FAILED ;
+ int ccm_auth_crypt (int *,int ,size_t,unsigned char const*,size_t,unsigned char const*,size_t,unsigned char const*,unsigned char*,unsigned char*,size_t) ;
+ int mbedtls_zeroize (unsigned char*,size_t) ;
 
 int mbedtls_ccm_auth_decrypt( mbedtls_ccm_context *ctx, size_t length,
                       const unsigned char *iv, size_t iv_len,
@@ -36,7 +36,7 @@ int mbedtls_ccm_auth_decrypt( mbedtls_ccm_context *ctx, size_t length,
         return( ret );
     }
 
-    /* Check tag in "constant-time" */
+
     for( diff = 0, i = 0; i < tag_len; i++ )
         diff |= tag[i] ^ check_tag[i];
 

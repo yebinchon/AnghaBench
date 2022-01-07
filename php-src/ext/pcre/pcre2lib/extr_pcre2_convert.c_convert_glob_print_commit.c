@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {void** out_str; } ;
-typedef  TYPE_1__ pcre2_output_context ;
+typedef TYPE_1__ pcre2_output_context ;
 
-/* Variables and functions */
- void* CHAR_ASTERISK ; 
- void* CHAR_C ; 
- void* CHAR_I ; 
- void* CHAR_LEFT_PARENTHESIS ; 
- void* CHAR_M ; 
- void* CHAR_O ; 
- int /*<<< orphan*/  CHAR_RIGHT_PARENTHESIS ; 
- void* CHAR_T ; 
- int /*<<< orphan*/  convert_glob_write (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  convert_glob_write_str (TYPE_1__*,int) ; 
+
+ void* CHAR_ASTERISK ;
+ void* CHAR_C ;
+ void* CHAR_I ;
+ void* CHAR_LEFT_PARENTHESIS ;
+ void* CHAR_M ;
+ void* CHAR_O ;
+ int CHAR_RIGHT_PARENTHESIS ;
+ void* CHAR_T ;
+ int convert_glob_write (TYPE_1__*,int ) ;
+ int convert_glob_write_str (TYPE_1__*,int) ;
 
 __attribute__((used)) static void
 convert_glob_print_commit(pcre2_output_context *out)

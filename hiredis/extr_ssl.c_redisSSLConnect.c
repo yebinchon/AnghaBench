@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * ssl; int /*<<< orphan*/ * ssl_ctx; } ;
-typedef  TYPE_1__ redisSSLContext ;
-struct TYPE_7__ {int flags; scalar_t__ err; int /*<<< orphan*/  fd; TYPE_1__* privdata; int /*<<< orphan*/ * funcs; } ;
-typedef  TYPE_2__ redisContext ;
-typedef  int /*<<< orphan*/  err ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_clear_error () ; 
- unsigned long ERR_peek_last_error () ; 
- char* ERR_reason_error_string (unsigned long) ; 
- int REDIS_BLOCK ; 
- int REDIS_ERR ; 
- int /*<<< orphan*/  REDIS_ERR_IO ; 
- int /*<<< orphan*/  REDIS_ERR_OTHER ; 
- int REDIS_OK ; 
- int SSL_ERROR_SYSCALL ; 
- int SSL_ERROR_WANT_READ ; 
- int SSL_ERROR_WANT_WRITE ; 
- int /*<<< orphan*/  SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER ; 
- int SSL_connect (int /*<<< orphan*/ *) ; 
- int SSL_get_error (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SSL_set_connect_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_set_fd (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_set_mode (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  __redisSetError (TYPE_2__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* calloc (int,int) ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  redisContextSSLFuncs ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char*) ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * ssl; int * ssl_ctx; } ;
+typedef TYPE_1__ redisSSLContext ;
+struct TYPE_7__ {int flags; scalar_t__ err; int fd; TYPE_1__* privdata; int * funcs; } ;
+typedef TYPE_2__ redisContext ;
+typedef int err ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int ERR_clear_error () ;
+ unsigned long ERR_peek_last_error () ;
+ char* ERR_reason_error_string (unsigned long) ;
+ int REDIS_BLOCK ;
+ int REDIS_ERR ;
+ int REDIS_ERR_IO ;
+ int REDIS_ERR_OTHER ;
+ int REDIS_OK ;
+ int SSL_ERROR_SYSCALL ;
+ int SSL_ERROR_WANT_READ ;
+ int SSL_ERROR_WANT_WRITE ;
+ int SSL_MODE_ACCEPT_MOVING_WRITE_BUFFER ;
+ int SSL_connect (int *) ;
+ int SSL_get_error (int *,int) ;
+ int SSL_set_connect_state (int *) ;
+ int SSL_set_fd (int *,int ) ;
+ int SSL_set_mode (int *,int ) ;
+ int __redisSetError (TYPE_2__*,int ,char*) ;
+ TYPE_1__* calloc (int,int) ;
+ int errno ;
+ int redisContextSSLFuncs ;
+ int snprintf (char*,int,char*,char*) ;
+ char* strerror (int ) ;
 
 __attribute__((used)) static int redisSSLConnect(redisContext *c, SSL_CTX *ssl_ctx, SSL *ssl) {
     if (c->privdata) {

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_FN ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ close (int) ; 
- int /*<<< orphan*/  dl_free (int /*<<< orphan*/ *,scalar_t__) ; 
- int* fd ; 
- int /*<<< orphan*/ ** fnames ; 
- scalar_t__* fpos ; 
- scalar_t__* fread_only ; 
- scalar_t__* fsize ; 
- scalar_t__ fsync (int) ; 
- scalar_t__ strlen (int /*<<< orphan*/ *) ; 
+ int MAX_FN ;
+ int assert (int) ;
+ scalar_t__ close (int) ;
+ int dl_free (int *,scalar_t__) ;
+ int* fd ;
+ int ** fnames ;
+ scalar_t__* fpos ;
+ scalar_t__* fread_only ;
+ scalar_t__* fsize ;
+ scalar_t__ fsync (int) ;
+ scalar_t__ strlen (int *) ;
 
 void dl_close_file (int x) {
   assert (0 <= x && x < MAX_FN);
@@ -39,5 +31,5 @@ void dl_close_file (int x) {
   fsize[x] = 0;
   fpos[x] = 0;
   dl_free (fnames[x], strlen (fnames[x]) + 1);
-  fnames[x] = NULL;
+  fnames[x] = ((void*)0);
 }

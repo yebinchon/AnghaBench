@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  posix_spawnattr_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int posix_spawnattr_t ;
 struct TYPE_5__ {int used; TYPE_1__* action; } ;
-typedef  TYPE_2__ posix_spawn_file_actions_t ;
-typedef  int pid_t ;
-struct TYPE_4__ {int /*<<< orphan*/  newfiledes; int /*<<< orphan*/  filedes; } ;
+typedef TYPE_2__ posix_spawn_file_actions_t ;
+typedef int pid_t ;
+struct TYPE_4__ {int newfiledes; int filedes; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int /*<<< orphan*/  _exit (int) ; 
- int dup2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int errno ; 
- int /*<<< orphan*/  execvpe (char const*,char* const*,char* const*) ; 
- int fork () ; 
+
+ int EINVAL ;
+ int _exit (int) ;
+ int dup2 (int ,int ) ;
+ int errno ;
+ int execvpe (char const*,char* const*,char* const*) ;
+ int fork () ;
 
 int posix_spawnp(pid_t *pid, const char *file,
     const posix_spawn_file_actions_t *fa,
@@ -33,7 +33,7 @@ int posix_spawnp(pid_t *pid, const char *file,
 {
     pid_t p;
 
-    if (attrp != NULL)
+    if (attrp != ((void*)0))
         return EINVAL;
 
     p = fork();

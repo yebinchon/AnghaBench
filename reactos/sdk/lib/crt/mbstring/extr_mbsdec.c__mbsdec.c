@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ _ismbblead (unsigned char) ; 
+ scalar_t__ _ismbblead (unsigned char) ;
 
 unsigned char * _mbsdec(const unsigned char *str, const unsigned char *cur)
 {
-	unsigned char *s = (unsigned char *)cur;
-	if ( str >= cur )
-		return NULL;
+ unsigned char *s = (unsigned char *)cur;
+ if ( str >= cur )
+  return ((void*)0);
 
-	s--;
-	if (_ismbblead(*(s-1)) )
-		s--;
+ s--;
+ if (_ismbblead(*(s-1)) )
+  s--;
 
-	return s;
+ return s;
 }

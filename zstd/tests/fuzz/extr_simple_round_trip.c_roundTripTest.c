@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FUZZ_dataProducer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FUZZ_ZASSERT (size_t) ; 
- int FUZZ_dataProducer_int32Range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FUZZ_dataProducer_uint32Range (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  FUZZ_setRandomParameters (int /*<<< orphan*/ ,size_t,int /*<<< orphan*/ *) ; 
- size_t ZSTD_compress2 (int /*<<< orphan*/ ,void*,size_t,void const*,size_t) ; 
- size_t ZSTD_compressCCtx (int /*<<< orphan*/ ,void*,size_t,void const*,size_t,int const) ; 
- size_t ZSTD_decompressDCtx (int /*<<< orphan*/ ,void*,size_t,void*,size_t) ; 
- int /*<<< orphan*/  cctx ; 
- int /*<<< orphan*/  dctx ; 
- int /*<<< orphan*/  kMaxClevel ; 
- int /*<<< orphan*/  kMinClevel ; 
+
+
+
+typedef int FUZZ_dataProducer_t ;
+
+
+ int FUZZ_ZASSERT (size_t) ;
+ int FUZZ_dataProducer_int32Range (int *,int ,int ) ;
+ scalar_t__ FUZZ_dataProducer_uint32Range (int *,int ,int) ;
+ int FUZZ_setRandomParameters (int ,size_t,int *) ;
+ size_t ZSTD_compress2 (int ,void*,size_t,void const*,size_t) ;
+ size_t ZSTD_compressCCtx (int ,void*,size_t,void const*,size_t,int const) ;
+ size_t ZSTD_decompressDCtx (int ,void*,size_t,void*,size_t) ;
+ int cctx ;
+ int dctx ;
+ int kMaxClevel ;
+ int kMinClevel ;
 
 __attribute__((used)) static size_t roundTripTest(void *result, size_t resultCapacity,
                             void *compressed, size_t compressedCapacity,

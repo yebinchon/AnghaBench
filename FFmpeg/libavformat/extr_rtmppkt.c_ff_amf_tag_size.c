@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  GetByteContext ;
 
-/* Variables and functions */
- int amf_tag_skip (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- scalar_t__ bytestream2_get_bytes_left (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream2_init (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int bytestream2_tell (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int GetByteContext ;
+
+
+ int amf_tag_skip (int *) ;
+ int av_assert0 (int) ;
+ scalar_t__ bytestream2_get_bytes_left (int *) ;
+ int bytestream2_init (int *,int const*,int) ;
+ int bytestream2_tell (int *) ;
 
 int ff_amf_tag_size(const uint8_t *data, const uint8_t *data_end)
 {

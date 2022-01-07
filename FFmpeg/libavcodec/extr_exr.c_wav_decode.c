@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wdec14 (int,int,int*,int*) ; 
- int /*<<< orphan*/  wdec16 (int,int,int*,int*) ; 
+
+
+
+typedef int uint16_t ;
+
+
+ int wdec14 (int,int,int*,int*) ;
+ int wdec16 (int,int,int*,int*) ;
 
 __attribute__((used)) static void wav_decode(uint16_t *in, int nx, int ox,
                        int ny, int oy, uint16_t mx)
 {
     int w14 = (mx < (1 << 14));
-    int n   = (nx > ny) ? ny : nx;
-    int p   = 1;
+    int n = (nx > ny) ? ny : nx;
+    int p = 1;
     int p2;
 
     while (p <= n)
         p <<= 1;
 
     p >>= 1;
-    p2  = p;
+    p2 = p;
     p >>= 1;
 
     while (p >= 1) {
@@ -90,7 +90,7 @@ __attribute__((used)) static void wav_decode(uint16_t *in, int nx, int ox,
             }
         }
 
-        p2  = p;
+        p2 = p;
         p >>= 1;
     }
 }

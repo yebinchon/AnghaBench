@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {uintptr_t low; uintptr_t high; } ;
-typedef  TYPE_1__ __mf_object_t ;
+typedef TYPE_1__ __mf_object_t ;
 struct TYPE_6__ {unsigned int persistent_count; } ;
 
-/* Variables and functions */
- unsigned int __MF_TYPE_MAX_CEM ; 
- TYPE_1__*** __mf_object_cemetary ; 
- unsigned int* __mf_object_dead_head ; 
- TYPE_2__ __mf_opts ; 
- int /*<<< orphan*/  assert (int) ; 
+
+ unsigned int __MF_TYPE_MAX_CEM ;
+ TYPE_1__*** __mf_object_cemetary ;
+ unsigned int* __mf_object_dead_head ;
+ TYPE_2__ __mf_opts ;
+ int assert (int) ;
 
 __attribute__((used)) static unsigned
 __mf_find_dead_objects (uintptr_t low, uintptr_t high,
@@ -34,10 +34,10 @@ __mf_find_dead_objects (uintptr_t low, uintptr_t high,
       unsigned row = 0;
 
       assert (low <= high);
-      assert (max_objs == 0 || objs != NULL);
+      assert (max_objs == 0 || objs != ((void*)0));
 
-      /* Widen the search from the most recent plots in each row, looking
-         backward in time.  */
+
+
       recollection = 0;
       while (recollection < __mf_opts.persistent_count)
         {
@@ -53,14 +53,14 @@ __mf_find_dead_objects (uintptr_t low, uintptr_t high,
                 {
                   __mf_object_t *obj;
 
-                  /* Look backward through row: it's a circular buffer.  */
+
                   if (plot > 0) plot --;
                   else plot = __mf_opts.persistent_count - 1;
 
                   obj = __mf_object_cemetary [row][plot];
                   if (obj && obj->low <= high && obj->high >= low)
                     {
-                      /* Found an overlapping dead object!  */
+
                       if (count < max_objs)
                         objs [count] = obj;
                       count ++;
@@ -71,7 +71,7 @@ __mf_find_dead_objects (uintptr_t low, uintptr_t high,
           if (count)
             break;
 
-          /* Look farther back in time.  */
+
           recollection = (recollection * 2) + 1;
         }
 

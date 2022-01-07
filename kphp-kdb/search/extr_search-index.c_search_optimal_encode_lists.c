@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct search_index_word {int dummy; } ;
-struct TYPE_7__ {int /*<<< orphan*/  crc32_data; } ;
-struct TYPE_6__ {int /*<<< orphan*/  word_list_compression_methods; } ;
+struct TYPE_7__ {int crc32_data; } ;
+struct TYPE_6__ {int word_list_compression_methods; } ;
 struct TYPE_5__ {scalar_t__ file_offset; } ;
 
-/* Variables and functions */
- TYPE_4__ CRC32_Header ; 
- TYPE_3__ Header ; 
- int /*<<< orphan*/  SEEK_SET ; 
- TYPE_1__* W ; 
- scalar_t__ compression_speed ; 
- scalar_t__ cur_offs ; 
- int /*<<< orphan*/ * fd ; 
- int /*<<< orphan*/  flushout () ; 
- int /*<<< orphan*/  idx_crc32_complement ; 
- int /*<<< orphan*/  interpolative_ext_bits ; 
- int /*<<< orphan*/  kprintf (char*,scalar_t__,scalar_t__) ; 
- scalar_t__ lists_encoded ; 
- int /*<<< orphan*/  lseek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ percent (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ redundant_bits ; 
- int search_encode_lists (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  search_estimate_compression_method (int*) ; 
- scalar_t__ verbosity ; 
- scalar_t__ word_index_offset ; 
+
+ TYPE_4__ CRC32_Header ;
+ TYPE_3__ Header ;
+ int SEEK_SET ;
+ TYPE_1__* W ;
+ scalar_t__ compression_speed ;
+ scalar_t__ cur_offs ;
+ int * fd ;
+ int flushout () ;
+ int idx_crc32_complement ;
+ int interpolative_ext_bits ;
+ int kprintf (char*,scalar_t__,scalar_t__) ;
+ scalar_t__ lists_encoded ;
+ int lseek (int ,scalar_t__,int ) ;
+ int memcpy (int ,int*,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ percent (scalar_t__,int ) ;
+ scalar_t__ redundant_bits ;
+ int search_encode_lists (int*,int ) ;
+ int search_estimate_compression_method (int*) ;
+ scalar_t__ verbosity ;
+ scalar_t__ word_index_offset ;
 
 __attribute__((used)) static void search_optimal_encode_lists (void) {
   int compression_methods[2];

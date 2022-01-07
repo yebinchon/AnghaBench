@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int GT ; 
- int GTU ; 
- int LT ; 
- int LTU ; 
-#define  SMAX 131 
-#define  SMIN 130 
-#define  UMAX 129 
-#define  UMIN 128 
- int V4HImode ; 
- int V8QImode ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  gen_addv4hi3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_US_MINUS (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_fmt_ee (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ia64_expand_vecint_cmov (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int rtx ;
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GT ;
+ int GTU ;
+ int LT ;
+ int LTU ;
+
+
+
+
+ int V4HImode ;
+ int V8QImode ;
+ int VOIDmode ;
+ int emit_insn (int ) ;
+ int gcc_unreachable () ;
+ int gen_addv4hi3 (int ,int ,int ) ;
+ int gen_reg_rtx (int) ;
+ int gen_rtx_SET (int ,int ,int ) ;
+ int gen_rtx_US_MINUS (int,int ,int ) ;
+ int gen_rtx_fmt_ee (int,int ,int ,int ) ;
+ int ia64_expand_vecint_cmov (int *) ;
 
 bool
 ia64_expand_vecint_minmax (enum rtx_code code, enum machine_mode mode,
-			   rtx operands[])
+      rtx operands[])
 {
   rtx xops[6];
 
-  /* These four combinations are supported directly.  */
-  if (mode == V8QImode && (code == UMIN || code == UMAX))
-    return false;
-  if (mode == V4HImode && (code == SMIN || code == SMAX))
-    return false;
 
-  /* This combination can be implemented with only saturating subtraction.  */
-  if (mode == V4HImode && code == UMAX)
+  if (mode == V8QImode && (code == 128 || code == 129))
+    return 0;
+  if (mode == V4HImode && (code == 130 || code == 131))
+    return 0;
+
+
+  if (mode == V4HImode && code == 129)
     {
       rtx x, tmp = gen_reg_rtx (mode);
 
@@ -56,26 +56,26 @@ ia64_expand_vecint_minmax (enum rtx_code code, enum machine_mode mode,
       emit_insn (gen_rtx_SET (VOIDmode, tmp, x));
 
       emit_insn (gen_addv4hi3 (operands[0], tmp, operands[2]));
-      return true;
+      return 1;
     }
 
-  /* Everything else implemented via vector comparisons.  */
+
   xops[0] = operands[0];
   xops[4] = xops[1] = operands[1];
   xops[5] = xops[2] = operands[2];
 
   switch (code)
     {
-    case UMIN:
+    case 128:
       code = LTU;
       break;
-    case UMAX:
+    case 129:
       code = GTU;
       break;
-    case SMIN:
+    case 130:
       code = LT;
       break;
-    case SMAX:
+    case 131:
       code = GT;
       break;
     default:
@@ -84,5 +84,5 @@ ia64_expand_vecint_minmax (enum rtx_code code, enum machine_mode mode,
   xops[3] = gen_rtx_fmt_ee (code, VOIDmode, operands[1], operands[2]);
 
   ia64_expand_vecint_cmov (xops);
-  return true;
+  return 1;
 }

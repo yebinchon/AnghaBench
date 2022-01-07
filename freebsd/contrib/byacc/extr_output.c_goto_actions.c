@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NEW2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Value_t ; 
- int default_goto (int) ; 
- int /*<<< orphan*/  end_table () ; 
- int /*<<< orphan*/  nstates ; 
- int nsyms ; 
- int /*<<< orphan*/  output_int (int) ; 
- int /*<<< orphan*/  output_newline () ; 
- int /*<<< orphan*/  save_column (int,int) ; 
- int /*<<< orphan*/  start_int_table (char*,int) ; 
- int start_symbol ; 
- int /*<<< orphan*/  state_count ; 
+ int FREE (int ) ;
+ int NEW2 (int ,int ) ;
+ int Value_t ;
+ int default_goto (int) ;
+ int end_table () ;
+ int nstates ;
+ int nsyms ;
+ int output_int (int) ;
+ int output_newline () ;
+ int save_column (int,int) ;
+ int start_int_table (char*,int) ;
+ int start_symbol ;
+ int state_count ;
 
 __attribute__((used)) static void
 goto_actions(void)
@@ -40,17 +32,17 @@ goto_actions(void)
     j = 10;
     for (i = start_symbol + 2; i < nsyms; i++)
     {
-	if (j >= 10)
-	{
-	    output_newline();
-	    j = 1;
-	}
-	else
-	    ++j;
+ if (j >= 10)
+ {
+     output_newline();
+     j = 1;
+ }
+ else
+     ++j;
 
-	k = default_goto(i);
-	output_int(k);
-	save_column(i, k);
+ k = default_goto(i);
+ output_int(k);
+ save_column(i, k);
     }
 
     end_table();

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_7__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
-typedef  struct TYPE_11__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_13__ {int dir_entry; int user_id; scalar_t__ topmsg_tree; scalar_t__ delayed_value_tree; scalar_t__ delayed_tree; int /*<<< orphan*/  peer_tree; TYPE_1__* Sublists; TYPE_3__* mf; } ;
-typedef  TYPE_2__ user_t ;
-struct TYPE_14__ {char* data; scalar_t__ len; int /*<<< orphan*/  aio; } ;
-typedef  TYPE_3__ core_mf_t ;
+
+
+typedef struct TYPE_15__ TYPE_7__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+typedef struct TYPE_11__ TYPE_10__ ;
+
+
+struct TYPE_13__ {int dir_entry; int user_id; scalar_t__ topmsg_tree; scalar_t__ delayed_value_tree; scalar_t__ delayed_tree; int peer_tree; TYPE_1__* Sublists; TYPE_3__* mf; } ;
+typedef TYPE_2__ user_t ;
+struct TYPE_14__ {char* data; scalar_t__ len; int aio; } ;
+typedef TYPE_3__ core_mf_t ;
 struct TYPE_15__ {int combined_xor_and; } ;
 struct TYPE_12__ {int N; int* A; int last_A; } ;
 struct TYPE_11__ {int sublists_num; int sublists_offset; scalar_t__ legacy_list_offset; int peers_offset; int peers_num; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAX_PEER_ID ; 
- scalar_t__ NIL_N ; 
- TYPE_10__* UserHdr ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,TYPE_2__*,int,char*) ; 
- TYPE_7__* idx_Sublists_packed ; 
- int /*<<< orphan*/  process_delayed_ops (TYPE_2__*,scalar_t__) ; 
- int /*<<< orphan*/  process_delayed_values (TYPE_2__*,scalar_t__) ; 
- int* rebuild_topmsg_tree (int /*<<< orphan*/ ,int*,int*,int /*<<< orphan*/ ,TYPE_2__*,char*) ; 
- int /*<<< orphan*/  stderr ; 
- int sublists_num ; 
- int verbosity ; 
+
+ int MAX_PEER_ID ;
+ scalar_t__ NIL_N ;
+ TYPE_10__* UserHdr ;
+ int assert (int) ;
+ int fprintf (int ,char*,TYPE_2__*,int,char*) ;
+ TYPE_7__* idx_Sublists_packed ;
+ int process_delayed_ops (TYPE_2__*,scalar_t__) ;
+ int process_delayed_values (TYPE_2__*,scalar_t__) ;
+ int* rebuild_topmsg_tree (int ,int*,int*,int ,TYPE_2__*,char*) ;
+ int stderr ;
+ int sublists_num ;
+ int verbosity ;
 
 void bind_user_metafile (user_t *U) {
   core_mf_t *M = U->mf;
@@ -72,7 +72,7 @@ void bind_user_metafile (user_t *U) {
   assert (rebuild_topmsg_tree (U->peer_tree, L, LE, MAX_PEER_ID, U, metafile) == LE);
 
   if (U->delayed_tree) {
-    /* perform delayed operations */
+
     process_delayed_ops (U, U->delayed_tree);
     U->delayed_tree = 0;
   }

@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
+
+
+
+
+typedef int u64 ;
 struct wl12xx_vif {int dummy; } ;
-struct wl1271 {scalar_t__ state; int /*<<< orphan*/  mutex; } ;
+struct wl1271 {scalar_t__ state; int mutex; } ;
 struct ieee80211_vif {int dummy; } ;
 struct ieee80211_hw {struct wl1271* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEBUG_MAC80211 ; 
- int /*<<< orphan*/  ULLONG_MAX ; 
- scalar_t__ WLCORE_STATE_ON ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ unlikely (int) ; 
- int /*<<< orphan*/  wl1271_debug (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  wl1271_ps_elp_sleep (struct wl1271*) ; 
- int wl1271_ps_elp_wakeup (struct wl1271*) ; 
- int wl12xx_acx_tsf_info (struct wl1271*,struct wl12xx_vif*,int /*<<< orphan*/ *) ; 
- struct wl12xx_vif* wl12xx_vif_to_data (struct ieee80211_vif*) ; 
+
+ int DEBUG_MAC80211 ;
+ int ULLONG_MAX ;
+ scalar_t__ WLCORE_STATE_ON ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ scalar_t__ unlikely (int) ;
+ int wl1271_debug (int ,char*) ;
+ int wl1271_ps_elp_sleep (struct wl1271*) ;
+ int wl1271_ps_elp_wakeup (struct wl1271*) ;
+ int wl12xx_acx_tsf_info (struct wl1271*,struct wl12xx_vif*,int *) ;
+ struct wl12xx_vif* wl12xx_vif_to_data (struct ieee80211_vif*) ;
 
 __attribute__((used)) static u64 wl1271_op_get_tsf(struct ieee80211_hw *hw,
-			     struct ieee80211_vif *vif)
+        struct ieee80211_vif *vif)
 {
 
-	struct wl1271 *wl = hw->priv;
-	struct wl12xx_vif *wlvif = wl12xx_vif_to_data(vif);
-	u64 mactime = ULLONG_MAX;
-	int ret;
+ struct wl1271 *wl = hw->priv;
+ struct wl12xx_vif *wlvif = wl12xx_vif_to_data(vif);
+ u64 mactime = ULLONG_MAX;
+ int ret;
 
-	wl1271_debug(DEBUG_MAC80211, "mac80211 get tsf");
+ wl1271_debug(DEBUG_MAC80211, "mac80211 get tsf");
 
-	mutex_lock(&wl->mutex);
+ mutex_lock(&wl->mutex);
 
-	if (unlikely(wl->state != WLCORE_STATE_ON))
-		goto out;
+ if (unlikely(wl->state != WLCORE_STATE_ON))
+  goto out;
 
-	ret = wl1271_ps_elp_wakeup(wl);
-	if (ret < 0)
-		goto out;
+ ret = wl1271_ps_elp_wakeup(wl);
+ if (ret < 0)
+  goto out;
 
-	ret = wl12xx_acx_tsf_info(wl, wlvif, &mactime);
-	if (ret < 0)
-		goto out_sleep;
+ ret = wl12xx_acx_tsf_info(wl, wlvif, &mactime);
+ if (ret < 0)
+  goto out_sleep;
 
 out_sleep:
-	wl1271_ps_elp_sleep(wl);
+ wl1271_ps_elp_sleep(wl);
 
 out:
-	mutex_unlock(&wl->mutex);
-	return mactime;
+ mutex_unlock(&wl->mutex);
+ return mactime;
 }

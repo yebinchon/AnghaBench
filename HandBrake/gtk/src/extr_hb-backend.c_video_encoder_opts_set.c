@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  builder; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-struct TYPE_7__ {scalar_t__ codec; int /*<<< orphan*/  short_name; int /*<<< orphan*/  name; } ;
-typedef  TYPE_2__ hb_encoder_t ;
-typedef  int /*<<< orphan*/  gdouble ;
-typedef  int /*<<< orphan*/  gchar ;
-typedef  int /*<<< orphan*/  GtkTreeIter ;
-typedef  int /*<<< orphan*/  GtkListStore ;
-typedef  int /*<<< orphan*/  GtkComboBox ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GHB_WIDGET (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * GTK_COMBO_BOX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * GTK_LIST_STORE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_strdup_printf (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gtk_combo_box_get_model (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gtk_list_store_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- TYPE_2__* hb_video_encoder_get_next (TYPE_2__ const*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int builder; } ;
+typedef TYPE_1__ signal_user_data_t ;
+struct TYPE_7__ {scalar_t__ codec; int short_name; int name; } ;
+typedef TYPE_2__ hb_encoder_t ;
+typedef int gdouble ;
+typedef int gchar ;
+typedef int GtkTreeIter ;
+typedef int GtkListStore ;
+typedef int GtkComboBox ;
+
+
+ int GHB_WIDGET (int ,int const*) ;
+ int * GTK_COMBO_BOX (int ) ;
+ int * GTK_LIST_STORE (int ) ;
+ int TRUE ;
+ int g_free (int *) ;
+ int * g_strdup_printf (char*,int ) ;
+ int gtk_combo_box_get_model (int *) ;
+ int gtk_list_store_append (int *,int *) ;
+ int gtk_list_store_clear (int *) ;
+ int gtk_list_store_set (int *,int *,int ,int *,int,int ,int,int ,int,int ,int) ;
+ TYPE_2__* hb_video_encoder_get_next (TYPE_2__ const*) ;
 
 __attribute__((used)) static void
 video_encoder_opts_set(signal_user_data_t *ud, const gchar *name,
                        void *opts, const void* data)
 {
-    (void)opts; // Silence "unused variable" warning
-    (void)data; // Silence "unused variable" warning
+    (void)opts;
+    (void)data;
     GtkTreeIter iter;
     GtkListStore *store;
     gchar *str;
@@ -50,7 +50,7 @@ video_encoder_opts_set(signal_user_data_t *ud, const gchar *name,
     gtk_list_store_clear(store);
 
     const hb_encoder_t *enc;
-    for (enc = hb_video_encoder_get_next(NULL); enc != NULL;
+    for (enc = hb_video_encoder_get_next(((void*)0)); enc != ((void*)0);
          enc = hb_video_encoder_get_next(enc))
     {
         gtk_list_store_append(store, &iter);

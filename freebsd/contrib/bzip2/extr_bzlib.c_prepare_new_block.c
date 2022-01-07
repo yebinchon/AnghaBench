@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  blockNo; int /*<<< orphan*/ * inUse; int /*<<< orphan*/  blockCRC; scalar_t__ state_out_pos; scalar_t__ numZ; scalar_t__ nblock; } ;
-typedef  int Int32 ;
-typedef  TYPE_1__ EState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BZ_INITIALISE_CRC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  False ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int blockNo; int * inUse; int blockCRC; scalar_t__ state_out_pos; scalar_t__ numZ; scalar_t__ nblock; } ;
+typedef int Int32 ;
+typedef TYPE_1__ EState ;
+
+
+ int BZ_INITIALISE_CRC (int ) ;
+ int False ;
 
 __attribute__((used)) static
 void prepare_new_block ( EState* s )

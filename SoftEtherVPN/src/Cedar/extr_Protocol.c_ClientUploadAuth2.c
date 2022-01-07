@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_1__* Session; } ;
-struct TYPE_5__ {int /*<<< orphan*/  SessionKey; } ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  PACK ;
-typedef  TYPE_2__ CONNECTION ;
+struct TYPE_5__ {int SessionKey; } ;
+typedef int SOCK ;
+typedef int PACK ;
+typedef TYPE_2__ CONNECTION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreePack (int /*<<< orphan*/ *) ; 
- int HttpClientSend (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PackAddClientVersion (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/ * PackAdditionalConnect (int /*<<< orphan*/ ) ; 
+
+ int FreePack (int *) ;
+ int HttpClientSend (int *,int *) ;
+ int PackAddClientVersion (int *,TYPE_2__*) ;
+ int * PackAdditionalConnect (int ) ;
 
 bool ClientUploadAuth2(CONNECTION *c, SOCK *s)
 {
-	PACK *p = NULL;
-	// Validate arguments
-	if (c == NULL)
-	{
-		return false;
-	}
+ PACK *p = ((void*)0);
 
-	p = PackAdditionalConnect(c->Session->SessionKey);
+ if (c == ((void*)0))
+ {
+  return 0;
+ }
 
-	PackAddClientVersion(p, c);
+ p = PackAdditionalConnect(c->Session->SessionKey);
 
-	if (HttpClientSend(s, p) == false)
-	{
-		FreePack(p);
-		return false;
-	}
-	FreePack(p);
+ PackAddClientVersion(p, c);
 
-	return true;
+ if (HttpClientSend(s, p) == 0)
+ {
+  FreePack(p);
+  return 0;
+ }
+ FreePack(p);
+
+ return 1;
 }

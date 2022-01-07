@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  expect (char,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_if1 () ; 
- int /*<<< orphan*/  test_if10 () ; 
- int /*<<< orphan*/  test_if11 () ; 
- int /*<<< orphan*/  test_if2 () ; 
- int /*<<< orphan*/  test_if3 () ; 
- int /*<<< orphan*/  test_if4 () ; 
- int /*<<< orphan*/  test_if5 () ; 
- int /*<<< orphan*/  test_if6 () ; 
- int /*<<< orphan*/  test_if7 () ; 
- int /*<<< orphan*/  test_if8 () ; 
- int /*<<< orphan*/  test_if9 () ; 
+ int expect (char,int ) ;
+ int test_if1 () ;
+ int test_if10 () ;
+ int test_if11 () ;
+ int test_if2 () ;
+ int test_if3 () ;
+ int test_if4 () ;
+ int test_if5 () ;
+ int test_if6 () ;
+ int test_if7 () ;
+ int test_if8 () ;
+ int test_if9 () ;
 
 __attribute__((used)) static void test_if() {
     expect('a', test_if1());

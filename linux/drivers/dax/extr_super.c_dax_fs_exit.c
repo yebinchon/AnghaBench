@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  dax_cache ; 
- int /*<<< orphan*/  dax_mnt ; 
- int /*<<< orphan*/  kern_unmount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kmem_cache_destroy (int /*<<< orphan*/ ) ; 
+ int dax_cache ;
+ int dax_mnt ;
+ int kern_unmount (int ) ;
+ int kmem_cache_destroy (int ) ;
 
 __attribute__((used)) static void dax_fs_exit(void)
 {
-	kern_unmount(dax_mnt);
-	kmem_cache_destroy(dax_cache);
+ kern_unmount(dax_mnt);
+ kmem_cache_destroy(dax_cache);
 }

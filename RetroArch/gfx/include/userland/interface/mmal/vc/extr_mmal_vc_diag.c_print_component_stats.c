@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct MMAL_VC_COMP_STATS_T {int state; char* name; int pid; int pool_mem_alloc_size; int /*<<< orphan*/  comp; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct MMAL_VC_COMP_STATS_T {int state; char* name; int pid; int pool_mem_alloc_size; int comp; } ;
 struct TYPE_4__ {int list_size; int created; int destroyed; int destroying; int failed; struct MMAL_VC_COMP_STATS_T* component_list; } ;
 struct TYPE_5__ {TYPE_1__ components; } ;
-typedef  TYPE_2__ MMAL_VC_STATS_T ;
+typedef TYPE_2__ MMAL_VC_STATS_T ;
 
-/* Variables and functions */
-#define  MMAL_STATS_COMP_CREATED 130 
-#define  MMAL_STATS_COMP_DESTROYED 129 
-#define  MMAL_STATS_COMP_DESTROYING 128 
- int MMAL_STATS_COMP_IDLE ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+
+ int MMAL_STATS_COMP_IDLE ;
+ int fprintf (int ,char*,int) ;
+ int printf (char*,...) ;
+ int stderr ;
 
 __attribute__((used)) static int print_component_stats(const MMAL_VC_STATS_T *stats)
 {
@@ -45,14 +45,14 @@ __attribute__((used)) static int print_component_stats(const MMAL_VC_STATS_T *st
    {
       const struct MMAL_VC_COMP_STATS_T *cs = stats->components.component_list+i;
       const char *state;
-      /* coverity[overrun-local] */
+
       if (cs->state != MMAL_STATS_COMP_IDLE)
       {
          switch (cs->state)
          {
-            case MMAL_STATS_COMP_CREATED: state = "created"; break;
-            case MMAL_STATS_COMP_DESTROYING: state = "destroying"; break;
-            case MMAL_STATS_COMP_DESTROYED: state = "destroyed"; break;
+            case 130: state = "created"; break;
+            case 128: state = "destroying"; break;
+            case 129: state = "destroyed"; break;
             default: state = "corrupt"; break;
          }
          printf("%-32s: %s: pid %d address %p pool mem alloc size %d\n",

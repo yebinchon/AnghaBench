@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DLOG (char*,int,unsigned char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JSON_CONTENT_WORKSPACE ; 
- int content_level ; 
- int /*<<< orphan*/  content_result ; 
- int /*<<< orphan*/  last_key ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strncasecmp (char const*,char*,size_t) ; 
+ int DLOG (char*,int,unsigned char const*,int ) ;
+ int JSON_CONTENT_WORKSPACE ;
+ int content_level ;
+ int content_result ;
+ int last_key ;
+ scalar_t__ strcasecmp (int ,char*) ;
+ scalar_t__ strncasecmp (char const*,char*,size_t) ;
 
 __attribute__((used)) static int json_determine_content_string(void *ctx, const unsigned char *val, size_t len) {
     if (strcasecmp(last_key, "type") != 0 || content_level > 1)

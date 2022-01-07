@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  RadiusRetryInterval; int /*<<< orphan*/  RadiusSecret; int /*<<< orphan*/  HubName; int /*<<< orphan*/  RadiusPort; int /*<<< orphan*/  RadiusServerName; } ;
-typedef  TYPE_1__ RPC_RADIUS ;
-typedef  int /*<<< orphan*/  PACK ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PackAddInt (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PackAddStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int RadiusRetryInterval; int RadiusSecret; int HubName; int RadiusPort; int RadiusServerName; } ;
+typedef TYPE_1__ RPC_RADIUS ;
+typedef int PACK ;
+
+
+ int PackAddInt (int *,char*,int ) ;
+ int PackAddStr (int *,char*,int ) ;
 
 void OutRpcRadius(PACK *p, RPC_RADIUS *t)
 {
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
 
-	PackAddStr(p, "RadiusServerName", t->RadiusServerName);
-	PackAddInt(p, "RadiusPort", t->RadiusPort);
-	PackAddStr(p, "HubName", t->HubName);
-	PackAddStr(p, "RadiusSecret", t->RadiusSecret);
-	PackAddInt(p, "RadiusRetryInterval", t->RadiusRetryInterval);
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
+
+ PackAddStr(p, "RadiusServerName", t->RadiusServerName);
+ PackAddInt(p, "RadiusPort", t->RadiusPort);
+ PackAddStr(p, "HubName", t->HubName);
+ PackAddStr(p, "RadiusSecret", t->RadiusSecret);
+ PackAddInt(p, "RadiusRetryInterval", t->RadiusRetryInterval);
 }

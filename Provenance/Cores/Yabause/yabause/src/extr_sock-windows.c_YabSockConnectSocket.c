@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct addrinfo {scalar_t__ ai_addrlen; int /*<<< orphan*/  ai_addr; int /*<<< orphan*/  ai_protocol; int /*<<< orphan*/  ai_socktype; int /*<<< orphan*/  ai_family; } ;
-typedef  int /*<<< orphan*/  hints ;
-typedef  int YabSock ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  IPPROTO_TCP ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int /*<<< orphan*/  closesocket (int) ; 
- int connect (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  freeaddrinfo (struct addrinfo*) ; 
- scalar_t__ getaddrinfo (char const*,char*,struct addrinfo*,struct addrinfo**) ; 
- int /*<<< orphan*/  memset (struct addrinfo*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  perror (char*) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
+
+
+
+struct addrinfo {scalar_t__ ai_addrlen; int ai_addr; int ai_protocol; int ai_socktype; int ai_family; } ;
+typedef int hints ;
+typedef int YabSock ;
+
+
+ int AF_UNSPEC ;
+ int IPPROTO_TCP ;
+ int SOCK_STREAM ;
+ int closesocket (int) ;
+ int connect (int,int ,int) ;
+ int freeaddrinfo (struct addrinfo*) ;
+ scalar_t__ getaddrinfo (char const*,char*,struct addrinfo*,struct addrinfo**) ;
+ int memset (struct addrinfo*,int ,int) ;
+ int perror (char*) ;
+ int socket (int ,int ,int ) ;
+ int sprintf (char*,char*,int) ;
 
 int YabSockConnectSocket(const char *ip, int port, YabSock *sock)
 {
-   struct addrinfo *result = NULL, hints;
+   struct addrinfo *result = ((void*)0), hints;
    char port_str[256];
 
    memset(&hints, 0, sizeof(hints));
@@ -45,7 +45,7 @@ int YabSockConnectSocket(const char *ip, int port, YabSock *sock)
       return -1;
    }
 
-   // Create a Socket
+
    if ((sock[0] = socket(result->ai_family, result->ai_socktype,
       result->ai_protocol)) == -1)
    {
@@ -54,7 +54,7 @@ int YabSockConnectSocket(const char *ip, int port, YabSock *sock)
       return -1;
    }
 
-   // Connect to the socket
+
    if (connect(sock[0], result->ai_addr, (int)result->ai_addrlen) == -1)
    {
       perror("connect");

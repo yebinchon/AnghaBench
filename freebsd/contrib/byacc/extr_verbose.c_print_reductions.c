@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ action_code; int suppressed; int number; size_t symbol; struct TYPE_3__* next; } ;
-typedef  TYPE_1__ action ;
+typedef TYPE_1__ action ;
 
-/* Variables and functions */
- scalar_t__ REDUCE ; 
- scalar_t__ backtrack ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- char** symbol_name ; 
- int /*<<< orphan*/  verbose_file ; 
+
+ scalar_t__ REDUCE ;
+ scalar_t__ backtrack ;
+ int fprintf (int ,char*,...) ;
+ char** symbol_name ;
+ int verbose_file ;
 
 __attribute__((used)) static void
 print_reductions(action *p, int defred2)
@@ -30,34 +30,34 @@ print_reductions(action *p, int defred2)
     anyreds = 0;
     for (q = p; q; q = q->next)
     {
-	if (q->action_code == REDUCE && q->suppressed < 2)
-	{
-	    anyreds = 1;
-	    break;
-	}
+ if (q->action_code == REDUCE && q->suppressed < 2)
+ {
+     anyreds = 1;
+     break;
+ }
     }
 
     if (anyreds == 0)
-	fprintf(verbose_file, "\t.  error\n");
+ fprintf(verbose_file, "\t.  error\n");
     else
     {
-	for (; p; p = p->next)
-	{
-	    if (p->action_code == REDUCE && p->number != defred2)
-	    {
-		k = p->number - 2;
-		if (p->suppressed == 0)
-		    fprintf(verbose_file, "\t%s  reduce %d\n",
-			    symbol_name[p->symbol], k);
-#if defined(YYBTYACC)
-		if (backtrack && p->suppressed == 1)
-		    fprintf(verbose_file, "\t%s  [trial] reduce %d\n",
-			    symbol_name[p->symbol], k);
-#endif
-	    }
-	}
+ for (; p; p = p->next)
+ {
+     if (p->action_code == REDUCE && p->number != defred2)
+     {
+  k = p->number - 2;
+  if (p->suppressed == 0)
+      fprintf(verbose_file, "\t%s  reduce %d\n",
+       symbol_name[p->symbol], k);
 
-	if (defred2 > 0)
-	    fprintf(verbose_file, "\t.  reduce %d\n", defred2 - 2);
+
+
+
+
+     }
+ }
+
+ if (defred2 > 0)
+     fprintf(verbose_file, "\t.  reduce %d\n", defred2 - 2);
     }
 }

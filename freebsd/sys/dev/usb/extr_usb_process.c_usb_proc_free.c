@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_process {int /*<<< orphan*/ * up_mtx; int /*<<< orphan*/  up_drain; int /*<<< orphan*/  up_cv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cv_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  usb_proc_drain (struct usb_process*) ; 
+
+
+
+struct usb_process {int * up_mtx; int up_drain; int up_cv; } ;
+
+
+ int cv_destroy (int *) ;
+ int usb_proc_drain (struct usb_process*) ;
 
 void
 usb_proc_free(struct usb_process *up)
 {
-	/* check if not initialised */
-	if (up->up_mtx == NULL)
-		return;
 
-	usb_proc_drain(up);
+ if (up->up_mtx == ((void*)0))
+  return;
 
-	cv_destroy(&up->up_cv);
-	cv_destroy(&up->up_drain);
+ usb_proc_drain(up);
 
-	/* make sure that we do not enter here again */
-	up->up_mtx = NULL;
+ cv_destroy(&up->up_cv);
+ cv_destroy(&up->up_drain);
+
+
+ up->up_mtx = ((void*)0);
 }

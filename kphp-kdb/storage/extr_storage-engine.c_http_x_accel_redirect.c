@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ContentTypes ; 
- int snprintf (char*,int,char*,char const*,long long,char*,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*) ; 
- int /*<<< orphan*/  write_basic_http_header (struct connection*,int,int /*<<< orphan*/ ,int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  x_accel_redirects ; 
+
+ int * ContentTypes ;
+ int snprintf (char*,int,char*,char const*,long long,char*,int) ;
+ int vkprintf (int,char*) ;
+ int write_basic_http_header (struct connection*,int,int ,int,char*,int ) ;
+ int x_accel_redirects ;
 
 __attribute__((used)) static int http_x_accel_redirect (struct connection *c, const char *filename, long long offset, char base64url_secret[12], int content_type) {
   static char location[256] = "X-Accel-Redirect: ";

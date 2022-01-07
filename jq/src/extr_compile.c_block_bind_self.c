@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  inst ;
-typedef  int /*<<< orphan*/  block ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int OP_HAS_BINDING ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  block_bind_subblock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  block_has_only_binders (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * block_take_last (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gen_noop () ; 
- int /*<<< orphan*/  inst_block (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int inst ;
+typedef int block ;
+
+
+ int BLOCK (int ,int ) ;
+ int OP_HAS_BINDING ;
+ int assert (int ) ;
+ int block_bind_subblock (int ,int ,int,int ) ;
+ int block_has_only_binders (int ,int) ;
+ int * block_take_last (int *) ;
+ int gen_noop () ;
+ int inst_block (int *) ;
 
 block block_bind_self(block binder, int bindflags) {
   assert(block_has_only_binders(binder, bindflags));

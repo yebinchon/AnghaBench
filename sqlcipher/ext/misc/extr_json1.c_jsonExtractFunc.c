@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
 struct TYPE_4__ {scalar_t__ nErr; } ;
-typedef  int /*<<< orphan*/  JsonString ;
-typedef  TYPE_1__ JsonParse ;
-typedef  int /*<<< orphan*/  JsonNode ;
+typedef int JsonString ;
+typedef TYPE_1__ JsonParse ;
+typedef int JsonNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JSON_SUBTYPE ; 
- int /*<<< orphan*/  jsonAppendChar (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  jsonAppendRaw (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  jsonAppendSeparator (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonInit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsonLookup (TYPE_1__*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* jsonParseCached (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonRenderNode (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsonReset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonResult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsonReturn (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_subtype (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
+
+ int JSON_SUBTYPE ;
+ int jsonAppendChar (int *,char) ;
+ int jsonAppendRaw (int *,char*,int) ;
+ int jsonAppendSeparator (int *) ;
+ int jsonInit (int *,int *) ;
+ int * jsonLookup (TYPE_1__*,char const*,int ,int *) ;
+ TYPE_1__* jsonParseCached (int *,int **,int *) ;
+ int jsonRenderNode (int *,int *,int ) ;
+ int jsonReset (int *) ;
+ int jsonResult (int *) ;
+ int jsonReturn (int *,int *,int ) ;
+ int sqlite3_result_subtype (int *,int ) ;
+ scalar_t__ sqlite3_value_text (int *) ;
 
 __attribute__((used)) static void jsonExtractFunc(
   sqlite3_context *ctx,
   int argc,
   sqlite3_value **argv
 ){
-  JsonParse *p;          /* The parse */
+  JsonParse *p;
   JsonNode *pNode;
   const char *zPath;
   JsonString jx;

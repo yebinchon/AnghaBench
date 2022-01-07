@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char const* security; int (* callback ) (int /*<<< orphan*/ ,char*,char const*,char const*,int /*<<< orphan*/ ) ;int /*<<< orphan*/  cookie; int /*<<< orphan*/  sharepath; } ;
-typedef  TYPE_1__ nfs_host_cookie_t ;
 
-/* Variables and functions */
- int SA_NO_MEMORY ; 
- int SA_OK ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  stderr ; 
- char* strchr (char*,char) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- char* strdup (char const*) ; 
- int stub1 (int /*<<< orphan*/ ,char*,char const*,char const*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char const* security; int (* callback ) (int ,char*,char const*,char const*,int ) ;int cookie; int sharepath; } ;
+typedef TYPE_1__ nfs_host_cookie_t ;
+
+
+ int SA_NO_MEMORY ;
+ int SA_OK ;
+ int fprintf (int ,char*,char const*,char const*) ;
+ int free (char*) ;
+ int stderr ;
+ char* strchr (char*,char) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ char* strdup (char const*) ;
+ int stub1 (int ,char*,char const*,char const*,int ) ;
 
 __attribute__((used)) static int
 foreach_nfs_host_cb(const char *opt, const char *value, void *pcookie)
 {
-	int rc;
-	const char *access;
-	char *host_dup, *host, *next;
-	nfs_host_cookie_t *udata = (nfs_host_cookie_t *)pcookie;
+ int rc;
+ const char *access;
+ char *host_dup, *host, *next;
+ nfs_host_cookie_t *udata = (nfs_host_cookie_t *)pcookie;
 
-#ifdef DEBUG
-	fprintf(stderr, "foreach_nfs_host_cb: key=%s, value=%s\n", opt, value);
-#endif
 
-	if (strcmp(opt, "sec") == 0)
-		udata->security = value;
 
-	if (strcmp(opt, "rw") == 0 || strcmp(opt, "ro") == 0) {
-		if (value == NULL)
-			value = "*";
 
-		access = opt;
 
-		host_dup = strdup(value);
+ if (strcmp(opt, "sec") == 0)
+  udata->security = value;
 
-		if (host_dup == NULL)
-			return (SA_NO_MEMORY);
+ if (strcmp(opt, "rw") == 0 || strcmp(opt, "ro") == 0) {
+  if (value == ((void*)0))
+   value = "*";
 
-		host = host_dup;
+  access = opt;
 
-		do {
-			next = strchr(host, ':');
-			if (next != NULL) {
-				*next = '\0';
-				next++;
-			}
+  host_dup = strdup(value);
 
-			rc = udata->callback(udata->sharepath, host,
-			    udata->security, access, udata->cookie);
+  if (host_dup == ((void*)0))
+   return (SA_NO_MEMORY);
 
-			if (rc != SA_OK) {
-				free(host_dup);
+  host = host_dup;
 
-				return (rc);
-			}
+  do {
+   next = strchr(host, ':');
+   if (next != ((void*)0)) {
+    *next = '\0';
+    next++;
+   }
 
-			host = next;
-		} while (host != NULL);
+   rc = udata->callback(udata->sharepath, host,
+       udata->security, access, udata->cookie);
 
-		free(host_dup);
-	}
+   if (rc != SA_OK) {
+    free(host_dup);
 
-	return (SA_OK);
+    return (rc);
+   }
+
+   host = next;
+  } while (host != ((void*)0));
+
+  free(host_dup);
+ }
+
+ return (SA_OK);
 }

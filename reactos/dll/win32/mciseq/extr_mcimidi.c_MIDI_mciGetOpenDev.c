@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ nUseCount; } ;
-typedef  TYPE_1__ WINE_MCIMIDI ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MCIDEVICEID ;
+typedef TYPE_1__ WINE_MCIMIDI ;
+typedef scalar_t__ UINT ;
+typedef int MCIDEVICEID ;
 
-/* Variables and functions */
- scalar_t__ MCI_OPEN_DRIVER ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ mciGetDriverData (int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static WINE_MCIMIDI*  MIDI_mciGetOpenDev(MCIDEVICEID wDevID, UINT wMsg)
+ scalar_t__ MCI_OPEN_DRIVER ;
+ int WARN (char*,int ) ;
+ scalar_t__ mciGetDriverData (int ) ;
+
+__attribute__((used)) static WINE_MCIMIDI* MIDI_mciGetOpenDev(MCIDEVICEID wDevID, UINT wMsg)
 {
-    WINE_MCIMIDI*	wmm = (WINE_MCIMIDI*)mciGetDriverData(wDevID);
+    WINE_MCIMIDI* wmm = (WINE_MCIMIDI*)mciGetDriverData(wDevID);
 
-    if (wmm == NULL || ((wmm->nUseCount == 0) ^ (wMsg == MCI_OPEN_DRIVER))) {
-	WARN("Invalid wDevID=%u\n", wDevID);
-	return 0;
+    if (wmm == ((void*)0) || ((wmm->nUseCount == 0) ^ (wMsg == MCI_OPEN_DRIVER))) {
+ WARN("Invalid wDevID=%u\n", wDevID);
+ return 0;
     }
     return wmm;
 }

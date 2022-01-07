@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  lua_setglobal (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ngx_http_lua_inject_log_consts (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_http_lua_ngx_log ; 
- int /*<<< orphan*/  ngx_http_lua_print ; 
+
+
+
+typedef int lua_State ;
+
+
+ int lua_pushcfunction (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int lua_setglobal (int *,char*) ;
+ int ngx_http_lua_inject_log_consts (int *) ;
+ int ngx_http_lua_ngx_log ;
+ int ngx_http_lua_print ;
 
 void
 ngx_http_lua_inject_log_api(lua_State *L)

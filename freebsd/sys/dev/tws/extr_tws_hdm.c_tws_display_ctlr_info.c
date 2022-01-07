@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct tws_softc {int /*<<< orphan*/  tws_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TWS_PARAM_CONTROLLER_PHYS_COUNT ; 
- int /*<<< orphan*/  TWS_PARAM_CTLR_MODEL ; 
- int /*<<< orphan*/  TWS_PARAM_PHYS_TABLE ; 
- int /*<<< orphan*/  TWS_PARAM_VERSION_BIOS ; 
- int /*<<< orphan*/  TWS_PARAM_VERSION_FW ; 
- int /*<<< orphan*/  TWS_PARAM_VERSION_TABLE ; 
- int /*<<< orphan*/  device_printf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  tws_get_param (struct tws_softc*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
 
-void 
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct tws_softc {int tws_dev; } ;
+
+
+ int TWS_PARAM_CONTROLLER_PHYS_COUNT ;
+ int TWS_PARAM_CTLR_MODEL ;
+ int TWS_PARAM_PHYS_TABLE ;
+ int TWS_PARAM_VERSION_BIOS ;
+ int TWS_PARAM_VERSION_FW ;
+ int TWS_PARAM_VERSION_TABLE ;
+ int device_printf (int ,char*,int *,int ,int *,int *) ;
+ int tws_get_param (struct tws_softc*,int ,int ,int,int *) ;
+
+void
 tws_display_ctlr_info(struct tws_softc *sc)
 {
 
@@ -41,7 +41,7 @@ tws_display_ctlr_info(struct tws_softc *sc)
                              TWS_PARAM_CTLR_MODEL, 16, ctlr_model);
 
     if ( !error[0] && !error[1] && !error[2] && !error[3] ) {
-        device_printf( sc->tws_dev, 
+        device_printf( sc->tws_dev,
         "Controller details: Model %.16s, %d Phys, Firmware %.16s, BIOS %.16s\n",
          ctlr_model, num_phys, fw_ver, bios_ver);
     }

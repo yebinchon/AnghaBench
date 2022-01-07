@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int width; int height; int /*<<< orphan*/  pix_fmt; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int width; int height; int pix_fmt; } ;
 struct TYPE_8__ {int* linesize; scalar_t__* data; } ;
 struct TYPE_7__ {int log2_chroma_w; int log2_chroma_h; } ;
-typedef  TYPE_1__ AVPixFmtDescriptor ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_1__ AVPixFmtDescriptor ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- TYPE_1__* av_pix_fmt_desc_get (int /*<<< orphan*/ ) ; 
- int draw_horiz_band_called ; 
- int /*<<< orphan*/  memcpy (scalar_t__,scalar_t__,int) ; 
- scalar_t__ slice_byte_buffer ; 
+
+ TYPE_1__* av_pix_fmt_desc_get (int ) ;
+ int draw_horiz_band_called ;
+ int memcpy (scalar_t__,scalar_t__,int) ;
+ scalar_t__ slice_byte_buffer ;
 
 __attribute__((used)) static void draw_horiz_band(AVCodecContext *ctx, const AVFrame *fr, int offset[4],
                             int slice_position, int type, int height)

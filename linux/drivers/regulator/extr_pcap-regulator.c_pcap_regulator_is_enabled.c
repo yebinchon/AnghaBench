@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct regulator_dev {int dummy; } ;
-struct pcap_regulator {int en; int /*<<< orphan*/  reg; } ;
+struct pcap_regulator {int en; int reg; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int NA ; 
- int /*<<< orphan*/  ezx_pcap_read (void*,int /*<<< orphan*/ ,int*) ; 
- void* rdev_get_drvdata (struct regulator_dev*) ; 
- size_t rdev_get_id (struct regulator_dev*) ; 
- struct pcap_regulator* vreg_table ; 
+
+ int EINVAL ;
+ int NA ;
+ int ezx_pcap_read (void*,int ,int*) ;
+ void* rdev_get_drvdata (struct regulator_dev*) ;
+ size_t rdev_get_id (struct regulator_dev*) ;
+ struct pcap_regulator* vreg_table ;
 
 __attribute__((used)) static int pcap_regulator_is_enabled(struct regulator_dev *rdev)
 {
-	struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
-	void *pcap = rdev_get_drvdata(rdev);
-	u32 tmp;
+ struct pcap_regulator *vreg = &vreg_table[rdev_get_id(rdev)];
+ void *pcap = rdev_get_drvdata(rdev);
+ u32 tmp;
 
-	if (vreg->en == NA)
-		return -EINVAL;
+ if (vreg->en == NA)
+  return -EINVAL;
 
-	ezx_pcap_read(pcap, vreg->reg, &tmp);
-	return (tmp >> vreg->en) & 1;
+ ezx_pcap_read(pcap, vreg->reg, &tmp);
+ return (tmp >> vreg->en) & 1;
 }

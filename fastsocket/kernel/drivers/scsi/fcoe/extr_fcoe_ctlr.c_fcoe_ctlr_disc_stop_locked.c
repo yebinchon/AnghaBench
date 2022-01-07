@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  disc_mutex; int /*<<< orphan*/ * disc_callback; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int disc_mutex; int * disc_callback; } ;
 struct fc_lport {TYPE_1__ disc; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 __attribute__((used)) static void fcoe_ctlr_disc_stop_locked(struct fc_lport *lport)
 {
-	mutex_lock(&lport->disc.disc_mutex);
-	lport->disc.disc_callback = NULL;
-	mutex_unlock(&lport->disc.disc_mutex);
+ mutex_lock(&lport->disc.disc_mutex);
+ lport->disc.disc_callback = ((void*)0);
+ mutex_unlock(&lport->disc.disc_mutex);
 }

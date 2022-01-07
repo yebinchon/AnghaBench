@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_8__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  calc_number_t ;
-struct TYPE_14__ {int /*<<< orphan*/  mf; } ;
+
+
+typedef struct TYPE_15__ TYPE_8__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_11__ ;
+
+
+typedef int calc_number_t ;
+struct TYPE_14__ {int mf; } ;
 struct TYPE_13__ {size_t operation; TYPE_5__ number; } ;
-typedef  TYPE_1__ calc_node_t ;
+typedef TYPE_1__ calc_node_t ;
 struct TYPE_15__ {unsigned int prec; } ;
-struct TYPE_12__ {size_t prev_operator; scalar_t__ is_nan; int /*<<< orphan*/  prev; } ;
+struct TYPE_12__ {size_t prev_operator; scalar_t__ is_nan; int prev; } ;
 
-/* Variables and functions */
- size_t RPN_OPERATOR_EQUAL ; 
- size_t RPN_OPERATOR_PARENT ; 
- size_t RPN_OPERATOR_PERCENT ; 
- TYPE_11__ calc ; 
- int /*<<< orphan*/  flush_postfix () ; 
- int /*<<< orphan*/  is_stack_empty () ; 
- int /*<<< orphan*/  mpfr_clear (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mpfr_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  node_copy (TYPE_1__*,TYPE_1__*) ; 
- TYPE_8__* operator_list ; 
- TYPE_1__* pop () ; 
- int /*<<< orphan*/  push (TYPE_1__*) ; 
- int /*<<< orphan*/  rpn_copy (int /*<<< orphan*/ *,TYPE_5__*) ; 
- int /*<<< orphan*/  run_operator (TYPE_1__*,TYPE_1__*,TYPE_1__*,size_t) ; 
+
+ size_t RPN_OPERATOR_EQUAL ;
+ size_t RPN_OPERATOR_PARENT ;
+ size_t RPN_OPERATOR_PERCENT ;
+ TYPE_11__ calc ;
+ int flush_postfix () ;
+ int is_stack_empty () ;
+ int mpfr_clear (int ) ;
+ int mpfr_init (int ) ;
+ int node_copy (TYPE_1__*,TYPE_1__*) ;
+ TYPE_8__* operator_list ;
+ TYPE_1__* pop () ;
+ int push (TYPE_1__*) ;
+ int rpn_copy (int *,TYPE_5__*) ;
+ int run_operator (TYPE_1__*,TYPE_1__*,TYPE_1__*,size_t) ;
 
 __attribute__((used)) static void evalStack(calc_number_t *number)
 {

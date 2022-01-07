@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  color ;
-typedef  int /*<<< orphan*/  UINT32 ;
-typedef  int /*<<< orphan*/  HICON ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  COLORREF ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DrawIcon (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetPixel (int /*<<< orphan*/ ,scalar_t__,scalar_t__) ; 
- scalar_t__ GetSystemMetrics (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SM_CXICON ; 
- int /*<<< orphan*/  SM_CYICON ; 
- int /*<<< orphan*/  SetPixelV (int /*<<< orphan*/ ,scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ broken (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  color_match (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_test_icon (int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,...) ; 
+
+
+
+typedef int color ;
+typedef int UINT32 ;
+typedef int HICON ;
+typedef int HDC ;
+typedef int COLORREF ;
+typedef int BOOL ;
+
+
+ int DrawIcon (int ,int ,int ,int ) ;
+ int GetPixel (int ,scalar_t__,scalar_t__) ;
+ scalar_t__ GetSystemMetrics (int ) ;
+ int SM_CXICON ;
+ int SM_CYICON ;
+ int SetPixelV (int ,scalar_t__,scalar_t__,int ) ;
+ scalar_t__ broken (int ) ;
+ int color_match (int ,int ) ;
+ int create_test_icon (int ,int,int,int,int ,int *,int) ;
+ int ok (int,char*,int ,int ,int ,int ,int,...) ;
 
 __attribute__((used)) static void check_DrawIcon(HDC hdc, BOOL maskvalue, UINT32 color, int bpp, COLORREF background,
                            COLORREF modern_expected, COLORREF legacy_expected, int line)
@@ -41,16 +41,16 @@ __attribute__((used)) static void check_DrawIcon(HDC hdc, BOOL maskvalue, UINT32
     DrawIcon(hdc, 0, 0, hicon);
     result = GetPixel(hdc, 0, 0);
 
-    ok (color_match(result, modern_expected) ||         /* Windows 2000 and up */
-        broken(color_match(result, legacy_expected)),   /* Windows NT 4.0, 9X and below */
+    ok (color_match(result, modern_expected) ||
+        broken(color_match(result, legacy_expected)),
         "Overlaying Mask %d on Color %06X with DrawIcon. "
         "Expected a close match to %06X (modern), or %06X (legacy). Got %06X from line %d\n",
         maskvalue, color, modern_expected, legacy_expected, result, line);
 
     result = GetPixel(hdc, GetSystemMetrics(SM_CXICON)-1, GetSystemMetrics(SM_CYICON)-1);
 
-    ok (color_match(result, modern_expected) ||         /* Windows 2000 and up */
-        broken(color_match(result, legacy_expected)),   /* Windows NT 4.0, 9X and below */
+    ok (color_match(result, modern_expected) ||
+        broken(color_match(result, legacy_expected)),
         "Overlaying Mask %d on Color %06X with DrawIcon. "
         "Expected a close match to %06X (modern), or %06X (legacy). Got %06X from line %d\n",
         maskvalue, color, modern_expected, legacy_expected, result, line);

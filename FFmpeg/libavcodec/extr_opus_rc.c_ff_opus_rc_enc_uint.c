@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  OpusRangeCoder ;
 
-/* Variables and functions */
- int FFMAX (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_opus_rc_put_raw (int /*<<< orphan*/ *,int,int const) ; 
- scalar_t__ opus_ilog (int) ; 
- int /*<<< orphan*/  opus_rc_enc_update (int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int OpusRangeCoder ;
+
+
+ int FFMAX (scalar_t__,int ) ;
+ int ff_opus_rc_put_raw (int *,int,int const) ;
+ scalar_t__ opus_ilog (int) ;
+ int opus_rc_enc_update (int *,int,int,int,int ) ;
 
 void ff_opus_rc_enc_uint(OpusRangeCoder *rc, uint32_t val, uint32_t size)
 {

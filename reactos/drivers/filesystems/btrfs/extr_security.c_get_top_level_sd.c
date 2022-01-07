@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  st_gid; int /*<<< orphan*/  st_uid; } ;
-struct TYPE_5__ {int /*<<< orphan*/ * sd; TYPE_1__ inode_item; } ;
-typedef  TYPE_2__ fcb ;
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  SECURITY_DESCRIPTOR ;
-typedef  int /*<<< orphan*/ * PSID ;
-typedef  scalar_t__ NTSTATUS ;
-typedef  int /*<<< orphan*/  ACL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALLOC_TAG ; 
- int /*<<< orphan*/  ERR (char*,...) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePool (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (scalar_t__) ; 
- int /*<<< orphan*/  PagedPool ; 
- scalar_t__ RtlAbsoluteToSelfRelativeSD (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ RtlCreateSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ RtlSetDaclSecurityDescriptor (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ RtlSetGroupSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- scalar_t__ RtlSetOwnerSecurityDescriptor (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  SECURITY_DESCRIPTOR_REVISION ; 
- scalar_t__ STATUS_BUFFER_TOO_SMALL ; 
- scalar_t__ STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  gid_to_sid (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * load_default_acl () ; 
- scalar_t__ uid_to_sid (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int st_gid; int st_uid; } ;
+struct TYPE_5__ {int * sd; TYPE_1__ inode_item; } ;
+typedef TYPE_2__ fcb ;
+typedef scalar_t__ ULONG ;
+typedef int SECURITY_DESCRIPTOR ;
+typedef int * PSID ;
+typedef scalar_t__ NTSTATUS ;
+typedef int ACL ;
+
+
+ int ALLOC_TAG ;
+ int ERR (char*,...) ;
+ int * ExAllocatePoolWithTag (int ,scalar_t__,int ) ;
+ int ExFreePool (int *) ;
+ int NT_SUCCESS (scalar_t__) ;
+ int PagedPool ;
+ scalar_t__ RtlAbsoluteToSelfRelativeSD (int *,int *,scalar_t__*) ;
+ scalar_t__ RtlCreateSecurityDescriptor (int *,int ) ;
+ scalar_t__ RtlSetDaclSecurityDescriptor (int *,int,int *,int) ;
+ scalar_t__ RtlSetGroupSecurityDescriptor (int *,int *,int) ;
+ scalar_t__ RtlSetOwnerSecurityDescriptor (int *,int *,int) ;
+ int SECURITY_DESCRIPTOR_REVISION ;
+ scalar_t__ STATUS_BUFFER_TOO_SMALL ;
+ scalar_t__ STATUS_SUCCESS ;
+ int TRACE (char*) ;
+ int gid_to_sid (int ,int **) ;
+ int * load_default_acl () ;
+ scalar_t__ uid_to_sid (int ,int **) ;
 
 __attribute__((used)) static void get_top_level_sd(fcb* fcb) {
     NTSTATUS Status;
     SECURITY_DESCRIPTOR sd;
     ULONG buflen;
-    ACL* acl = NULL;
-    PSID usersid = NULL, groupsid = NULL;
+    ACL* acl = ((void*)0);
+    PSID usersid = ((void*)0), groupsid = ((void*)0);
 
     Status = RtlCreateSecurityDescriptor(&sd, SECURITY_DESCRIPTOR_REVISION);
 
@@ -61,7 +61,7 @@ __attribute__((used)) static void get_top_level_sd(fcb* fcb) {
         goto end;
     }
 
-    Status = RtlSetOwnerSecurityDescriptor(&sd, usersid, false);
+    Status = RtlSetOwnerSecurityDescriptor(&sd, usersid, 0);
 
     if (!NT_SUCCESS(Status)) {
         ERR("RtlSetOwnerSecurityDescriptor returned %08x\n", Status);
@@ -74,7 +74,7 @@ __attribute__((used)) static void get_top_level_sd(fcb* fcb) {
         goto end;
     }
 
-    Status = RtlSetGroupSecurityDescriptor(&sd, groupsid, false);
+    Status = RtlSetGroupSecurityDescriptor(&sd, groupsid, 0);
 
     if (!NT_SUCCESS(Status)) {
         ERR("RtlSetGroupSecurityDescriptor returned %08x\n", Status);
@@ -88,19 +88,19 @@ __attribute__((used)) static void get_top_level_sd(fcb* fcb) {
         goto end;
     }
 
-    Status = RtlSetDaclSecurityDescriptor(&sd, true, acl, false);
+    Status = RtlSetDaclSecurityDescriptor(&sd, 1, acl, 0);
 
     if (!NT_SUCCESS(Status)) {
         ERR("RtlSetDaclSecurityDescriptor returned %08x\n", Status);
         goto end;
     }
 
-    // FIXME - SACL_SECURITY_INFORMATION
+
 
     buflen = 0;
 
-    // get sd size
-    Status = RtlAbsoluteToSelfRelativeSD(&sd, NULL, &buflen);
+
+    Status = RtlAbsoluteToSelfRelativeSD(&sd, ((void*)0), &buflen);
     if (Status != STATUS_SUCCESS && Status != STATUS_BUFFER_TOO_SMALL) {
         ERR("RtlAbsoluteToSelfRelativeSD 1 returned %08x\n", Status);
         goto end;
@@ -122,7 +122,7 @@ __attribute__((used)) static void get_top_level_sd(fcb* fcb) {
     if (!NT_SUCCESS(Status)) {
         ERR("RtlAbsoluteToSelfRelativeSD 2 returned %08x\n", Status);
         ExFreePool(fcb->sd);
-        fcb->sd = NULL;
+        fcb->sd = ((void*)0);
         goto end;
     }
 

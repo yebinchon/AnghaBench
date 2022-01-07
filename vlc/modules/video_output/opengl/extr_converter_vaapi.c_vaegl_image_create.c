@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_4__* gl; } ;
-typedef  TYPE_2__ opengl_tex_converter_t ;
-struct TYPE_5__ {int /*<<< orphan*/  (* createImageKHR ) (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+typedef TYPE_2__ opengl_tex_converter_t ;
+struct TYPE_5__ {int (* createImageKHR ) (TYPE_4__*,int ,int *,int *) ;} ;
 struct TYPE_7__ {TYPE_1__ egl; } ;
-typedef  int /*<<< orphan*/  EGLint ;
-typedef  int /*<<< orphan*/  EGLImageKHR ;
+typedef int EGLint ;
+typedef int EGLImageKHR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EGL_DMA_BUF_PLANE0_FD_EXT ; 
- int /*<<< orphan*/  EGL_DMA_BUF_PLANE0_OFFSET_EXT ; 
- int /*<<< orphan*/  EGL_DMA_BUF_PLANE0_PITCH_EXT ; 
- int /*<<< orphan*/  EGL_HEIGHT ; 
- int /*<<< orphan*/  EGL_LINUX_DMA_BUF_EXT ; 
- int /*<<< orphan*/  EGL_LINUX_DRM_FOURCC_EXT ; 
- int /*<<< orphan*/  EGL_NONE ; 
- int /*<<< orphan*/  EGL_WIDTH ; 
- int /*<<< orphan*/  stub1 (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int EGL_DMA_BUF_PLANE0_FD_EXT ;
+ int EGL_DMA_BUF_PLANE0_OFFSET_EXT ;
+ int EGL_DMA_BUF_PLANE0_PITCH_EXT ;
+ int EGL_HEIGHT ;
+ int EGL_LINUX_DMA_BUF_EXT ;
+ int EGL_LINUX_DRM_FOURCC_EXT ;
+ int EGL_NONE ;
+ int EGL_WIDTH ;
+ int stub1 (TYPE_4__*,int ,int *,int *) ;
 
 __attribute__((used)) static EGLImageKHR
 vaegl_image_create(const opengl_tex_converter_t *tc, EGLint w, EGLint h,
@@ -45,6 +45,6 @@ vaegl_image_create(const opengl_tex_converter_t *tc, EGLint w, EGLint h,
         EGL_NONE
     };
 
-    return tc->gl->egl.createImageKHR(tc->gl, EGL_LINUX_DMA_BUF_EXT, NULL,
+    return tc->gl->egl.createImageKHR(tc->gl, EGL_LINUX_DMA_BUF_EXT, ((void*)0),
                                       attribs);
 }

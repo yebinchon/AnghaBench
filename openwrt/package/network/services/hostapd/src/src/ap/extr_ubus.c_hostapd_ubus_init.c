@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  fd; } ;
-struct TYPE_6__ {TYPE_1__ sock; int /*<<< orphan*/  connection_lost; } ;
 
-/* Variables and functions */
- TYPE_2__* ctx ; 
- int /*<<< orphan*/  eloop_register_read_sock (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hostapd_ubus_connection_lost ; 
- TYPE_2__* ubus_connect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ubus_receive ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int fd; } ;
+struct TYPE_6__ {TYPE_1__ sock; int connection_lost; } ;
+
+
+ TYPE_2__* ctx ;
+ int eloop_register_read_sock (int ,int ,TYPE_2__*,int *) ;
+ int hostapd_ubus_connection_lost ;
+ TYPE_2__* ubus_connect (int *) ;
+ int ubus_receive ;
 
 __attribute__((used)) static bool hostapd_ubus_init(void)
 {
-	if (ctx)
-		return true;
+ if (ctx)
+  return 1;
 
-	ctx = ubus_connect(NULL);
-	if (!ctx)
-		return false;
+ ctx = ubus_connect(((void*)0));
+ if (!ctx)
+  return 0;
 
-	ctx->connection_lost = hostapd_ubus_connection_lost;
-	eloop_register_read_sock(ctx->sock.fd, ubus_receive, ctx, NULL);
-	return true;
+ ctx->connection_lost = hostapd_ubus_connection_lost;
+ eloop_register_read_sock(ctx->sock.fd, ubus_receive, ctx, ((void*)0));
+ return 1;
 }

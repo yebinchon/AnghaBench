@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ULONG ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_8__ {TYPE_1__* SectionObjectPointer; } ;
 struct TYPE_7__ {int RefCount; } ;
 struct TYPE_6__ {scalar_t__ SharedCacheMap; } ;
-typedef  int /*<<< orphan*/  PROS_SECTION_OBJECT ;
-typedef  scalar_t__ PNOCC_CACHE_MAP ;
-typedef  TYPE_2__* PNOCC_BCB ;
-typedef  TYPE_3__* PFILE_OBJECT ;
+typedef int PROS_SECTION_OBJECT ;
+typedef scalar_t__ PNOCC_CACHE_MAP ;
+typedef TYPE_2__* PNOCC_BCB ;
+typedef TYPE_3__* PFILE_OBJECT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int CACHE_NUM_SECTIONS ; 
- int /*<<< orphan*/  CcCacheBitmap ; 
- int CcCacheClockHand ; 
- TYPE_2__* CcCacheSections ; 
- int /*<<< orphan*/  CcpDereferenceCache (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  FALSE ; 
- int INVALID_CACHE ; 
- int RtlFindClearBitsAndSet (int /*<<< orphan*/ ,int,int) ; 
- int RtlTestBit (int /*<<< orphan*/ ,int) ; 
+
+ int ASSERT (int) ;
+ int CACHE_NUM_SECTIONS ;
+ int CcCacheBitmap ;
+ int CcCacheClockHand ;
+ TYPE_2__* CcCacheSections ;
+ int CcpDereferenceCache (int,int ) ;
+ int DPRINT (char*,...) ;
+ int DPRINT1 (char*,...) ;
+ int FALSE ;
+ int INVALID_CACHE ;
+ int RtlFindClearBitsAndSet (int ,int,int) ;
+ int RtlTestBit (int ,int) ;
 
 ULONG
 CcpAllocateCacheSections(PFILE_OBJECT FileObject,

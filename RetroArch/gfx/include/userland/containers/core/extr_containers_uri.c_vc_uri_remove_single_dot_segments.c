@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  memmove (char*,char*,int /*<<< orphan*/ ) ; 
- char* strchr (char*,char) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+ int memmove (char*,char*,int ) ;
+ char* strchr (char*,char) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void vc_uri_remove_single_dot_segments( char *path_str )
 {
@@ -26,14 +18,14 @@ __attribute__((used)) static void vc_uri_remove_single_dot_segments( char *path_
       {
          switch (slash[1])
          {
-         case '/':   /* Single dot segment, remove it */
+         case '/':
             memmove(slash, slash + 2, strlen(slash + 2) + 1);
             break;
-         case '\0':  /* Trailing single dot, remove it */
+         case '\0':
             *slash = '\0';
             break;
-         default:    /* Something else (e.g. ".." or ".foo") */
-            ;  /* Do nothing */
+         default:
+            ;
          }
       }
       slash = strchr(slash, '/');

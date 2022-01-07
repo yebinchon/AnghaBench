@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_3__ {scalar_t__ max_sample; int total_counter; int sample_elapsed; int sample_counter; int average_elapsed; float sample_per_seconds; int /*<<< orphan*/  total_elapsed; scalar_t__ begin_time; } ;
-typedef  TYPE_1__ SDL_Profiler ;
 
-/* Variables and functions */
- scalar_t__ SDL_GetTickHR () ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_3__ {scalar_t__ max_sample; int total_counter; int sample_elapsed; int sample_counter; int average_elapsed; float sample_per_seconds; int total_elapsed; scalar_t__ begin_time; } ;
+typedef TYPE_1__ SDL_Profiler ;
+
+
+ scalar_t__ SDL_GetTickHR () ;
 
 int64_t SDL_ProfilerEnd(SDL_Profiler* profiler)
 {
@@ -27,7 +27,7 @@ int64_t SDL_ProfilerEnd(SDL_Profiler* profiler)
         profiler->total_counter += 1;
 
         profiler->sample_elapsed += delta;
-        profiler->sample_counter  += 1;
+        profiler->sample_counter += 1;
 
         if (profiler->sample_counter > profiler->max_sample) {
             profiler->sample_elapsed -= profiler->average_elapsed;

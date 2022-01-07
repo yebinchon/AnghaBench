@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int* coeff; } ;
-typedef  TYPE_1__ SwsVector ;
+typedef TYPE_1__ SwsVector ;
 
-/* Variables and functions */
- int M_PI ; 
- int exp (double) ; 
- int sqrt (int) ; 
- TYPE_1__* sws_allocVec (int const) ; 
- int /*<<< orphan*/  sws_normalizeVec (TYPE_1__*,double) ; 
+
+ int M_PI ;
+ int exp (double) ;
+ int sqrt (int) ;
+ TYPE_1__* sws_allocVec (int const) ;
+ int sws_normalizeVec (TYPE_1__*,double) ;
 
 SwsVector *sws_getGaussianVec(double variance, double quality)
 {
     const int length = (int)(variance * quality + 0.5) | 1;
     int i;
-    double middle  = (length - 1) * 0.5;
+    double middle = (length - 1) * 0.5;
     SwsVector *vec;
 
     if(variance < 0 || quality < 0)
-        return NULL;
+        return ((void*)0);
 
     vec = sws_allocVec(length);
 
     if (!vec)
-        return NULL;
+        return ((void*)0);
 
     for (i = 0; i < length; i++) {
         double dist = i - middle;

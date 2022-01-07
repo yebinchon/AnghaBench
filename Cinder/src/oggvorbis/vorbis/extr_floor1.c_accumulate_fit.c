@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {float const twofitatten; } ;
-typedef  TYPE_1__ vorbis_info_floor1 ;
+typedef TYPE_1__ vorbis_info_floor1 ;
 struct TYPE_7__ {int x0; int x1; int xa; int ya; int x2a; int y2a; int xya; int an; int xb; int yb; int x2b; int y2b; int xyb; int bn; } ;
-typedef  TYPE_2__ lsfit_acc ;
+typedef TYPE_2__ lsfit_acc ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int vorbis_dBquant (float const*) ; 
+
+ int memset (TYPE_2__*,int ,int) ;
+ int vorbis_dBquant (float const*) ;
 
 __attribute__((used)) static int accumulate_fit(const float *flr,const float *mdct,
                           int x0, int x1,lsfit_acc *a,
@@ -37,15 +37,15 @@ __attribute__((used)) static int accumulate_fit(const float *flr,const float *md
     int quantized=vorbis_dBquant(flr+i);
     if(quantized){
       if(mdct[i]+info->twofitatten>=flr[i]){
-        xa  += i;
-        ya  += quantized;
+        xa += i;
+        ya += quantized;
         x2a += i*i;
         y2a += quantized*quantized;
         xya += i*quantized;
         na++;
       }else{
-        xb  += i;
-        yb  += quantized;
+        xb += i;
+        yb += quantized;
         x2b += i*i;
         y2b += quantized*quantized;
         xyb += i*quantized;

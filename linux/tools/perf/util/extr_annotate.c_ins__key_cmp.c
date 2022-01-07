@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ins {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int strcmp (void const*,int /*<<< orphan*/ ) ; 
+
+
+
+struct ins {int name; } ;
+
+
+ int strcmp (void const*,int ) ;
 
 __attribute__((used)) static int ins__key_cmp(const void *name, const void *insp)
 {
-	const struct ins *ins = insp;
+ const struct ins *ins = insp;
 
-	return strcmp(name, ins->name);
+ return strcmp(name, ins->name);
 }

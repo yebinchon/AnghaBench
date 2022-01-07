@@ -1,45 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ call_command_hook ; 
- int /*<<< orphan*/  clear_gdb_event_hooks () ; 
- scalar_t__ command_loop_hook ; 
- scalar_t__ context_hook ; 
- scalar_t__ create_breakpoint_hook ; 
- scalar_t__ delete_breakpoint_hook ; 
- scalar_t__ error_begin_hook ; 
- scalar_t__ error_hook ; 
- scalar_t__ init_ui_hook ; 
- scalar_t__ interactive_hook ; 
- scalar_t__ memory_changed_hook ; 
- scalar_t__ modify_breakpoint_hook ; 
- scalar_t__ print_frame_info_listing_hook ; 
- scalar_t__ query_hook ; 
- scalar_t__ readline_begin_hook ; 
- scalar_t__ readline_end_hook ; 
- scalar_t__ readline_hook ; 
- scalar_t__ register_changed_hook ; 
- scalar_t__ registers_changed_hook ; 
- scalar_t__ target_wait_hook ; 
- scalar_t__ warning_hook ; 
+ scalar_t__ call_command_hook ;
+ int clear_gdb_event_hooks () ;
+ scalar_t__ command_loop_hook ;
+ scalar_t__ context_hook ;
+ scalar_t__ create_breakpoint_hook ;
+ scalar_t__ delete_breakpoint_hook ;
+ scalar_t__ error_begin_hook ;
+ scalar_t__ error_hook ;
+ scalar_t__ init_ui_hook ;
+ scalar_t__ interactive_hook ;
+ scalar_t__ memory_changed_hook ;
+ scalar_t__ modify_breakpoint_hook ;
+ scalar_t__ print_frame_info_listing_hook ;
+ scalar_t__ query_hook ;
+ scalar_t__ readline_begin_hook ;
+ scalar_t__ readline_end_hook ;
+ scalar_t__ readline_hook ;
+ scalar_t__ register_changed_hook ;
+ scalar_t__ registers_changed_hook ;
+ scalar_t__ target_wait_hook ;
+ scalar_t__ warning_hook ;
 
 void
 clear_interpreter_hooks (void)
 {
   init_ui_hook = 0;
   print_frame_info_listing_hook = 0;
-  /*print_frame_more_info_hook = 0; */
+
   query_hook = 0;
   warning_hook = 0;
   create_breakpoint_hook = 0;

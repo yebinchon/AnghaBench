@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
+
+
+
+
+typedef int uint16_t ;
 struct ColorSystem {int xRed; int yRed; int xGreen; int yGreen; int xBlue; int yBlue; } ;
 
-/* Variables and functions */
- int LUV ; 
- int NB_CS ; 
- int UCS ; 
- int XYY ; 
- int /*<<< orphan*/  av_assert0 (int /*<<< orphan*/ ) ; 
- struct ColorSystem* color_systems ; 
- int /*<<< orphan*/  draw_rline (int /*<<< orphan*/ *,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  xy_to_upvp (int,int,double*,double*) ; 
- int /*<<< orphan*/  xy_to_uv (int,int,double*,double*) ; 
+
+ int LUV ;
+ int NB_CS ;
+ int UCS ;
+ int XYY ;
+ int av_assert0 (int ) ;
+ struct ColorSystem* color_systems ;
+ int draw_rline (int *,int,int,int,int,int,int,int) ;
+ int xy_to_upvp (int,int,double*,double*) ;
+ int xy_to_uv (int,int,double*,double*) ;
 
 __attribute__((used)) static void plot_gamuts(uint16_t *pixels, int linesize, int w, int h,
                         int cie, int gamuts)

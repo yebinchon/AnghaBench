@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct inf {int nomsg; scalar_t__ event_port; scalar_t__ pending_execs; scalar_t__ no_wait; scalar_t__ traced; scalar_t__ stopped; scalar_t__ running; scalar_t__ pid; } ;
 
-/* Variables and functions */
- scalar_t__ MACH_PORT_NULL ; 
- int /*<<< orphan*/  inf_clear_wait (struct inf*) ; 
- int /*<<< orphan*/  inf_debug (struct inf*,char*) ; 
- int /*<<< orphan*/  inf_set_pid (struct inf*,int) ; 
- int /*<<< orphan*/  mach_port_destroy (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mach_task_self () ; 
+
+ scalar_t__ MACH_PORT_NULL ;
+ int inf_clear_wait (struct inf*) ;
+ int inf_debug (struct inf*,char*) ;
+ int inf_set_pid (struct inf*,int) ;
+ int mach_port_destroy (int ,scalar_t__) ;
+ int mach_task_self () ;
 
 void
 inf_cleanup (struct inf *inf)

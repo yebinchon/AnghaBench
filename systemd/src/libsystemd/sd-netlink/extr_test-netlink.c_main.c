@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  sd_netlink_message ;
-typedef  int /*<<< orphan*/  sd_netlink ;
 
-/* Variables and functions */
- int EPERM ; 
- int EXIT_SUCCESS ; 
- int /*<<< orphan*/  IFLA_IFNAME ; 
- scalar_t__ RTM_GETLINK ; 
- scalar_t__ RTM_NEWLINK ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ if_nametoindex (char*) ; 
- int sd_netlink_call (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ **) ; 
- scalar_t__ sd_netlink_message_get_type (int /*<<< orphan*/ *,scalar_t__*) ; 
- int sd_netlink_message_read_string (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const**) ; 
- int /*<<< orphan*/ * sd_netlink_message_unref (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_netlink_open (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ * sd_netlink_unref (int /*<<< orphan*/ *) ; 
- scalar_t__ sd_rtnl_message_new_link (int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__,int) ; 
- int /*<<< orphan*/  test_address_get (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_array () ; 
- int /*<<< orphan*/  test_async (int) ; 
- int /*<<< orphan*/  test_async_destroy_callback (int) ; 
- int /*<<< orphan*/  test_container (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_event_loop (int) ; 
- int /*<<< orphan*/  test_get_addresses (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_link_configure (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_link_get (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  test_match () ; 
- int /*<<< orphan*/  test_message (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_message_link_bridge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_multiple () ; 
- int /*<<< orphan*/  test_pipe (int) ; 
- int /*<<< orphan*/  test_route (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_slot_set (int) ; 
+
+
+
+typedef scalar_t__ uint16_t ;
+typedef int sd_netlink_message ;
+typedef int sd_netlink ;
+
+
+ int EPERM ;
+ int EXIT_SUCCESS ;
+ int IFLA_IFNAME ;
+ scalar_t__ RTM_GETLINK ;
+ scalar_t__ RTM_NEWLINK ;
+ int assert_se (int) ;
+ scalar_t__ if_nametoindex (char*) ;
+ int sd_netlink_call (int *,int *,int,int **) ;
+ scalar_t__ sd_netlink_message_get_type (int *,scalar_t__*) ;
+ int sd_netlink_message_read_string (int *,int ,char const**) ;
+ int * sd_netlink_message_unref (int *) ;
+ scalar_t__ sd_netlink_open (int **) ;
+ int * sd_netlink_unref (int *) ;
+ scalar_t__ sd_rtnl_message_new_link (int *,int **,scalar_t__,int) ;
+ int test_address_get (int *,int) ;
+ int test_array () ;
+ int test_async (int) ;
+ int test_async_destroy_callback (int) ;
+ int test_container (int *) ;
+ int test_event_loop (int) ;
+ int test_get_addresses (int *) ;
+ int test_link_configure (int *,int) ;
+ int test_link_get (int *,int) ;
+ int test_match () ;
+ int test_message (int *) ;
+ int test_message_link_bridge (int *) ;
+ int test_multiple () ;
+ int test_pipe (int) ;
+ int test_route (int *) ;
+ int test_slot_set (int) ;
 
 int main(void) {
         sd_netlink *rtnl;
@@ -90,18 +90,18 @@ int main(void) {
         assert_se(sd_netlink_message_get_type(r, &type) >= 0);
         assert_se(type == RTM_NEWLINK);
 
-        assert_se((r = sd_netlink_message_unref(r)) == NULL);
+        assert_se((r = sd_netlink_message_unref(r)) == ((void*)0));
 
         assert_se(sd_netlink_call(rtnl, m, -1, &r) == -EPERM);
-        assert_se((m = sd_netlink_message_unref(m)) == NULL);
-        assert_se((r = sd_netlink_message_unref(r)) == NULL);
+        assert_se((m = sd_netlink_message_unref(m)) == ((void*)0));
+        assert_se((r = sd_netlink_message_unref(r)) == ((void*)0));
 
         test_link_get(rtnl, if_loopback);
         test_address_get(rtnl, if_loopback);
 
-        assert_se((m = sd_netlink_message_unref(m)) == NULL);
-        assert_se((r = sd_netlink_message_unref(r)) == NULL);
-        assert_se((rtnl = sd_netlink_unref(rtnl)) == NULL);
+        assert_se((m = sd_netlink_message_unref(m)) == ((void*)0));
+        assert_se((r = sd_netlink_message_unref(r)) == ((void*)0));
+        assert_se((rtnl = sd_netlink_unref(rtnl)) == ((void*)0));
 
         return EXIT_SUCCESS;
 }

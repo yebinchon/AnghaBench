@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct format_job {scalar_t__ tag; int /*<<< orphan*/  cmd; } ;
 
-/* Variables and functions */
- int strcmp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct format_job {scalar_t__ tag; int cmd; } ;
+
+
+ int strcmp (int ,int ) ;
 
 __attribute__((used)) static int
 format_job_cmp(struct format_job *fj1, struct format_job *fj2)
 {
-	if (fj1->tag < fj2->tag)
-		return (-1);
-	if (fj1->tag > fj2->tag)
-		return (1);
-	return (strcmp(fj1->cmd, fj2->cmd));
+ if (fj1->tag < fj2->tag)
+  return (-1);
+ if (fj1->tag > fj2->tag)
+  return (1);
+ return (strcmp(fj1->cmd, fj2->cmd));
 }

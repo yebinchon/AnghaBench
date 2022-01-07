@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int (* xAccess ) (TYPE_1__*,char const*,int,int*) ;} ;
-typedef  TYPE_1__ sqlite3_vfs ;
+typedef TYPE_1__ sqlite3_vfs ;
 struct TYPE_7__ {TYPE_3__* pFileList; TYPE_1__* pParent; } ;
-typedef  TYPE_2__ fs_vfs_t ;
-struct TYPE_8__ {scalar_t__ nJournal; struct TYPE_8__* pNext; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_3__ fs_real_file ;
+typedef TYPE_2__ fs_vfs_t ;
+struct TYPE_8__ {scalar_t__ nJournal; struct TYPE_8__* pNext; int zName; } ;
+typedef TYPE_3__ fs_real_file ;
 
-/* Variables and functions */
- int SQLITE_ACCESS_EXISTS ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ strcmp (char*,char const*) ; 
- int strlen (char const*) ; 
- scalar_t__ strncmp (int /*<<< orphan*/ ,char const*,int) ; 
- int stub1 (TYPE_1__*,char const*,int,int*) ; 
+
+ int SQLITE_ACCESS_EXISTS ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ strcmp (char*,char const*) ;
+ int strlen (char const*) ;
+ scalar_t__ strncmp (int ,char const*,int) ;
+ int stub1 (TYPE_1__*,char const*,int,int*) ;
 
 __attribute__((used)) static int fsAccess(
-  sqlite3_vfs *pVfs, 
-  const char *zPath, 
-  int flags, 
+  sqlite3_vfs *pVfs,
+  const char *zPath,
+  int flags,
   int *pResOut
 ){
   fs_vfs_t *pFsVfs = (fs_vfs_t *)pVfs;
@@ -51,7 +51,7 @@ __attribute__((used)) static int fsAccess(
     isJournal = 1;
   }
 
-  pReal = pFsVfs->pFileList; 
+  pReal = pFsVfs->pFileList;
   for(; pReal && strncmp(pReal->zName, zPath, nName); pReal=pReal->pNext);
 
   *pResOut = (pReal && (!isJournal || pReal->nJournal>0));

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef enum AVHWDeviceType { ____Placeholder_AVHWDeviceType } AVHWDeviceType ;
 struct TYPE_7__ {scalar_t__ data; } ;
 struct TYPE_6__ {int type; } ;
-typedef  TYPE_1__ AVHWDeviceContext ;
-typedef  int /*<<< orphan*/  AVDictionary ;
-typedef  TYPE_2__ AVBufferRef ;
+typedef TYPE_1__ AVHWDeviceContext ;
+typedef int AVDictionary ;
+typedef TYPE_2__ AVBufferRef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_buffer_unref (TYPE_2__**) ; 
- int av_hwdevice_ctx_create (TYPE_2__**,int,char const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int test_derivation (TYPE_2__*,char const*) ; 
+
+ int av_buffer_unref (TYPE_2__**) ;
+ int av_hwdevice_ctx_create (TYPE_2__**,int,char const*,int *,int) ;
+ int fprintf (int ,char*,...) ;
+ int stderr ;
+ int test_derivation (TYPE_2__*,char const*) ;
 
 __attribute__((used)) static int test_device(enum AVHWDeviceType type, const char *name,
                        const char *device, AVDictionary *opts, int flags)

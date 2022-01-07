@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * NewUDP4 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewUDP6 (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int UINT ;
+typedef int SOCK ;
+typedef int IP ;
+
+
+ int * NewUDP4 (int ,int *) ;
+ int * NewUDP6 (int ,int *) ;
 
 SOCK *NewUDPEx2(UINT port, bool ipv6, IP *ip)
 {
-	if (ipv6 == false)
-	{
-		return NewUDP4(port, ip);
-	}
-	else
-	{
-		return NewUDP6(port, ip);
-	}
+ if (ipv6 == 0)
+ {
+  return NewUDP4(port, ip);
+ }
+ else
+ {
+  return NewUDP6(port, ip);
+ }
 }

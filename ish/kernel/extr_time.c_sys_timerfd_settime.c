@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  tv_nsec; int /*<<< orphan*/  tv_sec; } ;
-struct TYPE_7__ {int /*<<< orphan*/  tv_nsec; int /*<<< orphan*/  tv_sec; } ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int tv_nsec; int tv_sec; } ;
+struct TYPE_7__ {int tv_nsec; int tv_sec; } ;
 struct timer_spec {TYPE_4__ interval; TYPE_2__ value; } ;
-struct TYPE_10__ {int /*<<< orphan*/  nsec; int /*<<< orphan*/  sec; } ;
-struct TYPE_8__ {int /*<<< orphan*/  nsec; int /*<<< orphan*/  sec; } ;
+struct TYPE_10__ {int nsec; int sec; } ;
+struct TYPE_8__ {int nsec; int sec; } ;
 struct itimerspec_ {TYPE_5__ interval; TYPE_3__ value; } ;
-struct TYPE_6__ {int /*<<< orphan*/  timer; } ;
-struct fd {int /*<<< orphan*/  lock; TYPE_1__ timerfd; int /*<<< orphan*/ * ops; } ;
-typedef  int int_t ;
-typedef  int /*<<< orphan*/  fd_t ;
-typedef  scalar_t__ addr_t ;
+struct TYPE_6__ {int timer; } ;
+struct fd {int lock; TYPE_1__ timerfd; int * ops; } ;
+typedef int int_t ;
+typedef int fd_t ;
+typedef scalar_t__ addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STRACE (char*,int /*<<< orphan*/ ,int,scalar_t__,scalar_t__) ; 
- int _EBADF ; 
- int _EFAULT ; 
- int _EINVAL ; 
- struct fd* f_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lock (int /*<<< orphan*/ *) ; 
- int timer_set (int /*<<< orphan*/ ,struct timer_spec,struct timer_spec*) ; 
- int /*<<< orphan*/  timerfd_ops ; 
- int /*<<< orphan*/  unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ user_get (scalar_t__,struct itimerspec_) ; 
- scalar_t__ user_put (scalar_t__,struct itimerspec_) ; 
+
+ int STRACE (char*,int ,int,scalar_t__,scalar_t__) ;
+ int _EBADF ;
+ int _EFAULT ;
+ int _EINVAL ;
+ struct fd* f_get (int ) ;
+ int lock (int *) ;
+ int timer_set (int ,struct timer_spec,struct timer_spec*) ;
+ int timerfd_ops ;
+ int unlock (int *) ;
+ scalar_t__ user_get (scalar_t__,struct itimerspec_) ;
+ scalar_t__ user_put (scalar_t__,struct itimerspec_) ;
 
 int_t sys_timerfd_settime(fd_t f, int_t flags, addr_t new_value_addr, addr_t old_value_addr) {
     STRACE("timerfd_settime(%d, %d, %#x, %#x)", f, flags, new_value_addr, old_value_addr);
     struct fd *fd = f_get(f);
-    if (fd == NULL)
+    if (fd == ((void*)0))
         return _EBADF;
     if (fd->ops != &timerfd_ops)
         return _EINVAL;

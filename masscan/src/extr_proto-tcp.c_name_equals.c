@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ tolower (char const) ; 
+ scalar_t__ tolower (char const) ;
 
 __attribute__((used)) static int
 name_equals(const char *lhs, const char *rhs)
@@ -23,9 +15,9 @@ name_equals(const char *lhs, const char *rhs)
         while (*rhs == '-' || *rhs == '.' || *rhs == '_')
             rhs++;
         if (*lhs == '\0' && *rhs == '[')
-            return 1; /*arrays*/
+            return 1;
         if (*rhs == '\0' && *lhs == '[')
-            return 1; /*arrays*/
+            return 1;
         if (tolower(*lhs & 0xFF) != tolower(*rhs & 0xFF))
             return 0;
         if (*lhs == '\0')

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct data {int dummy; } ;
-typedef  int /*<<< orphan*/  POOL_ctx ;
+typedef int POOL_ctx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT_TRUE (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  POOL_add (int /*<<< orphan*/ * const,int /*<<< orphan*/ *,struct data*) ; 
- int /*<<< orphan*/ * POOL_create (size_t,size_t) ; 
- int /*<<< orphan*/  POOL_free (int /*<<< orphan*/ * const) ; 
- int /*<<< orphan*/  waitFn ; 
+
+ int ASSERT_TRUE (int * const) ;
+ int POOL_add (int * const,int *,struct data*) ;
+ int * POOL_create (size_t,size_t) ;
+ int POOL_free (int * const) ;
+ int waitFn ;
 
 __attribute__((used)) static int testWait(size_t numThreads, size_t queueSize) {
   struct data data;

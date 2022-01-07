@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_9__ ;
-typedef  struct TYPE_23__   TYPE_8__ ;
-typedef  struct TYPE_22__   TYPE_7__ ;
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_5__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  void* uint32_t ;
-typedef  int /*<<< orphan*/  t_Handle ;
+
+
+typedef struct TYPE_24__ TYPE_9__ ;
+typedef struct TYPE_23__ TYPE_8__ ;
+typedef struct TYPE_22__ TYPE_7__ ;
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_5__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef void* uint32_t ;
+typedef int t_Handle ;
 struct TYPE_24__ {scalar_t__ h_Manip; } ;
-struct TYPE_16__ {int maxNumOfKeys; TYPE_7__* keyParams; TYPE_9__ ccNextEngineParamsForMiss; int /*<<< orphan*/  statisticsMode; } ;
+struct TYPE_16__ {int maxNumOfKeys; TYPE_7__* keyParams; TYPE_9__ ccNextEngineParamsForMiss; int statisticsMode; } ;
 struct TYPE_20__ {TYPE_1__ keysParams; } ;
-typedef  TYPE_5__ t_FmPcdCcNodeParams ;
-struct TYPE_21__ {int numOfKeys; TYPE_4__* keyAndNextEngineParams; int /*<<< orphan*/  statisticsMode; int /*<<< orphan*/  countersArraySize; int /*<<< orphan*/  numOfStatsFLRs; } ;
-typedef  TYPE_6__ t_FmPcdCcNode ;
-typedef  int /*<<< orphan*/  t_FmPcdCcNextEngineParams ;
-struct TYPE_22__ {TYPE_9__ ccNextEngineParams; int /*<<< orphan*/  p_Key; scalar_t__ p_Mask; } ;
-typedef  TYPE_7__ t_FmPcdCcKeyParams ;
-typedef  scalar_t__ t_Error ;
-struct TYPE_17__ {int /*<<< orphan*/  h_CcNode; } ;
+typedef TYPE_5__ t_FmPcdCcNodeParams ;
+struct TYPE_21__ {int numOfKeys; TYPE_4__* keyAndNextEngineParams; int statisticsMode; int countersArraySize; int numOfStatsFLRs; } ;
+typedef TYPE_6__ t_FmPcdCcNode ;
+typedef int t_FmPcdCcNextEngineParams ;
+struct TYPE_22__ {TYPE_9__ ccNextEngineParams; int p_Key; scalar_t__ p_Mask; } ;
+typedef TYPE_7__ t_FmPcdCcKeyParams ;
+typedef scalar_t__ t_Error ;
+struct TYPE_17__ {int h_CcNode; } ;
 struct TYPE_18__ {TYPE_2__ ccParams; } ;
 struct TYPE_23__ {scalar_t__ nextEngine; TYPE_3__ params; scalar_t__ h_Manip; } ;
 struct TYPE_19__ {int* key; int* mask; void* requiredAction; TYPE_8__ nextEngineParams; } ;
 
-/* Variables and functions */
- scalar_t__ AllocAndFillAdForContLookupManip (int /*<<< orphan*/ ) ; 
- scalar_t__ E_INVALID_VALUE ; 
- scalar_t__ E_OK ; 
- int FALSE ; 
- scalar_t__ FmPcdManipCheckParamsForCcNextEngine (TYPE_9__*,void**) ; 
- int /*<<< orphan*/  MAJOR ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- scalar_t__ ValidateAndCalcStatsParams (TYPE_6__*,TYPE_5__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ ValidateNextEngineParams (int /*<<< orphan*/ ,TYPE_9__*,int /*<<< orphan*/ ) ; 
- scalar_t__ e_FM_PCD_CC ; 
- scalar_t__ memcmp (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  memcpy (TYPE_8__*,TYPE_9__*,int) ; 
+
+ scalar_t__ AllocAndFillAdForContLookupManip (int ) ;
+ scalar_t__ E_INVALID_VALUE ;
+ scalar_t__ E_OK ;
+ int FALSE ;
+ scalar_t__ FmPcdManipCheckParamsForCcNextEngine (TYPE_9__*,void**) ;
+ int MAJOR ;
+ char* NO_MSG ;
+ int RETURN_ERROR (int ,scalar_t__,char*) ;
+ scalar_t__ ValidateAndCalcStatsParams (TYPE_6__*,TYPE_5__*,int *,int *) ;
+ scalar_t__ ValidateNextEngineParams (int ,TYPE_9__*,int ) ;
+ scalar_t__ e_FM_PCD_CC ;
+ scalar_t__ memcmp (int ,int*,int) ;
+ int memcpy (TYPE_8__*,TYPE_9__*,int) ;
 
 __attribute__((used)) static t_Error Ipv4TtlOrIpv6HopLimitCheckParams(
         t_Handle h_FmPcd, t_FmPcdCcNodeParams *p_CcNodeParam,
@@ -75,7 +75,7 @@ __attribute__((used)) static t_Error Ipv4TtlOrIpv6HopLimitCheckParams(
                 E_INVALID_VALUE,
                 ("For node of the type IPV4_TTL or IPV6_HOP_LIMIT the maximal supported 'maxNumOfKeys' is 1"));
 
-    /* Validate statistics parameters */
+
     err = ValidateAndCalcStatsParams(p_CcNode, p_CcNodeParam,
                                      &(p_CcNode->numOfStatsFLRs),
                                      &(p_CcNode->countersArraySize));
@@ -146,11 +146,11 @@ __attribute__((used)) static t_Error Ipv4TtlOrIpv6HopLimitCheckParams(
                 RETURN_ERROR(MAJOR, err, (NO_MSG));
         }
 
-        /* Store 'key' parameters - key (fixed to 0x01), key size of 1 byte and full mask */
+
         p_CcNode->keyAndNextEngineParams[tmp].key[0] = key;
         p_CcNode->keyAndNextEngineParams[tmp].mask[0] = 0xFF;
 
-        /* Store NextEngine parameters */
+
         memcpy(&p_CcNode->keyAndNextEngineParams[tmp].nextEngineParams,
                &p_KeyParams->ccNextEngineParams,
                sizeof(t_FmPcdCcNextEngineParams));

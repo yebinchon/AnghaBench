@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* cFileName; char* cAlternateFileName; int dwFileAttributes; } ;
-typedef  TYPE_1__ WIN32_FIND_DATA ;
-typedef  scalar_t__ HANDLE ;
+typedef TYPE_1__ WIN32_FIND_DATA ;
+typedef scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFile (char*) ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int /*<<< orphan*/  FindClose (scalar_t__) ; 
- scalar_t__ FindFirstFile (char*,TYPE_1__*) ; 
- scalar_t__ FindNextFile (scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  R_WARNING ; 
- int /*<<< orphan*/  RemoveDirectory (char const*) ; 
- scalar_t__ is_dot_dir (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  report (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- size_t strlen (char const*) ; 
+
+ int DeleteFile (char*) ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FindClose (scalar_t__) ;
+ scalar_t__ FindFirstFile (char*,TYPE_1__*) ;
+ scalar_t__ FindNextFile (scalar_t__,TYPE_1__*) ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int R_WARNING ;
+ int RemoveDirectory (char const*) ;
+ scalar_t__ is_dot_dir (char*) ;
+ int memcpy (char*,char const*,size_t) ;
+ int report (int ,char*,char const*,int ) ;
+ int strcpy (char*,char*) ;
+ size_t strlen (char const*) ;
 
 __attribute__((used)) static void remove_dir (const char *dir)
 {
-    HANDLE  hFind;
+    HANDLE hFind;
     WIN32_FIND_DATA wfd;
     char path[MAX_PATH];
     size_t dirlen = strlen (dir);
 
-    /* Make sure the directory exists before going further */
+
     memcpy (path, dir, dirlen);
     strcpy (path + dirlen++, "\\*");
     hFind = FindFirstFile (path, &wfd);
@@ -48,7 +48,7 @@ __attribute__((used)) static void remove_dir (const char *dir)
     do {
         char *lp = wfd.cFileName;
 
-        if (!lp[0]) lp = wfd.cAlternateFileName; /* ? FIXME not (!lp) ? */
+        if (!lp[0]) lp = wfd.cAlternateFileName;
         if (is_dot_dir (lp)) continue;
         strcpy (path + dirlen, lp);
         if (FILE_ATTRIBUTE_DIRECTORY & wfd.dwFileAttributes)

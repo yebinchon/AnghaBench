@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* auth_token; } ;
-struct TYPE_5__ {int /*<<< orphan*/  password; int /*<<< orphan*/  username; } ;
-struct test_context {int /*<<< orphan*/  session; TYPE_2__ multi; TYPE_1__ up; } ;
+struct TYPE_5__ {int password; int username; } ;
+struct test_context {int session; TYPE_2__ multi; TYPE_1__ up; } ;
 
-/* Variables and functions */
- int AUTH_TOKEN_EXPIRED ; 
- int AUTH_TOKEN_HMAC_OK ; 
- int AUTH_TOKEN_VALID_EMPTYUSER ; 
- int /*<<< orphan*/  CLEAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert_int_equal (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  generate_auth_token (TYPE_1__*,TYPE_2__*) ; 
- int now ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  verify_auth_token (TYPE_1__*,TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zerohmac (int /*<<< orphan*/ ) ; 
+
+ int AUTH_TOKEN_EXPIRED ;
+ int AUTH_TOKEN_HMAC_OK ;
+ int AUTH_TOKEN_VALID_EMPTYUSER ;
+ int CLEAR (int ) ;
+ int assert_int_equal (int ,int) ;
+ int generate_auth_token (TYPE_1__*,TYPE_2__*) ;
+ int now ;
+ int strcpy (int ,char*) ;
+ int verify_auth_token (TYPE_1__*,TYPE_2__*,int *) ;
+ int zerohmac (int ) ;
 
 __attribute__((used)) static void
 auth_token_test_empty_user(void **state)

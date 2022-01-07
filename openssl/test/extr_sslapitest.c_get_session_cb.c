@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_called ; 
- int /*<<< orphan*/ * get_sess_val ; 
+
+
+
+typedef int SSL_SESSION ;
+typedef int SSL ;
+
+
+ int get_called ;
+ int * get_sess_val ;
 
 __attribute__((used)) static SSL_SESSION *get_session_cb(SSL *ssl, const unsigned char *id, int len,
                                    int *copy)

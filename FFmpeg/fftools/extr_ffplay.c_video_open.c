@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int width; int height; } ;
-typedef  TYPE_1__ VideoState ;
+typedef TYPE_1__ VideoState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SDL_SetWindowFullscreen (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_SetWindowPosition (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_SetWindowSize (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SDL_SetWindowTitle (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  SDL_ShowWindow (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SDL_WINDOW_FULLSCREEN_DESKTOP ; 
- int default_height ; 
- int default_width ; 
- scalar_t__ input_filename ; 
- scalar_t__ is_full_screen ; 
- int screen_height ; 
- int /*<<< orphan*/  screen_left ; 
- int /*<<< orphan*/  screen_top ; 
- int screen_width ; 
- int /*<<< orphan*/  window ; 
- scalar_t__ window_title ; 
+
+ int SDL_SetWindowFullscreen (int ,int ) ;
+ int SDL_SetWindowPosition (int ,int ,int ) ;
+ int SDL_SetWindowSize (int ,int,int) ;
+ int SDL_SetWindowTitle (int ,scalar_t__) ;
+ int SDL_ShowWindow (int ) ;
+ int SDL_WINDOW_FULLSCREEN_DESKTOP ;
+ int default_height ;
+ int default_width ;
+ scalar_t__ input_filename ;
+ scalar_t__ is_full_screen ;
+ int screen_height ;
+ int screen_left ;
+ int screen_top ;
+ int screen_width ;
+ int window ;
+ scalar_t__ window_title ;
 
 __attribute__((used)) static int video_open(VideoState *is)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static int video_open(VideoState *is)
         SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
     SDL_ShowWindow(window);
 
-    is->width  = w;
+    is->width = w;
     is->height = h;
 
     return 0;

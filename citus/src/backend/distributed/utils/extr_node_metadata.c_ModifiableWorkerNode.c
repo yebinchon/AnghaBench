@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  WorkerNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CheckCitusVersion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DistNodeRelationId () ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  EnsureCoordinator () ; 
- int /*<<< orphan*/  ExclusiveLock ; 
- int /*<<< orphan*/ * FindWorkerNodeAnyCluster (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockRelationOid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int int32 ;
+typedef int WorkerNode ;
+
+
+ int CheckCitusVersion (int ) ;
+ int DistNodeRelationId () ;
+ int ERROR ;
+ int EnsureCoordinator () ;
+ int ExclusiveLock ;
+ int * FindWorkerNodeAnyCluster (char const*,int ) ;
+ int LockRelationOid (int ,int ) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*,char const*,int ) ;
 
 __attribute__((used)) static WorkerNode *
 ModifiableWorkerNode(const char *nodeName, int32 nodePort)
 {
-	WorkerNode *workerNode = NULL;
+ WorkerNode *workerNode = ((void*)0);
 
-	CheckCitusVersion(ERROR);
+ CheckCitusVersion(ERROR);
 
-	EnsureCoordinator();
+ EnsureCoordinator();
 
-	/* take an exclusive lock on pg_dist_node to serialize pg_dist_node changes */
-	LockRelationOid(DistNodeRelationId(), ExclusiveLock);
 
-	workerNode = FindWorkerNodeAnyCluster(nodeName, nodePort);
-	if (workerNode == NULL)
-	{
-		ereport(ERROR, (errmsg("node at \"%s:%u\" does not exist", nodeName, nodePort)));
-	}
+ LockRelationOid(DistNodeRelationId(), ExclusiveLock);
 
-	return workerNode;
+ workerNode = FindWorkerNodeAnyCluster(nodeName, nodePort);
+ if (workerNode == ((void*)0))
+ {
+  ereport(ERROR, (errmsg("node at \"%s:%u\" does not exist", nodeName, nodePort)));
+ }
+
+ return workerNode;
 }

@@ -1,200 +1,190 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GEN_INT (int) ; 
- int GET_MODE (int /*<<< orphan*/ ) ; 
- int GET_MODE_INNER (int) ; 
- int GET_MODE_SIZE (int) ; 
- int const SFmode ; 
- int /*<<< orphan*/  TARGET_3DNOW_A ; 
- int /*<<< orphan*/  TARGET_SSE ; 
- int TARGET_SSE2 ; 
-#define  V16QImode 137 
-#define  V2DFmode 136 
-#define  V2DImode 135 
-#define  V2SFmode 134 
-#define  V2SImode 133 
-#define  V4HImode 132 
-#define  V4SFmode 131 
-#define  V4SImode 130 
-#define  V8HImode 129 
-#define  V8QImode 128 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  adjust_address (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  assign_stack_temp (int,int,int) ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  const1_rtx ; 
- int /*<<< orphan*/  const2_rtx ; 
- int /*<<< orphan*/  copy_to_reg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_move_insn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int /*<<< orphan*/  gen_lowpart (int const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int) ; 
- int /*<<< orphan*/  gen_rtvec (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_PARALLEL (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_CONCAT (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_DUPLICATE (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_MERGE (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_VEC_SELECT (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse2_pshufd_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse_shufps_1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_sse_unpcklps (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ix86_expand_vector_extract (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int GEN_INT (int) ;
+ int GET_MODE (int ) ;
+ int GET_MODE_INNER (int) ;
+ int GET_MODE_SIZE (int) ;
+ int const SFmode ;
+ int TARGET_3DNOW_A ;
+ int TARGET_SSE ;
+ int TARGET_SSE2 ;
+ int VOIDmode ;
+ int adjust_address (int ,int,int) ;
+ int assign_stack_temp (int,int,int) ;
+ int const0_rtx ;
+ int const1_rtx ;
+ int const2_rtx ;
+ int copy_to_reg (int ) ;
+ int emit_insn (int ) ;
+ int emit_move_insn (int ,int ) ;
+ int gcc_unreachable () ;
+ int gen_lowpart (int const,int ) ;
+ int gen_reg_rtx (int) ;
+ int gen_rtvec (int,int ) ;
+ int gen_rtx_PARALLEL (int ,int ) ;
+ int gen_rtx_SET (int ,int ,int ) ;
+ int gen_rtx_VEC_CONCAT (int,int ,int ) ;
+ int gen_rtx_VEC_DUPLICATE (int,int ) ;
+ int gen_rtx_VEC_MERGE (int,int ,int ,int ) ;
+ int gen_rtx_VEC_SELECT (int,int ,int ) ;
+ int gen_sse2_pshufd_1 (int ,int ,int ,int ,int ,int ) ;
+ int gen_sse_shufps_1 (int ,int ,int ,int ,int ,int ,int ) ;
+ int gen_sse_unpcklps (int ,int ,int ) ;
+ int ix86_expand_vector_extract (int,int ,int ,int) ;
 
 void
 ix86_expand_vector_set (bool mmx_ok, rtx target, rtx val, int elt)
 {
   enum machine_mode mode = GET_MODE (target);
   enum machine_mode inner_mode = GET_MODE_INNER (mode);
-  bool use_vec_merge = false;
+  bool use_vec_merge = 0;
   rtx tmp;
 
   switch (mode)
     {
-    case V2SFmode:
-    case V2SImode:
+    case 134:
+    case 133:
       if (mmx_ok)
-	{
-	  tmp = gen_reg_rtx (GET_MODE_INNER (mode));
-	  ix86_expand_vector_extract (true, tmp, target, 1 - elt);
-	  if (elt == 0)
-	    tmp = gen_rtx_VEC_CONCAT (mode, tmp, val);
-	  else
-	    tmp = gen_rtx_VEC_CONCAT (mode, val, tmp);
-	  emit_insn (gen_rtx_SET (VOIDmode, target, tmp));
-	  return;
-	}
+ {
+   tmp = gen_reg_rtx (GET_MODE_INNER (mode));
+   ix86_expand_vector_extract (1, tmp, target, 1 - elt);
+   if (elt == 0)
+     tmp = gen_rtx_VEC_CONCAT (mode, tmp, val);
+   else
+     tmp = gen_rtx_VEC_CONCAT (mode, val, tmp);
+   emit_insn (gen_rtx_SET (VOIDmode, target, tmp));
+   return;
+ }
       break;
 
-    case V2DFmode:
-    case V2DImode:
+    case 136:
+    case 135:
       {
-	rtx op0, op1;
+ rtx op0, op1;
 
-	/* For the two element vectors, we implement a VEC_CONCAT with
-	   the extraction of the other element.  */
 
-	tmp = gen_rtx_PARALLEL (VOIDmode, gen_rtvec (1, GEN_INT (1 - elt)));
-	tmp = gen_rtx_VEC_SELECT (inner_mode, target, tmp);
 
-	if (elt == 0)
-	  op0 = val, op1 = tmp;
-	else
-	  op0 = tmp, op1 = val;
 
-	tmp = gen_rtx_VEC_CONCAT (mode, op0, op1);
-	emit_insn (gen_rtx_SET (VOIDmode, target, tmp));
+ tmp = gen_rtx_PARALLEL (VOIDmode, gen_rtvec (1, GEN_INT (1 - elt)));
+ tmp = gen_rtx_VEC_SELECT (inner_mode, target, tmp);
+
+ if (elt == 0)
+   op0 = val, op1 = tmp;
+ else
+   op0 = tmp, op1 = val;
+
+ tmp = gen_rtx_VEC_CONCAT (mode, op0, op1);
+ emit_insn (gen_rtx_SET (VOIDmode, target, tmp));
       }
       return;
 
-    case V4SFmode:
+    case 131:
       switch (elt)
-	{
-	case 0:
-	  use_vec_merge = true;
-	  break;
+ {
+ case 0:
+   use_vec_merge = 1;
+   break;
 
-	case 1:
-	  /* tmp = target = A B C D */
-	  tmp = copy_to_reg (target);
-	  /* target = A A B B */
-	  emit_insn (gen_sse_unpcklps (target, target, target));
-	  /* target = X A B B */
-	  ix86_expand_vector_set (false, target, val, 0);
-	  /* target = A X C D  */
-	  emit_insn (gen_sse_shufps_1 (target, target, tmp,
-				       GEN_INT (1), GEN_INT (0),
-				       GEN_INT (2+4), GEN_INT (3+4)));
-	  return;
+ case 1:
 
-	case 2:
-	  /* tmp = target = A B C D */
-	  tmp = copy_to_reg (target);
-	  /* tmp = X B C D */
-	  ix86_expand_vector_set (false, tmp, val, 0);
-	  /* target = A B X D */
-	  emit_insn (gen_sse_shufps_1 (target, target, tmp,
-				       GEN_INT (0), GEN_INT (1),
-				       GEN_INT (0+4), GEN_INT (3+4)));
-	  return;
+   tmp = copy_to_reg (target);
 
-	case 3:
-	  /* tmp = target = A B C D */
-	  tmp = copy_to_reg (target);
-	  /* tmp = X B C D */
-	  ix86_expand_vector_set (false, tmp, val, 0);
-	  /* target = A B X D */
-	  emit_insn (gen_sse_shufps_1 (target, target, tmp,
-				       GEN_INT (0), GEN_INT (1),
-				       GEN_INT (2+4), GEN_INT (0+4)));
-	  return;
+   emit_insn (gen_sse_unpcklps (target, target, target));
 
-	default:
-	  gcc_unreachable ();
-	}
+   ix86_expand_vector_set (0, target, val, 0);
+
+   emit_insn (gen_sse_shufps_1 (target, target, tmp,
+           GEN_INT (1), GEN_INT (0),
+           GEN_INT (2+4), GEN_INT (3+4)));
+   return;
+
+ case 2:
+
+   tmp = copy_to_reg (target);
+
+   ix86_expand_vector_set (0, tmp, val, 0);
+
+   emit_insn (gen_sse_shufps_1 (target, target, tmp,
+           GEN_INT (0), GEN_INT (1),
+           GEN_INT (0+4), GEN_INT (3+4)));
+   return;
+
+ case 3:
+
+   tmp = copy_to_reg (target);
+
+   ix86_expand_vector_set (0, tmp, val, 0);
+
+   emit_insn (gen_sse_shufps_1 (target, target, tmp,
+           GEN_INT (0), GEN_INT (1),
+           GEN_INT (2+4), GEN_INT (0+4)));
+   return;
+
+ default:
+   gcc_unreachable ();
+ }
       break;
 
-    case V4SImode:
-      /* Element 0 handled by vec_merge below.  */
+    case 130:
+
       if (elt == 0)
-	{
-	  use_vec_merge = true;
-	  break;
-	}
+ {
+   use_vec_merge = 1;
+   break;
+ }
 
       if (TARGET_SSE2)
-	{
-	  /* With SSE2, use integer shuffles to swap element 0 and ELT,
-	     store into element 0, then shuffle them back.  */
+ {
 
-	  rtx order[4];
 
-	  order[0] = GEN_INT (elt);
-	  order[1] = const1_rtx;
-	  order[2] = const2_rtx;
-	  order[3] = GEN_INT (3);
-	  order[elt] = const0_rtx;
 
-	  emit_insn (gen_sse2_pshufd_1 (target, target, order[0],
-					order[1], order[2], order[3]));
+   rtx order[4];
 
-	  ix86_expand_vector_set (false, target, val, 0);
+   order[0] = GEN_INT (elt);
+   order[1] = const1_rtx;
+   order[2] = const2_rtx;
+   order[3] = GEN_INT (3);
+   order[elt] = const0_rtx;
 
-	  emit_insn (gen_sse2_pshufd_1 (target, target, order[0],
-					order[1], order[2], order[3]));
-	}
+   emit_insn (gen_sse2_pshufd_1 (target, target, order[0],
+     order[1], order[2], order[3]));
+
+   ix86_expand_vector_set (0, target, val, 0);
+
+   emit_insn (gen_sse2_pshufd_1 (target, target, order[0],
+     order[1], order[2], order[3]));
+ }
       else
-	{
-	  /* For SSE1, we have to reuse the V4SF code.  */
-	  ix86_expand_vector_set (false, gen_lowpart (V4SFmode, target),
-				  gen_lowpart (SFmode, val), elt);
-	}
+ {
+
+   ix86_expand_vector_set (0, gen_lowpart (131, target),
+      gen_lowpart (SFmode, val), elt);
+ }
       return;
 
-    case V8HImode:
+    case 129:
       use_vec_merge = TARGET_SSE2;
       break;
-    case V4HImode:
+    case 132:
       use_vec_merge = mmx_ok && (TARGET_SSE || TARGET_3DNOW_A);
       break;
 
-    case V16QImode:
-    case V8QImode:
+    case 137:
+    case 128:
     default:
       break;
     }
@@ -207,7 +197,7 @@ ix86_expand_vector_set (bool mmx_ok, rtx target, rtx val, int elt)
     }
   else
     {
-      rtx mem = assign_stack_temp (mode, GET_MODE_SIZE (mode), false);
+      rtx mem = assign_stack_temp (mode, GET_MODE_SIZE (mode), 0);
 
       emit_move_insn (mem, target);
 

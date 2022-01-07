@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mm_struct {int dummy; } ;
-typedef  int /*<<< orphan*/  pte_t ;
+typedef int pte_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lguest_pte_update (struct mm_struct*,unsigned long,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  native_set_pte (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int lguest_pte_update (struct mm_struct*,unsigned long,int *) ;
+ int native_set_pte (int *,int ) ;
 
 __attribute__((used)) static void lguest_set_pte_at(struct mm_struct *mm, unsigned long addr,
-			      pte_t *ptep, pte_t pteval)
+         pte_t *ptep, pte_t pteval)
 {
-	native_set_pte(ptep, pteval);
-	lguest_pte_update(mm, addr, ptep);
+ native_set_pte(ptep, pteval);
+ lguest_pte_update(mm, addr, ptep);
 }

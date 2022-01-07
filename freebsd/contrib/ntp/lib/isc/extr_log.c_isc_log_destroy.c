@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  isc_mem_t ;
-struct TYPE_8__ {char* buffer; scalar_t__ magic; int /*<<< orphan*/ * mctx; scalar_t__ module_count; int /*<<< orphan*/ * modules; scalar_t__ category_count; int /*<<< orphan*/ * categories; scalar_t__ debug_level; int /*<<< orphan*/  text; int /*<<< orphan*/  messages; int /*<<< orphan*/  lock; int /*<<< orphan*/ * logconfig; } ;
-typedef  TYPE_1__ isc_logmessage_t ;
-typedef  int /*<<< orphan*/  isc_logconfig_t ;
-typedef  TYPE_1__ isc_log_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DESTROYLOCK (int /*<<< orphan*/ *) ; 
- TYPE_1__* ISC_LIST_HEAD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ISC_LIST_UNLINK (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REQUIRE (int) ; 
- scalar_t__ VALID_CONTEXT (TYPE_1__*) ; 
- int /*<<< orphan*/  isc_logconfig_destroy (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  isc_mem_put (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  link ; 
- int strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int isc_mem_t ;
+struct TYPE_8__ {char* buffer; scalar_t__ magic; int * mctx; scalar_t__ module_count; int * modules; scalar_t__ category_count; int * categories; scalar_t__ debug_level; int text; int messages; int lock; int * logconfig; } ;
+typedef TYPE_1__ isc_logmessage_t ;
+typedef int isc_logconfig_t ;
+typedef TYPE_1__ isc_log_t ;
+
+
+ int DESTROYLOCK (int *) ;
+ TYPE_1__* ISC_LIST_HEAD (int ) ;
+ int ISC_LIST_UNLINK (int ,TYPE_1__*,int ) ;
+ int REQUIRE (int) ;
+ scalar_t__ VALID_CONTEXT (TYPE_1__*) ;
+ int isc_logconfig_destroy (int **) ;
+ int isc_mem_put (int *,TYPE_1__*,int) ;
+ int link ;
+ int strlen (int ) ;
 
 void
 isc_log_destroy(isc_log_t **lctxp) {
-	isc_log_t *lctx;
-	isc_logconfig_t *lcfg;
-	isc_mem_t *mctx;
-	isc_logmessage_t *message;
+ isc_log_t *lctx;
+ isc_logconfig_t *lcfg;
+ isc_mem_t *mctx;
+ isc_logmessage_t *message;
 
-	REQUIRE(lctxp != NULL && VALID_CONTEXT(*lctxp));
+ REQUIRE(lctxp != ((void*)0) && VALID_CONTEXT(*lctxp));
 
-	lctx = *lctxp;
-	mctx = lctx->mctx;
+ lctx = *lctxp;
+ mctx = lctx->mctx;
 
-	if (lctx->logconfig != NULL) {
-		lcfg = lctx->logconfig;
-		lctx->logconfig = NULL;
-		isc_logconfig_destroy(&lcfg);
-	}
+ if (lctx->logconfig != ((void*)0)) {
+  lcfg = lctx->logconfig;
+  lctx->logconfig = ((void*)0);
+  isc_logconfig_destroy(&lcfg);
+ }
 
-	DESTROYLOCK(&lctx->lock);
+ DESTROYLOCK(&lctx->lock);
 
-	while ((message = ISC_LIST_HEAD(lctx->messages)) != NULL) {
-		ISC_LIST_UNLINK(lctx->messages, message, link);
+ while ((message = ISC_LIST_HEAD(lctx->messages)) != ((void*)0)) {
+  ISC_LIST_UNLINK(lctx->messages, message, link);
 
-		isc_mem_put(mctx, message,
-			    sizeof(*message) + strlen(message->text) + 1);
-	}
+  isc_mem_put(mctx, message,
+       sizeof(*message) + strlen(message->text) + 1);
+ }
 
-	lctx->buffer[0] = '\0';
-	lctx->debug_level = 0;
-	lctx->categories = NULL;
-	lctx->category_count = 0;
-	lctx->modules = NULL;
-	lctx->module_count = 0;
-	lctx->mctx = NULL;
-	lctx->magic = 0;
+ lctx->buffer[0] = '\0';
+ lctx->debug_level = 0;
+ lctx->categories = ((void*)0);
+ lctx->category_count = 0;
+ lctx->modules = ((void*)0);
+ lctx->module_count = 0;
+ lctx->mctx = ((void*)0);
+ lctx->magic = 0;
 
-	isc_mem_put(mctx, lctx, sizeof(*lctx));
+ isc_mem_put(mctx, lctx, sizeof(*lctx));
 
-	*lctxp = NULL;
+ *lctxp = ((void*)0);
 }

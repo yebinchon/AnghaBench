@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szValue ;
-typedef  int /*<<< orphan*/  szNumberA ;
-typedef  int /*<<< orphan*/  szNumber ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ ULONG ;
-struct TYPE_3__ {int dwFlags; scalar_t__ (* procA ) (char*) ;scalar_t__ (* procW ) (int /*<<< orphan*/ *) ;} ;
-typedef  scalar_t__ HANDLE ;
-typedef  TYPE_1__ ENUMSYSTEMCODEPAGES_CALLBACKS ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
-#define  CP_INSTALLED 129 
-#define  CP_SUPPORTED 128 
- int /*<<< orphan*/  ERROR_INVALID_FLAGS ; 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- scalar_t__ FALSE ; 
- int MAX_PATH ; 
- scalar_t__ NLS_RegEnumValue (scalar_t__,scalar_t__,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int) ; 
- scalar_t__ NLS_RegOpenKey (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  NtClose (scalar_t__) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ *) ; 
- scalar_t__ stub2 (char*) ; 
- int wcslen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int szValue ;
+typedef int szNumberA ;
+typedef int szNumber ;
+typedef int WCHAR ;
+typedef scalar_t__ ULONG ;
+struct TYPE_3__ {int dwFlags; scalar_t__ (* procA ) (char*) ;scalar_t__ (* procW ) (int *) ;} ;
+typedef scalar_t__ HANDLE ;
+typedef TYPE_1__ ENUMSYSTEMCODEPAGES_CALLBACKS ;
+typedef scalar_t__ BOOL ;
+
+
+ int CP_ACP ;
+
+
+ int ERROR_INVALID_FLAGS ;
+ int ERROR_INVALID_PARAMETER ;
+ scalar_t__ FALSE ;
+ int MAX_PATH ;
+ scalar_t__ NLS_RegEnumValue (scalar_t__,scalar_t__,int *,int,int *,int) ;
+ scalar_t__ NLS_RegOpenKey (int ,char*) ;
+ int NtClose (scalar_t__) ;
+ int SetLastError (int ) ;
+ scalar_t__ TRUE ;
+ int WARN (char*) ;
+ int WideCharToMultiByte (int ,int ,int *,int,char*,int,int ,int ) ;
+ scalar_t__ stub1 (int *) ;
+ scalar_t__ stub2 (char*) ;
+ int wcslen (int *) ;
 
 __attribute__((used)) static BOOL NLS_EnumSystemCodePages(ENUMSYSTEMCODEPAGES_CALLBACKS *lpProcs)
 {
@@ -55,8 +55,8 @@ __attribute__((used)) static BOOL NLS_EnumSystemCodePages(ENUMSYSTEMCODEPAGES_CA
 
     switch (lpProcs->dwFlags)
     {
-        case CP_INSTALLED:
-        case CP_SUPPORTED:
+        case 129:
+        case 128:
             break;
         default:
             SetLastError(ERROR_INVALID_FLAGS);
@@ -75,8 +75,8 @@ __attribute__((used)) static BOOL NLS_EnumSystemCodePages(ENUMSYSTEMCODEPAGES_CA
         if (NLS_RegEnumValue(hKey, ulIndex, szNumber, sizeof(szNumber),
                              szValue, sizeof(szValue)))
         {
-            if ((lpProcs->dwFlags == CP_SUPPORTED)||
-                ((lpProcs->dwFlags == CP_INSTALLED)&&(wcslen(szValue) > 2)))
+            if ((lpProcs->dwFlags == 128)||
+                ((lpProcs->dwFlags == 129)&&(wcslen(szValue) > 2)))
             {
                 if (lpProcs->procW)
                 {

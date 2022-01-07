@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct regulator_dev {int dummy; } ;
 
-/* Variables and functions */
- unsigned int REGULATOR_MODE_NORMAL ; 
+
+ unsigned int REGULATOR_MODE_NORMAL ;
 
 __attribute__((used)) static unsigned int wm8350_ldo_get_mode(struct regulator_dev *rdev)
 {
-	return REGULATOR_MODE_NORMAL;
+ return REGULATOR_MODE_NORMAL;
 }

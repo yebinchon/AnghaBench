@@ -1,17 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct si_ps {int dummy; } ;
 struct ni_power_info {struct si_ps requested_ps; } ;
 struct amdgpu_ps {struct si_ps* ps_priv; } ;
@@ -20,20 +20,20 @@ struct TYPE_3__ {struct amdgpu_ps* requested_ps; } ;
 struct TYPE_4__ {TYPE_1__ dpm; } ;
 struct amdgpu_device {TYPE_2__ pm; } ;
 
-/* Variables and functions */
- struct evergreen_power_info* evergreen_get_pi (struct amdgpu_device*) ; 
- struct ni_power_info* ni_get_pi (struct amdgpu_device*) ; 
- struct si_ps* si_get_ps (struct amdgpu_ps*) ; 
+
+ struct evergreen_power_info* evergreen_get_pi (struct amdgpu_device*) ;
+ struct ni_power_info* ni_get_pi (struct amdgpu_device*) ;
+ struct si_ps* si_get_ps (struct amdgpu_ps*) ;
 
 __attribute__((used)) static void ni_update_requested_ps(struct amdgpu_device *adev,
-			    struct amdgpu_ps *rps)
+       struct amdgpu_ps *rps)
 {
-	struct si_ps *new_ps = si_get_ps(rps);
-	struct evergreen_power_info *eg_pi = evergreen_get_pi(adev);
-	struct ni_power_info *ni_pi = ni_get_pi(adev);
+ struct si_ps *new_ps = si_get_ps(rps);
+ struct evergreen_power_info *eg_pi = evergreen_get_pi(adev);
+ struct ni_power_info *ni_pi = ni_get_pi(adev);
 
-	eg_pi->requested_rps = *rps;
-	ni_pi->requested_ps = *new_ps;
-	eg_pi->requested_rps.ps_priv = &ni_pi->requested_ps;
-	adev->pm.dpm.requested_ps = &eg_pi->requested_rps;
+ eg_pi->requested_rps = *rps;
+ ni_pi->requested_ps = *new_ps;
+ eg_pi->requested_rps.ps_priv = &ni_pi->requested_ps;
+ adev->pm.dpm.requested_ps = &eg_pi->requested_rps;
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Vector ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int Vector ;
 struct TYPE_7__ {int initoff; TYPE_1__* totype; } ;
 struct TYPE_6__ {int size; } ;
-typedef  TYPE_2__ Node ;
+typedef TYPE_2__ Node ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cmpinit ; 
- int /*<<< orphan*/  emit_zero_filler (int,int) ; 
- TYPE_2__** malloc (int) ; 
- int /*<<< orphan*/  qsort (TYPE_2__**,int,int,int /*<<< orphan*/ ) ; 
- TYPE_2__* vec_get (int /*<<< orphan*/ *,int) ; 
- int vec_len (int /*<<< orphan*/ *) ; 
+
+ int cmpinit ;
+ int emit_zero_filler (int,int) ;
+ TYPE_2__** malloc (int) ;
+ int qsort (TYPE_2__**,int,int,int ) ;
+ TYPE_2__* vec_get (int *,int) ;
+ int vec_len (int *) ;
 
 __attribute__((used)) static void emit_fill_holes(Vector *inits, int off, int totalsize) {
-    // If at least one of the fields in a variable are initialized,
-    // unspecified fields has to be initialized with 0.
+
+
     int len = vec_len(inits);
     Node **buf = malloc(len * sizeof(Node *));
     for (int i = 0; i < len; i++)

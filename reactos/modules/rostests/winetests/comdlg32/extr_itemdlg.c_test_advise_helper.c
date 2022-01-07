@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_4__ {int ref; } ;
-typedef  TYPE_1__ IFileDialogEventsImpl ;
-typedef  int /*<<< orphan*/  IFileDialogEvents ;
-typedef  int /*<<< orphan*/  IFileDialog ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
+typedef TYPE_1__ IFileDialogEventsImpl ;
+typedef int IFileDialogEvents ;
+typedef int IFileDialog ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int E_INVALIDARG ; 
- int /*<<< orphan*/ * IFileDialogEvents_Constructor () ; 
- int /*<<< orphan*/  IFileDialogEvents_Release (int /*<<< orphan*/ *) ; 
- int IFileDialog_Advise (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int IFileDialog_Unadvise (int /*<<< orphan*/ *,int) ; 
- int S_OK ; 
- int /*<<< orphan*/  ensure_zero_events (TYPE_1__*) ; 
- TYPE_1__* impl_from_IFileDialogEvents (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+ int E_INVALIDARG ;
+ int * IFileDialogEvents_Constructor () ;
+ int IFileDialogEvents_Release (int *) ;
+ int IFileDialog_Advise (int *,int *,int*) ;
+ int IFileDialog_Unadvise (int *,int) ;
+ int S_OK ;
+ int ensure_zero_events (TYPE_1__*) ;
+ TYPE_1__* impl_from_IFileDialogEvents (int *) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_advise_helper(IFileDialog *pfd)
 {
@@ -41,15 +41,15 @@ __attribute__((used)) static void test_advise_helper(IFileDialog *pfd)
     pfde = IFileDialogEvents_Constructor();
     pfdeimpl = impl_from_IFileDialogEvents(pfde);
 
-    /* Null pointer tests crash on Windows 10 16299 or newer */
+
     if (0)
     {
-        hr = IFileDialog_Advise(pfd, NULL, NULL);
+        hr = IFileDialog_Advise(pfd, ((void*)0), ((void*)0));
         ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
-        hr = IFileDialog_Advise(pfd, pfde, NULL);
+        hr = IFileDialog_Advise(pfd, pfde, ((void*)0));
         ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
     }
-    hr = IFileDialog_Advise(pfd, NULL, &cookie[0]);
+    hr = IFileDialog_Advise(pfd, ((void*)0), &cookie[0]);
     ok(hr == E_INVALIDARG, "got 0x%08x\n", hr);
     ok(pfdeimpl->ref == 1, "got ref %d\n", pfdeimpl->ref);
     ensure_zero_events(pfdeimpl);
@@ -100,8 +100,8 @@ __attribute__((used)) static void test_advise_helper(IFileDialog *pfd)
 
     if(0)
     {
-        /* Unadvising already unadvised cookies crashes on
-           Windows 7. */
+
+
         IFileDialog_Unadvise(pfd, cookie[0]);
     }
 

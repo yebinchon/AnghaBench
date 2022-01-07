@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IFilterMapper2 ;
-typedef  int /*<<< orphan*/  IFilterGraph2 ;
-typedef  int /*<<< orphan*/  IFilterGraph ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_FilterGraph ; 
- int /*<<< orphan*/  CLSID_FilterMapper2 ; 
- int CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int E_NOINTERFACE ; 
- int IFilterGraph2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IFilterGraph2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IFilterGraph_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IFilterMapper2_AddRef (int /*<<< orphan*/ *) ; 
- int IFilterMapper2_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IFilterMapper2_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IFilterGraph ; 
- int /*<<< orphan*/  IID_IFilterGraph2 ; 
- int /*<<< orphan*/  IID_IFilterMapper2 ; 
- int S_OK ; 
- int getRefcount (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int ULONG ;
+typedef int LPVOID ;
+typedef int IUnknown ;
+typedef int IFilterMapper2 ;
+typedef int IFilterGraph2 ;
+typedef int IFilterGraph ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_FilterGraph ;
+ int CLSID_FilterMapper2 ;
+ int CoCreateInstance (int *,int *,int ,int *,int *) ;
+ int E_NOINTERFACE ;
+ int IFilterGraph2_QueryInterface (int *,int *,int *) ;
+ int IFilterGraph2_Release (int *) ;
+ int IFilterGraph_Release (int *) ;
+ int IFilterMapper2_AddRef (int *) ;
+ int IFilterMapper2_QueryInterface (int *,int *,int *) ;
+ int IFilterMapper2_Release (int *) ;
+ int IID_IFilterGraph ;
+ int IID_IFilterGraph2 ;
+ int IID_IFilterMapper2 ;
+ int S_OK ;
+ int getRefcount (int *) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_ifiltermapper_from_filtergraph(void)
 {
-    IFilterGraph2* pgraph2 = NULL;
-    IFilterMapper2 *pMapper2 = NULL;
-    IFilterGraph *filtergraph = NULL;
+    IFilterGraph2* pgraph2 = ((void*)0);
+    IFilterMapper2 *pMapper2 = ((void*)0);
+    IFilterGraph *filtergraph = ((void*)0);
     HRESULT hr;
     ULONG refcount;
 
-    hr = CoCreateInstance(&CLSID_FilterGraph, NULL, CLSCTX_INPROC_SERVER, &IID_IFilterGraph2, (LPVOID*)&pgraph2);
+    hr = CoCreateInstance(&CLSID_FilterGraph, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IFilterGraph2, (LPVOID*)&pgraph2);
     ok(hr == S_OK, "CoCreateInstance failed with %08x\n", hr);
     if (!pgraph2) goto out;
 
@@ -70,11 +70,11 @@ __attribute__((used)) static void test_ifiltermapper_from_filtergraph(void)
     if (!filtergraph) goto out;
 
     IFilterMapper2_Release(pMapper2);
-    pMapper2 = NULL;
+    pMapper2 = ((void*)0);
     IFilterGraph_Release(filtergraph);
-    filtergraph = NULL;
+    filtergraph = ((void*)0);
 
-    hr = CoCreateInstance(&CLSID_FilterMapper2, NULL, CLSCTX_INPROC_SERVER, &IID_IFilterMapper2, (LPVOID*)&pMapper2);
+    hr = CoCreateInstance(&CLSID_FilterMapper2, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IFilterMapper2, (LPVOID*)&pMapper2);
     ok(hr == S_OK, "CoCreateInstance failed with %08x\n", hr);
     if (!pMapper2) goto out;
 

@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-struct TYPE_17__ {int /*<<< orphan*/  text; } ;
-typedef  TYPE_1__ json_error_t ;
-typedef  int /*<<< orphan*/  gint64 ;
-struct TYPE_20__ {int /*<<< orphan*/  release; int /*<<< orphan*/ * curl; } ;
+
+
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int json_t ;
+struct TYPE_17__ {int text; } ;
+typedef TYPE_1__ json_error_t ;
+typedef int gint64 ;
+struct TYPE_20__ {int release; int * curl; } ;
 struct TYPE_19__ {char* data; } ;
-struct TYPE_18__ {int /*<<< orphan*/  repo_id; int /*<<< orphan*/  host; int /*<<< orphan*/  error; int /*<<< orphan*/  token; } ;
-typedef  TYPE_2__ HttpTxTask ;
-typedef  TYPE_3__ GList ;
-typedef  TYPE_4__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_18__ {int repo_id; int host; int error; int token; } ;
+typedef TYPE_2__ HttpTxTask ;
+typedef TYPE_3__ GList ;
+typedef TYPE_4__ Connection ;
+typedef int CURL ;
 
-/* Variables and functions */
- int HTTP_OK ; 
- int ID_LIST_SEGMENT_N ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_SERVER ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  curl_easy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- TYPE_3__* g_list_delete_link (TYPE_3__*,TYPE_3__*) ; 
- TYPE_3__* g_list_prepend (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  handle_curl_errors (TYPE_2__*,int) ; 
- int /*<<< orphan*/  handle_http_errors (TYPE_2__*,int) ; 
- scalar_t__ http_post (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,char*,int,int*,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * json_array () ; 
- int /*<<< orphan*/  json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_array_get (int /*<<< orphan*/ *,int) ; 
- size_t json_array_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * json_loadb (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  json_string (char*) ; 
- int /*<<< orphan*/  json_string_value (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  seaf_debug (char*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- int strlen (char*) ; 
+
+ int HTTP_OK ;
+ int ID_LIST_SEGMENT_N ;
+ int SYNC_ERROR_ID_SERVER ;
+ int TRUE ;
+ int curl_easy_reset (int *) ;
+ int g_free (char*) ;
+ TYPE_3__* g_list_delete_link (TYPE_3__*,TYPE_3__*) ;
+ TYPE_3__* g_list_prepend (TYPE_3__*,int ) ;
+ int g_strdup (int ) ;
+ int handle_curl_errors (TYPE_2__*,int) ;
+ int handle_http_errors (TYPE_2__*,int) ;
+ scalar_t__ http_post (int *,char const*,int ,char*,int,int*,char**,int *,int ,int*) ;
+ int * json_array () ;
+ int json_array_append_new (int *,int ) ;
+ int * json_array_get (int *,int) ;
+ size_t json_array_size (int *) ;
+ int json_decref (int *) ;
+ char* json_dumps (int *,int ) ;
+ int * json_loadb (char*,int ,int ,TYPE_1__*) ;
+ int json_string (char*) ;
+ int json_string_value (int *) ;
+ int seaf_debug (char*,size_t,int ,int ) ;
+ int seaf_warning (char*,...) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 upload_check_id_list_segment (HttpTxTask *task, Connection *conn, const char *url,
@@ -60,19 +60,19 @@ upload_check_id_list_segment (HttpTxTask *task, Connection *conn, const char *ur
     json_error_t jerror;
     char *obj_id;
     int n_sent = 0;
-    char *data = NULL;
+    char *data = ((void*)0);
     int len;
     CURL *curl;
     int status;
-    char *rsp_content = NULL;
+    char *rsp_content = ((void*)0);
     gint64 rsp_size;
     int ret = 0;
 
-    /* Convert object id list to JSON format. */
+
 
     array = json_array ();
 
-    while (*send_id_list != NULL) {
+    while (*send_id_list != ((void*)0)) {
         obj_id = (*send_id_list)->data;
         json_array_append_new (array, json_string(obj_id));
 
@@ -90,7 +90,7 @@ upload_check_id_list_segment (HttpTxTask *task, Connection *conn, const char *ur
     len = strlen(data);
     json_decref (array);
 
-    /* Send fs object id list. */
+
 
     curl = conn->curl;
 
@@ -111,7 +111,7 @@ upload_check_id_list_segment (HttpTxTask *task, Connection *conn, const char *ur
         goto out;
     }
 
-    /* Process needed object id list. */
+
 
     array = json_loadb (rsp_content, rsp_size, 0, &jerror);
     if (!array) {

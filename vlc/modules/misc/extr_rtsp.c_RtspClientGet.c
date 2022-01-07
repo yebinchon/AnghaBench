@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {int i_rtsp; TYPE_2__** rtsp; } ;
-typedef  TYPE_1__ vod_media_t ;
-struct TYPE_6__ {int /*<<< orphan*/  psz_session; } ;
-typedef  TYPE_2__ rtsp_client_t ;
+typedef TYPE_1__ vod_media_t ;
+struct TYPE_6__ {int psz_session; } ;
+typedef TYPE_2__ rtsp_client_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
+
+ int strcmp (int ,char const*) ;
 
 __attribute__((used)) static rtsp_client_t *RtspClientGet( vod_media_t *p_media, const char *psz_session )
 {
@@ -28,5 +28,5 @@ __attribute__((used)) static rtsp_client_t *RtspClientGet( vod_media_t *p_media,
             return p_media->rtsp[i];
     }
 
-    return NULL;
+    return ((void*)0);
 }

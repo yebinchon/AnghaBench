@@ -1,74 +1,74 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_22__   TYPE_6__ ;
-typedef  struct TYPE_21__   TYPE_5__ ;
-typedef  struct TYPE_20__   TYPE_4__ ;
-typedef  struct TYPE_19__   TYPE_3__ ;
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
-typedef  char* gpointer ;
-typedef  int gint64 ;
+
+
+typedef struct TYPE_22__ TYPE_6__ ;
+typedef struct TYPE_21__ TYPE_5__ ;
+typedef struct TYPE_20__ TYPE_4__ ;
+typedef struct TYPE_19__ TYPE_3__ ;
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+
+
+typedef int json_t ;
+typedef char* gpointer ;
+typedef int gint64 ;
 struct TYPE_22__ {TYPE_1__* fs_mgr; } ;
-struct TYPE_21__ {int /*<<< orphan*/  release; int /*<<< orphan*/ * curl; } ;
+struct TYPE_21__ {int release; int * curl; } ;
 struct TYPE_20__ {char* data; } ;
-struct TYPE_19__ {int repo_id; int /*<<< orphan*/  host; int /*<<< orphan*/  done_fs_objs; int /*<<< orphan*/  error; int /*<<< orphan*/  repo_version; int /*<<< orphan*/  token; int /*<<< orphan*/  use_fileserver_port; } ;
-struct TYPE_18__ {int /*<<< orphan*/  object; int /*<<< orphan*/  obj_size; int /*<<< orphan*/  obj_id; } ;
-struct TYPE_17__ {int /*<<< orphan*/  obj_store; } ;
-typedef  TYPE_2__ ObjectHeader ;
-typedef  TYPE_3__ HttpTxTask ;
-typedef  TYPE_4__ GList ;
-typedef  int /*<<< orphan*/  GHashTableIter ;
-typedef  int /*<<< orphan*/  GHashTable ;
-typedef  TYPE_5__ Connection ;
-typedef  int /*<<< orphan*/  CURL ;
+struct TYPE_19__ {int repo_id; int host; int done_fs_objs; int error; int repo_version; int token; int use_fileserver_port; } ;
+struct TYPE_18__ {int object; int obj_size; int obj_id; } ;
+struct TYPE_17__ {int obj_store; } ;
+typedef TYPE_2__ ObjectHeader ;
+typedef TYPE_3__ HttpTxTask ;
+typedef TYPE_4__ GList ;
+typedef int GHashTableIter ;
+typedef int GHashTable ;
+typedef TYPE_5__ Connection ;
+typedef int CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int GET_FS_OBJECT_N ; 
- int HTTP_OK ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_SERVER ; 
- int /*<<< orphan*/  SYNC_ERROR_ID_WRITE_LOCAL_DATA ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  curl_easy_reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- int /*<<< orphan*/  g_hash_table_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_hash_table_iter_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ g_hash_table_iter_next (int /*<<< orphan*/ *,char**,char**) ; 
- int /*<<< orphan*/ * g_hash_table_new_full (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (char*),int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_hash_table_remove (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  g_hash_table_replace (int /*<<< orphan*/ *,char*,char*) ; 
- TYPE_4__* g_list_delete_link (TYPE_4__*,TYPE_4__*) ; 
- TYPE_4__* g_list_prepend (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_str_equal ; 
- int /*<<< orphan*/  g_str_hash ; 
- int /*<<< orphan*/  g_strdup (char*) ; 
- char* g_strdup_printf (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  handle_curl_errors (TYPE_3__*,int) ; 
- int /*<<< orphan*/  handle_http_errors (TYPE_3__*,int) ; 
- scalar_t__ http_post (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int,int*,char**,int*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * json_array () ; 
- int /*<<< orphan*/  json_array_append_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_decref (int /*<<< orphan*/ *) ; 
- char* json_dumps (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  json_string (char*) ; 
- int /*<<< orphan*/  memcpy (char*,int /*<<< orphan*/ ,int) ; 
- int ntohl (int /*<<< orphan*/ ) ; 
- TYPE_6__* seaf ; 
- int /*<<< orphan*/  seaf_debug (char*,int,int /*<<< orphan*/ ,int) ; 
- int seaf_obj_store_write_obj (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  seaf_warning (char*,...) ; 
- int strlen (char*) ; 
+
+ int FALSE ;
+ int GET_FS_OBJECT_N ;
+ int HTTP_OK ;
+ int SYNC_ERROR_ID_SERVER ;
+ int SYNC_ERROR_ID_WRITE_LOCAL_DATA ;
+ int TRUE ;
+ int curl_easy_reset (int *) ;
+ int g_free (char*) ;
+ int g_hash_table_destroy (int *) ;
+ int g_hash_table_iter_init (int *,int *) ;
+ scalar_t__ g_hash_table_iter_next (int *,char**,char**) ;
+ int * g_hash_table_new_full (int ,int ,int (*) (char*),int *) ;
+ int g_hash_table_remove (int *,char*) ;
+ int g_hash_table_replace (int *,char*,char*) ;
+ TYPE_4__* g_list_delete_link (TYPE_4__*,TYPE_4__*) ;
+ TYPE_4__* g_list_prepend (TYPE_4__*,int ) ;
+ int g_str_equal ;
+ int g_str_hash ;
+ int g_strdup (char*) ;
+ char* g_strdup_printf (char*,int ,int) ;
+ int handle_curl_errors (TYPE_3__*,int) ;
+ int handle_http_errors (TYPE_3__*,int) ;
+ scalar_t__ http_post (int *,char*,int ,char*,int,int*,char**,int*,int ,int*) ;
+ int * json_array () ;
+ int json_array_append_new (int *,int ) ;
+ int json_decref (int *) ;
+ char* json_dumps (int *,int ) ;
+ int json_string (char*) ;
+ int memcpy (char*,int ,int) ;
+ int ntohl (int ) ;
+ TYPE_6__* seaf ;
+ int seaf_debug (char*,int,int ,int) ;
+ int seaf_obj_store_write_obj (int ,int,int ,char*,int ,int,int ) ;
+ int seaf_warning (char*,...) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static int
 get_fs_objects (HttpTxTask *task, Connection *conn, GList **fs_list)
@@ -76,23 +76,23 @@ get_fs_objects (HttpTxTask *task, Connection *conn, GList **fs_list)
     json_t *array;
     char *obj_id;
     int n_sent = 0;
-    char *data = NULL;
+    char *data = ((void*)0);
     int len;
     CURL *curl;
-    char *url = NULL;
+    char *url = ((void*)0);
     int status;
-    char *rsp_content = NULL;
+    char *rsp_content = ((void*)0);
     gint64 rsp_size;
     int ret = 0;
     GHashTable *requested;
 
-    /* Convert object id list to JSON format. */
 
-    requested = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+
+    requested = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, ((void*)0));
 
     array = json_array ();
 
-    while (*fs_list != NULL) {
+    while (*fs_list != ((void*)0)) {
         obj_id = (*fs_list)->data;
         json_array_append_new (array, json_string(obj_id));
 
@@ -111,7 +111,7 @@ get_fs_objects (HttpTxTask *task, Connection *conn, GList **fs_list)
     len = strlen(data);
     json_decref (array);
 
-    /* Send fs object id list. */
+
 
     curl = conn->curl;
 
@@ -137,7 +137,7 @@ get_fs_objects (HttpTxTask *task, Connection *conn, GList **fs_list)
         goto out;
     }
 
-    /* Save received fs objects. */
+
 
     int n_recv = 0;
     char *p = rsp_content;
@@ -185,9 +185,9 @@ get_fs_objects (HttpTxTask *task, Connection *conn, GList **fs_list)
     seaf_debug ("Received %d fs objects from %s:%s.\n",
                 n_recv, task->host, task->repo_id);
 
-    /* The server may not return all the objects we requested.
-     * So we need to add back the remaining object ids into fs_list.
-     */
+
+
+
     GHashTableIter iter;
     gpointer key, value;
     g_hash_table_iter_init (&iter, requested);

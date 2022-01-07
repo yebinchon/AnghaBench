@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum reg_class { ____Placeholder_reg_class } reg_class ;
-typedef  int /*<<< orphan*/  HARD_REG_SET ;
 
-/* Variables and functions */
- int ALL_REGS ; 
- int /*<<< orphan*/  AND_HARD_REG_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COPY_HARD_REG_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GO_IF_HARD_REG_SUBSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ NO_REGS ; 
- int /*<<< orphan*/  lose ; 
- int /*<<< orphan*/ * reg_class_contents ; 
+
+
+
+typedef enum reg_class { ____Placeholder_reg_class } reg_class ;
+typedef int HARD_REG_SET ;
+
+
+ int ALL_REGS ;
+ int AND_HARD_REG_SET (int ,int ) ;
+ int COPY_HARD_REG_SET (int ,int ) ;
+ int GO_IF_HARD_REG_SUBSET (int ,int ,int ) ;
+ scalar_t__ NO_REGS ;
+ int lose ;
+ int * reg_class_contents ;
 
 int
 reg_classes_intersect_p (enum reg_class c1, enum reg_class c2)

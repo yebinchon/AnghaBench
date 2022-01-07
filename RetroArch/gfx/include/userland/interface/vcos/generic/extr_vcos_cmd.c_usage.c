@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  descr; int /*<<< orphan*/ * args; int /*<<< orphan*/ * name; } ;
-typedef  TYPE_1__ VCOS_CMD_T ;
-typedef  int /*<<< orphan*/  VCOS_CMD_PARAM_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  print_argument_prefix (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vcos_cmd_printf (int /*<<< orphan*/ *,char*,...) ; 
- int vcos_strlen (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int descr; int * args; int * name; } ;
+typedef TYPE_1__ VCOS_CMD_T ;
+typedef int VCOS_CMD_PARAM_T ;
+
+
+ int print_argument_prefix (int *) ;
+ int vcos_cmd_printf (int *,char*,...) ;
+ int vcos_strlen (int *) ;
 
 __attribute__((used)) static void usage( VCOS_CMD_PARAM_T *param, VCOS_CMD_T *cmd_entry )
 {
-    int         cmd_idx;
-    int         nameWidth = 0;
-    int         argsWidth = 0;
+    int cmd_idx;
+    int nameWidth = 0;
+    int argsWidth = 0;
     VCOS_CMD_T *scan_entry;
 
     vcos_cmd_printf( param, "Usage: " );
@@ -33,7 +33,7 @@ __attribute__((used)) static void usage( VCOS_CMD_PARAM_T *param, VCOS_CMD_T *cm
     vcos_cmd_printf( param, "\n" );
     vcos_cmd_printf( param, "Where command is one of the following:\n" );
 
-    for ( cmd_idx = 0; cmd_entry[cmd_idx].name != NULL; cmd_idx++ )
+    for ( cmd_idx = 0; cmd_entry[cmd_idx].name != ((void*)0); cmd_idx++ )
     {
         int aw;
         int nw;
@@ -53,7 +53,7 @@ __attribute__((used)) static void usage( VCOS_CMD_PARAM_T *param, VCOS_CMD_T *cm
         }
     }
 
-    for ( cmd_idx = 0; cmd_entry[cmd_idx].name != NULL; cmd_idx++ )
+    for ( cmd_idx = 0; cmd_entry[cmd_idx].name != ((void*)0); cmd_idx++ )
     {
         scan_entry = &cmd_entry[cmd_idx];
 

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_file ;
-struct TYPE_3__ {int /*<<< orphan*/ * jfd; scalar_t__ pWal; } ;
-typedef  TYPE_1__ Pager ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * sqlite3WalFile (scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sqlite3_file ;
+struct TYPE_3__ {int * jfd; scalar_t__ pWal; } ;
+typedef TYPE_1__ Pager ;
+
+
+ int * sqlite3WalFile (scalar_t__) ;
 
 sqlite3_file *sqlite3PagerJrnlFile(Pager *pPager){
-#if SQLITE_OMIT_WAL
-  return pPager->jfd;
-#else
+
+
+
   return pPager->pWal ? sqlite3WalFile(pPager->pWal) : pPager->jfd;
-#endif
+
 }

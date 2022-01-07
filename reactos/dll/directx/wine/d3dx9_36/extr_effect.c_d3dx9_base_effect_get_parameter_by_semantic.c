@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct d3dx_parameter {size_t member_count; int /*<<< orphan*/  semantic; struct d3dx_parameter* members; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct d3dx_parameter {size_t member_count; int semantic; struct d3dx_parameter* members; } ;
 struct d3dx9_base_effect {size_t parameter_count; TYPE_1__* parameters; } ;
-typedef  size_t UINT ;
+typedef size_t UINT ;
 struct TYPE_2__ {struct d3dx_parameter param; } ;
-typedef  int /*<<< orphan*/ * D3DXHANDLE ;
+typedef int * D3DXHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*,struct d3dx_parameter*) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/ * get_parameter_handle (struct d3dx_parameter*) ; 
- struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char const*) ; 
+
+ int TRACE (char*,struct d3dx_parameter*) ;
+ int WARN (char*) ;
+ int * get_parameter_handle (struct d3dx_parameter*) ;
+ struct d3dx_parameter* get_valid_parameter (struct d3dx9_base_effect*,int *) ;
+ int strcasecmp (int ,char const*) ;
 
 __attribute__((used)) static D3DXHANDLE d3dx9_base_effect_get_parameter_by_semantic(struct d3dx9_base_effect *base,
         D3DXHANDLE parameter, const char *semantic)
@@ -80,5 +80,5 @@ __attribute__((used)) static D3DXHANDLE d3dx9_base_effect_get_parameter_by_seman
 
     WARN("Parameter not found.\n");
 
-    return NULL;
+    return ((void*)0);
 }

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int /*<<< orphan*/  ZipfileTab ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u32 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int ZipfileTab ;
 struct TYPE_6__ {TYPE_1__* pCurrent; } ;
-typedef  TYPE_2__ ZipfileCsr ;
+typedef TYPE_2__ ZipfileCsr ;
 struct TYPE_7__ {scalar_t__ iOffset; scalar_t__ iExternalAttr; scalar_t__ iInternalAttr; scalar_t__ iDiskStart; scalar_t__ nComment; scalar_t__ nExtra; scalar_t__ nFile; scalar_t__ szUncompressed; scalar_t__ szCompressed; scalar_t__ crc32; scalar_t__ mDate; scalar_t__ mTime; scalar_t__ iCompression; scalar_t__ flags; scalar_t__ iVersionExtract; scalar_t__ iVersionMadeBy; } ;
-typedef  TYPE_3__ ZipfileCDS ;
+typedef TYPE_3__ ZipfileCDS ;
 struct TYPE_5__ {TYPE_3__ cds; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_text (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3_user_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_value_int64 (int /*<<< orphan*/ *) ; 
- TYPE_2__* zipfileFindCursor (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int SQLITE_TRANSIENT ;
+ int assert (int) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int sqlite3_result_error_nomem (int *) ;
+ int sqlite3_result_text (int *,char*,int,int ) ;
+ scalar_t__ sqlite3_user_data (int *) ;
+ int sqlite3_value_int64 (int *) ;
+ TYPE_2__* zipfileFindCursor (int *,int ) ;
 
 __attribute__((used)) static void zipfileFunctionCds(
   sqlite3_context *context,

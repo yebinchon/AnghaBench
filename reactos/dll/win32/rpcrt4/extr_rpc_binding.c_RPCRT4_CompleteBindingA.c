@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  Assoc; int /*<<< orphan*/  NetworkOptions; void* Endpoint; void* NetworkAddr; int /*<<< orphan*/  Protseq; } ;
-typedef  TYPE_1__ RpcBinding ;
-typedef  scalar_t__ RPC_STATUS ;
-typedef  char* LPCSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ RPCRT4_GetAssociation (int /*<<< orphan*/ ,void*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* RPCRT4_strdupA (char*) ; 
- int /*<<< orphan*/  RPCRT4_strdupAtoW (char*) ; 
- int /*<<< orphan*/  RPCRT4_strfree (void*) ; 
- scalar_t__ RPC_S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_a (char*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int Assoc; int NetworkOptions; void* Endpoint; void* NetworkAddr; int Protseq; } ;
+typedef TYPE_1__ RpcBinding ;
+typedef scalar_t__ RPC_STATUS ;
+typedef char* LPCSTR ;
+
+
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int ) ;
+ scalar_t__ RPCRT4_GetAssociation (int ,void*,void*,int ,int *) ;
+ void* RPCRT4_strdupA (char*) ;
+ int RPCRT4_strdupAtoW (char*) ;
+ int RPCRT4_strfree (void*) ;
+ scalar_t__ RPC_S_OK ;
+ int TRACE (char*,TYPE_1__*,int ,int ,int ) ;
+ int debugstr_a (char*) ;
 
 __attribute__((used)) static RPC_STATUS RPCRT4_CompleteBindingA(RpcBinding* Binding, LPCSTR NetworkAddr,
                                           LPCSTR Endpoint, LPCSTR NetworkOptions)
@@ -42,7 +42,7 @@ __attribute__((used)) static RPC_STATUS RPCRT4_CompleteBindingA(RpcBinding* Bind
   HeapFree(GetProcessHeap(), 0, Binding->NetworkOptions);
   Binding->NetworkOptions = RPCRT4_strdupAtoW(NetworkOptions);
 
-  /* only attempt to get an association if the binding is complete */
+
   if (Endpoint && Endpoint[0] != '\0')
   {
     status = RPCRT4_GetAssociation(Binding->Protseq, Binding->NetworkAddr,

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  builder; int /*<<< orphan*/  settings; } ;
-typedef  TYPE_1__ signal_user_data_t ;
-typedef  scalar_t__ gint ;
-typedef  int gboolean ;
-typedef  int /*<<< orphan*/  GtkWidget ;
 
-/* Variables and functions */
- int FALSE ; 
- int /*<<< orphan*/ * GHB_WIDGET (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ HB_ANAMORPHIC_AUTO ; 
- scalar_t__ HB_ANAMORPHIC_CUSTOM ; 
- scalar_t__ HB_ANAMORPHIC_LOOSE ; 
- scalar_t__ HB_ANAMORPHIC_STRICT ; 
- int ghb_dict_get_bool (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ ghb_settings_combo_int (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  gtk_widget_set_sensitive (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int builder; int settings; } ;
+typedef TYPE_1__ signal_user_data_t ;
+typedef scalar_t__ gint ;
+typedef int gboolean ;
+typedef int GtkWidget ;
+
+
+ int FALSE ;
+ int * GHB_WIDGET (int ,char*) ;
+ scalar_t__ HB_ANAMORPHIC_AUTO ;
+ scalar_t__ HB_ANAMORPHIC_CUSTOM ;
+ scalar_t__ HB_ANAMORPHIC_LOOSE ;
+ scalar_t__ HB_ANAMORPHIC_STRICT ;
+ int ghb_dict_get_bool (int ,char*) ;
+ scalar_t__ ghb_settings_combo_int (int ,char*) ;
+ int gtk_widget_set_sensitive (int *,int) ;
 
 void
 ghb_picture_settings_deps(signal_user_data_t *ud)
@@ -39,7 +39,7 @@ ghb_picture_settings_deps(signal_user_data_t *ud)
 
     pic_par = ghb_settings_combo_int(ud->settings, "PicturePAR");
     enable_keep_aspect = (pic_par != HB_ANAMORPHIC_STRICT &&
-                          pic_par != HB_ANAMORPHIC_AUTO   &&
+                          pic_par != HB_ANAMORPHIC_AUTO &&
                           pic_par != HB_ANAMORPHIC_LOOSE);
     keep_aspect = ghb_dict_get_bool(ud->settings, "PictureKeepRatio");
     autoscale = ghb_dict_get_bool(ud->settings, "autoscale");

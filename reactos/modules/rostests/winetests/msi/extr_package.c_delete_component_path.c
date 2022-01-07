@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  REGSAM ;
-typedef  scalar_t__ MSIINSTALLCONTEXT ;
-typedef  char* LPSTR ;
-typedef  char* LPCSTR ;
-typedef  char CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  KEY_WOW64_64KEY ; 
- int MAX_PATH ; 
- scalar_t__ MSIINSTALLCONTEXT_MACHINE ; 
- scalar_t__ MSIINSTALLCONTEXT_USERMANAGED ; 
- scalar_t__ MSIINSTALLCONTEXT_USERUNMANAGED ; 
- int /*<<< orphan*/  MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ is_wow64 ; 
- int /*<<< orphan*/  lstrcpyA (char*,char*) ; 
- int /*<<< orphan*/  package_RegDeleteTreeW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,...) ; 
- int /*<<< orphan*/  squash_guid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int WCHAR ;
+typedef int REGSAM ;
+typedef scalar_t__ MSIINSTALLCONTEXT ;
+typedef char* LPSTR ;
+typedef char* LPCSTR ;
+typedef char CHAR ;
+
+
+ int CP_ACP ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_ALL_ACCESS ;
+ int KEY_WOW64_64KEY ;
+ int MAX_PATH ;
+ scalar_t__ MSIINSTALLCONTEXT_MACHINE ;
+ scalar_t__ MSIINSTALLCONTEXT_USERMANAGED ;
+ scalar_t__ MSIINSTALLCONTEXT_USERUNMANAGED ;
+ int MultiByteToWideChar (int ,int ,char*,int,int *,int) ;
+ int WideCharToMultiByte (int ,int ,int *,int,char*,int,int *,int *) ;
+ scalar_t__ is_wow64 ;
+ int lstrcpyA (char*,char*) ;
+ int package_RegDeleteTreeW (int ,int *,int ) ;
+ int sprintf (char*,char*,char*,...) ;
+ int squash_guid (int *,int *) ;
 
 __attribute__((used)) static void delete_component_path(LPCSTR guid, MSIINSTALLCONTEXT context, LPSTR usersid)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void delete_component_path(LPCSTR guid, MSIINSTALLC
 
     MultiByteToWideChar(CP_ACP, 0, guid, -1, guidW, MAX_PATH);
     squash_guid(guidW, squashedW);
-    WideCharToMultiByte(CP_ACP, 0, squashedW, -1, squashed, MAX_PATH, NULL, NULL);
+    WideCharToMultiByte(CP_ACP, 0, squashedW, -1, squashed, MAX_PATH, ((void*)0), ((void*)0));
 
     if (context == MSIINSTALLCONTEXT_MACHINE)
     {

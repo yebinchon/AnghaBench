@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-struct TYPE_10__ {int Length; int MaximumLength; int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int ULONG ;
-struct TYPE_11__ {int NameLength; int /*<<< orphan*/  Name; } ;
-typedef  TYPE_2__* PKEY_NAME_INFORMATION ;
-typedef  int /*<<< orphan*/  OBJECT_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/ * HANDLE ;
 
-/* Variables and functions */
- int FIELD_OFFSET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InitializeObjectAttributes (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_NAME_INFORMATION ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  KeyNameInformation ; 
- int /*<<< orphan*/ * Name ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtOpenKey (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NtQueryKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__*,int,int*) ; 
- int /*<<< orphan*/  OBJ_CASE_INSENSITIVE ; 
- TYPE_1__ RTL_CONSTANT_STRING (char*) ; 
- TYPE_2__* RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ RtlCompareUnicodeString (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RtlFreeHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  RtlGetProcessHeap () ; 
- int /*<<< orphan*/  STATUS_BUFFER_TOO_SMALL ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  ok_ntstatus (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_size_t (int,int) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
+struct TYPE_10__ {int Length; int MaximumLength; int Buffer; } ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONG ;
+struct TYPE_11__ {int NameLength; int Name; } ;
+typedef TYPE_2__* PKEY_NAME_INFORMATION ;
+typedef int OBJECT_ATTRIBUTES ;
+typedef int NTSTATUS ;
+typedef int * HANDLE ;
+
+
+ int FIELD_OFFSET (int ,int ) ;
+ int InitializeObjectAttributes (int *,TYPE_1__*,int ,int *,int *) ;
+ int KEY_NAME_INFORMATION ;
+ int KEY_READ ;
+ int KeyNameInformation ;
+ int * Name ;
+ int NtClose (int *) ;
+ int NtOpenKey (int **,int ,int *) ;
+ int NtQueryKey (int *,int ,TYPE_2__*,int,int*) ;
+ int OBJ_CASE_INSENSITIVE ;
+ TYPE_1__ RTL_CONSTANT_STRING (char*) ;
+ TYPE_2__* RtlAllocateHeap (int ,int ,int) ;
+ scalar_t__ RtlCompareUnicodeString (TYPE_1__*,TYPE_1__*,int ) ;
+ int RtlFreeHeap (int ,int ,TYPE_2__*) ;
+ int RtlGetProcessHeap () ;
+ int STATUS_BUFFER_TOO_SMALL ;
+ int STATUS_SUCCESS ;
+ int TRUE ;
+ int ok (int,char*,...) ;
+ int ok_ntstatus (int ,int ) ;
+ int ok_size_t (int,int) ;
+ int skip (char*) ;
 
 __attribute__((used)) static
 void
@@ -60,22 +60,22 @@ Test_KeyNameInformation(void)
     OBJECT_ATTRIBUTES ObjectAttributes;
     NTSTATUS Status;
 
-    /* Open the HKCU key */
+
     InitializeObjectAttributes(&ObjectAttributes,
         &HKLM_Name,
         OBJ_CASE_INSENSITIVE,
-        NULL,
-        NULL);
+        ((void*)0),
+        ((void*)0));
     Status = NtOpenKey(&HKLM_Key, KEY_READ, &ObjectAttributes);
     ok_ntstatus(Status, STATUS_SUCCESS);
 
-    /* Get the name info length */
+
     InfoLength = 0;
-    Status = NtQueryKey(HKLM_Key, KeyNameInformation, NULL, 0, &InfoLength);
+    Status = NtQueryKey(HKLM_Key, KeyNameInformation, ((void*)0), 0, &InfoLength);
     ok_ntstatus(Status, STATUS_BUFFER_TOO_SMALL);
     ok_size_t(InfoLength, FIELD_OFFSET(KEY_NAME_INFORMATION, Name[HKLM_Name.Length/sizeof(WCHAR)]));
 
-    /* Get it for real */
+
     NameInformation = RtlAllocateHeap(RtlGetProcessHeap(), 0, InfoLength);
     if (!NameInformation)
     {
@@ -96,24 +96,24 @@ Test_KeyNameInformation(void)
 
     RtlFreeHeap(RtlGetProcessHeap(), 0, NameInformation);
 
-    /* Open one subkey */
+
     InitializeObjectAttributes(&ObjectAttributes,
         &Software_Name,
         OBJ_CASE_INSENSITIVE,
         HKLM_Key,
-        NULL);
+        ((void*)0));
     Status = NtOpenKey(&HKLM_Software_Key, KEY_READ, &ObjectAttributes);
     ok_ntstatus(Status, STATUS_SUCCESS);
 
-    /* Get the name info length */
+
     InfoLength = 0;
-    Status = NtQueryKey(HKLM_Software_Key, KeyNameInformation, NULL, 0, &InfoLength);
+    Status = NtQueryKey(HKLM_Software_Key, KeyNameInformation, ((void*)0), 0, &InfoLength);
     ok_ntstatus(Status, STATUS_BUFFER_TOO_SMALL);
     ok_size_t(InfoLength, FIELD_OFFSET(KEY_NAME_INFORMATION, Name[HKLM_Software_Name.Length/sizeof(WCHAR)]));
 
-    /* Get it for real */
+
     NameInformation = RtlAllocateHeap(RtlGetProcessHeap(), 0, InfoLength);
-    ok(NameInformation != NULL, "\n");
+    ok(NameInformation != ((void*)0), "\n");
 
     Status = NtQueryKey(HKLM_Software_Key, KeyNameInformation, NameInformation, InfoLength, &InfoLength);
     ok_ntstatus(Status, STATUS_SUCCESS);

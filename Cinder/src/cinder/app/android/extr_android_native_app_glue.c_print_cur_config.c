@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct android_app {int /*<<< orphan*/  config; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AConfiguration_getCountry (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  AConfiguration_getDensity (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getKeyboard (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getKeysHidden (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getLanguage (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  AConfiguration_getMcc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getMnc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getNavHidden (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getNavigation (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getOrientation (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getScreenLong (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getScreenSize (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getSdkVersion (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getTouchscreen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getUiModeNight (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AConfiguration_getUiModeType (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LOGV (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char,char,char,char,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct android_app {int config; } ;
+
+
+ int AConfiguration_getCountry (int ,char*) ;
+ int AConfiguration_getDensity (int ) ;
+ int AConfiguration_getKeyboard (int ) ;
+ int AConfiguration_getKeysHidden (int ) ;
+ int AConfiguration_getLanguage (int ,char*) ;
+ int AConfiguration_getMcc (int ) ;
+ int AConfiguration_getMnc (int ) ;
+ int AConfiguration_getNavHidden (int ) ;
+ int AConfiguration_getNavigation (int ) ;
+ int AConfiguration_getOrientation (int ) ;
+ int AConfiguration_getScreenLong (int ) ;
+ int AConfiguration_getScreenSize (int ) ;
+ int AConfiguration_getSdkVersion (int ) ;
+ int AConfiguration_getTouchscreen (int ) ;
+ int AConfiguration_getUiModeNight (int ) ;
+ int AConfiguration_getUiModeType (int ) ;
+ int LOGV (char*,int ,int ,char,char,char,char,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void print_cur_config(struct android_app* android_app) {
     char lang[2], country[2];

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_9__ ;
-typedef  struct TYPE_17__   TYPE_8__ ;
-typedef  struct TYPE_16__   TYPE_7__ ;
-typedef  struct TYPE_15__   TYPE_6__ ;
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_9__ ;
+typedef struct TYPE_17__ TYPE_8__ ;
+typedef struct TYPE_16__ TYPE_7__ ;
+typedef struct TYPE_15__ TYPE_6__ ;
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_18__ {int disptoggle; } ;
 struct TYPE_17__ {scalar_t__ ColorMode; } ;
 struct TYPE_14__ {int all; } ;
@@ -29,17 +29,17 @@ struct TYPE_10__ {int all; } ;
 struct TYPE_16__ {int TVMD; int EXTEN; int TVSTAT; int VRSIZE; int RAMCTL; int BGON; int CHCTLA; int CHCTLB; int BMPNA; int MPOFN; int MPABN2; int MPCDN2; int SCXIN0; int SCXDN0; int SCYIN0; int SCYDN0; int SCXIN1; int SCXDN1; int SCYIN1; int SCYDN1; int SCXN2; int SCYN2; int SCXN3; int SCYN3; int ZMCTL; int SCRCTL; int BKTAU; int BKTAL; int RPMD; int RPRCTL; int KTCTL; int KTAOF; int OVPNRA; int OVPNRB; int WPSX0; int WPSY0; int WPEX0; int WPEY0; int WPSX1; int WPSY1; int WPEX1; int WPEY1; int WCTLA; int WCTLB; int WCTLC; int WCTLD; int SPCTL; int SDCTL; int CRAOFA; int CRAOFB; int LNCLEN; int SFPRMD; int CCCTL; int SFCCMD; int PRISA; int PRISB; int PRISC; int PRISD; int PRINA; int PRINB; int PRIR; int CCRNA; int CCRNB; int CLOFEN; int CLOFSL; int COAR; int COAG; int COAB; int COBR; int COBG; int COBB; TYPE_5__ VCSTA; TYPE_4__ ZMYN1; TYPE_3__ ZMXN1; TYPE_2__ ZMYN0; TYPE_1__ ZMXN0; } ;
 struct TYPE_15__ {int VBlankLineCount; } ;
 
-/* Variables and functions */
- TYPE_9__ Vdp2External ; 
- TYPE_8__ Vdp2Internal ; 
- TYPE_7__* Vdp2Regs ; 
- TYPE_6__ yabsys ; 
+
+ TYPE_9__ Vdp2External ;
+ TYPE_8__ Vdp2Internal ;
+ TYPE_7__* Vdp2Regs ;
+ TYPE_6__ yabsys ;
 
 void Vdp2Reset(void) {
    Vdp2Regs->TVMD = 0x0000;
    Vdp2Regs->EXTEN = 0x0000;
    Vdp2Regs->TVSTAT = Vdp2Regs->TVSTAT & 0x1;
-   Vdp2Regs->VRSIZE = 0x0000; // fix me(version should be set)
+   Vdp2Regs->VRSIZE = 0x0000;
    Vdp2Regs->RAMCTL = 0x0000;
    Vdp2Regs->BGON = 0x0000;
    Vdp2Regs->CHCTLA = 0x0000;

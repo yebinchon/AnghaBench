@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct adapter {int /*<<< orphan*/  db_drop_task; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+
+
+struct adapter {int db_drop_task; } ;
+
+
+ int schedule_work (int *) ;
 
 void t4_db_dropped(struct adapter *adap)
 {
-	schedule_work(&adap->db_drop_task);
+ schedule_work(&adap->db_drop_task);
 }

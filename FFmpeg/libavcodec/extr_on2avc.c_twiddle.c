@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  pretwiddle (float*,float*,int,int,int,int,int,double const* const*) ; 
+ int pretwiddle (float*,float*,int,int,int,int,int,double const* const*) ;
 
 __attribute__((used)) static void twiddle(float *src1, float *src2, int src2_len,
                     const double *tab, int tab_len, int step,
@@ -28,7 +20,7 @@ __attribute__((used)) static void twiddle(float *src1, float *src2, int src2_len
 
     for (i = 0; i < steps; i++) {
         float in0 = src1[order0 + i];
-        int   pos = (src2_len - 1) & mask;
+        int pos = (src2_len - 1) & mask;
 
         if (pos < tab_len) {
             const double *t = tab;

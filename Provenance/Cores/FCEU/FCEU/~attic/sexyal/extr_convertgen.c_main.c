@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BitConv (int,int,char*) ; 
- int /*<<< orphan*/  Fetch (int,char*) ; 
- int /*<<< orphan*/  Save (int,char*) ; 
- int* bitsreal ; 
- char** check ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  puts (char*) ; 
- char** str ; 
+ int BitConv (int,int,char*) ;
+ int Fetch (int,char*) ;
+ int Save (int,char*) ;
+ int* bitsreal ;
+ char** check ;
+ int printf (char*,...) ;
+ int puts (char*) ;
+ char** str ;
 
 main()
 {
@@ -53,16 +45,16 @@ main()
       for(destbo=0;destbo<2;destbo++)
       {
        printf("if(destformat->byteorder == %d)\n{\n",destbo);
-       //printf("if(srcformat->sampformat==%s && destformat->sameck[srcbits],check[destbits]);
+
        printf("while(frames--)\n{\n");
 
        puts("int32_t tmp;");
        if(srcchannels)
-	puts("int32_t tmp2;");
+ puts("int32_t tmp2;");
 
        Fetch(srcbits,"");
 
-       if(srcbo) 
+       if(srcbo)
        {
         if(bitsreal[srcbits]==16)
          puts("FLIP16(tmp);");
@@ -70,16 +62,16 @@ main()
          puts("FLIP32(tmp);");
        }
 
-       if(srcchannels) 
+       if(srcchannels)
        {
         Fetch(srcbits,"2");
-        if(srcbo) 
+        if(srcbo)
         {
          if(bitsreal[srcbits]==16)
           puts("FLIP16(tmp2);");
          else
           puts("FLIP32(tmp2);");
-        } 
+        }
        }
 
        BitConv(srcbits,destbits,"");
@@ -87,7 +79,7 @@ main()
        if(srcchannels) BitConv(srcbits,destbits,"2");
 
        if(destbo)
-       { 
+       {
         if(bitsreal[srcbits]==16)
          puts("FLIP16(tmp);");
         else
@@ -95,7 +87,7 @@ main()
         if(srcchannels && destchannels && destbo)
         {
          if(bitsreal[srcbits]==16)
-          puts("FLIP16(tmp2);");   
+          puts("FLIP16(tmp2);");
          else
           puts("FLIP32(tmp2);");
         }
@@ -113,9 +105,9 @@ main()
 
        puts("}");
        puts("}");
-      } // destbo
+      }
       puts("}");
-     } // srcbo
+     }
      puts("}");
     }
     puts("}");

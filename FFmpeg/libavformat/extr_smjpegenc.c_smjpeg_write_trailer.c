@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int int64_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64_t ;
 struct TYPE_11__ {TYPE_2__* pb; TYPE_1__* priv_data; } ;
 struct TYPE_10__ {int seekable; } ;
-struct TYPE_9__ {int /*<<< orphan*/  duration; } ;
-typedef  TYPE_1__ SMJPEGMuxContext ;
-typedef  TYPE_2__ AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
+struct TYPE_9__ {int duration; } ;
+typedef TYPE_1__ SMJPEGMuxContext ;
+typedef TYPE_2__ AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVIO_SEEKABLE_NORMAL ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  SMJPEG_DONE ; 
- int /*<<< orphan*/  avio_seek (TYPE_2__*,int,int /*<<< orphan*/ ) ; 
- int avio_tell (TYPE_2__*) ; 
- int /*<<< orphan*/  avio_wb32 (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wl32 (TYPE_2__*,int /*<<< orphan*/ ) ; 
+
+ int AVIO_SEEKABLE_NORMAL ;
+ int SEEK_SET ;
+ int SMJPEG_DONE ;
+ int avio_seek (TYPE_2__*,int,int ) ;
+ int avio_tell (TYPE_2__*) ;
+ int avio_wb32 (TYPE_2__*,int ) ;
+ int avio_wl32 (TYPE_2__*,int ) ;
 
 __attribute__((used)) static int smjpeg_write_trailer(AVFormatContext *s)
 {

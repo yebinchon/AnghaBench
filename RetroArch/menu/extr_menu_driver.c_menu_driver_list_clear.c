@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  file_list_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* list_clear ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- TYPE_1__* menu_driver_ctx ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int file_list_t ;
+struct TYPE_2__ {int (* list_clear ) (int *) ;} ;
+
+
+ TYPE_1__* menu_driver_ctx ;
+ int stub1 (int *) ;
 
 bool menu_driver_list_clear(file_list_t *list)
 {
    if (!list)
-      return false;
+      return 0;
    if (menu_driver_ctx->list_clear)
       menu_driver_ctx->list_clear(list);
-   return true;
+   return 1;
 }

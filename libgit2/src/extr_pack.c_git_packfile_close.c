@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int fd; } ;
-struct git_pack_file {int /*<<< orphan*/  pack_name; TYPE_1__ mwf; } ;
+struct git_pack_file {int pack_name; TYPE_1__ mwf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  git_mwindow_free_all_locked (TYPE_1__*) ; 
- int /*<<< orphan*/  p_close (int) ; 
- int /*<<< orphan*/  p_unlink (int /*<<< orphan*/ ) ; 
+
+ int git_mwindow_free_all_locked (TYPE_1__*) ;
+ int p_close (int) ;
+ int p_unlink (int ) ;
 
 void git_packfile_close(struct git_pack_file *p, bool unlink_packfile)
 {
-	if (p->mwf.fd >= 0) {
-		git_mwindow_free_all_locked(&p->mwf);
-		p_close(p->mwf.fd);
-		p->mwf.fd = -1;
-	}
+ if (p->mwf.fd >= 0) {
+  git_mwindow_free_all_locked(&p->mwf);
+  p_close(p->mwf.fd);
+  p->mwf.fd = -1;
+ }
 
-	if (unlink_packfile)
-		p_unlink(p->pack_name);
+ if (unlink_packfile)
+  p_unlink(p->pack_name);
 }

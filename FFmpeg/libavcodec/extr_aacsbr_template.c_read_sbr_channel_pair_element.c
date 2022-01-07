@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int /*<<< orphan*/  bs_add_harmonic; void* bs_add_harmonic_flag; int /*<<< orphan*/ * bs_invf_mode; } ;
-struct TYPE_15__ {int /*<<< orphan*/ * n; TYPE_3__* data; void* bs_coupling; } ;
-typedef  TYPE_1__ SpectralBandReplication ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  int /*<<< orphan*/  AACContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  copy_sbr_grid (TYPE_3__*,TYPE_3__*) ; 
- void* get_bits1 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  get_bits1_vector (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  read_sbr_dtdf (TYPE_1__*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int read_sbr_envelope (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- scalar_t__ read_sbr_grid (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  read_sbr_invf (TYPE_1__*,int /*<<< orphan*/ *,TYPE_3__*) ; 
- int read_sbr_noise (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int bs_add_harmonic; void* bs_add_harmonic_flag; int * bs_invf_mode; } ;
+struct TYPE_15__ {int * n; TYPE_3__* data; void* bs_coupling; } ;
+typedef TYPE_1__ SpectralBandReplication ;
+typedef int GetBitContext ;
+typedef int AACContext ;
+
+
+ int copy_sbr_grid (TYPE_3__*,TYPE_3__*) ;
+ void* get_bits1 (int *) ;
+ int get_bits1_vector (int *,int ,int ) ;
+ int memcpy (int ,int ,int) ;
+ int read_sbr_dtdf (TYPE_1__*,int *,TYPE_3__*) ;
+ int read_sbr_envelope (int *,TYPE_1__*,int *,TYPE_3__*,int) ;
+ scalar_t__ read_sbr_grid (int *,TYPE_1__*,int *,TYPE_3__*) ;
+ int read_sbr_invf (TYPE_1__*,int *,TYPE_3__*) ;
+ int read_sbr_noise (int *,TYPE_1__*,int *,TYPE_3__*,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static int read_sbr_channel_pair_element(AACContext *ac,
                                           SpectralBandReplication *sbr,
@@ -36,8 +36,8 @@ __attribute__((used)) static int read_sbr_channel_pair_element(AACContext *ac,
 {
     int ret;
 
-    if (get_bits1(gb))    // bs_data_extra
-        skip_bits(gb, 8); // bs_reserved
+    if (get_bits1(gb))
+        skip_bits(gb, 8);
 
     if ((sbr->bs_coupling = get_bits1(gb))) {
         if (read_sbr_grid(ac, sbr, gb, &sbr->data[0]))

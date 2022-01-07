@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u32 ;
-struct arena_info {int /*<<< orphan*/ * rtt; int /*<<< orphan*/  nfree; } ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/ * kcalloc (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u32 ;
+struct arena_info {int * rtt; int nfree; } ;
+
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int * kcalloc (int ,int,int ) ;
 
 __attribute__((used)) static int btt_rtt_init(struct arena_info *arena)
 {
-	arena->rtt = kcalloc(arena->nfree, sizeof(u32), GFP_KERNEL);
-	if (arena->rtt == NULL)
-		return -ENOMEM;
+ arena->rtt = kcalloc(arena->nfree, sizeof(u32), GFP_KERNEL);
+ if (arena->rtt == ((void*)0))
+  return -ENOMEM;
 
-	return 0;
+ return 0;
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  crypto_scalarmult_curve25519_base (scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- unsigned char* hex_string_to_bin (char*) ; 
- scalar_t__ memcmp (scalar_t__*,scalar_t__*,int) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,unsigned char*,int) ; 
- int /*<<< orphan*/  print_key (scalar_t__*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  randombytes (scalar_t__*,int) ; 
- int strlen (char*) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+
+
+ int crypto_scalarmult_curve25519_base (scalar_t__*,scalar_t__*) ;
+ int free (unsigned char*) ;
+ unsigned char* hex_string_to_bin (char*) ;
+ scalar_t__ memcmp (scalar_t__*,scalar_t__*,int) ;
+ int memcpy (scalar_t__*,unsigned char*,int) ;
+ int print_key (scalar_t__*) ;
+ int printf (char*,...) ;
+ int randombytes (scalar_t__*,int) ;
+ int strlen (char*) ;
 
 int main(int argc, char *argv[])
 {

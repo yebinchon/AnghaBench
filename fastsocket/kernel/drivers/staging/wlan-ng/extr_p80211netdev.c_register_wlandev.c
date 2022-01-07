@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  netdev; } ;
-typedef  TYPE_1__ wlandevice_t ;
 
-/* Variables and functions */
- int register_netdev (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int netdev; } ;
+typedef TYPE_1__ wlandevice_t ;
+
+
+ int register_netdev (int ) ;
 
 int register_wlandev(wlandevice_t *wlandev)
 {
-	int i = 0;
+ int i = 0;
 
-	i = register_netdev(wlandev->netdev);
-	if (i)
-		return i;
+ i = register_netdev(wlandev->netdev);
+ if (i)
+  return i;
 
-	return 0;
+ return 0;
 }

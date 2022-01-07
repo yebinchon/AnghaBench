@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int UINT ;
 struct TYPE_5__ {int member_0; int* member_1; int idLength; int* ids; } ;
-typedef  int INT ;
-typedef  TYPE_1__ AsnObjectIdentifier ;
+typedef int INT ;
+typedef TYPE_1__ AsnObjectIdentifier ;
 
-/* Variables and functions */
- int* SnmpUtilMemAlloc (int) ; 
- int SnmpUtilOidAppend (TYPE_1__*,TYPE_1__*) ; 
- int /*<<< orphan*/  SnmpUtilOidFree (TYPE_1__*) ; 
- int /*<<< orphan*/  memcmp (int*,int*,int) ; 
- int /*<<< orphan*/  ok (int,char*) ; 
+
+ int* SnmpUtilMemAlloc (int) ;
+ int SnmpUtilOidAppend (TYPE_1__*,TYPE_1__*) ;
+ int SnmpUtilOidFree (TYPE_1__*) ;
+ int memcmp (int*,int*,int) ;
+ int ok (int,char*) ;
 
 __attribute__((used)) static void test_SnmpUtilOidAppend(void)
 {
@@ -39,16 +39,16 @@ __attribute__((used)) static void test_SnmpUtilOidAppend(void)
     oid1.idLength = 3;
     oid1.ids = ids1;
 
-    /* This crashes under win98 */
+
     if(0)
     {
-        ret = SnmpUtilOidAppend(NULL, NULL);
+        ret = SnmpUtilOidAppend(((void*)0), ((void*)0));
         ok(!ret, "SnmpUtilOidAppend succeeded\n");
 
-        ret = SnmpUtilOidAppend(&oid1, NULL);
+        ret = SnmpUtilOidAppend(&oid1, ((void*)0));
         ok(ret, "SnmpUtilOidAppend failed\n");
 
-        ret = SnmpUtilOidAppend(NULL, &oid2);
+        ret = SnmpUtilOidAppend(((void*)0), &oid2);
         ok(!ret, "SnmpUtilOidAppend succeeded\n");
     }
 

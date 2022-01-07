@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MAXPATHLEN ; 
- int /*<<< orphan*/  RSTRING_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * getcwd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_buf_new (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_str_resize (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int MAXPATHLEN ;
+ int RSTRING_PTR (int ) ;
+ int * getcwd (int ,int ) ;
+ int mrb_str_buf_new (int *,int ) ;
+ int mrb_str_resize (int *,int ,int ) ;
+ int mrb_sys_fail (int *,char*) ;
+ int strlen (int ) ;
 
 mrb_value
 mrb_dir_getwd(mrb_state *mrb, mrb_value klass)
@@ -28,7 +28,7 @@ mrb_dir_getwd(mrb_state *mrb, mrb_value klass)
   mrb_value path;
 
   path = mrb_str_buf_new(mrb, MAXPATHLEN);
-  if (getcwd(RSTRING_PTR(path), MAXPATHLEN) == NULL) {
+  if (getcwd(RSTRING_PTR(path), MAXPATHLEN) == ((void*)0)) {
     mrb_sys_fail(mrb, "getcwd(2)");
   }
   mrb_str_resize(mrb, path, strlen(RSTRING_PTR(path)));

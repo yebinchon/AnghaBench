@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct srcimp {int /*<<< orphan*/  rsc; int /*<<< orphan*/ * mgr; int /*<<< orphan*/ * ops; int /*<<< orphan*/ * imappers; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rsc_uninit (int /*<<< orphan*/ *) ; 
+
+
+
+struct srcimp {int rsc; int * mgr; int * ops; int * imappers; } ;
+
+
+ int kfree (int *) ;
+ int rsc_uninit (int *) ;
 
 __attribute__((used)) static int srcimp_rsc_uninit(struct srcimp *srcimp)
 {
-	kfree(srcimp->imappers);
-	srcimp->imappers = NULL;
-	srcimp->ops = NULL;
-	srcimp->mgr = NULL;
-	rsc_uninit(&srcimp->rsc);
+ kfree(srcimp->imappers);
+ srcimp->imappers = ((void*)0);
+ srcimp->ops = ((void*)0);
+ srcimp->mgr = ((void*)0);
+ rsc_uninit(&srcimp->rsc);
 
-	return 0;
+ return 0;
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ixgbevf_adapter {int /*<<< orphan*/  state; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/  __IXGBEVF_SERVICE_SCHED ; 
- int /*<<< orphan*/  clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smp_mb__before_atomic () ; 
- int /*<<< orphan*/  test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct ixgbevf_adapter {int state; } ;
+
+
+ int BUG_ON (int) ;
+ int __IXGBEVF_SERVICE_SCHED ;
+ int clear_bit (int ,int *) ;
+ int smp_mb__before_atomic () ;
+ int test_bit (int ,int *) ;
 
 __attribute__((used)) static void ixgbevf_service_event_complete(struct ixgbevf_adapter *adapter)
 {
-	BUG_ON(!test_bit(__IXGBEVF_SERVICE_SCHED, &adapter->state));
+ BUG_ON(!test_bit(__IXGBEVF_SERVICE_SCHED, &adapter->state));
 
-	/* flush memory to make sure state is correct before next watchdog */
-	smp_mb__before_atomic();
-	clear_bit(__IXGBEVF_SERVICE_SCHED, &adapter->state);
+
+ smp_mb__before_atomic();
+ clear_bit(__IXGBEVF_SERVICE_SCHED, &adapter->state);
 }

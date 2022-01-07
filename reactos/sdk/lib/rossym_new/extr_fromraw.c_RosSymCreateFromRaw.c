@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
 struct TYPE_6__ {int SymbolsOffset; scalar_t__ StringsOffset; scalar_t__ SymbolsLength; int StringsLength; } ;
 struct TYPE_5__ {char* Symbols; int SymbolsCount; char* Strings; int StringsLength; } ;
-typedef  int /*<<< orphan*/  ROSSYM_INFO ;
-typedef  int /*<<< orphan*/  ROSSYM_HEADER ;
-typedef  int /*<<< orphan*/  ROSSYM_ENTRY ;
-typedef  scalar_t__ PVOID ;
-typedef  TYPE_1__* PROSSYM_INFO ;
-typedef  TYPE_2__* PROSSYM_HEADER ;
-typedef  char* PROSSYM_ENTRY ;
-typedef  char* PCHAR ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+typedef int ROSSYM_INFO ;
+typedef int ROSSYM_HEADER ;
+typedef int ROSSYM_ENTRY ;
+typedef scalar_t__ PVOID ;
+typedef TYPE_1__* PROSSYM_INFO ;
+typedef TYPE_2__* PROSSYM_HEADER ;
+typedef char* PROSSYM_ENTRY ;
+typedef char* PCHAR ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT1 (char*) ; 
- int /*<<< orphan*/  FALSE ; 
- TYPE_1__* RosSymAllocMem (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
+
+ int DPRINT1 (char*) ;
+ int FALSE ;
+ TYPE_1__* RosSymAllocMem (int) ;
+ int TRUE ;
+ int memcpy (char*,char*,int) ;
 
 BOOLEAN
 RosSymCreateFromRaw(PVOID RawData, ULONG_PTR DataSize, PROSSYM_INFO *RosSymInfo)
@@ -47,10 +47,10 @@ RosSymCreateFromRaw(PVOID RawData, ULONG_PTR DataSize, PROSSYM_INFO *RosSymInfo)
       return FALSE;
     }
 
-  /* Copy */
+
   *RosSymInfo = RosSymAllocMem(sizeof(ROSSYM_INFO) + RosSymHeader->SymbolsLength
                                + RosSymHeader->StringsLength + 1);
-  if (NULL == *RosSymInfo)
+  if (((void*)0) == *RosSymInfo)
     {
       DPRINT1("Failed to allocate memory for rossym\n");
       return FALSE;
@@ -63,7 +63,7 @@ RosSymCreateFromRaw(PVOID RawData, ULONG_PTR DataSize, PROSSYM_INFO *RosSymInfo)
          RosSymHeader->SymbolsLength);
   memcpy((*RosSymInfo)->Strings, (char *) RosSymHeader + RosSymHeader->StringsOffset,
          RosSymHeader->StringsLength);
-  /* Make sure the last string is null terminated, we allocated an extra byte for that */
+
   (*RosSymInfo)->Strings[(*RosSymInfo)->StringsLength] = '\0';
 
   return TRUE;

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_9__ ;
-typedef  struct TYPE_22__   TYPE_5__ ;
-typedef  struct TYPE_21__   TYPE_4__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_23__ TYPE_9__ ;
+typedef struct TYPE_22__ TYPE_5__ ;
+typedef struct TYPE_21__ TYPE_4__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
 struct TYPE_18__ {scalar_t__ type; } ;
-struct TYPE_20__ {int /*<<< orphan*/  body; TYPE_1__ stat; int /*<<< orphan*/  expr; } ;
-typedef  TYPE_3__ while_statement_t ;
-struct TYPE_21__ {int /*<<< orphan*/  while_end_label; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_4__ statement_ctx_t ;
+struct TYPE_20__ {int body; TYPE_1__ stat; int expr; } ;
+typedef TYPE_3__ while_statement_t ;
+struct TYPE_21__ {int while_end_label; int member_0; } ;
+typedef TYPE_4__ statement_ctx_t ;
 struct TYPE_22__ {unsigned int instr_cnt; } ;
-typedef  TYPE_5__ compile_ctx_t ;
+typedef TYPE_5__ compile_ctx_t ;
 struct TYPE_19__ {unsigned int uint; } ;
 struct TYPE_23__ {TYPE_2__ arg1; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OP_jmp ; 
- int /*<<< orphan*/  OP_jmp_false ; 
- int /*<<< orphan*/  OP_jmp_true ; 
- scalar_t__ STAT_UNTIL ; 
- scalar_t__ STAT_WHILE ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  alloc_label (TYPE_5__*) ; 
- int /*<<< orphan*/  compile_expression (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  compile_statement (TYPE_5__*,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_catch (TYPE_5__*,int /*<<< orphan*/ ) ; 
- TYPE_9__* instr_ptr (TYPE_5__*,unsigned int) ; 
- int /*<<< orphan*/  label_set_addr (TYPE_5__*,int /*<<< orphan*/ ) ; 
- unsigned int push_instr (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  push_instr_addr (TYPE_5__*,int /*<<< orphan*/ ,unsigned int) ; 
+
+ int E_OUTOFMEMORY ;
+ scalar_t__ FAILED (int ) ;
+ int OP_jmp ;
+ int OP_jmp_false ;
+ int OP_jmp_true ;
+ scalar_t__ STAT_UNTIL ;
+ scalar_t__ STAT_WHILE ;
+ int S_OK ;
+ int alloc_label (TYPE_5__*) ;
+ int compile_expression (TYPE_5__*,int ) ;
+ int compile_statement (TYPE_5__*,TYPE_4__*,int ) ;
+ int emit_catch (TYPE_5__*,int ) ;
+ TYPE_9__* instr_ptr (TYPE_5__*,unsigned int) ;
+ int label_set_addr (TYPE_5__*,int ) ;
+ unsigned int push_instr (TYPE_5__*,int ) ;
+ int push_instr_addr (TYPE_5__*,int ,unsigned int) ;
 
 __attribute__((used)) static HRESULT compile_while_statement(compile_ctx_t *ctx, while_statement_t *stat)
 {
@@ -66,7 +66,7 @@ __attribute__((used)) static HRESULT compile_while_statement(compile_ctx_t *ctx,
         return E_OUTOFMEMORY;
 
     if(stat->stat.type == STAT_WHILE) {
-        loop_ctx = NULL;
+        loop_ctx = ((void*)0);
     }else {
         if(!(stat_ctx.while_end_label = alloc_label(ctx)))
             return E_OUTOFMEMORY;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
 
-/* Variables and functions */
- int USB_LED_CAPS_LOCK ; 
- int USB_LED_NUM_LOCK ; 
- int USB_LED_SCROLL_LOCK ; 
- int /*<<< orphan*/  indicator_leds_set (int*) ; 
- int layer_state ; 
- int /*<<< orphan*/  led_set_user (int) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int USB_LED_CAPS_LOCK ;
+ int USB_LED_NUM_LOCK ;
+ int USB_LED_SCROLL_LOCK ;
+ int indicator_leds_set (int*) ;
+ int layer_state ;
+ int led_set_user (int) ;
 
 void led_set_kb(uint8_t usb_led) {
   bool leds[8] = {

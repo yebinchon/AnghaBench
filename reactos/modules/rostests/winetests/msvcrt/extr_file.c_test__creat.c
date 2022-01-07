@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  FILE_ATTRIBUTE_NORMAL ; 
- int FILE_ATTRIBUTE_READONLY ; 
- int GetFileAttributesA (char*) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  SetFileAttributesA (char*,int /*<<< orphan*/ ) ; 
- int _O_BINARY ; 
- int _O_TEXT ; 
- int _S_IREAD ; 
- int _S_IWRITE ; 
- int /*<<< orphan*/  _close (int) ; 
- int _creat (char*,int) ; 
- scalar_t__ _lseek (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int _read (int,char*,int) ; 
- int _tell (int) ; 
- int /*<<< orphan*/  _write (int,char*,int) ; 
- scalar_t__ memcmp (char*,char*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  p__get_fmode (int*) ; 
- int /*<<< orphan*/  p__set_fmode (int) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int DeleteFileA (char*) ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_ATTRIBUTE_READONLY ;
+ int GetFileAttributesA (char*) ;
+ int SEEK_SET ;
+ int SetFileAttributesA (char*,int ) ;
+ int _O_BINARY ;
+ int _O_TEXT ;
+ int _S_IREAD ;
+ int _S_IWRITE ;
+ int _close (int) ;
+ int _creat (char*,int) ;
+ scalar_t__ _lseek (int,int ,int ) ;
+ int _read (int,char*,int) ;
+ int _tell (int) ;
+ int _write (int,char*,int) ;
+ scalar_t__ memcmp (char*,char*,int) ;
+ int ok (int,char*,...) ;
+ int p__get_fmode (int*) ;
+ int p__set_fmode (int) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__creat(void)
 {

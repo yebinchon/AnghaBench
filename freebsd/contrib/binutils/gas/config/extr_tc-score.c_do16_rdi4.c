@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int instruction; int relax_inst; int relax_size; } ;
 
-/* Variables and functions */
- scalar_t__ FAIL ; 
- int /*<<< orphan*/  _IMM4 ; 
- int data_op2 (char**,int,int /*<<< orphan*/ ) ; 
- int end_of_line (char*) ; 
- TYPE_1__ inst ; 
- int reglow_required_here (char**,int) ; 
- int skip_past_comma (char**) ; 
- int /*<<< orphan*/  skip_whitespace (char*) ; 
+
+ scalar_t__ FAIL ;
+ int _IMM4 ;
+ int data_op2 (char**,int,int ) ;
+ int end_of_line (char*) ;
+ TYPE_1__ inst ;
+ int reglow_required_here (char**,int) ;
+ int skip_past_comma (char**) ;
+ int skip_whitespace (char*) ;
 
 __attribute__((used)) static void
 do16_rdi4 (char *str)
@@ -37,7 +37,7 @@ do16_rdi4 (char *str)
     }
   else
     {
-      if (((inst.instruction >> 3) & 0x10) == 0)        /* for judge is addei or subei : bit 5 =0 : addei */
+      if (((inst.instruction >> 3) & 0x10) == 0)
         {
           if (((inst.instruction >> 3) & 0xf) != 0xf)
             {

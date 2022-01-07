@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-struct TYPE_9__ {int /*<<< orphan*/  baton; int /*<<< orphan*/  pool; } ;
-typedef  TYPE_2__ ra_svn_token_entry_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int svn_string_t ;
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_ra_svn__list_t ;
+typedef int svn_error_t ;
+struct TYPE_9__ {int baton; int pool; } ;
+typedef TYPE_2__ ra_svn_token_entry_t ;
 struct TYPE_10__ {TYPE_1__* editor; } ;
-typedef  TYPE_3__ ra_svn_driver_state_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_8__ {int /*<<< orphan*/  (* add_directory ) (char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ;} ;
+typedef TYPE_3__ ra_svn_driver_state_t ;
+typedef int apr_pool_t ;
+struct TYPE_8__ {int (* add_directory ) (char const*,int ,char const*,int ,int *,void**) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_CMD_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  lookup_token (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_2__**) ; 
- int /*<<< orphan*/  store_token (TYPE_3__*,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- char* svn_fspath__canonicalize (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_path_is_url (char const*) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/  const*,char*,char const**,int /*<<< orphan*/ **,int /*<<< orphan*/ **,char const**,int /*<<< orphan*/ *) ; 
- char* svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
- char* svn_uri_canonicalize (char const*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_CMD_ERR (int ) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int lookup_token (TYPE_3__*,int *,int ,TYPE_2__**) ;
+ int store_token (TYPE_3__*,void*,int *,int ,int *) ;
+ int stub1 (char const*,int ,char const*,int ,int *,void**) ;
+ char* svn_fspath__canonicalize (char const*,int *) ;
+ scalar_t__ svn_path_is_url (char const*) ;
+ int * svn_pool_create (int ) ;
+ int svn_ra_svn__parse_tuple (int const*,char*,char const**,int **,int **,char const**,int *) ;
+ char* svn_relpath_canonicalize (char const*,int *) ;
+ char* svn_uri_canonicalize (char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 ra_svn_handle_add_dir(svn_ra_svn_conn_t *conn,
@@ -59,8 +59,8 @@ ra_svn_handle_add_dir(svn_ra_svn_conn_t *conn,
   subpool = svn_pool_create(entry->pool);
   path = svn_relpath_canonicalize(path, pool);
 
-  /* Some operations pass COPY_PATH as a full URL (commits, etc.).
-     Others (replay, e.g.) deliver an fspath.  That's ... annoying. */
+
+
   if (copy_path)
     {
       if (svn_path_is_url(copy_path))

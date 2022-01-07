@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/ * mb_type; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int * mb_type; } ;
 struct TYPE_11__ {int mb_stride; scalar_t__* slice_table; TYPE_1__ cur_pic; } ;
-struct TYPE_10__ {scalar_t__ slice_num; int mb_xy; scalar_t__ slice_type_nos; int /*<<< orphan*/ * cabac_state; int /*<<< orphan*/  cabac; } ;
-typedef  TYPE_2__ H264SliceContext ;
-typedef  TYPE_3__ H264Context ;
+struct TYPE_10__ {scalar_t__ slice_num; int mb_xy; scalar_t__ slice_type_nos; int * cabac_state; int cabac; } ;
+typedef TYPE_2__ H264SliceContext ;
+typedef TYPE_3__ H264Context ;
 
-/* Variables and functions */
- scalar_t__ AV_PICTURE_TYPE_B ; 
- int FIELD_PICTURE (TYPE_3__ const*) ; 
- scalar_t__ FRAME_MBAFF (TYPE_3__ const*) ; 
- scalar_t__ IS_INTERLACED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IS_SKIP (int /*<<< orphan*/ ) ; 
- int MB_FIELD (TYPE_2__*) ; 
- int get_cabac_noinline (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AV_PICTURE_TYPE_B ;
+ int FIELD_PICTURE (TYPE_3__ const*) ;
+ scalar_t__ FRAME_MBAFF (TYPE_3__ const*) ;
+ scalar_t__ IS_INTERLACED (int ) ;
+ int IS_SKIP (int ) ;
+ int MB_FIELD (TYPE_2__*) ;
+ int get_cabac_noinline (int *,int *) ;
 
 __attribute__((used)) static int decode_cabac_mb_skip(const H264Context *h, H264SliceContext *sl,
                                 int mb_x, int mb_y)
@@ -34,7 +34,7 @@ __attribute__((used)) static int decode_cabac_mb_skip(const H264Context *h, H264
     int mba_xy, mbb_xy;
     int ctx = 0;
 
-    if (FRAME_MBAFF(h)) { //FIXME merge with the stuff in fill_caches?
+    if (FRAME_MBAFF(h)) {
         int mb_xy = mb_x + (mb_y&~1)*h->mb_stride;
         mba_xy = mb_xy - 1;
         if( (mb_y&1)

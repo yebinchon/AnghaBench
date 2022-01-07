@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  luaL_addchar (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- int luaL_optinteger (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- scalar_t__ platform_spi_send_recv (int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spi ; 
- int /*<<< orphan*/ * spi_databits ; 
+
+
+
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+
+
+ int MOD_CHECK_ID (int ,int) ;
+ int luaL_addchar (int *,char) ;
+ int luaL_buffinit (int *,int *) ;
+ int luaL_checkinteger (int *,int) ;
+ int luaL_optinteger (int *,int,int) ;
+ int luaL_pushresult (int *) ;
+ scalar_t__ platform_spi_send_recv (int,int ,int) ;
+ int spi ;
+ int * spi_databits ;
 
 __attribute__((used)) static int spi_recv( lua_State *L )
 {
-  int id   = luaL_checkinteger( L, 1 );
+  int id = luaL_checkinteger( L, 1 );
   int size = luaL_checkinteger( L, 2 ), i;
-  int def  = luaL_optinteger( L, 3, 0xffffffff );
+  int def = luaL_optinteger( L, 3, 0xffffffff );
 
   luaL_Buffer b;
 

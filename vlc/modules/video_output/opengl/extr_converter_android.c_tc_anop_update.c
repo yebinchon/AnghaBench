@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct priv {int /*<<< orphan*/ * transform_mtx; int /*<<< orphan*/  awh; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct priv {int * transform_mtx; int awh; } ;
 struct TYPE_9__ {TYPE_3__* p_sys; } ;
-typedef  TYPE_2__ picture_t ;
-struct TYPE_10__ {int /*<<< orphan*/  b_locked; } ;
-typedef  TYPE_3__ picture_sys_t ;
-struct TYPE_11__ {int /*<<< orphan*/  tex_target; TYPE_1__* vt; struct priv* priv; } ;
-typedef  TYPE_4__ opengl_tex_converter_t ;
-struct TYPE_8__ {int /*<<< orphan*/  (* BindTexture ) (int /*<<< orphan*/ ,scalar_t__) ;int /*<<< orphan*/  (* ActiveTexture ) (int /*<<< orphan*/ ) ;} ;
-typedef  scalar_t__ GLuint ;
-typedef  int /*<<< orphan*/  GLsizei ;
+typedef TYPE_2__ picture_t ;
+struct TYPE_10__ {int b_locked; } ;
+typedef TYPE_3__ picture_sys_t ;
+struct TYPE_11__ {int tex_target; TYPE_1__* vt; struct priv* priv; } ;
+typedef TYPE_4__ opengl_tex_converter_t ;
+struct TYPE_8__ {int (* BindTexture ) (int ,scalar_t__) ;int (* ActiveTexture ) (int ) ;} ;
+typedef scalar_t__ GLuint ;
+typedef int GLsizei ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AndroidOpaquePicture_Release (TYPE_3__*,int) ; 
- int /*<<< orphan*/  GL_TEXTURE0 ; 
- int SurfaceTexture_waitAndUpdateTexImage (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int VLC_EGENERIC ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,scalar_t__) ; 
+
+ int AndroidOpaquePicture_Release (TYPE_3__*,int) ;
+ int GL_TEXTURE0 ;
+ int SurfaceTexture_waitAndUpdateTexImage (int ,int **) ;
+ int VLC_EGENERIC ;
+ int VLC_SUCCESS ;
+ int assert (int) ;
+ int stub1 (int ) ;
+ int stub2 (int ,scalar_t__) ;
 
 __attribute__((used)) static int
 tc_anop_update(const opengl_tex_converter_t *tc, GLuint *textures,
@@ -44,7 +44,7 @@ tc_anop_update(const opengl_tex_converter_t *tc, GLuint *textures,
     (void) tex_width; (void) tex_height; (void) plane_offset;
     assert(textures[0] != 0);
 
-    if (plane_offset != NULL)
+    if (plane_offset != ((void*)0))
         return VLC_EGENERIC;
 
     if (!p_sys->b_locked)
@@ -52,12 +52,12 @@ tc_anop_update(const opengl_tex_converter_t *tc, GLuint *textures,
 
     struct priv *priv = tc->priv;
 
-    AndroidOpaquePicture_Release(pic->p_sys, true);
+    AndroidOpaquePicture_Release(pic->p_sys, 1);
 
     if (SurfaceTexture_waitAndUpdateTexImage(priv->awh, &priv->transform_mtx)
         != VLC_SUCCESS)
     {
-        priv->transform_mtx = NULL;
+        priv->transform_mtx = ((void*)0);
         return VLC_EGENERIC;
     }
 

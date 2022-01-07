@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_STORE_CTX ;
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_STORE_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_STORE_CTX_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_STORE_CTX_new () ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int X509_verify_cert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bad_f ; 
+
+
+
+typedef int X509_STORE_CTX ;
+typedef int X509 ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new_file (int ,char*) ;
+ int * PEM_read_bio_X509 (int *,int *,int ,int *) ;
+ int X509_STORE_CTX_free (int *) ;
+ int X509_STORE_CTX_init (int *,int *,int *,int *) ;
+ int * X509_STORE_CTX_new () ;
+ int X509_free (int *) ;
+ int X509_verify_cert (int *) ;
+ int bad_f ;
 
 __attribute__((used)) static int test_store_ctx(void)
 {
-    X509_STORE_CTX *sctx = NULL;
-    X509 *x = NULL;
-    BIO *bio = NULL;
+    X509_STORE_CTX *sctx = ((void*)0);
+    X509 *x = ((void*)0);
+    BIO *bio = ((void*)0);
     int testresult = 0, ret;
 
     bio = BIO_new_file(bad_f, "r");
-    if (bio == NULL)
+    if (bio == ((void*)0))
         goto err;
 
-    x = PEM_read_bio_X509(bio, NULL, 0, NULL);
-    if (x == NULL)
+    x = PEM_read_bio_X509(bio, ((void*)0), 0, ((void*)0));
+    if (x == ((void*)0))
         goto err;
 
     sctx = X509_STORE_CTX_new();
-    if (sctx == NULL)
+    if (sctx == ((void*)0))
         goto err;
 
-    if (!X509_STORE_CTX_init(sctx, NULL, x, NULL))
+    if (!X509_STORE_CTX_init(sctx, ((void*)0), x, ((void*)0)))
         goto err;
 
-    /* Verifying a cert where we have no trusted certs should fail */
+
     ret = X509_verify_cert(sctx);
 
     if (ret == 0) {
-        /* This is the result we were expecting: Test passed */
+
         testresult = 1;
     }
 

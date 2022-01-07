@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sockaddr_dl {size_t sdl_nlen; int /*<<< orphan*/  sdl_data; } ;
+
+
+
+
+struct sockaddr_dl {size_t sdl_nlen; int sdl_data; } ;
 struct sockaddr {scalar_t__ sa_family; } ;
-struct iface_addr {int /*<<< orphan*/  peer; int /*<<< orphan*/  ifa; } ;
-struct iface {int addrs; struct iface_addr* addr; scalar_t__ mtu; int /*<<< orphan*/  flags; int /*<<< orphan*/  index; int /*<<< orphan*/ * descr; int /*<<< orphan*/  name; } ;
-struct ifa_msghdr {scalar_t__ ifam_type; int ifam_addrs; int /*<<< orphan*/  ifam_msglen; } ;
-struct if_msghdr {scalar_t__ ifm_type; int /*<<< orphan*/  ifm_msglen; int /*<<< orphan*/  ifm_flags; int /*<<< orphan*/  ifm_index; } ;
+struct iface_addr {int peer; int ifa; } ;
+struct iface {int addrs; struct iface_addr* addr; scalar_t__ mtu; int flags; int index; int * descr; int name; } ;
+struct ifa_msghdr {scalar_t__ ifam_type; int ifam_addrs; int ifam_msglen; } ;
+struct if_msghdr {scalar_t__ ifm_type; int ifm_msglen; int ifm_flags; int ifm_index; } ;
 
-/* Variables and functions */
- scalar_t__ AF_INET ; 
- scalar_t__ AF_INET6 ; 
- int CTL_NET ; 
- int ENOMEM ; 
- int NET_RT_IFLIST ; 
- int PF_ROUTE ; 
- size_t RTAX_BRD ; 
- size_t RTAX_IFA ; 
- int RTAX_MAX ; 
- size_t RTAX_NETMASK ; 
- int RTA_IFA ; 
- scalar_t__ RTM_IFINFO ; 
- scalar_t__ RTM_NEWADDR ; 
- int errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  iface_ParseHdr (struct ifa_msghdr*,struct sockaddr**) ; 
- scalar_t__ malloc (int) ; 
- int /*<<< orphan*/  ncpaddr_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ncpaddr_setsa (int /*<<< orphan*/ *,struct sockaddr*) ; 
- int /*<<< orphan*/  ncprange_setsa (int /*<<< orphan*/ *,struct sockaddr*,struct sockaddr*) ; 
- scalar_t__ realloc (struct iface_addr*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strdup (char const*) ; 
- char* strerror (int) ; 
- size_t strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,int /*<<< orphan*/ ,size_t) ; 
- scalar_t__ sysctl (int*,int,char*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AF_INET ;
+ scalar_t__ AF_INET6 ;
+ int CTL_NET ;
+ int ENOMEM ;
+ int NET_RT_IFLIST ;
+ int PF_ROUTE ;
+ size_t RTAX_BRD ;
+ size_t RTAX_IFA ;
+ int RTAX_MAX ;
+ size_t RTAX_NETMASK ;
+ int RTA_IFA ;
+ scalar_t__ RTM_IFINFO ;
+ scalar_t__ RTM_NEWADDR ;
+ int errno ;
+ int fprintf (int ,char*,char*) ;
+ int free (char*) ;
+ int iface_ParseHdr (struct ifa_msghdr*,struct sockaddr**) ;
+ scalar_t__ malloc (int) ;
+ int ncpaddr_init (int *) ;
+ int ncpaddr_setsa (int *,struct sockaddr*) ;
+ int ncprange_setsa (int *,struct sockaddr*,struct sockaddr*) ;
+ scalar_t__ realloc (struct iface_addr*,int) ;
+ int stderr ;
+ int strdup (char const*) ;
+ char* strerror (int) ;
+ size_t strlen (char const*) ;
+ int strncmp (char const*,int ,size_t) ;
+ scalar_t__ sysctl (int*,int,char*,size_t*,int *,int ) ;
 
 struct iface *
 iface_Create(const char *name)
@@ -72,73 +72,73 @@ iface_Create(const char *name)
   do {
     if (maxtries-- == 0 || (err && err != ENOMEM)) {
       fprintf(stderr, "iface_Create: sysctl: %s\n", strerror(err));
-      return NULL;
+      return ((void*)0);
     }
 
-    if (sysctl(mib, 6, NULL, &needed, NULL, 0) < 0) {
+    if (sysctl(mib, 6, ((void*)0), &needed, ((void*)0), 0) < 0) {
       fprintf(stderr, "iface_Create: sysctl: estimate: %s\n",
                 strerror(errno));
-      return NULL;
+      return ((void*)0);
     }
 
-    if ((buf = (char *)malloc(needed)) == NULL) {
+    if ((buf = (char *)malloc(needed)) == ((void*)0)) {
       fprintf(stderr, "iface_Create: malloc failed: %s\n", strerror(errno));
-      return NULL;
+      return ((void*)0);
     }
 
-    if (sysctl(mib, 6, buf, &needed, NULL, 0) < 0) {
+    if (sysctl(mib, 6, buf, &needed, ((void*)0), 0) < 0) {
       err = errno;
       free(buf);
-      buf = NULL;
+      buf = ((void*)0);
     }
-  } while (buf == NULL);
+  } while (buf == ((void*)0));
 
   ptr = buf;
   end = buf + needed;
-  iface = NULL;
+  iface = ((void*)0);
   namelen = strlen(name);
 
-  while (ptr < end && iface == NULL) {
-    ifm = (struct if_msghdr *)ptr;			/* On if_msghdr */
+  while (ptr < end && iface == ((void*)0)) {
+    ifm = (struct if_msghdr *)ptr;
     if (ifm->ifm_type != RTM_IFINFO)
       break;
-    dl = (struct sockaddr_dl *)(ifm + 1);		/* Single _dl at end */
+    dl = (struct sockaddr_dl *)(ifm + 1);
     if (dl->sdl_nlen == namelen && !strncmp(name, dl->sdl_data, namelen)) {
       iface = (struct iface *)malloc(sizeof *iface);
-      if (iface == NULL) {
+      if (iface == ((void*)0)) {
         fprintf(stderr, "iface_Create: malloc: %s\n", strerror(errno));
-	free(buf);
-        return NULL;
+ free(buf);
+        return ((void*)0);
       }
       iface->name = strdup(name);
-      iface->descr = NULL;
+      iface->descr = ((void*)0);
       iface->index = ifm->ifm_index;
       iface->flags = ifm->ifm_flags;
       iface->mtu = 0;
       iface->addrs = 0;
-      iface->addr = NULL;
+      iface->addr = ((void*)0);
     }
-    ptr += ifm->ifm_msglen;				/* First ifa_msghdr */
+    ptr += ifm->ifm_msglen;
     for (; ptr < end; ptr += ifam->ifam_msglen) {
-      ifam = (struct ifa_msghdr *)ptr;			/* Next if address */
+      ifam = (struct ifa_msghdr *)ptr;
 
-      if (ifam->ifam_type != RTM_NEWADDR)		/* finished this if */
+      if (ifam->ifam_type != RTM_NEWADDR)
         break;
 
-      if (iface != NULL && ifam->ifam_addrs & RTA_IFA) {
-        /* Found a configured interface ! */
+      if (iface != ((void*)0) && ifam->ifam_addrs & RTA_IFA) {
+
         iface_ParseHdr(ifam, sa);
 
         if (sa[RTAX_IFA] && (sa[RTAX_IFA]->sa_family == AF_INET
-#ifndef NOINET6
+
                              || sa[RTAX_IFA]->sa_family == AF_INET6
-#endif
+
                              )) {
-          /* Record the address */
+
 
           addr = (struct iface_addr *)
             realloc(iface->addr, (iface->addrs + 1) * sizeof iface->addr[0]);
-          if (addr == NULL)
+          if (addr == ((void*)0))
             break;
           iface->addr = addr;
 

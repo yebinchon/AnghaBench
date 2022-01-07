@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
-typedef  int /*<<< orphan*/  strm_io ;
 
-/* Variables and functions */
-#define  STRM_IO_READ 129 
-#define  STRM_IO_WRITE 128 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_io_p (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_readio (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strm_value_io (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * strm_writeio (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int strm_value ;
+typedef int strm_stream ;
+typedef int strm_io ;
+
+
+
+
+ int assert (int ) ;
+ int strm_io_p (int ) ;
+ int * strm_readio (int ) ;
+ int strm_value_io (int ) ;
+ int * strm_writeio (int ) ;
 
 strm_stream*
 strm_io_stream(strm_value iov, int mode)
@@ -31,11 +31,11 @@ strm_io_stream(strm_value iov, int mode)
   assert(strm_io_p(iov));
   io = strm_value_io(iov);
   switch (mode) {
-  case STRM_IO_READ:
+  case 129:
     return strm_readio(io);
-  case STRM_IO_WRITE:
+  case 128:
     return strm_writeio(io);
  default:
-   return NULL;
+   return ((void*)0);
   }
 }

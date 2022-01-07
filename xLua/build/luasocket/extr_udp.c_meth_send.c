@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* p_udp ;
-typedef  int /*<<< orphan*/ * p_timeout ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  lua_Number ;
-struct TYPE_2__ {int /*<<< orphan*/  sock; int /*<<< orphan*/  tm; } ;
 
-/* Variables and functions */
- int IO_DONE ; 
- int /*<<< orphan*/  auxiliar_checkclass (int /*<<< orphan*/ *,char*,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int /*<<< orphan*/  lua_pushnil (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lua_pushnumber (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int socket_send (int /*<<< orphan*/ *,char const*,size_t,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timeout_markstart (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  udp_strerror (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef TYPE_1__* p_udp ;
+typedef int * p_timeout ;
+typedef int lua_State ;
+typedef int lua_Number ;
+struct TYPE_2__ {int sock; int tm; } ;
+
+
+ int IO_DONE ;
+ int auxiliar_checkclass (int *,char*,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int lua_pushnil (int *) ;
+ int lua_pushnumber (int *,int ) ;
+ int lua_pushstring (int *,int ) ;
+ int socket_send (int *,char const*,size_t,size_t*,int *) ;
+ int timeout_markstart (int *) ;
+ int udp_strerror (int) ;
 
 __attribute__((used)) static int meth_send(lua_State *L) {
     p_udp udp = (p_udp) auxiliar_checkclass(L, "udp{connected}", 1);

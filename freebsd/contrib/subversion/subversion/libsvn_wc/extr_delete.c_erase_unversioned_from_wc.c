@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR_BAD_FILENAME ; 
- int /*<<< orphan*/  SVN_ERR_UNSUPPORTED_FEATURE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_io_check_path (char const*,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_remove_dir2 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_io_remove_file2 (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
+
+
+
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int *) ;
+ int SVN_ERR_BAD_FILENAME ;
+ int SVN_ERR_UNSUPPORTED_FEATURE ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (int *) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_io_check_path (char const*,scalar_t__*,int *) ;
+ int * svn_io_remove_dir2 (char const*,int ,int ,void*,int *) ;
+ int * svn_io_remove_file2 (char const*,int ,int *) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
 
 __attribute__((used)) static svn_error_t *
 erase_unversioned_from_wc(const char *path,
@@ -41,11 +41,11 @@ erase_unversioned_from_wc(const char *path,
 {
   svn_error_t *err;
 
-  /* Optimize the common case: try to delete the file */
+
   err = svn_io_remove_file2(path, ignore_enoent, scratch_pool);
   if (err)
     {
-      /* Then maybe it was a directory? */
+
       svn_error_clear(err);
 
       err = svn_io_remove_dir2(path, ignore_enoent, cancel_func, cancel_baton,
@@ -53,9 +53,9 @@ erase_unversioned_from_wc(const char *path,
 
       if (err)
         {
-          /* We're unlikely to end up here. But we need this fallback
-             to make sure we report the right error *and* try the
-             correct deletion at least once. */
+
+
+
           svn_node_kind_t kind;
 
           svn_error_clear(err);
@@ -67,12 +67,12 @@ erase_unversioned_from_wc(const char *path,
                                        cancel_func, cancel_baton,
                                        scratch_pool));
           else if (kind == svn_node_none)
-            return svn_error_createf(SVN_ERR_BAD_FILENAME, NULL,
+            return svn_error_createf(SVN_ERR_BAD_FILENAME, ((void*)0),
                                      _("'%s' does not exist"),
                                      svn_dirent_local_style(path,
                                                             scratch_pool));
           else
-            return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+            return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                      _("Unsupported node kind for path '%s'"),
                                      svn_dirent_local_style(path,
                                                             scratch_pool));

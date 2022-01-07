@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ciss_request {int /*<<< orphan*/  cr_tag; struct ciss_command* cr_cc; } ;
-struct TYPE_2__ {int /*<<< orphan*/  host_tag; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ciss_request {int cr_tag; struct ciss_command* cr_cc; } ;
+struct TYPE_2__ {int host_tag; } ;
 struct ciss_command {TYPE_1__ header; } ;
 
-/* Variables and functions */
- int ciss_map_request (struct ciss_request*) ; 
- int /*<<< orphan*/  ciss_print_request (struct ciss_request*) ; 
- int /*<<< orphan*/  debug (int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ciss_map_request (struct ciss_request*) ;
+ int ciss_print_request (struct ciss_request*) ;
+ int debug (int,char*,int ,int ) ;
 
 __attribute__((used)) static int
 ciss_start(struct ciss_request *cr)
 {
-    struct ciss_command	*cc;	/* XXX debugging only */
-    int			error;
+    struct ciss_command *cc;
+    int error;
 
     cc = cr->cr_cc;
     debug(2, "post command %d tag %d ", cr->cr_tag, cc->header.host_tag);
 
-    /*
-     * Map the request's data.
-     */
-    if ((error = ciss_map_request(cr)))
-	return(error);
 
-#if 0
-    ciss_print_request(cr);
-#endif
+
+
+    if ((error = ciss_map_request(cr)))
+ return(error);
+
+
+
+
 
     return(0);
 }

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t UINT ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t UINT ;
 struct TYPE_5__ {size_t prop_count; TYPE_1__* prop_item; } ;
 struct TYPE_4__ {scalar_t__ id; int length; scalar_t__ value; } ;
-typedef  TYPE_2__ GpBitmap ;
-typedef  int DWORD ;
-typedef  int BYTE ;
+typedef TYPE_2__ GpBitmap ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- scalar_t__ PropertyTagGlobalPalette ; 
- scalar_t__ PropertyTagIndexBackground ; 
- scalar_t__ PropertyTagIndexTransparent ; 
+
+ int FIXME (char*) ;
+ scalar_t__ PropertyTagGlobalPalette ;
+ scalar_t__ PropertyTagIndexBackground ;
+ scalar_t__ PropertyTagIndexTransparent ;
 
 __attribute__((used)) static DWORD get_gif_background_color(GpBitmap *bitmap)
 {

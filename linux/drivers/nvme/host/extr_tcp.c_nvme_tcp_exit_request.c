@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct request {int dummy; } ;
-struct nvme_tcp_request {int /*<<< orphan*/  pdu; } ;
+struct nvme_tcp_request {int pdu; } ;
 struct blk_mq_tag_set {int dummy; } ;
 
-/* Variables and functions */
- struct nvme_tcp_request* blk_mq_rq_to_pdu (struct request*) ; 
- int /*<<< orphan*/  page_frag_free (int /*<<< orphan*/ ) ; 
+
+ struct nvme_tcp_request* blk_mq_rq_to_pdu (struct request*) ;
+ int page_frag_free (int ) ;
 
 __attribute__((used)) static void nvme_tcp_exit_request(struct blk_mq_tag_set *set,
-		struct request *rq, unsigned int hctx_idx)
+  struct request *rq, unsigned int hctx_idx)
 {
-	struct nvme_tcp_request *req = blk_mq_rq_to_pdu(rq);
+ struct nvme_tcp_request *req = blk_mq_rq_to_pdu(rq);
 
-	page_frag_free(req->pdu);
+ page_frag_free(req->pdu);
 }

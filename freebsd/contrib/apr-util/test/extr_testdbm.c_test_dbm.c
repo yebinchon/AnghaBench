@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dbm_table_t ;
-typedef  scalar_t__ apr_status_t ;
-typedef  int /*<<< orphan*/  apr_dbm_t ;
-typedef  int /*<<< orphan*/  abts_case ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ABTS_INT_EQUAL (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  APR_DBM_READONLY ; 
- int /*<<< orphan*/  APR_DBM_RWCREATE ; 
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- scalar_t__ APR_SUCCESS ; 
- int /*<<< orphan*/  apr_dbm_close (int /*<<< orphan*/ *) ; 
- scalar_t__ apr_dbm_open_ex (int /*<<< orphan*/ **,char const*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* apr_pstrcat (int /*<<< orphan*/ ,char*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * generate_table () ; 
- int /*<<< orphan*/  p ; 
- int /*<<< orphan*/  test_dbm_delete (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_dbm_exists (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_dbm_fetch (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_dbm_store (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  test_dbm_traversal (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int dbm_table_t ;
+typedef scalar_t__ apr_status_t ;
+typedef int apr_dbm_t ;
+typedef int abts_case ;
+
+
+ int ABTS_INT_EQUAL (int *,scalar_t__,scalar_t__) ;
+ int APR_DBM_READONLY ;
+ int APR_DBM_RWCREATE ;
+ int APR_OS_DEFAULT ;
+ scalar_t__ APR_SUCCESS ;
+ int apr_dbm_close (int *) ;
+ scalar_t__ apr_dbm_open_ex (int **,char const*,char const*,int ,int ,int ) ;
+ char* apr_pstrcat (int ,char*,char const*,int *) ;
+ int * generate_table () ;
+ int p ;
+ int test_dbm_delete (int *,int *,int *) ;
+ int test_dbm_exists (int *,int *,int *) ;
+ int test_dbm_fetch (int *,int *,int *) ;
+ int test_dbm_store (int *,int *,int *) ;
+ int test_dbm_traversal (int *,int *,int *) ;
 
 __attribute__((used)) static void test_dbm(abts_case *tc, void *data)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void test_dbm(abts_case *tc, void *data)
     apr_status_t rv;
     dbm_table_t *table;
     const char *type = data;
-    const char *file = apr_pstrcat(p, "data/test-", type, NULL);
+    const char *file = apr_pstrcat(p, "data/test-", type, ((void*)0));
 
     rv = apr_dbm_open_ex(&db, type, file, APR_DBM_RWCREATE, APR_OS_DEFAULT, p);
     ABTS_INT_EQUAL(tc, APR_SUCCESS, rv);

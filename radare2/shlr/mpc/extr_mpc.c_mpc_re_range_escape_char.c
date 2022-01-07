@@ -1,18 +1,9 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 __attribute__((used)) static const char *mpc_re_range_escape_char(char c) {
   switch (c) {
     case '-': return "-";
@@ -26,6 +17,6 @@ __attribute__((used)) static const char *mpc_re_range_escape_char(char c) {
     case 'd': return "0123456789";
     case 's': return " \f\n\r\t\v";
     case 'w': return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
-    default: return NULL;
+    default: return ((void*)0);
   }
 }

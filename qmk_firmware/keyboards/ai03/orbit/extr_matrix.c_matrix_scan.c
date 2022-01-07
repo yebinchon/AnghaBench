@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
 
-/* Variables and functions */
- scalar_t__ ERROR_DISCONNECT_COUNT ; 
- int ROWS_PER_HAND ; 
- scalar_t__ _matrix_scan () ; 
- scalar_t__ is_keyboard_master () ; 
- scalar_t__* matrix ; 
- int /*<<< orphan*/  matrix_scan_quantum () ; 
- int /*<<< orphan*/  matrix_slave_scan_user () ; 
- int thatHand ; 
- int thisHand ; 
- int /*<<< orphan*/  transport_master (scalar_t__*) ; 
- int /*<<< orphan*/  transport_slave (scalar_t__*) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+
+
+ scalar_t__ ERROR_DISCONNECT_COUNT ;
+ int ROWS_PER_HAND ;
+ scalar_t__ _matrix_scan () ;
+ scalar_t__ is_keyboard_master () ;
+ scalar_t__* matrix ;
+ int matrix_scan_quantum () ;
+ int matrix_slave_scan_user () ;
+ int thatHand ;
+ int thisHand ;
+ int transport_master (scalar_t__*) ;
+ int transport_slave (scalar_t__*) ;
 
 uint8_t matrix_scan(void) {
   uint8_t ret = _matrix_scan();
@@ -35,7 +35,7 @@ uint8_t matrix_scan(void) {
       error_count++;
 
       if (error_count > ERROR_DISCONNECT_COUNT) {
-        // reset other half if disconnected
+
         for (int i = 0; i < ROWS_PER_HAND; ++i) {
           matrix[thatHand + i] = 0;
         }

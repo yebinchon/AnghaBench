@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fimd_context {int suspended; int /*<<< orphan*/  crtc; int /*<<< orphan*/  irq_flags; int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct fimd_context {int suspended; int crtc; int irq_flags; int dev; } ;
 struct exynos_drm_crtc {struct fimd_context* ctx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fimd_commit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fimd_enable_vblank (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pm_runtime_get_sync (int /*<<< orphan*/ ) ; 
- scalar_t__ test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int fimd_commit (int ) ;
+ int fimd_enable_vblank (int ) ;
+ int pm_runtime_get_sync (int ) ;
+ scalar_t__ test_and_clear_bit (int ,int *) ;
 
 __attribute__((used)) static void fimd_enable(struct exynos_drm_crtc *crtc)
 {
-	struct fimd_context *ctx = crtc->ctx;
+ struct fimd_context *ctx = crtc->ctx;
 
-	if (!ctx->suspended)
-		return;
+ if (!ctx->suspended)
+  return;
 
-	ctx->suspended = false;
+ ctx->suspended = 0;
 
-	pm_runtime_get_sync(ctx->dev);
+ pm_runtime_get_sync(ctx->dev);
 
-	/* if vblank was enabled status, enable it again. */
-	if (test_and_clear_bit(0, &ctx->irq_flags))
-		fimd_enable_vblank(ctx->crtc);
 
-	fimd_commit(ctx->crtc);
+ if (test_and_clear_bit(0, &ctx->irq_flags))
+  fimd_enable_vblank(ctx->crtc);
+
+ fimd_commit(ctx->crtc);
 }

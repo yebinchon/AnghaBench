@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct station_info {int /*<<< orphan*/  ip; int /*<<< orphan*/  bssid; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IP2STR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPSTR ; 
- int /*<<< orphan*/  MAC2STR (int /*<<< orphan*/ ) ; 
- char* MACSTR ; 
- struct station_info* STAILQ_NEXT (struct station_info*,int /*<<< orphan*/ ) ; 
- scalar_t__ STATION_MODE ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  lua_newtable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  next ; 
- int /*<<< orphan*/  sprintf (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wifi_add_sprintf_field (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ wifi_get_opmode () ; 
- int /*<<< orphan*/  wifi_softap_free_station_info () ; 
- struct station_info* wifi_softap_get_station_info () ; 
+
+
+
+struct station_info {int ip; int bssid; } ;
+typedef int lua_State ;
+
+
+ int IP2STR (int *) ;
+ int IPSTR ;
+ int MAC2STR (int ) ;
+ char* MACSTR ;
+ struct station_info* STAILQ_NEXT (struct station_info*,int ) ;
+ scalar_t__ STATION_MODE ;
+ int luaL_error (int *,char*) ;
+ int lua_newtable (int *) ;
+ int next ;
+ int sprintf (char*,char*,int ) ;
+ int wifi_add_sprintf_field (int *,char*,int ,int ) ;
+ scalar_t__ wifi_get_opmode () ;
+ int wifi_softap_free_station_info () ;
+ struct station_info* wifi_softap_get_station_info () ;
 
 __attribute__((used)) static int wifi_ap_listclient( lua_State* L )
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static int wifi_ap_listclient( lua_State* L )
 
   struct station_info * station = wifi_softap_get_station_info();
   struct station_info * next_station;
-  while (station != NULL)
+  while (station != ((void*)0))
   {
     sprintf(temp, MACSTR, MAC2STR(station->bssid));
     wifi_add_sprintf_field(L, temp, IPSTR, IP2STR(&station->ip));

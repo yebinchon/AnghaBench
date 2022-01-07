@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * xmlNodePtr ;
-typedef  int /*<<< orphan*/  xmlChar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlGenericError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  xmlGenericErrorContext ; 
- int /*<<< orphan*/  xmlNodeAddContentLen (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int xmlStrlen (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int * xmlNodePtr ;
+typedef int xmlChar ;
+
+
+ int xmlGenericError (int ,char*) ;
+ int xmlGenericErrorContext ;
+ int xmlNodeAddContentLen (int *,int const*,int) ;
+ int xmlStrlen (int const*) ;
 
 void
 xmlNodeAddContent(xmlNodePtr cur, const xmlChar *content) {
     int len;
 
-    if (cur == NULL) {
-#ifdef DEBUG_TREE
-        xmlGenericError(xmlGenericErrorContext,
-		"xmlNodeAddContent : node == NULL\n");
-#endif
-	return;
+    if (cur == ((void*)0)) {
+
+
+
+
+ return;
     }
-    if (content == NULL) return;
+    if (content == ((void*)0)) return;
     len = xmlStrlen(content);
     xmlNodeAddContentLen(cur, content, len);
 }

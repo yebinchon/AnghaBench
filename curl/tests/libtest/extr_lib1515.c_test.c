@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  target_url ;
-typedef  int /*<<< orphan*/  dns_entry ;
-typedef  int /*<<< orphan*/  CURLM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- scalar_t__ DNS_TIMEOUT ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  curl_multi_cleanup (int /*<<< orphan*/ *) ; 
- int do_one_request (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- char* libtest_arg2 ; 
- char* libtest_arg3 ; 
- int /*<<< orphan*/  msnprintf (char*,int,char*,char*,char*,...) ; 
- int /*<<< orphan*/  multi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sleep (scalar_t__) ; 
- int /*<<< orphan*/  start_test_timing () ; 
+
+
+
+typedef int target_url ;
+typedef int dns_entry ;
+typedef int CURLM ;
+
+
+ int CURL_GLOBAL_ALL ;
+ scalar_t__ DNS_TIMEOUT ;
+ int curl_global_cleanup () ;
+ int curl_multi_cleanup (int *) ;
+ int do_one_request (int *,char*,char*) ;
+ int global_init (int ) ;
+ char* libtest_arg2 ;
+ char* libtest_arg3 ;
+ int msnprintf (char*,int,char*,char*,char*,...) ;
+ int multi_init (int *) ;
+ int sleep (scalar_t__) ;
+ int start_test_timing () ;
 
 int test(char *URL)
 {
-  CURLM *multi = NULL;
+  CURLM *multi = ((void*)0);
   int res = 0;
   char *address = libtest_arg2;
   char *port = libtest_arg3;
@@ -52,7 +52,7 @@ int test(char *URL)
     msnprintf(target_url, sizeof(target_url),
               "http://testserver.example.com:%s/%s%04d", port, path, i);
 
-    /* second request must succeed like the first one */
+
     res = do_one_request(multi, target_url, dns_entry);
     if(res)
       goto test_cleanup;

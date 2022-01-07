@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int msg_t ;
 
-/* Variables and functions */
- int TOGGLE_CAPS_LOCK ; 
- int TOGGLE_NUM_LOCK ; 
- int USB_LED_CAPS_LOCK ; 
- int USB_LED_NUM_LOCK ; 
- int /*<<< orphan*/  chMBPostI (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  chSysUnconditionalLock () ; 
- int /*<<< orphan*/  chSysUnconditionalUnlock () ; 
- int /*<<< orphan*/  led_mailbox ; 
+
+
+
+typedef int uint8_t ;
+typedef int msg_t ;
+
+
+ int TOGGLE_CAPS_LOCK ;
+ int TOGGLE_NUM_LOCK ;
+ int USB_LED_CAPS_LOCK ;
+ int USB_LED_NUM_LOCK ;
+ int chMBPostI (int *,int) ;
+ int chSysUnconditionalLock () ;
+ int chSysUnconditionalUnlock () ;
+ int led_mailbox ;
 
 void led_set(uint8_t usb_led) {
     msg_t msg;

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  name; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int name; } ;
 struct TYPE_5__ {TYPE_1__ data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int MAXPGPATH ; 
- TYPE_2__* MyReplicationSlot ; 
- char* NameStr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SaveSlotToPath (TYPE_2__*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+ int Assert (int ) ;
+ int ERROR ;
+ int MAXPGPATH ;
+ TYPE_2__* MyReplicationSlot ;
+ char* NameStr (int ) ;
+ int SaveSlotToPath (TYPE_2__*,char*,int ) ;
+ int sprintf (char*,char*,char*) ;
 
 void
 ReplicationSlotSave(void)
 {
-	char		path[MAXPGPATH];
+ char path[MAXPGPATH];
 
-	Assert(MyReplicationSlot != NULL);
+ Assert(MyReplicationSlot != ((void*)0));
 
-	sprintf(path, "pg_replslot/%s", NameStr(MyReplicationSlot->data.name));
-	SaveSlotToPath(MyReplicationSlot, path, ERROR);
+ sprintf(path, "pg_replslot/%s", NameStr(MyReplicationSlot->data.name));
+ SaveSlotToPath(MyReplicationSlot, path, ERROR);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ num_fixed_sizes; int /*<<< orphan*/  available_sizes; } ;
-typedef  int /*<<< orphan*/  FT_Memory ;
-typedef  TYPE_1__* FT_Face ;
-typedef  int /*<<< orphan*/  FNT_Face ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FT_FACE_MEMORY (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FT_FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fnt_font_done (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ num_fixed_sizes; int available_sizes; } ;
+typedef int FT_Memory ;
+typedef TYPE_1__* FT_Face ;
+typedef int FNT_Face ;
+
+
+ int FT_FACE_MEMORY (int ) ;
+ int FT_FREE (int ) ;
+ int fnt_font_done (int ) ;
 
 __attribute__((used)) static void
-  FNT_Face_Done( FT_Face  fntface )       /* FNT_Face */
+  FNT_Face_Done( FT_Face fntface )
   {
-    FNT_Face   face = (FNT_Face)fntface;
-    FT_Memory  memory;
+    FNT_Face face = (FNT_Face)fntface;
+    FT_Memory memory;
 
 
     if ( !face )

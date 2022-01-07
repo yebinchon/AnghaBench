@@ -1,130 +1,130 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kern_ctl_reg {int ctl_sendsize; int ctl_recvsize; int /*<<< orphan*/  ctl_getopt; int /*<<< orphan*/  ctl_setopt; int /*<<< orphan*/  ctl_send; int /*<<< orphan*/  ctl_disconnect; int /*<<< orphan*/  ctl_connect; int /*<<< orphan*/  ctl_bind; int /*<<< orphan*/  ctl_flags; scalar_t__* ctl_name; } ;
+
+
+
+
+struct kern_ctl_reg {int ctl_sendsize; int ctl_recvsize; int ctl_getopt; int ctl_setopt; int ctl_send; int ctl_disconnect; int ctl_connect; int ctl_bind; int ctl_flags; scalar_t__* ctl_name; } ;
 struct ipsec_pcb {int dummy; } ;
-typedef  int /*<<< orphan*/  kern_ctl ;
-typedef  scalar_t__ errno_t ;
+typedef int kern_ctl ;
+typedef scalar_t__ errno_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CTL_FLAG_PRIVILEGED ; 
- scalar_t__ ENOMEM ; 
- int /*<<< orphan*/  IPSEC_CONTROL_NAME ; 
- int IPSEC_PCB_ZONE_MAX ; 
- int /*<<< orphan*/  IPSEC_PCB_ZONE_NAME ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  PF_INET6 ; 
- int /*<<< orphan*/  TAILQ_INIT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bzero (struct kern_ctl_reg*,int) ; 
- int /*<<< orphan*/  ctl_deregister (int /*<<< orphan*/ ) ; 
- scalar_t__ ctl_register (struct kern_ctl_reg*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ipsec_attach_proto ; 
- int /*<<< orphan*/  ipsec_ctl_bind ; 
- int /*<<< orphan*/  ipsec_ctl_connect ; 
- int /*<<< orphan*/  ipsec_ctl_disconnect ; 
- int /*<<< orphan*/  ipsec_ctl_getopt ; 
- int /*<<< orphan*/  ipsec_ctl_send ; 
- int /*<<< orphan*/  ipsec_ctl_setopt ; 
- int ipsec_family ; 
- int /*<<< orphan*/  ipsec_head ; 
- int /*<<< orphan*/  ipsec_kctlref ; 
- int /*<<< orphan*/  ipsec_lck_attr ; 
- int /*<<< orphan*/  ipsec_lck_grp ; 
- int /*<<< orphan*/  ipsec_lck_grp_attr ; 
- int /*<<< orphan*/  ipsec_lock ; 
- int ipsec_pcb_size ; 
- int /*<<< orphan*/ * ipsec_pcb_zone ; 
- int /*<<< orphan*/  ipsec_register_nexus () ; 
- int /*<<< orphan*/  lck_attr_alloc_init () ; 
- int /*<<< orphan*/  lck_grp_alloc_init (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lck_grp_attr_alloc_init () ; 
- int /*<<< orphan*/  lck_mtx_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mbuf_tag_id_find (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- scalar_t__ proto_register_plumber (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  proto_unregister_plumber (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strlcpy (scalar_t__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * zinit (int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CTL_FLAG_PRIVILEGED ;
+ scalar_t__ ENOMEM ;
+ int IPSEC_CONTROL_NAME ;
+ int IPSEC_PCB_ZONE_MAX ;
+ int IPSEC_PCB_ZONE_NAME ;
+ int PF_INET ;
+ int PF_INET6 ;
+ int TAILQ_INIT (int *) ;
+ int bzero (struct kern_ctl_reg*,int) ;
+ int ctl_deregister (int ) ;
+ scalar_t__ ctl_register (struct kern_ctl_reg*,int *) ;
+ int ipsec_attach_proto ;
+ int ipsec_ctl_bind ;
+ int ipsec_ctl_connect ;
+ int ipsec_ctl_disconnect ;
+ int ipsec_ctl_getopt ;
+ int ipsec_ctl_send ;
+ int ipsec_ctl_setopt ;
+ int ipsec_family ;
+ int ipsec_head ;
+ int ipsec_kctlref ;
+ int ipsec_lck_attr ;
+ int ipsec_lck_grp ;
+ int ipsec_lck_grp_attr ;
+ int ipsec_lock ;
+ int ipsec_pcb_size ;
+ int * ipsec_pcb_zone ;
+ int ipsec_register_nexus () ;
+ int lck_attr_alloc_init () ;
+ int lck_grp_alloc_init (char*,int ) ;
+ int lck_grp_attr_alloc_init () ;
+ int lck_mtx_init (int *,int ,int ) ;
+ scalar_t__ mbuf_tag_id_find (int ,int*) ;
+ int printf (char*,...) ;
+ scalar_t__ proto_register_plumber (int ,int,int ,int *) ;
+ int proto_unregister_plumber (int ,int) ;
+ int strlcpy (scalar_t__*,int ,int) ;
+ int * zinit (int,int,int ,int ) ;
 
 errno_t
 ipsec_register_control(void)
 {
-	struct kern_ctl_reg	kern_ctl;
-	errno_t				result = 0;
-	
-	/* Find a unique value for our interface family */
-	result = mbuf_tag_id_find(IPSEC_CONTROL_NAME, &ipsec_family);
-	if (result != 0) {
-		printf("ipsec_register_control - mbuf_tag_id_find_internal failed: %d\n", result);
-		return result;
-	}
+ struct kern_ctl_reg kern_ctl;
+ errno_t result = 0;
 
-	ipsec_pcb_size = sizeof(struct ipsec_pcb);
-	ipsec_pcb_zone = zinit(ipsec_pcb_size,
-						   IPSEC_PCB_ZONE_MAX * ipsec_pcb_size,
-						   0, IPSEC_PCB_ZONE_NAME);
-	if (ipsec_pcb_zone == NULL) {
-		printf("ipsec_register_control - zinit(ipsec_pcb) failed");
-		return ENOMEM;
-	}
 
-#if IPSEC_NEXUS
-	ipsec_register_nexus();
-#endif // IPSEC_NEXUS
+ result = mbuf_tag_id_find(IPSEC_CONTROL_NAME, &ipsec_family);
+ if (result != 0) {
+  printf("ipsec_register_control - mbuf_tag_id_find_internal failed: %d\n", result);
+  return result;
+ }
 
-	TAILQ_INIT(&ipsec_head);
-	
-	bzero(&kern_ctl, sizeof(kern_ctl));
-	strlcpy(kern_ctl.ctl_name, IPSEC_CONTROL_NAME, sizeof(kern_ctl.ctl_name));
-	kern_ctl.ctl_name[sizeof(kern_ctl.ctl_name) - 1] = 0;
-	kern_ctl.ctl_flags = CTL_FLAG_PRIVILEGED; /* Require root */
-	kern_ctl.ctl_sendsize = 64 * 1024;
-	kern_ctl.ctl_recvsize = 64 * 1024;
-	kern_ctl.ctl_bind = ipsec_ctl_bind;
-	kern_ctl.ctl_connect = ipsec_ctl_connect;
-	kern_ctl.ctl_disconnect = ipsec_ctl_disconnect;
-	kern_ctl.ctl_send = ipsec_ctl_send;
-	kern_ctl.ctl_setopt = ipsec_ctl_setopt;
-	kern_ctl.ctl_getopt = ipsec_ctl_getopt;
-	
-	result = ctl_register(&kern_ctl, &ipsec_kctlref);
-	if (result != 0) {
-		printf("ipsec_register_control - ctl_register failed: %d\n", result);
-		return result;
-	}
-	
-	/* Register the protocol plumbers */
-	if ((result = proto_register_plumber(PF_INET, ipsec_family,
-										 ipsec_attach_proto, NULL)) != 0) {
-		printf("ipsec_register_control - proto_register_plumber(PF_INET, %d) failed: %d\n",
-			   ipsec_family, result);
-		ctl_deregister(ipsec_kctlref);
-		return result;
-	}
-	
-	/* Register the protocol plumbers */
-	if ((result = proto_register_plumber(PF_INET6, ipsec_family,
-										 ipsec_attach_proto, NULL)) != 0) {
-		proto_unregister_plumber(PF_INET, ipsec_family);
-		ctl_deregister(ipsec_kctlref);
-		printf("ipsec_register_control - proto_register_plumber(PF_INET6, %d) failed: %d\n",
-			   ipsec_family, result);
-		return result;
-	}
+ ipsec_pcb_size = sizeof(struct ipsec_pcb);
+ ipsec_pcb_zone = zinit(ipsec_pcb_size,
+         IPSEC_PCB_ZONE_MAX * ipsec_pcb_size,
+         0, IPSEC_PCB_ZONE_NAME);
+ if (ipsec_pcb_zone == ((void*)0)) {
+  printf("ipsec_register_control - zinit(ipsec_pcb) failed");
+  return ENOMEM;
+ }
 
-	ipsec_lck_attr = lck_attr_alloc_init();
-	ipsec_lck_grp_attr = lck_grp_attr_alloc_init();
-	ipsec_lck_grp = lck_grp_alloc_init("ipsec", ipsec_lck_grp_attr);
-	lck_mtx_init(&ipsec_lock, ipsec_lck_grp, ipsec_lck_attr);
-	
-	return 0;
+
+
+
+
+ TAILQ_INIT(&ipsec_head);
+
+ bzero(&kern_ctl, sizeof(kern_ctl));
+ strlcpy(kern_ctl.ctl_name, IPSEC_CONTROL_NAME, sizeof(kern_ctl.ctl_name));
+ kern_ctl.ctl_name[sizeof(kern_ctl.ctl_name) - 1] = 0;
+ kern_ctl.ctl_flags = CTL_FLAG_PRIVILEGED;
+ kern_ctl.ctl_sendsize = 64 * 1024;
+ kern_ctl.ctl_recvsize = 64 * 1024;
+ kern_ctl.ctl_bind = ipsec_ctl_bind;
+ kern_ctl.ctl_connect = ipsec_ctl_connect;
+ kern_ctl.ctl_disconnect = ipsec_ctl_disconnect;
+ kern_ctl.ctl_send = ipsec_ctl_send;
+ kern_ctl.ctl_setopt = ipsec_ctl_setopt;
+ kern_ctl.ctl_getopt = ipsec_ctl_getopt;
+
+ result = ctl_register(&kern_ctl, &ipsec_kctlref);
+ if (result != 0) {
+  printf("ipsec_register_control - ctl_register failed: %d\n", result);
+  return result;
+ }
+
+
+ if ((result = proto_register_plumber(PF_INET, ipsec_family,
+           ipsec_attach_proto, ((void*)0))) != 0) {
+  printf("ipsec_register_control - proto_register_plumber(PF_INET, %d) failed: %d\n",
+      ipsec_family, result);
+  ctl_deregister(ipsec_kctlref);
+  return result;
+ }
+
+
+ if ((result = proto_register_plumber(PF_INET6, ipsec_family,
+           ipsec_attach_proto, ((void*)0))) != 0) {
+  proto_unregister_plumber(PF_INET, ipsec_family);
+  ctl_deregister(ipsec_kctlref);
+  printf("ipsec_register_control - proto_register_plumber(PF_INET6, %d) failed: %d\n",
+      ipsec_family, result);
+  return result;
+ }
+
+ ipsec_lck_attr = lck_attr_alloc_init();
+ ipsec_lck_grp_attr = lck_grp_attr_alloc_init();
+ ipsec_lck_grp = lck_grp_alloc_init("ipsec", ipsec_lck_grp_attr);
+ lck_mtx_init(&ipsec_lock, ipsec_lck_grp, ipsec_lck_attr);
+
+ return 0;
 }

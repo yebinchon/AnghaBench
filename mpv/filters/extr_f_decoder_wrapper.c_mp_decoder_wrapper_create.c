@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct sh_stream {scalar_t__ type; TYPE_1__* codec; } ;
 struct mp_decoder_wrapper {int play_dir; scalar_t__ fps; struct mp_filter* f; } ;
-struct priv {int /*<<< orphan*/  demux; struct sh_stream* header; void* log; struct mp_decoder_wrapper public; TYPE_2__* opt_cache; TYPE_1__* codec; struct mp_filter* f; } ;
-struct mp_filter {int /*<<< orphan*/ * pins; void* log; int /*<<< orphan*/  global; struct priv* priv; } ;
+struct priv {int demux; struct sh_stream* header; void* log; struct mp_decoder_wrapper public; TYPE_2__* opt_cache; TYPE_1__* codec; struct mp_filter* f; } ;
+struct mp_filter {int * pins; void* log; int global; struct priv* priv; } ;
 struct MPOpts {scalar_t__ force_fps; } ;
 struct TYPE_4__ {struct MPOpts* opts; } ;
 struct TYPE_3__ {scalar_t__ fps; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLOBAL_CONFIG ; 
- int /*<<< orphan*/  MP_INFO (struct priv*,char*,...) ; 
- int /*<<< orphan*/  MP_PIN_OUT ; 
- int /*<<< orphan*/  MP_VERBOSE (struct priv*,char*,scalar_t__) ; 
- scalar_t__ STREAM_AUDIO ; 
- scalar_t__ STREAM_VIDEO ; 
- int /*<<< orphan*/  decode_wrapper_filter ; 
- TYPE_2__* m_config_cache_alloc (struct priv*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct mp_filter* mp_demux_in_create (struct mp_filter*,struct sh_stream*) ; 
- int /*<<< orphan*/  mp_filter_add_pin (struct mp_filter*,int /*<<< orphan*/ ,char*) ; 
- struct mp_filter* mp_filter_create (struct mp_filter*,int /*<<< orphan*/ *) ; 
- void* mp_log_new (struct mp_filter*,void*,char*) ; 
- int /*<<< orphan*/  reset (struct mp_filter*) ; 
- int /*<<< orphan*/  talloc_free (struct mp_filter*) ; 
+
+ int GLOBAL_CONFIG ;
+ int MP_INFO (struct priv*,char*,...) ;
+ int MP_PIN_OUT ;
+ int MP_VERBOSE (struct priv*,char*,scalar_t__) ;
+ scalar_t__ STREAM_AUDIO ;
+ scalar_t__ STREAM_VIDEO ;
+ int decode_wrapper_filter ;
+ TYPE_2__* m_config_cache_alloc (struct priv*,int ,int ) ;
+ struct mp_filter* mp_demux_in_create (struct mp_filter*,struct sh_stream*) ;
+ int mp_filter_add_pin (struct mp_filter*,int ,char*) ;
+ struct mp_filter* mp_filter_create (struct mp_filter*,int *) ;
+ void* mp_log_new (struct mp_filter*,void*,char*) ;
+ int reset (struct mp_filter*) ;
+ int talloc_free (struct mp_filter*) ;
 
 struct mp_decoder_wrapper *mp_decoder_wrapper_create(struct mp_filter *parent,
                                                      struct sh_stream *src)
 {
     struct mp_filter *f = mp_filter_create(parent, &decode_wrapper_filter);
     if (!f)
-        return NULL;
+        return ((void*)0);
 
     struct priv *p = f->priv;
     struct mp_decoder_wrapper *w = &p->public;
@@ -84,5 +84,5 @@ struct mp_decoder_wrapper *mp_decoder_wrapper_create(struct mp_filter *parent,
     return w;
 error:
     talloc_free(f);
-    return NULL;
+    return ((void*)0);
 }

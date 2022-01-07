@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int /*<<< orphan*/  assert_se (int) ; 
- scalar_t__ drop_privileges (scalar_t__,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ getgid () ; 
- scalar_t__ getuid () ; 
- int /*<<< orphan*/  safe_close (int) ; 
- int /*<<< orphan*/  show_capabilities () ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_flags ; 
- scalar_t__ test_gid ; 
- scalar_t__ test_uid ; 
+ int AF_INET ;
+ int IPPROTO_UDP ;
+ int SOCK_RAW ;
+ int assert_se (int) ;
+ scalar_t__ drop_privileges (scalar_t__,scalar_t__,int ) ;
+ scalar_t__ getgid () ;
+ scalar_t__ getuid () ;
+ int safe_close (int) ;
+ int show_capabilities () ;
+ int socket (int ,int ,int ) ;
+ int test_flags ;
+ scalar_t__ test_gid ;
+ scalar_t__ test_uid ;
 
 __attribute__((used)) static void test_drop_privileges_dontkeep_net_raw(void) {
         int sock;

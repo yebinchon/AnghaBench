@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gather_data {int /*<<< orphan*/  key; int /*<<< orphan*/  key_len; } ;
+
+
+
+
+struct gather_data {int key; int key_len; } ;
 struct conn_query {int dummy; } ;
 
-/* Variables and functions */
- struct gather_data* GATHER_QUERY (struct conn_query*) ; 
- int /*<<< orphan*/  delete_write_thread_query (struct conn_query*) ; 
- int /*<<< orphan*/  gather_timeouts ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vkprintf (int,char*,struct conn_query*) ; 
+
+ struct gather_data* GATHER_QUERY (struct conn_query*) ;
+ int delete_write_thread_query (struct conn_query*) ;
+ int gather_timeouts ;
+ int kprintf (char*,int ,int ) ;
+ int vkprintf (int,char*,struct conn_query*) ;
 
 int write_thread_query_timeout (struct conn_query *q) {
   vkprintf (3, "Query %p timeout.\n", q);

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IShellLinkW ;
-typedef  int /*<<< orphan*/  IPersistFile ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_ShellLink ; 
- int /*<<< orphan*/  CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IPersistFile ; 
- int /*<<< orphan*/  IID_IShellLink ; 
- int /*<<< orphan*/  IPersistFile_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IPersistFile_Save (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IShellLinkW_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IShellLinkW_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IShellLinkW_SetArguments (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IShellLinkW_SetDescription (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IShellLinkW_SetIconLocation (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IShellLinkW_SetPath (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IShellLinkW_SetWorkingDirectory (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int LPVOID ;
+typedef int LPCWSTR ;
+typedef int IShellLinkW ;
+typedef int IPersistFile ;
+typedef int INT ;
+typedef int HRESULT ;
+
+
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_ShellLink ;
+ int CoCreateInstance (int *,int *,int ,int *,int *) ;
+ int IID_IPersistFile ;
+ int IID_IShellLink ;
+ int IPersistFile_Release (int *) ;
+ int IPersistFile_Save (int *,int ,int ) ;
+ int IShellLinkW_QueryInterface (int *,int *,int *) ;
+ int IShellLinkW_Release (int *) ;
+ int IShellLinkW_SetArguments (int *,int ) ;
+ int IShellLinkW_SetDescription (int *,int ) ;
+ int IShellLinkW_SetIconLocation (int *,int ,int ) ;
+ int IShellLinkW_SetPath (int *,int ) ;
+ int IShellLinkW_SetWorkingDirectory (int *,int ) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int TRUE ;
 
 __attribute__((used)) static HRESULT
 CreateShellLink(
@@ -48,7 +48,7 @@ CreateShellLink(
     IShellLinkW *psl;
     IPersistFile *ppf;
 
-    HRESULT hr = CoCreateInstance(&CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, &IID_IShellLink, (LPVOID*)&psl);
+    HRESULT hr = CoCreateInstance(&CLSID_ShellLink, ((void*)0), CLSCTX_INPROC_SERVER, &IID_IShellLink, (LPVOID*)&psl);
 
     if (SUCCEEDED(hr))
     {

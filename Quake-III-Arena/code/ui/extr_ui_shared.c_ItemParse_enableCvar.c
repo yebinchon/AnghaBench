@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  qboolean ;
-struct TYPE_3__ {int /*<<< orphan*/  cvarFlags; int /*<<< orphan*/  enableCvar; } ;
-typedef  TYPE_1__ itemDef_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CVAR_ENABLE ; 
- scalar_t__ PC_Script_Parse (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qfalse ; 
- int /*<<< orphan*/  qtrue ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int qboolean ;
+struct TYPE_3__ {int cvarFlags; int enableCvar; } ;
+typedef TYPE_1__ itemDef_t ;
+
+
+ int CVAR_ENABLE ;
+ scalar_t__ PC_Script_Parse (int,int *) ;
+ int qfalse ;
+ int qtrue ;
 
 qboolean ItemParse_enableCvar( itemDef_t *item, int handle ) {
-	if (PC_Script_Parse(handle, &item->enableCvar)) {
-		item->cvarFlags = CVAR_ENABLE;
-		return qtrue;
-	}
-	return qfalse;
+ if (PC_Script_Parse(handle, &item->enableCvar)) {
+  item->cvarFlags = CVAR_ENABLE;
+  return qtrue;
+ }
+ return qfalse;
 }

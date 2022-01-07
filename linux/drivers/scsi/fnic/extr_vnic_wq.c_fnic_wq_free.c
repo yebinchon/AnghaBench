@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vnic_wq {int /*<<< orphan*/ * ctrl; int /*<<< orphan*/ ** bufs; int /*<<< orphan*/  ring; struct vnic_dev* vdev; } ;
+
+
+
+
+struct vnic_wq {int * ctrl; int ** bufs; int ring; struct vnic_dev* vdev; } ;
 struct vnic_dev {int dummy; } ;
 
-/* Variables and functions */
- unsigned int VNIC_WQ_BUF_BLKS_MAX ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vnic_dev_free_desc_ring (struct vnic_dev*,int /*<<< orphan*/ *) ; 
+
+ unsigned int VNIC_WQ_BUF_BLKS_MAX ;
+ int kfree (int *) ;
+ int vnic_dev_free_desc_ring (struct vnic_dev*,int *) ;
 
 void vnic_wq_free(struct vnic_wq *wq)
 {
-	struct vnic_dev *vdev;
-	unsigned int i;
+ struct vnic_dev *vdev;
+ unsigned int i;
 
-	vdev = wq->vdev;
+ vdev = wq->vdev;
 
-	vnic_dev_free_desc_ring(vdev, &wq->ring);
+ vnic_dev_free_desc_ring(vdev, &wq->ring);
 
-	for (i = 0; i < VNIC_WQ_BUF_BLKS_MAX; i++) {
-		kfree(wq->bufs[i]);
-		wq->bufs[i] = NULL;
-	}
+ for (i = 0; i < VNIC_WQ_BUF_BLKS_MAX; i++) {
+  kfree(wq->bufs[i]);
+  wq->bufs[i] = ((void*)0);
+ }
 
-	wq->ctrl = NULL;
+ wq->ctrl = ((void*)0);
 
 }

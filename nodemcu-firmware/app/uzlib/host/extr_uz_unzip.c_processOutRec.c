@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int ndx; scalar_t__ written; scalar_t__ len; int /*<<< orphan*/ * fullBlkCB; int /*<<< orphan*/  fout; int /*<<< orphan*/  crc; int /*<<< orphan*/ * block; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  UZLIB_DATA_ERROR ; 
- int /*<<< orphan*/  UZLIB_THROW (int /*<<< orphan*/ ) ; 
- int WRITE_BLOCKSIZE ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ ) ; 
- int fwrite (int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* out ; 
- int /*<<< orphan*/  uzlib_crc32 (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int ndx; scalar_t__ written; scalar_t__ len; int * fullBlkCB; int fout; int crc; int * block; } ;
+
+
+ int UZLIB_DATA_ERROR ;
+ int UZLIB_THROW (int ) ;
+ int WRITE_BLOCKSIZE ;
+ int fclose (int ) ;
+ int fwrite (int ,int,int,int ) ;
+ TYPE_1__* out ;
+ int uzlib_crc32 (int ,int,int ) ;
 
 int processOutRec (void) {
   int len = (out->ndx % WRITE_BLOCKSIZE) ? out->ndx % WRITE_BLOCKSIZE :
@@ -33,7 +33,7 @@ int processOutRec (void) {
   out->written += len;
   if (out->written == out->len) {
     fclose(out->fout);
-    out->fullBlkCB = NULL;
+    out->fullBlkCB = ((void*)0);
   }
   return 1;
 }

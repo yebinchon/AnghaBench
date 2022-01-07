@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct direct {int /*<<< orphan*/  d_ino; } ;
-typedef  int /*<<< orphan*/  ino_t ;
 
-/* Variables and functions */
- int MAXPATHLEN ; 
- int /*<<< orphan*/  UFS_ROOTINO ; 
- struct direct* searchdir (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char const*) ; 
- char* strsep (char**,char*) ; 
+
+
+
+struct direct {int d_ino; } ;
+typedef int ino_t ;
+
+
+ int MAXPATHLEN ;
+ int UFS_ROOTINO ;
+ struct direct* searchdir (int ,char*) ;
+ int strcpy (char*,char const*) ;
+ char* strsep (char**,char*) ;
 
 struct direct *
 pathsearch(const char *pathname)
 {
-	ino_t ino;
-	struct direct *dp;
-	char *path, *name, buffer[MAXPATHLEN];
+ ino_t ino;
+ struct direct *dp;
+ char *path, *name, buffer[MAXPATHLEN];
 
-	strcpy(buffer, pathname);
-	path = buffer;
-	ino = UFS_ROOTINO;
-	while (*path == '/')
-		path++;
-	dp = NULL;
-	while ((name = strsep(&path, "/")) != NULL && *name != '\0') {
-		if ((dp = searchdir(ino, name)) == NULL)
-			return (NULL);
-		ino = dp->d_ino;
-	}
-	return (dp);
+ strcpy(buffer, pathname);
+ path = buffer;
+ ino = UFS_ROOTINO;
+ while (*path == '/')
+  path++;
+ dp = ((void*)0);
+ while ((name = strsep(&path, "/")) != ((void*)0) && *name != '\0') {
+  if ((dp = searchdir(ino, name)) == ((void*)0))
+   return (((void*)0));
+  ino = dp->d_ino;
+ }
+ return (dp);
 }

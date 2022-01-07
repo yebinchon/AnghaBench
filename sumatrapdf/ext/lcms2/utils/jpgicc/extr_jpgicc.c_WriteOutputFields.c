@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int input_components; int num_components; int write_JFIF_header; TYPE_1__* comp_info; void* jpeg_color_space; void* in_color_space; } ;
 struct TYPE_6__ {int h_samp_factor; int v_samp_factor; } ;
-typedef  void* J_COLOR_SPACE ;
+typedef void* J_COLOR_SPACE ;
 
-/* Variables and functions */
- TYPE_2__ Compressor ; 
- int /*<<< orphan*/  FatalError (char*) ; 
- void* JCS_CMYK ; 
- void* JCS_GRAYSCALE ; 
- void* JCS_RGB ; 
- void* JCS_YCCK ; 
- void* JCS_YCbCr ; 
-#define  PT_CMYK 132 
-#define  PT_GRAY 131 
-#define  PT_Lab 130 
-#define  PT_RGB 129 
-#define  PT_YCbCr 128 
- int jpegQuality ; 
- int /*<<< orphan*/  jpeg_set_colorspace (TYPE_2__*,void*) ; 
- int /*<<< orphan*/  jpeg_set_defaults (TYPE_2__*) ; 
- int /*<<< orphan*/  jpeg_set_quality (TYPE_2__*,int,int) ; 
+
+ TYPE_2__ Compressor ;
+ int FatalError (char*) ;
+ void* JCS_CMYK ;
+ void* JCS_GRAYSCALE ;
+ void* JCS_RGB ;
+ void* JCS_YCCK ;
+ void* JCS_YCbCr ;
+
+
+
+
+
+ int jpegQuality ;
+ int jpeg_set_colorspace (TYPE_2__*,void*) ;
+ int jpeg_set_defaults (TYPE_2__*) ;
+ int jpeg_set_quality (TYPE_2__*,int,int) ;
 
 __attribute__((used)) static
 void WriteOutputFields(int OutputColorSpace)
@@ -42,27 +42,27 @@ void WriteOutputFields(int OutputColorSpace)
 
     switch (OutputColorSpace) {
 
-    case PT_GRAY: in_space = jpeg_space = JCS_GRAYSCALE;
+    case 131: in_space = jpeg_space = JCS_GRAYSCALE;
                   components = 1;
                   break;
 
-    case PT_RGB:  in_space = JCS_RGB;
+    case 129: in_space = JCS_RGB;
                   jpeg_space = JCS_YCbCr;
                   components = 3;
-                  break;       // red/green/blue
+                  break;
 
-    case PT_YCbCr: in_space = jpeg_space = JCS_YCbCr;
+    case 128: in_space = jpeg_space = JCS_YCbCr;
                    components = 3;
-                   break;               // Y/Cb/Cr (also known as YUV)
+                   break;
 
-    case PT_CMYK: in_space = JCS_CMYK;
+    case 132: in_space = JCS_CMYK;
                   jpeg_space = JCS_YCCK;
                   components = 4;
-                  break;      // C/M/Y/components
+                  break;
 
-    case PT_Lab:  in_space = jpeg_space = JCS_YCbCr;
+    case 130: in_space = jpeg_space = JCS_YCbCr;
                   components = 3;
-                  break;                // Fake to don't touch
+                  break;
     default:
                  FatalError("Unsupported output color space");
                  return;
@@ -71,22 +71,22 @@ void WriteOutputFields(int OutputColorSpace)
 
     if (jpegQuality >= 100) {
 
-     // avoid destructive conversion when asking for lossless compression
+
         jpeg_space = in_space;
     }
 
-    Compressor.in_color_space =  in_space;
+    Compressor.in_color_space = in_space;
     Compressor.jpeg_color_space = jpeg_space;
     Compressor.input_components = Compressor.num_components = components;
     jpeg_set_defaults(&Compressor);
     jpeg_set_colorspace(&Compressor, jpeg_space);
 
 
-    // Make sure to pass resolution through
-    if (OutputColorSpace == PT_CMYK)
+
+    if (OutputColorSpace == 132)
         Compressor.write_JFIF_header = 1;
 
-    // Avoid subsampling on high quality factor
+
     jpeg_set_quality(&Compressor, jpegQuality, 1);
     if (jpegQuality >= 70) {
 

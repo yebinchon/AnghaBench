@@ -1,0 +1,154 @@
+; ModuleID = '/home/carl/AnghaBench/FFmpeg/libavcodec/extr_vp9_parser.c_parse.c'
+source_filename = "/home/carl/AnghaBench/FFmpeg/libavcodec/extr_vp9_parser.c_parse.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.TYPE_5__ = type { i32, i32 }
+%struct.TYPE_6__ = type { i32 }
+
+@AV_PICTURE_TYPE_P = common dso_local global i32 0, align 4
+@AV_PICTURE_TYPE_I = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.TYPE_5__*, %struct.TYPE_6__*, i32**, i32*, i32*, i32)* @parse to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @parse(%struct.TYPE_5__* %0, %struct.TYPE_6__* %1, i32** %2, i32* %3, i32* %4, i32 %5) #0 {
+  %7 = alloca i32, align 4
+  %8 = alloca %struct.TYPE_5__*, align 8
+  %9 = alloca %struct.TYPE_6__*, align 8
+  %10 = alloca i32**, align 8
+  %11 = alloca i32*, align 8
+  %12 = alloca i32*, align 8
+  %13 = alloca i32, align 4
+  %14 = alloca i32, align 4
+  %15 = alloca i32, align 4
+  %16 = alloca i32, align 4
+  %17 = alloca i32, align 4
+  store %struct.TYPE_5__* %0, %struct.TYPE_5__** %8, align 8
+  store %struct.TYPE_6__* %1, %struct.TYPE_6__** %9, align 8
+  store i32** %2, i32*** %10, align 8
+  store i32* %3, i32** %11, align 8
+  store i32* %4, i32** %12, align 8
+  store i32 %5, i32* %13, align 4
+  %18 = load i32*, i32** %12, align 8
+  %19 = load i32**, i32*** %10, align 8
+  store i32* %18, i32** %19, align 8
+  %20 = load i32, i32* %13, align 4
+  %21 = load i32*, i32** %11, align 8
+  store i32 %20, i32* %21, align 4
+  %22 = load i32, i32* %13, align 4
+  %23 = icmp ne i32 %22, 0
+  br i1 %23, label %24, label %29
+
+24:                                               ; preds = %6
+  %25 = load i32*, i32** %12, align 8
+  %26 = load i32, i32* %13, align 4
+  %27 = call i32 @init_get_bits8(i32* %14, i32* %25, i32 %26)
+  store i32 %27, i32* %15, align 4
+  %28 = icmp slt i32 %27, 0
+  br i1 %28, label %29, label %31
+
+29:                                               ; preds = %24, %6
+  %30 = load i32, i32* %13, align 4
+  store i32 %30, i32* %7, align 4
+  br label %78
+
+31:                                               ; preds = %24
+  %32 = call i32 @get_bits(i32* %14, i32 2)
+  %33 = call i32 @get_bits1(i32* %14)
+  store i32 %33, i32* %16, align 4
+  %34 = call i32 @get_bits1(i32* %14)
+  %35 = shl i32 %34, 1
+  %36 = load i32, i32* %16, align 4
+  %37 = or i32 %36, %35
+  store i32 %37, i32* %16, align 4
+  %38 = load i32, i32* %16, align 4
+  %39 = icmp eq i32 %38, 3
+  br i1 %39, label %40, label %44
+
+40:                                               ; preds = %31
+  %41 = call i32 @get_bits1(i32* %14)
+  %42 = load i32, i32* %16, align 4
+  %43 = add nsw i32 %42, %41
+  store i32 %43, i32* %16, align 4
+  br label %44
+
+44:                                               ; preds = %40, %31
+  %45 = load i32, i32* %16, align 4
+  %46 = icmp sgt i32 %45, 3
+  br i1 %46, label %47, label %49
+
+47:                                               ; preds = %44
+  %48 = load i32, i32* %13, align 4
+  store i32 %48, i32* %7, align 4
+  br label %78
+
+49:                                               ; preds = %44
+  %50 = load i32, i32* %16, align 4
+  %51 = load %struct.TYPE_6__*, %struct.TYPE_6__** %9, align 8
+  %52 = getelementptr inbounds %struct.TYPE_6__, %struct.TYPE_6__* %51, i32 0, i32 0
+  store i32 %50, i32* %52, align 4
+  %53 = call i32 @get_bits1(i32* %14)
+  %54 = icmp ne i32 %53, 0
+  br i1 %54, label %55, label %56
+
+55:                                               ; preds = %49
+  store i32 0, i32* %17, align 4
+  br label %61
+
+56:                                               ; preds = %49
+  %57 = call i32 @get_bits1(i32* %14)
+  %58 = icmp ne i32 %57, 0
+  %59 = xor i1 %58, true
+  %60 = zext i1 %59 to i32
+  store i32 %60, i32* %17, align 4
+  br label %61
+
+61:                                               ; preds = %56, %55
+  %62 = load i32, i32* %17, align 4
+  %63 = icmp ne i32 %62, 0
+  br i1 %63, label %70, label %64
+
+64:                                               ; preds = %61
+  %65 = load i32, i32* @AV_PICTURE_TYPE_P, align 4
+  %66 = load %struct.TYPE_5__*, %struct.TYPE_5__** %8, align 8
+  %67 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %66, i32 0, i32 1
+  store i32 %65, i32* %67, align 4
+  %68 = load %struct.TYPE_5__*, %struct.TYPE_5__** %8, align 8
+  %69 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %68, i32 0, i32 0
+  store i32 0, i32* %69, align 4
+  br label %76
+
+70:                                               ; preds = %61
+  %71 = load i32, i32* @AV_PICTURE_TYPE_I, align 4
+  %72 = load %struct.TYPE_5__*, %struct.TYPE_5__** %8, align 8
+  %73 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %72, i32 0, i32 1
+  store i32 %71, i32* %73, align 4
+  %74 = load %struct.TYPE_5__*, %struct.TYPE_5__** %8, align 8
+  %75 = getelementptr inbounds %struct.TYPE_5__, %struct.TYPE_5__* %74, i32 0, i32 0
+  store i32 1, i32* %75, align 4
+  br label %76
+
+76:                                               ; preds = %70, %64
+  %77 = load i32, i32* %13, align 4
+  store i32 %77, i32* %7, align 4
+  br label %78
+
+78:                                               ; preds = %76, %47, %29
+  %79 = load i32, i32* %7, align 4
+  ret i32 %79
+}
+
+declare dso_local i32 @init_get_bits8(i32*, i32*, i32) #1
+
+declare dso_local i32 @get_bits(i32*, i32) #1
+
+declare dso_local i32 @get_bits1(i32*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

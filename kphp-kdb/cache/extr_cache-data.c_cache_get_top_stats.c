@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct cache_uri {int /*<<< orphan*/ * data; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct cache_uri {int * data; } ;
 struct cache_top_stats {int selection_size; int known_size_files; long long sum_filesize; double weighted_sum_filesize; int sum_acounter; } ;
 struct amortization_counter {scalar_t__ value; } ;
-typedef  enum cache_sorted_order { ____Placeholder_cache_sorted_order } cache_sorted_order ;
+typedef enum cache_sorted_order { ____Placeholder_cache_sorted_order } cache_sorted_order ;
 struct TYPE_8__ {struct cache_uri** H; } ;
-typedef  TYPE_1__ cache_heap_t ;
+typedef TYPE_1__ cache_heap_t ;
 struct TYPE_9__ {int pos; } ;
-typedef  TYPE_2__ cache_buffer_t ;
+typedef TYPE_2__ cache_buffer_t ;
 struct TYPE_10__ {int value; } ;
-typedef  int /*<<< orphan*/  S ;
+typedef int S ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * TAT ; 
- int /*<<< orphan*/  amortization_counter_precise_increment (int /*<<< orphan*/ *,TYPE_3__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cache_bclear (TYPE_2__*,char*,int) ; 
- int /*<<< orphan*/  cache_bprintf (TYPE_2__*,char*,int) ; 
- int cache_top_fill_heap (TYPE_1__*,int,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- long long cache_uri_get_size (struct cache_uri*) ; 
- TYPE_3__* cum_access_counters ; 
- size_t heap_acounter_id ; 
- size_t heap_acounter_off ; 
- int /*<<< orphan*/  memset (struct cache_top_stats*,int /*<<< orphan*/ ,int) ; 
- int safe_div (int,int) ; 
- int uries ; 
+
+ int * TAT ;
+ int amortization_counter_precise_increment (int *,TYPE_3__*,int ) ;
+ int cache_bclear (TYPE_2__*,char*,int) ;
+ int cache_bprintf (TYPE_2__*,char*,int) ;
+ int cache_top_fill_heap (TYPE_1__*,int,int,int,int ,int ,int ) ;
+ long long cache_uri_get_size (struct cache_uri*) ;
+ TYPE_3__* cum_access_counters ;
+ size_t heap_acounter_id ;
+ size_t heap_acounter_off ;
+ int memset (struct cache_top_stats*,int ,int) ;
+ int safe_div (int,int) ;
+ int uries ;
 
 int cache_get_top_stats (int T, enum cache_sorted_order order, int limit, char *output, int olen) {
   cache_heap_t Heap;

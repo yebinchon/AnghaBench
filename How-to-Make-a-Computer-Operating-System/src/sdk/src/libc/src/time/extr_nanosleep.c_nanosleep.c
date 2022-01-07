@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct timespec {int tv_sec; int tv_nsec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYS_sleep_thread ; 
- int errno ; 
- int syscall2 (int /*<<< orphan*/ ,int,int) ; 
+
+ int SYS_sleep_thread ;
+ int errno ;
+ int syscall2 (int ,int,int) ;
 
 int nanosleep( const struct timespec* req, struct timespec* rem ) {
     int error;
@@ -34,7 +34,7 @@ int nanosleep( const struct timespec* req, struct timespec* rem ) {
     if ( error < 0 ) {
         errno = -error;
 
-        if ( rem != NULL ) {
+        if ( rem != ((void*)0) ) {
             rem->tv_sec = remaining / 1000000;
             rem->tv_nsec = ( remaining % 1000000 ) * 1000;
         }

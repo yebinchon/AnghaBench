@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
-struct TYPE_10__ {int ofs; void* idx; int /*<<< orphan*/  scale; void* base; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
+struct TYPE_10__ {int ofs; void* idx; int scale; void* base; } ;
 struct TYPE_12__ {TYPE_1__ mrm; } ;
-struct TYPE_11__ {scalar_t__ o; int i; int /*<<< orphan*/  op2; int /*<<< orphan*/  op1; int /*<<< orphan*/  r; } ;
-typedef  int /*<<< orphan*/  RegSet ;
-typedef  TYPE_2__ IRIns ;
-typedef  TYPE_3__ ASMState ;
+struct TYPE_11__ {scalar_t__ o; int i; int op2; int op1; int r; } ;
+typedef int RegSet ;
+typedef TYPE_2__ IRIns ;
+typedef TYPE_3__ ASMState ;
 
-/* Variables and functions */
- TYPE_2__* IR (int /*<<< orphan*/ ) ; 
- scalar_t__ IR_ADD ; 
- scalar_t__ IR_AREF ; 
- int /*<<< orphan*/  LJ_64 ; 
- void* RID_NONE ; 
- int /*<<< orphan*/  XM_SCALE8 ; 
- int /*<<< orphan*/  asm_fuseabase (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ irref_isk (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_assert (int) ; 
- scalar_t__ mayfuse (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_alloc1 (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ ra_noreg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rset_clear (int /*<<< orphan*/ ,void*) ; 
+
+ TYPE_2__* IR (int ) ;
+ scalar_t__ IR_ADD ;
+ scalar_t__ IR_AREF ;
+ int LJ_64 ;
+ void* RID_NONE ;
+ int XM_SCALE8 ;
+ int asm_fuseabase (TYPE_3__*,int ) ;
+ scalar_t__ irref_isk (int ) ;
+ int lua_assert (int) ;
+ scalar_t__ mayfuse (TYPE_3__*,int ) ;
+ scalar_t__ ra_alloc1 (TYPE_3__*,int ,int ) ;
+ scalar_t__ ra_noreg (int ) ;
+ int rset_clear (int ,void*) ;
 
 __attribute__((used)) static void asm_fusearef(ASMState *as, IRIns *ir, RegSet allow)
 {
@@ -48,12 +48,12 @@ __attribute__((used)) static void asm_fusearef(ASMState *as, IRIns *ir, RegSet a
   } else {
     rset_clear(allow, as->mrm.base);
     as->mrm.scale = XM_SCALE8;
-    /* Fuse a constant ADD (e.g. t[i+1]) into the offset.
-    ** Doesn't help much without ABCelim, but reduces register pressure.
-    */
-    if (!LJ_64 &&  /* Has bad effects with negative index on x64. */
-	mayfuse(as, ir->op2) && ra_noreg(irx->r) &&
-	irx->o == IR_ADD && irref_isk(irx->op2)) {
+
+
+
+    if (!LJ_64 &&
+ mayfuse(as, ir->op2) && ra_noreg(irx->r) &&
+ irx->o == IR_ADD && irref_isk(irx->op2)) {
       as->mrm.ofs += 8*IR(irx->op2)->i;
       as->mrm.idx = (uint8_t)ra_alloc1(as, irx->op1, allow);
     } else {

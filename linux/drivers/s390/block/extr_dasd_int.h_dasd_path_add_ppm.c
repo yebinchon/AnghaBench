@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dasd_device {int dummy; } ;
-typedef  int __u8 ;
+typedef int __u8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dasd_path_preferred (struct dasd_device*,int) ; 
+
+ int dasd_path_preferred (struct dasd_device*,int) ;
 
 __attribute__((used)) static inline void dasd_path_add_ppm(struct dasd_device *device, __u8 pm)
 {
-	int chp;
+ int chp;
 
-	for (chp = 0; chp < 8; chp++)
-		if (pm & (0x80 >> chp))
-			dasd_path_preferred(device, chp);
+ for (chp = 0; chp < 8; chp++)
+  if (pm & (0x80 >> chp))
+   dasd_path_preferred(device, chp);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  URLContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EIO ; 
-#define  MBEDTLS_ERR_NET_CONN_RESET 133 
-#define  MBEDTLS_ERR_NET_RECV_FAILED 132 
-#define  MBEDTLS_ERR_NET_SEND_FAILED 131 
-#define  MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY 130 
-#define  MBEDTLS_ERR_SSL_WANT_READ 129 
-#define  MBEDTLS_ERR_SSL_WANT_WRITE 128 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*,...) ; 
+
+
+
+typedef int URLContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ int EAGAIN ;
+ int EIO ;
+
+
+
+
+
+
+ int av_log (int *,int ,char*,char const*,...) ;
 
 __attribute__((used)) static int handle_tls_error(URLContext *h, const char* func_name, int ret)
 {
     switch (ret) {
-    case MBEDTLS_ERR_SSL_WANT_READ:
-    case MBEDTLS_ERR_SSL_WANT_WRITE:
+    case 129:
+    case 128:
         return AVERROR(EAGAIN);
-    case MBEDTLS_ERR_NET_SEND_FAILED:
-    case MBEDTLS_ERR_NET_RECV_FAILED:
+    case 131:
+    case 132:
         return AVERROR(EIO);
-    case MBEDTLS_ERR_NET_CONN_RESET:
-    case MBEDTLS_ERR_SSL_PEER_CLOSE_NOTIFY:
+    case 133:
+    case 130:
         av_log(h, AV_LOG_WARNING, "%s reported connection reset by peer\n", func_name);
         return AVERROR_EOF;
     default:

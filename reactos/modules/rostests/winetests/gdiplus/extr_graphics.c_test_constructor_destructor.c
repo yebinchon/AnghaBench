@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * HDC ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  int /*<<< orphan*/  GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GdipCreateFromHDC (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateFromHWND (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipCreateFromHWNDICM (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  GdipDeleteGraphics (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InvalidParameter ; 
- int /*<<< orphan*/  Ok ; 
- int /*<<< orphan*/  OutOfMemory ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  expect (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hwnd ; 
+
+
+
+typedef int * HDC ;
+typedef int GpStatus ;
+typedef int GpGraphics ;
+
+
+ int GdipCreateFromHDC (int *,int **) ;
+ int GdipCreateFromHWND (int *,int **) ;
+ int GdipCreateFromHWNDICM (int *,int **) ;
+ int GdipDeleteGraphics (int *) ;
+ int * GetDC (int ) ;
+ int InvalidParameter ;
+ int Ok ;
+ int OutOfMemory ;
+ int ReleaseDC (int ,int *) ;
+ int expect (int ,int ) ;
+ int hwnd ;
 
 __attribute__((used)) static void test_constructor_destructor(void)
 {
     GpStatus stat;
-    GpGraphics *graphics = NULL;
+    GpGraphics *graphics = ((void*)0);
     HDC hdc = GetDC( hwnd );
 
-    stat = GdipCreateFromHDC(NULL, &graphics);
+    stat = GdipCreateFromHDC(((void*)0), &graphics);
     expect(OutOfMemory, stat);
     stat = GdipDeleteGraphics(graphics);
     expect(InvalidParameter, stat);
@@ -43,17 +43,17 @@ __attribute__((used)) static void test_constructor_destructor(void)
     stat = GdipDeleteGraphics(graphics);
     expect(Ok, stat);
 
-    stat = GdipCreateFromHWND(NULL, &graphics);
+    stat = GdipCreateFromHWND(((void*)0), &graphics);
     expect(Ok, stat);
     stat = GdipDeleteGraphics(graphics);
     expect(Ok, stat);
 
-    stat = GdipCreateFromHWNDICM(NULL, &graphics);
+    stat = GdipCreateFromHWNDICM(((void*)0), &graphics);
     expect(Ok, stat);
     stat = GdipDeleteGraphics(graphics);
     expect(Ok, stat);
 
-    stat = GdipDeleteGraphics(NULL);
+    stat = GdipDeleteGraphics(((void*)0));
     expect(InvalidParameter, stat);
     ReleaseDC(hwnd, hdc);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  gint64 ;
 
-/* Variables and functions */
- int get_file_modifier_mtime_v0 (char const*,char const*,int,char const*,char const*,char**,int /*<<< orphan*/ *) ; 
- int get_file_modifier_mtime_v1 (char const*,char const*,int,char const*,char const*,char**,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int gint64 ;
+
+
+ int get_file_modifier_mtime_v0 (char const*,char const*,int,char const*,char const*,char**,int *) ;
+ int get_file_modifier_mtime_v1 (char const*,char const*,int,char const*,char const*,char**,int *) ;
 
 int
 get_file_modifier_mtime (const char *repo_id,

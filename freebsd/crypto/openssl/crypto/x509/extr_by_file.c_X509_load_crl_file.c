@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  store_ctx; } ;
-typedef  TYPE_1__ X509_LOOKUP ;
-typedef  int /*<<< orphan*/  X509_CRL ;
-typedef  int /*<<< orphan*/  BIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new (int /*<<< orphan*/ ) ; 
- scalar_t__ BIO_read_filename (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  BIO_s_file () ; 
- scalar_t__ ERR_GET_REASON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_ASN1_LIB ; 
- int /*<<< orphan*/  ERR_R_PEM_LIB ; 
- int /*<<< orphan*/  ERR_R_SYS_LIB ; 
- int /*<<< orphan*/  ERR_clear_error () ; 
- int /*<<< orphan*/  ERR_peek_last_error () ; 
- scalar_t__ PEM_R_NO_START_LINE ; 
- int /*<<< orphan*/ * PEM_read_bio_X509_CRL (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  X509_CRL_free (int /*<<< orphan*/ *) ; 
- int X509_FILETYPE_ASN1 ; 
- int X509_FILETYPE_PEM ; 
- int /*<<< orphan*/  X509_F_X509_LOAD_CRL_FILE ; 
- int /*<<< orphan*/  X509_R_BAD_X509_FILETYPE ; 
- int /*<<< orphan*/  X509_R_NO_CRL_FOUND ; 
- int X509_STORE_add_crl (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509err (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * d2i_X509_CRL_bio (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int store_ctx; } ;
+typedef TYPE_1__ X509_LOOKUP ;
+typedef int X509_CRL ;
+typedef int BIO ;
+
+
+ int BIO_free (int *) ;
+ int * BIO_new (int ) ;
+ scalar_t__ BIO_read_filename (int *,char const*) ;
+ int BIO_s_file () ;
+ scalar_t__ ERR_GET_REASON (int ) ;
+ int ERR_R_ASN1_LIB ;
+ int ERR_R_PEM_LIB ;
+ int ERR_R_SYS_LIB ;
+ int ERR_clear_error () ;
+ int ERR_peek_last_error () ;
+ scalar_t__ PEM_R_NO_START_LINE ;
+ int * PEM_read_bio_X509_CRL (int *,int *,int *,char*) ;
+ int X509_CRL_free (int *) ;
+ int X509_FILETYPE_ASN1 ;
+ int X509_FILETYPE_PEM ;
+ int X509_F_X509_LOAD_CRL_FILE ;
+ int X509_R_BAD_X509_FILETYPE ;
+ int X509_R_NO_CRL_FOUND ;
+ int X509_STORE_add_crl (int ,int *) ;
+ int X509err (int ,int ) ;
+ int * d2i_X509_CRL_bio (int *,int *) ;
 
 int X509_load_crl_file(X509_LOOKUP *ctx, const char *file, int type)
 {
     int ret = 0;
-    BIO *in = NULL;
+    BIO *in = ((void*)0);
     int i, count = 0;
-    X509_CRL *x = NULL;
+    X509_CRL *x = ((void*)0);
 
     in = BIO_new(BIO_s_file());
 
-    if ((in == NULL) || (BIO_read_filename(in, file) <= 0)) {
+    if ((in == ((void*)0)) || (BIO_read_filename(in, file) <= 0)) {
         X509err(X509_F_X509_LOAD_CRL_FILE, ERR_R_SYS_LIB);
         goto err;
     }
 
     if (type == X509_FILETYPE_PEM) {
         for (;;) {
-            x = PEM_read_bio_X509_CRL(in, NULL, NULL, "");
-            if (x == NULL) {
+            x = PEM_read_bio_X509_CRL(in, ((void*)0), ((void*)0), "");
+            if (x == ((void*)0)) {
                 if ((ERR_GET_REASON(ERR_peek_last_error()) ==
                      PEM_R_NO_START_LINE) && (count > 0)) {
                     ERR_clear_error();
@@ -71,12 +71,12 @@ int X509_load_crl_file(X509_LOOKUP *ctx, const char *file, int type)
                 goto err;
             count++;
             X509_CRL_free(x);
-            x = NULL;
+            x = ((void*)0);
         }
         ret = count;
     } else if (type == X509_FILETYPE_ASN1) {
-        x = d2i_X509_CRL_bio(in, NULL);
-        if (x == NULL) {
+        x = d2i_X509_CRL_bio(in, ((void*)0));
+        if (x == ((void*)0)) {
             X509err(X509_F_X509_LOAD_CRL_FILE, ERR_R_ASN1_LIB);
             goto err;
         }

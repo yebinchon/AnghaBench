@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mp_image {int dummy; } ;
 struct mp_cmd_ctx {struct MPContext* mpctx; } ;
 struct image_writer_opts {int dummy; } ;
-struct MPContext {int /*<<< orphan*/  log; int /*<<< orphan*/  global; TYPE_1__* opts; } ;
+struct MPContext {int log; int global; TYPE_1__* opts; } ;
 struct TYPE_2__ {struct image_writer_opts* screenshot_image_opts; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSGL_ERR ; 
- int /*<<< orphan*/  MSGL_INFO ; 
- int /*<<< orphan*/  MSGL_V ; 
- int /*<<< orphan*/  mp_cmd_msg (struct mp_cmd_ctx*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  mp_core_lock (struct MPContext*) ; 
- int /*<<< orphan*/  mp_core_unlock (struct MPContext*) ; 
- scalar_t__ write_image (struct mp_image*,struct image_writer_opts*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int MSGL_ERR ;
+ int MSGL_INFO ;
+ int MSGL_V ;
+ int mp_cmd_msg (struct mp_cmd_ctx*,int ,char*,...) ;
+ int mp_core_lock (struct MPContext*) ;
+ int mp_core_unlock (struct MPContext*) ;
+ scalar_t__ write_image (struct mp_image*,struct image_writer_opts*,char const*,int ,int ) ;
 
 __attribute__((used)) static bool write_screenshot(struct mp_cmd_ctx *cmd, struct mp_image *img,
                              const char *filename, struct image_writer_opts *opts)

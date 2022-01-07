@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t u_int8_t ;
-struct nf_logger {int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int ENOENT ; 
- int /*<<< orphan*/ * __find_logger (size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nf_log_mutex ; 
- int /*<<< orphan*/ * nf_loggers ; 
- int /*<<< orphan*/  rcu_assign_pointer (int /*<<< orphan*/ ,struct nf_logger const*) ; 
+
+
+
+typedef size_t u_int8_t ;
+struct nf_logger {int name; } ;
+
+
+ int ENOENT ;
+ int * __find_logger (size_t,int ) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int nf_log_mutex ;
+ int * nf_loggers ;
+ int rcu_assign_pointer (int ,struct nf_logger const*) ;
 
 int nf_log_bind_pf(u_int8_t pf, const struct nf_logger *logger)
 {
-	mutex_lock(&nf_log_mutex);
-	if (__find_logger(pf, logger->name) == NULL) {
-		mutex_unlock(&nf_log_mutex);
-		return -ENOENT;
-	}
-	rcu_assign_pointer(nf_loggers[pf], logger);
-	mutex_unlock(&nf_log_mutex);
-	return 0;
+ mutex_lock(&nf_log_mutex);
+ if (__find_logger(pf, logger->name) == ((void*)0)) {
+  mutex_unlock(&nf_log_mutex);
+  return -ENOENT;
+ }
+ rcu_assign_pointer(nf_loggers[pf], logger);
+ mutex_unlock(&nf_log_mutex);
+ return 0;
 }

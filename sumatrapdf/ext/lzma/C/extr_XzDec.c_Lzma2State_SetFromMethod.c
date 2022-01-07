@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  Code; int /*<<< orphan*/  Init; int /*<<< orphan*/  SetProps; int /*<<< orphan*/  Free; int /*<<< orphan*/ * p; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * (* Alloc ) (TYPE_1__*,int) ;} ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_1__ ISzAlloc ;
-typedef  TYPE_2__ IStateCoder ;
-typedef  int /*<<< orphan*/  CLzma2Dec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Lzma2Dec_Construct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Lzma2State_Code ; 
- int /*<<< orphan*/  Lzma2State_Free ; 
- int /*<<< orphan*/  Lzma2State_Init ; 
- int /*<<< orphan*/  Lzma2State_SetProps ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/ * stub1 (TYPE_1__*,int) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int Code; int Init; int SetProps; int Free; int * p; } ;
+struct TYPE_6__ {int * (* Alloc ) (TYPE_1__*,int) ;} ;
+typedef int SRes ;
+typedef TYPE_1__ ISzAlloc ;
+typedef TYPE_2__ IStateCoder ;
+typedef int CLzma2Dec ;
+
+
+ int Lzma2Dec_Construct (int *) ;
+ int Lzma2State_Code ;
+ int Lzma2State_Free ;
+ int Lzma2State_Init ;
+ int Lzma2State_SetProps ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
+ int * stub1 (TYPE_1__*,int) ;
 
 __attribute__((used)) static SRes Lzma2State_SetFromMethod(IStateCoder *p, ISzAlloc *alloc)
 {

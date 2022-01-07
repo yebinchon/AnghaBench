@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct usb_ftdi {int bulk_in_last; char* bulk_in_buffer; TYPE_1__* udev; int /*<<< orphan*/  bulk_in_size; int /*<<< orphan*/  bulk_in_endpointAddr; scalar_t__ bulk_in_left; } ;
-typedef  int /*<<< orphan*/  diag ;
-struct TYPE_3__ {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int EFAULT ; 
- int ETIMEDOUT ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*,...) ; 
- int ftdi_elan_flush_input_fifo (struct usb_ftdi*) ; 
- int ftdi_elan_synchronize_flush (struct usb_ftdi*) ; 
- int ftdi_elan_synchronize_reset (struct usb_ftdi*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- int usb_bulk_msg (TYPE_1__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  usb_rcvbulkpipe (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct usb_ftdi {int bulk_in_last; char* bulk_in_buffer; TYPE_1__* udev; int bulk_in_size; int bulk_in_endpointAddr; scalar_t__ bulk_in_left; } ;
+typedef int diag ;
+struct TYPE_3__ {int dev; } ;
+
+
+ int EFAULT ;
+ int ETIMEDOUT ;
+ int dev_err (int *,char*,...) ;
+ int ftdi_elan_flush_input_fifo (struct usb_ftdi*) ;
+ int ftdi_elan_synchronize_flush (struct usb_ftdi*) ;
+ int ftdi_elan_synchronize_reset (struct usb_ftdi*) ;
+ int sprintf (char*,char*,...) ;
+ int usb_bulk_msg (TYPE_1__*,int ,char*,int ,int*,int) ;
+ int usb_rcvbulkpipe (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int ftdi_elan_synchronize(struct usb_ftdi *ftdi)
 {

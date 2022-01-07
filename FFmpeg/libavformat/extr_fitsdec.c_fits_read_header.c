@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_5__ ;
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_5__ ;
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_14__ {TYPE_3__* priv_data; } ;
 struct TYPE_13__ {TYPE_2__* codecpar; } ;
-struct TYPE_10__ {int /*<<< orphan*/  num; int /*<<< orphan*/  den; } ;
+struct TYPE_10__ {int num; int den; } ;
 struct TYPE_12__ {int first_image; scalar_t__ pts; TYPE_1__ framerate; } ;
-struct TYPE_11__ {int /*<<< orphan*/  codec_id; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_3__ FITSContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVFormatContext ;
+struct TYPE_11__ {int codec_id; int codec_type; } ;
+typedef TYPE_3__ FITSContext ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_CODEC_ID_FITS ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_4__* avformat_new_stream (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_4__*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CODEC_ID_FITS ;
+ int ENOMEM ;
+ TYPE_4__* avformat_new_stream (TYPE_5__*,int *) ;
+ int avpriv_set_pts_info (TYPE_4__*,int,int ,int ) ;
 
 __attribute__((used)) static int fits_read_header(AVFormatContext *s)
 {
     AVStream *st;
     FITSContext * fits = s->priv_data;
 
-    st = avformat_new_stream(s, NULL);
+    st = avformat_new_stream(s, ((void*)0));
     if (!st)
         return AVERROR(ENOMEM);
 

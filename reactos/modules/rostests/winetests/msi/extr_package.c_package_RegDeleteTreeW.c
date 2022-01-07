@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  szNameBuf ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  REGSAM ;
-typedef  scalar_t__ LSTATUS ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- scalar_t__ ERROR_NOT_ENOUGH_MEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegDeleteKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegDeleteValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegEnumValueW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ TRUE ; 
- int max (int,int) ; 
- scalar_t__ pRegDeleteKeyExW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int szNameBuf ;
+typedef int WCHAR ;
+typedef int REGSAM ;
+typedef scalar_t__ LSTATUS ;
+typedef int * LPCWSTR ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ scalar_t__ ERROR_NOT_ENOUGH_MEMORY ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int *) ;
+ int MAX_PATH ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegDeleteKeyW (int ,int *) ;
+ scalar_t__ RegDeleteValueW (int ,int *) ;
+ scalar_t__ RegEnumKeyExW (int ,int ,int *,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegEnumValueW (int ,int ,int *,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,int *,int ,int ,int *) ;
+ scalar_t__ RegQueryInfoKeyW (int ,int *,int *,int *,int *,int*,int *,int *,int*,int *,int *,int *) ;
+ scalar_t__ TRUE ;
+ int max (int,int) ;
+ scalar_t__ pRegDeleteKeyExW (int ,int *,int ,int ) ;
 
 __attribute__((used)) static LSTATUS package_RegDeleteTreeW(HKEY hKey, LPCWSTR lpszSubKey, REGSAM access)
 {
@@ -50,8 +50,8 @@ __attribute__((used)) static LSTATUS package_RegDeleteTreeW(HKEY hKey, LPCWSTR l
         if (ret) return ret;
     }
 
-    ret = RegQueryInfoKeyW(hSubKey, NULL, NULL, NULL, NULL,
-            &dwMaxSubkeyLen, NULL, NULL, &dwMaxValueLen, NULL, NULL, NULL);
+    ret = RegQueryInfoKeyW(hSubKey, ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+            &dwMaxSubkeyLen, ((void*)0), ((void*)0), &dwMaxValueLen, ((void*)0), ((void*)0), ((void*)0));
     if (ret) goto cleanup;
 
     dwMaxSubkeyLen++;
@@ -59,7 +59,7 @@ __attribute__((used)) static LSTATUS package_RegDeleteTreeW(HKEY hKey, LPCWSTR l
     dwMaxLen = max(dwMaxSubkeyLen, dwMaxValueLen);
     if (dwMaxLen > sizeof(szNameBuf)/sizeof(WCHAR))
     {
-        /* Name too big: alloc a buffer for it */
+
         if (!(lpszName = HeapAlloc( GetProcessHeap(), 0, dwMaxLen*sizeof(WCHAR))))
         {
             ret = ERROR_NOT_ENOUGH_MEMORY;
@@ -67,12 +67,12 @@ __attribute__((used)) static LSTATUS package_RegDeleteTreeW(HKEY hKey, LPCWSTR l
         }
     }
 
-    /* Recursively delete all the subkeys */
+
     while (TRUE)
     {
         dwSize = dwMaxLen;
-        if (RegEnumKeyExW(hSubKey, 0, lpszName, &dwSize, NULL,
-                          NULL, NULL, NULL)) break;
+        if (RegEnumKeyExW(hSubKey, 0, lpszName, &dwSize, ((void*)0),
+                          ((void*)0), ((void*)0), ((void*)0))) break;
 
         ret = package_RegDeleteTreeW(hSubKey, lpszName, access);
         if (ret) goto cleanup;
@@ -90,7 +90,7 @@ __attribute__((used)) static LSTATUS package_RegDeleteTreeW(HKEY hKey, LPCWSTR l
         {
             dwSize = dwMaxLen;
             if (RegEnumValueW(hKey, 0, lpszName, &dwSize,
-                  NULL, NULL, NULL, NULL)) break;
+                  ((void*)0), ((void*)0), ((void*)0), ((void*)0))) break;
 
             ret = RegDeleteValueW(hKey, lpszName);
             if (ret) goto cleanup;

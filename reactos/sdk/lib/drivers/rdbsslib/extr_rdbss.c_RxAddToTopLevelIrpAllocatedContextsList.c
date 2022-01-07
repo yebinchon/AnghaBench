@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-struct TYPE_4__ {scalar_t__ Signature; int /*<<< orphan*/  ListEntry; int /*<<< orphan*/  Flags; } ;
-typedef  TYPE_1__* PRX_TOPLEVELIRP_CONTEXT ;
-typedef  int /*<<< orphan*/  KIRQL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int BooleanFlagOn (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_1__*) ; 
- int /*<<< orphan*/  InsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KeReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RX_TOPLEVELCTX_FLAG_FROM_POOL ; 
- scalar_t__ RX_TOPLEVELIRP_CONTEXT_SIGNATURE ; 
- int /*<<< orphan*/  TopLevelIrpAllocatedContextsList ; 
- int /*<<< orphan*/  TopLevelIrpSpinLock ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VOID ;
+struct TYPE_4__ {scalar_t__ Signature; int ListEntry; int Flags; } ;
+typedef TYPE_1__* PRX_TOPLEVELIRP_CONTEXT ;
+typedef int KIRQL ;
+
+
+ int ASSERT (int) ;
+ int BooleanFlagOn (int ,int ) ;
+ int DPRINT (char*,TYPE_1__*) ;
+ int InsertTailList (int *,int *) ;
+ int KeAcquireSpinLock (int *,int *) ;
+ int KeReleaseSpinLock (int *,int ) ;
+ int RX_TOPLEVELCTX_FLAG_FROM_POOL ;
+ scalar_t__ RX_TOPLEVELIRP_CONTEXT_SIGNATURE ;
+ int TopLevelIrpAllocatedContextsList ;
+ int TopLevelIrpSpinLock ;
 
 VOID
 RxAddToTopLevelIrpAllocatedContextsList(

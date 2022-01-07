@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VarlinkReplyFlags ;
-typedef  int /*<<< orphan*/  Varlink ;
-typedef  int /*<<< orphan*/  JsonVariant ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EXIT_FAILURE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/ * json_variant_by_key (int /*<<< orphan*/ *,char*) ; 
- int json_variant_integer (int /*<<< orphan*/ *) ; 
- int n_done ; 
- int /*<<< orphan*/  sd_event_exit (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  varlink_get_event (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int VarlinkReplyFlags ;
+typedef int Varlink ;
+typedef int JsonVariant ;
+
+
+ int EXIT_FAILURE ;
+ int assert_se (int) ;
+ int * json_variant_by_key (int *,char*) ;
+ int json_variant_integer (int *) ;
+ int n_done ;
+ int sd_event_exit (int ,int ) ;
+ int varlink_get_event (int *) ;
 
 __attribute__((used)) static int reply(Varlink *link, JsonVariant *parameters, const char *error_id, VarlinkReplyFlags flags, void *userdata) {
         JsonVariant *sum;

@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FSA_REF_SD ; 
- int FSA_REF_USB ; 
- int /*<<< orphan*/  IOSUHAX_FSA_Close (int) ; 
- int fsaFdSd ; 
- int fsaFdUsb ; 
+ int FSA_REF_SD ;
+ int FSA_REF_USB ;
+ int IOSUHAX_FSA_Close (int) ;
+ int fsaFdSd ;
+ int fsaFdUsb ;
 
 __attribute__((used)) static void IOSUHAX_disc_io_fsa_close(int fsaFd)
 {

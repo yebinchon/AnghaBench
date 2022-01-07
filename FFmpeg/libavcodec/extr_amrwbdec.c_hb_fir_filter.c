@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int AMRWB_SFR_SIZE_16k ; 
- int HB_FIR_SIZE ; 
- int /*<<< orphan*/  memcpy (float*,float const*,int) ; 
+ int AMRWB_SFR_SIZE_16k ;
+ int HB_FIR_SIZE ;
+ int memcpy (float*,float const*,int) ;
 
 __attribute__((used)) static void hb_fir_filter(float *out, const float fir_coef[HB_FIR_SIZE + 1],
                           float mem[HB_FIR_SIZE], const float *in)
 {
     int i, j;
-    float data[AMRWB_SFR_SIZE_16k + HB_FIR_SIZE]; // past and current samples
+    float data[AMRWB_SFR_SIZE_16k + HB_FIR_SIZE];
 
     memcpy(data, mem, HB_FIR_SIZE * sizeof(float));
     memcpy(data + HB_FIR_SIZE, in, AMRWB_SFR_SIZE_16k * sizeof(float));

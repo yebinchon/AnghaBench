@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct s_write {int new_channel; TYPE_1__* data608; } ;
 struct TYPE_2__ {int channel; size_t color; size_t font; int mode; int cursor_row; int rollup_base_row; int cursor_column; } ;
 
-/* Variables and functions */
-#define  MODE_ROLLUP_2 130 
-#define  MODE_ROLLUP_3 129 
-#define  MODE_ROLLUP_4 128 
- int MODE_TEXT ; 
- int cc_channel ; 
- int /*<<< orphan*/ ** color_text ; 
- scalar_t__ debug_608 ; 
- int /*<<< orphan*/ * font_text ; 
- int /*<<< orphan*/  hb_log (char*,...) ; 
- int /*<<< orphan*/  move_roll_up (struct s_write*,int) ; 
- void*** pac2_attribs ; 
- int* rowdata ; 
+
+
+
+
+ int MODE_TEXT ;
+ int cc_channel ;
+ int ** color_text ;
+ scalar_t__ debug_608 ;
+ int * font_text ;
+ int hb_log (char*,...) ;
+ int move_roll_up (struct s_write*,int) ;
+ void*** pac2_attribs ;
+ int* rowdata ;
 
 __attribute__((used)) static void handle_pac(unsigned char c1, unsigned char c2, struct s_write *wb)
 {
-    // Handle channel change
+
     if (wb->new_channel > 2)
     {
         wb->new_channel -= 2;
@@ -71,23 +71,23 @@ __attribute__((used)) static void handle_pac(unsigned char c1, unsigned char c2,
                 color_text[wb->data608->color][0],
                 font_text[wb->data608->font]);
 
-    // CC spec says to the preferred method to handle a roll-up base row
-    // that causes the display to scroll off the top of the screen is to
-    // adjust the base row down.
+
+
+
     int keep_lines;
     switch (wb->data608->mode)
     {
-        case MODE_ROLLUP_2:
+        case 130:
             keep_lines = 2;
             break;
-        case MODE_ROLLUP_3:
+        case 129:
             keep_lines = 3;
             break;
-        case MODE_ROLLUP_4:
+        case 128:
             keep_lines = 4;
             break;
         default:
-            // Not rollup mode, all rows ok
+
             keep_lines = 0;
             break;
     }
@@ -97,13 +97,13 @@ __attribute__((used)) static void handle_pac(unsigned char c1, unsigned char c2,
     }
     if (wb->data608->mode != MODE_TEXT)
     {
-        // According to Robson, row info is discarded in text mode
-        // but column is accepted
-        //
-        // CC-608 spec says current rollup display must move to the
-        // new position when the cursor row changes
+
+
+
+
+
         move_roll_up(wb, row - 1);
-        wb->data608->cursor_row = row - 1 ; // Since the array is 0 based
+        wb->data608->cursor_row = row - 1 ;
     }
     wb->data608->rollup_base_row = row - 1;
     wb->data608->cursor_column = indent;

@@ -1,128 +1,120 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct condition_basic {int dummy; } ;
-struct TYPE_11__ {int flags; int type; int /*<<< orphan*/  value; struct TYPE_11__* left; struct TYPE_11__* right; } ;
-typedef  TYPE_1__ query_t ;
-typedef  TYPE_2__* condition_t ;
-typedef  void* condition_func_t ;
+struct TYPE_11__ {int flags; int type; int value; struct TYPE_11__* left; struct TYPE_11__* right; } ;
+typedef TYPE_1__ query_t ;
+typedef TYPE_2__* condition_t ;
+typedef void* condition_func_t ;
 struct TYPE_12__ {struct TYPE_12__* true_branch; struct TYPE_12__* false_branch; void* eval; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMPILE_COND_EQ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COMPILE_COND_RANGE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COMPILE_COND_TWOWORDS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COMPILE_COND_WORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COMPILE_COND_WORD_NOSTEM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COMPILE_QUANTIFIER (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  address ; 
- int /*<<< orphan*/  adr_city ; 
- int /*<<< orphan*/  adr_country ; 
- int /*<<< orphan*/  adr_district ; 
- int /*<<< orphan*/  adr_house ; 
- int /*<<< orphan*/  adr_name ; 
- int /*<<< orphan*/  adr_station ; 
- int /*<<< orphan*/  adr_street ; 
- int /*<<< orphan*/  adr_type ; 
- int /*<<< orphan*/  age ; 
- int /*<<< orphan*/  alcohol ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bday ; 
- int /*<<< orphan*/  birthday_soon ; 
- int /*<<< orphan*/  bmonth ; 
- int /*<<< orphan*/  browser ; 
- int /*<<< orphan*/  byear ; 
- int /*<<< orphan*/  chair ; 
- int /*<<< orphan*/  city ; 
- int /*<<< orphan*/  company ; 
- int /*<<< orphan*/  company_name ; 
- TYPE_2__* compile_condition_inlist (TYPE_2__*,TYPE_2__*,int) ; 
- int /*<<< orphan*/  country ; 
- int /*<<< orphan*/  custom1 ; 
- int /*<<< orphan*/  custom10 ; 
- int /*<<< orphan*/  custom11 ; 
- int /*<<< orphan*/  custom12 ; 
- int /*<<< orphan*/  custom13 ; 
- int /*<<< orphan*/  custom14 ; 
- int /*<<< orphan*/  custom15 ; 
- int /*<<< orphan*/  custom2 ; 
- int /*<<< orphan*/  custom3 ; 
- int /*<<< orphan*/  custom4 ; 
- int /*<<< orphan*/  custom5 ; 
- int /*<<< orphan*/  custom6 ; 
- int /*<<< orphan*/  custom7 ; 
- int /*<<< orphan*/  custom8 ; 
- int /*<<< orphan*/  custom9 ; 
- int /*<<< orphan*/  cvisited ; 
- int /*<<< orphan*/  edu_form ; 
- int /*<<< orphan*/  edu_status ; 
- int /*<<< orphan*/  education ; 
- int /*<<< orphan*/  faculty ; 
- int /*<<< orphan*/  future_age ; 
- int /*<<< orphan*/  gcountry ; 
- int /*<<< orphan*/  graduation ; 
- int /*<<< orphan*/  grp_id ; 
- int /*<<< orphan*/  grp_type ; 
- int /*<<< orphan*/  has_photo ; 
- int /*<<< orphan*/  height ; 
- int /*<<< orphan*/  hidden ; 
- int /*<<< orphan*/  hometown ; 
- int /*<<< orphan*/  id ; 
- int /*<<< orphan*/  iiothers ; 
- int /*<<< orphan*/  interests ; 
- int /*<<< orphan*/  job ; 
- int /*<<< orphan*/  lang_id ; 
- int /*<<< orphan*/  mil_finish ; 
- int /*<<< orphan*/  mil_start ; 
- int /*<<< orphan*/  mil_unit ; 
- int /*<<< orphan*/  military ; 
- int /*<<< orphan*/  mstatus ; 
- int /*<<< orphan*/  name ; 
- int /*<<< orphan*/  name_interests ; 
- int /*<<< orphan*/  online ; 
- int /*<<< orphan*/  operator ; 
- int /*<<< orphan*/  pays_money ; 
- int /*<<< orphan*/  political ; 
- int /*<<< orphan*/  ppriority ; 
- int /*<<< orphan*/  privacy ; 
- int /*<<< orphan*/  proposal ; 
-#define  q_and 135 
-#define  q_birthday_today 134 
-#define  q_birthday_tomorrow 133 
-#define  q_false 132 
-#define  q_inlist 131 
-#define  q_not 130 
-#define  q_or 129 
-#define  q_true 128 
- int /*<<< orphan*/  random ; 
- int /*<<< orphan*/  region ; 
- int /*<<< orphan*/  religion ; 
- int /*<<< orphan*/  sch_city ; 
- int /*<<< orphan*/  sch_class ; 
- int /*<<< orphan*/  sch_country ; 
- int /*<<< orphan*/  sch_grad ; 
- int /*<<< orphan*/  sch_id ; 
- int /*<<< orphan*/  sch_spec ; 
- int /*<<< orphan*/  school ; 
- int /*<<< orphan*/  sex ; 
- int /*<<< orphan*/  smoking ; 
- int /*<<< orphan*/  timezone ; 
- int /*<<< orphan*/  uni_city ; 
- int /*<<< orphan*/  uni_country ; 
- int /*<<< orphan*/  univ ; 
- int /*<<< orphan*/  uses_apps ; 
- TYPE_2__* zmalloc (int) ; 
+
+ int COMPILE_COND_EQ (int ) ;
+ int COMPILE_COND_RANGE (int ) ;
+ int COMPILE_COND_TWOWORDS (int ) ;
+ int COMPILE_COND_WORD (int ) ;
+ int COMPILE_COND_WORD_NOSTEM (int ) ;
+ int COMPILE_QUANTIFIER (int ) ;
+ int address ;
+ int adr_city ;
+ int adr_country ;
+ int adr_district ;
+ int adr_house ;
+ int adr_name ;
+ int adr_station ;
+ int adr_street ;
+ int adr_type ;
+ int age ;
+ int alcohol ;
+ int assert (int ) ;
+ int bday ;
+ int birthday_soon ;
+ int bmonth ;
+ int browser ;
+ int byear ;
+ int chair ;
+ int city ;
+ int company ;
+ int company_name ;
+ TYPE_2__* compile_condition_inlist (TYPE_2__*,TYPE_2__*,int) ;
+ int country ;
+ int custom1 ;
+ int custom10 ;
+ int custom11 ;
+ int custom12 ;
+ int custom13 ;
+ int custom14 ;
+ int custom15 ;
+ int custom2 ;
+ int custom3 ;
+ int custom4 ;
+ int custom5 ;
+ int custom6 ;
+ int custom7 ;
+ int custom8 ;
+ int custom9 ;
+ int cvisited ;
+ int edu_form ;
+ int edu_status ;
+ int education ;
+ int faculty ;
+ int future_age ;
+ int gcountry ;
+ int graduation ;
+ int grp_id ;
+ int grp_type ;
+ int has_photo ;
+ int height ;
+ int hidden ;
+ int hometown ;
+ int id ;
+ int iiothers ;
+ int interests ;
+ int job ;
+ int lang_id ;
+ int mil_finish ;
+ int mil_start ;
+ int mil_unit ;
+ int military ;
+ int mstatus ;
+ int name ;
+ int name_interests ;
+ int online ;
+ int operator ;
+ int pays_money ;
+ int political ;
+ int ppriority ;
+ int privacy ;
+ int proposal ;
+ int random ;
+ int region ;
+ int religion ;
+ int sch_city ;
+ int sch_class ;
+ int sch_country ;
+ int sch_grad ;
+ int sch_id ;
+ int sch_spec ;
+ int school ;
+ int sex ;
+ int smoking ;
+ int timezone ;
+ int uni_city ;
+ int uni_country ;
+ int univ ;
+ int uses_apps ;
+ TYPE_2__* zmalloc (int) ;
 
 condition_t build_condition (query_t *Q, condition_t true_branch, condition_t false_branch, int opt_level) {
   if (Q->flags & 1) {
@@ -151,21 +143,21 @@ condition_t build_condition (query_t *Q, condition_t true_branch, condition_t fa
   }
 
   switch (Q->type) {
-  case q_and:
+  case 135:
     return build_condition (Q->left, build_condition (Q->right, true_branch, false_branch, opt_level), false_branch, opt_level);
-  case q_or:
+  case 129:
     return build_condition (Q->left, true_branch, build_condition (Q->right, true_branch, false_branch, opt_level), opt_level);
-  case q_not:
+  case 130:
     return build_condition (Q->left, false_branch, true_branch, opt_level);
-  case q_false:
+  case 132:
     return false_branch;
-  case q_true:
+  case 128:
     return true_branch;
-  case q_inlist:
+  case 131:
     return compile_condition_inlist (true_branch, false_branch, opt_level);
-  case q_birthday_today:
-  case q_birthday_tomorrow:
-    Q->value = Q->type - q_birthday_today;
+  case 134:
+  case 133:
+    Q->value = Q->type - 134;
     COMPILE_COND_EQ (birthday_soon);
 
     COMPILE_COND_RANGE (random);
@@ -207,7 +199,7 @@ condition_t build_condition (query_t *Q, condition_t true_branch, condition_t fa
     COMPILE_COND_RANGE (custom15);
     COMPILE_COND_RANGE (timezone);
     COMPILE_COND_EQ (mstatus);
-    COMPILE_COND_EQ (grp_type);  
+    COMPILE_COND_EQ (grp_type);
     COMPILE_COND_EQ (grp_id);
     COMPILE_COND_EQ (lang_id);
     COMPILE_COND_WORD_NOSTEM (name);

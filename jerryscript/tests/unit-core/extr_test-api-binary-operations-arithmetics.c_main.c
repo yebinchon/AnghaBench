@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  tests ;
-typedef  int /*<<< orphan*/  test_nans ;
-struct TYPE_8__ {int /*<<< orphan*/  rhs; int /*<<< orphan*/  lhs; int /*<<< orphan*/  op; } ;
-typedef  TYPE_1__ test_nan_entry_t ;
-typedef  TYPE_1__ test_error_entry_t ;
-struct TYPE_9__ {int /*<<< orphan*/  op; int /*<<< orphan*/  expected; int /*<<< orphan*/  rhs; int /*<<< orphan*/  lhs; } ;
-typedef  TYPE_3__ test_entry_t ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
-typedef  int /*<<< orphan*/  error_tests ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_BIN_OP_ADD ; 
- int /*<<< orphan*/  JERRY_BIN_OP_DIV ; 
- int /*<<< orphan*/  JERRY_BIN_OP_MUL ; 
- int /*<<< orphan*/  JERRY_BIN_OP_REM ; 
- int /*<<< orphan*/  JERRY_BIN_OP_STRICT_EQUAL ; 
- int /*<<< orphan*/  JERRY_BIN_OP_SUB ; 
- int /*<<< orphan*/  JERRY_ERROR_SYNTAX ; 
- int /*<<< orphan*/  JERRY_INIT_EMPTY ; 
- int /*<<< orphan*/  JERRY_PARSE_NO_OPTS ; 
- TYPE_3__ T (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ASSERT (int) ; 
- int /*<<< orphan*/  TEST_INIT () ; 
- TYPE_1__ T_ARI (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ T_ERR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ T_NAN (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_acquire_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_binary_operation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_cleanup () ; 
- int /*<<< orphan*/  jerry_create_boolean (int) ; 
- int /*<<< orphan*/  jerry_create_error (int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_create_null () ; 
- int /*<<< orphan*/  jerry_create_number (double) ; 
- int /*<<< orphan*/  jerry_create_number_infinity (int) ; 
- int /*<<< orphan*/  jerry_create_string (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  jerry_create_undefined () ; 
- int /*<<< orphan*/  jerry_eval (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_get_boolean_value (int /*<<< orphan*/ ) ; 
- double jerry_get_number_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- scalar_t__ jerry_value_is_boolean (int /*<<< orphan*/ ) ; 
- int jerry_value_is_error (int /*<<< orphan*/ ) ; 
- int jerry_value_is_number (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int tests ;
+typedef int test_nans ;
+struct TYPE_8__ {int rhs; int lhs; int op; } ;
+typedef TYPE_1__ test_nan_entry_t ;
+typedef TYPE_1__ test_error_entry_t ;
+struct TYPE_9__ {int op; int expected; int rhs; int lhs; } ;
+typedef TYPE_3__ test_entry_t ;
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+typedef int error_tests ;
+
+
+ int JERRY_BIN_OP_ADD ;
+ int JERRY_BIN_OP_DIV ;
+ int JERRY_BIN_OP_MUL ;
+ int JERRY_BIN_OP_REM ;
+ int JERRY_BIN_OP_STRICT_EQUAL ;
+ int JERRY_BIN_OP_SUB ;
+ int JERRY_ERROR_SYNTAX ;
+ int JERRY_INIT_EMPTY ;
+ int JERRY_PARSE_NO_OPTS ;
+ TYPE_3__ T (int ,int ,int ,int ) ;
+ int TEST_ASSERT (int) ;
+ int TEST_INIT () ;
+ TYPE_1__ T_ARI (int ,int ) ;
+ TYPE_1__ T_ERR (int ,int ,int ) ;
+ TYPE_1__ T_NAN (int ,int ,int ) ;
+ int jerry_acquire_value (int ) ;
+ int jerry_binary_operation (int ,int ,int ) ;
+ int jerry_cleanup () ;
+ int jerry_create_boolean (int) ;
+ int jerry_create_error (int ,int const*) ;
+ int jerry_create_null () ;
+ int jerry_create_number (double) ;
+ int jerry_create_number_infinity (int) ;
+ int jerry_create_string (int const*) ;
+ int jerry_create_undefined () ;
+ int jerry_eval (int const*,int,int ) ;
+ scalar_t__ jerry_get_boolean_value (int ) ;
+ double jerry_get_number_value (int ) ;
+ int jerry_init (int ) ;
+ int jerry_release_value (int ) ;
+ scalar_t__ jerry_value_is_boolean (int ) ;
+ int jerry_value_is_error (int ) ;
+ int jerry_value_is_number (int ) ;
 
 int
 main (void)
@@ -72,12 +72,12 @@ main (void)
 
   test_nan_entry_t test_nans[] =
   {
-    /* Testing addition (+) */
+
     T_NAN (JERRY_BIN_OP_ADD, jerry_create_number (3.1), jerry_create_undefined ()),
     T_NAN (JERRY_BIN_OP_ADD, jerry_create_undefined (), jerry_create_undefined ()),
     T_NAN (JERRY_BIN_OP_ADD, jerry_create_undefined (), jerry_create_null ()),
 
-    /* Testing subtraction (-), multiplication (*), division (/), remainder (%) */
+
     T_ARI (jerry_create_number (3.1), jerry_create_undefined ()),
     T_ARI (jerry_create_string ((const jerry_char_t *) "foo"), jerry_create_string ((const jerry_char_t *) "bar")),
     T_ARI (jerry_create_string ((const jerry_char_t *) "foo"), jerry_create_undefined ()),
@@ -95,18 +95,18 @@ main (void)
     T_ARI (jerry_acquire_value (obj2), jerry_create_undefined ()),
     T_ARI (jerry_acquire_value (obj1), jerry_create_string ((const jerry_char_t *) "foo")),
     T_ARI (jerry_acquire_value (obj1), jerry_create_null ()),
-    T_ARI (jerry_acquire_value (obj1), jerry_create_boolean (true)),
-    T_ARI (jerry_acquire_value (obj1), jerry_create_boolean (false)),
+    T_ARI (jerry_acquire_value (obj1), jerry_create_boolean (1)),
+    T_ARI (jerry_acquire_value (obj1), jerry_create_boolean (0)),
     T_ARI (jerry_acquire_value (obj1), jerry_create_number (5.0)),
 
-    /* Testing division (/) */
-    T_NAN (JERRY_BIN_OP_DIV, jerry_create_boolean (false), jerry_create_boolean (false)),
+
+    T_NAN (JERRY_BIN_OP_DIV, jerry_create_boolean (0), jerry_create_boolean (0)),
     T_NAN (JERRY_BIN_OP_DIV, jerry_create_number (0.0), jerry_create_number (0.0)),
     T_NAN (JERRY_BIN_OP_DIV, jerry_create_null (), jerry_create_null ()),
 
-    /* Testing remainder (%) */
-    T_NAN (JERRY_BIN_OP_REM, jerry_create_boolean (true), jerry_create_boolean (false)),
-    T_NAN (JERRY_BIN_OP_REM, jerry_create_boolean (false), jerry_create_boolean (false)),
+
+    T_NAN (JERRY_BIN_OP_REM, jerry_create_boolean (1), jerry_create_boolean (0)),
+    T_NAN (JERRY_BIN_OP_REM, jerry_create_boolean (0), jerry_create_boolean (0)),
     T_NAN (JERRY_BIN_OP_REM, jerry_create_number (0.0), jerry_create_number (0.0)),
     T_NAN (JERRY_BIN_OP_REM, jerry_create_null (), jerry_create_null ()),
   };
@@ -127,10 +127,10 @@ main (void)
 
   test_entry_t tests[] =
   {
-    /* Testing addition (+) */
+
     T (JERRY_BIN_OP_ADD, jerry_create_number (5.0), jerry_create_number (5.0), jerry_create_number (10.0)),
     T (JERRY_BIN_OP_ADD, jerry_create_number (3.1), jerry_create_number (10), jerry_create_number (13.1)),
-    T (JERRY_BIN_OP_ADD, jerry_create_number (3.1), jerry_create_boolean (true), jerry_create_number (4.1)),
+    T (JERRY_BIN_OP_ADD, jerry_create_number (3.1), jerry_create_boolean (1), jerry_create_number (4.1)),
     T (JERRY_BIN_OP_ADD,
        jerry_create_string ((const jerry_char_t *) "foo"),
        jerry_create_string ((const jerry_char_t *) "bar"),
@@ -149,10 +149,10 @@ main (void)
        jerry_create_string ((const jerry_char_t *) "foo5")),
 
     T (JERRY_BIN_OP_ADD, jerry_create_null (), jerry_create_null (), jerry_create_number (0.0)),
-    T (JERRY_BIN_OP_ADD, jerry_create_boolean (true), jerry_create_boolean (true), jerry_create_number (2.0)),
-    T (JERRY_BIN_OP_ADD, jerry_create_boolean (true), jerry_create_boolean (false), jerry_create_number (1.0)),
-    T (JERRY_BIN_OP_ADD, jerry_create_boolean (false), jerry_create_boolean (true), jerry_create_number (1.0)),
-    T (JERRY_BIN_OP_ADD, jerry_create_boolean (false), jerry_create_boolean (false), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_ADD, jerry_create_boolean (1), jerry_create_boolean (1), jerry_create_number (2.0)),
+    T (JERRY_BIN_OP_ADD, jerry_create_boolean (1), jerry_create_boolean (0), jerry_create_number (1.0)),
+    T (JERRY_BIN_OP_ADD, jerry_create_boolean (0), jerry_create_boolean (1), jerry_create_number (1.0)),
+    T (JERRY_BIN_OP_ADD, jerry_create_boolean (0), jerry_create_boolean (0), jerry_create_number (0.0)),
     T (JERRY_BIN_OP_ADD,
        jerry_acquire_value (obj1),
        jerry_acquire_value (obj1),
@@ -175,11 +175,11 @@ main (void)
        jerry_create_string ((const jerry_char_t *) "[object Object]undefined")),
     T (JERRY_BIN_OP_ADD,
        jerry_acquire_value (obj1),
-       jerry_create_boolean (true),
+       jerry_create_boolean (1),
        jerry_create_string ((const jerry_char_t *) "[object Object]true")),
     T (JERRY_BIN_OP_ADD,
        jerry_acquire_value (obj1),
-       jerry_create_boolean (false),
+       jerry_create_boolean (0),
        jerry_create_string ((const jerry_char_t *) "[object Object]false")),
     T (JERRY_BIN_OP_ADD,
        jerry_acquire_value (obj1),
@@ -190,48 +190,48 @@ main (void)
        jerry_create_string ((const jerry_char_t *) "foo"),
        jerry_create_string ((const jerry_char_t *) "[object Object]foo")),
 
-    /* Testing subtraction (-) */
+
     T (JERRY_BIN_OP_SUB, jerry_create_number (5.0), jerry_create_number (5.0), jerry_create_number (0.0)),
     T (JERRY_BIN_OP_SUB, jerry_create_number (3.1), jerry_create_number (10), jerry_create_number (-6.9)),
-    T (JERRY_BIN_OP_SUB, jerry_create_number (3.1), jerry_create_boolean (true), jerry_create_number (2.1)),
-    T (JERRY_BIN_OP_SUB, jerry_create_boolean (true), jerry_create_boolean (true), jerry_create_number (0.0)),
-    T (JERRY_BIN_OP_SUB, jerry_create_boolean (true), jerry_create_boolean (false), jerry_create_number (1.0)),
-    T (JERRY_BIN_OP_SUB, jerry_create_boolean (false), jerry_create_boolean (true), jerry_create_number (-1.0)),
-    T (JERRY_BIN_OP_SUB, jerry_create_boolean (false), jerry_create_boolean (false), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_SUB, jerry_create_number (3.1), jerry_create_boolean (1), jerry_create_number (2.1)),
+    T (JERRY_BIN_OP_SUB, jerry_create_boolean (1), jerry_create_boolean (1), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_SUB, jerry_create_boolean (1), jerry_create_boolean (0), jerry_create_number (1.0)),
+    T (JERRY_BIN_OP_SUB, jerry_create_boolean (0), jerry_create_boolean (1), jerry_create_number (-1.0)),
+    T (JERRY_BIN_OP_SUB, jerry_create_boolean (0), jerry_create_boolean (0), jerry_create_number (0.0)),
     T (JERRY_BIN_OP_SUB, jerry_create_null (), jerry_create_null (), jerry_create_number (-0.0)),
 
 
-    /* Testing multiplication (*) */
+
     T (JERRY_BIN_OP_MUL, jerry_create_number (5.0), jerry_create_number (5.0), jerry_create_number (25.0)),
     T (JERRY_BIN_OP_MUL, jerry_create_number (3.1), jerry_create_number (10), jerry_create_number (31)),
-    T (JERRY_BIN_OP_MUL, jerry_create_number (3.1), jerry_create_boolean (true), jerry_create_number (3.1)),
-    T (JERRY_BIN_OP_MUL, jerry_create_boolean (true), jerry_create_boolean (true), jerry_create_number (1.0)),
-    T (JERRY_BIN_OP_MUL, jerry_create_boolean (true), jerry_create_boolean (false), jerry_create_number (0.0)),
-    T (JERRY_BIN_OP_MUL, jerry_create_boolean (false), jerry_create_boolean (true), jerry_create_number (0.0)),
-    T (JERRY_BIN_OP_MUL, jerry_create_boolean (false), jerry_create_boolean (false), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_MUL, jerry_create_number (3.1), jerry_create_boolean (1), jerry_create_number (3.1)),
+    T (JERRY_BIN_OP_MUL, jerry_create_boolean (1), jerry_create_boolean (1), jerry_create_number (1.0)),
+    T (JERRY_BIN_OP_MUL, jerry_create_boolean (1), jerry_create_boolean (0), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_MUL, jerry_create_boolean (0), jerry_create_boolean (1), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_MUL, jerry_create_boolean (0), jerry_create_boolean (0), jerry_create_number (0.0)),
     T (JERRY_BIN_OP_MUL, jerry_create_null (), jerry_create_null (), jerry_create_number (0.0)),
 
-    /* Testing division (/) */
+
     T (JERRY_BIN_OP_DIV, jerry_create_number (5.0), jerry_create_number (5.0), jerry_create_number (1.0)),
     T (JERRY_BIN_OP_DIV, jerry_create_number (3.1), jerry_create_number (10), jerry_create_number (0.31)),
-    T (JERRY_BIN_OP_DIV, jerry_create_number (3.1), jerry_create_boolean (true), jerry_create_number (3.1)),
-    T (JERRY_BIN_OP_DIV, jerry_create_boolean (true), jerry_create_boolean (true), jerry_create_number (1.0)),
+    T (JERRY_BIN_OP_DIV, jerry_create_number (3.1), jerry_create_boolean (1), jerry_create_number (3.1)),
+    T (JERRY_BIN_OP_DIV, jerry_create_boolean (1), jerry_create_boolean (1), jerry_create_number (1.0)),
     T (JERRY_BIN_OP_DIV,
-       jerry_create_boolean (true),
-       jerry_create_boolean (false),
-       jerry_create_number_infinity (false)),
-    T (JERRY_BIN_OP_DIV, jerry_create_boolean (false), jerry_create_boolean (true), jerry_create_number (0.0)),
+       jerry_create_boolean (1),
+       jerry_create_boolean (0),
+       jerry_create_number_infinity (0)),
+    T (JERRY_BIN_OP_DIV, jerry_create_boolean (0), jerry_create_boolean (1), jerry_create_number (0.0)),
 
-    /* Testing remainder (%) */
+
     T (JERRY_BIN_OP_REM, jerry_create_number (5.0), jerry_create_number (5.0), jerry_create_number (0.0)),
     T (JERRY_BIN_OP_REM, jerry_create_number (5.0), jerry_create_number (2.0), jerry_create_number (1.0)),
     T (JERRY_BIN_OP_REM, jerry_create_number (3.1), jerry_create_number (10), jerry_create_number (3.1)),
     T (JERRY_BIN_OP_REM,
        jerry_create_number (3.1),
-       jerry_create_boolean (true),
+       jerry_create_boolean (1),
        jerry_create_number (0.10000000000000009)),
-    T (JERRY_BIN_OP_REM, jerry_create_boolean (true), jerry_create_boolean (true), jerry_create_number (0.0)),
-    T (JERRY_BIN_OP_REM, jerry_create_boolean (false), jerry_create_boolean (true), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_REM, jerry_create_boolean (1), jerry_create_boolean (1), jerry_create_number (0.0)),
+    T (JERRY_BIN_OP_REM, jerry_create_boolean (0), jerry_create_boolean (1), jerry_create_number (0.0)),
 
   };
 
@@ -254,29 +254,29 @@ main (void)
 
   test_error_entry_t error_tests[] =
   {
-    /* Testing addition (+) */
+
     T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (err1), jerry_acquire_value (err1)),
     T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (err1), jerry_create_undefined ()),
     T_ERR (JERRY_BIN_OP_ADD, jerry_create_undefined (), jerry_acquire_value (err1)),
 
-    /* Testing subtraction (-), multiplication (*), division (/), remainder (%) */
+
     T_ARI (jerry_acquire_value (err1), jerry_acquire_value (err1)),
     T_ARI (jerry_acquire_value (err1), jerry_create_undefined ()),
     T_ARI (jerry_create_undefined (), jerry_acquire_value (err1)),
 
-    /* Testing addition (+) */
+
     T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_undefined ()),
     T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_null ()),
-    T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_boolean (true)),
-    T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_boolean (false)),
+    T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_boolean (1)),
+    T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_boolean (0)),
     T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_acquire_value (obj2)),
     T_ERR (JERRY_BIN_OP_ADD, jerry_acquire_value (obj3), jerry_create_string ((const jerry_char_t *) "foo")),
 
-    /* Testing subtraction (-), multiplication (*), division (/), remainder (%) */
+
     T_ARI (jerry_acquire_value (obj3), jerry_create_undefined ()),
     T_ARI (jerry_acquire_value (obj3), jerry_create_null ()),
-    T_ARI (jerry_acquire_value (obj3), jerry_create_boolean (true)),
-    T_ARI (jerry_acquire_value (obj3), jerry_create_boolean (false)),
+    T_ARI (jerry_acquire_value (obj3), jerry_create_boolean (1)),
+    T_ARI (jerry_acquire_value (obj3), jerry_create_boolean (0)),
     T_ARI (jerry_acquire_value (obj3), jerry_acquire_value (obj2)),
     T_ARI (jerry_acquire_value (obj3), jerry_create_string ((const jerry_char_t *) "foo")),
   };

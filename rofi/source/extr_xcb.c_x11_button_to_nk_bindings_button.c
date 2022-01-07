@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int guint32 ;
-typedef  int /*<<< orphan*/  gboolean ;
-typedef  int /*<<< orphan*/  NkBindingsMouseButton ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  NK_BINDINGS_MOUSE_BUTTON_BACK ; 
- int /*<<< orphan*/  NK_BINDINGS_MOUSE_BUTTON_EXTRA ; 
- int /*<<< orphan*/  NK_BINDINGS_MOUSE_BUTTON_FORWARD ; 
- int /*<<< orphan*/  NK_BINDINGS_MOUSE_BUTTON_MIDDLE ; 
- int /*<<< orphan*/  NK_BINDINGS_MOUSE_BUTTON_PRIMARY ; 
- int /*<<< orphan*/  NK_BINDINGS_MOUSE_BUTTON_SECONDARY ; 
- int /*<<< orphan*/  TRUE ; 
+
+
+
+typedef int guint32 ;
+typedef int gboolean ;
+typedef int NkBindingsMouseButton ;
+
+
+ int FALSE ;
+ int NK_BINDINGS_MOUSE_BUTTON_BACK ;
+ int NK_BINDINGS_MOUSE_BUTTON_EXTRA ;
+ int NK_BINDINGS_MOUSE_BUTTON_FORWARD ;
+ int NK_BINDINGS_MOUSE_BUTTON_MIDDLE ;
+ int NK_BINDINGS_MOUSE_BUTTON_PRIMARY ;
+ int NK_BINDINGS_MOUSE_BUTTON_SECONDARY ;
+ int TRUE ;
 
 __attribute__((used)) static gboolean x11_button_to_nk_bindings_button ( guint32 x11_button, NkBindingsMouseButton *button )
 {

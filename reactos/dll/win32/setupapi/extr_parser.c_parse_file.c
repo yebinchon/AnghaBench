@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  utf8_bom ;
+
+
+
+
+typedef int utf8_bom ;
 struct line {scalar_t__ nb_fields; int first_field; } ;
 struct inf_file {int strings_section; struct field* fields; void* strings; void* string_pos; } ;
-struct field {int /*<<< orphan*/  text; } ;
-typedef  int WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int BYTE ;
+struct field {int text; } ;
+typedef int WCHAR ;
+typedef int UINT ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BYTE ;
 
-/* Variables and functions */
- int CP_ACP ; 
- int CP_UTF8 ; 
- int /*<<< orphan*/  Chicago ; 
- int /*<<< orphan*/  CreateFileMappingW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int ERROR_NOT_ENOUGH_MEMORY ; 
- int ERROR_WRONG_INF_STYLE ; 
- int /*<<< orphan*/  FILE_MAP_READ ; 
- int GetFileSize (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- void* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int INF_STYLE_WIN4 ; 
- void* MapViewOfFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int MultiByteToWideChar (int,int /*<<< orphan*/ ,char*,int,int*,int) ; 
- int /*<<< orphan*/  NtClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PAGE_READONLY ; 
- int /*<<< orphan*/  RtlIsTextUnicode (void*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  Signature ; 
- int /*<<< orphan*/  UnmapViewOfFile (void*) ; 
- int /*<<< orphan*/  Version ; 
- int /*<<< orphan*/  Windows95 ; 
- int /*<<< orphan*/  WindowsNT ; 
- struct line* find_line (struct inf_file*,int,int /*<<< orphan*/ ) ; 
- int find_section (struct inf_file*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_inf_file (struct inf_file*) ; 
- int /*<<< orphan*/  memcmp (void*,int const*,int) ; 
- int parse_buffer (struct inf_file*,int*,int*,int*) ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int CP_ACP ;
+ int CP_UTF8 ;
+ int Chicago ;
+ int CreateFileMappingW (int ,int *,int ,int ,int,int *) ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_WRONG_INF_STYLE ;
+ int FILE_MAP_READ ;
+ int GetFileSize (int ,int *) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ void* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,int*) ;
+ int INF_STYLE_WIN4 ;
+ void* MapViewOfFile (int ,int ,int ,int ,int) ;
+ int MultiByteToWideChar (int,int ,char*,int,int*,int) ;
+ int NtClose (int ) ;
+ int PAGE_READONLY ;
+ int RtlIsTextUnicode (void*,int,int *) ;
+ int SetLastError (int) ;
+ int Signature ;
+ int UnmapViewOfFile (void*) ;
+ int Version ;
+ int Windows95 ;
+ int WindowsNT ;
+ struct line* find_line (struct inf_file*,int,int ) ;
+ int find_section (struct inf_file*,int ) ;
+ int free_inf_file (struct inf_file*) ;
+ int memcmp (void*,int const*,int) ;
+ int parse_buffer (struct inf_file*,int*,int*,int*) ;
+ int strcmpiW (int ,int ) ;
 
 __attribute__((used)) static struct inf_file *parse_file( HANDLE handle, UINT *error_line, DWORD style )
 {
@@ -58,12 +58,12 @@ __attribute__((used)) static struct inf_file *parse_file( HANDLE handle, UINT *e
     DWORD err = 0;
     struct inf_file *file;
 
-    DWORD size = GetFileSize( handle, NULL );
-    HANDLE mapping = CreateFileMappingW( handle, NULL, PAGE_READONLY, 0, size, NULL );
-    if (!mapping) return NULL;
+    DWORD size = GetFileSize( handle, ((void*)0) );
+    HANDLE mapping = CreateFileMappingW( handle, ((void*)0), PAGE_READONLY, 0, size, ((void*)0) );
+    if (!mapping) return ((void*)0);
     buffer = MapViewOfFile( mapping, FILE_MAP_READ, 0, 0, size );
     NtClose( mapping );
-    if (!buffer) return NULL;
+    if (!buffer) return ((void*)0);
 
     if (!(file = HeapAlloc( GetProcessHeap(), HEAP_ZERO_MEMORY, sizeof(*file) )))
     {
@@ -71,9 +71,9 @@ __attribute__((used)) static struct inf_file *parse_file( HANDLE handle, UINT *e
         goto done;
     }
 
-    /* we won't need more strings space than the size of the file,
-     * so we can preallocate it here
-     */
+
+
+
     if (!(file->strings = HeapAlloc( GetProcessHeap(), 0, size * sizeof(WCHAR) )))
     {
         err = ERROR_NOT_ENOUGH_MEMORY;
@@ -82,7 +82,7 @@ __attribute__((used)) static struct inf_file *parse_file( HANDLE handle, UINT *e
     file->string_pos = file->strings;
     file->strings_section = -1;
 
-    if (!RtlIsTextUnicode( buffer, size, NULL ))
+    if (!RtlIsTextUnicode( buffer, size, ((void*)0) ))
     {
         static const BYTE utf8_bom[3] = { 0xef, 0xbb, 0xbf };
         WCHAR *new_buff;
@@ -106,13 +106,13 @@ __attribute__((used)) static struct inf_file *parse_file( HANDLE handle, UINT *e
     else
     {
         WCHAR *new_buff = buffer;
-        /* UCS-16 files should start with the Unicode BOM; we should skip it */
+
         if (*new_buff == 0xfeff)
             new_buff++;
         err = parse_buffer( file, new_buff, (WCHAR *)((char *)buffer + size), error_line );
     }
 
-    if (!err)  /* now check signature */
+    if (!err)
     {
         int version_index = find_section( file, Version );
         if (version_index != -1)
@@ -136,7 +136,7 @@ __attribute__((used)) static struct inf_file *parse_file( HANDLE handle, UINT *e
     {
         if (file) free_inf_file( file );
         SetLastError( err );
-        file = NULL;
+        file = ((void*)0);
     }
     return file;
 }

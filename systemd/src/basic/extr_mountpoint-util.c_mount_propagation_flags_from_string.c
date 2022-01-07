@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EINVAL ; 
- unsigned long MS_PRIVATE ; 
- unsigned long MS_SHARED ; 
- unsigned long MS_SLAVE ; 
- scalar_t__ isempty (char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
+ int EINVAL ;
+ unsigned long MS_PRIVATE ;
+ unsigned long MS_SHARED ;
+ unsigned long MS_SLAVE ;
+ scalar_t__ isempty (char const*) ;
+ scalar_t__ streq (char const*,char*) ;
 
 int mount_propagation_flags_from_string(const char *name, unsigned long *ret) {
 

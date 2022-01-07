@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ENODEV ; 
- int /*<<< orphan*/ * hv_acpi_dev ; 
+ int ENODEV ;
+ int * hv_acpi_dev ;
 
 __attribute__((used)) static int vmbus_exists(void)
 {
-	if (hv_acpi_dev == NULL)
-		return -ENODEV;
+ if (hv_acpi_dev == ((void*)0))
+  return -ENODEV;
 
-	return 0;
+ return 0;
 }

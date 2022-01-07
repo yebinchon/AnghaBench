@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASCII_CCSID ; 
- int /*<<< orphan*/  curl_getdate (char const*,int /*<<< orphan*/  const*) ; 
- char* dynconvert (int /*<<< orphan*/ ,char const*,int,unsigned int) ; 
- int /*<<< orphan*/  free (char*) ; 
+
+
+
+typedef int time_t ;
+
+
+ int ASCII_CCSID ;
+ int curl_getdate (char const*,int const*) ;
+ char* dynconvert (int ,char const*,int,unsigned int) ;
+ int free (char*) ;
 
 time_t
 curl_getdate_ccsid(const char *p, const time_t * unused, unsigned int ccsid)

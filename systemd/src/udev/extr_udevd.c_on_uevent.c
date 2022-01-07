@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sd_device_monitor ;
-typedef  int /*<<< orphan*/  sd_device ;
-typedef  int /*<<< orphan*/  Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  device_ensure_usec_initialized (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int event_queue_insert (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  event_queue_start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_device_error_errno (int /*<<< orphan*/ *,int,char*) ; 
+
+
+
+typedef int sd_device_monitor ;
+typedef int sd_device ;
+typedef int Manager ;
+
+
+ int assert (int *) ;
+ int device_ensure_usec_initialized (int *,int *) ;
+ int event_queue_insert (int *,int *) ;
+ int event_queue_start (int *) ;
+ int log_device_error_errno (int *,int,char*) ;
 
 __attribute__((used)) static int on_uevent(sd_device_monitor *monitor, sd_device *dev, void *userdata) {
         Manager *manager = userdata;
@@ -27,7 +27,7 @@ __attribute__((used)) static int on_uevent(sd_device_monitor *monitor, sd_device
 
         assert(manager);
 
-        device_ensure_usec_initialized(dev, NULL);
+        device_ensure_usec_initialized(dev, ((void*)0));
 
         r = event_queue_insert(manager, dev);
         if (r < 0) {
@@ -35,7 +35,7 @@ __attribute__((used)) static int on_uevent(sd_device_monitor *monitor, sd_device
                 return 1;
         }
 
-        /* we have fresh events, try to schedule them */
+
         event_queue_start(manager);
 
         return 1;

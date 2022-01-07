@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ high; scalar_t__ low; } ;
-struct TYPE_6__ {TYPE_1__ attached_sas_address; int /*<<< orphan*/  list_element; } ;
-typedef  int /*<<< orphan*/  SCI_FAST_LIST_ELEMENT_T ;
-typedef  TYPE_2__ SCIF_SAS_SMP_PHY_T ;
+struct TYPE_6__ {TYPE_1__ attached_sas_address; int list_element; } ;
+typedef int SCI_FAST_LIST_ELEMENT_T ;
+typedef TYPE_2__ SCIF_SAS_SMP_PHY_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * sci_fast_list_get_next (int /*<<< orphan*/ *) ; 
- scalar_t__ sci_fast_list_get_object (int /*<<< orphan*/ *) ; 
+
+ int * sci_fast_list_get_next (int *) ;
+ scalar_t__ sci_fast_list_get_object (int *) ;
 
 SCIF_SAS_SMP_PHY_T * scif_sas_smp_phy_find_next_phy_in_wide_port(
    SCIF_SAS_SMP_PHY_T * this_smp_phy
@@ -30,7 +30,7 @@ SCIF_SAS_SMP_PHY_T * scif_sas_smp_phy_find_next_phy_in_wide_port(
 
    SCIF_SAS_SMP_PHY_T * next_phy;
 
-   while (next_phy_element != NULL)
+   while (next_phy_element != ((void*)0))
    {
       next_phy = (SCIF_SAS_SMP_PHY_T *)sci_fast_list_get_object(next_phy_element);
 
@@ -41,5 +41,5 @@ SCIF_SAS_SMP_PHY_T * scif_sas_smp_phy_find_next_phy_in_wide_port(
          return next_phy;
    }
 
-   return NULL;
+   return ((void*)0);
 }

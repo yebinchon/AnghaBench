@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  in_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  M_WARN ; 
- int get_addr_generic (int /*<<< orphan*/ ,unsigned int,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int volatile*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int in_addr_t ;
+
+
+ int AF_INET ;
+ int M_WARN ;
+ int get_addr_generic (int ,unsigned int,char const*,int *,int *,int,int volatile*,int ) ;
 
 in_addr_t
 getaddr(unsigned int flags,
@@ -27,14 +27,14 @@ getaddr(unsigned int flags,
     in_addr_t addr;
     int status;
 
-    status = get_addr_generic(AF_INET, flags, hostname, &addr, NULL,
+    status = get_addr_generic(AF_INET, flags, hostname, &addr, ((void*)0),
                               resolve_retry_seconds, signal_received,
                               M_WARN);
     if (status==0)
     {
         if (succeeded)
         {
-            *succeeded = true;
+            *succeeded = 1;
         }
         return addr;
     }
@@ -42,7 +42,7 @@ getaddr(unsigned int flags,
     {
         if (succeeded)
         {
-            *succeeded = false;
+            *succeeded = 0;
         }
         return 0;
     }

@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_entry_t ;
-struct TYPE_22__ {TYPE_2__* (* handle_error ) (char const*,TYPE_2__*,void*,int /*<<< orphan*/ *) ;TYPE_2__* (* found_entry ) (char const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_1__ svn_wc_entry_callbacks2_t ;
-typedef  int /*<<< orphan*/  svn_wc_adm_access_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  scalar_t__ svn_wc__db_status_t ;
-typedef  scalar_t__ svn_node_kind_t ;
+
+
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+typedef int svn_wc_entry_t ;
+struct TYPE_22__ {TYPE_2__* (* handle_error ) (char const*,TYPE_2__*,void*,int *) ;TYPE_2__* (* found_entry ) (char const*,int const*,void*,int *) ;} ;
+typedef TYPE_1__ svn_wc_entry_callbacks2_t ;
+typedef int svn_wc_adm_access_t ;
+typedef int svn_wc__db_t ;
+typedef scalar_t__ svn_wc__db_status_t ;
+typedef scalar_t__ svn_node_kind_t ;
 struct TYPE_23__ {scalar_t__ apr_err; } ;
-typedef  TYPE_2__ svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_2__ svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_NODE_UNKNOWN_KIND ; 
- int /*<<< orphan*/  SVN_ERR_UNVERSIONED_RESOURCE ; 
- scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ; 
- TYPE_2__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- TYPE_2__* stub1 (char const*,TYPE_2__*,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* stub2 (char const*,TYPE_2__*,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* stub3 (char const*,int /*<<< orphan*/  const*,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* stub4 (char const*,TYPE_2__*,void*,int /*<<< orphan*/ *) ; 
- TYPE_2__* stub5 (char const*,TYPE_2__*,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_get_absolute (char const**,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_2__*) ; 
- TYPE_2__* svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_error_trace (TYPE_2__*) ; 
- scalar_t__ svn_node_dir ; 
- scalar_t__ svn_node_file ; 
- int /*<<< orphan*/ * svn_wc__adm_get_db (int /*<<< orphan*/ *) ; 
- TYPE_2__* svn_wc__db_read_info (scalar_t__*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc__db_status_excluded ; 
- scalar_t__ svn_wc__db_status_not_present ; 
- scalar_t__ svn_wc__db_status_server_excluded ; 
- int /*<<< orphan*/  svn_wc__get_entry (int /*<<< orphan*/  const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- TYPE_2__* walker_helper (char const*,int /*<<< orphan*/ *,TYPE_1__ const*,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+ int FALSE ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_NODE_UNKNOWN_KIND ;
+ int SVN_ERR_UNVERSIONED_RESOURCE ;
+ scalar_t__ SVN_ERR_WC_PATH_NOT_FOUND ;
+ TYPE_2__* SVN_NO_ERROR ;
+ int _ (char*) ;
+ TYPE_2__* stub1 (char const*,TYPE_2__*,void*,int *) ;
+ TYPE_2__* stub2 (char const*,TYPE_2__*,void*,int *) ;
+ TYPE_2__* stub3 (char const*,int const*,void*,int *) ;
+ TYPE_2__* stub4 (char const*,TYPE_2__*,void*,int *) ;
+ TYPE_2__* stub5 (char const*,TYPE_2__*,void*,int *) ;
+ int svn_dirent_get_absolute (char const**,char const*,int *) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int svn_error_clear (TYPE_2__*) ;
+ TYPE_2__* svn_error_createf (int ,int *,int ,int ) ;
+ TYPE_2__* svn_error_trace (TYPE_2__*) ;
+ scalar_t__ svn_node_dir ;
+ scalar_t__ svn_node_file ;
+ int * svn_wc__adm_get_db (int *) ;
+ TYPE_2__* svn_wc__db_read_info (scalar_t__*,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc__db_status_excluded ;
+ scalar_t__ svn_wc__db_status_not_present ;
+ scalar_t__ svn_wc__db_status_server_excluded ;
+ int svn_wc__get_entry (int const**,int *,char const*,int ,scalar_t__,int *,int *) ;
+ TYPE_2__* walker_helper (char const*,int *,TYPE_1__ const*,void*,int ,int ,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_walk_entries3(const char *path,
@@ -72,21 +72,21 @@ svn_wc_walk_entries3(const char *path,
   svn_wc__db_status_t status;
 
   SVN_ERR(svn_dirent_get_absolute(&local_abspath, path, pool));
-  err = svn_wc__db_read_info(&status, &kind, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL, NULL, NULL, NULL,
-                             NULL, NULL, NULL,
+  err = svn_wc__db_read_info(&status, &kind, ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                             ((void*)0), ((void*)0), ((void*)0),
                              db, local_abspath,
                              pool, pool);
   if (err)
     {
       if (err->apr_err != SVN_ERR_WC_PATH_NOT_FOUND)
         return svn_error_trace(err);
-      /* Remap into SVN_ERR_UNVERSIONED_RESOURCE.  */
+
       svn_error_clear(err);
       return walk_callbacks->handle_error(
-        path, svn_error_createf(SVN_ERR_UNVERSIONED_RESOURCE, NULL,
+        path, svn_error_createf(SVN_ERR_UNVERSIONED_RESOURCE, ((void*)0),
                                 _("'%s' is not under version control"),
                                 svn_dirent_local_style(local_abspath, pool)),
         walk_baton, pool);
@@ -98,26 +98,26 @@ svn_wc_walk_entries3(const char *path,
     {
       const svn_wc_entry_t *entry;
 
-      /* ### we should stop passing out entry structures.
-         ###
-         ### we should not call handle_error for an error the *callback*
-         ###   gave us. let it deal with the problem before returning.  */
+
+
+
+
 
       if (!show_hidden
           && (status == svn_wc__db_status_not_present
               || status == svn_wc__db_status_excluded
               || status == svn_wc__db_status_server_excluded))
         {
-          /* The fool asked to walk a "hidden" node. Report the node as
-              unversioned.
 
-              ### this is incorrect behavior. see depth_test 36. the walk
-              ### API will be revamped to avoid entry structures. we should
-              ### be able to solve the problem with the new API. (since we
-              ### shouldn't return a hidden entry here)  */
+
+
+
+
+
+
           return walk_callbacks->handle_error(
                             path, svn_error_createf(
-                              SVN_ERR_UNVERSIONED_RESOURCE, NULL,
+                              SVN_ERR_UNVERSIONED_RESOURCE, ((void*)0),
                               _("'%s' is not under version control"),
                               svn_dirent_local_style(local_abspath, pool)),
                             walk_baton, pool);
@@ -139,7 +139,7 @@ svn_wc_walk_entries3(const char *path,
                          pool);
 
   return walk_callbacks->handle_error(
-       path, svn_error_createf(SVN_ERR_NODE_UNKNOWN_KIND, NULL,
+       path, svn_error_createf(SVN_ERR_NODE_UNKNOWN_KIND, ((void*)0),
                                _("'%s' has an unrecognized node kind"),
                                svn_dirent_local_style(local_abspath, pool)),
        walk_baton, pool);

@@ -1,47 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_8__ ;
-typedef  struct TYPE_13__   TYPE_7__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-struct TYPE_14__ {int /*<<< orphan*/  x; int /*<<< orphan*/  y; } ;
-struct TYPE_13__ {int /*<<< orphan*/  right; int /*<<< orphan*/  left; int /*<<< orphan*/  bottom; int /*<<< orphan*/  top; } ;
+
+
+typedef struct TYPE_14__ TYPE_8__ ;
+typedef struct TYPE_13__ TYPE_7__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int ULONG ;
+struct TYPE_14__ {int x; int y; } ;
+struct TYPE_13__ {int right; int left; int bottom; int top; } ;
 struct TYPE_12__ {int iBitmapFormat; } ;
-struct TYPE_11__ {TYPE_2__* SourceSurface; int /*<<< orphan*/  DestSurface; int /*<<< orphan*/  XlateSourceToDest; TYPE_7__ DestRect; TYPE_8__ SourcePoint; } ;
-typedef  TYPE_1__* PBLTINFO ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-
-/* Variables and functions */
-#define  BMF_16BPP 133 
-#define  BMF_1BPP 132 
-#define  BMF_24BPP 131 
-#define  BMF_32BPP 130 
-#define  BMF_4BPP 129 
-#define  BMF_8BPP 128 
- int /*<<< orphan*/  BitsPerFormat (int) ; 
- int /*<<< orphan*/  DIB_16BPP_GetPixel (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_1BPP_BitBltSrcCopy_From1BPP (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ,TYPE_7__*,TYPE_8__*) ; 
- int /*<<< orphan*/  DIB_1BPP_PutPixel (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_24BPP_GetPixel (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_32BPP_GetPixel (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_4BPP_GetPixel (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DIB_8BPP_GetPixel (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DbgPrint (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  XLATEOBJ_iXlate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+struct TYPE_11__ {TYPE_2__* SourceSurface; int DestSurface; int XlateSourceToDest; TYPE_7__ DestRect; TYPE_8__ SourcePoint; } ;
+typedef TYPE_1__* PBLTINFO ;
+typedef int LONG ;
+typedef int BOOLEAN ;
+ int BitsPerFormat (int) ;
+ int DIB_16BPP_GetPixel (TYPE_2__*,int ,int ) ;
+ int DIB_1BPP_BitBltSrcCopy_From1BPP (int ,TYPE_2__*,int ,TYPE_7__*,TYPE_8__*) ;
+ int DIB_1BPP_PutPixel (int ,int ,int ,int ) ;
+ int DIB_24BPP_GetPixel (TYPE_2__*,int ,int ) ;
+ int DIB_32BPP_GetPixel (TYPE_2__*,int ,int ) ;
+ int DIB_4BPP_GetPixel (TYPE_2__*,int ,int ) ;
+ int DIB_8BPP_GetPixel (TYPE_2__*,int ,int ) ;
+ int DbgPrint (char*,int ) ;
+ int FALSE ;
+ int TRUE ;
+ int XLATEOBJ_iXlate (int ,int ) ;
 
 BOOLEAN
 DIB_1BPP_BitBltSrcCopy(PBLTINFO BltInfo)
@@ -51,11 +43,11 @@ DIB_1BPP_BitBltSrcCopy(PBLTINFO BltInfo)
 
   switch ( BltInfo->SourceSurface->iBitmapFormat )
   {
-  case BMF_1BPP:
+  case 132:
     DIB_1BPP_BitBltSrcCopy_From1BPP ( BltInfo->DestSurface, BltInfo->SourceSurface, BltInfo->XlateSourceToDest, &BltInfo->DestRect, &BltInfo->SourcePoint );
     break;
 
-  case BMF_4BPP:
+  case 129:
     for (j=BltInfo->DestRect.top; j<BltInfo->DestRect.bottom; j++)
     {
       sx = BltInfo->SourcePoint.x;
@@ -69,7 +61,7 @@ DIB_1BPP_BitBltSrcCopy(PBLTINFO BltInfo)
     }
     break;
 
-  case BMF_8BPP:
+  case 128:
     for (j=BltInfo->DestRect.top; j<BltInfo->DestRect.bottom; j++)
     {
       sx = BltInfo->SourcePoint.x;
@@ -83,7 +75,7 @@ DIB_1BPP_BitBltSrcCopy(PBLTINFO BltInfo)
     }
     break;
 
-  case BMF_16BPP:
+  case 133:
     for (j=BltInfo->DestRect.top; j<BltInfo->DestRect.bottom; j++)
     {
       sx = BltInfo->SourcePoint.x;
@@ -97,7 +89,7 @@ DIB_1BPP_BitBltSrcCopy(PBLTINFO BltInfo)
     }
     break;
 
-  case BMF_24BPP:
+  case 131:
     for (j=BltInfo->DestRect.top; j<BltInfo->DestRect.bottom; j++)
     {
       sx = BltInfo->SourcePoint.x;
@@ -111,7 +103,7 @@ DIB_1BPP_BitBltSrcCopy(PBLTINFO BltInfo)
     }
     break;
 
-  case BMF_32BPP:
+  case 130:
     for (j=BltInfo->DestRect.top; j<BltInfo->DestRect.bottom; j++)
     {
       sx = BltInfo->SourcePoint.x;

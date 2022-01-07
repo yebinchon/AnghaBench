@@ -1,102 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_5__ ;
-typedef  struct TYPE_16__   TYPE_4__ ;
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_17__ {int /*<<< orphan*/  value; } ;
-struct TYPE_16__ {TYPE_1__* codecpar; int /*<<< orphan*/  need_parsing; } ;
-struct TYPE_15__ {int /*<<< orphan*/  isom; TYPE_10__* fc; } ;
+
+
+typedef struct TYPE_17__ TYPE_5__ ;
+typedef struct TYPE_16__ TYPE_4__ ;
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_17__ {int value; } ;
+struct TYPE_16__ {TYPE_1__* codecpar; int need_parsing; } ;
+struct TYPE_15__ {int isom; TYPE_10__* fc; } ;
 struct TYPE_14__ {int audio_cid; scalar_t__ stsd_version; int samples_per_frame; int bytes_per_frame; scalar_t__ format; int sample_size; } ;
 struct TYPE_13__ {int channels; int bits_per_coded_sample; int sample_rate; scalar_t__ codec_tag; int codec_id; } ;
-struct TYPE_12__ {int /*<<< orphan*/  metadata; } ;
-typedef  TYPE_2__ MOVStreamContext ;
-typedef  TYPE_3__ MOVContext ;
-typedef  TYPE_4__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_5__ AVDictionaryEntry ;
+struct TYPE_12__ {int metadata; } ;
+typedef TYPE_2__ MOVStreamContext ;
+typedef TYPE_3__ MOVContext ;
+typedef TYPE_4__ AVStream ;
+typedef int AVIOContext ;
+typedef TYPE_5__ AVDictionaryEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVSTREAM_PARSE_FULL ; 
-#define  AV_CODEC_ID_ADPCM_IMA_QT 137 
-#define  AV_CODEC_ID_GSM 136 
-#define  AV_CODEC_ID_MACE3 135 
-#define  AV_CODEC_ID_MACE6 134 
-#define  AV_CODEC_ID_MP2 133 
-#define  AV_CODEC_ID_MP3 132 
-#define  AV_CODEC_ID_PCM_S16BE 131 
-#define  AV_CODEC_ID_PCM_S16LE 130 
- int AV_CODEC_ID_PCM_S24BE ; 
- int AV_CODEC_ID_PCM_S24LE ; 
- int const AV_CODEC_ID_PCM_S32BE ; 
- int const AV_CODEC_ID_PCM_S32LE ; 
-#define  AV_CODEC_ID_PCM_S8 129 
-#define  AV_CODEC_ID_PCM_U8 128 
- int /*<<< orphan*/  AV_DICT_MATCH_CASE ; 
- int /*<<< orphan*/  AV_LOG_TRACE ; 
- scalar_t__ MKTAG (char,char,char,char) ; 
- TYPE_5__* av_dict_get (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int av_get_bits_per_sample (int const) ; 
- int av_int2double (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_10__*,int /*<<< orphan*/ ,char*,int,...) ; 
- void* avio_rb16 (int /*<<< orphan*/ *) ; 
- int avio_rb32 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_rb64 (int /*<<< orphan*/ *) ; 
- int ff_mov_get_lpcm_codec_id (int,int) ; 
- void* mov_codec_id (TYPE_4__*,scalar_t__) ; 
- scalar_t__ strstr (int /*<<< orphan*/ ,char*) ; 
+
+ int AVSTREAM_PARSE_FULL ;
+ int AV_CODEC_ID_PCM_S24BE ;
+ int AV_CODEC_ID_PCM_S24LE ;
+ int const AV_CODEC_ID_PCM_S32BE ;
+ int const AV_CODEC_ID_PCM_S32LE ;
+
+
+ int AV_DICT_MATCH_CASE ;
+ int AV_LOG_TRACE ;
+ scalar_t__ MKTAG (char,char,char,char) ;
+ TYPE_5__* av_dict_get (int ,char*,int *,int ) ;
+ int av_get_bits_per_sample (int const) ;
+ int av_int2double (int ) ;
+ int av_log (TYPE_10__*,int ,char*,int,...) ;
+ void* avio_rb16 (int *) ;
+ int avio_rb32 (int *) ;
+ int avio_rb64 (int *) ;
+ int ff_mov_get_lpcm_codec_id (int,int) ;
+ void* mov_codec_id (TYPE_4__*,scalar_t__) ;
+ scalar_t__ strstr (int ,char*) ;
 
 __attribute__((used)) static void mov_parse_stsd_audio(MOVContext *c, AVIOContext *pb,
                                  AVStream *st, MOVStreamContext *sc)
 {
     int bits_per_sample, flags;
     uint16_t version = avio_rb16(pb);
-    AVDictionaryEntry *compatible_brands = av_dict_get(c->fc->metadata, "compatible_brands", NULL, AV_DICT_MATCH_CASE);
+    AVDictionaryEntry *compatible_brands = av_dict_get(c->fc->metadata, "compatible_brands", ((void*)0), AV_DICT_MATCH_CASE);
 
-    avio_rb16(pb); /* revision level */
-    avio_rb32(pb); /* vendor */
+    avio_rb16(pb);
+    avio_rb32(pb);
 
-    st->codecpar->channels              = avio_rb16(pb); /* channel count */
-    st->codecpar->bits_per_coded_sample = avio_rb16(pb); /* sample size */
+    st->codecpar->channels = avio_rb16(pb);
+    st->codecpar->bits_per_coded_sample = avio_rb16(pb);
     av_log(c->fc, AV_LOG_TRACE, "audio channels %d\n", st->codecpar->channels);
 
     sc->audio_cid = avio_rb16(pb);
-    avio_rb16(pb); /* packet size = 0 */
+    avio_rb16(pb);
 
     st->codecpar->sample_rate = ((avio_rb32(pb) >> 16));
 
-    // Read QT version 1 fields. In version 0 these do not exist.
+
     av_log(c->fc, AV_LOG_TRACE, "version =%d, isom =%d\n", version, c->isom);
     if (!c->isom ||
         (compatible_brands && strstr(compatible_brands->value, "qt  ")) ||
         (sc->stsd_version == 0 && version > 0)) {
         if (version == 1) {
             sc->samples_per_frame = avio_rb32(pb);
-            avio_rb32(pb); /* bytes per packet */
+            avio_rb32(pb);
             sc->bytes_per_frame = avio_rb32(pb);
-            avio_rb32(pb); /* bytes per sample */
+            avio_rb32(pb);
         } else if (version == 2) {
-            avio_rb32(pb); /* sizeof struct only */
+            avio_rb32(pb);
             st->codecpar->sample_rate = av_int2double(avio_rb64(pb));
-            st->codecpar->channels    = avio_rb32(pb);
-            avio_rb32(pb); /* always 0x7F000000 */
+            st->codecpar->channels = avio_rb32(pb);
+            avio_rb32(pb);
             st->codecpar->bits_per_coded_sample = avio_rb32(pb);
 
-            flags = avio_rb32(pb); /* lpcm format specific flag */
-            sc->bytes_per_frame   = avio_rb32(pb);
+            flags = avio_rb32(pb);
+            sc->bytes_per_frame = avio_rb32(pb);
             sc->samples_per_frame = avio_rb32(pb);
             if (st->codecpar->codec_tag == MKTAG('l','p','c','m'))
                 st->codecpar->codec_id =
@@ -104,10 +96,10 @@ __attribute__((used)) static void mov_parse_stsd_audio(MOVContext *c, AVIOContex
                                              flags);
         }
         if (version == 0 || (version == 1 && sc->audio_cid != -2)) {
-            /* can't correctly handle variable sized packet as audio unit */
+
             switch (st->codecpar->codec_id) {
-            case AV_CODEC_ID_MP2:
-            case AV_CODEC_ID_MP3:
+            case 133:
+            case 132:
                 st->need_parsing = AVSTREAM_PARSE_FULL;
                 break;
             }
@@ -122,40 +114,40 @@ __attribute__((used)) static void mov_parse_stsd_audio(MOVContext *c, AVIOContex
     }
 
     switch (st->codecpar->codec_id) {
-    case AV_CODEC_ID_PCM_S8:
-    case AV_CODEC_ID_PCM_U8:
+    case 129:
+    case 128:
         if (st->codecpar->bits_per_coded_sample == 16)
-            st->codecpar->codec_id = AV_CODEC_ID_PCM_S16BE;
+            st->codecpar->codec_id = 131;
         break;
-    case AV_CODEC_ID_PCM_S16LE:
-    case AV_CODEC_ID_PCM_S16BE:
+    case 130:
+    case 131:
         if (st->codecpar->bits_per_coded_sample == 8)
-            st->codecpar->codec_id = AV_CODEC_ID_PCM_S8;
+            st->codecpar->codec_id = 129;
         else if (st->codecpar->bits_per_coded_sample == 24)
             st->codecpar->codec_id =
-                st->codecpar->codec_id == AV_CODEC_ID_PCM_S16BE ?
+                st->codecpar->codec_id == 131 ?
                 AV_CODEC_ID_PCM_S24BE : AV_CODEC_ID_PCM_S24LE;
         else if (st->codecpar->bits_per_coded_sample == 32)
              st->codecpar->codec_id =
-                st->codecpar->codec_id == AV_CODEC_ID_PCM_S16BE ?
+                st->codecpar->codec_id == 131 ?
                 AV_CODEC_ID_PCM_S32BE : AV_CODEC_ID_PCM_S32LE;
         break;
-    /* set values for old format before stsd version 1 appeared */
-    case AV_CODEC_ID_MACE3:
+
+    case 135:
         sc->samples_per_frame = 6;
-        sc->bytes_per_frame   = 2 * st->codecpar->channels;
+        sc->bytes_per_frame = 2 * st->codecpar->channels;
         break;
-    case AV_CODEC_ID_MACE6:
+    case 134:
         sc->samples_per_frame = 6;
-        sc->bytes_per_frame   = 1 * st->codecpar->channels;
+        sc->bytes_per_frame = 1 * st->codecpar->channels;
         break;
-    case AV_CODEC_ID_ADPCM_IMA_QT:
+    case 137:
         sc->samples_per_frame = 64;
-        sc->bytes_per_frame   = 34 * st->codecpar->channels;
+        sc->bytes_per_frame = 34 * st->codecpar->channels;
         break;
-    case AV_CODEC_ID_GSM:
+    case 136:
         sc->samples_per_frame = 160;
-        sc->bytes_per_frame   = 33;
+        sc->bytes_per_frame = 33;
         break;
     default:
         break;

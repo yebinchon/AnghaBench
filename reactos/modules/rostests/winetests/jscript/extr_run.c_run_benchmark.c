@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ULONG ;
-typedef  int /*<<< orphan*/  IActiveScriptParse ;
-typedef  int /*<<< orphan*/  IActiveScript ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  BSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ActiveScriptSite ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ GetTickCount () ; 
- scalar_t__ IActiveScriptParse_InitNew (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScriptParse_ParseScriptText (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IActiveScriptParse_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_AddNamedItem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- scalar_t__ IActiveScript_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IActiveScript_Release (int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptSite (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ IActiveScript_SetScriptState (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IActiveScriptParse ; 
- int SCRIPTITEM_ISSOURCE ; 
- int SCRIPTITEM_ISVISIBLE ; 
- int /*<<< orphan*/  SCRIPTSTATE_STARTED ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  SysFreeString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * create_script () ; 
- int /*<<< orphan*/  load_res (char const*) ; 
- int /*<<< orphan*/  ok (int,char*,char const*,...) ; 
- int /*<<< orphan*/  testW ; 
- int /*<<< orphan*/  trace (char*,char const*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ ULONG ;
+typedef int IActiveScriptParse ;
+typedef int IActiveScript ;
+typedef scalar_t__ HRESULT ;
+typedef int BSTR ;
+
+
+ int ActiveScriptSite ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ GetTickCount () ;
+ scalar_t__ IActiveScriptParse_InitNew (int *) ;
+ scalar_t__ IActiveScriptParse_ParseScriptText (int *,int ,int *,int *,int *,int ,int ,int ,int *,int *) ;
+ int IActiveScriptParse_Release (int *) ;
+ scalar_t__ IActiveScript_AddNamedItem (int *,int ,int) ;
+ scalar_t__ IActiveScript_QueryInterface (int *,int *,void**) ;
+ int IActiveScript_Release (int *) ;
+ scalar_t__ IActiveScript_SetScriptSite (int *,int *) ;
+ scalar_t__ IActiveScript_SetScriptState (int *,int ) ;
+ int IID_IActiveScriptParse ;
+ int SCRIPTITEM_ISSOURCE ;
+ int SCRIPTITEM_ISVISIBLE ;
+ int SCRIPTSTATE_STARTED ;
+ scalar_t__ S_OK ;
+ int SysFreeString (int ) ;
+ int * create_script () ;
+ int load_res (char const*) ;
+ int ok (int,char*,char const*,...) ;
+ int testW ;
+ int trace (char*,char const*,scalar_t__) ;
 
 __attribute__((used)) static void run_benchmark(const char *script_name)
 {
@@ -75,7 +75,7 @@ __attribute__((used)) static void run_benchmark(const char *script_name)
     src = load_res(script_name);
 
     start = GetTickCount();
-    hres = IActiveScriptParse_ParseScriptText(parser, src, NULL, NULL, NULL, 0, 0, 0, NULL, NULL);
+    hres = IActiveScriptParse_ParseScriptText(parser, src, ((void*)0), ((void*)0), ((void*)0), 0, 0, 0, ((void*)0), ((void*)0));
     end = GetTickCount();
     ok(hres == S_OK, "%s: ParseScriptText failed: %08x\n", script_name, hres);
 

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  RECORD_CMDLINE ; 
- int /*<<< orphan*/  tracing_start_sched_switch (int /*<<< orphan*/ ) ; 
+ int RECORD_CMDLINE ;
+ int tracing_start_sched_switch (int ) ;
 
 void tracing_start_cmdline_record(void)
 {
-	tracing_start_sched_switch(RECORD_CMDLINE);
+ tracing_start_sched_switch(RECORD_CMDLINE);
 }

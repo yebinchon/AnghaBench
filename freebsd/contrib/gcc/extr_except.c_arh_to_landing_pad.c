@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct eh_region {int /*<<< orphan*/  landing_pad; } ;
-typedef  scalar_t__ rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULL_RTX ; 
- scalar_t__ alloc_INSN_LIST (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct eh_region {int landing_pad; } ;
+typedef scalar_t__ rtx ;
+
+
+ int NULL_RTX ;
+ scalar_t__ alloc_INSN_LIST (int ,int ) ;
 
 __attribute__((used)) static void
 arh_to_landing_pad (struct eh_region *region, void *data)

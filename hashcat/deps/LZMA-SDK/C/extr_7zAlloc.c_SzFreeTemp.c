@@ -1,39 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ISzAllocPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  UNUSED_VAR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  free (void*) ; 
- int g_allocCountTemp ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int ISzAllocPtr ;
+
+
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,void*) ;
+ int UNUSED_VAR (int ) ;
+ int fprintf (int ,char*,int) ;
+ int free (void*) ;
+ int g_allocCountTemp ;
+ int stderr ;
 
 void SzFreeTemp(ISzAllocPtr p, void *address)
 {
   UNUSED_VAR(p);
-  #ifdef _SZ_ALLOC_DEBUG
-  if (address != 0)
-  {
-    g_allocCountTemp--;
-    fprintf(stderr, "\nFree_temp; count = %10d", g_allocCountTemp);
-  }
-  #ifdef _WIN32
-  HeapFree(GetProcessHeap(), 0, address);
-  return;
-  #endif
-  #endif
   free(address);
 }

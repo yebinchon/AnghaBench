@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_11__ {int nb_streams; } ;
-struct TYPE_10__ {scalar_t__ sp_count; TYPE_7__* avf; TYPE_2__* stream; int /*<<< orphan*/  syncpoints; int /*<<< orphan*/  max_pts; int /*<<< orphan*/  max_pts_tb; } ;
+struct TYPE_10__ {scalar_t__ sp_count; TYPE_7__* avf; TYPE_2__* stream; int syncpoints; int max_pts; int max_pts_tb; } ;
 struct TYPE_9__ {scalar_t__* keyframe_pts; } ;
 struct TYPE_8__ {int pos; } ;
-typedef  TYPE_1__ Syncpoint ;
-typedef  TYPE_2__ StreamContext ;
-typedef  TYPE_3__ NUTContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ Syncpoint ;
+typedef TYPE_2__ StreamContext ;
+typedef TYPE_3__ NUTContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (TYPE_7__*,int /*<<< orphan*/ ,char*) ; 
- int av_log2 (scalar_t__) ; 
- int /*<<< orphan*/  av_tree_find (int /*<<< orphan*/ ,TYPE_1__*,int /*<<< orphan*/ ,void**) ; 
- scalar_t__ avio_tell (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_wb64 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ff_nut_sp_pos_cmp ; 
- int /*<<< orphan*/  ff_put_v (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  put_tt (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AV_LOG_WARNING ;
+ scalar_t__ AV_NOPTS_VALUE ;
+ int av_assert0 (int) ;
+ int av_log (TYPE_7__*,int ,char*) ;
+ int av_log2 (scalar_t__) ;
+ int av_tree_find (int ,TYPE_1__*,int ,void**) ;
+ scalar_t__ avio_tell (int *) ;
+ int avio_wb64 (int *,int) ;
+ int ff_nut_sp_pos_cmp ;
+ int ff_put_v (int *,scalar_t__) ;
+ int put_tt (TYPE_3__*,int ,int *,int ) ;
 
 __attribute__((used)) static int write_index(NUTContext *nut, AVIOContext *bc) {
     int i;
     Syncpoint dummy= { .pos= 0 };
-    Syncpoint *next_node[2] = { NULL };
+    Syncpoint *next_node[2] = { ((void*)0) };
     int64_t startpos = avio_tell(bc);
     int64_t payload_size;
 

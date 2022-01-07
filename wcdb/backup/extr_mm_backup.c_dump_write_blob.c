@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
-typedef  int /*<<< orphan*/  mm_backup_ctx ;
 
-/* Variables and functions */
- scalar_t__ MMBAK_TAG_BIND_BLOB ; 
- scalar_t__ MMBAK_TAG_BIND_TEXT ; 
- int /*<<< orphan*/  MMBAK_TAG_LARGE_DATA ; 
- int dump_write_byte (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int dump_write_byte_byte (int /*<<< orphan*/ *,scalar_t__,scalar_t__) ; 
- int dump_write_byte_short (int /*<<< orphan*/ *,scalar_t__,int) ; 
- int dump_write_short (int /*<<< orphan*/ *,int) ; 
- int dump_write_stream (int /*<<< orphan*/ *,char const*,int) ; 
- int strlen (char const*) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef int mm_backup_ctx ;
+
+
+ scalar_t__ MMBAK_TAG_BIND_BLOB ;
+ scalar_t__ MMBAK_TAG_BIND_TEXT ;
+ int MMBAK_TAG_LARGE_DATA ;
+ int dump_write_byte (int *,int ) ;
+ int dump_write_byte_byte (int *,scalar_t__,scalar_t__) ;
+ int dump_write_byte_short (int *,scalar_t__,int) ;
+ int dump_write_short (int *,int) ;
+ int dump_write_stream (int *,char const*,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int
 dump_write_blob(mm_backup_ctx *ctx, uint8_t tag, const void *data, int size)

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {struct TYPE_5__* hnext; int /*<<< orphan*/  alias; } ;
-typedef  TYPE_1__ tftp_file_t ;
 
-/* Variables and functions */
- TYPE_1__** HF ; 
- unsigned int TFTP_FILE_HASH_PRIME ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  strcmp (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  tot_files ; 
- int /*<<< orphan*/  zstrdup (char const*) ; 
- TYPE_1__* ztmalloc0 (int const) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {struct TYPE_5__* hnext; int alias; } ;
+typedef TYPE_1__ tftp_file_t ;
+
+
+ TYPE_1__** HF ;
+ unsigned int TFTP_FILE_HASH_PRIME ;
+ int assert (int) ;
+ int strcmp (int ,char const*) ;
+ int tot_files ;
+ int zstrdup (char const*) ;
+ TYPE_1__* ztmalloc0 (int const) ;
 
 tftp_file_t *get_file_f (const char *alias, int force) {
   unsigned int h = 0;
@@ -52,5 +52,5 @@ tftp_file_t *get_file_f (const char *alias, int force) {
     V->hnext = HF[h];
     return HF[h] = V;
   }
-  return NULL;
+  return ((void*)0);
 }

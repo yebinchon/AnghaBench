@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct saa7146_dev {scalar_t__ ext_priv; } ;
-struct mxb {int /*<<< orphan*/  i2c_adapter; int /*<<< orphan*/  vbi_dev; int /*<<< orphan*/  video_dev; } ;
+struct mxb {int i2c_adapter; int vbi_dev; int video_dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEB_EE (char*,struct saa7146_dev*) ; 
- scalar_t__ MXB_BOARD_CAN_DO_VBI (struct saa7146_dev*) ; 
- int /*<<< orphan*/  i2c_del_adapter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (struct mxb*) ; 
- int /*<<< orphan*/  mxb_num ; 
- int /*<<< orphan*/  saa7146_unregister_device (int /*<<< orphan*/ *,struct saa7146_dev*) ; 
- int /*<<< orphan*/  saa7146_vv_release (struct saa7146_dev*) ; 
- int /*<<< orphan*/  tea6420_route (struct mxb*,int) ; 
+
+ int DEB_EE (char*,struct saa7146_dev*) ;
+ scalar_t__ MXB_BOARD_CAN_DO_VBI (struct saa7146_dev*) ;
+ int i2c_del_adapter (int *) ;
+ int kfree (struct mxb*) ;
+ int mxb_num ;
+ int saa7146_unregister_device (int *,struct saa7146_dev*) ;
+ int saa7146_vv_release (struct saa7146_dev*) ;
+ int tea6420_route (struct mxb*,int) ;
 
 __attribute__((used)) static int mxb_detach(struct saa7146_dev *dev)
 {
-	struct mxb *mxb = (struct mxb *)dev->ext_priv;
+ struct mxb *mxb = (struct mxb *)dev->ext_priv;
 
-	DEB_EE("dev:%p\n", dev);
+ DEB_EE("dev:%p\n", dev);
 
-	/* mute audio on tea6420s */
-	tea6420_route(mxb, 6);
 
-	saa7146_unregister_device(&mxb->video_dev,dev);
-	if (MXB_BOARD_CAN_DO_VBI(dev))
-		saa7146_unregister_device(&mxb->vbi_dev, dev);
-	saa7146_vv_release(dev);
+ tea6420_route(mxb, 6);
 
-	mxb_num--;
+ saa7146_unregister_device(&mxb->video_dev,dev);
+ if (MXB_BOARD_CAN_DO_VBI(dev))
+  saa7146_unregister_device(&mxb->vbi_dev, dev);
+ saa7146_vv_release(dev);
 
-	i2c_del_adapter(&mxb->i2c_adapter);
-	kfree(mxb);
+ mxb_num--;
 
-	return 0;
+ i2c_del_adapter(&mxb->i2c_adapter);
+ kfree(mxb);
+
+ return 0;
 }

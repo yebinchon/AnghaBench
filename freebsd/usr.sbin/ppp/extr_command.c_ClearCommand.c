@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_7__ ;
-typedef  struct TYPE_13__   TYPE_6__ ;
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_14__ TYPE_7__ ;
+typedef struct TYPE_13__ TYPE_6__ ;
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct pppThroughput {int dummy; } ;
 struct datalink {TYPE_3__* physical; } ;
-struct cmdargs {int argc; int argn; int /*<<< orphan*/  prompt; int /*<<< orphan*/ * argv; TYPE_7__* bundle; struct datalink* cx; } ;
+struct cmdargs {int argc; int argn; int prompt; int * argv; TYPE_7__* bundle; struct datalink* cx; } ;
 struct TYPE_12__ {struct pppThroughput throughput; } ;
 struct TYPE_11__ {struct pppThroughput throughput; } ;
 struct TYPE_13__ {TYPE_5__ ipv6cp; TYPE_4__ ipcp; } ;
@@ -28,16 +28,16 @@ struct TYPE_8__ {struct pppThroughput total; } ;
 struct TYPE_9__ {TYPE_1__ stats; } ;
 struct TYPE_10__ {TYPE_2__ link; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogWARN ; 
- int THROUGHPUT_ALL ; 
- int THROUGHPUT_CURRENT ; 
- int THROUGHPUT_OVERALL ; 
- int THROUGHPUT_PEAK ; 
- struct datalink* bundle2datalink (TYPE_7__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ strcasecmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  throughput_clear (struct pppThroughput*,int,int /*<<< orphan*/ ) ; 
+
+ int LogWARN ;
+ int THROUGHPUT_ALL ;
+ int THROUGHPUT_CURRENT ;
+ int THROUGHPUT_OVERALL ;
+ int THROUGHPUT_PEAK ;
+ struct datalink* bundle2datalink (TYPE_7__*,int *) ;
+ int log_Printf (int ,char*) ;
+ scalar_t__ strcasecmp (int ,char*) ;
+ int throughput_clear (struct pppThroughput*,int,int ) ;
 
 __attribute__((used)) static int
 ClearCommand(struct cmdargs const *arg)
@@ -52,7 +52,7 @@ ClearCommand(struct cmdargs const *arg)
   if (strcasecmp(arg->argv[arg->argn], "physical") == 0) {
     cx = arg->cx;
     if (!cx)
-      cx = bundle2datalink(arg->bundle, NULL);
+      cx = bundle2datalink(arg->bundle, ((void*)0));
     if (!cx) {
       log_Printf(LogWARN, "A link must be specified for ``clear physical''\n");
       return 1;
@@ -60,10 +60,10 @@ ClearCommand(struct cmdargs const *arg)
     t = &cx->physical->link.stats.total;
   } else if (strcasecmp(arg->argv[arg->argn], "ipcp") == 0)
     t = &arg->bundle->ncp.ipcp.throughput;
-#ifndef NOINET6
+
   else if (strcasecmp(arg->argv[arg->argn], "ipv6cp") == 0)
     t = &arg->bundle->ncp.ipv6cp.throughput;
-#endif
+
   else
     return -1;
 

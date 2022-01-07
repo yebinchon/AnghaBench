@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_10__ {TYPE_3__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_13__ {scalar_t__ BufferType; int cbBuffer; int /*<<< orphan*/ * pvBuffer; } ;
-struct TYPE_11__ {int /*<<< orphan*/  tcp; } ;
-struct TYPE_12__ {int dec_buf_offset; int sspi_close_notify; int connection_closed; int enc_buf_size; int enc_buf_offset; int dec_buf_size; int /*<<< orphan*/ * dec_buf; int /*<<< orphan*/ * enc_buf; int /*<<< orphan*/  ctxt_handle; TYPE_2__ tls_shared; } ;
-typedef  TYPE_2__ TLSShared ;
-typedef  TYPE_3__ TLSContext ;
-typedef  int /*<<< orphan*/  SecBufferDesc ;
-typedef  TYPE_4__ SecBuffer ;
-typedef  scalar_t__ SECURITY_STATUS ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_13__ {scalar_t__ BufferType; int cbBuffer; int * pvBuffer; } ;
+struct TYPE_11__ {int tcp; } ;
+struct TYPE_12__ {int dec_buf_offset; int sspi_close_notify; int connection_closed; int enc_buf_size; int enc_buf_offset; int dec_buf_size; int * dec_buf; int * enc_buf; int ctxt_handle; TYPE_2__ tls_shared; } ;
+typedef TYPE_2__ TLSShared ;
+typedef TYPE_3__ TLSContext ;
+typedef int SecBufferDesc ;
+typedef TYPE_4__ SecBuffer ;
+typedef scalar_t__ SECURITY_STATUS ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- scalar_t__ DecryptMessage (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  EIO ; 
- int FFMIN (int,int) ; 
- int SCHANNEL_FREE_BUFFER_SIZE ; 
- scalar_t__ SECBUFFER_DATA ; 
- scalar_t__ SECBUFFER_EMPTY ; 
- scalar_t__ SECBUFFER_EXTRA ; 
- scalar_t__ SEC_E_INCOMPLETE_MESSAGE ; 
- scalar_t__ SEC_E_OK ; 
- scalar_t__ SEC_I_CONTEXT_EXPIRED ; 
- scalar_t__ SEC_I_RENEGOTIATE ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_reallocp (int /*<<< orphan*/ **,int) ; 
- int ffurl_read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_sec_buffer (TYPE_4__*,scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  init_sec_buffer_desc (int /*<<< orphan*/ *,TYPE_4__*,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memmove (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int tls_client_handshake_loop (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ scalar_t__ DecryptMessage (int *,int *,int ,int *) ;
+ int EAGAIN ;
+ int EIO ;
+ int FFMIN (int,int) ;
+ int SCHANNEL_FREE_BUFFER_SIZE ;
+ scalar_t__ SECBUFFER_DATA ;
+ scalar_t__ SECBUFFER_EMPTY ;
+ scalar_t__ SECBUFFER_EXTRA ;
+ scalar_t__ SEC_E_INCOMPLETE_MESSAGE ;
+ scalar_t__ SEC_E_OK ;
+ scalar_t__ SEC_I_CONTEXT_EXPIRED ;
+ scalar_t__ SEC_I_RENEGOTIATE ;
+ int av_log (TYPE_1__*,int ,char*,...) ;
+ int av_reallocp (int **,int) ;
+ int ffurl_read (int ,int *,int) ;
+ int init_sec_buffer (TYPE_4__*,scalar_t__,int *,int) ;
+ int init_sec_buffer_desc (int *,TYPE_4__*,int) ;
+ int memcpy (int *,int *,int) ;
+ int memmove (int *,int *,int) ;
+ int tls_client_handshake_loop (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int tls_read(URLContext *h, uint8_t *buf, int len)
 {
@@ -96,24 +96,24 @@ __attribute__((used)) static int tls_read(URLContext *h, uint8_t *buf, int len)
     }
 
     while (c->enc_buf_offset > 0 && sspi_ret == SEC_E_OK && c->dec_buf_offset < len) {
-        /*  input buffer */
+
         init_sec_buffer(&inbuf[0], SECBUFFER_DATA, c->enc_buf, c->enc_buf_offset);
 
-        /* additional buffers for possible output */
-        init_sec_buffer(&inbuf[1], SECBUFFER_EMPTY, NULL, 0);
-        init_sec_buffer(&inbuf[2], SECBUFFER_EMPTY, NULL, 0);
-        init_sec_buffer(&inbuf[3], SECBUFFER_EMPTY, NULL, 0);
+
+        init_sec_buffer(&inbuf[1], SECBUFFER_EMPTY, ((void*)0), 0);
+        init_sec_buffer(&inbuf[2], SECBUFFER_EMPTY, ((void*)0), 0);
+        init_sec_buffer(&inbuf[3], SECBUFFER_EMPTY, ((void*)0), 0);
         init_sec_buffer_desc(&inbuf_desc, inbuf, 4);
 
-        sspi_ret = DecryptMessage(&c->ctxt_handle, &inbuf_desc, 0, NULL);
+        sspi_ret = DecryptMessage(&c->ctxt_handle, &inbuf_desc, 0, ((void*)0));
         if (sspi_ret == SEC_E_OK || sspi_ret == SEC_I_RENEGOTIATE ||
             sspi_ret == SEC_I_CONTEXT_EXPIRED) {
-            /* handle decrypted data */
+
             if (inbuf[1].BufferType == SECBUFFER_DATA) {
-                /* grow buffer if needed */
+
                 size = inbuf[1].cbBuffer > SCHANNEL_FREE_BUFFER_SIZE ?
                        inbuf[1].cbBuffer : SCHANNEL_FREE_BUFFER_SIZE;
-                if (c->dec_buf_size - c->dec_buf_offset < size || c->dec_buf_size < len)  {
+                if (c->dec_buf_size - c->dec_buf_offset < size || c->dec_buf_size < len) {
                     c->dec_buf_size = c->dec_buf_offset + size;
                     if (c->dec_buf_size < len)
                         c->dec_buf_size = len;
@@ -124,7 +124,7 @@ __attribute__((used)) static int tls_read(URLContext *h, uint8_t *buf, int len)
                     }
                 }
 
-                /* copy decrypted data to buffer */
+
                 size = inbuf[1].cbBuffer;
                 if (size) {
                     memcpy(c->dec_buf + c->dec_buf_offset, inbuf[1].pvBuffer, size);

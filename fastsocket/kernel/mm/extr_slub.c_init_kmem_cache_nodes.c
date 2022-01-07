@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kmem_cache {int /*<<< orphan*/  local_node; } ;
-typedef  int /*<<< orphan*/  gfp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  init_kmem_cache_node (int /*<<< orphan*/ *,struct kmem_cache*) ; 
+
+
+
+struct kmem_cache {int local_node; } ;
+typedef int gfp_t ;
+
+
+ int init_kmem_cache_node (int *,struct kmem_cache*) ;
 
 __attribute__((used)) static int init_kmem_cache_nodes(struct kmem_cache *s, gfp_t gfpflags)
 {
-	init_kmem_cache_node(&s->local_node, s);
-	return 1;
+ init_kmem_cache_node(&s->local_node, s);
+ return 1;
 }

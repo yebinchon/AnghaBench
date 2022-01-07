@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int NextSessionId; int /*<<< orphan*/  Dh; int /*<<< orphan*/  Now; void* SendPacketList; void* RecvPacketList; int /*<<< orphan*/  SessionList; int /*<<< orphan*/ * SockEvent; int /*<<< orphan*/ * Interrupt; int /*<<< orphan*/ * Cedar; } ;
-typedef  int /*<<< orphan*/  SOCK_EVENT ;
-typedef  TYPE_1__ OPENVPN_SERVER ;
-typedef  int /*<<< orphan*/  INTERRUPT_MANAGER ;
-typedef  int /*<<< orphan*/  CEDAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DH_PARAM_BITS_DEFAULT ; 
- int /*<<< orphan*/  DhNewFromBits (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NewList (int /*<<< orphan*/ ) ; 
- void* NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OvsCompareSessionList ; 
- int /*<<< orphan*/  OvsLog (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Tick64 () ; 
- TYPE_1__* ZeroMalloc (int) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int NextSessionId; int Dh; int Now; void* SendPacketList; void* RecvPacketList; int SessionList; int * SockEvent; int * Interrupt; int * Cedar; } ;
+typedef int SOCK_EVENT ;
+typedef TYPE_1__ OPENVPN_SERVER ;
+typedef int INTERRUPT_MANAGER ;
+typedef int CEDAR ;
+
+
+ int DH_PARAM_BITS_DEFAULT ;
+ int DhNewFromBits (int ) ;
+ int NewList (int ) ;
+ void* NewListFast (int *) ;
+ int OvsCompareSessionList ;
+ int OvsLog (TYPE_1__*,int *,int *,char*) ;
+ int Tick64 () ;
+ TYPE_1__* ZeroMalloc (int) ;
 
 OPENVPN_SERVER *NewOpenVpnServer(CEDAR *cedar, INTERRUPT_MANAGER *interrupt, SOCK_EVENT *sock_event)
 {
-	OPENVPN_SERVER *s;
-	// Validate arguments
-	if (cedar == NULL)
-	{
-		return NULL;
-	}
+ OPENVPN_SERVER *s;
 
-	s = ZeroMalloc(sizeof(OPENVPN_SERVER));
+ if (cedar == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	s->Cedar = cedar;
-	s->Interrupt = interrupt;
-	s->SockEvent = sock_event;
+ s = ZeroMalloc(sizeof(OPENVPN_SERVER));
 
-	s->SessionList = NewList(OvsCompareSessionList);
-	s->RecvPacketList = NewListFast(NULL);
-	s->SendPacketList = NewListFast(NULL);
+ s->Cedar = cedar;
+ s->Interrupt = interrupt;
+ s->SockEvent = sock_event;
 
-	s->Now = Tick64();
+ s->SessionList = NewList(OvsCompareSessionList);
+ s->RecvPacketList = NewListFast(((void*)0));
+ s->SendPacketList = NewListFast(((void*)0));
 
-	s->NextSessionId = 1;
+ s->Now = Tick64();
 
-	OvsLog(s, NULL, NULL, "LO_START");
+ s->NextSessionId = 1;
 
-	s->Dh = DhNewFromBits(DH_PARAM_BITS_DEFAULT);
+ OvsLog(s, ((void*)0), ((void*)0), "LO_START");
 
-	return s;
+ s->Dh = DhNewFromBits(DH_PARAM_BITS_DEFAULT);
+
+ return s;
 }

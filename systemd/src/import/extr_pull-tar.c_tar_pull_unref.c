@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int tar_pid; scalar_t__ local; scalar_t__ image_root; scalar_t__ settings_path; scalar_t__ final_path; scalar_t__ settings_temp_path; scalar_t__ temp_path; int /*<<< orphan*/  event; int /*<<< orphan*/  glue; int /*<<< orphan*/  signature_job; int /*<<< orphan*/  checksum_job; int /*<<< orphan*/  settings_job; int /*<<< orphan*/  tar_job; } ;
-typedef  TYPE_1__ TarPull ;
 
-/* Variables and functions */
- int REMOVE_PHYSICAL ; 
- int REMOVE_ROOT ; 
- int REMOVE_SUBVOLUME ; 
- int /*<<< orphan*/  SIGKILL ; 
- int /*<<< orphan*/  curl_glue_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  kill_and_sigcont (int,int /*<<< orphan*/ ) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  pull_job_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rm_rf (scalar_t__,int) ; 
- int /*<<< orphan*/  sd_event_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  unlink (scalar_t__) ; 
- int /*<<< orphan*/  wait_for_terminate (int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int tar_pid; scalar_t__ local; scalar_t__ image_root; scalar_t__ settings_path; scalar_t__ final_path; scalar_t__ settings_temp_path; scalar_t__ temp_path; int event; int glue; int signature_job; int checksum_job; int settings_job; int tar_job; } ;
+typedef TYPE_1__ TarPull ;
+
+
+ int REMOVE_PHYSICAL ;
+ int REMOVE_ROOT ;
+ int REMOVE_SUBVOLUME ;
+ int SIGKILL ;
+ int curl_glue_unref (int ) ;
+ int free (scalar_t__) ;
+ int kill_and_sigcont (int,int ) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int pull_job_unref (int ) ;
+ int rm_rf (scalar_t__,int) ;
+ int sd_event_unref (int ) ;
+ int unlink (scalar_t__) ;
+ int wait_for_terminate (int,int *) ;
 
 TarPull* tar_pull_unref(TarPull *i) {
         if (!i)
-                return NULL;
+                return ((void*)0);
 
         if (i->tar_pid > 1) {
                 (void) kill_and_sigcont(i->tar_pid, SIGKILL);
-                (void) wait_for_terminate(i->tar_pid, NULL);
+                (void) wait_for_terminate(i->tar_pid, ((void*)0));
         }
 
         pull_job_unref(i->tar_job);

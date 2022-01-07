@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_context ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite3_context ;
 struct TYPE_5__ {scalar_t__ pVtab; } ;
-struct TYPE_6__ {int /*<<< orphan*/  pExpr; TYPE_1__ base; } ;
-typedef  int /*<<< orphan*/  Fts3Table ;
-typedef  TYPE_2__ Fts3Cursor ;
+struct TYPE_6__ {int pExpr; TYPE_1__ base; } ;
+typedef int Fts3Table ;
+typedef TYPE_2__ Fts3Cursor ;
 
-/* Variables and functions */
- char* FTS3_MATCHINFO_DEFAULT ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/  fts3GetMatchinfo (int /*<<< orphan*/ *,TYPE_2__*,char const*) ; 
- int /*<<< orphan*/  sqlite3Fts3SegmentsClose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ char* FTS3_MATCHINFO_DEFAULT ;
+ int SQLITE_STATIC ;
+ int fts3GetMatchinfo (int *,TYPE_2__*,char const*) ;
+ int sqlite3Fts3SegmentsClose (int *) ;
+ int sqlite3_result_blob (int *,char*,int ,int ) ;
 
 void sqlite3Fts3Matchinfo(
-  sqlite3_context *pContext,      /* Function call context */
-  Fts3Cursor *pCsr,               /* FTS3 table cursor */
-  const char *zArg                /* Second arg to matchinfo() function */
+  sqlite3_context *pContext,
+  Fts3Cursor *pCsr,
+  const char *zArg
 ){
   Fts3Table *pTab = (Fts3Table *)pCsr->base.pVtab;
   const char *zFormat;
@@ -43,7 +43,7 @@ void sqlite3Fts3Matchinfo(
     sqlite3_result_blob(pContext, "", 0, SQLITE_STATIC);
     return;
   }else{
-    /* Retrieve matchinfo() data. */
+
     fts3GetMatchinfo(pContext, pCsr, zFormat);
     sqlite3Fts3SegmentsClose(pTab);
   }

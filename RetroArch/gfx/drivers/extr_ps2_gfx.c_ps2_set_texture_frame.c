@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int clearVRAM; int /*<<< orphan*/  menu_filter; int /*<<< orphan*/  menuTexture; } ;
-typedef  TYPE_1__ ps2_video_t ;
 
-/* Variables and functions */
- int GS_PSM_CT16 ; 
- int GS_PSM_CT32 ; 
- int texture_need_prepare (int /*<<< orphan*/ ,unsigned int,unsigned int,int) ; 
- int /*<<< orphan*/  transfer_texture (int /*<<< orphan*/ ,void const*,unsigned int,unsigned int,int,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int clearVRAM; int menu_filter; int menuTexture; } ;
+typedef TYPE_1__ ps2_video_t ;
+
+
+ int GS_PSM_CT16 ;
+ int GS_PSM_CT32 ;
+ int texture_need_prepare (int ,unsigned int,unsigned int,int) ;
+ int transfer_texture (int ,void const*,unsigned int,unsigned int,int,int ,int) ;
 
 __attribute__((used)) static void ps2_set_texture_frame(void *data, const void *frame, bool rgb32,
                                unsigned width, unsigned height, float alpha)
 {
    ps2_video_t *ps2 = (ps2_video_t*)data;
 
-   bool color_correction = false;
+   bool color_correction = 0;
    int PSM = (rgb32 ? GS_PSM_CT32 : GS_PSM_CT16);
    bool texture_changed = texture_need_prepare(ps2->menuTexture, width, height, PSM);
 

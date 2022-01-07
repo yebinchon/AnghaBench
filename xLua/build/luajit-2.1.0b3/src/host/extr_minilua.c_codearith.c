@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  info; } ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int info; } ;
 struct TYPE_11__ {TYPE_1__ s; } ;
-struct TYPE_12__ {int /*<<< orphan*/  k; TYPE_2__ u; } ;
-typedef  TYPE_3__ expdesc ;
-typedef  scalar_t__ OpCode ;
-typedef  int /*<<< orphan*/  FuncState ;
+struct TYPE_12__ {int k; TYPE_2__ u; } ;
+typedef TYPE_3__ expdesc ;
+typedef scalar_t__ OpCode ;
+typedef int FuncState ;
 
-/* Variables and functions */
- scalar_t__ OP_LEN ; 
- scalar_t__ OP_UNM ; 
- int /*<<< orphan*/  VRELOCABLE ; 
- scalar_t__ constfolding (scalar_t__,TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  freeexp (int /*<<< orphan*/ *,TYPE_3__*) ; 
- int /*<<< orphan*/  luaK_codeABC (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int,int) ; 
- int luaK_exp2RK (int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ scalar_t__ OP_LEN ;
+ scalar_t__ OP_UNM ;
+ int VRELOCABLE ;
+ scalar_t__ constfolding (scalar_t__,TYPE_3__*,TYPE_3__*) ;
+ int freeexp (int *,TYPE_3__*) ;
+ int luaK_codeABC (int *,scalar_t__,int ,int,int) ;
+ int luaK_exp2RK (int *,TYPE_3__*) ;
 
 __attribute__((used)) static void codearith(FuncState*fs,OpCode op,expdesc*e1,expdesc*e2){
 if(constfolding(op,e1,e2))

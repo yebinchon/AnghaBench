@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mtx {int dummy; } ;
-struct buf {int /*<<< orphan*/  b_flags; } ;
+struct buf {int b_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_DONE ; 
- int /*<<< orphan*/  mtx_lock (struct mtx*) ; 
- struct mtx* mtx_pool_find (int /*<<< orphan*/ ,struct buf*) ; 
- int /*<<< orphan*/  mtx_unlock (struct mtx*) ; 
- int /*<<< orphan*/  mtxpool_sleep ; 
- int /*<<< orphan*/  wakeup (struct buf*) ; 
+
+ int B_DONE ;
+ int mtx_lock (struct mtx*) ;
+ struct mtx* mtx_pool_find (int ,struct buf*) ;
+ int mtx_unlock (struct mtx*) ;
+ int mtxpool_sleep ;
+ int wakeup (struct buf*) ;
 
 void
 bdone(struct buf *bp)
 {
-	struct mtx *mtxp;
+ struct mtx *mtxp;
 
-	mtxp = mtx_pool_find(mtxpool_sleep, bp);
-	mtx_lock(mtxp);
-	bp->b_flags |= B_DONE;
-	wakeup(bp);
-	mtx_unlock(mtxp);
+ mtxp = mtx_pool_find(mtxpool_sleep, bp);
+ mtx_lock(mtxp);
+ bp->b_flags |= B_DONE;
+ wakeup(bp);
+ mtx_unlock(mtxp);
 }

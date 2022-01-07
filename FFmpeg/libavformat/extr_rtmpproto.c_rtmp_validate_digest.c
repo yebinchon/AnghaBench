@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTMP_HANDSHAKE_PACKET_SIZE ; 
- int /*<<< orphan*/  SERVER_KEY_OPEN_PART_LEN ; 
- int ff_rtmp_calc_digest (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ff_rtmp_calc_digest_pos (int /*<<< orphan*/ *,int,int,int) ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rtmp_server_key ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int RTMP_HANDSHAKE_PACKET_SIZE ;
+ int SERVER_KEY_OPEN_PART_LEN ;
+ int ff_rtmp_calc_digest (int *,int ,int,int ,int ,int *) ;
+ int ff_rtmp_calc_digest_pos (int *,int,int,int) ;
+ int memcmp (int *,int *,int) ;
+ int rtmp_server_key ;
 
 __attribute__((used)) static int rtmp_validate_digest(uint8_t *buf, int off)
 {

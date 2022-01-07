@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int ULONGLONG ;
 
-/* Variables and functions */
- int NUMBER_DTOA_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int floor (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log10 (double) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- double pow (int,int) ; 
+
+
+
+typedef char WCHAR ;
+typedef int ULONGLONG ;
+
+
+ int NUMBER_DTOA_SIZE ;
+ int assert (int) ;
+ int floor (int ) ;
+ int log10 (double) ;
+ int memmove (char*,char*,int) ;
+ double pow (int,int) ;
 
 __attribute__((used)) static inline void number_to_str(double d, WCHAR *buf, int size, int *dec_point)
 {
     ULONGLONG l;
     int i;
 
-    /* TODO: this function should print doubles with bigger precision */
+
     assert(size>=2 && size<=NUMBER_DTOA_SIZE && d>=0);
 
     if(d == 0)
@@ -46,7 +46,7 @@ __attribute__((used)) static inline void number_to_str(double d, WCHAR *buf, int
         l /= 10;
     }
 
-    /* log10 was wrong by 1 or rounding changed number of digits */
+
     if(l) {
         (*dec_point)++;
         memmove(buf+1, buf, size-2);

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  _AUX ; 
- int /*<<< orphan*/  _KAUX ; 
- int _KEYPAD ; 
- int current_default_layer ; 
- int /*<<< orphan*/  default_layer_set (unsigned long) ; 
- int /*<<< orphan*/  eeconfig_update_default_layer (unsigned long) ; 
- int /*<<< orphan*/  layer_invert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
+ int _AUX ;
+ int _KAUX ;
+ int _KEYPAD ;
+ int current_default_layer ;
+ int default_layer_set (unsigned long) ;
+ int eeconfig_update_default_layer (unsigned long) ;
+ int layer_invert (int ) ;
+ int layer_off (int ) ;
 
 void update_base_layer(int base)
 {

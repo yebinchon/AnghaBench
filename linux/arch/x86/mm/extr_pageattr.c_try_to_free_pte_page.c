@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pte_t ;
 
-/* Variables and functions */
- int PTRS_PER_PTE ; 
- int /*<<< orphan*/  free_page (unsigned long) ; 
- int /*<<< orphan*/  pte_none (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pte_t ;
+
+
+ int PTRS_PER_PTE ;
+ int free_page (unsigned long) ;
+ int pte_none (int ) ;
 
 __attribute__((used)) static bool try_to_free_pte_page(pte_t *pte)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < PTRS_PER_PTE; i++)
-		if (!pte_none(pte[i]))
-			return false;
+ for (i = 0; i < PTRS_PER_PTE; i++)
+  if (!pte_none(pte[i]))
+   return 0;
 
-	free_page((unsigned long)pte);
-	return true;
+ free_page((unsigned long)pte);
+ return 1;
 }

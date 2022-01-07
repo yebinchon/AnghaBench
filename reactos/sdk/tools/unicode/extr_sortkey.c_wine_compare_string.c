@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int NORM_IGNORECASE ; 
- int NORM_IGNORENONSPACE ; 
- int compare_case_weights (int,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int) ; 
- int compare_diacritic_weights (int,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int) ; 
- int compare_unicode_weights (int,int /*<<< orphan*/  const*,int,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int WCHAR ;
+
+
+ int NORM_IGNORECASE ;
+ int NORM_IGNORENONSPACE ;
+ int compare_case_weights (int,int const*,int,int const*,int) ;
+ int compare_diacritic_weights (int,int const*,int,int const*,int) ;
+ int compare_unicode_weights (int,int const*,int,int const*,int) ;
 
 int wine_compare_string(int flags, const WCHAR *str1, int len1,
                         const WCHAR *str2, int len2)

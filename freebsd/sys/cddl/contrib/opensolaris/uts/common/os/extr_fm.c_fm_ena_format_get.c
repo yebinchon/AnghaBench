@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uchar_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ENA_FORMAT (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint64_t ;
+typedef int uchar_t ;
+
+
+ int ENA_FORMAT (int ) ;
 
 uchar_t
 fm_ena_format_get(uint64_t ena)
 {
 
-	return (ENA_FORMAT(ena));
+ return (ENA_FORMAT(ena));
 }

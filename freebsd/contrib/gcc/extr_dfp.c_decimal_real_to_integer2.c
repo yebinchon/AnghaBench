@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  decimal128 ;
-typedef  int /*<<< orphan*/  decNumber ;
-struct TYPE_9__ {int /*<<< orphan*/  round; scalar_t__ traps; } ;
-typedef  TYPE_1__ decContext ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int decimal128 ;
+typedef int decNumber ;
+struct TYPE_9__ {int round; scalar_t__ traps; } ;
+typedef TYPE_1__ decContext ;
 struct TYPE_10__ {scalar_t__ sig; } ;
-typedef  TYPE_2__ REAL_VALUE_TYPE ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
+typedef TYPE_2__ REAL_VALUE_TYPE ;
+typedef int HOST_WIDE_INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEC_INIT_DECIMAL128 ; 
- int /*<<< orphan*/  DEC_ROUND_DOWN ; 
- int /*<<< orphan*/  decContextDefault (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decNumberRescale (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  decNumberToIntegralValue (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  decNumberToString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  decNumberZero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  decimal128ToNumber (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  real_from_string (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  real_to_integer2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_2__*) ; 
+
+ int DEC_INIT_DECIMAL128 ;
+ int DEC_ROUND_DOWN ;
+ int decContextDefault (TYPE_1__*,int ) ;
+ int decNumberRescale (int *,int *,int *,TYPE_1__*) ;
+ int decNumberToIntegralValue (int *,int *,TYPE_1__*) ;
+ int decNumberToString (int *,char*) ;
+ int decNumberZero (int *) ;
+ int decimal128ToNumber (int *,int *) ;
+ int real_from_string (TYPE_2__*,char*) ;
+ int real_to_integer2 (int *,int *,TYPE_2__*) ;
 
 void
 decimal_real_to_integer2 (HOST_WIDE_INT *plow, HOST_WIDE_INT *phigh,
-			  const REAL_VALUE_TYPE *r)
+     const REAL_VALUE_TYPE *r)
 {
   decContext set;
   decNumber dn, dn2, dn3;
@@ -50,8 +50,8 @@ decimal_real_to_integer2 (HOST_WIDE_INT *plow, HOST_WIDE_INT *phigh,
   decNumberZero (&dn3);
   decNumberRescale (&dn, &dn2, &dn3, &set);
 
-  /* Conver to REAL_VALUE_TYPE and call appropriate conversion
-     function.  */
+
+
   decNumberToString (&dn, string);
   real_from_string (&to, string);
   real_to_integer2 (plow, phigh, &to);

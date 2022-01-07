@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const ge25519_p3 ;
-typedef  int /*<<< orphan*/  ge25519_p1p1 ;
-typedef  int /*<<< orphan*/  ge25519_cached ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ge25519_add (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p1p1_to_p3 (int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ge25519_p3_0 (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ge25519_p3_dbl (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ge25519_p3_to_cached (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  ge25519_sub (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int const ge25519_p3 ;
+typedef int ge25519_p1p1 ;
+typedef int ge25519_cached ;
+
+
+ int ge25519_add (int *,int const*,int *) ;
+ int ge25519_p1p1_to_p3 (int const*,int *) ;
+ int ge25519_p3_0 (int const*) ;
+ int ge25519_p3_dbl (int *,int const*) ;
+ int ge25519_p3_to_cached (int *,int const*) ;
+ int ge25519_sub (int *,int const*,int *) ;
 
 __attribute__((used)) static void
 ge25519_mul_l(ge25519_p3 *r, const ge25519_p3 *A)
@@ -29,10 +29,10 @@ ge25519_mul_l(ge25519_p3 *r, const ge25519_p3 *A)
         13, 0, 0, 0, 0, -1, 0, 0, 0, 0, -11, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, -13, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, -13, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, -13, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 3, 0, 0, 0, 0, -11, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
     };
     ge25519_cached Ai[8];
-    ge25519_p1p1   t;
-    ge25519_p3     u;
-    ge25519_p3     A2;
-    int            i;
+    ge25519_p1p1 t;
+    ge25519_p3 u;
+    ge25519_p3 A2;
+    int i;
 
     ge25519_p3_to_cached(&Ai[0], A);
     ge25519_p3_dbl(&t, A);

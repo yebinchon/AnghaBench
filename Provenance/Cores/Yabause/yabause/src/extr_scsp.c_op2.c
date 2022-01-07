@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t u32 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t u32 ;
+typedef int u16 ;
 struct TYPE_4__ {int waveform_phase_value; int attenuation; int sample_offset; int backwards; int address_pointer; } ;
-struct TYPE_3__ {int mdl; int lpctl; int lea; int lsa; scalar_t__ sa; int /*<<< orphan*/  pcm8b; int /*<<< orphan*/  mdysl; int /*<<< orphan*/  mdxsl; } ;
+struct TYPE_3__ {int mdl; int lpctl; int lea; int lsa; scalar_t__ sa; int pcm8b; int mdysl; int mdxsl; } ;
 struct Slot {TYPE_2__ state; TYPE_1__ regs; } ;
 struct Scsp {int* sound_stack; } ;
-typedef  int s32 ;
-typedef  int s16 ;
+typedef int s32 ;
+typedef int s16 ;
 
-/* Variables and functions */
- size_t get_slot (struct Slot*,int /*<<< orphan*/ ) ; 
+
+ size_t get_slot (struct Slot*,int ) ;
 
 void op2(struct Slot * slot, struct Scsp * s)
 {
@@ -34,7 +34,7 @@ void op2(struct Slot * slot, struct Scsp * s)
 
    if (slot->regs.mdl)
    {
-      //averaging operation
+
       u32 x_sel = get_slot(slot, slot->regs.mdxsl);
       u32 y_sel = get_slot(slot, slot->regs.mdysl);
       s16 xd = s->sound_stack[x_sel];
@@ -42,30 +42,30 @@ void op2(struct Slot * slot, struct Scsp * s)
 
       s32 zd = (xd + yd) / 2;
 
-      //modulation operation
+
       u16 shift = 0xf - (slot->regs.mdl);
       zd >>= shift;
 
       md_out = zd;
    }
 
-   //address pointer
 
-   if (slot->regs.lpctl == 0)//no loop
+
+   if (slot->regs.lpctl == 0)
    {
       slot->state.sample_offset += sample_delta;
 
       if (slot->state.sample_offset >= slot->regs.lea)
          slot->state.attenuation = 0x3ff;
    }
-   else if (slot->regs.lpctl == 1)//normal loop
+   else if (slot->regs.lpctl == 1)
    {
       slot->state.sample_offset += sample_delta;
 
       if (slot->state.sample_offset >= slot->regs.lea)
          slot->state.sample_offset = slot->regs.lsa;
    }
-   else if (slot->regs.lpctl == 2)//reverse
+   else if (slot->regs.lpctl == 2)
    {
       if (!slot->state.backwards)
          slot->state.sample_offset += sample_delta;
@@ -82,12 +82,12 @@ void op2(struct Slot * slot, struct Scsp * s)
       }
       else
       {
-         //backwards
+
          if (slot->state.sample_offset <= slot->regs.lsa)
             slot->state.sample_offset = slot->regs.lea;
       }
    }
-   else if (slot->regs.lpctl == 3)//ping pong
+   else if (slot->regs.lpctl == 3)
    {
       if(!slot->state.backwards)
          slot->state.sample_offset += sample_delta;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int EqualRect (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetRect (int /*<<< orphan*/ *,int,int,int,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
+
+
+
+typedef int RECT ;
+typedef int BOOL ;
+
+
+ int EqualRect (int *,int *) ;
+ int SetRect (int *,int,int,int,int) ;
+ int ok (int,char*,int) ;
 
 __attribute__((used)) static void test_EqualRect(void)
 {
@@ -26,13 +26,13 @@ __attribute__((used)) static void test_EqualRect(void)
     SetRect(&rect1, 0, 0, 0, 0);
     SetRect(&rect2, 1, 1, 1, 1);
 
-    ret = EqualRect(NULL, NULL);
+    ret = EqualRect(((void*)0), ((void*)0));
     ok(!ret, "got %d\n", ret);
 
-    ret = EqualRect(&rect1, NULL);
+    ret = EqualRect(&rect1, ((void*)0));
     ok(!ret, "got %d\n", ret);
 
-    ret = EqualRect(NULL, &rect2);
+    ret = EqualRect(((void*)0), &rect2);
     ok(!ret, "got %d\n", ret);
 
     ret = EqualRect(&rect1, &rect2);

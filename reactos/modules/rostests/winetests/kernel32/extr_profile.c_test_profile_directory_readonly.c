@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lpStruct ;
-typedef  int /*<<< orphan*/  attributes ;
-struct TYPE_3__ {int nLength; int /*<<< orphan*/  lpSecurityDescriptor; int /*<<< orphan*/  member_0; } ;
-typedef  TYPE_1__ SECURITY_ATTRIBUTES ;
-typedef  int /*<<< orphan*/  CHAR ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ ConvertStringSecurityDescriptorToSecurityDescriptorA (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ CreateDirectoryA (int /*<<< orphan*/ *,TYPE_1__*) ; 
- scalar_t__ FALSE ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  GetTempPathA (int,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- scalar_t__ RemoveDirectoryA (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SDDL_REVISION_1 ; 
- scalar_t__ TRUE ; 
- scalar_t__ WritePrivateProfileSectionA (char*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ WritePrivateProfileStringA (char*,char*,char*,int /*<<< orphan*/ *) ; 
- scalar_t__ WritePrivateProfileStructA (char*,char*,char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lpStruct ;
+typedef int attributes ;
+struct TYPE_3__ {int nLength; int lpSecurityDescriptor; int member_0; } ;
+typedef TYPE_1__ SECURITY_ATTRIBUTES ;
+typedef int CHAR ;
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ ConvertStringSecurityDescriptorToSecurityDescriptorA (char const*,int ,int *,int *) ;
+ scalar_t__ CreateDirectoryA (int *,TYPE_1__*) ;
+ scalar_t__ FALSE ;
+ scalar_t__ GetLastError () ;
+ int GetTempPathA (int,int *) ;
+ int MAX_PATH ;
+ scalar_t__ RemoveDirectoryA (int *) ;
+ int SDDL_REVISION_1 ;
+ scalar_t__ TRUE ;
+ scalar_t__ WritePrivateProfileSectionA (char*,char*,int *) ;
+ scalar_t__ WritePrivateProfileStringA (char*,char*,char*,int *) ;
+ scalar_t__ WritePrivateProfileStructA (char*,char*,char*,int,int *) ;
+ int lstrcatA (int *,char*) ;
+ int ok (int,char*,scalar_t__) ;
+ int strcpy (int *,int *) ;
 
 __attribute__((used)) static void test_profile_directory_readonly(void)
 {
@@ -45,7 +45,7 @@ __attribute__((used)) static void test_profile_directory_readonly(void)
     char lpStruct[] = { 's', 't', 'r', 'i', 'n', 'g' };
 
     attributes.nLength = sizeof(attributes);
-    ret = ConvertStringSecurityDescriptorToSecurityDescriptorA(sddl_string_everyone_readonly, SDDL_REVISION_1, &attributes.lpSecurityDescriptor, NULL);
+    ret = ConvertStringSecurityDescriptorToSecurityDescriptorA(sddl_string_everyone_readonly, SDDL_REVISION_1, &attributes.lpSecurityDescriptor, ((void*)0));
     ok(ret == TRUE, "ConvertStringSecurityDescriptorToSecurityDescriptor failed: %d\n", GetLastError());
 
     GetTempPathA(MAX_PATH, path_folder);

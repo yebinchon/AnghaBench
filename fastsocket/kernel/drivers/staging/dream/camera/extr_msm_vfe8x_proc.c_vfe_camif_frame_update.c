@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct vfe_cmds_camif_frame {int /*<<< orphan*/  linesPerFrame; int /*<<< orphan*/  pixelsPerLine; } ;
-struct vfe_camifframe_update {int /*<<< orphan*/  linesPerFrame; int /*<<< orphan*/  pixelsPerLine; } ;
-typedef  int /*<<< orphan*/  cmd ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct vfe_cmds_camif_frame {int linesPerFrame; int pixelsPerLine; } ;
+struct vfe_camifframe_update {int linesPerFrame; int pixelsPerLine; } ;
+typedef int cmd ;
 struct TYPE_2__ {scalar_t__ vfebase; } ;
 
-/* Variables and functions */
- scalar_t__ CAMIF_FRAME_CONFIG ; 
- TYPE_1__* ctrl ; 
- int /*<<< orphan*/  memset (struct vfe_camifframe_update*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  vfe_prog_hw (scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+ scalar_t__ CAMIF_FRAME_CONFIG ;
+ TYPE_1__* ctrl ;
+ int memset (struct vfe_camifframe_update*,int ,int) ;
+ int vfe_prog_hw (scalar_t__,int *,int) ;
 
 void vfe_camif_frame_update(struct vfe_cmds_camif_frame *in)
 {
-	struct vfe_camifframe_update cmd;
+ struct vfe_camifframe_update cmd;
 
-	memset(&cmd, 0, sizeof(cmd));
+ memset(&cmd, 0, sizeof(cmd));
 
-	cmd.pixelsPerLine = in->pixelsPerLine;
-	cmd.linesPerFrame = in->linesPerFrame;
+ cmd.pixelsPerLine = in->pixelsPerLine;
+ cmd.linesPerFrame = in->linesPerFrame;
 
-	vfe_prog_hw(ctrl->vfebase + CAMIF_FRAME_CONFIG, (uint32_t *)&cmd,
-		sizeof(cmd));
+ vfe_prog_hw(ctrl->vfebase + CAMIF_FRAME_CONFIG, (uint32_t *)&cmd,
+  sizeof(cmd));
 }

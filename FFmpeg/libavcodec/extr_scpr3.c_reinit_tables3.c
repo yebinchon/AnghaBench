@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_9__ ;
-typedef  struct TYPE_18__   TYPE_8__ ;
-typedef  struct TYPE_17__   TYPE_7__ ;
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_9__ ;
+typedef struct TYPE_18__ TYPE_8__ ;
+typedef struct TYPE_17__ TYPE_7__ ;
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_19__ {scalar_t__ type; } ;
-struct TYPE_14__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-struct TYPE_13__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-struct TYPE_12__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
+struct TYPE_14__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+struct TYPE_13__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+struct TYPE_12__ {int dectab; int cnts; int * freqs; int cntsum; } ;
 struct TYPE_18__ {TYPE_7__* op_model3; TYPE_6__* mv_model3; TYPE_5__* sxy_model3; TYPE_4__ count_model3; TYPE_3__ fill_model3; TYPE_2__ range_model3; TYPE_1__* run_model3; TYPE_9__** pixel_model3; } ;
-struct TYPE_17__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-struct TYPE_16__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-struct TYPE_15__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-struct TYPE_11__ {int /*<<< orphan*/  dectab; int /*<<< orphan*/  cnts; int /*<<< orphan*/ * freqs; int /*<<< orphan*/  cntsum; } ;
-typedef  TYPE_8__ SCPRContext ;
-typedef  TYPE_9__ PixelModel3 ;
+struct TYPE_17__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+struct TYPE_16__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+struct TYPE_15__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+struct TYPE_11__ {int dectab; int cnts; int * freqs; int cntsum; } ;
+typedef TYPE_8__ SCPRContext ;
+typedef TYPE_9__ PixelModel3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  renew_table3 (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int renew_table3 (int,int *,int ,int ,int ,int ) ;
 
 __attribute__((used)) static void reinit_tables3(SCPRContext * s)
 {

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct iscsi_cls_session {int /*<<< orphan*/  block_work; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  iscsi_eh_timer_workq ; 
- int /*<<< orphan*/  queue_work (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct iscsi_cls_session {int block_work; } ;
+
+
+ int iscsi_eh_timer_workq ;
+ int queue_work (int ,int *) ;
 
 void iscsi_block_session(struct iscsi_cls_session *session)
 {
-	queue_work(iscsi_eh_timer_workq, &session->block_work);
+ queue_work(iscsi_eh_timer_workq, &session->block_work);
 }

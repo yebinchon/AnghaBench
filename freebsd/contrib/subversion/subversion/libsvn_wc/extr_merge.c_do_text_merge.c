@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_t ;
-typedef  int /*<<< orphan*/  svn_diff_file_options_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_file_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  init_conflict_markers (char const**,char const**,char const**,char const*,char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_conflict_display_modified_original_latest ; 
- int /*<<< orphan*/  svn_diff_contains_conflicts (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_file_diff3_2 (int /*<<< orphan*/ **,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff_file_options_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_file_options_parse (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_file_output_merge3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,char const*,char const*,char const*,char const*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_aprfile2 (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_t ;
+typedef int svn_diff_file_options_t ;
+typedef int svn_cancel_func_t ;
+typedef int svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_file_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int TRUE ;
+ int init_conflict_markers (char const**,char const**,char const**,char const*,char const*,char const*,int *) ;
+ int svn_diff_conflict_display_modified_original_latest ;
+ int svn_diff_contains_conflicts (int *) ;
+ int svn_diff_file_diff3_2 (int **,char const*,char const*,char const*,int *,int *) ;
+ int * svn_diff_file_options_create (int *) ;
+ int svn_diff_file_options_parse (int *,int const*,int *) ;
+ int svn_diff_file_output_merge3 (int *,int *,char const*,char const*,char const*,char const*,char const*,char const*,char*,int ,int ,void*,int *) ;
+ int svn_stream_close (int *) ;
+ int * svn_stream_from_aprfile2 (int *,int ,int *) ;
 
 __attribute__((used)) static svn_error_t *
 do_text_merge(svn_boolean_t *contains_conflicts,
@@ -75,7 +75,7 @@ do_text_merge(svn_boolean_t *contains_conflicts,
                                       left_marker,
                                       target_marker,
                                       right_marker,
-                                      "=======", /* separator */
+                                      "=======",
                                       svn_diff_conflict_display_modified_original_latest,
                                       cancel_func, cancel_baton,
                                       pool));

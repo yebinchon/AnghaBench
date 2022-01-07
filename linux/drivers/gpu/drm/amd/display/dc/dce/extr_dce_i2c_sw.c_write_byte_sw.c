@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int uint16_t ;
+
+
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
 struct ddc {int dummy; } ;
 struct dc_context {int dummy; } ;
-typedef  int int32_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCL ; 
- int /*<<< orphan*/  SDA ; 
- int /*<<< orphan*/  read_bit_from_ddc (struct ddc*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  udelay (int) ; 
- int /*<<< orphan*/  wait_for_scl_high_sw (struct dc_context*,struct ddc*,int) ; 
- int /*<<< orphan*/  write_bit_to_ddc (struct ddc*,int /*<<< orphan*/ ,int) ; 
+
+ int SCL ;
+ int SDA ;
+ int read_bit_from_ddc (struct ddc*,int ) ;
+ int udelay (int) ;
+ int wait_for_scl_high_sw (struct dc_context*,struct ddc*,int) ;
+ int write_bit_to_ddc (struct ddc*,int ,int) ;
 
 __attribute__((used)) static bool write_byte_sw(
-	struct dc_context *ctx,
-	struct ddc *ddc_handle,
-	uint16_t clock_delay_div_4,
-	uint8_t byte)
+ struct dc_context *ctx,
+ struct ddc *ddc_handle,
+ uint16_t clock_delay_div_4,
+ uint8_t byte)
 {
-	int32_t shift = 7;
-	bool ack;
+ int32_t shift = 7;
+ bool ack;
 
-	/* bits are transmitted serially, starting from MSB */
 
-	do {
-		udelay(clock_delay_div_4);
 
-		write_bit_to_ddc(ddc_handle, SDA, (byte >> shift) & 1);
+ do {
+  udelay(clock_delay_div_4);
 
-		udelay(clock_delay_div_4);
+  write_bit_to_ddc(ddc_handle, SDA, (byte >> shift) & 1);
 
-		write_bit_to_ddc(ddc_handle, SCL, true);
+  udelay(clock_delay_div_4);
 
-		if (!wait_for_scl_high_sw(ctx, ddc_handle, clock_delay_div_4))
-			return false;
+  write_bit_to_ddc(ddc_handle, SCL, 1);
 
-		write_bit_to_ddc(ddc_handle, SCL, false);
+  if (!wait_for_scl_high_sw(ctx, ddc_handle, clock_delay_div_4))
+   return 0;
 
-		--shift;
-	} while (shift >= 0);
+  write_bit_to_ddc(ddc_handle, SCL, 0);
 
-	/* The display sends ACK by preventing the SDA from going high
-	 * after the SCL pulse we use to send our last data bit.
-	 * If the SDA goes high after that bit, it's a NACK
-	 */
+  --shift;
+ } while (shift >= 0);
 
-	udelay(clock_delay_div_4);
 
-	write_bit_to_ddc(ddc_handle, SDA, true);
 
-	udelay(clock_delay_div_4);
 
-	write_bit_to_ddc(ddc_handle, SCL, true);
 
-	if (!wait_for_scl_high_sw(ctx, ddc_handle, clock_delay_div_4))
-		return false;
 
-	/* read ACK bit */
+ udelay(clock_delay_div_4);
 
-	ack = !read_bit_from_ddc(ddc_handle, SDA);
+ write_bit_to_ddc(ddc_handle, SDA, 1);
 
-	udelay(clock_delay_div_4 << 1);
+ udelay(clock_delay_div_4);
 
-	write_bit_to_ddc(ddc_handle, SCL, false);
+ write_bit_to_ddc(ddc_handle, SCL, 1);
 
-	udelay(clock_delay_div_4 << 1);
+ if (!wait_for_scl_high_sw(ctx, ddc_handle, clock_delay_div_4))
+  return 0;
 
-	return ack;
+
+
+ ack = !read_bit_from_ddc(ddc_handle, SDA);
+
+ udelay(clock_delay_div_4 << 1);
+
+ write_bit_to_ddc(ddc_handle, SCL, 0);
+
+ udelay(clock_delay_div_4 << 1);
+
+ return ack;
 }

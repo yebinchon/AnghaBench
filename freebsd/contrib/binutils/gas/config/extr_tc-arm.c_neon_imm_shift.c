@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct neon_type_el {int size; } ;
 struct TYPE_4__ {int instruction; TYPE_1__* operands; } ;
-struct TYPE_3__ {int /*<<< orphan*/  reg; } ;
+struct TYPE_3__ {int reg; } ;
 
-/* Variables and functions */
- int HI1 (int /*<<< orphan*/ ) ; 
- int LOW4 (int /*<<< orphan*/ ) ; 
- TYPE_2__ inst ; 
- int neon_dp_fixup (int) ; 
+
+ int HI1 (int ) ;
+ int LOW4 (int ) ;
+ TYPE_2__ inst ;
+ int neon_dp_fixup (int) ;
 
 __attribute__((used)) static void
 neon_imm_shift (int write_ubit, int uval, int isquad, struct neon_type_el et,

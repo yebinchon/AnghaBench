@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExpandEnvironmentStringsW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  FALSE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  ParseFieldW (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  PathUnquoteSpacesW (int /*<<< orphan*/ *) ; 
- scalar_t__ REG_EXPAND_SZ ; 
- int /*<<< orphan*/  RegQueryValueExW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ _countof (int /*<<< orphan*/ *) ; 
- int atoiW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcpynW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int LPCWSTR ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int ExpandEnvironmentStringsW (int *,int *,int) ;
+ int FALSE ;
+ int MAX_PATH ;
+ int ParseFieldW (int *,int,int *,scalar_t__) ;
+ int PathUnquoteSpacesW (int *) ;
+ scalar_t__ REG_EXPAND_SZ ;
+ int RegQueryValueExW (int ,int ,int ,scalar_t__*,int ,scalar_t__*) ;
+ int TRUE ;
+ scalar_t__ _countof (int *) ;
+ int atoiW (int *) ;
+ int lstrcpynW (int *,int *,scalar_t__) ;
 
 __attribute__((used)) static BOOL HCR_RegGetIconW(HKEY hkey, LPWSTR szDest, LPCWSTR szName, DWORD len, int* picon_idx)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static BOOL HCR_RegGetIconW(HKEY hkey, LPWSTR szDest, LPCW
         if (ParseFieldW (szDest, 2, sNum, _countof(sNum)))
              *picon_idx = atoiW(sNum);
           else
-             *picon_idx=0; /* sometimes the icon number is missing */
+             *picon_idx=0;
       ParseFieldW (szDest, 1, szDest, len);
           PathUnquoteSpacesW(szDest);
       return TRUE;

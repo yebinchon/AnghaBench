@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct irq_desc {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ack_bad_irq (unsigned int) ; 
- int /*<<< orphan*/  kstat_incr_irqs_this_cpu (unsigned int,struct irq_desc*) ; 
- int /*<<< orphan*/  print_irq_desc (unsigned int,struct irq_desc*) ; 
+
+ int ack_bad_irq (unsigned int) ;
+ int kstat_incr_irqs_this_cpu (unsigned int,struct irq_desc*) ;
+ int print_irq_desc (unsigned int,struct irq_desc*) ;
 
 void handle_bad_irq(unsigned int irq, struct irq_desc *desc)
 {
-	print_irq_desc(irq, desc);
-	kstat_incr_irqs_this_cpu(irq, desc);
-	ack_bad_irq(irq);
+ print_irq_desc(irq, desc);
+ kstat_incr_irqs_this_cpu(irq, desc);
+ ack_bad_irq(irq);
 }

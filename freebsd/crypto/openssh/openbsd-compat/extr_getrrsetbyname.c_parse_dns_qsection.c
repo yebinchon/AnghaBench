@@ -1,70 +1,70 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct dns_query {void* class; void* type; int /*<<< orphan*/ * name; struct dns_query* next; } ;
-typedef  int /*<<< orphan*/  name ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INT16SZ ; 
- int MAXDNAME ; 
- void* _getshort (int /*<<< orphan*/  const*) ; 
- struct dns_query* calloc (int,int) ; 
- int dn_expand (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,char*,int) ; 
- int /*<<< orphan*/  free_dns_query (struct dns_query*) ; 
- int /*<<< orphan*/ * strdup (char*) ; 
+
+
+
+typedef int u_char ;
+struct dns_query {void* class; void* type; int * name; struct dns_query* next; } ;
+typedef int name ;
+
+
+ int INT16SZ ;
+ int MAXDNAME ;
+ void* _getshort (int const*) ;
+ struct dns_query* calloc (int,int) ;
+ int dn_expand (int const*,int const*,int const*,char*,int) ;
+ int free_dns_query (struct dns_query*) ;
+ int * strdup (char*) ;
 
 __attribute__((used)) static struct dns_query *
 parse_dns_qsection(const u_char *answer, int size, const u_char **cp, int count)
 {
-	struct dns_query *head, *curr, *prev;
-	int i, length;
-	char name[MAXDNAME];
+ struct dns_query *head, *curr, *prev;
+ int i, length;
+ char name[MAXDNAME];
 
-	for (i = 1, head = NULL, prev = NULL; i <= count; i++, prev = curr) {
+ for (i = 1, head = ((void*)0), prev = ((void*)0); i <= count; i++, prev = curr) {
 
-		/* allocate and initialize struct */
-		curr = calloc(1, sizeof(struct dns_query));
-		if (curr == NULL) {
-			free_dns_query(head);
-			return (NULL);
-		}
-		if (head == NULL)
-			head = curr;
-		if (prev != NULL)
-			prev->next = curr;
 
-		/* name */
-		length = dn_expand(answer, answer + size, *cp, name,
-		    sizeof(name));
-		if (length < 0) {
-			free_dns_query(head);
-			return (NULL);
-		}
-		curr->name = strdup(name);
-		if (curr->name == NULL) {
-			free_dns_query(head);
-			return (NULL);
-		}
-		*cp += length;
+  curr = calloc(1, sizeof(struct dns_query));
+  if (curr == ((void*)0)) {
+   free_dns_query(head);
+   return (((void*)0));
+  }
+  if (head == ((void*)0))
+   head = curr;
+  if (prev != ((void*)0))
+   prev->next = curr;
 
-		/* type */
-		curr->type = _getshort(*cp);
-		*cp += INT16SZ;
 
-		/* class */
-		curr->class = _getshort(*cp);
-		*cp += INT16SZ;
-	}
+  length = dn_expand(answer, answer + size, *cp, name,
+      sizeof(name));
+  if (length < 0) {
+   free_dns_query(head);
+   return (((void*)0));
+  }
+  curr->name = strdup(name);
+  if (curr->name == ((void*)0)) {
+   free_dns_query(head);
+   return (((void*)0));
+  }
+  *cp += length;
 
-	return (head);
+
+  curr->type = _getshort(*cp);
+  *cp += INT16SZ;
+
+
+  curr->class = _getshort(*cp);
+  *cp += INT16SZ;
+ }
+
+ return (head);
 }

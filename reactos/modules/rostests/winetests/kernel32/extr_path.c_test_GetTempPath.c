@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  windir ;
-typedef  int /*<<< orphan*/  save_TMP ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetCurrentDirectoryW (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetEnvironmentVariableA (char*,char*,int) ; 
- int /*<<< orphan*/  GetWindowsDirectoryA (char*,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SetCurrentDirectoryA (char*) ; 
- int /*<<< orphan*/  SetCurrentDirectoryW (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetEnvironmentVariableA (char*,char*) ; 
- int /*<<< orphan*/  strcat (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  test_GetTempPathA (char*) ; 
- int /*<<< orphan*/  test_GetTempPathW (char*) ; 
- int /*<<< orphan*/  trace (char*,char*) ; 
+
+
+
+typedef int windir ;
+typedef int save_TMP ;
+typedef int buf ;
+typedef int WCHAR ;
+
+
+ int GetCurrentDirectoryW (int,int *) ;
+ int GetEnvironmentVariableA (char*,char*,int) ;
+ int GetWindowsDirectoryA (char*,int) ;
+ int MAX_PATH ;
+ int SetCurrentDirectoryA (char*) ;
+ int SetCurrentDirectoryW (int *) ;
+ int SetEnvironmentVariableA (char*,char*) ;
+ int strcat (char*,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
+ int test_GetTempPathA (char*) ;
+ int test_GetTempPathW (char*) ;
+ int trace (char*,char*) ;
 
 __attribute__((used)) static void test_GetTempPath(void)
 {
@@ -39,7 +39,7 @@ __attribute__((used)) static void test_GetTempPath(void)
 
     if (!GetEnvironmentVariableA("TMP", save_TMP, sizeof(save_TMP))) save_TMP[0] = 0;
 
-    /* test default configuration */
+
     trace("TMP=%s\n", save_TMP);
     if (save_TMP[0])
     {
@@ -50,7 +50,7 @@ __attribute__((used)) static void test_GetTempPath(void)
         test_GetTempPathW(buf);
     }
 
-    /* TMP=C:\WINDOWS */
+
     GetWindowsDirectoryA(windir, sizeof(windir));
     SetEnvironmentVariableA("TMP", windir);
     GetEnvironmentVariableA("TMP", buf, sizeof(buf));
@@ -59,7 +59,7 @@ __attribute__((used)) static void test_GetTempPath(void)
     test_GetTempPathA(windir);
     test_GetTempPathW(windir);
 
-    /* TMP=C:\ */
+
     GetWindowsDirectoryA(windir, sizeof(windir));
     windir[3] = 0;
     SetEnvironmentVariableA("TMP", windir);
@@ -69,7 +69,7 @@ __attribute__((used)) static void test_GetTempPath(void)
     test_GetTempPathW(windir);
 
     GetCurrentDirectoryW(MAX_PATH, curdir);
-    /* TMP=C: i.e. use current working directory of the specified drive */
+
     GetWindowsDirectoryA(windir, sizeof(windir));
     SetCurrentDirectoryA(windir);
     windir[2] = 0;

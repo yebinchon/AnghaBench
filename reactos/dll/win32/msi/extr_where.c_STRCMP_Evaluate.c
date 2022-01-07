@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct complex_expr {scalar_t__ op; int /*<<< orphan*/  right; int /*<<< orphan*/  left; } ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  MSIWHEREVIEW ;
-typedef  int /*<<< orphan*/  MSIRECORD ;
-typedef  int INT ;
 
-/* Variables and functions */
- scalar_t__ ERROR_CONTINUE ; 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ OP_EQ ; 
- scalar_t__ OP_NE ; 
- scalar_t__ STRING_evaluate (int /*<<< orphan*/ *,scalar_t__ const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const**) ; 
- int TRUE ; 
- int strcmpW (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*) ; 
+
+
+
+struct complex_expr {scalar_t__ op; int right; int left; } ;
+typedef int WCHAR ;
+typedef scalar_t__ UINT ;
+typedef int MSIWHEREVIEW ;
+typedef int MSIRECORD ;
+typedef int INT ;
+
+
+ scalar_t__ ERROR_CONTINUE ;
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ OP_EQ ;
+ scalar_t__ OP_NE ;
+ scalar_t__ STRING_evaluate (int *,scalar_t__ const*,int ,int const*,int const**) ;
+ int TRUE ;
+ int strcmpW (int const*,int const*) ;
 
 __attribute__((used)) static UINT STRCMP_Evaluate( MSIWHEREVIEW *wv, const UINT rows[], const struct complex_expr *expr,
                              INT *val, const MSIRECORD *record )

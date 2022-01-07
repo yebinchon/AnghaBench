@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct search_query_heap_en {scalar_t__ cpu_time; int /*<<< orphan*/  query; } ;
 
-/* Variables and functions */
- int SEARCH_QUERY_HEAP_SIZE ; 
- struct search_query_heap_en* SQH ; 
- int SQH_SIZE ; 
- int /*<<< orphan*/  memcpy (struct search_query_heap_en*,struct search_query_heap_en*,int) ; 
- scalar_t__ strlen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  zzfree (int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+struct search_query_heap_en {scalar_t__ cpu_time; int query; } ;
+
+
+ int SEARCH_QUERY_HEAP_SIZE ;
+ struct search_query_heap_en* SQH ;
+ int SQH_SIZE ;
+ int memcpy (struct search_query_heap_en*,struct search_query_heap_en*,int) ;
+ scalar_t__ strlen (int ) ;
+ int zzfree (int ,scalar_t__) ;
 
 void search_query_heap_insert (struct search_query_heap_en *E) {
   if (SQH_SIZE == SEARCH_QUERY_HEAP_SIZE) {

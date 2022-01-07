@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  dictSize; } ;
-typedef  TYPE_1__ contexts_t ;
-struct TYPE_8__ {int /*<<< orphan*/  srcSize; int /*<<< orphan*/  maxBlockSize; } ;
-typedef  TYPE_2__ buffers_t ;
-typedef  int /*<<< orphan*/  BMK_benchResult_t ;
 
-/* Variables and functions */
- scalar_t__ BMK_benchParam (int /*<<< orphan*/ *,TYPE_2__ const,TYPE_1__ const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BMK_printWinner (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CUSTOM_LEVEL ; 
- int /*<<< orphan*/  DISPLAY (char*) ; 
- int /*<<< orphan*/  ZSTD_getCParams (int const,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  adjustParams (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cParamsToPVals (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_params ; 
- int /*<<< orphan*/  overwriteParams (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int dictSize; } ;
+typedef TYPE_1__ contexts_t ;
+struct TYPE_8__ {int srcSize; int maxBlockSize; } ;
+typedef TYPE_2__ buffers_t ;
+typedef int BMK_benchResult_t ;
+
+
+ scalar_t__ BMK_benchParam (int *,TYPE_2__ const,TYPE_1__ const,int ) ;
+ int BMK_printWinner (int ,int ,int ,int ,int ) ;
+ int CUSTOM_LEVEL ;
+ int DISPLAY (char*) ;
+ int ZSTD_getCParams (int const,int ,int ) ;
+ int adjustParams (int ,int ,int ) ;
+ int cParamsToPVals (int ) ;
+ int g_params ;
+ int overwriteParams (int ,int ) ;
+ int stdout ;
 
 __attribute__((used)) static int
 benchOnce(const buffers_t buf, const contexts_t ctx, const int cLevel)

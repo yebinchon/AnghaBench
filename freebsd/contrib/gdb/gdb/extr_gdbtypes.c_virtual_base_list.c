@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vbase {struct vbase* next; struct type* vbasetype; } ;
 struct type {int dummy; } ;
 
-/* Variables and functions */
- struct vbase* current_vbase_list ; 
- int /*<<< orphan*/  virtual_base_list_aux (struct type*) ; 
- int /*<<< orphan*/  xfree (struct vbase*) ; 
- scalar_t__ xmalloc (int) ; 
+
+ struct vbase* current_vbase_list ;
+ int virtual_base_list_aux (struct type*) ;
+ int xfree (struct vbase*) ;
+ scalar_t__ xmalloc (int) ;
 
 struct type **
 virtual_base_list (struct type *dclass)
@@ -28,11 +28,11 @@ virtual_base_list (struct type *dclass)
   int count;
   struct type **vbase_array;
 
-  current_vbase_list = NULL;
+  current_vbase_list = ((void*)0);
   virtual_base_list_aux (dclass);
 
-  for (i = 0, tmp_vbase = current_vbase_list; tmp_vbase != NULL; i++, tmp_vbase = tmp_vbase->next)
-    /* no body */ ;
+  for (i = 0, tmp_vbase = current_vbase_list; tmp_vbase != ((void*)0); i++, tmp_vbase = tmp_vbase->next)
+                  ;
 
   count = i;
 
@@ -41,7 +41,7 @@ virtual_base_list (struct type *dclass)
   for (i = count - 1, tmp_vbase = current_vbase_list; i >= 0; i--, tmp_vbase = tmp_vbase->next)
     vbase_array[i] = tmp_vbase->vbasetype;
 
-  /* Get rid of constructed chain */
+
   tmp_vbase_2 = tmp_vbase = current_vbase_list;
   while (tmp_vbase)
     {
@@ -50,6 +50,6 @@ virtual_base_list (struct type *dclass)
       tmp_vbase_2 = tmp_vbase;
     }
 
-  vbase_array[count] = NULL;
+  vbase_array[count] = ((void*)0);
   return vbase_array;
 }

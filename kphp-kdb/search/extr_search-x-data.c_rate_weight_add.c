@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int p; int weight; int /*<<< orphan*/  f; } ;
 
-/* Variables and functions */
- int FLAG_REVERSE_SEARCH ; 
- TYPE_1__* QRW ; 
- int get_sorting_mode (int) ; 
- int query_rate_weights ; 
- int /*<<< orphan*/  rw_func_linear ; 
- int /*<<< orphan*/  rw_func_linear_reverse ; 
- int /*<<< orphan*/  rw_func_log ; 
- int /*<<< orphan*/  rw_func_log_reverse ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int p; int weight; int f; } ;
+
+
+ int FLAG_REVERSE_SEARCH ;
+ TYPE_1__* QRW ;
+ int get_sorting_mode (int) ;
+ int query_rate_weights ;
+ int rw_func_linear ;
+ int rw_func_linear_reverse ;
+ int rw_func_log ;
+ int rw_func_log_reverse ;
 
 __attribute__((used)) static int rate_weight_add (int func_tp, int tp, int weight) {
   if (query_rate_weights >= 16) { return -3; }

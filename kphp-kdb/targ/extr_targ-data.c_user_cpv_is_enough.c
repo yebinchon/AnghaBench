@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct user {int /*<<< orphan*/  active_ads; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct user {int active_ads; } ;
 struct TYPE_2__ {double expected_gain; } ;
 
-/* Variables and functions */
- int ADF_SITES_MASK_SHIFT ; 
- double CTR_GAIN_PRICE_MULTIPLIER ; 
- int GSORT_HEAP_SIZE ; 
- TYPE_1__* H ; 
- int HN ; 
- int MAX_USERS ; 
- struct user** User ; 
- int __and_mask ; 
- scalar_t__ __exclude_ad_id ; 
- int __use_factor ; 
- scalar_t__ __use_views_limit ; 
- int __xor_mask ; 
- int /*<<< orphan*/  build_user_ad_heap (struct user*,int) ; 
- int /*<<< orphan*/  heap_push_user_ad ; 
- int /*<<< orphan*/  heap_push_user_ad_ext ; 
+
+ int ADF_SITES_MASK_SHIFT ;
+ double CTR_GAIN_PRICE_MULTIPLIER ;
+ int GSORT_HEAP_SIZE ;
+ TYPE_1__* H ;
+ int HN ;
+ int MAX_USERS ;
+ struct user** User ;
+ int __and_mask ;
+ scalar_t__ __exclude_ad_id ;
+ int __use_factor ;
+ scalar_t__ __use_views_limit ;
+ int __xor_mask ;
+ int build_user_ad_heap (struct user*,int) ;
+ int heap_push_user_ad ;
+ int heap_push_user_ad_ext ;
 
 int user_cpv_is_enough (int uid, int position, int ad_cpv, int and_mask, int xor_mask) {
   if (uid < 0 || uid >= MAX_USERS || position <= 0 || position >= GSORT_HEAP_SIZE) {
@@ -37,10 +37,10 @@ int user_cpv_is_enough (int uid, int position, int ad_cpv, int and_mask, int xor
   }
 
   struct user *U = User[uid];
-  if (!U) { 
+  if (!U) {
     return 0;
   }
-  
+
   if (!U->active_ads) {
     return 1;
   }

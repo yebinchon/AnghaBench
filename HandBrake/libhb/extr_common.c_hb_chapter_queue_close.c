@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  list_chapter; } ;
-typedef  TYPE_1__ hb_chapter_queue_t ;
-typedef  TYPE_1__ hb_chapter_queue_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  hb_list_close (int /*<<< orphan*/ *) ; 
- TYPE_1__* hb_list_item (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_list_rem (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int list_chapter; } ;
+typedef TYPE_1__ hb_chapter_queue_t ;
+typedef TYPE_1__ hb_chapter_queue_item_t ;
+
+
+ int free (TYPE_1__*) ;
+ int hb_list_close (int *) ;
+ TYPE_1__* hb_list_item (int ,int ) ;
+ int hb_list_rem (int ,TYPE_1__*) ;
 
 void hb_chapter_queue_close(hb_chapter_queue_t **_q)
 {
-    hb_chapter_queue_t      * q = *_q;
+    hb_chapter_queue_t * q = *_q;
     hb_chapter_queue_item_t * item;
 
-    if (q == NULL)
+    if (q == ((void*)0))
     {
         return;
     }
-    while ((item = hb_list_item(q->list_chapter, 0)) != NULL)
+    while ((item = hb_list_item(q->list_chapter, 0)) != ((void*)0))
     {
         hb_list_rem(q->list_chapter, item);
         free(item);
     }
     hb_list_close(&q->list_chapter);
     free(q);
-    *_q = NULL;
+    *_q = ((void*)0);
 }

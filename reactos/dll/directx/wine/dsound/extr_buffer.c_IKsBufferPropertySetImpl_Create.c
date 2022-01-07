@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {TYPE_1__* iks; } ;
-struct TYPE_8__ {int /*<<< orphan*/ * lpVtbl; TYPE_2__* dsb; scalar_t__ ref; } ;
-typedef  int /*<<< orphan*/  LPDIRECTSOUNDBUFFER ;
-typedef  TYPE_1__ IKsBufferPropertySetImpl ;
-typedef  TYPE_2__ IDirectSoundBufferImpl ;
-typedef  int /*<<< orphan*/  HRESULT ;
+struct TYPE_8__ {int * lpVtbl; TYPE_2__* dsb; scalar_t__ ref; } ;
+typedef int LPDIRECTSOUNDBUFFER ;
+typedef TYPE_1__ IKsBufferPropertySetImpl ;
+typedef TYPE_2__ IDirectSoundBufferImpl ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DSERR_OUTOFMEMORY ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- TYPE_1__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirectSoundBuffer_AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,TYPE_1__**) ; 
- int /*<<< orphan*/  WARN (char*) ; 
- int /*<<< orphan*/  iksbvt ; 
+
+ int DSERR_OUTOFMEMORY ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ TYPE_1__* HeapAlloc (int ,int ,int) ;
+ int IDirectSoundBuffer_AddRef (int ) ;
+ int S_OK ;
+ int TRACE (char*,TYPE_2__*,TYPE_1__**) ;
+ int WARN (char*) ;
+ int iksbvt ;
 
 HRESULT IKsBufferPropertySetImpl_Create(
     IDirectSoundBufferImpl *dsb,
@@ -36,12 +36,12 @@ HRESULT IKsBufferPropertySetImpl_Create(
 {
     IKsBufferPropertySetImpl *iks;
     TRACE("(%p,%p)\n",dsb,piks);
-    *piks = NULL;
+    *piks = ((void*)0);
 
     iks = HeapAlloc(GetProcessHeap(),HEAP_ZERO_MEMORY,sizeof(*iks));
     if (iks == 0) {
         WARN("out of memory\n");
-        *piks = NULL;
+        *piks = ((void*)0);
         return DSERR_OUTOFMEMORY;
     }
 

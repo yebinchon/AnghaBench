@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FASTDEF (int /*<<< orphan*/ ) ; 
- int FAST_SCALED_FLOAT_TO_INT (int /*<<< orphan*/ ,float,int) ; 
- int /*<<< orphan*/  check_endianness () ; 
- int /*<<< orphan*/  temp ; 
+ int FASTDEF (int ) ;
+ int FAST_SCALED_FLOAT_TO_INT (int ,float,int) ;
+ int check_endianness () ;
+ int temp ;
 
 __attribute__((used)) static void copy_samples(short *dest, float *src, int len)
 {

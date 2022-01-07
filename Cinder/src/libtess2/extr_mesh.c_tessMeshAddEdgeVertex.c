@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_12__ {int /*<<< orphan*/  Lface; int /*<<< orphan*/  Org; int /*<<< orphan*/  Dst; int /*<<< orphan*/  Lnext; struct TYPE_12__* Sym; } ;
-struct TYPE_11__ {int /*<<< orphan*/  vertexBucket; } ;
-typedef  int /*<<< orphan*/  TESSvertex ;
-typedef  TYPE_1__ TESSmesh ;
-typedef  TYPE_2__ TESShalfEdge ;
 
-/* Variables and functions */
- TYPE_2__* MakeEdge (TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  MakeVertex (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Splice (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ bucketAlloc (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+struct TYPE_12__ {int Lface; int Org; int Dst; int Lnext; struct TYPE_12__* Sym; } ;
+struct TYPE_11__ {int vertexBucket; } ;
+typedef int TESSvertex ;
+typedef TYPE_1__ TESSmesh ;
+typedef TYPE_2__ TESShalfEdge ;
+
+
+ TYPE_2__* MakeEdge (TYPE_1__*,TYPE_2__*) ;
+ int MakeVertex (int *,TYPE_2__*,int ) ;
+ int Splice (TYPE_2__*,int ) ;
+ scalar_t__ bucketAlloc (int ) ;
 
 TESShalfEdge *tessMeshAddEdgeVertex( TESSmesh *mesh, TESShalfEdge *eOrg )
 {
-	TESShalfEdge *eNewSym;
-	TESShalfEdge *eNew = MakeEdge( mesh, eOrg );
-	if (eNew == NULL) return NULL;
+ TESShalfEdge *eNewSym;
+ TESShalfEdge *eNew = MakeEdge( mesh, eOrg );
+ if (eNew == ((void*)0)) return ((void*)0);
 
-	eNewSym = eNew->Sym;
+ eNewSym = eNew->Sym;
 
-	/* Connect the new edge appropriately */
-	Splice( eNew, eOrg->Lnext );
 
-	/* Set the vertex and face information */
-	eNew->Org = eOrg->Dst;
-	{
-		TESSvertex *newVertex= (TESSvertex*)bucketAlloc( mesh->vertexBucket );
-		if (newVertex == NULL) return NULL;
+ Splice( eNew, eOrg->Lnext );
 
-		MakeVertex( newVertex, eNewSym, eNew->Org );
-	}
-	eNew->Lface = eNewSym->Lface = eOrg->Lface;
 
-	return eNew;
+ eNew->Org = eOrg->Dst;
+ {
+  TESSvertex *newVertex= (TESSvertex*)bucketAlloc( mesh->vertexBucket );
+  if (newVertex == ((void*)0)) return ((void*)0);
+
+  MakeVertex( newVertex, eNewSym, eNew->Org );
+ }
+ eNew->Lface = eNewSym->Lface = eOrg->Lface;
+
+ return eNew;
 }

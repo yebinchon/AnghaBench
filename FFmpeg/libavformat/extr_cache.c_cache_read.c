@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
 struct TYPE_8__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
+typedef TYPE_1__ URLContext ;
 struct TYPE_10__ {scalar_t__ logical_pos; scalar_t__ size; scalar_t__ physical_pos; } ;
-struct TYPE_9__ {scalar_t__ logical_pos; scalar_t__ cache_pos; scalar_t__ inner_pos; int is_true_eof; scalar_t__ end; int /*<<< orphan*/  cache_miss; int /*<<< orphan*/  inner; int /*<<< orphan*/  cache_hit; int /*<<< orphan*/  fd; int /*<<< orphan*/  root; } ;
-typedef  TYPE_2__ Context ;
-typedef  TYPE_3__ CacheEntry ;
+struct TYPE_9__ {scalar_t__ logical_pos; scalar_t__ cache_pos; scalar_t__ inner_pos; int is_true_eof; scalar_t__ end; int cache_miss; int inner; int cache_hit; int fd; int root; } ;
+typedef TYPE_2__ Context ;
+typedef TYPE_3__ CacheEntry ;
 
-/* Variables and functions */
- scalar_t__ AVERROR_EOF ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ FFMAX (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  FFMIN (int,scalar_t__) ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  add_entry (TYPE_1__*,unsigned char*,scalar_t__) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- TYPE_3__* av_tree_find (int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ ,void**) ; 
- int /*<<< orphan*/  cmp ; 
- scalar_t__ ffurl_read (int /*<<< orphan*/ ,unsigned char*,int) ; 
- scalar_t__ ffurl_seek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int /*<<< orphan*/ ,unsigned char*,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AVERROR_EOF ;
+ int AV_LOG_ERROR ;
+ scalar_t__ FFMAX (scalar_t__,scalar_t__) ;
+ int FFMIN (int,scalar_t__) ;
+ int SEEK_SET ;
+ int add_entry (TYPE_1__*,unsigned char*,scalar_t__) ;
+ int av_assert0 (int) ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ TYPE_3__* av_tree_find (int ,scalar_t__*,int ,void**) ;
+ int cmp ;
+ scalar_t__ ffurl_read (int ,unsigned char*,int) ;
+ scalar_t__ ffurl_seek (int ,scalar_t__,int ) ;
+ scalar_t__ lseek (int ,scalar_t__,int ) ;
+ scalar_t__ read (int ,unsigned char*,int ) ;
 
 __attribute__((used)) static int cache_read(URLContext *h, unsigned char *buf, int size)
 {
     Context *c= h->priv_data;
-    CacheEntry *entry, *next[2] = {NULL, NULL};
+    CacheEntry *entry, *next[2] = {((void*)0), ((void*)0)};
     int64_t r;
 
     entry = av_tree_find(c->root, &c->logical_pos, cmp, (void**)next);
@@ -73,7 +73,7 @@ __attribute__((used)) static int cache_read(URLContext *h, unsigned char *buf, i
         }
     }
 
-    // Cache miss or some kind of fault with the cache
+
 
     if (c->logical_pos != c->inner_pos) {
         r = ffurl_seek(c->inner, c->logical_pos, SEEK_SET);

@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONST0_RTX (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LT ; 
- int /*<<< orphan*/  V2SImode ; 
- int /*<<< orphan*/  V4HImode ; 
- int /*<<< orphan*/  V8QImode ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gen_addv2si3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_lowpart (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_pmpy2_l (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_pmpy2_r (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_unpack1_h (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_unpack1_l (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ia64_expand_vecint_compare (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+
+
+ int CONST0_RTX (int ) ;
+ int LT ;
+ int V2SImode ;
+ int V4HImode ;
+ int V8QImode ;
+ int emit_insn (int ) ;
+ int gcc_assert (int) ;
+ int gen_addv2si3 (int ,int ,int ) ;
+ int gen_lowpart (int ,int ) ;
+ int gen_pmpy2_l (int ,int ,int ) ;
+ int gen_pmpy2_r (int ,int ,int ) ;
+ int gen_reg_rtx (int ) ;
+ int gen_unpack1_h (int ,int ,int ) ;
+ int gen_unpack1_l (int ,int ,int ) ;
+ int ia64_expand_vecint_compare (int ,int ,int ,int ,int ) ;
 
 void
 ia64_expand_dot_prod_v8qi (rtx operands[4], bool unsignedp)
 {
   rtx l1, l2, h1, h2, x1, x2, p1, p2, p3, p4, s1, s2, s3;
 
-  /* Fill in x1 and x2 with the sign extension of each element.  */
+
   if (unsignedp)
     x1 = x2 = CONST0_RTX (V8QImode);
   else
@@ -45,10 +45,10 @@ ia64_expand_dot_prod_v8qi (rtx operands[4], bool unsignedp)
       x2 = gen_reg_rtx (V8QImode);
 
       neg = ia64_expand_vecint_compare (LT, V8QImode, x1, operands[1],
-					CONST0_RTX (V8QImode));
+     CONST0_RTX (V8QImode));
       gcc_assert (!neg);
       neg = ia64_expand_vecint_compare (LT, V8QImode, x2, operands[2],
-					CONST0_RTX (V8QImode));
+     CONST0_RTX (V8QImode));
       gcc_assert (!neg);
     }
 

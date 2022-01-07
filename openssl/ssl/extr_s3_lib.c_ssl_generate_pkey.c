@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EVP_PKEY_CTX ;
-typedef  int /*<<< orphan*/  EVP_PKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_PKEY_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_PKEY_CTX_new (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_PKEY_free (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_PKEY_keygen (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ EVP_PKEY_keygen_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int EVP_PKEY_CTX ;
+typedef int EVP_PKEY ;
+
+
+ int EVP_PKEY_CTX_free (int *) ;
+ int * EVP_PKEY_CTX_new (int *,int *) ;
+ int EVP_PKEY_free (int *) ;
+ scalar_t__ EVP_PKEY_keygen (int *,int **) ;
+ scalar_t__ EVP_PKEY_keygen_init (int *) ;
 
 EVP_PKEY *ssl_generate_pkey(EVP_PKEY *pm)
 {
-    EVP_PKEY_CTX *pctx = NULL;
-    EVP_PKEY *pkey = NULL;
+    EVP_PKEY_CTX *pctx = ((void*)0);
+    EVP_PKEY *pkey = ((void*)0);
 
-    if (pm == NULL)
-        return NULL;
-    pctx = EVP_PKEY_CTX_new(pm, NULL);
-    if (pctx == NULL)
+    if (pm == ((void*)0))
+        return ((void*)0);
+    pctx = EVP_PKEY_CTX_new(pm, ((void*)0));
+    if (pctx == ((void*)0))
         goto err;
     if (EVP_PKEY_keygen_init(pctx) <= 0)
         goto err;
     if (EVP_PKEY_keygen(pctx, &pkey) <= 0) {
         EVP_PKEY_free(pkey);
-        pkey = NULL;
+        pkey = ((void*)0);
     }
 
     err:

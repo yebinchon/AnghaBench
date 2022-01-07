@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  status; int /*<<< orphan*/  timer; } ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int status; int timer; } ;
 struct TYPE_8__ {scalar_t__ previous_state_id; } ;
 struct TYPE_9__ {TYPE_1__ state_machine; } ;
-struct TYPE_11__ {TYPE_3__ operation; int /*<<< orphan*/  controller; TYPE_2__ parent; } ;
-typedef  TYPE_4__ SCIF_SAS_DOMAIN_T ;
+struct TYPE_11__ {TYPE_3__ operation; int controller; TYPE_2__ parent; } ;
+typedef TYPE_4__ SCIF_SAS_DOMAIN_T ;
 
-/* Variables and functions */
- int SCIF_LOG_OBJECT_DOMAIN ; 
- int SCIF_LOG_OBJECT_DOMAIN_DISCOVERY ; 
- int /*<<< orphan*/  SCIF_LOG_TRACE (int /*<<< orphan*/ ) ; 
- scalar_t__ SCI_BASE_DOMAIN_STATE_DISCOVERING ; 
- int /*<<< orphan*/  sci_base_object_get_logger (TYPE_4__*) ; 
- int /*<<< orphan*/  scif_cb_domain_discovery_complete (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_cb_timer_stop (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  scif_sas_controller_restore_interrupt_coalescence (int /*<<< orphan*/ ) ; 
+
+ int SCIF_LOG_OBJECT_DOMAIN ;
+ int SCIF_LOG_OBJECT_DOMAIN_DISCOVERY ;
+ int SCIF_LOG_TRACE (int ) ;
+ scalar_t__ SCI_BASE_DOMAIN_STATE_DISCOVERING ;
+ int sci_base_object_get_logger (TYPE_4__*) ;
+ int scif_cb_domain_discovery_complete (int ,TYPE_4__*,int ) ;
+ int scif_cb_timer_stop (int ,int ) ;
+ int scif_sas_controller_restore_interrupt_coalescence (int ) ;
 
 __attribute__((used)) static
 void scif_sas_domain_transition_from_discovering_state(

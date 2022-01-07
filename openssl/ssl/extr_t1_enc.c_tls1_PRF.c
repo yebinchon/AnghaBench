@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  EVP_MD ;
-typedef  int /*<<< orphan*/  EVP_KDF_CTX ;
-typedef  int /*<<< orphan*/  EVP_KDF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_INTERNAL_ERROR ; 
- int /*<<< orphan*/  EVP_KDF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_KDF_CTX_new (int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_KDF_CTX_set_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ EVP_KDF_derive (int /*<<< orphan*/ *,unsigned char*,size_t) ; 
- int /*<<< orphan*/ * EVP_KDF_fetch (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_free (int /*<<< orphan*/ *) ; 
- char* EVP_MD_name (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OSSL_KDF_NAME_TLS1_PRF ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_DIGEST ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SECRET ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SEED ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_end () ; 
- void* OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,void*,size_t) ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_utf8_string (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  SSL_AD_INTERNAL_ERROR ; 
- int /*<<< orphan*/  SSL_F_TLS1_PRF ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSLfatal (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ssl_prf_md (int /*<<< orphan*/ *) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef int SSL ;
+typedef int OSSL_PARAM ;
+typedef int EVP_MD ;
+typedef int EVP_KDF_CTX ;
+typedef int EVP_KDF ;
+
+
+ int ERR_R_INTERNAL_ERROR ;
+ int EVP_KDF_CTX_free (int *) ;
+ int * EVP_KDF_CTX_new (int *) ;
+ scalar_t__ EVP_KDF_CTX_set_params (int *,int *) ;
+ scalar_t__ EVP_KDF_derive (int *,unsigned char*,size_t) ;
+ int * EVP_KDF_fetch (int *,int ,int *) ;
+ int EVP_KDF_free (int *) ;
+ char* EVP_MD_name (int const*) ;
+ int OSSL_KDF_NAME_TLS1_PRF ;
+ int OSSL_KDF_PARAM_DIGEST ;
+ int OSSL_KDF_PARAM_SECRET ;
+ int OSSL_KDF_PARAM_SEED ;
+ int OSSL_PARAM_construct_end () ;
+ void* OSSL_PARAM_construct_octet_string (int ,void*,size_t) ;
+ int OSSL_PARAM_construct_utf8_string (int ,char*,scalar_t__) ;
+ int SSL_AD_INTERNAL_ERROR ;
+ int SSL_F_TLS1_PRF ;
+ int SSLerr (int ,int ) ;
+ int SSLfatal (int *,int ,int ,int ) ;
+ int * ssl_prf_md (int *) ;
+ scalar_t__ strlen (char const*) ;
 
 __attribute__((used)) static int tls1_PRF(SSL *s,
                     const void *seed1, size_t seed1_len,
@@ -50,12 +50,12 @@ __attribute__((used)) static int tls1_PRF(SSL *s,
 {
     const EVP_MD *md = ssl_prf_md(s);
     EVP_KDF *kdf;
-    EVP_KDF_CTX *kctx = NULL;
+    EVP_KDF_CTX *kctx = ((void*)0);
     OSSL_PARAM params[8], *p = params;
     const char *mdname;
 
-    if (md == NULL) {
-        /* Should never happen */
+    if (md == ((void*)0)) {
+
         if (fatal)
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS1_PRF,
                      ERR_R_INTERNAL_ERROR);
@@ -63,12 +63,12 @@ __attribute__((used)) static int tls1_PRF(SSL *s,
             SSLerr(SSL_F_TLS1_PRF, ERR_R_INTERNAL_ERROR);
         return 0;
     }
-    kdf = EVP_KDF_fetch(NULL, OSSL_KDF_NAME_TLS1_PRF, NULL);
-    if (kdf == NULL)
+    kdf = EVP_KDF_fetch(((void*)0), OSSL_KDF_NAME_TLS1_PRF, ((void*)0));
+    if (kdf == ((void*)0))
         goto err;
     kctx = EVP_KDF_CTX_new(kdf);
     EVP_KDF_free(kdf);
-    if (kctx == NULL)
+    if (kctx == ((void*)0))
         goto err;
     mdname = EVP_MD_name(md);
     *p++ = OSSL_PARAM_construct_utf8_string(OSSL_KDF_PARAM_DIGEST,

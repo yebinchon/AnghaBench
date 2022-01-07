@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
+
+
+
+
+typedef int u_int ;
 struct acpi_ec_softc {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
-typedef  int /*<<< orphan*/  UINT64 ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
+typedef int device_t ;
+typedef int UINT64 ;
+typedef int ACPI_STATUS ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_READ ; 
- int ENXIO ; 
- int /*<<< orphan*/  EcSpaceHandler (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,struct acpi_ec_softc*,int /*<<< orphan*/ *) ; 
- struct acpi_ec_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_READ ;
+ int ENXIO ;
+ int EcSpaceHandler (int ,int ,int,int *,struct acpi_ec_softc*,int *) ;
+ struct acpi_ec_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 acpi_ec_read_method(device_t dev, u_int addr, UINT64 *val, int width)
@@ -30,8 +30,8 @@ acpi_ec_read_method(device_t dev, u_int addr, UINT64 *val, int width)
     ACPI_STATUS status;
 
     sc = device_get_softc(dev);
-    status = EcSpaceHandler(ACPI_READ, addr, width * 8, val, sc, NULL);
+    status = EcSpaceHandler(ACPI_READ, addr, width * 8, val, sc, ((void*)0));
     if (ACPI_FAILURE(status))
-	return (ENXIO);
+ return (ENXIO);
     return (0);
 }

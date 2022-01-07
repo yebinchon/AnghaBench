@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uv_loop_t ;
 struct TYPE_3__ {int flags; } ;
-typedef  TYPE_1__ uv_fs_t ;
-typedef  int /*<<< orphan*/  uv_fs_cb ;
+typedef TYPE_1__ uv_fs_t ;
+typedef int uv_fs_cb ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACCESS ; 
- int /*<<< orphan*/  INIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PATH ; 
- int /*<<< orphan*/  POST ; 
+
+ int ACCESS ;
+ int INIT (int ) ;
+ int PATH ;
+ int POST ;
 
 int uv_fs_access(uv_loop_t* loop,
                  uv_fs_t* req,

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int CIMQSIZE_G (int) ; 
- int /*<<< orphan*/  CIM_QUEUE_CONFIG_CTRL_A ; 
- int /*<<< orphan*/  CIM_QUEUE_CONFIG_REF_A ; 
- int OBQSELECT_F ; 
- int QUENUMSELECT_V (int) ; 
- int t4_read_reg (struct adapter*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  t4_write_reg (struct adapter*,int /*<<< orphan*/ ,int) ; 
+
+ int CIMQSIZE_G (int) ;
+ int CIM_QUEUE_CONFIG_CTRL_A ;
+ int CIM_QUEUE_CONFIG_REF_A ;
+ int OBQSELECT_F ;
+ int QUENUMSELECT_V (int) ;
+ int t4_read_reg (struct adapter*,int ) ;
+ int t4_write_reg (struct adapter*,int ,int) ;
 
 u32 cudbg_cim_obq_size(struct adapter *padap, int qid)
 {
-	u32 value;
+ u32 value;
 
-	t4_write_reg(padap, CIM_QUEUE_CONFIG_REF_A, OBQSELECT_F |
-		     QUENUMSELECT_V(qid));
-	value = t4_read_reg(padap, CIM_QUEUE_CONFIG_CTRL_A);
-	value = CIMQSIZE_G(value) * 64; /* size in number of words */
-	return value * sizeof(u32);
+ t4_write_reg(padap, CIM_QUEUE_CONFIG_REF_A, OBQSELECT_F |
+       QUENUMSELECT_V(qid));
+ value = t4_read_reg(padap, CIM_QUEUE_CONFIG_CTRL_A);
+ value = CIMQSIZE_G(value) * 64;
+ return value * sizeof(u32);
 }

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  smem_start; int /*<<< orphan*/  smem_len; } ;
-struct fb_info {TYPE_1__ fix; int /*<<< orphan*/  screen_base; int /*<<< orphan*/  device; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int smem_start; int smem_len; } ;
+struct fb_info {TYPE_1__ fix; int screen_base; int device; } ;
 struct atmel_lcdfb_info {struct fb_info* info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dma_free_writecombine (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int dma_free_writecombine (int ,int ,int ,int ) ;
 
 __attribute__((used)) static inline void atmel_lcdfb_free_video_memory(struct atmel_lcdfb_info *sinfo)
 {
-	struct fb_info *info = sinfo->info;
+ struct fb_info *info = sinfo->info;
 
-	dma_free_writecombine(info->device, info->fix.smem_len,
-				info->screen_base, info->fix.smem_start);
+ dma_free_writecombine(info->device, info->fix.smem_len,
+    info->screen_base, info->fix.smem_start);
 }

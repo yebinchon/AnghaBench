@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_9__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_9__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_15__ {scalar_t__ sample_fmt; } ;
-struct TYPE_14__ {scalar_t__ codebook; scalar_t__ huff_lsbs; int /*<<< orphan*/  sign_huff_offset; } ;
-struct TYPE_11__ {int /*<<< orphan*/  (* mlp_select_pack_output ) (int /*<<< orphan*/ ,scalar_t__*,unsigned int,int) ;int /*<<< orphan*/  mlp_pack_output; } ;
+struct TYPE_14__ {scalar_t__ codebook; scalar_t__ huff_lsbs; int sign_huff_offset; } ;
+struct TYPE_11__ {int (* mlp_select_pack_output ) (int ,scalar_t__*,unsigned int,int) ;int mlp_pack_output; } ;
 struct TYPE_13__ {int access_unit_size; unsigned int max_decoded_substream; TYPE_9__* avctx; TYPE_1__ dsp; TYPE_2__* substream; } ;
-struct TYPE_12__ {int param_presence_flags; int blocksize; unsigned int max_matrix_channel; scalar_t__* output_shift; unsigned int max_channel; scalar_t__* quant_step_size; unsigned int min_channel; TYPE_4__* channel_params; int /*<<< orphan*/  ch_assign; } ;
-typedef  TYPE_2__ SubStream ;
-typedef  TYPE_3__ MLPDecodeContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
-typedef  TYPE_4__ ChannelParams ;
+struct TYPE_12__ {int param_presence_flags; int blocksize; unsigned int max_matrix_channel; scalar_t__* output_shift; unsigned int max_channel; scalar_t__* quant_step_size; unsigned int min_channel; TYPE_4__* channel_params; int ch_assign; } ;
+typedef TYPE_2__ SubStream ;
+typedef TYPE_3__ MLPDecodeContext ;
+typedef int GetBitContext ;
+typedef TYPE_4__ ChannelParams ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- scalar_t__ AV_SAMPLE_FMT_S32 ; 
- int PARAM_BLOCKSIZE ; 
- int PARAM_MATRIX ; 
- int PARAM_OUTSHIFT ; 
- int PARAM_PRESENCE ; 
- int PARAM_QUANTSTEP ; 
- int /*<<< orphan*/  av_log (TYPE_9__*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_9__*,char*) ; 
- int /*<<< orphan*/  calculate_sign_huff (TYPE_3__*,unsigned int,unsigned int) ; 
- void* get_bits (int /*<<< orphan*/ *,int) ; 
- scalar_t__ get_bits1 (int /*<<< orphan*/ *) ; 
- scalar_t__ get_sbits (int /*<<< orphan*/ *,int) ; 
- int read_channel_params (TYPE_3__*,unsigned int,int /*<<< orphan*/ *,unsigned int) ; 
- int read_matrix_params (TYPE_3__*,unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,scalar_t__*,unsigned int,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_ERROR ;
+ scalar_t__ AV_SAMPLE_FMT_S32 ;
+ int PARAM_BLOCKSIZE ;
+ int PARAM_MATRIX ;
+ int PARAM_OUTSHIFT ;
+ int PARAM_PRESENCE ;
+ int PARAM_QUANTSTEP ;
+ int av_log (TYPE_9__*,int ,char*) ;
+ int avpriv_request_sample (TYPE_9__*,char*) ;
+ int calculate_sign_huff (TYPE_3__*,unsigned int,unsigned int) ;
+ void* get_bits (int *,int) ;
+ scalar_t__ get_bits1 (int *) ;
+ scalar_t__ get_sbits (int *,int) ;
+ int read_channel_params (TYPE_3__*,unsigned int,int *,unsigned int) ;
+ int read_matrix_params (TYPE_3__*,unsigned int,int *) ;
+ int stub1 (int ,scalar_t__*,unsigned int,int) ;
 
 __attribute__((used)) static int read_decoding_params(MLPDecodeContext *m, GetBitContext *gbp,
                                 unsigned int substr)

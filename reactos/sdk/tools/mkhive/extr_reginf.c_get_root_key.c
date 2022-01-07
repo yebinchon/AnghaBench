@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PWCHAR ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCD ; 
- int /*<<< orphan*/  BCDPath ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKCR ; 
- int /*<<< orphan*/  HKCRPath ; 
- int /*<<< orphan*/  HKCU ; 
- int /*<<< orphan*/  HKCUPath ; 
- int /*<<< orphan*/  HKLM ; 
- int /*<<< orphan*/  HKLMPath ; 
- int /*<<< orphan*/  HKR ; 
- int /*<<< orphan*/  HKU ; 
- int /*<<< orphan*/  HKUPath ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  strcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcpyW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int PWCHAR ;
+typedef int BOOL ;
+
+
+ int BCD ;
+ int BCDPath ;
+ int FALSE ;
+ int HKCR ;
+ int HKCRPath ;
+ int HKCU ;
+ int HKCUPath ;
+ int HKLM ;
+ int HKLMPath ;
+ int HKR ;
+ int HKU ;
+ int HKUPath ;
+ int TRUE ;
+ int strcmpiW (int ,int ) ;
+ int strcpyW (int ,int ) ;
 
 __attribute__((used)) static BOOL
 get_root_key(PWCHAR Name)
@@ -63,10 +63,10 @@ get_root_key(PWCHAR Name)
         return TRUE;
     }
 
-#if 0
-    if (!strcmpiW(Name, HKR))
-        return FALSE;
-#endif
+
+
+
+
 
   return FALSE;
 }

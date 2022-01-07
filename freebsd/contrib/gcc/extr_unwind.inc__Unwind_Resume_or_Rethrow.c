@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct _Unwind_Exception {scalar_t__ private_1; } ;
 struct _Unwind_Context {int dummy; } ;
-typedef  scalar_t__ _Unwind_Reason_Code ;
+typedef scalar_t__ _Unwind_Reason_Code ;
 
-/* Variables and functions */
- scalar_t__ _URC_INSTALL_CONTEXT ; 
- scalar_t__ _Unwind_ForcedUnwind_Phase2 (struct _Unwind_Exception*,struct _Unwind_Context*) ; 
- scalar_t__ _Unwind_RaiseException (struct _Unwind_Exception*) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  uw_init_context (struct _Unwind_Context*) ; 
- int /*<<< orphan*/  uw_install_context (struct _Unwind_Context*,struct _Unwind_Context*) ; 
+
+ scalar_t__ _URC_INSTALL_CONTEXT ;
+ scalar_t__ _Unwind_ForcedUnwind_Phase2 (struct _Unwind_Exception*,struct _Unwind_Context*) ;
+ scalar_t__ _Unwind_RaiseException (struct _Unwind_Exception*) ;
+ int gcc_assert (int) ;
+ int uw_init_context (struct _Unwind_Context*) ;
+ int uw_install_context (struct _Unwind_Context*,struct _Unwind_Context*) ;
 
 _Unwind_Reason_Code
 _Unwind_Resume_or_Rethrow (struct _Unwind_Exception *exc)
@@ -28,8 +28,8 @@ _Unwind_Resume_or_Rethrow (struct _Unwind_Exception *exc)
   struct _Unwind_Context this_context, cur_context;
   _Unwind_Reason_Code code;
 
-  /* Choose between continuing to process _Unwind_RaiseException
-     or _Unwind_ForcedUnwind.  */
+
+
   if (exc->private_1 == 0)
     return _Unwind_RaiseException (exc);
 

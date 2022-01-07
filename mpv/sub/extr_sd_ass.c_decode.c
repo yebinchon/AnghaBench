@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct sd_ass_priv {int duration_unknown; scalar_t__ converter; TYPE_3__* ass_track; } ;
 struct sd {TYPE_2__* opts; struct sd_ass_priv* priv; } ;
 struct demux_packet {scalar_t__ pos; int duration; char* buffer; int len; int pts; } ;
-struct TYPE_7__ {int n_events; int /*<<< orphan*/  event_format; TYPE_1__* events; } ;
-struct TYPE_6__ {scalar_t__ sub_filter_SDH; int /*<<< orphan*/  sub_clear_on_seek; } ;
+struct TYPE_7__ {int n_events; int event_format; TYPE_1__* events; } ;
+struct TYPE_6__ {scalar_t__ sub_filter_SDH; int sub_clear_on_seek; } ;
 struct TYPE_5__ {int Duration; int Start; } ;
-typedef  TYPE_3__ ASS_Track ;
+typedef TYPE_3__ ASS_Track ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_WARN (struct sd*,char*) ; 
- double UINT32_MAX ; 
- int UNKNOWN_DURATION ; 
- int /*<<< orphan*/  ass_process_chunk (TYPE_3__*,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ check_packet_seen (struct sd*,scalar_t__) ; 
- char* filter_SDH (struct sd*,int /*<<< orphan*/ ,int,char*,int) ; 
- char** lavc_conv_decode (scalar_t__,struct demux_packet*,double*,double*) ; 
- int /*<<< orphan*/  llrint (int) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  talloc_free (char*) ; 
+
+ int MP_WARN (struct sd*,char*) ;
+ double UINT32_MAX ;
+ int UNKNOWN_DURATION ;
+ int ass_process_chunk (TYPE_3__*,char*,int,int ,int ) ;
+ scalar_t__ check_packet_seen (struct sd*,scalar_t__) ;
+ char* filter_SDH (struct sd*,int ,int,char*,int) ;
+ char** lavc_conv_decode (scalar_t__,struct demux_packet*,double*,double*) ;
+ int llrint (int) ;
+ int strlen (char*) ;
+ int talloc_free (char*) ;
 
 __attribute__((used)) static void decode(struct sd *sd, struct demux_packet *packet)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void decode(struct sd *sd, struct demux_packet *pac
         if (packet->duration < 0 || sub_duration == UINT32_MAX) {
             if (!ctx->duration_unknown) {
                 MP_WARN(sd, "Subtitle with unknown duration.\n");
-                ctx->duration_unknown = true;
+                ctx->duration_unknown = 1;
             }
             sub_duration = UNKNOWN_DURATION;
         }
@@ -74,8 +74,8 @@ __attribute__((used)) static void decode(struct sd *sd, struct demux_packet *pac
             }
         }
     } else {
-        // Note that for this packet format, libass has an internal mechanism
-        // for discarding duplicate (already seen) packets.
+
+
         char *ass_line = packet->buffer;
         int ass_len = packet->len;
         if (sd->opts->sub_filter_SDH) {

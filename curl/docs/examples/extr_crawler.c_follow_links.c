@@ -1,60 +1,60 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_2__* xmlXPathObjectPtr ;
-typedef  int /*<<< orphan*/  xmlXPathContextPtr ;
-typedef  TYPE_3__* xmlNodeSetPtr ;
-typedef  int /*<<< orphan*/  xmlNode ;
-typedef  char xmlChar ;
-struct TYPE_12__ {int /*<<< orphan*/  size; int /*<<< orphan*/  buf; } ;
-typedef  TYPE_4__ memory ;
-typedef  int /*<<< orphan*/  htmlDocPtr ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef TYPE_2__* xmlXPathObjectPtr ;
+typedef int xmlXPathContextPtr ;
+typedef TYPE_3__* xmlNodeSetPtr ;
+typedef int xmlNode ;
+typedef char xmlChar ;
+struct TYPE_12__ {int size; int buf; } ;
+typedef TYPE_4__ memory ;
+typedef int htmlDocPtr ;
 struct TYPE_11__ {int nodeNr; TYPE_1__** nodeTab; } ;
 struct TYPE_10__ {TYPE_3__* nodesetval; } ;
-struct TYPE_9__ {int /*<<< orphan*/ * xmlChildrenNode; } ;
-typedef  int /*<<< orphan*/  CURLM ;
+struct TYPE_9__ {int * xmlChildrenNode; } ;
+typedef int CURLM ;
 
-/* Variables and functions */
- int HTML_PARSE_NOBLANKS ; 
- int HTML_PARSE_NOERROR ; 
- int HTML_PARSE_NONET ; 
- int HTML_PARSE_NOWARNING ; 
- double RAND_MAX ; 
- int /*<<< orphan*/  curl_multi_add_handle (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ follow_relative_links ; 
- int /*<<< orphan*/  htmlReadMemory (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  make_handle (char*) ; 
- int /*<<< orphan*/  max_link_per_page ; 
- double rand () ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- char* xmlBuildURI (char*,char*) ; 
- int /*<<< orphan*/  xmlFree (char*) ; 
- char* xmlNodeListGetString (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- TYPE_2__* xmlXPathEvalExpression (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlXPathFreeContext (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlXPathFreeObject (TYPE_2__*) ; 
- int /*<<< orphan*/  xmlXPathNewContext (int /*<<< orphan*/ ) ; 
- scalar_t__ xmlXPathNodeSetIsEmpty (TYPE_3__*) ; 
+
+ int HTML_PARSE_NOBLANKS ;
+ int HTML_PARSE_NOERROR ;
+ int HTML_PARSE_NONET ;
+ int HTML_PARSE_NOWARNING ;
+ double RAND_MAX ;
+ int curl_multi_add_handle (int *,int ) ;
+ scalar_t__ follow_relative_links ;
+ int htmlReadMemory (int ,int ,char*,int *,int) ;
+ int make_handle (char*) ;
+ int max_link_per_page ;
+ double rand () ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ char* xmlBuildURI (char*,char*) ;
+ int xmlFree (char*) ;
+ char* xmlNodeListGetString (int ,int const*,int) ;
+ TYPE_2__* xmlXPathEvalExpression (char*,int ) ;
+ int xmlXPathFreeContext (int ) ;
+ int xmlXPathFreeObject (TYPE_2__*) ;
+ int xmlXPathNewContext (int ) ;
+ scalar_t__ xmlXPathNodeSetIsEmpty (TYPE_3__*) ;
 
 size_t follow_links(CURLM *multi_handle, memory *mem, char *url)
 {
-  int opts = HTML_PARSE_NOBLANKS | HTML_PARSE_NOERROR | \
-             HTML_PARSE_NOWARNING | HTML_PARSE_NONET;
-  htmlDocPtr doc = htmlReadMemory(mem->buf, mem->size, url, NULL, opts);
+  int opts = HTML_PARSE_NOBLANKS | HTML_PARSE_NOERROR | HTML_PARSE_NOWARNING | HTML_PARSE_NONET;
+
+  htmlDocPtr doc = htmlReadMemory(mem->buf, mem->size, url, ((void*)0), opts);
   if(!doc)
     return 0;
   xmlChar *xpath = (xmlChar*) "//a/@href";

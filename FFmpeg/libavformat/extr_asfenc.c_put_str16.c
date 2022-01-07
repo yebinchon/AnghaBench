@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int avio_close_dyn_buf (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- scalar_t__ avio_open_dyn_buf (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  avio_put_str16le (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  avio_wl16 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int uint8_t ;
+typedef int AVIOContext ;
+
+
+ int av_freep (int **) ;
+ int avio_close_dyn_buf (int *,int **) ;
+ scalar_t__ avio_open_dyn_buf (int **) ;
+ int avio_put_str16le (int *,char const*) ;
+ int avio_wl16 (int *,int) ;
+ int avio_write (int *,int *,int) ;
 
 __attribute__((used)) static void put_str16(AVIOContext *s, const char *tag)
 {

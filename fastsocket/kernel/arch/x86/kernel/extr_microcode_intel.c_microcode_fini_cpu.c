@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ucode_cpu_info {int /*<<< orphan*/ * mc; } ;
 
-/* Variables and functions */
- struct ucode_cpu_info* ucode_cpu_info ; 
- int /*<<< orphan*/  vfree (int /*<<< orphan*/ *) ; 
+
+
+
+struct ucode_cpu_info {int * mc; } ;
+
+
+ struct ucode_cpu_info* ucode_cpu_info ;
+ int vfree (int *) ;
 
 __attribute__((used)) static void microcode_fini_cpu(int cpu)
 {
-	struct ucode_cpu_info *uci = ucode_cpu_info + cpu;
+ struct ucode_cpu_info *uci = ucode_cpu_info + cpu;
 
-	vfree(uci->mc);
-	uci->mc = NULL;
+ vfree(uci->mc);
+ uci->mc = ((void*)0);
 }

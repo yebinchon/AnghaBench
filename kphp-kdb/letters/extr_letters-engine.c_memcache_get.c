@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int MAX_PRIORITY ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ STATS_BUFF_SIZE ; 
- char* dl_pstr (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char const*,int) ; 
- int /*<<< orphan*/  get ; 
- char* get_letters (int,int,int,int) ; 
- int /*<<< orphan*/  letters_clear (int) ; 
- int letters_prepare_stats () ; 
- int prepare_stats (struct connection*,char*,scalar_t__) ; 
- int /*<<< orphan*/  return_one_key (struct connection*,char const*,char*,int) ; 
- int /*<<< orphan*/  return_one_key_flags (struct connection*,char const*,char*,int,int) ; 
- int sscanf (char*,char*,int*,...) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- int verbosity ; 
+
+ int INIT ;
+ int MAX_PRIORITY ;
+ int RETURN (int ,int ) ;
+ scalar_t__ STATS_BUFF_SIZE ;
+ char* dl_pstr (char*,int ) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int fprintf (int ,char*,char const*,int) ;
+ int get ;
+ char* get_letters (int,int,int,int) ;
+ int letters_clear (int) ;
+ int letters_prepare_stats () ;
+ int prepare_stats (struct connection*,char*,scalar_t__) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int return_one_key_flags (struct connection*,char const*,char*,int,int) ;
+ int sscanf (char*,char*,int*,...) ;
+ char* stats_buff ;
+ int stderr ;
+ int strlen (char*) ;
+ int strncmp (char*,char*,int) ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *old_key, int old_key_len) {
   INIT;

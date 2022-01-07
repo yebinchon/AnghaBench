@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {char* member_0; char* member_1; char* member_2; char* key; char* in; char* out; } ;
-typedef  TYPE_1__ HChaCha20TV ;
+typedef TYPE_1__ HChaCha20TV ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  crypto_core_hchacha20 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int crypto_core_hchacha20_CONSTBYTES ; 
- int crypto_core_hchacha20_INPUTBYTES ; 
- int crypto_core_hchacha20_KEYBYTES ; 
- int crypto_core_hchacha20_OUTPUTBYTES ; 
- int crypto_core_hchacha20_constbytes () ; 
- int crypto_core_hchacha20_inputbytes () ; 
- int crypto_core_hchacha20_keybytes () ; 
- int crypto_core_hchacha20_outputbytes () ; 
- scalar_t__ memcmp (unsigned char*,unsigned char*,int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- int /*<<< orphan*/  sodium_hex2bin (unsigned char*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ sodium_malloc (int) ; 
- int strlen (char*) ; 
+
+ int assert (int) ;
+ int crypto_core_hchacha20 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_core_hchacha20_CONSTBYTES ;
+ int crypto_core_hchacha20_INPUTBYTES ;
+ int crypto_core_hchacha20_KEYBYTES ;
+ int crypto_core_hchacha20_OUTPUTBYTES ;
+ int crypto_core_hchacha20_constbytes () ;
+ int crypto_core_hchacha20_inputbytes () ;
+ int crypto_core_hchacha20_keybytes () ;
+ int crypto_core_hchacha20_outputbytes () ;
+ scalar_t__ memcmp (unsigned char*,unsigned char*,int) ;
+ int printf (char*) ;
+ int sodium_free (unsigned char*) ;
+ int sodium_hex2bin (unsigned char*,int,char*,int,int *,int *,int *) ;
+ scalar_t__ sodium_malloc (int) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 tv_hchacha20(void)
@@ -48,12 +48,12 @@ tv_hchacha20(void)
         { "c49758f00003714c38f1d4972bde57ee8271f543b91e07ebce56b554eb7fa6a7", "31f0204e10cf4f2035f9e62bb5ba7303", "0dd8cc400f702d2c06ed920be52048a287076b86480ae273c6d568a2e9e7518c" }
     };
     const HChaCha20TV *tv;
-    unsigned char     *constant;
-    unsigned char     *key;
-    unsigned char     *in;
-    unsigned char     *out;
-    unsigned char     *out2;
-    size_t             i;
+    unsigned char *constant;
+    unsigned char *key;
+    unsigned char *in;
+    unsigned char *out;
+    unsigned char *out2;
+    size_t i;
 
     constant = (unsigned char *) sodium_malloc(crypto_core_hchacha20_CONSTBYTES);
     key = (unsigned char *) sodium_malloc(crypto_core_hchacha20_KEYBYTES);
@@ -63,21 +63,21 @@ tv_hchacha20(void)
     for (i = 0; i < (sizeof tvs) / (sizeof tvs[0]); i++) {
         tv = &tvs[i];
         sodium_hex2bin(key, crypto_core_hchacha20_KEYBYTES,
-                       tv->key, strlen(tv->key), NULL, NULL, NULL);
+                       tv->key, strlen(tv->key), ((void*)0), ((void*)0), ((void*)0));
         sodium_hex2bin(in, crypto_core_hchacha20_INPUTBYTES,
-                       tv->in, strlen(tv->in), NULL, NULL, NULL);
+                       tv->in, strlen(tv->in), ((void*)0), ((void*)0), ((void*)0));
         sodium_hex2bin(out, crypto_core_hchacha20_OUTPUTBYTES,
-                       tv->out, strlen(tv->out), NULL, NULL, NULL);
-        crypto_core_hchacha20(out2, in, key, NULL);
+                       tv->out, strlen(tv->out), ((void*)0), ((void*)0), ((void*)0));
+        crypto_core_hchacha20(out2, in, key, ((void*)0));
         assert(memcmp(out, out2, crypto_core_hchacha20_OUTPUTBYTES) == 0);
     }
 
     sodium_hex2bin(constant, crypto_core_hchacha20_CONSTBYTES,
                    "0d29b795c1ca70c1652e823364d32417",
-                   crypto_core_hchacha20_CONSTBYTES * 2 + 1, NULL, NULL, NULL);
+                   crypto_core_hchacha20_CONSTBYTES * 2 + 1, ((void*)0), ((void*)0), ((void*)0));
     sodium_hex2bin(out, crypto_core_hchacha20_OUTPUTBYTES,
                    "934d941d78eb9bfc2f0376f7ccd4a11ecf0c6a44104618a9749ef47fe97037a2",
-                   crypto_core_hchacha20_OUTPUTBYTES * 2 + 1, NULL, NULL, NULL);
+                   crypto_core_hchacha20_OUTPUTBYTES * 2 + 1, ((void*)0), ((void*)0), ((void*)0));
 
     crypto_core_hchacha20(out2, in, key, constant);
     assert(memcmp(out, out2, crypto_core_hchacha20_OUTPUTBYTES) == 0);

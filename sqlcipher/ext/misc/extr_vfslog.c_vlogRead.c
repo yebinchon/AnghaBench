@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  zStr ;
-typedef  int sqlite_int64 ;
-typedef  scalar_t__ sqlite3_uint64 ;
-typedef  int /*<<< orphan*/  sqlite3_file ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int zStr ;
+typedef int sqlite_int64 ;
+typedef scalar_t__ sqlite3_uint64 ;
+typedef int sqlite3_file ;
 struct TYPE_6__ {TYPE_3__* pLog; TYPE_4__* pReal; } ;
-typedef  TYPE_2__ VLogFile ;
+typedef TYPE_2__ VLogFile ;
 struct TYPE_8__ {TYPE_1__* pMethods; } ;
 struct TYPE_7__ {scalar_t__ zFilename; } ;
 struct TYPE_5__ {int (* xRead ) (TYPE_4__*,void*,int,int) ;} ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- unsigned int bigToNative (unsigned char*) ; 
- int /*<<< orphan*/  sqlite3_snprintf (int,char*,char*,unsigned int) ; 
- int stub1 (TYPE_4__*,void*,int,int) ; 
- int /*<<< orphan*/  vlogLogPrint (TYPE_3__*,scalar_t__,scalar_t__,char*,unsigned int,unsigned int,char*,int) ; 
- int /*<<< orphan*/  vlogSignature (void*,int,char*) ; 
- scalar_t__ vlog_time () ; 
+
+ int SQLITE_OK ;
+ unsigned int bigToNative (unsigned char*) ;
+ int sqlite3_snprintf (int,char*,char*,unsigned int) ;
+ int stub1 (TYPE_4__*,void*,int,int) ;
+ int vlogLogPrint (TYPE_3__*,scalar_t__,scalar_t__,char*,unsigned int,unsigned int,char*,int) ;
+ int vlogSignature (void*,int,char*) ;
+ scalar_t__ vlog_time () ;
 
 __attribute__((used)) static int vlogRead(
-  sqlite3_file *pFile, 
-  void *zBuf, 
-  int iAmt, 
+  sqlite3_file *pFile,
+  void *zBuf,
+  int iAmt,
   sqlite_int64 iOfst
 ){
   int rc;

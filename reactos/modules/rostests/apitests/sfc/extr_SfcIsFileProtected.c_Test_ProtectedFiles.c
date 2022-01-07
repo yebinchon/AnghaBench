@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
 struct TYPE_9__ {scalar_t__ Min; scalar_t__ Max; } ;
-struct TYPE_10__ {TYPE_1__ Success; int /*<<< orphan*/  Path; scalar_t__ Expand; } ;
-typedef  TYPE_2__ WCHAR ;
-typedef  size_t ULONG ;
-typedef  int BOOL ;
+struct TYPE_10__ {TYPE_1__ Success; int Path; scalar_t__ Expand; } ;
+typedef TYPE_2__ WCHAR ;
+typedef size_t ULONG ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExpandEnvironmentStringsW (int /*<<< orphan*/ ,TYPE_2__*,size_t) ; 
- int MAX_PATH ; 
- int SfcIsFileProtected (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  StringCchCopyW (TYPE_2__*,size_t,int /*<<< orphan*/ ) ; 
- size_t _countof (TYPE_2__*) ; 
- scalar_t__ g_WinVersion ; 
- int /*<<< orphan*/  ok (int,char*,size_t,scalar_t__,TYPE_2__*) ; 
- TYPE_2__* tests ; 
+
+ int ExpandEnvironmentStringsW (int ,TYPE_2__*,size_t) ;
+ int MAX_PATH ;
+ int SfcIsFileProtected (int *,TYPE_2__*) ;
+ int StringCchCopyW (TYPE_2__*,size_t,int ) ;
+ size_t _countof (TYPE_2__*) ;
+ scalar_t__ g_WinVersion ;
+ int ok (int,char*,size_t,scalar_t__,TYPE_2__*) ;
+ TYPE_2__* tests ;
 
 __attribute__((used)) static void Test_ProtectedFiles()
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static void Test_ProtectedFiles()
         else
             StringCchCopyW(Buffer, _countof(Buffer), tests[n].Path);
 
-        Protected = SfcIsFileProtected(NULL, Buffer);
+        Protected = SfcIsFileProtected(((void*)0), Buffer);
 
         if (g_WinVersion >= tests[n].Success.Min && g_WinVersion <= tests[n].Success.Max)
         {

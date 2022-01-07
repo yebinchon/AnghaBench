@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  messages; } ;
-typedef  int /*<<< orphan*/  Mode ;
-typedef  TYPE_1__ KeysHelpModePrivateData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  g_free (TYPE_1__*) ; 
- int /*<<< orphan*/  g_strfreev (int /*<<< orphan*/ ) ; 
- scalar_t__ mode_get_private_data (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mode_set_private_data (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int messages; } ;
+typedef int Mode ;
+typedef TYPE_1__ KeysHelpModePrivateData ;
+
+
+ int g_free (TYPE_1__*) ;
+ int g_strfreev (int ) ;
+ scalar_t__ mode_get_private_data (int *) ;
+ int mode_set_private_data (int *,int *) ;
 
 __attribute__((used)) static void help_keys_mode_destroy ( Mode *sw )
 {
     KeysHelpModePrivateData *rmpd = (KeysHelpModePrivateData *) mode_get_private_data ( sw );
-    if ( rmpd != NULL ) {
+    if ( rmpd != ((void*)0) ) {
         g_strfreev ( rmpd->messages );
         g_free ( rmpd );
-        mode_set_private_data ( sw, NULL );
+        mode_set_private_data ( sw, ((void*)0) );
     }
 }

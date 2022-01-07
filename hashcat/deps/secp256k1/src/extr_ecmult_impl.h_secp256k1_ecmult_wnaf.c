@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wnaf ;
-typedef  int /*<<< orphan*/  secp256k1_scalar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK (int) ; 
- int /*<<< orphan*/  VERIFY_CHECK (int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- unsigned int secp256k1_scalar_get_bits (int /*<<< orphan*/ *,int,int) ; 
- int secp256k1_scalar_get_bits_var (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  secp256k1_scalar_negate (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wnaf ;
+typedef int secp256k1_scalar ;
+
+
+ int CHECK (int) ;
+ int VERIFY_CHECK (int) ;
+ int memset (int*,int ,int) ;
+ unsigned int secp256k1_scalar_get_bits (int *,int,int) ;
+ int secp256k1_scalar_get_bits_var (int *,int,int) ;
+ int secp256k1_scalar_negate (int *,int *) ;
 
 __attribute__((used)) static int secp256k1_ecmult_wnaf(int *wnaf, int len, const secp256k1_scalar *a, int w) {
     secp256k1_scalar s;
@@ -28,9 +28,9 @@ __attribute__((used)) static int secp256k1_ecmult_wnaf(int *wnaf, int len, const
     int sign = 1;
     int carry = 0;
 
-    VERIFY_CHECK(wnaf != NULL);
+    VERIFY_CHECK(wnaf != ((void*)0));
     VERIFY_CHECK(0 <= len && len <= 256);
-    VERIFY_CHECK(a != NULL);
+    VERIFY_CHECK(a != ((void*)0));
     VERIFY_CHECK(2 <= w && w <= 31);
 
     memset(wnaf, 0, len * sizeof(wnaf[0]));
@@ -64,11 +64,11 @@ __attribute__((used)) static int secp256k1_ecmult_wnaf(int *wnaf, int len, const
 
         bit += now;
     }
-#ifdef VERIFY
-    CHECK(carry == 0);
-    while (bit < 256) {
-        CHECK(secp256k1_scalar_get_bits(&s, bit++, 1) == 0);
-    }
-#endif
+
+
+
+
+
+
     return last_set_bit + 1;
 }

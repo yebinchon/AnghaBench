@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct r82600_error_info {int dummy; } ;
-struct mem_ctl_info {int /*<<< orphan*/  mc_idx; } ;
+struct mem_ctl_info {int mc_idx; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  edac_dbg (int,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  r82600_get_error_info (struct mem_ctl_info*,struct r82600_error_info*) ; 
- int /*<<< orphan*/  r82600_process_error_info (struct mem_ctl_info*,struct r82600_error_info*,int) ; 
+
+ int edac_dbg (int,char*,int ) ;
+ int r82600_get_error_info (struct mem_ctl_info*,struct r82600_error_info*) ;
+ int r82600_process_error_info (struct mem_ctl_info*,struct r82600_error_info*,int) ;
 
 __attribute__((used)) static void r82600_check(struct mem_ctl_info *mci)
 {
-	struct r82600_error_info info;
+ struct r82600_error_info info;
 
-	edac_dbg(1, "MC%d\n", mci->mc_idx);
-	r82600_get_error_info(mci, &info);
-	r82600_process_error_info(mci, &info, 1);
+ edac_dbg(1, "MC%d\n", mci->mc_idx);
+ r82600_get_error_info(mci, &info);
+ r82600_process_error_info(mci, &info, 1);
 }

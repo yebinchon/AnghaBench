@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
+
+
+
+
+typedef int u_char ;
 struct IsdnCardState {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  HSCX_CMDR ; 
- int /*<<< orphan*/  MemWriteHSCX (struct IsdnCardState*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MemwaitforCEC (struct IsdnCardState*,int) ; 
+
+ int HSCX_CMDR ;
+ int MemWriteHSCX (struct IsdnCardState*,int,int ,int ) ;
+ int MemwaitforCEC (struct IsdnCardState*,int) ;
 
 __attribute__((used)) static inline void
 MemWriteHSCXCMDR(struct IsdnCardState *cs, int hscx, u_char data)
 {
-	MemwaitforCEC(cs, hscx);
-	MemWriteHSCX(cs, hscx, HSCX_CMDR, data);
+ MemwaitforCEC(cs, hscx);
+ MemWriteHSCX(cs, hscx, HSCX_CMDR, data);
 }

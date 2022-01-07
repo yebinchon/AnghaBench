@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  fifo; scalar_t__ status_in; } ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_1__ AVFilterLink ;
 
-/* Variables and functions */
- unsigned int FFMIN (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_assert1 (unsigned int) ; 
- int /*<<< orphan*/  consume_update (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_framequeue_queued_samples (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ff_inlink_check_available_samples (TYPE_1__*,unsigned int) ; 
- int take_samples (TYPE_1__*,unsigned int,unsigned int,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int fifo; scalar_t__ status_in; } ;
+typedef int AVFrame ;
+typedef TYPE_1__ AVFilterLink ;
+
+
+ unsigned int FFMIN (unsigned int,int ) ;
+ int av_assert1 (unsigned int) ;
+ int consume_update (TYPE_1__*,int *) ;
+ int ff_framequeue_queued_samples (int *) ;
+ int ff_inlink_check_available_samples (TYPE_1__*,unsigned int) ;
+ int take_samples (TYPE_1__*,unsigned int,unsigned int,int **) ;
 
 int ff_inlink_consume_samples(AVFilterLink *link, unsigned min, unsigned max,
                             AVFrame **rframe)
@@ -30,7 +30,7 @@ int ff_inlink_consume_samples(AVFilterLink *link, unsigned min, unsigned max,
     int ret;
 
     av_assert1(min);
-    *rframe = NULL;
+    *rframe = ((void*)0);
     if (!ff_inlink_check_available_samples(link, min))
         return 0;
     if (link->status_in)

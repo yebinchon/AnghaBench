@@ -1,137 +1,137 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  void* UINT8 ;
-typedef  int UINT32 ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- char* ACPI_COMMON_SIGNON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int ACPI_OPT_END ; 
- int /*<<< orphan*/  ASL_COMPILER_NAME ; 
- int ASL_DEFAULT_LINE_BUFFER_SIZE ; 
- int /*<<< orphan*/  ASL_SUPPORTED_OPTIONS ; 
- int /*<<< orphan*/  ASL_WARNING ; 
- int /*<<< orphan*/  ASL_WARNING2 ; 
- int /*<<< orphan*/  ASL_WARNING3 ; 
- int /*<<< orphan*/  AcpiDbgLevel ; 
- int /*<<< orphan*/  AcpiDmAddToExternalFileList (char*) ; 
- void* AcpiGbl_CaptureComments ; 
- void* AcpiGbl_CstyleDisassembly ; 
- void* AcpiGbl_DebugAslConversion ; 
- void* AcpiGbl_DisasmFlag ; 
- void* AcpiGbl_DmEmitExternalOpcodes ; 
- void* AcpiGbl_DmOpt_Listing ; 
- void* AcpiGbl_DoDisassemblerOptimizations ; 
- void* AcpiGbl_ForceAmlDisassembly ; 
- void* AcpiGbl_IgnoreNoopOperator ; 
- void* AcpiGbl_NoResourceDisassembly ; 
- char* AcpiGbl_Optarg ; 
- size_t AcpiGbl_Optind ; 
- int AcpiGetopt (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AcpiGetoptArgument (int,char**) ; 
- int /*<<< orphan*/  ApDisplayReservedNames () ; 
- int AslCompilerdebug ; 
- int /*<<< orphan*/  AslDisableException (char*) ; 
- int /*<<< orphan*/  AslDisassemblyHelp () ; 
- int /*<<< orphan*/  AslDoResponseFile (char*) ; 
- int /*<<< orphan*/  AslElevateException (char*) ; 
- int /*<<< orphan*/  AslExpectException (char*) ; 
- int /*<<< orphan*/  AslFilenameHelp () ; 
- void* AslGbl_AsmIncludeOutputFlag ; 
- void* AslGbl_AsmOutputFlag ; 
- void* AslGbl_C_IncludeOutputFlag ; 
- void* AslGbl_C_OffsetTableFlag ; 
- void* AslGbl_C_OutputFlag ; 
- void* AslGbl_CompileGeneric ; 
- void* AslGbl_CompileTimesFlag ; 
- void* AslGbl_CrossReferenceOutput ; 
- void* AslGbl_DebugFlag ; 
- void* AslGbl_DisassembleAll ; 
- void* AslGbl_DisplayOptimizations ; 
- void* AslGbl_DisplayRemarks ; 
- void* AslGbl_DisplayWarnings ; 
- void* AslGbl_DoAslConversion ; 
- void* AslGbl_DoCompile ; 
- void* AslGbl_DoExternalsInPlace ; 
- void* AslGbl_DoSignon ; 
- void* AslGbl_DoTemplates ; 
- void* AslGbl_DoTypechecking ; 
- void* AslGbl_DtLexBisonPrototype ; 
- void* AslGbl_EnableReferenceTypechecking ; 
- char* AslGbl_ExternalRefFilename ; 
- void* AslGbl_FoldConstants ; 
- int /*<<< orphan*/  AslGbl_HexOutputFlag ; 
- void* AslGbl_IgnoreErrors ; 
- void* AslGbl_IntegerOptimizationFlag ; 
- void* AslGbl_KeepPreprocessorTempFile ; 
- int AslGbl_LineBufferSize ; 
- void* AslGbl_ListingFlag ; 
- void* AslGbl_MapfileFlag ; 
- void* AslGbl_NoErrors ; 
- void* AslGbl_NoResourceChecking ; 
- void* AslGbl_NsOutputFlag ; 
- void* AslGbl_OptimizeTrivialParseNodes ; 
- char* AslGbl_OutputFilenamePrefix ; 
- void* AslGbl_ParseOnlyFlag ; 
- void* AslGbl_PreprocessFlag ; 
- void* AslGbl_PreprocessOnly ; 
- void* AslGbl_PreprocessorOutputFlag ; 
- void* AslGbl_PruneDepth ; 
- void* AslGbl_PruneParseTree ; 
- void* AslGbl_PruneType ; 
- void* AslGbl_ReferenceOptimizationFlag ; 
- void* AslGbl_RevisionOverride ; 
- void* AslGbl_SourceOutputFlag ; 
- void* AslGbl_UseDefaultAmlFilename ; 
- void* AslGbl_UseOriginalCompilerId ; 
- void* AslGbl_VerboseErrors ; 
- void* AslGbl_VerboseTemplates ; 
- int /*<<< orphan*/  AslGbl_WarningLevel ; 
- void* AslGbl_WarningsAsErrors ; 
- int DtParserdebug ; 
- void* FALSE ; 
- int /*<<< orphan*/  FlAddIncludeDirectory (char*) ; 
- int /*<<< orphan*/  HEX_OUTPUT_ASL ; 
- int /*<<< orphan*/  HEX_OUTPUT_ASM ; 
- int /*<<< orphan*/  HEX_OUTPUT_C ; 
- int /*<<< orphan*/  PrAddDefine (char*,int /*<<< orphan*/ *,void*) ; 
- int PrParserdebug ; 
- void* TRUE ; 
- int /*<<< orphan*/  Usage () ; 
- int /*<<< orphan*/  UtConvertBackslashes (char*) ; 
- int /*<<< orphan*/  UtDisplayConstantOpcodes () ; 
- int /*<<< orphan*/  UtDisplaySupportedTables () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strtoul (char*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef void* UINT8 ;
+typedef int UINT32 ;
+typedef int BOOLEAN ;
+typedef int ACPI_STATUS ;
+
+
+ char* ACPI_COMMON_SIGNON (int ) ;
+ int ACPI_FAILURE (int ) ;
+ int ACPI_OPT_END ;
+ int ASL_COMPILER_NAME ;
+ int ASL_DEFAULT_LINE_BUFFER_SIZE ;
+ int ASL_SUPPORTED_OPTIONS ;
+ int ASL_WARNING ;
+ int ASL_WARNING2 ;
+ int ASL_WARNING3 ;
+ int AcpiDbgLevel ;
+ int AcpiDmAddToExternalFileList (char*) ;
+ void* AcpiGbl_CaptureComments ;
+ void* AcpiGbl_CstyleDisassembly ;
+ void* AcpiGbl_DebugAslConversion ;
+ void* AcpiGbl_DisasmFlag ;
+ void* AcpiGbl_DmEmitExternalOpcodes ;
+ void* AcpiGbl_DmOpt_Listing ;
+ void* AcpiGbl_DoDisassemblerOptimizations ;
+ void* AcpiGbl_ForceAmlDisassembly ;
+ void* AcpiGbl_IgnoreNoopOperator ;
+ void* AcpiGbl_NoResourceDisassembly ;
+ char* AcpiGbl_Optarg ;
+ size_t AcpiGbl_Optind ;
+ int AcpiGetopt (int,char**,int ) ;
+ int AcpiGetoptArgument (int,char**) ;
+ int ApDisplayReservedNames () ;
+ int AslCompilerdebug ;
+ int AslDisableException (char*) ;
+ int AslDisassemblyHelp () ;
+ int AslDoResponseFile (char*) ;
+ int AslElevateException (char*) ;
+ int AslExpectException (char*) ;
+ int AslFilenameHelp () ;
+ void* AslGbl_AsmIncludeOutputFlag ;
+ void* AslGbl_AsmOutputFlag ;
+ void* AslGbl_C_IncludeOutputFlag ;
+ void* AslGbl_C_OffsetTableFlag ;
+ void* AslGbl_C_OutputFlag ;
+ void* AslGbl_CompileGeneric ;
+ void* AslGbl_CompileTimesFlag ;
+ void* AslGbl_CrossReferenceOutput ;
+ void* AslGbl_DebugFlag ;
+ void* AslGbl_DisassembleAll ;
+ void* AslGbl_DisplayOptimizations ;
+ void* AslGbl_DisplayRemarks ;
+ void* AslGbl_DisplayWarnings ;
+ void* AslGbl_DoAslConversion ;
+ void* AslGbl_DoCompile ;
+ void* AslGbl_DoExternalsInPlace ;
+ void* AslGbl_DoSignon ;
+ void* AslGbl_DoTemplates ;
+ void* AslGbl_DoTypechecking ;
+ void* AslGbl_DtLexBisonPrototype ;
+ void* AslGbl_EnableReferenceTypechecking ;
+ char* AslGbl_ExternalRefFilename ;
+ void* AslGbl_FoldConstants ;
+ int AslGbl_HexOutputFlag ;
+ void* AslGbl_IgnoreErrors ;
+ void* AslGbl_IntegerOptimizationFlag ;
+ void* AslGbl_KeepPreprocessorTempFile ;
+ int AslGbl_LineBufferSize ;
+ void* AslGbl_ListingFlag ;
+ void* AslGbl_MapfileFlag ;
+ void* AslGbl_NoErrors ;
+ void* AslGbl_NoResourceChecking ;
+ void* AslGbl_NsOutputFlag ;
+ void* AslGbl_OptimizeTrivialParseNodes ;
+ char* AslGbl_OutputFilenamePrefix ;
+ void* AslGbl_ParseOnlyFlag ;
+ void* AslGbl_PreprocessFlag ;
+ void* AslGbl_PreprocessOnly ;
+ void* AslGbl_PreprocessorOutputFlag ;
+ void* AslGbl_PruneDepth ;
+ void* AslGbl_PruneParseTree ;
+ void* AslGbl_PruneType ;
+ void* AslGbl_ReferenceOptimizationFlag ;
+ void* AslGbl_RevisionOverride ;
+ void* AslGbl_SourceOutputFlag ;
+ void* AslGbl_UseDefaultAmlFilename ;
+ void* AslGbl_UseOriginalCompilerId ;
+ void* AslGbl_VerboseErrors ;
+ void* AslGbl_VerboseTemplates ;
+ int AslGbl_WarningLevel ;
+ void* AslGbl_WarningsAsErrors ;
+ int DtParserdebug ;
+ void* FALSE ;
+ int FlAddIncludeDirectory (char*) ;
+ int HEX_OUTPUT_ASL ;
+ int HEX_OUTPUT_ASM ;
+ int HEX_OUTPUT_C ;
+ int PrAddDefine (char*,int *,void*) ;
+ int PrParserdebug ;
+ void* TRUE ;
+ int Usage () ;
+ int UtConvertBackslashes (char*) ;
+ int UtDisplayConstantOpcodes () ;
+ int UtDisplaySupportedTables () ;
+ int exit (int) ;
+ int printf (char*,...) ;
+ int strtoul (char*,int *,int) ;
 
 __attribute__((used)) static int
 AslDoOptions (
-    int                     argc,
-    char                    **argv,
-    BOOLEAN                 IsResponseFile)
+    int argc,
+    char **argv,
+    BOOLEAN IsResponseFile)
 {
-    ACPI_STATUS             Status;
-    UINT32                  j;
+    ACPI_STATUS Status;
+    UINT32 j;
 
 
-    /* Get the command line options */
+
 
     while ((j = AcpiGetopt (argc, argv, ASL_SUPPORTED_OPTIONS)) != ACPI_OPT_END) switch (j)
     {
-    case '@':   /* Begin a response file */
+    case '@':
 
         if (IsResponseFile)
         {
@@ -145,7 +145,7 @@ AslDoOptions (
         }
         break;
 
-    case 'a':   /* Debug options */
+    case 'a':
 
         switch (AcpiGbl_Optarg[0])
         {
@@ -163,7 +163,7 @@ AslDoOptions (
         break;
 
 
-    case 'b':   /* Debug options */
+    case 'b':
 
         switch (AcpiGbl_Optarg[0])
         {
@@ -187,16 +187,16 @@ AslDoOptions (
 
         case 'f':
 
-            AslCompilerdebug = 1; /* same as yydebug */
+            AslCompilerdebug = 1;
             DtParserdebug = 1;
             PrParserdebug = 1;
             AslGbl_DebugFlag = TRUE;
             AslGbl_KeepPreprocessorTempFile = TRUE;
             break;
 
-        case 'p':   /* Prune ASL parse tree */
+        case 'p':
 
-            /* Get the required argument */
+
 
             if (AcpiGetoptArgument (argc, argv))
             {
@@ -204,7 +204,7 @@ AslDoOptions (
             }
 
             AslGbl_PruneParseTree = TRUE;
-            AslGbl_PruneDepth = (UINT8) strtoul (AcpiGbl_Optarg, NULL, 0);
+            AslGbl_PruneDepth = (UINT8) strtoul (AcpiGbl_Optarg, ((void*)0), 0);
             break;
 
         case 's':
@@ -214,14 +214,14 @@ AslDoOptions (
 
         case 't':
 
-            /* Get the required argument */
+
 
             if (AcpiGetoptArgument (argc, argv))
             {
                 return (-1);
             }
 
-            AslGbl_PruneType = (UINT8) strtoul (AcpiGbl_Optarg, NULL, 0);
+            AslGbl_PruneType = (UINT8) strtoul (AcpiGbl_Optarg, ((void*)0), 0);
             break;
 
         default:
@@ -264,7 +264,7 @@ AslDoOptions (
         }
         break;
 
-    case 'd':   /* Disassembler */
+    case 'd':
 
         switch (AcpiGbl_Optarg[0])
         {
@@ -279,7 +279,7 @@ AslDoOptions (
             AslGbl_DisassembleAll = TRUE;
             break;
 
-        case 'b':   /* Do not convert buffers to resource descriptors */
+        case 'b':
 
             AcpiGbl_NoResourceDisassembly = TRUE;
             break;
@@ -293,7 +293,7 @@ AslDoOptions (
             AcpiGbl_ForceAmlDisassembly = TRUE;
             break;
 
-        case 'l':   /* Use legacy ASL code (not ASL+) for disassembly */
+        case 'l':
 
             AslGbl_DoCompile = FALSE;
             AcpiGbl_CstyleDisassembly = FALSE;
@@ -308,14 +308,14 @@ AslDoOptions (
         AcpiGbl_DisasmFlag = TRUE;
         break;
 
-    case 'D':   /* Define a symbol */
+    case 'D':
 
-        PrAddDefine (AcpiGbl_Optarg, NULL, TRUE);
+        PrAddDefine (AcpiGbl_Optarg, ((void*)0), TRUE);
         break;
 
-    case 'e':   /* External files for disassembler */
+    case 'e':
 
-        /* Get entire list of external files */
+
 
         AcpiGbl_Optind--;
         argv[AcpiGbl_Optind] = AcpiGbl_Optarg;
@@ -339,12 +339,12 @@ AslDoOptions (
 
         switch (AcpiGbl_Optarg[0])
         {
-        case '^':   /* Ignore errors and force creation of aml file */
+        case '^':
 
             AslGbl_IgnoreErrors = TRUE;
             break;
 
-        case 'e':   /* Disassembler: Get external declaration file */
+        case 'e':
 
             if (AcpiGetoptArgument (argc, argv))
             {
@@ -366,7 +366,7 @@ AslDoOptions (
         AslGbl_CompileGeneric = TRUE;
         break;
 
-    case 'g':   /* Get all ACPI tables */
+    case 'g':
 
         printf ("-g option is deprecated, use acpidump utility instead\n");
         exit (1);
@@ -397,7 +397,7 @@ AslDoOptions (
 
         case 'r':
 
-            /* reserved names */
+
 
             ApDisplayReservedNames ();
             exit (0);
@@ -413,32 +413,32 @@ AslDoOptions (
             return (-1);
         }
 
-    case 'I':   /* Add an include file search directory */
+    case 'I':
 
         FlAddIncludeDirectory (AcpiGbl_Optarg);
         break;
 
-    case 'i':   /* Output AML as an include file */
+    case 'i':
 
         switch (AcpiGbl_Optarg[0])
         {
         case 'a':
 
-            /* Produce assembly code include file */
+
 
             AslGbl_AsmIncludeOutputFlag = TRUE;
             break;
 
         case 'c':
 
-            /* Produce C include file */
+
 
             AslGbl_C_IncludeOutputFlag = TRUE;
             break;
 
         case 'n':
 
-            /* Compiler/Disassembler: Ignore the NOOP operator */
+
 
             AcpiGbl_IgnoreNoopOperator = TRUE;
             break;
@@ -450,13 +450,13 @@ AslDoOptions (
         }
         break;
 
-    case 'l':   /* Listing files */
+    case 'l':
 
         switch (AcpiGbl_Optarg[0])
         {
         case '^':
 
-            /* Produce listing file (Mixed source/aml) */
+
 
             AslGbl_ListingFlag = TRUE;
             AcpiGbl_DmOpt_Listing = TRUE;
@@ -464,35 +464,35 @@ AslDoOptions (
 
         case 'i':
 
-            /* Produce preprocessor output file */
+
 
             AslGbl_PreprocessorOutputFlag = TRUE;
             break;
 
         case 'm':
 
-            /* Produce hardware map summary file */
+
 
             AslGbl_MapfileFlag = TRUE;
             break;
 
         case 'n':
 
-            /* Produce namespace file */
+
 
             AslGbl_NsOutputFlag = TRUE;
             break;
 
         case 's':
 
-            /* Produce combined source file */
+
 
             AslGbl_SourceOutputFlag = TRUE;
             break;
 
         case 'x':
 
-            /* Produce cross-reference file */
+
 
             AslGbl_CrossReferenceOutput = TRUE;
             break;
@@ -504,9 +504,9 @@ AslDoOptions (
         }
         break;
 
-    case 'm':   /* Set line buffer size */
+    case 'm':
 
-        AslGbl_LineBufferSize = (UINT32) strtoul (AcpiGbl_Optarg, NULL, 0) * 1024;
+        AslGbl_LineBufferSize = (UINT32) strtoul (AcpiGbl_Optarg, ((void*)0), 0) * 1024;
         if (AslGbl_LineBufferSize < ASL_DEFAULT_LINE_BUFFER_SIZE)
         {
             AslGbl_LineBufferSize = ASL_DEFAULT_LINE_BUFFER_SIZE;
@@ -514,18 +514,18 @@ AslDoOptions (
         printf ("Line Buffer Size: %u\n", AslGbl_LineBufferSize);
         break;
 
-    case 'n':   /* Parse only */
+    case 'n':
 
         AslGbl_ParseOnlyFlag = TRUE;
         break;
 
-    case 'o':   /* Control compiler AML optimizations */
+    case 'o':
 
         switch (AcpiGbl_Optarg[0])
         {
         case 'a':
 
-            /* Disable all optimizations */
+
 
             AslGbl_FoldConstants = FALSE;
             AslGbl_IntegerOptimizationFlag = FALSE;
@@ -536,59 +536,59 @@ AslDoOptions (
 
         case 'c':
 
-            /* Display compile time(s) */
+
 
             AslGbl_CompileTimesFlag = TRUE;
             break;
 
         case 'd':
 
-            /* Disable disassembler code optimizations */
+
 
             AcpiGbl_DoDisassemblerOptimizations = FALSE;
             break;
 
         case 'e':
 
-            /* Disassembler: Emit embedded external operators */
+
 
             AcpiGbl_DmEmitExternalOpcodes = TRUE;
             break;
 
         case 'E':
 
-            /*
-             * iASL: keep External opcodes in place.
-             * No affect if Gbl_DoExternals is false.
-             */
+
+
+
+
 
             AslGbl_DoExternalsInPlace = TRUE;
             break;
 
         case 'f':
 
-            /* Disable folding on "normal" expressions */
+
 
             AslGbl_FoldConstants = FALSE;
             break;
 
         case 'i':
 
-            /* Disable integer optimization to constants */
+
 
             AslGbl_IntegerOptimizationFlag = FALSE;
             break;
 
         case 'n':
 
-            /* Disable named reference optimization */
+
 
             AslGbl_ReferenceOptimizationFlag = FALSE;
             break;
 
         case 't':
 
-            /* Disable heavy typechecking */
+
 
             AslGbl_DoTypechecking = FALSE;
             break;
@@ -600,17 +600,17 @@ AslDoOptions (
         }
         break;
 
-    case 'P':   /* Preprocessor options */
+    case 'P':
 
         switch (AcpiGbl_Optarg[0])
         {
-        case '^':   /* Proprocess only, emit (.i) file */
+        case '^':
 
             AslGbl_PreprocessOnly = TRUE;
             AslGbl_PreprocessorOutputFlag = TRUE;
             break;
 
-        case 'n':   /* Disable preprocessor */
+        case 'n':
 
             AslGbl_PreprocessFlag = FALSE;
             break;
@@ -622,14 +622,14 @@ AslDoOptions (
         }
         break;
 
-    case 'p':   /* Override default AML output filename */
+    case 'p':
 
         AslGbl_OutputFilenamePrefix = AcpiGbl_Optarg;
         UtConvertBackslashes (AslGbl_OutputFilenamePrefix);
         AslGbl_UseDefaultAmlFilename = FALSE;
         break;
 
-    case 'q':   /* ASL/ASl+ converter: compile only and leave badaml. */
+    case 'q':
 
         printf ("Convert ASL to ASL+ with comments\n");
         AslGbl_FoldConstants = FALSE;
@@ -640,32 +640,32 @@ AslDoOptions (
         AcpiGbl_CaptureComments = TRUE;
         return (0);
 
-    case 'r':   /* Override revision found in table header */
+    case 'r':
 
-        AslGbl_RevisionOverride = (UINT8) strtoul (AcpiGbl_Optarg, NULL, 0);
+        AslGbl_RevisionOverride = (UINT8) strtoul (AcpiGbl_Optarg, ((void*)0), 0);
         break;
 
-    case 's':   /* Create AML in a source code file */
+    case 's':
 
         switch (AcpiGbl_Optarg[0])
         {
         case 'a':
 
-            /* Produce assembly code output file */
+
 
             AslGbl_AsmOutputFlag = TRUE;
             break;
 
         case 'c':
 
-            /* Produce C hex output file */
+
 
             AslGbl_C_OutputFlag = TRUE;
             break;
 
         case 'o':
 
-            /* Produce AML offset table in C */
+
 
             AslGbl_C_OffsetTableFlag = TRUE;
             break;
@@ -677,7 +677,7 @@ AslDoOptions (
         }
         break;
 
-    case 't':   /* Produce hex table output file */
+    case 't':
 
         switch (AcpiGbl_Optarg[0])
         {
@@ -691,7 +691,7 @@ AslDoOptions (
             AslGbl_HexOutputFlag = HEX_OUTPUT_C;
             break;
 
-    case 'p': /* data table flex/bison prototype */
+    case 'p':
 
             AslGbl_DtLexBisonPrototype = TRUE;
             break;
@@ -708,12 +708,12 @@ AslDoOptions (
         }
         break;
 
-    case 'T':   /* Create a ACPI table template file */
+    case 'T':
 
         AslGbl_DoTemplates = TRUE;
         break;
 
-    case 'v':   /* Version and verbosity settings */
+    case 'v':
 
         switch (AcpiGbl_Optarg[0])
         {
@@ -724,29 +724,20 @@ AslDoOptions (
 
         case 'a':
 
-            /* Disable all error/warning/remark messages */
+
 
             AslGbl_NoErrors = TRUE;
             break;
 
         case 'e':
 
-            /* Disable all warning/remark messages (errors only) */
+
 
             AslGbl_DisplayRemarks = FALSE;
             AslGbl_DisplayWarnings = FALSE;
             break;
 
         case 'i':
-            /*
-             * Support for integrated development environment(s).
-             *
-             * 1) No compiler signon
-             * 2) Send stderr messages to stdout
-             * 3) Less verbose error messages (single line only for each)
-             * 4) Error/warning messages are formatted appropriately to
-             *    be recognized by MS Visual Studio
-             */
             AslGbl_VerboseErrors = FALSE;
             AslGbl_DoSignon = FALSE;
             break;
@@ -773,7 +764,7 @@ AslDoOptions (
 
         case 'w':
 
-            /* Get the required argument */
+
 
             if (AcpiGetoptArgument (argc, argv))
             {
@@ -789,7 +780,7 @@ AslDoOptions (
 
         case 'x':
 
-            /* Get the required argument */
+
 
             if (AcpiGetoptArgument (argc, argv))
             {
@@ -810,7 +801,7 @@ AslDoOptions (
         }
         break;
 
-    case 'w': /* Set warning levels */
+    case 'w':
 
         switch (AcpiGbl_Optarg[0])
         {
@@ -836,7 +827,7 @@ AslDoOptions (
 
         case 'w':
 
-            /* Get the required argument */
+
 
             if (AcpiGetoptArgument (argc, argv))
             {
@@ -858,9 +849,9 @@ AslDoOptions (
         }
         break;
 
-    case 'x':   /* Set debug print output level */
+    case 'x':
 
-        AcpiDbgLevel = strtoul (AcpiGbl_Optarg, NULL, 16);
+        AcpiDbgLevel = strtoul (AcpiGbl_Optarg, ((void*)0), 16);
         break;
 
     case 'z':

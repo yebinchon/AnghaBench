@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_5__ ;
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  (* glDeleteFramebuffers ) (int,int /*<<< orphan*/ *) ;int /*<<< orphan*/  (* glBindFramebuffer ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* glGenFramebuffers ) (int,int /*<<< orphan*/ *) ;} ;
-struct TYPE_7__ {int /*<<< orphan*/  (* p_glReadBuffer ) (int /*<<< orphan*/ ) ;int /*<<< orphan*/  (* p_glDrawBuffer ) (int /*<<< orphan*/ ) ;} ;
-struct TYPE_6__ {int /*<<< orphan*/  (* p_glGetInternalformativ ) (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,scalar_t__*) ;} ;
+
+
+typedef struct TYPE_10__ TYPE_5__ ;
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int (* glDeleteFramebuffers ) (int,int *) ;int (* glBindFramebuffer ) (int ,int ) ;int (* glGenFramebuffers ) (int,int *) ;} ;
+struct TYPE_7__ {int (* p_glReadBuffer ) (int ) ;int (* p_glDrawBuffer ) (int ) ;} ;
+struct TYPE_6__ {int (* p_glGetInternalformativ ) (int ,scalar_t__,int ,int,scalar_t__*) ;} ;
 struct TYPE_8__ {TYPE_2__ gl; TYPE_1__ ext; } ;
 struct wined3d_gl_info {unsigned int format_count; TYPE_4__ fbo_ops; struct wined3d_format* formats; TYPE_3__ gl_ops; scalar_t__* supported; } ;
-struct wined3d_format {scalar_t__ rtInternal; scalar_t__ glInternal; int* flags; scalar_t__ glGammaInternal; int /*<<< orphan*/  id; } ;
+struct wined3d_format {scalar_t__ rtInternal; scalar_t__ glInternal; int* flags; scalar_t__ glGammaInternal; int id; } ;
 struct wined3d_caps_gl_ctx {struct wined3d_gl_info* gl_info; } ;
 struct TYPE_10__ {scalar_t__ offscreen_rendering_mode; } ;
-typedef  int /*<<< orphan*/  GLuint ;
-typedef  scalar_t__ GLint ;
-typedef  scalar_t__ GLenum ;
-typedef  scalar_t__ BOOL ;
+typedef int GLuint ;
+typedef scalar_t__ GLint ;
+typedef scalar_t__ GLenum ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- size_t ARB_INTERNALFORMAT_QUERY2 ; 
- unsigned int ARRAY_SIZE (int*) ; 
- size_t EXT_TEXTURE_SRGB_DECODE ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FIXME (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER_BLEND ; 
- int /*<<< orphan*/  GL_FRAMEBUFFER_RENDERABLE ; 
- scalar_t__ GL_FULL_SUPPORT ; 
- scalar_t__ ORM_FBO ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,...) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ,unsigned int) ; 
- int WINED3DFMT_FLAG_COMPRESSED ; 
- int WINED3DFMT_FLAG_FBO_ATTACHABLE ; 
- int WINED3DFMT_FLAG_FBO_ATTACHABLE_SRGB ; 
- int WINED3DFMT_FLAG_POSTPIXELSHADER_BLENDING ; 
- int WINED3DFMT_FLAG_RENDERTARGET ; 
- int WINED3DFMT_FLAG_SRGB_WRITE ; 
- size_t WINED3D_GL_RES_TYPE_TEX_2D ; 
- int /*<<< orphan*/  check_fbo_compat (struct wined3d_caps_gl_ctx*,struct wined3d_format*) ; 
- int /*<<< orphan*/  debug_d3dformat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  format_clear_flag (struct wined3d_format*,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int,scalar_t__*) ; 
- int /*<<< orphan*/  stub5 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub7 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub9 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wined3d_gl_type_to_enum (unsigned int) ; 
- TYPE_5__ wined3d_settings ; 
+
+ size_t ARB_INTERNALFORMAT_QUERY2 ;
+ unsigned int ARRAY_SIZE (int*) ;
+ size_t EXT_TEXTURE_SRGB_DECODE ;
+ scalar_t__ FALSE ;
+ int FIXME (char*,int ) ;
+ int GL_COLOR_ATTACHMENT0 ;
+ int GL_FRAMEBUFFER ;
+ int GL_FRAMEBUFFER_BLEND ;
+ int GL_FRAMEBUFFER_RENDERABLE ;
+ scalar_t__ GL_FULL_SUPPORT ;
+ scalar_t__ ORM_FBO ;
+ int TRACE (char*,int ,...) ;
+ scalar_t__ TRUE ;
+ int WARN (char*,int ,unsigned int) ;
+ int WINED3DFMT_FLAG_COMPRESSED ;
+ int WINED3DFMT_FLAG_FBO_ATTACHABLE ;
+ int WINED3DFMT_FLAG_FBO_ATTACHABLE_SRGB ;
+ int WINED3DFMT_FLAG_POSTPIXELSHADER_BLENDING ;
+ int WINED3DFMT_FLAG_RENDERTARGET ;
+ int WINED3DFMT_FLAG_SRGB_WRITE ;
+ size_t WINED3D_GL_RES_TYPE_TEX_2D ;
+ int check_fbo_compat (struct wined3d_caps_gl_ctx*,struct wined3d_format*) ;
+ int debug_d3dformat (int ) ;
+ int format_clear_flag (struct wined3d_format*,int) ;
+ int stub1 (int ,scalar_t__,int ,int,scalar_t__*) ;
+ int stub2 (int ,scalar_t__,int ,int,scalar_t__*) ;
+ int stub3 (int ,scalar_t__,int ,int,scalar_t__*) ;
+ int stub4 (int ,scalar_t__,int ,int,scalar_t__*) ;
+ int stub5 (int,int *) ;
+ int stub6 (int ,int ) ;
+ int stub7 (int ) ;
+ int stub8 (int ) ;
+ int stub9 (int,int *) ;
+ int wined3d_gl_type_to_enum (unsigned int) ;
+ TYPE_5__ wined3d_settings ;
 
 __attribute__((used)) static void init_format_fbo_compat_info(struct wined3d_caps_gl_ctx *ctx)
 {

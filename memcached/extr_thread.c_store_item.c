@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_5__ {int /*<<< orphan*/  nkey; } ;
-typedef  TYPE_1__ item ;
-typedef  enum store_item_type { ____Placeholder_store_item_type } store_item_type ;
-typedef  int /*<<< orphan*/  conn ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ITEM_key (TYPE_1__*) ; 
- int do_store_item (TYPE_1__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hash (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  item_lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  item_unlock (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_5__ {int nkey; } ;
+typedef TYPE_1__ item ;
+typedef enum store_item_type { ____Placeholder_store_item_type } store_item_type ;
+typedef int conn ;
+
+
+ int ITEM_key (TYPE_1__*) ;
+ int do_store_item (TYPE_1__*,int,int *,int ) ;
+ int hash (int ,int ) ;
+ int item_lock (int ) ;
+ int item_unlock (int ) ;
 
 enum store_item_type store_item(item *item, int comm, conn* c) {
     enum store_item_type ret;

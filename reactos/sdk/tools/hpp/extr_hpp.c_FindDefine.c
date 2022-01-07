@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int cchName; struct TYPE_4__* pNext; int /*<<< orphan*/  pszName; } ;
-typedef  TYPE_1__* PDEFINE ;
 
-/* Variables and functions */
- TYPE_1__* gpDefines ; 
- scalar_t__ strncmp (char const*,int /*<<< orphan*/ ,int) ; 
- int strxlen (char const*) ; 
- int /*<<< orphan*/  trace (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int cchName; struct TYPE_4__* pNext; int pszName; } ;
+typedef TYPE_1__* PDEFINE ;
+
+
+ TYPE_1__* gpDefines ;
+ scalar_t__ strncmp (char const*,int ,int) ;
+ int strxlen (char const*) ;
+ int trace (char*,int ) ;
 
 PDEFINE
 FindDefine(const char *p, char **pNext)
@@ -30,7 +30,7 @@ FindDefine(const char *p, char **pNext)
     if (pNext)
         *pNext = (char*)p + cchName;
 
-    /* search for the define in the global list */
+
     pDefine = gpDefines;
     while (pDefine != 0)
     {

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_11__ {unsigned int nb_outputs; unsigned int nb_inputs; int /*<<< orphan*/ * inputs; int /*<<< orphan*/ * outputs; TYPE_2__* priv; } ;
-struct TYPE_10__ {unsigned int cur_idx; TYPE_1__* in; int /*<<< orphan*/  nb_in_active; } ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_11__ {unsigned int nb_outputs; unsigned int nb_inputs; int * inputs; int * outputs; TYPE_2__* priv; } ;
+struct TYPE_10__ {unsigned int cur_idx; TYPE_1__* in; int nb_in_active; } ;
 struct TYPE_9__ {int eof; } ;
-typedef  TYPE_2__ ConcatContext ;
-typedef  int /*<<< orphan*/  AVFrame ;
-typedef  TYPE_3__ AVFilterContext ;
+typedef TYPE_2__ ConcatContext ;
+typedef int AVFrame ;
+typedef TYPE_3__ AVFilterContext ;
 
-/* Variables and functions */
- int FFERROR_NOT_READY ; 
- int /*<<< orphan*/  close_input (TYPE_3__*,unsigned int) ; 
- int /*<<< orphan*/  ff_filter_set_ready (TYPE_3__*,int) ; 
- int ff_inlink_acknowledge_status (int /*<<< orphan*/ ,int*,int /*<<< orphan*/ *) ; 
- int ff_inlink_consume_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ff_inlink_request_frame (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_inlink_set_status (int /*<<< orphan*/ ,int) ; 
- scalar_t__ ff_outlink_frame_wanted (int /*<<< orphan*/ ) ; 
- int ff_outlink_get_status (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_outlink_set_status (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int flush_segment (TYPE_3__*) ; 
- int push_frame (TYPE_3__*,unsigned int,int /*<<< orphan*/ *) ; 
+
+ int FFERROR_NOT_READY ;
+ int close_input (TYPE_3__*,unsigned int) ;
+ int ff_filter_set_ready (TYPE_3__*,int) ;
+ int ff_inlink_acknowledge_status (int ,int*,int *) ;
+ int ff_inlink_consume_frame (int ,int **) ;
+ int ff_inlink_request_frame (int ) ;
+ int ff_inlink_set_status (int ,int) ;
+ scalar_t__ ff_outlink_frame_wanted (int ) ;
+ int ff_outlink_get_status (int ) ;
+ int ff_outlink_set_status (int ,int,int ) ;
+ int flush_segment (TYPE_3__*) ;
+ int push_frame (TYPE_3__*,unsigned int,int *) ;
 
 __attribute__((used)) static int activate(AVFilterContext *ctx)
 {
@@ -43,7 +43,7 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
     int ret, status;
     int64_t pts;
 
-    /* Forward status back */
+
     for (i = 0; i < ctx->nb_outputs; i++) {
         status = ff_outlink_get_status(ctx->outputs[i]);
         if (!status)
@@ -58,7 +58,7 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
 
     }
 
-    /* Forward available frames */
+
     if (cat->cur_idx < ctx->nb_inputs) {
         for (i = 0; i < ctx->nb_outputs; i++) {
             ret = ff_inlink_consume_frame(ctx->inputs[cat->cur_idx + i], &frame);
@@ -71,11 +71,11 @@ __attribute__((used)) static int activate(AVFilterContext *ctx)
         }
     }
 
-    /* Forward status change */
+
     if (cat->cur_idx < ctx->nb_inputs) {
         for (i = 0; i < ctx->nb_outputs; i++) {
             ret = ff_inlink_acknowledge_status(ctx->inputs[cat->cur_idx + i], &status, &pts);
-            /* TODO use pts */
+
             if (ret > 0) {
                 close_input(ctx, cat->cur_idx + i);
                 if (cat->cur_idx + ctx->nb_outputs >= ctx->nb_inputs) {

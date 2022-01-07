@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint64_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  unsigned char* sds ;
-struct TYPE_2__ {int /*<<< orphan*/  len; } ;
 
-/* Variables and functions */
- TYPE_1__* SDS_HDR (int,unsigned char*) ; 
-#define  SDS_TYPE_16 132 
-#define  SDS_TYPE_32 131 
-#define  SDS_TYPE_5 130 
-#define  SDS_TYPE_64 129 
-#define  SDS_TYPE_8 128 
- size_t SDS_TYPE_BITS ; 
- unsigned char SDS_TYPE_MASK ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint64_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
+typedef unsigned char* sds ;
+struct TYPE_2__ {int len; } ;
+
+
+ TYPE_1__* SDS_HDR (int,unsigned char*) ;
+
+
+
+
+
+ size_t SDS_TYPE_BITS ;
+ unsigned char SDS_TYPE_MASK ;
 
 __attribute__((used)) static inline void sdssetlen(sds s, size_t newlen) {
     unsigned char flags = s[-1];
     switch(flags&SDS_TYPE_MASK) {
-        case SDS_TYPE_5:
+        case 130:
             {
                 unsigned char *fp = ((unsigned char*)s)-1;
-                *fp = (unsigned char)(SDS_TYPE_5 | (newlen << SDS_TYPE_BITS));
+                *fp = (unsigned char)(130 | (newlen << SDS_TYPE_BITS));
             }
             break;
-        case SDS_TYPE_8:
+        case 128:
             SDS_HDR(8,s)->len = (uint8_t)newlen;
             break;
-        case SDS_TYPE_16:
+        case 132:
             SDS_HDR(16,s)->len = (uint16_t)newlen;
             break;
-        case SDS_TYPE_32:
+        case 131:
             SDS_HDR(32,s)->len = (uint32_t)newlen;
             break;
-        case SDS_TYPE_64:
+        case 129:
             SDS_HDR(64,s)->len = (uint64_t)newlen;
             break;
     }

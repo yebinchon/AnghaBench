@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  Vdbe ;
-struct TYPE_3__ {int nPragCName; int iPragCName; int /*<<< orphan*/  zName; } ;
-typedef  TYPE_1__ PragmaName ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COLNAME_NAME ; 
- int /*<<< orphan*/  SQLITE_STATIC ; 
- int /*<<< orphan*/ * pragCName ; 
- int /*<<< orphan*/  sqlite3VdbeSetColName (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3VdbeSetNumCols (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u8 ;
+typedef int Vdbe ;
+struct TYPE_3__ {int nPragCName; int iPragCName; int zName; } ;
+typedef TYPE_1__ PragmaName ;
+
+
+ int COLNAME_NAME ;
+ int SQLITE_STATIC ;
+ int * pragCName ;
+ int sqlite3VdbeSetColName (int *,int,int ,int ,int ) ;
+ int sqlite3VdbeSetNumCols (int *,int) ;
 
 __attribute__((used)) static void setPragmaResultColumnNames(
-  Vdbe *v,                     /* The query under construction */
-  const PragmaName *pPragma    /* The pragma */
+  Vdbe *v,
+  const PragmaName *pPragma
 ){
   u8 n = pPragma->nPragCName;
   sqlite3VdbeSetNumCols(v, n==0 ? 1 : n);

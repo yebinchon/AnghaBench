@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  url ;
-typedef  int /*<<< orphan*/  query_string ;
-typedef  int UINT ;
-struct TYPE_4__ {int JsonRpcAuthed; int /*<<< orphan*/  Listener; int /*<<< orphan*/  Cedar; } ;
-typedef  int /*<<< orphan*/  SOCK ;
-typedef  int /*<<< orphan*/  HTTP_HEADER ;
-typedef  TYPE_1__ CONNECTION ;
-typedef  int /*<<< orphan*/  ADMIN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdminWebHandleFileRequest (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,char*,char*,char*) ; 
- int /*<<< orphan*/  AdminWebSendUnauthorized (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int INFINITE ; 
- int /*<<< orphan*/ * JsonRpcAuthLogin (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  RemoveDosEntry (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SearchStr (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- int /*<<< orphan*/  Zero (char*,int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int url ;
+typedef int query_string ;
+typedef int UINT ;
+struct TYPE_4__ {int JsonRpcAuthed; int Listener; int Cedar; } ;
+typedef int SOCK ;
+typedef int HTTP_HEADER ;
+typedef TYPE_1__ CONNECTION ;
+typedef int ADMIN ;
+
+
+ int AdminWebHandleFileRequest (int *,TYPE_1__*,int *,int *,char*,char*,char*,char*) ;
+ int AdminWebSendUnauthorized (int *,int *) ;
+ int Free (int *) ;
+ int INFINITE ;
+ int * JsonRpcAuthLogin (int ,int *,int *) ;
+ int MAX_PATH ;
+ int MAX_SIZE ;
+ int RemoveDosEntry (int ,int *) ;
+ int SearchStr (char*,char*,int ) ;
+ int StrCpy (char*,int,char*) ;
+ int Zero (char*,int) ;
 
 void AdminWebProcGet(CONNECTION *c, SOCK *s, HTTP_HEADER *h, char *url_target)
 {
-	ADMIN *a;
-	char url[MAX_PATH];
-	char query_string[MAX_SIZE];
-	UINT i;
-	if (c == NULL || s == NULL || h == NULL || url_target == NULL)
-	{
-		return;
-	}
+ ADMIN *a;
+ char url[MAX_PATH];
+ char query_string[MAX_SIZE];
+ UINT i;
+ if (c == ((void*)0) || s == ((void*)0) || h == ((void*)0) || url_target == ((void*)0))
+ {
+  return;
+ }
 
-	a = JsonRpcAuthLogin(c->Cedar, s, h);
-	if (a == NULL)
-	{
-		AdminWebSendUnauthorized(s, h);
-		return;
-	}
+ a = JsonRpcAuthLogin(c->Cedar, s, h);
+ if (a == ((void*)0))
+ {
+  AdminWebSendUnauthorized(s, h);
+  return;
+ }
 
-	c->JsonRpcAuthed = true;
-#ifndef	GC_SOFTETHER_OSS
-	RemoveDosEntry(c->Listener, s);
-#endif	// GC_SOFTETHER_OSS
+ c->JsonRpcAuthed = 1;
 
-	// Divide url_target into URL and query string
-	StrCpy(url, sizeof(url), url_target);
-	Zero(query_string, sizeof(query_string));
-	i = SearchStr(url, "?", 0);
-	if (i != INFINITE)
-	{
-		StrCpy(query_string, sizeof(query_string), url + i + 1);
-		url[i] = 0;
-	}
+ RemoveDosEntry(c->Listener, s);
 
-	AdminWebHandleFileRequest(a, c, s, h, url, query_string, "/admin", "|wwwroot/admin");
 
-	Free(a);
+
+ StrCpy(url, sizeof(url), url_target);
+ Zero(query_string, sizeof(query_string));
+ i = SearchStr(url, "?", 0);
+ if (i != INFINITE)
+ {
+  StrCpy(query_string, sizeof(query_string), url + i + 1);
+  url[i] = 0;
+ }
+
+ AdminWebHandleFileRequest(a, c, s, h, url, query_string, "/admin", "|wwwroot/admin");
+
+ Free(a);
 }

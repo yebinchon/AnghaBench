@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct r8152 {int /*<<< orphan*/  flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RTL8152_UNPLUG ; 
- int /*<<< orphan*/  r8152_aldps_en (struct r8152*,int) ; 
- int /*<<< orphan*/  r8152b_exit_oob (struct r8152*) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct r8152 {int flags; } ;
+
+
+ int RTL8152_UNPLUG ;
+ int r8152_aldps_en (struct r8152*,int) ;
+ int r8152b_exit_oob (struct r8152*) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static void rtl8152_up(struct r8152 *tp)
 {
-	if (test_bit(RTL8152_UNPLUG, &tp->flags))
-		return;
+ if (test_bit(RTL8152_UNPLUG, &tp->flags))
+  return;
 
-	r8152_aldps_en(tp, false);
-	r8152b_exit_oob(tp);
-	r8152_aldps_en(tp, true);
+ r8152_aldps_en(tp, 0);
+ r8152b_exit_oob(tp);
+ r8152_aldps_en(tp, 1);
 }

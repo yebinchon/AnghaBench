@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct macro_source_file {int dummy; } ;
 struct macro_scope {int line; struct macro_source_file* file; } ;
 struct macro_definition {scalar_t__ kind; int argc; char** argv; char* replacement; } ;
 struct cleanup {int dummy; } ;
 
-/* Variables and functions */
- struct macro_scope* default_macro_scope () ; 
- int /*<<< orphan*/  do_cleanups (struct cleanup*) ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  fprintf_filtered (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  fputs_filtered (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_current_contents ; 
- int /*<<< orphan*/  gdb_stdout ; 
- struct macro_source_file* macro_definition_location (struct macro_source_file*,int,char*,int*) ; 
- scalar_t__ macro_function_like ; 
- struct macro_definition* macro_lookup_definition (struct macro_source_file*,int,char*) ; 
- struct cleanup* make_cleanup (int /*<<< orphan*/ ,struct macro_scope**) ; 
- int /*<<< orphan*/  show_pp_source_pos (int /*<<< orphan*/ ,struct macro_source_file*,int) ; 
+
+ struct macro_scope* default_macro_scope () ;
+ int do_cleanups (struct cleanup*) ;
+ int error (char*) ;
+ int fprintf_filtered (int ,char*,...) ;
+ int fputs_filtered (char*,int ) ;
+ int free_current_contents ;
+ int gdb_stdout ;
+ struct macro_source_file* macro_definition_location (struct macro_source_file*,int,char*,int*) ;
+ scalar_t__ macro_function_like ;
+ struct macro_definition* macro_lookup_definition (struct macro_source_file*,int,char*) ;
+ struct cleanup* make_cleanup (int ,struct macro_scope**) ;
+ int show_pp_source_pos (int ,struct macro_source_file*,int) ;
 
 __attribute__((used)) static void
 info_macro_command (char *name, int from_tty)
 {
-  struct macro_scope *ms = NULL;
+  struct macro_scope *ms = ((void*)0);
   struct cleanup *cleanup_chain = make_cleanup (free_current_contents, &ms);
   struct macro_definition *d;
-  
+
   if (! name || ! *name)
     error ("You must follow the `info macro' command with the name"
            " of the macro\n"

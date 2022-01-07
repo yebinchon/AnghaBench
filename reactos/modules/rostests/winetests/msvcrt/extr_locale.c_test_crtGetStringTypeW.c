@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char wchar_t ;
-typedef  scalar_t__ WORD ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char const**) ; 
- int CT_CTYPE1 ; 
- int CT_CTYPE2 ; 
- int CT_CTYPE3 ; 
- scalar_t__ GetStringTypeW (int,char const*,int,scalar_t__*) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- scalar_t__ p__crtGetStringTypeW (int /*<<< orphan*/ ,int,char const*,int,scalar_t__*) ; 
- int /*<<< orphan*/  pmemcpy_s ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+
+
+typedef char wchar_t ;
+typedef scalar_t__ WORD ;
+typedef scalar_t__ BOOL ;
+
+
+ int ARRAY_SIZE (char const**) ;
+ int CT_CTYPE1 ;
+ int CT_CTYPE2 ;
+ int CT_CTYPE3 ;
+ scalar_t__ GetStringTypeW (int,char const*,int,scalar_t__*) ;
+ int ok (int,char*,...) ;
+ scalar_t__ p__crtGetStringTypeW (int ,int,char const*,int,scalar_t__*) ;
+ int pmemcpy_s ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_crtGetStringTypeW(void)
 {

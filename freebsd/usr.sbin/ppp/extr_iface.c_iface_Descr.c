@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* buffer; scalar_t__ length; } ;
-struct ifreq {TYPE_2__ ifr_buffer; int /*<<< orphan*/  ifr_name; } ;
-struct iface {char* descr; int /*<<< orphan*/  name; } ;
+struct ifreq {TYPE_2__ ifr_buffer; int ifr_name; } ;
+struct iface {char* descr; int name; } ;
 struct cmdargs {int argn; int argc; char** argv; TYPE_1__* bundle; } ;
-typedef  int /*<<< orphan*/  caddr_t ;
+typedef int caddr_t ;
 struct TYPE_3__ {struct iface* iface; } ;
 
-/* Variables and functions */
- scalar_t__ ID0ioctl (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int ID0socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LogERROR ; 
- int /*<<< orphan*/  LogWARN ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  SIOCSIFDESCR ; 
- int /*<<< orphan*/  SOCK_DGRAM ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*,...) ; 
- char* malloc (size_t) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- size_t strlcat (char*,char*,size_t) ; 
- int /*<<< orphan*/  strlcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ strlen (char*) ; 
- scalar_t__ sysctlbyname (char*,int*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ID0ioctl (int,int ,int ) ;
+ int ID0socket (int ,int ,int ) ;
+ int LogERROR ;
+ int LogWARN ;
+ int PF_INET ;
+ int SIOCSIFDESCR ;
+ int SOCK_DGRAM ;
+ int errno ;
+ int free (char*) ;
+ int log_Printf (int ,char*,...) ;
+ char* malloc (size_t) ;
+ int strerror (int ) ;
+ size_t strlcat (char*,char*,size_t) ;
+ int strlcpy (int ,int ,int) ;
+ scalar_t__ strlen (char*) ;
+ scalar_t__ sysctlbyname (char*,int*,size_t*,int *,int ) ;
 
 int
 iface_Descr(struct cmdargs const *arg)
@@ -47,7 +47,7 @@ iface_Descr(struct cmdargs const *arg)
   char *descr;
 
   sz = sizeof(int);
-  if (sysctlbyname("net.ifdescr_maxlen", &ifdescr_maxlen, &sz, NULL, 0) < 0) {
+  if (sysctlbyname("net.ifdescr_maxlen", &ifdescr_maxlen, &sz, ((void*)0), 0) < 0) {
     log_Printf(LogERROR, "iface descr: sysctl failed: %s\n", strerror(errno));
     return 1;
   }
@@ -58,7 +58,7 @@ iface_Descr(struct cmdargs const *arg)
   }
 
   sz = sizeof(char) * ifdescr_maxlen;
-  if ((descr = malloc(sz)) == NULL) {
+  if ((descr = malloc(sz)) == ((void*)0)) {
     log_Printf(LogERROR, "iface descr: malloc failed: %s\n", strerror(errno));
     return 1;
   }

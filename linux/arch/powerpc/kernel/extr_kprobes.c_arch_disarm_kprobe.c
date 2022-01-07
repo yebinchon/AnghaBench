@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct kprobe {int /*<<< orphan*/  opcode; int /*<<< orphan*/  addr; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  patch_instruction (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct kprobe {int opcode; int addr; } ;
+
+
+ int patch_instruction (int ,int ) ;
 
 void arch_disarm_kprobe(struct kprobe *p)
 {
-	patch_instruction(p->addr, p->opcode);
+ patch_instruction(p->addr, p->opcode);
 }

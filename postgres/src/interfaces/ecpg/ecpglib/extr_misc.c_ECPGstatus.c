@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  name; int /*<<< orphan*/ * connection; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ECPG_NOT_CONN ; 
- int /*<<< orphan*/  ECPG_SQLSTATE_ECPG_INTERNAL_ERROR ; 
- struct connection* ecpg_get_connection (char const*) ; 
- int /*<<< orphan*/  ecpg_init (struct connection*,char const*,int) ; 
- int /*<<< orphan*/  ecpg_raise (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct connection {int name; int * connection; } ;
+
+
+ int ECPG_NOT_CONN ;
+ int ECPG_SQLSTATE_ECPG_INTERNAL_ERROR ;
+ struct connection* ecpg_get_connection (char const*) ;
+ int ecpg_init (struct connection*,char const*,int) ;
+ int ecpg_raise (int,int ,int ,int ) ;
 
 bool
 ECPGstatus(int lineno, const char *connection_name)
 {
-	struct connection *con = ecpg_get_connection(connection_name);
+ struct connection *con = ecpg_get_connection(connection_name);
 
-	if (!ecpg_init(con, connection_name, lineno))
-		return false;
+ if (!ecpg_init(con, connection_name, lineno))
+  return 0;
 
-	/* are we connected? */
-	if (con->connection == NULL)
-	{
-		ecpg_raise(lineno, ECPG_NOT_CONN, ECPG_SQLSTATE_ECPG_INTERNAL_ERROR, con->name);
-		return false;
-	}
 
-	return true;
+ if (con->connection == ((void*)0))
+ {
+  ecpg_raise(lineno, ECPG_NOT_CONN, ECPG_SQLSTATE_ECPG_INTERNAL_ERROR, con->name);
+  return 0;
+ }
+
+ return 1;
 }

@@ -1,96 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_9__ ;
-typedef  struct TYPE_28__   TYPE_8__ ;
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_15__ ;
-typedef  struct TYPE_19__   TYPE_14__ ;
-typedef  struct TYPE_18__   TYPE_10__ ;
 
-/* Type definitions */
-struct TYPE_20__ {int size; int /*<<< orphan*/  id; } ;
-struct TYPE_29__ {int encodings_num; int /*<<< orphan*/ * encodings; TYPE_14__* mmal; TYPE_15__ encodings_header; } ;
-struct TYPE_28__ {int /*<<< orphan*/  eEncoding; } ;
-struct TYPE_27__ {int /*<<< orphan*/  eBufferSupplier; int /*<<< orphan*/  nPortIndex; } ;
+
+
+typedef struct TYPE_29__ TYPE_9__ ;
+typedef struct TYPE_28__ TYPE_8__ ;
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_15__ ;
+typedef struct TYPE_19__ TYPE_14__ ;
+typedef struct TYPE_18__ TYPE_10__ ;
+
+
+struct TYPE_20__ {int size; int id; } ;
+struct TYPE_29__ {int encodings_num; int * encodings; TYPE_14__* mmal; TYPE_15__ encodings_header; } ;
+struct TYPE_28__ {int eEncoding; } ;
+struct TYPE_27__ {int eBufferSupplier; int nPortIndex; } ;
 struct TYPE_26__ {scalar_t__ cRole; } ;
-struct TYPE_25__ {int /*<<< orphan*/  nPortIndex; } ;
-struct TYPE_24__ {int /*<<< orphan*/  nPorts; int /*<<< orphan*/  nStartPortNumber; } ;
-struct TYPE_23__ {int /*<<< orphan*/  nGroupID; int /*<<< orphan*/  nGroupPriority; } ;
-struct TYPE_22__ {int nIndex; int /*<<< orphan*/  xFramerate; int /*<<< orphan*/  eColorFormat; int /*<<< orphan*/  eCompressionFormat; int /*<<< orphan*/  nPortIndex; } ;
-struct TYPE_21__ {int /*<<< orphan*/  encoding; } ;
+struct TYPE_25__ {int nPortIndex; } ;
+struct TYPE_24__ {int nPorts; int nStartPortNumber; } ;
+struct TYPE_23__ {int nGroupID; int nGroupPriority; } ;
+struct TYPE_22__ {int nIndex; int xFramerate; int eColorFormat; int eCompressionFormat; int nPortIndex; } ;
+struct TYPE_21__ {int encoding; } ;
 struct TYPE_19__ {TYPE_1__* format; } ;
-struct TYPE_18__ {scalar_t__ state; char* name; int /*<<< orphan*/  role; int /*<<< orphan*/  group_id; int /*<<< orphan*/  group_priority; int /*<<< orphan*/ * ports_domain_num; } ;
-typedef  TYPE_2__ OMX_VIDEO_PARAM_PORTFORMATTYPE ;
-typedef  int /*<<< orphan*/  OMX_VERSIONTYPE ;
-typedef  int OMX_U32 ;
-typedef  scalar_t__ OMX_PTR ;
-typedef  TYPE_3__ OMX_PRIORITYMGMTTYPE ;
-typedef  TYPE_4__ OMX_PORT_PARAM_TYPE ;
-typedef  TYPE_5__ OMX_PARAM_PORTDEFINITIONTYPE ;
-typedef  TYPE_6__ OMX_PARAM_COMPONENTROLETYPE ;
-typedef  TYPE_7__ OMX_PARAM_BUFFERSUPPLIERTYPE ;
-typedef  int OMX_INDEXTYPE ;
-typedef  scalar_t__ OMX_HANDLETYPE ;
-typedef  int /*<<< orphan*/  OMX_ERRORTYPE ;
-typedef  TYPE_8__ OMX_AUDIO_PARAM_PORTFORMATTYPE ;
-typedef  TYPE_9__ MMALOMX_PORT_T ;
-typedef  TYPE_10__ MMALOMX_COMPONENT_T ;
+struct TYPE_18__ {scalar_t__ state; char* name; int role; int group_id; int group_priority; int * ports_domain_num; } ;
+typedef TYPE_2__ OMX_VIDEO_PARAM_PORTFORMATTYPE ;
+typedef int OMX_VERSIONTYPE ;
+typedef int OMX_U32 ;
+typedef scalar_t__ OMX_PTR ;
+typedef TYPE_3__ OMX_PRIORITYMGMTTYPE ;
+typedef TYPE_4__ OMX_PORT_PARAM_TYPE ;
+typedef TYPE_5__ OMX_PARAM_PORTDEFINITIONTYPE ;
+typedef TYPE_6__ OMX_PARAM_COMPONENTROLETYPE ;
+typedef TYPE_7__ OMX_PARAM_BUFFERSUPPLIERTYPE ;
+typedef int OMX_INDEXTYPE ;
+typedef scalar_t__ OMX_HANDLETYPE ;
+typedef int OMX_ERRORTYPE ;
+typedef TYPE_8__ OMX_AUDIO_PARAM_PORTFORMATTYPE ;
+typedef TYPE_9__ MMALOMX_PORT_T ;
+typedef TYPE_10__ MMALOMX_COMPONENT_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_TRACE (char*,scalar_t__,int,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  MMAL_PARAMETER_SUPPORTED_ENCODINGS ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int /*<<< orphan*/  OMX_BufferSupplyUnspecified ; 
- int /*<<< orphan*/  OMX_COLOR_FormatUnused ; 
- int /*<<< orphan*/  OMX_ErrorBadParameter ; 
- int /*<<< orphan*/  OMX_ErrorInvalidComponent ; 
- int /*<<< orphan*/  OMX_ErrorInvalidState ; 
- int /*<<< orphan*/  OMX_ErrorNoMore ; 
- int /*<<< orphan*/  OMX_ErrorNone ; 
- int /*<<< orphan*/  OMX_ErrorNotImplemented ; 
-#define  OMX_IndexParamAudioInit 139 
-#define  OMX_IndexParamAudioPortFormat 138 
-#define  OMX_IndexParamCompBufferSupplier 137 
-#define  OMX_IndexParamImageInit 136 
-#define  OMX_IndexParamImagePortFormat 135 
-#define  OMX_IndexParamOtherInit 134 
-#define  OMX_IndexParamOtherPortFormat 133 
-#define  OMX_IndexParamPortDefinition 132 
-#define  OMX_IndexParamPriorityMgmt 131 
-#define  OMX_IndexParamStandardComponentRole 130 
-#define  OMX_IndexParamVideoInit 129 
-#define  OMX_IndexParamVideoPortFormat 128 
- size_t OMX_PortDomainAudio ; 
- size_t OMX_PortDomainImage ; 
- size_t OMX_PortDomainOther ; 
- size_t OMX_PortDomainVideo ; 
- scalar_t__ OMX_StateInvalid ; 
- int /*<<< orphan*/  OMX_VIDEO_CodingUnused ; 
- int /*<<< orphan*/  PARAM_GET_PORT (TYPE_9__*,TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmal_port_parameter_get (TYPE_14__*,TYPE_15__*) ; 
- int /*<<< orphan*/  mmalil_encoding_to_omx_audio_coding (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmalil_encoding_to_omx_color_format (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmalil_encoding_to_omx_video_coding (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmalil_error_to_omx (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mmalomx_get_port_settings (TYPE_9__*,TYPE_5__*) ; 
- int /*<<< orphan*/  mmalomx_param_to_string (int) ; 
- int /*<<< orphan*/  mmalomx_parameter_get (TYPE_10__*,int,scalar_t__) ; 
- char* mmalomx_role_to_name (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,char const*) ; 
+
+ int LOG_TRACE (char*,scalar_t__,int,int ,scalar_t__) ;
+ int MMAL_PARAMETER_SUPPORTED_ENCODINGS ;
+ int MMAL_SUCCESS ;
+ int OMX_BufferSupplyUnspecified ;
+ int OMX_COLOR_FormatUnused ;
+ int OMX_ErrorBadParameter ;
+ int OMX_ErrorInvalidComponent ;
+ int OMX_ErrorInvalidState ;
+ int OMX_ErrorNoMore ;
+ int OMX_ErrorNone ;
+ int OMX_ErrorNotImplemented ;
+ size_t OMX_PortDomainAudio ;
+ size_t OMX_PortDomainImage ;
+ size_t OMX_PortDomainOther ;
+ size_t OMX_PortDomainVideo ;
+ scalar_t__ OMX_StateInvalid ;
+ int OMX_VIDEO_CodingUnused ;
+ int PARAM_GET_PORT (TYPE_9__*,TYPE_10__*,int ) ;
+ int mmal_port_parameter_get (TYPE_14__*,TYPE_15__*) ;
+ int mmalil_encoding_to_omx_audio_coding (int ) ;
+ int mmalil_encoding_to_omx_color_format (int ) ;
+ int mmalil_encoding_to_omx_video_coding (int ) ;
+ int mmalil_error_to_omx (int ) ;
+ int mmalomx_get_port_settings (TYPE_9__*,TYPE_5__*) ;
+ int mmalomx_param_to_string (int) ;
+ int mmalomx_parameter_get (TYPE_10__*,int,scalar_t__) ;
+ char* mmalomx_role_to_name (int ) ;
+ int snprintf (char*,int,char*,char const*) ;
 
 __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
    OMX_HANDLETYPE hComponent,
@@ -98,12 +86,12 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
    OMX_PTR pParam)
 {
    MMALOMX_COMPONENT_T *component = (MMALOMX_COMPONENT_T *)hComponent;
-   MMALOMX_PORT_T *port = NULL;
+   MMALOMX_PORT_T *port = ((void*)0);
 
    LOG_TRACE("hComponent %p, nParamIndex 0x%x (%s), pParam %p",
              hComponent, nParamIndex, mmalomx_param_to_string(nParamIndex), pParam);
 
-   /* Sanity checks */
+
    if (!hComponent)
       return OMX_ErrorInvalidComponent;
    if (!pParam)
@@ -115,30 +103,30 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
 
    switch(nParamIndex)
    {
-   case OMX_IndexParamAudioInit:
-   case OMX_IndexParamVideoInit:
-   case OMX_IndexParamImageInit:
-   case OMX_IndexParamOtherInit:
+   case 139:
+   case 129:
+   case 136:
+   case 134:
       {
          OMX_PORT_PARAM_TYPE *param = (OMX_PORT_PARAM_TYPE *)pParam;
          param->nStartPortNumber = 0;
          param->nPorts = component->ports_domain_num[OMX_PortDomainAudio];
-         if (nParamIndex == OMX_IndexParamAudioInit)
+         if (nParamIndex == 139)
             return OMX_ErrorNone;
          param->nStartPortNumber += param->nPorts;
          param->nPorts = component->ports_domain_num[OMX_PortDomainVideo];
-         if (nParamIndex == OMX_IndexParamVideoInit)
+         if (nParamIndex == 129)
             return OMX_ErrorNone;
          param->nStartPortNumber += param->nPorts;
          param->nPorts = component->ports_domain_num[OMX_PortDomainImage];
-         if (nParamIndex == OMX_IndexParamImageInit)
+         if (nParamIndex == 136)
             return OMX_ErrorNone;
          param->nStartPortNumber += param->nPorts;
          param->nPorts = component->ports_domain_num[OMX_PortDomainOther];
       }
       return OMX_ErrorNone;
       break;
-   case OMX_IndexParamPortDefinition:
+   case 132:
       {
          OMX_PARAM_PORTDEFINITIONTYPE *param = (OMX_PARAM_PORTDEFINITIONTYPE *)pParam;
          PARAM_GET_PORT(port, component, param->nPortIndex);
@@ -146,7 +134,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
       }
       return OMX_ErrorNone;
       break;
-   case OMX_IndexParamCompBufferSupplier:
+   case 137:
       {
          OMX_PARAM_BUFFERSUPPLIERTYPE *param = (OMX_PARAM_BUFFERSUPPLIERTYPE *)pParam;
          PARAM_GET_PORT(port, component, param->nPortIndex);
@@ -154,7 +142,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
       }
       return OMX_ErrorNone;
       break;
-   case OMX_IndexParamPriorityMgmt:
+   case 131:
       {
          OMX_PRIORITYMGMTTYPE *param = (OMX_PRIORITYMGMTTYPE *)pParam;
          param->nGroupPriority = component->group_priority;
@@ -162,13 +150,13 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
       }
       return OMX_ErrorNone;
       break;
-   case OMX_IndexParamVideoPortFormat:
-   case OMX_IndexParamAudioPortFormat:
+   case 128:
+   case 138:
       {
          OMX_VIDEO_PARAM_PORTFORMATTYPE *param = (OMX_VIDEO_PARAM_PORTFORMATTYPE *)pParam;
          PARAM_GET_PORT(port, component, param->nPortIndex);
 
-         /* Populate our internal list of encodings the first time around */
+
          if (!port->encodings_num)
          {
             port->encodings_header.id = MMAL_PARAMETER_SUPPORTED_ENCODINGS;
@@ -188,7 +176,7 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
          if (param->nIndex >= port->encodings_num)
             return OMX_ErrorNoMore;
 
-         if (nParamIndex == OMX_IndexParamVideoPortFormat)
+         if (nParamIndex == 128)
          {
             param->eColorFormat = OMX_COLOR_FormatUnused;
             param->eCompressionFormat =
@@ -208,10 +196,10 @@ __attribute__((used)) static OMX_ERRORTYPE mmalomx_ComponentGetParameter(
          return OMX_ErrorNone;
       }
       break;
-   case OMX_IndexParamImagePortFormat:
-   case OMX_IndexParamOtherPortFormat:
+   case 135:
+   case 133:
       break;
-   case OMX_IndexParamStandardComponentRole:
+   case 130:
       {
          OMX_PARAM_COMPONENTROLETYPE *param = (OMX_PARAM_COMPONENTROLETYPE *)pParam;
          const char *role = mmalomx_role_to_name(component->role);

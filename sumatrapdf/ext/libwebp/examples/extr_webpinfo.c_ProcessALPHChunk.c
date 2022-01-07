@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ WebPInfoStatus ;
-struct TYPE_4__ {int seen_alpha_subchunk_; int has_alpha_; scalar_t__ parse_bitstream_; scalar_t__* chunk_counts_; scalar_t__ seen_image_subchunk_; int /*<<< orphan*/ * anmf_subchunk_counts_; scalar_t__ is_processing_anim_frame_; } ;
-typedef  TYPE_1__ WebPInfo ;
-typedef  int /*<<< orphan*/  ChunkData ;
 
-/* Variables and functions */
- size_t CHUNK_ALPHA ; 
- size_t CHUNK_ANIM ; 
- size_t CHUNK_ANMF ; 
- size_t CHUNK_VP8 ; 
- size_t CHUNK_VP8X ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- scalar_t__ ParseAlphaHeader (int /*<<< orphan*/  const* const,TYPE_1__* const) ; 
- scalar_t__ const WEBP_INFO_OK ; 
- scalar_t__ WEBP_INFO_PARSE_ERROR ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ WebPInfoStatus ;
+struct TYPE_4__ {int seen_alpha_subchunk_; int has_alpha_; scalar_t__ parse_bitstream_; scalar_t__* chunk_counts_; scalar_t__ seen_image_subchunk_; int * anmf_subchunk_counts_; scalar_t__ is_processing_anim_frame_; } ;
+typedef TYPE_1__ WebPInfo ;
+typedef int ChunkData ;
+
+
+ size_t CHUNK_ALPHA ;
+ size_t CHUNK_ANIM ;
+ size_t CHUNK_ANMF ;
+ size_t CHUNK_VP8 ;
+ size_t CHUNK_VP8X ;
+ int LOG_ERROR (char*) ;
+ scalar_t__ ParseAlphaHeader (int const* const,TYPE_1__* const) ;
+ scalar_t__ const WEBP_INFO_OK ;
+ scalar_t__ WEBP_INFO_PARSE_ERROR ;
 
 __attribute__((used)) static WebPInfoStatus ProcessALPHChunk(const ChunkData* const chunk_data,
                                        WebPInfo* const webp_info) {

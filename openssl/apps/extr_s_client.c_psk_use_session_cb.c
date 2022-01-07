@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_SESSION ;
-typedef  int /*<<< orphan*/  SSL_CIPHER ;
-typedef  int /*<<< orphan*/  SSL ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  OPENSSL_free (unsigned char*) ; 
- unsigned char* OPENSSL_hexstr2buf (int /*<<< orphan*/ ,long*) ; 
- int /*<<< orphan*/ * SSL_CIPHER_find (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  const* SSL_CIPHER_get_handshake_digest (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SSL_SESSION_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_SESSION_get0_cipher (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * SSL_SESSION_new () ; 
- int /*<<< orphan*/  SSL_SESSION_set1_master_key (int /*<<< orphan*/ *,unsigned char*,long) ; 
- int /*<<< orphan*/  SSL_SESSION_set_cipher (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  SSL_SESSION_set_protocol_version (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_SESSION_up_ref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TLS1_3_VERSION ; 
- int /*<<< orphan*/  bio_err ; 
- scalar_t__ psk_identity ; 
- int /*<<< orphan*/  psk_key ; 
- int /*<<< orphan*/ * psksess ; 
- size_t strlen (scalar_t__) ; 
- int /*<<< orphan*/  tls13_aes128gcmsha256_id ; 
+
+
+
+typedef int SSL_SESSION ;
+typedef int SSL_CIPHER ;
+typedef int SSL ;
+typedef int EVP_MD ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int OPENSSL_free (unsigned char*) ;
+ unsigned char* OPENSSL_hexstr2buf (int ,long*) ;
+ int * SSL_CIPHER_find (int *,int ) ;
+ int const* SSL_CIPHER_get_handshake_digest (int const*) ;
+ int SSL_SESSION_free (int *) ;
+ int * SSL_SESSION_get0_cipher (int *) ;
+ int * SSL_SESSION_new () ;
+ int SSL_SESSION_set1_master_key (int *,unsigned char*,long) ;
+ int SSL_SESSION_set_cipher (int *,int const*) ;
+ int SSL_SESSION_set_protocol_version (int *,int ) ;
+ int SSL_SESSION_up_ref (int *) ;
+ int TLS1_3_VERSION ;
+ int bio_err ;
+ scalar_t__ psk_identity ;
+ int psk_key ;
+ int * psksess ;
+ size_t strlen (scalar_t__) ;
+ int tls13_aes128gcmsha256_id ;
 
 __attribute__((used)) static int psk_use_session_cb(SSL *s, const EVP_MD *md,
                               const unsigned char **id, size_t *idlen,
                               SSL_SESSION **sess)
 {
-    SSL_SESSION *usesess = NULL;
-    const SSL_CIPHER *cipher = NULL;
+    SSL_SESSION *usesess = ((void*)0);
+    const SSL_CIPHER *cipher = ((void*)0);
 
-    if (psksess != NULL) {
+    if (psksess != ((void*)0)) {
         SSL_SESSION_up_ref(psksess);
         usesess = psksess;
     } else {
         long key_len;
         unsigned char *key = OPENSSL_hexstr2buf(psk_key, &key_len);
 
-        if (key == NULL) {
+        if (key == ((void*)0)) {
             BIO_printf(bio_err, "Could not convert PSK key '%s' to buffer\n",
                        psk_key);
             return 0;
         }
 
-        /* We default to SHA-256 */
+
         cipher = SSL_CIPHER_find(s, tls13_aes128gcmsha256_id);
-        if (cipher == NULL) {
+        if (cipher == ((void*)0)) {
             BIO_printf(bio_err, "Error finding suitable ciphersuite\n");
             OPENSSL_free(key);
             return 0;
         }
 
         usesess = SSL_SESSION_new();
-        if (usesess == NULL
+        if (usesess == ((void*)0)
                 || !SSL_SESSION_set1_master_key(usesess, key, key_len)
                 || !SSL_SESSION_set_cipher(usesess, cipher)
                 || !SSL_SESSION_set_protocol_version(usesess, TLS1_3_VERSION)) {
@@ -76,14 +76,14 @@ __attribute__((used)) static int psk_use_session_cb(SSL *s, const EVP_MD *md,
     }
 
     cipher = SSL_SESSION_get0_cipher(usesess);
-    if (cipher == NULL)
+    if (cipher == ((void*)0))
         goto err;
 
-    if (md != NULL && SSL_CIPHER_get_handshake_digest(cipher) != md) {
-        /* PSK not usable, ignore it */
-        *id = NULL;
+    if (md != ((void*)0) && SSL_CIPHER_get_handshake_digest(cipher) != md) {
+
+        *id = ((void*)0);
         *idlen = 0;
-        *sess = NULL;
+        *sess = ((void*)0);
         SSL_SESSION_free(usesess);
     } else {
         *sess = usesess;

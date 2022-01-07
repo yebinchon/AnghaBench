@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ isalpha (int) ; 
- scalar_t__ isalpharune (int) ; 
+ scalar_t__ isalpha (int) ;
+ scalar_t__ isalpharune (int) ;
 
 __attribute__((used)) static int jsY_isidentifierstart(int c)
 {
-	return isalpha(c) || c == '$' || c == '_' || isalpharune(c);
+ return isalpha(c) || c == '$' || c == '_' || isalpharune(c);
 }

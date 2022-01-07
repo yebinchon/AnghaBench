@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  R_OK ; 
- scalar_t__ access (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * fgets (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  freez (char*) ; 
- int /*<<< orphan*/  info (char*,char*) ; 
- scalar_t__ likely (int) ; 
- char* mallocz (int) ; 
- int /*<<< orphan*/  mypclose (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * mypopen (char*,int /*<<< orphan*/ *) ; 
- int netdata_anonymous_statistics_enabled ; 
- char* netdata_configured_primary_plugins_dir ; 
- char* netdata_configured_user_config_dir ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,char const*,...) ; 
- int strlen (char const*) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+typedef int pid_t ;
+typedef int FILE ;
+
+
+ int R_OK ;
+ scalar_t__ access (char*,int ) ;
+ int * fgets (char*,int,int *) ;
+ int freez (char*) ;
+ int info (char*,char*) ;
+ scalar_t__ likely (int) ;
+ char* mallocz (int) ;
+ int mypclose (int *,int ) ;
+ int * mypopen (char*,int *) ;
+ int netdata_anonymous_statistics_enabled ;
+ char* netdata_configured_primary_plugins_dir ;
+ char* netdata_configured_user_config_dir ;
+ int sprintf (char*,char*,char*,char const*,...) ;
+ int strlen (char const*) ;
+ scalar_t__ unlikely (int) ;
 
 void send_statistics( const char *action, const char *action_result, const char *action_data) {
     static char *as_script;
@@ -47,7 +47,7 @@ void send_statistics( const char *action, const char *action_result, const char 
             }
         } else {
             netdata_anonymous_statistics_enabled = 0;
-            as_script = NULL;
+            as_script = ((void*)0);
         }
         freez(optout_file);
     }
@@ -64,7 +64,7 @@ void send_statistics( const char *action, const char *action_result, const char 
     FILE *fp = mypopen(command_to_run, &command_pid);
     if(fp) {
         char buffer[100 + 1];
-        while (fgets(buffer, 100, fp) != NULL);
+        while (fgets(buffer, 100, fp) != ((void*)0));
         mypclose(fp, command_pid);
     }
     freez(command_to_run);

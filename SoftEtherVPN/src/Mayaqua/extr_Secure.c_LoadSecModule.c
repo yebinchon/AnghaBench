@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int Initialized; TYPE_1__* Api; } ;
-struct TYPE_6__ {scalar_t__ (* C_Initialize ) (int /*<<< orphan*/ *) ;} ;
-typedef  TYPE_2__ SECURE ;
+struct TYPE_6__ {scalar_t__ (* C_Initialize ) (int *) ;} ;
+typedef TYPE_2__ SECURE ;
 
-/* Variables and functions */
- scalar_t__ CKR_OK ; 
- int /*<<< orphan*/  FreeSecModule (TYPE_2__*) ; 
- int Win32LoadSecModule (TYPE_2__*) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CKR_OK ;
+ int FreeSecModule (TYPE_2__*) ;
+ int Win32LoadSecModule (TYPE_2__*) ;
+ scalar_t__ stub1 (int *) ;
 
 bool LoadSecModule(SECURE *sec)
 {
-	bool ret = false;
-	// Validate arguments
-	if (sec == NULL)
-	{
-		return false;
-	}
+ bool ret = 0;
 
-#ifdef	OS_WIN32
-	ret = Win32LoadSecModule(sec);
-#endif	// OS_WIN32
+ if (sec == ((void*)0))
+ {
+  return 0;
+ }
 
-	// Initialization
-	if (sec->Api->C_Initialize(NULL) != CKR_OK)
-	{
-		// Initialization Failed
-		FreeSecModule(sec);
-		return false;
-	}
 
-	sec->Initialized = true;
 
-	return ret;
+
+
+
+ if (sec->Api->C_Initialize(((void*)0)) != CKR_OK)
+ {
+
+  FreeSecModule(sec);
+  return 0;
+ }
+
+ sec->Initialized = 1;
+
+ return ret;
 }

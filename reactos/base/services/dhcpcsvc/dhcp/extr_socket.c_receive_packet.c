@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr_in {int dummy; } ;
 struct sockaddr {int dummy; } ;
-struct interface_info {int /*<<< orphan*/  rfdesc; } ;
+struct interface_info {int rfdesc; } ;
 struct hardware {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- size_t INT_MAX ; 
- int WSAEMSGSIZE ; 
- int recvfrom (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ,struct sockaddr*,int*) ; 
+
+ size_t INT_MAX ;
+ int WSAEMSGSIZE ;
+ int recvfrom (int ,char*,int,int ,struct sockaddr*,int*) ;
 
 ssize_t receive_packet(struct interface_info *ip,
                        unsigned char *packet_data,

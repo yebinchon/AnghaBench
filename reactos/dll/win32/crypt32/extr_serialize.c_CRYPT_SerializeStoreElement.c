@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ (* enumProps ) (void const*,scalar_t__) ;scalar_t__ (* getProp ) (void const*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*) ;} ;
-typedef  TYPE_1__ WINE_CONTEXT_INTERFACE ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ (* enumProps ) (void const*,scalar_t__) ;scalar_t__ (* getProp ) (void const*,scalar_t__,int const*,scalar_t__*) ;} ;
+typedef TYPE_1__ WINE_CONTEXT_INTERFACE ;
 struct TYPE_6__ {int unknown; scalar_t__ cb; scalar_t__ propID; } ;
-typedef  TYPE_2__ WINE_CERT_PROP_HEADER ;
-typedef  int /*<<< orphan*/  const* LPBYTE ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  scalar_t__ BOOL ;
+typedef TYPE_2__ WINE_CERT_PROP_HEADER ;
+typedef int const* LPBYTE ;
+typedef scalar_t__ DWORD ;
+typedef int BYTE ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CryptMemAlloc (scalar_t__) ; 
- int /*<<< orphan*/  CryptMemFree (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * CryptMemRealloc (int /*<<< orphan*/  const*,scalar_t__) ; 
- int /*<<< orphan*/  ERROR_MORE_DATA ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  IS_CERT_HASH_PROP_ID (scalar_t__) ; 
- int /*<<< orphan*/  SetLastError (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,void const*,TYPE_1__ const*,scalar_t__,scalar_t__,int /*<<< orphan*/ *,scalar_t__*) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,scalar_t__) ; 
- scalar_t__ stub1 (void const*,scalar_t__) ; 
- scalar_t__ stub2 (void const*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*) ; 
- scalar_t__ stub3 (void const*,scalar_t__) ; 
- scalar_t__ stub4 (void const*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*) ; 
- scalar_t__ stub5 (void const*,scalar_t__,int /*<<< orphan*/  const*,scalar_t__*) ; 
+
+ int * CryptMemAlloc (scalar_t__) ;
+ int CryptMemFree (int const*) ;
+ int * CryptMemRealloc (int const*,scalar_t__) ;
+ int ERROR_MORE_DATA ;
+ scalar_t__ FALSE ;
+ int IS_CERT_HASH_PROP_ID (scalar_t__) ;
+ int SetLastError (int ) ;
+ int TRACE (char*,void const*,TYPE_1__ const*,scalar_t__,scalar_t__,int *,scalar_t__*) ;
+ scalar_t__ TRUE ;
+ int memcpy (int *,int const*,scalar_t__) ;
+ scalar_t__ stub1 (void const*,scalar_t__) ;
+ scalar_t__ stub2 (void const*,scalar_t__,int const*,scalar_t__*) ;
+ scalar_t__ stub3 (void const*,scalar_t__) ;
+ scalar_t__ stub4 (void const*,scalar_t__,int const*,scalar_t__*) ;
+ scalar_t__ stub5 (void const*,scalar_t__,int const*,scalar_t__*) ;
 
 __attribute__((used)) static BOOL CRYPT_SerializeStoreElement(const void *context,
  const BYTE *encodedContext, DWORD cbEncodedContext, DWORD contextPropID,
@@ -60,7 +60,7 @@ __attribute__((used)) static BOOL CRYPT_SerializeStoreElement(const void *contex
             {
                 DWORD propSize = 0;
 
-                ret = contextInterface->getProp(context, prop, NULL, &propSize);
+                ret = contextInterface->getProp(context, prop, ((void*)0), &propSize);
                 if (ret)
                     bytesNeeded += sizeof(WINE_CERT_PROP_HEADER) + propSize;
             }
@@ -81,7 +81,7 @@ __attribute__((used)) static BOOL CRYPT_SerializeStoreElement(const void *contex
         {
             WINE_CERT_PROP_HEADER *hdr;
             DWORD bufSize = 0;
-            LPBYTE buf = NULL;
+            LPBYTE buf = ((void*)0);
 
             prop = 0;
             do {
@@ -90,7 +90,7 @@ __attribute__((used)) static BOOL CRYPT_SerializeStoreElement(const void *contex
                 {
                     DWORD propSize = 0;
 
-                    ret = contextInterface->getProp(context, prop, NULL,
+                    ret = contextInterface->getProp(context, prop, ((void*)0),
                      &propSize);
                     if (ret)
                     {

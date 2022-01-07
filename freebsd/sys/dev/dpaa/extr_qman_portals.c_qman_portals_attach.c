@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dpaa_portals_softc {int /*<<< orphan*/  sc_dp_size; int /*<<< orphan*/  sc_dp_pa; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int ENXIO ; 
- int /*<<< orphan*/  OCP85XX_TGTIF_QMAN ; 
- int /*<<< orphan*/  XX_PortalSetInfo (int /*<<< orphan*/ ) ; 
- int bus_generic_attach (int /*<<< orphan*/ ) ; 
- struct dpaa_portals_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- scalar_t__ law_enable (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  qman_portals_detach (int /*<<< orphan*/ ) ; 
- struct dpaa_portals_softc* qp_sc ; 
+
+
+
+struct dpaa_portals_softc {int sc_dp_size; int sc_dp_pa; } ;
+typedef int device_t ;
+
+
+ int ENXIO ;
+ int OCP85XX_TGTIF_QMAN ;
+ int XX_PortalSetInfo (int ) ;
+ int bus_generic_attach (int ) ;
+ struct dpaa_portals_softc* device_get_softc (int ) ;
+ scalar_t__ law_enable (int ,int ,int ) ;
+ int qman_portals_detach (int ) ;
+ struct dpaa_portals_softc* qp_sc ;
 
 int
 qman_portals_attach(device_t dev)
 {
-	struct dpaa_portals_softc *sc;
+ struct dpaa_portals_softc *sc;
 
-	sc = qp_sc = device_get_softc(dev);
-	
-	/* Map bman portal to physical address space */
-	if (law_enable(OCP85XX_TGTIF_QMAN, sc->sc_dp_pa, sc->sc_dp_size)) {
-		qman_portals_detach(dev);
-		return (ENXIO);
-	}
-	/* Set portal properties for XX_VirtToPhys() */
-	XX_PortalSetInfo(dev);
+ sc = qp_sc = device_get_softc(dev);
 
-	return (bus_generic_attach(dev));
+
+ if (law_enable(OCP85XX_TGTIF_QMAN, sc->sc_dp_pa, sc->sc_dp_size)) {
+  qman_portals_detach(dev);
+  return (ENXIO);
+ }
+
+ XX_PortalSetInfo(dev);
+
+ return (bus_generic_attach(dev));
 }

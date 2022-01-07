@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pid_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  F_SEAL_SEAL ; 
- int /*<<< orphan*/  F_SEAL_WRITE ; 
- int MFD_ALLOW_SEALING ; 
- int MFD_CLOEXEC ; 
- int /*<<< orphan*/  close (int) ; 
- int /*<<< orphan*/  join_idle_thread (int /*<<< orphan*/ ) ; 
- char* memfd_str ; 
- int /*<<< orphan*/  mfd_assert_add_seals (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mfd_assert_has_seals (int,int /*<<< orphan*/ ) ; 
- int mfd_assert_new (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mfd_def_size ; 
- int /*<<< orphan*/  mfd_fail_add_seals (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,char*,char*,char*) ; 
- int /*<<< orphan*/  spawn_idle_thread (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pid_t ;
+
+
+ int F_SEAL_SEAL ;
+ int F_SEAL_WRITE ;
+ int MFD_ALLOW_SEALING ;
+ int MFD_CLOEXEC ;
+ int close (int) ;
+ int join_idle_thread (int ) ;
+ char* memfd_str ;
+ int mfd_assert_add_seals (int,int ) ;
+ int mfd_assert_has_seals (int,int ) ;
+ int mfd_assert_new (char*,int ,int) ;
+ int mfd_def_size ;
+ int mfd_fail_add_seals (int,int ) ;
+ int printf (char*,char*,char*,char*) ;
+ int spawn_idle_thread (int ) ;
 
 __attribute__((used)) static void test_share_fork(char *banner, char *b_suffix)
 {
-	int fd;
-	pid_t pid;
+ int fd;
+ pid_t pid;
 
-	printf("%s %s %s\n", memfd_str, banner, b_suffix);
+ printf("%s %s %s\n", memfd_str, banner, b_suffix);
 
-	fd = mfd_assert_new("kern_memfd_share_fork",
-			    mfd_def_size,
-			    MFD_CLOEXEC | MFD_ALLOW_SEALING);
-	mfd_assert_has_seals(fd, 0);
+ fd = mfd_assert_new("kern_memfd_share_fork",
+       mfd_def_size,
+       MFD_CLOEXEC | MFD_ALLOW_SEALING);
+ mfd_assert_has_seals(fd, 0);
 
-	pid = spawn_idle_thread(0);
-	mfd_assert_add_seals(fd, F_SEAL_SEAL);
-	mfd_assert_has_seals(fd, F_SEAL_SEAL);
+ pid = spawn_idle_thread(0);
+ mfd_assert_add_seals(fd, F_SEAL_SEAL);
+ mfd_assert_has_seals(fd, F_SEAL_SEAL);
 
-	mfd_fail_add_seals(fd, F_SEAL_WRITE);
-	mfd_assert_has_seals(fd, F_SEAL_SEAL);
+ mfd_fail_add_seals(fd, F_SEAL_WRITE);
+ mfd_assert_has_seals(fd, F_SEAL_SEAL);
 
-	join_idle_thread(pid);
+ join_idle_thread(pid);
 
-	mfd_fail_add_seals(fd, F_SEAL_WRITE);
-	mfd_assert_has_seals(fd, F_SEAL_SEAL);
+ mfd_fail_add_seals(fd, F_SEAL_WRITE);
+ mfd_assert_has_seals(fd, F_SEAL_SEAL);
 
-	close(fd);
+ close(fd);
 }

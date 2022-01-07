@@ -1,0 +1,245 @@
+; ModuleID = '/home/carl/AnghaBench/freebsd/sys/dev/otus/extr_if_otus.c_otus_updateedca_locked.c'
+source_filename = "/home/carl/AnghaBench/freebsd/sys/dev/otus/extr_if_otus.c_otus_updateedca_locked.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.otus_softc = type { %struct.ieee80211com }
+%struct.ieee80211com = type { i32 }
+%struct.chanAccParams = type { %struct.wmeParams* }
+%struct.wmeParams = type { i32, i32, i32, i32 }
+
+@AR_MAC_REG_AC0_CW = common dso_local global i32 0, align 4
+@WME_AC_BE = common dso_local global i64 0, align 8
+@AR_MAC_REG_AC1_CW = common dso_local global i32 0, align 4
+@WME_AC_BK = common dso_local global i64 0, align 8
+@AR_MAC_REG_AC2_CW = common dso_local global i32 0, align 4
+@WME_AC_VI = common dso_local global i64 0, align 8
+@AR_MAC_REG_AC3_CW = common dso_local global i32 0, align 4
+@WME_AC_VO = common dso_local global i64 0, align 8
+@AR_MAC_REG_AC4_CW = common dso_local global i32 0, align 4
+@AR_MAC_REG_AC1_AC0_AIFS = common dso_local global i32 0, align 4
+@AR_MAC_REG_AC3_AC2_AIFS = common dso_local global i32 0, align 4
+@AR_MAC_REG_AC1_AC0_TXOP = common dso_local global i32 0, align 4
+@AR_MAC_REG_AC3_AC2_TXOP = common dso_local global i32 0, align 4
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.otus_softc*)* @otus_updateedca_locked to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @otus_updateedca_locked(%struct.otus_softc* %0) #0 {
+  %2 = alloca %struct.otus_softc*, align 8
+  %3 = alloca %struct.chanAccParams, align 8
+  %4 = alloca %struct.ieee80211com*, align 8
+  %5 = alloca %struct.wmeParams*, align 8
+  store %struct.otus_softc* %0, %struct.otus_softc** %2, align 8
+  %6 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %7 = getelementptr inbounds %struct.otus_softc, %struct.otus_softc* %6, i32 0, i32 0
+  store %struct.ieee80211com* %7, %struct.ieee80211com** %4, align 8
+  %8 = load %struct.ieee80211com*, %struct.ieee80211com** %4, align 8
+  %9 = call i32 @ieee80211_wme_ic_getparams(%struct.ieee80211com* %8, %struct.chanAccParams* %3)
+  %10 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %11 = call i32 @OTUS_LOCK_ASSERT(%struct.otus_softc* %10)
+  %12 = getelementptr inbounds %struct.chanAccParams, %struct.chanAccParams* %3, i32 0, i32 0
+  %13 = load %struct.wmeParams*, %struct.wmeParams** %12, align 8
+  store %struct.wmeParams* %13, %struct.wmeParams** %5, align 8
+  %14 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %15 = load i32, i32* @AR_MAC_REG_AC0_CW, align 4
+  %16 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %17 = load i64, i64* @WME_AC_BE, align 8
+  %18 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %16, i64 %17
+  %19 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %18, i32 0, i32 3
+  %20 = load i32, i32* %19, align 4
+  %21 = shl i32 1, %20
+  %22 = sub nsw i32 %21, 1
+  %23 = shl i32 %22, 16
+  %24 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %25 = load i64, i64* @WME_AC_BE, align 8
+  %26 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %24, i64 %25
+  %27 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %26, i32 0, i32 2
+  %28 = load i32, i32* %27, align 4
+  %29 = shl i32 1, %28
+  %30 = sub nsw i32 %29, 1
+  %31 = or i32 %23, %30
+  %32 = call i32 @otus_write(%struct.otus_softc* %14, i32 %15, i32 %31)
+  %33 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %34 = load i32, i32* @AR_MAC_REG_AC1_CW, align 4
+  %35 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %36 = load i64, i64* @WME_AC_BK, align 8
+  %37 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %35, i64 %36
+  %38 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %37, i32 0, i32 3
+  %39 = load i32, i32* %38, align 4
+  %40 = shl i32 1, %39
+  %41 = sub nsw i32 %40, 1
+  %42 = shl i32 %41, 16
+  %43 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %44 = load i64, i64* @WME_AC_BK, align 8
+  %45 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %43, i64 %44
+  %46 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %45, i32 0, i32 2
+  %47 = load i32, i32* %46, align 4
+  %48 = shl i32 1, %47
+  %49 = sub nsw i32 %48, 1
+  %50 = or i32 %42, %49
+  %51 = call i32 @otus_write(%struct.otus_softc* %33, i32 %34, i32 %50)
+  %52 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %53 = load i32, i32* @AR_MAC_REG_AC2_CW, align 4
+  %54 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %55 = load i64, i64* @WME_AC_VI, align 8
+  %56 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %54, i64 %55
+  %57 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %56, i32 0, i32 3
+  %58 = load i32, i32* %57, align 4
+  %59 = shl i32 1, %58
+  %60 = sub nsw i32 %59, 1
+  %61 = shl i32 %60, 16
+  %62 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %63 = load i64, i64* @WME_AC_VI, align 8
+  %64 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %62, i64 %63
+  %65 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %64, i32 0, i32 2
+  %66 = load i32, i32* %65, align 4
+  %67 = shl i32 1, %66
+  %68 = sub nsw i32 %67, 1
+  %69 = or i32 %61, %68
+  %70 = call i32 @otus_write(%struct.otus_softc* %52, i32 %53, i32 %69)
+  %71 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %72 = load i32, i32* @AR_MAC_REG_AC3_CW, align 4
+  %73 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %74 = load i64, i64* @WME_AC_VO, align 8
+  %75 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %73, i64 %74
+  %76 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %75, i32 0, i32 3
+  %77 = load i32, i32* %76, align 4
+  %78 = shl i32 1, %77
+  %79 = sub nsw i32 %78, 1
+  %80 = shl i32 %79, 16
+  %81 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %82 = load i64, i64* @WME_AC_VO, align 8
+  %83 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %81, i64 %82
+  %84 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %83, i32 0, i32 2
+  %85 = load i32, i32* %84, align 4
+  %86 = shl i32 1, %85
+  %87 = sub nsw i32 %86, 1
+  %88 = or i32 %80, %87
+  %89 = call i32 @otus_write(%struct.otus_softc* %71, i32 %72, i32 %88)
+  %90 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %91 = load i32, i32* @AR_MAC_REG_AC4_CW, align 4
+  %92 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %93 = load i64, i64* @WME_AC_VO, align 8
+  %94 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %92, i64 %93
+  %95 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %94, i32 0, i32 3
+  %96 = load i32, i32* %95, align 4
+  %97 = shl i32 1, %96
+  %98 = sub nsw i32 %97, 1
+  %99 = shl i32 %98, 16
+  %100 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %101 = load i64, i64* @WME_AC_VO, align 8
+  %102 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %100, i64 %101
+  %103 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %102, i32 0, i32 2
+  %104 = load i32, i32* %103, align 4
+  %105 = shl i32 1, %104
+  %106 = sub nsw i32 %105, 1
+  %107 = or i32 %99, %106
+  %108 = call i32 @otus_write(%struct.otus_softc* %90, i32 %91, i32 %107)
+  %109 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %110 = load i32, i32* @AR_MAC_REG_AC1_AC0_AIFS, align 4
+  %111 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %112 = load i64, i64* @WME_AC_VI, align 8
+  %113 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %111, i64 %112
+  %114 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %113, i32 0, i32 1
+  %115 = load i32, i32* %114, align 4
+  %116 = mul nsw i32 %115, 9
+  %117 = add nsw i32 %116, 10
+  %118 = shl i32 %117, 24
+  %119 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %120 = load i64, i64* @WME_AC_BK, align 8
+  %121 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %119, i64 %120
+  %122 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %121, i32 0, i32 1
+  %123 = load i32, i32* %122, align 4
+  %124 = mul nsw i32 %123, 9
+  %125 = add nsw i32 %124, 10
+  %126 = shl i32 %125, 12
+  %127 = or i32 %118, %126
+  %128 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %129 = load i64, i64* @WME_AC_BE, align 8
+  %130 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %128, i64 %129
+  %131 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %130, i32 0, i32 1
+  %132 = load i32, i32* %131, align 4
+  %133 = mul nsw i32 %132, 9
+  %134 = add nsw i32 %133, 10
+  %135 = or i32 %127, %134
+  %136 = call i32 @otus_write(%struct.otus_softc* %109, i32 %110, i32 %135)
+  %137 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %138 = load i32, i32* @AR_MAC_REG_AC3_AC2_AIFS, align 4
+  %139 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %140 = load i64, i64* @WME_AC_VO, align 8
+  %141 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %139, i64 %140
+  %142 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %141, i32 0, i32 1
+  %143 = load i32, i32* %142, align 4
+  %144 = mul nsw i32 %143, 9
+  %145 = add nsw i32 %144, 10
+  %146 = shl i32 %145, 16
+  %147 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %148 = load i64, i64* @WME_AC_VO, align 8
+  %149 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %147, i64 %148
+  %150 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %149, i32 0, i32 1
+  %151 = load i32, i32* %150, align 4
+  %152 = mul nsw i32 %151, 9
+  %153 = add nsw i32 %152, 10
+  %154 = shl i32 %153, 4
+  %155 = or i32 %146, %154
+  %156 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %157 = load i64, i64* @WME_AC_VI, align 8
+  %158 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %156, i64 %157
+  %159 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %158, i32 0, i32 1
+  %160 = load i32, i32* %159, align 4
+  %161 = mul nsw i32 %160, 9
+  %162 = add nsw i32 %161, 10
+  %163 = ashr i32 %162, 8
+  %164 = or i32 %155, %163
+  %165 = call i32 @otus_write(%struct.otus_softc* %137, i32 %138, i32 %164)
+  %166 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %167 = load i32, i32* @AR_MAC_REG_AC1_AC0_TXOP, align 4
+  %168 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %169 = load i64, i64* @WME_AC_BK, align 8
+  %170 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %168, i64 %169
+  %171 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %170, i32 0, i32 0
+  %172 = load i32, i32* %171, align 4
+  %173 = shl i32 %172, 16
+  %174 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %175 = load i64, i64* @WME_AC_BE, align 8
+  %176 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %174, i64 %175
+  %177 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %176, i32 0, i32 0
+  %178 = load i32, i32* %177, align 4
+  %179 = or i32 %173, %178
+  %180 = call i32 @otus_write(%struct.otus_softc* %166, i32 %167, i32 %179)
+  %181 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %182 = load i32, i32* @AR_MAC_REG_AC3_AC2_TXOP, align 4
+  %183 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %184 = load i64, i64* @WME_AC_VO, align 8
+  %185 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %183, i64 %184
+  %186 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %185, i32 0, i32 0
+  %187 = load i32, i32* %186, align 4
+  %188 = shl i32 %187, 16
+  %189 = load %struct.wmeParams*, %struct.wmeParams** %5, align 8
+  %190 = load i64, i64* @WME_AC_VI, align 8
+  %191 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %189, i64 %190
+  %192 = getelementptr inbounds %struct.wmeParams, %struct.wmeParams* %191, i32 0, i32 0
+  %193 = load i32, i32* %192, align 4
+  %194 = or i32 %188, %193
+  %195 = call i32 @otus_write(%struct.otus_softc* %181, i32 %182, i32 %194)
+  %196 = load %struct.otus_softc*, %struct.otus_softc** %2, align 8
+  %197 = call i32 @otus_write_barrier(%struct.otus_softc* %196)
+  ret void
+}
+
+declare dso_local i32 @ieee80211_wme_ic_getparams(%struct.ieee80211com*, %struct.chanAccParams*) #1
+
+declare dso_local i32 @OTUS_LOCK_ASSERT(%struct.otus_softc*) #1
+
+declare dso_local i32 @otus_write(%struct.otus_softc*, i32, i32) #1
+
+declare dso_local i32 @otus_write_barrier(%struct.otus_softc*) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

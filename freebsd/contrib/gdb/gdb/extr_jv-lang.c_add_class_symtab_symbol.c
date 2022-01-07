@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symtab {int dummy; } ;
 struct symbol {int dummy; } ;
 struct blockvector {int dummy; } ;
 
-/* Variables and functions */
- struct blockvector* BLOCKVECTOR (struct symtab*) ; 
- int /*<<< orphan*/  BLOCKVECTOR_BLOCK (struct blockvector*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  BLOCK_DICT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GLOBAL_BLOCK ; 
- int /*<<< orphan*/  dict_add_symbol (int /*<<< orphan*/ ,struct symbol*) ; 
- struct symtab* get_java_class_symtab () ; 
+
+ struct blockvector* BLOCKVECTOR (struct symtab*) ;
+ int BLOCKVECTOR_BLOCK (struct blockvector*,int ) ;
+ int BLOCK_DICT (int ) ;
+ int GLOBAL_BLOCK ;
+ int dict_add_symbol (int ,struct symbol*) ;
+ struct symtab* get_java_class_symtab () ;
 
 __attribute__((used)) static void
 add_class_symtab_symbol (struct symbol *sym)

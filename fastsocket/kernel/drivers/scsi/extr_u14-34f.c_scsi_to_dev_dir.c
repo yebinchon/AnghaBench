@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct scsi_cmnd {scalar_t__ sc_data_direction; unsigned char const* cmnd; } ;
 struct mscp {scalar_t__ xdir; struct scsi_cmnd* SCpnt; } ;
 struct TYPE_2__ {struct mscp* cp; } ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (unsigned char const*) ; 
- int /*<<< orphan*/  BN (unsigned int) ; 
- scalar_t__ DMA_BIDIRECTIONAL ; 
- scalar_t__ DMA_FROM_DEVICE ; 
- scalar_t__ DMA_NONE ; 
- scalar_t__ DMA_TO_DEVICE ; 
- scalar_t__ DTD_IN ; 
- void* DTD_NONE ; 
- void* DTD_OUT ; 
- TYPE_1__* HD (unsigned int) ; 
- int /*<<< orphan*/  panic (char*,int /*<<< orphan*/ ) ; 
+
+ unsigned int ARRAY_SIZE (unsigned char const*) ;
+ int BN (unsigned int) ;
+ scalar_t__ DMA_BIDIRECTIONAL ;
+ scalar_t__ DMA_FROM_DEVICE ;
+ scalar_t__ DMA_NONE ;
+ scalar_t__ DMA_TO_DEVICE ;
+ scalar_t__ DTD_IN ;
+ void* DTD_NONE ;
+ void* DTD_OUT ;
+ TYPE_1__* HD (unsigned int) ;
+ int panic (char*,int ) ;
 
 __attribute__((used)) static void scsi_to_dev_dir(unsigned int i, unsigned int j) {
    unsigned int k;

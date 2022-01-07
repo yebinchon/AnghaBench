@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int TRACE (char*) ;
+ scalar_t__ TRACE_ON (int ) ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int /*<<< orphan*/  TRACE (char*) ; 
- scalar_t__ TRACE_ON (int /*<<< orphan*/ ) ; 
-#define  b_r 130 
-#define  b_s 129 
-#define  b_x 128 
- int /*<<< orphan*/  uniscribe ; 
+ int uniscribe ;
 
 __attribute__((used)) static void debug_output_breaks(const short* breaks, int count)
 {
@@ -29,9 +21,9 @@ __attribute__((used)) static void debug_output_breaks(const short* breaks, int c
         {
             switch (breaks[i])
             {
-                case b_x: TRACE("x"); break;
-                case b_r: TRACE("!"); break;
-                case b_s: TRACE("+"); break;
+                case 128: TRACE("x"); break;
+                case 130: TRACE("!"); break;
+                case 129: TRACE("+"); break;
                 default: TRACE("*");
             }
         }

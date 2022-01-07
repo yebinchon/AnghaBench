@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct drm_crtc_state {int dummy; } ;
-struct drm_crtc {int /*<<< orphan*/  name; } ;
+struct drm_crtc {int name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DBG (char*,int /*<<< orphan*/ ) ; 
+
+ int DBG (char*,int ) ;
 
 __attribute__((used)) static void mdp5_crtc_atomic_begin(struct drm_crtc *crtc,
-				   struct drm_crtc_state *old_crtc_state)
+       struct drm_crtc_state *old_crtc_state)
 {
-	DBG("%s: begin", crtc->name);
+ DBG("%s: begin", crtc->name);
 }

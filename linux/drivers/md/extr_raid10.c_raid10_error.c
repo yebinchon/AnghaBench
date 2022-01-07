@@ -1,75 +1,75 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ raid_disks; } ;
-struct r10conf {TYPE_1__ geo; int /*<<< orphan*/  device_lock; } ;
-struct mddev {scalar_t__ degraded; int /*<<< orphan*/  sb_flags; int /*<<< orphan*/  recovery; int /*<<< orphan*/  fail_last_dev; struct r10conf* private; } ;
-struct md_rdev {int /*<<< orphan*/  bdev; int /*<<< orphan*/  flags; int /*<<< orphan*/  raid_disk; } ;
+struct r10conf {TYPE_1__ geo; int device_lock; } ;
+struct mddev {scalar_t__ degraded; int sb_flags; int recovery; int fail_last_dev; struct r10conf* private; } ;
+struct md_rdev {int bdev; int flags; int raid_disk; } ;
 
-/* Variables and functions */
- int BDEVNAME_SIZE ; 
- int BIT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Blocked ; 
- int /*<<< orphan*/  Faulty ; 
- int /*<<< orphan*/  In_sync ; 
- int /*<<< orphan*/  MD_RECOVERY_INTR ; 
- int /*<<< orphan*/  MD_SB_CHANGE_DEVS ; 
- int /*<<< orphan*/  MD_SB_CHANGE_PENDING ; 
- int /*<<< orphan*/  bdevname (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  enough (struct r10conf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mdname (struct mddev*) ; 
- int /*<<< orphan*/  pr_crit (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_mask_bits (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- scalar_t__ test_and_clear_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ test_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int BDEVNAME_SIZE ;
+ int BIT (int ) ;
+ int Blocked ;
+ int Faulty ;
+ int In_sync ;
+ int MD_RECOVERY_INTR ;
+ int MD_SB_CHANGE_DEVS ;
+ int MD_SB_CHANGE_PENDING ;
+ int bdevname (int ,char*) ;
+ int enough (struct r10conf*,int ) ;
+ int mdname (struct mddev*) ;
+ int pr_crit (char*,int ,int ,int ,scalar_t__) ;
+ int set_bit (int ,int *) ;
+ int set_mask_bits (int *,int ,int) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ scalar_t__ test_and_clear_bit (int ,int *) ;
+ scalar_t__ test_bit (int ,int *) ;
 
 __attribute__((used)) static void raid10_error(struct mddev *mddev, struct md_rdev *rdev)
 {
-	char b[BDEVNAME_SIZE];
-	struct r10conf *conf = mddev->private;
-	unsigned long flags;
+ char b[BDEVNAME_SIZE];
+ struct r10conf *conf = mddev->private;
+ unsigned long flags;
 
-	/*
-	 * If it is not operational, then we have already marked it as dead
-	 * else if it is the last working disks with "fail_last_dev == false",
-	 * ignore the error, let the next level up know.
-	 * else mark the drive as failed
-	 */
-	spin_lock_irqsave(&conf->device_lock, flags);
-	if (test_bit(In_sync, &rdev->flags) && !mddev->fail_last_dev
-	    && !enough(conf, rdev->raid_disk)) {
-		/*
-		 * Don't fail the drive, just return an IO error.
-		 */
-		spin_unlock_irqrestore(&conf->device_lock, flags);
-		return;
-	}
-	if (test_and_clear_bit(In_sync, &rdev->flags))
-		mddev->degraded++;
-	/*
-	 * If recovery is running, make sure it aborts.
-	 */
-	set_bit(MD_RECOVERY_INTR, &mddev->recovery);
-	set_bit(Blocked, &rdev->flags);
-	set_bit(Faulty, &rdev->flags);
-	set_mask_bits(&mddev->sb_flags, 0,
-		      BIT(MD_SB_CHANGE_DEVS) | BIT(MD_SB_CHANGE_PENDING));
-	spin_unlock_irqrestore(&conf->device_lock, flags);
-	pr_crit("md/raid10:%s: Disk failure on %s, disabling device.\n"
-		"md/raid10:%s: Operation continuing on %d devices.\n",
-		mdname(mddev), bdevname(rdev->bdev, b),
-		mdname(mddev), conf->geo.raid_disks - mddev->degraded);
+
+
+
+
+
+
+ spin_lock_irqsave(&conf->device_lock, flags);
+ if (test_bit(In_sync, &rdev->flags) && !mddev->fail_last_dev
+     && !enough(conf, rdev->raid_disk)) {
+
+
+
+  spin_unlock_irqrestore(&conf->device_lock, flags);
+  return;
+ }
+ if (test_and_clear_bit(In_sync, &rdev->flags))
+  mddev->degraded++;
+
+
+
+ set_bit(MD_RECOVERY_INTR, &mddev->recovery);
+ set_bit(Blocked, &rdev->flags);
+ set_bit(Faulty, &rdev->flags);
+ set_mask_bits(&mddev->sb_flags, 0,
+        BIT(MD_SB_CHANGE_DEVS) | BIT(MD_SB_CHANGE_PENDING));
+ spin_unlock_irqrestore(&conf->device_lock, flags);
+ pr_crit("md/raid10:%s: Disk failure on %s, disabling device.\n"
+  "md/raid10:%s: Operation continuing on %d devices.\n",
+  mdname(mddev), bdevname(rdev->bdev, b),
+  mdname(mddev), conf->geo.raid_disks - mddev->degraded);
 }

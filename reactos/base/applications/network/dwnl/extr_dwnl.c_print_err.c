@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int ConResPrintf (int ,int ,...) ;
+ int DWNL_E_LASTERROR ;
 
-/* Forward declarations */
 
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int DWNL_E_LASTERROR ; 
-#define  DWNL_E_NEEDTARGETFILENAME 129 
-#define  DWNL_E_UNSUPPORTEDSCHEME 128 
- scalar_t__ ERROR_SUCCESS ; 
- scalar_t__ GetLastError () ; 
- int /*<<< orphan*/  IDS_ERROR_CODE ; 
- int /*<<< orphan*/  IDS_ERROR_DOWNLOAD ; 
- int /*<<< orphan*/  IDS_ERROR_FILENAME ; 
- int /*<<< orphan*/  IDS_ERROR_PROTOCOL ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  write_status (char*) ; 
+ scalar_t__ ERROR_SUCCESS ;
+ scalar_t__ GetLastError () ;
+ int IDS_ERROR_CODE ;
+ int IDS_ERROR_DOWNLOAD ;
+ int IDS_ERROR_FILENAME ;
+ int IDS_ERROR_PROTOCOL ;
+ int StdErr ;
+ int write_status (char*) ;
 
 __attribute__((used)) static int
 print_err(int iErr)
@@ -34,12 +26,12 @@ print_err(int iErr)
     {
         if (GetLastError() == ERROR_SUCCESS)
         {
-            /* File not found */
+
             ConResPrintf(StdErr, IDS_ERROR_DOWNLOAD);
         }
         else
         {
-            /* Display last error code */
+
             ConResPrintf(StdErr, IDS_ERROR_CODE, GetLastError());
         }
     }
@@ -47,11 +39,11 @@ print_err(int iErr)
     {
         switch (iErr)
         {
-            case DWNL_E_NEEDTARGETFILENAME:
+            case 129:
                 ConResPrintf(StdErr, IDS_ERROR_FILENAME);
                 break;
 
-            case DWNL_E_UNSUPPORTEDSCHEME:
+            case 128:
                 ConResPrintf(StdErr, IDS_ERROR_PROTOCOL);
                 break;
         }

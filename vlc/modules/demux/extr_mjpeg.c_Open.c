@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_9__ {int /*<<< orphan*/  force; } ;
-struct TYPE_10__ {int /*<<< orphan*/  pf_control; int /*<<< orphan*/  out; int /*<<< orphan*/  pf_demux; int /*<<< orphan*/  s; TYPE_3__* p_sys; TYPE_1__ obj; } ;
-typedef  TYPE_2__ demux_t ;
-struct TYPE_11__ {int i_frame_size_estimate; int* p_peek; int b_still; int /*<<< orphan*/ * p_es; int /*<<< orphan*/  fmt; void* i_frame_length; void* i_still_end; scalar_t__ i_level; int /*<<< orphan*/ * psz_separator; int /*<<< orphan*/  i_time; } ;
-typedef  TYPE_3__ demux_sys_t ;
 
-/* Variables and functions */
- int CheckMimeHeader (TYPE_2__*,int*) ; 
- int /*<<< orphan*/  Control ; 
- scalar_t__ IsMxpeg (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MimeDemux ; 
- int /*<<< orphan*/  MjpgDemux ; 
- int /*<<< orphan*/  VIDEO_ES ; 
- int /*<<< orphan*/  VLC_CODEC_MJPG ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  VLC_TICK_0 ; 
- void* VLC_TICK_INVALID ; 
- scalar_t__ demux_IsPathExtension (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  es_format_Init (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * es_out_Add (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_2__*,char*) ; 
- char* stream_ContentType (int /*<<< orphan*/ ) ; 
- size_t strlen (char*) ; 
- char* strstr (char*,char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- float var_InheritFloat (TYPE_2__*,char*) ; 
- TYPE_3__* vlc_obj_malloc (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * vlc_obj_strdup (int /*<<< orphan*/ *,char*) ; 
- int vlc_stream_Read (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- void* vlc_tick_rate_duration (float) ; 
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_9__ {int force; } ;
+struct TYPE_10__ {int pf_control; int out; int pf_demux; int s; TYPE_3__* p_sys; TYPE_1__ obj; } ;
+typedef TYPE_2__ demux_t ;
+struct TYPE_11__ {int i_frame_size_estimate; int* p_peek; int b_still; int * p_es; int fmt; void* i_frame_length; void* i_still_end; scalar_t__ i_level; int * psz_separator; int i_time; } ;
+typedef TYPE_3__ demux_sys_t ;
+
+
+ int CheckMimeHeader (TYPE_2__*,int*) ;
+ int Control ;
+ scalar_t__ IsMxpeg (int ) ;
+ int MimeDemux ;
+ int MjpgDemux ;
+ int VIDEO_ES ;
+ int VLC_CODEC_MJPG ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ int VLC_TICK_0 ;
+ void* VLC_TICK_INVALID ;
+ scalar_t__ demux_IsPathExtension (TYPE_2__*,char*) ;
+ int es_format_Init (int *,int ,int ) ;
+ int * es_out_Add (int ,int *) ;
+ int free (char*) ;
+ int msg_Dbg (TYPE_2__*,char*) ;
+ char* stream_ContentType (int ) ;
+ size_t strlen (char*) ;
+ char* strstr (char*,char*) ;
+ scalar_t__ unlikely (int ) ;
+ float var_InheritFloat (TYPE_2__*,char*) ;
+ TYPE_3__* vlc_obj_malloc (int *,int) ;
+ int * vlc_obj_strdup (int *,char*) ;
+ int vlc_stream_Read (int ,int *,int) ;
+ void* vlc_tick_rate_duration (float) ;
 
 __attribute__((used)) static int Open( vlc_object_t * p_this )
 {
-    demux_t     *p_demux = (demux_t*)p_this;
-    int         i_size;
-    bool        b_matched = false;
+    demux_t *p_demux = (demux_t*)p_this;
+    int i_size;
+    bool b_matched = 0;
 
     if( IsMxpeg( p_demux->s ) && !p_demux->obj.force )
-        // let avformat handle this case
+
         return VLC_EGENERIC;
 
     demux_sys_t *p_sys = vlc_obj_malloc( p_this, sizeof (*p_sys) );
-    if( unlikely(p_sys == NULL) )
+    if( unlikely(p_sys == ((void*)0)) )
         return VLC_ENOMEM;
 
-    p_demux->p_sys      = p_sys;
-    p_sys->p_es         = NULL;
-    p_sys->i_time       = VLC_TICK_0;
-    p_sys->i_level      = 0;
+    p_demux->p_sys = p_sys;
+    p_sys->p_es = ((void*)0);
+    p_sys->i_time = VLC_TICK_0;
+    p_sys->i_level = 0;
 
-    p_sys->psz_separator = NULL;
+    p_sys->psz_separator = ((void*)0);
     p_sys->i_frame_size_estimate = 15 * 1024;
 
     char *content_type = stream_ContentType( p_demux->s );
     if ( content_type )
     {
-        //FIXME: this is not fully match to RFC
+
         char* boundary = strstr( content_type, "boundary=" );
         if( boundary )
         {
@@ -99,12 +99,12 @@ __attribute__((used)) static int Open( vlc_object_t * p_this )
     if( b_matched )
     {
         p_demux->pf_demux = MimeDemux;
-        if( vlc_stream_Read( p_demux->s, NULL, i_size ) < i_size )
+        if( vlc_stream_Read( p_demux->s, ((void*)0), i_size ) < i_size )
             return VLC_EGENERIC;
     }
     else if( i_size == 0 )
     {
-        /* 0xffd8 identify a JPEG SOI */
+
         if( p_sys->p_peek[0] == 0xFF && p_sys->p_peek[1] == 0xD8 )
         {
             msg_Dbg( p_demux, "JPEG SOI marker detected" );
@@ -121,27 +121,27 @@ __attribute__((used)) static int Open( vlc_object_t * p_this )
         return VLC_EGENERIC;
     }
 
-    /* Frame rate */
+
     float f_fps = var_InheritFloat( p_demux, "mjpeg-fps" );
 
     p_sys->i_still_end = VLC_TICK_INVALID;
     if( demux_IsPathExtension( p_demux, ".jpeg" ) ||
         demux_IsPathExtension( p_demux, ".jpg" ) )
     {
-        /* Plain JPEG file = single still picture */
-        p_sys->b_still = true;
+
+        p_sys->b_still = 1;
         if( f_fps == 0.f )
-            /* Defaults to 1fps */
+
             f_fps = 1.f;
     }
     else
-        p_sys->b_still = false;
+        p_sys->b_still = 0;
     p_sys->i_frame_length = f_fps ? vlc_tick_rate_duration(f_fps) : VLC_TICK_INVALID;
 
     es_format_Init( &p_sys->fmt, VIDEO_ES, VLC_CODEC_MJPG );
 
     p_sys->p_es = es_out_Add( p_demux->out, &p_sys->fmt );
-    if( unlikely(p_sys->p_es == NULL) )
+    if( unlikely(p_sys->p_es == ((void*)0)) )
         return VLC_ENOMEM;
 
     p_demux->pf_control = Control;

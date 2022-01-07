@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
 struct TYPE_8__ {TYPE_1__* priv; } ;
-typedef  TYPE_2__ VC_PACKETIZER_T ;
-struct TYPE_9__ {int state; unsigned int version; unsigned int layer; unsigned int stream_version; unsigned int stream_layer; int /*<<< orphan*/  frame_size_samples; scalar_t__ frame_size; scalar_t__ bytes_read; int /*<<< orphan*/  sample_rate; scalar_t__ offset; int /*<<< orphan*/  lost_sync; int /*<<< orphan*/  channels; int /*<<< orphan*/  frame_bitrate; } ;
-typedef  TYPE_3__ VC_PACKETIZER_MODULE_T ;
-typedef  int VC_PACKETIZER_FLAGS_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_TIME_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_10__ {scalar_t__ size; int /*<<< orphan*/  data; int /*<<< orphan*/  buffer_size; int /*<<< orphan*/  flags; int /*<<< orphan*/  dts; int /*<<< orphan*/  pts; } ;
-typedef  TYPE_4__ VC_CONTAINER_PACKET_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_BYTESTREAM_T ;
-struct TYPE_7__ {int /*<<< orphan*/  time; int /*<<< orphan*/  stream; TYPE_3__* module; } ;
+typedef TYPE_2__ VC_PACKETIZER_T ;
+struct TYPE_9__ {int state; unsigned int version; unsigned int layer; unsigned int stream_version; unsigned int stream_layer; int frame_size_samples; scalar_t__ frame_size; scalar_t__ bytes_read; int sample_rate; scalar_t__ offset; int lost_sync; int channels; int frame_bitrate; } ;
+typedef TYPE_3__ VC_PACKETIZER_MODULE_T ;
+typedef int VC_PACKETIZER_FLAGS_T ;
+typedef int VC_CONTAINER_TIME_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_10__ {scalar_t__ size; int data; int buffer_size; int flags; int dts; int pts; } ;
+typedef TYPE_4__ VC_CONTAINER_PACKET_T ;
+typedef int VC_CONTAINER_BYTESTREAM_T ;
+struct TYPE_7__ {int time; int stream; TYPE_3__* module; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_DEBUG (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  LOG_ERROR (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ MIN (scalar_t__,int /*<<< orphan*/ ) ; 
- int MPGA_HEADER_SIZE ; 
-#define  STATE_DATA 133 
-#define  STATE_HEADER 132 
-#define  STATE_SYNC 131 
-#define  STATE_SYNC_DONE 130 
-#define  STATE_SYNC_LOST 129 
-#define  STATE_SYNC_NEXT 128 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_INCOMPLETE_DATA ; 
- int /*<<< orphan*/  VC_CONTAINER_PACKET_FLAG_FRAME_END ; 
- int /*<<< orphan*/  VC_CONTAINER_PACKET_FLAG_FRAME_START ; 
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  VC_CONTAINER_TIME_UNKNOWN ; 
- int VC_PACKETIZER_FLAG_FLUSH ; 
- int VC_PACKETIZER_FLAG_INFO ; 
- int VC_PACKETIZER_FLAG_SKIP ; 
- int /*<<< orphan*/  bytestream_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  bytestream_get_timestamps (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  bytestream_peek (int /*<<< orphan*/ *,int*,int) ; 
- int /*<<< orphan*/  bytestream_peek_at (int /*<<< orphan*/ *,scalar_t__,int*,int) ; 
- scalar_t__ bytestream_size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bytestream_skip (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  bytestream_skip_byte (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mpga_read_header (int*,scalar_t__*,int /*<<< orphan*/ *,unsigned int*,unsigned int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  vc_container_time_add (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_container_time_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vc_container_time_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_container_time_set_samplerate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int LOG_DEBUG (int ,char*,...) ;
+ int LOG_ERROR (int ,char*) ;
+ scalar_t__ MIN (scalar_t__,int ) ;
+ int MPGA_HEADER_SIZE ;
+
+
+
+
+
+
+ int VC_CONTAINER_ERROR_INCOMPLETE_DATA ;
+ int VC_CONTAINER_PACKET_FLAG_FRAME_END ;
+ int VC_CONTAINER_PACKET_FLAG_FRAME_START ;
+ int VC_CONTAINER_SUCCESS ;
+ int VC_CONTAINER_TIME_UNKNOWN ;
+ int VC_PACKETIZER_FLAG_FLUSH ;
+ int VC_PACKETIZER_FLAG_INFO ;
+ int VC_PACKETIZER_FLAG_SKIP ;
+ int bytestream_get (int *,int ,scalar_t__) ;
+ int bytestream_get_timestamps (int *,int *,int *,int) ;
+ int bytestream_peek (int *,int*,int) ;
+ int bytestream_peek_at (int *,scalar_t__,int*,int) ;
+ scalar_t__ bytestream_size (int *) ;
+ int bytestream_skip (int *,scalar_t__) ;
+ int bytestream_skip_byte (int *) ;
+ int mpga_read_header (int*,scalar_t__*,int *,unsigned int*,unsigned int*,int *,int *,int *,scalar_t__*) ;
+ int vc_container_time_add (int *,int ) ;
+ int vc_container_time_get (int *) ;
+ int vc_container_time_set (int *,int ) ;
+ int vc_container_time_set_samplerate (int *,int ,int) ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_packetizer_packetize( VC_PACKETIZER_T *p_ctx,
    VC_CONTAINER_PACKET_T *out, VC_PACKETIZER_FLAGS_T flags )
@@ -73,28 +73,28 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_packetizer_packetize( VC
 
    while(1) switch (module->state)
    {
-   case STATE_SYNC_LOST:
+   case 129:
       bytestream_skip_byte( stream );
       if( !module->lost_sync++ )
          LOG_DEBUG(0, "lost sync");
-      module->state = STATE_SYNC;
+      module->state = 131;
 
-   case STATE_SYNC:
+   case 131:
       while( bytestream_peek( stream, header, 2 ) == VC_CONTAINER_SUCCESS )
       {
-          /* 11 bits sync work (0xffe) */
+
           if( header[0] == 0xff && (header[1] & 0xe0) == 0xe0 )
           {
-             module->state = STATE_HEADER;
+             module->state = 132;
              break;
           }
           bytestream_skip_byte( stream );
           module->lost_sync++;
       }
-      if( module->state != STATE_HEADER )
-         return VC_CONTAINER_ERROR_INCOMPLETE_DATA; /* We need more data */
+      if( module->state != 132 )
+         return VC_CONTAINER_ERROR_INCOMPLETE_DATA;
 
-   case STATE_HEADER:
+   case 132:
       if( bytestream_peek( stream, header, MPGA_HEADER_SIZE ) != VC_CONTAINER_SUCCESS )
          return VC_CONTAINER_ERROR_INCOMPLETE_DATA;
 
@@ -105,37 +105,37 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_packetizer_packetize( VC
       if (status != VC_CONTAINER_SUCCESS)
       {
          LOG_ERROR(0, "invalid header");
-         module->state = STATE_SYNC_LOST;
+         module->state = 129;
          break;
       }
 
-      /* Version and layer are not allowed to change mid-stream */
+
       if ((module->stream_version && module->stream_version != module->version) ||
           (module->stream_layer && module->stream_layer != module->layer))
       {
          LOG_ERROR(0, "invalid header");
-         module->state = STATE_SYNC_LOST;
+         module->state = 129;
          break;
       }
-      /* We currently do not support free format streams  */
+
       if (!module->frame_size)
       {
          LOG_ERROR(0, "free format not supported");
-         module->state = STATE_SYNC_LOST;
+         module->state = 129;
          break;
       }
-      module->state = STATE_SYNC_NEXT;
-      /* fall through to the next state */
+      module->state = 128;
 
-   case STATE_SYNC_NEXT:
-      /* To avoid being caught by emulated start codes, we also look at where the next frame is supposed to be */
+
+   case 128:
+
       if( bytestream_peek_at( stream, module->frame_size, header, MPGA_HEADER_SIZE ) != VC_CONTAINER_SUCCESS )
       {
-         /* If we know there won't be anymore data then we can just assume
-          * we've got the frame we're looking for */
+
+
          if (flags & VC_PACKETIZER_FLAG_FLUSH)
          {
-            module->state = STATE_SYNC_DONE;
+            module->state = 130;
             break;
          }
          return VC_CONTAINER_ERROR_INCOMPLETE_DATA;
@@ -145,22 +145,22 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_packetizer_packetize( VC
       if (status != VC_CONTAINER_SUCCESS)
       {
          LOG_ERROR(0, "invalid next header");
-         module->state = STATE_SYNC_LOST;
+         module->state = 129;
          break;
       }
 
-      /* Version and layer are not allowed to change mid-stream */
+
       if (module->version != version || module->layer != layer)
       {
          LOG_ERROR(0, "invalid header");
-         module->state = STATE_SYNC_LOST;
+         module->state = 129;
          break;
       }
 
-      module->state = STATE_SYNC_DONE;
-      /* fall through to the next state */
+      module->state = 130;
 
-   case STATE_SYNC_DONE:
+
+   case 130:
       if( module->lost_sync )
          LOG_DEBUG(0, "recovered sync after %i bytes", module->lost_sync);
       module->lost_sync = 0;
@@ -170,15 +170,15 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_packetizer_packetize( VC
       module->stream_layer = module->layer;
 
       vc_container_time_set_samplerate(time, module->sample_rate, 1);
-      bytestream_get_timestamps(stream, &pts, &dts, true);
+      bytestream_get_timestamps(stream, &pts, &dts, 1);
 
       vc_container_time_set(time, pts);
 
       module->bytes_read = 0;
-      module->state = STATE_DATA;
-      /* fall through to the next state */
+      module->state = 133;
 
-   case STATE_DATA:
+
+   case 133:
       if( bytestream_size( stream ) < module->frame_size)
          return VC_CONTAINER_ERROR_INCOMPLETE_DATA;
 
@@ -209,7 +209,7 @@ __attribute__((used)) static VC_CONTAINER_STATUS_T mpga_packetizer_packetize( VC
       if(module->bytes_read == module->frame_size)
       {
          vc_container_time_add(time, module->frame_size_samples);
-         module->state = STATE_HEADER;
+         module->state = 132;
       }
       return VC_CONTAINER_SUCCESS;
 

@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
+
+
+
+
+typedef scalar_t__ uint32_t ;
 struct vo {struct vdpctx* priv; } ;
-struct vdpctx {scalar_t__ vid_width; scalar_t__ vid_height; int /*<<< orphan*/  rgb_mode; int /*<<< orphan*/  image_format; int /*<<< orphan*/  vdp_device; struct vdp_functions* vdp; } ;
-struct vdp_functions {int /*<<< orphan*/  (* video_surface_query_capabilities ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,scalar_t__*,scalar_t__*) ;} ;
-struct mp_image_params {scalar_t__ w; scalar_t__ h; int /*<<< orphan*/  imgfmt; } ;
-typedef  int /*<<< orphan*/  VdpStatus ;
-typedef  int /*<<< orphan*/  VdpChromaType ;
-typedef  scalar_t__ VdpBool ;
+struct vdpctx {scalar_t__ vid_width; scalar_t__ vid_height; int rgb_mode; int image_format; int vdp_device; struct vdp_functions* vdp; } ;
+struct vdp_functions {int (* video_surface_query_capabilities ) (int ,int ,scalar_t__*,scalar_t__*,scalar_t__*) ;} ;
+struct mp_image_params {scalar_t__ w; scalar_t__ h; int imgfmt; } ;
+typedef int VdpStatus ;
+typedef int VdpChromaType ;
+typedef scalar_t__ VdpBool ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_VDP_ERROR (struct vo*,char*) ; 
- int /*<<< orphan*/  MP_ERR (struct vo*,char*) ; 
- int /*<<< orphan*/  VDP_CHROMA_TYPE_420 ; 
- int /*<<< orphan*/  check_preemption (struct vo*) ; 
- int /*<<< orphan*/  free_video_specific (struct vo*) ; 
- scalar_t__ initialize_vdpau_objects (struct vo*) ; 
- int /*<<< orphan*/  mp_vdpau_get_format (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mp_vdpau_get_rgb_format (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,scalar_t__*,scalar_t__*) ; 
- int /*<<< orphan*/  vo_x11_config_vo_window (struct vo*) ; 
+
+ int CHECK_VDP_ERROR (struct vo*,char*) ;
+ int MP_ERR (struct vo*,char*) ;
+ int VDP_CHROMA_TYPE_420 ;
+ int check_preemption (struct vo*) ;
+ int free_video_specific (struct vo*) ;
+ scalar_t__ initialize_vdpau_objects (struct vo*) ;
+ int mp_vdpau_get_format (int ,int *,int *) ;
+ int mp_vdpau_get_rgb_format (int ,int *) ;
+ int stub1 (int ,int ,scalar_t__*,scalar_t__*,scalar_t__*) ;
+ int vo_x11_config_vo_window (struct vo*) ;
 
 __attribute__((used)) static int reconfig(struct vo *vo, struct mp_image_params *params)
 {
@@ -41,7 +41,7 @@ __attribute__((used)) static int reconfig(struct vo *vo, struct mp_image_params 
         return -1;
 
     VdpChromaType chroma_type = VDP_CHROMA_TYPE_420;
-    mp_vdpau_get_format(params->imgfmt, &chroma_type, NULL);
+    mp_vdpau_get_format(params->imgfmt, &chroma_type, ((void*)0));
 
     VdpBool ok;
     uint32_t max_w, max_h;
@@ -58,10 +58,10 @@ __attribute__((used)) static int reconfig(struct vo *vo, struct mp_image_params 
     }
 
     vc->image_format = params->imgfmt;
-    vc->vid_width    = params->w;
-    vc->vid_height   = params->h;
+    vc->vid_width = params->w;
+    vc->vid_height = params->h;
 
-    vc->rgb_mode = mp_vdpau_get_rgb_format(params->imgfmt, NULL);
+    vc->rgb_mode = mp_vdpau_get_rgb_format(params->imgfmt, ((void*)0));
 
     free_video_specific(vo);
 

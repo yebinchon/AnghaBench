@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  cookie_request ;
-struct TYPE_9__ {int connection_number_tcp; int /*<<< orphan*/  status; int /*<<< orphan*/  shared_key; int /*<<< orphan*/  cookie_request_number; int /*<<< orphan*/  dht_public_key; int /*<<< orphan*/  rtt_time; int /*<<< orphan*/  packets_left; void* packet_send_rate_requested; void* packet_send_rate; int /*<<< orphan*/  sessionsecret_key; int /*<<< orphan*/  sessionpublic_key; int /*<<< orphan*/  sent_nonce; int /*<<< orphan*/  public_key; } ;
-struct TYPE_8__ {int /*<<< orphan*/  tcp_mutex; int /*<<< orphan*/  tcp_c; TYPE_2__* crypto_connections; } ;
-typedef  TYPE_1__ Net_Crypto ;
-typedef  TYPE_2__ Crypto_Connection ;
 
-/* Variables and functions */
- int COOKIE_REQUEST_LENGTH ; 
- int /*<<< orphan*/  CRYPTO_CONN_COOKIE_REQUESTING ; 
- int /*<<< orphan*/  CRYPTO_CONN_NO_CONNECTION ; 
- int /*<<< orphan*/  CRYPTO_MIN_QUEUE_LENGTH ; 
- void* CRYPTO_PACKET_MIN_RATE ; 
- int /*<<< orphan*/  DEFAULT_PING_CONNECTION ; 
- int create_cookie_request (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int create_crypto_connection (TYPE_1__*) ; 
- int /*<<< orphan*/  crypto_box_PUBLICKEYBYTES ; 
- int /*<<< orphan*/  crypto_box_keypair (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int getcryptconnection_id (TYPE_1__*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  kill_tcp_connection_to (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int new_tcp_connection_to (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
- scalar_t__ new_temp_packet (TYPE_1__*,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  random_64b () ; 
- int /*<<< orphan*/  random_nonce (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int cookie_request ;
+struct TYPE_9__ {int connection_number_tcp; int status; int shared_key; int cookie_request_number; int dht_public_key; int rtt_time; int packets_left; void* packet_send_rate_requested; void* packet_send_rate; int sessionsecret_key; int sessionpublic_key; int sent_nonce; int public_key; } ;
+struct TYPE_8__ {int tcp_mutex; int tcp_c; TYPE_2__* crypto_connections; } ;
+typedef TYPE_1__ Net_Crypto ;
+typedef TYPE_2__ Crypto_Connection ;
+
+
+ int COOKIE_REQUEST_LENGTH ;
+ int CRYPTO_CONN_COOKIE_REQUESTING ;
+ int CRYPTO_CONN_NO_CONNECTION ;
+ int CRYPTO_MIN_QUEUE_LENGTH ;
+ void* CRYPTO_PACKET_MIN_RATE ;
+ int DEFAULT_PING_CONNECTION ;
+ int create_cookie_request (TYPE_1__*,int *,int ,int ,int ) ;
+ int create_crypto_connection (TYPE_1__*) ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int crypto_box_keypair (int ,int ) ;
+ int getcryptconnection_id (TYPE_1__*,int const*) ;
+ int kill_tcp_connection_to (int ,int) ;
+ int memcpy (int ,int const*,int ) ;
+ int new_tcp_connection_to (int ,int const*,int) ;
+ scalar_t__ new_temp_packet (TYPE_1__*,int,int *,int) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int random_64b () ;
+ int random_nonce (int ) ;
 
 int new_crypto_connection(Net_Crypto *c, const uint8_t *real_public_key, const uint8_t *dht_public_key)
 {

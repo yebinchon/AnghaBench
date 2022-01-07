@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * golomb ;
 
-/* Variables and functions */
- scalar_t__ cur_bit ; 
- int /*<<< orphan*/  load_bit () ; 
+
+
+
+typedef int * golomb ;
+
+
+ scalar_t__ cur_bit ;
+ int load_bit () ;
 
 int golomb_max_size (golomb ptr, int tot_items, int len) {
-  if (ptr == NULL) {
+  if (ptr == ((void*)0)) {
     return 0;
   }
 

@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u16 ;
 
-/* Variables and functions */
- int BIT (int) ; 
- int EFFECT_MOD_TO_GB (int,int,int,int,int,int*,int*) ; 
- int VOLUME_MOD_TO_GB_CH3 (int) ; 
- int /*<<< orphan*/  out_write_hex (int) ; 
- int /*<<< orphan*/  out_write_str (char*,char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+typedef int u8 ;
+typedef int u16 ;
+
+
+ int BIT (int) ;
+ int EFFECT_MOD_TO_GB (int,int,int,int,int,int*,int*) ;
+ int VOLUME_MOD_TO_GB_CH3 (int) ;
+ int out_write_hex (int) ;
+ int out_write_str (char*,char*) ;
+ int printf (char*,...) ;
 
 void convert_channel3(u8 pattern_number, u8 step_number, u8 note_index, u8 samplenum,
                       u16 sampleperiod, u8 effectnum, u8 effectparams)
 {
     u8 result[3] = { 0, 0, 0 };
-    int command_len = 1; // NOP
+    int command_len = 1;
 
-    if(note_index > (6*12-1)) //not valid note -> check if any effect
+    if(note_index > (6*12-1))
     {
         if((effectnum != 0) || (effectparams != 0))
         {
-            //Volume or others?
+
             if(effectnum == 0xC)
             {
-                //Volume
+
                 result[0] = BIT(5) | VOLUME_MOD_TO_GB_CH3(effectparams);
                 command_len = 1;
             }
             else
             {
-                //Others
+
                 u8 converted_num, converted_params;
                 if(EFFECT_MOD_TO_GB(pattern_number,step_number,3,
                                     effectnum,effectparams,&converted_num,&converted_params) == 1)
@@ -56,7 +56,7 @@ void convert_channel3(u8 pattern_number, u8 step_number, u8 note_index, u8 sampl
                         printf("Invalid command at pattern %d, step %d, channel 3: %01X%02X\n",
                            pattern_number,step_number,effectnum,effectparams);
                     }
-                    //NOP
+
                     result[0] = 0;
                     command_len = 1;
                 }
@@ -64,19 +64,19 @@ void convert_channel3(u8 pattern_number, u8 step_number, u8 note_index, u8 sampl
         }
         else
         {
-            //NOP
+
             result[0] = 0;
             command_len = 1;
         }
     }
-    else // New note
+    else
     {
-        u8 instrument = (samplenum-8) & 15; // only 0-7 initially implemented
+        u8 instrument = (samplenum-8) & 15;
 
         u8 converted_num, converted_params;
         if(effectnum == 0xC)
         {
-            //Note + Volume
+
             result[0] = BIT(7) | note_index;
             result[1] = (VOLUME_MOD_TO_GB_CH3(effectparams) << 4) | instrument;
             command_len = 2;
@@ -94,14 +94,14 @@ void convert_channel3(u8 pattern_number, u8 step_number, u8 note_index, u8 sampl
                 }
                 else
                 {
-                    //Note + Effect
+
                     result[0] = BIT(7) | note_index;
                     result[1] = BIT(7) | (converted_num << 4) | instrument;
                     result[2] = converted_params;
                     command_len = 3;
                 }
             }
-            else //Note + No effect!! -> NOT GOOD, WE NEED AT LEAST VOLUME CHANGE!!
+            else
             {
                 printf("Invalid command at pattern %d, step %d, channel 3: %01X%02X\n",
                         pattern_number,step_number,effectnum,effectparams);

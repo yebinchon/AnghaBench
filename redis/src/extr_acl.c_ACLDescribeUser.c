@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int flags; int /*<<< orphan*/  patterns; int /*<<< orphan*/  passwords; } ;
-typedef  TYPE_1__ user ;
-typedef  int /*<<< orphan*/  sds ;
-typedef  int /*<<< orphan*/  listNode ;
-typedef  int /*<<< orphan*/  listIter ;
-struct TYPE_6__ {int flag; int /*<<< orphan*/  name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACLDescribeUserCommandRules (TYPE_1__*) ; 
- TYPE_2__* ACLUserFlags ; 
- int USER_FLAG_ALLCOMMANDS ; 
- int USER_FLAG_ALLKEYS ; 
- int /*<<< orphan*/ * listNext (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listNodeValue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  listRewind (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdscatsds (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int flags; int patterns; int passwords; } ;
+typedef TYPE_1__ user ;
+typedef int sds ;
+typedef int listNode ;
+typedef int listIter ;
+struct TYPE_6__ {int flag; int name; } ;
+
+
+ int ACLDescribeUserCommandRules (TYPE_1__*) ;
+ TYPE_2__* ACLUserFlags ;
+ int USER_FLAG_ALLCOMMANDS ;
+ int USER_FLAG_ALLKEYS ;
+ int * listNext (int *) ;
+ int listNodeValue (int *) ;
+ int listRewind (int ,int *) ;
+ int sdscat (int ,int ) ;
+ int sdscatlen (int ,char*,int) ;
+ int sdscatsds (int ,int ) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
 
 sds ACLDescribeUser(user *u) {
     sds res = sdsempty();
 
-    /* Flags. */
+
     for (int j = 0; ACLUserFlags[j].flag; j++) {
-        /* Skip the allcommands and allkeys flags because they'll be emitted
-         * later as ~* and +@all. */
+
+
         if (ACLUserFlags[j].flag == USER_FLAG_ALLKEYS ||
             ACLUserFlags[j].flag == USER_FLAG_ALLCOMMANDS) continue;
         if (u->flags & ACLUserFlags[j].flag) {
@@ -48,7 +48,7 @@ sds ACLDescribeUser(user *u) {
         }
     }
 
-    /* Passwords. */
+
     listIter li;
     listNode *ln;
     listRewind(u->passwords,&li);
@@ -59,7 +59,7 @@ sds ACLDescribeUser(user *u) {
         res = sdscatlen(res," ",1);
     }
 
-    /* Key patterns. */
+
     if (u->flags & USER_FLAG_ALLKEYS) {
         res = sdscatlen(res,"~* ",3);
     } else {
@@ -72,7 +72,7 @@ sds ACLDescribeUser(user *u) {
         }
     }
 
-    /* Command rules. */
+
     sds rules = ACLDescribeUserCommandRules(u);
     res = sdscatsds(res,rules);
     sdsfree(rules);

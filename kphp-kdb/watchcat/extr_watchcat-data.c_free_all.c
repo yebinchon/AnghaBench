@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {struct TYPE_7__* l; } ;
-typedef  TYPE_1__ wkey ;
+typedef TYPE_1__ wkey ;
 struct TYPE_8__ {struct TYPE_8__* next_time; } ;
 
-/* Variables and functions */
- int TIME_TABLE_SIZE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  del_wkey (TYPE_3__*) ; 
- int /*<<< orphan*/  dl_free (TYPE_1__*,int) ; 
- int /*<<< orphan*/  free_wkey (TYPE_3__*) ; 
- int /*<<< orphan*/  h_watchcat ; 
- int /*<<< orphan*/  h_watchcat_q ; 
- int /*<<< orphan*/  hset_llp_free (int /*<<< orphan*/ *) ; 
- scalar_t__ keys_cnt ; 
- TYPE_3__** time_st ; 
- scalar_t__ verbosity ; 
- TYPE_1__* wkey_mem ; 
+
+ int TIME_TABLE_SIZE ;
+ int assert (int) ;
+ int del_wkey (TYPE_3__*) ;
+ int dl_free (TYPE_1__*,int) ;
+ int free_wkey (TYPE_3__*) ;
+ int h_watchcat ;
+ int h_watchcat_q ;
+ int hset_llp_free (int *) ;
+ scalar_t__ keys_cnt ;
+ TYPE_3__** time_st ;
+ scalar_t__ verbosity ;
+ TYPE_1__* wkey_mem ;
 
 void free_all (void) {
   if (verbosity) {
@@ -42,7 +42,7 @@ void free_all (void) {
     }
     assert (keys_cnt == 0);
 
-    while (wkey_mem != NULL) {
+    while (wkey_mem != ((void*)0)) {
       wkey *k = wkey_mem;
       wkey_mem = wkey_mem->l;
       dl_free (k, sizeof (wkey));

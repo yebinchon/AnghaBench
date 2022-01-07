@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct i387_fsave {unsigned long fioff; unsigned long fooff; int fctrl; int fstat; int ftag; int fiseg; int foseg; int fop; int /*<<< orphan*/ * st_space; } ;
 
-/* Variables and functions */
- int find_regno (char*) ; 
- int /*<<< orphan*/  supply_register (int,char*) ; 
- int /*<<< orphan*/  supply_register_by_name (char*,unsigned long*) ; 
+
+
+
+struct i387_fsave {unsigned long fioff; unsigned long fooff; int fctrl; int fstat; int ftag; int fiseg; int foseg; int fop; int * st_space; } ;
+
+
+ int find_regno (char*) ;
+ int supply_register (int,char*) ;
+ int supply_register_by_name (char*,unsigned long*) ;
 
 void
 i387_fsave_to_cache (const void *buf)
@@ -30,8 +30,8 @@ i387_fsave_to_cache (const void *buf)
 
   supply_register_by_name ("fioff", &fp->fioff);
   supply_register_by_name ("fooff", &fp->fooff);
-  
-  /* Some registers are 16-bit.  */
+
+
   val = fp->fctrl & 0xFFFF;
   supply_register_by_name ("fctrl", &val);
 

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CreateWindow (char*,char const*,int,int,int,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int WS_CHILD ; 
- int WS_VISIBLE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  g_hInst ; 
- int /*<<< orphan*/  g_hwnd ; 
- int /*<<< orphan*/ * g_hwndCtrl ; 
- int nMaxCtrls ; 
- int /*<<< orphan*/  nNextCtrl ; 
- int nStaticHeight ; 
- int /*<<< orphan*/  nStaticWidth ; 
+
+
+
+typedef int DWORD ;
+
+
+ int CreateWindow (char*,char const*,int,int,int,int ,int,int ,int *,int ,int *) ;
+ int WS_CHILD ;
+ int WS_VISIBLE ;
+ int assert (int) ;
+ int g_hInst ;
+ int g_hwnd ;
+ int * g_hwndCtrl ;
+ int nMaxCtrls ;
+ int nNextCtrl ;
+ int nStaticHeight ;
+ int nStaticWidth ;
 
 __attribute__((used)) static void CreateStatic ( const char* lpWindowName, DWORD dwStyle )
 {
-	int n = nNextCtrl++;
-	assert ( n < nMaxCtrls );
-	g_hwndCtrl[n] = CreateWindow (
-		"STATIC", // lpClassName
-		lpWindowName, // lpWindowName
-		WS_VISIBLE|WS_CHILD|dwStyle, // dwStyle
-		n+2, // x
-		nStaticHeight*n+1, // y
-		nStaticWidth, // nWidth
-		nStaticHeight-1, // nHeight
-		g_hwnd, // hWndParent
-		NULL, // hMenu
-		g_hInst, // hInstance
-		NULL ); // lParam
+ int n = nNextCtrl++;
+ assert ( n < nMaxCtrls );
+ g_hwndCtrl[n] = CreateWindow (
+  "STATIC",
+  lpWindowName,
+  WS_VISIBLE|WS_CHILD|dwStyle,
+  n+2,
+  nStaticHeight*n+1,
+  nStaticWidth,
+  nStaticHeight-1,
+  g_hwnd,
+  ((void*)0),
+  g_hInst,
+  ((void*)0) );
 }

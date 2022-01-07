@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vout_window_t ;
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+typedef int vout_window_t ;
 struct TYPE_10__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_11__ {int /*<<< orphan*/  sys; int /*<<< orphan*/  p_sensors; scalar_t__ vgl; TYPE_3__* gl; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-struct TYPE_12__ {int /*<<< orphan*/ * surface; } ;
-typedef  TYPE_3__ vlc_gl_t ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_11__ {int sys; int p_sensors; scalar_t__ vgl; TYPE_3__* gl; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+struct TYPE_12__ {int * surface; } ;
+typedef TYPE_3__ vlc_gl_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CommonWindowClean (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UnhookWindowsSensors (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VLC_OBJECT (TYPE_1__*) ; 
- int /*<<< orphan*/  free (TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_gl_MakeCurrent (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_gl_Release (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_gl_ReleaseCurrent (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_object_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vout_display_opengl_Delete (scalar_t__) ; 
+
+ int CommonWindowClean (int ,int *) ;
+ int UnhookWindowsSensors (int ) ;
+ int VLC_OBJECT (TYPE_1__*) ;
+ int free (TYPE_2__*) ;
+ int vlc_gl_MakeCurrent (TYPE_3__*) ;
+ int vlc_gl_Release (TYPE_3__*) ;
+ int vlc_gl_ReleaseCurrent (TYPE_3__*) ;
+ int vlc_object_delete (int *) ;
+ int vout_display_opengl_Delete (scalar_t__) ;
 
 __attribute__((used)) static void Close(vout_display_t *vd)
 {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* g; } ;
-struct TYPE_4__ {int /*<<< orphan*/  codec_opts; } ;
-typedef  TYPE_2__ OptionsContext ;
+struct TYPE_4__ {int codec_opts; } ;
+typedef TYPE_2__ OptionsContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- char* av_asprintf (char*,char const*) ; 
- int av_dict_set (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  options ; 
- int parse_option (TYPE_2__*,char*,char*,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ char* av_asprintf (char*,char const*) ;
+ int av_dict_set (int *,char*,char const*,int ) ;
+ int av_free (char*) ;
+ int options ;
+ int parse_option (TYPE_2__*,char*,char*,int ) ;
 
 __attribute__((used)) static int opt_timecode(void *optctx, const char *opt, const char *arg)
 {

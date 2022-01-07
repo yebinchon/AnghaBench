@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Display ;
-typedef  scalar_t__ Atom ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DefaultRootWindow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  False ; 
- scalar_t__ None ; 
- int /*<<< orphan*/  True ; 
- int /*<<< orphan*/  UINT_MAX ; 
- scalar_t__ XA_ATOM ; 
- int /*<<< orphan*/  XFree (scalar_t__*) ; 
- int /*<<< orphan*/  XGetWindowProperty (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int*,unsigned long*,unsigned long*,unsigned char**) ; 
- scalar_t__ XInternAtom (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Display ;
+typedef scalar_t__ Atom ;
+
+
+ int DefaultRootWindow (int *) ;
+ int False ;
+ scalar_t__ None ;
+ int True ;
+ int UINT_MAX ;
+ scalar_t__ XA_ATOM ;
+ int XFree (scalar_t__*) ;
+ int XGetWindowProperty (int *,int ,scalar_t__,int ,int ,int ,scalar_t__,scalar_t__*,int*,unsigned long*,unsigned long*,unsigned char**) ;
+ scalar_t__ XInternAtom (int *,char*,int ) ;
 
 __attribute__((used)) static bool x11_check_atom_supported(Display *dpy, Atom atom)
 {
@@ -35,25 +35,25 @@ __attribute__((used)) static bool x11_check_atom_supported(Display *dpy, Atom at
    int i;
 
    if (XA_NET_SUPPORTED == None)
-      return false;
+      return 0;
 
    XGetWindowProperty(dpy, DefaultRootWindow(dpy), XA_NET_SUPPORTED,
          0, UINT_MAX, False, XA_ATOM, &type, &format,&nitems,
          &bytes_after, (unsigned char **) &prop);
 
    if (!prop || type != XA_ATOM)
-      return false;
+      return 0;
 
    for (i = 0; i < nitems; i++)
    {
       if (prop[i] == atom)
       {
          XFree(prop);
-         return true;
+         return 1;
       }
    }
 
    XFree(prop);
 
-   return false;
+   return 0;
 }

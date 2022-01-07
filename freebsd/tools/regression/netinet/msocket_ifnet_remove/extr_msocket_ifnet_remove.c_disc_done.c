@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifreq {int /*<<< orphan*/  ifr_name; } ;
-typedef  int /*<<< orphan*/  ifr ;
 
-/* Variables and functions */
- char* DISC_IFNAME ; 
- int /*<<< orphan*/  DISC_IFUNIT ; 
- int /*<<< orphan*/  PF_INET ; 
- int /*<<< orphan*/  SIOCIFDESTROY ; 
- int /*<<< orphan*/  SOCK_RAW ; 
- int /*<<< orphan*/  bzero (struct ifreq*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- int /*<<< orphan*/  snprintf (int /*<<< orphan*/ ,int,char*,char*,int /*<<< orphan*/ ) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  warn (char*,...) ; 
+
+
+
+struct ifreq {int ifr_name; } ;
+typedef int ifr ;
+
+
+ char* DISC_IFNAME ;
+ int DISC_IFUNIT ;
+ int PF_INET ;
+ int SIOCIFDESTROY ;
+ int SOCK_RAW ;
+ int bzero (struct ifreq*,int) ;
+ int close (int) ;
+ scalar_t__ ioctl (int,int ,struct ifreq*) ;
+ int snprintf (int ,int,char*,char*,int ) ;
+ int socket (int ,int ,int ) ;
+ int warn (char*,...) ;
 
 __attribute__((used)) static void
 disc_done(void)
 {
-	struct ifreq ifr;
-	int s;
+ struct ifreq ifr;
+ int s;
 
-	s = socket(PF_INET, SOCK_RAW, 0);
-	if (s < 0) {
-		warn("disc_done: socket(PF_INET, SOCK_RAW, 0)");
-		return;
-	}
+ s = socket(PF_INET, SOCK_RAW, 0);
+ if (s < 0) {
+  warn("disc_done: socket(PF_INET, SOCK_RAW, 0)");
+  return;
+ }
 
-	bzero(&ifr, sizeof(ifr));
-	snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "%s%d", DISC_IFNAME,
-	    DISC_IFUNIT);
+ bzero(&ifr, sizeof(ifr));
+ snprintf(ifr.ifr_name, sizeof(ifr.ifr_name), "%s%d", DISC_IFNAME,
+     DISC_IFUNIT);
 
-	if (ioctl(s, SIOCIFDESTROY, &ifr) < 0)
-		warn("disc_done: ioctl(%s, SIOCIFDESTROY)", ifr.ifr_name);
-	close(s);
+ if (ioctl(s, SIOCIFDESTROY, &ifr) < 0)
+  warn("disc_done: ioctl(%s, SIOCIFDESTROY)", ifr.ifr_name);
+ close(s);
 }

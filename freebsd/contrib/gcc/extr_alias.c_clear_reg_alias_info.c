@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
 
-/* Variables and functions */
- unsigned int FIRST_PSEUDO_REGISTER ; 
- unsigned int REGNO (int /*<<< orphan*/ ) ; 
- int* reg_known_equiv_p ; 
- int /*<<< orphan*/ * reg_known_value ; 
- unsigned int reg_known_value_size ; 
+
+
+
+typedef int rtx ;
+
+
+ unsigned int FIRST_PSEUDO_REGISTER ;
+ unsigned int REGNO (int ) ;
+ int* reg_known_equiv_p ;
+ int * reg_known_value ;
+ unsigned int reg_known_value_size ;
 
 void
 clear_reg_alias_info (rtx reg)
@@ -28,9 +28,9 @@ clear_reg_alias_info (rtx reg)
     {
       regno -= FIRST_PSEUDO_REGISTER;
       if (regno < reg_known_value_size)
-	{
-	  reg_known_value[regno] = reg;
-	  reg_known_equiv_p[regno] = false;
-	}
+ {
+   reg_known_value[regno] = reg;
+   reg_known_equiv_p[regno] = 0;
+ }
     }
 }

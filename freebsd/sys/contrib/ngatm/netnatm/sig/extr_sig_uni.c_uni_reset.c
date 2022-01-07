@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct uni {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  uni_init (struct uni*) ; 
- int /*<<< orphan*/  uni_stop (struct uni*) ; 
+
+ int uni_init (struct uni*) ;
+ int uni_stop (struct uni*) ;
 
 void
 uni_reset(struct uni *uni)
 {
-	uni_stop(uni);
-	uni_init(uni);
+ uni_stop(uni);
+ uni_init(uni);
 }

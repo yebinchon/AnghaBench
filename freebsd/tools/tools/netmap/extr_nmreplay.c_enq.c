@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct q_pkt {int pt_qout; int pt_tx; scalar_t__ next; int /*<<< orphan*/  pktlen; } ;
-struct _qs {int qt_qout; int qt_tx; int /*<<< orphan*/  tx; scalar_t__ prod_tail; int /*<<< orphan*/  cur_len; int /*<<< orphan*/  cur_caplen; int /*<<< orphan*/  cur_pkt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ND (char*,int /*<<< orphan*/ ,int,scalar_t__,int,int) ; 
- int /*<<< orphan*/  nm_pkt_copy (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ pad (int /*<<< orphan*/ ) ; 
- struct q_pkt* pkt_at (struct _qs*,scalar_t__) ; 
+
+
+
+struct q_pkt {int pt_qout; int pt_tx; scalar_t__ next; int pktlen; } ;
+struct _qs {int qt_qout; int qt_tx; int tx; scalar_t__ prod_tail; int cur_len; int cur_caplen; int cur_pkt; } ;
+
+
+ int ND (char*,int ,int,scalar_t__,int,int) ;
+ int nm_pkt_copy (int ,char*,int ) ;
+ scalar_t__ pad (int ) ;
+ struct q_pkt* pkt_at (struct _qs*,scalar_t__) ;
 
 __attribute__((used)) static inline int
 enq(struct _qs *q)
 {
     struct q_pkt *p = pkt_at(q, q->prod_tail);
 
-    /* hopefully prefetch has been done ahead */
+
     nm_pkt_copy(q->cur_pkt, (char *)(p+1), q->cur_caplen);
     p->pktlen = q->cur_len;
     p->pt_qout = q->qt_qout;

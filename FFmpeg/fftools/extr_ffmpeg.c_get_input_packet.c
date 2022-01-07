@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ int64_t ;
-struct TYPE_7__ {int nb_streams; int ist_index; int /*<<< orphan*/  ctx; scalar_t__ rate_emu; } ;
-struct TYPE_6__ {scalar_t__ start; int /*<<< orphan*/  dts; } ;
-typedef  TYPE_1__ InputStream ;
-typedef  TYPE_2__ InputFile ;
-typedef  int /*<<< orphan*/  AVPacket ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_TIME_BASE ; 
- int /*<<< orphan*/  EAGAIN ; 
- scalar_t__ av_gettime_relative () ; 
- int av_read_frame (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ av_rescale (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int get_input_packet_mt (TYPE_2__*,int /*<<< orphan*/ *) ; 
- TYPE_1__** input_streams ; 
- int nb_input_files ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ int64_t ;
+struct TYPE_7__ {int nb_streams; int ist_index; int ctx; scalar_t__ rate_emu; } ;
+struct TYPE_6__ {scalar_t__ start; int dts; } ;
+typedef TYPE_1__ InputStream ;
+typedef TYPE_2__ InputFile ;
+typedef int AVPacket ;
+
+
+ int AVERROR (int ) ;
+ int AV_TIME_BASE ;
+ int EAGAIN ;
+ scalar_t__ av_gettime_relative () ;
+ int av_read_frame (int ,int *) ;
+ scalar_t__ av_rescale (int ,int,int ) ;
+ int get_input_packet_mt (TYPE_2__*,int *) ;
+ TYPE_1__** input_streams ;
+ int nb_input_files ;
 
 __attribute__((used)) static int get_input_packet(InputFile *f, AVPacket *pkt)
 {
@@ -43,9 +43,9 @@ __attribute__((used)) static int get_input_packet(InputFile *f, AVPacket *pkt)
         }
     }
 
-#if HAVE_THREADS
-    if (nb_input_files > 1)
-        return get_input_packet_mt(f, pkt);
-#endif
+
+
+
+
     return av_read_frame(f->ctx, pkt);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct device {int /*<<< orphan*/ * release_rx_buf; int /*<<< orphan*/ * peek_rx_buf; int /*<<< orphan*/ * get_rx_buf; int /*<<< orphan*/ * copy_rx_buf; int /*<<< orphan*/  get_stats; int /*<<< orphan*/  close; int /*<<< orphan*/ * xmit; int /*<<< orphan*/  open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NdisOpen () ; 
- int /*<<< orphan*/  ndis_close ; 
- int /*<<< orphan*/  ndis_open ; 
- int /*<<< orphan*/  ndis_stats ; 
+
+
+
+struct device {int * release_rx_buf; int * peek_rx_buf; int * get_rx_buf; int * copy_rx_buf; int get_stats; int close; int * xmit; int open; } ;
+
+
+ int NdisOpen () ;
+ int ndis_close ;
+ int ndis_open ;
+ int ndis_stats ;
 
 __attribute__((used)) static int ndis_probe (struct device *dev)
 {
-#ifdef USE_NDIS2
-  if (!NdisOpen())
-     return (0);
-#endif
 
-  dev->open           = ndis_open;
-  dev->xmit           = NULL;
-  dev->close          = ndis_close;
-  dev->get_stats      = ndis_stats;
-  dev->copy_rx_buf    = NULL;       /* to-do */
-  dev->get_rx_buf     = NULL;       /* upcall is from rmode driver */
-  dev->peek_rx_buf    = NULL;
-  dev->release_rx_buf = NULL;
+
+
+
+
+  dev->open = ndis_open;
+  dev->xmit = ((void*)0);
+  dev->close = ndis_close;
+  dev->get_stats = ndis_stats;
+  dev->copy_rx_buf = ((void*)0);
+  dev->get_rx_buf = ((void*)0);
+  dev->peek_rx_buf = ((void*)0);
+  dev->release_rx_buf = ((void*)0);
   return (0);
 }

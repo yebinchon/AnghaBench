@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WINDOW ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WINDOW ;
 struct TYPE_8__ {size_t size; struct TYPE_8__* items; struct TYPE_8__* name; scalar_t__ checked; } ;
-typedef  TYPE_1__ GMenu ;
-typedef  TYPE_1__ GItem ;
+typedef TYPE_1__ GMenu ;
+typedef TYPE_1__ GItem ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HELPDLG_DESC ; 
- int /*<<< orphan*/  HELPDLG_HEAD ; 
- int /*<<< orphan*/  HELP_MENU_HEIGHT ; 
- int /*<<< orphan*/  HELP_MENU_WIDTH ; 
- int /*<<< orphan*/  HELP_MENU_X ; 
- int /*<<< orphan*/  HELP_MENU_Y ; 
- int HELP_WIN_HEIGHT ; 
- int HELP_WIN_WIDTH ; 
-#define  KEY_DOWN 130 
-#define  KEY_RESIZE 129 
-#define  KEY_UP 128 
- int /*<<< orphan*/  REQ_DOWN ; 
- int /*<<< orphan*/  REQ_UP ; 
- int /*<<< orphan*/  TRUE ; 
- TYPE_1__* alloc_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  close_win (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  color_panel_header ; 
- int /*<<< orphan*/  draw_header (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  getmaxyx (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  gmenu_driver (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * help_main ; 
- int /*<<< orphan*/  keypad (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mvwprintw (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* new_gmenu (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * newwin (int,int,int,int) ; 
- int /*<<< orphan*/  post_gmenu (TYPE_1__*) ; 
- int /*<<< orphan*/  stdscr ; 
- int /*<<< orphan*/  touchwin (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wborder (int /*<<< orphan*/ *,char,char,char,char,char,char,char,char) ; 
- int wgetch (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wrefresh (int /*<<< orphan*/ *) ; 
- scalar_t__ xcalloc (size_t,int) ; 
+
+ size_t ARRAY_SIZE (int *) ;
+ int HELPDLG_DESC ;
+ int HELPDLG_HEAD ;
+ int HELP_MENU_HEIGHT ;
+ int HELP_MENU_WIDTH ;
+ int HELP_MENU_X ;
+ int HELP_MENU_Y ;
+ int HELP_WIN_HEIGHT ;
+ int HELP_WIN_WIDTH ;
+
+
+
+ int REQ_DOWN ;
+ int REQ_UP ;
+ int TRUE ;
+ TYPE_1__* alloc_string (int ) ;
+ int close_win (int *) ;
+ int color_panel_header ;
+ int draw_header (int *,int ,char*,int,int,int,int ) ;
+ int free (TYPE_1__*) ;
+ int getmaxyx (int ,int,int) ;
+ int gmenu_driver (TYPE_1__*,int ) ;
+ int * help_main ;
+ int keypad (int *,int ) ;
+ int mvwprintw (int *,int,int,int ) ;
+ TYPE_1__* new_gmenu (int *,int ,int ,int ,int ) ;
+ int * newwin (int,int,int,int) ;
+ int post_gmenu (TYPE_1__*) ;
+ int stdscr ;
+ int touchwin (int *) ;
+ int wborder (int *,char,char,char,char,char,char,char,char) ;
+ int wgetch (int ) ;
+ int wrefresh (int *) ;
+ scalar_t__ xcalloc (size_t,int) ;
 
 void
 load_help_popup (WINDOW * main_win)
@@ -69,13 +69,13 @@ load_help_popup (WINDOW * main_win)
   keypad (win, TRUE);
   wborder (win, '|', '|', '-', '-', '+', '+', '+', '+');
 
-  /* create a new instance of GMenu and make it selectable */
+
   menu =
     new_gmenu (win, HELP_MENU_HEIGHT, HELP_MENU_WIDTH, HELP_MENU_Y,
                HELP_MENU_X);
   menu->size = n;
 
-  /* add items to GMenu */
+
   menu->items = (GItem *) xcalloc (n, sizeof (GItem));
   for (i = 0; i < n; ++i) {
     menu->items[i].name = alloc_string (help_main[i]);
@@ -90,20 +90,20 @@ load_help_popup (WINDOW * main_win)
   while (quit) {
     c = wgetch (stdscr);
     switch (c) {
-    case KEY_DOWN:
+    case 130:
       gmenu_driver (menu, REQ_DOWN);
       break;
-    case KEY_UP:
+    case 128:
       gmenu_driver (menu, REQ_UP);
       break;
-    case KEY_RESIZE:
+    case 129:
     case 'q':
       quit = 0;
       break;
     }
     wrefresh (win);
   }
-  /* clean stuff up */
+
   for (i = 0; i < n; ++i)
     free (menu->items[i].name);
   free (menu->items);

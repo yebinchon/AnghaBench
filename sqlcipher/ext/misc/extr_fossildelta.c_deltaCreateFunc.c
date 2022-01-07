@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_NULL ; 
- int /*<<< orphan*/  assert (int) ; 
- int delta_create (char const*,int,char const*,int,char*) ; 
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_malloc64 (int) ; 
- int /*<<< orphan*/  sqlite3_result_blob (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/  (*) (char*)) ; 
- int /*<<< orphan*/  sqlite3_result_error (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  sqlite3_result_error_nomem (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+
+
+ scalar_t__ SQLITE_NULL ;
+ int assert (int) ;
+ int delta_create (char const*,int,char const*,int,char*) ;
+ int sqlite3_free (char*) ;
+ char* sqlite3_malloc64 (int) ;
+ int sqlite3_result_blob (int *,char*,int,int (*) (char*)) ;
+ int sqlite3_result_error (int *,char*,int) ;
+ int sqlite3_result_error_nomem (int *) ;
+ scalar_t__ sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void deltaCreateFunc(
   sqlite3_context *context,
   int argc,
   sqlite3_value **argv
 ){
-  const char *aOrig; int nOrig;  /* old blob */
-  const char *aNew;  int nNew;   /* new blob */
-  char *aOut;        int nOut;   /* output delta */
+  const char *aOrig; int nOrig;
+  const char *aNew; int nNew;
+  char *aOut; int nOut;
 
   assert( argc==2 );
   if( sqlite3_value_type(argv[0])==SQLITE_NULL ) return;

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gpio_chip {int /*<<< orphan*/  (* set ) (struct gpio_chip*,unsigned int,int) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (struct gpio_chip*,unsigned int,int) ; 
+
+
+
+struct gpio_chip {int (* set ) (struct gpio_chip*,unsigned int,int) ;} ;
+
+
+ int stub1 (struct gpio_chip*,unsigned int,int) ;
 
 __attribute__((used)) static int bgpio_simple_dir_out(struct gpio_chip *gc, unsigned int gpio,
-				int val)
+    int val)
 {
-	gc->set(gc, gpio, val);
+ gc->set(gc, gpio, val);
 
-	return 0;
+ return 0;
 }

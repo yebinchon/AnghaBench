@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int uint32_t ;
-struct TYPE_6__ {unsigned char btMode; int numHashBytes; int /*<<< orphan*/  cutValue; } ;
-struct TYPE_8__ {int dictSize; unsigned int numFastBytes; scalar_t__ lc; scalar_t__ lp; scalar_t__ pb; int fastMode; int multiThread; int /*<<< orphan*/  writeEndMark; TYPE_1__ matchFinderBase; } ;
-struct TYPE_7__ {scalar_t__ lc; scalar_t__ lp; scalar_t__ pb; int dictSize; unsigned int fb; scalar_t__ algo; int numHashBytes; int numThreads; int /*<<< orphan*/  writeEndMark; int /*<<< orphan*/  mc; scalar_t__ btMode; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  TYPE_2__ CLzmaEncProps ;
-typedef  scalar_t__ CLzmaEncHandle ;
-typedef  TYPE_3__ CLzmaEnc ;
 
-/* Variables and functions */
- scalar_t__ LZMA_LC_MAX ; 
- scalar_t__ LZMA_LP_MAX ; 
- unsigned int LZMA_MATCH_LEN_MAX ; 
- scalar_t__ LZMA_PB_MAX ; 
- int /*<<< orphan*/  LzmaEncProps_Normalize (TYPE_2__*) ; 
- int LzmaEnckMaxHistorySize ; 
- int /*<<< orphan*/  SZ_ERROR_PARAM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int kDicLogSizeMaxCompress ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int uint32_t ;
+struct TYPE_6__ {unsigned char btMode; int numHashBytes; int cutValue; } ;
+struct TYPE_8__ {int dictSize; unsigned int numFastBytes; scalar_t__ lc; scalar_t__ lp; scalar_t__ pb; int fastMode; int multiThread; int writeEndMark; TYPE_1__ matchFinderBase; } ;
+struct TYPE_7__ {scalar_t__ lc; scalar_t__ lp; scalar_t__ pb; int dictSize; unsigned int fb; scalar_t__ algo; int numHashBytes; int numThreads; int writeEndMark; int mc; scalar_t__ btMode; } ;
+typedef int SRes ;
+typedef TYPE_2__ CLzmaEncProps ;
+typedef scalar_t__ CLzmaEncHandle ;
+typedef TYPE_3__ CLzmaEnc ;
+
+
+ scalar_t__ LZMA_LC_MAX ;
+ scalar_t__ LZMA_LP_MAX ;
+ unsigned int LZMA_MATCH_LEN_MAX ;
+ scalar_t__ LZMA_PB_MAX ;
+ int LzmaEncProps_Normalize (TYPE_2__*) ;
+ int LzmaEnckMaxHistorySize ;
+ int SZ_ERROR_PARAM ;
+ int SZ_OK ;
+ int kDicLogSizeMaxCompress ;
 
 SRes LzmaEnc_SetProps(CLzmaEncHandle pp, const CLzmaEncProps *props2)
 {
@@ -76,17 +76,8 @@ SRes LzmaEnc_SetProps(CLzmaEncHandle pp, const CLzmaEncProps *props2)
   p->matchFinderBase.cutValue = props.mc;
 
   p->writeEndMark = props.writeEndMark;
-
-  #ifndef _7ZIP_ST
-  /*
-  if (newMultiThread != _multiThread)
-  {
-    ReleaseMatchFinder();
-    _multiThread = newMultiThread;
-  }
-  */
   p->multiThread = (props.numThreads > 1);
-  #endif
+
 
   return SZ_OK;
 }

@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  C ; 
- int /*<<< orphan*/  NONCESUFFIX ; 
- int /*<<< orphan*/  SECONDKEY ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  crypto_core_salsa20 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_salsa2012 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- int /*<<< orphan*/  crypto_core_salsa208 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ; 
- scalar_t__ crypto_core_salsa20_CONSTBYTES ; 
- scalar_t__ crypto_core_salsa20_INPUTBYTES ; 
- scalar_t__ crypto_core_salsa20_KEYBYTES ; 
- scalar_t__ crypto_core_salsa20_OUTPUTBYTES ; 
- scalar_t__ crypto_core_salsa20_constbytes () ; 
- scalar_t__ crypto_core_salsa20_inputbytes () ; 
- scalar_t__ crypto_core_salsa20_keybytes () ; 
- scalar_t__ crypto_core_salsa20_outputbytes () ; 
- int /*<<< orphan*/  crypto_hash_sha256 (unsigned char*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sodium_free (unsigned char*) ; 
- scalar_t__ sodium_malloc (int) ; 
+ int C ;
+ int NONCESUFFIX ;
+ int SECONDKEY ;
+ int assert (int) ;
+ int crypto_core_salsa20 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_core_salsa2012 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ int crypto_core_salsa208 (unsigned char*,unsigned char*,unsigned char*,unsigned char*) ;
+ scalar_t__ crypto_core_salsa20_CONSTBYTES ;
+ scalar_t__ crypto_core_salsa20_INPUTBYTES ;
+ scalar_t__ crypto_core_salsa20_KEYBYTES ;
+ scalar_t__ crypto_core_salsa20_OUTPUTBYTES ;
+ scalar_t__ crypto_core_salsa20_constbytes () ;
+ scalar_t__ crypto_core_salsa20_inputbytes () ;
+ scalar_t__ crypto_core_salsa20_keybytes () ;
+ scalar_t__ crypto_core_salsa20_outputbytes () ;
+ int crypto_hash_sha256 (unsigned char*,unsigned char*,size_t) ;
+ int memcpy (unsigned char*,int ,int) ;
+ int printf (char*,...) ;
+ int sodium_free (unsigned char*) ;
+ scalar_t__ sodium_malloc (int) ;
 
 int
 main(void)
@@ -42,9 +34,9 @@ main(void)
     unsigned char *in;
     unsigned char *output;
     unsigned char *h;
-    size_t         output_len = 64 * 256 * 256;
-    size_t         pos = 0;
-    int            i;
+    size_t output_len = 64 * 256 * 256;
+    size_t pos = 0;
+    int i;
 
     pos = 0;
     secondkey = (unsigned char *) sodium_malloc(32);
@@ -79,7 +71,7 @@ main(void)
     }
     printf("\n");
 
-#ifndef SODIUM_LIBRARY_MINIMAL
+
     pos = 0;
     do {
         do {
@@ -113,10 +105,10 @@ main(void)
         printf("%02x", h[i]);
     }
     printf("\n");
-#else
-    printf("a4e3147dddd2ba7775939b50208a22eb3277d4e4bad8a1cfbc999c6bd392b638\n"
-           "017421baa9959cbe894bd003ec87938254f47c1e757eb66cf89c353d0c2b68de\n");
-#endif
+
+
+
+
 
     sodium_free(h);
     sodium_free(output);

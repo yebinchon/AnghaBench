@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISeqInStream ;
-typedef  int /*<<< orphan*/  CXzStreamFlags ;
-typedef  int /*<<< orphan*/  Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  RINOK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SZ_ERROR_NO_ARCHIVE ; 
- int /*<<< orphan*/  SeqInStream_Read2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XZ_SIG ; 
- int /*<<< orphan*/  XZ_SIG_SIZE ; 
- int XZ_STREAM_HEADER_SIZE ; 
- int /*<<< orphan*/  Xz_ParseHeader (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SRes ;
+typedef int ISeqInStream ;
+typedef int CXzStreamFlags ;
+typedef int Byte ;
+
+
+ int RINOK (int ) ;
+ int SZ_ERROR_NO_ARCHIVE ;
+ int SeqInStream_Read2 (int *,int *,int,int ) ;
+ int XZ_SIG ;
+ int XZ_SIG_SIZE ;
+ int XZ_STREAM_HEADER_SIZE ;
+ int Xz_ParseHeader (int *,int *) ;
+ scalar_t__ memcmp (int *,int ,int ) ;
 
 SRes Xz_ReadHeader(CXzStreamFlags *p, ISeqInStream *inStream)
 {

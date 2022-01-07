@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
-typedef  struct TYPE_20__   TYPE_11__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3 ;
-typedef  int /*<<< orphan*/  ifNullRow ;
-struct TYPE_23__ {int /*<<< orphan*/  pList; int /*<<< orphan*/  pSelect; } ;
+
+
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+typedef struct TYPE_20__ TYPE_11__ ;
+
+
+typedef int sqlite3 ;
+typedef int ifNullRow ;
+struct TYPE_23__ {int pList; int pSelect; } ;
 struct TYPE_25__ {scalar_t__ iRightJoinTable; scalar_t__ op; scalar_t__ iTable; size_t iColumn; TYPE_3__ x; struct TYPE_25__* pRight; struct TYPE_25__* pLeft; } ;
 struct TYPE_24__ {scalar_t__ iTable; scalar_t__ iNewTable; scalar_t__ isLeftJoin; TYPE_11__* pParse; TYPE_2__* pEList; } ;
 struct TYPE_22__ {size_t nExpr; TYPE_1__* a; } ;
 struct TYPE_21__ {TYPE_5__* pExpr; } ;
-struct TYPE_20__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_4__ SubstContext ;
-typedef  TYPE_5__ Expr ;
+struct TYPE_20__ {int * db; } ;
+typedef TYPE_4__ SubstContext ;
+typedef TYPE_5__ Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EP_CanBeNull ; 
- int /*<<< orphan*/  EP_FromJoin ; 
- int /*<<< orphan*/  EP_xIsSelect ; 
- scalar_t__ ExprHasProperty (TYPE_5__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExprSetProperty (TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ TK_COLUMN ; 
- scalar_t__ TK_IF_NULL_ROW ; 
- scalar_t__ TK_NULL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memset (TYPE_5__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  sqlite3ExprDelete (int /*<<< orphan*/ *,TYPE_5__*) ; 
- TYPE_5__* sqlite3ExprDup (int /*<<< orphan*/ *,TYPE_5__*,int /*<<< orphan*/ ) ; 
- scalar_t__ sqlite3ExprIsVector (TYPE_5__*) ; 
- int /*<<< orphan*/  sqlite3VectorErrorMsg (TYPE_11__*,TYPE_5__*) ; 
- int /*<<< orphan*/  substExprList (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  substSelect (TYPE_4__*,int /*<<< orphan*/ ,int) ; 
+
+ int EP_CanBeNull ;
+ int EP_FromJoin ;
+ int EP_xIsSelect ;
+ scalar_t__ ExprHasProperty (TYPE_5__*,int ) ;
+ int ExprSetProperty (TYPE_5__*,int ) ;
+ scalar_t__ TK_COLUMN ;
+ scalar_t__ TK_IF_NULL_ROW ;
+ scalar_t__ TK_NULL ;
+ int assert (int) ;
+ int memset (TYPE_5__*,int ,int) ;
+ int sqlite3ExprDelete (int *,TYPE_5__*) ;
+ TYPE_5__* sqlite3ExprDup (int *,TYPE_5__*,int ) ;
+ scalar_t__ sqlite3ExprIsVector (TYPE_5__*) ;
+ int sqlite3VectorErrorMsg (TYPE_11__*,TYPE_5__*) ;
+ int substExprList (TYPE_4__*,int ) ;
+ int substSelect (TYPE_4__*,int ,int) ;
 
 __attribute__((used)) static Expr *substExpr(
-  SubstContext *pSubst,  /* Description of the substitution */
-  Expr *pExpr            /* Expr in which substitution occurs */
+  SubstContext *pSubst,
+  Expr *pExpr
 ){
   if( pExpr==0 ) return 0;
   if( ExprHasProperty(pExpr, EP_FromJoin)

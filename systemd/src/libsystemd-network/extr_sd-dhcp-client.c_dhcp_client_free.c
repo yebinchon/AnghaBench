@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {int /*<<< orphan*/  options; int /*<<< orphan*/  user_class; int /*<<< orphan*/  vendor_class_identifier; int /*<<< orphan*/  hostname; int /*<<< orphan*/  req_opts; int /*<<< orphan*/  lease; void* timeout_expire; void* timeout_t2; void* timeout_t1; void* timeout_resend; } ;
-typedef  TYPE_1__ sd_dhcp_client ;
 
-/* Variables and functions */
- int /*<<< orphan*/  client_initialize (TYPE_1__*) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_dhcp_client (TYPE_1__*,char*) ; 
- TYPE_1__* mfree (TYPE_1__*) ; 
- int /*<<< orphan*/  ordered_hashmap_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sd_dhcp_client_detach_event (TYPE_1__*) ; 
- int /*<<< orphan*/  sd_dhcp_lease_unref (int /*<<< orphan*/ ) ; 
- void* sd_event_source_unref (void*) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_9__ {int options; int user_class; int vendor_class_identifier; int hostname; int req_opts; int lease; void* timeout_expire; void* timeout_t2; void* timeout_t1; void* timeout_resend; } ;
+typedef TYPE_1__ sd_dhcp_client ;
+
+
+ int client_initialize (TYPE_1__*) ;
+ int free (int ) ;
+ int log_dhcp_client (TYPE_1__*,char*) ;
+ TYPE_1__* mfree (TYPE_1__*) ;
+ int ordered_hashmap_free (int ) ;
+ int sd_dhcp_client_detach_event (TYPE_1__*) ;
+ int sd_dhcp_lease_unref (int ) ;
+ void* sd_event_source_unref (void*) ;
+ int strv_free (int ) ;
 
 __attribute__((used)) static sd_dhcp_client *dhcp_client_free(sd_dhcp_client *client) {
         if (!client)
-                return NULL;
+                return ((void*)0);
 
         log_dhcp_client(client, "FREE");
 

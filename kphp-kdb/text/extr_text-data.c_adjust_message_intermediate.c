@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int last_local_id; int /*<<< orphan*/  delayed_tree; int /*<<< orphan*/  msg_tree; int /*<<< orphan*/  delayed_value_tree; struct file_user_list_entry* dir_entry; } ;
-typedef  TYPE_1__ user_t ;
+
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int last_local_id; int delayed_tree; int msg_tree; int delayed_value_tree; struct file_user_list_entry* dir_entry; } ;
+typedef TYPE_1__ user_t ;
 struct TYPE_11__ {int y; int flags; int clear_mask; int set_mask; } ;
-typedef  TYPE_2__ tree_t ;
+typedef TYPE_2__ tree_t ;
 struct file_user_list_entry {int user_last_local_id; } ;
 
-/* Variables and functions */
- int COMBINE_CLEAR_SET (int,int) ; 
- int TF_ZERO ; 
- int TF_ZERO_PRIME ; 
- int adjust_message_internal (TYPE_1__*,TYPE_2__*,int,int,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- TYPE_1__* get_user (int) ; 
- TYPE_1__* get_user_f (int) ; 
- scalar_t__ get_user_metafile (TYPE_1__*) ; 
- struct file_user_list_entry* lookup_user_directory (int) ; 
- int /*<<< orphan*/  lrand48 () ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  tree_delete (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  tree_insert (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void*) ; 
- TYPE_2__* tree_lookup (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  update_history (TYPE_1__*,int,int,int) ; 
- int verbosity ; 
+
+ int COMBINE_CLEAR_SET (int,int) ;
+ int TF_ZERO ;
+ int TF_ZERO_PRIME ;
+ int adjust_message_internal (TYPE_1__*,TYPE_2__*,int,int,int) ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,int,int) ;
+ TYPE_1__* get_user (int) ;
+ TYPE_1__* get_user_f (int) ;
+ scalar_t__ get_user_metafile (TYPE_1__*) ;
+ struct file_user_list_entry* lookup_user_directory (int) ;
+ int lrand48 () ;
+ int stderr ;
+ int tree_delete (int ,int) ;
+ int tree_insert (int ,int,int ,void*) ;
+ TYPE_2__* tree_lookup (int ,int) ;
+ int update_history (TYPE_1__*,int,int,int) ;
+ int verbosity ;
 
 int adjust_message_intermediate (int user_id, int local_id, int clear_mask, int set_mask) {
   user_t *U;
@@ -98,9 +98,9 @@ int adjust_message_intermediate (int user_id, int local_id, int clear_mask, int 
   if (!T) {
     t = (clear_mask < 0 ? -1 : COMBINE_CLEAR_SET (clear_mask, set_mask));
     U->delayed_tree = tree_insert (U->delayed_tree, local_id, lrand48 (), (void *) (long) t);
-//    if (U->max_delayed_local_id < local_id) {
-//      U->max_delayed_local_id = local_id;
-//    }
+
+
+
     return 3;
   }
 

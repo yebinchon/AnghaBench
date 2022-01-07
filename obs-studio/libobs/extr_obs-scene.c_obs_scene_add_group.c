@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  obs_sceneitem_t ;
-typedef  int /*<<< orphan*/  obs_scene_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * obs_scene_insert_group (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int obs_sceneitem_t ;
+typedef int obs_scene_t ;
+
+
+ int * obs_scene_insert_group (int *,char const*,int *,int ) ;
 
 obs_sceneitem_t *obs_scene_add_group(obs_scene_t *scene, const char *name)
 {
-	return obs_scene_insert_group(scene, name, NULL, 0);
+ return obs_scene_insert_group(scene, name, ((void*)0), 0);
 }

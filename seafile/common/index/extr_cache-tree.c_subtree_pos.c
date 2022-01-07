@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cache_tree_sub {int /*<<< orphan*/  namelen; int /*<<< orphan*/  name; } ;
+
+
+
+
+struct cache_tree_sub {int namelen; int name; } ;
 struct cache_tree {int subtree_nr; struct cache_tree_sub** down; } ;
 
-/* Variables and functions */
- int subtree_name_cmp (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int subtree_name_cmp (char const*,int,int ,int ) ;
 
 __attribute__((used)) static int subtree_pos(struct cache_tree *it, const char *path, int pathlen)
 {

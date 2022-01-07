@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_34__   TYPE_6__ ;
-typedef  struct TYPE_33__   TYPE_5__ ;
-typedef  struct TYPE_32__   TYPE_4__ ;
-typedef  struct TYPE_31__   TYPE_3__ ;
-typedef  struct TYPE_30__   TYPE_2__ ;
-typedef  struct TYPE_29__   TYPE_1__ ;
-typedef  struct TYPE_28__   TYPE_17__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_34__ TYPE_6__ ;
+typedef struct TYPE_33__ TYPE_5__ ;
+typedef struct TYPE_32__ TYPE_4__ ;
+typedef struct TYPE_31__ TYPE_3__ ;
+typedef struct TYPE_30__ TYPE_2__ ;
+typedef struct TYPE_29__ TYPE_1__ ;
+typedef struct TYPE_28__ TYPE_17__ ;
+
+
 struct TYPE_30__ {TYPE_3__* out; TYPE_3__* in; } ;
-typedef  TYPE_2__ ThreadData ;
+typedef TYPE_2__ ThreadData ;
 struct TYPE_28__ {int available; } ;
-struct TYPE_34__ {int size; int mid; TYPE_17__ q; int /*<<< orphan*/ * planeheight; int /*<<< orphan*/  filter_slice; int /*<<< orphan*/ ** linesize; int /*<<< orphan*/ ** data; int /*<<< orphan*/  available; } ;
-struct TYPE_33__ {TYPE_1__* internal; int /*<<< orphan*/  is_disabled; TYPE_6__* priv; TYPE_4__** outputs; } ;
-struct TYPE_32__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; TYPE_5__* dst; } ;
-struct TYPE_31__ {int /*<<< orphan*/ * linesize; int /*<<< orphan*/ * data; } ;
-struct TYPE_29__ {int /*<<< orphan*/  (* execute ) (TYPE_5__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVFilterLink ;
-typedef  TYPE_5__ AVFilterContext ;
-typedef  TYPE_6__ ATADenoiseContext ;
+struct TYPE_34__ {int size; int mid; TYPE_17__ q; int * planeheight; int filter_slice; int ** linesize; int ** data; int available; } ;
+struct TYPE_33__ {TYPE_1__* internal; int is_disabled; TYPE_6__* priv; TYPE_4__** outputs; } ;
+struct TYPE_32__ {int h; int w; TYPE_5__* dst; } ;
+struct TYPE_31__ {int * linesize; int * data; } ;
+struct TYPE_29__ {int (* execute ) (TYPE_5__*,int ,TYPE_2__*,int *,int ) ;} ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVFilterLink ;
+typedef TYPE_5__ AVFilterContext ;
+typedef TYPE_6__ ATADenoiseContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMIN3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_3__* av_frame_clone (TYPE_3__*) ; 
- int /*<<< orphan*/  av_frame_copy_props (TYPE_3__*,TYPE_3__*) ; 
- int /*<<< orphan*/  av_frame_free (TYPE_3__**) ; 
- int /*<<< orphan*/  ff_bufqueue_add (TYPE_5__*,TYPE_17__*,TYPE_3__*) ; 
- TYPE_3__* ff_bufqueue_get (TYPE_17__*) ; 
- TYPE_3__* ff_bufqueue_peek (TYPE_17__*,int) ; 
- int ff_filter_frame (TYPE_4__*,TYPE_3__*) ; 
- int /*<<< orphan*/  ff_filter_get_nb_threads (TYPE_5__*) ; 
- TYPE_3__* ff_get_video_buffer (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_5__*,int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int FFMIN3 (int ,int ,int ) ;
+ TYPE_3__* av_frame_clone (TYPE_3__*) ;
+ int av_frame_copy_props (TYPE_3__*,TYPE_3__*) ;
+ int av_frame_free (TYPE_3__**) ;
+ int ff_bufqueue_add (TYPE_5__*,TYPE_17__*,TYPE_3__*) ;
+ TYPE_3__* ff_bufqueue_get (TYPE_17__*) ;
+ TYPE_3__* ff_bufqueue_peek (TYPE_17__*,int) ;
+ int ff_filter_frame (TYPE_4__*,TYPE_3__*) ;
+ int ff_filter_get_nb_threads (TYPE_5__*) ;
+ TYPE_3__* ff_get_video_buffer (TYPE_4__*,int ,int ) ;
+ int stub1 (TYPE_5__*,int ,TYPE_2__*,int *,int ) ;
 
 __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *buf)
 {
@@ -94,7 +94,7 @@ __attribute__((used)) static int filter_frame(AVFilterLink *inlink, AVFrame *buf
         }
 
         td.in = in; td.out = out;
-        ctx->internal->execute(ctx, s->filter_slice, &td, NULL,
+        ctx->internal->execute(ctx, s->filter_slice, &td, ((void*)0),
                                FFMIN3(s->planeheight[1],
                                       s->planeheight[2],
                                       ff_filter_get_nb_threads(ctx)));

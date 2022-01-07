@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fulltext_vtab ;
-struct TYPE_3__ {int nPhrase; int /*<<< orphan*/  nTerm; int /*<<< orphan*/  pTerm; } ;
-typedef  TYPE_1__ QueryTerm ;
-typedef  int /*<<< orphan*/  DocList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DL_DOCIDS ; 
- int /*<<< orphan*/  DL_POSITIONS ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  docListDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * docListNew (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  docListPhraseMerge (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int term_select_all (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int fulltext_vtab ;
+struct TYPE_3__ {int nPhrase; int nTerm; int pTerm; } ;
+typedef TYPE_1__ QueryTerm ;
+typedef int DocList ;
+
+
+ int DL_DOCIDS ;
+ int DL_POSITIONS ;
+ int SQLITE_OK ;
+ int docListDelete (int *) ;
+ int * docListNew (int ) ;
+ int docListPhraseMerge (int *,int *,int *) ;
+ int term_select_all (int *,int,int ,int ,int *) ;
 
 __attribute__((used)) static int docListOfTerm(
-  fulltext_vtab *v,     /* The full text index */
-  int iColumn,          /* column to restrict to.  No restrition if >=nColumn */
-  QueryTerm *pQTerm,    /* Term we are looking for, or 1st term of a phrase */
-  DocList **ppResult    /* Write the result here */
+  fulltext_vtab *v,
+  int iColumn,
+  QueryTerm *pQTerm,
+  DocList **ppResult
 ){
   DocList *pLeft, *pRight, *pNew;
   int i, rc;

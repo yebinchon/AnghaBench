@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct retro_hw_render_callback {int depth; int stencil; } ;
-struct TYPE_6__ {unsigned int textures; int hw_render_fbo_init; int /*<<< orphan*/ * texture; int /*<<< orphan*/ * hw_render_fbo; int /*<<< orphan*/  has_fbo; } ;
-typedef  TYPE_1__ gl_t ;
-struct TYPE_7__ {int hw_render_depth_init; int /*<<< orphan*/ * hw_render_depth; } ;
-typedef  TYPE_2__ gl2_renderchain_data_t ;
-typedef  int /*<<< orphan*/  GLint ;
-typedef  scalar_t__ GLenum ;
+struct TYPE_6__ {unsigned int textures; int hw_render_fbo_init; int * texture; int * hw_render_fbo; int has_fbo; } ;
+typedef TYPE_1__ gl_t ;
+struct TYPE_7__ {int hw_render_depth_init; int * hw_render_depth; } ;
+typedef TYPE_2__ gl2_renderchain_data_t ;
+typedef int GLint ;
+typedef scalar_t__ GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_DEPTH_COMPONENT16 ; 
- int /*<<< orphan*/  GL_DEPTH_STENCIL_ATTACHMENT ; 
- int /*<<< orphan*/  GL_MAX_TEXTURE_SIZE ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  RARCH_ERR (char*,unsigned int,scalar_t__) ; 
- int /*<<< orphan*/  RARCH_GL_COLOR_ATTACHMENT0 ; 
- int /*<<< orphan*/  RARCH_GL_DEPTH24_STENCIL8 ; 
- int /*<<< orphan*/  RARCH_GL_DEPTH_ATTACHMENT ; 
- int /*<<< orphan*/  RARCH_GL_FRAMEBUFFER ; 
- scalar_t__ RARCH_GL_FRAMEBUFFER_COMPLETE ; 
- int /*<<< orphan*/  RARCH_GL_MAX_RENDERBUFFER_SIZE ; 
- int /*<<< orphan*/  RARCH_GL_RENDERBUFFER ; 
- int /*<<< orphan*/  RARCH_GL_STENCIL_ATTACHMENT ; 
- int /*<<< orphan*/  RARCH_LOG (char*,...) ; 
- int /*<<< orphan*/  gl2_bind_fb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl2_bind_rb (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ gl2_check_fb_status (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl2_context_bind_hw_render (TYPE_1__*,int) ; 
- int /*<<< orphan*/  gl2_fb_rb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl2_fb_texture_2d (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl2_gen_fb (unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl2_gen_rb (unsigned int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl2_rb_storage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  gl2_renderchain_bind_backbuffer () ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- struct retro_hw_render_callback* video_driver_get_hw_context () ; 
+
+ int GL_DEPTH_COMPONENT16 ;
+ int GL_DEPTH_STENCIL_ATTACHMENT ;
+ int GL_MAX_TEXTURE_SIZE ;
+ int GL_TEXTURE_2D ;
+ int RARCH_ERR (char*,unsigned int,scalar_t__) ;
+ int RARCH_GL_COLOR_ATTACHMENT0 ;
+ int RARCH_GL_DEPTH24_STENCIL8 ;
+ int RARCH_GL_DEPTH_ATTACHMENT ;
+ int RARCH_GL_FRAMEBUFFER ;
+ scalar_t__ RARCH_GL_FRAMEBUFFER_COMPLETE ;
+ int RARCH_GL_MAX_RENDERBUFFER_SIZE ;
+ int RARCH_GL_RENDERBUFFER ;
+ int RARCH_GL_STENCIL_ATTACHMENT ;
+ int RARCH_LOG (char*,...) ;
+ int gl2_bind_fb (int ) ;
+ int gl2_bind_rb (int ,int ) ;
+ scalar_t__ gl2_check_fb_status (int ) ;
+ int gl2_context_bind_hw_render (TYPE_1__*,int) ;
+ int gl2_fb_rb (int ,int ,int ,int ) ;
+ int gl2_fb_texture_2d (int ,int ,int ,int ,int ) ;
+ int gl2_gen_fb (unsigned int,int *) ;
+ int gl2_gen_rb (unsigned int,int *) ;
+ int gl2_rb_storage (int ,int ,unsigned int,unsigned int) ;
+ int gl2_renderchain_bind_backbuffer () ;
+ int glBindTexture (int ,int ) ;
+ int glGetIntegerv (int ,int *) ;
+ struct retro_hw_render_callback* video_driver_get_hw_context () ;
 
 __attribute__((used)) static bool gl2_renderchain_init_hw_render(
       gl_t *gl,
@@ -56,16 +56,16 @@ __attribute__((used)) static bool gl2_renderchain_init_hw_render(
 {
    GLenum status;
    unsigned i;
-   bool depth                           = false;
-   bool stencil                         = false;
-   GLint max_fbo_size                   = 0;
-   GLint max_renderbuffer_size          = 0;
+   bool depth = 0;
+   bool stencil = 0;
+   GLint max_fbo_size = 0;
+   GLint max_renderbuffer_size = 0;
    struct retro_hw_render_callback *hwr =
       video_driver_get_hw_context();
 
-   /* We can only share texture objects through contexts.
-    * FBOs are "abstract" objects and are not shared. */
-   gl2_context_bind_hw_render(gl, true);
+
+
+   gl2_context_bind_hw_render(gl, 1);
 
    RARCH_LOG("[GL]: Initializing HW render (%u x %u).\n", width, height);
    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_fbo_size);
@@ -74,20 +74,20 @@ __attribute__((used)) static bool gl2_renderchain_init_hw_render(
          max_fbo_size, max_renderbuffer_size);
 
    if (!gl->has_fbo)
-      return false;
+      return 0;
 
    RARCH_LOG("[GL]: Supports FBO (render-to-texture).\n");
 
    glBindTexture(GL_TEXTURE_2D, 0);
    gl2_gen_fb(gl->textures, gl->hw_render_fbo);
 
-   depth   = hwr->depth;
+   depth = hwr->depth;
    stencil = hwr->stencil;
 
    if (depth)
    {
       gl2_gen_rb(gl->textures, chain->hw_render_depth);
-      chain->hw_render_depth_init = true;
+      chain->hw_render_depth_init = 1;
    }
 
    for (i = 0; i < gl->textures; i++)
@@ -106,24 +106,11 @@ __attribute__((used)) static bool gl2_renderchain_init_hw_render(
 
          if (stencil)
          {
-#if defined(HAVE_OPENGLES2) || defined(HAVE_OPENGLES1) || ((defined(__MACH__) && (defined(__ppc__) || defined(__ppc64__))))
-            /* GLES2 is a bit weird, as always.
-             * There's no GL_DEPTH_STENCIL_ATTACHMENT like in desktop GL. */
-            gl2_fb_rb(RARCH_GL_FRAMEBUFFER,
-                  RARCH_GL_DEPTH_ATTACHMENT,
-                  RARCH_GL_RENDERBUFFER,
-                  chain->hw_render_depth[i]);
-            gl2_fb_rb(RARCH_GL_FRAMEBUFFER,
-                  RARCH_GL_STENCIL_ATTACHMENT,
-                  RARCH_GL_RENDERBUFFER,
-                  chain->hw_render_depth[i]);
-#else
-            /* We use ARB FBO extensions, no need to check. */
             gl2_fb_rb(RARCH_GL_FRAMEBUFFER,
                   GL_DEPTH_STENCIL_ATTACHMENT,
                   RARCH_GL_RENDERBUFFER,
                   chain->hw_render_depth[i]);
-#endif
+
          }
          else
          {
@@ -139,13 +126,13 @@ __attribute__((used)) static bool gl2_renderchain_init_hw_render(
       {
          RARCH_ERR("[GL]: Failed to create HW render FBO #%u, error: 0x%04x.\n",
                i, status);
-         return false;
+         return 0;
       }
    }
 
    gl2_renderchain_bind_backbuffer();
-   gl->hw_render_fbo_init = true;
+   gl->hw_render_fbo_init = 1;
 
-   gl2_context_bind_hw_render(gl, false);
-   return true;
+   gl2_context_bind_hw_render(gl, 0);
+   return 1;
 }

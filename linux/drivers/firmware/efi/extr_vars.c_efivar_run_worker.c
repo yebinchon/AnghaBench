@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  efivar_work ; 
- scalar_t__ efivar_wq_enabled ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+ int efivar_work ;
+ scalar_t__ efivar_wq_enabled ;
+ int schedule_work (int *) ;
 
 void efivar_run_worker(void)
 {
-	if (efivar_wq_enabled)
-		schedule_work(&efivar_work);
+ if (efivar_wq_enabled)
+  schedule_work(&efivar_work);
 }

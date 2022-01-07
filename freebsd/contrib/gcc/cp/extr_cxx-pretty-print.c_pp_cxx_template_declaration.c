@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  cxx_pretty_printer ;
 
-/* Variables and functions */
- scalar_t__ DECL_SAVED_TREE (scalar_t__) ; 
- scalar_t__ DECL_TEMPLATE_PARMS (scalar_t__) ; 
- scalar_t__ FUNCTION_DECL ; 
- scalar_t__ TREE_CHAIN (scalar_t__) ; 
- scalar_t__ TREE_CODE (scalar_t__) ; 
- int /*<<< orphan*/  TREE_VALUE (scalar_t__) ; 
- scalar_t__ most_general_template (scalar_t__) ; 
- int /*<<< orphan*/  pp_cxx_begin_template_argument_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_cxx_end_template_argument_list (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pp_cxx_function_definition (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  pp_cxx_identifier (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  pp_cxx_simple_declaration (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  pp_cxx_template_parameter_list (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_maybe_newline_and_indent (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pp_newline_and_indent (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int cxx_pretty_printer ;
+
+
+ scalar_t__ DECL_SAVED_TREE (scalar_t__) ;
+ scalar_t__ DECL_TEMPLATE_PARMS (scalar_t__) ;
+ scalar_t__ FUNCTION_DECL ;
+ scalar_t__ TREE_CHAIN (scalar_t__) ;
+ scalar_t__ TREE_CODE (scalar_t__) ;
+ int TREE_VALUE (scalar_t__) ;
+ scalar_t__ most_general_template (scalar_t__) ;
+ int pp_cxx_begin_template_argument_list (int *) ;
+ int pp_cxx_end_template_argument_list (int *) ;
+ int pp_cxx_function_definition (int *,scalar_t__) ;
+ int pp_cxx_identifier (int *,char*) ;
+ int pp_cxx_simple_declaration (int *,scalar_t__) ;
+ int pp_cxx_template_parameter_list (int *,int ) ;
+ int pp_maybe_newline_and_indent (int *,int ) ;
+ int pp_newline_and_indent (int *,int) ;
 
 __attribute__((used)) static void
 pp_cxx_template_declaration (cxx_pretty_printer *pp, tree t)

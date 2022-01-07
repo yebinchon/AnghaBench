@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_7__ ;
-typedef  struct TYPE_11__   TYPE_6__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-struct TYPE_12__ {int /*<<< orphan*/  extradata; } ;
+
+
+typedef struct TYPE_12__ TYPE_7__ ;
+typedef struct TYPE_11__ TYPE_6__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_12__ {int extradata; } ;
 struct TYPE_11__ {int nb_streams; TYPE_3__** streams; } ;
 struct TYPE_10__ {TYPE_7__* codecpar; } ;
 struct TYPE_9__ {int size; } ;
 struct TYPE_8__ {TYPE_6__* fc; } ;
-typedef  TYPE_1__ MOVContext ;
-typedef  TYPE_2__ MOVAtom ;
-typedef  TYPE_3__ AVStream ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+typedef TYPE_1__ MOVContext ;
+typedef TYPE_2__ MOVAtom ;
+typedef TYPE_3__ AVStream ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int avio_r8 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int ff_get_extradata (TYPE_6__*,TYPE_7__*,int /*<<< orphan*/ *,int) ; 
+
+ int AVERROR_INVALIDDATA ;
+ int SEEK_CUR ;
+ int av_freep (int *) ;
+ int avio_r8 (int *) ;
+ int avio_seek (int *,int,int ) ;
+ int ff_get_extradata (TYPE_6__*,TYPE_7__*,int *,int) ;
 
 __attribute__((used)) static int mov_read_dvc1(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {

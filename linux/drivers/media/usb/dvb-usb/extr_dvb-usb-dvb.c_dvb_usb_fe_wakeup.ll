@@ -1,0 +1,73 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/media/usb/dvb-usb/extr_dvb-usb-dvb.c_dvb_usb_fe_wakeup.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/media/usb/dvb-usb/extr_dvb-usb-dvb.c_dvb_usb_fe_wakeup.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.dvb_frontend = type { i64, %struct.TYPE_3__* }
+%struct.TYPE_3__ = type { %struct.dvb_usb_adapter* }
+%struct.dvb_usb_adapter = type { %struct.TYPE_4__*, i32 }
+%struct.TYPE_4__ = type { {}* }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (i32 (%struct.dvb_frontend*)* @dvb_usb_fe_wakeup to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal i32 @dvb_usb_fe_wakeup(%struct.dvb_frontend* %0) #0 {
+  %2 = alloca %struct.dvb_frontend*, align 8
+  %3 = alloca %struct.dvb_usb_adapter*, align 8
+  store %struct.dvb_frontend* %0, %struct.dvb_frontend** %2, align 8
+  %4 = load %struct.dvb_frontend*, %struct.dvb_frontend** %2, align 8
+  %5 = getelementptr inbounds %struct.dvb_frontend, %struct.dvb_frontend* %4, i32 0, i32 1
+  %6 = load %struct.TYPE_3__*, %struct.TYPE_3__** %5, align 8
+  %7 = getelementptr inbounds %struct.TYPE_3__, %struct.TYPE_3__* %6, i32 0, i32 0
+  %8 = load %struct.dvb_usb_adapter*, %struct.dvb_usb_adapter** %7, align 8
+  store %struct.dvb_usb_adapter* %8, %struct.dvb_usb_adapter** %3, align 8
+  %9 = load %struct.dvb_usb_adapter*, %struct.dvb_usb_adapter** %3, align 8
+  %10 = getelementptr inbounds %struct.dvb_usb_adapter, %struct.dvb_usb_adapter* %9, i32 0, i32 1
+  %11 = load i32, i32* %10, align 8
+  %12 = call i32 @dvb_usb_device_power_ctrl(i32 %11, i32 1)
+  %13 = load %struct.dvb_frontend*, %struct.dvb_frontend** %2, align 8
+  %14 = call i32 @dvb_usb_set_active_fe(%struct.dvb_frontend* %13, i32 1)
+  %15 = load %struct.dvb_usb_adapter*, %struct.dvb_usb_adapter** %3, align 8
+  %16 = getelementptr inbounds %struct.dvb_usb_adapter, %struct.dvb_usb_adapter* %15, i32 0, i32 0
+  %17 = load %struct.TYPE_4__*, %struct.TYPE_4__** %16, align 8
+  %18 = load %struct.dvb_frontend*, %struct.dvb_frontend** %2, align 8
+  %19 = getelementptr inbounds %struct.dvb_frontend, %struct.dvb_frontend* %18, i32 0, i32 0
+  %20 = load i64, i64* %19, align 8
+  %21 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %17, i64 %20
+  %22 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %21, i32 0, i32 0
+  %23 = bitcast {}** %22 to i32 (%struct.dvb_frontend*)**
+  %24 = load i32 (%struct.dvb_frontend*)*, i32 (%struct.dvb_frontend*)** %23, align 8
+  %25 = icmp ne i32 (%struct.dvb_frontend*)* %24, null
+  br i1 %25, label %26, label %39
+
+26:                                               ; preds = %1
+  %27 = load %struct.dvb_usb_adapter*, %struct.dvb_usb_adapter** %3, align 8
+  %28 = getelementptr inbounds %struct.dvb_usb_adapter, %struct.dvb_usb_adapter* %27, i32 0, i32 0
+  %29 = load %struct.TYPE_4__*, %struct.TYPE_4__** %28, align 8
+  %30 = load %struct.dvb_frontend*, %struct.dvb_frontend** %2, align 8
+  %31 = getelementptr inbounds %struct.dvb_frontend, %struct.dvb_frontend* %30, i32 0, i32 0
+  %32 = load i64, i64* %31, align 8
+  %33 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %29, i64 %32
+  %34 = getelementptr inbounds %struct.TYPE_4__, %struct.TYPE_4__* %33, i32 0, i32 0
+  %35 = bitcast {}** %34 to i32 (%struct.dvb_frontend*)**
+  %36 = load i32 (%struct.dvb_frontend*)*, i32 (%struct.dvb_frontend*)** %35, align 8
+  %37 = load %struct.dvb_frontend*, %struct.dvb_frontend** %2, align 8
+  %38 = call i32 %36(%struct.dvb_frontend* %37)
+  br label %39
+
+39:                                               ; preds = %26, %1
+  ret i32 0
+}
+
+declare dso_local i32 @dvb_usb_device_power_ctrl(i32, i32) #1
+
+declare dso_local i32 @dvb_usb_set_active_fe(%struct.dvb_frontend*, i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

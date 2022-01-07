@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct priv {double delay_before_pause; int /*<<< orphan*/  alsa; scalar_t__ paused; } ;
+
+
+
+
+struct priv {double delay_before_pause; int alsa; scalar_t__ paused; } ;
 struct ao {scalar_t__ samplerate; struct priv* priv; } ;
-typedef  double snd_pcm_sframes_t ;
+typedef double snd_pcm_sframes_t ;
 
-/* Variables and functions */
- int EPIPE ; 
- int /*<<< orphan*/  handle_underrun (struct ao*) ; 
- int snd_pcm_delay (int /*<<< orphan*/ ,double*) ; 
- int /*<<< orphan*/  snd_pcm_forward (int /*<<< orphan*/ ,double) ; 
+
+ int EPIPE ;
+ int handle_underrun (struct ao*) ;
+ int snd_pcm_delay (int ,double*) ;
+ int snd_pcm_forward (int ,double) ;
 
 __attribute__((used)) static double get_delay(struct ao *ao)
 {
@@ -36,7 +36,7 @@ __attribute__((used)) static double get_delay(struct ao *ao)
     }
 
     if (delay < 0) {
-        /* underrun - move the application pointer forward to catch up */
+
         snd_pcm_forward(p->alsa, -delay);
         delay = 0;
     }

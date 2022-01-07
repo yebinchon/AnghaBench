@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/ * priv_key; int /*<<< orphan*/ * pub_key; int /*<<< orphan*/  p; } ;
-typedef  int /*<<< orphan*/ * MP_t ;
-typedef  TYPE_1__ MDH ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MDH_generate_key (TYPE_1__*) ; 
- int /*<<< orphan*/  MP_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MP_gethex (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t) ; 
- int /*<<< orphan*/  Q1024 ; 
- int /*<<< orphan*/  assert (size_t) ; 
- size_t isValidPublicKey (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int * priv_key; int * pub_key; int p; } ;
+typedef int * MP_t ;
+typedef TYPE_1__ MDH ;
+
+
+ int MDH_generate_key (TYPE_1__*) ;
+ int MP_free (int *) ;
+ int MP_gethex (int *,int ,size_t) ;
+ int Q1024 ;
+ int assert (size_t) ;
+ size_t isValidPublicKey (int *,int ,int *) ;
 
 __attribute__((used)) static int
 DHGenerateKey(MDH *dh)
@@ -32,7 +32,7 @@ DHGenerateKey(MDH *dh)
 
     while (!res)
     {
-        MP_t q1 = NULL;
+        MP_t q1 = ((void*)0);
 
         if (!MDH_generate_key(dh))
             return 0;

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  lock; TYPE_2__* q_tail; TYPE_2__* q_head; int /*<<< orphan*/  cv_sample_sent; } ;
-typedef  TYPE_1__ VTEncContext ;
-struct TYPE_7__ {struct TYPE_7__* next; int /*<<< orphan*/ * sei; int /*<<< orphan*/  cm_buffer; } ;
-typedef  int /*<<< orphan*/  ExtraSEI ;
-typedef  int /*<<< orphan*/  CMSampleBufferRef ;
-typedef  TYPE_2__ BufNode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CFRetain (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_2__* av_malloc (int) ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_async_error (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int lock; TYPE_2__* q_tail; TYPE_2__* q_head; int cv_sample_sent; } ;
+typedef TYPE_1__ VTEncContext ;
+struct TYPE_7__ {struct TYPE_7__* next; int * sei; int cm_buffer; } ;
+typedef int ExtraSEI ;
+typedef int CMSampleBufferRef ;
+typedef TYPE_2__ BufNode ;
+
+
+ int AVERROR (int ) ;
+ int CFRetain (int ) ;
+ int ENOMEM ;
+ TYPE_2__* av_malloc (int) ;
+ int pthread_cond_signal (int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int set_async_error (TYPE_1__*,int ) ;
 
 __attribute__((used)) static void vtenc_q_push(VTEncContext *vtctx, CMSampleBufferRef buffer, ExtraSEI *sei)
 {
@@ -40,7 +40,7 @@ __attribute__((used)) static void vtenc_q_push(VTEncContext *vtctx, CMSampleBuff
     CFRetain(buffer);
     info->cm_buffer = buffer;
     info->sei = sei;
-    info->next = NULL;
+    info->next = ((void*)0);
 
     pthread_mutex_lock(&vtctx->lock);
     pthread_cond_signal(&vtctx->cv_sample_sent);

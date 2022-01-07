@@ -1,62 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  json_t ;
 
-/* Variables and functions */
-#define  JSON_ARRAY 135 
-#define  JSON_FALSE 134 
-#define  JSON_INTEGER 133 
-#define  JSON_NULL 132 
-#define  JSON_OBJECT 131 
-#define  JSON_REAL 130 
-#define  JSON_STRING 129 
-#define  JSON_TRUE 128 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int json_typeof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_json_array (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_false (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_integer (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_null (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_object (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_real (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_string (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  print_json_true (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int json_t ;
+ int fprintf (int ,char*,int) ;
+ int json_typeof (int *) ;
+ int print_json_array (int *,int) ;
+ int print_json_false (int *,int) ;
+ int print_json_integer (int *,int) ;
+ int print_json_null (int *,int) ;
+ int print_json_object (int *,int) ;
+ int print_json_real (int *,int) ;
+ int print_json_string (int *,int) ;
+ int print_json_true (int *,int) ;
+ int stderr ;
 
 void print_json_aux(json_t *element, int indent) {
     switch (json_typeof(element)) {
-    case JSON_OBJECT:
+    case 131:
         print_json_object(element, indent);
         break;
-    case JSON_ARRAY:
+    case 135:
         print_json_array(element, indent);
         break;
-    case JSON_STRING:
+    case 129:
         print_json_string(element, indent);
         break;
-    case JSON_INTEGER:
+    case 133:
         print_json_integer(element, indent);
         break;
-    case JSON_REAL:
+    case 130:
         print_json_real(element, indent);
         break;
-    case JSON_TRUE:
+    case 128:
         print_json_true(element, indent);
         break;
-    case JSON_FALSE:
+    case 134:
         print_json_false(element, indent);
         break;
-    case JSON_NULL:
+    case 132:
         print_json_null(element, indent);
         break;
     default:

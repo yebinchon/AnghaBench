@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  printf (char*,char*,char const*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
- scalar_t__ strlen (char*) ; 
+ int printf (char*,char*,char const*) ;
+ int sprintf (char*,char*,...) ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static unsigned print_decode_line(
-  const unsigned char *aData,  /* Content being decoded */
-  int ofst, int nByte,         /* Start and size of decode */
-  const char *zMsg             /* Message to append */
+  const unsigned char *aData,
+  int ofst, int nByte,
+  const char *zMsg
 ){
   int i, j;
   unsigned val = aData[ofst];

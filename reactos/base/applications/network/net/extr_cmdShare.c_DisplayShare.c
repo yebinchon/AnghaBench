@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ shi2_max_uses; scalar_t__ shi2_current_uses; int /*<<< orphan*/  shi2_remark; int /*<<< orphan*/  shi2_path; int /*<<< orphan*/  shi2_netname; } ;
-typedef  int /*<<< orphan*/  PWSTR ;
-typedef  TYPE_1__* PSHARE_INFO_2 ;
-typedef  scalar_t__ NET_API_STATUS ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int INT ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ConPrintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ NERR_Success ; 
- int /*<<< orphan*/  NetApiBufferFree (TYPE_1__*) ; 
- scalar_t__ NetShareGetInfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PrintMessageString (int) ; 
- int /*<<< orphan*/  PrintPaddedMessageString (int,int) ; 
- int /*<<< orphan*/  StdOut ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ shi2_max_uses; scalar_t__ shi2_current_uses; int shi2_remark; int shi2_path; int shi2_netname; } ;
+typedef int PWSTR ;
+typedef TYPE_1__* PSHARE_INFO_2 ;
+typedef scalar_t__ NET_API_STATUS ;
+typedef int LPBYTE ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+
+
+ int ConPrintf (int ,char*,...) ;
+ scalar_t__ NERR_Success ;
+ int NetApiBufferFree (TYPE_1__*) ;
+ scalar_t__ NetShareGetInfo (int *,int ,int,int *) ;
+ int PrintMessageString (int) ;
+ int PrintPaddedMessageString (int,int) ;
+ int StdOut ;
 
 NET_API_STATUS
 DisplayShare(
     PWSTR pShareName)
 {
-    PSHARE_INFO_2 pBuffer = NULL;
+    PSHARE_INFO_2 pBuffer = ((void*)0);
     INT nPaddedLength = 22;
     NET_API_STATUS Status;
 
-    Status = NetShareGetInfo(NULL,
+    Status = NetShareGetInfo(((void*)0),
                              pShareName,
                              2,
                              (LPBYTE*)&pBuffer);

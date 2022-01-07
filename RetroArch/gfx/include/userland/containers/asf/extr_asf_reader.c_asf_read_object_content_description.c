@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint16_t ;
-typedef  scalar_t__ int64_t ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_T ;
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
 
-/* Variables and functions */
- scalar_t__ ASF_READ_U16 (int /*<<< orphan*/ *,scalar_t__,char*) ; 
- int /*<<< orphan*/  ASF_SKIP_STRING (int /*<<< orphan*/ *,scalar_t__,scalar_t__,char*) ; 
- int /*<<< orphan*/  CHECK_POINT (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  STREAM_STATUS (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VC_CONTAINER_ERROR_CORRUPTED ; 
+
+
+
+typedef scalar_t__ uint16_t ;
+typedef scalar_t__ int64_t ;
+typedef int VC_CONTAINER_T ;
+typedef int VC_CONTAINER_STATUS_T ;
+
+
+ scalar_t__ ASF_READ_U16 (int *,scalar_t__,char*) ;
+ int ASF_SKIP_STRING (int *,scalar_t__,scalar_t__,char*) ;
+ int CHECK_POINT (int *,scalar_t__) ;
+ int STREAM_STATUS (int *) ;
+ int VC_CONTAINER_ERROR_CORRUPTED ;
 
 __attribute__((used)) static VC_CONTAINER_STATUS_T asf_read_object_content_description( VC_CONTAINER_T *p_ctx, int64_t size )
 {

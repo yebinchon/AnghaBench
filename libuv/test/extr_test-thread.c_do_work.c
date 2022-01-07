@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uv_loop_t ;
+
+
+
+
+typedef int uv_loop_t ;
 struct test_thread {int thread_called; } ;
-struct getaddrinfo_req {int counter; int /*<<< orphan*/ * loop; } ;
-struct fs_req {int counter; int /*<<< orphan*/ * loop; } ;
+struct getaddrinfo_req {int counter; int * loop; } ;
+struct fs_req {int counter; int * loop; } ;
 
-/* Variables and functions */
- size_t ARRAY_SIZE (struct getaddrinfo_req*) ; 
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  UV_RUN_DEFAULT ; 
- int /*<<< orphan*/  fs_do (struct getaddrinfo_req*) ; 
- int /*<<< orphan*/  getaddrinfo_do (struct getaddrinfo_req*) ; 
- scalar_t__ uv_loop_close (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_loop_init (int /*<<< orphan*/ *) ; 
- scalar_t__ uv_run (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ size_t ARRAY_SIZE (struct getaddrinfo_req*) ;
+ int ASSERT (int) ;
+ int UV_RUN_DEFAULT ;
+ int fs_do (struct getaddrinfo_req*) ;
+ int getaddrinfo_do (struct getaddrinfo_req*) ;
+ scalar_t__ uv_loop_close (int *) ;
+ scalar_t__ uv_loop_init (int *) ;
+ scalar_t__ uv_run (int *,int ) ;
 
 __attribute__((used)) static void do_work(void* arg) {
   struct getaddrinfo_req getaddrinfo_reqs[4];

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  custom_secure_version; int /*<<< orphan*/  setting_2; int /*<<< orphan*/  setting_1; int /*<<< orphan*/  device_role; int /*<<< orphan*/  module_version; } ;
-typedef  TYPE_1__ device_desc_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_EFUSE_CUSTOM_SECURE_VERSION ; 
- int /*<<< orphan*/  ESP_EFUSE_DEVICE_ROLE ; 
- int /*<<< orphan*/  ESP_EFUSE_MODULE_VERSION ; 
- int /*<<< orphan*/  ESP_EFUSE_SETTING_1 ; 
- int /*<<< orphan*/  ESP_EFUSE_SETTING_2 ; 
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_efuse_read_field_blob (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  esp_efuse_read_field_cnt (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_device_desc (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int custom_secure_version; int setting_2; int setting_1; int device_role; int module_version; } ;
+typedef TYPE_1__ device_desc_t ;
+
+
+ int ESP_EFUSE_CUSTOM_SECURE_VERSION ;
+ int ESP_EFUSE_DEVICE_ROLE ;
+ int ESP_EFUSE_MODULE_VERSION ;
+ int ESP_EFUSE_SETTING_1 ;
+ int ESP_EFUSE_SETTING_2 ;
+ int ESP_ERROR_CHECK (int ) ;
+ int esp_efuse_read_field_blob (int ,int *,int) ;
+ int esp_efuse_read_field_cnt (int ,int *) ;
+ int print_device_desc (TYPE_1__*) ;
 
 __attribute__((used)) static void read_device_desc_efuse_fields(device_desc_t *desc)
 {

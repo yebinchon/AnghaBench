@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BCS_NO_SCOPE ; 
- int /*<<< orphan*/  begin_compound_stmt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  begin_stmt_expr () ; 
- int /*<<< orphan*/  building_stmt_tree () ; 
+
+
+
+typedef int tree ;
+
+
+ int BCS_NO_SCOPE ;
+ int begin_compound_stmt (int ) ;
+ int begin_stmt_expr () ;
+ int building_stmt_tree () ;
 
 __attribute__((used)) static bool
 begin_init_stmts (tree *stmt_expr_p, tree *compound_stmt_p)

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct item_cheat {int state; unsigned int handler; int memory_search_size; unsigned int idx; int repeat_count; int repeat_add_to_address; scalar_t__ repeat_add_to_value; int /*<<< orphan*/  cheat_type; scalar_t__ desc; scalar_t__ code; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct item_cheat {int state; unsigned int handler; int memory_search_size; unsigned int idx; int repeat_count; int repeat_add_to_address; scalar_t__ repeat_add_to_value; int cheat_type; scalar_t__ desc; scalar_t__ code; } ;
 struct TYPE_2__ {unsigned int size; unsigned int buf_size; struct item_cheat* cheats; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHEAT_TYPE_SET_TO_VALUE ; 
- scalar_t__ calloc (unsigned int,int) ; 
- TYPE_1__ cheat_manager_state ; 
- int /*<<< orphan*/  free (scalar_t__) ; 
- int /*<<< orphan*/  memset (struct item_cheat*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ realloc (struct item_cheat*,unsigned int) ; 
+
+ int CHEAT_TYPE_SET_TO_VALUE ;
+ scalar_t__ calloc (unsigned int,int) ;
+ TYPE_1__ cheat_manager_state ;
+ int free (scalar_t__) ;
+ int memset (struct item_cheat*,int ,int) ;
+ scalar_t__ realloc (struct item_cheat*,unsigned int) ;
 
 bool cheat_manager_realloc(unsigned new_size, unsigned default_handler)
 {
@@ -35,10 +35,10 @@ bool cheat_manager_realloc(unsigned new_size, unsigned default_handler)
    }
    else
    {
-      struct item_cheat *val = NULL;
+      struct item_cheat *val = ((void*)0);
       orig_size = cheat_manager_state.size;
 
-      /* if size is decreasing, free the items that will be lost */
+
       for (i = new_size; i < orig_size; i++)
       {
          if (cheat_manager_state.cheats[i].code)
@@ -51,14 +51,14 @@ bool cheat_manager_realloc(unsigned new_size, unsigned default_handler)
             realloc(cheat_manager_state.cheats,
             new_size * sizeof(struct item_cheat));
 
-      cheat_manager_state.cheats = val ? val : NULL;
+      cheat_manager_state.cheats = val ? val : ((void*)0);
    }
 
    if (!cheat_manager_state.cheats)
    {
       cheat_manager_state.buf_size = cheat_manager_state.size = 0;
-      cheat_manager_state.cheats = NULL;
-      return false;
+      cheat_manager_state.cheats = ((void*)0);
+      return 0;
    }
 
    cheat_manager_state.buf_size = new_size;
@@ -67,7 +67,7 @@ bool cheat_manager_realloc(unsigned new_size, unsigned default_handler)
    for (i = orig_size; i < cheat_manager_state.size; i++)
    {
       memset(&(cheat_manager_state.cheats[i]), 0, sizeof(cheat_manager_state.cheats[i]));
-      cheat_manager_state.cheats[i].state = false;
+      cheat_manager_state.cheats[i].state = 0;
       cheat_manager_state.cheats[i].handler = default_handler;
       cheat_manager_state.cheats[i].cheat_type = CHEAT_TYPE_SET_TO_VALUE;
       cheat_manager_state.cheats[i].memory_search_size = 3;
@@ -77,5 +77,5 @@ bool cheat_manager_realloc(unsigned new_size, unsigned default_handler)
       cheat_manager_state.cheats[i].repeat_add_to_address = 1;
    }
 
-   return true;
+   return 1;
 }

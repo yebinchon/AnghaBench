@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  max; int /*<<< orphan*/  min; } ;
-typedef  TYPE_1__ RRDR ;
-typedef  int /*<<< orphan*/  BUFFER ;
 
-/* Variables and functions */
- int RRDR_OPTION_GOOGLE_JSON ; 
- int /*<<< orphan*/  buffer_rrd_value (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_sprintf (int /*<<< orphan*/ *,char*,char*,char*) ; 
- int /*<<< orphan*/  buffer_strcat (int /*<<< orphan*/ *,char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int max; int min; } ;
+typedef TYPE_1__ RRDR ;
+typedef int BUFFER ;
+
+
+ int RRDR_OPTION_GOOGLE_JSON ;
+ int buffer_rrd_value (int *,int ) ;
+ int buffer_sprintf (int *,char*,char*,char*) ;
+ int buffer_strcat (int *,char*) ;
 
 void rrdr_json_wrapper_end(RRDR *r, BUFFER *wb, uint32_t format, uint32_t options, int string_value) {
     (void)format;
 
-    char kq[2] = "",                    // key quote
-            sq[2] = "";                     // string quote
+    char kq[2] = "",
+            sq[2] = "";
 
     if( options & RRDR_OPTION_GOOGLE_JSON ) {
         kq[0] = '\0';

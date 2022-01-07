@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* name; } ;
 struct TYPE_5__ {char* name; char* long_name; char* extensions; char* mime_type; scalar_t__ video_codec; scalar_t__ audio_codec; scalar_t__ subtitle_codec; scalar_t__ priv_class; } ;
-typedef  TYPE_1__ AVOutputFormat ;
-typedef  TYPE_2__ AVCodecDescriptor ;
+typedef TYPE_1__ AVOutputFormat ;
+typedef TYPE_2__ AVCodecDescriptor ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_NONE ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_OPT_FLAG_ENCODING_PARAM ; 
- TYPE_1__* av_guess_format (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,char const*) ; 
- TYPE_2__* avcodec_descriptor_get (scalar_t__) ; 
- int /*<<< orphan*/  printf (char*,char*,...) ; 
- int /*<<< orphan*/  show_help_children (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_CODEC_ID_NONE ;
+ int AV_LOG_ERROR ;
+ int AV_OPT_FLAG_ENCODING_PARAM ;
+ TYPE_1__* av_guess_format (char const*,int *,int *) ;
+ int av_log (int *,int ,char*,char const*) ;
+ TYPE_2__* avcodec_descriptor_get (scalar_t__) ;
+ int printf (char*,char*,...) ;
+ int show_help_children (scalar_t__,int ) ;
 
 __attribute__((used)) static void show_help_muxer(const char *name)
 {
     const AVCodecDescriptor *desc;
-    const AVOutputFormat *fmt = av_guess_format(name, NULL, NULL);
+    const AVOutputFormat *fmt = av_guess_format(name, ((void*)0), ((void*)0));
 
     if (!fmt) {
-        av_log(NULL, AV_LOG_ERROR, "Unknown format '%s'.\n", name);
+        av_log(((void*)0), AV_LOG_ERROR, "Unknown format '%s'.\n", name);
         return;
     }
 

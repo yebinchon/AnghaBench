@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct ra_hwdec_mapper {int /*<<< orphan*/ * tex; int /*<<< orphan*/  ra; struct priv* priv; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct ra_hwdec_mapper {int * tex; int ra; struct priv* priv; } ;
 struct priv {int mapped; scalar_t__ vdpgl_surface; scalar_t__ direct_mode; TYPE_1__* gl; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* VDPAUUnregisterSurfaceNV ) (scalar_t__) ;int /*<<< orphan*/  (* VDPAUUnmapSurfacesNV ) (int,scalar_t__*) ;} ;
-typedef  TYPE_1__ GL ;
+struct TYPE_2__ {int (* VDPAUUnregisterSurfaceNV ) (scalar_t__) ;int (* VDPAUUnmapSurfacesNV ) (int,scalar_t__*) ;} ;
+typedef TYPE_1__ GL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int,scalar_t__*) ; 
- int /*<<< orphan*/  stub2 (scalar_t__) ; 
+
+ int ra_tex_free (int ,int *) ;
+ int stub1 (int,scalar_t__*) ;
+ int stub2 (scalar_t__) ;
 
 __attribute__((used)) static void mapper_unmap(struct ra_hwdec_mapper *mapper)
 {
@@ -36,5 +36,5 @@ __attribute__((used)) static void mapper_unmap(struct ra_hwdec_mapper *mapper)
             p->vdpgl_surface = 0;
         }
     }
-    p->mapped = false;
+    p->mapped = 0;
 }

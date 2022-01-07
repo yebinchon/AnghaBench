@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dohentry {char* ttl; int numaddr; int numcname; TYPE_2__* cname; struct dohaddr* addr; } ;
-struct TYPE_3__ {int /*<<< orphan*/ * v6; int /*<<< orphan*/ * v4; } ;
+struct TYPE_3__ {int * v6; int * v4; } ;
 struct dohaddr {scalar_t__ type; TYPE_1__ ip; } ;
 struct Curl_easy {int dummy; } ;
 struct TYPE_4__ {char* alloc; } ;
 
-/* Variables and functions */
- scalar_t__ DNS_TYPE_A ; 
- scalar_t__ DNS_TYPE_AAAA ; 
- int /*<<< orphan*/  infof (struct Curl_easy*,char*,char*,...) ; 
- int /*<<< orphan*/  msnprintf (char*,size_t,char*,...) ; 
- size_t strlen (char*) ; 
+
+ scalar_t__ DNS_TYPE_A ;
+ scalar_t__ DNS_TYPE_AAAA ;
+ int infof (struct Curl_easy*,char*,char*,...) ;
+ int msnprintf (char*,size_t,char*,...) ;
+ size_t strlen (char*) ;
 
 __attribute__((used)) static void showdoh(struct Curl_easy *data,
                     struct dohentry *d)

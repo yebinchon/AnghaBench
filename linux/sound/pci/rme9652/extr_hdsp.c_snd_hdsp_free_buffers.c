@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct hdsp {int /*<<< orphan*/  pci; int /*<<< orphan*/  playback_dma_buf; int /*<<< orphan*/  capture_dma_buf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  snd_hammerfall_free_buffer (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct hdsp {int pci; int playback_dma_buf; int capture_dma_buf; } ;
+
+
+ int snd_hammerfall_free_buffer (int *,int ) ;
 
 __attribute__((used)) static void snd_hdsp_free_buffers(struct hdsp *hdsp)
 {
-	snd_hammerfall_free_buffer(&hdsp->capture_dma_buf, hdsp->pci);
-	snd_hammerfall_free_buffer(&hdsp->playback_dma_buf, hdsp->pci);
+ snd_hammerfall_free_buffer(&hdsp->capture_dma_buf, hdsp->pci);
+ snd_hammerfall_free_buffer(&hdsp->playback_dma_buf, hdsp->pci);
 }

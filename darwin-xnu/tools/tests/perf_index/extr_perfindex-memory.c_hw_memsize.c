@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  my_memsize ;
 
-/* Variables and functions */
- int CTL_HW ; 
- int HW_MEMSIZE ; 
- int sysctl (int*,int,size_t*,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int my_memsize ;
+
+
+ int CTL_HW ;
+ int HW_MEMSIZE ;
+ int sysctl (int*,int,size_t*,size_t*,int *,int ) ;
 
 size_t hw_memsize(void) {
   int mib[2];
@@ -27,7 +27,7 @@ size_t hw_memsize(void) {
   mib[1] = HW_MEMSIZE;
   len = sizeof(my_memsize);
 
-  retval = sysctl(mib, 2, &my_memsize, &len, NULL, 0);
+  retval = sysctl(mib, 2, &my_memsize, &len, ((void*)0), 0);
 
   if(retval != 0)
       return 0;

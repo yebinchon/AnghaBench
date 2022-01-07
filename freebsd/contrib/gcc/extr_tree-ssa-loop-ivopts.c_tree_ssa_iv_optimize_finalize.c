@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ivopts_data {int /*<<< orphan*/  iv_candidates; int /*<<< orphan*/  iv_uses; int /*<<< orphan*/  niters; int /*<<< orphan*/  important_candidates; int /*<<< orphan*/  relevant; int /*<<< orphan*/  version_info; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BITMAP_FREE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  VEC_free (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  decl_rtl_to_reset ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_loop_data (struct ivopts_data*) ; 
- int /*<<< orphan*/  heap ; 
- int /*<<< orphan*/  htab_delete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  iv_cand_p ; 
- int /*<<< orphan*/  iv_use_p ; 
- int /*<<< orphan*/  tree ; 
+
+
+
+struct ivopts_data {int iv_candidates; int iv_uses; int niters; int important_candidates; int relevant; int version_info; } ;
+
+
+ int BITMAP_FREE (int ) ;
+ int VEC_free (int ,int ,int ) ;
+ int decl_rtl_to_reset ;
+ int free (int ) ;
+ int free_loop_data (struct ivopts_data*) ;
+ int heap ;
+ int htab_delete (int ) ;
+ int iv_cand_p ;
+ int iv_use_p ;
+ int tree ;
 
 __attribute__((used)) static void
 tree_ssa_iv_optimize_finalize (struct ivopts_data *data)

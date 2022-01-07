@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SCR ;
-typedef  int /*<<< orphan*/  EXCMD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  WRITE ; 
- int exwr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SCR ;
+typedef int EXCMD ;
+
+
+ int WRITE ;
+ int exwr (int *,int *,int ) ;
 
 int
 ex_write(SCR *sp, EXCMD *cmdp)
 {
-	return (exwr(sp, cmdp, WRITE));
+ return (exwr(sp, cmdp, WRITE));
 }

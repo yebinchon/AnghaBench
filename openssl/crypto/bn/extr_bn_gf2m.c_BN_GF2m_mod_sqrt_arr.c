@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  int /*<<< orphan*/  const BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_CTX_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* BN_CTX_get (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_CTX_start (int /*<<< orphan*/ *) ; 
- int BN_GF2m_mod_exp_arr (int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,int const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_set_bit (int /*<<< orphan*/  const*,int const) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int BN_CTX ;
+typedef int const BIGNUM ;
+
+
+ int BN_CTX_end (int *) ;
+ int const* BN_CTX_get (int *) ;
+ int BN_CTX_start (int *) ;
+ int BN_GF2m_mod_exp_arr (int const*,int const*,int const*,int const*,int *) ;
+ int BN_set_bit (int const*,int const) ;
+ int BN_zero (int const*) ;
+ int bn_check_top (int const*) ;
 
 int BN_GF2m_mod_sqrt_arr(BIGNUM *r, const BIGNUM *a, const int p[],
                          BN_CTX *ctx)
@@ -31,13 +31,13 @@ int BN_GF2m_mod_sqrt_arr(BIGNUM *r, const BIGNUM *a, const int p[],
     bn_check_top(a);
 
     if (p[0] == 0) {
-        /* reduction mod 1 => return 0 */
+
         BN_zero(r);
         return 1;
     }
 
     BN_CTX_start(ctx);
-    if ((u = BN_CTX_get(ctx)) == NULL)
+    if ((u = BN_CTX_get(ctx)) == ((void*)0))
         goto err;
 
     if (!BN_set_bit(u, p[0] - 1))

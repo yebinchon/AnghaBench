@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  AF_UNSPEC ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ERANGE ; 
- int /*<<< orphan*/  assert_se (int) ; 
- int /*<<< orphan*/  parse_mtu (int /*<<< orphan*/ ,char*,int*) ; 
+
+
+
+typedef int uint32_t ;
+
+
+ int AF_INET6 ;
+ int AF_UNSPEC ;
+ int EINVAL ;
+ int ERANGE ;
+ int assert_se (int) ;
+ int parse_mtu (int ,char*,int*) ;
 
 __attribute__((used)) static void test_parse_mtu(void) {
         uint32_t mtu = 0;

@@ -1,55 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int UCHAR ;
-struct TYPE_10__ {int /*<<< orphan*/  Netmask; int /*<<< orphan*/  NetworkAddress; TYPE_1__* Router; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+typedef int UCHAR ;
+struct TYPE_10__ {int Netmask; int NetworkAddress; TYPE_1__* Router; } ;
 struct TYPE_9__ {struct TYPE_9__* Flink; } ;
-struct TYPE_8__ {int State; int /*<<< orphan*/  Address; } ;
-typedef  TYPE_1__* PNEIGHBOR_CACHE_ENTRY ;
-typedef  TYPE_2__* PLIST_ENTRY ;
-typedef  int /*<<< orphan*/ * PIP_ADDRESS ;
-typedef  TYPE_3__* PFIB_ENTRY ;
-typedef  int /*<<< orphan*/  KIRQL ;
+struct TYPE_8__ {int State; int Address; } ;
+typedef TYPE_1__* PNEIGHBOR_CACHE_ENTRY ;
+typedef TYPE_2__* PLIST_ENTRY ;
+typedef int * PIP_ADDRESS ;
+typedef TYPE_3__* PFIB_ENTRY ;
+typedef int KIRQL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  A2S (int /*<<< orphan*/ *) ; 
- scalar_t__ AddrCountPrefixBits (int /*<<< orphan*/ *) ; 
- TYPE_3__* CONTAINING_RECORD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CommonPrefixLength (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DEBUG_ROUTER ; 
- TYPE_2__ FIBListHead ; 
- int /*<<< orphan*/  FIBLock ; 
- int /*<<< orphan*/  FIB_ENTRY ; 
- int /*<<< orphan*/  ListEntry ; 
- int NUD_INCOMPLETE ; 
- int NUD_STALE ; 
- int /*<<< orphan*/  TI_DbgPrint (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TcpipAcquireSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TcpipReleaseSpinLock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int A2S (int *) ;
+ scalar_t__ AddrCountPrefixBits (int *) ;
+ TYPE_3__* CONTAINING_RECORD (TYPE_2__*,int ,int ) ;
+ scalar_t__ CommonPrefixLength (int *,int *) ;
+ int DEBUG_ROUTER ;
+ TYPE_2__ FIBListHead ;
+ int FIBLock ;
+ int FIB_ENTRY ;
+ int ListEntry ;
+ int NUD_INCOMPLETE ;
+ int NUD_STALE ;
+ int TI_DbgPrint (int ,char*) ;
+ int TcpipAcquireSpinLock (int *,int *) ;
+ int TcpipReleaseSpinLock (int *,int ) ;
 
 PNEIGHBOR_CACHE_ENTRY RouterGetRoute(PIP_ADDRESS Destination)
-/*
- * FUNCTION: Finds a router to use to get to Destination
- * ARGUMENTS:
- *     Destination = Pointer to destination address (NULL means don't care)
- * RETURNS:
- *     Pointer to NCE for router, NULL if none was found
- * NOTES:
- *     If found the NCE is referenced
- */
 {
     KIRQL OldIrql;
     PLIST_ENTRY CurrentEntry;
@@ -57,7 +48,7 @@ PNEIGHBOR_CACHE_ENTRY RouterGetRoute(PIP_ADDRESS Destination)
     PFIB_ENTRY Current;
     UCHAR State;
     UINT Length, BestLength = 0, MaskLength;
-    PNEIGHBOR_CACHE_ENTRY NCE, BestNCE = NULL;
+    PNEIGHBOR_CACHE_ENTRY NCE, BestNCE = ((void*)0);
 
     TI_DbgPrint(DEBUG_ROUTER, ("Called. Destination (0x%X)\n", Destination));
 
@@ -68,24 +59,24 @@ PNEIGHBOR_CACHE_ENTRY RouterGetRoute(PIP_ADDRESS Destination)
     CurrentEntry = FIBListHead.Flink;
     while (CurrentEntry != &FIBListHead) {
         NextEntry = CurrentEntry->Flink;
-	    Current = CONTAINING_RECORD(CurrentEntry, FIB_ENTRY, ListEntry);
+     Current = CONTAINING_RECORD(CurrentEntry, FIB_ENTRY, ListEntry);
 
-        NCE   = Current->Router;
+        NCE = Current->Router;
         State = NCE->State;
 
-	Length = CommonPrefixLength(Destination, &Current->NetworkAddress);
-	MaskLength = AddrCountPrefixBits(&Current->Netmask);
+ Length = CommonPrefixLength(Destination, &Current->NetworkAddress);
+ MaskLength = AddrCountPrefixBits(&Current->Netmask);
 
-	TI_DbgPrint(DEBUG_ROUTER,("This-Route: %s (Sharing %d bits)\n",
-				  A2S(&NCE->Address), Length));
+ TI_DbgPrint(DEBUG_ROUTER,("This-Route: %s (Sharing %d bits)\n",
+      A2S(&NCE->Address), Length));
 
-	if(Length >= MaskLength && (Length > BestLength || !BestNCE) &&
+ if(Length >= MaskLength && (Length > BestLength || !BestNCE) &&
            ((!(State & NUD_STALE) && !(State & NUD_INCOMPLETE)) || !BestNCE)) {
-	    /* This seems to be a better router */
-	    BestNCE    = NCE;
-	    BestLength = Length;
-	    TI_DbgPrint(DEBUG_ROUTER,("Route selected\n"));
-	}
+
+     BestNCE = NCE;
+     BestLength = Length;
+     TI_DbgPrint(DEBUG_ROUTER,("Route selected\n"));
+ }
 
         CurrentEntry = NextEntry;
     }
@@ -93,9 +84,9 @@ PNEIGHBOR_CACHE_ENTRY RouterGetRoute(PIP_ADDRESS Destination)
     TcpipReleaseSpinLock(&FIBLock, OldIrql);
 
     if( BestNCE ) {
-	TI_DbgPrint(DEBUG_ROUTER,("Routing to %s\n", A2S(&BestNCE->Address)));
+ TI_DbgPrint(DEBUG_ROUTER,("Routing to %s\n", A2S(&BestNCE->Address)));
     } else {
-	TI_DbgPrint(DEBUG_ROUTER,("Packet won't be routed\n"));
+ TI_DbgPrint(DEBUG_ROUTER,("Packet won't be routed\n"));
     }
 
     return BestNCE;

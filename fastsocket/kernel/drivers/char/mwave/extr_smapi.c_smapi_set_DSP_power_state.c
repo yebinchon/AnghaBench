@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int BOOLEAN ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  PRINTK_2 (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  TRACE_SMAPI ; 
- int smapi_request (int,int,int /*<<< orphan*/ ,unsigned short,unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned short*) ; 
+
+
+
+typedef int BOOLEAN ;
+
+
+ int EIO ;
+ int PRINTK_2 (int ,char*,int) ;
+ int TRACE_SMAPI ;
+ int smapi_request (int,int,int ,unsigned short,unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned short*) ;
 
 int smapi_set_DSP_power_state(BOOLEAN bOn)
 {
-	int bRC = -EIO;
-	unsigned short usAX, usBX, usCX, usDX, usDI, usSI;
-	unsigned short usPowerFunction;
+ int bRC = -EIO;
+ unsigned short usAX, usBX, usCX, usDX, usDI, usSI;
+ unsigned short usPowerFunction;
 
-	PRINTK_2(TRACE_SMAPI, "smapi::smapi_set_DSP_power_state entry bOn %x\n", bOn);
+ PRINTK_2(TRACE_SMAPI, "smapi::smapi_set_DSP_power_state entry bOn %x\n", bOn);
 
-	usPowerFunction = (bOn) ? 1 : 0;
+ usPowerFunction = (bOn) ? 1 : 0;
 
-	bRC = smapi_request(0x4901, 0x0000, 0, usPowerFunction,
-		&usAX, &usBX, &usCX, &usDX, &usDI, &usSI);
+ bRC = smapi_request(0x4901, 0x0000, 0, usPowerFunction,
+  &usAX, &usBX, &usCX, &usDX, &usDI, &usSI);
 
-	PRINTK_2(TRACE_SMAPI, "smapi::smapi_set_DSP_power_state exit bRC %x\n", bRC);
+ PRINTK_2(TRACE_SMAPI, "smapi::smapi_set_DSP_power_state exit bRC %x\n", bRC);
 
-	return bRC;
+ return bRC;
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct vo_frame {int /*<<< orphan*/  member_0; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct vo_frame {int member_0; } ;
 struct vo {struct priv* priv; } ;
-struct ra_fbo {int flip; int /*<<< orphan*/  tex; } ;
-struct TYPE_3__ {int /*<<< orphan*/  ra; } ;
-struct TYPE_4__ {int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-struct priv {int skip_osd; TYPE_1__ egl; int /*<<< orphan*/  gl_video; int /*<<< orphan*/  osd_pts; TYPE_2__ osd_res; int /*<<< orphan*/  enable_osd; } ;
+struct ra_fbo {int flip; int tex; } ;
+struct TYPE_3__ {int ra; } ;
+struct TYPE_4__ {int h; int w; } ;
+struct priv {int skip_osd; TYPE_1__ egl; int gl_video; int osd_pts; TYPE_2__ osd_res; int enable_osd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_STATS (struct vo*,char*) ; 
- int /*<<< orphan*/  RENDER_FRAME_DEF ; 
- int /*<<< orphan*/  gl_video_check_osd_change (int /*<<< orphan*/ ,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_video_render_frame (int /*<<< orphan*/ ,struct vo_frame*,struct ra_fbo,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gl_video_set_osd_pts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_create_wrapped_fb (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ra_tex_free (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int MP_STATS (struct vo*,char*) ;
+ int RENDER_FRAME_DEF ;
+ int gl_video_check_osd_change (int ,TYPE_2__*,int ) ;
+ int gl_video_render_frame (int ,struct vo_frame*,struct ra_fbo,int ) ;
+ int gl_video_set_osd_pts (int ,int ) ;
+ int ra_create_wrapped_fb (int ,int ,int ,int ) ;
+ int ra_tex_free (int ,int *) ;
 
 __attribute__((used)) static void update_osd(struct vo *vo)
 {
@@ -35,7 +35,7 @@ __attribute__((used)) static void update_osd(struct vo *vo)
         return;
 
     if (!gl_video_check_osd_change(p->gl_video, &p->osd_res, p->osd_pts)) {
-        p->skip_osd = true;
+        p->skip_osd = 1;
         return;
     }
 
@@ -44,7 +44,7 @@ __attribute__((used)) static void update_osd(struct vo *vo)
     struct vo_frame frame = {0};
     struct ra_fbo target = {
         .tex = ra_create_wrapped_fb(p->egl.ra, 0, p->osd_res.w, p->osd_res.h),
-        .flip = true,
+        .flip = 1,
     };
     gl_video_set_osd_pts(p->gl_video, p->osd_pts);
     gl_video_render_frame(p->gl_video, &frame, target, RENDER_FRAME_DEF);

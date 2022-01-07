@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_io_file_del_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_diff_t ;
-typedef  int /*<<< orphan*/  svn_diff_file_options_t ;
-typedef  int /*<<< orphan*/  svn_diff_conflict_display_style_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_array_header_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_diff_file_diff3_2 (int /*<<< orphan*/ **,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_diff_file_options_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_file_options_parse (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_diff_file_output_merge3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,char const*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_unique (int /*<<< orphan*/ **,char const**,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_temp_wcroot_tempdir (char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_stream_t ;
+typedef int svn_io_file_del_t ;
+typedef int svn_error_t ;
+typedef int svn_diff_t ;
+typedef int svn_diff_file_options_t ;
+typedef int svn_diff_conflict_display_style_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+typedef int apr_array_header_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_diff_file_diff3_2 (int **,char const*,char const*,char const*,int *,int *) ;
+ int * svn_diff_file_options_create (int *) ;
+ int svn_diff_file_options_parse (int *,int const*,int *) ;
+ int svn_diff_file_output_merge3 (int *,int *,char const*,char const*,char const*,int *,int *,int *,int *,int ,int ,void*,int *) ;
+ int svn_stream_close (int *) ;
+ int svn_stream_open_unique (int **,char const**,char const*,int ,int *,int *) ;
+ int svn_wc__db_temp_wcroot_tempdir (char const**,int *,char const*,int *,int *) ;
 
 __attribute__((used)) static svn_error_t *
 merge_showing_conflicts(const char **chosen_abspath,
@@ -61,10 +61,10 @@ merge_showing_conflicts(const char **chosen_abspath,
   SVN_ERR(svn_wc__db_temp_wcroot_tempdir(&temp_dir, db,
                                          wri_abspath,
                                          scratch_pool, scratch_pool));
-  /* We need to open the stream in RESULT_POOL because that controls the
-   * lifetime of the file if DELETE_WHEN is 'on pool cleanup'.  (We also
-   * want to allocate CHOSEN_ABSPATH in RESULT_POOL, but we don't care
-   * about the stream itself.) */
+
+
+
+
   SVN_ERR(svn_stream_open_unique(&chosen_stream, chosen_abspath,
                                  temp_dir, delete_when,
                                  result_pool, scratch_pool));
@@ -76,7 +76,7 @@ merge_showing_conflicts(const char **chosen_abspath,
                                       left_abspath,
                                       detranslated_target,
                                       right_abspath,
-                                      NULL, NULL, NULL, NULL, /* markers */
+                                      ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                       style, cancel_func, cancel_baton,
                                       scratch_pool));
   SVN_ERR(svn_stream_close(chosen_stream));

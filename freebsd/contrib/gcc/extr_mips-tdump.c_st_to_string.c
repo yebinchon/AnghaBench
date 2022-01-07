@@ -1,76 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int st_t ;
 
-/* Variables and functions */
-#define  st_Block 152 
-#define  st_Constant 151 
-#define  st_End 150 
-#define  st_Enum 149 
-#define  st_Expr 148 
-#define  st_File 147 
-#define  st_Forward 146 
-#define  st_Global 145 
-#define  st_Label 144 
-#define  st_Local 143 
-#define  st_Max 142 
-#define  st_Member 141 
-#define  st_Nil 140 
-#define  st_Number 139 
-#define  st_Param 138 
-#define  st_Proc 137 
-#define  st_RegReloc 136 
-#define  st_StaParam 135 
-#define  st_Static 134 
-#define  st_StaticProc 133 
-#define  st_Str 132 
-#define  st_Struct 131 
-#define  st_Type 130 
-#define  st_Typedef 129 
-#define  st_Union 128 
 
+
+
+typedef int st_t ;
 __attribute__((used)) static const char *
 st_to_string (st_t symbol_type)
 {
   switch(symbol_type)
     {
-    case st_Nil:	return "Nil";
-    case st_Global:	return "Global";
-    case st_Static:	return "Static";
-    case st_Param:	return "Param";
-    case st_Local:	return "Local";
-    case st_Label:	return "Label";
-    case st_Proc:	return "Proc";
-    case st_Block:	return "Block";
-    case st_End:	return "End";
-    case st_Member:	return "Member";
-    case st_Typedef:	return "Typedef";
-    case st_File:	return "File";
-    case st_RegReloc:	return "RegReloc";
-    case st_Forward:	return "Forward";
-    case st_StaticProc:	return "StaticProc";
-    case st_Constant:	return "Constant";
-    case st_StaParam:	return "StaticParam";
-#ifdef stStruct
-    case st_Struct:	return "Struct";
-    case st_Union:	return "Union";
-    case st_Enum:	return "Enum";
-#endif
-    case st_Str:	return "String";
-    case st_Number:	return "Number";
-    case st_Expr:	return "Expr";
-    case st_Type:	return "Type";
-    case st_Max:	return "Max";
+    case 140: return "Nil";
+    case 145: return "Global";
+    case 134: return "Static";
+    case 138: return "Param";
+    case 143: return "Local";
+    case 144: return "Label";
+    case 137: return "Proc";
+    case 152: return "Block";
+    case 150: return "End";
+    case 141: return "Member";
+    case 129: return "Typedef";
+    case 147: return "File";
+    case 136: return "RegReloc";
+    case 146: return "Forward";
+    case 133: return "StaticProc";
+    case 151: return "Constant";
+    case 135: return "StaticParam";
+
+
+
+
+
+    case 132: return "String";
+    case 139: return "Number";
+    case 148: return "Expr";
+    case 130: return "Type";
+    case 142: return "Max";
     }
 
   return "???";

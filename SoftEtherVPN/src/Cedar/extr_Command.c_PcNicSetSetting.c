@@ -1,115 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  t ;
-typedef  int /*<<< orphan*/  mac_address ;
-typedef  int /*<<< orphan*/  args ;
-typedef  scalar_t__ UINT ;
-struct TYPE_13__ {int /*<<< orphan*/  MacAddress; int /*<<< orphan*/  DeviceName; } ;
-typedef  TYPE_1__ UCHAR ;
-struct TYPE_16__ {int Size; int /*<<< orphan*/  Buf; } ;
-struct TYPE_15__ {char* member_0; int /*<<< orphan*/ * member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; } ;
-struct TYPE_14__ {int /*<<< orphan*/  RemoteClient; } ;
-typedef  TYPE_1__ RPC_CLIENT_SET_VLAN ;
-typedef  TYPE_3__ PC ;
-typedef  TYPE_4__ PARAM ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  CONSOLE ;
-typedef  TYPE_5__ BUF ;
 
-/* Variables and functions */
- scalar_t__ CcSetVLan (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  CmdEvalNotEmpty ; 
- int /*<<< orphan*/  CmdPrintError (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  CmdPrompt ; 
- int /*<<< orphan*/  Copy (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ ERR_INVALID_PARAMETER ; 
- scalar_t__ ERR_NO_ERROR ; 
- int /*<<< orphan*/  FreeBuf (TYPE_5__*) ; 
- int /*<<< orphan*/  FreeParamValueList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetParamStr (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ IsZero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  NormalizeMacAddress (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ParseCommandList (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,TYPE_4__*,int) ; 
- int /*<<< orphan*/  StrCpy (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- TYPE_5__* StrToBin (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
- int /*<<< orphan*/  _UU (char*) ; 
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int t ;
+typedef int mac_address ;
+typedef int args ;
+typedef scalar_t__ UINT ;
+struct TYPE_13__ {int MacAddress; int DeviceName; } ;
+typedef TYPE_1__ UCHAR ;
+struct TYPE_16__ {int Size; int Buf; } ;
+struct TYPE_15__ {char* member_0; int * member_4; int member_3; int member_2; int member_1; } ;
+struct TYPE_14__ {int RemoteClient; } ;
+typedef TYPE_1__ RPC_CLIENT_SET_VLAN ;
+typedef TYPE_3__ PC ;
+typedef TYPE_4__ PARAM ;
+typedef int LIST ;
+typedef int CONSOLE ;
+typedef TYPE_5__ BUF ;
+
+
+ scalar_t__ CcSetVLan (int ,TYPE_1__*) ;
+ int CmdEvalNotEmpty ;
+ int CmdPrintError (int *,scalar_t__) ;
+ int CmdPrompt ;
+ int Copy (TYPE_1__*,int ,int) ;
+ scalar_t__ ERR_INVALID_PARAMETER ;
+ scalar_t__ ERR_NO_ERROR ;
+ int FreeBuf (TYPE_5__*) ;
+ int FreeParamValueList (int *) ;
+ int GetParamStr (int *,char*) ;
+ scalar_t__ IsZero (TYPE_1__*,int) ;
+ int NormalizeMacAddress (int ,int,int ) ;
+ int * ParseCommandList (int *,char*,int *,TYPE_4__*,int) ;
+ int StrCpy (int ,int,int ) ;
+ TYPE_5__* StrToBin (int ) ;
+ int Zero (TYPE_1__*,int) ;
+ int _UU (char*) ;
 
 UINT PcNicSetSetting(CONSOLE *c, char *cmd_name, wchar_t *str, void *param)
 {
-	LIST *o;
-	PC *pc = (PC *)param;
-	UINT ret = ERR_NO_ERROR;
-	RPC_CLIENT_SET_VLAN t;
-	UCHAR mac_address[6];
-	BUF *b;
-	// Parameter list that can be specified
-	PARAM args[] =
-	{
-		{"[name]", CmdPrompt, _UU("CMD_NicCreate_PROMPT_NAME"), CmdEvalNotEmpty, NULL},
-		{"MAC", CmdPrompt, _UU("CMD_NicSetSetting_PROMPT_MAC"), CmdEvalNotEmpty, NULL},
-	};
+ LIST *o;
+ PC *pc = (PC *)param;
+ UINT ret = ERR_NO_ERROR;
+ RPC_CLIENT_SET_VLAN t;
+ UCHAR mac_address[6];
+ BUF *b;
 
-	// Get the parameter list
-	o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
-	if (o == NULL)
-	{
-		return ERR_INVALID_PARAMETER;
-	}
+ PARAM args[] =
+ {
+  {"[name]", CmdPrompt, _UU("CMD_NicCreate_PROMPT_NAME"), CmdEvalNotEmpty, ((void*)0)},
+  {"MAC", CmdPrompt, _UU("CMD_NicSetSetting_PROMPT_MAC"), CmdEvalNotEmpty, ((void*)0)},
+ };
 
-	// Inspect the MAC address
-	Zero(mac_address, sizeof(mac_address));
-	b = StrToBin(GetParamStr(o, "MAC"));
-	if (b != NULL && b->Size == 6)
-	{
-		Copy(mac_address, b->Buf, 6);
-	}
-	FreeBuf(b);
 
-	if (IsZero(mac_address, 6))
-	{
-		// MAC address is invalid
-		FreeParamValueList(o);
+ o = ParseCommandList(c, cmd_name, str, args, sizeof(args) / sizeof(args[0]));
+ if (o == ((void*)0))
+ {
+  return ERR_INVALID_PARAMETER;
+ }
 
-		CmdPrintError(c, ERR_INVALID_PARAMETER);
-		return ERR_INVALID_PARAMETER;
-	}
 
-	// RPC call
-	Zero(&t, sizeof(t));
-	StrCpy(t.DeviceName, sizeof(t.DeviceName), GetParamStr(o, "[name]"));
-	NormalizeMacAddress(t.MacAddress, sizeof(t.MacAddress), GetParamStr(o, "MAC"));
+ Zero(mac_address, sizeof(mac_address));
+ b = StrToBin(GetParamStr(o, "MAC"));
+ if (b != ((void*)0) && b->Size == 6)
+ {
+  Copy(mac_address, b->Buf, 6);
+ }
+ FreeBuf(b);
 
-	ret = CcSetVLan(pc->RemoteClient, &t);
+ if (IsZero(mac_address, 6))
+ {
 
-	if (ret == ERR_NO_ERROR)
-	{
-		// Success
-	}
+  FreeParamValueList(o);
 
-	if (ret != ERR_NO_ERROR)
-	{
-		// Error has occurred
-		CmdPrintError(c, ret);
-	}
+  CmdPrintError(c, ERR_INVALID_PARAMETER);
+  return ERR_INVALID_PARAMETER;
+ }
 
-	// Release of the parameter list
-	FreeParamValueList(o);
 
-	return ret;
+ Zero(&t, sizeof(t));
+ StrCpy(t.DeviceName, sizeof(t.DeviceName), GetParamStr(o, "[name]"));
+ NormalizeMacAddress(t.MacAddress, sizeof(t.MacAddress), GetParamStr(o, "MAC"));
+
+ ret = CcSetVLan(pc->RemoteClient, &t);
+
+ if (ret == ERR_NO_ERROR)
+ {
+
+ }
+
+ if (ret != ERR_NO_ERROR)
+ {
+
+  CmdPrintError(c, ret);
+ }
+
+
+ FreeParamValueList(o);
+
+ return ret;
 }

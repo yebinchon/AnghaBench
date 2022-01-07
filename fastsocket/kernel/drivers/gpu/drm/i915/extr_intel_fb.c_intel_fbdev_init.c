@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * funcs; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * funcs; } ;
 struct intel_fbdev {TYPE_2__ helper; } ;
 struct drm_device {TYPE_1__* dev_private; } ;
-struct TYPE_4__ {int /*<<< orphan*/  num_pipe; struct intel_fbdev* fbdev; } ;
-typedef  TYPE_1__ drm_i915_private_t ;
+struct TYPE_4__ {int num_pipe; struct intel_fbdev* fbdev; } ;
+typedef TYPE_1__ drm_i915_private_t ;
 
-/* Variables and functions */
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  INTELFB_CONN_LIMIT ; 
- int drm_fb_helper_init (struct drm_device*,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drm_fb_helper_single_add_all_connectors (TYPE_2__*) ; 
- int /*<<< orphan*/  intel_fb_helper_funcs ; 
- int /*<<< orphan*/  kfree (struct intel_fbdev*) ; 
- struct intel_fbdev* kzalloc (int,int /*<<< orphan*/ ) ; 
+
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int INTELFB_CONN_LIMIT ;
+ int drm_fb_helper_init (struct drm_device*,TYPE_2__*,int ,int ) ;
+ int drm_fb_helper_single_add_all_connectors (TYPE_2__*) ;
+ int intel_fb_helper_funcs ;
+ int kfree (struct intel_fbdev*) ;
+ struct intel_fbdev* kzalloc (int,int ) ;
 
 int intel_fbdev_init(struct drm_device *dev)
 {
-	struct intel_fbdev *ifbdev;
-	drm_i915_private_t *dev_priv = dev->dev_private;
-	int ret;
+ struct intel_fbdev *ifbdev;
+ drm_i915_private_t *dev_priv = dev->dev_private;
+ int ret;
 
-	ifbdev = kzalloc(sizeof(struct intel_fbdev), GFP_KERNEL);
-	if (!ifbdev)
-		return -ENOMEM;
+ ifbdev = kzalloc(sizeof(struct intel_fbdev), GFP_KERNEL);
+ if (!ifbdev)
+  return -ENOMEM;
 
-	dev_priv->fbdev = ifbdev;
-	ifbdev->helper.funcs = &intel_fb_helper_funcs;
+ dev_priv->fbdev = ifbdev;
+ ifbdev->helper.funcs = &intel_fb_helper_funcs;
 
-	ret = drm_fb_helper_init(dev, &ifbdev->helper,
-				 dev_priv->num_pipe,
-				 INTELFB_CONN_LIMIT);
-	if (ret) {
-		kfree(ifbdev);
-		return ret;
-	}
+ ret = drm_fb_helper_init(dev, &ifbdev->helper,
+     dev_priv->num_pipe,
+     INTELFB_CONN_LIMIT);
+ if (ret) {
+  kfree(ifbdev);
+  return ret;
+ }
 
-	drm_fb_helper_single_add_all_connectors(&ifbdev->helper);
+ drm_fb_helper_single_add_all_connectors(&ifbdev->helper);
 
-	return 0;
+ return 0;
 }

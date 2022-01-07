@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int block_samples; int flags; int /*<<< orphan*/ ** temp_buffer; int /*<<< orphan*/ ** temp_buffer_size; int /*<<< orphan*/ * best_buffer; int /*<<< orphan*/ * best_buffer_size; } ;
-typedef  TYPE_1__ WavPackEncodeContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ENOMEM ; 
- int WV_MONO_DATA ; 
- int /*<<< orphan*/  av_fast_padded_malloc (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int block_samples; int flags; int ** temp_buffer; int ** temp_buffer_size; int * best_buffer; int * best_buffer_size; } ;
+typedef TYPE_1__ WavPackEncodeContext ;
+
+
+ int AVERROR (int ) ;
+ int ENOMEM ;
+ int WV_MONO_DATA ;
+ int av_fast_padded_malloc (int *,int *,int) ;
 
 __attribute__((used)) static int allocate_buffers(WavPackEncodeContext *s)
 {

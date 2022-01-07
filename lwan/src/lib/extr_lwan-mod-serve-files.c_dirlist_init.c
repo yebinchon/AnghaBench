@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int dummy; } ;
-struct serve_files_priv {int /*<<< orphan*/  directory_list_tpl; } ;
-struct lwan_value {int /*<<< orphan*/  len; int /*<<< orphan*/  value; } ;
+struct serve_files_priv {int directory_list_tpl; } ;
+struct lwan_value {int len; int value; } ;
 struct lwan_strbuf {int dummy; } ;
-struct file_list {char const* full_path; int /*<<< orphan*/  readme; int /*<<< orphan*/  rel_path; } ;
-struct dir_list_cache_data {struct lwan_strbuf rendered; int /*<<< orphan*/  deflated; int /*<<< orphan*/  brotli; } ;
+struct file_list {char const* full_path; int readme; int rel_path; } ;
+struct dir_list_cache_data {struct lwan_strbuf rendered; int deflated; int brotli; } ;
 struct file_cache_entry {char* mime_type; struct dir_list_cache_data dir_list_cache_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  brotli_value (struct lwan_value*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  deflate_value (struct lwan_value*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dirlist_find_readme (struct lwan_strbuf*,struct serve_files_priv*,char const*) ; 
- int /*<<< orphan*/  get_rel_path (char const*,struct serve_files_priv*) ; 
- int /*<<< orphan*/  lwan_strbuf_free (struct lwan_strbuf*) ; 
- int /*<<< orphan*/  lwan_strbuf_get_buffer (struct lwan_strbuf*) ; 
- int /*<<< orphan*/  lwan_strbuf_get_length (struct lwan_strbuf*) ; 
- int /*<<< orphan*/  lwan_strbuf_init (struct lwan_strbuf*) ; 
- int /*<<< orphan*/  lwan_tpl_apply_with_buffer (int /*<<< orphan*/ ,struct lwan_strbuf*,struct file_list*) ; 
+
+ int brotli_value (struct lwan_value*,int *,int *) ;
+ int deflate_value (struct lwan_value*,int *) ;
+ int dirlist_find_readme (struct lwan_strbuf*,struct serve_files_priv*,char const*) ;
+ int get_rel_path (char const*,struct serve_files_priv*) ;
+ int lwan_strbuf_free (struct lwan_strbuf*) ;
+ int lwan_strbuf_get_buffer (struct lwan_strbuf*) ;
+ int lwan_strbuf_get_length (struct lwan_strbuf*) ;
+ int lwan_strbuf_init (struct lwan_strbuf*) ;
+ int lwan_tpl_apply_with_buffer (int ,struct lwan_strbuf*,struct file_list*) ;
 
 __attribute__((used)) static bool dirlist_init(struct file_cache_entry *ce,
                          struct serve_files_priv *priv,
@@ -36,10 +36,10 @@ __attribute__((used)) static bool dirlist_init(struct file_cache_entry *ce,
 {
     struct dir_list_cache_data *dd = &ce->dir_list_cache_data;
     struct lwan_strbuf readme;
-    bool ret = false;
+    bool ret = 0;
 
     if (!lwan_strbuf_init(&readme))
-        return false;
+        return 0;
     if (!lwan_strbuf_init(&dd->rendered))
         goto out_free_readme;
 
@@ -60,11 +60,11 @@ __attribute__((used)) static bool dirlist_init(struct file_cache_entry *ce,
         .len = lwan_strbuf_get_length(&dd->rendered),
     };
     deflate_value(&rendered, &dd->deflated);
-#if defined(HAVE_BROTLI)
-    brotli_value(&rendered, &dd->brotli, &dd->deflated);
-#endif
 
-    ret = true;
+
+
+
+    ret = 1;
     goto out_free_readme;
 
 out_free_rendered:

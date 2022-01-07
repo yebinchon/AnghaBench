@@ -1,56 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * key; int /*<<< orphan*/ * plist; int /*<<< orphan*/  stack; int /*<<< orphan*/  tag_stack; scalar_t__ closed_top; } ;
-typedef  TYPE_1__ parse_data_t ;
-typedef  int /*<<< orphan*/ * gpointer ;
-typedef  size_t gint ;
-typedef  int /*<<< orphan*/  gchar ;
-struct TYPE_4__ {size_t id; int /*<<< orphan*/  tag; } ;
-typedef  int /*<<< orphan*/  GhbValue ;
-typedef  scalar_t__ GhbType ;
-typedef  int /*<<< orphan*/  GMarkupParseContext ;
-typedef  int /*<<< orphan*/  GError ;
 
-/* Variables and functions */
- scalar_t__ GHB_ARRAY ; 
- scalar_t__ GHB_DICT ; 
-#define  P_ARRAY 138 
-#define  P_DATA 137 
-#define  P_DATE 136 
-#define  P_DICT 135 
-#define  P_FALSE 134 
-#define  P_INTEGER 133 
-#define  P_KEY 132 
-#define  P_PLIST 131 
-#define  P_REAL 130 
-#define  P_STRING 129 
-#define  P_TRUE 128 
- size_t TAG_MAP_SZ ; 
- int /*<<< orphan*/  g_error (char*) ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * g_queue_peek_head (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_queue_push_head (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_warning (char*,...) ; 
- int /*<<< orphan*/  ghb_array_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ghb_array_new () ; 
- int /*<<< orphan*/ * ghb_dict_new () ; 
- int /*<<< orphan*/  ghb_dict_set (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ghb_value_free (int /*<<< orphan*/ **) ; 
- scalar_t__ ghb_value_type (int /*<<< orphan*/ *) ; 
- scalar_t__ strcmp (int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- TYPE_2__* tag_map ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * key; int * plist; int stack; int tag_stack; scalar_t__ closed_top; } ;
+typedef TYPE_1__ parse_data_t ;
+typedef int * gpointer ;
+typedef size_t gint ;
+typedef int gchar ;
+struct TYPE_4__ {size_t id; int tag; } ;
+typedef int GhbValue ;
+typedef scalar_t__ GhbType ;
+typedef int GMarkupParseContext ;
+typedef int GError ;
+
+
+ scalar_t__ GHB_ARRAY ;
+ scalar_t__ GHB_DICT ;
+ size_t TAG_MAP_SZ ;
+ int g_error (char*) ;
+ int g_free (int *) ;
+ int * g_queue_peek_head (int ) ;
+ int g_queue_push_head (int ,int *) ;
+ int g_warning (char*,...) ;
+ int ghb_array_append (int *,int *) ;
+ int * ghb_array_new () ;
+ int * ghb_dict_new () ;
+ int ghb_dict_set (int *,int *,int *) ;
+ int ghb_value_free (int **) ;
+ scalar_t__ ghb_value_type (int *) ;
+ scalar_t__ strcmp (int const*,int ) ;
+ TYPE_2__* tag_map ;
 
 __attribute__((used)) static void
 start_element(
@@ -69,8 +58,8 @@ start_element(
     } id;
     gint ii;
 
-    // Check to see if the first element found has been closed
-    // If so, ignore any junk following it.
+
+
     if (pd->closed_top)
         return;
 
@@ -89,54 +78,54 @@ start_element(
     }
     g_queue_push_head(pd->tag_stack, id.pid);
     GhbType gtype = 0;
-    GhbValue *gval = NULL;
+    GhbValue *gval = ((void*)0);
     GhbValue *current = g_queue_peek_head(pd->stack);
     switch (id.id)
     {
-        case P_PLIST:
-        { // Ignore
+        case 131:
+        {
         } break;
-        case P_KEY:
+        case 132:
         {
             if (pd->key) g_free(pd->key);
-            pd->key = NULL;
+            pd->key = ((void*)0);
         } break;
-        case P_DICT:
+        case 135:
         {
             gval = ghb_dict_new();
             g_queue_push_head(pd->stack, gval);
         } break;
-        case P_ARRAY:
+        case 138:
         {
             gval = ghb_array_new();
             g_queue_push_head(pd->stack, gval);
         } break;
-        case P_INTEGER:
+        case 133:
         {
         } break;
-        case P_REAL:
+        case 130:
         {
         } break;
-        case P_STRING:
+        case 129:
         {
         } break;
-        case P_DATE:
+        case 136:
         {
         } break;
-        case P_TRUE:
+        case 128:
         {
         } break;
-        case P_FALSE:
+        case 134:
         {
         } break;
-        case P_DATA:
+        case 137:
         {
         } break;
     }
-    // Add the element to the current container
+
     if (gval)
-    { // There's an element to add
-        if (current == NULL)
+    {
+        if (current == ((void*)0))
         {
             pd->plist = gval;
             return;
@@ -148,7 +137,7 @@ start_element(
         }
         else if (gtype == GHB_DICT)
         {
-            if (pd->key == NULL)
+            if (pd->key == ((void*)0))
             {
                 g_warning("No key for dictionary item");
                 ghb_value_free(&gval);

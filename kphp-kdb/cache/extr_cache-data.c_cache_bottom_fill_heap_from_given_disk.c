@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int node_id; int server_id; int disk_id; } ;
-union cache_packed_local_copy_location {int /*<<< orphan*/  i; TYPE_1__ p; } ;
+union cache_packed_local_copy_location {int i; TYPE_1__ p; } ;
 struct cache_uri {int dummy; } ;
 struct amortization_counter {int dummy; } ;
-typedef  enum cache_sorted_order { ____Placeholder_cache_sorted_order } cache_sorted_order ;
-struct TYPE_7__ {int max_size; int /*<<< orphan*/  compare; scalar_t__ size; } ;
-typedef  TYPE_2__ cache_heap_t ;
+typedef enum cache_sorted_order { ____Placeholder_cache_sorted_order } cache_sorted_order ;
+struct TYPE_7__ {int max_size; int compare; scalar_t__ size; } ;
+typedef TYPE_2__ cache_heap_t ;
 
-/* Variables and functions */
- int CACHE_ERR_LIMIT ; 
- int CACHE_ERR_UNKNOWN_T ; 
- int CACHE_FEATURE_FAST_BOTTOM_ACCESS ; 
- int CACHE_MAX_HEAP_SIZE ; 
- struct cache_uri* PNEXT (struct cache_uri*) ; 
- scalar_t__ TAT ; 
- scalar_t__ acounter_off ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cache_all_uri_cached_foreach (int /*<<< orphan*/  (*) (struct cache_uri*),int) ; 
- int /*<<< orphan*/  cache_disk_filter_init (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int cache_features_mask ; 
- int /*<<< orphan*/  cache_heap_cmp_bottom ; 
- int /*<<< orphan*/  cache_heap_cmp_top ; 
- int /*<<< orphan*/  cache_heap_insert_uri_from_given_disk (struct cache_uri*) ; 
- int cache_heap_sort (TYPE_2__*) ; 
- int cache_is_valid_disk (int,int,int) ; 
- int cgsl_order_bottom ; 
- int cgsl_order_top ; 
- int /*<<< orphan*/  disk_filter ; 
- int get_acounter_id_by_t (int) ; 
- int get_bucket_by_packed_location (int /*<<< orphan*/ ) ; 
- int heap_acounter_id ; 
- scalar_t__ heap_acounter_off ; 
- TYPE_2__* heap_foreach ; 
- struct cache_uri* list_cached ; 
- scalar_t__ tbl_foreach ; 
+
+ int CACHE_ERR_LIMIT ;
+ int CACHE_ERR_UNKNOWN_T ;
+ int CACHE_FEATURE_FAST_BOTTOM_ACCESS ;
+ int CACHE_MAX_HEAP_SIZE ;
+ struct cache_uri* PNEXT (struct cache_uri*) ;
+ scalar_t__ TAT ;
+ scalar_t__ acounter_off ;
+ int assert (int) ;
+ int cache_all_uri_cached_foreach (int (*) (struct cache_uri*),int) ;
+ int cache_disk_filter_init (int *,int ) ;
+ int cache_features_mask ;
+ int cache_heap_cmp_bottom ;
+ int cache_heap_cmp_top ;
+ int cache_heap_insert_uri_from_given_disk (struct cache_uri*) ;
+ int cache_heap_sort (TYPE_2__*) ;
+ int cache_is_valid_disk (int,int,int) ;
+ int cgsl_order_bottom ;
+ int cgsl_order_top ;
+ int disk_filter ;
+ int get_acounter_id_by_t (int) ;
+ int get_bucket_by_packed_location (int ) ;
+ int heap_acounter_id ;
+ scalar_t__ heap_acounter_off ;
+ TYPE_2__* heap_foreach ;
+ struct cache_uri* list_cached ;
+ scalar_t__ tbl_foreach ;
 
 __attribute__((used)) static int cache_bottom_fill_heap_from_given_disk (cache_heap_t *heap, int T, int limit, int node_id, int server_id, int disk_id, enum cache_sorted_order order) {
   assert (order == cgsl_order_top || order == cgsl_order_bottom);
@@ -79,7 +79,7 @@ __attribute__((used)) static int cache_bottom_fill_heap_from_given_disk (cache_h
   if (cache_features_mask & CACHE_FEATURE_FAST_BOTTOM_ACCESS) {
     int i;
     const int bucket = get_bucket_by_packed_location (u.i);
-    /* zero bucket contains URIes with multiple locations */
+
     for (i = bucket; i >= 0; i -= bucket) {
       struct cache_uri *B = &list_cached[i], *U;
       for (U = PNEXT(B); U != B; U = PNEXT(U)) {

@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ xcb_window_t ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef scalar_t__ xcb_window_t ;
 struct TYPE_5__ {int flags; scalar_t__ main_window; } ;
-struct TYPE_4__ {int /*<<< orphan*/  retv; int /*<<< orphan*/  quit; } ;
-typedef  TYPE_1__ RofiViewState ;
+struct TYPE_4__ {int retv; int quit; } ;
+typedef TYPE_1__ RofiViewState ;
 
-/* Variables and functions */
- TYPE_3__ CacheState ; 
- int /*<<< orphan*/  MENU_CANCEL ; 
- int MENU_NORMAL_WINDOW ; 
- int /*<<< orphan*/  TRUE ; 
+
+ TYPE_3__ CacheState ;
+ int MENU_CANCEL ;
+ int MENU_NORMAL_WINDOW ;
+ int TRUE ;
 
 void rofi_view_temp_click_to_exit ( RofiViewState *state, xcb_window_t target )
 {

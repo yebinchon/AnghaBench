@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
-typedef  enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
+typedef enum dma_data_direction { ____Placeholder_dma_data_direction } dma_data_direction ;
+typedef int dma_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SYNC_FOR_DEVICE ; 
- int /*<<< orphan*/  swiotlb_sync_single (struct device*,int /*<<< orphan*/ ,size_t,int,int /*<<< orphan*/ ) ; 
+
+ int SYNC_FOR_DEVICE ;
+ int swiotlb_sync_single (struct device*,int ,size_t,int,int ) ;
 
 void
 swiotlb_sync_single_for_device(struct device *hwdev, dma_addr_t dev_addr,
-			       size_t size, enum dma_data_direction dir)
+          size_t size, enum dma_data_direction dir)
 {
-	swiotlb_sync_single(hwdev, dev_addr, size, dir, SYNC_FOR_DEVICE);
+ swiotlb_sync_single(hwdev, dev_addr, size, dir, SYNC_FOR_DEVICE);
 }

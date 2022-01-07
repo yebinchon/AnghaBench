@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct reg_flags {int dummy; } ;
-typedef  int /*<<< orphan*/  rtx ;
+typedef int rtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GET_MODE (int /*<<< orphan*/ ) ; 
- int HARD_REGNO_NREGS (int,int /*<<< orphan*/ ) ; 
- int REGNO (int /*<<< orphan*/ ) ; 
- int rws_access_regno (int,struct reg_flags,int) ; 
+
+ int GET_MODE (int ) ;
+ int HARD_REGNO_NREGS (int,int ) ;
+ int REGNO (int ) ;
+ int rws_access_regno (int,struct reg_flags,int) ;
 
 __attribute__((used)) static int
 rws_access_reg (rtx reg, struct reg_flags flags, int pred)
@@ -31,7 +31,7 @@ rws_access_reg (rtx reg, struct reg_flags flags, int pred)
     {
       int need_barrier = 0;
       while (--n >= 0)
-	need_barrier |= rws_access_regno (regno + n, flags, pred);
+ need_barrier |= rws_access_regno (regno + n, flags, pred);
       return need_barrier;
     }
 }

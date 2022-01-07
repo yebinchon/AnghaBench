@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_4__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int metafile_len; int /*<<< orphan*/ * metafile; int /*<<< orphan*/  sugg; } ;
-typedef  TYPE_2__ user ;
+
+
+typedef struct TYPE_9__ TYPE_4__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int metafile_len; int * metafile; int sugg; } ;
+typedef TYPE_2__ user ;
 struct TYPE_9__ {int user_cnt; TYPE_1__* user_index; } ;
 struct TYPE_7__ {int size; } ;
 
-/* Variables and functions */
- int MAX_SUGGESTIONS ; 
- int all_sugg_cnt ; 
- int allocated_metafile_bytes ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,TYPE_2__*) ; 
- TYPE_4__ header ; 
- int /*<<< orphan*/  index_mode ; 
- int /*<<< orphan*/  qrealloc (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  trp_incr (int /*<<< orphan*/ *,int,int) ; 
- TYPE_2__* users ; 
- int verbosity ; 
+
+ int MAX_SUGGESTIONS ;
+ int all_sugg_cnt ;
+ int allocated_metafile_bytes ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,TYPE_2__*) ;
+ TYPE_4__ header ;
+ int index_mode ;
+ int qrealloc (int *,int,int) ;
+ int stderr ;
+ int trp_incr (int *,int,int) ;
+ TYPE_2__* users ;
+ int verbosity ;
 
 void bind_user_metafile (user *u) {
   if (verbosity > 2) {
     fprintf (stderr, "bind user metafile local id = %d (%p)\n", (int)(u - users), u);
   }
-  int local_id = (int)(u - users); // magic. sorry.
+  int local_id = (int)(u - users);
 
-  if (u->metafile == NULL) {
+  if (u->metafile == ((void*)0)) {
     return;
   }
 
@@ -53,8 +53,8 @@ void bind_user_metafile (user *u) {
     assert (sug_size % (2 * sizeof (int)) == sizeof (int));
 
     int *sugg = (int *)(u->metafile + exc_size), n = sugg[0];
-    //fprintf (stderr, "n = %d, sug_size = %d\n", n, sug_size);
-    //assert (sug_size == sizeof (int) * (n * 2 + 1));
+
+
     n = (sug_size / sizeof (int) - 1) / 2;
     all_sugg_cnt += n;
 

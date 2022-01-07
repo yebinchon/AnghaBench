@@ -1,104 +1,104 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-struct ocfs2_extent_tree {struct ocfs2_extent_list* et_root_el; int /*<<< orphan*/  et_ci; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
+struct ocfs2_extent_tree {struct ocfs2_extent_list* et_root_el; int et_ci; } ;
 struct ocfs2_extent_list {scalar_t__ l_tree_depth; scalar_t__ l_next_free_rec; scalar_t__ l_count; TYPE_1__* l_recs; } ;
 struct ocfs2_extent_block {struct ocfs2_extent_list h_list; } ;
 struct buffer_head {scalar_t__ b_data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  e_blkno; } ;
+struct TYPE_2__ {int e_blkno; } ;
 
-/* Variables and functions */
- int EIO ; 
- int /*<<< orphan*/  brelse (struct buffer_head*) ; 
- int /*<<< orphan*/  get_bh (struct buffer_head*) ; 
- int le16_to_cpu (scalar_t__) ; 
- int /*<<< orphan*/  le64_to_cpu (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mlog_entry_void () ; 
- int /*<<< orphan*/  mlog_errno (int) ; 
- int /*<<< orphan*/  mlog_exit (int) ; 
- int /*<<< orphan*/  ocfs2_error (int /*<<< orphan*/ ,char*,unsigned long long,...) ; 
- int /*<<< orphan*/  ocfs2_metadata_cache_get_super (int /*<<< orphan*/ ) ; 
- scalar_t__ ocfs2_metadata_cache_owner (int /*<<< orphan*/ ) ; 
- int ocfs2_read_extent_block (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct buffer_head**) ; 
+
+ int EIO ;
+ int brelse (struct buffer_head*) ;
+ int get_bh (struct buffer_head*) ;
+ int le16_to_cpu (scalar_t__) ;
+ int le64_to_cpu (int ) ;
+ int mlog_entry_void () ;
+ int mlog_errno (int) ;
+ int mlog_exit (int) ;
+ int ocfs2_error (int ,char*,unsigned long long,...) ;
+ int ocfs2_metadata_cache_get_super (int ) ;
+ scalar_t__ ocfs2_metadata_cache_owner (int ) ;
+ int ocfs2_read_extent_block (int ,int ,struct buffer_head**) ;
 
 __attribute__((used)) static int ocfs2_find_branch_target(struct ocfs2_extent_tree *et,
-				    struct buffer_head **target_bh)
+        struct buffer_head **target_bh)
 {
-	int status = 0, i;
-	u64 blkno;
-	struct ocfs2_extent_block *eb;
-	struct ocfs2_extent_list  *el;
-	struct buffer_head *bh = NULL;
-	struct buffer_head *lowest_bh = NULL;
+ int status = 0, i;
+ u64 blkno;
+ struct ocfs2_extent_block *eb;
+ struct ocfs2_extent_list *el;
+ struct buffer_head *bh = ((void*)0);
+ struct buffer_head *lowest_bh = ((void*)0);
 
-	mlog_entry_void();
+ mlog_entry_void();
 
-	*target_bh = NULL;
+ *target_bh = ((void*)0);
 
-	el = et->et_root_el;
+ el = et->et_root_el;
 
-	while(le16_to_cpu(el->l_tree_depth) > 1) {
-		if (le16_to_cpu(el->l_next_free_rec) == 0) {
-			ocfs2_error(ocfs2_metadata_cache_get_super(et->et_ci),
-				    "Owner %llu has empty "
-				    "extent list (next_free_rec == 0)",
-				    (unsigned long long)ocfs2_metadata_cache_owner(et->et_ci));
-			status = -EIO;
-			goto bail;
-		}
-		i = le16_to_cpu(el->l_next_free_rec) - 1;
-		blkno = le64_to_cpu(el->l_recs[i].e_blkno);
-		if (!blkno) {
-			ocfs2_error(ocfs2_metadata_cache_get_super(et->et_ci),
-				    "Owner %llu has extent "
-				    "list where extent # %d has no physical "
-				    "block start",
-				    (unsigned long long)ocfs2_metadata_cache_owner(et->et_ci), i);
-			status = -EIO;
-			goto bail;
-		}
+ while(le16_to_cpu(el->l_tree_depth) > 1) {
+  if (le16_to_cpu(el->l_next_free_rec) == 0) {
+   ocfs2_error(ocfs2_metadata_cache_get_super(et->et_ci),
+        "Owner %llu has empty "
+        "extent list (next_free_rec == 0)",
+        (unsigned long long)ocfs2_metadata_cache_owner(et->et_ci));
+   status = -EIO;
+   goto bail;
+  }
+  i = le16_to_cpu(el->l_next_free_rec) - 1;
+  blkno = le64_to_cpu(el->l_recs[i].e_blkno);
+  if (!blkno) {
+   ocfs2_error(ocfs2_metadata_cache_get_super(et->et_ci),
+        "Owner %llu has extent "
+        "list where extent # %d has no physical "
+        "block start",
+        (unsigned long long)ocfs2_metadata_cache_owner(et->et_ci), i);
+   status = -EIO;
+   goto bail;
+  }
 
-		brelse(bh);
-		bh = NULL;
+  brelse(bh);
+  bh = ((void*)0);
 
-		status = ocfs2_read_extent_block(et->et_ci, blkno, &bh);
-		if (status < 0) {
-			mlog_errno(status);
-			goto bail;
-		}
+  status = ocfs2_read_extent_block(et->et_ci, blkno, &bh);
+  if (status < 0) {
+   mlog_errno(status);
+   goto bail;
+  }
 
-		eb = (struct ocfs2_extent_block *) bh->b_data;
-		el = &eb->h_list;
+  eb = (struct ocfs2_extent_block *) bh->b_data;
+  el = &eb->h_list;
 
-		if (le16_to_cpu(el->l_next_free_rec) <
-		    le16_to_cpu(el->l_count)) {
-			brelse(lowest_bh);
-			lowest_bh = bh;
-			get_bh(lowest_bh);
-		}
-	}
+  if (le16_to_cpu(el->l_next_free_rec) <
+      le16_to_cpu(el->l_count)) {
+   brelse(lowest_bh);
+   lowest_bh = bh;
+   get_bh(lowest_bh);
+  }
+ }
 
-	/* If we didn't find one and the fe doesn't have any room,
-	 * then return '1' */
-	el = et->et_root_el;
-	if (!lowest_bh && (el->l_next_free_rec == el->l_count))
-		status = 1;
 
-	*target_bh = lowest_bh;
+
+ el = et->et_root_el;
+ if (!lowest_bh && (el->l_next_free_rec == el->l_count))
+  status = 1;
+
+ *target_bh = lowest_bh;
 bail:
-	brelse(bh);
+ brelse(bh);
 
-	mlog_exit(status);
-	return status;
+ mlog_exit(status);
+ return status;
 }

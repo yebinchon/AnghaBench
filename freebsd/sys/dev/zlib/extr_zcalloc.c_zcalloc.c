@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
 
-/* Variables and functions */
- void* zcalloc_nowait (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+
+
+ void* zcalloc_nowait (void*,int ,int ) ;
 
 void *
 zcalloc(void *nil, u_int items, u_int size)
 {
 
-	return zcalloc_nowait(nil, items, size);
+ return zcalloc_nowait(nil, items, size);
 }

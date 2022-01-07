@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  GString ;
-typedef  TYPE_1__ GList ;
+typedef int GString ;
+typedef TYPE_1__ GList ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TIMINGS_STOP () ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  bindings ; 
- int /*<<< orphan*/ * config_path ; 
- int /*<<< orphan*/ * config_path_new ; 
- int /*<<< orphan*/  config_xresource_free () ; 
- int /*<<< orphan*/  display_cleanup () ; 
- int /*<<< orphan*/  g_free (int /*<<< orphan*/ *) ; 
- TYPE_1__* g_list_first (scalar_t__) ; 
- int /*<<< orphan*/  g_list_free (scalar_t__) ; 
- TYPE_1__* g_list_next (TYPE_1__*) ; 
- int /*<<< orphan*/  g_main_loop_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  g_string_free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ list_of_error_msgs ; 
- int /*<<< orphan*/ * main_loop ; 
- int /*<<< orphan*/  mode_destroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * modi ; 
- int /*<<< orphan*/  nk_bindings_free (int /*<<< orphan*/ ) ; 
- unsigned int num_modi ; 
- int /*<<< orphan*/  rofi_collect_modi_destroy () ; 
- int /*<<< orphan*/  rofi_icon_fetcher_destroy () ; 
- int /*<<< orphan*/ * rofi_theme ; 
- int /*<<< orphan*/  rofi_theme_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rofi_view_workers_finalize () ; 
+
+ int TIMINGS_STOP () ;
+ int TRUE ;
+ int bindings ;
+ int * config_path ;
+ int * config_path_new ;
+ int config_xresource_free () ;
+ int display_cleanup () ;
+ int g_free (int *) ;
+ TYPE_1__* g_list_first (scalar_t__) ;
+ int g_list_free (scalar_t__) ;
+ TYPE_1__* g_list_next (TYPE_1__*) ;
+ int g_main_loop_unref (int *) ;
+ int g_string_free (int *,int ) ;
+ scalar_t__ list_of_error_msgs ;
+ int * main_loop ;
+ int mode_destroy (int ) ;
+ int * modi ;
+ int nk_bindings_free (int ) ;
+ unsigned int num_modi ;
+ int rofi_collect_modi_destroy () ;
+ int rofi_icon_fetcher_destroy () ;
+ int * rofi_theme ;
+ int rofi_theme_free (int *) ;
+ int rofi_view_workers_finalize () ;
 
 __attribute__((used)) static void cleanup ()
 {
@@ -47,16 +47,16 @@ __attribute__((used)) static void cleanup ()
         mode_destroy ( modi[i] );
     }
     rofi_view_workers_finalize ();
-    if ( main_loop != NULL  ) {
+    if ( main_loop != ((void*)0) ) {
         g_main_loop_unref ( main_loop );
-        main_loop = NULL;
+        main_loop = ((void*)0);
     }
-    // Cleanup
+
     display_cleanup ();
 
     nk_bindings_free ( bindings );
 
-    // Cleaning up memory allocated by the Xresources file.
+
     config_xresource_free ();
     g_free ( modi );
 
@@ -65,7 +65,7 @@ __attribute__((used)) static void cleanup ()
 
     if ( list_of_error_msgs ) {
         for ( GList *iter = g_list_first ( list_of_error_msgs );
-              iter != NULL; iter = g_list_next ( iter ) ) {
+              iter != ((void*)0); iter = g_list_next ( iter ) ) {
             g_string_free ( (GString *) iter->data, TRUE );
         }
         g_list_free ( list_of_error_msgs );
@@ -73,7 +73,7 @@ __attribute__((used)) static void cleanup ()
 
     if ( rofi_theme ) {
         rofi_theme_free ( rofi_theme );
-        rofi_theme = NULL;
+        rofi_theme = ((void*)0);
     }
     TIMINGS_STOP ();
     rofi_collect_modi_destroy ( );

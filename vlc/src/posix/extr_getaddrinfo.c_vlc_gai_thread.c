@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_gai_req {int /*<<< orphan*/  done; int /*<<< orphan*/  result; int /*<<< orphan*/  hints; int /*<<< orphan*/  service; int /*<<< orphan*/  name; int /*<<< orphan*/  error; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EAI_SYSTEM ; 
- int /*<<< orphan*/  getaddrinfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_sem_post (int /*<<< orphan*/ *) ; 
+
+
+
+struct vlc_gai_req {int done; int result; int hints; int service; int name; int error; } ;
+
+
+ int EAI_SYSTEM ;
+ int getaddrinfo (int ,int ,int ,int *) ;
+ int vlc_sem_post (int *) ;
 
 __attribute__((used)) static void *vlc_gai_thread(void *data)
 {
@@ -25,5 +25,5 @@ __attribute__((used)) static void *vlc_gai_thread(void *data)
     req->error = getaddrinfo(req->name, req->service, req->hints,
                              &req->result);
     vlc_sem_post(&req->done);
-    return NULL;
+    return ((void*)0);
 }

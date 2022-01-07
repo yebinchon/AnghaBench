@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct httprequest {int testno; int partno; scalar_t__ open; scalar_t__ upgrade_request; int /*<<< orphan*/  connect_port; scalar_t__ connect_request; int /*<<< orphan*/  done_processing; } ;
-typedef  int /*<<< orphan*/  curl_socket_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int get_request (int /*<<< orphan*/ ,struct httprequest*) ; 
- scalar_t__ got_exit_signal ; 
- int /*<<< orphan*/  http2 (struct httprequest*) ; 
- int /*<<< orphan*/  http_connect (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  is_proxy ; 
- int /*<<< orphan*/  logmsg (char*,...) ; 
- scalar_t__ prevbounce ; 
- int prevpartno ; 
- int prevtestno ; 
- int /*<<< orphan*/  send_doc (int /*<<< orphan*/ ,struct httprequest*) ; 
+
+
+
+struct httprequest {int testno; int partno; scalar_t__ open; scalar_t__ upgrade_request; int connect_port; scalar_t__ connect_request; int done_processing; } ;
+typedef int curl_socket_t ;
+
+
+ scalar_t__ FALSE ;
+ int get_request (int ,struct httprequest*) ;
+ scalar_t__ got_exit_signal ;
+ int http2 (struct httprequest*) ;
+ int http_connect (int *,int ,char const*,int ) ;
+ int is_proxy ;
+ int logmsg (char*,...) ;
+ scalar_t__ prevbounce ;
+ int prevpartno ;
+ int prevtestno ;
+ int send_doc (int ,struct httprequest*) ;
 
 __attribute__((used)) static int service_connection(curl_socket_t msgsock, struct httprequest *req,
                               curl_socket_t listensock,
@@ -36,13 +36,13 @@ __attribute__((used)) static int service_connection(curl_socket_t msgsock, struc
   while(!req->done_processing) {
     int rc = get_request(msgsock, req);
     if(rc <= 0) {
-      /* Nothing further to read now, possibly because the socket was closed */
+
       return rc;
     }
   }
 
   if(prevbounce) {
-    /* bounce treatment requested */
+
     if((req->testno == prevtestno) &&
        (req->partno == prevpartno)) {
       req->partno++;
@@ -69,7 +69,7 @@ __attribute__((used)) static int service_connection(curl_socket_t msgsock, struc
   }
 
   if(req->connect_request) {
-    /* a CONNECT request, setup and talk the tunnel */
+
     if(!is_proxy) {
       logmsg("received CONNECT but isn't running as proxy!");
       return 1;
@@ -81,12 +81,12 @@ __attribute__((used)) static int service_connection(curl_socket_t msgsock, struc
   }
 
   if(req->upgrade_request) {
-    /* an upgrade request, switch to http2 here */
+
     http2(req);
     return -1;
   }
 
-  /* if we got a CONNECT, loop and get another request as well! */
+
 
   if(req->open) {
     logmsg("=> persistent connection request ended, awaits new request\n");

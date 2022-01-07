@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_1__ svn_stringbuf_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_int64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_FS_CORRUPT ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/ * svn_cstring_atoi64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_stream_readline (int /*<<< orphan*/ *,TYPE_1__**,char*,scalar_t__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int data; } ;
+typedef TYPE_1__ svn_stringbuf_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+typedef int apr_int64_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_FS_CORRUPT ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int * svn_cstring_atoi64 (int *,int ) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int svn_stream_readline (int *,TYPE_1__**,char*,scalar_t__*,int *) ;
 
 svn_error_t *
 svn_fs_x__read_number_from_stream(apr_int64_t *result,
@@ -44,7 +44,7 @@ svn_fs_x__read_number_from_stream(apr_int64_t *result,
     *hit_eof = eof;
   else
     if (eof)
-      return svn_error_create(SVN_ERR_FS_CORRUPT, NULL, _("Unexpected EOF"));
+      return svn_error_create(SVN_ERR_FS_CORRUPT, ((void*)0), _("Unexpected EOF"));
 
   if (!eof)
     {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  clock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int clock; } ;
 struct ravb_private {TYPE_1__ ptp; } ;
 struct net_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIC ; 
- int /*<<< orphan*/  GIS ; 
- struct ravb_private* netdev_priv (struct net_device*) ; 
- int /*<<< orphan*/  ptp_clock_unregister (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ravb_write (struct net_device*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int GIC ;
+ int GIS ;
+ struct ravb_private* netdev_priv (struct net_device*) ;
+ int ptp_clock_unregister (int ) ;
+ int ravb_write (struct net_device*,int ,int ) ;
 
 void ravb_ptp_stop(struct net_device *ndev)
 {
-	struct ravb_private *priv = netdev_priv(ndev);
+ struct ravb_private *priv = netdev_priv(ndev);
 
-	ravb_write(ndev, 0, GIC);
-	ravb_write(ndev, 0, GIS);
+ ravb_write(ndev, 0, GIC);
+ ravb_write(ndev, 0, GIS);
 
-	ptp_clock_unregister(priv->ptp.clock);
+ ptp_clock_unregister(priv->ptp.clock);
 }

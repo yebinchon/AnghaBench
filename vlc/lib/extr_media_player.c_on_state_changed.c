@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_player_t ;
-struct TYPE_4__ {int /*<<< orphan*/  event_manager; } ;
-typedef  TYPE_1__ libvlc_media_player_t ;
-struct TYPE_5__ {int /*<<< orphan*/  type; } ;
-typedef  TYPE_2__ libvlc_event_t ;
-typedef  enum vlc_player_state { ____Placeholder_vlc_player_state } vlc_player_state ;
 
-/* Variables and functions */
-#define  VLC_PLAYER_STATE_PAUSED 132 
-#define  VLC_PLAYER_STATE_PLAYING 131 
-#define  VLC_PLAYER_STATE_STARTED 130 
-#define  VLC_PLAYER_STATE_STOPPED 129 
-#define  VLC_PLAYER_STATE_STOPPING 128 
- int /*<<< orphan*/  libvlc_MediaPlayerEndReached ; 
- int /*<<< orphan*/  libvlc_MediaPlayerOpening ; 
- int /*<<< orphan*/  libvlc_MediaPlayerPaused ; 
- int /*<<< orphan*/  libvlc_MediaPlayerPlaying ; 
- int /*<<< orphan*/  libvlc_MediaPlayerStopped ; 
- int /*<<< orphan*/  libvlc_event_send (int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_player_t ;
+struct TYPE_4__ {int event_manager; } ;
+typedef TYPE_1__ libvlc_media_player_t ;
+struct TYPE_5__ {int type; } ;
+typedef TYPE_2__ libvlc_event_t ;
+typedef enum vlc_player_state { ____Placeholder_vlc_player_state } vlc_player_state ;
+
+
+
+
+
+
+
+ int libvlc_MediaPlayerEndReached ;
+ int libvlc_MediaPlayerOpening ;
+ int libvlc_MediaPlayerPaused ;
+ int libvlc_MediaPlayerPlaying ;
+ int libvlc_MediaPlayerStopped ;
+ int libvlc_event_send (int *,TYPE_2__*) ;
+ int vlc_assert_unreachable () ;
 
 __attribute__((used)) static void
 on_state_changed(vlc_player_t *player, enum vlc_player_state new_state,
@@ -43,19 +43,19 @@ on_state_changed(vlc_player_t *player, enum vlc_player_state new_state,
 
     libvlc_event_t event;
     switch (new_state) {
-        case VLC_PLAYER_STATE_STOPPED:
+        case 129:
             event.type = libvlc_MediaPlayerStopped;
             break;
-        case VLC_PLAYER_STATE_STOPPING:
+        case 128:
             event.type = libvlc_MediaPlayerEndReached;
             break;
-        case VLC_PLAYER_STATE_STARTED:
+        case 130:
             event.type = libvlc_MediaPlayerOpening;
             break;
-        case VLC_PLAYER_STATE_PLAYING:
+        case 131:
             event.type = libvlc_MediaPlayerPlaying;
             break;
-        case VLC_PLAYER_STATE_PAUSED:
+        case 132:
             event.type = libvlc_MediaPlayerPaused;
             break;
         default:

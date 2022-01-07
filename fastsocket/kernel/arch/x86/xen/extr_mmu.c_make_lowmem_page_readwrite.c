@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pte_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG () ; 
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- scalar_t__ HYPERVISOR_update_va_mapping (unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * lookup_address (unsigned long,unsigned int*) ; 
- int /*<<< orphan*/  pte_mkwrite (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int pte_t ;
+
+
+ int BUG () ;
+ int BUG_ON (int ) ;
+ scalar_t__ HYPERVISOR_update_va_mapping (unsigned long,int ,int ) ;
+ int * lookup_address (unsigned long,unsigned int*) ;
+ int pte_mkwrite (int ) ;
 
 void make_lowmem_page_readwrite(void *vaddr)
 {
-	pte_t *pte, ptev;
-	unsigned long address = (unsigned long)vaddr;
-	unsigned int level;
+ pte_t *pte, ptev;
+ unsigned long address = (unsigned long)vaddr;
+ unsigned int level;
 
-	pte = lookup_address(address, &level);
-	BUG_ON(pte == NULL);
+ pte = lookup_address(address, &level);
+ BUG_ON(pte == ((void*)0));
 
-	ptev = pte_mkwrite(*pte);
+ ptev = pte_mkwrite(*pte);
 
-	if (HYPERVISOR_update_va_mapping(address, ptev, 0))
-		BUG();
+ if (HYPERVISOR_update_va_mapping(address, ptev, 0))
+  BUG();
 }

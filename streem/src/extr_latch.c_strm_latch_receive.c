@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct recv_data {int /*<<< orphan*/  (* func ) (TYPE_1__*,int /*<<< orphan*/ ) ;TYPE_1__* strm; } ;
-struct latch_data {int /*<<< orphan*/  rq; int /*<<< orphan*/  dq; } ;
-typedef  int /*<<< orphan*/  strm_value ;
+
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct recv_data {int (* func ) (TYPE_1__*,int ) ;TYPE_1__* strm; } ;
+struct latch_data {int rq; int dq; } ;
+typedef int strm_value ;
 struct TYPE_7__ {scalar_t__ start_func; struct latch_data* data; } ;
-typedef  TYPE_1__ strm_stream ;
-typedef  int /*<<< orphan*/  (* strm_callback ) (TYPE_1__*,int /*<<< orphan*/ ) ;
+typedef TYPE_1__ strm_stream ;
+typedef int (* strm_callback ) (TYPE_1__*,int ) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- scalar_t__ latch_push ; 
- struct recv_data* malloc (int) ; 
- int /*<<< orphan*/  strm_queue_add (int /*<<< orphan*/ ,struct recv_data*) ; 
- int /*<<< orphan*/ * strm_queue_get (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ int free (int *) ;
+ scalar_t__ latch_push ;
+ struct recv_data* malloc (int) ;
+ int strm_queue_add (int ,struct recv_data*) ;
+ int * strm_queue_get (int ) ;
+ int stub1 (TYPE_1__*,int ) ;
 
 void
 strm_latch_receive(strm_stream* latch, strm_stream* strm, strm_callback func)

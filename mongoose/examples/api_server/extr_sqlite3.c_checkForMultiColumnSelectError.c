@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int eDest; } ;
-typedef  TYPE_1__ SelectDest ;
-typedef  int /*<<< orphan*/  Parse ;
+typedef TYPE_1__ SelectDest ;
+typedef int Parse ;
 
-/* Variables and functions */
- int SRT_Mem ; 
- int SRT_Set ; 
- int /*<<< orphan*/  sqlite3ErrorMsg (int /*<<< orphan*/ *,char*) ; 
+
+ int SRT_Mem ;
+ int SRT_Set ;
+ int sqlite3ErrorMsg (int *,char*) ;
 
 __attribute__((used)) static int checkForMultiColumnSelectError(
-  Parse *pParse,       /* Parse context. */
-  SelectDest *pDest,   /* Destination of SELECT results */
-  int nExpr            /* Number of result columns returned by SELECT */
+  Parse *pParse,
+  SelectDest *pDest,
+  int nExpr
 ){
   int eDest = pDest->eDest;
   if( nExpr>1 && (eDest==SRT_Mem || eDest==SRT_Set) ){

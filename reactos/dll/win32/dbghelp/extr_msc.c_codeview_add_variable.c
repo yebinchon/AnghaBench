@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct symt_compiland {int dummy; } ;
-struct msc_debug_info {int /*<<< orphan*/  module; } ;
-struct location {unsigned int offset; scalar_t__ reg; int /*<<< orphan*/  kind; } ;
-typedef  scalar_t__ BOOL ;
+struct msc_debug_info {int module; } ;
+struct location {unsigned int offset; scalar_t__ reg; int kind; } ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- unsigned int codeview_get_address (struct msc_debug_info const*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  codeview_get_type (unsigned int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  loc_absolute ; 
- int /*<<< orphan*/  loc_tlsrel ; 
- int /*<<< orphan*/  symt_find_nearest (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  symt_new_global_variable (int /*<<< orphan*/ ,struct symt_compiland*,char const*,scalar_t__,struct location,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int FALSE ;
+ unsigned int codeview_get_address (struct msc_debug_info const*,unsigned int,unsigned int) ;
+ int codeview_get_type (unsigned int,int ) ;
+ int loc_absolute ;
+ int loc_tlsrel ;
+ int symt_find_nearest (int ,unsigned int) ;
+ int symt_new_global_variable (int ,struct symt_compiland*,char const*,scalar_t__,struct location,int ,int ) ;
 
 __attribute__((used)) static inline void codeview_add_variable(const struct msc_debug_info* msc_dbg,
                                          struct symt_compiland* compiland,

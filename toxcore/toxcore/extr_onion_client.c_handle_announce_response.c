@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  scalar_t__ uint16_t ;
-typedef  int /*<<< orphan*/  plain ;
-struct TYPE_9__ {int num_friends; int /*<<< orphan*/  last_packet_recv; TYPE_2__* friends_list; TYPE_1__* c; } ;
-struct TYPE_8__ {scalar_t__ status; int /*<<< orphan*/  temp_secret_key; } ;
-struct TYPE_7__ {int /*<<< orphan*/  self_secret_key; } ;
-typedef  TYPE_3__ Onion_Client ;
-typedef  int /*<<< orphan*/  Node_format ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- int MAX_SENT_NODES ; 
- scalar_t__ ONION_ANNOUNCE_RESPONSE_MAX_SIZE ; 
- scalar_t__ ONION_ANNOUNCE_RESPONSE_MIN_SIZE ; 
- int ONION_ANNOUNCE_SENDBACK_DATA_LENGTH ; 
- int ONION_PING_ID_SIZE ; 
- int check_sendback (TYPE_3__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int client_add_to_list (TYPE_3__*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int client_ping_nodes (TYPE_3__*,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int crypto_box_NONCEBYTES ; 
- int crypto_box_PUBLICKEYBYTES ; 
- int decrypt_data (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/  const*,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  unix_time () ; 
- int unpack_nodes (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef scalar_t__ uint16_t ;
+typedef int plain ;
+struct TYPE_9__ {int num_friends; int last_packet_recv; TYPE_2__* friends_list; TYPE_1__* c; } ;
+struct TYPE_8__ {scalar_t__ status; int temp_secret_key; } ;
+struct TYPE_7__ {int self_secret_key; } ;
+typedef TYPE_3__ Onion_Client ;
+typedef int Node_format ;
+typedef int IP_Port ;
+
+
+ int MAX_SENT_NODES ;
+ scalar_t__ ONION_ANNOUNCE_RESPONSE_MAX_SIZE ;
+ scalar_t__ ONION_ANNOUNCE_RESPONSE_MIN_SIZE ;
+ int ONION_ANNOUNCE_SENDBACK_DATA_LENGTH ;
+ int ONION_PING_ID_SIZE ;
+ int check_sendback (TYPE_3__*,int const*,int *,int *,int*) ;
+ int client_add_to_list (TYPE_3__*,int,int *,int ,int ,int *,int) ;
+ int client_ping_nodes (TYPE_3__*,int,int *,int,int ) ;
+ int crypto_box_NONCEBYTES ;
+ int crypto_box_PUBLICKEYBYTES ;
+ int decrypt_data (int *,int ,int const*,int const*,scalar_t__,int *) ;
+ int unix_time () ;
+ int unpack_nodes (int *,int,int ,int *,scalar_t__,int ) ;
 
 __attribute__((used)) static int handle_announce_response(void *object, IP_Port source, const uint8_t *packet, uint16_t length)
 {
@@ -90,7 +90,7 @@ __attribute__((used)) static int handle_announce_response(void *object, IP_Port 
             return 1;
     }
 
-    //TODO: LAN vs non LAN ips?, if we are connected only to LAN, are we offline?
+
     onion_c->last_packet_recv = unix_time();
     return 0;
 }

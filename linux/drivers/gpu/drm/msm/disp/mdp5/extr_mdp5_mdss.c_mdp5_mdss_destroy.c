@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct msm_drm_private {int /*<<< orphan*/  mdss; } ;
-struct TYPE_2__ {int /*<<< orphan*/ * domain; } ;
-struct mdp5_mdss {int /*<<< orphan*/  vdd; TYPE_1__ irqcontroller; } ;
-struct drm_device {int /*<<< orphan*/  dev; struct msm_drm_private* dev_private; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  irq_domain_remove (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pm_runtime_disable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  regulator_disable (int /*<<< orphan*/ ) ; 
- struct mdp5_mdss* to_mdp5_mdss (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct msm_drm_private {int mdss; } ;
+struct TYPE_2__ {int * domain; } ;
+struct mdp5_mdss {int vdd; TYPE_1__ irqcontroller; } ;
+struct drm_device {int dev; struct msm_drm_private* dev_private; } ;
+
+
+ int irq_domain_remove (int *) ;
+ int pm_runtime_disable (int ) ;
+ int regulator_disable (int ) ;
+ struct mdp5_mdss* to_mdp5_mdss (int ) ;
 
 __attribute__((used)) static void mdp5_mdss_destroy(struct drm_device *dev)
 {
-	struct msm_drm_private *priv = dev->dev_private;
-	struct mdp5_mdss *mdp5_mdss = to_mdp5_mdss(priv->mdss);
+ struct msm_drm_private *priv = dev->dev_private;
+ struct mdp5_mdss *mdp5_mdss = to_mdp5_mdss(priv->mdss);
 
-	if (!mdp5_mdss)
-		return;
+ if (!mdp5_mdss)
+  return;
 
-	irq_domain_remove(mdp5_mdss->irqcontroller.domain);
-	mdp5_mdss->irqcontroller.domain = NULL;
+ irq_domain_remove(mdp5_mdss->irqcontroller.domain);
+ mdp5_mdss->irqcontroller.domain = ((void*)0);
 
-	regulator_disable(mdp5_mdss->vdd);
+ regulator_disable(mdp5_mdss->vdd);
 
-	pm_runtime_disable(dev->dev);
+ pm_runtime_disable(dev->dev);
 }

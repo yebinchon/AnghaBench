@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ var_t ;
-struct TYPE_6__ {int /*<<< orphan*/  name; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_2__ type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_IMPLICIT_HANDLE ; 
- scalar_t__ MODE_Oif ; 
- int /*<<< orphan*/  client ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  generic_handle_list ; 
- TYPE_1__* get_attrp (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ get_stub_mode () ; 
- int /*<<< orphan*/  indent ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  print_client (char*,...) ; 
- int /*<<< orphan*/  user_type_list ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int name; } ;
+typedef TYPE_1__ var_t ;
+struct TYPE_6__ {int name; int attrs; } ;
+typedef TYPE_2__ type_t ;
+
+
+ int ATTR_IMPLICIT_HANDLE ;
+ scalar_t__ MODE_Oif ;
+ int client ;
+ int fprintf (int ,char*) ;
+ int generic_handle_list ;
+ TYPE_1__* get_attrp (int ,int ) ;
+ scalar_t__ get_stub_mode () ;
+ int indent ;
+ scalar_t__ list_empty (int *) ;
+ int print_client (char*,...) ;
+ int user_type_list ;
 
 __attribute__((used)) static void write_stubdescriptor(type_t *iface, int expr_eval_routines)
 {

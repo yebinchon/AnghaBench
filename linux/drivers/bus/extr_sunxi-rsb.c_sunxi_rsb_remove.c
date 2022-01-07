@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sunxi_rsb {int /*<<< orphan*/  clk; int /*<<< orphan*/  rstc; int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct sunxi_rsb {int clk; int rstc; int dev; } ;
 struct platform_device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_for_each_child (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- struct sunxi_rsb* platform_get_drvdata (struct platform_device*) ; 
- int /*<<< orphan*/  reset_control_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sunxi_rsb_remove_devices ; 
+
+ int clk_disable_unprepare (int ) ;
+ int device_for_each_child (int ,int *,int ) ;
+ struct sunxi_rsb* platform_get_drvdata (struct platform_device*) ;
+ int reset_control_assert (int ) ;
+ int sunxi_rsb_remove_devices ;
 
 __attribute__((used)) static int sunxi_rsb_remove(struct platform_device *pdev)
 {
-	struct sunxi_rsb *rsb = platform_get_drvdata(pdev);
+ struct sunxi_rsb *rsb = platform_get_drvdata(pdev);
 
-	device_for_each_child(rsb->dev, NULL, sunxi_rsb_remove_devices);
-	reset_control_assert(rsb->rstc);
-	clk_disable_unprepare(rsb->clk);
+ device_for_each_child(rsb->dev, ((void*)0), sunxi_rsb_remove_devices);
+ reset_control_assert(rsb->rstc);
+ clk_disable_unprepare(rsb->clk);
 
-	return 0;
+ return 0;
 }

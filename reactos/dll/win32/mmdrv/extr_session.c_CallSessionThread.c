@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ThreadFunction ;
-struct TYPE_5__ {int /*<<< orphan*/  result; int /*<<< orphan*/  ready_event; int /*<<< orphan*/  go_event; int /*<<< orphan*/  parameter; int /*<<< orphan*/  function; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int ThreadFunction ;
+struct TYPE_5__ {int result; int ready_event; int go_event; int parameter; int function; } ;
 struct TYPE_6__ {TYPE_1__ thread; } ;
-typedef  TYPE_2__ SessionInfo ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/  MMRESULT ;
+typedef TYPE_2__ SessionInfo ;
+typedef int PVOID ;
+typedef int MMRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (TYPE_2__*) ; 
- int /*<<< orphan*/  DPRINT (char*) ; 
- int /*<<< orphan*/  INFINITE ; 
- int /*<<< orphan*/  SetEvent (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitForSingleObject (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int ASSERT (TYPE_2__*) ;
+ int DPRINT (char*) ;
+ int INFINITE ;
+ int SetEvent (int ) ;
+ int WaitForSingleObject (int ,int ) ;
 
 MMRESULT
 CallSessionThread(

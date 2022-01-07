@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int h; int w; int c; int batch; TYPE_1__* net; } ;
-typedef  TYPE_2__ size_params ;
-typedef  int /*<<< orphan*/  list ;
-struct TYPE_9__ {int /*<<< orphan*/  dot; void* flipped; } ;
-typedef  TYPE_3__ convolutional_layer ;
-struct TYPE_7__ {int /*<<< orphan*/  adam; } ;
-typedef  int /*<<< orphan*/  ACTIVATION ;
+typedef TYPE_2__ size_params ;
+typedef int list ;
+struct TYPE_9__ {int dot; void* flipped; } ;
+typedef TYPE_3__ convolutional_layer ;
+struct TYPE_7__ {int adam; } ;
+typedef int ACTIVATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  get_activation (char*) ; 
- TYPE_3__ make_convolutional_layer (int,int,int,int,int,int,int,int,int,int /*<<< orphan*/ ,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  option_find_float_quiet (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int option_find_int (int /*<<< orphan*/ *,char*,int) ; 
- void* option_find_int_quiet (int /*<<< orphan*/ *,char*,int) ; 
- char* option_find_str (int /*<<< orphan*/ *,char*,char*) ; 
+
+ int error (char*) ;
+ int get_activation (char*) ;
+ TYPE_3__ make_convolutional_layer (int,int,int,int,int,int,int,int,int,int ,int,int,int,int ) ;
+ int option_find_float_quiet (int *,char*,int ) ;
+ int option_find_int (int *,char*,int) ;
+ void* option_find_int_quiet (int *,char*,int) ;
+ char* option_find_str (int *,char*,char*) ;
 
 convolutional_layer parse_convolutional(list *options, size_params params)
 {

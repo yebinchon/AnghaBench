@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct winsize {int ws_col; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DOWN ; 
- int /*<<< orphan*/  LEFT ; 
- int /*<<< orphan*/  TIOCGWINSZ ; 
- int /*<<< orphan*/  UP ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ioctl (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct winsize*) ; 
- int /*<<< orphan*/  positionCursor (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stdout ; 
+
+ int DOWN ;
+ int LEFT ;
+ int TIOCGWINSZ ;
+ int UP ;
+ int fflush (int ) ;
+ int fprintf (int ,char*) ;
+ int ioctl (int ,int ,struct winsize*) ;
+ int positionCursor (int,int ) ;
+ int stdout ;
 
 void clearScreen(int ecmd_pos, int cursor_pos) {
   struct winsize w;

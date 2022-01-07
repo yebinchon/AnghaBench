@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct exynos_video {int /*<<< orphan*/ * font; TYPE_1__* font_driver; int /*<<< orphan*/  perf; int /*<<< orphan*/  num_pages; int /*<<< orphan*/  pages; struct exynos_video* data; } ;
-struct exynos_data {int /*<<< orphan*/ * font; TYPE_1__* font_driver; int /*<<< orphan*/  perf; int /*<<< orphan*/  num_pages; int /*<<< orphan*/  pages; struct exynos_data* data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* free ) (int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_wait_flip (int) ; 
- int /*<<< orphan*/  exynos_close (struct exynos_video*) ; 
- int /*<<< orphan*/  exynos_deinit (struct exynos_video*) ; 
- int /*<<< orphan*/  exynos_free (struct exynos_video*) ; 
- int /*<<< orphan*/  exynos_g2d_free (struct exynos_video*) ; 
- int exynos_pages_used (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exynos_perf_finish (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct exynos_video*) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct exynos_video {int * font; TYPE_1__* font_driver; int perf; int num_pages; int pages; struct exynos_video* data; } ;
+struct exynos_data {int * font; TYPE_1__* font_driver; int perf; int num_pages; int pages; struct exynos_data* data; } ;
+struct TYPE_2__ {int (* free ) (int *) ;} ;
+
+
+ int drm_wait_flip (int) ;
+ int exynos_close (struct exynos_video*) ;
+ int exynos_deinit (struct exynos_video*) ;
+ int exynos_free (struct exynos_video*) ;
+ int exynos_g2d_free (struct exynos_video*) ;
+ int exynos_pages_used (int ,int ) ;
+ int exynos_perf_finish (int *) ;
+ int free (struct exynos_video*) ;
+ int stub1 (int *) ;
 
 __attribute__((used)) static void exynos_gfx_free(void *data)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static void exynos_gfx_free(void *data)
 
    exynos_g2d_free(pdata);
 
-   /* Flush pages: One page remains, the one being displayed at this moment. */
+
    while (exynos_pages_used(pdata->pages, pdata->num_pages) > 1)
       drm_wait_flip(-1);
 
@@ -46,13 +46,13 @@ __attribute__((used)) static void exynos_gfx_free(void *data)
    exynos_deinit(pdata);
    exynos_close(pdata);
 
-#if (EXYNOS_GFX_DEBUG_PERF == 1)
-   exynos_perf_finish(&pdata->perf);
-#endif
+
+
+
 
    free(pdata);
 
-   if (vid->font != NULL && vid->font_driver != NULL)
+   if (vid->font != ((void*)0) && vid->font_driver != ((void*)0))
       vid->font_driver->free(vid->font);
 
    free(vid);

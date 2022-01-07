@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ VAStatus ;
-typedef  int /*<<< orphan*/  VADisplay ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef scalar_t__ VAStatus ;
+typedef int VADisplay ;
 struct TYPE_8__ {TYPE_1__* hwctx; } ;
-struct TYPE_7__ {int /*<<< orphan*/  display; } ;
-typedef  TYPE_1__ AVVAAPIDeviceContext ;
-typedef  TYPE_2__ AVHWDeviceContext ;
+struct TYPE_7__ {int display; } ;
+typedef TYPE_1__ AVVAAPIDeviceContext ;
+typedef TYPE_2__ AVHWDeviceContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  EIO ; 
- scalar_t__ VA_STATUS_SUCCESS ; 
- int /*<<< orphan*/  av_log (TYPE_2__*,int /*<<< orphan*/ ,char*,int,int) ; 
- int vaErrorStr (scalar_t__) ; 
- scalar_t__ vaInitialize (int /*<<< orphan*/ ,int*,int*) ; 
- int /*<<< orphan*/  vaSetErrorCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  vaSetInfoCallback (int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_2__*) ; 
- int /*<<< orphan*/  vaapi_device_log_error ; 
- int /*<<< orphan*/  vaapi_device_log_info ; 
+
+ int AVERROR (int ) ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_VERBOSE ;
+ int EIO ;
+ scalar_t__ VA_STATUS_SUCCESS ;
+ int av_log (TYPE_2__*,int ,char*,int,int) ;
+ int vaErrorStr (scalar_t__) ;
+ scalar_t__ vaInitialize (int ,int*,int*) ;
+ int vaSetErrorCallback (int ,int *,TYPE_2__*) ;
+ int vaSetInfoCallback (int ,int *,TYPE_2__*) ;
+ int vaapi_device_log_error ;
+ int vaapi_device_log_info ;
 
 __attribute__((used)) static int vaapi_device_connect(AVHWDeviceContext *ctx,
                                 VADisplay display)
@@ -40,10 +40,10 @@ __attribute__((used)) static int vaapi_device_connect(AVHWDeviceContext *ctx,
     int major, minor;
     VAStatus vas;
 
-#if CONFIG_VAAPI_1
-    vaSetErrorCallback(display, &vaapi_device_log_error, ctx);
-    vaSetInfoCallback (display, &vaapi_device_log_info,  ctx);
-#endif
+
+
+
+
 
     hwctx->display = display;
 

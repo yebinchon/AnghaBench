@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIG_DFL ; 
- scalar_t__* c_file ; 
- scalar_t__* export_file ; 
- scalar_t__* lderrout ; 
- scalar_t__* ldout ; 
- int /*<<< orphan*/  maybe_unlink (scalar_t__*) ; 
- scalar_t__* o_file ; 
- int /*<<< orphan*/  raise (int) ; 
- int /*<<< orphan*/  signal (int,int /*<<< orphan*/ ) ; 
+ int SIG_DFL ;
+ scalar_t__* c_file ;
+ scalar_t__* export_file ;
+ scalar_t__* lderrout ;
+ scalar_t__* ldout ;
+ int maybe_unlink (scalar_t__*) ;
+ scalar_t__* o_file ;
+ int raise (int) ;
+ int signal (int,int ) ;
 
 __attribute__((used)) static void
 handler (int signo)
@@ -37,10 +29,10 @@ handler (int signo)
   if (lderrout != 0 && lderrout[0])
     maybe_unlink (lderrout);
 
-#ifdef COLLECT_EXPORT_LIST
-  if (export_file != 0 && export_file[0])
-    maybe_unlink (export_file);
-#endif
+
+
+
+
 
   signal (signo, SIG_DFL);
   raise (signo);

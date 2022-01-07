@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int op_err ;
 
-/* Variables and functions */
- unsigned int OP_ABS20 ; 
- unsigned int OP_DEC ; 
- unsigned int OP_ESC ; 
- unsigned int OP_ESC1 ; 
- unsigned int OP_EVEN ; 
- int OP_LEGAL ; 
- unsigned int OP_NEG ; 
- int OP_NOT_EVEN ; 
- int OP_OUT_OF_RANGE ; 
- unsigned int OP_SHIFT ; 
- unsigned int OP_SHIFT_DEC ; 
- unsigned int OP_SIGNED ; 
- unsigned int OP_UNSIGNED ; 
+
+
+
+typedef int op_err ;
+
+
+ unsigned int OP_ABS20 ;
+ unsigned int OP_DEC ;
+ unsigned int OP_ESC ;
+ unsigned int OP_ESC1 ;
+ unsigned int OP_EVEN ;
+ int OP_LEGAL ;
+ unsigned int OP_NEG ;
+ int OP_NOT_EVEN ;
+ int OP_OUT_OF_RANGE ;
+ unsigned int OP_SHIFT ;
+ unsigned int OP_SHIFT_DEC ;
+ unsigned int OP_SIGNED ;
+ unsigned int OP_UNSIGNED ;
 
 __attribute__((used)) static op_err
 check_range (long *num, int bits, int unsigned flags, int update)
@@ -36,14 +36,14 @@ check_range (long *num, int bits, int unsigned flags, int update)
 
   if (bits == 0 && value > 0) return OP_OUT_OF_RANGE;
 
-  /* For hosts witah longs bigger than 32-bits make sure that the top
-     bits of a 32-bit negative value read in by the parser are set,
-     so that the correct comparisons are made.  */
+
+
+
   if (value & 0x80000000)
     value |= (-1L << 31);
 
 
-  /* Verify operand value is even.  */
+
   if (flags & OP_EVEN)
     {
       if (value % 2)
@@ -81,11 +81,11 @@ check_range (long *num, int bits, int unsigned flags, int update)
       if (value == 0xB || value == 0x9)
         return OP_OUT_OF_RANGE;
       else if (value == -1)
-	{
-	  if (update)
-	    *num = 9;
-	  return retval;
-	}
+ {
+   if (update)
+     *num = 9;
+   return retval;
+ }
     }
 
   if (flags & OP_ESC1)

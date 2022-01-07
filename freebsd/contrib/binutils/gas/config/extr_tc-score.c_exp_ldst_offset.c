@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {scalar_t__ X_op; int /*<<< orphan*/  X_add_number; } ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {scalar_t__ X_op; int X_add_number; } ;
 struct TYPE_5__ {scalar_t__ pc_rel; TYPE_3__ exp; } ;
-struct TYPE_8__ {int instruction; TYPE_1__ reloc; int /*<<< orphan*/  error; } ;
+struct TYPE_8__ {int instruction; TYPE_1__ reloc; int error; } ;
 struct TYPE_6__ {int bits; int* range; } ;
 
-/* Variables and functions */
- scalar_t__ FAIL ; 
- scalar_t__ O_constant ; 
- int SUCCESS ; 
- char* _ (char*) ; 
- unsigned int _IMM10_RSHIFT_2 ; 
- unsigned int _IMM14 ; 
- unsigned int _IMM15 ; 
- unsigned int _IMM16 ; 
- unsigned int _IMM4 ; 
- unsigned int _IMM5 ; 
- unsigned int _IMM5_RSHIFT_1 ; 
- unsigned int _IMM5_RSHIFT_2 ; 
- unsigned int _IMM8 ; 
- unsigned int _SIMM14_NEG ; 
- unsigned int _SIMM16_LA ; 
- unsigned int _VALUE_HI16 ; 
- unsigned int _VALUE_LO16 ; 
- int /*<<< orphan*/  err_msg ; 
- TYPE_4__ inst ; 
- int my_get_expression (TYPE_3__*,char**) ; 
- TYPE_2__* score_df_range ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ ,char*,int,int,int) ; 
- int validate_immediate (int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ) ; 
- int validate_immediate_align (int /*<<< orphan*/ ,unsigned int) ; 
+
+ scalar_t__ FAIL ;
+ scalar_t__ O_constant ;
+ int SUCCESS ;
+ char* _ (char*) ;
+ unsigned int _IMM10_RSHIFT_2 ;
+ unsigned int _IMM14 ;
+ unsigned int _IMM15 ;
+ unsigned int _IMM16 ;
+ unsigned int _IMM4 ;
+ unsigned int _IMM5 ;
+ unsigned int _IMM5_RSHIFT_1 ;
+ unsigned int _IMM5_RSHIFT_2 ;
+ unsigned int _IMM8 ;
+ unsigned int _SIMM14_NEG ;
+ unsigned int _SIMM16_LA ;
+ unsigned int _VALUE_HI16 ;
+ unsigned int _VALUE_LO16 ;
+ int err_msg ;
+ TYPE_4__ inst ;
+ int my_get_expression (TYPE_3__*,char**) ;
+ TYPE_2__* score_df_range ;
+ int sprintf (int ,char*,int,int,int) ;
+ int validate_immediate (int ,unsigned int,int ) ;
+ int validate_immediate_align (int ,unsigned int) ;
 
 __attribute__((used)) static int
 exp_ldst_offset (char **str, int shift, unsigned int data_type)
@@ -75,11 +75,11 @@ exp_ldst_offset (char **str, int shift, unsigned int data_type)
 
   if (inst.reloc.exp.X_op == O_constant)
     {
-      /* Need to check the immediate align.  */
+
       int value = validate_immediate_align (inst.reloc.exp.X_add_number, data_type);
 
       if (value == (int) FAIL)
-	return (int) FAIL;
+ return (int) FAIL;
 
       value = validate_immediate (inst.reloc.exp.X_add_number, data_type, 0);
       if (value == (int) FAIL)

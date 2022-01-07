@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Clone (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  CmpIpAddressList ; 
- int /*<<< orphan*/ * LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int IP ;
+
+
+ int Add (int *,int *) ;
+ int * Clone (int *,int) ;
+ int CmpIpAddressList ;
+ int * LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int * NewListFast (int ) ;
 
 LIST *CloneIPAddressList(LIST *o)
 {
-	LIST *ret;
-	UINT i;
-	// Validate arguments
-	if (o == NULL)
-	{
-		return NULL;
-	}
+ LIST *ret;
+ UINT i;
 
-	ret = NewListFast(CmpIpAddressList);
+ if (o == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		IP *ip = LIST_DATA(o, i);
+ ret = NewListFast(CmpIpAddressList);
 
-		if (ip != NULL)
-		{
-			ip = Clone(ip, sizeof(IP));
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  IP *ip = LIST_DATA(o, i);
 
-			Add(ret, ip);
-		}
-	}
+  if (ip != ((void*)0))
+  {
+   ip = Clone(ip, sizeof(IP));
 
-	return ret;
+   Add(ret, ip);
+  }
+ }
+
+ return ret;
 }

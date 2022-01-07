@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nvme_ctrl {int /*<<< orphan*/  device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  put_device (int /*<<< orphan*/ ) ; 
+
+
+
+struct nvme_ctrl {int device; } ;
+
+
+ int put_device (int ) ;
 
 __attribute__((used)) static inline void nvme_put_ctrl(struct nvme_ctrl *ctrl)
 {
-	put_device(ctrl->device);
+ put_device(ctrl->device);
 }

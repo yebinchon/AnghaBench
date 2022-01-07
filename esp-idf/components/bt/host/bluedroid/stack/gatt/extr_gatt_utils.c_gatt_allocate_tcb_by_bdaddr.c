@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {size_t tcb_idx; int /*<<< orphan*/  peer_bda; int /*<<< orphan*/  transport; void* in_use; void* pending_ind_q; void* pending_enc_clcb; } ;
-typedef  TYPE_1__ tGATT_TCB ;
-typedef  int /*<<< orphan*/  tBT_TRANSPORT ;
-typedef  size_t UINT8 ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {size_t tcb_idx; int peer_bda; int transport; void* in_use; void* pending_ind_q; void* pending_enc_clcb; } ;
+typedef TYPE_1__ tGATT_TCB ;
+typedef int tBT_TRANSPORT ;
+typedef size_t UINT8 ;
 struct TYPE_6__ {TYPE_1__* tcb; } ;
-typedef  void* BOOLEAN ;
-typedef  int /*<<< orphan*/  BD_ADDR ;
+typedef void* BOOLEAN ;
+typedef int BD_ADDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BD_ADDR_LEN ; 
- void* FALSE ; 
- size_t GATT_INDEX_INVALID ; 
- int /*<<< orphan*/  QUEUE_SIZE_MAX ; 
- void* TRUE ; 
- void* fixed_queue_new (int /*<<< orphan*/ ) ; 
- TYPE_3__ gatt_cb ; 
- size_t gatt_find_i_tcb_by_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t gatt_find_i_tcb_free () ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+ int BD_ADDR_LEN ;
+ void* FALSE ;
+ size_t GATT_INDEX_INVALID ;
+ int QUEUE_SIZE_MAX ;
+ void* TRUE ;
+ void* fixed_queue_new (int ) ;
+ TYPE_3__ gatt_cb ;
+ size_t gatt_find_i_tcb_by_addr (int ,int ) ;
+ size_t gatt_find_i_tcb_free () ;
+ int memcpy (int ,int ,int ) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 tGATT_TCB *gatt_allocate_tcb_by_bdaddr(BD_ADDR bda, tBT_TRANSPORT transport)
 {
     UINT8 i = 0;
     BOOLEAN allocated = FALSE;
-    tGATT_TCB    *p_tcb = NULL;
+    tGATT_TCB *p_tcb = ((void*)0);
 
-    /* search for existing tcb with matching bda    */
+
     i = gatt_find_i_tcb_by_addr(bda, transport);
-    /* find free tcb */
+
     if (i == GATT_INDEX_INVALID) {
         i = gatt_find_i_tcb_free();
         allocated = TRUE;

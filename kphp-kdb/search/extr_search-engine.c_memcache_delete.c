@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int MAX_RATES ; 
- int /*<<< orphan*/  delete_hash_queries ; 
- int delete_hash_query_items ; 
- int /*<<< orphan*/  delete_queries ; 
- int do_delete_item (int) ; 
- int do_delete_items_with_hash (long long) ; 
- int do_reset_all_rates (int) ; 
- int get_sorting_mode (char) ; 
- int sscanf (char const*,char*,...) ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int MAX_RATES ;
+ int delete_hash_queries ;
+ int delete_hash_query_items ;
+ int delete_queries ;
+ int do_delete_item (int) ;
+ int do_delete_items_with_hash (long long) ;
+ int do_reset_all_rates (int) ;
+ int get_sorting_mode (char) ;
+ int sscanf (char const*,char*,...) ;
+ int vkprintf (int,char*,...) ;
+ int write_out (int *,char*,int) ;
 
 int memcache_delete (struct connection *c, const char *key, int key_len) {
   int owner_id, item_id;

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-struct TYPE_4__ {int n; char* z; int enc; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ Mem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEM_Term ; 
- int SQLITE_OK ; 
- int SQLITE_UTF16BE ; 
- int SQLITE_UTF16LE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  memmove (char*,char*,int) ; 
- int sqlite3VdbeMemMakeWriteable (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u8 ;
+struct TYPE_4__ {int n; char* z; int enc; int flags; } ;
+typedef TYPE_1__ Mem ;
+
+
+ int MEM_Term ;
+ int SQLITE_OK ;
+ int SQLITE_UTF16BE ;
+ int SQLITE_UTF16LE ;
+ int assert (int) ;
+ int memmove (char*,char*,int) ;
+ int sqlite3VdbeMemMakeWriteable (TYPE_1__*) ;
 
 int sqlite3VdbeMemHandleBom(Mem *pMem){
   int rc = SQLITE_OK;
@@ -39,7 +39,7 @@ int sqlite3VdbeMemHandleBom(Mem *pMem){
       bom = SQLITE_UTF16LE;
     }
   }
-  
+
   if( bom ){
     rc = sqlite3VdbeMemMakeWriteable(pMem);
     if( rc==SQLITE_OK ){

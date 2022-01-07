@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dwarf_fde {int dummy; } ;
 struct dwarf_eh_bases {void* func; } ;
 
-/* Variables and functions */
- struct dwarf_fde* _Unwind_Find_FDE (void*,struct dwarf_eh_bases*) ; 
+
+ struct dwarf_fde* _Unwind_Find_FDE (void*,struct dwarf_eh_bases*) ;
 
 void *
 _Unwind_FindEnclosingFunction (void *pc)
@@ -24,5 +24,5 @@ _Unwind_FindEnclosingFunction (void *pc)
   if (fde)
     return bases.func;
   else
-    return NULL;
+    return ((void*)0);
 }

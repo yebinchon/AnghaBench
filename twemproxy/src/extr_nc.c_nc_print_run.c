@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct utsname {int /*<<< orphan*/  machine; int /*<<< orphan*/  release; int /*<<< orphan*/  sysname; } ;
-struct instance {int /*<<< orphan*/  pid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NC_VERSION_STRING ; 
- int /*<<< orphan*/  loga (char*,...) ; 
- int uname (struct utsname*) ; 
+
+
+
+struct utsname {int machine; int release; int sysname; } ;
+struct instance {int pid; } ;
+
+
+ int NC_VERSION_STRING ;
+ int loga (char*,...) ;
+ int uname (struct utsname*) ;
 
 __attribute__((used)) static void
 nc_print_run(struct instance *nci)

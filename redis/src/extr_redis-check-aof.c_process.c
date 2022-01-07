@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  off_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERROR (char*) ; 
- char* error ; 
- scalar_t__ feof (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ftello (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  readArgc (int /*<<< orphan*/ *,long*) ; 
- int /*<<< orphan*/  readString (int /*<<< orphan*/ *,char**) ; 
- scalar_t__ strcasecmp (char*,char*) ; 
- scalar_t__ strlen (char*) ; 
- int /*<<< orphan*/  zfree (char*) ; 
+
+
+
+typedef int off_t ;
+typedef int FILE ;
+
+
+ int ERROR (char*) ;
+ char* error ;
+ scalar_t__ feof (int *) ;
+ int ftello (int *) ;
+ int printf (char*,char*) ;
+ int readArgc (int *,long*) ;
+ int readString (int *,char**) ;
+ scalar_t__ strcasecmp (char*,char*) ;
+ scalar_t__ strlen (char*) ;
+ int zfree (char*) ;
 
 off_t process(FILE *fp) {
     long argc;
@@ -53,7 +53,7 @@ off_t process(FILE *fp) {
             zfree(str);
         }
 
-        /* Stop if the loop did not finish */
+
         if (i < argc) {
             if (str) zfree(str);
             break;

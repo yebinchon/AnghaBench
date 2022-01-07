@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VCOS_THREAD_T ;
-typedef  scalar_t__ VCHIQ_STATUS_T ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int VCOS_THREAD_T ;
+typedef scalar_t__ VCHIQ_STATUS_T ;
 struct TYPE_2__ {int align_size; int iters; scalar_t__ verify; void* server_message_quota; void* client_message_quota; void* blocksize; void* server_align; void* client_align; } ;
 
-/* Variables and functions */
- scalar_t__ VCHIQ_ERROR ; 
- scalar_t__ VCHIQ_SUCCESS ; 
- int VCOS_AFFINITY_CPU1 ; 
- int /*<<< orphan*/  VCOS_LOG_CATEGORY ; 
- int /*<<< orphan*/  VCOS_LOG_INFO ; 
- int /*<<< orphan*/  VCOS_LOG_TRACE ; 
- int /*<<< orphan*/  VCOS_START ; 
- void* atoi (char*) ; 
- int /*<<< orphan*/  check_timer () ; 
- int /*<<< orphan*/  exit (int) ; 
- void* func_data_test_end ; 
- void* func_data_test_start ; 
- int /*<<< orphan*/  g_mutex ; 
- TYPE_1__ g_params ; 
- int /*<<< orphan*/  g_server_reply ; 
- char* g_servname ; 
- int /*<<< orphan*/  g_shutdown ; 
- void* g_timeout_ms ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  reserve_test (int,int) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
- scalar_t__ strcmp (char const*,char*) ; 
- int strlen (char*) ; 
- int /*<<< orphan*/  usage () ; 
- scalar_t__ vchiq_bulk_test () ; 
- scalar_t__ vchiq_ctrl_test () ; 
- scalar_t__ vchiq_functional_test () ; 
- scalar_t__ vchiq_ping_test () ; 
- scalar_t__ vchiq_signal_test () ; 
- int /*<<< orphan*/  vchiq_test_server ; 
- int /*<<< orphan*/  vcos_demand (void*) ; 
- int /*<<< orphan*/  vcos_event_create (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vcos_log_register (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_log_set_level (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_mutex_create (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vcos_thread_create_classic (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,void*,void*,int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ want_echo ; 
+
+ scalar_t__ VCHIQ_ERROR ;
+ scalar_t__ VCHIQ_SUCCESS ;
+ int VCOS_AFFINITY_CPU1 ;
+ int VCOS_LOG_CATEGORY ;
+ int VCOS_LOG_INFO ;
+ int VCOS_LOG_TRACE ;
+ int VCOS_START ;
+ void* atoi (char*) ;
+ int check_timer () ;
+ int exit (int) ;
+ void* func_data_test_end ;
+ void* func_data_test_start ;
+ int g_mutex ;
+ TYPE_1__ g_params ;
+ int g_server_reply ;
+ char* g_servname ;
+ int g_shutdown ;
+ void* g_timeout_ms ;
+ void* malloc (int) ;
+ int printf (char*,...) ;
+ int reserve_test (int,int) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
+ scalar_t__ strcmp (char const*,char*) ;
+ int strlen (char*) ;
+ int usage () ;
+ scalar_t__ vchiq_bulk_test () ;
+ scalar_t__ vchiq_ctrl_test () ;
+ scalar_t__ vchiq_functional_test () ;
+ scalar_t__ vchiq_ping_test () ;
+ scalar_t__ vchiq_signal_test () ;
+ int vchiq_test_server ;
+ int vcos_demand (void*) ;
+ int vcos_event_create (int *,char*) ;
+ int vcos_log_register (char*,int ) ;
+ int vcos_log_set_level (int ,int ) ;
+ int vcos_mutex_create (int *,char*) ;
+ int vcos_thread_create_classic (int *,char*,int ,void*,void*,int,int,int,int ) ;
+ scalar_t__ want_echo ;
 
 __attribute__((used)) static int vchiq_test(int argc, char **argv)
 {
@@ -125,10 +125,10 @@ __attribute__((used)) static int vchiq_test(int argc, char **argv)
       }
       else if (strcmp(arg, "-q") == 0)
       {
-         /* coverity[missing_lock : FALSE] - g_server_reply is not used for mutual exclusion */
+
          g_params.verify = 0;
       }
-#ifdef __linux__
+
       else if (strcmp(arg, "-r") == 0)
       {
          int reserve, delay;
@@ -145,19 +145,6 @@ __attribute__((used)) static int vchiq_test(int argc, char **argv)
             exit(-1);
          }
       }
-#endif
-#ifdef ANDROID
-      else if (strcmp(arg, "-K") == 0)
-      {
-         if (argn < argc)
-            g_timeout_ms = atoi(argv[argn++]);
-         else
-         {
-            printf("not enough arguments (-K timeout)\n");
-            exit(-1);
-         }
-      }
-#endif
       else if (strcmp(arg, "-t") == 0)
       {
          check_timer();
@@ -196,22 +183,6 @@ __attribute__((used)) static int vchiq_test(int argc, char **argv)
 
    vcos_log_set_level(VCOS_LOG_CATEGORY, verbose ? VCOS_LOG_TRACE : VCOS_LOG_INFO);
    vcos_log_register("vchiq_test", VCOS_LOG_CATEGORY);
-
-#ifdef VCHIQ_LOCAL
-   {
-      static VCOS_THREAD_T server_task;
-      void          *pointer = NULL;
-      int stack_size = 4096;
-
-#if VCOS_CAN_SET_STACK_ADDR
-      pointer = malloc(stack_size);
-      vcos_demand(pointer);
-#endif
-      vcos_thread_create_classic(&server_task, "vchiq_test server", vchiq_test_server, (void *)0, pointer, stack_size,
-                                 10 | VCOS_AFFINITY_CPU1, 20, VCOS_START);
-   }
-#endif
-
    vcos_event_create(&g_server_reply, "g_server_reply");
    vcos_event_create(&g_shutdown, "g_shutdown");
    vcos_mutex_create(&g_mutex, "g_mutex");

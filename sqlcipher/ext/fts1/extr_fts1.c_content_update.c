@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite_int64 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqlite_int64 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_stmt ;
 struct TYPE_5__ {int nColumn; } ;
-typedef  TYPE_1__ fulltext_vtab ;
+typedef TYPE_1__ fulltext_vtab ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CONTENT_UPDATE_STMT ; 
- int SQLITE_OK ; 
- int sql_get_statement (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sql_single_step_statement (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int sqlite3_bind_int64 (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int sqlite3_bind_value (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
+
+ int CONTENT_UPDATE_STMT ;
+ int SQLITE_OK ;
+ int sql_get_statement (TYPE_1__*,int ,int **) ;
+ int sql_single_step_statement (TYPE_1__*,int ,int **) ;
+ int sqlite3_bind_int64 (int *,int,int ) ;
+ int sqlite3_bind_value (int *,int,int *) ;
 
 __attribute__((used)) static int content_update(fulltext_vtab *v, sqlite3_value **pValues,
                           sqlite_int64 iRowid){

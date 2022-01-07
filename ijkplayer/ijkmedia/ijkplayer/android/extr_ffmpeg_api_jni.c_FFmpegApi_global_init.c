@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  clazz; } ;
-struct TYPE_6__ {int /*<<< orphan*/  (* RegisterNatives ) (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_1__* JNIEnv ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IJK_FIND_JAVA_CLASS (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  JNI_CLASS_FFMPEG_API ; 
- int /*<<< orphan*/  NELEM (int /*<<< orphan*/ ) ; 
- TYPE_3__ g_clazz ; 
- int /*<<< orphan*/  g_methods ; 
- int /*<<< orphan*/  stub1 (TYPE_1__**,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int clazz; } ;
+struct TYPE_6__ {int (* RegisterNatives ) (TYPE_1__**,int ,int ,int ) ;} ;
+typedef TYPE_1__* JNIEnv ;
+
+
+ int IJK_FIND_JAVA_CLASS (TYPE_1__**,int ,int ) ;
+ int JNI_CLASS_FFMPEG_API ;
+ int NELEM (int ) ;
+ TYPE_3__ g_clazz ;
+ int g_methods ;
+ int stub1 (TYPE_1__**,int ,int ,int ) ;
 
 int FFmpegApi_global_init(JNIEnv *env)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int tm_year; int tm_mon; int tm_mday; int tm_hour; int tm_min; int tm_sec; } ;
 
-/* Variables and functions */
- struct tm* localtime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int,int,int,int,int,int) ; 
+
+ struct tm* localtime (int *) ;
+ int sprintf (char*,char*,int,int,int,int,int,int) ;
 
 char *strtime (time_t *t)
 {
-  struct tm   *local;
+  struct tm *local;
   static char result[32];
 
   local = localtime(t);

@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int CTL_KERN ; 
- int KERN_KDEBUG ; 
- int KERN_KDENABLE ; 
- int /*<<< orphan*/  printf (char*) ; 
- scalar_t__ sysctl (int*,int,int /*<<< orphan*/ *,size_t*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+ int CTL_KERN ;
+ int KERN_KDEBUG ;
+ int KERN_KDENABLE ;
+ int printf (char*) ;
+ scalar_t__ sysctl (int*,int,int *,size_t*,int *,int ) ;
 
 void set_enable(int val)
 {
-	int mib[6];
-	size_t needed;
+ int mib[6];
+ size_t needed;
 
         mib[0] = CTL_KERN;
         mib[1] = KERN_KDEBUG;
@@ -30,7 +22,7 @@ void set_enable(int val)
         mib[4] = 0;
         mib[5] = 0;
 
-        if (sysctl(mib, 4, NULL, &needed, NULL, 0) < 0) {
+        if (sysctl(mib, 4, ((void*)0), &needed, ((void*)0), 0) < 0) {
                 printf("trace facility failure, KERN_KDENABLE\n");
-	}
+ }
 }

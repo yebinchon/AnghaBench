@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ i_codec; int /*<<< orphan*/  i_cat; } ;
-typedef  TYPE_1__ es_format_t ;
-typedef  int /*<<< orphan*/  decoder_t ;
 
-/* Variables and functions */
- char* N_ (char*) ; 
- scalar_t__ VLC_CODEC_UNKNOWN ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  msg_Err (int /*<<< orphan*/ *,char*,...) ; 
- int /*<<< orphan*/  vlc_dialog_display_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- char* vlc_fourcc_GetDescription (int /*<<< orphan*/ ,scalar_t__) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ i_codec; int i_cat; } ;
+typedef TYPE_1__ es_format_t ;
+typedef int decoder_t ;
+
+
+ char* N_ (char*) ;
+ scalar_t__ VLC_CODEC_UNKNOWN ;
+ int _ (char*) ;
+ int msg_Err (int *,char*,...) ;
+ int vlc_dialog_display_error (int *,int ,int ,...) ;
+ char* vlc_fourcc_GetDescription (int ,scalar_t__) ;
 
 __attribute__((used)) static void DecoderUnsupportedCodec( decoder_t *p_dec, const es_format_t *fmt, bool b_decoding )
 {

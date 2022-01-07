@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn_conn_t ;
-typedef  int /*<<< orphan*/  svn_ra_svn__list_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_svn_conn_t ;
+typedef int svn_ra_svn__list_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
 struct TYPE_13__ {TYPE_2__* repository; } ;
-typedef  TYPE_3__ server_baton_t ;
-struct TYPE_14__ {int /*<<< orphan*/ * pool; int /*<<< orphan*/ * conn; } ;
-typedef  TYPE_4__ file_revs_baton_t ;
-struct TYPE_15__ {int /*<<< orphan*/ * conn; TYPE_3__* server; } ;
-typedef  TYPE_5__ authz_baton_t ;
-typedef  scalar_t__ apr_uint64_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_12__ {int /*<<< orphan*/  repos; TYPE_1__* fs_path; } ;
-struct TYPE_11__ {int /*<<< orphan*/  data; } ;
+typedef TYPE_3__ server_baton_t ;
+struct TYPE_14__ {int * pool; int * conn; } ;
+typedef TYPE_4__ file_revs_baton_t ;
+struct TYPE_15__ {int * conn; TYPE_3__* server; } ;
+typedef TYPE_5__ authz_baton_t ;
+typedef scalar_t__ apr_uint64_t ;
+typedef int apr_pool_t ;
+struct TYPE_12__ {int repos; TYPE_1__* fs_path; } ;
+struct TYPE_11__ {int data; } ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_CMD_ERR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ SVN_RA_SVN_UNSPECIFIED_NUMBER ; 
- int /*<<< orphan*/  authz_check_access_cb_func (TYPE_3__*) ; 
- int /*<<< orphan*/  file_rev_handler ; 
- int /*<<< orphan*/  log_command (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_error_clear (int /*<<< orphan*/ *) ; 
- char* svn_fspath__join (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_log__get_file_revs (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_ra_svn__parse_tuple (int /*<<< orphan*/ *,char*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*) ; 
- int /*<<< orphan*/  svn_ra_svn__write_cmd_response (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * svn_ra_svn__write_word (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*) ; 
- char* svn_relpath_canonicalize (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_repos_get_file_revs2 (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,TYPE_5__*,int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trivial_auth_request (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_3__*) ; 
+
+ scalar_t__ FALSE ;
+ int SVN_CMD_ERR (int *) ;
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ SVN_RA_SVN_UNSPECIFIED_NUMBER ;
+ int authz_check_access_cb_func (TYPE_3__*) ;
+ int file_rev_handler ;
+ int log_command (TYPE_3__*,int *,int *,char*,int ) ;
+ int svn_error_clear (int *) ;
+ char* svn_fspath__join (int ,char const*,int *) ;
+ int svn_log__get_file_revs (char const*,int ,int ,scalar_t__,int *) ;
+ int svn_ra_svn__parse_tuple (int *,char*,char const**,int *,int *,scalar_t__*) ;
+ int svn_ra_svn__write_cmd_response (int *,int *,char*) ;
+ int * svn_ra_svn__write_word (int *,int *,char*) ;
+ char* svn_relpath_canonicalize (char const*,int *) ;
+ int * svn_repos_get_file_revs2 (int ,char const*,int ,int ,scalar_t__,int ,TYPE_5__*,int ,TYPE_4__*,int *) ;
+ int trivial_auth_request (int *,int *,TYPE_3__*) ;
 
 __attribute__((used)) static svn_error_t *
 get_file_revs(svn_ra_svn_conn_t *conn,
@@ -69,7 +69,7 @@ get_file_revs(svn_ra_svn_conn_t *conn,
   ab.server = b;
   ab.conn = conn;
 
-  /* Parse arguments. */
+
   SVN_ERR(svn_ra_svn__parse_tuple(params, "c(?r)(?r)?B",
                                   &path, &start_rev, &end_rev,
                                   &include_merged_revs_param));
@@ -88,7 +88,7 @@ get_file_revs(svn_ra_svn_conn_t *conn,
                                              pool)));
 
   frb.conn = conn;
-  frb.pool = NULL;
+  frb.pool = ((void*)0);
 
   err = svn_repos_get_file_revs2(b->repository->repos, full_path, start_rev,
                                  end_rev, include_merged_revisions,

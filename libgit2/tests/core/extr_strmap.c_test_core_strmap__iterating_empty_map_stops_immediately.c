@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_ITEROVER ; 
- int /*<<< orphan*/  cl_git_fail_with (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_table ; 
- int /*<<< orphan*/  git_strmap_iterate (int /*<<< orphan*/ *,int /*<<< orphan*/ ,size_t*,int /*<<< orphan*/ *) ; 
+ int GIT_ITEROVER ;
+ int cl_git_fail_with (int ,int ) ;
+ int g_table ;
+ int git_strmap_iterate (int *,int ,size_t*,int *) ;
 
 void test_core_strmap__iterating_empty_map_stops_immediately(void)
 {
-	size_t i = 0;
+ size_t i = 0;
 
-	cl_git_fail_with(git_strmap_iterate(NULL, g_table, &i, NULL), GIT_ITEROVER);
+ cl_git_fail_with(git_strmap_iterate(((void*)0), g_table, &i, ((void*)0)), GIT_ITEROVER);
 }

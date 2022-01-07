@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  atoi (char*) ; 
- int /*<<< orphan*/  pmcstat_skiplink ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+ int atoi (char*) ;
+ int pmcstat_skiplink ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 int
 pmcpl_ct_configure(char *opt)
 {
 
-	if (strncmp(opt, "skiplink=", 9) == 0) {
-		pmcstat_skiplink = atoi(opt+9);
-	} else
-		return (0);
+ if (strncmp(opt, "skiplink=", 9) == 0) {
+  pmcstat_skiplink = atoi(opt+9);
+ } else
+  return (0);
 
-	return (1);
+ return (1);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
 struct TYPE_14__ {int NumberOfSections; } ;
-struct TYPE_15__ {int SymbolsOffset; int StringsOffset; int SymbolsLength; int StringsLength; int SymbolsCount; char* Strings; scalar_t__ Symbols; scalar_t__ PointerToRawData; TYPE_1__ FileHeader; int /*<<< orphan*/  Name; scalar_t__ e_lfanew; } ;
-typedef  int /*<<< orphan*/  ROSSYM_INFO ;
-typedef  TYPE_2__ ROSSYM_HEADER ;
-typedef  int /*<<< orphan*/  ROSSYM_ENTRY ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_2__* PROSSYM_INFO ;
-typedef  scalar_t__ PROSSYM_ENTRY ;
-typedef  TYPE_2__* PIMAGE_SECTION_HEADER ;
-typedef  char* PCHAR ;
-typedef  int /*<<< orphan*/  IMAGE_SECTION_HEADER ;
-typedef  TYPE_2__ IMAGE_NT_HEADERS ;
-typedef  TYPE_2__ IMAGE_DOS_HEADER ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
+struct TYPE_15__ {int SymbolsOffset; int StringsOffset; int SymbolsLength; int StringsLength; int SymbolsCount; char* Strings; scalar_t__ Symbols; scalar_t__ PointerToRawData; TYPE_1__ FileHeader; int Name; scalar_t__ e_lfanew; } ;
+typedef int ROSSYM_INFO ;
+typedef TYPE_2__ ROSSYM_HEADER ;
+typedef int ROSSYM_ENTRY ;
+typedef int PVOID ;
+typedef TYPE_2__* PROSSYM_INFO ;
+typedef scalar_t__ PROSSYM_ENTRY ;
+typedef TYPE_2__* PIMAGE_SECTION_HEADER ;
+typedef char* PCHAR ;
+typedef int IMAGE_SECTION_HEADER ;
+typedef TYPE_2__ IMAGE_NT_HEADERS ;
+typedef TYPE_2__ IMAGE_DOS_HEADER ;
+typedef int BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ IMAGE_FIRST_SECTION (TYPE_2__*) ; 
- int IMAGE_SIZEOF_SHORT_NAME ; 
- int /*<<< orphan*/  ROSSYM_IS_VALID_DOS_HEADER (TYPE_2__*) ; 
- int /*<<< orphan*/  ROSSYM_IS_VALID_NT_HEADERS (TYPE_2__*) ; 
- int /*<<< orphan*/  ROSSYM_SECTION_NAME ; 
- TYPE_2__* RosSymAllocMem (int) ; 
- int /*<<< orphan*/  RosSymFreeMem (TYPE_2__*) ; 
- int /*<<< orphan*/  RosSymReadFile (int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- int /*<<< orphan*/  RosSymSeekFile (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ memcmp (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strncpy (char*,int /*<<< orphan*/ ,int) ; 
+
+ int DPRINT (char*,int ) ;
+ int DPRINT1 (char*,...) ;
+ int FALSE ;
+ scalar_t__ IMAGE_FIRST_SECTION (TYPE_2__*) ;
+ int IMAGE_SIZEOF_SHORT_NAME ;
+ int ROSSYM_IS_VALID_DOS_HEADER (TYPE_2__*) ;
+ int ROSSYM_IS_VALID_NT_HEADERS (TYPE_2__*) ;
+ int ROSSYM_SECTION_NAME ;
+ TYPE_2__* RosSymAllocMem (int) ;
+ int RosSymFreeMem (TYPE_2__*) ;
+ int RosSymReadFile (int ,TYPE_2__*,int) ;
+ int RosSymSeekFile (int ,scalar_t__) ;
+ int TRUE ;
+ scalar_t__ memcmp (char*,int ,int) ;
+ int strncpy (char*,int ,int) ;
 
 BOOLEAN
 RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
@@ -54,7 +54,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
   char SectionName[IMAGE_SIZEOF_SHORT_NAME];
   ROSSYM_HEADER RosSymHeader;
 
-  /* Load DOS header */
+
   if (! RosSymReadFile(FileContext, &DosHeader, sizeof(IMAGE_DOS_HEADER)))
     {
       DPRINT1("Failed to read DOS header\n");
@@ -66,7 +66,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
       return FALSE;
     }
 
-  /* Load NT headers */
+
   if (! RosSymSeekFile(FileContext, DosHeader.e_lfanew))
     {
       DPRINT1("Failed seeking to NT headers\n");
@@ -83,7 +83,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
       return FALSE;
     }
 
-  /* Load section headers */
+
   if (! RosSymSeekFile(FileContext, (char *) IMAGE_FIRST_SECTION(&NtHeaders) -
                                     (char *) &NtHeaders + DosHeader.e_lfanew))
     {
@@ -92,7 +92,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
     }
   SectionHeaders = RosSymAllocMem(NtHeaders.FileHeader.NumberOfSections
                                   * sizeof(IMAGE_SECTION_HEADER));
-  if (NULL == SectionHeaders)
+  if (((void*)0) == SectionHeaders)
     {
       DPRINT1("Failed to allocate memory for %u section headers\n",
               NtHeaders.FileHeader.NumberOfSections);
@@ -107,7 +107,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
       return FALSE;
     }
 
-  /* Search for the section header */
+
   strncpy(SectionName, ROSSYM_SECTION_NAME, IMAGE_SIZEOF_SHORT_NAME);
   SectionHeader = SectionHeaders;
   for (SectionIndex = 0; SectionIndex < NtHeaders.FileHeader.NumberOfSections; SectionIndex++)
@@ -125,7 +125,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
       return FALSE;
     }
 
-  /* Load rossym header */
+
   if (! RosSymSeekFile(FileContext, SectionHeader->PointerToRawData))
     {
       RosSymFreeMem(SectionHeaders);
@@ -148,7 +148,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
 
   *RosSymInfo = RosSymAllocMem(sizeof(ROSSYM_INFO) - sizeof(ROSSYM_HEADER)
                                + RosSymHeader.StringsOffset + RosSymHeader.StringsLength + 1);
-  if (NULL == *RosSymInfo)
+  if (((void*)0) == *RosSymInfo)
     {
       DPRINT1("Failed to allocate memory for rossym\n");
       return FALSE;
@@ -166,7 +166,7 @@ RosSymCreateFromFile(PVOID FileContext, PROSSYM_INFO *RosSymInfo)
       DPRINT1("Failed to read rossym headers\n");
       return FALSE;
     }
-  /* Make sure the last string is null terminated, we allocated an extra byte for that */
+
   (*RosSymInfo)->Strings[(*RosSymInfo)->StringsLength] = '\0';
 
   return TRUE;

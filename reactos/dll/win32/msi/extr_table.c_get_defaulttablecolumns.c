@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t UINT ;
-typedef  int /*<<< orphan*/  MSIDATABASE ;
-typedef  int /*<<< orphan*/  MSICOLUMNINFO ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  size_t DWORD ;
 
-/* Variables and functions */
- size_t ERROR_FUNCTION_FAILED ; 
- size_t ERROR_SUCCESS ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * _Columns_cols ; 
- int /*<<< orphan*/ * _Tables_cols ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmpW (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  szColumns ; 
- int /*<<< orphan*/  szTables ; 
- int /*<<< orphan*/  table_calc_column_offsets (int /*<<< orphan*/ *,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef size_t UINT ;
+typedef int MSIDATABASE ;
+typedef int MSICOLUMNINFO ;
+typedef int LPCWSTR ;
+typedef size_t DWORD ;
+
+
+ size_t ERROR_FUNCTION_FAILED ;
+ size_t ERROR_SUCCESS ;
+ int TRACE (char*,int ) ;
+ int * _Columns_cols ;
+ int * _Tables_cols ;
+ int debugstr_w (int ) ;
+ int strcmpW (int ,int ) ;
+ int szColumns ;
+ int szTables ;
+ int table_calc_column_offsets (int *,int *,size_t) ;
 
 __attribute__((used)) static UINT get_defaulttablecolumns( MSIDATABASE *db, LPCWSTR name, MSICOLUMNINFO *colinfo, UINT *sz )
 {

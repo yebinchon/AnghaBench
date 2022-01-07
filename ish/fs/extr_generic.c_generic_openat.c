@@ -1,63 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct statbuf {int mode; int /*<<< orphan*/  rdev; int /*<<< orphan*/  inode; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct statbuf {int mode; int rdev; int inode; } ;
 struct mount {TYPE_1__* fs; } ;
-struct fd {int type; int flags; int /*<<< orphan*/  inode; struct mount* mount; } ;
+struct fd {int type; int flags; int inode; struct mount* mount; } ;
 struct TYPE_2__ {int (* fstat ) (struct fd*,struct statbuf*) ;struct fd* (* open ) (struct mount*,char*,int,int) ;} ;
 
-/* Variables and functions */
- int AC_R ; 
- int AC_W ; 
- int DEV_BLOCK ; 
- int DEV_CHAR ; 
- struct fd* ERR_PTR (int) ; 
- scalar_t__ IS_ERR (struct fd*) ; 
- int MAX_PATH ; 
- int N_PARENT_DIR_WRITE ; 
- int N_SYMLINK_FOLLOW ; 
- int O_CREAT_ ; 
- int O_DIRECTORY_ ; 
- int O_RDWR_ ; 
- int O_WRONLY_ ; 
- int S_IFMT ; 
- scalar_t__ S_ISBLK (int) ; 
- scalar_t__ S_ISCHR (int) ; 
- scalar_t__ S_ISDIR (int) ; 
- int /*<<< orphan*/  S_ISLNK (int) ; 
- scalar_t__ S_ISSOCK (int) ; 
- int _EINVAL ; 
- int _EISDIR ; 
- int _ENOTDIR ; 
- int _ENXIO ; 
- int access_check (struct statbuf*,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  dev_major (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_minor (int /*<<< orphan*/ ) ; 
- int dev_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,struct fd*) ; 
- int /*<<< orphan*/  fd_close (struct fd*) ; 
- struct mount* find_mount_and_trim_path (char*) ; 
- int /*<<< orphan*/  inode_get (struct mount*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mount_release (struct mount*) ; 
- int path_normalize (struct fd*,char const*,char*,int) ; 
- struct fd* stub1 (struct mount*,char*,int,int) ; 
- int stub2 (struct fd*,struct statbuf*) ; 
+
+ int AC_R ;
+ int AC_W ;
+ int DEV_BLOCK ;
+ int DEV_CHAR ;
+ struct fd* ERR_PTR (int) ;
+ scalar_t__ IS_ERR (struct fd*) ;
+ int MAX_PATH ;
+ int N_PARENT_DIR_WRITE ;
+ int N_SYMLINK_FOLLOW ;
+ int O_CREAT_ ;
+ int O_DIRECTORY_ ;
+ int O_RDWR_ ;
+ int O_WRONLY_ ;
+ int S_IFMT ;
+ scalar_t__ S_ISBLK (int) ;
+ scalar_t__ S_ISCHR (int) ;
+ scalar_t__ S_ISDIR (int) ;
+ int S_ISLNK (int) ;
+ scalar_t__ S_ISSOCK (int) ;
+ int _EINVAL ;
+ int _EISDIR ;
+ int _ENOTDIR ;
+ int _ENXIO ;
+ int access_check (struct statbuf*,int) ;
+ int assert (int) ;
+ int dev_major (int ) ;
+ int dev_minor (int ) ;
+ int dev_open (int ,int ,int,struct fd*) ;
+ int fd_close (struct fd*) ;
+ struct mount* find_mount_and_trim_path (char*) ;
+ int inode_get (struct mount*,int ) ;
+ int mount_release (struct mount*) ;
+ int path_normalize (struct fd*,char const*,char*,int) ;
+ struct fd* stub1 (struct mount*,char*,int,int) ;
+ int stub2 (struct fd*,struct statbuf*) ;
 
 struct fd *generic_openat(struct fd *at, const char *path_raw, int flags, int mode) {
     if (flags & O_RDWR_ && flags & O_WRONLY_)
         return ERR_PTR(_EINVAL);
 
-    // TODO really, really, seriously reconsider what I'm doing with the strings
+
     char path[MAX_PATH];
     int err = path_normalize(at, path_raw, path, N_SYMLINK_FOLLOW |
             (flags & O_CREAT_ ? N_PARENT_DIR_WRITE : 0));
@@ -66,8 +66,8 @@ struct fd *generic_openat(struct fd *at, const char *path_raw, int flags, int mo
     struct mount *mount = find_mount_and_trim_path(path);
     struct fd *fd = mount->fs->open(mount, path, flags, mode);
     if (IS_ERR(fd)) {
-        // if an error happens after this point, fd_close will release the
-        // mount, but right now we need to do it manually
+
+
         mount_release(mount);
         return fd;
     }
@@ -89,7 +89,7 @@ struct fd *generic_openat(struct fd *at, const char *path_raw, int flags, int mo
     if (err < 0)
         goto error;
 
-    assert(!S_ISLNK(fd->type)); // would mean path_normalize didn't do its job
+    assert(!S_ISLNK(fd->type));
     if (S_ISBLK(fd->type) || S_ISCHR(fd->type)) {
         int type;
         if (S_ISBLK(fd->type))

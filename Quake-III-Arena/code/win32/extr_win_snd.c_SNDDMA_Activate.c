@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_4__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  hWnd; } ;
+
+
+typedef struct TYPE_7__ TYPE_4__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int hWnd; } ;
 struct TYPE_6__ {TYPE_1__* lpVtbl; } ;
-struct TYPE_5__ {scalar_t__ (* SetCooperativeLevel ) (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
+struct TYPE_5__ {scalar_t__ (* SetCooperativeLevel ) (TYPE_2__*,int ,int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Com_Printf (char*) ; 
- int /*<<< orphan*/  DSSCL_PRIORITY ; 
- scalar_t__ DS_OK ; 
- int /*<<< orphan*/  SNDDMA_Shutdown () ; 
- TYPE_4__ g_wv ; 
- TYPE_2__* pDS ; 
- scalar_t__ stub1 (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int Com_Printf (char*) ;
+ int DSSCL_PRIORITY ;
+ scalar_t__ DS_OK ;
+ int SNDDMA_Shutdown () ;
+ TYPE_4__ g_wv ;
+ TYPE_2__* pDS ;
+ scalar_t__ stub1 (TYPE_2__*,int ,int ) ;
 
 void SNDDMA_Activate( void ) {
-	if ( !pDS ) {
-		return;
-	}
+ if ( !pDS ) {
+  return;
+ }
 
-	if ( DS_OK != pDS->lpVtbl->SetCooperativeLevel( pDS, g_wv.hWnd, DSSCL_PRIORITY ) )	{
-		Com_Printf ("sound SetCooperativeLevel failed\n");
-		SNDDMA_Shutdown ();
-	}
+ if ( DS_OK != pDS->lpVtbl->SetCooperativeLevel( pDS, g_wv.hWnd, DSSCL_PRIORITY ) ) {
+  Com_Printf ("sound SetCooperativeLevel failed\n");
+  SNDDMA_Shutdown ();
+ }
 }

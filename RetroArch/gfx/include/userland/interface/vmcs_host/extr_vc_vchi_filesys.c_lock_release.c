@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  filesys_lock; int /*<<< orphan*/  open_handle; int /*<<< orphan*/  initialised; } ;
 
-/* Variables and functions */
- TYPE_1__ vc_filesys_client ; 
- int /*<<< orphan*/  vchi_service_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vcos_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int filesys_lock; int open_handle; int initialised; } ;
+
+
+ TYPE_1__ vc_filesys_client ;
+ int vchi_service_release (int ) ;
+ int vcos_assert (int ) ;
+ int vcos_mutex_unlock (int *) ;
 
 __attribute__((used)) static __inline void lock_release (void) {
    vcos_assert(vc_filesys_client.initialised);

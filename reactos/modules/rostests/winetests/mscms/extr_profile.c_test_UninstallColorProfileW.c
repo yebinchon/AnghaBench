@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dest ;
-typedef  char WCHAR ;
-typedef  scalar_t__ HANDLE ;
-typedef  int DWORD ;
-typedef  int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFileA (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int ERROR_ACCESS_DENIED ; 
- int /*<<< orphan*/  FALSE ; 
- int GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MSCMS_basenameW (char*,char*) ; 
- int /*<<< orphan*/  OPEN_EXISTING ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TRUE ; 
- int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lstrcatW (char*,char*) ; 
- int /*<<< orphan*/ * machineW ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pGetColorDirectoryW (int /*<<< orphan*/ *,char*,int*) ; 
- int pInstallColorProfileW (int /*<<< orphan*/ *,char*) ; 
- int pUninstallColorProfileW (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef int dest ;
+typedef char WCHAR ;
+typedef scalar_t__ HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CP_ACP ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFileA (char*,int ,int ,int *,int ,int ,int *) ;
+ int ERROR_ACCESS_DENIED ;
+ int FALSE ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int MAX_PATH ;
+ int MSCMS_basenameW (char*,char*) ;
+ int OPEN_EXISTING ;
+ int SetLastError (int) ;
+ int TRUE ;
+ int WideCharToMultiByte (int ,int ,char*,int,char*,int,int *,int *) ;
+ int lstrcatW (char*,char*) ;
+ int * machineW ;
+ int ok (int,char*,int) ;
+ int pGetColorDirectoryW (int *,char*,int*) ;
+ int pInstallColorProfileW (int *,char*) ;
+ int pUninstallColorProfileW (int *,char*,int ) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_UninstallColorProfileW( WCHAR *testprofileW )
 {
     BOOL ret;
 
-    /* Parameter checks */
 
-    ret = pUninstallColorProfileW( NULL, NULL, FALSE );
+
+    ret = pUninstallColorProfileW( ((void*)0), ((void*)0), FALSE );
     ok( !ret, "UninstallColorProfileW() succeeded (%d)\n", GetLastError() );
 
-    ret = pUninstallColorProfileW( machineW, NULL, FALSE );
+    ret = pUninstallColorProfileW( machineW, ((void*)0), FALSE );
     ok( !ret, "UninstallColorProfileW() succeeded (%d)\n", GetLastError() );
 
-    /* Functional checks */
+
 
     if (testprofileW)
     {
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_UninstallColorProfileW( WCHAR *testprofil
         int bytes_copied;
 
         SetLastError(0xdeadbeef);
-        ret = pInstallColorProfileW( NULL, testprofileW );
+        ret = pInstallColorProfileW( ((void*)0), testprofileW );
         if (!ret && (GetLastError() == ERROR_ACCESS_DENIED))
         {
             skip("Not enough rights for InstallColorProfileW\n");
@@ -70,7 +70,7 @@ __attribute__((used)) static void test_UninstallColorProfileW( WCHAR *testprofil
         }
         ok( ret, "InstallColorProfileW() failed (%d)\n", GetLastError() );
 
-        ret = pGetColorDirectoryW( NULL, dest, &size );
+        ret = pGetColorDirectoryW( ((void*)0), dest, &size );
         ok( ret, "GetColorDirectoryW() failed (%d)\n", GetLastError() );
 
         MSCMS_basenameW( testprofileW, base );
@@ -78,13 +78,13 @@ __attribute__((used)) static void test_UninstallColorProfileW( WCHAR *testprofil
         lstrcatW( dest, slash );
         lstrcatW( dest, base );
 
-        ret = pUninstallColorProfileW( NULL, dest, TRUE );
+        ret = pUninstallColorProfileW( ((void*)0), dest, TRUE );
         ok( ret, "UninstallColorProfileW() failed (%d)\n", GetLastError() );
 
-        bytes_copied = WideCharToMultiByte(CP_ACP, 0, dest, -1, destA, MAX_PATH, NULL, NULL);
+        bytes_copied = WideCharToMultiByte(CP_ACP, 0, dest, -1, destA, MAX_PATH, ((void*)0), ((void*)0));
         ok( bytes_copied > 0 , "WideCharToMultiByte() returns %d\n", bytes_copied);
-        /* Check if the profile is really gone */
-        handle = CreateFileA( destA, 0 , 0, NULL, OPEN_EXISTING, 0, NULL );
+
+        handle = CreateFileA( destA, 0 , 0, ((void*)0), OPEN_EXISTING, 0, ((void*)0) );
         ok( handle == INVALID_HANDLE_VALUE, "Found the profile (%d)\n", GetLastError() );
         CloseHandle( handle );
     }

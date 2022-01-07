@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ symindex ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ symindex ;
 struct TYPE_3__ {char* name; } ;
-typedef  TYPE_1__ carsym ;
-typedef  scalar_t__ bfd_boolean ;
-typedef  int /*<<< orphan*/  bfd ;
+typedef TYPE_1__ carsym ;
+typedef scalar_t__ bfd_boolean ;
+typedef int bfd ;
 
-/* Variables and functions */
- scalar_t__ BFD_NO_MORE_SYMBOLS ; 
- scalar_t__ FALSE ; 
- scalar_t__ TRUE ; 
- char* _ (char*) ; 
- int /*<<< orphan*/  bfd_fatal (char*) ; 
- int /*<<< orphan*/ * bfd_get_elt_at_index (int /*<<< orphan*/ *,scalar_t__) ; 
- char* bfd_get_filename (int /*<<< orphan*/ *) ; 
- scalar_t__ bfd_get_next_mapent (int /*<<< orphan*/ *,scalar_t__,TYPE_1__**) ; 
- int /*<<< orphan*/  print_symname (char*,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ scalar_t__ BFD_NO_MORE_SYMBOLS ;
+ scalar_t__ FALSE ;
+ scalar_t__ TRUE ;
+ char* _ (char*) ;
+ int bfd_fatal (char*) ;
+ int * bfd_get_elt_at_index (int *,scalar_t__) ;
+ char* bfd_get_filename (int *) ;
+ scalar_t__ bfd_get_next_mapent (int *,scalar_t__,TYPE_1__**) ;
+ int print_symname (char*,char*,int *) ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 print_symdef_entry (bfd *abfd)
@@ -42,17 +42,17 @@ print_symdef_entry (bfd *abfd)
     {
       bfd *elt;
       if (!everprinted)
-	{
-	  printf (_("\nArchive index:\n"));
-	  everprinted = TRUE;
-	}
+ {
+   printf (_("\nArchive index:\n"));
+   everprinted = TRUE;
+ }
       elt = bfd_get_elt_at_index (abfd, idx);
-      if (elt == NULL)
-	bfd_fatal ("bfd_get_elt_at_index");
-      if (thesym->name != (char *) NULL)
-	{
-	  print_symname ("%s", thesym->name, abfd);
-	  printf (" in %s\n", bfd_get_filename (elt));
-	}
+      if (elt == ((void*)0))
+ bfd_fatal ("bfd_get_elt_at_index");
+      if (thesym->name != (char *) ((void*)0))
+ {
+   print_symname ("%s", thesym->name, abfd);
+   printf (" in %s\n", bfd_get_filename (elt));
+ }
     }
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_3__ {int /*<<< orphan*/  time_interleaving; int /*<<< orphan*/  segment_count; int /*<<< orphan*/  code_rate; int /*<<< orphan*/  modulation; } ;
-typedef  TYPE_1__ isdbt_layer_t ;
-typedef  int /*<<< orphan*/  dvb_device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DTV_DELIVERY_SYSTEM ; 
- unsigned int DTV_ISDBT_LAYERA_FEC ; 
- scalar_t__ DTV_ISDBT_LAYERA_MODULATION ; 
- scalar_t__ DTV_ISDBT_LAYERA_SEGMENT_COUNT ; 
- scalar_t__ DTV_ISDBT_LAYERA_TIME_INTERLEAVING ; 
- unsigned int DTV_ISDBT_LAYERB_FEC ; 
- int /*<<< orphan*/  QAM_AUTO ; 
- int /*<<< orphan*/  SYS_ISDBT ; 
- int /*<<< orphan*/  dvb_parse_fec (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dvb_parse_modulation (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int dvb_set_props (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_3__ {int time_interleaving; int segment_count; int code_rate; int modulation; } ;
+typedef TYPE_1__ isdbt_layer_t ;
+typedef int dvb_device_t ;
+
+
+ int DTV_DELIVERY_SYSTEM ;
+ unsigned int DTV_ISDBT_LAYERA_FEC ;
+ scalar_t__ DTV_ISDBT_LAYERA_MODULATION ;
+ scalar_t__ DTV_ISDBT_LAYERA_SEGMENT_COUNT ;
+ scalar_t__ DTV_ISDBT_LAYERA_TIME_INTERLEAVING ;
+ unsigned int DTV_ISDBT_LAYERB_FEC ;
+ int QAM_AUTO ;
+ int SYS_ISDBT ;
+ int dvb_parse_fec (int ) ;
+ int dvb_parse_modulation (int ,int ) ;
+ int dvb_set_props (int *,int,int ,int ,unsigned int,int ,scalar_t__,int ,scalar_t__,int ,scalar_t__,int ) ;
 
 __attribute__((used)) static int dvb_set_isdbt_layer (dvb_device_t *d, unsigned num,
                                 const isdbt_layer_t *l)

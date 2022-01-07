@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct field_t {int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  bitstr_t ;
 
-/* Variables and functions */
- int H323_ERROR_NONE ; 
- int /*<<< orphan*/  PRINT (char*,int,char*,int /*<<< orphan*/ ) ; 
- int TAB_SIZE ; 
+
+
+
+struct field_t {int name; } ;
+typedef int bitstr_t ;
+
+
+ int H323_ERROR_NONE ;
+ int PRINT (char*,int,char*,int ) ;
+ int TAB_SIZE ;
 
 __attribute__((used)) static int decode_nul(bitstr_t *bs, const struct field_t *f,
                       char *base, int level)
 {
-	PRINT("%*.s%s\n", level * TAB_SIZE, " ", f->name);
+ PRINT("%*.s%s\n", level * TAB_SIZE, " ", f->name);
 
-	return H323_ERROR_NONE;
+ return H323_ERROR_NONE;
 }

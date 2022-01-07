@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_23__   TYPE_7__ ;
-typedef  struct TYPE_22__   TYPE_4__ ;
-typedef  struct TYPE_21__   TYPE_3__ ;
-typedef  struct TYPE_20__   TYPE_2__ ;
-typedef  struct TYPE_19__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * sds ;
-struct TYPE_20__ {int argc; int /*<<< orphan*/  flags; TYPE_7__** argv; } ;
-typedef  TYPE_2__ client ;
-struct TYPE_23__ {int /*<<< orphan*/  ptr; } ;
-struct TYPE_22__ {int lua_kill; scalar_t__ lua_write_dirty; TYPE_1__* lua_caller; int /*<<< orphan*/  lua; int /*<<< orphan*/  lua_scripts; int /*<<< orphan*/  dirty; } ;
-struct TYPE_21__ {int /*<<< orphan*/  ok; int /*<<< orphan*/  czero; int /*<<< orphan*/  cone; } ;
+
+
+typedef struct TYPE_23__ TYPE_7__ ;
+typedef struct TYPE_22__ TYPE_4__ ;
+typedef struct TYPE_21__ TYPE_3__ ;
+typedef struct TYPE_20__ TYPE_2__ ;
+typedef struct TYPE_19__ TYPE_1__ ;
+
+
+typedef int * sds ;
+struct TYPE_20__ {int argc; int flags; TYPE_7__** argv; } ;
+typedef TYPE_2__ client ;
+struct TYPE_23__ {int ptr; } ;
+struct TYPE_22__ {int lua_kill; scalar_t__ lua_write_dirty; TYPE_1__* lua_caller; int lua; int lua_scripts; int dirty; } ;
+struct TYPE_21__ {int ok; int czero; int cone; } ;
 struct TYPE_19__ {int flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLIENT_LUA_DEBUG_SYNC ; 
- int CLIENT_MASTER ; 
- int PROPAGATE_AOF ; 
- int PROPAGATE_REPL ; 
- int /*<<< orphan*/  addReply (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplyArrayLen (TYPE_2__*,int) ; 
- int /*<<< orphan*/  addReplyBulkCBuffer (TYPE_2__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  addReplyError (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  addReplyHelp (TYPE_2__*,char const**) ; 
- int /*<<< orphan*/  addReplySds (TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  addReplySubcommandSyntaxError (TYPE_2__*) ; 
- scalar_t__ clientHasPendingReplies (TYPE_2__*) ; 
- scalar_t__ dictFind (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  forceCommandPropagation (TYPE_2__*,int) ; 
- int /*<<< orphan*/  ldbDisable (TYPE_2__*) ; 
- int /*<<< orphan*/  ldbEnable (TYPE_2__*) ; 
- int /*<<< orphan*/ * luaCreateFunction (TYPE_2__*,int /*<<< orphan*/ ,TYPE_7__*) ; 
- int /*<<< orphan*/  replicationScriptCacheFlush () ; 
- int /*<<< orphan*/  scriptingReset () ; 
- int /*<<< orphan*/  sdsnew (char*) ; 
- TYPE_4__ server ; 
- TYPE_3__ shared ; 
- int /*<<< orphan*/  strcasecmp (int /*<<< orphan*/ ,char*) ; 
+
+ int CLIENT_LUA_DEBUG_SYNC ;
+ int CLIENT_MASTER ;
+ int PROPAGATE_AOF ;
+ int PROPAGATE_REPL ;
+ int addReply (TYPE_2__*,int ) ;
+ int addReplyArrayLen (TYPE_2__*,int) ;
+ int addReplyBulkCBuffer (TYPE_2__*,int *,int) ;
+ int addReplyError (TYPE_2__*,char*) ;
+ int addReplyHelp (TYPE_2__*,char const**) ;
+ int addReplySds (TYPE_2__*,int ) ;
+ int addReplySubcommandSyntaxError (TYPE_2__*) ;
+ scalar_t__ clientHasPendingReplies (TYPE_2__*) ;
+ scalar_t__ dictFind (int ,int ) ;
+ int forceCommandPropagation (TYPE_2__*,int) ;
+ int ldbDisable (TYPE_2__*) ;
+ int ldbEnable (TYPE_2__*) ;
+ int * luaCreateFunction (TYPE_2__*,int ,TYPE_7__*) ;
+ int replicationScriptCacheFlush () ;
+ int scriptingReset () ;
+ int sdsnew (char*) ;
+ TYPE_4__ server ;
+ TYPE_3__ shared ;
+ int strcasecmp (int ,char*) ;
 
 void scriptCommand(client *c) {
     if (c->argc == 2 && !strcasecmp(c->argv[1]->ptr,"help")) {
@@ -56,14 +56,14 @@ void scriptCommand(client *c) {
 "FLUSH -- Flush the Lua scripts cache. Very dangerous on replicas.",
 "KILL -- Kill the currently executing Lua script.",
 "LOAD <script> -- Load a script into the scripts cache, without executing it.",
-NULL
+((void*)0)
         };
         addReplyHelp(c, help);
     } else if (c->argc == 2 && !strcasecmp(c->argv[1]->ptr,"flush")) {
         scriptingReset();
         addReply(c,shared.ok);
         replicationScriptCacheFlush();
-        server.dirty++; /* Propagating this command is a good idea. */
+        server.dirty++;
     } else if (c->argc >= 2 && !strcasecmp(c->argv[1]->ptr,"exists")) {
         int j;
 
@@ -76,11 +76,11 @@ NULL
         }
     } else if (c->argc == 3 && !strcasecmp(c->argv[1]->ptr,"load")) {
         sds sha = luaCreateFunction(c,server.lua,c->argv[2]);
-        if (sha == NULL) return; /* The error was sent by luaCreateFunction(). */
+        if (sha == ((void*)0)) return;
         addReplyBulkCBuffer(c,sha,40);
         forceCommandPropagation(c,PROPAGATE_REPL|PROPAGATE_AOF);
     } else if (c->argc == 2 && !strcasecmp(c->argv[1]->ptr,"kill")) {
-        if (server.lua_caller == NULL) {
+        if (server.lua_caller == ((void*)0)) {
             addReplySds(c,sdsnew("-NOTBUSY No scripts in execution right now.\r\n"));
         } else if (server.lua_caller->flags & CLIENT_MASTER) {
             addReplySds(c,sdsnew("-UNKILLABLE The busy script was sent by a master instance in the context of replication and cannot be killed.\r\n"));

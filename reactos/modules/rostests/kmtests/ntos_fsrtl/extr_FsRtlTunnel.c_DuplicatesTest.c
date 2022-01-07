@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_8__ {int MaximumLength; scalar_t__ Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  TUNNEL ;
-typedef  scalar_t__ PVOID ;
-typedef  scalar_t__ PTUNNEL ;
+typedef TYPE_1__ UNICODE_STRING ;
+typedef int ULONG ;
+typedef int TUNNEL ;
+typedef scalar_t__ PVOID ;
+typedef scalar_t__ PTUNNEL ;
 
-/* Variables and functions */
- void* ExAllocatePool (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ExFreePool (scalar_t__) ; 
- int /*<<< orphan*/  FsRtlAddToTunnelCache (scalar_t__,int,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,int,int*) ; 
- int /*<<< orphan*/  FsRtlDeleteKeyFromTunnelCache (scalar_t__,int) ; 
- int /*<<< orphan*/  FsRtlDeleteTunnelCache (scalar_t__) ; 
- int /*<<< orphan*/  FsRtlFindInTunnelCache (scalar_t__,int,TYPE_1__*,TYPE_1__*,TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  FsRtlInitializeTunnelCache (scalar_t__) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- int /*<<< orphan*/  PagedPool ; 
- int /*<<< orphan*/  RtlInitUnicodeString (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  RtlZeroMemory (scalar_t__,int) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*) ; 
- int /*<<< orphan*/  ok_bool_false (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_bool_true (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ok_eq_pointer (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ok_eq_uint (int,int) ; 
- int /*<<< orphan*/  ok_eq_ulong (int,int) ; 
+
+ void* ExAllocatePool (int ,int) ;
+ int ExFreePool (scalar_t__) ;
+ int FsRtlAddToTunnelCache (scalar_t__,int,TYPE_1__*,TYPE_1__*,int ,int,int*) ;
+ int FsRtlDeleteKeyFromTunnelCache (scalar_t__,int) ;
+ int FsRtlDeleteTunnelCache (scalar_t__) ;
+ int FsRtlFindInTunnelCache (scalar_t__,int,TYPE_1__*,TYPE_1__*,TYPE_1__*,int*,int*) ;
+ int FsRtlInitializeTunnelCache (scalar_t__) ;
+ int NonPagedPool ;
+ int PagedPool ;
+ int RtlInitUnicodeString (TYPE_1__*,char*) ;
+ int RtlZeroMemory (scalar_t__,int) ;
+ int TRUE ;
+ int ok (int,char*) ;
+ int ok_bool_false (int ,char*) ;
+ int ok_bool_true (int ,char*) ;
+ int ok_eq_pointer (scalar_t__,scalar_t__) ;
+ int ok_eq_uint (int,int) ;
+ int ok_eq_ulong (int,int) ;
 
 __attribute__((used)) static
 void DuplicatesTest()

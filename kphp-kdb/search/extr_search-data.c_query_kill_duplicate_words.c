@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct query_nodes_list {TYPE_1__* v; struct query_nodes_list* next; } ;
-struct TYPE_8__ {scalar_t__ op; scalar_t__ word; struct TYPE_8__* right; struct TYPE_8__* left; int /*<<< orphan*/  frequency; struct query_nodes_list* head; } ;
-typedef  TYPE_1__ query_node_t ;
-typedef  int /*<<< orphan*/  a ;
+struct TYPE_8__ {scalar_t__ op; scalar_t__ word; struct TYPE_8__* right; struct TYPE_8__* left; int frequency; struct query_nodes_list* head; } ;
+typedef TYPE_1__ query_node_t ;
+typedef int a ;
 
-/* Variables and functions */
- scalar_t__ MAX_QUERY_NODES ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cmp_query_node ; 
- int /*<<< orphan*/  get_word_frequency (scalar_t__) ; 
- int qn_and ; 
- scalar_t__ qn_cum_and ; 
- scalar_t__ qn_cum_or ; 
- int qn_or ; 
- scalar_t__ qn_word ; 
- int /*<<< orphan*/  qsort (TYPE_1__**,int,int,int /*<<< orphan*/ ) ; 
- TYPE_1__* query_nodes_kill_dup_buffer ; 
- scalar_t__ tot_query_nodes_kill_dup ; 
- int /*<<< orphan*/  zzfree (TYPE_1__**,int) ; 
- TYPE_1__** zzmalloc (int) ; 
+
+ scalar_t__ MAX_QUERY_NODES ;
+ int assert (int) ;
+ int cmp_query_node ;
+ int get_word_frequency (scalar_t__) ;
+ int qn_and ;
+ scalar_t__ qn_cum_and ;
+ scalar_t__ qn_cum_or ;
+ int qn_or ;
+ scalar_t__ qn_word ;
+ int qsort (TYPE_1__**,int,int,int ) ;
+ TYPE_1__* query_nodes_kill_dup_buffer ;
+ scalar_t__ tot_query_nodes_kill_dup ;
+ int zzfree (TYPE_1__**,int) ;
+ TYPE_1__** zzmalloc (int) ;
 
 __attribute__((used)) static query_node_t *query_kill_duplicate_words (query_node_t *X) {
   if (!X) { return 0; }
@@ -54,7 +54,7 @@ __attribute__((used)) static query_node_t *query_kill_duplicate_words (query_nod
     }
     qsort (a, k, sizeof (a[0]), cmp_query_node);
     int m = 0;
-    /* remove duplicate words */
+
     for (i = 1; i < k; i++) {
       if (a[i]->op != qn_word || a[i]->word != a[m]->word) {
         a[++m] = a[i];

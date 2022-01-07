@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  msg ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DTLS1_VERSION ; 
- int /*<<< orphan*/  DTLS_client_method () ; 
- int /*<<< orphan*/  DTLS_server_method () ; 
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_has_pending (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_pending (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_read_ex (int /*<<< orphan*/ *,char*,int,size_t*) ; 
- int /*<<< orphan*/  SSL_write_ex (int /*<<< orphan*/ *,char*,int,size_t*) ; 
- int /*<<< orphan*/  TEST_false (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TEST_size_t_eq (size_t,int) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  privkey ; 
+
+
+
+typedef int msg ;
+typedef int buf ;
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int DTLS1_VERSION ;
+ int DTLS_client_method () ;
+ int DTLS_server_method () ;
+ int SSL_CTX_free (int *) ;
+ int SSL_ERROR_NONE ;
+ int SSL_free (int *) ;
+ int SSL_has_pending (int *) ;
+ int SSL_pending (int *) ;
+ int SSL_read_ex (int *,char*,int,size_t*) ;
+ int SSL_write_ex (int *,char*,int,size_t*) ;
+ int TEST_false (int ) ;
+ int TEST_int_eq (int ,int) ;
+ int TEST_size_t_eq (size_t,int) ;
+ int TEST_true (int ) ;
+ int TLS1_VERSION ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int privkey ;
 
 __attribute__((used)) static int test_ssl_pending(int tst)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
     char msg[] = "A test message";
     char buf[5];
@@ -55,19 +55,19 @@ __attribute__((used)) static int test_ssl_pending(int tst)
                                            &sctx, &cctx, cert, privkey)))
             goto end;
     } else {
-#ifndef OPENSSL_NO_DTLS
+
         if (!TEST_true(create_ssl_ctx_pair(DTLS_server_method(),
                                            DTLS_client_method(),
                                            DTLS1_VERSION, 0,
                                            &sctx, &cctx, cert, privkey)))
             goto end;
-#else
-        return 1;
-#endif
+
+
+
     }
 
     if (!TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL))
+                                             ((void*)0), ((void*)0)))
             || !TEST_true(create_ssl_connection(serverssl, clientssl,
                                                 SSL_ERROR_NONE)))
         goto end;

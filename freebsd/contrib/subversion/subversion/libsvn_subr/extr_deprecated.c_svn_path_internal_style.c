@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- char const* svn_dirent_internal_style (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_path_is_url (char const*) ; 
- char const* svn_uri_canonicalize (char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int apr_pool_t ;
+
+
+ char const* svn_dirent_internal_style (char const*,int *) ;
+ scalar_t__ svn_path_is_url (char const*) ;
+ char const* svn_uri_canonicalize (char const*,int *) ;
 
 const char *
 svn_path_internal_style(const char *path, apr_pool_t *pool)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct list_head {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  drm_list_sort (int /*<<< orphan*/ *,struct list_head*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drm_mode_compare ; 
+
+ int drm_list_sort (int *,struct list_head*,int ) ;
+ int drm_mode_compare ;
 
 void drm_mode_sort(struct list_head *mode_list)
 {
-	drm_list_sort(NULL, mode_list, drm_mode_compare);
+ drm_list_sort(((void*)0), mode_list, drm_mode_compare);
 }

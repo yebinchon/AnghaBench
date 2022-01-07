@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * opaque; int /*<<< orphan*/  zerror_file; int /*<<< orphan*/  zclose_file; int /*<<< orphan*/  zseek_file; int /*<<< orphan*/  ztell_file; int /*<<< orphan*/  zwrite_file; int /*<<< orphan*/  zread_file; int /*<<< orphan*/  zopen_file; } ;
-typedef  TYPE_1__ zlib_filefunc_def ;
 
-/* Variables and functions */
- int /*<<< orphan*/  win32_close_file_func ; 
- int /*<<< orphan*/  win32_error_file_func ; 
- int /*<<< orphan*/  win32_open_file_func ; 
- int /*<<< orphan*/  win32_read_file_func ; 
- int /*<<< orphan*/  win32_seek_file_func ; 
- int /*<<< orphan*/  win32_tell_file_func ; 
- int /*<<< orphan*/  win32_write_file_func ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * opaque; int zerror_file; int zclose_file; int zseek_file; int ztell_file; int zwrite_file; int zread_file; int zopen_file; } ;
+typedef TYPE_1__ zlib_filefunc_def ;
+
+
+ int win32_close_file_func ;
+ int win32_error_file_func ;
+ int win32_open_file_func ;
+ int win32_read_file_func ;
+ int win32_seek_file_func ;
+ int win32_tell_file_func ;
+ int win32_write_file_func ;
 
 void fill_win32_filefunc (zlib_filefunc_def* pzlib_filefunc_def)
 {
@@ -32,5 +32,5 @@ void fill_win32_filefunc (zlib_filefunc_def* pzlib_filefunc_def)
     pzlib_filefunc_def->zseek_file = win32_seek_file_func;
     pzlib_filefunc_def->zclose_file = win32_close_file_func;
     pzlib_filefunc_def->zerror_file = win32_error_file_func;
-    pzlib_filefunc_def->opaque = NULL;
+    pzlib_filefunc_def->opaque = ((void*)0);
 }

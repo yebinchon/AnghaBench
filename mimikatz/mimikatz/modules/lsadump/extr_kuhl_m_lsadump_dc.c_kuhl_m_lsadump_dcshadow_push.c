@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PDCSHADOW_DOMAIN_INFO ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kuhl_m_lsadump_dcshadow_bind_DRSR (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kuhl_m_lsadump_dcshadow_force_sync ; 
+
+
+
+typedef int PDCSHADOW_DOMAIN_INFO ;
+typedef int NTSTATUS ;
+
+
+ int kuhl_m_lsadump_dcshadow_bind_DRSR (int ,int ) ;
+ int kuhl_m_lsadump_dcshadow_force_sync ;
 
 NTSTATUS kuhl_m_lsadump_dcshadow_push(PDCSHADOW_DOMAIN_INFO info)
 {
-	return kuhl_m_lsadump_dcshadow_bind_DRSR(info, kuhl_m_lsadump_dcshadow_force_sync);;
+ return kuhl_m_lsadump_dcshadow_bind_DRSR(info, kuhl_m_lsadump_dcshadow_force_sync);;
 }

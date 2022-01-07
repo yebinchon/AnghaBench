@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct has_v_arg {int /*<<< orphan*/  found; int /*<<< orphan*/  val; } ;
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  RHASH_TBL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hash_has_value_i ; 
- int /*<<< orphan*/  ht_foreach (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct has_v_arg*) ; 
- int /*<<< orphan*/  mrb_bool_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
+
+
+
+struct has_v_arg {int found; int val; } ;
+typedef int mrb_value ;
+typedef int mrb_state ;
+
+
+ int FALSE ;
+ int RHASH_TBL (int ) ;
+ int hash_has_value_i ;
+ int ht_foreach (int *,int ,int ,struct has_v_arg*) ;
+ int mrb_bool_value (int ) ;
+ int mrb_get_args (int *,char*,int *) ;
 
 __attribute__((used)) static mrb_value
 mrb_hash_has_value(mrb_state *mrb, mrb_value hash)
 {
   mrb_value val;
   struct has_v_arg arg;
-  
+
   mrb_get_args(mrb, "o", &val);
   arg.found = FALSE;
   arg.val = val;

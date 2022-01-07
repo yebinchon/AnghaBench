@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct inode_fs_paths {int /*<<< orphan*/  fspath; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct inode_fs_paths*) ; 
- int /*<<< orphan*/  kvfree (int /*<<< orphan*/ ) ; 
+
+
+
+struct inode_fs_paths {int fspath; } ;
+
+
+ int kfree (struct inode_fs_paths*) ;
+ int kvfree (int ) ;
 
 void free_ipath(struct inode_fs_paths *ipath)
 {
-	if (!ipath)
-		return;
-	kvfree(ipath->fspath);
-	kfree(ipath);
+ if (!ipath)
+  return;
+ kvfree(ipath->fspath);
+ kfree(ipath);
 }

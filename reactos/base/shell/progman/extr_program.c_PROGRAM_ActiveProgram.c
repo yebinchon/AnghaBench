@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/ * hActiveProgram; int /*<<< orphan*/  hWnd; } ;
-typedef  int /*<<< orphan*/  PROGRAM ;
-typedef  TYPE_1__ PROGGROUP ;
 
-/* Variables and functions */
- scalar_t__ IsIconic (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int * hActiveProgram; int hWnd; } ;
+typedef int PROGRAM ;
+typedef TYPE_1__ PROGGROUP ;
+
+
+ scalar_t__ IsIconic (int ) ;
 
 PROGRAM* PROGRAM_ActiveProgram(PROGGROUP* hGroup)
 {
-    if (!hGroup) return NULL;
-    if (IsIconic(hGroup->hWnd)) return NULL;
+    if (!hGroup) return ((void*)0);
+    if (IsIconic(hGroup->hWnd)) return ((void*)0);
     return hGroup->hActiveProgram;
 }

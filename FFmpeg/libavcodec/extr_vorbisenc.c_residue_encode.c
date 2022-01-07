@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int partition_size; int end; int begin; int type; size_t classbook; int classifications; float** maxes; int** books; } ;
-typedef  TYPE_1__ vorbis_enc_residue ;
+typedef TYPE_1__ vorbis_enc_residue ;
 struct TYPE_9__ {TYPE_3__* codebooks; } ;
-typedef  TYPE_2__ vorbis_enc_context ;
+typedef TYPE_2__ vorbis_enc_context ;
 struct TYPE_10__ {int ndimensions; } ;
-typedef  TYPE_3__ vorbis_enc_codebook ;
-typedef  int /*<<< orphan*/  PutBitContext ;
+typedef TYPE_3__ vorbis_enc_codebook ;
+typedef int PutBitContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- float FFMAX (float,int /*<<< orphan*/ ) ; 
- int MAX_CHANNELS ; 
- int MAX_CODEBOOK_DIM ; 
- int NUM_RESIDUE_PARTITIONS ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  av_assert0 (int) ; 
- int /*<<< orphan*/  fabs (float) ; 
- scalar_t__ put_codeword (int /*<<< orphan*/ *,TYPE_3__*,int) ; 
- float* put_vector (TYPE_3__*,int /*<<< orphan*/ *,float*) ; 
+
+ int AVERROR (int ) ;
+ int EINVAL ;
+ float FFMAX (float,int ) ;
+ int MAX_CHANNELS ;
+ int MAX_CODEBOOK_DIM ;
+ int NUM_RESIDUE_PARTITIONS ;
+ int assert (int) ;
+ int av_assert0 (int) ;
+ int fabs (float) ;
+ scalar_t__ put_codeword (int *,TYPE_3__*,int) ;
+ float* put_vector (TYPE_3__*,int *,float*) ;
 
 __attribute__((used)) static int residue_encode(vorbis_enc_context *venc, vorbis_enc_residue *rc,
                           PutBitContext *pb, float *coeffs, int samples,
                           int real_ch)
 {
     int pass, i, j, p, k;
-    int psize      = rc->partition_size;
+    int psize = rc->partition_size;
     int partitions = (rc->end - rc->begin) / psize;
-    int channels   = (rc->type == 2) ? 1 : real_ch;
+    int channels = (rc->type == 2) ? 1 : real_ch;
     int classes[MAX_CHANNELS][NUM_RESIDUE_PARTITIONS];
     int classwords = venc->codebooks[rc->classbook].ndimensions;
 
@@ -51,7 +51,7 @@ __attribute__((used)) static int residue_encode(vorbis_enc_context *venc, vorbis
         float max1 = 0.0, max2 = 0.0;
         int s = rc->begin + p * psize;
         for (k = s; k < s + psize; k += 2) {
-            max1 = FFMAX(max1, fabs(coeffs[          k / real_ch]));
+            max1 = FFMAX(max1, fabs(coeffs[ k / real_ch]));
             max2 = FFMAX(max2, fabs(coeffs[samples + k / real_ch]));
         }
 
@@ -98,8 +98,8 @@ __attribute__((used)) static int residue_encode(vorbis_enc_context *venc, vorbis
                     } else {
                         int s = rc->begin + p * psize, a1, b1;
                         a1 = (s % real_ch) * samples;
-                        b1 =  s / real_ch;
-                        s  = real_ch * samples;
+                        b1 = s / real_ch;
+                        s = real_ch * samples;
                         for (k = 0; k < psize; k += book->ndimensions) {
                             int dim, a2 = a1, b2 = b1;
                             float vec[MAX_CODEBOOK_DIM], *pv = vec;

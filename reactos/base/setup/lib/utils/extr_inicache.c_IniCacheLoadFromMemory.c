@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  int /*<<< orphan*/ * PINICACHESECTION ;
-typedef  int /*<<< orphan*/ * PINICACHEKEY ;
-typedef  int /*<<< orphan*/ * PINICACHE ;
-typedef  char* PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  INICACHE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- int /*<<< orphan*/ * IniCacheAddKey (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * IniCacheAddSection (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* IniCacheGetKeyName (char*,char**,int /*<<< orphan*/ *) ; 
- char* IniCacheGetKeyValue (char*,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* IniCacheGetSectionName (char*,char**,int /*<<< orphan*/ *) ; 
- char* IniCacheSkipToNextSection (char*) ; 
- char* IniCacheSkipWhitespace (char*) ; 
- int /*<<< orphan*/  ProcessHeap ; 
- scalar_t__ RtlAllocateHeap (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+
+
+typedef int ULONG ;
+typedef int * PINICACHESECTION ;
+typedef int * PINICACHEKEY ;
+typedef int * PINICACHE ;
+typedef char* PCHAR ;
+typedef int NTSTATUS ;
+typedef int INICACHE ;
+typedef int BOOLEAN ;
+
+
+ int DPRINT (char*,...) ;
+ int HEAP_ZERO_MEMORY ;
+ int * IniCacheAddKey (int *,char*,int ,char*,int ) ;
+ int * IniCacheAddSection (int *,char*,int ) ;
+ char* IniCacheGetKeyName (char*,char**,int *) ;
+ char* IniCacheGetKeyValue (char*,char**,int *,int ) ;
+ char* IniCacheGetSectionName (char*,char**,int *) ;
+ char* IniCacheSkipToNextSection (char*) ;
+ char* IniCacheSkipWhitespace (char*) ;
+ int ProcessHeap ;
+ scalar_t__ RtlAllocateHeap (int ,int ,int) ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_SUCCESS ;
 
 NTSTATUS
 IniCacheLoadFromMemory(
@@ -55,28 +55,28 @@ IniCacheLoadFromMemory(
     PCHAR KeyValue;
     ULONG KeyValueSize;
 
-    /* Allocate inicache header */
+
     *Cache = (PINICACHE)RtlAllocateHeap(ProcessHeap,
                                         HEAP_ZERO_MEMORY,
                                         sizeof(INICACHE));
-    if (*Cache == NULL)
+    if (*Cache == ((void*)0))
     {
         DPRINT("RtlAllocateHeap() failed\n");
         return STATUS_INSUFFICIENT_RESOURCES;
     }
 
-    /* Parse ini file */
-    Section = NULL;
+
+    Section = ((void*)0);
     Ptr = FileBuffer;
-    while (Ptr != NULL && *Ptr != 0)
+    while (Ptr != ((void*)0) && *Ptr != 0)
     {
         Ptr = IniCacheSkipWhitespace(Ptr);
-        if (Ptr == NULL)
+        if (Ptr == ((void*)0))
             continue;
 
         if (*Ptr == '[')
         {
-            Section = NULL;
+            Section = ((void*)0);
             Ptr++;
 
             Ptr = IniCacheGetSectionName(Ptr,
@@ -88,7 +88,7 @@ IniCacheLoadFromMemory(
             Section = IniCacheAddSection(*Cache,
                                          SectionName,
                                          SectionNameSize);
-            if (Section == NULL)
+            if (Section == ((void*)0))
             {
                 DPRINT("IniCacheAddSection() failed\n");
                 Ptr = IniCacheSkipToNextSection(Ptr);
@@ -97,7 +97,7 @@ IniCacheLoadFromMemory(
         }
         else
         {
-            if (Section == NULL)
+            if (Section == ((void*)0))
             {
                 Ptr = IniCacheSkipToNextSection(Ptr);
                 continue;
@@ -119,7 +119,7 @@ IniCacheLoadFromMemory(
                                  KeyNameSize,
                                  KeyValue,
                                  KeyValueSize);
-            if (Key == NULL)
+            if (Key == ((void*)0))
             {
                 DPRINT("IniCacheAddKey() failed\n");
             }

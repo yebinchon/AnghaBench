@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_string_t ;
-typedef  int svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int FALSE ; 
- int TRUE ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * apr_hash_get (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this (int /*<<< orphan*/ *,void const**,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  svn_string_compare (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_string_t ;
+typedef int svn_boolean_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ apr_hash_count (int *) ;
+ int * apr_hash_first (int *,int *) ;
+ int * apr_hash_get (int *,char const*,int ) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_this (int *,void const**,int *,void**) ;
+ int svn_string_compare (int *,int *) ;
 
 svn_boolean_t
 svn_fs__prop_lists_equal(apr_hash_t *a,
@@ -34,19 +34,19 @@ svn_fs__prop_lists_equal(apr_hash_t *a,
 {
   apr_hash_index_t *hi;
 
-  /* Quick checks and special cases. */
+
   if (a == b)
     return TRUE;
 
-  if (a == NULL)
+  if (a == ((void*)0))
     return apr_hash_count(b) == 0;
-  if (b == NULL)
+  if (b == ((void*)0))
     return apr_hash_count(a) == 0;
 
   if (apr_hash_count(a) != apr_hash_count(b))
     return FALSE;
 
-  /* Compare prop by prop. */
+
   for (hi = apr_hash_first(pool, a); hi; hi = apr_hash_next(hi))
     {
       const char *key;
@@ -60,6 +60,6 @@ svn_fs__prop_lists_equal(apr_hash_t *a,
         return FALSE;
     }
 
-  /* No difference found. */
+
   return TRUE;
 }

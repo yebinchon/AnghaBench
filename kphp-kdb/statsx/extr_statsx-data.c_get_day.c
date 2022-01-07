@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+
+
+typedef int time_t ;
 struct tm {int tm_hour; int tm_mday; int tm_mon; int tm_year; scalar_t__ tm_min; scalar_t__ tm_sec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ create_day_start ; 
- int /*<<< orphan*/  custom_version_names ; 
- int /*<<< orphan*/  default_timezone ; 
- struct tm* gmtime (int /*<<< orphan*/ *) ; 
- int mktime (struct tm*) ; 
- int tz_offset (int /*<<< orphan*/ ) ; 
+
+ int assert (int) ;
+ scalar_t__ create_day_start ;
+ int custom_version_names ;
+ int default_timezone ;
+ struct tm* gmtime (int *) ;
+ int mktime (struct tm*) ;
+ int tz_offset (int ) ;
 
 int get_day (int created_at) {
   if (!custom_version_names) {
@@ -32,7 +32,7 @@ int get_day (int created_at) {
   } else {
     long x = created_at;
     assert (sizeof (time_t) == sizeof (long));
-    //struct tm *t = localtime ((time_t *)&x);
+
     struct tm *t = gmtime ((time_t *)&x);
     t->tm_sec = 0;
     t->tm_min = 0;

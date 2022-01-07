@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * FileOpenEx (char*,int,int) ; 
+
+
+
+typedef int IO ;
+
+
+ int * FileOpenEx (char*,int,int) ;
 
 IO *FileOpen(char *name, bool write_mode)
 {
-	return FileOpenEx(name, write_mode, true);
+ return FileOpenEx(name, write_mode, 1);
 }

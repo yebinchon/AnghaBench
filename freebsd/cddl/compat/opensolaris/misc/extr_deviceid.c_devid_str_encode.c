@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  devid; } ;
-typedef  TYPE_1__ ddi_devid_t ;
 
-/* Variables and functions */
- char* strdup (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int devid; } ;
+typedef TYPE_1__ ddi_devid_t ;
+
+
+ char* strdup (int ) ;
 
 char *
 devid_str_encode(ddi_devid_t devid, char *minor_name)
 {
 
-	return (strdup(devid.devid));
+ return (strdup(devid.devid));
 }

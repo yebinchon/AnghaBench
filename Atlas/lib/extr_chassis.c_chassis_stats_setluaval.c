@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  guint ;
-typedef  void* gpointer ;
-typedef  int /*<<< orphan*/  gchar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GPOINTER_TO_UINT (void*) ; 
- int /*<<< orphan*/  g_assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_checkstack (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_istable (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_pushinteger (int /*<<< orphan*/ *,int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  lua_pushstring (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  lua_settable (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int lua_State ;
+typedef int guint ;
+typedef void* gpointer ;
+typedef int gchar ;
+
+
+ int GPOINTER_TO_UINT (void*) ;
+ int g_assert (int ) ;
+ int lua_checkstack (int *,int) ;
+ int lua_istable (int *,int) ;
+ int lua_pushinteger (int *,int const) ;
+ int lua_pushstring (int *,int const*) ;
+ int lua_settable (int *,int) ;
 
 __attribute__((used)) static void chassis_stats_setluaval(gpointer key, gpointer val, gpointer userdata) {
     const gchar *name = key;

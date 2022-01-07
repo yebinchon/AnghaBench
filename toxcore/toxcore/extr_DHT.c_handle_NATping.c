@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint64_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint64_t ;
+typedef int uint16_t ;
 struct TYPE_8__ {TYPE_2__* friends_list; } ;
-struct TYPE_6__ {scalar_t__ NATping_id; int hole_punching; int /*<<< orphan*/  recvNATping_timestamp; } ;
+struct TYPE_6__ {scalar_t__ NATping_id; int hole_punching; int recvNATping_timestamp; } ;
 struct TYPE_7__ {TYPE_1__ nat; } ;
-typedef  int /*<<< orphan*/  IP_Port ;
-typedef  TYPE_2__ DHT_Friend ;
-typedef  TYPE_3__ DHT ;
+typedef int IP_Port ;
+typedef TYPE_2__ DHT_Friend ;
+typedef TYPE_3__ DHT ;
 
-/* Variables and functions */
- scalar_t__ const NAT_PING_REQUEST ; 
- scalar_t__ const NAT_PING_RESPONSE ; 
- int friend_number (TYPE_3__*,scalar_t__ const*) ; 
- int /*<<< orphan*/  memcpy (scalar_t__*,scalar_t__ const*,int) ; 
- scalar_t__ random_64b () ; 
- int /*<<< orphan*/  send_NATping (TYPE_3__*,scalar_t__ const*,scalar_t__,scalar_t__ const) ; 
- int /*<<< orphan*/  unix_time () ; 
+
+ scalar_t__ const NAT_PING_REQUEST ;
+ scalar_t__ const NAT_PING_RESPONSE ;
+ int friend_number (TYPE_3__*,scalar_t__ const*) ;
+ int memcpy (scalar_t__*,scalar_t__ const*,int) ;
+ scalar_t__ random_64b () ;
+ int send_NATping (TYPE_3__*,scalar_t__ const*,scalar_t__,scalar_t__ const) ;
+ int unix_time () ;
 
 __attribute__((used)) static int handle_NATping(void *object, IP_Port source, const uint8_t *source_pubkey, const uint8_t *packet,
                           uint16_t length)
@@ -50,7 +50,7 @@ __attribute__((used)) static int handle_NATping(void *object, IP_Port source, co
     DHT_Friend *friend = &dht->friends_list[friendnumber];
 
     if (packet[0] == NAT_PING_REQUEST) {
-        /* 1 is reply */
+
         send_NATping(dht, source_pubkey, ping_id, NAT_PING_RESPONSE);
         friend->nat.recvNATping_timestamp = unix_time();
         return 0;

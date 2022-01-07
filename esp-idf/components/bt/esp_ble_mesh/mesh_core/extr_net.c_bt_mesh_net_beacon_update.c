@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-struct bt_mesh_subnet_keys {int /*<<< orphan*/  net_id; int /*<<< orphan*/  beacon; } ;
-struct bt_mesh_subnet {int /*<<< orphan*/  auth; struct bt_mesh_subnet_keys* keys; int /*<<< orphan*/  net_idx; scalar_t__ kr_flag; } ;
-struct TYPE_2__ {int /*<<< orphan*/  iv_index; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_DBG (char*,int /*<<< orphan*/ ,...) ; 
- TYPE_1__ bt_mesh ; 
- int bt_mesh_beacon_auth (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bt_mesh_net_flags (struct bt_mesh_subnet*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u8_t ;
+struct bt_mesh_subnet_keys {int net_id; int beacon; } ;
+struct bt_mesh_subnet {int auth; struct bt_mesh_subnet_keys* keys; int net_idx; scalar_t__ kr_flag; } ;
+struct TYPE_2__ {int iv_index; } ;
+
+
+ int BT_DBG (char*,int ,...) ;
+ TYPE_1__ bt_mesh ;
+ int bt_mesh_beacon_auth (int ,int ,int ,int ,int ) ;
+ int bt_mesh_net_flags (struct bt_mesh_subnet*) ;
 
 int bt_mesh_net_beacon_update(struct bt_mesh_subnet *sub)
 {

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct i740fb_par {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VGA_ATT_W ; 
- int /*<<< orphan*/  VGA_SEQ_CLOCK_MODE ; 
- int /*<<< orphan*/  VGA_SEQ_I ; 
- int /*<<< orphan*/  i740inb (struct i740fb_par*,int) ; 
- int /*<<< orphan*/  i740outb (struct i740fb_par*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  i740outreg_mask (struct i740fb_par*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
+
+ int VGA_ATT_W ;
+ int VGA_SEQ_CLOCK_MODE ;
+ int VGA_SEQ_I ;
+ int i740inb (struct i740fb_par*,int) ;
+ int i740outb (struct i740fb_par*,int ,int) ;
+ int i740outreg_mask (struct i740fb_par*,int ,int ,int,int) ;
 
 __attribute__((used)) static void vga_protect(struct i740fb_par *par)
 {
-	/* disable the display */
-	i740outreg_mask(par, VGA_SEQ_I, VGA_SEQ_CLOCK_MODE, 0x20, 0x20);
 
-	i740inb(par, 0x3DA);
-	i740outb(par, VGA_ATT_W, 0x00);	/* enable palette access */
+ i740outreg_mask(par, VGA_SEQ_I, VGA_SEQ_CLOCK_MODE, 0x20, 0x20);
+
+ i740inb(par, 0x3DA);
+ i740outb(par, VGA_ATT_W, 0x00);
 }

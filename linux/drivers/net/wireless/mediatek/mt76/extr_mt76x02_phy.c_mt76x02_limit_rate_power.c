@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mt76_rate_power {int* all; } ;
 
-/* Variables and functions */
+
 
 void mt76x02_limit_rate_power(struct mt76_rate_power *r, int limit)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < sizeof(r->all); i++)
-		if (r->all[i] > limit)
-			r->all[i] = limit;
+ for (i = 0; i < sizeof(r->all); i++)
+  if (r->all[i] > limit)
+   r->all[i] = limit;
 }

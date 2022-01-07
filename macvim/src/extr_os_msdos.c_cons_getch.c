@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cons_getkey () ; 
- int cons_key ; 
+ int cons_getkey () ;
+ int cons_key ;
 
 __attribute__((used)) static int
 cons_getch(void)
 {
-    int	    c = -1;
+    int c = -1;
 
     if (cons_key < 0)
-	cons_getkey();
+ cons_getkey();
     c = cons_key;
     cons_key = -1;
     return c;

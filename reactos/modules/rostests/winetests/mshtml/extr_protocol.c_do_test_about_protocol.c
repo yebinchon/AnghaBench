@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  test_html ;
-typedef  int /*<<< orphan*/  buf ;
-typedef  int /*<<< orphan*/  blank_html ;
-typedef  int WCHAR ;
-typedef  int ULONG ;
-typedef  int /*<<< orphan*/  IInternetProtocol ;
-typedef  int /*<<< orphan*/  IInternetPriority ;
-typedef  int /*<<< orphan*/  IClassFactory ;
-typedef  int HRESULT ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- int E_NOINTERFACE ; 
- scalar_t__ FAILED (int) ; 
- int IClassFactory_CreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IID_IInternetPriority ; 
- int /*<<< orphan*/  IID_IInternetProtocol ; 
- int IInternetProtocol_LockRequest (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int IInternetProtocol_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int IInternetProtocol_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  IInternetProtocol_Release (int /*<<< orphan*/ *) ; 
- int IInternetProtocol_UnlockRequest (int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  about_blank_url ; 
- int /*<<< orphan*/  about_res_url ; 
- int /*<<< orphan*/  about_test_url ; 
- int /*<<< orphan*/  bindf ; 
- int /*<<< orphan*/  memcmp (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  protocol_start (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int test_html ;
+typedef int buf ;
+typedef int blank_html ;
+typedef int WCHAR ;
+typedef int ULONG ;
+typedef int IInternetProtocol ;
+typedef int IInternetPriority ;
+typedef int IClassFactory ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int E_NOINTERFACE ;
+ scalar_t__ FAILED (int) ;
+ int IClassFactory_CreateInstance (int *,int *,int *,void**) ;
+ int IID_IInternetPriority ;
+ int IID_IInternetProtocol ;
+ int IInternetProtocol_LockRequest (int *,int ) ;
+ int IInternetProtocol_QueryInterface (int *,int *,void**) ;
+ int IInternetProtocol_Read (int *,int *,int,int*) ;
+ int IInternetProtocol_Release (int *) ;
+ int IInternetProtocol_UnlockRequest (int *) ;
+ int S_OK ;
+ int about_blank_url ;
+ int about_res_url ;
+ int about_test_url ;
+ int bindf ;
+ int memcmp (int *,int const*,int) ;
+ int ok (int,char*,...) ;
+ int protocol_start (int *,int ) ;
 
 __attribute__((used)) static void do_test_about_protocol(IClassFactory *factory, DWORD bf)
 {
@@ -56,7 +56,7 @@ __attribute__((used)) static void do_test_about_protocol(IClassFactory *factory,
 
     bindf = bf;
 
-    hres = IClassFactory_CreateInstance(factory, NULL, &IID_IInternetProtocol, (void**)&protocol);
+    hres = IClassFactory_CreateInstance(factory, ((void*)0), &IID_IInternetProtocol, (void**)&protocol);
     ok(hres == S_OK, "Could not get IInternetProtocol: %08x\n", hres);
     if(FAILED(hres))
         return;

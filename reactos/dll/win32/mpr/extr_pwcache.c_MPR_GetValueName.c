@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WORD ;
-typedef  scalar_t__* LPSTR ;
-typedef  int* LPCSTR ;
-typedef  int DWORD ;
-typedef  int BYTE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GetProcessHeap () ; 
- scalar_t__* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TRACE (char*,scalar_t__*) ; 
- scalar_t__ hex (int) ; 
- int /*<<< orphan*/  sprintf (scalar_t__*,char*,int) ; 
+
+
+
+typedef int WORD ;
+typedef scalar_t__* LPSTR ;
+typedef int* LPCSTR ;
+typedef int DWORD ;
+typedef int BYTE ;
+
+
+ int GetProcessHeap () ;
+ scalar_t__* HeapAlloc (int ,int ,int) ;
+ int TRACE (char*,scalar_t__*) ;
+ scalar_t__ hex (int) ;
+ int sprintf (scalar_t__*,char*,int) ;
 
 __attribute__((used)) static LPSTR MPR_GetValueName( LPCSTR pbResource, WORD cbResource, BYTE nType )
 {
     LPSTR name;
-    DWORD  i;
+    DWORD i;
 
     name = HeapAlloc( GetProcessHeap(), 0, 6+cbResource*2 );
-    if( !name ) return NULL;
+    if( !name ) return ((void*)0);
 
     sprintf( name, "X-%02X-", nType );
     for(i=0; i<cbResource; i++)

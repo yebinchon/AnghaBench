@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8_t ;
-typedef  scalar_t__ u32_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int u8_t ;
+typedef scalar_t__ u32_t ;
 struct TYPE_5__ {scalar_t__ size; } ;
-typedef  TYPE_1__ spiffs_fd ;
-typedef  int /*<<< orphan*/  spiffs ;
-typedef  scalar_t__ s32_t ;
+typedef TYPE_1__ spiffs_fd ;
+typedef int spiffs ;
+typedef scalar_t__ s32_t ;
 
-/* Variables and functions */
- scalar_t__ MIN (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  SPIFFS_CHECK_RES (scalar_t__) ; 
- scalar_t__ SPIFFS_OK ; 
- scalar_t__ SPIFFS_UNDEFINED_LEN ; 
- scalar_t__ spiffs_object_append (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ spiffs_object_modify (TYPE_1__*,scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
+
+ scalar_t__ MIN (scalar_t__,scalar_t__) ;
+ int SPIFFS_CHECK_RES (scalar_t__) ;
+ scalar_t__ SPIFFS_OK ;
+ scalar_t__ SPIFFS_UNDEFINED_LEN ;
+ scalar_t__ spiffs_object_append (TYPE_1__*,scalar_t__,int *,scalar_t__) ;
+ scalar_t__ spiffs_object_modify (TYPE_1__*,scalar_t__,int *,scalar_t__) ;
 
 __attribute__((used)) static s32_t spiffs_hydro_write(spiffs *fs, spiffs_fd *fd, void *buf, u32_t offset, s32_t len) {
   (void)fs;

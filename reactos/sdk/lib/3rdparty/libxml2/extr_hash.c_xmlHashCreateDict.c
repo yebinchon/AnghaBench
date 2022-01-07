@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* xmlHashTablePtr ;
-typedef  int /*<<< orphan*/  xmlDictPtr ;
-struct TYPE_4__ {int /*<<< orphan*/  dict; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  xmlDictReference (int /*<<< orphan*/ ) ; 
- TYPE_1__* xmlHashCreate (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef TYPE_1__* xmlHashTablePtr ;
+typedef int xmlDictPtr ;
+struct TYPE_4__ {int dict; } ;
+
+
+ int xmlDictReference (int ) ;
+ TYPE_1__* xmlHashCreate (int) ;
 
 xmlHashTablePtr
 xmlHashCreateDict(int size, xmlDictPtr dict) {
     xmlHashTablePtr table;
 
     table = xmlHashCreate(size);
-    if (table != NULL) {
+    if (table != ((void*)0)) {
         table->dict = dict;
-	xmlDictReference(dict);
+ xmlDictReference(dict);
     }
     return(table);
 }

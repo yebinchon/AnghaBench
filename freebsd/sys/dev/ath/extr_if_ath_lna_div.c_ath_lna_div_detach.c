@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ath_softc {scalar_t__ sc_dolnadiv; int /*<<< orphan*/ * sc_lna_div; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_TEMP ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct ath_softc {scalar_t__ sc_dolnadiv; int * sc_lna_div; } ;
+
+
+ int M_TEMP ;
+ int free (int *,int ) ;
 
 int
 ath_lna_div_detach(struct ath_softc *sc)
 {
-	if (sc->sc_lna_div != NULL) {
-		free(sc->sc_lna_div, M_TEMP);
-		sc->sc_lna_div = NULL;
-	}
-	sc->sc_dolnadiv = 0;
-	return (0);
+ if (sc->sc_lna_div != ((void*)0)) {
+  free(sc->sc_lna_div, M_TEMP);
+  sc->sc_lna_div = ((void*)0);
+ }
+ sc->sc_dolnadiv = 0;
+ return (0);
 }

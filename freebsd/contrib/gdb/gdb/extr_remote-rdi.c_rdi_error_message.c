@@ -1,139 +1,91 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  RDIError_AddressException 166 
-#define  RDIError_BadCPUStateSetting 165 
-#define  RDIError_BadCoProState 164 
-#define  RDIError_BadInstruction 163 
-#define  RDIError_BadPointSize 162 
-#define  RDIError_BadPointType 161 
-#define  RDIError_BigEndian 160 
-#define  RDIError_BranchThrough0 159 
-#define  RDIError_BreakpointReached 158 
-#define  RDIError_CantSetPoint 157 
-#define  RDIError_DataAbort 156 
-#define  RDIError_Error 155 
-#define  RDIError_FIQ 154 
-#define  RDIError_IRQ 153 
-#define  RDIError_IllegalInstruction 152 
-#define  RDIError_IncompatibleRDILevels 151 
-#define  RDIError_InsufficientPrivilege 150 
-#define  RDIError_LittleEndian 149 
-#define  RDIError_NoError 148 
-#define  RDIError_NoMorePoints 147 
-#define  RDIError_NoSuchPoint 146 
-#define  RDIError_NotInitialised 145 
-#define  RDIError_PrefetchAbort 144 
-#define  RDIError_ProgramFinishedInStep 143 
-#define  RDIError_Reset 142 
-#define  RDIError_SoftInitialiseError 141 
-#define  RDIError_SoftwareInterrupt 140 
-#define  RDIError_UnableToInitialise 139 
-#define  RDIError_UnableToTerminate 138 
-#define  RDIError_UndefinedInstruction 137 
-#define  RDIError_UndefinedMessage 136 
-#define  RDIError_UnimplementedMessage 135 
-#define  RDIError_UnimplementedSize 134 
-#define  RDIError_UnimplementedType 133 
-#define  RDIError_UnknownCoPro 132 
-#define  RDIError_UnknownCoProState 131 
-#define  RDIError_UserInterrupt 130 
-#define  RDIError_WatchpointAccessed 129 
-#define  RDIError_WrongByteSex 128 
-
 __attribute__((used)) static char *
 rdi_error_message (int err)
 {
   switch (err)
     {
-    case RDIError_NoError:
+    case 148:
       return "no error";
-    case RDIError_Reset:
+    case 142:
       return "debuggee reset";
-    case RDIError_UndefinedInstruction:
+    case 137:
       return "undefined instruction";
-    case RDIError_SoftwareInterrupt:
+    case 140:
       return "SWI trapped";
-    case RDIError_PrefetchAbort:
+    case 144:
       return "prefetch abort, execution ran into unmapped memory?";
-    case RDIError_DataAbort:
+    case 156:
       return "data abort, no memory at specified address?";
-    case RDIError_AddressException:
+    case 166:
       return "address exception, access >26bit in 26bit mode";
-    case RDIError_IRQ:
+    case 153:
       return "IRQ, interrupt trapped";
-    case RDIError_FIQ:
+    case 154:
       return "FIQ, fast interrupt trapped";
-    case RDIError_Error:
+    case 155:
       return "a miscellaneous type of error";
-    case RDIError_BranchThrough0:
+    case 159:
       return "branch through location 0";
-    case RDIError_NotInitialised:
+    case 145:
       return "internal error, RDI_open not called first";
-    case RDIError_UnableToInitialise:
+    case 139:
       return "internal error, target world is broken";
-    case RDIError_WrongByteSex:
+    case 128:
       return "See Operator: WrongByteSex";
-    case RDIError_UnableToTerminate:
+    case 138:
       return "See Operator: Unable to Terminate";
-    case RDIError_BadInstruction:
+    case 163:
       return "bad instruction, illegal to execute this instruction";
-    case RDIError_IllegalInstruction:
+    case 152:
       return "illegal instruction, the effect of executing it is undefined";
-    case RDIError_BadCPUStateSetting:
+    case 165:
       return "internal error, tried to set SPSR of user mode";
-    case RDIError_UnknownCoPro:
+    case 132:
       return "unknown co-processor";
-    case RDIError_UnknownCoProState:
+    case 131:
       return "cannot execute co-processor request";
-    case RDIError_BadCoProState:
+    case 164:
       return "recognizably broken co-processor request";
-    case RDIError_BadPointType:
+    case 161:
       return "internal error, bad point yype";
-    case RDIError_UnimplementedType:
+    case 133:
       return "internal error, unimplemented type";
-    case RDIError_BadPointSize:
+    case 162:
       return "internal error, bad point size";
-    case RDIError_UnimplementedSize:
+    case 134:
       return "internal error, unimplemented size";
-    case RDIError_NoMorePoints:
+    case 147:
       return "last break/watch point was used";
-    case RDIError_BreakpointReached:
+    case 158:
       return "breakpoint reached";
-    case RDIError_WatchpointAccessed:
+    case 129:
       return "watchpoint accessed";
-    case RDIError_NoSuchPoint:
+    case 146:
       return "attempted to clear non-existent break/watch point";
-    case RDIError_ProgramFinishedInStep:
+    case 143:
       return "end of the program reached while stepping";
-    case RDIError_UserInterrupt:
+    case 130:
       return "you pressed Escape";
-    case RDIError_CantSetPoint:
+    case 157:
       return "no more break/watch points available";
-    case RDIError_IncompatibleRDILevels:
+    case 151:
       return "incompatible RDI levels";
-    case RDIError_LittleEndian:
+    case 149:
       return "debuggee is little endian";
-    case RDIError_BigEndian:
+    case 160:
       return "debuggee is big endian";
-    case RDIError_SoftInitialiseError:
+    case 141:
       return "recoverable error in RDI initialization";
-    case RDIError_InsufficientPrivilege:
+    case 150:
       return "internal error, supervisor state not accessible to monitor";
-    case RDIError_UnimplementedMessage:
+    case 135:
       return "internal error, unimplemented message";
-    case RDIError_UndefinedMessage:
+    case 136:
       return "internal error, undefined message";
     default:
       return "undefined error message, should reset target";

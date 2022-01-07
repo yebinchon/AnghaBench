@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t int32 ;
-struct TYPE_4__ {int /*<<< orphan*/  pgConn; } ;
-typedef  TYPE_1__ MultiConnection ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ApplyLogRedaction (char const*) ; 
- int /*<<< orphan*/  Assert (int) ; 
- TYPE_1__** ClientConnectionArray ; 
- size_t INVALID_CONNECTION_ID ; 
- int /*<<< orphan*/  PQerrorMessage (int /*<<< orphan*/ ) ; 
- int SendRemoteCommand (TYPE_1__*,char const*) ; 
- int /*<<< orphan*/  WARNING ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errdetail (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- char* pchomp (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t int32 ;
+struct TYPE_4__ {int pgConn; } ;
+typedef TYPE_1__ MultiConnection ;
+
+
+ int ApplyLogRedaction (char const*) ;
+ int Assert (int) ;
+ TYPE_1__** ClientConnectionArray ;
+ size_t INVALID_CONNECTION_ID ;
+ int PQerrorMessage (int ) ;
+ int SendRemoteCommand (TYPE_1__*,char const*) ;
+ int WARNING ;
+ int ereport (int ,int ) ;
+ int errdetail (char*,int ) ;
+ int errmsg (char*,int ) ;
+ char* pchomp (int ) ;
 
 bool
 MultiClientSendQuery(int32 connectionId, const char *query)
 {
-	MultiConnection *connection = NULL;
-	bool success = true;
-	int querySent = 0;
+ MultiConnection *connection = ((void*)0);
+ bool success = 1;
+ int querySent = 0;
 
-	Assert(connectionId != INVALID_CONNECTION_ID);
-	connection = ClientConnectionArray[connectionId];
-	Assert(connection != NULL);
+ Assert(connectionId != INVALID_CONNECTION_ID);
+ connection = ClientConnectionArray[connectionId];
+ Assert(connection != ((void*)0));
 
-	querySent = SendRemoteCommand(connection, query);
-	if (querySent == 0)
-	{
-		char *errorMessage = pchomp(PQerrorMessage(connection->pgConn));
+ querySent = SendRemoteCommand(connection, query);
+ if (querySent == 0)
+ {
+  char *errorMessage = pchomp(PQerrorMessage(connection->pgConn));
 
-		/*
-		 * query might include the user query coming from the taskTracker
-		 * code path, that's why we hash it, too. Otherwise, this code
-		 * path is generally exercised for the kind of errors that
-		 * we cannot send the queries that Citus itself produced.
-		 */
-		ereport(WARNING, (errmsg("could not send remote query \"%s\"",
-								 ApplyLogRedaction(query)),
-						  errdetail("Client error: %s",
-									ApplyLogRedaction(errorMessage))));
 
-		success = false;
-	}
 
-	return success;
+
+
+
+
+  ereport(WARNING, (errmsg("could not send remote query \"%s\"",
+         ApplyLogRedaction(query)),
+        errdetail("Client error: %s",
+         ApplyLogRedaction(errorMessage))));
+
+  success = 0;
+ }
+
+ return success;
 }

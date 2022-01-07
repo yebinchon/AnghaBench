@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32 ;
 struct TYPE_4__ {int IPRA; } ;
 struct TYPE_5__ {TYPE_1__ onchip; } ;
 
-/* Variables and functions */
- TYPE_2__* CurrentSH2 ; 
- int /*<<< orphan*/  MappedMemoryReadByte (int) ; 
- int /*<<< orphan*/  MappedMemoryReadLong (int) ; 
- int /*<<< orphan*/  MappedMemoryReadWord (int) ; 
- int /*<<< orphan*/  MappedMemoryWriteByte (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MappedMemoryWriteLong (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MappedMemoryWriteWord (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SH2SendInterrupt (TYPE_2__*,int,int) ; 
- int /*<<< orphan*/  SH2WriteNotify (int,int) ; 
- int abs (int) ; 
+
+ TYPE_2__* CurrentSH2 ;
+ int MappedMemoryReadByte (int) ;
+ int MappedMemoryReadLong (int) ;
+ int MappedMemoryReadWord (int) ;
+ int MappedMemoryWriteByte (int,int ) ;
+ int MappedMemoryWriteLong (int,int ) ;
+ int MappedMemoryWriteWord (int,int ) ;
+ int SH2SendInterrupt (TYPE_2__*,int,int) ;
+ int SH2WriteNotify (int,int) ;
+ int abs (int) ;
 
 void DMATransfer(u32 *CHCR, u32 *SAR, u32 *DAR, u32 *TCR, u32 *VCRDMA)
 {
    int size;
    u32 i, i2;
 
-   if (!(*CHCR & 0x2)) { // TE is not set
+   if (!(*CHCR & 0x2)) {
       int srcInc;
       int destInc;
 
@@ -106,6 +106,6 @@ void DMATransfer(u32 *CHCR, u32 *SAR, u32 *DAR, u32 *TCR, u32 *VCRDMA)
    if (*CHCR & 0x4)
       SH2SendInterrupt(CurrentSH2, *VCRDMA, (CurrentSH2->onchip.IPRA & 0xF00) >> 8);
 
-   // Set Transfer End bit
+
    *CHCR |= 0x2;
 }

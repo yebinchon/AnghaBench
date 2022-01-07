@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct wasapi_state {int /*<<< orphan*/  pAudioClient; } ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct wasapi_state {int pAudioClient; } ;
 struct ao {struct wasapi_state* priv; } ;
-struct TYPE_4__ {int /*<<< orphan*/  Format; } ;
-typedef  TYPE_1__ WAVEFORMATEXTENSIBLE ;
-typedef  int /*<<< orphan*/  WAVEFORMATEX ;
-typedef  scalar_t__ HRESULT ;
+struct TYPE_4__ {int Format; } ;
+typedef TYPE_1__ WAVEFORMATEXTENSIBLE ;
+typedef int WAVEFORMATEX ;
+typedef scalar_t__ HRESULT ;
 
-/* Variables and functions */
- scalar_t__ AUDCLNT_E_UNSUPPORTED_FORMAT ; 
- int /*<<< orphan*/  AUDCLNT_SHAREMODE_SHARED ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EXIT_ON_ERROR (scalar_t__) ; 
- scalar_t__ IAudioClient_GetMixFormat (int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- scalar_t__ IAudioClient_IsFormatSupported (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MP_ERR (struct wasapi_state*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*,int /*<<< orphan*/ ,...) ; 
-#define  S_FALSE 129 
-#define  S_OK 128 
- int /*<<< orphan*/  mp_HRESULT_to_str (scalar_t__) ; 
- int /*<<< orphan*/  mp_format_res_str (scalar_t__) ; 
- int /*<<< orphan*/  waveformat_copy (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  waveformat_to_str (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ AUDCLNT_E_UNSUPPORTED_FORMAT ;
+ int AUDCLNT_SHAREMODE_SHARED ;
+ int CoTaskMemFree (int *) ;
+ int EXIT_ON_ERROR (scalar_t__) ;
+ scalar_t__ IAudioClient_GetMixFormat (int ,int **) ;
+ scalar_t__ IAudioClient_IsFormatSupported (int ,int ,int *,int **) ;
+ int MP_ERR (struct wasapi_state*,char*,int ) ;
+ int MP_VERBOSE (struct ao*,char*,int ,...) ;
+
+
+ int mp_HRESULT_to_str (scalar_t__) ;
+ int mp_format_res_str (scalar_t__) ;
+ int waveformat_copy (TYPE_1__*,int *) ;
+ int waveformat_to_str (int *) ;
 
 __attribute__((used)) static bool find_formats_shared(struct ao *ao, WAVEFORMATEXTENSIBLE *wformat)
 {
@@ -49,9 +49,9 @@ __attribute__((used)) static bool find_formats_shared(struct ao *ao, WAVEFORMATE
         EXIT_ON_ERROR(hr);
 
     switch (hr) {
-    case S_OK:
+    case 128:
         break;
-    case S_FALSE:
+    case 129:
         waveformat_copy(wformat, closestMatch);
         CoTaskMemFree(closestMatch);
         MP_VERBOSE(ao, "Closest match is %s\n",
@@ -66,9 +66,9 @@ __attribute__((used)) static bool find_formats_shared(struct ao *ao, WAVEFORMATE
         CoTaskMemFree(closestMatch);
     }
 
-    return true;
+    return 1;
 exit_label:
     MP_ERR(state, "Error finding shared mode format: %s\n",
            mp_HRESULT_to_str(hr));
-    return false;
+    return 0;
 }

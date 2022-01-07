@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_1__* priv_data; } ;
-struct TYPE_4__ {scalar_t__ input_queue; int /*<<< orphan*/ * camera_mgr; int /*<<< orphan*/  camera_id; int /*<<< orphan*/ * camera_metadata; int /*<<< orphan*/ * image_reader; int /*<<< orphan*/ * camera_dev; int /*<<< orphan*/ * capture_session_output_container; int /*<<< orphan*/ * image_reader_window; int /*<<< orphan*/ * capture_session_output; int /*<<< orphan*/ * camera_output_target; int /*<<< orphan*/ * capture_request; int /*<<< orphan*/ * capture_session; int /*<<< orphan*/  exit; } ;
-typedef  TYPE_1__ AndroidCameraCtx ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_2__ AVFormatContext ;
+struct TYPE_4__ {scalar_t__ input_queue; int * camera_mgr; int camera_id; int * camera_metadata; int * image_reader; int * camera_dev; int * capture_session_output_container; int * image_reader_window; int * capture_session_output; int * camera_output_target; int * capture_request; int * capture_session; int exit; } ;
+typedef TYPE_1__ AndroidCameraCtx ;
+typedef int AVPacket ;
+typedef TYPE_2__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACameraCaptureSession_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACameraCaptureSession_stopRepeating (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACameraDevice_close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACameraManager_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACameraMetadata_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACameraOutputTarget_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACaptureRequest_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACaptureRequest_removeTarget (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACaptureSessionOutputContainer_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACaptureSessionOutputContainer_remove (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ACaptureSessionOutput_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AImageReader_delete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ANativeWindow_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  AVERROR_EOF ; 
- int /*<<< orphan*/  AV_THREAD_MESSAGE_NONBLOCK ; 
- int /*<<< orphan*/  atomic_store (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_packet_unref (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  av_thread_message_queue_free (scalar_t__*) ; 
- scalar_t__ av_thread_message_queue_recv (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_thread_message_queue_set_err_send (scalar_t__,int /*<<< orphan*/ ) ; 
+
+ int ACameraCaptureSession_close (int *) ;
+ int ACameraCaptureSession_stopRepeating (int *) ;
+ int ACameraDevice_close (int *) ;
+ int ACameraManager_delete (int *) ;
+ int ACameraMetadata_free (int *) ;
+ int ACameraOutputTarget_free (int *) ;
+ int ACaptureRequest_free (int *) ;
+ int ACaptureRequest_removeTarget (int *,int *) ;
+ int ACaptureSessionOutputContainer_free (int *) ;
+ int ACaptureSessionOutputContainer_remove (int *,int *) ;
+ int ACaptureSessionOutput_free (int *) ;
+ int AImageReader_delete (int *) ;
+ int ANativeWindow_release (int *) ;
+ int AVERROR_EOF ;
+ int AV_THREAD_MESSAGE_NONBLOCK ;
+ int atomic_store (int *,int) ;
+ int av_freep (int *) ;
+ int av_packet_unref (int *) ;
+ int av_thread_message_queue_free (scalar_t__*) ;
+ scalar_t__ av_thread_message_queue_recv (scalar_t__,int *,int ) ;
+ int av_thread_message_queue_set_err_send (scalar_t__,int ) ;
 
 __attribute__((used)) static int android_camera_read_close(AVFormatContext *avctx)
 {
@@ -49,61 +49,61 @@ __attribute__((used)) static int android_camera_read_close(AVFormatContext *avct
 
     if (ctx->capture_session) {
         ACameraCaptureSession_stopRepeating(ctx->capture_session);
-        // Following warning is emitted, after capture session closed callback is received:
-        // ACameraCaptureSession: Device is closed but session 0 is not notified
-        // Seems to be a bug in Android, we can ignore this
+
+
+
         ACameraCaptureSession_close(ctx->capture_session);
-        ctx->capture_session = NULL;
+        ctx->capture_session = ((void*)0);
     }
 
     if (ctx->capture_request) {
         ACaptureRequest_removeTarget(ctx->capture_request, ctx->camera_output_target);
         ACaptureRequest_free(ctx->capture_request);
-        ctx->capture_request = NULL;
+        ctx->capture_request = ((void*)0);
     }
 
     if (ctx->camera_output_target) {
         ACameraOutputTarget_free(ctx->camera_output_target);
-        ctx->camera_output_target = NULL;
+        ctx->camera_output_target = ((void*)0);
     }
 
     if (ctx->capture_session_output) {
         ACaptureSessionOutputContainer_remove(ctx->capture_session_output_container,
                 ctx->capture_session_output);
         ACaptureSessionOutput_free(ctx->capture_session_output);
-        ctx->capture_session_output = NULL;
+        ctx->capture_session_output = ((void*)0);
     }
 
     if (ctx->image_reader_window) {
         ANativeWindow_release(ctx->image_reader_window);
-        ctx->image_reader_window = NULL;
+        ctx->image_reader_window = ((void*)0);
     }
 
     if (ctx->capture_session_output_container) {
         ACaptureSessionOutputContainer_free(ctx->capture_session_output_container);
-        ctx->capture_session_output_container = NULL;
+        ctx->capture_session_output_container = ((void*)0);
     }
 
     if (ctx->camera_dev) {
         ACameraDevice_close(ctx->camera_dev);
-        ctx->camera_dev = NULL;
+        ctx->camera_dev = ((void*)0);
     }
 
     if (ctx->image_reader) {
         AImageReader_delete(ctx->image_reader);
-        ctx->image_reader = NULL;
+        ctx->image_reader = ((void*)0);
     }
 
     if (ctx->camera_metadata) {
         ACameraMetadata_free(ctx->camera_metadata);
-        ctx->camera_metadata = NULL;
+        ctx->camera_metadata = ((void*)0);
     }
 
     av_freep(&ctx->camera_id);
 
     if (ctx->camera_mgr) {
         ACameraManager_delete(ctx->camera_mgr);
-        ctx->camera_mgr = NULL;
+        ctx->camera_mgr = ((void*)0);
     }
 
     if (ctx->input_queue) {

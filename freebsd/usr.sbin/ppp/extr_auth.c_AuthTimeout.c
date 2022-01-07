@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  (* req ) (struct authinfo*) ;} ;
-struct authinfo {scalar_t__ retry; TYPE_1__* physical; int /*<<< orphan*/  authtimer; TYPE_2__ fn; int /*<<< orphan*/  id; } ;
-struct TYPE_3__ {int /*<<< orphan*/  dl; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LogPHASE ; 
- int /*<<< orphan*/  datalink_AuthNotOk (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  log_Printf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stub1 (struct authinfo*) ; 
- int /*<<< orphan*/  timer_Start (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  timer_Stop (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int (* req ) (struct authinfo*) ;} ;
+struct authinfo {scalar_t__ retry; TYPE_1__* physical; int authtimer; TYPE_2__ fn; int id; } ;
+struct TYPE_3__ {int dl; } ;
+
+
+ int LogPHASE ;
+ int datalink_AuthNotOk (int ) ;
+ int log_Printf (int ,char*) ;
+ int stub1 (struct authinfo*) ;
+ int timer_Start (int *) ;
+ int timer_Stop (int *) ;
 
 __attribute__((used)) static void
 AuthTimeout(void *vauthp)

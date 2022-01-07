@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* LOG_FILE ; 
- int /*<<< orphan*/  baudrate ; 
- char* dev_name ; 
- int /*<<< orphan*/  error (char*) ; 
- int /*<<< orphan*/  expect_prompt (int) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/ * log_file ; 
- int /*<<< orphan*/  perror_with_name (char*) ; 
- int /*<<< orphan*/  printf (char*,char*,char*) ; 
- int /*<<< orphan*/  printf_stdebug (char*) ; 
- int /*<<< orphan*/  push_target (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  serial_close (char*) ; 
- int /*<<< orphan*/  serial_open (char*) ; 
- int /*<<< orphan*/  serial_raw (int /*<<< orphan*/ ) ; 
- scalar_t__ serial_setbaudrate (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sscanf (char*,char*,char*,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  st2000_close (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  st2000_desc ; 
- int /*<<< orphan*/  st2000_ops ; 
- int /*<<< orphan*/  target_preopen (int) ; 
- char* target_shortname ; 
+ char* LOG_FILE ;
+ int baudrate ;
+ char* dev_name ;
+ int error (char*) ;
+ int expect_prompt (int) ;
+ int * fopen (char*,char*) ;
+ int * log_file ;
+ int perror_with_name (char*) ;
+ int printf (char*,char*,char*) ;
+ int printf_stdebug (char*) ;
+ int push_target (int *) ;
+ int serial_close (char*) ;
+ int serial_open (char*) ;
+ int serial_raw (int ) ;
+ scalar_t__ serial_setbaudrate (int ,int ) ;
+ int sscanf (char*,char*,char*,int *,char*) ;
+ int st2000_close (int ) ;
+ int st2000_desc ;
+ int st2000_ops ;
+ int target_preopen (int) ;
+ char* target_shortname ;
 
 __attribute__((used)) static void
 st2000_open (char *args, int from_tty)
@@ -45,8 +37,8 @@ st2000_open (char *args, int from_tty)
   n = sscanf (args, " %s %d %s", dev_name, &baudrate, junk);
 
   if (n != 2)
-    error ("Bad arguments.  Usage: target st2000 <device> <speed>\n\
-or target st2000 <host> <port>\n");
+    error ("Bad arguments.  Usage: target st2000 <device> <speed>\nor target st2000 <host> <port>\n");
+
 
   st2000_close (0);
 
@@ -64,19 +56,11 @@ or target st2000 <host> <port>\n");
   serial_raw (st2000_desc);
 
   push_target (&st2000_ops);
-
-#if defined (LOG_FILE)
-  log_file = fopen (LOG_FILE, "w");
-  if (log_file == NULL)
-    perror_with_name (LOG_FILE);
-#endif
-
-  /* Hello?  Are you there?  */
-  printf_stdebug ("\003");	/* ^C wakes up dbug */
+  printf_stdebug ("\003");
 
   expect_prompt (1);
 
   if (from_tty)
     printf ("Remote %s connected to %s\n", target_shortname,
-	    dev_name);
+     dev_name);
 }

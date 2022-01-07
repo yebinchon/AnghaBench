@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct usb_device {int /*<<< orphan*/  bus; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  USB_BUS_LOCK (int /*<<< orphan*/ ) ; 
+
+
+
+struct usb_device {int bus; } ;
+
+
+ int USB_BUS_LOCK (int ) ;
 
 void
 usb_proc_explore_lock(struct usb_device *udev)
 {
-	USB_BUS_LOCK(udev->bus);
+ USB_BUS_LOCK(udev->bus);
 }

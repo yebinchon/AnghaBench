@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ esp_err_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BT_BLE_COEX_TAG ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  PROFILE_A_APP_ID ; 
- int /*<<< orphan*/  PROFILE_B_APP_ID ; 
- scalar_t__ esp_ble_gap_register_callback (int /*<<< orphan*/ ) ; 
- scalar_t__ esp_ble_gatt_set_local_mtu (int) ; 
- scalar_t__ esp_ble_gatts_app_register (int /*<<< orphan*/ ) ; 
- scalar_t__ esp_ble_gatts_register_callback (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gap_event_handler ; 
- int /*<<< orphan*/  gatts_event_handler ; 
+
+
+
+typedef scalar_t__ esp_err_t ;
+
+
+ int BT_BLE_COEX_TAG ;
+ int ESP_LOGE (int ,char*,scalar_t__) ;
+ int PROFILE_A_APP_ID ;
+ int PROFILE_B_APP_ID ;
+ scalar_t__ esp_ble_gap_register_callback (int ) ;
+ scalar_t__ esp_ble_gatt_set_local_mtu (int) ;
+ scalar_t__ esp_ble_gatts_app_register (int ) ;
+ scalar_t__ esp_ble_gatts_register_callback (int ) ;
+ int gap_event_handler ;
+ int gatts_event_handler ;
 
 __attribute__((used)) static void ble_gatts_init(void)
 {

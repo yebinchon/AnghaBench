@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mp_log {int dummy; } ;
-struct mp_chmap_sel {int num_chmaps; scalar_t__ allow_any; scalar_t__ allow_waveext; int /*<<< orphan*/ * speakers; int /*<<< orphan*/ * chmaps; } ;
-struct mp_chmap {int num; int /*<<< orphan*/  speaker; } ;
+struct mp_chmap_sel {int num_chmaps; scalar_t__ allow_any; scalar_t__ allow_waveext; int * speakers; int * chmaps; } ;
+struct mp_chmap {int num; int speaker; } ;
 
-/* Variables and functions */
- int MP_SPEAKER_ID_COUNT ; 
- int MP_SPEAKER_ID_FC ; 
- int /*<<< orphan*/  mp_chmap_to_str (int /*<<< orphan*/ *) ; 
- char* mp_chmap_to_str_hr (struct mp_chmap*) ; 
- int /*<<< orphan*/  mp_msg (struct mp_log*,int,char*,...) ; 
- int /*<<< orphan*/  mp_msg_test (struct mp_log*,int) ; 
+
+ int MP_SPEAKER_ID_COUNT ;
+ int MP_SPEAKER_ID_FC ;
+ int mp_chmap_to_str (int *) ;
+ char* mp_chmap_to_str_hr (struct mp_chmap*) ;
+ int mp_msg (struct mp_log*,int,char*,...) ;
+ int mp_msg_test (struct mp_log*,int) ;
 
 void mp_chmal_sel_log(const struct mp_chmap_sel *s, struct mp_log *log, int lev)
 {

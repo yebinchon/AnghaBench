@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FFTSample ;
-typedef  int /*<<< orphan*/  FFTComplex ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_SQRT1_2 ; 
- int /*<<< orphan*/  TRANSFORM (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRANSFORM_ZERO (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * TX_NAME (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ff_cos_16 ; 
- int /*<<< orphan*/  fft4 (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fft8 (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int FFTSample ;
+typedef int FFTComplex ;
+
+
+ int M_SQRT1_2 ;
+ int TRANSFORM (int ,int ,int ,int ,int ,int ) ;
+ int TRANSFORM_ZERO (int ,int ,int ,int ) ;
+ int * TX_NAME (int ) ;
+ int ff_cos_16 ;
+ int fft4 (int *) ;
+ int fft8 (int *) ;
 
 __attribute__((used)) static void fft16(FFTComplex *z)
 {

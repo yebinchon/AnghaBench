@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  CLRBIT (unsigned char*,int) ; 
- scalar_t__ GETBIT (unsigned char*,int) ; 
- int /*<<< orphan*/  SETBIT (unsigned char*,int) ; 
+ int CLRBIT (unsigned char*,int) ;
+ scalar_t__ GETBIT (unsigned char*,int) ;
+ int SETBIT (unsigned char*,int) ;
 
 __attribute__((used)) static void KeyShiftRight( unsigned char *key, const int numbits )
 {
@@ -28,7 +20,7 @@ __attribute__((used)) static void KeyShiftRight( unsigned char *key, const int n
         for (j = 6; j >= 0; j--)
         {
             if (j!=6 && (key[j] & 0x01))
-                key[j+1] |=  0x80;
+                key[j+1] |= 0x80;
             key[j] >>= 1;
         }
 

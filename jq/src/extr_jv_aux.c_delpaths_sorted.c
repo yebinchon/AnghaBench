@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jv ;
 
-/* Variables and functions */
- scalar_t__ JV_KIND_NULL ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  jv_array () ; 
- int /*<<< orphan*/  jv_array_append (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_array_get (int /*<<< orphan*/ ,int) ; 
- int jv_array_length (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_array_slice (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  jv_copy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_dels (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jv_equal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_get (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ jv_get_kind (int /*<<< orphan*/ ) ; 
- scalar_t__ jv_is_valid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jv_set (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jv ;
+
+
+ scalar_t__ JV_KIND_NULL ;
+ int assert (int) ;
+ int jv_array () ;
+ int jv_array_append (int ,int ) ;
+ int jv_array_get (int ,int) ;
+ int jv_array_length (int ) ;
+ int jv_array_slice (int ,int,int) ;
+ int jv_copy (int ) ;
+ int jv_dels (int ,int ) ;
+ scalar_t__ jv_equal (int ,int ) ;
+ int jv_free (int ) ;
+ int jv_get (int ,int ) ;
+ scalar_t__ jv_get_kind (int ) ;
+ scalar_t__ jv_is_valid (int ) ;
+ int jv_set (int ,int ,int ) ;
 
 __attribute__((used)) static jv delpaths_sorted(jv object, jv paths, int start) {
   jv delkeys = jv_array();
@@ -39,12 +39,12 @@ __attribute__((used)) static jv delpaths_sorted(jv object, jv paths, int start) 
     while (j < jv_array_length(jv_copy(paths)) &&
            jv_equal(jv_copy(key), jv_array_get(jv_array_get(jv_copy(paths), j), start)))
       j++;
-    // if i <= entry < j, then entry starts with key
+
     if (delkey) {
-      // deleting this entire key, we don't care about any more specific deletions
+
       delkeys = jv_array_append(delkeys, key);
     } else {
-      // deleting certain sub-parts of this key
+
       jv subobject = jv_get(jv_copy(object), jv_copy(key));
       if (!jv_is_valid(subobject)) {
         jv_free(key);

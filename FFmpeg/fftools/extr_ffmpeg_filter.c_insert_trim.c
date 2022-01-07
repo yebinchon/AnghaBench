@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  enum AVMediaType { ____Placeholder_AVMediaType } AVMediaType ;
-struct TYPE_9__ {int /*<<< orphan*/  output_pads; int /*<<< orphan*/ * graph; } ;
-typedef  int /*<<< orphan*/  AVFilterGraph ;
-typedef  TYPE_1__ AVFilterContext ;
-typedef  int /*<<< orphan*/  AVFilter ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_FILTER_NOT_FOUND ; 
- int AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_NOPTS_VALUE ; 
- int /*<<< orphan*/  AV_OPT_SEARCH_CHILDREN ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  INT64_MAX ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,char const*) ; 
- int av_opt_set_int (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * avfilter_get_by_name (char const*) ; 
- TYPE_1__* avfilter_graph_alloc_filter (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,char const*) ; 
- int avfilter_init_str (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int avfilter_link (TYPE_1__*,int,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int avfilter_pad_get_type (int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+typedef enum AVMediaType { ____Placeholder_AVMediaType } AVMediaType ;
+struct TYPE_9__ {int output_pads; int * graph; } ;
+typedef int AVFilterGraph ;
+typedef TYPE_1__ AVFilterContext ;
+typedef int AVFilter ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_FILTER_NOT_FOUND ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_ERROR ;
+ int AV_NOPTS_VALUE ;
+ int AV_OPT_SEARCH_CHILDREN ;
+ int ENOMEM ;
+ int INT64_MAX ;
+ int av_log (TYPE_1__*,int ,char*,char const*) ;
+ int av_opt_set_int (TYPE_1__*,char*,int ,int ) ;
+ int * avfilter_get_by_name (char const*) ;
+ TYPE_1__* avfilter_graph_alloc_filter (int *,int const*,char const*) ;
+ int avfilter_init_str (TYPE_1__*,int *) ;
+ int avfilter_link (TYPE_1__*,int,TYPE_1__*,int ) ;
+ int avfilter_pad_get_type (int ,int) ;
 
 __attribute__((used)) static int insert_trim(int64_t start_time, int64_t duration,
                        AVFilterContext **last_filter, int *pad_idx,
@@ -51,7 +51,7 @@ __attribute__((used)) static int insert_trim(int64_t start_time, int64_t duratio
 
     trim = avfilter_get_by_name(name);
     if (!trim) {
-        av_log(NULL, AV_LOG_ERROR, "%s filter not present, cannot limit "
+        av_log(((void*)0), AV_LOG_ERROR, "%s filter not present, cannot limit "
                "recording time.\n", name);
         return AVERROR_FILTER_NOT_FOUND;
     }
@@ -73,7 +73,7 @@ __attribute__((used)) static int insert_trim(int64_t start_time, int64_t duratio
         return ret;
     }
 
-    ret = avfilter_init_str(ctx, NULL);
+    ret = avfilter_init_str(ctx, ((void*)0));
     if (ret < 0)
         return ret;
 
@@ -82,6 +82,6 @@ __attribute__((used)) static int insert_trim(int64_t start_time, int64_t duratio
         return ret;
 
     *last_filter = ctx;
-    *pad_idx     = 0;
+    *pad_idx = 0;
     return 0;
 }

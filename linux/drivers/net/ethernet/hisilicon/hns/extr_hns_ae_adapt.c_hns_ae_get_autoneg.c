@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct hnae_handle {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (struct hnae_handle*) ; 
- int /*<<< orphan*/  hns_get_mac_cb (struct hnae_handle*) ; 
- int /*<<< orphan*/  hns_mac_get_autoneg (int /*<<< orphan*/ ,int*) ; 
+
+ int assert (struct hnae_handle*) ;
+ int hns_get_mac_cb (struct hnae_handle*) ;
+ int hns_mac_get_autoneg (int ,int*) ;
 
 __attribute__((used)) static int hns_ae_get_autoneg(struct hnae_handle *handle)
 {
-	u32     auto_neg;
+ u32 auto_neg;
 
-	assert(handle);
+ assert(handle);
 
-	hns_mac_get_autoneg(hns_get_mac_cb(handle), &auto_neg);
+ hns_mac_get_autoneg(hns_get_mac_cb(handle), &auto_neg);
 
-	return auto_neg;
+ return auto_neg;
 }

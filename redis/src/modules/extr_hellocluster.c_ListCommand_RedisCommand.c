@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REDISMODULE_NODE_ID_LEN ; 
- int /*<<< orphan*/  REDISMODULE_NOT_USED (int) ; 
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  RedisModule_FreeClusterNodesList (char**) ; 
- int /*<<< orphan*/  RedisModule_GetClusterNodeInfo (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *) ; 
- char** RedisModule_GetClusterNodesList (int /*<<< orphan*/ *,size_t*) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithArray (int /*<<< orphan*/ *,int) ; 
- int RedisModule_ReplyWithError (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithLongLong (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithStringBuffer (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_NODE_ID_LEN ;
+ int REDISMODULE_NOT_USED (int) ;
+ int REDISMODULE_OK ;
+ int RedisModule_FreeClusterNodesList (char**) ;
+ int RedisModule_GetClusterNodeInfo (int *,char*,int *,int *,int*,int *) ;
+ char** RedisModule_GetClusterNodesList (int *,size_t*) ;
+ int RedisModule_ReplyWithArray (int *,int) ;
+ int RedisModule_ReplyWithError (int *,char*) ;
+ int RedisModule_ReplyWithLongLong (int *,int) ;
+ int RedisModule_ReplyWithStringBuffer (int *,char*,int ) ;
 
 int ListCommand_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     REDISMODULE_NOT_USED(argv);
@@ -31,14 +31,14 @@ int ListCommand_RedisCommand(RedisModuleCtx *ctx, RedisModuleString **argv, int 
 
     size_t numnodes;
     char **ids = RedisModule_GetClusterNodesList(ctx,&numnodes);
-    if (ids == NULL) {
+    if (ids == ((void*)0)) {
         return RedisModule_ReplyWithError(ctx,"Cluster not enabled");
     }
 
     RedisModule_ReplyWithArray(ctx,numnodes);
     for (size_t j = 0; j < numnodes; j++) {
         int port;
-        RedisModule_GetClusterNodeInfo(ctx,ids[j],NULL,NULL,&port,NULL);
+        RedisModule_GetClusterNodeInfo(ctx,ids[j],((void*)0),((void*)0),&port,((void*)0));
         RedisModule_ReplyWithArray(ctx,2);
         RedisModule_ReplyWithStringBuffer(ctx,ids[j],REDISMODULE_NODE_ID_LEN);
         RedisModule_ReplyWithLongLong(ctx,port);

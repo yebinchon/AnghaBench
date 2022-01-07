@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct rt2x00_dev {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  rt2800_bbp_read (struct rt2x00_dev*,int) ; 
- int /*<<< orphan*/  rt2800_bbp_write (struct rt2x00_dev*,int,int /*<<< orphan*/  const) ; 
+
+ int rt2800_bbp_read (struct rt2x00_dev*,int) ;
+ int rt2800_bbp_write (struct rt2x00_dev*,int,int const) ;
 
 __attribute__((used)) static u8 rt2800_bbp_dcoc_read(struct rt2x00_dev *rt2x00dev, const u8 reg)
 {
-	rt2800_bbp_write(rt2x00dev, 158, reg);
-	return rt2800_bbp_read(rt2x00dev, 159);
+ rt2800_bbp_write(rt2x00dev, 158, reg);
+ return rt2800_bbp_read(rt2x00dev, 159);
 }

@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xcghash ;
-typedef  int /*<<< orphan*/  sessid ;
-typedef  int /*<<< orphan*/  out ;
-typedef  int /*<<< orphan*/  key ;
-typedef  int /*<<< orphan*/  kdftype ;
-typedef  int /*<<< orphan*/  expected ;
-typedef  int /*<<< orphan*/  OSSL_PARAM ;
-typedef  int /*<<< orphan*/  EVP_KDF_CTX ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EVP_KDF_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_KDF_CTX_set_params (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char EVP_KDF_SSHKDF_TYPE_INITIAL_IV_CLI_TO_SRV ; 
- int /*<<< orphan*/  EVP_KDF_derive (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  OSSL_KDF_NAME_SSHKDF ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_DIGEST ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_KEY ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SSHKDF_SESSION_ID ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SSHKDF_TYPE ; 
- int /*<<< orphan*/  OSSL_KDF_PARAM_SSHKDF_XCGHASH ; 
- int /*<<< orphan*/  OSSL_PARAM_construct_end () ; 
- void* OSSL_PARAM_construct_octet_string (int /*<<< orphan*/ ,unsigned char*,int) ; 
- void* OSSL_PARAM_construct_utf8_string (int /*<<< orphan*/ ,char*,int) ; 
- scalar_t__ TEST_int_gt (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ; 
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_kdfbyname (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int xcghash ;
+typedef int sessid ;
+typedef int out ;
+typedef int key ;
+typedef int kdftype ;
+typedef int expected ;
+typedef int OSSL_PARAM ;
+typedef int EVP_KDF_CTX ;
+
+
+ int EVP_KDF_CTX_free (int *) ;
+ int EVP_KDF_CTX_set_params (int *,int *) ;
+ char EVP_KDF_SSHKDF_TYPE_INITIAL_IV_CLI_TO_SRV ;
+ int EVP_KDF_derive (int *,unsigned char*,int) ;
+ int OSSL_KDF_NAME_SSHKDF ;
+ int OSSL_KDF_PARAM_DIGEST ;
+ int OSSL_KDF_PARAM_KEY ;
+ int OSSL_KDF_PARAM_SSHKDF_SESSION_ID ;
+ int OSSL_KDF_PARAM_SSHKDF_TYPE ;
+ int OSSL_KDF_PARAM_SSHKDF_XCGHASH ;
+ int OSSL_PARAM_construct_end () ;
+ void* OSSL_PARAM_construct_octet_string (int ,unsigned char*,int) ;
+ void* OSSL_PARAM_construct_utf8_string (int ,char*,int) ;
+ scalar_t__ TEST_int_gt (int ,int ) ;
+ scalar_t__ TEST_mem_eq (unsigned char*,int,unsigned char const*,int) ;
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int * get_kdfbyname (int ) ;
 
 __attribute__((used)) static int test_kdf_sshkdf(void)
 {
@@ -46,7 +46,7 @@ __attribute__((used)) static int test_kdf_sshkdf(void)
     OSSL_PARAM params[6], *p = params;
     char kdftype = EVP_KDF_SSHKDF_TYPE_INITIAL_IV_CLI_TO_SRV;
     unsigned char out[8];
-    /* Test data from NIST CAVS 14.1 test vectors */
+
     static unsigned char key[] = {
         0x00, 0x00, 0x00, 0x81, 0x00, 0x87, 0x5c, 0x55, 0x1c, 0xef, 0x52, 0x6a,
         0x4a, 0x8b, 0xe1, 0xa7, 0xdf, 0x27, 0xe9, 0xed, 0x35, 0x4b, 0xac, 0x9a,

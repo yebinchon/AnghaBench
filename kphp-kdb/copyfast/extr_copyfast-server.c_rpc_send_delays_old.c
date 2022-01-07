@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rpc_delays_old {int /*<<< orphan*/  slow_delay; int /*<<< orphan*/  medium_delay; } ;
+
+
+
+
+struct rpc_delays_old {int slow_delay; int medium_delay; } ;
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ Q ; 
- int /*<<< orphan*/  RPC_TYPE_DELAYS_OLD ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  medium_delay ; 
- int /*<<< orphan*/  rpc_create_query (struct rpc_delays_old*,int,struct connection*,int /*<<< orphan*/ ) ; 
- int rpc_send_query (struct rpc_delays_old*,struct connection*) ; 
- int /*<<< orphan*/  slow_delay ; 
- int /*<<< orphan*/  stderr ; 
- int verbosity ; 
+
+ scalar_t__ Q ;
+ int RPC_TYPE_DELAYS_OLD ;
+ int fprintf (int ,char*,int ,int ) ;
+ int medium_delay ;
+ int rpc_create_query (struct rpc_delays_old*,int,struct connection*,int ) ;
+ int rpc_send_query (struct rpc_delays_old*,struct connection*) ;
+ int slow_delay ;
+ int stderr ;
+ int verbosity ;
 
 int rpc_send_delays_old (struct connection *c) {
   if (verbosity >= 2) {

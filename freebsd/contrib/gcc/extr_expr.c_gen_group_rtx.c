@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ GET_CODE (scalar_t__) ; 
- int GET_MODE (scalar_t__) ; 
- scalar_t__ PARALLEL ; 
- int /*<<< orphan*/  VOIDmode ; 
- scalar_t__ XEXP (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  XVECEXP (scalar_t__,int /*<<< orphan*/ ,int) ; 
- int XVECLEN (scalar_t__,int /*<<< orphan*/ ) ; 
- scalar_t__* alloca (int) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gen_reg_rtx (int) ; 
- int /*<<< orphan*/  gen_rtvec_v (int,scalar_t__*) ; 
- scalar_t__ gen_rtx_EXPR_LIST (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ gen_rtx_PARALLEL (int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ GET_CODE (scalar_t__) ;
+ int GET_MODE (scalar_t__) ;
+ scalar_t__ PARALLEL ;
+ int VOIDmode ;
+ scalar_t__ XEXP (int ,int) ;
+ int XVECEXP (scalar_t__,int ,int) ;
+ int XVECLEN (scalar_t__,int ) ;
+ scalar_t__* alloca (int) ;
+ int gcc_assert (int) ;
+ int gen_reg_rtx (int) ;
+ int gen_rtvec_v (int,scalar_t__*) ;
+ scalar_t__ gen_rtx_EXPR_LIST (int ,int ,scalar_t__) ;
+ scalar_t__ gen_rtx_PARALLEL (int,int ) ;
 
 rtx
 gen_group_rtx (rtx orig)
@@ -39,7 +39,7 @@ gen_group_rtx (rtx orig)
   length = XVECLEN (orig, 0);
   tmps = alloca (sizeof (rtx) * length);
 
-  /* Skip a NULL entry in first slot.  */
+
   i = XEXP (XVECEXP (orig, 0, 0), 0) ? 0 : 1;
 
   if (i)

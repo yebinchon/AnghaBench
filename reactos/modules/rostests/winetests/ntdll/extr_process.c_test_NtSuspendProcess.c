@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  startup ;
-typedef  int ULONG ;
-struct TYPE_10__ {scalar_t__ dwDebugEventCode; int /*<<< orphan*/  dwThreadId; int /*<<< orphan*/  dwProcessId; } ;
-struct TYPE_9__ {int /*<<< orphan*/  hThread; int /*<<< orphan*/  hProcess; int /*<<< orphan*/  dwProcessId; } ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int startup ;
+typedef int ULONG ;
+struct TYPE_10__ {scalar_t__ dwDebugEventCode; int dwThreadId; int dwProcessId; } ;
+struct TYPE_9__ {int hThread; int hProcess; int dwProcessId; } ;
 struct TYPE_8__ {int cb; } ;
-typedef  TYPE_1__ STARTUPINFOA ;
-typedef  TYPE_2__ PROCESS_INFORMATION ;
-typedef  int NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  TYPE_3__ DEBUG_EVENT ;
+typedef TYPE_1__ STARTUPINFOA ;
+typedef TYPE_2__ PROCESS_INFORMATION ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef TYPE_3__ DEBUG_EVENT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int ContinueDebugEvent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CreateEventA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int CreateProcessA (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_2__*) ; 
- int /*<<< orphan*/  DBG_CONTINUE ; 
- int DebugActiveProcess (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int GetLastError () ; 
- int /*<<< orphan*/  INFINITE ; 
- int MAX_PATH ; 
- int NtResumeThread (int /*<<< orphan*/ ,int*) ; 
- scalar_t__ OUTPUT_DEBUG_STRING_EVENT ; 
- int /*<<< orphan*/  ResetEvent (int /*<<< orphan*/ ) ; 
- int STATUS_SUCCESS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TerminateProcess (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int WAIT_OBJECT_0 ; 
- int WAIT_TIMEOUT ; 
- int WaitForDebugEvent (TYPE_3__*,int /*<<< orphan*/ ) ; 
- int WaitForSingleObject (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pNtResumeProcess (int /*<<< orphan*/ ) ; 
- int pNtSuspendProcess (int /*<<< orphan*/ ) ; 
- int pNtSuspendThread (int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*) ; 
+
+ int CloseHandle (int ) ;
+ int ContinueDebugEvent (int ,int ,int ) ;
+ int CreateEventA (int *,int ,int ,char*) ;
+ int CreateProcessA (int *,char*,int *,int *,int ,int ,int *,int *,TYPE_1__*,TYPE_2__*) ;
+ int DBG_CONTINUE ;
+ int DebugActiveProcess (int ) ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ int GetLastError () ;
+ int INFINITE ;
+ int MAX_PATH ;
+ int NtResumeThread (int ,int*) ;
+ scalar_t__ OUTPUT_DEBUG_STRING_EVENT ;
+ int ResetEvent (int ) ;
+ int STATUS_SUCCESS ;
+ int TRUE ;
+ int TerminateProcess (int ,int ) ;
+ int WAIT_OBJECT_0 ;
+ int WAIT_TIMEOUT ;
+ int WaitForDebugEvent (TYPE_3__*,int ) ;
+ int WaitForSingleObject (int ,int) ;
+ int memset (TYPE_1__*,int ,int) ;
+ int ok (int,char*,int) ;
+ int pNtResumeProcess (int ) ;
+ int pNtSuspendProcess (int ) ;
+ int pNtSuspendThread (int ,int*) ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static void test_NtSuspendProcess(char *process_name)
 {
@@ -68,14 +68,14 @@ __attribute__((used)) static void test_NtSuspendProcess(char *process_name)
     status = pNtResumeProcess(GetCurrentProcess());
     ok(status == STATUS_SUCCESS, "NtResumeProcess failed: %x\n", status);
 
-    event = CreateEventA(NULL, TRUE, FALSE, "wine_suspend_event");
+    event = CreateEventA(((void*)0), TRUE, FALSE, "wine_suspend_event");
     ok(!!event, "Failed to create event: %u\n", GetLastError());
 
     memset(&startup, 0, sizeof(startup));
     startup.cb = sizeof(startup);
 
     sprintf(buffer, "%s tests/process.c dummy_process wine_suspend_event", process_name);
-    ret = CreateProcessA(NULL, buffer, NULL, NULL, FALSE, 0, NULL, NULL, &startup, &info);
+    ret = CreateProcessA(((void*)0), buffer, ((void*)0), ((void*)0), FALSE, 0, ((void*)0), ((void*)0), &startup, &info);
     ok(ret, "CreateProcess failed with error %u\n", GetLastError());
 
     ret = WaitForSingleObject(event, 500);

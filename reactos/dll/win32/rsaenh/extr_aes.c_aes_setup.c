@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int ulong32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ulong32 ;
 struct TYPE_3__ {int Nr; int* eK; int* dK; } ;
-typedef  TYPE_1__ aes_key ;
+typedef TYPE_1__ aes_key ;
 
-/* Variables and functions */
- int CRYPT_INVALID_KEYSIZE ; 
- int CRYPT_INVALID_ROUNDS ; 
- int CRYPT_OK ; 
- int /*<<< orphan*/  LOAD32H (int,unsigned char const*) ; 
- int ROR (int,int) ; 
- int* Tks0 ; 
- int* Tks1 ; 
- int* Tks2 ; 
- int* Tks3 ; 
- size_t byte (int,int) ; 
- int* rcon ; 
- int setup_mix (int) ; 
+
+ int CRYPT_INVALID_KEYSIZE ;
+ int CRYPT_INVALID_ROUNDS ;
+ int CRYPT_OK ;
+ int LOAD32H (int,unsigned char const*) ;
+ int ROR (int,int) ;
+ int* Tks0 ;
+ int* Tks1 ;
+ int* Tks2 ;
+ int* Tks3 ;
+ size_t byte (int,int) ;
+ int* rcon ;
+ int setup_mix (int) ;
 
 int aes_setup(const unsigned char *key, int keylen, int rounds, aes_key *skey)
 {
@@ -45,17 +45,17 @@ int aes_setup(const unsigned char *key, int keylen, int rounds, aes_key *skey)
 
     skey->Nr = 10 + ((keylen/8)-2)*2;
 
-    /* setup the forward key */
-    i                 = 0;
-    rk                = skey->eK;
-    LOAD32H(rk[0], key     );
-    LOAD32H(rk[1], key +  4);
-    LOAD32H(rk[2], key +  8);
+
+    i = 0;
+    rk = skey->eK;
+    LOAD32H(rk[0], key );
+    LOAD32H(rk[1], key + 4);
+    LOAD32H(rk[2], key + 8);
     LOAD32H(rk[3], key + 12);
     if (keylen == 16) {
         j = 44;
         for (;;) {
-            temp  = rk[3];
+            temp = rk[3];
             rk[4] = rk[0] ^ setup_mix(temp) ^ rcon[i];
             rk[5] = rk[1] ^ rk[4];
             rk[6] = rk[2] ^ rk[5];
@@ -108,18 +108,18 @@ int aes_setup(const unsigned char *key, int keylen, int rounds, aes_key *skey)
        j = 4;
     }
 
-    rk   = skey->dK;
-    rrk  = skey->eK + j - 4;
+    rk = skey->dK;
+    rrk = skey->eK + j - 4;
 
     *rk++ = *rrk++;
     *rk++ = *rrk++;
     *rk++ = *rrk++;
-    *rk   = *rrk;
+    *rk = *rrk;
     rk -= 3; rrk -= 3;
 
     for (i = 1; i < skey->Nr; i++) {
         rrk -= 4;
-        rk  += 4;
+        rk += 4;
         temp = rrk[0];
         rk[0] =
             Tks0[byte(temp, 3)] ^
@@ -147,11 +147,11 @@ int aes_setup(const unsigned char *key, int keylen, int rounds, aes_key *skey)
     }
 
     rrk -= 4;
-    rk  += 4;
+    rk += 4;
     *rk++ = *rrk++;
     *rk++ = *rrk++;
     *rk++ = *rrk++;
-    *rk   = *rrk;
+    *rk = *rrk;
 
     return CRYPT_OK;
 }

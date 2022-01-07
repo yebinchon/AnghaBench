@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- scalar_t__ isprint (int /*<<< orphan*/  const) ; 
- int /*<<< orphan*/  printk (char*,...) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ scalar_t__ isprint (int const) ;
+ int printk (char*,...) ;
 
 __attribute__((used)) static void dump_hex(const uint8_t *data, int len)
 {
-	int i;
+ int i;
 
-	printk("    ");
-	for (i=0; i < len; i++)
-		printk("%.2x", data[i]);
+ printk("    ");
+ for (i=0; i < len; i++)
+  printk("%.2x", data[i]);
 
-	printk("\n    ");
-	for (i=0; i < len; i++) {
-		if (isprint(data[i]))
-			printk("%c", data[i]);
-		else
-			printk(".");
-	}
-	printk("\n");
+ printk("\n    ");
+ for (i=0; i < len; i++) {
+  if (isprint(data[i]))
+   printk("%c", data[i]);
+  else
+   printk(".");
+ }
+ printk("\n");
 }

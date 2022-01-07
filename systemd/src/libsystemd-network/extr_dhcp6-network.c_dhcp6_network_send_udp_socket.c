@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  sin6_addr; int /*<<< orphan*/  sin6_port; int /*<<< orphan*/  sin6_family; } ;
-union sockaddr_union {int /*<<< orphan*/  sa; TYPE_1__ in6; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int sin6_addr; int sin6_port; int sin6_family; } ;
+union sockaddr_union {int sa; TYPE_1__ in6; } ;
 struct in6_addr {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- int /*<<< orphan*/  DHCP6_PORT_SERVER ; 
- int /*<<< orphan*/  assert (struct in6_addr*) ; 
- int errno ; 
- int /*<<< orphan*/  htobe16 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,struct in6_addr*,int) ; 
- int sendto (int,void const*,size_t,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
+
+ int AF_INET6 ;
+ int DHCP6_PORT_SERVER ;
+ int assert (struct in6_addr*) ;
+ int errno ;
+ int htobe16 (int ) ;
+ int memcpy (int *,struct in6_addr*,int) ;
+ int sendto (int,void const*,size_t,int ,int *,int) ;
 
 int dhcp6_network_send_udp_socket(int s, struct in6_addr *server_address,
                                   const void *packet, size_t len) {

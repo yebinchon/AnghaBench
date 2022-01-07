@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  pf_update_progress; int /*<<< orphan*/  pf_cancel; int /*<<< orphan*/  pf_display_progress; int /*<<< orphan*/  pf_display_question; int /*<<< orphan*/  pf_display_login; int /*<<< orphan*/  pf_display_error; } ;
-typedef  TYPE_1__ vlc_dialog_cbs ;
-struct cb_answer {int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {int /*<<< orphan*/  p_libvlc_int; } ;
-typedef  TYPE_2__ libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VLC_OBJECT (int /*<<< orphan*/ ) ; 
- int VLC_SUCCESS ; 
- int /*<<< orphan*/  alarm (int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  cancel_cb ; 
- int /*<<< orphan*/  display_error_cb ; 
- int /*<<< orphan*/  display_login_cb ; 
- int /*<<< orphan*/  display_progress_cb ; 
- int /*<<< orphan*/  display_question_cb ; 
- int libvlc_InternalAddIntf (int /*<<< orphan*/ ,char*) ; 
- TYPE_2__* libvlc_new (int,char const**) ; 
- int /*<<< orphan*/  libvlc_release (TYPE_2__*) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  setenv (char*,char*,int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  test_dialogs (int /*<<< orphan*/ ,struct cb_answer*,int) ; 
- int /*<<< orphan*/  update_progress_cb ; 
- int /*<<< orphan*/  vlc_dialog_provider_set_callbacks (int /*<<< orphan*/ ,TYPE_1__ const*,struct cb_answer*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int pf_update_progress; int pf_cancel; int pf_display_progress; int pf_display_question; int pf_display_login; int pf_display_error; } ;
+typedef TYPE_1__ vlc_dialog_cbs ;
+struct cb_answer {int member_0; } ;
+struct TYPE_7__ {int p_libvlc_int; } ;
+typedef TYPE_2__ libvlc_instance_t ;
+
+
+ int VLC_OBJECT (int ) ;
+ int VLC_SUCCESS ;
+ int alarm (int) ;
+ int assert (int) ;
+ int cancel_cb ;
+ int display_error_cb ;
+ int display_login_cb ;
+ int display_progress_cb ;
+ int display_question_cb ;
+ int libvlc_InternalAddIntf (int ,char*) ;
+ TYPE_2__* libvlc_new (int,char const**) ;
+ int libvlc_release (TYPE_2__*) ;
+ int printf (char*) ;
+ int setenv (char*,char*,int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int test_dialogs (int ,struct cb_answer*,int) ;
+ int update_progress_cb ;
+ int vlc_dialog_provider_set_callbacks (int ,TYPE_1__ const*,struct cb_answer*) ;
 
 int
 main(int i_argc, char *ppsz_argv[])
@@ -49,8 +49,8 @@ main(int i_argc, char *ppsz_argv[])
     setenv("VLC_PLUGIN_PATH", "../modules", 1);
     setenv("VLC_LIB_PATH", "../modules", 1);
 
-    libvlc_instance_t *p_libvlc = libvlc_new(0, NULL);
-    assert(p_libvlc != NULL);
+    libvlc_instance_t *p_libvlc = libvlc_new(0, ((void*)0));
+    assert(p_libvlc != ((void*)0));
 
     printf("testing dialog callbacks\n");
     const vlc_dialog_cbs cbs = {
@@ -64,7 +64,7 @@ main(int i_argc, char *ppsz_argv[])
     struct cb_answer ans = { 0 };
     vlc_dialog_provider_set_callbacks(p_libvlc->p_libvlc_int, &cbs, &ans);
     test_dialogs(VLC_OBJECT(p_libvlc->p_libvlc_int), &ans, 100000);
-    vlc_dialog_provider_set_callbacks(p_libvlc->p_libvlc_int, NULL, NULL);
+    vlc_dialog_provider_set_callbacks(p_libvlc->p_libvlc_int, ((void*)0), ((void*)0));
 
     libvlc_release(p_libvlc);
 
@@ -72,14 +72,14 @@ main(int i_argc, char *ppsz_argv[])
     {
         printf("testing Qt dialog callbacks\n");
         static const char *args[] = {
-            "--no-qt-privacy-ask", /* avoid dialog that ask for privacy */
+            "--no-qt-privacy-ask",
         };
         p_libvlc = libvlc_new(1, args);
-        assert(p_libvlc != NULL);
+        assert(p_libvlc != ((void*)0));
 
         int i_ret = libvlc_InternalAddIntf(p_libvlc->p_libvlc_int, "qt");
         assert(i_ret == VLC_SUCCESS);
-        test_dialogs(VLC_OBJECT(p_libvlc->p_libvlc_int), NULL, 3000000);
+        test_dialogs(VLC_OBJECT(p_libvlc->p_libvlc_int), ((void*)0), 3000000);
 
         libvlc_release(p_libvlc);
     }

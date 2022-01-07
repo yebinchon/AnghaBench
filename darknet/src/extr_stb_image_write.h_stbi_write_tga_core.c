@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  context; int /*<<< orphan*/  (* func ) (int /*<<< orphan*/ ,unsigned char*,int) ;} ;
-typedef  TYPE_1__ stbi__write_context ;
 
-/* Variables and functions */
- unsigned char STBIW_UCHAR (int) ; 
- int memcmp (unsigned char const*,unsigned char*,int) ; 
- scalar_t__ stbi__flip_vertically_on_write ; 
- int /*<<< orphan*/  stbi_write_tga_with_rle ; 
- int stbiw__outfile (TYPE_1__*,int,int,int,int,int,int /*<<< orphan*/ ,void*,int,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  stbiw__write_pixel (TYPE_1__*,int,int,int,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  stbiw__writef (TYPE_1__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int,int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,unsigned char*,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ ,unsigned char*,int) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int context; int (* func ) (int ,unsigned char*,int) ;} ;
+typedef TYPE_1__ stbi__write_context ;
+
+
+ unsigned char STBIW_UCHAR (int) ;
+ int memcmp (unsigned char const*,unsigned char*,int) ;
+ scalar_t__ stbi__flip_vertically_on_write ;
+ int stbi_write_tga_with_rle ;
+ int stbiw__outfile (TYPE_1__*,int,int,int,int,int,int ,void*,int,int ,char*,int ,int ,int,int ,int ,int ,int ,int ,int,int,int,int) ;
+ int stbiw__write_pixel (TYPE_1__*,int,int,int,int ,unsigned char*) ;
+ int stbiw__writef (TYPE_1__*,char*,int ,int ,int,int ,int ,int ,int ,int ,int,int,int,int) ;
+ int stub1 (int ,unsigned char*,int) ;
+ int stub2 (int ,unsigned char*,int) ;
 
 __attribute__((used)) static int stbi_write_tga_core(stbi__write_context *s, int x, int y, int comp, void *data)
 {
    int has_alpha = (comp == 2 || comp == 4);
    int colorbytes = has_alpha ? comp-1 : comp;
-   int format = colorbytes < 2 ? 3 : 2; // 3 color channels (RGB/RGBA) = 2, 1 color channel (Y/YA) = 3
+   int format = colorbytes < 2 ? 3 : 2;
 
    if (y < 0 || x < 0)
       return 0;

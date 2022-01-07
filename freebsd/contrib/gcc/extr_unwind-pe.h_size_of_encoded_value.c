@@ -1,23 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned char DW_EH_PE_omit ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
-#define  DW_EH_PE_absptr 131 
- unsigned char DW_EH_PE_omit ; 
-#define  DW_EH_PE_udata2 130 
-#define  DW_EH_PE_udata4 129 
-#define  DW_EH_PE_udata8 128 
- int /*<<< orphan*/  __gxx_abort () ; 
+ int __gxx_abort () ;
 
 __attribute__((used)) static unsigned int
 size_of_encoded_value (unsigned char encoding)
@@ -27,13 +18,13 @@ size_of_encoded_value (unsigned char encoding)
 
   switch (encoding & 0x07)
     {
-    case DW_EH_PE_absptr:
+    case 131:
       return sizeof (void *);
-    case DW_EH_PE_udata2:
+    case 130:
       return 2;
-    case DW_EH_PE_udata4:
+    case 129:
       return 4;
-    case DW_EH_PE_udata8:
+    case 128:
       return 8;
     }
   __gxx_abort ();

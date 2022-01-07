@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int WCHAR ;
-typedef  int INT ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ARRAYSIZE (int*) ; 
- int /*<<< orphan*/  ConFormatMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConInString (int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ConInitStdStreams () ; 
- int /*<<< orphan*/  ConPuts (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ConResPrintf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,...) ; 
- int /*<<< orphan*/  ConResPuts (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetCurrentDirectoryW (int,int*) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetVolumeInformationW (int*,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int HIWORD (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IsValidPathName (int*) ; 
- int* LOWORD (int /*<<< orphan*/ ) ; 
- int MAX_DRIVE_LENGTH ; 
- int MAX_LABEL_LENGTH ; 
- int MAX_PATH ; 
- scalar_t__ PromptYesNo () ; 
- int /*<<< orphan*/  STRING_ERROR_INVALID_DRIVE ; 
- int /*<<< orphan*/  STRING_ERROR_INVALID_LABEL ; 
- int /*<<< orphan*/  STRING_LABEL_HELP ; 
- int /*<<< orphan*/  STRING_LABEL_TEXT1 ; 
- int /*<<< orphan*/  STRING_LABEL_TEXT2 ; 
- int /*<<< orphan*/  STRING_LABEL_TEXT3 ; 
- int /*<<< orphan*/  STRING_LABEL_TEXT4 ; 
- int /*<<< orphan*/  SetVolumeLabelW (int*,int*) ; 
- int /*<<< orphan*/  StdErr ; 
- int /*<<< orphan*/  StdOut ; 
- int UNICODE_NULL ; 
- int towupper (int) ; 
- int /*<<< orphan*/  wcscat (int*,...) ; 
- scalar_t__ wcscmp (int*,char*) ; 
- int /*<<< orphan*/  wcscpy (int*,int*) ; 
- scalar_t__ wcslen (int*) ; 
+
+
+
+typedef int WCHAR ;
+typedef int INT ;
+typedef int DWORD ;
+
+
+ int ARRAYSIZE (int*) ;
+ int ConFormatMessage (int ,int ) ;
+ int ConInString (int*,int ) ;
+ int ConInitStdStreams () ;
+ int ConPuts (int ,char*) ;
+ int ConResPrintf (int ,int ,int,...) ;
+ int ConResPuts (int ,int ) ;
+ scalar_t__ FALSE ;
+ int GetCurrentDirectoryW (int,int*) ;
+ int GetLastError () ;
+ int GetVolumeInformationW (int*,int*,int ,int *,int *,int *,int *,int ) ;
+ int HIWORD (int ) ;
+ int IsValidPathName (int*) ;
+ int* LOWORD (int ) ;
+ int MAX_DRIVE_LENGTH ;
+ int MAX_LABEL_LENGTH ;
+ int MAX_PATH ;
+ scalar_t__ PromptYesNo () ;
+ int STRING_ERROR_INVALID_DRIVE ;
+ int STRING_ERROR_INVALID_LABEL ;
+ int STRING_LABEL_HELP ;
+ int STRING_LABEL_TEXT1 ;
+ int STRING_LABEL_TEXT2 ;
+ int STRING_LABEL_TEXT3 ;
+ int STRING_LABEL_TEXT4 ;
+ int SetVolumeLabelW (int*,int*) ;
+ int StdErr ;
+ int StdOut ;
+ int UNICODE_NULL ;
+ int towupper (int) ;
+ int wcscat (int*,...) ;
+ scalar_t__ wcscmp (int*,char*) ;
+ int wcscpy (int*,int*) ;
+ scalar_t__ wcslen (int*) ;
 
 int wmain(int argc, WCHAR *argv[])
 {
@@ -59,13 +59,13 @@ int wmain(int argc, WCHAR *argv[])
     DWORD dwSerialNr;
     INT len, i;
 
-    /* Initialize the Console Standard Streams */
+
     ConInitStdStreams();
 
-    /* set empty label string */
+
     szLabel[0] = UNICODE_NULL;
 
-    /* print help */
+
     if (argc > 1 && wcscmp(argv[1], L"/?") == 0)
     {
         ConResPuts(StdOut, STRING_LABEL_HELP);
@@ -117,13 +117,13 @@ int wmain(int argc, WCHAR *argv[])
 
     if (szRootPath[0] == L' ')
     {
-        /* get label of current drive */
+
         WCHAR szCurPath[MAX_PATH];
         GetCurrentDirectoryW(MAX_PATH, szCurPath);
         szRootPath[0] = szCurPath[0];
     }
 
-    /* check root path */
+
     if (!IsValidPathName(szRootPath))
     {
         ConResPuts(StdErr, STRING_ERROR_INVALID_DRIVE);
@@ -133,9 +133,9 @@ int wmain(int argc, WCHAR *argv[])
     if (wcslen(szLabel) == 0)
     {
         GetVolumeInformationW(szRootPath, szOldLabel, ARRAYSIZE(szOldLabel), &dwSerialNr,
-                              NULL, NULL, NULL, 0);
+                              ((void*)0), ((void*)0), ((void*)0), 0);
 
-        /* print drive info */
+
         if (szOldLabel[0] != UNICODE_NULL)
         {
             ConResPrintf(StdOut, STRING_LABEL_TEXT1, towupper(szRootPath[0]), szOldLabel);
@@ -145,7 +145,7 @@ int wmain(int argc, WCHAR *argv[])
             ConResPrintf(StdOut, STRING_LABEL_TEXT2, towupper(szRootPath[0]));
         }
 
-        /* print the volume serial number */
+
         ConResPrintf(StdOut, STRING_LABEL_TEXT3, HIWORD(dwSerialNr), LOWORD(dwSerialNr));
 
         ConResPuts(StdOut, STRING_LABEL_TEXT4);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ctr ;
-typedef  int /*<<< orphan*/  EVP_MD_CTX ;
-typedef  int /*<<< orphan*/  EVP_MD ;
 
-/* Variables and functions */
- size_t ECDH_KDF_MAX ; 
- int /*<<< orphan*/  EVP_DigestFinal (int /*<<< orphan*/ *,unsigned char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestInit_ex (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EVP_DigestUpdate (int /*<<< orphan*/ *,unsigned char const*,size_t) ; 
- int EVP_MAX_MD_SIZE ; 
- int /*<<< orphan*/  EVP_MD_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EVP_MD_CTX_new () ; 
- size_t EVP_MD_size (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  OPENSSL_cleanse (unsigned char*,size_t) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char*,size_t) ; 
+
+
+
+typedef int ctr ;
+typedef int EVP_MD_CTX ;
+typedef int EVP_MD ;
+
+
+ size_t ECDH_KDF_MAX ;
+ int EVP_DigestFinal (int *,unsigned char*,int *) ;
+ int EVP_DigestInit_ex (int *,int const*,int *) ;
+ int EVP_DigestUpdate (int *,unsigned char const*,size_t) ;
+ int EVP_MAX_MD_SIZE ;
+ int EVP_MD_CTX_free (int *) ;
+ int * EVP_MD_CTX_new () ;
+ size_t EVP_MD_size (int const*) ;
+ int OPENSSL_cleanse (unsigned char*,size_t) ;
+ int memcpy (unsigned char*,unsigned char*,size_t) ;
 
 int ecdh_KDF_X9_63(unsigned char *out, size_t outlen,
                    const unsigned char *Z, size_t Zlen,
                    const unsigned char *sinfo, size_t sinfolen,
                    const EVP_MD *md)
 {
-    EVP_MD_CTX *mctx = NULL;
+    EVP_MD_CTX *mctx = ((void*)0);
     int rv = 0;
     unsigned int i;
     size_t mdlen;
@@ -40,12 +40,12 @@ int ecdh_KDF_X9_63(unsigned char *out, size_t outlen,
         || Zlen > ECDH_KDF_MAX)
         return 0;
     mctx = EVP_MD_CTX_new();
-    if (mctx == NULL)
+    if (mctx == ((void*)0))
         return 0;
     mdlen = EVP_MD_size(md);
     for (i = 1;; i++) {
         unsigned char mtmp[EVP_MAX_MD_SIZE];
-        if (!EVP_DigestInit_ex(mctx, md, NULL))
+        if (!EVP_DigestInit_ex(mctx, md, ((void*)0)))
             goto err;
         ctr[3] = i & 0xFF;
         ctr[2] = (i >> 8) & 0xFF;
@@ -58,14 +58,14 @@ int ecdh_KDF_X9_63(unsigned char *out, size_t outlen,
         if (!EVP_DigestUpdate(mctx, sinfo, sinfolen))
             goto err;
         if (outlen >= mdlen) {
-            if (!EVP_DigestFinal(mctx, out, NULL))
+            if (!EVP_DigestFinal(mctx, out, ((void*)0)))
                 goto err;
             outlen -= mdlen;
             if (outlen == 0)
                 break;
             out += mdlen;
         } else {
-            if (!EVP_DigestFinal(mctx, mtmp, NULL))
+            if (!EVP_DigestFinal(mctx, mtmp, ((void*)0)))
                 goto err;
             memcpy(out, mtmp, outlen);
             OPENSSL_cleanse(mtmp, mdlen);

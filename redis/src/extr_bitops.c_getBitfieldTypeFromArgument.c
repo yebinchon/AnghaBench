@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* ptr; } ;
-typedef  TYPE_1__ robj ;
-typedef  int /*<<< orphan*/  client ;
+typedef TYPE_1__ robj ;
+typedef int client ;
 
-/* Variables and functions */
- int C_ERR ; 
- int C_OK ; 
- int /*<<< orphan*/  addReplyError (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ string2ll (char*,int /*<<< orphan*/ ,long long*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+ int C_ERR ;
+ int C_OK ;
+ int addReplyError (int *,char*) ;
+ scalar_t__ string2ll (char*,int ,long long*) ;
+ int strlen (char*) ;
 
 int getBitfieldTypeFromArgument(client *c, robj *o, int *sign, int *bits) {
     char *p = o->ptr;

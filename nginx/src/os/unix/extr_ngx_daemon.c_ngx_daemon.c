@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/  O_RDWR ; 
- int STDERR_FILENO ; 
- int STDIN_FILENO ; 
- int STDOUT_FILENO ; 
- int close (int) ; 
- int dup2 (int,int) ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int fork () ; 
- int /*<<< orphan*/  ngx_errno ; 
- int /*<<< orphan*/  ngx_getpid () ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_parent ; 
- int /*<<< orphan*/  ngx_pid ; 
- int open (char*,int /*<<< orphan*/ ) ; 
- int setsid () ; 
- int /*<<< orphan*/  umask (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int ngx_log_t ;
+typedef int ngx_int_t ;
+
+
+ int NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ int NGX_OK ;
+ int O_RDWR ;
+ int STDERR_FILENO ;
+ int STDIN_FILENO ;
+ int STDOUT_FILENO ;
+ int close (int) ;
+ int dup2 (int,int) ;
+ int exit (int ) ;
+ int fork () ;
+ int ngx_errno ;
+ int ngx_getpid () ;
+ int ngx_log_error (int ,int *,int ,char*) ;
+ int ngx_parent ;
+ int ngx_pid ;
+ int open (char*,int ) ;
+ int setsid () ;
+ int umask (int ) ;
 
 ngx_int_t
 ngx_daemon(ngx_log_t *log)
 {
-    int  fd;
+    int fd;
 
     switch (fork()) {
     case -1:
@@ -77,14 +77,6 @@ ngx_daemon(ngx_log_t *log)
         ngx_log_error(NGX_LOG_EMERG, log, ngx_errno, "dup2(STDOUT) failed");
         return NGX_ERROR;
     }
-
-#if 0
-    if (dup2(fd, STDERR_FILENO) == -1) {
-        ngx_log_error(NGX_LOG_EMERG, log, ngx_errno, "dup2(STDERR) failed");
-        return NGX_ERROR;
-    }
-#endif
-
     if (fd > STDERR_FILENO) {
         if (close(fd) == -1) {
             ngx_log_error(NGX_LOG_EMERG, log, ngx_errno, "close() failed");

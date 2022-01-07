@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ut8 ;
-typedef  int /*<<< orphan*/  RCrypto ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * calloc (int,int) ; 
- int /*<<< orphan*/  eprintf (char*) ; 
- scalar_t__ flag ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  r_crypto_append (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  rol_crypt (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  st ; 
+
+
+
+typedef int ut8 ;
+typedef int RCrypto ;
+
+
+ int * calloc (int,int) ;
+ int eprintf (char*) ;
+ scalar_t__ flag ;
+ int free (int *) ;
+ int r_crypto_append (int *,int *,int) ;
+ int rol_crypt (int *,int const*,int *,int) ;
+ int st ;
 
 __attribute__((used)) static bool update(RCrypto *cry, const ut8 *buf, int len) {
-	if (flag) {
-		eprintf ("Use ROR\n");
-		return false;
-	}
-	ut8 *obuf = calloc (1, len);
-	if (!obuf) {
-		return false;
-	}
-	rol_crypt (&st, buf, obuf, len);
-	r_crypto_append (cry, obuf, len);
-	free (obuf);
-	return true;
+ if (flag) {
+  eprintf ("Use ROR\n");
+  return 0;
+ }
+ ut8 *obuf = calloc (1, len);
+ if (!obuf) {
+  return 0;
+ }
+ rol_crypt (&st, buf, obuf, len);
+ r_crypto_append (cry, obuf, len);
+ free (obuf);
+ return 1;
 }

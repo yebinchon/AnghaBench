@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {double loadCompInfoUs; double readField; double loadFieldUs; double loadBlocksUs; double fileTimeUs; double cacheTimeUs; int /*<<< orphan*/  numOfSeek; int /*<<< orphan*/  numOfTables; int /*<<< orphan*/  numOfFiles; int /*<<< orphan*/  tmpBufferInDisk; int /*<<< orphan*/  blocksInCache; int /*<<< orphan*/  totalGenData; int /*<<< orphan*/  skippedFileBlocks; int /*<<< orphan*/  totalBlockSize; int /*<<< orphan*/  readDiskBlocks; scalar_t__ totalFieldSize; int /*<<< orphan*/  totalCompInfoSize; int /*<<< orphan*/  readCompInfo; } ;
-struct TYPE_5__ {TYPE_2__ summary; int /*<<< orphan*/ * pQuery; } ;
-struct TYPE_7__ {int /*<<< orphan*/  bufSize; TYPE_1__ runtimeEnv; } ;
-typedef  TYPE_1__ SQueryRuntimeEnv ;
-typedef  TYPE_2__ SQueryCostSummary ;
-typedef  int /*<<< orphan*/  SQuery ;
-typedef  int /*<<< orphan*/  SQInfo ;
-typedef  TYPE_3__ SMeterQuerySupportObj ;
 
-/* Variables and functions */
- scalar_t__ GET_QINFO_ADDR (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dTrace (char*,int /*<<< orphan*/ *,double,...) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {double loadCompInfoUs; double readField; double loadFieldUs; double loadBlocksUs; double fileTimeUs; double cacheTimeUs; int numOfSeek; int numOfTables; int numOfFiles; int tmpBufferInDisk; int blocksInCache; int totalGenData; int skippedFileBlocks; int totalBlockSize; int readDiskBlocks; scalar_t__ totalFieldSize; int totalCompInfoSize; int readCompInfo; } ;
+struct TYPE_5__ {TYPE_2__ summary; int * pQuery; } ;
+struct TYPE_7__ {int bufSize; TYPE_1__ runtimeEnv; } ;
+typedef TYPE_1__ SQueryRuntimeEnv ;
+typedef TYPE_2__ SQueryCostSummary ;
+typedef int SQuery ;
+typedef int SQInfo ;
+typedef TYPE_3__ SMeterQuerySupportObj ;
+
+
+ scalar_t__ GET_QINFO_ADDR (int *) ;
+ int dTrace (char*,int *,double,...) ;
 
 void vnodePrintQueryStatistics(SMeterQuerySupportObj *pSupporter) {
   SQueryRuntimeEnv *pRuntimeEnv = &pSupporter->runtimeEnv;
@@ -55,9 +55,9 @@ void vnodePrintQueryStatistics(SMeterQuerySupportObj *pSupporter) {
 
   double total = pSummary->fileTimeUs + pSummary->cacheTimeUs;
   double io = pSummary->loadCompInfoUs + pSummary->loadBlocksUs + pSummary->loadFieldUs;
-  //    assert(io <= pSummary->fileTimeUs);
 
-  // todo add the intermediate result save cost!!
+
+
   double computing = total - io;
 
   dTrace(

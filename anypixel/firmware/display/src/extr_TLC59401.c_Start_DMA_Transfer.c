@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct TYPE_3__ {int DMA_PeripheralBaseAddr; int DMA_MemoryBaseAddr; int /*<<< orphan*/  DMA_DIR; int /*<<< orphan*/  DMA_M2M; int /*<<< orphan*/  DMA_Priority; int /*<<< orphan*/  DMA_Mode; int /*<<< orphan*/  DMA_MemoryDataSize; int /*<<< orphan*/  DMA_PeripheralDataSize; int /*<<< orphan*/  DMA_MemoryInc; int /*<<< orphan*/  DMA_PeripheralInc; int /*<<< orphan*/  DMA_BufferSize; } ;
-typedef  TYPE_1__ DMA_InitTypeDef ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DISABLE ; 
- int /*<<< orphan*/  DMA_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DMA_DIR_PeripheralDST ; 
- int /*<<< orphan*/  DMA_DIR_PeripheralSRC ; 
- int /*<<< orphan*/  DMA_Init (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  DMA_M2M_Disable ; 
- int /*<<< orphan*/  DMA_MemoryDataSize_Byte ; 
- int /*<<< orphan*/  DMA_MemoryInc_Enable ; 
- int /*<<< orphan*/  DMA_Mode_Normal ; 
- int /*<<< orphan*/  DMA_PeripheralDataSize_Byte ; 
- int /*<<< orphan*/  DMA_PeripheralInc_Disable ; 
- int /*<<< orphan*/  DMA_Priority_Medium ; 
- int /*<<< orphan*/  ENABLE ; 
- int /*<<< orphan*/  SPI_Cmd (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SPI_I2S_DMACmd (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int SPI_I2S_DMAReq_Rx ; 
- int SPI_I2S_DMAReq_Tx ; 
- scalar_t__ TLC59401_DMA_DR ; 
- int /*<<< orphan*/  TLC59401_RX_DMA ; 
- int /*<<< orphan*/  TLC59401_SPI ; 
- int /*<<< orphan*/  TLC59401_TX_DMA ; 
- int /*<<< orphan*/  isIdle (int /*<<< orphan*/ ) ; 
- int needLatch0 ; 
- int needLatch1 ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint16_t ;
+struct TYPE_3__ {int DMA_PeripheralBaseAddr; int DMA_MemoryBaseAddr; int DMA_DIR; int DMA_M2M; int DMA_Priority; int DMA_Mode; int DMA_MemoryDataSize; int DMA_PeripheralDataSize; int DMA_MemoryInc; int DMA_PeripheralInc; int DMA_BufferSize; } ;
+typedef TYPE_1__ DMA_InitTypeDef ;
+
+
+ int DISABLE ;
+ int DMA_Cmd (int ,int ) ;
+ int DMA_DIR_PeripheralDST ;
+ int DMA_DIR_PeripheralSRC ;
+ int DMA_Init (int ,TYPE_1__*) ;
+ int DMA_M2M_Disable ;
+ int DMA_MemoryDataSize_Byte ;
+ int DMA_MemoryInc_Enable ;
+ int DMA_Mode_Normal ;
+ int DMA_PeripheralDataSize_Byte ;
+ int DMA_PeripheralInc_Disable ;
+ int DMA_Priority_Medium ;
+ int ENABLE ;
+ int SPI_Cmd (int ,int ) ;
+ int SPI_I2S_DMACmd (int ,int,int ) ;
+ int SPI_I2S_DMAReq_Rx ;
+ int SPI_I2S_DMAReq_Tx ;
+ scalar_t__ TLC59401_DMA_DR ;
+ int TLC59401_RX_DMA ;
+ int TLC59401_SPI ;
+ int TLC59401_TX_DMA ;
+ int isIdle (int ) ;
+ int needLatch0 ;
+ int needLatch1 ;
 
 __attribute__((used)) static bool Start_DMA_Transfer(uint8_t* dataOut, uint8_t* dataIn, uint16_t count) {
     DMA_InitTypeDef DMA_InitStruct;
-    // first make sure the device isn't busy and that any previous transmissions have been latched
-    if( !isIdle(TLC59401_SPI) || needLatch0 || needLatch1)
-        return false;
 
-    // disable things while we configure them
+    if( !isIdle(TLC59401_SPI) || needLatch0 || needLatch1)
+        return 0;
+
+
     SPI_Cmd(TLC59401_SPI, DISABLE);
     DMA_Cmd(TLC59401_TX_DMA, DISABLE);
     DMA_Cmd(TLC59401_RX_DMA, DISABLE);
 
-    // Idle, so set up DMA TX transfer
+
     DMA_InitStruct.DMA_PeripheralBaseAddr = (int)TLC59401_DMA_DR;
     DMA_InitStruct.DMA_MemoryBaseAddr = (int)dataOut;
     DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralDST;
@@ -67,7 +67,7 @@ __attribute__((used)) static bool Start_DMA_Transfer(uint8_t* dataOut, uint8_t* 
     DMA_InitStruct.DMA_M2M = DMA_M2M_Disable;
     DMA_Init(TLC59401_TX_DMA, &DMA_InitStruct);
 
-    // changed the relevant fields for RX transfer
+
     DMA_InitStruct.DMA_MemoryBaseAddr = (int)dataIn;
     DMA_InitStruct.DMA_DIR = DMA_DIR_PeripheralSRC;
     DMA_Init(TLC59401_RX_DMA, &DMA_InitStruct);
@@ -79,8 +79,8 @@ __attribute__((used)) static bool Start_DMA_Transfer(uint8_t* dataOut, uint8_t* 
 
     SPI_Cmd(TLC59401_SPI, ENABLE);
 
-    needLatch0 = true;
-    needLatch1 = true;
+    needLatch0 = 1;
+    needLatch1 = 1;
 
-    return true;
+    return 1;
 }

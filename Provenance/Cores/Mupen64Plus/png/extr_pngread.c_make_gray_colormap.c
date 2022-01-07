@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  png_image_read_control ;
 
-/* Variables and functions */
- int /*<<< orphan*/  P_sRGB ; 
- int /*<<< orphan*/  png_create_colormap_entry (int /*<<< orphan*/ *,unsigned int,unsigned int,unsigned int,unsigned int,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int png_image_read_control ;
+
+
+ int P_sRGB ;
+ int png_create_colormap_entry (int *,unsigned int,unsigned int,unsigned int,unsigned int,int,int ) ;
 
 __attribute__((used)) static int
 make_gray_colormap(png_image_read_control *display)

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
-struct drm_object {int /*<<< orphan*/  fd; } ;
-typedef  int /*<<< orphan*/ * drmModePropertyBlobPtr ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * drmModeGetPropertyBlob (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  drm_object_get_property (struct drm_object*,char*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint64_t ;
+struct drm_object {int fd; } ;
+typedef int * drmModePropertyBlobPtr ;
+
+
+ int * drmModeGetPropertyBlob (int ,int ) ;
+ int drm_object_get_property (struct drm_object*,char*,int *) ;
 
 drmModePropertyBlobPtr drm_object_get_property_blob(struct drm_object *object, char *name)
 {
@@ -26,5 +26,5 @@ drmModePropertyBlobPtr drm_object_get_property_blob(struct drm_object *object, c
        return drmModeGetPropertyBlob(object->fd, blob_id);
    }
 
-   return NULL;
+   return ((void*)0);
 }

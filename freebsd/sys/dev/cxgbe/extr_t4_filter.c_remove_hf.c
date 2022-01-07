@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct tid_info {int /*<<< orphan*/  tids_in_use; int /*<<< orphan*/  hftid_lock; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct tid_info {int tids_in_use; int hftid_lock; } ;
 struct TYPE_2__ {scalar_t__ type; } ;
 struct filter_entry {TYPE_1__ fs; } ;
 struct adapter {struct tid_info tids; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LIST_REMOVE (struct filter_entry*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  atomic_subtract_int (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  link_4t ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int LIST_REMOVE (struct filter_entry*,int ) ;
+ int MA_OWNED ;
+ int atomic_subtract_int (int *,int) ;
+ int link_4t ;
+ int mtx_assert (int *,int ) ;
 
 __attribute__((used)) static void
 remove_hf(struct adapter *sc, struct filter_entry *f)
 {
-	struct tid_info *t = &sc->tids;
+ struct tid_info *t = &sc->tids;
 
-	mtx_assert(&t->hftid_lock, MA_OWNED);
+ mtx_assert(&t->hftid_lock, MA_OWNED);
 
-	LIST_REMOVE(f, link_4t);
-	atomic_subtract_int(&t->tids_in_use, f->fs.type ? 2 : 1);
+ LIST_REMOVE(f, link_4t);
+ atomic_subtract_int(&t->tids_in_use, f->fs.type ? 2 : 1);
 }

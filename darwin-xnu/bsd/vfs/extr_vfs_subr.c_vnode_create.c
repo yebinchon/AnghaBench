@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vnode_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NULLVP ; 
- int vnode_create_internal (int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int vnode_t ;
+typedef int uint32_t ;
+
+
+ int NULLVP ;
+ int vnode_create_internal (int ,int ,void*,int *,int) ;
 
 int
 vnode_create(uint32_t flavor, uint32_t size, void *data, vnode_t *vpp)
 {
-	*vpp = NULLVP;
-	return (vnode_create_internal(flavor, size, data, vpp, 1));
+ *vpp = NULLVP;
+ return (vnode_create_internal(flavor, size, data, vpp, 1));
 }

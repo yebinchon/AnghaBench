@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int int64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+typedef int int64_t ;
 struct TYPE_3__ {int time_den; int time_num; } ;
-typedef  TYPE_1__ VC_CONTAINER_TRACK_MODULE_T ;
+typedef TYPE_1__ VC_CONTAINER_TRACK_MODULE_T ;
 
-/* Variables and functions */
- int INT64_C (int) ; 
- int /*<<< orphan*/  vc_container_assert (int) ; 
+
+ int INT64_C (int) ;
+ int vc_container_assert (int) ;
 
 __attribute__((used)) static int64_t avi_stream_ticks_to_us(VC_CONTAINER_TRACK_MODULE_T *track_module, uint64_t ticks)
 {

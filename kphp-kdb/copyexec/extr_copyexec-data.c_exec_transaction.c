@@ -1,115 +1,115 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_16__ {int status; int result; int mask; scalar_t__ transaction_id; long long st_dev; long long st_ino; int /*<<< orphan*/  binlog_pos; struct TYPE_16__* next; scalar_t__ pid; void* creation_time; } ;
-typedef  TYPE_1__ transaction_t ;
+
+
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+
+
+struct TYPE_16__ {int status; int result; int mask; scalar_t__ transaction_id; long long st_dev; long long st_ino; int binlog_pos; struct TYPE_16__* next; scalar_t__ pid; void* creation_time; } ;
+typedef TYPE_1__ transaction_t ;
 struct stat {scalar_t__ st_ino; scalar_t__ st_dev; } ;
-struct sigaction {scalar_t__ sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
-struct lev_copyexec_main_transaction_status {int result; int mask; scalar_t__ pid; long long st_dev; long long st_ino; scalar_t__ transaction_id; void* creation_time; int /*<<< orphan*/  binlog_pos; } ;
+struct sigaction {scalar_t__ sa_flags; int sa_mask; int sa_handler; } ;
+struct lev_copyexec_main_transaction_status {int result; int mask; scalar_t__ pid; long long st_dev; long long st_ino; scalar_t__ transaction_id; void* creation_time; int binlog_pos; } ;
 struct lev_copyexec_aux_transaction_header {int mask; } ;
 struct buffered_logevent {int dummy; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
-struct TYPE_17__ {scalar_t__ transaction_id; int /*<<< orphan*/  binlog_pos; int /*<<< orphan*/  key_id; int /*<<< orphan*/  ilen; int /*<<< orphan*/  input; } ;
-typedef  TYPE_2__ replay_transaction_info_t ;
-typedef  scalar_t__ pid_t ;
-typedef  int /*<<< orphan*/  lev_type_t ;
+typedef int sigset_t ;
+struct TYPE_17__ {scalar_t__ transaction_id; int binlog_pos; int key_id; int ilen; int input; } ;
+typedef TYPE_2__ replay_transaction_info_t ;
+typedef scalar_t__ pid_t ;
+typedef int lev_type_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Binlog ; 
- int /*<<< orphan*/  COPYEXEC_ERR_CHDIR ; 
- int /*<<< orphan*/  COPYEXEC_ERR_CREAT ; 
- int /*<<< orphan*/  COPYEXEC_ERR_FORK ; 
- int /*<<< orphan*/  COPYEXEC_ERR_FSTAT ; 
- int /*<<< orphan*/  COPYEXEC_ERR_MKDIR ; 
- scalar_t__ EINTR ; 
- int /*<<< orphan*/  LEV_COPYEXEC_MAIN_TRANSACTION_STATUS ; 
- int MASK_WAITING_TRANSACTION ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_TRUNC ; 
- int O_WRONLY ; 
- int SIGINT ; 
- int SIGTERM ; 
- int SIGUSR2 ; 
- struct lev_copyexec_main_transaction_status* alloc_buffered_logevent (struct buffered_logevent*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  alloc_io_failed_logevent (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__ auto_running_list ; 
- scalar_t__ chdir (int /*<<< orphan*/ ) ; 
- TYPE_1__ child_running_list ; 
- int /*<<< orphan*/  close_binlog (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  close_unused_fd (scalar_t__) ; 
- scalar_t__ cmd_id ; 
- int /*<<< orphan*/  copyexec_abort () ; 
- int /*<<< orphan*/  copyexec_strerror (int) ; 
- int /*<<< orphan*/  copyexec_transaction_process_sigint_handler ; 
- int cur_transaction_binlog_name ; 
- int /*<<< orphan*/  cur_transaction_hash ; 
- scalar_t__ cur_transaction_id ; 
- int cur_transaction_result ; 
- int decrypt_transaction (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,unsigned char**,int*) ; 
- int /*<<< orphan*/  delete_transaction_dir () ; 
- int /*<<< orphan*/  do_wait (scalar_t__) ; 
- scalar_t__ epoll_fd ; 
- scalar_t__ errno ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- scalar_t__ fd_aux_binlog ; 
- int /*<<< orphan*/  fd_close (scalar_t__*) ; 
- scalar_t__ fd_transaction_logevents ; 
- scalar_t__ first_transaction_id ; 
- int /*<<< orphan*/  flush_logevent_to_file (struct buffered_logevent*) ; 
- scalar_t__ fork () ; 
- int /*<<< orphan*/  free (unsigned char*) ; 
- scalar_t__ fstat (scalar_t__,struct stat*) ; 
- int /*<<< orphan*/  fsync (scalar_t__) ; 
- void* get_process_creation_time (scalar_t__) ; 
- int /*<<< orphan*/  get_transaction_binlog_name (TYPE_1__*,int) ; 
- int /*<<< orphan*/  get_transaction_dir (TYPE_1__*,int /*<<< orphan*/ ) ; 
- TYPE_1__* get_transaction_f (scalar_t__,int) ; 
- int /*<<< orphan*/  get_transaction_hash (TYPE_1__*,int /*<<< orphan*/ ) ; 
- scalar_t__ getpid () ; 
- int /*<<< orphan*/  handle_failure () ; 
- int instance_mask ; 
- scalar_t__ interrupted_by_cancelled () ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ mkdir (int /*<<< orphan*/ ,int) ; 
- scalar_t__ open (int,int,int) ; 
- int /*<<< orphan*/  set_sigusr1_handler () ; 
- int /*<<< orphan*/  setsid () ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  sigaction (int,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- scalar_t__ sigterm_receiver_pid ; 
- scalar_t__ synchronization_point_transaction (unsigned char*,int) ; 
- int /*<<< orphan*/  tlist_insert (TYPE_1__*,TYPE_1__*) ; 
- struct lev_copyexec_main_transaction_status* transaction_alloc_log_event_status (TYPE_1__*) ; 
- int /*<<< orphan*/  transaction_change_process_name (scalar_t__) ; 
- int /*<<< orphan*/  transaction_change_status (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  transaction_dir ; 
- int transaction_interrupting_signal ; 
- int transaction_replay_logevent (void*,int) ; 
- int /*<<< orphan*/  transaction_want_exec (TYPE_1__*) ; 
- scalar_t__ ts_cancelled ; 
- int /*<<< orphan*/  ts_decryption_failed ; 
- scalar_t__ ts_failed ; 
- int /*<<< orphan*/  ts_ignored ; 
- scalar_t__ ts_interrupted ; 
- int /*<<< orphan*/  ts_running ; 
- scalar_t__ ts_terminated ; 
- scalar_t__ ts_unset ; 
- int /*<<< orphan*/  vkprintf (int,char*,...) ; 
+
+ int Binlog ;
+ int COPYEXEC_ERR_CHDIR ;
+ int COPYEXEC_ERR_CREAT ;
+ int COPYEXEC_ERR_FORK ;
+ int COPYEXEC_ERR_FSTAT ;
+ int COPYEXEC_ERR_MKDIR ;
+ scalar_t__ EINTR ;
+ int LEV_COPYEXEC_MAIN_TRANSACTION_STATUS ;
+ int MASK_WAITING_TRANSACTION ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_TRUNC ;
+ int O_WRONLY ;
+ int SIGINT ;
+ int SIGTERM ;
+ int SIGUSR2 ;
+ struct lev_copyexec_main_transaction_status* alloc_buffered_logevent (struct buffered_logevent*,int ,int) ;
+ int alloc_io_failed_logevent (TYPE_1__*,int ) ;
+ int assert (int) ;
+ TYPE_1__ auto_running_list ;
+ scalar_t__ chdir (int ) ;
+ TYPE_1__ child_running_list ;
+ int close_binlog (int ,int) ;
+ int close_unused_fd (scalar_t__) ;
+ scalar_t__ cmd_id ;
+ int copyexec_abort () ;
+ int copyexec_strerror (int) ;
+ int copyexec_transaction_process_sigint_handler ;
+ int cur_transaction_binlog_name ;
+ int cur_transaction_hash ;
+ scalar_t__ cur_transaction_id ;
+ int cur_transaction_result ;
+ int decrypt_transaction (int ,int ,int ,int ,scalar_t__,unsigned char**,int*) ;
+ int delete_transaction_dir () ;
+ int do_wait (scalar_t__) ;
+ scalar_t__ epoll_fd ;
+ scalar_t__ errno ;
+ int exit (int ) ;
+ scalar_t__ fd_aux_binlog ;
+ int fd_close (scalar_t__*) ;
+ scalar_t__ fd_transaction_logevents ;
+ scalar_t__ first_transaction_id ;
+ int flush_logevent_to_file (struct buffered_logevent*) ;
+ scalar_t__ fork () ;
+ int free (unsigned char*) ;
+ scalar_t__ fstat (scalar_t__,struct stat*) ;
+ int fsync (scalar_t__) ;
+ void* get_process_creation_time (scalar_t__) ;
+ int get_transaction_binlog_name (TYPE_1__*,int) ;
+ int get_transaction_dir (TYPE_1__*,int ) ;
+ TYPE_1__* get_transaction_f (scalar_t__,int) ;
+ int get_transaction_hash (TYPE_1__*,int ) ;
+ scalar_t__ getpid () ;
+ int handle_failure () ;
+ int instance_mask ;
+ scalar_t__ interrupted_by_cancelled () ;
+ int kprintf (char*,...) ;
+ scalar_t__ mkdir (int ,int) ;
+ scalar_t__ open (int,int,int) ;
+ int set_sigusr1_handler () ;
+ int setsid () ;
+ scalar_t__ sfd ;
+ int sigaction (int,struct sigaction*,int *) ;
+ int sigaddset (int *,int) ;
+ int sigemptyset (int *) ;
+ scalar_t__ sigterm_receiver_pid ;
+ scalar_t__ synchronization_point_transaction (unsigned char*,int) ;
+ int tlist_insert (TYPE_1__*,TYPE_1__*) ;
+ struct lev_copyexec_main_transaction_status* transaction_alloc_log_event_status (TYPE_1__*) ;
+ int transaction_change_process_name (scalar_t__) ;
+ int transaction_change_status (TYPE_1__*,int ) ;
+ int transaction_dir ;
+ int transaction_interrupting_signal ;
+ int transaction_replay_logevent (void*,int) ;
+ int transaction_want_exec (TYPE_1__*) ;
+ scalar_t__ ts_cancelled ;
+ int ts_decryption_failed ;
+ scalar_t__ ts_failed ;
+ int ts_ignored ;
+ scalar_t__ ts_interrupted ;
+ int ts_running ;
+ scalar_t__ ts_terminated ;
+ scalar_t__ ts_unset ;
+ int vkprintf (int,char*,...) ;
 
 void exec_transaction (replay_transaction_info_t *I) {
   if (I->transaction_id < first_transaction_id) {
@@ -118,25 +118,25 @@ void exec_transaction (replay_transaction_info_t *I) {
   }
 
   vkprintf (3, "exec_transaction (id = %d)\n", I->transaction_id);
-  // check status of current transaction
+
   transaction_t *T = get_transaction_f (I->transaction_id, 0);
-  if (T != NULL) {
+  if (T != ((void*)0)) {
     if (!transaction_want_exec (T)) {
       vkprintf (3, "skip tr%d (status = %d)\n", I->transaction_id, T->status);
       return;
     }
   }
 
-  if (T == NULL) {
+  if (T == ((void*)0)) {
     T = get_transaction_f (I->transaction_id, 1);
-    if (T == NULL) {
+    if (T == ((void*)0)) {
       copyexec_abort ();
     }
     T->status = ts_unset;
   }
   T->binlog_pos = I->binlog_pos;
 
-  // try decrypt transaction
+
   unsigned char *b;
   int blen;
   int r = decrypt_transaction (I->input, I->ilen, I->key_id, I->binlog_pos, I->transaction_id, &b, &blen);
@@ -153,7 +153,7 @@ void exec_transaction (replay_transaction_info_t *I) {
 
   vkprintf (3, "transaction was successfully decrypted.\n");
 
-  // check transaction mask
+
   struct lev_copyexec_aux_transaction_header *B = (struct lev_copyexec_aux_transaction_header *) b;
   T->mask = B->mask;
   if (!(T->mask & instance_mask) || synchronization_point_transaction (b, blen)) {
@@ -165,7 +165,7 @@ void exec_transaction (replay_transaction_info_t *I) {
     return;
   }
 
-  // mkdir transaction_dir
+
   get_transaction_dir (T, transaction_dir);
   vkprintf (3, "transaction_dir = %s\n", transaction_dir);
 
@@ -182,8 +182,8 @@ void exec_transaction (replay_transaction_info_t *I) {
     return;
   }
 
-  // tmp_dir isn't relative, since realpath function was used in copyexec-engine.c
-  // chdir transaction_dir
+
+
   if (chdir (transaction_dir) < 0) {
     kprintf ("chdir %s failed. %m\n", transaction_dir);
     handle_failure ();
@@ -197,7 +197,7 @@ void exec_transaction (replay_transaction_info_t *I) {
   vkprintf (3, "[tr%d] binlog_name: %s\n", T->transaction_id, cur_transaction_binlog_name);
 
   while (1) {
-    fd_transaction_logevents = open (cur_transaction_binlog_name, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL, 0400);//TODO: check 0400 mode
+    fd_transaction_logevents = open (cur_transaction_binlog_name, O_WRONLY | O_CREAT | O_TRUNC | O_EXCL, 0400);
     if (fd_transaction_logevents < 0 && errno == EINTR) {
       continue;
     }
@@ -232,7 +232,7 @@ void exec_transaction (replay_transaction_info_t *I) {
   act.sa_mask = signal_set;
   act.sa_flags = 0;
 
-  // fork
+
   pid_t p = fork ();
   if (p < 0) {
     kprintf ("fork () failed. %m\n");
@@ -260,19 +260,19 @@ void exec_transaction (replay_transaction_info_t *I) {
     return;
   }
 
-  assert (!sigaction (SIGINT, &act, NULL));
-  assert (!sigaction (SIGTERM, &act, NULL));
+  assert (!sigaction (SIGINT, &act, ((void*)0)));
+  assert (!sigaction (SIGTERM, &act, ((void*)0)));
 
   set_sigusr1_handler ();
 
-  //did any SIGINT or SIGTERM signal sent before sigaction call?
+
   if (sigterm_receiver_pid == getpid () && !transaction_interrupting_signal) {
     transaction_interrupting_signal = SIGTERM;
   }
 
   setsid ();
 
-  /* close unused in transaction process files */
+
   close_binlog (Binlog, 1);
   fd_close (&fd_aux_binlog);
   fd_close (&epoll_fd);
@@ -289,15 +289,15 @@ void exec_transaction (replay_transaction_info_t *I) {
 
   if (T->mask & MASK_WAITING_TRANSACTION) {
     transaction_t *x;
-    //wait auto transactions
+
     for (x = auto_running_list.next; x != &auto_running_list; x = x->next) {
       if (x->transaction_id < cur_transaction_id) {
         do_wait (x->transaction_id);
       }
     }
-    //wait child transactions
+
     for (x = child_running_list.next; x != &child_running_list; x = x->next) {
-      if (x->transaction_id < cur_transaction_id) { /* this check is needed for the case rerunable transaction */
+      if (x->transaction_id < cur_transaction_id) {
         do_wait (x->transaction_id);
       }
     }
@@ -307,7 +307,7 @@ void exec_transaction (replay_transaction_info_t *I) {
   void *bend = b + blen - 20, *E = b + sizeof (struct lev_copyexec_aux_transaction_header);
   int res = 0;
 
-  // main loop (replay_log)
+
   while (E < bend && !transaction_interrupting_signal) {
     if (interrupted_by_cancelled ()) {
       transaction_interrupting_signal = SIGUSR2;

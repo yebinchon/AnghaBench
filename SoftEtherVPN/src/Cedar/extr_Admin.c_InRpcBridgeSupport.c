@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* IsWinPcapNeeded; void* IsBridgeSupportedOs; } ;
-typedef  TYPE_1__ RPC_BRIDGE_SUPPORT ;
-typedef  int /*<<< orphan*/  PACK ;
+typedef TYPE_1__ RPC_BRIDGE_SUPPORT ;
+typedef int PACK ;
 
-/* Variables and functions */
- void* PackGetBool (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  Zero (TYPE_1__*,int) ; 
+
+ void* PackGetBool (int *,char*) ;
+ int Zero (TYPE_1__*,int) ;
 
 void InRpcBridgeSupport(RPC_BRIDGE_SUPPORT *t, PACK *p)
 {
-	// Validate arguments
-	if (t == NULL || p == NULL)
-	{
-		return;
-	}
 
-	Zero(t, sizeof(RPC_BRIDGE_SUPPORT));
+ if (t == ((void*)0) || p == ((void*)0))
+ {
+  return;
+ }
 
-	t->IsBridgeSupportedOs = PackGetBool(p, "IsBridgeSupportedOs");
-	t->IsWinPcapNeeded = PackGetBool(p, "IsWinPcapNeeded");
+ Zero(t, sizeof(RPC_BRIDGE_SUPPORT));
+
+ t->IsBridgeSupportedOs = PackGetBool(p, "IsBridgeSupportedOs");
+ t->IsWinPcapNeeded = PackGetBool(p, "IsWinPcapNeeded");
 }

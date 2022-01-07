@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WORD ;
-struct TYPE_4__ {int /*<<< orphan*/  member_7; int /*<<< orphan*/  member_6; int /*<<< orphan*/  member_5; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  POINT ;
-typedef  int INT ;
-typedef  TYPE_1__ GPOS_ValueRecord ;
 
-/* Variables and functions */
- int GPOS_get_value_record (int /*<<< orphan*/ ,int /*<<< orphan*/  const*,TYPE_1__*) ; 
- int /*<<< orphan*/  GPOS_get_value_record_offsets (void const*,TYPE_1__*,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  wine_dbgstr_point (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WORD ;
+struct TYPE_4__ {int member_7; int member_6; int member_5; int member_4; int member_3; int member_2; int member_1; int member_0; } ;
+typedef int POINT ;
+typedef int INT ;
+typedef TYPE_1__ GPOS_ValueRecord ;
+
+
+ int GPOS_get_value_record (int ,int const*,TYPE_1__*) ;
+ int GPOS_get_value_record_offsets (void const*,TYPE_1__*,int ,int,int *,int *) ;
+ int TRACE (char*,int ) ;
+ int wine_dbgstr_point (int *) ;
 
 __attribute__((used)) static void apply_pair_value( const void *pos_table, WORD val_fmt1, WORD val_fmt2, const WORD *pair,
                               INT ppem, POINT *adjust, POINT *advance )

@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SIO_LOCK_KEY ; 
- int /*<<< orphan*/  outb (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  release_region (int,int) ; 
+ int SIO_LOCK_KEY ;
+ int outb (int ,int) ;
+ int release_region (int,int) ;
 
 __attribute__((used)) static inline void superio_exit(int base)
 {
-	outb(SIO_LOCK_KEY, base);
-	release_region(base, 2);
+ outb(SIO_LOCK_KEY, base);
+ release_region(base, 2);
 }

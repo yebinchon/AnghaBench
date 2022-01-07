@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_7__ {scalar_t__ format; int /*<<< orphan*/  height; int /*<<< orphan*/  width; scalar_t__ linesize; scalar_t__ data; } ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  EAGAIN ; 
- int /*<<< orphan*/  ENOMEM ; 
- TYPE_1__* av_frame_alloc () ; 
- int /*<<< orphan*/  av_frame_free (TYPE_1__**) ; 
- int /*<<< orphan*/  av_freep (int /*<<< orphan*/ **) ; 
- int av_hwframe_transfer_data (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int av_image_copy_to_buffer (int /*<<< orphan*/ *,int,int /*<<< orphan*/  const* const*,int const*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int av_image_get_buffer_size (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * av_malloc (int) ; 
- int avcodec_receive_frame (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int avcodec_send_packet (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int fwrite (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ hw_pix_fmt ; 
- int /*<<< orphan*/  output_file ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_7__ {scalar_t__ format; int height; int width; scalar_t__ linesize; scalar_t__ data; } ;
+typedef int AVPacket ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int EAGAIN ;
+ int ENOMEM ;
+ TYPE_1__* av_frame_alloc () ;
+ int av_frame_free (TYPE_1__**) ;
+ int av_freep (int **) ;
+ int av_hwframe_transfer_data (TYPE_1__*,TYPE_1__*,int ) ;
+ int av_image_copy_to_buffer (int *,int,int const* const*,int const*,scalar_t__,int ,int ,int) ;
+ int av_image_get_buffer_size (scalar_t__,int ,int ,int) ;
+ int * av_malloc (int) ;
+ int avcodec_receive_frame (int *,TYPE_1__*) ;
+ int avcodec_send_packet (int *,int *) ;
+ int fprintf (int ,char*) ;
+ int fwrite (int *,int,int,int ) ;
+ scalar_t__ hw_pix_fmt ;
+ int output_file ;
+ int stderr ;
 
 __attribute__((used)) static int decode_write(AVCodecContext *avctx, AVPacket *packet)
 {
-    AVFrame *frame = NULL, *sw_frame = NULL;
-    AVFrame *tmp_frame = NULL;
-    uint8_t *buffer = NULL;
+    AVFrame *frame = ((void*)0), *sw_frame = ((void*)0);
+    AVFrame *tmp_frame = ((void*)0);
+    uint8_t *buffer = ((void*)0);
     int size;
     int ret = 0;
 
@@ -69,7 +69,7 @@ __attribute__((used)) static int decode_write(AVCodecContext *avctx, AVPacket *p
         }
 
         if (frame->format == hw_pix_fmt) {
-            /* retrieve data from GPU to CPU */
+
             if ((ret = av_hwframe_transfer_data(sw_frame, frame, 0)) < 0) {
                 fprintf(stderr, "Error transferring the data to system memory\n");
                 goto fail;

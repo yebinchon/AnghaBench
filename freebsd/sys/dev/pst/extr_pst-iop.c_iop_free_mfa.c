@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct iop_softc {TYPE_1__* reg; scalar_t__ ibase; } ;
-struct i2o_basic_message {int version; int message_flags; int message_size; int /*<<< orphan*/  function; int /*<<< orphan*/  initiator_address; int /*<<< orphan*/  target_address; } ;
+struct i2o_basic_message {int version; int message_flags; int message_size; int function; int initiator_address; int target_address; } ;
 struct TYPE_2__ {int iqueue; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  I2O_TID_HOST ; 
- int /*<<< orphan*/  I2O_TID_IOP ; 
- int /*<<< orphan*/  I2O_UTIL_NOP ; 
- int /*<<< orphan*/  bzero (struct i2o_basic_message*,int) ; 
+
+ int I2O_TID_HOST ;
+ int I2O_TID_IOP ;
+ int I2O_UTIL_NOP ;
+ int bzero (struct i2o_basic_message*,int) ;
 
 void
 iop_free_mfa(struct iop_softc *sc, int mfa)

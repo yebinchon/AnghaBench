@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_6__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_6__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ kind; int bol; int column; } ;
-typedef  TYPE_1__ Token ;
+typedef TYPE_1__ Token ;
 struct TYPE_8__ {int column; } ;
 
-/* Variables and functions */
- int EOF ; 
- scalar_t__ TIDENT ; 
- TYPE_6__* current_file () ; 
- scalar_t__ is_ident (TYPE_1__*,char*) ; 
- TYPE_1__* lex () ; 
- TYPE_1__* make_keyword (char) ; 
- int readc () ; 
- int /*<<< orphan*/  skip_char () ; 
- int /*<<< orphan*/  skip_line () ; 
- int /*<<< orphan*/  skip_space () ; 
- int /*<<< orphan*/  skip_string () ; 
- int /*<<< orphan*/  unget_token (TYPE_1__*) ; 
+
+ int EOF ;
+ scalar_t__ TIDENT ;
+ TYPE_6__* current_file () ;
+ scalar_t__ is_ident (TYPE_1__*,char*) ;
+ TYPE_1__* lex () ;
+ TYPE_1__* make_keyword (char) ;
+ int readc () ;
+ int skip_char () ;
+ int skip_line () ;
+ int skip_space () ;
+ int skip_string () ;
+ int unget_token (TYPE_1__*) ;
 
 void skip_cond_incl() {
     int nest = 0;
@@ -55,7 +55,7 @@ void skip_cond_incl() {
         if (!nest && (is_ident(tok, "else") || is_ident(tok, "elif") || is_ident(tok, "endif"))) {
             unget_token(tok);
             Token *hash = make_keyword('#');
-            hash->bol = true;
+            hash->bol = 1;
             hash->column = column;
             unget_token(hash);
             return;

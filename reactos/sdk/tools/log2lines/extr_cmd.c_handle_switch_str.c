@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- char* KDBG_ESC_OFF ; 
- int /*<<< orphan*/  esclog (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
+
+
+
+typedef int FILE ;
+
+
+ char* KDBG_ESC_OFF ;
+ int esclog (int *,char*,...) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strcpy (char*,char*) ;
 
 __attribute__((used)) static int
 handle_switch_str(FILE *outFile, char *sw, char *arg, char *desc)

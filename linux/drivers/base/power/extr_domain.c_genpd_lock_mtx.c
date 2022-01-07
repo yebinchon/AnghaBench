@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct generic_pm_domain {int /*<<< orphan*/  mlock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
+
+
+
+struct generic_pm_domain {int mlock; } ;
+
+
+ int mutex_lock (int *) ;
 
 __attribute__((used)) static void genpd_lock_mtx(struct generic_pm_domain *genpd)
 {
-	mutex_lock(&genpd->mlock);
+ mutex_lock(&genpd->mlock);
 }

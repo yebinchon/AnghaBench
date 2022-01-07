@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct stat {int st_size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  appimage_get_elf_section_offset_and_length (char*,char*,unsigned long*,unsigned long*) ; 
- unsigned long atoi (char*) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- char* segment_name ; 
- int sha256_file (char*,char*,unsigned long,unsigned long) ; 
- scalar_t__ stat (char*,struct stat*) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int appimage_get_elf_section_offset_and_length (char*,char*,unsigned long*,unsigned long*) ;
+ unsigned long atoi (char*) ;
+ int exit (int) ;
+ int fprintf (int ,char*,...) ;
+ int printf (char*,char*) ;
+ char* segment_name ;
+ int sha256_file (char*,char*,unsigned long,unsigned long) ;
+ scalar_t__ stat (char*,struct stat*) ;
+ int stderr ;
 
 int main(int argc,char **argv)
 {
@@ -39,7 +39,7 @@ int main(int argc,char **argv)
     unsigned long skip_offset = 0;
     unsigned long skip_length = 0;
     char *filename = argv[1];
-        
+
     struct stat st;
     if (stat(filename, &st) < 0) {
         fprintf(stderr, "not existing file: %s\n", filename);

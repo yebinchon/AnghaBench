@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_6__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+typedef struct TYPE_14__ TYPE_6__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef int u8 ;
 struct TYPE_11__ {scalar_t__ pVtab; } ;
-typedef  TYPE_1__ sqlite3_vtab_cursor ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
+typedef TYPE_1__ sqlite3_vtab_cursor ;
+typedef int sqlite3_value ;
 struct TYPE_12__ {char* zFile; scalar_t__ pFirstEntry; scalar_t__ pLastEntry; scalar_t__ pWriteFd; } ;
-typedef  TYPE_2__ ZipfileTab ;
-struct TYPE_14__ {scalar_t__ nEntry; int /*<<< orphan*/  iOffset; } ;
-struct TYPE_13__ {scalar_t__ pFreeEntry; scalar_t__ pFile; int bEof; int bNoop; scalar_t__ pCurrent; TYPE_6__ eocd; int /*<<< orphan*/  iNextOff; } ;
-typedef  TYPE_3__ ZipfileCsr ;
+typedef TYPE_2__ ZipfileTab ;
+struct TYPE_14__ {scalar_t__ nEntry; int iOffset; } ;
+struct TYPE_13__ {scalar_t__ pFreeEntry; scalar_t__ pFile; int bEof; int bNoop; scalar_t__ pCurrent; TYPE_6__ eocd; int iNextOff; } ;
+typedef TYPE_3__ ZipfileCsr ;
 
-/* Variables and functions */
- scalar_t__ SQLITE_BLOB ; 
- int SQLITE_ERROR ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ fopen (char const*,char*) ; 
- scalar_t__ sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_text (int /*<<< orphan*/ *) ; 
- scalar_t__ sqlite3_value_type (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zipfileCursorErr (TYPE_3__*,char*,...) ; 
- int zipfileLoadDirectory (TYPE_2__*,int /*<<< orphan*/  const*,int) ; 
- int zipfileNext (TYPE_1__*) ; 
- int zipfileReadEOCD (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,TYPE_6__*) ; 
- int /*<<< orphan*/  zipfileResetCursor (TYPE_3__*) ; 
+
+ scalar_t__ SQLITE_BLOB ;
+ int SQLITE_ERROR ;
+ int SQLITE_OK ;
+ int assert (int) ;
+ scalar_t__ fopen (char const*,char*) ;
+ scalar_t__ sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ scalar_t__ sqlite3_value_text (int *) ;
+ scalar_t__ sqlite3_value_type (int *) ;
+ int zipfileCursorErr (TYPE_3__*,char*,...) ;
+ int zipfileLoadDirectory (TYPE_2__*,int const*,int) ;
+ int zipfileNext (TYPE_1__*) ;
+ int zipfileReadEOCD (TYPE_2__*,int ,int ,scalar_t__,TYPE_6__*) ;
+ int zipfileResetCursor (TYPE_3__*) ;
 
 __attribute__((used)) static int zipfileFilter(
-  sqlite3_vtab_cursor *cur, 
+  sqlite3_vtab_cursor *cur,
   int idxNum, const char *idxStr,
   int argc, sqlite3_value **argv
 ){
   ZipfileTab *pTab = (ZipfileTab*)cur->pVtab;
   ZipfileCsr *pCsr = (ZipfileCsr*)cur;
-  const char *zFile = 0;          /* Zip file to scan */
-  int rc = SQLITE_OK;             /* Return Code */
-  int bInMemory = 0;              /* True for an in-memory zipfile */
+  const char *zFile = 0;
+  int rc = SQLITE_OK;
+  int bInMemory = 0;
 
   zipfileResetCursor(pCsr);
 

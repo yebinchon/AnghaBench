@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  response ;
-typedef  scalar_t__ VCHIQ_INSTANCE_T ;
 
-/* Variables and functions */
- scalar_t__ VCHIQ_SUCCESS ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  global_connection ; 
- scalar_t__ global_initialise_instance ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  single_get_func_table () ; 
- int vc_gencmd (char*,int,char*) ; 
- int /*<<< orphan*/  vc_vchi_cec_init (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vc_vchi_dispmanx_init (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vc_vchi_gencmd_init (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vc_vchi_tv_init (scalar_t__,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vchi_connect (int /*<<< orphan*/ *,int,scalar_t__) ; 
- int /*<<< orphan*/  vchi_create_connection (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int vchi_initialise (scalar_t__*) ; 
- int /*<<< orphan*/  vchi_mphi_message_driver_func_table () ; 
- scalar_t__ vchiq_initialise (scalar_t__*) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
- int /*<<< orphan*/  vcos_init () ; 
- int /*<<< orphan*/  vcos_log (char*) ; 
+
+
+
+typedef int response ;
+typedef scalar_t__ VCHIQ_INSTANCE_T ;
+
+
+ scalar_t__ VCHIQ_SUCCESS ;
+ int exit (int) ;
+ int global_connection ;
+ scalar_t__ global_initialise_instance ;
+ int printf (char*) ;
+ int single_get_func_table () ;
+ int vc_gencmd (char*,int,char*) ;
+ int vc_vchi_cec_init (scalar_t__,int *,int) ;
+ int vc_vchi_dispmanx_init (scalar_t__,int *,int) ;
+ int vc_vchi_gencmd_init (scalar_t__,int *,int) ;
+ int vc_vchi_tv_init (scalar_t__,int *,int) ;
+ int vchi_connect (int *,int,scalar_t__) ;
+ int vchi_create_connection (int ,int ) ;
+ int vchi_initialise (scalar_t__*) ;
+ int vchi_mphi_message_driver_func_table () ;
+ scalar_t__ vchiq_initialise (scalar_t__*) ;
+ int vcos_assert (int) ;
+ int vcos_init () ;
+ int vcos_log (char*) ;
 
 void bcm_host_init(void)
 {
@@ -42,7 +42,7 @@ void bcm_host_init(void)
    char response[ 128 ];
 
    if (initted)
-	return;
+ return;
    initted = 1;
    vcos_init();
 
@@ -67,7 +67,7 @@ void bcm_host_init(void)
    vc_vchi_dispmanx_init (global_initialise_instance, &global_connection, 1);
    vc_vchi_tv_init (global_initialise_instance, &global_connection, 1);
    vc_vchi_cec_init (global_initialise_instance, &global_connection, 1);
-   //vc_vchi_bufman_init (global_initialise_instance, &global_connection, 1);
+
 
    if ( success == 0 )
    {

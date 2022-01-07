@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int c; int batch; int /*<<< orphan*/  h; int /*<<< orphan*/  w; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_9__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ image ;
 
-/* Variables and functions */
- TYPE_2__ make_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  network_predict (TYPE_1__*,int /*<<< orphan*/ ) ; 
- long numops (TYPE_1__*) ; 
- TYPE_1__* parse_network_cfg (char*) ; 
- int /*<<< orphan*/  printf (char*,int,...) ; 
- int /*<<< orphan*/  set_batch_network (TYPE_1__*,int) ; 
- double what_time_is_it_now () ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int c; int batch; int h; int w; } ;
+typedef TYPE_1__ network ;
+struct TYPE_9__ {int data; } ;
+typedef TYPE_2__ image ;
+
+
+ TYPE_2__ make_image (int ,int ,int) ;
+ int network_predict (TYPE_1__*,int ) ;
+ long numops (TYPE_1__*) ;
+ TYPE_1__* parse_network_cfg (char*) ;
+ int printf (char*,int,...) ;
+ int set_batch_network (TYPE_1__*,int) ;
+ double what_time_is_it_now () ;
 
 void speed(char *cfgfile, int tics)
 {

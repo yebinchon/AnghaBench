@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ GLuint ;
-typedef  scalar_t__ GLsizei ;
-typedef  int /*<<< orphan*/  GLcontext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_INVALID_OPERATION ; 
- int /*<<< orphan*/  GL_INVALID_VALUE ; 
- scalar_t__ INSIDE_BEGIN_END (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl_destroy_list (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  gl_error (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef scalar_t__ GLuint ;
+typedef scalar_t__ GLsizei ;
+typedef int GLcontext ;
+
+
+ int GL_INVALID_OPERATION ;
+ int GL_INVALID_VALUE ;
+ scalar_t__ INSIDE_BEGIN_END (int *) ;
+ int gl_destroy_list (int *,scalar_t__) ;
+ int gl_error (int *,int ,char*) ;
 
 void gl_DeleteLists( GLcontext *ctx, GLuint list, GLsizei range )
 {

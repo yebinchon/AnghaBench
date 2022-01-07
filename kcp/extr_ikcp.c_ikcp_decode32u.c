@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int IUINT32 ;
 
-/* Variables and functions */
+
+
+
+typedef int IUINT32 ;
+
+
 
 __attribute__((used)) static inline const char *ikcp_decode32u(const char *p, IUINT32 *l)
 {
-#if IWORDS_BIG_ENDIAN || IWORDS_MUST_ALIGN
-	*l = *(const unsigned char*)(p + 3);
-	*l = *(const unsigned char*)(p + 2) + (*l << 8);
-	*l = *(const unsigned char*)(p + 1) + (*l << 8);
-	*l = *(const unsigned char*)(p + 0) + (*l << 8);
-#else 
-	*l = *(const IUINT32*)p;
-#endif
-	p += 4;
-	return p;
+
+
+
+
+
+
+ *l = *(const IUINT32*)p;
+
+ p += 4;
+ return p;
 }

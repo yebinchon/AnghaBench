@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  keyCtx; int /*<<< orphan*/  tempCtx; } ;
-struct TYPE_6__ {int /*<<< orphan*/  opaque; } ;
-typedef  TYPE_1__* IndexScanDesc ;
-typedef  TYPE_2__* GinScanOpaque ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MemoryContextDelete (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ginFreeScanKeys (TYPE_2__*) ; 
- int /*<<< orphan*/  pfree (TYPE_2__*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int keyCtx; int tempCtx; } ;
+struct TYPE_6__ {int opaque; } ;
+typedef TYPE_1__* IndexScanDesc ;
+typedef TYPE_2__* GinScanOpaque ;
+
+
+ int MemoryContextDelete (int ) ;
+ int ginFreeScanKeys (TYPE_2__*) ;
+ int pfree (TYPE_2__*) ;
 
 void
 ginendscan(IndexScanDesc scan)
 {
-	GinScanOpaque so = (GinScanOpaque) scan->opaque;
+ GinScanOpaque so = (GinScanOpaque) scan->opaque;
 
-	ginFreeScanKeys(so);
+ ginFreeScanKeys(so);
 
-	MemoryContextDelete(so->tempCtx);
-	MemoryContextDelete(so->keyCtx);
+ MemoryContextDelete(so->tempCtx);
+ MemoryContextDelete(so->keyCtx);
 
-	pfree(so);
+ pfree(so);
 }

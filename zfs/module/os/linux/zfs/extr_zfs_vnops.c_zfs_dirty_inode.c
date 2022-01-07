@@ -1,117 +1,102 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  z_lock; int /*<<< orphan*/  z_sa_hdl; int /*<<< orphan*/ ******** z_mode; int /*<<< orphan*/  z_atime_dirty; } ;
-typedef  TYPE_1__ znode_t ;
-struct TYPE_15__ {int /*<<< orphan*/  z_os; } ;
-typedef  TYPE_2__ zfsvfs_t ;
-typedef  int /*<<< orphan*/ **** uint64_t ;
-struct inode {int /*<<< orphan*/ ******** i_mode; int /*<<< orphan*/  i_ctime; int /*<<< orphan*/  i_mtime; int /*<<< orphan*/  i_atime; } ;
-typedef  int /*<<< orphan*/  sa_bulk_attr_t ;
-typedef  int /*<<< orphan*/  dmu_tx_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B_FALSE ; 
- int /*<<< orphan*/  B_TRUE ; 
- TYPE_1__* ITOZ (struct inode*) ; 
- TYPE_2__* ITOZSB (struct inode*) ; 
- int I_DIRTY_TIME ; 
- int /*<<< orphan*/  SA_ADD_BULK_ATTR (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ******,int) ; 
- int /*<<< orphan*/  SA_ZPL_ATIME (TYPE_2__*) ; 
- int /*<<< orphan*/  SA_ZPL_CTIME (TYPE_2__*) ; 
- int /*<<< orphan*/  SA_ZPL_MODE (TYPE_2__*) ; 
- int /*<<< orphan*/  SA_ZPL_MTIME (TYPE_2__*) ; 
- int /*<<< orphan*/  TXG_WAIT ; 
- int /*<<< orphan*/  ZFS_ENTER (TYPE_2__*) ; 
- int /*<<< orphan*/  ZFS_EXIT (TYPE_2__*) ; 
- int /*<<< orphan*/  ZFS_TIME_ENCODE (int /*<<< orphan*/ *,int /*<<< orphan*/ *****) ; 
- int /*<<< orphan*/  ZFS_VERIFY_ZP (TYPE_1__*) ; 
- scalar_t__ dmu_objset_is_snapshot (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dmu_tx_abort (int /*<<< orphan*/ *) ; 
- int dmu_tx_assign (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dmu_tx_commit (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * dmu_tx_create (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dmu_tx_hold_sa (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mutex_enter (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_exit (int /*<<< orphan*/ *) ; 
- int sa_bulk_update (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- scalar_t__ zfs_is_readonly (TYPE_2__*) ; 
- int /*<<< orphan*/  zfs_sa_upgrade_txholds (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int z_lock; int z_sa_hdl; int ******** z_mode; int z_atime_dirty; } ;
+typedef TYPE_1__ znode_t ;
+struct TYPE_15__ {int z_os; } ;
+typedef TYPE_2__ zfsvfs_t ;
+typedef int **** uint64_t ;
+struct inode {int ******** i_mode; int i_ctime; int i_mtime; int i_atime; } ;
+typedef int sa_bulk_attr_t ;
+typedef int dmu_tx_t ;
+
+
+ int B_FALSE ;
+ int B_TRUE ;
+ TYPE_1__* ITOZ (struct inode*) ;
+ TYPE_2__* ITOZSB (struct inode*) ;
+ int I_DIRTY_TIME ;
+ int SA_ADD_BULK_ATTR (int *,int,int ,int *,int ******,int) ;
+ int SA_ZPL_ATIME (TYPE_2__*) ;
+ int SA_ZPL_CTIME (TYPE_2__*) ;
+ int SA_ZPL_MODE (TYPE_2__*) ;
+ int SA_ZPL_MTIME (TYPE_2__*) ;
+ int TXG_WAIT ;
+ int ZFS_ENTER (TYPE_2__*) ;
+ int ZFS_EXIT (TYPE_2__*) ;
+ int ZFS_TIME_ENCODE (int *,int *****) ;
+ int ZFS_VERIFY_ZP (TYPE_1__*) ;
+ scalar_t__ dmu_objset_is_snapshot (int ) ;
+ int dmu_tx_abort (int *) ;
+ int dmu_tx_assign (int *,int ) ;
+ int dmu_tx_commit (int *) ;
+ int * dmu_tx_create (int ) ;
+ int dmu_tx_hold_sa (int *,int ,int ) ;
+ int mutex_enter (int *) ;
+ int mutex_exit (int *) ;
+ int sa_bulk_update (int ,int *,int,int *) ;
+ scalar_t__ zfs_is_readonly (TYPE_2__*) ;
+ int zfs_sa_upgrade_txholds (int *,TYPE_1__*) ;
 
 int
 zfs_dirty_inode(struct inode *ip, int flags)
 {
-	znode_t		*zp = ITOZ(ip);
-	zfsvfs_t	*zfsvfs = ITOZSB(ip);
-	dmu_tx_t	*tx;
-	uint64_t	mode, atime[2], mtime[2], ctime[2];
-	sa_bulk_attr_t	bulk[4];
-	int		error = 0;
-	int		cnt = 0;
+ znode_t *zp = ITOZ(ip);
+ zfsvfs_t *zfsvfs = ITOZSB(ip);
+ dmu_tx_t *tx;
+ uint64_t mode, atime[2], mtime[2], ctime[2];
+ sa_bulk_attr_t bulk[4];
+ int error = 0;
+ int cnt = 0;
 
-	if (zfs_is_readonly(zfsvfs) || dmu_objset_is_snapshot(zfsvfs->z_os))
-		return (0);
+ if (zfs_is_readonly(zfsvfs) || dmu_objset_is_snapshot(zfsvfs->z_os))
+  return (0);
 
-	ZFS_ENTER(zfsvfs);
-	ZFS_VERIFY_ZP(zp);
+ ZFS_ENTER(zfsvfs);
+ ZFS_VERIFY_ZP(zp);
+ tx = dmu_tx_create(zfsvfs->z_os);
 
-#ifdef I_DIRTY_TIME
-	/*
-	 * This is the lazytime semantic introduced in Linux 4.0
-	 * This flag will only be called from update_time when lazytime is set.
-	 * (Note, I_DIRTY_SYNC will also set if not lazytime)
-	 * Fortunately mtime and ctime are managed within ZFS itself, so we
-	 * only need to dirty atime.
-	 */
-	if (flags == I_DIRTY_TIME) {
-		zp->z_atime_dirty = B_TRUE;
-		goto out;
-	}
-#endif
+ dmu_tx_hold_sa(tx, zp->z_sa_hdl, B_FALSE);
+ zfs_sa_upgrade_txholds(tx, zp);
 
-	tx = dmu_tx_create(zfsvfs->z_os);
+ error = dmu_tx_assign(tx, TXG_WAIT);
+ if (error) {
+  dmu_tx_abort(tx);
+  goto out;
+ }
 
-	dmu_tx_hold_sa(tx, zp->z_sa_hdl, B_FALSE);
-	zfs_sa_upgrade_txholds(tx, zp);
+ mutex_enter(&zp->z_lock);
+ zp->z_atime_dirty = B_FALSE;
 
-	error = dmu_tx_assign(tx, TXG_WAIT);
-	if (error) {
-		dmu_tx_abort(tx);
-		goto out;
-	}
+ SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_MODE(zfsvfs), ((void*)0), &mode, 8);
+ SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_ATIME(zfsvfs), ((void*)0), &atime, 16);
+ SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_MTIME(zfsvfs), ((void*)0), &mtime, 16);
+ SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_CTIME(zfsvfs), ((void*)0), &ctime, 16);
 
-	mutex_enter(&zp->z_lock);
-	zp->z_atime_dirty = B_FALSE;
 
-	SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_MODE(zfsvfs), NULL, &mode, 8);
-	SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_ATIME(zfsvfs), NULL, &atime, 16);
-	SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_MTIME(zfsvfs), NULL, &mtime, 16);
-	SA_ADD_BULK_ATTR(bulk, cnt, SA_ZPL_CTIME(zfsvfs), NULL, &ctime, 16);
+ ZFS_TIME_ENCODE(&ip->i_atime, atime);
+ ZFS_TIME_ENCODE(&ip->i_mtime, mtime);
+ ZFS_TIME_ENCODE(&ip->i_ctime, ctime);
+ mode = ip->i_mode;
 
-	/* Preserve the mode, mtime and ctime provided by the inode */
-	ZFS_TIME_ENCODE(&ip->i_atime, atime);
-	ZFS_TIME_ENCODE(&ip->i_mtime, mtime);
-	ZFS_TIME_ENCODE(&ip->i_ctime, ctime);
-	mode = ip->i_mode;
+ zp->z_mode = mode;
 
-	zp->z_mode = mode;
+ error = sa_bulk_update(zp->z_sa_hdl, bulk, cnt, tx);
+ mutex_exit(&zp->z_lock);
 
-	error = sa_bulk_update(zp->z_sa_hdl, bulk, cnt, tx);
-	mutex_exit(&zp->z_lock);
-
-	dmu_tx_commit(tx);
+ dmu_tx_commit(tx);
 out:
-	ZFS_EXIT(zfsvfs);
-	return (error);
+ ZFS_EXIT(zfsvfs);
+ return (error);
 }

@@ -1,290 +1,290 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_26__   TYPE_4__ ;
-typedef  struct TYPE_25__   TYPE_3__ ;
-typedef  struct TYPE_24__   TYPE_2__ ;
-typedef  struct TYPE_23__   TYPE_1__ ;
-typedef  struct TYPE_22__   TYPE_18__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  secret_str ;
-typedef  int /*<<< orphan*/  o ;
-typedef  int /*<<< orphan*/  name ;
-typedef  int /*<<< orphan*/  g ;
-typedef  scalar_t__ UINT ;
-struct TYPE_26__ {int Size; int /*<<< orphan*/  Buf; } ;
-struct TYPE_25__ {char* RadiusSuffixFilter; char* RadiusRealm; scalar_t__ Type; int CurrentVersion; int LastVersion; scalar_t__ LastCommTime; scalar_t__ LastLoginTime; int Offline; int /*<<< orphan*/  PacketLogger; int /*<<< orphan*/  SecurityLogger; void* NumLogin; void* CreatedTime; TYPE_1__* Cedar; int /*<<< orphan*/  SecureNATOption; int /*<<< orphan*/  Traffic; int /*<<< orphan*/  SecurePassword; int /*<<< orphan*/  HashedPassword; int /*<<< orphan*/  RadiusOptionLock; void* RadiusUsePeapInsteadOfEap; void* RadiusConvertAllMsChapv2AuthRequestToEap; } ;
-struct TYPE_24__ {scalar_t__ ServerType; int /*<<< orphan*/ * Cedar; } ;
+
+
+typedef struct TYPE_26__ TYPE_4__ ;
+typedef struct TYPE_25__ TYPE_3__ ;
+typedef struct TYPE_24__ TYPE_2__ ;
+typedef struct TYPE_23__ TYPE_1__ ;
+typedef struct TYPE_22__ TYPE_18__ ;
+
+
+typedef int wchar_t ;
+typedef int secret_str ;
+typedef int o ;
+typedef int name ;
+typedef int g ;
+typedef scalar_t__ UINT ;
+struct TYPE_26__ {int Size; int Buf; } ;
+struct TYPE_25__ {char* RadiusSuffixFilter; char* RadiusRealm; scalar_t__ Type; int CurrentVersion; int LastVersion; scalar_t__ LastCommTime; scalar_t__ LastLoginTime; int Offline; int PacketLogger; int SecurityLogger; void* NumLogin; void* CreatedTime; TYPE_1__* Cedar; int SecureNATOption; int Traffic; int SecurePassword; int HashedPassword; int RadiusOptionLock; void* RadiusUsePeapInsteadOfEap; void* RadiusConvertAllMsChapv2AuthRequestToEap; } ;
+struct TYPE_24__ {scalar_t__ ServerType; int * Cedar; } ;
 struct TYPE_23__ {int Bridge; TYPE_18__* Server; } ;
 struct TYPE_22__ {scalar_t__ ServerType; } ;
-typedef  TYPE_2__ SERVER ;
-typedef  char HUB_OPTION ;
-typedef  char HUB_LOG ;
-typedef  TYPE_3__ HUB ;
-typedef  int /*<<< orphan*/  FOLDER ;
-typedef  int /*<<< orphan*/  CEDAR ;
-typedef  TYPE_4__ BUF ;
+typedef TYPE_2__ SERVER ;
+typedef char HUB_OPTION ;
+typedef char HUB_LOG ;
+typedef TYPE_3__ HUB ;
+typedef int FOLDER ;
+typedef int CEDAR ;
+typedef TYPE_4__ BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADMINISTRATOR_USERNAME ; 
- int /*<<< orphan*/  AddHub (int /*<<< orphan*/ *,TYPE_3__*) ; 
- void* CfgGetBool (int /*<<< orphan*/ *,char*) ; 
- TYPE_4__* CfgGetBuf (int /*<<< orphan*/ *,char*) ; 
- int CfgGetByte (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/ * CfgGetFolder (int /*<<< orphan*/ *,char*) ; 
- void* CfgGetInt (int /*<<< orphan*/ *,char*) ; 
- void* CfgGetInt64 (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ CfgGetStr (int /*<<< orphan*/ *,char*,char*,int) ; 
- scalar_t__ CfgGetUniStr (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  Copy (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FreeBuf (TYPE_4__*) ; 
- scalar_t__ GetServerCapsBool (TYPE_18__*,char*) ; 
- int HUB_MAXMSG_LEN ; 
- scalar_t__ HUB_TYPE_FARM_DYNAMIC ; 
- scalar_t__ HUB_TYPE_STANDALONE ; 
- int /*<<< orphan*/  HashPassword (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/ * Malloc (int) ; 
- TYPE_3__* NewHub (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  NiClearUnsupportedVhOptionForDynamicHub (int /*<<< orphan*/ ,int) ; 
- scalar_t__ RADIUS_RETRY_INTERVAL ; 
- int /*<<< orphan*/  ReleaseHub (TYPE_3__*) ; 
- scalar_t__ SERVER_TYPE_FARM_CONTROLLER ; 
- scalar_t__ SERVER_TYPE_STANDALONE ; 
- int /*<<< orphan*/  SetHubLogSetting (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  SetHubMsg (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetHubOffline (TYPE_3__*) ; 
- int /*<<< orphan*/  SetHubOnline (TYPE_3__*) ; 
- int /*<<< orphan*/  SetRadiusServerEx (TYPE_3__*,char*,scalar_t__,char*,scalar_t__) ; 
- int /*<<< orphan*/  Sha0 (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SiLoadHubAccessLists (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadHubAdminOptions (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadHubDb (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadHubLinks (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadHubLogCfg (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadHubOptionCfg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  SiLoadSecureNAT (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SiLoadTraffic (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- void* SystemTime64 () ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitLogFlush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Zero (char*,int) ; 
+
+ int ADMINISTRATOR_USERNAME ;
+ int AddHub (int *,TYPE_3__*) ;
+ void* CfgGetBool (int *,char*) ;
+ TYPE_4__* CfgGetBuf (int *,char*) ;
+ int CfgGetByte (int *,char*,int ,int) ;
+ int * CfgGetFolder (int *,char*) ;
+ void* CfgGetInt (int *,char*) ;
+ void* CfgGetInt64 (int *,char*) ;
+ scalar_t__ CfgGetStr (int *,char*,char*,int) ;
+ scalar_t__ CfgGetUniStr (int *,char*,int *,int) ;
+ int Copy (char*,int ,int) ;
+ int Free (int *) ;
+ int FreeBuf (TYPE_4__*) ;
+ scalar_t__ GetServerCapsBool (TYPE_18__*,char*) ;
+ int HUB_MAXMSG_LEN ;
+ scalar_t__ HUB_TYPE_FARM_DYNAMIC ;
+ scalar_t__ HUB_TYPE_STANDALONE ;
+ int HashPassword (int ,int ,char*) ;
+ int Lock (int ) ;
+ int MAX_SIZE ;
+ int * Malloc (int) ;
+ TYPE_3__* NewHub (int *,char*,char*) ;
+ int NiClearUnsupportedVhOptionForDynamicHub (int ,int) ;
+ scalar_t__ RADIUS_RETRY_INTERVAL ;
+ int ReleaseHub (TYPE_3__*) ;
+ scalar_t__ SERVER_TYPE_FARM_CONTROLLER ;
+ scalar_t__ SERVER_TYPE_STANDALONE ;
+ int SetHubLogSetting (TYPE_3__*,char*) ;
+ int SetHubMsg (TYPE_3__*,int *) ;
+ int SetHubOffline (TYPE_3__*) ;
+ int SetHubOnline (TYPE_3__*) ;
+ int SetRadiusServerEx (TYPE_3__*,char*,scalar_t__,char*,scalar_t__) ;
+ int Sha0 (int ,char*,int ) ;
+ int SiLoadHubAccessLists (TYPE_3__*,int *) ;
+ int SiLoadHubAdminOptions (TYPE_3__*,int *) ;
+ int SiLoadHubDb (TYPE_3__*,int *) ;
+ int SiLoadHubLinks (TYPE_3__*,int *) ;
+ int SiLoadHubLogCfg (char*,int *) ;
+ int SiLoadHubOptionCfg (int *,char*) ;
+ int SiLoadSecureNAT (TYPE_3__*,int *) ;
+ int SiLoadTraffic (int *,char*,int ) ;
+ void* SystemTime64 () ;
+ int Unlock (int ) ;
+ int WaitLogFlush (int ) ;
+ int Zero (char*,int) ;
 
 void SiLoadHubCfg(SERVER *s, FOLDER *f, char *name)
 {
-	HUB *h;
-	CEDAR *c;
-	HUB_OPTION o;
-	bool online;
-	UINT hub_old_type = 0;
-	// Validate arguments
-	if (s == NULL || f == NULL || name == NULL)
-	{
-		return;
-	}
+ HUB *h;
+ CEDAR *c;
+ HUB_OPTION o;
+ bool online;
+ UINT hub_old_type = 0;
 
-	c = s->Cedar;
+ if (s == ((void*)0) || f == ((void*)0) || name == ((void*)0))
+ {
+  return;
+ }
 
-	// Get the option
-	Zero(&o, sizeof(o));
-	SiLoadHubOptionCfg(CfgGetFolder(f, "Option"), &o);
+ c = s->Cedar;
 
-	// Create a HUB
-	h = NewHub(c, name, &o);
-	if (h != NULL)
-	{
-		HUB_LOG g;
-		// Radius server settings
-		Lock(h->RadiusOptionLock);
-		{
-			char name[MAX_SIZE];
-			BUF *secret;
-			UINT port;
-			UINT interval;
 
-			port = CfgGetInt(f, "RadiusServerPort");
-			interval = CfgGetInt(f, "RadiusRetryInterval");
+ Zero(&o, sizeof(o));
+ SiLoadHubOptionCfg(CfgGetFolder(f, "Option"), &o);
 
-			CfgGetStr(f, "RadiusSuffixFilter", h->RadiusSuffixFilter, sizeof(h->RadiusSuffixFilter));
-			CfgGetStr(f, "RadiusRealm", h->RadiusRealm, sizeof(h->RadiusRealm));
 
-			h->RadiusConvertAllMsChapv2AuthRequestToEap = CfgGetBool(f, "RadiusConvertAllMsChapv2AuthRequestToEap");
-			h->RadiusUsePeapInsteadOfEap = CfgGetBool(f, "RadiusUsePeapInsteadOfEap");
+ h = NewHub(c, name, &o);
+ if (h != ((void*)0))
+ {
+  HUB_LOG g;
 
-			if (interval == 0)
-			{
-				interval = RADIUS_RETRY_INTERVAL;
-			}
+  Lock(h->RadiusOptionLock);
+  {
+   char name[MAX_SIZE];
+   BUF *secret;
+   UINT port;
+   UINT interval;
 
-			if (port != 0 && CfgGetStr(f, "RadiusServerName", name, sizeof(name)))
-			{
-				secret = CfgGetBuf(f, "RadiusSecret");
-				if (secret != NULL)
-				{
-					char secret_str[MAX_SIZE];
-					Zero(secret_str, sizeof(secret_str));
-					if (secret->Size < sizeof(secret_str))
-					{
-						Copy(secret_str, secret->Buf, secret->Size);
-					}
-					secret_str[sizeof(secret_str) - 1] = 0;
-					//SetRadiusServer(h, name, port, secret_str);
-					SetRadiusServerEx(h, name, port, secret_str, interval);
-					FreeBuf(secret);
-				}
-			}
-		}
-		Unlock(h->RadiusOptionLock);
+   port = CfgGetInt(f, "RadiusServerPort");
+   interval = CfgGetInt(f, "RadiusRetryInterval");
 
-		// Password
-		if (CfgGetByte(f, "HashedPassword", h->HashedPassword, sizeof(h->HashedPassword)) != sizeof(h->HashedPassword))
-		{
-			Sha0(h->HashedPassword, "", 0);
-		}
-		if (CfgGetByte(f, "SecurePassword", h->SecurePassword, sizeof(h->SecurePassword)) != sizeof(h->SecurePassword))
-		{
-			HashPassword(h->SecurePassword, ADMINISTRATOR_USERNAME, "");
-		}
+   CfgGetStr(f, "RadiusSuffixFilter", h->RadiusSuffixFilter, sizeof(h->RadiusSuffixFilter));
+   CfgGetStr(f, "RadiusRealm", h->RadiusRealm, sizeof(h->RadiusRealm));
 
-		// Log Settings
-		Zero(&g, sizeof(g));
-		SiLoadHubLogCfg(&g, CfgGetFolder(f, "LogSetting"));
-		SetHubLogSetting(h, &g);
+   h->RadiusConvertAllMsChapv2AuthRequestToEap = CfgGetBool(f, "RadiusConvertAllMsChapv2AuthRequestToEap");
+   h->RadiusUsePeapInsteadOfEap = CfgGetBool(f, "RadiusUsePeapInsteadOfEap");
 
-		// Online / Offline flag
-		if (h->Cedar->Bridge == false)
-		{
-			online = CfgGetBool(f, "Online");
-		}
-		else
-		{
-			online = true;
-		}
+   if (interval == 0)
+   {
+    interval = RADIUS_RETRY_INTERVAL;
+   }
 
-		// Traffic information
-		SiLoadTraffic(f, "Traffic", h->Traffic);
+   if (port != 0 && CfgGetStr(f, "RadiusServerName", name, sizeof(name)))
+   {
+    secret = CfgGetBuf(f, "RadiusSecret");
+    if (secret != ((void*)0))
+    {
+     char secret_str[MAX_SIZE];
+     Zero(secret_str, sizeof(secret_str));
+     if (secret->Size < sizeof(secret_str))
+     {
+      Copy(secret_str, secret->Buf, secret->Size);
+     }
+     secret_str[sizeof(secret_str) - 1] = 0;
 
-		// Access list
-		SiLoadHubAccessLists(h, CfgGetFolder(f, "AccessList"));
+     SetRadiusServerEx(h, name, port, secret_str, interval);
+     FreeBuf(secret);
+    }
+   }
+  }
+  Unlock(h->RadiusOptionLock);
 
-		// Type of HUB
-		hub_old_type = h->Type = CfgGetInt(f, "Type");
 
-		if (s->ServerType == SERVER_TYPE_STANDALONE)
-		{
-			if (h->Type != HUB_TYPE_STANDALONE)
-			{
-				// Change the type of all HUB to a stand-alone if the server is a stand-alone
-				h->Type = HUB_TYPE_STANDALONE;
-			}
-		}
-		else
-		{
-			if (h->Type == HUB_TYPE_STANDALONE)
-			{
-				// If the server is a farm controller, change the type of HUB to the farm supported types
-				h->Type = HUB_TYPE_FARM_DYNAMIC;
-			}
-		}
+  if (CfgGetByte(f, "HashedPassword", h->HashedPassword, sizeof(h->HashedPassword)) != sizeof(h->HashedPassword))
+  {
+   Sha0(h->HashedPassword, "", 0);
+  }
+  if (CfgGetByte(f, "SecurePassword", h->SecurePassword, sizeof(h->SecurePassword)) != sizeof(h->SecurePassword))
+  {
+   HashPassword(h->SecurePassword, ADMINISTRATOR_USERNAME, "");
+  }
 
-		if (h->Type == HUB_TYPE_FARM_DYNAMIC)
-		{
-			h->CurrentVersion = h->LastVersion = 1;
-		}
 
-		// Message
-		{
-			FOLDER *folder = CfgGetFolder(f, "Message");
-			if (folder != NULL)
-			{
-				wchar_t *tmp = Malloc(sizeof(wchar_t) * (HUB_MAXMSG_LEN + 1));
-				if (CfgGetUniStr(folder, "MessageText", tmp, sizeof(wchar_t) * (HUB_MAXMSG_LEN + 1)))
-				{
-					SetHubMsg(h, tmp);
-				}
-				Free(tmp);
-			}
-		}
+  Zero(&g, sizeof(g));
+  SiLoadHubLogCfg(&g, CfgGetFolder(f, "LogSetting"));
+  SetHubLogSetting(h, &g);
 
-		// Link list
-		if (h->Type == HUB_TYPE_STANDALONE)
-		{
-			// The link list is used only on stand-alone HUB
-			// In VPN Gate hubs, don't load this
-			{
-				SiLoadHubLinks(h, CfgGetFolder(f, "CascadeList"));
-			}
-		}
 
-		// SecureNAT
-		if (GetServerCapsBool(h->Cedar->Server, "b_support_securenat"))
-		{
-			if (h->Type == HUB_TYPE_STANDALONE || h->Type == HUB_TYPE_FARM_DYNAMIC)
-			{
-				// SecureNAT is used only in the case of dynamic HUB or standalone HUB
-				SiLoadSecureNAT(h, CfgGetFolder(f, "SecureNAT"));
+  if (h->Cedar->Bridge == 0)
+  {
+   online = CfgGetBool(f, "Online");
+  }
+  else
+  {
+   online = 1;
+  }
 
-				if (h->Type != HUB_TYPE_STANDALONE && h->Cedar != NULL && h->Cedar->Server != NULL &&
-					h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
-				{
-					NiClearUnsupportedVhOptionForDynamicHub(h->SecureNATOption,
-						hub_old_type == HUB_TYPE_STANDALONE);
-				}
 
-			}
-		}
+  SiLoadTraffic(f, "Traffic", h->Traffic);
 
-		// Administration options
-		SiLoadHubAdminOptions(h, CfgGetFolder(f, "AdminOption"));
 
-		// Database
-		if (h->Cedar->Bridge == false)
-		{
-			SiLoadHubDb(h, CfgGetFolder(f, "SecurityAccountDatabase"));
-		}
+  SiLoadHubAccessLists(h, CfgGetFolder(f, "AccessList"));
 
-		// Usage status
-		h->LastCommTime = CfgGetInt64(f, "LastCommTime");
-		if (h->LastCommTime == 0)
-		{
-			h->LastCommTime = SystemTime64();
-		}
-		h->LastLoginTime = CfgGetInt64(f, "LastLoginTime");
-		if (h->LastLoginTime == 0)
-		{
-			h->LastLoginTime = SystemTime64();
-		}
-		h->CreatedTime = CfgGetInt64(f, "CreatedTime");
-		h->NumLogin = CfgGetInt(f, "NumLogin");
 
-		// Start the operation of the HUB
-		AddHub(c, h);
+  hub_old_type = h->Type = CfgGetInt(f, "Type");
 
-		if (online)
-		{
-			h->Offline = true;
-			SetHubOnline(h);
-		}
-		else
-		{
-			h->Offline = false;
-			SetHubOffline(h);
-		}
+  if (s->ServerType == SERVER_TYPE_STANDALONE)
+  {
+   if (h->Type != HUB_TYPE_STANDALONE)
+   {
 
-		WaitLogFlush(h->SecurityLogger);
-		WaitLogFlush(h->PacketLogger);
+    h->Type = HUB_TYPE_STANDALONE;
+   }
+  }
+  else
+  {
+   if (h->Type == HUB_TYPE_STANDALONE)
+   {
 
-		ReleaseHub(h);
-	}
+    h->Type = HUB_TYPE_FARM_DYNAMIC;
+   }
+  }
+
+  if (h->Type == HUB_TYPE_FARM_DYNAMIC)
+  {
+   h->CurrentVersion = h->LastVersion = 1;
+  }
+
+
+  {
+   FOLDER *folder = CfgGetFolder(f, "Message");
+   if (folder != ((void*)0))
+   {
+    wchar_t *tmp = Malloc(sizeof(wchar_t) * (HUB_MAXMSG_LEN + 1));
+    if (CfgGetUniStr(folder, "MessageText", tmp, sizeof(wchar_t) * (HUB_MAXMSG_LEN + 1)))
+    {
+     SetHubMsg(h, tmp);
+    }
+    Free(tmp);
+   }
+  }
+
+
+  if (h->Type == HUB_TYPE_STANDALONE)
+  {
+
+
+   {
+    SiLoadHubLinks(h, CfgGetFolder(f, "CascadeList"));
+   }
+  }
+
+
+  if (GetServerCapsBool(h->Cedar->Server, "b_support_securenat"))
+  {
+   if (h->Type == HUB_TYPE_STANDALONE || h->Type == HUB_TYPE_FARM_DYNAMIC)
+   {
+
+    SiLoadSecureNAT(h, CfgGetFolder(f, "SecureNAT"));
+
+    if (h->Type != HUB_TYPE_STANDALONE && h->Cedar != ((void*)0) && h->Cedar->Server != ((void*)0) &&
+     h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
+    {
+     NiClearUnsupportedVhOptionForDynamicHub(h->SecureNATOption,
+      hub_old_type == HUB_TYPE_STANDALONE);
+    }
+
+   }
+  }
+
+
+  SiLoadHubAdminOptions(h, CfgGetFolder(f, "AdminOption"));
+
+
+  if (h->Cedar->Bridge == 0)
+  {
+   SiLoadHubDb(h, CfgGetFolder(f, "SecurityAccountDatabase"));
+  }
+
+
+  h->LastCommTime = CfgGetInt64(f, "LastCommTime");
+  if (h->LastCommTime == 0)
+  {
+   h->LastCommTime = SystemTime64();
+  }
+  h->LastLoginTime = CfgGetInt64(f, "LastLoginTime");
+  if (h->LastLoginTime == 0)
+  {
+   h->LastLoginTime = SystemTime64();
+  }
+  h->CreatedTime = CfgGetInt64(f, "CreatedTime");
+  h->NumLogin = CfgGetInt(f, "NumLogin");
+
+
+  AddHub(c, h);
+
+  if (online)
+  {
+   h->Offline = 1;
+   SetHubOnline(h);
+  }
+  else
+  {
+   h->Offline = 0;
+   SetHubOffline(h);
+  }
+
+  WaitLogFlush(h->SecurityLogger);
+  WaitLogFlush(h->PacketLogger);
+
+  ReleaseHub(h);
+ }
 }

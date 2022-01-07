@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  va_list ;
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CopyStrToUni (char*) ; 
- int /*<<< orphan*/  Free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * InternalFormatArgs (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  UniToStr (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int wchar_t ;
+typedef int va_list ;
+typedef int UINT ;
+
+
+ int * CopyStrToUni (char*) ;
+ int Free (int *) ;
+ int * InternalFormatArgs (int *,int ,int) ;
+ int UniToStr (char*,int ,int *) ;
 
 void FormatArgs(char *buf, UINT size, char *fmt, va_list args)
 {
-	wchar_t *tag;
-	wchar_t *ret;
-	// Validate arguments
-	if (buf == NULL || fmt == NULL)
-	{
-		return;
-	}
+ wchar_t *tag;
+ wchar_t *ret;
 
-	tag = CopyStrToUni(fmt);
-	ret = InternalFormatArgs(tag, args, true);
+ if (buf == ((void*)0) || fmt == ((void*)0))
+ {
+  return;
+ }
 
-	UniToStr(buf, size, ret);
-	Free(ret);
-	Free(tag);
+ tag = CopyStrToUni(fmt);
+ ret = InternalFormatArgs(tag, args, 1);
+
+ UniToStr(buf, size, ret);
+ Free(ret);
+ Free(tag);
 }

@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gcc_assert (int) ; 
- unsigned int get_name_decl (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+
+
+ int gcc_assert (int) ;
+ unsigned int get_name_decl (int ) ;
 
 __attribute__((used)) static int
 operand_build_cmp (const void *p, const void *q)
@@ -26,9 +26,9 @@ operand_build_cmp (const void *p, const void *q)
   u1 = get_name_decl (e1);
   u2 = get_name_decl (e2);
 
-  /* We want to sort in ascending order.  They can never be equal.  */
-#ifdef ENABLE_CHECKING
-  gcc_assert (u1 != u2);
-#endif
+
+
+
+
   return (u1 > u2 ? 1 : -1);
 }

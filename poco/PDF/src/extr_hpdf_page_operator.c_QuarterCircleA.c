@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int HPDF_REAL ;
 
-/* Variables and functions */
- char* HPDF_FToA (char*,int,char*) ; 
- scalar_t__ HPDF_StrCpy (char*,char*,char*) ; 
- int KAPPA ; 
+
+
+
+typedef int HPDF_REAL ;
+
+
+ char* HPDF_FToA (char*,int,char*) ;
+ scalar_t__ HPDF_StrCpy (char*,char*,char*) ;
+ int KAPPA ;
 
 __attribute__((used)) static char*
-QuarterCircleA  (char   *pbuf,
-                 char   *eptr,
-                 HPDF_REAL    x,
-                 HPDF_REAL    y,
-                 HPDF_REAL    ray)
+QuarterCircleA (char *pbuf,
+                 char *eptr,
+                 HPDF_REAL x,
+                 HPDF_REAL y,
+                 HPDF_REAL ray)
 {
     pbuf = HPDF_FToA (pbuf, x -ray, eptr);
     *pbuf++ = ' ';

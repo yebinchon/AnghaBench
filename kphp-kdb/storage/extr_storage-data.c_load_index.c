@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int docs; int idx_docs; int /*<<< orphan*/  index_size; int /*<<< orphan*/  snapshot_size; struct storage_index_header* Idx_Pos; struct storage_index_header* Md5_Docs; struct storage_index_header* Md5_Pos; int /*<<< orphan*/  md5_mode; int /*<<< orphan*/  volume_id; int /*<<< orphan*/  jump_log_crc32; int /*<<< orphan*/  jump_log_pos; int /*<<< orphan*/  log_split_mod; int /*<<< orphan*/  log_split_max; int /*<<< orphan*/  log_split_min; TYPE_3__* Snapshot; } ;
-typedef  TYPE_2__ volume_t ;
-struct storage_index_header {scalar_t__ magic; int docs; unsigned int const crc32; int /*<<< orphan*/  md5_mode; int /*<<< orphan*/  volume_id; int /*<<< orphan*/  log_pos1_crc32; int /*<<< orphan*/  log_pos1; int /*<<< orphan*/  log_split_mod; int /*<<< orphan*/  log_split_max; int /*<<< orphan*/  log_split_min; } ;
-struct lev_crc32 {scalar_t__ magic; int docs; unsigned int const crc32; int /*<<< orphan*/  md5_mode; int /*<<< orphan*/  volume_id; int /*<<< orphan*/  log_pos1_crc32; int /*<<< orphan*/  log_pos1; int /*<<< orphan*/  log_split_mod; int /*<<< orphan*/  log_split_max; int /*<<< orphan*/  log_split_min; } ;
-typedef  TYPE_3__* kfs_file_handle_t ;
-struct TYPE_7__ {TYPE_1__* info; int /*<<< orphan*/  fd; } ;
-struct TYPE_5__ {int /*<<< orphan*/  file_size; int /*<<< orphan*/  filename; } ;
 
-/* Variables and functions */
- scalar_t__ STORAGE_INDEX_MAGIC ; 
- int /*<<< orphan*/  bread (struct storage_index_header*,unsigned int const) ; 
- int /*<<< orphan*/  bytes_read ; 
- int /*<<< orphan*/  clearin () ; 
- unsigned int idx_crc32_complement ; 
- int idx_docs ; 
- int /*<<< orphan*/  idx_fd ; 
- int /*<<< orphan*/  index_size ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ memcmp (struct storage_index_header*,struct storage_index_header*,int) ; 
- int /*<<< orphan*/  snapshot_size ; 
- int tot_docs ; 
- void* tszmalloc (unsigned int const) ; 
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int docs; int idx_docs; int index_size; int snapshot_size; struct storage_index_header* Idx_Pos; struct storage_index_header* Md5_Docs; struct storage_index_header* Md5_Pos; int md5_mode; int volume_id; int jump_log_crc32; int jump_log_pos; int log_split_mod; int log_split_max; int log_split_min; TYPE_3__* Snapshot; } ;
+typedef TYPE_2__ volume_t ;
+struct storage_index_header {scalar_t__ magic; int docs; unsigned int const crc32; int md5_mode; int volume_id; int log_pos1_crc32; int log_pos1; int log_split_mod; int log_split_max; int log_split_min; } ;
+struct lev_crc32 {scalar_t__ magic; int docs; unsigned int const crc32; int md5_mode; int volume_id; int log_pos1_crc32; int log_pos1; int log_split_mod; int log_split_max; int log_split_min; } ;
+typedef TYPE_3__* kfs_file_handle_t ;
+struct TYPE_7__ {TYPE_1__* info; int fd; } ;
+struct TYPE_5__ {int file_size; int filename; } ;
+
+
+ scalar_t__ STORAGE_INDEX_MAGIC ;
+ int bread (struct storage_index_header*,unsigned int const) ;
+ int bytes_read ;
+ int clearin () ;
+ unsigned int idx_crc32_complement ;
+ int idx_docs ;
+ int idx_fd ;
+ int index_size ;
+ int kprintf (char*,...) ;
+ scalar_t__ memcmp (struct storage_index_header*,struct storage_index_header*,int) ;
+ int snapshot_size ;
+ int tot_docs ;
+ void* tszmalloc (unsigned int const) ;
 
 int load_index (volume_t *V) {
   int i;
   kfs_file_handle_t Index = V->Snapshot;
-  if (Index == NULL) {
+  if (Index == ((void*)0)) {
     V->index_size = 0;
-    //jump_log_ts = 0;
+
     V->jump_log_pos = 0;
     V->jump_log_crc32 = 0;
     V->docs = V->idx_docs = 0;

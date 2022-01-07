@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nn_thread {int dummy; } ;
-typedef  int /*<<< orphan*/  sndtimeo ;
-typedef  int /*<<< orphan*/  rcvtimeo ;
+typedef int sndtimeo ;
+typedef int rcvtimeo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_SP ; 
- int /*<<< orphan*/  NN_PUB ; 
- int /*<<< orphan*/  NN_RCVTIMEO ; 
- int /*<<< orphan*/  NN_SNDTIMEO ; 
- int /*<<< orphan*/  NN_SOL_SOCKET ; 
- int /*<<< orphan*/  NN_SUB ; 
- int /*<<< orphan*/  NN_SUB_SUBSCRIBE ; 
- int TEST_LOOPS ; 
- int TEST_THREADS ; 
- int /*<<< orphan*/  get_test_port (int,char const**) ; 
- int /*<<< orphan*/  nn_sleep (int) ; 
- int /*<<< orphan*/  nn_thread_init (struct nn_thread*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  nn_thread_term (struct nn_thread*) ; 
- int /*<<< orphan*/  routine ; 
- int /*<<< orphan*/  socket_address ; 
- int /*<<< orphan*/  test_addr_from (int /*<<< orphan*/ ,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_bind (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_close (int) ; 
- int /*<<< orphan*/  test_connect (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  test_send (int,char*) ; 
- int /*<<< orphan*/  test_setsockopt (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
- int test_socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AF_SP ;
+ int NN_PUB ;
+ int NN_RCVTIMEO ;
+ int NN_SNDTIMEO ;
+ int NN_SOL_SOCKET ;
+ int NN_SUB ;
+ int NN_SUB_SUBSCRIBE ;
+ int TEST_LOOPS ;
+ int TEST_THREADS ;
+ int get_test_port (int,char const**) ;
+ int nn_sleep (int) ;
+ int nn_thread_init (struct nn_thread*,int ,int*) ;
+ int nn_thread_term (struct nn_thread*) ;
+ int routine ;
+ int socket_address ;
+ int test_addr_from (int ,char*,char*,int ) ;
+ int test_bind (int,int ) ;
+ int test_close (int) ;
+ int test_connect (int,int ) ;
+ int test_send (int,char*) ;
+ int test_setsockopt (int,int ,int ,...) ;
+ int test_socket (int ,int ) ;
 
 int main (int argc, const char *argv[])
 {
@@ -69,7 +69,7 @@ int main (int argc, const char *argv[])
             nn_thread_init (&threads [j], routine, &sockets [j]);
         }
 
-        /*  Allow all threads a bit of time to connect. */
+
         nn_sleep (100);
 
         test_send (sb, "");

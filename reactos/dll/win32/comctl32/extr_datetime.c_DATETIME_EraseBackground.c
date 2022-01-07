@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WPARAM ;
-struct TYPE_5__ {int /*<<< orphan*/  clrWindow; int /*<<< orphan*/  clrBtnFace; } ;
-struct TYPE_4__ {int dwStyle; scalar_t__ hwndSelf; int /*<<< orphan*/  hwndNotify; } ;
-typedef  int /*<<< orphan*/  RECT ;
-typedef  int LRESULT ;
-typedef  int /*<<< orphan*/  LPARAM ;
-typedef  scalar_t__ HDC ;
-typedef  int /*<<< orphan*/ * HBRUSH ;
-typedef  TYPE_1__ DATETIME_INFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateSolidBrush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FillRect (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetClientRect (scalar_t__,int /*<<< orphan*/ *) ; 
- scalar_t__ SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_CTLCOLOREDIT ; 
- int WS_DISABLED ; 
- TYPE_2__ comctl32_color ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int WPARAM ;
+struct TYPE_5__ {int clrWindow; int clrBtnFace; } ;
+struct TYPE_4__ {int dwStyle; scalar_t__ hwndSelf; int hwndNotify; } ;
+typedef int RECT ;
+typedef int LRESULT ;
+typedef int LPARAM ;
+typedef scalar_t__ HDC ;
+typedef int * HBRUSH ;
+typedef TYPE_1__ DATETIME_INFO ;
+
+
+ int * CreateSolidBrush (int ) ;
+ int DeleteObject (int *) ;
+ int FillRect (scalar_t__,int *,int *) ;
+ int GetClientRect (scalar_t__,int *) ;
+ scalar_t__ SendMessageW (int ,int ,int ,int ) ;
+ int WM_CTLCOLOREDIT ;
+ int WS_DISABLED ;
+ TYPE_2__ comctl32_color ;
 
 __attribute__((used)) static LRESULT
 DATETIME_EraseBackground (const DATETIME_INFO *infoPtr, HDC hdc)
 {
-    HBRUSH hBrush, hSolidBrush = NULL;
-    RECT   rc;
+    HBRUSH hBrush, hSolidBrush = ((void*)0);
+    RECT rc;
 
     if (infoPtr->dwStyle & WS_DISABLED)
         hBrush = hSolidBrush = CreateSolidBrush(comctl32_color.clrBtnFace);

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-struct TYPE_6__ {int bitstream_size; void* bitstream; int /*<<< orphan*/  allocated_size; } ;
-typedef  TYPE_2__ VTContext ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_6__ {int bitstream_size; void* bitstream; int allocated_size; } ;
+typedef TYPE_2__ VTContext ;
 struct TYPE_7__ {TYPE_1__* internal; } ;
 struct TYPE_5__ {TYPE_2__* hwaccel_priv_data; } ;
-typedef  TYPE_3__ AVCodecContext ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AV_WB32 (void*,int) ; 
- int /*<<< orphan*/  ENOMEM ; 
- void* av_fast_realloc (void*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (void*,int /*<<< orphan*/  const*,int) ; 
+
+ int AVERROR (int ) ;
+ int AV_WB32 (void*,int) ;
+ int ENOMEM ;
+ void* av_fast_realloc (void*,int *,int) ;
+ int memcpy (void*,int const*,int) ;
 
 __attribute__((used)) static int videotoolbox_common_decode_slice(AVCodecContext *avctx,
                                             const uint8_t *buffer,

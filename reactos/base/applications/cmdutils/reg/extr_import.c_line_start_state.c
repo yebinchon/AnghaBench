@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct parser {int /*<<< orphan*/  file; } ;
-typedef  int WCHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DEFAULT_VALUE_NAME ; 
- int /*<<< orphan*/  KEY_NAME ; 
- int /*<<< orphan*/  QUOTED_VALUE_NAME ; 
- int* get_line (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_state (struct parser*,int /*<<< orphan*/ ) ; 
+
+
+
+struct parser {int file; } ;
+typedef int WCHAR ;
+
+
+ int DEFAULT_VALUE_NAME ;
+ int KEY_NAME ;
+ int QUOTED_VALUE_NAME ;
+ int* get_line (int ) ;
+ int set_state (struct parser*,int ) ;
 
 __attribute__((used)) static WCHAR *line_start_state(struct parser *parser, WCHAR *pos)
 {
     WCHAR *line, *p;
 
     if (!(line = get_line(parser->file)))
-        return NULL;
+        return ((void*)0);
 
     for (p = line; *p; p++)
     {

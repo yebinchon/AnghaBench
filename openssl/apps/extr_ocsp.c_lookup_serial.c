@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  db; } ;
-typedef  TYPE_1__ CA_DB ;
-typedef  int /*<<< orphan*/  BIGNUM ;
-typedef  int /*<<< orphan*/  ASN1_INTEGER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ASN1_INTEGER_to_BN (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* BN_bn2hex (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_free (int /*<<< orphan*/ *) ; 
- scalar_t__ BN_is_zero (int /*<<< orphan*/ *) ; 
- int DB_NUMBER ; 
- size_t DB_serial ; 
- int /*<<< orphan*/  OPENSSL_assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OPENSSL_free (char*) ; 
- char* OPENSSL_strdup (char*) ; 
- char** TXT_DB_get_by_index (int /*<<< orphan*/ ,size_t,char**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int db; } ;
+typedef TYPE_1__ CA_DB ;
+typedef int BIGNUM ;
+typedef int ASN1_INTEGER ;
+
+
+ int * ASN1_INTEGER_to_BN (int *,int *) ;
+ char* BN_bn2hex (int *) ;
+ int BN_free (int *) ;
+ scalar_t__ BN_is_zero (int *) ;
+ int DB_NUMBER ;
+ size_t DB_serial ;
+ int OPENSSL_assert (int *) ;
+ int OPENSSL_free (char*) ;
+ char* OPENSSL_strdup (char*) ;
+ char** TXT_DB_get_by_index (int ,size_t,char**) ;
 
 __attribute__((used)) static char **lookup_serial(CA_DB *db, ASN1_INTEGER *ser)
 {
     int i;
-    BIGNUM *bn = NULL;
+    BIGNUM *bn = ((void*)0);
     char *itmp, *row[DB_NUMBER], **rrow;
     for (i = 0; i < DB_NUMBER; i++)
-        row[i] = NULL;
-    bn = ASN1_INTEGER_to_BN(ser, NULL);
-    OPENSSL_assert(bn);         /* FIXME: should report an error at this
-                                 * point and abort */
+        row[i] = ((void*)0);
+    bn = ASN1_INTEGER_to_BN(ser, ((void*)0));
+    OPENSSL_assert(bn);
+
     if (BN_is_zero(bn))
         itmp = OPENSSL_strdup("00");
     else

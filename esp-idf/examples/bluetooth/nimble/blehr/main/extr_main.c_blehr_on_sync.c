@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INFO ; 
- int /*<<< orphan*/  MODLOG_DFLT (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int ble_hs_id_copy_addr (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int ble_hs_id_infer_auto (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  blehr_addr_type ; 
- int /*<<< orphan*/  blehr_advertise () ; 
- int /*<<< orphan*/  print_addr (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int INFO ;
+ int MODLOG_DFLT (int ,char*) ;
+ int assert (int) ;
+ int ble_hs_id_copy_addr (int ,int *,int *) ;
+ int ble_hs_id_infer_auto (int ,int *) ;
+ int blehr_addr_type ;
+ int blehr_advertise () ;
+ int print_addr (int *) ;
 
 __attribute__((used)) static void
 blehr_on_sync(void)
@@ -31,12 +31,12 @@ blehr_on_sync(void)
     assert(rc == 0);
 
     uint8_t addr_val[6] = {0};
-    rc = ble_hs_id_copy_addr(blehr_addr_type, addr_val, NULL);
+    rc = ble_hs_id_copy_addr(blehr_addr_type, addr_val, ((void*)0));
 
     MODLOG_DFLT(INFO, "Device Address: ");
     print_addr(addr_val);
     MODLOG_DFLT(INFO, "\n");
 
-    /* Begin advertising */
+
     blehr_advertise();
 }

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_data {int /*<<< orphan*/  irq; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  viper_irq_enabled_mask ; 
- int /*<<< orphan*/  viper_irq_to_bitmask (int /*<<< orphan*/ ) ; 
+
+
+
+struct irq_data {int irq; } ;
+
+
+ int viper_irq_enabled_mask ;
+ int viper_irq_to_bitmask (int ) ;
 
 __attribute__((used)) static void viper_unmask_irq(struct irq_data *d)
 {
-	viper_irq_enabled_mask |= viper_irq_to_bitmask(d->irq);
+ viper_irq_enabled_mask |= viper_irq_to_bitmask(d->irq);
 }

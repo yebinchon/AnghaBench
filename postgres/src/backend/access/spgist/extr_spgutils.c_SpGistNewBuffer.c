@@ -1,94 +1,94 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Page ;
-typedef  int /*<<< orphan*/  Buffer ;
-typedef  scalar_t__ BlockNumber ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUFFER_LOCK_EXCLUSIVE ; 
- int /*<<< orphan*/  BUFFER_LOCK_UNLOCK ; 
- int /*<<< orphan*/  BufferGetPage (int /*<<< orphan*/ ) ; 
- scalar_t__ ConditionalLockBuffer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExclusiveLock ; 
- scalar_t__ GetFreeIndexPage (int /*<<< orphan*/ ) ; 
- scalar_t__ InvalidBlockNumber ; 
- int /*<<< orphan*/  LockBuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockRelationForExtension (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ P_NEW ; 
- scalar_t__ PageIsEmpty (int /*<<< orphan*/ ) ; 
- scalar_t__ PageIsNew (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RELATION_IS_LOCAL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReadBuffer (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ReleaseBuffer (int /*<<< orphan*/ ) ; 
- scalar_t__ SpGistBlockIsFixed (scalar_t__) ; 
- scalar_t__ SpGistPageIsDeleted (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockRelationForExtension (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Relation ;
+typedef int Page ;
+typedef int Buffer ;
+typedef scalar_t__ BlockNumber ;
+
+
+ int BUFFER_LOCK_EXCLUSIVE ;
+ int BUFFER_LOCK_UNLOCK ;
+ int BufferGetPage (int ) ;
+ scalar_t__ ConditionalLockBuffer (int ) ;
+ int ExclusiveLock ;
+ scalar_t__ GetFreeIndexPage (int ) ;
+ scalar_t__ InvalidBlockNumber ;
+ int LockBuffer (int ,int ) ;
+ int LockRelationForExtension (int ,int ) ;
+ scalar_t__ P_NEW ;
+ scalar_t__ PageIsEmpty (int ) ;
+ scalar_t__ PageIsNew (int ) ;
+ int RELATION_IS_LOCAL (int ) ;
+ int ReadBuffer (int ,scalar_t__) ;
+ int ReleaseBuffer (int ) ;
+ scalar_t__ SpGistBlockIsFixed (scalar_t__) ;
+ scalar_t__ SpGistPageIsDeleted (int ) ;
+ int UnlockRelationForExtension (int ,int ) ;
 
 Buffer
 SpGistNewBuffer(Relation index)
 {
-	Buffer		buffer;
-	bool		needLock;
+ Buffer buffer;
+ bool needLock;
 
-	/* First, try to get a page from FSM */
-	for (;;)
-	{
-		BlockNumber blkno = GetFreeIndexPage(index);
 
-		if (blkno == InvalidBlockNumber)
-			break;				/* nothing known to FSM */
+ for (;;)
+ {
+  BlockNumber blkno = GetFreeIndexPage(index);
 
-		/*
-		 * The fixed pages shouldn't ever be listed in FSM, but just in case
-		 * one is, ignore it.
-		 */
-		if (SpGistBlockIsFixed(blkno))
-			continue;
+  if (blkno == InvalidBlockNumber)
+   break;
 
-		buffer = ReadBuffer(index, blkno);
 
-		/*
-		 * We have to guard against the possibility that someone else already
-		 * recycled this page; the buffer may be locked if so.
-		 */
-		if (ConditionalLockBuffer(buffer))
-		{
-			Page		page = BufferGetPage(buffer);
 
-			if (PageIsNew(page))
-				return buffer;	/* OK to use, if never initialized */
 
-			if (SpGistPageIsDeleted(page) || PageIsEmpty(page))
-				return buffer;	/* OK to use */
 
-			LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
-		}
+  if (SpGistBlockIsFixed(blkno))
+   continue;
 
-		/* Can't use it, so release buffer and try again */
-		ReleaseBuffer(buffer);
-	}
+  buffer = ReadBuffer(index, blkno);
 
-	/* Must extend the file */
-	needLock = !RELATION_IS_LOCAL(index);
-	if (needLock)
-		LockRelationForExtension(index, ExclusiveLock);
 
-	buffer = ReadBuffer(index, P_NEW);
-	LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
 
-	if (needLock)
-		UnlockRelationForExtension(index, ExclusiveLock);
 
-	return buffer;
+
+  if (ConditionalLockBuffer(buffer))
+  {
+   Page page = BufferGetPage(buffer);
+
+   if (PageIsNew(page))
+    return buffer;
+
+   if (SpGistPageIsDeleted(page) || PageIsEmpty(page))
+    return buffer;
+
+   LockBuffer(buffer, BUFFER_LOCK_UNLOCK);
+  }
+
+
+  ReleaseBuffer(buffer);
+ }
+
+
+ needLock = !RELATION_IS_LOCAL(index);
+ if (needLock)
+  LockRelationForExtension(index, ExclusiveLock);
+
+ buffer = ReadBuffer(index, P_NEW);
+ LockBuffer(buffer, BUFFER_LOCK_EXCLUSIVE);
+
+ if (needLock)
+  UnlockRelationForExtension(index, ExclusiveLock);
+
+ return buffer;
 }

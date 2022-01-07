@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  SSL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SSL_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_ERROR_NONE ; 
- int /*<<< orphan*/  SSL_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_get_servername (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_set_tlsext_host_name (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr_null (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TLS1_VERSION ; 
- int /*<<< orphan*/  TLSEXT_NAMETYPE_host_name ; 
- int /*<<< orphan*/  TLS_client_method () ; 
- int /*<<< orphan*/  TLS_server_method () ; 
- int /*<<< orphan*/  cert ; 
- int /*<<< orphan*/  create_ssl_connection (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_ctx_pair (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_ssl_objects (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  host ; 
- int /*<<< orphan*/  privkey ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int SSL ;
+
+
+ int SSL_CTX_free (int *) ;
+ int SSL_ERROR_NONE ;
+ int SSL_free (int *) ;
+ int SSL_get_servername (int *,int ) ;
+ int SSL_set_tlsext_host_name (int *,int ) ;
+ int TEST_ptr_null (int ) ;
+ int TEST_true (int ) ;
+ int TLS1_VERSION ;
+ int TLSEXT_NAMETYPE_host_name ;
+ int TLS_client_method () ;
+ int TLS_server_method () ;
+ int cert ;
+ int create_ssl_connection (int *,int *,int ) ;
+ int create_ssl_ctx_pair (int ,int ,int ,int ,int **,int **,int ,int ) ;
+ int create_ssl_objects (int *,int *,int **,int **,int *,int *) ;
+ int host ;
+ int privkey ;
 
 __attribute__((used)) static int server_setup_sni(void)
 {
-    SSL_CTX *cctx = NULL, *sctx = NULL;
-    SSL *clientssl = NULL, *serverssl = NULL;
+    SSL_CTX *cctx = ((void*)0), *sctx = ((void*)0);
+    SSL *clientssl = ((void*)0), *serverssl = ((void*)0);
     int testresult = 0;
 
     if (!TEST_true(create_ssl_ctx_pair(TLS_server_method(),
@@ -43,10 +43,10 @@ __attribute__((used)) static int server_setup_sni(void)
                                        TLS1_VERSION, 0,
                                        &sctx, &cctx, cert, privkey))
             || !TEST_true(create_ssl_objects(sctx, cctx, &serverssl, &clientssl,
-                                             NULL, NULL)))
+                                             ((void*)0), ((void*)0))))
         goto end;
 
-    /* set SNI at server side */
+
     SSL_set_tlsext_host_name(serverssl, host);
 
     if (!TEST_true(create_ssl_connection(serverssl, clientssl, SSL_ERROR_NONE)))
@@ -54,7 +54,7 @@ __attribute__((used)) static int server_setup_sni(void)
 
     if (!TEST_ptr_null(SSL_get_servername(serverssl,
                                           TLSEXT_NAMETYPE_host_name))) {
-        /* SNI should have been cleared during handshake */
+
         goto end;
     }
 

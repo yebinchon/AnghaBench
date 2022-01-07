@@ -1,20 +1,12 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BOTLIB_AI_INIT_MOVE_STATE ;
+ int syscall (int ,int,void*) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BOTLIB_AI_INIT_MOVE_STATE ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,int,void*) ; 
-
-void trap_BotInitMoveState(int handle, void /* struct bot_initmove_s */ *initmove) {
-	syscall( BOTLIB_AI_INIT_MOVE_STATE, handle, initmove );
+void trap_BotInitMoveState(int handle, void *initmove) {
+ syscall( BOTLIB_AI_INIT_MOVE_STATE, handle, initmove );
 }

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int PROC_INFO_CALL_PIDORIGINATORINFO ;
+ int __proc_info (int ,int ,int,int ,void*,int) ;
+ int getpid () ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  PROC_INFO_CALL_PIDORIGINATORINFO ; 
- int __proc_info (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,void*,int) ; 
- int /*<<< orphan*/  getpid () ; 
-
-int 
+int
 proc_pidoriginatorinfo(int flavor, void *buffer, int buffersize)
 {
-	int retval;
+ int retval;
 
-	if ((retval = __proc_info(PROC_INFO_CALL_PIDORIGINATORINFO, getpid(), flavor,  0,  buffer, buffersize)) == -1)
-		return(0);
-		
-	return(retval);
+ if ((retval = __proc_info(PROC_INFO_CALL_PIDORIGINATORINFO, getpid(), flavor, 0, buffer, buffersize)) == -1)
+  return(0);
+
+ return(retval);
 }

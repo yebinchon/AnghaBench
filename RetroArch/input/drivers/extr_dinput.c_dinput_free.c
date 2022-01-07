@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct dinput_input {struct dinput_input* joypad_driver_name; scalar_t__ mouse; scalar_t__ keyboard; TYPE_1__* joypad; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* destroy ) () ;} ;
-typedef  int /*<<< orphan*/ * LPDIRECTINPUT8 ;
+struct TYPE_2__ {int (* destroy ) () ;} ;
+typedef int * LPDIRECTINPUT8 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IDirectInputDevice8_Release (scalar_t__) ; 
- int /*<<< orphan*/  dinput_clear_pointers (struct dinput_input*) ; 
- int /*<<< orphan*/  dinput_destroy_context () ; 
- int /*<<< orphan*/  free (struct dinput_input*) ; 
- int /*<<< orphan*/ * g_dinput_ctx ; 
- int /*<<< orphan*/  stub1 () ; 
+
+ int IDirectInputDevice8_Release (scalar_t__) ;
+ int dinput_clear_pointers (struct dinput_input*) ;
+ int dinput_destroy_context () ;
+ int free (struct dinput_input*) ;
+ int * g_dinput_ctx ;
+ int stub1 () ;
 
 __attribute__((used)) static void dinput_free(void *data)
 {
@@ -30,13 +30,13 @@ __attribute__((used)) static void dinput_free(void *data)
 
    if (di)
    {
-      /* Prevent a joypad driver to kill our context prematurely. */
-      g_dinput_ctx = NULL;
+
+      g_dinput_ctx = ((void*)0);
       if (di->joypad)
          di->joypad->destroy();
       g_dinput_ctx = hold_ctx;
 
-      /* Clear any leftover pointers. */
+
       dinput_clear_pointers(di);
 
       if (di->keyboard)

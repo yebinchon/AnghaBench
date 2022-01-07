@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ACPI_STATUS ;
 
-/* Variables and functions */
- char* ACPI_COMMON_SIGNON (int /*<<< orphan*/ ) ; 
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ASL_COMPILER_NAME ; 
- int /*<<< orphan*/  AcpiGbl_DisasmFlag ; 
- size_t AcpiGbl_Optind ; 
- int AslDoOptions (int,char**,int /*<<< orphan*/ ) ; 
- scalar_t__ AslGbl_DoSignon ; 
- scalar_t__ AslGbl_DoTemplates ; 
- scalar_t__ AslGbl_IgnoreErrors ; 
- int /*<<< orphan*/  DtCreateTemplates (char**) ; 
- int /*<<< orphan*/  FALSE ; 
- int TRUE ; 
- int /*<<< orphan*/  Usage () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  printf (char*) ; 
+
+
+
+typedef int ACPI_STATUS ;
+
+
+ char* ACPI_COMMON_SIGNON (int ) ;
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ASL_COMPILER_NAME ;
+ int AcpiGbl_DisasmFlag ;
+ size_t AcpiGbl_Optind ;
+ int AslDoOptions (int,char**,int ) ;
+ scalar_t__ AslGbl_DoSignon ;
+ scalar_t__ AslGbl_DoTemplates ;
+ scalar_t__ AslGbl_IgnoreErrors ;
+ int DtCreateTemplates (char**) ;
+ int FALSE ;
+ int TRUE ;
+ int Usage () ;
+ int exit (int) ;
+ int printf (char*) ;
 
 int
 AslCommandLine (
-    int                     argc,
-    char                    **argv)
+    int argc,
+    char **argv)
 {
-    int                     BadCommandLine = 0;
-    ACPI_STATUS             Status;
+    int BadCommandLine = 0;
+    ACPI_STATUS Status;
 
 
-    /* Minimum command line contains at least the command and an input file */
+
 
     if (argc < 2)
     {
@@ -46,7 +46,7 @@ AslCommandLine (
         exit (1);
     }
 
-    /* Process all command line options */
+
 
     BadCommandLine = AslDoOptions (argc, argv, FALSE);
 
@@ -60,7 +60,7 @@ AslCommandLine (
         exit (1);
     }
 
-    /* Next parameter must be the input filename */
+
 
     if (!argv[AcpiGbl_Optind] &&
         !AcpiGbl_DisasmFlag)

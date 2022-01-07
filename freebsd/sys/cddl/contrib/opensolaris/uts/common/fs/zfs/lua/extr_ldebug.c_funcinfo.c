@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_9__ {char* source; int linedefined; int lastlinedefined; char* what; int /*<<< orphan*/  short_src; } ;
-typedef  TYPE_2__ lua_Debug ;
+
+
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_9__ {char* source; int linedefined; int lastlinedefined; char* what; int short_src; } ;
+typedef TYPE_2__ lua_Debug ;
 struct TYPE_8__ {TYPE_3__* p; } ;
 struct TYPE_11__ {TYPE_1__ l; } ;
 struct TYPE_10__ {int linedefined; int lastlinedefined; scalar_t__ source; } ;
-typedef  TYPE_3__ Proto ;
-typedef  TYPE_4__ Closure ;
+typedef TYPE_3__ Proto ;
+typedef TYPE_4__ Closure ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_IDSIZE ; 
- char* getstr (scalar_t__) ; 
- int /*<<< orphan*/  luaO_chunkid (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ noLuaClosure (TYPE_4__*) ; 
+
+ int LUA_IDSIZE ;
+ char* getstr (scalar_t__) ;
+ int luaO_chunkid (int ,char*,int ) ;
+ scalar_t__ noLuaClosure (TYPE_4__*) ;
 
 __attribute__((used)) static void funcinfo (lua_Debug *ar, Closure *cl) {
   if (noLuaClosure(cl)) {

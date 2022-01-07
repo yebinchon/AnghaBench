@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void tree_ext_large_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef void tree_ext_large_t ;
 struct tree_payload {int flags; int date; scalar_t__ text; scalar_t__ value; scalar_t__ global_id; } ;
-typedef  int /*<<< orphan*/  object_id_t ;
-typedef  int /*<<< orphan*/  list_t ;
-typedef  int /*<<< orphan*/  list_id_t ;
+typedef int object_id_t ;
+typedef int list_t ;
+typedef int list_id_t ;
 struct TYPE_3__ {int N; } ;
 
-/* Variables and functions */
- scalar_t__* M_global_id_list ; 
- int NODE_RPOS (void*) ; 
- scalar_t__ NODE_TYPE (void*) ; 
- TYPE_1__ OTree ; 
- struct tree_payload* PAYLOAD (void*) ; 
- scalar_t__ TF_PLUS ; 
- int /*<<< orphan*/ * __get_list_f (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  assert (int) ; 
- int get_text_len (scalar_t__) ; 
- char* get_text_ptr (scalar_t__) ; 
- void* listree_lookup_large (TYPE_1__*,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- int metafile_get_date (int) ; 
- int metafile_get_flags (int) ; 
- char* metafile_get_text (int,int*) ; 
- scalar_t__ metafile_get_value (int) ; 
- scalar_t__ metafile_mode ; 
- scalar_t__ prepare_list_metafile (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  unpack_metafile_pointers (int /*<<< orphan*/ *) ; 
+
+ scalar_t__* M_global_id_list ;
+ int NODE_RPOS (void*) ;
+ scalar_t__ NODE_TYPE (void*) ;
+ TYPE_1__ OTree ;
+ struct tree_payload* PAYLOAD (void*) ;
+ scalar_t__ TF_PLUS ;
+ int * __get_list_f (int ,int) ;
+ int assert (int) ;
+ int get_text_len (scalar_t__) ;
+ char* get_text_ptr (scalar_t__) ;
+ void* listree_lookup_large (TYPE_1__*,int ,int*) ;
+ int memset (int*,int ,int) ;
+ int metafile_get_date (int) ;
+ int metafile_get_flags (int) ;
+ char* metafile_get_text (int,int*) ;
+ scalar_t__ metafile_get_value (int) ;
+ scalar_t__ metafile_mode ;
+ scalar_t__ prepare_list_metafile (int ,int) ;
+ int unpack_metafile_pointers (int *) ;
 
 int fetch_list_entry (list_id_t list_id, object_id_t object_id, int result[13]) {
   if (metafile_mode && prepare_list_metafile (list_id, 1) < 0) {

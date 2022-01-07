@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  lcg_calculate_constants (int,int*,int*,int /*<<< orphan*/ ) ; 
- int lcg_verify (int,int,int,int) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int uint64_t ;
+
+
+ int fprintf (int ,char*) ;
+ int lcg_calculate_constants (int,int*,int*,int ) ;
+ int lcg_verify (int,int,int,int) ;
+ int stderr ;
 
 int
 lcg_selftest(void)
@@ -40,9 +40,9 @@ lcg_selftest(void)
 
         if (!is_success) {
             fprintf(stderr, "LCG: randomization failed\n");
-            return 1; /*fail*/
+            return 1;
         }
     }
 
-    return 0; /*success*/
+    return 0;
 }

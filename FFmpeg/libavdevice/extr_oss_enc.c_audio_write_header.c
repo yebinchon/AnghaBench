@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  url; TYPE_3__** streams; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int url; TYPE_3__** streams; TYPE_2__* priv_data; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
-struct TYPE_8__ {int /*<<< orphan*/  channels; int /*<<< orphan*/  sample_rate; } ;
-struct TYPE_7__ {int /*<<< orphan*/  channels; int /*<<< orphan*/  sample_rate; } ;
-typedef  TYPE_2__ OSSAudioData ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVFormatContext ;
+struct TYPE_8__ {int channels; int sample_rate; } ;
+struct TYPE_7__ {int channels; int sample_rate; } ;
+typedef TYPE_2__ OSSAudioData ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EIO ; 
- int ff_oss_audio_open (TYPE_4__*,int,int /*<<< orphan*/ ) ; 
+
+ int AVERROR (int ) ;
+ int EIO ;
+ int ff_oss_audio_open (TYPE_4__*,int,int ) ;
 
 __attribute__((used)) static int audio_write_header(AVFormatContext *s1)
 {

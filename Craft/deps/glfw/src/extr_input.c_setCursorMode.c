@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_7__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_7__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int cursorMode; int cursorPosX; int cursorPosY; } ;
-typedef  TYPE_1__ _GLFWwindow ;
+typedef TYPE_1__ _GLFWwindow ;
 struct TYPE_9__ {int cursorPosX; int cursorPosY; TYPE_1__* cursorWindow; } ;
 
-/* Variables and functions */
- int GLFW_CURSOR_DISABLED ; 
- int GLFW_CURSOR_HIDDEN ; 
- int GLFW_CURSOR_NORMAL ; 
- int /*<<< orphan*/  GLFW_INVALID_ENUM ; 
- TYPE_7__ _glfw ; 
- int /*<<< orphan*/  _glfwInputError (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  _glfwPlatformApplyCursorMode (TYPE_1__*) ; 
- int /*<<< orphan*/  _glfwPlatformGetCursorPos (TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  _glfwPlatformGetWindowSize (TYPE_1__*,int*,int*) ; 
- int /*<<< orphan*/  _glfwPlatformSetCursorPos (TYPE_1__*,int,int) ; 
+
+ int GLFW_CURSOR_DISABLED ;
+ int GLFW_CURSOR_HIDDEN ;
+ int GLFW_CURSOR_NORMAL ;
+ int GLFW_INVALID_ENUM ;
+ TYPE_7__ _glfw ;
+ int _glfwInputError (int ,char*) ;
+ int _glfwPlatformApplyCursorMode (TYPE_1__*) ;
+ int _glfwPlatformGetCursorPos (TYPE_1__*,int*,int*) ;
+ int _glfwPlatformGetWindowSize (TYPE_1__*,int*,int*) ;
+ int _glfwPlatformSetCursorPos (TYPE_1__*,int,int) ;
 
 __attribute__((used)) static void setCursorMode(_GLFWwindow* window, int newMode)
 {

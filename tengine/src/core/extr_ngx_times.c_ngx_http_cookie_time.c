@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  time_t ;
-struct TYPE_3__ {int ngx_tm_year; size_t ngx_tm_wday; int ngx_tm_mon; int /*<<< orphan*/  ngx_tm_sec; int /*<<< orphan*/  ngx_tm_min; int /*<<< orphan*/  ngx_tm_hour; int /*<<< orphan*/  ngx_tm_mday; } ;
-typedef  TYPE_1__ ngx_tm_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * months ; 
- int /*<<< orphan*/  ngx_gmtime (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/ * ngx_sprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * week ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int time_t ;
+struct TYPE_3__ {int ngx_tm_year; size_t ngx_tm_wday; int ngx_tm_mon; int ngx_tm_sec; int ngx_tm_min; int ngx_tm_hour; int ngx_tm_mday; } ;
+typedef TYPE_1__ ngx_tm_t ;
+
+
+ int * months ;
+ int ngx_gmtime (int ,TYPE_1__*) ;
+ int * ngx_sprintf (int *,char*,int ,int ,int ,int,int ,int ,int ) ;
+ int * week ;
 
 u_char *
 ngx_http_cookie_time(u_char *buf, time_t t)
 {
-    ngx_tm_t  tm;
+    ngx_tm_t tm;
 
     ngx_gmtime(t, &tm);
 
-    /*
-     * Netscape 3.x does not understand 4-digit years at all and
-     * 2-digit years more than "37"
-     */
+
+
+
+
 
     return ngx_sprintf(buf,
                        (tm.ngx_tm_year > 2037) ?

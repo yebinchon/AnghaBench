@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  scalar_t__ netutils_endian_t ;
-typedef  int mp_uint_t ;
-typedef  int /*<<< orphan*/  mp_obj_t ;
 
-/* Variables and functions */
- int NETUTILS_IPV4ADDR_BUFSIZE ; 
- scalar_t__ NETUTILS_LITTLE ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- char* mp_obj_str_get_data (int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  mp_raise_ValueError (char*) ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ netutils_endian_t ;
+typedef int mp_uint_t ;
+typedef int mp_obj_t ;
+
+
+ int NETUTILS_IPV4ADDR_BUFSIZE ;
+ scalar_t__ NETUTILS_LITTLE ;
+ int memset (int*,int ,int) ;
+ char* mp_obj_str_get_data (int ,size_t*) ;
+ int mp_raise_ValueError (char*) ;
 
 void netutils_parse_ipv4_addr(mp_obj_t addr_in, uint8_t *out_ip, netutils_endian_t endian) {
     size_t addr_len;
     const char *addr_str = mp_obj_str_get_data(addr_in, &addr_len);
     if (addr_len == 0) {
-        // special case of no address given
+
         memset(out_ip, 0, NETUTILS_IPV4ADDR_BUFSIZE);
         return;
     }

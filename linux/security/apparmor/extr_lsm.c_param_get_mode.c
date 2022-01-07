@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kernel_param {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- int EPERM ; 
- size_t aa_g_profile_mode ; 
- char** aa_profile_mode_names ; 
- int /*<<< orphan*/  apparmor_enabled ; 
- scalar_t__ apparmor_initialized ; 
- int /*<<< orphan*/  policy_view_capable (int /*<<< orphan*/ *) ; 
- int sprintf (char*,char*,char*) ; 
+
+ int EINVAL ;
+ int EPERM ;
+ size_t aa_g_profile_mode ;
+ char** aa_profile_mode_names ;
+ int apparmor_enabled ;
+ scalar_t__ apparmor_initialized ;
+ int policy_view_capable (int *) ;
+ int sprintf (char*,char*,char*) ;
 
 __attribute__((used)) static int param_get_mode(char *buffer, const struct kernel_param *kp)
 {
-	if (!apparmor_enabled)
-		return -EINVAL;
-	if (apparmor_initialized && !policy_view_capable(NULL))
-		return -EPERM;
+ if (!apparmor_enabled)
+  return -EINVAL;
+ if (apparmor_initialized && !policy_view_capable(((void*)0)))
+  return -EPERM;
 
-	return sprintf(buffer, "%s", aa_profile_mode_names[aa_g_profile_mode]);
+ return sprintf(buffer, "%s", aa_profile_mode_names[aa_g_profile_mode]);
 }

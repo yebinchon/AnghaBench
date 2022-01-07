@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mypopen {struct mypopen* next; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  freez (struct mypopen*) ; 
- int /*<<< orphan*/  myp_lock ; 
- scalar_t__ myp_tracking ; 
- struct mypopen* mypopen_root ; 
- int /*<<< orphan*/  netdata_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  netdata_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+ int freez (struct mypopen*) ;
+ int myp_lock ;
+ scalar_t__ myp_tracking ;
+ struct mypopen* mypopen_root ;
+ int netdata_mutex_lock (int *) ;
+ int netdata_mutex_unlock (int *) ;
 
 void myp_free(void) {
     struct mypopen *mp, *next;
@@ -27,12 +27,12 @@ void myp_free(void) {
         return;
 
     netdata_mutex_lock(&myp_lock);
-    for (mp = mypopen_root; mp != NULL; mp = next) {
+    for (mp = mypopen_root; mp != ((void*)0); mp = next) {
         next = mp->next;
         freez(mp);
     }
 
-    mypopen_root = NULL;
+    mypopen_root = ((void*)0);
     myp_tracking = 0;
     netdata_mutex_unlock(&myp_lock);
 }

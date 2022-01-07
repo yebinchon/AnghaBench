@@ -1,42 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  Rest; int /*<<< orphan*/  First; } ;
-struct TYPE_9__ {int Type; int /*<<< orphan*/  Redirections; struct TYPE_9__* Next; struct TYPE_9__* Subcommands; TYPE_1__ Command; } ;
-typedef  TYPE_2__ PARSED_COMMAND ;
-typedef  int /*<<< orphan*/  LPTSTR ;
-typedef  int INT ;
 
-/* Variables and functions */
-#define  C_BLOCK 136 
-#define  C_COMMAND 135 
-#define  C_FOR 134 
-#define  C_IF 133 
-#define  C_IFFAILURE 132 
-#define  C_IFSUCCESS 131 
-#define  C_MULTI 130 
-#define  C_PIPE 129 
-#define  C_QUIET 128 
- int DoCommand (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  DoDelayedExpansion (int /*<<< orphan*/ ) ; 
- int ExecuteFor (TYPE_2__*) ; 
- int ExecuteIf (TYPE_2__*) ; 
- int ExecutePipeline (TYPE_2__*) ; 
- int /*<<< orphan*/  PerformRedirection (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UndoRedirection (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cmd_free (int /*<<< orphan*/ ) ; 
- int nErrorLevel ; 
+
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int Rest; int First; } ;
+struct TYPE_9__ {int Type; int Redirections; struct TYPE_9__* Next; struct TYPE_9__* Subcommands; TYPE_1__ Command; } ;
+typedef TYPE_2__ PARSED_COMMAND ;
+typedef int LPTSTR ;
+typedef int INT ;
+ int DoCommand (int ,int ,TYPE_2__*) ;
+ int DoDelayedExpansion (int ) ;
+ int ExecuteFor (TYPE_2__*) ;
+ int ExecuteIf (TYPE_2__*) ;
+ int ExecutePipeline (TYPE_2__*) ;
+ int PerformRedirection (int ) ;
+ int UndoRedirection (int ,int *) ;
+ int cmd_free (int ) ;
+ int nErrorLevel ;
 
 INT
 ExecuteCommand(PARSED_COMMAND *Cmd)
@@ -50,7 +39,7 @@ ExecuteCommand(PARSED_COMMAND *Cmd)
 
     switch (Cmd->Type)
     {
-    case C_COMMAND:
+    case 135:
         Ret = 1;
         First = DoDelayedExpansion(Cmd->Command.First);
         if (First)
@@ -64,13 +53,13 @@ ExecuteCommand(PARSED_COMMAND *Cmd)
             cmd_free(First);
         }
         break;
-    case C_QUIET:
-    case C_BLOCK:
-    case C_MULTI:
+    case 128:
+    case 136:
+    case 130:
         for (Sub = Cmd->Subcommands; Sub; Sub = Sub->Next)
             Ret = ExecuteCommand(Sub);
         break;
-    case C_IFFAILURE:
+    case 132:
         Sub = Cmd->Subcommands;
         Ret = ExecuteCommand(Sub);
         if (Ret != 0)
@@ -79,23 +68,23 @@ ExecuteCommand(PARSED_COMMAND *Cmd)
             Ret = ExecuteCommand(Sub->Next);
         }
         break;
-    case C_IFSUCCESS:
+    case 131:
         Sub = Cmd->Subcommands;
         Ret = ExecuteCommand(Sub);
         if (Ret == 0)
             Ret = ExecuteCommand(Sub->Next);
         break;
-    case C_PIPE:
+    case 129:
         Ret = ExecutePipeline(Cmd);
         break;
-    case C_IF:
+    case 133:
         Ret = ExecuteIf(Cmd);
         break;
-    case C_FOR:
+    case 134:
         Ret = ExecuteFor(Cmd);
         break;
     }
 
-    UndoRedirection(Cmd->Redirections, NULL);
+    UndoRedirection(Cmd->Redirections, ((void*)0));
     return Ret;
 }

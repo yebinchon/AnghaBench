@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ size_t arena_salloc (void const*,int) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- size_t arena_salloc (void const*,int) ; 
-
-size_t	tcache_salloc(const void *ptr)
+size_t tcache_salloc(const void *ptr)
 {
 
-	return (arena_salloc(ptr, false));
+ return (arena_salloc(ptr, 0));
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_6__ ;
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char u_char ;
-typedef  int ngx_uint_t ;
+
+
+typedef struct TYPE_16__ TYPE_6__ ;
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef char u_char ;
+typedef int ngx_uint_t ;
 struct TYPE_15__ {int len; char* data; } ;
 struct TYPE_14__ {TYPE_5__ value; } ;
-typedef  TYPE_4__ ngx_table_elt_t ;
-typedef  TYPE_5__ ngx_str_t ;
+typedef TYPE_4__ ngx_table_elt_t ;
+typedef TYPE_5__ ngx_str_t ;
 struct TYPE_12__ {TYPE_1__* etag; } ;
 struct TYPE_16__ {TYPE_3__* connection; TYPE_2__ headers_out; } ;
-typedef  TYPE_6__ ngx_http_request_t ;
-struct TYPE_13__ {int /*<<< orphan*/  log; } ;
+typedef TYPE_6__ ngx_http_request_t ;
+struct TYPE_13__ {int log; } ;
 struct TYPE_11__ {TYPE_5__ value; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  ngx_log_debug2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,TYPE_5__*,TYPE_5__*) ; 
- scalar_t__ ngx_strncmp (char*,char*,size_t) ; 
+
+ int NGX_LOG_DEBUG_HTTP ;
+ int ngx_log_debug2 (int ,int ,int ,char*,TYPE_5__*,TYPE_5__*) ;
+ scalar_t__ ngx_strncmp (char*,char*,size_t) ;
 
 __attribute__((used)) static ngx_uint_t
 ngx_http_test_if_match(ngx_http_request_t *r, ngx_table_elt_t *header,
     ngx_uint_t weak)
 {
-    u_char     *start, *end, ch;
-    ngx_str_t   etag, *list;
+    u_char *start, *end, ch;
+    ngx_str_t etag, *list;
 
     list = &header->value;
 
@@ -46,7 +46,7 @@ ngx_http_test_if_match(ngx_http_request_t *r, ngx_table_elt_t *header,
         return 1;
     }
 
-    if (r->headers_out.etag == NULL) {
+    if (r->headers_out.etag == ((void*)0)) {
         return 0;
     }
 

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct tcf_mirred {scalar_t__ tcf_refcnt; int /*<<< orphan*/  common; scalar_t__ tcfm_dev; int /*<<< orphan*/  tcfm_list; int /*<<< orphan*/  tcf_bindcnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dev_put (scalar_t__) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mirred_hash_info ; 
- int /*<<< orphan*/  tcf_hash_destroy (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct tcf_mirred {scalar_t__ tcf_refcnt; int common; scalar_t__ tcfm_dev; int tcfm_list; int tcf_bindcnt; } ;
+
+
+ int dev_put (scalar_t__) ;
+ int list_del (int *) ;
+ int mirred_hash_info ;
+ int tcf_hash_destroy (int *,int *) ;
 
 __attribute__((used)) static inline int tcf_mirred_release(struct tcf_mirred *m, int bind)
 {
-	if (m) {
-		if (bind)
-			m->tcf_bindcnt--;
-		m->tcf_refcnt--;
-		if(!m->tcf_bindcnt && m->tcf_refcnt <= 0) {
-			list_del(&m->tcfm_list);
-			if (m->tcfm_dev)
-				dev_put(m->tcfm_dev);
-			tcf_hash_destroy(&m->common, &mirred_hash_info);
-			return 1;
-		}
-	}
-	return 0;
+ if (m) {
+  if (bind)
+   m->tcf_bindcnt--;
+  m->tcf_refcnt--;
+  if(!m->tcf_bindcnt && m->tcf_refcnt <= 0) {
+   list_del(&m->tcfm_list);
+   if (m->tcfm_dev)
+    dev_put(m->tcfm_dev);
+   tcf_hash_destroy(&m->common, &mirred_hash_info);
+   return 1;
+  }
+ }
+ return 0;
 }

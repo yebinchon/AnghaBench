@@ -1,113 +1,113 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_5__ ;
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_15__ TYPE_5__ ;
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_15__ {char* replica_prefix; } ;
 struct TYPE_14__ {TYPE_2__* info; } ;
 struct TYPE_13__ {TYPE_1__* info; } ;
-struct TYPE_12__ {char* filename; int /*<<< orphan*/  file_size; } ;
+struct TYPE_12__ {char* filename; int file_size; } ;
 struct TYPE_11__ {char* filename; scalar_t__ file_size; } ;
 
-/* Variables and functions */
- TYPE_4__* Binlog ; 
- int /*<<< orphan*/  CLOCK_MONOTONIC ; 
- scalar_t__ MAX_ZALLOC ; 
- scalar_t__ PRIVILEGED_TCP_PORTS ; 
- int /*<<< orphan*/  STATS_SCHEMA_V1 ; 
- TYPE_3__* Snapshot ; 
- int /*<<< orphan*/  aes_load_pwd_file (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int auto_create_new_versions ; 
- int /*<<< orphan*/  backlog ; 
- int /*<<< orphan*/  binlog_disabled ; 
- int /*<<< orphan*/  binlog_load_time ; 
- scalar_t__ binlog_loaded_size ; 
- char* binlogname ; 
- scalar_t__ change_user (char*) ; 
- int /*<<< orphan*/  clear_log () ; 
- int /*<<< orphan*/  clear_read_log () ; 
- int /*<<< orphan*/  clear_write_log () ; 
- int dynamic_data_buffer_size ; 
- scalar_t__ engine_preload_filelist (char*,char*) ; 
- TYPE_5__* engine_replica ; 
- char* engine_snapshot_name ; 
- int /*<<< orphan*/  engine_snapshot_replica ; 
- scalar_t__ engine_snapshot_size ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  f_parse_option ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- scalar_t__ get_binlog_start_pos (TYPE_5__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_my_ipv4 () ; 
- int /*<<< orphan*/  get_utime (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  index_load_time ; 
- int index_mode ; 
- int /*<<< orphan*/  init_dyn_data () ; 
- int /*<<< orphan*/  init_log_data (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  init_server_PID (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ init_stats_data (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jump_log_crc32 ; 
- scalar_t__ jump_log_pos ; 
- int /*<<< orphan*/  jump_log_ts ; 
- int load_index (TYPE_3__*) ; 
- int log_readto_pos ; 
- int log_ts_interval ; 
- int /*<<< orphan*/  max_counters_growth_percent ; 
- int maxconn ; 
- int /*<<< orphan*/  no_argument ; 
- int now ; 
- TYPE_4__* open_binlog (TYPE_5__*,scalar_t__) ; 
- TYPE_3__* open_recent_snapshot (int /*<<< orphan*/ ) ; 
- int optind ; 
- int /*<<< orphan*/  parse_engine_options_long (int,char**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_option (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,char*,...) ; 
- scalar_t__ port ; 
- char* progname ; 
- scalar_t__ raise_file_rlimit (int) ; 
- int replay_log (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  required_argument ; 
- scalar_t__ reverse_index_mode ; 
- scalar_t__ reverse_index_pos ; 
- int /*<<< orphan*/  save_index () ; 
- scalar_t__ server_socket (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_debug_handlers () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- int /*<<< orphan*/  start_server () ; 
- void* start_time ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
- int /*<<< orphan*/  test_mode ; 
- void* time (int /*<<< orphan*/ ) ; 
- int today_start ; 
- scalar_t__ udp_enabled ; 
- int /*<<< orphan*/  usage () ; 
- char* username ; 
- int verbosity ; 
+
+ TYPE_4__* Binlog ;
+ int CLOCK_MONOTONIC ;
+ scalar_t__ MAX_ZALLOC ;
+ scalar_t__ PRIVILEGED_TCP_PORTS ;
+ int STATS_SCHEMA_V1 ;
+ TYPE_3__* Snapshot ;
+ int aes_load_pwd_file (int ) ;
+ int assert (int) ;
+ int auto_create_new_versions ;
+ int backlog ;
+ int binlog_disabled ;
+ int binlog_load_time ;
+ scalar_t__ binlog_loaded_size ;
+ char* binlogname ;
+ scalar_t__ change_user (char*) ;
+ int clear_log () ;
+ int clear_read_log () ;
+ int clear_write_log () ;
+ int dynamic_data_buffer_size ;
+ scalar_t__ engine_preload_filelist (char*,char*) ;
+ TYPE_5__* engine_replica ;
+ char* engine_snapshot_name ;
+ int engine_snapshot_replica ;
+ scalar_t__ engine_snapshot_size ;
+ int exit (int) ;
+ int f_parse_option ;
+ int fprintf (int ,char*,...) ;
+ scalar_t__ get_binlog_start_pos (TYPE_5__*,int ,int ) ;
+ int get_my_ipv4 () ;
+ int get_utime (int ) ;
+ int index_load_time ;
+ int index_mode ;
+ int init_dyn_data () ;
+ int init_log_data (scalar_t__,int ,int ) ;
+ int init_server_PID (int ,scalar_t__) ;
+ scalar_t__ init_stats_data (int ) ;
+ int jump_log_crc32 ;
+ scalar_t__ jump_log_pos ;
+ int jump_log_ts ;
+ int load_index (TYPE_3__*) ;
+ int log_readto_pos ;
+ int log_ts_interval ;
+ int max_counters_growth_percent ;
+ int maxconn ;
+ int no_argument ;
+ int now ;
+ TYPE_4__* open_binlog (TYPE_5__*,scalar_t__) ;
+ TYPE_3__* open_recent_snapshot (int ) ;
+ int optind ;
+ int parse_engine_options_long (int,char**,int ) ;
+ int parse_option (char*,int ,int ,int,char*,...) ;
+ scalar_t__ port ;
+ char* progname ;
+ scalar_t__ raise_file_rlimit (int) ;
+ int replay_log (int ,int) ;
+ int required_argument ;
+ scalar_t__ reverse_index_mode ;
+ scalar_t__ reverse_index_pos ;
+ int save_index () ;
+ scalar_t__ server_socket (scalar_t__,int ,int ,int ) ;
+ int set_debug_handlers () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ int start_server () ;
+ void* start_time ;
+ int stderr ;
+ int * strstr (char*,char*) ;
+ int test_mode ;
+ void* time (int ) ;
+ int today_start ;
+ scalar_t__ udp_enabled ;
+ int usage () ;
+ char* username ;
+ int verbosity ;
 
 int main (int argc, char *argv[]) {
   int i;
-  /*
-  strcpy(config_filename, "startx-engine.rc");
-  */
+
+
+
 
   set_debug_handlers ();
   progname = argv[0];
 
   index_mode = 0;
-  if (strstr (progname, "statsx-index") != NULL) {
+  if (strstr (progname, "statsx-index") != ((void*)0)) {
     index_mode = 1;
   }
 
@@ -126,7 +126,7 @@ int main (int argc, char *argv[]) {
   parse_option ("counter-growth", required_argument, 0, 'P', "counter hash table growth in percents (default %lf)", max_counters_growth_percent);
   parse_option ("default-timezone", required_argument, 0, 'S', "default timezone (hours offset from GMT)");
   parse_option ("cyclic-binlog", required_argument, 0, 1000, "use binlog in cyclic mode");
-  
+
   parse_engine_options_long (argc, argv, f_parse_option);
   if (argc != optind + 1 && argc != optind + 2) {
     usage ();
@@ -138,10 +138,10 @@ int main (int argc, char *argv[]) {
       fprintf (stderr, "Starting in index mode...\n");
     }
   }
-/*
-  types_count = 0;
-*/
-//  max_binlog_size = 170;
+
+
+
+
 
   if (raise_file_rlimit(maxconn + 16) < 0 && !test_mode) {
     fprintf (stderr, "fatal: cannot raise open file limit to %d\n", maxconn+16);
@@ -171,9 +171,9 @@ int main (int argc, char *argv[]) {
   if (udp_enabled) {
     init_server_PID (get_my_ipv4 (), port);
   }
-/*
-  reload_config();
-*/
+
+
+
 
   if (engine_preload_filelist (argv[optind], binlogname) < 0) {
     fprintf (stderr, "cannot open binlog files for %s\n", binlogname ? binlogname : argv[optind]);
@@ -186,7 +186,7 @@ int main (int argc, char *argv[]) {
   today_start = tt = time(0);
   today_start -= tt % 86400;
 
-  //Snapshot reading
+
   Snapshot = open_recent_snapshot (engine_snapshot_replica);
 
   if (Snapshot) {
@@ -197,7 +197,7 @@ int main (int argc, char *argv[]) {
       fprintf (stderr, "load index file %s (size %lld)\n", engine_snapshot_name, engine_snapshot_size);
     }
   } else {
-    engine_snapshot_name = NULL;
+    engine_snapshot_name = ((void*)0);
     engine_snapshot_size = 0;
   }
 

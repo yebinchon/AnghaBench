@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ath_hal {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AR_PHY_TIMING2 ; 
- int /*<<< orphan*/  AR_PHY_TIMING2_DC_OFFSET ; 
- int /*<<< orphan*/  OS_REG_RMW_FIELD (struct ath_hal*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AR_PHY_TIMING2 ;
+ int AR_PHY_TIMING2_DC_OFFSET ;
+ int OS_REG_RMW_FIELD (struct ath_hal*,int ,int ,int ) ;
 
 void ar9300_disable_dc_offset(struct ath_hal *ah)
 {

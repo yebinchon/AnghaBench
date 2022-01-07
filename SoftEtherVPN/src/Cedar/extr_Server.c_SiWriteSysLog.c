@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  tmp ;
-typedef  int /*<<< orphan*/  machinename ;
-typedef  int /*<<< orphan*/  datetime ;
-struct TYPE_3__ {int /*<<< orphan*/  Syslog; scalar_t__ StrictSyslogDatetimeFormat; } ;
-typedef  int /*<<< orphan*/  SYSTEMTIME ;
-typedef  TYPE_1__ SERVER ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Debug (char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GSF_DISABLE_SYSLOG ; 
- int /*<<< orphan*/  GetCurrentTimezone () ; 
- int /*<<< orphan*/  GetDateTimeStrMilli (char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDateTimeStrRFC3339 (char*,int,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ GetGlobalServerFlag (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetMachineName (char*,int) ; 
- int IsEmptyStr (char*) ; 
- int /*<<< orphan*/  LocalTime (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  MAX_HOST_NAME_LEN ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SendSysLog (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniFormat (int /*<<< orphan*/ *,int,char*,char*,char*,char*,char*,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
+typedef int tmp ;
+typedef int machinename ;
+typedef int datetime ;
+struct TYPE_3__ {int Syslog; scalar_t__ StrictSyslogDatetimeFormat; } ;
+typedef int SYSTEMTIME ;
+typedef TYPE_1__ SERVER ;
+
+
+ int Debug (char*,int *) ;
+ int GSF_DISABLE_SYSLOG ;
+ int GetCurrentTimezone () ;
+ int GetDateTimeStrMilli (char*,int,int *) ;
+ int GetDateTimeStrRFC3339 (char*,int,int *,int ) ;
+ scalar_t__ GetGlobalServerFlag (int ) ;
+ int GetMachineName (char*,int) ;
+ int IsEmptyStr (char*) ;
+ int LocalTime (int *) ;
+ int MAX_HOST_NAME_LEN ;
+ int MAX_PATH ;
+ int SendSysLog (int ,int *) ;
+ int UniFormat (int *,int,char*,char*,char*,char*,char*,...) ;
 
 void SiWriteSysLog(SERVER *s, char *typestr, char *hubname, wchar_t *message)
 {
-	wchar_t tmp[1024];
-	char machinename[MAX_HOST_NAME_LEN + 1];
-	char datetime[MAX_PATH];
-	SYSTEMTIME st;
-	// Validate arguments
-	if (s == NULL || typestr == NULL || message == NULL)
-	{
-		return;
-	}
+ wchar_t tmp[1024];
+ char machinename[MAX_HOST_NAME_LEN + 1];
+ char datetime[MAX_PATH];
+ SYSTEMTIME st;
 
-	if (GetGlobalServerFlag(GSF_DISABLE_SYSLOG) != 0)
-	{
-		return;
-	}
+ if (s == ((void*)0) || typestr == ((void*)0) || message == ((void*)0))
+ {
+  return;
+ }
 
-	// Host name
-	GetMachineName(machinename, sizeof(machinename));
+ if (GetGlobalServerFlag(GSF_DISABLE_SYSLOG) != 0)
+ {
+  return;
+ }
 
-	// Date and time
-	LocalTime(&st);
-	if(s->StrictSyslogDatetimeFormat){
-		GetDateTimeStrRFC3339(datetime, sizeof(datetime), &st, GetCurrentTimezone());
-	}else{
-		GetDateTimeStrMilli(datetime, sizeof(datetime), &st);
-	}
 
-	if (IsEmptyStr(hubname) == false)
-	{
-		UniFormat(tmp, sizeof(tmp), L"[%S/VPN/%S] (%S) <%S>: %s",
-			machinename, hubname, datetime, typestr, message);
-	}
-	else
-	{
-		UniFormat(tmp, sizeof(tmp), L"[%S/VPN] (%S) <%S>: %s",
-			machinename, datetime, typestr, message);
-	}
+ GetMachineName(machinename, sizeof(machinename));
 
-	Debug("Syslog send: %S\n",tmp);
 
-	SendSysLog(s->Syslog, tmp);
+ LocalTime(&st);
+ if(s->StrictSyslogDatetimeFormat){
+  GetDateTimeStrRFC3339(datetime, sizeof(datetime), &st, GetCurrentTimezone());
+ }else{
+  GetDateTimeStrMilli(datetime, sizeof(datetime), &st);
+ }
+
+ if (IsEmptyStr(hubname) == 0)
+ {
+  UniFormat(tmp, sizeof(tmp), L"[%S/VPN/%S] (%S) <%S>: %s",
+   machinename, hubname, datetime, typestr, message);
+ }
+ else
+ {
+  UniFormat(tmp, sizeof(tmp), L"[%S/VPN] (%S) <%S>: %s",
+   machinename, datetime, typestr, message);
+ }
+
+ Debug("Syslog send: %S\n",tmp);
+
+ SendSysLog(s->Syslog, tmp);
 }

@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-struct TYPE_6__ {int /*<<< orphan*/  location; } ;
-typedef  TYPE_1__ TypeName ;
-typedef  int /*<<< orphan*/ * Type ;
-struct TYPE_7__ {int /*<<< orphan*/  oid; int /*<<< orphan*/  typisdefined; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_2__* Form_pg_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERRCODE_UNDEFINED_OBJECT ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  GETSTRUCT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  InvalidOid ; 
- int /*<<< orphan*/ * LookupTypeName (int /*<<< orphan*/ *,TYPE_1__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ReleaseSysCache (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TypeNameToString (TYPE_1__*) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errcode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parser_errposition (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- TYPE_1__* typeStringToTypeName (char const*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int int32 ;
+struct TYPE_6__ {int location; } ;
+typedef TYPE_1__ TypeName ;
+typedef int * Type ;
+struct TYPE_7__ {int oid; int typisdefined; } ;
+typedef int Oid ;
+typedef TYPE_2__* Form_pg_type ;
+
+
+ int ERRCODE_UNDEFINED_OBJECT ;
+ int ERROR ;
+ int GETSTRUCT (int *) ;
+ int InvalidOid ;
+ int * LookupTypeName (int *,TYPE_1__*,int *,int) ;
+ int ReleaseSysCache (int *) ;
+ int TypeNameToString (TYPE_1__*) ;
+ int ereport (int ,int ) ;
+ int errcode (int ) ;
+ int errmsg (char*,int ) ;
+ int parser_errposition (int *,int ) ;
+ TYPE_1__* typeStringToTypeName (char const*) ;
 
 void
 parseTypeString(const char *str, Oid *typeid_p, int32 *typmod_p, bool missing_ok)
 {
-	TypeName   *typeName;
-	Type		tup;
+ TypeName *typeName;
+ Type tup;
 
-	typeName = typeStringToTypeName(str);
+ typeName = typeStringToTypeName(str);
 
-	tup = LookupTypeName(NULL, typeName, typmod_p, missing_ok);
-	if (tup == NULL)
-	{
-		if (!missing_ok)
-			ereport(ERROR,
-					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("type \"%s\" does not exist",
-							TypeNameToString(typeName)),
-					 parser_errposition(NULL, typeName->location)));
-		*typeid_p = InvalidOid;
-	}
-	else
-	{
-		Form_pg_type typ = (Form_pg_type) GETSTRUCT(tup);
+ tup = LookupTypeName(((void*)0), typeName, typmod_p, missing_ok);
+ if (tup == ((void*)0))
+ {
+  if (!missing_ok)
+   ereport(ERROR,
+     (errcode(ERRCODE_UNDEFINED_OBJECT),
+      errmsg("type \"%s\" does not exist",
+       TypeNameToString(typeName)),
+      parser_errposition(((void*)0), typeName->location)));
+  *typeid_p = InvalidOid;
+ }
+ else
+ {
+  Form_pg_type typ = (Form_pg_type) GETSTRUCT(tup);
 
-		if (!typ->typisdefined)
-			ereport(ERROR,
-					(errcode(ERRCODE_UNDEFINED_OBJECT),
-					 errmsg("type \"%s\" is only a shell",
-							TypeNameToString(typeName)),
-					 parser_errposition(NULL, typeName->location)));
-		*typeid_p = typ->oid;
-		ReleaseSysCache(tup);
-	}
+  if (!typ->typisdefined)
+   ereport(ERROR,
+     (errcode(ERRCODE_UNDEFINED_OBJECT),
+      errmsg("type \"%s\" is only a shell",
+       TypeNameToString(typeName)),
+      parser_errposition(((void*)0), typeName->location)));
+  *typeid_p = typ->oid;
+  ReleaseSysCache(tup);
+ }
 }

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int /*<<< orphan*/  to_magic; int /*<<< orphan*/  to_stratum; int /*<<< orphan*/  to_pid_to_exec_file; int /*<<< orphan*/  to_get_current_exception_event; int /*<<< orphan*/  to_enable_exception_callback; int /*<<< orphan*/  to_stop; int /*<<< orphan*/  to_pid_to_str; int /*<<< orphan*/  to_thread_alive; int /*<<< orphan*/  to_can_run; int /*<<< orphan*/  to_mourn_inferior; int /*<<< orphan*/  to_has_exited; int /*<<< orphan*/  to_reported_exec_events_per_exec_call; int /*<<< orphan*/  to_remove_exec_catchpoint; int /*<<< orphan*/  to_insert_exec_catchpoint; int /*<<< orphan*/  to_follow_fork; int /*<<< orphan*/  to_remove_vfork_catchpoint; int /*<<< orphan*/  to_insert_vfork_catchpoint; int /*<<< orphan*/  to_remove_fork_catchpoint; int /*<<< orphan*/  to_insert_fork_catchpoint; int /*<<< orphan*/  to_acknowledge_created_inferior; int /*<<< orphan*/  to_post_startup_inferior; int /*<<< orphan*/  to_create_inferior; int /*<<< orphan*/  to_kill; int /*<<< orphan*/  to_terminal_info; int /*<<< orphan*/  to_terminal_ours; int /*<<< orphan*/  to_terminal_save_ours; int /*<<< orphan*/  to_terminal_ours_for_output; int /*<<< orphan*/  to_terminal_inferior; int /*<<< orphan*/  to_terminal_init; int /*<<< orphan*/  to_remove_breakpoint; int /*<<< orphan*/  to_insert_breakpoint; int /*<<< orphan*/  to_files_info; int /*<<< orphan*/  to_xfer_partial; int /*<<< orphan*/  to_xfer_memory; int /*<<< orphan*/  to_prepare_to_store; int /*<<< orphan*/  to_store_registers; int /*<<< orphan*/  to_fetch_registers; int /*<<< orphan*/  to_post_wait; int /*<<< orphan*/  to_wait; int /*<<< orphan*/  to_resume; int /*<<< orphan*/  to_detach; int /*<<< orphan*/  to_post_attach; int /*<<< orphan*/  to_attach; int /*<<< orphan*/  to_open; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  OPS_MAGIC ; 
- int /*<<< orphan*/  child_acknowledge_created_inferior ; 
- int /*<<< orphan*/  child_attach ; 
- int /*<<< orphan*/  child_can_run ; 
- int /*<<< orphan*/  child_create_inferior ; 
- int /*<<< orphan*/  child_detach ; 
- int /*<<< orphan*/  child_enable_exception_callback ; 
- int /*<<< orphan*/  child_files_info ; 
- int /*<<< orphan*/  child_follow_fork ; 
- int /*<<< orphan*/  child_get_current_exception_event ; 
- int /*<<< orphan*/  child_has_exited ; 
- int /*<<< orphan*/  child_insert_exec_catchpoint ; 
- int /*<<< orphan*/  child_insert_fork_catchpoint ; 
- int /*<<< orphan*/  child_insert_vfork_catchpoint ; 
- int /*<<< orphan*/  child_mourn_inferior ; 
- int /*<<< orphan*/  child_open ; 
- TYPE_1__ child_ops ; 
- int /*<<< orphan*/  child_pid_to_exec_file ; 
- int /*<<< orphan*/  child_pid_to_str ; 
- int /*<<< orphan*/  child_post_attach ; 
- int /*<<< orphan*/  child_post_startup_inferior ; 
- int /*<<< orphan*/  child_post_wait ; 
- int /*<<< orphan*/  child_prepare_to_store ; 
- int /*<<< orphan*/  child_remove_exec_catchpoint ; 
- int /*<<< orphan*/  child_remove_fork_catchpoint ; 
- int /*<<< orphan*/  child_remove_vfork_catchpoint ; 
- int /*<<< orphan*/  child_reported_exec_events_per_exec_call ; 
- int /*<<< orphan*/  child_resume ; 
- int /*<<< orphan*/  child_stop ; 
- int /*<<< orphan*/  child_terminal_info ; 
- int /*<<< orphan*/  child_thread_alive ; 
- int /*<<< orphan*/  child_wait ; 
- int /*<<< orphan*/  child_xfer_memory ; 
- int /*<<< orphan*/  child_xfer_partial ; 
- int /*<<< orphan*/  fetch_inferior_registers ; 
- int /*<<< orphan*/  kill_inferior ; 
- int /*<<< orphan*/  memory_insert_breakpoint ; 
- int /*<<< orphan*/  memory_remove_breakpoint ; 
- int /*<<< orphan*/  process_stratum ; 
- int /*<<< orphan*/  store_inferior_registers ; 
- int /*<<< orphan*/  terminal_inferior ; 
- int /*<<< orphan*/  terminal_init_inferior ; 
- int /*<<< orphan*/  terminal_ours ; 
- int /*<<< orphan*/  terminal_ours_for_output ; 
- int /*<<< orphan*/  terminal_save_ours ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {char* to_shortname; char* to_longname; char* to_doc; int to_has_all_memory; int to_has_memory; int to_has_stack; int to_has_registers; int to_has_execution; int to_magic; int to_stratum; int to_pid_to_exec_file; int to_get_current_exception_event; int to_enable_exception_callback; int to_stop; int to_pid_to_str; int to_thread_alive; int to_can_run; int to_mourn_inferior; int to_has_exited; int to_reported_exec_events_per_exec_call; int to_remove_exec_catchpoint; int to_insert_exec_catchpoint; int to_follow_fork; int to_remove_vfork_catchpoint; int to_insert_vfork_catchpoint; int to_remove_fork_catchpoint; int to_insert_fork_catchpoint; int to_acknowledge_created_inferior; int to_post_startup_inferior; int to_create_inferior; int to_kill; int to_terminal_info; int to_terminal_ours; int to_terminal_save_ours; int to_terminal_ours_for_output; int to_terminal_inferior; int to_terminal_init; int to_remove_breakpoint; int to_insert_breakpoint; int to_files_info; int to_xfer_partial; int to_xfer_memory; int to_prepare_to_store; int to_store_registers; int to_fetch_registers; int to_post_wait; int to_wait; int to_resume; int to_detach; int to_post_attach; int to_attach; int to_open; } ;
+
+
+ int OPS_MAGIC ;
+ int child_acknowledge_created_inferior ;
+ int child_attach ;
+ int child_can_run ;
+ int child_create_inferior ;
+ int child_detach ;
+ int child_enable_exception_callback ;
+ int child_files_info ;
+ int child_follow_fork ;
+ int child_get_current_exception_event ;
+ int child_has_exited ;
+ int child_insert_exec_catchpoint ;
+ int child_insert_fork_catchpoint ;
+ int child_insert_vfork_catchpoint ;
+ int child_mourn_inferior ;
+ int child_open ;
+ TYPE_1__ child_ops ;
+ int child_pid_to_exec_file ;
+ int child_pid_to_str ;
+ int child_post_attach ;
+ int child_post_startup_inferior ;
+ int child_post_wait ;
+ int child_prepare_to_store ;
+ int child_remove_exec_catchpoint ;
+ int child_remove_fork_catchpoint ;
+ int child_remove_vfork_catchpoint ;
+ int child_reported_exec_events_per_exec_call ;
+ int child_resume ;
+ int child_stop ;
+ int child_terminal_info ;
+ int child_thread_alive ;
+ int child_wait ;
+ int child_xfer_memory ;
+ int child_xfer_partial ;
+ int fetch_inferior_registers ;
+ int kill_inferior ;
+ int memory_insert_breakpoint ;
+ int memory_remove_breakpoint ;
+ int process_stratum ;
+ int store_inferior_registers ;
+ int terminal_inferior ;
+ int terminal_init_inferior ;
+ int terminal_ours ;
+ int terminal_ours_for_output ;
+ int terminal_save_ours ;
 
 __attribute__((used)) static void
 init_child_ops (void)

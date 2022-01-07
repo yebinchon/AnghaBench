@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  parent; } ;
-struct scsi_target {scalar_t__ channel; int /*<<< orphan*/  id; TYPE_1__ dev; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int parent; } ;
+struct scsi_target {scalar_t__ channel; int id; TYPE_1__ dev; } ;
 struct ahd_tmode_tstate {int dummy; } ;
 struct ahd_softc {int dummy; } ;
-struct TYPE_4__ {unsigned int ppr_options; unsigned int period; unsigned int width; int /*<<< orphan*/  offset; } ;
+struct TYPE_4__ {unsigned int ppr_options; unsigned int period; unsigned int width; int offset; } ;
 struct ahd_initiator_tinfo {TYPE_2__ goal; } ;
 struct ahd_devinfo {int dummy; } ;
-struct Scsi_Host {int /*<<< orphan*/  this_id; scalar_t__ hostdata; } ;
+struct Scsi_Host {int this_id; scalar_t__ hostdata; } ;
 
-/* Variables and functions */
- int AHD_SHOW_DV ; 
- int /*<<< orphan*/  AHD_SYNCRATE_MAX ; 
- int /*<<< orphan*/  AHD_SYNCRATE_ULTRA2 ; 
- int /*<<< orphan*/  AHD_TRANS_GOAL ; 
- int /*<<< orphan*/  FALSE ; 
- unsigned int MSG_EXT_PPR_DT_REQ ; 
- unsigned int MSG_EXT_PPR_IU_REQ ; 
- int /*<<< orphan*/  ROLE_INITIATOR ; 
- int /*<<< orphan*/  ahd_compile_devinfo (struct ahd_devinfo*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int ahd_debug ; 
- struct ahd_initiator_tinfo* ahd_fetch_transinfo (struct ahd_softc*,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct ahd_tmode_tstate**) ; 
- int /*<<< orphan*/  ahd_find_syncrate (struct ahd_softc*,unsigned int*,unsigned int*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ahd_linux_set_width (struct scsi_target*,int) ; 
- int /*<<< orphan*/  ahd_lock (struct ahd_softc*,unsigned long*) ; 
- int /*<<< orphan*/  ahd_name (struct ahd_softc*) ; 
- int /*<<< orphan*/  ahd_set_syncrate (struct ahd_softc*,struct ahd_devinfo*,unsigned int,int /*<<< orphan*/ ,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ahd_unlock (struct ahd_softc*,unsigned long*) ; 
- struct Scsi_Host* dev_to_shost (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printk (char*,int /*<<< orphan*/ ,char*) ; 
- scalar_t__ spi_max_width (struct scsi_target*) ; 
+
+ int AHD_SHOW_DV ;
+ int AHD_SYNCRATE_MAX ;
+ int AHD_SYNCRATE_ULTRA2 ;
+ int AHD_TRANS_GOAL ;
+ int FALSE ;
+ unsigned int MSG_EXT_PPR_DT_REQ ;
+ unsigned int MSG_EXT_PPR_IU_REQ ;
+ int ROLE_INITIATOR ;
+ int ahd_compile_devinfo (struct ahd_devinfo*,int ,int ,int ,scalar_t__,int ) ;
+ int ahd_debug ;
+ struct ahd_initiator_tinfo* ahd_fetch_transinfo (struct ahd_softc*,scalar_t__,int ,int ,struct ahd_tmode_tstate**) ;
+ int ahd_find_syncrate (struct ahd_softc*,unsigned int*,unsigned int*,int ) ;
+ int ahd_linux_set_width (struct scsi_target*,int) ;
+ int ahd_lock (struct ahd_softc*,unsigned long*) ;
+ int ahd_name (struct ahd_softc*) ;
+ int ahd_set_syncrate (struct ahd_softc*,struct ahd_devinfo*,unsigned int,int ,unsigned int,int ,int ) ;
+ int ahd_unlock (struct ahd_softc*,unsigned long*) ;
+ struct Scsi_Host* dev_to_shost (int ) ;
+ int printk (char*,int ,char*) ;
+ scalar_t__ spi_max_width (struct scsi_target*) ;
 
 __attribute__((used)) static void ahd_linux_set_dt(struct scsi_target *starget, int dt)
 {
-	struct Scsi_Host *shost = dev_to_shost(starget->dev.parent);
-	struct ahd_softc *ahd = *((struct ahd_softc **)shost->hostdata);
-	struct ahd_tmode_tstate *tstate;
-	struct ahd_initiator_tinfo *tinfo 
-		= ahd_fetch_transinfo(ahd,
-				      starget->channel + 'A',
-				      shost->this_id, starget->id, &tstate);
-	struct ahd_devinfo devinfo;
-	unsigned int ppr_options = tinfo->goal.ppr_options
-		& ~MSG_EXT_PPR_DT_REQ;
-	unsigned int period = tinfo->goal.period;
-	unsigned int width = tinfo->goal.width;
-	unsigned long flags;
+ struct Scsi_Host *shost = dev_to_shost(starget->dev.parent);
+ struct ahd_softc *ahd = *((struct ahd_softc **)shost->hostdata);
+ struct ahd_tmode_tstate *tstate;
+ struct ahd_initiator_tinfo *tinfo
+  = ahd_fetch_transinfo(ahd,
+          starget->channel + 'A',
+          shost->this_id, starget->id, &tstate);
+ struct ahd_devinfo devinfo;
+ unsigned int ppr_options = tinfo->goal.ppr_options
+  & ~MSG_EXT_PPR_DT_REQ;
+ unsigned int period = tinfo->goal.period;
+ unsigned int width = tinfo->goal.width;
+ unsigned long flags;
 
-#ifdef AHD_DEBUG
-	if ((ahd_debug & AHD_SHOW_DV) != 0)
-		printk("%s: %s DT\n", ahd_name(ahd),
-		       dt ? "enabling" : "disabling");
-#endif
-	if (dt && spi_max_width(starget)) {
-		ppr_options |= MSG_EXT_PPR_DT_REQ;
-		if (!width)
-			ahd_linux_set_width(starget, 1);
-	} else {
-		if (period <= 9)
-			period = 10; /* If resetting DT, period must be >= 25ns */
-		/* IU is invalid without DT set */
-		ppr_options &= ~MSG_EXT_PPR_IU_REQ;
-	}
-	ahd_compile_devinfo(&devinfo, shost->this_id, starget->id, 0,
-			    starget->channel + 'A', ROLE_INITIATOR);
-	ahd_find_syncrate(ahd, &period, &ppr_options,
-			  dt ? AHD_SYNCRATE_MAX : AHD_SYNCRATE_ULTRA2);
 
-	ahd_lock(ahd, &flags);
-	ahd_set_syncrate(ahd, &devinfo, period, tinfo->goal.offset,
-			 ppr_options, AHD_TRANS_GOAL, FALSE);
-	ahd_unlock(ahd, &flags);
+
+
+
+
+ if (dt && spi_max_width(starget)) {
+  ppr_options |= MSG_EXT_PPR_DT_REQ;
+  if (!width)
+   ahd_linux_set_width(starget, 1);
+ } else {
+  if (period <= 9)
+   period = 10;
+
+  ppr_options &= ~MSG_EXT_PPR_IU_REQ;
+ }
+ ahd_compile_devinfo(&devinfo, shost->this_id, starget->id, 0,
+       starget->channel + 'A', ROLE_INITIATOR);
+ ahd_find_syncrate(ahd, &period, &ppr_options,
+     dt ? AHD_SYNCRATE_MAX : AHD_SYNCRATE_ULTRA2);
+
+ ahd_lock(ahd, &flags);
+ ahd_set_syncrate(ahd, &devinfo, period, tinfo->goal.offset,
+    ppr_options, AHD_TRANS_GOAL, FALSE);
+ ahd_unlock(ahd, &flags);
 }

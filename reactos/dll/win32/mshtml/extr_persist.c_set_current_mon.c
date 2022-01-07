@@ -1,59 +1,59 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_7__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_10__ TYPE_7__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_8__ {TYPE_2__* window; } ;
 struct TYPE_10__ {TYPE_1__ basedoc; } ;
-struct TYPE_9__ {int load_flags; int /*<<< orphan*/  url; int /*<<< orphan*/ * mon; TYPE_7__* doc_obj; } ;
-typedef  int /*<<< orphan*/  IUriContainer ;
-typedef  int /*<<< orphan*/  IUri ;
-typedef  int /*<<< orphan*/  IMoniker ;
-typedef  TYPE_2__ HTMLOuterWindow ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
+struct TYPE_9__ {int load_flags; int url; int * mon; TYPE_7__* doc_obj; } ;
+typedef int IUriContainer ;
+typedef int IUri ;
+typedef int IMoniker ;
+typedef TYPE_2__ HTMLOuterWindow ;
+typedef int HRESULT ;
+typedef int DWORD ;
 
-/* Variables and functions */
- int BINDING_REFRESH ; 
- int BINDING_REPLACE ; 
- int /*<<< orphan*/  CoTaskMemFree (int /*<<< orphan*/ *) ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IID_IUriContainer ; 
- int /*<<< orphan*/  IMoniker_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IMoniker_GetDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IMoniker_QueryInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  IMoniker_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUriContainer_GetIUri (int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IUriContainer_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IUri_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SCRIPTMODE_ACTIVESCRIPT ; 
- int /*<<< orphan*/  SCRIPTMODE_GECKO ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  SysAllocString (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*) ; 
- int /*<<< orphan*/  WARN (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  create_uri (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  notify_travellog_update (TYPE_7__*) ; 
- int /*<<< orphan*/  set_current_uri (TYPE_2__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_script_mode (TYPE_2__*,int /*<<< orphan*/ ) ; 
- scalar_t__ use_gecko_script (TYPE_2__*) ; 
+
+ int BINDING_REFRESH ;
+ int BINDING_REPLACE ;
+ int CoTaskMemFree (int *) ;
+ scalar_t__ FAILED (int ) ;
+ int IID_IUriContainer ;
+ int IMoniker_AddRef (int *) ;
+ int IMoniker_GetDisplayName (int *,int *,int *,int **) ;
+ int IMoniker_QueryInterface (int *,int *,void**) ;
+ int IMoniker_Release (int *) ;
+ int IUriContainer_GetIUri (int *,int **) ;
+ int IUriContainer_Release (int *) ;
+ int IUri_Release (int *) ;
+ int SCRIPTMODE_ACTIVESCRIPT ;
+ int SCRIPTMODE_GECKO ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+ int SysAllocString (int *) ;
+ int TRACE (char*) ;
+ int WARN (char*,int ) ;
+ int create_uri (int *,int ,int **) ;
+ int notify_travellog_update (TYPE_7__*) ;
+ int set_current_uri (TYPE_2__*,int *) ;
+ int set_script_mode (TYPE_2__*,int ) ;
+ scalar_t__ use_gecko_script (TYPE_2__*) ;
 
 void set_current_mon(HTMLOuterWindow *This, IMoniker *mon, DWORD flags)
 {
     IUriContainer *uri_container;
-    IUri *uri = NULL;
+    IUri *uri = ((void*)0);
     HRESULT hres;
 
     if(This->mon) {
@@ -64,7 +64,7 @@ void set_current_mon(HTMLOuterWindow *This, IMoniker *mon, DWORD flags)
                 TRACE("Skipping travellog update for frame navigation.\n");
         }
         IMoniker_Release(This->mon);
-        This->mon = NULL;
+        This->mon = ((void*)0);
     }
 
     This->load_flags = flags;
@@ -80,19 +80,19 @@ void set_current_mon(HTMLOuterWindow *This, IMoniker *mon, DWORD flags)
         IUriContainer_Release(uri_container);
         if(hres != S_OK) {
             WARN("GetIUri failed: %08x\n", hres);
-            uri = NULL;
+            uri = ((void*)0);
         }
     }
 
     if(!uri) {
         WCHAR *url;
 
-        hres = IMoniker_GetDisplayName(mon, NULL, NULL, &url);
+        hres = IMoniker_GetDisplayName(mon, ((void*)0), ((void*)0), &url);
         if(SUCCEEDED(hres)) {
             hres = create_uri(url, 0, &uri);
             if(FAILED(hres)) {
                 WARN("CrateUri failed: %08x\n", hres);
-                set_current_uri(This, NULL);
+                set_current_uri(This, ((void*)0));
                 This->url = SysAllocString(url);
                 CoTaskMemFree(url);
                 return;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct work_stuff {int ntmpl_args; int /*<<< orphan*/ * previous_argument; scalar_t__* tmpl_argvec; scalar_t__ typevec_size; int /*<<< orphan*/ * typevec; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  forget_types (struct work_stuff*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  string_delete (int /*<<< orphan*/ *) ; 
+
+
+
+struct work_stuff {int ntmpl_args; int * previous_argument; scalar_t__* tmpl_argvec; scalar_t__ typevec_size; int * typevec; } ;
+
+
+ int forget_types (struct work_stuff*) ;
+ int free (char*) ;
+ int string_delete (int *) ;
 
 __attribute__((used)) static void
 delete_non_B_K_work_stuff (struct work_stuff *work)
 {
-  /* Discard the remembered types, if any.  */
+
 
   forget_types (work);
-  if (work -> typevec != NULL)
+  if (work -> typevec != ((void*)0))
     {
       free ((char *) work -> typevec);
-      work -> typevec = NULL;
+      work -> typevec = ((void*)0);
       work -> typevec_size = 0;
     }
   if (work->tmpl_argvec)
@@ -34,16 +34,16 @@ delete_non_B_K_work_stuff (struct work_stuff *work)
       int i;
 
       for (i = 0; i < work->ntmpl_args; i++)
-	if (work->tmpl_argvec[i])
-	  free ((char*) work->tmpl_argvec[i]);
+ if (work->tmpl_argvec[i])
+   free ((char*) work->tmpl_argvec[i]);
 
       free ((char*) work->tmpl_argvec);
-      work->tmpl_argvec = NULL;
+      work->tmpl_argvec = ((void*)0);
     }
   if (work->previous_argument)
     {
       string_delete (work->previous_argument);
       free ((char*) work->previous_argument);
-      work->previous_argument = NULL;
+      work->previous_argument = ((void*)0);
     }
 }

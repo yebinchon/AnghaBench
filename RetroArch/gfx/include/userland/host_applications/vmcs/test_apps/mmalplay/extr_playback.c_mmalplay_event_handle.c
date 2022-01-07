@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_13__ {scalar_t__ cmd; scalar_t__ length; } ;
-struct TYPE_12__ {int /*<<< orphan*/  buffer_size_min; int /*<<< orphan*/  buffer_size_recommended; int /*<<< orphan*/  buffer_num_min; int /*<<< orphan*/  buffer_num_recommended; int /*<<< orphan*/  format; } ;
-struct TYPE_11__ {scalar_t__ type; int /*<<< orphan*/  format; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  TYPE_1__ MMAL_PORT_T ;
-typedef  TYPE_2__ MMAL_EVENT_FORMAT_CHANGED_T ;
-typedef  int /*<<< orphan*/  MMAL_CONNECTION_T ;
-typedef  TYPE_3__ MMAL_BUFFER_HEADER_T ;
+struct TYPE_12__ {int buffer_size_min; int buffer_size_recommended; int buffer_num_min; int buffer_num_recommended; int format; } ;
+struct TYPE_11__ {scalar_t__ type; int format; int name; } ;
+typedef int MMAL_STATUS_T ;
+typedef TYPE_1__ MMAL_PORT_T ;
+typedef TYPE_2__ MMAL_EVENT_FORMAT_CHANGED_T ;
+typedef int MMAL_CONNECTION_T ;
+typedef TYPE_3__ MMAL_BUFFER_HEADER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LOG_INFO (char*,...) ; 
- scalar_t__ MMAL_EVENT_FORMAT_CHANGED ; 
- scalar_t__ MMAL_PORT_TYPE_OUTPUT ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- int /*<<< orphan*/  log_format (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  mmal_buffer_header_release (TYPE_3__*) ; 
- int /*<<< orphan*/  mmal_connection_event_format_changed (int /*<<< orphan*/ *,TYPE_3__*) ; 
- TYPE_2__* mmal_event_format_changed_get (TYPE_3__*) ; 
+
+ int LOG_INFO (char*,...) ;
+ scalar_t__ MMAL_EVENT_FORMAT_CHANGED ;
+ scalar_t__ MMAL_PORT_TYPE_OUTPUT ;
+ int MMAL_SUCCESS ;
+ int log_format (int ,TYPE_1__*) ;
+ int mmal_buffer_header_release (TYPE_3__*) ;
+ int mmal_connection_event_format_changed (int *,TYPE_3__*) ;
+ TYPE_2__* mmal_event_format_changed_get (TYPE_3__*) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmalplay_event_handle(MMAL_CONNECTION_T *connection, MMAL_PORT_T *port,
    MMAL_BUFFER_HEADER_T *buffer)

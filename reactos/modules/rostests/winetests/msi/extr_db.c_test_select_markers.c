@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
-typedef  char* LPCSTR ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_NO_MORE_ITEMS ; 
- int ERROR_SUCCESS ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MsiCreateRecord (int) ; 
- int MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
- int MsiRecordGetInteger (int /*<<< orphan*/ ,int) ; 
- int MsiRecordGetStringA (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int*) ; 
- int /*<<< orphan*/  MsiRecordSetInteger (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  MsiRecordSetStringA (int /*<<< orphan*/ ,int,char*) ; 
- int /*<<< orphan*/  MsiViewClose (int /*<<< orphan*/ ) ; 
- int MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int S_OK ; 
- int /*<<< orphan*/  create_db () ; 
- int /*<<< orphan*/  lstrcmpA (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+typedef char* LPCSTR ;
+typedef int DWORD ;
+typedef int CHAR ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_NO_MORE_ITEMS ;
+ int ERROR_SUCCESS ;
+ int MAX_PATH ;
+ int MsiCloseHandle (int ) ;
+ int MsiCreateRecord (int) ;
+ int MsiDatabaseOpenViewA (int ,char*,int *) ;
+ int MsiRecordGetInteger (int ,int) ;
+ int MsiRecordGetStringA (int ,int,int *,int*) ;
+ int MsiRecordSetInteger (int ,int,int) ;
+ int MsiRecordSetStringA (int ,int,char*) ;
+ int MsiViewClose (int ) ;
+ int MsiViewExecute (int ,int ) ;
+ int MsiViewFetch (int ,int *) ;
+ int S_OK ;
+ int create_db () ;
+ int lstrcmpA (int *,char*) ;
+ int msifile ;
+ int ok (int,char*,...) ;
+ int run_query (int ,int ,char*) ;
 
 __attribute__((used)) static void test_select_markers(void)
 {

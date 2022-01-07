@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RedisModuleString ;
-typedef  int /*<<< orphan*/  RedisModuleCtx ;
 
-/* Variables and functions */
- int REDISMODULE_OK ; 
- int /*<<< orphan*/  RedisModule_AutoMemory (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * RedisModule_CreateStringPrintf (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RedisModule_ReplyWithString (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RedisModule_StringPtrLen (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int RedisModule_WrongArity (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int RedisModuleString ;
+typedef int RedisModuleCtx ;
+
+
+ int REDISMODULE_OK ;
+ int RedisModule_AutoMemory (int *) ;
+ int * RedisModule_CreateStringPrintf (int *,char*,int,int ,int ) ;
+ int RedisModule_ReplyWithString (int *,int *) ;
+ int RedisModule_StringPtrLen (int *,int *) ;
+ int RedisModule_WrongArity (int *) ;
 
 int TestStringPrintf(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     RedisModule_AutoMemory(ctx);
@@ -29,8 +29,8 @@ int TestStringPrintf(RedisModuleCtx *ctx, RedisModuleString **argv, int argc) {
     RedisModuleString *s = RedisModule_CreateStringPrintf(ctx,
         "Got %d args. argv[1]: %s, argv[2]: %s",
         argc,
-        RedisModule_StringPtrLen(argv[1], NULL),
-        RedisModule_StringPtrLen(argv[2], NULL)
+        RedisModule_StringPtrLen(argv[1], ((void*)0)),
+        RedisModule_StringPtrLen(argv[2], ((void*)0))
     );
 
     RedisModule_ReplyWithString(ctx,s);

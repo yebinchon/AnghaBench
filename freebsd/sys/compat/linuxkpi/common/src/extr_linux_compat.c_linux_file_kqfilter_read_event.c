@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  m; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int m; } ;
 struct linux_file {int f_kqflags; TYPE_1__ f_kqlock; } ;
 struct knote {struct linux_file* kn_hook; } ;
 
-/* Variables and functions */
- int LINUX_KQ_FLAG_NEED_READ ; 
- int /*<<< orphan*/  MA_OWNED ; 
- int /*<<< orphan*/  mtx_assert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int LINUX_KQ_FLAG_NEED_READ ;
+ int MA_OWNED ;
+ int mtx_assert (int *,int ) ;
 
 __attribute__((used)) static int
 linux_file_kqfilter_read_event(struct knote *kn, long hint)
 {
-	struct linux_file *filp = kn->kn_hook;
+ struct linux_file *filp = kn->kn_hook;
 
-	mtx_assert(&filp->f_kqlock.m, MA_OWNED);
+ mtx_assert(&filp->f_kqlock.m, MA_OWNED);
 
-	return ((filp->f_kqflags & LINUX_KQ_FLAG_NEED_READ) ? 1 : 0);
+ return ((filp->f_kqflags & LINUX_KQ_FLAG_NEED_READ) ? 1 : 0);
 }

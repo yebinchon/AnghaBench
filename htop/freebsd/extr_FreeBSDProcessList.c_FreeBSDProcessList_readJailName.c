@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct kinfo_proc {char ki_jid; } ;
 struct iovec {char* iov_base; int iov_len; } ;
-typedef  int /*<<< orphan*/  jnamebuf ;
+typedef int jnamebuf ;
 
-/* Variables and functions */
- int JAIL_ERRMSGLEN ; 
- int MAXHOSTNAMELEN ; 
- int /*<<< orphan*/  errno ; 
- char* jail_errmsg ; 
- int jail_get (struct iovec*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strerror_r (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  xSnprintf (char*,int,char*,int /*<<< orphan*/ ) ; 
- char* xStrdup (char*) ; 
+
+ int JAIL_ERRMSGLEN ;
+ int MAXHOSTNAMELEN ;
+ int errno ;
+ char* jail_errmsg ;
+ int jail_get (struct iovec*,int,int ) ;
+ int memset (char*,int ,int) ;
+ int strerror (int ) ;
+ int strerror_r (int ,char*,int) ;
+ int xSnprintf (char*,int,char*,int ) ;
+ char* xStrdup (char*) ;
 
 char* FreeBSDProcessList_readJailName(struct kinfo_proc* kproc) {
-   int    jid;
+   int jid;
    struct iovec jiov[6];
-   char*  jname;
-   char   jnamebuf[MAXHOSTNAMELEN];
+   char* jname;
+   char jnamebuf[MAXHOSTNAMELEN];
 
    if (kproc->ki_jid != 0 ){
       memset(jnamebuf, 0, sizeof(jnamebuf));
@@ -51,14 +51,14 @@ char* FreeBSDProcessList_readJailName(struct kinfo_proc* kproc) {
       if (jid < 0) {
          if (!jail_errmsg[0])
             xSnprintf(jail_errmsg, JAIL_ERRMSGLEN, "jail_get: %s", strerror(errno));
-            return NULL;
+            return ((void*)0);
       } else if (jid == kproc->ki_jid) {
          jname = xStrdup(jnamebuf);
-         if (jname == NULL)
+         if (jname == ((void*)0))
             strerror_r(errno, jail_errmsg, JAIL_ERRMSGLEN);
          return jname;
       } else {
-         return NULL;
+         return ((void*)0);
       }
    } else {
       jnamebuf[0]='-';

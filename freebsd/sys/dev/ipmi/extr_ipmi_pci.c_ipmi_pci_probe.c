@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int BUS_PROBE_DEFAULT ; 
- int ENXIO ; 
- int /*<<< orphan*/  device_set_desc (int /*<<< orphan*/ ,char const*) ; 
- scalar_t__ ipmi_attached ; 
- char* ipmi_pci_match (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_get_device (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_get_vendor (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int device_t ;
+
+
+ int BUS_PROBE_DEFAULT ;
+ int ENXIO ;
+ int device_set_desc (int ,char const*) ;
+ scalar_t__ ipmi_attached ;
+ char* ipmi_pci_match (int ,int ) ;
+ int pci_get_device (int ) ;
+ int pci_get_vendor (int ) ;
 
 __attribute__((used)) static int
 ipmi_pci_probe(device_t dev)
 {
-	const char *desc;
+ const char *desc;
 
-	if (ipmi_attached)
-		return (ENXIO);
+ if (ipmi_attached)
+  return (ENXIO);
 
-	desc = ipmi_pci_match(pci_get_vendor(dev), pci_get_device(dev));
-	if (desc != NULL) {
-		device_set_desc(dev, desc);
-		return (BUS_PROBE_DEFAULT);
-	}
+ desc = ipmi_pci_match(pci_get_vendor(dev), pci_get_device(dev));
+ if (desc != ((void*)0)) {
+  device_set_desc(dev, desc);
+  return (BUS_PROBE_DEFAULT);
+ }
 
-	return (ENXIO);
+ return (ENXIO);
 }

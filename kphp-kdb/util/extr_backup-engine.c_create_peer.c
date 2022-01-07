@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct file_info {char* filename; int fd; int flags; char* filepath; int mtime; scalar_t__ fsize; int /*<<< orphan*/  head_data; } ;
 
-/* Variables and functions */
- scalar_t__ BSIZE ; 
- int FIF_DEST ; 
- int FIF_ZIPPED ; 
- int /*<<< orphan*/  F_WRLCK ; 
- int MAX_DIRNAME_LEN ; 
- int MAX_DIR_FILES ; 
- int MAX_FPATH_LEN ; 
- int O_CREAT ; 
- int O_EXCL ; 
- int O_RDWR ; 
- int /*<<< orphan*/  assert (int) ; 
- struct file_info* dst_files ; 
- int dst_fnum ; 
- char* dstdir ; 
- int /*<<< orphan*/  invalidate_file (struct file_info*) ; 
- int /*<<< orphan*/  kprintf (char*,char*) ; 
- scalar_t__ lock_whole_file (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  memset (struct file_info*,int /*<<< orphan*/ ,int) ; 
- int open (char*,int,int) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int strlen (char*) ; 
- int time (int /*<<< orphan*/ ) ; 
- scalar_t__ write (int,int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+struct file_info {char* filename; int fd; int flags; char* filepath; int mtime; scalar_t__ fsize; int head_data; } ;
+
+
+ scalar_t__ BSIZE ;
+ int FIF_DEST ;
+ int FIF_ZIPPED ;
+ int F_WRLCK ;
+ int MAX_DIRNAME_LEN ;
+ int MAX_DIR_FILES ;
+ int MAX_FPATH_LEN ;
+ int O_CREAT ;
+ int O_EXCL ;
+ int O_RDWR ;
+ int assert (int) ;
+ struct file_info* dst_files ;
+ int dst_fnum ;
+ char* dstdir ;
+ int invalidate_file (struct file_info*) ;
+ int kprintf (char*,char*) ;
+ scalar_t__ lock_whole_file (int,int ) ;
+ int memcpy (char*,char*,int) ;
+ int memset (struct file_info*,int ,int) ;
+ int open (char*,int,int) ;
+ int sprintf (char*,char*,int) ;
+ int strlen (char*) ;
+ int time (int ) ;
+ scalar_t__ write (int,int ,scalar_t__) ;
 
 __attribute__((used)) static struct file_info *create_peer (struct file_info *FS) {
   struct file_info *FI = dst_files + dst_fnum;

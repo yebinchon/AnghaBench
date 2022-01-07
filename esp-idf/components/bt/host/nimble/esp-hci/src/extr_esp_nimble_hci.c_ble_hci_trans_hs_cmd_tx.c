@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint8_t ;
-typedef  scalar_t__ uint16_t ;
 
-/* Variables and functions */
- scalar_t__ BLE_HCI_CMD_HDR_LEN ; 
- scalar_t__ BLE_HCI_UART_H4_CMD ; 
- int BLE_HS_EAGAIN ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ble_hci_trans_buf_free (scalar_t__*) ; 
- int /*<<< orphan*/  esp_vhci_host_check_send_available () ; 
- int /*<<< orphan*/  esp_vhci_host_send_packet (scalar_t__*,scalar_t__) ; 
+
+
+
+typedef scalar_t__ uint8_t ;
+typedef scalar_t__ uint16_t ;
+
+
+ scalar_t__ BLE_HCI_CMD_HDR_LEN ;
+ scalar_t__ BLE_HCI_UART_H4_CMD ;
+ int BLE_HS_EAGAIN ;
+ int ESP_LOGE (int ,char*) ;
+ int TAG ;
+ int assert (int ) ;
+ int ble_hci_trans_buf_free (scalar_t__*) ;
+ int esp_vhci_host_check_send_available () ;
+ int esp_vhci_host_send_packet (scalar_t__*,scalar_t__) ;
 
 int ble_hci_trans_hs_cmd_tx(uint8_t *cmd)
 {
     uint16_t len;
 
-    assert(cmd != NULL);
+    assert(cmd != ((void*)0));
     *cmd = BLE_HCI_UART_H4_CMD;
     len = BLE_HCI_CMD_HDR_LEN + cmd[3] + 1;
     if (!esp_vhci_host_check_send_available()) {

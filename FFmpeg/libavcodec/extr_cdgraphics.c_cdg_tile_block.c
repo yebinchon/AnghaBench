@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_5__ {int vscroll; int hscroll; TYPE_1__* frame; } ;
 struct TYPE_4__ {int* linesize; int** data; } ;
-typedef  TYPE_2__ CDGraphicsContext ;
+typedef TYPE_2__ CDGraphicsContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int CDG_FULL_HEIGHT ; 
- int CDG_FULL_WIDTH ; 
- int CDG_TILE_HEIGHT ; 
- int CDG_TILE_WIDTH ; 
- int /*<<< orphan*/  EINVAL ; 
+
+ int AVERROR (int ) ;
+ int CDG_FULL_HEIGHT ;
+ int CDG_FULL_WIDTH ;
+ int CDG_TILE_HEIGHT ;
+ int CDG_TILE_WIDTH ;
+ int EINVAL ;
 
 __attribute__((used)) static int cdg_tile_block(CDGraphicsContext *cc, uint8_t *data, int b)
 {
@@ -31,11 +31,11 @@ __attribute__((used)) static int cdg_tile_block(CDGraphicsContext *cc, uint8_t *
     int color;
     int x, y;
     int ai;
-    int stride   = cc->frame->linesize[0];
+    int stride = cc->frame->linesize[0];
     uint8_t *buf = cc->frame->data[0];
 
     ri = (data[2] & 0x1F) * CDG_TILE_HEIGHT + cc->vscroll;
-    ci = (data[3] & 0x3F) * CDG_TILE_WIDTH  + cc->hscroll;
+    ci = (data[3] & 0x3F) * CDG_TILE_WIDTH + cc->hscroll;
 
     if (ri > (CDG_FULL_HEIGHT - CDG_TILE_HEIGHT))
         return AVERROR(EINVAL);

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_table ;
-typedef  int /*<<< orphan*/  sqliterk_btree ;
-struct TYPE_5__ {int /*<<< orphan*/  (* onEndParseTable ) (TYPE_2__*,int /*<<< orphan*/ *) ;} ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqliterk_table ;
+typedef int sqliterk_btree ;
+struct TYPE_5__ {int (* onEndParseTable ) (TYPE_2__*,int *) ;} ;
 struct TYPE_6__ {TYPE_1__ notify; } ;
-typedef  TYPE_2__ sqliterk ;
+typedef TYPE_2__ sqliterk ;
 
-/* Variables and functions */
- int /*<<< orphan*/  stub1 (TYPE_2__*,int /*<<< orphan*/ *) ; 
+
+ int stub1 (TYPE_2__*,int *) ;
 
 __attribute__((used)) static void
 sqliterkNotify_onEndParseBtree(sqliterk *rk, sqliterk_btree *btree, int result)

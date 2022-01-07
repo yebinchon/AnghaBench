@@ -1,44 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int closed; scalar_t__ last_read_ops; scalar_t__ read_ops; scalar_t__ idle_time; int /*<<< orphan*/ * app; void* writelines; void* write; int /*<<< orphan*/ * transport; void* false_cnt; void* true_cnt; void* none_cnt; } ;
-typedef  int /*<<< orphan*/  PyObject ;
-typedef  TYPE_1__ Protocol ;
 
-/* Variables and functions */
- void* PyObject_GetAttrString (int /*<<< orphan*/ *,char*) ; 
- int PySet_Add (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_False ; 
- int /*<<< orphan*/  Py_INCREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_None ; 
- void* Py_REFCNT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Py_RETURN_NONE ; 
- int /*<<< orphan*/  Py_True ; 
- int /*<<< orphan*/  Py_XDECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,size_t,size_t,size_t) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int closed; scalar_t__ last_read_ops; scalar_t__ read_ops; scalar_t__ idle_time; int * app; void* writelines; void* write; int * transport; void* false_cnt; void* true_cnt; void* none_cnt; } ;
+typedef int PyObject ;
+typedef TYPE_1__ Protocol ;
+
+
+ void* PyObject_GetAttrString (int *,char*) ;
+ int PySet_Add (int *,int *) ;
+ int Py_False ;
+ int Py_INCREF (int *) ;
+ int Py_None ;
+ void* Py_REFCNT (int ) ;
+ int Py_RETURN_NONE ;
+ int Py_True ;
+ int Py_XDECREF (int *) ;
+ int printf (char*,size_t,size_t,size_t) ;
 
 __attribute__((used)) static PyObject*
 Protocol_connection_made(Protocol* self, PyObject* transport)
 {
-#ifdef PROTOCOL_TRACK_REFCNT
-  printf("made: %ld, %ld, %ld, ",
-    (size_t)Py_REFCNT(Py_None), (size_t)Py_REFCNT(Py_True), (size_t)Py_REFCNT(Py_False));
-  self->none_cnt = Py_REFCNT(Py_None);
-  self->true_cnt = Py_REFCNT(Py_True);
-  self->false_cnt = Py_REFCNT(Py_False);
-#endif
-
-  PyObject* connections = NULL;
+  PyObject* connections = ((void*)0);
   self->transport = transport;
   Py_INCREF(self->transport);
 
@@ -51,21 +43,21 @@ Protocol_connection_made(Protocol* self, PyObject* transport)
   if(!(connections = PyObject_GetAttrString(self->app, "_connections")))
     goto error;
 
-#ifdef REAPER_ENABLED
-  self->idle_time = 0;
-  self->read_ops = 0;
-  self->last_read_ops = 0;
-#endif
+
+
+
+
+
 
   if(PySet_Add(connections, (PyObject*)self) == -1)
     goto error;
 
-  self->closed = false;
+  self->closed = 0;
 
   goto finally;
 
   error:
-  return NULL;
+  return ((void*)0);
 
   finally:
   Py_XDECREF(connections);

@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_24__   TYPE_5__ ;
-typedef  struct TYPE_23__   TYPE_4__ ;
-typedef  struct TYPE_22__   TYPE_3__ ;
-typedef  struct TYPE_21__   TYPE_2__ ;
-typedef  struct TYPE_20__   TYPE_1__ ;
-typedef  struct TYPE_19__   TYPE_17__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * jobject ;
-typedef  int /*<<< orphan*/  jint ;
-typedef  int /*<<< orphan*/  audio_output_t ;
-struct TYPE_24__ {int /*<<< orphan*/  (* DeleteLocalRef ) (TYPE_5__**,int /*<<< orphan*/ *) ;} ;
-struct TYPE_23__ {int /*<<< orphan*/  MODE_STREAM; } ;
-struct TYPE_22__ {int /*<<< orphan*/  build; int /*<<< orphan*/  setSampleRate; int /*<<< orphan*/  setEncoding; int /*<<< orphan*/  setChannelMask; int /*<<< orphan*/  ctor; int /*<<< orphan*/  clazz; } ;
-struct TYPE_21__ {int /*<<< orphan*/  build; int /*<<< orphan*/  setLegacyStreamType; int /*<<< orphan*/  ctor; int /*<<< orphan*/  clazz; } ;
-struct TYPE_20__ {int /*<<< orphan*/  STREAM_MUSIC; } ;
+
+
+typedef struct TYPE_24__ TYPE_5__ ;
+typedef struct TYPE_23__ TYPE_4__ ;
+typedef struct TYPE_22__ TYPE_3__ ;
+typedef struct TYPE_21__ TYPE_2__ ;
+typedef struct TYPE_20__ TYPE_1__ ;
+typedef struct TYPE_19__ TYPE_17__ ;
+
+
+typedef int * jobject ;
+typedef int jint ;
+typedef int audio_output_t ;
+struct TYPE_24__ {int (* DeleteLocalRef ) (TYPE_5__**,int *) ;} ;
+struct TYPE_23__ {int MODE_STREAM; } ;
+struct TYPE_22__ {int build; int setSampleRate; int setEncoding; int setChannelMask; int ctor; int clazz; } ;
+struct TYPE_21__ {int build; int setLegacyStreamType; int ctor; int clazz; } ;
+struct TYPE_20__ {int STREAM_MUSIC; } ;
 struct TYPE_19__ {TYPE_4__ AudioTrack; TYPE_3__ AudioFormat_Builder; TYPE_2__ AudioAttributes_Builder; TYPE_1__ AudioManager; } ;
-typedef  TYPE_5__* JNIEnv ;
+typedef TYPE_5__* JNIEnv ;
 
-/* Variables and functions */
- scalar_t__ CHECK_EXCEPTION (char*,char*) ; 
- int /*<<< orphan*/ * JNI_AT_NEW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * JNI_CALL (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * JNI_CALL_OBJECT (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  NewObject ; 
- TYPE_17__ jfields ; 
- int /*<<< orphan*/  stub1 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub10 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub11 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub2 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub3 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub4 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub5 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub6 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub7 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub8 (TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub9 (TYPE_5__**,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ CHECK_EXCEPTION (char*,char*) ;
+ int * JNI_AT_NEW (int *,int *,int,int ,int ) ;
+ int * JNI_CALL (int ,int ,int ) ;
+ int * JNI_CALL_OBJECT (int *,int ,...) ;
+ int NewObject ;
+ TYPE_17__ jfields ;
+ int stub1 (TYPE_5__**,int *) ;
+ int stub10 (TYPE_5__**,int *) ;
+ int stub11 (TYPE_5__**,int *) ;
+ int stub2 (TYPE_5__**,int *) ;
+ int stub3 (TYPE_5__**,int *) ;
+ int stub4 (TYPE_5__**,int *) ;
+ int stub5 (TYPE_5__**,int *) ;
+ int stub6 (TYPE_5__**,int *) ;
+ int stub7 (TYPE_5__**,int *) ;
+ int stub8 (TYPE_5__**,int *) ;
+ int stub9 (TYPE_5__**,int *) ;
 
 __attribute__((used)) static jobject
 AudioTrack_New21( JNIEnv *env, audio_output_t *p_aout, unsigned int i_rate,
                   int i_channel_config, int i_format, int i_size,
                   jint session_id )
 {
-    jobject p_audiotrack = NULL;
-    jobject p_aattr_builder = NULL;
-    jobject p_audio_attributes = NULL;
-    jobject p_afmt_builder = NULL;
-    jobject p_audio_format = NULL;
+    jobject p_audiotrack = ((void*)0);
+    jobject p_aattr_builder = ((void*)0);
+    jobject p_audio_attributes = ((void*)0);
+    jobject p_afmt_builder = ((void*)0);
+    jobject p_audio_format = ((void*)0);
     jobject ref;
 
     p_aattr_builder =
@@ -63,7 +63,7 @@ AudioTrack_New21( JNIEnv *env, audio_output_t *p_aout, unsigned int i_rate,
                   jfields.AudioAttributes_Builder.clazz,
                   jfields.AudioAttributes_Builder.ctor );
     if( !p_aattr_builder )
-        return NULL;
+        return ((void*)0);
 
     ref = JNI_CALL_OBJECT( p_aattr_builder,
                            jfields.AudioAttributes_Builder.setLegacyStreamType,

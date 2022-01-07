@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  ip_addr_t ;
-typedef  scalar_t__ err_t ;
 
-/* Variables and functions */
- scalar_t__ ERR_INPROGRESS ; 
- scalar_t__ ERR_OK ; 
- int LUA_NOREF ; 
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int* calloc (int,int) ; 
- scalar_t__ dns_gethostbyname (char const*,int /*<<< orphan*/ *,int /*<<< orphan*/  (*) (char const*,int /*<<< orphan*/ *,int*),int*) ; 
- int /*<<< orphan*/  free (int*) ; 
- int /*<<< orphan*/  luaL_checkanyfunction (int /*<<< orphan*/ *,int) ; 
- char* luaL_checklstring (int /*<<< orphan*/ *,int,size_t*) ; 
- int luaL_error (int /*<<< orphan*/ *,char*) ; 
- int luaL_ref (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int lwip_lua_checkerr (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  net_dns_static_cb (char const*,int /*<<< orphan*/ *,int*) ; 
+
+
+
+typedef int lua_State ;
+typedef int ip_addr_t ;
+typedef scalar_t__ err_t ;
+
+
+ scalar_t__ ERR_INPROGRESS ;
+ scalar_t__ ERR_OK ;
+ int LUA_NOREF ;
+ int LUA_REGISTRYINDEX ;
+ int* calloc (int,int) ;
+ scalar_t__ dns_gethostbyname (char const*,int *,int (*) (char const*,int *,int*),int*) ;
+ int free (int*) ;
+ int luaL_checkanyfunction (int *,int) ;
+ char* luaL_checklstring (int *,int,size_t*) ;
+ int luaL_error (int *,char*) ;
+ int luaL_ref (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int lwip_lua_checkerr (int *,scalar_t__) ;
+ int net_dns_static_cb (char const*,int *,int*) ;
 
 __attribute__((used)) static int net_dns_static( lua_State* L ) {
   size_t dl;
@@ -38,7 +38,7 @@ __attribute__((used)) static int net_dns_static( lua_State* L ) {
   }
 
   luaL_checkanyfunction(L, 2);
-  lua_pushvalue(L, 2);  // copy argument (func) to the top of stack
+  lua_pushvalue(L, 2);
   int cbref = luaL_ref(L, LUA_REGISTRYINDEX);
   if (cbref == LUA_NOREF) {
     return luaL_error(L, "wrong callback");

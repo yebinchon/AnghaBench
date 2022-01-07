@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  cpu_halt () ; 
- int /*<<< orphan*/  local_irq_disable () ; 
- int /*<<< orphan*/  max_xtp () ; 
- int /*<<< orphan*/  set_cpu_online (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  smp_processor_id () ; 
+ int cpu_halt () ;
+ int local_irq_disable () ;
+ int max_xtp () ;
+ int set_cpu_online (int ,int) ;
+ int smp_processor_id () ;
 
 __attribute__((used)) static void
 stop_this_cpu(void)
 {
-	/*
-	 * Remove this CPU:
-	 */
-	set_cpu_online(smp_processor_id(), false);
-	max_xtp();
-	local_irq_disable();
-	cpu_halt();
+
+
+
+ set_cpu_online(smp_processor_id(), 0);
+ max_xtp();
+ local_irq_disable();
+ cpu_halt();
 }

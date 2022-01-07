@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ todo ;
-typedef  scalar_t__ memaddr ;
-typedef  int CORE_ADDR ;
 
-/* Variables and functions */
- int PBUFSIZ ; 
- int min (int,int) ; 
- int sds_send (unsigned char*,int) ; 
+
+
+
+typedef scalar_t__ todo ;
+typedef scalar_t__ memaddr ;
+typedef int CORE_ADDR ;
+
+
+ int PBUFSIZ ;
+ int min (int,int) ;
+ int sds_send (unsigned char*,int) ;
 
 __attribute__((used)) static int
 sds_read_bytes (CORE_ADDR memaddr, char *myaddr, int len)
 {
-  int max_buf_size;		/* Max size of packet output buffer */
+  int max_buf_size;
   int origlen, retlen;
   unsigned char buf[PBUFSIZ];
   int todo;
   int i;
 
-  /* Chop the transfer down if necessary */
+
 
   max_buf_size = 150;
 
@@ -50,14 +50,14 @@ sds_read_bytes (CORE_ADDR memaddr, char *myaddr, int len)
       retlen = sds_send (buf, 9);
 
       if (retlen - 2 != todo)
-	{
-	  return 0;
-	}
+ {
+   return 0;
+ }
 
-      /* Reply describes memory byte by byte. */
+
 
       for (i = 0; i < todo; i++)
-	myaddr[i] = buf[i + 2];
+ myaddr[i] = buf[i + 2];
 
       myaddr += todo;
       memaddr += todo;

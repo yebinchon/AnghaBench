@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dxgi_swap; int /*<<< orphan*/  gl_dxobj; int /*<<< orphan*/  gl_device; int /*<<< orphan*/  texture; } ;
-typedef  int /*<<< orphan*/  GLint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_DRAW_FRAMEBUFFER ; 
- int /*<<< orphan*/  GL_DRAW_FRAMEBUFFER_BINDING ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_BINDING_2D ; 
- int /*<<< orphan*/  IDXGISwapChain_Present (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__ data ; 
- int /*<<< orphan*/  glBindFramebuffer (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGetIntegerv (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gl_copy_backbuffer (int /*<<< orphan*/ ) ; 
- scalar_t__ gl_error (char*,char*) ; 
- int /*<<< orphan*/  jimglDXLockObjectsNV (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jimglDXUnlockObjectsNV (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dxgi_swap; int gl_dxobj; int gl_device; int texture; } ;
+typedef int GLint ;
+
+
+ int GL_DRAW_FRAMEBUFFER ;
+ int GL_DRAW_FRAMEBUFFER_BINDING ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_BINDING_2D ;
+ int IDXGISwapChain_Present (int ,int ,int ) ;
+ TYPE_1__ data ;
+ int glBindFramebuffer (int ,int ) ;
+ int glBindTexture (int ,int ) ;
+ int glGetIntegerv (int ,int *) ;
+ int gl_copy_backbuffer (int ) ;
+ scalar_t__ gl_error (char*,char*) ;
+ int jimglDXLockObjectsNV (int ,int,int *) ;
+ int jimglDXUnlockObjectsNV (int ,int,int *) ;
 
 __attribute__((used)) static void gl_shtex_capture(void)
 {
-	GLint last_fbo;
-	GLint last_tex;
+ GLint last_fbo;
+ GLint last_tex;
 
-	jimglDXLockObjectsNV(data.gl_device, 1, &data.gl_dxobj);
+ jimglDXLockObjectsNV(data.gl_device, 1, &data.gl_dxobj);
 
-	glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &last_fbo);
-	if (gl_error("gl_shtex_capture", "failed to get last fbo")) {
-		return;
-	}
+ glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &last_fbo);
+ if (gl_error("gl_shtex_capture", "failed to get last fbo")) {
+  return;
+ }
 
-	glGetIntegerv(GL_TEXTURE_BINDING_2D, &last_tex);
-	if (gl_error("gl_shtex_capture", "failed to get last texture")) {
-		return;
-	}
+ glGetIntegerv(GL_TEXTURE_BINDING_2D, &last_tex);
+ if (gl_error("gl_shtex_capture", "failed to get last texture")) {
+  return;
+ }
 
-	gl_copy_backbuffer(data.texture);
+ gl_copy_backbuffer(data.texture);
 
-	glBindTexture(GL_TEXTURE_2D, last_tex);
-	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, last_fbo);
+ glBindTexture(GL_TEXTURE_2D, last_tex);
+ glBindFramebuffer(GL_DRAW_FRAMEBUFFER, last_fbo);
 
-	jimglDXUnlockObjectsNV(data.gl_device, 1, &data.gl_dxobj);
+ jimglDXUnlockObjectsNV(data.gl_device, 1, &data.gl_dxobj);
 
-	IDXGISwapChain_Present(data.dxgi_swap, 0, 0);
+ IDXGISwapChain_Present(data.dxgi_swap, 0, 0);
 }

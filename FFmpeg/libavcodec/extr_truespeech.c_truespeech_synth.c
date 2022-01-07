@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int int16_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef unsigned int int16_t ;
 struct TYPE_3__ {unsigned int* tmp1; unsigned int* filters; unsigned int* tmp2; unsigned int* tmp3; int filtval; } ;
-typedef  TYPE_1__ TSContext ;
+typedef TYPE_1__ TSContext ;
 
-/* Variables and functions */
- unsigned int av_clip (int,int,int) ; 
- unsigned int* ts_decay_35_64 ; 
- unsigned int* ts_decay_3_4 ; 
+
+ unsigned int av_clip (int,int,int) ;
+ unsigned int* ts_decay_35_64 ;
+ unsigned int* ts_decay_3_4 ;
 
 __attribute__((used)) static void truespeech_synth(TSContext *dec, int16_t *out, int quart)
 {

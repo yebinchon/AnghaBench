@@ -1,90 +1,90 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct acpi_gpe_event_info {int flags; } ;
-typedef  int /*<<< orphan*/  acpi_status ;
+typedef int acpi_status ;
 
-/* Variables and functions */
- scalar_t__ ACPI_FAILURE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_FUNCTION_TRACE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ACPI_GPE_ENABLE ; 
- int /*<<< orphan*/  ACPI_GPE_RUN_ENABLED ; 
- int ACPI_GPE_TYPE_MASK ; 
-#define  ACPI_GPE_TYPE_RUNTIME 130 
-#define  ACPI_GPE_TYPE_WAKE 129 
-#define  ACPI_GPE_TYPE_WAKE_RUN 128 
- int /*<<< orphan*/  ACPI_GPE_WAKE_ENABLED ; 
- int /*<<< orphan*/  ACPI_SET_BIT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AE_BAD_PARAMETER ; 
- int /*<<< orphan*/  AE_OK ; 
- int /*<<< orphan*/  acpi_ev_update_gpe_enable_masks (struct acpi_gpe_event_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  acpi_hw_clear_gpe (struct acpi_gpe_event_info*) ; 
- int /*<<< orphan*/  acpi_hw_write_gpe_enable_reg (struct acpi_gpe_event_info*) ; 
- int /*<<< orphan*/  ev_enable_gpe ; 
- int /*<<< orphan*/  return_ACPI_STATUS (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ ACPI_FAILURE (int ) ;
+ int ACPI_FUNCTION_TRACE (int ) ;
+ int ACPI_GPE_ENABLE ;
+ int ACPI_GPE_RUN_ENABLED ;
+ int ACPI_GPE_TYPE_MASK ;
+
+
+
+ int ACPI_GPE_WAKE_ENABLED ;
+ int ACPI_SET_BIT (int,int ) ;
+ int AE_BAD_PARAMETER ;
+ int AE_OK ;
+ int acpi_ev_update_gpe_enable_masks (struct acpi_gpe_event_info*,int ) ;
+ int acpi_hw_clear_gpe (struct acpi_gpe_event_info*) ;
+ int acpi_hw_write_gpe_enable_reg (struct acpi_gpe_event_info*) ;
+ int ev_enable_gpe ;
+ int return_ACPI_STATUS (int ) ;
 
 acpi_status
 acpi_ev_enable_gpe(struct acpi_gpe_event_info *gpe_event_info,
-		   u8 write_to_hardware)
+     u8 write_to_hardware)
 {
-	acpi_status status;
+ acpi_status status;
 
-	ACPI_FUNCTION_TRACE(ev_enable_gpe);
+ ACPI_FUNCTION_TRACE(ev_enable_gpe);
 
-	/* Make sure HW enable masks are updated */
 
-	status =
-	    acpi_ev_update_gpe_enable_masks(gpe_event_info, ACPI_GPE_ENABLE);
-	if (ACPI_FAILURE(status)) {
-		return_ACPI_STATUS(status);
-	}
 
-	/* Mark wake-enabled or HW enable, or both */
+ status =
+     acpi_ev_update_gpe_enable_masks(gpe_event_info, ACPI_GPE_ENABLE);
+ if (ACPI_FAILURE(status)) {
+  return_ACPI_STATUS(status);
+ }
 
-	switch (gpe_event_info->flags & ACPI_GPE_TYPE_MASK) {
-	case ACPI_GPE_TYPE_WAKE:
 
-		ACPI_SET_BIT(gpe_event_info->flags, ACPI_GPE_WAKE_ENABLED);
-		break;
 
-	case ACPI_GPE_TYPE_WAKE_RUN:
+ switch (gpe_event_info->flags & ACPI_GPE_TYPE_MASK) {
+ case 129:
 
-		ACPI_SET_BIT(gpe_event_info->flags, ACPI_GPE_WAKE_ENABLED);
+  ACPI_SET_BIT(gpe_event_info->flags, ACPI_GPE_WAKE_ENABLED);
+  break;
 
-		/*lint -fallthrough */
+ case 128:
 
-	case ACPI_GPE_TYPE_RUNTIME:
+  ACPI_SET_BIT(gpe_event_info->flags, ACPI_GPE_WAKE_ENABLED);
 
-		ACPI_SET_BIT(gpe_event_info->flags, ACPI_GPE_RUN_ENABLED);
 
-		if (write_to_hardware) {
 
-			/* Clear the GPE (of stale events), then enable it */
+ case 130:
 
-			status = acpi_hw_clear_gpe(gpe_event_info);
-			if (ACPI_FAILURE(status)) {
-				return_ACPI_STATUS(status);
-			}
+  ACPI_SET_BIT(gpe_event_info->flags, ACPI_GPE_RUN_ENABLED);
 
-			/* Enable the requested runtime GPE */
+  if (write_to_hardware) {
 
-			status = acpi_hw_write_gpe_enable_reg(gpe_event_info);
-		}
-		break;
 
-	default:
-		return_ACPI_STATUS(AE_BAD_PARAMETER);
-	}
 
-	return_ACPI_STATUS(AE_OK);
+   status = acpi_hw_clear_gpe(gpe_event_info);
+   if (ACPI_FAILURE(status)) {
+    return_ACPI_STATUS(status);
+   }
+
+
+
+   status = acpi_hw_write_gpe_enable_reg(gpe_event_info);
+  }
+  break;
+
+ default:
+  return_ACPI_STATUS(AE_BAD_PARAMETER);
+ }
+
+ return_ACPI_STATUS(AE_OK);
 }

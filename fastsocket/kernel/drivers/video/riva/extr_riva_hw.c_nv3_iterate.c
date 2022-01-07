@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int memory_width; int mclk_khz; int mem_page_miss; int /*<<< orphan*/  mem_latency; int /*<<< orphan*/  gr_during_vid; scalar_t__ enable_mp; } ;
-typedef  TYPE_1__ nv3_sim_state ;
-typedef  int /*<<< orphan*/  nv3_fifo_info ;
-struct TYPE_6__ {int cur; int gburst_size; int wcvocc; int vocc; int wcvlwm; int vburst_size; long vdrain_rate; long wcmocc; long mocc; int wcglwm; long wcgocc; long gocc; long gdrain_rate; long by_gfacc; int priority; long mdrain_rate; scalar_t__ converged; int /*<<< orphan*/  first_macc; int /*<<< orphan*/  first_gacc; int /*<<< orphan*/  first_vacc; int /*<<< orphan*/  vid_only_once; scalar_t__ vid_en; int /*<<< orphan*/  gr_only_once; scalar_t__ gr_en; } ;
-typedef  TYPE_2__ nv3_arb_info ;
 
-/* Variables and functions */
- int GFIFO_SIZE ; 
- int GFIFO_SIZE_128 ; 
-#define  GRAPHICS 129 
- int MFIFO_SIZE ; 
- int MPORT ; 
- int VFIFO_SIZE ; 
-#define  VIDEO 128 
- int abs (int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int memory_width; int mclk_khz; int mem_page_miss; int mem_latency; int gr_during_vid; scalar_t__ enable_mp; } ;
+typedef TYPE_1__ nv3_sim_state ;
+typedef int nv3_fifo_info ;
+struct TYPE_6__ {int cur; int gburst_size; int wcvocc; int vocc; int wcvlwm; int vburst_size; long vdrain_rate; long wcmocc; long mocc; int wcglwm; long wcgocc; long gocc; long gdrain_rate; long by_gfacc; int priority; long mdrain_rate; scalar_t__ converged; int first_macc; int first_gacc; int first_vacc; int vid_only_once; scalar_t__ vid_en; int gr_only_once; scalar_t__ gr_en; } ;
+typedef TYPE_2__ nv3_arb_info ;
+
+
+ int GFIFO_SIZE ;
+ int GFIFO_SIZE_128 ;
+
+ int MFIFO_SIZE ;
+ int MPORT ;
+ int VFIFO_SIZE ;
+
+ int abs (int) ;
 
 __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_state * state, nv3_arb_info *ainfo)
 {
@@ -51,7 +51,7 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
     gmisses = 2;
     vmisses = 2;
     if (ainfo->gburst_size == 128) max_gfsize = GFIFO_SIZE_128;
-    else  max_gfsize = GFIFO_SIZE;
+    else max_gfsize = GFIFO_SIZE;
     max_gfsize = GFIFO_SIZE;
     while (1)
     {
@@ -61,7 +61,7 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
             if (ainfo->wcvlwm > vlwm) ainfo->wcvlwm = vlwm ;
             ns = 1000000 * ainfo->vburst_size/(state->memory_width/8)/state->mclk_khz;
             vfsize = ns * ainfo->vdrain_rate / 1000000;
-            vfsize =  ainfo->wcvlwm - ainfo->vburst_size + vfsize;
+            vfsize = ainfo->wcvlwm - ainfo->vburst_size + vfsize;
         }
         if (state->enable_mp)
         {
@@ -78,40 +78,40 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
         mfsize = 0;
         if (!state->gr_during_vid && ainfo->vid_en)
             if (ainfo->vid_en && (ainfo->vocc < 0) && !ainfo->vid_only_once)
-                next = VIDEO;
+                next = 128;
             else if (ainfo->mocc < 0)
                 next = MPORT;
             else if (ainfo->gocc< ainfo->by_gfacc)
-                next = GRAPHICS;
+                next = 129;
             else return (0);
         else switch (ainfo->priority)
             {
-                case VIDEO:
+                case 128:
                     if (ainfo->vid_en && ainfo->vocc<0 && !ainfo->vid_only_once)
-                        next = VIDEO;
+                        next = 128;
                     else if (ainfo->gr_en && ainfo->gocc<0 && !ainfo->gr_only_once)
-                        next = GRAPHICS;
+                        next = 129;
                     else if (ainfo->mocc<0)
                         next = MPORT;
-                    else    return (0);
+                    else return (0);
                     break;
-                case GRAPHICS:
+                case 129:
                     if (ainfo->gr_en && ainfo->gocc<0 && !ainfo->gr_only_once)
-                        next = GRAPHICS;
+                        next = 129;
                     else if (ainfo->vid_en && ainfo->vocc<0 && !ainfo->vid_only_once)
-                        next = VIDEO;
+                        next = 128;
                     else if (ainfo->mocc<0)
                         next = MPORT;
-                    else    return (0);
+                    else return (0);
                     break;
                 default:
                     if (ainfo->mocc<0)
                         next = MPORT;
                     else if (ainfo->gr_en && ainfo->gocc<0 && !ainfo->gr_only_once)
-                        next = GRAPHICS;
+                        next = 129;
                     else if (ainfo->vid_en && ainfo->vocc<0 && !ainfo->vid_only_once)
-                        next = VIDEO;
-                    else    return (0);
+                        next = 128;
+                    else return (0);
                     break;
             }
         last = cur;
@@ -119,14 +119,14 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
         iter++;
         switch (cur)
         {
-            case VIDEO:
-                if (last==cur)    misses = 0;
-                else if (ainfo->first_vacc)   misses = vmisses;
-                else    misses = 1;
+            case 128:
+                if (last==cur) misses = 0;
+                else if (ainfo->first_vacc) misses = vmisses;
+                else misses = 1;
                 ainfo->first_vacc = 0;
                 if (last!=cur)
                 {
-                    ns =  1000000 * (vmisses*state->mem_page_miss + state->mem_latency)/state->mclk_khz; 
+                    ns = 1000000 * (vmisses*state->mem_page_miss + state->mem_latency)/state->mclk_khz;
                     vlwm = ns * ainfo->vdrain_rate/ 1000000;
                     vlwm = ainfo->vocc - vlwm;
                 }
@@ -135,10 +135,10 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
                 ainfo->gocc = ainfo->gocc - ns*ainfo->gdrain_rate/1000000;
                 ainfo->mocc = ainfo->mocc - ns*ainfo->mdrain_rate/1000000;
                 break;
-            case GRAPHICS:
-                if (last==cur)    misses = 0;
-                else if (ainfo->first_gacc)   misses = gmisses;
-                else    misses = 1;
+            case 129:
+                if (last==cur) misses = 0;
+                else if (ainfo->first_gacc) misses = gmisses;
+                else misses = 1;
                 ainfo->first_gacc = 0;
                 if (last!=cur)
                 {
@@ -152,9 +152,9 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
                 ainfo->mocc = ainfo->mocc + 0 - ns*ainfo->mdrain_rate/1000000;
                 break;
             default:
-                if (last==cur)    misses = 0;
-                else if (ainfo->first_macc)   misses = mmisses;
-                else    misses = 1;
+                if (last==cur) misses = 0;
+                else if (ainfo->first_macc) misses = mmisses;
+                else misses = 1;
                 ainfo->first_macc = 0;
                 ns = 1000000*(misses*state->mem_page_miss + mburst_size/(state->memory_width/8))/state->mclk_khz;
                 ainfo->vocc = ainfo->vocc + 0 - ns*ainfo->vdrain_rate/1000000;
@@ -176,7 +176,7 @@ __attribute__((used)) static int nv3_iterate(nv3_fifo_info *res_info, nv3_sim_st
         }
         ns = 1000000*ainfo->vburst_size/(state->memory_width/8)/state->mclk_khz;
         tmp = ns * ainfo->vdrain_rate/1000000;
-        if (abs(ainfo->vburst_size) + (abs(ainfo->wcvlwm + 32) & ~0xf)  - tmp> VFIFO_SIZE)
+        if (abs(ainfo->vburst_size) + (abs(ainfo->wcvlwm + 32) & ~0xf) - tmp> VFIFO_SIZE)
         {
             ainfo->converged = 0;
             return (1);

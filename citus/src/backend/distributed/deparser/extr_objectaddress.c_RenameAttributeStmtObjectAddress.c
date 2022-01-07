@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ renameType; int relationType; } ;
-typedef  TYPE_1__ RenameStmt ;
-typedef  int /*<<< orphan*/  ObjectAddress ;
+typedef TYPE_1__ RenameStmt ;
+typedef int ObjectAddress ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  ERROR ; 
- scalar_t__ OBJECT_ATTRIBUTE ; 
-#define  OBJECT_TYPE 128 
- int /*<<< orphan*/  const* RenameTypeAttributeStmtObjectAddress (TYPE_1__*,int) ; 
- int /*<<< orphan*/  ereport (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  errmsg (char*) ; 
+
+ int Assert (int) ;
+ int ERROR ;
+ scalar_t__ OBJECT_ATTRIBUTE ;
+
+ int const* RenameTypeAttributeStmtObjectAddress (TYPE_1__*,int) ;
+ int ereport (int ,int ) ;
+ int errmsg (char*) ;
 
 __attribute__((used)) static const ObjectAddress *
 RenameAttributeStmtObjectAddress(RenameStmt *stmt, bool missing_ok)
 {
-	Assert(stmt->renameType == OBJECT_ATTRIBUTE);
+ Assert(stmt->renameType == OBJECT_ATTRIBUTE);
 
-	switch (stmt->relationType)
-	{
-		case OBJECT_TYPE:
-		{
-			return RenameTypeAttributeStmtObjectAddress(stmt, missing_ok);
-		}
+ switch (stmt->relationType)
+ {
+  case 128:
+  {
+   return RenameTypeAttributeStmtObjectAddress(stmt, missing_ok);
+  }
 
-		default:
-		{
-			ereport(ERROR, (errmsg("unsupported alter rename attribute statement to get "
-								   "object address for")));
-		}
-	}
+  default:
+  {
+   ereport(ERROR, (errmsg("unsupported alter rename attribute statement to get "
+           "object address for")));
+  }
+ }
 }

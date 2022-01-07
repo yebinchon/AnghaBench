@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {float* input; int /*<<< orphan*/  train; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_6__ {int h; int out_h; int w; int out_w; int batch; int c; float* output; scalar_t__ noadjust; int /*<<< orphan*/  flip; } ;
-typedef  TYPE_2__ crop_layer ;
 
-/* Variables and functions */
- int rand () ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {float* input; int train; } ;
+typedef TYPE_1__ network ;
+struct TYPE_6__ {int h; int out_h; int w; int out_w; int batch; int c; float* output; scalar_t__ noadjust; int flip; } ;
+typedef TYPE_2__ crop_layer ;
+
+
+ int rand () ;
 
 void forward_crop_layer(const crop_layer l, network net)
 {
@@ -44,12 +44,12 @@ void forward_crop_layer(const crop_layer l, network net)
             for(i = 0; i < l.out_h; ++i){
                 for(j = 0; j < l.out_w; ++j){
                     if(flip){
-                        col = l.w - dw - j - 1;    
+                        col = l.w - dw - j - 1;
                     }else{
                         col = j + dw;
                     }
                     row = i + dh;
-                    index = col+l.w*(row+l.h*(c + l.c*b)); 
+                    index = col+l.w*(row+l.h*(c + l.c*b));
                     l.output[count++] = net.input[index]*scale + trans;
                 }
             }

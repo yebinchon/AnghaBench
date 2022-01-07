@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dtrace_id_t ;
-typedef  int /*<<< orphan*/  dtrace_argdesc_t ;
 
-/* Variables and functions */
+
+
+
+typedef int dtrace_id_t ;
+typedef int dtrace_argdesc_t ;
+
+
 
 __attribute__((used)) static void
 prototype_getargdesc(void *arg, dtrace_id_t id, void *parg, dtrace_argdesc_t *desc)

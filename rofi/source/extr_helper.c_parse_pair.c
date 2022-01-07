@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int start; int stop; } ;
-typedef  TYPE_1__ rofi_range_pair ;
+typedef TYPE_1__ rofi_range_pair ;
 
-/* Variables and functions */
- scalar_t__ isblank (char) ; 
- scalar_t__ strchr (char*,char) ; 
- char* strsep (char**,char const*) ; 
- scalar_t__ strtol (char*,int /*<<< orphan*/ *,int) ; 
 
-__attribute__((used)) static void parse_pair ( char  *input, rofi_range_pair  *item )
+ scalar_t__ isblank (char) ;
+ scalar_t__ strchr (char*,char) ;
+ char* strsep (char**,char const*) ;
+ scalar_t__ strtol (char*,int *,int) ;
+
+__attribute__((used)) static void parse_pair ( char *input, rofi_range_pair *item )
 {
-    // Skip leading blanks.
-    while ( input != NULL && isblank(*input) )
+
+    while ( input != ((void*)0) && isblank(*input) )
         ++input;
 
     const char *sep[] = { "-", ":" };
-    int         pythonic = ( strchr(input, ':') || input[0] == '-' ) ? 1 : 0;
-    int         index = 0;
+    int pythonic = ( strchr(input, ':') || input[0] == '-' ) ? 1 : 0;
+    int index = 0;
 
-    for (  char *token = strsep ( &input, sep[pythonic] ); token != NULL; token = strsep ( &input, sep[pythonic] ) ) {
+    for ( char *token = strsep ( &input, sep[pythonic] ); token != ((void*)0); token = strsep ( &input, sep[pythonic] ) ) {
         if ( index == 0 ) {
-            item->start = item->stop = (int) strtol ( token, NULL, 10 );
+            item->start = item->stop = (int) strtol ( token, ((void*)0), 10 );
             index++;
             continue;
         }
@@ -42,7 +42,7 @@ __attribute__((used)) static void parse_pair ( char  *input, rofi_range_pair  *i
             continue;
         }
 
-        item->stop = (int) strtol ( token, NULL, 10 );
+        item->stop = (int) strtol ( token, ((void*)0), 10 );
         if ( pythonic ) {
             --item->stop;
         }

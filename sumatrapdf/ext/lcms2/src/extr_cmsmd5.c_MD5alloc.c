@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * cmsHANDLE ;
-typedef  int /*<<< orphan*/  cmsContext ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int * cmsHANDLE ;
+typedef int cmsContext ;
 struct TYPE_2__ {int* buf; scalar_t__* bits; } ;
-typedef  TYPE_1__ _cmsMD5 ;
+typedef TYPE_1__ _cmsMD5 ;
 
-/* Variables and functions */
- scalar_t__ _cmsMallocZero (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ _cmsMallocZero (int ,int) ;
 
 __attribute__((used)) static
-cmsHANDLE  MD5alloc(cmsContext ContextID)
+cmsHANDLE MD5alloc(cmsContext ContextID)
 {
     _cmsMD5* ctx = (_cmsMD5*) _cmsMallocZero(ContextID, sizeof(_cmsMD5));
-    if (ctx == NULL) return NULL;
+    if (ctx == ((void*)0)) return ((void*)0);
 
     ctx->buf[0] = 0x67452301;
     ctx->buf[1] = 0xefcdab89;

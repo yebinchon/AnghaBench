@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* svn_hash_diff_func_t ) (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_ssize_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
-typedef  int /*<<< orphan*/  apr_hash_index_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * apr_hash_first (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ apr_hash_get (int /*<<< orphan*/ *,void const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * apr_hash_next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_hash_this (int /*<<< orphan*/ *,void const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub2 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  stub3 (void const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  svn_hash_diff_key_a ; 
- int /*<<< orphan*/  svn_hash_diff_key_b ; 
- int /*<<< orphan*/  svn_hash_diff_key_both ; 
+
+
+
+typedef int (* svn_hash_diff_func_t ) (void const*,int ,int ,void*) ;
+typedef int svn_error_t ;
+typedef int apr_ssize_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+typedef int apr_hash_index_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int * apr_hash_first (int *,int *) ;
+ scalar_t__ apr_hash_get (int *,void const*,int ) ;
+ int * apr_hash_next (int *) ;
+ int apr_hash_this (int *,void const**,int *,int *) ;
+ int stub1 (void const*,int ,int ,void*) ;
+ int stub2 (void const*,int ,int ,void*) ;
+ int stub3 (void const*,int ,int ,void*) ;
+ int svn_hash_diff_key_a ;
+ int svn_hash_diff_key_b ;
+ int svn_hash_diff_key_both ;
 
 svn_error_t *
 svn_hash_diff(apr_hash_t *hash_a,
@@ -46,7 +46,7 @@ svn_hash_diff(apr_hash_t *hash_a,
         const void *key;
         apr_ssize_t klen;
 
-        apr_hash_this(hi, &key, &klen, NULL);
+        apr_hash_this(hi, &key, &klen, ((void*)0));
 
         if (hash_b && (apr_hash_get(hash_b, key, klen)))
           SVN_ERR((*diff_func)(key, klen, svn_hash_diff_key_both,
@@ -62,7 +62,7 @@ svn_hash_diff(apr_hash_t *hash_a,
         const void *key;
         apr_ssize_t klen;
 
-        apr_hash_this(hi, &key, &klen, NULL);
+        apr_hash_this(hi, &key, &klen, ((void*)0));
 
         if (! (hash_a && apr_hash_get(hash_a, key, klen)))
           SVN_ERR((*diff_func)(key, klen, svn_hash_diff_key_b,

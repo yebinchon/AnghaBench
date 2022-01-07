@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  SYSTEM_RESTART ; 
- int /*<<< orphan*/  SYS_RESTART ; 
- int /*<<< orphan*/  blocking_notifier_call_chain (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  device_shutdown () ; 
- int /*<<< orphan*/  reboot_notifier_list ; 
- int /*<<< orphan*/  system_state ; 
- int /*<<< orphan*/  usermodehelper_disable () ; 
+ int SYSTEM_RESTART ;
+ int SYS_RESTART ;
+ int blocking_notifier_call_chain (int *,int ,char*) ;
+ int device_shutdown () ;
+ int reboot_notifier_list ;
+ int system_state ;
+ int usermodehelper_disable () ;
 
 void kernel_restart_prepare(char *cmd)
 {
-	blocking_notifier_call_chain(&reboot_notifier_list, SYS_RESTART, cmd);
-	system_state = SYSTEM_RESTART;
-	usermodehelper_disable();
-	device_shutdown();
+ blocking_notifier_call_chain(&reboot_notifier_list, SYS_RESTART, cmd);
+ system_state = SYSTEM_RESTART;
+ usermodehelper_disable();
+ device_shutdown();
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  wc_id; int /*<<< orphan*/  sdb; } ;
-typedef  TYPE_1__ svn_wc__db_wcroot_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_sqlite__stmt_t ;
-typedef  int /*<<< orphan*/  svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STMT_CREATE_UPDATE_MOVE_LIST ; 
- int /*<<< orphan*/  STMT_SELECT_MOVED_DESCENDANTS_SRC ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kind_map ; 
- int /*<<< orphan*/ * svn_error_compose_create (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_pool_clear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_pool_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__bindf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,char const*,int) ; 
- int svn_sqlite__column_int (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- char* svn_sqlite__column_text (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__column_token (int /*<<< orphan*/ *,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__exec_statements (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__get_statement (int /*<<< orphan*/ **,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_sqlite__reset (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_sqlite__step (scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_op_break_move_internal (TYPE_1__*,char const*,int,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_notify_move_broken ; 
- int /*<<< orphan*/  svn_wc_notify_state_inapplicable ; 
- int /*<<< orphan*/  update_move_list_add (TYPE_1__*,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * verify_write_lock (TYPE_1__*,char const*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int wc_id; int sdb; } ;
+typedef TYPE_1__ svn_wc__db_wcroot_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_sqlite__stmt_t ;
+typedef int svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_pool_t ;
+
+
+ int STMT_CREATE_UPDATE_MOVE_LIST ;
+ int STMT_SELECT_MOVED_DESCENDANTS_SRC ;
+ int SVN_ERR (int ) ;
+ int kind_map ;
+ int * svn_error_compose_create (int *,int ) ;
+ int * svn_error_trace (int ) ;
+ int svn_pool_clear (int *) ;
+ int * svn_pool_create (int *) ;
+ int svn_pool_destroy (int *) ;
+ int svn_sqlite__bindf (int *,char*,int ,char const*,int) ;
+ int svn_sqlite__column_int (int *,int ) ;
+ char* svn_sqlite__column_text (int *,int,int *) ;
+ int svn_sqlite__column_token (int *,int,int ) ;
+ int svn_sqlite__exec_statements (int ,int ) ;
+ int svn_sqlite__get_statement (int **,int ,int ) ;
+ int svn_sqlite__reset (int *) ;
+ int svn_sqlite__step (scalar_t__*,int *) ;
+ int svn_wc__db_op_break_move_internal (TYPE_1__*,char const*,int,char const*,int *,int *) ;
+ int svn_wc_notify_move_broken ;
+ int svn_wc_notify_state_inapplicable ;
+ int update_move_list_add (TYPE_1__*,char const*,int *,int ,int ,int ,int ,int *,int *,int *) ;
+ int * verify_write_lock (TYPE_1__*,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 break_moved_away(svn_wc__db_wcroot_t *wcroot,
@@ -54,7 +54,7 @@ break_moved_away(svn_wc__db_wcroot_t *wcroot,
   svn_sqlite__stmt_t *stmt;
   svn_boolean_t have_row;
   apr_pool_t *iterpool;
-  svn_error_t *err = NULL;
+  svn_error_t *err = ((void*)0);
 
   SVN_ERR(svn_sqlite__exec_statements(wcroot->sdb,
                                       STMT_CREATE_UPDATE_MOVE_LIST));
@@ -69,9 +69,9 @@ break_moved_away(svn_wc__db_wcroot_t *wcroot,
   while (have_row)
     {
       int src_op_depth = svn_sqlite__column_int(stmt, 0);
-      const char *src_relpath = svn_sqlite__column_text(stmt, 1, NULL);
+      const char *src_relpath = svn_sqlite__column_text(stmt, 1, ((void*)0));
       svn_node_kind_t src_kind = svn_sqlite__column_token(stmt, 2, kind_map);
-      const char *dst_relpath = svn_sqlite__column_text(stmt, 4, NULL);
+      const char *dst_relpath = svn_sqlite__column_text(stmt, 4, ((void*)0));
 
       svn_pool_clear(iterpool);
 
@@ -86,7 +86,7 @@ break_moved_away(svn_wc__db_wcroot_t *wcroot,
       err = svn_error_trace(
               svn_wc__db_op_break_move_internal(wcroot,
                                                 src_relpath, src_op_depth,
-                                                dst_relpath, NULL, iterpool));
+                                                dst_relpath, ((void*)0), iterpool));
 
       if (err)
         break;
@@ -97,7 +97,7 @@ break_moved_away(svn_wc__db_wcroot_t *wcroot,
                                    src_kind,
                                    svn_wc_notify_state_inapplicable,
                                    svn_wc_notify_state_inapplicable,
-                                   NULL, NULL, scratch_pool));
+                                   ((void*)0), ((void*)0), scratch_pool));
 
       if (err)
         break;

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct rxml_node {struct rxml_node* data; struct rxml_node* name; struct rxml_node* value; struct rxml_node* attrib; scalar_t__ next; struct rxml_node* children; } ;
 struct rxml_attrib_node {struct rxml_attrib_node* data; struct rxml_attrib_node* name; struct rxml_attrib_node* value; struct rxml_attrib_node* attrib; scalar_t__ next; struct rxml_attrib_node* children; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free (struct rxml_node*) ; 
+
+ int free (struct rxml_node*) ;
 
 __attribute__((used)) static void rxml_free_node(struct rxml_node *node)
 {
-   struct rxml_node *head = NULL;
-   struct rxml_attrib_node *attrib_node_head = NULL;
+   struct rxml_node *head = ((void*)0);
+   struct rxml_attrib_node *attrib_node_head = ((void*)0);
 
    if (!node)
       return;
@@ -33,7 +33,7 @@ __attribute__((used)) static void rxml_free_node(struct rxml_node *node)
 
    for (attrib_node_head = node->attrib; attrib_node_head; )
    {
-      struct rxml_attrib_node *next_attrib = NULL;
+      struct rxml_attrib_node *next_attrib = ((void*)0);
 
       next_attrib = (struct rxml_attrib_node*)attrib_node_head->next;
 

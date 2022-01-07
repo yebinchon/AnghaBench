@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct Screen {int dummy; } ;
-typedef  int int8_t ;
-struct TYPE_6__ {int cursor_row; scalar_t__ cursor_column; int /*<<< orphan*/  cursor_charset; void* cursor_font; void* cursor_color; } ;
-typedef  TYPE_1__ CCaptionSubContext ;
+typedef int int8_t ;
+struct TYPE_6__ {int cursor_row; scalar_t__ cursor_column; int cursor_charset; void* cursor_font; void* cursor_color; } ;
+typedef TYPE_1__ CCaptionSubContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  CCSET_BASIC_AMERICAN ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*) ; 
- struct Screen* get_writing_screen (TYPE_1__*) ; 
- void*** pac2_attribs ; 
- int /*<<< orphan*/  write_char (TYPE_1__*,struct Screen*,char) ; 
+
+ int AV_LOG_DEBUG ;
+ int CCSET_BASIC_AMERICAN ;
+ int av_log (TYPE_1__*,int ,char*) ;
+ struct Screen* get_writing_screen (TYPE_1__*) ;
+ void*** pac2_attribs ;
+ int write_char (TYPE_1__*,struct Screen*,char) ;
 
 __attribute__((used)) static void handle_pac(CCaptionSubContext *ctx, uint8_t hi, uint8_t lo)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void handle_pac(CCaptionSubContext *ctx, uint8_t hi
     lo &= 0x1f;
 
     ctx->cursor_row = row_map[index] - 1;
-    ctx->cursor_color =  pac2_attribs[lo][0];
+    ctx->cursor_color = pac2_attribs[lo][0];
     ctx->cursor_font = pac2_attribs[lo][1];
     ctx->cursor_charset = CCSET_BASIC_AMERICAN;
     ctx->cursor_column = 0;

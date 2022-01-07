@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HPDF_UINT ;
-typedef  int /*<<< orphan*/  HPDF_Stream ;
-typedef  int /*<<< orphan*/  HPDF_STATUS ;
-typedef  int /*<<< orphan*/  HPDF_INT ;
-typedef  int /*<<< orphan*/  HPDF_BYTE ;
 
-/* Variables and functions */
- int HPDF_INT_LEN ; 
- char* HPDF_IToA (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  HPDF_Stream_Write (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int HPDF_UINT ;
+typedef int HPDF_Stream ;
+typedef int HPDF_STATUS ;
+typedef int HPDF_INT ;
+typedef int HPDF_BYTE ;
+
+
+ int HPDF_INT_LEN ;
+ char* HPDF_IToA (char*,int ,char*) ;
+ int HPDF_Stream_Write (int ,int *,int ) ;
 
 HPDF_STATUS
-HPDF_Stream_WriteInt  (HPDF_Stream  stream,
-                       HPDF_INT     value)
+HPDF_Stream_WriteInt (HPDF_Stream stream,
+                       HPDF_INT value)
 {
     char buf[HPDF_INT_LEN + 1];
 

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  RETSIGTYPE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  longjmp (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  peerdied ; 
- int /*<<< orphan*/  setcommandmode () ; 
+
+
+
+typedef int RETSIGTYPE ;
+
+
+ int longjmp (int ,int) ;
+ int peerdied ;
+ int setcommandmode () ;
 
 __attribute__((used)) static RETSIGTYPE
 deadpeer(int sig)
 {
-	setcommandmode();
-	longjmp(peerdied, -1);
+ setcommandmode();
+ longjmp(peerdied, -1);
 }

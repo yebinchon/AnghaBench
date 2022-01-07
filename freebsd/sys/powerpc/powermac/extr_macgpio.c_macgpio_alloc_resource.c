@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
+
+
+
+
+typedef int u_int ;
 struct resource {int dummy; } ;
-struct macgpio_devinfo {int /*<<< orphan*/  mdi_resources; } ;
-typedef  int /*<<< orphan*/  rman_res_t ;
-typedef  int /*<<< orphan*/  device_t ;
+struct macgpio_devinfo {int mdi_resources; } ;
+typedef int rman_res_t ;
+typedef int device_t ;
 
-/* Variables and functions */
- int SYS_RES_IRQ ; 
- struct macgpio_devinfo* device_get_ivars (int /*<<< orphan*/ ) ; 
- struct resource* resource_list_alloc (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SYS_RES_IRQ ;
+ struct macgpio_devinfo* device_get_ivars (int ) ;
+ struct resource* resource_list_alloc (int *,int ,int ,int,int*,int ,int ,int ,int ) ;
 
 __attribute__((used)) static struct resource *
 macgpio_alloc_resource(device_t bus, device_t child, int type, int *rid,
-		     rman_res_t start, rman_res_t end, rman_res_t count,
-		     u_int flags)
+       rman_res_t start, rman_res_t end, rman_res_t count,
+       u_int flags)
 {
-	struct macgpio_devinfo *dinfo;
+ struct macgpio_devinfo *dinfo;
 
-	dinfo = device_get_ivars(child);
+ dinfo = device_get_ivars(child);
 
-	if (type != SYS_RES_IRQ)
-		return (NULL);
+ if (type != SYS_RES_IRQ)
+  return (((void*)0));
 
-	return (resource_list_alloc(&dinfo->mdi_resources, bus, child, type, 
-	    rid, start, end, count, flags));
+ return (resource_list_alloc(&dinfo->mdi_resources, bus, child, type,
+     rid, start, end, count, flags));
 }

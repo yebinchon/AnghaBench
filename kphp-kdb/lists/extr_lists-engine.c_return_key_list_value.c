@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  Out; } ;
 
-/* Variables and functions */
- int PTR_INTS ; 
- int /*<<< orphan*/  advance_write_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- char* get_write_ptr (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int object_id_ints ; 
- int return_one_key (struct connection*,char const*,char*,int) ; 
- size_t sprintf (char*,char*,int const) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
- int /*<<< orphan*/  write_out (int /*<<< orphan*/ *,char const*,int) ; 
+
+
+
+struct connection {int Out; } ;
+
+
+ int PTR_INTS ;
+ int advance_write_ptr (int *,int) ;
+ int fprintf (int ,char*,int) ;
+ char* get_write_ptr (int *,int) ;
+ int memcpy (char*,char*,int) ;
+ int object_id_ints ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ size_t sprintf (char*,char*,int const) ;
+ char* stats_buff ;
+ int stderr ;
+ scalar_t__ verbosity ;
+ int write_out (int *,char const*,int) ;
 
 int return_key_list_value (struct connection *c, const char *key, int key_len, int res, int mode, const int *R, int R_cnt, int rec_size, int text_offset, int long_offset) {
   int w, i, j = 0;

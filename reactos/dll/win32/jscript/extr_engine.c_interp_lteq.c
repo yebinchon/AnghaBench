@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  script_ctx_t ;
-typedef  int /*<<< orphan*/  jsval_t ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  debugstr_jsval (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_bool (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsval_release (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  less_eval (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_pop (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stack_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int script_ctx_t ;
+typedef int jsval_t ;
+typedef int HRESULT ;
+typedef int BOOL ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int TRACE (char*,int ,int ) ;
+ int TRUE ;
+ int debugstr_jsval (int ) ;
+ int jsval_bool (int ) ;
+ int jsval_release (int ) ;
+ int less_eval (int *,int ,int ,int ,int *) ;
+ int stack_pop (int *) ;
+ int stack_push (int *,int ) ;
 
 __attribute__((used)) static HRESULT interp_lteq(script_ctx_t *ctx)
 {

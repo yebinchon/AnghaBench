@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct thread_stack {size_t cnt; } ;
 struct thread {int dummy; } ;
 
-/* Variables and functions */
- struct thread_stack* thread__stack (struct thread*,int) ; 
+
+ struct thread_stack* thread__stack (struct thread*,int) ;
 
 size_t thread_stack__depth(struct thread *thread, int cpu)
 {
-	struct thread_stack *ts = thread__stack(thread, cpu);
+ struct thread_stack *ts = thread__stack(thread, cpu);
 
-	if (!ts)
-		return 0;
-	return ts->cnt;
+ if (!ts)
+  return 0;
+ return ts->cnt;
 }

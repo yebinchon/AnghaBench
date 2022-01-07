@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int user_id; int rate; int last_visited; int uni_city; int region; int /*<<< orphan*/  clicked_ads; int /*<<< orphan*/  inactive_ads; int /*<<< orphan*/  active_ads; TYPE_2__* langs; TYPE_1__* grp; struct school* mil; struct school* inter; struct school* addr; struct school* work; struct school* sch; struct school* edu; int /*<<< orphan*/  proposal; int /*<<< orphan*/  hometown; int /*<<< orphan*/  religion; int /*<<< orphan*/  name; int /*<<< orphan*/  proposal_hashes; int /*<<< orphan*/  hometown_hashes; int /*<<< orphan*/  religion_hashes; int /*<<< orphan*/  inter_hashes; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  custom_fields; int /*<<< orphan*/  gcountry; int /*<<< orphan*/  hidden; int /*<<< orphan*/  cvisited; int /*<<< orphan*/  iiothers; int /*<<< orphan*/  ppriority; int /*<<< orphan*/  alcohol; int /*<<< orphan*/  smoking; int /*<<< orphan*/  height; int /*<<< orphan*/  timezone; int /*<<< orphan*/  operator; int /*<<< orphan*/  browser; int /*<<< orphan*/  has_photo; int /*<<< orphan*/  privacy; int /*<<< orphan*/  cute; int /*<<< orphan*/  uni_country; int /*<<< orphan*/  mstatus; int /*<<< orphan*/  sex; int /*<<< orphan*/  political; int /*<<< orphan*/  bday_year; int /*<<< orphan*/  bday_month; int /*<<< orphan*/  bday_day; int /*<<< orphan*/  user_group_types; } ;
-typedef  TYPE_3__ user_t ;
-struct school {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; struct school* next; int /*<<< orphan*/  text; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; int /*<<< orphan*/  name; int /*<<< orphan*/  house; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  house_hashes; int /*<<< orphan*/  atype; int /*<<< orphan*/  country; int /*<<< orphan*/  job; int /*<<< orphan*/  company_name; int /*<<< orphan*/  job_hashes; int /*<<< orphan*/  spec; int /*<<< orphan*/  spec_hashes; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  grad; int /*<<< orphan*/  primary; int /*<<< orphan*/  edu_status; int /*<<< orphan*/  edu_form; } ;
-struct military {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; struct military* next; int /*<<< orphan*/  text; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; int /*<<< orphan*/  name; int /*<<< orphan*/  house; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  house_hashes; int /*<<< orphan*/  atype; int /*<<< orphan*/  country; int /*<<< orphan*/  job; int /*<<< orphan*/  company_name; int /*<<< orphan*/  job_hashes; int /*<<< orphan*/  spec; int /*<<< orphan*/  spec_hashes; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  grad; int /*<<< orphan*/  primary; int /*<<< orphan*/  edu_status; int /*<<< orphan*/  edu_form; } ;
-struct interest {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; struct interest* next; int /*<<< orphan*/  text; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; int /*<<< orphan*/  name; int /*<<< orphan*/  house; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  house_hashes; int /*<<< orphan*/  atype; int /*<<< orphan*/  country; int /*<<< orphan*/  job; int /*<<< orphan*/  company_name; int /*<<< orphan*/  job_hashes; int /*<<< orphan*/  spec; int /*<<< orphan*/  spec_hashes; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  grad; int /*<<< orphan*/  primary; int /*<<< orphan*/  edu_status; int /*<<< orphan*/  edu_form; } ;
-struct education {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; struct education* next; int /*<<< orphan*/  text; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; int /*<<< orphan*/  name; int /*<<< orphan*/  house; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  house_hashes; int /*<<< orphan*/  atype; int /*<<< orphan*/  country; int /*<<< orphan*/  job; int /*<<< orphan*/  company_name; int /*<<< orphan*/  job_hashes; int /*<<< orphan*/  spec; int /*<<< orphan*/  spec_hashes; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  grad; int /*<<< orphan*/  primary; int /*<<< orphan*/  edu_status; int /*<<< orphan*/  edu_form; } ;
-struct company {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; struct company* next; int /*<<< orphan*/  text; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; int /*<<< orphan*/  name; int /*<<< orphan*/  house; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  house_hashes; int /*<<< orphan*/  atype; int /*<<< orphan*/  country; int /*<<< orphan*/  job; int /*<<< orphan*/  company_name; int /*<<< orphan*/  job_hashes; int /*<<< orphan*/  spec; int /*<<< orphan*/  spec_hashes; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  grad; int /*<<< orphan*/  primary; int /*<<< orphan*/  edu_status; int /*<<< orphan*/  edu_form; } ;
-struct address {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int /*<<< orphan*/  finish; int /*<<< orphan*/  start; struct address* next; int /*<<< orphan*/  text; int /*<<< orphan*/  flags; int /*<<< orphan*/  type; int /*<<< orphan*/  name; int /*<<< orphan*/  house; int /*<<< orphan*/  name_hashes; int /*<<< orphan*/  house_hashes; int /*<<< orphan*/  atype; int /*<<< orphan*/  country; int /*<<< orphan*/  job; int /*<<< orphan*/  company_name; int /*<<< orphan*/  job_hashes; int /*<<< orphan*/  spec; int /*<<< orphan*/  spec_hashes; int /*<<< orphan*/  sch_type; int /*<<< orphan*/  sch_class; int /*<<< orphan*/  grad; int /*<<< orphan*/  primary; int /*<<< orphan*/  edu_status; int /*<<< orphan*/  edu_form; } ;
-struct TYPE_7__ {int cur_langs; int /*<<< orphan*/  L; } ;
-struct TYPE_6__ {int cur_groups; int /*<<< orphan*/  G; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AdSpace ; 
- int TARG_INDEX_USER_STRUCT_V1_MAGIC ; 
- int /*<<< orphan*/  assert (TYPE_3__*) ; 
- int get_list_len (struct school*) ; 
- int intree_traverse (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  return_not_ancient ; 
- int /*<<< orphan*/  return_one ; 
- int /*<<< orphan*/  writeout (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  writeout_align (int) ; 
- int /*<<< orphan*/  writeout_char (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_hashlist (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_int (int) ; 
- int /*<<< orphan*/  writeout_short (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_string (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeout_ushort_check (int) ; 
- int /*<<< orphan*/  writeout_xz ; 
- int /*<<< orphan*/  writeout_xz_not_ancient ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int user_id; int rate; int last_visited; int uni_city; int region; int clicked_ads; int inactive_ads; int active_ads; TYPE_2__* langs; TYPE_1__* grp; struct school* mil; struct school* inter; struct school* addr; struct school* work; struct school* sch; struct school* edu; int proposal; int hometown; int religion; int name; int proposal_hashes; int hometown_hashes; int religion_hashes; int inter_hashes; int name_hashes; int custom_fields; int gcountry; int hidden; int cvisited; int iiothers; int ppriority; int alcohol; int smoking; int height; int timezone; int operator; int browser; int has_photo; int privacy; int cute; int uni_country; int mstatus; int sex; int political; int bday_year; int bday_month; int bday_day; int user_group_types; } ;
+typedef TYPE_3__ user_t ;
+struct school {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int finish; int start; struct school* next; int text; int flags; int type; int name; int house; int name_hashes; int house_hashes; int atype; int country; int job; int company_name; int job_hashes; int spec; int spec_hashes; int sch_type; int sch_class; int grad; int primary; int edu_status; int edu_form; } ;
+struct military {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int finish; int start; struct military* next; int text; int flags; int type; int name; int house; int name_hashes; int house_hashes; int atype; int country; int job; int company_name; int job_hashes; int spec; int spec_hashes; int sch_type; int sch_class; int grad; int primary; int edu_status; int edu_form; } ;
+struct interest {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int finish; int start; struct interest* next; int text; int flags; int type; int name; int house; int name_hashes; int house_hashes; int atype; int country; int job; int company_name; int job_hashes; int spec; int spec_hashes; int sch_type; int sch_class; int grad; int primary; int edu_status; int edu_form; } ;
+struct education {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int finish; int start; struct education* next; int text; int flags; int type; int name; int house; int name_hashes; int house_hashes; int atype; int country; int job; int company_name; int job_hashes; int spec; int spec_hashes; int sch_type; int sch_class; int grad; int primary; int edu_status; int edu_form; } ;
+struct company {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int finish; int start; struct company* next; int text; int flags; int type; int name; int house; int name_hashes; int house_hashes; int atype; int country; int job; int company_name; int job_hashes; int spec; int spec_hashes; int sch_type; int sch_class; int grad; int primary; int edu_status; int edu_form; } ;
+struct address {int grad_year; int chair; int faculty; int university; int city; int school; int company; int district; int station; int street; int unit_id; int finish; int start; struct address* next; int text; int flags; int type; int name; int house; int name_hashes; int house_hashes; int atype; int country; int job; int company_name; int job_hashes; int spec; int spec_hashes; int sch_type; int sch_class; int grad; int primary; int edu_status; int edu_form; } ;
+struct TYPE_7__ {int cur_langs; int L; } ;
+struct TYPE_6__ {int cur_groups; int G; } ;
+
+
+ int AdSpace ;
+ int TARG_INDEX_USER_STRUCT_V1_MAGIC ;
+ int assert (TYPE_3__*) ;
+ int get_list_len (struct school*) ;
+ int intree_traverse (int ,int ,int ) ;
+ int return_not_ancient ;
+ int return_one ;
+ int writeout (int ,int) ;
+ int writeout_align (int) ;
+ int writeout_char (int ) ;
+ int writeout_hashlist (int ) ;
+ int writeout_int (int) ;
+ int writeout_short (int ) ;
+ int writeout_string (int ) ;
+ int writeout_ushort_check (int) ;
+ int writeout_xz ;
+ int writeout_xz_not_ancient ;
 
 __attribute__((used)) static void idx_write_user (user_t *U) {
   assert (U);
@@ -161,7 +161,7 @@ __attribute__((used)) static void idx_write_user (user_t *U) {
   }
 
   writeout_align (4);
-  
+
   struct military *M;
   for (M = U->mil; M; M = M->next) {
     writeout_int (M->unit_id);

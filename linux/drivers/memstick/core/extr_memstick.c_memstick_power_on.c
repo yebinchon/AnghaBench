@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct memstick_host {int (* set_param ) (struct memstick_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MEMSTICK_INTERFACE ; 
- int /*<<< orphan*/  MEMSTICK_POWER ; 
- int /*<<< orphan*/  MEMSTICK_POWER_ON ; 
- int /*<<< orphan*/  MEMSTICK_SERIAL ; 
- int stub1 (struct memstick_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int stub2 (struct memstick_host*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+struct memstick_host {int (* set_param ) (struct memstick_host*,int ,int ) ;} ;
+
+
+ int MEMSTICK_INTERFACE ;
+ int MEMSTICK_POWER ;
+ int MEMSTICK_POWER_ON ;
+ int MEMSTICK_SERIAL ;
+ int stub1 (struct memstick_host*,int ,int ) ;
+ int stub2 (struct memstick_host*,int ,int ) ;
 
 __attribute__((used)) static int memstick_power_on(struct memstick_host *host)
 {
-	int rc = host->set_param(host, MEMSTICK_POWER, MEMSTICK_POWER_ON);
+ int rc = host->set_param(host, MEMSTICK_POWER, MEMSTICK_POWER_ON);
 
-	if (!rc)
-		rc = host->set_param(host, MEMSTICK_INTERFACE, MEMSTICK_SERIAL);
+ if (!rc)
+  rc = host->set_param(host, MEMSTICK_INTERFACE, MEMSTICK_SERIAL);
 
-	return rc;
+ return rc;
 }

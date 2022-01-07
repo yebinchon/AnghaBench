@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct connection {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ COMM_MODE ; 
- scalar_t__ NOTIFY_MODE ; 
- scalar_t__ RECOMMEND_MODE ; 
- scalar_t__ UG_MODE ; 
- scalar_t__ check_split (int) ; 
- int do_add_del_bookmark (int,int,int,int,int) ; 
- int exec_get_notification_updates (struct connection*,char const*,int,int) ; 
- int exec_get_raw_comm_updates (struct connection*,char const*,int,int) ; 
- int exec_get_raw_notification_updates (struct connection*,char const*,int,int) ; 
- int exec_get_raw_recommend_updates (struct connection*,char const*,int,int) ; 
- int exec_get_raw_updates (struct connection*,char const*,int,int) ; 
- int exec_get_raw_user_comm_bookmarks (struct connection*,char const*,int,int) ; 
- int exec_get_raw_user_comm_updates (struct connection*,char const*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,int) ; 
- int /*<<< orphan*/  free_tmp_buffers (struct connection*) ; 
- int get_at_prefix_length (char const*,int) ; 
- int get_privacy_mask (int) ; 
- int get_recommend_rate (int,int,double*) ; 
- int news_prepare_stats (struct connection*) ; 
- int news_wait (struct connection*) ; 
- int return_one_key (struct connection*,char const*,char*,int) ; 
- int sprintf (char*,char*,double) ; 
- int sscanf (char const*,char*,int*,...) ; 
- char* stats_buff ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strncmp (char const*,char*,int) ; 
- int verbosity ; 
+
+ scalar_t__ COMM_MODE ;
+ scalar_t__ NOTIFY_MODE ;
+ scalar_t__ RECOMMEND_MODE ;
+ scalar_t__ UG_MODE ;
+ scalar_t__ check_split (int) ;
+ int do_add_del_bookmark (int,int,int,int,int) ;
+ int exec_get_notification_updates (struct connection*,char const*,int,int) ;
+ int exec_get_raw_comm_updates (struct connection*,char const*,int,int) ;
+ int exec_get_raw_notification_updates (struct connection*,char const*,int,int) ;
+ int exec_get_raw_recommend_updates (struct connection*,char const*,int,int) ;
+ int exec_get_raw_updates (struct connection*,char const*,int,int) ;
+ int exec_get_raw_user_comm_bookmarks (struct connection*,char const*,int,int) ;
+ int exec_get_raw_user_comm_updates (struct connection*,char const*,int,int) ;
+ int fprintf (int ,char*,int,int) ;
+ int free_tmp_buffers (struct connection*) ;
+ int get_at_prefix_length (char const*,int) ;
+ int get_privacy_mask (int) ;
+ int get_recommend_rate (int,int,double*) ;
+ int news_prepare_stats (struct connection*) ;
+ int news_wait (struct connection*) ;
+ int return_one_key (struct connection*,char const*,char*,int) ;
+ int sprintf (char*,char*,double) ;
+ int sscanf (char const*,char*,int*,...) ;
+ char* stats_buff ;
+ int stderr ;
+ int strncmp (char const*,char*,int) ;
+ int verbosity ;
 
 int memcache_get (struct connection *c, const char *key, int key_len) {
   int dog_len = get_at_prefix_length (key, key_len);
@@ -127,7 +127,7 @@ int memcache_get (struct connection *c, const char *key, int key_len) {
     }
   }
 
-  if (RECOMMEND_MODE && !strncmp (key, "recommend_rate", 14))  {
+  if (RECOMMEND_MODE && !strncmp (key, "recommend_rate", 14)) {
     int type, action;
     if (sscanf (key + 14, "%d,%d", &type, &action) == 2) {
       double rate;

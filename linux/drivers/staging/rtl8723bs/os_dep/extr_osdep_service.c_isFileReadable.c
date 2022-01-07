@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct file {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
- scalar_t__ IS_ERR (struct file*) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int PTR_ERR (struct file*) ; 
- int /*<<< orphan*/  filp_close (struct file*,int /*<<< orphan*/ *) ; 
- struct file* filp_open (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int readFile (struct file*,char*,int) ; 
+
+ int EINVAL ;
+ scalar_t__ IS_ERR (struct file*) ;
+ int O_RDONLY ;
+ int PTR_ERR (struct file*) ;
+ int filp_close (struct file*,int *) ;
+ struct file* filp_open (char*,int ,int ) ;
+ int readFile (struct file*,char*,int) ;
 
 __attribute__((used)) static int isFileReadable(char *path)
 {
-	struct file *fp;
-	int ret = 0;
-	char buf;
+ struct file *fp;
+ int ret = 0;
+ char buf;
 
-	fp = filp_open(path, O_RDONLY, 0);
-	if (IS_ERR(fp))
-		return PTR_ERR(fp);
+ fp = filp_open(path, O_RDONLY, 0);
+ if (IS_ERR(fp))
+  return PTR_ERR(fp);
 
-	if (readFile(fp, &buf, 1) != 1)
-		ret = -EINVAL;
+ if (readFile(fp, &buf, 1) != 1)
+  ret = -EINVAL;
 
-	filp_close(fp, NULL);
-	return ret;
+ filp_close(fp, ((void*)0));
+ return ret;
 }

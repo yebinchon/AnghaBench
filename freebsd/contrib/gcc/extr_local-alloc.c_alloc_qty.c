@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
-struct TYPE_2__ {int first_reg; int size; int mode; int birth; int /*<<< orphan*/  freq; int /*<<< orphan*/  n_refs; int /*<<< orphan*/  alternate_class; int /*<<< orphan*/  min_class; int /*<<< orphan*/  n_throwing_calls_crossed; int /*<<< orphan*/  n_calls_crossed; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  REG_FREQ (int) ; 
- int /*<<< orphan*/  REG_N_CALLS_CROSSED (int) ; 
- int /*<<< orphan*/  REG_N_REFS (int) ; 
- int /*<<< orphan*/  REG_N_THROWING_CALLS_CROSSED (int) ; 
- int /*<<< orphan*/  next_qty ; 
- TYPE_1__* qty ; 
- int /*<<< orphan*/  reg_alternate_class (int) ; 
- int* reg_next_in_qty ; 
- scalar_t__* reg_offset ; 
- int /*<<< orphan*/  reg_preferred_class (int) ; 
- int* reg_qty ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+struct TYPE_2__ {int first_reg; int size; int mode; int birth; int freq; int n_refs; int alternate_class; int min_class; int n_throwing_calls_crossed; int n_calls_crossed; } ;
+
+
+ int REG_FREQ (int) ;
+ int REG_N_CALLS_CROSSED (int) ;
+ int REG_N_REFS (int) ;
+ int REG_N_THROWING_CALLS_CROSSED (int) ;
+ int next_qty ;
+ TYPE_1__* qty ;
+ int reg_alternate_class (int) ;
+ int* reg_next_in_qty ;
+ scalar_t__* reg_offset ;
+ int reg_preferred_class (int) ;
+ int* reg_qty ;
 
 __attribute__((used)) static void
 alloc_qty (int regno, enum machine_mode mode, int size, int birth)

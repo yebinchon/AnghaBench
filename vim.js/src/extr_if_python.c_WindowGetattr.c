@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WindowObject ;
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- scalar_t__ CheckWindow (int /*<<< orphan*/ *) ; 
- scalar_t__ PyErr_Occurred () ; 
- int /*<<< orphan*/ * Py_FindMethod (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * WindowAttr (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/ * WindowAttrValid (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  WindowMethods ; 
+
+
+
+typedef int WindowObject ;
+typedef int PyObject ;
+
+
+ scalar_t__ CheckWindow (int *) ;
+ scalar_t__ PyErr_Occurred () ;
+ int * Py_FindMethod (int ,int *,char*) ;
+ int * WindowAttr (int *,char*) ;
+ int * WindowAttrValid (int *,char*) ;
+ int WindowMethods ;
 
 __attribute__((used)) static PyObject *
 WindowGetattr(PyObject *self, char *name)
@@ -27,14 +27,14 @@ WindowGetattr(PyObject *self, char *name)
     PyObject *r;
 
     if ((r = WindowAttrValid((WindowObject *)(self), name)))
-	return r;
+ return r;
 
     if (CheckWindow((WindowObject *)(self)))
-	return NULL;
+ return ((void*)0);
 
     r = WindowAttr((WindowObject *)(self), name);
     if (r || PyErr_Occurred())
-	return r;
+ return r;
     else
-	return Py_FindMethod(WindowMethods, self, name);
+ return Py_FindMethod(WindowMethods, self, name);
 }

@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int UINT ;
-struct TYPE_7__ {int /*<<< orphan*/  decoder; } ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+typedef int UINT ;
+struct TYPE_7__ {int decoder; } ;
 struct TYPE_9__ {int height; int stride; int width; TYPE_1__ image; scalar_t__ bits; } ;
 struct TYPE_8__ {int current_frame; } ;
-typedef  int /*<<< orphan*/  IWICBitmapFrameDecode ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  GpStatus ;
-typedef  TYPE_2__ GpImage ;
-typedef  TYPE_3__ GpBitmap ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  scalar_t__ BOOL ;
+typedef int IWICBitmapFrameDecode ;
+typedef int HRESULT ;
+typedef int GpStatus ;
+typedef TYPE_2__ GpImage ;
+typedef TYPE_3__ GpBitmap ;
+typedef int DWORD ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- scalar_t__ FALSE ; 
- int GIF_DISPOSE_DO_NOT_DISPOSE ; 
- int GIF_DISPOSE_RESTORE_TO_BKGND ; 
- int GIF_DISPOSE_RESTORE_TO_PREV ; 
- int GIF_DISPOSE_UNSPECIFIED ; 
- int /*<<< orphan*/  GUID_MetadataFormatGCE ; 
- int /*<<< orphan*/  IWICBitmapDecoder_GetFrame (int /*<<< orphan*/ ,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IWICBitmapFrameDecode_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Ok ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  blit_gif_frame (TYPE_3__*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  get_gif_background_color (TYPE_3__*) ; 
- int get_gif_frame_property (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  get_gif_frame_rect (int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
- int /*<<< orphan*/  hresult_to_status (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ FAILED (int ) ;
+ scalar_t__ FALSE ;
+ int GIF_DISPOSE_DO_NOT_DISPOSE ;
+ int GIF_DISPOSE_RESTORE_TO_BKGND ;
+ int GIF_DISPOSE_RESTORE_TO_PREV ;
+ int GIF_DISPOSE_UNSPECIFIED ;
+ int GUID_MetadataFormatGCE ;
+ int IWICBitmapDecoder_GetFrame (int ,int,int **) ;
+ int IWICBitmapFrameDecode_Release (int *) ;
+ int Ok ;
+ scalar_t__ TRUE ;
+ int blit_gif_frame (TYPE_3__*,int *,int) ;
+ int get_gif_background_color (TYPE_3__*) ;
+ int get_gif_frame_property (int *,int *,char const*) ;
+ int get_gif_frame_rect (int *,int*,int*,int*,int*) ;
+ int hresult_to_status (int ) ;
 
 __attribute__((used)) static GpStatus select_frame_gif(GpImage* image, UINT active_frame)
 {

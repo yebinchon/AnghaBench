@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  set_el_t ;
-typedef  int /*<<< orphan*/  reserv_sets_t ;
 
-/* Variables and functions */
- int CHAR_BIT ; 
- int /*<<< orphan*/  SET_BIT (int /*<<< orphan*/ ,int) ; 
- int els_in_cycle_reserv ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int max_cycles_num ; 
+
+
+
+typedef int set_el_t ;
+typedef int reserv_sets_t ;
+
+
+ int CHAR_BIT ;
+ int SET_BIT (int ,int) ;
+ int els_in_cycle_reserv ;
+ int gcc_assert (int) ;
+ int max_cycles_num ;
 
 __attribute__((used)) static void
 set_unit_reserv (reserv_sets_t reservs, int cycle_num, int unit_num)

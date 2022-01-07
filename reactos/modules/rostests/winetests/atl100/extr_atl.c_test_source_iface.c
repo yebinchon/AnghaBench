@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  IUnknown ;
-typedef  int /*<<< orphan*/  IID ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AtlGetObjectSourceInterface (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,unsigned short*,unsigned short*) ; 
- int /*<<< orphan*/  CLSID_HTMLDocument ; 
- int /*<<< orphan*/  CLSID_HTMLStyle ; 
- int /*<<< orphan*/  DIID_DispHTMLBody ; 
- int /*<<< orphan*/  DIID_HTMLDocumentEvents ; 
- int /*<<< orphan*/  Dispatch ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IID_NULL ; 
- int /*<<< orphan*/  IsEqualGUID (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIBID_MSHTML ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  ok (int,char*,unsigned short,...) ; 
- int /*<<< orphan*/  persist_clsid ; 
- int /*<<< orphan*/  support_classinfo2 ; 
- int /*<<< orphan*/  wine_dbgstr_guid (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int IUnknown ;
+typedef int IID ;
+typedef int HRESULT ;
+
+
+ int AtlGetObjectSourceInterface (int *,int *,int *,unsigned short*,unsigned short*) ;
+ int CLSID_HTMLDocument ;
+ int CLSID_HTMLStyle ;
+ int DIID_DispHTMLBody ;
+ int DIID_HTMLDocumentEvents ;
+ int Dispatch ;
+ int FALSE ;
+ int IID_NULL ;
+ int IsEqualGUID (int *,int *) ;
+ int LIBID_MSHTML ;
+ int S_OK ;
+ int TRUE ;
+ int ok (int,char*,unsigned short,...) ;
+ int persist_clsid ;
+ int support_classinfo2 ;
+ int wine_dbgstr_guid (int *) ;
 
 __attribute__((used)) static void test_source_iface(void)
 {

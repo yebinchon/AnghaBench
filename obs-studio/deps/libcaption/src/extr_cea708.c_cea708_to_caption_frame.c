@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint16_t ;
-typedef  int /*<<< orphan*/  libcaption_stauts_t ;
-struct TYPE_3__ {scalar_t__ user_identifier; int /*<<< orphan*/  timestamp; int /*<<< orphan*/  user_data; } ;
-typedef  TYPE_1__ cea708_t ;
-typedef  scalar_t__ cea708_cc_type_t ;
-typedef  int /*<<< orphan*/  caption_frame_t ;
 
-/* Variables and functions */
- scalar_t__ GA94 ; 
- int /*<<< orphan*/  LIBCAPTION_OK ; 
- int /*<<< orphan*/  caption_frame_decode (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ cc_type_ntsc_cc_field_1 ; 
- int cea708_cc_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cea708_cc_data (int /*<<< orphan*/ *,int,int*,scalar_t__*) ; 
- int /*<<< orphan*/  libcaption_status_update (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+typedef int libcaption_stauts_t ;
+struct TYPE_3__ {scalar_t__ user_identifier; int timestamp; int user_data; } ;
+typedef TYPE_1__ cea708_t ;
+typedef scalar_t__ cea708_cc_type_t ;
+typedef int caption_frame_t ;
+
+
+ scalar_t__ GA94 ;
+ int LIBCAPTION_OK ;
+ int caption_frame_decode (int *,int ,int ) ;
+ scalar_t__ cc_type_ntsc_cc_field_1 ;
+ int cea708_cc_count (int *) ;
+ int cea708_cc_data (int *,int,int*,scalar_t__*) ;
+ int libcaption_status_update (int ,int ) ;
 
 libcaption_stauts_t cea708_to_caption_frame(caption_frame_t* frame, cea708_t* cea708)
 {

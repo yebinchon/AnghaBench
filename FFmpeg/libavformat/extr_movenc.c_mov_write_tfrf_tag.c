@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uuid ;
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int uuid ;
+typedef int uint8_t ;
 struct TYPE_8__ {int ism_lookahead; } ;
 struct TYPE_7__ {int nb_frag_info; TYPE_1__* frag_info; } ;
-struct TYPE_6__ {int /*<<< orphan*/  duration; int /*<<< orphan*/  time; int /*<<< orphan*/  tfrf_offset; } ;
-typedef  TYPE_2__ MOVTrack ;
-typedef  TYPE_3__ MOVMuxContext ;
-typedef  int /*<<< orphan*/  AVIOContext ;
+struct TYPE_6__ {int duration; int time; int tfrf_offset; } ;
+typedef TYPE_2__ MOVTrack ;
+typedef TYPE_3__ MOVMuxContext ;
+typedef int AVIOContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SEEK_SET ; 
- int /*<<< orphan*/  avio_seek (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_w8 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb24 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_wb32 (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  avio_wb64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int const*,int) ; 
- int /*<<< orphan*/  ffio_fill (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ffio_wfourcc (int /*<<< orphan*/ *,char*) ; 
+
+ int SEEK_SET ;
+ int avio_seek (int *,int ,int ) ;
+ int avio_w8 (int *,int) ;
+ int avio_wb24 (int *,int ) ;
+ int avio_wb32 (int *,int) ;
+ int avio_wb64 (int *,int ) ;
+ int avio_write (int *,int const*,int) ;
+ int ffio_fill (int *,int ,int) ;
+ int ffio_wfourcc (int *,char*) ;
 
 __attribute__((used)) static int mov_write_tfrf_tag(AVIOContext *pb, MOVMuxContext *mov,
                               MOVTrack *track, int entry)

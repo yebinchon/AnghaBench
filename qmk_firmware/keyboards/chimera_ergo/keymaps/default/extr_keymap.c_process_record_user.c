@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
-struct TYPE_4__ {int /*<<< orphan*/  pressed; } ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
+struct TYPE_4__ {int pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
+typedef TYPE_2__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_CAPS ; 
- int /*<<< orphan*/  KC_ENT ; 
- int /*<<< orphan*/  KC_LEFT ; 
-#define  SC_INCL 132 
-#define  SC_PULL 131 
-#define  SC_PUSH 130 
-#define  SC_SCAP 129 
-#define  SC_SCOF 128 
- int /*<<< orphan*/  SEND_STRING (char*) ; 
- int /*<<< orphan*/  _CAPS ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tap_code (int /*<<< orphan*/ ) ; 
+
+ int KC_CAPS ;
+ int KC_ENT ;
+ int KC_LEFT ;
+
+
+
+
+
+ int SEND_STRING (char*) ;
+ int _CAPS ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int tap_code (int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
-    /* include some kind of library or header */
-    case SC_INCL:
+
+    case 132:
       if (record->event.pressed) {
         SEND_STRING("#include <>");
         tap_code(KC_LEFT);
       }
-      return false;
-    case SC_PULL:
+      return 0;
+    case 131:
       if (record->event.pressed) {
         SEND_STRING("git pull");
         tap_code(KC_ENT);
       }
-      return false;
-    case SC_PUSH:
+      return 0;
+    case 130:
       if (record->event.pressed) {
         SEND_STRING("git push");
         tap_code(KC_ENT);
       }
-      return false;
-    case SC_SCAP:
+      return 0;
+    case 129:
       if (record->event.pressed) {
         layer_on(_CAPS);
         tap_code(KC_CAPS);
       }
-      return false;
-    case SC_SCOF:
+      return 0;
+    case 128:
       if (record->event.pressed) {
         layer_off(_CAPS);
         tap_code(KC_CAPS);
       }
-      return false;
+      return 0;
     default:
-      return true;
+      return 1;
   }
-  return true;
+  return 1;
 }

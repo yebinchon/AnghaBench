@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_29__   TYPE_8__ ;
-typedef  struct TYPE_28__   TYPE_7__ ;
-typedef  struct TYPE_27__   TYPE_6__ ;
-typedef  struct TYPE_26__   TYPE_5__ ;
-typedef  struct TYPE_25__   TYPE_4__ ;
-typedef  struct TYPE_24__   TYPE_3__ ;
-typedef  struct TYPE_23__   TYPE_2__ ;
-typedef  struct TYPE_22__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint64_t ;
+
+
+typedef struct TYPE_29__ TYPE_8__ ;
+typedef struct TYPE_28__ TYPE_7__ ;
+typedef struct TYPE_27__ TYPE_6__ ;
+typedef struct TYPE_26__ TYPE_5__ ;
+typedef struct TYPE_25__ TYPE_4__ ;
+typedef struct TYPE_24__ TYPE_3__ ;
+typedef struct TYPE_23__ TYPE_2__ ;
+typedef struct TYPE_22__ TYPE_1__ ;
+
+
+typedef void* uint64_t ;
 struct TYPE_29__ {scalar_t__ eof_reached; } ;
 struct TYPE_25__ {scalar_t__ base_data_offset; } ;
 struct TYPE_24__ {scalar_t__ current; } ;
-struct TYPE_28__ {int /*<<< orphan*/  fc; TYPE_4__ fragment; TYPE_3__ frag_index; } ;
+struct TYPE_28__ {int fc; TYPE_4__ fragment; TYPE_3__ frag_index; } ;
 struct TYPE_27__ {int auxiliary_offsets_count; scalar_t__ auxiliary_info_sample_count; void** auxiliary_offsets; scalar_t__ nb_encrypted_samples; } ;
 struct TYPE_23__ {TYPE_1__* default_encrypted_sample; } ;
 struct TYPE_26__ {TYPE_2__ cenc; } ;
 struct TYPE_22__ {unsigned int scheme; } ;
-typedef  TYPE_5__ MOVStreamContext ;
-typedef  TYPE_6__ MOVEncryptionIndex ;
-typedef  TYPE_7__ MOVContext ;
-typedef  int /*<<< orphan*/  MOVAtom ;
-typedef  TYPE_8__ AVIOContext ;
+typedef TYPE_5__ MOVStreamContext ;
+typedef TYPE_6__ MOVEncryptionIndex ;
+typedef TYPE_7__ MOVContext ;
+typedef int MOVAtom ;
+typedef TYPE_8__ AVIOContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_INVALIDDATA ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  ENOMEM ; 
- int /*<<< orphan*/  FFMAX (int,int) ; 
- unsigned int FFMIN (int /*<<< orphan*/ ,unsigned int) ; 
- int INT_MAX ; 
- unsigned int MKBETAG (char,char,char,char) ; 
- void** av_fast_realloc (void**,unsigned int*,unsigned int) ; 
- int /*<<< orphan*/  av_freep (void***) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- unsigned int avio_r8 (TYPE_8__*) ; 
- int avio_rb24 (TYPE_8__*) ; 
- void* avio_rb32 (TYPE_8__*) ; 
- void* avio_rb64 (TYPE_8__*) ; 
- int get_current_encryption_info (TYPE_7__*,TYPE_6__**,TYPE_5__**) ; 
- int mov_parse_auxiliary_info (TYPE_7__*,TYPE_5__*,TYPE_8__*,TYPE_6__*) ; 
+
+ int AVERROR (int ) ;
+ int AVERROR_INVALIDDATA ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int ENOMEM ;
+ int FFMAX (int,int) ;
+ unsigned int FFMIN (int ,unsigned int) ;
+ int INT_MAX ;
+ unsigned int MKBETAG (char,char,char,char) ;
+ void** av_fast_realloc (void**,unsigned int*,unsigned int) ;
+ int av_freep (void***) ;
+ int av_log (int ,int ,char*) ;
+ unsigned int avio_r8 (TYPE_8__*) ;
+ int avio_rb24 (TYPE_8__*) ;
+ void* avio_rb32 (TYPE_8__*) ;
+ void* avio_rb64 (TYPE_8__*) ;
+ int get_current_encryption_info (TYPE_7__*,TYPE_6__**,TYPE_5__**) ;
+ int mov_parse_auxiliary_info (TYPE_7__*,TYPE_5__*,TYPE_8__*,TYPE_6__*) ;
 
 __attribute__((used)) static int mov_read_saio(MOVContext *c, AVIOContext *pb, MOVAtom atom)
 {
@@ -67,7 +67,7 @@ __attribute__((used)) static int mov_read_saio(MOVContext *c, AVIOContext *pb, M
         return ret;
 
     if (encryption_index->nb_encrypted_samples) {
-        // This can happen if we have both saio/saiz and senc atoms.
+
         av_log(c->fc, AV_LOG_DEBUG, "Ignoring duplicate encryption info in saio\n");
         return 0;
     }
@@ -77,8 +77,8 @@ __attribute__((used)) static int mov_read_saio(MOVContext *c, AVIOContext *pb, M
         return AVERROR_INVALIDDATA;
     }
 
-    version = avio_r8(pb); /* version */
-    if (avio_rb24(pb) & 0x01) {  /* flags */
+    version = avio_r8(pb);
+    if (avio_rb24(pb) & 0x01) {
         aux_info_type = avio_rb32(pb);
         aux_info_param = avio_rb32(pb);
         if (sc->cenc.default_encrypted_sample) {
@@ -91,7 +91,7 @@ __attribute__((used)) static int mov_read_saio(MOVContext *c, AVIOContext *pb, M
                 return 0;
             }
         } else {
-            // Didn't see 'schm' or 'tenc', so this isn't encrypted.
+
             if ((aux_info_type == MKBETAG('c','e','n','c') ||
                  aux_info_type == MKBETAG('c','e','n','s') ||
                  aux_info_type == MKBETAG('c','b','c','1') ||
@@ -104,7 +104,7 @@ __attribute__((used)) static int mov_read_saio(MOVContext *c, AVIOContext *pb, M
             }
         }
     } else if (!sc->cenc.default_encrypted_sample) {
-        // Didn't see 'schm' or 'tenc', so this isn't encrypted.
+
         return 0;
     }
 

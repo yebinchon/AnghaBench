@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {scalar_t__ video_status; int /*<<< orphan*/  filter_root; scalar_t__ stop_play; int /*<<< orphan*/  playback_pts; scalar_t__ lavfi; int /*<<< orphan*/  encode_lavc_ctx; } ;
 
-/* Variables and functions */
- scalar_t__ AT_END_OF_FILE ; 
- scalar_t__ PT_QUIT ; 
- scalar_t__ STATUS_EOF ; 
- scalar_t__ encode_lavc_didfail (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  execute_queued_seek (struct MPContext*) ; 
- int /*<<< orphan*/  fill_audio_out_buffers (struct MPContext*) ; 
- int /*<<< orphan*/  handle_chapter_change (struct MPContext*) ; 
- int /*<<< orphan*/  handle_command_updates (struct MPContext*) ; 
- int /*<<< orphan*/  handle_cursor_autohide (struct MPContext*) ; 
- int /*<<< orphan*/  handle_delayed_audio_seek (struct MPContext*) ; 
- int /*<<< orphan*/  handle_dummy_ticks (struct MPContext*) ; 
- int /*<<< orphan*/  handle_eof (struct MPContext*) ; 
- int /*<<< orphan*/  handle_force_window (struct MPContext*,int) ; 
- int /*<<< orphan*/  handle_keep_open (struct MPContext*) ; 
- int /*<<< orphan*/  handle_loop_file (struct MPContext*) ; 
- int /*<<< orphan*/  handle_osd_redraw (struct MPContext*) ; 
- int /*<<< orphan*/  handle_playback_restart (struct MPContext*) ; 
- int /*<<< orphan*/  handle_playback_time (struct MPContext*) ; 
- int /*<<< orphan*/  handle_sstep (struct MPContext*) ; 
- int /*<<< orphan*/  handle_update_cache (struct MPContext*) ; 
- int /*<<< orphan*/  handle_vo_events (struct MPContext*) ; 
- scalar_t__ mp_filter_has_failed (scalar_t__) ; 
- scalar_t__ mp_filter_run (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_process_input (struct MPContext*) ; 
- int /*<<< orphan*/  mp_wait_events (struct MPContext*) ; 
- int /*<<< orphan*/  mp_wakeup_core (struct MPContext*) ; 
- int /*<<< orphan*/  update_core_idle_state (struct MPContext*) ; 
- int /*<<< orphan*/  update_demuxer_properties (struct MPContext*) ; 
- int /*<<< orphan*/  update_osd_msg (struct MPContext*) ; 
- int /*<<< orphan*/  update_subtitles (struct MPContext*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  write_video (struct MPContext*) ; 
+
+
+
+struct MPContext {scalar_t__ video_status; int filter_root; scalar_t__ stop_play; int playback_pts; scalar_t__ lavfi; int encode_lavc_ctx; } ;
+
+
+ scalar_t__ AT_END_OF_FILE ;
+ scalar_t__ PT_QUIT ;
+ scalar_t__ STATUS_EOF ;
+ scalar_t__ encode_lavc_didfail (int ) ;
+ int execute_queued_seek (struct MPContext*) ;
+ int fill_audio_out_buffers (struct MPContext*) ;
+ int handle_chapter_change (struct MPContext*) ;
+ int handle_command_updates (struct MPContext*) ;
+ int handle_cursor_autohide (struct MPContext*) ;
+ int handle_delayed_audio_seek (struct MPContext*) ;
+ int handle_dummy_ticks (struct MPContext*) ;
+ int handle_eof (struct MPContext*) ;
+ int handle_force_window (struct MPContext*,int) ;
+ int handle_keep_open (struct MPContext*) ;
+ int handle_loop_file (struct MPContext*) ;
+ int handle_osd_redraw (struct MPContext*) ;
+ int handle_playback_restart (struct MPContext*) ;
+ int handle_playback_time (struct MPContext*) ;
+ int handle_sstep (struct MPContext*) ;
+ int handle_update_cache (struct MPContext*) ;
+ int handle_vo_events (struct MPContext*) ;
+ scalar_t__ mp_filter_has_failed (scalar_t__) ;
+ scalar_t__ mp_filter_run (int ) ;
+ int mp_process_input (struct MPContext*) ;
+ int mp_wait_events (struct MPContext*) ;
+ int mp_wakeup_core (struct MPContext*) ;
+ int update_core_idle_state (struct MPContext*) ;
+ int update_demuxer_properties (struct MPContext*) ;
+ int update_osd_msg (struct MPContext*) ;
+ int update_subtitles (struct MPContext*,int ) ;
+ int write_video (struct MPContext*) ;
 
 void run_playloop(struct MPContext *mpctx)
 {
@@ -101,7 +101,7 @@ void run_playloop(struct MPContext *mpctx)
 
     handle_chapter_change(mpctx);
 
-    handle_force_window(mpctx, false);
+    handle_force_window(mpctx, 0);
 
     execute_queued_seek(mpctx);
 }

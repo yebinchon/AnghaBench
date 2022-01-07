@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char const* __progname ; 
- char* strrchr (char const*,char) ; 
+ char const* __progname ;
+ char* strrchr (char const*,char) ;
 
 void
 setprogname(const char *progname)
 {
-	const char *p;
+ const char *p;
 
-	p = strrchr(progname, '/');
-	if (p != NULL)
-		__progname = p + 1;
-	else
-		__progname = progname;
+ p = strrchr(progname, '/');
+ if (p != ((void*)0))
+  __progname = p + 1;
+ else
+  __progname = progname;
 }

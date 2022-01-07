@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* LPSTR ;
-typedef  scalar_t__ LPCWSTR ;
-typedef  int /*<<< orphan*/  DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_UTF8 ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef char* LPSTR ;
+typedef scalar_t__ LPCWSTR ;
+typedef int DWORD ;
+
+
+ int CP_UTF8 ;
+ int GetProcessHeap () ;
+ char* HeapAlloc (int ,int ,int ) ;
+ int WideCharToMultiByte (int ,int ,scalar_t__,int,char*,int ,int *,int *) ;
 
 __attribute__((used)) static inline char *dns_strdup_wu( LPCWSTR str )
 {
-    LPSTR ret = NULL;
+    LPSTR ret = ((void*)0);
     if (str)
     {
-        DWORD len = WideCharToMultiByte( CP_UTF8, 0, str, -1, NULL, 0, NULL, NULL );
+        DWORD len = WideCharToMultiByte( CP_UTF8, 0, str, -1, ((void*)0), 0, ((void*)0), ((void*)0) );
         if ((ret = HeapAlloc(GetProcessHeap(), 0, len )))
-            WideCharToMultiByte( CP_UTF8, 0, str, -1, ret, len, NULL, NULL );
+            WideCharToMultiByte( CP_UTF8, 0, str, -1, ret, len, ((void*)0), ((void*)0) );
     }
     return ret;
 }

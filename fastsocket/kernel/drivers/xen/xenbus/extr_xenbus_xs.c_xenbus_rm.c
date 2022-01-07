@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct xenbus_transaction {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ IS_ERR (char*) ; 
- int PTR_ERR (char*) ; 
- int /*<<< orphan*/  XS_RM ; 
- char* join (char const*,char const*) ; 
- int /*<<< orphan*/  kfree (char*) ; 
- int xs_error (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xs_single (struct xenbus_transaction,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ *) ; 
+
+ scalar_t__ IS_ERR (char*) ;
+ int PTR_ERR (char*) ;
+ int XS_RM ;
+ char* join (char const*,char const*) ;
+ int kfree (char*) ;
+ int xs_error (int ) ;
+ int xs_single (struct xenbus_transaction,int ,char*,int *) ;
 
 int xenbus_rm(struct xenbus_transaction t, const char *dir, const char *node)
 {
-	char *path;
-	int ret;
+ char *path;
+ int ret;
 
-	path = join(dir, node);
-	if (IS_ERR(path))
-		return PTR_ERR(path);
+ path = join(dir, node);
+ if (IS_ERR(path))
+  return PTR_ERR(path);
 
-	ret = xs_error(xs_single(t, XS_RM, path, NULL));
-	kfree(path);
-	return ret;
+ ret = xs_error(xs_single(t, XS_RM, path, ((void*)0)));
+ kfree(path);
+ return ret;
 }

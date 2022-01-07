@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct clk {int dummy; } ;
-typedef  enum msm_camio_clk_type { ____Placeholder_msm_camio_clk_type } msm_camio_clk_type ;
+typedef enum msm_camio_clk_type { ____Placeholder_msm_camio_clk_type } msm_camio_clk_type ;
 
-/* Variables and functions */
-#define  CAMIO_MDC_CLK 131 
-#define  CAMIO_VFE_AXI_CLK 130 
-#define  CAMIO_VFE_CLK 129 
-#define  CAMIO_VFE_MDC_CLK 128 
- int /*<<< orphan*/  IS_ERR (struct clk*) ; 
- struct clk* camio_mdc_clk ; 
- struct clk* camio_vfe_axi_clk ; 
- struct clk* camio_vfe_clk ; 
- struct clk* camio_vfe_mdc_clk ; 
- int /*<<< orphan*/  clk_enable (struct clk*) ; 
- struct clk* clk_get (int /*<<< orphan*/ *,char*) ; 
+
+
+
+
+
+ int IS_ERR (struct clk*) ;
+ struct clk* camio_mdc_clk ;
+ struct clk* camio_vfe_axi_clk ;
+ struct clk* camio_vfe_clk ;
+ struct clk* camio_vfe_mdc_clk ;
+ int clk_enable (struct clk*) ;
+ struct clk* clk_get (int *,char*) ;
 
 int msm_camio_clk_enable(enum msm_camio_clk_type clktype)
 {
-	int rc = 0;
-	struct clk *clk = NULL;
+ int rc = 0;
+ struct clk *clk = ((void*)0);
 
-	switch (clktype) {
-	case CAMIO_VFE_MDC_CLK:
-		camio_vfe_mdc_clk =
-		clk = clk_get(NULL, "vfe_mdc_clk");
-		break;
+ switch (clktype) {
+ case 128:
+  camio_vfe_mdc_clk =
+  clk = clk_get(((void*)0), "vfe_mdc_clk");
+  break;
 
-	case CAMIO_MDC_CLK:
-		camio_mdc_clk =
-		clk = clk_get(NULL, "mdc_clk");
-		break;
+ case 131:
+  camio_mdc_clk =
+  clk = clk_get(((void*)0), "mdc_clk");
+  break;
 
-	case CAMIO_VFE_CLK:
-		camio_vfe_clk =
-		clk = clk_get(NULL, "vfe_clk");
-		break;
+ case 129:
+  camio_vfe_clk =
+  clk = clk_get(((void*)0), "vfe_clk");
+  break;
 
-	case CAMIO_VFE_AXI_CLK:
-		camio_vfe_axi_clk =
-		clk = clk_get(NULL, "vfe_axi_clk");
-		break;
+ case 130:
+  camio_vfe_axi_clk =
+  clk = clk_get(((void*)0), "vfe_axi_clk");
+  break;
 
-	default:
-		break;
-	}
+ default:
+  break;
+ }
 
-	if (!IS_ERR(clk))
-		clk_enable(clk);
-	else
-		rc = -1;
+ if (!IS_ERR(clk))
+  clk_enable(clk);
+ else
+  rc = -1;
 
-	return rc;
+ return rc;
 }

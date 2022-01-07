@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509 ;
-typedef  int /*<<< orphan*/  BIO ;
-typedef  int /*<<< orphan*/  ASN1_OCTET_STRING ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASN1_OCTET_STRING_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ASN1_OCTET_STRING_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ASN1_OCTET_STRING_new () ; 
- int /*<<< orphan*/  ASN1_OCTET_STRING_set (int /*<<< orphan*/ *,unsigned char*,int) ; 
- int /*<<< orphan*/  BIO_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * BIO_new_file (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/ * PEM_read_bio_X509 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TEST_int_eq (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST_ptr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_get0_sm2_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_set0_sm2_id (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  bad_f ; 
- scalar_t__ strlen (char*) ; 
+
+
+
+typedef int X509 ;
+typedef int BIO ;
+typedef int ASN1_OCTET_STRING ;
+
+
+ int ASN1_OCTET_STRING_cmp (int *,int *) ;
+ int ASN1_OCTET_STRING_free (int *) ;
+ int * ASN1_OCTET_STRING_new () ;
+ int ASN1_OCTET_STRING_set (int *,unsigned char*,int) ;
+ int BIO_free (int *) ;
+ int * BIO_new_file (int ,char*) ;
+ int * PEM_read_bio_X509 (int *,int *,int ,int *) ;
+ int TEST_int_eq (int ,int ) ;
+ int TEST_ptr (int *) ;
+ int X509_free (int *) ;
+ int * X509_get0_sm2_id (int *) ;
+ int X509_set0_sm2_id (int *,int *) ;
+ int bad_f ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static int test_sm2_id(void)
 {
-    /* we only need an X509 structure, no matter if it's a real SM2 cert */
-    X509 *x = NULL;
-    BIO *bio = NULL;
+
+    X509 *x = ((void*)0);
+    BIO *bio = ((void*)0);
     int ret = 0;
-    ASN1_OCTET_STRING *v = NULL, *v2 = NULL;
+    ASN1_OCTET_STRING *v = ((void*)0), *v2 = ((void*)0);
     char *sm2id = "this is an ID";
 
     bio = BIO_new_file(bad_f, "r");
-    if (bio == NULL)
+    if (bio == ((void*)0))
         goto err;
 
-    x = PEM_read_bio_X509(bio, NULL, 0, NULL);
-    if (x == NULL)
+    x = PEM_read_bio_X509(bio, ((void*)0), 0, ((void*)0));
+    if (x == ((void*)0))
         goto err;
 
     v = ASN1_OCTET_STRING_new();
-    if (v == NULL)
+    if (v == ((void*)0))
         goto err;
 
     if (!ASN1_OCTET_STRING_set(v, (unsigned char *)sm2id, (int)strlen(sm2id))) {

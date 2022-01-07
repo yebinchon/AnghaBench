@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int fourcc; } ;
 struct TYPE_5__ {TYPE_1__ base; } ;
-typedef  TYPE_2__ VCHIQ_SERVICE_T ;
-typedef  int /*<<< orphan*/  VCHIQ_SERVICE_HANDLE_T ;
+typedef TYPE_2__ VCHIQ_SERVICE_T ;
+typedef int VCHIQ_SERVICE_HANDLE_T ;
 
-/* Variables and functions */
- TYPE_2__* find_service_by_handle (int /*<<< orphan*/ ) ; 
+
+ TYPE_2__* find_service_by_handle (int ) ;
 
 int
 vchiq_get_service_fourcc(VCHIQ_SERVICE_HANDLE_T handle)

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mbedtls_blowfish_context ;
 
-/* Variables and functions */
- size_t MBEDTLS_BLOWFISH_BLOCKSIZE ; 
- int /*<<< orphan*/  MBEDTLS_BLOWFISH_ENCRYPT ; 
- int /*<<< orphan*/  mbedtls_blowfish_crypt_ecb (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned char*,unsigned char*) ; 
+
+
+
+typedef int mbedtls_blowfish_context ;
+
+
+ size_t MBEDTLS_BLOWFISH_BLOCKSIZE ;
+ int MBEDTLS_BLOWFISH_ENCRYPT ;
+ int mbedtls_blowfish_crypt_ecb (int *,int ,unsigned char*,unsigned char*) ;
 
 int mbedtls_blowfish_crypt_ctr( mbedtls_blowfish_context *ctx,
                        size_t length,

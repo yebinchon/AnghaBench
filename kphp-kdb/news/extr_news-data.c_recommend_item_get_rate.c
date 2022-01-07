@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  action; int /*<<< orphan*/  type; } ;
-typedef  TYPE_1__ recommend_item_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  get_recommend_rate (int /*<<< orphan*/ ,int /*<<< orphan*/ ,double*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int action; int type; } ;
+typedef TYPE_1__ recommend_item_t ;
+
+
+ int get_recommend_rate (int ,int ,double*) ;
 
 __attribute__((used)) static inline double recommend_item_get_rate (recommend_item_t *p) {
   double rate;

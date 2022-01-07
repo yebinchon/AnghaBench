@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rdma_restrack_root {int /*<<< orphan*/  xa; } ;
-struct rdma_restrack_entry {int valid; size_t type; int /*<<< orphan*/ * task; int /*<<< orphan*/  comp; int /*<<< orphan*/  id; } ;
+
+
+
+
+struct rdma_restrack_root {int xa; } ;
+struct rdma_restrack_entry {int valid; size_t type; int * task; int comp; int id; } ;
 struct ib_device {struct rdma_restrack_root* res; } ;
 
-/* Variables and functions */
- scalar_t__ WARN_ON (int) ; 
- int /*<<< orphan*/  put_task_struct (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rdma_restrack_put (struct rdma_restrack_entry*) ; 
- struct ib_device* res_to_dev (struct rdma_restrack_entry*) ; 
- int /*<<< orphan*/  wait_for_completion (int /*<<< orphan*/ *) ; 
- struct rdma_restrack_entry* xa_erase (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ WARN_ON (int) ;
+ int put_task_struct (int *) ;
+ int rdma_restrack_put (struct rdma_restrack_entry*) ;
+ struct ib_device* res_to_dev (struct rdma_restrack_entry*) ;
+ int wait_for_completion (int *) ;
+ struct rdma_restrack_entry* xa_erase (int *,int ) ;
 
 void rdma_restrack_del(struct rdma_restrack_entry *res)
 {
-	struct rdma_restrack_entry *old;
-	struct rdma_restrack_root *rt;
-	struct ib_device *dev;
+ struct rdma_restrack_entry *old;
+ struct rdma_restrack_root *rt;
+ struct ib_device *dev;
 
-	if (!res->valid)
-		goto out;
+ if (!res->valid)
+  goto out;
 
-	dev = res_to_dev(res);
-	if (WARN_ON(!dev))
-		return;
+ dev = res_to_dev(res);
+ if (WARN_ON(!dev))
+  return;
 
-	rt = &dev->res[res->type];
+ rt = &dev->res[res->type];
 
-	old = xa_erase(&rt->xa, res->id);
-	WARN_ON(old != res);
-	res->valid = false;
+ old = xa_erase(&rt->xa, res->id);
+ WARN_ON(old != res);
+ res->valid = 0;
 
-	rdma_restrack_put(res);
-	wait_for_completion(&res->comp);
+ rdma_restrack_put(res);
+ wait_for_completion(&res->comp);
 
 out:
-	if (res->task) {
-		put_task_struct(res->task);
-		res->task = NULL;
-	}
+ if (res->task) {
+  put_task_struct(res->task);
+  res->task = ((void*)0);
+ }
 }

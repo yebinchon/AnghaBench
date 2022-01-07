@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct rpc_server_collection {int num; struct rpc_server** servers; } ;
-struct rpc_server {scalar_t__ status; int /*<<< orphan*/  sfd; } ;
-struct TYPE_6__ {int events; int revents; int /*<<< orphan*/  fd; } ;
+struct rpc_server {scalar_t__ status; int sfd; } ;
+struct TYPE_6__ {int events; int revents; int fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ADD_CNT (int (*) (TYPE_1__*,int,int)) ; 
- int /*<<< orphan*/  END_TIMER (int (*) (TYPE_1__*,int,int)) ; 
- int POLLERR ; 
- int POLLHUP ; 
- int POLLNVAL ; 
- int POLLOUT ; 
- int POLLRDHUP ; 
- int /*<<< orphan*/  START_TIMER (int (*) (TYPE_1__*,int,int)) ; 
- int /*<<< orphan*/  errno ; 
- int get_ms_timeout (double) ; 
- int lrand48 () ; 
- int poll (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  rpc_global_seterror (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  rpc_server_failure (struct rpc_server*) ; 
- scalar_t__ rpc_status_connected ; 
- scalar_t__ rpc_work (struct rpc_server*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- TYPE_1__* server_fds ; 
- size_t* server_fds_tmp ; 
- int /*<<< orphan*/  strerror (int /*<<< orphan*/ ) ; 
 
-__attribute__((used)) static struct rpc_server *choose_writable_server (struct rpc_server_collection *servers, double timeout) { /* {{{ */
+ int ADD_CNT (int (*) (TYPE_1__*,int,int)) ;
+ int END_TIMER (int (*) (TYPE_1__*,int,int)) ;
+ int POLLERR ;
+ int POLLHUP ;
+ int POLLNVAL ;
+ int POLLOUT ;
+ int POLLRDHUP ;
+ int START_TIMER (int (*) (TYPE_1__*,int,int)) ;
+ int errno ;
+ int get_ms_timeout (double) ;
+ int lrand48 () ;
+ int poll (TYPE_1__*,int,int) ;
+ int rpc_global_seterror (int ,int ) ;
+ int rpc_server_failure (struct rpc_server*) ;
+ scalar_t__ rpc_status_connected ;
+ scalar_t__ rpc_work (struct rpc_server*,int ,int ) ;
+ TYPE_1__* server_fds ;
+ size_t* server_fds_tmp ;
+ int strerror (int ) ;
+
+__attribute__((used)) static struct rpc_server *choose_writable_server (struct rpc_server_collection *servers, double timeout) {
   int i;
-  int t = 0;   
+  int t = 0;
   int first = 1;
   while (t || first) {
     int cc = 0;
@@ -69,7 +69,7 @@ __attribute__((used)) static struct rpc_server *choose_writable_server (struct r
     for (i = 0; i < cc; i++) {
       if (server_fds[i].revents & (POLLERR | POLLHUP | POLLNVAL | POLLRDHUP)) {
         if (server_fds[i].revents & POLLRDHUP) {
-          while (rpc_work (servers->servers[server_fds_tmp[i]], 0, 0) > 0); 
+          while (rpc_work (servers->servers[server_fds_tmp[i]], 0, 0) > 0);
         }
         rpc_server_failure (servers->servers[server_fds_tmp[i]]);
       } else if (server_fds[i].revents & POLLOUT) {

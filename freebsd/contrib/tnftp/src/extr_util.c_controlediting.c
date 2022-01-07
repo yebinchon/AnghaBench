@@ -1,84 +1,84 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HistEvent ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EL_ADDFN ; 
- int /*<<< orphan*/  EL_BIND ; 
- int /*<<< orphan*/  EL_EDITMODE ; 
- int /*<<< orphan*/  EL_EDITOR ; 
- int /*<<< orphan*/  EL_HIST ; 
- int /*<<< orphan*/  EL_PROMPT ; 
- int /*<<< orphan*/  EL_RPROMPT ; 
- int /*<<< orphan*/  EL_SIGNAL ; 
- int /*<<< orphan*/  H_SETSIZE ; 
- int /*<<< orphan*/  complete ; 
- scalar_t__ editing ; 
- int /*<<< orphan*/ * el ; 
- int /*<<< orphan*/  el_end (int /*<<< orphan*/ *) ; 
- int el_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/ * el_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  el_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  el_source (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  getprogname () ; 
- int /*<<< orphan*/ * hist ; 
- int /*<<< orphan*/  history (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  history_end (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * history_init () ; 
- int prompt ; 
- int rprompt ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  ttyout ; 
+
+
+
+typedef int HistEvent ;
+
+
+ int EL_ADDFN ;
+ int EL_BIND ;
+ int EL_EDITMODE ;
+ int EL_EDITOR ;
+ int EL_HIST ;
+ int EL_PROMPT ;
+ int EL_RPROMPT ;
+ int EL_SIGNAL ;
+ int H_SETSIZE ;
+ int complete ;
+ scalar_t__ editing ;
+ int * el ;
+ int el_end (int *) ;
+ int el_get (int *,int ,int*) ;
+ int * el_init (int ,int ,int ,int ) ;
+ int el_set (int *,int ,...) ;
+ int el_source (int *,int *) ;
+ int getprogname () ;
+ int * hist ;
+ int history (int *,int *,int ,int) ;
+ int history_end (int *) ;
+ int * history_init () ;
+ int prompt ;
+ int rprompt ;
+ int stderr ;
+ int stdin ;
+ int ttyout ;
 
 void
 controlediting(void)
 {
-	if (editing && el == NULL && hist == NULL) {
-		HistEvent ev;
-		int editmode;
+ if (editing && el == ((void*)0) && hist == ((void*)0)) {
+  HistEvent ev;
+  int editmode;
 
-		el = el_init(getprogname(), stdin, ttyout, stderr);
-		/* init editline */
-		hist = history_init();		/* init the builtin history */
-		history(hist, &ev, H_SETSIZE, 100);/* remember 100 events */
-		el_set(el, EL_HIST, history, hist);	/* use history */
+  el = el_init(getprogname(), stdin, ttyout, stderr);
 
-		el_set(el, EL_EDITOR, "emacs");	/* default editor is emacs */
-		el_set(el, EL_PROMPT, prompt);	/* set the prompt functions */
-		el_set(el, EL_RPROMPT, rprompt);
+  hist = history_init();
+  history(hist, &ev, H_SETSIZE, 100);
+  el_set(el, EL_HIST, history, hist);
 
-		/* add local file completion, bind to TAB */
-		el_set(el, EL_ADDFN, "ftp-complete",
-		    "Context sensitive argument completion",
-		    complete);
-		el_set(el, EL_BIND, "^I", "ftp-complete", NULL);
-		el_source(el, NULL);	/* read ~/.editrc */
-		if ((el_get(el, EL_EDITMODE, &editmode) != -1) && editmode == 0)
-			editing = 0;	/* the user doesn't want editing,
-					 * so disable, and let statement
-					 * below cleanup */
-		else
-			el_set(el, EL_SIGNAL, 1);
-	}
-	if (!editing) {
-		if (hist) {
-			history_end(hist);
-			hist = NULL;
-		}
-		if (el) {
-			el_end(el);
-			el = NULL;
-		}
-	}
+  el_set(el, EL_EDITOR, "emacs");
+  el_set(el, EL_PROMPT, prompt);
+  el_set(el, EL_RPROMPT, rprompt);
+
+
+  el_set(el, EL_ADDFN, "ftp-complete",
+      "Context sensitive argument completion",
+      complete);
+  el_set(el, EL_BIND, "^I", "ftp-complete", ((void*)0));
+  el_source(el, ((void*)0));
+  if ((el_get(el, EL_EDITMODE, &editmode) != -1) && editmode == 0)
+   editing = 0;
+
+
+  else
+   el_set(el, EL_SIGNAL, 1);
+ }
+ if (!editing) {
+  if (hist) {
+   history_end(hist);
+   hist = ((void*)0);
+  }
+  if (el) {
+   el_end(el);
+   el = ((void*)0);
+  }
+ }
 }

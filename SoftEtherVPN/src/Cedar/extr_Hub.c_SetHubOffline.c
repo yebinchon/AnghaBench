@@ -1,110 +1,110 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_14__   TYPE_4__ ;
-typedef  struct TYPE_13__   TYPE_3__ ;
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-struct TYPE_14__ {scalar_t__ Type; int BeingOffline; int Offline; TYPE_2__* Cedar; int /*<<< orphan*/  lock_online; int /*<<< orphan*/  Name; int /*<<< orphan*/ * SecureNAT; scalar_t__ Halt; } ;
-struct TYPE_13__ {int /*<<< orphan*/ * Bridge; int /*<<< orphan*/  HubName; } ;
-struct TYPE_12__ {TYPE_1__* Server; int /*<<< orphan*/  LocalBridgeList; } ;
+
+
+typedef struct TYPE_14__ TYPE_4__ ;
+typedef struct TYPE_13__ TYPE_3__ ;
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT ;
+struct TYPE_14__ {scalar_t__ Type; int BeingOffline; int Offline; TYPE_2__* Cedar; int lock_online; int Name; int * SecureNAT; scalar_t__ Halt; } ;
+struct TYPE_13__ {int * Bridge; int HubName; } ;
+struct TYPE_12__ {TYPE_1__* Server; int LocalBridgeList; } ;
 struct TYPE_11__ {scalar_t__ ServerType; } ;
-typedef  TYPE_3__ LOCALBRIDGE ;
-typedef  TYPE_4__ HUB ;
+typedef TYPE_3__ LOCALBRIDGE ;
+typedef TYPE_4__ HUB ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BrFreeBridge (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  HLog (TYPE_4__*,char*) ; 
- scalar_t__ HUB_TYPE_FARM_DYNAMIC ; 
- TYPE_3__* LIST_DATA (int /*<<< orphan*/ ,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Lock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- scalar_t__ SERVER_TYPE_FARM_CONTROLLER ; 
- int /*<<< orphan*/  SiHubOfflineProc (TYPE_4__*) ; 
- int /*<<< orphan*/  SnFreeSecureNAT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  StopAllLink (TYPE_4__*) ; 
- int /*<<< orphan*/  StopAllSession (TYPE_4__*) ; 
- scalar_t__ StrCmpi (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Unlock (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
+
+ int BrFreeBridge (int *) ;
+ int HLog (TYPE_4__*,char*) ;
+ scalar_t__ HUB_TYPE_FARM_DYNAMIC ;
+ TYPE_3__* LIST_DATA (int ,scalar_t__) ;
+ scalar_t__ LIST_NUM (int ) ;
+ int Lock (int ) ;
+ int LockList (int ) ;
+ scalar_t__ SERVER_TYPE_FARM_CONTROLLER ;
+ int SiHubOfflineProc (TYPE_4__*) ;
+ int SnFreeSecureNAT (int *) ;
+ int StopAllLink (TYPE_4__*) ;
+ int StopAllSession (TYPE_4__*) ;
+ scalar_t__ StrCmpi (int ,int ) ;
+ int Unlock (int ) ;
+ int UnlockList (int ) ;
 
 void SetHubOffline(HUB *h)
 {
-	UINT i;
-	bool for_cluster = false;
-	// Validate arguments
-	if (h == NULL)
-	{
-		return;
-	}
+ UINT i;
+ bool for_cluster = 0;
 
-	if (h->Cedar->Server != NULL && h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
-	{
-		if (h->Type == HUB_TYPE_FARM_DYNAMIC)
-		{
-			for_cluster = true;
-		}
-	}
+ if (h == ((void*)0))
+ {
+  return;
+ }
 
-	h->BeingOffline = true;
+ if (h->Cedar->Server != ((void*)0) && h->Cedar->Server->ServerType == SERVER_TYPE_FARM_CONTROLLER)
+ {
+  if (h->Type == HUB_TYPE_FARM_DYNAMIC)
+  {
+   for_cluster = 1;
+  }
+ }
 
-	Lock(h->lock_online);
-	{
-		if (h->Offline || h->Halt)
-		{
-			Unlock(h->lock_online);
-			h->BeingOffline = false;
-			return;
-		}
+ h->BeingOffline = 1;
 
-		HLog(h, "LH_OFFLINE");
+ Lock(h->lock_online);
+ {
+  if (h->Offline || h->Halt)
+  {
+   Unlock(h->lock_online);
+   h->BeingOffline = 0;
+   return;
+  }
 
-		// Stop all links
-		StopAllLink(h);
+  HLog(h, "LH_OFFLINE");
 
-		// Stop the SecureNAT
-		SnFreeSecureNAT(h->SecureNAT);
-		h->SecureNAT = NULL;
 
-		// Stop all the local bridges that is associated with this HUB
-		LockList(h->Cedar->LocalBridgeList);
-		{
-			for (i = 0;i < LIST_NUM(h->Cedar->LocalBridgeList);i++)
-			{
-				LOCALBRIDGE *br = LIST_DATA(h->Cedar->LocalBridgeList, i);
+  StopAllLink(h);
 
-				if (StrCmpi(br->HubName, h->Name) == 0)
-				{
-					BrFreeBridge(br->Bridge);
-					br->Bridge = NULL;
-				}
-			}
-		}
-		UnlockList(h->Cedar->LocalBridgeList);
 
-		// Offline
-		h->Offline = true;
+  SnFreeSecureNAT(h->SecureNAT);
+  h->SecureNAT = ((void*)0);
 
-		// Disconnect all sessions
-		StopAllSession(h);
-	}
-	Unlock(h->lock_online);
 
-	h->BeingOffline = false;
+  LockList(h->Cedar->LocalBridgeList);
+  {
+   for (i = 0;i < LIST_NUM(h->Cedar->LocalBridgeList);i++)
+   {
+    LOCALBRIDGE *br = LIST_DATA(h->Cedar->LocalBridgeList, i);
 
-	if (h->Cedar->Server != NULL)
-	{
-		SiHubOfflineProc(h);
-	}
+    if (StrCmpi(br->HubName, h->Name) == 0)
+    {
+     BrFreeBridge(br->Bridge);
+     br->Bridge = ((void*)0);
+    }
+   }
+  }
+  UnlockList(h->Cedar->LocalBridgeList);
+
+
+  h->Offline = 1;
+
+
+  StopAllSession(h);
+ }
+ Unlock(h->lock_online);
+
+ h->BeingOffline = 0;
+
+ if (h->Cedar->Server != ((void*)0))
+ {
+  SiHubOfflineProc(h);
+ }
 }

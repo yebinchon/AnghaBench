@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct radix_node_head {int /*<<< orphan*/  rh; scalar_t__ (* rnh_deladdr ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ;} ;
-struct radix_node {int /*<<< orphan*/  rn_mask; int /*<<< orphan*/  rn_key; } ;
+
+
+
+
+struct radix_node_head {int rh; scalar_t__ (* rnh_deladdr ) (int ,int ,int *) ;} ;
+struct radix_node {int rn_mask; int rn_key; } ;
 struct radix_addr_entry {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_IPFW_TBL ; 
- int /*<<< orphan*/  free (struct radix_addr_entry*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int M_IPFW_TBL ;
+ int free (struct radix_addr_entry*,int ) ;
+ scalar_t__ stub1 (int ,int ,int *) ;
 
 __attribute__((used)) static int
 flush_radix_entry(struct radix_node *rn, void *arg)
 {
-	struct radix_node_head * const rnh = arg;
-	struct radix_addr_entry *ent;
+ struct radix_node_head * const rnh = arg;
+ struct radix_addr_entry *ent;
 
-	ent = (struct radix_addr_entry *)
-	    rnh->rnh_deladdr(rn->rn_key, rn->rn_mask, &rnh->rh);
-	if (ent != NULL)
-		free(ent, M_IPFW_TBL);
-	return (0);
+ ent = (struct radix_addr_entry *)
+     rnh->rnh_deladdr(rn->rn_key, rn->rn_mask, &rnh->rh);
+ if (ent != ((void*)0))
+  free(ent, M_IPFW_TBL);
+ return (0);
 }

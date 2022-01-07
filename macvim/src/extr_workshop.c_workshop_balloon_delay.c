@@ -1,36 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int BUFSIZ ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WSDLEVEL (int) ; 
- int WS_TRACE ; 
- int WS_TRACE_VERBOSE ; 
- int /*<<< orphan*/  coloncmd (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  wstrace (char*,int) ; 
+ int BUFSIZ ;
+ int TRUE ;
+ scalar_t__ WSDLEVEL (int) ;
+ int WS_TRACE ;
+ int WS_TRACE_VERBOSE ;
+ int coloncmd (char*,int ) ;
+ int sprintf (char*,char*,int) ;
+ int wstrace (char*,int) ;
 
 void
 workshop_balloon_delay(
-	int	 delay)
+ int delay)
 {
-    char	 cbuf[BUFSIZ];		/* command buffer */
+    char cbuf[BUFSIZ];
 
-#ifdef WSDEBUG_TRACE
-    if (WSDLEVEL(WS_TRACE_VERBOSE | WS_TRACE))
-	wstrace("workshop_balloon_delay(%d)\n", delay);
-#endif
+
+
+
+
 
     sprintf(cbuf, "set bdlay=%d", delay);
     coloncmd(cbuf, TRUE);

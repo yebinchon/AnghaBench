@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* first; } ;
-typedef  TYPE_1__ place_t ;
+typedef TYPE_1__ place_t ;
 struct TYPE_5__ {int item; int date; struct TYPE_5__* next; } ;
-typedef  TYPE_2__ comment_t ;
+typedef TYPE_2__ comment_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COMM_MODE ; 
- int /*<<< orphan*/  check_obj (int,int,int) ; 
- TYPE_1__* get_place_f (int,int,int,int /*<<< orphan*/ ) ; 
- scalar_t__ min_logevent_time ; 
- scalar_t__ now ; 
- int /*<<< orphan*/  valid_type (int) ; 
+
+ int COMM_MODE ;
+ int check_obj (int,int,int) ;
+ TYPE_1__* get_place_f (int,int,int,int ) ;
+ scalar_t__ min_logevent_time ;
+ scalar_t__ now ;
+ int valid_type (int) ;
 
 __attribute__((used)) static int show_hide_comment (int type, int owner, int place, int item, int shown) {
   if (now < min_logevent_time) {

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  MSG ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CHECK_CALLED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DispatchMessageA (int /*<<< orphan*/ *) ; 
- int EXPECT_SETTITLE ; 
- int EXPECT_UPDATEUI ; 
- int /*<<< orphan*/  Exec_SETTITLE ; 
- int /*<<< orphan*/  Exec_UPDATECOMMANDS ; 
- scalar_t__ GetMessageA (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SET_EXPECT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TranslateMessage (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UpdateUI ; 
- int /*<<< orphan*/  called_Exec_SETTITLE ; 
- int /*<<< orphan*/  called_UpdateUI ; 
- int /*<<< orphan*/  doc_hwnd ; 
+
+
+
+typedef int MSG ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int CHECK_CALLED (int ) ;
+ int DispatchMessageA (int *) ;
+ int EXPECT_SETTITLE ;
+ int EXPECT_UPDATEUI ;
+ int Exec_SETTITLE ;
+ int Exec_UPDATECOMMANDS ;
+ scalar_t__ GetMessageA (int *,int ,int ,int ) ;
+ int SET_EXPECT (int ) ;
+ int TranslateMessage (int *) ;
+ int UpdateUI ;
+ int called_Exec_SETTITLE ;
+ int called_UpdateUI ;
+ int doc_hwnd ;
 
 __attribute__((used)) static void test_timer(DWORD flags)
 {

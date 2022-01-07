@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
-typedef  int /*<<< orphan*/  TestDb ;
-struct TYPE_7__ {int member_1; int member_2; int member_3; int member_4; int /*<<< orphan*/  member_0; } ;
-struct TYPE_6__ {int /*<<< orphan*/  hdr2; int /*<<< orphan*/  hdr1; } ;
-typedef  TYPE_1__ ShmHeader ;
-typedef  TYPE_2__ DatasourceDefn ;
-typedef  int /*<<< orphan*/  Datasource ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LSM_CONFIG_AUTOFLUSH ; 
- int LSM_OK ; 
- int TEST_CKSUM_BYTES ; 
- int /*<<< orphan*/  TEST_DATASOURCE_RANDOM ; 
- TYPE_1__* getShmHeader (char const*) ; 
- int /*<<< orphan*/  lsm_begin (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lsm_commit (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lsm_config (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int lsm_work (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * tdb_lsm (int /*<<< orphan*/ *) ; 
- int tdb_lsm_open (char*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testCksumDatabase (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  testClose (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testCompareStr (char const*,char*,int*) ; 
- int /*<<< orphan*/  testCopyLsmdb (char const*,char const*) ; 
- int /*<<< orphan*/  testDatasourceFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * testDatasourceNew (TYPE_2__ const*) ; 
- int /*<<< orphan*/  testDeleteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  testDeleteLsmdb (char const*) ; 
- int /*<<< orphan*/  testFree (TYPE_1__*) ; 
- int /*<<< orphan*/  testWriteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int*) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int lsm_db ;
+typedef int TestDb ;
+struct TYPE_7__ {int member_1; int member_2; int member_3; int member_4; int member_0; } ;
+struct TYPE_6__ {int hdr2; int hdr1; } ;
+typedef TYPE_1__ ShmHeader ;
+typedef TYPE_2__ DatasourceDefn ;
+typedef int Datasource ;
+
+
+ int LSM_CONFIG_AUTOFLUSH ;
+ int LSM_OK ;
+ int TEST_CKSUM_BYTES ;
+ int TEST_DATASOURCE_RANDOM ;
+ TYPE_1__* getShmHeader (char const*) ;
+ int lsm_begin (int *,int) ;
+ int lsm_commit (int *,int ) ;
+ int lsm_config (int *,int ,int*) ;
+ int lsm_work (int *,int ,int ,int ) ;
+ scalar_t__ memcmp (int *,int *,int) ;
+ int * tdb_lsm (int *) ;
+ int tdb_lsm_open (char*,char const*,int ,int **) ;
+ int testCksumDatabase (int *,char*) ;
+ int testClose (int **) ;
+ int testCompareStr (char const*,char*,int*) ;
+ int testCopyLsmdb (char const*,char const*) ;
+ int testDatasourceFree (int *) ;
+ int * testDatasourceNew (TYPE_2__ const*) ;
+ int testDeleteDatasourceRange (int *,int *,int,int,int*) ;
+ int testDeleteLsmdb (char const*) ;
+ int testFree (TYPE_1__*) ;
+ int testWriteDatasourceRange (int *,int *,int,int,int*) ;
 
 __attribute__((used)) static void doLiveRecovery(const char *zDb, const char *zCksum, int *pRc){
   if( *pRc==LSM_OK ){
@@ -66,7 +66,7 @@ __attribute__((used)) static void doLiveRecovery(const char *zDb, const char *zC
       testWriteDatasourceRange(pDb, pData, 1, 10, &rc);
       testDeleteDatasourceRange(pDb, pData, 1, 10, &rc);
 
-      /* Test that the two tree-headers are now consistent. */
+
       pHdr = getShmHeader(zCopy);
       if( rc==0 && memcmp(&pHdr->hdr1, &pHdr->hdr2, sizeof(pHdr->hdr1)) ){
         rc = 1;

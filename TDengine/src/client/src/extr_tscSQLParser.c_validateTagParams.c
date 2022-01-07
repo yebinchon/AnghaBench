@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_7__ {int nField; TYPE_1__* p; } ;
-typedef  TYPE_2__ tFieldList ;
-typedef  size_t int32_t ;
-struct TYPE_6__ {size_t bytes; scalar_t__ type; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  SSqlCmd ;
+typedef TYPE_2__ tFieldList ;
+typedef size_t int32_t ;
+struct TYPE_6__ {size_t bytes; scalar_t__ type; int name; } ;
+typedef int SSqlCmd ;
 
-/* Variables and functions */
- scalar_t__ TSDB_CODE_SUCCESS ; 
- scalar_t__ TSDB_DATA_TYPE_BINARY ; 
- scalar_t__ TSDB_DATA_TYPE_BOOL ; 
- scalar_t__ TSDB_DATA_TYPE_NCHAR ; 
- scalar_t__ TSDB_DATA_TYPE_TIMESTAMP ; 
- int TSDB_MAX_TAGS ; 
- size_t TSDB_MAX_TAGS_LEN ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- int has (TYPE_2__*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setErrMsg (int /*<<< orphan*/ *,char const*) ; 
- scalar_t__ validateColumnName (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ TSDB_CODE_SUCCESS ;
+ scalar_t__ TSDB_DATA_TYPE_BINARY ;
+ scalar_t__ TSDB_DATA_TYPE_BOOL ;
+ scalar_t__ TSDB_DATA_TYPE_NCHAR ;
+ scalar_t__ TSDB_DATA_TYPE_TIMESTAMP ;
+ int TSDB_MAX_TAGS ;
+ size_t TSDB_MAX_TAGS_LEN ;
+ int assert (int ) ;
+ int has (TYPE_2__*,size_t,int ) ;
+ int setErrMsg (int *,char const*) ;
+ scalar_t__ validateColumnName (int ) ;
 
 __attribute__((used)) static bool validateTagParams(tFieldList* pTagsList, tFieldList* pFieldList, SSqlCmd* pCmd) {
-  assert(pTagsList != NULL);
+  assert(pTagsList != ((void*)0));
 
   const char* msg1 = "invalid number of tag columns";
   const char* msg2 = "tag length too long";
@@ -42,10 +42,10 @@ __attribute__((used)) static bool validateTagParams(tFieldList* pTagsList, tFiel
   const char* msg6 = "invalid tag name";
   const char* msg7 = "invalid binary/nchar tag length";
 
-  // number of fields at least 1
+
   if (pTagsList->nField < 1 || pTagsList->nField > TSDB_MAX_TAGS) {
     setErrMsg(pCmd, msg1);
-    return false;
+    return 0;
   }
 
   int32_t nLen = 0;
@@ -53,48 +53,48 @@ __attribute__((used)) static bool validateTagParams(tFieldList* pTagsList, tFiel
     nLen += pTagsList->p[i].bytes;
   }
 
-  // max tag row length must be less than TSDB_MAX_TAGS_LEN
+
   if (nLen > TSDB_MAX_TAGS_LEN) {
     setErrMsg(pCmd, msg2);
-    return false;
+    return 0;
   }
 
-  // field name must be unique
+
   for (int32_t i = 0; i < pTagsList->nField; ++i) {
-    if (has(pFieldList, 0, pTagsList->p[i].name) == true) {
+    if (has(pFieldList, 0, pTagsList->p[i].name) == 1) {
       setErrMsg(pCmd, msg3);
-      return false;
+      return 0;
     }
   }
 
-  /* timestamp in tag is not allowed */
+
   for (int32_t i = 0; i < pTagsList->nField; ++i) {
     if (pTagsList->p[i].type == TSDB_DATA_TYPE_TIMESTAMP) {
       setErrMsg(pCmd, msg4);
-      return false;
+      return 0;
     }
 
     if (pTagsList->p[i].type < TSDB_DATA_TYPE_BOOL || pTagsList->p[i].type > TSDB_DATA_TYPE_NCHAR) {
       setErrMsg(pCmd, msg5);
-      return false;
+      return 0;
     }
 
     if ((pTagsList->p[i].type == TSDB_DATA_TYPE_BINARY && pTagsList->p[i].bytes <= 0) ||
         (pTagsList->p[i].type == TSDB_DATA_TYPE_NCHAR && pTagsList->p[i].bytes <= 0)) {
       setErrMsg(pCmd, msg7);
-      return false;
+      return 0;
     }
 
     if (validateColumnName(pTagsList->p[i].name) != TSDB_CODE_SUCCESS) {
       setErrMsg(pCmd, msg6);
-      return false;
+      return 0;
     }
 
-    if (has(pTagsList, i + 1, pTagsList->p[i].name) == true) {
+    if (has(pTagsList, i + 1, pTagsList->p[i].name) == 1) {
       setErrMsg(pCmd, msg3);
-      return false;
+      return 0;
     }
   }
 
-  return true;
+  return 1;
 }

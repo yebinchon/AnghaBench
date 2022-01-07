@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct grub_file {int /*<<< orphan*/  size; struct grub_fb_data* data; TYPE_1__* device; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct grub_file {int size; struct grub_fb_data* data; TYPE_1__* device; } ;
 struct grub_fb_data {struct fbm_file* ptr; scalar_t__ fb_list; } ;
-struct fbm_file {int size; int /*<<< orphan*/  data_size; int /*<<< orphan*/  name; } ;
-typedef  int /*<<< orphan*/  grub_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  disk; } ;
+struct fbm_file {int size; int data_size; int name; } ;
+typedef int grub_err_t ;
+struct TYPE_2__ {int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_FILE_NOT_FOUND ; 
- int /*<<< orphan*/  GRUB_ERR_NONE ; 
- int /*<<< orphan*/  grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- struct grub_fb_data* grub_fbfs_mount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_strcasecmp (char const*,int /*<<< orphan*/ ) ; 
+
+ int GRUB_ERR_FILE_NOT_FOUND ;
+ int GRUB_ERR_NONE ;
+ int grub_errno ;
+ int grub_error (int ,char*) ;
+ struct grub_fb_data* grub_fbfs_mount (int ) ;
+ int grub_strcasecmp (char const*,int ) ;
 
 __attribute__((used)) static grub_err_t
 grub_fbfs_open (struct grub_file *file, const char *name)
@@ -42,12 +42,12 @@ grub_fbfs_open (struct grub_file *file, const char *name)
   while (p->size)
     {
       if (! grub_strcasecmp (name, p->name))
-	{
-	  file->data = data;
-	  data->ptr = p;
-	  file->size = p->data_size;
-	  return GRUB_ERR_NONE;
-	}
+ {
+   file->data = data;
+   data->ptr = p;
+   file->size = p->data_size;
+   return GRUB_ERR_NONE;
+ }
 
       p = (struct fbm_file *) ((char *) p + p->size + 2);
     }

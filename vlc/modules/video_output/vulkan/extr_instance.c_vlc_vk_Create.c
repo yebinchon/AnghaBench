@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vlc_vk_t {int /*<<< orphan*/  ref_count; int /*<<< orphan*/ * module; struct vout_window_t* window; scalar_t__ surface; int /*<<< orphan*/ * instance; int /*<<< orphan*/ * ctx; } ;
-typedef  struct vlc_vk_t vlc_vk_t ;
-typedef  int /*<<< orphan*/  vlc_object_t ;
+
+
+
+
+struct vlc_vk_t {int ref_count; int * module; struct vout_window_t* window; scalar_t__ surface; int * instance; int * ctx; } ;
+typedef struct vlc_vk_t vlc_vk_t ;
+typedef int vlc_object_t ;
 struct vout_window_t {int dummy; } ;
-typedef  scalar_t__ VkSurfaceKHR ;
+typedef scalar_t__ VkSurfaceKHR ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * module_need (struct vlc_vk_t*,char*,char const*,int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_atomic_rc_init (int /*<<< orphan*/ *) ; 
- struct vlc_vk_t* vlc_object_create (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vlc_object_delete (struct vlc_vk_t*) ; 
+
+ int * module_need (struct vlc_vk_t*,char*,char const*,int) ;
+ scalar_t__ unlikely (int ) ;
+ int vlc_atomic_rc_init (int *) ;
+ struct vlc_vk_t* vlc_object_create (int *,int) ;
+ int vlc_object_delete (struct vlc_vk_t*) ;
 
 vlc_vk_t *vlc_vk_Create(struct vout_window_t *wnd, const char *name)
 {
@@ -29,19 +29,19 @@ vlc_vk_t *vlc_vk_Create(struct vout_window_t *wnd, const char *name)
     struct vlc_vk_t *vk;
 
     vk = vlc_object_create(parent, sizeof (*vk));
-    if (unlikely(vk == NULL))
-        return NULL;
+    if (unlikely(vk == ((void*)0)))
+        return ((void*)0);
 
-    vk->ctx = NULL;
-    vk->instance = NULL;
-    vk->surface = (VkSurfaceKHR) NULL;
+    vk->ctx = ((void*)0);
+    vk->instance = ((void*)0);
+    vk->surface = (VkSurfaceKHR) ((void*)0);
 
     vk->window = wnd;
-    vk->module = module_need(vk, "vulkan", name, true);
-    if (vk->module == NULL)
+    vk->module = module_need(vk, "vulkan", name, 1);
+    if (vk->module == ((void*)0))
     {
         vlc_object_delete(vk);
-        return NULL;
+        return ((void*)0);
     }
     vlc_atomic_rc_init(&vk->ref_count);
 

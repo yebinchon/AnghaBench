@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct sensor_device_attribute {int index; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FANS_MANUAL ; 
- int /*<<< orphan*/  PAGE_SIZE ; 
- int /*<<< orphan*/  applesmc_lock ; 
- int applesmc_read_key (int /*<<< orphan*/ ,int*,int) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
- int snprintf (char*,int /*<<< orphan*/ ,char*,int) ; 
- struct sensor_device_attribute* to_sensor_dev_attr (struct device_attribute*) ; 
+
+ int FANS_MANUAL ;
+ int PAGE_SIZE ;
+ int applesmc_lock ;
+ int applesmc_read_key (int ,int*,int) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
+ int snprintf (char*,int ,char*,int) ;
+ struct sensor_device_attribute* to_sensor_dev_attr (struct device_attribute*) ;
 
 __attribute__((used)) static ssize_t applesmc_show_fan_manual(struct device *dev,
-			struct device_attribute *devattr, char *sysfsbuf)
+   struct device_attribute *devattr, char *sysfsbuf)
 {
-	int ret;
-	u16 manual = 0;
-	u8 buffer[2];
-	struct sensor_device_attribute *attr = to_sensor_dev_attr(devattr);
+ int ret;
+ u16 manual = 0;
+ u8 buffer[2];
+ struct sensor_device_attribute *attr = to_sensor_dev_attr(devattr);
 
-	mutex_lock(&applesmc_lock);
+ mutex_lock(&applesmc_lock);
 
-	ret = applesmc_read_key(FANS_MANUAL, buffer, 2);
-	manual = ((buffer[0] << 8 | buffer[1]) >> attr->index) & 0x01;
+ ret = applesmc_read_key(FANS_MANUAL, buffer, 2);
+ manual = ((buffer[0] << 8 | buffer[1]) >> attr->index) & 0x01;
 
-	mutex_unlock(&applesmc_lock);
-	if (ret)
-		return ret;
-	else
-		return snprintf(sysfsbuf, PAGE_SIZE, "%d\n", manual);
+ mutex_unlock(&applesmc_lock);
+ if (ret)
+  return ret;
+ else
+  return snprintf(sysfsbuf, PAGE_SIZE, "%d\n", manual);
 }

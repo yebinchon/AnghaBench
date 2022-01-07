@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  size; void* group_id; void* user_id; void* filemode; int /*<<< orphan*/  modification_timestamp; int /*<<< orphan*/  type; int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ AVIODirEntry ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AVIO_ENTRY_DIRECTORY ; 
- int /*<<< orphan*/  AVIO_ENTRY_FILE ; 
- int /*<<< orphan*/  AVIO_ENTRY_SYMBOLIC_LINK ; 
- int /*<<< orphan*/  av_strcasecmp (char*,char*) ; 
- int /*<<< orphan*/  av_strdup (char*) ; 
- char* av_strtok (char*,char*,char**) ; 
- int /*<<< orphan*/  ff_dlog (int /*<<< orphan*/ *,char*,char*) ; 
- int /*<<< orphan*/  ftp_parse_date (char*) ; 
- int /*<<< orphan*/  strtoll (char*,int /*<<< orphan*/ *,int) ; 
- void* strtoumax (char*,int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int size; void* group_id; void* user_id; void* filemode; int modification_timestamp; int type; int name; } ;
+typedef TYPE_1__ AVIODirEntry ;
+
+
+ int AVIO_ENTRY_DIRECTORY ;
+ int AVIO_ENTRY_FILE ;
+ int AVIO_ENTRY_SYMBOLIC_LINK ;
+ int av_strcasecmp (char*,char*) ;
+ int av_strdup (char*) ;
+ char* av_strtok (char*,char*,char**) ;
+ int ff_dlog (int *,char*,char*) ;
+ int ftp_parse_date (char*) ;
+ int strtoll (char*,int *,int) ;
+ void* strtoumax (char*,int *,int) ;
 
 __attribute__((used)) static int ftp_parse_entry_mlsd(char *mlsd, AVIODirEntry *next)
 {
     char *fact, *value;
-    ff_dlog(NULL, "%s\n", mlsd);
+    ff_dlog(((void*)0), "%s\n", mlsd);
     while(fact = av_strtok(mlsd, ";", &mlsd)) {
         if (fact[0] == ' ') {
             next->name = av_strdup(&fact[1]);
@@ -48,13 +48,13 @@ __attribute__((used)) static int ftp_parse_entry_mlsd(char *mlsd, AVIODirEntry *
         } else if (!av_strcasecmp(fact, "modify")) {
             next->modification_timestamp = ftp_parse_date(value);
         } else if (!av_strcasecmp(fact, "UNIX.mode")) {
-            next->filemode = strtoumax(value, NULL, 8);
+            next->filemode = strtoumax(value, ((void*)0), 8);
         } else if (!av_strcasecmp(fact, "UNIX.uid") || !av_strcasecmp(fact, "UNIX.owner"))
-            next->user_id = strtoumax(value, NULL, 10);
+            next->user_id = strtoumax(value, ((void*)0), 10);
         else if (!av_strcasecmp(fact, "UNIX.gid") || !av_strcasecmp(fact, "UNIX.group"))
-            next->group_id = strtoumax(value, NULL, 10);
+            next->group_id = strtoumax(value, ((void*)0), 10);
         else if (!av_strcasecmp(fact, "size") || !av_strcasecmp(fact, "sizd"))
-            next->size = strtoll(value, NULL, 10);
+            next->size = strtoll(value, ((void*)0), 10);
     }
     return 0;
 }

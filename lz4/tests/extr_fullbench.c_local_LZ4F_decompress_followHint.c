@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DISPLAY (char*,unsigned int,unsigned int) ; 
- size_t LZ4F_decompress (int /*<<< orphan*/ ,char*,size_t*,char const*,size_t*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LZ4F_isError (size_t const) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  g_dCtx ; 
+ int DISPLAY (char*,unsigned int,unsigned int) ;
+ size_t LZ4F_decompress (int ,char*,size_t*,char const*,size_t*,int *) ;
+ int LZ4F_isError (size_t const) ;
+ int assert (int) ;
+ int exit (int) ;
+ int g_dCtx ;
 
 __attribute__((used)) static int local_LZ4F_decompress_followHint(const char* src, char* dst, int srcSize, int dstSize)
 {
@@ -30,7 +22,7 @@ __attribute__((used)) static int local_LZ4F_decompress_followHint(const char* sr
     size_t outRemaining = maxOutSize - outPos;
 
     for (;;) {
-        size_t const sizeHint = LZ4F_decompress(g_dCtx, dst+outPos, &outRemaining, src+inPos, &inSize, NULL);
+        size_t const sizeHint = LZ4F_decompress(g_dCtx, dst+outPos, &outRemaining, src+inPos, &inSize, ((void*)0));
         assert(!LZ4F_isError(sizeHint));
 
         inPos += inSize;
@@ -42,7 +34,7 @@ __attribute__((used)) static int local_LZ4F_decompress_followHint(const char* sr
         if (!sizeHint) break;
     }
 
-    /* frame completed */
+
     if (inPos != totalInSize) {
         DISPLAY("Error decompressing frame : must read (%u) full frame (%u) \n",
                 (unsigned)inPos, (unsigned)totalInSize);

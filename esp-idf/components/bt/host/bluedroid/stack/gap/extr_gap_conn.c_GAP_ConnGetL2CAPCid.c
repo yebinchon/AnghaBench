@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  connection_id; } ;
-typedef  TYPE_1__ tGAP_CCB ;
-typedef  int /*<<< orphan*/  UINT16 ;
 
-/* Variables and functions */
- TYPE_1__* gap_find_ccb_by_handle (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int connection_id; } ;
+typedef TYPE_1__ tGAP_CCB ;
+typedef int UINT16 ;
+
+
+ TYPE_1__* gap_find_ccb_by_handle (int ) ;
 
 UINT16 GAP_ConnGetL2CAPCid (UINT16 gap_handle)
 {
-    tGAP_CCB    *p_ccb;
+    tGAP_CCB *p_ccb;
 
-    if ((p_ccb = gap_find_ccb_by_handle (gap_handle)) == NULL) {
+    if ((p_ccb = gap_find_ccb_by_handle (gap_handle)) == ((void*)0)) {
         return (0);
     }
 

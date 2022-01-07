@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BG_E_HTTP_ERROR_400 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_401 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_404 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_407 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_414 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_501 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_503 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_504 ; 
- int /*<<< orphan*/  BG_E_HTTP_ERROR_505 ; 
- int /*<<< orphan*/  FIXME (char*,int) ; 
- int /*<<< orphan*/  S_OK ; 
+
+
+
+typedef int HRESULT ;
+typedef int DWORD ;
+
+
+ int BG_E_HTTP_ERROR_400 ;
+ int BG_E_HTTP_ERROR_401 ;
+ int BG_E_HTTP_ERROR_404 ;
+ int BG_E_HTTP_ERROR_407 ;
+ int BG_E_HTTP_ERROR_414 ;
+ int BG_E_HTTP_ERROR_501 ;
+ int BG_E_HTTP_ERROR_503 ;
+ int BG_E_HTTP_ERROR_504 ;
+ int BG_E_HTTP_ERROR_505 ;
+ int FIXME (char*,int) ;
+ int S_OK ;
 
 __attribute__((used)) static HRESULT hresult_from_http_response(DWORD code)
 {

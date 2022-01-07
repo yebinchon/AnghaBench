@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct connection {int /*<<< orphan*/  In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INIT ; 
- int MAX_VALUE_LEN ; 
- int /*<<< orphan*/  MESSAGE (struct connection*) ; 
- int /*<<< orphan*/  RETURN (int /*<<< orphan*/ ,int) ; 
- char* buf ; 
- int do_add_answer (int,int,int,int,char*) ; 
- int do_set_mark (int,int) ; 
- int /*<<< orphan*/  eat_at (char const*,int,char**,int*) ; 
- int /*<<< orphan*/  hst (char*,char const*,int,int) ; 
- char* msg_get_buf (int /*<<< orphan*/ ) ; 
- scalar_t__ msg_reinit (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  safe_read_in (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  set ; 
- int sscanf (char*,char*,int*,...) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
- scalar_t__ unlikely (int) ; 
+
+
+
+struct connection {int In; } ;
+
+
+ int INIT ;
+ int MAX_VALUE_LEN ;
+ int MESSAGE (struct connection*) ;
+ int RETURN (int ,int) ;
+ char* buf ;
+ int do_add_answer (int,int,int,int,char*) ;
+ int do_set_mark (int,int) ;
+ int eat_at (char const*,int,char**,int*) ;
+ int hst (char*,char const*,int,int) ;
+ char* msg_get_buf (int ) ;
+ scalar_t__ msg_reinit (int ,int,int) ;
+ int safe_read_in (int *,char*,int) ;
+ int set ;
+ int sscanf (char*,char*,int*,...) ;
+ int strncmp (char*,char*,int) ;
+ scalar_t__ unlikely (int) ;
 
 int memcache_store (struct connection *c, int op, const char *old_key, int old_key_len, int flags, int delay, int size) {
   INIT;
@@ -43,7 +43,7 @@ int memcache_store (struct connection *c, int op, const char *old_key, int old_k
   int key_len;
   eat_at (old_key, old_key_len, &key, &key_len);
 
-  //set("question{$random_tag}", "$text")
+
   if (key_len >= 8 && !strncmp (key, "question", 8)) {
     int random_tag;
     if (sscanf (key + 8, "%d", &random_tag) != 1) {
@@ -70,7 +70,7 @@ int memcache_store (struct connection *c, int op, const char *old_key, int old_k
     RETURN (set, res);
   }
 
-  //get("mark{$question_id}", {$new_mark});
+
   if (key_len >= 4 && !strncmp (key, "mark", 4)) {
     int user_id, mark, cur;
     safe_read_in (&c->In, buf, size);

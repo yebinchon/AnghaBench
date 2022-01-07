@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct dshow_ctx {char** device_name; } ;
 struct TYPE_3__ {char* url; struct dshow_ctx* priv_data; } ;
-typedef  TYPE_1__ AVFormatContext ;
+typedef TYPE_1__ AVFormatContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  av_free (char*) ; 
- char* av_strdup (char*) ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* strtok (char*,char*) ; 
+
+ int av_free (char*) ;
+ char* av_strdup (char*) ;
+ int strcmp (char*,char*) ;
+ char* strtok (char*,char*) ;
 
 __attribute__((used)) static int parse_device_name(AVFormatContext *avctx)
 {
@@ -31,16 +31,16 @@ __attribute__((used)) static int parse_device_name(AVFormatContext *avctx)
     char *type;
 
     while ((type = strtok(tmp, "="))) {
-        char *token = strtok(NULL, ":");
-        tmp = NULL;
+        char *token = strtok(((void*)0), ":");
+        tmp = ((void*)0);
 
-        if        (!strcmp(type, "video")) {
+        if (!strcmp(type, "video")) {
             device_name[0] = token;
         } else if (!strcmp(type, "audio")) {
             device_name[1] = token;
         } else {
-            device_name[0] = NULL;
-            device_name[1] = NULL;
+            device_name[0] = ((void*)0);
+            device_name[1] = ((void*)0);
             break;
         }
     }

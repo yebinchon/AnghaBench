@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  reg_1394a; } ;
-struct ti_lynx {int phy_reg0; int selfid_size; TYPE_1__ phyic; int /*<<< orphan*/  id; int /*<<< orphan*/ * rcv_page; } ;
-struct selfid {int phy_id; int /*<<< orphan*/  extended; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int reg_1394a; } ;
+struct ti_lynx {int phy_reg0; int selfid_size; TYPE_1__ phyic; int id; int * rcv_page; } ;
+struct selfid {int phy_id; int extended; } ;
 struct hpsb_host {scalar_t__ in_bus_reset; } ;
-typedef  int /*<<< orphan*/  quadlet_t ;
+typedef int quadlet_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KERN_DEBUG ; 
- int /*<<< orphan*/  KERN_INFO ; 
- int /*<<< orphan*/  LINK_CONTROL ; 
- int LINK_CONTROL_CYCMASTER ; 
- int LINK_CONTROL_CYCTIMEREN ; 
- int LINK_CONTROL_RCV_CMP_VALID ; 
- int LINK_CONTROL_RX_ASYNC_EN ; 
- int LINK_CONTROL_TX_ASYNC_EN ; 
- int /*<<< orphan*/  LINK_ID ; 
- int /*<<< orphan*/  PRINT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,...) ; 
- int /*<<< orphan*/  cpu_to_be32s (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  generate_own_selfid (struct ti_lynx*,struct hpsb_host*) ; 
- int /*<<< orphan*/  hpsb_selfid_complete (struct hpsb_host*,int,int) ; 
- int /*<<< orphan*/  hpsb_selfid_received (struct hpsb_host*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  reg_set_bits (struct ti_lynx*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  reg_write (struct ti_lynx*,int /*<<< orphan*/ ,int) ; 
+
+ int KERN_DEBUG ;
+ int KERN_INFO ;
+ int LINK_CONTROL ;
+ int LINK_CONTROL_CYCMASTER ;
+ int LINK_CONTROL_CYCTIMEREN ;
+ int LINK_CONTROL_RCV_CMP_VALID ;
+ int LINK_CONTROL_RX_ASYNC_EN ;
+ int LINK_CONTROL_TX_ASYNC_EN ;
+ int LINK_ID ;
+ int PRINT (int ,int ,char*,int,...) ;
+ int cpu_to_be32s (int *) ;
+ int generate_own_selfid (struct ti_lynx*,struct hpsb_host*) ;
+ int hpsb_selfid_complete (struct hpsb_host*,int,int) ;
+ int hpsb_selfid_received (struct hpsb_host*,int ) ;
+ int reg_set_bits (struct ti_lynx*,int ,int) ;
+ int reg_write (struct ti_lynx*,int ,int) ;
 
 __attribute__((used)) static void handle_selfid(struct ti_lynx *lynx, struct hpsb_host *host)
 {
@@ -93,9 +93,9 @@ __attribute__((used)) static void handle_selfid(struct ti_lynx *lynx, struct hps
 
         hpsb_selfid_complete(host, phyid, isroot);
 
-        if (host->in_bus_reset) return; /* in bus reset again */
+        if (host->in_bus_reset) return;
 
-        if (isroot) reg_set_bits(lynx, LINK_CONTROL, LINK_CONTROL_CYCMASTER); //FIXME: I do not think, we need this here
+        if (isroot) reg_set_bits(lynx, LINK_CONTROL, LINK_CONTROL_CYCMASTER);
         reg_set_bits(lynx, LINK_CONTROL,
                      LINK_CONTROL_RCV_CMP_VALID | LINK_CONTROL_TX_ASYNC_EN
                      | LINK_CONTROL_RX_ASYNC_EN | LINK_CONTROL_CYCTIMEREN);

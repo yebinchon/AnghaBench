@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  int64_t ;
-typedef  int /*<<< orphan*/  AVIOContext ;
 
-/* Variables and functions */
-#define  AV1_OBU_PADDING 131 
-#define  AV1_OBU_REDUNDANT_FRAME_HEADER 130 
-#define  AV1_OBU_TEMPORAL_DELIMITER 129 
-#define  AV1_OBU_TILE_LIST 128 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int) ; 
- int parse_obu_header (int /*<<< orphan*/  const*,int,int /*<<< orphan*/ *,int*,int*,int*,int*) ; 
+
+
+
+typedef int uint8_t ;
+typedef int int64_t ;
+typedef int AVIOContext ;
+
+
+
+
+
+
+ int avio_write (int *,int const*,int) ;
+ int parse_obu_header (int const*,int,int *,int*,int*,int*,int*) ;
 
 int ff_av1_filter_obus(AVIOContext *pb, const uint8_t *buf, int size)
 {
@@ -36,10 +36,10 @@ int ff_av1_filter_obus(AVIOContext *pb, const uint8_t *buf, int size)
             return len;
 
         switch (type) {
-        case AV1_OBU_TEMPORAL_DELIMITER:
-        case AV1_OBU_REDUNDANT_FRAME_HEADER:
-        case AV1_OBU_TILE_LIST:
-        case AV1_OBU_PADDING:
+        case 129:
+        case 130:
+        case 128:
+        case 131:
             break;
         default:
             avio_write(pb, buf, len);

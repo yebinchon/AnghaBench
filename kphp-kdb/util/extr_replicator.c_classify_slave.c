@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct related_binlog {int flags; int targets; TYPE_1__** client; } ;
 struct TYPE_2__ {int flags; } ;
 
-/* Variables and functions */
- int LRF_BROKEN ; 
- int LRF_MASTER ; 
- int RC_UPTODATE ; 
+
+ int LRF_BROKEN ;
+ int LRF_MASTER ;
+ int RC_UPTODATE ;
 
 int classify_slave (struct related_binlog *R) {
   if ((R->flags & LRF_MASTER)) {

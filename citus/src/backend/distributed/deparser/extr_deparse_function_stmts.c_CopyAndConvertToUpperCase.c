@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char pg_toupper (unsigned char) ; 
- char* pstrdup (char const*) ; 
+ char pg_toupper (unsigned char) ;
+ char* pstrdup (char const*) ;
 
 __attribute__((used)) static char *
 CopyAndConvertToUpperCase(const char *str)
 {
-	char *result, *p;
+ char *result, *p;
 
-	result = pstrdup(str);
+ result = pstrdup(str);
 
-	for (p = result; *p; p++)
-	{
-		*p = pg_toupper((unsigned char) *p);
-	}
+ for (p = result; *p; p++)
+ {
+  *p = pg_toupper((unsigned char) *p);
+ }
 
-	return result;
+ return result;
 }

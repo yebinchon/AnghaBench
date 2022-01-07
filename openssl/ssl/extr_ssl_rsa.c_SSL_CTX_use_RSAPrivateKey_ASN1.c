@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SSL_CTX ;
-typedef  int /*<<< orphan*/  RSA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ERR_R_ASN1_LIB ; 
- int /*<<< orphan*/  RSA_free (int /*<<< orphan*/ *) ; 
- int SSL_CTX_use_RSAPrivateKey (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SSL_F_SSL_CTX_USE_RSAPRIVATEKEY_ASN1 ; 
- int /*<<< orphan*/  SSLerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * d2i_RSAPrivateKey (int /*<<< orphan*/ *,unsigned char const**,long) ; 
+
+
+
+typedef int SSL_CTX ;
+typedef int RSA ;
+
+
+ int ERR_R_ASN1_LIB ;
+ int RSA_free (int *) ;
+ int SSL_CTX_use_RSAPrivateKey (int *,int *) ;
+ int SSL_F_SSL_CTX_USE_RSAPRIVATEKEY_ASN1 ;
+ int SSLerr (int ,int ) ;
+ int * d2i_RSAPrivateKey (int *,unsigned char const**,long) ;
 
 int SSL_CTX_use_RSAPrivateKey_ASN1(SSL_CTX *ctx, const unsigned char *d,
                                    long len)
@@ -29,7 +29,7 @@ int SSL_CTX_use_RSAPrivateKey_ASN1(SSL_CTX *ctx, const unsigned char *d,
     RSA *rsa;
 
     p = d;
-    if ((rsa = d2i_RSAPrivateKey(NULL, &p, (long)len)) == NULL) {
+    if ((rsa = d2i_RSAPrivateKey(((void*)0), &p, (long)len)) == ((void*)0)) {
         SSLerr(SSL_F_SSL_CTX_USE_RSAPRIVATEKEY_ASN1, ERR_R_ASN1_LIB);
         return 0;
     }

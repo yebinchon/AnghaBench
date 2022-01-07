@@ -1,131 +1,131 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int wchar_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int wchar_t ;
 struct TYPE_4__ {int NumTokens; int** Token; } ;
-typedef  TYPE_1__ UNI_TOKEN_LIST ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  LIST ;
+typedef TYPE_1__ UNI_TOKEN_LIST ;
+typedef int UINT ;
+typedef int LIST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CopyUniStr (char*) ; 
- int /*<<< orphan*/  Free (int*) ; 
- int GetNextWordWidth (int*) ; 
- int /*<<< orphan*/  Insert (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int* LIST_DATA (int /*<<< orphan*/ *,int) ; 
- int LIST_NUM (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * NewListFast (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  UniCopyStr (int*) ; 
- TYPE_1__* UniNullToken () ; 
- int UniStrLen (int*) ; 
- int UniStrWidth (int*) ; 
- int /*<<< orphan*/  UniTrimLeft (int*) ; 
- void* ZeroMalloc (int) ; 
+
+ int CopyUniStr (char*) ;
+ int Free (int*) ;
+ int GetNextWordWidth (int*) ;
+ int Insert (int *,int ) ;
+ int* LIST_DATA (int *,int) ;
+ int LIST_NUM (int *) ;
+ int * NewListFast (int *) ;
+ int ReleaseList (int *) ;
+ int UniCopyStr (int*) ;
+ TYPE_1__* UniNullToken () ;
+ int UniStrLen (int*) ;
+ int UniStrWidth (int*) ;
+ int UniTrimLeft (int*) ;
+ void* ZeroMalloc (int) ;
 
 UNI_TOKEN_LIST *SeparateStringByWidth(wchar_t *str, UINT width)
 {
-	UINT wp;
-	wchar_t *tmp;
-	UINT len, i;
-	LIST *o;
-	UNI_TOKEN_LIST *ret;
-	// Validate arguments
-	if (str == NULL)
-	{
-		return UniNullToken();
-	}
-	if (width == 0)
-	{
-		width = 1;
-	}
+ UINT wp;
+ wchar_t *tmp;
+ UINT len, i;
+ LIST *o;
+ UNI_TOKEN_LIST *ret;
 
-	o = NewListFast(NULL);
+ if (str == ((void*)0))
+ {
+  return UniNullToken();
+ }
+ if (width == 0)
+ {
+  width = 1;
+ }
 
-	len = UniStrLen(str);
-	tmp = ZeroMalloc(sizeof(wchar_t) * (len + 32));
-	wp = 0;
+ o = NewListFast(((void*)0));
 
-	for (i = 0;i < (len + 1);i++)
-	{
-		wchar_t c = str[i];
-		UINT next_word_width;
-		UINT remain_width;
+ len = UniStrLen(str);
+ tmp = ZeroMalloc(sizeof(wchar_t) * (len + 32));
+ wp = 0;
 
-		switch (c)
-		{
-		case 0:
-		case L'\r':
-		case L'\n':
-			if (c == L'\r')
-			{
-				if (str[i + 1] == L'\n')
-				{
-					i++;
-				}
-			}
+ for (i = 0;i < (len + 1);i++)
+ {
+  wchar_t c = str[i];
+  UINT next_word_width;
+  UINT remain_width;
 
-			tmp[wp++] = 0;
-			wp = 0;
+  switch (c)
+  {
+  case 0:
+  case L'\r':
+  case L'\n':
+   if (c == L'\r')
+   {
+    if (str[i + 1] == L'\n')
+    {
+     i++;
+    }
+   }
 
-			Insert(o, UniCopyStr(tmp));
-			break;
+   tmp[wp++] = 0;
+   wp = 0;
 
-		default:
-			next_word_width = GetNextWordWidth(&str[i]);
-			remain_width = (width - UniStrWidth(tmp));
+   Insert(o, UniCopyStr(tmp));
+   break;
 
-			if ((remain_width >= 1) && (next_word_width > remain_width) && (next_word_width <= width))
-			{
-				tmp[wp++] = 0;
-				wp = 0;
+  default:
+   next_word_width = GetNextWordWidth(&str[i]);
+   remain_width = (width - UniStrWidth(tmp));
 
-				Insert(o, UniCopyStr(tmp));
-			}
+   if ((remain_width >= 1) && (next_word_width > remain_width) && (next_word_width <= width))
+   {
+    tmp[wp++] = 0;
+    wp = 0;
 
-			tmp[wp++] = c;
-			tmp[wp] = 0;
-			if (UniStrWidth(tmp) >= width)
-			{
-				tmp[wp++] = 0;
-				wp = 0;
+    Insert(o, UniCopyStr(tmp));
+   }
 
-				Insert(o, UniCopyStr(tmp));
-			}
-			break;
-		}
-	}
+   tmp[wp++] = c;
+   tmp[wp] = 0;
+   if (UniStrWidth(tmp) >= width)
+   {
+    tmp[wp++] = 0;
+    wp = 0;
 
-	if (LIST_NUM(o) == 0)
-	{
-		Insert(o, CopyUniStr(L""));
-	}
+    Insert(o, UniCopyStr(tmp));
+   }
+   break;
+  }
+ }
 
-	ret = ZeroMalloc(sizeof(UNI_TOKEN_LIST));
-	ret->NumTokens = LIST_NUM(o);
-	ret->Token = ZeroMalloc(sizeof(wchar_t *) * ret->NumTokens);
+ if (LIST_NUM(o) == 0)
+ {
+  Insert(o, CopyUniStr(L""));
+ }
 
-	for (i = 0;i < LIST_NUM(o);i++)
-	{
-		wchar_t *s = LIST_DATA(o, i);
+ ret = ZeroMalloc(sizeof(UNI_TOKEN_LIST));
+ ret->NumTokens = LIST_NUM(o);
+ ret->Token = ZeroMalloc(sizeof(wchar_t *) * ret->NumTokens);
 
-		UniTrimLeft(s);
+ for (i = 0;i < LIST_NUM(o);i++)
+ {
+  wchar_t *s = LIST_DATA(o, i);
 
-		ret->Token[i] = s;
-	}
+  UniTrimLeft(s);
 
-	ReleaseList(o);
-	Free(tmp);
+  ret->Token[i] = s;
+ }
 
-	return ret;
+ ReleaseList(o);
+ Free(tmp);
+
+ return ret;
 }

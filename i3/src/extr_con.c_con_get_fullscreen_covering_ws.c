@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Con ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CF_GLOBAL ; 
- int /*<<< orphan*/  CF_OUTPUT ; 
- int /*<<< orphan*/ * con_get_fullscreen_con (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * croot ; 
+
+
+
+typedef int Con ;
+
+
+ int CF_GLOBAL ;
+ int CF_OUTPUT ;
+ int * con_get_fullscreen_con (int *,int ) ;
+ int * croot ;
 
 Con *con_get_fullscreen_covering_ws(Con *ws) {
     if (!ws) {
-        return NULL;
+        return ((void*)0);
     }
     Con *fs = con_get_fullscreen_con(croot, CF_GLOBAL);
     if (!fs) {

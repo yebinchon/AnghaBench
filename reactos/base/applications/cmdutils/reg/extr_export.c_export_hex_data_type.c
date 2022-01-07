@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- scalar_t__ REG_BINARY ; 
- int /*<<< orphan*/  heap_free (char*) ; 
- char* heap_xalloc (int) ; 
- size_t lstrlenW (char const*) ; 
- size_t sprintfW (char*,char const*,scalar_t__) ; 
- int /*<<< orphan*/  write_file (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HANDLE ;
+typedef scalar_t__ DWORD ;
+
+
+ scalar_t__ REG_BINARY ;
+ int heap_free (char*) ;
+ char* heap_xalloc (int) ;
+ size_t lstrlenW (char const*) ;
+ size_t sprintfW (char*,char const*,scalar_t__) ;
+ int write_file (int ,char const*) ;
 
 __attribute__((used)) static size_t export_hex_data_type(HANDLE hFile, DWORD type)
 {

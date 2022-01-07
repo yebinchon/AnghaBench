@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_8__ {int frame_size; TYPE_6__* avctx; TYPE_1__* last_frame; } ;
-typedef  TYPE_2__ XanContext ;
+typedef TYPE_2__ XanContext ;
 struct TYPE_10__ {int width; int height; } ;
-struct TYPE_9__ {int* linesize; int /*<<< orphan*/ ** data; } ;
-struct TYPE_7__ {int /*<<< orphan*/ ** data; } ;
-typedef  TYPE_3__ AVFrame ;
+struct TYPE_9__ {int* linesize; int ** data; } ;
+struct TYPE_7__ {int ** data; } ;
+typedef TYPE_3__ AVFrame ;
 
-/* Variables and functions */
- int FFABS (int) ; 
- int FFMIN3 (int,int,int) ; 
- int /*<<< orphan*/  avpriv_request_sample (TYPE_6__*,char*) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int FFABS (int) ;
+ int FFMIN3 (int,int,int) ;
+ int avpriv_request_sample (TYPE_6__*,char*) ;
+ int memcpy (int *,int *,int) ;
 
 __attribute__((used)) static inline void xan_wc3_copy_pixel_run(XanContext *s, AVFrame *frame,
                                           int x, int y,
@@ -61,18 +61,18 @@ __attribute__((used)) static inline void xan_wc3_copy_pixel_run(XanContext *s, A
     }
 
     while (pixel_count &&
-           curframe_index  < s->frame_size &&
+           curframe_index < s->frame_size &&
            prevframe_index < s->frame_size) {
         int count = FFMIN3(pixel_count, width - curframe_x,
                            width - prevframe_x);
 
         memcpy(palette_plane + curframe_index,
                prev_palette_plane + prevframe_index, count);
-        pixel_count     -= count;
-        curframe_index  += count;
+        pixel_count -= count;
+        curframe_index += count;
         prevframe_index += count;
-        curframe_x      += count;
-        prevframe_x     += count;
+        curframe_x += count;
+        prevframe_x += count;
 
         if (curframe_x >= width) {
             curframe_index += line_inc;

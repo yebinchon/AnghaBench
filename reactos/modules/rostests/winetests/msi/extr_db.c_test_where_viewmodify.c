@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIHANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (int /*<<< orphan*/ ) ; 
- int ERROR_SUCCESS ; 
- int /*<<< orphan*/  MSIDBOPEN_CREATE ; 
- int /*<<< orphan*/  MSIMODIFY_INSERT_TEMPORARY ; 
- int /*<<< orphan*/  MSIMODIFY_REFRESH ; 
- int /*<<< orphan*/  MSIMODIFY_UPDATE ; 
- int /*<<< orphan*/  MsiCloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MsiCreateRecord (int) ; 
- int MsiDatabaseOpenViewA (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int MsiOpenDatabaseW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MsiRecordGetInteger (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  MsiRecordSetInteger (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  MsiViewClose (int /*<<< orphan*/ ) ; 
- int MsiViewExecute (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int MsiViewFetch (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int MsiViewModify (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  msifile ; 
- int /*<<< orphan*/  msifileW ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int run_query (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int UINT ;
+typedef int MSIHANDLE ;
+
+
+ int DeleteFileA (int ) ;
+ int ERROR_SUCCESS ;
+ int MSIDBOPEN_CREATE ;
+ int MSIMODIFY_INSERT_TEMPORARY ;
+ int MSIMODIFY_REFRESH ;
+ int MSIMODIFY_UPDATE ;
+ int MsiCloseHandle (int ) ;
+ int MsiCreateRecord (int) ;
+ int MsiDatabaseOpenViewA (int ,char const*,int *) ;
+ int MsiOpenDatabaseW (int ,int ,int *) ;
+ int MsiRecordGetInteger (int ,int) ;
+ int MsiRecordSetInteger (int ,int,int) ;
+ int MsiViewClose (int ) ;
+ int MsiViewExecute (int ,int ) ;
+ int MsiViewFetch (int ,int *) ;
+ int MsiViewModify (int ,int ,int ) ;
+ int msifile ;
+ int msifileW ;
+ int ok (int,char*,int) ;
+ int run_query (int ,int ,char const*) ;
 
 __attribute__((used)) static void test_where_viewmodify(void)
 {
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_where_viewmodify(void)
     r = run_query(hdb, 0, query);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);
 
-    /* `B` = 3 doesn't match, but the view shouldn't be executed */
+
     query = "SELECT * FROM `Table` WHERE `B` = 3";
     r = MsiDatabaseOpenViewA(hdb, query, &hview);
     ok(r == ERROR_SUCCESS, "Expected ERROR_SUCCESS, got %d\n", r);

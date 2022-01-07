@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_18__   TYPE_2__ ;
-typedef  struct TYPE_17__   TYPE_1__ ;
-typedef  struct TYPE_16__   TYPE_11__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_18__ TYPE_2__ ;
+typedef struct TYPE_17__ TYPE_1__ ;
+typedef struct TYPE_16__ TYPE_11__ ;
+
+
 struct TYPE_17__ {TYPE_11__* layers; } ;
-typedef  TYPE_1__ network ;
+typedef TYPE_1__ network ;
 struct TYPE_18__ {int w; int h; } ;
-typedef  TYPE_2__ image ;
+typedef TYPE_2__ image ;
 struct TYPE_16__ {int n; } ;
 
-/* Variables and functions */
- TYPE_2__ copy_image (TYPE_2__) ; 
- int /*<<< orphan*/  fill_image (TYPE_2__,double) ; 
- int /*<<< orphan*/  free_image (TYPE_2__) ; 
- TYPE_2__* get_weights (TYPE_11__) ; 
- int /*<<< orphan*/  ghost_image (TYPE_2__,TYPE_2__,int,int) ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__ make_image (int,int,int) ; 
- int rand () ; 
- int /*<<< orphan*/  random_distort_image (TYPE_2__,int,double,double) ; 
- int /*<<< orphan*/  rotate_image_cw (TYPE_2__,int) ; 
- int /*<<< orphan*/  save_image (TYPE_2__,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,char*,int) ; 
+
+ TYPE_2__ copy_image (TYPE_2__) ;
+ int fill_image (TYPE_2__,double) ;
+ int free_image (TYPE_2__) ;
+ TYPE_2__* get_weights (TYPE_11__) ;
+ int ghost_image (TYPE_2__,TYPE_2__,int,int) ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ TYPE_2__ make_image (int,int,int) ;
+ int rand () ;
+ int random_distort_image (TYPE_2__,int,double,double) ;
+ int rotate_image_cw (TYPE_2__,int) ;
+ int save_image (TYPE_2__,char*) ;
+ int sprintf (char*,char*,char*,int) ;
 
 void mkimg(char *cfgfile, char *weightfile, int h, int w, int num, char *prefix)
 {

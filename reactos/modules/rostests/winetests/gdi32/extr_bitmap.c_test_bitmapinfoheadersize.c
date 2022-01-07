@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {int bcHeight; int bcWidth; int bcBitCount; int bcPlanes; int bcSize; } ;
 struct TYPE_7__ {int biHeight; int biWidth; int biBitCount; int biPlanes; int biSize; } ;
 struct TYPE_9__ {TYPE_2__ bmciHeader; TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/ * HBITMAP ;
-typedef  int /*<<< orphan*/  BITMAPV5HEADER ;
-typedef  int /*<<< orphan*/  BITMAPV4HEADER ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_3__ BITMAPINFO ;
-typedef  TYPE_3__ BITMAPCOREINFO ;
-typedef  int /*<<< orphan*/  BITMAPCOREHEADER ;
+typedef int HDC ;
+typedef int * HBITMAP ;
+typedef int BITMAPV5HEADER ;
+typedef int BITMAPV4HEADER ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_3__ BITMAPINFO ;
+typedef TYPE_3__ BITMAPCOREINFO ;
+typedef int BITMAPCOREHEADER ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * CreateDIBSection (int /*<<< orphan*/ ,TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDC (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  ReleaseDC (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  memset (TYPE_3__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int * CreateDIBSection (int ,TYPE_3__*,int ,int *,int *,int ) ;
+ int DeleteObject (int *) ;
+ int GetDC (int ) ;
+ int GetLastError () ;
+ int ReleaseDC (int ,int ) ;
+ int SetLastError (int) ;
+ scalar_t__ broken (int) ;
+ int memset (TYPE_3__*,int ,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_bitmapinfoheadersize(void)
 {
@@ -51,56 +51,56 @@ __attribute__((used)) static void test_bitmapinfoheadersize(void)
 
     bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER) - 1;
 
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib == NULL, "CreateDIBSection succeeded\n");
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib == ((void*)0), "CreateDIBSection succeeded\n");
 
     bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib != NULL, "CreateDIBSection error %d\n", GetLastError());
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0), "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
     bmi.bmiHeader.biSize++;
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib != NULL ||
-       broken(!hdib), /* Win98, WinMe */
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0) ||
+       broken(!hdib),
        "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
     bmi.bmiHeader.biSize = sizeof(BITMAPINFO);
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib != NULL ||
-       broken(!hdib), /* Win98, WinMe */
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0) ||
+       broken(!hdib),
        "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
     bmi.bmiHeader.biSize++;
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib != NULL ||
-       broken(!hdib), /* Win98, WinMe */
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0) ||
+       broken(!hdib),
        "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
     bmi.bmiHeader.biSize = sizeof(BITMAPV4HEADER);
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib != NULL, "CreateDIBSection error %d\n", GetLastError());
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0), "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
     bmi.bmiHeader.biSize = sizeof(BITMAPV5HEADER);
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, &bmi, 0, NULL, NULL, 0);
-    ok(hdib != NULL ||
-       broken(!hdib), /* Win95 */
+    hdib = CreateDIBSection(hdc, &bmi, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0) ||
+       broken(!hdib),
        "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
@@ -112,25 +112,25 @@ __attribute__((used)) static void test_bitmapinfoheadersize(void)
 
     bci.bmciHeader.bcSize = sizeof(BITMAPCOREHEADER) - 1;
 
-    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, NULL, NULL, 0);
-    ok(hdib == NULL, "CreateDIBSection succeeded\n");
+    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib == ((void*)0), "CreateDIBSection succeeded\n");
 
     bci.bmciHeader.bcSize = sizeof(BITMAPCOREHEADER);
 
     SetLastError(0xdeadbeef);
-    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, NULL, NULL, 0);
-    ok(hdib != NULL, "CreateDIBSection error %d\n", GetLastError());
+    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib != ((void*)0), "CreateDIBSection error %d\n", GetLastError());
     DeleteObject(hdib);
 
     bci.bmciHeader.bcSize++;
 
-    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, NULL, NULL, 0);
-    ok(hdib == NULL, "CreateDIBSection succeeded\n");
+    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib == ((void*)0), "CreateDIBSection succeeded\n");
 
     bci.bmciHeader.bcSize = sizeof(BITMAPCOREINFO);
 
-    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, NULL, NULL, 0);
-    ok(hdib == NULL, "CreateDIBSection succeeded\n");
+    hdib = CreateDIBSection(hdc, (BITMAPINFO *)&bci, 0, ((void*)0), ((void*)0), 0);
+    ok(hdib == ((void*)0), "CreateDIBSection succeeded\n");
 
     ReleaseDC(0, hdc);
 }

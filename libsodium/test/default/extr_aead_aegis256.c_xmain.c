@@ -1,31 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- scalar_t__ crypto_aead_aegis256_ABYTES ; 
- scalar_t__ crypto_aead_aegis256_KEYBYTES ; 
- scalar_t__ crypto_aead_aegis256_MESSAGEBYTES_MAX ; 
- scalar_t__ crypto_aead_aegis256_NPUBBYTES ; 
- scalar_t__ crypto_aead_aegis256_NSECBYTES ; 
- scalar_t__ crypto_aead_aegis256_abytes () ; 
- scalar_t__ crypto_aead_aegis256_is_available () ; 
- scalar_t__ crypto_aead_aegis256_keybytes () ; 
- scalar_t__ crypto_aead_aegis256_messagebytes_max () ; 
- scalar_t__ crypto_aead_aegis256_npubbytes () ; 
- scalar_t__ crypto_aead_aegis256_nsecbytes () ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  tv () ; 
+ int assert (int) ;
+ scalar_t__ crypto_aead_aegis256_ABYTES ;
+ scalar_t__ crypto_aead_aegis256_KEYBYTES ;
+ scalar_t__ crypto_aead_aegis256_MESSAGEBYTES_MAX ;
+ scalar_t__ crypto_aead_aegis256_NPUBBYTES ;
+ scalar_t__ crypto_aead_aegis256_NSECBYTES ;
+ scalar_t__ crypto_aead_aegis256_abytes () ;
+ scalar_t__ crypto_aead_aegis256_is_available () ;
+ scalar_t__ crypto_aead_aegis256_keybytes () ;
+ scalar_t__ crypto_aead_aegis256_messagebytes_max () ;
+ scalar_t__ crypto_aead_aegis256_npubbytes () ;
+ scalar_t__ crypto_aead_aegis256_nsecbytes () ;
+ int printf (char*) ;
+ int tv () ;
 
 int
 main(void)

@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int BITS_PER_UNIT ;
 
-/* Forward declarations */
+ int DW_EH_PE_omit ;
 
-/* Type definitions */
 
-/* Variables and functions */
- int BITS_PER_UNIT ; 
-#define  DW_EH_PE_absptr 131 
- int DW_EH_PE_omit ; 
-#define  DW_EH_PE_udata2 130 
-#define  DW_EH_PE_udata4 129 
-#define  DW_EH_PE_udata8 128 
- int POINTER_SIZE ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
+
+ int POINTER_SIZE ;
+ int gcc_unreachable () ;
 
 int
 size_of_encoded_value (int encoding)
@@ -29,13 +21,13 @@ size_of_encoded_value (int encoding)
 
   switch (encoding & 0x07)
     {
-    case DW_EH_PE_absptr:
+    case 131:
       return POINTER_SIZE / BITS_PER_UNIT;
-    case DW_EH_PE_udata2:
+    case 130:
       return 2;
-    case DW_EH_PE_udata4:
+    case 129:
       return 4;
-    case DW_EH_PE_udata8:
+    case 128:
       return 8;
     default:
       gcc_unreachable ();

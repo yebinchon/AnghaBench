@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UInt16 ;
-typedef  int /*<<< orphan*/  UINT ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ UInt16 ;
+typedef int UINT ;
 struct TYPE_5__ {scalar_t__* data; } ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  TYPE_1__ CBuf ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef int SRes ;
+typedef int LPCWSTR ;
+typedef TYPE_1__ CBuf ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Buf_EnsureSize (TYPE_1__*,unsigned int) ; 
- int /*<<< orphan*/  SZ_ERROR_FAIL ; 
- int /*<<< orphan*/  SZ_ERROR_MEM ; 
- int /*<<< orphan*/  SZ_OK ; 
- int /*<<< orphan*/  Utf16_To_Utf8Buf (TYPE_1__*,scalar_t__ const*,unsigned int) ; 
- unsigned int WideCharToMultiByte (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,char*,unsigned int,char*,int /*<<< orphan*/ *) ; 
+
+ int Buf_EnsureSize (TYPE_1__*,unsigned int) ;
+ int SZ_ERROR_FAIL ;
+ int SZ_ERROR_MEM ;
+ int SZ_OK ;
+ int Utf16_To_Utf8Buf (TYPE_1__*,scalar_t__ const*,unsigned int) ;
+ unsigned int WideCharToMultiByte (int ,int ,int ,unsigned int,char*,unsigned int,char*,int *) ;
 
 __attribute__((used)) static SRes Utf16_To_Char(CBuf *buf, const UInt16 *s
-    #ifndef _USE_UTF8
+
     , UINT codePage
-    #endif
+
     )
 {
   unsigned len = 0;
   for (len = 0; s[len] != 0; len++);
 
-  #ifndef _USE_UTF8
+
   {
     unsigned size = len * 3 + 100;
     if (!Buf_EnsureSize(buf, size))
@@ -56,7 +56,7 @@ __attribute__((used)) static SRes Utf16_To_Char(CBuf *buf, const UInt16 *s
       return SZ_OK;
     }
   }
-  #else
-  return Utf16_To_Utf8Buf(buf, s, len);
-  #endif
+
+
+
 }

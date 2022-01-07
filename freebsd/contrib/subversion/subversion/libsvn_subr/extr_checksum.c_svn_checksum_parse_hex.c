@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_error_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int svn_error_t ;
 struct TYPE_4__ {scalar_t__ digest; } ;
-typedef  TYPE_1__ svn_checksum_t ;
-typedef  int /*<<< orphan*/  svn_checksum_kind_t ;
-typedef  int apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
+typedef TYPE_1__ svn_checksum_t ;
+typedef int svn_checksum_kind_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
 
-/* Variables and functions */
- int DIGESTSIZE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_BAD_CHECKSUM_PARSE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- TYPE_1__* svn_checksum_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  validate_kind (int /*<<< orphan*/ ) ; 
+
+ int DIGESTSIZE (int ) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_BAD_CHECKSUM_PARSE ;
+ int * SVN_NO_ERROR ;
+ TYPE_1__* svn_checksum_create (int ,int *) ;
+ int * svn_error_create (int ,int *,int *) ;
+ int validate_kind (int ) ;
 
 svn_error_t *
 svn_checksum_parse_hex(svn_checksum_t **checksum,
@@ -44,13 +44,13 @@ svn_checksum_parse_hex(svn_checksum_t **checksum,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
-      0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,   /* 0-7 */
-      0x08,0x09,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,   /* 8-9 */
-      0xFF,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0xFF,   /* A-F */
+      0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,
+      0x08,0x09,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+      0xFF,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
-      0xFF,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0xFF,   /* a-f */
+      0xFF,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
@@ -72,9 +72,9 @@ svn_checksum_parse_hex(svn_checksum_t **checksum,
       0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
     };
 
-  if (hex == NULL)
+  if (hex == ((void*)0))
     {
-      *checksum = NULL;
+      *checksum = ((void*)0);
       return SVN_NO_ERROR;
     }
 
@@ -89,14 +89,14 @@ svn_checksum_parse_hex(svn_checksum_t **checksum,
       unsigned char x1 = xdigitval[(unsigned char)hex[i * 2]];
       unsigned char x2 = xdigitval[(unsigned char)hex[i * 2 + 1]];
       if (x1 == 0xFF || x2 == 0xFF)
-        return svn_error_create(SVN_ERR_BAD_CHECKSUM_PARSE, NULL, NULL);
+        return svn_error_create(SVN_ERR_BAD_CHECKSUM_PARSE, ((void*)0), ((void*)0));
 
       digest[i] = (x1 << 4) | x2;
       is_nonzero |= digest[i];
     }
 
   if (!is_nonzero)
-    *checksum = NULL;
+    *checksum = ((void*)0);
 
   return SVN_NO_ERROR;
 }

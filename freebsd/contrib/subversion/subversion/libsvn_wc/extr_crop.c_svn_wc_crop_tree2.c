@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc_notify_func2_t ;
-struct TYPE_3__ {int /*<<< orphan*/ * db; } ;
-typedef  TYPE_1__ svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int svn_wc__db_status_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_depth_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_MALFUNCTION () ; 
- int /*<<< orphan*/  SVN_ERR_UNSUPPORTED_FEATURE ; 
- int /*<<< orphan*/  SVN_ERR_WC_PATH_NOT_FOUND ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  crop_children (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_depth_empty ; 
- int /*<<< orphan*/  svn_depth_infinity ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_create (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_error_trace (int /*<<< orphan*/ ) ; 
- scalar_t__ svn_node_dir ; 
- int /*<<< orphan*/  svn_wc__db_read_info (int*,scalar_t__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
-#define  svn_wc__db_status_added 134 
-#define  svn_wc__db_status_deleted 133 
-#define  svn_wc__db_status_excluded 132 
-#define  svn_wc__db_status_incomplete 131 
-#define  svn_wc__db_status_normal 130 
-#define  svn_wc__db_status_not_present 129 
-#define  svn_wc__db_status_server_excluded 128 
- int /*<<< orphan*/  svn_wc__wq_run (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int svn_wc_notify_func2_t ;
+struct TYPE_3__ {int * db; } ;
+typedef TYPE_1__ svn_wc_context_t ;
+typedef int svn_wc__db_t ;
+typedef int svn_wc__db_status_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_depth_t ;
+typedef int svn_cancel_func_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_ERR_MALFUNCTION () ;
+ int SVN_ERR_UNSUPPORTED_FEATURE ;
+ int SVN_ERR_WC_PATH_NOT_FOUND ;
+ int * SVN_NO_ERROR ;
+ int _ (char*) ;
+ int crop_children (int *,char const*,int ,int ,int ,void*,int ,void*,int *) ;
+ int svn_depth_empty ;
+ int svn_depth_infinity ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_create (int ,int *,int ) ;
+ int * svn_error_createf (int ,int *,int ,int ) ;
+ int * svn_error_trace (int ) ;
+ scalar_t__ svn_node_dir ;
+ int svn_wc__db_read_info (int*,scalar_t__*,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+
+
+
+
+
+
+
+ int svn_wc__wq_run (int *,char const*,int ,void*,int *) ;
 
 svn_error_t *
 svn_wc_crop_tree2(svn_wc_context_t *wc_ctx,
@@ -62,51 +62,51 @@ svn_wc_crop_tree2(svn_wc_context_t *wc_ctx,
   svn_node_kind_t kind;
   svn_depth_t dir_depth;
 
-  /* Only makes sense when the depth is restrictive. */
+
   if (depth == svn_depth_infinity)
-    return SVN_NO_ERROR; /* Nothing to crop */
+    return SVN_NO_ERROR;
   if (!(depth >= svn_depth_empty && depth < svn_depth_infinity))
-    return svn_error_create(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+    return svn_error_create(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
       _("Can only crop a working copy with a restrictive depth"));
 
-  SVN_ERR(svn_wc__db_read_info(&status, &kind, NULL, NULL, NULL, NULL, NULL,
-                               NULL, NULL, &dir_depth, NULL, NULL, NULL, NULL,
-                               NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                               NULL, NULL, NULL, NULL, NULL, NULL,
+  SVN_ERR(svn_wc__db_read_info(&status, &kind, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                               ((void*)0), ((void*)0), &dir_depth, ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                               ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                db, local_abspath,
                                scratch_pool, scratch_pool));
 
   if (kind != svn_node_dir)
-    return svn_error_create(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+    return svn_error_create(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
       _("Can only crop directories"));
 
   switch (status)
     {
-      case svn_wc__db_status_not_present:
-      case svn_wc__db_status_server_excluded:
-        return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, NULL,
+      case 129:
+      case 128:
+        return svn_error_createf(SVN_ERR_WC_PATH_NOT_FOUND, ((void*)0),
                                  _("The node '%s' was not found."),
                                  svn_dirent_local_style(local_abspath,
                                                         scratch_pool));
 
-      case svn_wc__db_status_deleted:
-        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+      case 133:
+        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                _("Cannot crop '%s': it is going to be removed "
                                  "from repository. Try commit instead"),
                                svn_dirent_local_style(local_abspath,
                                                       scratch_pool));
 
-      case svn_wc__db_status_added:
-        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, NULL,
+      case 134:
+        return svn_error_createf(SVN_ERR_UNSUPPORTED_FEATURE, ((void*)0),
                                  _("Cannot crop '%s': it is to be added "
                                    "to the repository. Try commit instead"),
                                  svn_dirent_local_style(local_abspath,
                                                         scratch_pool));
-      case svn_wc__db_status_excluded:
-        return SVN_NO_ERROR; /* Nothing to do */
+      case 132:
+        return SVN_NO_ERROR;
 
-      case svn_wc__db_status_normal:
-      case svn_wc__db_status_incomplete:
+      case 130:
+      case 131:
         break;
 
       default:

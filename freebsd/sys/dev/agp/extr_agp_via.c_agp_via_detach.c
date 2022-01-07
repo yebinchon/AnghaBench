@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct agp_via_softc {int /*<<< orphan*/  gatt; int /*<<< orphan*/  initial_aperture; int /*<<< orphan*/ * regs; } ;
-typedef  int /*<<< orphan*/  device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AGP_SET_APERTURE (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t REG_ATTBASE ; 
- size_t REG_GARTCTRL ; 
- int /*<<< orphan*/  agp_free_cdev (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  agp_free_gatt (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  agp_free_res (int /*<<< orphan*/ ) ; 
- struct agp_via_softc* device_get_softc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pci_write_config (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
+
+
+
+struct agp_via_softc {int gatt; int initial_aperture; int * regs; } ;
+typedef int device_t ;
+
+
+ int AGP_SET_APERTURE (int ,int ) ;
+ size_t REG_ATTBASE ;
+ size_t REG_GARTCTRL ;
+ int agp_free_cdev (int ) ;
+ int agp_free_gatt (int ) ;
+ int agp_free_res (int ) ;
+ struct agp_via_softc* device_get_softc (int ) ;
+ int pci_write_config (int ,int ,int ,int) ;
 
 __attribute__((used)) static int
 agp_via_detach(device_t dev)
 {
-	struct agp_via_softc *sc = device_get_softc(dev);
+ struct agp_via_softc *sc = device_get_softc(dev);
 
-	agp_free_cdev(dev);
+ agp_free_cdev(dev);
 
-	pci_write_config(dev, sc->regs[REG_GARTCTRL], 0, 4);
-	pci_write_config(dev, sc->regs[REG_ATTBASE], 0, 4);
-	AGP_SET_APERTURE(dev, sc->initial_aperture);
-	agp_free_gatt(sc->gatt);
-	agp_free_res(dev);
+ pci_write_config(dev, sc->regs[REG_GARTCTRL], 0, 4);
+ pci_write_config(dev, sc->regs[REG_ATTBASE], 0, 4);
+ AGP_SET_APERTURE(dev, sc->initial_aperture);
+ agp_free_gatt(sc->gatt);
+ agp_free_res(dev);
 
-	return 0;
+ return 0;
 }

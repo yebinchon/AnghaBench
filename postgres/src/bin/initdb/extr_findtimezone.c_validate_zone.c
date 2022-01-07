@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pg_tz ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * pg_load_tz (char const*) ; 
- int /*<<< orphan*/  pg_tz_acceptable (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int pg_tz ;
+
+
+ int * pg_load_tz (char const*) ;
+ int pg_tz_acceptable (int *) ;
 
 __attribute__((used)) static bool
 validate_zone(const char *tzname)
 {
-	pg_tz	   *tz;
+ pg_tz *tz;
 
-	if (!tzname || !tzname[0])
-		return false;
+ if (!tzname || !tzname[0])
+  return 0;
 
-	tz = pg_load_tz(tzname);
-	if (!tz)
-		return false;
+ tz = pg_load_tz(tzname);
+ if (!tz)
+  return 0;
 
-	if (!pg_tz_acceptable(tz))
-		return false;
+ if (!pg_tz_acceptable(tz))
+  return 0;
 
-	return true;
+ return 1;
 }

@@ -1,40 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-#define  DHCP_ACK 134 
-#define  DHCP_DECLINE 133 
-#define  DHCP_DISCOVER 132 
-#define  DHCP_NAK 131 
-#define  DHCP_OFFER 130 
-#define  DHCP_RELEASE 129 
-#define  DHCP_REQUEST 128 
-
 __attribute__((used)) static const char *dhcp_type(int type) {
         switch(type) {
-        case DHCP_DISCOVER:
+        case 132:
                 return "DHCPDISCOVER";
-        case DHCP_OFFER:
+        case 130:
                 return "DHCPOFFER";
-        case DHCP_REQUEST:
+        case 128:
                 return "DHCPREQUEST";
-        case DHCP_DECLINE:
+        case 133:
                 return "DHCPDECLINE";
-        case DHCP_ACK:
+        case 134:
                 return "DHCPACK";
-        case DHCP_NAK:
+        case 131:
                 return "DHCPNAK";
-        case DHCP_RELEASE:
+        case 129:
                 return "DHCPRELEASE";
         default:
                 return "unknown";

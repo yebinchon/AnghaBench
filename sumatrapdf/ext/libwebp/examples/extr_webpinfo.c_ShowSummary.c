@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int num_frames_; int* chunk_counts_; int* anmf_subchunk_counts_; } ;
-typedef  TYPE_1__ WebPInfo ;
+typedef TYPE_1__ WebPInfo ;
 
-/* Variables and functions */
- int CHUNK_ANMF ; 
- int CHUNK_TYPES ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+ int CHUNK_ANMF ;
+ int CHUNK_TYPES ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void ShowSummary(const WebPInfo* const webp_info) {
   int i;

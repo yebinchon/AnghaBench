@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
-typedef  int /*<<< orphan*/  fmode_t ;
 
-/* Variables and functions */
-#define  EMFILE 129 
-#define  ENFILE 128 
- int FALSE ; 
- scalar_t__ O_CLOEXEC ; 
- scalar_t__ O_NOINHERIT ; 
- int /*<<< orphan*/  RSTRING_CSTR (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int TRUE ; 
- int errno ; 
- int /*<<< orphan*/  mrb_fd_cloexec (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_format (int /*<<< orphan*/ *,char*,char const*) ; 
- int /*<<< orphan*/  mrb_garbage_collect (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_locale_free (char*) ; 
- char* mrb_locale_from_utf8 (char const*,int) ; 
- int /*<<< orphan*/  mrb_sys_fail (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int open (char*,int,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
+typedef int fmode_t ;
+
+
+
+
+ int FALSE ;
+ scalar_t__ O_CLOEXEC ;
+ scalar_t__ O_NOINHERIT ;
+ int RSTRING_CSTR (int *,int ) ;
+ int TRUE ;
+ int errno ;
+ int mrb_fd_cloexec (int *,int) ;
+ int mrb_format (int *,char*,char const*) ;
+ int mrb_garbage_collect (int *) ;
+ int mrb_locale_free (char*) ;
+ char* mrb_locale_from_utf8 (char const*,int) ;
+ int mrb_sys_fail (int *,int ) ;
+ int open (char*,int,int ) ;
 
 int
 mrb_cloexec_open(mrb_state *mrb, const char *pathname, mrb_int flags, mrb_int mode)
@@ -37,19 +37,19 @@ mrb_cloexec_open(mrb_state *mrb, const char *pathname, mrb_int flags, mrb_int mo
   int fd, retry = FALSE;
   char* fname = mrb_locale_from_utf8(pathname, -1);
 
-#ifdef O_CLOEXEC
-  /* O_CLOEXEC is available since Linux 2.6.23.  Linux 2.6.18 silently ignore it. */
-  flags |= O_CLOEXEC;
-#elif defined O_NOINHERIT
-  flags |= O_NOINHERIT;
-#endif
+
+
+
+
+
+
 reopen:
   fd = open(fname, (int)flags, (fmode_t)mode);
   if (fd == -1) {
     if (!retry) {
       switch (errno) {
-        case ENFILE:
-        case EMFILE:
+        case 128:
+        case 129:
         mrb_garbage_collect(mrb);
         retry = TRUE;
         goto reopen;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  sd_bus_message ;
-typedef  int /*<<< orphan*/  sd_bus_error ;
-typedef  int /*<<< orphan*/  sd_bus ;
-struct TYPE_3__ {int /*<<< orphan*/  job_id; } ;
-typedef  TYPE_1__ WaitForItem ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int sd_bus_message_read (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,char const**) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef int sd_bus_message ;
+typedef int sd_bus_error ;
+typedef int sd_bus ;
+struct TYPE_3__ {int job_id; } ;
+typedef TYPE_1__ WaitForItem ;
+
+
+ int assert (TYPE_1__*) ;
+ int sd_bus_message_read (int *,char*,int *,char const**) ;
 
 __attribute__((used)) static int property_map_job(
                 sd_bus *bus,

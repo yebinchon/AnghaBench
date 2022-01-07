@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_13__ {int standard; int per_frame; int /*<<< orphan*/  tuner_fd; int /*<<< orphan*/  video_fd; int /*<<< orphan*/  height; int /*<<< orphan*/  width; void* framerate; } ;
-typedef  TYPE_2__ VideoData ;
-struct TYPE_16__ {int /*<<< orphan*/  url; TYPE_2__* priv_data; } ;
+
+
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_13__ {int standard; int per_frame; int tuner_fd; int video_fd; int height; int width; void* framerate; } ;
+typedef TYPE_2__ VideoData ;
+struct TYPE_16__ {int url; TYPE_2__* priv_data; } ;
 struct TYPE_15__ {int den; int num; } ;
 struct TYPE_14__ {TYPE_4__ avg_frame_rate; TYPE_1__* codecpar; } ;
-struct TYPE_12__ {int /*<<< orphan*/  height; int /*<<< orphan*/  width; int /*<<< orphan*/  codec_id; int /*<<< orphan*/  format; int /*<<< orphan*/  codec_type; } ;
-typedef  TYPE_3__ AVStream ;
-typedef  TYPE_4__ AVRational ;
-typedef  TYPE_5__ AVFormatContext ;
+struct TYPE_12__ {int height; int width; int codec_id; int format; int codec_type; } ;
+typedef TYPE_3__ AVStream ;
+typedef TYPE_4__ AVRational ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_CODEC_ID_RAWVIDEO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_PIX_FMT_YUV420P ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  EIO ; 
- int /*<<< orphan*/  ENOMEM ; 
-#define  NTSC 130 
-#define  PAL 129 
-#define  SECAM 128 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- int av_parse_video_rate (TYPE_4__*,void*) ; 
- void* av_strdup (char*) ; 
- TYPE_3__* avformat_new_stream (TYPE_5__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avpriv_set_pts_info (TYPE_3__*,int,int,int) ; 
- scalar_t__ bktr_init (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,double) ; 
- scalar_t__ last_frame_time ; 
- scalar_t__ nsignals ; 
+
+ int AVERROR (int ) ;
+ int AVMEDIA_TYPE_VIDEO ;
+ int AV_CODEC_ID_RAWVIDEO ;
+ int AV_LOG_ERROR ;
+ int AV_PIX_FMT_YUV420P ;
+ int EINVAL ;
+ int EIO ;
+ int ENOMEM ;
+
+
+
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ int av_parse_video_rate (TYPE_4__*,void*) ;
+ void* av_strdup (char*) ;
+ TYPE_3__* avformat_new_stream (TYPE_5__*,int *) ;
+ int avpriv_set_pts_info (TYPE_3__*,int,int,int) ;
+ scalar_t__ bktr_init (int ,int ,int ,int,int *,int *,int,double) ;
+ scalar_t__ last_frame_time ;
+ scalar_t__ nsignals ;
 
 __attribute__((used)) static int grab_read_header(AVFormatContext *s1)
 {
@@ -56,9 +56,9 @@ __attribute__((used)) static int grab_read_header(AVFormatContext *s1)
 
     if (!s->framerate)
         switch (s->standard) {
-        case PAL:   s->framerate = av_strdup("pal");  break;
-        case NTSC:  s->framerate = av_strdup("ntsc"); break;
-        case SECAM: s->framerate = av_strdup("25");   break;
+        case 129: s->framerate = av_strdup("pal"); break;
+        case 130: s->framerate = av_strdup("ntsc"); break;
+        case 128: s->framerate = av_strdup("25"); break;
         default:
             av_log(s1, AV_LOG_ERROR, "Unknown standard.\n");
             ret = AVERROR(EINVAL);
@@ -69,12 +69,12 @@ __attribute__((used)) static int grab_read_header(AVFormatContext *s1)
         goto out;
     }
 
-    st = avformat_new_stream(s1, NULL);
+    st = avformat_new_stream(s1, ((void*)0));
     if (!st) {
         ret = AVERROR(ENOMEM);
         goto out;
     }
-    avpriv_set_pts_info(st, 64, 1, 1000000); /* 64 bits pts in use */
+    avpriv_set_pts_info(st, 64, 1, 1000000);
 
     s->per_frame = ((uint64_t)1000000 * framerate.den) / framerate.num;
 

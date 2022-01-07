@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  scalar_t__ t_Handle ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef scalar_t__ t_Handle ;
 struct TYPE_5__ {TYPE_1__* schemesMng; struct TYPE_5__* p_FmPcdKg; } ;
-typedef  TYPE_2__ t_FmPcd ;
-typedef  int /*<<< orphan*/  t_Error ;
+typedef TYPE_2__ t_FmPcd ;
+typedef int t_Error ;
 struct TYPE_4__ {size_t ownerId; scalar_t__ allocated; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- int /*<<< orphan*/  E_INVALID_STATE ; 
- int /*<<< orphan*/  E_OK ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  RETURN_ERROR (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_ERROR (TYPE_2__*,int /*<<< orphan*/ ) ; 
 
-t_Error  FmPcdKgFreeSchemes(t_Handle h_FmPcd, uint8_t numOfSchemes, uint8_t guestId, uint8_t *p_SchemesIds)
+ int E_INVALID_HANDLE ;
+ int E_INVALID_STATE ;
+ int E_OK ;
+ scalar_t__ FALSE ;
+ int MAJOR ;
+ int RETURN_ERROR (int ,int ,char*) ;
+ int SANITY_CHECK_RETURN_ERROR (TYPE_2__*,int ) ;
+
+t_Error FmPcdKgFreeSchemes(t_Handle h_FmPcd, uint8_t numOfSchemes, uint8_t guestId, uint8_t *p_SchemesIds)
 {
-    t_FmPcd             *p_FmPcd = (t_FmPcd *)h_FmPcd;
-    uint8_t             i;
+    t_FmPcd *p_FmPcd = (t_FmPcd *)h_FmPcd;
+    uint8_t i;
 
     SANITY_CHECK_RETURN_ERROR(p_FmPcd, E_INVALID_HANDLE);
     SANITY_CHECK_RETURN_ERROR(p_FmPcd->p_FmPcdKg, E_INVALID_HANDLE);
 
-    /* This routine is issued only on master core of master partition -
-       either directly or through IPC */
+
+
 
     for (i = 0; i < numOfSchemes; i++)
     {

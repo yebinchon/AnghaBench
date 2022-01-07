@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLFWwindow ;
-typedef  int /*<<< orphan*/  GLFWmonitor ;
 
-/* Variables and functions */
- int /*<<< orphan*/  framebuffer_size_callback ; 
- int /*<<< orphan*/ * glfwCreateWindow (int,int,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- char* glfwGetMonitorName (int /*<<< orphan*/ *) ; 
- double glfwGetTime () ; 
- int /*<<< orphan*/  glfwMakeContextCurrent (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glfwSetFramebufferSizeCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetKeyCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSetWindowCloseCallback (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glfwSwapInterval (int) ; 
- int /*<<< orphan*/  key_callback ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  window_close_callback ; 
+
+
+
+typedef int GLFWwindow ;
+typedef int GLFWmonitor ;
+
+
+ int framebuffer_size_callback ;
+ int * glfwCreateWindow (int,int,char*,int *,int *) ;
+ char* glfwGetMonitorName (int *) ;
+ double glfwGetTime () ;
+ int glfwMakeContextCurrent (int *) ;
+ int glfwSetFramebufferSizeCallback (int *,int ) ;
+ int glfwSetKeyCallback (int *,int ) ;
+ int glfwSetWindowCloseCallback (int *,int ) ;
+ int glfwSwapInterval (int) ;
+ int key_callback ;
+ int printf (char*,...) ;
+ int window_close_callback ;
 
 __attribute__((used)) static GLFWwindow* open_window(int width, int height, GLFWmonitor* monitor)
 {
@@ -34,9 +34,9 @@ __attribute__((used)) static GLFWwindow* open_window(int width, int height, GLFW
 
     base = glfwGetTime();
 
-    window = glfwCreateWindow(width, height, "Window Re-opener", monitor, NULL);
+    window = glfwCreateWindow(width, height, "Window Re-opener", monitor, ((void*)0));
     if (!window)
-        return NULL;
+        return ((void*)0);
 
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);

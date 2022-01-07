@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wchar_t ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRINT_ERROR (char*) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  _wcsdup (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- int /*<<< orphan*/  kuhl_m_sekurlsa_reset () ; 
- int /*<<< orphan*/  pMinidumpName ; 
+
+
+
+typedef int wchar_t ;
+typedef int NTSTATUS ;
+
+
+ int PRINT_ERROR (char*) ;
+ int STATUS_SUCCESS ;
+ int _wcsdup (int *) ;
+ int kprintf (char*,...) ;
+ int kuhl_m_sekurlsa_reset () ;
+ int pMinidumpName ;
 
 NTSTATUS kuhl_m_sekurlsa_minidump(int argc, wchar_t * argv[])
 {
-	kprintf(L"Switch to MINIDUMP : ");
-	if(argc != 1)
-		PRINT_ERROR(L"<minidumpfile.dmp> argument is missing\n");
-	else
-	{
-		kuhl_m_sekurlsa_reset();
-		pMinidumpName = _wcsdup(argv[0]);
-		kprintf(L"\'%s\'\n", pMinidumpName);
-	}
-	return STATUS_SUCCESS;
+ kprintf(L"Switch to MINIDUMP : ");
+ if(argc != 1)
+  PRINT_ERROR(L"<minidumpfile.dmp> argument is missing\n");
+ else
+ {
+  kuhl_m_sekurlsa_reset();
+  pMinidumpName = _wcsdup(argv[0]);
+  kprintf(L"\'%s\'\n", pMinidumpName);
+ }
+ return STATUS_SUCCESS;
 }

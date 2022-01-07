@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  dd_desc_paddr; scalar_t__ dd_desc; } ;
-struct ath_softc {TYPE_1__ sc_txsdma; int /*<<< orphan*/  sc_ah; int /*<<< orphan*/  sc_tx_statuslen; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATH_TXSTATUS_RING_SIZE ; 
- int HAL_NUM_TX_QUEUES ; 
- int ath_descdma_alloc_desc (struct ath_softc*,TYPE_1__*,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ath_edma_setup_txfifo (struct ath_softc*,int) ; 
- int /*<<< orphan*/  ath_hal_setuptxstatusring (int /*<<< orphan*/ ,void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int dd_desc_paddr; scalar_t__ dd_desc; } ;
+struct ath_softc {TYPE_1__ sc_txsdma; int sc_ah; int sc_tx_statuslen; } ;
+
+
+ int ATH_TXSTATUS_RING_SIZE ;
+ int HAL_NUM_TX_QUEUES ;
+ int ath_descdma_alloc_desc (struct ath_softc*,TYPE_1__*,int *,char*,int ,int ) ;
+ int ath_edma_setup_txfifo (struct ath_softc*,int) ;
+ int ath_hal_setuptxstatusring (int ,void*,int ,int ) ;
 
 __attribute__((used)) static int
 ath_edma_dma_txsetup(struct ath_softc *sc)
 {
-	int error;
-	int i;
+ int error;
+ int i;
 
-	error = ath_descdma_alloc_desc(sc, &sc->sc_txsdma,
-	    NULL, "txcomp", sc->sc_tx_statuslen, ATH_TXSTATUS_RING_SIZE);
-	if (error != 0)
-		return (error);
+ error = ath_descdma_alloc_desc(sc, &sc->sc_txsdma,
+     ((void*)0), "txcomp", sc->sc_tx_statuslen, ATH_TXSTATUS_RING_SIZE);
+ if (error != 0)
+  return (error);
 
-	ath_hal_setuptxstatusring(sc->sc_ah,
-	    (void *) sc->sc_txsdma.dd_desc,
-	    sc->sc_txsdma.dd_desc_paddr,
-	    ATH_TXSTATUS_RING_SIZE);
+ ath_hal_setuptxstatusring(sc->sc_ah,
+     (void *) sc->sc_txsdma.dd_desc,
+     sc->sc_txsdma.dd_desc_paddr,
+     ATH_TXSTATUS_RING_SIZE);
 
-	for (i = 0; i < HAL_NUM_TX_QUEUES; i++) {
-		ath_edma_setup_txfifo(sc, i);
-	}
+ for (i = 0; i < HAL_NUM_TX_QUEUES; i++) {
+  ath_edma_setup_txfifo(sc, i);
+ }
 
-	return (0);
+ return (0);
 }

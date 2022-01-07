@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_2__ {int /*<<< orphan*/  ipv6_medium_instance_id; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APPL_LOG (char*) ; 
- int /*<<< orphan*/  APP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LEDS_OFF (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LEDS_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LED_ONE ; 
- int /*<<< orphan*/  LED_TWO ; 
- int /*<<< orphan*/  ipv6_medium_connectable_mode_enter (int /*<<< orphan*/ ) ; 
- TYPE_1__ m_ipv6_medium ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+struct TYPE_2__ {int ipv6_medium_instance_id; } ;
+
+
+ int APPL_LOG (char*) ;
+ int APP_ERROR_CHECK (int ) ;
+ int LEDS_OFF (int ) ;
+ int LEDS_ON (int ) ;
+ int LED_ONE ;
+ int LED_TWO ;
+ int ipv6_medium_connectable_mode_enter (int ) ;
+ TYPE_1__ m_ipv6_medium ;
 
 __attribute__((used)) static void connectable_mode_enter(void)
 {

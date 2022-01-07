@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  customFree; int /*<<< orphan*/  customAlloc; } ;
-typedef  TYPE_1__ ZSTD_customMem ;
-struct TYPE_11__ {int /*<<< orphan*/ * cctx; int /*<<< orphan*/  customMem; } ;
-typedef  TYPE_2__ ZSTD_CStream ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * ZSTD_createCCtx_advanced (TYPE_1__) ; 
- int /*<<< orphan*/  ZSTD_freeCStream (TYPE_2__*) ; 
- scalar_t__ ZSTD_malloc (int,TYPE_1__) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int customFree; int customAlloc; } ;
+typedef TYPE_1__ ZSTD_customMem ;
+struct TYPE_11__ {int * cctx; int customMem; } ;
+typedef TYPE_2__ ZSTD_CStream ;
+
+
+ int * ZSTD_createCCtx_advanced (TYPE_1__) ;
+ int ZSTD_freeCStream (TYPE_2__*) ;
+ scalar_t__ ZSTD_malloc (int,TYPE_1__) ;
+ int memcpy (int *,TYPE_1__*,int) ;
+ int memset (TYPE_2__*,int ,int) ;
 
 ZSTD_CStream *ZSTD_createCStream_advanced(ZSTD_customMem customMem)
 {
-	ZSTD_CStream *zcs;
+ ZSTD_CStream *zcs;
 
-	if (!customMem.customAlloc || !customMem.customFree)
-		return NULL;
+ if (!customMem.customAlloc || !customMem.customFree)
+  return ((void*)0);
 
-	zcs = (ZSTD_CStream *)ZSTD_malloc(sizeof(ZSTD_CStream), customMem);
-	if (zcs == NULL)
-		return NULL;
-	memset(zcs, 0, sizeof(ZSTD_CStream));
-	memcpy(&zcs->customMem, &customMem, sizeof(ZSTD_customMem));
-	zcs->cctx = ZSTD_createCCtx_advanced(customMem);
-	if (zcs->cctx == NULL) {
-		ZSTD_freeCStream(zcs);
-		return NULL;
-	}
-	return zcs;
+ zcs = (ZSTD_CStream *)ZSTD_malloc(sizeof(ZSTD_CStream), customMem);
+ if (zcs == ((void*)0))
+  return ((void*)0);
+ memset(zcs, 0, sizeof(ZSTD_CStream));
+ memcpy(&zcs->customMem, &customMem, sizeof(ZSTD_customMem));
+ zcs->cctx = ZSTD_createCCtx_advanced(customMem);
+ if (zcs->cctx == ((void*)0)) {
+  ZSTD_freeCStream(zcs);
+  return ((void*)0);
+ }
+ return zcs;
 }

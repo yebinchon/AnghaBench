@@ -1,37 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  GIT_RMDIR_REMOVE_FILES ; 
- int /*<<< orphan*/  cl_assert (int) ; 
- int /*<<< orphan*/  cl_fixture_cleanup (char*) ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_sandbox_set_search_path_defaults () ; 
- int /*<<< orphan*/  git_buf_dispose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_futils_rmdir_r (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_path_isdir (char*) ; 
- int /*<<< orphan*/  path ; 
+ int GIT_RMDIR_REMOVE_FILES ;
+ int cl_assert (int) ;
+ int cl_fixture_cleanup (char*) ;
+ int cl_git_pass (int ) ;
+ int cl_sandbox_set_search_path_defaults () ;
+ int git_buf_dispose (int *) ;
+ int git_futils_rmdir_r (char*,int *,int ) ;
+ int git_path_isdir (char*) ;
+ int path ;
 
 void test_repo_config__cleanup(void)
 {
-	cl_sandbox_set_search_path_defaults();
+ cl_sandbox_set_search_path_defaults();
 
-	git_buf_dispose(&path);
+ git_buf_dispose(&path);
 
-	cl_git_pass(
-		git_futils_rmdir_r("alternate", NULL, GIT_RMDIR_REMOVE_FILES));
-	cl_assert(!git_path_isdir("alternate"));
+ cl_git_pass(
+  git_futils_rmdir_r("alternate", ((void*)0), GIT_RMDIR_REMOVE_FILES));
+ cl_assert(!git_path_isdir("alternate"));
 
-	cl_fixture_cleanup("empty_standard_repo");
+ cl_fixture_cleanup("empty_standard_repo");
 
 }

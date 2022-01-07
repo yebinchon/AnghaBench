@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct mke2fs_defaults {int size; int inode_ratio; int blocksize; scalar_t__ type; } ;
-struct TYPE_4__ {int s_blocks_count; int /*<<< orphan*/  s_log_block_size; int /*<<< orphan*/  s_log_frag_size; } ;
-typedef  TYPE_1__* PEXT2_SUPER_BLOCK ;
+struct TYPE_4__ {int s_blocks_count; int s_log_block_size; int s_log_frag_size; } ;
+typedef TYPE_1__* PEXT2_SUPER_BLOCK ;
 
-/* Variables and functions */
- int EXT2_BLOCK_SIZE (TYPE_1__*) ; 
- int EXT2_MIN_BLOCK_LOG_SIZE ; 
- char const* default_str ; 
- int /*<<< orphan*/  int_log2 (int) ; 
- struct mke2fs_defaults* settings ; 
- scalar_t__ strcmp (scalar_t__,char const*) ; 
+
+ int EXT2_BLOCK_SIZE (TYPE_1__*) ;
+ int EXT2_MIN_BLOCK_LOG_SIZE ;
+ char const* default_str ;
+ int int_log2 (int) ;
+ struct mke2fs_defaults* settings ;
+ scalar_t__ strcmp (scalar_t__,char const*) ;
 
 void set_fs_defaults(const char *fs_type,
                 PEXT2_SUPER_BLOCK super,

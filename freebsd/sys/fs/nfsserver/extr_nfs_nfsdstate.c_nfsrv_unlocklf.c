@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct nfslockfile {int /*<<< orphan*/  lf_locallock_lck; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  nfsv4_unlock (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+struct nfslockfile {int lf_locallock_lck; } ;
+
+
+ int nfsv4_unlock (int *,int ) ;
 
 __attribute__((used)) static void
 nfsrv_unlocklf(struct nfslockfile *lfp)
 {
 
-	nfsv4_unlock(&lfp->lf_locallock_lck, 0);
+ nfsv4_unlock(&lfp->lf_locallock_lck, 0);
 }

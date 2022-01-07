@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {int inputs; TYPE_2__* layers; } ;
-typedef  TYPE_1__ network ;
-struct TYPE_7__ {double* output; int outputs; int /*<<< orphan*/  output_gpu; } ;
-typedef  TYPE_2__ layer ;
+typedef TYPE_1__ network ;
+struct TYPE_7__ {double* output; int outputs; int output_gpu; } ;
+typedef TYPE_2__ layer ;
 
-/* Variables and functions */
- char* basecfg (char*) ; 
- float* calloc (int,int) ; 
- int /*<<< orphan*/  cuda_pull_array (int /*<<< orphan*/ ,double*,int) ; 
- char* fgetl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*) ; 
- TYPE_1__* load_network (char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  network_predict (TYPE_1__*,float*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  reset_network_state (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  strip (char*) ; 
- int strlen (char*) ; 
+
+ char* basecfg (char*) ;
+ float* calloc (int,int) ;
+ int cuda_pull_array (int ,double*,int) ;
+ char* fgetl (int ) ;
+ int fprintf (int ,char*,char*) ;
+ TYPE_1__* load_network (char*,char*,int ) ;
+ int network_predict (TYPE_1__*,float*) ;
+ int printf (char*,...) ;
+ int reset_network_state (TYPE_1__*,int ) ;
+ int stderr ;
+ int stdin ;
+ int strip (char*) ;
+ int strlen (char*) ;
 
 void vec_char_rnn(char *cfgfile, char *weightfile, char *seed)
 {
@@ -67,9 +67,9 @@ void vec_char_rnn(char *cfgfile, char *weightfile, char *seed)
         input[(int)c] = 0;
 
         layer l = net->layers[0];
-        #ifdef GPU
-        cuda_pull_array(l.output_gpu, l.output, l.outputs);
-        #endif
+
+
+
         printf("%s", line);
         for(i = 0; i < l.outputs; ++i){
             printf(",%g", l.output[i]);

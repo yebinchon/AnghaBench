@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  text_style_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STYLE_FULLY_SET ; 
- int /*<<< orphan*/ * text_style_Create (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int text_style_t ;
+
+
+ int STYLE_FULLY_SET ;
+ int * text_style_Create (int ) ;
 
 text_style_t *text_style_New( void )
 {

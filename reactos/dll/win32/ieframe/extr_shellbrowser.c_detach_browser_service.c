@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  IShellBrowser_iface; int /*<<< orphan*/ * doc_host; } ;
-typedef  TYPE_1__ ShellBrowser ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IShellBrowser_Release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int IShellBrowser_iface; int * doc_host; } ;
+typedef TYPE_1__ ShellBrowser ;
+
+
+ int IShellBrowser_Release (int *) ;
 
 void detach_browser_service(ShellBrowser *sb)
 {
-    sb->doc_host = NULL;
+    sb->doc_host = ((void*)0);
     IShellBrowser_Release(&sb->IShellBrowser_iface);
 }

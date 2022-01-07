@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct sockaddr {int dummy; } ;
-struct msghdr {int msg_iovlen; struct iovec* msg_iov; int /*<<< orphan*/  msg_namelen; struct sockaddr* msg_name; } ;
+struct msghdr {int msg_iovlen; struct iovec* msg_iov; int msg_namelen; struct sockaddr* msg_name; } ;
 struct iovec {void* iov_base; size_t iov_len; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
-typedef  int /*<<< orphan*/  socklen_t ;
+typedef int ssize_t ;
+typedef int socklen_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  vlc_sendmsg_i11e (int,struct msghdr*,int) ; 
+
+ int vlc_sendmsg_i11e (int,struct msghdr*,int) ;
 
 ssize_t vlc_sendto_i11e(int fd, const void *buf, size_t len, int flags,
                       const struct sockaddr *addr, socklen_t addrlen)

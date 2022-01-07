@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct m48t86_rtc_info {int /*<<< orphan*/  data_reg; int /*<<< orphan*/  index_reg; } ;
+
+
+
+
+struct m48t86_rtc_info {int data_reg; int index_reg; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- struct m48t86_rtc_info* dev_get_drvdata (struct device*) ; 
- unsigned char readb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writeb (unsigned long,int /*<<< orphan*/ ) ; 
+
+ struct m48t86_rtc_info* dev_get_drvdata (struct device*) ;
+ unsigned char readb (int ) ;
+ int writeb (unsigned long,int ) ;
 
 __attribute__((used)) static unsigned char m48t86_readb(struct device *dev, unsigned long addr)
 {
-	struct m48t86_rtc_info *info = dev_get_drvdata(dev);
-	unsigned char value;
+ struct m48t86_rtc_info *info = dev_get_drvdata(dev);
+ unsigned char value;
 
-	writeb(addr, info->index_reg);
-	value = readb(info->data_reg);
+ writeb(addr, info->index_reg);
+ value = readb(info->data_reg);
 
-	return value;
+ return value;
 }

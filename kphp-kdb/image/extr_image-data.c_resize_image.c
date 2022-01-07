@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct forth_stack {int top; } ;
 struct TYPE_6__ {scalar_t__ severity; } ;
-typedef  int /*<<< orphan*/  Image ;
-typedef  TYPE_1__ ExceptionInfo ;
+typedef int Image ;
+typedef TYPE_1__ ExceptionInfo ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DestroyExceptionInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  DestroyImage (int /*<<< orphan*/ *) ; 
- void* FORTH_FAIL ; 
- int /*<<< orphan*/  GetExceptionInfo (TYPE_1__*) ; 
- int /*<<< orphan*/  LanczosFilter ; 
- int /*<<< orphan*/  NEXT ; 
- int /*<<< orphan*/ * ResizeImage (int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ ,double,TYPE_1__*) ; 
- scalar_t__ UndefinedException ; 
- int /*<<< orphan*/  free_stack (struct forth_stack*,int,int) ; 
- int /*<<< orphan*/  gm_catch_exception (struct forth_stack*,TYPE_1__*) ; 
- int /*<<< orphan*/  pop_image (struct forth_stack*,int /*<<< orphan*/ **,char*) ; 
- int /*<<< orphan*/  pop_int (struct forth_stack*,int*,char*) ; 
- int /*<<< orphan*/  push_image (struct forth_stack*,int /*<<< orphan*/ *) ; 
+
+ int DestroyExceptionInfo (TYPE_1__*) ;
+ int DestroyImage (int *) ;
+ void* FORTH_FAIL ;
+ int GetExceptionInfo (TYPE_1__*) ;
+ int LanczosFilter ;
+ int NEXT ;
+ int * ResizeImage (int *,int,int,int ,double,TYPE_1__*) ;
+ scalar_t__ UndefinedException ;
+ int free_stack (struct forth_stack*,int,int) ;
+ int gm_catch_exception (struct forth_stack*,TYPE_1__*) ;
+ int pop_image (struct forth_stack*,int **,char*) ;
+ int pop_int (struct forth_stack*,int*,char*) ;
+ int push_image (struct forth_stack*,int *) ;
 
 __attribute__((used)) static void *resize_image (void **IP, struct forth_stack *st) {
   Image *image;
@@ -56,7 +56,7 @@ __attribute__((used)) static void *resize_image (void **IP, struct forth_stack *
   if (exception.severity != UndefinedException) {
     st->top = old_stack_top;
     gm_catch_exception (st, &exception);
-    if (r != NULL) {
+    if (r != ((void*)0)) {
       DestroyImage (r);
     }
     return FORTH_FAIL;

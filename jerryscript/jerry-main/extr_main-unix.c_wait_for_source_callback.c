@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerry_value_t ;
-typedef  int /*<<< orphan*/  jerry_char_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  JERRY_PARSE_NO_OPTS ; 
- int /*<<< orphan*/  jerry_parse (int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/  const*,size_t,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_release_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_run (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerry_value_is_error (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int jerry_value_t ;
+typedef int jerry_char_t ;
+
+
+ int JERRY_PARSE_NO_OPTS ;
+ int jerry_parse (int const*,size_t,int const*,size_t,int ) ;
+ int jerry_release_value (int ) ;
+ int jerry_run (int ) ;
+ int jerry_value_is_error (int ) ;
 
 __attribute__((used)) static jerry_value_t
-wait_for_source_callback (const jerry_char_t *resource_name_p, /**< resource name */
-                          size_t resource_name_size, /**< size of resource name */
-                          const jerry_char_t *source_p, /**< source code */
-                          size_t source_size, /**< source code size */
-                          void *user_p) /**< user pointer */
+wait_for_source_callback (const jerry_char_t *resource_name_p,
+                          size_t resource_name_size,
+                          const jerry_char_t *source_p,
+                          size_t source_size,
+                          void *user_p)
 {
-  (void) user_p; /* unused */
+  (void) user_p;
   jerry_value_t ret_val = jerry_parse (resource_name_p,
                                        resource_name_size,
                                        source_p,

@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_SET_VALUE ; 
- int /*<<< orphan*/  REG_DWORD ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegCreateKeyEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegSetValueEx (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int) ; 
+
+
+
+typedef int LPCTSTR ;
+typedef int HKEY ;
+typedef int BYTE ;
+
+
+ scalar_t__ ERROR_SUCCESS ;
+ int HKEY_CURRENT_USER ;
+ int KEY_SET_VALUE ;
+ int REG_DWORD ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegCreateKeyEx (int ,int ,int ,int *,int ,int ,int *,int *,int *) ;
+ int RegSetValueEx (int ,int ,int ,int ,int const*,int) ;
 
 __attribute__((used)) static void SaveRegInt(LPCTSTR lpszApp, LPCTSTR lpszKey, int iValue)
 {
     HKEY hKey;
 
-    if (RegCreateKeyEx(HKEY_CURRENT_USER, lpszApp, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_SET_VALUE, NULL, &hKey, NULL) == ERROR_SUCCESS)
+    if (RegCreateKeyEx(HKEY_CURRENT_USER, lpszApp, 0, ((void*)0), REG_OPTION_NON_VOLATILE, KEY_SET_VALUE, ((void*)0), &hKey, ((void*)0)) == ERROR_SUCCESS)
     {
         RegSetValueEx(hKey, lpszKey, 0, REG_DWORD, (const BYTE*)&iValue, sizeof(int));
 
-        /* close the key */
+
         RegCloseKey(hKey);
     }
 }

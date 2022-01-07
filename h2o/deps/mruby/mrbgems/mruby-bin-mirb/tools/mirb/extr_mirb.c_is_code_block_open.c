@@ -1,59 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unexpected_end ;
-struct mrb_parser_state {scalar_t__ nerr; int lstate; TYPE_1__* error_buffer; scalar_t__ lex_strterm; int /*<<< orphan*/ * parsing_heredoc; } ;
-typedef  int /*<<< orphan*/  mrb_bool ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int unexpected_end ;
+struct mrb_parser_state {scalar_t__ nerr; int lstate; TYPE_1__* error_buffer; scalar_t__ lex_strterm; int * parsing_heredoc; } ;
+typedef int mrb_bool ;
 struct TYPE_2__ {char* message; } ;
-
-/* Variables and functions */
-#define  EXPR_ARG 139 
-#define  EXPR_BEG 138 
-#define  EXPR_CLASS 137 
-#define  EXPR_CMDARG 136 
-#define  EXPR_DOT 135 
-#define  EXPR_END 134 
-#define  EXPR_ENDARG 133 
-#define  EXPR_ENDFN 132 
-#define  EXPR_FNAME 131 
-#define  EXPR_MAX_STATE 130 
-#define  EXPR_MID 129 
-#define  EXPR_VALUE 128 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strcmp (char const*,char*) ; 
- scalar_t__ strncmp (char const*,char const*,int) ; 
+ int FALSE ;
+ int TRUE ;
+ scalar_t__ strcmp (char const*,char*) ;
+ scalar_t__ strncmp (char const*,char const*,int) ;
 
 __attribute__((used)) static mrb_bool
 is_code_block_open(struct mrb_parser_state *parser)
 {
   mrb_bool code_block_open = FALSE;
 
-  /* check for heredoc */
-  if (parser->parsing_heredoc != NULL) return TRUE;
 
-  /* check for unterminated string */
+  if (parser->parsing_heredoc != ((void*)0)) return TRUE;
+
+
   if (parser->lex_strterm) return TRUE;
 
-  /* check if parser error are available */
+
   if (0 < parser->nerr) {
     const char unexpected_end[] = "syntax error, unexpected $end";
     const char *message = parser->error_buffer[0].message;
 
-    /* a parser error occur, we have to check if */
-    /* we need to read one more line or if there is */
-    /* a different issue which we have to show to */
-    /* the user */
+
+
+
+
 
     if (strncmp(message, unexpected_end, sizeof(unexpected_end) - 1) == 0) {
       code_block_open = TRUE;
@@ -69,60 +55,60 @@ is_code_block_open(struct mrb_parser_state *parser)
 
   switch (parser->lstate) {
 
-  /* all states which need more code */
 
-  case EXPR_BEG:
-    /* beginning of a statement, */
-    /* that means previous line ended */
+
+  case 138:
+
+
     code_block_open = FALSE;
     break;
-  case EXPR_DOT:
-    /* a message dot was the last token, */
-    /* there has to come more */
+  case 135:
+
+
     code_block_open = TRUE;
     break;
-  case EXPR_CLASS:
-    /* a class keyword is not enough! */
-    /* we need also a name of the class */
+  case 137:
+
+
     code_block_open = TRUE;
     break;
-  case EXPR_FNAME:
-    /* a method name is necessary */
+  case 131:
+
     code_block_open = TRUE;
     break;
-  case EXPR_VALUE:
-    /* if, elsif, etc. without condition */
+  case 128:
+
     code_block_open = TRUE;
     break;
 
-  /* now all the states which are closed */
 
-  case EXPR_ARG:
-    /* an argument is the last token */
+
+  case 139:
+
     code_block_open = FALSE;
     break;
 
-  /* all states which are unsure */
 
-  case EXPR_CMDARG:
+
+  case 136:
     break;
-  case EXPR_END:
-    /* an expression was ended */
+  case 134:
+
     break;
-  case EXPR_ENDARG:
-    /* closing parenthese */
+  case 133:
+
     break;
-  case EXPR_ENDFN:
-    /* definition end */
+  case 132:
+
     break;
-  case EXPR_MID:
-    /* jump keyword like break, return, ... */
+  case 129:
+
     break;
-  case EXPR_MAX_STATE:
-    /* don't know what to do with this token */
+  case 130:
+
     break;
   default:
-    /* this state is unexpected! */
+
     break;
   }
 

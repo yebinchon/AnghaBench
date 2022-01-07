@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
 
-/* Variables and functions */
- char* CopyStr (char*) ; 
- int /*<<< orphan*/  Free (char*) ; 
- int /*<<< orphan*/  StrCat (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  StrCpy (char*,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  StrLen (char*) ; 
+
+
+
+typedef int UINT ;
+
+
+ char* CopyStr (char*) ;
+ int Free (char*) ;
+ int StrCat (char*,int ,char*) ;
+ int StrCpy (char*,int ,char*) ;
+ int StrLen (char*) ;
 
 UINT StrCatLeft(char *dst, UINT size, char *src)
 {
-	char *s;
-	// Validate arguments
-	if (dst == NULL || src == NULL)
-	{
-		return 0;
-	}
+ char *s;
 
-	s = CopyStr(dst);
-	StrCpy(dst, size, src);
-	StrCat(dst, size, s);
+ if (dst == ((void*)0) || src == ((void*)0))
+ {
+  return 0;
+ }
 
-	Free(s);
+ s = CopyStr(dst);
+ StrCpy(dst, size, src);
+ StrCat(dst, size, s);
 
-	return StrLen(dst);
+ Free(s);
+
+ return StrLen(dst);
 }

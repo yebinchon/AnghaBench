@@ -1,53 +1,53 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-struct TYPE_16__ {int /*<<< orphan*/  len; } ;
-typedef  TYPE_2__ ngx_str_t ;
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
+typedef scalar_t__ ssize_t ;
+struct TYPE_16__ {int len; } ;
+typedef TYPE_2__ ngx_str_t ;
 struct TYPE_17__ {TYPE_5__* shm_zone; } ;
-typedef  TYPE_3__ ngx_http_upstream_srv_conf_t ;
-typedef  int /*<<< orphan*/  ngx_http_upstream_main_conf_t ;
+typedef TYPE_3__ ngx_http_upstream_srv_conf_t ;
+typedef int ngx_http_upstream_main_conf_t ;
 struct TYPE_18__ {TYPE_1__* args; } ;
-typedef  TYPE_4__ ngx_conf_t ;
-typedef  int /*<<< orphan*/  ngx_command_t ;
-struct TYPE_19__ {int noreuse; int /*<<< orphan*/ * data; int /*<<< orphan*/  init; } ;
+typedef TYPE_4__ ngx_conf_t ;
+typedef int ngx_command_t ;
+struct TYPE_19__ {int noreuse; int * data; int init; } ;
 struct TYPE_15__ {int nelts; TYPE_2__* elts; } ;
 
-/* Variables and functions */
- char* NGX_CONF_ERROR ; 
- char* NGX_CONF_OK ; 
- scalar_t__ NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_EMERG ; 
- int /*<<< orphan*/  ngx_conf_log_error (int /*<<< orphan*/ ,TYPE_4__*,int /*<<< orphan*/ ,char*,TYPE_2__*) ; 
- int /*<<< orphan*/ * ngx_http_conf_get_module_main_conf (TYPE_4__*,int /*<<< orphan*/ ) ; 
- TYPE_3__* ngx_http_conf_get_module_srv_conf (TYPE_4__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_upstream_init_zone ; 
- int /*<<< orphan*/  ngx_http_upstream_module ; 
- int ngx_pagesize ; 
- scalar_t__ ngx_parse_size (TYPE_2__*) ; 
- TYPE_5__* ngx_shared_memory_add (TYPE_4__*,TYPE_2__*,scalar_t__,int /*<<< orphan*/ *) ; 
+
+ char* NGX_CONF_ERROR ;
+ char* NGX_CONF_OK ;
+ scalar_t__ NGX_ERROR ;
+ int NGX_LOG_EMERG ;
+ int ngx_conf_log_error (int ,TYPE_4__*,int ,char*,TYPE_2__*) ;
+ int * ngx_http_conf_get_module_main_conf (TYPE_4__*,int ) ;
+ TYPE_3__* ngx_http_conf_get_module_srv_conf (TYPE_4__*,int ) ;
+ int ngx_http_upstream_init_zone ;
+ int ngx_http_upstream_module ;
+ int ngx_pagesize ;
+ scalar_t__ ngx_parse_size (TYPE_2__*) ;
+ TYPE_5__* ngx_shared_memory_add (TYPE_4__*,TYPE_2__*,scalar_t__,int *) ;
 
 __attribute__((used)) static char *
 ngx_http_upstream_zone(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-    ssize_t                         size;
-    ngx_str_t                      *value;
-    ngx_http_upstream_srv_conf_t   *uscf;
-    ngx_http_upstream_main_conf_t  *umcf;
+    ssize_t size;
+    ngx_str_t *value;
+    ngx_http_upstream_srv_conf_t *uscf;
+    ngx_http_upstream_main_conf_t *umcf;
 
     uscf = ngx_http_conf_get_module_srv_conf(cf, ngx_http_upstream_module);
     umcf = ngx_http_conf_get_module_main_conf(cf, ngx_http_upstream_module);
@@ -81,7 +81,7 @@ ngx_http_upstream_zone(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 
     uscf->shm_zone = ngx_shared_memory_add(cf, &value[1], size,
                                            &ngx_http_upstream_module);
-    if (uscf->shm_zone == NULL) {
+    if (uscf->shm_zone == ((void*)0)) {
         return NGX_CONF_ERROR;
     }
 

@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32 ;
-typedef  int /*<<< orphan*/  int32 ;
-typedef  int /*<<< orphan*/  MultiConnection ;
 
-/* Variables and functions */
- scalar_t__ ConnectionUsedForAnyPlacements (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FORCE_NEW_CONNECTION ; 
- int /*<<< orphan*/ * StartNodeConnection (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32 ;
+typedef int int32 ;
+typedef int MultiConnection ;
+
+
+ scalar_t__ ConnectionUsedForAnyPlacements (int *) ;
+ int FORCE_NEW_CONNECTION ;
+ int * StartNodeConnection (int ,char const*,int ) ;
 
 MultiConnection *
 StartNonDataAccessConnection(const char *hostname, int32 port)
 {
-	uint32 flags = 0;
-	MultiConnection *connection = StartNodeConnection(flags, hostname, port);
+ uint32 flags = 0;
+ MultiConnection *connection = StartNodeConnection(flags, hostname, port);
 
-	if (ConnectionUsedForAnyPlacements(connection))
-	{
-		flags = FORCE_NEW_CONNECTION;
+ if (ConnectionUsedForAnyPlacements(connection))
+ {
+  flags = FORCE_NEW_CONNECTION;
 
-		connection = StartNodeConnection(flags, hostname, port);
-	}
+  connection = StartNodeConnection(flags, hostname, port);
+ }
 
-	return connection;
+ return connection;
 }

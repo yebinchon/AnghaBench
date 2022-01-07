@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  aug_bitgen_t ;
 
-/* Variables and functions */
- double legacy_gauss (int /*<<< orphan*/ *) ; 
- double legacy_standard_gamma (int /*<<< orphan*/ *,double) ; 
- double sqrt (double) ; 
+
+
+
+typedef int aug_bitgen_t ;
+
+
+ double legacy_gauss (int *) ;
+ double legacy_standard_gamma (int *,double) ;
+ double sqrt (double) ;
 
 double legacy_standard_t(aug_bitgen_t *aug_state, double df) {
   double num, denom;

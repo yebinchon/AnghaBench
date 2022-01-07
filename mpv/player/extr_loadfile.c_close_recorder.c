@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct MPContext {int num_tracks; int /*<<< orphan*/ * recorder; int /*<<< orphan*/ * tracks; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mp_recorder_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  set_track_recorder_sink (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+struct MPContext {int num_tracks; int * recorder; int * tracks; } ;
+
+
+ int mp_recorder_destroy (int *) ;
+ int set_track_recorder_sink (int ,int *) ;
 
 void close_recorder(struct MPContext *mpctx)
 {
@@ -22,8 +22,8 @@ void close_recorder(struct MPContext *mpctx)
         return;
 
     for (int n = 0; n < mpctx->num_tracks; n++)
-        set_track_recorder_sink(mpctx->tracks[n], NULL);
+        set_track_recorder_sink(mpctx->tracks[n], ((void*)0));
 
     mp_recorder_destroy(mpctx->recorder);
-    mpctx->recorder = NULL;
+    mpctx->recorder = ((void*)0);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  len; void* data; } ;
-typedef  TYPE_1__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_size_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_HASH_TERMINATOR ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/ * svn_hash__make (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_hash_read2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_stream_from_string (TYPE_1__*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int len; void* data; } ;
+typedef TYPE_1__ svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_error_t ;
+typedef int apr_size_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_HASH_TERMINATOR ;
+ int * SVN_NO_ERROR ;
+ int * svn_hash__make (int *) ;
+ int svn_hash_read2 (int *,int *,int ,int *) ;
+ int * svn_stream_from_string (TYPE_1__*,int *) ;
 
 svn_error_t *
 svn_fs_fs__deserialize_revprops(void **out,
@@ -45,7 +45,7 @@ svn_fs_fs__deserialize_revprops(void **out,
 
   SVN_ERR(svn_hash_read2(properties, stream, SVN_HASH_TERMINATOR, pool));
 
-  /* done */
+
   *out = properties;
 
   return SVN_NO_ERROR;

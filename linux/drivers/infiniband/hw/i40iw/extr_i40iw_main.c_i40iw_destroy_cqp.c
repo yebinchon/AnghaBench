@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct i40iw_sc_dev {int /*<<< orphan*/  hw; int /*<<< orphan*/  cqp; TYPE_1__* cqp_ops; } ;
-struct i40iw_cqp {int /*<<< orphan*/ * cqp_requests; int /*<<< orphan*/ * scratch_array; int /*<<< orphan*/  sq; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct i40iw_sc_dev {int hw; int cqp; TYPE_1__* cqp_ops; } ;
+struct i40iw_cqp {int * cqp_requests; int * scratch_array; int sq; } ;
 struct i40iw_device {struct i40iw_cqp cqp; struct i40iw_sc_dev sc_dev; } ;
-struct TYPE_2__ {int /*<<< orphan*/  (* cqp_destroy ) (int /*<<< orphan*/ ) ;} ;
+struct TYPE_2__ {int (* cqp_destroy ) (int ) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  i40iw_cleanup_pending_cqp_op (struct i40iw_device*) ; 
- int /*<<< orphan*/  i40iw_free_dma_mem (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  kfree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
+
+ int i40iw_cleanup_pending_cqp_op (struct i40iw_device*) ;
+ int i40iw_free_dma_mem (int ,int *) ;
+ int kfree (int *) ;
+ int stub1 (int ) ;
 
 __attribute__((used)) static void i40iw_destroy_cqp(struct i40iw_device *iwdev, bool free_hwcqp)
 {
-	struct i40iw_sc_dev *dev = &iwdev->sc_dev;
-	struct i40iw_cqp *cqp = &iwdev->cqp;
+ struct i40iw_sc_dev *dev = &iwdev->sc_dev;
+ struct i40iw_cqp *cqp = &iwdev->cqp;
 
-	if (free_hwcqp)
-		dev->cqp_ops->cqp_destroy(dev->cqp);
+ if (free_hwcqp)
+  dev->cqp_ops->cqp_destroy(dev->cqp);
 
-	i40iw_cleanup_pending_cqp_op(iwdev);
+ i40iw_cleanup_pending_cqp_op(iwdev);
 
-	i40iw_free_dma_mem(dev->hw, &cqp->sq);
-	kfree(cqp->scratch_array);
-	iwdev->cqp.scratch_array = NULL;
+ i40iw_free_dma_mem(dev->hw, &cqp->sq);
+ kfree(cqp->scratch_array);
+ iwdev->cqp.scratch_array = ((void*)0);
 
-	kfree(cqp->cqp_requests);
-	cqp->cqp_requests = NULL;
+ kfree(cqp->cqp_requests);
+ cqp->cqp_requests = ((void*)0);
 }

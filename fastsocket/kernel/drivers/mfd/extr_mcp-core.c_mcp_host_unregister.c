@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct mcp {int /*<<< orphan*/  attached_device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  device_unregister (int /*<<< orphan*/ *) ; 
+
+
+
+struct mcp {int attached_device; } ;
+
+
+ int device_unregister (int *) ;
 
 void mcp_host_unregister(struct mcp *mcp)
 {
-	device_unregister(&mcp->attached_device);
+ device_unregister(&mcp->attached_device);
 }

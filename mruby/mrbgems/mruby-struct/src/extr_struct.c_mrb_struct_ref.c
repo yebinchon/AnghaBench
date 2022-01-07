@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * RSTRUCT_PTR (int /*<<< orphan*/ ) ; 
- size_t mrb_fixnum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_nil_value () ; 
- int /*<<< orphan*/  mrb_proc_cfunc_env_get (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+
+
+ int * RSTRUCT_PTR (int ) ;
+ size_t mrb_fixnum (int ) ;
+ int mrb_nil_value () ;
+ int mrb_proc_cfunc_env_get (int *,int ) ;
 
 __attribute__((used)) static mrb_value
 mrb_struct_ref(mrb_state *mrb, mrb_value obj)

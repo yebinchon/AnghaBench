@@ -1,43 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {long len; } ;
-struct TYPE_5__ {unsigned int dropepoch; int droprec; int duprec; int /*<<< orphan*/  pkts; } ;
-typedef  TYPE_1__ MEMPACKET_TEST_CTX ;
-typedef  TYPE_2__ MEMPACKET ;
-typedef  int /*<<< orphan*/  BIO ;
+struct TYPE_5__ {unsigned int dropepoch; int droprec; int duprec; int pkts; } ;
+typedef TYPE_1__ MEMPACKET_TEST_CTX ;
+typedef TYPE_2__ MEMPACKET ;
+typedef int BIO ;
+ TYPE_1__* BIO_get_data (int *) ;
+ long BIO_get_shutdown (int *) ;
+ int BIO_set_shutdown (int *,int) ;
 
-/* Variables and functions */
-#define  BIO_CTRL_DUP 141 
-#define  BIO_CTRL_EOF 140 
-#define  BIO_CTRL_FLUSH 139 
-#define  BIO_CTRL_GET_CLOSE 138 
-#define  BIO_CTRL_PENDING 137 
-#define  BIO_CTRL_POP 136 
-#define  BIO_CTRL_PUSH 135 
-#define  BIO_CTRL_RESET 134 
-#define  BIO_CTRL_SET_CLOSE 133 
-#define  BIO_CTRL_WPENDING 132 
- TYPE_1__* BIO_get_data (int /*<<< orphan*/ *) ; 
- long BIO_get_shutdown (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BIO_set_shutdown (int /*<<< orphan*/ *,int) ; 
-#define  MEMPACKET_CTRL_GET_DROP_REC 131 
-#define  MEMPACKET_CTRL_SET_DROP_EPOCH 130 
-#define  MEMPACKET_CTRL_SET_DROP_REC 129 
-#define  MEMPACKET_CTRL_SET_DUPLICATE_REC 128 
- int /*<<< orphan*/  sk_MEMPACKET_num (int /*<<< orphan*/ ) ; 
- TYPE_2__* sk_MEMPACKET_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+ int sk_MEMPACKET_num (int ) ;
+ TYPE_2__* sk_MEMPACKET_value (int ,int ) ;
 
 __attribute__((used)) static long mempacket_test_ctrl(BIO *bio, int cmd, long num, void *ptr)
 {
@@ -46,44 +34,44 @@ __attribute__((used)) static long mempacket_test_ctrl(BIO *bio, int cmd, long nu
     MEMPACKET *thispkt;
 
     switch (cmd) {
-    case BIO_CTRL_EOF:
+    case 140:
         ret = (long)(sk_MEMPACKET_num(ctx->pkts) == 0);
         break;
-    case BIO_CTRL_GET_CLOSE:
+    case 138:
         ret = BIO_get_shutdown(bio);
         break;
-    case BIO_CTRL_SET_CLOSE:
+    case 133:
         BIO_set_shutdown(bio, (int)num);
         break;
-    case BIO_CTRL_WPENDING:
+    case 132:
         ret = 0L;
         break;
-    case BIO_CTRL_PENDING:
+    case 137:
         thispkt = sk_MEMPACKET_value(ctx->pkts, 0);
-        if (thispkt == NULL)
+        if (thispkt == ((void*)0))
             ret = 0;
         else
             ret = thispkt->len;
         break;
-    case BIO_CTRL_FLUSH:
+    case 139:
         ret = 1;
         break;
-    case MEMPACKET_CTRL_SET_DROP_EPOCH:
+    case 130:
         ctx->dropepoch = (unsigned int)num;
         break;
-    case MEMPACKET_CTRL_SET_DROP_REC:
+    case 129:
         ctx->droprec = (int)num;
         break;
-    case MEMPACKET_CTRL_GET_DROP_REC:
+    case 131:
         ret = ctx->droprec;
         break;
-    case MEMPACKET_CTRL_SET_DUPLICATE_REC:
+    case 128:
         ctx->duprec = (int)num;
         break;
-    case BIO_CTRL_RESET:
-    case BIO_CTRL_DUP:
-    case BIO_CTRL_PUSH:
-    case BIO_CTRL_POP:
+    case 134:
+    case 141:
+    case 135:
+    case 136:
     default:
         ret = 0;
         break;

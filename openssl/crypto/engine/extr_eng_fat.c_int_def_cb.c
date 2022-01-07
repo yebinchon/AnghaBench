@@ -1,33 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int ENGINE_METHOD_ALL ; 
- unsigned int ENGINE_METHOD_CIPHERS ; 
- unsigned int ENGINE_METHOD_DH ; 
- unsigned int ENGINE_METHOD_DIGESTS ; 
- unsigned int ENGINE_METHOD_DSA ; 
- unsigned int ENGINE_METHOD_EC ; 
- unsigned int ENGINE_METHOD_PKEY_ASN1_METHS ; 
- unsigned int ENGINE_METHOD_PKEY_METHS ; 
- unsigned int ENGINE_METHOD_RAND ; 
- unsigned int ENGINE_METHOD_RSA ; 
- scalar_t__ strncmp (char const*,char*,int) ; 
+ unsigned int ENGINE_METHOD_ALL ;
+ unsigned int ENGINE_METHOD_CIPHERS ;
+ unsigned int ENGINE_METHOD_DH ;
+ unsigned int ENGINE_METHOD_DIGESTS ;
+ unsigned int ENGINE_METHOD_DSA ;
+ unsigned int ENGINE_METHOD_EC ;
+ unsigned int ENGINE_METHOD_PKEY_ASN1_METHS ;
+ unsigned int ENGINE_METHOD_PKEY_METHS ;
+ unsigned int ENGINE_METHOD_RAND ;
+ unsigned int ENGINE_METHOD_RSA ;
+ scalar_t__ strncmp (char const*,char*,int) ;
 
 __attribute__((used)) static int int_def_cb(const char *alg, int len, void *arg)
 {
     unsigned int *pflags = arg;
-    if (alg == NULL)
+    if (alg == ((void*)0))
         return 0;
     if (strncmp(alg, "ALL", len) == 0)
         *pflags |= ENGINE_METHOD_ALL;

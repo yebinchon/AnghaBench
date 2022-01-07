@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- scalar_t__ asmfile ; 
- int /*<<< orphan*/  base (int /*<<< orphan*/ ) ; 
- scalar_t__ dumpasm ; 
- int /*<<< orphan*/ * fopen (scalar_t__,char*) ; 
- scalar_t__ format (char*) ; 
- int /*<<< orphan*/  infile ; 
- int /*<<< orphan*/  mkstemps (scalar_t__,int) ; 
- scalar_t__ outfile ; 
- int /*<<< orphan*/  perror (char*) ; 
- scalar_t__ replace_suffix (int /*<<< orphan*/ ,char) ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  strcmp (scalar_t__,char*) ; 
- int /*<<< orphan*/  tmpfiles ; 
- int /*<<< orphan*/  vec_push (int /*<<< orphan*/ ,scalar_t__) ; 
+
+
+
+typedef int FILE ;
+
+
+ scalar_t__ asmfile ;
+ int base (int ) ;
+ scalar_t__ dumpasm ;
+ int * fopen (scalar_t__,char*) ;
+ scalar_t__ format (char*) ;
+ int infile ;
+ int mkstemps (scalar_t__,int) ;
+ scalar_t__ outfile ;
+ int perror (char*) ;
+ scalar_t__ replace_suffix (int ,char) ;
+ int * stdout ;
+ int strcmp (scalar_t__,char*) ;
+ int tmpfiles ;
+ int vec_push (int ,scalar_t__) ;
 
 __attribute__((used)) static FILE *open_asmfile() {
     if (dumpasm) {

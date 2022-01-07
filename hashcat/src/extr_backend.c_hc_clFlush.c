@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct TYPE_6__ {TYPE_2__* backend_ctx; } ;
-typedef  TYPE_1__ hashcat_ctx_t ;
-typedef  scalar_t__ cl_int ;
-typedef  int /*<<< orphan*/  cl_command_queue ;
+typedef TYPE_1__ hashcat_ctx_t ;
+typedef scalar_t__ cl_int ;
+typedef int cl_command_queue ;
 struct TYPE_7__ {scalar_t__ ocl; } ;
-typedef  TYPE_2__ backend_ctx_t ;
-struct TYPE_8__ {scalar_t__ (* clFlush ) (int /*<<< orphan*/ ) ;} ;
-typedef  TYPE_3__ OCL_PTR ;
+typedef TYPE_2__ backend_ctx_t ;
+struct TYPE_8__ {scalar_t__ (* clFlush ) (int ) ;} ;
+typedef TYPE_3__ OCL_PTR ;
 
-/* Variables and functions */
- scalar_t__ const CL_SUCCESS ; 
- int /*<<< orphan*/  event_log_error (TYPE_1__*,char*,int /*<<< orphan*/ ) ; 
- scalar_t__ stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  val2cstr_cl (scalar_t__ const) ; 
+
+ scalar_t__ const CL_SUCCESS ;
+ int event_log_error (TYPE_1__*,char*,int ) ;
+ scalar_t__ stub1 (int ) ;
+ int val2cstr_cl (scalar_t__ const) ;
 
 int hc_clFlush (hashcat_ctx_t *hashcat_ctx, cl_command_queue command_queue)
 {

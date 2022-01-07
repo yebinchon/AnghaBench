@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CFLAG_CLEAR ; 
- int /*<<< orphan*/  FLAG_C ; 
- int /*<<< orphan*/  FLAG_N ; 
- int /*<<< orphan*/  FLAG_V ; 
- int /*<<< orphan*/  FLAG_Z ; 
- int /*<<< orphan*/  NFLAG_8 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OPER_AY_IX_8 () ; 
- int /*<<< orphan*/  VFLAG_CLEAR ; 
+
+
+
+typedef int uint ;
+
+
+ int CFLAG_CLEAR ;
+ int FLAG_C ;
+ int FLAG_N ;
+ int FLAG_V ;
+ int FLAG_Z ;
+ int NFLAG_8 (int ) ;
+ int OPER_AY_IX_8 () ;
+ int VFLAG_CLEAR ;
 
 __attribute__((used)) static void m68k_op_tst_8_ix(void)
 {

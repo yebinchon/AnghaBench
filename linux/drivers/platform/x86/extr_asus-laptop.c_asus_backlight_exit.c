@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct asus_laptop {int /*<<< orphan*/ * backlight_device; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  backlight_device_unregister (int /*<<< orphan*/ *) ; 
+
+
+
+struct asus_laptop {int * backlight_device; } ;
+
+
+ int backlight_device_unregister (int *) ;
 
 __attribute__((used)) static void asus_backlight_exit(struct asus_laptop *asus)
 {
-	backlight_device_unregister(asus->backlight_device);
-	asus->backlight_device = NULL;
+ backlight_device_unregister(asus->backlight_device);
+ asus->backlight_device = ((void*)0);
 }

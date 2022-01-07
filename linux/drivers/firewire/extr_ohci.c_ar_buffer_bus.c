@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ar_context {int /*<<< orphan*/ * pages; } ;
-typedef  int /*<<< orphan*/  dma_addr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  page_private (int /*<<< orphan*/ ) ; 
+
+
+
+struct ar_context {int * pages; } ;
+typedef int dma_addr_t ;
+
+
+ int page_private (int ) ;
 
 __attribute__((used)) static inline dma_addr_t ar_buffer_bus(struct ar_context *ctx, unsigned int i)
 {
-	return page_private(ctx->pages[i]);
+ return page_private(ctx->pages[i]);
 }

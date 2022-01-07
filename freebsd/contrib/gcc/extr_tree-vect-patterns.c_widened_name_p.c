@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  stmt_vec_info ;
-typedef  int /*<<< orphan*/  loop_vec_info ;
-typedef  enum vect_def_type { ____Placeholder_vect_def_type } vect_def_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INTEGRAL_TYPE_P (int /*<<< orphan*/ ) ; 
- scalar_t__ MODIFY_EXPR ; 
- scalar_t__ NOP_EXPR ; 
- int /*<<< orphan*/  STMT_VINFO_LOOP_VINFO (int /*<<< orphan*/ ) ; 
- scalar_t__ TREE_CODE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TREE_OPERAND (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  TREE_TYPE (int /*<<< orphan*/ ) ; 
- int TYPE_PRECISION (int /*<<< orphan*/ ) ; 
- scalar_t__ TYPE_UNSIGNED (int /*<<< orphan*/ ) ; 
- int vect_constant_def ; 
- int vect_invariant_def ; 
- int /*<<< orphan*/  vect_is_simple_use (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*) ; 
- int vect_loop_def ; 
- int /*<<< orphan*/  vinfo_for_stmt (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int tree ;
+typedef int stmt_vec_info ;
+typedef int loop_vec_info ;
+typedef enum vect_def_type { ____Placeholder_vect_def_type } vect_def_type ;
+
+
+ int INTEGRAL_TYPE_P (int ) ;
+ scalar_t__ MODIFY_EXPR ;
+ scalar_t__ NOP_EXPR ;
+ int STMT_VINFO_LOOP_VINFO (int ) ;
+ scalar_t__ TREE_CODE (int ) ;
+ int TREE_OPERAND (int ,int) ;
+ int TREE_TYPE (int ) ;
+ int TYPE_PRECISION (int ) ;
+ scalar_t__ TYPE_UNSIGNED (int ) ;
+ int vect_constant_def ;
+ int vect_invariant_def ;
+ int vect_is_simple_use (int ,int ,int *,int *,int*) ;
+ int vect_loop_def ;
+ int vinfo_for_stmt (int ) ;
 
 __attribute__((used)) static bool
 widened_name_p (tree name, tree use_stmt, tree *half_type, tree *def_stmt)
@@ -47,21 +47,21 @@ widened_name_p (tree name, tree use_stmt, tree *half_type, tree *def_stmt)
   loop_vinfo = STMT_VINFO_LOOP_VINFO (stmt_vinfo);
 
   if (!vect_is_simple_use (name, loop_vinfo, def_stmt, &def, &dt))
-    return false;
+    return 0;
 
   if (dt != vect_loop_def
       && dt != vect_invariant_def && dt != vect_constant_def)
-    return false;
+    return 0;
 
   if (! *def_stmt)
-    return false;
+    return 0;
 
   if (TREE_CODE (*def_stmt) != MODIFY_EXPR)
-    return false;
+    return 0;
 
   expr = TREE_OPERAND (*def_stmt, 1);
   if (TREE_CODE (expr) != NOP_EXPR)
-    return false;
+    return 0;
 
   oprnd0 = TREE_OPERAND (expr, 0);
 
@@ -69,14 +69,14 @@ widened_name_p (tree name, tree use_stmt, tree *half_type, tree *def_stmt)
   if (!INTEGRAL_TYPE_P (type) || !INTEGRAL_TYPE_P (*half_type)
       || (TYPE_UNSIGNED (type) != TYPE_UNSIGNED (*half_type))
       || (TYPE_PRECISION (type) < (TYPE_PRECISION (*half_type) * 2)))
-    return false;
+    return 0;
 
   if (!vect_is_simple_use (oprnd0, loop_vinfo, &dummy, &dummy, &dt))
-    return false;
+    return 0;
 
   if (dt != vect_invariant_def && dt != vect_constant_def
       && dt != vect_loop_def)
-    return false;
+    return 0;
 
-  return true;
+  return 1;
 }

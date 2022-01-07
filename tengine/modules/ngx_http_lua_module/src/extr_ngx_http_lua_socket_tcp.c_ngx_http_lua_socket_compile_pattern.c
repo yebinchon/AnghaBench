@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ u_char ;
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef scalar_t__ u_char ;
+typedef int ngx_log_t ;
+typedef int ngx_int_t ;
 struct TYPE_6__ {size_t len; } ;
 struct TYPE_7__ {TYPE_3__** recovering; TYPE_1__ pattern; } ;
-typedef  TYPE_2__ ngx_http_lua_socket_compiled_pattern_t ;
+typedef TYPE_2__ ngx_http_lua_socket_compiled_pattern_t ;
 struct TYPE_8__ {scalar_t__ chr; int new_state; struct TYPE_8__* next; } ;
-typedef  TYPE_3__ ngx_http_lua_dfa_edge_t ;
+typedef TYPE_3__ ngx_http_lua_dfa_edge_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_ERROR ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- int /*<<< orphan*/  NGX_OK ; 
- void* ngx_alloc (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_log_debug7 (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,int,size_t,scalar_t__*,scalar_t__,int,size_t,scalar_t__*) ; 
- scalar_t__ ngx_memcmp (scalar_t__*,scalar_t__*,size_t) ; 
- int /*<<< orphan*/  ngx_memzero (TYPE_3__**,size_t) ; 
+
+ int NGX_ERROR ;
+ int NGX_LOG_DEBUG_HTTP ;
+ int NGX_OK ;
+ void* ngx_alloc (int,int *) ;
+ int ngx_log_debug7 (int ,int *,int ,char*,int,size_t,scalar_t__*,scalar_t__,int,size_t,scalar_t__*) ;
+ scalar_t__ ngx_memcmp (scalar_t__*,scalar_t__*,size_t) ;
+ int ngx_memzero (TYPE_3__**,size_t) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_lua_socket_compile_pattern(u_char *data, size_t len,
     ngx_http_lua_socket_compiled_pattern_t *cp, ngx_log_t *log)
 {
-    size_t              i;
-    size_t              prefix_len;
-    size_t              size;
-    unsigned            found;
-    int                 cur_state, new_state;
+    size_t i;
+    size_t prefix_len;
+    size_t size;
+    unsigned found;
+    int cur_state, new_state;
 
-    ngx_http_lua_dfa_edge_t         *edge;
-    ngx_http_lua_dfa_edge_t        **last = NULL;
+    ngx_http_lua_dfa_edge_t *edge;
+    ngx_http_lua_dfa_edge_t **last = ((void*)0);
 
     cp->pattern.len = len;
 
@@ -64,10 +64,10 @@ ngx_http_lua_socket_compile_pattern(u_char *data, size_t len,
                 cur_state = i + prefix_len;
                 new_state = prefix_len + 1;
 
-                if (cp->recovering == NULL) {
+                if (cp->recovering == ((void*)0)) {
                     size = sizeof(void *) * (len - 2);
                     cp->recovering = ngx_alloc(size, log);
-                    if (cp->recovering == NULL) {
+                    if (cp->recovering == ((void*)0)) {
                         return NGX_ERROR;
                     }
 
@@ -78,7 +78,7 @@ ngx_http_lua_socket_compile_pattern(u_char *data, size_t len,
 
                 found = 0;
 
-                if (edge == NULL) {
+                if (edge == ((void*)0)) {
                     last = &cp->recovering[cur_state - 2];
 
                 } else {
@@ -107,13 +107,13 @@ ngx_http_lua_socket_compile_pattern(u_char *data, size_t len,
                                    new_state, (size_t) new_state, data);
 
                     edge = ngx_alloc(sizeof(ngx_http_lua_dfa_edge_t), log);
-                    if (edge == NULL) {
+                    if (edge == ((void*)0)) {
                         return NGX_ERROR;
                     }
 
                     edge->chr = data[prefix_len];
                     edge->new_state = new_state;
-                    edge->next = NULL;
+                    edge->next = ((void*)0);
 
                     *last = edge;
                 }

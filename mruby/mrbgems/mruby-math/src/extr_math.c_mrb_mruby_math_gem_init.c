@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct RClass {int dummy; } ;
-struct TYPE_8__ {int /*<<< orphan*/  eStandardError_class; } ;
-typedef  TYPE_1__ mrb_state ;
+struct TYPE_8__ {int eStandardError_class; } ;
+typedef TYPE_1__ mrb_state ;
 
-/* Variables and functions */
- int MRB_ARGS_OPT (int) ; 
- int MRB_ARGS_REQ (int) ; 
- double M_E ; 
- double M_PI ; 
- double atan (double) ; 
- double exp (double) ; 
- int /*<<< orphan*/  math_acos ; 
- int /*<<< orphan*/  math_acosh ; 
- int /*<<< orphan*/  math_asin ; 
- int /*<<< orphan*/  math_asinh ; 
- int /*<<< orphan*/  math_atan ; 
- int /*<<< orphan*/  math_atan2 ; 
- int /*<<< orphan*/  math_atanh ; 
- int /*<<< orphan*/  math_cbrt ; 
- int /*<<< orphan*/  math_cos ; 
- int /*<<< orphan*/  math_cosh ; 
- int /*<<< orphan*/  math_erf ; 
- int /*<<< orphan*/  math_erfc ; 
- int /*<<< orphan*/  math_exp ; 
- int /*<<< orphan*/  math_frexp ; 
- int /*<<< orphan*/  math_hypot ; 
- int /*<<< orphan*/  math_ldexp ; 
- int /*<<< orphan*/  math_log ; 
- int /*<<< orphan*/  math_log10 ; 
- int /*<<< orphan*/  math_log2 ; 
- int /*<<< orphan*/  math_sin ; 
- int /*<<< orphan*/  math_sinh ; 
- int /*<<< orphan*/  math_sqrt ; 
- int /*<<< orphan*/  math_tan ; 
- int /*<<< orphan*/  math_tanh ; 
- int /*<<< orphan*/  mrb_define_class_under (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_define_const (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ) ; 
- struct RClass* mrb_define_module (TYPE_1__*,char*) ; 
- int /*<<< orphan*/  mrb_define_module_function (TYPE_1__*,struct RClass*,char*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  mrb_float_value (TYPE_1__*,double) ; 
+
+ int MRB_ARGS_OPT (int) ;
+ int MRB_ARGS_REQ (int) ;
+ double M_E ;
+ double M_PI ;
+ double atan (double) ;
+ double exp (double) ;
+ int math_acos ;
+ int math_acosh ;
+ int math_asin ;
+ int math_asinh ;
+ int math_atan ;
+ int math_atan2 ;
+ int math_atanh ;
+ int math_cbrt ;
+ int math_cos ;
+ int math_cosh ;
+ int math_erf ;
+ int math_erfc ;
+ int math_exp ;
+ int math_frexp ;
+ int math_hypot ;
+ int math_ldexp ;
+ int math_log ;
+ int math_log10 ;
+ int math_log2 ;
+ int math_sin ;
+ int math_sinh ;
+ int math_sqrt ;
+ int math_tan ;
+ int math_tanh ;
+ int mrb_define_class_under (TYPE_1__*,struct RClass*,char*,int ) ;
+ int mrb_define_const (TYPE_1__*,struct RClass*,char*,int ) ;
+ struct RClass* mrb_define_module (TYPE_1__*,char*) ;
+ int mrb_define_module_function (TYPE_1__*,struct RClass*,char*,int ,int) ;
+ int mrb_float_value (TYPE_1__*,double) ;
 
 void
 mrb_mruby_math_gem_init(mrb_state* mrb)
@@ -60,17 +60,17 @@ mrb_mruby_math_gem_init(mrb_state* mrb)
 
   mrb_define_class_under(mrb, mrb_math, "DomainError", mrb->eStandardError_class);
 
-#ifdef M_PI
-  mrb_define_const(mrb, mrb_math, "PI", mrb_float_value(mrb, M_PI));
-#else
-  mrb_define_const(mrb, mrb_math, "PI", mrb_float_value(mrb, atan(1.0)*4.0));
-#endif
 
-#ifdef M_E
-  mrb_define_const(mrb, mrb_math, "E", mrb_float_value(mrb, M_E));
-#else
+
+
+  mrb_define_const(mrb, mrb_math, "PI", mrb_float_value(mrb, atan(1.0)*4.0));
+
+
+
+
+
   mrb_define_const(mrb, mrb_math, "E", mrb_float_value(mrb, exp(1.0)));
-#endif
+
 
   mrb_define_module_function(mrb, mrb_math, "sin", math_sin, MRB_ARGS_REQ(1));
   mrb_define_module_function(mrb, mrb_math, "cos", math_cos, MRB_ARGS_REQ(1));
@@ -101,6 +101,6 @@ mrb_mruby_math_gem_init(mrb_state* mrb)
 
   mrb_define_module_function(mrb, mrb_math, "hypot", math_hypot, MRB_ARGS_REQ(2));
 
-  mrb_define_module_function(mrb, mrb_math, "erf",  math_erf,  MRB_ARGS_REQ(1));
+  mrb_define_module_function(mrb, mrb_math, "erf", math_erf, MRB_ARGS_REQ(1));
   mrb_define_module_function(mrb, mrb_math, "erfc", math_erfc, MRB_ARGS_REQ(1));
 }

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  item_t ;
-struct TYPE_5__ {int minr; int maxr; int /*<<< orphan*/  idx; } ;
+
+
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int item_t ;
+struct TYPE_5__ {int minr; int maxr; int idx; } ;
 struct TYPE_4__ {scalar_t__ h; scalar_t__ filled; } ;
 
-/* Variables and functions */
- int FLAG_ENTRY_SORT_SEARCH ; 
- int FLAG_PRIORITY_SORT_SEARCH ; 
- int FLAG_REVERSE_SEARCH ; 
- scalar_t__ MAX_RATES ; 
- scalar_t__ MAX_RES ; 
- scalar_t__ Q_hash_group_mode ; 
- scalar_t__ Q_limit ; 
- int Q_order ; 
- TYPE_3__* Q_range ; 
- scalar_t__ Q_type ; 
- int /*<<< orphan*/ ** R ; 
- int* RV ; 
- scalar_t__ R_cnt ; 
- int /*<<< orphan*/  R_tot ; 
- scalar_t__ R_tot_undef_hash ; 
- int /*<<< orphan*/  add_items_into_hashset () ; 
- int /*<<< orphan*/  assert (int) ; 
- int evaluate_rating (int /*<<< orphan*/ *,int) ; 
- long long extract_hash_item (int /*<<< orphan*/ *) ; 
- int get_rate_item (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hashset_init (scalar_t__) ; 
- scalar_t__ hashset_ll_insert (TYPE_1__*,long long const) ; 
- TYPE_1__ hs ; 
- int n_ranges ; 
- int order ; 
- int /*<<< orphan*/  store_res_group_mode (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int,...) ; 
+
+ int FLAG_ENTRY_SORT_SEARCH ;
+ int FLAG_PRIORITY_SORT_SEARCH ;
+ int FLAG_REVERSE_SEARCH ;
+ scalar_t__ MAX_RATES ;
+ scalar_t__ MAX_RES ;
+ scalar_t__ Q_hash_group_mode ;
+ scalar_t__ Q_limit ;
+ int Q_order ;
+ TYPE_3__* Q_range ;
+ scalar_t__ Q_type ;
+ int ** R ;
+ int* RV ;
+ scalar_t__ R_cnt ;
+ int R_tot ;
+ scalar_t__ R_tot_undef_hash ;
+ int add_items_into_hashset () ;
+ int assert (int) ;
+ int evaluate_rating (int *,int) ;
+ long long extract_hash_item (int *) ;
+ int get_rate_item (int *,int ) ;
+ int hashset_init (scalar_t__) ;
+ scalar_t__ hashset_ll_insert (TYPE_1__*,long long const) ;
+ TYPE_1__ hs ;
+ int n_ranges ;
+ int order ;
+ int store_res_group_mode (int *,int) ;
+ int vkprintf (int,char*,int,...) ;
 
 __attribute__((used)) static int store_res (item_t *I, int priority) {
   vkprintf (3, "store_res!!, n_ranges = %d\n", n_ranges);
@@ -65,13 +65,13 @@ __attribute__((used)) static int store_res (item_t *I, int priority) {
         R[R_cnt++] = I;
       } else {
         if (hs.h == 0) {
-          /* add found items into hashset */
+
           hashset_init (MAX_RES);
           add_items_into_hashset ();
         }
         if (hashset_ll_insert (&hs, hc)) {
           if (hs.filled + R_tot_undef_hash > MAX_RES) {
-            /* stop search : we found too many different groups */
+
             return 0;
           }
         }
@@ -87,7 +87,7 @@ __attribute__((used)) static int store_res (item_t *I, int priority) {
     return 1;
   }
 
-  if (Q_type == MAX_RATES && !(Q_order & (FLAG_ENTRY_SORT_SEARCH | FLAG_PRIORITY_SORT_SEARCH))) { //sort by id
+  if (Q_type == MAX_RATES && !(Q_order & (FLAG_ENTRY_SORT_SEARCH | FLAG_PRIORITY_SORT_SEARCH))) {
     if ((Q_order & FLAG_REVERSE_SEARCH) && R_cnt == Q_limit) {
       R_cnt = 0;
     }

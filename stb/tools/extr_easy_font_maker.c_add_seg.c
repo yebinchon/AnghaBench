@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int dx; int y; int len; } ;
-typedef  TYPE_1__ segment ;
+typedef TYPE_1__ segment ;
 
-/* Variables and functions */
- int LEN_LIMIT ; 
- int X_LIMIT ; 
- int /*<<< orphan*/  assert (int) ; 
- int* last_x ; 
- int non_empty ; 
- int /*<<< orphan*/ * num_seg ; 
- int /*<<< orphan*/  segments ; 
- int /*<<< orphan*/  stb_arr_push (int /*<<< orphan*/ ,TYPE_1__) ; 
- int /*<<< orphan*/  vsegments ; 
+
+ int LEN_LIMIT ;
+ int X_LIMIT ;
+ int assert (int) ;
+ int* last_x ;
+ int non_empty ;
+ int * num_seg ;
+ int segments ;
+ int stb_arr_push (int ,TYPE_1__) ;
+ int vsegments ;
 
 void add_seg(int x, int y, int len, int horizontal)
 {
@@ -43,7 +43,7 @@ void add_seg(int x, int y, int len, int horizontal)
    s.y = y;
    s.len = len;
    non_empty += len != 0;
-   //assert(s.x == x);
+
    assert(s.y == y);
    assert(s.len == len);
    ++num_seg[horizontal];

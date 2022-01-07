@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  meterList; int /*<<< orphan*/  numOfVnodes; int /*<<< orphan*/  vnodeGid; int /*<<< orphan*/  dbName; } ;
-typedef  TYPE_1__ SVgObj ;
-typedef  int /*<<< orphan*/  SDbObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * mgmtGetDb (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mgmtRemoveVgroupFromDb (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  mgmtUnSetDnodeVgid (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tfree (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int meterList; int numOfVnodes; int vnodeGid; int dbName; } ;
+typedef TYPE_1__ SVgObj ;
+typedef int SDbObj ;
+
+
+ int * mgmtGetDb (int ) ;
+ int mgmtRemoveVgroupFromDb (int *,TYPE_1__*) ;
+ int mgmtUnSetDnodeVgid (int ,int ) ;
+ int tfree (int ) ;
 
 void *mgmtVgroupActionDelete(void *row, char *str, int size, int *ssize) {
   SVgObj *pVgroup = (SVgObj *)row;
   SDbObj *pDb = mgmtGetDb(pVgroup->dbName);
 
-  if (pDb != NULL) mgmtRemoveVgroupFromDb(pDb, pVgroup);
+  if (pDb != ((void*)0)) mgmtRemoveVgroupFromDb(pDb, pVgroup);
   mgmtUnSetDnodeVgid(pVgroup->vnodeGid, pVgroup->numOfVnodes);
   tfree(pVgroup->meterList);
 
-  return NULL;
+  return ((void*)0);
 }

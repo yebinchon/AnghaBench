@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FILENAME_MAX ; 
- int /*<<< orphan*/  Util_strlcpy (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dir_path ; 
- int /*<<< orphan*/ * dp ; 
- int /*<<< orphan*/ * opendir (int /*<<< orphan*/ ) ; 
+ int FILENAME_MAX ;
+ int Util_strlcpy (int ,char const*,int ) ;
+ int dir_path ;
+ int * dp ;
+ int * opendir (int ) ;
 
 __attribute__((used)) static int BasicUIOpenDir(const char *dirname)
 {
-	Util_strlcpy(dir_path, dirname, FILENAME_MAX);
-	dp = opendir(dir_path);
-	return dp != NULL;
+ Util_strlcpy(dir_path, dirname, FILENAME_MAX);
+ dp = opendir(dir_path);
+ return dp != ((void*)0);
 }

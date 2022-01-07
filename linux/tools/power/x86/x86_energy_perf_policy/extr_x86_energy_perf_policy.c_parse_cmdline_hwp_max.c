@@ -1,38 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int HWP_CAP_HIGHEST ;
+ int HWP_CAP_LOWEST ;
 
-/* Forward declarations */
 
-/* Type definitions */
 
-/* Variables and functions */
- int HWP_CAP_HIGHEST ; 
- int HWP_CAP_LOWEST ; 
-#define  OPTARG_BALANCE_PERFORMANCE 132 
-#define  OPTARG_BALANCE_POWER 131 
-#define  OPTARG_NORMAL 130 
-#define  OPTARG_PERFORMANCE 129 
-#define  OPTARG_POWER 128 
- int update_hwp_max ; 
+
+
+ int update_hwp_max ;
 
 int parse_cmdline_hwp_max(int i)
 {
-	update_hwp_max = 1;
+ update_hwp_max = 1;
 
-	switch (i) {
-	case OPTARG_POWER:
-		return HWP_CAP_LOWEST;
-	case OPTARG_NORMAL:
-	case OPTARG_BALANCE_POWER:
-	case OPTARG_BALANCE_PERFORMANCE:
-	case OPTARG_PERFORMANCE:
-		return HWP_CAP_HIGHEST;
-	}
-	return i;
+ switch (i) {
+ case 128:
+  return HWP_CAP_LOWEST;
+ case 130:
+ case 131:
+ case 132:
+ case 129:
+  return HWP_CAP_HIGHEST;
+ }
+ return i;
 }

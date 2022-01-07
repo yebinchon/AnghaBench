@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_20__   TYPE_8__ ;
-typedef  struct TYPE_19__   TYPE_4__ ;
-typedef  struct TYPE_18__   TYPE_3__ ;
-typedef  struct TYPE_17__   TYPE_2__ ;
-typedef  struct TYPE_16__   TYPE_1__ ;
-typedef  struct TYPE_15__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_object_t ;
-struct TYPE_18__ {void* pf_control; int /*<<< orphan*/ * pf_seek; int /*<<< orphan*/  pf_readdir; int /*<<< orphan*/  pf_read; int /*<<< orphan*/  psz_url; TYPE_4__* p_sys; } ;
-typedef  TYPE_3__ stream_t ;
-struct TYPE_16__ {int i_count; int /*<<< orphan*/ * ppsz_names; } ;
+
+
+typedef struct TYPE_20__ TYPE_8__ ;
+typedef struct TYPE_19__ TYPE_4__ ;
+typedef struct TYPE_18__ TYPE_3__ ;
+typedef struct TYPE_17__ TYPE_2__ ;
+typedef struct TYPE_16__ TYPE_1__ ;
+typedef struct TYPE_15__ TYPE_10__ ;
+
+
+typedef int vlc_object_t ;
+struct TYPE_18__ {void* pf_control; int * pf_seek; int pf_readdir; int pf_read; int psz_url; TYPE_4__* p_sys; } ;
+typedef TYPE_3__ stream_t ;
+struct TYPE_16__ {int i_count; int * ppsz_names; } ;
 struct TYPE_17__ {TYPE_1__ exports; } ;
 struct TYPE_20__ {scalar_t__ psz_option; } ;
-struct TYPE_19__ {int b_auto_guid; TYPE_10__* p_nfs_url; int /*<<< orphan*/ * p_mount; TYPE_2__ res; int /*<<< orphan*/ * p_nfs; int /*<<< orphan*/ * p_nfsdir; int /*<<< orphan*/ * p_nfsfh; int /*<<< orphan*/ * psz_url_decoded_slash; int /*<<< orphan*/ * psz_url_decoded; TYPE_8__ encoded_url; } ;
-typedef  TYPE_4__ access_sys_t ;
-struct TYPE_15__ {int /*<<< orphan*/  server; int /*<<< orphan*/ * path; int /*<<< orphan*/ * file; } ;
+struct TYPE_19__ {int b_auto_guid; TYPE_10__* p_nfs_url; int * p_mount; TYPE_2__ res; int * p_nfs; int * p_nfsdir; int * p_nfsfh; int * psz_url_decoded_slash; int * psz_url_decoded; TYPE_8__ encoded_url; } ;
+typedef TYPE_4__ access_sys_t ;
+struct TYPE_15__ {int server; int * path; int * file; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Close (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  DirRead ; 
- void* FileControl ; 
- int /*<<< orphan*/  FileRead ; 
- int /*<<< orphan*/ * FileSeek ; 
- int /*<<< orphan*/  MountRead ; 
- int NfsInit (TYPE_3__*,int /*<<< orphan*/ *) ; 
- int VLC_EGENERIC ; 
- int VLC_ENOMEM ; 
- int VLC_SUCCESS ; 
- void* access_vaDirectoryControlHelper ; 
- int /*<<< orphan*/  mount_export_cb ; 
- scalar_t__ mount_getexports_async (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  mount_getexports_finished_cb ; 
- int /*<<< orphan*/  msg_Dbg (TYPE_3__*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  msg_Err (TYPE_3__*,char*) ; 
- int /*<<< orphan*/  nfs_destroy_context (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nfs_destroy_url (TYPE_10__*) ; 
- scalar_t__ nfs_mount_async (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  nfs_mount_cb ; 
- int /*<<< orphan*/  nfs_mount_open_finished_cb ; 
- int /*<<< orphan*/  nfs_mount_open_slash_finished_cb ; 
- int /*<<< orphan*/ * rpc_init_context () ; 
- scalar_t__ strstr (scalar_t__,char*) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
- int var_InheritBool (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ vlc_UrlParseFixup (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vlc_assert_unreachable () ; 
- scalar_t__ vlc_mount_mainloop (TYPE_3__*,int /*<<< orphan*/ ) ; 
- scalar_t__ vlc_nfs_mainloop (TYPE_3__*,int /*<<< orphan*/ ) ; 
- TYPE_4__* vlc_obj_calloc (int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/ * vlc_uri_decode_duplicate (int /*<<< orphan*/ ) ; 
+
+ int Close (int *) ;
+ int DirRead ;
+ void* FileControl ;
+ int FileRead ;
+ int * FileSeek ;
+ int MountRead ;
+ int NfsInit (TYPE_3__*,int *) ;
+ int VLC_EGENERIC ;
+ int VLC_ENOMEM ;
+ int VLC_SUCCESS ;
+ void* access_vaDirectoryControlHelper ;
+ int mount_export_cb ;
+ scalar_t__ mount_getexports_async (int *,int ,int ,TYPE_3__*) ;
+ int mount_getexports_finished_cb ;
+ int msg_Dbg (TYPE_3__*,char*,int ,int *) ;
+ int msg_Err (TYPE_3__*,char*) ;
+ int nfs_destroy_context (int *) ;
+ int nfs_destroy_url (TYPE_10__*) ;
+ scalar_t__ nfs_mount_async (int *,int ,int *,int ,TYPE_3__*) ;
+ int nfs_mount_cb ;
+ int nfs_mount_open_finished_cb ;
+ int nfs_mount_open_slash_finished_cb ;
+ int * rpc_init_context () ;
+ scalar_t__ strstr (scalar_t__,char*) ;
+ scalar_t__ unlikely (int ) ;
+ int var_InheritBool (int *,char*) ;
+ scalar_t__ vlc_UrlParseFixup (TYPE_8__*,int ) ;
+ int vlc_assert_unreachable () ;
+ scalar_t__ vlc_mount_mainloop (TYPE_3__*,int ) ;
+ scalar_t__ vlc_nfs_mainloop (TYPE_3__*,int ) ;
+ TYPE_4__* vlc_obj_calloc (int *,int,int) ;
+ int * vlc_uri_decode_duplicate (int ) ;
 
 __attribute__((used)) static int
 Open(vlc_object_t *p_obj)
@@ -66,34 +66,34 @@ Open(vlc_object_t *p_obj)
     stream_t *p_access = (stream_t *)p_obj;
     access_sys_t *p_sys = vlc_obj_calloc(p_obj, 1, sizeof (*p_sys));
 
-    if (unlikely(p_sys == NULL))
+    if (unlikely(p_sys == ((void*)0)))
         return VLC_ENOMEM;
     p_access->p_sys = p_sys;
 
     p_sys->b_auto_guid = var_InheritBool(p_obj, "nfs-auto-guid");
 
-    /* nfs_* functions need a decoded url */
+
     p_sys->psz_url_decoded = vlc_uri_decode_duplicate(p_access->psz_url);
-    if (p_sys->psz_url_decoded == NULL)
+    if (p_sys->psz_url_decoded == ((void*)0))
         goto error;
 
-    /* Parse the encoded URL */
+
     if (vlc_UrlParseFixup(&p_sys->encoded_url, p_access->psz_url) != 0)
         goto error;
     if (p_sys->encoded_url.psz_option)
     {
         if (strstr(p_sys->encoded_url.psz_option, "uid")
          || strstr(p_sys->encoded_url.psz_option, "gid"))
-            p_sys->b_auto_guid = false;
+            p_sys->b_auto_guid = 0;
     }
 
     if (NfsInit(p_access, p_sys->psz_url_decoded) == -1)
         goto error;
 
-    if (p_sys->p_nfs_url->path != NULL && p_sys->p_nfs_url->file != NULL)
+    if (p_sys->p_nfs_url->path != ((void*)0) && p_sys->p_nfs_url->file != ((void*)0))
     {
-        /* The url has a valid path and file, mount the path and open/opendir
-         * the file */
+
+
         msg_Dbg(p_access, "nfs_mount: server: '%s', path: '%s'",
                 p_sys->p_nfs_url->server, p_sys->p_nfs_url->path);
 
@@ -107,17 +107,17 @@ Open(vlc_object_t *p_obj)
         if (vlc_nfs_mainloop(p_access, nfs_mount_open_finished_cb) < 0)
             goto error;
 
-        if (p_sys->psz_url_decoded_slash != NULL)
+        if (p_sys->psz_url_decoded_slash != ((void*)0))
         {
-            /* Retry to mount by adding a '/' to the path, see comment in
-             * nfs_mount_cb */
+
+
             nfs_destroy_url(p_sys->p_nfs_url);
             nfs_destroy_context(p_sys->p_nfs);
-            p_sys->p_nfs_url = NULL;
-            p_sys->p_nfs = NULL;
+            p_sys->p_nfs_url = ((void*)0);
+            p_sys->p_nfs = ((void*)0);
 
             if (NfsInit(p_access, p_sys->psz_url_decoded_slash) == -1
-             || p_sys->p_nfs_url->path == NULL || p_sys->p_nfs_url->file == NULL)
+             || p_sys->p_nfs_url->path == ((void*)0) || p_sys->p_nfs_url->file == ((void*)0))
                 goto error;
 
             if (nfs_mount_async(p_sys->p_nfs, p_sys->p_nfs_url->server,
@@ -131,16 +131,16 @@ Open(vlc_object_t *p_obj)
                 goto error;
         }
 
-        if (p_sys->p_nfsfh != NULL)
+        if (p_sys->p_nfsfh != ((void*)0))
         {
             p_access->pf_read = FileRead;
             p_access->pf_seek = FileSeek;
             p_access->pf_control = FileControl;
         }
-        else if (p_sys->p_nfsdir != NULL)
+        else if (p_sys->p_nfsdir != ((void*)0))
         {
             p_access->pf_readdir = DirRead;
-            p_access->pf_seek = NULL;
+            p_access->pf_seek = ((void*)0);
             p_access->pf_control = access_vaDirectoryControlHelper;
         }
         else
@@ -148,18 +148,18 @@ Open(vlc_object_t *p_obj)
     }
     else
     {
-        /* url is just a server: fetch exports point */
+
         nfs_destroy_context(p_sys->p_nfs);
-        p_sys->p_nfs = NULL;
+        p_sys->p_nfs = ((void*)0);
 
         p_sys->p_mount = rpc_init_context();
-        if (p_sys->p_mount == NULL)
+        if (p_sys->p_mount == ((void*)0))
         {
             msg_Err(p_access, "rpc_init_context failed");
             goto error;
         }
 
-        p_sys->res.exports.ppsz_names = NULL;
+        p_sys->res.exports.ppsz_names = ((void*)0);
         p_sys->res.exports.i_count = -1;
 
         if (mount_getexports_async(p_sys->p_mount, p_sys->p_nfs_url->server,
@@ -173,7 +173,7 @@ Open(vlc_object_t *p_obj)
             goto error;
 
         p_access->pf_readdir = MountRead;
-        p_access->pf_seek = NULL;
+        p_access->pf_seek = ((void*)0);
         p_access->pf_control = access_vaDirectoryControlHelper;
     }
 

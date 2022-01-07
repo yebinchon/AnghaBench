@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  out; int /*<<< orphan*/  s; TYPE_2__* p_sys; } ;
-typedef  TYPE_1__ demux_t ;
-struct TYPE_9__ {TYPE_3__** track; int /*<<< orphan*/ * meta; int /*<<< orphan*/ * p_fp; int /*<<< orphan*/ * p_root; } ;
-typedef  TYPE_2__ demux_sys_t ;
+
+
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int out; int s; TYPE_2__* p_sys; } ;
+typedef TYPE_1__ demux_t ;
+struct TYPE_9__ {TYPE_3__** track; int * meta; int * p_fp; int * p_root; } ;
+typedef TYPE_2__ demux_sys_t ;
 struct TYPE_10__ {struct TYPE_10__* p_fmt; scalar_t__ p_es; } ;
-typedef  TYPE_3__ asf_track_t ;
+typedef TYPE_3__ asf_track_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASF_FreeObjectRoot (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FlushQueues (TYPE_1__*) ; 
- int MAX_ASF_TRACKS ; 
- int /*<<< orphan*/  es_format_Clean (TYPE_3__*) ; 
- int /*<<< orphan*/  es_out_Del (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  vlc_meta_Delete (int /*<<< orphan*/ *) ; 
+
+ int ASF_FreeObjectRoot (int ,int *) ;
+ int FlushQueues (TYPE_1__*) ;
+ int MAX_ASF_TRACKS ;
+ int es_format_Clean (TYPE_3__*) ;
+ int es_out_Del (int ,scalar_t__) ;
+ int free (TYPE_3__*) ;
+ int vlc_meta_Delete (int *) ;
 
 __attribute__((used)) static void DemuxEnd( demux_t *p_demux )
 {
@@ -36,13 +36,13 @@ __attribute__((used)) static void DemuxEnd( demux_t *p_demux )
     if( p_sys->p_root )
     {
         ASF_FreeObjectRoot( p_demux->s, p_sys->p_root );
-        p_sys->p_root = NULL;
-        p_sys->p_fp = NULL;
+        p_sys->p_root = ((void*)0);
+        p_sys->p_fp = ((void*)0);
     }
     if( p_sys->meta )
     {
         vlc_meta_Delete( p_sys->meta );
-        p_sys->meta = NULL;
+        p_sys->meta = ((void*)0);
     }
 
     FlushQueues( p_demux );

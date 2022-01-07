@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  char WCHAR ;
-struct TYPE_10__ {int /*<<< orphan*/  db; } ;
-struct TYPE_9__ {int /*<<< orphan*/  hdr; } ;
-typedef  TYPE_1__ MSIRECORD ;
-typedef  TYPE_2__ MSIPACKAGE ;
-typedef  int INT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  INSTALLMESSAGE_INFO ; 
- int /*<<< orphan*/  INSTALLMESSAGE_SHOWDIALOG ; 
- TYPE_1__* MSI_CreateRecord (int) ; 
- int MSI_ProcessMessage (TYPE_2__*,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  MSI_RecordSetInteger (TYPE_1__*,int,int) ; 
- int /*<<< orphan*/  MSI_RecordSetStringW (TYPE_1__*,int,char const*) ; 
- int /*<<< orphan*/  TABLE_Exists (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  msiobj_release (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef char WCHAR ;
+struct TYPE_10__ {int db; } ;
+struct TYPE_9__ {int hdr; } ;
+typedef TYPE_1__ MSIRECORD ;
+typedef TYPE_2__ MSIPACKAGE ;
+typedef int INT ;
+
+
+ int INSTALLMESSAGE_INFO ;
+ int INSTALLMESSAGE_SHOWDIALOG ;
+ TYPE_1__* MSI_CreateRecord (int) ;
+ int MSI_ProcessMessage (TYPE_2__*,int ,TYPE_1__*) ;
+ int MSI_RecordSetInteger (TYPE_1__*,int,int) ;
+ int MSI_RecordSetStringW (TYPE_1__*,int,char const*) ;
+ int TABLE_Exists (int ,char const*) ;
+ int msiobj_release (int *) ;
 
 INT ACTION_ShowDialog( MSIPACKAGE *package, const WCHAR *dialog )
 {

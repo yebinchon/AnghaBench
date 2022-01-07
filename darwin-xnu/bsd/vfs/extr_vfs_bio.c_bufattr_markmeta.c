@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  TYPE_1__* bufattr_t ;
-struct TYPE_3__ {int /*<<< orphan*/  ba_flags; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BA_META ; 
- int /*<<< orphan*/  SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef TYPE_1__* bufattr_t ;
+struct TYPE_3__ {int ba_flags; } ;
+
+
+ int BA_META ;
+ int SET (int ,int ) ;
 
 void
 bufattr_markmeta(bufattr_t bap) {
-	SET(bap->ba_flags,  BA_META);
+ SET(bap->ba_flags, BA_META);
 }

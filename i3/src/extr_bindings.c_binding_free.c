@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Binding_Keycode {struct Binding_Keycode* command; struct Binding_Keycode* symbol; int /*<<< orphan*/  keycodes_head; } ;
-typedef  struct Binding_Keycode Binding ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE (struct Binding_Keycode*) ; 
- int /*<<< orphan*/  TAILQ_EMPTY (int /*<<< orphan*/ *) ; 
- struct Binding_Keycode* TAILQ_FIRST (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TAILQ_REMOVE (int /*<<< orphan*/ *,struct Binding_Keycode*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  keycodes ; 
+
+
+
+struct Binding_Keycode {struct Binding_Keycode* command; struct Binding_Keycode* symbol; int keycodes_head; } ;
+typedef struct Binding_Keycode Binding ;
+
+
+ int FREE (struct Binding_Keycode*) ;
+ int TAILQ_EMPTY (int *) ;
+ struct Binding_Keycode* TAILQ_FIRST (int *) ;
+ int TAILQ_REMOVE (int *,struct Binding_Keycode*,int ) ;
+ int keycodes ;
 
 void binding_free(Binding *bind) {
-    if (bind == NULL) {
+    if (bind == ((void*)0)) {
         return;
     }
 

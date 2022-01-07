@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {scalar_t__ state; int /*<<< orphan*/ * conf; } ;
-typedef  TYPE_1__ mbedtls_ssl_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_SSL_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_SSL_DEBUG_MSG (int,char*) ; 
- scalar_t__ MBEDTLS_SSL_HANDSHAKE_OVER ; 
- int mbedtls_ssl_handshake_step (TYPE_1__*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {scalar_t__ state; int * conf; } ;
+typedef TYPE_1__ mbedtls_ssl_context ;
+
+
+ int MBEDTLS_ERR_SSL_BAD_INPUT_DATA ;
+ int MBEDTLS_SSL_DEBUG_MSG (int,char*) ;
+ scalar_t__ MBEDTLS_SSL_HANDSHAKE_OVER ;
+ int mbedtls_ssl_handshake_step (TYPE_1__*) ;
 
 int mbedtls_ssl_handshake( mbedtls_ssl_context *ssl )
 {
     int ret = 0;
 
-    if( ssl == NULL || ssl->conf == NULL )
+    if( ssl == ((void*)0) || ssl->conf == ((void*)0) )
         return( MBEDTLS_ERR_SSL_BAD_INPUT_DATA );
 
     MBEDTLS_SSL_DEBUG_MSG( 2, ( "=> handshake" ) );

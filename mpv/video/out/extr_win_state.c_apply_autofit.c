@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct m_geometry {int /*<<< orphan*/  wh_valid; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  m_geometry_apply (int*,int*,int*,int*,int,int,struct m_geometry*) ; 
+
+
+
+struct m_geometry {int wh_valid; } ;
+
+
+ int m_geometry_apply (int*,int*,int*,int*,int,int,struct m_geometry*) ;
 
 __attribute__((used)) static void apply_autofit(int *w, int *h, int scr_w, int scr_h,
                           struct m_geometry *geo, bool allow_up, bool allow_down)
@@ -30,8 +30,8 @@ __attribute__((used)) static void apply_autofit(int *w, int *h, int scr_w, int s
     if (!allow_down && *w >= n_w && *h >= n_h)
         return;
 
-    // If aspect mismatches, always make the window smaller than the fit box
-    // (Or larger, if allow_down==false.)
+
+
     double asp = (double)*w / *h;
     double n_asp = (double)n_w / n_h;
     if ((n_asp <= asp) == allow_down) {

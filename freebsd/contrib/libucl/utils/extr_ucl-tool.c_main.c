@@ -1,79 +1,79 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ucl_object_t ;
-typedef  scalar_t__ ucl_emitter_t ;
+
+
+
+
+typedef int ucl_object_t ;
+typedef scalar_t__ ucl_emitter_t ;
 struct ucl_schema_error {char* msg; } ;
 struct ucl_parser {int dummy; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- size_t BUFSIZ ; 
- int /*<<< orphan*/  EXIT_FAILURE ; 
- scalar_t__ UCL_EMIT_CONFIG ; 
- scalar_t__ UCL_EMIT_JSON ; 
- scalar_t__ UCL_EMIT_JSON_COMPACT ; 
- scalar_t__ UCL_EMIT_MSGPACK ; 
- scalar_t__ UCL_EMIT_YAML ; 
- int /*<<< orphan*/  exit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  feof (int /*<<< orphan*/ *) ; 
- scalar_t__ ferror (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ *,char*,...) ; 
- scalar_t__ fread (unsigned char*,int,size_t,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fwrite (unsigned char*,int,size_t,int /*<<< orphan*/ *) ; 
- char getopt_long (int,char**,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- unsigned char* malloc (size_t) ; 
- char* optarg ; 
- int /*<<< orphan*/  opts ; 
- int /*<<< orphan*/  perror (char*) ; 
- unsigned char* realloc (unsigned char*,size_t) ; 
- int /*<<< orphan*/ * stderr ; 
- int /*<<< orphan*/ * stdin ; 
- int /*<<< orphan*/ * stdout ; 
- int /*<<< orphan*/  strcmp (char*,char*) ; 
- char* ucl_object_emit (int /*<<< orphan*/ *,scalar_t__) ; 
- unsigned char* ucl_object_emit_len (int /*<<< orphan*/ *,scalar_t__,size_t*) ; 
- int /*<<< orphan*/  ucl_object_validate (int /*<<< orphan*/ *,int /*<<< orphan*/ *,struct ucl_schema_error*) ; 
- int /*<<< orphan*/  ucl_parser_add_chunk (struct ucl_parser*,unsigned char*,size_t) ; 
- int /*<<< orphan*/  ucl_parser_add_file (struct ucl_parser*,char const*) ; 
- char* ucl_parser_get_error (struct ucl_parser*) ; 
- int /*<<< orphan*/ * ucl_parser_get_object (struct ucl_parser*) ; 
- struct ucl_parser* ucl_parser_new (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage (char*,int /*<<< orphan*/ *) ; 
+
+ size_t BUFSIZ ;
+ int EXIT_FAILURE ;
+ scalar_t__ UCL_EMIT_CONFIG ;
+ scalar_t__ UCL_EMIT_JSON ;
+ scalar_t__ UCL_EMIT_JSON_COMPACT ;
+ scalar_t__ UCL_EMIT_MSGPACK ;
+ scalar_t__ UCL_EMIT_YAML ;
+ int exit (int ) ;
+ int fclose (int *) ;
+ int feof (int *) ;
+ scalar_t__ ferror (int *) ;
+ int * fopen (char*,char*) ;
+ int fprintf (int *,char*,...) ;
+ scalar_t__ fread (unsigned char*,int,size_t,int *) ;
+ int fwrite (unsigned char*,int,size_t,int *) ;
+ char getopt_long (int,char**,char*,int ,int *) ;
+ unsigned char* malloc (size_t) ;
+ char* optarg ;
+ int opts ;
+ int perror (char*) ;
+ unsigned char* realloc (unsigned char*,size_t) ;
+ int * stderr ;
+ int * stdin ;
+ int * stdout ;
+ int strcmp (char*,char*) ;
+ char* ucl_object_emit (int *,scalar_t__) ;
+ unsigned char* ucl_object_emit_len (int *,scalar_t__,size_t*) ;
+ int ucl_object_validate (int *,int *,struct ucl_schema_error*) ;
+ int ucl_parser_add_chunk (struct ucl_parser*,unsigned char*,size_t) ;
+ int ucl_parser_add_file (struct ucl_parser*,char const*) ;
+ char* ucl_parser_get_error (struct ucl_parser*) ;
+ int * ucl_parser_get_object (struct ucl_parser*) ;
+ struct ucl_parser* ucl_parser_new (int ) ;
+ int usage (char*,int *) ;
 
 int main(int argc, char **argv) {
   char ch;
   FILE *in = stdin, *out = stdout;
-  const char *schema = NULL;
-  unsigned char *buf = NULL;
+  const char *schema = ((void*)0);
+  unsigned char *buf = ((void*)0);
   size_t size = 0, r = 0;
-  struct ucl_parser *parser = NULL;
-  ucl_object_t *obj = NULL;
+  struct ucl_parser *parser = ((void*)0);
+  ucl_object_t *obj = ((void*)0);
   ucl_emitter_t emitter = UCL_EMIT_CONFIG;
 
-  while((ch = getopt_long(argc, argv, "hi:o:s:f:", opts, NULL)) != -1) {
+  while((ch = getopt_long(argc, argv, "hi:o:s:f:", opts, ((void*)0))) != -1) {
     switch (ch) {
     case 'i':
       in = fopen(optarg, "r");
-      if (in == NULL) {
+      if (in == ((void*)0)) {
         perror("fopen on input file");
         exit(EXIT_FAILURE);
       }
       break;
     case 'o':
       out = fopen(optarg, "w");
-      if (out == NULL) {
+      if (out == ((void*)0)) {
         perror("fopen on output file");
         exit(EXIT_FAILURE);
       }
@@ -114,7 +114,7 @@ int main(int argc, char **argv) {
     if (r == size) {
       buf = realloc(buf, size*2);
       size *= 2;
-      if (buf == NULL) {
+      if (buf == ((void*)0)) {
         perror("realloc");
         exit(EXIT_FAILURE);
       }
@@ -131,14 +131,14 @@ int main(int argc, char **argv) {
             ucl_parser_get_error(parser));
     exit(EXIT_FAILURE);
   }
-  if ((obj = ucl_parser_get_object(parser)) == NULL) {
+  if ((obj = ucl_parser_get_object(parser)) == ((void*)0)) {
     fprintf(stderr, "Failed to get root object: %s\n",
             ucl_parser_get_error(parser));
     exit(EXIT_FAILURE);
   }
-  if (schema != NULL) {
+  if (schema != ((void*)0)) {
     struct ucl_parser *schema_parser = ucl_parser_new(0);
-    ucl_object_t *schema_obj = NULL;
+    ucl_object_t *schema_obj = ((void*)0);
     struct ucl_schema_error error;
 
     if (!ucl_parser_add_file(schema_parser, schema)) {
@@ -146,7 +146,7 @@ int main(int argc, char **argv) {
               ucl_parser_get_error(schema_parser));
       exit(EXIT_FAILURE);
     }
-    if ((schema_obj = ucl_parser_get_object(schema_parser)) == NULL) {
+    if ((schema_obj = ucl_parser_get_object(schema_parser)) == ((void*)0)) {
       fprintf(stderr, "Failed to get root object: %s\n",
               ucl_parser_get_error(schema_parser));
       exit(EXIT_FAILURE);

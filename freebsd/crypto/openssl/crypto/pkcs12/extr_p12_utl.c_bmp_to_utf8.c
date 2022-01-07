@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int UTF8_putc (unsigned char*,int,unsigned long) ; 
+ int UTF8_putc (unsigned char*,int,unsigned long) ;
 
 __attribute__((used)) static int bmp_to_utf8(char *str, const unsigned char *utf16, int len)
 {
@@ -22,10 +14,10 @@ __attribute__((used)) static int bmp_to_utf8(char *str, const unsigned char *utf
 
     if (len < 2) return -1;
 
-    /* pull UTF-16 character in big-endian order */
+
     utf32chr = (utf16[0]<<8) | utf16[1];
 
-    if (utf32chr >= 0xD800 && utf32chr < 0xE000) {   /* two chars */
+    if (utf32chr >= 0xD800 && utf32chr < 0xE000) {
         unsigned int lo;
 
         if (len < 4) return -1;

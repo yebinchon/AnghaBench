@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct roundingData {int dummy; } ;
-typedef  scalar_t__ sbits32 ;
-typedef  int int16 ;
-typedef  int /*<<< orphan*/  float32 ;
-typedef  int /*<<< orphan*/  flag ;
-typedef  int bits32 ;
+typedef scalar_t__ sbits32 ;
+typedef int int16 ;
+typedef int float32 ;
+typedef int flag ;
+typedef int bits32 ;
 
-/* Variables and functions */
- int extractFloat32Exp (int /*<<< orphan*/ ) ; 
- int extractFloat32Frac (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  packFloat32 (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  propagateFloat32NaN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  roundAndPackFloat32 (struct roundingData*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  shift32RightJamming (int,int,int*) ; 
+
+ int extractFloat32Exp (int ) ;
+ int extractFloat32Frac (int ) ;
+ int packFloat32 (int ,int,int) ;
+ int propagateFloat32NaN (int ,int ) ;
+ int roundAndPackFloat32 (struct roundingData*,int ,int,int) ;
+ int shift32RightJamming (int,int,int*) ;
 
 __attribute__((used)) static float32 addFloat32Sigs( struct roundingData *roundData, float32 a, float32 b, flag zSign )
 {

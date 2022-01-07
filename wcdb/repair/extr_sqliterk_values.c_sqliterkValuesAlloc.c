@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_values ;
 
-/* Variables and functions */
- int SQLITERK_MISUSE ; 
- int SQLITERK_NOMEM ; 
- int SQLITERK_OK ; 
- int /*<<< orphan*/ * sqliterkOSMalloc (int) ; 
- int sqliterkValuesAutoGrow (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqliterkValuesFree (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int sqliterk_values ;
+
+
+ int SQLITERK_MISUSE ;
+ int SQLITERK_NOMEM ;
+ int SQLITERK_OK ;
+ int * sqliterkOSMalloc (int) ;
+ int sqliterkValuesAutoGrow (int *) ;
+ int sqliterkValuesFree (int *) ;
 
 int sqliterkValuesAlloc(sqliterk_values **values)
 {

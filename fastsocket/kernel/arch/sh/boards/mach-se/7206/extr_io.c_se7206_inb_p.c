@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  delay () ; 
- int* port2adr (unsigned long) ; 
+ int delay () ;
+ int* port2adr (unsigned long) ;
 
 unsigned char se7206_inb_p(unsigned long port)
 {
-	unsigned long v;
+ unsigned long v;
 
-	v = (*port2adr(port)) & 0xff;
-	delay();
-	return v;
+ v = (*port2adr(port)) & 0xff;
+ delay();
+ return v;
 }

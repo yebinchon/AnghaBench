@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int UInt32 ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
 struct TYPE_3__ {int Range; int Code; } ;
-typedef  TYPE_1__ CPpmd7z_RangeDec ;
+typedef TYPE_1__ CPpmd7z_RangeDec ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Range_Normalize (TYPE_1__*) ; 
+
+ int Range_Normalize (TYPE_1__*) ;
 
 __attribute__((used)) static UInt32 Range_DecodeBit_7z(void *pp, UInt32 size0)
 {

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buffer ;
-typedef  int UINT32 ;
-struct TYPE_5__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biSizeImage; int /*<<< orphan*/  biCompression; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int buffer ;
+typedef int UINT32 ;
+struct TYPE_5__ {int biSize; int biWidth; int biHeight; int biPlanes; int biBitCount; int biSizeImage; int biCompression; } ;
 struct TYPE_6__ {TYPE_1__ bmiHeader; } ;
-typedef  int /*<<< orphan*/  HDC ;
-typedef  int /*<<< orphan*/  DWORD ;
-typedef  int /*<<< orphan*/  BITMAPINFOHEADER ;
-typedef  TYPE_2__ BITMAPINFO ;
+typedef int HDC ;
+typedef int DWORD ;
+typedef int BITMAPINFOHEADER ;
+typedef TYPE_2__ BITMAPINFO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BI_RGB ; 
- int /*<<< orphan*/  DIB_RGB_COLORS ; 
- int /*<<< orphan*/  StretchDIBits (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int const**,TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ok (int,char*,int /*<<< orphan*/ ,int,int,int) ; 
+
+ int BI_RGB ;
+ int DIB_RGB_COLORS ;
+ int StretchDIBits (int ,int ,int ,int,int,int ,int ,int,int,int const**,TYPE_2__*,int ,int ) ;
+ int memset (TYPE_2__*,int ,int) ;
+ int ok (int,char*,int ,int,int,int) ;
 
 __attribute__((used)) static void check_StretchDIBits_pixel(HDC hdcDst, UINT32 *dstBuffer, UINT32 *srcBuffer,
                                       DWORD dwRop, UINT32 expected, int line)

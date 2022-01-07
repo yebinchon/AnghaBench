@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  ref; } ;
-typedef  TYPE_1__ THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Add (int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  AddRef (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  LockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnlockList (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WaitThreadList ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int ref; } ;
+typedef TYPE_1__ THREAD ;
+
+
+ int Add (int ,TYPE_1__*) ;
+ int AddRef (int ) ;
+ int LockList (int ) ;
+ int UnlockList (int ) ;
+ int WaitThreadList ;
 
 void AddWaitThread(THREAD *t)
 {
-	// Validate arguments
-	if (t == NULL)
-	{
-		return;
-	}
 
-	AddRef(t->ref);
+ if (t == ((void*)0))
+ {
+  return;
+ }
 
-	LockList(WaitThreadList);
-	{
-		Add(WaitThreadList, t);
-	}
-	UnlockList(WaitThreadList);
+ AddRef(t->ref);
+
+ LockList(WaitThreadList);
+ {
+  Add(WaitThreadList, t);
+ }
+ UnlockList(WaitThreadList);
 }

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/  LPCSTR ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CP_ACP ; 
- int MultiByteToWideChar (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
+
+
+
+typedef int WCHAR ;
+typedef int * LPWSTR ;
+typedef int LPCSTR ;
+typedef int DWORD ;
+
+
+ int CP_ACP ;
+ int MultiByteToWideChar (int ,int ,int ,int,int *,int) ;
+ int * msi_alloc (int) ;
 
 __attribute__((used)) static inline LPWSTR strdupAtoW( LPCSTR str )
 {
-    LPWSTR ret = NULL;
+    LPWSTR ret = ((void*)0);
     DWORD len;
 
     if (!str) return ret;
-    len = MultiByteToWideChar( CP_ACP, 0, str, -1, NULL, 0 );
+    len = MultiByteToWideChar( CP_ACP, 0, str, -1, ((void*)0), 0 );
     ret = msi_alloc( len * sizeof(WCHAR) );
     if (ret)
         MultiByteToWideChar( CP_ACP, 0, str, -1, ret, len );

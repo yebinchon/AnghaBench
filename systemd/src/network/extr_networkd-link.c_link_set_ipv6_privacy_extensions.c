@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {TYPE_1__* network; int /*<<< orphan*/  ifname; } ;
+
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_7__ {TYPE_1__* network; int ifname; } ;
 struct TYPE_6__ {scalar_t__ ipv6_privacy_extensions; } ;
-typedef  TYPE_2__ Link ;
-typedef  scalar_t__ IPv6PrivacyExtensions ;
+typedef TYPE_2__ Link ;
+typedef scalar_t__ IPv6PrivacyExtensions ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET6 ; 
- scalar_t__ link_ipv6_privacy_extensions (TYPE_2__*) ; 
- int /*<<< orphan*/  log_link_warning_errno (TYPE_2__*,int,char*) ; 
- int sysctl_write_ip_property_int (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int) ; 
+
+ int AF_INET6 ;
+ scalar_t__ link_ipv6_privacy_extensions (TYPE_2__*) ;
+ int log_link_warning_errno (TYPE_2__*,int,char*) ;
+ int sysctl_write_ip_property_int (int ,int ,char*,int) ;
 
 __attribute__((used)) static int link_set_ipv6_privacy_extensions(Link *link) {
         IPv6PrivacyExtensions s;

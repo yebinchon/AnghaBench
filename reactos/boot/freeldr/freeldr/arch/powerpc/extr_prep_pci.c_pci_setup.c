@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pci_desc ;
-typedef  int /*<<< orphan*/  pci_cfg ;
-struct TYPE_2__ {int /*<<< orphan*/ * cfg; } ;
-typedef  int /*<<< orphan*/  PCONFIGURATION_COMPONENT_DATA ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PCI_BASECLASS ; 
- int /*<<< orphan*/  PCI_DEVICEID ; 
- int /*<<< orphan*/  PCI_HEADER_TYPE ; 
- int /*<<< orphan*/  PCI_VENDORID ; 
- TYPE_1__ pci1_desc ; 
- void* pci_read (int /*<<< orphan*/ *,int,int,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  vga1_desc ; 
- int /*<<< orphan*/  vga_setup (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int pci_desc ;
+typedef int pci_cfg ;
+struct TYPE_2__ {int * cfg; } ;
+typedef int PCONFIGURATION_COMPONENT_DATA ;
+
+
+ int PCI_BASECLASS ;
+ int PCI_DEVICEID ;
+ int PCI_HEADER_TYPE ;
+ int PCI_VENDORID ;
+ TYPE_1__ pci1_desc ;
+ void* pci_read (int *,int,int,int,int ,int) ;
+ int printf (char*,...) ;
+ int vga1_desc ;
+ int vga_setup (int ,int *,int *,int,int,int) ;
 
 void pci_setup( PCONFIGURATION_COMPONENT_DATA pcibus, pci_desc *desc ) {
     unsigned char type;

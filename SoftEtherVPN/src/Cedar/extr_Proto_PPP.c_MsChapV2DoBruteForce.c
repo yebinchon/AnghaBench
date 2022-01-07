@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tmp ;
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/  LIST ;
-typedef  int /*<<< orphan*/  IPC_MSCHAP_V2_AUTHINFO ;
 
-/* Variables and functions */
- char* CopyStr (char*) ; 
- char* LIST_DATA (int /*<<< orphan*/ *,scalar_t__) ; 
- scalar_t__ LIST_NUM (int /*<<< orphan*/ *) ; 
- int MAX_SIZE ; 
- int /*<<< orphan*/  MIN (scalar_t__,int) ; 
- scalar_t__ MsChapV2VerityPassword (int /*<<< orphan*/ *,char*) ; 
- scalar_t__ Power (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetStrCaseAccordingToBits (char*,scalar_t__) ; 
- int /*<<< orphan*/  StrCpy (char*,int,char*) ; 
- scalar_t__ StrLen (char*) ; 
+
+
+
+typedef int tmp ;
+typedef scalar_t__ UINT ;
+typedef int LIST ;
+typedef int IPC_MSCHAP_V2_AUTHINFO ;
+
+
+ char* CopyStr (char*) ;
+ char* LIST_DATA (int *,scalar_t__) ;
+ scalar_t__ LIST_NUM (int *) ;
+ int MAX_SIZE ;
+ int MIN (scalar_t__,int) ;
+ scalar_t__ MsChapV2VerityPassword (int *,char*) ;
+ scalar_t__ Power (int,int ) ;
+ int SetStrCaseAccordingToBits (char*,scalar_t__) ;
+ int StrCpy (char*,int,char*) ;
+ scalar_t__ StrLen (char*) ;
 
 char *MsChapV2DoBruteForce(IPC_MSCHAP_V2_AUTHINFO *d, LIST *password_list)
 {
-	UINT i;
-	// Validate arguments
-	if (d == NULL || password_list == NULL)
-	{
-		return NULL;
-	}
+ UINT i;
 
-	for (i = 0;i < LIST_NUM(password_list);i++)
-	{
-		char *s = LIST_DATA(password_list, i);
-		char tmp[MAX_SIZE];
-		UINT j, max;
-		UINT len;
+ if (d == ((void*)0) || password_list == ((void*)0))
+ {
+  return ((void*)0);
+ }
 
-		StrCpy(tmp, sizeof(tmp), s);
+ for (i = 0;i < LIST_NUM(password_list);i++)
+ {
+  char *s = LIST_DATA(password_list, i);
+  char tmp[MAX_SIZE];
+  UINT j, max;
+  UINT len;
 
-		len = StrLen(tmp);
-		max = Power(2, MIN(len, 9));
+  StrCpy(tmp, sizeof(tmp), s);
 
-		for (j = 0;j < max;j++)
-		{
-			SetStrCaseAccordingToBits(tmp, j);
-			if (MsChapV2VerityPassword(d, tmp))
-			{
-				return CopyStr(tmp);
-			}
-		}
-	}
+  len = StrLen(tmp);
+  max = Power(2, MIN(len, 9));
 
-	return NULL;
+  for (j = 0;j < max;j++)
+  {
+   SetStrCaseAccordingToBits(tmp, j);
+   if (MsChapV2VerityPassword(d, tmp))
+   {
+    return CopyStr(tmp);
+   }
+  }
+ }
+
+ return ((void*)0);
 }

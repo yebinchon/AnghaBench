@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vdc_port {int /*<<< orphan*/  tag_set; } ;
+
+
+
+
+struct vdc_port {int tag_set; } ;
 struct request_queue {struct vdc_port* queuedata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  blk_cleanup_queue (struct request_queue*) ; 
- int /*<<< orphan*/  blk_mq_free_tag_set (int /*<<< orphan*/ *) ; 
+
+ int blk_cleanup_queue (struct request_queue*) ;
+ int blk_mq_free_tag_set (int *) ;
 
 __attribute__((used)) static void cleanup_queue(struct request_queue *q)
 {
-	struct vdc_port *port = q->queuedata;
+ struct vdc_port *port = q->queuedata;
 
-	blk_cleanup_queue(q);
-	blk_mq_free_tag_set(&port->tag_set);
+ blk_cleanup_queue(q);
+ blk_mq_free_tag_set(&port->tag_set);
 }

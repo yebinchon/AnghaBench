@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MAX_PATH ; 
- int get_arch (char*) ; 
- int get_os (char*) ; 
- int /*<<< orphan*/  memcpy (char*,char const*,int) ; 
- int strlen (char const*) ; 
- int target_arch ; 
- int target_os ; 
+ int MAX_PATH ;
+ int get_arch (char*) ;
+ int get_os (char*) ;
+ int memcpy (char*,char const*,int) ;
+ int strlen (char const*) ;
+ int target_arch ;
+ int target_os ;
 
 bool is_excluded_target_filename(const char *name) {
     const char *end = name + strlen(name);
@@ -61,6 +53,6 @@ bool is_excluded_target_filename(const char *name) {
     } else if (arch1 != -1) {
         return arch1 != target_arch;
     } else {
-        return false;
+        return 0;
     }
 }

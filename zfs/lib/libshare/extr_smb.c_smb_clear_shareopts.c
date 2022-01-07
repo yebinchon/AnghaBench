@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sa_share_impl_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * shareopts; } ;
 
-/* Variables and functions */
- TYPE_1__* FSINFO (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smb_fstype ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int sa_share_impl_t ;
+struct TYPE_2__ {int * shareopts; } ;
+
+
+ TYPE_1__* FSINFO (int ,int ) ;
+ int free (int *) ;
+ int smb_fstype ;
 
 __attribute__((used)) static void
 smb_clear_shareopts(sa_share_impl_t impl_share)
 {
-	free(FSINFO(impl_share, smb_fstype)->shareopts);
-	FSINFO(impl_share, smb_fstype)->shareopts = NULL;
+ free(FSINFO(impl_share, smb_fstype)->shareopts);
+ FSINFO(impl_share, smb_fstype)->shareopts = ((void*)0);
 }

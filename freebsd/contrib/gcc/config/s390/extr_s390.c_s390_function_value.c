@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ tree ;
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- scalar_t__ GET_MODE_CLASS (int) ; 
- int GET_MODE_SIZE (int) ; 
- scalar_t__ MODE_INT ; 
- scalar_t__ SCALAR_FLOAT_MODE_P (int) ; 
- scalar_t__ TARGET_HARD_FLOAT ; 
- int /*<<< orphan*/  TYPE_MODE (scalar_t__) ; 
- int TYPE_UNSIGNED (scalar_t__) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gen_rtx_REG (int,int) ; 
- int promote_mode (scalar_t__,int /*<<< orphan*/ ,int*,int) ; 
+
+
+
+typedef scalar_t__ tree ;
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ scalar_t__ GET_MODE_CLASS (int) ;
+ int GET_MODE_SIZE (int) ;
+ scalar_t__ MODE_INT ;
+ scalar_t__ SCALAR_FLOAT_MODE_P (int) ;
+ scalar_t__ TARGET_HARD_FLOAT ;
+ int TYPE_MODE (scalar_t__) ;
+ int TYPE_UNSIGNED (scalar_t__) ;
+ int gcc_assert (int) ;
+ int gen_rtx_REG (int,int) ;
+ int promote_mode (scalar_t__,int ,int*,int) ;
 
 rtx
 s390_function_value (tree type, enum machine_mode mode)

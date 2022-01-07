@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct bna_rxf {TYPE_2__* rx; } ;
-struct bna_mcam_handle {scalar_t__ refcnt; int /*<<< orphan*/  qe; int /*<<< orphan*/  handle; } ;
+struct bna_mcam_handle {scalar_t__ refcnt; int qe; int handle; } ;
 struct bna_mac {struct bna_mcam_handle* handle; } ;
-typedef  enum bna_cleanup_type { ____Placeholder_bna_cleanup_type } bna_cleanup_type ;
+typedef enum bna_cleanup_type { ____Placeholder_bna_cleanup_type } bna_cleanup_type ;
 struct TYPE_4__ {TYPE_1__* bna; } ;
-struct TYPE_3__ {int /*<<< orphan*/  mcam_mod; } ;
+struct TYPE_3__ {int mcam_mod; } ;
 
-/* Variables and functions */
- int BNA_HARD_CLEANUP ; 
- int /*<<< orphan*/  bna_bfi_mcast_del_req (struct bna_rxf*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bna_mcam_mod_handle_put (int /*<<< orphan*/ *,struct bna_mcam_handle*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
+
+ int BNA_HARD_CLEANUP ;
+ int bna_bfi_mcast_del_req (struct bna_rxf*,int ) ;
+ int bna_mcam_mod_handle_put (int *,struct bna_mcam_handle*) ;
+ int list_del (int *) ;
 
 __attribute__((used)) static int
 bna_rxf_mcast_del(struct bna_rxf *rxf, struct bna_mac *mac,
-		enum bna_cleanup_type cleanup)
+  enum bna_cleanup_type cleanup)
 {
-	struct bna_mcam_handle *mchandle;
-	int ret = 0;
+ struct bna_mcam_handle *mchandle;
+ int ret = 0;
 
-	mchandle = mac->handle;
-	if (mchandle == NULL)
-		return ret;
+ mchandle = mac->handle;
+ if (mchandle == ((void*)0))
+  return ret;
 
-	mchandle->refcnt--;
-	if (mchandle->refcnt == 0) {
-		if (cleanup == BNA_HARD_CLEANUP) {
-			bna_bfi_mcast_del_req(rxf, mchandle->handle);
-			ret = 1;
-		}
-		list_del(&mchandle->qe);
-		bna_mcam_mod_handle_put(&rxf->rx->bna->mcam_mod, mchandle);
-	}
-	mac->handle = NULL;
+ mchandle->refcnt--;
+ if (mchandle->refcnt == 0) {
+  if (cleanup == BNA_HARD_CLEANUP) {
+   bna_bfi_mcast_del_req(rxf, mchandle->handle);
+   ret = 1;
+  }
+  list_del(&mchandle->qe);
+  bna_mcam_mod_handle_put(&rxf->rx->bna->mcam_mod, mchandle);
+ }
+ mac->handle = ((void*)0);
 
-	return ret;
+ return ret;
 }

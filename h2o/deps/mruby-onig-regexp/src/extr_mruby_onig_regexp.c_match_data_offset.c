@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  mrb_value ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  size_t mrb_int ;
-struct TYPE_3__ {int /*<<< orphan*/ * end; int /*<<< orphan*/ * beg; } ;
-typedef  TYPE_1__ OnigRegion ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Data_Get_Struct (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,TYPE_1__*) ; 
- size_t match_data_actual_index (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  match_data_check_index (size_t const) ; 
- int /*<<< orphan*/  mrb_ary_new_capa (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mrb_ary_push (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_fixnum_value (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mrb_get_args (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mrb_onig_region_type ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int mrb_value ;
+typedef int mrb_state ;
+typedef size_t mrb_int ;
+struct TYPE_3__ {int * end; int * beg; } ;
+typedef TYPE_1__ OnigRegion ;
+
+
+ int Data_Get_Struct (int *,int ,int *,TYPE_1__*) ;
+ size_t match_data_actual_index (int *,int ,int ) ;
+ int match_data_check_index (size_t const) ;
+ int mrb_ary_new_capa (int *,int) ;
+ int mrb_ary_push (int *,int ,int ) ;
+ int mrb_fixnum_value (int ) ;
+ int mrb_get_args (int *,char*,int *) ;
+ int mrb_onig_region_type ;
 
 __attribute__((used)) static mrb_value
 match_data_offset(mrb_state* mrb, mrb_value self) {

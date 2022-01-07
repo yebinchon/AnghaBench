@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct rxe_task {int (* func ) (int /*<<< orphan*/ ) ;int ret; int /*<<< orphan*/  arg; } ;
 
-/* Variables and functions */
- int stub1 (int /*<<< orphan*/ ) ; 
+
+
+
+struct rxe_task {int (* func ) (int ) ;int ret; int arg; } ;
+
+
+ int stub1 (int ) ;
 
 int __rxe_do_task(struct rxe_task *task)
 
 {
-	int ret;
+ int ret;
 
-	while ((ret = task->func(task->arg)) == 0)
-		;
+ while ((ret = task->func(task->arg)) == 0)
+  ;
 
-	task->ret = ret;
+ task->ret = ret;
 
-	return ret;
+ return ret;
 }

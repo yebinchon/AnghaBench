@@ -1,27 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int ocfs2_control_get_this_node () ; 
+ int ocfs2_control_get_this_node () ;
 
 __attribute__((used)) static int user_cluster_this_node(unsigned int *this_node)
 {
-	int rc;
+ int rc;
 
-	rc = ocfs2_control_get_this_node();
-	if (rc < 0)
-		return rc;
+ rc = ocfs2_control_get_this_node();
+ if (rc < 0)
+  return rc;
 
-	*this_node = rc;
-	return 0;
+ *this_node = rc;
+ return 0;
 }

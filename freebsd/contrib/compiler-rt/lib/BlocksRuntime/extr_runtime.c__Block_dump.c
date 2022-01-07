@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct Block_layout {int flags; struct Block_descriptor* descriptor; scalar_t__ invoke; int /*<<< orphan*/ * isa; } ;
+
+
+
+
+struct Block_layout {int flags; struct Block_descriptor* descriptor; scalar_t__ invoke; int * isa; } ;
 struct Block_descriptor {void* reserved; void* size; scalar_t__ dispose; scalar_t__ copy; } ;
 
-/* Variables and functions */
- int BLOCK_HAS_COPY_DISPOSE ; 
- int BLOCK_HAS_CTOR ; 
- int BLOCK_HAS_DESCRIPTOR ; 
- int BLOCK_IS_GC ; 
- int BLOCK_NEEDS_FREE ; 
- int BLOCK_REFCOUNT_MASK ; 
- int /*<<< orphan*/ * _NSConcreteAutoBlock ; 
- int /*<<< orphan*/ * _NSConcreteFinalizingBlock ; 
- int /*<<< orphan*/ * _NSConcreteGlobalBlock ; 
- int /*<<< orphan*/ * _NSConcreteMallocBlock ; 
- int /*<<< orphan*/ * _NSConcreteStackBlock ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,...) ; 
+
+ int BLOCK_HAS_COPY_DISPOSE ;
+ int BLOCK_HAS_CTOR ;
+ int BLOCK_HAS_DESCRIPTOR ;
+ int BLOCK_IS_GC ;
+ int BLOCK_NEEDS_FREE ;
+ int BLOCK_REFCOUNT_MASK ;
+ int * _NSConcreteAutoBlock ;
+ int * _NSConcreteFinalizingBlock ;
+ int * _NSConcreteGlobalBlock ;
+ int * _NSConcreteMallocBlock ;
+ int * _NSConcreteStackBlock ;
+ int exit (int) ;
+ int printf (char*) ;
+ int sprintf (char*,char*,...) ;
 
 const char *_Block_dump(const void *block) {
     struct Block_layout *closure = (struct Block_layout *)block;
     static char buffer[512];
     char *cp = buffer;
-    if (closure == NULL) {
+    if (closure == ((void*)0)) {
         sprintf(cp, "NULL passed to _Block_dump\n");
         return buffer;
     }
@@ -42,7 +42,7 @@ const char *_Block_dump(const void *block) {
         exit(1);
     }
     cp += sprintf(cp, "^%p (new layout) =\n", (void *)closure);
-    if (closure->isa == NULL) {
+    if (closure->isa == ((void*)0)) {
         cp += sprintf(cp, "isa: NULL\n");
     }
     else if (closure->isa == _NSConcreteStackBlock) {

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct iommu_domain {int dummy; } ;
-struct gart_device {scalar_t__ active_devices; int /*<<< orphan*/  dom_lock; int /*<<< orphan*/ * active_domain; } ;
+struct gart_device {scalar_t__ active_devices; int dom_lock; int * active_domain; } ;
 struct TYPE_2__ {struct iommu_domain* iommu; } ;
 struct device {TYPE_1__ archdata; } ;
 
-/* Variables and functions */
- struct gart_device* gart_handle ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+ struct gart_device* gart_handle ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 __attribute__((used)) static void gart_iommu_detach_dev(struct iommu_domain *domain,
-				  struct device *dev)
+      struct device *dev)
 {
-	struct gart_device *gart = gart_handle;
+ struct gart_device *gart = gart_handle;
 
-	spin_lock(&gart->dom_lock);
+ spin_lock(&gart->dom_lock);
 
-	if (dev->archdata.iommu == domain) {
-		dev->archdata.iommu = NULL;
+ if (dev->archdata.iommu == domain) {
+  dev->archdata.iommu = ((void*)0);
 
-		if (--gart->active_devices == 0)
-			gart->active_domain = NULL;
-	}
+  if (--gart->active_devices == 0)
+   gart->active_domain = ((void*)0);
+ }
 
-	spin_unlock(&gart->dom_lock);
+ spin_unlock(&gart->dom_lock);
 }

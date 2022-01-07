@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pci_dev {int /*<<< orphan*/  dev; } ;
+
+
+
+
+struct pci_dev {int dev; } ;
 struct ctx_hw_stats {int dummy; } ;
-struct bnxt_qplib_stats {int fw_id; int /*<<< orphan*/  dma; int /*<<< orphan*/  dma_map; int /*<<< orphan*/  size; } ;
+struct bnxt_qplib_stats {int fw_id; int dma; int dma_map; int size; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIGN (int,int) ; 
- int ENOMEM ; 
- int /*<<< orphan*/  GFP_KERNEL ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  dma_alloc_coherent (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memset (struct bnxt_qplib_stats*,int /*<<< orphan*/ ,int) ; 
+
+ int ALIGN (int,int) ;
+ int ENOMEM ;
+ int GFP_KERNEL ;
+ int dev_err (int *,char*) ;
+ int dma_alloc_coherent (int *,int ,int *,int ) ;
+ int memset (struct bnxt_qplib_stats*,int ,int) ;
 
 __attribute__((used)) static int bnxt_qplib_alloc_stats_ctx(struct pci_dev *pdev,
-				      struct bnxt_qplib_stats *stats)
+          struct bnxt_qplib_stats *stats)
 {
-	memset(stats, 0, sizeof(*stats));
-	stats->fw_id = -1;
-	/* 128 byte aligned context memory is required only for 57500.
-	 * However making this unconditional, it does not harm previous
-	 * generation.
-	 */
-	stats->size = ALIGN(sizeof(struct ctx_hw_stats), 128);
-	stats->dma = dma_alloc_coherent(&pdev->dev, stats->size,
-					&stats->dma_map, GFP_KERNEL);
-	if (!stats->dma) {
-		dev_err(&pdev->dev, "Stats DMA allocation failed\n");
-		return -ENOMEM;
-	}
-	return 0;
+ memset(stats, 0, sizeof(*stats));
+ stats->fw_id = -1;
+
+
+
+
+ stats->size = ALIGN(sizeof(struct ctx_hw_stats), 128);
+ stats->dma = dma_alloc_coherent(&pdev->dev, stats->size,
+     &stats->dma_map, GFP_KERNEL);
+ if (!stats->dma) {
+  dev_err(&pdev->dev, "Stats DMA allocation failed\n");
+  return -ENOMEM;
+ }
+ return 0;
 }

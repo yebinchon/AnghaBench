@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {char* buf; int buf_size; } ;
-typedef  TYPE_1__ AVProbeData ;
+typedef TYPE_1__ AVProbeData ;
 
-/* Variables and functions */
- int AVPROBE_SCORE_EXTENSION ; 
- int AV_RB24 (char const*) ; 
- int /*<<< orphan*/  ff_subtitles_next_line (char const*) ; 
- scalar_t__ jss_whitespace (char const) ; 
- scalar_t__ timed_line (char const*) ; 
+
+ int AVPROBE_SCORE_EXTENSION ;
+ int AV_RB24 (char const*) ;
+ int ff_subtitles_next_line (char const*) ;
+ scalar_t__ jss_whitespace (char const) ;
+ scalar_t__ timed_line (char const*) ;
 
 __attribute__((used)) static int jacosub_probe(const AVProbeData *p)
 {
-    const char *ptr     = p->buf;
+    const char *ptr = p->buf;
     const char *ptr_end = p->buf + p->buf_size;
 
     if (AV_RB24(ptr) == 0xEFBBBF)
-        ptr += 3; /* skip UTF-8 BOM */
+        ptr += 3;
 
     while (ptr < ptr_end) {
         while (jss_whitespace(*ptr))

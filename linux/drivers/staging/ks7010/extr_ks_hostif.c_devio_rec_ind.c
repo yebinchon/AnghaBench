@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ks_wlan_private {unsigned char** dev_data; unsigned int* dev_size; int /*<<< orphan*/  dev_read_lock; int /*<<< orphan*/  devread_wait; int /*<<< orphan*/  rec_count; int /*<<< orphan*/  event_count; int /*<<< orphan*/  is_device_open; } ;
 
-/* Variables and functions */
- size_t DEVICE_STOCK_COUNT ; 
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- size_t atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  atomic_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  wake_up_interruptible_all (int /*<<< orphan*/ *) ; 
+
+
+
+struct ks_wlan_private {unsigned char** dev_data; unsigned int* dev_size; int dev_read_lock; int devread_wait; int rec_count; int event_count; int is_device_open; } ;
+
+
+ size_t DEVICE_STOCK_COUNT ;
+ int atomic_inc (int *) ;
+ size_t atomic_read (int *) ;
+ int atomic_set (int *,int ) ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
+ int wake_up_interruptible_all (int *) ;
 
 __attribute__((used)) static void devio_rec_ind(struct ks_wlan_private *priv, unsigned char *p,
-			  unsigned int size)
+     unsigned int size)
 {
-	if (!priv->is_device_open)
-		return;
+ if (!priv->is_device_open)
+  return;
 
-	spin_lock(&priv->dev_read_lock);
-	priv->dev_data[atomic_read(&priv->rec_count)] = p;
-	priv->dev_size[atomic_read(&priv->rec_count)] = size;
+ spin_lock(&priv->dev_read_lock);
+ priv->dev_data[atomic_read(&priv->rec_count)] = p;
+ priv->dev_size[atomic_read(&priv->rec_count)] = size;
 
-	if (atomic_read(&priv->event_count) != DEVICE_STOCK_COUNT) {
-		/* rx event count inc */
-		atomic_inc(&priv->event_count);
-	}
-	atomic_inc(&priv->rec_count);
-	if (atomic_read(&priv->rec_count) == DEVICE_STOCK_COUNT)
-		atomic_set(&priv->rec_count, 0);
+ if (atomic_read(&priv->event_count) != DEVICE_STOCK_COUNT) {
 
-	wake_up_interruptible_all(&priv->devread_wait);
+  atomic_inc(&priv->event_count);
+ }
+ atomic_inc(&priv->rec_count);
+ if (atomic_read(&priv->rec_count) == DEVICE_STOCK_COUNT)
+  atomic_set(&priv->rec_count, 0);
 
-	spin_unlock(&priv->dev_read_lock);
+ wake_up_interruptible_all(&priv->devread_wait);
+
+ spin_unlock(&priv->dev_read_lock);
 }

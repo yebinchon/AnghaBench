@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
 
-/* Variables and functions */
- char* CitusExtensionOwnerName () ; 
- int /*<<< orphan*/  SendCommandToWorkerAsUser (char*,int /*<<< orphan*/ ,char const*,char const*) ; 
+
+
+
+typedef int int32 ;
+
+
+ char* CitusExtensionOwnerName () ;
+ int SendCommandToWorkerAsUser (char*,int ,char const*,char const*) ;
 
 void
 SendCommandToWorker(char *nodeName, int32 nodePort, const char *command)
 {
-	const char *nodeUser = CitusExtensionOwnerName();
-	SendCommandToWorkerAsUser(nodeName, nodePort, nodeUser, command);
+ const char *nodeUser = CitusExtensionOwnerName();
+ SendCommandToWorkerAsUser(nodeName, nodePort, nodeUser, command);
 }

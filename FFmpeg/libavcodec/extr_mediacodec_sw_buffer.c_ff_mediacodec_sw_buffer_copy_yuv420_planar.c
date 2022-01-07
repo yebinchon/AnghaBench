@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_4__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
+
+
+typedef struct TYPE_12__ TYPE_4__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_12__ {int height; int width; } ;
-struct TYPE_11__ {int* linesize; int /*<<< orphan*/ ** data; } ;
+struct TYPE_11__ {int* linesize; int ** data; } ;
 struct TYPE_10__ {int offset; } ;
 struct TYPE_9__ {int stride; int crop_top; int crop_left; int slice_height; } ;
-typedef  TYPE_1__ MediaCodecDecContext ;
-typedef  TYPE_2__ FFAMediaCodecBufferInfo ;
-typedef  TYPE_3__ AVFrame ;
-typedef  TYPE_4__ AVCodecContext ;
+typedef TYPE_1__ MediaCodecDecContext ;
+typedef TYPE_2__ FFAMediaCodecBufferInfo ;
+typedef TYPE_3__ AVFrame ;
+typedef TYPE_4__ AVCodecContext ;
 
-/* Variables and functions */
- int FFALIGN (int,int) ; 
- int FFMIN (int,int) ; 
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
+
+ int FFALIGN (int,int) ;
+ int FFMIN (int,int) ;
+ int memcpy (int *,int *,int) ;
 
 void ff_mediacodec_sw_buffer_copy_yuv420_planar(AVCodecContext *avctx,
                                                 MediaCodecDecContext *s,
@@ -37,7 +37,7 @@ void ff_mediacodec_sw_buffer_copy_yuv420_planar(AVCodecContext *avctx,
                                                 AVFrame *frame)
 {
     int i;
-    uint8_t *src = NULL;
+    uint8_t *src = ((void*)0);
 
     for (i = 0; i < 3; i++) {
         int stride = s->stride;

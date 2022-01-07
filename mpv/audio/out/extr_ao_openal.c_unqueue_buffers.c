@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct priv {int num_buffers; } ;
 struct ao {struct priv* priv; } ;
-typedef  int ALint ;
+typedef int ALint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AL_BUFFERS_PROCESSED ; 
- int /*<<< orphan*/  alGetSourcei (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  alSourceUnqueueBuffers (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * buffers ; 
- int /*<<< orphan*/  source ; 
- size_t unqueue_buf ; 
+
+ int AL_BUFFERS_PROCESSED ;
+ int alGetSourcei (int ,int ,int*) ;
+ int alSourceUnqueueBuffers (int ,int,int *) ;
+ int * buffers ;
+ int source ;
+ size_t unqueue_buf ;
 
 __attribute__((used)) static void unqueue_buffers(struct ao *ao)
 {

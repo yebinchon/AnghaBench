@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct RBasic {int dummy; } ;
 struct RArray {int dummy; } ;
-typedef  int /*<<< orphan*/  mrb_state ;
-typedef  scalar_t__ mrb_int ;
+typedef int mrb_state ;
+typedef scalar_t__ mrb_int ;
 
-/* Variables and functions */
- scalar_t__ ARY_CAPA (struct RArray*) ; 
- scalar_t__ ARY_LEN (struct RArray*) ; 
- scalar_t__ ARY_MAX_SIZE ; 
- scalar_t__ ARY_PTR (struct RArray*) ; 
- int /*<<< orphan*/  ARY_SET_LEN (struct RArray*,scalar_t__) ; 
- int /*<<< orphan*/  E_ARGUMENT_ERROR ; 
- int /*<<< orphan*/  array_copy (scalar_t__,scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  ary_expand_capa (int /*<<< orphan*/ *,struct RArray*,scalar_t__) ; 
- int /*<<< orphan*/  ary_modify (int /*<<< orphan*/ *,struct RArray*) ; 
- int /*<<< orphan*/  ary_replace (int /*<<< orphan*/ *,struct RArray*,struct RArray*) ; 
- int /*<<< orphan*/  mrb_raise (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  mrb_write_barrier (int /*<<< orphan*/ *,struct RBasic*) ; 
+
+ scalar_t__ ARY_CAPA (struct RArray*) ;
+ scalar_t__ ARY_LEN (struct RArray*) ;
+ scalar_t__ ARY_MAX_SIZE ;
+ scalar_t__ ARY_PTR (struct RArray*) ;
+ int ARY_SET_LEN (struct RArray*,scalar_t__) ;
+ int E_ARGUMENT_ERROR ;
+ int array_copy (scalar_t__,scalar_t__,scalar_t__) ;
+ int ary_expand_capa (int *,struct RArray*,scalar_t__) ;
+ int ary_modify (int *,struct RArray*) ;
+ int ary_replace (int *,struct RArray*,struct RArray*) ;
+ int mrb_raise (int *,int ,char*) ;
+ int mrb_write_barrier (int *,struct RBasic*) ;
 
 __attribute__((used)) static void
 ary_concat(mrb_state *mrb, struct RArray *a, struct RArray *a2)

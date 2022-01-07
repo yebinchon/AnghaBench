@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct usb_interface {int num_altsetting; struct usb_host_interface* altsetting; } ;
 struct usb_host_interface {int dummy; } ;
 
-/* Variables and functions */
- scalar_t__ uas_is_interface (struct usb_host_interface*) ; 
+
+ scalar_t__ uas_is_interface (struct usb_host_interface*) ;
 
 __attribute__((used)) static struct usb_host_interface *uas_find_uas_alt_setting(
-		struct usb_interface *intf)
+  struct usb_interface *intf)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < intf->num_altsetting; i++) {
-		struct usb_host_interface *alt = &intf->altsetting[i];
+ for (i = 0; i < intf->num_altsetting; i++) {
+  struct usb_host_interface *alt = &intf->altsetting[i];
 
-		if (uas_is_interface(alt))
-			return alt;
-	}
+  if (uas_is_interface(alt))
+   return alt;
+ }
 
-	return NULL;
+ return ((void*)0);
 }

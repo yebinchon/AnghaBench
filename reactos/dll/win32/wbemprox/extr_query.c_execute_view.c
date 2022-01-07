@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct view {int* result; int count; int /*<<< orphan*/  cond; TYPE_1__* table; } ;
-typedef  int UINT ;
-struct TYPE_4__ {int num_rows; int /*<<< orphan*/  (* fill ) (TYPE_1__*,int /*<<< orphan*/ ) ;} ;
-typedef  scalar_t__ LONGLONG ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  clear_table (TYPE_1__*) ; 
- int /*<<< orphan*/  eval_cond (TYPE_1__*,int,int /*<<< orphan*/ ,scalar_t__*,int*) ; 
- int* heap_alloc (int) ; 
- int* heap_realloc (int*,int) ; 
- int min (int,int) ; 
- int /*<<< orphan*/  stub1 (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct view {int* result; int count; int cond; TYPE_1__* table; } ;
+typedef int UINT ;
+struct TYPE_4__ {int num_rows; int (* fill ) (TYPE_1__*,int ) ;} ;
+typedef scalar_t__ LONGLONG ;
+typedef int HRESULT ;
+
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int clear_table (TYPE_1__*) ;
+ int eval_cond (TYPE_1__*,int,int ,scalar_t__*,int*) ;
+ int* heap_alloc (int) ;
+ int* heap_realloc (int*,int) ;
+ int min (int,int) ;
+ int stub1 (TYPE_1__*,int ) ;
 
 HRESULT execute_view( struct view *view )
 {

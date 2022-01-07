@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+
+
+typedef int uint64_t ;
 struct data {int dummy; } ;
-typedef  int /*<<< orphan*/  beaddr ;
+typedef int beaddr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_to_fdt64 (int /*<<< orphan*/ ) ; 
- struct data data_append_data (struct data,int /*<<< orphan*/ *,int) ; 
+
+ int cpu_to_fdt64 (int ) ;
+ struct data data_append_data (struct data,int *,int) ;
 
 struct data data_append_addr(struct data d, uint64_t addr)
 {
-	uint64_t beaddr = cpu_to_fdt64(addr);
+ uint64_t beaddr = cpu_to_fdt64(addr);
 
-	return data_append_data(d, &beaddr, sizeof(beaddr));
+ return data_append_data(d, &beaddr, sizeof(beaddr));
 }

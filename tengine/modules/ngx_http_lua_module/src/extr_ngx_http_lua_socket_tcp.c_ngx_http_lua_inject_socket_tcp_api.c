@@ -1,66 +1,66 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ngx_log_t ;
-typedef  scalar_t__ ngx_int_t ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LUA_REGISTRYINDEX ; 
- int /*<<< orphan*/  NGX_LOG_CRIT ; 
- scalar_t__ NGX_OK ; 
- int /*<<< orphan*/  downstream_udata_metatable_key ; 
- scalar_t__ luaL_loadbuffer (int /*<<< orphan*/ *,char const*,int,char*) ; 
- int /*<<< orphan*/  lua_createtable (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  lua_pushcfunction (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushlightuserdata (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_pushvalue (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  lua_rawset (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  lua_setfield (int /*<<< orphan*/ *,int,char*) ; 
- int /*<<< orphan*/  ngx_http_lua_lightudata_mask (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_lua_socket_cleanup_compiled_pattern ; 
- int /*<<< orphan*/  ngx_http_lua_socket_downstream_destroy ; 
- int /*<<< orphan*/  ngx_http_lua_socket_shutdown_pool ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_close ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_connect ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_getreusedtimes ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_receive ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_receiveany ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_receiveuntil ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_send ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_setkeepalive ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_setoption ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_settimeout ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_settimeouts ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_sslhandshake ; 
- int /*<<< orphan*/  ngx_http_lua_socket_tcp_upstream_destroy ; 
- int /*<<< orphan*/  ngx_http_lua_ssl_free_session ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,scalar_t__) ; 
- int /*<<< orphan*/  pattern_udata_metatable_key ; 
- int /*<<< orphan*/  pool_udata_metatable_key ; 
- int /*<<< orphan*/  raw_req_socket_metatable_key ; 
- int /*<<< orphan*/  req_socket_metatable_key ; 
- int /*<<< orphan*/  ssl_session_metatable_key ; 
- int /*<<< orphan*/  tcp_socket_metatable_key ; 
- int /*<<< orphan*/  upstream_udata_metatable_key ; 
+
+
+
+typedef int ngx_log_t ;
+typedef scalar_t__ ngx_int_t ;
+typedef int lua_State ;
+typedef int buf ;
+
+
+ int LUA_REGISTRYINDEX ;
+ int NGX_LOG_CRIT ;
+ scalar_t__ NGX_OK ;
+ int downstream_udata_metatable_key ;
+ scalar_t__ luaL_loadbuffer (int *,char const*,int,char*) ;
+ int lua_createtable (int *,int ,int) ;
+ int lua_pushcfunction (int *,int ) ;
+ int lua_pushlightuserdata (int *,int ) ;
+ int lua_pushvalue (int *,int) ;
+ int lua_rawset (int *,int ) ;
+ int lua_setfield (int *,int,char*) ;
+ int ngx_http_lua_lightudata_mask (int ) ;
+ int ngx_http_lua_socket_cleanup_compiled_pattern ;
+ int ngx_http_lua_socket_downstream_destroy ;
+ int ngx_http_lua_socket_shutdown_pool ;
+ int ngx_http_lua_socket_tcp ;
+ int ngx_http_lua_socket_tcp_close ;
+ int ngx_http_lua_socket_tcp_connect ;
+ int ngx_http_lua_socket_tcp_getreusedtimes ;
+ int ngx_http_lua_socket_tcp_receive ;
+ int ngx_http_lua_socket_tcp_receiveany ;
+ int ngx_http_lua_socket_tcp_receiveuntil ;
+ int ngx_http_lua_socket_tcp_send ;
+ int ngx_http_lua_socket_tcp_setkeepalive ;
+ int ngx_http_lua_socket_tcp_setoption ;
+ int ngx_http_lua_socket_tcp_settimeout ;
+ int ngx_http_lua_socket_tcp_settimeouts ;
+ int ngx_http_lua_socket_tcp_sslhandshake ;
+ int ngx_http_lua_socket_tcp_upstream_destroy ;
+ int ngx_http_lua_ssl_free_session ;
+ int ngx_log_error (int ,int *,int ,char*,scalar_t__) ;
+ int pattern_udata_metatable_key ;
+ int pool_udata_metatable_key ;
+ int raw_req_socket_metatable_key ;
+ int req_socket_metatable_key ;
+ int ssl_session_metatable_key ;
+ int tcp_socket_metatable_key ;
+ int upstream_udata_metatable_key ;
 
 void
 ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
 {
-    ngx_int_t         rc;
+    ngx_int_t rc;
 
-    lua_createtable(L, 0, 4 /* nrec */);    /* ngx.socket */
+    lua_createtable(L, 0, 4 );
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp);
     lua_pushvalue(L, -1);
@@ -68,7 +68,7 @@ ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
     lua_setfield(L, -2, "stream");
 
     {
-        const char  buf[] = "local sock = ngx.socket.tcp()"
+        const char buf[] = "local sock = ngx.socket.tcp()"
                             " local ok, err = sock:connect(...)"
                             " if ok then return sock else return nil, err end";
 
@@ -86,10 +86,10 @@ ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
 
     lua_setfield(L, -2, "socket");
 
-    /* {{{req socket object metatable */
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           req_socket_metatable_key));
-    lua_createtable(L, 0 /* narr */, 5 /* nrec */);
+    lua_createtable(L, 0 , 5 );
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_receive);
     lua_setfield(L, -2, "receive");
@@ -98,21 +98,21 @@ ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
     lua_setfield(L, -2, "receiveuntil");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_settimeout);
-    lua_setfield(L, -2, "settimeout"); /* ngx socket mt */
+    lua_setfield(L, -2, "settimeout");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_settimeouts);
-    lua_setfield(L, -2, "settimeouts"); /* ngx socket mt */
+    lua_setfield(L, -2, "settimeouts");
 
     lua_pushvalue(L, -1);
     lua_setfield(L, -2, "__index");
 
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
 
-    /* {{{raw req socket object metatable */
+
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           raw_req_socket_metatable_key));
-    lua_createtable(L, 0 /* narr */, 6 /* nrec */);
+    lua_createtable(L, 0 , 6 );
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_receive);
     lua_setfield(L, -2, "receive");
@@ -124,32 +124,24 @@ ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
     lua_setfield(L, -2, "send");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_settimeout);
-    lua_setfield(L, -2, "settimeout"); /* ngx socket mt */
+    lua_setfield(L, -2, "settimeout");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_settimeouts);
-    lua_setfield(L, -2, "settimeouts"); /* ngx socket mt */
+    lua_setfield(L, -2, "settimeouts");
 
     lua_pushvalue(L, -1);
     lua_setfield(L, -2, "__index");
 
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
 
-    /* {{{tcp object metatable */
+
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           tcp_socket_metatable_key));
-    lua_createtable(L, 0 /* narr */, 12 /* nrec */);
+    lua_createtable(L, 0 , 12 );
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_connect);
     lua_setfield(L, -2, "connect");
-
-#if (NGX_HTTP_SSL)
-
-    lua_pushcfunction(L, ngx_http_lua_socket_tcp_sslhandshake);
-    lua_setfield(L, -2, "sslhandshake");
-
-#endif
-
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_receive);
     lua_setfield(L, -2, "receive");
 
@@ -169,10 +161,10 @@ ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
     lua_setfield(L, -2, "setoption");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_settimeout);
-    lua_setfield(L, -2, "settimeout"); /* ngx socket mt */
+    lua_setfield(L, -2, "settimeout");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_settimeouts);
-    lua_setfield(L, -2, "settimeouts"); /* ngx socket mt */
+    lua_setfield(L, -2, "settimeouts");
 
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_getreusedtimes);
     lua_setfield(L, -2, "getreusedtimes");
@@ -183,54 +175,40 @@ ngx_http_lua_inject_socket_tcp_api(ngx_log_t *log, lua_State *L)
     lua_pushvalue(L, -1);
     lua_setfield(L, -2, "__index");
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
 
-    /* {{{upstream userdata metatable */
+
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           upstream_udata_metatable_key));
-    lua_createtable(L, 0 /* narr */, 1 /* nrec */); /* metatable */
+    lua_createtable(L, 0 , 1 );
     lua_pushcfunction(L, ngx_http_lua_socket_tcp_upstream_destroy);
     lua_setfield(L, -2, "__gc");
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
 
-    /* {{{downstream userdata metatable */
+
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           downstream_udata_metatable_key));
-    lua_createtable(L, 0 /* narr */, 1 /* nrec */); /* metatable */
+    lua_createtable(L, 0 , 1 );
     lua_pushcfunction(L, ngx_http_lua_socket_downstream_destroy);
     lua_setfield(L, -2, "__gc");
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
 
-    /* {{{socket pool userdata metatable */
+
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           pool_udata_metatable_key));
-    lua_createtable(L, 0, 1); /* metatable */
+    lua_createtable(L, 0, 1);
     lua_pushcfunction(L, ngx_http_lua_socket_shutdown_pool);
     lua_setfield(L, -2, "__gc");
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
 
-    /* {{{socket compiled pattern userdata metatable */
+
+
     lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
                           pattern_udata_metatable_key));
-    lua_createtable(L, 0 /* narr */, 1 /* nrec */); /* metatable */
+    lua_createtable(L, 0 , 1 );
     lua_pushcfunction(L, ngx_http_lua_socket_cleanup_compiled_pattern);
     lua_setfield(L, -2, "__gc");
     lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
-
-#if (NGX_HTTP_SSL)
-
-    /* {{{ssl session userdata metatable */
-    lua_pushlightuserdata(L, ngx_http_lua_lightudata_mask(
-                          ssl_session_metatable_key));
-    lua_createtable(L, 0 /* narr */, 1 /* nrec */); /* metatable */
-    lua_pushcfunction(L, ngx_http_lua_ssl_free_session);
-    lua_setfield(L, -2, "__gc");
-    lua_rawset(L, LUA_REGISTRYINDEX);
-    /* }}} */
-
-#endif
 }

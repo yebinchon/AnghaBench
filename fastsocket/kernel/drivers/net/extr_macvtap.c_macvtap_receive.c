@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sk_buff {int /*<<< orphan*/  dev; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ETH_HLEN ; 
- int macvtap_forward (int /*<<< orphan*/ ,struct sk_buff*) ; 
- int /*<<< orphan*/  skb_push (struct sk_buff*,int /*<<< orphan*/ ) ; 
+
+
+
+struct sk_buff {int dev; } ;
+
+
+ int ETH_HLEN ;
+ int macvtap_forward (int ,struct sk_buff*) ;
+ int skb_push (struct sk_buff*,int ) ;
 
 __attribute__((used)) static int macvtap_receive(struct sk_buff *skb)
 {
-	skb_push(skb, ETH_HLEN);
-	return macvtap_forward(skb->dev, skb);
+ skb_push(skb, ETH_HLEN);
+ return macvtap_forward(skb->dev, skb);
 }

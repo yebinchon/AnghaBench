@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
 struct list_head {int dummy; } ;
-struct buffer_head {unsigned long b_size; int /*<<< orphan*/  b_link; int /*<<< orphan*/ * b_data; scalar_t__ b_bcb; scalar_t__ b_blocknr; struct block_device* b_bdev; } ;
-struct block_device {int /*<<< orphan*/  bd_bh_lock; TYPE_1__* bd_priv; } ;
-typedef  scalar_t__ sector_t ;
-typedef  int /*<<< orphan*/  s64 ;
-struct TYPE_8__ {int /*<<< orphan*/  bh_count; } ;
-struct TYPE_7__ {int /*<<< orphan*/  QuadPart; } ;
-struct TYPE_6__ {int /*<<< orphan*/  Volume; } ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  TYPE_1__* PEXT2_VCB ;
-typedef  TYPE_2__ LARGE_INTEGER ;
-typedef  int ERESOURCE_THREAD ;
+struct buffer_head {unsigned long b_size; int b_link; int * b_data; scalar_t__ b_bcb; scalar_t__ b_blocknr; struct block_device* b_bdev; } ;
+struct block_device {int bd_bh_lock; TYPE_1__* bd_priv; } ;
+typedef scalar_t__ sector_t ;
+typedef int s64 ;
+struct TYPE_8__ {int bh_count; } ;
+struct TYPE_7__ {int QuadPart; } ;
+struct TYPE_6__ {int Volume; } ;
+typedef int PVOID ;
+typedef TYPE_1__* PEXT2_VCB ;
+typedef TYPE_2__ LARGE_INTEGER ;
+typedef int ERESOURCE_THREAD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BLOCK_BITS ; 
- int /*<<< orphan*/  CcPinRead (int /*<<< orphan*/ ,TYPE_2__*,unsigned long,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CcPreparePinWrite (int /*<<< orphan*/ ,TYPE_2__*,unsigned long,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  CcSetBcbOwnerPointer (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DEBUG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DL_BH ; 
- int /*<<< orphan*/  DbgBreak () ; 
- int /*<<< orphan*/  ExAcquireResourceExclusiveLite (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExAcquireSharedStarveExclusive (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExReleaseResourceLite (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Ext2Sleep (int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  InitializeListHead (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PIN_WAIT ; 
- int /*<<< orphan*/  RemoveEntryList (int /*<<< orphan*/ *) ; 
- scalar_t__ TOTAL_BLOCKS ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  atomic_read (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buffer_head_insert (struct block_device*,struct buffer_head*) ; 
- struct buffer_head* buffer_head_search (struct block_device*,scalar_t__) ; 
- int /*<<< orphan*/  free_buffer_head (struct buffer_head*) ; 
- TYPE_3__ g_jbh ; 
- int /*<<< orphan*/  get_bh (struct buffer_head*) ; 
- struct buffer_head* new_buffer_head () ; 
- int /*<<< orphan*/  set_buffer_uptodate (struct buffer_head*) ; 
+
+ int BLOCK_BITS ;
+ int CcPinRead (int ,TYPE_2__*,unsigned long,int ,scalar_t__*,int *) ;
+ int CcPreparePinWrite (int ,TYPE_2__*,unsigned long,int ,int ,scalar_t__*,int *) ;
+ int CcSetBcbOwnerPointer (scalar_t__,int ) ;
+ int DEBUG (int ,char*) ;
+ int DL_BH ;
+ int DbgBreak () ;
+ int ExAcquireResourceExclusiveLite (int *,int ) ;
+ int ExAcquireSharedStarveExclusive (int *,int ) ;
+ int ExReleaseResourceLite (int *) ;
+ int Ext2Sleep (int) ;
+ int FALSE ;
+ int InitializeListHead (int *) ;
+ int PIN_WAIT ;
+ int RemoveEntryList (int *) ;
+ scalar_t__ TOTAL_BLOCKS ;
+ int TRUE ;
+ int atomic_read (int *) ;
+ int buffer_head_insert (struct block_device*,struct buffer_head*) ;
+ struct buffer_head* buffer_head_search (struct block_device*,scalar_t__) ;
+ int free_buffer_head (struct buffer_head*) ;
+ TYPE_3__ g_jbh ;
+ int get_bh (struct buffer_head*) ;
+ struct buffer_head* new_buffer_head () ;
+ int set_buffer_uptodate (struct buffer_head*) ;
 
 struct buffer_head *
 get_block_bh_pin(
-    struct block_device *   bdev,
-    sector_t                block,
-    unsigned long           size,
-    int                     zero
-) 
+    struct block_device * bdev,
+    sector_t block,
+    unsigned long size,
+    int zero
+)
 {
     PEXT2_VCB Vcb = bdev->bd_priv;
     LARGE_INTEGER offset;
 
     struct list_head *entry;
 
-    /* allocate buffer_head and initialize it */
-    struct buffer_head *bh = NULL, *tbh = NULL;
 
-    /* check the block is valid or not */
+    struct buffer_head *bh = ((void*)0), *tbh = ((void*)0);
+
+
     if (block >= TOTAL_BLOCKS) {
         DbgBreak();
         goto errorout;
     }
 
-    /* search the bdev bh list */
+
     ExAcquireSharedStarveExclusive(&bdev->bd_bh_lock, TRUE);
     tbh = buffer_head_search(bdev, block);
     if (tbh) {
@@ -93,10 +93,10 @@ get_block_bh_pin(
     bh->b_bdev = bdev;
     bh->b_blocknr = block;
     bh->b_size = size;
-    bh->b_data = NULL;
-#ifdef __REACTOS__
-    InitializeListHead(&bh->b_link);
-#endif
+    bh->b_data = ((void*)0);
+
+
+
 
 again:
 
@@ -132,7 +132,7 @@ again:
 
     if (!bh->b_data) {
         free_buffer_head(bh);
-        bh = NULL;
+        bh = ((void*)0);
         goto errorout;
     }
     get_bh(bh);
@@ -141,7 +141,7 @@ again:
                   Vcb, atomic_read(&g_jbh.bh_count), block, bh, bh->b_data));
 
     ExAcquireResourceExclusiveLite(&bdev->bd_bh_lock, TRUE);
-    /* do search again here */
+
     tbh = buffer_head_search(bdev, block);
     if (tbh) {
         get_bh(tbh);
@@ -156,7 +156,7 @@ again:
     }
     ExReleaseResourceLite(&bdev->bd_bh_lock);
 
-    /* we get it */
+
 errorout:
 
     return bh;

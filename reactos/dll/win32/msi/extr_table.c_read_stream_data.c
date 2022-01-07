@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VOID ;
-typedef  int ULONG ;
-typedef  int UINT ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int VOID ;
+typedef int ULONG ;
+typedef int UINT ;
 struct TYPE_4__ {int QuadPart; } ;
 struct TYPE_5__ {TYPE_1__ cbSize; } ;
-typedef  TYPE_2__ STATSTG ;
-typedef  int /*<<< orphan*/ * LPWSTR ;
-typedef  int /*<<< orphan*/ * LPCWSTR ;
-typedef  int /*<<< orphan*/  IStream ;
-typedef  int /*<<< orphan*/  IStorage ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int /*<<< orphan*/  BYTE ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ STATSTG ;
+typedef int * LPWSTR ;
+typedef int * LPCWSTR ;
+typedef int IStream ;
+typedef int IStorage ;
+typedef int HRESULT ;
+typedef int BYTE ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int ERROR_FUNCTION_FAILED ; 
- int ERROR_NOT_ENOUGH_MEMORY ; 
- int ERROR_SUCCESS ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IStorage_OpenStream (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IStream_Read (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  IStream_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IStream_Stat (int /*<<< orphan*/ *,TYPE_2__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATFLAG_NONAME ; 
- int STGM_READ ; 
- int STGM_SHARE_EXCLUSIVE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * encode_streamname (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/ *) ; 
+
+ int ERROR_FUNCTION_FAILED ;
+ int ERROR_NOT_ENOUGH_MEMORY ;
+ int ERROR_SUCCESS ;
+ scalar_t__ FAILED (int ) ;
+ int IStorage_OpenStream (int *,int *,int *,int,int ,int **) ;
+ int IStream_Read (int *,int *,int,int*) ;
+ int IStream_Release (int *) ;
+ int IStream_Stat (int *,TYPE_2__*,int ) ;
+ int STATFLAG_NONAME ;
+ int STGM_READ ;
+ int STGM_SHARE_EXCLUSIVE ;
+ int TRACE (char*,int ,int ) ;
+ int WARN (char*,...) ;
+ int debugstr_w (int *) ;
+ int * encode_streamname (int ,int *) ;
+ int * msi_alloc (int) ;
+ int msi_free (int *) ;
 
 UINT read_stream_data( IStorage *stg, LPCWSTR stname, BOOL table,
                        BYTE **pdata, UINT *psz )
@@ -52,7 +52,7 @@ UINT read_stream_data( IStorage *stg, LPCWSTR stname, BOOL table,
     UINT ret = ERROR_FUNCTION_FAILED;
     VOID *data;
     ULONG sz, count;
-    IStream *stm = NULL;
+    IStream *stm = ((void*)0);
     STATSTG stat;
     LPWSTR encname;
 
@@ -60,7 +60,7 @@ UINT read_stream_data( IStorage *stg, LPCWSTR stname, BOOL table,
 
     TRACE("%s -> %s\n",debugstr_w(stname),debugstr_w(encname));
 
-    r = IStorage_OpenStream(stg, encname, NULL, 
+    r = IStorage_OpenStream(stg, encname, ((void*)0),
             STGM_READ | STGM_SHARE_EXCLUSIVE, 0, &stm);
     msi_free( encname );
     if( FAILED( r ) )
@@ -81,7 +81,7 @@ UINT read_stream_data( IStorage *stg, LPCWSTR stname, BOOL table,
         WARN("Too big!\n");
         goto end;
     }
-        
+
     sz = stat.cbSize.QuadPart;
     data = msi_alloc( sz );
     if( !data )
@@ -90,7 +90,7 @@ UINT read_stream_data( IStorage *stg, LPCWSTR stname, BOOL table,
         ret = ERROR_NOT_ENOUGH_MEMORY;
         goto end;
     }
-        
+
     r = IStream_Read(stm, data, sz, &count );
     if( FAILED( r ) || ( count != sz ) )
     {

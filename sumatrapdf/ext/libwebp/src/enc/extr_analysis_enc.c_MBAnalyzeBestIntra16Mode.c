@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VP8Histogram ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int VP8Histogram ;
 struct TYPE_5__ {scalar_t__ yuv_p_; scalar_t__ yuv_in_; } ;
-typedef  TYPE_1__ VP8EncIterator ;
+typedef TYPE_1__ VP8EncIterator ;
 
-/* Variables and functions */
- int DEFAULT_ALPHA ; 
- int GetAlpha (int /*<<< orphan*/ *) ; 
- scalar_t__ IS_BETTER_ALPHA (int,int) ; 
- int /*<<< orphan*/  InitHistogram (int /*<<< orphan*/ *) ; 
- int MAX_INTRA16_MODE ; 
- int /*<<< orphan*/  VP8CollectHistogram (scalar_t__,scalar_t__,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- scalar_t__* VP8I16ModeOffsets ; 
- int /*<<< orphan*/  VP8MakeLuma16Preds (TYPE_1__* const) ; 
- int /*<<< orphan*/  VP8SetIntra16Mode (TYPE_1__* const,int) ; 
- scalar_t__ Y_OFF_ENC ; 
+
+ int DEFAULT_ALPHA ;
+ int GetAlpha (int *) ;
+ scalar_t__ IS_BETTER_ALPHA (int,int) ;
+ int InitHistogram (int *) ;
+ int MAX_INTRA16_MODE ;
+ int VP8CollectHistogram (scalar_t__,scalar_t__,int ,int,int *) ;
+ scalar_t__* VP8I16ModeOffsets ;
+ int VP8MakeLuma16Preds (TYPE_1__* const) ;
+ int VP8SetIntra16Mode (TYPE_1__* const,int) ;
+ scalar_t__ Y_OFF_ENC ;
 
 __attribute__((used)) static int MBAnalyzeBestIntra16Mode(VP8EncIterator* const it) {
   const int max_mode = MAX_INTRA16_MODE;

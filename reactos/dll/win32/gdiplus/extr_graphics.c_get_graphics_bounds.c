@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_12__ {scalar_t__ hdc; } ;
 struct TYPE_11__ {scalar_t__ X; scalar_t__ Y; } ;
 struct TYPE_10__ {scalar_t__ X; scalar_t__ Y; scalar_t__ Width; scalar_t__ Height; } ;
-typedef  scalar_t__ GpStatus ;
-typedef  TYPE_1__ GpRectF ;
-typedef  TYPE_2__ GpPointF ;
-typedef  TYPE_3__ GpGraphics ;
+typedef scalar_t__ GpStatus ;
+typedef TYPE_1__ GpRectF ;
+typedef TYPE_2__ GpPointF ;
+typedef TYPE_3__ GpGraphics ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CoordinateSpaceDevice ; 
- scalar_t__ Ok ; 
- int /*<<< orphan*/  WineCoordinateSpaceGdiDevice ; 
- int /*<<< orphan*/  gdip_transform_points (TYPE_3__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_2__*,int) ; 
- scalar_t__ get_graphics_device_bounds (TYPE_3__*,TYPE_1__*) ; 
+
+ int CoordinateSpaceDevice ;
+ scalar_t__ Ok ;
+ int WineCoordinateSpaceGdiDevice ;
+ int gdip_transform_points (TYPE_3__*,int ,int ,TYPE_2__*,int) ;
+ scalar_t__ get_graphics_device_bounds (TYPE_3__*,TYPE_1__*) ;
 
 __attribute__((used)) static GpStatus get_graphics_bounds(GpGraphics* graphics, GpRectF* rect)
 {

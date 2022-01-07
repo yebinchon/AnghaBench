@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int height; int* linesize; int /*<<< orphan*/  width; scalar_t__* data; } ;
-typedef  int /*<<< orphan*/  DecodeContext ;
-typedef  int /*<<< orphan*/  AVPacket ;
-typedef  int /*<<< orphan*/  AVIOContext ;
-typedef  TYPE_1__ AVFrame ;
-typedef  int /*<<< orphan*/  AVCodecContext ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_EOF ; 
- int /*<<< orphan*/  EAGAIN ; 
- int FF_ARRAY_ELEMS (scalar_t__*) ; 
- int /*<<< orphan*/  av_frame_unref (TYPE_1__*) ; 
- int av_hwframe_transfer_data (TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ) ; 
- int avcodec_receive_frame (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int avcodec_send_packet (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  avio_write (int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  stderr ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int height; int* linesize; int width; scalar_t__* data; } ;
+typedef int DecodeContext ;
+typedef int AVPacket ;
+typedef int AVIOContext ;
+typedef TYPE_1__ AVFrame ;
+typedef int AVCodecContext ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_EOF ;
+ int EAGAIN ;
+ int FF_ARRAY_ELEMS (scalar_t__*) ;
+ int av_frame_unref (TYPE_1__*) ;
+ int av_hwframe_transfer_data (TYPE_1__*,TYPE_1__*,int ) ;
+ int avcodec_receive_frame (int *,TYPE_1__*) ;
+ int avcodec_send_packet (int *,int *) ;
+ int avio_write (int *,scalar_t__,int ) ;
+ int fprintf (int ,char*) ;
+ int stderr ;
 
 __attribute__((used)) static int decode_packet(DecodeContext *decode, AVCodecContext *decoder_ctx,
                          AVFrame *frame, AVFrame *sw_frame,
@@ -54,9 +54,9 @@ __attribute__((used)) static int decode_packet(DecodeContext *decode, AVCodecCon
             return ret;
         }
 
-        /* A real program would do something useful with the decoded frame here.
-         * We just retrieve the raw data and write it to a file, which is rather
-         * useless but pedagogic. */
+
+
+
         ret = av_hwframe_transfer_data(sw_frame, frame, 0);
         if (ret < 0) {
             fprintf(stderr, "Error transferring the data to system memory\n");

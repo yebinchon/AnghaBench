@@ -1,50 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  DeleteObject (int /*<<< orphan*/ *) ; 
- int InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hDefaultFontB ; 
- int /*<<< orphan*/ * hDefaultFontN ; 
- int /*<<< orphan*/ * hPatternPen ; 
- int /*<<< orphan*/  lWindowCount ; 
- int /*<<< orphan*/  pBufferedPtExit () ; 
+ int DeleteObject (int *) ;
+ int InterlockedDecrement (int *) ;
+ int * hDefaultFontB ;
+ int * hDefaultFontN ;
+ int * hPatternPen ;
+ int lWindowCount ;
+ int pBufferedPtExit () ;
 
 __attribute__((used)) static void GlobalDeinit() {
 
-	int	lCount;
+ int lCount;
 
-	lCount = InterlockedDecrement(&lWindowCount);
-	if(lCount >= 0)
-		return;
+ lCount = InterlockedDecrement(&lWindowCount);
+ if(lCount >= 0)
+  return;
 
-	if(hDefaultFontN) {
-		DeleteObject(hDefaultFontN);
-		hDefaultFontN = NULL;
-	}
+ if(hDefaultFontN) {
+  DeleteObject(hDefaultFontN);
+  hDefaultFontN = ((void*)0);
+ }
 
-	if(hDefaultFontB) {
-		DeleteObject(hDefaultFontB);
-		hDefaultFontB = NULL;
-	}
+ if(hDefaultFontB) {
+  DeleteObject(hDefaultFontB);
+  hDefaultFontB = ((void*)0);
+ }
 
-	if(hPatternPen) {
-		DeleteObject(hPatternPen);
-		hPatternPen = NULL;
-	}
+ if(hPatternPen) {
+  DeleteObject(hPatternPen);
+  hPatternPen = ((void*)0);
+ }
 
-	if(pBufferedPtExit) {
-		pBufferedPtExit();
-	}
+ if(pBufferedPtExit) {
+  pBufferedPtExit();
+ }
 
 }

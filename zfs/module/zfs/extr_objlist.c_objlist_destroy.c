@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  ol_list; } ;
-typedef  TYPE_1__ objlist_t ;
-typedef  TYPE_1__ objlist_node_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kmem_free (TYPE_1__*,int) ; 
- int /*<<< orphan*/  list_destroy (int /*<<< orphan*/ *) ; 
- TYPE_1__* list_remove_head (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int ol_list; } ;
+typedef TYPE_1__ objlist_t ;
+typedef TYPE_1__ objlist_node_t ;
+
+
+ int kmem_free (TYPE_1__*,int) ;
+ int list_destroy (int *) ;
+ TYPE_1__* list_remove_head (int *) ;
 
 void
 objlist_destroy(objlist_t *list)
 {
-	for (objlist_node_t *n = list_remove_head(&list->ol_list);
-	    n != NULL; n = list_remove_head(&list->ol_list)) {
-		kmem_free(n, sizeof (*n));
-	}
-	list_destroy(&list->ol_list);
-	kmem_free(list, sizeof (*list));
+ for (objlist_node_t *n = list_remove_head(&list->ol_list);
+     n != ((void*)0); n = list_remove_head(&list->ol_list)) {
+  kmem_free(n, sizeof (*n));
+ }
+ list_destroy(&list->ol_list);
+ kmem_free(list, sizeof (*list));
 }

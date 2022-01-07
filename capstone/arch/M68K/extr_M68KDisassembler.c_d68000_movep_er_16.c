@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  m68k_info ;
 
-/* Variables and functions */
- int /*<<< orphan*/  build_movep_er (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int m68k_info ;
+
+
+ int build_movep_er (int *,int) ;
 
 __attribute__((used)) static void d68000_movep_er_16(m68k_info *info)
 {
-	build_movep_er(info, 2);
+ build_movep_er(info, 2);
 }

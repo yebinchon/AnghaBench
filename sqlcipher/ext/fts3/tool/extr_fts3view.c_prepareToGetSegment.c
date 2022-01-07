@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqlite3_stmt ;
-typedef  int /*<<< orphan*/  sqlite3 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atoi64 (char const*) ; 
- int /*<<< orphan*/ * prepare (int /*<<< orphan*/ *,char*,char const*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int sqlite3_stmt ;
+typedef int sqlite3 ;
+
+
+ int atoi64 (char const*) ;
+ int * prepare (int *,char*,char const*,int ) ;
 
 __attribute__((used)) static sqlite3_stmt *prepareToGetSegment(
-  sqlite3 *db,         /* The database */
-  const char *zTab,    /* The FTS3/4 table name */
-  const char *zId      /* ID of the segment to open */
+  sqlite3 *db,
+  const char *zTab,
+  const char *zId
 ){
   sqlite3_stmt *pStmt;
   if( zId[0]=='r' ){

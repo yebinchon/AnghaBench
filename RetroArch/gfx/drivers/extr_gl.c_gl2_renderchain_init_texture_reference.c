@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int tex_w; unsigned int tex_h; int base_size; int /*<<< orphan*/ * empty_buf; } ;
-typedef  TYPE_1__ gl_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int tex_w; unsigned int tex_h; int base_size; int * empty_buf; } ;
+typedef TYPE_1__ gl_t ;
 struct TYPE_6__ {scalar_t__ egl_images; } ;
-typedef  TYPE_2__ gl2_renderchain_data_t ;
-typedef  int /*<<< orphan*/  GLenum ;
+typedef TYPE_2__ gl2_renderchain_data_t ;
+typedef int GLenum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  gl2_load_texture_image (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glTextureReferenceSCE (int /*<<< orphan*/ ,int,int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,unsigned int) ; 
+
+ int GL_TEXTURE_2D ;
+ int gl2_load_texture_image (int ,int ,int ,unsigned int,unsigned int,int ,int ,int ,int *) ;
+ int glTextureReferenceSCE (int ,int,int,unsigned int,int ,int ,int,unsigned int) ;
 
 __attribute__((used)) static void gl2_renderchain_init_texture_reference(
       gl_t *gl,
@@ -30,13 +30,13 @@ __attribute__((used)) static void gl2_renderchain_init_texture_reference(
       unsigned internal_fmt, unsigned texture_fmt,
       unsigned texture_type)
 {
-#ifdef HAVE_PSGL
-   glTextureReferenceSCE(GL_TEXTURE_2D, 1,
-         gl->tex_w, gl->tex_h, 0,
-         (GLenum)internal_fmt,
-         gl->tex_w * gl->base_size,
-         gl->tex_w * gl->tex_h * i * gl->base_size);
-#else
+
+
+
+
+
+
+
    if (chain->egl_images)
       return;
 
@@ -46,6 +46,6 @@ __attribute__((used)) static void gl2_renderchain_init_texture_reference(
       gl->tex_w, gl->tex_h, 0,
       (GLenum)texture_type,
       (GLenum)texture_fmt,
-      gl->empty_buf ? gl->empty_buf : NULL);
-#endif
+      gl->empty_buf ? gl->empty_buf : ((void*)0));
+
 }

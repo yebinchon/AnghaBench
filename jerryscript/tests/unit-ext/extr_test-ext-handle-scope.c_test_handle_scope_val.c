@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  jerryx_handle_scope ;
-typedef  int /*<<< orphan*/  jerry_value_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  create_object () ; 
- int /*<<< orphan*/  jerryx_close_handle_scope (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_create_handle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jerryx_open_handle_scope (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int jerryx_handle_scope ;
+typedef int jerry_value_t ;
+
+
+ int create_object () ;
+ int jerryx_close_handle_scope (int ) ;
+ int jerryx_create_handle (int ) ;
+ int jerryx_open_handle_scope (int *) ;
 
 __attribute__((used)) static void
 test_handle_scope_val (void)

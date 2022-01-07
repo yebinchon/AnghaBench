@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  mem_stream; } ;
-typedef  TYPE_1__ mz_zip_reader ;
-typedef  scalar_t__ int64_t ;
-typedef  scalar_t__ int32_t ;
 
-/* Variables and functions */
- scalar_t__ MZ_MEM_ERROR ; 
- scalar_t__ MZ_OK ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_CREATE ; 
- int /*<<< orphan*/  MZ_OPEN_MODE_READ ; 
- int /*<<< orphan*/  MZ_SEEK_END ; 
- int /*<<< orphan*/  MZ_SEEK_SET ; 
- scalar_t__ UINT32_MAX ; 
- scalar_t__ mz_stream_copy (int /*<<< orphan*/ ,void*,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_mem_create (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mz_stream_mem_open (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mz_stream_mem_set_grow_size (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  mz_stream_os_close (void*) ; 
- int /*<<< orphan*/  mz_stream_os_create (void**) ; 
- int /*<<< orphan*/  mz_stream_os_delete (void**) ; 
- scalar_t__ mz_stream_os_open (void*,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mz_stream_os_seek (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ mz_stream_os_tell (void*) ; 
- int /*<<< orphan*/  mz_zip_reader_close (void*) ; 
- scalar_t__ mz_zip_reader_open (void*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int mem_stream; } ;
+typedef TYPE_1__ mz_zip_reader ;
+typedef scalar_t__ int64_t ;
+typedef scalar_t__ int32_t ;
+
+
+ scalar_t__ MZ_MEM_ERROR ;
+ scalar_t__ MZ_OK ;
+ int MZ_OPEN_MODE_CREATE ;
+ int MZ_OPEN_MODE_READ ;
+ int MZ_SEEK_END ;
+ int MZ_SEEK_SET ;
+ scalar_t__ UINT32_MAX ;
+ scalar_t__ mz_stream_copy (int ,void*,scalar_t__) ;
+ int mz_stream_mem_create (int *) ;
+ int mz_stream_mem_open (int ,int *,int ) ;
+ int mz_stream_mem_set_grow_size (int ,scalar_t__) ;
+ int mz_stream_os_close (void*) ;
+ int mz_stream_os_create (void**) ;
+ int mz_stream_os_delete (void**) ;
+ scalar_t__ mz_stream_os_open (void*,char const*,int ) ;
+ int mz_stream_os_seek (void*,int ,int ) ;
+ scalar_t__ mz_stream_os_tell (void*) ;
+ int mz_zip_reader_close (void*) ;
+ scalar_t__ mz_zip_reader_open (void*,int ) ;
 
 int32_t mz_zip_reader_open_file_in_memory(void *handle, const char *path)
 {
     mz_zip_reader *reader = (mz_zip_reader *)handle;
-    void *file_stream = NULL;
+    void *file_stream = ((void*)0);
     int64_t file_size = 0;
     int32_t err = 0;
 
@@ -64,7 +64,7 @@ int32_t mz_zip_reader_open_file_in_memory(void *handle, const char *path)
 
     if ((file_size <= 0) || (file_size > UINT32_MAX))
     {
-        /* Memory size is too large or too small */
+
 
         mz_stream_os_close(file_stream);
         mz_stream_os_delete(&file_stream);
@@ -74,7 +74,7 @@ int32_t mz_zip_reader_open_file_in_memory(void *handle, const char *path)
 
     mz_stream_mem_create(&reader->mem_stream);
     mz_stream_mem_set_grow_size(reader->mem_stream, (int32_t)file_size);
-    mz_stream_mem_open(reader->mem_stream, NULL, MZ_OPEN_MODE_CREATE);
+    mz_stream_mem_open(reader->mem_stream, ((void*)0), MZ_OPEN_MODE_CREATE);
 
     err = mz_stream_copy(reader->mem_stream, file_stream, (int32_t)file_size);
 

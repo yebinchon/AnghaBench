@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct gfs2_sbd {int /*<<< orphan*/  sd_vfs; } ;
-typedef  int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CAP_SYS_ADMIN ; 
- int EINVAL ; 
- int EPERM ; 
- int /*<<< orphan*/  capable (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gfs2_quota_sync (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int kstrtoint (char const*,int /*<<< orphan*/ ,int*) ; 
+
+
+
+struct gfs2_sbd {int sd_vfs; } ;
+typedef int ssize_t ;
+
+
+ int CAP_SYS_ADMIN ;
+ int EINVAL ;
+ int EPERM ;
+ int capable (int ) ;
+ int gfs2_quota_sync (int ,int ) ;
+ int kstrtoint (char const*,int ,int*) ;
 
 __attribute__((used)) static ssize_t quota_sync_store(struct gfs2_sbd *sdp, const char *buf,
-				size_t len)
+    size_t len)
 {
-	int error, val;
+ int error, val;
 
-	if (!capable(CAP_SYS_ADMIN))
-		return -EPERM;
+ if (!capable(CAP_SYS_ADMIN))
+  return -EPERM;
 
-	error = kstrtoint(buf, 0, &val);
-	if (error)
-		return error;
+ error = kstrtoint(buf, 0, &val);
+ if (error)
+  return error;
 
-	if (val != 1)
-		return -EINVAL;
+ if (val != 1)
+  return -EINVAL;
 
-	gfs2_quota_sync(sdp->sd_vfs, 0);
-	return len;
+ gfs2_quota_sync(sdp->sd_vfs, 0);
+ return len;
 }

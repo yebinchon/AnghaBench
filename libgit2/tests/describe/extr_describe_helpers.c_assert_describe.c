@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  git_repository ;
-typedef  int /*<<< orphan*/  git_object ;
-typedef  int /*<<< orphan*/  git_describe_result ;
-typedef  int /*<<< orphan*/  git_describe_options ;
-typedef  int /*<<< orphan*/  git_describe_format_options ;
-typedef  int /*<<< orphan*/  git_buf ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GIT_BUF_INIT ; 
- int /*<<< orphan*/  cl_git_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cl_must_pass (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  git_buf_cstr (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_buf_dispose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_describe_commit (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_describe_format (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_describe_result_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_object_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  git_revparse_single (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  wildmatch (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int git_repository ;
+typedef int git_object ;
+typedef int git_describe_result ;
+typedef int git_describe_options ;
+typedef int git_describe_format_options ;
+typedef int git_buf ;
+
+
+ int GIT_BUF_INIT ;
+ int cl_git_pass (int ) ;
+ int cl_must_pass (int ) ;
+ int git_buf_cstr (int *) ;
+ int git_buf_dispose (int *) ;
+ int git_describe_commit (int **,int *,int *) ;
+ int git_describe_format (int *,int *,int *) ;
+ int git_describe_result_free (int *) ;
+ int git_object_free (int *) ;
+ int git_revparse_single (int **,int *,char const*) ;
+ int wildmatch (char const*,int ,int ) ;
 
 void assert_describe(
-	const char *expected_output,
-	const char *revparse_spec,
-	git_repository *repo,
-	git_describe_options *opts,
-	git_describe_format_options *fmt_opts)
+ const char *expected_output,
+ const char *revparse_spec,
+ git_repository *repo,
+ git_describe_options *opts,
+ git_describe_format_options *fmt_opts)
 {
-	git_object *object;
-	git_buf label = GIT_BUF_INIT;
-	git_describe_result *result;
+ git_object *object;
+ git_buf label = GIT_BUF_INIT;
+ git_describe_result *result;
 
-	cl_git_pass(git_revparse_single(&object, repo, revparse_spec));
+ cl_git_pass(git_revparse_single(&object, repo, revparse_spec));
 
-	cl_git_pass(git_describe_commit(&result, object, opts));
-	cl_git_pass(git_describe_format(&label, result, fmt_opts));
+ cl_git_pass(git_describe_commit(&result, object, opts));
+ cl_git_pass(git_describe_format(&label, result, fmt_opts));
 
-	cl_must_pass(wildmatch(expected_output, git_buf_cstr(&label), 0));
+ cl_must_pass(wildmatch(expected_output, git_buf_cstr(&label), 0));
 
-	git_describe_result_free(result);
-	git_object_free(object);
-	git_buf_dispose(&label);
+ git_describe_result_free(result);
+ git_object_free(object);
+ git_buf_dispose(&label);
 }

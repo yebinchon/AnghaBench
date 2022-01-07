@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sock_mapping {int /*<<< orphan*/  irq; int /*<<< orphan*/  read; } ;
+
+
+
+
+struct sock_mapping {int irq; int read; } ;
 struct sock {struct sock_mapping* sk_user_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  atomic_inc (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  notify_remote_via_irq (int /*<<< orphan*/ ) ; 
+
+ int atomic_inc (int *) ;
+ int notify_remote_via_irq (int ) ;
 
 __attribute__((used)) static void pvcalls_sk_state_change(struct sock *sock)
 {
-	struct sock_mapping *map = sock->sk_user_data;
+ struct sock_mapping *map = sock->sk_user_data;
 
-	if (map == NULL)
-		return;
+ if (map == ((void*)0))
+  return;
 
-	atomic_inc(&map->read);
-	notify_remote_via_irq(map->irq);
+ atomic_inc(&map->read);
+ notify_remote_via_irq(map->irq);
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint64_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
 struct TYPE_3__ {void* seq; void* ms; } ;
-typedef  TYPE_1__ streamID ;
-typedef  int /*<<< orphan*/  e ;
+typedef TYPE_1__ streamID ;
+typedef int e ;
 
-/* Variables and functions */
- int /*<<< orphan*/  memcpy (int /*<<< orphan*/ *,void*,int) ; 
- void* ntohu64 (int /*<<< orphan*/ ) ; 
+
+ int memcpy (int *,void*,int) ;
+ void* ntohu64 (int ) ;
 
 void streamDecodeID(void *buf, streamID *id) {
     uint64_t e[2];

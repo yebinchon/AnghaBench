@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t uint8_t ;
-typedef  int int16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef size_t uint8_t ;
+typedef int int16_t ;
 struct TYPE_4__ {size_t* permutated; } ;
 struct TYPE_5__ {int* qtable; TYPE_1__ scantable; } ;
-typedef  TYPE_2__ TgqContext ;
-typedef  int /*<<< orphan*/  GetBitContext ;
+typedef TYPE_2__ TgqContext ;
+typedef int GetBitContext ;
 
-/* Variables and functions */
- int get_bits (int /*<<< orphan*/ *,int) ; 
- int get_sbits (int /*<<< orphan*/ *,int) ; 
- int show_bits (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  skip_bits (int /*<<< orphan*/ *,int) ; 
+
+ int get_bits (int *,int) ;
+ int get_sbits (int *,int) ;
+ int show_bits (int *,int) ;
+ int skip_bits (int *,int) ;
 
 __attribute__((used)) static void tgq_decode_block(TgqContext *s, int16_t block[64], GetBitContext *gb)
 {
@@ -55,8 +55,8 @@ __attribute__((used)) static void tgq_decode_block(TgqContext *s, int16_t block[
             block[perm[i]] = s->qtable[perm[i]];
             i++;
             break;
-        case 7: // 111b
-        case 3: // 011b
+        case 7:
+        case 3:
             skip_bits(gb, 2);
             if (show_bits(gb, 6) == 0x3F) {
                 skip_bits(gb, 6);

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum cl_test_status { ____Placeholder_cl_test_status } cl_test_status ;
 
-/* Variables and functions */
-#define  CL_TEST_FAILURE 131 
-#define  CL_TEST_NOTRUN 130 
-#define  CL_TEST_OK 129 
-#define  CL_TEST_SKIP 128 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  stdout ; 
+
+
+
+typedef enum cl_test_status { ____Placeholder_cl_test_status } cl_test_status ;
+
+
+
+
+
+
+ int fflush (int ) ;
+ int printf (char*) ;
+ int stdout ;
 
 __attribute__((used)) static void clar_print_ontest(const char *test_name, int test_number, enum cl_test_status status)
 {
-	(void)test_name;
-	(void)test_number;
+ (void)test_name;
+ (void)test_number;
 
-	switch(status) {
-	case CL_TEST_OK: printf("."); break;
-	case CL_TEST_FAILURE: printf("F"); break;
-	case CL_TEST_SKIP: printf("S"); break;
-	case CL_TEST_NOTRUN: printf("N"); break;
-	}
+ switch(status) {
+ case 129: printf("."); break;
+ case 131: printf("F"); break;
+ case 128: printf("S"); break;
+ case 130: printf("N"); break;
+ }
 
-	fflush(stdout);
+ fflush(stdout);
 }

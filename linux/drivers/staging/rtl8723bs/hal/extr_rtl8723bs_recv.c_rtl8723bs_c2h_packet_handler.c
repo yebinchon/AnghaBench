@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int /*<<< orphan*/  u16 ;
+
+
+
+
+typedef int u8 ;
+typedef int u16 ;
 struct adapter {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (int*) ; 
- int /*<<< orphan*/  memcpy (int*,int*,int /*<<< orphan*/ ) ; 
- int rtw_c2h_packet_wk_cmd (struct adapter*,int*,int /*<<< orphan*/ ) ; 
- int* rtw_zmalloc (int /*<<< orphan*/ ) ; 
+
+ int kfree (int*) ;
+ int memcpy (int*,int*,int ) ;
+ int rtw_c2h_packet_wk_cmd (struct adapter*,int*,int ) ;
+ int* rtw_zmalloc (int ) ;
 
 __attribute__((used)) static void rtl8723bs_c2h_packet_handler(struct adapter *padapter,
-					 u8 *pbuf, u16 length)
+      u8 *pbuf, u16 length)
 {
-	u8 *tmp = NULL;
-	u8 res = false;
+ u8 *tmp = ((void*)0);
+ u8 res = 0;
 
-	if (length == 0)
-		return;
+ if (length == 0)
+  return;
 
-	/* DBG_871X("+%s() length =%d\n", __func__, length); */
 
-	tmp = rtw_zmalloc(length);
-	if (!tmp)
-		return;
 
-	memcpy(tmp, pbuf, length);
+ tmp = rtw_zmalloc(length);
+ if (!tmp)
+  return;
 
-	res = rtw_c2h_packet_wk_cmd(padapter, tmp, length);
+ memcpy(tmp, pbuf, length);
 
-	if (!res)
-		kfree(tmp);
+ res = rtw_c2h_packet_wk_cmd(padapter, tmp, length);
 
-	/* DBG_871X("-%s res(%d)\n", __func__, res); */
+ if (!res)
+  kfree(tmp);
 
-	return;
+
+
+ return;
 }

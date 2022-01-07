@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EVENT_ERR_ABORT_ ; 
- int /*<<< orphan*/  abort () ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fatal_fn (int) ; 
+ int EVENT_ERR_ABORT_ ;
+ int abort () ;
+ int exit (int) ;
+ int fatal_fn (int) ;
 
 __attribute__((used)) static void
 event_exit(int errcode)
 {
-	if (fatal_fn) {
-		fatal_fn(errcode);
-		exit(errcode); /* should never be reached */
-	} else if (errcode == EVENT_ERR_ABORT_)
-		abort();
-	else
-		exit(errcode);
+ if (fatal_fn) {
+  fatal_fn(errcode);
+  exit(errcode);
+ } else if (errcode == EVENT_ERR_ABORT_)
+  abort();
+ else
+  exit(errcode);
 }

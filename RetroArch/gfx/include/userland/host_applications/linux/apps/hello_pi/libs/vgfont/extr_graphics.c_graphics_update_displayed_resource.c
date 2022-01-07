@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  int32_t ;
-typedef  int /*<<< orphan*/  GX_CLIENT_STATE_T ;
-typedef  int /*<<< orphan*/  GRAPHICS_RESOURCE_HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  gx_priv_flush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gx_priv_restore (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gx_priv_save (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef int int32_t ;
+typedef int GX_CLIENT_STATE_T ;
+typedef int GRAPHICS_RESOURCE_HANDLE ;
+
+
+ int gx_priv_flush (int ) ;
+ int gx_priv_restore (int *) ;
+ int gx_priv_save (int *,int ) ;
 
 int32_t graphics_update_displayed_resource(GRAPHICS_RESOURCE_HANDLE res,
                                            const uint32_t x_offset,

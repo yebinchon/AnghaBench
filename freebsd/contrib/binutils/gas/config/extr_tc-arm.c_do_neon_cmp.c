@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int N_F32 ; 
- int N_S16 ; 
- int N_S32 ; 
- int N_S8 ; 
- int /*<<< orphan*/  N_SUF_32 ; 
- int /*<<< orphan*/  neon_compare (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
+ int FALSE ;
+ int N_F32 ;
+ int N_S16 ;
+ int N_S32 ;
+ int N_S8 ;
+ int N_SUF_32 ;
+ int neon_compare (int ,int,int ) ;
 
 __attribute__((used)) static void
 do_neon_cmp (void)

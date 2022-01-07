@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ITypeLib ;
-typedef  int /*<<< orphan*/  ITypeInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IID_INonOleAutomation ; 
- int /*<<< orphan*/  ITypeLib_GetTypeInfoOfGuid (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  ITypeLib_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LIBID_TestTypelib ; 
- int /*<<< orphan*/  LOCALE_NEUTRAL ; 
- int /*<<< orphan*/  LoadRegTypeLib (int /*<<< orphan*/ *,int,int,...) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ok_ole_success (int /*<<< orphan*/ ,int /*<<< orphan*/  (*) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **)) ; 
+
+
+
+typedef int ITypeLib ;
+typedef int ITypeInfo ;
+typedef int HRESULT ;
+
+
+ int IID_INonOleAutomation ;
+ int ITypeLib_GetTypeInfoOfGuid (int *,int *,int **) ;
+ int ITypeLib_Release (int *) ;
+ int LIBID_TestTypelib ;
+ int LOCALE_NEUTRAL ;
+ int LoadRegTypeLib (int *,int,int,...) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int ok_ole_success (int ,int (*) (int *,int *,int **)) ;
 
 __attribute__((used)) static ITypeInfo *NonOleAutomation_GetTypeInfo(void)
 {
@@ -37,5 +37,5 @@ __attribute__((used)) static ITypeInfo *NonOleAutomation_GetTypeInfo(void)
         ITypeLib_Release(pTypeLib);
         return pTypeInfo;
     }
-    return NULL;
+    return ((void*)0);
 }

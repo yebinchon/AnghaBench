@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {size_t (* key_len_func ) (int /*<<< orphan*/ ) ;int (* decrypt_func ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,unsigned char const*,unsigned char*,size_t) ;int /*<<< orphan*/  key; } ;
-typedef  TYPE_1__ mbedtls_rsa_alt_context ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_RSA_BAD_INPUT_DATA ; 
- int /*<<< orphan*/  MBEDTLS_RSA_PRIVATE ; 
- size_t stub1 (int /*<<< orphan*/ ) ; 
- int stub2 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,size_t*,unsigned char const*,unsigned char*,size_t) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {size_t (* key_len_func ) (int ) ;int (* decrypt_func ) (int ,int ,size_t*,unsigned char const*,unsigned char*,size_t) ;int key; } ;
+typedef TYPE_1__ mbedtls_rsa_alt_context ;
+
+
+ int MBEDTLS_ERR_RSA_BAD_INPUT_DATA ;
+ int MBEDTLS_RSA_PRIVATE ;
+ size_t stub1 (int ) ;
+ int stub2 (int ,int ,size_t*,unsigned char const*,unsigned char*,size_t) ;
 
 __attribute__((used)) static int rsa_alt_decrypt_wrap( void *ctx,
                     const unsigned char *input, size_t ilen,

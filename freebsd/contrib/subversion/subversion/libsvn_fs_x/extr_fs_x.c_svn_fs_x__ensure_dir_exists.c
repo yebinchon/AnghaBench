@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_8__ {int /*<<< orphan*/  apr_err; } ;
-typedef  TYPE_1__ svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  APR_OS_DEFAULT ; 
- scalar_t__ APR_STATUS_IS_EEXIST (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR (TYPE_1__*) ; 
- TYPE_1__* SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_error_clear (TYPE_1__*) ; 
- TYPE_1__* svn_io_copy_perms (char const*,char const*,int /*<<< orphan*/ *) ; 
- TYPE_1__* svn_io_dir_make (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+struct TYPE_8__ {int apr_err; } ;
+typedef TYPE_1__ svn_error_t ;
+typedef int apr_pool_t ;
+
+
+ int APR_OS_DEFAULT ;
+ scalar_t__ APR_STATUS_IS_EEXIST (int ) ;
+ int SVN_ERR (TYPE_1__*) ;
+ TYPE_1__* SVN_NO_ERROR ;
+ int svn_error_clear (TYPE_1__*) ;
+ TYPE_1__* svn_io_copy_perms (char const*,char const*,int *) ;
+ TYPE_1__* svn_io_dir_make (char const*,int ,int *) ;
 
 svn_error_t *
 svn_fs_x__ensure_dir_exists(const char *path,
@@ -37,7 +37,7 @@ svn_fs_x__ensure_dir_exists(const char *path,
     }
   SVN_ERR(err);
 
-  /* We successfully created a new directory.  Dup the permissions
-     from FS->path. */
+
+
   return svn_io_copy_perms(fs_path, path, scratch_pool);
 }

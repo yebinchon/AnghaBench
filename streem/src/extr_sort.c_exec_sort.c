@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sort_data {int capa; void* buf; scalar_t__ len; int /*<<< orphan*/  func; } ;
-typedef  int /*<<< orphan*/  strm_value ;
-typedef  int /*<<< orphan*/  strm_stream ;
 
-/* Variables and functions */
- int SORT_FIRST_CAPA ; 
- int STRM_NG ; 
- int STRM_OK ; 
- int /*<<< orphan*/  finish_sort ; 
- int /*<<< orphan*/  free (struct sort_data*) ; 
- int /*<<< orphan*/  iter_sort ; 
- void* malloc (int) ; 
- int /*<<< orphan*/  strm_filter ; 
- int /*<<< orphan*/  strm_get_args (int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  strm_nil_value () ; 
- int /*<<< orphan*/  strm_stream_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  strm_stream_value (int /*<<< orphan*/ ) ; 
+
+
+
+struct sort_data {int capa; void* buf; scalar_t__ len; int func; } ;
+typedef int strm_value ;
+typedef int strm_stream ;
+
+
+ int SORT_FIRST_CAPA ;
+ int STRM_NG ;
+ int STRM_OK ;
+ int finish_sort ;
+ int free (struct sort_data*) ;
+ int iter_sort ;
+ void* malloc (int) ;
+ int strm_filter ;
+ int strm_get_args (int *,int,int *,char*,int *) ;
+ int strm_nil_value () ;
+ int strm_stream_new (int ,int ,int ,void*) ;
+ int strm_stream_value (int ) ;
 
 __attribute__((used)) static int
 exec_sort(strm_stream* strm, int argc, strm_value* args, strm_value* ret)

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64 ;
-struct TYPE_4__ {int /*<<< orphan*/  fe_msgbuf; } ;
-typedef  int /*<<< orphan*/  List ;
-typedef  TYPE_1__* CopyOutState ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AppendCopyBinaryHeaders (TYPE_1__*) ; 
- int /*<<< orphan*/  SendCopyDataToAll (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  resetStringInfo (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int int64 ;
+struct TYPE_4__ {int fe_msgbuf; } ;
+typedef int List ;
+typedef TYPE_1__* CopyOutState ;
+
+
+ int AppendCopyBinaryHeaders (TYPE_1__*) ;
+ int SendCopyDataToAll (int ,int ,int *) ;
+ int resetStringInfo (int ) ;
 
 __attribute__((used)) static void
 SendCopyBinaryHeaders(CopyOutState copyOutState, int64 shardId, List *connectionList)
 {
-	resetStringInfo(copyOutState->fe_msgbuf);
-	AppendCopyBinaryHeaders(copyOutState);
-	SendCopyDataToAll(copyOutState->fe_msgbuf, shardId, connectionList);
+ resetStringInfo(copyOutState->fe_msgbuf);
+ AppendCopyBinaryHeaders(copyOutState);
+ SendCopyDataToAll(copyOutState->fe_msgbuf, shardId, connectionList);
 }

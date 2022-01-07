@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct irq_data {int /*<<< orphan*/  hwirq; } ;
+
+
+
+
+struct irq_data {int hwirq; } ;
 struct gpio_chip {int dummy; } ;
-struct atlas7_gpio_chip {int /*<<< orphan*/  lock; } ;
+struct atlas7_gpio_chip {int lock; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __atlas7_gpio_irq_mask (struct atlas7_gpio_chip*,int /*<<< orphan*/ ) ; 
- struct atlas7_gpio_chip* gpiochip_get_data (struct gpio_chip*) ; 
- struct gpio_chip* irq_data_get_irq_chip_data (struct irq_data*) ; 
- int /*<<< orphan*/  raw_spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  raw_spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int __atlas7_gpio_irq_mask (struct atlas7_gpio_chip*,int ) ;
+ struct atlas7_gpio_chip* gpiochip_get_data (struct gpio_chip*) ;
+ struct gpio_chip* irq_data_get_irq_chip_data (struct irq_data*) ;
+ int raw_spin_lock_irqsave (int *,unsigned long) ;
+ int raw_spin_unlock_irqrestore (int *,unsigned long) ;
 
 __attribute__((used)) static void atlas7_gpio_irq_mask(struct irq_data *d)
 {
-	struct gpio_chip *gc = irq_data_get_irq_chip_data(d);
-	struct atlas7_gpio_chip *a7gc = gpiochip_get_data(gc);
-	unsigned long flags;
+ struct gpio_chip *gc = irq_data_get_irq_chip_data(d);
+ struct atlas7_gpio_chip *a7gc = gpiochip_get_data(gc);
+ unsigned long flags;
 
-	raw_spin_lock_irqsave(&a7gc->lock, flags);
+ raw_spin_lock_irqsave(&a7gc->lock, flags);
 
-	__atlas7_gpio_irq_mask(a7gc, d->hwirq);
+ __atlas7_gpio_irq_mask(a7gc, d->hwirq);
 
-	raw_spin_unlock_irqrestore(&a7gc->lock, flags);
+ raw_spin_unlock_irqrestore(&a7gc->lock, flags);
 }

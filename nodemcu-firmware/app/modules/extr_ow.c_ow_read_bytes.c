@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  scalar_t__ u32 ;
-typedef  int /*<<< orphan*/  lua_State ;
-typedef  int /*<<< orphan*/  luaL_Buffer ;
 
-/* Variables and functions */
- scalar_t__ LUAL_BUFFERSIZE ; 
- int /*<<< orphan*/  MOD_CHECK_ID (int /*<<< orphan*/ ,unsigned int) ; 
- int /*<<< orphan*/  luaL_addsize (int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  luaL_argcheck (int /*<<< orphan*/ *,int,int,char*) ; 
- int /*<<< orphan*/  luaL_buffinit (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- unsigned int luaL_checkinteger (int /*<<< orphan*/ *,int) ; 
- char* luaL_prepbuffer (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaL_pushresult (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  onewire_read_bytes (unsigned int,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ow ; 
+
+
+
+typedef int uint8_t ;
+typedef scalar_t__ u32 ;
+typedef int lua_State ;
+typedef int luaL_Buffer ;
+
+
+ scalar_t__ LUAL_BUFFERSIZE ;
+ int MOD_CHECK_ID (int ,unsigned int) ;
+ int luaL_addsize (int *,scalar_t__) ;
+ int luaL_argcheck (int *,int,int,char*) ;
+ int luaL_buffinit (int *,int *) ;
+ unsigned int luaL_checkinteger (int *,int) ;
+ char* luaL_prepbuffer (int *) ;
+ int luaL_pushresult (int *) ;
+ int onewire_read_bytes (unsigned int,int *,scalar_t__) ;
+ int ow ;
 
 __attribute__((used)) static int ow_read_bytes( lua_State *L )
 {

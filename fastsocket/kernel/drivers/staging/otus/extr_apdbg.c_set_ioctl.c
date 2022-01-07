@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ifreq {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ZDAPIOCTL ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*) ; 
- scalar_t__ ioctl (int,int /*<<< orphan*/ ,struct ifreq*) ; 
- char* prgname ; 
- int /*<<< orphan*/  stderr ; 
- char* strerror (int /*<<< orphan*/ ) ; 
+
+ int ZDAPIOCTL ;
+ int errno ;
+ int fprintf (int ,char*,char*,char*) ;
+ scalar_t__ ioctl (int,int ,struct ifreq*) ;
+ char* prgname ;
+ int stderr ;
+ char* strerror (int ) ;
 
 int set_ioctl(int sock, struct ifreq *req)
 {

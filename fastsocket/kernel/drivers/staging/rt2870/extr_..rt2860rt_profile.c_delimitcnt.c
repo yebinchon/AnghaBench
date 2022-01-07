@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ INT ;
 
-/* Variables and functions */
- char* strpbrk (char const*,char const*) ; 
+
+
+
+typedef scalar_t__ INT ;
+
+
+ char* strpbrk (char const*,char const*) ;
 
 INT delimitcnt(char * s,const char * ct)
 {
-	INT count = 0;
-	/* point to the beginning of the line */
-	const char *token = s;
+ INT count = 0;
 
-	for ( ;; )
-	{
-		token = strpbrk(token, ct); /* search for delimiters */
+ const char *token = s;
 
-        if ( token == NULL )
-		{
-			/* advanced to the terminating null character */
-			break;
-		}
-		/* skip the delimiter */
-	    ++token;
+ for ( ;; )
+ {
+  token = strpbrk(token, ct);
 
-		/*
-		 * Print the found text: use len with %.*s to specify field width.
-		 */
+        if ( token == ((void*)0) )
+  {
 
-		/* accumulate delimiter count */
-	    ++count;
-	}
+   break;
+  }
+
+     ++token;
+
+
+
+
+
+
+     ++count;
+ }
     return count;
 }

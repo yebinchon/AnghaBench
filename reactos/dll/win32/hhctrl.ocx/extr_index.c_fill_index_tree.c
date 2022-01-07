@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lvi ;
-struct TYPE_6__ {struct TYPE_6__* next; scalar_t__ id; scalar_t__ keyword; int /*<<< orphan*/  indentLevel; } ;
-struct TYPE_5__ {int mask; scalar_t__ lParam; scalar_t__ pszText; scalar_t__ cchTextMax; int /*<<< orphan*/  iIndent; int /*<<< orphan*/  iItem; } ;
-typedef  TYPE_1__ LVITEMW ;
-typedef  scalar_t__ LPARAM ;
-typedef  TYPE_2__ IndexItem ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ HTREEITEM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FIXME (char*) ; 
- int LVIF_INDENT ; 
- int LVIF_PARAM ; 
- int LVIF_TEXT ; 
- int /*<<< orphan*/  LVM_INSERTITEMW ; 
- scalar_t__ SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  debugstr_w (scalar_t__) ; 
- scalar_t__ lstrlenW (scalar_t__) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int lvi ;
+struct TYPE_6__ {struct TYPE_6__* next; scalar_t__ id; scalar_t__ keyword; int indentLevel; } ;
+struct TYPE_5__ {int mask; scalar_t__ lParam; scalar_t__ pszText; scalar_t__ cchTextMax; int iIndent; int iItem; } ;
+typedef TYPE_1__ LVITEMW ;
+typedef scalar_t__ LPARAM ;
+typedef TYPE_2__ IndexItem ;
+typedef int HWND ;
+typedef scalar_t__ HTREEITEM ;
+
+
+ int FIXME (char*) ;
+ int LVIF_INDENT ;
+ int LVIF_PARAM ;
+ int LVIF_TEXT ;
+ int LVM_INSERTITEMW ;
+ scalar_t__ SendMessageW (int ,int ,int ,scalar_t__) ;
+ int TRACE (char*,int ) ;
+ int debugstr_w (scalar_t__) ;
+ scalar_t__ lstrlenW (scalar_t__) ;
+ int memset (TYPE_1__*,int ,int) ;
 
 __attribute__((used)) static void fill_index_tree(HWND hwnd, IndexItem *item)
 {

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lsm_db ;
-typedef  int /*<<< orphan*/  lsm_cursor ;
-typedef  int /*<<< orphan*/  MultiCursor ;
 
-/* Variables and functions */
- int LSM_OK ; 
- int /*<<< orphan*/  assert_db_state (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  dbReleaseClientSnapshot (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  lsmMCursorClose (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * lsmMCursorDb (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int lsm_db ;
+typedef int lsm_cursor ;
+typedef int MultiCursor ;
+
+
+ int LSM_OK ;
+ int assert_db_state (int *) ;
+ int dbReleaseClientSnapshot (int *) ;
+ int lsmMCursorClose (int *,int) ;
+ int * lsmMCursorDb (int *) ;
 
 int lsm_csr_close(lsm_cursor *p){
   if( p ){

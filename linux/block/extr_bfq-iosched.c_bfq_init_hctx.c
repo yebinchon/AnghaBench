@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct blk_mq_hw_ctx {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  bfq_depth_updated (struct blk_mq_hw_ctx*) ; 
+
+ int bfq_depth_updated (struct blk_mq_hw_ctx*) ;
 
 __attribute__((used)) static int bfq_init_hctx(struct blk_mq_hw_ctx *hctx, unsigned int index)
 {
-	bfq_depth_updated(hctx);
-	return 0;
+ bfq_depth_updated(hctx);
+ return 0;
 }

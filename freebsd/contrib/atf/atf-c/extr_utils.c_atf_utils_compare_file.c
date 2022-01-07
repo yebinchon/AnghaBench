@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ ssize_t ;
-typedef  int /*<<< orphan*/  buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATF_REQUIRE_MSG (int,char*,char const*) ; 
- int /*<<< orphan*/  O_RDONLY ; 
- int /*<<< orphan*/  close (int const) ; 
- scalar_t__ memcmp (char const*,char*,scalar_t__) ; 
- int open (char const*,int /*<<< orphan*/ ) ; 
- scalar_t__ read (int const,char*,int) ; 
- scalar_t__ strlen (char const*) ; 
+
+
+
+typedef scalar_t__ ssize_t ;
+typedef int buffer ;
+
+
+ int ATF_REQUIRE_MSG (int,char*,char const*) ;
+ int O_RDONLY ;
+ int close (int const) ;
+ scalar_t__ memcmp (char const*,char*,scalar_t__) ;
+ int open (char const*,int ) ;
+ scalar_t__ read (int const,char*,int) ;
+ scalar_t__ strlen (char const*) ;
 
 bool
 atf_utils_compare_file(const char *name, const char *contents)
@@ -37,7 +37,7 @@ atf_utils_compare_file(const char *name, const char *contents)
            count <= remaining) {
         if (memcmp(pos, buffer, count) != 0) {
             close(fd);
-            return false;
+            return 0;
         }
         remaining -= count;
         pos += count;

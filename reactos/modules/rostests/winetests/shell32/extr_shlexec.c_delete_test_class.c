@@ -1,19 +1,11 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HKEY_CLASSES_ROOT ; 
- int /*<<< orphan*/  myRegDeleteTreeA (int /*<<< orphan*/ ,char const*) ; 
+ int HKEY_CLASSES_ROOT ;
+ int myRegDeleteTreeA (int ,char const*) ;
 
 __attribute__((used)) static void delete_test_class(const char* classname)
 {

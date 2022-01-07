@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int suspend_state_t ;
 
-/* Variables and functions */
-#define  PM_SUSPEND_MEM 129 
-#define  PM_SUSPEND_STANDBY 128 
- int /*<<< orphan*/  cpu_pm_enter () ; 
- int /*<<< orphan*/  cpu_pm_exit () ; 
- int /*<<< orphan*/  cpu_suspend (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  m10v_die ; 
+
+
+
+typedef int suspend_state_t ;
+
+
+
+
+ int cpu_pm_enter () ;
+ int cpu_pm_exit () ;
+ int cpu_suspend (int ,int ) ;
+ int m10v_die ;
 
 __attribute__((used)) static int m10v_pm_enter(suspend_state_t state)
 {
-	switch (state) {
-	case PM_SUSPEND_STANDBY:
-		asm("wfi");
-		break;
-	case PM_SUSPEND_MEM:
-		cpu_pm_enter();
-		cpu_suspend(0, m10v_die);
-		cpu_pm_exit();
-		break;
-	}
-	return 0;
+ switch (state) {
+ case 128:
+  asm("wfi");
+  break;
+ case 129:
+  cpu_pm_enter();
+  cpu_suspend(0, m10v_die);
+  cpu_pm_exit();
+  break;
+ }
+ return 0;
 }

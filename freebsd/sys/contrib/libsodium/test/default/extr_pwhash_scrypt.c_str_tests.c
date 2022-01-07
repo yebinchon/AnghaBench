@@ -1,39 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int MEMLIMIT ; 
- int OPSLIMIT ; 
- int /*<<< orphan*/  assert (int) ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_SALTBYTES ; 
- unsigned int crypto_pwhash_scryptsalsa208sha256_STRBYTES ; 
- scalar_t__ crypto_pwhash_scryptsalsa208sha256_str (char*,char const*,int /*<<< orphan*/ ,int,int) ; 
- int crypto_pwhash_scryptsalsa208sha256_str_needs_rehash (char*,int,int) ; 
- scalar_t__ crypto_pwhash_scryptsalsa208sha256_str_verify (char*,char const*,int /*<<< orphan*/ ) ; 
- int crypto_pwhash_str_needs_rehash (char*,int,int) ; 
- int /*<<< orphan*/  memcpy (char*,char*,unsigned int) ; 
- int /*<<< orphan*/  printf (char*) ; 
- int /*<<< orphan*/  sodium_free (char*) ; 
- scalar_t__ sodium_malloc (unsigned int) ; 
- scalar_t__ strcmp (char*,char*) ; 
- int /*<<< orphan*/  strlen (char const*) ; 
+ int MEMLIMIT ;
+ int OPSLIMIT ;
+ int assert (int) ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_SALTBYTES ;
+ unsigned int crypto_pwhash_scryptsalsa208sha256_STRBYTES ;
+ scalar_t__ crypto_pwhash_scryptsalsa208sha256_str (char*,char const*,int ,int,int) ;
+ int crypto_pwhash_scryptsalsa208sha256_str_needs_rehash (char*,int,int) ;
+ scalar_t__ crypto_pwhash_scryptsalsa208sha256_str_verify (char*,char const*,int ) ;
+ int crypto_pwhash_str_needs_rehash (char*,int,int) ;
+ int memcpy (char*,char*,unsigned int) ;
+ int printf (char*) ;
+ int sodium_free (char*) ;
+ scalar_t__ sodium_malloc (unsigned int) ;
+ scalar_t__ strcmp (char*,char*) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static void
 str_tests(void)
 {
-    char       *str_out;
-    char       *str_out2;
-    char       *salt;
+    char *str_out;
+    char *str_out2;
+    char *salt;
     const char *passwd = "Correct Horse Battery Staple";
 
     salt = (char *) sodium_malloc(crypto_pwhash_scryptsalsa208sha256_SALTBYTES);

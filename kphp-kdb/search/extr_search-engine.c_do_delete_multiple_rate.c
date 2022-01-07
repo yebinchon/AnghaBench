@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct hashset_int {int dummy; } ;
-struct connection {int /*<<< orphan*/  In; } ;
+struct connection {int In; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int delete_hash_query_items ; 
- int do_delete_items_with_rate_using_hashset (struct hashset_int*,int) ; 
- int /*<<< orphan*/  func_delete_multiple_rate ; 
- int /*<<< orphan*/  hashset_int_free (struct hashset_int*) ; 
- int /*<<< orphan*/  hashset_int_init (struct hashset_int*,int) ; 
- scalar_t__ int_list_foreach (char*,struct hashset_int*,int /*<<< orphan*/ ) ; 
- int read_in (int /*<<< orphan*/ *,char*,int) ; 
- char* value_buff ; 
+
+ int assert (int) ;
+ int delete_hash_query_items ;
+ int do_delete_items_with_rate_using_hashset (struct hashset_int*,int) ;
+ int func_delete_multiple_rate ;
+ int hashset_int_free (struct hashset_int*) ;
+ int hashset_int_init (struct hashset_int*,int) ;
+ scalar_t__ int_list_foreach (char*,struct hashset_int*,int ) ;
+ int read_in (int *,char*,int) ;
+ char* value_buff ;
 
 int do_delete_multiple_rate (struct connection *c, int size, int rate_id) {
   char *a = value_buff;

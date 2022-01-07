@@ -1,0 +1,110 @@
+; ModuleID = '/home/carl/AnghaBench/linux/drivers/net/ethernet/intel/ice/extr_ice_common.c_ice_write_qword.c'
+source_filename = "/home/carl/AnghaBench/linux/drivers/net/ethernet/intel/ice/extr_ice_common.c_ice_write_qword.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.ice_ctx_ele = type { i32, i32, i32 }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (i32*, i32*, %struct.ice_ctx_ele*)* @ice_write_qword to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @ice_write_qword(i32* %0, i32* %1, %struct.ice_ctx_ele* %2) #0 {
+  %4 = alloca i32*, align 8
+  %5 = alloca i32*, align 8
+  %6 = alloca %struct.ice_ctx_ele*, align 8
+  %7 = alloca i32, align 4
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  %10 = alloca i32*, align 8
+  %11 = alloca i32*, align 8
+  %12 = alloca i32, align 4
+  store i32* %0, i32** %4, align 8
+  store i32* %1, i32** %5, align 8
+  store %struct.ice_ctx_ele* %2, %struct.ice_ctx_ele** %6, align 8
+  %13 = load i32*, i32** %4, align 8
+  %14 = load %struct.ice_ctx_ele*, %struct.ice_ctx_ele** %6, align 8
+  %15 = getelementptr inbounds %struct.ice_ctx_ele, %struct.ice_ctx_ele* %14, i32 0, i32 0
+  %16 = load i32, i32* %15, align 4
+  %17 = sext i32 %16 to i64
+  %18 = getelementptr inbounds i32, i32* %13, i64 %17
+  store i32* %18, i32** %10, align 8
+  %19 = load %struct.ice_ctx_ele*, %struct.ice_ctx_ele** %6, align 8
+  %20 = getelementptr inbounds %struct.ice_ctx_ele, %struct.ice_ctx_ele* %19, i32 0, i32 1
+  %21 = load i32, i32* %20, align 4
+  %22 = srem i32 %21, 8
+  store i32 %22, i32* %12, align 4
+  %23 = load %struct.ice_ctx_ele*, %struct.ice_ctx_ele** %6, align 8
+  %24 = getelementptr inbounds %struct.ice_ctx_ele, %struct.ice_ctx_ele* %23, i32 0, i32 2
+  %25 = load i32, i32* %24, align 4
+  %26 = icmp slt i32 %25, 64
+  br i1 %26, label %27, label %33
+
+27:                                               ; preds = %3
+  %28 = load %struct.ice_ctx_ele*, %struct.ice_ctx_ele** %6, align 8
+  %29 = getelementptr inbounds %struct.ice_ctx_ele, %struct.ice_ctx_ele* %28, i32 0, i32 2
+  %30 = load i32, i32* %29, align 4
+  %31 = call i32 @BIT_ULL(i32 %30)
+  %32 = sub nsw i32 %31, 1
+  store i32 %32, i32* %8, align 4
+  br label %34
+
+33:                                               ; preds = %3
+  store i32 -1, i32* %8, align 4
+  br label %34
+
+34:                                               ; preds = %33, %27
+  %35 = load i32*, i32** %10, align 8
+  %36 = load i32, i32* %35, align 4
+  store i32 %36, i32* %7, align 4
+  %37 = load i32, i32* %8, align 4
+  %38 = load i32, i32* %7, align 4
+  %39 = and i32 %38, %37
+  store i32 %39, i32* %7, align 4
+  %40 = load i32, i32* %12, align 4
+  %41 = load i32, i32* %8, align 4
+  %42 = shl i32 %41, %40
+  store i32 %42, i32* %8, align 4
+  %43 = load i32, i32* %12, align 4
+  %44 = load i32, i32* %7, align 4
+  %45 = shl i32 %44, %43
+  store i32 %45, i32* %7, align 4
+  %46 = load i32*, i32** %5, align 8
+  %47 = load %struct.ice_ctx_ele*, %struct.ice_ctx_ele** %6, align 8
+  %48 = getelementptr inbounds %struct.ice_ctx_ele, %struct.ice_ctx_ele* %47, i32 0, i32 1
+  %49 = load i32, i32* %48, align 4
+  %50 = sdiv i32 %49, 8
+  %51 = sext i32 %50 to i64
+  %52 = getelementptr inbounds i32, i32* %46, i64 %51
+  store i32* %52, i32** %11, align 8
+  %53 = load i32*, i32** %11, align 8
+  %54 = call i32 @memcpy(i32* %9, i32* %53, i32 4)
+  %55 = load i32, i32* %8, align 4
+  %56 = call i32 @cpu_to_le64(i32 %55)
+  %57 = xor i32 %56, -1
+  %58 = load i32, i32* %9, align 4
+  %59 = and i32 %58, %57
+  store i32 %59, i32* %9, align 4
+  %60 = load i32, i32* %7, align 4
+  %61 = call i32 @cpu_to_le64(i32 %60)
+  %62 = load i32, i32* %9, align 4
+  %63 = or i32 %62, %61
+  store i32 %63, i32* %9, align 4
+  %64 = load i32*, i32** %11, align 8
+  %65 = call i32 @memcpy(i32* %64, i32* %9, i32 4)
+  ret void
+}
+
+declare dso_local i32 @BIT_ULL(i32) #1
+
+declare dso_local i32 @memcpy(i32*, i32*, i32) #1
+
+declare dso_local i32 @cpu_to_le64(i32) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

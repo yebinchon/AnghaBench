@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  const WCHAR ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  MSIPACKAGE ;
-typedef  int /*<<< orphan*/  IAssemblyName ;
-typedef  int /*<<< orphan*/  IAssemblyEnum ;
-typedef  scalar_t__ HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASM_CACHE_GAC ; 
- int /*<<< orphan*/  CANOF_PARSE_DISPLAY_NAME ; 
- scalar_t__ E_NOT_SUFFICIENT_BUFFER ; 
- scalar_t__ FAILED (scalar_t__) ; 
- scalar_t__ IAssemblyName_GetName (int /*<<< orphan*/ *,int*,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  IAssemblyName_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const* msi_alloc (int) ; 
- int /*<<< orphan*/  msi_free (int /*<<< orphan*/  const*) ; 
- scalar_t__ pCreateAssemblyEnum (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ pCreateAssemblyNameObject (int /*<<< orphan*/ **,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int const WCHAR ;
+typedef int UINT ;
+typedef int MSIPACKAGE ;
+typedef int IAssemblyName ;
+typedef int IAssemblyEnum ;
+typedef scalar_t__ HRESULT ;
+
+
+ int ASM_CACHE_GAC ;
+ int CANOF_PARSE_DISPLAY_NAME ;
+ scalar_t__ E_NOT_SUFFICIENT_BUFFER ;
+ scalar_t__ FAILED (scalar_t__) ;
+ scalar_t__ IAssemblyName_GetName (int *,int*,int const*) ;
+ int IAssemblyName_Release (int *) ;
+ int const* msi_alloc (int) ;
+ int msi_free (int const*) ;
+ scalar_t__ pCreateAssemblyEnum (int **,int *,int *,int ,int *) ;
+ scalar_t__ pCreateAssemblyNameObject (int **,int const*,int ,int *) ;
 
 IAssemblyEnum *msi_create_assembly_enum( MSIPACKAGE *package, const WCHAR *displayname )
 {
@@ -37,16 +37,16 @@ IAssemblyEnum *msi_create_assembly_enum( MSIPACKAGE *package, const WCHAR *displ
     WCHAR *str;
     UINT len = 0;
 
-    if (!pCreateAssemblyNameObject || !pCreateAssemblyEnum) return NULL;
+    if (!pCreateAssemblyNameObject || !pCreateAssemblyEnum) return ((void*)0);
 
-    hr = pCreateAssemblyNameObject( &name, displayname, CANOF_PARSE_DISPLAY_NAME, NULL );
-    if (FAILED( hr )) return NULL;
+    hr = pCreateAssemblyNameObject( &name, displayname, CANOF_PARSE_DISPLAY_NAME, ((void*)0) );
+    if (FAILED( hr )) return ((void*)0);
 
-    hr = IAssemblyName_GetName( name, &len, NULL );
+    hr = IAssemblyName_GetName( name, &len, ((void*)0) );
     if (hr != E_NOT_SUFFICIENT_BUFFER || !(str = msi_alloc( len * sizeof(WCHAR) )))
     {
         IAssemblyName_Release( name );
-        return NULL;
+        return ((void*)0);
     }
 
     hr = IAssemblyName_GetName( name, &len, str );
@@ -54,16 +54,16 @@ IAssemblyEnum *msi_create_assembly_enum( MSIPACKAGE *package, const WCHAR *displ
     if (FAILED( hr ))
     {
         msi_free( str );
-        return NULL;
+        return ((void*)0);
     }
 
-    hr = pCreateAssemblyNameObject( &name, str, 0, NULL );
+    hr = pCreateAssemblyNameObject( &name, str, 0, ((void*)0) );
     msi_free( str );
-    if (FAILED( hr )) return NULL;
+    if (FAILED( hr )) return ((void*)0);
 
-    hr = pCreateAssemblyEnum( &ret, NULL, name, ASM_CACHE_GAC, NULL );
+    hr = pCreateAssemblyEnum( &ret, ((void*)0), name, ASM_CACHE_GAC, ((void*)0) );
     IAssemblyName_Release( name );
-    if (FAILED( hr )) return NULL;
+    if (FAILED( hr )) return ((void*)0);
 
     return ret;
 }

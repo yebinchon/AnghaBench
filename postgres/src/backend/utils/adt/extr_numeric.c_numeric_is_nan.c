@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Numeric ;
 
-/* Variables and functions */
- int NUMERIC_IS_NAN (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int Numeric ;
+
+
+ int NUMERIC_IS_NAN (int ) ;
 
 bool
 numeric_is_nan(Numeric num)
 {
-	return NUMERIC_IS_NAN(num);
+ return NUMERIC_IS_NAN(num);
 }

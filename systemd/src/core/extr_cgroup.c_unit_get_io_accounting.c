@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ uint64_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ uint64_t ;
 struct TYPE_5__ {scalar_t__* io_accounting_last; scalar_t__* io_accounting_base; } ;
-typedef  TYPE_1__ Unit ;
-typedef  size_t CGroupIOAccountingMetric ;
+typedef TYPE_1__ Unit ;
+typedef size_t CGroupIOAccountingMetric ;
 
-/* Variables and functions */
- int ENODATA ; 
- scalar_t__ UINT64_MAX ; 
- int /*<<< orphan*/  UNIT_CGROUP_BOOL (TYPE_1__*,int /*<<< orphan*/ ) ; 
- int _CGROUP_IO_ACCOUNTING_METRIC_MAX ; 
- int /*<<< orphan*/  io_accounting ; 
- int unit_get_io_accounting_raw (TYPE_1__*,scalar_t__*) ; 
+
+ int ENODATA ;
+ scalar_t__ UINT64_MAX ;
+ int UNIT_CGROUP_BOOL (TYPE_1__*,int ) ;
+ int _CGROUP_IO_ACCOUNTING_METRIC_MAX ;
+ int io_accounting ;
+ int unit_get_io_accounting_raw (TYPE_1__*,scalar_t__*) ;
 
 int unit_get_io_accounting(
                 Unit *u,
@@ -33,7 +33,7 @@ int unit_get_io_accounting(
         uint64_t raw[_CGROUP_IO_ACCOUNTING_METRIC_MAX];
         int r;
 
-        /* Retrieve an IO account parameter. This will subtract the counter when the unit was started. */
+
 
         if (!UNIT_CGROUP_BOOL(u, io_accounting))
                 return -ENODATA;
@@ -48,7 +48,7 @@ int unit_get_io_accounting(
                 return r;
 
         for (CGroupIOAccountingMetric i = 0; i < _CGROUP_IO_ACCOUNTING_METRIC_MAX; i++) {
-                /* Saturated subtraction */
+
                 if (raw[i] > u->io_accounting_base[i])
                         u->io_accounting_last[i] = raw[i] - u->io_accounting_base[i];
                 else

@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  Assign ; 
- int BZ ; 
- char Else ; 
- char If ; 
- int JMP ; 
- int LEV ; 
- char Return ; 
- char While ; 
- int* e ; 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  expr (int /*<<< orphan*/ ) ; 
- int line ; 
- int /*<<< orphan*/  next () ; 
- int /*<<< orphan*/  printf (char*,int) ; 
- char tk ; 
+ int Assign ;
+ int BZ ;
+ char Else ;
+ char If ;
+ int JMP ;
+ int LEV ;
+ char Return ;
+ char While ;
+ int* e ;
+ int exit (int) ;
+ int expr (int ) ;
+ int line ;
+ int next () ;
+ int printf (char*,int) ;
+ char tk ;
 
 void stmt()
 {

@@ -1,21 +1,13 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int HUFFMAN_MAX_CODE_LENGTH ; 
- int /*<<< orphan*/  memcpy (int*,int*,int) ; 
- int /*<<< orphan*/  memset (int*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ unlikely (int /*<<< orphan*/ ) ; 
+ int HUFFMAN_MAX_CODE_LENGTH ;
+ int memcpy (int*,int*,int) ;
+ int memset (int*,int ,int) ;
+ scalar_t__ unlikely (int ) ;
 
 void canonical_huffman (int *l, int N, int L, int* firstcode, int *codeword, int *symbols) {
   int i;
@@ -29,8 +21,8 @@ void canonical_huffman (int *l, int N, int L, int* firstcode, int *codeword, int
     firstcode[i] = (firstcode[i+1] + numl[i+1]) >> 1;
   }
   memcpy (&nextcode[1], &firstcode[1], L * sizeof (int));
-  /* codeword array only needed for encoding */
-  if (unlikely (codeword != NULL)) {
+
+  if (unlikely (codeword != ((void*)0))) {
     for (i = 0; i < N; i++) {
       int li = l[i];
       if (!li) {

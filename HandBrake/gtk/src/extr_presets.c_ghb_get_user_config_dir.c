@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  size_t gint ;
-typedef  char const gchar ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_DIR_SEPARATOR_S ; 
- int /*<<< orphan*/  G_FILE_TEST_IS_DIR ; 
- int /*<<< orphan*/  g_file_test (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char const*) ; 
- char* g_get_home_dir () ; 
- char* g_get_user_config_dir () ; 
- int /*<<< orphan*/  g_mkdir (char const*,int) ; 
- char* g_strdup_printf (char*,char const*,char const*) ; 
- int /*<<< orphan*/  g_strfreev (char const**) ; 
- char** g_strsplit (char const*,int /*<<< orphan*/ ,int) ; 
- char* override_user_config_dir ; 
+
+
+
+typedef size_t gint ;
+typedef char const gchar ;
+
+
+ int G_DIR_SEPARATOR_S ;
+ int G_FILE_TEST_IS_DIR ;
+ int g_file_test (char const*,int ) ;
+ int g_free (char const*) ;
+ char* g_get_home_dir () ;
+ char* g_get_user_config_dir () ;
+ int g_mkdir (char const*,int) ;
+ char* g_strdup_printf (char*,char const*,char const*) ;
+ int g_strfreev (char const**) ;
+ char** g_strsplit (char const*,int ,int) ;
+ char* override_user_config_dir ;
 
 gchar *
 ghb_get_user_config_dir(gchar *subdir)
 {
     const gchar * dir, * ghb = "ghb";
-    gchar       * config;
+    gchar * config;
 
-    if (override_user_config_dir != NULL)
+    if (override_user_config_dir != ((void*)0))
     {
         dir = override_user_config_dir;
     }
@@ -40,14 +40,14 @@ ghb_get_user_config_dir(gchar *subdir)
     {
         dir = g_get_user_config_dir();
     }
-    if (dir == NULL || !g_file_test(dir, G_FILE_TEST_IS_DIR))
+    if (dir == ((void*)0) || !g_file_test(dir, G_FILE_TEST_IS_DIR))
     {
         dir = g_get_home_dir();
         ghb = ".ghb";
     }
-    if (dir == NULL || !g_file_test(dir, G_FILE_TEST_IS_DIR))
+    if (dir == ((void*)0) || !g_file_test(dir, G_FILE_TEST_IS_DIR))
     {
-        // Last ditch, use CWD
+
         dir = "./";
         ghb = ".ghb";
     }
@@ -57,10 +57,10 @@ ghb_get_user_config_dir(gchar *subdir)
     if (subdir)
     {
         gchar **split;
-        gint    ii;
+        gint ii;
 
         split = g_strsplit(subdir, G_DIR_SEPARATOR_S, -1);
-        for (ii = 0; split[ii] != NULL; ii++)
+        for (ii = 0; split[ii] != ((void*)0); ii++)
         {
             gchar *tmp;
 

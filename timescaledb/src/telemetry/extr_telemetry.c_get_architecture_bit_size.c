@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* data; } ;
-typedef  TYPE_1__* StringInfo ;
+typedef TYPE_1__* StringInfo ;
 
-/* Variables and functions */
- int BUILD_POINTER_BYTES ; 
- int /*<<< orphan*/  appendStringInfo (TYPE_1__*,char*,int) ; 
- TYPE_1__* makeStringInfo () ; 
+
+ int BUILD_POINTER_BYTES ;
+ int appendStringInfo (TYPE_1__*,char*,int) ;
+ TYPE_1__* makeStringInfo () ;
 
 __attribute__((used)) static char *
 get_architecture_bit_size()
 {
-	StringInfo buf = makeStringInfo();
+ StringInfo buf = makeStringInfo();
 
-	appendStringInfo(buf, "%d", BUILD_POINTER_BYTES * 8);
-	return buf->data;
+ appendStringInfo(buf, "%d", BUILD_POINTER_BYTES * 8);
+ return buf->data;
 }

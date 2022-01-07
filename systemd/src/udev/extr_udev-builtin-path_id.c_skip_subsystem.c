@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char const sd_device ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (char const*) ; 
- scalar_t__ sd_device_get_parent (char const*,char const**) ; 
- scalar_t__ sd_device_get_subsystem (char const*,char const**) ; 
- int /*<<< orphan*/  streq (char const*,char const*) ; 
+
+
+
+typedef char const sd_device ;
+
+
+ int assert (char const*) ;
+ scalar_t__ sd_device_get_parent (char const*,char const**) ;
+ scalar_t__ sd_device_get_subsystem (char const*,char const**) ;
+ int streq (char const*,char const*) ;
 
 __attribute__((used)) static sd_device *skip_subsystem(sd_device *dev, const char *subsys) {
         sd_device *parent;

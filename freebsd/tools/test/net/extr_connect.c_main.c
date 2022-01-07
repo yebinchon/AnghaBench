@@ -1,71 +1,71 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  s_addr; } ;
-struct sockaddr_in {int sin_len; TYPE_1__ sin_addr; int /*<<< orphan*/  sin_port; int /*<<< orphan*/  sin_family; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int s_addr; } ;
+struct sockaddr_in {int sin_len; TYPE_1__ sin_addr; int sin_port; int sin_family; } ;
 struct sockaddr {int dummy; } ;
-typedef  int /*<<< orphan*/  remoteaddr ;
+typedef int remoteaddr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AF_INET ; 
- int /*<<< orphan*/  INADDR_ANY ; 
- int PORT ; 
- int /*<<< orphan*/  SOCK_STREAM ; 
- int atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bzero (struct sockaddr_in*,int) ; 
- int /*<<< orphan*/  close (int) ; 
- int connect (int,struct sockaddr*,int) ; 
- int errno ; 
- int getopt (int,char**,char*) ; 
- int /*<<< orphan*/  htons (int) ; 
- int /*<<< orphan*/  optarg ; 
- int /*<<< orphan*/  printf (char*,int,int) ; 
- int socket (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  usage () ; 
+
+ int AF_INET ;
+ int INADDR_ANY ;
+ int PORT ;
+ int SOCK_STREAM ;
+ int atoi (int ) ;
+ int bzero (struct sockaddr_in*,int) ;
+ int close (int) ;
+ int connect (int,struct sockaddr*,int) ;
+ int errno ;
+ int getopt (int,char**,char*) ;
+ int htons (int) ;
+ int optarg ;
+ int printf (char*,int,int) ;
+ int socket (int ,int ,int ) ;
+ int usage () ;
 
 int main(int argc, char **argv)
 {
 
-	int ch, cli_sock, count = 0;
-	int port = PORT;
-	struct sockaddr_in remoteaddr;
+ int ch, cli_sock, count = 0;
+ int port = PORT;
+ struct sockaddr_in remoteaddr;
 
-	while ((ch = getopt(argc, argv, "p:")) != -1) {
-		switch (ch) {
-		case 'p':
-			port = atoi(optarg);
-			break;
-		case 'h':
-		default:
-			usage();
-		}
-	}
+ while ((ch = getopt(argc, argv, "p:")) != -1) {
+  switch (ch) {
+  case 'p':
+   port = atoi(optarg);
+   break;
+  case 'h':
+  default:
+   usage();
+  }
+ }
 
-	bzero(&remoteaddr, sizeof(remoteaddr));
-	remoteaddr.sin_len = sizeof(remoteaddr);
-	remoteaddr.sin_family = AF_INET;
-	remoteaddr.sin_port = htons(port);
-	remoteaddr.sin_addr.s_addr = INADDR_ANY;
+ bzero(&remoteaddr, sizeof(remoteaddr));
+ remoteaddr.sin_len = sizeof(remoteaddr);
+ remoteaddr.sin_family = AF_INET;
+ remoteaddr.sin_port = htons(port);
+ remoteaddr.sin_addr.s_addr = INADDR_ANY;
 
-	cli_sock = socket(AF_INET, SOCK_STREAM, 0);
+ cli_sock = socket(AF_INET, SOCK_STREAM, 0);
 
-	while ((cli_sock = connect(cli_sock, (struct sockaddr *)&remoteaddr,
-				   sizeof(remoteaddr))) >= 0) {
-		count++;
-		close(cli_sock);
-		cli_sock = socket(AF_INET, SOCK_STREAM, 0);
-	}
+ while ((cli_sock = connect(cli_sock, (struct sockaddr *)&remoteaddr,
+       sizeof(remoteaddr))) >= 0) {
+  count++;
+  close(cli_sock);
+  cli_sock = socket(AF_INET, SOCK_STREAM, 0);
+ }
 
-	printf("Exiting at %d with errno %d\n", count, errno);
+ printf("Exiting at %d with errno %d\n", count, errno);
 
 }

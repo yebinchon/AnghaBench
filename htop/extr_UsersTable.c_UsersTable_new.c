@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  users; } ;
-typedef  TYPE_1__ UsersTable ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Hashtable_new (int,int) ; 
- TYPE_1__* xMalloc (int) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int users; } ;
+typedef TYPE_1__ UsersTable ;
+
+
+ int Hashtable_new (int,int) ;
+ TYPE_1__* xMalloc (int) ;
 
 UsersTable* UsersTable_new() {
    UsersTable* this;
    this = xMalloc(sizeof(UsersTable));
-   this->users = Hashtable_new(20, true);
+   this->users = Hashtable_new(20, 1);
    return this;
 }

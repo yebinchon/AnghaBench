@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_6__ {char* Driver; } ;
 struct TYPE_5__ {scalar_t__ DeviceKey; } ;
-typedef  TYPE_1__* LPDISPLAY_DEVICEA ;
-typedef  int /*<<< orphan*/  LPBYTE ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  size_t DWORD ;
-typedef  TYPE_2__ D3DADAPTER_IDENTIFIER9 ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_1__* LPDISPLAY_DEVICEA ;
+typedef int LPBYTE ;
+typedef int HKEY ;
+typedef size_t DWORD ;
+typedef TYPE_2__ D3DADAPTER_IDENTIFIER9 ;
+typedef int BOOL ;
 
-/* Variables and functions */
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  HKEY_LOCAL_MACHINE ; 
- int /*<<< orphan*/  KEY_QUERY_VALUE ; 
- size_t MAX_DEVICE_IDENTIFIER_STRING ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegOpenKeyExA (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ RegQueryValueExA (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,size_t*,int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  SafeAppendString (char*,size_t,char*) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ strlen (char*) ; 
+
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int HKEY_LOCAL_MACHINE ;
+ int KEY_QUERY_VALUE ;
+ size_t MAX_DEVICE_IDENTIFIER_STRING ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegOpenKeyExA (int ,scalar_t__,int ,int ,int *) ;
+ scalar_t__ RegQueryValueExA (int ,char*,int ,size_t*,int ,size_t*) ;
+ int SafeAppendString (char*,size_t,char*) ;
+ int TRUE ;
+ scalar_t__ strlen (char*) ;
 
 __attribute__((used)) static BOOL GetDriverName(LPDISPLAY_DEVICEA pDisplayDevice, D3DADAPTER_IDENTIFIER9* pIdentifier)
 {

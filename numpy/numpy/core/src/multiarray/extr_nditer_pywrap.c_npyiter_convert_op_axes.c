@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  PyObject ;
 
-/* Variables and functions */
- int NPY_MAXDIMS ; 
- int PyArray_PyIntAsInt (int /*<<< orphan*/ *) ; 
- scalar_t__ PyErr_Occurred () ; 
- int /*<<< orphan*/  PyErr_SetString (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  PyExc_ValueError ; 
- int /*<<< orphan*/  PyList_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * PySequence_GetItem (int /*<<< orphan*/ *,int) ; 
- int PySequence_Size (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PyTuple_Check (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  Py_DECREF (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * Py_None ; 
+
+
+
+typedef int PyObject ;
+
+
+ int NPY_MAXDIMS ;
+ int PyArray_PyIntAsInt (int *) ;
+ scalar_t__ PyErr_Occurred () ;
+ int PyErr_SetString (int ,char*) ;
+ int PyExc_ValueError ;
+ int PyList_Check (int *) ;
+ int * PySequence_GetItem (int *,int) ;
+ int PySequence_Size (int *) ;
+ int PyTuple_Check (int *) ;
+ int Py_DECREF (int *) ;
+ int * Py_None ;
 
 __attribute__((used)) static int
 npyiter_convert_op_axes(PyObject *op_axes_in, int nop,
@@ -41,15 +41,15 @@ npyiter_convert_op_axes(PyObject *op_axes_in, int nop,
 
     *oa_ndim = -1;
 
-    /* Copy the tuples into op_axes */
+
     for (iop = 0; iop < nop; ++iop) {
         int idim;
         a = PySequence_GetItem(op_axes_in, iop);
-        if (a == NULL) {
+        if (a == ((void*)0)) {
             return 0;
         }
         if (a == Py_None) {
-            op_axes[iop] = NULL;
+            op_axes[iop] = ((void*)0);
         } else {
             if (!PyTuple_Check(a) && !PyList_Check(a)) {
                 PyErr_SetString(PyExc_ValueError,
@@ -75,11 +75,11 @@ npyiter_convert_op_axes(PyObject *op_axes_in, int nop,
             }
             for (idim = 0; idim < *oa_ndim; ++idim) {
                 PyObject *v = PySequence_GetItem(a, idim);
-                if (v == NULL) {
+                if (v == ((void*)0)) {
                     Py_DECREF(a);
                     return 0;
                 }
-                /* numpy.newaxis is None */
+
                 if (v == Py_None) {
                     op_axes[iop][idim] = -1;
                 }

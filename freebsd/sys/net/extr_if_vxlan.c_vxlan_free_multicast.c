@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vxlan_softc {int /*<<< orphan*/ * vxl_im6o; int /*<<< orphan*/ * vxl_im4o; scalar_t__ vxl_mc_ifindex; int /*<<< orphan*/ * vxl_mc_ifp; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  M_VXLAN ; 
- int /*<<< orphan*/  free (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  if_rele (int /*<<< orphan*/ *) ; 
+
+
+
+struct vxlan_softc {int * vxl_im6o; int * vxl_im4o; scalar_t__ vxl_mc_ifindex; int * vxl_mc_ifp; } ;
+
+
+ int M_VXLAN ;
+ int free (int *,int ) ;
+ int if_rele (int *) ;
 
 __attribute__((used)) static void
 vxlan_free_multicast(struct vxlan_softc *sc)
 {
 
-	if (sc->vxl_mc_ifp != NULL) {
-		if_rele(sc->vxl_mc_ifp);
-		sc->vxl_mc_ifp = NULL;
-		sc->vxl_mc_ifindex = 0;
-	}
+ if (sc->vxl_mc_ifp != ((void*)0)) {
+  if_rele(sc->vxl_mc_ifp);
+  sc->vxl_mc_ifp = ((void*)0);
+  sc->vxl_mc_ifindex = 0;
+ }
 
-	if (sc->vxl_im4o != NULL) {
-		free(sc->vxl_im4o, M_VXLAN);
-		sc->vxl_im4o = NULL;
-	}
+ if (sc->vxl_im4o != ((void*)0)) {
+  free(sc->vxl_im4o, M_VXLAN);
+  sc->vxl_im4o = ((void*)0);
+ }
 
-	if (sc->vxl_im6o != NULL) {
-		free(sc->vxl_im6o, M_VXLAN);
-		sc->vxl_im6o = NULL;
-	}
+ if (sc->vxl_im6o != ((void*)0)) {
+  free(sc->vxl_im6o, M_VXLAN);
+  sc->vxl_im6o = ((void*)0);
+ }
 }

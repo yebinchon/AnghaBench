@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_3__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int sh2coretype; scalar_t__ skip_load; scalar_t__ basetime; scalar_t__ clocksync; int /*<<< orphan*/  videoformattype; scalar_t__ frameskip; int /*<<< orphan*/ * cartpath; int /*<<< orphan*/ * mpegpath; int /*<<< orphan*/ * buppath; int /*<<< orphan*/ * cdpath; int /*<<< orphan*/ * biospath; int /*<<< orphan*/  regionid; int /*<<< orphan*/  carttype; int /*<<< orphan*/  cdcoretype; int /*<<< orphan*/  sndcoretype; int /*<<< orphan*/  m68kcoretype; int /*<<< orphan*/  vidcoretype; int /*<<< orphan*/  percoretype; } ;
-typedef  TYPE_1__ yabauseinit_struct ;
-struct TYPE_5__ {int /*<<< orphan*/  (* HandleEvents ) () ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CART_NONE ; 
- int /*<<< orphan*/  CDCORE_ARCH ; 
- int /*<<< orphan*/  M68KCORE_C68K ; 
- int /*<<< orphan*/  PERCORE_DC ; 
- TYPE_3__* PERCore ; 
- int /*<<< orphan*/  REGION_AUTODETECT ; 
- int /*<<< orphan*/  SNDCORE_DUMMY ; 
- int /*<<< orphan*/  VIDCORE_DC ; 
- int /*<<< orphan*/  VIDEOFORMATTYPE_NTSC ; 
- scalar_t__ YabauseInit (TYPE_1__*) ; 
- int /*<<< orphan*/ * bios ; 
- scalar_t__ emulate_bios ; 
- int /*<<< orphan*/  stub1 () ; 
 
-int YuiInit(int sh2core)   {
+typedef struct TYPE_5__ TYPE_3__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int sh2coretype; scalar_t__ skip_load; scalar_t__ basetime; scalar_t__ clocksync; int videoformattype; scalar_t__ frameskip; int * cartpath; int * mpegpath; int * buppath; int * cdpath; int * biospath; int regionid; int carttype; int cdcoretype; int sndcoretype; int m68kcoretype; int vidcoretype; int percoretype; } ;
+typedef TYPE_1__ yabauseinit_struct ;
+struct TYPE_5__ {int (* HandleEvents ) () ;} ;
+
+
+ int CART_NONE ;
+ int CDCORE_ARCH ;
+ int M68KCORE_C68K ;
+ int PERCORE_DC ;
+ TYPE_3__* PERCore ;
+ int REGION_AUTODETECT ;
+ int SNDCORE_DUMMY ;
+ int VIDCORE_DC ;
+ int VIDEOFORMATTYPE_NTSC ;
+ scalar_t__ YabauseInit (TYPE_1__*) ;
+ int * bios ;
+ scalar_t__ emulate_bios ;
+ int stub1 () ;
+
+int YuiInit(int sh2core) {
     yabauseinit_struct yinit;
 
     yinit.percoretype = PERCORE_DC;
@@ -42,11 +42,11 @@ int YuiInit(int sh2core)   {
     yinit.cdcoretype = CDCORE_ARCH;
     yinit.carttype = CART_NONE;
     yinit.regionid = REGION_AUTODETECT;
-    yinit.biospath = emulate_bios ? NULL : bios;
-    yinit.cdpath = NULL;
-    yinit.buppath = NULL;
-    yinit.mpegpath = NULL;
-    yinit.cartpath = NULL;
+    yinit.biospath = emulate_bios ? ((void*)0) : bios;
+    yinit.cdpath = ((void*)0);
+    yinit.buppath = ((void*)0);
+    yinit.mpegpath = ((void*)0);
+    yinit.cartpath = ((void*)0);
     yinit.frameskip = 0;
     yinit.videoformattype = VIDEOFORMATTYPE_NTSC;
     yinit.clocksync = 0;

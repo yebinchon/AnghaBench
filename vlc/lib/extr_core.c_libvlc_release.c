@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_mutex_t ;
-struct TYPE_4__ {int ref_count; int /*<<< orphan*/  p_libvlc_int; int /*<<< orphan*/  instance_lock; } ;
-typedef  TYPE_1__ libvlc_instance_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
- int /*<<< orphan*/  libvlc_InternalCleanup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_InternalDestroy (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_Quit (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  libvlc_threads_deinit () ; 
- int /*<<< orphan*/  vlc_mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vlc_mutex_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int vlc_mutex_t ;
+struct TYPE_4__ {int ref_count; int p_libvlc_int; int instance_lock; } ;
+typedef TYPE_1__ libvlc_instance_t ;
+
+
+ int assert (int) ;
+ int free (TYPE_1__*) ;
+ int libvlc_InternalCleanup (int ) ;
+ int libvlc_InternalDestroy (int ) ;
+ int libvlc_Quit (int ) ;
+ int libvlc_threads_deinit () ;
+ int vlc_mutex_destroy (int *) ;
+ int vlc_mutex_lock (int *) ;
+ int vlc_mutex_unlock (int *) ;
 
 void libvlc_release( libvlc_instance_t *p_instance )
 {

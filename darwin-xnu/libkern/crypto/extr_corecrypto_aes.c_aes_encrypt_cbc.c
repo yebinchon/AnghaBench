@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct ccmode_cbc {int /*<<< orphan*/  block_size; } ;
-typedef  int /*<<< orphan*/  aes_rval ;
-struct TYPE_4__ {int /*<<< orphan*/  ctx; } ;
-typedef  TYPE_1__ aes_encrypt_ctx ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct ccmode_cbc {int block_size; } ;
+typedef int aes_rval ;
+struct TYPE_4__ {int ctx; } ;
+typedef TYPE_1__ aes_encrypt_ctx ;
 struct TYPE_5__ {struct ccmode_cbc* ccaes_cbc_encrypt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  aes_good ; 
- int /*<<< orphan*/  cccbc_iv_decl (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cccbc_set_iv (struct ccmode_cbc const*,int /*<<< orphan*/ ,unsigned char const*) ; 
- int /*<<< orphan*/  cccbc_update (struct ccmode_cbc const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned int,unsigned char const*,unsigned char*) ; 
- int /*<<< orphan*/  ctx_iv ; 
- TYPE_2__* g_crypto_funcs ; 
+
+ int aes_good ;
+ int cccbc_iv_decl (int ,int ) ;
+ int cccbc_set_iv (struct ccmode_cbc const*,int ,unsigned char const*) ;
+ int cccbc_update (struct ccmode_cbc const*,int ,int ,unsigned int,unsigned char const*,unsigned char*) ;
+ int ctx_iv ;
+ TYPE_2__* g_crypto_funcs ;
 
 aes_rval aes_encrypt_cbc(const unsigned char *in_blk, const unsigned char *in_iv, unsigned int num_blk,
-					 unsigned char *out_blk, aes_encrypt_ctx cx[1])
+      unsigned char *out_blk, aes_encrypt_ctx cx[1])
 {
-	const struct ccmode_cbc *cbc = g_crypto_funcs->ccaes_cbc_encrypt;
-	cccbc_iv_decl(cbc->block_size, ctx_iv);
+ const struct ccmode_cbc *cbc = g_crypto_funcs->ccaes_cbc_encrypt;
+ cccbc_iv_decl(cbc->block_size, ctx_iv);
 
-	cccbc_set_iv(cbc, ctx_iv, in_iv);
-	cccbc_update(cbc, cx[0].ctx, ctx_iv, num_blk, in_blk, out_blk);	//Actually cbc encrypt.
+ cccbc_set_iv(cbc, ctx_iv, in_iv);
+ cccbc_update(cbc, cx[0].ctx, ctx_iv, num_blk, in_blk, out_blk);
 
-	return aes_good;
+ return aes_good;
 }

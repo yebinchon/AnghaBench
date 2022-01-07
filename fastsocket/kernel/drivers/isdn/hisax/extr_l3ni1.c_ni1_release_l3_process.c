@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  invoke_id; } ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int invoke_id; } ;
 struct TYPE_4__ {TYPE_1__ ni1; } ;
-struct l3_process {TYPE_2__ prot; int /*<<< orphan*/  st; } ;
+struct l3_process {TYPE_2__ prot; int st; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  free_invoke_id (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  release_l3_process (struct l3_process*) ; 
+
+ int free_invoke_id (int ,int ) ;
+ int release_l3_process (struct l3_process*) ;
 
 __attribute__((used)) static void
 ni1_release_l3_process(struct l3_process *p)

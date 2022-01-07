@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cyttsp4_mt_data {scalar_t__ num_prv_tch; int /*<<< orphan*/  input; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MT_TOOL_FINGER ; 
- int /*<<< orphan*/  input_mt_report_slot_state (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  input_mt_slot (int /*<<< orphan*/ ,int) ; 
+
+
+
+struct cyttsp4_mt_data {scalar_t__ num_prv_tch; int input; } ;
+
+
+ int MT_TOOL_FINGER ;
+ int input_mt_report_slot_state (int ,int ,int) ;
+ int input_mt_slot (int ,int) ;
 
 __attribute__((used)) static void cyttsp4_report_slot_liftoff(struct cyttsp4_mt_data *md,
-		int max_slots)
+  int max_slots)
 {
-	int t;
+ int t;
 
-	if (md->num_prv_tch == 0)
-		return;
+ if (md->num_prv_tch == 0)
+  return;
 
-	for (t = 0; t < max_slots; t++) {
-		input_mt_slot(md->input, t);
-		input_mt_report_slot_state(md->input,
-			MT_TOOL_FINGER, false);
-	}
+ for (t = 0; t < max_slots; t++) {
+  input_mt_slot(md->input, t);
+  input_mt_report_slot_state(md->input,
+   MT_TOOL_FINGER, 0);
+ }
 }

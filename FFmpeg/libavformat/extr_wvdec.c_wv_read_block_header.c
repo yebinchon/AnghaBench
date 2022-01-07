@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_21__   TYPE_6__ ;
-typedef  struct TYPE_20__   TYPE_3__ ;
-typedef  struct TYPE_19__   TYPE_2__ ;
-typedef  struct TYPE_18__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  scalar_t__ int64_t ;
-struct TYPE_21__ {int flags; int version; scalar_t__ blocksize; scalar_t__ final; scalar_t__ initial; int /*<<< orphan*/  samples; } ;
-struct TYPE_18__ {scalar_t__ pos; scalar_t__ apetag_start; int multichannel; int chan; int chmask; int bpp; int rate; TYPE_6__ header; int /*<<< orphan*/  block_parsed; int /*<<< orphan*/  block_header; } ;
-typedef  TYPE_1__ WVContext ;
+
+
+typedef struct TYPE_21__ TYPE_6__ ;
+typedef struct TYPE_20__ TYPE_3__ ;
+typedef struct TYPE_19__ TYPE_2__ ;
+typedef struct TYPE_18__ TYPE_1__ ;
+
+
+typedef int uint32_t ;
+typedef scalar_t__ int64_t ;
+struct TYPE_21__ {int flags; int version; scalar_t__ blocksize; scalar_t__ final; scalar_t__ initial; int samples; } ;
+struct TYPE_18__ {scalar_t__ pos; scalar_t__ apetag_start; int multichannel; int chan; int chmask; int bpp; int rate; TYPE_6__ header; int block_parsed; int block_header; } ;
+typedef TYPE_1__ WVContext ;
 struct TYPE_20__ {TYPE_1__* priv_data; } ;
 struct TYPE_19__ {int seekable; } ;
-typedef  TYPE_2__ AVIOContext ;
-typedef  TYPE_3__ AVFormatContext ;
+typedef TYPE_2__ AVIOContext ;
+typedef TYPE_3__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_EOF ; 
- int AVERROR_INVALIDDATA ; 
- int AVERROR_PATCHWELCOME ; 
- int AVIO_SEEKABLE_NORMAL ; 
- int AV_CH_LAYOUT_MONO ; 
- int AV_CH_LAYOUT_STEREO ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  SEEK_SET ; 
- int WV_DSD ; 
- int WV_HEADER_SIZE ; 
- int WV_MONO ; 
- int /*<<< orphan*/  av_log (TYPE_3__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  avio_feof (TYPE_2__*) ; 
- int avio_r8 (TYPE_2__*) ; 
- int avio_read (TYPE_2__*,int /*<<< orphan*/ ,int) ; 
- int avio_rl16 (TYPE_2__*) ; 
- int avio_rl24 (TYPE_2__*) ; 
- int avio_rl32 (TYPE_2__*) ; 
- int /*<<< orphan*/  avio_seek (TYPE_2__*,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  avio_skip (TYPE_2__*,int) ; 
- scalar_t__ avio_tell (TYPE_2__*) ; 
- int /*<<< orphan*/  avpriv_report_missing_feature (TYPE_3__*,char*,...) ; 
- int ff_wv_parse_header (TYPE_6__*,int /*<<< orphan*/ ) ; 
- int* wv_rates ; 
+
+ int AVERROR_EOF ;
+ int AVERROR_INVALIDDATA ;
+ int AVERROR_PATCHWELCOME ;
+ int AVIO_SEEKABLE_NORMAL ;
+ int AV_CH_LAYOUT_MONO ;
+ int AV_CH_LAYOUT_STEREO ;
+ int AV_LOG_ERROR ;
+ int SEEK_SET ;
+ int WV_DSD ;
+ int WV_HEADER_SIZE ;
+ int WV_MONO ;
+ int av_log (TYPE_3__*,int ,char*,...) ;
+ int avio_feof (TYPE_2__*) ;
+ int avio_r8 (TYPE_2__*) ;
+ int avio_read (TYPE_2__*,int ,int) ;
+ int avio_rl16 (TYPE_2__*) ;
+ int avio_rl24 (TYPE_2__*) ;
+ int avio_rl32 (TYPE_2__*) ;
+ int avio_seek (TYPE_2__*,scalar_t__,int ) ;
+ int avio_skip (TYPE_2__*,int) ;
+ scalar_t__ avio_tell (TYPE_2__*) ;
+ int avpriv_report_missing_feature (TYPE_3__*,char*,...) ;
+ int ff_wv_parse_header (TYPE_6__*,int ) ;
+ int* wv_rates ;
 
 __attribute__((used)) static int wv_read_block_header(AVFormatContext *ctx, AVIOContext *pb)
 {
@@ -59,7 +59,7 @@ __attribute__((used)) static int wv_read_block_header(AVFormatContext *ctx, AVIO
 
     wc->pos = avio_tell(pb);
 
-    /* don't return bogus packets with the ape tag data */
+
     if (wc->apetag_start && wc->pos >= wc->apetag_start)
         return AVERROR_EOF;
 
@@ -84,19 +84,19 @@ __attribute__((used)) static int wv_read_block_header(AVFormatContext *ctx, AVIO
         return AVERROR_PATCHWELCOME;
     }
 
-    /* Blocks with zero samples don't contain actual audio information
-     * and should be ignored */
+
+
     if (!wc->header.samples)
         return 0;
-    // parse flags
-    flags  = wc->header.flags;
-    bpp    = ((flags & 3) + 1) << 3;
-    chan   = 1 + !(flags & WV_MONO);
+
+    flags = wc->header.flags;
+    bpp = ((flags & 3) + 1) << 3;
+    chan = 1 + !(flags & WV_MONO);
     chmask = flags & WV_MONO ? AV_CH_LAYOUT_MONO : AV_CH_LAYOUT_STEREO;
-    rate   = wv_rates[(flags >> 23) & 0xF];
+    rate = wv_rates[(flags >> 23) & 0xF];
     wc->multichannel = !(wc->header.initial && wc->header.final);
     if (wc->multichannel) {
-        chan   = wc->chan;
+        chan = wc->chan;
         chmask = wc->chmask;
     }
     if ((rate == -1 || !chan) && !wc->block_parsed) {
@@ -108,7 +108,7 @@ __attribute__((used)) static int wv_read_block_header(AVFormatContext *ctx, AVIO
         }
         while (avio_tell(pb) < block_end && !avio_feof(pb)) {
             int id, size;
-            id   = avio_r8(pb);
+            id = avio_r8(pb);
             size = (id & 0x80) ? avio_rl24(pb) : avio_r8(pb);
             size <<= 1;
             if (id & 0x40)
@@ -136,14 +136,14 @@ __attribute__((used)) static int wv_read_block_header(AVFormatContext *ctx, AVIO
                     break;
                 case 4:
                     avio_skip(pb, 1);
-                    chan  |= (avio_r8(pb) & 0xF) << 8;
-                    chan  += 1;
+                    chan |= (avio_r8(pb) & 0xF) << 8;
+                    chan += 1;
                     chmask = avio_rl24(pb);
                     break;
                 case 5:
                     avio_skip(pb, 1);
-                    chan  |= (avio_r8(pb) & 0xF) << 8;
-                    chan  += 1;
+                    chan |= (avio_r8(pb) & 0xF) << 8;
+                    chan += 1;
                     chmask = avio_rl32(pb);
                     break;
                 default:
@@ -169,13 +169,13 @@ __attribute__((used)) static int wv_read_block_header(AVFormatContext *ctx, AVIO
         avio_seek(pb, block_end - wc->header.blocksize, SEEK_SET);
     }
     if (!wc->bpp)
-        wc->bpp    = bpp;
+        wc->bpp = bpp;
     if (!wc->chan)
-        wc->chan   = chan;
+        wc->chan = chan;
     if (!wc->chmask)
         wc->chmask = chmask;
     if (!wc->rate)
-        wc->rate   = rate;
+        wc->rate = rate;
 
     if (flags && bpp != wc->bpp) {
         av_log(ctx, AV_LOG_ERROR,

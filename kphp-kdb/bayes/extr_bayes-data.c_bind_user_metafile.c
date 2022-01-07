@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/ * metafile; } ;
-typedef  TYPE_1__ user ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int * metafile; } ;
+typedef TYPE_1__ user ;
 struct TYPE_7__ {int user_cnt; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EMPTY__METAFILE ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,TYPE_1__*) ; 
- TYPE_3__ header ; 
- int /*<<< orphan*/  stderr ; 
- TYPE_1__* users ; 
- int verbosity ; 
+
+ int * EMPTY__METAFILE ;
+ int assert (int) ;
+ int fprintf (int ,char*,int,TYPE_1__*) ;
+ TYPE_3__ header ;
+ int stderr ;
+ TYPE_1__* users ;
+ int verbosity ;
 
 void bind_user_metafile (user *u) {
   if (verbosity > 2) {
@@ -31,7 +31,7 @@ void bind_user_metafile (user *u) {
   }
   int local_id = (int)(u - users);
 
-  if (u->metafile == NULL || u->metafile == EMPTY__METAFILE) {
+  if (u->metafile == ((void*)0) || u->metafile == EMPTY__METAFILE) {
     return;
   }
 

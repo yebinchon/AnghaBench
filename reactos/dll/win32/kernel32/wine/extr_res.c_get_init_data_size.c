@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int Characteristics; scalar_t__ SizeOfRawData; } ;
-typedef  TYPE_1__ IMAGE_SECTION_HEADER ;
-typedef  size_t DWORD ;
+typedef TYPE_1__ IMAGE_SECTION_HEADER ;
+typedef size_t DWORD ;
 
-/* Variables and functions */
- int IMAGE_SCN_CNT_INITIALIZED_DATA ; 
- int /*<<< orphan*/  TRACE (char*,size_t) ; 
- TYPE_1__* get_section_header (void*,size_t,size_t*) ; 
+
+ int IMAGE_SCN_CNT_INITIALIZED_DATA ;
+ int TRACE (char*,size_t) ;
+ TYPE_1__* get_section_header (void*,size_t,size_t*) ;
 
 __attribute__((used)) static DWORD get_init_data_size( void *base, DWORD mapping_size )
 {

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cb_recall_args {int /*<<< orphan*/  fh; int /*<<< orphan*/  truncate; int /*<<< orphan*/  stateid; } ;
-typedef  scalar_t__ bool_t ;
-typedef  int /*<<< orphan*/  XDR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CBX_ERR (char*) ; 
- scalar_t__ common_fh (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ common_stateid (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ xdr_bool (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+struct cb_recall_args {int fh; int truncate; int stateid; } ;
+typedef scalar_t__ bool_t ;
+typedef int XDR ;
+
+
+ int CBX_ERR (char*) ;
+ scalar_t__ common_fh (int *,int *) ;
+ scalar_t__ common_stateid (int *,int *) ;
+ scalar_t__ xdr_bool (int *,int *) ;
 
 __attribute__((used)) static bool_t op_cb_recall_args(XDR *xdr, struct cb_recall_args *args)
 {

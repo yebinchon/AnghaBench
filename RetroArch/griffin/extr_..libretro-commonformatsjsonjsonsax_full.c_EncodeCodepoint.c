@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  byte ;
-typedef  int Encoding ;
-typedef  int Codepoint ;
 
-/* Variables and functions */
- int BOTTOM_6_BITS (int) ; 
- int FIRST_2_BYTE_UTF8_CODEPOINT ; 
- int FIRST_3_BYTE_UTF8_CODEPOINT ; 
- int FIRST_4_BYTE_UTF8_CODEPOINT ; 
- int FIRST_NON_BMP_CODEPOINT ; 
-#define  JSON_UTF16BE 132 
-#define  JSON_UTF16LE 131 
-#define  JSON_UTF32BE 130 
-#define  JSON_UTF32LE 129 
-#define  JSON_UTF8 128 
- int SURROGATES_FROM_CODEPOINT (int) ; 
+
+
+
+typedef int uint32_t ;
+typedef int byte ;
+typedef int Encoding ;
+typedef int Codepoint ;
+
+
+ int BOTTOM_6_BITS (int) ;
+ int FIRST_2_BYTE_UTF8_CODEPOINT ;
+ int FIRST_3_BYTE_UTF8_CODEPOINT ;
+ int FIRST_4_BYTE_UTF8_CODEPOINT ;
+ int FIRST_NON_BMP_CODEPOINT ;
+
+
+
+
+
+ int SURROGATES_FROM_CODEPOINT (int) ;
 
 __attribute__((used)) static size_t EncodeCodepoint(Codepoint c, Encoding encoding, byte* pBytes)
 {
    size_t length = 0;
    switch (encoding)
    {
-      case JSON_UTF8:
+      case 128:
          if (c < FIRST_2_BYTE_UTF8_CODEPOINT)
          {
             pBytes[0] = (byte)c;
@@ -62,7 +62,7 @@ __attribute__((used)) static size_t EncodeCodepoint(Codepoint c, Encoding encodi
          }
          break;
 
-      case JSON_UTF16LE:
+      case 131:
          if (c < FIRST_NON_BMP_CODEPOINT)
          {
             pBytes[0] = (byte)(c);
@@ -73,18 +73,18 @@ __attribute__((used)) static size_t EncodeCodepoint(Codepoint c, Encoding encodi
          {
             uint32_t surrogates = SURROGATES_FROM_CODEPOINT(c);
 
-            /* Leading surrogate. */
+
             pBytes[0] = (byte)(surrogates >> 16);
             pBytes[1] = (byte)(surrogates >> 24);
 
-            /* Trailing surrogate. */
+
             pBytes[2] = (byte)(surrogates);
             pBytes[3] = (byte)(surrogates >> 8);
             length = 4;
          }
          break;
 
-      case JSON_UTF16BE:
+      case 132:
          if (c < FIRST_NON_BMP_CODEPOINT)
          {
             pBytes[1] = (byte)(c);
@@ -93,21 +93,21 @@ __attribute__((used)) static size_t EncodeCodepoint(Codepoint c, Encoding encodi
          }
          else
          {
-            /* The codepoint requires a surrogate pair in UTF-16. */
+
             uint32_t surrogates = SURROGATES_FROM_CODEPOINT(c);
 
-            /* Leading surrogate. */
+
             pBytes[1] = (byte)(surrogates >> 16);
             pBytes[0] = (byte)(surrogates >> 24);
 
-            /* Trailing surrogate. */
+
             pBytes[3] = (byte)(surrogates);
             pBytes[2] = (byte)(surrogates >> 8);
             length = 4;
          }
          break;
 
-      case JSON_UTF32LE:
+      case 129:
          pBytes[0] = (byte)(c);
          pBytes[1] = (byte)(c >> 8);
          pBytes[2] = (byte)(c >> 16);
@@ -115,7 +115,7 @@ __attribute__((used)) static size_t EncodeCodepoint(Codepoint c, Encoding encodi
          length = 4;
          break;
 
-      case JSON_UTF32BE:
+      case 130:
          pBytes[3] = (byte)(c);
          pBytes[2] = (byte)(c >> 8);
          pBytes[1] = (byte)(c >> 16);

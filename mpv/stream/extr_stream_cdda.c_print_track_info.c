@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  stream_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_INFO (int /*<<< orphan*/ *,char*,int) ; 
- int /*<<< orphan*/  print_cdtext (int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int stream_t ;
+
+
+ int MP_INFO (int *,char*,int) ;
+ int print_cdtext (int *,int) ;
 
 __attribute__((used)) static void print_track_info(stream_t *s, int track)
 {

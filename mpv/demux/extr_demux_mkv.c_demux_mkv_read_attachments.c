@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct ebml_parse_ctx {int /*<<< orphan*/  talloc_ctx; int /*<<< orphan*/  member_0; } ;
-struct ebml_attachments {int n_attached_file; struct ebml_attached_file* attached_file; int /*<<< orphan*/  member_0; } ;
-struct TYPE_7__ {int /*<<< orphan*/  len; int /*<<< orphan*/  start; } ;
-struct ebml_attached_file {char* file_name; char* file_mime_type; TYPE_1__ file_data; int /*<<< orphan*/  n_file_data; } ;
-typedef  int /*<<< orphan*/  stream_t ;
-struct TYPE_8__ {int /*<<< orphan*/  log; int /*<<< orphan*/ * stream; } ;
-typedef  TYPE_2__ demuxer_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_DBG (TYPE_2__*,char*,...) ; 
- int /*<<< orphan*/  MP_WARN (TYPE_2__*,char*) ; 
- int /*<<< orphan*/  demuxer_add_attachment (TYPE_2__*,char*,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ebml_attachments_desc ; 
- scalar_t__ ebml_read_element (int /*<<< orphan*/ *,struct ebml_parse_ctx*,struct ebml_attachments*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct ebml_parse_ctx {int talloc_ctx; int member_0; } ;
+struct ebml_attachments {int n_attached_file; struct ebml_attached_file* attached_file; int member_0; } ;
+struct TYPE_7__ {int len; int start; } ;
+struct ebml_attached_file {char* file_name; char* file_mime_type; TYPE_1__ file_data; int n_file_data; } ;
+typedef int stream_t ;
+struct TYPE_8__ {int log; int * stream; } ;
+typedef TYPE_2__ demuxer_t ;
+
+
+ int MP_DBG (TYPE_2__*,char*,...) ;
+ int MP_WARN (TYPE_2__*,char*) ;
+ int demuxer_add_attachment (TYPE_2__*,char*,char*,int ,int ) ;
+ int ebml_attachments_desc ;
+ scalar_t__ ebml_read_element (int *,struct ebml_parse_ctx*,struct ebml_attachments*,int *) ;
+ int talloc_free (int ) ;
 
 __attribute__((used)) static int demux_mkv_read_attachments(demuxer_t *demuxer)
 {

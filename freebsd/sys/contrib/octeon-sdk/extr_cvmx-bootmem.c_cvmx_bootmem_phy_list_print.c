@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int uint64_t ;
-typedef  int /*<<< orphan*/  ULL ;
 
-/* Variables and functions */
- int CVMX_BOOTMEM_DESC_GET_FIELD (int /*<<< orphan*/ ) ; 
- scalar_t__ cvmx_bootmem_desc_addr ; 
- int cvmx_bootmem_phy_get_next (int) ; 
- scalar_t__ cvmx_bootmem_phy_get_size (int) ; 
- int /*<<< orphan*/  cvmx_dprintf (char*,...) ; 
- int /*<<< orphan*/  head_addr ; 
- int /*<<< orphan*/  major_version ; 
- int /*<<< orphan*/  minor_version ; 
+
+
+
+typedef int uint64_t ;
+typedef int ULL ;
+
+
+ int CVMX_BOOTMEM_DESC_GET_FIELD (int ) ;
+ scalar_t__ cvmx_bootmem_desc_addr ;
+ int cvmx_bootmem_phy_get_next (int) ;
+ scalar_t__ cvmx_bootmem_phy_get_size (int) ;
+ int cvmx_dprintf (char*,...) ;
+ int head_addr ;
+ int major_version ;
+ int minor_version ;
 
 void cvmx_bootmem_phy_list_print(void)
 {

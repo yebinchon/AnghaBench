@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int FileAttributes; scalar_t__ Disposition; int CreateOptions; int ShareAccess; int DesiredAccess; } ;
-typedef  TYPE_1__ NT_CREATE_PARAMETERS ;
+typedef TYPE_1__ NT_CREATE_PARAMETERS ;
 
-/* Variables and functions */
- int DELETE ; 
- int /*<<< orphan*/  DbgP (char*,...) ; 
- int FILE_APPEND_DATA ; 
- int FILE_ATTRIBUTE_ARCHIVE ; 
- int FILE_ATTRIBUTE_COMPRESSED ; 
- int FILE_ATTRIBUTE_DEVICE ; 
- int FILE_ATTRIBUTE_DIRECTORY ; 
- int FILE_ATTRIBUTE_ENCRYPTED ; 
- int FILE_ATTRIBUTE_HIDDEN ; 
- int FILE_ATTRIBUTE_NORMAL ; 
- int FILE_ATTRIBUTE_NOT_CONTENT_INDEXED ; 
- int FILE_ATTRIBUTE_READONLY ; 
- int FILE_ATTRIBUTE_REPARSE_POINT ; 
- int FILE_ATTRIBUTE_SPARSE_FILE ; 
- int FILE_ATTRIBUTE_SYSTEM ; 
- int FILE_ATTRIBUTE_TEMPORARY ; 
- int FILE_ATTRIBUTE_VIRTUAL ; 
- int FILE_COMPLETE_IF_OPLOCKED ; 
- scalar_t__ FILE_CREATE ; 
- int FILE_CREATE_TREE_CONNECTION ; 
- int FILE_DELETE_ON_CLOSE ; 
- int FILE_DIRECTORY_FILE ; 
- int FILE_EXECUTE ; 
- int FILE_LIST_DIRECTORY ; 
- int FILE_NON_DIRECTORY_FILE ; 
- int FILE_NO_EA_KNOWLEDGE ; 
- int FILE_NO_INTERMEDIATE_BUFFERING ; 
- scalar_t__ FILE_OPEN ; 
- int FILE_OPEN_BY_FILE_ID ; 
- int FILE_OPEN_FOR_BACKUP_INTENT ; 
- scalar_t__ FILE_OPEN_IF ; 
- int FILE_OPEN_REPARSE_POINT ; 
- scalar_t__ FILE_OVERWRITE ; 
- scalar_t__ FILE_OVERWRITE_IF ; 
- int FILE_RANDOM_ACCESS ; 
- int FILE_READ_ATTRIBUTES ; 
- int FILE_READ_DATA ; 
- int FILE_READ_EA ; 
- int FILE_RESERVE_OPFILTER ; 
- int FILE_SEQUENTIAL_ONLY ; 
- int FILE_SHARE_DELETE ; 
- int FILE_SHARE_READ ; 
- int FILE_SHARE_WRITE ; 
- scalar_t__ FILE_SUPERSEDE ; 
- int FILE_SYNCHRONOUS_IO_ALERT ; 
- int FILE_SYNCHRONOUS_IO_NONALERT ; 
- int FILE_TRAVERSE ; 
- int FILE_WRITE_ATTRIBUTES ; 
- int FILE_WRITE_DATA ; 
- int FILE_WRITE_EA ; 
- int FILE_WRITE_THROUGH ; 
- int READ_CONTROL ; 
- int STANDARD_RIGHTS_READ ; 
- int SYNCHRONIZE ; 
- int WRITE_DAC ; 
- int WRITE_OWNER ; 
+
+ int DELETE ;
+ int DbgP (char*,...) ;
+ int FILE_APPEND_DATA ;
+ int FILE_ATTRIBUTE_ARCHIVE ;
+ int FILE_ATTRIBUTE_COMPRESSED ;
+ int FILE_ATTRIBUTE_DEVICE ;
+ int FILE_ATTRIBUTE_DIRECTORY ;
+ int FILE_ATTRIBUTE_ENCRYPTED ;
+ int FILE_ATTRIBUTE_HIDDEN ;
+ int FILE_ATTRIBUTE_NORMAL ;
+ int FILE_ATTRIBUTE_NOT_CONTENT_INDEXED ;
+ int FILE_ATTRIBUTE_READONLY ;
+ int FILE_ATTRIBUTE_REPARSE_POINT ;
+ int FILE_ATTRIBUTE_SPARSE_FILE ;
+ int FILE_ATTRIBUTE_SYSTEM ;
+ int FILE_ATTRIBUTE_TEMPORARY ;
+ int FILE_ATTRIBUTE_VIRTUAL ;
+ int FILE_COMPLETE_IF_OPLOCKED ;
+ scalar_t__ FILE_CREATE ;
+ int FILE_CREATE_TREE_CONNECTION ;
+ int FILE_DELETE_ON_CLOSE ;
+ int FILE_DIRECTORY_FILE ;
+ int FILE_EXECUTE ;
+ int FILE_LIST_DIRECTORY ;
+ int FILE_NON_DIRECTORY_FILE ;
+ int FILE_NO_EA_KNOWLEDGE ;
+ int FILE_NO_INTERMEDIATE_BUFFERING ;
+ scalar_t__ FILE_OPEN ;
+ int FILE_OPEN_BY_FILE_ID ;
+ int FILE_OPEN_FOR_BACKUP_INTENT ;
+ scalar_t__ FILE_OPEN_IF ;
+ int FILE_OPEN_REPARSE_POINT ;
+ scalar_t__ FILE_OVERWRITE ;
+ scalar_t__ FILE_OVERWRITE_IF ;
+ int FILE_RANDOM_ACCESS ;
+ int FILE_READ_ATTRIBUTES ;
+ int FILE_READ_DATA ;
+ int FILE_READ_EA ;
+ int FILE_RESERVE_OPFILTER ;
+ int FILE_SEQUENTIAL_ONLY ;
+ int FILE_SHARE_DELETE ;
+ int FILE_SHARE_READ ;
+ int FILE_SHARE_WRITE ;
+ scalar_t__ FILE_SUPERSEDE ;
+ int FILE_SYNCHRONOUS_IO_ALERT ;
+ int FILE_SYNCHRONOUS_IO_NONALERT ;
+ int FILE_TRAVERSE ;
+ int FILE_WRITE_ATTRIBUTES ;
+ int FILE_WRITE_DATA ;
+ int FILE_WRITE_EA ;
+ int FILE_WRITE_THROUGH ;
+ int READ_CONTROL ;
+ int STANDARD_RIGHTS_READ ;
+ int SYNCHRONIZE ;
+ int WRITE_DAC ;
+ int WRITE_OWNER ;
 
 void print_nt_create_params(int on, NT_CREATE_PARAMETERS params)
 {
     if (!on) return;
     if (params.FileAttributes)
-        DbgP("File attributes %x: %s %s %s %s %s %s %s %s %s %s %s %s %s %s\n", 
+        DbgP("File attributes %x: %s %s %s %s %s %s %s %s %s %s %s %s %s %s\n",
             params.FileAttributes,
             (params.FileAttributes & FILE_ATTRIBUTE_TEMPORARY)?"TEMPFILE ":"",
             (params.FileAttributes & FILE_ATTRIBUTE_READONLY)?"READONLY ":"",
@@ -92,8 +92,8 @@ void print_nt_create_params(int on, NT_CREATE_PARAMETERS params)
             (params.FileAttributes & FILE_ATTRIBUTE_NOT_CONTENT_INDEXED)?"NOT INDEXED ":"",
             (params.FileAttributes & FILE_ATTRIBUTE_ENCRYPTED)?"ENCRYPTED ":"",
             (params.FileAttributes & FILE_ATTRIBUTE_VIRTUAL)?"VIRTUAL":"");
- 
-    if (params.Disposition  == FILE_SUPERSEDE)
+
+    if (params.Disposition == FILE_SUPERSEDE)
         DbgP("Create Dispositions: FILE_SUPERSEDE\n");
     if (params.Disposition == FILE_CREATE)
         DbgP("Create Dispositions: FILE_CREATE\n");
@@ -107,7 +107,7 @@ void print_nt_create_params(int on, NT_CREATE_PARAMETERS params)
         DbgP("Create Dispositions: FILE_OVERWRITE_IF\n");
 
     DbgP("Create Attributes: 0x%x %s %s %s %s %s %s %s %s %s %s %s %s %s %s "
-        "%s %s\n", params.CreateOptions, 
+        "%s %s\n", params.CreateOptions,
         (params.CreateOptions & FILE_DIRECTORY_FILE)?"DIRFILE":"",
         (params.CreateOptions & FILE_NON_DIRECTORY_FILE)?"FILE":"",
         (params.CreateOptions & FILE_DELETE_ON_CLOSE)?"DELETE_ON_CLOSE":"",
@@ -125,12 +125,12 @@ void print_nt_create_params(int on, NT_CREATE_PARAMETERS params)
         (params.CreateOptions & FILE_OPEN_FOR_BACKUP_INTENT)?"4_BACKUP":"",
         (params.CreateOptions & FILE_RESERVE_OPFILTER)?"OPFILTER":"");
 
-    DbgP("Share Access: %s %s %s\n", 
+    DbgP("Share Access: %s %s %s\n",
         (params.ShareAccess & FILE_SHARE_READ)?"READ":"",
         (params.ShareAccess & FILE_SHARE_WRITE)?"WRITE":"",
         (params.ShareAccess & FILE_SHARE_DELETE)?"DELETE":"");
 
-    DbgP("Desired Access: 0x%x %s %s %s %s %s %s %s %s %s %s %s\n", 
+    DbgP("Desired Access: 0x%x %s %s %s %s %s %s %s %s %s %s %s\n",
         params.DesiredAccess,
         (params.DesiredAccess & FILE_READ_DATA)?"READ":"",
         (params.DesiredAccess & STANDARD_RIGHTS_READ)?"READ_ACL":"",

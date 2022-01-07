@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int uint32_t ;
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+typedef int uint16_t ;
 struct TYPE_3__ {int x; int y; int width; int height; } ;
 struct TYPE_4__ {TYPE_1__ vp; } ;
-typedef  TYPE_2__ psp1_video_t ;
+typedef TYPE_2__ psp1_video_t ;
 
-/* Variables and functions */
-#define  PSP_DISPLAY_PIXEL_FORMAT_4444 131 
-#define  PSP_DISPLAY_PIXEL_FORMAT_5551 130 
-#define  PSP_DISPLAY_PIXEL_FORMAT_565 129 
-#define  PSP_DISPLAY_PIXEL_FORMAT_8888 128 
- int /*<<< orphan*/  PSP_DISPLAY_SETBUF_NEXTFRAME ; 
- int SCEGU_SCR_HEIGHT ; 
- int /*<<< orphan*/  sceDisplayGetFrameBuf (void**,int*,int*,int /*<<< orphan*/ ) ; 
+
+
+
+
+
+ int PSP_DISPLAY_SETBUF_NEXTFRAME ;
+ int SCEGU_SCR_HEIGHT ;
+ int sceDisplayGetFrameBuf (void**,int*,int*,int ) ;
 
 __attribute__((used)) static bool psp_read_viewport(void *data, uint8_t *buffer, bool is_idle)
 {
@@ -40,14 +40,14 @@ __attribute__((used)) static bool psp_read_viewport(void *data, uint8_t *buffer,
 
    sceDisplayGetFrameBuf(&src_buffer, &src_bufferwidth, &src_pixelformat, PSP_DISPLAY_SETBUF_NEXTFRAME);
 
-   src_x     = (psp->vp.x > 0)? psp->vp.x : 0;
-   src_y     = (psp->vp.y > 0)? psp->vp.y : 0;
+   src_x = (psp->vp.x > 0)? psp->vp.x : 0;
+   src_y = (psp->vp.y > 0)? psp->vp.y : 0;
    src_x_max = ((psp->vp.x + psp->vp.width) < src_bufferwidth)? (psp->vp.x + psp->vp.width): src_bufferwidth;
    src_y_max = ((psp->vp.y + psp->vp.height) < SCEGU_SCR_HEIGHT)? (psp->vp.y + psp->vp.height): SCEGU_SCR_HEIGHT;
 
    switch(src_pixelformat)
    {
-   case PSP_DISPLAY_PIXEL_FORMAT_565:
+   case 129:
       for (j = (src_y_max - 1); j >= src_y ; j--)
       {
          uint16_t* src = (uint16_t*)src_buffer + src_bufferwidth * j + src_x;
@@ -60,9 +60,9 @@ __attribute__((used)) static bool psp_read_viewport(void *data, uint8_t *buffer,
             src++;
          }
       }
-      return true;
+      return 1;
 
-   case PSP_DISPLAY_PIXEL_FORMAT_5551:
+   case 130:
       for (j = (src_y_max - 1); j >= src_y ; j--)
       {
          uint16_t* src = (uint16_t*)src_buffer + src_bufferwidth * j + src_x;
@@ -75,9 +75,9 @@ __attribute__((used)) static bool psp_read_viewport(void *data, uint8_t *buffer,
             src++;
          }
       }
-      return true;
+      return 1;
 
-   case PSP_DISPLAY_PIXEL_FORMAT_4444:
+   case 131:
       for (j = (src_y_max - 1); j >= src_y ; j--)
       {
          uint16_t* src = (uint16_t*)src_buffer + src_bufferwidth * j + src_x;
@@ -85,14 +85,14 @@ __attribute__((used)) static bool psp_read_viewport(void *data, uint8_t *buffer,
          {
 
             *(dst++) = ((*src) >> 4) & 0xF0;
-            *(dst++) = (*src)        & 0xF0;
+            *(dst++) = (*src) & 0xF0;
             *(dst++) = ((*src) << 4) & 0xF0;
             src++;
          }
       }
-      return true;
+      return 1;
 
-   case PSP_DISPLAY_PIXEL_FORMAT_8888:
+   case 128:
       for (j = (src_y_max - 1); j >= src_y ; j--)
       {
          uint32_t* src = (uint32_t*)src_buffer + src_bufferwidth * j + src_x;
@@ -105,8 +105,8 @@ __attribute__((used)) static bool psp_read_viewport(void *data, uint8_t *buffer,
             src++;
          }
       }
-      return true;
+      return 1;
    }
 
-   return false;
+   return 0;
 }

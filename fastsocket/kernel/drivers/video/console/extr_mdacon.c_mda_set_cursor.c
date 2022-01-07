@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ unsigned int mda_cursor_loc ;
+ int write_mda_w (unsigned int,int) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- unsigned int mda_cursor_loc ; 
- int /*<<< orphan*/  write_mda_w (unsigned int,int) ; 
-
-__attribute__((used)) static inline void mda_set_cursor(unsigned int location) 
+__attribute__((used)) static inline void mda_set_cursor(unsigned int location)
 {
-	if (mda_cursor_loc == location)
-		return;
+ if (mda_cursor_loc == location)
+  return;
 
-	write_mda_w(location >> 1, 0x0e);
+ write_mda_w(location >> 1, 0x0e);
 
-	mda_cursor_loc = location;
+ mda_cursor_loc = location;
 }

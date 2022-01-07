@@ -1,49 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int CCFPUmode ; 
- int CCFPmode ; 
-#define  CCGCmode 143 
-#define  CCGOCmode 142 
-#define  CCNOmode 141 
-#define  CCmode 140 
-#define  EQ 139 
-#define  GE 138 
-#define  GEU 137 
-#define  GT 136 
-#define  GTU 135 
-#define  LE 134 
-#define  LEU 133 
-#define  LT 132 
-#define  LTU 131 
-#define  NE 130 
-#define  ORDERED 129 
- int UNKNOWN ; 
-#define  UNORDERED 128 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  gcc_assert (int) ; 
- int /*<<< orphan*/  gcc_unreachable () ; 
- int ix86_fp_compare_code_to_integer (int) ; 
- int /*<<< orphan*/  ix86_fp_comparison_codes (int,int*,int*,int*) ; 
- int reverse_condition (int) ; 
+
+
+
+typedef enum rtx_code { ____Placeholder_rtx_code } rtx_code ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+typedef int FILE ;
+
+
+ int CCFPUmode ;
+ int CCFPmode ;
+ int UNKNOWN ;
+
+ int fputs (char const*,int *) ;
+ int gcc_assert (int) ;
+ int gcc_unreachable () ;
+ int ix86_fp_compare_code_to_integer (int) ;
+ int ix86_fp_comparison_codes (int,int*,int*,int*) ;
+ int reverse_condition (int) ;
 
 __attribute__((used)) static void
 put_condition_code (enum rtx_code code, enum machine_mode mode, int reverse,
-		    int fp, FILE *file)
+      int fp, FILE *file)
 {
   const char *suffix;
 
@@ -53,84 +38,84 @@ put_condition_code (enum rtx_code code, enum machine_mode mode, int reverse,
       ix86_fp_comparison_codes (code, &bypass_code, &code, &second_code);
       gcc_assert (bypass_code == UNKNOWN && second_code == UNKNOWN);
       code = ix86_fp_compare_code_to_integer (code);
-      mode = CCmode;
+      mode = 140;
     }
   if (reverse)
     code = reverse_condition (code);
 
   switch (code)
     {
-    case EQ:
+    case 139:
       suffix = "e";
       break;
-    case NE:
+    case 130:
       suffix = "ne";
       break;
-    case GT:
-      gcc_assert (mode == CCmode || mode == CCNOmode || mode == CCGCmode);
+    case 136:
+      gcc_assert (mode == 140 || mode == 141 || mode == 143);
       suffix = "g";
       break;
-    case GTU:
-      /* ??? Use "nbe" instead of "a" for fcmov lossage on some assemblers.
-	 Those same assemblers have the same but opposite lossage on cmov.  */
-      gcc_assert (mode == CCmode);
+    case 135:
+
+
+      gcc_assert (mode == 140);
       suffix = fp ? "nbe" : "a";
       break;
-    case LT:
+    case 132:
       switch (mode)
-	{
-	case CCNOmode:
-	case CCGOCmode:
-	  suffix = "s";
-	  break;
+ {
+ case 141:
+ case 142:
+   suffix = "s";
+   break;
 
-	case CCmode:
-	case CCGCmode:
-	  suffix = "l";
-	  break;
+ case 140:
+ case 143:
+   suffix = "l";
+   break;
 
-	default:
-	  gcc_unreachable ();
-	}
+ default:
+   gcc_unreachable ();
+ }
       break;
-    case LTU:
-      gcc_assert (mode == CCmode);
+    case 131:
+      gcc_assert (mode == 140);
       suffix = "b";
       break;
-    case GE:
+    case 138:
       switch (mode)
-	{
-	case CCNOmode:
-	case CCGOCmode:
-	  suffix = "ns";
-	  break;
+ {
+ case 141:
+ case 142:
+   suffix = "ns";
+   break;
 
-	case CCmode:
-	case CCGCmode:
-	  suffix = "ge";
-	  break;
+ case 140:
+ case 143:
+   suffix = "ge";
+   break;
 
-	default:
-	  gcc_unreachable ();
-	}
+ default:
+   gcc_unreachable ();
+ }
       break;
-    case GEU:
-      /* ??? As above.  */
-      gcc_assert (mode == CCmode);
+    case 137:
+
+      gcc_assert (mode == 140);
       suffix = fp ? "nb" : "ae";
       break;
-    case LE:
-      gcc_assert (mode == CCmode || mode == CCGCmode || mode == CCNOmode);
+    case 134:
+      gcc_assert (mode == 140 || mode == 143 || mode == 141);
       suffix = "le";
       break;
-    case LEU:
-      gcc_assert (mode == CCmode);
+    case 133:
+      gcc_assert (mode == 140);
       suffix = "be";
       break;
-    case UNORDERED:
+    case 128:
       suffix = fp ? "u" : "p";
       break;
-    case ORDERED:
+    case 129:
       suffix = fp ? "nu" : "np";
       break;
     default:

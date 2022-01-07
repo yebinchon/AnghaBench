@@ -1,61 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint16_t ;
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint16_t ;
 struct TYPE_4__ {scalar_t__ pressed; } ;
 struct TYPE_5__ {TYPE_1__ event; } ;
-typedef  TYPE_2__ keyrecord_t ;
-
-/* Variables and functions */
-#define  ADJUST 136 
-#define  LOWER 135 
-#define  QWERTY 134 
-#define  RAISE 133 
-#define  SOLENOID_BUZZ_OFF 132 
-#define  SOLENOID_BUZZ_ON 131 
-#define  SOLENOID_DWELL_MINUS 130 
-#define  SOLENOID_DWELL_PLUS 129 
-#define  SOLENOID_TOG 128 
- int /*<<< orphan*/  _ADJUST ; 
- int /*<<< orphan*/  _LOWER ; 
- int /*<<< orphan*/  _QWERTY ; 
- int /*<<< orphan*/  _RAISE ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  set_single_persistent_default_layer (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  solenoid_buzz_off () ; 
- int /*<<< orphan*/  solenoid_buzz_on () ; 
- int /*<<< orphan*/  solenoid_dwell_minus () ; 
- int /*<<< orphan*/  solenoid_dwell_plus () ; 
- int /*<<< orphan*/  solenoid_fire () ; 
- int /*<<< orphan*/  solenoid_toggle () ; 
- int /*<<< orphan*/  update_tri_layer (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+typedef TYPE_2__ keyrecord_t ;
+ int _ADJUST ;
+ int _LOWER ;
+ int _QWERTY ;
+ int _RAISE ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int set_single_persistent_default_layer (int ) ;
+ int solenoid_buzz_off () ;
+ int solenoid_buzz_on () ;
+ int solenoid_dwell_minus () ;
+ int solenoid_dwell_plus () ;
+ int solenoid_fire () ;
+ int solenoid_toggle () ;
+ int update_tri_layer (int ,int ,int ) ;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  #ifdef SOLENOID_ENABLE
-    if (record->event.pressed) {
-      solenoid_fire();
-    }
-  #endif
+
+
+
+
+
   switch (keycode) {
-    case QWERTY:
+    case 134:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY);
       }
-      return false;
+      return 0;
       break;
-    case LOWER:
+    case 135:
       if (record->event.pressed) {
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -63,9 +52,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case RAISE:
+    case 133:
       if (record->event.pressed) {
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -73,9 +62,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case ADJUST:
+    case 136:
       if (record->event.pressed) {
         layer_on(_ADJUST);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
@@ -83,43 +72,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_off(_ADJUST);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       }
-      return false;
+      return 0;
       break;
-    case SOLENOID_TOG:
-      #ifdef SOLENOID_ENABLE
-        if (record->event.pressed) {
-          solenoid_toggle();
-        }
-      #endif
+    case 128:
+
+
+
+
+
       break;
-    case SOLENOID_DWELL_MINUS:
-      #ifdef SOLENOID_ENABLE
-        if (record->event.pressed) {
-          solenoid_dwell_minus();
-        }
-      #endif
+    case 130:
+
+
+
+
+
       break;
-    case SOLENOID_DWELL_PLUS:
-      #ifdef SOLENOID_ENABLE
-        if (record->event.pressed) {
-          solenoid_dwell_plus();
-        }
-        #endif
+    case 129:
+
+
+
+
+
       break;
-    case SOLENOID_BUZZ_ON:
-      #ifdef SOLENOID_ENABLE
-        if (record->event.pressed) {
-          solenoid_buzz_on();
-        }
-      #endif
+    case 131:
+
+
+
+
+
       break;
-    case SOLENOID_BUZZ_OFF:
-      #ifdef SOLENOID_ENABLE
-        if (record->event.pressed) {
-          solenoid_buzz_off();
-        }
-      #endif
+    case 132:
+
+
+
+
+
       break;
   }
-  return true;
+  return 1;
 }

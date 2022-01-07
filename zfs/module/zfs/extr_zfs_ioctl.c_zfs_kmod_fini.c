@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {struct TYPE_4__* zs_next; } ;
-typedef  TYPE_1__ zfsdev_state_t ;
+typedef TYPE_1__ zfsdev_state_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kmem_free (TYPE_1__*,int) ; 
- int /*<<< orphan*/  mutex_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  rrw_tsd_key ; 
- int /*<<< orphan*/  spa_fini () ; 
- int /*<<< orphan*/  tsd_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  zfs_allow_log_key ; 
- int /*<<< orphan*/  zfs_fini () ; 
- int /*<<< orphan*/  zfs_fsyncer_key ; 
- int /*<<< orphan*/  zfsdev_detach () ; 
- TYPE_1__* zfsdev_state_list ; 
- int /*<<< orphan*/  zfsdev_state_lock ; 
- int /*<<< orphan*/  zvol_fini () ; 
+
+ int kmem_free (TYPE_1__*,int) ;
+ int mutex_destroy (int *) ;
+ int rrw_tsd_key ;
+ int spa_fini () ;
+ int tsd_destroy (int *) ;
+ int zfs_allow_log_key ;
+ int zfs_fini () ;
+ int zfs_fsyncer_key ;
+ int zfsdev_detach () ;
+ TYPE_1__* zfsdev_state_list ;
+ int zfsdev_state_lock ;
+ int zvol_fini () ;
 
 void
 zfs_kmod_fini(void)
 {
-	zfsdev_state_t *zs, *zsprev = NULL;
+ zfsdev_state_t *zs, *zsprev = ((void*)0);
 
-	zfsdev_detach();
+ zfsdev_detach();
 
-	mutex_destroy(&zfsdev_state_lock);
+ mutex_destroy(&zfsdev_state_lock);
 
-	for (zs = zfsdev_state_list; zs != NULL; zs = zs->zs_next) {
-		if (zsprev)
-			kmem_free(zsprev, sizeof (zfsdev_state_t));
-		zsprev = zs;
-	}
-	if (zsprev)
-		kmem_free(zsprev, sizeof (zfsdev_state_t));
+ for (zs = zfsdev_state_list; zs != ((void*)0); zs = zs->zs_next) {
+  if (zsprev)
+   kmem_free(zsprev, sizeof (zfsdev_state_t));
+  zsprev = zs;
+ }
+ if (zsprev)
+  kmem_free(zsprev, sizeof (zfsdev_state_t));
 
-	zfs_fini();
-	spa_fini();
-	zvol_fini();
+ zfs_fini();
+ spa_fini();
+ zvol_fini();
 
-	tsd_destroy(&zfs_fsyncer_key);
-	tsd_destroy(&rrw_tsd_key);
-	tsd_destroy(&zfs_allow_log_key);
+ tsd_destroy(&zfs_fsyncer_key);
+ tsd_destroy(&rrw_tsd_key);
+ tsd_destroy(&zfs_allow_log_key);
 }

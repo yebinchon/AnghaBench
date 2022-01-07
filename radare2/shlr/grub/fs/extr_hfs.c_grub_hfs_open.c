@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct grub_hfs_filerec {scalar_t__ type; int /*<<< orphan*/  fileid; int /*<<< orphan*/  size; int /*<<< orphan*/  extents; int /*<<< orphan*/  member_0; } ;
-struct grub_hfs_data {void* fileid; void* size; int /*<<< orphan*/  extents; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct grub_hfs_filerec {scalar_t__ type; int fileid; int size; int extents; int member_0; } ;
+struct grub_hfs_data {void* fileid; void* size; int extents; } ;
 struct grub_file {struct grub_hfs_data* data; scalar_t__ offset; void* size; TYPE_1__* device; } ;
-typedef  int /*<<< orphan*/  grub_hfs_datarecord_t ;
-typedef  int /*<<< orphan*/  grub_err_t ;
-struct TYPE_2__ {int /*<<< orphan*/  disk; } ;
+typedef int grub_hfs_datarecord_t ;
+typedef int grub_err_t ;
+struct TYPE_2__ {int disk; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GRUB_ERR_BAD_FILE_TYPE ; 
- scalar_t__ GRUB_HFS_FILETYPE_FILE ; 
- void* grub_be_to_cpu32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_ref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_dl_unref (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_errno ; 
- int /*<<< orphan*/  grub_error (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  grub_free (struct grub_hfs_data*) ; 
- scalar_t__ grub_hfs_find_dir (struct grub_hfs_data*,char const*,struct grub_hfs_filerec*,int /*<<< orphan*/ ) ; 
- struct grub_hfs_data* grub_hfs_mount (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  grub_memcpy (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  my_mod ; 
+
+ int GRUB_ERR_BAD_FILE_TYPE ;
+ scalar_t__ GRUB_HFS_FILETYPE_FILE ;
+ void* grub_be_to_cpu32 (int ) ;
+ int grub_dl_ref (int ) ;
+ int grub_dl_unref (int ) ;
+ int grub_errno ;
+ int grub_error (int ,char*) ;
+ int grub_free (struct grub_hfs_data*) ;
+ scalar_t__ grub_hfs_find_dir (struct grub_hfs_data*,char const*,struct grub_hfs_filerec*,int ) ;
+ struct grub_hfs_data* grub_hfs_mount (int ) ;
+ int grub_memcpy (int ,int ,int) ;
+ int my_mod ;
 
 __attribute__((used)) static grub_err_t
 grub_hfs_open (struct grub_file *file, const char *name)

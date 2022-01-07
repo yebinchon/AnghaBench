@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-typedef  int /*<<< orphan*/  ngx_uint_t ;
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
+typedef int u_char ;
+typedef int ngx_uint_t ;
 struct TYPE_10__ {scalar_t__ len; scalar_t__ data; } ;
 struct TYPE_11__ {TYPE_3__ value; } ;
-typedef  TYPE_4__ ngx_table_elt_t ;
-typedef  int /*<<< orphan*/  ngx_int_t ;
+typedef TYPE_4__ ngx_table_elt_t ;
+typedef int ngx_int_t ;
 struct TYPE_12__ {TYPE_2__* upstream; } ;
-typedef  TYPE_5__ ngx_http_request_t ;
+typedef TYPE_5__ ngx_http_request_t ;
 struct TYPE_8__ {int connection_close; TYPE_4__* connection; } ;
 struct TYPE_9__ {TYPE_1__ headers_in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NGX_OK ; 
- int /*<<< orphan*/ * ngx_strlcasestrn (scalar_t__,scalar_t__,int /*<<< orphan*/ *,int) ; 
+
+ int NGX_OK ;
+ int * ngx_strlcasestrn (scalar_t__,scalar_t__,int *,int) ;
 
 __attribute__((used)) static ngx_int_t
 ngx_http_upstream_process_connection(ngx_http_request_t *r, ngx_table_elt_t *h,
@@ -38,7 +38,7 @@ ngx_http_upstream_process_connection(ngx_http_request_t *r, ngx_table_elt_t *h,
 
     if (ngx_strlcasestrn(h->value.data, h->value.data + h->value.len,
                          (u_char *) "close", 5 - 1)
-        != NULL)
+        != ((void*)0))
     {
         r->upstream->headers_in.connection_close = 1;
     }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int nr_mmaps; } ;
-struct evlist {int /*<<< orphan*/ * overwrite_mmap; TYPE_1__ core; int /*<<< orphan*/ * mmap; } ;
+struct evlist {int * overwrite_mmap; TYPE_1__ core; int * mmap; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  perf_mmap__munmap (int /*<<< orphan*/ *) ; 
+
+ int perf_mmap__munmap (int *) ;
 
 __attribute__((used)) static void evlist__munmap_nofree(struct evlist *evlist)
 {
-	int i;
+ int i;
 
-	if (evlist->mmap)
-		for (i = 0; i < evlist->core.nr_mmaps; i++)
-			perf_mmap__munmap(&evlist->mmap[i]);
+ if (evlist->mmap)
+  for (i = 0; i < evlist->core.nr_mmaps; i++)
+   perf_mmap__munmap(&evlist->mmap[i]);
 
-	if (evlist->overwrite_mmap)
-		for (i = 0; i < evlist->core.nr_mmaps; i++)
-			perf_mmap__munmap(&evlist->overwrite_mmap[i]);
+ if (evlist->overwrite_mmap)
+  for (i = 0; i < evlist->core.nr_mmaps; i++)
+   perf_mmap__munmap(&evlist->overwrite_mmap[i]);
 }

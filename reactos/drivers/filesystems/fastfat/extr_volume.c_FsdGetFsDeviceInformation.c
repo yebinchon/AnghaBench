@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  Characteristics; } ;
-struct TYPE_5__ {int /*<<< orphan*/  Characteristics; int /*<<< orphan*/  DeviceType; } ;
-typedef  int* PULONG ;
-typedef  TYPE_1__* PFILE_FS_DEVICE_INFORMATION ;
-typedef  TYPE_2__* PDEVICE_OBJECT ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  FILE_FS_DEVICE_INFORMATION ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int) ; 
- int /*<<< orphan*/  DPRINT (char*,...) ; 
- int /*<<< orphan*/  FILE_DEVICE_DISK ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int Characteristics; } ;
+struct TYPE_5__ {int Characteristics; int DeviceType; } ;
+typedef int* PULONG ;
+typedef TYPE_1__* PFILE_FS_DEVICE_INFORMATION ;
+typedef TYPE_2__* PDEVICE_OBJECT ;
+typedef int NTSTATUS ;
+typedef int FILE_FS_DEVICE_INFORMATION ;
+
+
+ int ASSERT (int) ;
+ int DPRINT (char*,...) ;
+ int FILE_DEVICE_DISK ;
+ int STATUS_SUCCESS ;
 
 __attribute__((used)) static
 NTSTATUS

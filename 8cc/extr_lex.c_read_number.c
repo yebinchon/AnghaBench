@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Token ;
-typedef  int /*<<< orphan*/  Buffer ;
 
-/* Variables and functions */
- int /*<<< orphan*/  buf_body (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  buf_write (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  isalpha (int) ; 
- int /*<<< orphan*/  isdigit (int) ; 
- int /*<<< orphan*/ * make_buffer () ; 
- int /*<<< orphan*/ * make_number (int /*<<< orphan*/ ) ; 
- int readc () ; 
- scalar_t__ strchr (char*,int) ; 
- int /*<<< orphan*/  unreadc (int) ; 
+
+
+
+typedef int Token ;
+typedef int Buffer ;
+
+
+ int buf_body (int *) ;
+ int buf_write (int *,int) ;
+ int isalpha (int) ;
+ int isdigit (int) ;
+ int * make_buffer () ;
+ int * make_number (int ) ;
+ int readc () ;
+ scalar_t__ strchr (char*,int) ;
+ int unreadc (int) ;
 
 __attribute__((used)) static Token *read_number(char c) {
     Buffer *b = make_buffer();

@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  console_sem ; 
- int /*<<< orphan*/  console_suspend_enabled ; 
- scalar_t__ console_suspended ; 
- int /*<<< orphan*/  down (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  release_console_sem () ; 
+ int console_sem ;
+ int console_suspend_enabled ;
+ scalar_t__ console_suspended ;
+ int down (int *) ;
+ int release_console_sem () ;
 
 void resume_console(void)
 {
-	if (!console_suspend_enabled)
-		return;
-	down(&console_sem);
-	console_suspended = 0;
-	release_console_sem();
+ if (!console_suspend_enabled)
+  return;
+ down(&console_sem);
+ console_suspended = 0;
+ release_console_sem();
 }

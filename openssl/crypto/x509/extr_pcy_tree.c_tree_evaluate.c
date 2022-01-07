@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_2__ ;
-typedef  struct TYPE_11__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_2__ ;
+typedef struct TYPE_11__ TYPE_1__ ;
+
+
 struct TYPE_11__ {int nlevel; TYPE_2__* levels; } ;
-typedef  TYPE_1__ X509_POLICY_TREE ;
-struct TYPE_12__ {int flags; int /*<<< orphan*/  cert; } ;
-typedef  TYPE_2__ X509_POLICY_LEVEL ;
-typedef  int /*<<< orphan*/  X509_POLICY_CACHE ;
+typedef TYPE_1__ X509_POLICY_TREE ;
+struct TYPE_12__ {int flags; int cert; } ;
+typedef TYPE_2__ X509_POLICY_LEVEL ;
+typedef int X509_POLICY_CACHE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  TREE_PRINT (char*,TYPE_1__*,TYPE_2__*) ; 
- int X509_PCY_TREE_INTERNAL ; 
- int X509_PCY_TREE_VALID ; 
- int X509_V_FLAG_INHIBIT_ANY ; 
- int /*<<< orphan*/ * policy_cache_set (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tree_link_any (TYPE_2__*,int /*<<< orphan*/  const*,TYPE_1__*) ; 
- int /*<<< orphan*/  tree_link_nodes (TYPE_2__*,int /*<<< orphan*/  const*) ; 
- int tree_prune (TYPE_1__*,TYPE_2__*) ; 
+
+ int TREE_PRINT (char*,TYPE_1__*,TYPE_2__*) ;
+ int X509_PCY_TREE_INTERNAL ;
+ int X509_PCY_TREE_VALID ;
+ int X509_V_FLAG_INHIBIT_ANY ;
+ int * policy_cache_set (int ) ;
+ int tree_link_any (TYPE_2__*,int const*,TYPE_1__*) ;
+ int tree_link_nodes (TYPE_2__*,int const*) ;
+ int tree_prune (TYPE_1__*,TYPE_2__*) ;
 
 __attribute__((used)) static int tree_evaluate(X509_POLICY_TREE *tree)
 {

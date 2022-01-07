@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  atf_error_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PRE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atf_libc_error (int /*<<< orphan*/ ,char*,char*) ; 
- int /*<<< orphan*/  atf_no_error () ; 
- int /*<<< orphan*/  errno ; 
- int /*<<< orphan*/ * mkdtemp (char*) ; 
- int /*<<< orphan*/ * strstr (char*,char*) ; 
+
+
+
+typedef int atf_error_t ;
+
+
+ int PRE (int ) ;
+ int atf_libc_error (int ,char*,char*) ;
+ int atf_no_error () ;
+ int errno ;
+ int * mkdtemp (char*) ;
+ int * strstr (char*,char*) ;
 
 __attribute__((used)) static
 atf_error_t
@@ -26,9 +26,9 @@ do_mkdtemp(char *tmpl)
 {
     atf_error_t err;
 
-    PRE(strstr(tmpl, "XXXXXX") != NULL);
+    PRE(strstr(tmpl, "XXXXXX") != ((void*)0));
 
-    if (mkdtemp(tmpl) == NULL)
+    if (mkdtemp(tmpl) == ((void*)0))
         err = atf_libc_error(errno, "Cannot create temporary directory "
                              "with template '%s'", tmpl);
     else

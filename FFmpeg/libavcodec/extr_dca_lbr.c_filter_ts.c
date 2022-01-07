@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  unsigned int uint8_t ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef unsigned int uint8_t ;
 struct TYPE_4__ {int nsubbands; float*** time_samples; unsigned int*** high_res_scf; unsigned int*** grid_2_scf; unsigned int* ch_pres; int** sec_ch_sbms; int** sec_ch_lrms; int min_mono_subband; int part_stereo_pres; } ;
-typedef  TYPE_1__ DCALbrDecoder ;
+typedef TYPE_1__ DCALbrDecoder ;
 
-/* Variables and functions */
- unsigned int AMP_MAX ; 
- int DCA_LBR_TIME_SAMPLES ; 
- float* ff_dca_quant_amp ; 
- size_t* ff_dca_scf_to_grid_2 ; 
- int /*<<< orphan*/  synth_lpc (TYPE_1__*,int,int,int) ; 
+
+ unsigned int AMP_MAX ;
+ int DCA_LBR_TIME_SAMPLES ;
+ float* ff_dca_quant_amp ;
+ size_t* ff_dca_scf_to_grid_2 ;
+ int synth_lpc (TYPE_1__*,int,int,int) ;
 
 __attribute__((used)) static void filter_ts(DCALbrDecoder *s, int ch1, int ch2)
 {
     int i, j, sb, ch;
 
     for (sb = 0; sb < s->nsubbands; sb++) {
-        // Scale factors
+
         for (ch = ch1; ch <= ch2; ch++) {
             float *samples = s->time_samples[ch][sb];
             uint8_t *hr_scf = s->high_res_scf[ch][sb];
@@ -51,7 +51,7 @@ __attribute__((used)) static void filter_ts(DCALbrDecoder *s, int ch1, int ch2)
             }
         }
 
-        // Mid-side stereo
+
         if (ch1 != ch2) {
             float *samples_l = s->time_samples[ch1][sb];
             float *samples_r = s->time_samples[ch2][sb];
@@ -66,14 +66,14 @@ __attribute__((used)) static void filter_ts(DCALbrDecoder *s, int ch1, int ch2)
                         if (sbms) {
                             for (j = 0; j < 16; j++) {
                                 float tmp = samples_l[j];
-                                samples_l[j] =  samples_r[j];
+                                samples_l[j] = samples_r[j];
                                 samples_r[j] = -tmp;
                             }
                         } else {
                             for (j = 0; j < 16; j++) {
                                 float tmp = samples_l[j];
-                                samples_l[j] =  samples_r[j];
-                                samples_r[j] =  tmp;
+                                samples_l[j] = samples_r[j];
+                                samples_r[j] = tmp;
                             }
                         }
                     } else if (!ch2_pres) {
@@ -82,7 +82,7 @@ __attribute__((used)) static void filter_ts(DCALbrDecoder *s, int ch1, int ch2)
                                 samples_r[j] = -samples_l[j];
                         } else {
                             for (j = 0; j < 16; j++)
-                                samples_r[j] =  samples_l[j];
+                                samples_r[j] = samples_l[j];
                         }
                     }
                 } else if (sbms && ch2_pres) {
@@ -98,7 +98,7 @@ __attribute__((used)) static void filter_ts(DCALbrDecoder *s, int ch1, int ch2)
             }
         }
 
-        // Inverse prediction
+
         if (sb < 3)
             synth_lpc(s, ch1, ch2, sb);
     }

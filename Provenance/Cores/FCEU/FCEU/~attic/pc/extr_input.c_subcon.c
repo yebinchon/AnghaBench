@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int uint8 ;
 struct TYPE_4__ {scalar_t__* ButtType; scalar_t__* DeviceNum; scalar_t__* ButtonNum; int NumC; } ;
-typedef  TYPE_1__ ButtConfig ;
+typedef TYPE_1__ ButtConfig ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWaitButton (int /*<<< orphan*/ *,TYPE_1__*,int) ; 
- int MAXBUTTCONFIG ; 
- int /*<<< orphan*/  sprintf (int /*<<< orphan*/ *,char*,char*,int) ; 
+
+ int DWaitButton (int *,TYPE_1__*,int) ;
+ int MAXBUTTCONFIG ;
+ int sprintf (int *,char*,char*,int) ;
 
 __attribute__((used)) static void subcon(char *text, ButtConfig *bc)
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void subcon(char *text, ButtConfig *bc)
   DWaitButton(buf,bc,wc);
 
   if(wc && bc->ButtType[wc]==bc->ButtType[wc-1] && bc->DeviceNum[wc]==bc->DeviceNum[wc-1] &&
-                bc->ButtonNum[wc]==bc->ButtonNum[wc-1])   
+                bc->ButtonNum[wc]==bc->ButtonNum[wc-1])
          break;
  }
  bc->NumC=wc;

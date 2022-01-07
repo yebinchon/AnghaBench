@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* dlerror () ; 
- int /*<<< orphan*/  strncpy (char*,char const*,size_t) ; 
- int /*<<< orphan*/  vcos_assert (int) ; 
+ char* dlerror () ;
+ int strncpy (char*,char const*,size_t) ;
+ int vcos_assert (int) ;
 
 int vcos_dlerror(int *err, char *buf, size_t buflen)
 {
-   /* not really threadsafe! */
+
    const char *errmsg = dlerror();
 
    vcos_assert(buflen > 0);

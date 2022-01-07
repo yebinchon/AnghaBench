@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {unsigned int path_nodes_index; TYPE_1__* clients_announce_list; int /*<<< orphan*/  last_packet_recv; } ;
-struct TYPE_4__ {scalar_t__ is_stored; int /*<<< orphan*/  timestamp; } ;
-typedef  TYPE_2__ Onion_Client ;
 
-/* Variables and functions */
- unsigned int MAX_ONION_CLIENTS_ANNOUNCE ; 
- int /*<<< orphan*/  ONION_NODE_TIMEOUT ; 
- int /*<<< orphan*/  ONION_OFFLINE_TIMEOUT ; 
- scalar_t__ is_timeout (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_5__ {unsigned int path_nodes_index; TYPE_1__* clients_announce_list; int last_packet_recv; } ;
+struct TYPE_4__ {scalar_t__ is_stored; int timestamp; } ;
+typedef TYPE_2__ Onion_Client ;
+
+
+ unsigned int MAX_ONION_CLIENTS_ANNOUNCE ;
+ int ONION_NODE_TIMEOUT ;
+ int ONION_OFFLINE_TIMEOUT ;
+ scalar_t__ is_timeout (int ,int ) ;
 
 __attribute__((used)) static int onion_isconnected(const Onion_Client *onion_c)
 {
@@ -48,8 +48,8 @@ __attribute__((used)) static int onion_isconnected(const Onion_Client *onion_c)
         pnodes = MAX_ONION_CLIENTS_ANNOUNCE;
     }
 
-    /* Consider ourselves online if we are announced to half or more nodes
-      we are connected to */
+
+
     if (num && announced) {
         if ((num / 2) <= announced && (pnodes / 2) <= num)
             return 1;

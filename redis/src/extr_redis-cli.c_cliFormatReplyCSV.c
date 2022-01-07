@@ -1,73 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sds ;
-struct TYPE_3__ {int type; unsigned int elements; struct TYPE_3__** element; int /*<<< orphan*/  integer; int /*<<< orphan*/  len; int /*<<< orphan*/  str; } ;
-typedef  TYPE_1__ redisReply ;
 
-/* Variables and functions */
-#define  REDIS_REPLY_ARRAY 137 
-#define  REDIS_REPLY_BOOL 136 
-#define  REDIS_REPLY_DOUBLE 135 
-#define  REDIS_REPLY_ERROR 134 
-#define  REDIS_REPLY_INTEGER 133 
-#define  REDIS_REPLY_MAP 132 
-#define  REDIS_REPLY_NIL 131 
-#define  REDIS_REPLY_STATUS 130 
-#define  REDIS_REPLY_STRING 129 
-#define  REDIS_REPLY_VERB 128 
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sdscat (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  sdscatlen (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdscatrepr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdsempty () ; 
- int /*<<< orphan*/  sdsfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sdslen (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strlen (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int sds ;
+struct TYPE_3__ {int type; unsigned int elements; struct TYPE_3__** element; int integer; int len; int str; } ;
+typedef TYPE_1__ redisReply ;
+ int exit (int) ;
+ int fprintf (int ,char*,int) ;
+ int sdscat (int ,char*) ;
+ int sdscatlen (int ,int ,int ) ;
+ int sdscatprintf (int ,char*,int ) ;
+ int sdscatrepr (int ,int ,int ) ;
+ int sdsempty () ;
+ int sdsfree (int ) ;
+ int sdslen (int ) ;
+ int stderr ;
+ int strlen (int ) ;
 
 __attribute__((used)) static sds cliFormatReplyCSV(redisReply *r) {
     unsigned int i;
 
     sds out = sdsempty();
     switch (r->type) {
-    case REDIS_REPLY_ERROR:
+    case 134:
         out = sdscat(out,"ERROR,");
         out = sdscatrepr(out,r->str,strlen(r->str));
     break;
-    case REDIS_REPLY_STATUS:
+    case 130:
         out = sdscatrepr(out,r->str,r->len);
     break;
-    case REDIS_REPLY_INTEGER:
+    case 133:
         out = sdscatprintf(out,"%lld",r->integer);
     break;
-    case REDIS_REPLY_DOUBLE:
+    case 135:
         out = sdscatprintf(out,"%s",r->str);
         break;
-    case REDIS_REPLY_STRING:
-    case REDIS_REPLY_VERB:
+    case 129:
+    case 128:
         out = sdscatrepr(out,r->str,r->len);
     break;
-    case REDIS_REPLY_NIL:
+    case 131:
         out = sdscat(out,"NULL");
     break;
-    case REDIS_REPLY_BOOL:
+    case 136:
         out = sdscat(out,r->integer ? "true" : "false");
     break;
-    case REDIS_REPLY_ARRAY:
-    case REDIS_REPLY_MAP: /* CSV has no map type, just output flat list. */
+    case 137:
+    case 132:
         for (i = 0; i < r->elements; i++) {
             sds tmp = cliFormatReplyCSV(r->element[i]);
             out = sdscatlen(out,tmp,sdslen(tmp));

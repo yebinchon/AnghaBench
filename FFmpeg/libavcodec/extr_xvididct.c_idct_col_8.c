@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  short int16_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUTTERFLY (int,int,int) ; 
- int COL_SHIFT ; 
- int /*<<< orphan*/  LOAD_BUTTERFLY (int,int,int,int,int,short* const) ; 
- int MULT (int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  SQRT2 ; 
- int /*<<< orphan*/  TAN1 ; 
- int /*<<< orphan*/  TAN2 ; 
- int /*<<< orphan*/  TAN3 ; 
+
+
+
+typedef short int16_t ;
+
+
+ int BUTTERFLY (int,int,int) ;
+ int COL_SHIFT ;
+ int LOAD_BUTTERFLY (int,int,int,int,int,short* const) ;
+ int MULT (int ,int,int) ;
+ int SQRT2 ;
+ int TAN1 ;
+ int TAN2 ;
+ int TAN3 ;
 
 __attribute__((used)) static void idct_col_8(short *const in)
 {
     int mm0, mm1, mm2, mm3, mm4, mm5, mm6, mm7, spill;
 
-    // odd
+
 
     mm4 = (int) in[7 * 8];
     mm5 = (int) in[5 * 8];
@@ -44,11 +44,11 @@ __attribute__((used)) static void idct_col_8(short *const in)
     mm1 = mm1 + mm3;
     mm6 = mm0 + mm1;
     mm5 = mm0 - mm1;
-    mm5 = 2 * MULT(SQRT2, mm5, 16); // 2*sqrt2
-    mm6 = 2 * MULT(SQRT2, mm6, 16); // Watch out: precision loss but done to match
-                                    // the pmulhw used in MMX/MMXEXT/SSE2 versions
+    mm5 = 2 * MULT(SQRT2, mm5, 16);
+    mm6 = 2 * MULT(SQRT2, mm6, 16);
 
-    // even
+
+
 
     mm1 = (int) in[2 * 8];
     mm2 = (int) in[6 * 8];

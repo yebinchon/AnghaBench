@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct icade_key {int /*<<< orphan*/  press; int /*<<< orphan*/  to; } ;
-struct hid_usage {int hid; int /*<<< orphan*/  type; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct icade_key {int press; int to; } ;
+struct hid_usage {int hid; int type; } ;
 struct hid_field {TYPE_1__* hidinput; } ;
 struct hid_device {int claimed; } ;
-typedef  int /*<<< orphan*/  __s32 ;
-struct TYPE_2__ {int /*<<< orphan*/  input; } ;
+typedef int __s32 ;
+struct TYPE_2__ {int input; } ;
 
-/* Variables and functions */
- int HID_CLAIMED_INPUT ; 
- int HID_USAGE ; 
- struct icade_key* icade_find_translation (int) ; 
- int /*<<< orphan*/  input_event (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int HID_CLAIMED_INPUT ;
+ int HID_USAGE ;
+ struct icade_key* icade_find_translation (int) ;
+ int input_event (int ,int ,int ,int ) ;
 
 __attribute__((used)) static int icade_event(struct hid_device *hdev, struct hid_field *field,
-		struct hid_usage *usage, __s32 value)
+  struct hid_usage *usage, __s32 value)
 {
-	const struct icade_key *trans;
+ const struct icade_key *trans;
 
-	if (!(hdev->claimed & HID_CLAIMED_INPUT) || !field->hidinput ||
-			!usage->type)
-		return 0;
+ if (!(hdev->claimed & HID_CLAIMED_INPUT) || !field->hidinput ||
+   !usage->type)
+  return 0;
 
-	/* We ignore the fake key up, and act only on key down */
-	if (!value)
-		return 1;
 
-	trans = icade_find_translation(usage->hid & HID_USAGE);
+ if (!value)
+  return 1;
 
-	if (!trans)
-		return 1;
+ trans = icade_find_translation(usage->hid & HID_USAGE);
 
-	input_event(field->hidinput->input, usage->type,
-			trans->to, trans->press);
+ if (!trans)
+  return 1;
 
-	return 1;
+ input_event(field->hidinput->input, usage->type,
+   trans->to, trans->press);
+
+ return 1;
 }

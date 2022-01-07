@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UINT ;
-typedef  int /*<<< orphan*/  IKE_SERVER ;
-typedef  int /*<<< orphan*/  IKE_PACKET_PAYLOAD ;
-typedef  int /*<<< orphan*/  IKE_CLIENT ;
-typedef  int /*<<< orphan*/  BUF ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IKE_PROTOCOL_ID_IPSEC_ESP ; 
- int /*<<< orphan*/ * IkeNewDeletePayload (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * NewBuf () ; 
- int /*<<< orphan*/  NewListSingle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SendInformationalExchangePacket (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WriteBufInt (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int UINT ;
+typedef int IKE_SERVER ;
+typedef int IKE_PACKET_PAYLOAD ;
+typedef int IKE_CLIENT ;
+typedef int BUF ;
+
+
+ int IKE_PROTOCOL_ID_IPSEC_ESP ;
+ int * IkeNewDeletePayload (int ,int ) ;
+ int * NewBuf () ;
+ int NewListSingle (int *) ;
+ int SendInformationalExchangePacket (int *,int *,int *) ;
+ int WriteBufInt (int *,int ) ;
 
 void SendDeleteIPsecSaPacket(IKE_SERVER *ike, IKE_CLIENT *c, UINT spi)
 {
-	IKE_PACKET_PAYLOAD *payload;
-	BUF *buf;
-	// Validate arguments
-	if (ike == NULL || c == NULL || spi == 0)
-	{
-		return;
-	}
+ IKE_PACKET_PAYLOAD *payload;
+ BUF *buf;
 
-	buf = NewBuf();
-	WriteBufInt(buf, spi);
+ if (ike == ((void*)0) || c == ((void*)0) || spi == 0)
+ {
+  return;
+ }
 
-	payload = IkeNewDeletePayload(IKE_PROTOCOL_ID_IPSEC_ESP, NewListSingle(buf));
+ buf = NewBuf();
+ WriteBufInt(buf, spi);
 
-	SendInformationalExchangePacket(ike, c, payload);
+ payload = IkeNewDeletePayload(IKE_PROTOCOL_ID_IPSEC_ESP, NewListSingle(buf));
+
+ SendInformationalExchangePacket(ike, c, payload);
 }

@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_wc__db_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_boolean_t ;
-typedef  scalar_t__ apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_INVALID_REVNUM ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- scalar_t__ apr_hash_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- char* svn_path_url_add_component2 (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_build_keywords3 (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ ,char const*,char const*,scalar_t__,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__db_read_repos_info (int /*<<< orphan*/ *,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_wc__db_t ;
+typedef int svn_revnum_t ;
+typedef int svn_error_t ;
+typedef int svn_boolean_t ;
+typedef scalar_t__ apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
+
+
+ int SVN_ERR (int ) ;
+ int SVN_INVALID_REVNUM ;
+ int * SVN_NO_ERROR ;
+ scalar_t__ apr_hash_count (int *) ;
+ int apr_psprintf (int *,char*,int ) ;
+ char* svn_path_url_add_component2 (char const*,char const*,int *) ;
+ int svn_subst_build_keywords3 (int **,char const*,int ,char const*,char const*,scalar_t__,char const*,int *) ;
+ int svn_wc__db_read_info (int *,int *,int *,char const**,char const**,int *,int *,scalar_t__*,char const**,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,int *,char const*,int *,int *) ;
+ int svn_wc__db_read_repos_info (int *,char const**,char const**,int *,int *,char const*,int *,int *) ;
 
 svn_error_t *
 svn_wc__expand_keywords(apr_hash_t **keywords,
@@ -49,19 +49,19 @@ svn_wc__expand_keywords(apr_hash_t **keywords,
     {
       const char *repos_relpath;
 
-      SVN_ERR(svn_wc__db_read_info(NULL, NULL, NULL, &repos_relpath,
-                                   &repos_root_url, NULL, &changed_rev,
-                                   &changed_date, &changed_author, NULL,
-                                   NULL, NULL, NULL, NULL, NULL, NULL,
-                                   NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-                                   NULL, NULL, NULL, NULL,
+      SVN_ERR(svn_wc__db_read_info(((void*)0), ((void*)0), ((void*)0), &repos_relpath,
+                                   &repos_root_url, ((void*)0), &changed_rev,
+                                   &changed_date, &changed_author, ((void*)0),
+                                   ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                   ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0),
+                                   ((void*)0), ((void*)0), ((void*)0), ((void*)0),
                                    db, local_abspath,
                                    scratch_pool, scratch_pool));
 
-      /* Handle special statuses (e.g. added) */
+
       if (!repos_relpath)
-         SVN_ERR(svn_wc__db_read_repos_info(NULL, &repos_relpath,
-                                            &repos_root_url, NULL,
+         SVN_ERR(svn_wc__db_read_repos_info(((void*)0), &repos_relpath,
+                                            &repos_root_url, ((void*)0),
                                             db, local_abspath,
                                             scratch_pool, scratch_pool));
 
@@ -85,7 +85,7 @@ svn_wc__expand_keywords(apr_hash_t **keywords,
                                     result_pool));
 
   if (apr_hash_count(*keywords) == 0)
-    *keywords = NULL;
+    *keywords = ((void*)0);
 
   return SVN_NO_ERROR;
 }

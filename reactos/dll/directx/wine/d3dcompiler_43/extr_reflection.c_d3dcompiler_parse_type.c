@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct d3dcompiler_shader_reflection_type_member {int dummy; } ;
-struct TYPE_3__ {int Class; int Type; int Rows; int Columns; int Elements; int Members; int /*<<< orphan*/  Name; } ;
-struct d3dcompiler_shader_reflection_type {struct d3dcompiler_shader_reflection_type_member* members; int /*<<< orphan*/  name; TYPE_2__* reflection; TYPE_1__ desc; } ;
+struct TYPE_3__ {int Class; int Type; int Rows; int Columns; int Elements; int Members; int Name; } ;
+struct d3dcompiler_shader_reflection_type {struct d3dcompiler_shader_reflection_type_member* members; int name; TYPE_2__* reflection; TYPE_1__ desc; } ;
 struct TYPE_4__ {int target; } ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  int DWORD ;
-typedef  TYPE_1__ D3D11_SHADER_TYPE_DESC ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef TYPE_1__ D3D11_SHADER_TYPE_DESC ;
 
-/* Variables and functions */
- int D3DCOMPILER_SHADER_TARGET_VERSION_MASK ; 
- int /*<<< orphan*/  ERR (char*) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  FIXME (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HEAP_ZERO_MEMORY ; 
- struct d3dcompiler_shader_reflection_type_member* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,struct d3dcompiler_shader_reflection_type_member*) ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  TRACE (char*,int,...) ; 
- int /*<<< orphan*/  copy_name (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d3dcompiler_parse_type_members (TYPE_2__*,struct d3dcompiler_shader_reflection_type_member*,char const*,char const**) ; 
- int /*<<< orphan*/  debug_d3dcompiler_shader_variable_class (int) ; 
- int /*<<< orphan*/  debug_d3dcompiler_shader_variable_type (int) ; 
- int debugstr_a (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free_type_member (struct d3dcompiler_shader_reflection_type_member*) ; 
- int /*<<< orphan*/  heap_free (struct d3dcompiler_shader_reflection_type_member*) ; 
- int /*<<< orphan*/  read_dword (char const**,int*) ; 
- int /*<<< orphan*/  skip_dword_unknown (char const**,int) ; 
+
+ int D3DCOMPILER_SHADER_TARGET_VERSION_MASK ;
+ int ERR (char*) ;
+ int E_OUTOFMEMORY ;
+ int FIXME (char*) ;
+ int GetProcessHeap () ;
+ int HEAP_ZERO_MEMORY ;
+ struct d3dcompiler_shader_reflection_type_member* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,struct d3dcompiler_shader_reflection_type_member*) ;
+ int S_OK ;
+ int TRACE (char*,int,...) ;
+ int copy_name (char const*,int *) ;
+ int d3dcompiler_parse_type_members (TYPE_2__*,struct d3dcompiler_shader_reflection_type_member*,char const*,char const**) ;
+ int debug_d3dcompiler_shader_variable_class (int) ;
+ int debug_d3dcompiler_shader_variable_type (int) ;
+ int debugstr_a (int ) ;
+ int free_type_member (struct d3dcompiler_shader_reflection_type_member*) ;
+ int heap_free (struct d3dcompiler_shader_reflection_type_member*) ;
+ int read_dword (char const**,int*) ;
+ int skip_dword_unknown (char const**,int) ;
 
 __attribute__((used)) static HRESULT d3dcompiler_parse_type(struct d3dcompiler_shader_reflection_type *type, const char *data, DWORD offset)
 {
@@ -47,7 +47,7 @@ __attribute__((used)) static HRESULT d3dcompiler_parse_type(struct d3dcompiler_s
     DWORD temp;
     D3D11_SHADER_TYPE_DESC *desc;
     unsigned int i;
-    struct d3dcompiler_shader_reflection_type_member *members = NULL;
+    struct d3dcompiler_shader_reflection_type_member *members = ((void*)0);
     HRESULT hr;
     DWORD member_offset;
 

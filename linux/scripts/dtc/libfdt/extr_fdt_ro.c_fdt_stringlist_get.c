@@ -1,63 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int FDT_ERR_BADVALUE ; 
- int FDT_ERR_NOTFOUND ; 
- char* fdt_getprop (void const*,int,char const*,int*) ; 
- int strnlen (char const*,int) ; 
+ int FDT_ERR_BADVALUE ;
+ int FDT_ERR_NOTFOUND ;
+ char* fdt_getprop (void const*,int,char const*,int*) ;
+ int strnlen (char const*,int) ;
 
 const char *fdt_stringlist_get(const void *fdt, int nodeoffset,
-			       const char *property, int idx,
-			       int *lenp)
+          const char *property, int idx,
+          int *lenp)
 {
-	const char *list, *end;
-	int length;
+ const char *list, *end;
+ int length;
 
-	list = fdt_getprop(fdt, nodeoffset, property, &length);
-	if (!list) {
-		if (lenp)
-			*lenp = length;
+ list = fdt_getprop(fdt, nodeoffset, property, &length);
+ if (!list) {
+  if (lenp)
+   *lenp = length;
 
-		return NULL;
-	}
+  return ((void*)0);
+ }
 
-	end = list + length;
+ end = list + length;
 
-	while (list < end) {
-		length = strnlen(list, end - list) + 1;
+ while (list < end) {
+  length = strnlen(list, end - list) + 1;
 
-		/* Abort if the last string isn't properly NUL-terminated. */
-		if (list + length > end) {
-			if (lenp)
-				*lenp = -FDT_ERR_BADVALUE;
 
-			return NULL;
-		}
+  if (list + length > end) {
+   if (lenp)
+    *lenp = -FDT_ERR_BADVALUE;
 
-		if (idx == 0) {
-			if (lenp)
-				*lenp = length - 1;
+   return ((void*)0);
+  }
 
-			return list;
-		}
+  if (idx == 0) {
+   if (lenp)
+    *lenp = length - 1;
 
-		list += length;
-		idx--;
-	}
+   return list;
+  }
 
-	if (lenp)
-		*lenp = -FDT_ERR_NOTFOUND;
+  list += length;
+  idx--;
+ }
 
-	return NULL;
+ if (lenp)
+  *lenp = -FDT_ERR_NOTFOUND;
+
+ return ((void*)0);
 }

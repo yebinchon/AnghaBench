@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct wined3d_resource_desc {int usage; int access; int width; int height; int depth; int /*<<< orphan*/  format; scalar_t__ size; scalar_t__ multisample_quality; int /*<<< orphan*/  multisample_type; int /*<<< orphan*/  resource_type; } ;
-struct TYPE_2__ {int /*<<< orphan*/  const* lpVtbl; } ;
-struct d3d9_texture {int usage; int /*<<< orphan*/ * parent_device; int /*<<< orphan*/  wined3d_texture; int /*<<< orphan*/  autogen_filter_type; int /*<<< orphan*/  rtv_list; int /*<<< orphan*/  resource; TYPE_1__ IDirect3DBaseTexture9_iface; } ;
-struct d3d9_device {int /*<<< orphan*/  IDirect3DDevice9Ex_iface; int /*<<< orphan*/  wined3d_device; } ;
-typedef  int UINT ;
-typedef  int /*<<< orphan*/  IDirect3DBaseTexture9Vtbl ;
-typedef  int HRESULT ;
-typedef  int DWORD ;
-typedef  scalar_t__ D3DPOOL ;
-typedef  int /*<<< orphan*/  D3DFORMAT ;
 
-/* Variables and functions */
- int D3DERR_INVALIDCALL ; 
- scalar_t__ D3DPOOL_DEFAULT ; 
- scalar_t__ D3DPOOL_SCRATCH ; 
- scalar_t__ D3DPOOL_SYSTEMMEM ; 
- int /*<<< orphan*/  D3DTEXF_LINEAR ; 
- int /*<<< orphan*/  D3DTEXF_NONE ; 
- int D3DUSAGE_AUTOGENMIPMAP ; 
- int D3DUSAGE_DYNAMIC ; 
- int D3D_OK ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  IDirect3DDevice9Ex_AddRef (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  WARN (char*,...) ; 
- int WINED3DUSAGE_LEGACY_CUBEMAP ; 
- int WINED3DUSAGE_SCRATCH ; 
- int WINED3DUSAGE_TEXTURE ; 
- int /*<<< orphan*/  WINED3D_MULTISAMPLE_NONE ; 
- int WINED3D_RESOURCE_ACCESS_MAP_R ; 
- int WINED3D_RESOURCE_ACCESS_MAP_W ; 
- int /*<<< orphan*/  WINED3D_RTYPE_TEXTURE_2D ; 
- int WINED3D_TEXTURE_CREATE_GENERATE_MIPMAPS ; 
- int WINED3D_TEXTURE_CREATE_GET_DC ; 
- int WINED3D_TEXTURE_CREATE_MAPPABLE ; 
- int /*<<< orphan*/  d3d9_resource_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  d3d9_texture_cube_vtbl ; 
- int /*<<< orphan*/  d3d9_texture_wined3d_parent_ops ; 
- scalar_t__ is_gdi_compat_wined3dformat (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  list_init (int /*<<< orphan*/ *) ; 
- int wined3d_log2i (int) ; 
- int /*<<< orphan*/  wined3d_mutex_lock () ; 
- int /*<<< orphan*/  wined3d_mutex_unlock () ; 
- int wined3d_texture_create (int /*<<< orphan*/ ,struct wined3d_resource_desc*,int,int,int,int /*<<< orphan*/ *,struct d3d9_texture*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int wined3daccess_from_d3dpool (scalar_t__,int) ; 
- int /*<<< orphan*/  wined3dformat_from_d3dformat (int /*<<< orphan*/ ) ; 
- int wined3dusage_from_d3dusage (int) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct wined3d_resource_desc {int usage; int access; int width; int height; int depth; int format; scalar_t__ size; scalar_t__ multisample_quality; int multisample_type; int resource_type; } ;
+struct TYPE_2__ {int const* lpVtbl; } ;
+struct d3d9_texture {int usage; int * parent_device; int wined3d_texture; int autogen_filter_type; int rtv_list; int resource; TYPE_1__ IDirect3DBaseTexture9_iface; } ;
+struct d3d9_device {int IDirect3DDevice9Ex_iface; int wined3d_device; } ;
+typedef int UINT ;
+typedef int IDirect3DBaseTexture9Vtbl ;
+typedef int HRESULT ;
+typedef int DWORD ;
+typedef scalar_t__ D3DPOOL ;
+typedef int D3DFORMAT ;
+
+
+ int D3DERR_INVALIDCALL ;
+ scalar_t__ D3DPOOL_DEFAULT ;
+ scalar_t__ D3DPOOL_SCRATCH ;
+ scalar_t__ D3DPOOL_SYSTEMMEM ;
+ int D3DTEXF_LINEAR ;
+ int D3DTEXF_NONE ;
+ int D3DUSAGE_AUTOGENMIPMAP ;
+ int D3DUSAGE_DYNAMIC ;
+ int D3D_OK ;
+ scalar_t__ FAILED (int) ;
+ int IDirect3DDevice9Ex_AddRef (int *) ;
+ int WARN (char*,...) ;
+ int WINED3DUSAGE_LEGACY_CUBEMAP ;
+ int WINED3DUSAGE_SCRATCH ;
+ int WINED3DUSAGE_TEXTURE ;
+ int WINED3D_MULTISAMPLE_NONE ;
+ int WINED3D_RESOURCE_ACCESS_MAP_R ;
+ int WINED3D_RESOURCE_ACCESS_MAP_W ;
+ int WINED3D_RTYPE_TEXTURE_2D ;
+ int WINED3D_TEXTURE_CREATE_GENERATE_MIPMAPS ;
+ int WINED3D_TEXTURE_CREATE_GET_DC ;
+ int WINED3D_TEXTURE_CREATE_MAPPABLE ;
+ int d3d9_resource_init (int *) ;
+ int d3d9_texture_cube_vtbl ;
+ int d3d9_texture_wined3d_parent_ops ;
+ scalar_t__ is_gdi_compat_wined3dformat (int ) ;
+ int list_init (int *) ;
+ int wined3d_log2i (int) ;
+ int wined3d_mutex_lock () ;
+ int wined3d_mutex_unlock () ;
+ int wined3d_texture_create (int ,struct wined3d_resource_desc*,int,int,int,int *,struct d3d9_texture*,int *,int *) ;
+ int wined3daccess_from_d3dpool (scalar_t__,int) ;
+ int wined3dformat_from_d3dformat (int ) ;
+ int wined3dusage_from_d3dusage (int) ;
 
 HRESULT cubetexture_init(struct d3d9_texture *texture, struct d3d9_device *device,
         UINT edge_length, UINT levels, DWORD usage, D3DFORMAT format, D3DPOOL pool)
@@ -116,7 +116,7 @@ HRESULT cubetexture_init(struct d3d9_texture *texture, struct d3d9_device *devic
 
     wined3d_mutex_lock();
     hr = wined3d_texture_create(device->wined3d_device, &desc, 6, levels, flags,
-            NULL, texture, &d3d9_texture_wined3d_parent_ops, &texture->wined3d_texture);
+            ((void*)0), texture, &d3d9_texture_wined3d_parent_ops, &texture->wined3d_texture);
     wined3d_mutex_unlock();
     if (FAILED(hr))
     {

@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
 
-/* Variables and functions */
- void* htab_find (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * marked_trees ; 
+
+
+
+typedef int tree ;
+
+
+ void* htab_find (int *,int ) ;
+ int * marked_trees ;
 
 int
 mf_marked_p (tree t)
 {
   void *entry;
 
-  if (marked_trees == NULL)
+  if (marked_trees == ((void*)0))
     return 0;
 
   entry = htab_find (marked_trees, t);
-  return (entry != NULL);
+  return (entry != ((void*)0));
 }

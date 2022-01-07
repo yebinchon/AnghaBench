@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  lua_State ;
-struct TYPE_3__ {int lvl; int /*<<< orphan*/ * L; } ;
-typedef  TYPE_1__ luaL_Buffer ;
 
-/* Variables and functions */
- int LUA_MINSTACK ; 
- int /*<<< orphan*/  lua_concat (int /*<<< orphan*/ *,int) ; 
- size_t lua_strlen (int /*<<< orphan*/ *,int) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int lua_State ;
+struct TYPE_3__ {int lvl; int * L; } ;
+typedef TYPE_1__ luaL_Buffer ;
+
+
+ int LUA_MINSTACK ;
+ int lua_concat (int *,int) ;
+ size_t lua_strlen (int *,int) ;
 
 __attribute__((used)) static void adjuststack(luaL_Buffer *B)
 {
   if (B->lvl > 1) {
     lua_State *L = B->L;
-    int toget = 1;  /* number of levels to concat */
+    int toget = 1;
     size_t toplen = lua_strlen(L, -1);
     do {
       size_t l = lua_strlen(L, -(toget+1));
       if (!(B->lvl - toget + 1 >= LUA_MINSTACK/2 || toplen > l))
-	break;
+ break;
       toplen += l;
       toget++;
     } while (toget < B->lvl);

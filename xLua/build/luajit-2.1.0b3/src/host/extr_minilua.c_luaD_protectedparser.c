@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct SParser {char const* name; int /*<<< orphan*/  buff; int /*<<< orphan*/ * z; } ;
-struct TYPE_7__ {int /*<<< orphan*/  errfunc; int /*<<< orphan*/  top; } ;
-typedef  TYPE_1__ lua_State ;
-typedef  int /*<<< orphan*/  ZIO ;
 
-/* Variables and functions */
- int /*<<< orphan*/  f_parser ; 
- int luaD_pcall (TYPE_1__*,int /*<<< orphan*/ ,struct SParser*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  luaZ_freebuffer (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  luaZ_initbuffer (TYPE_1__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  savestack (TYPE_1__*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct SParser {char const* name; int buff; int * z; } ;
+struct TYPE_7__ {int errfunc; int top; } ;
+typedef TYPE_1__ lua_State ;
+typedef int ZIO ;
+
+
+ int f_parser ;
+ int luaD_pcall (TYPE_1__*,int ,struct SParser*,int ,int ) ;
+ int luaZ_freebuffer (TYPE_1__*,int *) ;
+ int luaZ_initbuffer (TYPE_1__*,int *) ;
+ int savestack (TYPE_1__*,int ) ;
 
 __attribute__((used)) static int luaD_protectedparser(lua_State*L,ZIO*z,const char*name){
 struct SParser p;

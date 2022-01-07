@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_VERIFY_PARAM ;
-typedef  int /*<<< orphan*/  X509_STORE ;
-typedef  int /*<<< orphan*/  X509_LOOKUP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  X509_FILETYPE_PEM ; 
- int /*<<< orphan*/  X509_LOOKUP_add_dir (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_LOOKUP_file () ; 
- int /*<<< orphan*/  X509_LOOKUP_hash_dir () ; 
- int /*<<< orphan*/  X509_LOOKUP_load_file (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_LOOKUP_load_store (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  X509_LOOKUP_store () ; 
- int /*<<< orphan*/ * X509_STORE_add_lookup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_STORE_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_STORE_new () ; 
- int /*<<< orphan*/  X509_STORE_set1_param (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  X509_STORE_set_verify_cb (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  verify_cb ; 
+
+
+
+typedef int X509_VERIFY_PARAM ;
+typedef int X509_STORE ;
+typedef int X509_LOOKUP ;
+
+
+ int BIO_printf (int ,char*,...) ;
+ int X509_FILETYPE_PEM ;
+ int X509_LOOKUP_add_dir (int *,char const*,int ) ;
+ int X509_LOOKUP_file () ;
+ int X509_LOOKUP_hash_dir () ;
+ int X509_LOOKUP_load_file (int *,char const*,int ) ;
+ int X509_LOOKUP_load_store (int *,char const*) ;
+ int X509_LOOKUP_store () ;
+ int * X509_STORE_add_lookup (int *,int ) ;
+ int X509_STORE_free (int *) ;
+ int * X509_STORE_new () ;
+ int X509_STORE_set1_param (int *,int *) ;
+ int X509_STORE_set_verify_cb (int *,int ) ;
+ int bio_err ;
+ int verify_cb ;
 
 __attribute__((used)) static X509_STORE *create_cert_store(const char *CApath, const char *CAfile,
                                      const char *CAstore, X509_VERIFY_PARAM *vpm)
 {
-    X509_STORE *cert_ctx = NULL;
-    X509_LOOKUP *lookup = NULL;
+    X509_STORE *cert_ctx = ((void*)0);
+    X509_LOOKUP *lookup = ((void*)0);
 
     cert_ctx = X509_STORE_new();
     X509_STORE_set_verify_cb(cert_ctx, verify_cb);
-    if (CApath != NULL) {
+    if (CApath != ((void*)0)) {
         lookup = X509_STORE_add_lookup(cert_ctx, X509_LOOKUP_hash_dir());
-        if (lookup == NULL) {
+        if (lookup == ((void*)0)) {
             BIO_printf(bio_err, "memory allocation failure\n");
             goto err;
         }
@@ -51,9 +51,9 @@ __attribute__((used)) static X509_STORE *create_cert_store(const char *CApath, c
         }
     }
 
-    if (CAfile != NULL) {
+    if (CAfile != ((void*)0)) {
         lookup = X509_STORE_add_lookup(cert_ctx, X509_LOOKUP_file());
-        if (lookup == NULL) {
+        if (lookup == ((void*)0)) {
             BIO_printf(bio_err, "memory allocation failure\n");
             goto err;
         }
@@ -63,9 +63,9 @@ __attribute__((used)) static X509_STORE *create_cert_store(const char *CApath, c
         }
     }
 
-    if (CAstore != NULL) {
+    if (CAstore != ((void*)0)) {
         lookup = X509_STORE_add_lookup(cert_ctx, X509_LOOKUP_store());
-        if (lookup == NULL) {
+        if (lookup == ((void*)0)) {
             BIO_printf(bio_err, "memory allocation failure\n");
             goto err;
         }
@@ -75,12 +75,12 @@ __attribute__((used)) static X509_STORE *create_cert_store(const char *CApath, c
         }
     }
 
-    if (vpm != NULL)
+    if (vpm != ((void*)0))
         X509_STORE_set1_param(cert_ctx, vpm);
 
     return cert_ctx;
 
  err:
     X509_STORE_free(cert_ctx);
-    return NULL;
+    return ((void*)0);
 }

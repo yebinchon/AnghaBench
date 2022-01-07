@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_5__ ;
-typedef  struct TYPE_10__   TYPE_4__ ;
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_5__ ;
+typedef struct TYPE_10__ TYPE_4__ ;
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ video_smooth; } ;
 struct TYPE_8__ {TYPE_1__ bools; } ;
-typedef  TYPE_2__ settings_t ;
+typedef TYPE_2__ settings_t ;
 struct TYPE_9__ {scalar_t__ menu_texture_enable; scalar_t__ rgb32; } ;
-typedef  TYPE_3__ gx_video_t ;
-struct TYPE_11__ {int /*<<< orphan*/  data; int /*<<< orphan*/  obj; } ;
-struct TYPE_10__ {int /*<<< orphan*/  data; int /*<<< orphan*/  obj; } ;
-typedef  int /*<<< orphan*/  GXTexObj ;
+typedef TYPE_3__ gx_video_t ;
+struct TYPE_11__ {int data; int obj; } ;
+struct TYPE_10__ {int data; int obj; } ;
+typedef int GXTexObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GX_CLAMP ; 
- int /*<<< orphan*/  GX_FALSE ; 
- int /*<<< orphan*/  GX_InitTexObj (int /*<<< orphan*/ *,int /*<<< orphan*/ ,unsigned int,unsigned int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GX_InitTexObjFilterMode (int /*<<< orphan*/ *,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  GX_InvalidateTexAll () ; 
- unsigned int GX_LINEAR ; 
- unsigned int GX_NEAR ; 
- int /*<<< orphan*/  GX_TF_RGB565 ; 
- int /*<<< orphan*/  GX_TF_RGB5A3 ; 
- int /*<<< orphan*/  GX_TF_RGBA8 ; 
- TYPE_2__* config_get_ptr () ; 
- TYPE_5__ g_tex ; 
- int /*<<< orphan*/  menu_display_get_fb_size (unsigned int*,unsigned int*,size_t*) ; 
- TYPE_4__ menu_tex ; 
+
+ int GX_CLAMP ;
+ int GX_FALSE ;
+ int GX_InitTexObj (int *,int ,unsigned int,unsigned int,int ,int ,int ,int ) ;
+ int GX_InitTexObjFilterMode (int *,unsigned int,unsigned int) ;
+ int GX_InvalidateTexAll () ;
+ unsigned int GX_LINEAR ;
+ unsigned int GX_NEAR ;
+ int GX_TF_RGB565 ;
+ int GX_TF_RGB5A3 ;
+ int GX_TF_RGBA8 ;
+ TYPE_2__* config_get_ptr () ;
+ TYPE_5__ g_tex ;
+ int menu_display_get_fb_size (unsigned int*,unsigned int*,size_t*) ;
+ TYPE_4__ menu_tex ;
 
 __attribute__((used)) static void init_texture(void *data, unsigned width, unsigned height)
 {
    size_t fb_pitch;
    unsigned fb_width, fb_height;
-   gx_video_t *gx       = (gx_video_t*)data;
-   GXTexObj *fb_ptr   	= (GXTexObj*)&g_tex.obj;
-   GXTexObj *menu_ptr 	= (GXTexObj*)&menu_tex.obj;
+   gx_video_t *gx = (gx_video_t*)data;
+   GXTexObj *fb_ptr = (GXTexObj*)&g_tex.obj;
+   GXTexObj *menu_ptr = (GXTexObj*)&menu_tex.obj;
    settings_t *settings = config_get_ptr();
-   unsigned g_filter    = settings->bools.video_smooth ? GX_LINEAR : GX_NEAR;
+   unsigned g_filter = settings->bools.video_smooth ? GX_LINEAR : GX_NEAR;
 
-   width               &= ~3;
-   height              &= ~3;
+   width &= ~3;
+   height &= ~3;
 
    menu_display_get_fb_size(&fb_width, &fb_height,
          &fb_pitch);

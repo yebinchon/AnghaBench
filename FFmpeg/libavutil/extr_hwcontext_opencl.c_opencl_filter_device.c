@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  device_type ;
-typedef  scalar_t__ cl_int ;
-typedef  int cl_device_type ;
-typedef  int /*<<< orphan*/  cl_device_id ;
-struct TYPE_7__ {char* key; int type; int /*<<< orphan*/  name; } ;
-struct TYPE_6__ {char* key; int /*<<< orphan*/  value; } ;
-typedef  int /*<<< orphan*/  AVHWDeviceContext ;
-typedef  TYPE_1__ AVDictionaryEntry ;
-typedef  int /*<<< orphan*/  AVDictionary ;
 
-/* Variables and functions */
- int AVERROR (int /*<<< orphan*/ ) ; 
- int AVERROR_UNKNOWN ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  CL_DEVICE_TYPE ; 
- scalar_t__ CL_SUCCESS ; 
- int /*<<< orphan*/  EINVAL ; 
- int FF_ARRAY_ELEMS (TYPE_2__*) ; 
- TYPE_1__* av_dict_get (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_free (char*) ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  av_stristr (char*,int /*<<< orphan*/ ) ; 
- scalar_t__ clGetDeviceInfo (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ *) ; 
- TYPE_2__* opencl_device_params ; 
- TYPE_2__* opencl_device_types ; 
- char* opencl_get_device_string (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  strcmp (char*,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int device_type ;
+typedef scalar_t__ cl_int ;
+typedef int cl_device_type ;
+typedef int cl_device_id ;
+struct TYPE_7__ {char* key; int type; int name; } ;
+struct TYPE_6__ {char* key; int value; } ;
+typedef int AVHWDeviceContext ;
+typedef TYPE_1__ AVDictionaryEntry ;
+typedef int AVDictionary ;
+
+
+ int AVERROR (int ) ;
+ int AVERROR_UNKNOWN ;
+ int AV_LOG_DEBUG ;
+ int AV_LOG_ERROR ;
+ int CL_DEVICE_TYPE ;
+ scalar_t__ CL_SUCCESS ;
+ int EINVAL ;
+ int FF_ARRAY_ELEMS (TYPE_2__*) ;
+ TYPE_1__* av_dict_get (int *,char*,int *,int ) ;
+ int av_free (char*) ;
+ int av_log (int *,int ,char*,...) ;
+ int av_stristr (char*,int ) ;
+ scalar_t__ clGetDeviceInfo (int ,int ,int,int*,int *) ;
+ TYPE_2__* opencl_device_params ;
+ TYPE_2__* opencl_device_types ;
+ char* opencl_get_device_string (int ,int ) ;
+ int strcmp (char*,int ) ;
 
 __attribute__((used)) static int opencl_filter_device(AVHWDeviceContext *hwdev,
                                 cl_device_id device_id,
@@ -51,7 +51,7 @@ __attribute__((used)) static int opencl_filter_device(AVHWDeviceContext *hwdev,
     char *str;
     int i, ret = 0;
 
-    param = av_dict_get(opts, "device_type", NULL, 0);
+    param = av_dict_get(opts, "device_type", ((void*)0), 0);
     if (param) {
         cl_device_type match_type = 0, device_type;
         cl_int cle;
@@ -69,7 +69,7 @@ __attribute__((used)) static int opencl_filter_device(AVHWDeviceContext *hwdev,
         }
 
         cle = clGetDeviceInfo(device_id, CL_DEVICE_TYPE,
-                              sizeof(device_type), &device_type, NULL);
+                              sizeof(device_type), &device_type, ((void*)0));
         if (cle != CL_SUCCESS) {
             av_log(hwdev, AV_LOG_ERROR, "Failed to query device type "
                    "of device \"%s\".\n", device_name);
@@ -84,7 +84,7 @@ __attribute__((used)) static int opencl_filter_device(AVHWDeviceContext *hwdev,
 
     for (i = 0; i < FF_ARRAY_ELEMS(opencl_device_params); i++) {
         param = av_dict_get(opts, opencl_device_params[i].key,
-                            NULL, 0);
+                            ((void*)0), 0);
         if (!param)
             continue;
 

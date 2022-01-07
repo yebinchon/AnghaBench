@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_session_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_client_ctx_t ;
-typedef  int /*<<< orphan*/  svn_client__pathrev_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  svn_client__get_youngest_common_ancestor (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_client__pathrev_create_with_relpath (char const*,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_session_t ;
+typedef int svn_error_t ;
+typedef int svn_client_ctx_t ;
+typedef int svn_client__pathrev_t ;
+typedef int apr_pool_t ;
+
+
+ int SVN_ERR (int ) ;
+ int * SVN_NO_ERROR ;
+ int svn_client__get_youngest_common_ancestor (int **,int *,int *,int *,int *,int *,int *) ;
+ int * svn_client__pathrev_create_with_relpath (char const*,char const*,int ,char const*,int *) ;
 
 __attribute__((used)) static svn_error_t *
 find_yca(svn_client__pathrev_t **yca_loc,
@@ -39,7 +39,7 @@ find_yca(svn_client__pathrev_t **yca_loc,
   svn_client__pathrev_t *loc1;
   svn_client__pathrev_t *loc2;
 
-  *yca_loc = NULL;
+  *yca_loc = ((void*)0);
 
   loc1 = svn_client__pathrev_create_with_relpath(repos_root_url, repos_uuid,
                                                  peg_rev1, repos_relpath1,

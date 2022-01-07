@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  timer_started; int /*<<< orphan*/  timer; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int timer_started; int timer; } ;
 struct TYPE_6__ {TYPE_1__ power_control; } ;
-typedef  TYPE_2__ SCIC_SDS_CONTROLLER_T ;
+typedef TYPE_2__ SCIC_SDS_CONTROLLER_T ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SCIC_SDS_CONTROLLER_POWER_CONTROL_INTERVAL ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  scic_cb_timer_start (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int SCIC_SDS_CONTROLLER_POWER_CONTROL_INTERVAL ;
+ int TRUE ;
+ int scic_cb_timer_start (TYPE_2__*,int ,int ) ;
 
 __attribute__((used)) static
 void scic_sds_controller_power_control_timer_start(

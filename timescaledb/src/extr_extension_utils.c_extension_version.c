@@ -1,87 +1,87 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SysScanDesc ;
-typedef  int /*<<< orphan*/  ScanKeyData ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  HeapTuple ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AccessShareLock ; 
- int /*<<< orphan*/  Anum_pg_extension_extname ; 
- int /*<<< orphan*/  Anum_pg_extension_extversion ; 
- int /*<<< orphan*/  BTEqualStrategyNumber ; 
- int /*<<< orphan*/  CStringGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DirectFunctionCall1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  EXTENSION_NAME ; 
- int /*<<< orphan*/  ExtensionNameIndexId ; 
- int /*<<< orphan*/  ExtensionRelationId ; 
- int /*<<< orphan*/  F_NAMEEQ ; 
- scalar_t__ HeapTupleIsValid (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RelationGetDescr (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScanKeyInit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TextDatumGetCString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  heap_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  heap_getattr (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int*) ; 
- int /*<<< orphan*/  heap_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  namein ; 
- char* pstrdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  systable_beginscan (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  systable_endscan (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  systable_getnext (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int SysScanDesc ;
+typedef int ScanKeyData ;
+typedef int Relation ;
+typedef int HeapTuple ;
+typedef int Datum ;
+
+
+ int AccessShareLock ;
+ int Anum_pg_extension_extname ;
+ int Anum_pg_extension_extversion ;
+ int BTEqualStrategyNumber ;
+ int CStringGetDatum (int ) ;
+ int DirectFunctionCall1 (int ,int ) ;
+ int ERROR ;
+ int EXTENSION_NAME ;
+ int ExtensionNameIndexId ;
+ int ExtensionRelationId ;
+ int F_NAMEEQ ;
+ scalar_t__ HeapTupleIsValid (int ) ;
+ int RelationGetDescr (int ) ;
+ int ScanKeyInit (int *,int ,int ,int ,int ) ;
+ int TextDatumGetCString (int ) ;
+ int elog (int ,char*) ;
+ int heap_close (int ,int ) ;
+ int heap_getattr (int ,int ,int ,int*) ;
+ int heap_open (int ,int ) ;
+ int namein ;
+ char* pstrdup (int ) ;
+ int systable_beginscan (int ,int ,int,int *,int,int *) ;
+ int systable_endscan (int ) ;
+ int systable_getnext (int ) ;
 
 __attribute__((used)) static char *
 extension_version(void)
 {
-	Datum result;
-	Relation rel;
-	SysScanDesc scandesc;
-	HeapTuple tuple;
-	ScanKeyData entry[1];
-	bool is_null = true;
-	char *sql_version = NULL;
+ Datum result;
+ Relation rel;
+ SysScanDesc scandesc;
+ HeapTuple tuple;
+ ScanKeyData entry[1];
+ bool is_null = 1;
+ char *sql_version = ((void*)0);
 
-	rel = heap_open(ExtensionRelationId, AccessShareLock);
+ rel = heap_open(ExtensionRelationId, AccessShareLock);
 
-	ScanKeyInit(&entry[0],
-				Anum_pg_extension_extname,
-				BTEqualStrategyNumber,
-				F_NAMEEQ,
-				DirectFunctionCall1(namein, CStringGetDatum(EXTENSION_NAME)));
+ ScanKeyInit(&entry[0],
+    Anum_pg_extension_extname,
+    BTEqualStrategyNumber,
+    F_NAMEEQ,
+    DirectFunctionCall1(namein, CStringGetDatum(EXTENSION_NAME)));
 
-	scandesc = systable_beginscan(rel, ExtensionNameIndexId, true, NULL, 1, entry);
+ scandesc = systable_beginscan(rel, ExtensionNameIndexId, 1, ((void*)0), 1, entry);
 
-	tuple = systable_getnext(scandesc);
+ tuple = systable_getnext(scandesc);
 
-	/* We assume that there can be at most one matching tuple */
-	if (HeapTupleIsValid(tuple))
-	{
-		result = heap_getattr(tuple, Anum_pg_extension_extversion, RelationGetDescr(rel), &is_null);
 
-		if (!is_null)
-		{
-			sql_version = pstrdup(TextDatumGetCString(result));
-		}
-	}
+ if (HeapTupleIsValid(tuple))
+ {
+  result = heap_getattr(tuple, Anum_pg_extension_extversion, RelationGetDescr(rel), &is_null);
 
-	systable_endscan(scandesc);
-	heap_close(rel, AccessShareLock);
+  if (!is_null)
+  {
+   sql_version = pstrdup(TextDatumGetCString(result));
+  }
+ }
 
-	if (sql_version == NULL)
-	{
-		elog(ERROR, "extension not found while getting version");
-	}
-	return sql_version;
+ systable_endscan(scandesc);
+ heap_close(rel, AccessShareLock);
+
+ if (sql_version == ((void*)0))
+ {
+  elog(ERROR, "extension not found while getting version");
+ }
+ return sql_version;
 }

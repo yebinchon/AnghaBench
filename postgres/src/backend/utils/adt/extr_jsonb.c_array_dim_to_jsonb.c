@@ -1,54 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_4__ {int /*<<< orphan*/  parseState; void* res; } ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  int /*<<< orphan*/  JsonbTypeCategory ;
-typedef  TYPE_1__ JsonbInState ;
-typedef  int /*<<< orphan*/  Datum ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int) ; 
- int /*<<< orphan*/  WJB_BEGIN_ARRAY ; 
- int /*<<< orphan*/  WJB_END_ARRAY ; 
- int /*<<< orphan*/  datum_to_jsonb (int /*<<< orphan*/ ,int,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- void* pushJsonbValue (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+struct TYPE_4__ {int parseState; void* res; } ;
+typedef int Oid ;
+typedef int JsonbTypeCategory ;
+typedef TYPE_1__ JsonbInState ;
+typedef int Datum ;
+
+
+ int Assert (int) ;
+ int WJB_BEGIN_ARRAY ;
+ int WJB_END_ARRAY ;
+ int datum_to_jsonb (int ,int,TYPE_1__*,int ,int ,int) ;
+ void* pushJsonbValue (int *,int ,int *) ;
 
 __attribute__((used)) static void
 array_dim_to_jsonb(JsonbInState *result, int dim, int ndims, int *dims, Datum *vals,
-				   bool *nulls, int *valcount, JsonbTypeCategory tcategory,
-				   Oid outfuncoid)
+       bool *nulls, int *valcount, JsonbTypeCategory tcategory,
+       Oid outfuncoid)
 {
-	int			i;
+ int i;
 
-	Assert(dim < ndims);
+ Assert(dim < ndims);
 
-	result->res = pushJsonbValue(&result->parseState, WJB_BEGIN_ARRAY, NULL);
+ result->res = pushJsonbValue(&result->parseState, WJB_BEGIN_ARRAY, ((void*)0));
 
-	for (i = 1; i <= dims[dim]; i++)
-	{
-		if (dim + 1 == ndims)
-		{
-			datum_to_jsonb(vals[*valcount], nulls[*valcount], result, tcategory,
-						   outfuncoid, false);
-			(*valcount)++;
-		}
-		else
-		{
-			array_dim_to_jsonb(result, dim + 1, ndims, dims, vals, nulls,
-							   valcount, tcategory, outfuncoid);
-		}
-	}
+ for (i = 1; i <= dims[dim]; i++)
+ {
+  if (dim + 1 == ndims)
+  {
+   datum_to_jsonb(vals[*valcount], nulls[*valcount], result, tcategory,
+         outfuncoid, 0);
+   (*valcount)++;
+  }
+  else
+  {
+   array_dim_to_jsonb(result, dim + 1, ndims, dims, vals, nulls,
+          valcount, tcategory, outfuncoid);
+  }
+ }
 
-	result->res = pushJsonbValue(&result->parseState, WJB_END_ARRAY, NULL);
+ result->res = pushJsonbValue(&result->parseState, WJB_END_ARRAY, ((void*)0));
 }

@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct word_array {scalar_t__ count; int /*<<< orphan*/ * items; } ;
+
+
+
+
+struct word_array {scalar_t__ count; int * items; } ;
 struct dynamic_array {int dummy; } ;
-typedef  int /*<<< orphan*/  WORD ;
-typedef  int /*<<< orphan*/  HRESULT ;
+typedef int WORD ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
- int /*<<< orphan*/  S_OK ; 
- int /*<<< orphan*/  reserve (struct dynamic_array*,scalar_t__,int) ; 
+
+ int E_OUTOFMEMORY ;
+ int S_OK ;
+ int reserve (struct dynamic_array*,scalar_t__,int) ;
 
 __attribute__((used)) static HRESULT add_vertex_index(struct word_array *array, WORD vertex_index)
 {

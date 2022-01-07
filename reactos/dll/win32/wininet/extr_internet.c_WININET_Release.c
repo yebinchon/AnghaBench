@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_11__ {scalar_t__ htype; int dwInternalFlags; scalar_t__ hInternet; TYPE_1__* vtbl; int /*<<< orphan*/  entry; int /*<<< orphan*/  dwContext; int /*<<< orphan*/  refs; } ;
-typedef  TYPE_2__ object_header_t ;
-typedef  int /*<<< orphan*/  ULONG ;
-typedef  size_t UINT_PTR ;
-struct TYPE_10__ {int /*<<< orphan*/  (* Destroy ) (TYPE_2__*) ;int /*<<< orphan*/  (* CloseConnection ) (TYPE_2__*) ;} ;
-typedef  int /*<<< orphan*/  HINTERNET ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EnterCriticalSection (int /*<<< orphan*/ *) ; 
- int INET_OPENURL ; 
- int /*<<< orphan*/  INTERNET_STATUS_HANDLE_CLOSING ; 
- int /*<<< orphan*/  INTERNET_SendCallback (TYPE_2__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*,int) ; 
- int /*<<< orphan*/  InterlockedDecrement (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LeaveCriticalSection (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,TYPE_2__*,...) ; 
- int /*<<< orphan*/  TRUE ; 
- scalar_t__ WH_HFTPSESSION ; 
- scalar_t__ WH_HHTTPSESSION ; 
- scalar_t__ WH_HINIT ; 
- int /*<<< orphan*/  WININET_cs ; 
- int /*<<< orphan*/ ** handle_table ; 
- int /*<<< orphan*/  heap_free (TYPE_2__*) ; 
- int /*<<< orphan*/  invalidate_handle (TYPE_2__*) ; 
- int /*<<< orphan*/  list_remove (int /*<<< orphan*/ *) ; 
- size_t next_handle ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*) ; 
- int /*<<< orphan*/  stub2 (TYPE_2__*) ; 
+
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
+struct TYPE_11__ {scalar_t__ htype; int dwInternalFlags; scalar_t__ hInternet; TYPE_1__* vtbl; int entry; int dwContext; int refs; } ;
+typedef TYPE_2__ object_header_t ;
+typedef int ULONG ;
+typedef size_t UINT_PTR ;
+struct TYPE_10__ {int (* Destroy ) (TYPE_2__*) ;int (* CloseConnection ) (TYPE_2__*) ;} ;
+typedef int HINTERNET ;
+typedef int BOOL ;
+
+
+ int EnterCriticalSection (int *) ;
+ int INET_OPENURL ;
+ int INTERNET_STATUS_HANDLE_CLOSING ;
+ int INTERNET_SendCallback (TYPE_2__*,int ,int ,scalar_t__*,int) ;
+ int InterlockedDecrement (int *) ;
+ int LeaveCriticalSection (int *) ;
+ int TRACE (char*,TYPE_2__*,...) ;
+ int TRUE ;
+ scalar_t__ WH_HFTPSESSION ;
+ scalar_t__ WH_HHTTPSESSION ;
+ scalar_t__ WH_HINIT ;
+ int WININET_cs ;
+ int ** handle_table ;
+ int heap_free (TYPE_2__*) ;
+ int invalidate_handle (TYPE_2__*) ;
+ int list_remove (int *) ;
+ size_t next_handle ;
+ int stub1 (TYPE_2__*) ;
+ int stub2 (TYPE_2__*) ;
 
 BOOL WININET_Release( object_header_t *info )
 {
@@ -53,7 +53,7 @@ BOOL WININET_Release( object_header_t *info )
             TRACE( "closing connection %p\n", info);
             info->vtbl->CloseConnection( info );
         }
-        /* Don't send a callback if this is a session handle created with InternetOpenUrl */
+
         if ((info->htype != WH_HHTTPSESSION && info->htype != WH_HFTPSESSION)
             || !(info->dwInternalFlags & INET_OPENURL))
         {
@@ -71,7 +71,7 @@ BOOL WININET_Release( object_header_t *info )
 
             EnterCriticalSection( &WININET_cs );
 
-            handle_table[handle] = NULL;
+            handle_table[handle] = ((void*)0);
             if(next_handle > handle)
                 next_handle = handle;
 

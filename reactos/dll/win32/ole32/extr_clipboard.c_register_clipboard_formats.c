@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
 
-/* Variables and functions */
- void* RegisterClipboardFormatW (char const*) ; 
- void* custom_link_source_clipboard_format ; 
- void* dataobject_clipboard_format ; 
- void* embed_source_clipboard_format ; 
- void* embedded_object_clipboard_format ; 
- void* filenameW_clipboard_format ; 
- void* filename_clipboard_format ; 
- void* link_source_clipboard_format ; 
- void* link_source_descriptor_clipboard_format ; 
- void* object_descriptor_clipboard_format ; 
- void* ole_private_data_clipboard_format ; 
- void* ownerlink_clipboard_format ; 
- void* wine_marshal_clipboard_format ; 
+
+
+
+typedef char WCHAR ;
+
+
+ void* RegisterClipboardFormatW (char const*) ;
+ void* custom_link_source_clipboard_format ;
+ void* dataobject_clipboard_format ;
+ void* embed_source_clipboard_format ;
+ void* embedded_object_clipboard_format ;
+ void* filenameW_clipboard_format ;
+ void* filename_clipboard_format ;
+ void* link_source_clipboard_format ;
+ void* link_source_descriptor_clipboard_format ;
+ void* object_descriptor_clipboard_format ;
+ void* ole_private_data_clipboard_format ;
+ void* ownerlink_clipboard_format ;
+ void* wine_marshal_clipboard_format ;
 
 __attribute__((used)) static void register_clipboard_formats(void)
 {

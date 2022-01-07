@@ -1,41 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  strlen (char const*) ; 
- int /*<<< orphan*/  strncmp (char const*,char const*,int /*<<< orphan*/ ) ; 
+ int strlen (char const*) ;
+ int strncmp (char const*,char const*,int ) ;
 
 __attribute__((used)) static bool
 is_sec_debug(const char *shname)
 {
-	const char *dbg_sec[] = {
-		".debug",
-		".gnu.linkonce.wi.",
-		".line",
-		".rel.debug",
-		".rela.debug",
-		".stab",
-		NULL
-	};
-	const char **p;
+ const char *dbg_sec[] = {
+  ".debug",
+  ".gnu.linkonce.wi.",
+  ".line",
+  ".rel.debug",
+  ".rela.debug",
+  ".stab",
+  ((void*)0)
+ };
+ const char **p;
 
-	if (shname == NULL)
-		return (false);
+ if (shname == ((void*)0))
+  return (0);
 
-	for (p = dbg_sec; *p; p++) {
-		if (!strncmp(shname, *p, strlen(*p)))
-			return (true);
-	}
+ for (p = dbg_sec; *p; p++) {
+  if (!strncmp(shname, *p, strlen(*p)))
+   return (1);
+ }
 
-	return (false);
+ return (0);
 }

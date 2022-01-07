@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void* uint8_t ;
+
+
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef void* uint8_t ;
 struct TYPE_11__ {int width; int height; scalar_t__ codec_id; } ;
-struct TYPE_10__ {void*** data; int /*<<< orphan*/ * linesize; } ;
-struct TYPE_9__ {void** data; int /*<<< orphan*/  flags; } ;
-typedef  TYPE_1__ AVPacket ;
-typedef  TYPE_2__ AVFrame ;
-typedef  TYPE_3__ AVCodecContext ;
+struct TYPE_10__ {void*** data; int * linesize; } ;
+struct TYPE_9__ {void** data; int flags; } ;
+typedef TYPE_1__ AVPacket ;
+typedef TYPE_2__ AVFrame ;
+typedef TYPE_3__ AVCodecContext ;
 
-/* Variables and functions */
- scalar_t__ AV_CODEC_ID_AYUV ; 
- int /*<<< orphan*/  AV_PKT_FLAG_KEY ; 
- int ff_alloc_packet2 (TYPE_3__*,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AV_CODEC_ID_AYUV ;
+ int AV_PKT_FLAG_KEY ;
+ int ff_alloc_packet2 (TYPE_3__*,TYPE_1__*,int,int ) ;
 
 __attribute__((used)) static int v408_encode_frame(AVCodecContext *avctx, AVPacket *pkt,
                              const AVFrame *pic, int *got_packet)

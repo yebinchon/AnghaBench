@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  size_t mp_uint_t ;
-struct TYPE_3__ {int /*<<< orphan*/  name; } ;
-typedef  TYPE_1__ mp_obj_type_t ;
-typedef  int /*<<< orphan*/  mp_obj_t ;
-typedef  size_t mp_int_t ;
 
-/* Variables and functions */
- scalar_t__ MICROPY_ERROR_REPORTING ; 
- scalar_t__ MICROPY_ERROR_REPORTING_TERSE ; 
- size_t MP_OBJ_SMALL_INT_VALUE (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_obj_get_int_maybe (int /*<<< orphan*/ ,size_t*) ; 
- int /*<<< orphan*/  mp_obj_get_type_str (int /*<<< orphan*/ ) ; 
- scalar_t__ mp_obj_is_small_int (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mp_obj_new_exception_msg_varg (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  mp_raise_TypeError (char*) ; 
- int /*<<< orphan*/  mp_raise_msg (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  mp_type_IndexError ; 
- int /*<<< orphan*/  mp_type_TypeError ; 
- int /*<<< orphan*/  nlr_raise (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef size_t mp_uint_t ;
+struct TYPE_3__ {int name; } ;
+typedef TYPE_1__ mp_obj_type_t ;
+typedef int mp_obj_t ;
+typedef size_t mp_int_t ;
+
+
+ scalar_t__ MICROPY_ERROR_REPORTING ;
+ scalar_t__ MICROPY_ERROR_REPORTING_TERSE ;
+ size_t MP_OBJ_SMALL_INT_VALUE (int ) ;
+ int mp_obj_get_int_maybe (int ,size_t*) ;
+ int mp_obj_get_type_str (int ) ;
+ scalar_t__ mp_obj_is_small_int (int ) ;
+ int mp_obj_new_exception_msg_varg (int *,char*,int ,...) ;
+ int mp_raise_TypeError (char*) ;
+ int mp_raise_msg (int *,char*) ;
+ int mp_type_IndexError ;
+ int mp_type_TypeError ;
+ int nlr_raise (int ) ;
 
 size_t mp_get_index(const mp_obj_type_t *type, size_t len, mp_obj_t index, bool is_slice) {
     mp_int_t i;
@@ -65,6 +65,6 @@ size_t mp_get_index(const mp_obj_type_t *type, size_t len, mp_obj_t index, bool 
         }
     }
 
-    // By this point 0 <= i <= len and so fits in a size_t
+
     return (size_t)i;
 }

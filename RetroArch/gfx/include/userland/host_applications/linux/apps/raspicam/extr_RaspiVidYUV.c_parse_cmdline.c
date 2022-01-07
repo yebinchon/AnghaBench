@@ -1,61 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int timeout; int demoInterval; int demoMode; int onTime; int offTime; int bCapturing; int useRGB; int onlyLuma; int save_pts; int netListen; int /*<<< orphan*/  preview_parameters; int /*<<< orphan*/  common_settings; int /*<<< orphan*/  camera_parameters; int /*<<< orphan*/  pts_filename; int /*<<< orphan*/  waitMethod; int /*<<< orphan*/  framerate; } ;
-typedef  TYPE_1__ RASPIVIDYUV_STATE ;
 
-/* Variables and functions */
-#define  CommandDemoMode 138 
-#define  CommandFramerate 137 
-#define  CommandInitialState 136 
-#define  CommandKeypress 135 
-#define  CommandNetListen 134 
-#define  CommandOnlyLuma 133 
-#define  CommandSavePTS 132 
-#define  CommandSignal 131 
-#define  CommandTimed 130 
-#define  CommandTimeout 129 
-#define  CommandUseRGB 128 
- int /*<<< orphan*/  SIGUSR1 ; 
- int /*<<< orphan*/  WAIT_METHOD_FOREVER ; 
- int /*<<< orphan*/  WAIT_METHOD_KEYPRESS ; 
- int /*<<< orphan*/  WAIT_METHOD_NONE ; 
- int /*<<< orphan*/  WAIT_METHOD_SIGNAL ; 
- int /*<<< orphan*/  WAIT_METHOD_TIMED ; 
- int /*<<< orphan*/  application_help_message ; 
- int /*<<< orphan*/  cmdline_commands ; 
- int /*<<< orphan*/  cmdline_commands_size ; 
- int /*<<< orphan*/  default_signal_handler ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  initial_map ; 
- int /*<<< orphan*/  initial_map_size ; 
- int /*<<< orphan*/  malloc (int) ; 
- int raspicamcontrol_parse_cmdline (int /*<<< orphan*/ *,char const*,char const*) ; 
- int raspicli_get_command_id (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int*) ; 
- int raspicli_map_xref (char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int raspicommonsettings_parse_cmdline (int /*<<< orphan*/ *,char const*,char const*,int /*<<< orphan*/ *) ; 
- int raspipreview_parse_cmdline (int /*<<< orphan*/ *,char const*,char const*) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int sscanf (char const*,char*,int*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char const*) ; 
- int /*<<< orphan*/  strncpy (int /*<<< orphan*/ ,char const*,int) ; 
- int /*<<< orphan*/  vcos_assert (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int timeout; int demoInterval; int demoMode; int onTime; int offTime; int bCapturing; int useRGB; int onlyLuma; int save_pts; int netListen; int preview_parameters; int common_settings; int camera_parameters; int pts_filename; int waitMethod; int framerate; } ;
+typedef TYPE_1__ RASPIVIDYUV_STATE ;
+ int SIGUSR1 ;
+ int WAIT_METHOD_FOREVER ;
+ int WAIT_METHOD_KEYPRESS ;
+ int WAIT_METHOD_NONE ;
+ int WAIT_METHOD_SIGNAL ;
+ int WAIT_METHOD_TIMED ;
+ int application_help_message ;
+ int cmdline_commands ;
+ int cmdline_commands_size ;
+ int default_signal_handler ;
+ int fprintf (int ,char*,...) ;
+ int initial_map ;
+ int initial_map_size ;
+ int malloc (int) ;
+ int raspicamcontrol_parse_cmdline (int *,char const*,char const*) ;
+ int raspicli_get_command_id (int ,int ,char const*,int*) ;
+ int raspicli_map_xref (char const*,int ,int ) ;
+ int raspicommonsettings_parse_cmdline (int *,char const*,char const*,int *) ;
+ int raspipreview_parse_cmdline (int *,char const*,char const*) ;
+ int signal (int ,int ) ;
+ int sscanf (char const*,char*,int*,...) ;
+ int stderr ;
+ int strlen (char const*) ;
+ int strncpy (int ,char const*,int) ;
+ int vcos_assert (int ) ;
 
 __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASPIVIDYUV_STATE *state)
 {
-   // Parse the command line arguments.
-   // We are looking for --<something> or -<abbreviation of something>
+
+
 
    int valid = 1;
    int i;
@@ -73,23 +60,23 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          continue;
       }
 
-      // Assume parameter is valid until proven otherwise
+
       valid = 1;
 
       command_id = raspicli_get_command_id(cmdline_commands, cmdline_commands_size, &argv[i][1], &num_parameters);
 
-      // If we found a command but are missing a parameter, continue (and we will drop out of the loop)
+
       if (command_id != -1 && num_parameters > 0 && (i + 1 >= argc) )
          continue;
 
-      //  We are now dealing with a command line option
+
       switch (command_id)
       {
-      case CommandTimeout: // Time to run viewfinder/capture
+      case 129:
       {
          if (sscanf(argv[i + 1], "%d", &state->timeout) == 1)
          {
-            // Ensure that if previously selected a waitMethod we don't overwrite it
+
             if (state->timeout == 0 && state->waitMethod == WAIT_METHOD_NONE)
                state->waitMethod = WAIT_METHOD_FOREVER;
 
@@ -100,17 +87,17 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          break;
       }
 
-      case CommandDemoMode: // Run in demo mode - no capture
+      case 138:
       {
-         // Demo mode might have a timing parameter
-         // so check if a) we have another parameter, b) its not the start of the next option
-         if (i + 1 < argc  && argv[i+1][0] != '-')
+
+
+         if (i + 1 < argc && argv[i+1][0] != '-')
          {
             if (sscanf(argv[i + 1], "%u", &state->demoInterval) == 1)
             {
-               // TODO : What limits do we need for timeout?
+
                if (state->demoInterval == 0)
-                  state->demoInterval = 250; // ms
+                  state->demoInterval = 250;
 
                state->demoMode = 1;
                i++;
@@ -126,11 +113,11 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          break;
       }
 
-      case CommandFramerate: // fps to record
+      case 137:
       {
          if (sscanf(argv[i + 1], "%u", &state->framerate) == 1)
          {
-            // TODO : What limits do we need for fps 1 - 30 - 120??
+
             i++;
          }
          else
@@ -138,7 +125,7 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          break;
       }
 
-      case CommandTimed:
+      case 130:
       {
          if (sscanf(argv[i + 1], "%u,%u", &state->onTime, &state->offTime) == 2)
          {
@@ -160,7 +147,7 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          break;
       }
 
-      case CommandKeypress:
+      case 135:
          state->waitMethod = WAIT_METHOD_KEYPRESS;
 
          if (state->timeout == -1)
@@ -168,9 +155,9 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
 
          break;
 
-      case CommandSignal:
+      case 131:
          state->waitMethod = WAIT_METHOD_SIGNAL;
-         // Reenable the signal
+
          signal(SIGUSR1, default_signal_handler);
 
          if (state->timeout == -1)
@@ -178,7 +165,7 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
 
          break;
 
-      case CommandInitialState:
+      case 136:
       {
          state->bCapturing = raspicli_map_xref(argv[i + 1], initial_map, initial_map_size);
 
@@ -189,7 +176,7 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          break;
       }
 
-      case CommandOnlyLuma:
+      case 133:
          if (state->useRGB)
          {
             fprintf(stderr, "--luma and --rgb are mutually exclusive\n");
@@ -198,7 +185,7 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          state->onlyLuma = 1;
          break;
 
-      case CommandUseRGB: // display lots of data during run
+      case 128:
          if (state->onlyLuma)
          {
             fprintf(stderr, "--luma and --rgb are mutually exclusive\n");
@@ -207,7 +194,7 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          state->useRGB = 1;
          break;
 
-      case CommandSavePTS:  // output filename
+      case 132:
       {
          state->save_pts = 1;
          int len = strlen(argv[i + 1]);
@@ -224,30 +211,30 @@ __attribute__((used)) static int parse_cmdline(int argc, const char **argv, RASP
          break;
       }
 
-      case CommandNetListen:
+      case 134:
       {
-         state->netListen = true;
+         state->netListen = 1;
 
          break;
       }
 
       default:
       {
-         // Try parsing for any image specific parameters
-         // result indicates how many parameters were used up, 0,1,2
-         // but we adjust by -1 as we have used one already
-         const char *second_arg = (i + 1 < argc) ? argv[i + 1] : NULL;
+
+
+
+         const char *second_arg = (i + 1 < argc) ? argv[i + 1] : ((void*)0);
          int parms_used = (raspicamcontrol_parse_cmdline(&state->camera_parameters, &argv[i][1], second_arg));
 
-         // Still unused, try common settings
+
          if (!parms_used)
             parms_used = raspicommonsettings_parse_cmdline(&state->common_settings, &argv[i][1], second_arg, &application_help_message);
 
-         // Still unused, try preview options
+
          if (!parms_used)
             parms_used = raspipreview_parse_cmdline(&state->preview_parameters, &argv[i][1], second_arg);
 
-         // If no parms were used, this must be a bad parameters
+
          if (!parms_used)
             valid = 0;
          else

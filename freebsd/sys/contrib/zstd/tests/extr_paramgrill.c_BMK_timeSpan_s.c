@@ -1,20 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UTIL_time_t ;
-typedef  int /*<<< orphan*/  U32 ;
 
-/* Variables and functions */
- unsigned long long UTIL_clockSpanMicro (int /*<<< orphan*/  const) ; 
+
+
+
+typedef int UTIL_time_t ;
+typedef int U32 ;
+
+
+ unsigned long long UTIL_clockSpanMicro (int const) ;
 
 __attribute__((used)) static U32 BMK_timeSpan_s(const UTIL_time_t tStart)
 {

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  requeue_task; int /*<<< orphan*/  requeue_scheduled; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int requeue_task; int requeue_scheduled; } ;
 struct tape_device {TYPE_1__ blk_data; } ;
 
-/* Variables and functions */
- scalar_t__ atomic_cmpxchg (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  schedule_work (int /*<<< orphan*/ *) ; 
+
+ scalar_t__ atomic_cmpxchg (int *,int ,int) ;
+ int schedule_work (int *) ;
 
 __attribute__((used)) static void
 tapeblock_trigger_requeue(struct tape_device *device)
 {
-	/* Protect against rescheduling. */
-	if (atomic_cmpxchg(&device->blk_data.requeue_scheduled, 0, 1) != 0)
-		return;
-	schedule_work(&device->blk_data.requeue_task);
+
+ if (atomic_cmpxchg(&device->blk_data.requeue_scheduled, 0, 1) != 0)
+  return;
+ schedule_work(&device->blk_data.requeue_task);
 }

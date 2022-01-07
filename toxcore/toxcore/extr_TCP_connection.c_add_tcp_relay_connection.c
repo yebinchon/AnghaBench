@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  TCP_con ;
-typedef  int /*<<< orphan*/  TCP_Connections ;
-typedef  int /*<<< orphan*/  TCP_Connection_to ;
-typedef  int /*<<< orphan*/  IP_Port ;
 
-/* Variables and functions */
- scalar_t__ RECOMMENDED_FRIEND_TCP_CONNECTIONS ; 
- int add_tcp_connection_to_conn (int /*<<< orphan*/ *,int) ; 
- int add_tcp_number_relay_connection (int /*<<< orphan*/ *,int,int) ; 
- int add_tcp_relay_instance (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int find_tcp_connection_relay (int /*<<< orphan*/ *,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * get_connection (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/ * get_tcp_connection (int /*<<< orphan*/ *,int) ; 
- scalar_t__ online_tcp_connection_from_conn (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint8_t ;
+typedef int TCP_con ;
+typedef int TCP_Connections ;
+typedef int TCP_Connection_to ;
+typedef int IP_Port ;
+
+
+ scalar_t__ RECOMMENDED_FRIEND_TCP_CONNECTIONS ;
+ int add_tcp_connection_to_conn (int *,int) ;
+ int add_tcp_number_relay_connection (int *,int,int) ;
+ int add_tcp_relay_instance (int *,int ,int const*) ;
+ int find_tcp_connection_relay (int *,int const*) ;
+ int * get_connection (int *,int) ;
+ int * get_tcp_connection (int *,int) ;
+ scalar_t__ online_tcp_connection_from_conn (int *) ;
 
 int add_tcp_relay_connection(TCP_Connections *tcp_c, int connections_number, IP_Port ip_port, const uint8_t *relay_pk)
 {

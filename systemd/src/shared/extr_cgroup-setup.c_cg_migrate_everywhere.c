@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char* (* cg_migrate_callback_t ) (int /*<<< orphan*/ ,void*) ;
-typedef  int /*<<< orphan*/  CGroupMask ;
-typedef  scalar_t__ CGroupController ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CGROUP_CONTROLLER_TO_MASK (scalar_t__) ; 
- int /*<<< orphan*/  CGROUP_MASK_EXTEND_JOINED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CGROUP_MASK_V1 ; 
- int /*<<< orphan*/  CGROUP_REMOVE ; 
- scalar_t__ FLAGS_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SYSTEMD_CGROUP_CONTROLLER ; 
- scalar_t__ _CGROUP_CONTROLLER_MAX ; 
- int cg_all_unified () ; 
- int cg_migrate_recursive (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cg_migrate_recursive_fallback (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  cgroup_controller_to_string (scalar_t__) ; 
- int /*<<< orphan*/  path_equal (char const*,char const*) ; 
+
+
+
+typedef char* (* cg_migrate_callback_t ) (int ,void*) ;
+typedef int CGroupMask ;
+typedef scalar_t__ CGroupController ;
+
+
+ int CGROUP_CONTROLLER_TO_MASK (scalar_t__) ;
+ int CGROUP_MASK_EXTEND_JOINED (int ) ;
+ int CGROUP_MASK_V1 ;
+ int CGROUP_REMOVE ;
+ scalar_t__ FLAGS_SET (int ,int ) ;
+ int SYSTEMD_CGROUP_CONTROLLER ;
+ scalar_t__ _CGROUP_CONTROLLER_MAX ;
+ int cg_all_unified () ;
+ int cg_migrate_recursive (int ,char const*,int ,char const*,int ) ;
+ int cg_migrate_recursive_fallback (int ,char const*,int ,char const*,int ) ;
+ int cgroup_controller_to_string (scalar_t__) ;
+ int path_equal (char const*,char const*) ;
 
 int cg_migrate_everywhere(CGroupMask supported, const char *from, const char *to, cg_migrate_callback_t to_callback, void *userdata) {
         CGroupController c;
         CGroupMask done;
         int r = 0, q;
 
-        if (!path_equal(from, to))  {
+        if (!path_equal(from, to)) {
                 r = cg_migrate_recursive(SYSTEMD_CGROUP_CONTROLLER, from, SYSTEMD_CGROUP_CONTROLLER, to, CGROUP_REMOVE);
                 if (r < 0)
                         return r;
@@ -50,7 +50,7 @@ int cg_migrate_everywhere(CGroupMask supported, const char *from, const char *to
 
         for (c = 0; c < _CGROUP_CONTROLLER_MAX; c++) {
                 CGroupMask bit = CGROUP_CONTROLLER_TO_MASK(c);
-                const char *p = NULL;
+                const char *p = ((void*)0);
 
                 if (!FLAGS_SET(supported, bit))
                         continue;

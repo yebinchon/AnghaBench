@@ -1,113 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buff ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int buff ;
 struct TYPE_2__ {int e_machine; } ;
+ unsigned long DT_HIOS ;
+ unsigned long DT_HIPROC ;
 
-/* Variables and functions */
-#define  DT_ADDRRNGLO 203 
-#define  DT_AUDIT 202 
-#define  DT_AUXILIARY 201 
-#define  DT_BIND_NOW 200 
-#define  DT_CHECKSUM 199 
-#define  DT_CONFIG 198 
-#define  DT_DEBUG 197 
-#define  DT_DEPAUDIT 196 
-#define  DT_FEATURE 195 
-#define  DT_FILTER 194 
-#define  DT_FINI 193 
-#define  DT_FINI_ARRAY 192 
-#define  DT_FINI_ARRAYSZ 191 
-#define  DT_FLAGS 190 
-#define  DT_FLAGS_1 189 
-#define  DT_GNU_CONFLICT 188 
-#define  DT_GNU_CONFLICTSZ 187 
-#define  DT_GNU_HASH 186 
-#define  DT_GNU_LIBLIST 185 
-#define  DT_GNU_LIBLISTSZ 184 
-#define  DT_GNU_PRELINKED 183 
-#define  DT_HASH 182 
- unsigned long DT_HIOS ; 
- unsigned long DT_HIPROC ; 
-#define  DT_INIT 181 
-#define  DT_INIT_ARRAY 180 
-#define  DT_INIT_ARRAYSZ 179 
-#define  DT_JMPREL 178 
- unsigned long DT_LOOS ; 
- unsigned long DT_LOPROC ; 
-#define  DT_MOVEENT 177 
-#define  DT_MOVESZ 176 
-#define  DT_MOVETAB 175 
-#define  DT_NEEDED 174 
-#define  DT_NULL 173 
-#define  DT_PLTGOT 172 
-#define  DT_PLTPAD 171 
-#define  DT_PLTPADSZ 170 
-#define  DT_PLTREL 169 
-#define  DT_PLTRELSZ 168 
-#define  DT_POSFLAG_1 167 
-#define  DT_PREINIT_ARRAY 166 
-#define  DT_PREINIT_ARRAYSZ 165 
-#define  DT_REL 164 
-#define  DT_RELA 163 
-#define  DT_RELACOUNT 162 
-#define  DT_RELAENT 161 
-#define  DT_RELASZ 160 
-#define  DT_RELCOUNT 159 
-#define  DT_RELENT 158 
-#define  DT_RELSZ 157 
-#define  DT_RPATH 156 
-#define  DT_RUNPATH 155 
-#define  DT_SONAME 154 
-#define  DT_STRSZ 153 
-#define  DT_STRTAB 152 
-#define  DT_SYMBOLIC 151 
-#define  DT_SYMENT 150 
-#define  DT_SYMINENT 149 
-#define  DT_SYMINFO 148 
-#define  DT_SYMINSZ 147 
-#define  DT_SYMTAB 146 
-#define  DT_TEXTREL 145 
-#define  DT_TLSDESC_GOT 144 
-#define  DT_TLSDESC_PLT 143 
-#define  DT_USED 142 
-#define  DT_VERDEF 141 
-#define  DT_VERDEFNUM 140 
-#define  DT_VERNEED 139 
-#define  DT_VERNEEDNUM 138 
-#define  DT_VERSYM 137 
-#define  EM_ALPHA 136 
-#define  EM_IA_64 135 
-#define  EM_MIPS 134 
-#define  EM_MIPS_RS3_LE 133 
-#define  EM_PARISC 132 
-#define  EM_PPC 131 
-#define  EM_PPC64 130 
-#define  EM_SCORE 129 
-#define  EM_SPARCV9 128 
- unsigned long OLD_DT_HIOS ; 
- unsigned long OLD_DT_LOOS ; 
- char* _ (char*) ; 
- TYPE_1__ elf_header ; 
- char* get_alpha_dynamic_type (unsigned long) ; 
- char* get_ia64_dynamic_type (unsigned long) ; 
- char* get_mips_dynamic_type (unsigned long) ; 
- char* get_parisc_dynamic_type (unsigned long) ; 
- char* get_ppc64_dynamic_type (unsigned long) ; 
- char* get_ppc_dynamic_type (unsigned long) ; 
- char* get_score_dynamic_type (unsigned long) ; 
- char* get_sparc64_dynamic_type (unsigned long) ; 
- int /*<<< orphan*/  snprintf (char*,int,char*,unsigned long) ; 
+
+
+
+ unsigned long DT_LOOS ;
+ unsigned long DT_LOPROC ;
+ unsigned long OLD_DT_HIOS ;
+ unsigned long OLD_DT_LOOS ;
+ char* _ (char*) ;
+ TYPE_1__ elf_header ;
+ char* get_alpha_dynamic_type (unsigned long) ;
+ char* get_ia64_dynamic_type (unsigned long) ;
+ char* get_mips_dynamic_type (unsigned long) ;
+ char* get_parisc_dynamic_type (unsigned long) ;
+ char* get_ppc64_dynamic_type (unsigned long) ;
+ char* get_ppc_dynamic_type (unsigned long) ;
+ char* get_score_dynamic_type (unsigned long) ;
+ char* get_sparc64_dynamic_type (unsigned long) ;
+ int snprintf (char*,int,char*,unsigned long) ;
 
 __attribute__((used)) static const char *
 get_dynamic_type (unsigned long type)
@@ -116,144 +42,144 @@ get_dynamic_type (unsigned long type)
 
   switch (type)
     {
-    case DT_NULL:	return "NULL";
-    case DT_NEEDED:	return "NEEDED";
-    case DT_PLTRELSZ:	return "PLTRELSZ";
-    case DT_PLTGOT:	return "PLTGOT";
-    case DT_HASH:	return "HASH";
-    case DT_STRTAB:	return "STRTAB";
-    case DT_SYMTAB:	return "SYMTAB";
-    case DT_RELA:	return "RELA";
-    case DT_RELASZ:	return "RELASZ";
-    case DT_RELAENT:	return "RELAENT";
-    case DT_STRSZ:	return "STRSZ";
-    case DT_SYMENT:	return "SYMENT";
-    case DT_INIT:	return "INIT";
-    case DT_FINI:	return "FINI";
-    case DT_SONAME:	return "SONAME";
-    case DT_RPATH:	return "RPATH";
-    case DT_SYMBOLIC:	return "SYMBOLIC";
-    case DT_REL:	return "REL";
-    case DT_RELSZ:	return "RELSZ";
-    case DT_RELENT:	return "RELENT";
-    case DT_PLTREL:	return "PLTREL";
-    case DT_DEBUG:	return "DEBUG";
-    case DT_TEXTREL:	return "TEXTREL";
-    case DT_JMPREL:	return "JMPREL";
-    case DT_BIND_NOW:   return "BIND_NOW";
-    case DT_INIT_ARRAY: return "INIT_ARRAY";
-    case DT_FINI_ARRAY: return "FINI_ARRAY";
-    case DT_INIT_ARRAYSZ: return "INIT_ARRAYSZ";
-    case DT_FINI_ARRAYSZ: return "FINI_ARRAYSZ";
-    case DT_RUNPATH:    return "RUNPATH";
-    case DT_FLAGS:      return "FLAGS";
+    case 173: return "NULL";
+    case 174: return "NEEDED";
+    case 168: return "PLTRELSZ";
+    case 172: return "PLTGOT";
+    case 182: return "HASH";
+    case 152: return "STRTAB";
+    case 146: return "SYMTAB";
+    case 163: return "RELA";
+    case 160: return "RELASZ";
+    case 161: return "RELAENT";
+    case 153: return "STRSZ";
+    case 150: return "SYMENT";
+    case 181: return "INIT";
+    case 193: return "FINI";
+    case 154: return "SONAME";
+    case 156: return "RPATH";
+    case 151: return "SYMBOLIC";
+    case 164: return "REL";
+    case 157: return "RELSZ";
+    case 158: return "RELENT";
+    case 169: return "PLTREL";
+    case 197: return "DEBUG";
+    case 145: return "TEXTREL";
+    case 178: return "JMPREL";
+    case 200: return "BIND_NOW";
+    case 180: return "INIT_ARRAY";
+    case 192: return "FINI_ARRAY";
+    case 179: return "INIT_ARRAYSZ";
+    case 191: return "FINI_ARRAYSZ";
+    case 155: return "RUNPATH";
+    case 190: return "FLAGS";
 
-    case DT_PREINIT_ARRAY: return "PREINIT_ARRAY";
-    case DT_PREINIT_ARRAYSZ: return "PREINIT_ARRAYSZ";
+    case 166: return "PREINIT_ARRAY";
+    case 165: return "PREINIT_ARRAYSZ";
 
-    case DT_CHECKSUM:	return "CHECKSUM";
-    case DT_PLTPADSZ:	return "PLTPADSZ";
-    case DT_MOVEENT:	return "MOVEENT";
-    case DT_MOVESZ:	return "MOVESZ";
-    case DT_FEATURE:	return "FEATURE";
-    case DT_POSFLAG_1:	return "POSFLAG_1";
-    case DT_SYMINSZ:	return "SYMINSZ";
-    case DT_SYMINENT:	return "SYMINENT"; /* aka VALRNGHI */
+    case 199: return "CHECKSUM";
+    case 170: return "PLTPADSZ";
+    case 177: return "MOVEENT";
+    case 176: return "MOVESZ";
+    case 195: return "FEATURE";
+    case 167: return "POSFLAG_1";
+    case 147: return "SYMINSZ";
+    case 149: return "SYMINENT";
 
-    case DT_ADDRRNGLO:  return "ADDRRNGLO";
-    case DT_CONFIG:	return "CONFIG";
-    case DT_DEPAUDIT:	return "DEPAUDIT";
-    case DT_AUDIT:	return "AUDIT";
-    case DT_PLTPAD:	return "PLTPAD";
-    case DT_MOVETAB:	return "MOVETAB";
-    case DT_SYMINFO:	return "SYMINFO"; /* aka ADDRRNGHI */
+    case 203: return "ADDRRNGLO";
+    case 198: return "CONFIG";
+    case 196: return "DEPAUDIT";
+    case 202: return "AUDIT";
+    case 171: return "PLTPAD";
+    case 175: return "MOVETAB";
+    case 148: return "SYMINFO";
 
-    case DT_VERSYM:	return "VERSYM";
+    case 137: return "VERSYM";
 
-    case DT_TLSDESC_GOT: return "TLSDESC_GOT";
-    case DT_TLSDESC_PLT: return "TLSDESC_PLT";
-    case DT_RELACOUNT:	return "RELACOUNT";
-    case DT_RELCOUNT:	return "RELCOUNT";
-    case DT_FLAGS_1:	return "FLAGS_1";
-    case DT_VERDEF:	return "VERDEF";
-    case DT_VERDEFNUM:	return "VERDEFNUM";
-    case DT_VERNEED:	return "VERNEED";
-    case DT_VERNEEDNUM:	return "VERNEEDNUM";
+    case 144: return "TLSDESC_GOT";
+    case 143: return "TLSDESC_PLT";
+    case 162: return "RELACOUNT";
+    case 159: return "RELCOUNT";
+    case 189: return "FLAGS_1";
+    case 141: return "VERDEF";
+    case 140: return "VERDEFNUM";
+    case 139: return "VERNEED";
+    case 138: return "VERNEEDNUM";
 
-    case DT_AUXILIARY:	return "AUXILIARY";
-    case DT_USED:	return "USED";
-    case DT_FILTER:	return "FILTER";
+    case 201: return "AUXILIARY";
+    case 142: return "USED";
+    case 194: return "FILTER";
 
-    case DT_GNU_PRELINKED: return "GNU_PRELINKED";
-    case DT_GNU_CONFLICT: return "GNU_CONFLICT";
-    case DT_GNU_CONFLICTSZ: return "GNU_CONFLICTSZ";
-    case DT_GNU_LIBLIST: return "GNU_LIBLIST";
-    case DT_GNU_LIBLISTSZ: return "GNU_LIBLISTSZ";
-    case DT_GNU_HASH:	return "GNU_HASH";
+    case 183: return "GNU_PRELINKED";
+    case 188: return "GNU_CONFLICT";
+    case 187: return "GNU_CONFLICTSZ";
+    case 185: return "GNU_LIBLIST";
+    case 184: return "GNU_LIBLISTSZ";
+    case 186: return "GNU_HASH";
 
     default:
       if ((type >= DT_LOPROC) && (type <= DT_HIPROC))
-	{
-	  const char *result;
+ {
+   const char *result;
 
-	  switch (elf_header.e_machine)
-	    {
-	    case EM_MIPS:
-	    case EM_MIPS_RS3_LE:
-	      result = get_mips_dynamic_type (type);
-	      break;
-	    case EM_SPARCV9:
-	      result = get_sparc64_dynamic_type (type);
-	      break;
-	    case EM_PPC:
-	      result = get_ppc_dynamic_type (type);
-	      break;
-	    case EM_PPC64:
-	      result = get_ppc64_dynamic_type (type);
-	      break;
-	    case EM_IA_64:
-	      result = get_ia64_dynamic_type (type);
-	      break;
-	    case EM_ALPHA:
-	      result = get_alpha_dynamic_type (type);
-	      break;
-	    case EM_SCORE:
-	      result = get_score_dynamic_type (type);
-	      break;
-	    default:
-	      result = NULL;
-	      break;
-	    }
+   switch (elf_header.e_machine)
+     {
+     case 134:
+     case 133:
+       result = get_mips_dynamic_type (type);
+       break;
+     case 128:
+       result = get_sparc64_dynamic_type (type);
+       break;
+     case 131:
+       result = get_ppc_dynamic_type (type);
+       break;
+     case 130:
+       result = get_ppc64_dynamic_type (type);
+       break;
+     case 135:
+       result = get_ia64_dynamic_type (type);
+       break;
+     case 136:
+       result = get_alpha_dynamic_type (type);
+       break;
+     case 129:
+       result = get_score_dynamic_type (type);
+       break;
+     default:
+       result = ((void*)0);
+       break;
+     }
 
-	  if (result != NULL)
-	    return result;
+   if (result != ((void*)0))
+     return result;
 
-	  snprintf (buff, sizeof (buff), _("Processor Specific: %lx"), type);
-	}
+   snprintf (buff, sizeof (buff), _("Processor Specific: %lx"), type);
+ }
       else if (((type >= DT_LOOS) && (type <= DT_HIOS))
-	       || (elf_header.e_machine == EM_PARISC
-		   && (type >= OLD_DT_LOOS) && (type <= OLD_DT_HIOS)))
-	{
-	  const char *result;
+        || (elf_header.e_machine == 132
+     && (type >= OLD_DT_LOOS) && (type <= OLD_DT_HIOS)))
+ {
+   const char *result;
 
-	  switch (elf_header.e_machine)
-	    {
-	    case EM_PARISC:
-	      result = get_parisc_dynamic_type (type);
-	      break;
-	    default:
-	      result = NULL;
-	      break;
-	    }
+   switch (elf_header.e_machine)
+     {
+     case 132:
+       result = get_parisc_dynamic_type (type);
+       break;
+     default:
+       result = ((void*)0);
+       break;
+     }
 
-	  if (result != NULL)
-	    return result;
+   if (result != ((void*)0))
+     return result;
 
-	  snprintf (buff, sizeof (buff), _("Operating System specific: %lx"),
-		    type);
-	}
+   snprintf (buff, sizeof (buff), _("Operating System specific: %lx"),
+      type);
+ }
       else
-	snprintf (buff, sizeof (buff), _("<unknown>: %lx"), type);
+ snprintf (buff, sizeof (buff), _("<unknown>: %lx"), type);
 
       return buff;
     }

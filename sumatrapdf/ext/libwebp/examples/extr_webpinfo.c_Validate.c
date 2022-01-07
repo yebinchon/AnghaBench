@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WebPInfoStatus ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int WebPInfoStatus ;
 struct TYPE_3__ {int num_frames_; int feature_flags_; scalar_t__* chunk_counts_; scalar_t__ is_processing_anim_frame_; scalar_t__ has_alpha_; } ;
-typedef  TYPE_1__ WebPInfo ;
+typedef TYPE_1__ WebPInfo ;
 
-/* Variables and functions */
- int ALPHA_FLAG ; 
- int ANIMATION_FLAG ; 
- size_t CHUNK_ANIM ; 
- size_t CHUNK_ANMF ; 
- size_t CHUNK_EXIF ; 
- size_t CHUNK_ICCP ; 
- size_t CHUNK_VP8X ; 
- size_t CHUNK_XMP ; 
- int EXIF_FLAG ; 
- int ICCP_FLAG ; 
- int /*<<< orphan*/  LOG_ERROR (char*) ; 
- int /*<<< orphan*/  LOG_WARN (char*) ; 
- int /*<<< orphan*/  WEBP_INFO_MISSING_DATA ; 
- int /*<<< orphan*/  WEBP_INFO_OK ; 
- int /*<<< orphan*/  WEBP_INFO_PARSE_ERROR ; 
- int XMP_FLAG ; 
+
+ int ALPHA_FLAG ;
+ int ANIMATION_FLAG ;
+ size_t CHUNK_ANIM ;
+ size_t CHUNK_ANMF ;
+ size_t CHUNK_EXIF ;
+ size_t CHUNK_ICCP ;
+ size_t CHUNK_VP8X ;
+ size_t CHUNK_XMP ;
+ int EXIF_FLAG ;
+ int ICCP_FLAG ;
+ int LOG_ERROR (char*) ;
+ int LOG_WARN (char*) ;
+ int WEBP_INFO_MISSING_DATA ;
+ int WEBP_INFO_OK ;
+ int WEBP_INFO_PARSE_ERROR ;
+ int XMP_FLAG ;
 
 __attribute__((used)) static WebPInfoStatus Validate(const WebPInfo* const webp_info) {
   if (webp_info->num_frames_ < 1) {
@@ -75,7 +75,7 @@ __attribute__((used)) static WebPInfoStatus Validate(const WebPInfo* const webp_
       LOG_ERROR("Unexpected XMP chunk detected.");
       return WEBP_INFO_PARSE_ERROR;
     }
-    // Incomplete animation frame.
+
     if (webp_info->is_processing_anim_frame_) return WEBP_INFO_MISSING_DATA;
     if (!animation && webp_info->num_frames_ > 1) {
       LOG_ERROR("More than 1 frame detected in non-animation file.");

@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
 struct TYPE_6__ {int channels; int sample_rate; int frame_size; void* sample_fmt; } ;
 struct TYPE_5__ {int duration; } ;
-typedef  TYPE_1__ AVCodecParserContext ;
-typedef  TYPE_2__ AVCodecContext ;
+typedef TYPE_1__ AVCodecParserContext ;
+typedef TYPE_2__ AVCodecContext ;
 
-/* Variables and functions */
- void* AV_SAMPLE_FMT_S16 ; 
- int const MSBC_SYNCWORD ; 
- int SBC_MODE_DUAL_CHANNEL ; 
- int SBC_MODE_JOINT_STEREO ; 
- int SBC_MODE_MONO ; 
- int const SBC_SYNCWORD ; 
+
+ void* AV_SAMPLE_FMT_S16 ;
+ int const MSBC_SYNCWORD ;
+ int SBC_MODE_DUAL_CHANNEL ;
+ int SBC_MODE_JOINT_STEREO ;
+ int SBC_MODE_MONO ;
+ int const SBC_SYNCWORD ;
 
 __attribute__((used)) static int sbc_parse_header(AVCodecParserContext *s, AVCodecContext *avctx,
                             const uint8_t *data, size_t len)
@@ -48,14 +48,14 @@ __attribute__((used)) static int sbc_parse_header(AVCodecParserContext *s, AVCod
     if (data[0] != SBC_SYNCWORD)
         return -2;
 
-    sr       =   (data[1] >> 6) & 0x03;
-    blocks   = (((data[1] >> 4) & 0x03) + 1) << 2;
-    mode     =   (data[1] >> 2) & 0x03;
+    sr = (data[1] >> 6) & 0x03;
+    blocks = (((data[1] >> 4) & 0x03) + 1) << 2;
+    mode = (data[1] >> 2) & 0x03;
     subbands = (((data[1] >> 0) & 0x01) + 1) << 2;
-    bitpool  = data[2];
+    bitpool = data[2];
 
     channels = mode == SBC_MODE_MONO ? 1 : 2;
-    joint    = mode == SBC_MODE_JOINT_STEREO;
+    joint = mode == SBC_MODE_JOINT_STEREO;
 
     length = 4 + (subbands * channels) / 2
              + ((((mode == SBC_MODE_DUAL_CHANNEL) + 1) * blocks * bitpool

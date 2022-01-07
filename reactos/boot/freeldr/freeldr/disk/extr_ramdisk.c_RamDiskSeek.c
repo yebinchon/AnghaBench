@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  ULONG ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int ULONG ;
 struct TYPE_3__ {scalar_t__ QuadPart; } ;
-typedef  int SEEKMODE ;
-typedef  TYPE_1__ LARGE_INTEGER ;
-typedef  int /*<<< orphan*/  ARC_STATUS ;
+typedef int SEEKMODE ;
+typedef TYPE_1__ LARGE_INTEGER ;
+typedef int ARC_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ESUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- scalar_t__ RamDiskImageLength ; 
- scalar_t__ RamDiskOffset ; 
-#define  SeekAbsolute 129 
-#define  SeekRelative 128 
+
+ int ASSERT (int ) ;
+ int EINVAL ;
+ int ESUCCESS ;
+ int FALSE ;
+ scalar_t__ RamDiskImageLength ;
+ scalar_t__ RamDiskOffset ;
+
+
 
 __attribute__((used)) static ARC_STATUS RamDiskSeek(ULONG FileId, LARGE_INTEGER* Position, SEEKMODE SeekMode)
 {
@@ -33,9 +33,9 @@ __attribute__((used)) static ARC_STATUS RamDiskSeek(ULONG FileId, LARGE_INTEGER*
 
     switch (SeekMode)
     {
-        case SeekAbsolute:
+        case 129:
             break;
-        case SeekRelative:
+        case 128:
             NewPosition.QuadPart += RamDiskOffset;
             break;
         default:

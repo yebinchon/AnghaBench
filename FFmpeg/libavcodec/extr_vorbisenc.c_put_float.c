@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  unsigned int uint32_t ;
-typedef  int /*<<< orphan*/  PutBitContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  frexp (float,int*) ; 
- scalar_t__ ldexp (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  put_bits32 (int /*<<< orphan*/ *,unsigned int) ; 
+
+
+
+typedef unsigned int uint32_t ;
+typedef int PutBitContext ;
+
+
+ int frexp (float,int*) ;
+ scalar_t__ ldexp (int ,int) ;
+ int put_bits32 (int *,unsigned int) ;
 
 __attribute__((used)) static void put_float(PutBitContext *pb, float f)
 {

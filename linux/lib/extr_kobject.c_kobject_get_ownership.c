@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct kobject {TYPE_1__* ktype; } ;
-typedef  int /*<<< orphan*/  kuid_t ;
-typedef  int /*<<< orphan*/  kgid_t ;
-struct TYPE_2__ {int /*<<< orphan*/  (* get_ownership ) (struct kobject*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ;} ;
+typedef int kuid_t ;
+typedef int kgid_t ;
+struct TYPE_2__ {int (* get_ownership ) (struct kobject*,int *,int *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GLOBAL_ROOT_GID ; 
- int /*<<< orphan*/  GLOBAL_ROOT_UID ; 
- int /*<<< orphan*/  stub1 (struct kobject*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int GLOBAL_ROOT_GID ;
+ int GLOBAL_ROOT_UID ;
+ int stub1 (struct kobject*,int *,int *) ;
 
 void kobject_get_ownership(struct kobject *kobj, kuid_t *uid, kgid_t *gid)
 {
-	*uid = GLOBAL_ROOT_UID;
-	*gid = GLOBAL_ROOT_GID;
+ *uid = GLOBAL_ROOT_UID;
+ *gid = GLOBAL_ROOT_GID;
 
-	if (kobj->ktype->get_ownership)
-		kobj->ktype->get_ownership(kobj, uid, gid);
+ if (kobj->ktype->get_ownership)
+  kobj->ktype->get_ownership(kobj, uid, gid);
 }

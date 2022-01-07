@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  HOSTS ; 
- int /*<<< orphan*/  MTRC_AGENTS ; 
- int /*<<< orphan*/  free_agent_values ; 
- void* get_hash (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  tc_db_foreach (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+ int HOSTS ;
+ int MTRC_AGENTS ;
+ int free_agent_values ;
+ void* get_hash (int ,int ) ;
+ int tc_db_foreach (void*,int ,int *) ;
 
 void
 free_agent_list (void)
@@ -25,5 +17,5 @@ free_agent_list (void)
   if (!hash)
     return;
 
-  tc_db_foreach (hash, free_agent_values, NULL);
+  tc_db_foreach (hash, free_agent_values, ((void*)0));
 }

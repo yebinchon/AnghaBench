@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  id; int /*<<< orphan*/  nodes_delivered; } ;
-typedef  TYPE_1__ job ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CLUSTERMSG_NOFLAGS ; 
- int /*<<< orphan*/  CLUSTERMSG_TYPE_DELJOB ; 
- int /*<<< orphan*/  JOB_ID_LEN ; 
- int /*<<< orphan*/  LL_VERBOSE ; 
- int /*<<< orphan*/  clusterBroadcastJobIDMessage (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  serverLog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int id; int nodes_delivered; } ;
+typedef TYPE_1__ job ;
+
+
+ int CLUSTERMSG_NOFLAGS ;
+ int CLUSTERMSG_TYPE_DELJOB ;
+ int JOB_ID_LEN ;
+ int LL_VERBOSE ;
+ int clusterBroadcastJobIDMessage (int ,int ,int ,int ,int ) ;
+ int serverLog (int ,char*,int ,int ) ;
 
 void clusterBroadcastDelJob(job *j) {
     serverLog(LL_VERBOSE,"BCAST DELJOB: %.*s",JOB_ID_LEN,j->id);

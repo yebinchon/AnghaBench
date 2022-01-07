@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct coff_ofile {int nsources; int nsections; scalar_t__ sections; int /*<<< orphan*/  source_head; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dump_coff_section (scalar_t__) ; 
- int /*<<< orphan*/  dump_coff_sfile (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nl () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
+
+
+
+struct coff_ofile {int nsources; int nsections; scalar_t__ sections; int source_head; } ;
+
+
+ int dump_coff_section (scalar_t__) ;
+ int dump_coff_sfile (int ) ;
+ int nl () ;
+ int printf (char*,...) ;
 
 __attribute__((used)) static void
 coff_dump (struct coff_ofile *ptr)

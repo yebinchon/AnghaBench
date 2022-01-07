@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int LDAP_NO_MEMORY ; 
- int /*<<< orphan*/  QadrtConvertA2E (char*,char*,int,int) ; 
- int /*<<< orphan*/  free (char*) ; 
- int ldap_simple_bind_s (void*,char*,char*) ; 
- char* malloc (int) ; 
- int strlen (char*) ; 
+ int LDAP_NO_MEMORY ;
+ int QadrtConvertA2E (char*,char*,int,int) ;
+ int free (char*) ;
+ int ldap_simple_bind_s (void*,char*,char*) ;
+ char* malloc (int) ;
+ int strlen (char*) ;
 
 int
 Curl_ldap_simple_bind_s_a(void * ld, char * dn, char * passwd)
@@ -27,8 +19,8 @@ Curl_ldap_simple_bind_s_a(void * ld, char * dn, char * passwd)
   char * edn;
   char * epasswd;
 
-  edn = (char *) NULL;
-  epasswd = (char *) NULL;
+  edn = (char *) ((void*)0);
+  epasswd = (char *) ((void*)0);
 
   if(dn) {
     i = strlen(dn);

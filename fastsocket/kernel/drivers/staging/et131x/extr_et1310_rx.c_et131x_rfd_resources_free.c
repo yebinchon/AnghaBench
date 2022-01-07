@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  RecvLookaside; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int RecvLookaside; } ;
 struct et131x_adapter {TYPE_1__ RxRing; } ;
-struct TYPE_6__ {int /*<<< orphan*/ * Packet; } ;
-typedef  TYPE_2__ MP_RFD ;
+struct TYPE_6__ {int * Packet; } ;
+typedef TYPE_2__ MP_RFD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kmem_cache_free (int /*<<< orphan*/ ,TYPE_2__*) ; 
+
+ int kmem_cache_free (int ,TYPE_2__*) ;
 
 void et131x_rfd_resources_free(struct et131x_adapter *adapter, MP_RFD *pMpRfd)
 {
-	pMpRfd->Packet = NULL;
-	kmem_cache_free(adapter->RxRing.RecvLookaside, pMpRfd);
+ pMpRfd->Packet = ((void*)0);
+ kmem_cache_free(adapter->RxRing.RecvLookaside, pMpRfd);
 }

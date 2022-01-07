@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wifi_init_config_t ;
-typedef  int /*<<< orphan*/  esp_netif_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERROR_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ESP_EVENT_ANY_ID ; 
- int /*<<< orphan*/  ESP_LOGI (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  IP_EVENT ; 
- int /*<<< orphan*/  IP_EVENT_STA_GOT_IP ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  WIFI_EVENT ; 
- int /*<<< orphan*/  WIFI_INIT_CONFIG_DEFAULT () ; 
- int /*<<< orphan*/  WIFI_MODE_STA ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  config ; 
- int /*<<< orphan*/  esp_event_handler_register (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_event_loop_create_default () ; 
- int /*<<< orphan*/ * esp_netif_create_default_wifi_sta () ; 
- int /*<<< orphan*/  esp_netif_init () ; 
- int /*<<< orphan*/  esp_wifi_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_wifi_set_mode (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  esp_wifi_start () ; 
- int /*<<< orphan*/  esp_wifi_wps_enable (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_wifi_wps_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  got_ip_event_handler ; 
- int /*<<< orphan*/  wifi_event_handler ; 
+
+
+
+typedef int wifi_init_config_t ;
+typedef int esp_netif_t ;
+
+
+ int ESP_ERROR_CHECK (int ) ;
+ int ESP_EVENT_ANY_ID ;
+ int ESP_LOGI (int ,char*) ;
+ int IP_EVENT ;
+ int IP_EVENT_STA_GOT_IP ;
+ int TAG ;
+ int WIFI_EVENT ;
+ int WIFI_INIT_CONFIG_DEFAULT () ;
+ int WIFI_MODE_STA ;
+ int assert (int *) ;
+ int config ;
+ int esp_event_handler_register (int ,int ,int *,int *) ;
+ int esp_event_loop_create_default () ;
+ int * esp_netif_create_default_wifi_sta () ;
+ int esp_netif_init () ;
+ int esp_wifi_init (int *) ;
+ int esp_wifi_set_mode (int ) ;
+ int esp_wifi_start () ;
+ int esp_wifi_wps_enable (int *) ;
+ int esp_wifi_wps_start (int ) ;
+ int got_ip_event_handler ;
+ int wifi_event_handler ;
 
 __attribute__((used)) static void start_wps(void)
 {
@@ -47,8 +47,8 @@ __attribute__((used)) static void start_wps(void)
     wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&cfg));
 
-    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
-    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &got_ip_event_handler, NULL));
+    ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, ((void*)0)));
+    ESP_ERROR_CHECK(esp_event_handler_register(IP_EVENT, IP_EVENT_STA_GOT_IP, &got_ip_event_handler, ((void*)0)));
 
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_start());

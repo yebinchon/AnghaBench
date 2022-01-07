@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct archive {int dummy; } ;
 struct TYPE_2__ {int code; int (* setter ) (struct archive*) ;} ;
 
-/* Variables and functions */
- int ARCHIVE_FATAL ; 
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  archive_set_error (struct archive*,int /*<<< orphan*/ ,char*) ; 
- TYPE_1__* codes ; 
- int stub1 (struct archive*) ; 
+
+ int ARCHIVE_FATAL ;
+ int EINVAL ;
+ int archive_set_error (struct archive*,int ,char*) ;
+ TYPE_1__* codes ;
+ int stub1 (struct archive*) ;
 
 int
 archive_write_add_filter(struct archive *a, int code)
 {
-	int i;
+ int i;
 
-	for (i = 0; codes[i].code != -1; i++) {
-		if (code == codes[i].code)
-			return ((codes[i].setter)(a));
-	}
+ for (i = 0; codes[i].code != -1; i++) {
+  if (code == codes[i].code)
+   return ((codes[i].setter)(a));
+ }
 
-	archive_set_error(a, EINVAL, "No such filter");
-	return (ARCHIVE_FATAL);
+ archive_set_error(a, EINVAL, "No such filter");
+ return (ARCHIVE_FATAL);
 }

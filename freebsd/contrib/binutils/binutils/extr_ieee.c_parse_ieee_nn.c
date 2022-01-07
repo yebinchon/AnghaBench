@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ieee_var {char const* name; unsigned long namlen; } ;
 struct TYPE_2__ {int alloc; struct ieee_var* vars; } ;
 struct ieee_info {TYPE_1__ vars; } ;
-typedef  int bfd_vma ;
-typedef  int /*<<< orphan*/  bfd_byte ;
-typedef  int /*<<< orphan*/  bfd_boolean ;
+typedef int bfd_vma ;
+typedef int bfd_byte ;
+typedef int bfd_boolean ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  _ (char*) ; 
- int /*<<< orphan*/  ieee_error (struct ieee_info*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ieee_read_id (struct ieee_info*,int /*<<< orphan*/  const**,char const**,unsigned long*) ; 
- int /*<<< orphan*/  ieee_read_number (struct ieee_info*,int /*<<< orphan*/  const**,int*) ; 
- int /*<<< orphan*/  memset (struct ieee_var*,int /*<<< orphan*/ ,unsigned int) ; 
- scalar_t__ xrealloc (struct ieee_var*,unsigned int) ; 
+
+ int FALSE ;
+ int TRUE ;
+ int _ (char*) ;
+ int ieee_error (struct ieee_info*,int const*,int ) ;
+ int ieee_read_id (struct ieee_info*,int const**,char const**,unsigned long*) ;
+ int ieee_read_number (struct ieee_info*,int const**,int*) ;
+ int memset (struct ieee_var*,int ,unsigned int) ;
+ scalar_t__ xrealloc (struct ieee_var*,unsigned int) ;
 
 __attribute__((used)) static bfd_boolean
 parse_ieee_nn (struct ieee_info *info, const bfd_byte **pp)
@@ -55,14 +55,14 @@ parse_ieee_nn (struct ieee_info *info, const bfd_byte **pp)
 
       alloc = info->vars.alloc;
       if (alloc == 0)
-	alloc = 4;
+ alloc = 4;
       while (varindx >= alloc)
-	alloc *= 2;
+ alloc *= 2;
       info->vars.vars = ((struct ieee_var *)
-			 xrealloc (info->vars.vars,
-				   alloc * sizeof *info->vars.vars));
+    xrealloc (info->vars.vars,
+       alloc * sizeof *info->vars.vars));
       memset (info->vars.vars + info->vars.alloc, 0,
-	      (alloc - info->vars.alloc) * sizeof *info->vars.vars);
+       (alloc - info->vars.alloc) * sizeof *info->vars.vars);
       info->vars.alloc = alloc;
     }
 

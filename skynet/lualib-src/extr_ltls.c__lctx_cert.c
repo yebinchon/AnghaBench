@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ssl_ctx {int /*<<< orphan*/  ctx; } ;
-typedef  int /*<<< orphan*/  lua_State ;
 
-/* Variables and functions */
- int SSL_CTX_check_private_key (int /*<<< orphan*/ ) ; 
- int SSL_CTX_use_PrivateKey_file (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int SSL_CTX_use_certificate_file (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SSL_FILETYPE_PEM ; 
- struct ssl_ctx* _check_sslctx (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  luaL_error (int /*<<< orphan*/ *,char*,...) ; 
- char* lua_tostring (int /*<<< orphan*/ *,int) ; 
+
+
+
+struct ssl_ctx {int ctx; } ;
+typedef int lua_State ;
+
+
+ int SSL_CTX_check_private_key (int ) ;
+ int SSL_CTX_use_PrivateKey_file (int ,char const*,int ) ;
+ int SSL_CTX_use_certificate_file (int ,char const*,int ) ;
+ int SSL_FILETYPE_PEM ;
+ struct ssl_ctx* _check_sslctx (int *,int) ;
+ int luaL_error (int *,char*,...) ;
+ char* lua_tostring (int *,int) ;
 
 __attribute__((used)) static int
 _lctx_cert(lua_State* L) {

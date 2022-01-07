@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hdcd_control_result ;
-struct TYPE_4__ {int val_target_gain; int /*<<< orphan*/  sample_count; int /*<<< orphan*/  fctx; int /*<<< orphan*/ * state; } ;
-typedef  TYPE_1__ HDCDContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  GAINTOFLOAT (int) ; 
- int /*<<< orphan*/  HDCD_OK ; 
- int /*<<< orphan*/  HDCD_TG_MISMATCH ; 
- int /*<<< orphan*/  av_log (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hdcd_control (TYPE_1__*,int /*<<< orphan*/ *,int*,int*) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int hdcd_control_result ;
+struct TYPE_4__ {int val_target_gain; int sample_count; int fctx; int * state; } ;
+typedef TYPE_1__ HDCDContext ;
+
+
+ int AV_LOG_VERBOSE ;
+ int GAINTOFLOAT (int) ;
+ int HDCD_OK ;
+ int HDCD_TG_MISMATCH ;
+ int av_log (int ,int ,char*,int ,int ,int ,int ) ;
+ int hdcd_control (TYPE_1__*,int *,int*,int*) ;
 
 __attribute__((used)) static hdcd_control_result hdcd_control_stereo(HDCDContext *ctx, int *peak_extend0, int *peak_extend1)
 {

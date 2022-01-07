@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  hotplug_global_lock; scalar_t__ app_under_shutdown; scalar_t__ app_under_boot; } ;
-typedef  TYPE_1__ cvmx_app_hotplug_global_t ;
 
-/* Variables and functions */
- TYPE_1__* cvmx_app_get_hotplug_global_ptr () ; 
- int /*<<< orphan*/  cvmx_spinlock_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  cvmx_spinlock_unlock (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int hotplug_global_lock; scalar_t__ app_under_shutdown; scalar_t__ app_under_boot; } ;
+typedef TYPE_1__ cvmx_app_hotplug_global_t ;
+
+
+ TYPE_1__* cvmx_app_get_hotplug_global_ptr () ;
+ int cvmx_spinlock_lock (int *) ;
+ int cvmx_spinlock_unlock (int *) ;
 
 int is_app_under_boot_or_shutdown(void)
 {

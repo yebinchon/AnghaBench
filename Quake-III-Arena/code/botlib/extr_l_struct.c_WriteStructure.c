@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  structdef_t ;
-typedef  int /*<<< orphan*/  FILE ;
 
-/* Variables and functions */
- int WriteStructWithIndent (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int structdef_t ;
+typedef int FILE ;
+
+
+ int WriteStructWithIndent (int *,int *,char*,int ) ;
 
 int WriteStructure(FILE *fp, structdef_t *def, char *structure)
 {
-	return WriteStructWithIndent(fp, def, structure, 0);
+ return WriteStructWithIndent(fp, def, structure, 0);
 }

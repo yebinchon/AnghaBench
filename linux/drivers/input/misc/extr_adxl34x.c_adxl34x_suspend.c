@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct adxl34x {int suspended; int /*<<< orphan*/  mutex; scalar_t__ opened; int /*<<< orphan*/  disabled; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __adxl34x_disable (struct adxl34x*) ; 
- int /*<<< orphan*/  mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mutex_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct adxl34x {int suspended; int mutex; scalar_t__ opened; int disabled; } ;
+
+
+ int __adxl34x_disable (struct adxl34x*) ;
+ int mutex_lock (int *) ;
+ int mutex_unlock (int *) ;
 
 void adxl34x_suspend(struct adxl34x *ac)
 {
-	mutex_lock(&ac->mutex);
+ mutex_lock(&ac->mutex);
 
-	if (!ac->suspended && !ac->disabled && ac->opened)
-		__adxl34x_disable(ac);
+ if (!ac->suspended && !ac->disabled && ac->opened)
+  __adxl34x_disable(ac);
 
-	ac->suspended = true;
+ ac->suspended = 1;
 
-	mutex_unlock(&ac->mutex);
+ mutex_unlock(&ac->mutex);
 }

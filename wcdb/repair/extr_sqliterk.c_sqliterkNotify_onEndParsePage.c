@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  sqliterk_btree ;
-struct TYPE_5__ {int /*<<< orphan*/  (* didParsePage ) (TYPE_2__*,int) ;} ;
-struct TYPE_6__ {TYPE_1__ notify; int /*<<< orphan*/  pager; } ;
-typedef  TYPE_2__ sqliterk ;
 
-/* Variables and functions */
-#define  SQLITERK_CANCELLED 130 
-#define  SQLITERK_DAMAGED 129 
- int /*<<< orphan*/  SQLITERK_MISUSE ; 
-#define  SQLITERK_OK 128 
- int /*<<< orphan*/  sqliterkOSDebug (int const,char*,int) ; 
- int /*<<< orphan*/  sqliterkOSWarning (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  sqliterkPagerSetStatus (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqliterk_status_checked ; 
- int /*<<< orphan*/  sqliterk_status_damaged ; 
- int /*<<< orphan*/  sqliterk_status_invalid ; 
- int /*<<< orphan*/  stub1 (TYPE_2__*,int) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int sqliterk_btree ;
+struct TYPE_5__ {int (* didParsePage ) (TYPE_2__*,int) ;} ;
+struct TYPE_6__ {TYPE_1__ notify; int pager; } ;
+typedef TYPE_2__ sqliterk ;
+
+
+
+
+ int SQLITERK_MISUSE ;
+
+ int sqliterkOSDebug (int const,char*,int) ;
+ int sqliterkOSWarning (int ,char*,int) ;
+ int sqliterkPagerSetStatus (int ,int,int ) ;
+ int sqliterk_status_checked ;
+ int sqliterk_status_damaged ;
+ int sqliterk_status_invalid ;
+ int stub1 (TYPE_2__*,int) ;
 
 __attribute__((used)) static void sqliterkNotify_onEndParsePage(sqliterk *rk,
                                           sqliterk_btree *btree,
@@ -39,14 +39,14 @@ __attribute__((used)) static void sqliterkNotify_onEndParsePage(sqliterk *rk,
         return;
     }
     switch (result) {
-        case SQLITERK_OK:
+        case 128:
             sqliterkPagerSetStatus(rk->pager, pageno, sqliterk_status_checked);
             break;
-        case SQLITERK_DAMAGED:
+        case 129:
             sqliterkPagerSetStatus(rk->pager, pageno, sqliterk_status_damaged);
             break;
-        case SQLITERK_CANCELLED:
-            sqliterkOSDebug(SQLITERK_CANCELLED, "Cancelled parsing page %d.",
+        case 130:
+            sqliterkOSDebug(130, "Cancelled parsing page %d.",
                             pageno);
             break;
         default:
@@ -55,7 +55,7 @@ __attribute__((used)) static void sqliterkNotify_onEndParsePage(sqliterk *rk,
             sqliterkPagerSetStatus(rk->pager, pageno, sqliterk_status_invalid);
             break;
     }
-    //sqliterkOSDebug(result, "sqliterkNotify_onEndParsePage: %d", pageno);
+
     if (rk->notify.didParsePage) {
         rk->notify.didParsePage(rk, pageno);
     }

@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int ptrdiff_t ;
-typedef  int /*<<< orphan*/  (* op_pixels_func ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ;
-struct TYPE_6__ {int /*<<< orphan*/ * edge_emu_buffer; } ;
-struct TYPE_5__ {int /*<<< orphan*/  (* emulated_edge_mc ) (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ;} ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int ptrdiff_t ;
+typedef int (* op_pixels_func ) (int *,int *,int,int) ;
+struct TYPE_6__ {int * edge_emu_buffer; } ;
+struct TYPE_5__ {int (* emulated_edge_mc ) (int *,int *,int,int,int,int,int,int,int,int) ;} ;
 struct TYPE_7__ {int mb_x; int mb_y; int width; int height; int uvlinesize; int h_edge_pos; int v_edge_pos; TYPE_2__ sc; TYPE_1__ vdsp; } ;
-typedef  TYPE_3__ MpegEncContext ;
+typedef TYPE_3__ MpegEncContext ;
 
-/* Variables and functions */
- unsigned int FFMAX (int,int /*<<< orphan*/ ) ; 
- int av_clip (int,int,int) ; 
- int ff_h263_round_chroma (int) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub2 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int,int,int,int,int,int) ; 
- int /*<<< orphan*/  stub4 (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int) ; 
+
+ unsigned int FFMAX (int,int ) ;
+ int av_clip (int,int,int) ;
+ int ff_h263_round_chroma (int) ;
+ int stub1 (int *,int *,int,int,int,int,int,int,int,int) ;
+ int stub2 (int *,int *,int,int) ;
+ int stub3 (int *,int *,int,int,int,int,int,int,int,int) ;
+ int stub4 (int *,int *,int,int) ;
 
 __attribute__((used)) static void chroma_4mv_motion(MpegEncContext *s,
                               uint8_t *dest_cb, uint8_t *dest_cr,
@@ -40,12 +40,12 @@ __attribute__((used)) static void chroma_4mv_motion(MpegEncContext *s,
     int src_x, src_y, dxy, emu = 0;
     ptrdiff_t offset;
 
-    /* In case of 8X8, we construct a single chroma motion vector
-     * with a special rounding */
+
+
     mx = ff_h263_round_chroma(mx);
     my = ff_h263_round_chroma(my);
 
-    dxy  = ((my & 1) << 1) | (mx & 1);
+    dxy = ((my & 1) << 1) | (mx & 1);
     mx >>= 1;
     my >>= 1;
 
@@ -59,8 +59,8 @@ __attribute__((used)) static void chroma_4mv_motion(MpegEncContext *s,
         dxy &= ~2;
 
     offset = src_y * s->uvlinesize + src_x;
-    ptr    = ref_picture[1] + offset;
-    if ((unsigned)src_x >= FFMAX((s->h_edge_pos >> 1) - (dxy  & 1) - 7, 0) ||
+    ptr = ref_picture[1] + offset;
+    if ((unsigned)src_x >= FFMAX((s->h_edge_pos >> 1) - (dxy & 1) - 7, 0) ||
         (unsigned)src_y >= FFMAX((s->v_edge_pos >> 1) - (dxy >> 1) - 7, 0)) {
         s->vdsp.emulated_edge_mc(s->sc.edge_emu_buffer, ptr,
                                  s->uvlinesize, s->uvlinesize,

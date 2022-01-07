@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  CURLSHcode ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ASCII_CCSID ; 
- char* Curl_thread_buffer (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  LK_SHARE_STRERROR ; 
- int MAX_CONV_EXPANSION ; 
- scalar_t__ convert (char*,int,unsigned int,char const*,int,int /*<<< orphan*/ ) ; 
- char* curl_share_strerror (int /*<<< orphan*/ ) ; 
- int strlen (char const*) ; 
+
+
+
+typedef int CURLSHcode ;
+
+
+ int ASCII_CCSID ;
+ char* Curl_thread_buffer (int ,int) ;
+ int LK_SHARE_STRERROR ;
+ int MAX_CONV_EXPANSION ;
+ scalar_t__ convert (char*,int,unsigned int,char const*,int,int ) ;
+ char* curl_share_strerror (int ) ;
+ int strlen (char const*) ;
 
 const char *
 curl_share_strerror_ccsid(CURLSHcode error, unsigned int ccsid)
@@ -38,10 +38,10 @@ curl_share_strerror_ccsid(CURLSHcode error, unsigned int ccsid)
 
   buf = Curl_thread_buffer(LK_SHARE_STRERROR, i);
   if(!buf)
-    return (const char *) NULL;
+    return (const char *) ((void*)0);
 
   if(convert(buf, i, ccsid, s, -1, ASCII_CCSID) < 0)
-    return (const char *) NULL;
+    return (const char *) ((void*)0);
 
   return (const char *) buf;
 }

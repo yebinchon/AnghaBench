@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  (* block128_f ) (unsigned char const*,unsigned char*,void const*) ;
 
-/* Variables and functions */
- scalar_t__ STRICT_ALIGNMENT ; 
- int /*<<< orphan*/  memcpy (unsigned char*,unsigned char const*,int) ; 
- int /*<<< orphan*/  stub1 (unsigned char const*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub2 (unsigned char const*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub3 (unsigned char const*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub4 (unsigned char const*,unsigned char*,void const*) ; 
- int /*<<< orphan*/  stub5 (unsigned char const*,unsigned char*,void const*) ; 
+
+
+
+typedef int (* block128_f ) (unsigned char const*,unsigned char*,void const*) ;
+
+
+ scalar_t__ STRICT_ALIGNMENT ;
+ int memcpy (unsigned char*,unsigned char const*,int) ;
+ int stub1 (unsigned char const*,unsigned char*,void const*) ;
+ int stub2 (unsigned char const*,unsigned char*,void const*) ;
+ int stub3 (unsigned char const*,unsigned char*,void const*) ;
+ int stub4 (unsigned char const*,unsigned char*,void const*) ;
+ int stub5 (unsigned char const*,unsigned char*,void const*) ;
 
 void CRYPTO_cbc128_decrypt(const unsigned char *in, unsigned char *out,
                            size_t len, const void *key,
@@ -34,7 +34,7 @@ void CRYPTO_cbc128_decrypt(const unsigned char *in, unsigned char *out,
     if (len == 0)
         return;
 
-#if !defined(OPENSSL_SMALL_FOOTPRINT)
+
     if (in != out) {
         const unsigned char *iv = ivec;
 
@@ -49,7 +49,7 @@ void CRYPTO_cbc128_decrypt(const unsigned char *in, unsigned char *out,
                 in += 16;
                 out += 16;
             }
-        } else if (16 % sizeof(size_t) == 0) { /* always true */
+        } else if (16 % sizeof(size_t) == 0) {
             while (len >= 16) {
                 size_t *out_t = (size_t *)out, *iv_t = (size_t *)iv;
 
@@ -78,7 +78,7 @@ void CRYPTO_cbc128_decrypt(const unsigned char *in, unsigned char *out,
                 in += 16;
                 out += 16;
             }
-        } else if (16 % sizeof(size_t) == 0) { /* always true */
+        } else if (16 % sizeof(size_t) == 0) {
             while (len >= 16) {
                 size_t c, *out_t = (size_t *)out, *ivec_t = (size_t *)ivec;
                 const size_t *in_t = (const size_t *)in;
@@ -95,7 +95,7 @@ void CRYPTO_cbc128_decrypt(const unsigned char *in, unsigned char *out,
             }
         }
     }
-#endif
+
     while (len) {
         unsigned char c;
         (*block) (in, tmp.c, key);

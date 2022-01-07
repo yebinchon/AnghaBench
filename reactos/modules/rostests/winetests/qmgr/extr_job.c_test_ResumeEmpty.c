@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ HRESULT ;
-typedef  scalar_t__ BG_JOB_STATE ;
 
-/* Variables and functions */
- scalar_t__ BG_E_EMPTY ; 
- scalar_t__ BG_JOB_STATE_ERROR ; 
- scalar_t__ BG_JOB_STATE_SUSPENDED ; 
- scalar_t__ IBackgroundCopyJob_GetState (int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ IBackgroundCopyJob_Resume (int /*<<< orphan*/ ) ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- int /*<<< orphan*/  test_job ; 
+
+
+
+typedef scalar_t__ HRESULT ;
+typedef scalar_t__ BG_JOB_STATE ;
+
+
+ scalar_t__ BG_E_EMPTY ;
+ scalar_t__ BG_JOB_STATE_ERROR ;
+ scalar_t__ BG_JOB_STATE_SUSPENDED ;
+ scalar_t__ IBackgroundCopyJob_GetState (int ,scalar_t__*) ;
+ scalar_t__ IBackgroundCopyJob_Resume (int ) ;
+ scalar_t__ S_OK ;
+ int ok (int,char*,scalar_t__) ;
+ int test_job ;
 
 __attribute__((used)) static void test_ResumeEmpty(void)
 {

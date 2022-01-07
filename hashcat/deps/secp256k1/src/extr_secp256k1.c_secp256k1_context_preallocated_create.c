@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  ecmult_ctx; int /*<<< orphan*/  ecmult_gen_ctx; int /*<<< orphan*/  illegal_callback; int /*<<< orphan*/  error_callback; } ;
-typedef  TYPE_1__ secp256k1_context ;
 
-/* Variables and functions */
- scalar_t__ EXPECT (int,int /*<<< orphan*/ ) ; 
- unsigned int SECP256K1_FLAGS_BIT_CONTEXT_SIGN ; 
- unsigned int SECP256K1_FLAGS_BIT_CONTEXT_VERIFY ; 
- unsigned int SECP256K1_FLAGS_TYPE_CONTEXT ; 
- unsigned int SECP256K1_FLAGS_TYPE_MASK ; 
- int /*<<< orphan*/  VERIFY_CHECK (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  default_error_callback ; 
- int /*<<< orphan*/  default_illegal_callback ; 
- scalar_t__ manual_alloc (void**,int,void* const,size_t) ; 
- int /*<<< orphan*/  secp256k1_callback_call (int /*<<< orphan*/ *,char*) ; 
- size_t secp256k1_context_preallocated_size (unsigned int) ; 
- int /*<<< orphan*/  secp256k1_ecmult_context_build (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  secp256k1_ecmult_context_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen_context_build (int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  secp256k1_ecmult_gen_context_init (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int ecmult_ctx; int ecmult_gen_ctx; int illegal_callback; int error_callback; } ;
+typedef TYPE_1__ secp256k1_context ;
+
+
+ scalar_t__ EXPECT (int,int ) ;
+ unsigned int SECP256K1_FLAGS_BIT_CONTEXT_SIGN ;
+ unsigned int SECP256K1_FLAGS_BIT_CONTEXT_VERIFY ;
+ unsigned int SECP256K1_FLAGS_TYPE_CONTEXT ;
+ unsigned int SECP256K1_FLAGS_TYPE_MASK ;
+ int VERIFY_CHECK (int ) ;
+ int default_error_callback ;
+ int default_illegal_callback ;
+ scalar_t__ manual_alloc (void**,int,void* const,size_t) ;
+ int secp256k1_callback_call (int *,char*) ;
+ size_t secp256k1_context_preallocated_size (unsigned int) ;
+ int secp256k1_ecmult_context_build (int *,void**) ;
+ int secp256k1_ecmult_context_init (int *) ;
+ int secp256k1_ecmult_gen_context_build (int *,void**) ;
+ int secp256k1_ecmult_gen_context_init (int *) ;
 
 secp256k1_context* secp256k1_context_preallocated_create(void* prealloc, unsigned int flags) {
     void* const base = prealloc;
     size_t prealloc_size;
     secp256k1_context* ret;
 
-    VERIFY_CHECK(prealloc != NULL);
+    VERIFY_CHECK(prealloc != ((void*)0));
     prealloc_size = secp256k1_context_preallocated_size(flags);
     ret = (secp256k1_context*)manual_alloc(&prealloc, sizeof(secp256k1_context), base, prealloc_size);
     ret->illegal_callback = default_illegal_callback;
@@ -45,7 +45,7 @@ secp256k1_context* secp256k1_context_preallocated_create(void* prealloc, unsigne
     if (EXPECT((flags & SECP256K1_FLAGS_TYPE_MASK) != SECP256K1_FLAGS_TYPE_CONTEXT, 0)) {
             secp256k1_callback_call(&ret->illegal_callback,
                                     "Invalid flags");
-            return NULL;
+            return ((void*)0);
     }
 
     secp256k1_ecmult_context_init(&ret->ecmult_ctx);

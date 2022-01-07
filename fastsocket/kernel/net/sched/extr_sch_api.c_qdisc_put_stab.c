@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct qdisc_size_table {scalar_t__ refcnt; int /*<<< orphan*/  list; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  kfree (struct qdisc_size_table*) ; 
- int /*<<< orphan*/  list_del (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  qdisc_stab_lock ; 
- int /*<<< orphan*/  spin_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  spin_unlock (int /*<<< orphan*/ *) ; 
+
+
+
+struct qdisc_size_table {scalar_t__ refcnt; int list; } ;
+
+
+ int kfree (struct qdisc_size_table*) ;
+ int list_del (int *) ;
+ int qdisc_stab_lock ;
+ int spin_lock (int *) ;
+ int spin_unlock (int *) ;
 
 void qdisc_put_stab(struct qdisc_size_table *tab)
 {
-	if (!tab)
-		return;
+ if (!tab)
+  return;
 
-	spin_lock(&qdisc_stab_lock);
+ spin_lock(&qdisc_stab_lock);
 
-	if (--tab->refcnt == 0) {
-		list_del(&tab->list);
-		kfree(tab);
-	}
+ if (--tab->refcnt == 0) {
+  list_del(&tab->list);
+  kfree(tab);
+ }
 
-	spin_unlock(&qdisc_stab_lock);
+ spin_unlock(&qdisc_stab_lock);
 }

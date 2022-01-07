@@ -1,43 +1,43 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  lpDisplayName; int /*<<< orphan*/  lpPassword; int /*<<< orphan*/  lpServiceStartName; int /*<<< orphan*/  lpDependencies; int /*<<< orphan*/  dwTagId; scalar_t__ bTagId; int /*<<< orphan*/  lpLoadOrderGroup; int /*<<< orphan*/  lpBinaryPathName; int /*<<< orphan*/  dwErrorControl; int /*<<< orphan*/  dwStartType; int /*<<< orphan*/  dwServiceType; int /*<<< orphan*/  lpServiceName; } ;
-typedef  TYPE_1__ SERVICE_CREATE_INFO ;
-typedef  int /*<<< orphan*/ * SC_HANDLE ;
-typedef  int /*<<< orphan*/  LPCTSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ChangeServiceConfig (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseServiceHandle (int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/ * OpenSCManager (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * OpenService (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ParseCreateConfigArguments (int /*<<< orphan*/ *,int /*<<< orphan*/ ,scalar_t__,TYPE_1__*) ; 
- int /*<<< orphan*/  ReportLastError () ; 
- int /*<<< orphan*/  SC_MANAGER_CONNECT ; 
- int /*<<< orphan*/  SERVICE_CHANGE_CONFIG ; 
- int /*<<< orphan*/  SetConfigUsage () ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  _tprintf (int /*<<< orphan*/ ,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int lpDisplayName; int lpPassword; int lpServiceStartName; int lpDependencies; int dwTagId; scalar_t__ bTagId; int lpLoadOrderGroup; int lpBinaryPathName; int dwErrorControl; int dwStartType; int dwServiceType; int lpServiceName; } ;
+typedef TYPE_1__ SERVICE_CREATE_INFO ;
+typedef int * SC_HANDLE ;
+typedef int LPCTSTR ;
+typedef int INT ;
+typedef scalar_t__ BOOL ;
+
+
+ int ChangeServiceConfig (int *,int ,int ,int ,int ,int ,int *,int ,int ,int ,int ) ;
+ int CloseServiceHandle (int *) ;
+ scalar_t__ FALSE ;
+ int GetLastError () ;
+ int * OpenSCManager (int *,int *,int ) ;
+ int * OpenService (int *,int ,int ) ;
+ int ParseCreateConfigArguments (int *,int ,scalar_t__,TYPE_1__*) ;
+ int ReportLastError () ;
+ int SC_MANAGER_CONNECT ;
+ int SERVICE_CHANGE_CONFIG ;
+ int SetConfigUsage () ;
+ scalar_t__ TRUE ;
+ int _T (char*) ;
+ int _tprintf (int ,...) ;
 
 BOOL SetConfig(LPCTSTR *ServiceArgs, INT ArgCount)
 {
-    SC_HANDLE hManager = NULL;
-    SC_HANDLE hService = NULL;
+    SC_HANDLE hManager = ((void*)0);
+    SC_HANDLE hService = ((void*)0);
     BOOL bResult = TRUE;
     SERVICE_CREATE_INFO ServiceInfo;
 
@@ -46,25 +46,10 @@ BOOL SetConfig(LPCTSTR *ServiceArgs, INT ArgCount)
         SetConfigUsage();
         return FALSE;
     }
-
-#ifdef SCDBG
-    _tprintf(_T("service name - %s\n"), ServiceInfo.lpServiceName);
-    _tprintf(_T("display name - %s\n"), ServiceInfo.lpDisplayName);
-    _tprintf(_T("service type - %lu\n"), ServiceInfo.dwServiceType);
-    _tprintf(_T("start type - %lu\n"), ServiceInfo.dwStartType);
-    _tprintf(_T("error control - %lu\n"), ServiceInfo.dwErrorControl);
-    _tprintf(_T("Binary path - %s\n"), ServiceInfo.lpBinaryPathName);
-    _tprintf(_T("load order group - %s\n"), ServiceInfo.lpLoadOrderGroup);
-    _tprintf(_T("tag - %lu\n"), ServiceInfo.dwTagId);
-    _tprintf(_T("dependencies - %s\n"), ServiceInfo.lpDependencies);
-    _tprintf(_T("account start name - %s\n"), ServiceInfo.lpServiceStartName);
-    _tprintf(_T("account password - %s\n"), ServiceInfo.lpPassword);
-#endif
-
-    hManager = OpenSCManager(NULL,
-                             NULL,
+    hManager = OpenSCManager(((void*)0),
+                             ((void*)0),
                              SC_MANAGER_CONNECT);
-    if (hManager == NULL)
+    if (hManager == ((void*)0))
     {
         _tprintf(_T("[SC] OpenSCManager FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -74,7 +59,7 @@ BOOL SetConfig(LPCTSTR *ServiceArgs, INT ArgCount)
     hService = OpenService(hManager,
                            ServiceInfo.lpServiceName,
                            SERVICE_CHANGE_CONFIG);
-    if (hService == NULL)
+    if (hService == ((void*)0))
     {
         _tprintf(_T("[SC] OpenService FAILED %lu:\n\n"), GetLastError());
         bResult = FALSE;
@@ -87,7 +72,7 @@ BOOL SetConfig(LPCTSTR *ServiceArgs, INT ArgCount)
                              ServiceInfo.dwErrorControl,
                              ServiceInfo.lpBinaryPathName,
                              ServiceInfo.lpLoadOrderGroup,
-                             ServiceInfo.bTagId ? &ServiceInfo.dwTagId : NULL,
+                             ServiceInfo.bTagId ? &ServiceInfo.dwTagId : ((void*)0),
                              ServiceInfo.lpDependencies,
                              ServiceInfo.lpServiceStartName,
                              ServiceInfo.lpPassword,

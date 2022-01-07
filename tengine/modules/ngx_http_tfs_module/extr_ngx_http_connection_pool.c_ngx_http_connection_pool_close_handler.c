@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  queue; int /*<<< orphan*/  free; } ;
-typedef  TYPE_1__ ngx_http_connection_pool_elt_t ;
-struct TYPE_7__ {int /*<<< orphan*/  log; TYPE_3__* data; } ;
-typedef  TYPE_2__ ngx_event_t ;
-struct TYPE_8__ {TYPE_1__* data; int /*<<< orphan*/  read; int /*<<< orphan*/  fd; scalar_t__ close; } ;
-typedef  TYPE_3__ ngx_connection_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MSG_PEEK ; 
- scalar_t__ NGX_EAGAIN ; 
- int /*<<< orphan*/  NGX_LOG_DEBUG_HTTP ; 
- scalar_t__ NGX_OK ; 
- scalar_t__ ngx_handle_read_event (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_http_connection_pool_close (TYPE_3__*) ; 
- int /*<<< orphan*/  ngx_log_debug0 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  ngx_queue_insert_head (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_queue_remove (int /*<<< orphan*/ *) ; 
- scalar_t__ ngx_socket_errno ; 
- int recv (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int queue; int free; } ;
+typedef TYPE_1__ ngx_http_connection_pool_elt_t ;
+struct TYPE_7__ {int log; TYPE_3__* data; } ;
+typedef TYPE_2__ ngx_event_t ;
+struct TYPE_8__ {TYPE_1__* data; int read; int fd; scalar_t__ close; } ;
+typedef TYPE_3__ ngx_connection_t ;
+
+
+ int MSG_PEEK ;
+ scalar_t__ NGX_EAGAIN ;
+ int NGX_LOG_DEBUG_HTTP ;
+ scalar_t__ NGX_OK ;
+ scalar_t__ ngx_handle_read_event (int ,int ) ;
+ int ngx_http_connection_pool_close (TYPE_3__*) ;
+ int ngx_log_debug0 (int ,int ,int ,char*) ;
+ int ngx_queue_insert_head (int ,int *) ;
+ int ngx_queue_remove (int *) ;
+ scalar_t__ ngx_socket_errno ;
+ int recv (int ,char*,int,int ) ;
 
 __attribute__((used)) static void
 ngx_http_connection_pool_close_handler(ngx_event_t *ev)
 {
-    ngx_http_connection_pool_elt_t  *item;
+    ngx_http_connection_pool_elt_t *item;
 
-    int                n;
-    char               buf[1];
-    ngx_connection_t  *c;
+    int n;
+    char buf[1];
+    ngx_connection_t *c;
 
     ngx_log_debug0(NGX_LOG_DEBUG_HTTP, ev->log, 0, "keepalive close handler");
 
@@ -53,7 +53,7 @@ ngx_http_connection_pool_close_handler(ngx_event_t *ev)
     n = recv(c->fd, buf, 1, MSG_PEEK);
 
     if (n == -1 && ngx_socket_errno == NGX_EAGAIN) {
-        /* stale event */
+
 
         if (ngx_handle_read_event(c->read, 0) != NGX_OK) {
             goto close;

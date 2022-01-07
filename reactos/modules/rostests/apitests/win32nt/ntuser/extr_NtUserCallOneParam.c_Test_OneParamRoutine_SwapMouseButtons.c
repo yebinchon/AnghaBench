@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- scalar_t__ NtUserCallOneParam (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TEST (int) ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  _ONEPARAM_ROUTINE_SWAPMOUSEBUTTON ; 
+
+
+
+typedef scalar_t__ BOOL ;
+
+
+ scalar_t__ FALSE ;
+ scalar_t__ NtUserCallOneParam (scalar_t__,int ) ;
+ int TEST (int) ;
+ scalar_t__ TRUE ;
+ int _ONEPARAM_ROUTINE_SWAPMOUSEBUTTON ;
 
 void
-Test_OneParamRoutine_SwapMouseButtons(void) /* 0x42 */
+Test_OneParamRoutine_SwapMouseButtons(void)
 {
     BOOL bInverse;
 
@@ -30,5 +30,5 @@ Test_OneParamRoutine_SwapMouseButtons(void) /* 0x42 */
     bInverse = (BOOL)NtUserCallOneParam(FALSE, _ONEPARAM_ROUTINE_SWAPMOUSEBUTTON);
     TEST(bInverse == FALSE);
 
-    // TODO: test other values
+
 }

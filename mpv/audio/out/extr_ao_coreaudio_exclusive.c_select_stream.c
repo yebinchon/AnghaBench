@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ uint32_t ;
-struct priv {int stream_idx; int /*<<< orphan*/  stream; scalar_t__ spdif_hack; int /*<<< orphan*/  device; } ;
-struct ao {int /*<<< orphan*/  format; struct priv* priv; } ;
-typedef  int /*<<< orphan*/  OSStatus ;
-typedef  int /*<<< orphan*/  AudioStreamID ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CA_GET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  CA_GET_ARY_O (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,size_t*) ; 
- int /*<<< orphan*/  CHECK_CA_ERROR (char*) ; 
- int /*<<< orphan*/  CHECK_CA_WARN (char*) ; 
- int /*<<< orphan*/  MP_ERR (struct ao*,char*) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct ao*,char*,int,...) ; 
- scalar_t__ af_fmt_is_pcm (int /*<<< orphan*/ ) ; 
- scalar_t__ ca_stream_supports_compressed (struct ao*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  kAudioDevicePropertyStreams ; 
- int /*<<< orphan*/  kAudioStreamPropertyDirection ; 
- int /*<<< orphan*/  noErr ; 
- int /*<<< orphan*/  talloc_free (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ uint32_t ;
+struct priv {int stream_idx; int stream; scalar_t__ spdif_hack; int device; } ;
+struct ao {int format; struct priv* priv; } ;
+typedef int OSStatus ;
+typedef int AudioStreamID ;
+
+
+ int CA_GET (int ,int ,scalar_t__*) ;
+ int CA_GET_ARY_O (int ,int ,int **,size_t*) ;
+ int CHECK_CA_ERROR (char*) ;
+ int CHECK_CA_WARN (char*) ;
+ int MP_ERR (struct ao*,char*) ;
+ int MP_VERBOSE (struct ao*,char*,int,...) ;
+ scalar_t__ af_fmt_is_pcm (int ) ;
+ scalar_t__ ca_stream_supports_compressed (struct ao*,int ) ;
+ int kAudioDevicePropertyStreams ;
+ int kAudioStreamPropertyDirection ;
+ int noErr ;
+ int talloc_free (int *) ;
 
 __attribute__((used)) static int select_stream(struct ao *ao)
 {
@@ -38,7 +38,7 @@ __attribute__((used)) static int select_stream(struct ao *ao)
     size_t n_streams;
     OSStatus err;
 
-    /* Get a list of all the streams on this device. */
+
     err = CA_GET_ARY_O(p->device, kAudioDevicePropertyStreams,
                        &streams, &n_streams);
     CHECK_CA_ERROR("could not get number of streams");

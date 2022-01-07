@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  GLuint ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GL_CLAMP_TO_EDGE ; 
- int /*<<< orphan*/  GL_LINEAR_MIPMAP_NEAREST ; 
- int /*<<< orphan*/  GL_RGBA ; 
- int /*<<< orphan*/  GL_RGBA8 ; 
- int /*<<< orphan*/  GL_TEXTURE_2D ; 
- int /*<<< orphan*/  GL_TEXTURE_MAG_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_MIN_FILTER ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_S ; 
- int /*<<< orphan*/  GL_TEXTURE_WRAP_T ; 
- int /*<<< orphan*/  GL_UNSIGNED_BYTE ; 
- int /*<<< orphan*/  die (char*,char const*) ; 
- int /*<<< orphan*/  glBindTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glGenTextures (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  glGenerateMipmap (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  glTexImage2D (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,unsigned char*) ; 
- int /*<<< orphan*/  glTexParameterf (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stbi_image_free (unsigned char*) ; 
- unsigned char* stbi_load (char const*,int*,int*,int*,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int GLuint ;
+
+
+ int GL_CLAMP_TO_EDGE ;
+ int GL_LINEAR_MIPMAP_NEAREST ;
+ int GL_RGBA ;
+ int GL_RGBA8 ;
+ int GL_TEXTURE_2D ;
+ int GL_TEXTURE_MAG_FILTER ;
+ int GL_TEXTURE_MIN_FILTER ;
+ int GL_TEXTURE_WRAP_S ;
+ int GL_TEXTURE_WRAP_T ;
+ int GL_UNSIGNED_BYTE ;
+ int die (char*,char const*) ;
+ int glBindTexture (int ,int ) ;
+ int glGenTextures (int,int *) ;
+ int glGenerateMipmap (int ) ;
+ int glTexImage2D (int ,int ,int ,int,int,int ,int ,int ,unsigned char*) ;
+ int glTexParameterf (int ,int ,int ) ;
+ int stbi_image_free (unsigned char*) ;
+ unsigned char* stbi_load (char const*,int*,int*,int*,int ) ;
 
 __attribute__((used)) static GLuint
 image_load(const char *filename)

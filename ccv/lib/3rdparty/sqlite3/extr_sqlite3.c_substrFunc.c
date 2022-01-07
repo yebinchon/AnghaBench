@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u64 ;
-typedef  int /*<<< orphan*/  sqlite3_value ;
-typedef  int /*<<< orphan*/  sqlite3_context ;
-typedef  int i64 ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int u64 ;
+typedef int sqlite3_value ;
+typedef int sqlite3_context ;
+typedef int i64 ;
 struct TYPE_2__ {int* aLimit; } ;
 
-/* Variables and functions */
- int SQLITE_BLOB ; 
- size_t SQLITE_LIMIT_LENGTH ; 
- int SQLITE_NULL ; 
- int /*<<< orphan*/  SQLITE_SKIP_UTF8 (unsigned char const*) ; 
- int /*<<< orphan*/  SQLITE_TRANSIENT ; 
- int /*<<< orphan*/  SQLITE_UTF8 ; 
- int /*<<< orphan*/  assert (int) ; 
- TYPE_1__* sqlite3_context_db_handle (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sqlite3_result_blob64 (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sqlite3_result_text64 (int /*<<< orphan*/ *,char*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- unsigned char* sqlite3_value_blob (int /*<<< orphan*/ *) ; 
- int sqlite3_value_bytes (int /*<<< orphan*/ *) ; 
- int sqlite3_value_int (int /*<<< orphan*/ *) ; 
- unsigned char* sqlite3_value_text (int /*<<< orphan*/ *) ; 
- int sqlite3_value_type (int /*<<< orphan*/ *) ; 
+
+ int SQLITE_BLOB ;
+ size_t SQLITE_LIMIT_LENGTH ;
+ int SQLITE_NULL ;
+ int SQLITE_SKIP_UTF8 (unsigned char const*) ;
+ int SQLITE_TRANSIENT ;
+ int SQLITE_UTF8 ;
+ int assert (int) ;
+ TYPE_1__* sqlite3_context_db_handle (int *) ;
+ int sqlite3_result_blob64 (int *,char*,int ,int ) ;
+ int sqlite3_result_text64 (int *,char*,int,int ,int ) ;
+ unsigned char* sqlite3_value_blob (int *) ;
+ int sqlite3_value_bytes (int *) ;
+ int sqlite3_value_int (int *) ;
+ unsigned char* sqlite3_value_text (int *) ;
+ int sqlite3_value_type (int *) ;
 
 __attribute__((used)) static void substrFunc(
   sqlite3_context *context,
@@ -69,14 +69,6 @@ __attribute__((used)) static void substrFunc(
       }
     }
   }
-#ifdef SQLITE_SUBSTR_COMPATIBILITY
-  /* If SUBSTR_COMPATIBILITY is defined then substr(X,0,N) work the same as
-  ** as substr(X,1,N) - it returns the first N characters of X.  This
-  ** is essentially a back-out of the bug-fix in check-in [5fc125d362df4b8]
-  ** from 2009-02-02 for compatibility of applications that exploited the
-  ** old buggy behavior. */
-  if( p1==0 ) p1 = 1; /* <rdar://problem/6778339> */
-#endif
   if( argc==3 ){
     p2 = sqlite3_value_int(argv[2]);
     if( p2<0 ){

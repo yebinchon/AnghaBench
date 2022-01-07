@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ UINT32 ;
-typedef  size_t UINT16 ;
-struct TYPE_2__ {scalar_t__ Command; int /*<<< orphan*/  CmdNum; } ;
 
-/* Variables and functions */
- TYPE_1__* AcpiGbl_HistoryBuffer ; 
- size_t AcpiGbl_LoHistory ; 
- scalar_t__ AcpiGbl_NumHistory ; 
- int /*<<< orphan*/  AcpiOsPrintf (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- size_t HISTORY_SIZE ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ UINT32 ;
+typedef size_t UINT16 ;
+struct TYPE_2__ {scalar_t__ Command; int CmdNum; } ;
+
+
+ TYPE_1__* AcpiGbl_HistoryBuffer ;
+ size_t AcpiGbl_LoHistory ;
+ scalar_t__ AcpiGbl_NumHistory ;
+ int AcpiOsPrintf (char*,int ,scalar_t__) ;
+ size_t HISTORY_SIZE ;
 
 void
 AcpiDbDisplayHistory (
     void)
 {
-    UINT32                  i;
-    UINT16                  HistoryIndex;
+    UINT32 i;
+    UINT16 HistoryIndex;
 
 
     HistoryIndex = AcpiGbl_LoHistory;
 
-    /* Dump entire history buffer */
+
 
     for (i = 0; i < AcpiGbl_NumHistory; i++)
     {

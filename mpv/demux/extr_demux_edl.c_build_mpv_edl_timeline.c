@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct tl_root {int num_pars; struct tl_parts** pars; } ;
 struct tl_parts {int dummy; } ;
 struct timeline_par {int dash; int no_clip; int num_parts; } ;
 struct timeline {char* format; TYPE_1__* demuxer; } ;
-struct priv {int /*<<< orphan*/  allow_any; int /*<<< orphan*/  data; } ;
-struct TYPE_2__ {int /*<<< orphan*/  filename; struct priv* priv; } ;
+struct priv {int allow_any; int data; } ;
+struct TYPE_2__ {int filename; struct priv* priv; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MP_ERR (struct timeline*,char*) ; 
- struct timeline_par* build_timeline (struct timeline*,struct tl_parts*) ; 
- int /*<<< orphan*/  fix_filenames (struct tl_parts*,int /*<<< orphan*/ ) ; 
- struct tl_root* parse_edl (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  talloc_free (struct tl_root*) ; 
+
+ int MP_ERR (struct timeline*,char*) ;
+ struct timeline_par* build_timeline (struct timeline*,struct tl_parts*) ;
+ int fix_filenames (struct tl_parts*,int ) ;
+ struct tl_root* parse_edl (int ) ;
+ int talloc_free (struct tl_root*) ;
 
 __attribute__((used)) static void build_mpv_edl_timeline(struct timeline *tl)
 {
@@ -35,9 +35,9 @@ __attribute__((used)) static void build_mpv_edl_timeline(struct timeline *tl)
         return;
     }
 
-    bool all_dash = true;
-    bool all_no_clip = true;
-    bool all_single = true;
+    bool all_dash = 1;
+    bool all_no_clip = 1;
+    bool all_single = 1;
 
     for (int n = 0; n < root->num_pars; n++) {
         struct tl_parts *parts = root->pars[n];

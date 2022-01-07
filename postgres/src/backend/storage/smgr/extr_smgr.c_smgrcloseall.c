@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * SMgrRelation ;
-typedef  int /*<<< orphan*/  HASH_SEQ_STATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * SMgrRelationHash ; 
- int /*<<< orphan*/  hash_seq_init (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ hash_seq_search (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  smgrclose (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * SMgrRelation ;
+typedef int HASH_SEQ_STATUS ;
+
+
+ int * SMgrRelationHash ;
+ int hash_seq_init (int *,int *) ;
+ scalar_t__ hash_seq_search (int *) ;
+ int smgrclose (int *) ;
 
 void
 smgrcloseall(void)
 {
-	HASH_SEQ_STATUS status;
-	SMgrRelation reln;
+ HASH_SEQ_STATUS status;
+ SMgrRelation reln;
 
-	/* Nothing to do if hashtable not set up */
-	if (SMgrRelationHash == NULL)
-		return;
 
-	hash_seq_init(&status, SMgrRelationHash);
+ if (SMgrRelationHash == ((void*)0))
+  return;
 
-	while ((reln = (SMgrRelation) hash_seq_search(&status)) != NULL)
-		smgrclose(reln);
+ hash_seq_init(&status, SMgrRelationHash);
+
+ while ((reln = (SMgrRelation) hash_seq_search(&status)) != ((void*)0))
+  smgrclose(reln);
 }

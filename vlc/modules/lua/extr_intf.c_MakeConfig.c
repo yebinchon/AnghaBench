@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {unsigned int i_port; char* psz_host; } ;
-typedef  TYPE_1__ vlc_url_t ;
-typedef  int /*<<< orphan*/  intf_thread_t ;
+typedef TYPE_1__ vlc_url_t ;
+typedef int intf_thread_t ;
 
-/* Variables and functions */
- unsigned int TELNETPORT_DEFAULT ; 
- int asprintf (char**,char*,char*,...) ; 
- char* config_StringEscape (char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  msg_Warn (int /*<<< orphan*/ *,char*,unsigned int,unsigned int) ; 
- int /*<<< orphan*/  strcmp (char const*,char*) ; 
- int var_InheritBool (int /*<<< orphan*/ *,char*) ; 
- unsigned int var_InheritInteger (int /*<<< orphan*/ *,char*) ; 
- char* var_InheritString (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  vlc_UrlClean (TYPE_1__*) ; 
- int /*<<< orphan*/  vlc_UrlParse (TYPE_1__*,char*) ; 
+
+ unsigned int TELNETPORT_DEFAULT ;
+ int asprintf (char**,char*,char*,...) ;
+ char* config_StringEscape (char*) ;
+ int free (char*) ;
+ int msg_Warn (int *,char*,unsigned int,unsigned int) ;
+ int strcmp (char const*,char*) ;
+ int var_InheritBool (int *,char*) ;
+ unsigned int var_InheritInteger (int *,char*) ;
+ char* var_InheritString (int *,char*) ;
+ int vlc_UrlClean (TYPE_1__*) ;
+ int vlc_UrlParse (TYPE_1__*,char*) ;
 
 __attribute__((used)) static char *MakeConfig( intf_thread_t *p_intf, const char *name )
 {
-    char *psz_config = NULL;
+    char *psz_config = ((void*)0);
 
     if( !strcmp( name, "http" ) )
     {
@@ -42,7 +42,7 @@ __attribute__((used)) static char *MakeConfig( intf_thread_t *p_intf, const char
 
             if( asprintf( &psz_config, "http={dir='%s',no_index=%s}", psz_esc,
                           b_http_index ? "true" : "false" ) == -1 )
-                psz_config = NULL;
+                psz_config = ((void*)0);
             free( psz_esc );
             free( psz_http_src );
         }
@@ -50,7 +50,7 @@ __attribute__((used)) static char *MakeConfig( intf_thread_t *p_intf, const char
         {
             if( asprintf( &psz_config, "http={no_index=%s}",
                           b_http_index ? "true" : "false" ) == -1 )
-                psz_config = NULL;
+                psz_config = ((void*)0);
         }
     }
     else if( !strcmp( name, "telnet" ) )
@@ -78,7 +78,7 @@ __attribute__((used)) static char *MakeConfig( intf_thread_t *p_intf, const char
 
             if( asprintf( &psz_host, "telnet://%s:%d",
                           psz_esc_host ? psz_esc_host : "", i_port ) == -1 )
-                psz_host = NULL;
+                psz_host = ((void*)0);
             free( psz_esc_host );
         }
 
@@ -88,7 +88,7 @@ __attribute__((used)) static char *MakeConfig( intf_thread_t *p_intf, const char
 
         if( asprintf( &psz_config, "telnet={host='%s',password='%s'}",
                       psz_host, psz_esc_passwd ) == -1 )
-            psz_config = NULL;
+            psz_config = ((void*)0);
 
         free( psz_esc_passwd );
         free( psz_passwd );

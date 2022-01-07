@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {int unit; int ctrlr; int sysdrive; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mlx_foreach (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__ mlxd_find_ctrlr_param ; 
- int /*<<< orphan*/  mlxd_find_ctrlr_search ; 
+
+ int mlx_foreach (int ,int *) ;
+ TYPE_1__ mlxd_find_ctrlr_param ;
+ int mlxd_find_ctrlr_search ;
 
 int
 mlxd_find_ctrlr(int unit, int *ctrlr, int *sysdrive)
@@ -25,11 +25,11 @@ mlxd_find_ctrlr(int unit, int *ctrlr, int *sysdrive)
     mlxd_find_ctrlr_param.ctrlr = -1;
     mlxd_find_ctrlr_param.sysdrive = -1;
 
-    mlx_foreach(mlxd_find_ctrlr_search, NULL);
+    mlx_foreach(mlxd_find_ctrlr_search, ((void*)0));
     if ((mlxd_find_ctrlr_param.ctrlr != -1) && (mlxd_find_ctrlr_param.sysdrive != -1)) {
-	*ctrlr = mlxd_find_ctrlr_param.ctrlr;
-	*sysdrive = mlxd_find_ctrlr_param.sysdrive;
-	return(0);
+ *ctrlr = mlxd_find_ctrlr_param.ctrlr;
+ *sysdrive = mlxd_find_ctrlr_param.sysdrive;
+ return(0);
     }
     return(1);
 }

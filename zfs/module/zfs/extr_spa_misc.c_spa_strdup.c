@@ -1,32 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  KM_SLEEP ; 
- int /*<<< orphan*/  bcopy (char const*,char*,size_t) ; 
- char* kmem_alloc (size_t,int /*<<< orphan*/ ) ; 
- size_t strlen (char const*) ; 
+ int KM_SLEEP ;
+ int bcopy (char const*,char*,size_t) ;
+ char* kmem_alloc (size_t,int ) ;
+ size_t strlen (char const*) ;
 
 char *
 spa_strdup(const char *s)
 {
-	size_t len;
-	char *new;
+ size_t len;
+ char *new;
 
-	len = strlen(s);
-	new = kmem_alloc(len + 1, KM_SLEEP);
-	bcopy(s, new, len);
-	new[len] = '\0';
+ len = strlen(s);
+ new = kmem_alloc(len + 1, KM_SLEEP);
+ bcopy(s, new, len);
+ new[len] = '\0';
 
-	return (new);
+ return (new);
 }

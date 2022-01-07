@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32 ;
-struct TYPE_3__ {int lastCode; int /*<<< orphan*/  uLabel; } ;
-typedef  TYPE_1__ YuiScudsp ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GTK_LABEL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ScuDspDisasm (int,char*) ; 
- int /*<<< orphan*/  gtk_label_set_markup (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  strcpy (char*,char*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int u32 ;
+struct TYPE_3__ {int lastCode; int uLabel; } ;
+typedef TYPE_1__ YuiScudsp ;
+
+
+ int GTK_LABEL (int ) ;
+ int ScuDspDisasm (int,char*) ;
+ int gtk_label_set_markup (int ,char*) ;
+ int strcpy (char*,char*) ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void yui_scudsp_update_codelist( YuiScudsp *scudsp, u32 addr) {
-  /* refresh the assembler view. <addr> points the line to be highlighted. */
+
 
   int i;
   static char tagPC[] = "<span foreground=\"red\">";
@@ -46,7 +46,7 @@ __attribute__((used)) static void yui_scudsp_update_codelist( YuiScudsp *scudsp,
     if ( offset + i == addr ) { strcpy( curs, tagEnd ); curs += strlen(tagEnd); }
     else { strcpy( curs, "\n" ); curs += 1;}
   }
-  *curs = 0;  
+  *curs = 0;
 
   gtk_label_set_markup( GTK_LABEL(scudsp->uLabel), buf );
 }

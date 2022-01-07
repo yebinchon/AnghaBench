@@ -1,40 +1,40 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {char* sv; } ;
 struct TYPE_5__ {int type; size_t len; TYPE_1__ value; } ;
-typedef  TYPE_2__ ucl_object_t ;
+typedef TYPE_2__ ucl_object_t ;
 
-/* Variables and functions */
-#define  UCL_STRING 128 
+
+
 
 bool
 ucl_object_tolstring_safe (const ucl_object_t *obj, const char **target, size_t *tlen)
 {
-	if (obj == NULL || target == NULL) {
-		return false;
-	}
-	switch (obj->type) {
-	case UCL_STRING:
-		*target = obj->value.sv;
-		if (tlen != NULL) {
-			*tlen = obj->len;
-		}
-		break;
-	default:
-		return false;
-	}
+ if (obj == ((void*)0) || target == ((void*)0)) {
+  return 0;
+ }
+ switch (obj->type) {
+ case 128:
+  *target = obj->value.sv;
+  if (tlen != ((void*)0)) {
+   *tlen = obj->len;
+  }
+  break;
+ default:
+  return 0;
+ }
 
-	return true;
+ return 1;
 }

@@ -1,0 +1,356 @@
+; ModuleID = '/home/carl/AnghaBench/reactos/dll/directx/wine/d3drm/extr_frame.c_d3drm_matrix_multiply_affine.c'
+source_filename = "/home/carl/AnghaBench/reactos/dll/directx/wine/d3drm/extr_frame.c_d3drm_matrix_multiply_affine.c"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+%struct.d3drm_matrix = type { i32, i32, i32, i32, i32, i32, i32, i32, i32, float, float, float, i32, i32, i32, float }
+
+@llvm.used = appending global [1 x i8*] [i8* bitcast (void (%struct.d3drm_matrix*, %struct.d3drm_matrix*, %struct.d3drm_matrix*)* @d3drm_matrix_multiply_affine to i8*)], section "llvm.metadata"
+
+; Function Attrs: noinline nounwind optnone uwtable
+define internal void @d3drm_matrix_multiply_affine(%struct.d3drm_matrix* %0, %struct.d3drm_matrix* %1, %struct.d3drm_matrix* %2) #0 {
+  %4 = alloca %struct.d3drm_matrix*, align 8
+  %5 = alloca %struct.d3drm_matrix*, align 8
+  %6 = alloca %struct.d3drm_matrix*, align 8
+  %7 = alloca %struct.d3drm_matrix, align 4
+  store %struct.d3drm_matrix* %0, %struct.d3drm_matrix** %4, align 8
+  store %struct.d3drm_matrix* %1, %struct.d3drm_matrix** %5, align 8
+  store %struct.d3drm_matrix* %2, %struct.d3drm_matrix** %6, align 8
+  %8 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %9 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %8, i32 0, i32 0
+  %10 = load i32, i32* %9, align 4
+  %11 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %12 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %11, i32 0, i32 0
+  %13 = load i32, i32* %12, align 4
+  %14 = mul nsw i32 %10, %13
+  %15 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %16 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %15, i32 0, i32 1
+  %17 = load i32, i32* %16, align 4
+  %18 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %19 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %18, i32 0, i32 2
+  %20 = load i32, i32* %19, align 4
+  %21 = mul nsw i32 %17, %20
+  %22 = add nsw i32 %14, %21
+  %23 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %24 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %23, i32 0, i32 3
+  %25 = load i32, i32* %24, align 4
+  %26 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %27 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %26, i32 0, i32 4
+  %28 = load i32, i32* %27, align 4
+  %29 = mul nsw i32 %25, %28
+  %30 = add nsw i32 %22, %29
+  %31 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 0
+  store i32 %30, i32* %31, align 4
+  %32 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %33 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %32, i32 0, i32 0
+  %34 = load i32, i32* %33, align 4
+  %35 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %36 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %35, i32 0, i32 1
+  %37 = load i32, i32* %36, align 4
+  %38 = mul nsw i32 %34, %37
+  %39 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %40 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %39, i32 0, i32 1
+  %41 = load i32, i32* %40, align 4
+  %42 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %43 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %42, i32 0, i32 5
+  %44 = load i32, i32* %43, align 4
+  %45 = mul nsw i32 %41, %44
+  %46 = add nsw i32 %38, %45
+  %47 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %48 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %47, i32 0, i32 3
+  %49 = load i32, i32* %48, align 4
+  %50 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %51 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %50, i32 0, i32 6
+  %52 = load i32, i32* %51, align 4
+  %53 = mul nsw i32 %49, %52
+  %54 = add nsw i32 %46, %53
+  %55 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 1
+  store i32 %54, i32* %55, align 4
+  %56 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %57 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %56, i32 0, i32 0
+  %58 = load i32, i32* %57, align 4
+  %59 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %60 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %59, i32 0, i32 3
+  %61 = load i32, i32* %60, align 4
+  %62 = mul nsw i32 %58, %61
+  %63 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %64 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %63, i32 0, i32 1
+  %65 = load i32, i32* %64, align 4
+  %66 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %67 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %66, i32 0, i32 7
+  %68 = load i32, i32* %67, align 4
+  %69 = mul nsw i32 %65, %68
+  %70 = add nsw i32 %62, %69
+  %71 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %72 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %71, i32 0, i32 3
+  %73 = load i32, i32* %72, align 4
+  %74 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %75 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %74, i32 0, i32 8
+  %76 = load i32, i32* %75, align 4
+  %77 = mul nsw i32 %73, %76
+  %78 = add nsw i32 %70, %77
+  %79 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 3
+  store i32 %78, i32* %79, align 4
+  %80 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 9
+  store float 0.000000e+00, float* %80, align 4
+  %81 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %82 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %81, i32 0, i32 2
+  %83 = load i32, i32* %82, align 4
+  %84 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %85 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %84, i32 0, i32 0
+  %86 = load i32, i32* %85, align 4
+  %87 = mul nsw i32 %83, %86
+  %88 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %89 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %88, i32 0, i32 5
+  %90 = load i32, i32* %89, align 4
+  %91 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %92 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %91, i32 0, i32 2
+  %93 = load i32, i32* %92, align 4
+  %94 = mul nsw i32 %90, %93
+  %95 = add nsw i32 %87, %94
+  %96 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %97 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %96, i32 0, i32 7
+  %98 = load i32, i32* %97, align 4
+  %99 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %100 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %99, i32 0, i32 4
+  %101 = load i32, i32* %100, align 4
+  %102 = mul nsw i32 %98, %101
+  %103 = add nsw i32 %95, %102
+  %104 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 2
+  store i32 %103, i32* %104, align 4
+  %105 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %106 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %105, i32 0, i32 2
+  %107 = load i32, i32* %106, align 4
+  %108 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %109 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %108, i32 0, i32 1
+  %110 = load i32, i32* %109, align 4
+  %111 = mul nsw i32 %107, %110
+  %112 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %113 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %112, i32 0, i32 5
+  %114 = load i32, i32* %113, align 4
+  %115 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %116 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %115, i32 0, i32 5
+  %117 = load i32, i32* %116, align 4
+  %118 = mul nsw i32 %114, %117
+  %119 = add nsw i32 %111, %118
+  %120 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %121 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %120, i32 0, i32 7
+  %122 = load i32, i32* %121, align 4
+  %123 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %124 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %123, i32 0, i32 6
+  %125 = load i32, i32* %124, align 4
+  %126 = mul nsw i32 %122, %125
+  %127 = add nsw i32 %119, %126
+  %128 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 5
+  store i32 %127, i32* %128, align 4
+  %129 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %130 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %129, i32 0, i32 2
+  %131 = load i32, i32* %130, align 4
+  %132 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %133 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %132, i32 0, i32 3
+  %134 = load i32, i32* %133, align 4
+  %135 = mul nsw i32 %131, %134
+  %136 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %137 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %136, i32 0, i32 5
+  %138 = load i32, i32* %137, align 4
+  %139 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %140 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %139, i32 0, i32 7
+  %141 = load i32, i32* %140, align 4
+  %142 = mul nsw i32 %138, %141
+  %143 = add nsw i32 %135, %142
+  %144 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %145 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %144, i32 0, i32 7
+  %146 = load i32, i32* %145, align 4
+  %147 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %148 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %147, i32 0, i32 8
+  %149 = load i32, i32* %148, align 4
+  %150 = mul nsw i32 %146, %149
+  %151 = add nsw i32 %143, %150
+  %152 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 7
+  store i32 %151, i32* %152, align 4
+  %153 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 10
+  store float 0.000000e+00, float* %153, align 4
+  %154 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %155 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %154, i32 0, i32 4
+  %156 = load i32, i32* %155, align 4
+  %157 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %158 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %157, i32 0, i32 0
+  %159 = load i32, i32* %158, align 4
+  %160 = mul nsw i32 %156, %159
+  %161 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %162 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %161, i32 0, i32 6
+  %163 = load i32, i32* %162, align 4
+  %164 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %165 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %164, i32 0, i32 2
+  %166 = load i32, i32* %165, align 4
+  %167 = mul nsw i32 %163, %166
+  %168 = add nsw i32 %160, %167
+  %169 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %170 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %169, i32 0, i32 8
+  %171 = load i32, i32* %170, align 4
+  %172 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %173 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %172, i32 0, i32 4
+  %174 = load i32, i32* %173, align 4
+  %175 = mul nsw i32 %171, %174
+  %176 = add nsw i32 %168, %175
+  %177 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 4
+  store i32 %176, i32* %177, align 4
+  %178 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %179 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %178, i32 0, i32 4
+  %180 = load i32, i32* %179, align 4
+  %181 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %182 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %181, i32 0, i32 1
+  %183 = load i32, i32* %182, align 4
+  %184 = mul nsw i32 %180, %183
+  %185 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %186 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %185, i32 0, i32 6
+  %187 = load i32, i32* %186, align 4
+  %188 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %189 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %188, i32 0, i32 5
+  %190 = load i32, i32* %189, align 4
+  %191 = mul nsw i32 %187, %190
+  %192 = add nsw i32 %184, %191
+  %193 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %194 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %193, i32 0, i32 8
+  %195 = load i32, i32* %194, align 4
+  %196 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %197 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %196, i32 0, i32 6
+  %198 = load i32, i32* %197, align 4
+  %199 = mul nsw i32 %195, %198
+  %200 = add nsw i32 %192, %199
+  %201 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 6
+  store i32 %200, i32* %201, align 4
+  %202 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %203 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %202, i32 0, i32 4
+  %204 = load i32, i32* %203, align 4
+  %205 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %206 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %205, i32 0, i32 3
+  %207 = load i32, i32* %206, align 4
+  %208 = mul nsw i32 %204, %207
+  %209 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %210 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %209, i32 0, i32 6
+  %211 = load i32, i32* %210, align 4
+  %212 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %213 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %212, i32 0, i32 7
+  %214 = load i32, i32* %213, align 4
+  %215 = mul nsw i32 %211, %214
+  %216 = add nsw i32 %208, %215
+  %217 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %218 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %217, i32 0, i32 8
+  %219 = load i32, i32* %218, align 4
+  %220 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %221 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %220, i32 0, i32 8
+  %222 = load i32, i32* %221, align 4
+  %223 = mul nsw i32 %219, %222
+  %224 = add nsw i32 %216, %223
+  %225 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 8
+  store i32 %224, i32* %225, align 4
+  %226 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 11
+  store float 0.000000e+00, float* %226, align 4
+  %227 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %228 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %227, i32 0, i32 12
+  %229 = load i32, i32* %228, align 4
+  %230 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %231 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %230, i32 0, i32 0
+  %232 = load i32, i32* %231, align 4
+  %233 = mul nsw i32 %229, %232
+  %234 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %235 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %234, i32 0, i32 13
+  %236 = load i32, i32* %235, align 4
+  %237 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %238 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %237, i32 0, i32 2
+  %239 = load i32, i32* %238, align 4
+  %240 = mul nsw i32 %236, %239
+  %241 = add nsw i32 %233, %240
+  %242 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %243 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %242, i32 0, i32 14
+  %244 = load i32, i32* %243, align 4
+  %245 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %246 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %245, i32 0, i32 4
+  %247 = load i32, i32* %246, align 4
+  %248 = mul nsw i32 %244, %247
+  %249 = add nsw i32 %241, %248
+  %250 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %251 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %250, i32 0, i32 12
+  %252 = load i32, i32* %251, align 4
+  %253 = add nsw i32 %249, %252
+  %254 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 12
+  store i32 %253, i32* %254, align 4
+  %255 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %256 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %255, i32 0, i32 12
+  %257 = load i32, i32* %256, align 4
+  %258 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %259 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %258, i32 0, i32 1
+  %260 = load i32, i32* %259, align 4
+  %261 = mul nsw i32 %257, %260
+  %262 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %263 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %262, i32 0, i32 13
+  %264 = load i32, i32* %263, align 4
+  %265 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %266 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %265, i32 0, i32 5
+  %267 = load i32, i32* %266, align 4
+  %268 = mul nsw i32 %264, %267
+  %269 = add nsw i32 %261, %268
+  %270 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %271 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %270, i32 0, i32 14
+  %272 = load i32, i32* %271, align 4
+  %273 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %274 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %273, i32 0, i32 6
+  %275 = load i32, i32* %274, align 4
+  %276 = mul nsw i32 %272, %275
+  %277 = add nsw i32 %269, %276
+  %278 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %279 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %278, i32 0, i32 13
+  %280 = load i32, i32* %279, align 4
+  %281 = add nsw i32 %277, %280
+  %282 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 13
+  store i32 %281, i32* %282, align 4
+  %283 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %284 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %283, i32 0, i32 12
+  %285 = load i32, i32* %284, align 4
+  %286 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %287 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %286, i32 0, i32 3
+  %288 = load i32, i32* %287, align 4
+  %289 = mul nsw i32 %285, %288
+  %290 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %291 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %290, i32 0, i32 13
+  %292 = load i32, i32* %291, align 4
+  %293 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %294 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %293, i32 0, i32 7
+  %295 = load i32, i32* %294, align 4
+  %296 = mul nsw i32 %292, %295
+  %297 = add nsw i32 %289, %296
+  %298 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %5, align 8
+  %299 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %298, i32 0, i32 14
+  %300 = load i32, i32* %299, align 4
+  %301 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %302 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %301, i32 0, i32 8
+  %303 = load i32, i32* %302, align 4
+  %304 = mul nsw i32 %300, %303
+  %305 = add nsw i32 %297, %304
+  %306 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %6, align 8
+  %307 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %306, i32 0, i32 14
+  %308 = load i32, i32* %307, align 4
+  %309 = add nsw i32 %305, %308
+  %310 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 14
+  store i32 %309, i32* %310, align 4
+  %311 = getelementptr inbounds %struct.d3drm_matrix, %struct.d3drm_matrix* %7, i32 0, i32 15
+  store float 1.000000e+00, float* %311, align 4
+  %312 = load %struct.d3drm_matrix*, %struct.d3drm_matrix** %4, align 8
+  %313 = bitcast %struct.d3drm_matrix* %312 to i8*
+  %314 = bitcast %struct.d3drm_matrix* %7 to i8*
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %313, i8* align 4 %314, i64 64, i1 false)
+  ret void
+}
+
+; Function Attrs: argmemonly nounwind willreturn
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* noalias nocapture writeonly, i8* noalias nocapture readonly, i64, i1 immarg) #1
+
+attributes #0 = { noinline nounwind optnone uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #1 = { argmemonly nounwind willreturn }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !"wchar_size", i32 4}
+!1 = !{!"clang version 10.0.1 (https://github.com/wsmoses/llvm-project-tok c8e5003577614e72d6d18a216e6a09771e1fcce4)"}

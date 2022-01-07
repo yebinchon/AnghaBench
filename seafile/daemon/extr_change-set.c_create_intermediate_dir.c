@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_10__ {int /*<<< orphan*/  version; } ;
+
+
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+struct TYPE_10__ {int version; } ;
 struct TYPE_9__ {TYPE_2__* subdir; } ;
-typedef  TYPE_1__ ChangeSetDirent ;
-typedef  TYPE_2__ ChangeSetDir ;
+typedef TYPE_1__ ChangeSetDirent ;
+typedef TYPE_2__ ChangeSetDir ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EMPTY_SHA1 ; 
- int /*<<< orphan*/  S_IFDIR ; 
- int /*<<< orphan*/  add_dent_to_dir (TYPE_2__*,TYPE_1__*) ; 
- TYPE_2__* changeset_dir_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- TYPE_1__* changeset_dirent_new (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+ int EMPTY_SHA1 ;
+ int S_IFDIR ;
+ int add_dent_to_dir (TYPE_2__*,TYPE_1__*) ;
+ TYPE_2__* changeset_dir_new (int ,int ,int *) ;
+ TYPE_1__* changeset_dirent_new (int ,int ,char const*,int ,int *,int ) ;
 
 __attribute__((used)) static ChangeSetDir *
 create_intermediate_dir (ChangeSetDir *parent, const char *dname)
 {
     ChangeSetDirent *dent;
 
-    dent = changeset_dirent_new (EMPTY_SHA1, S_IFDIR, dname, 0, NULL, 0);
-    dent->subdir = changeset_dir_new (parent->version, EMPTY_SHA1, NULL);
+    dent = changeset_dirent_new (EMPTY_SHA1, S_IFDIR, dname, 0, ((void*)0), 0);
+    dent->subdir = changeset_dir_new (parent->version, EMPTY_SHA1, ((void*)0));
     add_dent_to_dir (parent, dent);
 
     return dent->subdir;

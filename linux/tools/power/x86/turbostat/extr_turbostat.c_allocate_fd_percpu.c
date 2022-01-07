@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ max_cpu_num; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * calloc (scalar_t__,int) ; 
- int /*<<< orphan*/  err (int,char*) ; 
- int /*<<< orphan*/ * fd_percpu ; 
- TYPE_1__ topo ; 
+
+ int * calloc (scalar_t__,int) ;
+ int err (int,char*) ;
+ int * fd_percpu ;
+ TYPE_1__ topo ;
 
 void allocate_fd_percpu(void)
 {
-	fd_percpu = calloc(topo.max_cpu_num + 1, sizeof(int));
-	if (fd_percpu == NULL)
-		err(-1, "calloc fd_percpu");
+ fd_percpu = calloc(topo.max_cpu_num + 1, sizeof(int));
+ if (fd_percpu == ((void*)0))
+  err(-1, "calloc fd_percpu");
 }

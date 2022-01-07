@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UInt32 ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UInt32 ;
 struct TYPE_4__ {int needInit; } ;
-typedef  int /*<<< orphan*/  SizeT ;
-typedef  int /*<<< orphan*/  SRes ;
-typedef  int /*<<< orphan*/  ISzAlloc ;
-typedef  scalar_t__ CLzmaEncHandle ;
-typedef  TYPE_1__ CLzmaEnc ;
-typedef  int /*<<< orphan*/  Byte ;
+typedef int SizeT ;
+typedef int SRes ;
+typedef int ISzAlloc ;
+typedef scalar_t__ CLzmaEncHandle ;
+typedef TYPE_1__ CLzmaEnc ;
+typedef int Byte ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LzmaEnc_AllocAndInit (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  LzmaEnc_SetInputBuf (TYPE_1__*,int /*<<< orphan*/  const*,int /*<<< orphan*/ ) ; 
+
+ int LzmaEnc_AllocAndInit (TYPE_1__*,int ,int *,int *) ;
+ int LzmaEnc_SetInputBuf (TYPE_1__*,int const*,int ) ;
 
 SRes LzmaEnc_MemPrepare(CLzmaEncHandle pp, const Byte *src, SizeT srcLen,
     UInt32 keepWindowSize, ISzAlloc *alloc, ISzAlloc *allocBig)

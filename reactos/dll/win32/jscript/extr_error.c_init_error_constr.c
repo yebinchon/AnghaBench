@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/ * uri_error_constr; int /*<<< orphan*/ * type_error_constr; int /*<<< orphan*/ * syntax_error_constr; int /*<<< orphan*/ * regexp_error_constr; int /*<<< orphan*/ * reference_error_constr; int /*<<< orphan*/ * range_error_constr; int /*<<< orphan*/ * eval_error_constr; int /*<<< orphan*/ * error_constr; } ;
-typedef  TYPE_1__ script_ctx_t ;
-typedef  int /*<<< orphan*/  jsstr_t ;
-typedef  int /*<<< orphan*/  jsdisp_t ;
-typedef  int /*<<< orphan*/  builtin_invoke_t ;
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HRESULT ;
 
-/* Variables and functions */
- unsigned int ARRAY_SIZE (char const**) ; 
- int /*<<< orphan*/  E_OUTOFMEMORY ; 
-#define  ErrorConstr_value 135 
-#define  EvalErrorConstr_value 134 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int PROPF_CONFIGURABLE ; 
- int PROPF_CONSTR ; 
- int PROPF_WRITABLE ; 
-#define  RangeErrorConstr_value 133 
-#define  ReferenceErrorConstr_value 132 
-#define  RegExpErrorConstr_value 131 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_OK ; 
-#define  SyntaxErrorConstr_value 130 
-#define  TypeErrorConstr_value 129 
-#define  URIErrorConstr_value 128 
- int /*<<< orphan*/  alloc_error (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  create_builtin_constructor (TYPE_1__*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  jsdisp_define_data_property (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  jsdisp_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * jsstr_alloc (char const*) ; 
- int /*<<< orphan*/  jsstr_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  jsval_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nameW ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int * uri_error_constr; int * type_error_constr; int * syntax_error_constr; int * regexp_error_constr; int * reference_error_constr; int * range_error_constr; int * eval_error_constr; int * error_constr; } ;
+typedef TYPE_1__ script_ctx_t ;
+typedef int jsstr_t ;
+typedef int jsdisp_t ;
+typedef int builtin_invoke_t ;
+typedef char WCHAR ;
+typedef int HRESULT ;
+
+
+ unsigned int ARRAY_SIZE (char const**) ;
+ int E_OUTOFMEMORY ;
+
+
+ scalar_t__ FAILED (int ) ;
+ int PROPF_CONFIGURABLE ;
+ int PROPF_CONSTR ;
+ int PROPF_WRITABLE ;
+
+
+
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_OK ;
+
+
+
+ int alloc_error (TYPE_1__*,int *,int *,int **) ;
+ int create_builtin_constructor (TYPE_1__*,int ,char const*,int *,int,int *,int **) ;
+ int jsdisp_define_data_property (int *,int ,int,int ) ;
+ int jsdisp_release (int *) ;
+ int * jsstr_alloc (char const*) ;
+ int jsstr_release (int *) ;
+ int jsval_string (int *) ;
+ int nameW ;
 
 HRESULT init_error_constr(script_ctx_t *ctx, jsdisp_t *object_prototype)
 {
@@ -61,9 +61,9 @@ HRESULT init_error_constr(script_ctx_t *ctx, jsdisp_t *object_prototype)
         &ctx->range_error_constr, &ctx->reference_error_constr, &ctx->regexp_error_constr,
         &ctx->syntax_error_constr, &ctx->type_error_constr,
         &ctx->uri_error_constr};
-    static builtin_invoke_t constr_val[] = {ErrorConstr_value, EvalErrorConstr_value,
-        RangeErrorConstr_value, ReferenceErrorConstr_value, RegExpErrorConstr_value,
-        SyntaxErrorConstr_value, TypeErrorConstr_value, URIErrorConstr_value};
+    static builtin_invoke_t constr_val[] = {135, 134,
+        133, 132, 131,
+        130, 129, 128};
 
     jsdisp_t *err;
     unsigned int i;
@@ -71,7 +71,7 @@ HRESULT init_error_constr(script_ctx_t *ctx, jsdisp_t *object_prototype)
     HRESULT hres;
 
     for(i=0; i < ARRAY_SIZE(names); i++) {
-        hres = alloc_error(ctx, i==0 ? object_prototype : NULL, NULL, &err);
+        hres = alloc_error(ctx, i==0 ? object_prototype : ((void*)0), ((void*)0), &err);
         if(FAILED(hres))
             return hres;
 
@@ -85,7 +85,7 @@ HRESULT init_error_constr(script_ctx_t *ctx, jsdisp_t *object_prototype)
                                            jsval_string(str));
         jsstr_release(str);
         if(SUCCEEDED(hres))
-            hres = create_builtin_constructor(ctx, constr_val[i], names[i], NULL,
+            hres = create_builtin_constructor(ctx, constr_val[i], names[i], ((void*)0),
                     PROPF_CONSTR|1, err, constr_addr[i]);
 
         jsdisp_release(err);

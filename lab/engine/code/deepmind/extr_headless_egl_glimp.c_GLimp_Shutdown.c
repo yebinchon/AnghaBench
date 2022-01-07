@@ -1,28 +1,20 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  EGL_NO_CONTEXT ; 
- int /*<<< orphan*/  EGL_NO_SURFACE ; 
- int /*<<< orphan*/  RETURN_IF_EGL_ERROR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ShutDownEGLSubsystem () ; 
- int /*<<< orphan*/  TerminateInitializedEGLDisplay (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglDestroyContext (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglDestroySurface (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  egl_context ; 
- int /*<<< orphan*/  egl_display ; 
- int /*<<< orphan*/  egl_surface ; 
+ int EGL_NO_CONTEXT ;
+ int EGL_NO_SURFACE ;
+ int RETURN_IF_EGL_ERROR (int ) ;
+ int ShutDownEGLSubsystem () ;
+ int TerminateInitializedEGLDisplay (int ) ;
+ int eglDestroyContext (int ,int ) ;
+ int eglDestroySurface (int ,int ) ;
+ int eglMakeCurrent (int ,int ,int ,int ) ;
+ int egl_context ;
+ int egl_display ;
+ int egl_surface ;
 
 void GLimp_Shutdown(void) {
   RETURN_IF_EGL_ERROR(eglMakeCurrent(egl_display, EGL_NO_SURFACE,

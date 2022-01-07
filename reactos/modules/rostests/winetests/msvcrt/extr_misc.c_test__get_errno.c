@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EBADF ; 
- int EINVAL ; 
- int errno ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int p_get_errno (int*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+ int EBADF ;
+ int EINVAL ;
+ int errno ;
+ int ok (int,char*,int) ;
+ int p_get_errno (int*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test__get_errno(void)
 {
@@ -30,7 +22,7 @@ __attribute__((used)) static void test__get_errno(void)
     }
 
     errno = EBADF;
-    ret = p_get_errno(NULL);
+    ret = p_get_errno(((void*)0));
     ok(ret == EINVAL, "Expected _get_errno to return EINVAL, got %d\n", ret);
     ok(errno == EBADF, "Expected errno to be EBADF, got %d\n", errno);
 

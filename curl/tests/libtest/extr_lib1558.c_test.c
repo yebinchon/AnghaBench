@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int CURLcode ;
-typedef  int /*<<< orphan*/  CURL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURLINFO_PROTOCOL ; 
- int /*<<< orphan*/  CURLOPT_URL ; 
- int /*<<< orphan*/  CURL_GLOBAL_ALL ; 
- int /*<<< orphan*/  curl_easy_cleanup (int /*<<< orphan*/ *) ; 
- int curl_easy_getinfo (int /*<<< orphan*/ *,int /*<<< orphan*/ ,long*) ; 
- int curl_easy_perform (int /*<<< orphan*/ *) ; 
- char* curl_easy_strerror (int) ; 
- int /*<<< orphan*/  curl_global_cleanup () ; 
- int /*<<< orphan*/  easy_init (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  easy_setopt (int /*<<< orphan*/ *,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int,char*) ; 
- int /*<<< orphan*/  global_init (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  printf (char*,long) ; 
- int /*<<< orphan*/  stderr ; 
+
+
+
+typedef int CURLcode ;
+typedef int CURL ;
+
+
+ int CURLINFO_PROTOCOL ;
+ int CURLOPT_URL ;
+ int CURL_GLOBAL_ALL ;
+ int curl_easy_cleanup (int *) ;
+ int curl_easy_getinfo (int *,int ,long*) ;
+ int curl_easy_perform (int *) ;
+ char* curl_easy_strerror (int) ;
+ int curl_global_cleanup () ;
+ int easy_init (int *) ;
+ int easy_setopt (int *,int ,char*) ;
+ int fprintf (int ,char*,int,char*) ;
+ int global_init (int ) ;
+ int printf (char*,long) ;
+ int stderr ;
 
 int test(char *URL)
 {
   CURLcode res = 0;
-  CURL *curl = NULL;
+  CURL *curl = ((void*)0);
   long protocol = 0;
 
   global_init(CURL_GLOBAL_ALL);
@@ -65,5 +65,5 @@ test_cleanup:
   curl_easy_cleanup(curl);
   curl_global_cleanup();
 
-  return res; /* return the final return code */
+  return res;
 }

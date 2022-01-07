@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct vnop_bwrite_args {int /*<<< orphan*/  a_bp; } ;
 
-/* Variables and functions */
- scalar_t__ buf_bwrite (int /*<<< orphan*/ ) ; 
+
+
+
+struct vnop_bwrite_args {int a_bp; } ;
+
+
+ scalar_t__ buf_bwrite (int ) ;
 
 int
 nop_bwrite(struct vnop_bwrite_args *ap)
 {
-	return ((int)buf_bwrite(ap->a_bp));
+ return ((int)buf_bwrite(ap->a_bp));
 }

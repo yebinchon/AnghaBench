@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  char* LPWSTR ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- scalar_t__ CSTR_EQUAL ; 
- scalar_t__ CompareStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,unsigned int,char*,unsigned int) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  LOCALE_USER_DEFAULT ; 
- unsigned int REG_CLASS_NUMBER ; 
- int /*<<< orphan*/  TRUE ; 
- unsigned int lstrlenW (char*) ; 
- int /*<<< orphan*/ ** reg_class_keys ; 
- char** reg_class_namesW ; 
+
+
+
+typedef char WCHAR ;
+typedef char* LPWSTR ;
+typedef int * HKEY ;
+typedef int BOOL ;
+
+
+ scalar_t__ CSTR_EQUAL ;
+ scalar_t__ CompareStringW (int ,int ,char*,unsigned int,char*,unsigned int) ;
+ int FALSE ;
+ int LOCALE_USER_DEFAULT ;
+ unsigned int REG_CLASS_NUMBER ;
+ int TRUE ;
+ unsigned int lstrlenW (char*) ;
+ int ** reg_class_keys ;
+ char** reg_class_namesW ;
 
 __attribute__((used)) static BOOL parseKeyName(LPWSTR lpKeyName, HKEY *hKey, LPWSTR *lpKeyPath)
 {
-    WCHAR* lpSlash = NULL;
+    WCHAR* lpSlash = ((void*)0);
     unsigned int i, len;
 
-    if (lpKeyName == NULL)
+    if (lpKeyName == ((void*)0))
         return FALSE;
 
     for(i = 0; *(lpKeyName+i) != 0; i++)
@@ -52,7 +52,7 @@ __attribute__((used)) static BOOL parseKeyName(LPWSTR lpKeyName, HKEY *hKey, LPW
         len = lstrlenW(lpKeyName);
         lpSlash = lpKeyName+len;
     }
-    *hKey = NULL;
+    *hKey = ((void*)0);
 
     for (i = 0; i < REG_CLASS_NUMBER; i++) {
         if (CompareStringW(LOCALE_USER_DEFAULT, 0, lpKeyName, len, reg_class_namesW[i], len) == CSTR_EQUAL &&
@@ -62,7 +62,7 @@ __attribute__((used)) static BOOL parseKeyName(LPWSTR lpKeyName, HKEY *hKey, LPW
         }
     }
 
-    if (*hKey == NULL)
+    if (*hKey == ((void*)0))
         return FALSE;
 
 

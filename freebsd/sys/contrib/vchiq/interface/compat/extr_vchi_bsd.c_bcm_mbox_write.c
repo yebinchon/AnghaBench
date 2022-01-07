@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  scalar_t__ device_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  MBOX_WRITE (scalar_t__,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  devclass_find (char*) ; 
- scalar_t__ devclass_get_device (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+typedef scalar_t__ device_t ;
+
+
+ int MBOX_WRITE (scalar_t__,int,int ) ;
+ int devclass_find (char*) ;
+ scalar_t__ devclass_get_device (int ,int ) ;
 
 void
 bcm_mbox_write(int channel, uint32_t data)
 {
-	device_t mbox;
+ device_t mbox;
 
         mbox = devclass_get_device(devclass_find("mbox"), 0);
 

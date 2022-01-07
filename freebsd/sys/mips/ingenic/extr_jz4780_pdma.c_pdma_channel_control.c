@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {scalar_t__ chan; } ;
-typedef  TYPE_1__ xdma_channel_t ;
+typedef TYPE_1__ xdma_channel_t ;
 struct pdma_softc {int dummy; } ;
 struct pdma_channel {int dummy; } ;
-typedef  int /*<<< orphan*/  device_t ;
+typedef int device_t ;
 
-/* Variables and functions */
-#define  XDMA_CMD_BEGIN 130 
-#define  XDMA_CMD_PAUSE 129 
-#define  XDMA_CMD_TERMINATE 128 
- int /*<<< orphan*/  chan_start (struct pdma_softc*,struct pdma_channel*) ; 
- int /*<<< orphan*/  chan_stop (struct pdma_softc*,struct pdma_channel*) ; 
- struct pdma_softc* device_get_softc (int /*<<< orphan*/ ) ; 
+
+
+
+
+ int chan_start (struct pdma_softc*,struct pdma_channel*) ;
+ int chan_stop (struct pdma_softc*,struct pdma_channel*) ;
+ struct pdma_softc* device_get_softc (int ) ;
 
 __attribute__((used)) static int
 pdma_channel_control(device_t dev, xdma_channel_t *xchan, int cmd)
 {
-	struct pdma_channel *chan;
-	struct pdma_softc *sc;
+ struct pdma_channel *chan;
+ struct pdma_softc *sc;
 
-	sc = device_get_softc(dev);
+ sc = device_get_softc(dev);
 
-	chan = (struct pdma_channel *)xchan->chan;
+ chan = (struct pdma_channel *)xchan->chan;
 
-	switch (cmd) {
-	case XDMA_CMD_BEGIN:
-		chan_start(sc, chan);
-		break;
-	case XDMA_CMD_TERMINATE:
-		chan_stop(sc, chan);
-		break;
-	case XDMA_CMD_PAUSE:
-		/* TODO: implement me */
-		return (-1);
-	}
+ switch (cmd) {
+ case 130:
+  chan_start(sc, chan);
+  break;
+ case 128:
+  chan_stop(sc, chan);
+  break;
+ case 129:
 
-	return (0);
+  return (-1);
+ }
+
+ return (0);
 }

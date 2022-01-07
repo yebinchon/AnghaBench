@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ sbits32 ;
-typedef  int bits32 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  add64 (int,int,int,int,int*,int*) ; 
- int /*<<< orphan*/  mul32To64 (int,int,int*,int*) ; 
- int /*<<< orphan*/  sub64 (int,int,int,int,int*,int*) ; 
+
+
+
+typedef scalar_t__ sbits32 ;
+typedef int bits32 ;
+
+
+ int add64 (int,int,int,int,int*,int*) ;
+ int mul32To64 (int,int,int*,int*) ;
+ int sub64 (int,int,int,int,int*,int*) ;
 
 __attribute__((used)) static bits32 estimateDiv64To32( bits32 a0, bits32 a1, bits32 b )
 {

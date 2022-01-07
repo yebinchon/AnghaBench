@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {int place; int owner; int type; double weight; scalar_t__ users; scalar_t__ actions_bitset; scalar_t__ last_user; struct TYPE_4__* hnext; } ;
-typedef  TYPE_1__ recommend_place_t ;
-typedef  int /*<<< orphan*/  place_t ;
+typedef TYPE_1__ recommend_place_t ;
+typedef int place_t ;
 
-/* Variables and functions */
- scalar_t__ MAX_GROUPS ; 
- int /*<<< orphan*/ ** Place ; 
- int /*<<< orphan*/  RECOMMEND_MODE ; 
- unsigned int RECOMMEND_PLACES_HASH ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ tot_places ; 
- TYPE_1__* zmalloc (int) ; 
+
+ scalar_t__ MAX_GROUPS ;
+ int ** Place ;
+ int RECOMMEND_MODE ;
+ unsigned int RECOMMEND_PLACES_HASH ;
+ int assert (int ) ;
+ scalar_t__ tot_places ;
+ TYPE_1__* zmalloc (int) ;
 
 __attribute__((used)) static recommend_place_t *get_recommend_place_f (int type, int owner, int place, int force) {
   assert (RECOMMEND_MODE);

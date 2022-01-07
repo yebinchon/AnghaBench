@@ -1,76 +1,76 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct timer_list {int dummy; } ;
-struct r3964_info {int state; int /*<<< orphan*/  rx_position; } ;
+struct r3964_info {int state; int rx_position; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NAK ; 
- void* R3964_IDLE ; 
-#define  R3964_RECEIVING 134 
-#define  R3964_TX_REQUEST 133 
-#define  R3964_WAIT_FOR_BCC 132 
-#define  R3964_WAIT_FOR_RX_BUF 131 
-#define  R3964_WAIT_FOR_RX_REPEAT 130 
-#define  R3964_WAIT_FOR_TX_ACK 129 
-#define  R3964_WAIT_ZVZ_BEFORE_TX_RETRY 128 
- int /*<<< orphan*/  TRACE_PE (char*,...) ; 
- int /*<<< orphan*/  flush (struct r3964_info*) ; 
- struct r3964_info* from_timer (int /*<<< orphan*/ ,struct timer_list*,int /*<<< orphan*/ ) ; 
- struct r3964_info* pInfo ; 
- int /*<<< orphan*/  put_char (struct r3964_info*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  retry_transmit (struct r3964_info*) ; 
- int /*<<< orphan*/  tmr ; 
+
+ int NAK ;
+ void* R3964_IDLE ;
+
+
+
+
+
+
+
+ int TRACE_PE (char*,...) ;
+ int flush (struct r3964_info*) ;
+ struct r3964_info* from_timer (int ,struct timer_list*,int ) ;
+ struct r3964_info* pInfo ;
+ int put_char (struct r3964_info*,int ) ;
+ int retry_transmit (struct r3964_info*) ;
+ int tmr ;
 
 __attribute__((used)) static void on_timeout(struct timer_list *t)
 {
-	struct r3964_info *pInfo = from_timer(pInfo, t, tmr);
+ struct r3964_info *pInfo = from_timer(pInfo, t, tmr);
 
-	switch (pInfo->state) {
-	case R3964_TX_REQUEST:
-		TRACE_PE("TX_REQUEST - timeout");
-		retry_transmit(pInfo);
-		break;
-	case R3964_WAIT_ZVZ_BEFORE_TX_RETRY:
-		put_char(pInfo, NAK);
-		flush(pInfo);
-		retry_transmit(pInfo);
-		break;
-	case R3964_WAIT_FOR_TX_ACK:
-		TRACE_PE("WAIT_FOR_TX_ACK - timeout");
-		retry_transmit(pInfo);
-		break;
-	case R3964_WAIT_FOR_RX_BUF:
-		TRACE_PE("WAIT_FOR_RX_BUF - timeout");
-		put_char(pInfo, NAK);
-		flush(pInfo);
-		pInfo->state = R3964_IDLE;
-		break;
-	case R3964_RECEIVING:
-		TRACE_PE("RECEIVING - timeout after %d chars",
-			 pInfo->rx_position);
-		put_char(pInfo, NAK);
-		flush(pInfo);
-		pInfo->state = R3964_IDLE;
-		break;
-	case R3964_WAIT_FOR_RX_REPEAT:
-		TRACE_PE("WAIT_FOR_RX_REPEAT - timeout");
-		pInfo->state = R3964_IDLE;
-		break;
-	case R3964_WAIT_FOR_BCC:
-		TRACE_PE("WAIT_FOR_BCC - timeout");
-		put_char(pInfo, NAK);
-		flush(pInfo);
-		pInfo->state = R3964_IDLE;
-		break;
-	}
+ switch (pInfo->state) {
+ case 133:
+  TRACE_PE("TX_REQUEST - timeout");
+  retry_transmit(pInfo);
+  break;
+ case 128:
+  put_char(pInfo, NAK);
+  flush(pInfo);
+  retry_transmit(pInfo);
+  break;
+ case 129:
+  TRACE_PE("WAIT_FOR_TX_ACK - timeout");
+  retry_transmit(pInfo);
+  break;
+ case 131:
+  TRACE_PE("WAIT_FOR_RX_BUF - timeout");
+  put_char(pInfo, NAK);
+  flush(pInfo);
+  pInfo->state = R3964_IDLE;
+  break;
+ case 134:
+  TRACE_PE("RECEIVING - timeout after %d chars",
+    pInfo->rx_position);
+  put_char(pInfo, NAK);
+  flush(pInfo);
+  pInfo->state = R3964_IDLE;
+  break;
+ case 130:
+  TRACE_PE("WAIT_FOR_RX_REPEAT - timeout");
+  pInfo->state = R3964_IDLE;
+  break;
+ case 132:
+  TRACE_PE("WAIT_FOR_BCC - timeout");
+  put_char(pInfo, NAK);
+  flush(pInfo);
+  pInfo->state = R3964_IDLE;
+  break;
+ }
 }

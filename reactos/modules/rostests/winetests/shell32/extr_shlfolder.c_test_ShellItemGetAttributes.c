@@ -1,48 +1,48 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int SFGAOF ;
-typedef  int /*<<< orphan*/  LPITEMIDLIST ;
-typedef  int /*<<< orphan*/  IShellItem ;
-typedef  int /*<<< orphan*/  IShellFolder ;
-typedef  int HRESULT ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CSIDL_DESKTOP ; 
- int /*<<< orphan*/  Cleanup () ; 
- int /*<<< orphan*/  CreateFilesFolders () ; 
- int E_FAIL ; 
- scalar_t__ FAILED (int) ; 
- int /*<<< orphan*/  GetCurrentDirectoryW (int,char*) ; 
- int /*<<< orphan*/  ILFree (int /*<<< orphan*/ ) ; 
- int IShellFolder_ParseDisplayName (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IShellFolder_Release (int /*<<< orphan*/ *) ; 
- int IShellItem_GetAttributes (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  IShellItem_Release (int /*<<< orphan*/ *) ; 
- int MAX_PATH ; 
- int SFGAO_FOLDER ; 
- int /*<<< orphan*/  SHGetDesktopFolder (int /*<<< orphan*/ **) ; 
- int SHGetSpecialFolderLocation (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SUCCEEDED (int) ; 
- int S_FALSE ; 
- int S_OK ; 
- scalar_t__ broken (int) ; 
- int /*<<< orphan*/  lstrcatW (char*,char const*) ; 
- int /*<<< orphan*/  lstrcpyW (char*,char*) ; 
- int /*<<< orphan*/  myPathAddBackslashW (char*) ; 
- int /*<<< orphan*/  ok (int,char*,int) ; 
- int pSHCreateShellItem (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  skip (char*) ; 
+
+
+
+typedef char WCHAR ;
+typedef int SFGAOF ;
+typedef int LPITEMIDLIST ;
+typedef int IShellItem ;
+typedef int IShellFolder ;
+typedef int HRESULT ;
+
+
+ int CSIDL_DESKTOP ;
+ int Cleanup () ;
+ int CreateFilesFolders () ;
+ int E_FAIL ;
+ scalar_t__ FAILED (int) ;
+ int GetCurrentDirectoryW (int,char*) ;
+ int ILFree (int ) ;
+ int IShellFolder_ParseDisplayName (int *,int *,int *,char*,int *,int *,int *) ;
+ int IShellFolder_Release (int *) ;
+ int IShellItem_GetAttributes (int *,int,int*) ;
+ int IShellItem_Release (int *) ;
+ int MAX_PATH ;
+ int SFGAO_FOLDER ;
+ int SHGetDesktopFolder (int **) ;
+ int SHGetSpecialFolderLocation (int *,int ,int *) ;
+ scalar_t__ SUCCEEDED (int) ;
+ int S_FALSE ;
+ int S_OK ;
+ scalar_t__ broken (int) ;
+ int lstrcatW (char*,char const*) ;
+ int lstrcpyW (char*,char*) ;
+ int myPathAddBackslashW (char*) ;
+ int ok (int,char*,int) ;
+ int pSHCreateShellItem (int *,int *,int ,int **) ;
+ int skip (char*) ;
 
 __attribute__((used)) static void test_ShellItemGetAttributes(void)
 {
@@ -62,11 +62,11 @@ __attribute__((used)) static void test_ShellItemGetAttributes(void)
         return;
     }
 
-    hr = SHGetSpecialFolderLocation(NULL, CSIDL_DESKTOP, &pidl_desktop);
+    hr = SHGetSpecialFolderLocation(((void*)0), CSIDL_DESKTOP, &pidl_desktop);
     ok(hr == S_OK, "Got 0x%08x\n", hr);
     if(SUCCEEDED(hr))
     {
-        hr = pSHCreateShellItem(NULL, NULL, pidl_desktop, &psi);
+        hr = pSHCreateShellItem(((void*)0), ((void*)0), pidl_desktop, &psi);
         ok(hr == S_OK, "Got 0x%08x\n", hr);
         ILFree(pidl_desktop);
     }
@@ -78,15 +78,15 @@ __attribute__((used)) static void test_ShellItemGetAttributes(void)
 
     if(0)
     {
-        /* Crashes on native (Win 7) */
-        IShellItem_GetAttributes(psi, 0, NULL);
+
+        IShellItem_GetAttributes(psi, 0, ((void*)0));
     }
 
-    /* Test GetAttributes on the desktop folder. */
+
     sfgao = 0xdeadbeef;
     hr = IShellItem_GetAttributes(psi, SFGAO_FOLDER, &sfgao);
-    ok(hr == S_OK || broken(hr == E_FAIL) /* <Vista */, "Got 0x%08x\n", hr);
-    ok(sfgao == SFGAO_FOLDER || broken(sfgao == 0) /* <Vista */, "Got 0x%08x\n", sfgao);
+    ok(hr == S_OK || broken(hr == E_FAIL) , "Got 0x%08x\n", hr);
+    ok(sfgao == SFGAO_FOLDER || broken(sfgao == 0) , "Got 0x%08x\n", sfgao);
 
     IShellItem_Release(psi);
 
@@ -99,17 +99,17 @@ __attribute__((used)) static void test_ShellItemGetAttributes(void)
 
     lstrcpyW(buf, curdirW);
     lstrcatW(buf, testdir1W);
-    hr = IShellFolder_ParseDisplayName(pdesktopsf, NULL, NULL, buf, NULL, &pidl, NULL);
+    hr = IShellFolder_ParseDisplayName(pdesktopsf, ((void*)0), ((void*)0), buf, ((void*)0), &pidl, ((void*)0));
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    hr = pSHCreateShellItem(NULL, NULL, pidl, &psi_folder1);
+    hr = pSHCreateShellItem(((void*)0), ((void*)0), pidl, &psi_folder1);
     ok(hr == S_OK, "Got 0x%08x\n", sfgao);
     ILFree(pidl);
 
     lstrcpyW(buf, curdirW);
     lstrcatW(buf, testfile1W);
-    hr = IShellFolder_ParseDisplayName(pdesktopsf, NULL, NULL, buf, NULL, &pidl, NULL);
+    hr = IShellFolder_ParseDisplayName(pdesktopsf, ((void*)0), ((void*)0), buf, ((void*)0), &pidl, ((void*)0));
     ok(hr == S_OK, "got 0x%08x\n", hr);
-    hr = pSHCreateShellItem(NULL, NULL, pidl, &psi_file1);
+    hr = pSHCreateShellItem(((void*)0), ((void*)0), pidl, &psi_file1);
     ok(hr == S_OK, "Got 0x%08x\n", sfgao);
     ILFree(pidl);
 

@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct pmcraid_instance {int /*<<< orphan*/ * control_pool; TYPE_1__** cmd_list; } ;
-struct TYPE_2__ {scalar_t__ ioa_cb_bus_addr; int /*<<< orphan*/ * ioa_cb; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pci_pool_destroy (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pci_pool_free (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct pmcraid_instance {int * control_pool; TYPE_1__** cmd_list; } ;
+struct TYPE_2__ {scalar_t__ ioa_cb_bus_addr; int * ioa_cb; } ;
+
+
+ int pci_pool_destroy (int *) ;
+ int pci_pool_free (int *,int *,scalar_t__) ;
 
 __attribute__((used)) static void
 pmcraid_release_control_blocks(
-	struct pmcraid_instance *pinstance,
-	int max_index
+ struct pmcraid_instance *pinstance,
+ int max_index
 )
 {
-	int i;
+ int i;
 
-	if (pinstance->control_pool == NULL)
-		return;
+ if (pinstance->control_pool == ((void*)0))
+  return;
 
-	for (i = 0; i < max_index; i++) {
-		pci_pool_free(pinstance->control_pool,
-			      pinstance->cmd_list[i]->ioa_cb,
-			      pinstance->cmd_list[i]->ioa_cb_bus_addr);
-		pinstance->cmd_list[i]->ioa_cb = NULL;
-		pinstance->cmd_list[i]->ioa_cb_bus_addr = 0;
-	}
-	pci_pool_destroy(pinstance->control_pool);
-	pinstance->control_pool = NULL;
+ for (i = 0; i < max_index; i++) {
+  pci_pool_free(pinstance->control_pool,
+         pinstance->cmd_list[i]->ioa_cb,
+         pinstance->cmd_list[i]->ioa_cb_bus_addr);
+  pinstance->cmd_list[i]->ioa_cb = ((void*)0);
+  pinstance->cmd_list[i]->ioa_cb_bus_addr = 0;
+ }
+ pci_pool_destroy(pinstance->control_pool);
+ pinstance->control_pool = ((void*)0);
 }

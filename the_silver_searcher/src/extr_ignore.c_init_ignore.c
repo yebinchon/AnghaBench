@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {char const* dirname; size_t dirname_len; scalar_t__ abs_path_len; char* abs_path; struct TYPE_5__* parent; scalar_t__ slash_regexes_len; int /*<<< orphan*/ * slash_regexes; scalar_t__ invert_regexes_len; int /*<<< orphan*/ * invert_regexes; scalar_t__ regexes_len; int /*<<< orphan*/ * regexes; scalar_t__ slash_names_len; int /*<<< orphan*/ * slash_names; scalar_t__ names_len; int /*<<< orphan*/ * names; scalar_t__ extensions_len; int /*<<< orphan*/ * extensions; } ;
-typedef  TYPE_1__ ignores ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ag_asprintf (char**,char*,char const*,...) ; 
- void* ag_malloc (int) ; 
- scalar_t__ is_empty (TYPE_1__*) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {char const* dirname; size_t dirname_len; scalar_t__ abs_path_len; char* abs_path; struct TYPE_5__* parent; scalar_t__ slash_regexes_len; int * slash_regexes; scalar_t__ invert_regexes_len; int * invert_regexes; scalar_t__ regexes_len; int * regexes; scalar_t__ slash_names_len; int * slash_names; scalar_t__ names_len; int * names; scalar_t__ extensions_len; int * extensions; } ;
+typedef TYPE_1__ ignores ;
+
+
+ int ag_asprintf (char**,char*,char const*,...) ;
+ void* ag_malloc (int) ;
+ scalar_t__ is_empty (TYPE_1__*) ;
 
 ignores *init_ignore(ignores *parent, const char *dirname, const size_t dirname_len) {
     ignores *ig = ag_malloc(sizeof(ignores));
-    ig->extensions = NULL;
+    ig->extensions = ((void*)0);
     ig->extensions_len = 0;
-    ig->names = NULL;
+    ig->names = ((void*)0);
     ig->names_len = 0;
-    ig->slash_names = NULL;
+    ig->slash_names = ((void*)0);
     ig->slash_names_len = 0;
-    ig->regexes = NULL;
+    ig->regexes = ((void*)0);
     ig->regexes_len = 0;
-    ig->invert_regexes = NULL;
+    ig->invert_regexes = ((void*)0);
     ig->invert_regexes_len = 0;
-    ig->slash_regexes = NULL;
+    ig->slash_regexes = ((void*)0);
     ig->slash_regexes_len = 0;
     ig->dirname = dirname;
     ig->dirname_len = dirname_len;

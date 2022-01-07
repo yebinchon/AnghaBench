@@ -1,71 +1,63 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  SIGSTOP ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int getchar () ; 
- int /*<<< orphan*/  getpid () ; 
- int /*<<< orphan*/  kill (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int* koi2855 ; 
- scalar_t__ length ; 
- scalar_t__ lines ; 
- int /*<<< orphan*/  putchar (int) ; 
- int /*<<< orphan*/  stdin ; 
- int /*<<< orphan*/  stdout ; 
- int /*<<< orphan*/  ungetc (int,int /*<<< orphan*/ ) ; 
+ int EOF ;
+ int SIGSTOP ;
+ int atoi (char*) ;
+ int fflush (int ) ;
+ int getchar () ;
+ int getpid () ;
+ int kill (int ,int ) ;
+ int* koi2855 ;
+ scalar_t__ length ;
+ scalar_t__ lines ;
+ int putchar (int) ;
+ int stdin ;
+ int stdout ;
+ int ungetc (int,int ) ;
 
 int main(int argc, char *argv[])
 {
-	int c, i;
-	char *cp;
+ int c, i;
+ char *cp;
 
-	while (--argc) {
-		if (*(cp = *++argv) == '-') {
-			switch (*++cp) {
-			case 'l':
-				if ((i = atoi(++cp)) > 0)
-					length = i;
-				break;
-			}
-		}
-	}
+ while (--argc) {
+  if (*(cp = *++argv) == '-') {
+   switch (*++cp) {
+   case 'l':
+    if ((i = atoi(++cp)) > 0)
+     length = i;
+    break;
+   }
+  }
+ }
 
-	while ((c = getchar()) != EOF) {
-		if (c == '\031') {
-			if ((c = getchar()) == '\1') {
-				lines = 0;
-				fflush(stdout);
-				kill(getpid(), SIGSTOP);
-				continue;
-			} else {
-				ungetc(c, stdin);
-				c = '\031';
-			}
-		} else if (c & 0x80) {
-			putchar(koi2855[c & 0x7F]);
-			continue;
-		} else if (c == '\n')
-			lines++;
-		else if (c == '\f')
-			lines = length;
-		putchar(c);
-		if (lines >= length) {
-			lines = 0;
-			fflush(stdout);
-		}
-	}
-	return 0;
+ while ((c = getchar()) != EOF) {
+  if (c == '\031') {
+   if ((c = getchar()) == '\1') {
+    lines = 0;
+    fflush(stdout);
+    kill(getpid(), SIGSTOP);
+    continue;
+   } else {
+    ungetc(c, stdin);
+    c = '\031';
+   }
+  } else if (c & 0x80) {
+   putchar(koi2855[c & 0x7F]);
+   continue;
+  } else if (c == '\n')
+   lines++;
+  else if (c == '\f')
+   lines = length;
+  putchar(c);
+  if (lines >= length) {
+   lines = 0;
+   fflush(stdout);
+  }
+ }
+ return 0;
 }

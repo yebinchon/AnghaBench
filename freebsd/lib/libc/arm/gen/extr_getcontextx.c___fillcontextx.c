@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ucontextx {int /*<<< orphan*/  ucontext; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  __fillcontextx2 (char*) ; 
- int getcontext (int /*<<< orphan*/ *) ; 
+
+
+
+struct ucontextx {int ucontext; } ;
+
+
+ int __fillcontextx2 (char*) ;
+ int getcontext (int *) ;
 
 int
 __fillcontextx(char *ctx)
 {
-	struct ucontextx *ucxp;
+ struct ucontextx *ucxp;
 
-	ucxp = (struct ucontextx *)ctx;
-	if (getcontext(&ucxp->ucontext) == -1)
-		return (-1);
-	__fillcontextx2(ctx);
-	return (0);
+ ucxp = (struct ucontextx *)ctx;
+ if (getcontext(&ucxp->ucontext) == -1)
+  return (-1);
+ __fillcontextx2(ctx);
+ return (0);
 }

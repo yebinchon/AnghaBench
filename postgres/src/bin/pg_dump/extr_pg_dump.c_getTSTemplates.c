@@ -1,114 +1,114 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_19__   TYPE_5__ ;
-typedef  struct TYPE_18__   TYPE_4__ ;
-typedef  struct TYPE_17__   TYPE_3__ ;
-typedef  struct TYPE_16__   TYPE_2__ ;
-typedef  struct TYPE_15__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_19__ TYPE_5__ ;
+typedef struct TYPE_18__ TYPE_4__ ;
+typedef struct TYPE_17__ TYPE_3__ ;
+typedef struct TYPE_16__ TYPE_2__ ;
+typedef struct TYPE_15__ TYPE_1__ ;
+
+
 struct TYPE_15__ {void* oid; void* tableoid; } ;
-struct TYPE_19__ {int /*<<< orphan*/  dump; int /*<<< orphan*/  namespace; int /*<<< orphan*/  name; TYPE_1__ catId; int /*<<< orphan*/  objType; } ;
+struct TYPE_19__ {int dump; int namespace; int name; TYPE_1__ catId; int objType; } ;
 struct TYPE_18__ {int remoteVersion; } ;
-struct TYPE_17__ {int /*<<< orphan*/  data; } ;
+struct TYPE_17__ {int data; } ;
 struct TYPE_16__ {TYPE_5__ dobj; void* tmpllexize; void* tmplinit; } ;
-typedef  TYPE_2__ TSTemplateInfo ;
-typedef  TYPE_3__* PQExpBuffer ;
-typedef  int /*<<< orphan*/  PGresult ;
-typedef  TYPE_4__ Archive ;
+typedef TYPE_2__ TSTemplateInfo ;
+typedef TYPE_3__* PQExpBuffer ;
+typedef int PGresult ;
+typedef TYPE_4__ Archive ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AssignDumpId (TYPE_5__*) ; 
- int /*<<< orphan*/  DO_TSTEMPLATE ; 
- int /*<<< orphan*/  DUMP_COMPONENT_ACL ; 
- int /*<<< orphan*/ * ExecuteSqlQuery (TYPE_4__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  PGRES_TUPLES_OK ; 
- int /*<<< orphan*/  PQclear (int /*<<< orphan*/ *) ; 
- int PQfnumber (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  PQgetvalue (int /*<<< orphan*/ *,int,int) ; 
- int PQntuples (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  appendPQExpBufferStr (TYPE_3__*,char*) ; 
- void* atooid (int /*<<< orphan*/ ) ; 
- TYPE_3__* createPQExpBuffer () ; 
- int /*<<< orphan*/  destroyPQExpBuffer (TYPE_3__*) ; 
- int /*<<< orphan*/  findNamespace (TYPE_4__*,void*) ; 
- scalar_t__ pg_malloc (int) ; 
- int /*<<< orphan*/  pg_strdup (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  selectDumpableObject (TYPE_5__*,TYPE_4__*) ; 
+
+ int AssignDumpId (TYPE_5__*) ;
+ int DO_TSTEMPLATE ;
+ int DUMP_COMPONENT_ACL ;
+ int * ExecuteSqlQuery (TYPE_4__*,int ,int ) ;
+ int PGRES_TUPLES_OK ;
+ int PQclear (int *) ;
+ int PQfnumber (int *,char*) ;
+ int PQgetvalue (int *,int,int) ;
+ int PQntuples (int *) ;
+ int appendPQExpBufferStr (TYPE_3__*,char*) ;
+ void* atooid (int ) ;
+ TYPE_3__* createPQExpBuffer () ;
+ int destroyPQExpBuffer (TYPE_3__*) ;
+ int findNamespace (TYPE_4__*,void*) ;
+ scalar_t__ pg_malloc (int) ;
+ int pg_strdup (int ) ;
+ int selectDumpableObject (TYPE_5__*,TYPE_4__*) ;
 
 TSTemplateInfo *
 getTSTemplates(Archive *fout, int *numTSTemplates)
 {
-	PGresult   *res;
-	int			ntups;
-	int			i;
-	PQExpBuffer query;
-	TSTemplateInfo *tmplinfo;
-	int			i_tableoid;
-	int			i_oid;
-	int			i_tmplname;
-	int			i_tmplnamespace;
-	int			i_tmplinit;
-	int			i_tmpllexize;
+ PGresult *res;
+ int ntups;
+ int i;
+ PQExpBuffer query;
+ TSTemplateInfo *tmplinfo;
+ int i_tableoid;
+ int i_oid;
+ int i_tmplname;
+ int i_tmplnamespace;
+ int i_tmplinit;
+ int i_tmpllexize;
 
-	/* Before 8.3, there is no built-in text search support */
-	if (fout->remoteVersion < 80300)
-	{
-		*numTSTemplates = 0;
-		return NULL;
-	}
 
-	query = createPQExpBuffer();
+ if (fout->remoteVersion < 80300)
+ {
+  *numTSTemplates = 0;
+  return ((void*)0);
+ }
 
-	appendPQExpBufferStr(query, "SELECT tableoid, oid, tmplname, "
-						 "tmplnamespace, tmplinit::oid, tmpllexize::oid "
-						 "FROM pg_ts_template");
+ query = createPQExpBuffer();
 
-	res = ExecuteSqlQuery(fout, query->data, PGRES_TUPLES_OK);
+ appendPQExpBufferStr(query, "SELECT tableoid, oid, tmplname, "
+       "tmplnamespace, tmplinit::oid, tmpllexize::oid "
+       "FROM pg_ts_template");
 
-	ntups = PQntuples(res);
-	*numTSTemplates = ntups;
+ res = ExecuteSqlQuery(fout, query->data, PGRES_TUPLES_OK);
 
-	tmplinfo = (TSTemplateInfo *) pg_malloc(ntups * sizeof(TSTemplateInfo));
+ ntups = PQntuples(res);
+ *numTSTemplates = ntups;
 
-	i_tableoid = PQfnumber(res, "tableoid");
-	i_oid = PQfnumber(res, "oid");
-	i_tmplname = PQfnumber(res, "tmplname");
-	i_tmplnamespace = PQfnumber(res, "tmplnamespace");
-	i_tmplinit = PQfnumber(res, "tmplinit");
-	i_tmpllexize = PQfnumber(res, "tmpllexize");
+ tmplinfo = (TSTemplateInfo *) pg_malloc(ntups * sizeof(TSTemplateInfo));
 
-	for (i = 0; i < ntups; i++)
-	{
-		tmplinfo[i].dobj.objType = DO_TSTEMPLATE;
-		tmplinfo[i].dobj.catId.tableoid = atooid(PQgetvalue(res, i, i_tableoid));
-		tmplinfo[i].dobj.catId.oid = atooid(PQgetvalue(res, i, i_oid));
-		AssignDumpId(&tmplinfo[i].dobj);
-		tmplinfo[i].dobj.name = pg_strdup(PQgetvalue(res, i, i_tmplname));
-		tmplinfo[i].dobj.namespace =
-			findNamespace(fout,
-						  atooid(PQgetvalue(res, i, i_tmplnamespace)));
-		tmplinfo[i].tmplinit = atooid(PQgetvalue(res, i, i_tmplinit));
-		tmplinfo[i].tmpllexize = atooid(PQgetvalue(res, i, i_tmpllexize));
+ i_tableoid = PQfnumber(res, "tableoid");
+ i_oid = PQfnumber(res, "oid");
+ i_tmplname = PQfnumber(res, "tmplname");
+ i_tmplnamespace = PQfnumber(res, "tmplnamespace");
+ i_tmplinit = PQfnumber(res, "tmplinit");
+ i_tmpllexize = PQfnumber(res, "tmpllexize");
 
-		/* Decide whether we want to dump it */
-		selectDumpableObject(&(tmplinfo[i].dobj), fout);
+ for (i = 0; i < ntups; i++)
+ {
+  tmplinfo[i].dobj.objType = DO_TSTEMPLATE;
+  tmplinfo[i].dobj.catId.tableoid = atooid(PQgetvalue(res, i, i_tableoid));
+  tmplinfo[i].dobj.catId.oid = atooid(PQgetvalue(res, i, i_oid));
+  AssignDumpId(&tmplinfo[i].dobj);
+  tmplinfo[i].dobj.name = pg_strdup(PQgetvalue(res, i, i_tmplname));
+  tmplinfo[i].dobj.namespace =
+   findNamespace(fout,
+        atooid(PQgetvalue(res, i, i_tmplnamespace)));
+  tmplinfo[i].tmplinit = atooid(PQgetvalue(res, i, i_tmplinit));
+  tmplinfo[i].tmpllexize = atooid(PQgetvalue(res, i, i_tmpllexize));
 
-		/* Text Search Templates do not currently have ACLs. */
-		tmplinfo[i].dobj.dump &= ~DUMP_COMPONENT_ACL;
-	}
 
-	PQclear(res);
+  selectDumpableObject(&(tmplinfo[i].dobj), fout);
 
-	destroyPQExpBuffer(query);
 
-	return tmplinfo;
+  tmplinfo[i].dobj.dump &= ~DUMP_COMPONENT_ACL;
+ }
+
+ PQclear(res);
+
+ destroyPQExpBuffer(query);
+
+ return tmplinfo;
 }

@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  OPENSSL_CTX ;
-typedef  int /*<<< orphan*/  BN_CTX ;
-typedef  scalar_t__ BNRAND_FLAG ;
-typedef  int /*<<< orphan*/  BIGNUM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BN_F_BNRAND ; 
- int BN_RAND_BOTTOM_ANY ; 
- int BN_RAND_TOP_ANY ; 
- int /*<<< orphan*/  BN_R_BITS_TOO_SMALL ; 
- int /*<<< orphan*/  BN_bin2bn (unsigned char*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BN_zero (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  BNerr (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERR_R_MALLOC_FAILURE ; 
- scalar_t__ NORMAL ; 
- int /*<<< orphan*/  OPENSSL_clear_free (unsigned char*,int) ; 
- unsigned char* OPENSSL_malloc (int) ; 
- scalar_t__ TESTING ; 
- int /*<<< orphan*/  bn_check_top (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * bn_get_lib_ctx (int /*<<< orphan*/ *) ; 
- scalar_t__ rand_bytes_ex (int /*<<< orphan*/ *,unsigned char*,int) ; 
- scalar_t__ rand_priv_bytes_ex (int /*<<< orphan*/ *,unsigned char*,int) ; 
+
+
+
+typedef int OPENSSL_CTX ;
+typedef int BN_CTX ;
+typedef scalar_t__ BNRAND_FLAG ;
+typedef int BIGNUM ;
+
+
+ int BN_F_BNRAND ;
+ int BN_RAND_BOTTOM_ANY ;
+ int BN_RAND_TOP_ANY ;
+ int BN_R_BITS_TOO_SMALL ;
+ int BN_bin2bn (unsigned char*,int,int *) ;
+ int BN_zero (int *) ;
+ int BNerr (int ,int ) ;
+ int ERR_R_MALLOC_FAILURE ;
+ scalar_t__ NORMAL ;
+ int OPENSSL_clear_free (unsigned char*,int) ;
+ unsigned char* OPENSSL_malloc (int) ;
+ scalar_t__ TESTING ;
+ int bn_check_top (int *) ;
+ int * bn_get_lib_ctx (int *) ;
+ scalar_t__ rand_bytes_ex (int *,unsigned char*,int) ;
+ scalar_t__ rand_priv_bytes_ex (int *,unsigned char*,int) ;
 
 __attribute__((used)) static int bnrand(BNRAND_FLAG flag, BIGNUM *rnd, int bits, int top, int bottom,
                   BN_CTX *ctx)
 {
-    unsigned char *buf = NULL;
+    unsigned char *buf = ((void*)0);
     int b, ret = 0, bit, bytes, mask;
     OPENSSL_CTX *libctx = bn_get_lib_ctx(ctx);
 
@@ -54,21 +54,21 @@ __attribute__((used)) static int bnrand(BNRAND_FLAG flag, BIGNUM *rnd, int bits,
     mask = 0xff << (bit + 1);
 
     buf = OPENSSL_malloc(bytes);
-    if (buf == NULL) {
+    if (buf == ((void*)0)) {
         BNerr(BN_F_BNRAND, ERR_R_MALLOC_FAILURE);
         goto err;
     }
 
-    /* make a random number and set the top and bottom bits */
+
     b = flag == NORMAL ? rand_bytes_ex(libctx, buf, bytes)
                        : rand_priv_bytes_ex(libctx, buf, bytes);
     if (b <= 0)
         goto err;
 
     if (flag == TESTING) {
-        /*
-         * generate patterns that are more likely to trigger BN library bugs
-         */
+
+
+
         int i;
         unsigned char c;
 
@@ -97,7 +97,7 @@ __attribute__((used)) static int bnrand(BNRAND_FLAG flag, BIGNUM *rnd, int bits,
         }
     }
     buf[0] &= ~mask;
-    if (bottom)                 /* set bottom bit if requested */
+    if (bottom)
         buf[bytes - 1] |= 1;
     if (!BN_bin2bn(buf, bytes, rnd))
         goto err;

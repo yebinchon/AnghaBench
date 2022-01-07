@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct stream_dvd_info_req {int* palette; int /*<<< orphan*/  num_subs; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct stream_dvd_info_req {int* palette; int num_subs; } ;
 struct stream {int dummy; } ;
 struct sh_stream {int demuxer_id; TYPE_1__* codec; } ;
-struct priv {struct sh_stream** dvd_subs; int /*<<< orphan*/  is_dvd; } ;
+struct priv {struct sh_stream** dvd_subs; int is_dvd; } ;
 struct mp_csp_params {int dummy; } ;
 struct mp_cmat {int dummy; } ;
 struct TYPE_6__ {struct stream* stream; struct priv* priv; } ;
-typedef  TYPE_2__ demuxer_t ;
-struct TYPE_5__ {char* codec; char* extradata; int /*<<< orphan*/  extradata_size; } ;
+typedef TYPE_2__ demuxer_t ;
+struct TYPE_5__ {char* codec; char* extradata; int extradata_size; } ;
 
-/* Variables and functions */
- int MPMIN (int,int /*<<< orphan*/ ) ; 
- struct mp_csp_params MP_CSP_PARAMS_DEFAULTS ; 
- int /*<<< orphan*/  STREAM_CTRL_GET_DVD_INFO ; 
- int /*<<< orphan*/  STREAM_SUB ; 
- int /*<<< orphan*/  demux_add_sh_stream (TYPE_2__*,struct sh_stream*) ; 
- struct sh_stream* demux_alloc_sh_stream (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_disc_lang (struct stream*,struct sh_stream*,int) ; 
- int /*<<< orphan*/  mp_get_csp_matrix (struct mp_csp_params*,struct mp_cmat*) ; 
- int /*<<< orphan*/  mp_map_fixp_color (struct mp_cmat*,int,int*,int,int*) ; 
- scalar_t__ stream_control (struct stream*,int /*<<< orphan*/ ,struct stream_dvd_info_req*) ; 
- int /*<<< orphan*/  strlen (char*) ; 
- char* talloc_asprintf_append (char*,char*,...) ; 
- char* talloc_strdup (struct sh_stream*,char*) ; 
+
+ int MPMIN (int,int ) ;
+ struct mp_csp_params MP_CSP_PARAMS_DEFAULTS ;
+ int STREAM_CTRL_GET_DVD_INFO ;
+ int STREAM_SUB ;
+ int demux_add_sh_stream (TYPE_2__*,struct sh_stream*) ;
+ struct sh_stream* demux_alloc_sh_stream (int ) ;
+ int get_disc_lang (struct stream*,struct sh_stream*,int) ;
+ int mp_get_csp_matrix (struct mp_csp_params*,struct mp_cmat*) ;
+ int mp_map_fixp_color (struct mp_cmat*,int,int*,int,int*) ;
+ scalar_t__ stream_control (struct stream*,int ,struct stream_dvd_info_req*) ;
+ int strlen (char*) ;
+ char* talloc_asprintf_append (char*,char*,...) ;
+ char* talloc_strdup (struct sh_stream*,char*) ;
 
 __attribute__((used)) static void add_dvd_streams(demuxer_t *demuxer)
 {
@@ -49,13 +49,13 @@ __attribute__((used)) static void add_dvd_streams(demuxer_t *demuxer)
             struct sh_stream *sh = demux_alloc_sh_stream(STREAM_SUB);
             sh->demuxer_id = n + 0x20;
             sh->codec->codec = "dvd_subtitle";
-            get_disc_lang(stream, sh, true);
-            // p->streams _must_ match with p->slave->streams, so we can't add
-            // it yet - it has to be done when the real stream appears, which
-            // could be right on start, or any time later.
+            get_disc_lang(stream, sh, 1);
+
+
+
             p->dvd_subs[n] = sh;
 
-            // emulate the extradata
+
             struct mp_csp_params csp = MP_CSP_PARAMS_DEFAULTS;
             struct mp_cmat cmatrix;
             mp_get_csp_matrix(&csp, &cmatrix);

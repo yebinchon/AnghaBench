@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- scalar_t__ CONFIG_LIST_SIZE ; 
- int /*<<< orphan*/ * config_list ; 
- size_t config_list_pos ; 
- int /*<<< orphan*/  cur_config ; 
- int /*<<< orphan*/  tl_config_delete (int /*<<< orphan*/ ) ; 
+ scalar_t__ CONFIG_LIST_SIZE ;
+ int * config_list ;
+ size_t config_list_pos ;
+ int cur_config ;
+ int tl_config_delete (int ) ;
 
 void tl_config_back (void) {
   tl_config_delete (cur_config);

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {unsigned int mediac; int i_attributes; struct TYPE_5__* pp_attributes; struct TYPE_5__* mediav; struct TYPE_5__* fmt; struct TYPE_5__* psz_uri; struct TYPE_5__* psz_sessioninfo; struct TYPE_5__* psz_sessionname; } ;
-typedef  TYPE_1__ sdp_t ;
+typedef TYPE_1__ sdp_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FreeAttribute (TYPE_1__) ; 
- int /*<<< orphan*/  free (TYPE_1__*) ; 
+
+ int FreeAttribute (TYPE_1__) ;
+ int free (TYPE_1__*) ;
 
 __attribute__((used)) static void FreeSDP( sdp_t *p_sdp )
 {

@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_4__ ;
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {int /*<<< orphan*/  (* p_glDisable ) (int /*<<< orphan*/ ) ;} ;
+
+
+typedef struct TYPE_8__ TYPE_4__ ;
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {int (* p_glDisable ) (int ) ;} ;
 struct TYPE_7__ {TYPE_2__ gl; } ;
 struct wined3d_gl_info {scalar_t__* supported; TYPE_3__ gl_ops; } ;
 struct wined3d_context {unsigned int shader_update_mask; struct wined3d_gl_info* gl_info; } ;
 struct shader_arb_priv {scalar_t__ last_vs_color_unclamp; TYPE_4__* vertex_pipe; scalar_t__ current_vprogram_id; TYPE_1__* fragment_pipe; scalar_t__ current_fprogram_id; } ;
-struct TYPE_8__ {int /*<<< orphan*/  (* vp_enable ) (struct wined3d_gl_info const*,scalar_t__) ;} ;
-struct TYPE_5__ {int /*<<< orphan*/  (* enable_extension ) (struct wined3d_gl_info const*,scalar_t__) ;} ;
+struct TYPE_8__ {int (* vp_enable ) (struct wined3d_gl_info const*,scalar_t__) ;} ;
+struct TYPE_5__ {int (* enable_extension ) (struct wined3d_gl_info const*,scalar_t__) ;} ;
 
-/* Variables and functions */
- size_t ARB_COLOR_BUFFER_FLOAT ; 
- size_t ARB_FRAGMENT_PROGRAM ; 
- size_t ARB_VERTEX_PROGRAM ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  GL_CLAMP_VERTEX_COLOR_ARB ; 
- int /*<<< orphan*/  GL_EXTCALL (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GL_FIXED_ONLY_ARB ; 
- int /*<<< orphan*/  GL_FRAGMENT_PROGRAM_ARB ; 
- int /*<<< orphan*/  GL_VERTEX_PROGRAM_ARB ; 
- unsigned int WINED3D_SHADER_TYPE_COMPUTE ; 
- unsigned int WINED3D_SHADER_TYPE_DOMAIN ; 
- unsigned int WINED3D_SHADER_TYPE_GEOMETRY ; 
- unsigned int WINED3D_SHADER_TYPE_HULL ; 
- unsigned int WINED3D_SHADER_TYPE_PIXEL ; 
- unsigned int WINED3D_SHADER_TYPE_VERTEX ; 
- int /*<<< orphan*/  checkGLcall (char*) ; 
- int /*<<< orphan*/  glClampColorARB (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub2 (struct wined3d_gl_info const*,scalar_t__) ; 
- int /*<<< orphan*/  stub3 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  stub4 (struct wined3d_gl_info const*,scalar_t__) ; 
+
+ size_t ARB_COLOR_BUFFER_FLOAT ;
+ size_t ARB_FRAGMENT_PROGRAM ;
+ size_t ARB_VERTEX_PROGRAM ;
+ scalar_t__ FALSE ;
+ int GL_CLAMP_VERTEX_COLOR_ARB ;
+ int GL_EXTCALL (int ) ;
+ int GL_FIXED_ONLY_ARB ;
+ int GL_FRAGMENT_PROGRAM_ARB ;
+ int GL_VERTEX_PROGRAM_ARB ;
+ unsigned int WINED3D_SHADER_TYPE_COMPUTE ;
+ unsigned int WINED3D_SHADER_TYPE_DOMAIN ;
+ unsigned int WINED3D_SHADER_TYPE_GEOMETRY ;
+ unsigned int WINED3D_SHADER_TYPE_HULL ;
+ unsigned int WINED3D_SHADER_TYPE_PIXEL ;
+ unsigned int WINED3D_SHADER_TYPE_VERTEX ;
+ int checkGLcall (char*) ;
+ int glClampColorARB (int ,int ) ;
+ int stub1 (int ) ;
+ int stub2 (struct wined3d_gl_info const*,scalar_t__) ;
+ int stub3 (int ) ;
+ int stub4 (struct wined3d_gl_info const*,scalar_t__) ;
 
 __attribute__((used)) static void shader_arb_disable(void *shader_priv, struct wined3d_context *context)
 {

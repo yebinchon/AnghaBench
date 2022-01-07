@@ -1,72 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  hb_value_t ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int hb_value_t ;
 struct TYPE_3__ {int format; } ;
-typedef  TYPE_1__ hb_container_t ;
+typedef TYPE_1__ hb_container_t ;
 
-/* Variables and functions */
- int HB_ACODEC_INVALID ; 
- int HB_AMIXDOWN_NONE ; 
- int HB_INVALID_AMIXDOWN ; 
- int HB_MUX_INVALID ; 
- int HB_VCODEC_INVALID ; 
- int /*<<< orphan*/  dict_clean (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int hb_audio_encoder_get_default (int) ; 
- int hb_audio_encoder_get_from_name (char const*) ; 
- char* hb_audio_encoder_get_short_name (int) ; 
- int hb_audio_samplerate_get_from_name (char const*) ; 
- int hb_container_get_from_name (char const*) ; 
- TYPE_1__* hb_container_get_next (int /*<<< orphan*/ *) ; 
- char* hb_container_get_short_name (int) ; 
- int /*<<< orphan*/ * hb_dict_get (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  hb_dict_set (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  hb_error (char*,char const*,char const*) ; 
- int hb_mixdown_get_from_name (char const*) ; 
- char* hb_mixdown_get_short_name (int) ; 
- int /*<<< orphan*/ * hb_value_array_get (int /*<<< orphan*/ *,int) ; 
- int hb_value_array_len (int /*<<< orphan*/ *) ; 
- char* hb_value_get_string (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * hb_value_string (char const*) ; 
- int hb_video_encoder_get_default (int) ; 
- int hb_video_encoder_get_from_name (char const*) ; 
- char* hb_video_encoder_get_short_name (int) ; 
- int hb_video_framerate_get_from_name (char const*) ; 
- scalar_t__ strcasecmp (char const*,char*) ; 
+
+ int HB_ACODEC_INVALID ;
+ int HB_AMIXDOWN_NONE ;
+ int HB_INVALID_AMIXDOWN ;
+ int HB_MUX_INVALID ;
+ int HB_VCODEC_INVALID ;
+ int dict_clean (int *,int *) ;
+ int hb_audio_encoder_get_default (int) ;
+ int hb_audio_encoder_get_from_name (char const*) ;
+ char* hb_audio_encoder_get_short_name (int) ;
+ int hb_audio_samplerate_get_from_name (char const*) ;
+ int hb_container_get_from_name (char const*) ;
+ TYPE_1__* hb_container_get_next (int *) ;
+ char* hb_container_get_short_name (int) ;
+ int * hb_dict_get (int *,char*) ;
+ int hb_dict_set (int *,char*,int *) ;
+ int hb_error (char*,char const*,char const*) ;
+ int hb_mixdown_get_from_name (char const*) ;
+ char* hb_mixdown_get_short_name (int) ;
+ int * hb_value_array_get (int *,int) ;
+ int hb_value_array_len (int *) ;
+ char* hb_value_get_string (int *) ;
+ int * hb_value_string (char const*) ;
+ int hb_video_encoder_get_default (int) ;
+ int hb_video_encoder_get_from_name (char const*) ;
+ char* hb_video_encoder_get_short_name (int) ;
+ int hb_video_framerate_get_from_name (char const*) ;
+ scalar_t__ strcasecmp (char const*,char*) ;
 
 __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *template)
 {
     dict_clean(preset, template);
 
-    // Check for proper "short name" values.
-    // Convert as necessary.
+
+
     hb_value_t *val;
-    const char *preset_name = NULL;
+    const char *preset_name = ((void*)0);
     int muxer;
 
     val = hb_dict_get(preset, "PresetName");
-    if (val != NULL)
+    if (val != ((void*)0))
         preset_name = hb_value_get_string(val);
 
     val = hb_dict_get(preset, "FileFormat");
-    if (val != NULL)
+    if (val != ((void*)0))
     {
         const char *s, *mux;
         s = hb_value_get_string(val);
         muxer = hb_container_get_from_name(s);
         if (muxer == HB_MUX_INVALID)
         {
-            const hb_container_t *c = hb_container_get_next(NULL);
+            const hb_container_t *c = hb_container_get_next(((void*)0));
             muxer = c->format;
             hb_error("Preset %s: Invalid container (%s)", preset_name, s);
         }
@@ -76,11 +76,11 @@ __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *t
     }
     else
     {
-        const hb_container_t *c = hb_container_get_next(NULL);
+        const hb_container_t *c = hb_container_get_next(((void*)0));
         muxer = c->format;
     }
     val = hb_dict_get(preset, "VideoEncoder");
-    if (val != NULL)
+    if (val != ((void*)0))
     {
         const char *s, *enc;
         int vcodec;
@@ -96,7 +96,7 @@ __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *t
         hb_dict_set(preset, "VideoEncoder", val);
     }
     val = hb_dict_get(preset, "VideoFramerate");
-    if (val != NULL)
+    if (val != ((void*)0))
     {
         const char *s;
         s = hb_value_get_string(val);
@@ -116,7 +116,7 @@ __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *t
         }
     }
     val = hb_dict_get(preset, "AudioEncoderFallback");
-    if (val != NULL)
+    if (val != ((void*)0))
     {
         const char *s, *enc;
         int acodec;
@@ -139,7 +139,7 @@ __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *t
     {
         hb_value_t *adict = hb_value_array_get(alist, ii);
         val = hb_dict_get(adict, "AudioEncoder");
-        if (val != NULL)
+        if (val != ((void*)0))
         {
             const char *s, *enc;
             int acodec;
@@ -156,7 +156,7 @@ __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *t
             hb_dict_set(adict, "AudioEncoder", val);
         }
         val = hb_dict_get(adict, "AudioSamplerate");
-        if (val != NULL)
+        if (val != ((void*)0))
         {
             const char *s;
             s = hb_value_get_string(val);
@@ -173,14 +173,14 @@ __attribute__((used)) static void preset_clean(hb_value_t *preset, hb_value_t *t
             }
         }
         val = hb_dict_get(adict, "AudioMixdown");
-        if (val != NULL)
+        if (val != ((void*)0))
         {
             const char *s, *mix;
             s = hb_value_get_string(val);
             int mixdown = hb_mixdown_get_from_name(s);
             if (mixdown == HB_INVALID_AMIXDOWN)
             {
-                // work.c do_job() sanitizes NONE to default mixdown
+
                 mixdown = HB_AMIXDOWN_NONE;
                 hb_error("Preset %s: Invalid audio mixdown (%s)",
                          preset_name, s);

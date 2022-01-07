@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  long long value_t ;
-typedef  int /*<<< orphan*/  object_id_t ;
-typedef  int /*<<< orphan*/  list_id_t ;
 
-/* Variables and functions */
- scalar_t__ do_add_list_entry (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int,long long,int const*) ; 
- long long do_change_entry_value (int /*<<< orphan*/ ,int /*<<< orphan*/ ,long long,int) ; 
- scalar_t__ entry_exists (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ metafile_mode ; 
- scalar_t__ prepare_list_metafile (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef long long value_t ;
+typedef int object_id_t ;
+typedef int list_id_t ;
+
+
+ scalar_t__ do_add_list_entry (int ,int ,int,int,long long,int const*) ;
+ long long do_change_entry_value (int ,int ,long long,int) ;
+ scalar_t__ entry_exists (int ,int ) ;
+ scalar_t__ metafile_mode ;
+ scalar_t__ prepare_list_metafile (int ,int) ;
 
 long long do_add_incr_value (list_id_t list_id, object_id_t object_id, int flags, value_t value, const int *extra) {
   if (metafile_mode && prepare_list_metafile (list_id, 1) < 0) {

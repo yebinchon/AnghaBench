@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  machine_hang () ; 
- int /*<<< orphan*/  pm_power_off () ; 
- int /*<<< orphan*/  preempt_disable () ; 
- int /*<<< orphan*/  smp_send_stop () ; 
+ int machine_hang () ;
+ int pm_power_off () ;
+ int preempt_disable () ;
+ int smp_send_stop () ;
 
 void machine_power_off(void)
 {
-	if (pm_power_off)
-		pm_power_off();
+ if (pm_power_off)
+  pm_power_off();
 
-#ifdef CONFIG_SMP
-	preempt_disable();
-	smp_send_stop();
-#endif
-	machine_hang();
+
+
+
+
+ machine_hang();
 }

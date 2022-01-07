@@ -1,68 +1,68 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct Option   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  TestDb ;
+
+
+typedef struct Option TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int TestDb ;
 struct Option {char const* zOpt; int eVal; int iDefault; } ;
-struct TYPE_5__ {int nMinKey; int nMaxKey; int nMinVal; int nMaxVal; int /*<<< orphan*/  member_4; int /*<<< orphan*/  member_3; int /*<<< orphan*/  member_2; int /*<<< orphan*/  member_1; int /*<<< orphan*/  member_0; } ;
-typedef  int /*<<< orphan*/  FILE ;
-typedef  TYPE_1__ DatasourceDefn ;
-typedef  int /*<<< orphan*/  Datasource ;
+struct TYPE_5__ {int nMinKey; int nMaxKey; int nMinVal; int nMaxVal; int member_4; int member_3; int member_2; int member_1; int member_0; } ;
+typedef int FILE ;
+typedef TYPE_1__ DatasourceDefn ;
+typedef int Datasource ;
 
-/* Variables and functions */
- int ArraySize (TYPE_3__*) ; 
- size_t ST_FETCH ; 
- size_t ST_KEYSIZE ; 
- size_t ST_NSCAN ; 
- size_t ST_PAUSE ; 
- size_t ST_REPEAT ; 
- size_t ST_SCAN ; 
- size_t ST_TRANS ; 
- size_t ST_VALSIZE ; 
- size_t ST_WRITE ; 
- int /*<<< orphan*/  TEST_DATASOURCE_RANDOM ; 
- int atoi (char*) ; 
- int /*<<< orphan*/  do_speed_write_hook2 ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  flushPrev (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- size_t j ; 
- int /*<<< orphan*/  print_speed_test_help () ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  sleep (int) ; 
- int /*<<< orphan*/  stdout ; 
- int tdb_fetch (int /*<<< orphan*/ *,void*,int,void**,int*) ; 
- int /*<<< orphan*/  tdb_lsm_env () ; 
- int tdb_lsm_open (char*,char*,int,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  tdb_lsm_write_hook (int /*<<< orphan*/ *,int /*<<< orphan*/ ,void*) ; 
- int testArgSelect (TYPE_3__*,char*,char*,int*) ; 
- int /*<<< orphan*/  testBegin (int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  testClose (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  testCommit (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int*) ; 
- int testCountDatabase (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  testDatasourceEntry (int /*<<< orphan*/ *,int,void**,int*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  testDatasourceFetch (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int*) ; 
- int /*<<< orphan*/  testDatasourceFree (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * testDatasourceNew (TYPE_1__*) ; 
- int /*<<< orphan*/  testMallocUninstall (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * testOpen (char*,int,int*) ; 
- int /*<<< orphan*/  testPrintError (char*,char const*) ; 
- int testPrngValue (int) ; 
- int testTimeGet () ; 
- int /*<<< orphan*/  testTimeInit () ; 
- int /*<<< orphan*/  testWriteDatasourceRange (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int,int,int*) ; 
- int /*<<< orphan*/  usleep (int) ; 
+
+ int ArraySize (TYPE_3__*) ;
+ size_t ST_FETCH ;
+ size_t ST_KEYSIZE ;
+ size_t ST_NSCAN ;
+ size_t ST_PAUSE ;
+ size_t ST_REPEAT ;
+ size_t ST_SCAN ;
+ size_t ST_TRANS ;
+ size_t ST_VALSIZE ;
+ size_t ST_WRITE ;
+ int TEST_DATASOURCE_RANDOM ;
+ int atoi (char*) ;
+ int do_speed_write_hook2 ;
+ int fclose (int *) ;
+ int fflush (int ) ;
+ int flushPrev (int *) ;
+ int * fopen (char*,char*) ;
+ size_t j ;
+ int print_speed_test_help () ;
+ int printf (char*,...) ;
+ int sleep (int) ;
+ int stdout ;
+ int tdb_fetch (int *,void*,int,void**,int*) ;
+ int tdb_lsm_env () ;
+ int tdb_lsm_open (char*,char*,int,int **) ;
+ int tdb_lsm_write_hook (int *,int ,void*) ;
+ int testArgSelect (TYPE_3__*,char*,char*,int*) ;
+ int testBegin (int *,int,int*) ;
+ int testClose (int **) ;
+ int testCommit (int *,int ,int*) ;
+ int testCountDatabase (int *) ;
+ int testDatasourceEntry (int *,int,void**,int*,int ,int ) ;
+ int testDatasourceFetch (int *,int *,int,int*) ;
+ int testDatasourceFree (int *) ;
+ int * testDatasourceNew (TYPE_1__*) ;
+ int testMallocUninstall (int ) ;
+ int * testOpen (char*,int,int*) ;
+ int testPrintError (char*,char const*) ;
+ int testPrngValue (int) ;
+ int testTimeGet () ;
+ int testTimeInit () ;
+ int testWriteDatasourceRange (int *,int *,int,int,int*) ;
+ int usleep (int) ;
 
 int do_speed_test2(int nArg, char **azArg){
   struct Option {
@@ -70,17 +70,17 @@ int do_speed_test2(int nArg, char **azArg){
     int eVal;
     int iDefault;
   } aOpt[] = {
-    { "-repeat",  ST_REPEAT,    10},
-    { "-write",   ST_WRITE,  10000},
-    { "-pause",   ST_PAUSE,      0},
-    { "-fetch",   ST_FETCH,      0},
-    { "-scan",    ST_SCAN,       0},
-    { "-nscan",   ST_NSCAN,      0},
-    { "-keysize", ST_KEYSIZE,   12},
-    { "-valsize", ST_VALSIZE,  100},
-    { "-trans",   ST_TRANS,      0},
-    { "-system",  -1,            0},
-    { "help",     -2,            0},
+    { "-repeat", ST_REPEAT, 10},
+    { "-write", ST_WRITE, 10000},
+    { "-pause", ST_PAUSE, 0},
+    { "-fetch", ST_FETCH, 0},
+    { "-scan", ST_SCAN, 0},
+    { "-nscan", ST_NSCAN, 0},
+    { "-keysize", ST_KEYSIZE, 12},
+    { "-valsize", ST_VALSIZE, 100},
+    { "-trans", ST_TRANS, 0},
+    { "-system", -1, 0},
+    { "help", -2, 0},
     {0, 0, 0}
   };
   int i;
@@ -95,19 +95,11 @@ int do_speed_test2(int nArg, char **azArg){
   char *zSystem = "";
   int bLsm = 1;
   FILE *pLog = 0;
-
-#ifdef NDEBUG
-  /* If NDEBUG is defined, disable the dynamic memory related checks in
-  ** lsmtest_mem.c. They slow things down.  */
-  testMallocUninstall(tdb_lsm_env());
-#endif
-
-  /* Initialize aParam[] with default values. */
   for(i=0; i<ArraySize(aOpt); i++){
     if( aOpt[i].zOpt ) aParam[aOpt[i].eVal] = aOpt[i].iDefault;
   }
 
-  /* Process the command line switches. */
+
   for(i=0; i<nArg; i+=2){
     int iSel;
     rc = testArgSelect(aOpt, "switch", azArg[i], &iSel);
@@ -127,14 +119,14 @@ int do_speed_test2(int nArg, char **azArg){
     }else{
       zSystem = azArg[i+1];
       bLsm = 0;
-#if 0
-      for(j=0; zSystem[j]; j++){
-        if( zSystem[j]=='=' ) bLsm = 1;
-      }
-#endif
+
+
+
+
+
     }
   }
-  
+
   printf("#");
   for(i=0; i<ArraySize(aOpt); i++){
     if( aOpt[i].zOpt ){
@@ -165,10 +157,10 @@ int do_speed_test2(int nArg, char **azArg){
     nContent = testCountDatabase(pDb);
   }
 
-#if 0
-  pLog = fopen("/tmp/speed.log", "w");
-  tdb_lsm_write_hook(pDb, do_speed_write_hook2, (void *)pLog);
-#endif
+
+
+
+
 
   for(i=0; i<aParam[ST_REPEAT] && rc==0; i++){
     int msWrite, msFetch;
@@ -198,17 +190,8 @@ int do_speed_test2(int nArg, char **azArg){
       if( aParam[ST_TRANS] ) testBegin(pDb, 1, &rc);
       for(iFetch=0; iFetch<aParam[ST_FETCH]; iFetch++){
         int iKey = testPrngValue(i*nWrite+iFetch) % nContent;
-#ifndef NDEBUG
-        testDatasourceFetch(pDb, pData, iKey, &rc);
-#else
-        void *pKey; int nKey;           /* Database key to query for */
-        void *pVal; int nVal;           /* Result of query */
 
-        testDatasourceEntry(pData, iKey, &pKey, &nKey, 0, 0);
-        rc = tdb_fetch(pDb, pKey, nKey, &pVal, &nVal);
-        if( rc==0 && nVal<0 ) rc = 1;
-        if( rc ) break;
-#endif
+        testDatasourceFetch(pDb, pData, iKey, &rc);
       }
       if( aParam[ST_TRANS] ) testCommit(pDb, 0, &rc);
       msFetch = testTimeGet();

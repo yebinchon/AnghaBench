@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct neon_type_el {scalar_t__ type; int /*<<< orphan*/  size; } ;
-typedef  enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct neon_type_el {scalar_t__ type; int size; } ;
+typedef enum neon_shape { ____Placeholder_neon_shape } neon_shape ;
 struct TYPE_4__ {int instruction; TYPE_1__* operands; } ;
-struct TYPE_3__ {int /*<<< orphan*/  reg; scalar_t__ isreg; } ;
+struct TYPE_3__ {int reg; scalar_t__ isreg; } ;
 
-/* Variables and functions */
- int HI1 (int /*<<< orphan*/ ) ; 
- int LOW4 (int /*<<< orphan*/ ) ; 
- int NEON_ENC_IMMED (int) ; 
- int /*<<< orphan*/  NS_DDI ; 
- int /*<<< orphan*/  NS_NULL ; 
- int /*<<< orphan*/  NS_QQI ; 
- scalar_t__ NT_float ; 
- int /*<<< orphan*/  NT_unsigned ; 
- int N_EQK ; 
- unsigned int N_KEY ; 
- int N_SIZ ; 
- TYPE_2__ inst ; 
- struct neon_type_el neon_check_type (int,int,int,unsigned int) ; 
- int neon_dp_fixup (int) ; 
- int /*<<< orphan*/  neon_dyadic_misc (int /*<<< orphan*/ ,unsigned int,int) ; 
- int /*<<< orphan*/  neon_exchange_operands () ; 
- int neon_logbits (int /*<<< orphan*/ ) ; 
- int neon_quad (int) ; 
- int neon_select_shape (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int HI1 (int ) ;
+ int LOW4 (int ) ;
+ int NEON_ENC_IMMED (int) ;
+ int NS_DDI ;
+ int NS_NULL ;
+ int NS_QQI ;
+ scalar_t__ NT_float ;
+ int NT_unsigned ;
+ int N_EQK ;
+ unsigned int N_KEY ;
+ int N_SIZ ;
+ TYPE_2__ inst ;
+ struct neon_type_el neon_check_type (int,int,int,unsigned int) ;
+ int neon_dp_fixup (int) ;
+ int neon_dyadic_misc (int ,unsigned int,int) ;
+ int neon_exchange_operands () ;
+ int neon_logbits (int ) ;
+ int neon_quad (int) ;
+ int neon_select_shape (int ,int ,int ) ;
 
 __attribute__((used)) static void
 neon_compare (unsigned regtypes, unsigned immtypes, int invert)
@@ -61,7 +61,7 @@ neon_compare (unsigned regtypes, unsigned immtypes, int invert)
       inst.instruction |= neon_quad (rs) << 6;
       inst.instruction |= (et.type == NT_float) << 10;
       inst.instruction |= neon_logbits (et.size) << 18;
-      
+
       inst.instruction = neon_dp_fixup (inst.instruction);
     }
 }

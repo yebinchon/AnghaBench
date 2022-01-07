@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct snmp_toolinfo {int dummy; } ;
-typedef  int int32_t ;
+typedef int int32_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IsoOrgDod_OID ; 
- int /*<<< orphan*/  assert (int /*<<< orphan*/ ) ; 
- scalar_t__ parse_flist (struct snmp_toolinfo*,char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+ int IsoOrgDod_OID ;
+ int assert (int ) ;
+ scalar_t__ parse_flist (struct snmp_toolinfo*,char*,int *,int *) ;
 
 int32_t
 parse_file(struct snmp_toolinfo *snmptoolctx, char *opt_arg)
 {
-	assert(opt_arg != NULL);
+ assert(opt_arg != ((void*)0));
 
-	if (parse_flist(snmptoolctx, opt_arg, NULL, &IsoOrgDod_OID) < 0)
-		return (-1);
+ if (parse_flist(snmptoolctx, opt_arg, ((void*)0), &IsoOrgDod_OID) < 0)
+  return (-1);
 
-	return (2);
+ return (2);
 }

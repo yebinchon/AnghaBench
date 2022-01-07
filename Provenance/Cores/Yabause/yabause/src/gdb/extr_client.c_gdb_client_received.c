@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_15__   TYPE_3__ ;
-typedef  struct TYPE_14__   TYPE_2__ ;
-typedef  struct TYPE_13__   TYPE_1__ ;
-typedef  struct TYPE_12__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int u8 ;
-typedef  int u32 ;
-typedef  int u16 ;
+
+
+typedef struct TYPE_15__ TYPE_3__ ;
+typedef struct TYPE_14__ TYPE_2__ ;
+typedef struct TYPE_13__ TYPE_1__ ;
+typedef struct TYPE_12__ TYPE_10__ ;
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int u16 ;
 struct TYPE_14__ {char* buffer; } ;
-typedef  TYPE_2__ gdb_packet ;
-struct TYPE_15__ {TYPE_10__* context; int /*<<< orphan*/  sock; } ;
-typedef  TYPE_3__ gdb_client ;
+typedef TYPE_2__ gdb_packet ;
+struct TYPE_15__ {TYPE_10__* context; int sock; } ;
+typedef TYPE_3__ gdb_client ;
 struct TYPE_13__ {int* R; int PC; int PR; int GBR; int VBR; int MACH; int MACL; int SR; } ;
 struct TYPE_12__ {TYPE_1__ regs; } ;
 
-/* Variables and functions */
- int MappedMemoryReadByte (int) ; 
- int MappedMemoryReadLong (int) ; 
- int MappedMemoryReadWord (int) ; 
- int /*<<< orphan*/  SH2AddCodeBreakpoint (TYPE_10__*,int) ; 
- int /*<<< orphan*/  SH2DelCodeBreakpoint (TYPE_10__*,int) ; 
- int /*<<< orphan*/  YabSockSend (int /*<<< orphan*/ ,char*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  gdb_client_break (TYPE_3__*) ; 
- int /*<<< orphan*/  gdb_client_send (TYPE_3__*,char*,int) ; 
- int /*<<< orphan*/  gdb_client_step (TYPE_3__*) ; 
- int /*<<< orphan*/  gdb_client_unlock (TYPE_3__*) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  printf (char*,char*) ; 
- int /*<<< orphan*/  sprintf (char*,char*,int) ; 
- int /*<<< orphan*/  sscanf (char*,char*,int*,int*) ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+
+ int MappedMemoryReadByte (int) ;
+ int MappedMemoryReadLong (int) ;
+ int MappedMemoryReadWord (int) ;
+ int SH2AddCodeBreakpoint (TYPE_10__*,int) ;
+ int SH2DelCodeBreakpoint (TYPE_10__*,int) ;
+ int YabSockSend (int ,char*,int,int ) ;
+ int free (char*) ;
+ int gdb_client_break (TYPE_3__*) ;
+ int gdb_client_send (TYPE_3__*,char*,int) ;
+ int gdb_client_step (TYPE_3__*) ;
+ int gdb_client_unlock (TYPE_3__*) ;
+ char* malloc (int) ;
+ int printf (char*,char*) ;
+ int sprintf (char*,char*,int) ;
+ int sscanf (char*,char*,int*,int*) ;
+ int strncmp (char*,char*,int) ;
 
 void gdb_client_received(gdb_client * client, gdb_packet * packet)
 {
@@ -133,9 +133,9 @@ void gdb_client_received(gdb_client * client, gdb_packet * packet)
    }
    else if (packet->buffer[0] == 's')
       gdb_client_step(client);
-   else if (packet->buffer[0] == 'Z') /* insert breakpoint */
+   else if (packet->buffer[0] == 'Z')
    {
-      if (packet->buffer[1] == '0') /* code breakpoint */
+      if (packet->buffer[1] == '0')
       {
          u32 addr;
          int dummy;
@@ -144,9 +144,9 @@ void gdb_client_received(gdb_client * client, gdb_packet * packet)
       }
       gdb_client_send(client, "OK", 2);
    }
-   else if (packet->buffer[0] == 'z') /* remove breakpoint */
+   else if (packet->buffer[0] == 'z')
    {
-      if (packet->buffer[1] == '0') /* code breakpoint */
+      if (packet->buffer[1] == '0')
       {
          u32 addr;
          int dummy;

@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ulong ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef scalar_t__ ulong ;
 struct TYPE_5__ {scalar_t__ num; } ;
-typedef  TYPE_1__ DwarfAbbrev ;
+typedef TYPE_1__ DwarfAbbrev ;
 
-/* Variables and functions */
- TYPE_1__* nil ; 
- int /*<<< orphan*/  werrstr (char*) ; 
+
+ TYPE_1__* nil ;
+ int werrstr (char*) ;
 
 __attribute__((used)) static DwarfAbbrev*
 findabbrev(DwarfAbbrev *a, int na, ulong num)
 {
-	int i;
+ int i;
 
-	for(i=0; i<na; i++)
-		if(a[i].num == num)
-			return &a[i];
-	werrstr("abbrev not found");
-	return nil;
+ for(i=0; i<na; i++)
+  if(a[i].num == num)
+   return &a[i];
+ werrstr("abbrev not found");
+ return nil;
 }

@@ -1,86 +1,86 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct mountinfo {char* mount_point; } ;
 struct TYPE_2__ {int rrd_update_every; } ;
 
-/* Variables and functions */
- void* CONFIG_BOOLEAN_NO ; 
- int /*<<< orphan*/  D_CGROUP ; 
- int /*<<< orphan*/  FILENAME_MAX ; 
- int NETDATA_CHART_PRIO_CGROUPS_CONTAINERS ; 
- void* Read_hash ; 
- int /*<<< orphan*/  SIMPLE_PATTERN_EXACT ; 
- void* Write_hash ; 
- int /*<<< orphan*/  _SC_PAGESIZE ; 
- void* cgroup_blkio_base ; 
- int cgroup_check_for_new_every ; 
- int cgroup_containers_chart_priority ; 
- void* cgroup_cpuacct_base ; 
- void* cgroup_cpuset_base ; 
- void* cgroup_devices_base ; 
- void* cgroup_enable_blkio_io ; 
- void* cgroup_enable_blkio_merged_ops ; 
- void* cgroup_enable_blkio_ops ; 
- void* cgroup_enable_blkio_queued_ops ; 
- void* cgroup_enable_blkio_throttle_io ; 
- void* cgroup_enable_blkio_throttle_ops ; 
- void* cgroup_enable_cpuacct_stat ; 
- void* cgroup_enable_cpuacct_usage ; 
- void* cgroup_enable_detailed_memory ; 
- void* cgroup_enable_memory ; 
- void* cgroup_enable_memory_failcnt ; 
- void* cgroup_enable_new_cgroups_detected_at_runtime ; 
- void* cgroup_enable_swap ; 
- void* cgroup_enable_systemd_services ; 
- void* cgroup_enable_systemd_services_detailed_memory ; 
- int cgroup_max_depth ; 
- void* cgroup_memory_base ; 
- int cgroup_recheck_zero_blkio_every_iterations ; 
- int cgroup_recheck_zero_mem_detailed_every_iterations ; 
- int cgroup_recheck_zero_mem_failcnt_every_iterations ; 
- int cgroup_root_max ; 
- scalar_t__ cgroup_search_in_devices ; 
- char* cgroup_unified_base ; 
- int cgroup_update_every ; 
- void* cgroup_use_unified_cgroups ; 
- void* cgroup_used_memory_without_cache ; 
- void* cgroups_network_interface_script ; 
- void* cgroups_rename_script ; 
- void* config_get (char*,char*,char*) ; 
- void* config_get_boolean (char*,char*,void*) ; 
- void* config_get_boolean_ondemand (char*,char*,void*) ; 
- scalar_t__ config_get_number (char*,char*,int) ; 
- int /*<<< orphan*/  debug (int /*<<< orphan*/ ,char*,char*) ; 
- void* enabled_cgroup_paths ; 
- void* enabled_cgroup_patterns ; 
- void* enabled_cgroup_renames ; 
- int /*<<< orphan*/  error (char*) ; 
- TYPE_1__* localhost ; 
- struct mountinfo* mountinfo_find_by_filesystem_mount_source (struct mountinfo*,char*,char*) ; 
- struct mountinfo* mountinfo_find_by_filesystem_super_option (struct mountinfo*,char*,char*) ; 
- int /*<<< orphan*/  mountinfo_free_all (struct mountinfo*) ; 
- struct mountinfo* mountinfo_read (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  netdata_configured_host_prefix ; 
- int /*<<< orphan*/  netdata_configured_primary_plugins_dir ; 
- void* simple_hash (char*) ; 
- void* simple_pattern_create (void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  snprintfz (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,...) ; 
- int /*<<< orphan*/  sysconf (int /*<<< orphan*/ ) ; 
- void* system_hash ; 
- int /*<<< orphan*/  system_page_size ; 
- void* systemd_services_cgroups ; 
- void* user_hash ; 
+
+ void* CONFIG_BOOLEAN_NO ;
+ int D_CGROUP ;
+ int FILENAME_MAX ;
+ int NETDATA_CHART_PRIO_CGROUPS_CONTAINERS ;
+ void* Read_hash ;
+ int SIMPLE_PATTERN_EXACT ;
+ void* Write_hash ;
+ int _SC_PAGESIZE ;
+ void* cgroup_blkio_base ;
+ int cgroup_check_for_new_every ;
+ int cgroup_containers_chart_priority ;
+ void* cgroup_cpuacct_base ;
+ void* cgroup_cpuset_base ;
+ void* cgroup_devices_base ;
+ void* cgroup_enable_blkio_io ;
+ void* cgroup_enable_blkio_merged_ops ;
+ void* cgroup_enable_blkio_ops ;
+ void* cgroup_enable_blkio_queued_ops ;
+ void* cgroup_enable_blkio_throttle_io ;
+ void* cgroup_enable_blkio_throttle_ops ;
+ void* cgroup_enable_cpuacct_stat ;
+ void* cgroup_enable_cpuacct_usage ;
+ void* cgroup_enable_detailed_memory ;
+ void* cgroup_enable_memory ;
+ void* cgroup_enable_memory_failcnt ;
+ void* cgroup_enable_new_cgroups_detected_at_runtime ;
+ void* cgroup_enable_swap ;
+ void* cgroup_enable_systemd_services ;
+ void* cgroup_enable_systemd_services_detailed_memory ;
+ int cgroup_max_depth ;
+ void* cgroup_memory_base ;
+ int cgroup_recheck_zero_blkio_every_iterations ;
+ int cgroup_recheck_zero_mem_detailed_every_iterations ;
+ int cgroup_recheck_zero_mem_failcnt_every_iterations ;
+ int cgroup_root_max ;
+ scalar_t__ cgroup_search_in_devices ;
+ char* cgroup_unified_base ;
+ int cgroup_update_every ;
+ void* cgroup_use_unified_cgroups ;
+ void* cgroup_used_memory_without_cache ;
+ void* cgroups_network_interface_script ;
+ void* cgroups_rename_script ;
+ void* config_get (char*,char*,char*) ;
+ void* config_get_boolean (char*,char*,void*) ;
+ void* config_get_boolean_ondemand (char*,char*,void*) ;
+ scalar_t__ config_get_number (char*,char*,int) ;
+ int debug (int ,char*,char*) ;
+ void* enabled_cgroup_paths ;
+ void* enabled_cgroup_patterns ;
+ void* enabled_cgroup_renames ;
+ int error (char*) ;
+ TYPE_1__* localhost ;
+ struct mountinfo* mountinfo_find_by_filesystem_mount_source (struct mountinfo*,char*,char*) ;
+ struct mountinfo* mountinfo_find_by_filesystem_super_option (struct mountinfo*,char*,char*) ;
+ int mountinfo_free_all (struct mountinfo*) ;
+ struct mountinfo* mountinfo_read (int ) ;
+ int netdata_configured_host_prefix ;
+ int netdata_configured_primary_plugins_dir ;
+ void* simple_hash (char*) ;
+ void* simple_pattern_create (void*,int *,int ) ;
+ int snprintfz (char*,int ,char*,int ,...) ;
+ int sysconf (int ) ;
+ void* system_hash ;
+ int system_page_size ;
+ void* systemd_services_cgroups ;
+ void* user_hash ;
 
 void read_cgroup_plugin_configuration() {
     system_page_size = sysconf(_SC_PAGESIZE);
@@ -181,24 +181,24 @@ void read_cgroup_plugin_configuration() {
         cgroup_devices_base = config_get("plugin:cgroups", "path to /sys/fs/cgroup/devices", filename);
     }
     else {
-        //cgroup_enable_cpuacct_stat =
+
         cgroup_enable_cpuacct_usage =
-        //cgroup_enable_memory =
-        //cgroup_enable_detailed_memory =
+
+
         cgroup_enable_memory_failcnt =
-        //cgroup_enable_swap =
-        //cgroup_enable_blkio_io =
-        //cgroup_enable_blkio_ops =
+
+
+
         cgroup_enable_blkio_throttle_io =
         cgroup_enable_blkio_throttle_ops =
         cgroup_enable_blkio_merged_ops =
         cgroup_enable_blkio_queued_ops = CONFIG_BOOLEAN_NO;
         cgroup_search_in_devices = 0;
         cgroup_enable_systemd_services_detailed_memory = CONFIG_BOOLEAN_NO;
-        cgroup_used_memory_without_cache = CONFIG_BOOLEAN_NO; //unified cgroups use different values
+        cgroup_used_memory_without_cache = CONFIG_BOOLEAN_NO;
 
-        //TODO: can there be more than 1 cgroup2 mount point?
-        mi = mountinfo_find_by_filesystem_super_option(root, "cgroup2", "rw"); //there is no cgroup2 specific super option - for now use 'rw' option
+
+        mi = mountinfo_find_by_filesystem_super_option(root, "cgroup2", "rw");
         if(mi) debug(D_CGROUP, "found unified cgroup root using super options, with path: '%s'", mi->mount_point);
         if(!mi) {
             mi = mountinfo_find_by_filesystem_mount_source(root, "cgroup2", "cgroup");
@@ -221,20 +221,20 @@ void read_cgroup_plugin_configuration() {
 
     enabled_cgroup_patterns = simple_pattern_create(
             config_get("plugin:cgroups", "enable by default cgroups matching",
-            // ----------------------------------------------------------------
 
-                    " !*/init.scope "                      // ignore init.scope
-                    " !/system.slice/run-*.scope "         // ignore system.slice/run-XXXX.scope
-                    " *.scope "                            // we need all other *.scope for sure
 
-            // ----------------------------------------------------------------
+                    " !*/init.scope "
+                    " !/system.slice/run-*.scope "
+                    " *.scope "
 
-                    " /machine.slice/*.service "           // #3367 systemd-nspawn
 
-            // ----------------------------------------------------------------
 
-                    " !*/vcpu* "                           // libvirtd adds these sub-cgroups
-                    " !*/emulator "                        // libvirtd adds these sub-cgroups
+                    " /machine.slice/*.service "
+
+
+
+                    " !*/vcpu* "
+                    " !*/emulator "
                     " !*.mount "
                     " !*.partition "
                     " !*.service "
@@ -246,28 +246,28 @@ void read_cgroup_plugin_configuration() {
                     " !/docker "
                     " !/libvirt "
                     " !/lxc "
-                    " !/lxc/*/* "                          //  #1397 #2649
+                    " !/lxc/*/* "
                     " !/machine "
                     " !/qemu "
                     " !/system "
                     " !/systemd "
                     " !/user "
-                    " * "                                  // enable anything else
-            ), NULL, SIMPLE_PATTERN_EXACT);
+                    " * "
+            ), ((void*)0), SIMPLE_PATTERN_EXACT);
 
     enabled_cgroup_paths = simple_pattern_create(
             config_get("plugin:cgroups", "search for cgroups in subpaths matching",
-                    " !*/init.scope "                      // ignore init.scope
-                    " !*-qemu "                            //  #345
-                    " !*.libvirt-qemu "                    //  #3010
+                    " !*/init.scope "
+                    " !*-qemu "
+                    " !*.libvirt-qemu "
                     " !/init.scope "
                     " !/system "
                     " !/systemd "
                     " !/user "
                     " !/user.slice "
-                    " !/lxc/*/* "                          //  #2161 #2649
+                    " !/lxc/*/* "
                     " * "
-            ), NULL, SIMPLE_PATTERN_EXACT);
+            ), ((void*)0), SIMPLE_PATTERN_EXACT);
 
     snprintfz(filename, FILENAME_MAX, "%s/cgroup-name.sh", netdata_configured_primary_plugins_dir);
     cgroups_rename_script = config_get("plugin:cgroups", "script to get cgroup names", filename);
@@ -281,29 +281,29 @@ void read_cgroup_plugin_configuration() {
                     " !*.mount "
                     " !*.socket "
                     " !*.partition "
-                    " /machine.slice/*.service "          // #3367 systemd-nspawn
+                    " /machine.slice/*.service "
                     " !*.service "
                     " !*.slice "
                     " !*.swap "
                     " !*.user "
                     " !init.scope "
-                    " !*.scope/vcpu* "                    // libvirtd adds these sub-cgroups
-                    " !*.scope/emulator "                 // libvirtd adds these sub-cgroups
+                    " !*.scope/vcpu* "
+                    " !*.scope/emulator "
                     " *.scope "
                     " *docker* "
                     " *lxc* "
                     " *qemu* "
-                    " *kubepods* "                        // #3396 kubernetes
-                    " *.libvirt-qemu "                    // #3010
+                    " *kubepods* "
+                    " *.libvirt-qemu "
                     " * "
-            ), NULL, SIMPLE_PATTERN_EXACT);
+            ), ((void*)0), SIMPLE_PATTERN_EXACT);
 
     if(cgroup_enable_systemd_services) {
         systemd_services_cgroups = simple_pattern_create(
                 config_get("plugin:cgroups", "cgroups to match as systemd services",
                         " !/system.slice/*/*.service "
                         " /system.slice/*.service "
-                ), NULL, SIMPLE_PATTERN_EXACT);
+                ), ((void*)0), SIMPLE_PATTERN_EXACT);
     }
 
     mountinfo_free_all(root);

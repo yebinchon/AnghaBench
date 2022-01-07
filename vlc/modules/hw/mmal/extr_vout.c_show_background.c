@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* sys; } ;
-typedef  TYPE_1__ vout_display_t ;
-struct TYPE_5__ {void* bkg_resource; void* bkg_element; scalar_t__ layer; int /*<<< orphan*/  dmx_handle; } ;
-typedef  TYPE_2__ vout_display_sys_t ;
-typedef  int uint32_t ;
-typedef  int /*<<< orphan*/  color ;
-typedef  int /*<<< orphan*/  VC_RECT_T ;
-typedef  int /*<<< orphan*/  DISPMANX_UPDATE_HANDLE_T ;
+typedef TYPE_1__ vout_display_t ;
+struct TYPE_5__ {void* bkg_resource; void* bkg_element; scalar_t__ layer; int dmx_handle; } ;
+typedef TYPE_2__ vout_display_sys_t ;
+typedef int uint32_t ;
+typedef int color ;
+typedef int VC_RECT_T ;
+typedef int DISPMANX_UPDATE_HANDLE_T ;
 
-/* Variables and functions */
- void* DISPMANX_NO_HANDLE ; 
- int /*<<< orphan*/  DISPMANX_PROTECTION_NONE ; 
- int /*<<< orphan*/  VC_IMAGE_RGBA32 ; 
- int /*<<< orphan*/  VC_IMAGE_ROT0 ; 
- void* vc_dispmanx_element_add (int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,void*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_dispmanx_element_remove (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  vc_dispmanx_rect_set (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- void* vc_dispmanx_resource_create (int /*<<< orphan*/ ,int,int,int*) ; 
- int /*<<< orphan*/  vc_dispmanx_resource_delete (void*) ; 
- int /*<<< orphan*/  vc_dispmanx_resource_write_data (void*,int /*<<< orphan*/ ,int,int*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vc_dispmanx_update_start (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_dispmanx_update_submit_sync (int /*<<< orphan*/ ) ; 
+
+ void* DISPMANX_NO_HANDLE ;
+ int DISPMANX_PROTECTION_NONE ;
+ int VC_IMAGE_RGBA32 ;
+ int VC_IMAGE_ROT0 ;
+ void* vc_dispmanx_element_add (int ,int ,scalar_t__,int *,void*,int *,int ,int *,int *,int ) ;
+ int vc_dispmanx_element_remove (int ,void*) ;
+ int vc_dispmanx_rect_set (int *,int ,int ,int,int) ;
+ void* vc_dispmanx_resource_create (int ,int,int,int*) ;
+ int vc_dispmanx_resource_delete (void*) ;
+ int vc_dispmanx_resource_write_data (void*,int ,int,int*,int *) ;
+ int vc_dispmanx_update_start (int ) ;
+ int vc_dispmanx_update_submit_sync (int ) ;
 
 __attribute__((used)) static void show_background(vout_display_t *vd, bool enable)
 {
@@ -53,7 +53,7 @@ __attribute__((used)) static void show_background(vout_display_t *vd, bool enabl
         update = vc_dispmanx_update_start(0);
         sys->bkg_element = vc_dispmanx_element_add(update, sys->dmx_handle,
                         sys->layer - 1, &dst_rect, sys->bkg_resource, &src_rect,
-                        DISPMANX_PROTECTION_NONE, NULL, NULL, VC_IMAGE_ROT0);
+                        DISPMANX_PROTECTION_NONE, ((void*)0), ((void*)0), VC_IMAGE_ROT0);
         vc_dispmanx_update_submit_sync(update);
     } else if (!enable && sys->bkg_element) {
         update = vc_dispmanx_update_start(0);

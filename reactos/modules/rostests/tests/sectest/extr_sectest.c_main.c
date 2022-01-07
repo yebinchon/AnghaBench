@@ -1,36 +1,36 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int UINT ;
-typedef  int /*<<< orphan*/ * PVOID ;
-typedef  scalar_t__ HANDLE ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CREATE_ALWAYS ; 
- int /*<<< orphan*/  CloseHandle (scalar_t__) ; 
- scalar_t__ CreateFile (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ CreateFileMapping (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FILE_MAP_ALL_ACCESS ; 
- int /*<<< orphan*/  FillMemory (int /*<<< orphan*/ *,int,char) ; 
- int GENERIC_READ ; 
- int GENERIC_WRITE ; 
- int GetLastError () ; 
- scalar_t__ INVALID_HANDLE_VALUE ; 
- int /*<<< orphan*/ * MapViewOfFile (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  PAGE_READWRITE ; 
- int /*<<< orphan*/  UnmapViewOfFile (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _T (char*) ; 
- int /*<<< orphan*/  printf (char*,...) ; 
- int /*<<< orphan*/  strcpy (int /*<<< orphan*/ *,char*) ; 
+
+
+
+typedef int UINT ;
+typedef int * PVOID ;
+typedef scalar_t__ HANDLE ;
+
+
+ int CREATE_ALWAYS ;
+ int CloseHandle (scalar_t__) ;
+ scalar_t__ CreateFile (int ,int,int ,int *,int ,int ,int ) ;
+ scalar_t__ CreateFileMapping (scalar_t__,int *,int ,int ,int,int *) ;
+ int FILE_MAP_ALL_ACCESS ;
+ int FillMemory (int *,int,char) ;
+ int GENERIC_READ ;
+ int GENERIC_WRITE ;
+ int GetLastError () ;
+ scalar_t__ INVALID_HANDLE_VALUE ;
+ int * MapViewOfFile (scalar_t__,int ,int ,int ,int) ;
+ int PAGE_READWRITE ;
+ int UnmapViewOfFile (int *) ;
+ int _T (char*) ;
+ int printf (char*,...) ;
+ int strcpy (int *,char*) ;
 
 int main(int argc, char* argv[])
 {
@@ -41,12 +41,12 @@ int main(int argc, char* argv[])
   printf("Section Test\n");
 
   hFile = CreateFile(_T("sectest.txt"),
-		     GENERIC_READ | GENERIC_WRITE,
-		     0,
-		     NULL,
-		     CREATE_ALWAYS,
-		     0,
-		     0);
+       GENERIC_READ | GENERIC_WRITE,
+       0,
+       ((void*)0),
+       CREATE_ALWAYS,
+       0,
+       0);
   if (hFile == INVALID_HANDLE_VALUE)
     {
       printf("Failed to create file (err=%ld)", GetLastError());
@@ -54,12 +54,12 @@ int main(int argc, char* argv[])
     }
 
   Section = CreateFileMapping(hFile,
-			      NULL,
-			      PAGE_READWRITE,
-			      0,
-			      4096,
-			      NULL);
-  if (Section == NULL)
+         ((void*)0),
+         PAGE_READWRITE,
+         0,
+         4096,
+         ((void*)0));
+  if (Section == ((void*)0))
     {
       printf("Failed to create section (err=%ld)", GetLastError());
       return 1;
@@ -67,12 +67,12 @@ int main(int argc, char* argv[])
 
   printf("Mapping view of section\n");
   BaseAddress = MapViewOfFile(Section,
-			      FILE_MAP_ALL_ACCESS,
-			      0,
-			      0,
-			      4096);
+         FILE_MAP_ALL_ACCESS,
+         0,
+         0,
+         4096);
   printf("BaseAddress %x\n", (UINT) BaseAddress);
-  if (BaseAddress == NULL)
+  if (BaseAddress == ((void*)0))
     {
       printf("Failed to map section (%ld)\n", GetLastError());
       return 1;

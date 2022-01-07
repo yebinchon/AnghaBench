@@ -1,303 +1,294 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
-
 unsigned int convert_language (unsigned int x) {
   switch (x) {
-  case 113://q->й
+  case 113:
     return 1081;
-  case 119://w->ц
+  case 119:
     return 1094;
-  case 101://e->у
+  case 101:
     return 1091;
-  case 114://r->к
+  case 114:
     return 1082;
-  case 116://t->е
+  case 116:
     return 1077;
-  case 121://y->н
+  case 121:
     return 1085;
-  case 117://u->г
+  case 117:
     return 1075;
-  case 105://i->ш
+  case 105:
     return 1096;
-  case 111://o->щ
+  case 111:
     return 1097;
-  case 112://p->з
+  case 112:
     return 1079;
-  case 91://[->х
+  case 91:
     return 1093;
-  case 93://]->ъ
+  case 93:
     return 1098;
-  case 97://a->ф
+  case 97:
     return 1092;
-  case 115://s->ы
+  case 115:
     return 1099;
-  case 100://d->в
+  case 100:
     return 1074;
-  case 102://f->а
+  case 102:
     return 1072;
-  case 103://g->п
+  case 103:
     return 1087;
-  case 104://h->р
+  case 104:
     return 1088;
-  case 106://j->о
+  case 106:
     return 1086;
-  case 107://k->л
+  case 107:
     return 1083;
-  case 108://l->д
+  case 108:
     return 1076;
-  case 59://;->ж
+  case 59:
     return 1078;
-  case 39://'->э
+  case 39:
     return 1101;
-  case 122://z->я
+  case 122:
     return 1103;
-  case 120://x->ч
+  case 120:
     return 1095;
-  case 99://c->с
+  case 99:
     return 1089;
-  case 118://v->м
+  case 118:
     return 1084;
-  case 98://b->и
+  case 98:
     return 1080;
-  case 110://n->т
+  case 110:
     return 1090;
-  case 109://m->ь
+  case 109:
     return 1100;
-  case 44://,->б
+  case 44:
     return 1073;
-  case 46://.->ю
+  case 46:
     return 1102;
-  case 96://`->ё
+  case 96:
     return 1105;
-  case 81://Q->Й
+  case 81:
     return 1049;
-  case 87://W->Ц
+  case 87:
     return 1062;
-  case 69://E->У
+  case 69:
     return 1059;
-  case 82://R->К
+  case 82:
     return 1050;
-  case 84://T->Е
+  case 84:
     return 1045;
-  case 89://Y->Н
+  case 89:
     return 1053;
-  case 85://U->Г
+  case 85:
     return 1043;
-  case 73://I->Ш
+  case 73:
     return 1064;
-  case 79://O->Щ
+  case 79:
     return 1065;
-  case 80://P->З
+  case 80:
     return 1047;
-  case 123://{->Х
+  case 123:
     return 1061;
-  case 125://}->Ъ
+  case 125:
     return 1066;
-  case 65://A->Ф
+  case 65:
     return 1060;
-  case 83://S->Ы
+  case 83:
     return 1067;
-  case 68://D->В
+  case 68:
     return 1042;
-  case 70://F->А
+  case 70:
     return 1040;
-  case 71://G->П
+  case 71:
     return 1055;
-  case 72://H->Р
+  case 72:
     return 1056;
-  case 74://J->О
+  case 74:
     return 1054;
-  case 75://K->Л
+  case 75:
     return 1051;
-  case 76://L->Д
+  case 76:
     return 1044;
-  case 58://:->Ж
+  case 58:
     return 1046;
-  case 34://"->Э
+  case 34:
     return 1069;
-  case 90://Z->Я
+  case 90:
     return 1071;
-  case 88://X->Ч
+  case 88:
     return 1063;
-  case 67://C->С
+  case 67:
     return 1057;
-  case 86://V->М
+  case 86:
     return 1052;
-  case 66://B->И
+  case 66:
     return 1048;
-  case 78://N->Т
+  case 78:
     return 1058;
-  case 77://M->Ь
+  case 77:
     return 1068;
-  case 60://<->Б
+  case 60:
     return 1041;
-  case 62://>->Ю
+  case 62:
     return 1070;
-  case 126://~->Ё
+  case 126:
     return 1025;
-  case 1081://й->q
+  case 1081:
     return 113;
-  case 1094://ц->w
+  case 1094:
     return 119;
-  case 1091://у->e
+  case 1091:
     return 101;
-  case 1082://к->r
+  case 1082:
     return 114;
-  case 1077://е->t
+  case 1077:
     return 116;
-  case 1085://н->y
+  case 1085:
     return 121;
-  case 1075://г->u
+  case 1075:
     return 117;
-  case 1096://ш->i
+  case 1096:
     return 105;
-  case 1097://щ->o
+  case 1097:
     return 111;
-  case 1079://з->p
+  case 1079:
     return 112;
-  case 1093://х->[
+  case 1093:
     return 91;
-  case 1098://ъ->]
+  case 1098:
     return 93;
-  case 1092://ф->a
+  case 1092:
     return 97;
-  case 1099://ы->s
+  case 1099:
     return 115;
-  case 1074://в->d
+  case 1074:
     return 100;
-  case 1072://а->f
+  case 1072:
     return 102;
-  case 1087://п->g
+  case 1087:
     return 103;
-  case 1088://р->h
+  case 1088:
     return 104;
-  case 1086://о->j
+  case 1086:
     return 106;
-  case 1083://л->k
+  case 1083:
     return 107;
-  case 1076://д->l
+  case 1076:
     return 108;
-  case 1078://ж->;
+  case 1078:
     return 59;
-  case 1101://э->'
+  case 1101:
     return 39;
-  case 1103://я->z
+  case 1103:
     return 122;
-  case 1095://ч->x
+  case 1095:
     return 120;
-  case 1089://с->c
+  case 1089:
     return 99;
-  case 1084://м->v
+  case 1084:
     return 118;
-  case 1080://и->b
+  case 1080:
     return 98;
-  case 1090://т->n
+  case 1090:
     return 110;
-  case 1100://ь->m
+  case 1100:
     return 109;
-  case 1073://б->,
+  case 1073:
     return 44;
-  case 1102://ю->.
+  case 1102:
     return 46;
-  case 1105://ё->`
+  case 1105:
     return 96;
-  case 1049://Й->Q
+  case 1049:
     return 81;
-  case 1062://Ц->W
+  case 1062:
     return 87;
-  case 1059://У->E
+  case 1059:
     return 69;
-  case 1050://К->R
+  case 1050:
     return 82;
-  case 1045://Е->T
+  case 1045:
     return 84;
-  case 1053://Н->Y
+  case 1053:
     return 89;
-  case 1043://Г->U
+  case 1043:
     return 85;
-  case 1064://Ш->I
+  case 1064:
     return 73;
-  case 1065://Щ->O
+  case 1065:
     return 79;
-  case 1047://З->P
+  case 1047:
     return 80;
-  case 1061://Х->{
+  case 1061:
     return 123;
-  case 1066://Ъ->}
+  case 1066:
     return 125;
-  case 1060://Ф->A
+  case 1060:
     return 65;
-  case 1067://Ы->S
+  case 1067:
     return 83;
-  case 1042://В->D
+  case 1042:
     return 68;
-  case 1040://А->F
+  case 1040:
     return 70;
-  case 1055://П->G
+  case 1055:
     return 71;
-  case 1056://Р->H
+  case 1056:
     return 72;
-  case 1054://О->J
+  case 1054:
     return 74;
-  case 1051://Л->K
+  case 1051:
     return 75;
-  case 1044://Д->L
+  case 1044:
     return 76;
-  case 1046://Ж->:
+  case 1046:
     return 58;
-  case 1069://Э->"
+  case 1069:
     return 34;
-  case 1071://Я->Z
+  case 1071:
     return 90;
-  case 1063://Ч->X
+  case 1063:
     return 88;
-  case 1057://С->C
+  case 1057:
     return 67;
-  case 1052://М->V
+  case 1052:
     return 86;
-  case 1048://И->B
+  case 1048:
     return 66;
-  case 1058://Т->N
+  case 1058:
     return 78;
-  case 1068://Ь->M
+  case 1068:
     return 77;
-  case 1041://Б-><
+  case 1041:
     return 60;
-  case 1070://Ю->>
+  case 1070:
     return 62;
-  case 1025://Ё->~
+  case 1025:
     return 126;
-  case 48://0->0
+  case 48:
     return 48;
-  case 49://1->1
+  case 49:
     return 49;
-  case 50://2->2
+  case 50:
     return 50;
-  case 51://3->3
+  case 51:
     return 51;
-  case 52://4->4
+  case 52:
     return 52;
-  case 53://5->5
+  case 53:
     return 53;
-  case 54://6->6
+  case 54:
     return 54;
-  case 55://7->7
+  case 55:
     return 55;
-  case 56://8->8
+  case 56:
     return 56;
-  case 57://9->9
+  case 57:
     return 57;
   default:
     if (x >= 128) {

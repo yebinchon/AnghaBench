@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int u32_t ;
-typedef  int spiffs_obj_id ;
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int u32_t ;
+typedef int spiffs_obj_id ;
 struct TYPE_4__ {scalar_t__ work; } ;
-typedef  TYPE_1__ spiffs ;
+typedef TYPE_1__ spiffs ;
 
-/* Variables and functions */
- int SPIFFS_CFG_LOG_PAGE_SZ (TYPE_1__*) ; 
- int SPIFFS_OBJ_ID_IX_FLAG ; 
+
+ int SPIFFS_CFG_LOG_PAGE_SZ (TYPE_1__*) ;
+ int SPIFFS_OBJ_ID_IX_FLAG ;
 
 __attribute__((used)) static int spiffs_object_index_search(spiffs *fs, spiffs_obj_id obj_id) {
   u32_t i;

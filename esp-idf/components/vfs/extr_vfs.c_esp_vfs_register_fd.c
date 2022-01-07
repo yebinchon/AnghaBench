@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ esp_vfs_id_t ;
-typedef  int /*<<< orphan*/  esp_err_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ esp_vfs_id_t ;
+typedef int esp_err_t ;
 struct TYPE_2__ {int vfs_index; int permanent; int local_fd; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ESP_ERR_INVALID_ARG ; 
- int /*<<< orphan*/  ESP_ERR_NO_MEM ; 
- int /*<<< orphan*/  ESP_LOGD (int /*<<< orphan*/ ,char*,scalar_t__,int,...) ; 
- int /*<<< orphan*/  ESP_OK ; 
- int MAX_FDS ; 
- int /*<<< orphan*/  TAG ; 
- int /*<<< orphan*/  _lock_acquire (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  _lock_release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  esp_err_to_name (int /*<<< orphan*/ ) ; 
- TYPE_1__* s_fd_table ; 
- int /*<<< orphan*/  s_fd_table_lock ; 
- scalar_t__ s_vfs_count ; 
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_ERR_NO_MEM ;
+ int ESP_LOGD (int ,char*,scalar_t__,int,...) ;
+ int ESP_OK ;
+ int MAX_FDS ;
+ int TAG ;
+ int _lock_acquire (int *) ;
+ int _lock_release (int *) ;
+ int esp_err_to_name (int ) ;
+ TYPE_1__* s_fd_table ;
+ int s_fd_table_lock ;
+ scalar_t__ s_vfs_count ;
 
 esp_err_t esp_vfs_register_fd(esp_vfs_id_t vfs_id, int *fd)
 {
-    if (vfs_id < 0 || vfs_id >= s_vfs_count || fd == NULL) {
+    if (vfs_id < 0 || vfs_id >= s_vfs_count || fd == ((void*)0)) {
         ESP_LOGD(TAG, "Invalid arguments for esp_vfs_register_fd(%d, 0x%x)", vfs_id, (int) fd);
         return ESP_ERR_INVALID_ARG;
     }
@@ -40,7 +40,7 @@ esp_err_t esp_vfs_register_fd(esp_vfs_id_t vfs_id, int *fd)
     _lock_acquire(&s_fd_table_lock);
     for (int i = 0; i < MAX_FDS; ++i) {
         if (s_fd_table[i].vfs_index == -1) {
-            s_fd_table[i].permanent = true;
+            s_fd_table[i].permanent = 1;
             s_fd_table[i].vfs_index = vfs_id;
             s_fd_table[i].local_fd = i;
             *fd = i;

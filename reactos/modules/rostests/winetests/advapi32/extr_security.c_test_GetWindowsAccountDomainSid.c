@@ -1,58 +1,58 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int /*<<< orphan*/  member_0; } ;
-struct TYPE_5__ {int /*<<< orphan*/ ************ Sid; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int member_0; } ;
+struct TYPE_5__ {int ************ Sid; } ;
 struct TYPE_6__ {TYPE_1__ User; } ;
-typedef  TYPE_2__ TOKEN_USER ;
-typedef  TYPE_3__ SID_IDENTIFIER_AUTHORITY ;
-typedef  int /*<<< orphan*/ ******** PSID ;
-typedef  int /*<<< orphan*/  HANDLE ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
+typedef TYPE_2__ TOKEN_USER ;
+typedef TYPE_3__ SID_IDENTIFIER_AUTHORITY ;
+typedef int ******** PSID ;
+typedef int HANDLE ;
+typedef int DWORD ;
+typedef int BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CloseHandle (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ERROR_INSUFFICIENT_BUFFER ; 
- int /*<<< orphan*/  ERROR_INVALID_PARAMETER ; 
- int /*<<< orphan*/  ERROR_INVALID_SID ; 
- int /*<<< orphan*/  ERROR_NO_TOKEN ; 
- int EqualSid (int /*<<< orphan*/ ********,int /*<<< orphan*/ ********) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetCurrentProcess () ; 
- int /*<<< orphan*/  GetCurrentThread () ; 
- int /*<<< orphan*/  GetLastError () ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int GetSidLengthRequired (int) ; 
- int /*<<< orphan*/ * GetSidSubAuthority (int /*<<< orphan*/ ********,int) ; 
- int /*<<< orphan*/  GetTokenInformation (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*,int,int*) ; 
- char* HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  InitializeSid (int /*<<< orphan*/ ********,TYPE_3__*,int) ; 
- int /*<<< orphan*/  OpenProcessToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  OpenThreadToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int SECURITY_MAX_SID_SIZE ; 
- int /*<<< orphan*/  SECURITY_NT_AUTHORITY ; 
- int /*<<< orphan*/  SetLastError (int) ; 
- int /*<<< orphan*/  TOKEN_READ ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TokenUser ; 
- int debugstr_sid (int /*<<< orphan*/ ********) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
- int /*<<< orphan*/  pGetWindowsAccountDomainSid (int /*<<< orphan*/ ********,int /*<<< orphan*/ ********,int*) ; 
- int /*<<< orphan*/  win_skip (char*) ; 
+
+ int CloseHandle (int ) ;
+ int ERROR_INSUFFICIENT_BUFFER ;
+ int ERROR_INVALID_PARAMETER ;
+ int ERROR_INVALID_SID ;
+ int ERROR_NO_TOKEN ;
+ int EqualSid (int ********,int ********) ;
+ int FALSE ;
+ int GetCurrentProcess () ;
+ int GetCurrentThread () ;
+ int GetLastError () ;
+ int GetProcessHeap () ;
+ int GetSidLengthRequired (int) ;
+ int * GetSidSubAuthority (int ********,int) ;
+ int GetTokenInformation (int ,int ,char*,int,int*) ;
+ char* HeapAlloc (int ,int ,int) ;
+ int HeapFree (int ,int ,char*) ;
+ int InitializeSid (int ********,TYPE_3__*,int) ;
+ int OpenProcessToken (int ,int ,int *) ;
+ int OpenThreadToken (int ,int ,int ,int *) ;
+ int SECURITY_MAX_SID_SIZE ;
+ int SECURITY_NT_AUTHORITY ;
+ int SetLastError (int) ;
+ int TOKEN_READ ;
+ int TRUE ;
+ int TokenUser ;
+ int debugstr_sid (int ********) ;
+ int ok (int,char*,...) ;
+ int pGetWindowsAccountDomainSid (int ********,int ********,int*) ;
+ int win_skip (char*) ;
 
 __attribute__((used)) static void test_GetWindowsAccountDomainSid(void)
 {
@@ -83,7 +83,7 @@ __attribute__((used)) static void test_GetWindowsAccountDomainSid(void)
         return;
     }
 
-    bret = GetTokenInformation(token, TokenUser, NULL, 0, &sid_size);
+    bret = GetTokenInformation(token, TokenUser, ((void*)0), 0, &sid_size);
     ok(!bret && GetLastError() == ERROR_INSUFFICIENT_BUFFER,
        "GetTokenInformation(TokenUser) failed with error %d\n", GetLastError());
     user = HeapAlloc(GetProcessHeap(), 0, sid_size);

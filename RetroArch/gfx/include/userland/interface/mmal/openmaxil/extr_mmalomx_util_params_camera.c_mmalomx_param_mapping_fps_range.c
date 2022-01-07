@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_4__ {void* fps_high; void* fps_low; } ;
 struct TYPE_3__ {void* xFramerateHigh; void* xFramerateLow; } ;
-typedef  scalar_t__ OMX_PTR ;
-typedef  TYPE_1__ OMX_PARAM_BRCMFRAMERATERANGETYPE ;
-typedef  int /*<<< orphan*/  MMAL_STATUS_T ;
-typedef  int /*<<< orphan*/  MMAL_PARAMETER_HEADER_T ;
-typedef  TYPE_2__ MMAL_PARAMETER_FPS_RANGE_T ;
-typedef  scalar_t__ MMALOMX_PARAM_MAPPING_DIRECTION ;
+typedef scalar_t__ OMX_PTR ;
+typedef TYPE_1__ OMX_PARAM_BRCMFRAMERATERANGETYPE ;
+typedef int MMAL_STATUS_T ;
+typedef int MMAL_PARAMETER_HEADER_T ;
+typedef TYPE_2__ MMAL_PARAMETER_FPS_RANGE_T ;
+typedef scalar_t__ MMALOMX_PARAM_MAPPING_DIRECTION ;
 
-/* Variables and functions */
- scalar_t__ MMALOMX_PARAM_MAPPING_TO_MMAL ; 
- int /*<<< orphan*/  MMAL_SUCCESS ; 
- void* mmal_rational_from_fixed_16_16 (void*) ; 
- void* mmal_rational_to_fixed_16_16 (void*) ; 
+
+ scalar_t__ MMALOMX_PARAM_MAPPING_TO_MMAL ;
+ int MMAL_SUCCESS ;
+ void* mmal_rational_from_fixed_16_16 (void*) ;
+ void* mmal_rational_to_fixed_16_16 (void*) ;
 
 __attribute__((used)) static MMAL_STATUS_T mmalomx_param_mapping_fps_range(MMALOMX_PARAM_MAPPING_DIRECTION dir,
    MMAL_PARAMETER_HEADER_T *mmal_param, OMX_PTR omx_param)

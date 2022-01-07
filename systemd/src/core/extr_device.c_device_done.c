@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  Unit ;
-struct TYPE_5__ {int /*<<< orphan*/  wants_property; } ;
-typedef  TYPE_1__ Device ;
 
-/* Variables and functions */
- TYPE_1__* DEVICE (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int /*<<< orphan*/  device_unset_sysfs (TYPE_1__*) ; 
- int /*<<< orphan*/  strv_free (int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int Unit ;
+struct TYPE_5__ {int wants_property; } ;
+typedef TYPE_1__ Device ;
+
+
+ TYPE_1__* DEVICE (int *) ;
+ int assert (TYPE_1__*) ;
+ int device_unset_sysfs (TYPE_1__*) ;
+ int strv_free (int ) ;
 
 __attribute__((used)) static void device_done(Unit *u) {
         Device *d = DEVICE(u);

@@ -1,64 +1,64 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct libalias {unsigned int packetAliasMode; } ;
 
-/* Variables and functions */
- scalar_t__ ENOMEM ; 
- scalar_t__ InitPacketAliasLog (struct libalias*) ; 
- int /*<<< orphan*/  InitPunchFW (struct libalias*) ; 
- int /*<<< orphan*/  LIBALIAS_LOCK (struct libalias*) ; 
- int /*<<< orphan*/  LIBALIAS_UNLOCK (struct libalias*) ; 
- unsigned int PKT_ALIAS_LOG ; 
- unsigned int PKT_ALIAS_PUNCH_FW ; 
- int /*<<< orphan*/  UninitPacketAliasLog (struct libalias*) ; 
- int /*<<< orphan*/  UninitPunchFW (struct libalias*) ; 
+
+ scalar_t__ ENOMEM ;
+ scalar_t__ InitPacketAliasLog (struct libalias*) ;
+ int InitPunchFW (struct libalias*) ;
+ int LIBALIAS_LOCK (struct libalias*) ;
+ int LIBALIAS_UNLOCK (struct libalias*) ;
+ unsigned int PKT_ALIAS_LOG ;
+ unsigned int PKT_ALIAS_PUNCH_FW ;
+ int UninitPacketAliasLog (struct libalias*) ;
+ int UninitPunchFW (struct libalias*) ;
 
 unsigned int
 LibAliasSetMode(
     struct libalias *la,
-    unsigned int flags,		/* Which state to bring flags to */
-    unsigned int mask		/* Mask of which flags to affect (use 0 to
-				 * do a probe for flag values) */
+    unsigned int flags,
+    unsigned int mask
+
 )
 {
-	int res = -1;
+ int res = -1;
 
-	LIBALIAS_LOCK(la);
-/* Enable logging? */
-	if (flags & mask & PKT_ALIAS_LOG) {
-		/* Do the enable */
-		if (InitPacketAliasLog(la) == ENOMEM)
-			goto getout;
-	} else
-/* _Disable_ logging? */
-	if (~flags & mask & PKT_ALIAS_LOG) {
-		UninitPacketAliasLog(la);
-	}
-#ifndef NO_FW_PUNCH
-/* Start punching holes in the firewall? */
-	if (flags & mask & PKT_ALIAS_PUNCH_FW) {
-		InitPunchFW(la);
-	} else
-/* Stop punching holes in the firewall? */
-	if (~flags & mask & PKT_ALIAS_PUNCH_FW) {
-		UninitPunchFW(la);
-	}
-#endif
+ LIBALIAS_LOCK(la);
 
-/* Other flags can be set/cleared without special action */
-	la->packetAliasMode = (flags & mask) | (la->packetAliasMode & ~mask);
-	res = la->packetAliasMode;
+ if (flags & mask & PKT_ALIAS_LOG) {
+
+  if (InitPacketAliasLog(la) == ENOMEM)
+   goto getout;
+ } else
+
+ if (~flags & mask & PKT_ALIAS_LOG) {
+  UninitPacketAliasLog(la);
+ }
+
+
+ if (flags & mask & PKT_ALIAS_PUNCH_FW) {
+  InitPunchFW(la);
+ } else
+
+ if (~flags & mask & PKT_ALIAS_PUNCH_FW) {
+  UninitPunchFW(la);
+ }
+
+
+
+ la->packetAliasMode = (flags & mask) | (la->packetAliasMode & ~mask);
+ res = la->packetAliasMode;
 getout:
-	LIBALIAS_UNLOCK(la);
-	return (res);
+ LIBALIAS_UNLOCK(la);
+ return (res);
 }

@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  isdigit (char const) ; 
- scalar_t__ string_is_empty (char const*) ; 
- int /*<<< orphan*/  strtoul (char const*,int /*<<< orphan*/ *,int) ; 
+ int isdigit (char const) ;
+ scalar_t__ string_is_empty (char const*) ;
+ int strtoul (char const*,int *,int) ;
 
 unsigned string_to_unsigned(const char *str)
 {
-   const char *ptr = NULL;
+   const char *ptr = ((void*)0);
 
    if (string_is_empty(str))
       return 0;
@@ -29,5 +21,5 @@ unsigned string_to_unsigned(const char *str)
          return 0;
    }
 
-   return (unsigned)strtoul(str, NULL, 10);
+   return (unsigned)strtoul(str, ((void*)0), 10);
 }

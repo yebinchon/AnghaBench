@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct lexer {int dummy; } ;
 
-/* Variables and functions */
- int EOF ; 
- int /*<<< orphan*/  backup (struct lexer*) ; 
- int /*<<< orphan*/  ignore (struct lexer*) ; 
- scalar_t__ isident (int) ; 
- scalar_t__ isspace (int) ; 
- void* lex_error (struct lexer*,char*,...) ; 
- void* lex_identifier ; 
- int next (struct lexer*) ; 
+
+ int EOF ;
+ int backup (struct lexer*) ;
+ int ignore (struct lexer*) ;
+ scalar_t__ isident (int) ;
+ scalar_t__ isspace (int) ;
+ void* lex_error (struct lexer*,char*,...) ;
+ void* lex_identifier ;
+ int next (struct lexer*) ;
 
 __attribute__((used)) static void *lex_partial(struct lexer *lexer)
 {
-    while (true) {
+    while (1) {
         int r = next(lexer);
 
         if (r == EOF)

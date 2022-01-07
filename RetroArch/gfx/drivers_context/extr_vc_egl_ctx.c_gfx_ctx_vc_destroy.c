@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {scalar_t__ config; int /*<<< orphan*/ * dpy; int /*<<< orphan*/ * surf; int /*<<< orphan*/ * hw_ctx; int /*<<< orphan*/ * ctx; } ;
-struct TYPE_4__ {int /*<<< orphan*/  vsync_condition; int /*<<< orphan*/  vsync_condition_mutex; int /*<<< orphan*/  dispman_display; scalar_t__ vsync_callback_set; scalar_t__* vgimage; int /*<<< orphan*/ ** eglBuffer; TYPE_1__ egl; int /*<<< orphan*/ * pbuff_surf; int /*<<< orphan*/ * eglimage_ctx; } ;
-typedef  TYPE_2__ vc_ctx_data_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/ * EGL_NO_CONTEXT ; 
- int /*<<< orphan*/ * EGL_NO_SURFACE ; 
- int /*<<< orphan*/  EGL_OPENVG_API ; 
- unsigned int MAX_EGLIMAGE_TEXTURES ; 
- int /*<<< orphan*/  eglBindAPI (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  eglDestroyContext (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglDestroySurface (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  eglTerminate (int /*<<< orphan*/ *) ; 
- int g_egl_inited ; 
- int /*<<< orphan*/  gfx_ctx_vc_bind_api (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  peglDestroyImageKHR (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  scond_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  slock_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  vc_api ; 
- int /*<<< orphan*/  vc_dispmanx_vsync_callback (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  vgDestroyImage (scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {scalar_t__ config; int * dpy; int * surf; int * hw_ctx; int * ctx; } ;
+struct TYPE_4__ {int vsync_condition; int vsync_condition_mutex; int dispman_display; scalar_t__ vsync_callback_set; scalar_t__* vgimage; int ** eglBuffer; TYPE_1__ egl; int * pbuff_surf; int * eglimage_ctx; } ;
+typedef TYPE_2__ vc_ctx_data_t ;
+
+
+ int * EGL_NO_CONTEXT ;
+ int * EGL_NO_SURFACE ;
+ int EGL_OPENVG_API ;
+ unsigned int MAX_EGLIMAGE_TEXTURES ;
+ int eglBindAPI (int ) ;
+ int eglDestroyContext (int *,int *) ;
+ int eglDestroySurface (int *,int *) ;
+ int eglMakeCurrent (int *,int *,int *,int *) ;
+ int eglTerminate (int *) ;
+ int g_egl_inited ;
+ int gfx_ctx_vc_bind_api (void*,int ,int ,int ) ;
+ int peglDestroyImageKHR (int *,int *) ;
+ int scond_free (int ) ;
+ int slock_free (int ) ;
+ int vc_api ;
+ int vc_dispmanx_vsync_callback (int ,int *,int *) ;
+ int vgDestroyImage (scalar_t__) ;
 
 __attribute__((used)) static void gfx_ctx_vc_destroy(void *data)
 {
@@ -42,7 +42,7 @@ __attribute__((used)) static void gfx_ctx_vc_destroy(void *data)
 
    if (!vc)
    {
-       g_egl_inited = false;
+       g_egl_inited = 0;
        return;
    }
 
@@ -107,27 +107,27 @@ __attribute__((used)) static void gfx_ctx_vc_destroy(void *data)
       eglTerminate(vc->egl.dpy);
    }
 
-   vc->egl.ctx      = NULL;
-   vc->egl.hw_ctx   = NULL;
-   vc->eglimage_ctx = NULL;
-   vc->egl.surf     = NULL;
-   vc->pbuff_surf   = NULL;
-   vc->egl.dpy      = NULL;
-   vc->egl.config   = 0;
-   g_egl_inited     = false;
+   vc->egl.ctx = ((void*)0);
+   vc->egl.hw_ctx = ((void*)0);
+   vc->eglimage_ctx = ((void*)0);
+   vc->egl.surf = ((void*)0);
+   vc->pbuff_surf = ((void*)0);
+   vc->egl.dpy = ((void*)0);
+   vc->egl.config = 0;
+   g_egl_inited = 0;
 
    for (i = 0; i < MAX_EGLIMAGE_TEXTURES; i++)
    {
-      vc->eglBuffer[i] = NULL;
-      vc->vgimage[i]   = 0;
+      vc->eglBuffer[i] = ((void*)0);
+      vc->vgimage[i] = 0;
    }
 
-   /* Stop generating vsync callbacks if we are doing so.
-    * Don't destroy the context while cbs are being generated! */
-   if (vc->vsync_callback_set)
-      vc_dispmanx_vsync_callback(vc->dispman_display, NULL, NULL);
 
-   /* Destroy mutexes and conditions. */
+
+   if (vc->vsync_callback_set)
+      vc_dispmanx_vsync_callback(vc->dispman_display, ((void*)0), ((void*)0));
+
+
    slock_free(vc->vsync_condition_mutex);
    scond_free(vc->vsync_condition);
 }

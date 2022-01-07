@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int hi; } ;
 struct TYPE_4__ {double dbl; TYPE_1__ as_int; } ;
-typedef  TYPE_2__ double_accessor ;
+typedef TYPE_2__ double_accessor ;
 
-/* Variables and functions */
- int __HI (double) ; 
- int __LO (double) ; 
- double copysign (double,double) ; 
- double huge ; 
- double tiny ; 
- double two54 ; 
- double twom54 ; 
+
+ int __HI (double) ;
+ int __LO (double) ;
+ double copysign (double,double) ;
+ double huge ;
+ double tiny ;
+ double two54 ;
+ double twom54 ;
 
 double
 scalbn (double x, int n)
@@ -32,31 +32,31 @@ scalbn (double x, int n)
 
   hx = __HI (x);
   lx = __LO (x);
-  k = (hx & 0x7ff00000) >> 20; /* extract exponent */
-  if (k == 0) /* 0 or subnormal x */
+  k = (hx & 0x7ff00000) >> 20;
+  if (k == 0)
   {
-    if ((lx | (hx & 0x7fffffff)) == 0) /* +-0 */
+    if ((lx | (hx & 0x7fffffff)) == 0)
     {
       return x;
     }
     x *= two54;
     hx = __HI (x);
     k = ((hx & 0x7ff00000) >> 20) - 54;
-    if (n < -50000) /*underflow */
+    if (n < -50000)
     {
       return tiny * x;
     }
   }
-  if (k == 0x7ff) /* NaN or Inf */
+  if (k == 0x7ff)
   {
     return x + x;
   }
   k = k + n;
-  if (k > 0x7fe) /* overflow  */
+  if (k > 0x7fe)
   {
     return huge * copysign (huge, x);
   }
-  if (k > 0) /* normal result */
+  if (k > 0)
   {
     double_accessor ret;
     ret.dbl = x;
@@ -65,16 +65,16 @@ scalbn (double x, int n)
   }
   if (k <= -54)
   {
-    if (n > 50000) /* in case integer overflow in n + k */
+    if (n > 50000)
     {
-      return huge * copysign (huge, x); /*overflow */
+      return huge * copysign (huge, x);
     }
     else
     {
-      return tiny * copysign (tiny, x); /*underflow */
+      return tiny * copysign (tiny, x);
     }
   }
-  k += 54; /* subnormal result */
+  k += 54;
   double_accessor ret;
   ret.dbl = x;
   ret.as_int.hi = (hx & 0x800fffff) | (k << 20);

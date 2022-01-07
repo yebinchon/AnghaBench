@@ -1,55 +1,55 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  buf ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int buf ;
 struct TYPE_2__ {int* awardsEarned; int* awardsLevels; } ;
 
-/* Variables and functions */
- int AWARD_ACCURACY ; 
- int /*<<< orphan*/  Com_sprintf (char*,int,char*,int) ; 
- int /*<<< orphan*/  UI_CENTER ; 
- int /*<<< orphan*/  UI_DrawNamedPic (int,int,int,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UI_DrawString (int,int,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  color_yellow ; 
- int* medalLocations ; 
- TYPE_1__ postgameMenuInfo ; 
- int /*<<< orphan*/ * ui_medalPicNames ; 
+
+ int AWARD_ACCURACY ;
+ int Com_sprintf (char*,int,char*,int) ;
+ int UI_CENTER ;
+ int UI_DrawNamedPic (int,int,int,int,int ) ;
+ int UI_DrawString (int,int,char*,int ,int ) ;
+ int color_yellow ;
+ int* medalLocations ;
+ TYPE_1__ postgameMenuInfo ;
+ int * ui_medalPicNames ;
 
 __attribute__((used)) static void UI_SPPostgameMenu_DrawAwardsMedals( int max ) {
-	int		n;
-	int		medal;
-	int		amount;
-	int		x, y;
-	char	buf[16];
+ int n;
+ int medal;
+ int amount;
+ int x, y;
+ char buf[16];
 
-	for( n = 0; n < max; n++ ) {
-		x = medalLocations[n];
-		y = 64;
-		medal = postgameMenuInfo.awardsEarned[n];
-		amount = postgameMenuInfo.awardsLevels[n];
+ for( n = 0; n < max; n++ ) {
+  x = medalLocations[n];
+  y = 64;
+  medal = postgameMenuInfo.awardsEarned[n];
+  amount = postgameMenuInfo.awardsLevels[n];
 
-		UI_DrawNamedPic( x, y, 48, 48, ui_medalPicNames[medal] );
+  UI_DrawNamedPic( x, y, 48, 48, ui_medalPicNames[medal] );
 
-		if( medal == AWARD_ACCURACY ) {
-			Com_sprintf( buf, sizeof(buf), "%i%%", amount );
-		}
-		else {
-			if( amount == 1 ) {
-				continue;
-			}
-			Com_sprintf( buf, sizeof(buf), "%i", amount );
-		}
+  if( medal == AWARD_ACCURACY ) {
+   Com_sprintf( buf, sizeof(buf), "%i%%", amount );
+  }
+  else {
+   if( amount == 1 ) {
+    continue;
+   }
+   Com_sprintf( buf, sizeof(buf), "%i", amount );
+  }
 
-		UI_DrawString( x + 24, y + 52, buf, UI_CENTER, color_yellow );
-	}
+  UI_DrawString( x + 24, y + 52, buf, UI_CENTER, color_yellow );
+ }
 }

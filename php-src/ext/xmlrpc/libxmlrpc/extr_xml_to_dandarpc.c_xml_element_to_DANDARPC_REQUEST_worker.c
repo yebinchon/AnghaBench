@@ -1,69 +1,69 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_8__ {char const* key; char* val; } ;
-typedef  TYPE_2__ xml_element_attr ;
-struct TYPE_7__ {int /*<<< orphan*/  str; int /*<<< orphan*/  len; } ;
-struct TYPE_9__ {char const* name; TYPE_1__ text; int /*<<< orphan*/  children; int /*<<< orphan*/  attrs; } ;
-typedef  TYPE_3__ xml_element ;
-struct buffer_st {int /*<<< orphan*/  offset; int /*<<< orphan*/  data; } ;
-typedef  void* XMLRPC_VALUE ;
-typedef  scalar_t__ XMLRPC_REQUEST ;
+typedef TYPE_2__ xml_element_attr ;
+struct TYPE_7__ {int str; int len; } ;
+struct TYPE_9__ {char const* name; TYPE_1__ text; int children; int attrs; } ;
+typedef TYPE_3__ xml_element ;
+struct buffer_st {int offset; int data; } ;
+typedef void* XMLRPC_VALUE ;
+typedef scalar_t__ XMLRPC_REQUEST ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ATTR_ARRAY ; 
- int /*<<< orphan*/  ATTR_BASE64 ; 
- int /*<<< orphan*/  ATTR_BOOLEAN ; 
- int /*<<< orphan*/  ATTR_DATETIME ; 
- int /*<<< orphan*/  ATTR_DOUBLE ; 
- int /*<<< orphan*/  ATTR_ID ; 
- int /*<<< orphan*/  ATTR_INT ; 
- int /*<<< orphan*/  ATTR_MIXED ; 
- int /*<<< orphan*/  ATTR_SCALAR ; 
- int /*<<< orphan*/  ATTR_STRING ; 
- int /*<<< orphan*/  ATTR_STRUCT ; 
- int /*<<< orphan*/  ATTR_TYPE ; 
- int /*<<< orphan*/  ATTR_VECTOR ; 
- int /*<<< orphan*/  ELEM_METHODCALL ; 
- int /*<<< orphan*/  ELEM_METHODNAME ; 
- int /*<<< orphan*/  ELEM_METHODRESPONSE ; 
- TYPE_2__* Q_Head (int /*<<< orphan*/ *) ; 
- TYPE_2__* Q_Next (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  XMLRPC_AddValueToVector (void*,void*) ; 
- void* XMLRPC_CreateValueEmpty () ; 
- int /*<<< orphan*/  XMLRPC_RequestSetMethodName (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_RequestSetRequestType (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetIsVector (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueBase64 (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueBoolean (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueDateTime_ISO8601 (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueDouble (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueID_Case (void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueInt (void*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XMLRPC_SetValueString (void*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atof (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  atoi (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  base64_decode_xmlrpc (struct buffer_st*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_delete (struct buffer_st*) ; 
- int /*<<< orphan*/  strcmp (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  xmlrpc_case_exact ; 
- int /*<<< orphan*/  xmlrpc_request_call ; 
- int /*<<< orphan*/  xmlrpc_request_response ; 
- int /*<<< orphan*/  xmlrpc_vector_array ; 
- int /*<<< orphan*/  xmlrpc_vector_mixed ; 
- int /*<<< orphan*/  xmlrpc_vector_struct ; 
+
+ int ATTR_ARRAY ;
+ int ATTR_BASE64 ;
+ int ATTR_BOOLEAN ;
+ int ATTR_DATETIME ;
+ int ATTR_DOUBLE ;
+ int ATTR_ID ;
+ int ATTR_INT ;
+ int ATTR_MIXED ;
+ int ATTR_SCALAR ;
+ int ATTR_STRING ;
+ int ATTR_STRUCT ;
+ int ATTR_TYPE ;
+ int ATTR_VECTOR ;
+ int ELEM_METHODCALL ;
+ int ELEM_METHODNAME ;
+ int ELEM_METHODRESPONSE ;
+ TYPE_2__* Q_Head (int *) ;
+ TYPE_2__* Q_Next (int *) ;
+ int XMLRPC_AddValueToVector (void*,void*) ;
+ void* XMLRPC_CreateValueEmpty () ;
+ int XMLRPC_RequestSetMethodName (scalar_t__,int ) ;
+ int XMLRPC_RequestSetRequestType (scalar_t__,int ) ;
+ int XMLRPC_SetIsVector (void*,int ) ;
+ int XMLRPC_SetValueBase64 (void*,int ,int ) ;
+ int XMLRPC_SetValueBoolean (void*,int ) ;
+ int XMLRPC_SetValueDateTime_ISO8601 (void*,int ) ;
+ int XMLRPC_SetValueDouble (void*,int ) ;
+ int XMLRPC_SetValueID_Case (void*,char const*,int ,int ) ;
+ int XMLRPC_SetValueInt (void*,int ) ;
+ int XMLRPC_SetValueString (void*,int ,int ) ;
+ int atof (int ) ;
+ int atoi (int ) ;
+ int base64_decode_xmlrpc (struct buffer_st*,int ,int ) ;
+ int buffer_delete (struct buffer_st*) ;
+ int strcmp (char const*,int ) ;
+ int xmlrpc_case_exact ;
+ int xmlrpc_request_call ;
+ int xmlrpc_request_response ;
+ int xmlrpc_vector_array ;
+ int xmlrpc_vector_mixed ;
+ int xmlrpc_vector_struct ;
 
 XMLRPC_VALUE xml_element_to_DANDARPC_REQUEST_worker(XMLRPC_REQUEST request, XMLRPC_VALUE xCurrent, xml_element* el) {
    if(!xCurrent) {
@@ -71,8 +71,8 @@ XMLRPC_VALUE xml_element_to_DANDARPC_REQUEST_worker(XMLRPC_REQUEST request, XMLR
    }
 
    if(el->name) {
-      const char* id = NULL;
-      const char* type = NULL;
+      const char* id = ((void*)0);
+      const char* type = ((void*)0);
       xml_element_attr* attr_iter = Q_Head(&el->attrs);
 
       while(attr_iter) {
@@ -119,7 +119,7 @@ XMLRPC_VALUE xml_element_to_DANDARPC_REQUEST_worker(XMLRPC_REQUEST request, XMLR
             XMLRPC_SetIsVector(xCurrent, xmlrpc_vector_mixed);
          }
          else if(!strcmp(type, ATTR_ARRAY)) {
-				XMLRPC_SetIsVector(xCurrent, xmlrpc_vector_array);
+    XMLRPC_SetIsVector(xCurrent, xmlrpc_vector_array);
          }
          else if(!strcmp(type, ATTR_STRUCT)) {
             XMLRPC_SetIsVector(xCurrent, xmlrpc_vector_struct);

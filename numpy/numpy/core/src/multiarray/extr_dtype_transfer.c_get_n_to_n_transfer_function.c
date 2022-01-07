@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  npy_intp ;
-struct TYPE_6__ {int /*<<< orphan*/  elsize; } ;
-typedef  int /*<<< orphan*/  PyArray_StridedUnaryOp ;
-typedef  TYPE_1__ PyArray_Descr ;
-typedef  int /*<<< orphan*/  NpyAuxData ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NPY_AUXDATA_FREE (int /*<<< orphan*/ *) ; 
- int NPY_FAIL ; 
- scalar_t__ NPY_SUCCEED ; 
- scalar_t__ PyArray_GetDTypeTransferFunction (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,TYPE_1__*,int,int /*<<< orphan*/ **,int /*<<< orphan*/ **,int*) ; 
- scalar_t__ wrap_transfer_function_n_to_n (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ **) ; 
+
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int npy_intp ;
+struct TYPE_6__ {int elsize; } ;
+typedef int PyArray_StridedUnaryOp ;
+typedef TYPE_1__ PyArray_Descr ;
+typedef int NpyAuxData ;
+
+
+ int NPY_AUXDATA_FREE (int *) ;
+ int NPY_FAIL ;
+ scalar_t__ NPY_SUCCEED ;
+ scalar_t__ PyArray_GetDTypeTransferFunction (int,int ,int ,TYPE_1__*,TYPE_1__*,int,int **,int **,int*) ;
+ scalar_t__ wrap_transfer_function_n_to_n (int *,int *,int ,int ,int ,int ,int ,int **,int **) ;
 
 __attribute__((used)) static int
 get_n_to_n_transfer_function(int aligned,
@@ -37,10 +37,10 @@ get_n_to_n_transfer_function(int aligned,
     PyArray_StridedUnaryOp *stransfer;
     NpyAuxData *data;
 
-    /*
-     * src_stride and dst_stride are set to contiguous, because
-     * subarrays are always contiguous.
-     */
+
+
+
+
     if (PyArray_GetDTypeTransferFunction(aligned,
                     src_dtype->elsize, dst_dtype->elsize,
                     src_dtype, dst_dtype,

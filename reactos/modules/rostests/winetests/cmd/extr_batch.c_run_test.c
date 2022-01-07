@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  LPVOID ;
-typedef  scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DeleteFileA (char*) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UnmapViewOfFile (char const*) ; 
- char* convert_input_data (char const*,scalar_t__,scalar_t__*) ; 
- scalar_t__ map_file (char*,char const**) ; 
- int /*<<< orphan*/  run_cmd (char const*,scalar_t__) ; 
- int /*<<< orphan*/  test_output (char const*,scalar_t__,char const*,scalar_t__) ; 
+
+
+
+typedef int LPVOID ;
+typedef scalar_t__ DWORD ;
+
+
+ int DeleteFileA (char*) ;
+ int GetProcessHeap () ;
+ int HeapFree (int ,int ,int ) ;
+ int UnmapViewOfFile (char const*) ;
+ char* convert_input_data (char const*,scalar_t__,scalar_t__*) ;
+ scalar_t__ map_file (char*,char const**) ;
+ int run_cmd (char const*,scalar_t__) ;
+ int test_output (char const*,scalar_t__,char const*,scalar_t__) ;
 
 __attribute__((used)) static void run_test(const char *cmd_data, DWORD cmd_size, const char *exp_data, DWORD exp_size)
 {

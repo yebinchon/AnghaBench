@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct regmap {int async_ret; int /*<<< orphan*/  async_lock; int /*<<< orphan*/  async_waitq; TYPE_1__* bus; } ;
-struct TYPE_2__ {int /*<<< orphan*/  async_write; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  regmap_async_is_done (struct regmap*) ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  trace_regmap_async_complete_done (struct regmap*) ; 
- int /*<<< orphan*/  trace_regmap_async_complete_start (struct regmap*) ; 
- int /*<<< orphan*/  wait_event (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct regmap {int async_ret; int async_lock; int async_waitq; TYPE_1__* bus; } ;
+struct TYPE_2__ {int async_write; } ;
+
+
+ int regmap_async_is_done (struct regmap*) ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
+ int trace_regmap_async_complete_done (struct regmap*) ;
+ int trace_regmap_async_complete_start (struct regmap*) ;
+ int wait_event (int ,int ) ;
 
 int regmap_async_complete(struct regmap *map)
 {
-	unsigned long flags;
-	int ret;
+ unsigned long flags;
+ int ret;
 
-	/* Nothing to do with no async support */
-	if (!map->bus || !map->bus->async_write)
-		return 0;
 
-	trace_regmap_async_complete_start(map);
+ if (!map->bus || !map->bus->async_write)
+  return 0;
 
-	wait_event(map->async_waitq, regmap_async_is_done(map));
+ trace_regmap_async_complete_start(map);
 
-	spin_lock_irqsave(&map->async_lock, flags);
-	ret = map->async_ret;
-	map->async_ret = 0;
-	spin_unlock_irqrestore(&map->async_lock, flags);
+ wait_event(map->async_waitq, regmap_async_is_done(map));
 
-	trace_regmap_async_complete_done(map);
+ spin_lock_irqsave(&map->async_lock, flags);
+ ret = map->async_ret;
+ map->async_ret = 0;
+ spin_unlock_irqrestore(&map->async_lock, flags);
 
-	return ret;
+ trace_regmap_async_complete_done(map);
+
+ return ret;
 }

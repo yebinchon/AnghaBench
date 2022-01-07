@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ UINT ;
-typedef  int /*<<< orphan*/ * LPSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  INT ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  CHAR ;
 
-/* Variables and functions */
- scalar_t__ ConvertSJIS2JIS (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetProcessHeap () ; 
- int /*<<< orphan*/ * HeapAlloc (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  HeapFree (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WideCharToMultiByte (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  debugstr_an (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef scalar_t__ UINT ;
+typedef int * LPSTR ;
+typedef int LPCWSTR ;
+typedef int INT ;
+typedef scalar_t__ DWORD ;
+typedef int CHAR ;
+
+
+ scalar_t__ ConvertSJIS2JIS (int *,int ,int *) ;
+ int GetProcessHeap () ;
+ int * HeapAlloc (int ,int ,int ) ;
+ int HeapFree (int ,int ,int *) ;
+ int TRACE (char*,int ) ;
+ int WideCharToMultiByte (int,int ,int ,scalar_t__,int *,int ,int *,int *) ;
+ int debugstr_an (int *,int ) ;
 
 __attribute__((used)) static UINT ConvertJapaneseUnicodeToJIS(LPCWSTR input, DWORD count,
                                         LPSTR output, DWORD out_count)
@@ -33,12 +33,12 @@ __attribute__((used)) static UINT ConvertJapaneseUnicodeToJIS(LPCWSTR input, DWO
     INT len;
     UINT rc = 0;
 
-    len = WideCharToMultiByte(932,0,input,count,0,0,NULL,NULL);
+    len = WideCharToMultiByte(932,0,input,count,0,0,((void*)0),((void*)0));
     sjis_string = HeapAlloc(GetProcessHeap(),0,len);
-    WideCharToMultiByte(932,0,input,count,sjis_string,len,NULL,NULL);
+    WideCharToMultiByte(932,0,input,count,sjis_string,len,((void*)0),((void*)0));
     TRACE("%s\n",debugstr_an(sjis_string,len));
 
-    rc = ConvertSJIS2JIS(sjis_string, len, NULL);
+    rc = ConvertSJIS2JIS(sjis_string, len, ((void*)0));
     if (out_count >= rc)
     {
         ConvertSJIS2JIS(sjis_string, len, output);

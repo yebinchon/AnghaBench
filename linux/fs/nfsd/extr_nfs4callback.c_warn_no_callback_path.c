@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  data; scalar_t__ len; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int data; scalar_t__ len; } ;
 struct nfs4_client {TYPE_1__ cl_name; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dprintk (char*,int,int /*<<< orphan*/ ,int) ; 
+
+ int dprintk (char*,int,int ,int) ;
 
 __attribute__((used)) static void warn_no_callback_path(struct nfs4_client *clp, int reason)
 {
-	dprintk("NFSD: warning: no callback path to client %.*s: error %d\n",
-		(int)clp->cl_name.len, clp->cl_name.data, reason);
+ dprintk("NFSD: warning: no callback path to client %.*s: error %d\n",
+  (int)clp->cl_name.len, clp->cl_name.data, reason);
 }

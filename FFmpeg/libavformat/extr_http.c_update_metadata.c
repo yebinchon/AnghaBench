@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {TYPE_2__* priv_data; } ;
-typedef  TYPE_1__ URLContext ;
-struct TYPE_6__ {int /*<<< orphan*/  metadata; } ;
-typedef  TYPE_2__ HTTPContext ;
+typedef TYPE_1__ URLContext ;
+struct TYPE_6__ {int metadata; } ;
+typedef TYPE_2__ HTTPContext ;
 
-/* Variables and functions */
- int /*<<< orphan*/  AV_LOG_VERBOSE ; 
- int /*<<< orphan*/  av_dict_set (int /*<<< orphan*/ *,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  av_log (TYPE_1__*,int /*<<< orphan*/ ,char*,char*,char*) ; 
- char* strstr (char*,char*) ; 
+
+ int AV_LOG_VERBOSE ;
+ int av_dict_set (int *,char*,char*,int ) ;
+ int av_log (TYPE_1__*,int ,char*,char*,char*) ;
+ char* strstr (char*,char*) ;
 
 __attribute__((used)) static void update_metadata(URLContext *h, char *data)
 {

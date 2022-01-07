@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  union in_addr_union {int dummy; } in_addr_union ;
-typedef  int /*<<< orphan*/  Network ;
-typedef  int /*<<< orphan*/  Context ;
 
-/* Variables and functions */
- scalar_t__ in_addr_is_null (int,union in_addr_union*) ; 
- int /*<<< orphan*/ * network_get (int /*<<< orphan*/ *,char const*) ; 
- int network_new (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ **) ; 
- int route_new (int /*<<< orphan*/ *,int,unsigned char,union in_addr_union*,union in_addr_union*,int /*<<< orphan*/ *) ; 
+
+
+
+typedef union in_addr_union {int dummy; } in_addr_union ;
+typedef int Network ;
+typedef int Context ;
+
+
+ scalar_t__ in_addr_is_null (int,union in_addr_union*) ;
+ int * network_get (int *,char const*) ;
+ int network_new (int *,char const*,int **) ;
+ int route_new (int *,int,unsigned char,union in_addr_union*,union in_addr_union*,int *) ;
 
 __attribute__((used)) static int network_set_route(Context *context, const char *ifname, int family, unsigned char prefixlen,
                              union in_addr_union *dest, union in_addr_union *gateway) {
@@ -35,5 +35,5 @@ __attribute__((used)) static int network_set_route(Context *context, const char 
                         return r;
         }
 
-        return route_new(network, family, prefixlen, dest, gateway, NULL);
+        return route_new(network, family, prefixlen, dest, gateway, ((void*)0));
 }

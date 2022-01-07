@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int* LPCWSTR ;
-typedef  int /*<<< orphan*/  LONG ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  int /*<<< orphan*/  HTREEITEM ;
-typedef  int /*<<< orphan*/ * HKEY ;
-typedef  scalar_t__ DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  COUNT_OF (int /*<<< orphan*/ *) ; 
- scalar_t__ ERROR_SUCCESS ; 
- int /*<<< orphan*/  FALSE ; 
- int* GetItemPath (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  IDS_NEW_KEY ; 
- int /*<<< orphan*/  InfoMessageBox (int /*<<< orphan*/ ,int,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InsertNode (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  KEY_WRITE ; 
- scalar_t__ LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int MB_ICONERROR ; 
- int MB_OK ; 
- scalar_t__ REG_OPENED_EXISTING_KEY ; 
- int /*<<< orphan*/  REG_OPTION_NON_VOLATILE ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegCreateKeyExW (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ **,scalar_t__*) ; 
- scalar_t__ RegOpenKeyW (int /*<<< orphan*/ *,int*,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  TreeView_EditLabel (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hFrameWnd ; 
- int /*<<< orphan*/  hInst ; 
- int /*<<< orphan*/  wsprintf (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int* LPCWSTR ;
+typedef int LONG ;
+typedef int HWND ;
+typedef int HTREEITEM ;
+typedef int * HKEY ;
+typedef scalar_t__ DWORD ;
+typedef int BOOL ;
+
+
+ int COUNT_OF (int *) ;
+ scalar_t__ ERROR_SUCCESS ;
+ int FALSE ;
+ int* GetItemPath (int ,int ,int **) ;
+ int IDS_NEW_KEY ;
+ int InfoMessageBox (int ,int,int *,char*,int ) ;
+ int InsertNode (int ,int ,int *) ;
+ int KEY_WRITE ;
+ scalar_t__ LoadStringW (int ,int ,int *,int ) ;
+ int MB_ICONERROR ;
+ int MB_OK ;
+ scalar_t__ REG_OPENED_EXISTING_KEY ;
+ int REG_OPTION_NON_VOLATILE ;
+ int RegCloseKey (int *) ;
+ int RegCreateKeyExW (int *,int *,int ,int *,int ,int ,int *,int **,scalar_t__*) ;
+ scalar_t__ RegOpenKeyW (int *,int*,int **) ;
+ int TRUE ;
+ int TreeView_EditLabel (int ,int ) ;
+ int hFrameWnd ;
+ int hInst ;
+ int wsprintf (int *,int *,int ) ;
 
 BOOL CreateNewKey(HWND hwndTV, HTREEITEM hItem)
 {
@@ -49,7 +49,7 @@ BOOL CreateNewKey(HWND hwndTV, HTREEITEM hItem)
     LPCWSTR pszKeyPath;
     int iIndex = 1;
     LONG nResult;
-    HKEY hRootKey = NULL, hKey = NULL, hNewKey = NULL;
+    HKEY hRootKey = ((void*)0), hKey = ((void*)0), hNewKey = ((void*)0);
     BOOL bSuccess = FALSE;
     DWORD dwDisposition;
     HTREEITEM hNewItem;
@@ -63,30 +63,30 @@ BOOL CreateNewKey(HWND hwndTV, HTREEITEM hItem)
     if (LoadStringW(hInst, IDS_NEW_KEY, szNewKeyFormat, COUNT_OF(szNewKeyFormat)) <= 0)
         goto done;
 
-    /* Need to create a new key with a unique name */
+
     do
     {
         wsprintf(szNewKey, szNewKeyFormat, iIndex++);
-        nResult = RegCreateKeyExW(hKey, szNewKey, 0, NULL, REG_OPTION_NON_VOLATILE, KEY_WRITE, NULL, &hNewKey, &dwDisposition);
+        nResult = RegCreateKeyExW(hKey, szNewKey, 0, ((void*)0), REG_OPTION_NON_VOLATILE, KEY_WRITE, ((void*)0), &hNewKey, &dwDisposition);
         if (hNewKey && dwDisposition == REG_OPENED_EXISTING_KEY)
         {
             RegCloseKey(hNewKey);
-            hNewKey = NULL;
+            hNewKey = ((void*)0);
         }
         else if (!hNewKey)
         {
-            InfoMessageBox(hFrameWnd, MB_OK | MB_ICONERROR, NULL, L"Cannot create new key!\n\nError Code: %d", nResult);
+            InfoMessageBox(hFrameWnd, MB_OK | MB_ICONERROR, ((void*)0), L"Cannot create new key!\n\nError Code: %d", nResult);
             goto done;
         }
     }
     while(!hNewKey);
 
-    /* Insert the new key */
+
     hNewItem = InsertNode(hwndTV, hItem, szNewKey);
     if (!hNewItem)
         goto done;
 
-    /* The new key's name is probably not appropriate yet */
+
     (void)TreeView_EditLabel(hwndTV, hNewItem);
 
     bSuccess = TRUE;

@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct range_set {scalar_t__ nr; scalar_t__ alloc; int /*<<< orphan*/  ranges; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE_AND_NULL (int /*<<< orphan*/ ) ; 
+
+
+
+struct range_set {scalar_t__ nr; scalar_t__ alloc; int ranges; } ;
+
+
+ int FREE_AND_NULL (int ) ;
 
 void range_set_release(struct range_set *rs)
 {
-	FREE_AND_NULL(rs->ranges);
-	rs->alloc = rs->nr = 0;
+ FREE_AND_NULL(rs->ranges);
+ rs->alloc = rs->nr = 0;
 }

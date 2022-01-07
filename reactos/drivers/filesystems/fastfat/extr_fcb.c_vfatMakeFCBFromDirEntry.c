@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_16__   TYPE_3__ ;
-typedef  struct TYPE_15__   TYPE_2__ ;
-typedef  struct TYPE_14__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_14__ {int /*<<< orphan*/  Buffer; } ;
-typedef  TYPE_1__ UNICODE_STRING ;
-struct TYPE_16__ {int RefCount; int /*<<< orphan*/  ParentListEntry; int /*<<< orphan*/  ParentListHead; struct TYPE_16__* parentFcb; } ;
-struct TYPE_15__ {int /*<<< orphan*/  ShortNameU; int /*<<< orphan*/  LongNameU; } ;
-typedef  TYPE_2__* PVFAT_DIRENTRY_CONTEXT ;
-typedef  TYPE_3__* PVFATFCB ;
-typedef  int /*<<< orphan*/  PVCB ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  InsertTailList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TAG_FCB ; 
- int /*<<< orphan*/  vfatAddFCBToTable (int /*<<< orphan*/ ,TYPE_3__*) ; 
- int /*<<< orphan*/  vfatInitFCBFromDirEntry (int /*<<< orphan*/ ,TYPE_3__*,TYPE_2__*) ; 
- int /*<<< orphan*/  vfatMakeFullName (TYPE_3__*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*) ; 
- TYPE_3__* vfatNewFCB (int /*<<< orphan*/ ,TYPE_1__*) ; 
+
+typedef struct TYPE_16__ TYPE_3__ ;
+typedef struct TYPE_15__ TYPE_2__ ;
+typedef struct TYPE_14__ TYPE_1__ ;
+
+
+struct TYPE_14__ {int Buffer; } ;
+typedef TYPE_1__ UNICODE_STRING ;
+struct TYPE_16__ {int RefCount; int ParentListEntry; int ParentListHead; struct TYPE_16__* parentFcb; } ;
+struct TYPE_15__ {int ShortNameU; int LongNameU; } ;
+typedef TYPE_2__* PVFAT_DIRENTRY_CONTEXT ;
+typedef TYPE_3__* PVFATFCB ;
+typedef int PVCB ;
+typedef int NTSTATUS ;
+
+
+ int ExFreePoolWithTag (int ,int ) ;
+ int InsertTailList (int *,int *) ;
+ int NT_SUCCESS (int ) ;
+ int STATUS_SUCCESS ;
+ int TAG_FCB ;
+ int vfatAddFCBToTable (int ,TYPE_3__*) ;
+ int vfatInitFCBFromDirEntry (int ,TYPE_3__*,TYPE_2__*) ;
+ int vfatMakeFullName (TYPE_3__*,int *,int *,TYPE_1__*) ;
+ TYPE_3__* vfatNewFCB (int ,TYPE_1__*) ;
 
 NTSTATUS
 vfatMakeFCBFromDirEntry(

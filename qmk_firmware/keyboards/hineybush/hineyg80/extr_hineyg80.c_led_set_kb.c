@@ -1,51 +1,51 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  B5 ; 
- int /*<<< orphan*/  B6 ; 
- int /*<<< orphan*/  C6 ; 
- scalar_t__ IS_LED_ON (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  USB_LED_CAPS_LOCK ; 
- int /*<<< orphan*/  USB_LED_NUM_LOCK ; 
- int /*<<< orphan*/  USB_LED_SCROLL_LOCK ; 
- int /*<<< orphan*/  led_set_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writePinHigh (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  writePinLow (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int B5 ;
+ int B6 ;
+ int C6 ;
+ scalar_t__ IS_LED_ON (int ,int ) ;
+ int USB_LED_CAPS_LOCK ;
+ int USB_LED_NUM_LOCK ;
+ int USB_LED_SCROLL_LOCK ;
+ int led_set_user (int ) ;
+ int writePinHigh (int ) ;
+ int writePinLow (int ) ;
 
 void led_set_kb(uint8_t usb_led) {
-	// put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
-	if (IS_LED_ON(usb_led, USB_LED_NUM_LOCK)) {
-        // Turn numlock on
-		writePinHigh(C6);
+
+ if (IS_LED_ON(usb_led, USB_LED_NUM_LOCK)) {
+
+  writePinHigh(C6);
     } else {
-        // Turn numlock off
-	    writePinLow(C6);
+
+     writePinLow(C6);
     }
-	if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
-        // Turn capslock on
-		writePinHigh(B6);
+ if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
+
+  writePinHigh(B6);
     } else {
-        // Turn capslock off
-		writePinLow(B6);
+
+  writePinLow(B6);
     }
-	if (IS_LED_ON(usb_led, USB_LED_SCROLL_LOCK)) {
-        // Turn scrolllock on
-	    writePinHigh(B5);
+ if (IS_LED_ON(usb_led, USB_LED_SCROLL_LOCK)) {
+
+     writePinHigh(B5);
     } else {
-        // Turn scrolllock off
-		writePinLow(B5);
+
+  writePinLow(B5);
     }
-	led_set_user(usb_led);
+ led_set_user(usb_led);
 }

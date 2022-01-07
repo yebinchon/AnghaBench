@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {scalar_t__ clock_watch_fd; int /*<<< orphan*/  event_clock_watch; int /*<<< orphan*/  event; } ;
-typedef  TYPE_1__ Manager ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPOLLIN ; 
- int /*<<< orphan*/  assert (TYPE_1__*) ; 
- int log_error_errno (int,char*) ; 
- int /*<<< orphan*/  manager_clock_watch ; 
- int /*<<< orphan*/  safe_close (scalar_t__) ; 
- int sd_event_add_io (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*) ; 
- int /*<<< orphan*/  sd_event_source_unref (int /*<<< orphan*/ ) ; 
- scalar_t__ time_change_fd () ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {scalar_t__ clock_watch_fd; int event_clock_watch; int event; } ;
+typedef TYPE_1__ Manager ;
+
+
+ int EPOLLIN ;
+ int assert (TYPE_1__*) ;
+ int log_error_errno (int,char*) ;
+ int manager_clock_watch ;
+ int safe_close (scalar_t__) ;
+ int sd_event_add_io (int ,int *,int,int ,int ,TYPE_1__*) ;
+ int sd_event_source_unref (int ) ;
+ scalar_t__ time_change_fd () ;
 
 __attribute__((used)) static int manager_clock_watch_setup(Manager *m) {
         int r;

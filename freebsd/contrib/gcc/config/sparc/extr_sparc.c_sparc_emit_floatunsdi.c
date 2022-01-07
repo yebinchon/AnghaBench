@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  rtx ;
-typedef  enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
 
-/* Variables and functions */
- int DImode ; 
- int /*<<< orphan*/  LT ; 
- int /*<<< orphan*/  VOIDmode ; 
- int /*<<< orphan*/  const0_rtx ; 
- int /*<<< orphan*/  const1_rtx ; 
- int /*<<< orphan*/  emit_barrier () ; 
- int /*<<< orphan*/  emit_cmp_and_jump_insns (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_jump_insn (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  emit_label (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  force_reg (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_anddi3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_iordi3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_jump (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_label_rtx () ; 
- int /*<<< orphan*/  gen_lshrdi3 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_reg_rtx (int) ; 
- int /*<<< orphan*/  gen_rtx_FLOAT (int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_PLUS (int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gen_rtx_SET (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int rtx ;
+typedef enum machine_mode { ____Placeholder_machine_mode } machine_mode ;
+
+
+ int DImode ;
+ int LT ;
+ int VOIDmode ;
+ int const0_rtx ;
+ int const1_rtx ;
+ int emit_barrier () ;
+ int emit_cmp_and_jump_insns (int ,int ,int ,int ,int,int ,int ) ;
+ int emit_insn (int ) ;
+ int emit_jump_insn (int ) ;
+ int emit_label (int ) ;
+ int force_reg (int,int ) ;
+ int gen_anddi3 (int ,int ,int ) ;
+ int gen_iordi3 (int ,int ,int ) ;
+ int gen_jump (int ) ;
+ int gen_label_rtx () ;
+ int gen_lshrdi3 (int ,int ,int ) ;
+ int gen_reg_rtx (int) ;
+ int gen_rtx_FLOAT (int,int ) ;
+ int gen_rtx_PLUS (int,int ,int ) ;
+ int gen_rtx_SET (int ,int ,int ) ;
 
 void
 sparc_emit_floatunsdi (rtx *operands, enum machine_mode mode)

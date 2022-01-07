@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  scalar_t__ yrmcds_error ;
-typedef  int /*<<< orphan*/  yrmcds ;
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  textbuf_t ;
 
-/* Variables and functions */
- scalar_t__ YRMCDS_BAD_ARGUMENT ; 
- scalar_t__ YRMCDS_OK ; 
- scalar_t__ check_key (char const*,size_t) ; 
- scalar_t__ send_command (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  textbuf_append_char (int /*<<< orphan*/ *,char) ; 
- int /*<<< orphan*/  textbuf_append_const_string (int /*<<< orphan*/ *,char*) ; 
- int /*<<< orphan*/  textbuf_append_string (int /*<<< orphan*/ *,char const*,size_t) ; 
- int /*<<< orphan*/  textbuf_append_uint64 (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  textbuf_init (int /*<<< orphan*/ *) ; 
+
+
+
+typedef scalar_t__ yrmcds_error ;
+typedef int yrmcds ;
+typedef int uint32_t ;
+typedef int textbuf_t ;
+
+
+ scalar_t__ YRMCDS_BAD_ARGUMENT ;
+ scalar_t__ YRMCDS_OK ;
+ scalar_t__ check_key (char const*,size_t) ;
+ scalar_t__ send_command (int *,int *,int *) ;
+ int textbuf_append_char (int *,char) ;
+ int textbuf_append_const_string (int *,char*) ;
+ int textbuf_append_string (int *,char const*,size_t) ;
+ int textbuf_append_uint64 (int *,int ) ;
+ int textbuf_init (int *) ;
 
 yrmcds_error yrmcds_text_touch(yrmcds* c, const char* key, size_t key_len,
                                uint32_t expire, int quiet, uint32_t* serial) {
-    if( key == NULL || key_len == 0 || quiet )
+    if( key == ((void*)0) || key_len == 0 || quiet )
         return YRMCDS_BAD_ARGUMENT;
 
     yrmcds_error ret;

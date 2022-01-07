@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct TYPE_3__ {int ext_types; unsigned int key_usage; } ;
-typedef  TYPE_1__ mbedtls_x509_crt ;
+typedef TYPE_1__ mbedtls_x509_crt ;
 
-/* Variables and functions */
- int MBEDTLS_ERR_X509_BAD_INPUT_DATA ; 
- int MBEDTLS_X509_EXT_KEY_USAGE ; 
- unsigned int MBEDTLS_X509_KU_DECIPHER_ONLY ; 
- unsigned int MBEDTLS_X509_KU_ENCIPHER_ONLY ; 
+
+ int MBEDTLS_ERR_X509_BAD_INPUT_DATA ;
+ int MBEDTLS_X509_EXT_KEY_USAGE ;
+ unsigned int MBEDTLS_X509_KU_DECIPHER_ONLY ;
+ unsigned int MBEDTLS_X509_KU_ENCIPHER_ONLY ;
 
 int mbedtls_x509_crt_check_key_usage( const mbedtls_x509_crt *crt,
                                       unsigned int usage )

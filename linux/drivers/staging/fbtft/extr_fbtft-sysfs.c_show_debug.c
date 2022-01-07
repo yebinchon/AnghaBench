@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct fbtft_par {int /*<<< orphan*/  debug; } ;
+
+
+
+
+struct fbtft_par {int debug; } ;
 struct fb_info {struct fbtft_par* par; } ;
 struct device_attribute {int dummy; } ;
 struct device {int dummy; } ;
-typedef  int /*<<< orphan*/  ssize_t ;
+typedef int ssize_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PAGE_SIZE ; 
- struct fb_info* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  snprintf (char*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
+
+ int PAGE_SIZE ;
+ struct fb_info* dev_get_drvdata (struct device*) ;
+ int snprintf (char*,int ,char*,int ) ;
 
 __attribute__((used)) static ssize_t show_debug(struct device *device,
-			  struct device_attribute *attr, char *buf)
+     struct device_attribute *attr, char *buf)
 {
-	struct fb_info *fb_info = dev_get_drvdata(device);
-	struct fbtft_par *par = fb_info->par;
+ struct fb_info *fb_info = dev_get_drvdata(device);
+ struct fbtft_par *par = fb_info->par;
 
-	return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
+ return snprintf(buf, PAGE_SIZE, "%lu\n", par->debug);
 }

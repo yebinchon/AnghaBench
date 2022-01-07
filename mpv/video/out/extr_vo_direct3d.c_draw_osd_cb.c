@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vertex_osd ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int vertex_osd ;
 struct sub_bitmaps {scalar_t__ format; } ;
-struct osdpart {int num_vertices; int /*<<< orphan*/  vertices; int /*<<< orphan*/  texture; } ;
-struct TYPE_5__ {int /*<<< orphan*/  d3d_device; } ;
-typedef  TYPE_1__ d3d_priv ;
+struct osdpart {int num_vertices; int vertices; int texture; } ;
+struct TYPE_5__ {int d3d_device; } ;
+typedef TYPE_1__ d3d_priv ;
 
-/* Variables and functions */
- int D3DBLEND_ONE ; 
- int D3DBLEND_SRCALPHA ; 
- int /*<<< orphan*/  D3DFVF_OSD_VERTEX ; 
- int /*<<< orphan*/  D3DPT_TRIANGLELIST ; 
- int /*<<< orphan*/  D3DRS_ALPHABLENDENABLE ; 
- int /*<<< orphan*/  D3DRS_SRCBLEND ; 
- int /*<<< orphan*/  D3DRS_TEXTUREFACTOR ; 
- int /*<<< orphan*/  D3DTA_TEXTURE ; 
- int /*<<< orphan*/  D3DTA_TFACTOR ; 
- int /*<<< orphan*/  D3DTOP_MODULATE ; 
- int /*<<< orphan*/  D3DTOP_SELECTARG1 ; 
- int /*<<< orphan*/  D3DTSS_ALPHAOP ; 
- int /*<<< orphan*/  D3DTSS_COLORARG1 ; 
- int FALSE ; 
- int /*<<< orphan*/  IDirect3DDevice9_DrawPrimitiveUP (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetFVF (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetRenderState (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetTexture (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirect3DDevice9_SetTextureStageState (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ SUBBITMAP_LIBASS ; 
- int TRUE ; 
- int /*<<< orphan*/  d3d_begin_scene (TYPE_1__*) ; 
- int /*<<< orphan*/ * d3dtex_get_render_texture (TYPE_1__*,int /*<<< orphan*/ *) ; 
- struct osdpart* generate_osd (TYPE_1__*,struct sub_bitmaps*) ; 
+
+ int D3DBLEND_ONE ;
+ int D3DBLEND_SRCALPHA ;
+ int D3DFVF_OSD_VERTEX ;
+ int D3DPT_TRIANGLELIST ;
+ int D3DRS_ALPHABLENDENABLE ;
+ int D3DRS_SRCBLEND ;
+ int D3DRS_TEXTUREFACTOR ;
+ int D3DTA_TEXTURE ;
+ int D3DTA_TFACTOR ;
+ int D3DTOP_MODULATE ;
+ int D3DTOP_SELECTARG1 ;
+ int D3DTSS_ALPHAOP ;
+ int D3DTSS_COLORARG1 ;
+ int FALSE ;
+ int IDirect3DDevice9_DrawPrimitiveUP (int ,int ,int,int ,int) ;
+ int IDirect3DDevice9_SetFVF (int ,int ) ;
+ int IDirect3DDevice9_SetRenderState (int ,int ,int) ;
+ int IDirect3DDevice9_SetTexture (int ,int ,int *) ;
+ int IDirect3DDevice9_SetTextureStageState (int ,int ,int ,int ) ;
+ scalar_t__ SUBBITMAP_LIBASS ;
+ int TRUE ;
+ int d3d_begin_scene (TYPE_1__*) ;
+ int * d3dtex_get_render_texture (TYPE_1__*,int *) ;
+ struct osdpart* generate_osd (TYPE_1__*,struct sub_bitmaps*) ;
 
 __attribute__((used)) static void draw_osd_cb(void *ctx, struct sub_bitmaps *imgs)
 {
@@ -60,7 +60,7 @@ __attribute__((used)) static void draw_osd_cb(void *ctx, struct sub_bitmaps *img
                                 d3dtex_get_render_texture(priv, &osd->texture));
 
     if (imgs->format == SUBBITMAP_LIBASS) {
-        // do not use the color value from the A8 texture, because that is black
+
         IDirect3DDevice9_SetRenderState(priv->d3d_device,D3DRS_TEXTUREFACTOR,
                                         0xFFFFFFFF);
         IDirect3DDevice9_SetTextureStageState(priv->d3d_device,0,
@@ -85,7 +85,7 @@ __attribute__((used)) static void draw_osd_cb(void *ctx, struct sub_bitmaps *img
     IDirect3DDevice9_SetRenderState(priv->d3d_device,
                                     D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 
-    IDirect3DDevice9_SetTexture(priv->d3d_device, 0, NULL);
+    IDirect3DDevice9_SetTexture(priv->d3d_device, 0, ((void*)0));
 
     IDirect3DDevice9_SetRenderState(priv->d3d_device,
                                     D3DRS_ALPHABLENDENABLE, FALSE);

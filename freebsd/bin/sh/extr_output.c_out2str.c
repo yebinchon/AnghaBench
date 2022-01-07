@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  out2 ; 
- int /*<<< orphan*/  outstr (char const*,int /*<<< orphan*/ ) ; 
+ int out2 ;
+ int outstr (char const*,int ) ;
 
 void
 out2str(const char *p)
 {
-	outstr(p, out2);
+ outstr(p, out2);
 }

@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  time_t ;
+
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int time_t ;
 struct TYPE_4__ {int dns_cache_timeout; } ;
-struct TYPE_3__ {int /*<<< orphan*/  hostcache; } ;
+struct TYPE_3__ {int hostcache; } ;
 struct Curl_easy {scalar_t__ share; TYPE_2__ set; TYPE_1__ dns; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CURL_LOCK_ACCESS_SINGLE ; 
- int /*<<< orphan*/  CURL_LOCK_DATA_DNS ; 
- int /*<<< orphan*/  Curl_share_lock (struct Curl_easy*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  Curl_share_unlock (struct Curl_easy*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hostcache_prune (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+ int CURL_LOCK_ACCESS_SINGLE ;
+ int CURL_LOCK_DATA_DNS ;
+ int Curl_share_lock (struct Curl_easy*,int ,int ) ;
+ int Curl_share_unlock (struct Curl_easy*,int ) ;
+ int hostcache_prune (int ,int,int ) ;
+ int time (int *) ;
 
 void Curl_hostcache_prune(struct Curl_easy *data)
 {
   time_t now;
 
   if((data->set.dns_cache_timeout == -1) || !data->dns.hostcache)
-    /* cache forever means never prune, and NULL hostcache means
-       we can't do it */
+
+
     return;
 
   if(data->share)
@@ -39,7 +39,7 @@ void Curl_hostcache_prune(struct Curl_easy *data)
 
   time(&now);
 
-  /* Remove outdated and unused entries from the hostcache */
+
   hostcache_prune(data->dns.hostcache,
                   data->set.dns_cache_timeout,
                   now);

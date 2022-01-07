@@ -1,57 +1,57 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct ifmedia {int /*<<< orphan*/  ifm_media; } ;
-struct lio {int /*<<< orphan*/  oct_dev; struct ifmedia ifmedia; } ;
+
+
+
+
+struct ifmedia {int ifm_media; } ;
+struct lio {int oct_dev; struct ifmedia ifmedia; } ;
 struct ifnet {int dummy; } ;
 
-/* Variables and functions */
- int EINVAL ; 
-#define  IFM_10G_CX4 132 
-#define  IFM_10G_SR 131 
-#define  IFM_10G_T 130 
-#define  IFM_10G_TWINAX 129 
-#define  IFM_AUTO 128 
- scalar_t__ IFM_ETHER ; 
- int IFM_SUBTYPE (int /*<<< orphan*/ ) ; 
- scalar_t__ IFM_TYPE (int /*<<< orphan*/ ) ; 
- struct lio* if_getsoftc (struct ifnet*) ; 
- int /*<<< orphan*/  lio_dev_err (int /*<<< orphan*/ ,char*,int) ; 
+
+ int EINVAL ;
+
+
+
+
+
+ scalar_t__ IFM_ETHER ;
+ int IFM_SUBTYPE (int ) ;
+ scalar_t__ IFM_TYPE (int ) ;
+ struct lio* if_getsoftc (struct ifnet*) ;
+ int lio_dev_err (int ,char*,int) ;
 
 __attribute__((used)) static int
 lio_ifmedia_update(struct ifnet *ifp)
 {
-	struct lio	*lio = if_getsoftc(ifp);
-	struct ifmedia	*ifm;
+ struct lio *lio = if_getsoftc(ifp);
+ struct ifmedia *ifm;
 
-	ifm = &lio->ifmedia;
+ ifm = &lio->ifmedia;
 
-	/* We only support Ethernet media type. */
-	if (IFM_TYPE(ifm->ifm_media) != IFM_ETHER)
-		return (EINVAL);
 
-	switch (IFM_SUBTYPE(ifm->ifm_media)) {
-	case IFM_AUTO:
-		break;
-	case IFM_10G_CX4:
-	case IFM_10G_SR:
-	case IFM_10G_T:
-	case IFM_10G_TWINAX:
-	default:
-		/* We don't support changing the media type. */
-		lio_dev_err(lio->oct_dev, "Invalid media type (%d)\n",
-			    IFM_SUBTYPE(ifm->ifm_media));
-		return (EINVAL);
-	}
+ if (IFM_TYPE(ifm->ifm_media) != IFM_ETHER)
+  return (EINVAL);
 
-	return (0);
+ switch (IFM_SUBTYPE(ifm->ifm_media)) {
+ case 128:
+  break;
+ case 132:
+ case 131:
+ case 130:
+ case 129:
+ default:
+
+  lio_dev_err(lio->oct_dev, "Invalid media type (%d)\n",
+       IFM_SUBTYPE(ifm->ifm_media));
+  return (EINVAL);
+ }
+
+ return (0);
 }

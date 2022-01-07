@@ -1,81 +1,81 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_27__   TYPE_7__ ;
-typedef  struct TYPE_26__   TYPE_6__ ;
-typedef  struct TYPE_25__   TYPE_5__ ;
-typedef  struct TYPE_24__   TYPE_4__ ;
-typedef  struct TYPE_23__   TYPE_3__ ;
-typedef  struct TYPE_22__   TYPE_2__ ;
-typedef  struct TYPE_21__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_27__ TYPE_7__ ;
+typedef struct TYPE_26__ TYPE_6__ ;
+typedef struct TYPE_25__ TYPE_5__ ;
+typedef struct TYPE_24__ TYPE_4__ ;
+typedef struct TYPE_23__ TYPE_3__ ;
+typedef struct TYPE_22__ TYPE_2__ ;
+typedef struct TYPE_21__ TYPE_1__ ;
+
+
+typedef int WCHAR ;
 struct TYPE_22__ {int Length; int MaximumLength; scalar_t__ Buffer; } ;
-typedef  TYPE_2__ UNICODE_STRING ;
-typedef  scalar_t__ ULONG_PTR ;
-typedef  scalar_t__ ULONGLONG ;
-typedef  scalar_t__ ULONG ;
+typedef TYPE_2__ UNICODE_STRING ;
+typedef scalar_t__ ULONG_PTR ;
+typedef scalar_t__ ULONGLONG ;
+typedef scalar_t__ ULONG ;
 struct TYPE_21__ {scalar_t__ BytesPerSector; } ;
-struct TYPE_27__ {int /*<<< orphan*/  FileRecLookasideList; TYPE_1__ NtfsInfo; } ;
+struct TYPE_27__ {int FileRecLookasideList; TYPE_1__ NtfsInfo; } ;
 struct TYPE_26__ {scalar_t__ FsContext; } ;
-struct TYPE_25__ {int /*<<< orphan*/  pRecord; } ;
+struct TYPE_25__ {int pRecord; } ;
 struct TYPE_24__ {scalar_t__ Type; int NameLength; scalar_t__ NameOffset; } ;
-struct TYPE_23__ {int /*<<< orphan*/  Stream; int /*<<< orphan*/  MFTIndex; } ;
-typedef  scalar_t__ PWCHAR ;
-typedef  scalar_t__* PULONG ;
-typedef  scalar_t__ PUCHAR ;
-typedef  TYPE_3__* PNTFS_FCB ;
-typedef  TYPE_4__* PNTFS_ATTR_RECORD ;
-typedef  TYPE_5__* PNTFS_ATTR_CONTEXT ;
-typedef  int /*<<< orphan*/ * PFILE_RECORD_HEADER ;
-typedef  TYPE_6__* PFILE_OBJECT ;
-typedef  TYPE_7__* PDEVICE_EXTENSION ;
-typedef  int /*<<< orphan*/ * PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  FIND_ATTR_CONTXT ;
-typedef  scalar_t__ BOOLEAN ;
+struct TYPE_23__ {int Stream; int MFTIndex; } ;
+typedef scalar_t__ PWCHAR ;
+typedef scalar_t__* PULONG ;
+typedef scalar_t__ PUCHAR ;
+typedef TYPE_3__* PNTFS_FCB ;
+typedef TYPE_4__* PNTFS_ATTR_RECORD ;
+typedef TYPE_5__* PNTFS_ATTR_CONTEXT ;
+typedef int * PFILE_RECORD_HEADER ;
+typedef TYPE_6__* PFILE_OBJECT ;
+typedef TYPE_7__* PDEVICE_EXTENSION ;
+typedef int * PCHAR ;
+typedef int NTSTATUS ;
+typedef int FIND_ATTR_CONTXT ;
+typedef scalar_t__ BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ AttributeAllocatedLength (int /*<<< orphan*/ ) ; 
- scalar_t__ AttributeData ; 
- scalar_t__ AttributeDataLength (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DPRINT (char*,TYPE_7__*,...) ; 
- int /*<<< orphan*/  DPRINT1 (char*,...) ; 
- int /*<<< orphan*/ * ExAllocateFromNPagedLookasideList (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * ExAllocatePoolWithTag (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreePoolWithTag (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ExFreeToNPagedLookasideList (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  FindAttribute (TYPE_7__*,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_5__**,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindCloseAttribute (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FindFirstAttribute (int /*<<< orphan*/ *,TYPE_7__*,int /*<<< orphan*/ *,scalar_t__,TYPE_4__**) ; 
- int /*<<< orphan*/  FindNextAttribute (int /*<<< orphan*/ *,TYPE_4__**) ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  NonPagedPool ; 
- scalar_t__ NtfsFCBIsCompressed (TYPE_3__*) ; 
- scalar_t__ ROUND_DOWN (scalar_t__,scalar_t__) ; 
- scalar_t__ ROUND_UP (scalar_t__,scalar_t__) ; 
- scalar_t__ ReadAttribute (TYPE_7__*,TYPE_5__*,scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  ReadFileRecord (TYPE_7__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ReleaseAttributeContext (TYPE_5__*) ; 
- int /*<<< orphan*/  RtlCopyMemory (scalar_t__,int /*<<< orphan*/ *,scalar_t__) ; 
- int /*<<< orphan*/  RtlZeroMemory (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  STATUS_END_OF_FILE ; 
- int /*<<< orphan*/  STATUS_INSUFFICIENT_RESOURCES ; 
- int /*<<< orphan*/  STATUS_NOT_IMPLEMENTED ; 
- int /*<<< orphan*/  STATUS_SUCCESS ; 
- int /*<<< orphan*/  TAG_NTFS ; 
- scalar_t__ TRUE ; 
- int /*<<< orphan*/  UNIMPLEMENTED ; 
- int /*<<< orphan*/  wcslen (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AttributeAllocatedLength (int ) ;
+ scalar_t__ AttributeData ;
+ scalar_t__ AttributeDataLength (int ) ;
+ int DPRINT (char*,TYPE_7__*,...) ;
+ int DPRINT1 (char*,...) ;
+ int * ExAllocateFromNPagedLookasideList (int *) ;
+ int * ExAllocatePoolWithTag (int ,scalar_t__,int ) ;
+ int ExFreePoolWithTag (int *,int ) ;
+ int ExFreeToNPagedLookasideList (int *,int *) ;
+ scalar_t__ FALSE ;
+ int FindAttribute (TYPE_7__*,int *,scalar_t__,int ,int ,TYPE_5__**,int *) ;
+ int FindCloseAttribute (int *) ;
+ int FindFirstAttribute (int *,TYPE_7__*,int *,scalar_t__,TYPE_4__**) ;
+ int FindNextAttribute (int *,TYPE_4__**) ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int NonPagedPool ;
+ scalar_t__ NtfsFCBIsCompressed (TYPE_3__*) ;
+ scalar_t__ ROUND_DOWN (scalar_t__,scalar_t__) ;
+ scalar_t__ ROUND_UP (scalar_t__,scalar_t__) ;
+ scalar_t__ ReadAttribute (TYPE_7__*,TYPE_5__*,scalar_t__,int *,scalar_t__) ;
+ int ReadFileRecord (TYPE_7__*,int ,int *) ;
+ int ReleaseAttributeContext (TYPE_5__*) ;
+ int RtlCopyMemory (scalar_t__,int *,scalar_t__) ;
+ int RtlZeroMemory (scalar_t__,scalar_t__) ;
+ int STATUS_END_OF_FILE ;
+ int STATUS_INSUFFICIENT_RESOURCES ;
+ int STATUS_NOT_IMPLEMENTED ;
+ int STATUS_SUCCESS ;
+ int TAG_NTFS ;
+ scalar_t__ TRUE ;
+ int UNIMPLEMENTED ;
+ int wcslen (int ) ;
 
 __attribute__((used)) static
 NTSTATUS
@@ -119,7 +119,7 @@ NtfsReadFile(PDEVICE_EXTENSION DeviceExt,
     }
 
     FileRecord = ExAllocateFromNPagedLookasideList(&DeviceExt->FileRecLookasideList);
-    if (FileRecord == NULL)
+    if (FileRecord == ((void*)0))
     {
         DPRINT1("Not enough memory!\n");
         return STATUS_INSUFFICIENT_RESOURCES;
@@ -134,7 +134,7 @@ NtfsReadFile(PDEVICE_EXTENSION DeviceExt,
     }
 
 
-    Status = FindAttribute(DeviceExt, FileRecord, AttributeData, Fcb->Stream, wcslen(Fcb->Stream), &DataContext, NULL);
+    Status = FindAttribute(DeviceExt, FileRecord, AttributeData, Fcb->Stream, wcslen(Fcb->Stream), &DataContext, ((void*)0));
     if (!NT_SUCCESS(Status))
     {
         NTSTATUS BrowseStatus;
@@ -185,7 +185,7 @@ NtfsReadFile(PDEVICE_EXTENSION DeviceExt,
     {
         RealReadOffset = ROUND_DOWN(ReadOffset, DeviceExt->NtfsInfo.BytesPerSector);
         RealLength = ROUND_UP(ToRead, DeviceExt->NtfsInfo.BytesPerSector);
-        /* do we need to extend RealLength by one sector? */
+
         if (RealLength + RealReadOffset < ReadOffset + Length)
         {
             if (RealReadOffset + RealLength + DeviceExt->NtfsInfo.BytesPerSector <= AttributeAllocatedLength(DataContext->pRecord))
@@ -194,7 +194,7 @@ NtfsReadFile(PDEVICE_EXTENSION DeviceExt,
 
 
         ReadBuffer = ExAllocatePoolWithTag(NonPagedPool, RealLength, TAG_NTFS);
-        if (ReadBuffer == NULL)
+        if (ReadBuffer == ((void*)0))
         {
             DPRINT1("Not enough memory!\n");
             ReleaseAttributeContext(DataContext);

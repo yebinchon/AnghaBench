@@ -1,29 +1,29 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  MSICOMPONENT ;
-typedef  scalar_t__ LONG ;
-typedef  int /*<<< orphan*/  HKEY ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KEY_ALL_ACCESS ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- scalar_t__ RegDeleteTreeW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  delete_key (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/  open_key (int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+
+
+typedef int WCHAR ;
+typedef int MSICOMPONENT ;
+typedef scalar_t__ LONG ;
+typedef int HKEY ;
+
+
+ int FALSE ;
+ int KEY_ALL_ACCESS ;
+ int RegCloseKey (int ) ;
+ scalar_t__ RegDeleteTreeW (int ,int *) ;
+ int TRACE (char*,int ,scalar_t__) ;
+ int debugstr_w (int const*) ;
+ int delete_key (int const*,int ,int const*) ;
+ int open_key (int const*,int ,int const*,int ,int ) ;
 
 __attribute__((used)) static void delete_tree( const MSICOMPONENT *comp, HKEY root, const WCHAR *path )
 {
@@ -31,7 +31,7 @@ __attribute__((used)) static void delete_tree( const MSICOMPONENT *comp, HKEY ro
     HKEY hkey;
 
     if (!(hkey = open_key( comp, root, path, FALSE, KEY_ALL_ACCESS ))) return;
-    res = RegDeleteTreeW( hkey, NULL );
+    res = RegDeleteTreeW( hkey, ((void*)0) );
     if (res) TRACE("failed to delete subtree of %s (%d)\n", debugstr_w(path), res);
     delete_key( comp, root, path );
     RegCloseKey( hkey );

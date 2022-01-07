@@ -1,73 +1,73 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
 struct TYPE_7__ {scalar_t__ node_status; } ;
-typedef  TYPE_1__ svn_wc_status3_t ;
-typedef  int /*<<< orphan*/  svn_wc_context_t ;
-typedef  int /*<<< orphan*/  svn_subst_eol_style_t ;
-struct TYPE_8__ {int /*<<< orphan*/  data; } ;
-typedef  TYPE_2__ svn_string_t ;
-typedef  int /*<<< orphan*/  svn_stream_t ;
-typedef  int /*<<< orphan*/  svn_revnum_t ;
+typedef TYPE_1__ svn_wc_status3_t ;
+typedef int svn_wc_context_t ;
+typedef int svn_subst_eol_style_t ;
+struct TYPE_8__ {int data; } ;
+typedef TYPE_2__ svn_string_t ;
+typedef int svn_stream_t ;
+typedef int svn_revnum_t ;
 struct TYPE_9__ {scalar_t__ kind; } ;
-typedef  TYPE_3__ svn_opt_revision_t ;
-typedef  scalar_t__ svn_node_kind_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  svn_cancel_func_t ;
-typedef  scalar_t__ svn_boolean_t ;
-typedef  int /*<<< orphan*/  apr_time_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-typedef  int /*<<< orphan*/  apr_hash_t ;
+typedef TYPE_3__ svn_opt_revision_t ;
+typedef scalar_t__ svn_node_kind_t ;
+typedef int svn_error_t ;
+typedef int svn_cancel_func_t ;
+typedef scalar_t__ svn_boolean_t ;
+typedef int apr_time_t ;
+typedef int apr_pool_t ;
+typedef int apr_hash_t ;
 
-/* Variables and functions */
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  SVN_CLIENT__REVKIND_IS_LOCAL_TO_WC (scalar_t__) ; 
- int /*<<< orphan*/  SVN_ERR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_ASSERT (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SVN_ERR_CLIENT_IS_DIRECTORY ; 
- int /*<<< orphan*/  SVN_ERR_ILLEGAL_TARGET ; 
- int /*<<< orphan*/  SVN_ERR_UNVERSIONED_RESOURCE ; 
- int /*<<< orphan*/ * SVN_NO_ERROR ; 
- int /*<<< orphan*/  SVN_PROP_EOL_STYLE ; 
- int /*<<< orphan*/  SVN_PROP_KEYWORDS ; 
- int /*<<< orphan*/  SVN_PROP_SPECIAL ; 
- char const* SVN_SUBST_NATIVE_EOL_STR ; 
- scalar_t__ TRUE ; 
- char* _ (char*) ; 
- char* apr_psprintf (int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_dirent_local_style (char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * svn_error_createf (int /*<<< orphan*/ ,int /*<<< orphan*/ *,char*,int /*<<< orphan*/ ) ; 
- TYPE_2__* svn_hash_gets (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  svn_io_file_affected_time (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_node_file ; 
- scalar_t__ svn_node_none ; 
- scalar_t__ svn_node_unknown ; 
- scalar_t__ svn_opt_revision_working ; 
- char* svn_path_url_add_component2 (char const*,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_stream_open_readonly (int /*<<< orphan*/ **,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_build_keywords3 (int /*<<< orphan*/ **,int /*<<< orphan*/ ,char const*,char const*,char const*,int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_subst_eol_style_from_value (int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * svn_subst_stream_translated (int /*<<< orphan*/ *,char const*,scalar_t__,int /*<<< orphan*/ *,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__node_get_changed_info (int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc__node_get_repos_info (int /*<<< orphan*/ *,char const**,char const**,int /*<<< orphan*/ *,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_get_pristine_contents2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_get_pristine_props (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_prop_list2 (int /*<<< orphan*/ **,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_read_kind2 (scalar_t__*,int /*<<< orphan*/ *,char const*,int,scalar_t__,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_wc_status3 (TYPE_1__**,int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ svn_wc_status_normal ; 
+
+ scalar_t__ FALSE ;
+ int SVN_CLIENT__REVKIND_IS_LOCAL_TO_WC (scalar_t__) ;
+ int SVN_ERR (int ) ;
+ int SVN_ERR_ASSERT (int ) ;
+ int SVN_ERR_CLIENT_IS_DIRECTORY ;
+ int SVN_ERR_ILLEGAL_TARGET ;
+ int SVN_ERR_UNVERSIONED_RESOURCE ;
+ int * SVN_NO_ERROR ;
+ int SVN_PROP_EOL_STYLE ;
+ int SVN_PROP_KEYWORDS ;
+ int SVN_PROP_SPECIAL ;
+ char const* SVN_SUBST_NATIVE_EOL_STR ;
+ scalar_t__ TRUE ;
+ char* _ (char*) ;
+ char* apr_psprintf (int *,char*,int ) ;
+ int svn_dirent_local_style (char const*,int *) ;
+ int * svn_error_createf (int ,int *,char*,int ) ;
+ TYPE_2__* svn_hash_gets (int *,int ) ;
+ int svn_io_file_affected_time (int *,char const*,int *) ;
+ scalar_t__ svn_node_file ;
+ scalar_t__ svn_node_none ;
+ scalar_t__ svn_node_unknown ;
+ scalar_t__ svn_opt_revision_working ;
+ char* svn_path_url_add_component2 (char const*,char const*,int *) ;
+ int svn_stream_open_readonly (int **,char const*,int *,int *) ;
+ int svn_subst_build_keywords3 (int **,int ,char const*,char const*,char const*,int ,char const*,int *) ;
+ int svn_subst_eol_style_from_value (int *,char const**,int ) ;
+ int * svn_subst_stream_translated (int *,char const*,scalar_t__,int *,scalar_t__,int *) ;
+ int svn_wc__node_get_changed_info (int *,int *,char const**,int *,char const*,int *,int *) ;
+ int svn_wc__node_get_repos_info (int *,char const**,char const**,int *,int *,char const*,int *,int *) ;
+ int svn_wc_get_pristine_contents2 (int **,int *,char const*,int *,int *) ;
+ int svn_wc_get_pristine_props (int **,int *,char const*,int *,int *) ;
+ int svn_wc_prop_list2 (int **,int *,char const*,int *,int *) ;
+ int svn_wc_read_kind2 (scalar_t__*,int *,char const*,int,scalar_t__,int *) ;
+ int svn_wc_status3 (TYPE_1__**,int *,char const*,int *,int *) ;
+ scalar_t__ svn_wc_status_normal ;
 
 svn_error_t *
 svn_client__get_normalized_stream(svn_stream_t **normal_stream,
@@ -81,11 +81,11 @@ svn_client__get_normalized_stream(svn_stream_t **normal_stream,
                                   apr_pool_t *result_pool,
                                   apr_pool_t *scratch_pool)
 {
-  apr_hash_t *kw = NULL;
+  apr_hash_t *kw = ((void*)0);
   svn_subst_eol_style_t style;
   apr_hash_t *props;
   svn_string_t *eol_style, *keywords, *special;
-  const char *eol = NULL;
+  const char *eol = ((void*)0);
   svn_boolean_t local_mod = FALSE;
   svn_stream_t *input;
   svn_node_kind_t kind;
@@ -97,12 +97,12 @@ svn_client__get_normalized_stream(svn_stream_t **normal_stream,
                             FALSE, scratch_pool));
 
   if (kind == svn_node_unknown || kind == svn_node_none)
-    return svn_error_createf(SVN_ERR_UNVERSIONED_RESOURCE, NULL,
+    return svn_error_createf(SVN_ERR_UNVERSIONED_RESOURCE, ((void*)0),
                              _("'%s' is not under version control"),
                              svn_dirent_local_style(local_abspath,
                                                     scratch_pool));
   if (kind != svn_node_file)
-    return svn_error_createf(SVN_ERR_CLIENT_IS_DIRECTORY, NULL,
+    return svn_error_createf(SVN_ERR_CLIENT_IS_DIRECTORY, ((void*)0),
                              _("'%s' refers to a directory"),
                              svn_dirent_local_style(local_abspath,
                                                     scratch_pool));
@@ -111,8 +111,8 @@ svn_client__get_normalized_stream(svn_stream_t **normal_stream,
     {
       SVN_ERR(svn_wc_get_pristine_contents2(&input, wc_ctx, local_abspath,
                                             result_pool, scratch_pool));
-      if (input == NULL)
-        return svn_error_createf(SVN_ERR_ILLEGAL_TARGET, NULL,
+      if (input == ((void*)0))
+        return svn_error_createf(SVN_ERR_ILLEGAL_TARGET, ((void*)0),
                  _("'%s' has no pristine version until it is committed"),
                  svn_dirent_local_style(local_abspath, scratch_pool));
 
@@ -154,8 +154,8 @@ svn_client__get_normalized_stream(svn_stream_t **normal_stream,
       SVN_ERR(svn_wc__node_get_changed_info(&changed_rev, &tm, &author, wc_ctx,
                                             local_abspath, scratch_pool,
                                             scratch_pool));
-      SVN_ERR(svn_wc__node_get_repos_info(NULL, &repos_relpath, &repos_root_url,
-                                          NULL,
+      SVN_ERR(svn_wc__node_get_repos_info(((void*)0), &repos_relpath, &repos_root_url,
+                                          ((void*)0),
                                           wc_ctx, local_abspath, scratch_pool,
                                           scratch_pool));
       url = svn_path_url_add_component2(repos_root_url, repos_relpath,
@@ -163,16 +163,16 @@ svn_client__get_normalized_stream(svn_stream_t **normal_stream,
 
       if (local_mod)
         {
-          /* For locally modified files, we'll append an 'M'
-             to the revision number, and set the author to
-             "(local)" since we can't always determine the
-             current user's username */
+
+
+
+
           rev_str = apr_psprintf(scratch_pool, "%ldM", changed_rev);
           author = _("(local)");
 
           if (! special)
             {
-              /* Use the modified time from the working copy for files */
+
               SVN_ERR(svn_io_file_affected_time(&tm, local_abspath,
                                                 scratch_pool));
             }
@@ -187,8 +187,8 @@ svn_client__get_normalized_stream(svn_stream_t **normal_stream,
                                         scratch_pool));
     }
 
-  /* Wrap the output stream if translation is needed. */
-  if (eol != NULL || kw != NULL)
+
+  if (eol != ((void*)0) || kw != ((void*)0))
     input = svn_subst_stream_translated(
       input,
       (eol_style && normalize_eols) ? SVN_SUBST_NATIVE_EOL_STR : eol,

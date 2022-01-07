@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct pci_dev {int class; } ;
-struct TYPE_2__ {int /*<<< orphan*/  piar_lock; } ;
+struct TYPE_2__ {int piar_lock; } ;
 
-/* Variables and functions */
- int PCI_BASE_CLASS_BRIDGE ; 
- int /*<<< orphan*/  __pci_addr_cache_insert_device (struct pci_dev*) ; 
- TYPE_1__ pci_io_addr_cache_root ; 
- int /*<<< orphan*/  spin_lock_irqsave (int /*<<< orphan*/ *,unsigned long) ; 
- int /*<<< orphan*/  spin_unlock_irqrestore (int /*<<< orphan*/ *,unsigned long) ; 
+
+ int PCI_BASE_CLASS_BRIDGE ;
+ int __pci_addr_cache_insert_device (struct pci_dev*) ;
+ TYPE_1__ pci_io_addr_cache_root ;
+ int spin_lock_irqsave (int *,unsigned long) ;
+ int spin_unlock_irqrestore (int *,unsigned long) ;
 
 void pci_addr_cache_insert_device(struct pci_dev *dev)
 {
-	unsigned long flags;
+ unsigned long flags;
 
-	/* Ignore PCI bridges */
-	if ((dev->class >> 16) == PCI_BASE_CLASS_BRIDGE)
-		return;
 
-	spin_lock_irqsave(&pci_io_addr_cache_root.piar_lock, flags);
-	__pci_addr_cache_insert_device(dev);
-	spin_unlock_irqrestore(&pci_io_addr_cache_root.piar_lock, flags);
+ if ((dev->class >> 16) == PCI_BASE_CLASS_BRIDGE)
+  return;
+
+ spin_lock_irqsave(&pci_io_addr_cache_root.piar_lock, flags);
+ __pci_addr_cache_insert_device(dev);
+ spin_unlock_irqrestore(&pci_io_addr_cache_root.piar_lock, flags);
 }

@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ emulatebios; scalar_t__ usequickload; scalar_t__ playing_ssf; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  YAB_ERR_CANNOTINIT ; 
- int /*<<< orphan*/  YabSetError (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- scalar_t__ YabauseQuickLoadGame () ; 
- int /*<<< orphan*/  YabauseResetNoLoad () ; 
- int /*<<< orphan*/  _ (char*) ; 
- TYPE_1__ yabsys ; 
+
+ int YAB_ERR_CANNOTINIT ;
+ int YabSetError (int ,int ) ;
+ scalar_t__ YabauseQuickLoadGame () ;
+ int YabauseResetNoLoad () ;
+ int _ (char*) ;
+ TYPE_1__ yabsys ;
 
 void YabauseReset(void) {
 

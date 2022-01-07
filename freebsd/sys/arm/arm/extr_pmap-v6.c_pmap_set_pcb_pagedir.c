@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct pcb {int /*<<< orphan*/  pcb_pagedir; } ;
-typedef  int /*<<< orphan*/  pmap_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  pmap_ttb_get (int /*<<< orphan*/ ) ; 
+
+
+
+struct pcb {int pcb_pagedir; } ;
+typedef int pmap_t ;
+
+
+ int pmap_ttb_get (int ) ;
 
 void
 pmap_set_pcb_pagedir(pmap_t pmap, struct pcb *pcb)
 {
 
-	pcb->pcb_pagedir = pmap_ttb_get(pmap);
+ pcb->pcb_pagedir = pmap_ttb_get(pmap);
 }

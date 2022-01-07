@@ -1,65 +1,65 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  wfex ;
-struct TYPE_7__ {int nChannels; int nSamplesPerSec; int wBitsPerSample; int nBlockAlign; int nAvgBytesPerSec; int dwSize; int dwBufferBytes; struct TYPE_7__* lpwfxFormat; int /*<<< orphan*/  dwFlags; int /*<<< orphan*/  wFormatTag; } ;
-typedef  TYPE_1__ WAVEFORMATEX ;
-typedef  int /*<<< orphan*/ * LPDIRECTSOUNDFULLDUPLEX ;
-typedef  int /*<<< orphan*/  LPDIRECTSOUNDCAPTUREBUFFER8 ;
-typedef  int /*<<< orphan*/  LPDIRECTSOUNDBUFFER8 ;
-typedef  scalar_t__ HRESULT ;
-typedef  int /*<<< orphan*/  DSCBufferDesc ;
-typedef  TYPE_1__ DSCBUFFERDESC ;
-typedef  int /*<<< orphan*/  DSBufferDesc ;
-typedef  TYPE_1__ DSBUFFERDESC ;
 
-/* Variables and functions */
- scalar_t__ CLASS_E_CLASSNOTAVAILABLE ; 
- int /*<<< orphan*/  CLSCTX_INPROC_SERVER ; 
- int /*<<< orphan*/  CLSID_DirectSoundFullDuplex ; 
- int /*<<< orphan*/  CLSID_DirectSoundPrivate ; 
- scalar_t__ CoCreateInstance (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,void**) ; 
- int /*<<< orphan*/  DSBCAPS_GLOBALFOCUS ; 
- int /*<<< orphan*/  DSCBCAPS_WAVEMAPPED ; 
- int /*<<< orphan*/  DSDEVID_DefaultCapture ; 
- int /*<<< orphan*/  DSDEVID_DefaultPlayback ; 
- int /*<<< orphan*/  DSDEVID_DefaultVoiceCapture ; 
- int /*<<< orphan*/  DSDEVID_DefaultVoicePlayback ; 
- scalar_t__ DSERR_ALLOCATED ; 
- scalar_t__ DSERR_INVALIDCALL ; 
- scalar_t__ DSERR_NODRIVER ; 
- int /*<<< orphan*/  DSSCL_EXCLUSIVE ; 
- scalar_t__ DS_OK ; 
- scalar_t__ E_FAIL ; 
- scalar_t__ E_NOINTERFACE ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  IDirectSoundFullDuplex_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IDirectSoundFullDuplex_test (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  IID_IDirectSoundFullDuplex ; 
- scalar_t__ REGDB_E_CLASSNOTREG ; 
- scalar_t__ S_OK ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WAVE_FORMAT_PCM ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  get_hwnd () ; 
- int /*<<< orphan*/  ok (int,char*,scalar_t__) ; 
- scalar_t__ pDirectSoundFullDuplexCreate (int /*<<< orphan*/ *,int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  trace (char*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int wfex ;
+struct TYPE_7__ {int nChannels; int nSamplesPerSec; int wBitsPerSample; int nBlockAlign; int nAvgBytesPerSec; int dwSize; int dwBufferBytes; struct TYPE_7__* lpwfxFormat; int dwFlags; int wFormatTag; } ;
+typedef TYPE_1__ WAVEFORMATEX ;
+typedef int * LPDIRECTSOUNDFULLDUPLEX ;
+typedef int LPDIRECTSOUNDCAPTUREBUFFER8 ;
+typedef int LPDIRECTSOUNDBUFFER8 ;
+typedef scalar_t__ HRESULT ;
+typedef int DSCBufferDesc ;
+typedef TYPE_1__ DSCBUFFERDESC ;
+typedef int DSBufferDesc ;
+typedef TYPE_1__ DSBUFFERDESC ;
+
+
+ scalar_t__ CLASS_E_CLASSNOTAVAILABLE ;
+ int CLSCTX_INPROC_SERVER ;
+ int CLSID_DirectSoundFullDuplex ;
+ int CLSID_DirectSoundPrivate ;
+ scalar_t__ CoCreateInstance (int *,int *,int ,int *,void**) ;
+ int DSBCAPS_GLOBALFOCUS ;
+ int DSCBCAPS_WAVEMAPPED ;
+ int DSDEVID_DefaultCapture ;
+ int DSDEVID_DefaultPlayback ;
+ int DSDEVID_DefaultVoiceCapture ;
+ int DSDEVID_DefaultVoicePlayback ;
+ scalar_t__ DSERR_ALLOCATED ;
+ scalar_t__ DSERR_INVALIDCALL ;
+ scalar_t__ DSERR_NODRIVER ;
+ int DSSCL_EXCLUSIVE ;
+ scalar_t__ DS_OK ;
+ scalar_t__ E_FAIL ;
+ scalar_t__ E_NOINTERFACE ;
+ int FALSE ;
+ int IDirectSoundFullDuplex_Release (int *) ;
+ int IDirectSoundFullDuplex_test (int *,int ,int *,int *) ;
+ int IID_IDirectSoundFullDuplex ;
+ scalar_t__ REGDB_E_CLASSNOTREG ;
+ scalar_t__ S_OK ;
+ int TRUE ;
+ int WAVE_FORMAT_PCM ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int get_hwnd () ;
+ int ok (int,char*,scalar_t__) ;
+ scalar_t__ pDirectSoundFullDuplexCreate (int *,int *,TYPE_1__*,TYPE_1__*,int ,int ,int **,int *,int *,int *) ;
+ int trace (char*) ;
 
 __attribute__((used)) static void IDirectSoundFullDuplex_tests(void)
 {
     HRESULT rc;
-    LPDIRECTSOUNDFULLDUPLEX dsfdo = NULL;
+    LPDIRECTSOUNDFULLDUPLEX dsfdo = ((void*)0);
     DSCBUFFERDESC DSCBufferDesc;
     DSBUFFERDESC DSBufferDesc;
     LPDIRECTSOUNDCAPTUREBUFFER8 pDSCBuffer8;
@@ -68,8 +68,8 @@ __attribute__((used)) static void IDirectSoundFullDuplex_tests(void)
 
     trace("Testing IDirectSoundFullDuplex\n");
 
-    /* try the COM class factory method of creation with no devices specified */
-    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, NULL,
+
+    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, ((void*)0),
                         CLSCTX_INPROC_SERVER, &IID_IDirectSoundFullDuplex,
                         (void**)&dsfdo);
     ok(rc==S_OK||rc==REGDB_E_CLASSNOTREG||rc==CLASS_E_CLASSNOTAVAILABLE,
@@ -82,11 +82,11 @@ __attribute__((used)) static void IDirectSoundFullDuplex_tests(void)
         return;
     }
     if (dsfdo)
-        IDirectSoundFullDuplex_test(dsfdo, FALSE, NULL, NULL);
+        IDirectSoundFullDuplex_test(dsfdo, FALSE, ((void*)0), ((void*)0));
 
-    /* try the COM class factory method of creation with default devices
-     * specified */
-    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, NULL,
+
+
+    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, ((void*)0),
                         CLSCTX_INPROC_SERVER, &IID_IDirectSoundFullDuplex,
                         (void**)&dsfdo);
     ok(rc==S_OK,"CoCreateInstance(CLSID_DirectSoundFullDuplex) failed: 0x%08x\n", rc);
@@ -94,9 +94,9 @@ __attribute__((used)) static void IDirectSoundFullDuplex_tests(void)
         IDirectSoundFullDuplex_test(dsfdo, FALSE, &DSDEVID_DefaultCapture,
                                     &DSDEVID_DefaultPlayback);
 
-    /* try the COM class factory method of creation with default voice
-     * devices specified */
-    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, NULL,
+
+
+    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, ((void*)0),
                         CLSCTX_INPROC_SERVER, &IID_IDirectSoundFullDuplex,
                         (void**)&dsfdo);
     ok(rc==S_OK,"CoCreateInstance(CLSID_DirectSoundFullDuplex) failed: 0x%08x\n", rc);
@@ -104,9 +104,9 @@ __attribute__((used)) static void IDirectSoundFullDuplex_tests(void)
         IDirectSoundFullDuplex_test(dsfdo, FALSE, &DSDEVID_DefaultVoiceCapture,
                                     &DSDEVID_DefaultVoicePlayback);
 
-    /* try the COM class factory method of creation with a bad
-     * IID specified */
-    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, NULL,
+
+
+    rc=CoCreateInstance(&CLSID_DirectSoundFullDuplex, ((void*)0),
                         CLSCTX_INPROC_SERVER, &CLSID_DirectSoundPrivate,
                         (void**)&dsfdo);
     ok(rc==E_NOINTERFACE,
@@ -133,42 +133,42 @@ __attribute__((used)) static void IDirectSoundFullDuplex_tests(void)
     DSBufferDesc.dwBufferBytes = 8192;
     DSBufferDesc.lpwfxFormat = &wfex;
 
-    /* try with no device specified */
-    rc=pDirectSoundFullDuplexCreate(NULL,NULL,&DSCBufferDesc,&DSBufferDesc,
+
+    rc=pDirectSoundFullDuplexCreate(((void*)0),((void*)0),&DSCBufferDesc,&DSBufferDesc,
                                     get_hwnd(),DSSCL_EXCLUSIVE ,&dsfdo,&pDSCBuffer8,
-                                    &pDSBuffer8,NULL);
+                                    &pDSBuffer8,((void*)0));
     ok(rc==DS_OK||rc==DSERR_NODRIVER||rc==DSERR_ALLOCATED||rc==E_FAIL||rc==DSERR_INVALIDCALL,
        "DirectSoundFullDuplexCreate(NULL,NULL) failed: %08x\n",rc);
     if (rc==S_OK && dsfdo)
-        IDirectSoundFullDuplex_test(dsfdo, TRUE, NULL, NULL);
+        IDirectSoundFullDuplex_test(dsfdo, TRUE, ((void*)0), ((void*)0));
 
-    /* try with default devices specified */
+
     rc=pDirectSoundFullDuplexCreate(&DSDEVID_DefaultCapture,
                                     &DSDEVID_DefaultPlayback,&DSCBufferDesc,
                                     &DSBufferDesc,get_hwnd(),DSSCL_EXCLUSIVE,&dsfdo,
-                                    &pDSCBuffer8,&pDSBuffer8,NULL);
+                                    &pDSCBuffer8,&pDSBuffer8,((void*)0));
     ok(rc==DS_OK||rc==DSERR_NODRIVER||rc==DSERR_ALLOCATED||rc==E_FAIL||rc==DSERR_INVALIDCALL,
        "DirectSoundFullDuplexCreate(DSDEVID_DefaultCapture,"
        "DSDEVID_DefaultPlayback) failed: %08x\n", rc);
     if (rc==DS_OK && dsfdo)
-        IDirectSoundFullDuplex_test(dsfdo, TRUE, NULL, NULL);
+        IDirectSoundFullDuplex_test(dsfdo, TRUE, ((void*)0), ((void*)0));
 
-    /* try with default voice devices specified */
+
     rc=pDirectSoundFullDuplexCreate(&DSDEVID_DefaultVoiceCapture,
                                     &DSDEVID_DefaultVoicePlayback,
                                     &DSCBufferDesc,&DSBufferDesc,get_hwnd(),DSSCL_EXCLUSIVE,
-                                    &dsfdo,&pDSCBuffer8,&pDSBuffer8,NULL);
+                                    &dsfdo,&pDSCBuffer8,&pDSBuffer8,((void*)0));
     ok(rc==DS_OK||rc==DSERR_NODRIVER||rc==DSERR_ALLOCATED||rc==E_FAIL||rc==DSERR_INVALIDCALL,
        "DirectSoundFullDuplexCreate(DSDEVID_DefaultVoiceCapture,"
        "DSDEVID_DefaultVoicePlayback) failed: %08x\n", rc);
     if (rc==DS_OK && dsfdo)
-        IDirectSoundFullDuplex_test(dsfdo, TRUE, NULL, NULL);
+        IDirectSoundFullDuplex_test(dsfdo, TRUE, ((void*)0), ((void*)0));
 
-    /* try with bad devices specified */
+
     rc=pDirectSoundFullDuplexCreate(&DSDEVID_DefaultVoicePlayback,
                                     &DSDEVID_DefaultVoiceCapture,
                                     &DSCBufferDesc,&DSBufferDesc,get_hwnd(),DSSCL_EXCLUSIVE,
-                                    &dsfdo,&pDSCBuffer8,&pDSBuffer8,NULL);
+                                    &dsfdo,&pDSCBuffer8,&pDSBuffer8,((void*)0));
     ok(rc==DSERR_NODRIVER||rc==DSERR_INVALIDCALL,
        "DirectSoundFullDuplexCreate(DSDEVID_DefaultVoicePlayback,"
        "DSDEVID_DefaultVoiceCapture) should have failed: %08x\n", rc);

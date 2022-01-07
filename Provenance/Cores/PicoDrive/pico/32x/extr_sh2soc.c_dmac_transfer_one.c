@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct dma_chan {int chcr; int sar; int dar; scalar_t__ tcr; } ;
-typedef  int /*<<< orphan*/  SH2 ;
+typedef int SH2 ;
 
-/* Variables and functions */
- int p32x_sh2_read16 (int,int /*<<< orphan*/ *) ; 
- int p32x_sh2_read32 (int,int /*<<< orphan*/ *) ; 
- int p32x_sh2_read8 (int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p32x_sh2_write16 (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p32x_sh2_write32 (int,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  p32x_sh2_write8 (int,int,int /*<<< orphan*/ *) ; 
+
+ int p32x_sh2_read16 (int,int *) ;
+ int p32x_sh2_read32 (int,int *) ;
+ int p32x_sh2_read8 (int,int *) ;
+ int p32x_sh2_write16 (int,int,int *) ;
+ int p32x_sh2_write32 (int,int,int *) ;
+ int p32x_sh2_write8 (int,int,int *) ;
 
 __attribute__((used)) static void dmac_transfer_one(SH2 *sh2, struct dma_chan *chan)
 {
@@ -48,7 +48,7 @@ __attribute__((used)) static void dmac_transfer_one(SH2 *sh2, struct dma_chan *c
     p32x_sh2_write32(chan->dar + 0x08, d, sh2);
     d = p32x_sh2_read32(chan->sar + 0x0c, sh2);
     p32x_sh2_write32(chan->dar + 0x0c, d, sh2);
-    chan->sar += 16; // always?
+    chan->sar += 16;
     if (chan->chcr & (1 << 15))
       chan->dar -= 16;
     if (chan->chcr & (1 << 14))

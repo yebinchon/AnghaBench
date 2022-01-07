@@ -1,41 +1,41 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_11__   TYPE_7__ ;
-typedef  struct TYPE_10__   TYPE_6__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_11__ TYPE_7__ ;
+typedef struct TYPE_10__ TYPE_6__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_9__ {size_t readto_off; size_t type; TYPE_7__* F; } ;
-typedef  TYPE_2__ stream_t ;
-typedef  size_t ssize_t ;
-struct TYPE_11__ {int /*<<< orphan*/  fd; TYPE_1__* info; } ;
+typedef TYPE_2__ stream_t ;
+typedef size_t ssize_t ;
+struct TYPE_11__ {int fd; TYPE_1__* info; } ;
 struct TYPE_10__ {size_t* total_bytes_read; } ;
-struct TYPE_8__ {int /*<<< orphan*/  filename; } ;
+struct TYPE_8__ {int filename; } ;
 
-/* Variables and functions */
- size_t KFS_BINLOG_ZIP_CHUNK_SIZE ; 
- size_t PREVSIZE ; 
- int /*<<< orphan*/  SEEK_CUR ; 
- int /*<<< orphan*/  assert (int) ; 
- void* backup_buff ; 
- void* io_buff ; 
- scalar_t__ kfs_bz_decode (TYPE_7__*,size_t,void*,int*,int*) ; 
- int /*<<< orphan*/  kprintf (char*,int /*<<< orphan*/ ,size_t,...) ; 
- scalar_t__ lseek (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- size_t read (int /*<<< orphan*/ ,void*,size_t) ; 
- TYPE_6__ stats ; 
- scalar_t__ stream_is_zipped (TYPE_2__*) ; 
- size_t stream_tell (TYPE_2__*) ; 
- int /*<<< orphan*/  vkprintf (int,char*,int /*<<< orphan*/ ,long long) ; 
+
+ size_t KFS_BINLOG_ZIP_CHUNK_SIZE ;
+ size_t PREVSIZE ;
+ int SEEK_CUR ;
+ int assert (int) ;
+ void* backup_buff ;
+ void* io_buff ;
+ scalar_t__ kfs_bz_decode (TYPE_7__*,size_t,void*,int*,int*) ;
+ int kprintf (char*,int ,size_t,...) ;
+ scalar_t__ lseek (int ,int ,int ) ;
+ size_t read (int ,void*,size_t) ;
+ TYPE_6__ stats ;
+ scalar_t__ stream_is_zipped (TYPE_2__*) ;
+ size_t stream_tell (TYPE_2__*) ;
+ int vkprintf (int,char*,int ,long long) ;
 
 __attribute__((used)) static int stream_read (stream_t *S, void *buff, size_t size) {
   int disk_bytes_read = size;

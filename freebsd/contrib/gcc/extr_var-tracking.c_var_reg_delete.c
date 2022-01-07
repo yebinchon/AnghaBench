@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  tree ;
-typedef  int /*<<< orphan*/  rtx ;
+
+
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int tree ;
+typedef int rtx ;
 struct TYPE_7__ {TYPE_2__** regs; } ;
-typedef  TYPE_1__ dataflow_set ;
-typedef  TYPE_2__* attrs ;
-struct TYPE_8__ {int /*<<< orphan*/  offset; int /*<<< orphan*/  decl; int /*<<< orphan*/  loc; struct TYPE_8__* next; } ;
-typedef  int /*<<< orphan*/  HOST_WIDE_INT ;
+typedef TYPE_1__ dataflow_set ;
+typedef TYPE_2__* attrs ;
+struct TYPE_8__ {int offset; int decl; int loc; struct TYPE_8__* next; } ;
+typedef int HOST_WIDE_INT ;
 
-/* Variables and functions */
- size_t REGNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_EXPR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  REG_OFFSET (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  attrs_pool ; 
- int /*<<< orphan*/  clobber_variable_part (TYPE_1__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  delete_variable_part (TYPE_1__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pool_free (int /*<<< orphan*/ ,TYPE_2__*) ; 
- int /*<<< orphan*/  var_debug_decl (int /*<<< orphan*/ ) ; 
+
+ size_t REGNO (int ) ;
+ int REG_EXPR (int ) ;
+ int REG_OFFSET (int ) ;
+ int attrs_pool ;
+ int clobber_variable_part (TYPE_1__*,int *,int ,int ) ;
+ int delete_variable_part (TYPE_1__*,int ,int ,int ) ;
+ int pool_free (int ,TYPE_2__*) ;
+ int var_debug_decl (int ) ;
 
 __attribute__((used)) static void
 var_reg_delete (dataflow_set *set, rtx loc, bool clobber)
@@ -43,7 +43,7 @@ var_reg_delete (dataflow_set *set, rtx loc, bool clobber)
 
       decl = var_debug_decl (decl);
 
-      clobber_variable_part (set, NULL, decl, offset);
+      clobber_variable_part (set, ((void*)0), decl, offset);
     }
 
   for (node = *reg; node; node = next)
@@ -52,5 +52,5 @@ var_reg_delete (dataflow_set *set, rtx loc, bool clobber)
       delete_variable_part (set, node->loc, node->decl, node->offset);
       pool_free (attrs_pool, node);
     }
-  *reg = NULL;
+  *reg = ((void*)0);
 }

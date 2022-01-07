@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-typedef  int /*<<< orphan*/  uint16_t ;
-struct timeval {scalar_t__ tv_usec; int /*<<< orphan*/  tv_sec; } ;
-typedef  scalar_t__ ldns_status ;
-typedef  scalar_t__ ldns_rr_type ;
-typedef  int /*<<< orphan*/  ldns_rr_class ;
-typedef  int /*<<< orphan*/  ldns_resolver ;
-typedef  int /*<<< orphan*/  const ldns_rdf ;
-typedef  int /*<<< orphan*/  ldns_pkt ;
 
-/* Variables and functions */
- scalar_t__ LDNS_RR_TYPE_IXFR ; 
- int /*<<< orphan*/  LDNS_SECTION_AUTHORITY ; 
- scalar_t__ LDNS_STATUS_ERR ; 
- scalar_t__ LDNS_STATUS_OK ; 
- int /*<<< orphan*/  ldns_pkt_free (int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_pkt_push_rr_soa (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/  const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * ldns_pkt_query_new (int /*<<< orphan*/ ,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldns_pkt_set_answerfrom (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ldns_pkt_set_random_id (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_pkt_set_timestamp (int /*<<< orphan*/ *,struct timeval) ; 
- int /*<<< orphan*/  ldns_rdf_clone (int /*<<< orphan*/  const*) ; 
- int ldns_resolver_nameserver_count (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  const** ldns_resolver_nameservers (int /*<<< orphan*/ *) ; 
- size_t* ldns_resolver_rtt (int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_resolver_send_pkt (int /*<<< orphan*/ **,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ldns_resolver_set_nameserver_count (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  ldns_resolver_set_nameservers (int /*<<< orphan*/ *,int /*<<< orphan*/  const**) ; 
- int /*<<< orphan*/  ldns_resolver_set_rtt (int /*<<< orphan*/ *,size_t*) ; 
- scalar_t__ ldns_tcp_read (int /*<<< orphan*/ **,int /*<<< orphan*/ *) ; 
- scalar_t__ ldns_tcp_start (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  time (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int uint32_t ;
+typedef int uint16_t ;
+struct timeval {scalar_t__ tv_usec; int tv_sec; } ;
+typedef scalar_t__ ldns_status ;
+typedef scalar_t__ ldns_rr_type ;
+typedef int ldns_rr_class ;
+typedef int ldns_resolver ;
+typedef int const ldns_rdf ;
+typedef int ldns_pkt ;
+
+
+ scalar_t__ LDNS_RR_TYPE_IXFR ;
+ int LDNS_SECTION_AUTHORITY ;
+ scalar_t__ LDNS_STATUS_ERR ;
+ scalar_t__ LDNS_STATUS_OK ;
+ int ldns_pkt_free (int *) ;
+ scalar_t__ ldns_pkt_push_rr_soa (int *,int ,int const*,int ,int ) ;
+ int * ldns_pkt_query_new (int ,scalar_t__,int ,int ) ;
+ int ldns_pkt_set_answerfrom (int *,int ) ;
+ int ldns_pkt_set_random_id (int *) ;
+ int ldns_pkt_set_timestamp (int *,struct timeval) ;
+ int ldns_rdf_clone (int const*) ;
+ int ldns_resolver_nameserver_count (int *) ;
+ int const** ldns_resolver_nameservers (int *) ;
+ size_t* ldns_resolver_rtt (int *) ;
+ scalar_t__ ldns_resolver_send_pkt (int **,int *,int *) ;
+ int ldns_resolver_set_nameserver_count (int *,int) ;
+ int ldns_resolver_set_nameservers (int *,int const**) ;
+ int ldns_resolver_set_rtt (int *,size_t*) ;
+ scalar_t__ ldns_tcp_read (int **,int *) ;
+ scalar_t__ ldns_tcp_start (int *,int *,int ) ;
+ int time (int *) ;
 
 __attribute__((used)) static ldns_status
 ldns_resolver_send_to(ldns_pkt **answer, ldns_resolver *res,
@@ -60,18 +60,18 @@ ldns_resolver_send_to(ldns_pkt **answer, ldns_resolver *res,
     ldns_resolver_set_rtt(res, &rtt[nameserver]);
     ldns_resolver_set_nameserver_count(res, 1);
 
-    /* The next fragment should have been a call to
-     * ldns_resolver_prepare_query_pkt(), but starting with ldns
-     * version 1.6.17 that function tries to add it's own SOA
-     * records when rr_type is LDNS_RR_TYPE_IXFR, and we don't
-     * want that.
-     */
+
+
+
+
+
+
     qpkt = ldns_pkt_query_new(ldns_rdf_clone(name), t, c, flags);
-    if (qpkt == NULL) {
+    if (qpkt == ((void*)0)) {
         status = LDNS_STATUS_ERR;
         goto done;
     }
-    now.tv_sec = time(NULL);
+    now.tv_sec = time(((void*)0));
     now.tv_usec = 0;
     ldns_pkt_set_timestamp(qpkt, now);
     ldns_pkt_set_random_id(qpkt);

@@ -1,82 +1,82 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct sigaction {int /*<<< orphan*/  sa_flags; int /*<<< orphan*/  sa_mask; int /*<<< orphan*/  sa_handler; } ;
-typedef  int /*<<< orphan*/  sigset_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Binlog ; 
- long long FullVersionStr ; 
- int /*<<< orphan*/  NB_alloc ; 
- int /*<<< orphan*/  NB_max ; 
- int /*<<< orphan*/  NB_used ; 
- int /*<<< orphan*/  SA_NOCLDSTOP ; 
- long long SIGCHLD ; 
- long long SIGHUP ; 
- long long SIGINT ; 
- int /*<<< orphan*/  SIGIO ; 
- int /*<<< orphan*/  SIGPIPE ; 
- int SIGRTMAX ; 
- long long SIGTERM ; 
- long long SIGUSR1 ; 
- int /*<<< orphan*/  SIG_IGN ; 
- int /*<<< orphan*/  active_connections ; 
- scalar_t__ append_to_binlog (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  backlog ; 
- int /*<<< orphan*/  binlog_disabled ; 
- scalar_t__ binlogname ; 
- int /*<<< orphan*/  close (scalar_t__) ; 
- int /*<<< orphan*/  copyexec_aux_binlog_seek () ; 
- int /*<<< orphan*/  copyexec_main_sig_handler ; 
- int /*<<< orphan*/  cron () ; 
- int /*<<< orphan*/  ct_copyexec_engine_server ; 
- scalar_t__ daemonize ; 
- int /*<<< orphan*/  epoll_close (scalar_t__) ; 
- int /*<<< orphan*/  epoll_work (int) ; 
- int /*<<< orphan*/  exit (int) ; 
- int find_running_transactions () ; 
- int /*<<< orphan*/  flush_binlog_last () ; 
- scalar_t__ get_process_creation_time (scalar_t__) ; 
- int /*<<< orphan*/  init_epoll () ; 
- int /*<<< orphan*/  init_listening_connection (scalar_t__,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  init_netbuffers () ; 
- scalar_t__ interrupted_by_signal () ; 
- int /*<<< orphan*/  kill (scalar_t__,long long) ; 
- int /*<<< orphan*/  kprintf (char*,...) ; 
- scalar_t__ log_readto_pos ; 
- int /*<<< orphan*/  maxconn ; 
- int /*<<< orphan*/  memcache_methods ; 
- int now ; 
- long long pending_signals ; 
- int /*<<< orphan*/  pending_signals_clear_bit (int /*<<< orphan*/ *,long long) ; 
- scalar_t__ port ; 
- int /*<<< orphan*/  reopen_logs () ; 
- scalar_t__ results_client_creation_time ; 
- scalar_t__ results_client_pid ; 
- scalar_t__ server_socket (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  setsid () ; 
- int /*<<< orphan*/  settings_addr ; 
- scalar_t__ sfd ; 
- scalar_t__ sigaction (int,struct sigaction*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  sigaddset (int /*<<< orphan*/ *,long long) ; 
- int /*<<< orphan*/  sigemptyset (int /*<<< orphan*/ *) ; 
- scalar_t__ sigismember (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  signal (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  sync_binlog (int) ; 
- int /*<<< orphan*/  transaction_auto_kill (long long) ; 
- int /*<<< orphan*/  transaction_check_child_status () ; 
- int /*<<< orphan*/  transaction_child_kill (long long) ; 
- int /*<<< orphan*/  vkprintf (int,char*,long long,...) ; 
+
+
+
+struct sigaction {int sa_flags; int sa_mask; int sa_handler; } ;
+typedef int sigset_t ;
+
+
+ int Binlog ;
+ long long FullVersionStr ;
+ int NB_alloc ;
+ int NB_max ;
+ int NB_used ;
+ int SA_NOCLDSTOP ;
+ long long SIGCHLD ;
+ long long SIGHUP ;
+ long long SIGINT ;
+ int SIGIO ;
+ int SIGPIPE ;
+ int SIGRTMAX ;
+ long long SIGTERM ;
+ long long SIGUSR1 ;
+ int SIG_IGN ;
+ int active_connections ;
+ scalar_t__ append_to_binlog (int ) ;
+ int assert (int) ;
+ int backlog ;
+ int binlog_disabled ;
+ scalar_t__ binlogname ;
+ int close (scalar_t__) ;
+ int copyexec_aux_binlog_seek () ;
+ int copyexec_main_sig_handler ;
+ int cron () ;
+ int ct_copyexec_engine_server ;
+ scalar_t__ daemonize ;
+ int epoll_close (scalar_t__) ;
+ int epoll_work (int) ;
+ int exit (int) ;
+ int find_running_transactions () ;
+ int flush_binlog_last () ;
+ scalar_t__ get_process_creation_time (scalar_t__) ;
+ int init_epoll () ;
+ int init_listening_connection (scalar_t__,int *,int *) ;
+ int init_netbuffers () ;
+ scalar_t__ interrupted_by_signal () ;
+ int kill (scalar_t__,long long) ;
+ int kprintf (char*,...) ;
+ scalar_t__ log_readto_pos ;
+ int maxconn ;
+ int memcache_methods ;
+ int now ;
+ long long pending_signals ;
+ int pending_signals_clear_bit (int *,long long) ;
+ scalar_t__ port ;
+ int reopen_logs () ;
+ scalar_t__ results_client_creation_time ;
+ scalar_t__ results_client_pid ;
+ scalar_t__ server_socket (scalar_t__,int ,int ,int ) ;
+ int setsid () ;
+ int settings_addr ;
+ scalar_t__ sfd ;
+ scalar_t__ sigaction (int,struct sigaction*,int *) ;
+ int sigaddset (int *,long long) ;
+ int sigemptyset (int *) ;
+ scalar_t__ sigismember (int *,int) ;
+ int signal (int ,int ) ;
+ int sync_binlog (int) ;
+ int transaction_auto_kill (long long) ;
+ int transaction_check_child_status () ;
+ int transaction_child_kill (long long) ;
+ int vkprintf (int,char*,long long,...) ;
 
 void start_server (void) {
   int i, prev_time = 0;
@@ -131,7 +131,7 @@ void start_server (void) {
   act.sa_flags = SA_NOCLDSTOP;
   for (i = 1; i <= SIGRTMAX; i++) {
     if (sigismember (&signal_set, i)) {
-      if (sigaction (i, &act, NULL) < 0) {
+      if (sigaction (i, &act, ((void*)0)) < 0) {
         kprintf ("sigaction (%d) failed. %m\n", i);
         exit (1);
       }
@@ -143,7 +143,7 @@ void start_server (void) {
   for (i = 0; ; i++) {
     if (!(i & 1023)) {
       vkprintf (2, "epoll_work(): %d out of %d connections, network buffers: %d used, %d out of %d allocated\n",
-	       active_connections, maxconn, NB_used, NB_alloc, NB_max);
+        active_connections, maxconn, NB_used, NB_alloc, NB_max);
     }
     epoll_work (77);
 

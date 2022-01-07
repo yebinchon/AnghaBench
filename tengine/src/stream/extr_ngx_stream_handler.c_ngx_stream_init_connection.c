@@ -1,132 +1,123 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_49__   TYPE_9__ ;
-typedef  struct TYPE_48__   TYPE_8__ ;
-typedef  struct TYPE_47__   TYPE_7__ ;
-typedef  struct TYPE_46__   TYPE_6__ ;
-typedef  struct TYPE_45__   TYPE_5__ ;
-typedef  struct TYPE_44__   TYPE_4__ ;
-typedef  struct TYPE_43__   TYPE_3__ ;
-typedef  struct TYPE_42__   TYPE_30__ ;
-typedef  struct TYPE_41__   TYPE_2__ ;
-typedef  struct TYPE_40__   TYPE_1__ ;
-typedef  struct TYPE_39__   TYPE_16__ ;
-typedef  struct TYPE_38__   TYPE_15__ ;
-typedef  struct TYPE_37__   TYPE_14__ ;
-typedef  struct TYPE_36__   TYPE_13__ ;
-typedef  struct TYPE_35__   TYPE_12__ ;
-typedef  struct TYPE_34__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_char ;
-struct sockaddr_in6 {int /*<<< orphan*/  sin6_addr; } ;
-struct TYPE_43__ {int /*<<< orphan*/  s_addr; } ;
+
+
+typedef struct TYPE_49__ TYPE_9__ ;
+typedef struct TYPE_48__ TYPE_8__ ;
+typedef struct TYPE_47__ TYPE_7__ ;
+typedef struct TYPE_46__ TYPE_6__ ;
+typedef struct TYPE_45__ TYPE_5__ ;
+typedef struct TYPE_44__ TYPE_4__ ;
+typedef struct TYPE_43__ TYPE_3__ ;
+typedef struct TYPE_42__ TYPE_30__ ;
+typedef struct TYPE_41__ TYPE_2__ ;
+typedef struct TYPE_40__ TYPE_1__ ;
+typedef struct TYPE_39__ TYPE_16__ ;
+typedef struct TYPE_38__ TYPE_15__ ;
+typedef struct TYPE_37__ TYPE_14__ ;
+typedef struct TYPE_36__ TYPE_13__ ;
+typedef struct TYPE_35__ TYPE_12__ ;
+typedef struct TYPE_34__ TYPE_10__ ;
+
+
+typedef int u_char ;
+struct sockaddr_in6 {int sin6_addr; } ;
+struct TYPE_43__ {int s_addr; } ;
 struct sockaddr_in {TYPE_3__ sin_addr; } ;
 struct sockaddr {int sa_family; } ;
-typedef  int ngx_uint_t ;
-struct TYPE_47__ {int /*<<< orphan*/  msec; int /*<<< orphan*/  sec; } ;
-typedef  TYPE_7__ ngx_time_t ;
-typedef  int /*<<< orphan*/  ngx_stream_variable_value_t ;
-struct TYPE_48__ {int /*<<< orphan*/  start_msec; int /*<<< orphan*/  start_sec; int /*<<< orphan*/ * variables; TYPE_16__* connection; int /*<<< orphan*/ * ctx; int /*<<< orphan*/  received; int /*<<< orphan*/  ssl; int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; TYPE_14__* addr_conf; int /*<<< orphan*/  signature; } ;
-typedef  TYPE_8__ ngx_stream_session_t ;
+typedef int ngx_uint_t ;
+struct TYPE_47__ {int msec; int sec; } ;
+typedef TYPE_7__ ngx_time_t ;
+typedef int ngx_stream_variable_value_t ;
+struct TYPE_48__ {int start_msec; int start_sec; int * variables; TYPE_16__* connection; int * ctx; int received; int ssl; int srv_conf; int main_conf; TYPE_14__* addr_conf; int signature; } ;
+typedef TYPE_8__ ngx_stream_session_t ;
 struct TYPE_49__ {int naddrs; TYPE_10__* addrs; } ;
-typedef  TYPE_9__ ngx_stream_port_t ;
-struct TYPE_37__ {scalar_t__ proxy_protocol; int /*<<< orphan*/  addr_text; int /*<<< orphan*/  ssl; scalar_t__ default_server; TYPE_4__* ctx; } ;
-struct TYPE_34__ {TYPE_14__ conf; int /*<<< orphan*/  addr; int /*<<< orphan*/  addr6; } ;
-typedef  TYPE_10__ ngx_stream_in_addr_t ;
-typedef  TYPE_10__ ngx_stream_in6_addr_t ;
-struct TYPE_35__ {int /*<<< orphan*/  proxy_protocol_timeout; int /*<<< orphan*/  error_log; TYPE_5__* ctx; } ;
-typedef  TYPE_12__ ngx_stream_core_srv_conf_t ;
+typedef TYPE_9__ ngx_stream_port_t ;
+struct TYPE_37__ {scalar_t__ proxy_protocol; int addr_text; int ssl; scalar_t__ default_server; TYPE_4__* ctx; } ;
+struct TYPE_34__ {TYPE_14__ conf; int addr; int addr6; } ;
+typedef TYPE_10__ ngx_stream_in_addr_t ;
+typedef TYPE_10__ ngx_stream_in6_addr_t ;
+struct TYPE_35__ {int proxy_protocol_timeout; int error_log; TYPE_5__* ctx; } ;
+typedef TYPE_12__ ngx_stream_core_srv_conf_t ;
 struct TYPE_40__ {int nelts; } ;
 struct TYPE_36__ {TYPE_1__ variables; } ;
-typedef  TYPE_13__ ngx_stream_core_main_conf_t ;
-typedef  TYPE_14__ ngx_stream_addr_conf_t ;
-struct TYPE_38__ {int /*<<< orphan*/  (* handler ) (TYPE_15__*) ;int /*<<< orphan*/  ready; } ;
-typedef  TYPE_15__ ngx_event_t ;
-struct TYPE_39__ {scalar_t__ type; TYPE_30__* log; TYPE_15__* read; int /*<<< orphan*/  pool; int /*<<< orphan*/  log_error; int /*<<< orphan*/  number; int /*<<< orphan*/  socklen; int /*<<< orphan*/  sockaddr; TYPE_8__* data; TYPE_6__* buffer; struct sockaddr* local_sockaddr; TYPE_2__* listening; } ;
-typedef  TYPE_16__ ngx_connection_t ;
+typedef TYPE_13__ ngx_stream_core_main_conf_t ;
+typedef TYPE_14__ ngx_stream_addr_conf_t ;
+struct TYPE_38__ {int (* handler ) (TYPE_15__*) ;int ready; } ;
+typedef TYPE_15__ ngx_event_t ;
+struct TYPE_39__ {scalar_t__ type; TYPE_30__* log; TYPE_15__* read; int pool; int log_error; int number; int socklen; int sockaddr; TYPE_8__* data; TYPE_6__* buffer; struct sockaddr* local_sockaddr; TYPE_2__* listening; } ;
+typedef TYPE_16__ ngx_connection_t ;
 struct TYPE_46__ {scalar_t__ pos; scalar_t__ last; } ;
-struct TYPE_45__ {int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; } ;
-struct TYPE_44__ {int /*<<< orphan*/  srv_conf; int /*<<< orphan*/  main_conf; } ;
-struct TYPE_42__ {char* action; TYPE_8__* data; int /*<<< orphan*/  handler; int /*<<< orphan*/  connection; } ;
+struct TYPE_45__ {int srv_conf; int main_conf; } ;
+struct TYPE_44__ {int srv_conf; int main_conf; } ;
+struct TYPE_42__ {char* action; TYPE_8__* data; int handler; int connection; } ;
 struct TYPE_41__ {TYPE_9__* servers; } ;
 
-/* Variables and functions */
-#define  AF_INET6 128 
- int /*<<< orphan*/  NGX_ERROR_INFO ; 
- int /*<<< orphan*/  NGX_LOG_INFO ; 
- scalar_t__ NGX_OK ; 
- int NGX_SOCKADDR_STRLEN ; 
- int /*<<< orphan*/  NGX_STREAM_INTERNAL_SERVER_ERROR ; 
- int /*<<< orphan*/  NGX_STREAM_MODULE ; 
- scalar_t__ SOCK_DGRAM ; 
- int /*<<< orphan*/  ngx_add_timer (TYPE_15__*,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_connection_local_sockaddr (TYPE_16__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- scalar_t__ ngx_handle_read_event (TYPE_15__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_log_error (int /*<<< orphan*/ ,TYPE_30__*,int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*,size_t,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_memcmp (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- void* ngx_pcalloc (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  ngx_post_event (TYPE_15__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ngx_posted_events ; 
- int /*<<< orphan*/  ngx_set_connection_log (TYPE_16__*,int /*<<< orphan*/ ) ; 
- size_t ngx_sock_ntop (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int) ; 
- int /*<<< orphan*/  ngx_stream_close_connection (TYPE_16__*) ; 
- int /*<<< orphan*/  ngx_stream_core_module ; 
- int /*<<< orphan*/  ngx_stream_finalize_session (TYPE_8__*,int /*<<< orphan*/ ) ; 
- TYPE_13__* ngx_stream_get_module_main_conf (TYPE_8__*,int /*<<< orphan*/ ) ; 
- TYPE_12__* ngx_stream_get_module_srv_conf (TYPE_8__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ngx_stream_log_error ; 
- int ngx_stream_max_module ; 
- int /*<<< orphan*/  ngx_stream_proxy_protocol_handler (TYPE_15__*) ; 
- int /*<<< orphan*/  ngx_stream_session_handler (TYPE_15__*) ; 
- TYPE_7__* ngx_timeofday () ; 
- scalar_t__ ngx_use_accept_mutex ; 
- int /*<<< orphan*/  stub1 (TYPE_15__*) ; 
+
+
+ int NGX_ERROR_INFO ;
+ int NGX_LOG_INFO ;
+ scalar_t__ NGX_OK ;
+ int NGX_SOCKADDR_STRLEN ;
+ int NGX_STREAM_INTERNAL_SERVER_ERROR ;
+ int NGX_STREAM_MODULE ;
+ scalar_t__ SOCK_DGRAM ;
+ int ngx_add_timer (TYPE_15__*,int ) ;
+ scalar_t__ ngx_connection_local_sockaddr (TYPE_16__*,int *,int ) ;
+ scalar_t__ ngx_handle_read_event (TYPE_15__*,int ) ;
+ int ngx_log_error (int ,TYPE_30__*,int ,char*,int ,char*,size_t,int *,int *) ;
+ int ngx_memcmp (int *,int *,int) ;
+ void* ngx_pcalloc (int ,int) ;
+ int ngx_post_event (TYPE_15__*,int *) ;
+ int ngx_posted_events ;
+ int ngx_set_connection_log (TYPE_16__*,int ) ;
+ size_t ngx_sock_ntop (int ,int ,int *,int,int) ;
+ int ngx_stream_close_connection (TYPE_16__*) ;
+ int ngx_stream_core_module ;
+ int ngx_stream_finalize_session (TYPE_8__*,int ) ;
+ TYPE_13__* ngx_stream_get_module_main_conf (TYPE_8__*,int ) ;
+ TYPE_12__* ngx_stream_get_module_srv_conf (TYPE_8__*,int ) ;
+ int ngx_stream_log_error ;
+ int ngx_stream_max_module ;
+ int ngx_stream_proxy_protocol_handler (TYPE_15__*) ;
+ int ngx_stream_session_handler (TYPE_15__*) ;
+ TYPE_7__* ngx_timeofday () ;
+ scalar_t__ ngx_use_accept_mutex ;
+ int stub1 (TYPE_15__*) ;
 
 void
 ngx_stream_init_connection(ngx_connection_t *c)
 {
-    u_char                        text[NGX_SOCKADDR_STRLEN];
-    size_t                        len;
-    ngx_uint_t                    i;
-    ngx_time_t                   *tp;
-    ngx_event_t                  *rev;
-    struct sockaddr              *sa;
-    ngx_stream_port_t            *port;
-    struct sockaddr_in           *sin;
-    ngx_stream_in_addr_t         *addr;
-    ngx_stream_session_t         *s;
-    ngx_stream_addr_conf_t       *addr_conf;
-#if (NGX_HAVE_INET6)
-    struct sockaddr_in6          *sin6;
-    ngx_stream_in6_addr_t        *addr6;
-#endif
-    ngx_stream_core_srv_conf_t   *cscf;
-    ngx_stream_core_main_conf_t  *cmcf;
+    u_char text[NGX_SOCKADDR_STRLEN];
+    size_t len;
+    ngx_uint_t i;
+    ngx_time_t *tp;
+    ngx_event_t *rev;
+    struct sockaddr *sa;
+    ngx_stream_port_t *port;
+    struct sockaddr_in *sin;
+    ngx_stream_in_addr_t *addr;
+    ngx_stream_session_t *s;
+    ngx_stream_addr_conf_t *addr_conf;
 
-    /* find the server configuration for the address:port */
+
+
+
+    ngx_stream_core_srv_conf_t *cscf;
+    ngx_stream_core_main_conf_t *cmcf;
+
+
 
     port = c->listening->servers;
 
     if (port->naddrs > 1) {
-
-        /*
-         * There are several addresses on this port and one of them
-         * is the "*:port" wildcard so getsockname() is needed to determine
-         * the server address.
-         *
-         * AcceptEx() and recvmsg() already gave this address.
-         */
-
-        if (ngx_connection_local_sockaddr(c, NULL, 0) != NGX_OK) {
+        if (ngx_connection_local_sockaddr(c, ((void*)0), 0) != NGX_OK) {
             ngx_stream_close_connection(c);
             return;
         }
@@ -134,32 +125,12 @@ ngx_stream_init_connection(ngx_connection_t *c)
         sa = c->local_sockaddr;
 
         switch (sa->sa_family) {
-
-#if (NGX_HAVE_INET6)
-        case AF_INET6:
-            sin6 = (struct sockaddr_in6 *) sa;
-
-            addr6 = port->addrs;
-
-            /* the last address is "*" */
-
-            for (i = 0; i < port->naddrs - 1; i++) {
-                if (ngx_memcmp(&addr6[i].addr6, &sin6->sin6_addr, 16) == 0) {
-                    break;
-                }
-            }
-
-            addr_conf = &addr6[i].conf;
-
-            break;
-#endif
-
-        default: /* AF_INET */
+        default:
             sin = (struct sockaddr_in *) sa;
 
             addr = port->addrs;
 
-            /* the last address is "*" */
+
 
             for (i = 0; i < port->naddrs - 1; i++) {
                 if (addr[i].addr == sin->sin_addr.s_addr) {
@@ -174,15 +145,7 @@ ngx_stream_init_connection(ngx_connection_t *c)
 
     } else {
         switch (c->local_sockaddr->sa_family) {
-
-#if (NGX_HAVE_INET6)
-        case AF_INET6:
-            addr6 = port->addrs;
-            addr_conf = &addr6[0].conf;
-            break;
-#endif
-
-        default: /* AF_INET */
+        default:
             addr = port->addrs;
             addr_conf = &addr[0].conf;
             break;
@@ -190,7 +153,7 @@ ngx_stream_init_connection(ngx_connection_t *c)
     }
 
     s = ngx_pcalloc(c->pool, sizeof(ngx_stream_session_t));
-    if (s == NULL) {
+    if (s == ((void*)0)) {
         ngx_stream_close_connection(c);
         return;
     }
@@ -198,17 +161,6 @@ ngx_stream_init_connection(ngx_connection_t *c)
     s->signature = NGX_STREAM_MODULE;
     s->main_conf = addr_conf->ctx->main_conf;
     s->srv_conf = addr_conf->ctx->srv_conf;
-
-#if (NGX_STREAM_SNI)
-    s->addr_conf = addr_conf;
-    s->main_conf = ((ngx_stream_core_srv_conf_t*)addr_conf->default_server)->ctx->main_conf;
-    s->srv_conf = ((ngx_stream_core_srv_conf_t*)addr_conf->default_server)->ctx->srv_conf;
-#endif
-
-#if (NGX_STREAM_SSL)
-    s->ssl = addr_conf->ssl;
-#endif
-
     if (c->buffer) {
         s->received += c->buffer->last - c->buffer->pos;
     }
@@ -233,7 +185,7 @@ ngx_stream_init_connection(ngx_connection_t *c)
     c->log_error = NGX_ERROR_INFO;
 
     s->ctx = ngx_pcalloc(c->pool, sizeof(void *) * ngx_stream_max_module);
-    if (s->ctx == NULL) {
+    if (s->ctx == ((void*)0)) {
         ngx_stream_close_connection(c);
         return;
     }
@@ -244,7 +196,7 @@ ngx_stream_init_connection(ngx_connection_t *c)
                                cmcf->variables.nelts
                                * sizeof(ngx_stream_variable_value_t));
 
-    if (s->variables == NULL) {
+    if (s->variables == ((void*)0)) {
         ngx_stream_close_connection(c);
         return;
     }

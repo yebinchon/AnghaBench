@@ -1,52 +1,52 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_5__ {int /*<<< orphan*/  t_self; } ;
-typedef  int /*<<< orphan*/  Relation ;
-typedef  int /*<<< orphan*/  Oid ;
-typedef  TYPE_1__* HeapTuple ;
 
-/* Variables and functions */
- int /*<<< orphan*/  CatalogTupleDelete (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ERROR ; 
- int /*<<< orphan*/  HeapTupleIsValid (TYPE_1__*) ; 
- int /*<<< orphan*/  ObjectIdGetDatum (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReleaseSysCache (TYPE_1__*) ; 
- int /*<<< orphan*/  RowExclusiveLock ; 
- TYPE_1__* SearchSysCache1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  TSDICTOID ; 
- int /*<<< orphan*/  TSDictionaryRelationId ; 
- int /*<<< orphan*/  elog (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_close (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  table_open (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_5__ {int t_self; } ;
+typedef int Relation ;
+typedef int Oid ;
+typedef TYPE_1__* HeapTuple ;
+
+
+ int CatalogTupleDelete (int ,int *) ;
+ int ERROR ;
+ int HeapTupleIsValid (TYPE_1__*) ;
+ int ObjectIdGetDatum (int ) ;
+ int ReleaseSysCache (TYPE_1__*) ;
+ int RowExclusiveLock ;
+ TYPE_1__* SearchSysCache1 (int ,int ) ;
+ int TSDICTOID ;
+ int TSDictionaryRelationId ;
+ int elog (int ,char*,int ) ;
+ int table_close (int ,int ) ;
+ int table_open (int ,int ) ;
 
 void
 RemoveTSDictionaryById(Oid dictId)
 {
-	Relation	relation;
-	HeapTuple	tup;
+ Relation relation;
+ HeapTuple tup;
 
-	relation = table_open(TSDictionaryRelationId, RowExclusiveLock);
+ relation = table_open(TSDictionaryRelationId, RowExclusiveLock);
 
-	tup = SearchSysCache1(TSDICTOID, ObjectIdGetDatum(dictId));
+ tup = SearchSysCache1(TSDICTOID, ObjectIdGetDatum(dictId));
 
-	if (!HeapTupleIsValid(tup))
-		elog(ERROR, "cache lookup failed for text search dictionary %u",
-			 dictId);
+ if (!HeapTupleIsValid(tup))
+  elog(ERROR, "cache lookup failed for text search dictionary %u",
+    dictId);
 
-	CatalogTupleDelete(relation, &tup->t_self);
+ CatalogTupleDelete(relation, &tup->t_self);
 
-	ReleaseSysCache(tup);
+ ReleaseSysCache(tup);
 
-	table_close(relation, RowExclusiveLock);
+ table_close(relation, RowExclusiveLock);
 }

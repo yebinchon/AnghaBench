@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  T_ASSERT_POSIX_SUCCESS (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  T_QUIET ; 
- int /*<<< orphan*/  fault_pages (int) ; 
- scalar_t__ num_threads ; 
- int /*<<< orphan*/  pthread_cond_signal (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_cond_wait (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- scalar_t__ ready_thread_count ; 
- int /*<<< orphan*/  ready_thread_count_lock ; 
- int /*<<< orphan*/  start_cvar ; 
- int /*<<< orphan*/  threads_ready_cvar ; 
+ int T_ASSERT_POSIX_SUCCESS (int ,char*) ;
+ int T_QUIET ;
+ int fault_pages (int) ;
+ scalar_t__ num_threads ;
+ int pthread_cond_signal (int *) ;
+ int pthread_cond_wait (int *,int *) ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ scalar_t__ ready_thread_count ;
+ int ready_thread_count_lock ;
+ int start_cvar ;
+ int threads_ready_cvar ;
 
 __attribute__((used)) static void *thread_setup(void *arg)
 {
@@ -38,5 +30,5 @@ __attribute__((used)) static void *thread_setup(void *arg)
   T_QUIET; T_ASSERT_POSIX_SUCCESS(pthread_mutex_unlock(&ready_thread_count_lock), "pthread_mutex_unlock");
 
   fault_pages(my_index);
-  return NULL;
+  return ((void*)0);
 }

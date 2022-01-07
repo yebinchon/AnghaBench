@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct menu_data {int /*<<< orphan*/  menu; int /*<<< orphan*/  s; int /*<<< orphan*/  data; int /*<<< orphan*/  (* cb ) (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ;int /*<<< orphan*/ * item; } ;
+
+
+
+
+struct menu_data {int menu; int s; int data; int (* cb ) (int ,int ,int ,int ) ;int * item; } ;
 struct client {struct menu_data* overlay_data; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KEYC_NONE ; 
- int /*<<< orphan*/  UINT_MAX ; 
- int /*<<< orphan*/  cmdq_continue (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  free (struct menu_data*) ; 
- int /*<<< orphan*/  menu_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  screen_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stub1 (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int KEYC_NONE ;
+ int UINT_MAX ;
+ int cmdq_continue (int *) ;
+ int free (struct menu_data*) ;
+ int menu_free (int ) ;
+ int screen_free (int *) ;
+ int stub1 (int ,int ,int ,int ) ;
 
 __attribute__((used)) static void
 menu_free_cb(struct client *c)
 {
-	struct menu_data	*md = c->overlay_data;
+ struct menu_data *md = c->overlay_data;
 
-	if (md->item != NULL)
-		cmdq_continue(md->item);
+ if (md->item != ((void*)0))
+  cmdq_continue(md->item);
 
-	if (md->cb != NULL)
-		md->cb(md->menu, UINT_MAX, KEYC_NONE, md->data);
+ if (md->cb != ((void*)0))
+  md->cb(md->menu, UINT_MAX, KEYC_NONE, md->data);
 
-	screen_free(&md->s);
-	menu_free(md->menu);
-	free(md);
+ screen_free(&md->s);
+ menu_free(md->menu);
+ free(md);
 }

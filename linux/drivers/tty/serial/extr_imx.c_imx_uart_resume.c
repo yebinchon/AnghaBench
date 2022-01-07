@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int /*<<< orphan*/  irq; } ;
-struct imx_port {int /*<<< orphan*/  clk_ipg; TYPE_1__ port; } ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int irq; } ;
+struct imx_port {int clk_ipg; TYPE_1__ port; } ;
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  clk_disable_unprepare (int /*<<< orphan*/ ) ; 
- struct imx_port* dev_get_drvdata (struct device*) ; 
- int /*<<< orphan*/  enable_irq (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  imx_uart_enable_wakeup (struct imx_port*,int) ; 
- int /*<<< orphan*/  imx_uart_uart_driver ; 
- int /*<<< orphan*/  uart_resume_port (int /*<<< orphan*/ *,TYPE_1__*) ; 
+
+ int clk_disable_unprepare (int ) ;
+ struct imx_port* dev_get_drvdata (struct device*) ;
+ int enable_irq (int ) ;
+ int imx_uart_enable_wakeup (struct imx_port*,int) ;
+ int imx_uart_uart_driver ;
+ int uart_resume_port (int *,TYPE_1__*) ;
 
 __attribute__((used)) static int imx_uart_resume(struct device *dev)
 {
-	struct imx_port *sport = dev_get_drvdata(dev);
+ struct imx_port *sport = dev_get_drvdata(dev);
 
-	/* disable wakeup from i.MX UART */
-	imx_uart_enable_wakeup(sport, false);
 
-	uart_resume_port(&imx_uart_uart_driver, &sport->port);
-	enable_irq(sport->port.irq);
+ imx_uart_enable_wakeup(sport, 0);
 
-	clk_disable_unprepare(sport->clk_ipg);
+ uart_resume_port(&imx_uart_uart_driver, &sport->port);
+ enable_irq(sport->port.irq);
 
-	return 0;
+ clk_disable_unprepare(sport->clk_ipg);
+
+ return 0;
 }

@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_8__   TYPE_3__ ;
-typedef  struct TYPE_7__   TYPE_2__ ;
-typedef  struct TYPE_6__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VARIANT ;
-struct TYPE_6__ {int cElems; int /*<<< orphan*/  pElems; } ;
+
+
+typedef struct TYPE_8__ TYPE_3__ ;
+typedef struct TYPE_7__ TYPE_2__ ;
+typedef struct TYPE_6__ TYPE_1__ ;
+
+
+typedef int VARIANT ;
+struct TYPE_6__ {int cElems; int pElems; } ;
 struct TYPE_7__ {TYPE_1__ caub; } ;
 struct TYPE_8__ {int vt; TYPE_2__ u; } ;
-typedef  TYPE_3__ PROPVARIANT ;
-typedef  int LONG ;
-typedef  int HRESULT ;
+typedef TYPE_3__ PROPVARIANT ;
+typedef int LONG ;
+typedef int HRESULT ;
 
-/* Variables and functions */
- int InitPropVariantFromBuffer (char const*,int,TYPE_3__*) ; 
- int InitVariantFromBuffer (char const*,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PropVariantClear (TYPE_3__*) ; 
- int S_OK ; 
- int SafeArrayAccessData (int /*<<< orphan*/ ,void**) ; 
- int SafeArrayGetDim (int /*<<< orphan*/ ) ; 
- int SafeArrayGetLBound (int /*<<< orphan*/ ,int,int*) ; 
- int SafeArrayGetUBound (int /*<<< orphan*/ ,int,int*) ; 
- int SafeArrayUnaccessData (int /*<<< orphan*/ ) ; 
- int VT_ARRAY ; 
- int VT_UI1 ; 
- int VT_VECTOR ; 
- int /*<<< orphan*/  V_ARRAY (int /*<<< orphan*/ *) ; 
- int V_VT (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  VariantClear (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memcmp (char const*,void*,int) ; 
- int /*<<< orphan*/  ok (int,char*,...) ; 
+
+ int InitPropVariantFromBuffer (char const*,int,TYPE_3__*) ;
+ int InitVariantFromBuffer (char const*,int,int *) ;
+ int PropVariantClear (TYPE_3__*) ;
+ int S_OK ;
+ int SafeArrayAccessData (int ,void**) ;
+ int SafeArrayGetDim (int ) ;
+ int SafeArrayGetLBound (int ,int,int*) ;
+ int SafeArrayGetUBound (int ,int,int*) ;
+ int SafeArrayUnaccessData (int ) ;
+ int VT_ARRAY ;
+ int VT_UI1 ;
+ int VT_VECTOR ;
+ int V_ARRAY (int *) ;
+ int V_VT (int *) ;
+ int VariantClear (int *) ;
+ int memcmp (char const*,void*,int) ;
+ int ok (int,char*,...) ;
 
 __attribute__((used)) static void test_InitPropVariantFromBuffer(void)
 {
@@ -49,7 +49,7 @@ __attribute__((used)) static void test_InitPropVariantFromBuffer(void)
     void *data_out;
     LONG size;
 
-    hres = InitPropVariantFromBuffer(NULL, 0, &propvar);
+    hres = InitPropVariantFromBuffer(((void*)0), 0, &propvar);
     ok(hres == S_OK, "InitPropVariantFromBuffer returned %x\n", hres);
     ok(propvar.vt == (VT_VECTOR|VT_UI1), "propvar.vt = %d\n", propvar.vt);
     ok(propvar.u.caub.cElems == 0, "cElems = %d\n", propvar.u.caub.cElems == 0);
@@ -62,7 +62,7 @@ __attribute__((used)) static void test_InitPropVariantFromBuffer(void)
     ok(!memcmp(propvar.u.caub.pElems, data_in, 4), "Data inside array is incorrect\n");
     PropVariantClear(&propvar);
 
-    hres = InitVariantFromBuffer(NULL, 0, &var);
+    hres = InitVariantFromBuffer(((void*)0), 0, &var);
     ok(hres == S_OK, "InitVariantFromBuffer returned %x\n", hres);
     ok(V_VT(&var) == (VT_ARRAY|VT_UI1), "V_VT(&var) = %d\n", V_VT(&var));
     size = SafeArrayGetDim(V_ARRAY(&var));

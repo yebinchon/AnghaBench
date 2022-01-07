@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_2__ ;
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct _reent {int /*<<< orphan*/  _errno; } ;
-struct TYPE_4__ {int pos; int len; TYPE_1__* dev; int /*<<< orphan*/  fd; } ;
-typedef  TYPE_2__ sd_fat_file_state_t ;
-typedef  int off_t ;
-struct TYPE_3__ {int /*<<< orphan*/  pMutex; int /*<<< orphan*/  pCmd; int /*<<< orphan*/  pClient; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EINVAL ; 
- int /*<<< orphan*/  ENODEV ; 
- int FSSetPosFile (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  OSLockMutex (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OSUnlockMutex (int /*<<< orphan*/ ) ; 
-#define  SEEK_CUR 130 
-#define  SEEK_END 129 
-#define  SEEK_SET 128 
+
+typedef struct TYPE_4__ TYPE_2__ ;
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct _reent {int _errno; } ;
+struct TYPE_4__ {int pos; int len; TYPE_1__* dev; int fd; } ;
+typedef TYPE_2__ sd_fat_file_state_t ;
+typedef int off_t ;
+struct TYPE_3__ {int pMutex; int pCmd; int pClient; } ;
+
+
+ int EINVAL ;
+ int ENODEV ;
+ int FSSetPosFile (int ,int ,int ,int,int) ;
+ int OSLockMutex (int ) ;
+ int OSUnlockMutex (int ) ;
+
+
+
 
 __attribute__((used)) static off_t sd_fat_seek_r (struct _reent *r, void* fd, off_t pos, int dir)
 {
@@ -40,13 +40,13 @@ __attribute__((used)) static off_t sd_fat_seek_r (struct _reent *r, void* fd, of
 
     switch(dir)
     {
-    case SEEK_SET:
+    case 128:
         file->pos = pos;
         break;
-    case SEEK_CUR:
+    case 130:
         file->pos += pos;
         break;
-    case SEEK_END:
+    case 129:
         file->pos = file->len + pos;
         break;
     default:

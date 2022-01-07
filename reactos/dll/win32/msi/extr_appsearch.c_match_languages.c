@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  scalar_t__ USHORT ;
-typedef  scalar_t__ LANGID ;
-typedef  int DWORD ;
-typedef  int /*<<< orphan*/  BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  VerQueryValueW (void const*,int /*<<< orphan*/ ,void**,int*) ; 
- int /*<<< orphan*/  msi_free (scalar_t__*) ; 
- scalar_t__* parse_languages (int /*<<< orphan*/  const*,int*) ; 
- int /*<<< orphan*/  szLangResource ; 
+
+
+
+typedef int WCHAR ;
+typedef scalar_t__ USHORT ;
+typedef scalar_t__ LANGID ;
+typedef int DWORD ;
+typedef int BOOL ;
+
+
+ int FALSE ;
+ int TRUE ;
+ int VerQueryValueW (void const*,int ,void**,int*) ;
+ int msi_free (scalar_t__*) ;
+ scalar_t__* parse_languages (int const*,int*) ;
+ int szLangResource ;
 
 __attribute__((used)) static BOOL match_languages( const void *version, const WCHAR *languages )
 {

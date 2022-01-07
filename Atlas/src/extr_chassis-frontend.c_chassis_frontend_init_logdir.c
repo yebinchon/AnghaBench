@@ -1,26 +1,18 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  G_STRLOC ; 
- int /*<<< orphan*/  g_critical (char*,int /*<<< orphan*/ ) ; 
+ int G_STRLOC ;
+ int g_critical (char*,int ) ;
 
 int chassis_frontend_init_logdir(char *log_path) {
-	if (!log_path) {
-		g_critical("%s: Failed to get log directory, please set by --log-path",
-				G_STRLOC);
-		return -1;
-	}
+ if (!log_path) {
+  g_critical("%s: Failed to get log directory, please set by --log-path",
+    G_STRLOC);
+  return -1;
+ }
 
     return 0;
 }

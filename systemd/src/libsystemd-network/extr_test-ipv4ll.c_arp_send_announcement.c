@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct ether_arp {int dummy; } ;
 struct ether_addr {int dummy; } ;
-typedef  scalar_t__ be32_t ;
+typedef scalar_t__ be32_t ;
 
-/* Variables and functions */
- int arp_network_send_raw_socket (int,int,struct ether_arp*) ; 
- int /*<<< orphan*/  assert_se (int) ; 
+
+ int arp_network_send_raw_socket (int,int,struct ether_arp*) ;
+ int assert_se (int) ;
 
 int arp_send_announcement(int fd, int ifindex,
                           be32_t pa, const struct ether_addr *ha) {

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  playerState_t ;
-typedef  int /*<<< orphan*/  gentity_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  G_LOCATE_GAME_DATA ; 
- int /*<<< orphan*/  syscall (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int,int /*<<< orphan*/ *,int) ; 
+
+
+
+typedef int playerState_t ;
+typedef int gentity_t ;
+
+
+ int G_LOCATE_GAME_DATA ;
+ int syscall (int ,int *,int,int,int *,int) ;
 
 void trap_LocateGameData( gentity_t *gEnts, int numGEntities, int sizeofGEntity_t,
-						 playerState_t *clients, int sizeofGClient ) {
-	syscall( G_LOCATE_GAME_DATA, gEnts, numGEntities, sizeofGEntity_t, clients, sizeofGClient );
+       playerState_t *clients, int sizeofGClient ) {
+ syscall( G_LOCATE_GAME_DATA, gEnts, numGEntities, sizeofGEntity_t, clients, sizeofGClient );
 }

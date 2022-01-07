@@ -1,61 +1,61 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct omap_des_dev {int /*<<< orphan*/  out_sg_len; int /*<<< orphan*/  out_sg; int /*<<< orphan*/  dev; int /*<<< orphan*/  in_sg_len; int /*<<< orphan*/  in_sg; int /*<<< orphan*/  pio_only; int /*<<< orphan*/  total; int /*<<< orphan*/  req; } ;
+
+
+
+
+struct omap_des_dev {int out_sg_len; int out_sg; int dev; int in_sg_len; int in_sg; int pio_only; int total; int req; } ;
 struct crypto_tfm {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DMA_FROM_DEVICE ; 
- int /*<<< orphan*/  DMA_TO_DEVICE ; 
- int EINVAL ; 
- int /*<<< orphan*/  crypto_ablkcipher_reqtfm (int /*<<< orphan*/ ) ; 
- struct crypto_tfm* crypto_ablkcipher_tfm (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dev_err (int /*<<< orphan*/ ,char*) ; 
- int dma_map_sg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dma_unmap_sg (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int omap_des_crypt_dma (struct crypto_tfm*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  pr_debug (char*,int /*<<< orphan*/ ) ; 
+
+ int DMA_FROM_DEVICE ;
+ int DMA_TO_DEVICE ;
+ int EINVAL ;
+ int crypto_ablkcipher_reqtfm (int ) ;
+ struct crypto_tfm* crypto_ablkcipher_tfm (int ) ;
+ int dev_err (int ,char*) ;
+ int dma_map_sg (int ,int ,int ,int ) ;
+ int dma_unmap_sg (int ,int ,int ,int ) ;
+ int omap_des_crypt_dma (struct crypto_tfm*,int ,int ,int ,int ) ;
+ int pr_debug (char*,int ) ;
 
 __attribute__((used)) static int omap_des_crypt_dma_start(struct omap_des_dev *dd)
 {
-	struct crypto_tfm *tfm = crypto_ablkcipher_tfm(
-					crypto_ablkcipher_reqtfm(dd->req));
-	int err;
+ struct crypto_tfm *tfm = crypto_ablkcipher_tfm(
+     crypto_ablkcipher_reqtfm(dd->req));
+ int err;
 
-	pr_debug("total: %d\n", dd->total);
+ pr_debug("total: %d\n", dd->total);
 
-	if (!dd->pio_only) {
-		err = dma_map_sg(dd->dev, dd->in_sg, dd->in_sg_len,
-				 DMA_TO_DEVICE);
-		if (!err) {
-			dev_err(dd->dev, "dma_map_sg() error\n");
-			return -EINVAL;
-		}
+ if (!dd->pio_only) {
+  err = dma_map_sg(dd->dev, dd->in_sg, dd->in_sg_len,
+     DMA_TO_DEVICE);
+  if (!err) {
+   dev_err(dd->dev, "dma_map_sg() error\n");
+   return -EINVAL;
+  }
 
-		err = dma_map_sg(dd->dev, dd->out_sg, dd->out_sg_len,
-				 DMA_FROM_DEVICE);
-		if (!err) {
-			dev_err(dd->dev, "dma_map_sg() error\n");
-			return -EINVAL;
-		}
-	}
+  err = dma_map_sg(dd->dev, dd->out_sg, dd->out_sg_len,
+     DMA_FROM_DEVICE);
+  if (!err) {
+   dev_err(dd->dev, "dma_map_sg() error\n");
+   return -EINVAL;
+  }
+ }
 
-	err = omap_des_crypt_dma(tfm, dd->in_sg, dd->out_sg, dd->in_sg_len,
-				 dd->out_sg_len);
-	if (err && !dd->pio_only) {
-		dma_unmap_sg(dd->dev, dd->in_sg, dd->in_sg_len, DMA_TO_DEVICE);
-		dma_unmap_sg(dd->dev, dd->out_sg, dd->out_sg_len,
-			     DMA_FROM_DEVICE);
-	}
+ err = omap_des_crypt_dma(tfm, dd->in_sg, dd->out_sg, dd->in_sg_len,
+     dd->out_sg_len);
+ if (err && !dd->pio_only) {
+  dma_unmap_sg(dd->dev, dd->in_sg, dd->in_sg_len, DMA_TO_DEVICE);
+  dma_unmap_sg(dd->dev, dd->out_sg, dd->out_sg_len,
+        DMA_FROM_DEVICE);
+ }
 
-	return err;
+ return err;
 }

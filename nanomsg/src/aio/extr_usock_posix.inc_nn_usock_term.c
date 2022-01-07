@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct TYPE_2__ {scalar_t__ batch; } ;
-struct nn_usock {int /*<<< orphan*/  fsm; int /*<<< orphan*/  wfd; int /*<<< orphan*/  task_connecting; int /*<<< orphan*/  task_connected; int /*<<< orphan*/  task_accept; int /*<<< orphan*/  task_send; int /*<<< orphan*/  task_recv; int /*<<< orphan*/  task_stop; int /*<<< orphan*/  worker; int /*<<< orphan*/  event_established; int /*<<< orphan*/  event_sent; int /*<<< orphan*/  event_received; int /*<<< orphan*/  event_error; TYPE_1__ in; } ;
+struct nn_usock {int fsm; int wfd; int task_connecting; int task_connected; int task_accept; int task_send; int task_recv; int task_stop; int worker; int event_established; int event_sent; int event_received; int event_error; TYPE_1__ in; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  NN_USOCK_STATE_IDLE ; 
- int /*<<< orphan*/  nn_assert_state (struct nn_usock*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nn_free (scalar_t__) ; 
- int /*<<< orphan*/  nn_fsm_event_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_fsm_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_worker_cancel (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_worker_fd_term (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  nn_worker_task_term (int /*<<< orphan*/ *) ; 
+
+ int NN_USOCK_STATE_IDLE ;
+ int nn_assert_state (struct nn_usock*,int ) ;
+ int nn_free (scalar_t__) ;
+ int nn_fsm_event_term (int *) ;
+ int nn_fsm_term (int *) ;
+ int nn_worker_cancel (int ,int *) ;
+ int nn_worker_fd_term (int *) ;
+ int nn_worker_task_term (int *) ;
 
 void nn_usock_term (struct nn_usock *self)
 {

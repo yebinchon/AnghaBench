@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct ib_srq_attr {int dummy; } ;
 struct ib_srq {TYPE_1__* device; } ;
-typedef  enum ib_srq_attr_mask { ____Placeholder_ib_srq_attr_mask } ib_srq_attr_mask ;
-struct TYPE_2__ {int (* modify_srq ) (struct ib_srq*,struct ib_srq_attr*,int,int /*<<< orphan*/ *) ;} ;
+typedef enum ib_srq_attr_mask { ____Placeholder_ib_srq_attr_mask } ib_srq_attr_mask ;
+struct TYPE_2__ {int (* modify_srq ) (struct ib_srq*,struct ib_srq_attr*,int,int *) ;} ;
 
-/* Variables and functions */
- int ENOSYS ; 
- int stub1 (struct ib_srq*,struct ib_srq_attr*,int,int /*<<< orphan*/ *) ; 
+
+ int ENOSYS ;
+ int stub1 (struct ib_srq*,struct ib_srq_attr*,int,int *) ;
 
 int ib_modify_srq(struct ib_srq *srq,
-		  struct ib_srq_attr *srq_attr,
-		  enum ib_srq_attr_mask srq_attr_mask)
+    struct ib_srq_attr *srq_attr,
+    enum ib_srq_attr_mask srq_attr_mask)
 {
-	return srq->device->modify_srq ?
-		srq->device->modify_srq(srq, srq_attr, srq_attr_mask, NULL) :
-		-ENOSYS;
+ return srq->device->modify_srq ?
+  srq->device->modify_srq(srq, srq_attr, srq_attr_mask, ((void*)0)) :
+  -ENOSYS;
 }

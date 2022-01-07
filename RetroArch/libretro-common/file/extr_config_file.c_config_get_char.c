@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct config_entry_list {char* value; } ;
-typedef  int /*<<< orphan*/  config_file_t ;
+typedef int config_file_t ;
 
-/* Variables and functions */
- struct config_entry_list* config_get_entry (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ *) ; 
+
+ struct config_entry_list* config_get_entry (int *,char const*,int *) ;
 
 bool config_get_char(config_file_t *conf, const char *key, char *in)
 {
-   const struct config_entry_list *entry = config_get_entry(conf, key, NULL);
+   const struct config_entry_list *entry = config_get_entry(conf, key, ((void*)0));
 
    if (entry)
    {
       if (entry->value[0] && entry->value[1])
-         return false;
+         return 0;
 
       *in = *entry->value;
-      return true;
+      return 1;
    }
 
-   return false;
+   return 0;
 }

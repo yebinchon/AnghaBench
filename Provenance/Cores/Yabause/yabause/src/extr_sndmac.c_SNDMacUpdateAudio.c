@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
-typedef  int u32 ;
-typedef  int /*<<< orphan*/  s32 ;
-typedef  int /*<<< orphan*/  s16 ;
 
-/* Variables and functions */
- int BUFFER_LEN ; 
- scalar_t__ buffer ; 
- int /*<<< orphan*/  macConvert32uto16s (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  mutex ; 
- int /*<<< orphan*/  pthread_mutex_lock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  pthread_mutex_unlock (int /*<<< orphan*/ *) ; 
- int write_pos ; 
+
+
+
+typedef int u8 ;
+typedef int u32 ;
+typedef int s32 ;
+typedef int s16 ;
+
+
+ int BUFFER_LEN ;
+ scalar_t__ buffer ;
+ int macConvert32uto16s (int *,int *,int *,int) ;
+ int mutex ;
+ int pthread_mutex_lock (int *) ;
+ int pthread_mutex_unlock (int *) ;
+ int write_pos ;
 
 __attribute__((used)) static void SNDMacUpdateAudio(u32 *left, u32 *right, u32 cnt) {
     u32 copy1size=0, copy2size=0;
@@ -48,7 +48,7 @@ __attribute__((used)) static void SNDMacUpdateAudio(u32 *left, u32 *right, u32 c
                            (s16 *)buffer, copy2size >> 2);
     }
 
-    write_pos += copy1size + copy2size;   
+    write_pos += copy1size + copy2size;
     write_pos %= (BUFFER_LEN);
 
     pthread_mutex_unlock(&mutex);

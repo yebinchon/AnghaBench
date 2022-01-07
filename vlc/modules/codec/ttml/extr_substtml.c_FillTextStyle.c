@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {char* psz_fontname; unsigned int i_background_alpha; unsigned int i_font_alpha; int i_features; unsigned int i_font_color; unsigned int i_background_color; unsigned int i_outline_color; unsigned int i_outline_alpha; int i_outline_width; int /*<<< orphan*/  i_style_flags; } ;
-typedef  TYPE_1__ text_style_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  STYLE_BACKGROUND ; 
- int /*<<< orphan*/  STYLE_BOLD ; 
- int STYLE_HAS_BACKGROUND_ALPHA ; 
- int STYLE_HAS_BACKGROUND_COLOR ; 
- int STYLE_HAS_FLAGS ; 
- int STYLE_HAS_FONT_ALPHA ; 
- int STYLE_HAS_FONT_COLOR ; 
- int /*<<< orphan*/  STYLE_ITALIC ; 
- int /*<<< orphan*/  STYLE_STRIKEOUT ; 
- int /*<<< orphan*/  STYLE_UNDERLINE ; 
- void* atoi (char const*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  strcasecmp (char*,char const*) ; 
- void* strdup (char const*) ; 
- char* strtok_r (char*,char*,char**) ; 
- int strtol (char*,char**,int) ; 
- unsigned int vlc_html_color (char const*,int*) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {char* psz_fontname; unsigned int i_background_alpha; unsigned int i_font_alpha; int i_features; unsigned int i_font_color; unsigned int i_background_color; unsigned int i_outline_color; unsigned int i_outline_alpha; int i_outline_width; int i_style_flags; } ;
+typedef TYPE_1__ text_style_t ;
+
+
+ int STYLE_BACKGROUND ;
+ int STYLE_BOLD ;
+ int STYLE_HAS_BACKGROUND_ALPHA ;
+ int STYLE_HAS_BACKGROUND_COLOR ;
+ int STYLE_HAS_FLAGS ;
+ int STYLE_HAS_FONT_ALPHA ;
+ int STYLE_HAS_FONT_COLOR ;
+ int STYLE_ITALIC ;
+ int STYLE_STRIKEOUT ;
+ int STYLE_UNDERLINE ;
+ void* atoi (char const*) ;
+ int free (char*) ;
+ int strcasecmp (char*,char const*) ;
+ void* strdup (char const*) ;
+ char* strtok_r (char*,char*,char**) ;
+ int strtol (char*,char**,int) ;
+ unsigned int vlc_html_color (char const*,int*) ;
 
 __attribute__((used)) static void FillTextStyle( const char *psz_attr, const char *psz_val,
                            text_style_t *p_text_style )
@@ -49,14 +49,14 @@ __attribute__((used)) static void FillTextStyle( const char *psz_attr, const cha
     }
     else if( !strcasecmp( "tts:color", psz_attr ) )
     {
-        unsigned int i_color = vlc_html_color( psz_val, NULL );
+        unsigned int i_color = vlc_html_color( psz_val, ((void*)0) );
         p_text_style->i_font_color = (i_color & 0xffffff);
         p_text_style->i_font_alpha = (i_color & 0xFF000000) >> 24;
         p_text_style->i_features |= STYLE_HAS_FONT_COLOR | STYLE_HAS_FONT_ALPHA;
     }
     else if( !strcasecmp( "tts:backgroundColor", psz_attr ) )
     {
-        unsigned int i_color = vlc_html_color( psz_val, NULL );
+        unsigned int i_color = vlc_html_color( psz_val, ((void*)0) );
         p_text_style->i_background_color = i_color & 0xFFFFFF;
         p_text_style->i_background_alpha = (i_color & 0xFF000000) >> 24;
         p_text_style->i_features |= STYLE_HAS_BACKGROUND_COLOR
@@ -94,25 +94,25 @@ __attribute__((used)) static void FillTextStyle( const char *psz_attr, const cha
     else if( !strcasecmp( "tts:textOutline", psz_attr ) )
     {
         char *value = strdup( psz_val );
-        char* psz_saveptr = NULL;
-        char* token = (value) ? strtok_r( value, " ", &psz_saveptr ) : NULL;
-        // <color>? <length> <length>?
-        if( token != NULL )
+        char* psz_saveptr = ((void*)0);
+        char* token = (value) ? strtok_r( value, " ", &psz_saveptr ) : ((void*)0);
+
+        if( token != ((void*)0) )
         {
-            bool b_ok = false;
+            bool b_ok = 0;
             unsigned int color = vlc_html_color( token, &b_ok );
             if( b_ok )
             {
                 p_text_style->i_outline_color = color & 0xFFFFFF;
                 p_text_style->i_outline_alpha = (color & 0xFF000000) >> 24;
-                token = strtok_r( NULL, " ", &psz_saveptr );
-                if( token != NULL )
+                token = strtok_r( ((void*)0), " ", &psz_saveptr );
+                if( token != ((void*)0) )
                 {
-                    char* psz_end = NULL;
+                    char* psz_end = ((void*)0);
                     int i_outline_width = strtol( token, &psz_end, 10 );
                     if( psz_end != token )
                     {
-                        // Assume unit is pixel, and ignore border radius
+
                         p_text_style->i_outline_width = i_outline_width;
                     }
                 }

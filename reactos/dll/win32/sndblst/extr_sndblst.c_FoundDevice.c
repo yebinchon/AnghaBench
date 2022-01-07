@@ -1,49 +1,49 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  UCHAR ;
-struct TYPE_4__ {int /*<<< orphan*/  CommitWaveBuffer; int /*<<< orphan*/  Close; int /*<<< orphan*/  Open; int /*<<< orphan*/  SetWaveFormat; int /*<<< orphan*/  QueryWaveFormatSupport; int /*<<< orphan*/  GetCapabilities; } ;
-typedef  scalar_t__ PWSTR ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int /*<<< orphan*/ * PSOUND_DEVICE ;
-typedef  int /*<<< orphan*/  MMRESULT ;
-typedef  TYPE_1__ MMFUNCTION_TABLE ;
-typedef  int /*<<< orphan*/  BOOLEAN ;
 
-/* Variables and functions */
- scalar_t__ AllocateWideString (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  CloseNt4SoundDevice ; 
- int /*<<< orphan*/  CopyWideString (scalar_t__,scalar_t__) ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  GetSoundBlasterDeviceCapabilities ; 
- int /*<<< orphan*/  ListSoundDevice (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/  MMSUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OpenNt4SoundDevice ; 
- int /*<<< orphan*/  QueryNt4WaveDeviceFormatSupport ; 
- int /*<<< orphan*/  SND_TRACE (char*,scalar_t__) ; 
- int /*<<< orphan*/  SetNt4WaveDeviceFormat ; 
- int /*<<< orphan*/  SetSoundDeviceFunctionTable (int /*<<< orphan*/ *,TYPE_1__*) ; 
- int /*<<< orphan*/  TRUE ; 
- int /*<<< orphan*/  WriteFileEx_Committer ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- int /*<<< orphan*/  wcslen (scalar_t__) ; 
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int UCHAR ;
+struct TYPE_4__ {int CommitWaveBuffer; int Close; int Open; int SetWaveFormat; int QueryWaveFormatSupport; int GetCapabilities; } ;
+typedef scalar_t__ PWSTR ;
+typedef int PVOID ;
+typedef int * PSOUND_DEVICE ;
+typedef int MMRESULT ;
+typedef TYPE_1__ MMFUNCTION_TABLE ;
+typedef int BOOLEAN ;
+
+
+ scalar_t__ AllocateWideString (int ) ;
+ int CloseNt4SoundDevice ;
+ int CopyWideString (scalar_t__,scalar_t__) ;
+ int FALSE ;
+ int GetSoundBlasterDeviceCapabilities ;
+ int ListSoundDevice (int ,int ,int **) ;
+ int MMSUCCESS (int ) ;
+ int OpenNt4SoundDevice ;
+ int QueryNt4WaveDeviceFormatSupport ;
+ int SND_TRACE (char*,scalar_t__) ;
+ int SetNt4WaveDeviceFormat ;
+ int SetSoundDeviceFunctionTable (int *,TYPE_1__*) ;
+ int TRUE ;
+ int WriteFileEx_Committer ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ int wcslen (scalar_t__) ;
 
 BOOLEAN FoundDevice(
     UCHAR DeviceType,
     PWSTR DevicePath)
 {
     MMRESULT Result;
-    PSOUND_DEVICE SoundDevice = NULL;
+    PSOUND_DEVICE SoundDevice = ((void*)0);
     MMFUNCTION_TABLE FuncTable;
     PWSTR PathCopy;
 
@@ -61,7 +61,7 @@ BOOLEAN FoundDevice(
     if ( ! MMSUCCESS(Result) )
         return FALSE;
 
-    /* Set up our function table */
+
     ZeroMemory(&FuncTable, sizeof(MMFUNCTION_TABLE));
     FuncTable.GetCapabilities = GetSoundBlasterDeviceCapabilities;
     FuncTable.QueryWaveFormatSupport = QueryNt4WaveDeviceFormatSupport;
@@ -69,7 +69,7 @@ BOOLEAN FoundDevice(
     FuncTable.Open = OpenNt4SoundDevice;
     FuncTable.Close = CloseNt4SoundDevice;
     FuncTable.CommitWaveBuffer = WriteFileEx_Committer;
-    //FuncTable.SubmitWaveHeaderToDevice = SubmitWaveHeaderToDevice;
+
 
     SetSoundDeviceFunctionTable(SoundDevice, &FuncTable);
 

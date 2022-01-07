@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int64_t ;
-struct TYPE_2__ {scalar_t__ state; char* sql; char* privateIpStr; int /*<<< orphan*/ * timer; int /*<<< orphan*/  conn; } ;
 
-/* Variables and functions */
- scalar_t__ MONITOR_STATE_INITIALIZED ; 
- scalar_t__ MONITOR_STATE_STOPPED ; 
- int /*<<< orphan*/  SQL_LENGTH ; 
- int /*<<< orphan*/  dnodeMontiorInsertSysCallback ; 
- TYPE_1__* monitor ; 
- scalar_t__ monitorBuildBandSql (char*) ; 
- scalar_t__ monitorBuildCpuSql (char*) ; 
- scalar_t__ monitorBuildDiskSql (char*) ; 
- scalar_t__ monitorBuildIoSql (char*) ; 
- scalar_t__ monitorBuildMemorySql (char*) ; 
- scalar_t__ monitorBuildReqSql (char*) ; 
- int /*<<< orphan*/ * monitorCountReqFp ; 
- int /*<<< orphan*/  monitorStartTimer () ; 
- int /*<<< orphan*/  monitorTrace (char*,int /*<<< orphan*/ ,char*) ; 
- int snprintf (char*,int /*<<< orphan*/ ,char*,char*,char*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  taosGetTimestampUs () ; 
- int /*<<< orphan*/  taos_query_a (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,char*) ; 
- char* tsMonitorDbName ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int int64_t ;
+struct TYPE_2__ {scalar_t__ state; char* sql; char* privateIpStr; int * timer; int conn; } ;
+
+
+ scalar_t__ MONITOR_STATE_INITIALIZED ;
+ scalar_t__ MONITOR_STATE_STOPPED ;
+ int SQL_LENGTH ;
+ int dnodeMontiorInsertSysCallback ;
+ TYPE_1__* monitor ;
+ scalar_t__ monitorBuildBandSql (char*) ;
+ scalar_t__ monitorBuildCpuSql (char*) ;
+ scalar_t__ monitorBuildDiskSql (char*) ;
+ scalar_t__ monitorBuildIoSql (char*) ;
+ scalar_t__ monitorBuildMemorySql (char*) ;
+ scalar_t__ monitorBuildReqSql (char*) ;
+ int * monitorCountReqFp ;
+ int monitorStartTimer () ;
+ int monitorTrace (char*,int ,char*) ;
+ int snprintf (char*,int ,char*,char*,char*,int ) ;
+ int taosGetTimestampUs () ;
+ int taos_query_a (int ,char*,int ,char*) ;
+ char* tsMonitorDbName ;
 
 void monitorSaveSystemInfo() {
   if (monitor->state != MONITOR_STATE_INITIALIZED) {
     return;
   }
 
-  if (monitorCountReqFp == NULL) {
+  if (monitorCountReqFp == ((void*)0)) {
     return;
   }
 
   int64_t ts = taosGetTimestampUs();
-  char *  sql = monitor->sql;
+  char * sql = monitor->sql;
   int pos = snprintf(sql, SQL_LENGTH, "insert into %s.dn_%s values(%ld", tsMonitorDbName, monitor->privateIpStr, ts);
 
   pos += monitorBuildCpuSql(sql + pos);
@@ -57,7 +57,7 @@ void monitorSaveSystemInfo() {
   monitorTrace("monitor:%p, save system info, sql:%s", monitor->conn, sql);
   taos_query_a(monitor->conn, sql, dnodeMontiorInsertSysCallback, "log");
 
-  if (monitor->timer != NULL && monitor->state != MONITOR_STATE_STOPPED) {
+  if (monitor->timer != ((void*)0) && monitor->state != MONITOR_STATE_STOPPED) {
     monitorStartTimer();
   }
 }

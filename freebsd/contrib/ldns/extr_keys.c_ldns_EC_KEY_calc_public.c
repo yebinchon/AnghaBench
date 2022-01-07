@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  EC_POINT ;
-typedef  int /*<<< orphan*/  EC_KEY ;
-typedef  int /*<<< orphan*/  EC_GROUP ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EC_GROUP_get0_generator (int /*<<< orphan*/  const*) ; 
- int /*<<< orphan*/ * EC_KEY_get0_group (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_KEY_get0_private_key (int /*<<< orphan*/ *) ; 
- scalar_t__ EC_KEY_set_public_key (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_copy (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  EC_POINT_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  EC_POINT_mul (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * EC_POINT_new (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int EC_POINT ;
+typedef int EC_KEY ;
+typedef int EC_GROUP ;
+
+
+ int EC_GROUP_get0_generator (int const*) ;
+ int * EC_KEY_get0_group (int *) ;
+ int EC_KEY_get0_private_key (int *) ;
+ scalar_t__ EC_KEY_set_public_key (int *,int *) ;
+ int EC_POINT_copy (int *,int ) ;
+ int EC_POINT_free (int *) ;
+ int EC_POINT_mul (int const*,int *,int ,int *,int *,int *) ;
+ int * EC_POINT_new (int const*) ;
 
 __attribute__((used)) static int
 ldns_EC_KEY_calc_public(EC_KEY* ec)
@@ -37,7 +37,7 @@ ldns_EC_KEY_calc_public(EC_KEY* ec)
                 return 0;
         }
         if(!EC_POINT_mul(group, pub_key, EC_KEY_get0_private_key(ec),
-                NULL, NULL, NULL)) {
+                ((void*)0), ((void*)0), ((void*)0))) {
                 EC_POINT_free(pub_key);
                 return 0;
         }

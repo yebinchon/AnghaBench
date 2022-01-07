@@ -1,56 +1,56 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_3__ ;
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  xmlstr_t ;
-typedef  int /*<<< orphan*/  xmlbuf_t ;
+
+
+typedef struct TYPE_6__ TYPE_3__ ;
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
+typedef int xmlstr_t ;
+typedef int xmlbuf_t ;
 struct TYPE_4__ {void* helpdir; void* tlbid; } ;
 struct TYPE_5__ {TYPE_1__ typelib; } ;
 struct entity {TYPE_2__ u; } ;
-struct dll_redirect {int /*<<< orphan*/  entities; } ;
+struct dll_redirect {int entities; } ;
 struct actctx_loader {TYPE_3__* actctx; } ;
-typedef  int /*<<< orphan*/  UNICODE_STRING ;
-struct TYPE_6__ {int /*<<< orphan*/  sections; } ;
-typedef  scalar_t__ BOOL ;
+typedef int UNICODE_STRING ;
+struct TYPE_6__ {int sections; } ;
+typedef scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ACTIVATION_CONTEXT_SECTION_COM_TYPE_LIBRARY_REDIRECTION ; 
- int /*<<< orphan*/  DPRINT1 (char*,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ FALSE ; 
- int /*<<< orphan*/  TLIBREDIRECT_SECTION ; 
- scalar_t__ TRUE ; 
- struct entity* add_entity (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  asmv1W ; 
- int /*<<< orphan*/  flagsW ; 
- int /*<<< orphan*/  helpdirW ; 
- scalar_t__ next_xml_attr (int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__*,scalar_t__*) ; 
- scalar_t__ parse_expect_end_elem (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  parse_typelib_flags (int /*<<< orphan*/ *,struct entity*) ; 
- int /*<<< orphan*/  parse_typelib_version (int /*<<< orphan*/ *,struct entity*) ; 
- int /*<<< orphan*/  tlbidW ; 
- int /*<<< orphan*/  typelibW ; 
- int /*<<< orphan*/  versionW ; 
- int /*<<< orphan*/  xmlstr2unicode (int /*<<< orphan*/ *) ; 
- scalar_t__ xmlstr_cmp (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- void* xmlstrdupW (int /*<<< orphan*/ *) ; 
+
+ int ACTIVATION_CONTEXT_SECTION_COM_TYPE_LIBRARY_REDIRECTION ;
+ int DPRINT1 (char*,int *,int *) ;
+ scalar_t__ FALSE ;
+ int TLIBREDIRECT_SECTION ;
+ scalar_t__ TRUE ;
+ struct entity* add_entity (int *,int ) ;
+ int asmv1W ;
+ int flagsW ;
+ int helpdirW ;
+ scalar_t__ next_xml_attr (int *,int *,int *,scalar_t__*,scalar_t__*) ;
+ scalar_t__ parse_expect_end_elem (int *,int ,int ) ;
+ int parse_typelib_flags (int *,struct entity*) ;
+ int parse_typelib_version (int *,struct entity*) ;
+ int tlbidW ;
+ int typelibW ;
+ int versionW ;
+ int xmlstr2unicode (int *) ;
+ scalar_t__ xmlstr_cmp (int *,int ) ;
+ void* xmlstrdupW (int *) ;
 
 __attribute__((used)) static BOOL parse_typelib_elem(xmlbuf_t* xmlbuf, struct dll_redirect* dll, struct actctx_loader* acl)
 {
-    xmlstr_t    attr_name, attr_value;
-    BOOL        end = FALSE, error;
-    struct entity*      entity;
-    UNICODE_STRING  attr_valueU, attr_nameU;
+    xmlstr_t attr_name, attr_value;
+    BOOL end = FALSE, error;
+    struct entity* entity;
+    UNICODE_STRING attr_valueU, attr_nameU;
 
     if (!(entity = add_entity(&dll->entities, ACTIVATION_CONTEXT_SECTION_COM_TYPE_LIBRARY_REDIRECTION)))
         return FALSE;

@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
 
-/* Variables and functions */
- int AV_CEIL_RSHIFT (int,int) ; 
- int /*<<< orphan*/  extract_even_c (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  extract_odd2_c (int /*<<< orphan*/  const*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int const) ; 
+
+
+
+typedef int uint8_t ;
+
+
+ int AV_CEIL_RSHIFT (int,int) ;
+ int extract_even_c (int const*,int *,int) ;
+ int extract_odd2_c (int const*,int *,int *,int const) ;
 
 __attribute__((used)) static void yuyvtoyuv422_c(uint8_t *ydst, uint8_t *udst, uint8_t *vdst,
                            const uint8_t *src, int width, int height,
@@ -28,7 +28,7 @@ __attribute__((used)) static void yuyvtoyuv422_c(uint8_t *ydst, uint8_t *udst, u
         extract_even_c(src, ydst, width);
         extract_odd2_c(src, udst, vdst, chromWidth);
 
-        src  += srcStride;
+        src += srcStride;
         ydst += lumStride;
         udst += chromStride;
         vdst += chromStride;

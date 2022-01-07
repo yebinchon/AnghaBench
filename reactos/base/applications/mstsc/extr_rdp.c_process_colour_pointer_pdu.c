@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  STREAM ;
 
-/* Variables and functions */
- int /*<<< orphan*/  process_colour_pointer_common (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int STREAM ;
+
+
+ int process_colour_pointer_common (int ,int) ;
 
 void
 process_colour_pointer_pdu(STREAM s)
 {
-	process_colour_pointer_common(s, 24);
+ process_colour_pointer_common(s, 24);
 }

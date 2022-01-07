@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int) ; 
- int /*<<< orphan*/ ** ar7_gpio_list ; 
+ int BUG_ON (int) ;
+ int ** ar7_gpio_list ;
 
 void gpio_free(unsigned gpio)
 {
-	BUG_ON(!ar7_gpio_list[gpio]);
-	ar7_gpio_list[gpio] = NULL;
+ BUG_ON(!ar7_gpio_list[gpio]);
+ ar7_gpio_list[gpio] = ((void*)0);
 }

@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
 struct account_type {int withdraw_code; int access_code; int create_code; } ;
-typedef  int money_auth_code_t ;
+typedef int money_auth_code_t ;
 struct TYPE_3__ {int withdraw_code; int access_code; } ;
-typedef  TYPE_1__ account_t ;
+typedef TYPE_1__ account_t ;
 
-/* Variables and functions */
- struct account_type** AccTypes ; 
- unsigned int MAX_ACCOUNT_TYPE ; 
- scalar_t__ check_signature (char*,char*,int,int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char*,char*,int,long long,int) ; 
- TYPE_1__* get_account (int,long long) ; 
- int /*<<< orphan*/  memcpy (char*,char*,int) ; 
- int /*<<< orphan*/  stderr ; 
- int strlen (char*) ; 
- int verbosity ; 
+
+ struct account_type** AccTypes ;
+ unsigned int MAX_ACCOUNT_TYPE ;
+ scalar_t__ check_signature (char*,char*,int,int) ;
+ int fprintf (int ,char*,char*,char*,int,long long,int) ;
+ TYPE_1__* get_account (int,long long) ;
+ int memcpy (char*,char*,int) ;
+ int stderr ;
+ int strlen (char*) ;
+ int verbosity ;
 
 money_auth_code_t check_auth_code (char *auth_signature, char *signed_string, int acc_type_id, long long acc_id) {
   account_t *A = get_account (acc_type_id, acc_id);

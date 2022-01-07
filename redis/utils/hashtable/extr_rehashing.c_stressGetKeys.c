@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  dictEntry ;
-typedef  int /*<<< orphan*/  dict ;
 
-/* Variables and functions */
- int dictGetSomeKeys (int /*<<< orphan*/ *,int /*<<< orphan*/ **,int) ; 
- int dictSize (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  printf (char*,int,int,int) ; 
- int /*<<< orphan*/  qsort (int /*<<< orphan*/ **,int,int,int /*<<< orphan*/ ) ; 
- int rand () ; 
- int /*<<< orphan*/  sortPointers ; 
- int /*<<< orphan*/  zfree (int /*<<< orphan*/ **) ; 
- int /*<<< orphan*/ ** zmalloc (int) ; 
+
+
+
+typedef int dictEntry ;
+typedef int dict ;
+
+
+ int dictGetSomeKeys (int *,int **,int) ;
+ int dictSize (int *) ;
+ int printf (char*,int,int,int) ;
+ int qsort (int **,int,int,int ) ;
+ int rand () ;
+ int sortPointers ;
+ int zfree (int **) ;
+ int ** zmalloc (int) ;
 
 void stressGetKeys(dict *d, int times, int *perfect_run, int *approx_run) {
     int j;

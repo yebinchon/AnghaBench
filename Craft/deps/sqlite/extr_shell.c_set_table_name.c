@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct callback_data {char* zDestTable; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  exit (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  free (char*) ; 
- int /*<<< orphan*/  isalnum (unsigned char) ; 
- int /*<<< orphan*/  isalpha (unsigned char) ; 
- char* malloc (int) ; 
- int /*<<< orphan*/  stderr ; 
+
+ int exit (int) ;
+ int fprintf (int ,char*) ;
+ int free (char*) ;
+ int isalnum (unsigned char) ;
+ int isalpha (unsigned char) ;
+ char* malloc (int) ;
+ int stderr ;
 
 __attribute__((used)) static void set_table_name(struct callback_data *p, const char *zName){
   int i, n;

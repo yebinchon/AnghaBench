@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_6__ {struct TYPE_6__* next; int /*<<< orphan*/ * szClassName; int /*<<< orphan*/ * szAppName; } ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+struct TYPE_6__ {struct TYPE_6__* next; int * szClassName; int * szAppName; } ;
 struct TYPE_5__ {TYPE_2__* classes; } ;
-typedef  TYPE_1__* PTHEME_FILE ;
-typedef  TYPE_2__* PTHEME_CLASS ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
+typedef TYPE_1__* PTHEME_FILE ;
+typedef TYPE_2__* PTHEME_CLASS ;
+typedef int LPCWSTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  lstrcmpiW (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int lstrcmpiW (int ,int *) ;
 
 __attribute__((used)) static PTHEME_CLASS MSSTYLES_FindClass(PTHEME_FILE tf, LPCWSTR pszAppName, LPCWSTR pszClassName)
 {
@@ -35,5 +35,5 @@ __attribute__((used)) static PTHEME_CLASS MSSTYLES_FindClass(PTHEME_FILE tf, LPC
         }
         cur = cur->next;
     }
-    return NULL;
+    return ((void*)0);
 }

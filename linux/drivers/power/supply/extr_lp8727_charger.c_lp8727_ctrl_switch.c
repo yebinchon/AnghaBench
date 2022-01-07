@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u8 ;
+
+
+
+
+typedef int u8 ;
 struct lp8727_chg {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  LP8727_SWCTRL ; 
- int /*<<< orphan*/  lp8727_write_byte (struct lp8727_chg*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int LP8727_SWCTRL ;
+ int lp8727_write_byte (struct lp8727_chg*,int ,int ) ;
 
 __attribute__((used)) static inline void lp8727_ctrl_switch(struct lp8727_chg *pchg, u8 sw)
 {
-	lp8727_write_byte(pchg, LP8727_SWCTRL, sw);
+ lp8727_write_byte(pchg, LP8727_SWCTRL, sw);
 }

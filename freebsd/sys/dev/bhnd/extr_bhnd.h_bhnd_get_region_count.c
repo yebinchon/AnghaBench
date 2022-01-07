@@ -1,25 +1,25 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  u_int ;
-typedef  int /*<<< orphan*/  device_t ;
-typedef  int /*<<< orphan*/  bhnd_port_type ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BHND_BUS_GET_REGION_COUNT (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  device_get_parent (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int u_int ;
+typedef int device_t ;
+typedef int bhnd_port_type ;
+
+
+ int BHND_BUS_GET_REGION_COUNT (int ,int ,int ,int ) ;
+ int device_get_parent (int ) ;
 
 __attribute__((used)) static inline u_int
 bhnd_get_region_count(device_t dev, bhnd_port_type type, u_int port) {
-	return (BHND_BUS_GET_REGION_COUNT(device_get_parent(dev), dev, type,
-	    port));
+ return (BHND_BUS_GET_REGION_COUNT(device_get_parent(dev), dev, type,
+     port));
 }

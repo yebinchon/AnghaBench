@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {scalar_t__ len; } ;
-typedef  TYPE_1__ xmlstr_t ;
-typedef  enum comclass_threadingmodel { ____Placeholder_comclass_threadingmodel } comclass_threadingmodel ;
-typedef  char WCHAR ;
+typedef TYPE_1__ xmlstr_t ;
+typedef enum comclass_threadingmodel { ____Placeholder_comclass_threadingmodel } comclass_threadingmodel ;
+typedef char WCHAR ;
 
-/* Variables and functions */
- int ThreadingModel_Apartment ; 
- int ThreadingModel_Both ; 
- int ThreadingModel_Free ; 
- int ThreadingModel_Neutral ; 
- int ThreadingModel_No ; 
- scalar_t__ xmlstr_cmp (TYPE_1__*,char const*) ; 
+
+ int ThreadingModel_Apartment ;
+ int ThreadingModel_Both ;
+ int ThreadingModel_Free ;
+ int ThreadingModel_Neutral ;
+ int ThreadingModel_No ;
+ scalar_t__ xmlstr_cmp (TYPE_1__*,char const*) ;
 
 __attribute__((used)) static enum comclass_threadingmodel parse_com_class_threadingmodel(xmlstr_t *value)
 {

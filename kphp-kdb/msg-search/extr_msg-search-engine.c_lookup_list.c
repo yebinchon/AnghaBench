@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ hash_t ;
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef scalar_t__ hash_t ;
 struct TYPE_2__ {scalar_t__ hash; int order; int message_id; } ;
 
-/* Variables and functions */
- int* D ; 
- int Dc ; 
- TYPE_1__* P ; 
- int Pc ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,scalar_t__,int,int) ; 
- int /*<<< orphan*/  stderr ; 
- scalar_t__ verbosity ; 
+
+ int* D ;
+ int Dc ;
+ TYPE_1__* P ;
+ int Pc ;
+ int assert (int) ;
+ int fprintf (int ,char*,scalar_t__,int,int) ;
+ int stderr ;
+ scalar_t__ verbosity ;
 
 int lookup_list (hash_t h, int **ptr) {
   int a = -1, b = Pc, c;

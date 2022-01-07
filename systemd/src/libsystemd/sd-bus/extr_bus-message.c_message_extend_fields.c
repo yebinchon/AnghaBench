@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  void uint8_t ;
-typedef  scalar_t__ uint32_t ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef void uint8_t ;
+typedef scalar_t__ uint32_t ;
 struct bus_header {int dummy; } ;
 struct TYPE_5__ {void* name; } ;
 struct TYPE_6__ {int poisoned; int fields_size; int free_header; scalar_t__ n_header_offsets; size_t* header_offsets; void* header; TYPE_1__ error; void* sender; void* destination; void* member; void* interface; void* path; } ;
-typedef  TYPE_2__ sd_bus_message ;
+typedef TYPE_2__ sd_bus_message ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ALIGN8 (size_t) ; 
- size_t ALIGN_TO (size_t,size_t) ; 
- scalar_t__ ELEMENTSOF (size_t*) ; 
- void* adjust_pointer (void*,void*,size_t,void*) ; 
- int /*<<< orphan*/  assert (TYPE_2__*) ; 
- void* malloc (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (void*,void*,int) ; 
- int /*<<< orphan*/  memzero (void*,size_t) ; 
- void* realloc (void*,int /*<<< orphan*/ ) ; 
+
+ int ALIGN8 (size_t) ;
+ size_t ALIGN_TO (size_t,size_t) ;
+ scalar_t__ ELEMENTSOF (size_t*) ;
+ void* adjust_pointer (void*,void*,size_t,void*) ;
+ int assert (TYPE_2__*) ;
+ void* malloc (int ) ;
+ int memcpy (void*,void*,int) ;
+ int memzero (void*,size_t) ;
+ void* realloc (void*,int ) ;
 
 __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size_t align, size_t sz, bool add_offset) {
         void *op, *np;
@@ -37,7 +37,7 @@ __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size
         assert(m);
 
         if (m->poisoned)
-                return NULL;
+                return ((void*)0);
 
         old_size = sizeof(struct bus_header) + m->fields_size;
         start = ALIGN_TO(old_size, align);
@@ -55,9 +55,9 @@ __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size
                 if (!np)
                         goto poison;
         } else {
-                /* Initially, the header is allocated as part of
-                 * the sd_bus_message itself, let's replace it by
-                 * dynamic data */
+
+
+
 
                 np = malloc(ALIGN8(new_size));
                 if (!np)
@@ -66,7 +66,7 @@ __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size
                 memcpy(np, m->header, sizeof(struct bus_header));
         }
 
-        /* Zero out padding */
+
         if (start > old_size)
                 memzero((uint8_t*) np + old_size, start - old_size);
 
@@ -74,7 +74,7 @@ __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size
         m->header = np;
         m->fields_size = new_size - sizeof(struct bus_header);
 
-        /* Adjust quick access pointers */
+
         m->path = adjust_pointer(m->path, op, old_size, m->header);
         m->interface = adjust_pointer(m->interface, op, old_size, m->header);
         m->member = adjust_pointer(m->member, op, old_size, m->header);
@@ -82,7 +82,7 @@ __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size
         m->sender = adjust_pointer(m->sender, op, old_size, m->header);
         m->error.name = adjust_pointer(m->error.name, op, old_size, m->header);
 
-        m->free_header = true;
+        m->free_header = 1;
 
         if (add_offset) {
                 if (m->n_header_offsets >= ELEMENTSOF(m->header_offsets))
@@ -94,6 +94,6 @@ __attribute__((used)) static void *message_extend_fields(sd_bus_message *m, size
         return (uint8_t*) np + start;
 
 poison:
-        m->poisoned = true;
-        return NULL;
+        m->poisoned = 1;
+        return ((void*)0);
 }

@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  svn_revnum_t ;
-typedef  int /*<<< orphan*/  svn_ra_file_rev_handler_t ;
-typedef  int /*<<< orphan*/  svn_file_rev_handler_t ;
-typedef  int /*<<< orphan*/  svn_error_t ;
-typedef  int /*<<< orphan*/  apr_pool_t ;
-struct TYPE_2__ {int /*<<< orphan*/ * (* get_file_revs ) (void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ;} ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FALSE ; 
- TYPE_1__ VTBL ; 
- int /*<<< orphan*/ * stub1 (void*,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  svn_compat_wrap_file_rev_handler (int /*<<< orphan*/ *,void**,int /*<<< orphan*/ ,void*,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+typedef int svn_revnum_t ;
+typedef int svn_ra_file_rev_handler_t ;
+typedef int svn_file_rev_handler_t ;
+typedef int svn_error_t ;
+typedef int apr_pool_t ;
+struct TYPE_2__ {int * (* get_file_revs ) (void*,char const*,int ,int ,int ,int ,void*,int *) ;} ;
+
+
+ int FALSE ;
+ TYPE_1__ VTBL ;
+ int * stub1 (void*,char const*,int ,int ,int ,int ,void*,int *) ;
+ int svn_compat_wrap_file_rev_handler (int *,void**,int ,void*,int *) ;
 
 __attribute__((used)) static svn_error_t *compat_get_file_revs(void *session_baton,
                                          const char *path,
@@ -40,6 +40,6 @@ __attribute__((used)) static svn_error_t *compat_get_file_revs(void *session_bat
                                    pool);
 
   return VTBL.get_file_revs(session_baton, path, start, end,
-                            FALSE, /* include merged revisions */
+                            FALSE,
                             handler2, handler2_baton, pool);
 }

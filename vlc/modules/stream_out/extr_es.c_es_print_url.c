@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  vlc_fourcc_t ;
+
+
+
+
+typedef int vlc_fourcc_t ;
 struct vlc_memstream {char* ptr; } ;
 
-/* Variables and functions */
- scalar_t__ vlc_memstream_close (struct vlc_memstream*) ; 
- scalar_t__ vlc_memstream_open (struct vlc_memstream*) ; 
- int /*<<< orphan*/  vlc_memstream_printf (struct vlc_memstream*,char*,...) ; 
- int /*<<< orphan*/  vlc_memstream_putc (struct vlc_memstream*,char) ; 
- int /*<<< orphan*/  vlc_memstream_puts (struct vlc_memstream*,char const*) ; 
+
+ scalar_t__ vlc_memstream_close (struct vlc_memstream*) ;
+ scalar_t__ vlc_memstream_open (struct vlc_memstream*) ;
+ int vlc_memstream_printf (struct vlc_memstream*,char*,...) ;
+ int vlc_memstream_putc (struct vlc_memstream*,char) ;
+ int vlc_memstream_puts (struct vlc_memstream*,char const*) ;
 
 __attribute__((used)) static char * es_print_url( const char *psz_fmt, vlc_fourcc_t i_fourcc, int i_count,
                             const char *psz_access, const char *psz_mux )
@@ -27,9 +27,9 @@ __attribute__((used)) static char * es_print_url( const char *psz_fmt, vlc_fourc
     unsigned char c;
 
     if (vlc_memstream_open(&stream))
-        return NULL;
+        return ((void*)0);
 
-    if( psz_fmt == NULL || !*psz_fmt )
+    if( psz_fmt == ((void*)0) || !*psz_fmt )
         psz_fmt = "stream-%n-%c.%m";
 
     while ((c = *(psz_fmt++)) != '\0')
@@ -64,6 +64,6 @@ __attribute__((used)) static char * es_print_url( const char *psz_fmt, vlc_fourc
     }
 out:
     if (vlc_memstream_close(&stream))
-        return NULL;
+        return ((void*)0);
     return stream.ptr;
 }

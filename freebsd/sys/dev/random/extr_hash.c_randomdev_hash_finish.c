@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct randomdev_hash {int /*<<< orphan*/  sha; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  SHA256_Final (void*,int /*<<< orphan*/ *) ; 
+
+
+
+struct randomdev_hash {int sha; } ;
+
+
+ int SHA256_Final (void*,int *) ;
 
 void
 randomdev_hash_finish(struct randomdev_hash *context, void *buf)
 {
 
-	SHA256_Final(buf, &context->sha);
+ SHA256_Final(buf, &context->sha);
 }

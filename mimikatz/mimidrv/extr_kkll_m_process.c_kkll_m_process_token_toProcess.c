@@ -1,85 +1,85 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  scalar_t__ ULONG_PTR ;
-struct TYPE_3__ {int /*<<< orphan*/  Token; int /*<<< orphan*/ * member_1; int /*<<< orphan*/ * member_0; } ;
-typedef  int /*<<< orphan*/  SIZE_T ;
-typedef  int /*<<< orphan*/  PVOID ;
-typedef  int* PULONG ;
-typedef  TYPE_1__ PROCESS_ACCESS_TOKEN ;
-typedef  int /*<<< orphan*/  PKIWI_BUFFER ;
-typedef  scalar_t__ PEPROCESS ;
-typedef  int /*<<< orphan*/  PCHAR ;
-typedef  int /*<<< orphan*/  NTSTATUS ;
-typedef  int /*<<< orphan*/  HANDLE ;
 
-/* Variables and functions */
- scalar_t__** EPROCESS_OffSetTable ; 
- size_t EprocessFlags2 ; 
- int /*<<< orphan*/  FALSE ; 
- int /*<<< orphan*/  KernelMode ; 
- size_t KiwiOsIndex ; 
- size_t KiwiOsIndex_VISTA ; 
- scalar_t__ NT_SUCCESS (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  OBJ_KERNEL_HANDLE ; 
- int /*<<< orphan*/  ObOpenObjectByPointer (scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ProcessAccessToken ; 
- int /*<<< orphan*/  PsGetProcessId (scalar_t__) ; 
- int /*<<< orphan*/  PsGetProcessImageFileName (scalar_t__) ; 
- int /*<<< orphan*/ * PsProcessType ; 
- int TOKEN_FROZEN_MASK ; 
- int /*<<< orphan*/  TokenPrimary ; 
- int /*<<< orphan*/  ZwClose (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZwDuplicateToken (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  ZwSetInformationProcess (int /*<<< orphan*/ ,int /*<<< orphan*/ ,TYPE_1__*,int) ; 
- int /*<<< orphan*/  kprintf (int /*<<< orphan*/ ,char*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,...) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef scalar_t__ ULONG_PTR ;
+struct TYPE_3__ {int Token; int * member_1; int * member_0; } ;
+typedef int SIZE_T ;
+typedef int PVOID ;
+typedef int* PULONG ;
+typedef TYPE_1__ PROCESS_ACCESS_TOKEN ;
+typedef int PKIWI_BUFFER ;
+typedef scalar_t__ PEPROCESS ;
+typedef int PCHAR ;
+typedef int NTSTATUS ;
+typedef int HANDLE ;
+
+
+ scalar_t__** EPROCESS_OffSetTable ;
+ size_t EprocessFlags2 ;
+ int FALSE ;
+ int KernelMode ;
+ size_t KiwiOsIndex ;
+ size_t KiwiOsIndex_VISTA ;
+ scalar_t__ NT_SUCCESS (int ) ;
+ int OBJ_KERNEL_HANDLE ;
+ int ObOpenObjectByPointer (scalar_t__,int ,int *,int ,int ,int ,int *) ;
+ int ProcessAccessToken ;
+ int PsGetProcessId (scalar_t__) ;
+ int PsGetProcessImageFileName (scalar_t__) ;
+ int * PsProcessType ;
+ int TOKEN_FROZEN_MASK ;
+ int TokenPrimary ;
+ int ZwClose (int ) ;
+ int ZwDuplicateToken (int ,int ,int *,int ,int ,int *) ;
+ int ZwSetInformationProcess (int ,int ,TYPE_1__*,int) ;
+ int kprintf (int ,char*,int ,int ,...) ;
 
 NTSTATUS kkll_m_process_token_toProcess(SIZE_T szBufferIn, PVOID bufferIn, PKIWI_BUFFER outBuffer, HANDLE hSrcToken, PEPROCESS pToProcess)
 {
-	PROCESS_ACCESS_TOKEN ProcessTokenInformation = {NULL, NULL};
-	HANDLE hToProcess;
-	PULONG pFlags2 = NULL;
-	NTSTATUS status;
-	HANDLE processId = PsGetProcessId(pToProcess);
-	PCHAR processName = PsGetProcessImageFileName(pToProcess);
+ PROCESS_ACCESS_TOKEN ProcessTokenInformation = {((void*)0), ((void*)0)};
+ HANDLE hToProcess;
+ PULONG pFlags2 = ((void*)0);
+ NTSTATUS status;
+ HANDLE processId = PsGetProcessId(pToProcess);
+ PCHAR processName = PsGetProcessImageFileName(pToProcess);
 
-	status = ObOpenObjectByPointer(pToProcess, OBJ_KERNEL_HANDLE, NULL, 0, *PsProcessType, KernelMode, &hToProcess);
-	if(NT_SUCCESS(status))
-	{
-		status = ZwDuplicateToken(hSrcToken, 0, NULL, FALSE, TokenPrimary, &ProcessTokenInformation.Token);
-		if(NT_SUCCESS(status))
-		{
-			if(KiwiOsIndex >= KiwiOsIndex_VISTA)
-			{
-				pFlags2 = (PULONG) (((ULONG_PTR) pToProcess) + EPROCESS_OffSetTable[KiwiOsIndex][EprocessFlags2]);
-				if(*pFlags2 & TOKEN_FROZEN_MASK)
-					*pFlags2 &= ~TOKEN_FROZEN_MASK;
-				else
-					pFlags2 = NULL;
-			}
+ status = ObOpenObjectByPointer(pToProcess, OBJ_KERNEL_HANDLE, ((void*)0), 0, *PsProcessType, KernelMode, &hToProcess);
+ if(NT_SUCCESS(status))
+ {
+  status = ZwDuplicateToken(hSrcToken, 0, ((void*)0), FALSE, TokenPrimary, &ProcessTokenInformation.Token);
+  if(NT_SUCCESS(status))
+  {
+   if(KiwiOsIndex >= KiwiOsIndex_VISTA)
+   {
+    pFlags2 = (PULONG) (((ULONG_PTR) pToProcess) + EPROCESS_OffSetTable[KiwiOsIndex][EprocessFlags2]);
+    if(*pFlags2 & TOKEN_FROZEN_MASK)
+     *pFlags2 &= ~TOKEN_FROZEN_MASK;
+    else
+     pFlags2 = ((void*)0);
+   }
 
-			status = ZwSetInformationProcess(hToProcess, ProcessAccessToken, &ProcessTokenInformation, sizeof(PROCESS_ACCESS_TOKEN));
-			if(NT_SUCCESS(status))
-				status = kprintf(outBuffer, L" * to %u/%-14S\n", processId, processName);
-			else
-				status = kprintf(outBuffer, L" ! ZwSetInformationProcess 0x%08x for %u/%-14S\n", status, processId, processName);
+   status = ZwSetInformationProcess(hToProcess, ProcessAccessToken, &ProcessTokenInformation, sizeof(PROCESS_ACCESS_TOKEN));
+   if(NT_SUCCESS(status))
+    status = kprintf(outBuffer, L" * to %u/%-14S\n", processId, processName);
+   else
+    status = kprintf(outBuffer, L" ! ZwSetInformationProcess 0x%08x for %u/%-14S\n", status, processId, processName);
 
-			if((KiwiOsIndex >= KiwiOsIndex_VISTA) && pFlags2)
-				*pFlags2 |= TOKEN_FROZEN_MASK;
+   if((KiwiOsIndex >= KiwiOsIndex_VISTA) && pFlags2)
+    *pFlags2 |= TOKEN_FROZEN_MASK;
 
-			ZwClose(ProcessTokenInformation.Token);
-		}
-		ZwClose(hToProcess);
-	}
-	return status;
+   ZwClose(ProcessTokenInformation.Token);
+  }
+  ZwClose(hToProcess);
+ }
+ return status;
 }

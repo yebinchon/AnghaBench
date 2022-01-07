@@ -1,18 +1,10 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int pixel_depth_of_type (int,int) ; 
+ int pixel_depth_of_type (int,int) ;
 
 __attribute__((used)) static unsigned int
 image_size_of_type(int color_type, int bit_depth, unsigned int *colors,
@@ -27,7 +19,7 @@ image_size_of_type(int color_type, int bit_depth, unsigned int *colors,
 
       if (small)
       {
-         if (pixel_depth <= 8) /* there will be one row */
+         if (pixel_depth <= 8)
             return 1 << pixel_depth;
 
          else

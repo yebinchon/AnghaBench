@@ -1,35 +1,35 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
 struct sk_buff {int dummy; } ;
-struct TYPE_2__ {int /*<<< orphan*/  flag; } ;
+struct TYPE_2__ {int flag; } ;
 struct PStack {TYPE_1__ l2; } ;
 struct FsmInst {struct PStack* userdata; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FLG_L3_INIT ; 
- int /*<<< orphan*/  establishlink (struct FsmInst*) ; 
- int /*<<< orphan*/  get_PollFlagFree (struct PStack*,struct sk_buff*) ; 
- int /*<<< orphan*/  test_and_set_bit (int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
+
+ int FLG_L3_INIT ;
+ int establishlink (struct FsmInst*) ;
+ int get_PollFlagFree (struct PStack*,struct sk_buff*) ;
+ int test_and_set_bit (int ,int *) ;
 
 __attribute__((used)) static void
 l2_reestablish(struct FsmInst *fi, int event, void *arg)
 {
-	struct PStack *st = fi->userdata;
-	struct sk_buff *skb = arg;
+ struct PStack *st = fi->userdata;
+ struct sk_buff *skb = arg;
 
-	if (!get_PollFlagFree(st, skb)) {
-		establishlink(fi);
-		test_and_set_bit(FLG_L3_INIT, &st->l2.flag);
-	}
+ if (!get_PollFlagFree(st, skb)) {
+  establishlink(fi);
+  test_and_set_bit(FLG_L3_INIT, &st->l2.flag);
+ }
 }

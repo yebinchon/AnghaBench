@@ -1,19 +1,19 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  pthread_t ;
 
-/* Variables and functions */
- int pthread_setname_np (int /*<<< orphan*/ ,char const*) ; 
+
+
+
+typedef int pthread_t ;
+
+
+ int pthread_setname_np (int ,char const*) ;
 
 int pthread_set_name_np(pthread_t thread, const char *name)
 {

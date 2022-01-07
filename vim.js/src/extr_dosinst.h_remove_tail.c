@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char NUL ; 
- int strlen (char*) ; 
+ char NUL ;
+ int strlen (char*) ;
 
 __attribute__((used)) static void
 remove_tail(char *path)
 {
-    int		i;
+    int i;
 
     for (i = strlen(path) - 1; i > 0; --i)
-	if (path[i] == '/' || path[i] == '\\')
-	{
-	    path[i] = NUL;
-	    break;
-	}
+ if (path[i] == '/' || path[i] == '\\')
+ {
+     path[i] = NUL;
+     break;
+ }
 }

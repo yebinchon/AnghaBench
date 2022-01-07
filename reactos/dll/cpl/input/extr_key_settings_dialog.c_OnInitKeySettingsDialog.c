@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  column ;
-typedef  int /*<<< orphan*/  VOID ;
+
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int column ;
+typedef int VOID ;
 struct TYPE_6__ {int dwAttributes; } ;
-struct TYPE_5__ {int mask; int iSubItem; char* pszText; int cx; int /*<<< orphan*/  fmt; } ;
-typedef  TYPE_1__ LV_COLUMN ;
-typedef  int /*<<< orphan*/  HWND ;
+struct TYPE_5__ {int mask; int iSubItem; char* pszText; int cx; int fmt; } ;
+typedef TYPE_1__ LV_COLUMN ;
+typedef int HWND ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BST_CHECKED ; 
- int /*<<< orphan*/  BST_UNCHECKED ; 
- int /*<<< orphan*/  CheckDlgButton (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_KEY_LISTVIEW ; 
- int /*<<< orphan*/  IDC_PRESS_CL_KEY_RB ; 
- int /*<<< orphan*/  IDC_PRESS_SHIFT_KEY_RB ; 
- int KLF_SHIFTLOCK ; 
- int /*<<< orphan*/  LVCFMT_LEFT ; 
- int /*<<< orphan*/  LVCFMT_RIGHT ; 
- int LVCF_FMT ; 
- int LVCF_SUBITEM ; 
- int LVCF_TEXT ; 
- int LVCF_WIDTH ; 
- int /*<<< orphan*/  LVS_EX_FULLROWSELECT ; 
- int /*<<< orphan*/  ListView_InsertColumn (int /*<<< orphan*/ ,int,TYPE_1__*) ; 
- int /*<<< orphan*/  ListView_SetExtendedListViewStyle (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ReadKeysSettings () ; 
- int /*<<< orphan*/  UpdateKeySettingsListView (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  ZeroMemory (TYPE_1__*,int) ; 
- TYPE_2__ _KeySettings ; 
+
+ int BST_CHECKED ;
+ int BST_UNCHECKED ;
+ int CheckDlgButton (int ,int ,int ) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_KEY_LISTVIEW ;
+ int IDC_PRESS_CL_KEY_RB ;
+ int IDC_PRESS_SHIFT_KEY_RB ;
+ int KLF_SHIFTLOCK ;
+ int LVCFMT_LEFT ;
+ int LVCFMT_RIGHT ;
+ int LVCF_FMT ;
+ int LVCF_SUBITEM ;
+ int LVCF_TEXT ;
+ int LVCF_WIDTH ;
+ int LVS_EX_FULLROWSELECT ;
+ int ListView_InsertColumn (int ,int,TYPE_1__*) ;
+ int ListView_SetExtendedListViewStyle (int ,int ) ;
+ int ReadKeysSettings () ;
+ int UpdateKeySettingsListView (int ) ;
+ int ZeroMemory (TYPE_1__*,int) ;
+ TYPE_2__ _KeySettings ;
 
 __attribute__((used)) static VOID
 OnInitKeySettingsDialog(HWND hwndDlg)
@@ -69,16 +69,16 @@ OnInitKeySettingsDialog(HWND hwndDlg)
 
     column.mask = LVCF_FMT | LVCF_TEXT | LVCF_WIDTH | LVCF_SUBITEM;
 
-    column.fmt      = LVCFMT_LEFT;
+    column.fmt = LVCFMT_LEFT;
     column.iSubItem = 0;
-    column.pszText  = L"";
-    column.cx       = 210;
+    column.pszText = L"";
+    column.cx = 210;
     ListView_InsertColumn(hwndList, 0, &column);
 
-    column.fmt      = LVCFMT_RIGHT;
-    column.cx       = 145;
+    column.fmt = LVCFMT_RIGHT;
+    column.cx = 145;
     column.iSubItem = 1;
-    column.pszText  = L"";
+    column.pszText = L"";
     ListView_InsertColumn(hwndList, 1, &column);
 
     UpdateKeySettingsListView(hwndList);

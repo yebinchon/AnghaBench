@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  parser_ctx_t ;
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int parser_ctx_t ;
 struct TYPE_5__ {unsigned int val; struct TYPE_5__* next; } ;
-typedef  TYPE_1__ dim_list_t ;
+typedef TYPE_1__ dim_list_t ;
 
-/* Variables and functions */
- TYPE_1__* parser_alloc (int /*<<< orphan*/ *,int) ; 
+
+ TYPE_1__* parser_alloc (int *,int) ;
 
 __attribute__((used)) static dim_list_t *new_dim(parser_ctx_t *ctx, unsigned val, dim_list_t *next)
 {
@@ -24,7 +24,7 @@ __attribute__((used)) static dim_list_t *new_dim(parser_ctx_t *ctx, unsigned val
 
     ret = parser_alloc(ctx, sizeof(*ret));
     if(!ret)
-        return NULL;
+        return ((void*)0);
 
     ret->val = val;
     ret->next = next;

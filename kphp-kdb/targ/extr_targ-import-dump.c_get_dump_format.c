@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int TF_ADDRESSES ; 
- int TF_EDUCATION ; 
- int TF_GROUPSHORT ; 
- int TF_MATCHES ; 
- int TF_MEMEXTRA ; 
- int TF_MEMGROUPS ; 
- int TF_MEMLITE ; 
- int TF_MEMSHORT ; 
- int TF_MILITARY ; 
- int TF_NAMES ; 
- int TF_NONE ; 
- int /*<<< orphan*/  strncmp (char*,char*,int) ; 
+ int TF_ADDRESSES ;
+ int TF_EDUCATION ;
+ int TF_GROUPSHORT ;
+ int TF_MATCHES ;
+ int TF_MEMEXTRA ;
+ int TF_MEMGROUPS ;
+ int TF_MEMLITE ;
+ int TF_MEMSHORT ;
+ int TF_MILITARY ;
+ int TF_NAMES ;
+ int TF_NONE ;
+ int strncmp (char*,char*,int) ;
 
 int get_dump_format (char *str) {
   if (!strncmp (str, "memlite", 7) || !strncmp (str, "members_lite", 12)) {

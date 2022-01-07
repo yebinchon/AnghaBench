@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct roundingData {int /*<<< orphan*/  exception; } ;
-typedef  scalar_t__ sbits64 ;
-typedef  int int16 ;
-typedef  int /*<<< orphan*/  float64 ;
-typedef  scalar_t__ flag ;
-typedef  int bits64 ;
 
-/* Variables and functions */
- int LIT64 (int) ; 
- int /*<<< orphan*/  add128 (int,int,int,int,int*,int*) ; 
- int estimateDiv128To64 (int,int /*<<< orphan*/ ,int) ; 
- int estimateSqrt32 (int,int) ; 
- int extractFloat64Exp (int /*<<< orphan*/ ) ; 
- int extractFloat64Frac (int /*<<< orphan*/ ) ; 
- scalar_t__ extractFloat64Sign (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  float64_default_nan ; 
- int /*<<< orphan*/  float_flag_invalid ; 
- int /*<<< orphan*/  mul64To128 (int,int,int*,int*) ; 
- int /*<<< orphan*/  normalizeFloat64Subnormal (int,int*,int*) ; 
- int /*<<< orphan*/  propagateFloat64NaN (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  roundAndPackFloat64 (struct roundingData*,int /*<<< orphan*/ ,int,int) ; 
- int /*<<< orphan*/  shift64RightJamming (int,int,int*) ; 
- int /*<<< orphan*/  shortShift128Left (int /*<<< orphan*/ ,int,int,int*,int*) ; 
- int /*<<< orphan*/  sub128 (int,int /*<<< orphan*/ ,int,int,int*,int*) ; 
+
+
+
+struct roundingData {int exception; } ;
+typedef scalar_t__ sbits64 ;
+typedef int int16 ;
+typedef int float64 ;
+typedef scalar_t__ flag ;
+typedef int bits64 ;
+
+
+ int LIT64 (int) ;
+ int add128 (int,int,int,int,int*,int*) ;
+ int estimateDiv128To64 (int,int ,int) ;
+ int estimateSqrt32 (int,int) ;
+ int extractFloat64Exp (int ) ;
+ int extractFloat64Frac (int ) ;
+ scalar_t__ extractFloat64Sign (int ) ;
+ int float64_default_nan ;
+ int float_flag_invalid ;
+ int mul64To128 (int,int,int*,int*) ;
+ int normalizeFloat64Subnormal (int,int*,int*) ;
+ int propagateFloat64NaN (int ,int ) ;
+ int roundAndPackFloat64 (struct roundingData*,int ,int,int) ;
+ int shift64RightJamming (int,int,int*) ;
+ int shortShift128Left (int ,int,int,int*,int*) ;
+ int sub128 (int,int ,int,int,int*,int*) ;
 
 float64 float64_sqrt( struct roundingData *roundData, float64 a )
 {
     flag aSign;
     int16 aExp, zExp;
     bits64 aSig, zSig;
-    bits64 rem0, rem1, term0, term1; //, shiftedRem;
-    //float64 z;
+    bits64 rem0, rem1, term0, term1;
+
 
     aSig = extractFloat64Frac( a );
     aExp = extractFloat64Exp( a );

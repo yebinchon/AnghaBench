@@ -1,47 +1,47 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  int32 ;
-typedef  scalar_t__ Oid ;
-typedef  int /*<<< orphan*/  Node ;
-typedef  int /*<<< orphan*/  Expr ;
 
-/* Variables and functions */
- int /*<<< orphan*/  Assert (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  COERCE_EXPLICIT_CAST ; 
- int /*<<< orphan*/  COERCION_EXPLICIT ; 
- int /*<<< orphan*/ * coerce_to_target_type (int /*<<< orphan*/ *,int /*<<< orphan*/ *,scalar_t__,scalar_t__,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int) ; 
- scalar_t__ exprType (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  exprTypmod (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int int32 ;
+typedef scalar_t__ Oid ;
+typedef int Node ;
+typedef int Expr ;
+
+
+ int Assert (int ) ;
+ int COERCE_EXPLICIT_CAST ;
+ int COERCION_EXPLICIT ;
+ int * coerce_to_target_type (int *,int *,scalar_t__,scalar_t__,int ,int ,int ,int) ;
+ scalar_t__ exprType (int *) ;
+ int exprTypmod (int *) ;
 
 __attribute__((used)) static Expr *
 AddTypeConversion(Node *originalAggregate, Node *newExpression)
 {
-	Oid newTypeId = exprType(newExpression);
-	Oid originalTypeId = exprType(originalAggregate);
-	int32 originalTypeMod = exprTypmod(originalAggregate);
-	Node *typeConvertedExpression = NULL;
+ Oid newTypeId = exprType(newExpression);
+ Oid originalTypeId = exprType(originalAggregate);
+ int32 originalTypeMod = exprTypmod(originalAggregate);
+ Node *typeConvertedExpression = ((void*)0);
 
-	/* nothing to do if the two types are the same */
-	if (originalTypeId == newTypeId)
-	{
-		return NULL;
-	}
 
-	/* otherwise, add a type conversion function */
-	typeConvertedExpression = coerce_to_target_type(NULL, newExpression, newTypeId,
-													originalTypeId, originalTypeMod,
-													COERCION_EXPLICIT,
-													COERCE_EXPLICIT_CAST, -1);
-	Assert(typeConvertedExpression != NULL);
-	return (Expr *) typeConvertedExpression;
+ if (originalTypeId == newTypeId)
+ {
+  return ((void*)0);
+ }
+
+
+ typeConvertedExpression = coerce_to_target_type(((void*)0), newExpression, newTypeId,
+             originalTypeId, originalTypeMod,
+             COERCION_EXPLICIT,
+             COERCE_EXPLICIT_CAST, -1);
+ Assert(typeConvertedExpression != ((void*)0));
+ return (Expr *) typeConvertedExpression;
 }

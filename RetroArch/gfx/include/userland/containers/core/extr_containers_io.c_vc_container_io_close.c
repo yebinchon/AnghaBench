@@ -1,33 +1,33 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_6__ ;
-typedef  struct TYPE_11__   TYPE_3__ ;
-typedef  struct TYPE_10__   TYPE_2__ ;
-typedef  struct TYPE_9__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  VC_CONTAINER_STATUS_T ;
-struct TYPE_11__ {int /*<<< orphan*/  uri_parts; int /*<<< orphan*/  (* pf_close ) (TYPE_3__*) ;TYPE_2__* priv; } ;
-typedef  TYPE_3__ VC_CONTAINER_IO_T ;
+
+
+typedef struct TYPE_12__ TYPE_6__ ;
+typedef struct TYPE_11__ TYPE_3__ ;
+typedef struct TYPE_10__ TYPE_2__ ;
+typedef struct TYPE_9__ TYPE_1__ ;
+
+
+typedef int VC_CONTAINER_STATUS_T ;
+struct TYPE_11__ {int uri_parts; int (* pf_close ) (TYPE_3__*) ;TYPE_2__* priv; } ;
+typedef TYPE_3__ VC_CONTAINER_IO_T ;
 struct TYPE_12__ {TYPE_3__* mem; scalar_t__ dirty; } ;
 struct TYPE_10__ {unsigned int cached_areas_num; TYPE_1__* cached_areas; TYPE_6__ caches; scalar_t__ caches_num; scalar_t__ async_io; } ;
 struct TYPE_9__ {TYPE_3__* mem; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  VC_CONTAINER_SUCCESS ; 
- int /*<<< orphan*/  async_io_stop (scalar_t__) ; 
- int /*<<< orphan*/  free (TYPE_3__*) ; 
- int /*<<< orphan*/  stub1 (TYPE_3__*) ; 
- int /*<<< orphan*/  vc_container_io_cache_flush (TYPE_3__*,TYPE_6__*,int) ; 
- int /*<<< orphan*/  vc_uri_release (int /*<<< orphan*/ ) ; 
+
+ int VC_CONTAINER_SUCCESS ;
+ int async_io_stop (scalar_t__) ;
+ int free (TYPE_3__*) ;
+ int stub1 (TYPE_3__*) ;
+ int vc_container_io_cache_flush (TYPE_3__*,TYPE_6__*,int) ;
+ int vc_uri_release (int ) ;
 
 VC_CONTAINER_STATUS_T vc_container_io_close( VC_CONTAINER_IO_T *p_ctx )
 {

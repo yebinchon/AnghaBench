@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
+ int strlen (char const*) ;
+ int unput (char const) ;
 
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int strlen (char const*) ; 
- int /*<<< orphan*/  unput (char const) ; 
-
-void unputstr(const char *s)	/* put a string back on input */
+void unputstr(const char *s)
 {
-	int i;
+ int i;
 
-	for (i = strlen(s)-1; i >= 0; i--)
-		unput(s[i]);
+ for (i = strlen(s)-1; i >= 0; i--)
+  unput(s[i]);
 }

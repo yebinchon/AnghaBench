@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  BIO_printf (int /*<<< orphan*/ ,char*) ; 
- scalar_t__ OPENSSL_hexchar2int (unsigned char) ; 
- int /*<<< orphan*/  bio_err ; 
- int /*<<< orphan*/  isxdigit (unsigned char) ; 
- int /*<<< orphan*/  memset (unsigned char*,int /*<<< orphan*/ ,int) ; 
- int strlen (char const*) ; 
+ int BIO_printf (int ,char*) ;
+ scalar_t__ OPENSSL_hexchar2int (unsigned char) ;
+ int bio_err ;
+ int isxdigit (unsigned char) ;
+ int memset (unsigned char*,int ,int) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static int set_hex(const char *in, unsigned char *out, int size)
 {
@@ -28,7 +20,7 @@ __attribute__((used)) static int set_hex(const char *in, unsigned char *out, int
     n = strlen(in);
     if (n > i) {
         BIO_printf(bio_err, "hex string is too long, ignoring excess\n");
-        n = i; /* ignore exceeding part */
+        n = i;
     } else if (n < i) {
         BIO_printf(bio_err, "hex string is too short, padding with zero bytes to length\n");
     }

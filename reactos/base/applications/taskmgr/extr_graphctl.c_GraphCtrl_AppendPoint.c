@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {double* m_dCurrentPosition; } ;
-typedef  TYPE_1__ TGraphCtrl ;
+typedef TYPE_1__ TGraphCtrl ;
 
-/* Variables and functions */
- int /*<<< orphan*/  GraphCtrl_DrawPoint (TYPE_1__*) ; 
+
+ int GraphCtrl_DrawPoint (TYPE_1__*) ;
 
 double GraphCtrl_AppendPoint(TGraphCtrl* this,
                              double dNewPoint0, double dNewPoint1,
                              double dNewPoint2, double dNewPoint3)
 {
-    /*  append a data point to the plot & return the previous point */
+
     double dPrevious;
 
     dPrevious = this->m_dCurrentPosition[0];
@@ -30,6 +30,6 @@ double GraphCtrl_AppendPoint(TGraphCtrl* this,
     this->m_dCurrentPosition[2] = dNewPoint2;
     this->m_dCurrentPosition[3] = dNewPoint3;
     GraphCtrl_DrawPoint(this);
-    /* Invalidate(); */
+
     return dPrevious;
 }

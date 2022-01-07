@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-typedef  int /*<<< orphan*/  (* cf_blockwise_out_fn ) (void*,int /*<<< orphan*/ *) ;
 
-/* Variables and functions */
- size_t MIN (size_t,size_t) ; 
- int /*<<< orphan*/  assert (int) ; 
- int /*<<< orphan*/  xor_bb (int /*<<< orphan*/ *,int /*<<< orphan*/  const*,int /*<<< orphan*/ *,size_t) ; 
+
+
+
+typedef int uint8_t ;
+typedef int (* cf_blockwise_out_fn ) (void*,int *) ;
+
+
+ size_t MIN (size_t,size_t) ;
+ int assert (int) ;
+ int xor_bb (int *,int const*,int *,size_t) ;
 
 void cf_blockwise_xor(uint8_t *partial, size_t *npartial, size_t nblock,
                       const void *inp, void *outp, size_t nbytes,
@@ -31,7 +31,7 @@ void cf_blockwise_xor(uint8_t *partial, size_t *npartial, size_t nblock,
 
   while (nbytes)
   {
-    /* If we're out of material, and need more, produce a block. */
+
     if (*npartial == 0)
     {
       process(ctx, partial);

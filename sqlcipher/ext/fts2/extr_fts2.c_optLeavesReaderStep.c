@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  fulltext_vtab ;
-struct TYPE_3__ {int /*<<< orphan*/  reader; } ;
-typedef  TYPE_1__ OptLeavesReader ;
 
-/* Variables and functions */
- int leavesReaderStep (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int fulltext_vtab ;
+struct TYPE_3__ {int reader; } ;
+typedef TYPE_1__ OptLeavesReader ;
+
+
+ int leavesReaderStep (int *,int *) ;
 
 __attribute__((used)) static int optLeavesReaderStep(fulltext_vtab *v, OptLeavesReader *pReader){
   return leavesReaderStep(v, &pReader->reader);

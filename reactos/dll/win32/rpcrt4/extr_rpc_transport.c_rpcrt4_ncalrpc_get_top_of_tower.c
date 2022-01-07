@@ -1,24 +1,24 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_2__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_2__ {int count_lhs; size_t count_rhs; int /*<<< orphan*/  protid; } ;
-typedef  TYPE_1__ twr_empty_floor_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  EPM_PROTOCOL_PIPE ; 
- int /*<<< orphan*/  TRACE (char*,unsigned char*,char const*,char const*) ; 
- int /*<<< orphan*/  memcpy (unsigned char*,char const*,size_t) ; 
- int strlen (char const*) ; 
+
+typedef struct TYPE_2__ TYPE_1__ ;
+
+
+struct TYPE_2__ {int count_lhs; size_t count_rhs; int protid; } ;
+typedef TYPE_1__ twr_empty_floor_t ;
+
+
+ int EPM_PROTOCOL_PIPE ;
+ int TRACE (char*,unsigned char*,char const*,char const*) ;
+ int memcpy (unsigned char*,char const*,size_t) ;
+ int strlen (char const*) ;
 
 __attribute__((used)) static size_t rpcrt4_ncalrpc_get_top_of_tower(unsigned char *tower_data,
                                               const char *networkaddr,

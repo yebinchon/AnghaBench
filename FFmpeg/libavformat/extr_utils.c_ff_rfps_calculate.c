@@ -1,46 +1,46 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_17__   TYPE_6__ ;
-typedef  struct TYPE_16__   TYPE_5__ ;
-typedef  struct TYPE_15__   TYPE_4__ ;
-typedef  struct TYPE_14__   TYPE_3__ ;
-typedef  struct TYPE_13__   TYPE_2__ ;
-typedef  struct TYPE_12__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_17__ TYPE_6__ ;
+typedef struct TYPE_16__ TYPE_5__ ;
+typedef struct TYPE_15__ TYPE_4__ ;
+typedef struct TYPE_14__ TYPE_3__ ;
+typedef struct TYPE_13__ TYPE_2__ ;
+typedef struct TYPE_12__ TYPE_1__ ;
+
+
 struct TYPE_17__ {int nb_streams; TYPE_4__** streams; } ;
 struct TYPE_16__ {long long den; long long num; } ;
 struct TYPE_15__ {TYPE_3__* info; TYPE_5__ r_frame_rate; TYPE_5__ avg_frame_rate; TYPE_5__ time_base; TYPE_2__* internal; TYPE_1__* codecpar; } ;
-struct TYPE_14__ {int duration_count; int duration_gcd; int codec_info_duration; int rfps_duration_sum; int*** duration_error; int /*<<< orphan*/  last_dts; } ;
-struct TYPE_13__ {int /*<<< orphan*/  avctx; } ;
+struct TYPE_14__ {int duration_count; int duration_gcd; int codec_info_duration; int rfps_duration_sum; int*** duration_error; int last_dts; } ;
+struct TYPE_13__ {int avctx; } ;
 struct TYPE_12__ {scalar_t__ codec_type; } ;
-typedef  TYPE_4__ AVStream ;
-typedef  TYPE_5__ AVRational ;
-typedef  TYPE_6__ AVFormatContext ;
+typedef TYPE_4__ AVStream ;
+typedef TYPE_5__ AVRational ;
+typedef TYPE_6__ AVFormatContext ;
 
-/* Variables and functions */
- scalar_t__ AVMEDIA_TYPE_VIDEO ; 
- int /*<<< orphan*/  AV_LOG_DEBUG ; 
- int /*<<< orphan*/  AV_NOPTS_VALUE ; 
- int FFMAX (int,long long) ; 
- int /*<<< orphan*/  INT_MAX ; 
- int MAX_STD_TIMEBASES ; 
- int /*<<< orphan*/  av_freep (int****) ; 
- TYPE_5__ av_inv_q (TYPE_5__) ; 
- int /*<<< orphan*/  av_log (TYPE_6__*,int /*<<< orphan*/ ,char*,...) ; 
- double av_q2d (TYPE_5__) ; 
- int /*<<< orphan*/  av_reduce (long long*,long long*,int,int,int /*<<< orphan*/ ) ; 
- double fabs (double) ; 
- double get_std_framerate (int) ; 
- scalar_t__ tb_unreliable (int /*<<< orphan*/ ) ; 
+
+ scalar_t__ AVMEDIA_TYPE_VIDEO ;
+ int AV_LOG_DEBUG ;
+ int AV_NOPTS_VALUE ;
+ int FFMAX (int,long long) ;
+ int INT_MAX ;
+ int MAX_STD_TIMEBASES ;
+ int av_freep (int****) ;
+ TYPE_5__ av_inv_q (TYPE_5__) ;
+ int av_log (TYPE_6__*,int ,char*,...) ;
+ double av_q2d (TYPE_5__) ;
+ int av_reduce (long long*,long long*,int,int,int ) ;
+ double fabs (double) ;
+ double get_std_framerate (int) ;
+ scalar_t__ tb_unreliable (int ) ;
 
 void ff_rfps_calculate(AVFormatContext *ic)
 {
@@ -51,9 +51,9 @@ void ff_rfps_calculate(AVFormatContext *ic)
 
         if (st->codecpar->codec_type != AVMEDIA_TYPE_VIDEO)
             continue;
-        // the check for tb_unreliable() is not completely correct, since this is not about handling
-        // an unreliable/inexact time base, but a time base that is finer than necessary, as e.g.
-        // ipmovie.c produces.
+
+
+
         if (tb_unreliable(st->internal->avctx) && st->info->duration_count > 15 && st->info->duration_gcd > FFMAX(1, st->time_base.den/(500LL*st->time_base.num)) && !st->r_frame_rate.num)
             av_reduce(&st->r_frame_rate.num, &st->r_frame_rate.den, st->time_base.den, st->time_base.num * st->info->duration_gcd, INT_MAX);
         if (st->info->duration_count>1 && !st->r_frame_rate.num
@@ -87,11 +87,11 @@ void ff_rfps_calculate(AVFormatContext *ic)
                         av_log(ic, AV_LOG_DEBUG, "rfps: %f %f\n", get_std_framerate(j) / 12.0/1001, error);
                 }
             }
-            // do not increase frame rate by more than 1 % in order to match a standard rate.
+
             if (num && (!ref_rate.num || (double)num/(12*1001) < 1.01 * av_q2d(ref_rate)))
                 av_reduce(&st->r_frame_rate.num, &st->r_frame_rate.den, num, 12*1001, INT_MAX);
         }
-        if (   !st->avg_frame_rate.num
+        if ( !st->avg_frame_rate.num
             && st->r_frame_rate.num && st->info->rfps_duration_sum
             && st->info->codec_info_duration <= 0
             && st->info->duration_count > 2

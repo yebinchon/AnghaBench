@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct msi_bitmap {int /*<<< orphan*/ * bitmap; int /*<<< orphan*/  of_node; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  of_node_put (int /*<<< orphan*/ ) ; 
+
+
+
+struct msi_bitmap {int * bitmap; int of_node; } ;
+
+
+ int of_node_put (int ) ;
 
 void msi_bitmap_free(struct msi_bitmap *bmp)
 {
-	/* we can't free the bitmap we don't know if it's bootmem etc. */
-	of_node_put(bmp->of_node);
-	bmp->bitmap = NULL;
+
+ of_node_put(bmp->of_node);
+ bmp->bitmap = ((void*)0);
 }

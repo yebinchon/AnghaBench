@@ -1,80 +1,72 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_3__ ;
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  macro_t ;
-struct TYPE_6__ {int /*<<< orphan*/  pressed; } ;
-struct TYPE_5__ {int /*<<< orphan*/  interrupted; int /*<<< orphan*/  count; } ;
+
+
+typedef struct TYPE_7__ TYPE_3__ ;
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+typedef int macro_t ;
+struct TYPE_6__ {int pressed; } ;
+struct TYPE_5__ {int interrupted; int count; } ;
 struct TYPE_7__ {TYPE_2__ event; TYPE_1__ tap; } ;
-typedef  TYPE_3__ keyrecord_t ;
+typedef TYPE_3__ keyrecord_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  KC_BSLS ; 
- int /*<<< orphan*/  KC_CAPS ; 
- int /*<<< orphan*/  KC_EQL ; 
- int /*<<< orphan*/  KC_LSFT ; 
- int /*<<< orphan*/  KC_MINS ; 
- int /*<<< orphan*/  KC_MS_DOWN ; 
- int /*<<< orphan*/  KC_MS_LEFT ; 
- int /*<<< orphan*/  KC_MS_RIGHT ; 
- int /*<<< orphan*/  KC_MS_UP ; 
- int /*<<< orphan*/  KC_QUOT ; 
- int /*<<< orphan*/  KC_TAB ; 
-#define  LCaps 139 
-#define  LMdia 138 
-#define  LSpec 137 
-#define  LSymb 136 
- int /*<<< orphan*/  const* MACRO_NONE ; 
- int /*<<< orphan*/  MDIA ; 
-#define  MDL 135 
-#define  MDR 134 
-#define  MUL 133 
-#define  MUR 132 
-#define  RCaps 131 
-#define  RMdia 130 
-#define  RSpec 129 
-#define  RSymb 128 
- int /*<<< orphan*/  SPEC ; 
- int /*<<< orphan*/  SYMB ; 
- int caps_shift ; 
- int /*<<< orphan*/  layer_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  layer_on (int /*<<< orphan*/ ) ; 
- int mdia_lock ; 
- int mdia_shift ; 
- int /*<<< orphan*/  mousekey_off (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mousekey_on (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  mousekey_send () ; 
- int /*<<< orphan*/  register_code (int /*<<< orphan*/ ) ; 
- int symb_lock ; 
- int symb_shift ; 
- int /*<<< orphan*/  unregister_code (int /*<<< orphan*/ ) ; 
+
+ int KC_BSLS ;
+ int KC_CAPS ;
+ int KC_EQL ;
+ int KC_LSFT ;
+ int KC_MINS ;
+ int KC_MS_DOWN ;
+ int KC_MS_LEFT ;
+ int KC_MS_RIGHT ;
+ int KC_MS_UP ;
+ int KC_QUOT ;
+ int KC_TAB ;
+
+
+
+
+ int const* MACRO_NONE ;
+ int MDIA ;
+ int SPEC ;
+ int SYMB ;
+ int caps_shift ;
+ int layer_off (int ) ;
+ int layer_on (int ) ;
+ int mdia_lock ;
+ int mdia_shift ;
+ int mousekey_off (int ) ;
+ int mousekey_on (int ) ;
+ int mousekey_send () ;
+ int register_code (int ) ;
+ int symb_lock ;
+ int symb_shift ;
+ int unregister_code (int ) ;
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
     switch(id) {
-        // There are two shift keys for each layer so we increment a layer_shift var when one
-        // is pressed and decrement when one is released. If both are pressed at the same time
-        // then the layer is locked (or unlocked). The shift counts are bound between 0 and 2
-        // only because sometimes rapid pressing led to irregular events; this way the states
-        // are self healing during use.
 
-        case LCaps: // both caps-shift keys trigger Left Shift
-        case RCaps: // so they don't interfere with the magic combo
+
+
+
+
+
+        case 139:
+        case 131:
         if (record->event.pressed && !record->tap.count) {
             if(++caps_shift > 2) caps_shift = 2;
-            if(caps_shift == 2)  {
+            if(caps_shift == 2) {
                 register_code(KC_CAPS);
                 unregister_code(KC_CAPS);
             } else if(caps_shift == 1) {
@@ -86,10 +78,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case LSymb:
+        case 136:
         if (record->event.pressed) {
             if(++symb_shift > 2) symb_shift = 2;
-            if(symb_shift == 2)  {
+            if(symb_shift == 2) {
                 symb_lock = !symb_lock;
             } else if(symb_shift == 1) {
                 layer_on(SYMB);
@@ -100,13 +92,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case LMdia:
+        case 138:
         if (record->event.pressed) {
             if (record->tap.count && (!mdia_shift) && (!mdia_lock)) {
                 register_code(KC_TAB);
             } else {
                 if(++mdia_shift > 2) mdia_shift = 2;
-                if(mdia_shift == 2)  {
+                if(mdia_shift == 2) {
                     mdia_lock = !mdia_lock;
                 } else if(mdia_shift == 1) {
                     layer_on(MDIA);
@@ -122,7 +114,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case LSpec:
+        case 137:
         if (record->event.pressed) {
             if (record->tap.count && !record->tap.interrupted) {
                 register_code(KC_EQL);
@@ -138,13 +130,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case RSymb:
+        case 128:
         if (record->event.pressed) {
             if (record->tap.count && (!symb_shift) && (!symb_lock)) {
                 register_code(KC_QUOT);
             } else {
                 if(++symb_shift > 2) symb_shift = 2;
-                if(symb_shift == 2)  {
+                if(symb_shift == 2) {
                     symb_lock = !symb_lock;
                 } else if(symb_shift == 1) {
                     layer_on(SYMB);
@@ -160,13 +152,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case RMdia:
+        case 130:
         if (record->event.pressed) {
             if (record->tap.count && (!mdia_shift) && (!mdia_lock)) {
                 register_code(KC_BSLS);
             } else {
                 if(++mdia_shift > 2) mdia_shift = 2;
-                if(mdia_shift == 2)  {
+                if(mdia_shift == 2) {
                     mdia_lock = !mdia_lock;
                 } else if(mdia_shift == 1) {
                     layer_on(MDIA);
@@ -182,7 +174,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case RSpec:
+        case 129:
         if (record->event.pressed) {
             if (record->tap.count && !record->tap.interrupted) {
                 register_code(KC_MINS);
@@ -198,9 +190,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        // mouse diagonals
 
-        case MUL: // mouse up left
+
+        case 133:
         if (record->event.pressed) {
             mousekey_on(KC_MS_UP);
             mousekey_on(KC_MS_LEFT);
@@ -212,7 +204,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case MUR: // mouse up right
+        case 132:
         if (record->event.pressed) {
             mousekey_on(KC_MS_UP);
             mousekey_on(KC_MS_RIGHT);
@@ -224,7 +216,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case MDL: // mouse down left
+        case 135:
         if (record->event.pressed) {
             mousekey_on(KC_MS_DOWN);
             mousekey_on(KC_MS_LEFT);
@@ -236,7 +228,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
-        case MDR: // mouse down right
+        case 134:
         if (record->event.pressed) {
             mousekey_on(KC_MS_DOWN);
             mousekey_on(KC_MS_RIGHT);
@@ -249,9 +241,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         break;
 
         default:
-            // none
+
             break;
     }
-    
+
     return MACRO_NONE;
 }

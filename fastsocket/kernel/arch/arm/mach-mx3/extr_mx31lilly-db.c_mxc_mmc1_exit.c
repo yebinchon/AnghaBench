@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct device {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  IOMUX_TO_IRQ (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  MX31_PIN_GPIO1_1 ; 
- int /*<<< orphan*/  free_irq (int /*<<< orphan*/ ,void*) ; 
- int /*<<< orphan*/  gpio_det ; 
- int /*<<< orphan*/  gpio_free (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  gpio_wp ; 
+
+ int IOMUX_TO_IRQ (int ) ;
+ int MX31_PIN_GPIO1_1 ;
+ int free_irq (int ,void*) ;
+ int gpio_det ;
+ int gpio_free (int ) ;
+ int gpio_wp ;
 
 __attribute__((used)) static void mxc_mmc1_exit(struct device *dev, void *data)
 {
-	gpio_free(gpio_det);
-	gpio_free(gpio_wp);
-	free_irq(IOMUX_TO_IRQ(MX31_PIN_GPIO1_1), data);
+ gpio_free(gpio_det);
+ gpio_free(gpio_wp);
+ free_irq(IOMUX_TO_IRQ(MX31_PIN_GPIO1_1), data);
 }

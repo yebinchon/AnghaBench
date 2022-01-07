@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  X509_STORE_CTX ;
-typedef  int /*<<< orphan*/  X509_STORE ;
-typedef  int /*<<< orphan*/  X509_LOOKUP ;
 
-/* Variables and functions */
- scalar_t__ TEST_ptr (int /*<<< orphan*/ *) ; 
- scalar_t__ TEST_true (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_FILETYPE_PEM ; 
- int /*<<< orphan*/  X509_LOOKUP_file () ; 
- int /*<<< orphan*/  X509_STORE_CTX_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_STORE_add_lookup (int /*<<< orphan*/ *,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  X509_STORE_free (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/ * X509_STORE_new () ; 
- int /*<<< orphan*/  X509_load_cert_file (int /*<<< orphan*/ *,char const*,int /*<<< orphan*/ ) ; 
- char* test_get_argument (int) ; 
+
+
+
+typedef int X509_STORE_CTX ;
+typedef int X509_STORE ;
+typedef int X509_LOOKUP ;
+
+
+ scalar_t__ TEST_ptr (int *) ;
+ scalar_t__ TEST_true (int ) ;
+ int X509_FILETYPE_PEM ;
+ int X509_LOOKUP_file () ;
+ int X509_STORE_CTX_free (int *) ;
+ int * X509_STORE_add_lookup (int *,int ) ;
+ int X509_STORE_free (int *) ;
+ int * X509_STORE_new () ;
+ int X509_load_cert_file (int *,char const*,int ) ;
+ char* test_get_argument (int) ;
 
 __attribute__((used)) static int test_509_dup_cert(int n)
 {
     int ret = 0;
-    X509_STORE_CTX *sctx = NULL;
-    X509_STORE *store = NULL;
-    X509_LOOKUP *lookup = NULL;
+    X509_STORE_CTX *sctx = ((void*)0);
+    X509_STORE *store = ((void*)0);
+    X509_LOOKUP *lookup = ((void*)0);
     const char *cert_f = test_get_argument(n);
 
     if (TEST_ptr(store = X509_STORE_new())

@@ -1,45 +1,45 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  url_info ;
-typedef  int /*<<< orphan*/  WCHAR ;
+
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int url_info ;
+typedef int WCHAR ;
 struct TYPE_3__ {int cbSize; int nScheme; int cchSuffix; char* pszSuffix; scalar_t__ cchProtocol; } ;
-typedef  TYPE_1__ PARSEDURLW ;
-typedef  scalar_t__ LPWSTR ;
-typedef  int /*<<< orphan*/  LPCWSTR ;
-typedef  int /*<<< orphan*/  IInternetProtocolInfo ;
-typedef  int /*<<< orphan*/  HRESULT ;
-typedef  scalar_t__ DWORD ;
+typedef TYPE_1__ PARSEDURLW ;
+typedef scalar_t__ LPWSTR ;
+typedef int LPCWSTR ;
+typedef int IInternetProtocolInfo ;
+typedef int HRESULT ;
+typedef scalar_t__ DWORD ;
 
-/* Variables and functions */
- int /*<<< orphan*/  E_FAIL ; 
- int /*<<< orphan*/  E_POINTER ; 
- scalar_t__ FAILED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_ParseUrl (int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IInternetProtocolInfo_Release (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  PARSE_ROOTDOCUMENT ; 
- int /*<<< orphan*/  ParseURLW (int /*<<< orphan*/ ,TYPE_1__*) ; 
- scalar_t__ SUCCEEDED (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  S_FALSE ; 
- int /*<<< orphan*/  TRACE (char*,int /*<<< orphan*/ ,scalar_t__,scalar_t__,scalar_t__,scalar_t__*) ; 
- int /*<<< orphan*/  URL_PART_HOSTNAME ; 
-#define  URL_SCHEME_FTP 130 
-#define  URL_SCHEME_HTTP 129 
-#define  URL_SCHEME_HTTPS 128 
- int /*<<< orphan*/  UrlGetPartW (int /*<<< orphan*/ ,scalar_t__,scalar_t__*,int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  debugstr_w (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/ * get_protocol_info (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  memcpy (scalar_t__,int /*<<< orphan*/ ,int) ; 
+
+ int E_FAIL ;
+ int E_POINTER ;
+ scalar_t__ FAILED (int ) ;
+ int IInternetProtocolInfo_ParseUrl (int *,int ,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__*,int ) ;
+ int IInternetProtocolInfo_Release (int *) ;
+ int PARSE_ROOTDOCUMENT ;
+ int ParseURLW (int ,TYPE_1__*) ;
+ scalar_t__ SUCCEEDED (int ) ;
+ int S_FALSE ;
+ int TRACE (char*,int ,scalar_t__,scalar_t__,scalar_t__,scalar_t__*) ;
+ int URL_PART_HOSTNAME ;
+
+
+
+ int UrlGetPartW (int ,scalar_t__,scalar_t__*,int ,scalar_t__) ;
+ int debugstr_w (int ) ;
+ int * get_protocol_info (int ) ;
+ int memcpy (scalar_t__,int ,int) ;
 
 __attribute__((used)) static HRESULT parse_rootdocument(LPCWSTR url, DWORD flags, LPWSTR result,
         DWORD size, DWORD *rsize)
@@ -65,9 +65,9 @@ __attribute__((used)) static HRESULT parse_rootdocument(LPCWSTR url, DWORD flags
         return E_FAIL;
 
     switch(url_info.nScheme) {
-        case URL_SCHEME_FTP:
-        case URL_SCHEME_HTTP:
-        case URL_SCHEME_HTTPS:
+        case 130:
+        case 129:
+        case 128:
             if(url_info.cchSuffix<3 || *(url_info.pszSuffix)!='/'
                     || *(url_info.pszSuffix+1)!='/')
                 return E_FAIL;

@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint32_t ;
-struct cache_disk_superblock {int /*<<< orphan*/  flags; } ;
-typedef  int /*<<< orphan*/  (* flags_mutator ) (int /*<<< orphan*/ ) ;
 
-/* Variables and functions */
- int /*<<< orphan*/  cpu_to_le32 (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  le32_to_cpu (int /*<<< orphan*/ ) ; 
+
+
+
+typedef int uint32_t ;
+struct cache_disk_superblock {int flags; } ;
+typedef int (* flags_mutator ) (int ) ;
+
+
+ int cpu_to_le32 (int ) ;
+ int le32_to_cpu (int ) ;
 
 __attribute__((used)) static void update_flags(struct cache_disk_superblock *disk_super,
-			 flags_mutator mutator)
+    flags_mutator mutator)
 {
-	uint32_t sb_flags = mutator(le32_to_cpu(disk_super->flags));
-	disk_super->flags = cpu_to_le32(sb_flags);
+ uint32_t sb_flags = mutator(le32_to_cpu(disk_super->flags));
+ disk_super->flags = cpu_to_le32(sb_flags);
 }

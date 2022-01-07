@@ -1,62 +1,54 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  ANY_LUKS ; 
- int CRYPT_MAX_SECTOR_SIZE ; 
- int /*<<< orphan*/  CRYPT_PLAIN ; 
- int CRYPT_SECTOR_SIZE ; 
- int /*<<< orphan*/  CRYPT_TCRYPT ; 
- int /*<<< orphan*/  EINVAL ; 
- scalar_t__ STR_IN_SET (char const*,char*,char*,...) ; 
- int SYNTHETIC_ERRNO (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  arg_cipher ; 
- int arg_discards ; 
- int /*<<< orphan*/  arg_hash ; 
- scalar_t__ arg_header ; 
- int arg_key_size ; 
- int /*<<< orphan*/  arg_key_slot ; 
- int /*<<< orphan*/  arg_keyfile_offset ; 
- int arg_keyfile_size ; 
- int /*<<< orphan*/  arg_offset ; 
- int arg_readonly ; 
- int arg_same_cpu_crypt ; 
- int arg_sector_size ; 
- int /*<<< orphan*/  arg_skip ; 
- int arg_submit_from_crypt_cpus ; 
- int arg_tcrypt_hidden ; 
- int /*<<< orphan*/  arg_tcrypt_keyfiles ; 
- int arg_tcrypt_system ; 
- int arg_tcrypt_veracrypt ; 
- int /*<<< orphan*/  arg_timeout ; 
- int arg_tries ; 
- int /*<<< orphan*/  arg_type ; 
- int arg_verify ; 
- int /*<<< orphan*/  assert (char const*) ; 
- int free_and_strdup (int /*<<< orphan*/ *,char const*) ; 
- int /*<<< orphan*/  log_error (char*,...) ; 
- int log_error_errno (int,char*,...) ; 
- int log_oom () ; 
- int /*<<< orphan*/  log_warning (char*,char const*) ; 
- int parse_sec_fix_0 (char const*,int /*<<< orphan*/ *) ; 
- scalar_t__ path_is_absolute (char const*) ; 
- int safe_atoi (char const*,int /*<<< orphan*/ *) ; 
- int safe_atou (char const*,int*) ; 
- int safe_atou64 (char const*,int /*<<< orphan*/ *) ; 
- char* startswith (char const*,char*) ; 
- scalar_t__ strdup (char const*) ; 
- scalar_t__ streq (char const*,char*) ; 
- scalar_t__ strv_extend (int /*<<< orphan*/ *,char const*) ; 
+ int ANY_LUKS ;
+ int CRYPT_MAX_SECTOR_SIZE ;
+ int CRYPT_PLAIN ;
+ int CRYPT_SECTOR_SIZE ;
+ int CRYPT_TCRYPT ;
+ int EINVAL ;
+ scalar_t__ STR_IN_SET (char const*,char*,char*,...) ;
+ int SYNTHETIC_ERRNO (int ) ;
+ int arg_cipher ;
+ int arg_discards ;
+ int arg_hash ;
+ scalar_t__ arg_header ;
+ int arg_key_size ;
+ int arg_key_slot ;
+ int arg_keyfile_offset ;
+ int arg_keyfile_size ;
+ int arg_offset ;
+ int arg_readonly ;
+ int arg_same_cpu_crypt ;
+ int arg_sector_size ;
+ int arg_skip ;
+ int arg_submit_from_crypt_cpus ;
+ int arg_tcrypt_hidden ;
+ int arg_tcrypt_keyfiles ;
+ int arg_tcrypt_system ;
+ int arg_tcrypt_veracrypt ;
+ int arg_timeout ;
+ int arg_tries ;
+ int arg_type ;
+ int arg_verify ;
+ int assert (char const*) ;
+ int free_and_strdup (int *,char const*) ;
+ int log_error (char*,...) ;
+ int log_error_errno (int,char*,...) ;
+ int log_oom () ;
+ int log_warning (char*,char const*) ;
+ int parse_sec_fix_0 (char const*,int *) ;
+ scalar_t__ path_is_absolute (char const*) ;
+ int safe_atoi (char const*,int *) ;
+ int safe_atou (char const*,int*) ;
+ int safe_atou64 (char const*,int *) ;
+ char* startswith (char const*,char*) ;
+ scalar_t__ strdup (char const*) ;
+ scalar_t__ streq (char const*,char*) ;
+ scalar_t__ strv_extend (int *,char const*) ;
 
 __attribute__((used)) static int parse_one_option(const char *option) {
         const char *val;
@@ -64,7 +56,7 @@ __attribute__((used)) static int parse_one_option(const char *option) {
 
         assert(option);
 
-        /* Handled outside of this tool */
+
         if (STR_IN_SET(option, "noauto", "auto", "nofail", "fail", "_netdev", "keyfile-timeout"))
                 return 0;
 
@@ -172,28 +164,28 @@ __attribute__((used)) static int parse_one_option(const char *option) {
                 }
 
         } else if (STR_IN_SET(option, "readonly", "read-only"))
-                arg_readonly = true;
+                arg_readonly = 1;
         else if (streq(option, "verify"))
-                arg_verify = true;
+                arg_verify = 1;
         else if (STR_IN_SET(option, "allow-discards", "discard"))
-                arg_discards = true;
+                arg_discards = 1;
         else if (streq(option, "same-cpu-crypt"))
-                arg_same_cpu_crypt = true;
+                arg_same_cpu_crypt = 1;
         else if (streq(option, "submit-from-crypt-cpus"))
-                arg_submit_from_crypt_cpus = true;
+                arg_submit_from_crypt_cpus = 1;
         else if (streq(option, "luks"))
                 arg_type = ANY_LUKS;
         else if (streq(option, "tcrypt"))
                 arg_type = CRYPT_TCRYPT;
         else if (streq(option, "tcrypt-hidden")) {
                 arg_type = CRYPT_TCRYPT;
-                arg_tcrypt_hidden = true;
+                arg_tcrypt_hidden = 1;
         } else if (streq(option, "tcrypt-system")) {
                 arg_type = CRYPT_TCRYPT;
-                arg_tcrypt_system = true;
+                arg_tcrypt_system = 1;
         } else if (streq(option, "tcrypt-veracrypt")) {
                 arg_type = CRYPT_TCRYPT;
-                arg_tcrypt_veracrypt = true;
+                arg_tcrypt_veracrypt = 1;
         } else if (STR_IN_SET(option, "plain", "swap", "tmp"))
                 arg_type = CRYPT_PLAIN;
         else if ((val = startswith(option, "timeout="))) {

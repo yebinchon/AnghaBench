@@ -1,22 +1,14 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  isalnum (char const) ; 
+ int isalnum (char const) ;
 
 __attribute__((used)) static size_t token_len_without_separator(const char *token, size_t len)
 {
-	while (len > 0 && !isalnum(token[len - 1]))
-		len--;
-	return len;
+ while (len > 0 && !isalnum(token[len - 1]))
+  len--;
+ return len;
 }

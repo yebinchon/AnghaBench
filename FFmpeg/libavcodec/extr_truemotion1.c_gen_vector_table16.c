@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  uint8_t ;
-struct TYPE_3__ {int* y_predictor_table; int* c_predictor_table; int /*<<< orphan*/  cdt; int /*<<< orphan*/  ydt; } ;
-typedef  TYPE_1__ TrueMotion1Context ;
 
-/* Variables and functions */
- int make_cdt16_entry (unsigned char,unsigned char,int /*<<< orphan*/ ) ; 
- int make_ydt16_entry (unsigned char,unsigned char,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+typedef int uint8_t ;
+struct TYPE_3__ {int* y_predictor_table; int* c_predictor_table; int cdt; int ydt; } ;
+typedef TYPE_1__ TrueMotion1Context ;
+
+
+ int make_cdt16_entry (unsigned char,unsigned char,int ) ;
+ int make_ydt16_entry (unsigned char,unsigned char,int ) ;
 
 __attribute__((used)) static void gen_vector_table16(TrueMotion1Context *s, const uint8_t *sel_vector_table)
 {

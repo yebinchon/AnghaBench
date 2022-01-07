@@ -1,31 +1,31 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_6__   TYPE_2__ ;
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  task_proc_t ;
-struct TYPE_5__ {int /*<<< orphan*/  entry; int /*<<< orphan*/  destr; int /*<<< orphan*/  proc; } ;
-typedef  TYPE_1__ task_header_t ;
-typedef  int /*<<< orphan*/  task_destr_t ;
-struct TYPE_6__ {int /*<<< orphan*/  frame_hwnd; int /*<<< orphan*/  task_queue; } ;
-typedef  TYPE_2__ DocHost ;
-typedef  scalar_t__ BOOL ;
 
-/* Variables and functions */
- int /*<<< orphan*/  PostMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SendMessageW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  WM_DOCHOSTTASK ; 
- int /*<<< orphan*/  list_add_tail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ list_empty (int /*<<< orphan*/ *) ; 
+
+typedef struct TYPE_6__ TYPE_2__ ;
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
+typedef int task_proc_t ;
+struct TYPE_5__ {int entry; int destr; int proc; } ;
+typedef TYPE_1__ task_header_t ;
+typedef int task_destr_t ;
+struct TYPE_6__ {int frame_hwnd; int task_queue; } ;
+typedef TYPE_2__ DocHost ;
+typedef scalar_t__ BOOL ;
+
+
+ int PostMessageW (int ,int ,int ,int ) ;
+ int SendMessageW (int ,int ,int ,int ) ;
+ int WM_DOCHOSTTASK ;
+ int list_add_tail (int *,int *) ;
+ scalar_t__ list_empty (int *) ;
 
 void push_dochost_task(DocHost *This, task_header_t *task, task_proc_t proc, task_destr_t destr, BOOL send)
 {

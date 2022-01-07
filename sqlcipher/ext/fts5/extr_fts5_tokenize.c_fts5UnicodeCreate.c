@@ -1,44 +1,44 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_1__ ;
+
+
 struct TYPE_5__ {char eRemoveDiacritic; int nFold; scalar_t__ aFold; } ;
-typedef  TYPE_1__ Unicode61Tokenizer ;
-typedef  int /*<<< orphan*/  Fts5Tokenizer ;
+typedef TYPE_1__ Unicode61Tokenizer ;
+typedef int Fts5Tokenizer ;
 
-/* Variables and functions */
- char FTS5_REMOVE_DIACRITICS_COMPLEX ; 
- char FTS5_REMOVE_DIACRITICS_NONE ; 
- char FTS5_REMOVE_DIACRITICS_SIMPLE ; 
- int SQLITE_ERROR ; 
- int SQLITE_NOMEM ; 
- int SQLITE_OK ; 
- int /*<<< orphan*/  UNUSED_PARAM (void*) ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts5UnicodeAddExceptions (TYPE_1__*,char const*,int) ; 
- int /*<<< orphan*/  fts5UnicodeDelete (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  memset (TYPE_1__*,int /*<<< orphan*/ ,int) ; 
- scalar_t__ sqlite3_malloc (int) ; 
- scalar_t__ sqlite3_malloc64 (int) ; 
- scalar_t__ sqlite3_stricmp (char const*,char*) ; 
- int unicodeSetCategories (TYPE_1__*,char const*) ; 
+
+ char FTS5_REMOVE_DIACRITICS_COMPLEX ;
+ char FTS5_REMOVE_DIACRITICS_NONE ;
+ char FTS5_REMOVE_DIACRITICS_SIMPLE ;
+ int SQLITE_ERROR ;
+ int SQLITE_NOMEM ;
+ int SQLITE_OK ;
+ int UNUSED_PARAM (void*) ;
+ int assert (int) ;
+ int fts5UnicodeAddExceptions (TYPE_1__*,char const*,int) ;
+ int fts5UnicodeDelete (int *) ;
+ int memset (TYPE_1__*,int ,int) ;
+ scalar_t__ sqlite3_malloc (int) ;
+ scalar_t__ sqlite3_malloc64 (int) ;
+ scalar_t__ sqlite3_stricmp (char const*,char*) ;
+ int unicodeSetCategories (TYPE_1__*,char const*) ;
 
 __attribute__((used)) static int fts5UnicodeCreate(
-  void *pUnused, 
+  void *pUnused,
   const char **azArg, int nArg,
   Fts5Tokenizer **ppOut
 ){
-  int rc = SQLITE_OK;             /* Return code */
-  Unicode61Tokenizer *p = 0;      /* New tokenizer object */ 
+  int rc = SQLITE_OK;
+  Unicode61Tokenizer *p = 0;
 
   UNUSED_PARAM(pUnused);
 
@@ -58,7 +58,7 @@ __attribute__((used)) static int fts5UnicodeCreate(
         rc = SQLITE_NOMEM;
       }
 
-      /* Search for a "categories" argument */
+
       for(i=0; rc==SQLITE_OK && i<nArg; i+=2){
         if( 0==sqlite3_stricmp(azArg[i], "categories") ){
           zCat = azArg[i+1];
@@ -89,7 +89,7 @@ __attribute__((used)) static int fts5UnicodeCreate(
           rc = fts5UnicodeAddExceptions(p, zArg, 0);
         }else
         if( 0==sqlite3_stricmp(azArg[i], "categories") ){
-          /* no-op */
+
         }else{
           rc = SQLITE_ERROR;
         }

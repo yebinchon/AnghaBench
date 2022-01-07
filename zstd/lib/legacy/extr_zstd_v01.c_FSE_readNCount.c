@@ -1,27 +1,27 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int U32 ;
-typedef  int /*<<< orphan*/  BYTE ;
 
-/* Variables and functions */
- scalar_t__ FSE_ERROR_GENERIC ; 
- scalar_t__ FSE_ERROR_maxSymbolValue_tooSmall ; 
- scalar_t__ FSE_ERROR_srcSize_wrong ; 
- scalar_t__ FSE_ERROR_tableLog_tooLarge ; 
- int FSE_MIN_TABLELOG ; 
- int FSE_TABLELOG_ABSOLUTE_MAX ; 
- scalar_t__ FSE_abs (short) ; 
- int FSE_readLE32 (int /*<<< orphan*/  const*) ; 
+
+
+
+typedef int U32 ;
+typedef int BYTE ;
+
+
+ scalar_t__ FSE_ERROR_GENERIC ;
+ scalar_t__ FSE_ERROR_maxSymbolValue_tooSmall ;
+ scalar_t__ FSE_ERROR_srcSize_wrong ;
+ scalar_t__ FSE_ERROR_tableLog_tooLarge ;
+ int FSE_MIN_TABLELOG ;
+ int FSE_TABLELOG_ABSOLUTE_MAX ;
+ scalar_t__ FSE_abs (short) ;
+ int FSE_readLE32 (int const*) ;
 
 __attribute__((used)) static size_t FSE_readNCount (short* normalizedCounter, unsigned* maxSVPtr, unsigned* tableLogPtr,
                  const void* headerBuffer, size_t hbSize)
@@ -39,7 +39,7 @@ __attribute__((used)) static size_t FSE_readNCount (short* normalizedCounter, un
 
     if (hbSize < 4) return (size_t)-FSE_ERROR_srcSize_wrong;
     bitStream = FSE_readLE32(ip);
-    nbBits = (bitStream & 0xF) + FSE_MIN_TABLELOG;   /* extract tableLog */
+    nbBits = (bitStream & 0xF) + FSE_MIN_TABLELOG;
     if (nbBits > FSE_TABLELOG_ABSOLUTE_MAX) return (size_t)-FSE_ERROR_tableLog_tooLarge;
     bitStream >>= 4;
     bitCount = 4;
@@ -93,16 +93,16 @@ __attribute__((used)) static size_t FSE_readNCount (short* normalizedCounter, un
             if ((bitStream & (threshold-1)) < (U32)max)
             {
                 count = (short)(bitStream & (threshold-1));
-                bitCount   += nbBits-1;
+                bitCount += nbBits-1;
             }
             else
             {
                 count = (short)(bitStream & (2*threshold-1));
                 if (count >= threshold) count -= max;
-                bitCount   += nbBits;
+                bitCount += nbBits;
             }
 
-            count--;   /* extra accuracy */
+            count--;
             remaining -= FSE_abs(count);
             normalizedCounter[charnum++] = count;
             previous0 = !count;

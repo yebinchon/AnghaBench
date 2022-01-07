@@ -1,30 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  range ; 
- int /*<<< orphan*/  range_check ; 
- int /*<<< orphan*/  range_check_off ; 
- int /*<<< orphan*/  range_check_on ; 
- int /*<<< orphan*/  range_check_warn ; 
- int /*<<< orphan*/  range_mode ; 
- int /*<<< orphan*/  range_mode_auto ; 
- int /*<<< orphan*/  range_mode_manual ; 
- int /*<<< orphan*/  set_range_str () ; 
- int /*<<< orphan*/  set_type_range_case () ; 
- int /*<<< orphan*/  show_range_command (char*,int) ; 
- scalar_t__ strcmp (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  warning (char*,int /*<<< orphan*/ ) ; 
+ int range ;
+ int range_check ;
+ int range_check_off ;
+ int range_check_on ;
+ int range_check_warn ;
+ int range_mode ;
+ int range_mode_auto ;
+ int range_mode_manual ;
+ int set_range_str () ;
+ int set_type_range_case () ;
+ int show_range_command (char*,int) ;
+ scalar_t__ strcmp (int ,char*) ;
+ int warning (char*,int ) ;
 
 __attribute__((used)) static void
 set_range_command (char *ignore, int from_tty)
@@ -48,8 +40,8 @@ set_range_command (char *ignore, int from_tty)
     {
       range_mode = range_mode_auto;
       set_type_range_case ();
-      /* Avoid hitting the set_range_str call below.  We
-         did it in set_type_range_case. */
+
+
       return;
     }
   else

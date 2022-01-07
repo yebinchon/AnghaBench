@@ -1,50 +1,50 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  unknown ;
-struct promptdisk_params {int DiskPromptStyle; scalar_t__ DiskName; scalar_t__ FileSought; int /*<<< orphan*/ * PathToSource; scalar_t__ DialogTitle; } ;
-typedef  int /*<<< orphan*/  message ;
-typedef  int /*<<< orphan*/  format ;
-typedef  int /*<<< orphan*/  __ms_va_list ;
-typedef  int /*<<< orphan*/  WCHAR ;
-typedef  int /*<<< orphan*/  LONG_PTR ;
-typedef  int /*<<< orphan*/  HWND ;
-typedef  scalar_t__ DWORD_PTR ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DWLP_USER ; 
- int FORMAT_MESSAGE_ARGUMENT_ARRAY ; 
- int FORMAT_MESSAGE_FROM_STRING ; 
- int /*<<< orphan*/  FormatMessageW (int,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  GetDlgItem (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  IDC_COPYFROM ; 
- int /*<<< orphan*/  IDC_FILENEEDED ; 
- int /*<<< orphan*/  IDC_INFO ; 
- int /*<<< orphan*/  IDC_PATH ; 
- int /*<<< orphan*/  IDC_RUNDLG_BROWSE ; 
- int IDF_NOBROWSE ; 
- int IDF_OEMDISK ; 
- int /*<<< orphan*/  IDS_COPYFROM ; 
- int /*<<< orphan*/  IDS_INFO ; 
- int /*<<< orphan*/  IDS_PROMPTDISK ; 
- int /*<<< orphan*/  IDS_UNKNOWN ; 
- int /*<<< orphan*/  LoadStringW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *,int) ; 
- int MAX_PATH ; 
- int /*<<< orphan*/  SW_HIDE ; 
- int /*<<< orphan*/  SetDlgItemTextW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  SetWindowLongPtrW (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  SetWindowTextW (int /*<<< orphan*/ ,scalar_t__) ; 
- int /*<<< orphan*/  ShowWindow (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hInstance ; 
+
+
+
+typedef int unknown ;
+struct promptdisk_params {int DiskPromptStyle; scalar_t__ DiskName; scalar_t__ FileSought; int * PathToSource; scalar_t__ DialogTitle; } ;
+typedef int message ;
+typedef int format ;
+typedef int __ms_va_list ;
+typedef int WCHAR ;
+typedef int LONG_PTR ;
+typedef int HWND ;
+typedef scalar_t__ DWORD_PTR ;
+
+
+ int DWLP_USER ;
+ int FORMAT_MESSAGE_ARGUMENT_ARRAY ;
+ int FORMAT_MESSAGE_FROM_STRING ;
+ int FormatMessageW (int,int *,int ,int ,int *,int,int *) ;
+ int GetDlgItem (int ,int ) ;
+ int IDC_COPYFROM ;
+ int IDC_FILENEEDED ;
+ int IDC_INFO ;
+ int IDC_PATH ;
+ int IDC_RUNDLG_BROWSE ;
+ int IDF_NOBROWSE ;
+ int IDF_OEMDISK ;
+ int IDS_COPYFROM ;
+ int IDS_INFO ;
+ int IDS_PROMPTDISK ;
+ int IDS_UNKNOWN ;
+ int LoadStringW (int ,int ,int *,int) ;
+ int MAX_PATH ;
+ int SW_HIDE ;
+ int SetDlgItemTextW (int ,int ,int *) ;
+ int SetWindowLongPtrW (int ,int ,int ) ;
+ int SetWindowTextW (int ,scalar_t__) ;
+ int ShowWindow (int ,int ) ;
+ int hInstance ;
 
 __attribute__((used)) static void promptdisk_init(HWND hwnd, struct promptdisk_params *params)
 {

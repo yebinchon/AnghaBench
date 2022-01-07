@@ -1,24 +1,16 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  sqlite3_free (char*) ; 
- char* sqlite3_mprintf (char*,...) ; 
+ int sqlite3_free (char*) ;
+ char* sqlite3_mprintf (char*,...) ;
 
 __attribute__((used)) static char *fulltextSchema(
-  int nColumn,                  /* Number of columns */
-  const char *const* azColumn,  /* List of columns */
-  const char *zTableName        /* Name of the table */
+  int nColumn,
+  const char *const* azColumn,
+  const char *zTableName
 ){
   int i;
   char *zSchema, *zNext;

@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int ULONG ;
 
-/* Variables and functions */
+
+
+
+typedef int ULONG ;
+
+
 
 ULONG IPv4NToHl( ULONG Address ) {
     return
-	((Address & 0xff) << 24) |
-	((Address & 0xff00) << 8) |
-	((Address >> 8) & 0xff00) |
-	((Address >> 24) & 0xff);
+ ((Address & 0xff) << 24) |
+ ((Address & 0xff00) << 8) |
+ ((Address >> 8) & 0xff00) |
+ ((Address >> 24) & 0xff);
 }

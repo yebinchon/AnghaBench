@@ -1,30 +1,30 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_7__ {int nChild; scalar_t__ bEof; int /*<<< orphan*/  iRowid; scalar_t__ bNomatch; struct TYPE_7__** apChild; } ;
-typedef  TYPE_1__ Fts5ExprNode ;
-typedef  int /*<<< orphan*/  Fts5Expr ;
 
-/* Variables and functions */
- int SQLITE_OK ; 
- int /*<<< orphan*/  assert (int) ; 
- int fts5ExprNodeNext (int /*<<< orphan*/ *,TYPE_1__*,int,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fts5ExprNodeZeroPoslist (TYPE_1__*) ; 
- int fts5NodeCompare (int /*<<< orphan*/ *,TYPE_1__*,TYPE_1__*) ; 
+
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+struct TYPE_7__ {int nChild; scalar_t__ bEof; int iRowid; scalar_t__ bNomatch; struct TYPE_7__** apChild; } ;
+typedef TYPE_1__ Fts5ExprNode ;
+typedef int Fts5Expr ;
+
+
+ int SQLITE_OK ;
+ int assert (int) ;
+ int fts5ExprNodeNext (int *,TYPE_1__*,int,int ) ;
+ int fts5ExprNodeZeroPoslist (TYPE_1__*) ;
+ int fts5NodeCompare (int *,TYPE_1__*,TYPE_1__*) ;
 
 __attribute__((used)) static int fts5ExprNodeTest_NOT(
-  Fts5Expr *pExpr,                /* Expression pPhrase belongs to */
-  Fts5ExprNode *pNode             /* FTS5_NOT node to advance */
+  Fts5Expr *pExpr,
+  Fts5ExprNode *pNode
 ){
   int rc = SQLITE_OK;
   Fts5ExprNode *p1 = pNode->apChild[0];

@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_13__   TYPE_4__ ;
-typedef  struct TYPE_12__   TYPE_3__ ;
-typedef  struct TYPE_11__   TYPE_2__ ;
-typedef  struct TYPE_10__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_13__ TYPE_4__ ;
+typedef struct TYPE_12__ TYPE_3__ ;
+typedef struct TYPE_11__ TYPE_2__ ;
+typedef struct TYPE_10__ TYPE_1__ ;
+
+
 struct TYPE_10__ {int index; } ;
-typedef  TYPE_1__ hb_title_t ;
-struct TYPE_11__ {scalar_t__ cell; int /*<<< orphan*/  chapter; scalar_t__ stopped; int /*<<< orphan*/  dvdnav; int /*<<< orphan*/  list_dvd_chapter; } ;
-typedef  TYPE_2__ hb_dvdnav_t ;
+typedef TYPE_1__ hb_title_t ;
+struct TYPE_11__ {scalar_t__ cell; int chapter; scalar_t__ stopped; int dvdnav; int list_dvd_chapter; } ;
+typedef TYPE_2__ hb_dvdnav_t ;
 struct TYPE_12__ {TYPE_2__ dvdnav; } ;
-typedef  TYPE_3__ hb_dvd_t ;
-struct TYPE_13__ {int /*<<< orphan*/  pgn; int /*<<< orphan*/  pgcn; } ;
-typedef  TYPE_4__ hb_dvd_chapter_t ;
-typedef  scalar_t__ dvdnav_status_t ;
+typedef TYPE_3__ hb_dvd_t ;
+struct TYPE_13__ {int pgn; int pgcn; } ;
+typedef TYPE_4__ hb_dvd_chapter_t ;
+typedef scalar_t__ dvdnav_status_t ;
 
-/* Variables and functions */
- scalar_t__ DVDNAV_STATUS_OK ; 
- int /*<<< orphan*/  TitleOpenIfo (TYPE_2__*,int) ; 
- int /*<<< orphan*/  dvdnav_err_to_string (int /*<<< orphan*/ ) ; 
- scalar_t__ dvdnav_part_play (int /*<<< orphan*/ ,int,int) ; 
- scalar_t__ dvdnav_program_play (int /*<<< orphan*/ ,int,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  dvdnav_reset (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  hb_dvdnav_reset (TYPE_2__*) ; 
- int /*<<< orphan*/  hb_error (char*,int /*<<< orphan*/ ) ; 
- TYPE_4__* hb_list_item (int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ DVDNAV_STATUS_OK ;
+ int TitleOpenIfo (TYPE_2__*,int) ;
+ int dvdnav_err_to_string (int ) ;
+ scalar_t__ dvdnav_part_play (int ,int,int) ;
+ scalar_t__ dvdnav_program_play (int ,int,int ,int ) ;
+ int dvdnav_reset (int ) ;
+ int hb_dvdnav_reset (TYPE_2__*) ;
+ int hb_error (char*,int ) ;
+ TYPE_4__* hb_list_item (int ,int) ;
 
 __attribute__((used)) static int hb_dvdnav_start( hb_dvd_t * e, hb_title_t *title, int c )
 {
@@ -52,7 +52,7 @@ __attribute__((used)) static int hb_dvdnav_start( hb_dvd_t * e, hb_title_t *titl
     }
     dvdnav_reset( d->dvdnav );
     chapter = hb_list_item( d->list_dvd_chapter, c - 1);
-    if (chapter != NULL)
+    if (chapter != ((void*)0))
         result = dvdnav_program_play(d->dvdnav, t, chapter->pgcn, chapter->pgn);
     else
         result = dvdnav_part_play(d->dvdnav, t, 1);

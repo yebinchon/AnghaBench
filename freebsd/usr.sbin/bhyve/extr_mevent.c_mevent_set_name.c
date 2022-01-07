@@ -1,23 +1,15 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  mevent_tid ; 
- int /*<<< orphan*/  pthread_set_name_np (int /*<<< orphan*/ ,char*) ; 
+ int mevent_tid ;
+ int pthread_set_name_np (int ,char*) ;
 
 __attribute__((used)) static void
 mevent_set_name(void)
 {
 
-	pthread_set_name_np(mevent_tid, "mevent");
+ pthread_set_name_np(mevent_tid, "mevent");
 }

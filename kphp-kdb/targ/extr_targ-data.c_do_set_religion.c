@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_3__   TYPE_1__ ;
 
-/* Type definitions */
-struct TYPE_3__ {int /*<<< orphan*/  religion_hashes; int /*<<< orphan*/  uid; int /*<<< orphan*/  religion; } ;
-typedef  TYPE_1__ user_t ;
-struct lev_religion {int /*<<< orphan*/  str; int /*<<< orphan*/  user_id; } ;
 
-/* Variables and functions */
- scalar_t__ LEV_TARG_RELIGION ; 
- int /*<<< orphan*/  add_user_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- struct lev_religion* alloc_log_event (scalar_t__,int,int) ; 
- scalar_t__ conv_user_id (int) ; 
- int /*<<< orphan*/  delete_user_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  exact_strdup (int /*<<< orphan*/ ,int) ; 
- int /*<<< orphan*/  exact_strfree (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  filter_simple_text (int /*<<< orphan*/ ,char const*,int) ; 
- TYPE_1__* get_user (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  q_religion ; 
- int /*<<< orphan*/  save_words_hashlist (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+typedef struct TYPE_3__ TYPE_1__ ;
+
+
+struct TYPE_3__ {int religion_hashes; int uid; int religion; } ;
+typedef TYPE_1__ user_t ;
+struct lev_religion {int str; int user_id; } ;
+
+
+ scalar_t__ LEV_TARG_RELIGION ;
+ int add_user_hashlist (int ,int ) ;
+ struct lev_religion* alloc_log_event (scalar_t__,int,int) ;
+ scalar_t__ conv_user_id (int) ;
+ int delete_user_hashlist (int ,int ) ;
+ int exact_strdup (int ,int) ;
+ int exact_strfree (int ) ;
+ int filter_simple_text (int ,char const*,int) ;
+ TYPE_1__* get_user (int ) ;
+ int q_religion ;
+ int save_words_hashlist (int ,int ,int ) ;
 
 int do_set_religion (int user_id, const char *text, int len) {
   if (len < 0 || len >= 256 || conv_user_id (user_id) < 0) {

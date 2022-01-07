@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int esp_err_t ;
 
-/* Variables and functions */
- int ESP_ERR_INVALID_ARG ; 
- int ESP_ERR_MBEDTLS_CERT_PARTLY_OK ; 
- int ESP_FAIL ; 
- int /*<<< orphan*/  ESP_LOGE (int /*<<< orphan*/ ,char*,...) ; 
- int ESP_OK ; 
- int /*<<< orphan*/  TAG ; 
- int esp_mbedtls_init_global_ca_store () ; 
- int /*<<< orphan*/ * global_cacert ; 
- int /*<<< orphan*/  mbedtls_x509_crt_free (int /*<<< orphan*/ *) ; 
- int mbedtls_x509_crt_parse (int /*<<< orphan*/ *,unsigned char const*,unsigned int const) ; 
+
+
+
+typedef int esp_err_t ;
+
+
+ int ESP_ERR_INVALID_ARG ;
+ int ESP_ERR_MBEDTLS_CERT_PARTLY_OK ;
+ int ESP_FAIL ;
+ int ESP_LOGE (int ,char*,...) ;
+ int ESP_OK ;
+ int TAG ;
+ int esp_mbedtls_init_global_ca_store () ;
+ int * global_cacert ;
+ int mbedtls_x509_crt_free (int *) ;
+ int mbedtls_x509_crt_parse (int *,unsigned char const*,unsigned int const) ;
 
 esp_err_t esp_mbedtls_set_global_ca_store(const unsigned char *cacert_pem_buf, const unsigned int cacert_pem_bytes)
 {
-    if (cacert_pem_buf == NULL) {
+    if (cacert_pem_buf == ((void*)0)) {
         ESP_LOGE(TAG, "cacert_pem_buf is null");
         return ESP_ERR_INVALID_ARG;
     }
     int ret;
-    if (global_cacert == NULL) {
+    if (global_cacert == ((void*)0)) {
         ret = esp_mbedtls_init_global_ca_store();
         if (ret != ESP_OK) {
             return ret;
@@ -41,7 +41,7 @@ esp_err_t esp_mbedtls_set_global_ca_store(const unsigned char *cacert_pem_buf, c
     if (ret < 0) {
         ESP_LOGE(TAG, "mbedtls_x509_crt_parse returned -0x%x", -ret);
         mbedtls_x509_crt_free(global_cacert);
-        global_cacert = NULL;
+        global_cacert = ((void*)0);
         return ESP_FAIL;
     } else if (ret > 0) {
         ESP_LOGE(TAG, "mbedtls_x509_crt_parse was partly successful. No. of failed certificates: %d", ret);

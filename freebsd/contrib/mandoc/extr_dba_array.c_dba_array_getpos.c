@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct dba_array {int /*<<< orphan*/  pos; } ;
-typedef  int /*<<< orphan*/  int32_t ;
 
-/* Variables and functions */
+
+
+
+struct dba_array {int pos; } ;
+typedef int int32_t ;
+
+
 
 int32_t
 dba_array_getpos(struct dba_array *array)
 {
-	return array->pos;
+ return array->pos;
 }

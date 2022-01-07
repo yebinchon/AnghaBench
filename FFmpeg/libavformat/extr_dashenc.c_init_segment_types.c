@@ -1,39 +1,39 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_12__   TYPE_5__ ;
-typedef  struct TYPE_11__   TYPE_4__ ;
-typedef  struct TYPE_10__   TYPE_3__ ;
-typedef  struct TYPE_9__   TYPE_2__ ;
-typedef  struct TYPE_8__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_12__ TYPE_5__ ;
+typedef struct TYPE_11__ TYPE_4__ ;
+typedef struct TYPE_10__ TYPE_3__ ;
+typedef struct TYPE_9__ TYPE_2__ ;
+typedef struct TYPE_8__ TYPE_1__ ;
+
+
 struct TYPE_12__ {int nb_streams; TYPE_2__** streams; TYPE_4__* priv_data; } ;
-struct TYPE_11__ {scalar_t__ hls_playlist; int /*<<< orphan*/  single_file; int /*<<< orphan*/  segment_type_option; TYPE_3__* streams; } ;
-struct TYPE_10__ {int /*<<< orphan*/  extension_name; int /*<<< orphan*/  format_name; scalar_t__ segment_type; } ;
+struct TYPE_11__ {scalar_t__ hls_playlist; int single_file; int segment_type_option; TYPE_3__* streams; } ;
+struct TYPE_10__ {int extension_name; int format_name; scalar_t__ segment_type; } ;
 struct TYPE_9__ {TYPE_1__* codecpar; } ;
-struct TYPE_8__ {int /*<<< orphan*/  codec_id; } ;
-typedef  scalar_t__ SegmentType ;
-typedef  TYPE_3__ OutputStream ;
-typedef  TYPE_4__ DASHContext ;
-typedef  TYPE_5__ AVFormatContext ;
+struct TYPE_8__ {int codec_id; } ;
+typedef scalar_t__ SegmentType ;
+typedef TYPE_3__ OutputStream ;
+typedef TYPE_4__ DASHContext ;
+typedef TYPE_5__ AVFormatContext ;
 
-/* Variables and functions */
- int AVERROR_MUXER_NOT_FOUND ; 
- int /*<<< orphan*/  AV_LOG_ERROR ; 
- int /*<<< orphan*/  AV_LOG_WARNING ; 
- scalar_t__ SEGMENT_TYPE_MP4 ; 
- int /*<<< orphan*/  av_log (TYPE_5__*,int /*<<< orphan*/ ,char*,...) ; 
- int /*<<< orphan*/  get_extension_str (scalar_t__,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  get_format_str (scalar_t__) ; 
- scalar_t__ select_segment_type (int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
+
+ int AVERROR_MUXER_NOT_FOUND ;
+ int AV_LOG_ERROR ;
+ int AV_LOG_WARNING ;
+ scalar_t__ SEGMENT_TYPE_MP4 ;
+ int av_log (TYPE_5__*,int ,char*,...) ;
+ int get_extension_str (scalar_t__,int ) ;
+ int get_format_str (scalar_t__) ;
+ scalar_t__ select_segment_type (int ,int ) ;
 
 __attribute__((used)) static int init_segment_types(AVFormatContext *s)
 {

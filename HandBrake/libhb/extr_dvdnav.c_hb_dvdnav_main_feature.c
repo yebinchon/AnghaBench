@@ -1,38 +1,38 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_9__   TYPE_3__ ;
-typedef  struct TYPE_8__   TYPE_2__ ;
-typedef  struct TYPE_7__   TYPE_1__ ;
 
-/* Type definitions */
-typedef  int uint64_t ;
-struct TYPE_7__ {int duration; int index; int /*<<< orphan*/  seconds; int /*<<< orphan*/  minutes; int /*<<< orphan*/  hours; } ;
-typedef  TYPE_1__ hb_title_t ;
-typedef  int /*<<< orphan*/  hb_list_t ;
-struct TYPE_8__ {int /*<<< orphan*/  dvdnav; } ;
-typedef  TYPE_2__ hb_dvdnav_t ;
+
+
+typedef struct TYPE_9__ TYPE_3__ ;
+typedef struct TYPE_8__ TYPE_2__ ;
+typedef struct TYPE_7__ TYPE_1__ ;
+
+
+typedef int uint64_t ;
+struct TYPE_7__ {int duration; int index; int seconds; int minutes; int hours; } ;
+typedef TYPE_1__ hb_title_t ;
+typedef int hb_list_t ;
+struct TYPE_8__ {int dvdnav; } ;
+typedef TYPE_2__ hb_dvdnav_t ;
 struct TYPE_9__ {TYPE_2__ dvdnav; } ;
-typedef  TYPE_3__ hb_dvd_t ;
+typedef TYPE_3__ hb_dvd_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  DVD_MENU_Escape ; 
- int /*<<< orphan*/  DVD_MENU_Root ; 
- int /*<<< orphan*/  DVD_MENU_Title ; 
- int /*<<< orphan*/  dvdnav_reset (int /*<<< orphan*/ ) ; 
- int find_title (int /*<<< orphan*/ *,int) ; 
- int /*<<< orphan*/  hb_deep_log (int,char*,...) ; 
- int hb_list_count (int /*<<< orphan*/ *) ; 
- TYPE_1__* hb_list_item (int /*<<< orphan*/ *,int) ; 
- scalar_t__ skip_to_menu (int /*<<< orphan*/ ,int) ; 
- int try_menu (TYPE_2__*,int /*<<< orphan*/ *,int /*<<< orphan*/ ,int) ; 
+
+ int DVD_MENU_Escape ;
+ int DVD_MENU_Root ;
+ int DVD_MENU_Title ;
+ int dvdnav_reset (int ) ;
+ int find_title (int *,int) ;
+ int hb_deep_log (int,char*,...) ;
+ int hb_list_count (int *) ;
+ TYPE_1__* hb_list_item (int *,int) ;
+ scalar_t__ skip_to_menu (int ,int) ;
+ int try_menu (TYPE_2__*,int *,int ,int) ;
 
 __attribute__((used)) static int hb_dvdnav_main_feature( hb_dvd_t * e, hb_list_t * list_title )
 {

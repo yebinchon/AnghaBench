@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  char WCHAR ;
-typedef  int /*<<< orphan*/  HKEY ;
-typedef  int DWORD ;
 
-/* Variables and functions */
- int ARRAY_SIZE (char*) ; 
- int /*<<< orphan*/  HKEY_CURRENT_USER ; 
- int /*<<< orphan*/  KEY_READ ; 
- int /*<<< orphan*/  RegCloseKey (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  RegDeleteKeyW (int /*<<< orphan*/ ,char const*) ; 
- int /*<<< orphan*/  RegEnumKeyExW (int /*<<< orphan*/ ,int,char*,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- scalar_t__ RegOpenKeyExW (int /*<<< orphan*/ ,char const*,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  RegQueryInfoKeyW (int /*<<< orphan*/ ,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int*,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef char WCHAR ;
+typedef int HKEY ;
+typedef int DWORD ;
+
+
+ int ARRAY_SIZE (char*) ;
+ int HKEY_CURRENT_USER ;
+ int KEY_READ ;
+ int RegCloseKey (int ) ;
+ int RegDeleteKeyW (int ,char const*) ;
+ int RegEnumKeyExW (int ,int,char*,int*,int *,int *,int *,int *) ;
+ scalar_t__ RegOpenKeyExW (int ,char const*,int ,int ,int *) ;
+ int RegQueryInfoKeyW (int ,int *,int *,int *,int*,int *,int *,int *,int *,int *,int *,int *) ;
 
 __attribute__((used)) static void delete_test_key(void)
 {
@@ -41,11 +41,11 @@ __attribute__((used)) static void delete_test_key(void)
         RegCloseKey(root_key);
         return;
     }
-    RegQueryInfoKeyW(test_key, NULL, NULL, NULL, &num_subkeys, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+    RegQueryInfoKeyW(test_key, ((void*)0), ((void*)0), ((void*)0), &num_subkeys, ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0), ((void*)0));
     for (idx = num_subkeys; idx-- > 0;)
     {
         subkey_name_len = ARRAY_SIZE(subkey_name);
-        RegEnumKeyExW(test_key, idx, subkey_name, &subkey_name_len, NULL, NULL, NULL, NULL);
+        RegEnumKeyExW(test_key, idx, subkey_name, &subkey_name_len, ((void*)0), ((void*)0), ((void*)0), ((void*)0));
         RegDeleteKeyW(test_key, subkey_name);
     }
     RegCloseKey(test_key);

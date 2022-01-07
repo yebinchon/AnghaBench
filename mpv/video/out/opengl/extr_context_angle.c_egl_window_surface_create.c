@@ -1,34 +1,34 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct vo {int dummy; } ;
 struct ra_ctx {struct vo* vo; struct priv* priv; } ;
-struct priv {int flipped; int /*<<< orphan*/  egl_context; int /*<<< orphan*/  egl_window; int /*<<< orphan*/  egl_display; int /*<<< orphan*/  egl_config; } ;
-typedef  scalar_t__ EGLint ;
+struct priv {int flipped; int egl_context; int egl_window; int egl_display; int egl_config; } ;
+typedef scalar_t__ EGLint ;
 
-/* Variables and functions */
- scalar_t__ EGL_NONE ; 
- int /*<<< orphan*/  EGL_OPTIMAL_SURFACE_ORIENTATION_ANGLE ; 
- scalar_t__ EGL_SURFACE_ORIENTATION_ANGLE ; 
- scalar_t__ EGL_SURFACE_ORIENTATION_INVERT_Y_ANGLE ; 
- int /*<<< orphan*/  MP_FATAL (struct vo*,char*) ; 
- int /*<<< orphan*/  MP_TARRAY_APPEND (int /*<<< orphan*/ *,scalar_t__*,int,scalar_t__) ; 
- int /*<<< orphan*/  MP_VERBOSE (struct vo*,char*) ; 
- int /*<<< orphan*/  eglCreateWindowSurface (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- scalar_t__ eglGetConfigAttrib (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,scalar_t__*) ; 
- int /*<<< orphan*/  eglMakeCurrent (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  egl_window_surface_destroy (struct ra_ctx*) ; 
- int /*<<< orphan*/  talloc_free (scalar_t__*) ; 
- int /*<<< orphan*/  vo_w32_hwnd (struct vo*) ; 
+
+ scalar_t__ EGL_NONE ;
+ int EGL_OPTIMAL_SURFACE_ORIENTATION_ANGLE ;
+ scalar_t__ EGL_SURFACE_ORIENTATION_ANGLE ;
+ scalar_t__ EGL_SURFACE_ORIENTATION_INVERT_Y_ANGLE ;
+ int MP_FATAL (struct vo*,char*) ;
+ int MP_TARRAY_APPEND (int *,scalar_t__*,int,scalar_t__) ;
+ int MP_VERBOSE (struct vo*,char*) ;
+ int eglCreateWindowSurface (int ,int ,int ,scalar_t__*) ;
+ scalar_t__ eglGetConfigAttrib (int ,int ,int ,scalar_t__*) ;
+ int eglMakeCurrent (int ,int ,int ,int ) ;
+ int egl_window_surface_destroy (struct ra_ctx*) ;
+ int talloc_free (scalar_t__*) ;
+ int vo_w32_hwnd (struct vo*) ;
 
 __attribute__((used)) static bool egl_window_surface_create(struct ra_ctx *ctx)
 {
@@ -36,23 +36,23 @@ __attribute__((used)) static bool egl_window_surface_create(struct ra_ctx *ctx)
     struct vo *vo = ctx->vo;
 
     int window_attribs_len = 0;
-    EGLint *window_attribs = NULL;
+    EGLint *window_attribs = ((void*)0);
 
     EGLint flip_val;
     if (eglGetConfigAttrib(p->egl_display, p->egl_config,
                            EGL_OPTIMAL_SURFACE_ORIENTATION_ANGLE, &flip_val))
     {
         if (flip_val == EGL_SURFACE_ORIENTATION_INVERT_Y_ANGLE) {
-            MP_TARRAY_APPEND(NULL, window_attribs, window_attribs_len,
+            MP_TARRAY_APPEND(((void*)0), window_attribs, window_attribs_len,
                 EGL_SURFACE_ORIENTATION_ANGLE);
-            MP_TARRAY_APPEND(NULL, window_attribs, window_attribs_len,
+            MP_TARRAY_APPEND(((void*)0), window_attribs, window_attribs_len,
                 EGL_SURFACE_ORIENTATION_INVERT_Y_ANGLE);
-            p->flipped = true;
+            p->flipped = 1;
             MP_VERBOSE(vo, "Rendering flipped.\n");
         }
     }
 
-    MP_TARRAY_APPEND(NULL, window_attribs, window_attribs_len, EGL_NONE);
+    MP_TARRAY_APPEND(((void*)0), window_attribs, window_attribs_len, EGL_NONE);
     p->egl_window = eglCreateWindowSurface(p->egl_display, p->egl_config,
                                            vo_w32_hwnd(vo), window_attribs);
     talloc_free(window_attribs);
@@ -63,8 +63,8 @@ __attribute__((used)) static bool egl_window_surface_create(struct ra_ctx *ctx)
 
     eglMakeCurrent(p->egl_display, p->egl_window, p->egl_window,
                    p->egl_context);
-    return true;
+    return 1;
 fail:
     egl_window_surface_destroy(ctx);
-    return false;
+    return 0;
 }

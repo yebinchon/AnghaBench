@@ -1,62 +1,62 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct dirent {char* d_name; } ;
-typedef  int /*<<< orphan*/  FILE ;
+typedef int FILE ;
 
-/* Variables and functions */
- size_t LINE_SIZE ; 
- int /*<<< orphan*/  SET_NEW_ENV (char*,size_t,char*,char*,...) ; 
- char* calloc (size_t,int) ; 
- int chdir (char*) ; 
- int /*<<< orphan*/  die (char*,...) ; 
- char* dirname (int /*<<< orphan*/ ) ; 
- int errno ; 
- int execvp (char*,char**) ; 
- int /*<<< orphan*/  fclose (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  filter ; 
- int /*<<< orphan*/ * fopen (char*,char*) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,char) ; 
- int /*<<< orphan*/  free (char*) ; 
- scalar_t__ getenv (char*) ; 
- int getline (char**,size_t*,int /*<<< orphan*/ *) ; 
- char* malloc (size_t) ; 
- char* new_gsettings_schema_dir ; 
- char* new_gspath ; 
- char* new_gspath1 ; 
- char* new_ld_library_path ; 
- char* new_path ; 
- char* new_perllib ; 
- char* new_pythonhome ; 
- char* new_pythonpath ; 
- char* new_qt_plugin_path ; 
- char* new_xdg_data_dirs ; 
- int /*<<< orphan*/  putenv (char*) ; 
- int /*<<< orphan*/  realpath (char*,int /*<<< orphan*/ *) ; 
- int scandir (char*,struct dirent***,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  snprintf (char*,size_t,char*,char*,...) ; 
- int /*<<< orphan*/  stderr ; 
- int /*<<< orphan*/  strerror (int) ; 
- size_t strlen (char*) ; 
- scalar_t__ strncmp (char*,char*,int) ; 
+
+ size_t LINE_SIZE ;
+ int SET_NEW_ENV (char*,size_t,char*,char*,...) ;
+ char* calloc (size_t,int) ;
+ int chdir (char*) ;
+ int die (char*,...) ;
+ char* dirname (int ) ;
+ int errno ;
+ int execvp (char*,char**) ;
+ int fclose (int *) ;
+ int filter ;
+ int * fopen (char*,char*) ;
+ int fprintf (int ,char*,char) ;
+ int free (char*) ;
+ scalar_t__ getenv (char*) ;
+ int getline (char**,size_t*,int *) ;
+ char* malloc (size_t) ;
+ char* new_gsettings_schema_dir ;
+ char* new_gspath ;
+ char* new_gspath1 ;
+ char* new_ld_library_path ;
+ char* new_path ;
+ char* new_perllib ;
+ char* new_pythonhome ;
+ char* new_pythonpath ;
+ char* new_qt_plugin_path ;
+ char* new_xdg_data_dirs ;
+ int putenv (char*) ;
+ int realpath (char*,int *) ;
+ int scandir (char*,struct dirent***,int ,int *) ;
+ int snprintf (char*,size_t,char*,char*,...) ;
+ int stderr ;
+ int strerror (int) ;
+ size_t strlen (char*) ;
+ scalar_t__ strncmp (char*,char*,int) ;
 
 int main(int argc, char *argv[]) {
-    char *appdir = dirname(realpath("/proc/self/exe", NULL));
+    char *appdir = dirname(realpath("/proc/self/exe", ((void*)0)));
     if (!appdir)
         die("Could not access /proc/self/exe\n");
 
     int ret;
     struct dirent **namelist;
-    ret = scandir(appdir, &namelist, filter, NULL);
+    ret = scandir(appdir, &namelist, filter, ((void*)0));
 
     if (ret == 0) {
         die("No .desktop files found\n");
@@ -64,24 +64,24 @@ int main(int argc, char *argv[]) {
         die("Could not scan directory %s\n", appdir);
     }
 
-    /* Extract executable from .desktop file */
+
     char *desktop_file = calloc(LINE_SIZE, sizeof(char));
     snprintf(desktop_file, LINE_SIZE, "%s/%s", appdir, namelist[0]->d_name);
-    FILE *f     = fopen(desktop_file, "r");
-    char *line  = malloc(LINE_SIZE);
-    size_t n    = LINE_SIZE;
+    FILE *f = fopen(desktop_file, "r");
+    char *line = malloc(LINE_SIZE);
+    size_t n = LINE_SIZE;
 
     do {
         if (getline(&line, &n, f) == -1)
             die("Executable not found, make sure there is a line starting with 'Exec='\n");
     } while(strncmp(line, "Exec=", 5));
     fclose(f);
-    char *exe   = line+5;
+    char *exe = line+5;
 
-    // parse arguments
+
     bool in_quotes = 0;
     for (n = 0; n < LINE_SIZE; n++) {
-        if (!line[n])         // end of string
+        if (!line[n])
             break;
         else if (line[n] == 10 || line[n] == 13) {
             line[n] = '\0';
@@ -94,21 +94,21 @@ int main(int argc, char *argv[]) {
             line[n] = '\0';
     }
 
-    // count arguments
-    char*   arg         = exe;
-    int     argcount    = 0;
+
+    char* arg = exe;
+    int argcount = 0;
     while ((arg += (strlen(arg)+1)) && *arg)
         argcount += 1;
 
-    // merge args
-    char*   outargptrs[argcount + argc + 1];
+
+    char* outargptrs[argcount + argc + 1];
     outargptrs[0] = exe;
-    int     outargindex = 1;
-    arg                 = exe;
-    int     argc_       = argc - 1;     // argv[0] is the filename
-    char**  argv_       = argv + 1;
+    int outargindex = 1;
+    arg = exe;
+    int argc_ = argc - 1;
+    char** argv_ = argv + 1;
     while ((arg += (strlen(arg)+1)) && *arg) {
-        if (arg[0] == '%' || (arg[0] == '"' && arg[1] == '%')) {         // handle desktop file field codes
+        if (arg[0] == '%' || (arg[0] == '"' && arg[1] == '%')) {
             char code = arg[arg[0] == '%' ? 1 : 2];
             switch(code) {
                 case 'f':
@@ -142,9 +142,9 @@ int main(int argc, char *argv[]) {
         outargptrs[outargindex++] = *argv_++;
         argc_--;
     }
-    outargptrs[outargindex] = '\0';     // trailing null argument required by execvp()
+    outargptrs[outargindex] = '\0';
 
-    // change directory
+
     size_t appdir_s = strlen(appdir);
     char *usr_in_appdir = malloc(appdir_s + 5);
     snprintf(usr_in_appdir, appdir_s + 5, "%s/usr", appdir);
@@ -152,12 +152,12 @@ int main(int argc, char *argv[]) {
     if (ret != 0)
         die("Could not cd into %s\n", usr_in_appdir);
 
-    // set environment variables
+
     char *old_env;
     size_t length;
     const char *format;
 
-    /* https://docs.python.org/2/using/cmdline.html#envvar-PYTHONHOME */
+
     SET_NEW_ENV(new_pythonhome, appdir_s, "PYTHONHOME=%s/usr/", appdir);
 
     old_env = getenv("PATH") ?: "";
@@ -175,7 +175,7 @@ int main(int argc, char *argv[]) {
     old_env = getenv("PERLLIB") ?: "";
     SET_NEW_ENV(new_perllib, appdir_s*2 + strlen(old_env), "PERLLIB=%s/usr/share/perl5/:%s/usr/lib/perl5/:%s", appdir, appdir, old_env);
 
-    /* http://askubuntu.com/questions/251712/how-can-i-install-a-gsettings-schema-without-root-privileges */
+
     old_env = getenv("GSETTINGS_SCHEMA_DIR") ?: "";
     SET_NEW_ENV(new_gsettings_schema_dir, appdir_s + strlen(old_env), "GSETTINGS_SCHEMA_DIR=%s/usr/share/glib-2.0/schemas/:%s", appdir, old_env);
 
@@ -184,11 +184,11 @@ int main(int argc, char *argv[]) {
 
     SET_NEW_ENV(new_gspath, appdir_s + strlen(old_env), "GST_PLUGIN_SYSTEM_PATH=%s/usr/lib/gstreamer:%s", appdir, old_env);
     SET_NEW_ENV(new_gspath1, appdir_s + strlen(old_env), "GST_PLUGIN_SYSTEM_PATH_1_0=%s/usr/lib/gstreamer-1.0:%s", appdir, old_env);
-    
-    /* Otherwise may get errors because Python cannot write __pycache__ bytecode cache */
+
+
     putenv("PYTHONDONTWRITEBYTECODE=1");
 
-    /* Run */
+
     ret = execvp(exe, outargptrs);
 
     int error = errno;

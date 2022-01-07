@@ -1,23 +1,23 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct nlattr {int dummy; } ;
-typedef  int /*<<< orphan*/  __le64 ;
+typedef int __le64 ;
 
-/* Variables and functions */
- int /*<<< orphan*/  ieee802154_devaddr_from_raw (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  nla_data (struct nlattr const*) ; 
+
+ int ieee802154_devaddr_from_raw (int ) ;
+ int nla_data (struct nlattr const*) ;
 
 __attribute__((used)) static __le64 nla_get_hwaddr(const struct nlattr *nla)
 {
-	return ieee802154_devaddr_from_raw(nla_data(nla));
+ return ieee802154_devaddr_from_raw(nla_data(nla));
 }

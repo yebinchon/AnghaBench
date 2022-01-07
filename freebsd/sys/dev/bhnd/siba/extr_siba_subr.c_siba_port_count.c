@@ -1,42 +1,42 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u_int ;
-struct siba_core_id {int /*<<< orphan*/  num_cfg_blocks; int /*<<< orphan*/  num_admatch; } ;
-typedef  int bhnd_port_type ;
 
-/* Variables and functions */
-#define  BHND_PORT_AGENT 129 
-#define  BHND_PORT_DEVICE 128 
- int min (int /*<<< orphan*/ ,int) ; 
+
+
+
+typedef int u_int ;
+struct siba_core_id {int num_cfg_blocks; int num_admatch; } ;
+typedef int bhnd_port_type ;
+
+
+
+
+ int min (int ,int) ;
 
 u_int
 siba_port_count(struct siba_core_id *core_id, bhnd_port_type port_type)
 {
-	switch (port_type) {
-	case BHND_PORT_DEVICE:
-		/* 0, 1, or 2 ports */
-		return (min(core_id->num_admatch, 2));
+ switch (port_type) {
+ case 128:
 
-	case BHND_PORT_AGENT:
-		/* One agent port maps all configuration blocks */
-		if (core_id->num_cfg_blocks > 0)
-			return (1);
+  return (min(core_id->num_admatch, 2));
 
-		/* Do not advertise an agent port if there are no configuration
-		 * register blocks */
-		return (0);
+ case 129:
 
-	default:
-		return (0);
-	}
+  if (core_id->num_cfg_blocks > 0)
+   return (1);
+
+
+
+  return (0);
+
+ default:
+  return (0);
+ }
 }

@@ -1,29 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- char* img6x5_template ; 
- int /*<<< orphan*/  stbi_flip_vertically_on_write (int) ; 
- int /*<<< orphan*/  stbi_write_bmp (char*,int,int,int,unsigned char*) ; 
- int /*<<< orphan*/  stbi_write_hdr (char*,int,int,int,float*) ; 
- int /*<<< orphan*/  stbi_write_jpg (char*,int,int,int,unsigned char*,int) ; 
- int /*<<< orphan*/  stbi_write_png (char*,int,int,int,unsigned char*,int) ; 
- int /*<<< orphan*/  stbi_write_tga (char*,int,int,int,unsigned char*) ; 
+ char* img6x5_template ;
+ int stbi_flip_vertically_on_write (int) ;
+ int stbi_write_bmp (char*,int,int,int,unsigned char*) ;
+ int stbi_write_hdr (char*,int,int,int,float*) ;
+ int stbi_write_jpg (char*,int,int,int,unsigned char*,int) ;
+ int stbi_write_png (char*,int,int,int,unsigned char*,int) ;
+ int stbi_write_tga (char*,int,int,int,unsigned char*) ;
 
 void image_write_test(void)
 {
-   // make a RGB version of the template image
-   // use red on blue to detect R<->B swaps
+
+
    unsigned char img6x5_rgb[6*5*3];
    float img6x5_rgbf[6*5*3];
    int i;

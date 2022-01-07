@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-struct cache_set {int /*<<< orphan*/  gc_wait; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  wake_up (int /*<<< orphan*/ *) ; 
+
+
+
+struct cache_set {int gc_wait; } ;
+
+
+ int wake_up (int *) ;
 
 __attribute__((used)) static inline void wake_up_gc(struct cache_set *c)
 {
-	wake_up(&c->gc_wait);
+ wake_up(&c->gc_wait);
 }

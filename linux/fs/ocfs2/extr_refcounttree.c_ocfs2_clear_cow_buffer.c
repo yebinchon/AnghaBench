@@ -1,28 +1,28 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct buffer_head {int dummy; } ;
-typedef  int /*<<< orphan*/  handle_t ;
+typedef int handle_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  BUG_ON (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  buffer_dirty (struct buffer_head*) ; 
- int /*<<< orphan*/  clear_buffer_mapped (struct buffer_head*) ; 
+
+ int BUG_ON (int ) ;
+ int buffer_dirty (struct buffer_head*) ;
+ int clear_buffer_mapped (struct buffer_head*) ;
 
 __attribute__((used)) static int ocfs2_clear_cow_buffer(handle_t *handle, struct buffer_head *bh)
 {
-	BUG_ON(buffer_dirty(bh));
+ BUG_ON(buffer_dirty(bh));
 
-	clear_buffer_mapped(bh);
+ clear_buffer_mapped(bh);
 
-	return 0;
+ return 0;
 }

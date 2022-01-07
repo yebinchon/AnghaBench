@@ -1,25 +1,17 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
-
-/* Forward declarations */
-
-/* Type definitions */
-
-/* Variables and functions */
- int /*<<< orphan*/  fflush (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fprintf (int /*<<< orphan*/ ,char*,int) ; 
- int /*<<< orphan*/  fputc (char const,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  fputs (char const*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  g_free (char*) ; 
- char* g_shell_quote (char const*) ; 
- int /*<<< orphan*/  pango_parse_markup (char const*,int,int /*<<< orphan*/ ,int /*<<< orphan*/ *,char**,int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  stdout ; 
+ int fflush (int ) ;
+ int fprintf (int ,char*,int) ;
+ int fputc (char const,int ) ;
+ int fputs (char const*,int ) ;
+ int g_free (char*) ;
+ char* g_shell_quote (char const*) ;
+ int pango_parse_markup (char const*,int,int ,int *,char**,int *,int *) ;
+ int stdout ;
 
 void rofi_output_formatted_line ( const char *format, const char *string, int selected_line, const char *filter )
 {
@@ -34,8 +26,8 @@ void rofi_output_formatted_line ( const char *format, const char *string, int se
             fputs ( string, stdout );
         }
         else if ( format[i] == 'p' ) {
-            char *esc = NULL;
-            pango_parse_markup(string, -1, 0, NULL, &esc, NULL, NULL);
+            char *esc = ((void*)0);
+            pango_parse_markup(string, -1, 0, ((void*)0), &esc, ((void*)0), ((void*)0));
             if ( esc ){
                 fputs ( esc, stdout );
                 g_free ( esc );

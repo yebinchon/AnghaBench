@@ -1,103 +1,103 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_58__   TYPE_9__ ;
-typedef  struct TYPE_57__   TYPE_8__ ;
-typedef  struct TYPE_56__   TYPE_7__ ;
-typedef  struct TYPE_55__   TYPE_6__ ;
-typedef  struct TYPE_54__   TYPE_5__ ;
-typedef  struct TYPE_53__   TYPE_4__ ;
-typedef  struct TYPE_52__   TYPE_3__ ;
-typedef  struct TYPE_51__   TYPE_2__ ;
-typedef  struct TYPE_50__   TYPE_1__ ;
-typedef  struct TYPE_49__   TYPE_18__ ;
-typedef  struct TYPE_48__   TYPE_15__ ;
-typedef  struct TYPE_47__   TYPE_13__ ;
-typedef  struct TYPE_46__   TYPE_10__ ;
 
-/* Type definitions */
-typedef  int uint8_t ;
-typedef  int /*<<< orphan*/  uint32_t ;
-struct TYPE_58__ {int numOfDistinctionUnits; int /*<<< orphan*/  vector; TYPE_18__* unitIds; int /*<<< orphan*/  netEnvId; } ;
-typedef  TYPE_9__ t_NetEnvParams ;
-typedef  TYPE_10__* t_Handle ;
+
+
+typedef struct TYPE_58__ TYPE_9__ ;
+typedef struct TYPE_57__ TYPE_8__ ;
+typedef struct TYPE_56__ TYPE_7__ ;
+typedef struct TYPE_55__ TYPE_6__ ;
+typedef struct TYPE_54__ TYPE_5__ ;
+typedef struct TYPE_53__ TYPE_4__ ;
+typedef struct TYPE_52__ TYPE_3__ ;
+typedef struct TYPE_51__ TYPE_2__ ;
+typedef struct TYPE_50__ TYPE_1__ ;
+typedef struct TYPE_49__ TYPE_18__ ;
+typedef struct TYPE_48__ TYPE_15__ ;
+typedef struct TYPE_47__ TYPE_13__ ;
+typedef struct TYPE_46__ TYPE_10__ ;
+
+
+typedef int uint8_t ;
+typedef int uint32_t ;
+struct TYPE_58__ {int numOfDistinctionUnits; int vector; TYPE_18__* unitIds; int netEnvId; } ;
+typedef TYPE_9__ t_NetEnvParams ;
+typedef TYPE_10__* t_Handle ;
 struct TYPE_55__ {scalar_t__ h_CcNode; } ;
 struct TYPE_56__ {TYPE_6__ ccParams; } ;
 struct TYPE_57__ {scalar_t__ nextEngine; TYPE_7__ params; } ;
-struct TYPE_53__ {int /*<<< orphan*/  h_CcNode; } ;
+struct TYPE_53__ {int h_CcNode; } ;
 struct TYPE_54__ {TYPE_4__ ccParams; } ;
 struct TYPE_49__ {scalar_t__ nextEngine; scalar_t__ requiredAction; TYPE_8__ nextEngineParams; TYPE_5__ params; scalar_t__ h_Manip; } ;
 struct TYPE_50__ {scalar_t__ h_CcNode; } ;
 struct TYPE_51__ {TYPE_1__ ccParams; } ;
-struct TYPE_46__ {int numOfGrps; scalar_t__ nextEngine; int numOfEntries; int index; int /*<<< orphan*/  p_Lock; TYPE_18__* keyAndNextEngineParams; int /*<<< orphan*/  ccTreeBaseAddr; int /*<<< orphan*/  netEnvId; struct TYPE_46__* h_CcNode; TYPE_18__ nextEngineParams; int /*<<< orphan*/  requiredAction; scalar_t__ h_Manip; TYPE_3__* fmPcdGroupParam; TYPE_15__* ccGrpParams; int /*<<< orphan*/  h_NetEnv; TYPE_2__ params; int /*<<< orphan*/  fmPortsLst; struct TYPE_46__* h_FmPcd; } ;
-typedef  TYPE_10__ t_FmPcdCcTreeParams ;
-typedef  TYPE_10__ t_FmPcdCcTree ;
-struct TYPE_47__ {int /*<<< orphan*/  h_Spinlock; int /*<<< orphan*/  ccTreeIdLst; } ;
-typedef  TYPE_13__ t_FmPcdCcNode ;
-typedef  int /*<<< orphan*/  t_FmPcdCcNextEngineParams ;
-typedef  TYPE_10__ t_FmPcdCcKeyAndNextEngineParams ;
+struct TYPE_46__ {int numOfGrps; scalar_t__ nextEngine; int numOfEntries; int index; int p_Lock; TYPE_18__* keyAndNextEngineParams; int ccTreeBaseAddr; int netEnvId; struct TYPE_46__* h_CcNode; TYPE_18__ nextEngineParams; int requiredAction; scalar_t__ h_Manip; TYPE_3__* fmPcdGroupParam; TYPE_15__* ccGrpParams; int h_NetEnv; TYPE_2__ params; int fmPortsLst; struct TYPE_46__* h_FmPcd; } ;
+typedef TYPE_10__ t_FmPcdCcTreeParams ;
+typedef TYPE_10__ t_FmPcdCcTree ;
+struct TYPE_47__ {int h_Spinlock; int ccTreeIdLst; } ;
+typedef TYPE_13__ t_FmPcdCcNode ;
+typedef int t_FmPcdCcNextEngineParams ;
+typedef TYPE_10__ t_FmPcdCcKeyAndNextEngineParams ;
 struct TYPE_48__ {scalar_t__ numOfDistinctionUnits; TYPE_10__* nextEnginePerEntriesInGrp; TYPE_10__ unitIds; } ;
-typedef  TYPE_15__ t_FmPcdCcGrpParams ;
-typedef  int /*<<< orphan*/  t_FmPcd ;
-typedef  scalar_t__ t_Error ;
-typedef  TYPE_10__ t_CcNodeInformation ;
-struct TYPE_52__ {int baseGroupEntry; int numOfEntriesInGroup; int /*<<< orphan*/  totalBitsMask; } ;
+typedef TYPE_15__ t_FmPcdCcGrpParams ;
+typedef int t_FmPcd ;
+typedef scalar_t__ t_Error ;
+typedef TYPE_10__ t_CcNodeInformation ;
+struct TYPE_52__ {int baseGroupEntry; int numOfEntriesInGroup; int totalBitsMask; } ;
 
-/* Variables and functions */
- scalar_t__ AllocAndFillAdForContLookupManip (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  DBG (int /*<<< orphan*/ ,char*) ; 
- int /*<<< orphan*/  DeleteTree (TYPE_10__*,int /*<<< orphan*/ *) ; 
- scalar_t__ E_CONFLICT ; 
- int /*<<< orphan*/  E_INVALID_HANDLE ; 
- scalar_t__ E_INVALID_STATE ; 
- scalar_t__ E_INVALID_VALUE ; 
- scalar_t__ E_NO_MEMORY ; 
- scalar_t__ E_OK ; 
- int /*<<< orphan*/  EnqueueNodeInfoToRelevantLst (int /*<<< orphan*/ *,TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FM_MURAM_AllocMem (int /*<<< orphan*/ ,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- int FM_PCD_CC_AD_ENTRY_SIZE ; 
- int /*<<< orphan*/  FM_PCD_CC_TREE_ADDR_ALIGN ; 
- int /*<<< orphan*/  FM_PCD_CcRootDelete (TYPE_10__*) ; 
- int FM_PCD_MAX_NUM_OF_CC_GROUPS ; 
- int FM_PCD_MAX_NUM_OF_CC_UNITS ; 
- TYPE_10__* FindNodeInfoInReleventLst (int /*<<< orphan*/ *,TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdAcquireLock (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FmPcdGetMuramHandle (TYPE_10__*) ; 
- int /*<<< orphan*/  FmPcdGetNetEnvId (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdIncNetEnvOwners (TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  FmPcdLockTryLockAll (int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  FmPcdLockUnlockAll (int /*<<< orphan*/ *) ; 
- scalar_t__ FmPcdManipApplSpecificBuild () ; 
- scalar_t__ FmPcdManipCheckParamsForCcNextEngine (TYPE_10__*,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  INIT_LIST (int /*<<< orphan*/ *) ; 
- scalar_t__ IsCapwapApplSpecific (scalar_t__) ; 
- int /*<<< orphan*/  MAJOR ; 
- int /*<<< orphan*/  MemSet8 (TYPE_10__*,int /*<<< orphan*/ ,int /*<<< orphan*/ ) ; 
- char* NO_MSG ; 
- int /*<<< orphan*/  NextStepAd (TYPE_10__*,int /*<<< orphan*/ *,TYPE_18__*,int /*<<< orphan*/ *) ; 
- TYPE_10__* PTR_MOVE (TYPE_10__*,int) ; 
- int /*<<< orphan*/  PTR_TO_UINT (int /*<<< orphan*/ ) ; 
- scalar_t__ PcdGetUnitsVector (int /*<<< orphan*/ *,TYPE_9__*) ; 
- int /*<<< orphan*/  REPORT_ERROR (int /*<<< orphan*/ ,scalar_t__,char*) ; 
- int /*<<< orphan*/  SANITY_CHECK_RETURN_VALUE (TYPE_10__*,int /*<<< orphan*/ ,int /*<<< orphan*/ *) ; 
- scalar_t__ SetRequiredAction (TYPE_10__*,scalar_t__,TYPE_18__*,TYPE_10__*,int,TYPE_10__*) ; 
- int /*<<< orphan*/  TRACE ; 
- TYPE_10__* UINT_TO_PTR (int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  UPDATE_CC_WITH_TREE ; 
- scalar_t__ ValidateNextEngineParams (TYPE_10__*,TYPE_10__*,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  XX_Free (TYPE_10__*) ; 
- scalar_t__ XX_Malloc (int) ; 
- scalar_t__ e_FM_PCD_CC ; 
- int /*<<< orphan*/  e_FM_PCD_CC_STATS_MODE_NONE ; 
- int /*<<< orphan*/  memcpy (TYPE_18__*,TYPE_10__*,int) ; 
- int /*<<< orphan*/  memset (TYPE_10__*,int /*<<< orphan*/ ,int) ; 
+
+ scalar_t__ AllocAndFillAdForContLookupManip (int ) ;
+ int DBG (int ,char*) ;
+ int DeleteTree (TYPE_10__*,int *) ;
+ scalar_t__ E_CONFLICT ;
+ int E_INVALID_HANDLE ;
+ scalar_t__ E_INVALID_STATE ;
+ scalar_t__ E_INVALID_VALUE ;
+ scalar_t__ E_NO_MEMORY ;
+ scalar_t__ E_OK ;
+ int EnqueueNodeInfoToRelevantLst (int *,TYPE_10__*,int ) ;
+ int FM_MURAM_AllocMem (int ,int ,int ) ;
+ int FM_PCD_CC_AD_ENTRY_SIZE ;
+ int FM_PCD_CC_TREE_ADDR_ALIGN ;
+ int FM_PCD_CcRootDelete (TYPE_10__*) ;
+ int FM_PCD_MAX_NUM_OF_CC_GROUPS ;
+ int FM_PCD_MAX_NUM_OF_CC_UNITS ;
+ TYPE_10__* FindNodeInfoInReleventLst (int *,TYPE_10__*,int ) ;
+ int FmPcdAcquireLock (int *) ;
+ int FmPcdGetMuramHandle (TYPE_10__*) ;
+ int FmPcdGetNetEnvId (int ) ;
+ int FmPcdIncNetEnvOwners (TYPE_10__*,int ) ;
+ int FmPcdLockTryLockAll (int *) ;
+ int FmPcdLockUnlockAll (int *) ;
+ scalar_t__ FmPcdManipApplSpecificBuild () ;
+ scalar_t__ FmPcdManipCheckParamsForCcNextEngine (TYPE_10__*,int *) ;
+ int INIT_LIST (int *) ;
+ scalar_t__ IsCapwapApplSpecific (scalar_t__) ;
+ int MAJOR ;
+ int MemSet8 (TYPE_10__*,int ,int ) ;
+ char* NO_MSG ;
+ int NextStepAd (TYPE_10__*,int *,TYPE_18__*,int *) ;
+ TYPE_10__* PTR_MOVE (TYPE_10__*,int) ;
+ int PTR_TO_UINT (int ) ;
+ scalar_t__ PcdGetUnitsVector (int *,TYPE_9__*) ;
+ int REPORT_ERROR (int ,scalar_t__,char*) ;
+ int SANITY_CHECK_RETURN_VALUE (TYPE_10__*,int ,int *) ;
+ scalar_t__ SetRequiredAction (TYPE_10__*,scalar_t__,TYPE_18__*,TYPE_10__*,int,TYPE_10__*) ;
+ int TRACE ;
+ TYPE_10__* UINT_TO_PTR (int ) ;
+ int UPDATE_CC_WITH_TREE ;
+ scalar_t__ ValidateNextEngineParams (TYPE_10__*,TYPE_10__*,int ) ;
+ int XX_Free (TYPE_10__*) ;
+ scalar_t__ XX_Malloc (int) ;
+ scalar_t__ e_FM_PCD_CC ;
+ int e_FM_PCD_CC_STATS_MODE_NONE ;
+ int memcpy (TYPE_18__*,TYPE_10__*,int) ;
+ int memset (TYPE_10__*,int ,int) ;
 
 t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                             t_FmPcdCcTreeParams *p_PcdGroupsParam)
@@ -116,20 +116,20 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
     t_FmPcdCcNode *p_FmPcdCcNextNode;
     t_CcNodeInformation ccNodeInfo, *p_CcInformation;
 
-    SANITY_CHECK_RETURN_VALUE(h_FmPcd, E_INVALID_HANDLE, NULL);
-    SANITY_CHECK_RETURN_VALUE(p_PcdGroupsParam, E_INVALID_HANDLE, NULL);
+    SANITY_CHECK_RETURN_VALUE(h_FmPcd, E_INVALID_HANDLE, ((void*)0));
+    SANITY_CHECK_RETURN_VALUE(p_PcdGroupsParam, E_INVALID_HANDLE, ((void*)0));
 
     if (p_PcdGroupsParam->numOfGrps > FM_PCD_MAX_NUM_OF_CC_GROUPS)
     {
         REPORT_ERROR(MAJOR, E_INVALID_VALUE, ("numOfGrps should not exceed %d", FM_PCD_MAX_NUM_OF_CC_GROUPS));
-        return NULL;
+        return ((void*)0);
     }
 
     p_FmPcdCcTree = (t_FmPcdCcTree*)XX_Malloc(sizeof(t_FmPcdCcTree));
     if (!p_FmPcdCcTree)
     {
         REPORT_ERROR(MAJOR, E_NO_MEMORY, ("PCD tree structure"));
-        return NULL;
+        return ((void*)0);
     }
     memset(p_FmPcdCcTree, 0, sizeof(t_FmPcdCcTree));
     p_FmPcdCcTree->h_FmPcd = h_FmPcd;
@@ -143,25 +143,6 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                    * sizeof(t_FmPcdCcKeyAndNextEngineParams));
 
     INIT_LIST(&p_FmPcdCcTree->fmPortsLst);
-
-#ifdef FM_CAPWAP_SUPPORT
-    if ((p_PcdGroupsParam->numOfGrps == 1) &&
-            (p_PcdGroupsParam->ccGrpParams[0].numOfDistinctionUnits == 0) &&
-            (p_PcdGroupsParam->ccGrpParams[0].nextEnginePerEntriesInGrp[0].nextEngine == e_FM_PCD_CC) &&
-            p_PcdGroupsParam->ccGrpParams[0].nextEnginePerEntriesInGrp[0].params.ccParams.h_CcNode &&
-            IsCapwapApplSpecific(p_PcdGroupsParam->ccGrpParams[0].nextEnginePerEntriesInGrp[0].params.ccParams.h_CcNode))
-    {
-        p_PcdGroupsParam->ccGrpParams[0].nextEnginePerEntriesInGrp[0].h_Manip = FmPcdManipApplSpecificBuild();
-        if (!p_PcdGroupsParam->ccGrpParams[0].nextEnginePerEntriesInGrp[0].h_Manip)
-        {
-            DeleteTree(p_FmPcdCcTree,p_FmPcd);
-            XX_Free(p_Params);
-            REPORT_ERROR(MAJOR, E_INVALID_STATE, NO_MSG);
-            return NULL;
-        }
-    }
-#endif /* FM_CAPWAP_SUPPORT */
-
     numOfEntries = 0;
     p_FmPcdCcTree->netEnvId = FmPcdGetNetEnvId(p_PcdGroupsParam->h_NetEnv);
 
@@ -176,7 +157,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
             XX_Free(p_Params);
             REPORT_ERROR(MAJOR, E_INVALID_VALUE,
                     ("numOfDistinctionUnits (group %d) should not exceed %d", i, FM_PCD_MAX_NUM_OF_CC_UNITS));
-            return NULL;
+            return ((void*)0);
         }
 
         p_FmPcdCcTree->fmPcdGroupParam[i].baseGroupEntry = numOfEntries;
@@ -188,7 +169,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
             DeleteTree(p_FmPcdCcTree, p_FmPcd);
             XX_Free(p_Params);
             REPORT_ERROR(MAJOR, E_INVALID_VALUE, ("numOfEntries can not be larger than %d", FM_PCD_MAX_NUM_OF_CC_GROUPS));
-            return NULL;
+            return ((void*)0);
         }
 
         if (lastOne)
@@ -198,7 +179,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                 DeleteTree(p_FmPcdCcTree, p_FmPcd);
                 XX_Free(p_Params);
                 REPORT_ERROR(MAJOR, E_CONFLICT, ("numOfEntries per group must be set in descending order"));
-                return NULL;
+                return ((void*)0);
             }
         }
 
@@ -217,7 +198,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
             DeleteTree(p_FmPcdCcTree, p_FmPcd);
             XX_Free(p_Params);
             REPORT_ERROR(MAJOR, err, NO_MSG);
-            return NULL;
+            return ((void*)0);
         }
 
         p_FmPcdCcTree->fmPcdGroupParam[i].totalBitsMask = netEnvParams.vector;
@@ -233,7 +214,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                 DeleteTree(p_FmPcdCcTree, p_FmPcd);
                 XX_Free(p_Params);
                 REPORT_ERROR(MAJOR, err, (NO_MSG));
-                return NULL;
+                return ((void*)0);
             }
 
             if (p_FmPcdCcGroupParams->nextEnginePerEntriesInGrp[j].h_Manip)
@@ -246,7 +227,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                     DeleteTree(p_FmPcdCcTree, p_FmPcd);
                     XX_Free(p_Params);
                     REPORT_ERROR(MAJOR, E_INVALID_STATE, NO_MSG);
-                    return NULL;
+                    return ((void*)0);
                 }
             }
             p_KeyAndNextEngineParams = p_Params + k;
@@ -267,7 +248,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                     DeleteTree(p_FmPcdCcTree, p_FmPcd);
                     XX_Free(p_Params);
                     REPORT_ERROR(MAJOR, E_NO_MEMORY, ("MURAM allocation for CC Tree"));
-                    return NULL;
+                    return ((void*)0);
                 }
             }
 
@@ -290,7 +271,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
         DeleteTree(p_FmPcdCcTree, p_FmPcd);
         XX_Free(p_Params);
         REPORT_ERROR(MAJOR, E_NO_MEMORY, ("MURAM allocation for CC Tree"));
-        return NULL;
+        return ((void*)0);
     }
     MemSet8(
             UINT_TO_PTR(p_FmPcdCcTree->ccTreeBaseAddr), 0,
@@ -302,7 +283,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
     {
         p_KeyAndNextEngineParams = p_Params + i;
 
-        NextStepAd(p_CcTreeTmp, NULL,
+        NextStepAd(p_CcTreeTmp, ((void*)0),
                    &p_KeyAndNextEngineParams->nextEngineParams, p_FmPcd);
 
         p_CcTreeTmp = PTR_MOVE(p_CcTreeTmp, FM_PCD_CC_AD_ENTRY_SIZE);
@@ -342,7 +323,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
         FM_PCD_CcRootDelete(p_FmPcdCcTree);
         XX_Free(p_Params);
         DBG(TRACE, ("FmPcdLockTryLockAll failed"));
-        return NULL;
+        return ((void*)0);
     }
 
     for (i = 0; i < numOfEntries; i++)
@@ -360,7 +341,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
                 FM_PCD_CcRootDelete(p_FmPcdCcTree);
                 XX_Free(p_Params);
                 REPORT_ERROR(MAJOR, E_NO_MEMORY, ("No memory"));
-                return NULL;
+                return ((void*)0);
             }
             p_CcTreeTmp = PTR_MOVE(p_CcTreeTmp, FM_PCD_CC_AD_ENTRY_SIZE);
         }
@@ -373,7 +354,7 @@ t_Handle FM_PCD_CcRootBuild(t_Handle h_FmPcd,
         FM_PCD_CcRootDelete(p_FmPcdCcTree);
         XX_Free(p_Params);
         REPORT_ERROR(MAJOR, E_NO_MEMORY, ("FM CC lock"));
-        return NULL;
+        return ((void*)0);
     }
 
     XX_Free(p_Params);

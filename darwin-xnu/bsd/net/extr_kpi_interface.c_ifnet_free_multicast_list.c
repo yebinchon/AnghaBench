@@ -1,32 +1,32 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/ * ifmultiaddr_t ;
 
-/* Variables and functions */
- int /*<<< orphan*/  FREE (int /*<<< orphan*/ **,int /*<<< orphan*/ ) ; 
- int /*<<< orphan*/  M_TEMP ; 
- int /*<<< orphan*/  ifmaddr_release (int /*<<< orphan*/ *) ; 
+
+
+
+typedef int * ifmultiaddr_t ;
+
+
+ int FREE (int **,int ) ;
+ int M_TEMP ;
+ int ifmaddr_release (int *) ;
 
 void
 ifnet_free_multicast_list(ifmultiaddr_t *addresses)
 {
-	int i;
+ int i;
 
-	if (addresses == NULL)
-		return;
+ if (addresses == ((void*)0))
+  return;
 
-	for (i = 0; addresses[i] != NULL; i++)
-		ifmaddr_release(addresses[i]);
+ for (i = 0; addresses[i] != ((void*)0); i++)
+  ifmaddr_release(addresses[i]);
 
-	FREE(addresses, M_TEMP);
+ FREE(addresses, M_TEMP);
 }

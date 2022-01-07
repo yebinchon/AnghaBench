@@ -1,37 +1,37 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int u32 ;
+
+
+
+
+typedef int u32 ;
 struct mii_bus {int dummy; } ;
 
-/* Variables and functions */
- int ETIMEDOUT ; 
- int __ar7240sw_reg_read (struct mii_bus*,int) ; 
- int /*<<< orphan*/  usleep_range (int,int) ; 
+
+ int ETIMEDOUT ;
+ int __ar7240sw_reg_read (struct mii_bus*,int) ;
+ int usleep_range (int,int) ;
 
 __attribute__((used)) static int __ar7240sw_reg_wait(struct mii_bus *mii, u32 reg, u32 mask, u32 val,
-			       unsigned timeout)
+          unsigned timeout)
 {
-	int i;
+ int i;
 
-	for (i = 0; i < timeout; i++) {
-		u32 t;
+ for (i = 0; i < timeout; i++) {
+  u32 t;
 
-		t = __ar7240sw_reg_read(mii, reg);
-		if ((t & mask) == val)
-			return 0;
+  t = __ar7240sw_reg_read(mii, reg);
+  if ((t & mask) == val)
+   return 0;
 
-		usleep_range(1000, 2000);
-	}
+  usleep_range(1000, 2000);
+ }
 
-	return -ETIMEDOUT;
+ return -ETIMEDOUT;
 }

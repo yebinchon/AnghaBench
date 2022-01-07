@@ -1,21 +1,21 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
-typedef  int /*<<< orphan*/  SVgObj ;
-typedef  int /*<<< orphan*/  SDbObj ;
 
-/* Variables and functions */
- int /*<<< orphan*/  mgmtAddVgroupIntoDbTail (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
- int /*<<< orphan*/  mgmtRemoveVgroupFromDb (int /*<<< orphan*/ *,int /*<<< orphan*/ *) ; 
+
+
+
+typedef int SVgObj ;
+typedef int SDbObj ;
+
+
+ int mgmtAddVgroupIntoDbTail (int *,int *) ;
+ int mgmtRemoveVgroupFromDb (int *,int *) ;
 
 int mgmtMoveVgroupToTail(SDbObj *pDb, SVgObj *pVgroup) {
   mgmtRemoveVgroupFromDb(pDb, pVgroup);

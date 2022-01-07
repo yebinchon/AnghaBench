@@ -1,26 +1,26 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
-typedef  struct TYPE_5__   TYPE_2__ ;
-typedef  struct TYPE_4__   TYPE_1__ ;
 
-/* Type definitions */
+
+
+typedef struct TYPE_5__ TYPE_2__ ;
+typedef struct TYPE_4__ TYPE_1__ ;
+
+
 struct TYPE_4__ {TYPE_2__* screen; } ;
-typedef  TYPE_1__ eia608_t ;
+typedef TYPE_1__ eia608_t ;
 struct TYPE_5__ {int* row_used; char** characters; scalar_t__** colors; scalar_t__** fonts; } ;
-typedef  TYPE_2__ eia608_screen ;
+typedef TYPE_2__ eia608_screen ;
 
-/* Variables and functions */
- scalar_t__ EIA608_COLOR_DEFAULT ; 
- scalar_t__ EIA608_FONT_REGULAR ; 
- int EIA608_SCREEN_COLUMNS ; 
+
+ scalar_t__ EIA608_COLOR_DEFAULT ;
+ scalar_t__ EIA608_FONT_REGULAR ;
+ int EIA608_SCREEN_COLUMNS ;
 
 __attribute__((used)) static void Eia608ClearScreenRowX( eia608_t *h, int i_screen, int i_row, int x )
 {
@@ -28,18 +28,18 @@ __attribute__((used)) static void Eia608ClearScreenRowX( eia608_t *h, int i_scre
 
     if( x == 0 )
     {
-        screen->row_used[i_row] = false;
+        screen->row_used[i_row] = 0;
     }
     else
     {
-        screen->row_used[i_row] = false;
+        screen->row_used[i_row] = 0;
         for( int i = 0; i < x; i++ )
         {
             if( screen->characters[i_row][i] != ' ' ||
                 screen->colors[i_row][i] != EIA608_COLOR_DEFAULT ||
                 screen->fonts[i_row][i] != EIA608_FONT_REGULAR )
             {
-                screen->row_used[i_row] = true;
+                screen->row_used[i_row] = 1;
                 break;
             }
         }

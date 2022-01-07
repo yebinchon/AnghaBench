@@ -1,22 +1,22 @@
-#define NULL ((void*)0)
-typedef unsigned long size_t;  // Customize by platform.
+
+typedef unsigned long size_t;
 typedef long intptr_t; typedef unsigned long uintptr_t;
-typedef long scalar_t__;  // Either arithmetic or pointer type.
-/* By default, we understand bool (as a convenience). */
+typedef long scalar_t__;
+
 typedef int bool;
-#define false 0
-#define true 1
 
-/* Forward declarations */
 
-/* Type definitions */
+
+
+
+
 struct mpv_event {int event_id; void* data; } ;
 struct MPContext {int dummy; } ;
 
-/* Variables and functions */
- int /*<<< orphan*/  dup_event_data (struct mpv_event*) ; 
- int /*<<< orphan*/  mp_client_broadcast_event (struct MPContext*,int,void*) ; 
- int mp_client_send_event (struct MPContext*,char const*,int /*<<< orphan*/ ,int,void*) ; 
+
+ int dup_event_data (struct mpv_event*) ;
+ int mp_client_broadcast_event (struct MPContext*,int,void*) ;
+ int mp_client_send_event (struct MPContext*,char const*,int ,int,void*) ;
 
 int mp_client_send_event_dup(struct MPContext *mpctx, const char *client_name,
                              int event, void *data)
